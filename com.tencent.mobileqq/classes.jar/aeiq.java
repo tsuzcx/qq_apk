@@ -1,52 +1,27 @@
 import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class aeiq
-  extends auom
+  implements apaf
 {
-  public aeiq(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  public aeiq(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2, apll paramapll) {}
   
-  public void a(int paramInt, aunu paramaunu)
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aejg;
-    if (localObject != null)
-    {
-      if (paramaunu.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((aejg)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaunu.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1);
     }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeit;
-      if (localObject != null)
-      {
-        if (paramaunu.jdField_a_of_type_Int != 0) {
-          break;
-        }
-        ((aeit)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaunu.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      label139:
-      ((aejg)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaunu.jdField_a_of_type_Aunp.jdField_a_of_type_JavaLangString + ", desc:" + paramaunu.jdField_a_of_type_Aunp.b, paramaunu.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
-    }
-    ((aeit)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaunu.jdField_a_of_type_Aunp.jdField_a_of_type_JavaLangString + ", desc:" + paramaunu.jdField_a_of_type_Aunp.b, paramaunu.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void a(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aejg;
-    if (localObject != null) {
-      ((aejg)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeit;
-    if (localObject != null) {
-      ((aeit)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Apll.b(), new String[] { paramString1 }, paramString2, null, -1);
     }
   }
+  
+  public void aC_() {}
+  
+  public void aD_() {}
 }
 
 

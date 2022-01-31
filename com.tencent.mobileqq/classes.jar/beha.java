@@ -1,91 +1,32 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class beha
-  implements besi
+  implements View.OnTouchListener
 {
-  private begz a;
+  public beha(Login paramLogin) {}
   
-  public beha(begz parambegz)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = parambegz;
-  }
-  
-  public Activity a()
-  {
-    return this.a.a();
-  }
-  
-  public beru a()
-  {
-    MiniAppInfo localMiniAppInfo = a();
-    if (localMiniAppInfo == null)
-    {
-      besl.c("MiniRuntime", "getShareState. Failed to get share state, mini app info is null");
-      return null;
-    }
-    beru localberu = (beru)this.a.a(bejr.a());
-    if ((localMiniAppInfo.verType != 3) || (bfgt.b()))
-    {
-      localberu.b = true;
-      localberu.c = true;
-    }
-    if (belj.a("MiniApp", "mini_app_share_to_wx_switcher", 1) != 1)
-    {
-      localberu.f = false;
-      localberu.g = false;
-    }
-    localberu.a = this.a.f();
-    return localberu;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.a.a();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    switch (paramInt)
-    {
-    default: 
-      Bundle localBundle = paramBundle;
-      if (paramBundle == null) {
-        localBundle = new Bundle();
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
-      localBundle.putInt("id", paramInt);
-      this.a.a(bejv.a(14, localBundle));
-      return;
-    case 1: 
-      this.a.a(bejv.a(2));
-      return;
-    case 2: 
-      this.a.a(bejv.a(6));
-      return;
-    case 3: 
-      this.a.a(bejv.a(7));
-      return;
-    case 4: 
-      this.a.a(bejv.a(8));
-      return;
     }
-    this.a.a(bejv.a(13, paramBundle));
-  }
-  
-  public boolean a()
-  {
-    return ((Boolean)this.a.a(bejx.a(2))).booleanValue();
-  }
-  
-  public boolean b()
-  {
-    return ((Boolean)this.a.a(bejx.a(1))).booleanValue();
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     beha
  * JD-Core Version:    0.7.0.1
  */

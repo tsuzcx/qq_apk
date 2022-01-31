@@ -1,6 +1,5 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeud
@@ -10,7 +9,6 @@ public class aeud
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new axra(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
     this.a.H();
   }
 }

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedInfo;
+import cooperation.qzone.model.DiscoverTab;
 
 public final class bhfc
-  implements Parcelable.Creator<WeishiFeedInfo>
+  implements Parcelable.Creator<DiscoverTab>
 {
-  public WeishiFeedInfo a(Parcel paramParcel)
+  public DiscoverTab a(Parcel paramParcel)
   {
-    return new WeishiFeedInfo(paramParcel);
+    return new DiscoverTab(paramParcel);
   }
   
-  public WeishiFeedInfo[] a(int paramInt)
+  public DiscoverTab[] a(int paramInt)
   {
-    return new WeishiFeedInfo[paramInt];
+    return new DiscoverTab[paramInt];
   }
 }
 

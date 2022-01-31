@@ -1,9 +1,4 @@
-public class blcf
-{
-  public Object a;
-  public boolean a;
-  public boolean b;
-}
+class blcf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

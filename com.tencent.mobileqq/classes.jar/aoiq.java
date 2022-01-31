@@ -1,22 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aoiq
-  extends RecyclerView.AdapterDataObserver
+  implements Animator.AnimatorListener
 {
-  public aoiq(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aoiq(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
   
-  public void onChanged()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_Aoiu.a() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoiv);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aoiv);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aoiv);
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

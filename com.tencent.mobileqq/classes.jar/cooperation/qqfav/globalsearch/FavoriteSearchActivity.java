@@ -1,9 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.Intent;
-import bgqc;
+import bgqt;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -18,14 +18,14 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  public BaseSearchFragment<bgqc> a()
+  public BaseSearchFragment<bgqt> a()
   {
     return new FavoriteSearchFragment();
   }
   
   public String a()
   {
-    return ajyc.a(2131704381);
+    return ajya.a(2131704392);
   }
   
   public void doOnResume()

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.shareGroup.model;
 
-import ajyc;
+import ajya;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.ShareGroupEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
@@ -13,14 +13,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.List;
-import ssl;
-import teg;
-import veg;
-import vxs;
+import ssi;
+import ted;
+import ved;
+import vxp;
 
 public class ShareGroupItem
   extends BaseUIItem
-  implements ssl, teg
+  implements ssi, ted
 {
   public static final int OWNER_TYPE_CREATOR = 1;
   public static final int OWNER_TYPE_PARTICIPATOR = 2;
@@ -35,7 +35,7 @@ public class ShareGroupItem
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = ajyc.a(2131713916);
+  public String name = ajya.a(2131713927);
   public int ownerType = 1;
   public String ownerUnionId;
   public String shareGroupId;
@@ -66,9 +66,9 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    vxs.a(this.shareGroupId);
+    vxp.a(this.shareGroupId);
     if (this.type == 2) {
-      veg.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
+      ved.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
   }
   

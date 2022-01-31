@@ -1,23 +1,36 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class afhh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aftb
 {
   public afhh(TroopView paramTroopView) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
     }
-    for (;;)
+    if (paramInt != -1)
     {
-      TroopView.a(this.a);
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      TroopView.a(this.a).setCurrentPosition(-1, false);
+      int i = TroopView.a(this.a).getCurrentItem();
+      if (QLog.isColorLevel()) {
+        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      }
+      Object localObject = TroopView.a(this.a).a(i, false);
+      if (localObject != null)
+      {
+        localObject = (AddContactViewPagerTroopFragment)localObject;
+        afdi localafdi = (afdi)this.a.a.get(i);
+        localafdi.b = -1;
+        ((AddContactViewPagerTroopFragment)localObject).a(localafdi.d, "");
+      }
     }
   }
 }

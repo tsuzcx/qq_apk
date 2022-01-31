@@ -1,61 +1,49 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.SeekBar;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class azax
-  extends Handler
+  implements BusinessObserver
 {
-  public azax(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public azax(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (azbh)paramMessage.obj;
-    long l1;
-    long l2;
-    azbz localazbz;
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = "";
+    paramInt = -1;
+    if (paramBoolean) {}
+    for (;;)
     {
-      l1 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-      l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l1);
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)l2);
-      this.a.b(paramMessage);
-      paramMessage = (azbw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramMessage.jdField_a_of_type_Int);
-      if ((paramMessage instanceof azbz))
+      try
       {
-        localazbz = (azbz)paramMessage;
-        if ((!this.a.d) && (l2 >= l1 * 0.8D))
-        {
-          this.a.d = true;
-          if (localazbz.h == 0) {
-            break label271;
-          }
-          paramMessage = "" + localazbz.h;
-          if (localazbz.c != 31) {
-            break label277;
-          }
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        int i = localWebSsoResponseBody.ret.get();
+        paramInt = i;
+        paramBundle = str;
       }
-    }
-    label271:
-    label277:
-    for (String str = "1";; str = "2")
-    {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_active", this.a.c, 0, localazbz.d, "" + localazbz.b, paramMessage, str);
-      if (this.a.h < l1 - 100L) {
-        this.a.h = ((int)l2);
+      catch (Exception paramBundle)
+      {
+        paramBundle = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
       }
       return;
-      paramMessage = "";
-      break;
+      paramBundle = localContext.getString(2131696570, new Object[] { Integer.valueOf(9991) });
+      continue;
+      paramBundle = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
     }
   }
 }

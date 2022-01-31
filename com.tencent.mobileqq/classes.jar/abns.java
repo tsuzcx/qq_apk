@@ -1,15 +1,20 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.3;
 
 public class abns
-  implements arhq
+  extends Handler
 {
-  public abns(NearbyActivity.3 param3) {}
+  public abns(NearbyActivity paramNearbyActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.this$0.d = paramInt;
-    NearbyActivity.a(this.a.this$0.b, this.a.this$0.d);
+    if (!this.a.c)
+    {
+      this.a.g();
+      this.a.b.removeMessages(this.a.i);
+      sendEmptyMessageDelayed(this.a.i, this.a.n);
+    }
   }
 }
 

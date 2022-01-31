@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import acwf;
+import acwb;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import avvh;
-import avvi;
 import avvj;
-import ayqm;
+import avvk;
+import avvl;
+import ayqo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -25,11 +25,11 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements acwf, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements acwb, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  private avvh jdField_a_of_type_Avvh;
-  private avvi jdField_a_of_type_Avvi;
   private avvj jdField_a_of_type_Avvj;
+  private avvk jdField_a_of_type_Avvk;
+  private avvl jdField_a_of_type_Avvl;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -48,7 +48,7 @@ public class BlankVideoPlayer
     }
   }
   
-  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
+  public void a(View paramView, ayqo paramayqo, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BlankVideoPlayer", 2, "handleMessage");
@@ -57,15 +57,15 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Avvi != null) {
-      this.jdField_a_of_type_Avvi.a();
+    if (this.jdField_a_of_type_Avvk != null) {
+      this.jdField_a_of_type_Avvk.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Avvj != null) {
-      this.jdField_a_of_type_Avvj.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    if (this.jdField_a_of_type_Avvl != null) {
+      this.jdField_a_of_type_Avvl.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
     }
     return false;
   }
@@ -119,19 +119,19 @@ public class BlankVideoPlayer
     }
   }
   
-  public void setOnCloseListener(avvh paramavvh)
-  {
-    this.jdField_a_of_type_Avvh = paramavvh;
-  }
-  
-  public void setOnCompleteListener(avvi paramavvi)
-  {
-    this.jdField_a_of_type_Avvi = paramavvi;
-  }
-  
-  public void setOnErrorListener(avvj paramavvj)
+  public void setOnCloseListener(avvj paramavvj)
   {
     this.jdField_a_of_type_Avvj = paramavvj;
+  }
+  
+  public void setOnCompleteListener(avvk paramavvk)
+  {
+    this.jdField_a_of_type_Avvk = paramavvk;
+  }
+  
+  public void setOnErrorListener(avvl paramavvl)
+  {
+    this.jdField_a_of_type_Avvl = paramavvl;
   }
 }
 

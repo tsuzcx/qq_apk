@@ -1,13 +1,13 @@
 package cooperation.liveroom;
 
-import bcbg;
-import bchx;
+import bcbu;
+import bcil;
 import org.json.JSONObject;
 
 class LiveRoomWebViewFragment$1
-  implements bchx
+  implements bcil
 {
-  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bcbg parambcbg) {}
+  LiveRoomWebViewFragment$1(LiveRoomWebViewFragment paramLiveRoomWebViewFragment, bcbu parambcbu) {}
   
   public long getDetect302Time()
   {

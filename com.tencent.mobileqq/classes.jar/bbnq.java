@@ -1,685 +1,146 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bbnq
+public final class bbnq
 {
-  public static bbns a;
-  public static bbnu a;
-  static bbwf a;
-  public static String a;
-  public static HashMap<String, Boolean> a;
-  public static bbnu[] a;
-  public static bbnu b;
-  public static bbnu c;
-  public static bbnu d;
-  public static bbnu e;
-  public static bbnu f;
-  public static bbnu g;
-  public static bbnu h;
-  public static bbnu i;
+  private int jdField_a_of_type_Int = 16;
+  @Nullable
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  @Nullable
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  @Nullable
+  private final List<bbns> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 12544;
+  private final List<bbnu> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private int jdField_c_of_type_Int = -1;
+  private final List<bbnr> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public bbnq(@NonNull Bitmap paramBitmap)
   {
-    jdField_a_of_type_Bbnu = new bbnu("recommendEmotion.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/xydata.json", "recommendEmotionVersion", "vipData_emoji_aio_recommend.json");
-    b = new bbnu("IndividuationUrls.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation_url/android.json", "individuationUrlJsonNewVersion", "vipData_individuation_url_json");
-    c = new bbnu("Individuation.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/xydata.json", "IndividuationVersion", "individ_json");
-    d = new bbnu("EmoticonWording.json", "", "https://i.gtimg.cn/club/item/parcel/client_wording.json", "EmoticonWordingVersion", "wording_json");
-    e = new bbnu("WebviewCrashReport.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vip_crash_report/WebviewCrashReport.json", "WebviewCrashJSONVersion", "WebviewCrashReport.json");
-    f = new bbnu("Qutu_xydata.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipQutu_release_zip/xydata.json", "QutuXYDataJsonVersion", "xydata.json");
-    g = new bbnu("iRedPacket_v2.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/xydata.mobile.v1.json", "vipRedPacketData_json_v2", "vipRedPacketData_json_v2");
-    h = new bbnu("UrlIntercept.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api/android.json", "UrlIntercept_json", "UrlIntercept_json");
-    i = new bbnu("font_info.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data/version.json", "FontInfoList_json", "FontInfoList_json");
-    jdField_a_of_type_ArrayOfBbnu = new bbnu[] { jdField_a_of_type_Bbnu, c, d };
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/xydata";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Bbwf = new bbnr();
-  }
-  
-  public static int a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("clubContentVersion", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "--getJsonVersion ,key=" + paramString + ",version:" + paramContext.getInt(paramString, 0));
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      throw new IllegalArgumentException("Bitmap is not valid");
     }
-    return paramContext.getInt(paramString, 0);
+    this.jdField_c_of_type_JavaUtilList.add(bbno.a);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.a);
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.b);
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.c);
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.d);
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.e);
+    this.jdField_b_of_type_JavaUtilList.add(bbnu.f);
   }
   
-  public static JSONObject a(QQAppInterface paramQQAppInterface, bbnu parambbnu, boolean paramBoolean)
+  private Bitmap a(Bitmap paramBitmap)
   {
-    Object localObject = paramQQAppInterface.getApplication().getApplicationContext();
-    String str = parambbnu.jdField_a_of_type_JavaLangString;
-    localObject = new File(((Context)localObject).getFilesDir(), str);
-    if (((File)localObject).exists()) {
-      try
-      {
-        paramQQAppInterface = bbdj.a((File)localObject, -1);
-        if (paramQQAppInterface == null) {}
+    double d2 = -1.0D;
+    int i;
+    double d1;
+    if (this.jdField_b_of_type_Int > 0)
+    {
+      i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      d1 = d2;
+      if (i > this.jdField_b_of_type_Int) {
+        d1 = Math.sqrt(this.jdField_b_of_type_Int / i);
       }
-      catch (Throwable paramQQAppInterface)
+    }
+    while (d1 <= 0.0D)
+    {
+      return paramBitmap;
+      d1 = d2;
+      if (this.jdField_c_of_type_Int > 0)
       {
-        for (;;)
-        {
-          try
-          {
-            paramQQAppInterface = new JSONObject(paramQQAppInterface);
-            return paramQQAppInterface;
-          }
-          catch (Throwable paramQQAppInterface)
-          {
-            QLog.e("ClubContentJsonTask", 2, "getJsonFromLocalFile new Json err,json_name:" + str + ", msg:" + paramQQAppInterface.getMessage());
-            ((File)localObject).delete();
-          }
-          paramQQAppInterface = paramQQAppInterface;
-          QLog.e("ClubContentJsonTask", 2, "getJsonFromLocalFile err,json_name:" + str + ", msg:" + paramQQAppInterface.getMessage());
-          paramQQAppInterface = null;
+        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        d1 = d2;
+        if (i > this.jdField_c_of_type_Int) {
+          d1 = this.jdField_c_of_type_Int / i;
+        }
+      }
+    }
+    return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+  }
+  
+  private int[] a(Bitmap paramBitmap)
+  {
+    int i = 0;
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[j * k];
+    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
+    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+      return arrayOfInt;
+    }
+    k = this.jdField_a_of_type_AndroidGraphicsRect.width();
+    int m = this.jdField_a_of_type_AndroidGraphicsRect.height();
+    paramBitmap = new int[k * m];
+    while (i < m)
+    {
+      System.arraycopy(arrayOfInt, (this.jdField_a_of_type_AndroidGraphicsRect.top + i) * j + this.jdField_a_of_type_AndroidGraphicsRect.left, paramBitmap, i * k, k);
+      i += 1;
+    }
+    return paramBitmap;
+  }
+  
+  @NonNull
+  public bbno a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      Bitmap localBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (0 != 0) {
+        throw new NullPointerException();
+      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+      if ((localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localObject != null))
+      {
+        double d = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        ((Rect)localObject).left = ((int)Math.floor(((Rect)localObject).left * d));
+        ((Rect)localObject).top = ((int)Math.floor(((Rect)localObject).top * d));
+        ((Rect)localObject).right = Math.min((int)Math.ceil(((Rect)localObject).right * d), localBitmap.getWidth());
+        ((Rect)localObject).bottom = Math.min((int)Math.ceil(d * ((Rect)localObject).bottom), localBitmap.getHeight());
+      }
+      int[] arrayOfInt = a(localBitmap);
+      int i = this.jdField_a_of_type_Int;
+      if (this.jdField_c_of_type_JavaUtilList.isEmpty())
+      {
+        localObject = null;
+        localObject = new bbnj(arrayOfInt, i, (bbnr[])localObject);
+        if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+          localBitmap.recycle();
+        }
+        localObject = ((bbnj)localObject).a();
+        if (0 != 0) {
+          throw new NullPointerException();
         }
       }
     }
     for (;;)
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.w("ClubContentJsonTask", 2, "getJsonFromLocalFile not exist,json_name:" + str + " _ " + paramBoolean);
+      localObject = new bbno((List)localObject, this.jdField_b_of_type_JavaUtilList);
+      ((bbno)localObject).a();
+      if (0 != 0) {
+        throw new NullPointerException();
       }
-      if (paramBoolean) {
-        a(paramQQAppInterface, parambbnu);
+      return localObject;
+      localObject = (bbnr[])this.jdField_c_of_type_JavaUtilList.toArray(new bbnr[this.jdField_c_of_type_JavaUtilList.size()]);
+      break;
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        break label304;
       }
+      localObject = this.jdField_a_of_type_JavaUtilList;
     }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentJsonTask", 2, "setJsonVersion ,key=" + paramString + ",version:" + paramInt);
-    }
-    paramContext.getSharedPreferences("clubContentVersion", 0).edit().putInt(paramString, paramInt).commit();
-  }
-  
-  public static void a(AppInterface paramAppInterface, bbnu parambbnu, String paramString, File paramFile, Bundle paramBundle)
-  {
-    if (paramFile == null) {}
-    String str1;
-    do
-    {
-      return;
-      str1 = paramString;
-    } while ((paramString == null) && (parambbnu == null));
-    label427:
-    label435:
-    label441:
-    label444:
-    for (;;)
-    {
-      try
-      {
-        for (;;)
-        {
-          str1 = parambbnu.b;
-          if (parambbnu == null) {
-            break label427;
-          }
-          parambbnu = parambbnu.jdField_a_of_type_JavaLangString;
-          paramString = paramBundle.getString("method");
-          if (paramString != null) {
-            break label444;
-          }
-          paramString = "other";
-          String str2 = paramBundle.getString("ifromet");
-          if (str2 != null) {
-            break label441;
-          }
-          str2 = "false";
-          if (!paramBundle.containsKey("forceUpdate")) {
-            break label435;
-          }
-          bool = paramBundle.getBoolean("forceUpdate");
-          int j = paramBundle.getInt("version", 0);
-          String str3 = parambbnu + "_" + j;
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentJsonTask", 2, "club_downloadFile,method:" + paramString + ",key:" + parambbnu + ", server version:" + j + ",ifromet:" + str2);
-          }
-          if ((!bool) && (jdField_a_of_type_JavaUtilHashMap.containsKey(str3)) && (((Boolean)jdField_a_of_type_JavaUtilHashMap.get(str3)).booleanValue())) {
-            break;
-          }
-          jdField_a_of_type_JavaUtilHashMap.put(str3, Boolean.valueOf(true));
-          paramFile = new bbwg(str1, paramFile);
-          paramFile.n = true;
-          paramFile.jdField_a_of_type_JavaLangString = parambbnu;
-          ((bbwi)paramAppInterface.getManager(47)).a(1).a(paramFile, jdField_a_of_type_Bbwf, paramBundle);
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentJsonTask", 2, paramString + ",cdownloadFile url=" + str1);
-          }
-          try
-          {
-            paramString = new HashMap();
-            paramString.put("param_key", parambbnu);
-            paramString.put("param_ifromet", str2);
-            axrl.a(paramAppInterface.getApplication().getApplicationContext()).a(paramAppInterface.getAccount(), "VipClubContentJsonTaskLoad", true, 1L, 0L, paramString, "", false);
-          }
-          catch (Exception paramAppInterface) {}
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("ClubContentJsonTask", 2, "downloadFile, downloadFile error=" + paramAppInterface.toString());
-        break;
-      }
-      finally {}
-      parambbnu = paramFile.getName();
-      continue;
-      boolean bool = false;
-      continue;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface.getApplication().getApplicationContext();
-    int j = 0;
-    while (j < jdField_a_of_type_ArrayOfBbnu.length)
-    {
-      a(paramQQAppInterface, jdField_a_of_type_ArrayOfBbnu[j]);
-      j += 1;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bbnu parambbnu)
-  {
-    int j = 10;
-    int k = 0;
-    if ((paramQQAppInterface == null) || (parambbnu == null)) {}
-    do
-    {
-      return;
-      File localFile = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir(), parambbnu.jdField_a_of_type_JavaLangString);
-      if (!localFile.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentJsonTask", 2, "downloadIfNotExist, not exist: " + parambbnu.jdField_a_of_type_JavaLangString);
-        }
-        for (;;)
-        {
-          try
-          {
-            localObject = String.valueOf(NetConnInfoCenter.getServerTime());
-            if (((String)localObject).length() <= 10) {
-              continue;
-            }
-            localObject = ((String)localObject).substring(0, j);
-            j = k;
-            if (Long.parseLong((String)localObject) < 2147483647L) {
-              j = Integer.parseInt((String)localObject);
-            }
-          }
-          catch (Exception localException)
-          {
-            Object localObject;
-            QLog.e("ClubContentJsonTask", 1, "downloadIfNotExist, Integer.parseInt Err:" + localException.getMessage());
-            j = k;
-            continue;
-          }
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("version", j);
-          ((Bundle)localObject).putString("version_key", parambbnu.d);
-          ((Bundle)localObject).putString("method", "downloadIfNotExist");
-          ((Bundle)localObject).putString("ifromet", "null1");
-          a(paramQQAppInterface, parambbnu, anqu.a("VIP_emosm", parambbnu.b), localFile, (Bundle)localObject);
-          return;
-          j = ((String)localObject).length();
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ClubContentJsonTask", 2, "downloadIfNotExist, exists.");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bbnu parambbnu, int paramInt, boolean paramBoolean)
-  {
-    File localFile = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir(), parambbnu.jdField_a_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("version", paramInt);
-    localBundle.putString("version_key", parambbnu.d);
-    localBundle.putString("method", "updateJson");
-    localBundle.putString("ifromet", String.valueOf(paramBoolean));
-    a(paramQQAppInterface, parambbnu, null, localFile, localBundle);
-  }
-  
-  /* Error */
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc_w 454
-    //   4: iconst_0
-    //   5: aconst_null
-    //   6: invokestatic 460	com/tencent/mobileqq/vas/VasQuickUpdateManager:getJSONFromLocal	(Lmqq/app/AppRuntime;Ljava/lang/String;ZLcom/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker;)Lorg/json/JSONObject;
-    //   9: astore 6
-    //   11: aload 6
-    //   13: ifnonnull +4 -> 17
-    //   16: return
-    //   17: getstatic 465	ho:jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   20: iconst_0
-    //   21: invokevirtual 471	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   24: new 473	bbns
-    //   27: dup
-    //   28: invokespecial 474	bbns:<init>	()V
-    //   31: putstatic 476	bbnq:jdField_a_of_type_Bbns	Lbbns;
-    //   34: aload 6
-    //   36: ldc_w 478
-    //   39: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   42: istore_1
-    //   43: iload_1
-    //   44: ifeq +15 -> 59
-    //   47: aload_0
-    //   48: ldc_w 483
-    //   51: iload_1
-    //   52: invokestatic 486	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   55: invokestatic 491	bbrs:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;)Z
-    //   58: pop
-    //   59: aload 6
-    //   61: ldc_w 493
-    //   64: invokevirtual 496	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   67: ifeq +689 -> 756
-    //   70: aload 6
-    //   72: ldc_w 493
-    //   75: invokevirtual 500	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   78: astore 4
-    //   80: aload 4
-    //   82: ifnull +168 -> 250
-    //   85: aload 4
-    //   87: invokevirtual 503	org/json/JSONArray:length	()I
-    //   90: ifle +160 -> 250
-    //   93: iconst_0
-    //   94: istore_1
-    //   95: iload_1
-    //   96: aload 4
-    //   98: invokevirtual 503	org/json/JSONArray:length	()I
-    //   101: if_icmpge +149 -> 250
-    //   104: aload 4
-    //   106: iload_1
-    //   107: invokevirtual 506	org/json/JSONArray:get	(I)Ljava/lang/Object;
-    //   110: checkcast 219	org/json/JSONObject
-    //   113: astore 5
-    //   115: aload 5
-    //   117: ldc_w 508
-    //   120: invokevirtual 496	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   123: ifeq +639 -> 762
-    //   126: aload 5
-    //   128: ldc_w 508
-    //   131: invokevirtual 510	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   134: istore_2
-    //   135: goto +686 -> 821
-    //   138: aload 5
-    //   140: ldc_w 512
-    //   143: invokevirtual 496	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   146: ifeq +621 -> 767
-    //   149: aload 5
-    //   151: ldc_w 512
-    //   154: invokevirtual 513	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   157: astore 4
-    //   159: aload 5
-    //   161: ldc_w 515
-    //   164: invokevirtual 496	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   167: ifeq +666 -> 833
-    //   170: aload 5
-    //   172: ldc_w 515
-    //   175: invokevirtual 513	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   178: astore 5
-    //   180: getstatic 476	bbnq:jdField_a_of_type_Bbns	Lbbns;
-    //   183: aload 4
-    //   185: putfield 516	bbns:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   188: getstatic 476	bbnq:jdField_a_of_type_Bbns	Lbbns;
-    //   191: aload 5
-    //   193: putfield 517	bbns:b	Ljava/lang/String;
-    //   196: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   199: ifeq +51 -> 250
-    //   202: ldc 157
-    //   204: iconst_2
-    //   205: new 159	java/lang/StringBuilder
-    //   208: dup
-    //   209: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   212: ldc_w 519
-    //   215: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: iload_2
-    //   219: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   222: ldc_w 521
-    //   225: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: aload 4
-    //   230: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: ldc_w 523
-    //   236: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: aload 5
-    //   241: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   244: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   247: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   250: aload 6
-    //   252: ldc_w 525
-    //   255: invokevirtual 529	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   258: astore 4
-    //   260: aload 4
-    //   262: ifnull +274 -> 536
-    //   265: aload 4
-    //   267: ldc_w 531
-    //   270: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   273: iconst_1
-    //   274: if_icmpne +573 -> 847
-    //   277: iconst_1
-    //   278: istore_3
-    //   279: iload_3
-    //   280: putstatic 533	ho:jdField_e_of_type_Boolean	Z
-    //   283: getstatic 533	ho:jdField_e_of_type_Boolean	Z
-    //   286: ifeq +488 -> 774
-    //   289: aload 4
-    //   291: ldc_w 535
-    //   294: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   297: iconst_1
-    //   298: if_icmpne +554 -> 852
-    //   301: iconst_1
-    //   302: istore_3
-    //   303: iload_3
-    //   304: putstatic 537	ho:jdField_f_of_type_Boolean	Z
-    //   307: aload 4
-    //   309: ldc_w 539
-    //   312: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   315: d2f
-    //   316: putstatic 546	ho:a	F
-    //   319: aload 4
-    //   321: ldc_w 548
-    //   324: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   327: d2f
-    //   328: putstatic 550	ho:jdField_b_of_type_Float	F
-    //   331: aload 4
-    //   333: ldc_w 552
-    //   336: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   339: d2f
-    //   340: putstatic 554	ho:jdField_c_of_type_Float	F
-    //   343: aload 4
-    //   345: ldc_w 556
-    //   348: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   351: d2f
-    //   352: putstatic 558	ho:d	F
-    //   355: aload 4
-    //   357: ldc_w 560
-    //   360: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   363: d2f
-    //   364: putstatic 562	ho:jdField_e_of_type_Float	F
-    //   367: aload 4
-    //   369: ldc_w 564
-    //   372: invokevirtual 543	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   375: d2f
-    //   376: putstatic 566	ho:jdField_f_of_type_Float	F
-    //   379: aload 4
-    //   381: ldc_w 568
-    //   384: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   387: putstatic 571	ho:jdField_b_of_type_Int	I
-    //   390: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   393: ifeq +115 -> 508
-    //   396: ldc 157
-    //   398: iconst_2
-    //   399: new 159	java/lang/StringBuilder
-    //   402: dup
-    //   403: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   406: ldc_w 573
-    //   409: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: getstatic 537	ho:jdField_f_of_type_Boolean	Z
-    //   415: invokevirtual 243	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   418: ldc_w 575
-    //   421: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   424: getstatic 546	ho:a	F
-    //   427: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   430: ldc_w 580
-    //   433: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: getstatic 550	ho:jdField_b_of_type_Float	F
-    //   439: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   442: ldc_w 582
-    //   445: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: getstatic 554	ho:jdField_c_of_type_Float	F
-    //   451: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   454: ldc_w 584
-    //   457: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   460: getstatic 558	ho:d	F
-    //   463: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   466: ldc_w 586
-    //   469: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   472: getstatic 562	ho:jdField_e_of_type_Float	F
-    //   475: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   478: ldc_w 588
-    //   481: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: getstatic 566	ho:jdField_f_of_type_Float	F
-    //   487: invokevirtual 578	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   490: ldc_w 590
-    //   493: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: getstatic 571	ho:jdField_b_of_type_Int	I
-    //   499: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   502: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   508: getstatic 465	ho:jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   511: iconst_1
-    //   512: invokevirtual 471	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   515: getstatic 595	aebz:a	Lcom/tencent/util/LRULinkedHashMap;
-    //   518: astore 4
-    //   520: aload 4
-    //   522: monitorenter
-    //   523: getstatic 595	aebz:a	Lcom/tencent/util/LRULinkedHashMap;
-    //   526: invokevirtual 600	com/tencent/util/LRULinkedHashMap:clear	()V
-    //   529: aload 4
-    //   531: monitorexit
-    //   532: aload_0
-    //   533: invokestatic 605	bbkv:a	(Lcom/tencent/common/app/AppInterface;)V
-    //   536: aload 6
-    //   538: ldc_w 607
-    //   541: invokevirtual 529	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   544: astore_0
-    //   545: aload_0
-    //   546: ifnull +252 -> 798
-    //   549: aload_0
-    //   550: ldc_w 609
-    //   553: iconst_0
-    //   554: invokevirtual 611	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   557: iconst_1
-    //   558: if_icmpne +299 -> 857
-    //   561: iconst_1
-    //   562: istore_3
-    //   563: iload_3
-    //   564: putstatic 615	com/tencent/mobileqq/app/SignatureManager:a	Z
-    //   567: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   570: ifeq +32 -> 602
-    //   573: ldc_w 617
-    //   576: iconst_2
-    //   577: new 159	java/lang/StringBuilder
-    //   580: dup
-    //   581: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   584: ldc_w 619
-    //   587: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   590: getstatic 615	com/tencent/mobileqq/app/SignatureManager:a	Z
-    //   593: invokevirtual 243	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   596: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   599: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   602: aload 6
-    //   604: ldc_w 621
-    //   607: invokevirtual 529	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   610: astore_0
-    //   611: aload_0
-    //   612: ifnull +16 -> 628
-    //   615: aload_0
-    //   616: ldc_w 623
-    //   619: sipush 300
-    //   622: invokevirtual 611	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   625: putstatic 627	aqxh:jdField_a_of_type_Int	I
-    //   628: aload 6
-    //   630: ldc_w 629
-    //   633: invokevirtual 529	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   636: astore_0
-    //   637: aload_0
-    //   638: ifnull +68 -> 706
-    //   641: aload_0
-    //   642: ldc_w 631
-    //   645: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   648: istore_1
-    //   649: iload_1
-    //   650: ifle +19 -> 669
-    //   653: new 633	java/util/Random
-    //   656: dup
-    //   657: invokespecial 634	java/util/Random:<init>	()V
-    //   660: iload_1
-    //   661: invokevirtual 638	java/util/Random:nextInt	(I)I
-    //   664: iconst_1
-    //   665: iadd
-    //   666: putstatic 641	hv:jdField_a_of_type_Int	I
-    //   669: getstatic 644	hv:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   672: aload_0
-    //   673: ldc_w 646
-    //   676: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   679: invokevirtual 651	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   682: getstatic 653	hv:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   685: astore 4
-    //   687: aload_0
-    //   688: ldc_w 655
-    //   691: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   694: iconst_1
-    //   695: if_icmpne +116 -> 811
-    //   698: iconst_1
-    //   699: istore_3
-    //   700: aload 4
-    //   702: iload_3
-    //   703: invokevirtual 471	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   706: aload 6
-    //   708: ldc_w 657
-    //   711: invokevirtual 529	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   714: astore_0
-    //   715: aload_0
-    //   716: ifnull -700 -> 16
-    //   719: getstatic 660	bboe:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   722: astore 4
-    //   724: aload_0
-    //   725: ldc_w 531
-    //   728: invokevirtual 481	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   731: iconst_1
-    //   732: if_icmpne +84 -> 816
-    //   735: iconst_1
-    //   736: istore_3
-    //   737: aload 4
-    //   739: iload_3
-    //   740: invokevirtual 471	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   743: return
-    //   744: astore_0
-    //   745: ldc 157
-    //   747: iconst_1
-    //   748: ldc_w 662
-    //   751: aload_0
-    //   752: invokestatic 665	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   755: return
-    //   756: aconst_null
-    //   757: astore 4
-    //   759: goto -679 -> 80
-    //   762: iconst_m1
-    //   763: istore_2
-    //   764: goto +57 -> 821
-    //   767: ldc 44
-    //   769: astore 4
-    //   771: goto -612 -> 159
-    //   774: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   777: ifeq -269 -> 508
-    //   780: ldc 157
-    //   782: iconst_2
-    //   783: ldc_w 667
-    //   786: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   789: goto -281 -> 508
-    //   792: astore_0
-    //   793: aload 4
-    //   795: monitorexit
-    //   796: aload_0
-    //   797: athrow
-    //   798: ldc_w 669
-    //   801: iconst_1
-    //   802: ldc_w 671
-    //   805: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   808: goto -206 -> 602
-    //   811: iconst_0
-    //   812: istore_3
-    //   813: goto -113 -> 700
-    //   816: iconst_0
-    //   817: istore_3
-    //   818: goto -81 -> 737
-    //   821: iload_2
-    //   822: ifeq -684 -> 138
-    //   825: iload_2
-    //   826: iconst_2
-    //   827: if_icmpne +13 -> 840
-    //   830: goto -692 -> 138
-    //   833: ldc 44
-    //   835: astore 5
-    //   837: goto -657 -> 180
-    //   840: iload_1
-    //   841: iconst_1
-    //   842: iadd
-    //   843: istore_1
-    //   844: goto -749 -> 95
-    //   847: iconst_0
-    //   848: istore_3
-    //   849: goto -570 -> 279
-    //   852: iconst_0
-    //   853: istore_3
-    //   854: goto -551 -> 303
-    //   857: iconst_0
-    //   858: istore_3
-    //   859: goto -296 -> 563
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	862	0	paramQQAppInterface	QQAppInterface
-    //   42	802	1	j	int
-    //   134	694	2	k	int
-    //   278	581	3	bool	boolean
-    //   113	723	5	localObject2	Object
-    //   9	698	6	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   24	43	744	java/lang/Exception
-    //   47	59	744	java/lang/Exception
-    //   59	80	744	java/lang/Exception
-    //   85	93	744	java/lang/Exception
-    //   95	135	744	java/lang/Exception
-    //   138	159	744	java/lang/Exception
-    //   159	180	744	java/lang/Exception
-    //   180	250	744	java/lang/Exception
-    //   250	260	744	java/lang/Exception
-    //   265	277	744	java/lang/Exception
-    //   279	301	744	java/lang/Exception
-    //   303	508	744	java/lang/Exception
-    //   508	523	744	java/lang/Exception
-    //   532	536	744	java/lang/Exception
-    //   536	545	744	java/lang/Exception
-    //   549	561	744	java/lang/Exception
-    //   563	602	744	java/lang/Exception
-    //   602	611	744	java/lang/Exception
-    //   615	628	744	java/lang/Exception
-    //   628	637	744	java/lang/Exception
-    //   641	649	744	java/lang/Exception
-    //   653	669	744	java/lang/Exception
-    //   669	698	744	java/lang/Exception
-    //   700	706	744	java/lang/Exception
-    //   706	715	744	java/lang/Exception
-    //   719	735	744	java/lang/Exception
-    //   737	743	744	java/lang/Exception
-    //   774	789	744	java/lang/Exception
-    //   796	798	744	java/lang/Exception
-    //   798	808	744	java/lang/Exception
-    //   523	532	792	finally
-    //   793	796	792	finally
+    label304:
+    throw new AssertionError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbnq
  * JD-Core Version:    0.7.0.1
  */

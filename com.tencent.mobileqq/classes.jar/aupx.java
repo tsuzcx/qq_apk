@@ -1,9 +1,9 @@
 public final class aupx
-  extends aupf
+  extends auph
 {
   protected int c()
   {
-    return 560;
+    return 510;
   }
 }
 

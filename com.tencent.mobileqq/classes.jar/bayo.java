@@ -1,20 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.HeadRequest;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bayo
-  implements Parcelable.Creator<HeadRequest>
+public class bayo
+  implements bayp
 {
-  public HeadRequest a(Parcel paramParcel)
+  public String a;
+  
+  bayo(bayj parambayj, bayh parambayh)
   {
-    HeadRequest localHeadRequest = new HeadRequest();
-    localHeadRequest.a(paramParcel);
-    return localHeadRequest;
+    if ((parambayh != null) && (parambayh.a != null)) {
+      this.jdField_a_of_type_JavaLangString = parambayh.a.jdField_a_of_type_JavaLangString;
+    }
   }
   
-  public HeadRequest[] a(int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    return new HeadRequest[paramInt];
+    if (paramBoolean2) {
+      this.jdField_a_of_type_Bayj.a(paramBoolean1, 113, paramString, this.jdField_a_of_type_Bayj.a);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
+      }
+      return;
+      this.jdField_a_of_type_Bayj.a(paramBoolean1, 113, paramString, null);
+    }
   }
 }
 

@@ -1,55 +1,59 @@
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import java.util.Calendar;
 
 public class asmq
-  implements amng
+  implements amne
 {
-  private asmq(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public asmq(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public int a()
+  public void a()
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
+    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
     {
-    default: 
-      return 0;
-    case 0: 
-      return MsgBackupDateFragment.c(this.a) - MsgBackupDateFragment.d(this.a) + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    if (MsgBackupDateFragment.b(this.a) == 1)
-    {
-      localCalendar.set(1, MsgBackupDateFragment.e(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.f(this.a));
-      localCalendar.set(5, 1);
-    }
-    for (;;)
-    {
-      return localCalendar.getActualMaximum(5);
-      localCalendar.set(1, MsgBackupDateFragment.g(this.a) + MsgBackupDateFragment.d(this.a));
-      localCalendar.set(2, MsgBackupDateFragment.h(this.a));
-      localCalendar.set(5, 1);
+      MsgBackupDateFragment.a(this.a).dismiss();
+      MsgBackupDateFragment.b(this.a);
+      MsgBackupDateFragment.a(this.a);
+      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
     }
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
     switch (paramInt1)
     {
-    default: 
-      return "";
-    case 0: 
-      return MsgBackupDateFragment.d(this.a) + paramInt2 + ajyc.a(2131706921);
-    case 1: 
-      return paramInt2 + 1 + ajyc.a(2131706904);
     }
-    return paramInt2 + 1 + ajyc.a(2131706920);
+    for (;;)
+    {
+      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
+      MsgBackupDateFragment.a(this.a);
+      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        MsgBackupDateFragment.a(this.a).a(2);
+      }
+      return;
+      if (MsgBackupDateFragment.b(this.a) == 1)
+      {
+        MsgBackupDateFragment.b(this.a, paramInt2);
+      }
+      else if (MsgBackupDateFragment.b(this.a) == 2)
+      {
+        MsgBackupDateFragment.c(this.a, paramInt2);
+        continue;
+        if (MsgBackupDateFragment.b(this.a) == 1)
+        {
+          MsgBackupDateFragment.d(this.a, paramInt2);
+        }
+        else if (MsgBackupDateFragment.b(this.a) == 2)
+        {
+          MsgBackupDateFragment.e(this.a, paramInt2);
+          continue;
+          if (MsgBackupDateFragment.b(this.a) == 1) {
+            MsgBackupDateFragment.f(this.a, paramInt2);
+          } else if (MsgBackupDateFragment.b(this.a) == 2) {
+            MsgBackupDateFragment.g(this.a, paramInt2);
+          }
+        }
+      }
+    }
   }
 }
 

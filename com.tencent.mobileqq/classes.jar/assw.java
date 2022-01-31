@@ -1,20 +1,22 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class assw
-  extends RecyclerView.ItemDecoration
+  extends akil
 {
-  private final int jdField_a_of_type_Int = actn.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  public assw(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  private assw(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    paramRect.top = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
+    }
+    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(4);
+    }
   }
 }
 

@@ -1,10 +1,20 @@
-public abstract interface bkaa
+import android.graphics.Bitmap;
+
+public class bkaa
 {
-  public abstract void a(int paramInt);
+  public final int c;
+  public final Bitmap c;
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  public bkaa(int paramInt, Bitmap paramBitmap)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
   
-  public abstract boolean a(bjzx parambjzx);
+  public String toString()
+  {
+    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+  }
 }
 
 

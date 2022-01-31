@@ -1,100 +1,94 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
-import android.os.RemoteException;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
 
 class aldh
-  implements ServiceConnection
+  extends aleo
 {
-  aldh(aldg paramaldg) {}
+  aldh(aldf paramaldf) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    this.a.jdField_a_of_type_Alec = aled.a(paramIBinder);
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Alec);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
     }
-    if (this.a.jdField_a_of_type_Alec != null) {}
-    try
+    if (aldf.a(this.a) == null)
     {
-      this.a.jdField_a_of_type_Alec.a(this.a.jdField_a_of_type_Aleo);
-      this.a.jdField_a_of_type_Alec.a(this.a.jdField_a_of_type_Alef);
-      this.a.jdField_a_of_type_Alec.a(aldg.a(this.a));
-      this.a.jdField_a_of_type_Alec.a(this.a.jdField_a_of_type_Alel);
-      if (aldg.a(this.a) != -1) {
-        this.a.jdField_a_of_type_Alec.c(aldg.a(this.a));
-      }
-      if (aldg.a(this.a) != null) {
-        aldg.a(this.a).sendEmptyMessage(0);
-      }
-      if (this.a.c)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (aldg.a(this.a) != null))
-        {
-          paramComponentName = Message.obtain();
-          paramComponentName.what = 1;
-          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-          aldg.a(this.a).sendMessage(paramComponentName);
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (aldg.a(this.a) != null))
-      {
-        paramComponentName = Message.obtain();
-        paramComponentName.what = 2;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-        aldg.a(this.a).sendMessage(paramComponentName);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (aldg.a(this.a) != null))
-      {
-        paramComponentName = Message.obtain();
-        paramComponentName.what = 9;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-        aldg.a(this.a).sendMessage(paramComponentName);
-      }
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
       return;
     }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
-        }
-      }
-    }
+    aldf.a(this.a).sendMessage(aldf.a(this.a).obtainMessage(3));
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Alec != null) {}
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
+    }
+    if (aldf.a(this.a) == null)
     {
-      this.a.jdField_a_of_type_Alec.b(this.a.jdField_a_of_type_Aleo);
-      this.a.jdField_a_of_type_Alec.b(this.a.jdField_a_of_type_Alef);
-      this.a.jdField_a_of_type_Alec.b(aldg.a(this.a));
-      this.a.jdField_a_of_type_Alec.b(this.a.jdField_a_of_type_Alel);
-      this.a.jdField_a_of_type_Alec = null;
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
       return;
     }
-    catch (RemoteException paramComponentName)
+    aldf.a(this.a).sendMessage(aldf.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
-        }
+      long l = 100L * paramLong1 / paramLong2;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
+      }
+      if (aldf.a(this.a) == null) {
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
       }
     }
+    else
+    {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.arg1 = ((int)paramLong1);
+    localMessage.arg2 = ((int)paramLong2);
+    aldf.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
+    }
+    if (aldf.a(this.a) == null) {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
+    }
+    do
+    {
+      return;
+      if (paramArConfigInfo != null)
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = paramArConfigInfo;
+        aldf.a(this.a).sendMessage(localMessage);
+      }
+      if (paramArEffectConfig != null)
+      {
+        paramArConfigInfo = Message.obtain();
+        paramArConfigInfo.what = 2;
+        paramArConfigInfo.obj = paramArEffectConfig;
+        aldf.a(this.a).sendMessage(paramArConfigInfo);
+      }
+    } while (paramARCommonConfigInfo == null);
+    paramArConfigInfo = Message.obtain();
+    paramArConfigInfo.what = 9;
+    paramArConfigInfo.obj = paramARCommonConfigInfo;
+    aldf.a(this.a).sendMessage(paramArConfigInfo);
   }
 }
 

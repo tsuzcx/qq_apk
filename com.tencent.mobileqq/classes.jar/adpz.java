@@ -1,22 +1,82 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build.VERSION;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adpz
-  implements bfoq
+  extends adqw
 {
-  public adpz(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public adpz(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    switch (paramInt)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected actn a()
+  {
+    return new adqb(this);
+  }
+  
+  @TargetApi(16)
+  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
+  {
+    paramactn = (adqb)paramactn;
+    paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558781, null);
+    paramactn.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367153));
+    paramactn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375036));
+    paramactn.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371080));
+    paramactn.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371162));
+    paramactn.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    int i;
+    if ((paramMessageRecord instanceof MessageForFoldMsgGrayTips))
     {
+      paramMessageRecord = (MessageForFoldMsgGrayTips)paramMessageRecord;
+      paramactn.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.getShowMsgContent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext));
+      paramactn.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(0.0F, 1.0F);
+      paramLinearLayout = paramactn.jdField_b_of_type_AndroidWidgetImageView;
+      if (!paramMessageRecord.isOpen) {
+        break label301;
+      }
+      i = 8;
+      paramLinearLayout.setVisibility(i);
+      if (paramMessageRecord.isOpen)
+      {
+        paramMessageRecord = paramactn.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+        if ((paramMessageRecord instanceof ViewGroup.MarginLayoutParams))
+        {
+          paramMessageRecord = (ViewGroup.MarginLayoutParams)paramMessageRecord;
+          if (paramMessageRecord.rightMargin != actj.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) {
+            paramMessageRecord.rightMargin = actj.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          }
+        }
+      }
+      paramMessageRecord = ((agvx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125)).a("StatusIcon_HongBaoIcon", 2130846381);
+      if (Build.VERSION.SDK_INT >= 16) {
+        break label307;
+      }
+      paramactn.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      paramactn.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new adqa(this));
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BE", "0X80064BE", 0, 0, "", "", "", "");
+      return paramView;
+      label301:
+      i = 0;
+      break;
+      label307:
+      paramactn.jdField_a_of_type_AndroidWidgetImageView.setBackground(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
     }
   }
 }

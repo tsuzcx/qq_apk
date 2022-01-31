@@ -1,18 +1,18 @@
 package com.tencent.biz.subscribe.comment;
 
 import com.tribe.async.dispatch.Dispatcher;
-import ste;
-import wnd;
-import wnl;
+import stb;
+import wna;
+import wni;
 
 public class CommentPresenter$14
   implements Runnable
 {
-  public CommentPresenter$14(wnl paramwnl) {}
+  public CommentPresenter$14(wni paramwni) {}
   
   public void run()
   {
-    ste.a().dispatch(new wnd(1, new Object[0]));
+    stb.a().dispatch(new wna(1, new Object[0]));
   }
 }
 

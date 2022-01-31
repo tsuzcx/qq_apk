@@ -1,40 +1,38 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class poo
-  extends VafContext
+class poo
+  implements URLDrawable.URLDrawableListener
 {
-  private static void a()
-  {
-    DrawableUtil.setDrawableHelper(new pop());
-  }
+  int jdField_a_of_type_Int = 0;
   
-  private void b()
-  {
-    LogUtil.setProteusLog(new pjt());
-  }
+  poo(pom parampom, String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack) {}
   
-  private void c() {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void setContext(Context paramContext)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.setContext(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f2 = ajwe.a() / 16.0F;
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 1.0F;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    if (i < 3) {
+      paramURLDrawable.restartDownload();
     }
-    Utils.init(paramContext.density / f1, paramContext.widthPixels);
-    a();
-    b();
-    c();
-    rqm.a();
+    for (;;)
+    {
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, paramURLDrawable);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onLoadSuccessed :" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, paramURLDrawable);
   }
 }
 

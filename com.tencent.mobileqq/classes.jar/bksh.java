@@ -1,35 +1,8 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
-
-public class bksh
+public abstract interface bksh
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (bksg.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        bksg.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          bksg.b = false;
-        }
-        return localByteBuffer2;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
-    }
-  }
+  public abstract void invalidate();
+  
+  public abstract void postInvalidate();
 }
 
 

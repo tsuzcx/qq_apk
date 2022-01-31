@@ -1,14 +1,26 @@
-import android.webkit.ValueCallback;
-import com.tencent.tissue.v8rt.engine.Callback;
-
-class bfcy
-  implements Callback
+public class bfcy
 {
-  bfcy(bfcw parambfcw, ValueCallback paramValueCallback) {}
+  public int a;
+  public int b;
   
-  public void onFinish(Object paramObject)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidWebkitValueCallback.onReceiveValue(null);
+    return this.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

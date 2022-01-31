@@ -1,19 +1,16 @@
-import android.widget.Button;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class agne
-  implements aptu
+  implements DialogInterface.OnClickListener
 {
   public agne(PhotoListActivity paramPhotoListActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    this.a.c.setClickable(true);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 

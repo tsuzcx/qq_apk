@@ -1,30 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ayxf
-  implements EIPClientConnectListener
+public class ayxf
 {
-  ayxf(ayxe paramayxe) {}
+  public String a;
+  public ArrayList<ayxk> a;
   
-  public void connectFailed()
+  public ayxf(String paramString, ArrayList<ayxk> paramArrayList)
   {
-    ayxe.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectFailed");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  public static String a(HashMap<String, ayxf> paramHashMap)
   {
-    if (paramEIPCConnection != null) {
-      ayxe.a(this.a, paramEIPCConnection.procName);
+    if (paramHashMap == null) {
+      return null;
     }
-    ayxe.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectSuccess");
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramHashMap = paramHashMap.values().iterator();
+      while (paramHashMap.hasNext())
+      {
+        ayxf localayxf = (ayxf)paramHashMap.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("n", localayxf.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("l", ayxk.a(localayxf.jdField_a_of_type_JavaUtilArrayList));
+        localJSONArray.put(localJSONObject);
+      }
+      paramHashMap = localJSONArray.toString();
     }
-    ayxe.a(this.a);
+    catch (Exception paramHashMap)
+    {
+      paramHashMap.printStackTrace();
+      return null;
+    }
+    return paramHashMap;
+  }
+  
+  public static HashMap<String, ayxf> a(String paramString)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      JSONArray localJSONArray = new JSONArray(paramString);
+      int i = 0;
+      for (;;)
+      {
+        paramString = localHashMap;
+        if (i >= localJSONArray.length()) {
+          break;
+        }
+        paramString = localJSONArray.getJSONObject(i);
+        String str = paramString.getString("n");
+        localHashMap.put(str, new ayxf(str, ayxk.a(paramString.getString("l"))));
+        i += 1;
+      }
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = null;
+    }
   }
 }
 

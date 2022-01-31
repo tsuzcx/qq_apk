@@ -1,13 +1,13 @@
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
+
 class bfdb
-  implements besd
+  implements bfcf
 {
-  bfdb(bfcw parambfcw) {}
+  bfdb(bfda parambfda, PageWebview paramPageWebview) {}
   
-  public void a(int paramInt, String paramString, besc parambesc)
+  public void a(int paramInt)
   {
-    if ((paramInt == 0) && (parambesc != null)) {
-      this.a.a(parambesc.b, parambesc.h);
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePagePageWebview.c = paramInt;
   }
 }
 

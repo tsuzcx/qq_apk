@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.theme.diy;
 
-import asko;
-import aymh;
-import aymt;
+import askq;
+import aymj;
+import aymv;
 import org.json.JSONObject;
 
 class ThemeDiyModule$1
-  implements asko<aymh>
+  implements askq<aymj>
 {
   ThemeDiyModule$1(ThemeDiyModule paramThemeDiyModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void postQuery(aymh paramaymh)
+  public void postQuery(aymj paramaymj)
   {
-    if ((paramaymh != null) && (paramaymh.b())) {
+    if ((paramaymj != null) && (paramaymj.b())) {
       if (ThemeDiyModule.access$000(this.this$0) != null) {
         ThemeDiyModule.access$000(this.this$0).diyThemeSetup(this.val$styleObj, this.val$callbackId);
       }

@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agkl
-  implements View.OnClickListener
+  extends aumg
 {
-  public agkl(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public agkl(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a(false);
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
     }
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
   }
 }
 

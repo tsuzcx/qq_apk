@@ -2,17 +2,17 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.Context;
 import android.widget.TextView;
-import aput;
-import apvk;
+import apuv;
+import apvm;
 
 public final class QFileUtils$2
   implements Runnable
 {
-  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, aput paramaput) {}
+  public QFileUtils$2(Context paramContext, TextView paramTextView, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, apuv paramapuv) {}
   
   public void run()
   {
-    apvk.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aput);
+    apvm.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Apuv);
   }
 }
 

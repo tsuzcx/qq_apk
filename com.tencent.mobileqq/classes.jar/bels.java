@@ -1,72 +1,19 @@
-import com.tencent.qqmini.sdk.core.utils.thread.NioSelectorThread.1;
-import java.io.IOException;
-import java.nio.channels.SelectableChannel;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bels
+class bels
+  extends BroadcastReceiver
 {
-  private static bels jdField_a_of_type_Bels;
-  private final Selector jdField_a_of_type_JavaNioChannelsSelector = Selector.open();
-  private volatile boolean jdField_a_of_type_Boolean;
+  bels(belr parambelr) {}
   
-  private bels()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    new Thread(new NioSelectorThread.1(this), "NioThread").start();
-  }
-  
-  public static bels a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bels == null) {
-        jdField_a_of_type_Bels = new bels();
-      }
-      return jdField_a_of_type_Bels;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_JavaNioChannelsSelector.isOpen()) {
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaNioChannelsSelector.select();
-        Iterator localIterator = this.jdField_a_of_type_JavaNioChannelsSelector.selectedKeys().iterator();
-        while (localIterator.hasNext())
-        {
-          SelectionKey localSelectionKey = (SelectionKey)localIterator.next();
-          if (((belt)localSelectionKey.attachment()).handle(localSelectionKey)) {
-            localIterator.remove();
-          }
-        }
-        if (!this.jdField_a_of_type_Boolean) {}
-      }
-      catch (IOException localIOException) {}
-    }
-    for (;;) {}
-  }
-  
-  public void a(SelectableChannel paramSelectableChannel, int paramInt, belt parambelt)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaNioChannelsSelector.wakeup();
-      paramSelectableChannel.register(this.jdField_a_of_type_JavaNioChannelsSelector, paramInt, parambelt);
+    if (bely.a(paramIntent.getAction())) {}
+    while (belr.a(this.a) == null) {
       return;
     }
-    finally
-    {
-      this.jdField_a_of_type_Boolean = false;
-    }
+    belr.a(this.a).a(paramContext, paramIntent);
   }
 }
 

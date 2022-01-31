@@ -1,16 +1,21 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import java.util.ArrayList;
 
 public class abxr
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  protected void a() {}
+  public abxr(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 10000) {
-      a();
-    }
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramView.stDeviceItemDes);
+    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
   }
 }
 

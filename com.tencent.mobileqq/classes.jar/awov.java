@@ -1,45 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pb.unify.search.UnifySearchCommon.ResultItem;
 import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awov
-  extends awop
-  implements View.OnClickListener
+  extends awor
 {
-  public static final String a;
+  public double a;
   public int a;
-  public JSONObject a;
+  public CharSequence a;
+  public String a;
+  public List<awok> a;
+  public double b;
+  public int b;
+  public CharSequence b;
   public String b;
+  public boolean b;
+  public CharSequence c;
+  public List<String> c;
+  public boolean c;
   public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  static
+  public awov(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = awov.class.getSimpleName();
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  protected awov(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
+  public awov(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
-    b(paramJSONObject);
-  }
-  
-  protected awov(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
-    b(paramJSONObject);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
   public int a(int paramInt)
@@ -53,43 +48,86 @@ public class awov
     return i;
   }
   
-  public void a(View paramView)
+  public void a(String paramString)
   {
-    awiv localawiv;
-    JSONObject localJSONObject;
-    if (awiu.b.containsKey(this))
+    boolean bool2 = true;
+    int n = 0;
+    for (;;)
     {
-      localawiv = (awiv)awiu.b.get(this);
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("project", awso.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localawiv.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      localJSONObject.put("extra_info", this.b);
-      localJSONObject.put("tepl", this.f);
-      awso.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(this.jdField_a_of_type_Long + "").obj2(this.j).ver1(this.g).ver2(awso.a(this.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "e = " + localJSONException);
+        paramString = new JSONObject(paramString);
+        this.i = paramString.optString("leftImageURL");
+        this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+        this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_JavaLangCharSequence = awwa.a(paramString.optString("headText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
+        this.jdField_b_of_type_JavaLangCharSequence = awwa.a(paramString.optString("descLineText"));
+        this.jdField_c_of_type_JavaLangCharSequence = awwa.a(paramString.optString("firstLineText"));
+        JSONArray localJSONArray = paramString.optJSONArray("imageList");
+        int i;
+        Object localObject;
+        if (localJSONArray != null)
+        {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
+          i = 0;
+          if (i < localJSONArray.length())
+          {
+            localObject = localJSONArray.optJSONObject(i);
+            localObject = new awok(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
+            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            i += 1;
+            continue;
+          }
+        }
+        this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
+        this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
+        this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
+        if (paramString.optInt("topNeedHigherMargin", 0) == 1)
+        {
+          bool1 = true;
+          this.jdField_b_of_type_Boolean = bool1;
+          if (paramString.optInt("needCornerRadius", 0) != 1) {
+            break label394;
+          }
+          bool1 = bool2;
+          this.jdField_c_of_type_Boolean = bool1;
+          localJSONArray = paramString.optJSONArray("dynamicLineImageList");
+          if (localJSONArray != null)
+          {
+            this.jdField_c_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
+            i = n;
+            if (i < localJSONArray.length())
+            {
+              localObject = localJSONArray.optJSONObject(i).optString("url");
+              this.jdField_c_of_type_JavaUtilList.add(localObject);
+              i += 1;
+              continue;
+            }
+          }
+          this.jdField_b_of_type_JavaLangString = paramString.optString("dynamicLineLeftText");
+          this.j = paramString.optString("dynamicLineZanIconUrl");
+          this.k = paramString.optString("dynamicLineZanText");
+          this.l = paramString.optString("dynamicLineCommentIconUrl");
+          this.m = paramString.optString("dynamicLineCommentText");
+          return;
+        }
       }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      boolean bool1 = false;
+      continue;
+      label394:
+      bool1 = false;
     }
   }
   
-  public void a(awxb paramawxb) {}
-  
-  public void b(JSONObject paramJSONObject) {}
-  
-  public void onClick(View paramView)
+  public boolean b()
   {
-    a(paramView);
+    return super.b();
   }
 }
 

@@ -1,71 +1,62 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_COMM.COMM.Entry;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 public class beyy
-  extends bfad
 {
-  private MiniAppMidasPay.StMiniCheckOfferIdReq a = new MiniAppMidasPay.StMiniCheckOfferIdReq();
-  
-  public beyy(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  private static List<COMM.Entry> a(MiniAppInfo paramMiniAppInfo)
   {
-    this.a.appId.set(paramString1);
-    this.a.offerId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StMiniCheckOfferIdRsp localStMiniCheckOfferIdRsp = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
-    try
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(beze.a("platform", "Android"));
+    localArrayList.add(beze.a("uin", String.valueOf(beut.a().a())));
+    if (paramMiniAppInfo != null)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStMiniCheckOfferIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStMiniCheckOfferIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("result", localStMiniCheckOfferIdRsp.result.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        paramArrayOfByte.put("ext", localStMiniCheckOfferIdRsp.extInfo);
-        paramArrayOfByte.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
-        paramArrayOfByte.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
-        return paramArrayOfByte;
+      localArrayList.add(beze.a("appid", paramMiniAppInfo.appId));
+      localArrayList.add(beze.a("appname", paramMiniAppInfo.name));
+    }
+    return localArrayList;
+  }
+  
+  private static List<COMM.Entry> a(JSONObject paramJSONObject)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONObject != null)
+    {
+      localArrayList.add(beze.a("pos_id", String.valueOf(paramJSONObject.optInt("pos_id"))));
+      localArrayList.add(beze.a("opt_type", String.valueOf(paramJSONObject.optInt("opt_type"))));
+      localArrayList.add(beze.a("activ_web", paramJSONObject.optString("activ_web")));
+    }
+    return localArrayList;
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, JSONObject paramJSONObject)
+  {
+    StringBuilder localStringBuilder;
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
+    {
+      localStringBuilder = new StringBuilder().append("report mobile game ad with args: ");
+      if (paramJSONObject == null) {
+        break label111;
       }
-      besl.a("CheckOfferIdRequest", "onResponse fail.rsp = null");
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+    label111:
+    for (Object localObject = paramJSONObject.toString();; localObject = "empty")
     {
-      besl.a("CheckOfferIdRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("MiniProgramLpReportDC04682", (String)localObject);
+      localObject = new ArrayList();
+      ((List)localObject).addAll(a(paramMiniAppInfo));
+      ((List)localObject).addAll(a(paramJSONObject));
+      if (!bfhk.a()) {
+        ((List)localObject).addAll(beze.a());
+      }
+      paramMiniAppInfo = beze.a(7, (List)localObject, null);
+      bezf.a().a(paramMiniAppInfo);
+      return;
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "MiniCheckOfferId";
   }
 }
 

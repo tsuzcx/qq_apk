@@ -1,204 +1,87 @@
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.os.Environment;
-import com.jakewharton.disklrucache.DiskLruCache;
-import com.jakewharton.disklrucache.DiskLruCache.Editor;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class lbk
 {
-  private final DiskLruCache a;
+  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public lbk(Context paramContext, int paramInt, long paramLong)
+  @TargetApi(8)
+  public static File a(Context paramContext)
   {
-    paramContext = a(paramContext);
-    if (!paramContext.exists()) {
-      paramContext.mkdirs();
+    if (Build.VERSION.SDK_INT >= 8) {
+      return paramContext.getExternalCacheDir();
     }
-    this.a = DiskLruCache.open(paramContext, paramInt, 1, paramLong);
-    a();
+    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
   }
   
-  private File a(Context paramContext)
+  public static String a(String paramString)
   {
-    String str = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" + paramContext.getPackageName() + "/cache/";
-    Object localObject = lbp.a(paramContext);
-    if ((("mounted".equals(Environment.getExternalStorageState())) || (!lbp.a())) && (localObject != null)) {
-      paramContext = ((File)localObject).getPath();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Translator", 2, "[TransDiskCache] getDiskCacheDir:" + paramContext);
-      }
-      return new File(paramContext + File.separator + "TransDiskCache_simsun_qqi");
-      localObject = paramContext.getCacheDir().getPath();
-      if (localObject != null)
-      {
-        paramContext = (Context)localObject;
-        if (((String)localObject).length() > 0) {}
-      }
-      else
-      {
-        paramContext = str;
-      }
-    }
-  }
-  
-  /* Error */
-  private String b(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_1
-    //   4: invokestatic 115	lbp:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 32	lbk:a	Lcom/jakewharton/disklrucache/DiskLruCache;
-    //   12: aload_1
-    //   13: invokevirtual 119	com/jakewharton/disklrucache/DiskLruCache:get	(Ljava/lang/String;)Lcom/jakewharton/disklrucache/DiskLruCache$Snapshot;
-    //   16: astore_1
-    //   17: aload_1
-    //   18: ifnull +25 -> 43
-    //   21: aload_1
-    //   22: astore_2
-    //   23: aload_1
-    //   24: iconst_0
-    //   25: invokevirtual 125	com/jakewharton/disklrucache/DiskLruCache$Snapshot:getString	(I)Ljava/lang/String;
-    //   28: astore_3
-    //   29: aload_3
-    //   30: astore_2
-    //   31: aload_1
-    //   32: ifnull +9 -> 41
-    //   35: aload_1
-    //   36: invokevirtual 128	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   39: aload_3
-    //   40: astore_2
-    //   41: aload_2
-    //   42: areturn
-    //   43: aload 4
-    //   45: astore_2
-    //   46: aload_1
-    //   47: ifnull -6 -> 41
-    //   50: aload_1
-    //   51: invokevirtual 128	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   54: aconst_null
-    //   55: areturn
-    //   56: astore_3
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: aload_1
-    //   60: astore_2
-    //   61: aload_3
-    //   62: invokevirtual 131	java/lang/Exception:printStackTrace	()V
-    //   65: aload 4
-    //   67: astore_2
-    //   68: aload_1
-    //   69: ifnull -28 -> 41
-    //   72: aload_1
-    //   73: invokevirtual 128	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   76: aconst_null
-    //   77: areturn
-    //   78: astore_1
-    //   79: aconst_null
-    //   80: astore_2
-    //   81: aload_2
-    //   82: ifnull +7 -> 89
-    //   85: aload_2
-    //   86: invokevirtual 128	com/jakewharton/disklrucache/DiskLruCache$Snapshot:close	()V
-    //   89: aload_1
-    //   90: athrow
-    //   91: astore_1
-    //   92: goto -11 -> 81
-    //   95: astore_3
-    //   96: goto -37 -> 59
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	99	0	this	lbk
-    //   0	99	1	paramString	String
-    //   22	64	2	localObject1	Object
-    //   28	12	3	str	String
-    //   56	6	3	localException1	java.lang.Exception
-    //   95	1	3	localException2	java.lang.Exception
-    //   1	65	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	17	56	java/lang/Exception
-    //   8	17	78	finally
-    //   23	29	91	finally
-    //   61	65	91	finally
-    //   23	29	95	java/lang/Exception
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    DiskLruCache.Editor localEditor = null;
-    String str = lbp.a(paramString1);
-    paramString1 = localEditor;
     try
     {
-      localEditor = this.a.edit(str);
-      if (localEditor == null) {
-        return;
-      }
-      paramString1 = localEditor;
-      localEditor.set(0, paramString2);
-      paramString1 = localEditor;
-      localEditor.commit();
-      return;
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramString.getBytes("UTF-8"));
+      paramString = a(localMessageDigest.digest());
+      return paramString;
     }
-    catch (IOException paramString2)
+    catch (NoSuchAlgorithmException paramString)
     {
-      if (paramString1 != null) {
-        try
-        {
-          paramString1.abort();
-          return;
-        }
-        catch (IOException paramString1) {}
-      }
+      throw new AssertionError();
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new AssertionError();
+    }
+    catch (Throwable paramString)
+    {
+      throw new AssertionError();
     }
   }
   
-  public String a(String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    return b(paramString);
+    return paramString1 + "{@}" + paramString2;
   }
   
-  public lbn a(String paramString1, long paramLong, String paramString2)
+  public static String a(String paramString1, String paramString2, long paramLong)
   {
-    String str = a(lbp.a(paramString2, paramString1));
-    if (str == null) {
+    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+  }
+  
+  static String a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (paramArrayOfByte == null) {
       return null;
     }
-    paramString2 = a(lbp.a(paramString2, paramString1, paramLong));
-    paramString1 = Boolean.valueOf(false);
-    if (paramString2 != null) {
-      paramString1 = Boolean.valueOf(paramString2);
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int k = paramArrayOfByte.length;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramArrayOfByte[i];
+      int n = j + 1;
+      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
+      j = n + 1;
+      arrayOfChar[n] = a[(m & 0xF)];
+      i += 1;
     }
-    return new lbn(str, paramString1.booleanValue());
+    return new String(arrayOfChar);
   }
   
-  public void a() {}
-  
-  public void a(String paramString1, String paramString2)
+  @TargetApi(9)
+  public static boolean a()
   {
-    if (paramString2 != null) {
-      b(paramString1, paramString2);
+    if (Build.VERSION.SDK_INT >= 9) {
+      return Environment.isExternalStorageRemovable();
     }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, Boolean paramBoolean)
-  {
-    a(lbp.a(paramString1, paramString2, paramLong), paramBoolean.toString());
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, Boolean paramBoolean, String paramString3)
-  {
-    a(lbp.a(paramString3, paramString1, paramLong), paramBoolean.toString());
-    a(lbp.a(paramString3, paramString1), paramString2);
+    return true;
   }
 }
 

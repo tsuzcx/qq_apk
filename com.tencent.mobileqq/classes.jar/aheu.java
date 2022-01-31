@@ -1,33 +1,23 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class aheu
-  implements ahdz
+  implements DialogInterface.OnClickListener
 {
   public aheu(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
-    }
     DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false);
     DrawRedpacketPannelPreviewFragment.a(this.a);
     DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.c(this.a).setText(ajyc.a(2131703532));
+    DrawRedpacketPannelPreviewFragment.c(this.a).setText("......");
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
-    }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

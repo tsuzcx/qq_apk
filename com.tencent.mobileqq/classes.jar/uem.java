@@ -1,83 +1,158 @@
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 import java.io.File;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class uem
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+public class uem
+  implements ucz
 {
-  uem(ueg paramueg) {}
+  TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private String jdField_a_of_type_JavaLangString = "VideoViewTextureImpl";
+  udm jdField_a_of_type_Udm = new udm();
   
-  public void OnDownloadCallback(String paramString)
+  public uem(Context paramContext, String paramString)
   {
-    veg.a(this.a.jdField_a_of_type_JavaLangString, "on tvk download callback. %s", paramString);
-    do
-    {
-      do
-      {
-        Object localObject2;
-        try
-        {
-          uds localuds = (uds)JsonORM.a(new JSONObject(paramString), uds.class);
-          if (localuds == null)
-          {
-            veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback fail. %s", new Object[] { paramString });
-            return;
-          }
-        }
-        catch (JsonORM.JsonParseException localJsonParseException)
-        {
-          for (;;)
-          {
-            localJsonParseException.printStackTrace();
-            Object localObject1 = null;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          do
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-              localObject2 = null;
-            }
-            switch (localObject2.d)
-            {
-            default: 
-              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 未知. %s", new Object[] { paramString });
-              return;
-            case 1: 
-              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 文件大小. %s", new Object[] { paramString });
-              return;
-            case 2: 
-              veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 progress. offset = %d / %d, speedKBS = %d, clipNo = %d", new Object[] { Integer.valueOf(localObject2.c), Long.valueOf(localObject2.jdField_a_of_type_Long), Integer.valueOf(localObject2.b), Integer.valueOf(localObject2.jdField_a_of_type_Int) });
-              ueg.a(this.a).jdField_a_of_type_Long = localObject2.jdField_a_of_type_Long;
-              ueg.a(this.a).jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localObject2.b));
-            }
-          } while ((TextUtils.isEmpty(this.a.c)) || (this.a.jdField_a_of_type_Ude == null));
-          this.a.jdField_a_of_type_Ude.a(this.a.d, new File(this.a.c), localObject2.c, null);
-          return;
-          veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载 DONE.");
-          return;
-        }
-        veg.e(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 下载出错. errorCode=%d, errorDetailCode=%d, errorMsg=%s", new Object[] { Integer.valueOf(localObject2.e), Integer.valueOf(localObject2.f), localObject2.jdField_a_of_type_JavaLangString });
-        this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, localObject2.e);
-        return;
-        veg.d(this.a.jdField_a_of_type_JavaLangString, "OnDownloadCallback. 存储文件完整下载完成.");
-        if (TextUtils.isEmpty(this.a.c)) {
-          break;
-        }
-      } while (this.a.jdField_a_of_type_Ude == null);
-      this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, new File(this.a.c));
-      return;
-    } while (this.a.jdField_a_of_type_Ude == null);
-    this.a.jdField_a_of_type_Ude.a(this.a.b, this.a.d, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
+    this.jdField_a_of_type_JavaLangString += paramString;
   }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  }
+  
+  public udm a()
+  {
+    return this.jdField_a_of_type_Udm;
+  }
+  
+  public void a()
+  {
+    ved.d(this.jdField_a_of_type_JavaLangString, "stopPlayback");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.a();
+  }
+  
+  @TargetApi(14)
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(paramInt);
+  }
+  
+  public void a(long paramLong)
+  {
+    ved.d(this.jdField_a_of_type_JavaLangString, "seekTo");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.seekTo((int)paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Udm.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Udm.jdField_a_of_type_Boolean = true;
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString3;
+      if (suj.a(new File(paramString2))) {
+        paramString1 = paramString2;
+      }
+    }
+    ved.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString1);
+  }
+  
+  public void a(uda paramuda)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramuda == null) {}
+    for (paramuda = null;; paramuda = new uen(this, paramuda))
+    {
+      localTextureVideoView.setOnCompletionListener(paramuda);
+      return;
+    }
+  }
+  
+  public void a(udb paramudb) {}
+  
+  public void a(udc paramudc)
+  {
+    Object localObject = null;
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramudc == null) {}
+    for (paramudc = localObject;; paramudc = new ueo(this, paramudc, null))
+    {
+      localTextureVideoView.setOnErrorListener(paramudc);
+      return;
+    }
+  }
+  
+  public void a(udd paramudd)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramudd == null) {}
+    for (paramudd = null;; paramudd = new uep(this, paramudd))
+    {
+      localTextureVideoView.setOnInfoListener(paramudd);
+      return;
+    }
+  }
+  
+  public void a(ude paramude)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramude == null) {}
+    for (paramude = null;; paramude = new ueq(this, paramude))
+    {
+      localTextureVideoView.setOnPreparedListener(paramude);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying();
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getDuration();
+  }
+  
+  public void b()
+  {
+    ved.d(this.jdField_a_of_type_JavaLangString, "start");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+  }
+  
+  public void c()
+  {
+    ved.d(this.jdField_a_of_type_JavaLangString, "pause");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
+  }
+  
+  public void d()
+  {
+    ved.d(this.jdField_a_of_type_JavaLangString, "restart");
+    b();
+  }
+  
+  public void e() {}
 }
 
 

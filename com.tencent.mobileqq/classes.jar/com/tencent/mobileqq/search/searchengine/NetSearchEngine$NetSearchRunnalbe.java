@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import affl;
-import ajxl;
-import awut;
-import awuz;
+import affj;
+import ajxj;
+import awuv;
+import awvb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.CountDownLatch;
 
@@ -11,18 +11,18 @@ public class NetSearchEngine$NetSearchRunnalbe
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  public ajxl a;
-  private awut jdField_a_of_type_Awut;
+  public ajxj a;
+  private awuv jdField_a_of_type_Awuv;
   private String jdField_a_of_type_JavaLangString;
   public CountDownLatch a;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt;
   
-  public NetSearchEngine$NetSearchRunnalbe(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, awut paramawut)
+  public NetSearchEngine$NetSearchRunnalbe(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, awuv paramawuv)
   {
-    this.jdField_a_of_type_Ajxl = new awuz(this);
+    this.jdField_a_of_type_Ajxj = new awvb(this);
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Awut = paramawut;
+    this.jdField_a_of_type_Awuv = paramawuv;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
@@ -31,22 +31,22 @@ public class NetSearchEngine$NetSearchRunnalbe
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Awut = null;
-    NetSearchEngine.a(this.this$0).removeObserver(this.jdField_a_of_type_Ajxl);
-    this.jdField_a_of_type_Ajxl = null;
+    this.jdField_a_of_type_Awuv = null;
+    NetSearchEngine.a(this.this$0).removeObserver(this.jdField_a_of_type_Ajxj);
+    this.jdField_a_of_type_Ajxj = null;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
   public void run()
   {
-    NetSearchEngine.a(this.this$0).addObserver(this.jdField_a_of_type_Ajxl);
-    this.this$0.jdField_a_of_type_Affl.a(this.jdField_a_of_type_Int);
+    NetSearchEngine.a(this.this$0).addObserver(this.jdField_a_of_type_Ajxj);
+    this.this$0.jdField_a_of_type_Affj.a(this.jdField_a_of_type_Int);
     if (NetSearchEngine.a(this.this$0) == 12)
     {
-      this.this$0.jdField_a_of_type_Affl.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 1);
+      this.this$0.jdField_a_of_type_Affj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 1);
       return;
     }
-    this.this$0.jdField_a_of_type_Affl.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 0);
+    this.this$0.jdField_a_of_type_Affj.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 0);
   }
 }
 

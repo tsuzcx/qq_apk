@@ -1,116 +1,98 @@
-import android.support.annotation.NonNull;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.PointF;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.view.RendererUtils;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bivy
-  extends bjof
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private bivx jdField_a_of_type_Bivx;
-  private bjoa<bivx> jdField_a_of_type_Bjoa = new bjoa();
-  private boolean jdField_a_of_type_Boolean;
-  private bivx jdField_b_of_type_Bivx;
-  private boolean jdField_b_of_type_Boolean;
+  public bivy(bivw parambivw) {}
   
-  public bivx a(biim parambiim)
+  private List<List<PointF>> a(List<List<PointF>> paramList)
   {
-    String str;
-    if (this.jdField_b_of_type_Bivx == null) {
-      str = bihs.a;
-    }
-    try
+    LinkedList localLinkedList1 = new LinkedList();
+    int k = paramList.size();
+    int i = 0;
+    while (i < k)
     {
-      i = Integer.parseInt(str);
-      int j;
-      if (i >= 0)
+      List localList = (List)paramList.get(i);
+      LinkedList localLinkedList2 = new LinkedList();
+      int m = localList.size();
+      int j = 0;
+      while (j < m)
       {
-        j = i;
-        if (i < bivx.a(parambiim).length) {}
+        PointF localPointF = (PointF)localList.get(j);
+        localLinkedList2.add(new PointF(localPointF.x, localPointF.y));
+        j += 1;
       }
-      else
+      localLinkedList1.add(localLinkedList2);
+      i += 1;
+    }
+    return localLinkedList1;
+  }
+  
+  private List<float[]> b(List<float[]> paramList)
+  {
+    LinkedList localLinkedList = new LinkedList();
+    int k = paramList.size();
+    int i = 0;
+    while (i < k)
+    {
+      float[] arrayOfFloat1 = (float[])paramList.get(i);
+      float[] arrayOfFloat2 = new float[arrayOfFloat1.length];
+      int j = 0;
+      while (j < arrayOfFloat1.length)
       {
-        j = 0;
+        arrayOfFloat2[j] = arrayOfFloat1[j];
+        j += 1;
       }
-      this.jdField_b_of_type_Bivx = bivx.a(parambiim)[j];
-      if (QLog.isColorLevel()) {
-        QLog.i("AEVideoStoryCaptureModeViewModel", 2, "[getTestingMode], app_alg_entrance_id=" + j);
-      }
-      return this.jdField_b_of_type_Bivx;
+      localLinkedList.add(arrayOfFloat2);
+      i += 1;
     }
-    catch (NumberFormatException localNumberFormatException)
+    return localLinkedList;
+  }
+  
+  @TargetApi(19)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    QLog.d(bivw.a(), 4, "PngsCreator onFrameAvailable()");
+    paramSurfaceTexture.updateTexImage();
+    bivw.a(this.a).RenderProcess(bivw.a(this.a), 960, 480, -1, 0.0D, bivw.a(this.a));
+    bivw.a(this.a).a(bivw.a(this.a));
+    bisx localbisx = bivw.a(this.a);
+    Frame localFrame = bivw.a(this.a);
+    if (bivw.b(this.a) < bivw.a(this.a).size())
     {
-      for (;;)
+      paramSurfaceTexture = a((List)bivw.a(this.a).get(bivw.b(this.a)));
+      if (bivw.b(this.a) >= bivw.b(this.a).size()) {
+        break label341;
+      }
+    }
+    label341:
+    for (Object localObject = b((List)bivw.b(this.a).get(bivw.b(this.a)));; localObject = new ArrayList())
+    {
+      paramSurfaceTexture = RendererUtils.saveTexture(localbisx.a(localFrame, 480, 480, paramSurfaceTexture, (List)localObject));
+      paramSurfaceTexture.setPremultiplied(false);
+      biii.a(String.format(bivw.a(this.a) + "/frame_%03d.png", new Object[] { Integer.valueOf(bivw.b(this.a)) }), paramSurfaceTexture);
+      paramSurfaceTexture.recycle();
+      bivw.c(this.a);
+      if (!bivw.a(this.a).a())
       {
-        int i = 0;
+        QLog.d(bivw.a(), 4, "pngs create duration = " + (System.currentTimeMillis() - bivw.a(this.a)));
+        bivw.a(this.a).a(bivw.a(this.a));
       }
+      return;
+      paramSurfaceTexture = new ArrayList();
+      break;
     }
-  }
-  
-  public bjoa<bivx> a()
-  {
-    return this.jdField_a_of_type_Bjoa;
-  }
-  
-  public void a(@NonNull bivx parambivx)
-  {
-    this.jdField_a_of_type_Bivx = parambivx;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Bjoa.a() == null) {
-      if (this.jdField_a_of_type_Bivx != bivx.c) {}
-    }
-    while (this.jdField_a_of_type_Bjoa.a() == bivx.c)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Bjoa.a() == null) {
-      if (this.jdField_a_of_type_Bivx != bivx.jdField_a_of_type_Bivx) {}
-    }
-    while (this.jdField_a_of_type_Bjoa.a() == bivx.jdField_a_of_type_Bivx)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_Bjoa.a() == null) {
-      if (this.jdField_a_of_type_Bivx != bivx.jdField_b_of_type_Bivx) {}
-    }
-    while (this.jdField_a_of_type_Bjoa.a() == bivx.jdField_b_of_type_Bivx)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
 }
 

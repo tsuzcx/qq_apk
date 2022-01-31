@@ -1,22 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ofq
   implements ViewBase.OnClickListener
 {
-  ofq(ofe paramofe) {}
+  ofq(ofb paramofb, ViewBase paramViewBase) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.jdField_a_of_type_Oii.a == null) {}
-    do
-    {
-      return;
-      paramViewBase = this.a.jdField_a_of_type_Oii.a.medalInfo;
-    } while ((paramViewBase == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
-    onk.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+    onh.a(this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a().getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    if (this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a() != null) {
+      this.jdField_a_of_type_Ofb.jdField_a_of_type_Ohs.a().g(this.jdField_a_of_type_Ofb.jdField_a_of_type_Oif);
+    }
   }
 }
 

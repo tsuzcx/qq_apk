@@ -1,96 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import java.io.File;
-import mqq.util.WeakReference;
+import com.tencent.image.Utils;
 
 public class agvm
-  extends agtc
+  extends agvn
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  
-  private agvm(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public agvm(String paramString)
   {
-    super(paramNewPhotoPreviewActivity);
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
   }
   
-  public static agss b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  static boolean a(String paramString)
   {
-    if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Agss = new agvm(paramNewPhotoPreviewActivity);
-      }
-      return jdField_a_of_type_Agss;
-    }
-    finally {}
-  }
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if (paramInt1 == 10012)
-    {
-      if ((paramInt2 == -1) && (this.jdField_a_of_type_Boolean))
-      {
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).setResult(paramInt2, paramIntent);
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (!this.jdField_a_of_type_Boolean);
-        paramIntent = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
-      } while (TextUtils.isEmpty(paramIntent));
-      bbdj.a(new File(paramIntent).getParent());
-      return;
-    }
-    super.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("from_tribe_slideshow", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("from_tribe_class_name");
-    this.jdField_a_of_type_Agsb.a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramView, paramInt1, paramBundle, paramInt2, paramIntent);
-    if ((this.jdField_a_of_type_Agsr.d != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (!TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
-        break label60;
-      }
-      baih.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
-    }
-    label60:
-    while (!TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    baih.a("reply", "clk_photo_edit", 0, 0, new String[0]);
-  }
-  
-  protected void h()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      vuf.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Agsb.a);
-      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setClickable(true);
-      return;
-    }
-    super.h();
+    return Utils.isHeifFile(paramString);
   }
 }
 

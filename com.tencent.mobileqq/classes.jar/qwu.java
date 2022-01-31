@@ -1,40 +1,18 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
 
-class qwu
-  extends View
+public final class qwu
+  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
 {
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private int b;
-  private int c;
-  
-  public qwu(qwt paramqwt, Context paramContext)
+  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
   {
-    super(paramContext);
+    return new DiscoveryInfo.TopicVideoCard(paramParcel);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    localPath.reset();
-    localPath.moveTo(this.c, 0.0F);
-    localPath.lineTo(0.0F, getHeight());
-    localPath.lineTo(getWidth(), getHeight());
-    localPath.close();
-    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    setMeasuredDimension(this.jdField_a_of_type_Int, this.b);
+    return new DiscoveryInfo.TopicVideoCard[paramInt];
   }
 }
 

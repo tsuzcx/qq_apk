@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mec;
+import mdx;
 
 public class GAudioMembersCtrlActivity$7$2
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$7$2(mec parammec) {}
+  public GAudioMembersCtrlActivity$7$2(mdx parammdx) {}
   
   public void run()
   {

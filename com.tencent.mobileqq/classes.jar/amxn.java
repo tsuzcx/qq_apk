@@ -1,12 +1,9 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
+@Deprecated
 public abstract interface amxn
 {
-  public abstract long a();
-  
-  public abstract ExcitingTransferUploadChnConfigInfo a();
-  
-  public abstract boolean a();
+  public abstract ExcitingTransferDownloadConfig a();
 }
 
 

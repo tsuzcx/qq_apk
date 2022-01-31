@@ -1,119 +1,38 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bhyw
-  extends bhyx
+class bhyw
+  implements ModuleDownloadListener
 {
-  private float a;
-  private float b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  bhyw(bhyv parambhyv, bhza parambhza) {}
   
-  public bhyw(String paramString, View paramView)
+  public void onDownloadCanceled(String paramString)
   {
-    super(paramString, paramView);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  private void a(String paramString)
+  public void onDownloadFailed(String paramString)
   {
-    try
-    {
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(0, a(paramString));
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bhyv.a(this.jdField_a_of_type_Bhyv, false);
+    this.jdField_a_of_type_Bhza.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private int b(String paramString)
-  {
-    int j = 3;
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
-    }
-    int i;
-    if ("center".equals(paramString)) {
-      i = 17;
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while ("left".equals(paramString));
-      i = j;
-    } while (!"right".equals(paramString));
-    return 5;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(Color.parseColor(paramString));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof TextView)) {}
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString2);
-        return;
-      }
-      if ("text_color".equals(paramString1))
-      {
-        b(paramString2);
-        return;
-      }
-      if ("text_align".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(b(paramString2));
-        return;
-      }
-      if ("max_lines".equals(paramString1))
-      {
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setMaxLines(Integer.parseInt(paramString2));
-        return;
-      }
-      if ("shadow_color".equals(paramString1))
-      {
-        this.jdField_c_of_type_Int = Color.parseColor(paramString2);
-        return;
-      }
-      if ("shadow_x".equals(paramString1))
-      {
-        this.jdField_a_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_y".equals(paramString1))
-      {
-        this.b = Float.parseFloat(paramString2);
-        return;
-      }
-      if ("shadow_radius".equals(paramString1))
-      {
-        this.jdField_c_of_type_Float = Float.parseFloat(paramString2);
-        return;
-      }
-    } while (!"text_size".equals(paramString1));
-    a(paramString2);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setShadowLayer(this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, this.b, this.jdField_c_of_type_Int);
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.a(), " onDownloadSucceed = ", bhyv.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhyv.b());
+    bhyv.a(this.jdField_a_of_type_Bhyv);
+    this.jdField_a_of_type_Bhza.a(bhyv.a(this.jdField_a_of_type_Bhyv));
   }
 }
 

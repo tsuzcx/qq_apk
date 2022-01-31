@@ -1,24 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 public class acdl
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public acdl(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public acdl(SplashActivity paramSplashActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
+    localIntent.putExtra("key_reset", true);
+    this.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acdl
  * JD-Core Version:    0.7.0.1
  */

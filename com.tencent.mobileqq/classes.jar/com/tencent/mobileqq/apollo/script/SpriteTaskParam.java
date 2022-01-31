@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajfi;
-import ajfl;
+import ajfg;
+import ajfj;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class SpriteTaskParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new ajfi();
+  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new ajfg();
   public float a;
   public int a;
   public long a;
-  public ajfl a;
+  public ajfj a;
   public Bundle a;
   public String a;
   public ArrayList<Integer> a;
@@ -113,7 +113,7 @@ public class SpriteTaskParam
     localStringBuffer.append(", mActionList=").append(this.jdField_a_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mBackgroundActionList=").append(this.jdField_b_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mExtendJson='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Ajfl);
+    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Ajfj);
     localStringBuffer.append(", mRscType=").append(this.k);
     localStringBuffer.append(", mActionJs='").append(this.jdField_e_of_type_JavaLangString).append('\'');
     localStringBuffer.append('}');

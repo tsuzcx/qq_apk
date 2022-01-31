@@ -1,6 +1,14 @@
-public abstract interface adez
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+
+public class adez
+  implements adfe
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
+  public adez(ColorPicker paramColorPicker, adfc paramadfc) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Adfc.a);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import onk;
+import onh;
 
 public class ArticleExposureInfo
-  extends aukm
+  extends auko
   implements Comparable<ArticleExposureInfo>
 {
   public static final String TABLE_NAME = ArticleExposureInfo.class.getSimpleName();
@@ -27,7 +27,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = onk.a(paramBaseArticleInfo);
+    localArticleExposureInfo.feedsType = onh.a(paramBaseArticleInfo);
     localArticleExposureInfo.channelID = paramBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramBaseArticleInfo.mTitle;
     return localArticleExposureInfo;

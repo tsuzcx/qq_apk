@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import airu;
-import ajmw;
+import airs;
+import ajmu;
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ApolloGameData
-  extends aukm
+  extends auko
   implements Serializable
 {
   public static final String TAG = "ApolloGameData";
@@ -24,15 +24,15 @@ public class ApolloGameData
   public String developerName;
   public String gameAppPkgName;
   public String gameAppid;
-  @auma
+  @aumc
   public int gameId;
   public int hasOwnArk;
   public boolean isFeatured;
   public boolean isGameApp;
-  @aulx
+  @aulz
   public boolean isSetting;
   public int isShow;
-  @aulx
+  @aulz
   public long lastRequestOpenKey;
   public String listCoverUrl;
   public String logoUrl;
@@ -41,19 +41,19 @@ public class ApolloGameData
   public String name;
   public int needOpenKey;
   public String officialAccountUin;
-  @aulx
+  @aulz
   public String openKey;
   public int screenMode;
-  @aulx
+  @aulz
   public int tagType;
-  @aulx
+  @aulz
   public String tagUrl;
   public String toolUrl;
-  @aulx
+  @aulz
   public int type;
   public int viewMode;
   
-  private ArrayList<airu> parseBtnInfo(String paramString, QQAppInterface paramQQAppInterface)
+  private ArrayList<airs> parseBtnInfo(String paramString, QQAppInterface paramQQAppInterface)
   {
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
@@ -65,7 +65,7 @@ public class ApolloGameData
       int i;
       try
       {
-        paramQQAppInterface = (ajmw)paramQQAppInterface.getManager(155);
+        paramQQAppInterface = (ajmu)paramQQAppInterface.getManager(155);
         paramString = new JSONArray(paramString);
         if ((paramQQAppInterface == null) || (paramString == null)) {
           break label203;
@@ -76,7 +76,7 @@ public class ApolloGameData
       }
       catch (Exception paramString)
       {
-        airu localairu;
+        airs localairs;
         QLog.e("ApolloGameData", 1, paramString, new Object[0]);
         long l2 = System.currentTimeMillis();
         if (!QLog.isColorLevel()) {
@@ -90,12 +90,12 @@ public class ApolloGameData
         paramQQAppInterface = paramString.optJSONObject(i);
         if (paramQQAppInterface != null)
         {
-          localairu = new airu();
-          localairu.jdField_a_of_type_Int = paramQQAppInterface.optInt("src");
-          localairu.jdField_b_of_type_Int = paramQQAppInterface.optInt("mode");
-          localairu.jdField_a_of_type_JavaLangString = paramQQAppInterface.optString("normalBkgUrl");
-          localairu.jdField_b_of_type_JavaLangString = paramQQAppInterface.optString("playingUrl");
-          localArrayList.add(localairu);
+          localairs = new airs();
+          localairs.jdField_a_of_type_Int = paramQQAppInterface.optInt("src");
+          localairs.jdField_b_of_type_Int = paramQQAppInterface.optInt("mode");
+          localairs.jdField_a_of_type_JavaLangString = paramQQAppInterface.optString("normalBkgUrl");
+          localairs.jdField_b_of_type_JavaLangString = paramQQAppInterface.optString("playingUrl");
+          localArrayList.add(localairs);
         }
       }
       else

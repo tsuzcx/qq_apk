@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.aditem.GdtPreLoader.1;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
+import org.json.JSONObject;
 
-public final class ysv
-  implements Parcelable.Creator<GdtHandler.Options>
+public class ysv
+  implements MiniAppPrePullManager.IPrePullListener
 {
-  public GdtHandler.Options a(Parcel paramParcel)
-  {
-    return new GdtHandler.Options(paramParcel);
-  }
+  public ysv(GdtPreLoader.1 param1) {}
   
-  public GdtHandler.Options[] a(int paramInt)
+  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return new GdtHandler.Options[paramInt];
+    yxp.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

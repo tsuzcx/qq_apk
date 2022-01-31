@@ -1,16 +1,22 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.together.ui.RoundRectView;
-
-public class ayod
+class ayod
+  implements ayoe
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  aynq jdField_a_of_type_Aynq;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  RoundRectView jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView;
-  TextView b;
+  ayod(ayoc paramayoc, ayof paramayof) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Ayof.a.d();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Ayof.a.c();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Ayof.a.f();
+  }
 }
 
 

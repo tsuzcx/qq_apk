@@ -1,51 +1,75 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import org.json.JSONObject;
 
 public class aros
-  implements BusinessObserver
+  implements MiniMsgUser.IMiniMsgActionCallback
 {
   public aros(UiApiPlugin paramUiApiPlugin) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onFromMiniAIOToAIO()
   {
-    byte[] arrayOfByte;
-    if (paramBoolean)
-    {
-      arrayOfByte = paramBundle.getByteArray("data");
-      paramBundle.getString("openId");
-      if (arrayOfByte != null) {
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "onFromMiniAIOToAIO ");
     }
+    JSONObject localJSONObject = new JSONObject();
+    this.a.a("fromMiniAIOToAIO", localJSONObject);
+  }
+  
+  public void onGoToConversation()
+  {
     try
     {
-      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
-      paramInt = paramBundle.uint32_result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
+        QLog.d("UiApiPlugin", 2, "onGoToConversation ");
       }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
-      {
-        arrayOfByte = new byte[4];
-        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
-        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
-        bamn.a(this.a.a(), paramBundle, -1);
-      }
+      JSONObject localJSONObject = new JSONObject();
+      this.a.a("returnMsgList", localJSONObject);
       return;
     }
-    catch (Exception paramBundle)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
+  }
+  
+  public void onOpenMiniAIOCallback()
+  {
+    WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+    Object localObject1 = localWebViewFragment.r;
+    if (TextUtils.isEmpty(localWebViewFragment.r)) {
+      localObject1 = localWebViewFragment.a.getTitle();
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = localObject1;
+      if (!"‎".equals(localObject1)) {}
+    }
+    else
+    {
+      localObject2 = ajya.a(2131715855);
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
+    Object localObject2 = this.a.a.getParam();
+    ((MiniMsgUserParam)localObject2).backConversationIntent = localWebViewFragment.a((Bundle)localObject1);
+    bcgq.a(((MiniMsgUserParam)localObject2).backConversationIntent);
+    try
+    {
+      localObject1 = new JSONObject();
+      this.a.a("entryClicked", (JSONObject)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
     }
   }
 }

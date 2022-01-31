@@ -1,14 +1,19 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface ainb
+class ainb
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView);
+  ainb(aina paramaina) {}
   
-  public abstract boolean a(String paramString, int paramInt);
+  public void onClick(View paramView)
+  {
+    aina.a(this.a).a(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ainb
  * JD-Core Version:    0.7.0.1
  */

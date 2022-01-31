@@ -1,20 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class auyf
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  auyf(auxz paramauxz) {}
+  auyf(auyb paramauyb) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.notifyDataSetChanged();
+    auyb.a(this.a, false);
+    paramDialogInterface.dismiss();
   }
 }
 

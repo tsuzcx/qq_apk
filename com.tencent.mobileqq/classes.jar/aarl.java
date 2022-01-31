@@ -1,16 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 class aarl
   implements View.OnClickListener
 {
-  aarl(aarj paramaarj, String paramString) {}
+  aarl(aarf paramaarf, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aarj.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Aarf.a.a, xpu.a(paramView));
   }
 }
 

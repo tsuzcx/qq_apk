@@ -1,41 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.23;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class rgz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public rgz(ReadinjoyTabFrame.23 param23, FrameLayout paramFrameLayout) {}
+  public rgz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (pzc)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a.getManager(270);
-    if (paramView.a() == 1)
-    {
-      paramView.a(false);
-      paramView = paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a(), 0);
-      if (paramView != null)
-      {
-        paramView.isShown = false;
-        bbjn.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a.getCurrentAccountUin(), paramView.toJson().toString(), 0);
-      }
-    }
-    ((pzi)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a.getManager(261)).a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.a.skinData.id, false);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0, null);
-    bbjn.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.this$0.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.a.skinData.toJson().toString());
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "set skin ：id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame$23.a.skinData.id);
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
     }
   }
 }

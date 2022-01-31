@@ -1,21 +1,17 @@
-import android.content.Intent;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class apqj
-  implements aptu
+  implements View.OnClickListener
 {
-  apqj(apqi paramapqi) {}
+  apqj(apqe paramapqe) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(apeh.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    apqh.a(this.a.a, localIntent);
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
   }
-  
-  public void b() {}
 }
 
 

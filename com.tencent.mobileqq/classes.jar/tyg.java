@@ -1,28 +1,20 @@
-class tyg
-  implements ure
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+
+public class tyg
+  extends JobSegment<upp, upp>
 {
-  tyg(tyf paramtyf) {}
+  public tyg(tyc paramtyc) {}
   
-  public void a(int paramInt)
+  protected void a(JobContext paramJobContext, upp paramupp)
   {
-    if ((paramInt == 1) && (tyf.a(this.a) != null) && (tyf.a(this.a).a != null))
-    {
-      if (tyf.a(this.a).a()) {
-        break label66;
-      }
-      if (tyf.a(this.a).a(true)) {
-        tyf.a(this.a).c();
-      }
+    paramupp.a(tyc.a(this.a).a(paramupp.a.feedId, true), true, true);
+    if (paramupp.a()) {
+      paramupp.a(tyc.a(this.a).a(tyc.a(this.a), false), true, false);
     }
-    label66:
-    do
-    {
-      return;
-      if (tyf.a(this.a).a(false)) {
-        tyf.b(this.a).c();
-      }
-    } while (!tyf.a(this.a).a(true));
-    tyf.a(this.a).c();
+    ved.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", tyc.a(this.a).toString());
+    notifyResult(paramupp);
   }
 }
 

@@ -1,84 +1,113 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amwp
-  extends ampb<amwo>
 {
-  @NonNull
-  public static amwo a()
+  public int a;
+  public String a;
+  public ArrayList<amwq> a;
+  
+  public amwp()
   {
-    amwo localamwo2 = (amwo)ampm.a().a(435);
-    amwo localamwo1 = localamwo2;
-    if (localamwo2 == null) {
-      localamwo1 = new amwo();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static amwp a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return localamwo1;
-  }
-  
-  public int a()
-  {
-    return 435;
-  }
-  
-  @NonNull
-  public amwo a(int paramInt)
-  {
-    return new amwo();
-  }
-  
-  @Nullable
-  public amwo a(ampi[] paramArrayOfampi)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null)
+    amwp localamwp = new amwp();
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfampi.length > 0) {
-        localObject1 = amwo.a(paramArrayOfampi);
+      int i;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        paramString = localJSONObject.optJSONArray("match");
+        if (paramString == null) {
+          break;
+        }
+        localamwp.jdField_a_of_type_Int = localJSONObject.optInt("switch");
+        localamwp.jdField_a_of_type_JavaLangString = localJSONObject.optString("blackList");
+        if (localamwp.jdField_a_of_type_JavaUtilArrayList == null)
+        {
+          localamwp.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          a(localamwp);
+          i = 0;
+          if (i < paramString.length())
+          {
+            localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject == null) {
+              break label235;
+            }
+            amwq localamwq = new amwq();
+            localamwq.jdField_a_of_type_JavaLangString = localJSONObject.optString("key");
+            localamwq.b = localJSONObject.optString("resUrl");
+            localamwq.c = localJSONObject.optString("md5");
+            localamwp.jdField_a_of_type_JavaUtilArrayList.add(localamwq);
+            break label235;
+          }
+        }
+        else
+        {
+          localamwp.jdField_a_of_type_JavaUtilArrayList.clear();
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label233;
+        }
       }
-    }
-    return localObject1;
-  }
-  
-  public Class<amwo> a()
-  {
-    return amwo.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
+      catch (Exception paramString)
+      {
+        QLog.e("VipARConfBean", 1, "parse content exception = " + paramString.getMessage());
+        paramString.printStackTrace();
+        return null;
+      }
+      QLog.i("VipARConfBean", 2, " parseSuccess data = " + localamwp.toString());
+      label233:
+      return localamwp;
+      label235:
+      i += 1;
     }
   }
   
-  public void a(amwo paramamwo)
+  private static void a(amwp paramamwp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramamwo.toString());
+    if ((paramamwp == null) || (TextUtils.isEmpty(paramamwp.jdField_a_of_type_JavaLangString))) {
+      QLog.i("VipARConfBean", 1, "checkIsInBlackList return empty");
+    }
+    if (bhyv.a(paramamwp.jdField_a_of_type_JavaLangString)) {
+      paramamwp.jdField_a_of_type_Int = 0;
     }
   }
   
-  public boolean a()
+  @NonNull
+  public String toString()
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(" switch = " + this.jdField_a_of_type_Int);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        amwq localamwq = (amwq)localIterator.next();
+        if (localamwq != null) {
+          localStringBuilder.append("\n " + localamwq.toString());
+        }
+      }
+      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+        localStringBuilder.append(" config list = null");
+      }
+      return localStringBuilder.toString();
+    }
+    return " switch = " + this.jdField_a_of_type_Int + " list = null";
   }
 }
 

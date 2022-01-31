@@ -1,40 +1,41 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
 public class abso
-  extends amdl
+  implements auzq
 {
-  public abso(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public abso(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
   {
-    super.a(paramBoolean, paramString);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.a(paramBoolean, paramString, paramInt);
-    if (paramBoolean)
+    if (paramBoolean.booleanValue())
     {
-      BusinessCard localBusinessCard = ((amdk)this.a.app.getManager(112)).a(paramString);
-      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
-      this.a.a(localBusinessCard);
-      this.a.a = localBusinessCard;
-      return;
+      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
+      {
+        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
+          this.a.b(2131693553);
+        }
+        return;
+      }
+      axqy.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
     }
-    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    super.b(paramBoolean, paramString);
-  }
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt)
-  {
-    super.b(paramBoolean, paramString, paramInt);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Auzr.c(paramProfileLabelInfo, paramToggleButton);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
+      if (this.a.jdField_a_of_type_Abss == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Abss.notifyDataSetChanged();
+      return;
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+        break;
+      }
+      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

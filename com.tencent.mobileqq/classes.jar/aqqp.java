@@ -1,23 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aqqp
-  implements ViewSwitcher.ViewFactory
+public class aqqp
 {
-  aqqp(aqqo paramaqqo) {}
-  
-  public View makeView()
-  {
-    CornerImageView localCornerImageView = new CornerImageView(aqqo.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(actn.a(30.0F, aqqo.a(this.a).getResources()) / 2);
-    return localCornerImageView;
-  }
+  public ImageSwitcher a;
+  public ImageView a;
+  public TextView a;
+  public aqth a;
+  public ImageSwitcher b;
+  public ImageView b;
+  public TextView b;
 }
 
 

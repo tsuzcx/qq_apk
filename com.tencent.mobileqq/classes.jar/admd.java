@@ -1,42 +1,37 @@
-import android.annotation.TargetApi;
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class admd
-  implements ArkViewImplement.LoadCallback
+public class admd
+  extends akuo
 {
-  admd(admc paramadmc, MessageForArkApp paramMessageForArkApp, adly paramadly) {}
-  
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  admd(admc paramadmc, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    onLoadState(paramInt1);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.arkContainer.getContainerRect();
-    float f = alta.a();
-    int i = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
-    int j = (int)((((Rect)localObject).bottom - ((Rect)localObject).top) * f);
-    localObject = this.jdField_a_of_type_Adly.a.getLayoutParams();
-    StringBuilder localStringBuilder = new StringBuilder("ArkFold.onLoadFinish arkContainer rect(");
-    localStringBuilder.append(i).append(",").append(j).append(")").append(", arkView layout rect(").append(((ViewGroup.LayoutParams)localObject).width).append(",").append(((ViewGroup.LayoutParams)localObject).height).append(")").append(", init mArkWidth=").append(admc.a(this.jdField_a_of_type_Admc)).append(", load state=").append(paramInt).append(", app=").append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName);
-    QLog.i("ArkAppItemBuilder", 1, localStringBuilder.toString());
-    if ((alta.a) && (paramInt == 1) && (i != admc.a(this.jdField_a_of_type_Admc)))
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.d("ArkAppItemBuilder", 1, new Object[] { "ArkFold.onLoadFinish setViewRect(", Integer.valueOf(admc.a(this.jdField_a_of_type_Admc)), ",", Integer.valueOf(j), ")" });
-      this.jdField_a_of_type_Adly.a.setFixSize(admc.a(this.jdField_a_of_type_Admc), -1);
-      this.jdField_a_of_type_Adly.a.setMaxSize(admc.a(this.jdField_a_of_type_Admc), -1);
-      this.jdField_a_of_type_Adly.a.setMinSize(admc.a(this.jdField_a_of_type_Admc), -1);
-      this.jdField_a_of_type_Adly.a.setViewRect(admc.a(this.jdField_a_of_type_Admc), j);
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      return;
     }
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
+    }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 

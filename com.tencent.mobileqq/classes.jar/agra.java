@@ -1,21 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-class agra
-  implements agqy
+public class agra
 {
-  agra(agqz paramagqz) {}
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public long b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
+  public boolean c;
+  public long d;
+  public boolean d;
+  public long e;
+  public boolean e;
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public agra()
   {
-    agqz.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    agqz.a(this.a).a(paramLong, paramFloat, paramString);
+    this.jdField_a_of_type_Long = -1L;
   }
   
-  public void b(long paramLong)
+  public String a()
   {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    agqz.a(this.a).b(paramLong);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

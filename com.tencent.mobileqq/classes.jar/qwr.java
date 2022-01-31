@@ -1,49 +1,40 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.view.View;
 
-final class qwr
-  extends qwp
+class qwr
+  extends View
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private int b;
+  private int c;
   
-  public qwr(int paramInt)
+  public qwr(qwq paramqwq, Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramContext);
   }
   
-  public final int a()
+  protected void onDraw(Canvas paramCanvas)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    localPath.reset();
+    localPath.moveTo(this.c, 0.0F);
+    localPath.lineTo(0.0F, getHeight());
+    localPath.lineTo(getWidth(), getHeight());
+    localPath.close();
+    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public long a(long paramLong)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
+    setMeasuredDimension(this.jdField_a_of_type_Int, this.b);
   }
 }
 

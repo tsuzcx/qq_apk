@@ -1,22 +1,20 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
 import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
 
 class aqrc
   implements Animation.AnimationListener
 {
-  aqrc(aqqw paramaqqw) {}
+  aqrc(aqqy paramaqqy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.c();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 

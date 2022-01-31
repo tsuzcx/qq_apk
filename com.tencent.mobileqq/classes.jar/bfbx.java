@@ -1,50 +1,33 @@
-import android.view.View;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public abstract class bfbx
+class bfbx
+  extends WebViewClient
 {
-  public int a(int paramInt)
+  bfbx(bfbw parambfbw) {}
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return paramInt;
+    super.onPageFinished(paramWebView, paramString);
+    this.a.a(bfbw.a(this.a));
+    this.a.d();
   }
   
-  public int a(View paramView)
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    return 0;
+    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null))
+    {
+      String str = paramWebResourceRequest.getUrl().toString();
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("https://appservice.qq.com/")) || (str.startsWith("wxfile://")))) {
+        return bfbw.a(this.a, paramWebView, paramWebResourceRequest.getUrl().toString());
+      }
+    }
+    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
   }
-  
-  public int a(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2) {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(View paramView, int paramInt);
-  
-  public int b(View paramView)
-  {
-    return 0;
-  }
-  
-  public int b(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 

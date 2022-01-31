@@ -1,271 +1,292 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.Ads;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qconn.protofile.appType.AndroidInfo;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.oidb_0xd55.RspBody;
-import tencent.im.oidb.qqconnect.AndroidAppInfo;
-import tencent.im.oidb.qqconnect.Appinfo;
-import tencent.im.oidb.qqconnect.MobileAppInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aqaq
 {
-  private int jdField_a_of_type_Int;
-  public GetAppInfoProto.Ads a;
-  private String jdField_a_of_type_JavaLangString;
-  public List<xmy> a;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  private String d;
-  private String e;
-  private String f;
-  
-  private static int a(List<xmy> paramList)
+  private static long a(String paramString, Map<String, Integer> paramMap1, Map<String, Integer> paramMap2)
   {
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
+    if ((paramMap1 == null) || (paramMap2 == null)) {
+      return 0L;
+    }
+    if ((!paramMap1.containsKey(paramString)) || (!paramMap2.containsKey(paramString)))
     {
-      xmy localxmy = (xmy)paramList.next();
-      if ("16".equals(localxmy.b.get()))
-      {
-        i |= 0x1;
-      }
-      else if ("64".equals(localxmy.b.get()))
-      {
-        i |= 0x2;
-      }
-      else
-      {
-        if (!"100".equals(localxmy.b.get())) {
-          break label96;
-        }
-        i |= 0x4;
+      QLog.d("QFlutter.Reporter", 1, String.format("%s not contains", new Object[] { paramString }));
+      return 0L;
+    }
+    long l = ((Integer)paramMap1.get(paramString)).intValue();
+    return ((Integer)paramMap2.get(paramString)).intValue() - l;
+  }
+  
+  public static void a(int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!a()) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", String.valueOf(paramInt));
+    if (paramBoolean1)
+    {
+      str = "1";
+      label36:
+      localHashMap.put("isLocalEngineExist", str);
+      if (!paramBoolean2) {
+        break label156;
       }
     }
-    label96:
-    for (;;)
+    label156:
+    for (String str = "1";; str = "0")
     {
-      break;
-      return i;
+      localHashMap.put("isLocalAppExist", str);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_init_result", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 2, String.format("onInitFinish, errCode: %s, totalCost: %s,isEngineExist: %s, isAppExist: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+      return;
+      str = "0";
+      break label36;
     }
   }
   
-  public static int a(qqconnect.Appinfo paramAppinfo)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int j = 0;
-    if (paramAppinfo.icon_mini_url.has()) {
-      j = 1;
+    if (!a()) {
+      return;
     }
-    int i;
-    if (!paramAppinfo.icon_middle_url.has())
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1)
     {
-      i = j;
-      if (!paramAppinfo.icon_small_url.has()) {}
-    }
-    else
-    {
-      i = j | 0x2;
-    }
-    j = i;
-    if (paramAppinfo.icon_url.has()) {
-      j = i | 0x4;
-    }
-    return j;
-  }
-  
-  public static aqaq a(GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse)
-  {
-    aqaq localaqaq = new aqaq();
-    localaqaq.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$Ads = paramGetAppinfoResponse.ads;
-    localaqaq.jdField_a_of_type_JavaUtilList = xmt.a(paramGetAppinfoResponse.iconsURL);
-    if (!localaqaq.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      localaqaq.jdField_a_of_type_JavaLangString = xmt.a(localaqaq.jdField_a_of_type_JavaUtilList, 16);
-      localaqaq.b = xmt.a(localaqaq.jdField_a_of_type_JavaUtilList, 100);
-      localaqaq.jdField_a_of_type_Int = a(localaqaq.jdField_a_of_type_JavaUtilList);
-    }
-    GetAppInfoProto.AndroidInfo localAndroidInfo = paramGetAppinfoResponse.androidInfo;
-    if (localAndroidInfo != null)
-    {
-      localaqaq.jdField_a_of_type_Boolean = true;
-      if (!localAndroidInfo.sourceUrl.has()) {
-        break label183;
+      str = "1";
+      label25:
+      localHashMap.put("isFirstLoad", str);
+      localHashMap.put("cost", String.valueOf(paramLong2));
+      localHashMap.put("totalCost", String.valueOf(paramLong1));
+      localHashMap.put("renderCost", String.valueOf(paramLong3));
+      if (!paramBoolean2) {
+        break label207;
       }
-      paramGetAppinfoResponse = localAndroidInfo.sourceUrl.get();
-      localaqaq.c = paramGetAppinfoResponse;
-      if (!localAndroidInfo.messagetail.has()) {
-        break label189;
-      }
-      paramGetAppinfoResponse = localAndroidInfo.messagetail.get();
-      label131:
-      localaqaq.d = paramGetAppinfoResponse;
-      if (!localAndroidInfo.packName.has()) {
-        break label195;
+      str = "1";
+      label81:
+      localHashMap.put("isLocalExist", str);
+      if (!paramBoolean3) {
+        break label214;
       }
     }
-    label183:
-    label189:
-    label195:
-    for (paramGetAppinfoResponse = localAndroidInfo.packName.get();; paramGetAppinfoResponse = "")
+    label207:
+    label214:
+    for (String str = "1";; str = "0")
     {
-      localaqaq.e = paramGetAppinfoResponse;
-      QLog.d("AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localaqaq.toString() });
-      return localaqaq;
-      paramGetAppinfoResponse = "";
-      break;
-      paramGetAppinfoResponse = "";
-      break label131;
+      localHashMap.put("isProcessExist", str);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_open_total_cost", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 2, String.format("reportTotalCost: %s, toolCost: %s, renderCost: %s, isFirstLoad: %s, isLocalExist: %s, isProcessExist: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+      return;
+      str = "0";
+      break label25;
+      str = "0";
+      break label81;
     }
   }
   
-  public static aqaq a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
+  public static void a(String paramString)
   {
-    aqaq localaqaq = new aqaq();
-    String str;
-    if (paramAndroidInfo.message_tail.has())
+    if (a())
     {
-      str = paramAndroidInfo.message_tail.get();
-      localaqaq.d = str;
-      if (!paramAndroidInfo.pack_name.has()) {
-        break label172;
-      }
-      str = paramAndroidInfo.pack_name.get();
-      label49:
-      localaqaq.e = str;
-      if (!paramAndroidInfo.source_url.has()) {
-        break label178;
-      }
-    }
-    label172:
-    label178:
-    for (paramAndroidInfo = paramAndroidInfo.source_url.get();; paramAndroidInfo = "")
-    {
-      localaqaq.c = paramAndroidInfo;
-      localaqaq.jdField_a_of_type_Boolean = true;
-      localaqaq.jdField_a_of_type_JavaUtilList = xmt.b(paramPreAuthResponse.icons_url);
-      if (!localaqaq.jdField_a_of_type_JavaUtilList.isEmpty())
-      {
-        localaqaq.jdField_a_of_type_JavaLangString = xmt.a(localaqaq.jdField_a_of_type_JavaUtilList, 16);
-        localaqaq.b = xmt.a(localaqaq.jdField_a_of_type_JavaUtilList, 100);
-        localaqaq.jdField_a_of_type_Int = a(localaqaq.jdField_a_of_type_JavaUtilList);
-      }
-      QLog.d("AppInfo", 1, new Object[] { "convertToAppInfo AppInfo : ", localaqaq.toString() });
-      return localaqaq;
-      str = "";
-      break;
-      str = "";
-      break label49;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_exception", true, 0L, 0L, localHashMap, "", false);
     }
   }
   
-  private static String a(qqconnect.Appinfo paramAppinfo, String paramString)
+  public static void a(String paramString, int paramInt, double paramDouble)
   {
-    Iterator localIterator = null;
-    Object localObject2 = null;
-    Object localObject1 = localIterator;
-    if (paramAppinfo.mobile_app_info.has())
+    if (a())
     {
-      localObject1 = localIterator;
-      if (paramAppinfo.mobile_app_info.android_app_info.has())
-      {
-        localIterator = paramAppinfo.mobile_app_info.android_app_info.get().iterator();
-        paramAppinfo = localObject2;
-        localObject1 = paramAppinfo;
-        if (localIterator.hasNext())
-        {
-          localObject1 = (qqconnect.AndroidAppInfo)localIterator.next();
-          if (((qqconnect.AndroidAppInfo)localObject1).pack_name.has())
-          {
-            localObject1 = ((qqconnect.AndroidAppInfo)localObject1).pack_name.get();
-            paramAppinfo = (qqconnect.Appinfo)localObject1;
-            if (!((String)localObject1).equals(paramString)) {}
-          }
-        }
-      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      localHashMap.put("fps", String.valueOf(paramInt));
+      localHashMap.put("dropRate", String.valueOf(paramDouble));
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_fps", true, 0L, 0L, localHashMap, "", false);
     }
-    while (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      return paramString;
-      break;
-    }
-    return localObject1;
   }
   
-  public static void a(oidb_0xd55.RspBody paramRspBody, String paramString, aqaq paramaqaq)
+  public static void a(String paramString, long paramLong)
   {
-    paramaqaq.jdField_a_of_type_Boolean = true;
-    qqconnect.Appinfo localAppinfo = paramRspBody.appinfo;
-    paramaqaq.jdField_a_of_type_JavaLangString = localAppinfo.icon_mini_url.get();
-    paramaqaq.b = localAppinfo.icon_url.get();
-    paramaqaq.jdField_a_of_type_Int = a(localAppinfo);
-    paramaqaq.c = localAppinfo.source_url.get();
-    paramaqaq.d = localAppinfo.app_name.get();
-    paramaqaq.e = a(localAppinfo, paramString);
-    if (paramRspBody.wording.has()) {}
-    for (paramRspBody = paramRspBody.wording.get();; paramRspBody = "")
+    if (a())
     {
-      paramaqaq.f = paramRspBody;
-      QLog.d("AppInfo", 1, new Object[] { "fillAppInfo AppInfo : ", paramaqaq.toString() });
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_page_render_cost", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong)
+  {
+    if (!a()) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("errCode", str);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_launch_result", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 2, String.format("onLaunchFinish, isSuccess: %s, cost: %s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
       return;
     }
   }
   
-  public int a()
+  public static void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return this.jdField_a_of_type_Int;
+    if (!a()) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1)
+    {
+      str = "1";
+      label24:
+      localHashMap.put("errCode", str);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      if (!paramBoolean2) {
+        break label147;
+      }
+      str = "1";
+      label54:
+      localHashMap.put("isLocalEngineExist", str);
+      if (!paramBoolean3) {
+        break label154;
+      }
+    }
+    label147:
+    label154:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("isLocalAppExist", str);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_install_result", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 2, String.format("onInstallFinish, isSuccess: %s, cost: %s", new Object[] { Boolean.valueOf(paramBoolean1), Long.valueOf(paramLong) }));
+      return;
+      str = "0";
+      break label24;
+      str = "0";
+      break label54;
+    }
   }
   
-  public String a()
+  public static void a(boolean paramBoolean1, boolean paramBoolean2, Map<String, Integer> paramMap)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((!a()) || (paramMap == null))
+    {
+      QLog.d("QFlutter.Reporter", 1, "reportMemoryIncrement, don't need report or mBeforeMemoryInfo == null");
+      return;
+    }
+    int i = Build.VERSION.SDK_INT;
+    long l1 = bbdh.d() / 1024L / 1024L;
+    float f = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
+    Object localObject = bbdh.a(BaseApplicationImpl.getContext());
+    long l2 = a("summary.total-pss", paramMap, (Map)localObject);
+    long l3 = a("summary.java-heap", paramMap, (Map)localObject);
+    long l4 = a("summary.native-heap", paramMap, (Map)localObject);
+    long l5 = a("summary.graphics", paramMap, (Map)localObject);
+    long l6 = a("summary.code", paramMap, (Map)localObject);
+    long l7 = a("summary.private-other", paramMap, (Map)localObject);
+    localObject = bbdh.l();
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1) {}
+    for (paramMap = "1";; paramMap = "0")
+    {
+      localHashMap.put("isFirstLoad", paramMap);
+      localHashMap.put("sdkVersion", String.valueOf(i));
+      localHashMap.put("resolution", localObject);
+      localHashMap.put("totalMemory", String.valueOf(l1));
+      localHashMap.put("maxMemory", String.valueOf(f));
+      localHashMap.put("totalPss", String.valueOf(l2));
+      localHashMap.put("javaPss", String.valueOf(l3));
+      localHashMap.put("nativePss", String.valueOf(l4));
+      localHashMap.put("graphicsPss", String.valueOf(l5));
+      localHashMap.put("codePss", String.valueOf(l6));
+      localHashMap.put("otherPss", String.valueOf(l7));
+      if (!paramBoolean2) {
+        break;
+      }
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_enter_memory_increment", true, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+    axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_exit_memory_increment", true, 0L, 0L, localHashMap, "", false);
   }
   
-  public boolean a()
+  public static boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return apzv.a().b();
   }
   
-  public String b()
+  public static void b(String paramString)
   {
-    return this.c;
+    if (a())
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_pv", true, 0L, 0L, localHashMap, "", false);
+    }
   }
   
-  public String c()
+  public static void b(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return this.d;
-  }
-  
-  public String d()
-  {
-    return this.e;
-  }
-  
-  public String e()
-  {
-    return this.b;
-  }
-  
-  public String f()
-  {
-    return this.f;
-  }
-  
-  public String toString()
-  {
-    return "iconUrlMini=" + this.jdField_a_of_type_JavaLangString + ", iconUrlBig=" + this.b + ", appLackOfIcons=" + this.jdField_a_of_type_Int + ", isAndroidInfoExist=" + this.jdField_a_of_type_Boolean + ", sourceUrl=" + this.c + ", appName=" + this.d + ", pkgName=" + this.e + ", mErrorWording=" + this.f;
+    if (!a()) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1)
+    {
+      str = "1";
+      label24:
+      localHashMap.put("errCode", str);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      if (!paramBoolean2) {
+        break label140;
+      }
+      str = "1";
+      label54:
+      localHashMap.put("isLocalEngineExist", str);
+      if (!paramBoolean3) {
+        break label147;
+      }
+    }
+    label140:
+    label147:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("isLocalAppExist", str);
+      axrn.a(BaseApplicationImpl.getContext()).a("", "qq_flutter_download_cost", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 1, String.format("reportDownloadCost: %s", new Object[] { Long.valueOf(paramLong) }));
+      return;
+      str = "0";
+      break label24;
+      str = "0";
+      break label54;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,52 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import ayki;
+import aykk;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import pax;
-import pmz;
-import rvn;
-import rvo;
-import rvp;
+import pau;
+import pmw;
+import rvk;
+import rvl;
+import rvm;
 
 public class NativeBiuCommentView
   extends ReadInJoyYAFolderTextView
-  implements IView, rvp<CharSequence>
+  implements IView, rvm<CharSequence>
 {
   public final String a;
-  private rvn jdField_a_of_type_Rvn;
-  private rvo<CharSequence> jdField_a_of_type_Rvo;
+  private rvk jdField_a_of_type_Rvk;
+  private rvl<CharSequence> jdField_a_of_type_Rvl;
   
   public NativeBiuCommentView(Context paramContext)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangString = "NativeBiuCommentView";
-    setSpannableFactory(ayki.a);
+    setSpannableFactory(aykk.a);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Rvn != null)
+    if (this.jdField_a_of_type_Rvk != null)
     {
-      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Rvn.a();
+      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Rvk.a();
       setMaxLines(a(localArticleInfo));
-      setSpanText(ajyc.a(2131707067));
-      setMoreSpan(new pmz(this, localArticleInfo, -3355444));
-      this.jdField_a_of_type_Rvo = this.jdField_a_of_type_Rvn.c();
-      this.jdField_a_of_type_Rvo.a(this);
-      setText((CharSequence)this.jdField_a_of_type_Rvo.a());
+      setSpanText(ajya.a(2131707078));
+      setMoreSpan(new pmw(this, localArticleInfo, -3355444));
+      this.jdField_a_of_type_Rvl = this.jdField_a_of_type_Rvk.c();
+      this.jdField_a_of_type_Rvl.a(this);
+      setText((CharSequence)this.jdField_a_of_type_Rvl.a());
     }
   }
   
-  public void a(rvo<CharSequence> paramrvo)
+  public void a(rvl<CharSequence> paramrvl)
   {
-    paramrvo = (CharSequence)paramrvo.a();
-    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramrvo));
+    paramrvl = (CharSequence)paramrvl.a();
+    ThreadManager.getUIHandler().post(new NativeBiuCommentView.1(this, paramrvl));
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -82,22 +82,22 @@ public class NativeBiuCommentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Rvo != null) {
-      this.jdField_a_of_type_Rvo.b(this);
+    if (this.jdField_a_of_type_Rvl != null) {
+      this.jdField_a_of_type_Rvl.b(this);
     }
   }
   
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    if (this.jdField_a_of_type_Rvo != null) {
-      this.jdField_a_of_type_Rvo.b(this);
+    if (this.jdField_a_of_type_Rvl != null) {
+      this.jdField_a_of_type_Rvl.b(this);
     }
   }
   
-  public void setModel(pax parampax)
+  public void setModel(pau parampau)
   {
-    this.jdField_a_of_type_Rvn = parampax.a().articleViewModel;
+    this.jdField_a_of_type_Rvk = parampau.a().articleViewModel;
     b();
   }
 }

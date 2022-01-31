@@ -1,75 +1,45 @@
-import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.fragment.TroopRobotFragment;
+import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqjx
-  implements TextWatcher
+  extends akil
 {
-  public int a;
-  public CharSequence a;
-  public boolean a;
-  int b = -1;
-  int c = -1;
+  public aqjx(TroopRobotFragment paramTroopRobotFragment) {}
   
-  public aqjx(BlockableEditTextView paramBlockableEditTextView)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    {
+      TroopRobotFragment.a(this.a, paramLong1);
       return;
     }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
+    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, bami parambami)
   {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
+    String str = String.valueOf(paramLong);
+    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
     {
-      Editable localEditable;
-      aqjy[] arrayOfaqjy;
-      do
+      if ((paramBoolean) && (parambami != null) && (this.a.getActivity() != null))
       {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfaqjy = (aqjy[])localEditable.getSpans(paramInt1, paramInt1, aqjy.class);
-      } while ((arrayOfaqjy == null) || (arrayOfaqjy.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfaqjy[0]);
-      this.c = localEditable.getSpanEnd(arrayOfaqjy[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
+        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
+        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambami));
+        return;
+      }
+      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
+      TroopRobotFragment.a(this.a, paramLong);
+      return;
+    }
+    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aqjx
  * JD-Core Version:    0.7.0.1
  */

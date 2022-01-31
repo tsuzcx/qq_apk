@@ -1,57 +1,60 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView;
 
 public class aflx
-  extends ajxl
 {
-  public aflx(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  public ImageView a;
+  public TextView a;
+  public TriangleView a;
+  public ImageView b;
+  public TextView b;
   
-  protected void onAddFriend(String paramString)
+  public aflx(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370791));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370792));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370790));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131377690));
   }
   
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
     }
-    ConnectionsExplorationFragment.a(this.a, false, true);
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(0);
+    }
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
     }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
+    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
+      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
     }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, true);
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
     }
-    while (paramInt1 != 1205) {
-      return;
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
     }
-    ConnectionsExplorationFragment.a(this.a, false, false);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTriangleView.setVisibility(4);
     }
   }
 }

@@ -1,8 +1,6 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-
 public abstract interface slh
 {
-  public abstract void a(FromServiceMsg paramFromServiceMsg);
+  public abstract void a(sls paramsls);
 }
 
 

@@ -1,37 +1,14 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class attq
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  attq(atte paramatte) {}
+  attq(attm paramattm, bbgu parambbgu) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new attx(this.a, paramView), paramView, 0);
-    localObject = atte.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    atte.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(atte.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    this.jdField_a_of_type_Bbgu.dismiss();
   }
 }
 

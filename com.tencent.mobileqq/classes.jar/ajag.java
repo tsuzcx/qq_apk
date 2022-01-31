@@ -1,24 +1,51 @@
-import android.os.Bundle;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
+import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.4;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
 
-final class ajag
-  implements BusinessObserver
+public class ajag
+  implements ysy
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ajag(CmGameBannerAds.4 param4, GdtBannerAd paramGdtBannerAd) {}
+  
+  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
   {
-    try
-    {
-      paramInt = paramBundle.getInt("extra_result_code");
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
-      }
-      return;
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
+      return paramGdtAd.getAd().getAId();
     }
-    catch (Exception paramBundle)
-    {
-      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
-    }
+    return -2147483648L;
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    paramGdtAd = new ajah();
+    paramGdtAd.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
+    paramGdtAd.b = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Int;
+    paramGdtAd.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b;
+    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b), paramGdtAd);
+    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, 0, 0);
+  }
+  
+  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, ysx paramysx)
+  {
+    QLog.e("cmgame_process.CmGameBannerAds", 1, "onAdFailedToLoad " + paramysx.a());
+    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, -1, paramysx.a());
+  }
+  
+  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+  }
+  
+  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  {
+    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
   }
 }
 

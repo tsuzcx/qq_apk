@@ -6,13 +6,13 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import bcms;
+import bcnh;
 
 public class InputMethodLinearLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  protected bcms a;
+  protected bcnh a;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -43,14 +43,14 @@ public class InputMethodLinearLayout
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Bcms != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
+    if ((this.jdField_a_of_type_Bcnh != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
       if ((paramInt2 >= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4)) {
         break label90;
       }
     }
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      this.jdField_a_of_type_Bcms.a(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Bcnh.a(this.jdField_a_of_type_Boolean);
       measure(this.jdField_a_of_type_Int - paramInt1 + getWidth(), this.b - paramInt2 + getHeight());
       label90:
       do
@@ -60,9 +60,9 @@ public class InputMethodLinearLayout
     }
   }
   
-  public void setOnSizeChangedListenner(bcms parambcms)
+  public void setOnSizeChangedListenner(bcnh parambcnh)
   {
-    this.jdField_a_of_type_Bcms = parambcms;
+    this.jdField_a_of_type_Bcnh = parambcnh;
   }
 }
 

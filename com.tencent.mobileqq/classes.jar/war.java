@@ -1,34 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
 
 final class war
-  extends wad
+  extends waa
 {
-  war(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
+  war(waa paramwaa) {}
   
   public void onFailure(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    this.jdField_a_of_type_Wad.onFailure(paramString);
-    if ((this.jdField_a_of_type_Wad instanceof swk)) {
-      ((swk)this.jdField_a_of_type_Wad).a(941004);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
+    this.a.onFailure(paramString);
+    vei.a("music_composite", "music_clip", 0, 1, new String[0]);
   }
   
   public void onStart()
   {
     super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
   }
   
   public void onSuccess(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    vei.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
+    }
   }
 }
 

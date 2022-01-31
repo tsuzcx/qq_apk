@@ -1,98 +1,13 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
-class bhid
-  implements bhib
+public class bhid
+  implements bhhk
 {
-  private IBinder a;
+  public bhid(PanoramaView paramPanoramaView) {}
   
-  bhid(IBinder paramIBinder)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeFloat(paramFloat);
-      localParcel1.writeLong(paramLong);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 

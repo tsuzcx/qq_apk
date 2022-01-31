@@ -1,6 +1,15 @@
-public abstract interface tjy
+import java.util.List;
+
+public class tjy
+  extends ssh
 {
-  public abstract void a(tjx paramtjx);
+  public List<String> a;
+  public List<tnc> b;
+  
+  public String toString()
+  {
+    return "GetStoryPlayerTagInfoEvent{requestVidList=" + this.a + ", tagVidList=" + this.b + '}';
+  }
 }
 
 

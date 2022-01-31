@@ -1,113 +1,63 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class anqa
-  extends anpi
+  extends anpn
 {
-  public static final String a;
-  public static final String[] a;
-  
-  static
-  {
-    if (AppSetting.b) {}
-    for (String str = "android.qq.readinjoy.viola_biz64_810";; str = "android.qq.readinjoy.viola_biz_810")
-    {
-      jdField_a_of_type_JavaLangString = str;
-      jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libviola.so" };
-      return;
-    }
-  }
+  QQAppInterface b = null;
   
   public anqa(QQAppInterface paramQQAppInterface)
   {
-    super(jdField_a_of_type_JavaLangString, paramQQAppInterface);
-  }
-  
-  public static void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (anox)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (anqa)((anox)localObject).a(jdField_a_of_type_JavaLangString);
-        if (localObject != null)
-        {
-          ((anqa)localObject).a(true);
-          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
-        }
-      }
-    }
-  }
-  
-  public static boolean i()
-  {
-    String str = osz.a();
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      File localFile = new File(str, jdField_a_of_type_ArrayOfJavaLangString[i]);
-      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
+    super("qq.android.qav.image2", paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
   public int a()
   {
-    return 10079;
+    return 10047;
   }
   
   public Class<? extends XmlData> a()
   {
-    return ViolaBizLibData.class;
+    return QavImageData.class;
   }
   
   public String a()
   {
-    return "viola.ViolaBizLibHandler";
+    return "qavDownloadImageDuration";
   }
   
   public void a(String paramString)
   {
-    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
+    if (QLog.isColorLevel()) {
+      QLog.d("QavImageHandler", 2, "download success: " + paramString);
     }
-    if (new File(paramString).exists())
+    try
     {
-      if (osz.a(paramString)) {
-        break label148;
-      }
-      if (localXmlData != null)
-      {
-        localXmlData.loadState = 0;
-        localXmlData.Version = 0;
-        anow.a(localXmlData, new String[] { "loadState", "Version" });
-      }
-      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip " + jdField_a_of_type_JavaLangString + " lib failed!");
-    }
-    label148:
-    do
-    {
+      bbdx.a(paramString, mrs.b(), false);
+      super.a(paramString);
       return;
-      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
-      if (paramString != null) {
-        paramString.edit().putString("res_name", jdField_a_of_type_JavaLangString).commit();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
       }
-    } while (!anqb.i());
-    ost.a("biz doOnDownloadSuccess");
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavImageData localQavImageData = (QavImageData)a();
+    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
+    {
+      localQavImageData.autoDownload = true;
+      anpb.a(localQavImageData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
   }
   
   public boolean a()
@@ -118,6 +68,11 @@ public class anqa
   public String b()
   {
     return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavImageData)a()).autoDownload;
   }
 }
 

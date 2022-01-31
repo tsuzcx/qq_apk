@@ -7,19 +7,19 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import tem;
-import veg;
-import vyt;
-import vyu;
-import vyz;
-import vza;
+import tej;
+import ved;
+import vyq;
+import vyr;
+import vyw;
+import vyx;
 
 public class PollContainerLayout
   extends FrameLayout
 {
   public StoryVideoItem a;
-  public tem a;
-  private final vyu jdField_a_of_type_Vyu = vyt.a(getContext(), 1, 1, null);
+  public tej a;
+  private final vyr jdField_a_of_type_Vyr = vyq.a(getContext(), 1, 1, null);
   boolean jdField_a_of_type_Boolean = false;
   
   public PollContainerLayout(@NonNull Context paramContext)
@@ -30,9 +30,9 @@ public class PollContainerLayout
   public PollContainerLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Vyu.a(false);
+    this.jdField_a_of_type_Vyr.a(false);
     paramContext = new FrameLayout.LayoutParams(-2, -2);
-    addView(this.jdField_a_of_type_Vyu.a(), paramContext);
+    addView(this.jdField_a_of_type_Vyr.a(), paramContext);
     setVisibility(4);
     setClipChildren(false);
     setClickable(false);
@@ -40,11 +40,11 @@ public class PollContainerLayout
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Tem == null) {
+    if (this.jdField_a_of_type_Tej == null) {
       return;
     }
-    this.jdField_a_of_type_Vyu.a(this.jdField_a_of_type_Tem, paramInt1, paramInt2);
-    this.jdField_a_of_type_Vyu.a();
+    this.jdField_a_of_type_Vyr.a(this.jdField_a_of_type_Tej, paramInt1, paramInt2);
+    this.jdField_a_of_type_Vyr.a();
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
@@ -58,40 +58,40 @@ public class PollContainerLayout
     a(null, -1, null);
   }
   
-  public void a(tem paramtem, int paramInt, int[] paramArrayOfInt)
+  public void a(tej paramtej, int paramInt, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Tem = paramtem;
-    if (paramtem == null)
+    this.jdField_a_of_type_Tej = paramtej;
+    if (paramtej == null)
     {
       setVisibility(4);
       return;
     }
     setVisibility(0);
-    paramtem = paramtem.a;
-    this.jdField_a_of_type_Vyu.a().a(paramtem[0]);
+    paramtej = paramtej.a;
+    this.jdField_a_of_type_Vyr.a().a(paramtej[0]);
     int i = 1;
-    while (i < paramtem.length)
+    while (i < paramtej.length)
     {
-      this.jdField_a_of_type_Vyu.a(i - 1).a(paramtem[i]);
-      this.jdField_a_of_type_Vyu.a(i - 1).b(false);
+      this.jdField_a_of_type_Vyr.a(i - 1).a(paramtej[i]);
+      this.jdField_a_of_type_Vyr.a(i - 1).b(false);
       i += 1;
     }
     if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0))
     {
-      this.jdField_a_of_type_Vyu.a(paramInt).b(true);
+      this.jdField_a_of_type_Vyr.a(paramInt).b(true);
       if (paramArrayOfInt != null)
       {
-        this.jdField_a_of_type_Vyu.a(paramArrayOfInt);
-        this.jdField_a_of_type_Vyu.a(true);
+        this.jdField_a_of_type_Vyr.a(paramArrayOfInt);
+        this.jdField_a_of_type_Vyr.a(true);
       }
     }
     for (;;)
     {
       a(getWidth(), getHeight());
       return;
-      this.jdField_a_of_type_Vyu.a(false);
+      this.jdField_a_of_type_Vyr.a(false);
       continue;
-      this.jdField_a_of_type_Vyu.a(false);
+      this.jdField_a_of_type_Vyr.a(false);
     }
   }
   
@@ -106,7 +106,7 @@ public class PollContainerLayout
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     a(paramInt3 - paramInt1, paramInt4 - paramInt2);
-    veg.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
+    ved.a("PollContainerLayout", "onLayout wh(%d, %d)", Integer.valueOf(paramInt3 - paramInt1), Integer.valueOf(paramInt4 - paramInt2));
   }
 }
 

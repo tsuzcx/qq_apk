@@ -1,16 +1,16 @@
 import com.tencent.qphone.base.util.QLog;
 
 class atay
-  extends atgf
+  implements ajua
 {
-  atay(atat paramatat, int paramInt) {}
+  atay(atav paramatav) {}
   
-  protected void a()
+  public void a(int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      atbp.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
+      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
     }
-    atat.a(this.jdField_a_of_type_Atat, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    atav.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
   }
 }
 

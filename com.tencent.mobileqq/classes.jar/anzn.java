@@ -1,30 +1,95 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class anzn
-  implements asko<EmoticonPackage>
+public class anzn
 {
-  anzn(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
+  public static long a;
+  public int a;
+  public boolean a;
+  public long b;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  static
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006))
+    jdField_a_of_type_Long = 86400000L;
+  }
+  
+  public static anzn a(String paramString, boolean paramBoolean)
+  {
+    Object localObject = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    paramString = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4).getString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramString, null);
+    if (paramString != null) {}
+    do
     {
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, String.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      try
+      {
+        paramString = new anzn().a(new JSONObject(paramString));
+        return paramString;
       }
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
-      return;
+      catch (JSONException paramString)
+      {
+        QLog.e("EmoticonRecDressup", 1, "getEmotionRecommend failed", paramString);
+      }
+      paramString = localObject;
+    } while (!paramBoolean);
+    paramString = new anzn();
+    paramString.jdField_a_of_type_Boolean = true;
+    return paramString;
+  }
+  
+  private anzn a(JSONObject paramJSONObject)
+  {
+    this.b = paramJSONObject.optLong("0");
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("1");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("2");
+    return this;
+  }
+  
+  public static void a(long paramLong)
+  {
+    jdField_a_of_type_Long = 1000L * paramLong;
+    QLog.i("EmoticonRecDressup", 1, "EmotionPanelViewPagerAdapter.RECOMMEND_EXPIRED_TIME update to " + jdField_a_of_type_Long);
+  }
+  
+  public void a(int paramInt)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    SharedPreferences localSharedPreferences = localBaseApplicationImpl.getSharedPreferences("emosm_sp_is_recommend", 4);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    long l1 = localSharedPreferences.getLong("createTime", 0L);
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 > 2592000000L)
+    {
+      localEditor.clear();
+      localEditor.putLong("createTime", l2);
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Int), false, true);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
+    this.b = l2;
+    localEditor.putString(localBaseApplicationImpl.getRuntime().getAccount() + "_" + paramInt, toString());
+    localEditor.commit();
+  }
+  
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("0", this.b);
+      localJSONObject.put("1", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("2", this.jdField_a_of_type_Int);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("EmoticonRecDressup", 1, "toString failed", localJSONException);
+      }
+    }
   }
 }
 

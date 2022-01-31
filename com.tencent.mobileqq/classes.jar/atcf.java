@@ -1,244 +1,65 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.RemoteException;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class atcf
+  extends BaseAdapter
 {
-  private static atcf jdField_a_of_type_Atcf;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private atch jdField_a_of_type_Atch;
-  private atci jdField_a_of_type_Atci = new atci();
-  private lwq jdField_a_of_type_Lwq;
-  public boolean a;
-  private int b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  protected int a;
   
-  public static atcf a()
+  public atcf(GameQuickWordsPanel paramGameQuickWordsPanel)
   {
-    if (jdField_a_of_type_Atcf == null) {}
-    try
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      if (jdField_a_of_type_Atcf == null) {
-        jdField_a_of_type_Atcf = new atcf();
-      }
-      return jdField_a_of_type_Atcf;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2131558547, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, actj.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
+      paramViewGroup = new atcg(this);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131373494));
+      paramView.setTag(paramViewGroup);
     }
-    finally {}
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt == 2;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Lwq == null) {}
-    do
+    for (;;)
     {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwq.a(paramBoolean);
-        return;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomAVController", 2, "setSoundEnable: " + QLog.getStackTraceString(localRemoteException));
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_Int != -1) {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label23;
-      }
-    }
-    label23:
-    for (boolean bool = true;; bool = false)
-    {
-      b(bool);
-      return;
+      String str = (String)getItem(paramInt);
+      paramViewGroup.a.setText(str);
+      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
+      return paramView;
+      paramViewGroup = (atcg)paramView.getTag();
     }
   }
   
-  public int a()
+  public void notifyDataSetChanged()
   {
-    return this.jdField_a_of_type_Atci.a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Atch != null)
-    {
-      BaseApplicationImpl.getApplication().unbindService(this.jdField_a_of_type_Atch);
-      this.jdField_a_of_type_Atch = null;
+    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_Aepe.a();
+    if (localHashMap.containsKey("quickWordColor")) {
+      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
     }
-    this.jdField_a_of_type_Lwq = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    if (a(paramInt))
-    {
-      b(false);
-      return;
-    }
-    f();
-  }
-  
-  public void a(int paramInt1, String paramString1, int paramInt2, long paramLong, String paramString2)
-  {
-    if ((!this.c) && (!this.d)) {
-      this.jdField_a_of_type_Atci.a(paramInt1, paramString1, paramInt2, paramLong, paramString2);
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, long paramLong, String paramString2)
-  {
-    if ((!this.c) && (!this.d)) {
-      this.jdField_a_of_type_Atci.a(paramInt, paramString1, 10, paramLong, paramString2);
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Lwq == null) {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_Lwq.a(paramLong);
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Atci.a();
-      this.jdField_a_of_type_Lwq = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GameRoomAVController", 2, "exitRoom: " + QLog.getStackTraceString(localException));
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Lwq == null) {}
-    do
-    {
-      return;
-      try
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)) && (((QQAppInterface)localAppRuntime).a().d())) {
-          this.jdField_a_of_type_Lwq.c();
-        }
-        this.jdField_a_of_type_Lwq.a(paramLong, paramString);
-        this.jdField_b_of_type_Boolean = true;
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomAVController", 2, "enterRoom: " + QLog.getStackTraceString(paramString));
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_Lwq = null;
-    paramContext.stopService(new Intent(paramContext, AVServiceForQQ.class));
-  }
-  
-  public void a(atcg paramatcg)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (this.jdField_a_of_type_Lwq == null)
-    {
-      localIntent = new Intent(localBaseApplicationImpl, AVServiceForQQ.class);
-      this.jdField_a_of_type_Atch = new atch(this, paramatcg);
-      localBaseApplicationImpl.bindService(localIntent, this.jdField_a_of_type_Atch, 1);
-    }
-    while (paramatcg == null)
-    {
-      Intent localIntent;
-      return;
-    }
-    paramatcg.bt();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      this.jdField_a_of_type_Int = i;
-      if ((!paramBoolean) || (!a(this.jdField_b_of_type_Int))) {
-        break;
-      }
-      return;
-    }
-    b(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lwq != null;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Lwq == null) {}
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwq.a();
-        return;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomAVController", 2, "startSpeak: " + QLog.getStackTraceString(localRemoteException));
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Lwq == null) {}
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwq.b();
-        return;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomAVController", 2, "stopSpeak: " + QLog.getStackTraceString(localRemoteException));
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Atci.a();
-  }
-  
-  public void e()
-  {
-    f();
+    super.notifyDataSetChanged();
   }
 }
 

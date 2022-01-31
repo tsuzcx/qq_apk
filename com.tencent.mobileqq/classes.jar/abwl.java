@@ -1,30 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class abwl
-  implements View.OnTouchListener
+  implements awcf
 {
-  public abwl(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
+  public abwl(QQSettingMe paramQQSettingMe) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      muf.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
-      muf.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      muf.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
-      continue;
-      muf.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
-      muf.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
-      muf.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
+    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
+      this.a.z();
     }
   }
 }

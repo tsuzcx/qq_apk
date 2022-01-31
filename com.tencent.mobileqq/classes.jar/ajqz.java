@@ -1,30 +1,25 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Deque;
 
 public class ajqz
-  implements ajri
+  implements PopupWindow.OnDismissListener
 {
   public ajqz(ApolloPanel paramApolloPanel) {}
   
-  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  public void onDismiss()
   {
-    ApolloPanel.e(this.a);
-    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+    this.a.a = null;
+    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
     {
-      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
-      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690116), 5);
+      ajre localajre = (ajre)ApolloPanel.a(this.a).poll();
+      if (ApolloPanel.a(this.a).size() == 0) {
+        ApolloPanel.a(this.a, null);
+      }
+      if (localajre != null) {
+        ApolloPanel.a(this.a, localajre.jdField_a_of_type_AndroidViewView, localajre.jdField_a_of_type_Int, localajre.jdField_a_of_type_JavaLangString, localajre.b);
+      }
     }
-  }
-  
-  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
-  {
-    ApolloPanel.e(this.a);
-    paramApolloPanelGuideView = (bbqp)this.a.a.a.a(71);
-    paramApolloPanelGuideView.a(new ajra(this, paramApolloPanelGuideView));
-    paramApolloPanelGuideView.c("guide_page", 1);
   }
 }
 

@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tribe.async.dispatch.Dispatcher;
-
-class umu
-  implements View.OnClickListener
+public class umu
 {
-  umu(umt paramumt) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public umu(String paramString1, String paramString2)
   {
-    paramView = new umn();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (paramView.a = 0;; paramView.a = 1)
-    {
-      ste.a().dispatch(paramView);
-      return;
-      this.a.a.a = true;
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
   }
 }
 

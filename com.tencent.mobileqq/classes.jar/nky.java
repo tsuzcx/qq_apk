@@ -1,24 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import java.util.List;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
-public abstract class nky
-  implements ajtg
+public class nky
+  implements ViewPager.PageTransformer
 {
-  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
+  private nky(VerticleViewPager paramVerticleViewPager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void transformPage(View paramView, float paramFloat)
   {
-    if (paramObject != null) {}
-    try
+    if (paramFloat < -1.0F)
     {
-      paramObject = (Bundle)paramObject;
-      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+      paramView.setAlpha(0.0F);
       return;
     }
-    catch (Exception paramObject) {}
-    a(false, null, new Bundle());
-    return;
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 

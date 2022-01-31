@@ -1,20 +1,11 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-
-public class bfwy
-  implements View.OnFocusChangeListener
+class bfwy
 {
-  public bfwy(XPanelContainer paramXPanelContainer) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
-    }
-  }
+  bfwy(bfwx parambfwx) {}
 }
 
 

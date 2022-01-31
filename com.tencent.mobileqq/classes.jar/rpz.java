@@ -1,29 +1,64 @@
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 public class rpz
+  implements rqa
 {
-  public String a;
-  public rpu a;
-  public String b;
+  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public rpz(String paramString, rpu paramrpu, boolean paramBoolean)
+  public rpz(Context paramContext, String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    this.jdField_a_of_type_Rpu = paramrpu;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    this.b = paramString;
+    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public String a()
+  public InputStream a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return this.b;
+    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+  }
+  
+  public List<String> a()
+  {
+    try
+    {
+      localList = rqj.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
+      if (localList == null) {
+        break label28;
+      }
     }
-    return this.jdField_a_of_type_JavaLangString;
+    catch (Exception localException)
+    {
+      label28:
+      do
+      {
+        List localList;
+        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
+        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
+        localArrayList = new ArrayList();
+        localObject = localArrayList;
+      } while (arrayOfString == null);
+      j = arrayOfString.length;
+      i = 0;
+    }
+    return localList;
+    for (;;)
+    {
+      String[] arrayOfString;
+      ArrayList localArrayList;
+      int j;
+      int i;
+      Object localObject = localArrayList;
+      if (i >= j) {
+        break;
+      }
+      localArrayList.add(arrayOfString[i]);
+      i += 1;
+    }
   }
 }
 

@@ -1,37 +1,10 @@
-class tpf
-  implements tpl
+public abstract interface tpf
 {
-  tpf(tpe paramtpe) {}
+  public abstract void a(trm paramtrm);
   
-  public void a(trp paramtrp)
-  {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).a(paramtrp.a);
-    }
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).a();
-    }
-  }
+  public abstract void b(trm paramtrm);
   
-  public void b(trp paramtrp)
-  {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).c(paramtrp.a);
-    }
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).a();
-    }
-  }
-  
-  public void c(trp paramtrp)
-  {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).d(paramtrp.a);
-    }
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).a();
-    }
-  }
+  public abstract void c(trm paramtrm);
 }
 
 

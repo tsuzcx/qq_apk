@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.data.ApolloFavActionData;
+import com.tencent.mobileqq.data.ApolloActionData;
 import java.util.Comparator;
 
 class ajmx
-  implements Comparator<ApolloFavActionData>
+  implements Comparator<ApolloActionData>
 {
-  ajmx(ajmw paramajmw) {}
+  ajmx(ajmu paramajmu) {}
   
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
       return 0;
     }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
       return 1;
     }
     return -1;

@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
-import bify;
+import bigp;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$8
   implements Runnable
 {
-  public QIMCameraCaptureUnit$8(bify parambify, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
+  public QIMCameraCaptureUnit$8(bigp parambigp, boolean paramBoolean1, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean2) {}
   
   public void run()
   {

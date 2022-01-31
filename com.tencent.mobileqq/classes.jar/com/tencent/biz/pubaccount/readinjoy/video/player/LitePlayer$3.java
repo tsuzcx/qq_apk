@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import qub;
-import qyp;
+import qty;
+import qym;
 
 public class LitePlayer$3
   implements Runnable
 {
-  public LitePlayer$3(qyp paramqyp, qub paramqub) {}
+  public LitePlayer$3(qym paramqym, qty paramqty) {}
   
   public void run()
   {

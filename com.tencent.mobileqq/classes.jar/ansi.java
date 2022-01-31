@@ -1,30 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class ansi
-  implements Handler.Callback
+final class ansi
+  implements DialogInterface.OnClickListener
 {
-  ansi(ansh paramansh) {}
+  ansi(QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      bcpw.a(ansh.a(this.a), 2131692829, 0).b(2131298865);
-      return true;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
+    if (paramInt == 1) {
+      bbrk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719975), "");
     }
-    bcpw.a(ansh.a(this.a), 1, 2131689687, 0).b(2131298865);
-    return true;
   }
 }
 

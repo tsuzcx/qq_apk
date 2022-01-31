@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import com.tencent.qphone.base.util.QLog;
 
 public class bftv
-  implements View.OnClickListener
+  extends bfvw
 {
-  public bftv(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
+  public Drawable a;
   
-  public void onClick(View paramView)
+  public void a(SpannableString paramSpannableString)
   {
-    if (this.b.jdField_a_of_type_Bftx != null) {
-      this.b.jdField_a_of_type_Bftx.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
     }
+    paramSpannableString.setSpan(new bftu(this.a, 1), this.b, this.c, 17);
   }
 }
 

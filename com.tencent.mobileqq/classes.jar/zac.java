@@ -1,33 +1,15 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 
-class zac
-  implements GestureDetector.OnGestureListener
+public class zac
+  implements View.OnClickListener
 {
-  zac(zab paramzab) {}
+  public zac(GdtCanvasView paramGdtCanvasView) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return true;
+    this.a.a();
   }
 }
 

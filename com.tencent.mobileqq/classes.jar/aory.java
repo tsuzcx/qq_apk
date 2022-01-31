@@ -1,14 +1,19 @@
-public abstract interface aory
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+
+public class aory
+  implements axof
 {
-  public abstract void d();
+  public aory(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public abstract void e();
+  public void a()
+  {
+    FileAssistantActivity.c(this.a);
+  }
   
-  public abstract void n();
-  
-  public abstract void p();
-  
-  public abstract void q();
+  public void b()
+  {
+    FileAssistantActivity.c(this.a);
+  }
 }
 
 

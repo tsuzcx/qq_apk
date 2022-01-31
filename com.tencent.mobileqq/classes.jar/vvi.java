@@ -1,18 +1,12 @@
-public class vvi
+public abstract interface vvi
 {
-  protected int a = 48000;
-  protected int b = 1;
-  protected int c = 1;
-  protected int d = 48000;
-  protected int e = 1;
-  protected int f = 1;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
   
-  public void a() {}
+  public abstract void a(String paramString);
   
-  public byte[] a(int paramInt1, int paramInt2)
-  {
-    return null;
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract boolean a();
 }
 
 

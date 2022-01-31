@@ -1,55 +1,119 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class afql
-  extends ajxl
+public class afql
+  extends ampa<afss>
 {
-  afql(afqe paramafqe) {}
-  
-  public void onConversationRecommendTypeChange(int paramInt)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
-    }
-    afqe.c(this.a, paramInt);
+    return 438;
   }
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  @NonNull
+  public afss a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
     }
-    if (paramBoolean) {
-      afqe.a(this.a, false, false);
-    }
+    return new afss();
   }
   
-  public void onRecommendTroopJoinedOrDeleted(String paramString)
+  @Nullable
+  public afss a(amph[] paramArrayOfamph)
   {
-    if ((afqe.a(this.a) instanceof afsp)) {
-      ((afsp)afqe.a(this.a)).a(paramString);
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + afqe.b(this.a));
-    }
-    if (afqe.b(this.a))
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      int i = afqe.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + afqe.b(this.a) + "  defaultPos:" + i);
-      }
-      if (afqe.b(this.a) != i)
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfamph);
+      if (paramArrayOfamph != null)
       {
-        afqe.c(this.a, true);
-        afqe.b(this.a, i);
-        afqe.c(this.a, false);
+        j = paramArrayOfamph.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfamph[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((amph)localObject1).a);
+          }
+          i += 1;
+        }
       }
-      afqe.b(this.a, false);
     }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      j = paramArrayOfamph.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfamph[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((amph)localObject2).a))) {
+          try
+          {
+            localObject1 = new afss();
+            localObject2 = new JSONObject(((amph)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((afss)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((afss)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public Class<afss> a()
+  {
+    return afss.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
+  }
+  
+  public void a(afss paramafss)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramafss != null) {
+      ContactReportUtils.a(paramafss);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

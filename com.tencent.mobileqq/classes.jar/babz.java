@@ -1,11 +1,22 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class babz
-  implements bcmw
+  extends BroadcastReceiver
 {
-  babz(baby parambaby) {}
+  babz(babx parambabx) {}
   
-  public void a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a();
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
+      this.a.b(babx.a(this.a));
+    }
+    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+      return;
+    }
+    this.a.b(babx.a(this.a));
   }
 }
 

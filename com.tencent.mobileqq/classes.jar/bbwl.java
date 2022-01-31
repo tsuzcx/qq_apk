@@ -1,14 +1,14 @@
-import android.os.Bundle;
-
 public abstract interface bbwl
 {
-  public abstract int a(boolean paramBoolean, String paramString);
+  public abstract void a(long paramLong);
   
-  public abstract bbwg a(String paramString);
+  public abstract void a(long paramLong, int paramInt);
   
-  public abstract void a(bbwg parambbwg, bbwf parambbwf, Bundle paramBundle);
+  public abstract void a(long paramLong, int paramInt, String paramString);
   
-  public abstract void b();
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void b(long paramLong1, long paramLong2);
 }
 
 

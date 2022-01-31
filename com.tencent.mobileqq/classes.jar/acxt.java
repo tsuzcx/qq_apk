@@ -1,78 +1,13 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acxt
-  extends BaseAdapter
+final class acxt
+  implements bfpj
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  ArrayList<acxs> jdField_a_of_type_JavaUtilArrayList;
+  acxt(QQAppInterface paramQQAppInterface) {}
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(ArrayList<acxs> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = BaseApplication.getContext();
-    acxs localacxs;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup).inflate(2131558762, null);
-      paramViewGroup = new acxu();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367800));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131366359));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377044));
-      paramView.setTag(paramViewGroup);
-      localacxs = (acxs)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localacxs.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacxs.jdField_a_of_type_JavaLangString);
-      if (!localacxs.jdField_a_of_type_Boolean) {
-        break label163;
-      }
-      paramViewGroup.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = localacxs.jdField_a_of_type_Int;
-      paramView.setContentDescription(localacxs.b);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return paramView;
-      paramViewGroup = (acxu)paramView.getTag();
-      break;
-      label163:
-      paramViewGroup.b.setVisibility(8);
-    }
+    axqy.b(this.a, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
   }
 }
 

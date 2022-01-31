@@ -1,63 +1,73 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class bjjf
-  implements SeekBar.OnSeekBarChangeListener
+class bjjf
+  implements aysc
 {
-  public bjjf(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
+  bjjf(bjje parambjje, String paramString1, String paramString2, bjjh parambjjh, String paramString3, String paramString4, bjjg parambjjg) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onResp(aysz paramaysz)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.c(paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramaysz.c + " threadid=" + Thread.currentThread().getId());
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
-    }
-    int j = 300;
-    int i = j;
-    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
-    {
-      i = j;
-      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
-      {
-        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-        i = 0;
+    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
+    if (!localFile.exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
       }
     }
-    this.b.setAlpha(1.0F);
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
+    label249:
+    do
+    {
+      for (;;)
+      {
+        return;
+        paramaysz = "";
+        try
+        {
+          String str = bbdx.c(localFile.getPath());
+          paramaysz = str;
+          if ((TextUtils.isEmpty(this.jdField_a_of_type_Bjjh.c)) || (!this.jdField_a_of_type_Bjjh.c.equalsIgnoreCase(paramaysz))) {}
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          for (;;)
+          {
+            try
+            {
+              nav.a(localFile, this.c);
+              paramaysz = new File(this.d);
+              if (!paramaysz.exists()) {
+                break label249;
+              }
+              paramaysz = bkzp.a(paramaysz);
+              if ((this.jdField_a_of_type_Bjjg == null) || (paramaysz == null)) {
+                break;
+              }
+              this.jdField_a_of_type_Bjjg.a(paramaysz);
+              return;
+              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", localUnsatisfiedLinkError);
+            }
+            catch (IOException paramaysz)
+            {
+              QLog.e("ConfigSimplifier_PTV", 1, "onResp error, ", paramaysz);
+              continue;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.e("ConfigSimplifier_PTV", 2, new Object[] { "parseFilterConfigZip error, md5:", this.jdField_a_of_type_Bjjh.c, " ", paramaysz });
+            }
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.b(paramSeekBar.getProgress());
-    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
-      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
-    }
-    this.b.setAlpha(1.0F);
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
-    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

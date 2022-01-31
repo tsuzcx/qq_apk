@@ -1,34 +1,21 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public abstract interface bjsd
-  extends bjwv
+class bjsd
+  implements Animator.AnimatorListener
 {
-  public abstract int a();
+  bjsd(bjry parambjry) {}
   
-  public abstract Bitmap a();
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract Bitmap a(int paramInt, boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bjry.b(this.a, this.a.d);
+  }
   
-  @NonNull
-  public abstract DoodleLayout a();
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract boolean g_();
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

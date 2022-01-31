@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -11,16 +11,16 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bavi;
-import bbfd;
+import bavw;
+import bbfr;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import nmf;
-import oco;
+import nmc;
+import ocl;
 
 public class ReadInJoyAdVideoGuide
   extends RelativeLayout
@@ -31,7 +31,7 @@ public class ReadInJoyAdVideoGuide
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private String jdField_a_of_type_JavaLangString;
-  private oco jdField_a_of_type_Oco;
+  private ocl jdField_a_of_type_Ocl;
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
@@ -64,7 +64,7 @@ public class ReadInJoyAdVideoGuide
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (bbfd.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
+      if (bbfr.a(getContext(), this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
       return 2;
@@ -79,13 +79,13 @@ public class ReadInJoyAdVideoGuide
     default: 
       return "";
     case 4: 
-      return getResources().getText(2131718456).toString();
+      return getResources().getText(2131718467).toString();
     case 2: 
-      return getResources().getText(2131718451).toString();
+      return getResources().getText(2131718462).toString();
     case 3: 
-      return getResources().getText(2131718453).toString();
+      return getResources().getText(2131718464).toString();
     }
-    return getResources().getText(2131718494).toString();
+    return getResources().getText(2131718505).toString();
   }
   
   private void a(Context paramContext)
@@ -103,14 +103,14 @@ public class ReadInJoyAdVideoGuide
     {
       localResources = getResources();
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = actn.a(60.0F, localResources);
-      localURLDrawableOptions.mRequestHeight = actn.a(60.0F, localResources);
+      localURLDrawableOptions.mRequestWidth = actj.a(60.0F, localResources);
+      localURLDrawableOptions.mRequestHeight = actj.a(60.0F, localResources);
     }
     try
     {
       paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
-      paramString.setTag(bavi.b(actn.a(60.0F, localResources), actn.a(60.0F, localResources), actn.a(12.0F, localResources)));
-      paramString.setDecodeHandler(bavi.i);
+      paramString.setTag(bavw.b(actj.a(60.0F, localResources), actj.a(60.0F, localResources), actj.a(12.0F, localResources)));
+      paramString.setDecodeHandler(bavw.i);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       return;
     }
@@ -119,10 +119,10 @@ public class ReadInJoyAdVideoGuide
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362668));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362680));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363520));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362039);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362667));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362679));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363519));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362038);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -165,26 +165,26 @@ public class ReadInJoyAdVideoGuide
   
   public void onClick(View paramView)
   {
-    int i = nmf.ay;
+    int i = nmc.ay;
     switch (paramView.getId())
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Oco != null) {
-        this.jdField_a_of_type_Oco.a(paramView, i);
+      if (this.jdField_a_of_type_Ocl != null) {
+        this.jdField_a_of_type_Ocl.a(paramView, i);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyAdVideoGuide", 2, "onClick:" + i);
       }
       return;
-      i = nmf.au;
+      i = nmc.au;
       continue;
-      i = nmf.av;
+      i = nmc.av;
       continue;
-      i = nmf.aw;
+      i = nmc.aw;
       continue;
-      i = nmf.ax;
+      i = nmc.ax;
     }
   }
   
@@ -197,9 +197,9 @@ public class ReadInJoyAdVideoGuide
     a();
   }
   
-  public void setAdGuideClickListener(oco paramoco)
+  public void setAdGuideClickListener(ocl paramocl)
   {
-    this.jdField_a_of_type_Oco = paramoco;
+    this.jdField_a_of_type_Ocl = paramocl;
   }
   
   public void setAppInfo(int paramInt, String paramString1, String paramString2, String paramString3)

@@ -1,20 +1,31 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnSeekCompleteListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.11.1;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beom
-  extends beoo
+  implements VideoPlayerProxy.OnSeekCompleteListener
 {
-  public beom(BarrageView paramBarrageView, View paramView, int paramInt)
-  {
-    super(paramBarrageView, paramView, null);
-  }
+  public beom(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onSeekComplete(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetMediaDanmuBarrageView).remove(this.jdField_a_of_type_Int);
+    bejn.c().post(new MiniAppVideoPlayer.11.1(this));
+    try
+    {
+      paramVideoPlayerProxy = new JSONObject();
+      paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Behp.a("onVideoSeeked", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      betc.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoSeeked = " + paramVideoPlayerProxy.toString());
+      return;
+    }
+    catch (JSONException paramVideoPlayerProxy)
+    {
+      paramVideoPlayerProxy.printStackTrace();
+    }
   }
 }
 

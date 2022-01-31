@@ -5,8 +5,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import auue;
-import bbbd;
+import auug;
+import bbbr;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import tencent.im.label.comm.PersonalityTagComm.LabelPhoto;
 public class PersonalityLabelPhoto
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new auue();
+  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new auug();
   public static final long ID_INVALID = -1L;
   public static final String TAG = "PersonalityLabelPhoto";
   public long fileId = -1L;
@@ -79,7 +79,7 @@ public class PersonalityLabelPhoto
   
   public boolean equals(Object paramObject)
   {
-    return bbbd.a(((PersonalityLabelPhoto)paramObject).url, this.url);
+    return bbbr.a(((PersonalityLabelPhoto)paramObject).url, this.url);
   }
   
   public String get128SizeUrl()

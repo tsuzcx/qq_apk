@@ -1,132 +1,196 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.1;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.3;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.4;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule.5;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0x6e4.oidb_cmd0x6e4.RspBody;
-import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.ReqBody;
-import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.RspBody;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pay
-  extends pbh
 {
-  private HashMap<Integer, InterestLabelInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<InterestLabelInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public String a;
+  public List<String> a;
+  public String b;
+  public List<String> b;
+  public String c = "";
+  public String d = "";
   
-  public pay(AppInterface paramAppInterface, aukn paramaukn, ExecutorService paramExecutorService, pou parampou, Handler paramHandler)
+  public pay()
   {
-    super(paramAppInterface, paramaukn, paramExecutorService, parampou, paramHandler);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static String a()
   {
-    Object localObject = null;
-    oidb_cmd0x6e5.RspBody localRspBody = new oidb_cmd0x6e5.RspBody();
-    boolean bool = false;
-    if (pow.a(paramFromServiceMsg, paramObject, localRspBody) == 0)
+    return a(-1);
+  }
+  
+  public static String a(int paramInt)
+  {
+    for (;;)
     {
-      if (localRspBody.uint64_uin.has()) {
-        localRspBody.uint64_uin.get();
-      }
-      if ((!localRspBody.rpt_uint32_default_interest_label_id_list.has()) || (localRspBody.rpt_uint32_default_interest_label_id_list.get() == null)) {
-        break label195;
-      }
-    }
-    label195:
-    for (paramFromServiceMsg = localRspBody.rpt_uint32_default_interest_label_id_list.get();; paramFromServiceMsg = null)
-    {
-      paramToServiceMsg = localObject;
-      if (localRspBody.rpt_interest_label_list.has())
+      try
       {
-        paramToServiceMsg = localObject;
-        if (localRspBody.rpt_interest_label_list.get() != null) {
-          paramToServiceMsg = pot.a(localRspBody.rpt_interest_label_list.get(), paramFromServiceMsg);
+        JSONArray localJSONArray = new JSONArray();
+        if (bhvy.a(paramInt))
+        {
+          if (-1 == paramInt) {
+            break label195;
+          }
+          localObject1 = (String)bhvy.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + paramInt, "");
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject3 = new JSONObject();
+            ((JSONObject)localObject3).put("daily_sub_channel_request_data", localObject1);
+            localJSONArray.put(localObject3);
+          }
+          if (bhvy.x()) {
+            localJSONArray.put(bhvy.a());
+          }
+          return localJSONArray.toString();
+        }
+        Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+        Object localObject3 = (String)bhvy.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label190;
+        }
+        localObject1 = new JSONArray((String)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject3 = new JSONArray((String)localObject3);
+          a((JSONArray)localObject1, localJSONArray);
+          a((JSONArray)localObject3, localJSONArray);
+          if (!oou.b()) {
+            continue;
+          }
+          localJSONArray.put(pae.a(true));
+          continue;
+        }
+        localObject3 = null;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return "";
+      }
+      continue;
+      label190:
+      Object localObject2 = null;
+      continue;
+      label195:
+      localObject2 = null;
+    }
+  }
+  
+  public static pay a(JSONObject paramJSONObject)
+  {
+    int j = 0;
+    pay localpay = new pay();
+    if (paramJSONObject != null)
+    {
+      localpay.jdField_a_of_type_JavaLangString = paramJSONObject.optString("key");
+      localpay.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      localpay.d = paramJSONObject.optString("value");
+      localpay.c = paramJSONObject.optString("id");
+      Object localObject = paramJSONObject.optJSONArray("valuelist");
+      int i;
+      if (localObject != null)
+      {
+        localpay.jdField_b_of_type_JavaUtilList = new ArrayList();
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).optString(i);
+          localpay.jdField_b_of_type_JavaUtilList.add(str);
+          i += 1;
         }
       }
-      if ((this.jdField_a_of_type_Boolean) && ((!localRspBody.rpt_uint64_last_interest_label_id_list.has()) || (localRspBody.rpt_uint64_last_interest_label_id_list.get() == null) || (localRspBody.rpt_uint64_last_interest_label_id_list.get().size() <= 0)))
+      paramJSONObject = paramJSONObject.optJSONArray("idlist");
+      if (paramJSONObject != null)
       {
-        osm.a().a(true);
-        bool = true;
+        localpay.jdField_a_of_type_JavaUtilList = new ArrayList();
+        i = j;
+        while (i < paramJSONObject.length())
+        {
+          localObject = paramJSONObject.optString(i);
+          localpay.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
       }
+    }
+    return localpay;
+  }
+  
+  private static void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
+  {
+    if (paramJSONArray1 != null)
+    {
+      int i = 0;
       for (;;)
       {
-        a(bool, paramToServiceMsg);
-        return;
-        paramToServiceMsg = pot.a(null, null);
-        continue;
-        bool = true;
+        if (i < paramJSONArray1.length())
+        {
+          JSONObject localJSONObject = paramJSONArray1.optJSONObject(i);
+          String str1 = localJSONObject.optString("key");
+          String str2 = localJSONObject.optString("id");
+          if (!TextUtils.isEmpty(str2)) {
+            localJSONObject = new JSONObject();
+          }
+          try
+          {
+            localJSONObject.put(str1, str2);
+            paramJSONArray2.put(localJSONObject);
+            i += 1;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
       }
     }
   }
   
-  public void a()
+  public JSONObject a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    oidb_cmd0x6e5.ReqBody localReqBody = new oidb_cmd0x6e5.ReqBody();
-    long l = Long.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).longValue();
-    localReqBody.uint64_uin.set(l);
-    localReqBody.uint32_req_all_interest_label_list.set(paramInt1);
-    localReqBody.uint32_req_default_interest_label_id_list.set(paramInt2);
-    localReqBody.uint32_req_last_interest_label_id_list.set(paramInt3);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a(pow.a("OidbSvc.0x6e5", 1765, 0, localReqBody.toByteArray()));
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x6e5")) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator;
+    try
+    {
+      localJSONObject.put("key", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("id", this.c);
+      localJSONObject.put("value", this.d);
+      JSONArray localJSONArray1 = new JSONArray();
+      if (this.jdField_b_of_type_JavaUtilList != null)
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          localJSONArray1.put((String)localIterator.next());
+        }
+      }
+      localJSONObject.put("valuelist", localJSONException);
     }
-    while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x6e4")) {
-      return;
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      return localJSONObject;
     }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
-  
-  public void a(List<InterestLabelInfo> paramList)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.5(this, paramList));
+    JSONArray localJSONArray2 = new JSONArray();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray2.put((String)localIterator.next());
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, List<InterestLabelInfo> paramList)
-  {
-    if (paramList != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.3(this, paramList));
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new InterestLabelInfoModule.1(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new InterestLabelInfoModule.4(this, paramInt));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    b(pow.a(paramFromServiceMsg, paramObject, new oidb_cmd0x6e4.RspBody()));
+    localJSONObject.put("idlist", localJSONArray2);
+    return localJSONObject;
   }
 }
 

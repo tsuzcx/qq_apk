@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.utils;
 
-import bbds;
+import bbeg;
 
 public class JumpAction$8
   implements Runnable
 {
-  public JumpAction$8(bbds parambbds) {}
+  public JumpAction$8(bbeg parambbeg) {}
   
   public void run()
   {

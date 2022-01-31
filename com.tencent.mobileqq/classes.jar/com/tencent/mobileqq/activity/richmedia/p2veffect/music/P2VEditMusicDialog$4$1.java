@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import ahxk;
+import ahxi;
 import com.tencent.qphone.base.util.QLog;
+import tbr;
 import tbu;
-import tbx;
-import tcd;
-import tdc;
-import veg;
-import vrk;
+import tca;
+import tcz;
+import ved;
+import vrh;
 
 public class P2VEditMusicDialog$4$1
   implements Runnable
 {
-  public P2VEditMusicDialog$4$1(ahxk paramahxk, tbx paramtbx) {}
+  public P2VEditMusicDialog$4$1(ahxi paramahxi, tbu paramtbu) {}
   
   public void run()
   {
-    veg.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
-    if (((tbu)((tcd)tdc.a(20)).a(1)).a(this.jdField_a_of_type_Tbx))
+    ved.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
+    if (((tbr)((tca)tcz.a(20)).a(1)).a(this.jdField_a_of_type_Tbu))
     {
       QLog.d(P2VEditMusicDialog.a(), 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Ahxk.a.a.a();
+      this.jdField_a_of_type_Ahxi.a.a.a();
     }
   }
 }

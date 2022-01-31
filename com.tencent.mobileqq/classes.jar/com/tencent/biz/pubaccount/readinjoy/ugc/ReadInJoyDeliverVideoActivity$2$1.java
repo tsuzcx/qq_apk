@@ -4,12 +4,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import qfa;
+import qex;
 
 public class ReadInJoyDeliverVideoActivity$2$1
   implements Runnable
 {
-  public ReadInJoyDeliverVideoActivity$2$1(qfa paramqfa) {}
+  public ReadInJoyDeliverVideoActivity$2$1(qex paramqex) {}
   
   public void run()
   {

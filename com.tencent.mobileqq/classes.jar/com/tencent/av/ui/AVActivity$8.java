@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import ldc;
-import lgf;
+import lcx;
+import lga;
 
 class AVActivity$8
   implements Runnable
@@ -13,9 +13,9 @@ class AVActivity$8
   {
     if ((this.this$0.a != null) && (this.this$0.a.b("BEAUTY_SKIN") > 0))
     {
-      lgf locallgf = ldc.a().a();
-      if (locallgf != null) {
-        locallgf.t = true;
+      lga locallga = lcx.a().a();
+      if (locallga != null) {
+        locallga.t = true;
       }
     }
   }

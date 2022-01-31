@@ -5,11 +5,11 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import rpj;
-import rpk;
-import snq;
-import soh;
-import spb;
+import rpg;
+import rph;
+import snn;
+import soe;
+import soy;
 
 class PublicAccountImageCollectionListView$2
   implements Runnable
@@ -56,16 +56,16 @@ class PublicAccountImageCollectionListView$2
             }
             try
             {
-              spb localspb = (spb)this.jdField_a_of_type_JavaUtilList.get(j - 1);
-              if (localspb != null)
+              soy localsoy = (soy)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+              if (localsoy != null)
               {
-                localObject = ((snq)this.this$0.getAdapter()).a(localspb.a);
+                localObject = ((snn)this.this$0.getAdapter()).a(localsoy.a);
                 if (localObject == null) {
                   break;
                 }
-                int k = ((snq)this.this$0.getAdapter()).a(localspb)[0];
-                int m = ((snq)this.this$0.getAdapter()).a(localspb)[1];
-                localLinkedList.add(soh.a((URL)localObject, k, m));
+                int k = ((snn)this.this$0.getAdapter()).a(localsoy)[0];
+                int m = ((snn)this.this$0.getAdapter()).a(localsoy)[1];
+                localLinkedList.add(soe.a((URL)localObject, k, m));
                 if (QLog.isColorLevel()) {
                   QLog.d("PublicAccountImageCollectionListView", 2, "preloadImg index:" + j + "  reqWidth = " + k + " reqHeight = " + m);
                 }
@@ -82,14 +82,14 @@ class PublicAccountImageCollectionListView$2
       Iterator localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (soh)localIterator.next();
-        if ((localObject != null) && (((soh)localObject).jdField_a_of_type_JavaNetURL != null))
+        localObject = (soe)localIterator.next();
+        if ((localObject != null) && (((soe)localObject).jdField_a_of_type_JavaNetURL != null))
         {
-          rpk localrpk = new rpk();
-          localrpk.jdField_a_of_type_JavaNetURL = ((soh)localObject).jdField_a_of_type_JavaNetURL;
-          localrpk.jdField_a_of_type_Int = ((soh)localObject).jdField_a_of_type_Int;
-          localrpk.jdField_b_of_type_Int = ((soh)localObject).jdField_b_of_type_Int;
-          rpj.a().a(localrpk, null);
+          rph localrph = new rph();
+          localrph.jdField_a_of_type_JavaNetURL = ((soe)localObject).jdField_a_of_type_JavaNetURL;
+          localrph.jdField_a_of_type_Int = ((soe)localObject).jdField_a_of_type_Int;
+          localrph.jdField_b_of_type_Int = ((soe)localObject).jdField_b_of_type_Int;
+          rpg.a().a(localrph, null);
         }
       }
     } while (!QLog.isColorLevel());

@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
 final class bawl
-  extends View.AccessibilityDelegate
+  implements DownloadParams.DecodeHandler
 {
-  bawl(bawn parambawn) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    try
+    {
+      int i = paramBitmap.getHeight();
+      int j = paramBitmap.getWidth();
+      int k = paramDownloadParams.reqWidth;
+      int m = paramDownloadParams.reqHeight;
+      float f = k * 1.0F / j;
+      paramDownloadParams = new Matrix();
+      paramDownloadParams.setScale(f, f);
+      if (i * f > m) {}
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, (int)(m / f), paramDownloadParams, true); QLog.isColorLevel(); paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, i, paramDownloadParams, true))
+      {
+        QLog.d(bavw.a(), 2, String.format("ALIGN_TOP_DECODER srcHeight = %s, srcWidth = %s, reqWidth = %s, reqHeight = %s, scale = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
+        break;
+      }
+      return paramDownloadParams;
+    }
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+      return paramBitmap;
     }
   }
 }

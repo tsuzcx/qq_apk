@@ -1,10 +1,28 @@
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public abstract interface afnv
+public class afnv
+  extends akil
 {
-  public abstract void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt);
+  public afnv(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public abstract void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2);
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    if ((paramBoolean) && (paramList != null)) {
+      this.a.a(paramList);
+    }
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import bbct;
-import bhvh;
+import bbdh;
+import bhvy;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import onk;
-import ozr;
-import pbh;
-import pcb;
-import pow;
-import ppb;
-import ppc;
+import onh;
+import ozo;
+import pbe;
+import pby;
+import pot;
+import poy;
+import poz;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.InnerMsg;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqBody;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqChannelPara;
@@ -56,13 +56,13 @@ public class VideoArticleModule$2
         }
         localReqChannelPara.uint64_begin_collection_id.set(this.a.jdField_c_of_type_Long);
         localReqChannelPara.uint64_end_collection_id.set(this.a.jdField_d_of_type_Long);
-        localObject = bbct.a();
+        localObject = bbdh.a();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localReqChannelPara.bytes_device_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
         }
         localReqChannelPara.uint32_update_times.set(this.a.jdField_c_of_type_Int);
-        localReqChannelPara.uint32_sim_type.set(bhvh.c());
-        localReqChannelPara.uint32_network_type.set(ozr.b());
+        localReqChannelPara.uint32_sim_type.set(bhvy.c());
+        localReqChannelPara.uint32_network_type.set(ozo.b());
         if (this.a.jdField_a_of_type_ArrayOfByte != null) {
           localReqChannelPara.bytes_business_info.set(ByteStringMicro.copyFrom(this.a.jdField_a_of_type_ArrayOfByte));
         }
@@ -81,15 +81,15 @@ public class VideoArticleModule$2
         {
           localInnerMsg.uint32_jump_src_type.set(this.a.jdField_d_of_type_Int);
           localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(localLong)));
-          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Ppc.c))
+          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Poz.c))
           {
-            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_Ppc.c));
+            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_Poz.c));
             if (QLog.isColorLevel()) {
-              QLog.d(pcb.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_Ppc.c);
+              QLog.d(pby.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_Poz.c);
             }
           }
-          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_Ppc.jdField_a_of_type_Long);
-          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_Ppc.jdField_a_of_type_Int);
+          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_Poz.jdField_a_of_type_Long);
+          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_Poz.jdField_a_of_type_Int);
           ((List)localObject).add(localInnerMsg);
         }
         else
@@ -100,7 +100,7 @@ public class VideoArticleModule$2
       catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(pcb.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + onk.a(localThrowable));
+          QLog.e(pby.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + onh.a(localThrowable));
         }
         return;
       }
@@ -108,12 +108,12 @@ public class VideoArticleModule$2
     localReqChannelPara.rpt_inner_msg_list.set((List)localObject);
     label587:
     localThrowable.reqChannelPara.set(localReqChannelPara);
-    ToServiceMsg localToServiceMsg = pow.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
+    ToServiceMsg localToServiceMsg = pot.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
     if (localToServiceMsg != null)
     {
       localToServiceMsg.getAttributes().put("channelID", Integer.valueOf(this.a.jdField_a_of_type_Int));
-      localToServiceMsg.getAttributes().put(pbh.d, Long.valueOf(this.a.jdField_a_of_type_Long));
-      localToServiceMsg.getAttributes().put(pbh.e, Long.valueOf(this.a.jdField_b_of_type_Long));
+      localToServiceMsg.getAttributes().put(pbe.d, Long.valueOf(this.a.jdField_a_of_type_Long));
+      localToServiceMsg.getAttributes().put(pbe.e, Long.valueOf(this.a.jdField_b_of_type_Long));
       localToServiceMsg.getAttributes().put("CountOfRequest_0xbed", Integer.valueOf(1));
     }
     this.this$0.a(localToServiceMsg);

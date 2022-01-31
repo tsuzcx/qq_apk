@@ -1,41 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjkp
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public bjkp(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public bjkp(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c.setVisibility(0);
-    QIMProviderContainerView.a(this.a, true);
-    QIMProviderContainerView.a(this.a);
-    if (QIMProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = QIMProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((avvr)paramAnimator.next()).a(null, 0);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setVisibility(0);
+    paramDialogInterface.dismiss();
   }
 }
 

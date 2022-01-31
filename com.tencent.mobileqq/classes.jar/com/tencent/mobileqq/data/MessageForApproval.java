@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
+import ajya;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -70,8 +70,8 @@ public class MessageForApproval
           {
             String str3 = ((String)localObject).substring(3);
             localObject = str3;
-            if (ajyc.a(2131706608).equalsIgnoreCase(str3)) {
-              localObject = ajyc.a(2131706567);
+            if (ajya.a(2131706619).equalsIgnoreCase(str3)) {
+              localObject = ajya.a(2131706578);
             }
             localStringBuilder.append((String)localObject);
           }
@@ -89,7 +89,7 @@ public class MessageForApproval
       }
       for (;;)
       {
-        return ajyc.a(2131706587) + localStringBuilder.toString();
+        return ajya.a(2131706598) + localStringBuilder.toString();
         if (((String)localObject).startsWith("002"))
         {
           localStringBuilder.append(((String)localObject).substring(3));
@@ -110,7 +110,7 @@ public class MessageForApproval
   
   public String getSummaryMsg()
   {
-    return ajyc.a(2131706603);
+    return ajya.a(2131706614);
   }
 }
 

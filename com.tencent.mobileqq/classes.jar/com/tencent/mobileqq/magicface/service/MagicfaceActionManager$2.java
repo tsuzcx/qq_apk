@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.magicface.service;
 
-import ascn;
-import ascs;
-import asde;
-import asdh;
+import ascp;
+import ascu;
+import asdg;
+import asdj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class MagicfaceActionManager$2
   implements Runnable
 {
-  public MagicfaceActionManager$2(asdh paramasdh, int paramInt1, int paramInt2) {}
+  public MagicfaceActionManager$2(asdj paramasdj, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -26,19 +26,19 @@ public class MagicfaceActionManager$2
       if (this.b != 0) {
         break label277;
       }
-      localObject1 = this.this$0.jdField_a_of_type_Asde.a("send.xml");
+      localObject1 = this.this$0.jdField_a_of_type_Asdg.a("send.xml");
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceActionManager", 2, "func doAction. step 1");
       }
       if (localObject1 == null) {
         break label248;
       }
-      this.this$0.jdField_a_of_type_Ascp = this.this$0.jdField_a_of_type_Ascs.a((String)localObject1);
+      this.this$0.jdField_a_of_type_Ascr = this.this$0.jdField_a_of_type_Ascu.a((String)localObject1);
       if (this.b == 1) {
         this.this$0.e();
       }
-      this.this$0.a(this.this$0.jdField_a_of_type_Ascp);
-      this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_Ascs.a((String)localObject1);
+      this.this$0.a(this.this$0.jdField_a_of_type_Ascr);
+      this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_Ascu.a((String)localObject1);
       this.this$0.d();
       localObject1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
     }
@@ -48,7 +48,7 @@ public class MagicfaceActionManager$2
       {
         boolean bool1;
         Object localObject1;
-        ascn localascn;
+        ascp localascp;
         boolean bool2;
         label248:
         if (QLog.isColorLevel()) {
@@ -72,15 +72,15 @@ public class MagicfaceActionManager$2
       }
       QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
       label417:
-      this.this$0.b(this.this$0.jdField_a_of_type_Ascp);
+      this.this$0.b(this.this$0.jdField_a_of_type_Ascr);
     }
     if (((Iterator)localObject1).hasNext())
     {
-      localascn = (ascn)((Iterator)localObject1).next();
-      this.this$0.jdField_a_of_type_Ascn = localascn;
-      localascn.jdField_a_of_type_Asdp = this.this$0.jdField_a_of_type_Asdp;
-      localascn.jdField_a_of_type_Ascp = this.this$0.jdField_a_of_type_Ascp;
-      bool1 = localascn.a();
+      localascp = (ascp)((Iterator)localObject1).next();
+      this.this$0.jdField_a_of_type_Ascp = localascp;
+      localascp.jdField_a_of_type_Asdr = this.this$0.jdField_a_of_type_Asdr;
+      localascp.jdField_a_of_type_Ascr = this.this$0.jdField_a_of_type_Ascr;
+      bool1 = localascp.a();
       bool2 = this.this$0.b;
       if (!bool2) {
         break label301;
@@ -91,14 +91,14 @@ public class MagicfaceActionManager$2
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
       }
-      this.this$0.b(this.this$0.jdField_a_of_type_Ascp);
+      this.this$0.b(this.this$0.jdField_a_of_type_Ascr);
       return;
       if (this.b != 1) {
         break;
       }
-      localObject1 = this.this$0.jdField_a_of_type_Asde.a("receive.xml");
+      localObject1 = this.this$0.jdField_a_of_type_Asdg.a("receive.xml");
       break;
-      if (!localascn.d) {
+      if (!localascp.d) {
         break label383;
       }
       this.this$0.c();

@@ -1,8 +1,6 @@
 public abstract interface akba
 {
-  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(boolean paramBoolean, Object paramObject);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

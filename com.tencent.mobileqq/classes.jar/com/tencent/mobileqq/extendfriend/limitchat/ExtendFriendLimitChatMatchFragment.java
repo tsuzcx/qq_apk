@@ -18,32 +18,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aoeo;
-import aoep;
+import aoet;
 import aoeu;
-import aofp;
-import aogi;
-import aoix;
-import aoja;
-import aojb;
+import aoez;
+import aofu;
+import aogn;
 import aojc;
-import aojd;
-import aoje;
 import aojf;
 import aojg;
-import aolc;
-import aolo;
-import arqn;
-import asfj;
-import asfn;
-import asfo;
-import axqw;
-import bbcv;
-import bbev;
-import bbgg;
-import bcpw;
-import bfol;
-import bfoy;
+import aojh;
+import aoji;
+import aojj;
+import aojk;
+import aojl;
+import aolh;
+import aolt;
+import arqp;
+import asfl;
+import asfp;
+import asfq;
+import axqy;
+import bbdj;
+import bbfj;
+import bbgu;
+import bcql;
+import bfpc;
+import bfpp;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -62,24 +62,24 @@ import mqq.os.MqqHandler;
 
 public class ExtendFriendLimitChatMatchFragment
   extends PublicBaseFragment
-  implements View.OnClickListener, aoja, aolo, asfo
+  implements View.OnClickListener, aojf, aolt, asfq
 {
   private int jdField_a_of_type_Int = 0;
   private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aojb(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aojg(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aoeu jdField_a_of_type_Aoeu = new aojf(this);
-  public aogi a;
-  private aoix jdField_a_of_type_Aoix;
-  private aojg jdField_a_of_type_Aojg;
-  public aolc a;
-  asfn jdField_a_of_type_Asfn = null;
-  protected bbgg a;
-  bfol jdField_a_of_type_Bfol = null;
+  private aoez jdField_a_of_type_Aoez = new aojk(this);
+  public aogn a;
+  private aojc jdField_a_of_type_Aojc;
+  private aojl jdField_a_of_type_Aojl;
+  public aolh a;
+  asfp jdField_a_of_type_Asfp = null;
+  protected bbgu a;
+  bfpc jdField_a_of_type_Bfpc = null;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private MatchingView jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView;
   private HorseRaceLampVew jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew;
@@ -90,7 +90,7 @@ public class ExtendFriendLimitChatMatchFragment
   
   public ExtendFriendLimitChatMatchFragment()
   {
-    this.jdField_a_of_type_Aogi = null;
+    this.jdField_a_of_type_Aogn = null;
   }
   
   private void a(View paramView)
@@ -105,7 +105,7 @@ public class ExtendFriendLimitChatMatchFragment
   
   private void a(String paramString)
   {
-    bcpw.a(BaseApplication.getContext(), paramString, 0).a();
+    bcql.a(BaseApplication.getContext(), paramString, 0).a();
     if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
     {
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
@@ -116,41 +116,41 @@ public class ExtendFriendLimitChatMatchFragment
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aojg != null) {
-      this.jdField_a_of_type_Aojg.removeMessages(aojg.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Aojl != null) {
+      this.jdField_a_of_type_Aojl.removeMessages(aojl.jdField_a_of_type_Int);
     }
-    int i = this.jdField_a_of_type_Aoix.a();
+    int i = this.jdField_a_of_type_Aojc.a();
     j();
     if (i == 2)
     {
-      this.jdField_a_of_type_Aoix.b();
+      this.jdField_a_of_type_Aojc.b();
       if (paramBoolean) {
-        b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698960));
+        b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698970));
       }
     }
   }
   
-  private void b(aogi paramaogi)
+  private void b(aogn paramaogn)
   {
-    if (this.jdField_a_of_type_Aoix.a() == 2)
+    if (this.jdField_a_of_type_Aojc.a() == 2)
     {
       QLog.i("ExtendFriendLimitChatMatchFragment", 2, "startMatching IN STATE_MATCHING return");
       return;
     }
-    if (!bbev.e(BaseApplication.getContext()))
+    if (!bbfj.e(BaseApplication.getContext()))
     {
-      a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698962));
+      a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698972));
       return;
     }
-    this.jdField_a_of_type_Aoix.a(this.jdField_a_of_type_Int);
-    int i = this.jdField_a_of_type_Aoix.a();
+    this.jdField_a_of_type_Aojc.a(this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Aojc.a();
     if (i == 0)
     {
-      this.jdField_a_of_type_Aoix.a(paramaogi);
-      if (this.jdField_a_of_type_Aojg != null) {
-        this.jdField_a_of_type_Aojg.sendEmptyMessageDelayed(aojg.jdField_a_of_type_Int, 35000L);
+      this.jdField_a_of_type_Aojc.a(paramaogn);
+      if (this.jdField_a_of_type_Aojl != null) {
+        this.jdField_a_of_type_Aojl.sendEmptyMessageDelayed(aojl.jdField_a_of_type_Int, 35000L);
       }
-      c(paramaogi);
+      c(paramaogn);
       return;
     }
     QLog.e("ExtendFriendLimitChatMatchFragment", 2, "startMatching IN STATE_MATCHING return : " + i);
@@ -158,13 +158,13 @@ public class ExtendFriendLimitChatMatchFragment
   
   private void b(String paramString)
   {
-    if ((this.jdField_a_of_type_Bbgg == null) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app != null)) {
-      this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(paramString).setPositiveButton(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698957), new aoje(this)).setNegativeButton(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698956), new aojd(this));
+    if ((this.jdField_a_of_type_Bbgu == null) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app != null)) {
+      this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(paramString).setPositiveButton(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698967), new aojj(this)).setNegativeButton(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698966), new aoji(this));
     }
     try
     {
-      if ((this.jdField_a_of_type_Bbgg != null) && (!this.jdField_a_of_type_Bbgg.isShowing())) {
-        this.jdField_a_of_type_Bbgg.show();
+      if ((this.jdField_a_of_type_Bbgu != null) && (!this.jdField_a_of_type_Bbgu.isShowing())) {
+        this.jdField_a_of_type_Bbgu.show();
       }
       return;
     }
@@ -174,23 +174,23 @@ public class ExtendFriendLimitChatMatchFragment
     }
   }
   
-  private void c(aogi paramaogi)
+  private void c(aogn paramaogn)
   {
-    String str = "#" + this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698985);
+    String str = "#" + this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698995);
     Object localObject = str;
-    if (paramaogi != null)
+    if (paramaogn != null)
     {
       localObject = str;
-      if (!TextUtils.isEmpty(paramaogi.jdField_a_of_type_JavaLangString)) {
-        localObject = "# " + paramaogi.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramaogn.jdField_a_of_type_JavaLangString)) {
+        localObject = "# " + paramaogn.jdField_a_of_type_JavaLangString;
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView != null) {
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a((String)localObject);
     }
-    paramaogi = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364692);
-    localObject = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369826);
-    a(paramaogi, this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView, (View)localObject);
+    paramaogn = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364691);
+    localObject = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369825);
+    a(paramaogn, this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView, (View)localObject);
   }
   
   private void h()
@@ -201,12 +201,12 @@ public class ExtendFriendLimitChatMatchFragment
     if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
       this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.f(25);
     }
-    asfj.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
+    asfl.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
   }
   
   private void i()
   {
-    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364692)).setVisibility(0);
+    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364691)).setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(8);
   }
   
@@ -217,9 +217,9 @@ public class ExtendFriendLimitChatMatchFragment
   
   private void k()
   {
-    aoeo localaoeo = (aoeo)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.a(127);
-    if (localaoeo != null) {
-      localaoeo.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.c());
+    aoet localaoet = (aoet)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.a(127);
+    if (localaoet != null) {
+      localaoet.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.c());
     }
   }
   
@@ -233,54 +233,54 @@ public class ExtendFriendLimitChatMatchFragment
     a(false);
   }
   
-  public void a(int paramInt, aofp paramaofp, String paramString1, String paramString2)
+  public void a(int paramInt, aofu paramaofu, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Aojg != null) {
-      this.jdField_a_of_type_Aojg.removeMessages(aojg.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Aojl != null) {
+      this.jdField_a_of_type_Aojl.removeMessages(aojl.jdField_a_of_type_Int);
     }
-    if ((paramInt == 0) && (paramaofp != null))
+    if ((paramInt == 0) && (paramaofu != null))
     {
-      a(paramaofp, paramString1);
+      a(paramaofu, paramString1);
       j();
-      if (paramaofp == null) {}
-      for (paramaofp = "";; paramaofp = paramaofp.b)
+      if (paramaofu == null) {}
+      for (paramaofu = "";; paramaofu = paramaofu.b)
       {
-        axqw.b(null, "dc00898", "", paramaofp, "0X80096A6", "0X80096A6", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        axqy.b(null, "dc00898", "", paramaofu, "0X80096A6", "0X80096A6", this.jdField_a_of_type_Int, 0, "", "", "", "");
         return;
       }
     }
     if (paramInt == 7)
     {
       j();
-      paramString1 = (aoep)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264);
-      paramaofp = paramString2;
+      paramString1 = (aoeu)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264);
+      paramaofu = paramString2;
       if (TextUtils.isEmpty(paramString2))
       {
         paramString1 = paramString1.e();
-        paramaofp = paramString1;
+        paramaofu = paramString1;
         if (TextUtils.isEmpty(paramString1)) {
-          paramaofp = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698973);
+          paramaofu = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698983);
         }
       }
-      a(paramaofp);
+      a(paramaofu);
       return;
     }
     if (paramInt == 2)
     {
       j();
-      paramaofp = paramString2;
+      paramaofu = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        paramaofp = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698960);
+        paramaofu = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698970);
       }
-      b(paramaofp);
+      b(paramaofu);
       return;
     }
     j();
-    paramaofp = paramString2;
+    paramaofu = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
-      paramaofp = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698963);
+      paramaofu = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698973);
     }
-    a(paramaofp);
+    a(paramaofu);
   }
   
   public void a(View paramView1, MatchingView paramMatchingView, View paramView2)
@@ -298,25 +298,25 @@ public class ExtendFriendLimitChatMatchFragment
       paramView2 = ObjectAnimator.ofFloat(paramView2, "scaleY", new float[] { 0.0F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObjectAnimator4, localObjectAnimator5, paramView2 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new aojc(this, paramMatchingView, paramView1));
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new aojh(this, paramMatchingView, paramView1));
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
-  public void a(aofp paramaofp, String paramString)
+  public void a(aofu paramaofu, String paramString)
   {
-    String str1 = paramaofp.b;
-    String str2 = paramaofp.c;
-    long l = paramaofp.a;
-    arqn.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, str1, paramString, Long.valueOf(l), str2, this.jdField_a_of_type_Int);
+    String str1 = paramaofu.b;
+    String str2 = paramaofu.c;
+    long l = paramaofu.a;
+    arqp.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, str1, paramString, Long.valueOf(l), str2, this.jdField_a_of_type_Int);
   }
   
-  public void a(aogi paramaogi)
+  public void a(aogn paramaogn)
   {
-    if (paramaogi != null)
+    if (paramaogn != null)
     {
-      this.jdField_a_of_type_Aogi = paramaogi;
-      b(this.jdField_a_of_type_Aogi);
+      this.jdField_a_of_type_Aogn = paramaogn;
+      b(this.jdField_a_of_type_Aogn);
       return;
     }
     QLog.e("ExtendFriendLimitChatMatchFragment", 2, "ONTAG CLICK WITH NULL INFO");
@@ -346,30 +346,30 @@ public class ExtendFriendLimitChatMatchFragment
   
   public void e()
   {
-    axqw.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A696", "0X800A696", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A696", "0X800A696", 0, 0, "", "", "", "");
     MatchChatMsgListFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0);
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Asfn == null) {
-      this.jdField_a_of_type_Asfn = new asfn(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext(), this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this);
+    if (this.jdField_a_of_type_Asfp == null) {
+      this.jdField_a_of_type_Asfp = new asfp(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext(), this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfol == null) {
-        this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Asfn.a()));
+      if (this.jdField_a_of_type_Bfpc == null) {
+        this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Asfp.a()));
       }
-      this.jdField_a_of_type_Bfol.show();
+      this.jdField_a_of_type_Bfpc.show();
       return;
-      this.jdField_a_of_type_Asfn.a();
+      this.jdField_a_of_type_Asfp.a();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Bfol != null) {
-      this.jdField_a_of_type_Bfol.dismiss();
+    if (this.jdField_a_of_type_Bfpc != null) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
   }
   
@@ -412,17 +412,17 @@ public class ExtendFriendLimitChatMatchFragment
       onBackEvent();
       return;
     case 2131369197: 
-      this.jdField_a_of_type_Aogi = null;
+      this.jdField_a_of_type_Aogn = null;
       b(null);
-      int i = aoix.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
+      int i = aojc.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
       int j = this.jdField_a_of_type_Int;
-      axqw.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A68F", "0X800A68F", j + 1, i, "", "", "", "");
+      axqy.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A68F", "0X800A68F", j + 1, i, "", "", "", "");
       return;
-    case 2131370463: 
+    case 2131370462: 
       e();
       return;
     }
-    axqw.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A68D", "0X800A68D", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800A68D", "0X800A68D", 0, 0, "", "", "", "");
     a(false);
     f();
   }
@@ -435,19 +435,19 @@ public class ExtendFriendLimitChatMatchFragment
     if (paramBundle != null) {
       this.jdField_a_of_type_Int = paramBundle.getInt("ExtendFriendLimitChatFromeType", 0);
     }
-    this.jdField_a_of_type_Aoix = ((aoix)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(292));
-    this.jdField_a_of_type_Aoix.a(this);
-    this.jdField_a_of_type_Aojg = new aojg(this);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.addObserver(this.jdField_a_of_type_Aoeu);
+    this.jdField_a_of_type_Aojc = ((aojc)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(292));
+    this.jdField_a_of_type_Aojc.a(this);
+    this.jdField_a_of_type_Aojl = new aojl(this);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.addObserver(this.jdField_a_of_type_Aoez);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131560749, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131560748, null));
     paramLayoutInflater = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377369);
     if (this.jdField_a_of_type_Int == 1)
     {
-      paramViewGroup = (aoep)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264);
+      paramViewGroup = (aoeu)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264);
       if (paramViewGroup != null) {
         paramViewGroup.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
       }
@@ -465,24 +465,24 @@ public class ExtendFriendLimitChatMatchFragment
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369824));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369823));
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew = ((HorseRaceLampVew)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367623));
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369197));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew != null) {
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetHorseRaceLampHorseRaceLampVew.setTagClickListner(this);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370463));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370462));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366259));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367414));
-      this.jdField_a_of_type_Aolc = new aolc(1);
-      if (this.jdField_a_of_type_Aolc.a() != null) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aolc.a());
+      this.jdField_a_of_type_Aolh = new aolh(1);
+      if (this.jdField_a_of_type_Aolh.a() != null) {
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aolh.a());
       }
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView = ((MatchingView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369832));
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView = ((MatchingView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369831));
       int k = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
       int m = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDimensionPixelSize(2131297154);
       int n = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDimensionPixelSize(2131297144);
@@ -498,7 +498,7 @@ public class ExtendFriendLimitChatMatchFragment
       float f1 = i;
       float f2 = i;
       float f3 = i;
-      paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364692);
+      paramViewGroup = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364691);
       paramLayoutInflater = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369197);
       if (paramViewGroup != null)
       {
@@ -532,24 +532,24 @@ public class ExtendFriendLimitChatMatchFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aolc != null)
+    if (this.jdField_a_of_type_Aolh != null)
     {
-      this.jdField_a_of_type_Aolc.d();
-      this.jdField_a_of_type_Aolc = null;
+      this.jdField_a_of_type_Aolh.d();
+      this.jdField_a_of_type_Aolh = null;
     }
-    if (this.jdField_a_of_type_Aojg != null)
+    if (this.jdField_a_of_type_Aojl != null)
     {
-      this.jdField_a_of_type_Aojg.removeMessages(aojg.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aojg.removeMessages(aojg.b);
+      this.jdField_a_of_type_Aojl.removeMessages(aojl.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aojl.removeMessages(aojl.b);
     }
-    if (this.jdField_a_of_type_Bfol != null) {
-      this.jdField_a_of_type_Bfol = null;
+    if (this.jdField_a_of_type_Bfpc != null) {
+      this.jdField_a_of_type_Bfpc = null;
     }
-    if (this.jdField_a_of_type_Asfn != null) {
-      this.jdField_a_of_type_Asfn.c();
+    if (this.jdField_a_of_type_Asfp != null) {
+      this.jdField_a_of_type_Asfp.c();
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.removeObserver(this.jdField_a_of_type_Aoeu);
-    axqw.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800AA93", "qq_kuolie", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.removeObserver(this.jdField_a_of_type_Aoez);
+    axqy.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800AA93", "qq_kuolie", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
   }
   
   public void onPause()

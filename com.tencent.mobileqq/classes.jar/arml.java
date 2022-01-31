@@ -1,24 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
-final class arml
-  extends BroadcastReceiver
+class arml
+  implements anns
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  arml(armk paramarmk) {}
+  
+  public void a(annr paramannr)
   {
-    if ((armk.a != null) && (armk.a.size() > 0))
+    try
     {
-      Iterator localIterator = armk.a.iterator();
-      while (localIterator.hasNext())
+      paramannr.dismiss();
+      this.a.mRuntime.a().finish();
+      axqy.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Throwable paramannr)
+    {
+      for (;;)
       {
-        armk localarmk = (armk)((WeakReference)localIterator.next()).get();
-        if (localarmk != null) {
-          localarmk.a(paramContext, paramIntent);
-        }
+        QLog.e("DocxApiPlugin", 1, "handleEvent", paramannr);
       }
     }
   }

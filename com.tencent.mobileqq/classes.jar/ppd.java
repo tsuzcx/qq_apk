@@ -1,69 +1,24 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class ppd
+  implements View.OnClickListener
 {
-  private static ppd jdField_a_of_type_Ppd;
-  private final List<ppe> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public ppd(PTSFragment paramPTSFragment) {}
   
-  public static ppd a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Ppd == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ppd == null) {
-        jdField_a_of_type_Ppd = new ppd();
-      }
-      return jdField_a_of_type_Ppd;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((ppe)localIterator.next()).a(paramInt, paramList, paramLong);
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((ppe)localIterator.next()).a(paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
-      }
-    }
-  }
-  
-  public void a(ppe paramppe)
-  {
-    if (paramppe == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramppe)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramppe);
-      }
-      return;
-    }
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    paramView.startActivity(localIntent);
+    nol.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
   }
 }
 

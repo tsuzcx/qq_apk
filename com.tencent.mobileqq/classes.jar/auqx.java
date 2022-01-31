@@ -1,20 +1,18 @@
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import java.util.Comparator;
 
-class auqx
-  implements bbkq<Float>
+public class auqx
+  implements Comparator<PortalManager.ComboNumber>
 {
-  auqx(auqw paramauqw) {}
-  
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
   {
-    this.a.c = paramFloat1.floatValue();
-    this.a.b = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (this.a.jdField_a_of_type_Aurc != null)
-    {
-      this.a.jdField_a_of_type_Aurc.b = paramFloat1.floatValue();
-      this.a.jdField_a_of_type_Aurc.a = this.a.b;
+    if (paramComboNumber1.number > paramComboNumber2.number) {
+      return 1;
     }
-    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    if (paramComboNumber1.number < paramComboNumber2.number) {
+      return -1;
+    }
+    return 0;
   }
 }
 

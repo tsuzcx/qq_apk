@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.IChoosePhotoListner;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ class ImageJsPlugin$1$2$1
   
   public void onResult(ArrayList<String> paramArrayList)
   {
-    besl.b("ImageJsPlugin", "openChoosePhotoActivity, path=" + paramArrayList);
+    betc.b("ImageJsPlugin", "openChoosePhotoActivity, path=" + paramArrayList);
     ImageJsPlugin.access$100(this.this$2.this$1.this$0, paramArrayList, this.this$2.this$1.val$req);
   }
 }

@@ -1,187 +1,72 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
+import android.view.View;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import java.lang.ref.WeakReference;
 
 public class bkld
-  extends bklc<bkkm, bkkm>
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public final String a;
-  private boolean jdField_a_of_type_Boolean;
+  public final int a;
+  public long a;
+  public bklj a;
+  public bkll a;
+  public final PublishVideoEntry a;
+  public TribeVideoPublishParams a;
+  public LpReportInfo_pf00064 a;
+  public final EditVideoParams.EditSource a;
+  public final EditVideoParams a;
+  public PublishParam a;
+  public String a;
+  public WeakReference<View> a;
+  public boolean a;
+  public int b = 1;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
   
-  public bkld(String paramString)
+  public bkld(EditVideoParams paramEditVideoParams)
   {
-    this(true, paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
+    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
+    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public bkld(String paramString, boolean paramBoolean, Bitmap paramBitmap)
+  public View a()
   {
-    this(paramBoolean, paramString);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public bkld(boolean paramBoolean)
-  {
-    this(paramBoolean, null);
-  }
-  
-  public bkld(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private Bitmap a(Bitmap paramBitmap)
-  {
-    int i = vzo.a(BaseApplication.getContext());
-    int j = vzo.d(BaseApplication.getContext()) * 720 / i;
-    i = j;
-    if (j % 2 != 0) {
-      i = j + 1;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    return vxy.b(paramBitmap, 720, i, false, false);
+    return null;
   }
   
-  private static Bitmap a(Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public void a(View paramView)
   {
-    if (paramBitmap2 == null) {}
-    do
+    if (paramView == null)
     {
-      for (;;)
-      {
-        return paramBitmap1;
-        try
-        {
-          Bitmap localBitmap = Bitmap.createBitmap(paramBitmap1.getWidth(), paramBitmap1.getHeight(), Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas(localBitmap);
-          localCanvas.drawBitmap(paramBitmap1, 0.0F, 0.0F, null);
-          localCanvas.drawBitmap(paramBitmap2, 20.0F, paramBitmap1.getHeight() - 20 - paramBitmap2.getHeight(), null);
-          return localBitmap;
-        }
-        catch (OutOfMemoryError paramBitmap2)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.qqstory.publish.edit.MergePicSegment", 2, paramBitmap2, new Object[0]);
-            return paramBitmap1;
-          }
-        }
-        catch (Exception paramBitmap2) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.qqstory.publish.edit.MergePicSegment", 2, paramBitmap2, new Object[0]);
-    return paramBitmap1;
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  protected void a(JobContext paramJobContext, bkkm parambkkm)
+  public boolean a()
   {
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (localObject == null) {
-      paramJobContext = bklf.a(parambkkm.jdField_a_of_type_Int, parambkkm.jdField_b_of_type_JavaLangString, ".jpg");
-    }
-    int j = bbdr.b(parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Boolean) && (parambkkm.jdField_a_of_type_Boolean)) {
-      veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
-    }
-    label527:
-    for (;;)
-    {
-      boolean bool;
-      try
-      {
-        localObject = parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_AndroidGraphicsBitmap;
-        Bitmap localBitmap2 = parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_AndroidGraphicsBitmap;
-        if ((parambkkm.jdField_a_of_type_Int == 2) || (parambkkm.jdField_a_of_type_Int == 5) || (parambkkm.jdField_a_of_type_Int == 6)) {
-          break label527;
-        }
-        float f1 = ((Bitmap)localObject).getHeight() * 1.0F / ((Bitmap)localObject).getWidth();
-        float f2 = localBitmap2.getHeight() * 1.0F / localBitmap2.getWidth();
-        if (((((Bitmap)localObject).getWidth() <= ((Bitmap)localObject).getHeight()) || (localBitmap2.getWidth() >= localBitmap2.getHeight())) && (Math.abs(f1 - f2) <= 0.1D)) {
-          break label527;
-        }
-        Bitmap localBitmap1 = a((Bitmap)localObject);
-        if (localBitmap1 == null) {
-          break label527;
-        }
-        localObject = localBitmap1;
-        localObject = a(vxy.c((Bitmap)localObject, localBitmap2), this.jdField_a_of_type_AndroidGraphicsBitmap);
-        if (localObject == null) {
-          continue;
-        }
-        bool = vxy.a((Bitmap)localObject, paramJobContext);
-      }
-      catch (Throwable paramJobContext)
-      {
-        veg.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext + paramJobContext.getStackTrace());
-        paramJobContext = null;
-        bool = false;
-        continue;
-      }
-      if ((i == 0) && (!bool))
-      {
-        veg.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-        super.notifyError(new ErrorMessage(-1, ajyc.a(2131706552)));
-        return;
-        paramJobContext = null;
-        bool = false;
-        continue;
-        if (parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_Int > 0)
-        {
-          veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-          localObject = a(parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap);
-          if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-          {
-            bool = vxy.a((Bitmap)localObject, paramJobContext);
-          }
-          else
-          {
-            if (localObject == null) {
-              veg.e("Q.qqstory.publish.edit.MergePicSegment", "mergeBitmap is null");
-            }
-            for (;;)
-            {
-              paramJobContext = null;
-              bool = false;
-              break;
-              if (((Bitmap)localObject).isRecycled()) {
-                veg.e("Q.qqstory.publish.edit.MergePicSegment", "mergeBitmap is recycled");
-              }
-            }
-          }
-        }
-        else if (parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_Boolean)
-        {
-          bool = vxy.a(parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-        }
-        else if ((j != 0) && (j % 90 == 0))
-        {
-          veg.b("Q.qqstory.publish.edit.MergePicSegment", "save rotate bitmap");
-          bool = vxy.a(parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-        }
-        else
-        {
-          veg.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-          paramJobContext = parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_JavaLangString;
-          vem.b("0X80075C9");
-          parambkkm.jdField_a_of_type_Bkks.c = true;
-          bool = false;
-          i = 1;
-        }
-      }
-      else
-      {
-        parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_JavaLangString = paramJobContext;
-        parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_Boolean = bool;
-        super.notifyResult(parambkkm);
-        return;
-      }
-    }
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bklj.jdField_a_of_type_Int > 0);
+  }
+  
+  public String toString()
+  {
+    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
   }
 }
 

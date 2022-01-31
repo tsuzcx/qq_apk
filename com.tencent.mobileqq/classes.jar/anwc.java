@@ -1,8 +1,21 @@
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public abstract interface anwc
+class anwc
+  extends anwl
 {
-  public abstract void a(View paramView);
+  anwc(anvx paramanvx, String paramString, Object paramObject) {}
+  
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
+  {
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        return;
+      }
+    }
+  }
 }
 
 

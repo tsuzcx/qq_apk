@@ -1,29 +1,53 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aovn
-  implements aowi
+  extends aovw
 {
-  aovn(aovm paramaovm, String paramString) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void a(boolean paramBoolean)
+  public aovn(aouy paramaouy, MessageRecord paramMessageRecord)
   {
-    if (paramBoolean)
+    super(paramaouy);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aovv paramaovv)
+  {
+    if ("1".equals(this.g))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      aovl.a(this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovr.a(this.jdField_a_of_type_JavaLangString, aovl.a(this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl));
-    }
-    for (;;)
-    {
-      aouu.a(this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl.jdField_a_of_type_Aouu).a().a(aovl.a(this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl));
+      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
       return;
-      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
-      this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Aovm.jdField_a_of_type_Aovl.jdField_a_of_type_Long, false), true);
     }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
+      }
+      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aouy.a(this.jdField_a_of_type_Aouy).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aovo(this, paramString, paramaovv));
   }
 }
 

@@ -1,9 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+
 public class agxr
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public agxr(RedPacketPopFragment paramRedPacketPopFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

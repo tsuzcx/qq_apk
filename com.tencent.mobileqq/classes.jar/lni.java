@@ -1,68 +1,29 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class lni
 {
-  public static int a(lna paramlna)
+  public long a;
+  public Vector<lnl> a;
+  
+  public lni(AVNotifyCenter paramAVNotifyCenter)
   {
-    if (paramlna == null) {}
-    do
-    {
-      do
-      {
-        return 11;
-        if (!TextUtils.isEmpty(paramlna.c)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlna }));
-      return 11;
-      if (!paramlna.a) {
-        break;
-      }
-    } while (!a(paramlna));
-    return 1;
-    return 2;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
   }
   
-  static SharedPreferences a()
+  public String toString()
   {
-    return EffectConfigBase.a(298, EffectConfigBase.c);
-  }
-  
-  public static String a()
-  {
-    return UpdateAvSo.a();
-  }
-  
-  public static boolean a(lna paramlna)
-  {
-    String str1 = paramlna.b;
-    paramlna = a() + paramlna.d + ".so";
-    String str2 = a().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
+    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
+    if (this.jdField_a_of_type_JavaUtilVector == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
+      return localObject + "]";
     }
-    do
-    {
-      return false;
-      if (bbdj.a(paramlna)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlna }));
-    return false;
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lni
  * JD-Core Version:    0.7.0.1
  */

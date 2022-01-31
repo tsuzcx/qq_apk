@@ -1,22 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class agxq
-  implements ahbt
+  implements bckm
 {
-  public agxq(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public agxq(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
-      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
-    }
+    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 

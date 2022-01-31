@@ -1,18 +1,25 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class ovu
-  implements bcjl
+  implements View.OnClickListener
 {
-  public ovu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public ovu(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, int paramInt, String paramString2) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (ReadInJoySelfFragment.a(this.a))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      ReadInJoySelfFragment.a(this.a, false);
-      sgx.a("self_tab_cost", null);
-      sgx.a = 4;
-      sgx.a("KANDIAN_FEEDS_COST", null);
+      paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(paramView);
+      nol.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int) + "", this.jdField_a_of_type_Int + "", "", onh.a(this.b), false);
+      ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,17 +1,94 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 public class amqq
-  extends amql
+  extends ampa<amqk>
 {
-  private amrk a;
-  
-  public amqq(String paramString, amrk paramamrk)
+  public static amqk b(int paramInt)
   {
-    super(paramString);
-    this.a = paramamrk;
+    amqk localamqk = (amqk)ampl.a().a(paramInt);
+    if (localamqk != null) {
+      return localamqk;
+    }
+    return new amqk();
   }
   
-  public amrk a()
+  public int a()
   {
-    return this.a;
+    return 0;
+  }
+  
+  @NonNull
+  public amqk a(int paramInt)
+  {
+    return new amqk();
+  }
+  
+  public amqk a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    return new amqk(paramString);
+  }
+  
+  @Nullable
+  public amqk a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      paramArrayOfamph = paramArrayOfamph[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfamph)) {
+        return a(paramArrayOfamph);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
+    }
+    return null;
+  }
+  
+  public Class<amqk> a()
+  {
+    return amqk.class;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
+  }
+  
+  public void a(amqk paramamqk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,23 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class nwc
-  extends GestureDetector.SimpleOnGestureListener
+  implements bfxm
 {
-  private WeakReference<ntg> a;
+  public nwc(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public nwc(ntg paramntg)
+  public void a()
   {
-    this.a = new WeakReference(paramntg);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ntg)this.a.get()).a(true);
+    if ((!this.a.a) && (this.a.b))
+    {
+      this.a.a = true;
+      sgu.a("subscribe_tab_cost", null);
     }
-    return false;
   }
 }
 

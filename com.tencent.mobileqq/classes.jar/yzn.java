@@ -1,6 +1,156 @@
-abstract interface yzn
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.util.AdHexUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import java.io.File;
+import java.io.FileInputStream;
+import java.security.MessageDigest;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class yzn
 {
-  public abstract void a();
+  private static volatile yzn jdField_a_of_type_Yzn;
+  private bdld jdField_a_of_type_Bdld = new yzo(this);
+  private final String jdField_a_of_type_JavaLangString = "GdtDownloadReportManager";
+  private ConcurrentHashMap<String, GdtAd> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, GdtAd> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> c = new ConcurrentHashMap();
+  
+  private int a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      yxp.d("GdtDownloadReportManager", "compareApkFileMd5 filePath is invalid");
+      return 0;
+    }
+    paramString1 = new File(paramString1);
+    paramString2 = new File(paramString2);
+    if ((!paramString1.exists()) || (!paramString2.exists()))
+    {
+      yxp.d("GdtDownloadReportManager", "compareApkFileMd5 file not exits");
+      return 0;
+    }
+    paramString1 = a(paramString1);
+    paramString2 = a(paramString2);
+    yxp.a("GdtDownloadReportManager", "compareApkFileMd5:md5install-" + paramString1);
+    yxp.a("GdtDownloadReportManager", "compareApkFileMd5:md5download-" + paramString2);
+    if (TextUtils.equals(paramString1, paramString2)) {
+      return 1;
+    }
+    return 2;
+  }
+  
+  public static String a(File paramFile)
+  {
+    if (!paramFile.isFile()) {
+      return null;
+    }
+    byte[] arrayOfByte = new byte[1024];
+    MessageDigest localMessageDigest;
+    try
+    {
+      localMessageDigest = MessageDigest.getInstance("MD5");
+      paramFile = new FileInputStream(paramFile);
+      for (;;)
+      {
+        int i = paramFile.read(arrayOfByte, 0, 1024);
+        if (i == -1) {
+          break;
+        }
+        localMessageDigest.update(arrayOfByte, 0, i);
+      }
+      paramFile.close();
+    }
+    catch (Exception paramFile)
+    {
+      paramFile.printStackTrace();
+      return null;
+    }
+    return AdHexUtil.bytes2HexString(localMessageDigest.digest());
+  }
+  
+  private String a(String paramString)
+  {
+    try
+    {
+      Iterator localIterator = BaseApplicationImpl.getApplication().getApplicationContext().getPackageManager().getInstalledApplications(64).iterator();
+      while (localIterator.hasNext())
+      {
+        ApplicationInfo localApplicationInfo = (ApplicationInfo)localIterator.next();
+        if (((localApplicationInfo.flags & 0x1) == 0) && (paramString.equals(localApplicationInfo.packageName)))
+        {
+          yxp.a("GdtDownloadReportManager", "getAppInfoByPackageName:" + paramString + " path:" + localApplicationInfo.sourceDir);
+          paramString = localApplicationInfo.sourceDir;
+          return paramString;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      yxp.d("GdtDownloadReportManager", "getAppInfoByPackageName" + paramString.toString());
+    }
+    return null;
+  }
+  
+  public static yzn a()
+  {
+    if (jdField_a_of_type_Yzn == null) {}
+    try
+    {
+      if (jdField_a_of_type_Yzn == null) {
+        jdField_a_of_type_Yzn = new yzn();
+      }
+      return jdField_a_of_type_Yzn;
+    }
+    finally {}
+  }
+  
+  private void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    this.c.remove(paramString);
+    this.b.remove(paramString);
+  }
+  
+  public void a()
+  {
+    yxp.a("GdtDownloadReportManager", "registerDownloadListener: ");
+    bdhk.a().a(this.jdField_a_of_type_Bdld);
+  }
+  
+  void a(GdtAd paramGdtAd, int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 0)
+    {
+      if (!paramBoolean) {
+        break label23;
+      }
+      yye.a(paramGdtAd, 269);
+    }
+    for (;;)
+    {
+      yye.a(paramGdtAd, 272);
+      return;
+      label23:
+      yye.a(paramGdtAd, 268);
+    }
+  }
+  
+  public void a(String paramString, GdtAd paramGdtAd)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      yxp.d("GdtDownloadReportManager", "appId isEmpty");
+    }
+    while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGdtAd);
+  }
 }
 
 

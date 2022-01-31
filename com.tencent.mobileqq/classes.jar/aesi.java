@@ -1,25 +1,22 @@
 import android.os.Bundle;
-import android.os.Handler;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class aesi
-  implements BusinessObserver
+  implements baic
 {
-  aesi(aerv paramaerv) {}
+  aesi(aert paramaert) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    else
-    {
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
       return;
     }
-    if (paramInt == 1) {}
-    this.a.a.sendEmptyMessage(2);
+    paramJSONObject = (bajo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

@@ -1,20 +1,20 @@
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class ruz
   extends AnimatorListenerAdapter
 {
-  public ruz(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public ruz(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a();
+    this.a.setClickable(true);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a();
+    this.a.setClickable(true);
   }
 }
 

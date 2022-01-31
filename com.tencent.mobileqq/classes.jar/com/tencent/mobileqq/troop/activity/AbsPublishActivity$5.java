@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bfmr;
+import bfni;
 
 class AbsPublishActivity$5
   implements Runnable
@@ -9,7 +9,7 @@ class AbsPublishActivity$5
   
   public void run()
   {
-    bfmr.a(this.this$0.b);
+    bfni.a(this.this$0.b);
   }
 }
 

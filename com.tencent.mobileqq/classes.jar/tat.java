@@ -1,37 +1,40 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class tat
-  implements View.OnTouchListener
+  implements anyg
 {
   public tat(StoryInputBarView paramStoryInputBarView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(anyh paramanyh)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Uou.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
-      }
+    if (((paramanyh instanceof aocu)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((aocu)paramanyh).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
     }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
+  }
+  
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
     return false;
   }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      aylc.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+  }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

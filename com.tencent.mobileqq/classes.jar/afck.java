@@ -1,160 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 import mqq.util.WeakReference;
 
-public class afck
-  implements Handler.Callback
+class afck
+  extends akil
 {
-  public int a;
-  private ajxl jdField_a_of_type_Ajxl = new afcl(this);
-  akim jdField_a_of_type_Akim = new afcm(this);
-  public bcpq a;
-  private final bfnk jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
-  public QQAppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  public WeakReference<BaseActivity> a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  afck(afci paramafci) {}
   
-  public afck(BaseActivity paramBaseActivity, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
-    }
-    paramBaseActivity = paramBaseActivity.getIntent();
-    this.jdField_b_of_type_Int = paramBaseActivity.getIntExtra("uintype", -1);
-    this.jdField_a_of_type_JavaLangString = paramBaseActivity.getStringExtra("uin");
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (axuy.a(paramIntent.getByteArrayExtra("stuctmsg_bytes")) == null) {
+    afci.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()))
+    {
+      QLog.e("SeparateForward", 1, new Object[] { "onBatchTroopCardDefaultNick timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
       return;
     }
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("uin");
-    localSessionInfo.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("troop_uin");
-    paramIntent = asty.a();
-    paramIntent.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramIntent.a);
-  }
-  
-  public void a(List<ChatMessage> paramList)
-  {
-    Object localObject = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localObject == null)
-    {
-      QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
-      return;
+    if (this.a.jdField_a_of_type_Bcqf != null) {
+      this.a.jdField_a_of_type_Bcqf.dismiss();
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = asuf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ArrayList)paramList);
-    asty.a().b(paramList);
-    if (this.jdField_a_of_type_Bcpq == null) {
-      this.jdField_a_of_type_Bcpq = new bcpq((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
-    }
-    this.jdField_a_of_type_Bcpq.c(2131698467);
-    this.jdField_a_of_type_Bcpq.show();
-    localObject = paramList.iterator();
-    while (((Iterator)localObject).hasNext())
+    asua.a().b.clear();
+    if ((paramBoolean) && (paramObject != null))
     {
-      ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
-      if (!localArrayList.contains(localChatMessage.senderuin)) {
-        localArrayList.add(localChatMessage.senderuin);
+      asua.a().b.putAll((Map)paramObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick = " + paramObject);
       }
-    }
-    asty.a().a.clear();
-    asty.a().a.addAll(paramList);
-    if (this.jdField_b_of_type_Int == 1) {
-      ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_JavaLangString, localArrayList, false, null);
     }
     for (;;)
     {
-      paramList = this.jdField_a_of_type_Bfnk.obtainMessage(1);
-      paramList.arg1 = localArrayList.size();
-      this.jdField_a_of_type_Bfnk.sendMessageDelayed(paramList, 30000L);
+      if (asua.a().b.size() != 0) {
+        break label201;
+      }
+      paramObject = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (paramObject == null) {
+        break;
+      }
+      bcql.a(paramObject, 2131698478, 0).b(paramObject.getTitleBarHeight());
       return;
-      if ((this.jdField_b_of_type_Int == 0) || (this.jdField_b_of_type_Int == 3000)) {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(localArrayList);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
       }
     }
-  }
-  
-  public void a(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList)
-  {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localBaseActivity == null)
-    {
-      QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
-      return;
-    }
-    String str = " ";
-    if (this.jdField_b_of_type_Int == 0) {}
-    for (str = bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);; str = this.jdField_b_of_type_JavaLangString) {
-      do
-      {
-        paramMap = aaod.a(localBaseActivity, str, paramArrayList, paramMap, true);
-        if (paramMap == null) {
-          break;
-        }
-        paramMap.mMsg_A_ActionData = null;
-        paramArrayList = new Intent();
-        paramArrayList.putExtra("forward_type", -3);
-        paramArrayList.putExtra("stuctmsg_bytes", paramMap.getBytes());
-        paramArrayList.putExtra("is_need_show_sources", false);
-        paramArrayList.putExtra("forward_msg_from_together", 1);
-        paramArrayList.putExtra("forwardDirect", true);
-        aqbc.a(localBaseActivity, paramArrayList, this.jdField_a_of_type_Int);
-        return;
-      } while ((this.jdField_b_of_type_Int != 1) && (this.jdField_b_of_type_Int != 3000));
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-      paramMessage = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    } while ((this.jdField_a_of_type_Bcpq == null) || (paramMessage == null));
-    this.jdField_a_of_type_Bcpq.dismiss();
-    bcpw.a(paramMessage, 2131698469, 0).b(paramMessage.getResources().getDimensionPixelSize(2131298865));
-    return false;
+    label201:
+    this.a.a((Map)paramObject, asua.a().a);
   }
 }
 

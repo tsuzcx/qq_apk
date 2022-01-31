@@ -1,57 +1,64 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class wsa
 {
-  int a;
-  public String a;
-  int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "image_url";
-  private final String c = "image_width";
-  private final String d = "image_height";
+  private static volatile wsa jdField_a_of_type_Wsa;
+  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
   
-  public wsa() {}
-  
-  public wsa(String paramString, int paramInt1, int paramInt2)
+  private Bitmap a(File paramFile)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramFile.exists())
     {
-      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
-      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      localObject1 = localObject2;
+      if (paramFile.isFile()) {
+        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
       }
     }
+    return localObject1;
+  }
+  
+  public static wsa a()
+  {
+    if (jdField_a_of_type_Wsa == null) {}
+    try
+    {
+      if (jdField_a_of_type_Wsa == null) {
+        jdField_a_of_type_Wsa = new wsa();
+      }
+      return jdField_a_of_type_Wsa;
+    }
+    finally {}
   }
   
   public void a(String paramString)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
-      this.jdField_a_of_type_Int = paramString.getInt("image_width");
-      this.jdField_b_of_type_Int = paramString.getInt("image_height");
-      return;
+    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
+      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
     }
-    catch (JSONException paramString)
+  }
+  
+  public void a(String paramString, int paramInt, wsc paramwsc, boolean paramBoolean)
+  {
+    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
+    if (TextUtils.isEmpty(paramString))
     {
-      paramString.printStackTrace();
+      QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
+      if (paramwsc != null) {
+        paramwsc.a();
+      }
     }
+    ThreadManagerV2.executeOnSubThread(new AnimationDrawableFactory.1(this, paramBoolean, paramString, paramInt, paramwsc));
   }
 }
 

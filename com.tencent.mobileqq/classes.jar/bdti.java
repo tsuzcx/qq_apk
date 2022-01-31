@@ -1,15 +1,44 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class bdti
-  implements SurfaceTexture.OnFrameAvailableListener
+class bdti
+  implements myy
 {
-  public bdti(MediaDecoder paramMediaDecoder, bdtj parambdtj) {}
+  bdti(bdth parambdth, String paramString, boolean paramBoolean) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Bdtj.a(paramSurfaceTexture);
+    if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
+      bdte.a.set(false);
+    }
+    this.jdField_a_of_type_Bdth.a = -1;
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 6: 
+    default: 
+      this.jdField_a_of_type_Bdth.a(this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_Bdth.a });
+      }
+      return;
+      this.jdField_a_of_type_Bdth.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      continue;
+      if (paramString == null) {
+        this.jdField_a_of_type_Bdth.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      }
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.jdField_a_of_type_Bdth.a(this.jdField_a_of_type_JavaLangString, paramInt);
   }
 }
 

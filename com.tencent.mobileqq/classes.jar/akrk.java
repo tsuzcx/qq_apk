@@ -1,117 +1,33 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.content.Intent;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
+import java.util.Comparator;
 
 public class akrk
-  extends akoo
+  implements Comparator<akrl>
 {
-  public akrk(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  private int a;
+  
+  public akrk(int paramInt)
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    this.a = paramInt;
   }
   
-  private void a(byte[] paramArrayOfByte)
+  public int a(akrl paramakrl1, akrl paramakrl2)
   {
-    if (paramArrayOfByte == null) {}
-    do
+    if (this.a == 2) {
+      if (paramakrl1.b <= paramakrl2.b) {}
+    }
+    while (paramakrl1.a > paramakrl2.a)
     {
-      for (;;)
-      {
-        return;
-        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-        try
-        {
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
-          if (paramArrayOfByte != null) {
-            break label71;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      return -1;
+      if (paramakrl1.b < paramakrl2.b) {
+        return 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
-    return;
-    label71:
-    long l1 = paramArrayOfByte.uint64_to_uin.get();
-    long l2 = paramArrayOfByte.uint64_room_id.get();
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
-    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
-    paramArrayOfByte.putExtra("c2cuin", l1);
-    paramArrayOfByte.putExtra("c2croomid", l2);
-    this.a.getApp().sendBroadcast(paramArrayOfByte);
-    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
+      return 0;
+    }
+    if (paramakrl1.a < paramakrl2.a) {
+      return 1;
+    }
+    return 0;
   }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramArrayOfByte);
-  }
-  
-  public akqj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new akqj(null, true);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-      {
-        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
-      }
-      else
-      {
-        a(getClass().getName(), paramInt);
-        continue;
-        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-        {
-          boolean bool = llr.a(paramMsgInfo.vMsg);
-          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
-        }
-        else
-        {
-          a(getClass().getName(), paramInt);
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      a((byte[])paramVarArgs[2], 11);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

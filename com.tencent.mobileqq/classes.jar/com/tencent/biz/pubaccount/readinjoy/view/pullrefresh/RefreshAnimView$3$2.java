@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
 import android.widget.ImageView;
-import bawz;
+import baxn;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import rra;
+import rqx;
 
 public class RefreshAnimView$3$2
   implements Runnable
 {
-  public RefreshAnimView$3$2(rra paramrra) {}
+  public RefreshAnimView$3$2(rqx paramrqx) {}
   
   public void run()
   {
-    float f = bawz.a(this.a.a.getContext(), 44.0F) / 88.0F;
+    float f = baxn.a(this.a.a.getContext(), 44.0F) / 88.0F;
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(RefreshAnimView.a(this.a.a));
     localLottieDrawable.loop(false);

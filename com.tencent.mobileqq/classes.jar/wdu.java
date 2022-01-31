@@ -1,40 +1,29 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import java.util.HashMap;
 
 public class wdu
-  extends QQUIEventReceiver<StoryNickNameView, tkn>
+  extends QQUIEventReceiver<StoryUserBadgeView, tkh>
 {
-  public wdu(@NonNull StoryNickNameView paramStoryNickNameView)
+  public wdu(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    super(paramStoryNickNameView);
+    super(paramStoryUserBadgeView);
   }
   
-  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull tkn paramtkn)
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull tkh paramtkh)
   {
-    if ((paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramtkn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
-    {
+    if (paramtkh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramtkh.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
       return;
-      if ((paramtkn.jdField_a_of_type_JavaUtilList == null) || (paramtkn.jdField_a_of_type_JavaUtilList.size() == 0))
-      {
-        veg.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
-      }
-      if (TextUtils.equals(paramtkn.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramtkn.jdField_a_of_type_JavaUtilList.get(0));
-      }
-    } while (!TextUtils.equals(paramtkn.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramtkn.jdField_a_of_type_JavaUtilList.get(0));
+    }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
   }
   
   public Class acceptEventClass()
   {
-    return tkn.class;
+    return tkh.class;
   }
 }
 

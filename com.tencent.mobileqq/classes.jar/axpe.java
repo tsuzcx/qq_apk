@@ -1,17 +1,21 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public final class axpe
-  implements axnt
+  implements View.OnClickListener
 {
-  public axpe(ImageView paramImageView1, ImageView paramImageView2) {}
+  public axpe(axnx paramaxnx) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.a != null) && (this.b != null))
+    switch (paramView.getId())
     {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
+    default: 
+      return;
     }
+    this.a.a(15, 1, 0L);
+    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.needJump = false;
+    com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter.hasClickJumpBtn = true;
   }
 }
 

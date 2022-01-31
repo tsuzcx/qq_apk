@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import appp;
-import appq;
+import appt;
+import appu;
 
 public class VideoFilePresenter$1$1
   implements Runnable
 {
-  public VideoFilePresenter$1$1(appq paramappq) {}
+  public VideoFilePresenter$1$1(appu paramappu) {}
   
   public void run()
   {

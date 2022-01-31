@@ -1,14 +1,4 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-public final class ajoq
-  implements FilenameFilter
-{
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
-  }
-}
+public abstract interface ajoq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

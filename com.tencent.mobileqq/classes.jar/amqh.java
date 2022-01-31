@@ -1,74 +1,69 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
 
 public class amqh
+  extends ampa<amqg>
 {
-  private Map<String, String> a = new HashMap();
-  
-  public static amqh a(ampi[] paramArrayOfampi)
+  public static void b()
   {
-    Object localObject;
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
-    {
-      localObject = null;
-      return localObject;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        amqh localamqh = new amqh();
-        i = 0;
-        localObject = localamqh;
-        if (i >= paramArrayOfampi.length) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfampi[i].jdField_a_of_type_Int) });
-        }
-        localObject = new JSONObject(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject).has("grayUrlConfig")) {
-          localamqh.a.put("apolloGrayUrlWhite", paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-        } else if (((JSONObject)localObject).has("traceConfig")) {
-          localamqh.a.put("apolloTraceConfig", paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-        }
-      }
-      catch (Exception paramArrayOfampi)
-      {
-        QLog.e("ApolloConfig_GrayProcessor", 1, paramArrayOfampi, new Object[0]);
-        return null;
-      }
-      i += 1;
-    }
+    amqg localamqg = (amqg)ampl.a().a(430);
+    amqg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), false, localamqg);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, amqh paramamqh)
+  public int a()
   {
-    if ((paramQQAppInterface == null) || (paramamqh == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramamqh.a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = (String)paramamqh.a.get(str1);
-        if ((paramBoolean) && (QLog.isColorLevel())) {
-          QLog.d("ApolloConfig_GlobalProcessor", 2, new Object[] { "parseApolloGrayConfBean content:", str2 });
-        }
-        if ("apolloGrayUrlWhite".equals(str1)) {
-          ajmt.a(paramQQAppInterface, str2, paramBoolean);
-        } else if ("apolloTraceConfig".equals(str1)) {
-          ajmt.a(paramQQAppInterface, str2);
-        }
-      }
-    }
+    return 430;
+  }
+  
+  @NonNull
+  public amqg a(int paramInt)
+  {
+    return new amqg();
+  }
+  
+  @Nullable
+  public amqg a(amph[] paramArrayOfamph)
+  {
+    return amqg.a(paramArrayOfamph);
+  }
+  
+  public Class<amqg> a()
+  {
+    return amqg.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.e("ApolloConfig_GrayProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public void a(amqg paramamqg)
+  {
+    QLog.w("ApolloConfig_GrayProcessor", 1, "onUpdate");
+    amqg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true, paramamqg);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,6 +1,10 @@
 public abstract interface axmk
 {
-  public abstract void f(boolean paramBoolean);
+  public abstract void W_();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

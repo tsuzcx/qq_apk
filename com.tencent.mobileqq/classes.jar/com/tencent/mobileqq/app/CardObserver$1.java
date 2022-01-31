@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import ajtq;
+import ajto;
 
 public class CardObserver$1
   implements Runnable
 {
-  public CardObserver$1(ajtq paramajtq, boolean paramBoolean, Object paramObject) {}
+  public CardObserver$1(ajto paramajto, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {

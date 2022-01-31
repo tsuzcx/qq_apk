@@ -1,78 +1,132 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowListReq;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetUserFollowListRequest;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class akdn
-  implements axaw
+  implements ajte
 {
-  public akdn(PublicAccountHandler paramPublicAccountHandler) {}
+  public void a(int paramInt) {}
   
-  public int a()
-  {
-    return 1;
-  }
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
   
-  public ReqItem a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  public void a(boolean paramBoolean, nms paramnms) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 0;
-    localReqItem.eServiceID = 102;
-    boolean bool = sfh.c();
-    long l1 = PublicAccountHandler.a(this.a, bool);
-    long l2 = PublicAccountHandler.b(this.a, bool);
-    Object localObject2 = PublicAccountHandler.a(this.a);
-    if (bool)
+    if (100 == paramInt)
     {
-      localObject1 = new CertifiedAccountRead.StGetFollowListReq();
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).seq.set(bbbd.a(l1));
-      ((CertifiedAccountRead.StGetFollowListReq)localObject1).count.set(bbbd.a(1L));
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        ((CertifiedAccountRead.StGetFollowListReq)localObject1).attach_info.set((String)localObject2);
-      }
-      localObject2 = new PROTOCAL.StQWebReq();
-      ((PROTOCAL.StQWebReq)localObject2).Seq.set(-1L);
-      ((PROTOCAL.StQWebReq)localObject2).qua.set(bgxr.a());
-      ((PROTOCAL.StQWebReq)localObject2).deviceInfo.set(bgxq.a().c());
-      ((PROTOCAL.StQWebReq)localObject2).busiBuff.set(ByteStringMicro.copyFrom(((CertifiedAccountRead.StGetFollowListReq)localObject1).toByteArray()));
-      localObject1 = wrm.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        ((PROTOCAL.StQWebReq)localObject2).traceid.set((String)localObject1);
-      }
-      localObject2 = ((PROTOCAL.StQWebReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
-      }
-      localReqItem.vecParam = bblm.a((byte[])localObject1);
-      return localReqItem;
+      paramObject = (akdp)paramObject;
+      a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
-    Object localObject1 = new mobileqq_mp.GetUserFollowListRequest();
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).follow_seqno.set((int)l1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).public_account_seqno.set((int)l2);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).begin.set(0);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).limit.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).version.set(1);
-    ((mobileqq_mp.GetUserFollowListRequest)localObject1).is_increment.set(true);
-    localReqItem.vecParam = bblm.a(((mobileqq_mp.GetUserFollowListRequest)localObject1).toByteArray());
-    return localReqItem;
+    do
+    {
+      return;
+      if (101 == paramInt)
+      {
+        if ((paramObject instanceof akdo))
+        {
+          paramObject = (akdo)paramObject;
+          b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        if ((paramObject instanceof Integer))
+        {
+          b(paramBoolean, ((Integer)paramObject).intValue());
+          return;
+        }
+        a(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (102 == paramInt)
+      {
+        if ((paramObject instanceof akdo))
+        {
+          paramObject = (akdo)paramObject;
+          a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        b(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (103 == paramInt)
+      {
+        t_();
+        return;
+      }
+      if (104 == paramInt)
+      {
+        a(paramBoolean);
+        return;
+      }
+      if (105 == paramInt)
+      {
+        a(((Integer)paramObject).intValue());
+        return;
+      }
+      if (106 == paramInt)
+      {
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if (109 == paramInt)
+      {
+        a(paramBoolean, (nms)paramObject);
+        return;
+      }
+      if (108 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        a(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
+        return;
+      }
+      if (110 == paramInt)
+      {
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      if (111 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        long l = 0L;
+        paramInt = 0;
+        if (paramObject != null)
+        {
+          l = ((Long)paramObject.get("uin")).longValue();
+          paramInt = ((Integer)paramObject.get("status")).intValue();
+        }
+        a(paramBoolean, l, paramInt);
+        return;
+      }
+    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
+    a(paramBoolean, (SetRecvMsgStateRsp)paramObject);
   }
   
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 102) && (paramRespItem.cResult == 0)) {
-      this.a.b();
-    }
-  }
+  public void t_() {}
 }
 
 

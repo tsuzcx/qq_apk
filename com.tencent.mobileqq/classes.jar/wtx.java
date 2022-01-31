@@ -1,55 +1,21 @@
+import android.widget.ImageView;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
 
 public class wtx
-  implements IVideoInnerStatusListener
+  implements wtr
 {
   public wtx(VideoPlayerView paramVideoPlayerView) {}
   
-  public void notifyVideoClose(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    VideoPlayerView.c(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
+    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
     {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.a(this.a, null);
+      this.a.e.setVisibility(8);
+      VideoPlayerView.a(this.a, "");
     }
-    VideoPlayerView.a(this.a, null);
-    this.a.g();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
-    this.a.a(paramInt * this.a.a().b() / 100L);
-  }
-  
-  public void notifyVideoStart()
-  {
-    if (VideoPlayerView.a(this.a).a() < VideoPlayerView.a(this.a).b())
-    {
-      this.a.d();
-      return;
-    }
-    if (VideoPlayerView.c(this.a))
-    {
-      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
-      return;
-    }
-    VideoPlayerView.a(this.a).a(true);
-    this.a.f();
     if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
+      VideoPlayerView.a(this.a).a(paramBoolean);
     }
-    QLog.d("VideoPlayerView", 4, "no more, player repeat");
-  }
-  
-  public void notifyVideoStop()
-  {
-    this.a.a();
   }
 }
 

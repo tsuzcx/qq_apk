@@ -1,16 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class njw
-  implements View.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public njw(VideoCoverView paramVideoCoverView, Context paramContext) {}
+  public njw(VideoCoverView.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    this.a.this$0.b = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
+    }
+    this.a.this$0.b = true;
+    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
   }
 }
 

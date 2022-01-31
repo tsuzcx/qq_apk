@@ -1,38 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class rpw
-  implements ComplementFileStringLoader
 {
-  private rqd a;
+  public String a;
+  public rpr a;
+  public String b;
   
-  public rpw(rqd paramrqd)
+  public rpw(String paramString, rpr paramrpr, boolean paramBoolean)
   {
-    this.a = paramrqd;
+    if (paramString == null) {
+      throw new IllegalArgumentException();
+    }
+    this.jdField_a_of_type_Rpr = paramrpr;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    this.b = paramString;
   }
   
-  public String loadFileAsString(String paramString)
+  public String a()
   {
-    try
-    {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
     }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-      return null;
-    }
-    String str = rqm.a(localIOException);
-    return str;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,8 +1,12 @@
-import android.support.annotation.Nullable;
+import java.util.concurrent.Executor;
 
-public abstract interface bjob<T>
+final class bjob
+  implements Executor
 {
-  public abstract void a(@Nullable T paramT);
+  public void execute(Runnable paramRunnable)
+  {
+    bjoa.a().b(paramRunnable);
+  }
 }
 
 

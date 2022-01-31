@@ -1,68 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Collections;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
 public class azzy
+  implements TextWatcher
 {
-  public static String a(List<Integer> paramList)
-  {
-    int j = 0;
-    int k = paramList.size();
-    Collections.sort(paramList);
-    if (k == 1) {
-      return String.format(ajyc.a(2131705685), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
-    }
-    int i = 0;
-    if (i < k - 1) {
-      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
-    }
-    for (i = 0;; i = 1)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("第");
-      if (i != 0) {
-        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
-      }
-      for (;;)
-      {
-        return localStringBuilder.toString();
-        i += 1;
-        break;
-        while ((j < k) && (j < 3))
-        {
-          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
-          if ((j + 1 < k) && (j + 1 < 3)) {
-            localStringBuilder.append("、");
-          }
-          j += 1;
-        }
-        if (k > 3) {
-          localStringBuilder.append("等").append(k).append("段");
-        } else {
-          localStringBuilder.append("段");
-        }
-      }
-    }
-  }
+  public azzy(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramQQAppInterface == null) {
+    if (paramEditable.length() == 0)
+    {
+      this.a.e();
+      this.a.a(false);
       return;
     }
-    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
+    this.a.jdField_a_of_type_Baah.a();
+    this.a.jdField_a_of_type_Baah.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).getBoolean("ReciteGuideTipShow", false);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

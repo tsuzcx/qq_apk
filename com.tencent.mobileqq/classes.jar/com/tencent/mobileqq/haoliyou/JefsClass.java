@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.haoliyou;
 
-import akcz;
-import amav;
+import akcy;
+import amau;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,18 +16,18 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
-import aqvc;
-import aqvd;
 import aqve;
 import aqvf;
 import aqvg;
-import aqvl;
-import aqvm;
+import aqvh;
+import aqvi;
 import aqvn;
 import aqvo;
 import aqvp;
-import aqwi;
-import axqw;
+import aqvq;
+import aqvr;
+import aqwk;
+import axqy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -44,7 +44,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JefsClass
-  extends aqvc
+  extends aqve
 {
   private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
   private static final Set<String> jdField_a_of_type_JavaUtilSet = new ArraySet();
@@ -52,9 +52,9 @@ public class JefsClass
   private static final Set<String> c;
   private int jdField_a_of_type_Int;
   private final SparseArrayCompat<Runnable> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private aqvo jdField_a_of_type_Aqvo;
-  private aqvp jdField_a_of_type_Aqvp;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new aqvd(this);
+  private aqvq jdField_a_of_type_Aqvq;
+  private aqvr jdField_a_of_type_Aqvr;
+  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new aqvf(this);
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -157,11 +157,11 @@ public class JefsClass
     return localArrayMap;
   }
   
-  public static aqvo a(JSONObject paramJSONObject)
+  public static aqvq a(JSONObject paramJSONObject)
   {
-    aqvo localaqvo = new aqvo();
+    aqvq localaqvq = new aqvq();
     if (paramJSONObject == null) {
-      return localaqvo;
+      return localaqvq;
     }
     label199:
     for (;;)
@@ -180,7 +180,7 @@ public class JefsClass
             if (str == null) {
               break label199;
             }
-            localaqvo.jdField_a_of_type_JavaUtilSet.add(str);
+            localaqvq.jdField_a_of_type_JavaUtilSet.add(str);
             break label199;
           }
         }
@@ -199,11 +199,11 @@ public class JefsClass
           localObject1 = ((JSONObject)localObject2).optString("package");
           str = ((JSONObject)localObject2).optString("schema");
           localObject2 = ((JSONObject)localObject2).optString("action");
-          aqvn localaqvn = new aqvn();
-          localaqvn.a = ((String)localObject1);
-          localaqvn.b = str.toLowerCase();
-          localaqvn.c = ((String)localObject2).toLowerCase();
-          localaqvo.jdField_a_of_type_JavaUtilList.add(localaqvn);
+          aqvp localaqvp = new aqvp();
+          localaqvp.a = ((String)localObject1);
+          localaqvp.b = str.toLowerCase();
+          localaqvp.c = ((String)localObject2).toLowerCase();
+          localaqvq.jdField_a_of_type_JavaUtilList.add(localaqvp);
         }
         i += 1;
         continue;
@@ -212,7 +212,7 @@ public class JefsClass
       catch (Throwable paramJSONObject)
       {
         QLog.d("TeleScreen|JefsClass", 1, paramJSONObject, new Object[0]);
-        return localaqvo;
+        return localaqvq;
       }
     }
   }
@@ -311,12 +311,12 @@ public class JefsClass
       }
       b(paramInt1, 0);
       a(localRunnable);
-      amav.a().a(paramInt2, 2);
+      amau.a().a(paramInt2, 2);
       return;
     }
   }
   
-  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, aqvm paramaqvm)
+  private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, aqvo paramaqvo)
   {
     QLog.i("TeleScreen|JefsClass", 1, "intercept: ");
     if (((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue())
@@ -330,7 +330,7 @@ public class JefsClass
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "src " + str3 + ", ref " + str1);
     }
-    if (!akcz.a())
+    if (!akcy.a())
     {
       a(paramCancelableRunnable);
       return;
@@ -414,7 +414,7 @@ public class JefsClass
         }
       }
     }
-    paramaqvm.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
+    paramaqvo.a(str1, paramIntent.getDataString(), str2, paramContext, paramCancelableRunnable);
   }
   
   /* Error */
@@ -470,18 +470,18 @@ public class JefsClass
     //   77: aload 8
     //   79: aload 12
     //   81: invokevirtual 528	com/tencent/mobileqq/haoliyou/JefsClass$CancelableRunnable:a	(Ljava/lang/String;)V
-    //   84: invokestatic 533	ampm:a	()Lampm;
+    //   84: invokestatic 533	ampl:a	()Lampl;
     //   87: sipush 416
-    //   90: invokevirtual 535	ampm:a	(I)Ljava/lang/Object;
-    //   93: checkcast 537	amax
+    //   90: invokevirtual 535	ampl:a	(I)Ljava/lang/Object;
+    //   93: checkcast 537	amaw
     //   96: astore 11
     //   98: aload 11
-    //   100: getfield 539	amax:jdField_a_of_type_Boolean	Z
+    //   100: getfield 539	amaw:jdField_a_of_type_Boolean	Z
     //   103: ifeq +180 -> 283
     //   106: aload 11
     //   108: aload 12
     //   110: aload 5
-    //   112: invokevirtual 542	amax:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   112: invokevirtual 542	amaw:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   115: ifne +168 -> 283
     //   118: aload 7
     //   120: invokestatic 545	com/tencent/mobileqq/haoliyou/JefsClass:a	(Ljava/util/List;)Z
@@ -825,8 +825,8 @@ public class JefsClass
     }
     for (;;)
     {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      aqwi.a(paramContext, paramString1, paramString3, paramString4, paramString2, new aqvf(this, paramRunnable, new WeakReference(paramContext), paramString1));
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      aqwk.a(paramContext, paramString1, paramString3, paramString4, paramString2, new aqvh(this, paramRunnable, new WeakReference(paramContext), paramString1));
       return;
       label103:
       localQQAppInterface = null;
@@ -859,8 +859,8 @@ public class JefsClass
     }
     for (;;)
     {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
-      aqwi.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new aqvg(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", str2, str1);
+      aqwk.a(paramContext, paramString1, paramString4, paramString3, paramString5, paramString6, paramList, paramString2, new aqvi(this, new WeakReference(paramContext), paramCancelableRunnable, paramInt, paramString1));
       return;
       label111:
       localQQAppInterface = null;
@@ -925,8 +925,8 @@ public class JefsClass
           }
           try
           {
-            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Aqvp);
-            amav.a().a(paramInt2, -1);
+            BaseApplicationImpl.context.unregisterReceiver(this.jdField_a_of_type_Aqvr);
+            amau.a().a(paramInt2, -1);
             return;
           }
           catch (Throwable localThrowable)
@@ -946,7 +946,7 @@ public class JefsClass
     return jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass;
   }
   
-  public aqvl a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
+  public aqvn a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, "checkAndDoAsyn() called with: context = [" + paramContext + "], intent = [" + paramIntent + "], url = [" + paramString + "], todo = [" + paramWeakOuterRefRunnable + "]");
@@ -954,11 +954,11 @@ public class JefsClass
     int i = paramIntent.getIntExtra("key_callback_id", 0);
     paramWeakOuterRefRunnable.b(i);
     paramWeakOuterRefRunnable = new JefsClass.CancelableRunnable(paramWeakOuterRefRunnable);
-    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new aqve(this, paramContext, paramIntent, paramString, i));
+    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new aqvg(this, paramContext, paramIntent, paramString, i));
     return paramWeakOuterRefRunnable.a();
   }
   
-  public aqvl a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
+  public aqvn a(Context paramContext, Intent paramIntent, String paramString, Runnable paramRunnable)
   {
     return a(paramContext, paramIntent, paramString, new WeakOuterRefRunnable(paramRunnable, true));
   }
@@ -988,7 +988,7 @@ public class JefsClass
     try
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Aqvo = a(paramJSONObject);
+      this.jdField_a_of_type_Aqvq = a(paramJSONObject);
       return;
     }
     finally

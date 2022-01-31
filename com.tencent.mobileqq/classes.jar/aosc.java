@@ -1,45 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-
-public class aosc
-  extends apvd
+public abstract interface aosc
 {
-  public aosc(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public abstract void d();
   
-  public void a()
-  {
-    this.a.a.a().c();
-  }
+  public abstract void e();
   
-  public void b()
-  {
-    this.a.a.a().k();
-  }
+  public abstract void n();
   
-  public void c()
-  {
-    this.a.a.a().l();
-  }
+  public abstract void p();
   
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
-  }
+  public abstract void q();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ajyc;
+import ajya;
 import android.app.Dialog;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
@@ -36,15 +36,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import ssw;
-import ste;
-import tcq;
-import tdc;
-import tdi;
-import unt;
-import unu;
-import veg;
-import vel;
+import sst;
+import stb;
+import tcn;
+import tcz;
+import tdf;
+import unq;
+import unr;
+import ved;
+import vei;
 
 public class QQStoryBaseActivity
   extends IphoneTitleBarActivity
@@ -53,11 +53,11 @@ public class QQStoryBaseActivity
   protected Dialog a;
   protected Bitmap a;
   protected Handler a;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new unt(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new unq(this);
   protected QQStoryBaseActivity.ProgressView a;
   public AppInterface a;
   protected Map<Subscriber, String> a;
-  private tcq jdField_a_of_type_Tcq;
+  private tcn jdField_a_of_type_Tcn;
   protected int[] a;
   private long[] jdField_a_of_type_ArrayOfLong = new long[4];
   public ImageView c;
@@ -75,7 +75,7 @@ public class QQStoryBaseActivity
   private void a(Intent paramIntent)
   {
     if (paramIntent == null) {}
-    ssw localssw;
+    sst localsst;
     SoftReference localSoftReference;
     do
     {
@@ -101,11 +101,11 @@ public class QQStoryBaseActivity
         this.jdField_a_of_type_ArrayOfInt[2] = n;
         this.jdField_a_of_type_ArrayOfInt[3] = i1;
       } while (TextUtils.isEmpty(paramIntent));
-      localssw = (ssw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
-      localSoftReference = (SoftReference)localssw.a.get(paramIntent);
+      localsst = (sst)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(181);
+      localSoftReference = (SoftReference)localsst.a.get(paramIntent);
     } while ((localSoftReference == null) || (localSoftReference.get() == null));
     this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localSoftReference.get());
-    localssw.a.remove(paramIntent);
+    localsst.a.remove(paramIntent);
   }
   
   private boolean a(int paramInt)
@@ -113,7 +113,7 @@ public class QQStoryBaseActivity
     long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_ArrayOfLong[paramInt];
     if (l < 1000L)
     {
-      veg.d("Q.qqstory.QQStoryBaseActivity", "startActivity fail, open twice take time:%d", new Object[] { Long.valueOf(l) });
+      ved.d("Q.qqstory.QQStoryBaseActivity", "startActivity fail, open twice take time:%d", new Object[] { Long.valueOf(l) });
       return true;
     }
     this.jdField_a_of_type_ArrayOfLong[paramInt] = SystemClock.elapsedRealtime();
@@ -160,13 +160,13 @@ public class QQStoryBaseActivity
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
     if (AppSetting.d) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajyc.a(2131710804));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + ajya.a(2131710815));
     }
   }
   
   protected void a(@NonNull Map<Subscriber, String> paramMap)
   {
-    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new unu(this, this)), "root_group");
+    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new unr(this, this)), "root_group");
   }
   
   public void b()
@@ -184,7 +184,7 @@ public class QQStoryBaseActivity
   
   public void c()
   {
-    veg.b("Q.qqstory.QQStoryBaseActivity", "onOutOfMemory");
+    ved.b("Q.qqstory.QQStoryBaseActivity", "onOutOfMemory");
   }
   
   protected void c(String paramString) {}
@@ -209,17 +209,17 @@ public class QQStoryBaseActivity
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      ste.a().registerSubscriber((String)localObject2, localSubscriber);
+      stb.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreate(paramBundle);
     c("onCreate");
     this.j = true;
-    this.jdField_a_of_type_Tcq = ((tcq)tdc.a(18));
-    this.jdField_a_of_type_Tcq.a(this);
+    this.jdField_a_of_type_Tcn = ((tcn)tcz.a(18));
+    this.jdField_a_of_type_Tcn.a(this);
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
     Bosses.get().postLightWeightJob(new QQStoryBaseActivity.1(this), 10);
-    ((tdi)tdc.a(26)).a(0);
+    ((tdf)tcz.a(26)).a(0);
     a(getIntent());
     return false;
   }
@@ -229,13 +229,13 @@ public class QQStoryBaseActivity
     super.doOnDestroy();
     c("onDestroy");
     this.j = false;
-    this.jdField_a_of_type_Tcq.b(this);
+    this.jdField_a_of_type_Tcn.b(this);
     b("unregister subscriber size : " + this.jdField_a_of_type_JavaUtilMap.size());
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      ste.a().unRegisterSubscriber(localSubscriber);
+      stb.a().unRegisterSubscriber(localSubscriber);
     }
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
@@ -247,7 +247,7 @@ public class QQStoryBaseActivity
   public void doOnPause()
   {
     super.doOnPause();
-    vel.a(vel.a(getClass(), 0), this.currentActivityStayTime, getActivityName());
+    vei.a(vei.a(getClass(), 0), this.currentActivityStayTime, getActivityName());
     c("onPause");
   }
   

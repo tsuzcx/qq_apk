@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.content.Context;
-import argi;
-import argj;
+import argk;
+import argl;
 import java.util.Map;
 
 public final class MonitorConfig$1
@@ -12,13 +12,13 @@ public final class MonitorConfig$1
   
   public void run()
   {
-    argj.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    if (argj.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
+    argl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (argl.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
     {
-      argi.b(String.valueOf(((argj)argj.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
+      argk.b(String.valueOf(((argl)argl.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
       return;
     }
-    argi.b("3235983");
+    argk.b("3235983");
   }
 }
 

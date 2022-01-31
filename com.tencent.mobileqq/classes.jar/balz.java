@@ -1,38 +1,20 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class balz
-  extends ajxl
+public class balz
 {
-  balz(balw parambalw) {}
+  private static Handler a;
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public static void a(Runnable paramRunnable)
   {
-    if (!this.a.b(paramString)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    balw.a(this.a, paramString);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = "" + paramObject;
-    if (!this.a.b(paramObject)) {}
-    do
+    if (a == null)
     {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      balw.a(this.a, paramObject);
-    } while (!(this.a.a instanceof QQAppInterface));
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    ((ajxn)this.a.a.getManager(51)).d(paramObject);
-    akny.a(localQQAppInterface, paramObject);
-    localQQAppInterface.a().a().a(paramObject, true);
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TroopMemberDBThread", 0);
+      localHandlerThread.start();
+      a = new Handler(localHandlerThread.getLooper());
+    }
+    a.post(paramRunnable);
   }
 }
 

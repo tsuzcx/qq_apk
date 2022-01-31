@@ -1,19 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
 class aqra
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
-  aqra(aqqw paramaqqw) {}
+  aqra(aqqy paramaqqy) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.setVisibility(0);
+    aqqy.a(this.a).sendEmptyMessageDelayed(6, 500L);
   }
 }
 

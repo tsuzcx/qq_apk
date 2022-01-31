@@ -1,42 +1,25 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-
-public class bieu
+class bieu
+  implements aysc
 {
-  private static ayry jdField_a_of_type_Ayry;
-  private static bbmh jdField_a_of_type_Bbmh = new biev();
-  private static ayry jdField_b_of_type_Ayry;
-  private static bbmh jdField_b_of_type_Bbmh = new biew();
+  bieu(biep parambiep, bifb parambifb, String paramString1, String paramString2) {}
   
-  public static ayry a()
+  public void onResp(aysz paramaysz)
   {
-    if (jdField_a_of_type_Ayry == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ayry == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bbmh, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Ayry = new aysz(localHttpCommunicator, true);
-      }
-      return jdField_a_of_type_Ayry;
+    if (paramaysz.jdField_a_of_type_Int == 3) {
+      return;
     }
-    finally {}
+    if (paramaysz.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = paramaysz.b;
+      this.jdField_a_of_type_Bifb.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramaysz.jdField_a_of_type_JavaLangString, i);
+      return;
+    }
   }
   
-  public static ayry b()
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
   {
-    if (jdField_b_of_type_Ayry == null) {}
-    try
-    {
-      if (jdField_b_of_type_Ayry == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_Bbmh, 128);
-        localHttpCommunicator.a();
-        jdField_b_of_type_Ayry = new aysz(localHttpCommunicator, true);
-      }
-      return jdField_b_of_type_Ayry;
-    }
-    finally {}
+    this.jdField_a_of_type_Bifb.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
   }
 }
 

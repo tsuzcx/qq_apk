@@ -13,8 +13,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bibf;
-import bibh;
+import bibw;
+import biby;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -24,7 +24,7 @@ public class WadlProvider
 {
   private static final UriMatcher jdField_a_of_type_AndroidContentUriMatcher = new UriMatcher(-1);
   ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  bibf jdField_a_of_type_Bibf;
+  bibw jdField_a_of_type_Bibw;
   
   static
   {
@@ -107,9 +107,9 @@ public class WadlProvider
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(bibh.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
       {
-        int i = this.jdField_a_of_type_Bibf.a(paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bibw.a(paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }
@@ -141,9 +141,9 @@ public class WadlProvider
       default: 
         return paramUri;
       }
-      if (!TextUtils.isEmpty(bibh.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
       {
-        this.jdField_a_of_type_Bibf.a(paramContentValues);
+        this.jdField_a_of_type_Bibw.a(paramContentValues);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return paramUri;
       }
@@ -158,8 +158,8 @@ public class WadlProvider
     if (QLog.isColorLevel()) {
       QLog.d("WadlProvider", 2, "onCreate");
     }
-    this.jdField_a_of_type_Bibf = new bibf(getContext());
-    this.jdField_a_of_type_Bibf.a(this.jdField_a_of_type_Bibf.getReadableDatabase(), this.jdField_a_of_type_Bibf.getWritableDatabase());
+    this.jdField_a_of_type_Bibw = new bibw(getContext());
+    this.jdField_a_of_type_Bibw.a(this.jdField_a_of_type_Bibw.getReadableDatabase(), this.jdField_a_of_type_Bibw.getWritableDatabase());
     this.jdField_a_of_type_AndroidContentContentResolver = getContext().getContentResolver();
     return true;
   }
@@ -187,10 +187,10 @@ public class WadlProvider
         default: 
           return null;
         }
-        if (TextUtils.isEmpty(bibh.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!"))) {
+        if (TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!"))) {
           break;
         }
-        paramArrayOfString1 = this.jdField_a_of_type_Bibf.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+        paramArrayOfString1 = this.jdField_a_of_type_Bibw.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
         paramUri = paramArrayOfString1;
       } while (!QLog.isColorLevel());
       QLog.d("WadlProvider", 2, "query cursor=" + paramArrayOfString1);
@@ -215,9 +215,9 @@ public class WadlProvider
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(bibh.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
       {
-        int i = this.jdField_a_of_type_Bibf.a(paramContentValues, paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bibw.a(paramContentValues, paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }

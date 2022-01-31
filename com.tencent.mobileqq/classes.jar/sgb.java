@@ -1,17 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
+import org.json.JSONObject;
 
 class sgb
-  implements DialogInterface.OnClickListener
+  implements ryd
 {
-  sgb(sga paramsga) {}
+  sgb(sfk paramsfk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    ajwe.a();
-    this.a.a.this$0.a.finish();
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 

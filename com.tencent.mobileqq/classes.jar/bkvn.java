@@ -1,13 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 public class bkvn
-  implements bkuj
+  implements View.OnTouchListener
 {
-  public void a(boolean paramBoolean)
+  public bkvn(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
-    }
+    return this.a.a(paramView, paramMotionEvent);
   }
 }
 

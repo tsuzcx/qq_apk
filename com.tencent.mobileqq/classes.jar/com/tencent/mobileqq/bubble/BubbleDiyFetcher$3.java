@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
-import ambf;
-import amcz;
+import ambe;
+import amcy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class BubbleDiyFetcher$3
   implements Runnable
 {
-  public BubbleDiyFetcher$3(ambf paramambf, Set paramSet) {}
+  public BubbleDiyFetcher$3(ambe paramambe, Set paramSet) {}
   
   public void run()
   {
@@ -19,23 +19,23 @@ public class BubbleDiyFetcher$3
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
-      amcz localamcz = (amcz)localIterator.next();
-      if ((localamcz != null) && (localamcz.getCallback() != null))
+      amcy localamcy = (amcy)localIterator.next();
+      if ((localamcy != null) && (localamcy.getCallback() != null))
       {
-        String str = localamcz.a;
-        if ((this.a.contains(str)) && (!localHashSet.contains(localamcz)))
+        String str = localamcy.a;
+        if ((this.a.contains(str)) && (!localHashSet.contains(localamcy)))
         {
           if (QLog.isColorLevel()) {
-            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localamcz.toString());
+            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localamcy.toString());
           }
-          localHashSet.add(localamcz);
-          localamcz.invalidateSelf();
-          this.this$0.a.remove(localamcz);
+          localHashSet.add(localamcy);
+          localamcy.invalidateSelf();
+          this.this$0.a.remove(localamcy);
         }
       }
       else
       {
-        this.this$0.a.remove(localamcz);
+        this.this$0.a.remove(localamcy);
       }
     }
     if (QLog.isColorLevel()) {

@@ -1,22 +1,103 @@
+import android.view.View;
+import android.view.ViewStub;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.1;
+import dov.com.qq.im.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder.2;
+
 public class bioz
+  extends biko
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private AEProviderContainerView a;
   
-  public bioz(boolean paramBoolean, int paramInt)
+  public bioz(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramViewStub);
   }
   
-  public int a()
+  protected void a(View paramView)
   {
-    return this.jdField_a_of_type_Int;
+    this.a = ((AEProviderContainerView)paramView.findViewById(2131363122));
   }
   
-  public boolean a()
+  public void a(avst paramavst)
   {
-    return this.jdField_a_of_type_Boolean;
+    a(new BeautyAndFilterPanelViewStubHolder.1(this, paramavst));
+  }
+  
+  public void a(bikl parambikl, biws parambiws)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambikl, parambiws));
+  }
+  
+  public void a(biwo parambiwo)
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.setCaptureMode(parambiwo);
+  }
+  
+  public void b()
+  {
+    a();
+    this.a.setVisibility(0);
+    this.a.b();
+  }
+  
+  public boolean b()
+  {
+    if (!a()) {
+      return false;
+    }
+    return this.a.b();
+  }
+  
+  public void c()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void f()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.c();
+  }
+  
+  public void g()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void h()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.h();
   }
 }
 

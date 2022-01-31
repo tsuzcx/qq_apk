@@ -1,23 +1,36 @@
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Message;
 import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.mobileqq.data.LebaPluginInfo;
 
 public class ncv
-  implements View.OnTouchListener
+  extends Handler
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new ncw(this);
-  
   public ncv(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramMessage.what)
+    {
+    case -1: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.jdField_a_of_type_Byte = 0;
+      LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131696286));
+      localStringBuilder.append(this.a.getString(2131696284));
+      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      bcql.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+      return;
     }
-    return false;
+    this.a.a.jdField_a_of_type_Byte = 1;
+    LebaSearchPluginManagerActivity.a(this.a);
+    localStringBuilder.append(this.a.getString(2131696286));
+    localStringBuilder.append(this.a.getString(2131696280));
+    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+    bcql.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }
 }
 

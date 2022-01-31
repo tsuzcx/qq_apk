@@ -1,27 +1,28 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class aoov
+public class aoov
   implements View.OnClickListener
 {
-  aoov(aoou paramaoou, View paramView) {}
+  public aoov(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (apes)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Aoou.a.e = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Aoou.a.b.get(this.jdField_a_of_type_Aoou.a.e);
-    if ((!apvb.a(paramView.c())) || (apvb.c(paramView.c())))
-    {
-      apue.d(paramView.c());
-      this.jdField_a_of_type_Aoou.a.b.remove(this.jdField_a_of_type_Aoou.a.e);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Aoou.a);
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
     }
-    aptv.a(2131692410);
+    paramView = (Button)paramView.findViewById(2131364973);
+    if (paramView.getTag() != null)
+    {
+      this.a.e = ((Integer)paramView.getTag()).intValue();
+      if (this.a.jdField_a_of_type_Apev != null) {
+        this.a.jdField_a_of_type_Apev.a(null);
+      }
+    }
+    this.a.m();
   }
 }
 

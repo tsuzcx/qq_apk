@@ -1,18 +1,25 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class ankk
-  implements DialogInterface.OnClickListener
+public class ankk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ankk(anki paramanki) {}
+  public ankk(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.cancel();
-    paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
-    this.a.a.startActivity(paramDialogInterface);
+    akry.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(akry.jdField_a_of_type_JavaLangString, 0).edit().putBoolean(akry.b, paramBoolean).commit();
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), ajya.a(2131702870), 1).a();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
+    }
   }
 }
 

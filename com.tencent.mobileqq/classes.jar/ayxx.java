@@ -1,48 +1,95 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.cs.cmd0x352.cmd0x352.ReqBody;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class ayxx
-  extends ayyb
+class ayxx
+  implements baxs
 {
-  void a(int paramInt, ayyy paramayyy, cmd0x352.ReqBody paramReqBody)
-  {
-    paramayyy = (ayyw)paramayyy;
-    cmd0x352.TryUpImgReq localTryUpImgReq = new cmd0x352.TryUpImgReq();
-    localTryUpImgReq.uint64_file_id.set(paramInt);
-    localTryUpImgReq.setHasFlag(true);
-    localTryUpImgReq.uint64_src_uin.set(Long.valueOf(paramayyy.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpImgReq.uint64_file_size.set(paramayyy.jdField_a_of_type_Long);
-    localTryUpImgReq.bytes_file_md5.set(ByteStringMicro.copyFrom(paramayyy.jdField_a_of_type_ArrayOfByte));
-    localTryUpImgReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(paramayyy.jdField_a_of_type_JavaLangString));
-    localTryUpImgReq.uint32_src_term.set(5);
-    localTryUpImgReq.bool_address_book.set(paramayyy.jdField_c_of_type_Boolean);
-    localTryUpImgReq.uint32_platform_type.set(9);
-    localTryUpImgReq.uint32_bu_type.set(1);
-    localTryUpImgReq.bool_pic_original.set(paramayyy.b);
-    localTryUpImgReq.uint32_pic_width.set(paramayyy.jdField_c_of_type_Int);
-    localTryUpImgReq.uint32_pic_height.set(paramayyy.d);
-    localTryUpImgReq.uint32_pic_type.set(paramayyy.jdField_a_of_type_Int);
-    localTryUpImgReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(ayui.a()));
-    localTryUpImgReq.bool_reject_tryfast.set(true);
-    paramReqBody.rpt_msg_tryup_img_req.add(localTryUpImgReq);
-  }
+  ayxx(ayxw paramayxw) {}
   
-  public void a(ayyn paramayyn)
+  public void onInfo(long paramLong, double paramDouble)
   {
-    if ((paramayyn != null) && (paramayyn.jdField_a_of_type_JavaUtilList != null) && (paramayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    if (!ayxw.a(this.a)) {
+      return;
+    }
+    if (!ayxw.b(this.a))
     {
-      ayti localayti = new ayti();
-      localayti.jdField_a_of_type_JavaLangString = "LongConn.ArtisticFilter";
-      localayti.jdField_a_of_type_ArrayOfByte = a(paramayyn.jdField_a_of_type_JavaUtilList);
-      localayti.jdField_a_of_type_JavaLangObject = paramayyn;
-      localayti.jdField_a_of_type_Ayth = this;
-      a(paramayyn, localayti);
+      ayxw.a(this.a, paramLong);
+      ayxw.a(this.a, paramDouble);
+      ayxw.b(this.a, akdd.a.a);
+      if (ayxw.a(this.a) > ayxw.b(this.a))
+      {
+        if (!ayxw.c(this.a))
+        {
+          ayxw.a(this.a);
+          if (ayxw.b(this.a) >= ayxw.c(this.a))
+          {
+            ayxw.a(this.a, true);
+            ayxw.b(this.a, 0L);
+          }
+        }
+        if (ayxw.c(this.a) >= ayxw.d(this.a)) {
+          break label502;
+        }
+        if (!ayxw.d(this.a))
+        {
+          ayxw.d(this.a);
+          if (ayxw.e(this.a) >= ayxw.c(this.a))
+          {
+            ayxw.b(this.a, true);
+            ayxw.c(this.a, 0L);
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      Object localObject;
+      if (((!ayxw.d(this.a)) || (!ayxw.c(this.a))) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder("[system info]:");
+        ((StringBuilder)localObject).append(",mCurFPSTime=").append(ayxw.f(this.a));
+        ((StringBuilder)localObject).append(",mCurFPS=").append(ayxw.a(this.a));
+        ((StringBuilder)localObject).append(",mCurCPU=").append(ayxw.c(this.a));
+        ((StringBuilder)localObject).append(",mFPSReadyCount=").append(ayxw.b(this.a));
+        ((StringBuilder)localObject).append(",mCPUReadyCount=").append(ayxw.e(this.a));
+        ((StringBuilder)localObject).append(",mFPSReady=").append(ayxw.c(this.a));
+        ((StringBuilder)localObject).append(",mCPUReady=").append(ayxw.d(this.a));
+        QLog.d("PreDownloadScheduler", 2, ((StringBuilder)localObject).toString());
+      }
+      ayxw.a(this.a).sendEmptyMessage(1005);
+      return;
+      Bundle localBundle;
+      if ((ayxw.d(this.a)) && (ayxw.c(this.a)))
+      {
+        localObject = new Message();
+        ((Message)localObject).what = 1007;
+        localBundle = new Bundle();
+        localBundle.putDouble("FPS", ayxw.a(this.a));
+        localBundle.putDouble("CPU", ayxw.c(this.a));
+        ((Message)localObject).obj = localBundle;
+        ayxw.a(this.a).sendMessage((Message)localObject);
+      }
+      ayxw.a(this.a, false);
+      ayxw.b(this.a, 0L);
+      break;
+      label502:
+      if ((ayxw.d(this.a)) && (ayxw.c(this.a)))
+      {
+        localObject = new Message();
+        ((Message)localObject).what = 1007;
+        localBundle = new Bundle();
+        localBundle.putDouble("FPS", ayxw.a(this.a));
+        localBundle.putDouble("CPU", ayxw.c(this.a));
+        ((Message)localObject).obj = localBundle;
+        ayxw.a(this.a).sendMessage((Message)localObject);
+      }
+      ayxw.b(this.a, false);
+      ayxw.c(this.a, 0L);
+      continue;
+      ayxw.b(this.a, true);
+      ayxw.a(this.a, true);
     }
   }
 }

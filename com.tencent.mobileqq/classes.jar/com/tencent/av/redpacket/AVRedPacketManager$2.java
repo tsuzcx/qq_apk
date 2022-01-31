@@ -1,7 +1,7 @@
 package com.tencent.av.redpacket;
 
-import lud;
-import lug;
+import lty;
+import lub;
 
 public class AVRedPacketManager$2
   implements Runnable
@@ -12,7 +12,7 @@ public class AVRedPacketManager$2
   {
     AVRedPacketManager.a(this.this$0, this.this$0.g);
     long l = System.currentTimeMillis();
-    this.this$0.a.a(new lud(this, l));
+    this.this$0.a.a(new lty(this, l));
   }
 }
 

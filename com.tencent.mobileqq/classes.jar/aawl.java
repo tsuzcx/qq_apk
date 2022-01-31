@@ -1,29 +1,66 @@
-import android.os.Message;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.AppShareID;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Conversation.35.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aawl
-  extends ajuh
+  extends ajvj
 {
   public aawl(Conversation paramConversation) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  protected void a()
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      if (!this.a.h) {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
-      }
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
     }
   }
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    if (paramBoolean) {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
+      }
       this.a.a(0L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
+      }
+      this.a.a(8, paramString, 3000);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(new Conversation.35.1(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
+      }
+      this.a.a(8, paramString, 3000);
     }
   }
 }

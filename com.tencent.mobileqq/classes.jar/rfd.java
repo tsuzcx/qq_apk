@@ -1,35 +1,16 @@
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
-final class rfd
-  implements sig
+public class rfd
+  implements aycb
 {
-  public void a(Uri paramUri, String paramString, int paramInt)
+  public rfd(ReadInJoySkinGuideView.1 param1) {}
+  
+  public void a(aybe paramaybe)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
-      if (rfc.a(rfc.a()) != null) {
-        break label129;
-      }
-      paramUri = "null";
-      paramString = paramString.append(paramUri).append(", channelType=");
-      if (rfc.b(rfc.a()) != null) {
-        break label139;
-      }
-    }
-    label129:
-    label139:
-    for (paramUri = "null";; paramUri = rfc.b(rfc.a()))
-    {
-      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
-      if (rfc.a(rfc.a()) != null) {
-        noo.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(rfc.b(rfc.a())), String.valueOf(rfc.a(rfc.a())), null, false);
-      }
-      return;
-      paramUri = rfc.a(rfc.a());
-      break;
-    }
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramaybe));
   }
 }
 

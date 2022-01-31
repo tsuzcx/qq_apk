@@ -1,52 +1,39 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class awyo
-  extends awyp
+class awyo
+  extends amlv
 {
-  PeakAppInterface a;
+  awyo(awyn paramawyn) {}
   
-  public awyo(PeakAppInterface paramPeakAppInterface)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.a = paramPeakAppInterface;
-  }
-  
-  public AppInterface a()
-  {
-    return this.a;
-  }
-  
-  protected void a()
-  {
-    try
+    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
     {
-      super.a();
-      a(new biqe(this.a));
-      super.b();
+      localObject = this.a.a("VideoSvc.Send");
+      if (localObject != null)
+      {
+        localObject = ((xom)localObject).a(paramToServiceMsg, paramFromServiceMsg);
+        localMessageHandler = awyn.a(this.a).a();
+        if ((localMessageHandler != null) && (localObject != null)) {
+          localMessageHandler.onReceive(paramToServiceMsg, paramFromServiceMsg, localObject);
+        }
+      }
+    }
+    while (paramFromServiceMsg == null)
+    {
+      Object localObject;
+      MessageHandler localMessageHandler;
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    a(paramToServiceMsg, null, axbp.class);
-  }
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
+    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awyo
  * JD-Core Version:    0.7.0.1
  */

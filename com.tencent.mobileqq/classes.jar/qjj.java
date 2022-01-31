@@ -1,29 +1,94 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class qjj
-  extends AnimatorListenerAdapter
+public abstract class qjj<T>
+  implements quh
 {
-  qjj(qji paramqji) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    if ((qji.a(this.a) != null) && (qji.a(this.a).h != null))
+    return 0;
+  }
+  
+  protected abstract List<T> a();
+  
+  public List<qui> a(int paramInt, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramInt >= 0)
     {
-      qji.a(this.a).h.setVisibility(0);
-      paramAnimator = new AnimatorSet();
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(qji.a(this.a).h, "alpha", new float[] { 0.0F, 1.0F });
-      localObjectAnimator1.setDuration(200L);
-      localObjectAnimator1.setInterpolator(new DecelerateInterpolator());
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(qji.a(this.a).h, "translationY", new float[] { actn.a(15.0F, qji.a(this.a).h.getResources()), 0.0F });
-      localObjectAnimator2.setDuration(200L);
-      localObjectAnimator2.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      paramAnimator.start();
+      List localList = a();
+      a(paramInt, paramBoolean, localList, localArrayList);
+      b(paramInt - a(), paramBoolean, localList, localArrayList);
+    }
+    return localArrayList;
+  }
+  
+  protected abstract qui a(T paramT);
+  
+  protected void a(int paramInt, boolean paramBoolean, List<T> paramList, List<qui> paramList1)
+  {
+    int j = paramInt + 1;
+    paramList1.size();
+    if (j < paramList.size())
+    {
+      if (paramBoolean) {}
+      for (int i = 4;; i = 3)
+      {
+        int k = Math.min(i + paramInt, paramList.size() - 1);
+        paramInt = 0;
+        i = j;
+        for (;;)
+        {
+          j = paramInt;
+          if (i > k) {
+            break;
+          }
+          paramList1.add(a(paramList.get(i)));
+          i += 1;
+          paramInt += 1;
+        }
+      }
+    }
+    j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + j);
+    }
+  }
+  
+  public boolean a()
+  {
+    return bbfj.h(BaseApplicationImpl.getApplication().getApplicationContext());
+  }
+  
+  protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<qui> paramList1)
+  {
+    int j = paramInt - 1;
+    paramList1.size();
+    if (j >= 0)
+    {
+      if (paramBoolean) {}
+      for (int i = 1;; i = 2)
+      {
+        int k = Math.max(paramInt - i, 0);
+        paramInt = 0;
+        i = j;
+        for (;;)
+        {
+          j = paramInt;
+          if (i < k) {
+            break;
+          }
+          paramList1.add(a(paramList.get(i)));
+          i -= 1;
+          paramInt += 1;
+        }
+      }
+    }
+    j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + j);
     }
   }
 }

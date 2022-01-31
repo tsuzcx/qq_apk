@@ -1,109 +1,248 @@
-import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lij
 {
-  private asdq jdField_a_of_type_Asdq;
-  String jdField_a_of_type_JavaLangString;
-  private lie jdField_a_of_type_Lie;
-  lif jdField_a_of_type_Lif;
-  lig jdField_a_of_type_Lig;
-  lih jdField_a_of_type_Lih;
-  String jdField_b_of_type_JavaLangString;
-  lif jdField_b_of_type_Lif;
-  lif c = new lik(this);
+  public static lij a;
+  public int a;
+  public List<lik> a;
+  public boolean a;
+  public int b = 0;
   
   public lij()
   {
-    a();
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void a()
+  public static int a()
   {
-    if (this.jdField_a_of_type_Lie == null)
-    {
-      if (bbct.d())
+    lij locallij = a();
+    if (locallij != null) {
+      return locallij.b;
+    }
+    return 3;
+  }
+  
+  public static List<lik> a()
+  {
+    lij locallij = a();
+    if (locallij != null) {
+      return locallij.jdField_a_of_type_JavaUtilList;
+    }
+    return null;
+  }
+  
+  public static lij a()
+  {
+    if ((jdField_a_of_type_Lij == null) || (jdField_a_of_type_Lij.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Lij = b();
+    }
+    return jdField_a_of_type_Lij;
+  }
+  
+  public static boolean a()
+  {
+    lij locallij = a();
+    return (locallij != null) && (locallij.jdField_a_of_type_Int == 1);
+  }
+  
+  private static lij b()
+  {
+    int i1 = 3;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC!");
+    }
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.AVPanCfg.name());
+    QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC dpcValue: " + str);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    int k;
+    int m;
+    int n;
+    if (!TextUtils.isEmpty(str)) {
+      for (;;)
       {
-        this.jdField_a_of_type_Lie = new lii();
-        lcl.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
+        try
+        {
+          Object localObject1 = str.split("\\|");
+          if ((localObject1 != null) && (localObject1.length >= 3))
+          {
+            j = arai.a(localObject1[0], 0);
+            localObject3 = localObject1[1];
+            i = j;
+          }
+          try
+          {
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              i = j;
+              localObject3 = ((String)localObject3).split("-");
+              k = 0;
+              i = j;
+              if (k < localObject3.length)
+              {
+                Object localObject4 = localObject3[k];
+                i = j;
+                if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                  break label623;
+                }
+                i = j;
+                localObject4 = ((String)localObject4).split("_");
+                i = j;
+                if (localObject4.length < 2) {
+                  break label615;
+                }
+                i = j;
+                m = arai.a(localObject4[0], 0);
+                i = j;
+                n = arai.a(localObject4[1], 0);
+                label204:
+                if ((m <= 0) || (n <= 0)) {
+                  break label623;
+                }
+                i = j;
+                localArrayList.add(new lik(n, m));
+                break label623;
+              }
+            }
+            i = j;
+            k = arai.a(localObject1[2], 3);
+            i = j;
+            label249:
+            if (localArrayList.size() == 0)
+            {
+              localArrayList.add(new lik(215, 4));
+              localArrayList.add(new lik(150, 8));
+            }
+            localObject1 = new lij();
+            ((lij)localObject1).jdField_a_of_type_Int = i;
+            ((lij)localObject1).b = k;
+            ((lij)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+            if ((str == null) || (str.isEmpty())) {
+              bool = true;
+            }
+            ((lij)localObject1).jdField_a_of_type_Boolean = bool;
+            return localObject1;
+          }
+          catch (Exception localException1)
+          {
+            j = i;
+          }
+          if ((localObject1 == null) || (localObject1.length != 1)) {
+            continue;
+          }
+          j = arai.a(localObject1[0], 0);
+          i = j;
+          QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 1");
+          k = i1;
+          i = j;
+          continue;
+        }
+        catch (Exception localException2)
+        {
+          Object localObject3;
+          Object localObject2;
+          int j = 0;
+          continue;
+          m = 0;
+          n = 0;
+          continue;
+        }
+        k = i1;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC exception:", localException1);
+          k = i1;
+          i = j;
+          continue;
+          if ((localException1 != null) && (localException1.length == 2))
+          {
+            j = arai.a(localException1[0], 0);
+            localObject2 = localException1[1];
+            i = j;
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              i = j;
+              localObject2 = ((String)localObject2).split("-");
+              k = 0;
+            }
+          }
+        }
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Lie = new lii();
-    lcl.e("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
-  }
-  
-  public void a(long paramLong, String paramString, lih paramlih, lig paramlig, lif paramlif)
-  {
-    if (this.jdField_a_of_type_Lie.a) {
-      try
+    for (;;)
+    {
+      i = j;
+      if (k < localObject2.length)
       {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_Lih = paramlih;
-        this.jdField_a_of_type_Lig = paramlig;
-        this.jdField_a_of_type_Lif = paramlif;
-        this.jdField_a_of_type_Lie.b();
-        return;
+        localObject3 = localObject2[k];
+        i = j;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label630;
+        }
+        i = j;
+        localObject3 = ((String)localObject3).split("_");
+        i = j;
+        if (localObject3.length >= 2)
+        {
+          i = j;
+          m = arai.a(localObject3[0], 0);
+          i = j;
+          n = arai.a(localObject3[1], 0);
+          if ((m <= 0) || (n <= 0)) {
+            break label630;
+          }
+          i = j;
+          localArrayList.add(new lik(n, m));
+          break label630;
+        }
       }
-      finally {}
-    }
-    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlih.a.src);
-      this.jdField_b_of_type_Lif = paramlif;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lih = null;
-      this.jdField_a_of_type_Lig = null;
-      this.jdField_a_of_type_Lif = null;
-      if ((paramlih.a.src != null) && (!paramlih.a.src.equals("")) && (this.jdField_a_of_type_Asdq == null)) {
-        this.jdField_a_of_type_Asdq = new asdq();
+      else
+      {
+        i = j;
+        QLog.i("PanoramaEffectDPC", 2, "loadPanoramaEffectDPC configs.length == 2");
+        k = i1;
+        i = j;
+        break label249;
       }
-      this.jdField_a_of_type_Lie.a(paramString);
-      this.jdField_a_of_type_Lie.a(paramlih);
-      this.jdField_a_of_type_Lie.a(paramlig);
-      this.jdField_a_of_type_Lie.a(this.c);
-      this.jdField_a_of_type_Lie.a();
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Asdq != null) {
-      this.jdField_a_of_type_Asdq.a(paramString);
+      i = 0;
+      k = i1;
+      break label249;
+      label615:
+      m = 0;
+      n = 0;
+      break label204;
+      label623:
+      k += 1;
+      break;
+      label630:
+      k += 1;
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public String toString()
   {
-    lcl.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
-    if (this.jdField_a_of_type_Asdq != null) {
-      this.jdField_a_of_type_Asdq.a(paramString, paramInt, 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lie.a;
-  }
-  
-  public void b()
-  {
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" mPanoramaEffectMemory: ").append(this.b);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    String str = "";
+    while (localIterator.hasNext())
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lih = null;
-      this.jdField_a_of_type_Lig = null;
-      this.jdField_a_of_type_Lif = null;
-      this.jdField_a_of_type_Lie.b();
-      return;
+      lik locallik = (lik)localIterator.next();
+      if (locallik != null) {
+        str = str + locallik.b + "_" + locallik.jdField_a_of_type_Int + "-";
+      }
     }
-    finally {}
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(str);
+    return localStringBuilder.toString();
   }
 }
 

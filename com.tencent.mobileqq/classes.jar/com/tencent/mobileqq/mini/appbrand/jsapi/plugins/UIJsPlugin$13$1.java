@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bfos;
+import bfpj;
 
 class UIJsPlugin$13$1
-  implements bfos
+  implements bfpj
 {
   UIJsPlugin$13$1(UIJsPlugin.13 param13) {}
   

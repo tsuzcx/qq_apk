@@ -1,48 +1,24 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-class msh
-  extends PhoneStateListener
+public class msh
+  implements DialogInterface.OnClickListener
 {
-  msh(mse parammse) {}
+  public msh(PopupDialog paramPopupDialog) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
     }
-    for (;;)
-    {
-      super.onCallStateChanged(paramInt, paramString);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE  mIsCalling:  " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable mIsCalling: " + this.a.jdField_a_of_type_Boolean);
-        }
-        ThreadManager.post(this.a.jdField_a_of_type_JavaLangRunnable, 8, null, false);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
-        }
-        if (!this.a.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          if (this.a.jdField_a_of_type_Msf != null) {
-            this.a.jdField_a_of_type_Msf.a(true);
-          }
-        }
-      }
-    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     msh
  * JD-Core Version:    0.7.0.1
  */

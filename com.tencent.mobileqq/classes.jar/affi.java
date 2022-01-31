@@ -1,10 +1,15 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class affi
+public abstract interface affi
 {
-  public ProgressBar a;
-  public TextView a;
+  public abstract Activity a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

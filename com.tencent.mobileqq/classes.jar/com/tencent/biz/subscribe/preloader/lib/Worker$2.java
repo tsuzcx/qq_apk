@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.preloader.lib;
 
-import wra;
-import wrb;
-import wrh;
+import wqx;
+import wqy;
+import wre;
 
 class Worker$2
   implements Runnable
 {
-  Worker$2(Worker paramWorker, wrh paramwrh, Object[] paramArrayOfObject) {}
+  Worker$2(Worker paramWorker, wre paramwre, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wrh.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Wre.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
     if (this.this$0.a.a) {
-      wrb.a(Worker.a(this.this$0));
+      wqy.a(Worker.a(this.this$0));
     }
   }
 }

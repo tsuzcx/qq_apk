@@ -1,18 +1,52 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import java.lang.reflect.Field;
 
-final class bjmg
-  implements EIPCResultCallback
+public class bjmg
+  extends Scroller
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  private int a = 750;
+  
+  public bjmg(Context paramContext)
   {
-    if (paramEIPCResult != null)
+    super(paramContext);
+  }
+  
+  public bjmg(Context paramContext, Interpolator paramInterpolator)
+  {
+    super(paramContext, paramInterpolator);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a(ViewPager paramViewPager)
+  {
+    try
     {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
+      Field localField = ViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(paramViewPager, this);
+      return;
     }
+    catch (Exception paramViewPager)
+    {
+      paramViewPager.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

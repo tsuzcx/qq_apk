@@ -1,9 +1,19 @@
-import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface atyj
+class atyj
+  implements View.OnClickListener
 {
-  public abstract void a(Dialog paramDialog, View paramView, atyi paramatyi);
+  atyj(atyi paramatyi) {}
+  
+  public void onClick(View paramView)
+  {
+    if (((paramView.getTag() instanceof atyk)) && (this.a.a != null))
+    {
+      atyk localatyk = (atyk)paramView.getTag();
+      this.a.a.a(this.a, paramView, localatyk);
+    }
+  }
 }
 
 

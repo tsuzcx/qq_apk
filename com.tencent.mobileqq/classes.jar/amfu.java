@@ -1,260 +1,76 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
+import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-@TargetApi(9)
 public class amfu
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static amfu jdField_a_of_type_Amfu;
+  private static final amfu jdField_a_of_type_Amfu = new amfu();
+  private static String jdField_a_of_type_JavaLangString = amfu.class.getSimpleName();
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "motorola", "mot", "FIH", "Sony Ericsson", "samsung", "HTC", "HUN", "LGE", "alps", "OPPO", "TCL", "LENOVO", "ZTE", "Meizu", "Xiaomi", "HUAWEI", "TIANYU", "sprd", "K-Touch", "YuLong", "CoolPad", "Amazon", "Hisense", "Acer", "GIONEE", "Philips", "asus", "snda.com", "koobee", "AMOI", "Fason", "ainol", "Dell", "dlkjl12389", "haier", "sharp", "BBK", "nubia", "KONKA" };
+  private static final String[] b = { "MOTOROLA", "MOTOROLA", "MOTOROLA", "SONYERICSSON", "SAMSUNG", "HTC", "HTC", "LG", "OPPO", "OPPO", "TCL", "LENOVO", "ZTE", "MEIZU", "XIAOMI", "HUAWEI", "TIANYU", "TIANYU", "TIANYU", "COOLPAD", "COOLPAD", "AMAZON", "HISENSE", "ACER", "JINLI", "PHILIPS", "GOOGLE", "SHENGDA", "KUBI", "XIAXIN", "FANSHANG", "AINUO", "DELL", "DPD", "HAIER", "SHARP", "BBK", "NUBIA", "KONKA" };
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   private amfu()
   {
-    a(false);
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[i].toUpperCase(), b[i]);
+      i += 1;
+    }
+    a();
   }
   
   public static amfu a()
   {
-    if (jdField_a_of_type_Amfu == null) {}
-    try
+    return jdField_a_of_type_Amfu;
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel())
     {
-      if (jdField_a_of_type_Amfu == null) {
-        jdField_a_of_type_Amfu = new amfu();
-      }
-      return jdField_a_of_type_Amfu;
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo  (+) *****");
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_KEYS.len = " + jdField_a_of_type_ArrayOfJavaLangString.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND_NAMES.len = " + b.length);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DeviceTypeName = " + a());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SubTagName = " + a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase());
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MODEL = " + Build.MODEL);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "SDK_INT = " + Build.VERSION.SDK_INT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "BRAND = " + Build.BRAND);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DEVICE = " + Build.DEVICE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "DISPLAY = " + Build.DISPLAY);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "HARDWARE = " + Build.HARDWARE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "MANUFACTURER = " + Build.MANUFACTURER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "PRODUCT = " + Build.PRODUCT);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TAGS = " + Build.TAGS);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "USER = " + Build.USER);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "TYPE = " + Build.TYPE);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "****** DeviceInfo (-) *****");
     }
-    finally {}
   }
   
-  public int a()
+  public String a()
   {
-    return 21;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    QLog.d("Q.camera.CameraWrapper", 2, "[getCameraOrientation] cameraId = " + paramInt1 + ", cameraOrientation = " + paramInt2);
-    Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
-    Camera.getCameraInfo(paramInt1, localCameraInfo);
-    paramInt1 = localCameraInfo.orientation;
-    amft.a().d();
-    if (localCameraInfo.facing == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "is FRONT camera, orientation = " + paramInt1);
-      }
-      switch (paramInt2)
-      {
-      }
+    String str;
+    if (Build.MODEL.equalsIgnoreCase("K-Touch W619")) {
+      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("TIANYU") + " " + Build.MODEL;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "return orientation = " + paramInt1);
-      }
-      return paramInt1;
-      if (amft.a().jdField_b_of_type_Int != -1)
-      {
-        paramInt1 = amft.a().jdField_b_of_type_Int;
-        QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate0 = " + paramInt1);
-        continue;
-        if (amft.a().jdField_c_of_type_Int != -1)
-        {
-          paramInt1 = amft.a().jdField_c_of_type_Int;
-          QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate90 = " + paramInt1);
-          continue;
-          if (amft.a().jdField_d_of_type_Int != -1)
-          {
-            paramInt1 = amft.a().jdField_d_of_type_Int;
-            QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate180 = " + paramInt1);
-            continue;
-            if (amft.a().jdField_e_of_type_Int != -1)
-            {
-              paramInt1 = amft.a().jdField_e_of_type_Int;
-              QLog.d("Q.camera.CameraWrapper", 2, "reset FRONT Cam frontCamRotate270 = " + paramInt1);
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.camera.CameraWrapper", 2, "is BACK camera, orientation = " + paramInt1);
-              }
-              switch (paramInt2)
-              {
-              default: 
-                break;
-              case -1: 
-              case 0: 
-                if (amft.a().f != -1)
-                {
-                  paramInt1 = amft.a().f;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate0 = " + paramInt1);
-                }
-                break;
-              case 90: 
-                if (amft.a().jdField_g_of_type_Int != -1)
-                {
-                  paramInt1 = amft.a().jdField_g_of_type_Int;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate90 = " + paramInt1);
-                }
-                break;
-              case 180: 
-                if (amft.a().h != -1)
-                {
-                  paramInt1 = amft.a().h;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate180 = " + paramInt1);
-                }
-                break;
-              case 270: 
-                if (amft.a().i != -1)
-                {
-                  paramInt1 = amft.a().i;
-                  QLog.d("Q.camera.CameraWrapper", 2, "reset BACK Cam backCamRotate270 = " + paramInt1);
-                }
-                break;
-              }
-            }
-          }
-        }
+      return str.replace(" ", "_").replace("+", "").replace("(t)", "");
+      if ((Build.MODEL.equalsIgnoreCase("8150")) && (Build.BRAND.equalsIgnoreCase("COOLPAD"))) {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("COOLPAD") + " " + Build.MODEL;
+      } else {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Build.MANUFACTURER.toUpperCase()) + " " + Build.MODEL;
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public String b()
   {
-    amft.a().a(amfw.a(BaseApplicationImpl.getContext()), paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.camera.CameraWrapper", 2, "[isSysVersionValid] ENTER sysCamerOn=" + amft.a().jdField_b_of_type_Boolean + " sysMinVersion=" + amft.a().a + " sysMaxVersion=" + amft.a().jdField_b_of_type_JavaLangString + " currVersion=" + Build.VERSION.RELEASE);
-    }
-    amft.a().a();
-    boolean bool1 = bool3;
-    if (amft.a().jdField_b_of_type_Boolean) {}
-    try
-    {
-      String[] arrayOfString2 = amft.a().a.split("\\.");
-      String[] arrayOfString3 = amft.a().jdField_b_of_type_JavaLangString.split("\\.");
-      String[] arrayOfString1;
-      int j;
-      int i;
-      if (Build.VERSION.RELEASE != null)
-      {
-        arrayOfString1 = Build.VERSION.RELEASE.split("\\.");
-        bool1 = bool3;
-        if (arrayOfString1 != null)
-        {
-          bool1 = bool3;
-          if (arrayOfString2.length == 3)
-          {
-            bool1 = bool3;
-            if (arrayOfString3.length == 3)
-            {
-              j = Integer.parseInt(arrayOfString2[0]);
-              int i3 = Integer.parseInt(arrayOfString2[1]);
-              int i4 = Integer.parseInt(arrayOfString2[2]);
-              int k = Integer.parseInt(arrayOfString1[0]);
-              int m = Integer.parseInt(arrayOfString1[1]);
-              if (arrayOfString1.length != 3) {
-                break label356;
-              }
-              i = Integer.parseInt(arrayOfString1[2]);
-              label231:
-              int n = Integer.parseInt(arrayOfString3[0]);
-              int i1 = Integer.parseInt(arrayOfString3[1]);
-              int i2 = Integer.parseInt(arrayOfString3[2]);
-              if ((k <= j) && ((k != j) || (m <= i3)) && ((j != k) || (i3 != m) || (i < i4))) {
-                break label361;
-              }
-              j = 1;
-              label295:
-              if ((k >= n) && ((k != n) || (m >= i1)) && ((n != k) || (i1 != m) || (i > i2))) {
-                break label366;
-              }
-              i = 1;
-              label335:
-              if ((j == 0) || (i == 0)) {
-                break label371;
-              }
-            }
-          }
-        }
-      }
-      label356:
-      label361:
-      label366:
-      label371:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        return bool1;
-        arrayOfString1 = null;
-        break;
-        i = 0;
-        break label231;
-        j = 0;
-        break label295;
-        i = 0;
-        break label335;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public int b()
-  {
-    int i = 0;
-    if (jdField_a_of_type_Int != -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraWrapper", 2, "[getNumberOfCameras] sNumberOfCameras = " + jdField_a_of_type_Int);
-      }
-      return jdField_a_of_type_Int;
-    }
-    SharedPreferences localSharedPreferences = amfw.b(BaseApplicationImpl.getContext());
-    boolean bool = localSharedPreferences.contains("localsp_camera_num");
-    if (bool) {
-      i = localSharedPreferences.getInt("localsp_camera_num", 0);
-    }
-    int j = i;
-    if (i < 1) {
-      j = Camera.getNumberOfCameras();
-    }
-    amft.a().c();
-    if ((amft.a().jdField_d_of_type_Boolean) || (amft.a().jdField_e_of_type_Boolean))
-    {
-      QLog.w("Q.camera.CameraWrapper", 2, "[getNumberOfCameras] readCamNumWrong || cannotOpenFrontCam");
-      j = 1;
-    }
-    if (!bool) {
-      localSharedPreferences.edit().putInt("localsp_camera_num", j).commit();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.camera.CameraWrapper", 2, "[getNumberOfCameras] return = " + j);
-    }
-    jdField_a_of_type_Int = j;
-    return j;
-  }
-  
-  public boolean b()
-  {
-    amft.a().e();
-    return amft.a().jdField_g_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    amft.a().b();
-    return amft.a().jdField_c_of_type_Boolean;
+    return a() + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
   }
 }
 

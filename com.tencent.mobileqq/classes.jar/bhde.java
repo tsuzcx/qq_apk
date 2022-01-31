@@ -1,78 +1,31 @@
-import cooperation.qzone.feed.CertifiedFakeFeed;
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
 
 public class bhde
+  implements bfos
 {
-  private CertifiedFakeFeed a = new CertifiedFakeFeed(null);
+  public bhde(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public bhde a(int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    CertifiedFakeFeed.a(this.a, paramInt);
-    return this;
+    if (QZoneMsgFragment.a(this.a) != null) {
+      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
   
-  public bhde a(long paramLong)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    CertifiedFakeFeed.a(this.a, paramLong);
-    return this;
-  }
-  
-  public bhde a(String paramString)
-  {
-    CertifiedFakeFeed.a(this.a, paramString);
-    return this;
-  }
-  
-  public CertifiedFakeFeed a()
-  {
-    return this.a;
-  }
-  
-  public bhde b(int paramInt)
-  {
-    CertifiedFakeFeed.b(this.a, paramInt);
-    return this;
-  }
-  
-  public bhde b(String paramString)
-  {
-    CertifiedFakeFeed.b(this.a, paramString);
-    return this;
-  }
-  
-  public bhde c(int paramInt)
-  {
-    CertifiedFakeFeed.c(this.a, paramInt);
-    return this;
-  }
-  
-  public bhde c(String paramString)
-  {
-    CertifiedFakeFeed.c(this.a, paramString);
-    return this;
-  }
-  
-  public bhde d(int paramInt)
-  {
-    CertifiedFakeFeed.d(this.a, paramInt);
-    return this;
-  }
-  
-  public bhde d(String paramString)
-  {
-    CertifiedFakeFeed.d(this.a, paramString);
-    return this;
-  }
-  
-  public bhde e(String paramString)
-  {
-    CertifiedFakeFeed.e(this.a, paramString);
-    return this;
-  }
-  
-  public bhde f(String paramString)
-  {
-    CertifiedFakeFeed.f(this.a, paramString);
-    return this;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QZoneMsgFragment.a(this.a) != null) {
+        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      QZoneMsgFragment.a(this.a);
+    }
   }
 }
 

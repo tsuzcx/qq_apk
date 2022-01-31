@@ -1,67 +1,24 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
-public abstract class xpy
+class xpy
+  implements Animation.AnimationListener
 {
-  public Rect a;
-  public int c = 2;
-  public boolean c;
+  xpy(xpx paramxpx) {}
   
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
-    do
-    {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
-      }
-    } while (f1 <= 1.0F);
-    return 2;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public abstract int a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Rect a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public Rect b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public abstract Drawable c();
-  
-  public int d()
-  {
-    return 0;
+    if (!this.a.jdField_a_of_type_Xpf.d()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 

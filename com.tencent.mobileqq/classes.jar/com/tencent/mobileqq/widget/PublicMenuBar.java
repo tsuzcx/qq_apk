@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bcpi;
+import bcpx;
 import com.tencent.biz.ui.CustomMenuBar;
-import naw;
-import xee;
+import nat;
+import xeb;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,15 +22,15 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(xee paramxee, int paramInt)
+  public View a(xeb paramxeb, int paramInt)
   {
-    String str = paramxee.a();
-    Drawable localDrawable = paramxee.a();
+    String str = paramxeb.a();
+    Drawable localDrawable = paramxeb.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131369930);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131369920);
-    TextView localTextView = (TextView)localView.findViewById(2131369933);
-    if ((localImageView1 != null) && (paramxee.a() > 0))
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131369929);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131369919);
+    TextView localTextView = (TextView)localView.findViewById(2131369932);
+    if ((localImageView1 != null) && (paramxeb.a() > 0))
     {
       localImageView1.setVisibility(0);
       if (localDrawable == null) {
@@ -41,19 +41,19 @@ public class PublicMenuBar
       if (str == null) {
         break label219;
       }
-      if (naw.a(str) <= 10) {
+      if (nat.a(str) <= 10) {
         break label209;
       }
-      localTextView.setText(naw.a(str, 10, "..."));
+      localTextView.setText(nat.a(str, 10, "..."));
     }
     for (;;)
     {
-      localView.setOnClickListener(new bcpi(this, paramxee.b(), paramxee.a()));
+      localView.setOnClickListener(new bcpx(this, paramxeb.b(), paramxeb.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
-      paramxee = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramxee.gravity = 17;
-      localView.setLayoutParams(paramxee);
+      paramxeb = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+      paramxeb.gravity = 17;
+      localView.setLayoutParams(paramxeb);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       return localView;
       if (localImageView1 == null) {

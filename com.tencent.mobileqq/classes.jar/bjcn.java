@@ -1,54 +1,44 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import dov.com.qq.im.capture.data.ComboLockManager;
+import dov.com.qq.im.capture.data.LockedCategory;
 
 public class bjcn
+  implements DialogInterface.OnClickListener
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    case 3: 
-      return 2;
-    case 4: 
-      return 5;
-    }
-    return 10;
-  }
+  public bjcn(ComboLockManager paramComboLockManager, Context paramContext) {}
   
-  public static bjcl a(int paramInt, CaptureModeController paramCaptureModeController)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.b(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a.a);
+    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a = null;
+    if (paramInt == 1)
     {
-    case 3: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
-    default: 
-      return new bjco(paramCaptureModeController);
-    case 1: 
-      return new bjcp(paramCaptureModeController);
-    case 4: 
-      return new bjcx(paramCaptureModeController);
-    case 2: 
-      return new bjct(paramCaptureModeController);
-    case 5: 
-      return new bjrh(paramCaptureModeController);
-    case 10: 
-      return new bjcw(paramCaptureModeController);
+      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.c = true;
+      if ((BaseActivity.sTopActivity instanceof SplashActivity))
+      {
+        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
+        Intent localIntent = new Intent();
+        localIntent.putExtra("main_tab_id", 8);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("switch_anim", true);
+        paramDialogInterface.b(localIntent);
+      }
     }
-    if ((paramCaptureModeController.a instanceof bihg)) {
-      return new bjcp(paramCaptureModeController);
+    else
+    {
+      return;
     }
-    return new bjco(paramCaptureModeController);
+    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

@@ -1,48 +1,57 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahfw
-  extends ahfo<SpringFestivalRedpakcetPreviewConfBean>
+  extends ahfm<ahfv>
 {
   public int a()
   {
-    return 548;
+    return 540;
   }
   
   @NonNull
-  public SpringFestivalRedpakcetPreviewConfBean a(int paramInt)
+  public ahfv a(int paramInt)
   {
-    return new SpringFestivalRedpakcetPreviewConfBean();
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[migrateOldOrDefaultContent]");
+    }
+    return new ahfv();
   }
   
-  protected SpringFestivalRedpakcetPreviewConfBean a(ampi[] paramArrayOfampi)
+  protected ahfv a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      paramArrayOfampi = paramArrayOfampi[0].a;
+      paramArrayOfamph = paramArrayOfamph[0].a;
       if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketPreviewProcessor", 2, "onParsed " + paramArrayOfampi);
+        QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "onParsed " + paramArrayOfamph);
       }
-      return SpringFestivalRedpakcetPreviewConfBean.a(paramArrayOfampi);
+      return ahfv.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public Class<SpringFestivalRedpakcetPreviewConfBean> a()
+  public Class<ahfv> a()
   {
-    return SpringFestivalRedpakcetPreviewConfBean.class;
+    return ahfv.class;
+  }
+  
+  public void a()
+  {
+    super.a();
   }
   
   public void a(int paramInt)
   {
-    super.a(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
   }
   
-  public void a(SpringFestivalRedpakcetPreviewConfBean paramSpringFestivalRedpakcetPreviewConfBean)
+  public void a(ahfv paramahfv)
   {
-    super.a(paramSpringFestivalRedpakcetPreviewConfBean);
+    super.a(paramahfv);
   }
   
   public int b()
@@ -51,9 +60,9 @@ public class ahfw
   }
   
   @Nullable
-  public SpringFestivalRedpakcetPreviewConfBean b(ampi[] paramArrayOfampi)
+  public ahfv b(amph[] paramArrayOfamph)
   {
-    return (SpringFestivalRedpakcetPreviewConfBean)super.b(paramArrayOfampi);
+    return (ahfv)super.b(paramArrayOfamph);
   }
   
   public boolean b()

@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
 public class aqzk
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aqzk(HotPicPageView.4.2 param2) {}
+  public aqzk(HotPicPageView paramHotPicPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Aqzr.a == 1) {
-      this.a.a.jdField_a_of_type_Aqzr.a(0);
+    switch (paramMessage.what)
+    {
     }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (HotPicPageView.b);
+          this.a.i();
+          return;
+        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Aqzq == null) || (this.a.jdField_a_of_type_Aqzq.getItemCount() == 0));
+        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
+      } while (i < 0);
+      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
+    } while ((paramMessage == null) || (!(paramMessage instanceof aqzt)));
+    paramMessage = (aqzt)paramMessage;
+    if (paramMessage.jdField_a_of_type_Int == 0)
+    {
+      this.a.b(paramMessage, i);
+      return;
+    }
+    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 

@@ -1,43 +1,36 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
-class wvv
-  implements xgx<CertifiedAccountWrite.StDoLikeRsp>
+public class wvv
+  implements RadioGroup.OnCheckedChangeListener
 {
-  wvv(wvu paramwvu) {}
+  public wvv(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView, true);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null))
-    {
-      bcpw.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView.getContext(), 1, paramString, 0).a();
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    }
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
       return;
     }
-    int i;
-    String str;
-    if (paramStDoLikeRsp.like.status.get() == 1)
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = akwf.a(this.a.getContext());; bool = true)
     {
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() + 1;
-      str = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
-      if (paramStDoLikeRsp.like.status.get() != 1) {
-        break label270;
+      if (!bool)
+      {
+        bbdj.b((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        return;
       }
-    }
-    label270:
-    for (paramString = "like";; paramString = "cancel_like")
-    {
-      xhe.a(str, "auth_feeds", paramString, 0, 0, new String[] { "", RelativeFeedItemView.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativeFeedItemView) + "", this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
-      wpw.a().a(new PraisedUpdateEvents(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), paramStDoLikeRsp.like.status.get(), i));
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
       return;
-      i = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.likeInfo.count.get() - 1;
-      break;
     }
   }
 }

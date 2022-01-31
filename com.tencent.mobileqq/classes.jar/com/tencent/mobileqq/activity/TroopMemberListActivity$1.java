@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
+import ajxl;
 import android.content.Intent;
 import android.os.Handler;
-import bbcp;
+import bbdd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -14,7 +14,7 @@ import java.util.List;
 public class TroopMemberListActivity$1
   implements Runnable
 {
-  TroopMemberListActivity$1(TroopMemberListActivity paramTroopMemberListActivity, Intent paramIntent, ajxn paramajxn, TroopManager paramTroopManager) {}
+  TroopMemberListActivity$1(TroopMemberListActivity paramTroopMemberListActivity, Intent paramIntent, ajxl paramajxl, TroopManager paramTroopManager) {}
   
   public void run()
   {
@@ -75,21 +75,21 @@ public class TroopMemberListActivity$1
               QLog.d("TroopMemberListActivityget_troop_member", 2, "onActivityResult, REQUEST_CODE_SHOW_MEMBER_CARD, admins:" + this.this$0.f + " owner:" + this.this$0.e);
             }
           }
-          if ((i != 0) && (this.this$0.jdField_a_of_type_Acla != null)) {
+          if ((i != 0) && (this.this$0.jdField_a_of_type_Ackw != null)) {
             this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
           }
           return;
           if ((i & 0x2) == 0) {
             break;
           }
-          Object localObject2 = bbcp.a().a(this.this$0.app, this.this$0.jdField_b_of_type_JavaLangString, (String)???);
-          if ((localObject2 == null) || (this.jdField_a_of_type_Ajxn == null)) {
+          Object localObject2 = bbdd.a().a(this.this$0.app, this.this$0.jdField_b_of_type_JavaLangString, (String)???);
+          if ((localObject2 == null) || (this.jdField_a_of_type_Ajxl == null)) {
             break;
           }
           this.this$0.a((String)???);
           synchronized (this.this$0)
           {
-            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Ajxn);
+            localObject2 = this.this$0.a((TroopMemberInfo)localObject2, this.jdField_a_of_type_Ajxl);
             this.this$0.jdField_a_of_type_JavaUtilList.add(localObject2);
           }
         }

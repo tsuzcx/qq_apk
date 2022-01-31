@@ -1,12 +1,50 @@
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-public abstract interface asvu
+public class asvu
+  implements INetInfoHandler
 {
-  public abstract String getToken();
+  long a = 0L;
   
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
+  private void a(int paramInt)
+  {
+    if (System.currentTimeMillis() - this.a < 500L) {
+      return;
+    }
+    this.a = System.currentTimeMillis();
+    QQPlayerService.d(BaseApplicationImpl.getContext());
+  }
   
-  public abstract void onPlayStateChanged(int paramInt);
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
+  }
 }
 
 

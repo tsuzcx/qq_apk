@@ -7,14 +7,14 @@ import android.support.v4.util.MQLruCache;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import wsd;
-import wse;
-import wsf;
+import wsa;
+import wsb;
+import wsc;
 
 public class AnimationDrawableFactory$1
   implements Runnable
 {
-  public AnimationDrawableFactory$1(wsd paramwsd, boolean paramBoolean, String paramString, int paramInt, wsf paramwsf) {}
+  public AnimationDrawableFactory$1(wsa paramwsa, boolean paramBoolean, String paramString, int paramInt, wsc paramwsc) {}
   
   public void run()
   {
@@ -23,13 +23,13 @@ public class AnimationDrawableFactory$1
     if (this.jdField_a_of_type_Boolean)
     {
       localObject1 = localObject2;
-      if (wsd.a(this.this$0) != null)
+      if (wsa.a(this.this$0) != null)
       {
         localObject1 = localObject2;
-        if (wsd.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
+        if (wsa.a(this.this$0).get(this.jdField_a_of_type_JavaLangString) != null)
         {
           QLog.i("AnimationDrawableFactory", 2, "animationDrawable use cache" + this.jdField_a_of_type_JavaLangString);
-          localObject1 = (AnimationDrawable)wsd.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+          localObject1 = (AnimationDrawable)wsa.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -51,7 +51,7 @@ public class AnimationDrawableFactory$1
             localObject2 = localObject1;
             if (localObject3.length > 0)
             {
-              Arrays.sort((Object[])localObject3, new wse(this));
+              Arrays.sort((Object[])localObject3, new wsb(this));
               int j = this.jdField_a_of_type_Int / localObject3.length;
               QLog.i("AnimationDrawableFactory", 2, "createFromDirectory perDuration=" + j);
               localObject1 = new AnimationDrawable();
@@ -66,16 +66,16 @@ public class AnimationDrawableFactory$1
                 localObject2 = localObject3[i];
                 try
                 {
-                  localObject2 = wsd.a(this.this$0, (File)localObject2);
+                  localObject2 = wsa.a(this.this$0, (File)localObject2);
                   if (localObject2 != null) {
                     ((AnimationDrawable)localObject1).addFrame(new BitmapDrawable((Bitmap)localObject2), j);
                   }
-                  wsd.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject1);
+                  wsa.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject1);
                 }
                 catch (OutOfMemoryError localOutOfMemoryError)
                 {
-                  while (this.jdField_a_of_type_Wsf == null) {}
-                  this.jdField_a_of_type_Wsf.a();
+                  while (this.jdField_a_of_type_Wsc == null) {}
+                  this.jdField_a_of_type_Wsc.a();
                   QLog.e("AnimationDrawableFactory", 2, "createFromDirectory OutOfMemoryError");
                 }
                 i += 1;
@@ -86,15 +86,15 @@ public class AnimationDrawableFactory$1
       }
     }
     label335:
-    while (this.jdField_a_of_type_Wsf == null) {
+    while (this.jdField_a_of_type_Wsc == null) {
       return;
     }
     if (localOutOfMemoryError != null)
     {
-      this.jdField_a_of_type_Wsf.a(localOutOfMemoryError);
+      this.jdField_a_of_type_Wsc.a(localOutOfMemoryError);
       return;
     }
-    this.jdField_a_of_type_Wsf.a();
+    this.jdField_a_of_type_Wsc.a();
   }
 }
 

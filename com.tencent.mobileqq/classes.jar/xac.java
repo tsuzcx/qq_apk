@@ -1,31 +1,52 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.os.Bundle;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 class xac
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements baic
 {
-  xac(wzw paramwzw, int paramInt) {}
+  xac(wzt paramwzt) {}
   
-  public void onGlobalLayout()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Wzw.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Wzw.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_a_of_type_Wzw.b - this.jdField_a_of_type_Wzw.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
     if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
+      QLog.d("requstTroopNotifyAd", 2, "result = " + paramJSONObject + ", requestCode = " + paramInt);
     }
-    if (this.jdField_a_of_type_Wzw.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
+    if (paramJSONObject != null)
     {
-      localLayoutParams.height = (i - 5);
-      this.jdField_a_of_type_Wzw.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+      paramJSONObject = paramJSONObject.optJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("8020205751015455");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("list");
+          if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+          {
+            paramJSONObject = azph.a(paramJSONObject.optJSONObject(0));
+            if (paramJSONObject != null)
+            {
+              this.a.jdField_a_of_type_Azph = paramJSONObject;
+              this.a.d = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("requstTroopNotifyAd", 2, "apurl = " + this.a.jdField_a_of_type_Azph.a + ", img = " + this.a.jdField_a_of_type_Azph.c + ", rl = " + this.a.jdField_a_of_type_Azph.b);
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result ready -----------");
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+            return;
+          }
+        }
+      }
     }
-    if ((this.jdField_a_of_type_Wzw.jdField_a_of_type_Azpf != null) && (this.jdField_a_of_type_Wzw.d) && (this.jdField_a_of_type_Wzw.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
-      this.jdField_a_of_type_Wzw.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "requestTroopNotifyAd result null -----------");
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
   }
 }
 

@@ -1,11 +1,18 @@
-class smc
-  implements slk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+
+public final class smc
+  implements Parcelable.Creator<WSPushOpDialogModel>
 {
-  smc(slz paramslz, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
-  
-  public void a(slv paramslv)
+  public WSPushOpDialogModel a(Parcel paramParcel)
   {
-    slz.a(this.jdField_a_of_type_Slz, paramslv, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
+    return new WSPushOpDialogModel(paramParcel);
+  }
+  
+  public WSPushOpDialogModel[] a(int paramInt)
+  {
+    return new WSPushOpDialogModel[paramInt];
   }
 }
 

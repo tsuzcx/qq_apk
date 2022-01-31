@@ -1,7 +1,5 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acko
@@ -11,9 +9,8 @@ public class acko
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(paramView);
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

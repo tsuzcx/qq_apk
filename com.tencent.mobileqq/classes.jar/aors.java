@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
 public class aors
-  implements View.OnTouchListener
+  implements Comparator<Long>
 {
-  public aors(FileAssistantActivity paramFileAssistantActivity) {}
+  public aors(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
-    return false;
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

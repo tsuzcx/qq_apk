@@ -1,16 +1,6 @@
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class bdda
-  implements bcxw
+public abstract interface bdda
 {
-  public bdda(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
-  
-  public void a()
-  {
-    axqw.b(null, "dc00898", "", "", "0X800A7BD", "0X800A7BD", QuickLoginAuthorityActivity.b(this.a), 0, "", "", "", "");
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BD-fromType=" + QuickLoginAuthorityActivity.b(this.a));
-  }
+  public abstract void a();
 }
 
 

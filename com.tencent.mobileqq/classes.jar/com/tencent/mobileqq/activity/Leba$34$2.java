@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ablf;
-import ajyc;
-import bawi;
+import ablb;
+import ajya;
+import baww;
 import java.util.ArrayList;
 
 class Leba$34$2
@@ -16,7 +16,7 @@ class Leba$34$2
       Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0).a(this.jdField_a_of_type_JavaUtilArrayList);
     }
     if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0) != null) {
-      bawi.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0), ajyc.a(2131705999));
+      baww.a(Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$34.this$0), ajya.a(2131706010));
     }
   }
 }

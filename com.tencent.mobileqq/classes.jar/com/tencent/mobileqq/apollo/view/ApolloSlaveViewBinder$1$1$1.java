@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajrl;
-import ajrm;
+import ajrj;
+import ajrk;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 public class ApolloSlaveViewBinder$1$1$1
   implements Runnable
 {
-  public ApolloSlaveViewBinder$1$1$1(ajrl paramajrl) {}
+  public ApolloSlaveViewBinder$1$1$1(ajrj paramajrj) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ApolloSlaveViewBinder$1$1$1
     localTranslateAnimation.setDuration(400L);
     localTranslateAnimation.setRepeatCount(1);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new ajrm(this));
+    localTranslateAnimation.setAnimationListener(new ajrk(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }

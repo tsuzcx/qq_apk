@@ -1,6 +1,23 @@
-abstract interface biez
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
+
+class biez
+  implements ThreadPool.Job<Void>
 {
-  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
+  biez(biep parambiep, List paramList) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Biep.b(l);
+    }
+    return null;
+  }
 }
 
 

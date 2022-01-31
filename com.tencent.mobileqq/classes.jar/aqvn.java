@@ -1,8 +1,18 @@
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+
 public class aqvn
 {
-  public String a;
-  public String b;
-  public String c;
+  JefsClass.CancelableRunnable a;
+  
+  public aqvn(JefsClass.CancelableRunnable paramCancelableRunnable)
+  {
+    this.a = paramCancelableRunnable;
+  }
+  
+  public void a()
+  {
+    this.a.a = true;
+  }
 }
 
 

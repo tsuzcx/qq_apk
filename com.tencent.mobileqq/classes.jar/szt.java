@@ -2,15 +2,15 @@ import android.os.Bundle;
 import com.tencent.biz.qqstory.database.CommentEntry;
 
 class szt
-  extends szu
+  extends szr
 {
   szt(szs paramszs) {}
   
   public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.a.a.a.e();
+    this.a.e();
     if (paramBoolean) {
-      this.a.a.a.a(true, paramCommentEntry);
+      this.a.a(true, paramCommentEntry);
     }
   }
 }

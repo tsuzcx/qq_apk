@@ -1,57 +1,19 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
 
 public class agaj
-  extends ajvl
+  implements View.OnClickListener
 {
   public agaj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      axqw.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Agaw != null) {
-        this.a.jdField_a_of_type_Agaw.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Agay != null) {
-          this.a.jdField_a_of_type_Agay.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      return;
-      bcpw.a(this.a.getActivity(), 1, this.a.getString(2131693710), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

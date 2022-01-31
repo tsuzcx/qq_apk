@@ -1,5 +1,5 @@
 public class amqp
-  extends amql
+  extends amqk
 {
   private amrj a;
   

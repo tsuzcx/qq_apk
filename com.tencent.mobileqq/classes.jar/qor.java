@@ -1,18 +1,24 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.graphics.Point;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 final class qor
   implements ValueAnimator.AnimatorUpdateListener
 {
-  qor(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
+  qor(WindowManager paramWindowManager, ViewGroup paramViewGroup, WindowManager.LayoutParams paramLayoutParams) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
+    if ((this.jdField_a_of_type_AndroidViewWindowManager == null) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {
+      return;
+    }
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramValueAnimator.y;
+    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramValueAnimator.x;
+    this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface bfrx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListView.SavedState;
+
+public final class bfrx
+  implements Parcelable.Creator<ExpandableListView.SavedState>
 {
-  public abstract void onScrollStateChanged(int paramInt);
+  public ExpandableListView.SavedState a(Parcel paramParcel)
+  {
+    return new ExpandableListView.SavedState(paramParcel, null);
+  }
+  
+  public ExpandableListView.SavedState[] a(int paramInt)
+  {
+    return new ExpandableListView.SavedState[paramInt];
+  }
 }
 
 

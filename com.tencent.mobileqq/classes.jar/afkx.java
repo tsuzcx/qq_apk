@@ -1,77 +1,51 @@
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
 public class afkx
-  extends afjv
+  extends afjt
   implements View.OnClickListener
 {
-  public afkx(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
+  public afkx(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
-  }
-  
-  private void a(TextView paramTextView, atyy paramatyy)
-  {
-    if ((paramatyy == null) || (!(paramatyy instanceof atzf))) {}
-    do
-    {
-      return;
-      paramatyy = (atzf)paramatyy;
-    } while ((paramatyy.jdField_a_of_type_JavaUtilArrayList == null) || (paramatyy.jdField_a_of_type_JavaUtilArrayList.size() == 0));
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131699200);
-    paramTextView.setVisibility(0);
-    paramTextView.setText(str);
-    if (paramatyy.jdField_a_of_type_Boolean)
-    {
-      paramTextView.setPadding(0, bbkx.a(16.0F), 0, bbkx.a(6.0F));
-      return;
-    }
-    paramTextView.setPadding(0, bbkx.a(16.0F), 0, bbkx.a(6.0F));
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
   }
   
   public View a(int paramInt, View paramView)
   {
-    View localView;
-    Object localObject;
+    afky localafky;
     if ((paramView == null) || (!(paramView.getTag() instanceof afky)))
     {
-      paramView = new afky();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560921, null);
-      paramView.a = ((TextView)localView.findViewById(2131376797));
-      localView.setTag(paramView);
-      localObject = paramView;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561130, null);
+      localafky = new afky();
+      localafky.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367376));
+      paramView.setOnClickListener(this);
+      paramView.setTag(localafky);
     }
     for (;;)
     {
-      c(((afky)localObject).a);
-      a(((afky)localObject).a, this.jdField_a_of_type_Atyy);
-      localView.setOnClickListener(this);
-      return localView;
-      localObject = (afky)paramView.getTag();
-      localView = paramView;
+      String str = ((atzi)this.jdField_a_of_type_Atza).b;
+      localafky.jdField_f_of_type_JavaLangString = str;
+      localafky.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aipn.a(1, str));
+      akka.a += 1;
+      return paramView;
+      localafky = (afky)paramView.getTag();
     }
   }
   
-  public void c(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
     }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839132);
-      return;
-    }
-    paramView.setBackgroundResource(2130849130);
+    akka.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    axqy.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
   }
-  
-  public void onClick(View paramView) {}
 }
 
 

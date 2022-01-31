@@ -1,28 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import java.io.File;
+import java.util.Comparator;
 
 public class axqk
-  implements DialogInterface.OnClickListener
+  implements Comparator<File>
 {
-  public axqk(LocalCrashCollector.3 param3) {}
+  public axqk(LocalCrashCollector paramLocalCrashCollector) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    try
-    {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+    if (l < 0L) {
+      return 1;
     }
+    return 0;
   }
 }
 

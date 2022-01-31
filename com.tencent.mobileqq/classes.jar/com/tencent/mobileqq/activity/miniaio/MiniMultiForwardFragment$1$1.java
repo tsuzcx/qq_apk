@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import agfy;
+import agfw;
 import java.util.ArrayList;
 
 class MiniMultiForwardFragment$1$1

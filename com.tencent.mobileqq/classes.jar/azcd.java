@@ -1,101 +1,84 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import mqq.app.AppActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
 
-public class azcd
+final class azcd
+  implements BusinessObserver
 {
-  public static String a = "tribe_publish_TribePublishLauncher";
+  azcd(azce paramazce) {}
   
-  public static JSONObject a(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBundle != null)
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = localContext.getString(2131696569);
+    Object localObject2 = null;
+    int i = -1;
+    if (paramBoolean) {
+      paramInt = i;
+    }
+    for (;;)
     {
-      paramBundle = paramBundle.getString("options");
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
-      }
       try
       {
-        paramBundle = new JSONObject(paramBundle);
-        return paramBundle;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        paramInt = i;
+        localObject1 = new WebSsoBody.WebSsoResponseBody();
+        paramInt = i;
+        ((WebSsoBody.WebSsoResponseBody)localObject1).mergeFrom(paramBundle);
+        paramInt = i;
+        i = ((WebSsoBody.WebSsoResponseBody)localObject1).ret.get();
+        paramInt = i;
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject1).data.get());
+        if (i == 0) {
+          continue;
+        }
+        paramInt = i;
+        str = paramBundle.optString("msg");
+        localObject1 = localObject2;
+        paramBundle = str;
+        paramInt = i;
+        if (TextUtils.isEmpty(str))
+        {
+          paramInt = i;
+          paramBundle = localContext.getString(2131696570, new Object[] { Integer.valueOf(i) });
+          localObject1 = localObject2;
+        }
+        localObject2 = localObject1;
+        paramInt = i;
+        localObject1 = paramBundle;
+        paramBundle = localObject2;
       }
       catch (Exception paramBundle)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
-        }
+        Object localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
+        paramBundle = null;
+        continue;
       }
-    }
-    return null;
-  }
-  
-  public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
-  {
-    if ((paramActivity instanceof AppActivity))
-    {
-      AppActivity localAppActivity = (AppActivity)paramActivity;
-      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
-        localAppActivity.requestPermissions(new azce(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
-      }
-    }
-    while ((lko.b(paramActivity)) || (a(paramActivity))) {
+      this.a.a(paramInt, (String)localObject1, paramBundle);
       return;
+      paramInt = i;
+      localObject1 = azcb.a(paramBundle.getJSONObject("result").optJSONArray("feeds"));
+      paramBundle = str;
+      continue;
+      paramInt = i;
+      localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9991) });
+      paramBundle = null;
+      paramInt = -1;
+      continue;
+      paramInt = i;
+      localObject1 = localContext.getString(2131696570, new Object[] { Integer.valueOf(9992) });
+      paramBundle = null;
+      paramInt = -1;
     }
-    boolean bool = blca.b(paramAppInterface);
-    if ((!bool) && (!bbev.g(paramActivity)))
-    {
-      bcpw.a(paramActivity, 2131718781, 0).a();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
-    }
-    paramUiApiPlugin.f();
-    paramAppInterface = new Bundle();
-    paramAppInterface.putBoolean("flow_camera_video_mode", true);
-    paramAppInterface.putBoolean("flow_camera_capture_mode", false);
-    paramAppInterface.putString("options", paramString1);
-    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
-    paramAppInterface.putInt("edit_video_type", 10012);
-    if (bool)
-    {
-      paramUiApiPlugin.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramAppInterface), paramByte);
-      if (!"barindex".equals(paramString2)) {
-        break label287;
-      }
-    }
-    label287:
-    for (int i = 1;; i = 2)
-    {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
-      return;
-      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
-      paramActivity.putExtras(paramAppInterface);
-      paramActivity.putExtra("pendingIntentClass", bihk.class.getName());
-      paramActivity.putExtra("pendingIntentRequest", paramByte);
-      paramActivity.putExtra("pendingIntentAllWait", true);
-      paramUiApiPlugin.startActivityForResult(paramActivity, paramByte);
-      break;
-    }
-  }
-  
-  private static boolean a(Context paramContext)
-  {
-    boolean bool = false;
-    if (!avtc.a())
-    {
-      bbcv.a(paramContext, 230).setMessage(ajyc.a(2131715089)).setPositiveButton(2131694793, new azcf()).show();
-      bool = true;
-    }
-    return bool;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import bejs;
-import besl;
+import bekj;
+import betc;
 
 class PageWebviewContainer$3
   implements Runnable
 {
-  PageWebviewContainer$3(PageWebviewContainer paramPageWebviewContainer, bejs parambejs) {}
+  PageWebviewContainer$3(PageWebviewContainer paramPageWebviewContainer, bekj parambekj) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ class PageWebviewContainer$3
       this.a.a();
       return;
     }
-    besl.d("PageWebviewContainer", "EVENT_START_PULLDOWN_REFRESH mSwipeRefreshLayout is null.");
+    betc.d("PageWebviewContainer", "EVENT_START_PULLDOWN_REFRESH mSwipeRefreshLayout is null.");
     this.a.a("refresh layout error");
   }
 }

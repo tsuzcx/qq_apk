@@ -1,25 +1,28 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class adbs
-  extends AccessibilityDelegateCompat
+  extends Handler
 {
-  public adbs(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public adbs(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.d) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      bawi.a(this.a, this.a.getContext().getString(2131691101));
+    default: 
+      return;
     }
+    this.a.a.j(1);
+    this.a.b();
+    bcql.a(this.a.a.a(), this.a.a.a().getString(2131698553), 1).a();
   }
 }
 

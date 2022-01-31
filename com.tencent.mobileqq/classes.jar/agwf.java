@@ -1,52 +1,40 @@
-import Wallet.IdiomRedPackMatchRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class agwf
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  agwf(agwe paramagwe) {}
+  private agwf(agvx paramagvx) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 26)
+    int i;
+    String str1;
+    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
     {
-      paramBundle = (IdiomRedPackMatchRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "openSolitaireRedBagByIdiom reportObserver:" + paramBoolean + "|" + paramBundle);
+      i = paramIntent.getIntExtra("grap_hb_state", 0);
+      paramContext = paramIntent.getStringExtra("listid");
+      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
+      if ((i != 1) && (i != 10)) {
+        break label59;
       }
-      if ((paramBoolean) && (paramBundle != null))
-      {
-        if (paramBundle.status != 0) {
-          break label104;
-        }
-        this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_Agvy.jdField_a_of_type_JavaLangString, paramBundle.hbIdiom, paramBundle.hbIdiomLastPY, paramBundle.idiomSeq);
-      }
+      agvx.a(this.a, paramContext, str1, 1, true);
     }
-    label104:
+    label59:
+    String str2;
     do
     {
-      return;
-      if (paramBundle.status == 1)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("PasswdRedBagManager", 2, "sessionInfo.curType: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
-          this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_Agvy.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        }
-        paramBundle = new Bundle();
-        paramBundle.putString("answer", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Agvz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_Agvy, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int, paramBundle);
         return;
-      }
-    } while (paramBundle.status != 2);
-    long l = NetConnInfoCenter.getServerTime();
-    agxc.a(agvz.a(this.a.jdField_a_of_type_Agvz).getCurrentAccountUin(), "idiom_match_in_phone", l + paramBundle.timeInterval);
+      } while (i != 12);
+      str2 = paramIntent.getStringExtra("grap_hb_idiom");
+      i = paramIntent.getIntExtra("grap_hb_seq", 0);
+      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
+    } while (this.a.a(paramContext) == null);
+    agvx.a(this.a, paramContext, str1, 1, false);
+    this.a.a(paramContext, str2, paramIntent, i);
   }
 }
 

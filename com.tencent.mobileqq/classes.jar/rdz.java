@@ -1,16 +1,18 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class rdz
-  extends oyg
+  extends ajxj
 {
-  public rdz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  public rdz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(oya paramoya)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramoya.e();
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    {
+      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.q();
+    }
   }
 }
 

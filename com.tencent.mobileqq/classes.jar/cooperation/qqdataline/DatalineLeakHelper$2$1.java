@@ -1,31 +1,31 @@
 package cooperation.qqdataline;
 
-import bgol;
-import bgom;
+import bgpc;
+import bgpd;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zzt;
+import zzq;
 
 public class DatalineLeakHelper$2$1
   implements Runnable
 {
-  public DatalineLeakHelper$2$1(bgom parambgom) {}
+  public DatalineLeakHelper$2$1(bgpd parambgpd) {}
   
   public void run()
   {
-    Object localObject1 = zzt.a("mobile_dataline_leak");
+    Object localObject1 = zzq.a("mobile_dataline_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bgol.a((String)localObject2);
+      bgpc.a((String)localObject2);
     }
     try
     {
-      if (!"0".equals("a15c4095"))
+      if (!"0".equals("a9855103"))
       {
         localObject1 = new JSONObject();
         JSONObject localJSONObject = new JSONObject();

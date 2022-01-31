@@ -1,11 +1,16 @@
+import android.graphics.RectF;
+
 public class alhz
 {
+  public double a;
+  public RectF a;
   public String a;
+  public boolean a;
+  public byte[] a;
   public String b;
+  public boolean b;
   public String c;
   public String d;
-  public String e;
-  public String f;
 }
 
 

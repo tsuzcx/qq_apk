@@ -1,105 +1,43 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import java.util.ArrayList;
 
 public class bjil
+  extends bjgv
 {
-  public static bjim a;
-  public static String a;
-  public static boolean a;
-  public static bjim b;
-  public static String b;
-  public static boolean b;
-  public static bjim c;
-  public static boolean c;
-  public static bjim d;
-  public static bjim e = new bjim();
-  public static bjim f = new bjim(3);
-  public static bjim g = new bjim(5);
-  public static bjim h = new bjim();
+  private final int a;
   
-  static
+  public bjil(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = "AutoMonitor_Camera";
-    jdField_a_of_type_Boolean = a();
-    jdField_b_of_type_JavaLangString = "FreqMonitorSwitch";
-    jdField_a_of_type_Bjim = new bjim();
-    jdField_b_of_type_Bjim = new bjim();
-    jdField_c_of_type_Bjim = new bjim();
-    d = new bjim();
-    jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 0) || (paramArrayOfInt == null) || (paramInt2 > paramArrayOfInt.length)) {}
-    long l;
-    do
-    {
-      return 0;
-      l = 0L;
-      int i = paramInt1;
-      while (i < paramInt2)
-      {
-        l += paramArrayOfInt[i];
-        i += 1;
-      }
-    } while (paramInt2 - paramInt1 == 0);
-    return (int)(l / (paramInt2 - paramInt1));
+    if ((paramCanvas == null) || (paramRectF == null)) {
+      return;
+    }
+    float f1 = paramRectF.left;
+    float f2 = this.jdField_a_of_type_Int;
+    float f3 = paramInt1;
+    float f4 = paramRectF.top;
+    float f5 = this.jdField_a_of_type_Int;
+    float f6 = paramInt2;
+    float f7 = paramRectF.right;
+    float f8 = this.jdField_a_of_type_Int;
+    float f9 = paramInt1;
+    float f10 = paramRectF.bottom;
+    float f11 = this.jdField_a_of_type_Int;
+    paramCanvas.drawRect(f3 + (f1 - f2), f6 + (f4 - f5), f9 + (f7 + f8), paramInt2 + (f10 + f11), this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public static String a(int[] paramArrayOfInt, int paramInt)
-  {
-    if ((paramInt == 0) || (paramArrayOfInt == null) || (paramInt > paramArrayOfInt.length)) {
-      return "";
-    }
-    int i = paramInt - 1;
-    if (i == -1) {
-      return "[]";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('[');
-    paramInt = 0;
-    for (;;)
-    {
-      localStringBuilder.append(paramArrayOfInt[paramInt]);
-      if (paramInt == i) {
-        return ']';
-      }
-      localStringBuilder.append(", ");
-      paramInt += 1;
-    }
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Bjim.a())
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraStartCost, activityCost=%d, refreshCost=%d, cameraCost=%d, cost=%d", new Object[] { Long.valueOf(jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[1] - jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[0]), Long.valueOf(jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[2] - jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[1]), Long.valueOf(jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[2]), Long.valueOf(jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[3] - jdField_a_of_type_Bjim.jdField_a_of_type_ArrayOfLong[0]) }));
-      jdField_a_of_type_Bjim.c();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (!PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).getBoolean(jdField_b_of_type_JavaLangString, false)) {
-      return bbdj.a(ahwa.jdField_a_of_type_JavaLangString + "/Tencent/AutoTestFlag_03");
-    }
-    return true;
-  }
-  
-  public static void b()
-  {
-    if (d.a())
-    {
-      d.jdField_b_of_type_Long = System.currentTimeMillis();
-      long l = d.jdField_b_of_type_Long - d.jdField_a_of_type_Long;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(d.jdField_a_of_type_ArrayOfInt, 0, d.jdField_b_of_type_Int)), Long.valueOf(l), Integer.valueOf(d.jdField_b_of_type_Int), Long.valueOf(d.jdField_b_of_type_Int * 1000 / l) }));
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(d.jdField_a_of_type_ArrayOfInt, d.jdField_b_of_type_Int) }));
-      d.c();
-    }
-  }
+  public void a(Canvas paramCanvas, ArrayList<bjin> paramArrayList, int paramInt1, int paramInt2) {}
 }
 
 

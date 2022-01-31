@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import osm;
-import pad;
+import osj;
+import paa;
 
 public class ChannelInfoModule$3
   implements Runnable
 {
-  public ChannelInfoModule$3(pad parampad, List paramList) {}
+  public ChannelInfoModule$3(paa parampaa, List paramList) {}
   
   public void run()
   {
-    osm.a().c(true, this.a);
+    osj.a().c(true, this.a);
   }
 }
 

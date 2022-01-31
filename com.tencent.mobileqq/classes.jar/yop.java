@@ -1,8 +1,6 @@
-public class yop
+class yop
 {
-  public String a;
-  public String b;
-  public String c;
+  private static yoo a = new yoo();
 }
 
 

@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class apxs
-  implements DialogInterface.OnClickListener
+  implements bcwm
 {
   public apxs(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    QfileEditBottomBar.a(this.a);
+  }
 }
 
 

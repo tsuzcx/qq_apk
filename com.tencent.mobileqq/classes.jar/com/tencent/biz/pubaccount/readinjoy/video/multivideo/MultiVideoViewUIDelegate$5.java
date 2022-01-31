@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
 import android.widget.TextView;
-import qol;
-import qyj;
+import qoi;
+import qyg;
 
 public class MultiVideoViewUIDelegate$5
   implements Runnable
 {
-  public MultiVideoViewUIDelegate$5(qyj paramqyj, TextView paramTextView) {}
+  public MultiVideoViewUIDelegate$5(qyg paramqyg, TextView paramTextView) {}
   
   public void run()
   {
-    qol.a(this.a, 8);
+    qoi.a(this.a, 8);
   }
 }
 

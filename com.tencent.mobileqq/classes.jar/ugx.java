@@ -1,48 +1,27 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ugx
-  extends QQUIEventReceiver<ugn, ttk>
+  extends QQUIEventReceiver<ugk, tkk>
 {
-  public ugx(@NonNull ugn paramugn)
+  public ugx(@NonNull ugk paramugk)
   {
-    super(paramugn);
+    super(paramugk);
   }
   
-  public void a(@NonNull ugn paramugn, @NonNull ttk paramttk)
+  public void a(@NonNull ugk paramugk, @NonNull tkk paramtkk)
   {
-    if (!TextUtils.equals(paramttk.b, String.valueOf(paramugn.hashCode()))) {
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramugn.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    paramugn.l();
-    if (paramttk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramtkk.a.isSuccess())
     {
-      veg.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramttk.jdField_a_of_type_JavaLangString);
-      if (paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-      {
-        tti.a().a(paramugn.b(), paramttk.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      tti.a().a(paramugn.b(), paramttk.jdField_a_of_type_JavaLangString, paramttk.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramugn.hashCode());
-      return;
+      ved.a(paramugk.b, "receive user info event. %s.", paramtkk.toString());
+      paramugk.i();
     }
-    veg.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701163), 0).a();
   }
   
   public Class acceptEventClass()
   {
-    return ttk.class;
+    return tkk.class;
   }
 }
 

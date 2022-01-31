@@ -1,63 +1,26 @@
-import android.app.Activity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.ViewStub;
-import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
+import android.widget.ImageView;
 
 public class bipa
-  extends biwa
+  extends RecyclerView.ViewHolder
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private WatermarkEditView jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView;
+  public ImageView a;
   
-  public bipa(Activity paramActivity, View paramView, biwb parambiwb)
+  public bipa(View paramView)
   {
-    super(paramActivity, paramView, parambiwb);
+    super(paramView);
+    this.a = ((ImageView)paramView.findViewById(2131377242));
   }
   
-  private void d()
+  public void a()
   {
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView == null)
-    {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363851);
-      if (localViewStub != null)
-      {
-        localViewStub.inflate();
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView = ((WatermarkEditView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363850));
-        this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a(this.jdField_a_of_type_AndroidAppActivity);
-      }
-    }
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.a();
-    }
+    this.a.setImageResource(2130845099);
   }
   
-  public Object a(int paramInt, Object... paramVarArgs)
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    }
-    return Boolean.valueOf(jdField_a_of_type_Boolean);
-  }
-  
-  protected void a() {}
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 589825: 
-      d();
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if ((this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.getVisibility() == 0)) {
-      this.jdField_a_of_type_DovComQqImAeCameraUiWatermarkWatermarkEditView.setVisibility(8);
-    }
-    jdField_a_of_type_Boolean = false;
+    this.a.setImageResource(2130845100);
   }
 }
 

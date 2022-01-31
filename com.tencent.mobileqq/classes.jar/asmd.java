@@ -1,47 +1,23 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import java.util.List;
-
 public class asmd
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public asmd a(int paramInt)
+  public asmd()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public asmd a(String paramString)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public asmd a(List<Integer> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public MsgBackupUserData a()
-  {
-    return new MsgBackupUserData(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b, this.c, this.jdField_a_of_type_Int, null);
-  }
-  
-  public asmd b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public asmd c(String paramString)
-  {
-    this.c = paramString;
-    return this;
+    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
   }
 }
 

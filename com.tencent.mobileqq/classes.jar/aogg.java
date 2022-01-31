@@ -1,12 +1,30 @@
-public class aogg
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import org.json.JSONObject;
+
+class aogg
+  implements MiniAppCmdInterface
 {
-  public int a;
-  public String a;
+  aogg(aogf paramaogf, aogh paramaogh) {}
   
-  public aogg()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = paramJSONObject.opt("data");
+      if ((paramJSONObject instanceof MiniAppRecommInfo))
+      {
+        aogf.a(this.jdField_a_of_type_Aogf, (MiniAppRecommInfo)paramJSONObject);
+        this.jdField_a_of_type_Aogf.a(aogf.a(this.jdField_a_of_type_Aogf));
+        if (this.jdField_a_of_type_Aogh != null) {
+          this.jdField_a_of_type_Aogh.a(true, aogf.a(this.jdField_a_of_type_Aogf));
+        }
+      }
+    }
+    while (this.jdField_a_of_type_Aogh == null) {
+      return;
+    }
+    this.jdField_a_of_type_Aogh.a(false, null);
   }
 }
 

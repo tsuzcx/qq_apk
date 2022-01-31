@@ -2,28 +2,49 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.WorkState;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
 
-class bgmu
+public class bgmu
   extends BroadcastReceiver
 {
-  bgmu(bgmt parambgmt) {}
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
+    {
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
+      {
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
       return;
     }
-    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
-    bgmt.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-    bgmt.c(this.a);
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgmu
  * JD-Core Version:    0.7.0.1
  */

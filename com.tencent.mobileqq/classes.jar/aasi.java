@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-public class aasi
-  implements DialogInterface.OnClickListener
+class aasi
+  implements Comparator<Object>
 {
-  public aasi(ChatHistoryFileActivity paramChatHistoryFileActivity, aask paramaask) {}
+  aasi(aash paramaash) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_Aask.a(true);
+    if ((paramObject1 instanceof FileManagerEntity)) {
+      if ((paramObject2 instanceof FileManagerEntity)) {
+        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return -1;
+          return 1;
+          if (!(paramObject2 instanceof TencentDocData)) {
+            break;
+          }
+        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
+        return 1;
+        if (!(paramObject1 instanceof TencentDocData)) {
+          break label124;
+        }
+        if (!(paramObject2 instanceof FileManagerEntity)) {
+          break;
+        }
+      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
+      return 1;
+      if (!(paramObject2 instanceof TencentDocData)) {
+        break;
+      }
+    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
+    return 1;
+    label124:
+    return 0;
   }
 }
 

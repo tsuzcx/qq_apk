@@ -1,33 +1,18 @@
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.ReboundLayout;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class bfuv
-  extends Animation
+class bfuv
+  extends View.AccessibilityDelegate
 {
-  private float jdField_a_of_type_Float;
-  private float b = 1.0F;
+  bfuv(bfut parambfut) {}
   
-  private bfuv(ReboundLayout paramReboundLayout)
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    ReboundLayout.a(paramReboundLayout, true);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
-    if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    setDuration(260L);
-    setInterpolator(new AccelerateInterpolator());
   }
 }
 

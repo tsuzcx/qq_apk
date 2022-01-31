@@ -1,8 +1,8 @@
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import mqq.util.WeakReference;
+import java.lang.ref.WeakReference;
 
 public class nic
-  extends ajxl
+  implements abgh
 {
   WeakReference<AccountDetailActivity> a;
   
@@ -11,14 +11,13 @@ public class nic
     this.a = new WeakReference(paramAccountDetailActivity);
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(abgi paramabgi)
   {
-    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
-    if (localAccountDetailActivity == null) {}
-    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
+    if ((this.a == null) || (this.a.get() == null)) {
       return;
     }
-    localAccountDetailActivity.P();
+    ((AccountDetailActivity)this.a.get()).a(paramabgi);
+    ((AccountDetailActivity)this.a.get()).P();
   }
 }
 

@@ -1,16 +1,8 @@
 public abstract interface asla
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(int paramInt, aslm paramaslm, Object paramObject);
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public abstract void a(aslm paramaslm, Object paramObject);
 }
 
 

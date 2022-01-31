@@ -1,41 +1,45 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tnh
-  extends syv
+  extends sys
 {
-  public String a;
+  public static final String a = sxm.a("StorySvc.feed_visitor_list");
+  public String b;
   
   public String a()
   {
-    return sxp.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+    return a;
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
+    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
     try
     {
-      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new tni(localRspGroupStoryFeedIdList);
+      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
+      return new tos(this.b, localRspGetFeedVisitor);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGroupStoryFeedIdList.toByteArray();
+    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
+    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetFeedVisitor.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
   }
 }
 

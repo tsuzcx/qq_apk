@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
-class sbm
-  implements View.OnClickListener
+public class sbm
+  implements bfxm
 {
-  sbm(sbl paramsbl) {}
+  public sbm(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    xhe.a("", "auth_discover", "fold_clk", 0, 0, new String[0]);
-    wsj.a(sbl.a(this.a), FolderRecommendTabFragment.a(this.a.a), new sbn(this));
+    if ((!this.a.c) && (this.a.d))
+    {
+      this.a.c = true;
+      sgu.a("SUBSCRIPT_FEEDS_COST", null);
+    }
   }
 }
 

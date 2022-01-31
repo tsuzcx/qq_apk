@@ -1,26 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-class pog
-  implements ViewBase.OnClickListener
+public class pog
+  extends RecyclerView.ViewHolder
 {
-  pog(poc parampoc) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public pog(pny parampny, View paramView)
   {
-    if ((this.a.jdField_a_of_type_Pob.a != null) && (this.a.jdField_a_of_type_Pob.a.a() != null)) {
-      olr.a(this.a.jdField_a_of_type_Pob.a.a(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    }
-    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    if ((pob.a(this.a.jdField_a_of_type_Pob) != null) && (this.a.jdField_a_of_type_Int < pob.a(this.a.jdField_a_of_type_Pob).size()))
-    {
-      onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), (BaseArticleInfo)pob.a(this.a.jdField_a_of_type_Pob).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
-      return;
-    }
-    onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), paramViewBase.getEventAttachedData());
+    super(paramView);
   }
 }
 

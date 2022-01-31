@@ -3,17 +3,17 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StPoiInfoV2;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVisitor;
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bbjw;
-import bbkb;
+import bbkk;
+import bbkp;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import vzo;
+import vzl;
 
 public class RelativeVideoHeadItemView
   extends RelativeFeedBaseHeaderView
@@ -37,12 +37,12 @@ public class RelativeVideoHeadItemView
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378171));
-    this.b = ((TextView)findViewById(2131378169));
-    this.c = ((TextView)findViewById(2131378172));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378163));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369425);
-    this.d = ((TextView)findViewById(2131378285));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378174));
+    this.b = ((TextView)findViewById(2131378172));
+    this.c = ((TextView)findViewById(2131378175));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378166));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369424);
+    this.d = ((TextView)findViewById(2131378288));
   }
   
   public void a(Object paramObject)
@@ -57,13 +57,13 @@ public class RelativeVideoHeadItemView
     {
       i = 0;
       ((TextView)localObject).setVisibility(i);
-      this.b.setText(bbkb.c(getContext(), paramObject.createTime.get() * 1000L));
+      this.b.setText(bbkp.c(getContext(), paramObject.createTime.get() * 1000L));
       i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
       if (i <= 0) {
         break label241;
       }
       this.c.setVisibility(0);
-      this.c.setText(vzo.a(i) + ajyc.a(2131719955));
+      this.c.setText(vzl.a(i) + ajya.a(2131719966));
       label139:
       localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
       if (paramObject.content.get().trim().length() <= 0) {
@@ -76,7 +76,7 @@ public class RelativeVideoHeadItemView
     {
       ((AsyncRichTextView)localObject).setVisibility(i);
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(paramObject.content.get());
-      if (bbjw.a(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get())) {
+      if (bbkk.a(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get())) {
         break label259;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);

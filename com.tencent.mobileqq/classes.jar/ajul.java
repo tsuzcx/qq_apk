@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-public class ajul
-  implements Comparator<DiscussionMemberInfo>
+public abstract class ajul<T extends CustomEmotionBase>
+  extends ajtb
 {
-  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
+  protected ajul(QQAppInterface paramQQAppInterface)
   {
-    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null))
-    {
-      paramDiscussionMemberInfo1 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo1.memberUin));
-      paramDiscussionMemberInfo2 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo2.memberUin));
-      if (paramDiscussionMemberInfo1.longValue() <= paramDiscussionMemberInfo2.longValue()) {}
-    }
-    while (paramDiscussionMemberInfo1 != null)
-    {
-      return 1;
-      if (paramDiscussionMemberInfo1.longValue() < paramDiscussionMemberInfo2.longValue()) {
-        return -1;
-      }
-      return 0;
-    }
-    if (paramDiscussionMemberInfo2 != null) {
-      return -1;
-    }
-    return 0;
+    super(paramQQAppInterface);
   }
+  
+  public abstract void a();
+  
+  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 

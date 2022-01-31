@@ -1,137 +1,142 @@
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData.FriendInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import java.util.ArrayList;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
 import java.util.List;
 
-class aqte
-  extends BaseAdapter
+public class aqte
+  extends bfpc
+  implements bfpt
 {
-  public Context a;
-  public List<FeedsItemData.FriendInfo> a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aqtg jdField_a_of_type_Aqtg;
+  private baxy jdField_a_of_type_Baxy = new baxy(this.jdField_a_of_type_AndroidContentContext, ajac.a());
+  private bbri jdField_a_of_type_Bbri = new aqtf(this);
+  private String jdField_a_of_type_JavaLangString;
+  private List<FeedsItemData.FriendInfo> jdField_a_of_type_JavaUtilList;
   
-  public aqte(Context paramContext, List<FeedsItemData.FriendInfo> paramList)
+  protected aqte(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    List localList;
-    a(localList);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(List<FeedsItemData.FriendInfo> paramList)
+  public aqte(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    f();
+    ajac.a().addObserver(this.jdField_a_of_type_Bbri);
+    ((bbrd)ajac.a().getBusinessHandler(71)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
   
-  public int getCount()
+  private String a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    paramLong = System.currentTimeMillis() / 1000L - paramLong;
+    if (paramLong < 60L) {
+      return paramLong / 60L + ajya.a(2131710297);
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if ((paramLong >= 60L) && (paramLong < 3600L)) {
+      return paramLong / 60L + ajya.a(2131710300);
+    }
+    if ((paramLong >= 3600L) && (paramLong < paramLong / 86400L)) {
+      return paramLong / 3600L + ajya.a(2131710298);
+    }
+    int i = (int)(paramLong / 86400L);
+    if (i >= 30) {
+      return i / 30 + ajya.a(2131710303);
+    }
+    if (i >= 7) {
+      return i / 7 + ajya.a(2131710301);
+    }
+    return i + ajya.a(2131710302);
   }
   
-  public Object getItem(int paramInt)
+  private void f()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1 = (FeedsItemData.FriendInfo)aqtc.a(this.jdField_a_of_type_Aqtc).get(paramInt);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, actj.a(500.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    CornerImageView localCornerImageView = new CornerImageView(this.jdField_a_of_type_AndroidContentContext);
-    localCornerImageView.setId(2131366914);
-    Object localObject2 = ((FeedsItemData.FriendInfo)localObject1).uin;
-    localCornerImageView.setRadius(actn.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) / 2);
-    paramViewGroup = aqtc.a(this.jdField_a_of_type_Aqtc).a(1, (String)localObject2);
-    paramView = paramViewGroup;
-    if (paramViewGroup == null)
+    Object localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_popView_card@2x.png"));
+    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
+    ((ImageView)localObject2).setId(2131366913);
+    Object localObject1 = new RelativeLayout.LayoutParams(-1, (int)(bbdh.k() / 750L * 36L));
+    ((RelativeLayout.LayoutParams)localObject1).addRule(10);
+    localRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
+    localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
+    ((RelativeLayout)localObject1).setBackgroundColor(-1);
+    localLayoutParams1.addRule(3, ((ImageView)localObject2).getId());
+    localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    ((TextView)localObject2).setText(ajya.a(2131710299));
+    Object localObject3 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(9);
+    ((RelativeLayout.LayoutParams)localObject3).setMargins(actj.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
+    ((TextView)localObject2).setTextSize(18.0F);
+    ((TextView)localObject2).setTextColor(-16777216);
+    ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
+    ((TextView)localObject2).setId(2131366915);
+    localObject3 = new ListView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Aqtg = new aqtg(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList);
+    ((ListView)localObject3).setAdapter(this.jdField_a_of_type_Aqtg);
+    ((ListView)localObject3).setOnItemClickListener(this);
+    ((ListView)localObject3).setBackgroundColor(-1);
+    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams2.addRule(3, ((TextView)localObject2).getId());
+    ((RelativeLayout)localObject1).addView((View)localObject3, localLayoutParams2);
+    localRelativeLayout.addView((View)localObject1, localLayoutParams1);
+    ((ListView)localObject3).setDividerHeight(0);
+    ((ListView)localObject3).setSelector(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849558));
+    a(localRelativeLayout, localLayoutParams);
+  }
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    ajac.a().removeObserver(this.jdField_a_of_type_Bbri);
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (ajxl)ajac.a().getManager(51);
+    paramView = (FeedsItemData.FriendInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (TextUtils.isEmpty(paramView.jumpUrl))
     {
-      paramView = bbdr.a();
-      aqtc.a(this.jdField_a_of_type_Aqtc).a((String)localObject2, 1, false);
-    }
-    localCornerImageView.setImageBitmap(paramView);
-    paramView = new RelativeLayout.LayoutParams(actn.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramView.addRule(9);
-    paramView.setMargins(actn.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, actn.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(1, localCornerImageView.getId());
-    ((RelativeLayout.LayoutParams)localObject2).leftMargin = actn.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((RelativeLayout.LayoutParams)localObject2).rightMargin = actn.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Object localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject3).setText(((FeedsItemData.FriendInfo)localObject1).name);
-    ((TextView)localObject3).setTextSize(16.0F);
-    ((TextView)localObject3).setTextColor(-16777216);
-    ((TextView)localObject3).setMaxLines(1);
-    ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject3).setId(2131370647);
-    ((TextView)localObject3).setMaxWidth(actn.a(110.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramViewGroup.addView((View)localObject3);
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    localTextView.setTextSize(10.0F);
-    localTextView.setTextColor(-2145246686);
-    if (((FeedsItemData.FriendInfo)localObject1).loginTime < 0L)
-    {
-      localTextView.setVisibility(4);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, ((TextView)localObject3).getId());
-      localLayoutParams.addRule(8, ((TextView)localObject3).getId());
-      localLayoutParams.leftMargin = actn.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.bottomMargin = actn.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.addView(localTextView, localLayoutParams);
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localTextView.setTextSize(10.0F);
-      localTextView.setTextColor(-6579301);
-      if ((!TextUtils.isEmpty(((FeedsItemData.FriendInfo)localObject1).partition)) || (!TextUtils.isEmpty(((FeedsItemData.FriendInfo)localObject1).roleName))) {
-        break label829;
+      if (paramAdapterView.b(paramView.uin)) {
+        paramAdapterView = new ProfileActivity.AllInOne(paramView.uin, 1);
       }
-      localTextView.setText(ajyc.a(2131710293));
+      for (paramAdapterView.jdField_h_of_type_JavaLangString = paramView.name;; paramAdapterView.jdField_h_of_type_JavaLangString = paramView.name)
+      {
+        paramAdapterView.f = paramView.uin;
+        paramAdapterView.e = 3000;
+        paramAdapterView.g = 2;
+        paramAdapterView.jdField_h_of_type_Int = 106;
+        ProfileActivity.b(getContext(), paramAdapterView);
+        return;
+        paramAdapterView = new ProfileActivity.AllInOne(paramView.uin, 19);
+      }
     }
-    for (;;)
-    {
-      localTextView.setBackgroundColor(1270796256);
-      localTextView.setPadding(actn.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, ((TextView)localObject3).getId());
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = actn.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.addView(localTextView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)localObject1).setText(ajyc.a(2131710294));
-      ((TextView)localObject1).setTextColor(-1);
-      ((TextView)localObject1).setTextSize(16.0F);
-      ((TextView)localObject1).setGravity(17);
-      ((TextView)localObject1).setBackgroundDrawable(aqst.a(new ColorDrawable(-16776961), new ColorDrawable(-16776961), "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gameCenter_headerImage_button_big_click@2x.png"));
-      localObject3 = new RelativeLayout.LayoutParams(actn.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actn.a(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((RelativeLayout.LayoutParams)localObject3).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject3).rightMargin = actn.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localRelativeLayout.addView(localCornerImageView, paramView);
-      localRelativeLayout.addView(paramViewGroup, (ViewGroup.LayoutParams)localObject2);
-      localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
-      return localRelativeLayout;
-      localTextView.setText(aqtc.a(this.jdField_a_of_type_Aqtc, ((FeedsItemData.FriendInfo)localObject1).loginTime));
-      break;
-      label829:
-      localTextView.setText(((FeedsItemData.FriendInfo)localObject1).partition + " " + ((FeedsItemData.FriendInfo)localObject1).roleName);
-    }
+    paramAdapterView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramAdapterView.putExtra("url", paramView.jumpUrl);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramAdapterView);
   }
 }
 

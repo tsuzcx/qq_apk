@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class och
-  implements ViewBase.IBuilder
+class och
+  implements View.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  och(ocf paramocf) {}
+  
+  public void onClick(View paramView)
   {
-    return new ocg(paramVafContext);
+    this.a.dismiss();
   }
 }
 

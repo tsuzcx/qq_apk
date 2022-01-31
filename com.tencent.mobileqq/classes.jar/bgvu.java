@@ -1,36 +1,75 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class bgvu
-  extends bgur
+public class bgvu
+  extends bgvk
 {
-  bgvu(Context paramContext) {}
+  public bgvu(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void b(@NonNull bgus parambgus)
+  public void a(bgvj parambgvj)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
+    int j = 0;
+    i = 0;
+    parambgvj = parambgvj.a();
+    if ((parambgvj == null) || (parambgvj.length() == 0)) {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData response illegal: " + parambgvj);
     }
-    parambgus = parambgus.a();
-    boolean bool1 = bool2;
-    if (parambgus != null)
+    for (;;)
     {
-      parambgus = bgvt.a("on_off", parambgus);
-      if (parambgus == null) {
-        bool1 = bool2;
+      if (i == 0) {
+        ForceUserUpdateActivity.b(this.a, "拉取新书城配置失败，请检查网络重试");
       }
-    }
-    else
-    {
-      bgvs.a(this.a, bool1);
       return;
+      for (;;)
+      {
+        for (;;)
+        {
+          try
+          {
+            localObject = (JSONArray)parambgvj.get("tabList");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+            {
+              bgwf.d("ForceUserUpdateActivity", "onReceiveData: FetchTabConfigData succeed, length = " + ((JSONArray)localObject).length());
+              localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+              ForceUserUpdateActivity.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + (String)localObject, parambgvj.toString()).apply();
+              bgwd.d(ForceUserUpdateActivity.a(this.a), true);
+            }
+          }
+          catch (Exception parambgvj)
+          {
+            Object localObject;
+            i = j;
+          }
+          try
+          {
+            ForceUserUpdateActivity.b(this.a);
+            i = 1;
+          }
+          catch (Exception parambgvj)
+          {
+            for (;;)
+            {
+              i = 1;
+            }
+          }
+        }
+        ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData empty: " + localObject);
+        i = 0;
+      }
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData parse failed: " + parambgvj.getMessage());
     }
-    if (((Integer)parambgus).intValue() == 1) {}
-    for (bool1 = true;; bool1 = false) {
-      break;
-    }
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: FetchTabConfigData error: " + paramString);
   }
 }
 

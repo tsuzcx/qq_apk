@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
-import bduw;
+import aert;
+import bdvn;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -10,11 +10,11 @@ import org.json.JSONObject;
 public class PublicAccountChatPie$53
   implements Runnable
 {
-  public PublicAccountChatPie$53(aerv paramaerv) {}
+  public PublicAccountChatPie$53(aert paramaert) {}
   
   public void run()
   {
-    bduw localbduw = (bduw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(85);
+    bdvn localbdvn = (bdvn)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(85);
     if (!this.this$0.ao) {
       localObject = new JSONObject();
     }
@@ -52,9 +52,9 @@ public class PublicAccountChatPie$53
     if (i != 0)
     {
       localObject = null;
-      localbduw.a(str1, str2, str3, str4, (String)localObject);
+      localbdvn.a(str1, str2, str3, str4, (String)localObject);
       this.this$0.a().runOnUiThread(new PublicAccountChatPie.53.1(this));
-      localbduw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.j);
+      localbdvn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.j);
       return;
     }
   }

@@ -1,20 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
 public class asbf
 {
-  private static final asbp<Handler, Void> a = new asbg();
-  private static asbp<TimerTaskManager, Void> b = new asbh();
-  
-  public static Handler a()
-  {
-    return (Handler)a.b(null);
-  }
-  
-  public static TimerTaskManager a()
-  {
-    return (TimerTaskManager)b.b(null);
-  }
+  public int a = 1;
+  public Bitmap a;
+  public int b = Color.parseColor("#FFFF0000");
+  public int c;
 }
 
 

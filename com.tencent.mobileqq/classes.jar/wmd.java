@@ -1,21 +1,14 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 
 class wmd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  wmd(wlx paramwlx) {}
+  wmd(wmc paramwmc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      wlx.a(this.a, 0);
-    }
-    if (wlx.a(this.a) != null) {
-      wlx.a(this.a).a(paramMotionEvent);
-    }
-    return true;
+    this.a.dismiss();
   }
 }
 

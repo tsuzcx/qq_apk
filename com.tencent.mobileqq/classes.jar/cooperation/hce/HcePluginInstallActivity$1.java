@@ -1,8 +1,8 @@
 package cooperation.hce;
 
 import android.os.Handler;
-import bcpw;
-import bgkq;
+import bcql;
+import bglh;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ class HcePluginInstallActivity$1
         HcePluginInstallActivity.a(this.this$0, true);
         return;
       }
-      bcpw.a(this.this$0.getApplicationContext(), 2131695209, 0).a();
+      bcql.a(this.this$0.getApplicationContext(), 2131695210, 0).a();
       HcePluginInstallActivity.a(this.this$0, false);
       this.this$0.finish();
       return;

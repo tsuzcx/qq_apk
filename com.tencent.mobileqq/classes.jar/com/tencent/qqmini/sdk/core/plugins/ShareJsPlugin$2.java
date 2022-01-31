@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bejq;
-import bers;
-import besl;
+import bekh;
+import besj;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
 
 class ShareJsPlugin$2
-  implements bejq
+  implements bekh
 {
-  ShareJsPlugin$2(ShareJsPlugin paramShareJsPlugin, bers parambers, AsyncResult paramAsyncResult) {}
+  ShareJsPlugin$2(ShareJsPlugin paramShareJsPlugin, besj parambesj, AsyncResult paramAsyncResult) {}
   
   public void onGetScreenshot(String paramString)
   {
@@ -18,7 +18,7 @@ class ShareJsPlugin$2
     {
       this.val$shareData.b = paramString;
       ShareJsPlugin.access$000(this.this$0).onJsShareAppMessage(this.val$shareData, this.val$shareListener);
-      besl.d("ShareJsPlugin", "getScreenshot for QzoneShare failed, savedScreenshotPath = null");
+      betc.d("ShareJsPlugin", "getScreenshot for QzoneShare failed, savedScreenshotPath = null");
       return;
     }
     this.val$shareData.b = paramString;

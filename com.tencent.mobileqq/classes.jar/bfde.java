@@ -1,40 +1,57 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.tissue.v8rt.engine.LibLoader;
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfde
-  implements LibLoader
+  implements belx
 {
-  public boolean loadSo()
+  public bfde(bfda parambfda) {}
+  
+  public void onSoftKeyboardClosed()
   {
-    if (bekd.a == null)
+    if (bfda.c(this.a) != 0)
     {
-      Log.i("V8JsLoader", "tissueEnv is null");
-      return false;
+      bele.a(bfda.a(this.a).a(), bfda.c(this.a), 0.0F, 1.0F, 1.0F);
+      bfda.b(this.a, 0);
     }
-    Object localObject = bekd.a.getNativeLibDir();
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      Log.i("V8JsLoader", "libsDir is empty");
-      return false;
+    InputMethodManager localInputMethodManager = (InputMethodManager)bfda.a(this.a).getContext().getSystemService("input_method");
+    if (localInputMethodManager == null) {
+      return;
     }
+    localInputMethodManager.hideSoftInputFromWindow(bfda.a(this.a).getWindowToken(), 0);
+    this.a.a(true);
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
     try
     {
-      System.loadLibrary("v8jni");
-      System.loadLibrary("uvjni");
-      localObject = new File((String)localObject, "libtv8rt.so");
-      if ((!((File)localObject).isFile()) || (!((File)localObject).canRead())) {
-        throw new UnsatisfiedLinkError("libtv8rt.so is broken");
+      bfda.a(this.a, paramInt);
+      if ((bfda.a(this.a) != null) && (bfda.a(this.a).a() != null)) {}
+      for (Object localObject = bfda.a(this.a).a().a();; localObject = null)
+      {
+        if ((localObject != null) && (bfgl.a((Context)localObject)) && (bfgl.a((Activity)localObject))) {
+          bfda.a(this.a, bfda.b(this.a) + bfgl.c(bfda.a(this.a).a().a()));
+        }
+        bfda.a(this.a);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("inputId", bfda.a(this.a));
+        ((JSONObject)localObject).put("height", paramInt);
+        if ((bfda.a(this.a) != null) && (bfda.a(this.a).a() != null)) {
+          bfda.a(this.a).a().b("onKeyboardShow", ((JSONObject)localObject).toString());
+        }
+        return;
       }
+      return;
     }
-    catch (Throwable localThrowable)
+    catch (JSONException localJSONException)
     {
-      localThrowable.printStackTrace();
-      return false;
+      localJSONException.printStackTrace();
     }
-    System.load(localThrowable.getAbsolutePath());
-    return true;
   }
 }
 

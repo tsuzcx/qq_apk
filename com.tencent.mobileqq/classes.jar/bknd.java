@@ -4,7 +4,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 class bknd
   implements ValueAnimator.AnimatorUpdateListener
 {
-  bknd(bkna parambkna) {}
+  bknd(bknb parambknb) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {

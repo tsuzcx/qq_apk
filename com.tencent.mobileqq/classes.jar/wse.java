@@ -1,15 +1,33 @@
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.1;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
+import java.io.IOException;
+import org.json.JSONObject;
 
-public class wse
-  implements Comparator<File>
+final class wse
+  implements Callback
 {
-  public wse(AnimationDrawableFactory.1 param1) {}
+  wse(Context paramContext, wsf paramwsf) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onFailure(Request paramRequest, IOException paramIOException)
   {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+    wsd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wsf, "abcdabcdabcdabcd");
+  }
+  
+  public void onResponse(Response paramResponse)
+  {
+    try
+    {
+      paramResponse = new JSONObject(paramResponse.body().string()).optString("key");
+      wsd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wsf, paramResponse);
+      return;
+    }
+    catch (Throwable paramResponse)
+    {
+      paramResponse.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface bkdz
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class bkdz
+  implements bkex
 {
-  public abstract void a();
+  public bkdz(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
+  {
+    if (this.a.a != null) {
+      this.a.a.r();
+    }
+  }
 }
 
 

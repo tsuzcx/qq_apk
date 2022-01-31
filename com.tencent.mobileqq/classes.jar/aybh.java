@@ -1,6 +1,13 @@
-public abstract interface aybh
+public class aybh
 {
-  public abstract void a();
+  public float a;
+  public float b;
+  
+  public aybh(float paramFloat1, float paramFloat2)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
 }
 
 

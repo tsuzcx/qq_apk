@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-class bjup
-  implements View.OnClickListener
+public final class bjup
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  bjup(bjun parambjun, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    if ((this.jdField_a_of_type_Bjun.a.jdField_a_of_type_Bjye != null) && (this.jdField_a_of_type_Bjun.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
-      this.jdField_a_of_type_Bjun.a.a(this.jdField_a_of_type_Int);
-    }
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

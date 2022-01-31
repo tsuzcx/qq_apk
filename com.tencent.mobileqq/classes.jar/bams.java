@@ -1,34 +1,8 @@
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bams
+public abstract interface bams
 {
-  public static <T extends bamt> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (bamt)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static <T extends Thread> T a(Class<T> paramClass)
-  {
-    try
-    {
-      paramClass = (TroopUploadingThread)Class.forName(paramClass.getName()).newInstance();
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
+  public abstract void a(int paramInt, cmd0x934.RspBody paramRspBody);
 }
 
 

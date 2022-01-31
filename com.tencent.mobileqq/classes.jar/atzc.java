@@ -1,6 +1,15 @@
+import java.util.ArrayList;
+
 public class atzc
-  extends atyy
+  extends atza
 {
+  public ArrayList<aflw> a;
+  
+  public atzc(ArrayList<aflw> paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
   public boolean a()
   {
     return true;

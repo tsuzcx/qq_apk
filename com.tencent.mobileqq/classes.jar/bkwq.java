@@ -1,14 +1,23 @@
-public abstract interface bkwq
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+
+public class bkwq
+  implements Animator.AnimatorListener
 {
-  public abstract void ae();
+  public bkwq(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
   
-  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    QIMCameraCaptureButtonLayout.a(this.a).setVisibility(8);
+  }
   
-  public abstract void d(int paramInt);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract int j();
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

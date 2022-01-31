@@ -1,17 +1,18 @@
 import android.content.Context;
-import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
+import android.view.ViewGroup.LayoutParams;
 
-final class bcvv
-  implements TMSDKCustomConfig.IInstaller
+public class bcvv
 {
-  public boolean installApp(Context paramContext, String paramString)
-  {
-    return bdiw.a(paramContext, paramString, "biz_src_wifi");
-  }
+  public float a = 0.5F;
+  public Context a;
+  public ViewGroup.LayoutParams a;
+  public boolean a;
+  public boolean b;
+  public boolean c = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcvv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import wdl;
+import wdi;
 
 public class RateWidget$2
   implements Runnable
 {
-  public RateWidget$2(wdl paramwdl) {}
+  public RateWidget$2(wdi paramwdi) {}
   
   public void run()
   {
-    if (wdl.a(this.this$0))
+    if (wdi.a(this.this$0))
     {
-      wdl.a(this.this$0, false);
+      wdi.a(this.this$0, false);
       this.this$0.c(false);
     }
   }

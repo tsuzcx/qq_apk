@@ -1,8 +1,20 @@
-import android.view.View;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-public abstract interface bcli
+final class bcli
+  implements bcju
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    paramInt2 = paramDrawable.getIntrinsicWidth();
+    float f = paramInt1 / paramInt2;
+    localMatrix.setScale(f, f);
+    return localMatrix;
+  }
 }
 
 

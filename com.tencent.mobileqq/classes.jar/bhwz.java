@@ -1,31 +1,24 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop.TroopPluginManager;
 
 public class bhwz
   extends Handler
 {
-  public bhwz(TroopHWJsPlugin paramTroopHWJsPlugin) {}
+  public bhwz(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    case 2: 
     default: 
       return;
-    case 0: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2131697683, 0).a();
-      return;
-    case 1: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2131697699, 0).a();
-      return;
-    case 3: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2131697681, 0).a();
-      return;
     }
-    bcpw.a(BaseApplicationImpl.getContext(), 2131697682, 0).a();
+    ((bhxc)paramMessage.obj).a(paramMessage.arg1);
   }
 }
 

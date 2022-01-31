@@ -1,26 +1,38 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-final class ajjv
-  extends bbwf
+class ajjv
 {
-  ajjv(SharedPreferences paramSharedPreferences, int paramInt, ajjt paramajjt) {}
+  public int a;
+  public String a;
+  public final List<ajjw> a;
   
-  public void onDone(bbwg parambbwg)
+  public ajjv()
   {
-    super.onDone(parambbwg);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambbwg.a() + ", httpCode: " + parambbwg.f);
-    if (3 == parambbwg.a())
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Ajjt != null) {
-        ajjt.a(this.jdField_a_of_type_Ajjt);
-      }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
+      return null;
     }
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ajjw)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
   }
 }
 

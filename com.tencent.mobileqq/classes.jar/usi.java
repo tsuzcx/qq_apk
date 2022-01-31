@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
-import java.util.Map;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 
-class usi
-  implements bfrx
+public final class usi
+  implements Parcelable.Creator<CardItem.CardVideoInfo>
 {
-  usi(ush paramush, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, use paramuse) {}
-  
-  public void onScrollStateChanged(int paramInt)
+  public CardItem.CardVideoInfo a(Parcel paramParcel)
   {
-    if (paramInt == 4097)
-    {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
-      }
-      ush.a(this.jdField_a_of_type_Ush).a.put("2_" + this.jdField_a_of_type_Ush.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_Use.a.get(paramInt)).mVid);
-    }
+    return new CardItem.CardVideoInfo(paramParcel);
+  }
+  
+  public CardItem.CardVideoInfo[] a(int paramInt)
+  {
+    return new CardItem.CardVideoInfo[paramInt];
   }
 }
 

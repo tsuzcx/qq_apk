@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adnm;
-import adnr;
+import adnk;
+import adnp;
 
 public class CmGameTipsItemBuilder$ISessionHandler$3
   implements Runnable
 {
-  public CmGameTipsItemBuilder$ISessionHandler$3(adnr paramadnr, adnm paramadnm) {}
+  public CmGameTipsItemBuilder$ISessionHandler$3(adnp paramadnp, adnk paramadnk) {}
   
   public void run()
   {
-    adnm.a(this.a);
+    adnk.a(this.a);
   }
 }
 

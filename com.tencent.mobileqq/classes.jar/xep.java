@@ -1,6 +1,18 @@
-public abstract interface xep
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class xep
+  implements View.OnClickListener
 {
-  public abstract void a();
+  xep(xeo paramxeo, xer paramxer) {}
+  
+  public void onClick(View paramView)
+  {
+    if (xen.a(xeo.class.getName() + "clickFeed")) {
+      return;
+    }
+    xeo.a(this.jdField_a_of_type_Xeo).a(this.jdField_a_of_type_Xer);
+  }
 }
 
 

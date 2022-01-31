@@ -1,72 +1,84 @@
-import android.content.Context;
+import android.view.View;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.HashSet;
+import java.util.List;
+import org.apache.http.Header;
 
-public abstract class aewm
-  implements aewh
+class aewm
+  implements URLDrawableDownListener
 {
-  public URLDrawable.URLDrawableOptions a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
-  }
+  aewm(aewl paramaewl) {}
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramURL == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
     }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
   }
   
-  public URL a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
+    aewl.a(this.a, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    l2 = -1L;
     try
     {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aewx)this).f());
-      if (localURL1 == null)
+      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
+      l1 = l2;
+      if (localObject != null)
       {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
+        localObject = ((Header)localObject).getValue();
+        l1 = l2;
+        if (localObject != null)
+        {
+          l1 = Long.parseLong((String)localObject);
+          long l3 = System.currentTimeMillis();
+          l1 = l3 - l1;
+        }
       }
     }
-    catch (MalformedURLException localMalformedURLException)
+    catch (Exception localException)
     {
-      URL localURL2;
       for (;;)
       {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
+        long l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
+          l1 = l2;
+        }
       }
-      return localURL2;
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return "z-";
+    aewl.a(this.a, paramURLDrawable, l1);
+    paramView = paramView.getTag();
+    if (aexb.b((aewf)paramView))
+    {
+      paramView = (aewv)paramView;
+      if ((aexb.b(paramView)) && (!aewl.a(this.a).contains(paramView.j())))
+      {
+        aewl.a(this.a).add(paramView.j());
+        paramURLDrawable = paramView.l();
+        aewl.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
+      }
+    }
   }
 }
 

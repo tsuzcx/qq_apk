@@ -1,13 +1,13 @@
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class azkt
-  extends aimv
+class azkt
+  extends azkv
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

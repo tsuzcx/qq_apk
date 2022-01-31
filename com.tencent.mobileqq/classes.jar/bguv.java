@@ -1,78 +1,34 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public class bguv
-  implements Manager
+class bguv
+  extends bgvk
 {
-  @Nullable
-  public RedAppInfo a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString);
-    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
-    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
-    {
-      paramString = paramString.data;
-      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
-      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
-    }
-    return null;
-  }
+  bguv(bguu parambguu) {}
   
-  @Nullable
-  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
+  public void a(@NonNull bgvj parambgvj)
   {
-    if (paramArrayList == null) {}
+    parambgvj = parambgvj.a();
+    if (parambgvj == null) {
+      bgwf.a("ReaderUrlConfigDataHelper", "Response json is null");
+    }
     do
     {
-      do
+      return;
+      if (parambgvj.length() == 0)
       {
-        return null;
-        localObject = new Bundle();
-        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
-        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
-      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
-      paramArrayList = paramArrayList.data;
-      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
-      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
-    } while (localObject == null);
-    paramArrayList = new HashMap();
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
-      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
-    }
-    return paramArrayList;
+        bgwf.a("ReaderUrlConfigDataHelper", "后台数据异常");
+        return;
+      }
+    } while (!bguu.a(this.a, parambgvj));
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bguu.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_URL_CONFIG_DATA" + str, parambgvj.toString()).apply();
   }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("path", paramString);
-      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    return (paramString != null) && (paramString.b() == 1);
-  }
-  
-  public void onDestroy() {}
 }
 
 

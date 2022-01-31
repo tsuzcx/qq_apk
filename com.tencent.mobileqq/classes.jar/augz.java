@@ -9,7 +9,7 @@ public class augz
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * actj.a(1.5F, this.a.getResources()));
     this.a.invalidate();
   }
 }

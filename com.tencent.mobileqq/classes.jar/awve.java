@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Comparator;
+import java.util.Set;
 
-public final class awve
-  implements Comparator<awpk>
+public class awve
+  extends awtu
 {
-  public int a(awpk paramawpk1, awpk paramawpk2)
+  public final awvf a;
+  
+  public awve(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    int j = Long.signum(paramawpk2.b() - paramawpk1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramawpk1, paramawpk2);
-    }
-    return i;
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.a = new awvf(paramQQAppInterface);
+  }
+  
+  public Comparator<awoe> a()
+  {
+    return this.a;
   }
 }
 

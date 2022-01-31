@@ -1,59 +1,40 @@
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class wxq
-  implements TextWatcher
+  implements BusinessObserver
 {
   public wxq(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
-      }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    for (paramEditable = this.a.getResources().getColorStateList(2131166984);; paramEditable = this.a.getResources().getColorStateList(2131166933))
+    if (!paramBoolean)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131696442), new Object[] { Integer.valueOf(i) }));
+      EditUniqueTitleActivity.a(this.a, -1);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
-      }
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      localOIDBSSOPkg.mergeFrom(paramBundle);
+      paramInt = localOIDBSSOPkg.uint32_result.get();
+      EditUniqueTitleActivity.a(this.a, paramInt);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

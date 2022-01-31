@@ -1,11 +1,20 @@
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+
 public class asqq
-  implements asqm
+  extends DataSetObserver
 {
-  public void a(int paramInt) {}
+  public asqq(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  public void onChanged()
+  {
+    this.a.b();
+  }
   
-  public void b(int paramInt) {}
+  public void onInvalidated()
+  {
+    this.a.b();
+  }
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.videostory.network.observer;
 
 import android.os.Bundle;
-import xgw;
+import xgt;
 
 public class VSDispatchObserver$1
   implements Runnable
 {
-  public VSDispatchObserver$1(xgw paramxgw, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
+  public VSDispatchObserver$1(xgt paramxgt, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    xgw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean);
+    xgt.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean);
   }
 }
 

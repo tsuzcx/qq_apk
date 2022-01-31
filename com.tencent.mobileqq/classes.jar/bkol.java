@@ -1,33 +1,42 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
 import java.util.ArrayList;
+import java.util.List;
 
 public class bkol
-  implements bkom
+  extends syr<tnd, toq>
 {
-  public static final int[] a;
-  public static final String[] a;
+  bkol(bkok parambkok) {}
   
-  static
+  public void a(@NonNull tnd paramtnd, @Nullable toq paramtoq, @NonNull ErrorMessage paramErrorMessage)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#FFFFFF", "#DF382C", "#F09A37", "#83D754", "#3478F6", "#7ED5F8", "#F7E368", "#E8519C" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845871, 2130845869, 2130845872, 2130845870, 2130845875, 2130845874, 2130845878, 2130845873, 2130845876 };
-  }
-  
-  public static int a()
-  {
-    return Color.parseColor(jdField_a_of_type_ArrayOfJavaLangString[1]);
-  }
-  
-  public void a(@NonNull ArrayList<bkon> paramArrayList, @NonNull Context paramContext)
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
+    ved.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtoq != null))
     {
-      paramArrayList.add(new bkon(paramContext.getResources().getDrawable(jdField_a_of_type_ArrayOfInt[i]), 0, jdField_a_of_type_ArrayOfJavaLangString[i]));
-      i += 1;
+      ved.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramtoq.toString());
+      paramtnd = paramtoq.jdField_a_of_type_JavaUtilList;
+      if (paramtnd.contains(bkok.a(this.a)))
+      {
+        int i = paramtnd.indexOf(bkok.a(this.a));
+        bkok.a(this.a, (vvd)paramtnd.get(i));
+        bkok.a(this.a).clear();
+        bkok.a(this.a).addAll(paramtnd);
+        paramtnd = new ArrayList(bkok.a(this.a));
+        bkok.a(this.a, paramtoq.jdField_a_of_type_JavaLangString);
+        bkok.a(this.a, paramtoq.b);
+        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this, paramtnd));
+      }
+    }
+    for (;;)
+    {
+      bkok.a(this.a).a(paramErrorMessage.errorCode, bkok.a(this.a), this.a.a());
+      return;
+      bkok.a(this.a, null);
+      break;
+      ved.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

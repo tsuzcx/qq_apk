@@ -1,18 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class nyn
-  implements rqr
+public class nyn
+  implements AladdinConfigHandler
 {
-  nyn(nym paramnym, rap paramrap) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (rap.a() != null)
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      nzj localnzj = (nzj)rap.a().getManager(307);
-      if (localnzj != null) {
-        localnzj.a(this.jdField_a_of_type_Rap, this.jdField_a_of_type_Rap.a(), true, paramInt1);
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
+      {
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bhvy.a("sp_key_ad_soft_total_area", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bhvy.a("sp_key_ad_soft_ad_max", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bhvy.a("sp_key_ad_soft_kd_max", str2.trim());
+        }
       }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 200)
+    {
+      bhvy.a("sp_key_ad_soft_total_area", "0");
+      bhvy.a("sp_key_ad_soft_ad_max", "25");
+      bhvy.a("sp_key_ad_soft_kd_max", "25");
     }
   }
 }

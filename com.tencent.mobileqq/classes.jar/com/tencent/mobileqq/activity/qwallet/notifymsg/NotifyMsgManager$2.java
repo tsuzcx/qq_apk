@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import ahbf;
-import ahiy;
+import ahbd;
+import ahiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -15,15 +15,15 @@ public final class NotifyMsgManager$2
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = ahiy.a();
+    QQAppInterface localQQAppInterface = ahiw.a();
     if (localQQAppInterface != null)
     {
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
-        ahbf localahbf = (ahbf)localIterator.next();
-        if ((localahbf != null) && (localahbf.a != null)) {
-          localQQAppInterface.a().a(localahbf.a.frienduin, localahbf.a.istroop, localahbf.a.uniseq, "extStr", localahbf.a.extStr);
+        ahbd localahbd = (ahbd)localIterator.next();
+        if ((localahbd != null) && (localahbd.a != null)) {
+          localQQAppInterface.a().a(localahbd.a.frienduin, localahbd.a.istroop, localahbd.a.uniseq, "extStr", localahbd.a.extStr);
         }
       }
     }

@@ -1,23 +1,34 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abbz
-  implements View.OnClickListener
+  extends ajse
 {
-  public abbz(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public abbz(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (!this.a.isFinishing()) {
-      ForwardFriendListActivity.a(this.a).dismiss();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        ForwardRecentActivity.g(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
+      }
+      this.a.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abbz
  * JD-Core Version:    0.7.0.1
  */

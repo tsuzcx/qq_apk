@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class agcw
   implements DialogInterface.OnClickListener
 {
-  agcw(agch paramagch) {}
+  agcw(agcf paramagcf) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import bcpq;
+import bcqf;
 import com.tencent.mobileqq.app.ThreadManager;
 
 class DataJsPlugin$30
@@ -12,10 +12,10 @@ class DataJsPlugin$30
   
   public void run()
   {
-    bcpq localbcpq = new bcpq(this.val$context);
-    localbcpq.a(ajyc.a(2131702731));
-    localbcpq.show();
-    ThreadManager.excute(new DataJsPlugin.30.1(this, localbcpq), 128, null, true);
+    bcqf localbcqf = new bcqf(this.val$context);
+    localbcqf.a(ajya.a(2131702742));
+    localbcqf.show();
+    ThreadManager.excute(new DataJsPlugin.30.1(this, localbcqf), 128, null, true);
   }
 }
 

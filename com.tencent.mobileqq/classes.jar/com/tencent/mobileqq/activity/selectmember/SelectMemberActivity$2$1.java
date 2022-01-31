@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aiek;
+import aiei;
 import android.widget.TextView;
 
 public class SelectMemberActivity$2$1
   implements Runnable
 {
-  public SelectMemberActivity$2$1(aiek paramaiek) {}
+  public SelectMemberActivity$2$1(aiei paramaiei) {}
   
   public void run()
   {

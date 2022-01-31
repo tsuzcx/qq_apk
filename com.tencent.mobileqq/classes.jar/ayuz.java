@@ -1,9 +1,19 @@
-public class ayuz
+class ayuz
+  extends akat
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  ayuz(ayuw paramayuw) {}
+  
+  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramakau);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

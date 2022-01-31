@@ -1,16 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public class aygu
+class aygu
   implements DialogInterface.OnClickListener
 {
-  public aygu(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  aygu(aygs paramaygs) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().finish();
+    if (this.a.a.b == 1) {
+      axqy.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
+    }
   }
 }
 

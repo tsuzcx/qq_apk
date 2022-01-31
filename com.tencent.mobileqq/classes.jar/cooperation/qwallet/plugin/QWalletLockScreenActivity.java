@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbio;
+import bbjc;
 import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -126,7 +126,7 @@ public class QWalletLockScreenActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnCreate taskId" + getTaskId() + Thread.currentThread().getId());
     }
-    setContentView(2131561590);
+    setContentView(2131561589);
     getWindow().addFlags(524288);
     this.mScreenReceiver = new QWalletLockScreenActivity.ScreenBroadcastReceiver(this, null);
     registerListener();
@@ -145,12 +145,12 @@ public class QWalletLockScreenActivity
       this.content = getIntent().getStringExtra("content");
       this.time = getIntent().getStringExtra("time");
       this.titleView = ((TextView)findViewById(2131377363));
-      this.contentView = ((TextView)findViewById(2131373053));
-      this.timeView = ((TextView)findViewById(2131373058));
+      this.contentView = ((TextView)findViewById(2131373055));
+      this.timeView = ((TextView)findViewById(2131373060));
       this.titleView.setText(this.title);
       this.contentView.setText(this.content);
       this.timeView.setText(this.time);
-      this.mBackBtn = ((RelativeLayout)findViewById(2131363501));
+      this.mBackBtn = ((RelativeLayout)findViewById(2131363500));
       this.mBackBtn.setOnClickListener(this);
       this.contentView.setOnClickListener(this);
     } while (!QLog.isColorLevel());
@@ -195,7 +195,7 @@ public class QWalletLockScreenActivity
   public void doOnStart()
   {
     super.doOnStart();
-    boolean bool = bbio.a(this);
+    boolean bool = bbjc.a(this);
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnStart isScreenLocked=" + bool);
     }
@@ -210,7 +210,7 @@ public class QWalletLockScreenActivity
     {
     default: 
       return;
-    case 2131373053: 
+    case 2131373055: 
       paramView = this.handler.obtainMessage(9);
       Handler localHandler = this.handler;
       if (GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) {}

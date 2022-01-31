@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import tdc;
-import tdo;
-import usw;
-import uta;
+import tcz;
+import tdl;
+import ust;
+import usx;
 
 public class MemoriesProfilePresenter$GetYearNodeListReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetYearNodeListReceiver$1(uta paramuta, usw paramusw) {}
+  public MemoriesProfilePresenter$GetYearNodeListReceiver$1(usx paramusx, ust paramust) {}
   
   public void run()
   {
-    ((tdo)tdc.a(2)).a(this.a.a);
+    ((tdl)tcz.a(2)).a(this.a.a);
   }
 }
 

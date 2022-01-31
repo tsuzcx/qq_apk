@@ -1,15 +1,13 @@
 import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
 
 class pzk
-  extends pyx
+  extends pyu
 {
-  pzk(pzi parampzi, AppInterface paramAppInterface) {}
+  pzk(pzf parampzf) {}
   
   public Drawable a()
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
+    return a("readinjoy_diandian_icon_background");
   }
 }
 

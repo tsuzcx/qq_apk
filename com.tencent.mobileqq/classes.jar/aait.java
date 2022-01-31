@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class aait
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aait(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public aait(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
   }
 }
 

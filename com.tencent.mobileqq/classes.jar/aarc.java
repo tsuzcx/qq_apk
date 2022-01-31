@@ -1,43 +1,33 @@
-import android.os.AsyncTask;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
 
-class aarc
-  extends AsyncTask<MessageRecord, Object, Object>
+public class aarc
+  implements DialogInterface.OnDismissListener
 {
-  aarc(aarb paramaarb) {}
+  public aarc(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_Aulz != null) {
-        this.a.a.jdField_a_of_type_Aulz.a(paramVarArgs[0], true);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    paramDialogInterface = (ager)paramDialogInterface;
+    int i = paramDialogInterface.a();
+    boolean bool = paramDialogInterface.a();
+    ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, i);
+    if (bool)
     {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        ajfa.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690572));
+      return;
     }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bcpq != null) && (this.a.a.jdField_a_of_type_Bcpq.isShowing())) {
-      this.a.a.jdField_a_of_type_Bcpq.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
-    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

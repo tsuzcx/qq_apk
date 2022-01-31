@@ -1,15 +1,25 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
-public final class azcv
-  extends Editable.Factory
+public class azcv
+  implements bfph
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public azcv(AbsPublishActivity paramAbsPublishActivity, bfpc parambfpc) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramCharSequence instanceof ayks)) {
-      return (Editable)paramCharSequence;
+    switch (paramInt)
+    {
     }
-    return new ayks(paramCharSequence, 3, 20);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new azcw(this));
+      continue;
+      TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c);
+    }
   }
 }
 

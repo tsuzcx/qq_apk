@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nia;
+import nhx;
 
 public class AccountDetailActivity$8$1
   implements Runnable
 {
-  public AccountDetailActivity$8$1(nia paramnia) {}
+  public AccountDetailActivity$8$1(nhx paramnhx) {}
   
   public void run()
   {

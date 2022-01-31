@@ -1,17 +1,40 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
 
 class yvb
-  implements View.OnSystemUiVisibilityChangeListener
+  implements Application.ActivityLifecycleCallbacks
 {
-  yvb(yuz paramyuz, ViewGroup paramViewGroup) {}
+  yvb(yuw paramyuw) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
+    if (paramActivity == yuw.a(this.a)) {
+      yuw.a(this.a).g();
     }
   }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    if (paramActivity == yuw.a(this.a)) {
+      yuw.a(this.a).e();
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (paramActivity == yuw.a(this.a)) {
+      yuw.a(this.a).f();
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

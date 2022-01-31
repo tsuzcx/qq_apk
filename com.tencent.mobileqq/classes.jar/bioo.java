@@ -1,48 +1,19 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class bioo
-  extends bijx
+  implements Animator.AnimatorListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public bioo(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public bioo(ViewStub paramViewStub)
-  {
-    super(paramViewStub);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365838);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365837));
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692630);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void c()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.unifiedebug;
 
 import android.app.Application;
-import baus;
+import bavg;
 
 public final class UnifiedDebugManager$6
   implements Runnable
@@ -10,7 +10,7 @@ public final class UnifiedDebugManager$6
   
   public void run()
   {
-    baus.a(this.a);
+    bavg.a(this.a);
   }
 }
 

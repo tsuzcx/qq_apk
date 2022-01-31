@@ -1,38 +1,27 @@
-import android.app.ActivityManager;
-import android.content.ComponentCallbacks2;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.os.Debug.MemoryInfo;
-import android.os.Process;
-import org.json.JSONObject;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class beuk
-  implements ComponentCallbacks2
+  implements DialogInterface.OnClickListener
 {
-  beuk(beuh parambeuh) {}
+  beuk(beuj parambeuj) {}
   
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  public void onLowMemory()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)this.a.a().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
-    besl.d("GameRuntime", "onLowMemory!!!!!! Meminfo:dalvikPss[" + arrayOfMemoryInfo[0].dalvikPss + "],nativePss[" + arrayOfMemoryInfo[0].nativePss + "],otherPss[" + arrayOfMemoryInfo[0].otherPss + "],total[" + arrayOfMemoryInfo[0].getTotalPss() + "]");
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    try
+    paramDialogInterface.dismiss();
+    if ((this.a.a() instanceof Activity))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("level", paramInt);
-      if (this.a.a(1) != null) {
-        this.a.a(1).a("onMemoryWarning", localJSONObject.toString(), -1);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      Activity localActivity = (Activity)this.a.a();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("url", this.a.a().url.get());
+      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
     }
   }
 }

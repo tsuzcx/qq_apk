@@ -1,25 +1,28 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class aiqn
-  extends aiqr
+class aiqn
+  extends bfwg
 {
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
-  public ImageView d;
+  aiqn(aiqm paramaiqm, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  {
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bfwf parambfwf, View.OnClickListener paramOnClickListener)
+  {
+    parambfwf = super.a(paramInt, paramObject, parambfwf, paramOnClickListener);
+    if ((parambfwf instanceof SimpleTextView)) {
+      parambfwf.setTag(-10, paramObject);
+    }
+    return parambfwf;
+  }
+  
+  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
+  {
+    this.a.a(paramInt, paramArrayOfbfwf);
+  }
 }
 
 

@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import begs;
-import bekc;
-import bekd;
+import behj;
+import bekt;
+import beku;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -303,7 +303,7 @@ public class MiniSdkLauncher
   
   public static void initSDK(Context paramContext)
   {
-    begs.a(paramContext);
+    behj.a(paramContext);
     sSdkInited = true;
   }
   
@@ -323,14 +323,14 @@ public class MiniSdkLauncher
         if (!bool) {
           break label113;
         }
-        if (bekd.a == null) {
-          bekd.a = new TissueEnvImpl();
+        if (beku.a == null) {
+          beku.a = new TissueEnvImpl();
         }
-        if ((TextUtils.isEmpty(bekd.a.getNativeLibDir())) || (!bekd.a(bekd.a.getNativeLibDir()))) {
+        if ((TextUtils.isEmpty(beku.a.getNativeLibDir())) || (!beku.a(beku.a.getNativeLibDir()))) {
           continue;
         }
         if ((bool) && (i != 0)) {
-          begs.b(paramContext);
+          behj.b(paramContext);
         }
       }
       catch (Throwable paramContext)
@@ -363,7 +363,7 @@ public class MiniSdkLauncher
           sSdkInited = true;
           initSDK((Context)localObject);
         }
-        begs.a(paramActivity, convert(paramMiniAppConfig), paramBundle, null);
+        behj.a(paramActivity, convert(paramMiniAppConfig), paramBundle, null);
         return;
       }
       catch (Throwable paramActivity)

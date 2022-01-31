@@ -1,8 +1,13 @@
-public abstract interface apua
+import java.util.Comparator;
+import java.util.Map.Entry;
+
+final class apua
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  {
+    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
+  }
 }
 
 

@@ -1,31 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import java.util.concurrent.atomic.AtomicReference;
 
 class bilo
-  implements Animation.AnimationListener
+  implements bilg
 {
-  bilo(bilj parambilj) {}
+  bilo(bill parambill, AtomicReference paramAtomicReference) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(bilk parambilk)
   {
-    if ((bilj.a(this.a) != null) && (!bilj.a(this.a)))
-    {
-      bilj.a(this.a).setAlpha(1.0F);
-      bilj.a(this.a).setVisibility(4);
-    }
-    if (bilj.b(this.a) != null)
-    {
-      bilj.c(this.a).a(327683, new Object[0]);
-      bilj.d(this.a).a(196612, new Object[0]);
+    avuh localavuh = (avuh)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localavuh != null) {
+      localavuh.a(parambilk);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(String paramString)
   {
-    bilj.a(this.a).a().a(true, 150);
+    avuh localavuh = (avuh)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localavuh != null) {
+      localavuh.a(paramString);
+    }
   }
 }
 

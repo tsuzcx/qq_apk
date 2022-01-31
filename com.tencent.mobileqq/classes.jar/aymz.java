@@ -1,7 +1,34 @@
-public final class aymz
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
+
+public class aymz
+  implements OnCompositionLoadedListener
 {
-  public static final String a = ajyc.a(2131715001);
-  public static final String b = ajyc.a(2131715015);
+  public aymz(QEffectLottieImageView paramQEffectLottieImageView) {}
+  
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  {
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: composition= " + paramLottieComposition);
+    }
+    if (paramLottieComposition == null) {
+      return;
+    }
+    if (QEffectLottieImageView.a(this.a))
+    {
+      QLog.e(QEffectLottieImageView.a(this.a), 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
+    }
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
+  }
 }
 
 

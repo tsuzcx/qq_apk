@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import axlc;
+import axle;
 
 class PtvTemplateManager$4
   implements Runnable
 {
   public void run()
   {
-    if (axlc.c()) {
+    if (axle.c()) {
       this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }

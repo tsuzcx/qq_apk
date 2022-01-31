@@ -1,29 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class afux
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  afux(afur paramafur, int paramInt, ArrayList paramArrayList) {}
+  afux(afup paramafup, int paramInt) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!afur.a(this.jdField_a_of_type_Afur))
+    if (paramInt == 4)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), afur.a(this.jdField_a_of_type_Afur), null);
+      if (!afup.a(this.jdField_a_of_type_Afup)) {
+        break label28;
       }
+      afup.a(this.jdField_a_of_type_Afup, this.jdField_a_of_type_Int);
     }
-    else {
-      return;
+    for (;;)
+    {
+      return true;
+      label28:
+      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue());
+      afup.a(this.jdField_a_of_type_Afup);
     }
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-    PublicFragmentActivity.a(afur.a(this.jdField_a_of_type_Afur), paramView, SDKSetEmotionPreviewFragment.class);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile;
 
-import auuv;
+import auux;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ProfileCardCheckUpdate$1
   implements Runnable
 {
-  public ProfileCardCheckUpdate$1(auuv paramauuv) {}
+  public ProfileCardCheckUpdate$1(auux paramauux) {}
   
   public void run()
   {

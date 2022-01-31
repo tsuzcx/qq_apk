@@ -1,16 +1,29 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build.VERSION;
+import android.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import java.lang.ref.SoftReference;
+import java.util.Set;
 
-class bhuz
-  implements QzoneZipCacheHelperCallBack
+public class bhuz
+  extends LruCache<Integer, BitmapDrawable>
 {
-  bhuz(bhuy parambhuy) {}
-  
-  public void onResult(boolean paramBoolean)
+  public bhuz(FastAnimationDrawable paramFastAnimationDrawable, int paramInt)
   {
-    bhuy.a(this.a, paramBoolean);
+    super(paramInt);
   }
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  protected void a(boolean paramBoolean, Integer paramInteger, BitmapDrawable paramBitmapDrawable1, BitmapDrawable paramBitmapDrawable2)
+  {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      FastAnimationDrawable.a(this.a).add(new SoftReference(paramBitmapDrawable1.getBitmap()));
+      if (QLog.isColorLevel()) {
+        QLog.d("FastAnimationDrawable", 2, "remove key:" + paramInteger + " bitmap:" + paramBitmapDrawable1.getBitmap());
+      }
+    }
+  }
 }
 
 

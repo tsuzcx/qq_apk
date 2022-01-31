@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpm;
-import anqd;
+import anpr;
+import anqi;
 
 public class JpegSoData
   extends XmlData
 {
-  @anqd(a=true, b=false)
+  @anqi(a=true, b=false)
   public String SO_MD5;
   
   public String getSharedPreferencesName()
   {
-    return "early_" + anpm.e();
+    return "early_" + anpr.e();
   }
   
   public String getStrResName()
   {
-    return anpm.e();
+    return anpr.e();
   }
 }
 

@@ -1,44 +1,9 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.maxvideo.common.AVIOStruct;
 
 public class axiq
-  extends PreviewContext
-  implements SurfaceHolder.Callback, axie
 {
-  public axiq(axhx paramaxhx, int paramInt1, int paramInt2)
-  {
-    super(paramaxhx, paramInt1, paramInt2);
-  }
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
-    }
-  }
+  public AVIOStruct a;
+  public byte[] a;
 }
 
 

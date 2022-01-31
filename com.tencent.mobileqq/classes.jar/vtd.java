@@ -1,10 +1,21 @@
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
+
 public class vtd
+  implements Comparator<RecentUser>
 {
-  public final int a;
+  public vtd(ShareToActivity paramShareToActivity) {}
   
-  public vtd(int paramInt)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.a = paramInt;
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
+    }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
   }
 }
 

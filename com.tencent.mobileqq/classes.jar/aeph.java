@@ -1,41 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aeph
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  aeph(aepg paramaepg) {}
+  aeph(aepe paramaepe, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Bcis.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.l.setText(ajyc.a(2131705089));
-        this.a.l.setPressed(true);
-        this.a.jdField_a_of_type_Atcf.b();
-        paramView.a(true);
-      }
-    }
-    do
-    {
-      return true;
-      this.a.t(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.l.setText(ajyc.a(2131705085));
-      this.a.l.setPressed(false);
-      this.a.jdField_a_of_type_Atcf.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+    this.jdField_a_of_type_Aepe.aa = true;
+    aepe.c(this.jdField_a_of_type_Aepe, this.jdField_a_of_type_Boolean);
   }
 }
 

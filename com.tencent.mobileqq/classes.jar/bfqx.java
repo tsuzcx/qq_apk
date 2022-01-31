@@ -1,21 +1,15 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.ExpandableListConnector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.widget.DynamicGridView;
 
 public class bfqx
-  extends DataSetObserver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bfqx(ExpandableListConnector paramExpandableListConnector) {}
+  public bfqx(DynamicGridView paramDynamicGridView) {}
   
-  public void onChanged()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetInvalidated();
+    this.a.invalidate();
   }
 }
 

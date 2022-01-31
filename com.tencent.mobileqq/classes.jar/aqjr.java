@@ -10,8 +10,8 @@ public class aqjr
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((ases)this.a.a.getManager(303)).a((short)-23311, paramBoolean, true);
-    axqw.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 3, 3, "", "", "", "");
+    ((aseu)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    axqy.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
   }
 }
 

@@ -1,10 +1,24 @@
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-public class bbcg
+final class bbcg
+  implements asgr
 {
-  public int a;
-  public String a;
-  public List<Integer> a;
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
+  }
 }
 
 

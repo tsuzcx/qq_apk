@@ -1,57 +1,28 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gallery.model.GalleryBaseData;
 
-public abstract class aqmk
+public final class aqmk
+  implements Parcelable.Creator<GalleryBaseData>
 {
-  public int c;
-  public Rect c;
-  public boolean d;
-  
-  public aqmk()
+  public GalleryBaseData a(Parcel paramParcel)
   {
-    this.jdField_c_of_type_Int = 2;
-  }
-  
-  public static int a(Rect paramRect, Drawable paramDrawable)
-  {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {
-      return 0;
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = GalleryBaseData.a((String)localObject);
+      ((GalleryBaseData)localObject).a(paramParcel);
+      return localObject;
     }
-    f1 = f1 * f4 / (f2 * f3);
-    return 0;
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
   }
   
-  public abstract int a();
-  
-  public Rect a()
+  public GalleryBaseData[] a(int paramInt)
   {
-    return this.jdField_c_of_type_AndroidGraphicsRect;
-  }
-  
-  public abstract Drawable a();
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public Rect b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
+    return new GalleryBaseData[paramInt];
   }
 }
 

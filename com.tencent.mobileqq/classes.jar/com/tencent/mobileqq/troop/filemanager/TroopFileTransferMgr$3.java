@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import azsi;
+import azsk;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import java.util.UUID;
 public class TroopFileTransferMgr$3
   implements Runnable
 {
-  public TroopFileTransferMgr$3(azsi paramazsi, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
+  public TroopFileTransferMgr$3(azsk paramazsk, TroopFileTransferManager.Item paramItem, UUID paramUUID) {}
   
   public void run()
   {

@@ -1,8 +1,26 @@
-public abstract interface wrf<T>
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+
+public class wrf
+  extends wqx
 {
-  public abstract void a(wrh<T> paramwrh);
+  private CertifiedAccountMeta.StFeed a;
   
-  public abstract void b();
+  public wrf(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    this.a = paramStFeed;
+  }
+  
+  public void a() {}
+  
+  public void a(wrd paramwrd)
+  {
+    GetSubscribeFeedDetailRequest localGetSubscribeFeedDetailRequest = new GetSubscribeFeedDetailRequest(this.a, null);
+    paramwrd = new wrg(this, paramwrd);
+    localGetSubscribeFeedDetailRequest.setEnableCache(false);
+    VSNetworkHelper.a().a(localGetSubscribeFeedDetailRequest, paramwrd);
+  }
 }
 
 

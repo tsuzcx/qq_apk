@@ -24,26 +24,26 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import noo;
+import nol;
+import nte;
 import nth;
-import ntk;
-import olp;
-import onk;
-import ooc;
+import olm;
+import onh;
+import onz;
+import osd;
 import osg;
-import osj;
-import oso;
-import ota;
-import rny;
+import osl;
+import osx;
+import rnv;
 
 public class ReadInJoyBBCircleFragment
   extends ReadInJoyBaseFragment
-  implements osg
+  implements osd
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  protected nth a;
-  private ooc jdField_a_of_type_Ooc = new ooc();
+  protected nte a;
+  private onz jdField_a_of_type_Onz = new onz();
   private boolean jdField_a_of_type_Boolean;
   
   private void a()
@@ -73,30 +73,30 @@ public class ReadInJoyBBCircleFragment
         if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
           continue;
         }
-        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374831);
-        this.jdField_a_of_type_Nth = ((nth)onk.a.remove(Integer.valueOf(70)));
-        if (this.jdField_a_of_type_Nth == null)
+        Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131374833);
+        this.jdField_a_of_type_Nte = ((nte)onh.a.remove(Integer.valueOf(70)));
+        if (this.jdField_a_of_type_Nte == null)
         {
-          this.jdField_a_of_type_Nth = new nth((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_Nth.a(70);
-          this.jdField_a_of_type_Nth.b(0);
-          this.jdField_a_of_type_Nth.a((ViewGroup)localObject);
-          this.jdField_a_of_type_Nth.a();
-          this.jdField_a_of_type_Nth.a(this.jdField_a_of_type_Rhp, this.d);
-          localObject = this.jdField_a_of_type_Nth.a();
+          this.jdField_a_of_type_Nte = new nte((Activity)this.jdField_a_of_type_AndroidContentContext);
+          this.jdField_a_of_type_Nte.a(70);
+          this.jdField_a_of_type_Nte.b(0);
+          this.jdField_a_of_type_Nte.a((ViewGroup)localObject);
+          this.jdField_a_of_type_Nte.a();
+          this.jdField_a_of_type_Nte.a(this.jdField_a_of_type_Rhm, this.d);
+          localObject = this.jdField_a_of_type_Nte.a();
           if ((localObject != null) && ((localObject instanceof ReadInJoyBaseListViewGroup))) {
             ((ReadInJoyBaseListViewGroup)localObject).h();
           }
-          ota.a(0, olp.a(), 0);
-          ((KandianSubscribeManager)onk.a().getManager(280)).a(this);
+          osx.a(0, olm.a(), 0);
+          ((KandianSubscribeManager)onh.a().getManager(280)).a(this);
           this.jdField_a_of_type_Boolean = true;
           continue;
         }
-        this.jdField_a_of_type_Nth.a(localViewGroup);
+        this.jdField_a_of_type_Nte.a(localViewGroup);
       }
       finally {}
-      this.jdField_a_of_type_Nth.c();
-      this.jdField_a_of_type_Nth.b();
+      this.jdField_a_of_type_Nte.c();
+      this.jdField_a_of_type_Nte.b();
     }
   }
   
@@ -118,12 +118,12 @@ public class ReadInJoyBBCircleFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Nth != null)
+    if (this.jdField_a_of_type_Nte != null)
     {
-      this.jdField_a_of_type_Nth.a(true);
+      this.jdField_a_of_type_Nte.a(true);
       return;
     }
-    ntk.e(a());
+    nth.e(a());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
@@ -132,19 +132,19 @@ public class ReadInJoyBBCircleFragment
     if (!this.jdField_a_of_type_Boolean) {
       b();
     }
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.h();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.h();
     }
     QLog.d("ReadInJoyBBCircleFragment", 2, "[notifyShowSelf] show!");
     a();
-    noo.a(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
-    ((KandianSubscribeManager)onk.a().getManager(280)).a(this);
-    if ((this.jdField_a_of_type_Nth != null) && ((this.jdField_a_of_type_Nth.a() instanceof ReadInJoyListViewGroup)))
+    nol.a(null, "", "0X80093F0", "0X80093F0", 0, 0, "", "", "", "", false);
+    ((KandianSubscribeManager)onh.a().getManager(280)).a(this);
+    if ((this.jdField_a_of_type_Nte != null) && ((this.jdField_a_of_type_Nte.a() instanceof ReadInJoyListViewGroup)))
     {
-      paramActivity = ((ReadInJoyListViewGroup)this.jdField_a_of_type_Nth.a()).a().iterator();
+      paramActivity = ((ReadInJoyListViewGroup)this.jdField_a_of_type_Nte.a()).a().iterator();
       while (paramActivity.hasNext())
       {
-        paramBundle = (rny)paramActivity.next();
+        paramBundle = (rnv)paramActivity.next();
         if ((paramBundle instanceof ReadInJoyDiandianHeaderController)) {
           paramBundle.e();
         }
@@ -155,38 +155,38 @@ public class ReadInJoyBBCircleFragment
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.a(true);
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.a(true);
     }
   }
   
   public void g()
   {
     super.g();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.g();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.g();
     }
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.k();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.k();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean onBackEvent()
   {
-    View localView = this.jdField_a_of_type_Nth.a();
+    View localView = this.jdField_a_of_type_Nte.a();
     if (((localView instanceof ReadInJoyListViewGroup)) && (((ReadInJoyListViewGroup)localView).e())) {
       return true;
     }
@@ -206,7 +206,7 @@ public class ReadInJoyBBCircleFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559931, paramViewGroup, false);
-    if ((!getUserVisibleHint()) && (onk.l())) {}
+    if ((!getUserVisibleHint()) && (onh.l())) {}
     for (;;)
     {
       return this.jdField_a_of_type_AndroidViewView;
@@ -218,23 +218,23 @@ public class ReadInJoyBBCircleFragment
   {
     c();
     super.onDestroy();
-    osj.a().a();
-    if (this.jdField_a_of_type_Nth != null)
+    osg.a().a();
+    if (this.jdField_a_of_type_Nte != null)
     {
-      this.jdField_a_of_type_Nth.d();
-      localObject = this.jdField_a_of_type_Nth.a();
+      this.jdField_a_of_type_Nte.d();
+      localObject = this.jdField_a_of_type_Nte.a();
       if ((localObject != null) && ((localObject instanceof ReadInJoyBaseListViewGroup))) {
         ((ReadInJoyBaseListViewGroup)localObject).i();
       }
     }
-    this.jdField_a_of_type_Nth = null;
-    Object localObject = (QQAppInterface)onk.a();
+    this.jdField_a_of_type_Nte = null;
+    Object localObject = (QQAppInterface)onh.a();
     if (localObject != null)
     {
-      localObject = (oso)((QQAppInterface)localObject).getManager(163);
-      if ((localObject != null) && (((oso)localObject).a() != null))
+      localObject = (osl)((QQAppInterface)localObject).getManager(163);
+      if ((localObject != null) && (((osl)localObject).a() != null))
       {
-        localObject = ((oso)localObject).a().a();
+        localObject = ((osl)localObject).a().a();
         if (localObject != null) {
           ((ReadInJoyUserInfoModule)localObject).b();
         }
@@ -244,56 +244,56 @@ public class ReadInJoyBBCircleFragment
   
   public void onDestroyView()
   {
-    ((KandianSubscribeManager)onk.a().getManager(280)).b(this);
+    ((KandianSubscribeManager)onh.a().getManager(280)).b(this);
     super.onDestroyView();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.c();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.g();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_a_of_type_Nth != null) && (this.c)) {
-      this.jdField_a_of_type_Nth.h();
+    if ((this.jdField_a_of_type_Nte != null) && (this.c)) {
+      this.jdField_a_of_type_Nte.h();
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.e();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.e();
     }
-    this.jdField_a_of_type_Ooc.a();
+    this.jdField_a_of_type_Onz.a();
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Nth != null) {
-      this.jdField_a_of_type_Nth.f();
+    if (this.jdField_a_of_type_Nte != null) {
+      this.jdField_a_of_type_Nte.f();
     }
     if (!BaseActivity.mAppForground) {
-      this.jdField_a_of_type_Ooc.b();
+      this.jdField_a_of_type_Onz.b();
     }
     if (getActivity().isFinishing())
     {
-      ota.a(1, olp.a(), 0);
-      olp.b();
+      osx.a(1, olm.a(), 0);
+      olm.b();
     }
   }
 }

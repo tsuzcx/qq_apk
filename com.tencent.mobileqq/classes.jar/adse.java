@@ -1,17 +1,23 @@
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class adse
-  implements aput
+  implements apuv
 {
-  adse(adqy paramadqy) {}
+  adse(adqw paramadqw, String paramString) {}
   
   public void onClick(View paramView)
   {
-    apue.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
-    apue.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
+    paramView.putExtra("uin", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("uintype", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    apue.a("0X800506C");
   }
 }
 

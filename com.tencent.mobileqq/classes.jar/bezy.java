@@ -1,25 +1,23 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
-import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
+import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bezy
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetUserSettingReq a = new INTERFACE.StGetUserSettingReq();
+  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
   
-  public bezy(String paramString1, String paramString2, String paramString3)
+  public bezy(int paramInt)
   {
-    this.a.appid.set(paramString1);
-    this.a.openid.set(paramString2);
-    this.a.settingItem.set(paramString3);
+    this.a.uiPageType.set(paramInt);
   }
   
   protected String a()
   {
-    return "mini_user_info";
+    return "store_app_client";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -27,24 +25,23 @@ public class bezy
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
+    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
     try
     {
-      localStGetUserSettingRsp.mergeFrom(a(paramArrayOfByte));
-      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
+      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetFirstPageByTypeRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
-        paramArrayOfByte.put("desc", localStGetUserSettingRsp.setting.desc.get());
-        paramArrayOfByte.put("authState", localStGetUserSettingRsp.setting.authState.get());
+        paramArrayOfByte.put("data", bfgq.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
+        paramArrayOfByte.put("dataType", "string");
         return paramArrayOfByte;
       }
-      besl.a("VerifyPluginRequest", "onResponse fail.rsp = null");
+      betc.a("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
@@ -56,7 +53,7 @@ public class bezy
   
   protected String b()
   {
-    return "GetUserSetting";
+    return "GetFirstPageByType";
   }
 }
 

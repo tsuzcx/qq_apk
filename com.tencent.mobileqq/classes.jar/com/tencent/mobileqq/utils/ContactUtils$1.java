@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.utils;
 
-import bbcl;
-import bbcn;
+import bbcz;
+import bbdb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ContactUtils$1
   implements Runnable
 {
-  public ContactUtils$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, bbcn parambbcn) {}
+  public ContactUtils$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, bbdb parambbdb) {}
   
   public void run()
   {
-    String str = bbcl.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, true);
-    if (this.jdField_a_of_type_Bbcn != null) {
-      this.jdField_a_of_type_Bbcn.a(str);
+    String str = bbcz.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, true);
+    if (this.jdField_a_of_type_Bbdb != null) {
+      this.jdField_a_of_type_Bbdb.a(str);
     }
   }
 }

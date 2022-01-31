@@ -1,35 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Bundle;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azbg
-  extends azbh
-  implements View.OnClickListener
+  implements lbs
 {
-  public View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public azby a;
+  public azbg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public azbg(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
-  {
-    super(paramTribeVideoListPlayerFragment, paramView);
-  }
+  public void a() {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    int j = 0;
+    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_Azby);
+    for (;;)
+    {
+      int i;
+      int k;
+      try
+      {
+        JSONObject localJSONObject1 = new JSONObject(paramBundle);
+        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
+        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
+        i = 0;
+        if (i < paramBundle.length())
+        {
+          Object localObject = paramBundle.optJSONObject(i);
+          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
+          k = j;
+          if (localJSONObject2 != null)
+          {
+            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
+            k = j;
+            if (m - 1 > 0)
+            {
+              k = j;
+              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              {
+                localObject = new azca(localJSONObject2);
+                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
+                k = 1;
+              }
+            }
+          }
+        }
+        else
+        {
+          if (j != 0) {
+            this.a.jdField_a_of_type_Azbo.notifyDataSetChanged();
+          }
+          return;
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      i += 1;
+      j = k;
+    }
   }
 }
 

@@ -758,8 +758,8 @@ public class MttLoader
     //   20: aload_0
     //   21: ldc_w 582
     //   24: invokevirtual 586	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   27: astore 6
-    //   29: aload 6
+    //   27: astore 5
+    //   29: aload 5
     //   31: ifnonnull +25 -> 56
     //   34: iconst_0
     //   35: ifeq +11 -> 46
@@ -777,19 +777,19 @@ public class MttLoader
     //   58: astore_3
     //   59: sipush 8192
     //   62: newarray byte
-    //   64: astore 5
+    //   64: astore 6
     //   66: aload 4
     //   68: astore_3
     //   69: aload_0
-    //   70: aload 6
+    //   70: aload 5
     //   72: invokevirtual 596	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   75: astore 4
     //   77: aload 4
     //   79: astore_3
     //   80: aload 4
-    //   82: aload 5
+    //   82: aload 6
     //   84: iconst_0
-    //   85: aload 5
+    //   85: aload 6
     //   87: arraylength
     //   88: invokevirtual 602	java/io/InputStream:read	([BII)I
     //   91: iconst_m1
@@ -800,7 +800,7 @@ public class MttLoader
     //   100: invokevirtual 603	java/io/InputStream:close	()V
     //   103: aload 4
     //   105: astore_3
-    //   106: aload 6
+    //   106: aload 5
     //   108: invokevirtual 609	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
     //   111: astore 5
     //   113: aload 4
@@ -950,7 +950,7 @@ public class MttLoader
     //   308	1	4	localObject3	Object
     //   315	14	4	localObject4	Object
     //   6	221	5	localObject5	Object
-    //   27	80	6	localJarEntry	java.util.jar.JarEntry
+    //   64	22	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   139	143	145	java/io/IOException

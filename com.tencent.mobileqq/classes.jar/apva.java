@@ -1,9 +1,12 @@
 public class apva
 {
-  public int a;
-  public Object a;
-  public boolean a;
-  public int b;
+  int a;
+  int b;
+  
+  public String toString()
+  {
+    return "Type [type1=" + this.a + ", type2=" + this.b + "]";
+  }
 }
 
 

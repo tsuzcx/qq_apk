@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.minigame;
 
 import android.app.Activity;
-import besl;
-import beuh;
+import betc;
+import beuy;
 
 public class GameRuntime$3
   implements Runnable
 {
-  public GameRuntime$3(beuh parambeuh) {}
+  public GameRuntime$3(beuy parambeuy) {}
   
   public void run()
   {
     try
     {
-      besl.b("GameRuntime", "exit mini game. moveTaskToBack");
-      beuh.a(this.this$0).moveTaskToBack(true);
+      betc.b("GameRuntime", "exit mini game. moveTaskToBack");
+      beuy.a(this.this$0).moveTaskToBack(true);
       return;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("GameRuntime", "exit mini game. failed:", localThrowable);
+      betc.d("GameRuntime", "exit mini game. failed:", localThrowable);
     }
   }
 }

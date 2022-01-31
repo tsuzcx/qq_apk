@@ -1,15 +1,15 @@
 package com.tencent.av;
 
-import leb;
+import ldw;
 
 public class VideoProcessExitMonitor$1
   implements Runnable
 {
-  public VideoProcessExitMonitor$1(leb paramleb) {}
+  public VideoProcessExitMonitor$1(ldw paramldw) {}
   
   public void run()
   {
-    leb.a(this.this$0);
+    ldw.a(this.this$0);
   }
 }
 

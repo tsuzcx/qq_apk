@@ -1,56 +1,173 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.graphics.Path;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aqyj
 {
-  public static float b;
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public float c;
-  public int c;
-  public int d = 10;
-  public int e = 8;
-  public int f = 150;
-  public int g = 300;
-  public int h = 32;
-  public int i = 27;
-  public int j = 3000;
-  public int k;
-  public int l;
-  
-  static
-  {
-    jdField_b_of_type_Float = 1.0F;
-  }
-  
-  private aqyj()
-  {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
-  }
+  public Handler a;
+  public Interpolator a;
+  public final aqyl a;
+  private aqyn a;
+  public final Random a;
+  public final AtomicInteger a;
+  public Interpolator b;
   
   public aqyj(HeartLayout paramHeartLayout)
   {
-    this.jdField_a_of_type_Int = 250;
-    this.jdField_c_of_type_Int = 20;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
-    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
-    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
-    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
-    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Aqyl = new aqyl(paramHeartLayout);
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new OvershootInterpolator(1.0F);
+    this.b = new LinearInterpolator();
+  }
+  
+  public float a()
+  {
+    return 1.0F * (this.jdField_a_of_type_JavaUtilRandom.nextInt(40) - 20);
+  }
+  
+  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
+  {
+    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+    Path localPath = new Path();
+    label87:
+    label99:
+    int i;
+    int j;
+    int k;
+    int m;
+    if (!this.jdField_a_of_type_Aqyl.jdField_a_of_type_Boolean) {
+      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
+      {
+        this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int = ((paramView.getWidth() - this.jdField_a_of_type_Aqyl.h) / 2);
+        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
+          break label402;
+        }
+        this.jdField_a_of_type_Aqyl.b = this.jdField_a_of_type_Aqyl.i;
+        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
+          break label429;
+        }
+        paramInt1 = 1;
+        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aqyl.c) + this.jdField_a_of_type_Aqyl.d);
+        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aqyl.c) + this.jdField_a_of_type_Aqyl.d);
+        k = paramView.getHeight() - this.jdField_a_of_type_Aqyl.b;
+        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Aqyl.jdField_a_of_type_Float);
+        paramInt2 = this.jdField_a_of_type_Aqyl.g;
+        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Aqyl.f) + (paramInt1 + paramInt2);
+        m = paramInt2 / this.jdField_a_of_type_Aqyl.e;
+        paramInt1 = k - paramInt2;
+        if (paramInt1 >= 0) {
+          break label648;
+        }
+        paramInt1 = 0;
+      }
+    }
+    label648:
+    for (;;)
+    {
+      paramInt2 = k - paramInt2 / 2;
+      if (paramInt2 < 0) {
+        paramInt2 = 0;
+      }
+      for (;;)
+      {
+        localPath.moveTo(this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int, k);
+        localPath.cubicTo(this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + i, paramInt2);
+        localPath.moveTo(this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + i, paramInt2);
+        if (paramInt2 - m >= 0) {
+          localPath.cubicTo(this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int + j, paramInt1);
+        }
+        return localPath;
+        this.jdField_a_of_type_Aqyl.jdField_a_of_type_Int = (paramInt1 - this.jdField_a_of_type_Aqyl.h / 2);
+        break;
+        label402:
+        this.jdField_a_of_type_Aqyl.b = (paramView.getHeight() - paramInt2 + this.jdField_a_of_type_Aqyl.h / 2);
+        break label87;
+        label429:
+        paramInt1 = -1;
+        break label99;
+        k = this.jdField_a_of_type_Aqyl.l;
+        m = this.jdField_a_of_type_Aqyl.k;
+        int n = this.jdField_a_of_type_Aqyl.h / 2;
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
+        {
+          i = 1;
+          i1 = localRandom.nextInt(this.jdField_a_of_type_Aqyl.c);
+          i2 = this.jdField_a_of_type_Aqyl.d;
+          i3 = localRandom.nextInt(this.jdField_a_of_type_Aqyl.c);
+          i4 = this.jdField_a_of_type_Aqyl.d;
+          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
+          if (k <= paramInt2) {
+            break label635;
+          }
+          j = k - j;
+        }
+        for (;;)
+        {
+          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Aqyl.h / 2, paramInt2 - this.jdField_a_of_type_Aqyl.i / 2);
+          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
+          return localPath;
+          i = -1;
+          break;
+          label635:
+          j += k;
+        }
+      }
+    }
+  }
+  
+  public aqyl a()
+  {
+    return this.jdField_a_of_type_Aqyl;
+  }
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, ViewGroup paramViewGroup, long paramLong, int paramInt3)
+  {
+    paramView.setTag(2131373014, Boolean.valueOf(true));
+    paramViewGroup.addView(paramView, new ViewGroup.LayoutParams(paramInt1, paramInt2));
+    aqym localaqym = new aqym(a((int)paramFloat1, (int)paramFloat2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, paramViewGroup), a(), paramViewGroup, paramView, this.jdField_a_of_type_Aqyl);
+    if (paramLong > 0L) {}
+    for (;;)
+    {
+      localaqym.setDuration(paramLong);
+      localaqym.setInterpolator(this.b);
+      localaqym.jdField_a_of_type_Int = paramInt3;
+      localaqym.jdField_a_of_type_Aqyn = this.jdField_a_of_type_Aqyn;
+      localaqym.jdField_a_of_type_AndroidViewAnimationInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+      localaqym.setAnimationListener(new aqyk(this, paramViewGroup, paramView));
+      paramView.startAnimation(localaqym);
+      return;
+      paramLong = this.jdField_a_of_type_Aqyl.j;
+    }
+  }
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2, ViewGroup paramViewGroup)
+  {
+    a(paramView, paramFloat1, paramFloat2, paramViewGroup, -1L, 0);
+  }
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2, ViewGroup paramViewGroup, long paramLong, int paramInt)
+  {
+    a(paramView, paramFloat1, paramFloat2, this.jdField_a_of_type_Aqyl.h, this.jdField_a_of_type_Aqyl.i, paramViewGroup, paramLong, paramInt);
+  }
+  
+  public void a(aqyn paramaqyn)
+  {
+    this.jdField_a_of_type_Aqyn = paramaqyn;
   }
 }
 

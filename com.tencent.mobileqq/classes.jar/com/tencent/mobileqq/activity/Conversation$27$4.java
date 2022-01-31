@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import aawi;
-import ahmx;
+import aawe;
+import ahmv;
 
 public class Conversation$27$4
   implements Runnable
 {
-  public Conversation$27$4(aawi paramaawi, String paramString) {}
+  public Conversation$27$4(aawe paramaawe, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aawi.a.a != null) {
-      this.jdField_a_of_type_Aawi.a.a.a(this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Aawe.a.a != null) {
+      this.jdField_a_of_type_Aawe.a.a.a(this.jdField_a_of_type_JavaLangString, true);
     }
   }
 }

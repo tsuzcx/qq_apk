@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bijj;
-import bizq;
+import bika;
+import bjah;
 
 public class AECameraManager$2
   implements Runnable
 {
-  public AECameraManager$2(bijj parambijj, boolean paramBoolean) {}
+  public AECameraManager$2(bika parambika, boolean paramBoolean) {}
   
   public void run()
   {
-    bizq.b("AECameraManager", "stopCamera---cameraCreated=" + bijj.a(this.this$0) + ", isGif=" + this.a);
-    if (!bijj.a(this.this$0)) {
+    bjah.b("AECameraManager", "stopCamera---cameraCreated=" + bika.a(this.this$0) + ", isGif=" + this.a);
+    if (!bika.a(this.this$0)) {
       return;
     }
     this.this$0.b(this.a);

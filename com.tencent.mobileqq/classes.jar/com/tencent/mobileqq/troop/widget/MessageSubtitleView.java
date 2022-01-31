@@ -15,7 +15,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import banw;
+import baok;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -94,7 +94,7 @@ public class MessageSubtitleView
           break label135;
         }
         ((Animator)localObject).setInterpolator(new AccelerateInterpolator(0.2F));
-        ((Animator)localObject).addListener(new banw(this, bool, paramInt2));
+        ((Animator)localObject).addListener(new baok(this, bool, paramInt2));
         ((Animator)localObject).start();
         return;
         bool = false;

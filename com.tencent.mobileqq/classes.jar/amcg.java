@@ -1,7 +1,52 @@
+import android.content.res.Resources;
+import android.os.SystemClock;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
+
 public class amcg
-  extends amcd
 {
-  public String e = "";
+  public static ambg a = new ambg(0);
+  public static ambg b = new ambg(100000, 2130846119, 2130846120);
+  public static ambg c = new ambg(100001, 2130846119, 2130846119);
+  
+  public static ambg a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
+  {
+    return a(paramInt, paramQQAppInterface, paramResources, paramBaseAdapter, true);
+  }
+  
+  public static ambg a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BubbleUtils", 2, "getBubbleInfo, bubbleId=" + paramInt + ", shouldDownload=" + paramBoolean);
+    }
+    long l = SystemClock.elapsedRealtime();
+    if (paramInt == 100000) {
+      paramQQAppInterface = c;
+    }
+    do
+    {
+      return paramQQAppInterface;
+      if (paramInt == 100001) {
+        return b;
+      }
+      if (paramInt < 1) {
+        return a;
+      }
+      paramResources = ((BubbleManager)paramQQAppInterface.getManager(44)).a(paramInt, paramBoolean);
+      if (paramResources == null) {
+        break;
+      }
+      paramQQAppInterface = paramResources;
+    } while (!QLog.isColorLevel());
+    QLog.d("bubble_performance", 2, "getBubbleInfo time " + (SystemClock.elapsedRealtime() - l));
+    return paramResources;
+    if (QLog.isColorLevel()) {
+      QLog.d("bubble_performance", 2, "getBubbleInfo time default" + (SystemClock.elapsedRealtime() - l));
+    }
+    return a;
+  }
 }
 
 

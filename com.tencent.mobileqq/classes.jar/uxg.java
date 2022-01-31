@@ -1,93 +1,25 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class uxg
-  extends QQUIEventReceiver<uwt, tlf>
+  extends ste<uwq, tce>
 {
-  public uxg(uwt paramuwt1, @NonNull uwt paramuwt2)
+  public uxg(uwq paramuwq)
   {
-    super(paramuwt2);
+    super(paramuwq);
   }
   
-  public void a(@NonNull uwt paramuwt, @NonNull tlf paramtlf)
+  public void a(@NonNull uwq paramuwq, @NonNull tce paramtce)
   {
-    if ((TextUtils.isEmpty(paramtlf.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramtlf.jdField_b_of_type_JavaLangString)) || (paramtlf.jdField_a_of_type_Int == 0) || (paramtlf.jdField_a_of_type_Long == 0L))
-    {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d.", new Object[] { paramtlf.jdField_a_of_type_JavaLangString, paramtlf.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtlf.jdField_a_of_type_Int), Long.valueOf(paramtlf.jdField_a_of_type_Long) });
-      return;
-    }
-    Object localObject1 = paramuwt.a(paramtlf.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof uxr)))
-    {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramtlf.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject2 = (uxr)localObject1;
-    veg.a("Q.qqstory.home.data.HomeFeedPresenter", "receive poll event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.pollIndex = %d.", paramtlf.jdField_a_of_type_JavaLangString, paramtlf.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtlf.jdField_a_of_type_Int), Integer.valueOf(paramtlf.jdField_b_of_type_Int));
-    localObject1 = ((uxr)localObject2).a().iterator();
-    Object localObject3;
-    for (;;)
-    {
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (StoryVideoItem)((Iterator)localObject1).next();
-        if (((StoryVideoItem)localObject3).mVid.equals(paramtlf.jdField_b_of_type_JavaLangString))
-        {
-          localObject1 = ((StoryVideoItem)localObject3).getPollLayout();
-          if ((localObject1 != null) && (((tem)localObject1).a.length > paramtlf.jdField_b_of_type_Int)) {
-            localObject1 = localObject1.a[(paramtlf.jdField_b_of_type_Int + 1)];
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = uqh.a(paramtlf.jdField_a_of_type_JavaLangString, paramtlf.jdField_a_of_type_Int, paramtlf.jdField_a_of_type_Long, 1, (String)localObject1);
-        localObject3 = new ArrayList();
-        ((List)localObject3).add(localObject1);
-        ((uxr)localObject2).a((List)localObject3, false);
-        localObject2 = (CommentLikeFeedItem)((uxr)localObject2).a;
-        ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-        if (uwt.a((CommentLikeFeedItem)localObject2)) {
-          ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-        }
-        for (;;)
-        {
-          uwt.a(paramuwt).b(paramtlf.jdField_a_of_type_JavaLangString);
-          ThreadManager.post(new HomeFeedPresenter.SendVidPollDataResultReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
-          uwt.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
-          return;
-          if (localObject1 == null) {}
-          for (int i = 0;; i = ((tem)localObject1).a.length)
-          {
-            veg.e("Q.qqstory.home.data.HomeFeedPresenter", "get poll answer failed because PollLayout is null or pollIndex lager than contents.length. pollLayout = %s, pollLayout.contents.length = %d, event.pollIndex = %d.", new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(paramtlf.jdField_b_of_type_Int) });
-            localObject1 = null;
-            break;
-          }
-          ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
-        }
-      }
-      veg.e("Q.qqstory.home.data.HomeFeedPresenter", "generate vote comment failed because poll answer is empty.");
-      return;
-      localObject1 = null;
-    }
+    ved.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramtce);
+    uwq.a(paramuwq, paramtce.a);
   }
   
   public Class acceptEventClass()
   {
-    return tlf.class;
+    return tce.class;
   }
+  
+  public void b(@NonNull uwq paramuwq, @NonNull tce paramtce) {}
 }
 
 

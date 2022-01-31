@@ -1,22 +1,15 @@
 public class anht
 {
-  private float a;
-  private float b;
+  private long a;
   
-  public anht(float paramFloat1, float paramFloat2)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public float a()
+  public long a()
   {
     return this.a;
   }
   
-  public float b()
+  public void a(long paramLong)
   {
-    return this.b;
+    this.a = paramLong;
   }
 }
 

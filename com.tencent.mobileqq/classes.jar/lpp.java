@@ -1,68 +1,42 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
 public class lpp
-  extends lpo
 {
-  public lpp(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public mrd a;
+  boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  int d;
+  int e;
+  public int f;
+  public int g;
+  
+  lpp() {}
+  
+  public lpp(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, long paramLong2, long paramLong3)
   {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_b_of_type_Long = paramLong3;
+    this.jdField_c_of_type_Long = paramLong1;
+    this.f = 0;
+    this.g = 0;
   }
   
-  public void a(String paramString)
+  lpp(lpp paramlpp)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramString[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          int k = localObject.indexOf('=');
-          if ((k > 0) && (k < localObject.length()))
-          {
-            String str;
-            float f;
-            try
-            {
-              str = localObject.substring(0, k);
-              f = Float.parseFloat(localObject.substring(k + 1));
-              if (!"MemoryLimit".equalsIgnoreCase(str)) {
-                break label118;
-              }
-              this.jdField_b_of_type_Float = f;
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-            }
-            continue;
-            label118:
-            if ("CpuNumLimit".equalsIgnoreCase(str)) {
-              this.jdField_b_of_type_Int = ((int)f);
-            } else if ("CpuFreqLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Float = f;
-            } else if ("APILevelLimit".equalsIgnoreCase(str)) {
-              this.jdField_a_of_type_Int = ((int)f);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean a(@NonNull lpo paramlpo)
-  {
-    return (this.jdField_a_of_type_Int <= paramlpo.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramlpo.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramlpo.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramlpo.jdField_b_of_type_Float);
+    this(paramlpp.jdField_c_of_type_Long, paramlpp.jdField_a_of_type_ArrayOfByte, paramlpp.jdField_a_of_type_Int, paramlpp.jdField_b_of_type_Int, paramlpp.jdField_c_of_type_Int, paramlpp.d, paramlpp.e, paramlpp.jdField_a_of_type_Boolean, paramlpp.jdField_a_of_type_Long, paramlpp.jdField_b_of_type_Long);
+    this.f = paramlpp.f;
+    this.g = paramlpp.g;
   }
 }
 

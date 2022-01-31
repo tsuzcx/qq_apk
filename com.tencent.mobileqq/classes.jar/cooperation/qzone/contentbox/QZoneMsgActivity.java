@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,13 +13,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bcsv;
-import bgfp;
-import bhbg;
-import bhbh;
-import bhkl;
-import bhkn;
-import bhko;
+import bctk;
+import bggg;
+import bhbx;
+import bhby;
+import bhlc;
+import bhle;
+import bhlf;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
@@ -30,11 +30,11 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.QZLog;
-import sgj;
+import sgg;
 
 public class QZoneMsgActivity
   extends IphoneTitleBarActivity
-  implements bcsv, bhko
+  implements bctk, bhlf
 {
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
   PlusMenuContainer jdField_a_of_type_CooperationQzoneContentboxPlusMenuContainer;
@@ -51,9 +51,9 @@ public class QZoneMsgActivity
   
   public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (bgfp.a(paramQQAppInterface))
+    if (bggg.a(paramQQAppInterface))
     {
-      long l = bgfp.a();
+      long l = bggg.a();
       if (l != 0L) {
         a(l, paramContext);
       }
@@ -101,9 +101,9 @@ public class QZoneMsgActivity
       paramView = new Intent();
       paramView.putExtra("need_finish", true);
       paramView.putExtra("uin", "2290230341");
-      paramView.putExtra("uinname", ajyc.a(2131720020));
+      paramView.putExtra("uinname", ajya.a(2131720031));
       paramView.putExtra("uintype", 1008);
-      sgj.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
+      sgg.a(paramView, this.app, this, "2290230341", -1, 2000, 1, false);
       return;
     case 4: 
       a();
@@ -141,9 +141,9 @@ public class QZoneMsgActivity
     {
       if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof QZoneMsgFragment))
       {
-        bhbg localbhbg = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
-        if (localbhbg != null) {
-          localbhbg.a(paramInt1, paramInt2, paramIntent);
+        bhbx localbhbx = ((QZoneMsgFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
+        if (localbhbx != null) {
+          localbhbx.a(paramInt1, paramInt2, paramIntent);
         }
       }
       return;
@@ -164,17 +164,17 @@ public class QZoneMsgActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 2130849067;
+    int i = 2130849073;
     super.doOnCreate(paramBundle);
-    setContentView(2131561985);
-    setTitle(bhbh.a(this));
-    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131375327);
+    setContentView(2131561984);
+    setTitle(bhby.a(this));
+    NavBarCommon localNavBarCommon = (NavBarCommon)findViewById(2131375329);
     if (Build.VERSION.SDK_INT >= 21) {
       if (ThemeUtil.isDefaultOrDIYTheme(false))
       {
         paramBundle = getDrawable(i);
         localNavBarCommon.setRightImage(paramBundle);
-        localNavBarCommon.setRightImageDesc(getString(2131696720));
+        localNavBarCommon.setRightImageDesc(getString(2131696721));
         localNavBarCommon.setOnItemSelectListener(this);
         this.jdField_a_of_type_AndroidSupportV4AppFragment = getSupportFragmentManager().findFragmentByTag("QZoneMsgFragment");
         if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null) {
@@ -186,12 +186,12 @@ public class QZoneMsgActivity
     }
     for (;;)
     {
-      bhkl.a().a(this);
+      bhlc.a().a(this);
       long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME_READ", 0L);
       QLog.d("[PhotoAlbum]QZoneMsgActivity", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME_READ lastUpdateTime:", Long.valueOf(l) });
-      bhkl.a().a().a(l);
+      bhlc.a().a().a(l);
       return true;
-      i = 2130849066;
+      i = 2130849072;
       break;
       paramBundle = getResources();
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {}
@@ -199,7 +199,7 @@ public class QZoneMsgActivity
       {
         paramBundle = paramBundle.getDrawable(i);
         break;
-        i = 2130849066;
+        i = 2130849072;
       }
       label220:
       if (QLog.isColorLevel()) {
@@ -211,7 +211,7 @@ public class QZoneMsgActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bhkl.a().b(this);
+    bhlc.a().b(this);
   }
   
   public void onWebEvent(String paramString, Bundle paramBundle)

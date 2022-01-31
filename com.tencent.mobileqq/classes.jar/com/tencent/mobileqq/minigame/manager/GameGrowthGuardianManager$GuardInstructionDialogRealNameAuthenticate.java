@@ -19,7 +19,7 @@ class GameGrowthGuardianManager$GuardInstructionDialogRealNameAuthenticate
   
   protected GameGrowthGuardianManager.DialogAction getPositiveDialogAction()
   {
-    return new GameGrowthGuardianManager.DialogAction(2131697349, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
+    return new GameGrowthGuardianManager.DialogAction(2131697350, new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate.2(this));
   }
 }
 

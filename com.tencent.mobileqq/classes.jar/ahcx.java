@@ -1,14 +1,36 @@
-public class ahcx
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
+class ahcx
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
+  ahcx(ahcw paramahcw) {}
   
-  public ahcx(String paramString, long paramLong, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+    }
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
+        }
+      }
+    }
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
+      return;
+    }
   }
 }
 

@@ -1,54 +1,52 @@
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class azpd
-  extends DefaultHandler
+class azpd
+  extends Handler
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  protected String e;
-  
-  public azpd(azpa paramazpa) {}
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  azpd(azpc paramazpc, Looper paramLooper)
   {
-    if (this.e != null)
-    {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
-      }
-      if (bbjw.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-      }
-    }
-    label46:
-    while (!this.e.equals("summary")) {
-      return;
-    }
-    this.c = paramArrayOfChar;
+    super(paramLooper);
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
+  public void handleMessage(Message paramMessage)
   {
-    this.e = null;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString2.equals("picture")) {
-      this.b = paramAttributes.getValue("cover");
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.e = paramString2;
+    default: 
+    case 2: 
+    case 3: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          this.a.a(1000);
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          azpc.a(this.a);
+          this.a.notifyObservers(Integer.valueOf(101));
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
+        return;
+        this.a.a = ((List)paramMessage.obj);
+        azpc.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(105));
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
       return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
-      }
+    case 5: 
+      azpc.c(this.a);
+      this.a.notifyObservers(Integer.valueOf(1010));
+      return;
     }
+    azpc.d(this.a);
+    this.a.notifyObservers(Integer.valueOf(103));
   }
 }
 

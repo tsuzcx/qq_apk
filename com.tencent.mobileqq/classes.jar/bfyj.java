@@ -1,25 +1,8 @@
-import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.MotionEvent;
 
-public class bfyj
-  implements bfyh
+abstract interface bfyj
 {
-  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
-  {
-    paramView.setTranslationX(paramFloat1);
-    paramView.setTranslationY(paramFloat2);
-  }
-  
-  public void a(View paramView)
-  {
-    paramView.setTranslationX(0.0F);
-    paramView.setTranslationY(0.0F);
-  }
-  
-  public void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean) {}
-  
-  public void b(View paramView) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

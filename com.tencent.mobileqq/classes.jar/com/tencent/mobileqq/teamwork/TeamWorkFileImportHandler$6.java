@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.teamwork;
 
-import ayeo;
-import ayfe;
+import ayeq;
+import ayfg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import org.json.JSONObject;
 
 public class TeamWorkFileImportHandler$6
   implements Runnable
 {
-  public TeamWorkFileImportHandler$6(ayeo paramayeo, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$6(ayeq paramayeq, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -17,9 +17,9 @@ public class TeamWorkFileImportHandler$6
     do
     {
       return;
-      localJSONObject = ayfe.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, this.this$0.app.getCurrentAccountUin());
+      localJSONObject = ayfg.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, this.this$0.app.getCurrentAccountUin());
     } while (localJSONObject == null);
-    ayeo.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    ayeq.a(this.this$0, localJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
   }
 }
 

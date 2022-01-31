@@ -1,7 +1,7 @@
 package com.tencent.litetransfersdk;
 
 import android.content.res.Resources;
-import aptv;
+import aptx;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ProtocolHelper$1
@@ -11,7 +11,7 @@ class ProtocolHelper$1
   
   public void run()
   {
-    aptv.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131693903));
+    aptx.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131693904));
   }
 }
 

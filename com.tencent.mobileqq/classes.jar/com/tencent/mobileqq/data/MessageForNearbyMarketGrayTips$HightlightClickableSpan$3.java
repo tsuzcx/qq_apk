@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import anje;
+import anjj;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$3
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$3(anje paramanje) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$3(anjj paramanjj) {}
   
   public void run()
   {
-    String str = this.this$0.a(anje.a(this.this$0), true);
+    String str = this.this$0.a(anjj.a(this.this$0), true);
     this.this$0.c(str);
     if (QLog.isColorLevel()) {
       QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=" + str);

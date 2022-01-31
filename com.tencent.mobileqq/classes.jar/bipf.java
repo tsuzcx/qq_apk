@@ -1,42 +1,47 @@
-import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
-import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
-import java.util.Random;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 public class bipf
-  implements LogicDataManager.OnGetQQNumberEventListener
+  extends biko
 {
-  bipf(bipe parambipe) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public int onGetQQNumber()
+  public bipf(ViewStub paramViewStub)
   {
-    long l = System.currentTimeMillis();
-    if (l - bipe.a(this.a) > 60000L)
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365838);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365837));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692631);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-      bipe.a(this.a, l);
-      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
-      if (l - bipe.b(this.a) <= 1000L) {
-        break label168;
-      }
-      bipe.b(this.a, l);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    for (;;)
-    {
-      synchronized (bipe.a(this.a))
-      {
-        if (bipe.a(this.a) != 0) {
-          bipe.a(this.a, bipe.a(this.a) - 1000 + new Random().nextInt(2000));
-        }
-        return bipe.a(this.a);
-        if (l - bipe.a(this.a) >= 0L) {
-          break;
-        }
-        bipe.a(this.a, l);
-      }
-      label168:
-      if (l - bipe.b(this.a) < 0L) {
-        bipe.b(this.a, l);
-      }
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

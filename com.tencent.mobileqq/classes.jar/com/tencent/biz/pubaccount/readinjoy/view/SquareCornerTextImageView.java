@@ -12,8 +12,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import omu;
-import rie;
+import omr;
+import rib;
 
 public class SquareCornerTextImageView
   extends FrameLayout
@@ -45,32 +45,32 @@ public class SquareCornerTextImageView
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localLayoutParams);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559868, null);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378280));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378283));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidViewView, paramContext);
   }
   
-  public void a(@NonNull rie paramrie)
+  public void a(@NonNull rib paramrib)
   {
-    omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, rie.a(paramrie), getContext());
-    float f = 1.0F * rie.a(paramrie) / rie.b(paramrie);
-    if ((rie.a(paramrie)) && ((f < 0.455D) || (f > 2.2D)))
+    omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, rib.a(paramrib), getContext());
+    float f = 1.0F * rib.a(paramrib) / rib.b(paramrib);
+    if ((rib.a(paramrib)) && ((f < 0.455D) || (f > 2.2D)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718585));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718596));
     }
     for (;;)
     {
-      if (rie.b(paramrie))
+      if (rib.b(paramrib))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718584));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131718595));
       }
-      if ((!rie.c(paramrie)) || (TextUtils.isEmpty(rie.a(paramrie)))) {
+      if ((!rib.c(paramrib)) || (TextUtils.isEmpty(rib.a(paramrib)))) {
         break;
       }
-      this.b.setText(rie.a(paramrie));
+      this.b.setText(rib.a(paramrib));
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);

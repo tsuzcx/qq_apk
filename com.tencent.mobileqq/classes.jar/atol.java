@@ -1,22 +1,56 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
 public class atol
-  extends atcb
+  extends atoj
+  implements View.OnClickListener
 {
-  public atol(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
-  
-  protected void a(boolean paramBoolean)
+  protected int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
+    return 2131560848;
+  }
+  
+  protected LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2)
+  {
+    ((TextView)paramView.findViewById(2131378558)).setText(c[paramInt1]);
+    paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    int i = vpm.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131368874);
+    localLabelContainer.setSpace(paramInt1, i);
+    paramView.setTag(paramatfm);
+    paramView.setOnClickListener(this);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
+    {
+      paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      paramView.setBackgroundResource(2130839176);
+      paramView.setPadding(0, paramInt1, 0, paramInt1);
     }
-    ((aszd)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean) {
-      this.a.getActivity().finish();
+    return localLabelContainer;
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof atfm))
+    {
+      paramView = (atfm)paramView.getTag();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChooseInterestTagActivity.class);
+      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
+      localIntent.putExtra("is_from_judge", false);
+      localIntent.putExtra("is_from_nearby", true);
+      localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
+      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 11);
     }
   }
 }

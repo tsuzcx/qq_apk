@@ -108,10 +108,10 @@ public final class ThumbnailUtil$1
     //   168: iload 5
     //   170: istore 4
     //   172: aload_0
-    //   173: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bkyf	Lbkyf;
+    //   173: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bkyw	Lbkyw;
     //   176: ifnull +18 -> 194
     //   179: aload_0
-    //   180: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bkyf	Lbkyf;
+    //   180: getfield 66	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Bkyw	Lbkyw;
     //   183: iload 4
     //   185: aload_0
     //   186: getfield 44	dov/com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;

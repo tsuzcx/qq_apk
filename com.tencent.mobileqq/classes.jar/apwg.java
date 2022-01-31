@@ -1,6 +1,13 @@
-public abstract interface apwg
+public class apwg
 {
-  public abstract void a(String paramString, long paramLong);
+  public long a;
+  public String a;
+  
+  public apwg(String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+  }
 }
 
 

@@ -1,19 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
-public final class aofz
-  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
+class aofz
+  implements Animation.AnimationListener
 {
-  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
+  aofz(aofw paramaofw) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new MiniAppRecommInfo.MiniApp(paramParcel);
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new aoga(this));
+    this.a.g.startAnimation(paramAnimation);
   }
   
-  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
-  {
-    return new MiniAppRecommInfo.MiniApp[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

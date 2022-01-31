@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aata;
+import aasw;
 
 public class ChatHistoryViewBase$1
   implements Runnable
 {
-  public ChatHistoryViewBase$1(aata paramaata) {}
+  public ChatHistoryViewBase$1(aasw paramaasw) {}
   
   public void run()
   {

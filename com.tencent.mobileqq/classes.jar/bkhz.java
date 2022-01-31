@@ -1,40 +1,23 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public abstract class bkhz<T extends bkhy>
+class bkhz
+  implements Animator.AnimatorListener
 {
-  protected int a;
-  public final View a;
-  public T a;
+  bkhz(bkhx parambkhx) {}
   
-  protected bkhz(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
+    if (bkhx.a(this.a) != null) {
+      bkhx.a(this.a).a();
     }
   }
   
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Bkhy = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Bkhy = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bkhy != null) && (this.jdField_a_of_type_Bkhy.a());
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

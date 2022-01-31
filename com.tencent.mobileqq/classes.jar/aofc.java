@@ -1,42 +1,25 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public class aofc
+class aofc
+  implements aysb
 {
-  public int a;
-  public String a;
-  public ArrayList<aogg> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  aofc(aofa paramaofa) {}
   
-  public String toString()
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{age: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{constellation: ").append(this.c).append("}");
-    localStringBuilder.append("{city: ").append(this.d).append("}");
-    localStringBuilder.append("{school: ").append(this.e).append("}");
-    localStringBuilder.append("{constel:").append(this.c).append("}");
-    localStringBuilder.append("{company:").append(this.f).append("}");
-    localStringBuilder.append("{mGender: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{mDeclaration: ").append(this.g).append("}");
-    localStringBuilder.append("{mVoiceUrl: ").append(this.h).append("}");
-    localStringBuilder.append("{mVoiceDuration: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{signWords: ").append(this.i).append("}");
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      localStringBuilder.append("{personalTags: is empty ").append("}");
-    }
-    for (;;)
+    if ((paramaysy != null) && (paramaysz != null) && ((paramaysy instanceof ayrx)))
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
+      paramaysy = (ayrx)paramaysy;
+      paramaysy.jdField_a_of_type_Long += paramaysz.c;
+      paramaysz.c = 0L;
+      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
+      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
+      if (paramaysz.contains("range="))
+      {
+        paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
+        paramaysy.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + paramaysy.jdField_a_of_type_Long);
+      }
     }
   }
 }

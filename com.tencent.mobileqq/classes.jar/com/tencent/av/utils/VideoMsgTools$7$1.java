@@ -2,7 +2,7 @@ package com.tencent.av.utils;
 
 import android.content.Context;
 import android.os.Bundle;
-import bbfn;
+import bbgb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,7 +33,7 @@ class VideoMsgTools$7$1
         localBundle.putParcelableArrayList("invitelist", this.a);
       }
       if (this.this$0.jdField_a_of_type_Int == 1) {
-        localBundle.putBoolean("enableInvite", bbfn.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.jdField_a_of_type_JavaLangString));
+        localBundle.putBoolean("enableInvite", bbgb.a("selectMemberToStartGAudioChat", localQQAppInterface, this.this$0.jdField_a_of_type_JavaLangString));
       }
       ChatActivityUtils.a(localQQAppInterface, localContext, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_JavaLangString, true, true, null, localBundle);
       return;

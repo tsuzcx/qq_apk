@@ -1,28 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable.1;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class axid
-  extends axgh
+class axid
+  implements Camera.AutoFocusCallback
 {
-  public Handler a;
+  axid(axic paramaxic) {}
   
-  public axid(Handler paramHandler)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (paramHandler != null)
-    {
-      this.a = paramHandler;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
     }
-    this.a = new Handler(Looper.getMainLooper());
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.post(new CameraProxy.CameraPreviewObservable.1(this, paramInt, paramVarArgs));
   }
 }
 

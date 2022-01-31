@@ -1,39 +1,21 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.DisplayMetrics;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
 import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-class bjjq
-  extends LinearSmoothScroller
+final class bjjq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bjjq(bjjo parambjjo, Context paramContext)
-  {
-    super(paramContext);
-  }
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
-  {
-    return 100.0F / paramDisplayMetrics.densityDpi;
-  }
+  bjjq(int paramInt, View paramView) {}
   
-  public PointF computeScrollVectorForPosition(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
-  }
-  
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
-  {
-    paramView = this.a.a(this.a.a.getLayoutManager(), paramView);
-    int i = paramView[0];
-    int j = paramView[1];
-    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    if (k > 0) {
-      paramAction.update(i, j, k, this.mDecelerateInterpolator);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

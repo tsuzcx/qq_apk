@@ -1,9 +1,8 @@
-public class aiaq
+import android.graphics.Bitmap;
+
+public abstract interface aiaq
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

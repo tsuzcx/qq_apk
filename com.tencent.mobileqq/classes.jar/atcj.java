@@ -1,39 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import java.lang.ref.WeakReference;
 
-class atcj
-  implements View.OnClickListener
+public class atcj
+  implements ServiceConnection
 {
-  atcj(atci paramatci, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
+  private WeakReference<atci> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public atcj(atch paramatch, atci paramatci)
   {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_Atci.a, SplashActivity.class);
-      paramView.putExtra("uin", this.jdField_a_of_type_Long + "");
-      paramView.putExtra("uintype", 1);
-      paramView.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
-      paramView.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
-      paramView.putExtra("isGameRoom", true);
-      paramView = actn.a(paramView, new int[] { 1, 2 });
-      this.jdField_a_of_type_Atci.a.startActivity(paramView);
-      if ((this.jdField_a_of_type_Atci.a instanceof ChatActivity)) {
-        ((ChatActivity)this.jdField_a_of_type_Atci.a).finish();
-      }
-      axqw.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramatci);
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    atch.a(this.jdField_a_of_type_Atch, lwm.a(paramIBinder));
+    paramComponentName = (atci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.bt();
     }
-    paramView = actn.a(new Intent(this.jdField_a_of_type_Atci.a, GameRoomInviteActivity.class), new int[] { 2 });
-    paramView.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
-    paramView.putExtra("roomNum", this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Atci.a.startActivity(paramView);
-    this.jdField_a_of_type_Atci.a();
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    atch.a(this.jdField_a_of_type_Atch, null);
+    paramComponentName = (atci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.bu();
+    }
   }
 }
 

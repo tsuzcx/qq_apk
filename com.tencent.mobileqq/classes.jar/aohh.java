@@ -1,50 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aohh
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends aoez
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aoit jdField_a_of_type_Aoit;
+  public aohh(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public aohh(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView, aoit paramaoit)
+  protected void a(boolean paramBoolean1, List<GroupInfo> paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
   {
-    super(paramView);
-    this.jdField_a_of_type_Aoit = paramaoit;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378502));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ExtendFriendGroupFragment.a(paramExtendFriendGroupFragment));
-  }
-  
-  public void a(aohh paramaohh, int paramInt)
-  {
-    String str = "";
-    boolean bool = false;
-    switch (paramInt)
+    try
     {
-    }
-    for (;;)
-    {
-      paramaohh.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramaohh.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
       return;
-      str = ajyc.a(2131704263);
-      continue;
-      str = ajyc.a(2131704247);
-      bool = true;
-      continue;
-      str = ajyc.a(2131704245);
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Aoit != null) {
-      this.jdField_a_of_type_Aoit.a();
+    catch (Exception paramList)
+    {
+      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
     }
   }
 }

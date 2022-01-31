@@ -1,20 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class auto
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BroadcastReceiver
 {
-  public auto(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  public auto(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
+      }
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
+      {
+        this.a.a = true;
+        PersonalityLabelGalleryActivity.a(this.a);
+      }
+    }
   }
 }
 

@@ -1,21 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import android.graphics.Bitmap;
+import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class tse
-  extends syu<tnq, tnr>
+class tse
+  implements URLDrawable.URLDrawableListener
 {
-  public tse(StoryShareEncryptHelper.2 param2, long paramLong, bcpq parambcpq) {}
+  tse(tsd paramtsd, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
   
-  public void a(@NonNull tnq paramtnq, @Nullable tnr paramtnr, @NonNull ErrorMessage paramErrorMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramtnr);
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
-    vel.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramtnr, this.jdField_a_of_type_Bcpq);
+    this.jdField_a_of_type_Tsd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    tsd.a(this.jdField_a_of_type_Tsd).remove(paramURLDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + tsd.a(this.jdField_a_of_type_Tsd).size());
+    }
+    Bitmap localBitmap1 = bbef.a(paramURLDrawable.getCurrDrawable(), 200, 200);
+    Bitmap localBitmap2 = nam.b(localBitmap1, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
+    }
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
+    this.jdField_a_of_type_Tsd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    localBitmap1.recycle();
+    tsd.a(this.jdField_a_of_type_Tsd).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + tsd.a(this.jdField_a_of_type_Tsd).size());
+    }
   }
 }
 

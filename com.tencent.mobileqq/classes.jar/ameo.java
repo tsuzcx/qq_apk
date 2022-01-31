@@ -1,8 +1,19 @@
-import com.tencent.image.URLImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class ameo
+public final class ameo
+  implements Parcelable.Creator<BusinessCard>
 {
-  URLImageView a;
+  public BusinessCard a(Parcel paramParcel)
+  {
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
+  }
 }
 
 

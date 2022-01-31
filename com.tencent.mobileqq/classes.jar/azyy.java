@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class azyy
-  implements DialogInterface.OnClickListener
+class azyy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public azyy(ReciteRecordLayout paramReciteRecordLayout) {}
+  azyy(azyw paramazyw, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    paramDialogInterface.dismiss();
+    azyw.a(this.jdField_a_of_type_Azyw).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    azyw.b(this.jdField_a_of_type_Azyw).setVisibility(4);
+    azyw.a(this.jdField_a_of_type_Azyw, this.jdField_a_of_type_Boolean, azyw.a(this.jdField_a_of_type_Azyw), azyw.c(this.jdField_a_of_type_Azyw));
   }
 }
 

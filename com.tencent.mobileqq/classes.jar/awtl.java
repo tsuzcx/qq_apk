@@ -1,6 +1,15 @@
-public abstract interface awtl
+import java.lang.ref.WeakReference;
+
+class awtl
 {
-  public abstract void a();
+  int jdField_a_of_type_Int = -1;
+  WeakReference<awtc> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public awtl(int paramInt, awtc paramawtc)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawtc);
+  }
 }
 
 

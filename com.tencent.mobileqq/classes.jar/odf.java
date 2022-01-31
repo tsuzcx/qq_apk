@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class odf
-  implements ViewBase.IBuilder
+class odf
+  implements DialogInterface.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  odf(odd paramodd, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ode(paramVafContext);
+    if (odd.a(this.jdField_a_of_type_Odd)) {}
+    while ((!yyn.a()) || (this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Odd.g();
   }
 }
 

@@ -1,14 +1,18 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 
 class argy
   implements View.OnClickListener
 {
-  argy(argv paramargv) {}
+  argy(argx paramargx) {}
   
   public void onClick(View paramView)
   {
-    argq.a(this.a.a, false);
+    this.a.a.c = "download";
+    args.a(this.a.a).opType("huiyin").opName("plugin_download_click").d1(String.valueOf(bbfj.a(args.a(this.a.a).getApplicationContext()))).report();
+    args.a(this.a.a, false);
   }
 }
 

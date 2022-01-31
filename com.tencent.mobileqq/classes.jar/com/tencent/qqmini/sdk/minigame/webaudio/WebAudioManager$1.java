@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import beka;
-import bexf;
+import bekr;
+import bexw;
 
 public class WebAudioManager$1
   implements Runnable
 {
-  public WebAudioManager$1(bexf parambexf, int paramInt1, int paramInt2, beka parambeka) {}
+  public WebAudioManager$1(bexw parambexw, int paramInt1, int paramInt2, bekr parambekr) {}
   
   public void run()
   {
     AudioNativeManager.play(this.jdField_a_of_type_Int, this.b);
-    bexf.a(this.this$0, this.jdField_a_of_type_Beka, this.jdField_a_of_type_Int);
+    bexw.a(this.this$0, this.jdField_a_of_type_Bekr, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,63 +1,77 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class bhgs
-  implements SensorEventListener
 {
-  private long jdField_a_of_type_Long;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private bhgt jdField_a_of_type_Bhgt;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  private float[] b = new float[3];
+  private static int a = -1;
   
-  public bhgs(Context paramContext, bhgt parambhgt)
+  public static boolean a()
   {
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
-    this.jdField_a_of_type_Bhgt = parambhgt;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, this.jdField_a_of_type_AndroidHardwareSensor);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 4)
+    boolean bool = true;
+    for (;;)
     {
-      if (this.jdField_a_of_type_Long != 0L)
+      try
       {
-        float f1 = (float)(paramSensorEvent.timestamp - this.jdField_a_of_type_Long) * 1.0E-009F;
-        float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-        arrayOfFloat[0] += paramSensorEvent.values[0] * f1;
-        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-        arrayOfFloat[1] += paramSensorEvent.values[1] * f1;
-        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-        float f2 = arrayOfFloat[2];
-        arrayOfFloat[2] = (f1 * paramSensorEvent.values[2] + f2);
-        f1 = (float)Math.toDegrees(this.jdField_a_of_type_ArrayOfFloat[0] - this.b[0]);
-        f2 = (float)Math.toDegrees(this.jdField_a_of_type_ArrayOfFloat[1] - this.b[1]);
-        float f3 = (float)Math.toDegrees(this.jdField_a_of_type_ArrayOfFloat[2] - this.b[2]);
-        if (this.jdField_a_of_type_Bhgt != null) {
-          this.jdField_a_of_type_Bhgt.a(f1 * 1.0F, f2 * 1.0F, f3 * 1.0F);
+        int i;
+        if (a != -1)
+        {
+          i = a;
+          if (i == 1) {
+            return bool;
+          }
+          bool = false;
+          continue;
         }
-        this.b[0] = this.jdField_a_of_type_ArrayOfFloat[0];
-        this.b[1] = this.jdField_a_of_type_ArrayOfFloat[1];
-        this.b[2] = this.jdField_a_of_type_ArrayOfFloat[2];
+        Object localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          if (TextUtils.isEmpty(""))
+          {
+            if (TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              a = 0;
+              bool = false;
+            }
+          }
+          else
+          {
+            localObject1 = "" + "," + (String)localObject1;
+            continue;
+          }
+          try
+          {
+            localObject1 = ((String)localObject1).split(",");
+            String str2 = Build.MODEL.toLowerCase();
+            String str3 = Build.MANUFACTURER.toLowerCase();
+            QLog.i("QzoneModuleCompat", 1, "Device info -- model: " + str2 + ", manufacturer: " + str3 + ", platform: " + System.getProperty("ro.board.platform"));
+            int j = localObject1.length;
+            i = 0;
+            if (i < j)
+            {
+              Object localObject3 = localObject1[i];
+              if ((!localObject3.contains(str2)) && (!localObject3.equals(str3))) {
+                continue;
+              }
+              a = 1;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
+            a = 0;
+            bool = false;
+          }
+          continue;
+          i += 1;
+        }
+        else
+        {
+          String str1 = "";
+        }
       }
-      this.jdField_a_of_type_Long = paramSensorEvent.timestamp;
+      finally {}
     }
   }
 }

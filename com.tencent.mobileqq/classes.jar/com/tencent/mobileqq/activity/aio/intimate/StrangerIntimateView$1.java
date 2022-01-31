@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.intimate;
 
-import adkg;
+import adke;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import aqkh;
+import aqkj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,20 +12,20 @@ import com.tencent.qphone.base.util.QLog;
 public class StrangerIntimateView$1
   implements Runnable
 {
-  public StrangerIntimateView$1(adkg paramadkg) {}
+  public StrangerIntimateView$1(adke paramadke) {}
   
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString)))
     {
-      IntimateInfo localIntimateInfo = ((aqkh)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(323)).a(this.this$0.jdField_a_of_type_JavaLangString);
+      IntimateInfo localIntimateInfo = ((aqkj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(323)).a(this.this$0.jdField_a_of_type_JavaLangString);
       if (localIntimateInfo != null)
       {
-        adkg.a(this.this$0, localIntimateInfo);
-        Message localMessage = adkg.a(this.this$0).obtainMessage();
+        adke.a(this.this$0, localIntimateInfo);
+        Message localMessage = adke.a(this.this$0).obtainMessage();
         localMessage.what = 0;
         localMessage.obj = localIntimateInfo;
-        adkg.a(this.this$0).sendMessage(localMessage);
+        adke.a(this.this$0).sendMessage(localMessage);
       }
       if (QLog.isColorLevel()) {
         QLog.d("intimate_relationship", 2, String.format("init cache friendUin: %s, intimateInfo: %s", new Object[] { this.this$0.jdField_a_of_type_JavaLangString, localIntimateInfo }));

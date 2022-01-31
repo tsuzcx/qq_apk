@@ -8,8 +8,8 @@ class vkr
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.g();
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 

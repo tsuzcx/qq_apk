@@ -1,14 +1,11 @@
 class phi
-  implements pvr
+  implements oxh
 {
-  phi(pgz parampgz, pax parampax) {}
+  phi(pgw parampgw) {}
   
-  public void a()
+  public boolean a()
   {
-    rbu localrbu = this.jdField_a_of_type_Pax.a().a();
-    if (localrbu != null) {
-      localrbu.a(null, this.jdField_a_of_type_Pax.a(), 1);
-    }
+    return false;
   }
 }
 

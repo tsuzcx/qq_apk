@@ -1,17 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class ayig
-  extends ayfl
+  implements DialogInterface.OnClickListener
 {
   public ayig(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     GroupTeamWorkListActivity.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
-    }
   }
 }
 

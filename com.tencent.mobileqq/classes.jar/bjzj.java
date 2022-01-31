@@ -1,20 +1,9 @@
-import android.graphics.Bitmap;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class bjzj
+  implements bkyz
 {
-  public final int c;
-  public final Bitmap c;
-  
-  public bjzj(int paramInt, Bitmap paramBitmap)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public String toString()
-  {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
-  }
+  public bjzj(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
 }
 
 

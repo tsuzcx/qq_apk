@@ -1,9 +1,8 @@
-public class bkfk
+import javax.microedition.khronos.opengles.GL;
+
+public abstract interface bkfk
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract GL a(GL paramGL);
 }
 
 

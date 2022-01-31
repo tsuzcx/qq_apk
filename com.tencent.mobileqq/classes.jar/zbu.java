@@ -1,91 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
 
 public class zbu
-  extends bcal
-  implements bcbj
+  implements zbj
 {
-  protected Intent a;
+  public zbu(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public zbu(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public void a(View paramView)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.a = paramIntent;
-  }
-  
-  public void a()
-  {
-    super.doOnResume();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.doOnCreate(this.a);
-  }
-  
-  public void a(TouchWebView paramTouchWebView)
-  {
-    this.mWebview = paramTouchWebView;
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public final void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void c()
-  {
-    try
+    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
     {
-      super.doOnDestroy();
+      GdtVideoImaxFragment.a(this.a);
+      GdtVideoImaxFragment.b(this.a);
+    }
+    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
       return;
     }
-    catch (Exception localException)
+    GdtVideoImaxFragment.a(this.a).g();
+    paramView = yzb.a(this.a.getActivity());
+    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
+  }
+  
+  public void a(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yxp.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void b(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yxp.a("GdtVideoImaxFragment", "onStart() called with: ");
+    if (GdtVideoImaxFragment.a(this.a))
     {
-      yxs.d("GdtWebViewBuilder", "getVideoComponent error", localException);
+      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
+      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
+      GdtVideoImaxFragment.a(this.a, false);
     }
   }
   
-  public void preInitWebviewPlugin()
+  public void c(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    super.preInitPluginEngine();
+    yxp.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void d(GdtVideoCommonView paramGdtVideoCommonView)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    paramWebView.loadUrl(paramString);
-    return true;
+    yxp.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 

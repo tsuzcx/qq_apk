@@ -7,21 +7,17 @@ import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 public class akji
   implements DialogInterface.OnClickListener
 {
-  public akji(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
+  public akji(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramInt = this.jdField_a_of_type_Int;
-    int i = this.jdField_b_of_type_Int;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+    mqw.e(false, false);
+    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
+    if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
-      mqz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause, this.jdField_a_of_type_Boolean);
-      return;
     }
+    mqw.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 

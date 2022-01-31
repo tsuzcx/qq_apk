@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
 import android.view.View;
-import bcjc;
+import bcjq;
 
 class AnimationTextView$1
   implements Runnable

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.theme;
 
 import android.app.Activity;
-import aylf;
-import aylk;
+import aylh;
+import aylm;
 
 public final class DarkModeManager$6
   implements Runnable
 {
-  public DarkModeManager$6(Activity paramActivity, String paramString, aylk paramaylk) {}
+  public DarkModeManager$6(Activity paramActivity, String paramString, aylm paramaylm) {}
   
   public void run()
   {
-    aylf.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aylk);
+    aylh.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aylm);
   }
 }
 

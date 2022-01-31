@@ -1,28 +1,32 @@
 import android.os.Bundle;
-import android.util.SparseArray;
+import java.lang.ref.WeakReference;
 
-public abstract class avpi
+abstract class avpi<T>
+  extends mxj
 {
-  protected static SparseArray<Class<?>> a = new SparseArray();
-  protected static SparseArray<Class<?>> b = new SparseArray();
+  protected T a;
+  private WeakReference<T> a;
   
-  static
+  avpi(T paramT)
   {
-    a.put(1, avpk.class);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
   
-  public abstract int a();
-  
-  public void a(Bundle paramBundle)
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramBundle.putInt("redpoint.fromReceiverIPCCode", a());
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
   }
   
-  public void b(Bundle paramBundle) {}
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avpi
  * JD-Core Version:    0.7.0.1
  */

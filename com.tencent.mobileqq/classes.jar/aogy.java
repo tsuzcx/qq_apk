@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class aogy
-  implements aohb
+  implements DialogInterface.OnClickListener
 {
-  public aogy(ExtendFriendFragment paramExtendFriendFragment) {}
+  public aogy(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ExtendFriendFragment.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

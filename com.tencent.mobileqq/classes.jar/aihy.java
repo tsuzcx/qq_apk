@@ -5,9 +5,12 @@ import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 public class aihy
   implements DialogInterface.OnClickListener
 {
-  public aihy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aihy(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

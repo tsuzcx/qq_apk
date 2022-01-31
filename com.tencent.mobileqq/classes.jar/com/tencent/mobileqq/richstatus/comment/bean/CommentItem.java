@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.bean;
 
-import awew;
+import awey;
 import java.io.Serializable;
 
 public class CommentItem
@@ -11,8 +11,8 @@ public class CommentItem
   public long id;
   public long targetId;
   public long timeStamp;
-  public awew toReplyUser;
-  public awew user;
+  public awey toReplyUser;
+  public awey user;
 }
 
 

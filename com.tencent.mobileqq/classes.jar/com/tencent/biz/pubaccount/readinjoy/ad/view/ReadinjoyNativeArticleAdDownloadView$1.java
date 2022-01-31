@@ -7,20 +7,20 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.Pair;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nxz;
-import nzi;
-import odg;
+import nxw;
+import nzf;
+import odd;
 
 public class ReadinjoyNativeArticleAdDownloadView$1
   implements Runnable
 {
-  public ReadinjoyNativeArticleAdDownloadView$1(odg paramodg) {}
+  public ReadinjoyNativeArticleAdDownloadView$1(odd paramodd) {}
   
   public void run()
   {
-    if ((odg.a(this.this$0).a != null) && (!TextUtils.isEmpty(odg.a(this.this$0).a.b)) && (odg.a(this.this$0).a.a != null))
+    if ((odd.a(this.this$0).a != null) && (!TextUtils.isEmpty(odd.a(this.this$0).a.b)) && (odd.a(this.this$0).a.a != null))
     {
-      Pair localPair = nzi.a(odg.a(this.this$0).a.b);
+      Pair localPair = nzf.a(odd.a(this.this$0).a.b);
       if (((this.this$0.a instanceof Activity)) && (localPair.first != null) && (((List)localPair.first).size() > 0))
       {
         Activity localActivity = (Activity)this.this$0.a;

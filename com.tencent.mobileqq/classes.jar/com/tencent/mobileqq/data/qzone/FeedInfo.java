@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.data.qzone;
 
-import aukm;
-import aulx;
+import auko;
+import aulz;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="ownerUin")
 public class FeedInfo
-  extends aukm
+  extends auko
 {
   public int appid;
   public String content;
   public long feedTime;
   public int hasPic;
-  @aulx
+  @aulz
   public boolean isExpose;
   public long ownerUin;
   public boolean showInTab = true;

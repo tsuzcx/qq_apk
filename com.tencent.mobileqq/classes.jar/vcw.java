@@ -1,20 +1,11 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-
 class vcw
-  extends uyl
+  implements vzq<uzk>
 {
-  vcw(vcs paramvcs) {}
+  vcw(vcp paramvcp) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public uzk a()
   {
-    if (vzo.b()) {}
-    while (paramView.getId() != 2131377057) {
-      return;
-    }
-    vel.a("mystory", "clk_all_story", 0, 0, new String[0]);
-    paramView = QQStoryContext.a().b();
-    sxp.a(vcs.c(this.a), 1, paramView);
+    return new uzk(null);
   }
 }
 

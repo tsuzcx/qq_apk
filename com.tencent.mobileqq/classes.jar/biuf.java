@@ -1,16 +1,15 @@
+import android.support.annotation.Nullable;
+
 class biuf
-  implements bium
+  implements bjos<bivs>
 {
   biuf(biua parambiua) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(@Nullable bivs parambivs)
   {
-    if (biua.a(this.a))
-    {
-      biua.a(this.a, paramBoolean1, paramBoolean2);
-      return;
+    if (parambivs != null) {
+      biua.a(this.a, parambivs);
     }
-    biua.b(this.a, paramBoolean1, paramBoolean2);
   }
 }
 

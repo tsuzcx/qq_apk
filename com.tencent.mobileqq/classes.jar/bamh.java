@@ -1,73 +1,122 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.GZIPInputStream;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 public class bamh
 {
-  public static final void a()
+  public static aznv a(Bundle paramBundle, String paramString1, String paramString2)
   {
-    a("gfile", "gfile_upload", "", "", "", "");
-  }
-  
-  public static final void a(int paramInt1, int paramInt2)
-  {
-    int i = bbev.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, "");
-  }
-  
-  public static final void a(int paramInt1, int paramInt2, String paramString)
-  {
-    int i = bbev.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
-  }
-  
-  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      axqw.b((QQAppInterface)localObject, "dc00899", "Grp_tech_report", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportTech", 2, "opType=" + paramString1 + ", opName=" + paramString2 + ", r1=" + paramString3 + ", r2=" + paramString4 + ",r3=" + paramString5 + ", r4" + paramString6);
-      }
-      return;
+    localObject = null;
+    HttpPost localHttpPost = null;
+    int j = 0;
+    long l = System.currentTimeMillis();
+    String str2 = paramBundle.getString("title");
+    String str1 = paramBundle.getString("file_path");
+    paramBundle = paramBundle.getString("vid");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopBar", 2, "applyUpload title = " + str2 + ", filePath = " + str1 + ", size = " + bbdx.a(str1));
     }
-  }
-  
-  public static final void a(String paramString, String... paramVarArgs)
-  {
-    String[] arrayOfString = new String[4];
-    arrayOfString[0] = "";
-    arrayOfString[1] = "";
-    arrayOfString[2] = "";
-    arrayOfString[3] = "";
-    if ((paramVarArgs != null) && (paramVarArgs.length <= 4))
+    if ((TextUtils.isEmpty(str1)) || (!bbdx.a(str1)))
     {
-      int i = 0;
-      while (i < paramVarArgs.length)
+      paramString1 = localHttpPost;
+      if (QLog.isColorLevel())
       {
-        arrayOfString[i] = paramVarArgs[i];
-        i += 1;
+        QLog.e("TroopBar", 2, "!!!!!!!applyUpload filePath = " + str1);
+        paramString1 = localHttpPost;
+      }
+      return paramString1;
+    }
+    localHttpPost = new HttpPost("http://pay.qun.qq.com/cgi-bin/group_pay/reward/video_up_ready");
+    localHttpPost.setHeader("Accept", "Accept text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+    localHttpPost.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
+    localHttpPost.setHeader("Accept-Encoding", "gzip, deflate");
+    localHttpPost.setHeader("Accept-Language", "zh-cn,zh;q=0.5");
+    localHttpPost.setHeader("Connection", "keep-alive");
+    localHttpPost.setHeader("Cookie", "skey=" + paramString2 + ";uin=" + paramString1);
+    paramString1 = new ArrayList();
+    paramString1.add(new BasicNameValuePair("title", str2));
+    paramString1.add(new BasicNameValuePair("size", String.valueOf(bbdx.a(str1))));
+    paramString1.add(new BasicNameValuePair("sha", bbea.a(apug.a(str1)).toLowerCase()));
+    paramString1.add(new BasicNameValuePair("md5", bbea.a(apug.d(str1)).toLowerCase()));
+    paramString1.add(new BasicNameValuePair("bkn", "" + banb.b(paramString2)));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopBar", 2, "applyUpload() getMessageDigest time = " + (System.currentTimeMillis() - l));
+    }
+    paramString1.add(new BasicNameValuePair("platform", "android"));
+    if (!TextUtils.isEmpty(paramBundle)) {
+      paramString1.add(new BasicNameValuePair("vid", paramBundle));
+    }
+    try
+    {
+      localHttpPost.setEntity(new UrlEncodedFormEntity(paramString1, "UTF-8"));
+      paramBundle = new DefaultHttpClient().execute(localHttpPost);
+      if (paramBundle.getStatusLine().getStatusCode() != 200) {
+        break label710;
+      }
+      paramString1 = paramBundle.getHeaders("Content-Encoding");
+      k = paramString1.length;
+      i = 0;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        int k;
+        int i;
+        paramBundle = localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TroopBar", 2, QLog.getStackTraceString(paramString1));
+          paramBundle = localObject;
+          continue;
+          paramBundle = null;
+          continue;
+          i += 1;
+        }
       }
     }
-    a("page_exp", paramString, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
-  }
-  
-  public static final void b()
-  {
-    a("gfile", "gfile_download", "", "", "", "");
-  }
-  
-  public static final void b(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2, "");
-  }
-  
-  public static final void b(int paramInt1, int paramInt2, String paramString)
-  {
-    int i = bbev.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_download_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
+    if (i < k)
+    {
+      if (paramString1[i].getValue().equals("gzip")) {
+        j = 1;
+      }
+    }
+    else
+    {
+      paramBundle = paramBundle.getEntity();
+      if (j != 0) {}
+      for (paramBundle = HttpBaseUtil.a(new GZIPInputStream(paramBundle.getContent()));; paramBundle = EntityUtils.toString(paramBundle))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBar", 2, "applyUpload result = " + paramBundle);
+        }
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.optInt("ec", -1) != 0) {
+          break label710;
+        }
+        paramBundle = new aznv(paramBundle);
+        paramString1 = paramBundle;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("TroopBar", 2, "applyUpload time: " + (System.currentTimeMillis() - l));
+        return paramBundle;
+      }
+    }
   }
 }
 

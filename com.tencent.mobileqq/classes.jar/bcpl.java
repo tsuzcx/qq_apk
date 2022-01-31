@@ -1,10 +1,11 @@
-import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
 
 public abstract interface bcpl
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
   
-  public abstract void b(Bundle paramBundle);
+  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, bcpm parambcpm);
 }
 
 

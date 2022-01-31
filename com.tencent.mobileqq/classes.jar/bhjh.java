@@ -1,69 +1,32 @@
+import com.tencent.component.network.downloader.strategy.ConfigKeepAliveStrategy;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.PluginRecord;
+import common.config.service.QzoneConfig;
 
-class bhjh
-  extends bhic
+public class bhjh
+  extends ConfigKeepAliveStrategy
+  implements bggk
 {
-  private bhjg jdField_a_of_type_Bhjg;
-  
-  public bhjh(bhjf parambhjf, bhjg parambhjg)
+  public bhjh()
   {
-    this.jdField_a_of_type_Bhjg = parambhjg;
+    a();
+    QzoneConfig.getInstance().addListener(this);
   }
   
-  public void a(String paramString)
+  private void a()
   {
+    String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallBegin." + paramString);
+      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
     }
+    setConfig(str);
   }
   
-  public void a(String paramString, float paramFloat, long paramLong)
+  public void onConfigChange()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallDownloadProgress." + paramString);
+      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "KeepAlive receive change");
     }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallError." + paramString + "," + paramInt);
-    }
-    bhjg localbhjg = this.jdField_a_of_type_Bhjg;
-    if ((localbhjg != null) && (localbhjg.jdField_a_of_type_Bhhw != null))
-    {
-      paramString = this.jdField_a_of_type_Bhjf.a(paramString);
-      if ((paramString != null) && (paramString.mInstalledPath != null)) {
-        localbhjg.jdField_a_of_type_Bhhx.c = paramString.mInstalledPath;
-      }
-      paramString = localbhjg.jdField_a_of_type_Bhhw;
-      if (paramInt != 2) {
-        break label122;
-      }
-    }
-    label122:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.a(bool, localbhjg.jdField_a_of_type_AndroidContentContext, localbhjg.jdField_a_of_type_Bhhx);
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallFinish." + paramString);
-    }
-    paramString = this.jdField_a_of_type_Bhjg;
-    if ((paramString != null) && (paramString.jdField_a_of_type_Bhhw != null))
-    {
-      PluginRecord localPluginRecord = bhjf.a(this.jdField_a_of_type_Bhjf).a(paramString.jdField_a_of_type_Bhhx.b);
-      if ((localPluginRecord != null) && (localPluginRecord.mInstalledPath != null)) {
-        paramString.jdField_a_of_type_Bhhx.c = localPluginRecord.mInstalledPath;
-      }
-      paramString.jdField_a_of_type_Bhhw.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_Bhhx);
-    }
+    a();
   }
 }
 

@@ -5,20 +5,19 @@ import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.mobileqq.widget.AutoFitTextView;
 
 public class ouf
-  implements bcji
+  implements bcjx
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
   AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
-  ImageView b;
   
   public ouf(oud paramoud) {}
   
   public int a()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - baxn.a(oud.a(this.jdField_a_of_type_Oud), 10.0F);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import agbc;
+import agba;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ChatHistoryTroopMemberFragment$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopAdmin> CREATOR = new agbc();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new agba();
   public String a;
   public short a;
   public String b;

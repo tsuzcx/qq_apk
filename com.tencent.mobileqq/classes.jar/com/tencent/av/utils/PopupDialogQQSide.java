@@ -6,17 +6,17 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import msm;
-import msn;
-import mso;
+import msj;
+import msk;
+import msl;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bbgg a = null;
+  public bbgu a = null;
   
   void a()
   {
@@ -39,31 +39,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new msm(this, (ResultReceiver)localObject2);
-    localObject2 = new msn(this, (ResultReceiver)localObject2);
+    localObject1 = new msj(this, (ResultReceiver)localObject2);
+    localObject2 = new msk(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131720772;
+      i = 2131720783;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131720772;
+        j = 2131720783;
       }
       for (;;)
       {
-        bbgg localbbgg = bbcv.a(getActivity(), k);
-        localbbgg.setMessage(str2);
-        localbbgg.setTitle(str1);
+        bbgu localbbgu = bbdj.a(getActivity(), k);
+        localbbgu.setMessage(str2);
+        localbbgu.setTitle(str1);
         if (bool1) {
-          localbbgg.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localbbgu.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbbgg.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localbbgu.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbbgg.setOnDismissListener(new mso(this));
-        localbbgg.setCancelable(true);
-        localbbgg.show();
-        this.a = localbbgg;
+        localbbgu.setOnDismissListener(new msl(this));
+        localbbgu.setCancelable(true);
+        localbbgu.show();
+        this.a = localbbgu;
         return;
       }
     }

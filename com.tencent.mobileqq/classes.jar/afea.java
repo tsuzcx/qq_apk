@@ -1,27 +1,46 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afea
-  extends akuj
+  implements affi
 {
-  public afea(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
+  public afea(AddContactsActivity paramAddContactsActivity) {}
+  
+  public Activity a()
   {
-    super(paramString);
+    return this.a;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public QQAppInterface a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
+    return this.a.app;
+  }
+  
+  public void a()
+  {
+    if (this.a.a) {
+      return;
     }
-    if (paramInt != 0)
-    {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
-    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new afeb(this));
+    localValueAnimator.addListener(new afec(this));
+    localValueAnimator.start();
+    bbbn.a(true);
+  }
+  
+  public void b()
+  {
+    this.a.findViewById(2131375447).setVisibility(0);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
+    localValueAnimator.setDuration(250L);
+    localValueAnimator.addUpdateListener(new afed(this));
+    localValueAnimator.addListener(new afee(this));
+    localValueAnimator.start();
   }
 }
 

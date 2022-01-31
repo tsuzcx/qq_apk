@@ -1,27 +1,20 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class atpl
-  implements URLDrawable.URLDrawableListener
+  implements Handler.Callback
 {
-  atpl(atpi paramatpi) {}
+  atpl(atpk paramatpk) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable instanceof RegionDrawable))
+    switch (paramMessage.what)
     {
-      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
-      atpi.a(this.a).setImageBitmap(paramURLDrawable);
-      atpi.a(this.a).setVisibility(0);
+    }
+    for (;;)
+    {
+      return true;
+      atpk.a(this.a);
     }
   }
 }

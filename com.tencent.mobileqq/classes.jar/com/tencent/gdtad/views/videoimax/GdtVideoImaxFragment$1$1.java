@@ -2,12 +2,12 @@ package com.tencent.gdtad.views.videoimax;
 
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import zbx;
+import zbu;
 
 public class GdtVideoImaxFragment$1$1
   implements Runnable
 {
-  public GdtVideoImaxFragment$1$1(zbx paramzbx) {}
+  public GdtVideoImaxFragment$1$1(zbu paramzbu) {}
   
   public void run()
   {

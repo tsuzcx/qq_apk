@@ -1,9 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class acoo
   implements DialogInterface.OnClickListener
@@ -12,17 +9,8 @@ public class acoo
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdht.b("qqBaseActivity", bdeu.a(10010, 1, 3, 200));
-    bdes.a().a(17, bdeu.a(10010, 1, 3, 200));
-    if (!bdlc.a().b()) {
-      bdid.a().a(ajyc.a(2131715910));
-    }
-    for (;;)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new UpgradeActivity.15.1(this), 500L);
-      return;
-      bbew.a(this.a);
-    }
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "0");
+    this.a.a();
   }
 }
 

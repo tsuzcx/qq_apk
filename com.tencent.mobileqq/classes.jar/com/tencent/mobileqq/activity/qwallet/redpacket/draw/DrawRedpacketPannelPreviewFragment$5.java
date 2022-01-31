@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahec;
+import ahea;
 import android.widget.TextView;
 
 class DrawRedpacketPannelPreviewFragment$5
@@ -15,7 +15,7 @@ class DrawRedpacketPannelPreviewFragment$5
       if (this.this$0.a.getVisibility() != 0) {
         this.this$0.a.setVisibility(0);
       }
-      this.this$0.a.setText("当前识别结果：---- 当前识别成功阈值：" + ahec.a().a + "\n" + this.a);
+      this.this$0.a.setText("当前识别结果：---- 当前识别成功阈值：" + ahea.a().a + "\n" + this.a);
     }
   }
 }

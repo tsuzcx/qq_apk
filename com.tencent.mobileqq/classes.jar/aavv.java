@@ -1,16 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Contacts;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class aavv
-  extends atzl
+class aavv
+  implements View.OnClickListener
 {
-  public aavv(Contacts paramContacts) {}
+  aavv(aavu paramaavu) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
-    }
+    this.a.a.onClick(this.a.a.a);
   }
 }
 

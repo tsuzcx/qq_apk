@@ -1,47 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 class atku
-  implements TVK_SDKMgr.OnLogListener
+  implements atlc
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  atku(atko paramatko, VideoData paramVideoData) {}
   
-  public int e(String paramString1, String paramString2)
+  public boolean a(atkz paramatkz, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
+    if (this.jdField_a_of_type_Atko.a != null) {
+      this.jdField_a_of_type_Atko.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    return true;
   }
 }
 

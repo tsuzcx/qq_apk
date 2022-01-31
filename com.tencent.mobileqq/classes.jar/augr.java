@@ -1,83 +1,22 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore.Images.Media;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import mqq.app.QQPermissionCallback;
 
 public class augr
-  extends ContentObserver
+  implements QQPermissionCallback
 {
-  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  private augs jdField_a_of_type_Augs;
+  public augr(ScanTorchActivity paramScanTorchActivity) {}
   
-  public augr(Handler paramHandler, Context paramContext)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
-  }
-  
-  public void a(augs paramaugs)
-  {
-    this.jdField_a_of_type_Augs = paramaugs;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    onChange(paramBoolean, null);
-  }
-  
-  public void onChange(boolean paramBoolean, Uri paramUri)
-  {
-    Cursor localCursor;
-    String str;
-    long l;
-    if (paramUri == null)
-    {
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Augs != null)) {
-          this.jdField_a_of_type_Augs.a(paramUri);
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Augs != null)) {
-          this.jdField_a_of_type_Augs.a(paramUri);
-        }
-      }
-    } while (localCursor == null);
-    localCursor.close();
+    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
   }
 }
 

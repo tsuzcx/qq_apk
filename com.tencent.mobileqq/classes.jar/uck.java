@@ -1,12 +1,29 @@
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public final class uck
-  implements Comparator<ucp>
+public class uck
+  implements Animator.AnimatorListener
 {
-  public int a(ucp paramucp1, ucp paramucp2)
+  public uck(XViewPager paramXViewPager) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return paramucp1.a - paramucp2.a;
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

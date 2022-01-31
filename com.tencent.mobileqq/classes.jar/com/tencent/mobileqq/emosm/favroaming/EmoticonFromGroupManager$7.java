@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansh;
+import ansm;
 import com.tencent.image.URLDrawable;
 
 public class EmoticonFromGroupManager$7
   implements Runnable
 {
-  public EmoticonFromGroupManager$7(ansh paramansh, URLDrawable paramURLDrawable) {}
+  public EmoticonFromGroupManager$7(ansm paramansm, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

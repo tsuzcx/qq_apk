@@ -1,8 +1,11 @@
-import android.view.View;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
 public abstract interface addg
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
+  
+  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
 }
 
 

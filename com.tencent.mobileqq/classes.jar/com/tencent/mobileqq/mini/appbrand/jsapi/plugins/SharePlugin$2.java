@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -19,7 +19,7 @@ final class SharePlugin$2
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        bcpw.a(BaseApplicationImpl.getContext(), str, 1).a();
+        bcql.a(BaseApplicationImpl.getContext(), str, 1).a();
       }
       return;
       if ((this.val$flag & 0x10) != 0) {

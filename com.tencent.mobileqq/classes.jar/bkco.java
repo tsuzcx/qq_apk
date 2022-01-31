@@ -1,15 +1,18 @@
-import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class bkco
-  implements bkcn
+class bkco
+  implements View.OnClickListener
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  bkco(bkcm parambkcm) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.setSelectAllOnFocus(false);
+    this.a.a.setSelection(this.a.a.length());
+    this.a.a.setOnClickListener(null);
+  }
 }
 
 

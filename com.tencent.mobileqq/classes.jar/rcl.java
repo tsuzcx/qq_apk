@@ -1,35 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
 public class rcl
-  implements oki
+  implements okf
 {
-  public rcl(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  public rcl(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, okf paramokf) {}
   
   public void a(int paramInt)
   {
-    boolean bool = true;
-    ReadInJoyFastWebBottomSocialView localReadInJoyFastWebBottomSocialView;
-    if (paramInt != 2)
-    {
-      if ((!ReadInJoyFastWebBottomSocialView.a(this.a)) || (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo == null)) {
-        break label62;
-      }
-      localReadInJoyFastWebBottomSocialView = this.a;
-      if (ReadInJoyFastWebBottomSocialView.a(this.a).fusionBiuInfo.b) {
-        break label57;
-      }
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Okf != null) {
+      this.jdField_a_of_type_Okf.a(paramInt);
     }
-    for (;;)
-    {
-      ReadInJoyFastWebBottomSocialView.a(localReadInJoyFastWebBottomSocialView, bool);
-      return;
-      label57:
-      bool = false;
-    }
-    label62:
-    ReadInJoyFastWebBottomSocialView.a(this.a, true);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bejs;
+import bekj;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 
 class AppBrandPage$2
   implements Runnable
 {
-  AppBrandPage$2(AppBrandPage paramAppBrandPage, boolean paramBoolean, bejs parambejs) {}
+  AppBrandPage$2(AppBrandPage paramAppBrandPage, boolean paramBoolean, bekj parambekj) {}
   
   public void run()
   {
     if (AppBrandPage.a(this.this$0) != null) {
       AppBrandPage.a(this.this$0).a(this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_Bejs.a();
+    this.jdField_a_of_type_Bekj.a();
   }
 }
 

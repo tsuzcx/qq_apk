@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
-import onk;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qbj;
+import qbg;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgBody;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgContent;
 import tencent.im.oidb.cmd0xbe4.oidb_cmd0xbe4.MsgFolderInfo;
@@ -181,36 +181,36 @@ public class KandianMsgBoxRedPntInfo
   
   public static KandianMsgBoxRedPntInfo getRedPntInfoFromSp()
   {
-    AppRuntime localAppRuntime = onk.a();
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo2 = (KandianMsgBoxRedPntInfo)onk.a(localAppRuntime, "kandian_msg_box_sp_key_new", true);
+    AppRuntime localAppRuntime = onh.a();
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo2 = (KandianMsgBoxRedPntInfo)onh.a(localAppRuntime, "kandian_msg_box_sp_key_new", true);
     KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo1 = localKandianMsgBoxRedPntInfo2;
     if (localKandianMsgBoxRedPntInfo2 == null)
     {
-      qbj localqbj1 = qbj.d();
-      qbj localqbj2 = qbj.a();
-      if (localqbj1 == null)
+      qbg localqbg1 = qbg.d();
+      qbg localqbg2 = qbg.a();
+      if (localqbg1 == null)
       {
         localKandianMsgBoxRedPntInfo1 = localKandianMsgBoxRedPntInfo2;
-        if (localqbj2 == null) {}
+        if (localqbg2 == null) {}
       }
       else
       {
         localKandianMsgBoxRedPntInfo1 = new KandianMsgBoxRedPntInfo();
         localKandianMsgBoxRedPntInfo1.mSeq = -1L;
         localKandianMsgBoxRedPntInfo1.mNeedShowInFolder = false;
-        if (localqbj2 != null)
+        if (localqbg2 != null)
         {
-          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbj2.a;
-          localKandianMsgBoxRedPntInfo1.mUin = localqbj2.e;
+          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbg2.a;
+          localKandianMsgBoxRedPntInfo1.mUin = localqbg2.e;
           localKandianMsgBoxRedPntInfo1.mMsgTime = System.currentTimeMillis();
           localKandianMsgBoxRedPntInfo1.mMsgType = 1;
-          localqbj2.a(localAppRuntime);
+          localqbg2.a(localAppRuntime);
         }
-        if (localqbj1 != null)
+        if (localqbg1 != null)
         {
-          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbj1.a;
+          localKandianMsgBoxRedPntInfo1.mMsgCnt += localqbg1.a;
           localKandianMsgBoxRedPntInfo1.mMsgType = 2;
-          localqbj1.d((QQAppInterface)localAppRuntime);
+          localqbg1.d((QQAppInterface)localAppRuntime);
         }
         localKandianMsgBoxRedPntInfo1.asyncWriteToSP();
       }
@@ -220,7 +220,7 @@ public class KandianMsgBoxRedPntInfo
   
   public void asyncWriteToSP()
   {
-    onk.a("kandian_msg_box_sp_key_new", this, true);
+    onh.a("kandian_msg_box_sp_key_new", this, true);
   }
   
   public boolean equals(Object paramObject)
@@ -244,7 +244,7 @@ public class KandianMsgBoxRedPntInfo
   
   public void removeFromSP()
   {
-    onk.a("kandian_msg_box_sp_key_new", true);
+    onh.a("kandian_msg_box_sp_key_new", true);
   }
   
   public String toString()
@@ -254,7 +254,7 @@ public class KandianMsgBoxRedPntInfo
   
   public void writeToSP()
   {
-    onk.b("kandian_msg_box_sp_key_new", this, true);
+    onh.b("kandian_msg_box_sp_key_new", this, true);
   }
 }
 

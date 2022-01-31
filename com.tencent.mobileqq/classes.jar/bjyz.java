@@ -1,30 +1,33 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-public class bjyz
-  extends bjzj
+class bjyz
+  implements DialogInterface.OnClickListener
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
-  
-  public bjyz(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  static
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    if (!bjyy.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  public bjyz a(Bitmap paramBitmap)
-  {
-    return new bjyz(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
-  }
+  bjyz(bjyy parambjyy, int paramInt) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Bundle();
+    bkbk localbkbk = this.jdField_a_of_type_Bjyy.a().a;
+    if ((!jdField_a_of_type_Boolean) && (localbkbk == null)) {
+      throw new AssertionError();
+    }
+    bjyy.a(paramDialogInterface, localbkbk);
+    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bjyy.a.a(35, paramDialogInterface);
   }
 }
 

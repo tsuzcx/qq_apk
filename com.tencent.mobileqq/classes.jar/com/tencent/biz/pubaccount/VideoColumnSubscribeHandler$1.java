@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount;
 
-import npd;
+import npa;
 
 public class VideoColumnSubscribeHandler$1
   implements Runnable
 {
-  public VideoColumnSubscribeHandler$1(npd paramnpd, int paramInt) {}
+  public VideoColumnSubscribeHandler$1(npa paramnpa, int paramInt) {}
   
   public void run()
   {
-    npd.a(this.this$0, this.a);
+    npa.a(this.this$0, this.a);
   }
 }
 

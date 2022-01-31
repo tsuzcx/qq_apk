@@ -1,44 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class unz
+  extends SimpleJob<Void>
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public unz(String paramString)
+  public unz(QQStoryMainController paramQQStoryMainController, String paramString)
   {
-    this.jdField_a_of_type_Int = 3;
-    paramString = (String)((tcv)tdc.a(10)).b(paramString, "");
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
-      if (this.jdField_a_of_type_Int >= 0)
-      {
-        this.c = paramString.optString("url");
-        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
-        this.b = paramString.optString("text");
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        this.jdField_a_of_type_Int = 3;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
-    }
+    super(paramString);
   }
   
-  public String toString()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
+    vyf.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    ((sut)tcz.a(6)).c();
+    ueb.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
+    PngQuantUtils.a(QQStoryContext.a());
+    ((stf)tcz.a(4)).c();
+    ayvp.g();
+    ((tcs)tcz.a(10)).c();
+    ved.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(svl.a()) });
+    tsd.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
+    ved.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
+    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ved.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
+    ved.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
+    this.a.b = axle.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+    ved.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
+    ved.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
+    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    ved.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
+    return null;
   }
 }
 

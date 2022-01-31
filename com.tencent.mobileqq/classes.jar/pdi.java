@@ -1,15 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
 class pdi
-  implements View.OnClickListener
+  implements bfsx
 {
-  pdi(pdb parampdb, String paramString1, String paramString2) {}
+  pdi(pdh parampdh) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    pdb.a(2, this.jdField_a_of_type_JavaLangString);
-    onk.a(pdb.a(this.jdField_a_of_type_Pdb), this.b);
+    pdg.a(this.a.jdField_a_of_type_Pdg, this.a.jdField_a_of_type_Rfk, this.a.jdField_a_of_type_Pau, paramInt, paramArrayList, paramObject);
   }
 }
 

@@ -1,34 +1,42 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class akcm
-  implements Comparator<PhoneContact>
+public class akcm
+  extends ContentObserver
 {
-  akcm(akck paramakck) {}
+  WeakReference<PhoneContactManagerImp> a;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public akcm(Handler paramHandler)
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
+    super(paramHandler);
+  }
+  
+  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
+  {
+    if (this.a != null) {
+      this.a.clear();
     }
-    return i;
+    if (paramPhoneContactManagerImp != null) {
+      this.a = new WeakReference(paramPhoneContactManagerImp);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
+    }
+    if (this.a == null) {}
+    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    {
+      if (localPhoneContactManagerImp != null) {
+        localPhoneContactManagerImp.g = true;
+      }
+      return;
+    }
   }
 }
 

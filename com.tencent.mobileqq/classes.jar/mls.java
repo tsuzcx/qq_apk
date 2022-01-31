@@ -1,8 +1,20 @@
-import com.tencent.av.ui.VoiceChangeItemView1;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.beauty.BeautySeekView;
 
-public abstract interface mls
+public class mls
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt);
+  public mls(BeautySeekView paramBeautySeekView) {}
+  
+  public void onGlobalLayout()
+  {
+    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
+    {
+      this.a.a = false;
+      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
+    }
+  }
 }
 
 

@@ -3,12 +3,12 @@ package cooperation.qzone.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhur;
+import bhvi;
 
 public class RedTouchExtendButton$RedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedInfo> CREATOR = new bhur();
+  public static final Parcelable.Creator<RedInfo> CREATOR = new bhvi();
   public int a;
   public String a;
   public boolean a;

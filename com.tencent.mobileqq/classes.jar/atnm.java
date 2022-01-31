@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class atnm
+class atnm
+  implements Animation.AnimationListener
 {
-  String jdField_a_of_type_JavaLangString;
+  atnm(atnk paramatnk) {}
   
-  private atnm(TopicLabelListView paramTopicLabelListView) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

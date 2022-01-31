@@ -1,18 +1,39 @@
 import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
 
 public class aucb
-  implements aubo
+  implements aubn
 {
   public aucb(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a()
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
   }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    }
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

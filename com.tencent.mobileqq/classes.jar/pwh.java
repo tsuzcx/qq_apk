@@ -1,22 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class pwh
+  extends osm
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  RingAvatarView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView;
-  TextView b;
+  public pwh(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
   
-  public pwh(ComponentContentRecommend paramComponentContentRecommend) {}
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    ComponentContentRecommendFollowGroup.4.1 local1 = new ComponentContentRecommendFollowGroup.4.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
+    }
+    local1.run();
+  }
 }
 
 

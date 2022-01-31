@@ -1,20 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class adap
-  implements adar
+public class adap
+  implements aybj
 {
-  adap(adao paramadao, adaq paramadaq) {}
+  public adap(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      adao.a(this.jdField_a_of_type_Adao, this.jdField_a_of_type_Adaq.a());
-      this.jdField_a_of_type_Adaq.a();
-      return;
-    }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Adaq.a());
-    adao.a(this.jdField_a_of_type_Adao, 0);
+    int i = (int)(this.a.b - baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 165.0F) - this.a.jdField_a_of_type_Aycm.b / 2.0F);
+    int j = (int)(this.a.b - baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.jdField_a_of_type_Aycm.b / 2.0F);
+    int k = (int)(this.a.b - baxn.a(this.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.jdField_a_of_type_Aycm.b / 2.0F);
+    aybr localaybr = new aybr(new aybi[] { new aybm(450, this.a.jdField_a_of_type_Int / 2, (int)(-this.a.jdField_a_of_type_Aycm.b / 2.0F), this.a.jdField_a_of_type_Int / 2, i), new aybm(450, this.a.jdField_a_of_type_Int / 2, i, this.a.jdField_a_of_type_Int / 2, j), new aybm(450, this.a.jdField_a_of_type_Int / 2, j, this.a.jdField_a_of_type_Int / 2, k) });
+    localaybr.a(new adaq(this));
+    this.a.jdField_a_of_type_Aycm.a(new aybi[] { localaybr });
   }
 }
 

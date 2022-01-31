@@ -1,14 +1,135 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import android.util.Base64;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bell
-  implements ThreadFactory
+public class bell
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public static int a;
+  private static String a;
+  public static int b = 2;
+  public byte[] a;
+  public int c;
   
-  public Thread newThread(Runnable paramRunnable)
+  static
   {
-    return new Thread(paramRunnable, "AsyncTask ##" + this.a.getAndIncrement());
+    jdField_a_of_type_JavaLangString = "NativeBuffer";
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public static bell a(behq parambehq, JSONObject paramJSONObject, String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramJSONObject != null)
+    {
+      if (paramString != null) {
+        break label22;
+      }
+      localObject1 = localObject2;
+    }
+    label22:
+    int i;
+    do
+    {
+      String str2;
+      String str1;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return localObject1;
+              paramJSONObject = paramJSONObject.optJSONArray("__nativeBuffers__");
+              localObject1 = localObject2;
+            } while (paramJSONObject == null);
+            localObject1 = localObject2;
+          } while (paramJSONObject.length() == 0);
+          paramJSONObject = paramJSONObject.optJSONObject(0);
+          localObject1 = localObject2;
+        } while (paramJSONObject == null);
+        str2 = paramJSONObject.optString("key");
+        str1 = paramJSONObject.optString("base64");
+        i = paramJSONObject.optInt("id", -1);
+        localObject1 = localObject2;
+      } while (!paramString.equals(str2));
+      paramJSONObject = new bell();
+      if (!TextUtils.isEmpty(str1))
+      {
+        paramJSONObject.jdField_a_of_type_ArrayOfByte = Base64.decode(str1, 2);
+        paramJSONObject.c = b;
+        return paramJSONObject;
+      }
+      localObject1 = paramJSONObject;
+    } while (i == -1);
+    paramJSONObject.jdField_a_of_type_ArrayOfByte = parambehq.a(i);
+    paramJSONObject.c = jdField_a_of_type_Int;
+    return paramJSONObject;
+  }
+  
+  public static void a(behq parambehq, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramString == null)) {
+      return;
+    }
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      try
+      {
+        JSONArray localJSONArray = new JSONArray();
+        localJSONObject = new JSONObject();
+        localJSONObject.put("key", paramString);
+        if (paramInt3 == b)
+        {
+          localJSONObject.put("base64", Base64.encodeToString(paramArrayOfByte, paramInt1, paramInt2, 2));
+          localJSONArray.put(localJSONObject);
+          paramJSONObject.put("__nativeBuffers__", localJSONArray);
+          return;
+        }
+      }
+      catch (JSONException parambehq)
+      {
+        betc.d("[minigame]", "packNativeBuffer err :", parambehq);
+        return;
+      }
+      if (paramInt3 == jdField_a_of_type_Int) {
+        localJSONObject.put("id", parambehq.a(paramArrayOfByte, paramInt1, paramInt2));
+      }
+    }
+  }
+  
+  public static void a(behq parambehq, byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    a(parambehq, paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject);
+  }
+  
+  public static boolean a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return false;
+    }
+    return paramJSONObject.has("__nativeBuffers__");
+  }
+  
+  public static byte[] a(JSONArray paramJSONArray)
+  {
+    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
+    {
+      paramJSONArray = paramJSONArray.optJSONObject(0);
+      if (paramJSONArray != null)
+      {
+        paramJSONArray = paramJSONArray.optString("base64");
+        if (!TextUtils.isEmpty(paramJSONArray)) {
+          return Base64.decode(paramJSONArray, 0);
+        }
+      }
+    }
+    return null;
   }
 }
 

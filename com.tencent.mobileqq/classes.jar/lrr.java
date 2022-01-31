@@ -1,11 +1,274 @@
+import android.graphics.Rect;
+import android.opengl.GLES20;
 import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.WeakHashMap;
 
-public class lrr
-  extends TextureProgram
+public abstract class lrr
 {
-  public lrr()
+  private static ThreadLocal<Class<lrr>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
+  private static WeakHashMap<lrr, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  protected int a;
+  protected lqo a;
+  protected int[] a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e = -1;
+  protected int f = -1;
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j;
+  
+  protected lrr()
   {
-    super("uniform mat4 uMatrix;uniform mat4 uTextureMatrix;attribute vec2 aPosition;uniform  float fWidth;uniform  float fHeight;varying  vec2 vTextureCoord  ;varying  float srcWidth;varying  float srcHeight;void main(){  vec4 pos = vec4(aPosition, 0.0, 1.0);  gl_Position = uMatrix * pos;  vec2 inputTextureCoordinate = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;  vTextureCoord = inputTextureCoordinate.xy;  srcWidth = fWidth;  srcHeight = fHeight;}", "precision mediump float;varying  vec2 vTextureCoord  ;varying  float srcWidth;varying  float srcHeight;uniform sampler2D uTextureSampler0;const float k = 4.0;const float THRESHOLD = 1.15;const float EPSION = 0.8; const float QQAV_A1 = 0.00392156862745098;const  mat4 colorMat=mat4(1.0,1.0,1.0,0.0,  0.00093,-0.3437,1.77216,0.0,  1.401687,-0.71417,0.00099,0.0, -0.7011,0.525,-0.8828,0.0);float QQAV_Calc23Points2(sampler2D SamplerA, vec2 TexCoord){    vec2 coordinates[16];    float aroundPoints[16];    float t1,t2,t3;    float d1,d2;    coordinates[0] = vec2(0.0, -3.0);    coordinates[1] = vec2(-1.0, -2.0);    coordinates[2] = vec2(1.0, -2.0);    coordinates[3] = vec2(-2.0, -1.0);    coordinates[4] = vec2(0.0, -1.0);    coordinates[5] = vec2(2.0, -1.0);    coordinates[6] = vec2(-3.0, 0.0);    coordinates[7] = vec2(-1.0, 0.0);    coordinates[8] = vec2(1.0, 0.0);    coordinates[9] = vec2(3.0, 0.0);    coordinates[10] = vec2(-2.0, 1.0);    coordinates[11] = vec2(0.0, 1.0);    coordinates[12] = vec2(2.0, 1.0);    coordinates[13] = vec2(-1.0, 2.0);    coordinates[14] = vec2(1.0, 2.0);    coordinates[15] = vec2(0.0, 3.0);    for(int index = 0; index < 16; ++index)    {        aroundPoints[index] = texture2D(SamplerA, TexCoord + vec2((coordinates[index].x)/(srcWidth*2.0),(coordinates[index].y)/(srcHeight*2.0))).r;    }    t1 = abs(aroundPoints[1] - aroundPoints[2]) + abs(aroundPoints[7] - aroundPoints[8]) + abs(aroundPoints[13] - aroundPoints[14]);    t2 = abs(aroundPoints[3] - aroundPoints[4]) + abs(aroundPoints[4] - aroundPoints[5]);    t3 = abs(aroundPoints[10] - aroundPoints[11]) + abs(aroundPoints[11] - aroundPoints[12]);    d1 = QQAV_A1 + t1 + t2 + t3;    t1 = abs(aroundPoints[3] - aroundPoints[10]) + abs(aroundPoints[4] - aroundPoints[11]) + abs(aroundPoints[5] - aroundPoints[12]);    t2 = abs(aroundPoints[1] - aroundPoints[7]) + abs(aroundPoints[7] - aroundPoints[13]);    t3 = abs(aroundPoints[2] - aroundPoints[8]) + abs(aroundPoints[8] - aroundPoints[14]);    d2 = QQAV_A1 + t1 + t2 + t3;    float weight1, weight2;    int directionIndex = 3;    weight1 = 1.0/(1.0 + pow(d1, k));    weight2 = 1.0/(1.0 + pow(d2, k));    if( d1 > d2 * THRESHOLD)    {        directionIndex = 1;    }    else if(d2  > d1*THRESHOLD)    {        directionIndex = 2;    }    float v1, v2;    v1 = -1.0/16.0*aroundPoints[6] + 9.0/16.0*aroundPoints[7] + 9.0/16.0*aroundPoints[8] - 1.0/16.0*aroundPoints[9];    v2 = -1.0/16.0*aroundPoints[0] + 9.0/16.0*aroundPoints[4] + 9.0/16.0*aroundPoints[11] - 1.0/16.0*aroundPoints[15];    float flag1, flag2, flag3;    float v3 = (weight1*v1 + weight2*v2)/(weight1 + weight2);    flag1 = step(0.5,float(directionIndex))*step(float(directionIndex),1.5);    flag2 = step(1.5,float(directionIndex))*step(float(directionIndex),2.5);    flag3 = step(2.5,float(directionIndex))*step(float(directionIndex),3.5);    return (v2*flag1 + v1*flag2 + v3*flag3);}void main(){      float fX = vTextureCoord.x  * srcWidth*2.0;      float fY = vTextureCoord.y  * srcHeight*2.0;      vec3 Data = vec3(1.0,1.0,1.0);{ \t\tif((mod(fX, 2.0) <= EPSION && mod(fY, 2.0) > EPSION) || mod(fX, 2.0) > EPSION && mod(fY, 2.0) <= EPSION)\t\t{\t\t\tData   = texture2D(uTextureSampler0,         vTextureCoord).rgb;          Data.r = QQAV_Calc23Points2(uTextureSampler0,vTextureCoord);\t\t}\t\telse\t\t{\t\t\tData = texture2D(uTextureSampler0,vTextureCoord).rgb;\t\t}}\t\tgl_FragColor = colorMat * vec4(Data, 1.0);\t\tgl_FragColor.a=1.0;}", new lru[] { new lrt("aPosition"), new lrv("uMatrix"), new lrv("uAlpha"), new lrv("uTextureMatrix"), new lrv("uTextureSampler0"), new lrv("uTextureSampler1"), new lrv("uTextureSampler2"), new lrv("fWidth"), new lrv("fHeight"), new lrv("colorMat"), new lrv("yuvFormat"), new lrv("leavel") }, false);
+    this(null, 0);
+  }
+  
+  protected lrr(lqo arg1, int paramInt)
+  {
+    a(???);
+    this.b = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    {
+      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
+      return;
+    }
+  }
+  
+  public static void c()
+  {
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext()) {
+        ((lrr)localIterator.next()).b();
+      }
+    }
+  }
+  
+  public static void d()
+  {
+    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    {
+      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
+      if (localIterator.hasNext())
+      {
+        lrr locallrr = (lrr)localIterator.next();
+        locallrr.b = 0;
+        locallrr.a(null);
+      }
+    }
+  }
+  
+  public static boolean d()
+  {
+    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
+  }
+  
+  private void e()
+  {
+    lqo locallqo = this.jdField_a_of_type_Lqo;
+    if ((locallqo != null) && (this.jdField_a_of_type_ArrayOfInt != null))
+    {
+      locallqo.a(this);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    this.b = 0;
+    a(null);
+  }
+  
+  public int a()
+  {
+    return this.i;
+  }
+  
+  public Rect a()
+  {
+    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
+  }
+  
+  protected TextureProgram a()
+  {
+    return lrn.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    e();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.i = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.g = paramInt1;
+    this.h = paramInt2;
+    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
+      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
+    }
+    if (this.e == -1)
+    {
+      this.e = paramInt1;
+      this.f = paramInt2;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
+  }
+  
+  protected void a(lqo paramlqo)
+  {
+    this.jdField_a_of_type_Lqo = paramlqo;
+  }
+  
+  public void a(lqo paramlqo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramlqo.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract boolean a(lqo paramlqo);
+  
+  public byte[] a()
+  {
+    return null;
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(lqo paramlqo)
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public lrp[] a(lqo paramlqo)
+  {
+    int k = 0;
+    TextureProgram localTextureProgram = a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    lsq.a();
+    if ((!b()) || (paramlqo.a() < 0.95F)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      lqp.a(bool);
+      if (!a(paramlqo)) {
+        break;
+      }
+      int[] arrayOfInt = a();
+      while (k < arrayOfInt.length)
+      {
+        GLES20.glActiveTexture(33984 + k);
+        lsq.a();
+        GLES20.glBindTexture(g(), arrayOfInt[k]);
+        lsq.a();
+        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
+        lsq.a();
+        k += 1;
+      }
+    }
+    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramlqo.a());
+    lsq.a();
+    return localTextureProgram.a();
+  }
+  
+  public int b()
+  {
+    return this.j;
+  }
+  
+  public void b()
+  {
+    e();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
+  }
+  
+  public abstract boolean b();
+  
+  public byte[] b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.e;
+  }
+  
+  public boolean c()
+  {
+    return this.b == 1;
+  }
+  
+  public int d()
+  {
+    return this.f;
+  }
+  
+  public int e()
+  {
+    return this.g;
+  }
+  
+  public int f()
+  {
+    return this.h;
+  }
+  
+  protected void finalize()
+  {
+    try
+    {
+      jdField_a_of_type_JavaLangThreadLocal.set(lrr.class);
+      a();
+      jdField_a_of_type_JavaLangThreadLocal.set(null);
+      return;
+    }
+    finally
+    {
+      super.finalize();
+    }
+  }
+  
+  public abstract int g();
+  
+  public int h()
+  {
+    return 0;
+  }
+  
+  public int i()
+  {
+    return 0;
   }
 }
 

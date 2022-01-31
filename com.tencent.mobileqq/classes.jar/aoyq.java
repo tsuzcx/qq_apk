@@ -1,260 +1,191 @@
+import android.content.Context;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.bubble.QFileBubbleModel.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.List;
 
-public class aoyq
-  implements apcx
+public abstract class aoyq
 {
-  protected QQAppInterface a;
-  protected LinkedHashMap<Long, aoyr> a;
+  protected Context a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
+  private MessageForTroopFile jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile;
+  public boolean a;
+  private ChatMessage b;
   
-  public aoyq(QQAppInterface paramQQAppInterface)
+  public aoyq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  protected int a(String paramString)
+  private ChatMessage a(ChatMessage paramChatMessage)
   {
-    paramString = apvb.a(paramString);
-    if (".mp4".equalsIgnoreCase(paramString)) {
-      return 17;
-    }
-    if (".rmvb".equalsIgnoreCase(paramString)) {
-      return 18;
-    }
-    if (".avi".equalsIgnoreCase(paramString)) {
-      return 19;
-    }
-    if (".wmv".equalsIgnoreCase(paramString)) {
-      return 20;
-    }
-    if (".flv".equalsIgnoreCase(paramString)) {
-      return 21;
-    }
-    if (".3gp".equalsIgnoreCase(paramString)) {
-      return 22;
-    }
-    if (".mkv".equalsIgnoreCase(paramString)) {
-      return 23;
-    }
-    if (".asf".equalsIgnoreCase(paramString)) {
-      return 26;
-    }
-    if (".vob".equalsIgnoreCase(paramString)) {
-      return 27;
-    }
-    if (".m4v".equalsIgnoreCase(paramString)) {
-      return 28;
-    }
-    if (".f4v".equalsIgnoreCase(paramString)) {
-      return 29;
-    }
-    if (".mov".equalsIgnoreCase(paramString)) {
-      return 30;
-    }
-    if (".mpeg".equalsIgnoreCase(paramString)) {
-      return 31;
-    }
-    if (".mpg".equalsIgnoreCase(paramString)) {
-      return 32;
-    }
-    if (".rm".equalsIgnoreCase(paramString)) {
-      return 33;
-    }
-    if (".webm".equalsIgnoreCase(paramString)) {
-      return 34;
-    }
-    return -1;
-  }
-  
-  protected final aoyr a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+    int i = -2005;
+    Object localObject = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
+    if ((paramChatMessage.isMultiMsg) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      if (QLog.isDevelopLevel())
+      QLog.i("QFileBubbleModel", 1, "getRealChatMessage log, fileType[" + (String)localObject + "]");
+      int j = Integer.parseInt((String)localObject);
+      if (j == 3)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (localIterator.hasNext())
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile == null) {
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)axas.a(-2017));
+        }
+        apug.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile;
+        ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
+        ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+        ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
+        apug.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+        ((ChatMessage)localObject).istroop = 1;
+        if ((j == 1) || (j == 2)) {
+          apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop, paramChatMessage);
+        }
+        return localObject;
+      }
+      if ((j == 1) || (j == 2))
+      {
+        if (j == 1) {}
+        for (;;)
         {
-          long l = ((Long)localIterator.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call getSession ID[" + l + "] in mMap DowloadSession");
+          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile == null) {
+            this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile = ((MessageForFile)axas.a(i));
+          }
+          apug.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
+          ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
+          ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+          ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
+          apvm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject, paramChatMessage);
+          apug.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+          break;
+          i = -2014;
         }
       }
+      QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not support fileType. fileType[" + (String)localObject + "] extInfo[" + paramChatMessage.extStr + "]");
+      return (ChatMessage)axas.a(-2005);
     }
-    aoyr localaoyr = (aoyr)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-    return localaoyr;
+    QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not exist fileType. isMultiMsg[" + paramChatMessage.isMultiMsg + "] extInfo[" + paramChatMessage.extStr + "]");
+    return (ChatMessage)axas.a(-2005);
   }
   
-  protected String a(int paramInt)
+  public abstract int a();
+  
+  public abstract long a();
+  
+  public abstract aouf a();
+  
+  public abstract aoui a();
+  
+  public ChatMessage a()
   {
-    switch (paramInt)
+    return this.b;
+  }
+  
+  public abstract String a();
+  
+  public abstract List<Integer> a(int paramInt);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  protected abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public long b()
+  {
+    return 0L;
+  }
+  
+  public abstract String b();
+  
+  public abstract List<Integer> b(int paramInt);
+  
+  public void b() {}
+  
+  public void b(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isMultiMsg) {}
+    for (this.b = a(paramChatMessage);; this.b = paramChatMessage)
     {
-    default: 
-      return "64*64";
-    case 0: 
-      return "16*16";
-    case 1: 
-      return "32*32";
-    case 2: 
-      return "64*64";
-    case 3: 
-      return "128*128";
-    case 4: 
-      return "320*320";
-    case 5: 
-      return "384*384";
-    case 6: 
-      return "640*640";
-    case 7: 
-      return "750*750";
-    }
-    return "1024*1024";
-  }
-  
-  protected String a(int paramInt, String paramString)
-  {
-    String str;
-    switch (paramInt)
-    {
-    case 5: 
-    case 7: 
-    default: 
-      str = "x-video-";
-    }
-    for (;;)
-    {
-      return str + paramString;
-      str = "micro-video-";
-      continue;
-      str = "minni-video-";
-      continue;
-      str = "small-video-";
-      continue;
-      str = "middle-video-";
-      continue;
-      str = "large-video-";
-      continue;
-      str = "xlarge-video-";
-      continue;
-      str = "screen-video-";
-    }
-  }
-  
-  protected void a()
-  {
-    File localFile = new File(apti.a().d());
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-  }
-  
-  protected final void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] removeSession");
-      if (QLog.isDevelopLevel())
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          long l = ((Long)localIterator.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call removeSession ID[" + l + "] in mMapDowloadSession");
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-  }
-  
-  public void a(long paramLong, int paramInt, apcw paramapcw) {}
-  
-  public void a(long paramLong, apcw paramapcw) {}
-  
-  public void a(long paramLong, bbmg parambbmg) {}
-  
-  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, apcw paramapcw)
-  {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted suc:" + paramBoolean + " retCode[" + paramInt + "] thumbPath:" + paramString);
-    a(paramLong);
-  }
-  
-  protected final void a(long paramLong, boolean paramBoolean1, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, String paramString5, short paramShort, String paramString6)
-  {
-    QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrlResult suc:" + paramBoolean1 + " strDomain:" + paramString1 + " port:" + paramInt + " urlParam:" + paramString2 + " cookie:" + paramString4);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramLong, paramBoolean1, paramString1, paramInt, paramString2, paramString3, paramString4, paramBoolean2, paramString5, paramShort, paramString6);
-  }
-  
-  protected final void a(aoyr paramaoyr)
-  {
-    if (paramaoyr == null)
-    {
-      QLog.e("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb] addSession = null");
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-    {
-      QLog.i("BaseThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramaoyr.jdField_a_of_type_Long + "] addSession");
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramaoyr.jdField_a_of_type_Long), paramaoyr);
-      if (QLog.isDevelopLevel())
-      {
-        paramaoyr = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        if (paramaoyr.hasNext())
-        {
-          long l = ((Long)paramaoyr.next()).longValue();
-          QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] call addSession ID[" + l + "] in mMapDowloadSession");
-        }
-      }
-    }
-  }
-  
-  protected void a(aoyr paramaoyr, String paramString)
-  {
-    if ((paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext != null) && ((paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext instanceof String)) && ("igonFlow".equalsIgnoreCase((String)paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext))) {
-      paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mContext = null;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (!apee.a()) && (apue.a()))
-      {
-        QLog.i("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]autoDownload Thumb switch is off!");
-        return;
-      }
-      long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramString, this);
-      if (l == -1L)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "] thumb is Downloading,waiting please!");
-        return;
-      }
-      paramString = paramaoyr.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-      i = paramString.mThumbRetryCount;
-      paramString.mThumbRetryCount = (i + 1);
-      if (i > 10)
-      {
-        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "thumb retry over 10 count, igon!");
-        return;
-      }
-      paramaoyr.jdField_a_of_type_Long = l;
-      a(paramaoyr);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a();
+      a(this.b);
       return;
     }
   }
   
-  public boolean a(long paramLong, apcw paramapcw)
+  public boolean b()
   {
     return false;
   }
   
-  public void b(long paramLong, apcw paramapcw) {}
+  public abstract int c();
+  
+  public String c()
+  {
+    return "";
+  }
+  
+  public void c() {}
+  
+  protected void c(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage.uniseq);
+    if (paramChatMessage.isSendFromLocal())
+    {
+      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramChatMessage.frienduin, paramChatMessage.uniseq);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramChatMessage);
+    }
+  }
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  public abstract int d();
+  
+  public void d() {}
+  
+  public abstract int e();
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new QFileBubbleModel.1(this), 1000L);
+  }
+  
+  public int f()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyq
  * JD-Core Version:    0.7.0.1
  */

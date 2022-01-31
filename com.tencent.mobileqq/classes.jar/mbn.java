@@ -1,17 +1,18 @@
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
-class mbn
-  implements Comparator<los>
+public class mbn
+  extends BroadcastReceiver
 {
-  mbn(mbm parammbm) {}
+  public mbn(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public int a(los paramlos1, los paramlos2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramlos1.a) {}
-    while (paramlos2.a) {
-      return 1;
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
-    return 0;
   }
 }
 

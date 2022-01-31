@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
-import axch;
-import bhav;
+import axcj;
+import bhbm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.UndealCount.QZoneCountUserInfo;
@@ -15,16 +15,16 @@ class Leba$34
   
   public void run()
   {
-    localObject4 = (axch)this.this$0.a.getManager(10);
+    localObject4 = (axcj)this.this$0.a.getManager(10);
     int j;
     Object localObject1;
     if (localObject4 != null)
     {
-      j = ((axch)localObject4).a(1);
+      j = ((axcj)localObject4).a(1);
       if (localObject4 == null) {
         break label180;
       }
-      localObject1 = ((axch)localObject4).a();
+      localObject1 = ((axcj)localObject4).a();
       label41:
       if (QLog.isColorLevel()) {
         QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
@@ -33,7 +33,7 @@ class Leba$34
       if (localObject4 == null) {
         break label186;
       }
-      i = ((axch)localObject4).a(2);
+      i = ((axcj)localObject4).a(2);
       label100:
       if ((i <= 0) || (localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
         break label191;
@@ -69,29 +69,29 @@ class Leba$34
             if (localObject4 == null) {
               continue;
             }
-            localObject1 = ((axch)localObject4).a(6);
+            localObject1 = ((axcj)localObject4).a(6);
             if (localObject4 == null) {
               continue;
             }
-            localObject5 = ((axch)localObject4).a(61);
+            localObject5 = ((axcj)localObject4).a(61);
             if (localObject4 == null) {
               continue;
             }
-            localbhav = ((axch)localObject4).a(3);
+            localbhbm = ((axcj)localObject4).a(3);
             localObject6 = "";
             localObject4 = "";
-            if ((localObject1 == null) || (((bhav)localObject1).jdField_a_of_type_JavaUtilArrayList == null) || (((bhav)localObject1).jdField_a_of_type_JavaUtilArrayList.size() <= 0) || (((QZoneCountUserInfo)((bhav)localObject1).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long <= 0L) || (((bhav)localObject1).jdField_a_of_type_Long <= 0L)) {
+            if ((localObject1 == null) || (((bhbm)localObject1).jdField_a_of_type_JavaUtilArrayList == null) || (((bhbm)localObject1).jdField_a_of_type_JavaUtilArrayList.size() <= 0) || (((QZoneCountUserInfo)((bhbm)localObject1).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long <= 0L) || (((bhbm)localObject1).jdField_a_of_type_Long <= 0L)) {
               continue;
             }
-            localObject4 = ((bhav)localObject1).f;
-            localObject6 = ((QZoneCountUserInfo)((bhav)localObject1).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
+            localObject4 = ((bhbm)localObject1).f;
+            localObject6 = ((QZoneCountUserInfo)((bhbm)localObject1).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
             i = 1;
             localObject1 = localObject4;
             localObject4 = localObject6;
           }
           catch (Exception localException2)
           {
-            bhav localbhav;
+            bhbm localbhbm;
             Object localObject6;
             boolean bool;
             Object localObject2;
@@ -105,11 +105,11 @@ class Leba$34
             localObject3 = localObject6;
             continue;
           }
-          if ((i != 0) || (localObject5 == null) || (((bhav)localObject5).jdField_a_of_type_JavaUtilArrayList == null) || (((bhav)localObject5).jdField_a_of_type_JavaUtilArrayList.size() <= 0) || (((QZoneCountUserInfo)((bhav)localObject5).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long <= 0L) || (((bhav)localObject5).jdField_a_of_type_Long <= 0L)) {
+          if ((i != 0) || (localObject5 == null) || (((bhbm)localObject5).jdField_a_of_type_JavaUtilArrayList == null) || (((bhbm)localObject5).jdField_a_of_type_JavaUtilArrayList.size() <= 0) || (((QZoneCountUserInfo)((bhbm)localObject5).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long <= 0L) || (((bhbm)localObject5).jdField_a_of_type_Long <= 0L)) {
             continue;
           }
-          localObject4 = ((bhav)localObject5).f;
-          localObject1 = ((QZoneCountUserInfo)((bhav)localObject5).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
+          localObject4 = ((bhbm)localObject5).f;
+          localObject1 = ((QZoneCountUserInfo)((bhbm)localObject5).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
           i = 1;
           localObject6 = localObject1;
           localObject5 = localObject4;
@@ -117,26 +117,26 @@ class Leba$34
           {
             localObject6 = localObject1;
             localObject5 = localObject4;
-            if (localbhav != null)
+            if (localbhbm != null)
             {
               localObject6 = localObject1;
               localObject5 = localObject4;
-              if (localbhav.jdField_a_of_type_JavaUtilArrayList != null)
+              if (localbhbm.jdField_a_of_type_JavaUtilArrayList != null)
               {
                 localObject6 = localObject1;
                 localObject5 = localObject4;
-                if (localbhav.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+                if (localbhbm.jdField_a_of_type_JavaUtilArrayList.size() > 0)
                 {
                   localObject6 = localObject1;
                   localObject5 = localObject4;
-                  if (((QZoneCountUserInfo)localbhav.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long > 0L)
+                  if (((QZoneCountUserInfo)localbhbm.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long > 0L)
                   {
                     localObject6 = localObject1;
                     localObject5 = localObject4;
-                    if (localbhav.jdField_a_of_type_Long > 0L)
+                    if (localbhbm.jdField_a_of_type_Long > 0L)
                     {
-                      localObject5 = localbhav.f;
-                      localObject6 = ((QZoneCountUserInfo)localbhav.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
+                      localObject5 = localbhbm.f;
+                      localObject6 = ((QZoneCountUserInfo)localbhbm.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "";
                     }
                   }
                 }
@@ -160,7 +160,7 @@ class Leba$34
         continue;
         localObject5 = null;
         continue;
-        localbhav = null;
+        localbhbm = null;
       }
       this.this$0.a(new Leba.34.4(this));
       if (QLog.isColorLevel()) {

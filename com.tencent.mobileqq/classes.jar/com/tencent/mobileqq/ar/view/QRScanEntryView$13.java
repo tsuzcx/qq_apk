@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import actn;
+import actj;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.widget.FrameLayout.LayoutParams;
@@ -18,7 +18,7 @@ class QRScanEntryView$13
       {
         this.this$0.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.this$0.getContext());
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839140);
-        i = actn.a(25.0F, this.this$0.getResources());
+        i = actj.a(25.0F, this.this$0.getResources());
         localRect = new Rect(0, 0, i, i);
         localRect.offset(QRScanEntryView.a(this.this$0).centerX() - (int)(i * 0.5F), QRScanEntryView.a(this.this$0).centerY() - (int)(i * 0.5F));
         localLayoutParams = new FrameLayout.LayoutParams(i, i);

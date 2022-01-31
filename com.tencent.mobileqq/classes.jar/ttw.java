@@ -1,17 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class ttw
-  implements View.OnTouchListener
+  extends uyi
 {
   public ttw(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    if ((paramObject instanceof QQUserUIItem))
+    {
+      paramView = (QQUserUIItem)paramObject;
+      sxm.a(this.a.a, 10, paramView.uid);
+    }
   }
 }
 

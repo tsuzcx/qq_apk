@@ -1,28 +1,33 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class nqo
-  extends akdo
+class nqo
+  extends bbwt
 {
-  public nqo(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  nqo(nqn paramnqn) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onDone(bbwu parambbwu)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    super.onDone(parambbwu);
+    if ((parambbwu.a == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701259));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambbwu.i).commit();
       }
+      this.a.b();
     }
-    else {
-      return;
+    if (QLog.isColorLevel())
+    {
+      File localFile = new File(nqn.jdField_a_of_type_JavaLangString);
+      long l = 0L;
+      if (localFile.exists()) {
+        l = localFile.lastModified();
+      }
+      QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambbwu.a() + ",errCode=" + parambbwu.a + ",httpCode=" + parambbwu.f + ",local lastModify=" + l + ",server lastModify=" + parambbwu.i);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131701238));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846180);
   }
 }
 

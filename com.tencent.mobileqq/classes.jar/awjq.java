@@ -1,24 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 
 public class awjq
   implements View.OnClickListener
 {
-  public awjq(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public awjq(BaseSearchActivity paramBaseSearchActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
-    this.a.a.requestFocus();
-    paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (paramView != null) {
-      paramView.showSoftInput(this.a.a, 0);
-    }
+    this.a.finish();
   }
 }
 

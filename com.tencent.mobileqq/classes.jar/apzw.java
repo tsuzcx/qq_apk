@@ -1,47 +1,12 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
-
-public class apzw
-  implements SplashScreen
+class apzw
+  implements ajuz
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private apzx jdField_a_of_type_Apzx;
+  apzw(apzv paramapzv) {}
   
-  public apzw(apzx paramapzx)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Apzx = paramapzx;
-  }
-  
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560515, null);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public boolean doesSplashViewRememberItsTransition()
-  {
-    return false;
-  }
-  
-  @Nullable
-  public Bundle saveSplashScreenState()
-  {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    if (paramRunnable != null) {
-      paramRunnable.run();
-    }
-    if (this.jdField_a_of_type_Apzx != null) {
-      this.jdField_a_of_type_Apzx.a();
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

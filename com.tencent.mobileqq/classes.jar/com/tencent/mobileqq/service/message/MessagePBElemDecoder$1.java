@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.service.message;
 
-import axal;
-import nnx;
+import axan;
+import nnu;
 
 public class MessagePBElemDecoder$1
   implements Runnable
 {
-  public MessagePBElemDecoder$1(axal paramaxal) {}
+  public MessagePBElemDecoder$1(axan paramaxan) {}
   
   public void run()
   {
-    nnx.a().a(axal.a(this.this$0));
+    nnu.a().a(axan.a(this.this$0));
   }
 }
 

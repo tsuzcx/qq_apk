@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.utils;
 
-import bbbl;
-import bbbm;
+import bbbz;
+import bbca;
 
 public class AntiFraudConfigFileUtil$3$1
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$3$1(bbbm parambbbm, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public AntiFraudConfigFileUtil$3$1(bbca parambbca, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bbbm.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Bbbm.a.a(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Bbca.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Bbca.a.a(this.jdField_a_of_type_JavaLangString));
     if (!this.b.equalsIgnoreCase(str))
     {
-      this.jdField_a_of_type_Bbbm.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      this.jdField_a_of_type_Bbca.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
       return;
     }
-    this.jdField_a_of_type_Bbbm.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+    this.jdField_a_of_type_Bbca.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.phone;
 
+import agij;
+import agik;
 import agil;
 import agim;
 import agin;
 import agio;
-import agip;
-import agiq;
-import ajyc;
+import ajya;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +19,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbcv;
-import bbgg;
-import bcpq;
-import bcpw;
+import bbdj;
+import bbgu;
+import bcqf;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,12 +33,12 @@ public class BaseActivityView
   extends FrameLayout
 {
   public int a;
-  private agiq jdField_a_of_type_Agiq;
+  private agio jdField_a_of_type_Agio;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   protected View a;
   protected ImageView a;
   public TextView a;
-  public bcpq a;
+  public bcqf a;
   private PhoneInnerFrame jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame;
   public BaseActivity a;
   public PhoneContactManagerImp a;
@@ -64,15 +64,15 @@ public class BaseActivityView
     return this.jdField_a_of_type_AndroidViewView.getHeight();
   }
   
-  private void a(agip paramagip)
+  private void a(agin paramagin)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView = paramagip.a();
-    this.d = paramagip.d();
-    this.jdField_a_of_type_AndroidViewView = paramagip.a();
-    this.jdField_b_of_type_AndroidViewView = paramagip.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = paramagip.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = paramagip.b();
-    this.jdField_b_of_type_AndroidWidgetTextView = paramagip.c();
+    this.jdField_c_of_type_AndroidWidgetTextView = paramagin.a();
+    this.d = paramagin.d();
+    this.jdField_a_of_type_AndroidViewView = paramagin.a();
+    this.jdField_b_of_type_AndroidViewView = paramagin.b();
+    this.jdField_a_of_type_AndroidWidgetImageView = paramagin.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = paramagin.b();
+    this.jdField_b_of_type_AndroidWidgetTextView = paramagin.c();
   }
   
   protected View a(int paramInt)
@@ -91,12 +91,12 @@ public class BaseActivityView
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690596);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajyc.a(2131700925));
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(ajya.a(2131700936));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     for (;;)
     {
-      this.d.setOnClickListener(new agil(this));
+      this.d.setOnClickListener(new agij(this));
       this.jdField_a_of_type_Boolean = false;
       return;
       if (this.jdField_a_of_type_Int != 1) {
@@ -104,7 +104,7 @@ public class BaseActivityView
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840083);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840080);
         }
         else if (this.jdField_a_of_type_Int == 5)
         {
@@ -137,18 +137,18 @@ public class BaseActivityView
     if (!a())
     {
       b(paramInt);
-      this.jdField_a_of_type_Agiq.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Agio.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Agiq;
+    Object localObject = this.jdField_a_of_type_Agio;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localObject = ((agiq)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Agiq.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((agio)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Agio.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -179,7 +179,7 @@ public class BaseActivityView
   
   protected void a(Intent paramIntent, PhoneInnerFrame paramPhoneInnerFrame)
   {
-    this.jdField_a_of_type_Agiq = new agiq(this);
+    this.jdField_a_of_type_Agio = new agio(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame = paramPhoneInnerFrame;
     paramIntent = paramPhoneInnerFrame.b();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramIntent.a();
@@ -190,7 +190,7 @@ public class BaseActivityView
   protected void a(String paramString1, String paramString2)
   {
     if (!a()) {
-      bbcv.a(getContext(), 231, paramString1, paramString2, new agim(this), null).show();
+      bbdj.a(getContext(), 231, paramString1, paramString2, new agik(this), null).show();
     }
   }
   
@@ -208,23 +208,23 @@ public class BaseActivityView
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if ((!a()) && (this.jdField_a_of_type_Bcpq == null))
+    if ((!a()) && (this.jdField_a_of_type_Bcqf == null))
     {
-      this.jdField_a_of_type_Bcpq = new bcpq(getContext(), a());
-      this.jdField_a_of_type_Bcpq.setOnDismissListener(new agin(this));
+      this.jdField_a_of_type_Bcqf = new bcqf(getContext(), a());
+      this.jdField_a_of_type_Bcqf.setOnDismissListener(new agil(this));
       if (paramBoolean) {
-        this.jdField_a_of_type_Bcpq.setOnKeyListener(new agio(this));
+        this.jdField_a_of_type_Bcqf.setOnKeyListener(new agim(this));
       }
-      this.jdField_a_of_type_Bcpq.c(paramInt);
-      this.jdField_a_of_type_Bcpq.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bcpq.show();
+      this.jdField_a_of_type_Bcqf.c(paramInt);
+      this.jdField_a_of_type_Bcqf.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bcqf.show();
     }
   }
   
   public void b(String paramString)
   {
     if (!a()) {
-      bcpw.a(getContext(), 0, paramString, 0).b(a());
+      bcql.a(getContext(), 0, paramString, 0).b(a());
     }
   }
   
@@ -246,11 +246,11 @@ public class BaseActivityView
   
   public void g()
   {
-    this.jdField_a_of_type_Agiq.removeMessages(1);
-    if (this.jdField_a_of_type_Bcpq != null)
+    this.jdField_a_of_type_Agio.removeMessages(1);
+    if (this.jdField_a_of_type_Bcqf != null)
     {
-      this.jdField_a_of_type_Bcpq.cancel();
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf.cancel();
+      this.jdField_a_of_type_Bcqf = null;
     }
   }
   
@@ -262,8 +262,8 @@ public class BaseActivityView
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      this.jdField_a_of_type_Agiq.removeMessages(3);
-      this.jdField_a_of_type_Agiq.sendEmptyMessageDelayed(3, 120000L);
+      this.jdField_a_of_type_Agio.removeMessages(3);
+      this.jdField_a_of_type_Agio.sendEmptyMessageDelayed(3, 120000L);
     }
   }
   
@@ -271,7 +271,7 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      this.jdField_a_of_type_Agiq.removeMessages(3);
+      this.jdField_a_of_type_Agio.removeMessages(3);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

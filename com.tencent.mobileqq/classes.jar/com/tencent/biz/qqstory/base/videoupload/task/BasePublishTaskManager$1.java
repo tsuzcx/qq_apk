@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.base.videoupload.task;
 
-import sxe;
+import sxb;
 
 public class BasePublishTaskManager$1
   implements Runnable
 {
-  public BasePublishTaskManager$1(sxe paramsxe) {}
+  public BasePublishTaskManager$1(sxb paramsxb) {}
   
   public void run()
   {

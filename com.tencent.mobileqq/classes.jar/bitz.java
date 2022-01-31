@@ -1,14 +1,27 @@
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.AEGIFTextColorSelectionView;
 
 class bitz
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  bitz(bitt parambitt) {}
+  AEGIFTextColorSelectionView a;
   
-  public void onClick(View paramView)
+  public bitz(@NonNull View paramView)
   {
-    bitt.e(this.a);
+    super(paramView);
+    this.a = ((AEGIFTextColorSelectionView)paramView.findViewById(2131363788));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.setColor(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(Boolean.valueOf(paramBoolean));
   }
 }
 

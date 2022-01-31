@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import ajae;
-import alvt;
+import ajac;
+import alvs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 
@@ -10,13 +10,13 @@ public class QQGamePubActivity
 {
   static
   {
-    alvt.a(true);
-    alvt.a();
+    alvs.a(true);
+    alvs.a();
   }
   
   public AppInterface getAppInterface()
   {
-    return ajae.a();
+    return ajac.a();
   }
 }
 

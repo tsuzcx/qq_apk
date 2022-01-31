@@ -1,15 +1,10 @@
-public class apsq
+public abstract interface apsq
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public byte[] c;
-  public long d;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

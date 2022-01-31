@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import adwr;
-import agga;
-import ajsf;
-import ajwd;
-import ajyc;
-import akdi;
-import akpy;
-import amns;
+import adwp;
+import agfy;
+import ajsd;
+import ajwb;
+import ajya;
+import akdh;
+import akpx;
+import amnr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,22 +19,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import arpf;
-import arqn;
-import asty;
-import axuy;
-import ayju;
+import arph;
+import arqp;
+import asua;
+import axva;
 import ayjw;
-import ayvb;
-import bajb;
-import bajc;
-import balw;
-import bbbi;
-import bbcl;
-import bbdr;
-import bben;
-import bbev;
-import bfnr;
+import ayjy;
+import ayvd;
+import bajp;
+import bajq;
+import bamk;
+import bbbw;
+import bbcz;
+import bbef;
+import bbfb;
+import bbfj;
+import bfoi;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -60,7 +60,7 @@ import com.tencent.widget.XEditTextEx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nbc;
+import naz;
 
 public class BaseChatpieHelper
 {
@@ -289,7 +289,7 @@ public class BaseChatpieHelper
     if (paramBoolean) {
       paramEditText.setText("");
     }
-    paramButton.setText(ajyc.a(2131700945));
+    paramButton.setText(ajya.a(2131700956));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, XEditTextEx paramXEditTextEx, boolean paramBoolean)
@@ -301,7 +301,7 @@ public class BaseChatpieHelper
     boolean bool1;
     if ((j & 0x4) != 0)
     {
-      i = adwr.a(paramQQAppInterface, "SVIP_MaxPtt");
+      i = adwp.a(paramQQAppInterface, "SVIP_MaxPtt");
       if (paramXEditTextEx.getInputExtras(true).getInt("Channels") != 1)
       {
         paramQQAppInterface = QQRecorder.a();
@@ -334,7 +334,7 @@ public class BaseChatpieHelper
       if ((j & 0x2) == 0) {
         break;
       }
-      i = adwr.a(paramQQAppInterface, "VIP_MaxPtt");
+      i = adwp.a(paramQQAppInterface, "VIP_MaxPtt");
       break;
       bool1 = false;
       break label59;
@@ -364,7 +364,7 @@ public class BaseChatpieHelper
   
   static boolean a(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
   {
-    if ((paramMessage == null) || (paramMessage.isread) || (paramMessage.isSendFromLocal()) || (paramQQAppInterface.a(paramMessage)) || (akpy.b(paramQQAppInterface, paramMessage))) {
+    if ((paramMessage == null) || (paramMessage.isread) || (paramMessage.isSendFromLocal()) || (paramQQAppInterface.a(paramMessage)) || (akpx.b(paramQQAppInterface, paramMessage))) {
       return false;
     }
     if (((HotChatManager)paramQQAppInterface.getManager(60)).b(paramMessage.frienduin)) {
@@ -376,34 +376,37 @@ public class BaseChatpieHelper
     if (1036 == paramMessage.istroop) {
       return false;
     }
-    if ((paramMessage.istroop == 1008) && (ajsf.aQ.equals(paramMessage.senderuin))) {
+    if ((paramMessage.istroop == 1008) && (ajsd.aQ.equals(paramMessage.senderuin))) {
       return false;
     }
-    if ((paramMessage.istroop == 1008) && (ajsf.aR.equals(paramMessage.senderuin))) {
+    if ((paramMessage.istroop == 1008) && (ajsd.aR.equals(paramMessage.senderuin))) {
       return false;
     }
-    if (akpy.d(paramMessage.senderuin)) {
+    if (akpx.d(paramMessage.senderuin)) {
       return false;
     }
-    if (((paramMessage.istroop == 1001) || (paramMessage.istroop == 10002)) && (akpy.d(paramMessage))) {
+    if (((paramMessage.istroop == 1001) || (paramMessage.istroop == 10002)) && (akpx.d(paramMessage))) {
       return false;
     }
-    if (akpy.e(paramMessage)) {
+    if (akpx.e(paramMessage)) {
       return false;
     }
     if (paramMessage.msgtype == -2058) {
       return false;
     }
-    if ((paramMessage.istroop != 7220) && (TextUtils.equals(paramMessage.frienduin, ajsf.az))) {
+    if ((paramMessage.istroop != 7220) && (TextUtils.equals(paramMessage.frienduin, ajsd.az))) {
       return false;
     }
-    if (amns.a(paramMessage)) {
+    if (amnr.a(paramMessage)) {
       return false;
     }
-    if ((arqn.b(paramMessage)) || (arqn.a(paramMessage))) {
+    if ((arqp.b(paramMessage)) || (arqp.a(paramMessage))) {
       return false;
     }
-    return (paramMessage.istroop != 0) || (!FriendsStatusUtil.a(paramMessage.frienduin, paramQQAppInterface));
+    if ((paramMessage.istroop == 0) && (FriendsStatusUtil.a(paramMessage.frienduin, paramQQAppInterface))) {
+      return false;
+    }
+    return (paramMessage.istroop != 0) || (!TextUtils.equals(paramMessage.frienduin, ajsd.O));
   }
   
   CharSequence a(Intent paramIntent, QQMessageFacade.Message paramMessage)
@@ -426,26 +429,26 @@ public class BaseChatpieHelper
           localObject1 = localObject1[0].trim();
           break label989;
           localObject3 = new SpannableStringBuilder();
-          localObject2 = bajb.a(paramMessage);
+          localObject2 = bajp.a(paramMessage);
           if (localObject2 != null) {
-            paramMessage.nickName = ((bajc)localObject2).c;
+            paramMessage.nickName = ((bajq)localObject2).c;
           }
           if (paramMessage.nickName == null) {
             continue;
           }
           localObject2 = localObject1;
-          if (paramMessage.nickName.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131693965)))
+          if (paramMessage.nickName.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131693966)))
           {
             localObject1 = ((CharSequence)localObject1).toString();
             i = 0;
-            if (i >= ayjw.a.length) {
+            if (i >= ayjy.a.length) {
               break label1016;
             }
             localObject2 = localObject1;
-            if (((String)localObject1).indexOf('\024' + ayjw.a[i]) == -1) {
+            if (((String)localObject1).indexOf('\024' + ayjy.a[i]) == -1) {
               break label992;
             }
-            localObject2 = ((String)localObject1).replace('\024' + ayjw.a[i], "\024" + (char)i);
+            localObject2 = ((String)localObject1).replace('\024' + ayjy.a[i], "\024" + (char)i);
             break label992;
           }
         }
@@ -453,7 +456,7 @@ public class BaseChatpieHelper
         {
           if ((paramMessage.msgtype == -2011) || (paramMessage.msgtype == -2059))
           {
-            localObject1 = axuy.a(paramMessage.msgData);
+            localObject1 = axva.a(paramMessage.msgData);
             if (localObject1 != null)
             {
               localObject1 = ((AbsStructMsg)localObject1).mMsgBrief;
@@ -464,7 +467,7 @@ public class BaseChatpieHelper
           }
           if (paramMessage.msgtype == -2000)
           {
-            if ((((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(paramMessage.frienduin)) || (ajwd.a(paramMessage)))
+            if ((((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).b(paramMessage.frienduin)) || (ajwb.a(paramMessage)))
             {
               localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691293);
               break label1013;
@@ -474,18 +477,18 @@ public class BaseChatpieHelper
           }
           if (paramMessage.msgtype == -7001)
           {
-            localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694433);
+            localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694434);
             continue;
           }
           localObject2 = paramMessage.getMessageText();
           localObject1 = localObject2;
-          if (!balw.b(paramMessage)) {
+          if (!bamk.b(paramMessage)) {
             continue;
           }
-          if (!balw.d(paramMessage)) {
-            balw.a(paramMessage);
+          if (!bamk.d(paramMessage)) {
+            bamk.a(paramMessage);
           }
-          localObject3 = balw.b(paramMessage);
+          localObject3 = bamk.b(paramMessage);
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
             continue;
@@ -494,10 +497,10 @@ public class BaseChatpieHelper
           continue;
         }
         localObject1 = paramIntent.getStringExtra("uinname");
-        ((SpannableStringBuilder)localObject3).append(new ayju("[" + (String)localObject1 + "]", 16));
+        ((SpannableStringBuilder)localObject3).append(new ayjw("[" + (String)localObject1 + "]", 16));
         ((SpannableStringBuilder)localObject3).append(" ");
-        ((SpannableStringBuilder)localObject3).append(new ayju(paramMessage.nickName, 16));
-        bfnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramMessage, paramIntent, (SpannableStringBuilder)localObject3);
+        ((SpannableStringBuilder)localObject3).append(new ayjw(paramMessage.nickName, 16));
+        bfoi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramMessage, paramIntent, (SpannableStringBuilder)localObject3);
         localObject1 = localObject2;
         if (localObject1 == null) {
           break label1023;
@@ -506,7 +509,7 @@ public class BaseChatpieHelper
         ((SpannableStringBuilder)localObject3).append((CharSequence)localObject1);
         break label1023;
         str = paramIntent.getStringExtra("uinname");
-        bfnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramMessage, (SpannableStringBuilder)localObject3);
+        bfoi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramMessage, (SpannableStringBuilder)localObject3);
         if ((str == null) || (str.length() == 0))
         {
           ((SpannableStringBuilder)localObject3).append(paramMessage.frienduin);
@@ -538,9 +541,9 @@ public class BaseChatpieHelper
       label677:
       if ((1010 == paramMessage.istroop) || (1001 == paramMessage.istroop))
       {
-        if (String.valueOf(ajsf.H).equals(paramMessage.frienduin))
+        if (String.valueOf(ajsd.H).equals(paramMessage.frienduin))
         {
-          localObject2 = bbcl.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin);
+          localObject2 = bbcz.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.senderuin);
           paramIntent = (Intent)localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             paramIntent = paramMessage.senderuin;
@@ -554,9 +557,9 @@ public class BaseChatpieHelper
           if (paramMessage.msgtype != -1024) {
             break;
           }
-          paramIntent = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698839), new Object[] { paramIntent });
+          paramIntent = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698849), new Object[] { paramIntent });
           break label1026;
-          localObject2 = bbcl.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin);
+          localObject2 = bbcz.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin);
           paramIntent = (Intent)localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             paramIntent = paramMessage.frienduin;
@@ -565,7 +568,7 @@ public class BaseChatpieHelper
       }
       if (1024 == paramMessage.istroop)
       {
-        paramIntent = nbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin);
+        paramIntent = naz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin);
         if (TextUtils.isEmpty(paramIntent)) {
           ((SpannableStringBuilder)localObject3).append(str);
         } else {
@@ -574,7 +577,7 @@ public class BaseChatpieHelper
       }
       else if ((7220 == paramMessage.istroop) && (paramMessage.extInt == 2) && (!TextUtils.isEmpty(paramMessage.senderuin)))
       {
-        paramIntent = ((akdi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).b(paramMessage.senderuin);
+        paramIntent = ((akdh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).b(paramMessage.senderuin);
         if ((paramIntent != null) && (!TextUtils.isEmpty(paramIntent.name))) {
           ((SpannableStringBuilder)localObject3).append(paramIntent.name);
         } else {
@@ -615,7 +618,7 @@ public class BaseChatpieHelper
   
   public void a()
   {
-    agga.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    agfy.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
   }
   
   void a(int paramInt1, int paramInt2, String paramString)
@@ -625,8 +628,8 @@ public class BaseChatpieHelper
   
   public void a(Activity paramActivity, Intent paramIntent)
   {
-    ArrayList localArrayList = (ArrayList)asty.a().a();
-    String str = arpf.a(localArrayList);
+    ArrayList localArrayList = (ArrayList)asua.a().a();
+    String str = arph.a(localArrayList);
     paramIntent.putExtra("chatuin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     paramIntent.putExtra("chattype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     paramIntent.putExtra("msgs", str);
@@ -643,8 +646,8 @@ public class BaseChatpieHelper
   
   public void b()
   {
-    agga.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (!agga.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+    agfy.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) && (!agfy.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     }
   }
@@ -664,7 +667,7 @@ public class BaseChatpieHelper
           if (QLog.isColorLevel()) {
             QLog.d("BaseChatpieHelper", 2, "uploadPreviewPhoto");
           }
-          bbdr.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.uploadPreviewPhoto:request=" + paramIntent.getIntExtra(bbbi.h, -1));
+          bbef.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.uploadPreviewPhoto:request=" + paramIntent.getIntExtra(bbbw.h, -1));
           localBundle = paramIntent.getExtras();
         } while (localBundle == null);
         if (localBundle.getBoolean("deleteImage", false))
@@ -672,7 +675,7 @@ public class BaseChatpieHelper
           this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(true, false);
           return;
         }
-        i = paramIntent.getIntExtra(bbbi.h, -1);
+        i = paramIntent.getIntExtra(bbbw.h, -1);
       } while ((i != 2) && (i != 1));
       paramIntent = paramIntent.getParcelableArrayListExtra("imageInfos");
     } while ((paramIntent == null) || (paramIntent.isEmpty()));
@@ -692,7 +695,7 @@ public class BaseChatpieHelper
   void c(Intent paramIntent)
   {
     Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PreUploadVideoConfig.name(), "0|0|1.0|5|480000|0");
-    bben.a(String.valueOf(0), "checking", "<BDH_LOG> DPCConfig of PreUploadVideoConfig :" + (String)localObject);
+    bbfb.a(String.valueOf(0), "checking", "<BDH_LOG> DPCConfig of PreUploadVideoConfig :" + (String)localObject);
     float f1 = 0.0F;
     float f3 = 0.0F;
     float f2 = 0.0F;
@@ -751,14 +754,14 @@ public class BaseChatpieHelper
           m = j;
           k = i;
           f2 = f1;
-          bben.a(String.valueOf(0), "checking", "<BDH_LOG> DPCConfig PreUpEnable:" + n + " HardEncodeEnable:" + m + " Limits:" + k + " dpcDuration:" + f2 + " dpcTimeout:" + l1);
+          bbfb.a(String.valueOf(0), "checking", "<BDH_LOG> DPCConfig PreUpEnable:" + n + " HardEncodeEnable:" + m + " Limits:" + k + " dpcDuration:" + f2 + " dpcTimeout:" + l1);
           bool3 = VideoUpConfigInfo.isPreUpload();
           bool1 = VideoUpConfigInfo.sIsHardCodeEnable;
           if ((m != 1) || (!bool1)) {
             break label668;
           }
           bool2 = true;
-          bben.a(String.valueOf(0), "checking", "<BDH_LOG> HardCodeEnable: " + bool2 + " DPC:" + m + " BDH:" + bool1);
+          bbfb.a(String.valueOf(0), "checking", "<BDH_LOG> HardCodeEnable: " + bool2 + " DPC:" + m + " BDH:" + bool1);
           if (!VideoUpConfigInfo.getIsUpdated())
           {
             if (QLog.isColorLevel()) {
@@ -767,14 +770,14 @@ public class BaseChatpieHelper
             HwServlet.getConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
             VideoUpConfigInfo.setIsUpdated();
           }
-          if (!bbev.h(BaseApplication.getContext())) {
+          if (!bbfj.h(BaseApplication.getContext())) {
             break label680;
           }
           if ((n != 1) || (!bool3)) {
             break label674;
           }
           bool1 = true;
-          bben.a(String.valueOf(0), "checking", "<BDH_LOG> Enable: " + bool1 + " DPC:" + n + " BDH:" + bool3 + " isWifi");
+          bbfb.a(String.valueOf(0), "checking", "<BDH_LOG> Enable: " + bool1 + " DPC:" + n + " BDH:" + bool3 + " isWifi");
           if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 9501) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1008)) {
             bool1 = false;
           }
@@ -794,14 +797,14 @@ public class BaseChatpieHelper
               }
             }
           }
-          if ((!bool3) || (!ayvb.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+          if ((!bool3) || (!ayvd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
             break label686;
           }
           paramIntent.putExtra("key_video_presend_enable", true);
           paramIntent.putExtra("key_video_hard_encode_enable", bool2);
           paramIntent.putExtra("key_video_presend_slice_duration", f2);
-          axgy.jdField_a_of_type_Boolean = bool2;
-          axgy.b = bool3;
+          axha.jdField_a_of_type_Boolean = bool2;
+          axha.b = bool3;
           return;
         }
         catch (NumberFormatException localNumberFormatException4)

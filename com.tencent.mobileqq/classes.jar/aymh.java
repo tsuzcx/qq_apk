@@ -1,96 +1,52 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
-public class aymh
+class aymh
+  extends aymo
 {
-  private String a;
-  private String b;
-  private String c;
+  aymh(aymg paramaymg, aylq paramaylq) {}
   
-  public aymh a()
+  public void a()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    return a("999").a(localBaseApplication, "999_540", "999_540");
-  }
-  
-  public aymh a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = a(paramContext);
-    this.b = (paramContext + paramString1 + ".zip");
-    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
-    return this;
-  }
-  
-  public aymh a(String paramString)
-  {
-    this.a = paramString;
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String a(Context paramContext)
-  {
-    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
-    StringBuilder localStringBuilder = actn.a().append(paramContext);
-    if (!paramContext.endsWith(File.separator)) {
-      localStringBuilder.append(File.separator);
+    try
+    {
+      this.jdField_a_of_type_Aylq.beginSwitch();
+      return;
     }
-    return this.a + File.separator;
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
+    }
   }
   
-  public boolean a()
+  public boolean a(int paramInt)
   {
-    return new File(this.b).exists();
+    try
+    {
+      this.jdField_a_of_type_Aylq.postSwitch(paramInt);
+      return super.a(paramInt);
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
+      }
+    }
   }
   
-  public aymh b()
+  public boolean a(aymj paramaymj)
   {
-    return a(BaseApplicationImpl.getContext(), "test", "test");
-  }
-  
-  public String b()
-  {
-    return ThemeUtil.getThemeConfigID(this.a);
-  }
-  
-  public String b(Context paramContext)
-  {
-    paramContext = a(paramContext);
-    return paramContext + "3_" + b() + ".cfg";
-  }
-  
-  public boolean b()
-  {
-    return new File(this.c).exists();
-  }
-  
-  public aymh c()
-  {
-    this.b = null;
-    this.c = null;
-    return this;
-  }
-  
-  public String c()
-  {
-    return this.b;
-  }
-  
-  public String d()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    try
+    {
+      this.jdField_a_of_type_Aylq.doSwitch(paramaymj.a(), paramaymj.d());
+      return true;
+    }
+    catch (RemoteException paramaymj)
+    {
+      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", paramaymj);
+    }
+    return true;
   }
 }
 

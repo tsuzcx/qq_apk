@@ -1,19 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class nvf
-  implements bfos
+  implements View.OnClickListener
 {
   public nvf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    if ((!this.a.a) && (this.a.j != -1)) {
-      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
-    }
-    this.a.a = false;
+    ReadInJoyBaseDeliverActivity.a(this.a);
   }
 }
 

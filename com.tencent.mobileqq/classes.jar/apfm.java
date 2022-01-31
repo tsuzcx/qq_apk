@@ -1,6 +1,15 @@
-public abstract interface apfm
+public class apfm
+  extends awrx
 {
-  public abstract String b();
+  public apfm(baxy parambaxy)
+  {
+    super(parambaxy);
+  }
+  
+  protected awrc<awoi, awwr> a(baxy parambaxy)
+  {
+    return new apfn(parambaxy);
+  }
 }
 
 

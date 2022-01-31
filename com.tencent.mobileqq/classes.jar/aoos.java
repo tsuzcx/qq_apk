@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class aoos
-  implements DialogInterface.OnDismissListener
+  implements bfpt
 {
   public aoos(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.c()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
+      return;
+    }
+    if (apel.a(paramAdapterView)) {
+      apel.b(paramAdapterView);
+    }
+    for (;;)
+    {
+      this.a.l();
+      LocalFileBrowserActivity.a(this.a);
+      return;
+      if (this.a.f) {
+        apel.b();
+      }
+      apel.a(paramAdapterView);
+    }
   }
 }
 

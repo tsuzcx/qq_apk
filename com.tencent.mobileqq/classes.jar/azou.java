@@ -1,27 +1,45 @@
 import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class azou
+public class azou
+  extends azow
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    localTroopFeedItem.type = 18;
     try
     {
-      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
-      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
-      localTroopFeedItem.tag = paramJSONObject.getString("tag");
-      if (paramJSONObject.has("pub_uin")) {
-        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
+      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + ajya.a(2131715317) + paramJSONObject.getString("photo_num") + ajya.a(2131715319));
+      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      int i = 0;
+      for (;;)
+      {
+        if (i < paramJSONObject.length())
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          if (localJSONObject.getInt("type") == 3) {
+            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
+          }
+        }
+        else
+        {
+          return localTroopFeedItem;
+        }
+        i += 1;
       }
-      return localTroopFeedItem;
+      return null;
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
     }
-    return localTroopFeedItem;
   }
 }
 

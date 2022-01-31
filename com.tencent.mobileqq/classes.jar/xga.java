@@ -1,68 +1,65 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class xga
+  extends ampa<xfz>
 {
-  private String a = "0";
-  private String b = "1";
-  private String c = xfr.c;
-  private String d = "1";
-  private String e = "1";
-  
-  public static xga a(String paramString)
+  public int a()
   {
-    xga localxga = new xga();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        localxga.a = paramString.optString("subscribe_entrance_enable", "0");
-        localxga.b = paramString.optString("is_open_sharing", "1");
-        localxga.c = paramString.optString("subscribe_account_title", xfr.c);
-        localxga.d = paramString.optString("newfollowlist", "1");
-        localxga.e = paramString.optString("subscribe_publish_entrance_enable", "1");
-      }
-      return localxga;
+    return 406;
+  }
+  
+  public Class<xfz> a()
+  {
+    return xfz.class;
+  }
+  
+  @NonNull
+  public xfz a(int paramInt)
+  {
+    return new xfz();
+  }
+  
+  @Nullable
+  public xfz a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return xfz.a(paramArrayOfamph[0].a);
     }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
+    return null;
   }
   
-  public String a()
+  public void a()
   {
-    return this.a;
+    super.a();
+    bips.a().a(false);
   }
   
-  public String b()
+  public void a(int paramInt) {}
+  
+  public void a(xfz paramxfz)
   {
-    return this.b;
+    bips.a().a(true);
   }
   
-  public String c()
+  public boolean a()
   {
-    return this.c;
+    return true;
   }
   
-  public String d()
+  public int b()
   {
-    return this.d;
+    return 0;
   }
   
-  public String e()
+  public boolean b()
   {
-    return this.e;
+    return false;
   }
   
-  public String toString()
+  public boolean c()
   {
-    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
+    return true;
   }
 }
 

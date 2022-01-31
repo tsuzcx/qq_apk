@@ -1,67 +1,67 @@
-import android.os.Bundle;
-import android.os.SystemClock;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
 
 class aemu
-  implements BusinessObserver
+  extends akgh
 {
-  aemu(aemj paramaemj) {}
+  aemu(aemh paramaemh) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.A(2131695568);
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
     {
-      ChatActivityUtils.b();
-      return;
-      try
+      int k;
+      do
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
         {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
           {
-            ((FriendListHandler)this.a.a.a(1)).a(true, false);
-            paramBundle = (ajvr)this.a.a.a(21);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
+            if (bbbr.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
             }
-          }
-          else if (paramInt == 58)
-          {
-            this.a.A(2131695565);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.A(2131695538);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.A(2131695539);
-          }
-          else
-          {
-            this.a.A(2131695568);
+            j += 1;
           }
         }
-      }
-      catch (Exception paramBundle) {}
-    }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.bo();
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bbbr.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, true);
+    } while (!paramBoolean);
+    this.a.bo();
   }
 }
 

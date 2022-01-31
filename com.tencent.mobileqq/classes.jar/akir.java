@@ -1,8 +1,26 @@
 import android.view.View;
+import java.lang.ref.WeakReference;
 
-public abstract interface akir
+class akir
 {
-  public abstract void a(View paramView, long paramLong, int paramInt1, int paramInt2);
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<akiq> b;
+  
+  public akir(akin paramakin, View paramView, akiq paramakiq)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramakiq);
+  }
+  
+  public akiq a()
+  {
+    return (akiq)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
 }
 
 

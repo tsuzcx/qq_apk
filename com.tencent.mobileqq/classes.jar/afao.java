@@ -1,19 +1,19 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
 
 public class afao
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements afat
 {
-  public afao(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
+  public afao(BlessActivity paramBlessActivity) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
+    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_Afax.l())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
+      BlessActivity.b(this.a);
+    }
   }
 }
 

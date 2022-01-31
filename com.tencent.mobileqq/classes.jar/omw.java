@@ -1,25 +1,13 @@
-public class omw
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
+
+final class omw
+  implements Comparator<Pair<Long, BaseArticleInfo>>
 {
-  public static int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public long c;
-  public long d;
-  
-  static
+  public int a(Pair<Long, BaseArticleInfo> paramPair1, Pair<Long, BaseArticleInfo> paramPair2)
   {
-    jdField_a_of_type_Int = 300000;
-  }
-  
-  public omw()
-  {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
   }
 }
 

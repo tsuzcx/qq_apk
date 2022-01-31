@@ -1,13 +1,14 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+
 class bhwo
-  implements ajvb
+  implements DialogInterface.OnShowListener
 {
-  bhwo(bhwn parambhwn) {}
+  bhwo(bhwm parambhwm, bcqf parambcqf) {}
   
-  public void a(boolean paramBoolean)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean) {
-      this.a.a();
-    }
+    this.jdField_a_of_type_Bcqf.hide();
   }
 }
 

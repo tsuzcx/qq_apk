@@ -1,9 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import java.util.List;
+import android.widget.ImageView;
 
-public abstract interface qfj
+class qfj
 {
-  public abstract void a(List<ReadInJoyDraftboxItem> paramList);
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
+  
+  private qfj(qfh paramqfh) {}
 }
 
 

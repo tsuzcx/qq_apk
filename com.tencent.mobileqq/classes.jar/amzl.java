@@ -1,43 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-
 public class amzl
-  extends amyi<amzk>
 {
-  public int a()
-  {
-    return 580;
-  }
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
   
-  @NonNull
-  public amzk a()
+  public amzl()
   {
-    return amzk.a();
-  }
-  
-  @NonNull
-  public amzk a(@NonNull ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfampi[0].a);
-    }
-    return amzk.a(paramArrayOfampi[0].a);
-  }
-  
-  public Class<amzk> a()
-  {
-    return amzk.class;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  @NonNull
-  public amzk b()
-  {
-    return amzk.a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131711274);
   }
 }
 

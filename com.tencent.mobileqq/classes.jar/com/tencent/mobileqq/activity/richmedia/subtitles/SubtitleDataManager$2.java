@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahzh;
-import bbdj;
+import ahzf;
+import bbdx;
 
 public class SubtitleDataManager$2
   implements Runnable
 {
-  public SubtitleDataManager$2(ahzh paramahzh, String paramString) {}
+  public SubtitleDataManager$2(ahzf paramahzf, String paramString) {}
   
   public void run()
   {
-    bbdj.d(this.a);
+    bbdx.d(this.a);
   }
 }
 

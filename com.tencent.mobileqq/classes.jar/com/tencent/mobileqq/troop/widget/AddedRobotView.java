@@ -14,12 +14,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import balv;
-import bamw;
-import bamx;
-import bamy;
-import baxk;
-import baxl;
+import bamj;
+import bank;
+import banl;
+import banm;
+import baxy;
+import baxz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -30,13 +30,13 @@ public class AddedRobotView
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bamx(this);
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new banl(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bamy jdField_a_of_type_Bamy;
-  private baxk jdField_a_of_type_Baxk;
-  private baxl jdField_a_of_type_Baxl = new bamw(this);
+  private banm jdField_a_of_type_Banm;
+  private baxy jdField_a_of_type_Baxy;
+  private baxz jdField_a_of_type_Baxz = new bank(this);
   private String jdField_a_of_type_JavaLangString;
   private TextView b;
   
@@ -63,10 +63,10 @@ public class AddedRobotView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setOrientation(1);
     paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    setBackgroundResource(2130849312);
-    paramContext = paramContext.inflate(2131561151, null);
+    setBackgroundResource(2130849321);
+    paramContext = paramContext.inflate(2131561150, null);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369091));
-    this.b = ((TextView)paramContext.findViewById(2131375247));
+    this.b = ((TextView)paramContext.findViewById(2131375249));
     addView(paramContext);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
@@ -76,13 +76,13 @@ public class AddedRobotView
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
     addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     paramContext = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setText(getResources().getString(2131694650));
+    paramContext.setText(getResources().getString(2131694651));
     paramContext.setTextSize(2, 14.0F);
     paramContext.setTextColor(getResources().getColor(2131166928));
-    paramContext.setContentDescription(getResources().getString(2131694650));
+    paramContext.setContentDescription(getResources().getString(2131694651));
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849312);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849321);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298650));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setGravity(17);
@@ -92,23 +92,23 @@ public class AddedRobotView
     paramContext.setBackgroundResource(2130838514);
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298651)));
     addView(paramContext);
-    this.jdField_a_of_type_Baxk = new baxk((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_Baxk.a(this.jdField_a_of_type_Baxl);
-    this.jdField_a_of_type_Bamy = new bamy(this, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bamy);
+    this.jdField_a_of_type_Baxy = new baxy((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_a_of_type_Baxy.a(this.jdField_a_of_type_Baxz);
+    this.jdField_a_of_type_Banm = new banm(this, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Banm);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
   }
   
   public void a()
   {
     QLog.i("AddedRobotView", 1, "onDestroy.");
-    if (this.jdField_a_of_type_Baxk != null) {
-      this.jdField_a_of_type_Baxk.d();
+    if (this.jdField_a_of_type_Baxy != null) {
+      this.jdField_a_of_type_Baxy.d();
     }
     this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void setAddList(ArrayList<balv> paramArrayList, int paramInt, String paramString)
+  public void setAddList(ArrayList<bamj> paramArrayList, int paramInt, String paramString)
   {
     if (this.b != null) {
       if (paramArrayList == null) {
@@ -138,7 +138,7 @@ public class AddedRobotView
         this.jdField_a_of_type_JavaLangString = paramString;
         return;
         this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-        this.jdField_a_of_type_Bamy.a(paramArrayList);
+        this.jdField_a_of_type_Banm.a(paramArrayList);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         QLog.d("AddedRobotView", 2, "setAddList " + paramArrayList.size());
       }

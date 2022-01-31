@@ -1,58 +1,31 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.qphone.base.util.QLog;
 
-public class arlr
+final class arlr
+  implements HookMethodCallback
 {
-  private static int jdField_a_of_type_Int;
-  private static arlt jdField_a_of_type_Arlt = new arlt(null);
-  
-  public static void a()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return;
-    }
-    try
+    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
+    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
     {
-      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Arlt });
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
-  }
-  
-  private static void b(boolean paramBoolean)
-  {
-    String str = null;
-    try
-    {
-      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        str = ((AppRuntime)localObject).getAccount();
+      paramMethodHookParam = new StringBuilder(1000);
+      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+      int i = 0;
+      while (i < arrayOfStackTraceElement.length)
+      {
+        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
+        i += 1;
       }
-      long l1 = Runtime.getRuntime().totalMemory();
-      long l2 = Runtime.getRuntime().freeMemory();
-      long l3 = Runtime.getRuntime().maxMemory();
-      localObject = new HashMap();
-      ((HashMap)localObject).put("heapSize", String.valueOf(l1 - l2));
-      ((HashMap)localObject).put("maxMemory", String.valueOf(l3));
-      int i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
-      ((HashMap)localObject).put("count", String.valueOf(i));
-      axrl.a(BaseApplicationImpl.getApplication()).a(str, "TimeoutExceptionHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
-      return;
+      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
     }
-    catch (Throwable localThrowable) {}
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

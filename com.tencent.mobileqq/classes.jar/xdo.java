@@ -1,14 +1,17 @@
 import com.tencent.biz.troopplugin.PluginJumpManager;
 
-class xdo
-  implements mzc
+public class xdo
 {
-  xdo(xdn paramxdn) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void loaded(int paramInt, String paramString)
-  {
-    this.a.a.loadConfigFromFile();
-  }
+  public xdo(PluginJumpManager paramPluginJumpManager) {}
 }
 
 

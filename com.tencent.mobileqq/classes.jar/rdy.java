@@ -1,14 +1,25 @@
-class rdy
-  extends oyg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import mqq.app.AppRuntime;
+
+public class rdy
+  implements View.OnClickListener
 {
-  rdy(rdx paramrdx, String paramString)
-  {
-    super(paramString);
-  }
+  public rdy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(oya paramoya)
+  public void onClick(View paramView)
   {
-    paramoya.g();
+    ReadInJoyListViewGroup.b(this.a);
+    paramView = ((KandianMergeManager)onh.a().getManager(162)).a();
+    if ((paramView != null) && (paramView.isFromNotification))
+    {
+      onh.a(this.a.getContext(), 5, false, paramView.mMsgId);
+      return;
+    }
+    onh.a(this.a.getContext(), 3);
   }
 }
 

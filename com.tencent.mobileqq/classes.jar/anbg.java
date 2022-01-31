@@ -1,100 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class anbg
+  extends ampa<anbf>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  
-  public static anbg a(ampi[] paramArrayOfampi)
+  public static anbf a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    Object localObject = paramArrayOfampi[0].jdField_a_of_type_JavaLangString;
-    paramArrayOfampi = new anbg();
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      QLog.e("TencentDocBannerBean", 1, " FileAssistantBannerSetting updata Config, content is null !");
-      return paramArrayOfampi;
-    }
-    do
-    {
-      File localFile;
-      try
-      {
-        localObject = new JSONObject((String)localObject).optJSONObject("Banner");
-        paramArrayOfampi.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("md5");
-        if (TextUtils.isEmpty(paramArrayOfampi.jdField_a_of_type_JavaLangString))
-        {
-          QLog.e("TencentDocBannerBean", 1, "server config error: picMd5 is null");
-          return paramArrayOfampi;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("TencentDocBannerBean", 1, "FileAssistantBannerSetting updata Config, Exception :", localJSONException);
-        localFile = new File(ajsf.bm);
-        if (!localFile.exists()) {
-          localFile.mkdirs();
-        }
-        paramArrayOfampi.e = new File(ajsf.bm, paramArrayOfampi.jdField_a_of_type_JavaLangString).getPath();
-        return paramArrayOfampi;
-      }
-      paramArrayOfampi.b = localFile.optString("pic");
-      if (TextUtils.isEmpty(paramArrayOfampi.b))
-      {
-        QLog.e("TencentDocBannerBean", 1, "server config error: mPicUrl is null");
-        return paramArrayOfampi;
-      }
-      paramArrayOfampi.jdField_a_of_type_Int = localFile.optInt("duration");
-      paramArrayOfampi.c = localFile.optString("actionItemName");
-      paramArrayOfampi.d = localFile.optString("actionURLForAndroid");
-    } while ((!TextUtils.isEmpty(paramArrayOfampi.c)) || (!TextUtils.isEmpty(paramArrayOfampi.d)));
-    QLog.w("TencentDocBannerBean", 1, "server config error: mActionItem or mActionUrl is null");
-    return paramArrayOfampi;
+    return (anbf)ampl.a().a(500);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 500;
   }
   
-  public String a()
+  @NonNull
+  public anbf a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return new anbf();
   }
   
-  public void a(String paramString)
+  @Nullable
+  public anbf a(amph[] paramArrayOfamph)
   {
-    this.e = paramString;
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anbf.a(paramArrayOfamph);
+    }
+    return null;
   }
   
-  public String b()
+  public Class<anbf> a()
   {
-    return this.b;
+    return anbf.class;
   }
   
-  public String c()
+  public void a(int paramInt) {}
+  
+  public void a(anbf paramanbf) {}
+  
+  public int b()
   {
-    return this.c;
+    return 0;
   }
   
-  public String d()
+  public boolean b()
   {
-    return this.d;
+    return false;
   }
   
-  public String e()
+  public boolean c()
   {
-    return this.e;
+    return true;
   }
 }
 

@@ -1,16 +1,9 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import cooperation.qzone.QzoneExternalRequest;
 
-public class bgyk
-  extends Handler
+public abstract class bgyk
+  extends QzoneExternalRequest
 {
-  public bgyk(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.a(this.a.a, paramMessage);
-  }
+  public abstract int a();
 }
 
 

@@ -1,66 +1,337 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.emoticon.VasEmojiManager.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class anxg
-  implements View.OnClickListener
+public class anxg
 {
-  anxg(anxf paramanxf, anzi paramanzi) {}
+  public static HashMap<String, anwp> a;
+  public anvx a;
+  private bbwt a;
+  public QQAppInterface a;
+  public ConcurrentHashMap<String, Bundle> a;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = new Intent();
-    label80:
-    String str1;
-    label106:
-    int i;
-    if (this.jdField_a_of_type_Anzi.jdField_a_of_type_Boolean)
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public anxg(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Bbwt = new anxh(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    this.jdField_a_of_type_Anvx = ((anvx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(43));
+  }
+  
+  public static String a(String paramString)
+  {
+    int i = "bqmall.android.h5magic.".length();
+    return paramString.substring(i, paramString.indexOf('.', i));
+  }
+  
+  private String a(String paramString1, String paramString2, String paramString3, File paramFile)
+  {
+    File localFile = new File(anzr.r.replace("[epId]", paramString1));
+    boolean bool = true;
+    if (localFile.exists()) {
+      bool = localFile.delete();
+    }
+    if (!bool) {
+      return "delete jsonFile failed.";
+    }
+    if (!paramFile.renameTo(localFile)) {
+      return "rename tmpJsonFile failed.";
+    }
+    bbdx.a(paramString2);
+    paramFile = new File(paramString2);
+    if (paramFile.exists()) {
+      return "delete h5magic failed.";
+    }
+    if (!new File(paramString3).renameTo(paramFile)) {
+      return "rename tmpUnzipPath failed.";
+    }
+    a().a(paramString1, paramString2);
+    return null;
+  }
+  
+  private void a(EmoticonPackage paramEmoticonPackage, ArrayList<Emoticon> paramArrayList, boolean paramBoolean, Bundle paramBundle)
+  {
+    anvx localanvx = a();
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    paramBundle.putSerializable("emoticonList", paramArrayList);
+    localanvx.b(localArrayList, localHashMap, paramEmoticonPackage, paramBundle);
+    int i = localanvx.a(paramEmoticonPackage, paramArrayList, localArrayList, localHashMap, paramBundle, 6);
+    if (i != 0)
     {
-      paramView.putExtra("emoji_to_dressup", true);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Anxf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, paramView, false);
-      if (this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label243;
-      }
-      paramView = "";
-      String str2 = this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Anzi.jdField_a_of_type_Boolean) {
-        break label257;
-      }
-      str1 = "1";
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      if ((this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
-        break label264;
-      }
-      i = 3;
+      QLog.e("VasEmojiManager", 1, "downloadOthers error : " + i);
+      return;
+    }
+    paramArrayList = new bbwu(localArrayList, localHashMap, "vipEmoticonKey_" + paramEmoticonPackage.epId);
+    paramArrayList.n = true;
+    if (localArrayList.size() == 0)
+    {
+      paramArrayList.a(paramBundle);
+      paramArrayList.a(3);
+      this.jdField_a_of_type_Bbwt.onDone(paramArrayList);
     }
     for (;;)
     {
-      axqw.b(this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
+      localanvx.b(paramEmoticonPackage, paramBoolean);
       return;
-      if ((this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
+      localanvx.a().a(paramArrayList, this.jdField_a_of_type_Bbwt, paramBundle);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    paramString = a(paramString);
+    VasQuickUpdateEngine.safeDeleteFile(new File(anzr.n.replace("[epId]", paramString)));
+  }
+  
+  public static void a(JSONArray paramJSONArray)
+  {
+    HashMap localHashMap = new HashMap();
+    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
+    {
+      int i = paramJSONArray.length();
+      for (;;)
       {
-        paramView.putExtra("emoji_is_original", bool);
-        paramView.putExtra("emoji_author_id", this.jdField_a_of_type_Anzi.jdField_a_of_type_Int);
-        break;
+        if (i >= 0)
+        {
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.opt(i);
+          if (localJSONObject != null) {}
+          try
+          {
+            String str = localJSONObject.getString("id");
+            anwp localanwp = new anwp();
+            localanwp.jdField_a_of_type_JavaLangString = localJSONObject.getString("leftText");
+            localanwp.b = localJSONObject.getString("linkText");
+            localanwp.c = localJSONObject.getString("type");
+            localHashMap.put(str, localanwp);
+            i -= 1;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              QLog.e("VasEmojiManager", 1, "setMagicTips: ", localJSONException);
+            }
+          }
+        }
       }
-      label243:
-      paramView = this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label80;
-      label257:
-      str1 = "2";
-      break label106;
-      label264:
-      if (this.jdField_a_of_type_Anxf.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
-        i = 4;
-      } else {
-        i = 1;
+    }
+    jdField_a_of_type_JavaUtilHashMap = localHashMap;
+  }
+  
+  private boolean a(String paramString, Bundle paramBundle, EmoticonPackage paramEmoticonPackage)
+  {
+    boolean bool;
+    String str1;
+    label125:
+    try
+    {
+      bool = paramBundle.getBoolean("newPkgAdd");
+      str1 = paramEmoticonPackage.epId;
+      try
+      {
+        str2 = anzr.v.replace("[epId]", str1);
+        localObject = str2.replace("h5magic", "tmp_unzip");
+        bbdx.a(paramString, (String)localObject, false);
+        paramString = (String)localObject + "h5.zip";
+        str3 = (String)localObject + "h5magic";
+        if (new File(paramString).exists()) {
+          break label125;
+        }
+        QLog.e("VasEmojiManager", 1, "h5.zip is not exist");
+        bool = false;
       }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          String str2;
+          Object localObject;
+          String str3;
+          ArrayList localArrayList;
+          anwv localanwv;
+          QLog.e("VasEmojiManager", 1, "", paramString);
+          bool = false;
+        }
+      }
+      return bool;
+    }
+    finally {}
+    bbdx.a(paramString, str3, false);
+    localArrayList = new ArrayList();
+    localanwv = new anwv();
+    localObject = new File((String)localObject + str1 + "_android.json");
+    paramString = null;
+    if (localObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!((File)localObject).exists()) {
+          break label641;
+        }
+        paramString = bbdx.a((File)localObject);
+        paramString = anwm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, anvx.c, paramString, localArrayList, localanwv);
+        if (paramString != null)
+        {
+          QLog.e("VasEmojiManager", 1, "parseJsonError: " + paramString);
+          bool = false;
+        }
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        QLog.e("VasEmojiManager", 1, "OutOfMemoryError e = " + paramString.getMessage());
+        paramString = null;
+        continue;
+        if (paramEmoticonPackage.jobType != 5)
+        {
+          QLog.e("VasEmojiManager", 1, "not support jobType: " + paramEmoticonPackage.jobType);
+          bool = false;
+          break;
+        }
+        paramString = a();
+        if ((!localanwv.jdField_a_of_type_Boolean) && (paramEmoticonPackage.jobType != 4))
+        {
+          int i = 0;
+          localanwv.jdField_a_of_type_JavaLangString = null;
+          if (QLog.isColorLevel()) {
+            QLog.d("VasEmojiManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + i);
+          }
+          paramString.a(paramEmoticonPackage.epId, localArrayList, localanwv);
+          int j = i + 1;
+          if (!localanwv.jdField_a_of_type_Boolean)
+          {
+            i = j;
+            if (j < 3) {
+              continue;
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("VasEmojiManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + j + " encryptKeysSuccess=" + localanwv.jdField_a_of_type_Boolean);
+          }
+          if (!localanwv.jdField_a_of_type_Boolean)
+          {
+            QLog.e("VasEmojiManager", 1, "addEmoticonsTask| fetchEncryptKeys fail epId=" + paramEmoticonPackage.epId + " encryptGetKeySeq=" + localanwv.jdField_a_of_type_JavaLangString + " encryptKeysResultCode" + localanwv.jdField_a_of_type_Int);
+            bool = false;
+            break;
+          }
+        }
+        paramString = a(str1, str2, str3, (File)localObject);
+        if (paramString != null)
+        {
+          QLog.e("VasEmojiManager", 1, "moveFiles error: " + paramString);
+          bool = false;
+          break;
+        }
+        a(paramEmoticonPackage, localArrayList, bool, paramBundle);
+        bool = true;
+      }
+      break;
+      label641:
+      paramString = null;
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    paramString = a(paramString);
+    return anzr.u.replace("[epId]", paramString);
+  }
+  
+  public anvx a()
+  {
+    return this.jdField_a_of_type_Anvx;
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    String str = "bqmall.android.h5magic." + paramEmoticonPackage.epId + ".zip";
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramEmoticonPackage.epId)) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("emoticonPackage", paramEmoticonPackage);
+    localBundle.putBoolean("newPkgAdd", paramBoolean1);
+    localBundle.putBoolean("wifiAutoDownload", paramBoolean2);
+    localBundle.putBoolean("isUpdate", anzr.a(paramEmoticonPackage));
+    localBundle.putLong("vas_download_start", System.currentTimeMillis());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonPackage.epId, localBundle);
+    a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonPackage.epId, new anxf(paramEmoticonPackage.epId, null));
+    ThreadManager.post(new VasEmojiManager.1(this, str, paramEmoticonPackage), 5, null, true);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramInt != 0) {
+      QLog.e("VasEmojiManager", 1, "complete error: " + paramInt);
+    }
+    String str = a(paramString);
+    Object localObject1 = (Bundle)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      localObject2 = new Bundle();
+      EmoticonPackage localEmoticonPackage = ((askf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(str);
+      localObject1 = localEmoticonPackage;
+      if (localEmoticonPackage == null)
+      {
+        localObject1 = new EmoticonPackage();
+        ((EmoticonPackage)localObject1).name = ajya.a(2131716048);
+        ((EmoticonPackage)localObject1).epId = str;
+        ((EmoticonPackage)localObject1).jobType = 5;
+        ((EmoticonPackage)localObject1).type = 1;
+        ((EmoticonPackage)localObject1).aio = true;
+        ((EmoticonPackage)localObject1).isMagicFaceDownloading = true;
+      }
+      ((Bundle)localObject2).putSerializable("emoticonPackage", (Serializable)localObject1);
+      ((Bundle)localObject2).putBoolean("newPkgAdd", false);
+      ((Bundle)localObject2).putBoolean("wifiAutoDownload", false);
+      ((Bundle)localObject2).putBoolean("isUpdate", anzr.a((EmoticonPackage)localObject1));
+      ((Bundle)localObject2).putLong("vas_download_start", System.currentTimeMillis());
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      localObject2 = (EmoticonPackage)((Bundle)localObject1).getSerializable("emoticonPackage");
+      if ((paramInt != 0) || (!a(b(paramString), (Bundle)localObject1, (EmoticonPackage)localObject2))) {
+        anvx.jdField_a_of_type_Anvw.a((EmoticonPackage)localObject2, paramInt, 8, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+      return;
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    paramString = a(paramString);
+    anxf localanxf = (anxf)a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localanxf != null) {
+      localanxf.a((float)paramLong1 * 100.0F / (float)paramLong2);
+    }
+    paramString = (Bundle)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (paramString != null)
+    {
+      paramString = (EmoticonPackage)paramString.getSerializable("emoticonPackage");
+      anvx.jdField_a_of_type_Anvw.b(paramString, (int)paramLong1, (int)paramLong2);
     }
   }
 }

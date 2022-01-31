@@ -1,113 +1,95 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class atvi
-  extends atvx
 {
-  public atvi(NearbyMomentFragment paramNearbyMomentFragment) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private atut jdField_a_of_type_Atut;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private atut b;
+  private atut c;
+  private atut d;
+  private atut e;
   
-  public void a(String paramString)
+  public atvi(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      NearbyMomentFragment.a(this.a).a().remove(paramString);
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      NearbyMomentFragment.b(this.a, paramString.c);
-    }
-    if (NearbyMomentFragment.a(this.a).a().size() == 0) {
-      this.a.a(1);
-    }
-    NearbyMomentFragment.a(this.a).remove(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(String paramString, long paramLong)
+  public int a()
   {
-    atwv localatwv = NearbyMomentFragment.a(this.a, paramString);
-    if (localatwv != null)
-    {
-      if (localatwv.g > 0) {
-        localatwv.g -= 1;
+    return 5;
+  }
+  
+  public int a(atwx paramatwx)
+  {
+    if ((paramatwx instanceof atww)) {
+      return 0;
+    }
+    if ((paramatwx instanceof atxa)) {
+      return 1;
+    }
+    if ((paramatwx instanceof atwy)) {
+      return 2;
+    }
+    if ((paramatwx instanceof atwu)) {
+      return 3;
+    }
+    if ((paramatwx instanceof atxb)) {
+      return 4;
+    }
+    return -1;
+  }
+  
+  public atut a(int paramInt)
+  {
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Atut != null) {
+        localObject = this.jdField_a_of_type_Atut;
       }
-      if ((localatwv.jdField_a_of_type_JavaUtilList != null) && (localatwv.jdField_a_of_type_JavaUtilList.size() > 0))
+    }
+    do
+    {
+      return localObject;
+      localObject = new atvg(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Atut = ((atut)localObject);
+      return localObject;
+      if (paramInt == 1)
       {
-        Iterator localIterator = localatwv.jdField_a_of_type_JavaUtilList.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          paramString = (atwt)localIterator.next();
-        } while (paramString.a != paramLong);
+        if (this.b != null) {
+          return this.b;
+        }
+        localObject = new atwq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.b = ((atut)localObject);
+        return localObject;
       }
-    }
-    for (;;)
-    {
-      if (paramString != null) {
-        localatwv.jdField_a_of_type_JavaUtilList.remove(paramString);
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      paramString = null;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      paramString.g += 1;
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      if (!paramString.jdField_a_of_type_Boolean)
+      if (paramInt == 2)
       {
-        paramString.jdField_a_of_type_Boolean = true;
-        paramString.f += 1;
+        if (this.c != null) {
+          return this.c;
+        }
+        localObject = new atwn(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.c = ((atut)localObject);
+        return localObject;
       }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString instanceof atwy))
-    {
-      paramString = (atwy)paramString;
-      paramString.e += 1;
-    }
-    for (;;)
-    {
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      if ((paramString instanceof atws))
+      if (paramInt == 3)
       {
-        paramString = (atws)paramString;
-        paramString.e += 1;
+        if (this.d != null) {
+          return this.d;
+        }
+        localObject = new atvb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.d = ((atut)localObject);
+        return localObject;
       }
+    } while (paramInt != 4);
+    if (this.e != null) {
+      return this.e;
     }
-  }
-  
-  public void c(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Boolean))
-    {
-      paramString.jdField_a_of_type_Boolean = false;
-      if (paramString.f > 0) {
-        paramString.f -= 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
+    localObject = new atws(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.e = ((atut)localObject);
+    return localObject;
   }
 }
 

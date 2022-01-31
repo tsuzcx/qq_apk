@@ -1,22 +1,22 @@
-import android.support.v7.widget.LinearLayoutManager;
+import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View.OnAttachStateChangeListener;
 
-public class qml
-  extends qmg
+class qml
+  implements View.OnAttachStateChangeListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131369501);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131369507);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131369510);
+  qml(qmj paramqmj, osm paramosm) {}
   
-  public qml(View paramView, int paramInt)
+  public void onViewAttachedToWindow(View paramView)
   {
-    super(paramView, paramInt);
+    osj.a().a(this.jdField_a_of_type_Osm);
   }
   
-  public void a(qls paramqls, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    osj.a().b(this.jdField_a_of_type_Osm);
+    this.jdField_a_of_type_Qmj.a.removeCallbacksAndMessages(null);
+  }
 }
 
 

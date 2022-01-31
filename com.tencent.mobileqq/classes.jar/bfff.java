@@ -1,31 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qqmini.sdk.ui.MiniBaseFragment;
-import com.tencent.qqmini.sdk.ui.MiniFragmentActivity;
-
 public class bfff
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1, int paramInt)
+  private float a = 1.4E-45F;
+  
+  public float a()
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramActivity, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramActivity.startActivityForResult(localIntent, paramInt);
+    return this.a;
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1)
+  public void a(float paramFloat)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (paramFloat > this.a) {
+      this.a = paramFloat;
     }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramContext.startActivity(localIntent);
   }
 }
 

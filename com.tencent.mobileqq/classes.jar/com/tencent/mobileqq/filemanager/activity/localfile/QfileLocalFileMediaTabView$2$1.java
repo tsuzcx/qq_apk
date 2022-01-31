@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajyc;
+import ajya;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,19 +27,19 @@ class QfileLocalFileMediaTabView$2$1
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.containsKey(ajyc.a(2131709683))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.put(ajyc.a(2131709669), new ArrayList());
+      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.containsKey(ajya.a(2131709694))) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.put(ajya.a(2131709680), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.get(ajyc.a(2131709679))).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.get(ajya.a(2131709690))).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
     }
     localIterator = this.b.keySet().iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.containsKey(ajyc.a(2131709671))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.put(ajyc.a(2131709667), new ArrayList());
+      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.containsKey(ajya.a(2131709682))) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.put(ajya.a(2131709678), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.get(ajyc.a(2131709689))).addAll((Collection)this.b.get(str));
+      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.get(ajya.a(2131709700))).addAll((Collection)this.b.get(str));
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.c.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$2.this$0.i();

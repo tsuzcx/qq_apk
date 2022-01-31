@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface atjc
+class atjc
+  implements View.OnClickListener
 {
-  public abstract void a();
+  atjc(atjb paramatjb, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
-  
-  public abstract void a(Comments paramComments);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getContext();
+    if ((localObject instanceof BaseActivity))
+    {
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
+    }
+    for (int i = 2;; i = 3)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&from=3");
+      ((StringBuilder)localObject).append("&mode=" + i);
+      ((StringBuilder)localObject).append("&now_id=" + this.b);
+      ((StringBuilder)localObject).append("&now_user_type=" + this.c);
+      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
+      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
+      return;
+    }
+  }
 }
 
 

@@ -1,118 +1,40 @@
-import android.graphics.drawable.Animatable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
-public abstract class wpo<E>
-  extends wpa<E>
+public class wpo
+  extends StaggeredGridLayoutManager
 {
-  protected static final String b;
-  protected String a;
-  protected boolean a;
-  protected boolean b;
-  
-  static
+  public wpo(int paramInt1, int paramInt2)
   {
-    jdField_b_of_type_JavaLangString = ajyc.a(2131708858);
+    super(paramInt1, paramInt2);
   }
   
-  public wpo()
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  protected int a()
-  {
-    return 1;
-  }
-  
-  protected abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
-  
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-    notifyItemChanged(getItemCount() - 1);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      return 0;
-    }
-    return 99999;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    int i = 0;
-    if ((paramViewHolder == null) || (paramInt >= getItemCount())) {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
       return;
     }
-    if ((paramViewHolder instanceof wpp))
+    catch (Exception paramRecycler)
     {
-      paramViewHolder = (wpp)paramViewHolder;
-      Object localObject = wpp.a(paramViewHolder);
-      if (this.jdField_b_of_type_Boolean)
-      {
-        paramInt = 0;
-        ((LinearLayout)localObject).setVisibility(paramInt);
-        if ((!this.jdField_a_of_type_Boolean) || (getItemCount() <= a())) {
-          break label117;
-        }
-        paramInt = 1;
-        label68:
-        if (paramInt == 0) {
-          break label122;
-        }
-        wpp.a(paramViewHolder).start();
-        label81:
-        localObject = wpp.a(paramViewHolder);
-        if (paramInt == 0) {
-          break label134;
-        }
-      }
-      label134:
-      for (paramInt = i;; paramInt = 8)
-      {
-        ((ImageView)localObject).setVisibility(paramInt);
-        wpp.a(paramViewHolder).setText(this.jdField_a_of_type_JavaLangString);
-        return;
-        paramInt = 8;
-        break;
-        label117:
-        paramInt = 0;
-        break label68;
-        label122:
-        wpp.a(paramViewHolder).stop();
-        break label81;
-      }
+      paramRecycler.printStackTrace();
     }
-    a(paramViewHolder, paramInt);
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    if (paramInt == 99999) {
-      return new wpp(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558675, paramViewGroup, false));
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
     }
-    return a(paramViewGroup, paramInt);
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

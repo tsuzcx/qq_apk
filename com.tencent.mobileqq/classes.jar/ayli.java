@@ -5,18 +5,16 @@ import com.tencent.qphone.base.util.QLog;
 final class ayli
   implements DialogInterface.OnClickListener
 {
-  ayli(aylk paramaylk) {}
+  ayli(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aylf.a("0X800A5CB");
+    aylh.a("0X800A5B5");
     if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
+      QLog.d("DarkModeManager", 2, "showDarkModeTips systemDarMode  = " + this.a);
     }
-    aylf.a(false);
-    if (this.a != null) {
-      this.a.onConfirm();
-    }
+    aylh.a(true);
+    aylh.a(this.a, this.b, null);
   }
 }
 

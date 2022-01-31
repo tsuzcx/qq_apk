@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vip;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import bbwx;
+import bbxl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
 public class KingCardActivationFragment
@@ -12,14 +12,14 @@ public class KingCardActivationFragment
 {
   public int getContentLayoutId()
   {
-    return 2131561520;
+    return 2131561519;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    setTitle(ajyc.a(2131705950));
-    bbwx.a().a((ViewGroup)paramView.findViewById(2131364690));
+    setTitle(ajya.a(2131705961));
+    bbxl.a().a((ViewGroup)paramView.findViewById(2131364689));
   }
 }
 

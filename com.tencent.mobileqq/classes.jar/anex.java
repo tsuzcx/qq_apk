@@ -1,32 +1,33 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import mqq.app.AppRuntime;
 
-class anex
-  implements View.OnClickListener
+public class anex
 {
-  anex(aneu paramaneu, String paramString) {}
-  
-  public void onClick(View paramView)
+  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    aneu.a(this.jdField_a_of_type_Aneu).removeCallbacks(aneu.a(this.jdField_a_of_type_Aneu));
-    aneu.a(this.jdField_a_of_type_Aneu).run();
-    int i = aneu.a(this.jdField_a_of_type_Aneu).a.getSelectionStart();
-    paramView = aneu.a(this.jdField_a_of_type_Aneu).a.getEditableText();
-    if ((i < 0) || (i >= paramView.length()))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramAppRuntime != null)
     {
-      paramView.append(this.jdField_a_of_type_JavaLangString);
-      return;
+      localObject1 = localObject2;
+      if ((paramAppRuntime instanceof QQAppInterface))
+      {
+        paramAppRuntime = (QQAppInterface)paramAppRuntime;
+        if (!paramBoolean) {
+          break label41;
+        }
+        localObject1 = paramAppRuntime.b(paramString);
+      }
     }
-    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
+    return localObject1;
+    label41:
+    return paramAppRuntime.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anex
  * JD-Core Version:    0.7.0.1
  */

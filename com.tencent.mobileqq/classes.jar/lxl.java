@@ -3,32 +3,34 @@ import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lxl
-  extends atcb
+  implements birs
 {
-  public lxl(QQServiceForAV paramQQServiceForAV) {}
+  final WeakReference<QQServiceForAV> a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
+  lxl(QQServiceForAV paramQQServiceForAV)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
+    this.a = new WeakReference(paramQQServiceForAV);
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2) {}
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
+      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
     }
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.getNearByProfile");
-    localIntent.putExtra("uin", String.valueOf(paramLong));
-    localIntent.putExtra("nickname", paramString);
-    localIntent.putExtra("gender", paramInt1);
-    localIntent.putExtra("age", paramInt2);
-    localObject = (QQAppInterface)this.a.a();
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = (QQAppInterface)this.a.a();
-    }
-    if (paramString != null) {
-      paramString.getApp().sendBroadcast(localIntent);
+    Object localObject = (QQServiceForAV)this.a.get();
+    if (localObject != null)
+    {
+      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
+      localIntent.putExtra("packageIdx", paramInt1);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt2);
+      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
     }
   }
 }

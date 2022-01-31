@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
-import aoza;
-import azqt;
+import aoze;
+import azqv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
@@ -142,30 +142,30 @@ public class AIOFilePicData
     }
   }
   
-  public void a(azqt paramazqt)
+  public void a(azqv paramazqv)
   {
-    if (paramazqt == null) {
+    if (paramazqv == null) {
       return;
     }
     String str;
-    if (paramazqt.jdField_d_of_type_JavaLangString != null)
+    if (paramazqv.jdField_d_of_type_JavaLangString != null)
     {
-      str = paramazqt.jdField_d_of_type_JavaLangString;
+      str = paramazqv.jdField_d_of_type_JavaLangString;
       this.jdField_b_of_type_JavaLangString = str;
-      if (paramazqt.jdField_c_of_type_JavaLangString == null) {
+      if (paramazqv.jdField_c_of_type_JavaLangString == null) {
         break label108;
       }
-      str = paramazqt.jdField_c_of_type_JavaLangString;
+      str = paramazqv.jdField_c_of_type_JavaLangString;
       label34:
       this.jdField_c_of_type_JavaLangString = str;
-      if (paramazqt.jdField_a_of_type_JavaLangString == null) {
+      if (paramazqv.jdField_a_of_type_JavaLangString == null) {
         break label114;
       }
-      str = paramazqt.jdField_a_of_type_JavaLangString;
+      str = paramazqv.jdField_a_of_type_JavaLangString;
       label51:
       this.jdField_d_of_type_JavaLangString = str;
-      this.g = paramazqt.g;
-      if (paramazqt.jdField_b_of_type_Int != 12) {
+      this.g = paramazqv.g;
+      if (paramazqv.jdField_b_of_type_Int != 12) {
         break label120;
       }
     }
@@ -175,8 +175,8 @@ public class AIOFilePicData
     for (boolean bool = true;; bool = false)
     {
       this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = paramazqt.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = paramazqt.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Long = paramazqv.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = paramazqv.jdField_c_of_type_Long;
       this.jdField_e_of_type_Boolean = false;
       return;
       str = "I:N";

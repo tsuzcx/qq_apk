@@ -1,107 +1,71 @@
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
 public class bkir
-  extends bkio
+  extends bkip
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private wdl jdField_a_of_type_Wdl;
-  protected boolean a;
+  public final int c;
+  @NonNull
+  public final String c;
+  public final int d;
+  @NonNull
+  public final String d;
+  public final int e;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public final String i;
   
-  protected View a()
+  public bkir(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, int paramInt5)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    super(paramInt1, paramString1, paramInt2);
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.jdField_e_of_type_JavaLangString = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.h = paramString7;
+    this.i = paramString8;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_e_of_type_Int = paramInt5;
   }
   
-  public bkiq a()
+  @NonNull
+  public bkiq a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new bkiq(this.jdField_a_of_type_Wdl.a(), this.jdField_a_of_type_Wdl.a(), this.jdField_a_of_type_Wdl.a(), this.jdField_a_of_type_Boolean);
+    return new bkis(this, paramContext, paramViewGroup);
   }
   
-  public void a()
+  @NonNull
+  public Class<? extends bkiq> a()
   {
-    this.jdField_a_of_type_Wdl.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-    this.jdField_a_of_type_Wdl.c(false);
+    return bkis.class;
   }
   
-  public void a(Context paramContext, bkiq parambkiq, EditText paramEditText, TextView paramTextView, bkip parambkip)
+  public String a()
   {
-    super.a(paramContext, parambkiq, paramEditText, paramTextView, parambkip);
-    this.jdField_a_of_type_Wdl = new wdl(paramContext);
-    this.jdField_a_of_type_Wdl.b(false);
-    this.jdField_a_of_type_Wdl.a(0.0F);
-    this.jdField_a_of_type_Wdl.c(true);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Wdl.a();
-    if (parambkiq == null) {
-      a(this.jdField_a_of_type_Wdl.a(), true);
+    if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
+      return "";
     }
-    for (;;)
-    {
-      a(paramEditText.getText().toString(), 24);
-      return;
-      this.jdField_a_of_type_Wdl.a(parambkiq.a);
-      a(parambkiq.a[0], false);
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {
+      return this.jdField_c_of_type_JavaLangString + "，" + this.jdField_d_of_type_JavaLangString;
     }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return this.jdField_e_of_type_JavaLangString;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    if (this.jdField_a_of_type_Wdl != null)
-    {
-      paramCharSequence = this.jdField_a_of_type_Wdl.a();
-      if ((paramCharSequence != null) && (paramCharSequence.length > 0)) {
-        this.jdField_a_of_type_JavaLangString = paramCharSequence[0];
-      }
-    }
-  }
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_Wdl.a(new String[] { this.jdField_a_of_type_AndroidWidgetEditText.getText().toString() });
-      this.jdField_a_of_type_Wdl.c(false);
-      this.jdField_a_of_type_Bkip.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt2 = bbjw.b(paramCharSequence.toString());
-    if (24 - paramInt2 <= 6)
-    {
-      paramInt1 = paramInt2;
-      Object localObject = paramCharSequence;
-      if (24 - paramInt2 < 0)
-      {
-        localObject = bbjw.b(paramCharSequence.toString(), 0, 24);
-        paramInt1 = bbjw.b(((CharSequence)localObject).toString());
-        a((CharSequence)localObject, false);
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(paramInt1 / 2), Integer.valueOf(12) }));
-      paramCharSequence = (CharSequence)localObject;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Wdl.a(new String[] { paramCharSequence.toString() });
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        a(this.jdField_a_of_type_Wdl.a(), true);
-      }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!paramCharSequence.toString().equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
+    return true;
   }
 }
 

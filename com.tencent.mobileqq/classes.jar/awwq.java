@@ -1,8 +1,14 @@
-import android.view.View;
+import android.widget.TextView;
+import java.util.List;
 
 public abstract interface awwq
+  extends awws
 {
-  public abstract View a();
+  public abstract TextView a();
+  
+  public abstract List<awwr> a();
+  
+  public abstract TextView b();
 }
 
 

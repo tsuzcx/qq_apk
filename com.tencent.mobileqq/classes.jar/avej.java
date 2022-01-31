@@ -1,106 +1,96 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.1;
-import com.tencent.mobileqq.qcall.QCallDetailActivity.1.2;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
 import com.tencent.qphone.base.util.QLog;
-import friendlist.GetOnlineInfoResp;
-import java.util.Map;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class avej
-  extends ajxl
+  implements Manager
 {
-  public avej(QCallDetailActivity paramQCallDetailActivity) {}
+  private aukp jdField_a_of_type_Aukp;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public avej(QQAppInterface paramQQAppInterface)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.a();
+  }
+  
+  private aukp a()
+  {
+    if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      QCallDetailActivity.a(this.a);
-      this.a.runOnUiThread(new QCallDetailActivity.1.1(this));
+      if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {
+        this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      }
+      return this.jdField_a_of_type_Aukp;
     }
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead isSuccess | " + paramBoolean + ", uin | " + paramString);
+    if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a())) {
+      this.jdField_a_of_type_Aukp.a();
     }
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000) && (!bbbd.a(paramString, this.a.app.getCurrentAccountUin())))
+  }
+  
+  public QCallCardInfo a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    paramString = a().a(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
+    if (paramString != null) {
+      return (QCallCardInfo)paramString.get(0);
+    }
+    return null;
+  }
+  
+  public void a(QCallCardInfo paramQCallCardInfo)
+  {
+    if (paramQCallCardInfo == null)
     {
-      localObject = (ajvk)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label109;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead dm is null  ====");
+        QLog.d("QCallCardManager", 2, "saveQcallCard null ");
       }
-    }
-    label109:
-    do
-    {
-      do
-      {
-        return;
-        if (((ajvk)localObject).a(QCallDetailActivity.a(this.a)) != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QCallDetailActivity", 2, " === onUpdateCustomHead info is null ====");
       return;
-      if (TextUtils.isEmpty(paramString))
-      {
-        QLog.i("QCallDetailActivity", 1, " === onUpdateCustomHead uin is null ====");
-        return;
-      }
-      localObject = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if ((paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
-    {
-      localObject = (ajvk)this.a.app.getManager(53);
-      if (localObject != null) {
-        break label52;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QCallDetailActivity", 2, " === onUpdateFriendInfo dm is null  ====");
-      }
     }
-    label52:
-    do
-    {
-      DiscussionInfo localDiscussionInfo;
-      do
-      {
-        return;
-        localDiscussionInfo = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
-        if (localDiscussionInfo == null)
-        {
-          QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          QLog.i("QCallDetailActivity", 1, " === onUpdateFriendInfo uin is null ====");
-          return;
-        }
-      } while (localDiscussionInfo.hasRenamed());
-      localObject = ((ajvk)localObject).a(QCallDetailActivity.a(this.a));
-    } while ((localObject == null) || (((Map)localObject).size() <= 0) || (!((Map)localObject).containsKey(paramString)));
-    this.a.a(QCallDetailActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
+    }
+    b(paramQCallCardInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.b(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
   }
   
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  public void b(QCallCardInfo paramQCallCardInfo)
   {
-    QCallDetailActivity.a(this.a);
-    this.a.runOnUiThread(new QCallDetailActivity.1.2(this));
+    if (paramQCallCardInfo == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
+          continue;
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

@@ -1,17 +1,33 @@
+import android.view.View;
 import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import java.util.List;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
 public class atvj
-  implements atvw
+  implements bfos
 {
-  public atvj(NearbyMomentFragment paramNearbyMomentFragment, atvp paramatvp) {}
+  public atvj(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void a(boolean paramBoolean1, List<atwv> paramList, boolean paramBoolean2, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, paramBoolean1, paramBoolean2, paramInt, paramList, this.jdField_a_of_type_Atvp);
+    int i = 0;
+    if (paramInt == 0)
+    {
+      paramInt = i;
+      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      {
+        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
+        paramInt = i;
+        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
+          paramInt = 1;
+        }
+      }
+      if (paramInt != 0) {
+        NearbyMomentFragment.a(this.a);
+      }
+    }
   }
 }
 

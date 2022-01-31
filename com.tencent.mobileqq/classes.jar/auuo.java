@@ -1,23 +1,21 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-
 public class auuo
-  implements Comparator<Rect>
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public float a;
+  public int a;
+  public int b;
+  public int c;
   
-  public auuo(TagCloudView paramTagCloudView, Point paramPoint)
+  public auuo(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public String toString()
   {
-    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
-    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
-    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+    return super.toString();
   }
 }
 

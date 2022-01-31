@@ -1,13 +1,49 @@
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class aggq
+  implements aggu
 {
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public aggq(MiniMsgTabFragment paramMiniMsgTabFragment) {}
+  
+  public void a(RecentBaseData paramRecentBaseData)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (paramRecentBaseData.a().equals("0"))
+    {
+      MiniMsgTabFragment.a(this.a).findViewById(2131377512).performClick();
+      return;
+    }
+    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.a(), paramRecentBaseData.a(), paramRecentBaseData.b(), false, MiniMsgTabFragment.a(this.a));
+    agga.a("0X8009C2D");
+    if (MiniMsgTabFragment.a(this.a) == null) {
+      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
+    }
+    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
+    MiniMsgTabFragment.a(this.a).setAnimationListener(new aggr(this, localFragmentActivity));
+    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    int i = paramRecentBaseData.a();
+    if (akpx.c(i)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      axqy.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.a(this.a), 1, "" + i, "", "", "");
+      return;
+      if (i == 1) {
+        i = 2;
+      } else if (i == 3000) {
+        i = 4;
+      } else {
+        i = 5;
+      }
+    }
+  }
 }
 
 

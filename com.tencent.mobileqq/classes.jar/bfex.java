@@ -1,16 +1,10 @@
-import java.util.Queue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-
-class bfex
-  implements RejectedExecutionHandler
+public abstract interface bfex
 {
-  bfex(bfew parambfew) {}
+  public abstract void onValCancel();
   
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
-  {
-    bfew.a(this.a).offer(paramRunnable);
-  }
+  public abstract void onValChange(int paramInt1, int paramInt2);
+  
+  public abstract void onValConfirm(int[] paramArrayOfInt);
 }
 
 

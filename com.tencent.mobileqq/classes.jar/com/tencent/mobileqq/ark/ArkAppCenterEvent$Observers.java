@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import alsz;
+import alsy;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap<String, alsz>
+  extends HashMap<String, alsy>
 {}
 
 

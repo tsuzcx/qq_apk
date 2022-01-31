@@ -1,13 +1,27 @@
-import android.view.View;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.1;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.2;
 
-class apqd
-  implements aput
+public class apqd
+  implements apaf
 {
-  apqd(apqa paramapqa) {}
+  apqd(appt paramappt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    apue.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apmx.c());
+    this.a.a(paramInt, paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.8.1(this, paramString1));
+  }
+  
+  public void aC_() {}
+  
+  public void aD_()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.8.2(this));
   }
 }
 

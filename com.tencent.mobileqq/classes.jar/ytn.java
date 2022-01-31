@@ -1,6 +1,6 @@
 public abstract interface ytn
 {
-  public abstract void onDismiss();
+  public abstract void b(ytl paramytl);
 }
 
 

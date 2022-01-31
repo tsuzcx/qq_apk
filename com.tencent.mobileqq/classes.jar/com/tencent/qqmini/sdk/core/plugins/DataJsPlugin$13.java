@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Intent;
-import beil;
-import beim;
-import beka;
+import bejc;
+import bejd;
+import bekr;
 
 class DataJsPlugin$13
-  implements beim
+  implements bejd
 {
-  DataJsPlugin$13(DataJsPlugin paramDataJsPlugin, beka parambeka) {}
+  DataJsPlugin$13(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -19,7 +19,7 @@ class DataJsPlugin$13
       }
       for (;;)
       {
-        beil.a().b(this);
+        bejc.a().b(this);
         return true;
         this.val$req.b();
       }

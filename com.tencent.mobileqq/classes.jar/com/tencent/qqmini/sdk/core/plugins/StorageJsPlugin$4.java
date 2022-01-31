@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beig;
-import beka;
+import beix;
+import bekr;
 
 class StorageJsPlugin$4
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$4(StorageJsPlugin paramStorageJsPlugin, String paramString, beka parambeka) {}
+  StorageJsPlugin$4(StorageJsPlugin paramStorageJsPlugin, String paramString, bekr parambekr) {}
   
   public String run()
   {

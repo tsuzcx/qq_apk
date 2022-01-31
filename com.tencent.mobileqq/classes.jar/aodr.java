@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
-import java.util.List;
+import android.widget.TextView;
 
-public abstract class aodr
+public class aodr
 {
-  public abstract int a();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract List<aodo> a(boolean paramBoolean);
-  
-  public abstract void a();
-  
-  public void a(aods paramaods, aodo paramaodo, boolean paramBoolean)
-  {
-    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramaods, paramaodo), 64, null, true);
-  }
-  
-  public abstract boolean a();
+  public aodr(aodo paramaodo) {}
 }
 
 

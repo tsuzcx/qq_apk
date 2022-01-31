@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
-import bcpw;
-import bify;
-import bjqt;
-import bjqu;
+import bcql;
+import bigp;
+import bjrk;
+import bjrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$7
   implements Runnable
 {
-  public QIMCameraCaptureUnit$7(bify parambify, int paramInt) {}
+  public QIMCameraCaptureUnit$7(bigp parambigp, int paramInt) {}
   
   public void run()
   {
@@ -26,10 +26,10 @@ public class QIMCameraCaptureUnit$7
         do
         {
           return;
-          bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131709764), 1).a();
-          Activity localActivity = this.this$0.jdField_a_of_type_Bjqu.a();
+          bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709775), 1).a();
+          Activity localActivity = this.this$0.jdField_a_of_type_Bjrl.a();
           if ((localActivity != null) && (!localActivity.isFinishing())) {
-            this.this$0.jdField_a_of_type_Bjqt.a(2);
+            this.this$0.jdField_a_of_type_Bjrk.a(2);
           }
         } while (!this.this$0.h);
         this.this$0.K();
@@ -39,13 +39,13 @@ public class QIMCameraCaptureUnit$7
           this.this$0.b(null, false);
           return;
         }
-        bcpw.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
+        bcql.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
         this.this$0.g();
         this.this$0.L();
       } while (!this.this$0.h);
       this.this$0.J();
       return;
-      bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131709766), 0).a();
+      bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131709777), 0).a();
     } while (!this.this$0.h);
     this.this$0.J();
   }

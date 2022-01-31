@@ -1,87 +1,69 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bbbe
+  extends Drawable
 {
-  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
+  
+  public bbbe(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = true;
-    CardProfile localCardProfile = null;
-    aukn localaukn = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface = localCardProfile;
-    if (localaukn != null)
+    if ((paramInt2 > 0) && (paramInt3 > 0))
     {
-      localCardProfile = (CardProfile)localaukn.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
-      paramQQAppInterface = localCardProfile;
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
-        if (localCardProfile == null) {
-          break label111;
-        }
-      }
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bbbb.a(this.b, this.c);
     }
-    for (;;)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      paramQQAppInterface = localCardProfile;
-      return paramQQAppInterface;
-      label111:
-      bool = false;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    CardProfile localCardProfile;
-    if (localObject != null)
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
     {
-      paramQQAppInterface = (CardProfile)((aukn)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.bAvailableCnt -= paramInt;
-        paramQQAppInterface.bTodayVotedCnt += paramInt;
-        if (paramQQAppInterface.getStatus() != 1000) {
-          break label238;
-        }
-        ((aukn)localObject).b(paramQQAppInterface);
-      }
-      localCardProfile = (CardProfile)((aukn)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
-      if (localCardProfile != null)
-      {
-        localCardProfile.bAvailableCnt -= paramInt;
-        localCardProfile.bTodayVotedCnt += paramInt;
-        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
-        if (localCardProfile.getStatus() != 1000) {
-          break label248;
-        }
-        ((aukn)localObject).b(localCardProfile);
-      }
-      label180:
-      ((aukn)localObject).a();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
-        if (paramQQAppInterface == null) {
-          break label259;
-        }
-      }
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bbbb.a(this.b, this.c);
     }
-    label259:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("VoteUtil", 2, bool);
-      return;
-      label238:
-      ((aukn)localObject).a(paramQQAppInterface);
-      break;
-      label248:
-      ((aukn)localObject).a(localCardProfile);
-      break label180;
-    }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
   }
+  
+  public int getOpacity()
+  {
+    switch (this.jdField_a_of_type_Int >>> 24)
+    {
+    default: 
+      return -3;
+    case 255: 
+      return -1;
+    }
+    return -2;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

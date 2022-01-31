@@ -1,8 +1,14 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.View.OnClickListener;
 
 public abstract interface bfzk
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  public abstract int a();
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean b(int paramInt);
+  
+  public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
 }
 
 

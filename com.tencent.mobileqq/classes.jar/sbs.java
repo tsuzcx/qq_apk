@@ -1,67 +1,30 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.1;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.2;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.5;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.6;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class sbs
-  extends MqqHandler
+  implements View.OnFocusChangeListener
 {
-  public sbs(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public sbs(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.isFinishing()) {}
-    do
+    if (paramBoolean)
     {
-      do
+      paramView.clearFocus();
+      SubscriptFeedsActivity.a(this.a);
+      long l = System.currentTimeMillis();
+      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
       {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1002: 
-            try
-            {
-              paramMessage = sdf.a().b(this.a.app);
-              this.a.runOnUiThread(new SubscriptFeedsActivity.14.1(this, paramMessage));
-              return;
-            }
-            catch (Exception paramMessage) {}
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
-        return;
-        this.a.runOnUiThread(new SubscriptFeedsActivity.14.2(this));
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!bhvh.a()));
-      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
-    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
-    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
-      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
+        SubscriptFeedsActivity.a(this.a, l);
+        UniteSearchActivity.a(this.a, null, 12);
+        if (QLog.isColorLevel()) {
+          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
+        }
+      }
     }
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.3(this, paramMessage));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.4(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.5(this));
-    return;
-    this.a.runOnUiThread(new SubscriptFeedsActivity.14.6(this));
   }
 }
 

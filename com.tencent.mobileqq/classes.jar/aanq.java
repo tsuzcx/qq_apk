@@ -1,19 +1,16 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
 
 public class aanq
-  implements QQPermissionCallback
+  implements aekb
 {
   public aanq(BaseChatPie paramBaseChatPie) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    bbcv.b(this.a.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.aO();
+    if (this.a.K) {
+      this.a.bc();
+    }
+    ((adis)this.a.a.a(7)).b(this.a.hashCode());
   }
 }
 

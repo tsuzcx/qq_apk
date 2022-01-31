@@ -1,25 +1,9 @@
 class qwn
-  extends qwp
+  extends qwm
 {
-  private final float a;
-  
-  public qwn(float paramFloat)
+  long a(long paramLong)
   {
-    this.a = paramFloat;
-  }
-  
-  public long a(long paramLong)
-  {
-    long l = paramLong;
-    if (this.b > 0L) {
-      l = (this.a * (float)paramLong + (1.0F - this.a) * (float)this.b);
-    }
-    return l;
-  }
-  
-  public String toString()
-  {
-    return "ExponentialPredictor(" + this.a + ')';
+    return Math.max(paramLong, this.b);
   }
 }
 

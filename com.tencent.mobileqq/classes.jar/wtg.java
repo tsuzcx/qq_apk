@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
-final class wtg
-  implements View.OnClickListener
+class wtg
+  extends akdn
 {
-  wtg(wtk paramwtk, String paramString, bfol parambfol) {}
+  WeakReference<wth> a;
   
-  public void onClick(View paramView)
+  public wtg(wth paramwth)
   {
-    this.jdField_a_of_type_Wtk.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bfol.dismiss();
+    this.a = new WeakReference(paramwth);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    wth localwth = (wth)this.a.get();
+    if (localwth != null) {
+      localwth.a(paramBoolean, paramString, false);
+    }
   }
 }
 

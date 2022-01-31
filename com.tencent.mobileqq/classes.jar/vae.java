@@ -1,8 +1,17 @@
-import com.tribe.async.dispatch.IEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface vae
-  extends IEventReceiver
-{}
+class vae
+  implements DialogInterface.OnClickListener
+{
+  vae(vac paramvac) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    vei.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

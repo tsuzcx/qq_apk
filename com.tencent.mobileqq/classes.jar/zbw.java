@@ -1,58 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class zbw
-  extends URLDrawableParams
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  Context a;
+  public zbw(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
   
-  public zbw(Context paramContext, File paramFile)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramContext);
-    this.a = paramContext;
-    aywk.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new ayqc(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new ayrn(bool, paramObject);
-        bool = false;
-      }
-    }
-    return null;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bbqj.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130846920);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130846920);
+    float f = paramValueAnimator.getAnimatedFraction();
+    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
+    yxp.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
+    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
+    paramValueAnimator.height = ((int)f);
+    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
+    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
+    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
   }
 }
 

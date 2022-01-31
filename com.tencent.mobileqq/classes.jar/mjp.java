@@ -1,28 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.av.ui.VideoControlUI;
 
 public class mjp
-  extends Handler
+  extends mcf
 {
-  public mjp(VideoControlUI paramVideoControlUI, Looper paramLooper)
+  public mjp(VideoControlUI paramVideoControlUI) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    super(paramLooper);
+    if (this.a.g()) {}
+    do
+    {
+      return;
+      if (this.a.h()) {
+        break;
+      }
+    } while (!paramBoolean);
+    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+    this.a.a.a(paramLong, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void f(long paramLong)
   {
-    String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 256: 
-      mat.a(this.a.a, 1037, str);
+    if (this.a.g()) {}
+    while ((!this.a.h()) || (!this.a.a.b(0))) {
       return;
     }
-    mat.a(this.a.a, 1036, str);
+    this.a.a.a(paramLong, 0, true);
   }
 }
 

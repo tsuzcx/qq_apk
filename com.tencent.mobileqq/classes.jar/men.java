@@ -1,51 +1,24 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class men
-  extends lgl
+public class men
+  extends BroadcastReceiver
 {
-  men(mek parammek) {}
+  public men(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  protected void a(long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("MultiIncomingCallUICtr", 1, "onConnected, seq[" + paramLong + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.c();
-    lzb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
-    if (this.a.jdField_a_of_type_Mkl != null) {
-      this.a.jdField_a_of_type_Mkl.c();
-    }
-    if (this.a.jdField_a_of_type_Lgf.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
-    }
-    mtt.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString)
-  {
-    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
+    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      this.a.a(paramLong, paramInt);
-      this.a.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("MultiIncomingCallUICtr", 1, "onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + paramLong + "]");
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-    if (this.a.jdField_a_of_type_Mkl != null) {
-      this.a.jdField_a_of_type_Mkl.a();
-    }
-    this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "onDestroyUI, peerUin:" + paramString + ", isQuit:" + paramBoolean + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
+      long l = AudioHelper.b();
+      paramContext = lcx.a().a();
+      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.b("BroadcastReceiver_qzone");
     }
   }
 }

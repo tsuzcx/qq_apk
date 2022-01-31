@@ -1,8 +1,54 @@
-public abstract interface aigq
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+public class aigq
+  implements waj
 {
-  public abstract void a(int paramInt);
+  long jdField_a_of_type_Long;
+  aigm jdField_a_of_type_Aigm;
+  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
+  public aigq(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, aigm paramaigm)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
+    this.jdField_a_of_type_Aigm = paramaigm;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void onFailure(String paramString)
+  {
+    this.jdField_a_of_type_Aigm.a(-12);
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|third step fail:" + paramString);
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|third step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Aigm.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart() {}
+  
+  public void onSuccess(String paramString)
+  {
+    vyf.b(BaseApplication.getContext(), new File(this.b));
+    bbdx.d(this.jdField_a_of_type_JavaLangString);
+    aigj.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 3);
+  }
 }
 
 

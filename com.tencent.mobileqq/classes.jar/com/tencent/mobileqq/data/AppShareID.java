@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class AppShareID
-  extends aukm
+  extends auko
 {
   public String appstorelink;
   public String bundleid;
@@ -14,14 +14,14 @@ public class AppShareID
   public short sPriority;
   public short sResType;
   public String sourceUrl;
-  @auma
+  @aumc
   public String strPkgName;
   public String strResDesc;
   public String strResName;
   public String strResURL_big;
   public String strResURL_small;
   public long uiNewVer;
-  @auma
+  @aumc
   public long uiResID;
   public long updateTime;
   

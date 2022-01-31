@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class aagm
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aagm(AddAccountActivity paramAddAccountActivity) {}
+  public aagm(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (AddFriendLogicActivity.d(this.a) == 1)
+    {
+      this.a.finish();
+      return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
-    libsafeedit.clearPassBuffer();
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

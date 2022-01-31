@@ -1,18 +1,10 @@
-import com.tencent.image.URLDrawable;
+import java.util.List;
 
 public class tdj
-  implements tcl
+  extends ssh
 {
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    URLDrawable.clearMemoryCache();
-  }
+  public String a;
+  public List<String> a;
 }
 
 

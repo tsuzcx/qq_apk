@@ -6,11 +6,11 @@ import android.media.MediaPlayer;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bcuf;
-import bcug;
-import bcuh;
-import bcui;
-import bcuj;
+import bcuu;
+import bcuv;
+import bcuw;
+import bcux;
+import bcuy;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import java.lang.ref.WeakReference;
 
@@ -22,7 +22,7 @@ public class VideoTextureView
   private int jdField_a_of_type_Int;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private bcuj jdField_a_of_type_Bcuj;
+  private bcuy jdField_a_of_type_Bcuy;
   public final Runnable a;
   private String jdField_a_of_type_JavaLangString = "http://videos.kpie.com.cn/videos/20170526/037DCE54-EECE-4520-AA92-E4002B1F29B0.mp4";
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
@@ -33,7 +33,7 @@ public class VideoTextureView
     this.jdField_a_of_type_JavaLangRunnable = new VideoTextureView.6(this);
     setSurfaceTextureListener(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Bcuj = new bcuj(paramContext);
+    this.jdField_a_of_type_Bcuy = new bcuy(paramContext);
   }
   
   public void a(String paramString)
@@ -45,11 +45,11 @@ public class VideoTextureView
     {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bcuf(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bcuu(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bcug(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new bcuh(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new bcui(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bcuv(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new bcuw(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new bcux(this));
       return;
     }
     catch (Exception paramString)

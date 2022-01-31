@@ -1,23 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class agka
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public agka(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  private WeakReference<DialogBaseActivity> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agka(DialogBaseActivity paramDialogBaseActivity)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
-      }
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localDialogBaseActivity.a(i, bool);
+        return;
+        bool = false;
+      }
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

@@ -1,39 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bivv
-  implements View.OnClickListener
+public abstract interface bivv
 {
-  bivv(bivu parambivu, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    bivq.a(this.jdField_a_of_type_Bivu.a, this.jdField_a_of_type_Int);
-    paramView = bivx.a(bivq.a(this.jdField_a_of_type_Bivu.a));
-    if ((paramView != null) && (paramView.length > this.jdField_a_of_type_Int))
-    {
-      paramView = paramView[this.jdField_a_of_type_Int];
-      if (paramView != bivx.c) {
-        break label89;
-      }
-      bizc.a().p();
-    }
-    for (;;)
-    {
-      bizq.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
-      return;
-      label89:
-      if (paramView == bivx.a)
-      {
-        bizc.a().o();
-      }
-      else if (paramView == bivx.b)
-      {
-        bizg.a().f("3");
-        bizc.a().w();
-      }
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

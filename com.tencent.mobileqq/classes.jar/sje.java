@@ -1,41 +1,12 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-
 public class sje
-  extends RecyclerView.ItemDecoration
 {
-  private final int a = actn.a(4.0F, BaseApplicationImpl.getApplication().getResources());
+  public String a;
+  public String b;
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public sje(String paramString1, String paramString2)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    int i = paramView.getSpanIndex();
-    if (paramView.isFullSpan())
-    {
-      paramRect.left = 0;
-      paramRect.right = 0;
-    }
-    for (;;)
-    {
-      paramRect.bottom = this.a;
-      return;
-      if (i % 2 == 0)
-      {
-        paramRect.left = 0;
-        paramRect.right = (this.a / 2);
-      }
-      else
-      {
-        paramRect.left = (this.a / 2);
-        paramRect.right = 0;
-      }
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

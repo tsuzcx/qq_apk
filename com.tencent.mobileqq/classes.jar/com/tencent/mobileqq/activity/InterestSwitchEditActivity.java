@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import abjk;
-import ajtk;
-import ajtq;
-import ajxn;
+import abjg;
+import ajti;
+import ajto;
+import ajxl;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import aoep;
-import axqw;
-import bbev;
-import bcoy;
-import bcpw;
-import bcqc;
-import bhbh;
+import aoeu;
+import axqy;
+import bbfj;
+import bcpn;
+import bcql;
+import bcqr;
+import bhby;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -31,10 +31,10 @@ public class InterestSwitchEditActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private ajtk jdField_a_of_type_Ajtk;
-  private ajtq jdField_a_of_type_Ajtq = new abjk(this);
+  private ajti jdField_a_of_type_Ajti;
+  private ajto jdField_a_of_type_Ajto = new abjg(this);
   private View jdField_a_of_type_AndroidViewView;
-  private bcoy jdField_a_of_type_Bcoy;
+  private bcpn jdField_a_of_type_Bcpn;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_a_of_type_Boolean;
@@ -133,12 +133,12 @@ public class InterestSwitchEditActivity
   
   private void a(int paramInt1, int paramInt2)
   {
-    new bcqc(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
+    new bcqr(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
   }
   
   private boolean a(Bundle paramBundle, int paramInt1, int paramInt2)
   {
-    if (!bbev.d(this)) {
+    if (!bbfj.d(this)) {
       a(paramInt1, paramInt2);
     }
     while ((paramBundle == null) || (paramBundle.isEmpty())) {
@@ -147,17 +147,17 @@ public class InterestSwitchEditActivity
     if (QLog.isColorLevel()) {
       QLog.d("InterestSwitchEditActivity", 2, String.format("setDetailUserInfo bundle=%s", new Object[] { paramBundle }));
     }
-    ((ajtk)this.app.a(2)).a(paramBundle);
+    ((ajti)this.app.a(2)).a(paramBundle);
     return true;
   }
   
   private void b()
   {
-    Card localCard = ((ajxn)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
+    Card localCard = ((ajxl)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
     if (localCard != null)
     {
-      aoep localaoep = (aoep)this.app.getManager(264);
-      if ((localCard.extendFriendEntryAddFriend == 1) && (localaoep.b()))
+      aoeu localaoeu = (aoeu)this.app.getManager(264);
+      if ((localCard.extendFriendEntryAddFriend == 1) && (localaoeu.b()))
       {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
         this.h.setChecked(localCard.isShowCard);
@@ -180,21 +180,21 @@ public class InterestSwitchEditActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560974);
-    this.app.addObserver(this.jdField_a_of_type_Ajtq);
-    setTitle(getString(2131695408));
+    super.setContentView(2131560973);
+    this.app.addObserver(this.jdField_a_of_type_Ajto);
+    setTitle(getString(2131695409));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131368230));
-    this.b = ((FormSwitchItem)findViewById(2131370563));
+    this.b = ((FormSwitchItem)findViewById(2131370562));
     this.c = ((FormSwitchItem)findViewById(2131371403));
     this.d = ((FormSwitchItem)findViewById(2131371893));
-    this.e = ((FormSwitchItem)findViewById(2131370308));
-    this.f = ((FormSwitchItem)findViewById(2131370592));
-    this.g = ((FormSwitchItem)findViewById(2131376510));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365799);
+    this.e = ((FormSwitchItem)findViewById(2131370307));
+    this.f = ((FormSwitchItem)findViewById(2131370591));
+    this.g = ((FormSwitchItem)findViewById(2131376512));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365798);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.h = ((FormSwitchItem)findViewById(2131365798));
-    this.jdField_a_of_type_Bcoy = new bcoy(this.app, null);
-    boolean bool = this.jdField_a_of_type_Bcoy.a(5);
+    this.h = ((FormSwitchItem)findViewById(2131365797));
+    this.jdField_a_of_type_Bcpn = new bcpn(this.app, null);
+    boolean bool = this.jdField_a_of_type_Bcpn.a(5);
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     int i;
     label221:
@@ -213,35 +213,35 @@ public class InterestSwitchEditActivity
     {
       i = 0;
       paramBundle.setVisibility(i);
-      bool = this.jdField_a_of_type_Bcoy.a(4);
+      bool = this.jdField_a_of_type_Bcpn.a(4);
       paramBundle = this.b;
       if (!bool) {
         break label710;
       }
       i = 0;
       paramBundle.setVisibility(i);
-      bool = this.jdField_a_of_type_Bcoy.a(3);
+      bool = this.jdField_a_of_type_Bcpn.a(3);
       paramBundle = this.c;
       if (!bool) {
         break label716;
       }
       i = 0;
       paramBundle.setVisibility(i);
-      bool = this.jdField_a_of_type_Bcoy.a(6);
+      bool = this.jdField_a_of_type_Bcpn.a(6);
       paramBundle = this.d;
       if (!bool) {
         break label722;
       }
       i = 0;
       paramBundle.setVisibility(i);
-      bool = this.jdField_a_of_type_Bcoy.a(7);
+      bool = this.jdField_a_of_type_Bcpn.a(7);
       paramBundle = this.e;
       if (!bool) {
         break label728;
       }
       i = 0;
       paramBundle.setVisibility(i);
-      if ((!this.jdField_a_of_type_Bcoy.a(8)) || (!bhbh.a())) {
+      if ((!this.jdField_a_of_type_Bcpn.a(8)) || (!bhby.a())) {
         break label734;
       }
       i = 1;
@@ -309,14 +309,14 @@ public class InterestSwitchEditActivity
         label739:
         i = 8;
         break label340;
-        if (!bbev.d(BaseApplication.getContext()))
+        if (!bbfj.d(BaseApplication.getContext()))
         {
-          bcpw.a(BaseApplicationImpl.sApplication, 2131694607, 0).b(getTitleBarHeight());
+          bcql.a(BaseApplicationImpl.sApplication, 2131694608, 0).b(getTitleBarHeight());
         }
         else
         {
-          this.jdField_a_of_type_Ajtk = ((ajtk)this.app.a(2));
-          this.jdField_a_of_type_Ajtk.g();
+          this.jdField_a_of_type_Ajti = ((ajti)this.app.a(2));
+          this.jdField_a_of_type_Ajti.g();
         }
       }
     }
@@ -325,12 +325,12 @@ public class InterestSwitchEditActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bcoy != null)
+    if (this.jdField_a_of_type_Bcpn != null)
     {
-      this.jdField_a_of_type_Bcoy.a();
-      this.jdField_a_of_type_Bcoy = null;
+      this.jdField_a_of_type_Bcpn.a();
+      this.jdField_a_of_type_Bcpn = null;
     }
-    this.app.removeObserver(this.jdField_a_of_type_Ajtq);
+    this.app.removeObserver(this.jdField_a_of_type_Ajto);
   }
   
   public void finish()
@@ -419,7 +419,7 @@ public class InterestSwitchEditActivity
         localIntent.putExtra("param_sticky_note_switch_changed", true);
         localBundle.putShort("key_sticky_note_switch", (short)i);
       }
-      localCard = ((ajxn)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
+      localCard = ((ajxl)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
       if (localCard != null) {
         if (!this.h.a()) {
           break label628;
@@ -445,7 +445,7 @@ public class InterestSwitchEditActivity
       }
       if (!this.jdField_a_of_type_Boolean)
       {
-        a(localBundle, 2131694609, 0);
+        a(localBundle, 2131694610, 0);
         this.jdField_a_of_type_Boolean = true;
       }
       setResult(-1, localIntent);
@@ -472,13 +472,13 @@ public class InterestSwitchEditActivity
   {
     if (paramCompoundButton == this.h.a()) {
       if (paramBoolean) {
-        axqw.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
+        axqy.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
       }
     }
     do
     {
       return;
-      axqw.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
+      axqy.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
       return;
       int i;
       if (paramCompoundButton == this.c.a())
@@ -487,7 +487,7 @@ public class InterestSwitchEditActivity
         if (paramBoolean) {}
         for (i = 1;; i = 2)
         {
-          axqw.b(paramCompoundButton, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
+          axqy.b(paramCompoundButton, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
           return;
         }
       }
@@ -497,12 +497,12 @@ public class InterestSwitchEditActivity
         if (paramBoolean) {}
         for (i = 1;; i = 2)
         {
-          axqw.b(paramCompoundButton, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
+          axqy.b(paramCompoundButton, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
           return;
         }
       }
     } while (paramCompoundButton != this.g.a());
-    axqw.b(this.app, "dc00898", "", "", "0X800AB37", "0X800AB37", 0, 0, "", "", "", "");
+    axqy.b(this.app, "dc00898", "", "", "0X800AB37", "0X800AB37", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,42 +1,164 @@
-import android.text.TextUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.NumberPicker;
+import android.widget.TextView;
+import java.lang.reflect.Field;
 
-class bfey
-  implements ThreadFactory
+public class bfey
+  extends Dialog
+  implements DialogInterface.OnCancelListener, View.OnClickListener
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger b = new AtomicInteger(1);
+  private int jdField_a_of_type_Int;
+  private NumberPicker jdField_a_of_type_AndroidWidgetNumberPicker;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bffa jdField_a_of_type_Bffa;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private TextView b;
   
-  bfey(String paramString)
+  public bfey(@NonNull Context paramContext)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    super(paramContext, 2131755360);
+    a(paramContext);
+  }
+  
+  private void a(Context paramContext)
+  {
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559260, null);
+    setContentView(paramContext);
+    Window localWindow = getWindow();
+    if (localWindow != null)
     {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        localObject = "threadpool";
+      localWindow.getDecorView().setPadding(0, 0, 0, 0);
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.width = -1;
+      localLayoutParams.height = -2;
+      localWindow.setAttributes(localLayoutParams);
+      localWindow.setGravity(80);
+    }
+    this.jdField_a_of_type_AndroidWidgetNumberPicker = ((NumberPicker)paramContext.findViewById(2131370987));
+    this.b = ((TextView)paramContext.findViewById(2131378081));
+    this.b.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378111));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    a(this.jdField_a_of_type_AndroidWidgetNumberPicker);
+    setOnCancelListener(this);
+  }
+  
+  private void a(NumberPicker paramNumberPicker)
+  {
+    Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
+    int j = arrayOfField.length;
+    int i = 0;
+    for (;;)
+    {
+      Field localField;
+      if (i < j)
+      {
+        localField = arrayOfField[i];
+        if (localField.getName().equals("mSelectionDivider")) {
+          localField.setAccessible(true);
+        }
       }
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
-      return;
+      else
+      {
+        try
+        {
+          localField.set(paramNumberPicker, new ColorDrawable(bfgh.a("#3CB371")));
+          return;
+        }
+        catch (IllegalArgumentException paramNumberPicker)
+        {
+          paramNumberPicker.printStackTrace();
+          return;
+        }
+        catch (Resources.NotFoundException paramNumberPicker)
+        {
+          paramNumberPicker.printStackTrace();
+          return;
+        }
+        catch (IllegalAccessException paramNumberPicker)
+        {
+          paramNumberPicker.printStackTrace();
+          return;
+        }
+      }
+      i += 1;
     }
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  public void a()
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    try
+    {
+      if (isShowing()) {
+        dismiss();
+      }
+      return;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
+    catch (Exception localException) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMaxValue(paramInt);
+  }
+  
+  public void a(int paramInt, bffa parambffa)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setOnValueChangedListener(new bfez(this));
+    this.jdField_a_of_type_Bffa = parambffa;
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setDisplayedValues(paramArrayOfString);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMinValue(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetNumberPicker.setValue(paramInt);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_Bffa != null) {
+      this.jdField_a_of_type_Bffa.onValCancel();
     }
-    return paramRunnable;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131378081)
+    {
+      if (this.jdField_a_of_type_Bffa != null) {
+        this.jdField_a_of_type_Bffa.onValCancel();
+      }
+      a();
+    }
+    while (paramView.getId() != 2131378111) {
+      return;
+    }
+    if (this.jdField_a_of_type_Bffa != null) {
+      this.jdField_a_of_type_Bffa.onValConfirm(this.jdField_a_of_type_Int);
+    }
+    a();
   }
 }
 

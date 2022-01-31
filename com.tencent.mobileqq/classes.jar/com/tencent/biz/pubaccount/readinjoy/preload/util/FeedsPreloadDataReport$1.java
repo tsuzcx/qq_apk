@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.preload.util;
 
 import com.tencent.qphone.base.util.QLog;
-import noo;
-import onk;
+import nol;
+import onh;
 
 public final class FeedsPreloadDataReport$1
   implements Runnable
@@ -11,9 +11,9 @@ public final class FeedsPreloadDataReport$1
   
   public void run()
   {
-    String str = onk.a();
+    String str = onh.a();
     QLog.d("FeedsPreloadDataReport", 1, new Object[] { "actionName = ", this.a, "\n", "r2 = ", str, " r5 = ", this.b });
-    noo.a(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
+    nol.a(null, "", this.a, this.a, 0, 0, str, "", "", this.b, false);
   }
 }
 

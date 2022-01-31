@@ -1,36 +1,41 @@
+import android.os.SystemClock;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public class uca
-  extends JobSegment<String, String>
+class uca
+  implements udd
 {
-  private uca(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  uca(ubz paramubz) {}
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public boolean a(ucz paramucz, int paramInt, Object paramObject)
   {
-    this.a.jdField_a_of_type_Udc.a(null);
-    this.a.jdField_a_of_type_Udc.a(null);
-    this.a.jdField_a_of_type_Udc.a(null);
-    this.a.jdField_a_of_type_Udc.a(null);
-    this.a.jdField_a_of_type_Udc.a(null);
-    if (VideoViewVideoHolder.f(this.a) == 0)
-    {
-      veg.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
-      notifyResult(paramString);
-      return;
+    if (this.a.isCanceled()) {
+      return false;
     }
-    if (VideoViewVideoHolder.f(this.a) < 7)
+    ved.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramucz)), Integer.valueOf(paramInt), paramObject);
+    switch (paramInt)
     {
-      veg.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
-      VideoViewVideoHolder.a(this.a, 0);
-      notifyResult(paramString);
-      return;
     }
-    veg.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
-    this.a.jdField_a_of_type_Udc.a();
-    VideoViewVideoHolder.a(this.a, 0);
-    notifyResult(paramString);
+    for (;;)
+    {
+      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramucz, paramInt, paramObject);
+      return false;
+      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
+      continue;
+      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
+      continue;
+      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
+      continue;
+      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
+      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
+      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
+      VideoViewVideoHolder.a(this.a.a, 8);
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      continue;
+      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
+      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+    }
   }
 }
 

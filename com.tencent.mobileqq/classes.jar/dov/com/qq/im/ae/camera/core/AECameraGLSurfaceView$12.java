@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.core;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Looper;
 import android.text.TextUtils;
-import avrr;
-import bijj;
-import bijp;
-import bimt;
-import biqk;
-import biwg;
-import bkyn;
-import bkzt;
+import avrt;
+import bika;
+import bikg;
+import bink;
+import birb;
+import biwx;
+import bkze;
+import blak;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.baseutils.string.StringUtils;
@@ -37,7 +37,7 @@ public class AECameraGLSurfaceView$12
       QLog.d("AECameraGLSurfaceView", 1, new Object[] { "setFaceEffect fail ", Boolean.valueOf(this.this$0.b()) });
     }
     Object localObject2;
-    bijp localbijp;
+    bikg localbikg;
     Object localObject1;
     do
     {
@@ -45,13 +45,13 @@ public class AECameraGLSurfaceView$12
       {
         return;
         localObject2 = this.a;
-        localbijp = (bijp)AECameraGLSurfaceView.a(this.this$0);
+        localbikg = (bikg)AECameraGLSurfaceView.a(this.this$0);
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           AECameraGLSurfaceView.a(this.this$0).a(null);
           AECameraGLSurfaceView.a(this.this$0, null);
           AECameraGLSurfaceView.a(this.this$0, false);
-          this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbijp));
+          this.this$0.queueEvent(new AECameraGLSurfaceView.12.1(this, localbikg));
           AECameraGLSurfaceView.a(this.this$0).a();
           AECameraGLSurfaceView.a(this.this$0, null);
           return;
@@ -65,10 +65,10 @@ public class AECameraGLSurfaceView$12
     } while ((localObject2 == null) || (((VideoMaterial)localObject2).getGameParams() != null));
     AECameraGLSurfaceView.a(this.this$0).a((VideoMaterial)localObject2);
     ((VideoMaterial)localObject2).setDataPath((String)localObject1);
-    if ((!FeatureManager.ensureMaterialSoLoaded((VideoMaterial)localObject2)) || ((bkyn.a((VideoMaterial)localObject2)) && (!bkyn.a())))
+    if ((!FeatureManager.ensureMaterialSoLoaded((VideoMaterial)localObject2)) || ((bkze.a((VideoMaterial)localObject2)) && (!bkze.a())))
     {
-      AECameraGLSurfaceView.a(this.this$0, ajyc.a(2131689826));
-      bkyn.a((VideoMaterial)localObject2, (Activity)this.this$0.getContext(), ((VideoMaterial)localObject2).getDataPath());
+      AECameraGLSurfaceView.a(this.this$0, ajya.a(2131689826));
+      bkze.a((VideoMaterial)localObject2, (Activity)this.this$0.getContext(), ((VideoMaterial)localObject2).getDataPath());
       return;
     }
     if ((VideoMaterialUtil.isWatermarkMaterial((VideoMaterial)localObject2)) && (!AECameraGLSurfaceView.c(this.this$0)))
@@ -77,8 +77,8 @@ public class AECameraGLSurfaceView$12
       LogicDataManager.getInstance().init((VideoMaterial)localObject2);
       ThreadManager.getUIHandler().post(new AECameraGLSurfaceView.12.2(this));
     }
-    if (biqk.a() != null) {
-      biqk.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
+    if (birb.a() != null) {
+      birb.a().a = VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2);
     }
     if (AECameraGLSurfaceView.a(this.this$0) != null) {
       AECameraGLSurfaceView.a(this.this$0).a(VideoMaterialUtil.needVoiceChange((VideoMaterial)localObject2), ((VideoMaterial)localObject2).getVoicekind(), ((VideoMaterial)localObject2).getEnvironment());
@@ -94,8 +94,8 @@ public class AECameraGLSurfaceView$12
       if (!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "back")) {
         break label579;
       }
-      if (bijj.a().b()) {
-        bijj.a().c(AECameraGLSurfaceView.d(this.this$0));
+      if (bika.a().b()) {
+        bika.a().c(AECameraGLSurfaceView.d(this.this$0));
       }
       if (!VideoMaterialUtil.isWatermarkEditable((VideoMaterial)localObject2)) {
         break label617;
@@ -109,20 +109,20 @@ public class AECameraGLSurfaceView$12
     {
       AECameraGLSurfaceView.a(this.this$0, (VideoMaterial)localObject2);
       if (i != 0) {
-        this.this$0.queueEvent(new AECameraGLSurfaceView.12.3(this, localbijp, (VideoMaterial)localObject2));
+        this.this$0.queueEvent(new AECameraGLSurfaceView.12.3(this, localbikg, (VideoMaterial)localObject2));
       }
-      if ((!bimt.a()) || (TextUtils.isEmpty(this.a))) {
+      if ((!bink.a()) || (TextUtils.isEmpty(this.a))) {
         break;
       }
-      bimt.a(this.this$0.a, 1500L);
+      bink.a(this.this$0.a, 1500L);
       return;
       AECameraGLSurfaceView.a(this.this$0).a();
       break label412;
       label579:
-      if ((!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "front")) || (bijj.a().b())) {
+      if ((!StringUtils.equals(((VideoMaterial)localObject2).getPreferCameraId(), "front")) || (bika.a().b())) {
         break label466;
       }
-      bijj.a().c(AECameraGLSurfaceView.d(this.this$0));
+      bika.a().c(AECameraGLSurfaceView.d(this.this$0));
       break label466;
       label617:
       i = 1;

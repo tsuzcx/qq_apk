@@ -1,30 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aiqj
+class aiqj
+  implements Animation.AnimationListener
 {
-  public static aiqo a(int paramInt, aukm paramaukm, QQAppInterface paramQQAppInterface, Context paramContext)
+  aiqj(aiqi paramaiqi, yah paramyah, View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 0) {
-      return new aiqm(paramQQAppInterface, paramContext, paramaukm);
-    }
-    if (paramInt == 5) {
-      return new aiqk(paramQQAppInterface, paramContext, paramaukm);
-    }
-    if (paramInt == 1) {
-      return new aiqs(paramQQAppInterface, paramContext, paramaukm);
-    }
-    if (paramInt == 2) {
-      return new aiqu(paramQQAppInterface, paramContext, paramaukm, 2);
-    }
-    if (paramInt == 3) {
-      return new aiqu(paramQQAppInterface, paramContext, paramaukm, 3);
-    }
-    if (paramInt == 4) {
-      return new aiqm(paramQQAppInterface, paramContext, paramaukm);
-    }
-    return null;
+    this.jdField_a_of_type_Yah.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839132);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

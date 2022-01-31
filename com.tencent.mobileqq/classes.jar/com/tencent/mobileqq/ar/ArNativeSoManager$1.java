@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar;
 
-import alcb;
-import alio;
+import alca;
+import alin;
 import java.util.ArrayList;
 
 public class ArNativeSoManager$1
   implements Runnable
 {
-  public ArNativeSoManager$1(alcb paramalcb, ArrayList paramArrayList, String paramString, alio paramalio) {}
+  public ArNativeSoManager$1(alca paramalca, ArrayList paramArrayList, String paramString, alin paramalin) {}
   
   public void run()
   {
-    alcb.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alio);
+    alca.a(this.this$0, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alin);
   }
 }
 

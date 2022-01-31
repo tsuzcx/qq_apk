@@ -1,16 +1,22 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class ablq
-  extends atzl
+  implements Animation.AnimationListener
 {
   public ablq(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

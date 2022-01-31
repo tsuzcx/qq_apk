@@ -1,78 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadBPTransEntity;
-import com.tencent.qphone.base.util.QLog;
 
-public class apvz
+final class apvz
+  implements View.OnClickListener
 {
-  private static apvz a;
+  apvz(QQAppInterface paramQQAppInterface, String paramString, apwa paramapwa, anbw paramanbw) {}
   
-  public static apvz a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (a == null) {
-        a = new apvz();
-      }
-      apvz localapvz = a;
-      return localapvz;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
-    finally {}
-  }
-  
-  public apwa a(String paramString)
-  {
-    Object localObject = apcy.a().a();
-    if (localObject == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    for (;;)
-    {
-      return null;
-      if (((QQAppInterface)localObject).a() != null) {}
-      for (paramString = ((QQAppInterface)localObject).a().a(paramString); paramString != null; paramString = null)
-      {
-        localObject = new apwa();
-        ((apwa)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
-        ((apwa)localObject).jdField_a_of_type_Long = paramString.mFileSize;
-        ((apwa)localObject).c = paramString.mFilePath;
-        ((apwa)localObject).b = paramString.mTempPath;
-        return localObject;
-        QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] getUDLBPTransProxy=null.");
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
-    QQAppInterface localQQAppInterface = apcy.a().a();
-    if (localQQAppInterface == null) {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    while (localQQAppInterface.a() == null) {
-      return;
-    }
-    localQQAppInterface.a().a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.mUrl = paramString1;
-    localUniformDownloadBPTransEntity.mFileName = paramString2;
-    localUniformDownloadBPTransEntity.mFileSize = paramLong;
-    localUniformDownloadBPTransEntity.mFilePath = paramString4;
-    localUniformDownloadBPTransEntity.mTempPath = paramString3;
-    QQAppInterface localQQAppInterface = apcy.a().a();
-    if (localQQAppInterface == null)
-    {
-      QLog.e("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
-      return;
-    }
-    if (localQQAppInterface.a() != null) {
-      localQQAppInterface.a().a(localUniformDownloadBPTransEntity);
-    }
-    QLog.i("UniformDownloadBPTrans<FileAssistant>", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+    this.jdField_a_of_type_Apwa.a(this.jdField_a_of_type_Anbw.b());
   }
 }
 

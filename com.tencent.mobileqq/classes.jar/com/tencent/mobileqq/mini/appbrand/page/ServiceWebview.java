@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import bgxq;
-import bgxr;
+import bgyh;
+import bgyi;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -106,7 +106,7 @@ public class ServiceWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgxq.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgyh.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
@@ -173,7 +173,7 @@ public class ServiceWebview
         if (this.mEnableNativeBuffer)
         {
           localObject = "__qqConfig.nativeBufferEnabled = true;";
-          localStringBuilder = localStringBuilder.append((String)localObject).append("__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bgxr.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+          localStringBuilder = localStringBuilder.append((String)localObject).append("__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bgyi.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
           if (i == 0)
           {
             localObject = "false";

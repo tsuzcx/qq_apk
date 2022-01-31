@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
 import android.content.Context;
-import apti;
-import aptw;
-import apxv;
+import aptm;
+import apty;
+import apxx;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ class QfileLocalFilePicTabView$1
   public void run()
   {
     if (this.this$0.f) {}
-    for (HashMap localHashMap = (HashMap)aptw.a(this.a);; localHashMap = null)
+    for (HashMap localHashMap = (HashMap)apty.a(this.a);; localHashMap = null)
     {
       if (localHashMap == null) {
         localHashMap = new HashMap();
@@ -28,15 +28,15 @@ class QfileLocalFilePicTabView$1
       {
         Object localObject1 = this.this$0.d.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          aptw.a(true, ((apxv)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+          apty.a(true, ((apxx)((Iterator)localObject1).next()).a(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
         }
         if (this.this$0.f) {}
-        for (localObject1 = apti.a().a();; localObject1 = null)
+        for (localObject1 = aptm.a().a();; localObject1 = null)
         {
           if (localObject1 != null) {
-            aptw.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+            apty.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
           }
-          aptw.a(localHashMap);
+          apty.a(localHashMap);
           if (localHashMap == null) {
             break;
           }

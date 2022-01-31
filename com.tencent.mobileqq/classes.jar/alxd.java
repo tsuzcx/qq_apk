@@ -1,26 +1,44 @@
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class alxd
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  alxd(alwx paramalwx, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  alxd(alww paramalww, View paramView1, View paramView2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_Alww.d);
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Alww.g)
     {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_Alwx.d * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Alwx.g);
-    this.b.setAlpha(1.0F - f);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_Alww.d);
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Alww.g)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_Alww.g) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 

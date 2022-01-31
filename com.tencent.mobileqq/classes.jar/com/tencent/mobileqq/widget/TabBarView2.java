@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
-import axmt;
+import axmv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import java.util.List;
@@ -40,14 +40,14 @@ public class TabBarView2
   public TabBarView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = actn.a(56.0F, getResources());
+    this.jdField_b_of_type_Int = actj.a(56.0F, getResources());
     this.m = 16;
     boolean bool1 = ThemeUtil.isNowThemeIsDefaultCache(BaseApplicationImpl.getApplication().getRuntime(), true);
     int k = this.s;
     boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
     int i;
     int j;
-    if (axmt.a()) {
+    if (axmv.a()) {
       if (bool2)
       {
         i = 2131166326;
@@ -76,7 +76,7 @@ public class TabBarView2
       this.t = paramContext.getDimensionPixelSize(4, this.t);
       this.u = paramContext.getDimensionPixelSize(3, this.u);
       paramContext.recycle();
-      if (("1103".equals(ThemeUtil.curThemeId)) || (axmt.a()))
+      if (("1103".equals(ThemeUtil.curThemeId)) || (axmv.a()))
       {
         this.r = getResources().getColor(j);
         this.s = k;

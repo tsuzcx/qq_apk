@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
 
 class bjaq
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  bjaq(bjan parambjan) {}
+  bjaq(bjao parambjao) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (((bjao.a(this.a) instanceof QIMCameraStoryCaptureButtonLayout)) && (((QIMCameraStoryCaptureButtonLayout)bjao.a(this.a)).c())) {
+      return true;
+    }
+    return bjao.a(this.a).a(paramMotionEvent);
+  }
 }
 
 

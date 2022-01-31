@@ -1,16 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class rpt
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ComplementFileStringLoader
 {
-  public rpt(ZImageView paramZImageView) {}
+  private rqa a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rpt(rqa paramrqa)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
+    this.a = paramrqa;
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    try
+    {
+      InputStream localInputStream = this.a.a(paramString);
+      if (localInputStream == null) {
+        throw new IllegalStateException(paramString + " not found");
+      }
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+      return null;
+    }
+    String str = rqj.a(localIOException);
+    return str;
   }
 }
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import bfgv;
+import bfhm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
@@ -16,7 +16,7 @@ class ShortcutUtils$PermissionDialog$2
   
   public void onClick(View paramView)
   {
-    paramView = bfgv.a().getString("mini_shortcut_help_url", "https://kf.qq.com/touch/sappfaq/190605Vn2EBv190605zuiEbY.html?scene_id=kf172&platform=15");
+    paramView = bfhm.a().getString("mini_shortcut_help_url", "https://kf.qq.com/touch/sappfaq/190605Vn2EBv190605zuiEbY.html?scene_id=kf172&platform=15");
     Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
     localIntent.setFlags(134217728);
     localIntent.putExtra("url", paramView);

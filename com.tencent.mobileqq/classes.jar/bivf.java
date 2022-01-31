@@ -1,83 +1,105 @@
-import android.graphics.PointF;
-import android.graphics.SurfaceTexture;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
-import com.tencent.filter.SurfaceTextureFilter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.PngsCreator.1;
-import dov.com.qq.im.ae.gif.video.PngsCreator.2;
-import dov.com.qq.im.ae.gif.video.PngsCreator.3;
-import dov.com.qq.im.ae.gif.video.PngsCreator.4;
-import dov.com.qq.im.ae.gif.video.PngsCreator.5;
-import java.io.File;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.1;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class bivf
+  extends bjow
 {
-  private static String jdField_a_of_type_JavaLangString = bivf.class.getSimpleName();
-  private double jdField_a_of_type_Double = 1.0D;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bisg jdField_a_of_type_Bisg = new bisg();
-  private bivg jdField_a_of_type_Bivg;
-  private bivk jdField_a_of_type_Bivk;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private List<List<List<PointF>>> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private List<List<float[]>> jdField_b_of_type_JavaUtilList;
+  private bjor<List<birj>> jdField_a_of_type_Bjor = new bjor();
+  private Map<String, birh> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private bjor<birm> b = new bjor();
   
-  public bivf(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble)
+  public bjor<List<birj>> a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_b_of_type_JavaUtilList = paramList1;
-    this.jdField_a_of_type_Double = paramDouble;
-    paramList = new HandlerThread("PngCreatorHT");
-    paramList.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramList.getLooper());
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.1(this, paramString));
+    return this.jdField_a_of_type_Bjor;
   }
   
-  public void a()
+  public void a(bjns parambjns, String paramString)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.5(this));
+    QLog.d("AEGIFMaterialViewModel", 4, "LoadingGifTplData");
+    ThreadManager.getSubThreadHandler().post(new AEGIFMaterialViewModel.1(this, paramString));
+    biqu.a().a(parambjns, new bivg(this, paramString));
   }
   
-  public void a(bivg parambivg)
+  public void a(AppInterface paramAppInterface, bita parambita)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_JavaLangString = (biig.jdField_b_of_type_JavaLangString + File.separator + System.currentTimeMillis());
-    try
-    {
-      new File(this.jdField_b_of_type_JavaLangString).mkdirs();
-      QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "pngDir = ", this.jdField_b_of_type_JavaLangString });
-      this.jdField_a_of_type_Bivg = parambivg;
-      this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.2(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    bivh localbivh = new bivh(this);
+    this.jdField_a_of_type_JavaUtilMap.put(parambita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id, localbivh);
+    birf.a().a(paramAppInterface, parambita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, localbivh);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.3(this, paramString));
+    Object localObject1 = biqu.a();
+    QLog.d("AEGIFMaterialViewModel", 4, "Parsing EmoCategories");
+    if (localObject1 == null)
+    {
+      QLog.e("AEGIFMaterialViewModel", 4, "CategoryMaterialRsp is null");
+      if ((localObject1 != null) && (((GetCategoryMaterialRsp)localObject1).Categories != null)) {
+        break label54;
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (((GetCategoryMaterialRsp)localObject1).Categories != null) {
+        break;
+      }
+      QLog.e("AEGIFMaterialViewModel", 4, "Categories null");
+      break;
+      label54:
+      Object localObject2 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
+      do
+      {
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
+        }
+        localObject1 = (MetaCategory)((Iterator)localObject2).next();
+      } while (!((MetaCategory)localObject1).name.toLowerCase().equals(paramString));
+      for (paramString = (String)localObject1; (paramString != null) && (paramString.materials != null); paramString = null)
+      {
+        localObject1 = new ArrayList();
+        paramString = paramString.materials.iterator();
+        if (paramString.hasNext())
+        {
+          localObject2 = (MetaMaterial)paramString.next();
+          birj localbirj = new birj();
+          localbirj.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject2).id;
+          localbirj.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = ((MetaMaterial)localObject2);
+          if (birf.a().a((MetaMaterial)localObject2)) {}
+          for (int i = 2;; i = 0)
+          {
+            localbirj.jdField_a_of_type_Int = i;
+            ((List)localObject1).add(localbirj);
+            break;
+          }
+        }
+        QLog.e("AEGIFMaterialViewModel", 4, "Updating Materials size === " + ((List)localObject1).size());
+        this.jdField_a_of_type_Bjor.a(localObject1);
+        return;
+      }
+    }
   }
   
-  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public bjor<birm> b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreator.4(this, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
+    return this.b;
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilMap.clear();
   }
 }
 

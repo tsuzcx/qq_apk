@@ -1,9 +1,8 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public abstract interface qwz
 {
-  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
+  public abstract void d(VideoInfo paramVideoInfo);
 }
 
 

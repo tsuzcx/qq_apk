@@ -8,12 +8,12 @@ import mqq.observer.BusinessObserver;
 class aetj
   implements BusinessObserver
 {
-  aetj(aerv paramaerv) {}
+  aetj(aeti paramaeti) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+      QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
     if (paramBoolean) {
       try
@@ -23,20 +23,20 @@ class aetj
         localSendMenuEventResponse.mergeFrom(paramBundle);
         paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
         if (QLog.isColorLevel()) {
-          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+          QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
         }
         if (paramInt == 0)
         {
-          this.a.ap = true;
-          this.a.bE();
-          this.a.bp();
+          this.a.a.ap = true;
+          this.a.a.bE();
+          this.a.a.bp();
           return;
         }
       }
       catch (Exception paramBundle) {}
     }
-    this.a.B(2131695568);
-    this.a.bp();
+    this.a.a.B(2131695569);
+    this.a.a.bp();
   }
 }
 

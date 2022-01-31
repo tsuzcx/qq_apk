@@ -1,17 +1,18 @@
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class xdr
+class xdr
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  xdr(xdq paramxdq, View paramView) {}
   
-  public xdr(PluginJumpManager paramPluginJumpManager) {}
+  public boolean onPreDraw()
+  {
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    xdq.a(this.jdField_a_of_type_Xdq, this.jdField_a_of_type_AndroidViewView);
+    return false;
+  }
 }
 
 

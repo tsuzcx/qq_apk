@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import beiu;
-import beka;
-import besl;
+import bejl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.io.IOException;
 
 class FileJsPlugin$16
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, byte[] paramArrayOfByte, beka parambeka, String paramString2, String paramString3, long paramLong) {}
+  FileJsPlugin$16(FileJsPlugin paramFileJsPlugin, String paramString1, byte[] paramArrayOfByte, bekr parambekr, String paramString2, String paramString3, long paramLong) {}
   
   public String run()
   {
@@ -20,7 +20,7 @@ class FileJsPlugin$16
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (beiu.a().a(this.val$filePath) != 2) {
+    if (bejl.a().a(this.val$filePath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
     Object localObject = this.this$0.mMiniAppInfo;
@@ -28,7 +28,7 @@ class FileJsPlugin$16
     if (localObject != null)
     {
       l1 = ((MiniAppInfo)localObject).usrFileSizeLimit;
-      localObject = beiu.a();
+      localObject = bejl.a();
       if (this.val$nativeBufferBytes == null) {
         break label204;
       }
@@ -36,7 +36,7 @@ class FileJsPlugin$16
     label204:
     for (long l2 = this.val$nativeBufferBytes.length;; l2 = this.val$data.length())
     {
-      if (((beiu)localObject).a(2, l2, this.this$0.mIsMiniGame, l1)) {
+      if (((bejl)localObject).a(2, l2, this.this$0.mIsMiniGame, l1)) {
         break label216;
       }
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "the maximum size of the file storage is exceeded");
@@ -44,7 +44,7 @@ class FileJsPlugin$16
       break;
     }
     label216:
-    String str2 = beiu.a().c(this.val$filePath);
+    String str2 = bejl.a().c(this.val$filePath);
     if (!TextUtils.isEmpty(str2)) {}
     for (;;)
     {
@@ -61,7 +61,7 @@ class FileJsPlugin$16
           if (this.val$data != null)
           {
             localObject = Integer.valueOf(this.val$data.length());
-            besl.d("FileJsPlugin", localObject);
+            betc.d("FileJsPlugin", localObject);
             return FileJsPlugin.access$100(this.this$0, this.val$req, null, "failed to  write file" + str2);
           }
           localObject = "null";
@@ -73,7 +73,7 @@ class FileJsPlugin$16
       {
         return FileJsPlugin.access$100(this.this$0, this.val$req, null, localIOException.getMessage());
       }
-      besl.a("FileJsPlugin", "writeFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str2);
+      betc.a("FileJsPlugin", "writeFile [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms], aboFilePath:" + str2);
       return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       label491:
       String str1 = "0";

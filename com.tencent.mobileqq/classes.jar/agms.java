@@ -1,30 +1,35 @@
+import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class agms
-  extends Handler
+  extends ajto
 {
   public agms(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
+    if ("FROM_SDK_AVATAR_SET_IMAGE".equals(this.a.b))
     {
+      this.a.a.removeMessages(1003);
+      this.a.c();
+      if (!paramBoolean)
+      {
+        paramString = this.a.getIntent();
+        paramString.putExtra("key_from_sdk_set_avatar_result", false);
+        this.a.setResult(-1, paramString);
+        this.a.finish();
+      }
     }
-    do
+    else
     {
       return;
-      this.a.b();
-      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
-      return;
-    } while (this.a.isFinishing());
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
     }
-    PhotoCropActivity.a(this.a, 2131717364);
-    this.a.c();
+    axqy.b(this.a.app, "dc00898", "", "", "0X8009B6B", "0X8009B6B", 0, 0, "", "", "", "");
+    paramString = this.a.getIntent();
+    paramString.putExtra("key_from_sdk_set_avatar_result", true);
+    this.a.setResult(-1, paramString);
+    this.a.finish();
   }
 }
 

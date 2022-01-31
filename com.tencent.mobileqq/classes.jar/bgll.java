@@ -1,14 +1,17 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-class bgll
-  implements FilenameFilter
+final class bgll
+  implements bglo
 {
-  bgll(bglk parambglk, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public void a(boolean paramBoolean, Context paramContext, bglq parambglq)
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bglh.e(paramContext, parambglq);
+    }
   }
 }
 

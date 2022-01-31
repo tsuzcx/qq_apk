@@ -1,14 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
-public final class auxs
-  implements anyg
+public class auxs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
+  public auxs(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aoak(7, 7, null));
-    return localArrayList;
+    StickyNotePublishFragment.a(this.a, paramBoolean);
   }
 }
 

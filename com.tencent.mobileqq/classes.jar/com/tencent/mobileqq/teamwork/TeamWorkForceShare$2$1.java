@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.Bitmap;
-import ayfc;
-import bcwh;
+import ayfe;
+import bcww;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class TeamWorkForceShare$2$1
@@ -12,8 +12,8 @@ public class TeamWorkForceShare$2$1
   
   public void run()
   {
-    Object localObject = new ayfc(this);
-    WXShareHelper.a().a((bcwh)localObject);
+    Object localObject = new ayfe(this);
+    WXShareHelper.a().a((bcww)localObject);
     TeamWorkForceShare.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkForceShare$2.this$0, String.valueOf(System.currentTimeMillis()));
     localObject = WXShareHelper.a();
     String str = this.jdField_a_of_type_JavaLangString;

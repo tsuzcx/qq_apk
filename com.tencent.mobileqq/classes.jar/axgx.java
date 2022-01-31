@@ -1,204 +1,65 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class axgx
-  implements axhc, axhi
+class axgx
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int = 0;
-  private axhh jdField_a_of_type_Axhh = new axhh();
-  private VideoSourceHelper jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper;
-  private final String jdField_a_of_type_JavaLangString = "HwEncodeHelper";
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private long[] jdField_a_of_type_ArrayOfLong = new long[1];
-  private axhh jdField_b_of_type_Axhh = new axhh();
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String c;
+  axgx(axgw paramaxgw) {}
   
-  public axgx(String paramString1, String paramString2, String paramString3)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper = new VideoSourceHelper(paramString1, paramString2);
-  }
-  
-  private boolean a()
-  {
-    boolean bool = true;
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getBufferSize();
-    if ((arrayOfInt == null) || (arrayOfInt.length < 2)) {
-      bool = false;
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     for (;;)
     {
-      return bool;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer videosize=" + arrayOfInt[0] + ", audiosize=" + arrayOfInt[1]);
+      return;
+      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
+        continue;
       }
-      try
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
       {
-        if (this.jdField_a_of_type_ArrayOfByte == null) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[arrayOfInt[0]];
-        }
-        if (this.jdField_b_of_type_ArrayOfByte == null)
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = axgy.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
         {
-          this.jdField_b_of_type_ArrayOfByte = new byte[arrayOfInt[1]];
-          return true;
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((axgs)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
         }
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
       {
-        localOutOfMemoryError.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    int j = 2;
-    if (!axgy.a()) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.initHelperParam() != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initHelperParam error");
-      }
-      return -1;
-    }
-    if (!a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "initMediaBuffer error");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-    }
-    SVHwEncoder localSVHwEncoder = new SVHwEncoder();
-    int i;
-    if (axik.o == 16)
-    {
-      i = 1;
-      if (axik.p != 2) {
-        break label233;
-      }
-    }
-    for (;;)
-    {
-      int k = axik.q;
-      localSVHwEncoder.a(axik.q, i, k * i * j * 8, j);
-      int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getSourceVideoParam();
-      localSVHwEncoder.a(this.jdField_b_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1]);
-      boolean bool = localSVHwEncoder.a(axik.z, axik.y, this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.mOrientationDegree);
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "startHwEncode mRecordFrames=" + axik.z + ", mRecordTime=" + axik.y + " successCode=" + bool);
-      }
-      if (bool) {
-        break label238;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-      return -1;
-      i = 2;
-      break;
-      label233:
-      j = 1;
-    }
-    label238:
-    localSVHwEncoder.b(this, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.closeHelper();
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public axhh a()
-  {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_a_of_type_Boolean))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextAudioFrame(this.jdField_b_of_type_ArrayOfByte);
-      this.jdField_b_of_type_Axhh.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      this.jdField_b_of_type_Axhh.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Axhh.jdField_b_of_type_Int = i;
-      this.jdField_b_of_type_Axhh.jdField_b_of_type_Boolean = false;
-      axhh localaxhh = this.jdField_b_of_type_Axhh;
-      if (i > 0) {}
-      for (;;)
-      {
-        localaxhh.jdField_a_of_type_Boolean = bool;
-        localaxhh = this.jdField_b_of_type_Axhh;
-        this.jdField_b_of_type_Axhh.c = -1;
-        localaxhh.jdField_a_of_type_Long = -1;
-        this.jdField_b_of_type_Axhh.jdField_a_of_type_Float = -1.0F;
-        if (QLog.isColorLevel()) {
-          QLog.d("HwEncodeHelper", 4, "getAudioFrame() bufferSize=" + this.jdField_b_of_type_ArrayOfByte.length + ", readSize=" + i);
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
         }
-        this.jdField_a_of_type_Boolean = this.jdField_b_of_type_Axhh.jdField_a_of_type_Boolean;
-        return this.jdField_b_of_type_Axhh;
-        bool = true;
+        ((axgs)???.next()).a(i);
       }
     }
-    return null;
   }
-  
-  public axhh a(int paramInt)
-  {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecVideoSourceHelper.getNextVideoFrame(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfLong, paramInt);
-      this.jdField_a_of_type_Axhh.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      this.jdField_a_of_type_Axhh.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Axhh.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Axhh.jdField_b_of_type_Boolean = true;
-      axhh localaxhh = this.jdField_a_of_type_Axhh;
-      if (paramInt > 0) {
-        bool = false;
-      }
-      localaxhh.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Axhh.jdField_a_of_type_Long = this.jdField_a_of_type_ArrayOfLong[0];
-      this.jdField_a_of_type_Axhh.c = -1;
-      this.jdField_a_of_type_Axhh.jdField_a_of_type_Float = -1.0F;
-      if (QLog.isColorLevel()) {
-        QLog.d("HwEncodeHelper", 4, "getVideoFrame() bufferSize=" + this.jdField_a_of_type_ArrayOfByte.length + ", readSize=" + paramInt + ", frametime=" + this.jdField_a_of_type_ArrayOfLong[0]);
-      }
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Axhh.jdField_a_of_type_Boolean;
-      return this.jdField_a_of_type_Axhh;
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.c;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
-  
-  public void a(String paramString, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svMergeOK() path=" + paramString + ", totalTime=" + paramInt + " mergetime=" + paramLong + " us");
-    }
-    this.c = paramString;
-  }
-  
-  public void b() {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HwEncodeHelper", 4, "svErrorOcured() code=" + paramInt1 + ", subcode=" + paramInt2);
-    }
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void c() {}
 }
 
 

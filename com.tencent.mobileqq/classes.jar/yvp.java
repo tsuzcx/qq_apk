@@ -1,83 +1,358 @@
 import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.gdtad.api.motivevideo.GdtMvAnimation585V.1;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.util.AdAppUtil;
+import com.tencent.gdtad.api.motivevideo.GdtMvAppBtnData;
+import com.tencent.gdtad.api.motivevideo.GdtMvAppBtnView;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.1;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.2;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.3;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.4;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.5;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.6;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class yvp
-  extends yvu
 {
-  private Runnable a;
+  private GdtMvAppBtnView jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView;
+  private GdtMvDownloadBtnManager jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private GdtMvAppBtnView jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  protected yvp(Context paramContext)
+  public yvp(String paramString, GdtMvAppBtnView paramGdtMvAppBtnView1, GdtMvAppBtnView paramGdtMvAppBtnView2, GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new GdtMvAnimation585V.1(this);
+    yxp.a("GdtMvDownloadBtnPresenter", "GdtMvDownloadBtnPresenter: ");
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView = paramGdtMvAppBtnView1;
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView = paramGdtMvAppBtnView2;
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager = paramGdtMvDownloadBtnManager;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(int paramInt)
+  private void a(Context paramContext, String paramString)
   {
-    super.a(paramInt);
-    yxs.b("GdtMotiveVideoAd", "585V doAnimation " + this.jdField_a_of_type_Yvm + " targetMode " + paramInt);
-    yvl localyvl;
-    if (this.jdField_a_of_type_Yvm != null)
-    {
-      localyvl = (yvl)this.jdField_a_of_type_Yvm;
-      a();
-      if (paramInt == 1)
-      {
-        if (localyvl.jdField_a_of_type_AndroidViewView != null) {
-          localyvl.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        }
-        a(localyvl.jdField_f_of_type_AndroidViewView, localyvl.j, localyvl.k);
-        a(localyvl.jdField_e_of_type_AndroidViewView, localyvl.jdField_g_of_type_Int, localyvl.h);
-        a(localyvl.jdField_b_of_type_AndroidViewView, localyvl.jdField_a_of_type_Int, localyvl.jdField_b_of_type_Int);
-        a(localyvl.jdField_d_of_type_AndroidViewView, localyvl.jdField_e_of_type_Int, localyvl.jdField_f_of_type_Int);
-        a(localyvl.jdField_c_of_type_AndroidViewView, localyvl.jdField_c_of_type_Int, localyvl.jdField_d_of_type_Int);
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("big_brother_source_key", "biz_src_ads");
+    AdAppUtil.launch(paramContext, paramString, localBundle);
+  }
+  
+  private boolean a(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if ((paramDownloadInfo == null) || (paramGdtMvAppBtnData == null) || (TextUtils.isEmpty(paramDownloadInfo.e)) || (TextUtils.isEmpty(paramDownloadInfo.c)) || (TextUtils.isEmpty(paramGdtMvAppBtnData.packageName)) || (TextUtils.isEmpty(paramGdtMvAppBtnData.mGdtAd_appId))) {}
+    while ((!paramDownloadInfo.e.equals(paramGdtMvAppBtnData.packageName)) || (!paramDownloadInfo.c.equals(paramGdtMvAppBtnData.mGdtAd_appId))) {
+      return false;
     }
-    else
-    {
+    return true;
+  }
+  
+  private void e(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null) {
+      this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager.a(paramGdtMvAppBtnData, 0);
+    }
+  }
+  
+  private void f(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null) && (paramGdtMvAppBtnData.cState == 4)) {
+      this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager.a(paramGdtMvAppBtnData, paramGdtMvAppBtnData.cProgerss);
+    }
+  }
+  
+  private void g(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    String str1 = paramGdtMvAppBtnData.packageName;
+    String str2 = paramGdtMvAppBtnData.mGdtAd_appId;
+    String str3 = paramGdtMvAppBtnData.apkUrlhttp;
+    paramGdtMvAppBtnData = paramGdtMvAppBtnData.name;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(bdlb.k, 5);
+    localBundle.putString(bdlb.f, str1);
+    localBundle.putString(bdlb.b, str2);
+    localBundle.putString(bdlb.j, str3);
+    localBundle.putString(bdlb.l, paramGdtMvAppBtnData);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtMvDownloadBtnPresenter", 2, "installAppDownload:" + str1 + ", appid:" + str2 + ", name:" + paramGdtMvAppBtnData + ", url:" + str3);
+    }
+    bdho.a(localBundle);
+  }
+  
+  private void h(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.1(this, paramGdtMvAppBtnData));
+    }
+    while ((paramGdtMvAppBtnData == null) || (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || ((paramGdtMvAppBtnData.cState != 3) && (paramGdtMvAppBtnData.cState != 4))) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
-    a(localyvl.jdField_f_of_type_AndroidViewView, -localyvl.j, -localyvl.k);
-    a(localyvl.jdField_e_of_type_AndroidViewView, -localyvl.jdField_g_of_type_Int, -localyvl.h);
-    a(localyvl.jdField_b_of_type_AndroidViewView, -localyvl.jdField_a_of_type_Int, -localyvl.jdField_b_of_type_Int);
-    a(localyvl.jdField_d_of_type_AndroidViewView, -localyvl.jdField_e_of_type_Int, -localyvl.jdField_f_of_type_Int);
-    a(localyvl.jdField_c_of_type_AndroidViewView, -localyvl.jdField_c_of_type_Int, -localyvl.jdField_d_of_type_Int);
+    yxp.b("GdtMvDownloadBtnPresenter", "pauseDownloadUi " + paramGdtMvAppBtnData.packageName);
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705205));
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705202));
+    paramGdtMvAppBtnData.cState = 4;
+    paramGdtMvAppBtnData.cProgerss = ((int)this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a());
+    bdhk.a().a(paramGdtMvAppBtnData.apkUrlhttp);
   }
   
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
+  private void i(GdtMvAppBtnData paramGdtMvAppBtnData)
   {
-    yvl localyvl = new yvl();
-    localyvl.jdField_a_of_type_AndroidViewView = paramView1;
-    localyvl.jdField_f_of_type_AndroidViewView = paramView3;
-    localyvl.jdField_g_of_type_AndroidViewView = paramView2;
-    localyvl.j = yze.a(-406, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.k = yze.a(125, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = yze.a(220, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
-    {
-      localyvl.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / yze.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localyvl.jdField_b_of_type_Float = localyvl.jdField_a_of_type_Float;
+    c(paramGdtMvAppBtnData);
+  }
+  
+  private void j(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.6(this, paramGdtMvAppBtnData));
     }
-    localyvl.l = yze.a(50, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.m = yze.a(50, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.jdField_b_of_type_AndroidViewView = paramView4;
-    localyvl.jdField_c_of_type_AndroidViewView = paramView5;
-    localyvl.jdField_d_of_type_AndroidViewView = paramView6;
-    localyvl.jdField_e_of_type_AndroidViewView = paramView7;
-    localyvl.jdField_a_of_type_Int = yze.a(-618, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.jdField_b_of_type_Int = yze.a(275, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.jdField_c_of_type_Int = yze.a(-457, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.jdField_d_of_type_Int = ((yze.f(this.jdField_a_of_type_AndroidContentContext) - paramView5.getWidth()) / 2 - yze.a(196, 750, yze.f(this.jdField_a_of_type_AndroidContentContext)));
-    localyvl.jdField_e_of_type_Int = yze.a(-451, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.jdField_f_of_type_Int = ((yze.f(this.jdField_a_of_type_AndroidContentContext) - paramView6.getWidth()) / 2 - yze.a(196, 750, yze.f(this.jdField_a_of_type_AndroidContentContext)));
-    localyvl.jdField_g_of_type_Int = yze.a(-440, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvl.h = ((yze.f(this.jdField_a_of_type_AndroidContentContext) - paramView7.getWidth()) / 2 - yze.a(196, 750, yze.f(this.jdField_a_of_type_AndroidContentContext)));
-    a(localyvl, paramView8);
-    this.jdField_a_of_type_Yvm = localyvl;
+    while ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || (paramGdtMvAppBtnData == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705206));
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705194));
+    paramGdtMvAppBtnData.cState = 2;
+  }
+  
+  public void a(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.3(this, paramGdtMvAppBtnData));
+    }
+    while ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || (paramGdtMvAppBtnData == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705193));
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705204));
+    paramGdtMvAppBtnData.cState = 5;
+  }
+  
+  public void a(GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager == null)
+    {
+      yxp.d("GdtMvDownloadBtnPresenter", "updatUIByClick mGdtAppDownloadManager == null");
+      return;
+    }
+    if (paramGdtMvAppBtnData == null)
+    {
+      yxp.d("GdtMvDownloadBtnPresenter", "updatUIByClick cGdtMvAppBtnData == null");
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705203));
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(0);
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705191));
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(0);
+        if (this.jdField_a_of_type_Boolean) {
+          break label132;
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        return;
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI("0%");
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(0);
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI("0%");
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(0);
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager.d();
+        break;
+        label132:
+        bool = false;
+      }
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_b_of_type_Boolean = false;
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvDownloadBtnManager.a(paramGdtMvAppBtnData, 0);
+      return;
+    case 1: 
+      a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.getContext(), paramGdtMvAppBtnData.packageName);
+      return;
+    case 3: 
+      this.jdField_a_of_type_Boolean = false;
+      h(paramGdtMvAppBtnData);
+      return;
+    case 4: 
+      yzi.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Boolean = true;
+      f(paramGdtMvAppBtnData);
+      return;
+    case 5: 
+      g(paramGdtMvAppBtnData);
+      return;
+    }
+    e(paramGdtMvAppBtnData);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (a(paramDownloadInfo, paramGdtMvAppBtnData)) {
+      paramGdtMvAppBtnData.cState = 6;
+    }
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (a(paramDownloadInfo, paramGdtMvAppBtnData)) {
+      h(paramGdtMvAppBtnData);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = paramString1;
+    localDownloadInfo.e = paramString2;
+    if (a(localDownloadInfo, paramGdtMvAppBtnData)) {
+      b(paramGdtMvAppBtnData);
+    }
+  }
+  
+  public void b(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.4(this, paramGdtMvAppBtnData));
+    }
+    while ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || (paramGdtMvAppBtnData == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705192));
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705200));
+    paramGdtMvAppBtnData.cState = 1;
+  }
+  
+  public void b(GdtMvAppBtnData paramGdtMvAppBtnData, int paramInt)
+  {
+    yxp.b("GdtMvDownloadBtnPresenter", "updateBtnProgressUI " + paramInt);
+    if (Looper.myLooper() != Looper.getMainLooper()) {}
+    do
+    {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.2(this, paramGdtMvAppBtnData, paramInt));
+      do
+      {
+        return;
+      } while ((paramGdtMvAppBtnData == null) || (paramGdtMvAppBtnData.cState != 3));
+      if ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null) && (paramInt >= 0))
+      {
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(paramInt + "%");
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(paramInt);
+      }
+    } while ((this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || (paramInt < 0));
+    yxp.b("GdtMvDownloadBtnPresenter", "updateBtnProgressUI " + paramInt);
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(paramInt + "%");
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(paramInt);
+  }
+  
+  public void b(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData) {}
+  
+  public void b(String paramString1, String paramString2, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.c = paramString1;
+    localDownloadInfo.e = paramString2;
+    if (a(localDownloadInfo, paramGdtMvAppBtnData)) {
+      i(paramGdtMvAppBtnData);
+    }
+  }
+  
+  public void c(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new GdtMvDownloadBtnPresenter.5(this, paramGdtMvAppBtnData));
+    }
+    while ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null) || (paramGdtMvAppBtnData == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(this.jdField_a_of_type_JavaLangString);
+    paramGdtMvAppBtnData.cState = 0;
+  }
+  
+  public void c(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (a(paramDownloadInfo, paramGdtMvAppBtnData)) {
+      c(paramGdtMvAppBtnData);
+    }
+  }
+  
+  public void c(String paramString1, String paramString2, GdtMvAppBtnData paramGdtMvAppBtnData) {}
+  
+  public void d(GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtMvDownloadBtnPresenter", 2, "onCGdtMvAppBtnDataChanged() called with: gdtMvAppBtnData = [" + paramGdtMvAppBtnData + "]");
+    }
+    switch (paramGdtMvAppBtnData.cState)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null)
+          {
+            this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+            this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705196));
+          }
+        } while (this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null);
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+        this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705195));
+        return;
+        b(paramGdtMvAppBtnData, paramGdtMvAppBtnData.cProgerss);
+        return;
+        if (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null)
+        {
+          this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(paramGdtMvAppBtnData.cProgerss);
+          this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705197));
+        }
+      } while (this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null);
+      this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setProgress(paramGdtMvAppBtnData.cProgerss);
+      this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setDownloadingUI(ajya.a(2131705201));
+      return;
+      if ((paramGdtMvAppBtnData.cProgerss == 100) && (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView != null))
+      {
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705198));
+      }
+    } while ((paramGdtMvAppBtnData.cProgerss != 100) || (this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView == null));
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.a();
+    this.jdField_b_of_type_ComTencentGdtadApiMotivevideoGdtMvAppBtnView.setText(ajya.a(2131705199));
+  }
+  
+  public void d(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    if (a(paramDownloadInfo, paramGdtMvAppBtnData)) {
+      a(paramGdtMvAppBtnData);
+    }
+  }
+  
+  public void e(DownloadInfo paramDownloadInfo, GdtMvAppBtnData paramGdtMvAppBtnData)
+  {
+    yxp.a("GdtMvDownloadBtnPresenter", "onDownloadUpdate: ");
+    paramGdtMvAppBtnData.cState = 3;
+    b(paramGdtMvAppBtnData, paramDownloadInfo.f);
   }
 }
 

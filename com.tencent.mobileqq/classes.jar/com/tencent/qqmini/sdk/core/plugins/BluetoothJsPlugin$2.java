@@ -4,7 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import besl;
+import betc;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ class BluetoothJsPlugin$2
       paramContext.put("available", BluetoothJsPlugin.access$100(this.this$0).isEnabled());
       paramContext.put("discovering", BluetoothJsPlugin.BLEScan.access$300(BluetoothJsPlugin.access$200(this.this$0)));
       paramContext = paramContext.toString();
-      besl.a("BluetoothJsPlugin", "onReceive state change data=" + paramContext);
+      betc.a("BluetoothJsPlugin", "onReceive state change data=" + paramContext);
       this.this$0.sendSubscribeEvent("onBluetoothAdapterStateChange", paramContext);
       return;
     }

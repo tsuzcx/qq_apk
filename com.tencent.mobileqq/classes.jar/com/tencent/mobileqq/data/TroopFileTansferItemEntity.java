@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
-import azph;
+import auko;
+import aulz;
+import azpj;
 import java.util.UUID;
 
 public class TroopFileTansferItemEntity
-  extends aukm
+  extends auko
 {
   public int BusId;
   public int ErrorCode;
@@ -40,7 +40,7 @@ public class TroopFileTansferItemEntity
   public int duration;
   public long entrySessionID;
   public int height;
-  @aulx
+  @aulz
   public boolean isCheckPrivateDir;
   public boolean isFromAIO;
   public boolean isZipInnerFile;
@@ -57,7 +57,7 @@ public class TroopFileTansferItemEntity
   public String zipInnerPath;
   public int zipType;
   
-  public Class<? extends aukm> getClassForTable()
+  public Class<? extends auko> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
@@ -69,7 +69,7 @@ public class TroopFileTansferItemEntity
   
   public void postRead()
   {
-    this.Status = azph.a(this._sStatus);
+    this.Status = azpj.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
@@ -82,7 +82,7 @@ public class TroopFileTansferItemEntity
   
   public void prewrite()
   {
-    this._sStatus = azph.a(this.Status);
+    this._sStatus = azpj.a(this.Status);
     this._sId = this.Id.toString();
   }
 }

@@ -1,48 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import com.tencent.mobileqq.music.SongInfo;
 
 class aswi
-  extends Handler
+  extends asvl
 {
-  aswi(aswe paramaswe, Looper paramLooper)
+  aswi(aswg paramaswg) {}
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    super(paramLooper);
+    if (aswg.a(this.a) != null) {
+      aswg.a(this.a, aswg.a(this.a).a());
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPlayStateChanged(int paramInt)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
-    {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
+    aswg.a(this.a, paramInt);
+    if (paramInt == 2) {
+      aswg.a(this.a, aswg.a(this.a).c());
     }
   }
 }

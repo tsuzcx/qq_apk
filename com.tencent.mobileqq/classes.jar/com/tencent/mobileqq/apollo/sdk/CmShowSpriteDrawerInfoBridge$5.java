@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajfm;
-import ajgh;
-import ajgi;
+import ajfk;
+import ajgf;
+import ajgg;
 
 public class CmShowSpriteDrawerInfoBridge$5
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$5(ajgi paramajgi, ajgh paramajgh) {}
+  public CmShowSpriteDrawerInfoBridge$5(ajgg paramajgg, ajgf paramajgf) {}
   
   public void run()
   {
-    ajfm localajfm = this.a.a();
-    if (localajfm != null) {
-      localajfm.b();
+    ajfk localajfk = this.a.a();
+    if (localajfk != null) {
+      localajfk.b();
     }
   }
 }

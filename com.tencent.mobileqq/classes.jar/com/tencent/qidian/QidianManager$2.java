@@ -1,16 +1,16 @@
 package com.tencent.qidian;
 
-import bdto;
+import bduf;
 import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class QidianManager$2
   implements Runnable
 {
-  public QidianManager$2(bdto parambdto, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  public QidianManager$2(bduf parambduf, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
   public void run()
   {
-    bdto.a(this.this$0, this.a);
+    bduf.a(this.this$0, this.a);
   }
 }
 

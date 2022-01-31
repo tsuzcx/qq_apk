@@ -1,51 +1,42 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
 class aczc
-  extends Animation
+  extends View
 {
-  private float jdField_a_of_type_Float;
-  private float b;
-  
-  aczc(acza paramacza) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public aczc(acyx paramacyx, Context paramContext)
   {
-    float f2 = 1.0F;
-    float f1;
-    if (paramFloat < this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 11.0F)
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
     {
-      f1 = paramFloat / (this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 11.0F);
-      if (paramFloat >= this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 6.0F) {
-        break label139;
-      }
-      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 6.0F) * 0.5F;
-    }
-    for (;;)
-    {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
-      return;
-      if (paramFloat < this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 20.0F)
-      {
-        f1 = 1.0F;
-        break;
-      }
-      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Acza.jdField_a_of_type_Float);
-      break;
-      label139:
-      if (paramFloat < this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 11.0F) {
-        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Acza.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Acza.jdField_a_of_type_Float);
-      }
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
+    {
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
+    }
   }
 }
 

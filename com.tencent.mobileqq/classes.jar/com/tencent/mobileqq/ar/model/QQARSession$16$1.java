@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.model;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class QQARSession$16$1
@@ -11,7 +11,7 @@ class QQARSession$16$1
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131710144), 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131710155), 1).a();
   }
 }
 

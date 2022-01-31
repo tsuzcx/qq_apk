@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
-
-public final class qdg
-  implements Parcelable.Creator<SocializeFeedsInfo.UGCVoiceInfo>
+public class qdg
 {
-  public SocializeFeedsInfo.UGCVoiceInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.UGCVoiceInfo(paramParcel);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
   
-  public SocializeFeedsInfo.UGCVoiceInfo[] a(int paramInt)
+  public String toString()
   {
-    return new SocializeFeedsInfo.UGCVoiceInfo[paramInt];
+    return "RedPoint{isShow=" + this.jdField_a_of_type_Boolean + ", startTimestamp=" + this.jdField_a_of_type_Long + ", animationTimestamp=" + this.jdField_c_of_type_Long + ", endTimestamp=" + this.jdField_b_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", titleText=" + this.jdField_a_of_type_JavaLangString + ", titleColor=" + this.jdField_b_of_type_Int + ", titleBgColor=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

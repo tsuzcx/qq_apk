@@ -1,45 +1,22 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ssg
-  extends QQUIEventReceiver<ssf, spu>
+  extends SimpleJob<Void>
 {
-  public ssg(@NonNull ssf paramssf)
+  public ssg(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
   {
-    super(paramssf);
+    super(paramString);
   }
   
-  public void a(@NonNull ssf paramssf, @NonNull spu paramspu)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramspu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      veg.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramspu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
-      paramssf.d();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      ssf.a(paramssf).a(bool1);
-      return;
-      veg.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramspu.jdField_a_of_type_JavaUtilList.size()));
-      bool1 = bool2;
-      if (paramssf.a(paramspu.jdField_a_of_type_JavaUtilList))
-      {
-        bool1 = bool2;
-        if (paramspu.jdField_a_of_type_JavaUtilList.size() > 0) {
-          bool1 = true;
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return spu.class;
+    int i = svl.a();
+    ved.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

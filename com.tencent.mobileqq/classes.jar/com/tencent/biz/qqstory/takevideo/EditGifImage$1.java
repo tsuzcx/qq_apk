@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
-import bfnk;
-import bhnr;
+import bfob;
+import bhoi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import vew;
-import vhp;
+import vet;
+import vhm;
 
 class EditGifImage$1
   implements Runnable
@@ -18,15 +18,15 @@ class EditGifImage$1
   {
     if (!this.this$0.b)
     {
-      if ((!(this.this$0.jdField_a_of_type_Vhp.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhp.a.a).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhp.a.a).a.size() <= 0)) {
+      if ((!(this.this$0.jdField_a_of_type_Vhm.a.a instanceof EditLocalGifSource)) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhm.a.a).a == null) || (((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhm.a.a).a.size() <= 0)) {
         break label284;
       }
-      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhp.a.a).a;
-      if (!bhnr.a().a(localArrayList, this.a)) {
+      ArrayList localArrayList = ((EditLocalGifSource)this.this$0.jdField_a_of_type_Vhm.a.a).a;
+      if (!bhoi.a().a(localArrayList, this.a)) {
         break label247;
       }
       this.this$0.c = true;
-      this.this$0.jdField_a_of_type_Bfnk.sendEmptyMessage(996);
+      this.this$0.jdField_a_of_type_Bfob.sendEmptyMessage(996);
       if ((this.a != null) && (this.a.size() == localArrayList.size()))
       {
         localArrayList = new ArrayList();
@@ -39,8 +39,8 @@ class EditGifImage$1
           }
           i += 1;
         }
-        this.this$0.jdField_a_of_type_Vew = new vew(this.this$0);
-        this.this$0.jdField_a_of_type_Vew.execute(new ArrayList[] { localArrayList });
+        this.this$0.jdField_a_of_type_Vet = new vet(this.this$0);
+        this.this$0.jdField_a_of_type_Vet.execute(new ArrayList[] { localArrayList });
       }
     }
     label247:
@@ -50,12 +50,12 @@ class EditGifImage$1
       {
         return;
         this.this$0.c = false;
-        this.this$0.jdField_a_of_type_Bfnk.sendEmptyMessage(997);
+        this.this$0.jdField_a_of_type_Bfob.sendEmptyMessage(997);
       } while (!QLog.isColorLevel());
       QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");
       return;
       this.this$0.c = false;
-      this.this$0.jdField_a_of_type_Bfnk.sendEmptyMessage(997);
+      this.this$0.jdField_a_of_type_Bfob.sendEmptyMessage(997);
     } while (!QLog.isColorLevel());
     label284:
     QLog.d("QzoneVision", 2, "MSG_CANNOT_ANTISHAKE");

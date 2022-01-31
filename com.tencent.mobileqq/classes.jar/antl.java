@@ -1,6 +1,14 @@
-public abstract interface antl
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+
+public class antl
+  implements antq
 {
-  public abstract float a(float paramFloat, long paramLong);
+  public antl(DragSortListView paramDragSortListView) {}
+  
+  public float a(float paramFloat, long paramLong)
+  {
+    return this.a.e * paramFloat;
+  }
 }
 
 

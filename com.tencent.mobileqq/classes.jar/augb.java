@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class augb
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public augb(PromotionEntry paramPromotionEntry, akyo paramakyo) {}
+  public augb(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    axqw.b(null, "CliOper", "", "", "0X8009C6B", "0X8009C6B", 0, 0, this.jdField_a_of_type_Akyo.a, "0", "0", "");
-    PromotionEntry.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry).b(this.jdField_a_of_type_Akyo);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.f();
+    }
   }
 }
 

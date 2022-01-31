@@ -1,19 +1,35 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.OnF2FConfigListener.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ampf
-  implements amot
+  implements amos
 {
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amos paramamos)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amor paramamor)
   {
-    if ((paramamos != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
-    {
+    if ((paramamor != null) && ("smart_devices_discovery_config".equals(paramString))) {
       if (QLog.isColorLevel()) {
-        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramamos.a);
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramamor.a);
       }
-      ThreadManager.post(new OnF2FConfigListener.1(this, paramamos, paramQQAppInterface), 5, null, false);
+    }
+    try
+    {
+      paramInt = new JSONObject(paramamor.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    catch (Exception paramString) {}finally
+    {
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
     }
   }
 }

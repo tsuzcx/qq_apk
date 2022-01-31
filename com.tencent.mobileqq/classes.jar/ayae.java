@@ -1,48 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.HashMap;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 public class ayae
-  extends ayah
+  extends agvq
 {
-  public ayae(QQAppInterface paramQQAppInterface)
+  public ayae(CountdownTextView paramCountdownTextView, long paramLong, ayaf paramayaf)
   {
-    super(paramQQAppInterface);
+    super(paramLong);
   }
   
-  private Long b(MessageForPtt paramMessageForPtt)
+  public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
+    if (this.jdField_a_of_type_Ayaf != null) {
+      this.jdField_a_of_type_Ayaf.a();
     }
-    Long localLong = Long.valueOf(paramMessageForPtt.uniseq);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localLong)) {
-      return localLong;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(localLong, paramMessageForPtt);
-    return localLong;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
   }
   
-  public Long a(MessageForPtt paramMessageForPtt)
+  public void b(long paramLong)
   {
-    long l = b(paramMessageForPtt).longValue();
-    new ayaf(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt, Long.valueOf(l)).a();
-    return Long.valueOf(l);
-  }
-  
-  public Long a(MessageForPtt paramMessageForPtt, int paramInt)
-  {
-    if (adwv.h) {
-      return a(paramMessageForPtt);
+    if (this.jdField_a_of_type_Ayaf != null) {
+      this.jdField_a_of_type_Ayaf.a(paramLong);
     }
-    return b(paramMessageForPtt, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     ayae
  * JD-Core Version:    0.7.0.1
  */

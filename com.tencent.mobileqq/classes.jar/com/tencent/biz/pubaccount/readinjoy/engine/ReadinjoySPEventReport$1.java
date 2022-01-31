@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ota;
+import osx;
 
 public class ReadinjoySPEventReport$1
   implements Runnable
 {
-  public ReadinjoySPEventReport$1(ota paramota) {}
+  public ReadinjoySPEventReport$1(osx paramosx) {}
   
   public void run()
   {

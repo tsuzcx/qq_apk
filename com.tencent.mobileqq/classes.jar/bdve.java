@@ -1,66 +1,41 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-public class bdve
+public final class bdve
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
 {
-  public int a;
-  public bdvc a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public bdve()
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
+      }
+    }
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
+      break;
+    }
   }
   
-  public bdve(mobileqq_qidian.ConfigInfo paramConfigInfo)
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    if (paramConfigInfo.uint32_type.has()) {
-      this.jdField_a_of_type_Int = paramConfigInfo.uint32_type.get();
-    }
-    if (paramConfigInfo.uint32_event.has()) {
-      this.jdField_b_of_type_Int = paramConfigInfo.uint32_event.get();
-    }
-    if (paramConfigInfo.str_title.has()) {
-      this.jdField_a_of_type_JavaLangString = paramConfigInfo.str_title.get();
-    }
-    if (paramConfigInfo.str_content.has()) {
-      this.jdField_b_of_type_JavaLangString = paramConfigInfo.str_content.get();
-    }
-    if (paramConfigInfo.str_action.has()) {
-      this.c = paramConfigInfo.str_action.get();
-    }
-    if (paramConfigInfo.str_aaction.has()) {
-      this.d = paramConfigInfo.str_aaction.get();
-    }
-    if (paramConfigInfo.msg_corp_simple.has()) {
-      this.jdField_a_of_type_Bdvc = new bdvc(paramConfigInfo.msg_corp_simple);
-    }
-    if (paramConfigInfo.str_url.has()) {
-      this.e = paramConfigInfo.str_url.get();
-    }
-    if (paramConfigInfo.str_lat.has()) {
-      this.f = paramConfigInfo.str_lat.get();
-    }
-    if (paramConfigInfo.str_log.has()) {
-      this.g = paramConfigInfo.str_log.get();
-    }
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 

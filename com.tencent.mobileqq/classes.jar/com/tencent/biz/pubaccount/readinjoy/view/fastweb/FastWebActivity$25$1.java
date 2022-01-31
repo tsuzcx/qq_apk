@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import riy;
-import rjs;
+import riv;
+import rjp;
 
 public class FastWebActivity$25$1
   implements Runnable
 {
-  public FastWebActivity$25$1(riy paramriy) {}
+  public FastWebActivity$25$1(riv paramriv) {}
   
   public void run()
   {

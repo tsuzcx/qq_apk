@@ -1,9 +1,19 @@
-class nbp
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+
+public class nbp
+  implements wxt
 {
-  public int a;
-  public long a;
+  public nbp(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  private nbp(nbn paramnbn) {}
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
+  }
 }
 
 

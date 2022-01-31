@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arrk
-  implements Parcelable.Creator<ListenTogetherSession>
+class arrk
+  implements EIPCResultCallback
 {
-  public ListenTogetherSession a(Parcel paramParcel)
-  {
-    return new ListenTogetherSession(paramParcel, null);
-  }
+  arrk(arri paramarri) {}
   
-  public ListenTogetherSession[] a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new ListenTogetherSession[paramInt];
+    int i = 0;
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(arri.a(this.a))) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      if (paramEIPCResult.data.getBoolean("result")) {}
+      for (;;)
+      {
+        localJSONObject.put("result", i);
+        this.a.callJs(arri.a(this.a), new String[] { localJSONObject.toString() });
+        return;
+        i = 1;
+      }
+      return;
+    }
+    catch (JSONException paramEIPCResult)
+    {
+      paramEIPCResult.printStackTrace();
+    }
   }
 }
 

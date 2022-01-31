@@ -1,92 +1,86 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amuk
-  extends ampb<amuj>
+  extends ampa<amul>
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
-    paramContext.apply();
-  }
-  
   public int a()
   {
-    return 439;
+    return 568;
   }
   
   @NonNull
-  public amuj a(int paramInt)
+  public amul a(int paramInt)
   {
-    return new amuj(0);
+    return new amul();
   }
   
   @Nullable
-  public amuj a(ampi[] paramArrayOfampi)
+  public amul a(amph[] paramArrayOfamph)
   {
-    j = 0;
-    i = j;
-    if (paramArrayOfampi != null)
-    {
-      i = j;
-      if (paramArrayOfampi.length > 0) {
-        paramArrayOfampi = paramArrayOfampi[0].a;
-      }
+    amul localamul = new amul();
+    if (QLog.isColorLevel()) {
+      QLog.d("QAssistantConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfamph.length);
     }
-    try
+    if (paramArrayOfamph.length > 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfampi);
-      }
-      i = new JSONObject(paramArrayOfampi).getInt("isPushSwitchShow");
+      paramArrayOfamph = paramArrayOfamph[0];
+      localamul.jdField_a_of_type_Int = paramArrayOfamph.jdField_a_of_type_Int;
+      localamul.jdField_a_of_type_JavaLangString = paramArrayOfamph.jdField_a_of_type_JavaLangString;
     }
-    catch (Exception paramArrayOfampi)
-    {
-      for (;;)
-      {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfampi);
-          i = j;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QAssistantConfigProcessor", 2, "onParsed taskId = " + localamul.jdField_a_of_type_Int + " | content = " + localamul.jdField_a_of_type_JavaLangString);
     }
-    return new amuj(i);
+    return localamul;
   }
   
-  public Class a()
+  public Class<amul> a()
   {
-    return amuj.class;
+    return amul.class;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(amuj paramamuj)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramamuj.a);
+      QLog.d("QAssistantConfigProcessor", 2, "onReqFailed, code = " + paramInt);
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramamuj.a);
+  }
+  
+  public void a(amul paramamul)
+  {
+    if ((paramamul != null) && (paramamul.jdField_a_of_type_JavaLangString != null)) {
+      try
+      {
+        String str = paramamul.jdField_a_of_type_JavaLangString;
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (QLog.isColorLevel()) {
+          QLog.d("QAssistantConfigProcessor", 2, "onUpdate content = " + paramamul.jdField_a_of_type_JavaLangString);
+        }
+        avdk.a(localQQAppInterface, str);
+        paramamul = (avdm)localQQAppInterface.getManager(352);
+        if (paramamul != null) {
+          paramamul.a();
+        }
+        return;
+      }
+      catch (Exception paramamul)
+      {
+        paramamul.printStackTrace();
+        QLog.e("QAssistantConfigProcessor", 2, "onUpdate has exception", paramamul);
+        return;
+      }
+    }
+    QLog.e("QAssistantConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
   }
   
   public int b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("QAssistantConfigProcessor", 2, "migrateOldVersion");
+    }
     return 0;
   }
   

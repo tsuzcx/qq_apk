@@ -1,22 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class aazs
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private aazs(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aazs(EditActivity paramEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.b(paramEditable);
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130846988);
+    EditActivity.a(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

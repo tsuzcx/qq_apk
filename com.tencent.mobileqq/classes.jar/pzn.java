@@ -1,14 +1,7 @@
-import android.graphics.drawable.Drawable;
-
 class pzn
-  extends pyx
+  extends pyt
 {
-  pzn(pzi parampzi) {}
-  
-  public Drawable a()
-  {
-    return a("readinjoy_diandian_icon_background");
-  }
+  pzn(pzf parampzf) {}
 }
 
 

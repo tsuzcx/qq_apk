@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abyl;
+import abyh;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Handler;
 import android.view.ViewGroup;
-import bcqc;
+import bcqr;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class RegisterBaseActivity
@@ -23,7 +23,7 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new abyl(this);
+    this.jdField_b_of_type_AndroidOsHandler = new abyh(this);
   }
   
   protected void a(int paramInt)
@@ -41,7 +41,7 @@ public class RegisterBaseActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bcqc(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bcqr(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -53,7 +53,7 @@ public class RegisterBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new bcqc(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bcqr(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)

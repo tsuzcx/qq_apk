@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import afly;
+import aflw;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,9 +11,9 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bbkx;
+import bbll;
 import java.util.ArrayList;
-import rtz;
+import rtw;
 
 public class ThemeTabLayout
   extends FrameLayout
@@ -51,10 +51,10 @@ public class ThemeTabLayout
   
   public void a()
   {
-    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560918, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364626));
+    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560917, this, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364625));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = bbkx.a(10.0F);
+    localLayoutParams.topMargin = bbll.a(10.0F);
     addView((View)localObject, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView = new TabThemeMaskView(getContext());
     localObject = new FrameLayout.LayoutParams(-1, -1);
@@ -66,7 +66,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramInt);
   }
   
-  public void a(ArrayList<afly> paramArrayList, int paramInt)
+  public void a(ArrayList<aflw> paramArrayList, int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView == null)) {}
     while ((paramArrayList == null) || (paramInt < 0)) {
@@ -75,12 +75,12 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramArrayList, paramInt);
   }
   
-  public void a(rtz paramrtz)
+  public void a(rtw paramrtw)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramrtz);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramrtw);
   }
   
   public void b()
@@ -88,7 +88,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a();
   }
   
-  public void b(ArrayList<afly> paramArrayList, int paramInt)
+  public void b(ArrayList<aflw> paramArrayList, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramArrayList, paramInt);
   }
@@ -121,13 +121,13 @@ public class ThemeTabLayout
     }
   }
   
-  public void setOnTabSelectedListener(rtz paramrtz)
+  public void setOnTabSelectedListener(rtw paramrtw)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView == null)) {}
-    while (paramrtz == null) {
+    while (paramrtw == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramrtz);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramrtw);
   }
   
   public void setScrollPosition(float paramFloat)

@@ -1,19 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.os.Bundle;
 
-public final class bjce
-  implements Parcelable.Creator<LockedCategory>
+public abstract interface bjce
 {
-  public LockedCategory a(Parcel paramParcel)
-  {
-    return new LockedCategory(paramParcel);
-  }
+  public abstract void a(bjcq parambjcq);
   
-  public LockedCategory[] a(int paramInt)
-  {
-    return new LockedCategory[paramInt];
-  }
+  public abstract void a(bjcq parambjcq, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(bjct parambjct, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(bjda parambjda, boolean paramBoolean, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(bkrg parambkrg);
 }
 
 

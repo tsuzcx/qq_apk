@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class axqi
-  implements Comparator<File>
+public final class axqi
 {
-  public axqi(LocalCrashCollector paramLocalCrashCollector) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public static void a(Context paramContext, boolean paramBoolean)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
+    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
+    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
   }
 }
 

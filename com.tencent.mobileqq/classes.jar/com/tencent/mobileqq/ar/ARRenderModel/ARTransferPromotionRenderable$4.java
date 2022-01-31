@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akyh;
-import alam;
-import alao;
+import akyg;
+import alal;
+import alan;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$4
   implements Runnable
 {
-  public ARTransferPromotionRenderable$4(alam paramalam) {}
+  public ARTransferPromotionRenderable$4(alal paramalal) {}
   
   public void run()
   {
-    alam.a(this.this$0, akyh.a(alam.a(this.this$0).c));
-    if (alam.a(this.this$0) != null)
+    alal.a(this.this$0, akyg.a(alal.a(this.this$0).c));
+    if (alal.a(this.this$0) != null)
     {
-      QLog.d("ARTransferPromotionRenderable", 2, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo " + alam.a(this.this$0));
+      QLog.d("ARTransferPromotionRenderable", 2, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo " + alal.a(this.this$0));
       return;
     }
     QLog.d("ARTransferPromotionRenderable", 1, "ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo value null");

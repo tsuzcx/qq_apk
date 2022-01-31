@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.List;
-
 public class avsp
 {
   public int a;
+  public avsq a;
   public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
   public boolean a;
   public int b;
   public String b;
+  public boolean b;
+  public String c = "";
   
-  public avsp() {}
-  
-  public avsp(String paramString)
+  public avsp()
   {
-    this.a = paramString;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Avsq == null) || (this.jdField_a_of_type_Avsq.d == 2);
+  }
+  
+  public String toString()
+  {
+    return "SubtitleItem{id=" + this.jdField_a_of_type_Int + " name=" + this.jdField_b_of_type_JavaLangString + " isShow=" + this.jdField_a_of_type_Boolean + " pos=" + this.jdField_b_of_type_Int + "}";
   }
 }
 

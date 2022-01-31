@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bgvt;
+import bgwk;
 
 public class LoadingImageView
   extends ImageView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = bgvt.a("https://qzonestyle.gtimg.cn/aoi/sola/20191212143823_h3cZSvL8ed.png");
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = bgwk.a("https://qzonestyle.gtimg.cn/aoi/sola/20191212143823_h3cZSvL8ed.png");
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;

@@ -1,10 +1,12 @@
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,173 +14,157 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class amcn
-  extends amcm
+  extends amcl
 {
-  public boolean a;
   public int c;
-  public String c = "";
+  public String c;
+  public int d;
+  public int e;
   
   public amcn()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  public static amcm a(JSONObject paramJSONObject)
+  public static amcl a(JSONObject paramJSONObject)
   {
-    Object localObject = paramJSONObject.optString("type");
-    if (("diy_chartlet".equalsIgnoreCase((String)localObject)) || ("static".equalsIgnoreCase((String)localObject)))
+    amcn localamcn = new amcn();
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    localamcn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align");
+    localamcn.d = (baxn.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
+    localamcn.jdField_c_of_type_JavaLangString = paramJSONObject.optString("text_align");
+    String str = paramJSONObject.optString("text_color");
+    Object localObject = str;
+    if (str.startsWith("0x")) {
+      localObject = str.substring(2);
+    }
+    try
     {
-      amcn localamcn = new amcn();
-      localamcn.jdField_b_of_type_JavaLangString = ((String)localObject);
-      localObject = BaseApplicationImpl.getApplication().getApplicationContext();
-      localamcn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
+      localamcn.jdField_c_of_type_Int = Color.parseColor("#" + (String)localObject);
       if (paramJSONObject.has("rect"))
       {
-        JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
+        localObject = paramJSONObject.optJSONArray("rect");
         localamcn.jdField_a_of_type_ArrayOfInt = new int[4];
         int i = 0;
-        while (i < localJSONArray.length())
+        while (i < ((JSONArray)localObject).length())
         {
-          localamcn.jdField_a_of_type_ArrayOfInt[i] = bawz.a((Context)localObject, localJSONArray.optInt(i) / 2);
+          localamcn.jdField_a_of_type_ArrayOfInt[i] = baxn.a(localContext, ((JSONArray)localObject).optInt(i) / 2);
           i += 1;
         }
       }
-      localamcn.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubblePasterConfig json->" + paramJSONObject);
-      }
-      return localamcn;
     }
-    QLog.e("DiyBubbleConfig", 1, "error! paster type: " + (String)localObject);
-    return null;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DiyBubbleConfig", 2, "diy text_color invalid");
+        }
+      }
+      localamcn.e = paramJSONObject.optInt("text_max_count");
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubbleTextConfig json->" + paramJSONObject);
+      }
+    }
+    return localamcn;
   }
   
   @TargetApi(11)
-  public Rect a(amcz paramamcz, Canvas paramCanvas)
+  public Rect a(amcy paramamcy, Canvas paramCanvas, Paint paramPaint)
   {
-    int i1 = 0;
-    paramCanvas = paramamcz.getBounds();
-    Resources localResources = BaseApplicationImpl.getContext().getResources();
-    if (jdField_b_of_type_Int == -1) {
-      jdField_b_of_type_Int = actn.a(48.0F, localResources);
+    float f1 = 0.0F;
+    paramCanvas = paramamcy.getBounds();
+    Object localObject = BaseApplicationImpl.getContext().getResources();
+    if (b == -1) {
+      b = actj.a(48.0F, (Resources)localObject);
     }
-    int j = this.jdField_a_of_type_ArrayOfInt[3];
-    int i = this.jdField_a_of_type_ArrayOfInt[2];
-    int m;
-    int n;
-    int k;
-    if (paramCanvas.height() >= jdField_b_of_type_Int)
+    float f4 = 1.0F;
+    float f3 = this.jdField_a_of_type_ArrayOfInt[3];
+    int i;
+    if (paramCanvas.height() < b)
     {
-      actn.a(10.0F, localResources);
-      actn.a(9.0F, localResources);
-      m = 0;
-      n = 0;
-      k = j;
-      j = n;
+      i = actj.a(2.0F, (Resources)localObject);
+      int j = actj.a(9.0F, (Resources)localObject);
+      int k = actj.a(7.0F, (Resources)localObject);
+      f4 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
+      f3 = this.jdField_a_of_type_ArrayOfInt[3] * f4;
     }
     for (;;)
     {
+      float f2;
       if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
-        n = m + this.jdField_a_of_type_ArrayOfInt[1];
+        f2 = this.jdField_a_of_type_ArrayOfInt[1] - i;
       }
       for (;;)
       {
-        label111:
-        if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
-          m = this.jdField_a_of_type_ArrayOfInt[0] + j;
+        label162:
+        float f5;
+        if (this.jdField_a_of_type_JavaLangString.endsWith("L"))
+        {
+          f1 = this.jdField_a_of_type_ArrayOfInt[0];
+          i = this.jdField_a_of_type_ArrayOfInt[2];
+          if (this.d != 0) {
+            paramPaint.setTextSize(f4 * this.d);
+          }
+          paramPaint.setAntiAlias(true);
+          paramPaint.setFakeBoldText(true);
+          localObject = ambe.a().a(paramamcy, paramamcy.jdField_a_of_type_JavaLangString);
+          Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
+          f4 = amcl.a(paramPaint, (String)localObject);
+          f5 = f2 + f3 / 2.0F - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top;
+          if (!this.jdField_c_of_type_JavaLangString.equals("center")) {
+            break label403;
+          }
+          f2 = f1 + (i - f4) / 2.0F;
         }
         for (;;)
         {
-          j = m;
-          if (paramamcz.b)
-          {
-            j = m;
-            if (!this.jdField_a_of_type_Boolean) {
-              j = paramCanvas.width() - m - i;
-            }
+          if (!paramamcy.b) {
+            break label433;
           }
-          return new Rect(j, n, i + j, k + n);
-          n = actn.a(10.0F, localResources);
-          m = actn.a(7.0F, localResources);
-          if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
-          {
-            m = -actn.a(2.0F, localResources);
-            k = j;
-            j = 0;
-            break;
-          }
-          k = j;
-          if (j <= m * 2) {
-            break label407;
-          }
-          m *= 2;
-          j = this.jdField_a_of_type_ArrayOfInt[2] * m / this.jdField_a_of_type_ArrayOfInt[3];
-          i = j;
-          k = m;
-          if (j >= n * 2) {
-            break label407;
-          }
-          int i2 = j / 2;
-          k = m;
-          i = j;
-          j = n - i2;
-          m = 0;
-          break;
+          f1 = paramCanvas.width() - f2 - f4;
+          return new Rect((int)f1, (int)f5, (int)(i + f1), (int)(f3 + f5));
           if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
-            break label401;
+            break label460;
           }
-          n = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - k - m;
-          break label111;
-          m = i1;
-          if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
-            m = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramCanvas.width() - i - j;
+          f2 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
+          f2 = i + (f2 - f3);
+          break;
+          if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+            break label162;
+          }
+          f1 = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width();
+          break label162;
+          label403:
+          f2 = f1;
+          if (this.jdField_c_of_type_JavaLangString.equals("right")) {
+            f2 = f1 + i - f4;
           }
         }
-        label401:
-        n = 0;
+        label433:
+        return new Rect((int)f2, (int)f5, (int)(i + f2), (int)(f3 + f5));
+        label460:
+        f2 = 0.0F;
       }
-      label407:
-      m = 0;
-      j = 0;
+      i = 0;
     }
   }
   
-  public void a(amcz paramamcz, Canvas paramCanvas)
+  public void a(amcy paramamcy, Canvas paramCanvas)
   {
-    if ((paramCanvas == null) || (paramamcz == null)) {}
-    for (;;)
+    if ((paramCanvas == null) || (paramamcy == null)) {}
+    String str;
+    do
     {
       return;
-      Bitmap localBitmap;
-      if ("diy_chartlet".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
-        localBitmap = ambf.a().b(paramamcz, this);
-      }
-      while (localBitmap != null)
-      {
-        int i = paramCanvas.save();
-        if ((paramamcz.b) && (this.jdField_a_of_type_Boolean)) {
-          paramCanvas.scale(-1.0F, 1.0F, paramamcz.getBounds().centerX(), paramamcz.getBounds().centerY());
-        }
-        Paint localPaint = new Paint();
-        paramamcz = a(paramamcz, paramCanvas);
-        if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
-          paramCanvas.drawBitmap(localBitmap, null, paramamcz, localPaint);
-        }
-        for (;;)
-        {
-          paramCanvas.restoreToCount(i);
-          return;
-          if (!"static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
-            break label166;
-          }
-          localBitmap = ambf.a().a(paramamcz, this);
-          break;
-          paramCanvas.drawBitmap(localBitmap, paramamcz.left, paramamcz.top, localPaint);
-        }
-        label166:
-        localBitmap = null;
-      }
+      str = ambe.a().a(paramamcy, paramamcy.jdField_a_of_type_JavaLangString);
+    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
+    Paint localPaint = new Paint();
+    if (this.jdField_c_of_type_Int != -1) {
+      localPaint.setColor(this.jdField_c_of_type_Int);
     }
+    paramamcy = a(paramamcy, paramCanvas, localPaint);
+    paramCanvas.drawText(str, paramamcy.left, paramamcy.top, localPaint);
   }
 }
 

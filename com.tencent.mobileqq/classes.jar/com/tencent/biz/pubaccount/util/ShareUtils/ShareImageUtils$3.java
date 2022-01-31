@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util.ShareUtils;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ShareImageUtils$3
@@ -10,7 +10,7 @@ public final class ShareImageUtils$3
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), this.a, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), this.a, 0).a();
   }
 }
 

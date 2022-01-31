@@ -1,20 +1,10 @@
-public class atgi
-  implements ajtg
+public abstract interface atgi
 {
-  protected void a(boolean paramBoolean, String paramString) {}
+  public abstract void a();
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!paramBoolean);
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

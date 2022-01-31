@@ -27,7 +27,7 @@ class fe
       int i = DataLineMsgRecord.getDevTypeBySeId(paramView.a.a);
       localObject = fd.a(this.a).a().a(i).a(paramView.a.a);
     } while (localObject == null);
-    paramView = apue.a((DataLineMsgRecord)localObject);
+    paramView = apug.a((DataLineMsgRecord)localObject);
     ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
     localForwardFileInfo.b(10009);
     localForwardFileInfo.d(6);

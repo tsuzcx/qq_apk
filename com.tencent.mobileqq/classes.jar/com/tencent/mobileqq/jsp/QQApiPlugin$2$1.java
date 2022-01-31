@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import arnc;
-import bcpq;
+import arne;
+import bcqf;
 
 class QQApiPlugin$2$1
   implements Runnable

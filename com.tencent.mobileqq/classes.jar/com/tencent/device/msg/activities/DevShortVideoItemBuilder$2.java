@@ -1,20 +1,20 @@
 package com.tencent.device.msg.activities;
 
-import axdo;
-import axeg;
+import axdq;
+import axei;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import yeb;
+import ydy;
 
 public class DevShortVideoItemBuilder$2
   implements Runnable
 {
-  public DevShortVideoItemBuilder$2(yeb paramyeb, MessageForShortVideo paramMessageForShortVideo) {}
+  public DevShortVideoItemBuilder$2(ydy paramydy, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    axeg localaxeg = axdo.a(1, this.this$0.c);
-    localaxeg.a(axdo.a(this.this$0.c, this.a, localaxeg));
-    axdo.a(localaxeg, this.this$0.a);
+    axei localaxei = axdq.a(1, this.this$0.c);
+    localaxei.a(axdq.a(this.this$0.c, this.a, localaxei));
+    axdq.a(localaxei, this.this$0.a);
   }
 }
 

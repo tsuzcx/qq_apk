@@ -1,52 +1,19 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
 
-class appu
-  implements SeekBar.OnSeekBarChangeListener
+public class appu
+  implements apag
 {
-  appu(appp paramappp) {}
+  appu(appt paramappt) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
-    {
-      appp.a(this.a, appp.b(this.a, paramInt));
-      this.a.jdField_a_of_type_Apqx.b(appp.a(this.a));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("#@#@", 1, "onProgressChanged userPos[" + appp.a(this.a) + "]");
-      }
-    }
+    this.a.n();
   }
   
-  @TargetApi(16)
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void b()
   {
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    appp.c(this.a);
-    appp.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_Boolean = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-    this.a.jdField_a_of_type_Apqx.a(null);
-    appp.a(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("##########", 1, "mMediaPlayer sekTo [" + appp.a(this.a) + "]");
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(appp.a(this.a));
+    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
   }
 }
 

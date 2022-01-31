@@ -1,24 +1,13 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
-
 public class axkh
 {
-  public static String a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
-  }
-  
-  public static String b(Context paramContext)
-  {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
-  }
+  public float a = 1.0F;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

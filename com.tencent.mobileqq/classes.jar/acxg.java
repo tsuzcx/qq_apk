@@ -1,23 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
-
-public class acxg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface acxg
 {
-  public acxg(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f < 0.5F)
-    {
-      this.a.c.setAlpha(1.0F - f * 2.0F);
-      return;
-    }
-    this.a.c.setAlpha(f * 2.0F - 1.0F);
-  }
+  public abstract void ab();
+  
+  public abstract void ac();
+  
+  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void f(int paramInt);
+  
+  public abstract void g(int paramInt);
+  
+  public abstract void h(int paramInt);
 }
 
 

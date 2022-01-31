@@ -7,7 +7,10 @@ public class ajgz
 {
   public ajgz(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

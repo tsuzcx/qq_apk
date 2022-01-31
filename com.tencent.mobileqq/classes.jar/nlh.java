@@ -1,24 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import java.net.URL;
 
 public class nlh
-  implements spd
+  implements View.OnClickListener
 {
   public nlh(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
-  }
-  
-  public void a(URL paramURL, rpg paramrpg)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 

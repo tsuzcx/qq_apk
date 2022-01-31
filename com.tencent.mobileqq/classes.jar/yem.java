@@ -1,61 +1,25 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.device.JNICallCenter.DataPoint;
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public class yem
-  extends BroadcastReceiver
+class yem
 {
-  public yem(DeviceTipActivity paramDeviceTipActivity) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<aniz> b;
   
-  @TargetApi(12)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public yem(yel paramyel, View paramView, aniz paramaniz)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey"))) {
-        this.a.finish();
-      }
-    }
-    long l;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-          {
-            bbbr.a();
-            return;
-          }
-          if (paramContext.equals("android.intent.action.SCREEN_ON"))
-          {
-            bbbr.a(2131230742, -1, null);
-            return;
-          }
-          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
-            break;
-          }
-        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
-        return;
-      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
-      }
-      paramContext = paramIntent.getExtras();
-      l = paramContext.getLong("din", 0L);
-      paramContext = paramContext.getString("uin", "");
-    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
-    this.a.finish();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramaniz);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public aniz a()
+  {
+    return (aniz)this.b.get();
   }
 }
 

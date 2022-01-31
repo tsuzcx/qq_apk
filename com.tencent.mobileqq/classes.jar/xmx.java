@@ -1,89 +1,132 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
 class xmx
-  extends Handler
+  implements BusinessObserver
 {
-  boolean jdField_a_of_type_Boolean;
+  xmx(xmw paramxmw, bcif parambcif) {}
   
-  xmx(xmt paramxmt) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareApiPlugin", 2, "onReceive, getUrlInfo, isSuccess=" + paramBoolean);
     }
-    do
+    Object localObject1 = new Bundle();
+    if (paramBoolean)
     {
-      do
+      Object localObject2;
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_Xmw.c)) || (this.jdField_a_of_type_Xmw.c.startsWith("http://")) || (this.jdField_a_of_type_Xmw.c.startsWith("https://")))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while ((!(paramMessage.obj instanceof Bitmap)) || (this.jdField_a_of_type_Boolean));
-            paramMessage = (Bitmap)paramMessage.obj;
-          } while (paramMessage.isRecycled());
-          paramMessage = nap.a(paramMessage, (int)(34.0F * this.jdField_a_of_type_Xmt.jdField_a_of_type_Float));
-        } while (this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaLangRefWeakReference == null);
-        localObject = (bcci)this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localObject != null) && ((localObject instanceof bchv))) {
-          ((bchv)localObject).b();
+        localObject2 = paramBundle.getString("extra_summary");
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label626;
         }
-        this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
-        if ((this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidAppActivity instanceof bcce))
-        {
-          paramMessage = ((bcce)this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidAppActivity).b();
-          if ((paramMessage != null) && (paramMessage.a.jdField_a_of_type_AndroidViewView != null))
-          {
-            paramMessage.a.jdField_a_of_type_AndroidViewView.findViewById(2131365923).setVisibility(8);
-            paramMessage.a.jdField_a_of_type_AndroidViewView.findViewById(2131365924).setVisibility(0);
-          }
+        this.jdField_a_of_type_Xmw.c = ((String)localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareApiPlugin", 2, "Use share summary parsed by server");
         }
-      } while (!QLog.isColorLevel());
-      QLog.d(xmt.jdField_a_of_type_JavaLangString, 2, "QQBrowserActivity VISIBLE -----------------------");
-      return;
-    } while ((!(paramMessage.obj instanceof Bitmap)) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse == null) || (this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo.packName.get())));
-    Object localObject = this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo;
-    if (bbfd.a(this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidContentContext, ((GetAppInfoProto.AndroidInfo)localObject).packName.get())) {
-      this.jdField_a_of_type_Xmt.b.setText(this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690142));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690143), new Object[] { ((GetAppInfoProto.AndroidInfo)localObject).messagetail.get() }));
-      paramMessage = (Bitmap)paramMessage.obj;
-      if (paramMessage.isRecycled()) {
-        break;
       }
-      paramMessage = nap.a(paramMessage, (int)(30.0F * this.jdField_a_of_type_Xmt.jdField_a_of_type_Float));
-      this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Xmt.c.setImageBitmap(paramMessage);
-      bdjo.a().a(this.jdField_a_of_type_Xmt.n, String.valueOf(bbbo.b(this.jdField_a_of_type_Xmt.jdField_a_of_type_Long)), "ANDROIDQQ.SHAREBAR", "100", false);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xmw.d))
+      {
+        localObject2 = paramBundle.getStringArrayList("extra_images");
+        if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
+          break label643;
+        }
+        this.jdField_a_of_type_Xmw.d = ((String)((ArrayList)localObject2).get(0));
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareApiPlugin", 2, "Use share thumb parsed by server");
+        }
+      }
+      label193:
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xmw.b))
+      {
+        localObject2 = paramBundle.getString("extra_title");
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label660;
+        }
+        this.jdField_a_of_type_Xmw.b = ((String)localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareApiPlugin", 2, "Use share title parsed by server");
+        }
+      }
+      label245:
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xmw.a))
+      {
+        paramBundle = paramBundle.getString("extra_url");
+        if (TextUtils.isEmpty(paramBundle)) {
+          break label677;
+        }
+        this.jdField_a_of_type_Xmw.a = paramBundle;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareApiPlugin", 2, "Use share url parsed by server");
+        }
+      }
+      label294:
+      if (QLog.isColorLevel()) {
+        QLog.e("shareWebPage", 2, "Share info after QZone rich: title=" + this.jdField_a_of_type_Xmw.b + ", summary=" + this.jdField_a_of_type_Xmw.c + ", thumb=" + this.jdField_a_of_type_Xmw.d + ", shareURL=" + this.jdField_a_of_type_Xmw.a);
+      }
+      ((Bundle)localObject1).putInt("extra_url_info_from", 5);
+      label384:
+      this.jdField_a_of_type_Bcif.a(this.jdField_a_of_type_Xmw.b, this.jdField_a_of_type_Xmw.c, this.jdField_a_of_type_Xmw.a, this.jdField_a_of_type_Xmw.d, (Bundle)localObject1);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Xmw.d)) {
+        break label705;
+      }
+    }
+    label643:
+    label660:
+    label677:
+    label705:
+    for (int i = 1;; i = 0)
+    {
+      paramInt = i;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xmw.c)) {
+        paramInt = i | 0x2;
+      }
+      i = paramInt;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Xmw.b)) {
+        i = paramInt | 0x4;
+      }
+      paramBundle = new Bundle();
+      paramBundle.putString("report_type", "102");
+      paramBundle.putString("act_type", "91");
+      localObject1 = new StringBuilder().append("");
+      paramInt = j;
+      if (i == 0) {
+        paramInt = 0;
+      }
+      paramBundle.putString("intext_1", paramInt);
+      paramBundle.putString("intext_2", "" + i);
+      paramBundle.putString("stringext_1", "" + this.jdField_a_of_type_Xmw.a);
+      bdes.a().a(paramBundle, "", this.jdField_a_of_type_Xmw.mRuntime.a().getAccount(), false);
+      return;
+      label626:
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d(xmt.jdField_a_of_type_JavaLangString, 2, "QQBrowserActivity APP_FLOATING_BAR VISIBLE -----------------------");
-      return;
-      this.jdField_a_of_type_Xmt.b.setText(this.jdField_a_of_type_Xmt.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690141));
+      QLog.d("ShareApiPlugin", 2, "Server can't resolve summary");
+      break;
+      if (!QLog.isColorLevel()) {
+        break label193;
+      }
+      QLog.d("ShareApiPlugin", 2, "Server can't resolve thumb");
+      break label193;
+      if (!QLog.isColorLevel()) {
+        break label245;
+      }
+      QLog.d("ShareApiPlugin", 2, "Server can't resolve title");
+      break label245;
+      if (!QLog.isColorLevel()) {
+        break label294;
+      }
+      QLog.d("ShareApiPlugin", 2, "Server can't resolve url");
+      break label294;
+      ((Bundle)localObject1).putInt("extra_url_info_from", 3);
+      break label384;
     }
   }
 }

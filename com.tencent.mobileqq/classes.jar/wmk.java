@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class wmk
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public wmk(CommentBottomBar paramCommentBottomBar) {}
+  public wmk(CommentBottomBar paramCommentBottomBar, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.d();
-    if (CommentBottomBar.a(this.a) != null) {
-      CommentBottomBar.a(this.a).onClick(paramView);
+    if (!this.jdField_a_of_type_Boolean) {
+      CommentBottomBar.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

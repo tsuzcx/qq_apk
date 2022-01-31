@@ -1,15 +1,27 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedChannel;
-import com.tencent.qqinterface.CommonCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.qphone.base.util.QLog;
 
 class ariw
-  implements CustomizedChannel
+  extends BroadcastReceiver
 {
-  ariw(arii paramarii) {}
+  ariw(arik paramarik) {}
   
-  public void onSendTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    arjh.a().a(paramBundle, paramCommonCallback);
+    paramContext = paramIntent.getAction();
+    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
+    {
+      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
+      NowLive.killPluginProcess();
+    }
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
+      return;
+    }
+    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
+    NowLive.killPluginProcess();
   }
 }
 

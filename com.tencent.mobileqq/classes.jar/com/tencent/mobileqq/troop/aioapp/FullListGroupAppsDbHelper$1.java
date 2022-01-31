@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import azjr;
+import azjt;
 import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 
 public class FullListGroupAppsDbHelper$1
   implements Runnable
 {
-  public FullListGroupAppsDbHelper$1(azjr paramazjr, FullListGroupAppEntity paramFullListGroupAppEntity) {}
+  public FullListGroupAppsDbHelper$1(azjt paramazjt, FullListGroupAppEntity paramFullListGroupAppEntity) {}
   
   public void run()
   {
-    azjr.a(this.this$0, this.a);
+    azjt.a(this.this$0, this.a);
   }
 }
 

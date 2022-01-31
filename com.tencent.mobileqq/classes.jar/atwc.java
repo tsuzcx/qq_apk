@@ -1,45 +1,90 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 final class atwc
-  implements athx
+  implements athz
 {
-  atwc(atwf paramatwf, String paramString) {}
+  atwc(int paramInt, atwi paramatwi) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool = true;
+    boolean bool3 = false;
+    bool2 = false;
+    bool1 = true;
+    paramBundle = new ArrayList();
+    int i = this.jdField_a_of_type_Int;
+    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
     if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
+      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
     }
     for (;;)
     {
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
+        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
+        if (!localReadNearUserFeedsRsp.result.has())
         {
-          if (this.jdField_a_of_type_Atwf != null) {
-            this.jdField_a_of_type_Atwf.a(bool, this.jdField_a_of_type_JavaLangString);
+          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
+          paramInt = i;
+          if (this.jdField_a_of_type_Atwi != null) {
+            this.jdField_a_of_type_Atwi.a(bool2, paramBundle, bool1, paramInt);
           }
           return;
         }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+        if (localReadNearUserFeedsRsp.result.get() == 0) {
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
+          }
+        }
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
+        bool2 = false;
+        bool1 = true;
       }
-      bool = false;
+      try
+      {
+        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
+        paramInt = localReadNearUserFeedsRsp.end_flag.get();
+        bool1 = bool3;
+        if (paramInt == 1) {
+          bool1 = true;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          bool2 = true;
+          bool1 = true;
+        }
+      }
+      try
+      {
+        paramInt = localReadNearUserFeedsRsp.pos.get();
+        bool2 = true;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool2 = true;
+        break label281;
+      }
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
+      paramInt = i;
       continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+      label281:
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
+      paramInt = i;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+      paramInt = i;
     }
   }
 }

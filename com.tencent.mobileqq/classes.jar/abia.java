@@ -1,20 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class abia
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public abia(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
+  public abia(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 999);
-    this.a.overridePendingTransition(2130771997, 2130771990);
-    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
+    }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    axrn.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahkf;
-import ahlm;
-import aukn;
-import auko;
-import axuh;
+import ahkd;
+import ahlk;
+import aukp;
+import aukq;
+import axuj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExpiredPushBanner;
@@ -13,13 +13,13 @@ import java.util.List;
 public class BannerManager$37$1
   implements Runnable
 {
-  public BannerManager$37$1(ahlm paramahlm, int paramInt, List paramList) {}
+  public BannerManager$37$1(ahlk paramahlk, int paramInt, List paramList) {}
   
   public void run()
   {
     int k = 0;
-    aukn localaukn = ahkf.a(this.jdField_a_of_type_Ahlm.a).app.getEntityManagerFactory().createEntityManager();
-    Object localObject = localaukn.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
+    aukp localaukp = ahkd.a(this.jdField_a_of_type_Ahlk.a).app.getEntityManagerFactory().createEntityManager();
+    Object localObject = localaukp.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
     int j = k;
     if (localObject != null)
     {
@@ -34,30 +34,30 @@ public class BannerManager$37$1
           if (i >= m) {
             break;
           }
-          localaukn.b((ExpiredPushBanner)((List)localObject).get(i));
+          localaukp.b((ExpiredPushBanner)((List)localObject).get(i));
           i += 1;
         }
       }
     }
     while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (axuh)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = (axuj)this.jdField_a_of_type_JavaUtilList.get(j);
       if (localObject != null)
       {
         long l2 = 0L;
         long l1 = l2;
-        if (((axuh)localObject).c != null)
+        if (((axuj)localObject).c != null)
         {
           l1 = l2;
-          if (((axuh)localObject).c.contains("|")) {
-            l1 = Long.parseLong(((axuh)localObject).c.substring(((axuh)localObject).c.indexOf("|") + 1));
+          if (((axuj)localObject).c.contains("|")) {
+            l1 = Long.parseLong(((axuj)localObject).c.substring(((axuj)localObject).c.indexOf("|") + 1));
           }
         }
         ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
-        localExpiredPushBanner.cid = Long.parseLong(((axuh)localObject).a);
-        localExpiredPushBanner.md5 = ((axuh)localObject).m;
+        localExpiredPushBanner.cid = Long.parseLong(((axuj)localObject).a);
+        localExpiredPushBanner.md5 = ((axuj)localObject).m;
         localExpiredPushBanner.endtime = l1;
-        localaukn.a(localExpiredPushBanner);
+        localaukp.a(localExpiredPushBanner);
       }
       j += 1;
     }

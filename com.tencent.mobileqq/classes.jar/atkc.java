@@ -1,10 +1,23 @@
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-public abstract interface atkc
+public class atkc
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public atkc(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public abstract void a(String paramString, View paramView, int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
+    }
+    return false;
+  }
 }
 
 

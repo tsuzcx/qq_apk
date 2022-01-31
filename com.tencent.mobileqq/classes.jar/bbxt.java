@@ -1,64 +1,111 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.app.AppRuntime;
-import mqq.manager.AccountManager;
-import mqq.manager.WtloginManager;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbxt
 {
-  private AppRuntime a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<bhzo> jdField_a_of_type_JavaUtilList;
   
-  public bbxt(AppRuntime paramAppRuntime)
+  private bbxt(Activity paramActivity)
   {
-    this.a = paramAppRuntime;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(Intent paramIntent, String paramString, bbxw parambbxw)
+  public static bbxt a(@NonNull Activity paramActivity)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
-      if (parambbxw != null) {
-        parambbxw.a(paramIntent, false, paramString, null, null);
-      }
-    }
-    for (;;)
+    return new bbxt(paramActivity);
+  }
+  
+  private bhzo a(@NonNull JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("type");
+    Object localObject = new bhzp();
+    View localView = ((bhzp)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
+    if (localView == null)
     {
-      return;
-      if (QLog.isDevelopLevel()) {
-        bbxx.a("LHLoginMng -- lockLH", paramIntent);
-      }
-      Object localObject2 = paramIntent.getStringExtra("key_register_smscode");
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      Object localObject3 = paramIntent.getStringExtra("key_register_nick");
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = "";
-      }
-      String str = paramIntent.getStringExtra("key_register_password");
-      localObject3 = str;
-      if (str == null) {
-        localObject3 = "";
-      }
-      boolean bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
-      if (bool)
+      vxp.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    localObject = ((bhzp)localObject).a(str, localView);
+    if (localView == null)
+    {
+      vxp.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
+      return null;
+    }
+    ((bhzo)localObject).a(paramJSONObject);
+    return localObject;
+  }
+  
+  public bbxt a(@NonNull ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    return this;
+  }
+  
+  public bbxt a(@NonNull JSONArray paramJSONArray)
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    a();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject = paramJSONArray.optJSONObject(i);
+      if (localObject == null) {}
+      for (;;)
       {
-        paramIntent = new bbxv(paramIntent, paramString, parambbxw);
-        ((WtloginManager)this.a.getManager(1)).RegGetSMSVerifyLoginAccountWithLH(((String)localObject1).getBytes(), ((String)localObject2).getBytes(), paramString, "8.2.8", paramIntent);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
-        return;
-        paramIntent = new bbxu(paramIntent, paramString, parambbxw);
-        parambbxw = (AccountManager)this.a.getManager(0);
-        aumi.a().a(this.a, false);
-        parambbxw.sendRegisterBySetPassWithLH((String)localObject3, (String)localObject2, (String)localObject1, paramString, false, "8.2.8", paramIntent);
+        i += 1;
+        break;
+        localObject = a((JSONObject)localObject);
+        if (localObject != null)
+        {
+          ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(((bhzo)localObject).a(), localLayoutParams);
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
       }
     }
+    return this;
+  }
+  
+  public bbxt a(@NonNull JSONObject paramJSONObject)
+  {
+    paramJSONObject = a(paramJSONObject);
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    a();
+    if (paramJSONObject == null) {
+      return this;
+    }
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
+    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((bhzo)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

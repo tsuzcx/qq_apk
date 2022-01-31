@@ -1,26 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract class syu<Request extends syv, Respond extends syq>
-  implements syt<Request, Respond>
+public class syu
+  extends SimpleJob<Void>
 {
-  public static Handler a = new Handler(Looper.getMainLooper());
-  
-  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
+  public syu(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
   {
-    if (Thread.currentThread() == a.getLooper().getThread())
-    {
-      b(paramRequest, paramRespond, paramErrorMessage);
-      return;
-    }
-    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
+    super(paramString);
   }
   
-  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = ((tcs)tcz.a(10)).a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.a.a(paramJobContext);
+    }
+    return null;
+  }
 }
 
 

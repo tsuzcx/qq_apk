@@ -1,72 +1,130 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
 
 public class vso
-  extends vsq<vsd, vsd>
+  extends vsn<vsa, vsa>
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<vib> jdField_a_of_type_JavaLangRefWeakReference;
+  public final String a;
+  private boolean a;
   
-  public vso(String paramString, vib paramvib, int paramInt)
+  public vso(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvib);
-    this.jdField_a_of_type_Int = paramInt;
+    this(true, paramString);
   }
   
-  protected void a(JobContext paramJobContext, vsd paramvsd)
+  public vso(boolean paramBoolean)
   {
-    veg.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    vsj localvsj = paramvsd.jdField_a_of_type_Vsj;
-    int i = localvsj.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (vib)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this(paramBoolean, null);
+  }
+  
+  public vso(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void a(JobContext paramJobContext, vsa paramvsa)
+  {
+    boolean bool2 = false;
+    int i = 1;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramJobContext = str;
+    if (str == null) {
+      paramJobContext = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.jdField_b_of_type_JavaLangString, ".jpg");
     }
-    while (paramJobContext != null)
+    if ((this.jdField_a_of_type_Boolean) && (paramvsa.jdField_a_of_type_Boolean)) {
+      ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
+    }
+    boolean bool1;
+    for (;;)
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
+      try
       {
+        bool1 = vxv.a(vxv.c(paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_AndroidGraphicsBitmap, paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
+        i = 0;
+        bool2 = true;
+        avtd.d = bool2;
+        if ((i != 0) || (bool1)) {
+          break;
+        }
+        ved.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
+        super.notifyError(new ErrorMessage(-1, ajya.a(2131706562)));
+        return;
+      }
+      catch (Throwable paramJobContext)
+      {
+        ved.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+        paramJobContext = null;
+        bool1 = false;
+        continue;
+      }
+      if (paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Int > 0)
+      {
+        ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
         try
         {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = vst.a(paramvsd.jdField_a_of_type_Int, paramvsd.b, ".jpg");
-          }
-          i = new vsl(localBitmap, str1, localvsj.jdField_a_of_type_Int, localvsj.jdField_b_of_type_Int, i, localvsj.jdField_a_of_type_Float, localvsj.jdField_a_of_type_Double, localvsj.jdField_b_of_type_Double, paramvsd.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          paramvsd.jdField_a_of_type_JavaLangString = str1;
-          paramvsd.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          veg.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(paramvsd);
-          return;
+          bool1 = vxv.a(paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+          i = 0;
+          bool2 = true;
         }
-        finally
+        catch (Throwable paramJobContext)
         {
-          paramJobContext.a(localBitmap);
+          for (;;)
+          {
+            ved.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
+            paramJobContext = null;
+            bool1 = false;
+          }
         }
-        paramJobContext = null;
-        continue;
-        label217:
-        veg.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, ajyc.a(2131705676) + this.jdField_a_of_type_Int));
       }
       else
       {
-        veg.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, ajyc.a(2131705681) + this.jdField_a_of_type_Int));
-        return;
+        ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
+        paramJobContext = paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString;
+        vej.b("0X80075C9");
+        paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_Boolean = true;
+        bool1 = false;
       }
     }
-    veg.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, ajyc.a(2131705677) + this.jdField_a_of_type_Int));
+    paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_JavaLangString = paramJobContext;
+    paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Boolean = bool1;
+    if ((paramvsa.jdField_a_of_type_Int == 3) && (bool1)) {
+      a(paramvsa, paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString, paramJobContext);
+    }
+    super.notifyResult(paramvsa);
+  }
+  
+  public void a(vsa paramvsa, String paramString1, String paramString2)
+  {
+    double d1;
+    double d2;
+    if (((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
+    {
+      d1 = ((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
+      d2 = ((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+      if (!TextUtils.isEmpty(paramString1)) {
+        if (!bhol.a(paramString1, paramString2)) {
+          bhol.b(paramString2, d2, d1);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        bhol.b(paramString2, d2, d1);
+        return;
+      } while ((!(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bhol.a(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
+      paramvsa = ((EditLocalPhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
+    } while (paramvsa == null);
+    bhol.a(paramString2, paramvsa.longitude / 1000000.0D, paramvsa.latitude / 1000000.0D);
   }
 }
 

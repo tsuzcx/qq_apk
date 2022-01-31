@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aahb
-  implements DialogInterface.OnDismissListener
+  extends bdvm
 {
   public aahb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.a = null;
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.a(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          }
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
+      return;
+    }
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

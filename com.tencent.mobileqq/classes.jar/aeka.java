@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.content.Intent;
 
 public abstract interface aeka
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  public abstract void a(Intent paramIntent);
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public abstract boolean a(int paramInt);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahjz;
-import ahop;
-import ahpl;
-import akpc;
+import ahjx;
+import ahon;
+import ahpj;
+import akpb;
 import android.content.Context;
 import android.text.TextUtils;
-import bbcl;
+import bbcz;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -56,20 +56,20 @@ public class RecentItemAppletsFolderData
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = bbcl.j(paramQQAppInterface, this.mUser.uin);
+      this.mTitleName = bbcz.j(paramQQAppInterface, this.mUser.uin);
     }
     QQMessageFacade.Message localMessage = null;
     Object localObject1 = paramQQAppInterface.a();
     if (localObject1 != null) {
       localMessage = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());
     }
-    localObject1 = (ahjz)paramQQAppInterface.getManager(315);
-    if (ahop.a(paramQQAppInterface)) {}
+    localObject1 = (ahjx)paramQQAppInterface.getManager(315);
+    if (ahon.a(paramQQAppInterface)) {}
     try
     {
-      ((ahjz)localObject1).a();
+      ((ahjx)localObject1).a();
       label97:
-      Object localObject2 = ((ahjz)localObject1).a(this.mUser.uin);
+      Object localObject2 = ((ahjx)localObject1).a(this.mUser.uin);
       if (localObject2 != null)
       {
         QLog.d("RecentItemAppletsFolderData", 2, "account not null nick:" + ((AppletsAccountInfo)localObject2).nick);
@@ -83,9 +83,9 @@ public class RecentItemAppletsFolderData
         if (localObject2 == null) {
           break label305;
         }
-        this.mUnreadNum = ((akpc)localObject2).a(localMessage.frienduin, this.mUser.getType());
+        this.mUnreadNum = ((akpb)localObject2).a(localMessage.frienduin, this.mUser.getType());
         label207:
-        if (((ahjz)localObject1).a(localMessage, this.mUser) != 2) {
+        if (((ahjx)localObject1).a(localMessage, this.mUser) != 2) {
           break label313;
         }
         this.mUnreadFlag = 1;
@@ -96,7 +96,7 @@ public class RecentItemAppletsFolderData
       {
         localObject1 = a();
         a(localMessage, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject1);
-        this.mShowTime = ahpl.a().a(this.mUser.uin, this.mUser.lastmsgtime);
+        this.mShowTime = ahpj.a().a(this.mUser.uin, this.mUser.lastmsgtime);
         this.mLastMsg = ((MsgSummary)localObject1).strContent;
         f();
         return;

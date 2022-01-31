@@ -1,82 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class amtr
-  implements ampd<String>
 {
-  public ArrayList<amts> a = new ArrayList();
-  
-  public void a(String paramString)
-  {
-    this.a.clear();
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config content is empty");
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("random_list");
-        if (paramString != null)
-        {
-          i = 0;
-          if (i < paramString.length())
-          {
-            JSONObject localJSONObject = paramString.getJSONObject(i);
-            amts localamts = new amts();
-            localamts.a = localJSONObject.optString("nick", "");
-            localamts.b = localJSONObject.optString("headid", "");
-            localamts.c = localJSONObject.optString("url", "");
-            if ((!TextUtils.isEmpty(localamts.a)) && (!TextUtils.isEmpty(localamts.b)) && (!TextUtils.isEmpty(localamts.c))) {
-              break label230;
-            }
-            if (!QLog.isColorLevel()) {
-              break label235;
-            }
-            QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse.find invalid,index=", Integer.valueOf(i) });
-            break label235;
-            if (j == 0) {
-              break label240;
-            }
-            this.a.add(localamts);
-            break label240;
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("OpenSdkRandomConfig", 2, new Object[] { "OpenVirtual.random.config.parse=", toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkRandomConfig", 1, "OpenVirtual.config.getException.", paramString);
-        return;
-      }
-      label230:
-      int j = 1;
-      continue;
-      label235:
-      j = 0;
-      continue;
-      label240:
-      i += 1;
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
   
   public String toString()
   {
-    if (this.a.size() > 0) {
-      return this.a.toString();
-    }
-    return "";
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("nickName:").append(this.a).append(",headID:").append(this.b).append(",headURL:").append(this.c).append("}");
+    return localStringBuilder.toString();
   }
 }
 

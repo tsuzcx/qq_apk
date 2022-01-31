@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import ppm;
-import pqj;
+import ppj;
+import pqg;
 
 public class PTSEngineLoader$2
   implements Runnable
 {
-  public PTSEngineLoader$2(ppm paramppm) {}
+  public PTSEngineLoader$2(ppj paramppj) {}
   
   public void run()
   {
-    if (!pqj.a.d()) {
+    if (!pqg.a.d()) {
       return;
     }
-    ppm.a(this.this$0);
-    ppm.b(this.this$0);
+    ppj.a(this.this$0);
+    ppj.b(this.this$0);
   }
 }
 

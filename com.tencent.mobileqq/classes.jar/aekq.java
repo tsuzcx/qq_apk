@@ -1,19 +1,11 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
 
-class aekq
-  implements Animation.AnimationListener
+public class aekq
 {
-  aekq(aeko paramaeko, aekj paramaekj) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Aeko.b();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a;
+  public Drawable a;
+  public RedDotImageView a;
 }
 
 

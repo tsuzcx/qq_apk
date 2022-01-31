@@ -7,14 +7,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import bcsc;
+import bcsr;
 import com.tencent.qphone.base.util.QLog;
 
 public class WebViewProgressBar
   extends View
 {
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bcsc jdField_a_of_type_Bcsc;
+  private bcsr jdField_a_of_type_Bcsr;
   private boolean jdField_a_of_type_Boolean = true;
   private Drawable b;
   private Drawable c;
@@ -47,12 +47,12 @@ public class WebViewProgressBar
     super.onDraw(paramCanvas);
     int j;
     int i;
-    if ((this.jdField_a_of_type_Bcsc != null) && (this.jdField_a_of_type_Bcsc.a() != 6))
+    if ((this.jdField_a_of_type_Bcsr != null) && (this.jdField_a_of_type_Bcsr.a() != 6))
     {
       if ((this.c == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
         break label164;
       }
-      j = (int)this.jdField_a_of_type_Bcsc.a();
+      j = (int)this.jdField_a_of_type_Bcsr.a();
       if (j >= this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {
         break label324;
       }
@@ -76,16 +76,16 @@ public class WebViewProgressBar
       return;
       label164:
       if (this.b == null) {
-        this.b = getContext().getResources().getDrawable(2130849003);
+        this.b = getContext().getResources().getDrawable(2130849009);
       }
       this.b.setBounds(0, 0, getWidth(), getHeight());
       this.b.draw(paramCanvas);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849004);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849010);
       }
-      j = (int)this.jdField_a_of_type_Bcsc.a();
+      j = (int)this.jdField_a_of_type_Bcsr.a();
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_Bcsc.a());
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_Bcsr.a());
       }
       if (j < this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())
       {
@@ -107,24 +107,24 @@ public class WebViewProgressBar
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bcsc != null) {
-      this.jdField_a_of_type_Bcsc.a(getWidth());
+    if (this.jdField_a_of_type_Bcsr != null) {
+      this.jdField_a_of_type_Bcsr.a(getWidth());
     }
   }
   
-  public void setController(bcsc parambcsc)
+  public void setController(bcsr parambcsr)
   {
-    if (this.jdField_a_of_type_Bcsc == parambcsc) {
+    if (this.jdField_a_of_type_Bcsr == parambcsr) {
       return;
     }
-    if (this.jdField_a_of_type_Bcsc != null) {
-      this.jdField_a_of_type_Bcsc.a(null);
+    if (this.jdField_a_of_type_Bcsr != null) {
+      this.jdField_a_of_type_Bcsr.a(null);
     }
-    this.jdField_a_of_type_Bcsc = parambcsc;
-    if (this.jdField_a_of_type_Bcsc != null)
+    this.jdField_a_of_type_Bcsr = parambcsr;
+    if (this.jdField_a_of_type_Bcsr != null)
     {
-      this.jdField_a_of_type_Bcsc.a(this);
-      this.jdField_a_of_type_Bcsc.a(getWidth());
+      this.jdField_a_of_type_Bcsr.a(this);
+      this.jdField_a_of_type_Bcsr.a(getWidth());
     }
     invalidate();
   }

@@ -1,36 +1,32 @@
-class tph
-  implements try
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class tph
+  implements tpg
 {
-  tph(tpe paramtpe) {}
-  
-  public void a()
-  {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).c();
-    }
-  }
+  public void a() {}
   
   public void a(int paramInt)
   {
-    tpe.a(this.a).a(paramInt);
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).b(paramInt);
+    if (paramInt == 6) {
+      bcql.a(BaseApplicationImpl.getContext(), 2131690042, 0).a();
     }
   }
   
-  public void b()
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
   {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).d();
-    }
+    bcql.a(BaseApplication.getContext(), ajya.a(2131707852), 0).a();
   }
   
-  public void c()
-  {
-    if (tpe.a(this.a) != null) {
-      tpe.a(this.a).d(-1);
-    }
-  }
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 

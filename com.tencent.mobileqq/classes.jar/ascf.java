@@ -1,53 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.4;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
 
 public class ascf
-  extends bbwf
+  implements View.OnClickListener
 {
-  public ascf(PngFrameManager.4 param4, String paramString) {}
+  public ascf(PngFrameManager.1 param1) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
-    }
-    for (;;)
+    if (this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
+    do
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
+      do
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null)
-        {
-          if (parambbwg.a() != 3) {
-            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      try
-      {
-        bbdj.a(this.jdField_a_of_type_JavaLangString, anzm.z.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_Aduu.a.a.epId);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
-        continue;
-        parambbwg = finally;
-        throw parambbwg;
-      }
-      catch (IOException parambbwg)
-      {
-        for (;;)
-        {
-          parambbwg.printStackTrace();
-        }
-      }
-    }
+        return;
+      } while (this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
+      this.a.a.jdField_a_of_type_Boolean = true;
+      this.a.a.jdField_a_of_type_Adus.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.a.this$0.e(this.a.a);
+    } while (this.a.a.jdField_a_of_type_Asci == null);
+    this.a.a.jdField_a_of_type_Asci.a(this.a.a.jdField_a_of_type_Adus);
   }
 }
 

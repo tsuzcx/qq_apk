@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
-class lnz
-  implements DialogInterface.OnClickListener
+public class lnz
+  implements mho
 {
-  lnz(lny paramlny) {}
+  public lnz(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a.a(-1040L, 11);
+    if (this.a.a != null)
+    {
+      this.a.a.setViewEnable(2131372375, false);
+      this.a.a.setViewEnable(2131372374, false);
+      this.a.a.setViewEnable(2131362921, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772163);
   }
 }
 

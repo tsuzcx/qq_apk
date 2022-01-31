@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aomv
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  aomv(aoms paramaoms, int paramInt, boolean paramBoolean) {}
+  aomv(aoms paramaoms) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Aoms.jdField_a_of_type_Float = this.jdField_a_of_type_Aoms.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aoms.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    aoms.a(this.a).dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

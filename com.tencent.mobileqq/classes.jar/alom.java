@@ -1,8 +1,9 @@
 import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
 abstract interface alom
 {
-  public abstract void a(WadlResult paramWadlResult);
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

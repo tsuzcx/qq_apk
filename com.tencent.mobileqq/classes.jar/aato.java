@@ -1,72 +1,117 @@
-import MQQ.GetRoamToastRsp;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class aato
-  extends akfz
+  extends akil
 {
-  public aato(ChatSettingActivity paramChatSettingActivity) {}
+  public aato(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(String paramString, int paramInt)
+  protected void a(String paramString1, String paramString2, String paramString3)
   {
-    ChatSettingActivity.d(this.a);
+    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      return;
+    }
+    ChatSettingForTroop.a(this.a, true);
   }
   
-  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    if (this.a.a == null) {
+    if (!paramBoolean) {}
+    String str;
+    do
+    {
       return;
+      str = paramLong1 + "";
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
+    ChatSettingForTroop.a(this.a, true);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, ArrayList<String> paramArrayList, String paramString)
+  {
+    super.a(paramBoolean, paramInt, paramArrayList, paramString);
+    if (!paramBoolean) {
+      if (paramInt == 2) {
+        bcql.a(this.a, 1, ajya.a(2131701753), 0).b(this.a.getTitleBarHeight());
+      }
     }
     Object localObject1;
-    Object localObject2;
-    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((akfw)this.a.app.a(13)).a(paramGetRoamToastRsp)))
+    do
     {
-      localObject1 = paramGetRoamToastRsp.sToast;
-      int i = ((String)localObject1).indexOf('#');
-      if (i < 0) {
-        break label306;
-      }
-      int j = ((String)localObject1).indexOf('#', i + 1);
-      if (j < 0) {
-        break label306;
-      }
-      localObject2 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
-      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
-      localObject1 = localObject2;
-    }
-    label298:
-    label306:
-    for (;;)
-    {
-      this.a.c.setText((CharSequence)localObject1);
-      this.a.a.setTag(paramGetRoamToastRsp);
-      this.a.a.setVisibility(0);
-      axqw.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
       return;
-      if (QLog.isColorLevel())
+      localObject2 = "";
+      localObject1 = localObject2;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
       {
-        localObject1 = ChatSettingActivity.a(this.a);
-        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
-        if (paramGetRoamToastRsp != null) {
-          break label298;
+        localObject1 = localObject2;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin != null) {
+          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin;
         }
       }
-      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
+    } while (this.a.e == null);
+    Object localObject2 = new HashSet();
+    if ((paramString != null) && (paramString.equals(localObject1)))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
-        this.a.a.setVisibility(8);
-        return;
+        paramString = (String)paramArrayList.next();
+        localObject1 = this.a.e.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
+          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
+            ((Collection)localObject2).add(localmemberlist);
+          }
+        }
+      }
+      paramArrayList = ((Collection)localObject2).iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramArrayList.next();
+        this.a.e.remove(paramString);
       }
     }
+    this.a.a(this.a.e);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {}
+    while (paramInt2 != 512) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      aknk.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+      return;
+    }
+    ChatSettingForTroop.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  {
+    if (!paramBoolean) {}
+    String str;
+    do
+    {
+      return;
+      str = paramLong1 + "";
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
+    ChatSettingForTroop.a(this.a, true);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    super.b(paramBoolean, paramString);
+    ChatSettingForTroop.a(this.a);
   }
 }
 

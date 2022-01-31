@@ -1,43 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class tkc
-  extends tjg
-  implements syt<tke, tkf>
+  extends syn
 {
-  public List<String> a = new ArrayList();
+  public List<umu> a = new ArrayList();
   
-  public tkc(String paramString)
+  public tkc(qqstory_service.RspConvertGroupId paramRspConvertGroupId)
   {
-    this.a.add(paramString);
+    super(paramRspConvertGroupId.result);
+    if (paramRspConvertGroupId.group_rsp_list.has())
+    {
+      paramRspConvertGroupId = paramRspConvertGroupId.group_rsp_list.get().iterator();
+      while (paramRspConvertGroupId.hasNext())
+      {
+        Object localObject = (qqstory_struct.GroupId)paramRspConvertGroupId.next();
+        localObject = new umu(String.valueOf(((qqstory_struct.GroupId)localObject).group_uin.get()), ((qqstory_struct.GroupId)localObject).group_union_id.get().toStringUtf8());
+        this.a.add(localObject);
+      }
+    }
   }
   
-  public void a()
+  public String toString()
   {
-    tke localtke = new tke();
-    localtke.c = 1;
-    localtke.a = this.a;
-    syr.a().a(localtke, this);
-  }
-  
-  public void a(@NonNull tke paramtke, @Nullable tkf paramtkf, @NonNull ErrorMessage paramErrorMessage)
-  {
-    paramtke = new tkd(paramErrorMessage);
-    if ((paramErrorMessage.isSuccess()) && (paramtkf != null) && (paramtkf.a != null))
-    {
-      paramtke.a = paramtkf.a;
-      b();
-    }
-    for (;;)
-    {
-      ste.a().dispatch(paramtke);
-      return;
-      c();
-    }
+    return "GetUserGroupUnionIDResponse{groupIDList=" + this.a + '}';
   }
 }
 

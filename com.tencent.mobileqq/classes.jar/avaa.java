@@ -1,17 +1,52 @@
 import android.graphics.PointF;
-import android.view.animation.Transformation;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 
 public class avaa
-  implements bbkq<PointF>
+  implements auzb
 {
-  public avaa(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  public avaa(ProfileTagView paramProfileTagView) {}
   
-  public void a(bbkk<PointF> parambbkk, float paramFloat, PointF paramPointF, Transformation paramTransformation)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
+    Object localObject1;
+    if (this.a.jdField_b_of_type_AndroidGraphicsPointF != null)
+    {
+      localObject1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
+        {
+          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
+          if (localLayoutParams != null)
+          {
+            localLayoutParams.a = this.a.jdField_b_of_type_AndroidGraphicsPointF.x;
+            localLayoutParams.b = this.a.jdField_b_of_type_AndroidGraphicsPointF.y;
+            localObject2.setLayoutParams(localLayoutParams);
+          }
+        }
+        i += 1;
+      }
+      this.a.e();
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject1 = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
+      if (localObject1 != null)
+      {
+        this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((FrameLayout)localObject1).getBackground();
+        if (!bbsz.a(this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable)) {
+          ((FrameLayout)localObject1).setBackgroundDrawable(null);
+        }
+      }
+    }
   }
 }
 

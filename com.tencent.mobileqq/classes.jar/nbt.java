@@ -1,17 +1,17 @@
-import android.os.Bundle;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
 public class nbt
-  implements wxw
+  implements SoundPool.OnLoadCompleteListener
 {
   public nbt(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (paramBundle != null)
-    {
-      int i = paramBundle.getInt("mode");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

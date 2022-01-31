@@ -1,27 +1,27 @@
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aykh
+class aykh
+  extends aykj
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private aykr a;
   
-  public aykh(int paramInt, @NonNull String paramString)
+  aykh(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(2, paramString);
+    this.a = new aykr(paramInt1, paramInt2, 1);
   }
   
-  abstract float a(@NonNull Paint paramPaint);
-  
-  int a()
+  float a(@NonNull Paint paramPaint)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    float f = this.a.a().getBounds().width();
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
+    }
+    return f;
   }
 }
 

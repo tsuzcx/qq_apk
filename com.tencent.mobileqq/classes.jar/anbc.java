@@ -1,71 +1,90 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class anbc
+  extends ampa<anaz>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static anbc a(ampi[] paramArrayOfampi)
+  public static anaz a()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
+    anaz localanaz = (anaz)ampl.a().a(529);
+    if (localanaz != null) {
+      return localanaz;
     }
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
+    return new anaz();
+  }
+  
+  public int a()
+  {
+    return 529;
+  }
+  
+  @NonNull
+  public anaz a(int paramInt)
+  {
+    return new anaz();
+  }
+  
+  @Nullable
+  public anaz a(amph[] paramArrayOfamph)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    String str;
+    if (paramArrayOfamph != null)
     {
-      paramArrayOfampi = null;
-      return paramArrayOfampi;
-    }
-    anbc localanbc = new anbc();
-    for (;;)
-    {
-      try
+      localObject1 = localObject2;
+      if (paramArrayOfamph.length > 0)
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
-        paramArrayOfampi = localanbc;
-        if (!localJSONObject.has("tencentDocAioSendEntry")) {
-          break;
-        }
-        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
-        if (localJSONObject.has("aioSendDocSwitch"))
-        {
-          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
-            localanbc.jdField_a_of_type_Boolean = bool;
+        str = paramArrayOfamph[0].a;
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(str)) {
+          if (QLog.isColorLevel()) {
+            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + a() + ", content = " + str);
           }
         }
-        else
-        {
-          paramArrayOfampi = localanbc;
-          if (!localJSONObject.has("webDocSelectorUrl")) {
-            break;
-          }
-          localanbc.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
-          return localanbc;
-        }
       }
-      catch (JSONException paramArrayOfampi)
+    }
+    try
+    {
+      paramArrayOfamph = (anba)ampv.a(str, anba.class);
+      localObject1 = new anaz(str, paramArrayOfamph);
+      return localObject1;
+    }
+    catch (QStorageInstantiateException paramArrayOfamph)
+    {
+      for (;;)
       {
-        paramArrayOfampi.printStackTrace();
-        return localanbc;
+        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfamph);
+        paramArrayOfamph = null;
       }
-      bool = false;
     }
   }
   
-  public String a()
+  public Class<anaz> a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    return anaz.class;
   }
   
-  public boolean a()
+  public void a(int paramInt) {}
+  
+  public void a(anaz paramanaz) {}
+  
+  public int b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

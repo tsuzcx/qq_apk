@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import besl;
-import beyu;
+import betc;
+import bezl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,9 +14,9 @@ public final class SDKMiniProgramLpReportDC04239$3
   public void run()
   {
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      besl.a("MiniProgramLpReportDC04239", "reportUserClick() called with: subActionType = [" + this.jdField_a_of_type_JavaLangString + "], reserves = [" + this.b + "], appType = [" + this.c + "]");
+      betc.a("MiniProgramLpReportDC04239", "reportUserClick() called with: subActionType = [" + this.jdField_a_of_type_JavaLangString + "], reserves = [" + this.b + "], appType = [" + this.c + "]");
     }
-    beyu.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.c, this.d, "page_view", this.jdField_a_of_type_JavaLangString, this.b);
+    bezl.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.c, this.d, "page_view", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

@@ -1,28 +1,32 @@
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
 
-public class ywp
-  implements yxh
+class ywp
+  implements View.OnClickListener
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  ywp(ywn paramywn) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramywn != null) {}
-    for (paramString = paramywn.a(); (paramywn == null) || (paramString == null); paramString = null)
+    if (this.a.a() == null)
     {
-      yxs.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
+      return;
     }
-    try
+    if (!this.a.a().isLoaded())
     {
-      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
-      return true;
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      return;
     }
-    catch (JSONException paramywn)
+    if (this.a.a().isInvalidated())
     {
-      yxs.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramywn);
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
+      return;
     }
-    return true;
+    this.a.a();
   }
 }
 

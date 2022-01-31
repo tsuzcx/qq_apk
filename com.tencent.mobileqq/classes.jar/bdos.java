@@ -1,11 +1,13 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.util.ArrayList;
-
-public abstract interface bdos
+public class bdos
 {
-  public abstract void a(int paramInt, WadlResult paramWadlResult);
-  
-  public abstract void a(ArrayList<WadlResult> paramArrayList);
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.gdtad.api;
 
 import java.lang.ref.WeakReference;
-import ytb;
-import yxs;
+import ysy;
+import yxp;
 
 class GdtAd$2
   implements Runnable
@@ -13,11 +13,11 @@ class GdtAd$2
   {
     if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
     {
-      yxs.d("GdtAd", "notifyLoaded error");
+      yxp.d("GdtAd", "notifyLoaded error");
       return;
     }
-    yxs.b("GdtAd", "notifyLoaded");
-    ((ytb)GdtAd.access$000((GdtAd)this.a.get()).get()).a((GdtAd)this.a.get());
+    yxp.b("GdtAd", "notifyLoaded");
+    ((ysy)GdtAd.access$000((GdtAd)this.a.get()).get()).a((GdtAd)this.a.get());
   }
 }
 

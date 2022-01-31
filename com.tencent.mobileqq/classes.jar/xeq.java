@@ -1,45 +1,19 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
 
-public final class xeq
+class xeq
+  extends RecyclerView.ViewHolder
 {
-  private static Pair<String, Long> a;
+  final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
   
-  public static boolean a(@NonNull String paramString)
+  xeq(View paramView)
   {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
-    }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
-  }
-  
-  public static boolean a(@NonNull String paramString, long paramLong)
-  {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= paramLong)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
-    }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367698));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364818));
   }
 }
 

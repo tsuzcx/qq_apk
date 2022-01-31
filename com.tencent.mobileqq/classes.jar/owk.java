@@ -1,46 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class owk
-  implements Animator.AnimatorListener
+  implements Animation.AnimationListener
 {
-  public owk(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  public owk(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    osm.a().a(null, 110, true, null);
+    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    osm.a().a(null, 110, true, null);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
-    {
-      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
-        break label90;
-      }
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-    }
-    label90:
-    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
-      return;
-    }
-    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    osm.a().a(null, 110, false, null);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

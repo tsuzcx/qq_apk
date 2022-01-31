@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczi;
+import aczf;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import bbpd;
+import bbpr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -29,13 +29,13 @@ public class FriendProfileCardBgDrawable
   implements Runnable
 {
   public int a;
-  public aczi a;
+  public aczf a;
   public Resources a;
   public Bitmap a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public Handler a;
-  private bbpd jdField_a_of_type_Bbpd;
+  private bbpr jdField_a_of_type_Bbpr;
   public Object a;
   public boolean a;
   private final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
@@ -53,20 +53,20 @@ public class FriendProfileCardBgDrawable
   private boolean jdField_e_of_type_Boolean;
   private int f;
   
-  public FriendProfileCardBgDrawable(Resources paramResources, bbpd parambbpd)
+  public FriendProfileCardBgDrawable(Resources paramResources, bbpr parambbpr)
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 50;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_Bbpd = parambbpd;
-    if (parambbpd != null)
+    this.jdField_a_of_type_Bbpr = parambbpr;
+    if (parambbpr != null)
     {
-      if (parambbpd.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      if (parambbpr.jdField_a_of_type_ArrayOfJavaLangString != null) {
         this.jdField_d_of_type_Boolean = true;
       }
-      a(parambbpd.jdField_a_of_type_ArrayOfJavaLangString, parambbpd.jdField_b_of_type_Int, parambbpd.jdField_a_of_type_JavaLangString);
+      a(parambbpr.jdField_a_of_type_ArrayOfJavaLangString, parambbpr.jdField_b_of_type_Int, parambbpr.jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -94,14 +94,14 @@ public class FriendProfileCardBgDrawable
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Bbpd != null) && (this.jdField_d_of_type_Boolean))
+    if ((this.jdField_a_of_type_Bbpr != null) && (this.jdField_d_of_type_Boolean))
     {
       float f1 = this.jdField_e_of_type_Int / paramInt1;
       float f2 = this.f / paramInt2;
-      int i = (int)(this.jdField_a_of_type_Bbpd.jdField_a_of_type_Float * paramInt3);
-      paramInt1 = (int)(this.jdField_a_of_type_Bbpd.jdField_b_of_type_Float * paramInt4);
-      paramInt2 = (int)(this.jdField_a_of_type_Bbpd.c * paramInt3);
-      paramInt3 = (int)(this.jdField_a_of_type_Bbpd.d * paramInt4);
+      int i = (int)(this.jdField_a_of_type_Bbpr.jdField_a_of_type_Float * paramInt3);
+      paramInt1 = (int)(this.jdField_a_of_type_Bbpr.jdField_b_of_type_Float * paramInt4);
+      paramInt2 = (int)(this.jdField_a_of_type_Bbpr.c * paramInt3);
+      paramInt3 = (int)(this.jdField_a_of_type_Bbpr.d * paramInt4);
       paramInt4 = (int)(i / f1);
       paramInt1 = (int)(paramInt1 / f2);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramInt4, paramInt1, (int)(paramInt2 / f1) + paramInt4, (int)(paramInt3 / f2) + paramInt1);
@@ -460,8 +460,8 @@ public class FriendProfileCardBgDrawable
     //   29: ldc 245
     //   31: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: aload_0
-    //   35: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   38: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   35: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   38: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   41: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   47: astore 6
@@ -488,8 +488,8 @@ public class FriendProfileCardBgDrawable
     //   87: ldc_w 263
     //   90: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: aload_0
-    //   94: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   97: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   94: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   97: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   100: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   106: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -519,8 +519,8 @@ public class FriendProfileCardBgDrawable
     //   148: ldc_w 267
     //   151: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: aload_0
-    //   155: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   158: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   155: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   158: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   161: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   167: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -537,8 +537,8 @@ public class FriendProfileCardBgDrawable
     //   187: new 128	java/io/FileInputStream
     //   190: dup
     //   191: aload_0
-    //   192: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   195: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   192: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   195: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   198: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   201: invokespecial 134	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   204: astore_2
@@ -754,7 +754,7 @@ public class FriendProfileCardBgDrawable
   public Bitmap a(Object paramObject, int paramInt)
   {
     Object localObject = new BitmapFactory.Options();
-    if (this.jdField_a_of_type_Bbpd != null)
+    if (this.jdField_a_of_type_Bbpr != null)
     {
       d();
       if (this.jdField_d_of_type_Boolean) {}
@@ -840,8 +840,8 @@ public class FriendProfileCardBgDrawable
     //   33: ldc 245
     //   35: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: aload_0
-    //   39: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   42: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   39: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   42: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   45: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore 4
@@ -862,8 +862,8 @@ public class FriendProfileCardBgDrawable
     //   85: ldc_w 344
     //   88: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: aload_0
-    //   92: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   95: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   92: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   95: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   98: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   104: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -887,8 +887,8 @@ public class FriendProfileCardBgDrawable
     //   141: ldc_w 346
     //   144: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: aload_0
-    //   148: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   151: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   148: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   151: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   154: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   160: invokestatic 265	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -901,8 +901,8 @@ public class FriendProfileCardBgDrawable
     //   176: new 128	java/io/FileInputStream
     //   179: dup
     //   180: aload_0
-    //   181: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpd	Lbbpd;
-    //   184: getfield 71	bbpd:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   181: getfield 60	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:jdField_a_of_type_Bbpr	Lbbpr;
+    //   184: getfield 71	bbpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   187: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   190: invokespecial 134	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   193: astore_1
@@ -1247,10 +1247,10 @@ public class FriendProfileCardBgDrawable
       this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     }
-    if (this.jdField_a_of_type_Aczi != null)
+    if (this.jdField_a_of_type_Aczf != null)
     {
-      this.jdField_a_of_type_Aczi.cancel(false);
-      this.jdField_a_of_type_Aczi = null;
+      this.jdField_a_of_type_Aczf.cancel(false);
+      this.jdField_a_of_type_Aczf = null;
     }
     if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {
       synchronized (this.jdField_a_of_type_ArrayOfByte)
@@ -1276,11 +1276,11 @@ public class FriendProfileCardBgDrawable
     this.jdField_a_of_type_Boolean = false;
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.jdField_b_of_type_Int;
-    if (this.jdField_a_of_type_Aczi != null) {
+    if (this.jdField_a_of_type_Aczf != null) {
       QLog.e("FriendProfileCardBgDrawable", 1, "decodeNextFrame mTask != null currentFrame = " + this.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_Aczi = new aczi(this, this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Aczi.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Aczf = new aczf(this, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Aczf.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.jdField_a_of_type_Int) });
   }
   
   public void draw(Canvas paramCanvas)

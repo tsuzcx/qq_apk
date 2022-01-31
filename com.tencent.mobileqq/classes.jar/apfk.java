@@ -1,74 +1,43 @@
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class apfk
-  implements awwp
+  extends awkf<awoi, awwr>
 {
-  protected int a;
-  protected View a;
-  protected ImageView a;
-  protected TextView a;
-  protected TextView b;
-  
-  public apfk() {}
-  
-  public apfk(ViewGroup paramViewGroup)
+  public apfk(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, baxy parambaxy, awoi paramawoi, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 2131562390;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
-    a();
+    super(paramListView, parambaxy);
+    paramFileSearchDetailFragment = (apfi)paramawoi;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    {
+      paramListView = new ArrayList();
+      parambaxy = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (parambaxy.hasNext())
+      {
+        paramawoi = (FileManagerEntity)parambaxy.next();
+        paramString = new apfi();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(paramawoi);
+        paramListView.add(paramString);
+      }
+      a(paramListView);
+    }
   }
   
-  public View a()
+  protected awrd<awoi, awwr> a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return new apfn(this.a.a);
   }
   
-  public View a(String paramString)
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
   {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377350));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(ayks.a);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377420).setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.b;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    return new apfo(paramViewGroup);
   }
 }
 

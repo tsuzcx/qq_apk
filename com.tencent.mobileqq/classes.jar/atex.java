@@ -1,21 +1,23 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class atex
-  implements View.OnClickListener
+  implements bfph
 {
-  public atex(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public atex(NearbyGuideActivity paramNearbyGuideActivity, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    this.jdField_a_of_type_Bfpc.cancel();
+    switch (paramInt)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
   }
 }
 

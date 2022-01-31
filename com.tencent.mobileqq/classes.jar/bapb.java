@@ -1,15 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public abstract class bapb
+public class bapb
+  implements bams
 {
-  public bapb(baov parambaov) {}
+  public bapb(TroopAIORobotLayout paramTroopAIORobotLayout, baou parambaou) {}
   
-  protected abstract View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean);
-  
-  public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    return a(null, paramTroopFeedItem, paramInt, paramBoolean);
+    if (paramInt == 0) {}
   }
 }
 

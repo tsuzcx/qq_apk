@@ -1,7 +1,7 @@
 package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import wlx;
+import wlu;
 
 class SubscribeVideoDetailFragment$5
   implements Runnable

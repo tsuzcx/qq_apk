@@ -1,6 +1,21 @@
-public abstract interface uqf
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+
+class uqf
+  implements TextView.OnEditorActionListener
 {
-  public abstract void a(uqg paramuqg);
+  uqf(uqe paramuqe) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return false;
+  }
 }
 
 

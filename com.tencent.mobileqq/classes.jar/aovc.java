@@ -1,38 +1,51 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.BuddyUploadTaskExcuter.1;
-import java.util.concurrent.Executor;
+import com.tencent.qphone.base.util.QLog;
 
-public class aovc
-  extends aovs
+class aovc
+  extends aovw
 {
-  public long a;
-  private Bundle a;
-  public String a;
-  private long b;
-  public String b;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
   
-  public aovc(aouu paramaouu, MessageRecord paramMessageRecord)
+  public aovc(aouy paramaouy, MessageRecord paramMessageRecord)
   {
-    super(paramaouu);
+    super(paramaouy);
     this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
     this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaouu = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaouu);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
   void a(String paramString, int paramInt) {}
   
-  void a(String paramString, int paramInt, aovr paramaovr)
+  void a(String paramString, int paramInt, aovv paramaovv)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    apuq.a().execute(new FileMultiMsgManager.BuddyUploadTaskExcuter.1(this, paramString, paramaovr));
+    if ("1".equals(this.f))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
+      return;
+    }
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
+      }
+      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aouy.a(this.jdField_a_of_type_Aouy).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aovd(this, paramString, paramaovv));
   }
 }
 

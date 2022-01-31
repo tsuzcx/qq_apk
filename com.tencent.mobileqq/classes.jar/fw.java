@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class fw
   implements Cloneable
 {
-  public ambh a;
+  public ambg a;
   public ImageView a;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   public RelativeLayout a;

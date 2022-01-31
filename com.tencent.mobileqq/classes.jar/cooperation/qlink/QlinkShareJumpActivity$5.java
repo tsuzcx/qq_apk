@@ -14,7 +14,7 @@ class QlinkShareJumpActivity$5
     //   0: aload_0
     //   1: getfield 16	cooperation/qlink/QlinkShareJumpActivity$5:this$0	Lcooperation/qlink/QlinkShareJumpActivity;
     //   4: ldc 32
-    //   6: invokestatic 37	ajyc:a	(I)Ljava/lang/String;
+    //   6: invokestatic 37	ajya:a	(I)Ljava/lang/String;
     //   9: invokestatic 42	cooperation/qlink/QlinkShareJumpActivity:a	(Lcooperation/qlink/QlinkShareJumpActivity;Ljava/lang/String;)Ljava/lang/String;
     //   12: pop
     //   13: aconst_null

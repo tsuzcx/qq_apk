@@ -1,45 +1,39 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aotl
-  extends apvd
+class aotl
+  implements aptw
 {
-  public aotl(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  aotl(aotk paramaotk, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    this.a.a.a().b();
+    this.jdField_a_of_type_Aotk.a.a.a().ac();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Aotk.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    ajum localajum;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localajum = (ajum)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Aotk.a).a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajum.a(localArrayList));
+    aptx.a(2131692665);
+    return;
+    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Aotk.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
-  }
+  public void b() {}
 }
 
 

@@ -1,57 +1,65 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
 
 public class akyo
 {
-  public long a;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public final int a;
+  long jdField_a_of_type_Long = 0L;
+  alxr jdField_a_of_type_Alxr = null;
+  Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
-  public HashMap<Integer, String> a;
-  private final TreeMap<Integer, akyp> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  public boolean a;
-  public long b;
+  boolean jdField_a_of_type_Boolean = true;
+  public int b;
+  long b;
   public String b;
-  public long c = 0L;
+  int jdField_c_of_type_Int = 0;
+  long jdField_c_of_type_Long = 0L;
+  public String c;
+  int d;
+  public String d;
+  public final String e;
   
-  public akyo()
+  public akyo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_d_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_d_of_type_Int = -1;
+    this.e = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public ArCloudConfigInfo a()
+  void a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_c_of_type_Int == 1) {
+        return;
+      }
+      if (this.jdField_c_of_type_Int == -1) {
+        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
+      }
+      a(0);
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_b_of_type_Long = 0L;
+      this.jdField_c_of_type_Long = 0L;
+      return;
+    }
   }
   
-  public String a(int paramInt)
+  void a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public TreeMap<Integer, akyp> a()
-  {
-    return this.jdField_a_of_type_JavaUtilTreeMap;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_c_of_type_Int = paramInt;
+      return;
+    }
   }
   
   public String toString()
   {
-    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
-    Object localObject = str;
-    if (QLog.isDevelopLevel())
-    {
-      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        akyp localakyp = (akyp)((Iterator)localObject).next();
-        str = str + "\n" + localakyp;
-      }
-      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
-    }
-    return localObject;
+    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
   }
 }
 

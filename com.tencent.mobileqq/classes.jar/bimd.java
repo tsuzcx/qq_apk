@@ -1,14 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public abstract interface bimd<T extends RecyclerView.ViewHolder>
+class bimd
+  implements Animation.AnimationListener
 {
-  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
+  bimd(bima parambima) {}
   
-  public abstract void b(@NonNull T paramT, int paramInt);
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public abstract void c(@NonNull T paramT, int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((bima.a(this.a) != null) && (!bima.a(this.a)))
+    {
+      bima.a(this.a).setAlpha(1.0F);
+      bima.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

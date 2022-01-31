@@ -1,47 +1,14 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract interface bchx
-  extends bcci
+  extends bccw
 {
-  public abstract long getDetect302Time();
+  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
   
-  public abstract boolean getIsReloadUrl();
+  public abstract Activity b();
   
-  public abstract long getOpenUrlAfterCheckOfflineTime();
-  
-  public abstract long getReadIndexFromOfflineTime();
-  
-  public abstract JSONObject getX5Performance();
-  
-  public abstract long getgetWebViewTime();
-  
-  public abstract long getinitBrowserTime();
-  
-  public abstract long getinitTBSTime();
-  
-  public abstract long getinitTime();
-  
-  public abstract boolean getisWebViewCache();
-  
-  public abstract long getmClickTime();
-  
-  public abstract long getmOnCreateMilliTimeStamp();
-  
-  public abstract boolean getmPerfFirstLoadTag();
-  
-  public abstract long getmStartLoadUrlMilliTimeStamp();
-  
-  public abstract long getmTimeBeforeLoadUrl();
-  
-  public abstract long getonCreateTime();
-  
-  public abstract long getpluginFinished();
-  
-  public abstract long getviewInflateTime();
-  
-  public abstract boolean isMainPageUseLocalFile();
-  
-  public abstract void setX5Performance(JSONObject paramJSONObject);
+  public abstract boolean e();
 }
 
 

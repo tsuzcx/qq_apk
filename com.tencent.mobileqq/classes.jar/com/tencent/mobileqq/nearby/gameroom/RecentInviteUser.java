@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class RecentInviteUser
-  extends aukm
+  extends auko
   implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @auma
+  @aumc
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)

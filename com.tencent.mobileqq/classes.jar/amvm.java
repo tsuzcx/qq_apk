@@ -1,53 +1,64 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class amvm
-  extends ampb<amvl>
+  extends ampa<amvn>
 {
-  public static amvl a()
-  {
-    return (amvl)ampm.a().a(292);
-  }
-  
   public int a()
   {
-    return 292;
+    return 92;
   }
   
   @NonNull
-  public amvl a(int paramInt)
+  public amvn a(int paramInt)
   {
-    return new amvl();
+    return new amvn();
   }
   
   @Nullable
-  public amvl a(ampi[] paramArrayOfampi)
+  public amvn a(amph[] paramArrayOfamph)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles = " + paramArrayOfampi);
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
     }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoySearchJumpurlConfProcessor", 2, "[onParsed] confFiles[0].content= " + paramArrayOfampi[0].a);
-      }
-      return amvl.a(paramArrayOfampi[0].a);
+      amvn localamvn = new amvn();
+      localamvn.a(paramArrayOfamph);
+      return localamvn;
     }
-    return null;
+    return new amvn();
   }
   
-  public Class<amvl> a()
+  public Class<amvn> a()
   {
-    return amvl.class;
+    return amvn.class;
   }
   
-  public void a(int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
   
-  public void a(amvl paramamvl) {}
+  public void a(amvn paramamvn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
+    }
+  }
   
   public int b()
   {
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return bbkb.M(localQQAppInterface.getApp(), str);
+    }
     return 0;
   }
   
@@ -58,7 +69,7 @@ public class amvm
   
   public boolean c()
   {
-    return true;
+    return false;
   }
 }
 

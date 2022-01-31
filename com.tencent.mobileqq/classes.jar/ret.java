@@ -1,16 +1,16 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
-class ret
-  extends oyg
+public class ret
+  extends oyd
 {
-  ret(rer paramrer, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public ret(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup, String paramString)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    paramoxx.a(ReadInJoyProteusFamilyListViewGroup.a(this.a), this.a.a);
   }
 }
 

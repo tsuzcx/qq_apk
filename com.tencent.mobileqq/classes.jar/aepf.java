@@ -1,19 +1,41 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class aepf
-  extends atzp
+  implements View.OnTouchListener
 {
-  aepf(aeoo paramaeoo) {}
+  aepf(aepe paramaepe) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.e(65536);
-      aeoo.a(this.a, Long.valueOf(l).longValue());
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bcjg.a();
+    if (i == 0) {
+      if ((paramView != null) && (paramView.d()))
+      {
+        this.a.l.setText(ajya.a(2131705100));
+        this.a.l.setPressed(true);
+        this.a.jdField_a_of_type_Atch.b();
+        paramView.a(true);
+      }
     }
+    do
+    {
+      return true;
+      this.a.t(false);
+      return true;
+      if ((i != 3) && (i != 1)) {
+        break;
+      }
+      this.a.l.setText(ajya.a(2131705096));
+      this.a.l.setPressed(false);
+      this.a.jdField_a_of_type_Atch.c();
+    } while (paramView == null);
+    paramView.a(false);
+    return true;
+    return false;
   }
 }
 

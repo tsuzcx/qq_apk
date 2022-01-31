@@ -1,6 +1,11 @@
-public abstract interface aley
+import com.tencent.mobileqq.highway.transaction.Transaction;
+
+class aley
 {
-  public abstract void a(alfw paramalfw);
+  alew jdField_a_of_type_Alew = null;
+  algs jdField_a_of_type_Algs;
+  Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
+  String jdField_a_of_type_JavaLangString = "";
 }
 
 

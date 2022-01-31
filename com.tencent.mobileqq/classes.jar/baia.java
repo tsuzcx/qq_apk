@@ -1,9 +1,6 @@
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-
-public class baia
+public abstract interface baia
 {
-  public RollangleImageView a;
-  public String a;
+  public abstract void a(int paramInt);
 }
 
 

@@ -3,15 +3,15 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import bkhc;
-import bkhd;
+import bkht;
+import bkhu;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<bkhd> a;
+  private List<bkhu> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,13 +28,13 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new bkhc(this));
+    setOnPageChangeListener(new bkht(this));
   }
   
-  public void a(bkhd parambkhd)
+  public void a(bkhu parambkhu)
   {
-    if (!this.a.contains(parambkhd)) {
-      this.a.add(parambkhd);
+    if (!this.a.contains(parambkhu)) {
+      this.a.add(parambkhu);
     }
   }
 }

@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aynf
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
-  aynf(ayna paramayna) {}
+  aynf(aync paramaync) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    if (paramBoolean)
+    {
+      Iterator localIterator = aync.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((aynn)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      }
+    }
   }
 }
 

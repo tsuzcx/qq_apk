@@ -1,22 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjkr
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public bjkr(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public bjkr(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c.setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 

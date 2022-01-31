@@ -1,25 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mes
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public mes(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mes(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, lga paramlga) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
-    {
-      long l = AudioHelper.b();
-      paramContext = ldc.a().a();
-      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-      this.a.b("BroadcastReceiver_qzone");
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Lga);
   }
 }
 

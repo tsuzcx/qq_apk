@@ -1,20 +1,28 @@
-import NS_KING_INTERFACE.stGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListRsp;
+import UserGrowth.stSimpleGetFeedListReq;
+import UserGrowth.stSimpleGetFeedListRsp;
+import java.util.ArrayList;
 
 public class smv
-  extends sls<stQQGetFeedCommentListRsp>
+  extends slp<stSimpleGetFeedListRsp>
 {
-  public smv()
+  public smv(String paramString1, byte paramByte1, byte paramByte2, ArrayList<String> paramArrayList, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    super("QQGetFeedCommentList");
-    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
-  }
-  
-  public smv(String paramString1, String paramString2, int paramInt)
-  {
-    super("QQGetFeedCommentList");
-    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
+    super("SimpleGetFeedList");
+    stSimpleGetFeedListReq localstSimpleGetFeedListReq = new stSimpleGetFeedListReq();
+    localstSimpleGetFeedListReq.attach_info = paramString1;
+    localstSimpleGetFeedListReq.isrefresh = paramByte1;
+    localstSimpleGetFeedListReq.isfirst = paramByte2;
+    localstSimpleGetFeedListReq.channel_info = "from_android_qq";
+    localstSimpleGetFeedListReq.context_feedids = paramArrayList;
+    localstSimpleGetFeedListReq.scene = paramInt;
+    localstSimpleGetFeedListReq.gdt_args = paramString2;
+    localstSimpleGetFeedListReq.rowkey = paramString3;
+    localstSimpleGetFeedListReq.session = paramString4;
+    localstSimpleGetFeedListReq.push_info = paramString5;
+    localstSimpleGetFeedListReq.linkStragetyArgs = snc.a();
+    localstSimpleGetFeedListReq.qqNum = snf.a();
+    this.a = localstSimpleGetFeedListReq;
+    snb.d("RecommendRequest", "stSimpleGetFeedListReq  = " + localstSimpleGetFeedListReq.toString());
   }
 }
 

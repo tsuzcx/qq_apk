@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class PreloadingFragment$3$1
@@ -10,7 +10,7 @@ class PreloadingFragment$3$1
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, "" + this.val$errMsg, 1).a();
   }
 }
 

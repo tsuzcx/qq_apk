@@ -1,25 +1,30 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class azgv
-  implements TextWatcher
+  extends ClickableSpan
 {
-  public azgv(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public azgv(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.G)) && (paramInt1 > 0) && (paramInt1 < this.a.G.length() + 1) && (paramInt2 > paramInt3))
+    TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, 2002, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.t);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-      this.a.d(false);
+      axqy.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_add_topic", i, 0, "", "", "", "");
       return;
     }
-    TroopBarPublishActivity.a(this.a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

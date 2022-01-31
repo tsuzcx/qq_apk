@@ -1,15 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
-public final class auiq
-  implements anyg
+public class auiq
+  implements DialogInterface.OnClickListener
 {
-  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aoak(7, 7, null));
-    return localArrayList;
-  }
+  public auiq(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

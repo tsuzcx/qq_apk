@@ -1,20 +1,27 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-final class aykj
-  extends Spannable.Factory
+public abstract class aykj
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public aykj(int paramInt, @NonNull String paramString)
   {
-    if ((!ayki.b) && ((paramCharSequence instanceof ayki))) {
-      try
-      {
-        ayki localayki = (ayki)((ayki)paramCharSequence).clone();
-        return localayki;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    }
-    return super.newSpannable(paramCharSequence);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  abstract float a(@NonNull Paint paramPaint);
+  
+  int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,8 +1,19 @@
-public abstract interface ugm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+class ugm
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void b(String paramString);
+  ugm(ugk paramugk, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public abstract void d();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
+    ugk.a(this.jdField_a_of_type_Ugk).a = ugk.a(this.jdField_a_of_type_Ugk).a();
+  }
 }
 
 

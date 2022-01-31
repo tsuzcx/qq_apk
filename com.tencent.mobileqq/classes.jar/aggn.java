@@ -1,458 +1,374 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
 
 public class aggn
-  extends QIPCModule
-  implements Handler.Callback
+  extends BaseAdapter
+  implements View.OnClickListener, baxz
 {
-  private static aggn jdField_a_of_type_Aggn;
   private long jdField_a_of_type_Long;
-  private aggo jdField_a_of_type_Aggo;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private aggo b;
+  private aggp jdField_a_of_type_Aggp = new aggp();
+  aggu jdField_a_of_type_Aggu;
+  protected ahnr a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected XListView a;
+  protected final ArrayList<RecentBaseData> a;
+  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   
-  private aggn()
+  public aggn(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, aggu paramaggu)
   {
-    super("MiniMsgIPCServer");
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(99);
+    this.jdField_a_of_type_Ahnr = new ahnr(paramQQAppInterface, this, false);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Aggu = paramaggu;
   }
   
-  public static aggn a()
+  protected View a()
   {
-    if (jdField_a_of_type_Aggn == null) {}
-    try
+    return View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559281, null);
+  }
+  
+  public RecentBaseData a(View paramView)
+  {
+    if ((paramView != null) && ((paramView.getTag(-1) instanceof Integer)))
     {
-      if (jdField_a_of_type_Aggn == null) {
-        jdField_a_of_type_Aggn = new aggn();
-      }
-      return jdField_a_of_type_Aggn;
-    }
-    finally {}
-  }
-  
-  public static void a(int paramInt)
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      ((aggl)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(147)).a(Integer.valueOf(paramInt));
-    }
-  }
-  
-  private void a(int paramInt, Bundle paramBundle)
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      if ((localObject == null) || (localaggo == null)) {
-        break;
-      }
-      if (paramBundle == null) {
-        paramBundle = new Bundle();
-      }
-      for (;;)
-      {
-        localObject = ((QQAppInterface)localObject).a();
-        if (localObject != null) {}
-        for (int i = ((QQMessageFacade)localObject).c();; i = 0)
-        {
-          paramBundle.putInt("param_cmd", 0);
-          paramBundle.putInt("param_proc_badge_count", i);
-          localObject = new EIPCResult();
-          ((EIPCResult)localObject).data = paramBundle;
-          callbackResult(paramInt, (EIPCResult)localObject);
-          paramBundle.putInt("param_proc_badge_count", i);
-          QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_sync_unreadcount", paramBundle, null);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
-          return;
-        }
+      paramView = getItem(((Integer)paramView.getTag(-1)).intValue());
+      if ((paramView instanceof RecentBaseData)) {
+        return (RecentBaseData)paramView;
       }
     }
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Aggo != null) {
-      QIPCServerHelper.getInstance().callClient(aggo.a(this.jdField_a_of_type_Aggo), aggo.b(this.jdField_a_of_type_Aggo), "actionMiniReportEvent", paramBundle, null);
-    }
-  }
-  
-  private void b(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Aggo != null)
-    {
-      String str1 = paramBundle.getString("param_proc_name");
-      String str2 = paramBundle.getString("param_proc_modulename");
-      paramBundle.getString("param_proc_businame");
-      if ((this.jdField_a_of_type_Aggo.a().equals(str1)) && (this.jdField_a_of_type_Aggo.b().equals(str2))) {
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-  }
-  
-  private void c(Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("param_proc_name");
-    String str2 = paramBundle.getString("param_proc_modulename");
-    String str3 = paramBundle.getString("param_proc_businame");
-    this.jdField_a_of_type_Aggo = new aggo(str1, str2);
-    this.b = new aggo(str1, "aio_client_module");
-    this.jdField_a_of_type_Aggo.a = str3;
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool = paramBundle.getBoolean("param_proc_first_start", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniMsgIPCServer", 2, str1 + "doOnProcForeGround isFirst = " + bool);
-    }
-    if (bool) {
-      a();
-    }
-  }
-  
-  private void d(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    String str = paramBundle.getString("param_proc_uin");
-    int j = paramBundle.getInt("param_proc_uin_type");
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramBundle = null)
-    {
-      aggo localaggo = this.b;
-      if ((paramBundle == null) || (localaggo == null)) {
-        break;
-      }
-      paramBundle = paramBundle.a();
-      if (paramBundle != null) {}
-      for (int i = paramBundle.a(j, str);; i = 0)
-      {
-        paramBundle = new Bundle();
-        paramBundle.putString("param_proc_uin", str);
-        paramBundle.putInt("param_proc_uin_type", j);
-        paramBundle.putInt("param_proc_single_con_badge_count", i);
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifySingleConUnreadState uin = " + str + "; unread = " + i);
-        }
-        QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_sync_single_con_unread_count", paramBundle, null);
-        return;
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_Aggo != null) {
-      QIPCServerHelper.getInstance().callClient(aggo.a(this.jdField_a_of_type_Aggo), aggo.b(this.jdField_a_of_type_Aggo), "actionMiniDirectShareFailCallback", null, null);
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_Aggo != null) {
-      QIPCServerHelper.getInstance().callClient(aggo.a(this.jdField_a_of_type_Aggo), aggo.b(this.jdField_a_of_type_Aggo), "actionMiniDirectShareSucCallback", null, null);
-    }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_Aggo != null) {
-      QIPCServerHelper.getInstance().callClient(aggo.a(this.jdField_a_of_type_Aggo), aggo.b(this.jdField_a_of_type_Aggo), "actionMiniShareSucCallback", null, null);
-    }
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_Aggo != null) {
-      QIPCServerHelper.getInstance().callClient(aggo.a(this.jdField_a_of_type_Aggo), aggo.b(this.jdField_a_of_type_Aggo), "actionMiniShareFailCallback", null, null);
-    }
-  }
-  
-  private void i()
-  {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      if ((localObject == null) || (localaggo == null)) {
-        break;
-      }
-      localObject = ((QQAppInterface)localObject).a();
-      if (localObject != null) {}
-      for (int i = ((QQMessageFacade)localObject).c();; i = 0)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("param_proc_badge_count", i);
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyUnreadState unread = " + i);
-        }
-        QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_sync_unreadcount", (Bundle)localObject, null);
-        return;
-      }
-    }
-  }
-  
-  private void j()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      if ((localObject != null) && (localaggo != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("mini_msg_IPCServer", 2, "doNotifyGoToConversation  ");
-        }
-        QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_mini_msgtab_notify_to_conversation", (Bundle)localObject, null);
-      }
-      return;
-    }
-  }
-  
-  private void k()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
-      {
-        if ((localObject != null) && (localaggo != null))
-        {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
-          }
-          QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_msg_tab_back_refresh", (Bundle)localObject, null);
-        }
-        return;
-      }
-    }
-  }
-  
-  private void l()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
-    {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
-      if (localQQMessageFacade != null) {}
-      for (int i = localQQMessageFacade.c();; i = 0)
-      {
-        if ((localObject != null) && (localaggo != null))
-        {
-          localObject = new Bundle();
-          ((Bundle)localObject).putInt("param_proc_badge_count", i);
-          if (QLog.isColorLevel()) {
-            QLog.d("mini_msg_IPCServer", 2, "notifyGetUnread unread = " + i);
-          }
-          QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_get_unread", (Bundle)localObject, null);
-        }
-        return;
-      }
-    }
-  }
-  
-  public aggo a()
-  {
-    return this.jdField_a_of_type_Aggo;
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.jdField_a_of_type_Ahnr != null) {
+      this.jdField_a_of_type_Ahnr.a();
+    }
   }
   
-  void a(String paramString, int paramInt)
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Drawable paramDrawable)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param_proc_uin", paramString);
-    localBundle.putInt("param_proc_uin_type", paramInt);
-    localMessage.setData(localBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void c()
-  {
-    j();
-  }
-  
-  public void d()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    if ((paramView == null) || (paramRecentBaseData == null)) {}
+    Drawable localDrawable;
+    do
     {
-      aggo localaggo = this.jdField_a_of_type_Aggo;
-      if ((localObject != null) && (localaggo != null))
-      {
-        localObject = new Bundle();
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniMsgIPCServer", 2, "notifyFromMiniAIOToAIO ");
-        }
-        QIPCServerHelper.getInstance().callClient(aggo.a(localaggo), aggo.b(localaggo), "action_mini_aio_to_aio", (Bundle)localObject, null);
-      }
       return;
+      localDrawable = paramDrawable;
+      if (paramDrawable == null)
+      {
+        localDrawable = paramDrawable;
+        if (this.jdField_a_of_type_Ahnr != null) {
+          localDrawable = this.jdField_a_of_type_Ahnr.a(paramRecentBaseData.a(), paramRecentBaseData.a());
+        }
+      }
+    } while (this.jdField_a_of_type_Aggp == null);
+    this.jdField_a_of_type_Aggp.a(paramView, paramRecentBaseData, this.jdField_a_of_type_AndroidContentContext, localDrawable);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.jdField_a_of_type_Ahnr != null) {
+      this.jdField_a_of_type_Ahnr.a(paramQQAppInterface);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      a(null);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniMsgTabAdapter", 2, "onAccountChanged: invoked. Message: app: " + paramQQAppInterface);
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(List<RecentBaseData> paramList)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    int i;
+    if (paramList != null) {
+      i = -1;
     }
     for (;;)
     {
-      return true;
-      c((Bundle)paramMessage.obj);
-      continue;
-      b((Bundle)paramMessage.obj);
-      continue;
-      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+      try
       {
-        i();
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-        continue;
-        d(paramMessage.getData());
-        continue;
-        if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
         {
-          a(paramMessage.arg1, (Bundle)paramMessage.obj);
+          RecentBaseData localRecentBaseData = (RecentBaseData)paramList.next();
+          if (localRecentBaseData != null)
+          {
+            i += 1;
+            if ((localRecentBaseData instanceof RecentItemChatMsgData)) {
+              localRecentBaseData.mPosition = i;
+            }
+            this.jdField_a_of_type_JavaUtilArrayList.add(localRecentBaseData);
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.i("MiniMsgTabAdapter", 2, "setDataList, [item is null]");
+          }
         }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
-          continue;
-          k();
-          continue;
-          g();
-          continue;
-          h();
-          continue;
-          l();
-          continue;
-          j();
-          continue;
-          a((Bundle)paramMessage.obj);
-          continue;
-          f();
-          continue;
-          e();
+      }
+      catch (Exception paramList)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniMsgTabAdapter", 2, paramList, new Object[0]);
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      }
+      for (;;)
+      {
+        notifyDataSetChanged();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("MiniMsgTabAdapter", 2, "setDataList, size = 0");
         }
       }
     }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public int getCount()
   {
-    if ((QLog.isColorLevel()) && (paramBundle != null)) {
-      QLog.d("MiniMsgIPCServer", 2, new Object[] { "MiniMsgIPCServer : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0) {
+      localObject1 = localObject2;
     }
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramBundle;
-    if (!TextUtils.isEmpty(paramString))
+    try
     {
-      if (!paramString.equalsIgnoreCase("cmd_proc_foregound")) {
-        break label125;
+      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       }
-      localMessage.what = 1;
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.i("MiniMsgTabAdapter", 2, localException.toString());
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    RecentBaseData localRecentBaseData = (RecentBaseData)getItem(paramInt);
+    if ((localRecentBaseData != null) && (localRecentBaseData.a().equals(Integer.valueOf(0)))) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    try
+    {
+      Object localObject = getItem(paramInt);
+      if ((localObject instanceof RecentBaseData))
+      {
+        localObject = (RecentBaseData)localObject;
+        if (((RecentBaseData)localObject).a().equals("0"))
+        {
+          if (paramView == null)
+          {
+            paramView = a();
+            paramView.setTag(-1, Integer.valueOf(paramInt));
+            paramView.setOnClickListener(this);
+            return paramView;
+          }
+        }
+        else
+        {
+          paramView = this.jdField_a_of_type_Aggp.a(paramInt, localObject, this.jdField_a_of_type_Ahnr, paramView, paramViewGroup, this.jdField_a_of_type_AndroidContentContext, this, null, null);
+          return paramView;
+        }
+      }
+    }
+    catch (Throwable paramView)
+    {
+      ahon.a(this.jdField_a_of_type_AndroidContentContext, false, paramView);
+      throw new RuntimeException(paramView);
+    }
+    return paramView;
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = paramView.getTag(-1);
+    if (!(paramView instanceof Integer)) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MiniMsgTabAdapter", 4, "RecentAdpater onClick tag is not int");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramView = getItem(((Integer)paramView).intValue());
+      } while (!(paramView instanceof RecentBaseData));
+      paramView = (RecentBaseData)paramView;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MiniMsgTabAdapter", 2, "mTitleName" + paramView.mTitleName + ", msgSummary " + paramView.mLastMsg);
+      }
+    } while (this.jdField_a_of_type_Aggu == null);
+    this.jdField_a_of_type_Aggu.a(paramView);
+    paramView.b();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetXListView == null) || (TextUtils.isEmpty(paramString))) {}
+    long l;
+    boolean bool1;
+    for (;;)
+    {
+      return;
+      if ((paramBitmap != null) || (paramInt1 <= 0))
+      {
+        if (paramBitmap != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaUtilHashtable.put(paramInt2 + ":" + paramString, paramBitmap);
+          l = System.currentTimeMillis();
+          if ((this.jdField_a_of_type_Long > 0L) && (l - this.jdField_a_of_type_Long > 300L))
+          {
+            bool1 = true;
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder().append("RecentAdapter.onDecodeTaskCompleted type=").append(paramInt2).append(", uin=").append(paramString).append(", remainingTasks=").append(paramInt1).append(", isdecodeFaceTimeout=").append(bool1).append(", avatar == null ? | ");
+              if (paramBitmap != null) {
+                break label265;
+              }
+              bool2 = true;
+              QLog.d("MiniMsgTabAdapter", 2, bool2);
+            }
+            if ((paramInt1 > 0) && (!bool1)) {
+              continue;
+            }
+            synchronized (this.jdField_a_of_type_JavaUtilHashtable)
+            {
+              if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+                return;
+              }
+            }
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            System.gc();
+            localOutOfMemoryError.printStackTrace();
+            QLog.i("MiniMsgTabAdapter", 1, "onDecodeTaskCompleted error:" + localOutOfMemoryError.getMessage());
+            continue;
+            bool1 = false;
+            continue;
+            label265:
+            boolean bool2 = false;
+          }
+        }
+      }
+    }
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      bool1 = false;
+      paramInt2 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+      paramInt1 = 0;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return null;
-      label125:
-      if (paramString.equalsIgnoreCase("cmd_proc_backgound"))
+      if (paramInt1 < paramInt2)
       {
-        localMessage.what = 2;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_refresh_mini_badge"))
-      {
-        localMessage.what = 4;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_msg_tab_back_refresh"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_suc"))
-      {
-        localMessage.what = 6;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_share_fail"))
-      {
-        localMessage.what = 7;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_get_unread"))
-      {
-        localMessage.what = 8;
-        localMessage.arg1 = paramInt;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_clear_business"))
-      {
-        if (paramBundle != null) {
-          a(paramBundle.getInt("PARAM_CMD_BUSIID"));
+        View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
+        RecentBaseData localRecentBaseData = a(localView);
+        if (localRecentBaseData == null)
+        {
+          break label667;
+          this.jdField_a_of_type_Long = l;
+          break;
+        }
+        int i = localRecentBaseData.a();
+        paramString = localRecentBaseData.a();
+        i = ((Integer)ahnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramString).first).intValue();
+        if (i == -2147483648) {
+          break label667;
+        }
+        paramString = i + ":" + paramString;
+        paramString = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+        if (paramString == null) {
+          break label667;
+        }
+        if (i == 103)
+        {
+          l = System.currentTimeMillis();
+          paramBitmap = BaseApplication.getContext().getResources().getDrawable(2130840062);
+          if ((paramBitmap instanceof SkinnableBitmapDrawable)) {
+            ((SkinnableBitmapDrawable)paramBitmap).setGravity(81);
+          }
+          if ((paramBitmap instanceof BitmapDrawable)) {
+            ((BitmapDrawable)paramBitmap).setGravity(81);
+          }
+          paramBitmap.setBounds(0, 0, paramBitmap.getIntrinsicWidth(), paramBitmap.getIntrinsicHeight());
+          paramBitmap = new LayerDrawable(new Drawable[] { new BitmapDrawable(BaseApplication.getContext().getResources(), paramString), paramBitmap });
+          paramString = paramBitmap;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("MiniMsgTabAdapter", 4, "onDecodeTaskCompleted, subaccount cost = " + (System.currentTimeMillis() - l));
+          }
+        }
+        for (paramString = paramBitmap;; paramString = new BitmapDrawable(BaseApplication.getContext().getResources(), paramString))
+        {
+          a(localView, localRecentBaseData, paramString);
+          bool1 = true;
+          break;
         }
       }
-      else if (paramString.equalsIgnoreCase("cmd_mini_report_event"))
-      {
-        localMessage.what = 10;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MiniMsgTabAdapter", 4, "decodecomplete|faceCache size = " + this.jdField_a_of_type_JavaUtilHashtable.size() + ", isNeedUpdateAvatar=" + bool1);
       }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_suc"))
-      {
-        localMessage.what = 12;
-      }
-      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_fail"))
-      {
-        localMessage.what = 13;
-      }
+      this.jdField_a_of_type_JavaUtilHashtable.clear();
+      return;
+      label667:
+      paramInt1 += 1;
     }
   }
 }

@@ -1,25 +1,32 @@
-import android.database.ContentObserver;
-import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class amdr
-  extends ContentObserver
+  extends ajxj
 {
-  public amdr(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public amdr(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onChange(boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
-    }
-    if (BusinessCardEditActivity.a(this.a))
+    if ((paramBoolean) && (paramString != null))
     {
-      this.a.a(2131698634, 2);
-      BusinessCardEditActivity.a(this.a, false);
+      String str = bbcz.c(this.a.app, paramString, false);
+      int i = 0;
+      while (i < this.a.c.getChildCount())
+      {
+        Object localObject = this.a.c.getChildAt(i);
+        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof amea)) && (paramString.equals(((amea)((View)localObject).getTag()).a)))
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131370816);
+          if (localObject != null) {
+            ((TextView)localObject).setText(str);
+          }
+        }
+        i += 1;
+      }
     }
   }
 }

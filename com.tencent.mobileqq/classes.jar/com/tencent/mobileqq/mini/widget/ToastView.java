@@ -95,13 +95,13 @@ public class ToastView
   public static int getIconRes(String paramString)
   {
     if ("success".equals(paramString)) {
-      return 2130846891;
+      return 2130846897;
     }
     if ("warn".equals(paramString)) {
-      return 2130846890;
+      return 2130846896;
     }
     if ("loading".equals(paramString)) {
-      return 2130840648;
+      return 2130840645;
     }
     return 2130839019;
   }

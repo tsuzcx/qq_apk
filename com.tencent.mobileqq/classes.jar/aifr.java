@@ -1,24 +1,77 @@
 import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import java.util.Map;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class aifr
-  extends ajxl
+  extends akil
 {
   public aifr(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramBoolean1) {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.c();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.c();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.c();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (TroopDiscussionTroop.a(this.a) != null) {
+      TroopDiscussionTroop.a(this.a).a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
       this.a.c();
     }
   }
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a.c();
+    if (paramBoolean) {
+      this.a.c();
+    }
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
       this.a.c();

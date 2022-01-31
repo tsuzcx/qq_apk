@@ -1,52 +1,128 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.Card;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
+import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
-class ajso
-  extends ajtq
+public class ajso
+  extends ajxz
 {
-  ajso(ajsn paramajsn) {}
+  private String a;
   
-  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload ");
-    }
-    if ((paramObject instanceof Card))
+    this.c += 1L;
+    this.d += 1L;
+    if ((this.d == 1L) && (SetSplash.a()) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null))
     {
-      paramObject = (Card)paramObject;
       if (QLog.isColorLevel()) {
-        QLog.d("BabyQIPCModule", 2, "babyqWeb onCardDownload set card info uin = " + paramObject.uin);
+        QLog.d("setsplash", 2, "needshowsplashtoday , kill myself");
       }
-      if (ajsf.aC.equals(paramObject.uin))
+      axqy.a(null, "CliOper", "", "", "0X800483B", "0X800483B", 0, 0, "", "", "", "");
+      System.exit(-1);
+    }
+    float f2 = MemoryManager.a().a();
+    float f1;
+    long l;
+    if (akag.a().d > 0.0F)
+    {
+      f1 = akag.a().d;
+      if (akag.a().b <= 0L) {
+        break label416;
+      }
+      l = akag.a().b;
+      label131:
+      if ((akag.a().c) && (f2 >= f1) && (this.c >= l)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+      }
+      int i = ajxx.a().a(MemoryManager.a(Process.myPid()));
+      int j = ajxx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b);
+      l = ajxx.a().b[(i + j)] / 12000;
+      if (this.c < l) {
+        break label424;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(5, this.jdField_a_of_type_JavaLangString);
+      label250:
+      if ((this.d != 50L) && (this.d != 51L)) {
+        break label510;
+      }
+      GuardManager.b(true);
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[0]);
+      Object localObject = zcr.a(BaseApplicationImpl.sApplication, "dex");
+      if ((localObject != null) && (((zcq)localObject).a(BaseApplicationImpl.sApplication, false)))
       {
-        ajsn.a(this.a, paramObject);
-        ajsn.a(this.a).jdField_a_of_type_ComTencentMobileqqDataCard = ajsn.a(this.a);
-        ajsn.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[0] = ajsn.a(this.a).strNick;
-        ajsn.a(this.a).jdField_a_of_type_ArrayOfJavaLangString[4] = ajsn.a(this.a).strReMark;
+        localObject = ((zcq)localObject).b();
+        if ((PatchSharedPreUtil.getPatchVerifyStatus(BaseApplicationImpl.sApplication, (String)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) && ((zch.jdField_a_of_type_Int == 0) || (!zch.jdField_a_of_type_JavaLangString.equals(localObject))))
+        {
+          QLog.d("PatchLogTag", 1, "GuardManager exit to install patch, target patchName=" + (String)localObject + ", installed patchName=" + zch.jdField_a_of_type_JavaLangString + ", installStatus=" + zch.jdField_a_of_type_Int);
+          System.exit(-1);
+        }
       }
     }
-    if (ajsn.a(this.a).get("getZanVoteCount") != null)
+    label416:
+    label424:
+    label510:
+    do
     {
-      paramObject = (Bundle)ajsn.a(this.a).get("getZanVoteCount");
-      int i = paramObject.getInt("key_process_callback_id");
-      paramObject = paramObject.getString("key_js_callback_id");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_method_action", "getZanVoteCount");
-      localBundle.putLong("key_get_zan_vote_count", ajsn.a(this.a).lVoteCount);
-      localBundle.putString("web_js_call_back_id", paramObject);
-      this.a.callbackResult(i, EIPCResult.createSuccessResult(localBundle));
-      ajsn.a(this.a).remove("getZanVoteCount");
+      return;
+      f1 = 0.95F;
+      break;
+      l = 50L;
+      break label131;
+      if (this.d == 1L)
+      {
+        MemoryManager.a().a(1L);
+        MemoryManager.a().a("BG_GUARD");
+        break label250;
+      }
+      if ((this.d != 3L) && (this.d != 4L)) {
+        break label250;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, new String[] { "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", "com.tencent.mobileqq:tool", this.jdField_a_of_type_JavaLangString });
+      break label250;
+      if ((this.d == GuardManager.e) || (this.d == GuardManager.e + 1))
+      {
+        if (!"com.tencent.mobileqq:qzone".equals(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:qzone");
+        }
+        GuardManager.b(false);
+      }
+    } while (((this.d != GuardManager.d) && (this.d != GuardManager.d + 1)) || ("com.tencent.mobileqq:tool".equals(this.jdField_a_of_type_JavaLangString)));
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(false, "com.tencent.mobileqq:tool");
+  }
+  
+  protected void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      altt.a();
     }
   }
   
-  public void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  protected void b()
   {
-    ajsn.a(this.a).babyQSwitch = paramBoolean2;
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQIPCModule", 2, "babyqWeb onGetBabyQSwitch babyQSwitch = " + paramBoolean2);
+    if (this.c > 2L) {
+      this.c -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ("fake_p_msg".equals(paramString)) {
+      this.c = (ajxx.a().a(this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b, MemoryManager.a(Process.myPid())) / 12000L - 2L);
+    }
+    CoreService.startCoreService(ajxx.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
+    amad.a();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(1, 0L, 0L);
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      altt.b();
     }
   }
 }

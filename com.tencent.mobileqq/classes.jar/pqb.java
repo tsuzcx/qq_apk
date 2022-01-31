@@ -1,14 +1,12 @@
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.List;
+import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.vnode.PTSNodeVirtual.IBuilder;
 
-class pqb
-  extends ppe
+public class pqb
+  implements PTSNodeVirtual.IBuilder<ppz>
 {
-  pqb(pqa parampqa) {}
-  
-  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
+  public ppz a(PTSAppInstance paramPTSAppInstance)
   {
-    pqa.a(this.a, paramInt, paramList, paramBoolean1, paramBoolean2, paramToServiceMsg);
+    return new ppz(paramPTSAppInstance, null);
   }
 }
 

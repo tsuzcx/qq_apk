@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class afvz
-  implements afyk
+  implements Cloneable
 {
-  public afvz(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
-  
-  public void a()
-  {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_Agbs.a();
-    }
-    this.a.c = true;
-    this.a.b(true);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_Agbs.b();
-    this.a.c = false;
-    this.a.b(false);
-    this.a.jdField_a_of_type_Agbf.a();
-  }
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

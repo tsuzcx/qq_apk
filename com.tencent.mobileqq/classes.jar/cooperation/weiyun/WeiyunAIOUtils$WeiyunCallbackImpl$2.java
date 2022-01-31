@@ -1,16 +1,16 @@
 package cooperation.weiyun;
 
-import bcpw;
-import bicx;
+import bcql;
+import bido;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$2
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bicx parambicx, String paramString) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$2(bido parambido, String paramString) {}
   
   public void run()
   {
-    bcpw.a(bicx.a(this.this$0), 1, this.a, 1).b(bicx.a(this.this$0));
+    bcql.a(bido.a(this.this$0), 1, this.a, 1).b(bido.a(this.this$0));
   }
 }
 

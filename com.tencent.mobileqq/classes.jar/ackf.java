@@ -6,14 +6,13 @@ import com.tencent.mobileqq.activity.TroopMemberListActivity;
 public class ackf
   implements View.OnClickListener
 {
-  public ackf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ackf(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.d == 11) {
-      axqw.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.b.cancel();
   }
 }
 

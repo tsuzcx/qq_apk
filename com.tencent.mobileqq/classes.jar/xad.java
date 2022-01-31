@@ -1,33 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
-class xad
-  implements URLDrawableDownListener
+public class xad
+  implements TextUtils.EllipsizeCallback
 {
-  xad(wzw paramwzw) {}
+  public xad(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    this.a.a(false, "onLoadCancelled");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      return;
+    }
+    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
+    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
   }
 }
 

@@ -1,19 +1,66 @@
+import android.content.Intent;
 import android.net.Uri;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicFragment;
+import cooperation.qqreader.ui.ReaderCommentPageFragment;
+import cooperation.qqreader.ui.ReaderContentPageFragment;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qzone.QzoneTranslucentBrowserFragment;
 
-class bcdi
-  extends bcdl
+public class bcdi
 {
-  bcdi(bcdg parambcdg)
+  public static WebViewFragment a(bccs parambccs, WebViewTabBarData paramWebViewTabBarData, Intent paramIntent)
   {
-    super(parambcdg);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
+    paramIntent.putExtra("url", paramWebViewTabBarData.url);
+    int i = paramIntent.getIntExtra("fragmentStyle", 0);
+    if (i == 2) {
+      return QzoneTranslucentBrowserFragment.a(paramIntent);
+    }
+    if (i == 1) {
+      return QQComicFragment.a(paramIntent);
+    }
+    if (i == 3)
+    {
+      if (paramWebViewTabBarData.url.contains("signatureEdit=1")) {
+        return SignatureEditFragment.a(paramIntent);
+      }
+      paramIntent.removeExtra("isTransparentTitle");
+      if (parambccs != null) {
+        return parambccs.a(paramIntent);
+      }
+      return WebViewFragment.b(paramIntent);
+    }
+    if (i == 4)
+    {
+      i = paramIntent.getIntExtra("item_type", 1);
+      if (i == 1)
+      {
+        paramIntent.putExtra("key_tab_id", Integer.valueOf(paramWebViewTabBarData.tag));
+        bgwf.d("WebViewFragmentBuilder", "tab_id =" + paramWebViewTabBarData.tag);
+        return ReaderHomeTabFragment.a(paramIntent);
+      }
+      if (i == 4) {
+        return ReaderCommentPageFragment.a(paramIntent);
+      }
+      return ReaderContentPageFragment.a(paramIntent);
+    }
+    paramWebViewTabBarData = Uri.parse(paramWebViewTabBarData.url);
+    if ((paramWebViewTabBarData.isHierarchical()) && ("4".equals(paramWebViewTabBarData.getQueryParameter("_webviewtype"))))
+    {
+      paramIntent.putExtra("fragmentStyle", 1);
+      paramIntent.putExtra("tabBarStyle", 1);
+      paramIntent.putExtra("titleBarStyle", 1);
+      paramIntent.putExtra("hide_operation_bar", true);
+      paramIntent.putExtra("hide_more_button", true);
+      paramIntent.putExtra("isScreenOrientationPortrait", true);
+      return QQComicFragment.a(paramIntent);
+    }
+    if (parambccs != null) {
+      return parambccs.a(paramIntent);
+    }
+    return WebViewFragment.b(paramIntent);
   }
 }
 

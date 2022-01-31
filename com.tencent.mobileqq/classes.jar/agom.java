@@ -1,28 +1,28 @@
-import android.view.SurfaceView;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class agom
-  implements bbvc
+  implements View.OnClickListener
 {
   public agom(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (!this.a.jdField_b_of_type_AndroidWidgetCheckBox.isChecked())
     {
-      this.a.a.setVisibility(0);
-      this.a.e();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      if (bbbx.a(this.a.jdField_b_of_type_JavaUtilArrayList, PhotoPreviewActivity.a, PhotoListActivity.a, this.a.E, this.a.g) > 0)
+      {
+        bcql.a(this.a, this.a.getResources().getString(2131695113), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+        return;
       }
+      this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
       return;
-      this.a.a.setVisibility(8);
-      this.a.f();
     }
+    this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
   }
 }
 

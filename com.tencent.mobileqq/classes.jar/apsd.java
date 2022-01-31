@@ -1,18 +1,24 @@
-import android.app.Activity;
 import java.util.List;
 
 class apsd
-  implements aptu
+  implements bcwm
 {
-  apsd(apry paramapry, List paramList) {}
+  apsd(apsc paramapsc, List paramList, apsb paramapsb) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    aptv.d(apry.a(this.jdField_a_of_type_Apry).getString(2131692829));
-    bakj.a(apry.a(this.jdField_a_of_type_Apry), apry.a(this.jdField_a_of_type_Apry), this.jdField_a_of_type_JavaUtilList);
+    if (paramInt == 2)
+    {
+      apsc.a(this.jdField_a_of_type_Apsc, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Apsb != null) {
+        this.jdField_a_of_type_Apsb.a(1, 0);
+      }
+    }
+    while (this.jdField_a_of_type_Apsb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Apsb.a(1, 1);
   }
-  
-  public void b() {}
 }
 
 

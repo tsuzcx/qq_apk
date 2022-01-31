@@ -7,71 +7,64 @@ import com.tribe.async.reactive.SimpleObserver;
 import java.util.Map;
 
 class bacj
-  extends SimpleObserver<baax>
+  extends SimpleObserver<babl>
 {
-  bacj(baci parambaci, baax parambaax) {}
+  bacj(baci parambaci, babl parambabl) {}
   
-  public void a(baax parambaax)
+  public void a(babl parambabl)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(parambaax.c), ", old status=", Integer.valueOf(parambaax.g), ", result=", parambaax });
+      QLog.d("ImageItem", 2, new Object[] { "ImageItem onNext. info position=", Integer.valueOf(parambabl.c), ", old status=", Integer.valueOf(parambabl.g), ", result=", parambabl });
     }
-    parambaax.g = 3;
-    parambaax.e = 100;
-    this.jdField_a_of_type_Baci.jdField_a_of_type_JavaUtilMap.remove(parambaax);
+    parambabl.g = 3;
+    parambabl.e = 100;
+    this.jdField_a_of_type_Baci.jdField_a_of_type_JavaUtilMap.remove(parambabl);
     if (this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      Object localObject = this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(parambaax.c);
-      if ((localObject instanceof bacl))
+      Object localObject = this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Babl.c);
+      if ((localObject instanceof bacm))
       {
-        localObject = (bacl)localObject;
+        localObject = (bacm)localObject;
         if (QLog.isColorLevel()) {
-          QLog.d("VideoItem", 2, new Object[] { "video onNext. info hash=", Integer.valueOf(parambaax.hashCode()), ", result hash=", Integer.valueOf(parambaax.hashCode()), ", info position=", Integer.valueOf(parambaax.c), ", result position=", Integer.valueOf(parambaax.c), ", vh position=", Integer.valueOf(((bacl)localObject).jdField_a_of_type_Baas.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
+          QLog.d("ImageItem", 2, new Object[] { "ImageItem onNext. info hash=", Integer.valueOf(parambabl.hashCode()), ", result hash=", Integer.valueOf(parambabl.hashCode()), ", info position=", Integer.valueOf(parambabl.c), ", result position=", Integer.valueOf(parambabl.c), ", vh position=", Integer.valueOf(((bacm)localObject).jdField_a_of_type_Babg.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-        if (parambaax.d.equals(((bacl)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
+        if (parambabl.d.equals(((bacm)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
         {
-          ((bacl)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-          ((bacl)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-          ((bacl)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambaax.e, parambaax.d);
+          ((bacm)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+          ((bacm)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+          ((bacm)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(parambabl.e, parambabl.d);
         }
-        this.jdField_a_of_type_Baci.jdField_a_of_type_Babp.a((RecyclerView.ViewHolder)localObject, true);
+        this.jdField_a_of_type_Baci.jdField_a_of_type_Bacd.a((RecyclerView.ViewHolder)localObject, true);
       }
     }
-    bamh.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - parambaax.a), "");
+    bamv.a("hw_entry_upload", "upload_image", "1", "", String.valueOf(System.currentTimeMillis() - parambabl.a), "");
     this.jdField_a_of_type_Baci.a(0, false);
   }
   
   public void onError(@NonNull Error paramError)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_Baax.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_Baax.g) });
+      QLog.d("ImageItem", 2, new Object[] { "ImageItem onError: ", paramError.getMessage(), ", info position =", Integer.valueOf(this.jdField_a_of_type_Babl.c), ", info hash=", Integer.valueOf(this.jdField_a_of_type_Babl.hashCode()), ", info old status=", Integer.valueOf(this.jdField_a_of_type_Babl.g) });
     }
-    this.jdField_a_of_type_Baax.g = 2;
-    this.jdField_a_of_type_Baci.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Baax);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
+    this.jdField_a_of_type_Babl.g = 2;
+    this.jdField_a_of_type_Baci.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Babl);
+    QLog.d("ImageItem", 1, paramError, new Object[0]);
     paramError = paramError.getMessage();
     if (this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
     {
-      Object localObject = this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Baax.c);
-      if ((localObject instanceof bacl))
+      Object localObject = this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Babl.c);
+      if ((localObject instanceof bacm))
       {
-        localObject = (bacl)localObject;
-        if (this.jdField_a_of_type_Baax.d.equals(((bacl)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
-        {
-          ((baci)((baao)this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((baby)localObject, this.jdField_a_of_type_Baax, 0);
-          if ("200".equals(paramError))
-          {
-            QLog.d("VideoItem", 1, "VideoItem onError. upload size exceed.");
-            bcpw.a(this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), ajyc.a(2131716287), 0).a();
-            this.jdField_a_of_type_Baci.jdField_a_of_type_Babp.a((RecyclerView.ViewHolder)localObject);
-          }
+        localObject = (bacm)localObject;
+        if (this.jdField_a_of_type_Babl.d.equals(((bacm)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag())) {
+          ((baci)((babc)this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(1)).a((bacm)localObject, this.jdField_a_of_type_Babl, 0);
         }
       }
     }
     if (!paramError.startsWith("c_")) {
-      bamh.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Baax.a), "");
+      bamv.a("hw_entry_upload", "upload_image", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Babl.a), "");
     }
-    if (this.jdField_a_of_type_Baax.d.equals(this.jdField_a_of_type_Baci.jdField_a_of_type_JavaLangString)) {
+    if (this.jdField_a_of_type_Babl.d.equals(this.jdField_a_of_type_Baci.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_Baci.a(0, false);
     }
   }

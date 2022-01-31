@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.qq.im.QIMCameraCaptureUnit.13;
 
-class bigt
-  implements View.OnClickListener
+public class bigt
+  implements DialogInterface.OnCancelListener
 {
-  bigt(bigs parambigs) {}
+  public bigt(QIMCameraCaptureUnit.13 param13) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.performClick();
-    axqw.b(null, "P_CliOper", "Vip_pay_mywallet", "", "211", "phiz.video.back", 0, 0, "", "", "", "");
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

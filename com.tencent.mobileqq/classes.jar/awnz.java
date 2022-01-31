@@ -1,11 +1,40 @@
+import android.view.View;
 import java.util.List;
 
 public class awnz
-  extends awnd
+  implements awoh
 {
-  public awnz(String paramString1, long paramLong1, String paramString2, List<awog> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<awoi> jdField_a_of_type_JavaUtilList;
+  
+  public awnz(List<awoi> paramList, String paramString, int paramInt)
   {
-    super(paramString1, paramLong1, paramString2, paramList, paramLong2, paramString3, paramString4, paramList1, paramBoolean1, paramBoolean2, paramBoolean3, paramString5, paramString6);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public String a()
+  {
+    return ajya.a(2131705395);
+  }
+  
+  public List<awoi> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

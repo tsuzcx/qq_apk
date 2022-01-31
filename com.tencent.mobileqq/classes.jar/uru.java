@@ -1,57 +1,61 @@
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
 
 public class uru
-  extends uyl
+  extends wco
 {
-  public uru(urr paramurr) {}
+  public static final String KEY = "DetailEmptySegment";
   
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public uru(Context paramContext)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(urr.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(urr.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        sxp.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (urr.a(this.a) == null);
-      urr.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (urr.a(this.a) == null);
-    urr.a(this.a).L_();
+    super(paramContext);
   }
   
-  public void b(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public void R_()
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(urr.a(this.a)).size())) {}
-    do
+    if (((StoryDetailListView)a()).a())
     {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(urr.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (urr.a(this.a) == null);
-      urr.a(this.a).b(paramObject, paramInt);
+      this.jdField_a_of_type_Boolean = false;
       return;
-    } while (urr.a(this.a) == null);
-    urr.a(this.a).L_();
+    }
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
+    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
+    {
+      int i = vzl.e(this.jdField_a_of_type_AndroidContentContext);
+      int j = vzl.a(this.jdField_a_of_type_AndroidContentContext);
+      int k = vzl.d(this.jdField_a_of_type_AndroidContentContext);
+      paramvap.a().getLayoutParams().width = j;
+      paramvap.a().getLayoutParams().height = (k - paramInt - i);
+      ved.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
+      return paramvap.a();
+    }
+  }
+  
+  public String a()
+  {
+    return "DetailEmptySegment";
+  }
+  
+  public vap a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561215, paramViewGroup, false));
   }
 }
 

@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader.3;
+import java.util.Comparator;
 
-public class spp
-  implements mzc
+final class spp
+  implements Comparator<spy>
 {
-  public spp(StoryAlbumResourceDownloader.3 param3) {}
-  
-  public void loaded(int paramInt, String paramString)
+  public int a(spy paramspy1, spy paramspy2)
   {
-    spm.a(this.a.this$0);
-    spm.a(this.a.this$0, false);
-    spm.a(this.a.this$0, false);
-    veg.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "unzip success , code = %d", Integer.valueOf(paramInt));
+    if (paramspy1.a() > paramspy2.a()) {}
+    do
+    {
+      return 1;
+      if (paramspy1.a() < paramspy2.a()) {
+        return -1;
+      }
+      if (paramspy1.d() == paramspy2.d()) {
+        return 0;
+      }
+    } while (paramspy1.d() < paramspy2.d());
+    return -1;
   }
 }
 

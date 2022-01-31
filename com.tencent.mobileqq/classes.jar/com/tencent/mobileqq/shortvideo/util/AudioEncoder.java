@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import axik;
-import axkf;
+import axim;
+import axkh;
 import java.io.File;
 
 public class AudioEncoder
 {
-  public static int a(axkf paramaxkf)
+  public static int a(axkh paramaxkh)
   {
     try
     {
-      int i = encode(paramaxkf.jdField_a_of_type_JavaLangString, paramaxkf.jdField_b_of_type_JavaLangString, paramaxkf.jdField_a_of_type_Int, paramaxkf.jdField_b_of_type_Int, paramaxkf.c, paramaxkf.d, paramaxkf.e);
+      int i = encode(paramaxkh.jdField_a_of_type_JavaLangString, paramaxkh.jdField_b_of_type_JavaLangString, paramaxkh.jdField_a_of_type_Int, paramaxkh.jdField_b_of_type_Int, paramaxkh.c, paramaxkh.d, paramaxkh.e);
       return i;
     }
-    catch (UnsatisfiedLinkError paramaxkf) {}
+    catch (UnsatisfiedLinkError paramaxkh) {}
     return -200;
   }
   
@@ -32,22 +32,22 @@ public class AudioEncoder
     return 0;
   }
   
-  public static axkf a(String paramString1, String paramString2, int paramInt)
+  public static axkh a(String paramString1, String paramString2, int paramInt)
   {
-    axkf localaxkf = new axkf();
-    localaxkf.jdField_a_of_type_JavaLangString = paramString1;
-    localaxkf.jdField_b_of_type_JavaLangString = paramString2;
-    localaxkf.jdField_a_of_type_Int = paramInt;
-    localaxkf.d = axik.q;
-    localaxkf.c = axik.n;
-    if (axik.p == 2) {}
-    for (localaxkf.jdField_b_of_type_Int = 16; axik.o == 16; localaxkf.jdField_b_of_type_Int = 8)
+    axkh localaxkh = new axkh();
+    localaxkh.jdField_a_of_type_JavaLangString = paramString1;
+    localaxkh.jdField_b_of_type_JavaLangString = paramString2;
+    localaxkh.jdField_a_of_type_Int = paramInt;
+    localaxkh.d = axim.q;
+    localaxkh.c = axim.n;
+    if (axim.p == 2) {}
+    for (localaxkh.jdField_b_of_type_Int = 16; axim.o == 16; localaxkh.jdField_b_of_type_Int = 8)
     {
-      localaxkf.e = 1;
-      return localaxkf;
+      localaxkh.e = 1;
+      return localaxkh;
     }
-    localaxkf.e = 2;
-    return localaxkf;
+    localaxkh.e = 2;
+    return localaxkh;
   }
   
   private static native int encode(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);

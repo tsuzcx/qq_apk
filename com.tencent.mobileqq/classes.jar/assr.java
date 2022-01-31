@@ -1,31 +1,14 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class assr
-  extends RecyclerView.OnScrollListener
+  implements asqy
 {
-  public assr(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public assr(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (MultiCardRecommendFragment.a(this.a) != null)
-    {
-      if ((paramInt == 0) || (paramInt == 1)) {
-        break label38;
-      }
-      MultiCardRecommendFragment.a(this.a);
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {
-        MultiCardRecommendFragment.d(this.a);
-      }
-      return;
-      label38:
-      MultiCardRecommendFragment.b(this.a);
-      MultiCardRecommendFragment.c(this.a);
-    }
+    MultiCardPageIndicator.a(this.a);
+    return false;
   }
 }
 

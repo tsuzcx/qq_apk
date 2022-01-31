@@ -1,31 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-class ore
-  implements View.OnClickListener
+public class ore
+  implements bgag
 {
-  ore(ord paramord) {}
+  public ore(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = ((orf)paramView.getTag()).getAdapterPosition() - ord.a(this.a).c();
-    int j = this.a.getItemViewType(i);
-    ArticleInfo localArticleInfo = (ArticleInfo)ord.a(this.a, i);
-    if (localArticleInfo == null)
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
+    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
+    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
     {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
+      osg.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
       return;
     }
-    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
-    this.a.a(i, paramView);
-    localArticleInfo.invalidateProteusTemplateBean();
-    onk.a = localArticleInfo;
-    osj.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
-    this.a.notifyItemChanged(i);
-    onk.b(ord.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 3)
+    {
+      this.a.b(i);
+      return;
+    }
   }
 }
 

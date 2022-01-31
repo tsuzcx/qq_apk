@@ -1,61 +1,25 @@
-public class bdej
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.agent.datamodel.Friend;
+
+public final class bdej
+  implements Parcelable.Creator<Friend>
 {
-  public static int a(int paramInt)
+  public Friend a(Parcel paramParcel)
   {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
+    Friend localFriend = new Friend();
+    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFriend.b = paramParcel.readString();
+    localFriend.c = paramParcel.readString();
+    localFriend.d = paramParcel.readString();
+    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
+    localFriend.e = paramParcel.readString();
+    return localFriend;
   }
   
-  public static int a(int paramInt, String paramString)
+  public Friend[] a(int paramInt)
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (ajsf.aG.equals(paramString)) {
-      return 3;
-    }
-    if (ajsf.L.equals(paramString)) {
-      return 4;
-    }
-    if (ajsf.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
-    }
-    return 4;
+    return new Friend[paramInt];
   }
 }
 

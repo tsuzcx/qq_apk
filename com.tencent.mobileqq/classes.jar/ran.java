@@ -1,6 +1,39 @@
-public abstract interface ran
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class ran
+  extends Handler
 {
-  public abstract void a();
+  ran(ram paramram, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      return;
+      if (!this.a.g) {
+        break;
+      }
+      if (this.a.f)
+      {
+        ram.a(this.a, this.a.a);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
+    return;
+    ram.a(this.a, this.a.a);
+  }
 }
 
 

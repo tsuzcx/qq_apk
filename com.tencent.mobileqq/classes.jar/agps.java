@@ -1,20 +1,19 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 
 class agps
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  agps(agpn paramagpn) {}
+  agps(agpl paramagpl) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if (paramInt == 0)
     {
-      this.a.a.dismiss();
-      agpn.a(this.a, agpn.a(this.a), true, Long.valueOf(agpn.b(this.a)).longValue(), true);
+      this.a.b();
+      agpl.a(this.a).moveTaskToBack(true);
     }
-    return false;
   }
 }
 

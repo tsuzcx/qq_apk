@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar;
 
-import albu;
+import albt;
 
 public class ArConfigService$8$1
   implements Runnable
 {
-  public ArConfigService$8$1(albu paramalbu, int paramInt) {}
+  public ArConfigService$8$1(albt paramalbt, int paramInt) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Albu.a, this.jdField_a_of_type_Int);
+    ArConfigService.a(this.jdField_a_of_type_Albt.a, this.jdField_a_of_type_Int);
   }
 }
 

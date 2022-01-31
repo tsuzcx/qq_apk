@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface bcsv
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a(int paramInt);
 }
 
 

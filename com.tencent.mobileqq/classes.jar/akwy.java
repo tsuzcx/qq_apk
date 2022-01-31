@@ -1,18 +1,52 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.applets.data.AppletItem;
 
-public final class akwy
-  implements Parcelable.Creator<AppletItem>
+public class akwy
 {
-  public AppletItem a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  
+  public akwy a(int paramInt)
   {
-    return new AppletItem(paramParcel);
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public AppletItem[] a(int paramInt)
+  public akwy a(long paramLong)
   {
-    return new AppletItem[paramInt];
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public akwy a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public AppletItem a()
+  {
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public akwy b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public akwy b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

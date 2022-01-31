@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bbgg;
-import bjqf;
-import bjqg;
-import bjqh;
-import bjqu;
+import bbgu;
+import bjqw;
+import bjqx;
+import bjqy;
+import bjrl;
 
 public class LightWeightSoDownloadUnit$4
   implements Runnable
 {
-  public LightWeightSoDownloadUnit$4(bjqf parambjqf, String paramString) {}
+  public LightWeightSoDownloadUnit$4(bjqw parambjqw, String paramString) {}
   
   public void run()
   {
-    bjqg localbjqg = new bjqg(this);
-    bjqh localbjqh = new bjqh(this);
-    bbgg.showPermissionSettingDialog(bjqf.a(this.this$0).a(), null, this.a, localbjqg, localbjqg, localbjqh);
+    bjqx localbjqx = new bjqx(this);
+    bjqy localbjqy = new bjqy(this);
+    bbgu.showPermissionSettingDialog(bjqw.a(this.this$0).a(), null, this.a, localbjqx, localbjqx, localbjqy);
   }
 }
 

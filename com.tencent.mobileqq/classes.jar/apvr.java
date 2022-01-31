@@ -1,11 +1,14 @@
-class apvr
-  implements aptu
+import android.app.Activity;
+import android.content.Intent;
+
+final class apvr
+  implements aptw
 {
-  apvr(apvq paramapvq) {}
+  apvr(Activity paramActivity, Intent paramIntent) {}
   
   public void a()
   {
-    eo.b(this.a.a, 0);
+    aqbe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
   
   public void b() {}

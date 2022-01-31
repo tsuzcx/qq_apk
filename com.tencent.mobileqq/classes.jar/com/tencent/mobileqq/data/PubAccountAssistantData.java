@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class PubAccountAssistantData
-  extends aukm
+  extends auko
 {
   public int mDistance;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public int mType;
-  @auma
+  @aumc
   public String mUin;
 }
 

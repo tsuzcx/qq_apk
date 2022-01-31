@@ -2,13 +2,13 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import lgf;
-import mba;
+import lga;
+import mav;
 
 public class AVActivity$1$1
   implements Runnable
 {
-  public AVActivity$1$1(mba parammba) {}
+  public AVActivity$1$1(mav parammav) {}
   
   public void run()
   {

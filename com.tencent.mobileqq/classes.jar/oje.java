@@ -1,14 +1,14 @@
 class oje
-  extends ojq
+  extends ojn
 {
-  oje(oio paramoio, oii paramoii, boolean paramBoolean, int paramInt)
+  oje(oil paramoil)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentCreate(true, this.jdField_a_of_type_Oii, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Oio.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_Int);
+    paramojq.onCommentReply(false, null);
   }
 }
 

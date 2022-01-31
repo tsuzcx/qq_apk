@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class aayk
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public aayk(DialogActivity paramDialogActivity) {}
+  public aayk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    DiscussionInfoCardActivity.a(this.a);
   }
 }
 

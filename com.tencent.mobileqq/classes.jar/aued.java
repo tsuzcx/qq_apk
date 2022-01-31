@@ -1,90 +1,69 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aued
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, auei
 {
-  private GestureController a;
+  private static boolean jdField_a_of_type_Boolean = true;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  public aued(GestureController paramGestureController)
+  public static boolean a()
   {
-    this.a = paramGestureController;
+    return jdField_a_of_type_Boolean;
   }
   
-  public void a(aueh paramaueh)
+  public void a()
   {
-    this.a.a(paramaueh);
+    if ((a()) && (this.jdField_a_of_type_Int > 0))
+    {
+      int i = (int)(SystemClock.uptimeMillis() - this.jdField_b_of_type_Long);
+      i = Math.round(1000.0F * this.jdField_a_of_type_Int / i);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("actType", String.valueOf(this.jdField_b_of_type_Int));
+      localHashMap.put("actFps", String.valueOf(i));
+      axrn.a(BaseApplication.getContext()).a(null, "actOcrGestureFps", true, 0L, 0L, localHashMap, null);
+      QLog.d("GestureFps", 1, new Object[] { "report ActOcrGestureFps, type:", Integer.valueOf(this.jdField_b_of_type_Int), " fps:", Integer.valueOf(i) });
+    }
   }
   
-  public boolean a(aueh paramaueh)
+  public void a(int paramInt)
   {
-    return this.a.b(paramaueh);
+    if (a())
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      long l = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Long = l;
+      this.jdField_b_of_type_Long = l;
+      this.jdField_a_of_type_Int = 0;
+    }
   }
   
-  public boolean b(aueh paramaueh)
+  public void b()
   {
-    return this.a.a(paramaueh);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return this.a.e(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.a.b(paramMotionEvent);
-  }
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.b(paramScaleGestureDetector);
-  }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return this.a.a(paramScaleGestureDetector);
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.a.a(paramScaleGestureDetector);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return this.a.d(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return this.a.c(paramMotionEvent);
+    long l;
+    if (a())
+    {
+      l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+      if (l <= 40L) {
+        break label66;
+      }
+      Log.e("GestureFps", "Frame time: " + l);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      return;
+      label66:
+      if (l > 20L) {
+        Log.w("GestureFps", "Frame time: " + l);
+      }
+    }
   }
 }
 

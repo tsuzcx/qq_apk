@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import aihe;
+import aihc;
 
 public class ShortVideoPlayActivity$13$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$13$1(aihe paramaihe) {}
+  public ShortVideoPlayActivity$13$1(aihc paramaihc) {}
   
   public void run()
   {

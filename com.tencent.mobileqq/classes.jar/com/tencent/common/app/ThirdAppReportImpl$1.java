@@ -2,18 +2,18 @@ package com.tencent.common.app;
 
 import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import xot;
+import xoq;
 
 public class ThirdAppReportImpl$1
   implements Runnable
 {
-  public ThirdAppReportImpl$1(xot paramxot, Intent paramIntent, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public ThirdAppReportImpl$1(xoq paramxoq, Intent paramIntent, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
     try
     {
-      xot.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+      xoq.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
       return;
     }
     catch (Exception localException)

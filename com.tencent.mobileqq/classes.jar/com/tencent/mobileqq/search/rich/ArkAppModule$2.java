@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.search.rich;
 
-import awsq;
-import awsr;
+import awss;
+import awst;
 import java.lang.ref.WeakReference;
 
 public class ArkAppModule$2
   implements Runnable
 {
-  public ArkAppModule$2(awsq paramawsq, long paramLong, String paramString1, String paramString2) {}
+  public ArkAppModule$2(awss paramawss, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (awsq.a(this.this$0) != null)
+    if (awss.a(this.this$0) != null)
     {
-      awsr localawsr = (awsr)awsq.a(this.this$0).get();
-      if (localawsr != null) {
-        localawsr.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+      awst localawst = (awst)awss.a(this.this$0).get();
+      if (localawst != null) {
+        localawst.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
       }
     }
   }

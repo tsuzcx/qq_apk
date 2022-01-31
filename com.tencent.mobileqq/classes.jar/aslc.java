@@ -1,16 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-class aslc
-  implements Handler.Callback
+public abstract interface aslc
 {
-  aslc(aslb paramaslb) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    aslb.a(this.a, paramMessage);
-    return true;
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

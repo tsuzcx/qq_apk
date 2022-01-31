@@ -1,26 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class mgk
-  implements DialogInterface.OnClickListener
 {
-  public mgk(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity, View paramView) {}
+  public Button a;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+  public TextView a;
+  public Button b;
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mgk()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b()) {
-      return;
+    this.jdField_a_of_type_AndroidWidgetButton = null;
+    this.jdField_b_of_type_AndroidWidgetButton = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_a_of_type_AndroidWidgetButton = null;
+    this.jdField_b_of_type_AndroidWidgetButton = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
     }
-    this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 1, "kickOutUsers begin, mGAudioRoomId[" + this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.b + "]");
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(1, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.c, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_Long);
-    axqw.b(null, "CliOper", "", "", "0X8009E2A", "0X8009E2A", 0, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    }
+    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131372406));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372241));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372240));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372271));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372264));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131372269));
   }
 }
 

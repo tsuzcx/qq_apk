@@ -4,29 +4,29 @@ import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import ste;
-import tdk;
-import tdm;
+import stb;
+import tdh;
+import tdj;
 
 public class TroopNickNameManager$2
   implements Runnable
 {
-  public TroopNickNameManager$2(tdk paramtdk, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  public TroopNickNameManager$2(tdh paramtdh, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
     if (this.this$0.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
     {
-      localtdm = new tdm();
+      localtdj = new tdj();
       localArrayList = new ArrayList();
       localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localtdm.jdField_a_of_type_JavaUtilList = localArrayList;
-      localtdm.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ste.a().dispatch(localtdm);
+      localtdj.jdField_a_of_type_JavaUtilList = localArrayList;
+      localtdj.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      stb.a().dispatch(localtdj);
     }
     while (this.jdField_a_of_type_Boolean)
     {
-      tdm localtdm;
+      tdj localtdj;
       ArrayList localArrayList;
       return;
     }

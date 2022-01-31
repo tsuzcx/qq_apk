@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.operation;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskid,uin,uinType")
 public class QQOperationVoipTipsTaskExcuteRecord
-  extends aukm
+  extends auko
 {
   public int count;
   public int taskid;

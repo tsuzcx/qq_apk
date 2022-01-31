@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahiy;
+import ahiw;
 
 class PreloadFlowControlConfig$1
   implements Runnable
@@ -9,7 +9,7 @@ class PreloadFlowControlConfig$1
   
   public void run()
   {
-    ahiy.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
+    ahiw.a(this.this$0, PreloadFlowControlConfig.access$000(this.this$0));
   }
 }
 

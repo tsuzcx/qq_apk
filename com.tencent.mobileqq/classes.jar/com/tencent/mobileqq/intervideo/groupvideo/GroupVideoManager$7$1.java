@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import arfk;
+import arfm;
 import java.util.List;
 
 class GroupVideoManager$7$1
@@ -10,11 +10,11 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    arfk localarfk = this.this$0.a;
+    arfm localarfm = this.this$0.a;
     if ((this.a != null) && (this.a.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      localarfk.a(bool);
+      localarfm.a(bool);
       return;
     }
   }

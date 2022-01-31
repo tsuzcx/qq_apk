@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class acrg
-  extends akjz
+public abstract interface acrg
 {
-  public acrg(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 

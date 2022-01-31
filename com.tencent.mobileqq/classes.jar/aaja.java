@@ -9,7 +9,13 @@ public class aaja
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    adjp.a(paramBoolean);
+    apzf.a(this.a.app).a(paramBoolean, this.a.app);
+    if (paramBoolean)
+    {
+      axqy.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
+      return;
+    }
+    axqy.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
   }
 }
 

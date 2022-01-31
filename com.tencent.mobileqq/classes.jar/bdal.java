@@ -1,14 +1,17 @@
-import android.graphics.Bitmap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.widget.ImageView;
+import com.tencent.open.agent.CardHeadLayout;
 
-class bdal
-  implements bdeb
+public class bdal
+  extends AnimatorListenerAdapter
 {
-  bdal(bdak parambdak, ImageView paramImageView) {}
+  public bdal(CardHeadLayout paramCardHeadLayout, ImageView paramImageView) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

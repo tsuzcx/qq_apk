@@ -1,40 +1,40 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import ahpf;
-import akdi;
-import aukn;
-import auko;
+import ahpd;
+import akdh;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.AccountDetail;
-import nnx;
-import saw;
-import sax;
+import nnu;
+import sat;
+import sau;
 
 public class ServiceAccountFolderFeedAdapter$8
   implements Runnable
 {
-  public ServiceAccountFolderFeedAdapter$8(sax paramsax, String paramString, saw paramsaw) {}
+  public ServiceAccountFolderFeedAdapter$8(sau paramsau, String paramString, sat paramsat) {}
   
   public void run()
   {
-    nnx.a().a(sax.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (akdi)sax.a(this.this$0).getManager(56);
+    nnu.a().a(sau.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+    Object localObject = (akdh)sau.a(this.this$0).getManager(56);
     if (localObject != null)
     {
-      ((akdi)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((akdi)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((akdi)localObject).a(this.jdField_a_of_type_JavaLangString);
+      ((akdh)localObject).c(this.jdField_a_of_type_JavaLangString);
+      ((akdh)localObject).b(this.jdField_a_of_type_JavaLangString);
+      AccountDetail localAccountDetail = ((akdh)localObject).a(this.jdField_a_of_type_JavaLangString);
       if (localAccountDetail != null)
       {
-        ((akdi)localObject).a(this.jdField_a_of_type_JavaLangString);
-        localObject = sax.a(this.this$0).getEntityManagerFactory().createEntityManager();
-        ((aukn)localObject).b(localAccountDetail);
-        ((aukn)localObject).a();
+        ((akdh)localObject).a(this.jdField_a_of_type_JavaLangString);
+        localObject = sau.a(this.this$0).getEntityManagerFactory().createEntityManager();
+        ((aukp)localObject).b(localAccountDetail);
+        ((aukp)localObject).a();
       }
     }
-    sax.a(this.this$0).a().a(this.jdField_a_of_type_Saw.jdField_a_of_type_JavaLangString, 1008);
-    ahpf.b(sax.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
+    sau.a(this.this$0).a().a(this.jdField_a_of_type_Sat.jdField_a_of_type_JavaLangString, 1008);
+    ahpd.b(sau.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

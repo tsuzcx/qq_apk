@@ -91,7 +91,7 @@ public class ia
   public static String a()
   {
     if (TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) {
-      jdField_c_of_type_JavaLangString = bbkv.a() + jdField_a_of_type_JavaLangString + "default.ttf";
+      jdField_c_of_type_JavaLangString = bblj.a() + jdField_a_of_type_JavaLangString + "default.ttf";
     }
     return jdField_c_of_type_JavaLangString;
   }
@@ -193,11 +193,11 @@ public class ia
     if (paramInt == 0)
     {
       str = ho.jdField_a_of_type_JavaLangString + File.separator + "default.zip";
-      if (!apvb.a(str)) {}
+      if (!apvd.a(str)) {}
     }
     try
     {
-      bbdj.a(str, bbkv.a() + jdField_a_of_type_JavaLangString, false);
+      bbdx.a(str, bblj.a() + jdField_a_of_type_JavaLangString, false);
       a(paramQQAppInterface);
       jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
@@ -289,7 +289,7 @@ public class ia
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bbkv.a((AppInterface)localObject);
+      bblj.a((AppInterface)localObject);
       localObject = ((QQAppInterface)localObject).getHandler(ChatActivity.class);
       if (localObject != null)
       {
@@ -307,17 +307,17 @@ public class ia
   
   private static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    Object localObject = ajyc.a(2131716050);
+    Object localObject = ajya.a(2131716061);
     int i = ((String)localObject).length();
-    paramString = new aquz(paramString, jdField_b_of_type_JavaLangString, (String)localObject, paramInt, -5020, 1179653, awzw.a());
+    paramString = new aqvb(paramString, jdField_b_of_type_JavaLangString, (String)localObject, paramInt, -5020, 1179653, awzy.a());
     paramString.b = new int[] { 1179653 };
     localObject = new Bundle();
     ((Bundle)localObject).putInt("key_action", 1);
-    ((Bundle)localObject).putString("key_action_DATA", bbpp.a("myFont"));
+    ((Bundle)localObject).putString("key_action_DATA", bbqd.a("myFont"));
     paramString.a(i - 7, i - 3, (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
     ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramString);
-    aqva.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+    aqvc.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
   
   private static void c(QQAppInterface paramQQAppInterface)
@@ -350,7 +350,7 @@ public class ia
     //   13: new 17	java/lang/StringBuilder
     //   16: dup
     //   17: invokespecial 20	java/lang/StringBuilder:<init>	()V
-    //   20: invokestatic 113	bbkv:a	()Ljava/lang/String;
+    //   20: invokestatic 113	bblj:a	()Ljava/lang/String;
     //   23: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: getstatic 37	ia:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   29: invokevirtual 26	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -433,7 +433,7 @@ public class ia
     //   201: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   204: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   207: aload 10
-    //   209: invokestatic 455	bbdj:a	(Ljava/lang/String;)V
+    //   209: invokestatic 455	bbdx:a	(Ljava/lang/String;)V
     //   212: aload_2
     //   213: ifnull +7 -> 220
     //   216: aload_2
@@ -522,7 +522,7 @@ public class ia
     //   389: aload_3
     //   390: invokevirtual 484	java/io/FileInputStream:close	()V
     //   393: aload 10
-    //   395: invokestatic 455	bbdj:a	(Ljava/lang/String;)V
+    //   395: invokestatic 455	bbdx:a	(Ljava/lang/String;)V
     //   398: iconst_0
     //   399: ireturn
     //   400: aload 9
@@ -785,7 +785,7 @@ public class ia
   
   private static void d()
   {
-    if (apvb.a(a())) {}
+    if (apvd.a(a())) {}
     switch (jdField_a_of_type_Int)
     {
     case 4: 

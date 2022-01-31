@@ -1,19 +1,49 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import java.util.ArrayList;
 
 public class acek
-  implements View.OnFocusChangeListener
+  implements Handler.Callback
 {
-  public acek(SubLoginActivity paramSubLoginActivity) {}
+  public acek(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          paramMessage = (Intent)paramMessage.obj;
+          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+          if ((55 == paramMessage.getIntExtra(bbbw.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
+          {
+            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
+            if ((localArrayList != null) && (localArrayList.size() > 0))
+            {
+              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
+              return true;
+            }
+          }
+        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
+        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
+      } while (paramMessage == null);
+      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
+      return true;
+    case 2: 
+      this.a.b(null);
+      return true;
     }
+    this.a.u();
+    return true;
   }
 }
 

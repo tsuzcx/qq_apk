@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.msgbackup.data;
 
-import aukm;
+import auko;
 
 public class MsgBackupExtraEntity
-  extends aukm
+  extends auko
 {
   public static final String TABLE_NAME = "ex_info";
   public String name;

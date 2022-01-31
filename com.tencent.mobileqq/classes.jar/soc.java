@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class soc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public soc(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
   }
 }
 

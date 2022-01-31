@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qvd;
+import qva;
 
 public class VideoUIManager$9
   implements Runnable
 {
-  public VideoUIManager$9(qvd paramqvd) {}
+  public VideoUIManager$9(qva paramqva) {}
   
   public void run()
   {
-    qvd.g(this.this$0);
+    qva.g(this.this$0);
   }
 }
 

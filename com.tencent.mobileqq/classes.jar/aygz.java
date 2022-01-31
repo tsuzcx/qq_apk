@@ -1,34 +1,36 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.StringTokenizer;
 
 public abstract class aygz
 {
   public int a;
-  protected ayhf a;
+  public ayhf a;
   public QQAppInterface a;
-  public DataLineMsgRecord a;
+  public ChatMessage a;
   public String a;
   
-  public aygz(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, ayhf paramayhf)
+  public aygz(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, ayhf paramayhf)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
+    this.jdField_a_of_type_Int = paramChatMessage.istroop;
     this.jdField_a_of_type_Ayhf = paramayhf;
   }
   
   public abstract String a();
   
+  public abstract void a(ayha paramayha);
+  
   public boolean a()
   {
-    Object localObject = anbp.a().a();
+    Object localObject = andb.a().c();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
       }
     }
     String str;
@@ -39,13 +41,13 @@ public abstract class aygz
         do
         {
           return false;
-          str = apvb.a(a());
+          str = apvd.a(a());
           localObject = new StringTokenizer((String)localObject, "|");
           if (((StringTokenizer)localObject).hasMoreTokens()) {
             break;
           }
         } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
+        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
         return false;
       }
     } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));

@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class aagq
-  implements DialogInterface.OnClickListener
+  extends naq
 {
   public aagq(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-      this.a.finish();
       return;
-    }
-    AddFriendLogicActivity.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
+        {
+          AddFriendLogicActivity.a(this.a, true);
+          this.a.a();
+          return;
+        }
+        AddFriendLogicActivity.a(this.a);
+        return;
+      }
+      AddFriendLogicActivity.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import bhvh;
+import bhvy;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import nsf;
-import nsm;
-import osj;
+import nsc;
+import nsj;
+import osg;
 
 public class DailyDynamicHeaderViewController$5$1
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$5$1(nsm paramnsm, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public DailyDynamicHeaderViewController$5$1(nsj paramnsj, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
@@ -20,11 +20,11 @@ public class DailyDynamicHeaderViewController$5$1
       String str1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.f;
       String str2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.e;
       QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] adCode=" + str1 + " cityName=" + str2);
-      bhvh.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(System.currentTimeMillis()));
-      osj.a().t();
+      bhvy.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(System.currentTimeMillis()));
+      osg.a().t();
       return;
     }
-    nsf.a(this.jdField_a_of_type_Nsm.a, 2);
+    nsc.a(this.jdField_a_of_type_Nsj.a, 2);
   }
 }
 

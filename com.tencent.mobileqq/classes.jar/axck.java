@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
 
-final class axck
-  extends akuj
+public class axck
+  extends ContentObserver
 {
-  axck(String paramString, boolean paramBoolean)
+  axck(axcj paramaxcj, Handler paramHandler)
   {
-    super(paramString, paramBoolean);
+    super(paramHandler);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onChange(boolean paramBoolean)
   {
-    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
-    long l1 = System.currentTimeMillis();
-    long l2 = axcj.a();
-    bhkp.a(paramInt, this.businessId, l1 - l2);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
-    {
-      axcj.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + axcj.a());
-    }
-    for (;;)
-    {
-      axcj.a(paramInt);
-      return;
-      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
-    }
+    super.onChange(paramBoolean);
+    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
   }
 }
 

@@ -1,35 +1,28 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
 
 public class aczv
-  extends AsyncTask<String, Void, Bitmap>
+  extends View
 {
-  public aczv(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
-  
-  protected Bitmap a(String... paramVarArgs)
+  aczv(aczt paramaczt, Context paramContext)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
-    {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
-      }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
-    }
-    return null;
+    super(paramContext);
   }
   
-  protected void a(Bitmap paramBitmap)
+  protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
+    }
+    return true;
   }
 }
 

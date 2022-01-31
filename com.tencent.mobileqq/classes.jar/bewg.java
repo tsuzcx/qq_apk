@@ -1,46 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.minigame.manager.JsApiUpdateManager.2.1;
 
-class bewg
-  implements AsyncResult
+public final class bewg
+  implements bevs
 {
-  bewg(bewf parambewf) {}
+  bewg(beuv parambeuv) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
+  
+  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
   {
-    if (paramBoolean)
+    if ((paramInt == 0) && (parambevt != null))
     {
-      long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      besl.b("MiniAppInfoLoadTask", "getAppInfoById, retCode = " + l + ",errMsg = " + str);
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject.launchParam.a(bewf.a(this.a).launchParam);
-        paramJSONObject.apkgInfo = bewf.a(this.a).apkgInfo;
-        paramJSONObject.launchParam.a = paramJSONObject.appId;
-        if (!TextUtils.isEmpty(bewf.a(this.a).launchParam.d)) {
-          paramJSONObject.extendData = bewf.a(this.a).launchParam.d;
-        }
-        if (paramJSONObject.verType != 3) {
-          paramJSONObject.forceReroad = 3;
-        }
-        beyr.a(paramJSONObject, 1028, "main_loading", beyr.a(paramJSONObject));
-        bewf.a(this.a, paramJSONObject);
-        this.a.c();
-        return;
-      }
-      beyu.a(bewf.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-      bexz.a("2launch_fail", "shotcut_request_fail", null, bewf.a(this.a));
-      this.a.f();
+      bejl.a().a(parambevt, true);
+      bejn.a(new JsApiUpdateManager.2.1(this), 16, null, true);
+      bewe.b(this.a, true);
       return;
     }
-    beyu.a(bewf.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-    bexz.a("2launch_fail", "shotcut_request_fail", null, bewf.a(this.a));
-    this.a.f();
+    bewe.b(this.a, false);
   }
 }
 

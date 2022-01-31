@@ -1,6 +1,21 @@
-public abstract interface bium
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class bium
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  bium(biuk parambiuk) {}
+  
+  public void onClick(View paramView)
+  {
+    biuk.a(this.a);
+    biuk.b(this.a);
+    biuk.a(this.a, new biwd(biuk.a(this.a)));
+    if (!biuk.a(this.a)) {
+      biuk.c(this.a);
+    }
+    biuk.a(this.a).a(new biun(this));
+  }
 }
 
 

@@ -1,211 +1,124 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.model.HotWordSearchSpecialDataModel.TopicItem;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class awig
-  implements awih
+public class awig
+  extends BaseAdapter
 {
-  public static long A = SearchConfigManager.typeDiscussionConversationMatchTitle << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long B = SearchConfigManager.typeDiscussionConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long C = SearchConfigManager.typeTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long D = SearchConfigManager.typeFriendSpecialCare << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long E = SearchConfigManager.typeFriend << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long F = SearchConfigManager.typeFriendNotOftenContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long G = SearchConfigManager.typeNewTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long H = SearchConfigManager.typeDiscussionMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long I = SearchConfigManager.typePhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long J = SearchConfigManager.typeDiscussionConversationMatchMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long K = SearchConfigManager.typeNewTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long L = SearchConfigManager.typeDiscussion << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long M = SearchConfigManager.typeTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long N = SearchConfigManager.typeTool << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long O = SearchConfigManager.typePublicAccountConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long P = SearchConfigManager.typePublicAccount << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long Q = SearchConfigManager.typeUnbindPhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long R = SearchConfigManager.typeCircleContact << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long S = SearchConfigManager.typeTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long T = SearchConfigManager.typeGlobalTroop << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long U = SearchConfigManager.typeGlobalTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long V = SearchConfigManager.typeGlobalTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long W = SearchConfigManager.typeQidianMaster << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long a = SearchConfigManager.fieldPublicAccountName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long b = SearchConfigManager.fieldPublicAccountMark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long c = SearchConfigManager.fieldPublicAccountSummary << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long d = SearchConfigManager.fieldPublicAccountDisplayName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long e = SearchConfigManager.filedDiscussionName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long f = SearchConfigManager.fieldTroopName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long g = SearchConfigManager.fieldRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long h = SearchConfigManager.fieldNewTroopNickName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long i = SearchConfigManager.fieldNewTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long j = SearchConfigManager.fieldDiscussionMemberRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long k = SearchConfigManager.fieldInteRemark << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long l = SearchConfigManager.fieldNickName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long m = SearchConfigManager.fieldPhoneContactName << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long n = SearchConfigManager.fieldAlias << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long o = SearchConfigManager.fieldUin << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long p = SearchConfigManager.fieldMobileNo << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long q = SearchConfigManager.fieldTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-  public static long r = SearchConfigManager.stringOrigin << SearchConfigManager.contactSearchPinyinBaseBit;
-  public static long s = SearchConfigManager.stringPinyin << SearchConfigManager.contactSearchPinyinBaseBit;
-  public static long t = SearchConfigManager.recentTrue << SearchConfigManager.contactSearchRecentBaseBit;
-  public static long u = SearchConfigManager.indexEqual << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long v = SearchConfigManager.indexStart << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long w = SearchConfigManager.indexMiddle << SearchConfigManager.contactSearchIndexBaseBit;
-  public static long x = 72057594037927936L;
-  public static long y = SearchConfigManager.typeDiscussionMatchMemberFull << SearchConfigManager.contactSearchTypeBaseBit;
-  public static long z = SearchConfigManager.typeFriendConversation << SearchConfigManager.contactSearchTypeBaseBit;
-  protected long X;
-  protected long Y = -1L;
-  protected long Z;
-  protected long aa;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<HotWordSearchSpecialDataModel.TopicItem> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static void a()
+  public awig(awie paramawie, Context paramContext, LayoutInflater paramLayoutInflater)
   {
-    a = SearchConfigManager.fieldPublicAccountName << SearchConfigManager.contactSearchFieldBaseBit;
-    b = SearchConfigManager.fieldPublicAccountMark << SearchConfigManager.contactSearchFieldBaseBit;
-    c = SearchConfigManager.fieldPublicAccountSummary << SearchConfigManager.contactSearchFieldBaseBit;
-    d = SearchConfigManager.fieldPublicAccountDisplayName << SearchConfigManager.contactSearchFieldBaseBit;
-    e = SearchConfigManager.filedDiscussionName << SearchConfigManager.contactSearchFieldBaseBit;
-    f = SearchConfigManager.fieldTroopName << SearchConfigManager.contactSearchFieldBaseBit;
-    g = SearchConfigManager.fieldRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    h = SearchConfigManager.fieldNewTroopNickName << SearchConfigManager.contactSearchFieldBaseBit;
-    i = SearchConfigManager.fieldNewTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.fieldDiscussionMemberRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.fieldInteRemark << SearchConfigManager.contactSearchFieldBaseBit;
-    l = SearchConfigManager.fieldNickName << SearchConfigManager.contactSearchFieldBaseBit;
-    m = SearchConfigManager.fieldPhoneContactName << SearchConfigManager.contactSearchFieldBaseBit;
-    n = SearchConfigManager.fieldAlias << SearchConfigManager.contactSearchFieldBaseBit;
-    o = SearchConfigManager.fieldUin << SearchConfigManager.contactSearchFieldBaseBit;
-    p = SearchConfigManager.fieldMobileNo << SearchConfigManager.contactSearchFieldBaseBit;
-    q = SearchConfigManager.fieldTroopCard << SearchConfigManager.contactSearchFieldBaseBit;
-    r = SearchConfigManager.stringOrigin << SearchConfigManager.contactSearchPinyinBaseBit;
-    s = SearchConfigManager.stringPinyin << SearchConfigManager.contactSearchPinyinBaseBit;
-    t = SearchConfigManager.recentTrue << SearchConfigManager.contactSearchRecentBaseBit;
-    u = SearchConfigManager.indexEqual << SearchConfigManager.contactSearchIndexBaseBit;
-    v = SearchConfigManager.indexStart << SearchConfigManager.contactSearchIndexBaseBit;
-    w = SearchConfigManager.indexMiddle << SearchConfigManager.contactSearchIndexBaseBit;
-    x = 72057594037927936L;
-    y = SearchConfigManager.typeDiscussionMatchMemberFull << SearchConfigManager.contactSearchTypeBaseBit;
-    z = SearchConfigManager.typeFriendConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    A = SearchConfigManager.typeDiscussionConversationMatchTitle << SearchConfigManager.contactSearchTypeBaseBit;
-    B = SearchConfigManager.typeDiscussionConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    C = SearchConfigManager.typeTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    D = SearchConfigManager.typeFriendSpecialCare << SearchConfigManager.contactSearchTypeBaseBit;
-    E = SearchConfigManager.typeFriend << SearchConfigManager.contactSearchTypeBaseBit;
-    F = SearchConfigManager.typeFriendNotOftenContact << SearchConfigManager.contactSearchTypeBaseBit;
-    G = SearchConfigManager.typeNewTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    H = SearchConfigManager.typeDiscussionMember << SearchConfigManager.contactSearchTypeBaseBit;
-    I = SearchConfigManager.typePhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-    J = SearchConfigManager.typeDiscussionConversationMatchMember << SearchConfigManager.contactSearchTypeBaseBit;
-    K = SearchConfigManager.typeNewTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    L = SearchConfigManager.typeDiscussion << SearchConfigManager.contactSearchTypeBaseBit;
-    M = SearchConfigManager.typeTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    N = SearchConfigManager.typeTool << SearchConfigManager.contactSearchTypeBaseBit;
-    O = SearchConfigManager.typePublicAccountConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    P = SearchConfigManager.typePublicAccount << SearchConfigManager.contactSearchTypeBaseBit;
-    Q = SearchConfigManager.typeUnbindPhoneContact << SearchConfigManager.contactSearchTypeBaseBit;
-    R = SearchConfigManager.typeCircleContact << SearchConfigManager.contactSearchTypeBaseBit;
-    S = SearchConfigManager.typeTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    T = SearchConfigManager.typeGlobalTroop << SearchConfigManager.contactSearchTypeBaseBit;
-    U = SearchConfigManager.typeGlobalTroopConversation << SearchConfigManager.contactSearchTypeBaseBit;
-    V = SearchConfigManager.typeGlobalTroopMember << SearchConfigManager.contactSearchTypeBaseBit;
-    W = SearchConfigManager.typeQidianMaster << SearchConfigManager.contactSearchTypeBaseBit;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected long a()
+  public int a(Context paramContext)
   {
-    return 0L;
+    return paramContext.getResources().getDisplayMetrics().widthPixels;
   }
   
-  public abstract Drawable a();
-  
-  public abstract Object a();
-  
-  public abstract String a();
-  
-  public void a(long paramLong)
+  public List<HotWordSearchSpecialDataModel.TopicItem> a()
   {
-    this.Z = paramLong;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public abstract int b();
-  
-  public long b()
+  public void a(List<HotWordSearchSpecialDataModel.TopicItem> paramList)
   {
-    return d();
-  }
-  
-  public abstract String b();
-  
-  protected void b()
-  {
-    for (;;)
+    if (paramList != null)
     {
-      int i1;
-      try
-      {
-        String str = d();
-        StringBuilder localStringBuilder = new StringBuilder();
-        i1 = 0;
-        if (i1 < str.length())
-        {
-          char c1 = str.charAt(i1);
-          if ((c1 >= '0') && (c1 <= '9')) {
-            localStringBuilder.append(c1);
-          }
-        }
-        else
-        {
-          str = localStringBuilder.toString();
-          if (!TextUtils.isEmpty(str))
-          {
-            this.X = Long.parseLong(str);
-            return;
-          }
-          this.X = hashCode();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-        this.X = hashCode();
-        return;
-      }
-      i1 += 1;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
   }
   
-  public abstract int c();
-  
-  public long c()
+  public int getCount()
   {
-    return this.Z;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public abstract String c();
-  
-  public long d()
+  public Object getItem(int paramInt)
   {
-    if (this.Y == -1L) {
-      this.Y = a();
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    HotWordSearchSpecialDataModel.TopicItem localTopicItem;
+    awie localawie;
+    String str2;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560583, null);
+      paramViewGroup = new awih(this.jdField_a_of_type_Awie);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131378383));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131378378));
+      paramView.setTag(paramViewGroup);
+      localTopicItem = (HotWordSearchSpecialDataModel.TopicItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (!TextUtils.isEmpty(localTopicItem.title)) {
+        paramViewGroup.a.setText(localTopicItem.title);
+      }
+      boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
+      str1 = awie.a(this.jdField_a_of_type_Awie, localTopicItem.titleColor, "#262626");
+      if (!TextUtils.isEmpty(str1)) {
+        paramViewGroup.a.setTextColor(Color.parseColor(str1));
+      }
+      if ((bool) && (TextUtils.isEmpty(localTopicItem.titleColor))) {
+        paramViewGroup.a.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
+      }
+      localawie = this.jdField_a_of_type_Awie;
+      str2 = localTopicItem.configColor;
+      if (!bool) {
+        break label367;
+      }
     }
-    return this.Y;
-  }
-  
-  public abstract String d();
-  
-  public boolean equals(Object paramObject)
-  {
-    return this.X == ((awig)paramObject).X;
-  }
-  
-  public int hashCode()
-  {
-    return super.hashCode();
+    label367:
+    for (String str1 = "#5F6062";; str1 = "#737373")
+    {
+      str1 = awie.a(localawie, str2, str1);
+      if (!TextUtils.isEmpty(str1)) {
+        paramViewGroup.b.setTextColor(Color.parseColor(str1));
+      }
+      if (TextUtils.isEmpty(localTopicItem.configTime)) {
+        break label374;
+      }
+      float f = awwa.a(paramViewGroup.b, localTopicItem.configTime);
+      paramInt = (a(this.jdField_a_of_type_AndroidContentContext) - actj.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+      i = actj.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int j = actj.a(f / 2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.a.setMaxWidth(paramInt - i - j);
+      paramViewGroup.b.setWidth((int)f);
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText(localTopicItem.configTime);
+      return paramView;
+      paramViewGroup = (awih)paramView.getTag();
+      break;
+    }
+    label374:
+    paramInt = (a(this.jdField_a_of_type_AndroidContentContext) - actj.a(34.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 2;
+    int i = actj.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramViewGroup.a.setMaxWidth(paramInt - i);
+    paramViewGroup.b.setVisibility(8);
+    return paramView;
   }
 }
 

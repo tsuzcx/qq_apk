@@ -1,27 +1,8 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public class tch
-  extends ssk
+public abstract interface tch
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public abstract void a();
   
-  public tch(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
-  }
+  public abstract void b();
 }
 
 

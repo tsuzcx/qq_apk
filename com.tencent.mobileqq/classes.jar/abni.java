@@ -1,18 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 
 public class abni
   implements View.OnClickListener
 {
+  public abni(MoveToGroupActivity paramMoveToGroupActivity) {}
+  
   public void onClick(View paramView)
   {
-    MainFragment.b(true);
-    paramView = (ViewGroup)paramView.getParent();
-    if (!MainFragment.a()) {
-      paramView.callOnClick();
-    }
+    MoveToGroupActivity.b(this.a);
   }
 }
 

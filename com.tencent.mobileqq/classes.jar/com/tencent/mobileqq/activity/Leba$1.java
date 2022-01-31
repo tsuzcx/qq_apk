@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aqrm;
-import avpq;
-import axbt;
+import aqro;
+import avps;
+import axbv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$1
@@ -13,7 +13,7 @@ class Leba$1
   public void run()
   {
     if (this.this$0.a != null) {
-      ((axbt)this.this$0.a.getManager(12)).a().a(((avpq)this.this$0.a.getManager(36)).a("489"));
+      ((axbv)this.this$0.a.getManager(12)).a().a(((avps)this.this$0.a.getManager(36)).a("489"));
     }
     Leba.a(this.this$0, false);
   }

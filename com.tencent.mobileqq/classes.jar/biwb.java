@@ -1,305 +1,182 @@
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewStub;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.view.Surface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-@SuppressLint({"UseSparseArrays"})
+@TargetApi(16)
 public class biwb
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private biim jdField_a_of_type_Biim;
-  private Map<Integer, biwa> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
+  private static String jdField_a_of_type_JavaLangString = biwb.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long = 0L;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private boolean jdField_a_of_type_Boolean;
+  private final long jdField_b_of_type_Long = 2147483647L;
+  private String jdField_b_of_type_JavaLangString = "";
+  private long c;
   
-  public biwb(Activity paramActivity, View paramView, biim parambiim)
+  private void a(Surface paramSurface)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Biim = parambiim;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilSet = a();
-    b();
-    c();
-  }
-  
-  private int a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+    label121:
+    MediaFormat localMediaFormat;
+    String str;
+    try
     {
-      Integer localInteger = (Integer)localIterator.next();
-      if (paramInt >> 16 == localInteger.intValue() >> 16) {
-        return localInteger.intValue();
-      }
-    }
-    return 65536;
-  }
-  
-  private Set<Integer> a()
-  {
-    HashSet localHashSet = new HashSet();
-    int j = birc.a.a();
-    int i = j;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      i = j;
-      if (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null) {
-        i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", birc.a.a());
-      }
-    }
-    if ((birc.c.a(i)) || (birc.t.a(i)) || (birc.n.a(i)) || (birc.e.a(i)) || (birc.d(i)))
-    {
-      localHashSet.add(Integer.valueOf(131072));
-      localHashSet.add(Integer.valueOf(196608));
-      localHashSet.add(Integer.valueOf(262144));
-      localHashSet.add(Integer.valueOf(327680));
-      localHashSet.add(Integer.valueOf(393216));
-      localHashSet.add(Integer.valueOf(458752));
-      localHashSet.add(Integer.valueOf(524288));
-      localHashSet.add(Integer.valueOf(589824));
-      localHashSet.add(Integer.valueOf(655360));
-      localHashSet.add(Integer.valueOf(786432));
-    }
-    for (;;)
-    {
-      if (birc.a(this.jdField_a_of_type_Biim) == 204)
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_b_of_type_JavaLangString);
+      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount();
+      i = 0;
+      if (i < j)
       {
-        localHashSet.remove(Integer.valueOf(786432));
-        localHashSet.remove(Integer.valueOf(524288));
-      }
-      if (birc.a(this.jdField_a_of_type_Biim) == 205) {
-        localHashSet.remove(Integer.valueOf(655360));
-      }
-      return localHashSet;
-      if (birc.e.a(i))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-        localHashSet.add(Integer.valueOf(786432));
-      }
-      else if ((birc.x.a(i)) || (birc.w.a(i)))
-      {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
+        if (this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i).getString("mime").contains("video")) {
+          this.jdField_a_of_type_Int = i;
+        }
       }
       else
       {
-        localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
-        localHashSet.add(Integer.valueOf(327680));
-        localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(458752));
-        localHashSet.add(Integer.valueOf(524288));
-        localHashSet.add(Integer.valueOf(589824));
-        localHashSet.add(Integer.valueOf(786432));
+        if (this.jdField_a_of_type_Int != -1) {
+          break label121;
+        }
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+        return;
       }
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
+    catch (IOException localIOException1)
     {
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+      for (;;)
+      {
+        int i;
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media extractor setDataSource() exception, msg = " + localIOException1.getMessage());
+        continue;
+        i += 1;
       }
+      localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(this.jdField_a_of_type_Int);
+      str = localMediaFormat.getString("mime");
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, paramSurface, null, 0);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(0L, 0);
       return;
-      localObject = new birn(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bilj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new biku(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bimj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bikc(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bivq(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bior(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new bipa(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new biwr(this.jdField_a_of_type_AndroidAppActivity, (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131362177), this);
-      continue;
-      localObject = new bimz(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
-      continue;
-      localObject = new biru(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
     }
-  }
-  
-  private <T> T b(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
+    catch (IOException localIOException2)
     {
-    default: 
-      return null;
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media codec create exception, msg = " + localIOException2.getMessage());
+      }
     }
-    return this.jdField_a_of_type_Biim;
-  }
-  
-  private void b(int paramInt, Object... paramVarArgs) {}
-  
-  public biqk a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    biwa localbiwa = (biwa)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((localbiwa instanceof bilj)) {
-      return ((bilj)localbiwa).a();
-    }
-    return null;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    biwa localbiwa = (biwa)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localbiwa != null) {
-      return localbiwa.a(paramInt, paramVarArgs);
-    }
-    return b(paramInt, paramVarArgs);
   }
   
   public void a()
   {
-    a(393217, new Object[0]);
-    a(262149, new Object[0]);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_Boolean)
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(0L, 1);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(String paramString, Surface paramSurface)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    int i = a(paramInt);
-    biwa localbiwa = (biwa)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (localbiwa != null)
-    {
-      localbiwa.a(paramInt, paramVarArgs);
+      this.jdField_b_of_type_JavaLangString = paramString;
+      a(paramSurface);
       return;
     }
-    b(paramInt, paramVarArgs);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    catch (Exception paramString)
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramBoolean);
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init exception, msg = " + paramString.getMessage());
     }
   }
   
-  public boolean a(int paramInt)
+  public boolean a()
   {
-    paramInt = a(paramInt);
-    return (biwa)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null;
-  }
-  
-  protected void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      a(((Integer)localIterator.next()).intValue());
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface start");
+    if (!Thread.interrupted())
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a();
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface loop");
+      int i;
+      Object localObject;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+        if (i >= 0)
+        {
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers()[i];
+          j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
+          if (j >= 0) {
+            break label261;
+          }
+          QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface BUFFER_FLAG_END_OF_STREAM");
+          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+      int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.dequeueOutputBuffer, outputBufferIndex = ", Integer.valueOf(j) });
+      switch (j)
+      {
+      }
+      this.c = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.releaseOutputBuffer, outputBufferIndex = ", Integer.valueOf(j), ", timestamp = ", Long.valueOf(this.c) });
+      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
+      {
+        i = 1;
+        label227:
+        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
+        if (i != 0) {
+          break label304;
+        }
+      }
+      label261:
+      label304:
+      for (boolean bool = true;; bool = false)
+      {
+        ((MediaCodec)localObject).releaseOutputBuffer(j, bool);
+        if (i == 0) {
+          break label309;
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface decode complete");
+        return false;
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface mediaCodec.queueInputBuffer");
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), 0);
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+        break;
+        i = 0;
+        break label227;
+      }
+      label309:
+      return true;
     }
+    return false;
   }
   
-  public void d()
+  public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    try
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).b();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.unselectTrack(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      return;
     }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
+    catch (Exception localException)
     {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).c();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).h();
-    }
-  }
-  
-  public void g()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).i();
-    }
-  }
-  
-  public void h()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((biwa)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).g();
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder exception, msg = " + localException.getMessage());
     }
   }
 }

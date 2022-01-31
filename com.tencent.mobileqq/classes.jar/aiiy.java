@@ -1,50 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aiiy
-  extends Handler
+  extends akfa
 {
   public aiiy(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Object paramObject)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
     {
     default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialFriendSettingActivity.a(this.a) == null)
-            {
-              QQSpecialFriendSettingActivity.a(this.a, new bcpq(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialFriendSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-      QQSpecialFriendSettingActivity.a(this.a).dismiss();
-      QQSpecialFriendSettingActivity.a(this.a, null);
       return;
     }
-    bcpw.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 

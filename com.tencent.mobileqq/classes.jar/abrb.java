@@ -1,27 +1,16 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class abrb
-  extends aqkl
+class abrb
+  implements DialogInterface.OnClickListener
 {
-  public abrb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  abrb(abra paramabra) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onBandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    super.a(paramBoolean1, paramString, paramBoolean2);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onDisbandIntimateRelationship");
-    }
-    PermisionPrivacyActivity.a(this.a);
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

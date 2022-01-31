@@ -1,34 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class akhr
-  extends mxm
+  extends akui
 {
-  akhr(akhq paramakhq) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  akhr(akhp paramakhp, String paramString1, long paramLong, String paramString2)
   {
-    if (paramInt == 0)
-    {
-      paramBundle = new oidb_0x496.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        akhq.a(this.a, paramBundle);
-        akhq.b(this.a, paramBundle);
-        akhq.c(this.a, paramBundle);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
-        return;
-      }
+    super(paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
     }
-    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
+    if (paramInt != 0) {
+      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
+    }
+    akhp.a(this.jdField_a_of_type_Akhp, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 

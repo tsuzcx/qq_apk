@@ -1,156 +1,41 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.gdtad.ipc.AppInstallerReceiver;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 
 public class yxt
-  extends ajtd
 {
-  public yxt(AppInterface paramAppInterface)
+  public static void a(yxu paramyxu)
   {
-    super(paramAppInterface);
-  }
-  
-  private void b(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
-  {
-    if ((paramContext != null) && (!TextUtils.isEmpty(paramGdtBaseAdItem.c)))
+    if ((paramyxu == null) || (!paramyxu.a()))
     {
-      AppInstallerReceiver.a().a(paramContext);
-      AppInstallerReceiver.a().a(paramGdtBaseAdItem);
-    }
-  }
-  
-  @Deprecated
-  public void a(Context paramContext, GdtBaseAdItem paramGdtBaseAdItem)
-  {
-    if ((paramContext == null) || (paramGdtBaseAdItem == null)) {
+      yxp.d("GdtActionReporter", "report error");
       return;
     }
-    if (TextUtils.isEmpty(paramGdtBaseAdItem.f)) {
-      paramGdtBaseAdItem.g(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-    }
-    if (anet.a(paramGdtBaseAdItem.jdField_a_of_type_JavaLangString, paramContext))
+    Object localObject1 = paramyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction();
+    try
     {
-      yya.a(paramGdtBaseAdItem.f);
-      if (QLog.isColorLevel()) {
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
+      Object localObject2 = ((String)localObject1).replace("__TRACE_ID__", URLEncoder.encode(paramyxu.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId(), "utf-8")).replace("__PAGE_ACTION_ID__", String.valueOf(paramyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.get()));
+      localObject1 = localObject2;
+      if (paramyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.has()) {
+        localObject1 = ((String)localObject2).replace("__PAGE_TIME__", String.valueOf(paramyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.get()));
       }
-      if (paramGdtBaseAdItem.jdField_b_of_type_Boolean)
-      {
-        yyq.b(paramContext, paramGdtBaseAdItem);
-        return;
+      localObject2 = localObject1;
+      if (paramyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.has()) {
+        localObject2 = ((String)localObject1).replace("__LANDING_ERROR_CODE__", String.valueOf(paramyxu.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_error_code.get()));
       }
-      yyq.a(paramContext, paramGdtBaseAdItem);
+      paramyxu = ((String)localObject2).replace("__OS_TYPE__", String.valueOf(2)).replace("__VERSION__", URLEncoder.encode(yxs.a(), "utf-8"));
+      yxp.b("GdtActionReporter", "GdtActionReporter report url = " + paramyxu);
+      yyb.a(paramyxu);
       return;
     }
-    if (!TextUtils.isEmpty(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString))
+    catch (UnsupportedEncodingException paramyxu)
     {
-      b(paramContext, paramGdtBaseAdItem);
-      label133:
-      String str;
-      if ((yyq.a()) && (paramGdtBaseAdItem.jdField_a_of_type_Boolean))
-      {
-        localObject = "1";
-        if (QLog.isColorLevel()) {
-          QLog.d("GdtAdHandler", 2, "doAppJump autoDownload  " + (String)localObject);
-        }
-        if (!yyq.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString)) {
-          break label576;
-        }
-        if (("1".equals(localObject)) && (TextUtils.isEmpty((String)yyq.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("acttype")))) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&acttype=42";
-        }
-        if (TextUtils.isEmpty((String)yyq.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("wv"))) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString += "&wv=1";
-        }
-        str = (String)yyq.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("_autodownload");
-        if (TextUtils.isEmpty(str)) {
-          break label516;
-        }
-        if (!"1".equals(localObject)) {
-          break label480;
-        }
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("_autodownload=" + str, "_autodownload=" + (String)localObject);
-        label361:
-        if (paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass != null) {
-          break label568;
-        }
-      }
-      label516:
-      label568:
-      for (Object localObject = QQBrowserActivity.class;; localObject = paramGdtBaseAdItem.jdField_a_of_type_JavaLangClass)
-      {
-        localObject = new Intent(paramContext, (Class)localObject);
-        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Intent)localObject).putExtra("url", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject).addFlags(268435456);
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_ads");
-        if (paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle != null) {
-          ((Intent)localObject).putExtras(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
-        }
-        paramContext.startActivity((Intent)localObject);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : custom H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
-        return;
-        localObject = "0";
-        break label133;
-        label480:
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&_autodownload=" + str, "");
-        break label361;
-        if (!"1".equals(localObject)) {
-          break label361;
-        }
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "_autodownload" + "=" + (String)localObject);
-        break label361;
-      }
-      label576:
-      yya.a(paramGdtBaseAdItem.f);
-      paramContext = (String)bdey.a(paramGdtBaseAdItem.jdField_b_of_type_JavaLangString).get("auto_download");
-      if (!TextUtils.isEmpty(paramContext)) {
-        if ("1".equals(localObject)) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("auto_download=" + paramContext, "auto_download=" + (String)localObject);
-        }
-      }
-      for (;;)
-      {
-        paramContext = new Bundle();
-        paramContext.putInt("process_id", 1);
-        paramContext.putString("schemaUrl", paramGdtBaseAdItem.jdField_b_of_type_JavaLangString);
-        paramContext.putBoolean("is_can_open_yyb_native", false);
-        paramContext.putString("big_brother_source_key", "biz_src_ads");
-        paramContext.putAll(paramGdtBaseAdItem.jdField_a_of_type_AndroidOsBundle);
-        yyq.a(paramContext);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("GdtAdHandler", 2, "doAppJump isApkInstalled not : yingyongbao H5 " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
-        return;
-        paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = paramGdtBaseAdItem.jdField_b_of_type_JavaLangString.replace("&auto_download=" + paramContext, "");
-        continue;
-        if ("1".equals(localObject)) {
-          paramGdtBaseAdItem.jdField_b_of_type_JavaLangString = (paramGdtBaseAdItem.jdField_b_of_type_JavaLangString + "&" + "auto_download" + "=" + (String)localObject);
-        }
-      }
+      yxp.d("GdtActionReporter", "report error", paramyxu);
     }
-    QLog.e("GdtAdHandler", 1, "doAppJump download_url null " + paramGdtBaseAdItem.jdField_a_of_type_JavaLangString);
   }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

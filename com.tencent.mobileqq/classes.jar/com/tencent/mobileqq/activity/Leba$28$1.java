@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import abkp;
-import arpq;
+import abkl;
+import arps;
 import java.util.List;
 
 public class Leba$28$1
   implements Runnable
 {
-  public Leba$28$1(abkp paramabkp, List paramList) {}
+  public Leba$28$1(abkl paramabkl, List paramList) {}
   
   public void run()
   {
-    if (Leba.a(this.jdField_a_of_type_Abkp.a) != null)
+    if (Leba.a(this.jdField_a_of_type_Abkl.a) != null)
     {
-      Leba.a(this.jdField_a_of_type_Abkp.a).clear();
-      Leba.a(this.jdField_a_of_type_Abkp.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (Leba.a(this.jdField_a_of_type_Abkp.a) != null) {
-        Leba.a(this.jdField_a_of_type_Abkp.a).b();
+      Leba.a(this.jdField_a_of_type_Abkl.a).clear();
+      Leba.a(this.jdField_a_of_type_Abkl.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (Leba.a(this.jdField_a_of_type_Abkl.a) != null) {
+        Leba.a(this.jdField_a_of_type_Abkl.a).b();
       }
-      Leba.c(this.jdField_a_of_type_Abkp.a);
+      Leba.c(this.jdField_a_of_type_Abkl.a);
     }
   }
 }

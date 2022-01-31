@@ -1,15 +1,20 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
-class aamt
-  implements amck
+public class aamt
+  implements DialogInterface.OnClickListener
 {
-  aamt(aams paramaams, int paramInt1, int paramInt2) {}
+  public aamt(BaseChatPie paramBaseChatPie) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aams.a.a.setOnMeasureListener(null);
-    this.jdField_a_of_type_Aams.a.a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
+    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

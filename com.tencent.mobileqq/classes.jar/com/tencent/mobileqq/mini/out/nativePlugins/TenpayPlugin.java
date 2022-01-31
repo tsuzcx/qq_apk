@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -33,14 +33,14 @@ public class TenpayPlugin
       paramJSContext.putString("callbackSn", "0");
       paramJSContext.putInt("payparmas_paytype", 1);
       if (!PayBridgeActivity.a(this.jsContext.getActivity(), 5, paramJSContext, this.payRecevicer)) {
-        this.jsContext.evaluateCallback(false, null, ajyc.a(2131714844));
+        this.jsContext.evaluateCallback(false, null, ajya.a(2131714855));
       }
       return;
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
-      this.jsContext.evaluateCallback(false, null, ajyc.a(2131714843));
+      this.jsContext.evaluateCallback(false, null, ajya.a(2131714854));
     }
   }
 }

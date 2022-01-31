@@ -1,51 +1,21 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class atgj
+  extends ajtb
 {
-  private SplitedProgressBar a;
-  
-  public atgj(SplitedProgressBar paramSplitedProgressBar)
+  public atgj(QQAppInterface paramQQAppInterface)
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
+    super(paramQQAppInterface);
   }
   
-  public void a(int paramInt)
+  protected Class<? extends ajte> observerClass()
   {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
+    return atgk.class;
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      localSplitedProgressBar.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
-  }
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

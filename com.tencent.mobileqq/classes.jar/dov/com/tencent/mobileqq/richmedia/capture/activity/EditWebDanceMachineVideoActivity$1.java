@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class EditWebDanceMachineVideoActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ class EditWebDanceMachineVideoActivity$1
   
   public void run()
   {
-    bcpw.a(this.this$0, 1, ajyc.a(2131703937), 0).a();
+    bcql.a(this.this$0, 1, ajya.a(2131703948), 0).a();
   }
 }
 

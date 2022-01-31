@@ -1,143 +1,200 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.1;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.2;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ajfr
-  implements ajfl
+  implements ajfi, ajfm
 {
-  private ajfb jdField_a_of_type_Ajfb;
-  private ajfc jdField_a_of_type_Ajfc;
-  private ajff jdField_a_of_type_Ajff;
-  private ajfo jdField_a_of_type_Ajfo;
-  private String jdField_a_of_type_JavaLangString;
+  private static int jdField_a_of_type_Int;
+  private ajez jdField_a_of_type_Ajez;
+  private CopyOnWriteArrayList<SpriteTaskParam> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private int jdField_b_of_type_Int;
+  private CopyOnWriteArrayList<ajfn> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
   
-  public ajfr(ajfb paramajfb, ajfo paramajfo, ajfc paramajfc, ajff paramajff)
+  public ajfr(ajez paramajez)
   {
-    this.jdField_a_of_type_Ajfb = paramajfb;
-    this.jdField_a_of_type_Ajfo = paramajfo;
-    this.jdField_a_of_type_Ajfc = paramajfc;
-    this.jdField_a_of_type_Ajff = paramajff;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, "SpriteTaskHandler constructor.");
+    }
+    this.jdField_a_of_type_Ajez = paramajez;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  private boolean a(int paramInt1, int paramInt2)
+  public SpriteTaskParam a()
   {
-    if ((this.jdField_a_of_type_Ajfb == null) || (this.jdField_a_of_type_Ajfb.a() == null)) {}
-    while (this.jdField_a_of_type_Ajff.a(paramInt1, paramInt2) == null) {
-      return false;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return null;
     }
-    return true;
+    return (SpriteTaskParam)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
+  }
+  
+  public SpriteTaskParam a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
+      if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt) {
+        return localSpriteTaskParam;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, "[findTask], task NOT found in queue");
+    }
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ajfc.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, "[clear]");
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Ajez != null)) {
+      VipUtils.a(this.jdField_a_of_type_Ajez.a(), "cmshow", "Apollo", "play_times", ApolloUtil.b(this.jdField_a_of_type_Ajez.jdField_a_of_type_Int), 0, new String[] { Integer.toString(this.jdField_b_of_type_Int), this.jdField_a_of_type_Ajez.jdField_a_of_type_JavaLangString });
+    }
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void a(ajfb paramajfb)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, "[initSprite]");
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoTaskHandler", 1, "[removeTask], fail. NO task. taskId:" + paramInt);
     }
-    if ((this.jdField_a_of_type_Ajfc == null) || (paramajfb == null) || (!paramajfb.c())) {
-      if (paramajfb != null) {
-        ajlq.a(paramajfb.a(), 300, 160, new Object[] { "glview is not ready" });
-      }
-    }
-    String str;
-    ajes localajes;
     do
     {
-      do
-      {
-        return;
-        if (a(0, -1)) {
-          break;
-        }
-        QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
-      } while (paramajfb.e != 1);
-      ThreadManager.getUIHandler().post(new SpriteDrawerInfoBridge.2(this, paramajfb));
       return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        str = this.jdField_a_of_type_Ajfc.a();
-        QLog.d("CmShowStatUtil", 1, "drawer get spriteJs");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, new Object[] { "[removeTask], total task num:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramInt) });
       }
-      while (TextUtils.isEmpty(str))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        ajlq.a(paramajfb.a(), 300, 301, new Object[] { "spriteJs is empty" });
-        return;
-        str = this.jdField_a_of_type_JavaLangString;
-        QLog.d("CmShowStatUtil", 1, "drawer spriteJs from cache");
-        this.jdField_a_of_type_JavaLangString = null;
+        SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
+        if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt)
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localSpriteTaskParam);
+          return;
+        }
       }
-      localajes = (ajes)this.jdField_a_of_type_Ajff.a(0);
-    } while (localajes == null);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("initDrawerInfoSprite('").append(str).append("');");
-    ajlq.a(this.jdField_a_of_type_Ajfb.a(), 350);
-    localajes.a(localStringBuilder.toString());
-    ThreadManager.executeOnSubThread(new SpriteDrawerInfoBridge.3(this, localajes, paramajfb));
+    } while (!QLog.isColorLevel());
+    QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, "[removeTask], task NOT found in queue");
   }
   
   public void a(SpriteTaskParam paramSpriteTaskParam)
   {
-    if (paramSpriteTaskParam == null) {
+    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_Ajez == null))
+    {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoTaskHandler", 1, "[addTask], fail. null param");
       return;
     }
-    ThreadManager.excute(new SpriteDrawerInfoBridge.1(this, paramSpriteTaskParam), 192, null, true);
+    paramSpriteTaskParam.jdField_b_of_type_Int = 1;
+    int i = jdField_a_of_type_Int + 1;
+    jdField_a_of_type_Int = i;
+    paramSpriteTaskParam.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, paramSpriteTaskParam);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, new Object[] { "[addTask], size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramSpriteTaskParam.jdField_a_of_type_Int) });
+    }
+    a(null);
   }
   
-  public void b() {}
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onStartAction], taskId:", Integer.valueOf(paramInt) });
+    }
+    paramString = a(paramInt);
+    if (paramString == null) {
+      return;
+    }
+    paramString.jdField_b_of_type_Int = 3;
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajfn localajfn = (ajfn)localIterator.next();
+      if (localajfn != null) {
+        localajfn.a(paramString, paramString.jdField_a_of_type_Long);
+      }
+    }
+    this.jdField_b_of_type_Int += 1;
+  }
   
-  public void b(SpriteTaskParam paramSpriteTaskParam)
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onCompleteAction], taskId:", Integer.valueOf(paramInt1), ",type:", Integer.valueOf(paramInt2) });
+    }
+    paramString = a(paramInt1);
+    if (paramString == null) {
+      return;
+    }
+    paramString.jdField_b_of_type_Int = 6;
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajfn localajfn = (ajfn)localIterator.next();
+      if (localajfn != null) {
+        localajfn.a(paramString, paramString.jdField_a_of_type_Long, paramInt2);
+      }
+    }
+    a(paramInt1);
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) || (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)) {
+      return false;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)localIterator.next();
+      if ((localSpriteTaskParam != null) && (localSpriteTaskParam.jdField_b_of_type_Int == 3)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(SpriteTaskParam paramSpriteTaskParam)
   {
     boolean bool = true;
-    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_Ajfc == null) || (this.jdField_a_of_type_Ajfb == null) || (!this.jdField_a_of_type_Ajfb.c())) {
-      return;
-    }
-    this.jdField_a_of_type_Ajfc.a(paramSpriteTaskParam);
-    if (!a(paramSpriteTaskParam.jdField_c_of_type_Int, paramSpriteTaskParam.f))
+    if ((this.jdField_a_of_type_Ajez == null) || (!this.jdField_a_of_type_Ajez.c()))
     {
-      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[playAction], fail to load script.");
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_Ajfc.a(paramSpriteTaskParam);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return;
-    }
-    ajet localajet = this.jdField_a_of_type_Ajff.a(paramSpriteTaskParam.jdField_c_of_type_Int);
-    if (localajet == null)
-    {
-      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "actionScript == null.");
-      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
-    }
-    paramSpriteTaskParam.jdField_b_of_type_Int = 2;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("playDrawerInfoAction ('").append((String)localObject).append("');");
-    localajet.a(localStringBuilder.toString());
-    localajet.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
-    localajet.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
-    localObject = this.jdField_a_of_type_Ajfb.a();
-    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      ajkk.a((QQAppInterface)localObject, paramSpriteTaskParam, bool, paramSpriteTaskParam.jdField_b_of_type_Boolean);
-      return;
+      QLog.w("cmshow_scripted_SpriteDrawerInfoTaskHandler", 1, "surfaceview is NOT ready.");
       bool = false;
     }
+    SpriteTaskParam localSpriteTaskParam;
+    do
+    {
+      return bool;
+      localSpriteTaskParam = paramSpriteTaskParam;
+      if (paramSpriteTaskParam == null) {
+        localSpriteTaskParam = a();
+      }
+      if ((localSpriteTaskParam == null) || (localSpriteTaskParam.jdField_b_of_type_Int == 2)) {
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteDrawerInfoTaskHandler", 2, new Object[] { "[execSpriteTask], taskId:", Integer.valueOf(localSpriteTaskParam.jdField_a_of_type_Int), ",actionId:", Integer.valueOf(localSpriteTaskParam.f) });
+      }
+    } while (localSpriteTaskParam.jdField_a_of_type_Ajfj == null);
+    localSpriteTaskParam.jdField_a_of_type_Ajfj.b(localSpriteTaskParam);
+    return true;
   }
 }
 

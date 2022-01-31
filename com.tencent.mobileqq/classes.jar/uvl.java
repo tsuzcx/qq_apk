@@ -1,38 +1,33 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.reactive.SimpleObserver;
 import java.util.List;
 
-public class uvl
+class uvl
+  extends SimpleObserver<uoy>
 {
-  private sss<uvr> a;
+  uvl(uvk paramuvk) {}
   
-  public void a()
+  public void a(uoy paramuoy)
   {
-    try
+    super.onNext(paramuoy);
+    if (paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (this.a != null)
-      {
-        this.a.a();
-        this.a = null;
-      }
-      return;
+      tbw localtbw = (tbw)tcz.a(17);
+      localtbw.a(paramuoy.jdField_a_of_type_JavaUtilList, paramuoy.jdField_a_of_type_JavaLangString, false, false);
+      paramuoy.jdField_a_of_type_JavaUtilList.addAll(localtbw.b(paramuoy.jdField_a_of_type_JavaLangString, false));
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    stb.a().dispatch(paramuoy);
+    this.a.b();
+    ved.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
   }
   
-  public void a(List<uvr> paramList)
+  public void onError(@NonNull Error paramError)
   {
-    try
-    {
-      if (this.a == null) {
-        this.a = new sss(new uvn());
-      }
-      this.a.a(paramList);
-      return;
-    }
-    finally {}
+    super.onError(paramError);
+    this.a.b();
+    ved.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
   }
 }
 

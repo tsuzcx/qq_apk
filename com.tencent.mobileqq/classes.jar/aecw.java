@@ -1,28 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
-import com.tencent.qphone.base.util.QLog;
 
 public class aecw
-  extends bbwf
+  implements sur
 {
-  public aecw(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, aecz paramaecz, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
+  long jdField_a_of_type_Long;
+  aecx jdField_a_of_type_Aecx;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onDone(bbwg parambbwg)
+  public aecw(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    String str = parambbwg.a().getString("filePath");
-    if (parambbwg.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
-      }
-      this.jdField_a_of_type_Aecz.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Aecz.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Aecz.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Aecz.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
-    }
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import airz;
-import ajmr;
+import airx;
+import ajmp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigDataReport$1
@@ -14,7 +14,7 @@ public final class ApolloConfigDataReport$1
     if (this.a == null) {
       return;
     }
-    ((airz)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new ajmr(this));
+    ((airx)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new ajmp(this));
   }
 }
 

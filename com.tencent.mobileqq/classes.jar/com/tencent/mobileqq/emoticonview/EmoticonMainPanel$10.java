@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anza;
+import anzf;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 class EmoticonMainPanel$10
   implements Runnable
 {
-  EmoticonMainPanel$10(EmoticonMainPanel paramEmoticonMainPanel, boolean paramBoolean, anza paramanza) {}
+  EmoticonMainPanel$10(EmoticonMainPanel paramEmoticonMainPanel, boolean paramBoolean, anzf paramanzf) {}
   
   public void run()
   {
     EmoticonMainPanel.a(this.this$0, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Anza != null) {
+    if (this.jdField_a_of_type_Anzf != null) {
       ThreadManager.getUIHandler().post(new EmoticonMainPanel.10.1(this));
     }
   }

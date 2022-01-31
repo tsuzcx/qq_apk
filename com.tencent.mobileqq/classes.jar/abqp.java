@@ -1,28 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqp
-  extends BroadcastReceiver
+  extends ajzk
 {
-  WeakReference<PayBridgeActivity> a;
+  public abqp(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public abqp(PayBridgeActivity paramPayBridgeActivity)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
     }
+    if (!paramBoolean1) {
+      this.a.a(2131719386, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

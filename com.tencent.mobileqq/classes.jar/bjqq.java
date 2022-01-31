@@ -1,119 +1,37 @@
-public class bjqq
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+class bjqq
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  private int d;
-  public boolean d;
-  private int e;
-  public boolean e;
-  private int f;
-  public boolean f;
-  private int g;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  private boolean j = true;
-  private boolean k = true;
-  private boolean l = true;
-  private boolean m;
-  private boolean n;
+  boolean jdField_a_of_type_Boolean = false;
   
-  private bjqq(bjqs parambjqs)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_g_of_type_Int = 1;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = ahua.jdField_d_of_type_Int;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.j = bjqs.a(parambjqs);
-    this.k = bjqs.b(parambjqs);
-    this.l = bjqs.c(parambjqs);
-    this.m = bjqs.d(parambjqs);
-    this.jdField_a_of_type_Boolean = parambjqs.jdField_a_of_type_Boolean;
-    this.n = parambjqs.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = parambjqs.jdField_c_of_type_Boolean;
-    this.jdField_d_of_type_Int = bjqs.a(parambjqs);
-    this.jdField_e_of_type_Int = bjqs.b(parambjqs);
-    this.i = bjqs.e(parambjqs);
-    this.jdField_f_of_type_Int = bjqs.c(parambjqs);
-    this.jdField_g_of_type_Int = bjqs.d(parambjqs);
-    this.jdField_c_of_type_Boolean = bjqs.f(parambjqs);
-    this.jdField_e_of_type_Boolean = parambjqs.jdField_e_of_type_Boolean;
-    this.jdField_c_of_type_Int = parambjqs.jdField_a_of_type_Int;
-    this.jdField_f_of_type_Boolean = bjqs.g(parambjqs);
-    this.jdField_d_of_type_Boolean = bjqs.h(parambjqs);
-    this.jdField_g_of_type_Boolean = parambjqs.jdField_d_of_type_Boolean;
-    this.h = bjqs.i(parambjqs);
-  }
+  bjqq(bjqp parambjqp) {}
   
-  public int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public boolean a()
-  {
-    return this.j;
-  }
-  
-  public int b()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    return this.h;
-  }
-  
-  public int c()
-  {
-    return this.jdField_g_of_type_Int;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.l;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean g()
-  {
-    return this.n;
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean i()
-  {
-    return this.i;
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      return true;
+      this.jdField_a_of_type_Bjqp.a.a.setBackgroundColor(this.jdField_a_of_type_Bjqp.a.getResources().getColor(2131165321));
+      this.jdField_a_of_type_Boolean = true;
+      return true;
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Bjqp.a.a.setBackgroundColor(this.jdField_a_of_type_Bjqp.a.getResources().getColor(2131165323));
+    if (!this.jdField_a_of_type_Bjqp.a.f)
+    {
+      this.jdField_a_of_type_Bjqp.a.f = true;
+      this.jdField_a_of_type_Bjqp.a.h();
+    }
+    this.jdField_a_of_type_Boolean = false;
+    return true;
   }
 }
 

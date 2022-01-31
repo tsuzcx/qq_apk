@@ -4,12 +4,9 @@ import android.content.DialogInterface.OnClickListener;
 class atpw
   implements DialogInterface.OnClickListener
 {
-  atpw(atpi paramatpi) {}
+  atpw(atpk paramatpk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

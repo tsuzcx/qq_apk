@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
 public final class aldv
-  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+    return new ARScanStarFaceActInfo(paramParcel);
   }
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public ARScanStarFaceActInfo[] a(int paramInt)
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 

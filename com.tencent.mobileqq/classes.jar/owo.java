@@ -1,46 +1,80 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class owo
-  extends GestureDetector.SimpleOnGestureListener
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  public owo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public owo(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
   {
-    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
-      {
-        ReadInjoyIMAXAdFragment.a(this.a, true);
-        ReadInjoyIMAXAdFragment.a(this.a);
-        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, nmf.q);
-      }
-      return true;
-    }
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (ReadInjoyIMAXAdFragment.a(this.a)) {
-      return true;
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
     }
-    ReadInjoyIMAXAdFragment.a(this.a, true);
-    ReadInjoyIMAXAdFragment.a(this.a);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
-      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
+    ReadInjoyIMAXAdFragment.d = true;
+    paramTVK_IMediaPlayer.i();
+    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
+      }
+      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.i();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramSurfaceHolder == null) {
+      return;
     }
-    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), nmf.s);
-    ReadInjoyIMAXAdFragment.b(this.a, 2);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
-      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    paramSurfaceHolder.c();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
     }
-    ReadInjoyIMAXAdFragment.d(this.a, 0);
-    return true;
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
   }
 }
 

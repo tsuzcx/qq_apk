@@ -1,155 +1,78 @@
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 
 public class atiw
 {
-  protected static int a;
-  protected static long a;
-  protected static String a;
-  protected static int b;
-  protected static long b;
-  protected static long c;
-  protected static long d;
-  protected static long e;
-  protected static long f;
+  private static atiw a = new atiw();
   
-  static
+  public static atiw a()
   {
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = "";
+    return a;
   }
   
-  public static long a()
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
   {
-    return f - jdField_a_of_type_Long;
-  }
-  
-  public static void a()
-  {
-    jdField_b_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartGetVideoInfoTime,time = " + jdField_b_of_type_Long);
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_b_of_type_Int = paramInt;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    c = 0L;
-    e = 0L;
-    f = 0L;
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_JavaLangString = nam.a() + "";
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportEntryTime,time = " + jdField_a_of_type_Long);
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoLoad,time =  feedid = " + paramString + " loadingTime =" + jdField_a_of_type_Int);
-    }
-    axqw.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_load_again", paramInt, 0, String.valueOf(jdField_a_of_type_Int), "", "", "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayResult,time = feedid = " + paramString1 + " playType=" + paramInt + " errCode=" + paramString2 + " subErrCode=" + paramString3);
-    }
-    axqw.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_result", paramInt, 0, paramString2, paramString3, "", "||" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
-  {
-    if (jdField_b_of_type_Int == 2) {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
+    {
+      ved.e("ImageLoader", "ImageView or uri is null.");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, " reportVideoSurportPlayOnline,time =  feedid = " + paramString1 + " reportType=" + paramInt + " downloadProgress=" + paramString2 + " videoSize=" + paramString3 + "downloadedSize=" + paramString4 + "waitTime=" + (System.currentTimeMillis() - jdField_a_of_type_Long) + " isPlaying = " + paramBoolean + " startPlayTime =  " + f);
+      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
     }
-    int i;
-    if (paramBoolean)
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      i = 1;
-      paramString5 = new StringBuilder().append(System.currentTimeMillis() - jdField_a_of_type_Long).append("|");
-      if (f != 0L) {
-        break label212;
+      localURLDrawableOptions.mRequestWidth = paramInt1;
+      localURLDrawableOptions.mRequestHeight = paramInt2;
+    }
+    Drawable localDrawable = paramDrawable1;
+    if (paramDrawable1 == null) {
+      localDrawable = aywm.a;
+    }
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    paramDrawable1 = paramDrawable2;
+    if (paramDrawable2 == null) {
+      paramDrawable1 = aywm.a;
+    }
+    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
+    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
+    localURLDrawableOptions.mUseAutoScaleParams = false;
+    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+    if (paramBoolean) {
+      paramString.setDecodeHandler(bavw.a);
+    }
+    if (paramURLDrawableListener != null)
+    {
+      if (paramString.getStatus() != 1) {
+        break label208;
       }
+      ved.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramString);
     }
-    label212:
-    for (int j = 1;; j = 2)
+    for (;;)
     {
-      axqw.b(null, "dc02676", "grp_lbs", paramString1, "video_quality", "play_support_online", paramInt, i, paramString2, paramString3, paramString4, j + "|" + paramString1 + "|||" + jdField_a_of_type_JavaLangString);
+      paramString.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramString);
       return;
-      i = 0;
-      break;
+      label208:
+      ved.b("ImageLoader", "start load URLDrawable.");
     }
   }
   
-  public static void a(String paramString, int paramInt, boolean paramBoolean)
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    if (jdField_b_of_type_Int != 0) {
-      return;
-    }
-    long l1 = f - e;
-    long l2 = c - jdField_b_of_type_Long;
-    long l3 = d - jdField_a_of_type_Long;
-    long l4 = f - jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportVideoPlayLoadTime,videoLoadTime = " + l1 + " getVideoInfoTime = " + l2 + " initVideoListUITime =" + l3 + " allTimeConsume=" + l4 + " feedsid=" + paramString + " playType=" + paramInt + " isUrlProvide=" + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      axqw.b(null, "dc02676", "grp_lbs", paramString, "video_quality", "play_loading_time", paramInt, i, String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4) + "||" + paramString + "|||" + jdField_a_of_type_JavaLangString);
-      return;
-    }
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
   }
   
-  public static long b()
+  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
   {
-    return f - e;
-  }
-  
-  public static void b()
-  {
-    c = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportFinisGetVideoInfoTime,time = " + c);
-    }
-  }
-  
-  public static void c()
-  {
-    d = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportUIInitFinishTime,time = " + d);
-    }
-  }
-  
-  public static void d()
-  {
-    e = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportInitToPlayTime,time = " + e);
-    }
-  }
-  
-  public static void e()
-  {
-    f = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("QualityReporter", 2, "reportStartPlayTime,time = " + f);
-    }
-  }
-  
-  public static void f()
-  {
-    jdField_a_of_type_Int += 1;
+    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
   }
 }
 

@@ -1,40 +1,30 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.os.Parcel;
+import org.json.JSONObject;
 
-class smb
-  implements sju
+public class smb
 {
-  smb(slz paramslz, boolean paramBoolean1, boolean paramBoolean2) {}
+  public String mAbTest;
+  public int mType;
   
-  public void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp)
+  protected smb(Parcel paramParcel)
   {
-    sne.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
-    if ((paramstSimpleGetFeedListRsp != null) && (paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
-    {
-      slz.a(this.jdField_a_of_type_Slz, true);
-      if (!slz.a(this.jdField_a_of_type_Slz)) {
-        break label48;
-      }
-    }
-    label48:
-    WSRecommendFragment localWSRecommendFragment;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramstSimpleGetFeedListRsp = paramstSimpleGetFeedListRsp.feeds;
-        } while (slz.a(this.jdField_a_of_type_Slz) == null);
-        localWSRecommendFragment = (WSRecommendFragment)slz.a(this.jdField_a_of_type_Slz).get();
-      } while (localWSRecommendFragment == null);
-      localWSRecommendFragment.a(paramstSimpleGetFeedListRsp, this.jdField_a_of_type_Boolean, this.b);
-    } while ((this.jdField_a_of_type_Boolean) || (slz.a(this.jdField_a_of_type_Slz)));
-    sne.d("WSRecommendFragmentPresenter", "showTopLoading");
-    localWSRecommendFragment.a(true);
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
+  }
+  
+  protected smb(JSONObject paramJSONObject)
+  {
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 

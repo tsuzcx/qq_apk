@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public final class ajnu
-  implements aisi
+  implements BusinessObserver
 {
-  public ajnu(ajob paramajob, QQAppInterface paramQQAppInterface) {}
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Ajob.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
+    }
+    if (paramBoolean)
+    {
+      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
+      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
+    }
   }
 }
 

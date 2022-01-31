@@ -1,14 +1,18 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.content.Context;
+import java.util.Observable;
 
 public class bgiy
-  extends AVContext.StartParam
+  extends Observable
 {
-  public int a;
-  public long a;
+  public void a(Context paramContext)
+  {
+    setChanged();
+    notifyObservers(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,104 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
-public class auhp
-  implements Observer
+class auhp
+  extends akat
 {
-  auhp(auhi paramauhi) {}
+  auhp(auhk paramauhk) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void a(boolean paramBoolean, String paramString, ayaz paramayaz)
   {
-    if ((auhi.a(this.a) == null) || (auhi.a(this.a).isFinishing()) || (auhi.a(this.a) == null)) {
-      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
+    if ((auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null) || (paramayaz == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, isSuccess: %s, mainAccount: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+    }
+    for (;;)
+    {
+      return;
+      if (!TextUtils.equals(paramString, auhk.a(this.a).getCurrentAccountUin()))
+      {
+        QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, mainAccount: %s not equal", new Object[] { paramString }));
+        return;
+      }
+      if (auhk.a(this.a))
+      {
+        if (paramBoolean) {
+          auhk.c(this.a, true);
+        }
+        if (auhk.b(this.a) > 0) {
+          auhk.c(this.a);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, "onSubAccountThirdQQUnreadMsgNum() mRequestNum = " + auhk.b(this.a));
+        }
+        if (auhk.b(this.a) == 0)
+        {
+          auhk.b(this.a, false);
+          if (auhk.b(this.a)) {
+            auhk.a(this.a);
+          }
+        }
+      }
+      else if ((paramBoolean) && (auhk.a(this.a) != null))
+      {
+        int j = auhk.a(this.a).getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          paramayaz = auhk.a(this.a).getChildAt(i);
+          paramString = (String)paramayaz.getTag(2131361879);
+          if ((!TextUtils.isEmpty(paramString)) && ((paramayaz.getTag() instanceof auia)))
+          {
+            paramayaz = (auia)paramayaz.getTag();
+            if (paramayaz.a == 1) {
+              paramayaz.b(ayaq.a(auhk.a(this.a), paramString));
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, ayay paramayay)
+  {
+    if ((auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null) || (paramayay == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, isSuccess: %s, subAccount: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
     do
     {
       do
       {
+        do
+        {
+          do
+          {
+            return;
+            if (!auhk.a(this.a)) {
+              break;
+            }
+            if (paramBoolean) {
+              auhk.c(this.a, true);
+            }
+            if (auhk.b(this.a) > 0) {
+              auhk.c(this.a);
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("AccountPanel", 2, "onGetSubAccountMsg() mRequestNum=" + auhk.b(this.a));
+            }
+          } while (auhk.b(this.a) != 0);
+          auhk.b(this.a, false);
+        } while (!auhk.b(this.a));
+        auhk.a(this.a);
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountPanel", 2, "update");
-        }
-      } while (!(paramObject instanceof String[]));
-      paramObservable = (String[])paramObject;
-    } while ((paramObservable.length != 2) || (!ajsf.x.equals(paramObservable[0])));
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "update() -> before update");
-    }
-    auhi.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
+      } while (!paramBoolean);
+      paramayay = auhk.a(this.a, paramString);
+    } while (paramayay == null);
+    paramayay.b(auhk.a(this.a).a().a().a(paramString, 7000));
   }
 }
 

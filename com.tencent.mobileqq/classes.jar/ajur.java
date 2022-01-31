@@ -1,22 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class ajur
-  extends BroadcastReceiver
+  extends akat
 {
-  ajur(ajuo paramajuo, QQAppInterface paramQQAppInterface) {}
+  ajur(ajum paramajum) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (paramIntent != null)
+    if ((paramInt1 == 1) && (this.a.a()))
     {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
-        this.jdField_a_of_type_Ajuo.a();
-      }
+      this.a.a(true);
+      ajum.a(this.a, awzy.a());
+      this.a.app.a().a(0).b();
+    }
+    this.a.a.a(this.a);
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (this.a.b()))
+    {
+      this.a.b(true);
+      ajum.b(this.a, awzy.a());
+      this.a.app.a().a(1).b();
     }
   }
 }

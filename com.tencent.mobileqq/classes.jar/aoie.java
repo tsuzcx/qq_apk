@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoie
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends ajxj
 {
-  public aoie(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
+  public aoie(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onGlobalLayout()
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
-    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
-    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onUpdateAddFriend isSuccess=%s addSuccess=%s reqestUin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    }
+    paramString = this.a.a.a(this.a.c);
+    if ((paramString != null) && (!paramString.mAddFriendVerified))
+    {
+      paramString.mAddFriendVerified = true;
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.2.1(this));
+    }
   }
 }
 

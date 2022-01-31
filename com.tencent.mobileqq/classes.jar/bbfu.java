@@ -1,283 +1,196 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.QAVHrMeeting.1;
+import android.content.Context;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Map;
+import java.io.IOException;
 
 public class bbfu
 {
-  public static int a(long paramLong)
-  {
-    return (int)(0x3 & paramLong);
-  }
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = 14;
+  private long jdField_a_of_type_Long;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[320];
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte = new byte[320];
+  private int jdField_d_of_type_Int;
+  private byte[] jdField_d_of_type_ArrayOfByte = new byte[10240];
   
-  public static Bundle a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  public bbfu(Context paramContext, int paramInt)
   {
-    long l1 = 0L;
-    paramBundle = paramBundle.getString("uin");
-    paramQQAppInterface = ((ajvk)paramQQAppInterface.getManager(53)).a(paramBundle);
-    int i = -1;
-    long l2;
-    if (paramQQAppInterface != null)
+    if (!jdField_a_of_type_Boolean) {}
+    try
     {
-      l2 = paramQQAppInterface.mOrigin;
-      l1 = paramQQAppInterface.mOriginExtra;
-      if (b(l2)) {
-        i = paramQQAppInterface.mSelfRight;
+      bool = SoLoadUtilNew.loadSoByName(paramContext, "amrnb");
+      if (bool)
+      {
+        jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Int = paramInt;
+        this.jdField_a_of_type_Int = bbby.a(paramInt);
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+        this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateEncoder();
+        this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrEncoderNew(this.jdField_a_of_type_Long);
+        AmrInputStreamWrapper.GsmAmrEncoderInitialize(this.jdField_b_of_type_Long);
+        return;
       }
     }
-    for (;;)
+    catch (Throwable paramContext)
     {
-      paramQQAppInterface = new Bundle();
-      paramQQAppInterface.putLong("Origin", l2);
-      paramQQAppInterface.putLong("OriginExtra", l1);
-      paramQQAppInterface.putInt("SelfRight", i);
-      if (AudioHelper.e()) {
-        QLog.w("QAVHrMeeting", 1, "GetDiscussOrigin, uin[" + paramBundle + "], Origin[" + l2 + "], OriginExtra[" + l1 + "], mSelfRight[" + i + "]");
-      }
-      return paramQQAppInterface;
-      i = 0;
-      continue;
-      l2 = 0L;
-    }
-  }
-  
-  public static String a()
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(2131693360);
-  }
-  
-  public static String a(ajvk paramajvk, String paramString1, String paramString2)
-  {
-    paramajvk = paramajvk.a(paramString1);
-    if (paramajvk != null)
-    {
-      paramajvk = (DiscussionMemberInfo)paramajvk.get(paramString2);
-      if (paramajvk != null) {
-        if (!TextUtils.isEmpty(paramajvk.inteRemark)) {
-          paramajvk = paramajvk.inteRemark;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load failed, exception info : " + QLog.getStackTraceString(paramContext));
+        }
+        boolean bool = false;
+        continue;
+        try
+        {
+          System.loadLibrary("amrnb");
+          jdField_a_of_type_Boolean = true;
+        }
+        catch (UnsatisfiedLinkError paramContext) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load system way failed, exception info : " + QLog.getStackTraceString(paramContext));
         }
       }
     }
-    for (;;)
+  }
+  
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_b_of_type_Long == 0L)) {
+      throw new IllegalStateException("not open");
+    }
+    if (AmrInputStreamWrapper.GsmAmrEncoderEncode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+      b();
+    }
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   4: lconst_0
+    //   5: lcmp
+    //   6: ifeq +14 -> 20
+    //   9: aload_0
+    //   10: getfield 56	bbfu:jdField_a_of_type_Long	J
+    //   13: aload_0
+    //   14: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   17: invokestatic 121	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderCleanup	(JJ)V
+    //   20: aload_0
+    //   21: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifeq +14 -> 40
+    //   29: aload_0
+    //   30: getfield 56	bbfu:jdField_a_of_type_Long	J
+    //   33: aload_0
+    //   34: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   37: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   40: aload_0
+    //   41: lconst_0
+    //   42: putfield 62	bbfu:jdField_b_of_type_Long	J
+    //   45: aload_0
+    //   46: invokevirtual 117	bbfu:b	()V
+    //   49: return
+    //   50: astore_1
+    //   51: aload_0
+    //   52: lconst_0
+    //   53: putfield 62	bbfu:jdField_b_of_type_Long	J
+    //   56: aload_1
+    //   57: athrow
+    //   58: astore_1
+    //   59: aload_0
+    //   60: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifeq +14 -> 79
+    //   68: aload_0
+    //   69: getfield 56	bbfu:jdField_a_of_type_Long	J
+    //   72: aload_0
+    //   73: getfield 62	bbfu:jdField_b_of_type_Long	J
+    //   76: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   79: aload_0
+    //   80: lconst_0
+    //   81: putfield 62	bbfu:jdField_b_of_type_Long	J
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_1
+    //   87: aload_0
+    //   88: lconst_0
+    //   89: putfield 62	bbfu:jdField_b_of_type_Long	J
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	bbfu
+    //   50	7	1	localObject1	Object
+    //   58	27	1	localObject2	Object
+    //   86	7	1	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	40	50	finally
+    //   0	20	58	finally
+    //   59	79	86	finally
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (this.jdField_c_of_type_Int + paramInt > 10240) {
+      this.jdField_d_of_type_ArrayOfByte = new byte[this.jdField_c_of_type_Int + paramInt];
+    }
+    if (this.jdField_c_of_type_Int + paramInt < 320)
     {
-      paramString1 = paramajvk;
-      if (TextUtils.isEmpty(paramajvk)) {
-        paramString1 = a();
-      }
-      return paramString1;
-      if (!TextUtils.isEmpty(paramajvk.memberName)) {
-        paramajvk = paramajvk.memberName;
-      } else {
-        paramajvk = "";
-      }
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+      return null;
     }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (paramQQAppInterface == null) {
-      return;
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, 0, this.jdField_c_of_type_Int);
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int + paramInt);
+    paramInt = this.jdField_d_of_type_Int % 320;
+    this.jdField_c_of_type_Int = paramInt;
+    if (paramInt != 0) {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, this.jdField_d_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
     }
-    Object localObject1 = (ajvk)paramQQAppInterface.getManager(53);
-    Object localObject2 = (ajvi)paramQQAppInterface.a(6);
-    QLog.d("QAVHrMeeting", 1, "HR_meeting Finish quit DiscussionId[" + paramLong + "]");
-    ((ajvi)localObject2).c(paramLong);
-    ((ajvk)localObject1).c(String.valueOf(paramLong));
-    localObject1 = paramQQAppInterface.a().a();
-    localObject2 = ((aktg)localObject1).b(String.valueOf(paramLong), 3000);
-    if (localObject2 != null) {
-      ((aktg)localObject1).b((RecentUser)localObject2);
-    }
-    ((ajvi)paramQQAppInterface.a(6)).a();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, DiscussionInfo paramDiscussionInfo)
-  {
-    DiscussionInfo localDiscussionInfo = paramDiscussionInfo;
-    if (paramDiscussionInfo == null) {
-      localDiscussionInfo = ((ajvk)paramQQAppInterface.getManager(53)).a(String.valueOf(paramLong));
-    }
-    if (localDiscussionInfo == null) {}
-    while (((localDiscussionInfo.mOrigin & 0x2) == 2L) || ((localDiscussionInfo.mOrigin & 0x4) != 4L)) {
-      return;
-    }
-    a(paramQQAppInterface, paramLong);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, int paramInt, long paramLong)
-  {
-    if (paramInt != 2) {}
-    DiscussionInfo localDiscussionInfo;
-    do
+    paramArrayOfByte = new byte[this.jdField_d_of_type_Int / 320 * this.jdField_a_of_type_Int];
+    int i = 0;
+    paramInt = 0;
+    while (this.jdField_d_of_type_Int >= 320)
     {
-      return;
-      localDiscussionInfo = ((ajvk)paramQQAppInterface.getManager(53)).a(String.valueOf(paramLong));
-    } while ((localDiscussionInfo == null) || (!localDiscussionInfo.isDiscussHrMeeting()));
-    paramInt = paramIntent.getIntExtra("quitReson", -1);
-    if ((paramInt != 20) && (paramInt != 7)) {
-      a(paramQQAppInterface, paramLong, localDiscussionInfo);
-    }
-    if (a(localDiscussionInfo.mSelfRight)) {
-      ((ajvi)paramQQAppInterface.a(6)).a(paramLong);
-    }
-    QLog.e("QAVHrMeeting", 1, "do Report, lFlag=" + localDiscussionInfo.mOrigin);
-    paramLong = paramQQAppInterface.a().a();
-    long l = System.currentTimeMillis();
-    akwj.a(paramQQAppInterface).a(paramLong, l);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("uin");
-    ((ajvi)paramQQAppInterface.a(6)).a(Long.valueOf(paramBundle).longValue(), 1);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo, DiscussionMemberInfo paramDiscussionMemberInfo)
-  {
-    if (!paramDiscussionInfo.isDiscussHrMeeting()) {
-      return;
-    }
-    paramDiscussionMemberInfo.memberName = a();
-    paramDiscussionMemberInfo.inteRemark = paramDiscussionMemberInfo.memberName;
-    a(paramQQAppInterface, paramDiscussionInfo.uin, paramDiscussionMemberInfo.memberUin, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.msgtype == -2016) || (paramMessageRecord.msgtype == -4008) || (paramMessageRecord.istroop != 3000)) {}
-    Object localObject;
-    do
-    {
-      do
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, paramInt, this.jdField_a_of_type_ArrayOfByte, 0, 320);
+      try
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.w("QAVHrMeeting", 1, "onMsgUpdae, curFriendUin[" + paramMessageRecord.frienduin + "], senderuin[" + paramMessageRecord.senderuin + "], isSendFromLocal[" + paramMessageRecord.isSendFromLocal() + "], isSend[" + paramMessageRecord.isSend() + "], msgtype[" + paramMessageRecord.msgtype + "], isread[" + paramMessageRecord.isread + "], msgseq[" + paramMessageRecord.msgseq + "], uniseq[" + paramMessageRecord.uniseq + "], msg[" + AudioHelper.a(paramMessageRecord.msg) + "]");
-            }
-            if (!paramMessageRecord.isSend()) {
-              break;
-            }
-          } while (!paramMessageRecord.isSendFromLocal());
-          localObject = ((ajvk)paramQQAppInterface.getManager(53)).a(paramMessageRecord.frienduin);
-        } while ((localObject == null) || (!((DiscussionInfo)localObject).isDiscussHrMeeting()) || (a(((DiscussionInfo)localObject).mSelfRight)) || (((DiscussionInfo)localObject).getHrExtra() != 1));
-        ((ajvi)paramQQAppInterface.a(6)).a(Long.valueOf(paramMessageRecord.frienduin).longValue(), 2);
-        return;
-      } while (paramMessageRecord.msgtype != -1000);
-      localObject = (ajvk)paramQQAppInterface.getManager(53);
-      paramMessageRecord = ((ajvk)localObject).a(paramMessageRecord.frienduin);
-    } while ((paramMessageRecord == null) || (!paramMessageRecord.isHidden()) || (paramMessageRecord.getHrExtra() != 1));
-    paramMessageRecord.mOriginExtra = 2L;
-    ((ajvk)localObject).a(paramMessageRecord);
-    a("onMsgUpdae", paramQQAppInterface, paramMessageRecord);
-    a(paramQQAppInterface, paramMessageRecord.uin);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = (ajvi)paramQQAppInterface.a(6);
-    paramQQAppInterface.notifyUI(1000, true, null);
-    ArrayList localArrayList = new ArrayList(2);
-    localArrayList.add(paramString);
-    localArrayList.add(1, Boolean.valueOf(true));
-    paramQQAppInterface.notifyUI(1001, true, localArrayList);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, bbfv parambbfv)
-  {
-    AudioHelper.b("获取hr信息_delay_" + paramString2);
-    String str = "http://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_nickname_video_meeting_for_hr?uin=" + paramString2 + "&discid=" + paramString1;
-    ThreadManager.post(new QAVHrMeeting.1("QAVHrMeeting_" + AudioHelper.b(), str, paramString2, paramQQAppInterface, paramString1, parambbfv), 5, null, false);
-  }
-  
-  public static void a(String paramString, QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo)
-  {
-    if ((paramDiscussionInfo.mOrigin & 0x2) != 2L) {
-      return;
-    }
-    boolean bool = a(paramDiscussionInfo.mSelfRight);
-    long l = paramDiscussionInfo.uiControlFlag;
-    ajvk localajvk;
-    if (bool)
-    {
-      localajvk = (ajvk)paramQQAppInterface.getManager(53);
-      paramQQAppInterface = (ajvi)paramQQAppInterface.a(6);
-      if (paramDiscussionInfo.getHrExtra() != 1) {
-        break label176;
+        a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        i += this.jdField_b_of_type_ArrayOfByte.length;
+        paramInt += 320;
+        this.jdField_d_of_type_Int -= 320;
       }
-      localajvk.a(paramDiscussionInfo.uin);
-      paramQQAppInterface.notifyUI(1004, true, paramDiscussionInfo.uin);
-    }
-    for (;;)
-    {
-      QLog.w("QAVHrMeeting", 1, "checkHrConfHidden[" + paramString + "], mSelfRight[" + paramDiscussionInfo.mSelfRight + "][" + bool + "], uiControlFlag[" + l + "->" + paramDiscussionInfo.uiControlFlag + "], getHrExtra[" + paramDiscussionInfo.getHrExtra() + "]");
-      return;
-      label176:
-      localajvk.b(paramDiscussionInfo.uin);
-      Long.parseLong(paramDiscussionInfo.uin);
-      paramQQAppInterface = paramDiscussionInfo.discussionName;
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -1) || ((paramInt & 0x8) == 8);
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return (paramLong & 1L) == 1L;
-  }
-  
-  public static int b(long paramLong)
-  {
-    long l2 = 0L;
-    boolean bool = false;
-    Object localObject1 = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("uin", String.valueOf(paramLong));
-    localObject1 = ((VideoAppInterface)localObject1).a(5, 0, 0, (Bundle)localObject2, null);
-    int i = -1;
-    long l1;
-    if (localObject1 != null)
-    {
-      l2 = ((Bundle)localObject1).getLong("Origin", 0L);
-      l1 = ((Bundle)localObject1).getLong("OriginExtra", 0L);
-      i = ((Bundle)localObject1).getInt("SelfRight", 0);
-    }
-    for (;;)
-    {
-      localObject2 = new StringBuilder().append("getStasks, relationId[").append(paramLong).append("], mOrigin[").append(l2).append("], mOriginExtra[").append(l1).append("], mSelfRight[").append(i).append("], rsp[");
-      if (localObject1 != null) {
-        bool = true;
+      catch (IOException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "========mPcm2Amr.pcm2amrParser==IOException=====", paramArrayOfByte);
+        }
+        b();
+        return null;
       }
-      QLog.w("QAVHrMeeting", 1, bool + "]");
-      return i;
-      l1 = 0L;
     }
+    if (i == paramArrayOfByte.length) {
+      return paramArrayOfByte;
+    }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+    return arrayOfByte;
   }
   
-  public static boolean b(long paramLong)
+  public void b()
   {
-    return (0x6 & paramLong) != 0L;
+    this.jdField_c_of_type_Int = 0;
   }
 }
 

@@ -1,26 +1,48 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianProfileCardActivity;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bdvc
+  extends URLDrawableDownListener.Adapter
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<URLImageView> jdField_a_of_type_JavaLangRefWeakReference = null;
+  boolean jdField_a_of_type_Boolean = true;
+  WeakReference<QQAppInterface> b = null;
+  WeakReference<Drawable> c = null;
+  WeakReference<QidianProfileCardActivity> d = null;
   
-  public bdvc(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
+  public bdvc(QidianProfileCardActivity paramQidianProfileCardActivity, QQAppInterface paramQQAppInterface, URLImageView paramURLImageView, String paramString, Drawable paramDrawable, boolean paramBoolean)
   {
-    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
-      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
-      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
-      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
-    }
-    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
-      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramDrawable);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = new WeakReference(paramQidianProfileCardActivity);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    super.onLoadSuccessed(paramView, paramURLDrawable);
+    paramView = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.d.get();
+    if ((paramView != null) && (localQQAppInterface != null) && (localQidianProfileCardActivity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramURLDrawable = new BitmapDrawable(QidianProfileCardActivity.a(localQQAppInterface, paramURLDrawable, this.jdField_a_of_type_Boolean));
+      if (this.jdField_a_of_type_Boolean) {
+        localQidianProfileCardActivity.b.put(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
+      }
+      paramView.setImageDrawable(paramURLDrawable);
     }
   }
 }

@@ -1,7 +1,7 @@
 package cooperation.photoplus;
 
 import android.os.Bundle;
-import bgkj;
+import bgla;
 import cooperation.photoplus.sticker.Sticker;
 import eipc.EIPCResult;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import org.json.JSONArray;
 public class PhotoPlusModule$1
   implements Runnable
 {
-  public PhotoPlusModule$1(bgkj parambgkj, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
+  public PhotoPlusModule$1(bgla parambgla, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
   
   public void run()
   {

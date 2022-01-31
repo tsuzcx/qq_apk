@@ -7,10 +7,10 @@ import android.os.Build;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbct;
-import bbdj;
-import bgxr;
-import bkur;
+import bbdh;
+import bbdx;
+import bgyi;
+import bkvi;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -74,15 +74,15 @@ public class QQEnvImp
     {
       String str = AppLoaderFactory.PATH_WXAPKG_ROOT + GameInfoManager.g().getAppId() + "_debug";
       if (new File(str).exists()) {
-        bbdj.a(str, false);
+        bbdx.a(str, false);
       }
       str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(GameInfoManager.g().getAppId());
       if (new File(str).exists()) {
-        bbdj.a(str, false);
+        bbdx.a(str, false);
       }
       str = "/data/data/com.tencent.mobileqq/cache/mini/" + MainPageFragment.getUin() + "/" + GameInfoManager.g().getAppId();
       if (new File(str).exists()) {
-        bbdj.a(str, false);
+        bbdx.a(str, false);
       }
       GameLog.getInstance().e("QQEnvImp", "cleanCache succeed!");
       return;
@@ -195,7 +195,7 @@ public class QQEnvImp
   @NonNull
   public String getGlobalConfig()
   {
-    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bgxr.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
+    return "self = GameGlobal = __TT__GLOBAL__ = global = window = this;\nself.__ttObjdec__ = {};\nself.wx = self.wx || {};\nself.WeixinNativeBuffer = Triton.WeixinNativeBuffer;\nvar __wxConfig = __wxConfig || {};\n__wxConfig.env = {};\n__wxConfig.env.USER_DATA_PATH = '" + MiniAppGlobal.STR_WXFILE + "usr';\n__wxConfig.platform = 'android';\n__wxConfig.QUA = '" + bgyi.a() + "';\nwx.env = __wxConfig.env;\nvar __qqConfig = __wxConfig || {};\n";
   }
   
   public Set<String> getLogBlackList()
@@ -215,7 +215,7 @@ public class QQEnvImp
   
   public String getPlatformVersion()
   {
-    return bbct.c();
+    return bbdh.c();
   }
   
   public String getResPath(String paramString1, String paramString2, MiniGameInfo paramMiniGameInfo)
@@ -246,7 +246,7 @@ public class QQEnvImp
   
   public boolean isNotchValid()
   {
-    return bkur.b();
+    return bkvi.b();
   }
   
   public int jsErrorDetectInterval()

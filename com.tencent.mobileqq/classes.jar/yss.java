@@ -1,22 +1,18 @@
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
 
-public class yss
+public final class yss
+  implements Parcelable.Creator<GdtHandler.Options>
 {
-  public int a;
-  public long a;
-  public qq_ad_get.QQAdGet a;
-  public qq_ad_get.QQAdGetRsp a;
-  
-  public yss()
+  public GdtHandler.Options a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
+    return new GdtHandler.Options(paramParcel);
   }
   
-  public boolean a()
+  public GdtHandler.Options[] a(int paramInt)
   {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
+    return new GdtHandler.Options[paramInt];
   }
 }
 

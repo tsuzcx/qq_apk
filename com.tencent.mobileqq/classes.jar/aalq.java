@@ -1,71 +1,54 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aalq
-  extends VerifyDevLockManager.VerifyDevLockObserver
+class aalq
+  extends aumg
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  aalq(aalo paramaalo) {}
   
-  public aalq(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-    this.a = null;
-  }
-  
-  public int getSeq()
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
-      }
-    }
-    return super.getSeq();
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
     }
   }
   
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
     }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
+    if (paramBoolean1)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
+      if (paramBoolean2)
       {
-        localVerifyDevLockObserver.setSeq(paramInt);
-        return;
+        aalo.a(this.a, true);
+        aalo.b(this.a);
       }
+      do
+      {
+        return;
+        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
+          break;
+        }
+        aalo.a(this.a);
+      } while (aalo.a(this.a) == null);
+      Intent localIntent = new Intent(aalo.a(this.a), VerifyPhoneNumActivity.class);
+      localIntent.putExtra("phonenum", this.a.a);
+      localIntent.putExtra("key", this.a.b);
+      localIntent.putExtra("uin", aalo.a(this.a));
+      localIntent.putExtra("key_register_sign", aalo.a(this.a));
+      localIntent.putExtra("key_register_binduin", paramString);
+      aalo.a(this.a).startActivity(localIntent);
+      aalo.a(this.a).finish();
+      return;
+      aalo.b(this.a);
+      return;
     }
-    super.setSeq(paramInt);
+    aalo.b(this.a);
   }
 }
 

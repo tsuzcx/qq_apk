@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.ABORT, columnNames="mGameId,mUin")
 public class ApolloGameScoreData
-  extends aukm
+  extends auko
 {
-  @aulx
+  @aulz
   public boolean mFromDb = true;
-  @auma
+  @aumc
   public int mGameId;
   public int mScore;
   public String mUin;

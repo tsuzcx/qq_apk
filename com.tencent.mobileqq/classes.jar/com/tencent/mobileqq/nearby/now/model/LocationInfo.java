@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import athm;
+import atho;
 import java.io.Serializable;
 
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator<LocationInfo> CREATOR = new athm();
+  public static final Parcelable.Creator<LocationInfo> CREATOR = new atho();
   public String address = "";
   public String city = "";
   boolean isForeign = false;

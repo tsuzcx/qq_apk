@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import alfw;
-import alkz;
+import alfv;
+import alky;
 
 public class QQARSession$7
   implements Runnable
 {
-  public QQARSession$7(alkz paramalkz, alfw paramalfw, ArLBSActivity paramArLBSActivity) {}
+  public QQARSession$7(alky paramalky, alfv paramalfv, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    alkz.a(this.this$0, this.jdField_a_of_type_Alfw, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    alky.a(this.this$0, this.jdField_a_of_type_Alfv, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

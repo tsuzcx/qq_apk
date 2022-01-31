@@ -1,107 +1,136 @@
-import android.text.SpannableStringBuilder;
-import android.text.TextPaint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class atvb
-  extends BaseAdapter
+  extends atut
 {
-  private int jdField_a_of_type_Int;
-  private atvd jdField_a_of_type_Atvd;
-  private List<atwt> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public void a(atvd paramatvd)
+  public atvb(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Atvd = paramatvd;
+    super(paramContext, paramQQAppInterface);
   }
   
-  public void a(List<atwt> paramList)
+  public int a(atva paramatva)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    return 3;
   }
   
-  public int getCount()
+  public View a(ViewGroup paramViewGroup, atva paramatva)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    paramatva = (atvc)paramatva;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131560895, paramViewGroup, false);
+    paramatva.g = ((TextView)paramViewGroup.findViewById(2131378373));
+    paramatva.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368543));
+    paramatva.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368639));
+    paramatva.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131366091);
+    paramatva.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131366092);
+    return paramViewGroup;
   }
   
-  public Object getItem(int paramInt)
+  public atva a()
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return new atvc(this);
   }
   
-  public long getItemId(int paramInt)
+  public String b(atva paramatva)
   {
-    return paramInt;
+    return ((atwu)((atvc)paramatva).a).jdField_a_of_type_JavaLangString;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void f(atva paramatva)
   {
-    int i = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560894, paramViewGroup, false);
-    atwt localatwt = (atwt)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = localatwt.a;
-    paramView = (View)localObject;
-    if (localObject != null)
+    paramatva = (atvc)paramatva;
+    Object localObject1 = (atwu)paramatva.a;
+    label69:
+    int j;
+    if (((atwu)localObject1).c > 1)
     {
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
+      paramatva.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      paramatva.jdField_f_of_type_AndroidViewView.setVisibility(0);
+      paramatva.g.setMovementMethod(LinkMovementMethod.getInstance());
+      if (!TextUtils.isEmpty(((atwu)localObject1).n)) {
+        break label307;
+      }
+      paramatva.g.setVisibility(8);
+      j = vzl.a(this.a, 200.0F);
+      if ((((atwu)localObject1).jdField_a_of_type_Int <= 0) || (((atwu)localObject1).jdField_b_of_type_Int <= 0)) {
+        break label414;
       }
     }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
-    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject = localatwt.b;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    label414:
+    for (int i = ((atwu)localObject1).jdField_b_of_type_Int * j / ((atwu)localObject1).jdField_a_of_type_Int;; i = j)
     {
-      localSpannableStringBuilder.append(" 回复 ");
-      paramView = (View)localObject;
-      if (((String)localObject).length() > 9) {
-        paramView = ((String)localObject).substring(0, 8) + "...";
+      if (i * 3 > j * 4) {
+        i = j * 4 / 3;
       }
-      localSpannableStringBuilder.append(paramView);
-      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
-    }
-    localSpannableStringBuilder.append("：").append(localatwt.c);
-    paramView = localTextView.getPaint();
-    localObject = new ArrayList();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = (vzo.a(localTextView.getContext()) - vzo.a(localTextView.getContext(), 85.0F));
-    }
-    paramInt = 0;
-    while (paramInt < localSpannableStringBuilder.length())
-    {
-      int j = i;
-      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
+      for (;;)
       {
-        ((List)localObject).add(Integer.valueOf(paramInt - 1));
-        j = paramInt;
+        for (;;)
+        {
+          Object localObject2;
+          if (!TextUtils.equals((String)paramatva.jdField_e_of_type_AndroidWidgetImageView.getTag(2131376882), ((atwu)localObject1).jdField_b_of_type_JavaLangString))
+          {
+            paramatva.jdField_e_of_type_AndroidWidgetImageView.setTag(2131376882, ((atwu)localObject1).jdField_b_of_type_JavaLangString);
+            localObject2 = (FrameLayout.LayoutParams)paramatva.jdField_e_of_type_AndroidWidgetImageView.getLayoutParams();
+            if (localObject2 != null) {
+              break label330;
+            }
+            localObject2 = new FrameLayout.LayoutParams(j, i);
+            paramatva.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          try
+          {
+            for (;;)
+            {
+              localObject2 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130844649);
+              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130844649);
+              localObject1 = URLDrawable.getDrawable(((atwu)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+              ((URLDrawable)localObject1).setTag(bavw.b(j, i, baxn.a(this.a, 3.0F)));
+              ((URLDrawable)localObject1).setDecodeHandler(bavw.e);
+              paramatva.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+              return;
+              paramatva.jdField_e_of_type_AndroidViewView.setVisibility(8);
+              paramatva.jdField_f_of_type_AndroidViewView.setVisibility(8);
+              break;
+              label307:
+              paramatva.g.setVisibility(0);
+              paramatva.g.setText(((atwu)localObject1).n);
+              break label69;
+              label330:
+              if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i))
+              {
+                ((FrameLayout.LayoutParams)localObject2).width = j;
+                ((FrameLayout.LayoutParams)localObject2).height = i;
+                paramatva.jdField_e_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              }
+            }
+          }
+          catch (Exception localException)
+          {
+            do
+            {
+              paramatva.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130844649));
+            } while (!QLog.isColorLevel());
+            QLog.i("BaseMomentItemBuilder", 1, localException.toString());
+            return;
+          }
+        }
       }
-      paramInt += 1;
-      i = j;
     }
-    paramView = ((List)localObject).iterator();
-    while (paramView.hasNext())
-    {
-      localObject = (Integer)paramView.next();
-      if (((Integer)localObject).intValue() < localSpannableStringBuilder.length() - 1) {
-        localSpannableStringBuilder.insert(((Integer)localObject).intValue(), "\n");
-      }
-    }
-    localTextView.setText(localSpannableStringBuilder);
-    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localTextView.setOnClickListener(new atvc(this, paramViewGroup));
-    return localTextView;
   }
 }
 

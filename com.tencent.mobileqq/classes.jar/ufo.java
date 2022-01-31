@@ -1,6 +1,6 @@
 public abstract interface ufo
 {
-  public abstract boolean a_(ufk paramufk, int paramInt1, int paramInt2);
+  public abstract void a(ufh paramufh);
 }
 
 

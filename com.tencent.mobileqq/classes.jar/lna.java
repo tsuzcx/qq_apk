@@ -1,77 +1,118 @@
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class lna
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  String b;
-  String c;
-  String d;
+  lmv jdField_a_of_type_Lmv = null;
+  lnb jdField_a_of_type_Lnb = null;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public static lna a()
+  lna()
   {
-    Object localObject = lcy.b(298).jdField_a_of_type_JavaLangString;
-    lna locallna = null;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      locallna = a((String)localObject);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
     }
-    localObject = locallna;
-    if (locallna == null) {
-      localObject = new lna();
-    }
-    return localObject;
+    this.jdField_a_of_type_Lnb = new lnb();
   }
   
-  static lna a(String paramString)
+  static void a(int paramInt)
   {
-    try
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.qavgameplaysomgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, "onEnterBackground");
+    }
+    a();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (lmw.a()) {
+      lmw.a().a.b(paramString);
+    }
+  }
+  
+  public static void a(lmv paramlmv)
+  {
+    SharedPreferences localSharedPreferences = lnd.a();
+    paramlmv = paramlmv.b;
+    localSharedPreferences.edit().putString("so_zip_md5", paramlmv).commit();
+  }
+  
+  public static boolean a()
+  {
+    return lmw.a().a.b();
+  }
+  
+  private boolean b()
+  {
+    QLog.d("QavGPDownloadManager", 4, "innerDownload, start");
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      lna locallna = new lna();
-      boolean bool = AppSetting.b;
-      locallna.jdField_a_of_type_Boolean = localJSONObject.getBoolean("enable");
-      locallna.jdField_a_of_type_Int = localJSONObject.getInt("task_id");
+      if (((QQAppInterface)localObject).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavGPDownloadManager", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, "appRuntime 不是 QQAppInterface");
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_Lmv == null) {
+      this.jdField_a_of_type_Lmv = lmv.a();
+    }
+    localObject = this.jdField_a_of_type_Lmv;
+    if (localObject == null)
+    {
+      QLog.d("QavGPDownloadManager", 2, "downloadInfo == null");
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    if (11 == lnd.a((lmv)localObject)) {}
+    for (boolean bool = true;; bool = false)
+    {
       if (bool)
       {
-        paramString = localJSONObject.getString("url_zip_so_64");
-        locallna.jdField_a_of_type_JavaLangString = paramString;
-        if (!bool) {
-          break label111;
-        }
-        paramString = localJSONObject.getString("MD5_zip_so_64");
-        label68:
-        locallna.b = paramString;
-        if (!bool) {
-          break label121;
-        }
+        QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
+        return this.jdField_a_of_type_Lnb.a((lmv)localObject);
       }
-      label111:
-      label121:
-      for (paramString = localJSONObject.getString("MD5_so_64");; paramString = localJSONObject.getString("MD5_so"))
-      {
-        locallna.c = paramString;
-        locallna.d = localJSONObject.getString("so_name");
-        return locallna;
-        paramString = localJSONObject.getString("url_zip_so");
-        break;
-        paramString = localJSONObject.getString("MD5_zip_so");
-        break label68;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
+      QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
+      return bool;
     }
   }
   
-  public String toString()
+  void b(String paramString)
   {
-    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
+    lmv locallmv = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      locallmv = lmv.a(paramString);
+    }
+    this.jdField_a_of_type_Lmv = locallmv;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.d("QavGPDownloadManager", 1, "handle_QAG_QavGameplay_Config, mNeedDownloadAfterGetConfig == true");
+      this.jdField_a_of_type_Boolean = false;
+      a();
+    }
   }
 }
 

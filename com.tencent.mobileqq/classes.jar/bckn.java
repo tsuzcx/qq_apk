@@ -1,54 +1,81 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.util.StateSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
 
 public class bckn
-  implements View.OnLongClickListener, View.OnTouchListener
+  extends bcnx
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bcko jdField_a_of_type_Bcko;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  private bckn(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  public bckn(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
+    super(null, 0);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(jdField_a_of_type_ArrayOfInt, paramDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, paramDrawable1);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, paramDrawable2.getBounds().right, paramDrawable2.getBounds().bottom);
   }
   
-  public boolean onLongClick(View paramView)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
+    paramView.invalidate();
+  }
+  
+  public void a(bcko parambcko)
+  {
+    this.jdField_a_of_type_Bcko = parambcko;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    int i;
+    do
     {
-      a(paramView);
       return false;
+      i = paramMotionEvent.getAction();
+    } while (i == 2);
+    if (i == 0) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
     }
-    bblr localbblr = new bblr();
-    localbblr.a(2131364825, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131691307), 2130838597);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localbblr, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new bckm(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
+    for (;;)
+    {
+      if ((i == 1) && (this.jdField_a_of_type_Bcko != null)) {
+        this.jdField_a_of_type_Bcko.a(this);
+      }
+      paramView.invalidate();
+      return true;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
     }
-    a(paramView);
-    return true;
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void b(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
+    paramView.invalidate();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
 }
 

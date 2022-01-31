@@ -1,14 +1,17 @@
 import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
+import java.util.List;
 
 public class agzm
-  extends ahac
+  implements agzo
 {
-  public agzm(ExclusiveHbFragment paramExclusiveHbFragment) {}
+  public agzm(IdiomHbFragment paramIdiomHbFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean, List<String> paramList)
   {
-    ExclusiveHbFragment.a(this.a);
+    this.a.c.setText(IdiomHbFragment.a(this.a, true));
+    this.a.c.setSelection(this.a.c.getText().length());
   }
 }
 

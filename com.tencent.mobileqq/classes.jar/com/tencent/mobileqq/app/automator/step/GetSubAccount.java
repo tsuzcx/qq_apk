@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ayat;
+import ayav;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,9 +11,9 @@ public class GetSubAccount
 {
   public int a()
   {
-    ayat localayat = (ayat)this.a.app.getManager(28);
-    if (localayat != null) {
-      localayat.a();
+    ayav localayav = (ayav)this.a.app.getManager(28);
+    if (localayav != null) {
+      localayav.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");

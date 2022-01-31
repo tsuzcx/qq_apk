@@ -1,25 +1,19 @@
 public class bejx
-  implements beju<Boolean>
 {
-  private int a;
+  @bere(a="timeStamp")
+  public int a;
+  @bere(a="muteConfig")
+  public bejv a;
+  @bere(a="signature")
+  public String a;
+  @bere(a="nonceStr")
+  public String b;
+  @bere(a="groupId")
+  public String c;
   
-  public static bejx a(int paramInt)
+  public String toString()
   {
-    bejx localbejx = new bejx();
-    localbejx.a = paramInt;
-    return localbejx;
-  }
-  
-  public Boolean a(begw parambegw)
-  {
-    switch (this.a)
-    {
-    default: 
-      return Boolean.valueOf(false);
-    case 2: 
-      return Boolean.valueOf(parambegw.c());
-    }
-    return Boolean.valueOf(parambegw.d());
+    return "RoomConfig{signature='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nonceStr='" + this.b + '\'' + ", timeStamp=" + this.jdField_a_of_type_Int + ", groupId=" + this.c + ", muteConfig=" + this.jdField_a_of_type_Bejv + '}';
   }
 }
 

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-public class mfy
-  implements DialogInterface.OnClickListener
+class mfy
+  implements View.OnClickListener
 {
-  public mfy(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  mfy(mfv parammfv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
+    }
+    axqy.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
   }
 }
 

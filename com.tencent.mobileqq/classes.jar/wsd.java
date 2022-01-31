@@ -1,64 +1,89 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Base64;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Request.Builder;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import cooperation.qzone.util.QZLog;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class wsd
 {
-  private static volatile wsd jdField_a_of_type_Wsd;
-  private MQLruCache<String, AnimationDrawable> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(10);
-  
-  private Bitmap a(File paramFile)
+  private static String a(String paramString)
   {
-    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
-    {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
-    }
-    return localObject1;
-  }
-  
-  public static wsd a()
-  {
-    if (jdField_a_of_type_Wsd == null) {}
     try
     {
-      if (jdField_a_of_type_Wsd == null) {
-        jdField_a_of_type_Wsd = new wsd();
-      }
-      return jdField_a_of_type_Wsd;
+      paramString = Base64.decode(paramString, 0);
+      SecretKeySpec localSecretKeySpec = new SecretKeySpec("d41d8cd98f00b204e9800998ecf8427e".getBytes(), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/ECB/NoPadding");
+      localCipher.init(2, localSecretKeySpec);
+      paramString = new String(localCipher.doFinal(paramString), "utf-8");
+      return paramString;
     }
-    finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, wsf paramwsf, boolean paramBoolean)
-  {
-    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
-    if (TextUtils.isEmpty(paramString))
+    catch (Throwable paramString)
     {
-      QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
-      if (paramwsf != null) {
-        paramwsf.a();
-      }
+      QZLog.e("EvilReportUtil", "decrypt key error! " + paramString);
     }
-    ThreadManagerV2.executeOnSubThread(new AnimationDrawableFactory.1(this, paramBoolean, paramString, paramInt, paramwsf));
+    return "";
+  }
+  
+  private static String a(wsf paramwsf, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramwsf.a);
+    localStringBuilder.append("_").append(paramwsf.b);
+    localStringBuilder.append("_").append(paramwsf.h);
+    localStringBuilder.append("_").append(a(paramString));
+    paramString = bflg.a(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder().append(paramwsf.d);
+    localStringBuilder.append("_").append(paramwsf.k);
+    localStringBuilder.append("_").append(paramwsf.l);
+    localStringBuilder.append("_").append(paramwsf.m);
+    localStringBuilder.append("_").append(paramwsf.n);
+    localStringBuilder.append("_").append(paramwsf.o);
+    localStringBuilder.append("_").append(paramwsf.p);
+    localStringBuilder.append("_").append(paramwsf.q);
+    localStringBuilder.append("_").append(paramString);
+    return bflg.a(localStringBuilder.toString());
+  }
+  
+  public static void a(Context paramContext, wsf paramwsf)
+  {
+    if ((paramContext == null) || (paramwsf == null)) {
+      return;
+    }
+    Request localRequest = new Request.Builder().url("https://jubao.qq.com/uniform_impeach/impeach_cryptokey").build();
+    new OkHttpClient().newCall(localRequest).enqueue(new wse(paramContext, paramwsf));
+  }
+  
+  private static void b(Context paramContext, wsf paramwsf, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("https://jubao.qq.com/uniform_impeach/impeach_entry");
+    localStringBuilder.append("?system=").append(paramwsf.a);
+    localStringBuilder.append("&version=").append(paramwsf.b);
+    localStringBuilder.append("&uintype=").append(paramwsf.c);
+    localStringBuilder.append("&eviluin=").append(paramwsf.d);
+    localStringBuilder.append("&appname=").append(paramwsf.e);
+    localStringBuilder.append("&appid=").append(paramwsf.f);
+    localStringBuilder.append("&subapp=").append(paramwsf.g);
+    localStringBuilder.append("&scene=").append(paramwsf.h);
+    localStringBuilder.append("&buddyflag=").append(paramwsf.i);
+    localStringBuilder.append("&contentid=").append(paramwsf.j);
+    localStringBuilder.append("&srv_para=").append(paramwsf.k);
+    localStringBuilder.append("&text_evidence=").append(paramwsf.l);
+    localStringBuilder.append("&img_evidence=").append(paramwsf.m);
+    localStringBuilder.append("&url_evidence=").append(paramwsf.n);
+    localStringBuilder.append("&video_evidence=").append(paramwsf.o);
+    localStringBuilder.append("&file_evidence=").append(paramwsf.p);
+    localStringBuilder.append("&audio_evidence=").append(paramwsf.q);
+    localStringBuilder.append("&user_input_param=").append(paramwsf.r);
+    localStringBuilder.append("&cryptograph=").append(a(paramwsf, paramString));
+    paramwsf = new Intent(paramContext, QQBrowserDelegationActivity.class);
+    paramwsf.putExtra("url", localStringBuilder.toString());
+    paramContext.startActivity(paramwsf);
   }
 }
 

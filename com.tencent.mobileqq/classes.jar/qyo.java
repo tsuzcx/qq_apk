@@ -1,22 +1,31 @@
-public abstract class qyo
+import org.jetbrains.annotations.NotNull;
+
+class qyo
 {
-  abstract void a();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   
-  abstract void a(int paramInt1, int paramInt2, String paramString);
+  qyo(qym paramqym, String paramString1, String paramString2, int paramInt1, long paramLong, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
   
-  abstract void a(int paramInt, Object paramObject);
-  
-  abstract void a(String paramString);
-  
-  abstract void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  abstract void a(qub paramqub);
-  
-  abstract void a(boolean paramBoolean);
-  
-  abstract void b(qub paramqub);
-  
-  abstract void c(qub paramqub);
+  @NotNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("PlayParams{vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", url='").append(this.jdField_b_of_type_JavaLangString).append('\'').append(", playType=");
+    if (this.jdField_a_of_type_Int == 2) {}
+    for (String str = "VOD";; str = "LIVE") {
+      return str + '}';
+    }
+  }
 }
 
 

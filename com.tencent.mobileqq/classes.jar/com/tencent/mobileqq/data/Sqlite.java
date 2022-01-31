@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 
 public class Sqlite
-  extends aukm
+  extends auko
 {
   public String tbl_name;
   

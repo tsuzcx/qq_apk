@@ -1,8 +1,17 @@
-public abstract interface adde
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+
+public class adde
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public adde(DoodleMsgLayout paramDoodleMsgLayout)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

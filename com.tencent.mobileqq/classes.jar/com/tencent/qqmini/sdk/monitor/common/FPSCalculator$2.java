@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.monitor.common;
 import android.annotation.TargetApi;
 import android.os.Handler;
 import android.view.Choreographer;
-import besl;
-import bexl;
+import betc;
+import beyc;
 
 public class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(bexl parambexl) {}
+  public FPSCalculator$2(beyc parambeyc) {}
   
   @TargetApi(16)
   public void run()
@@ -18,23 +18,23 @@ public class FPSCalculator$2
     {
       try
       {
-        if (bexl.a(this.this$0) == null) {
+        if (beyc.a(this.this$0) == null) {
           continue;
         }
-        bexl.a(this.this$0).removeFrameCallback(bexl.a(this.this$0));
-        bexl.a(this.this$0).postFrameCallback(bexl.a(this.this$0));
+        beyc.a(this.this$0).removeFrameCallback(beyc.a(this.this$0));
+        beyc.a(this.this$0).postFrameCallback(beyc.a(this.this$0));
       }
       catch (Exception localException)
       {
-        if (!besl.a()) {
+        if (!betc.a()) {
           continue;
         }
-        besl.a("FPSCalculator", "Choreographer.getInstance", localException);
+        betc.a("FPSCalculator", "Choreographer.getInstance", localException);
         continue;
       }
-      bexl.a(this.this$0).removeCallbacks(bexl.a(this.this$0));
+      beyc.a(this.this$0).removeCallbacks(beyc.a(this.this$0));
       return;
-      bexl.a(this.this$0, Choreographer.getInstance());
+      beyc.a(this.this$0, Choreographer.getInstance());
     }
   }
 }

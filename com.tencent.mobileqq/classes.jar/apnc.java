@@ -1,12 +1,28 @@
-import java.util.List;
+import java.net.URL;
 
 public abstract interface apnc
 {
-  public abstract void a(long paramLong);
+  public abstract int a();
   
-  public abstract void a(List<apqg> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  public abstract String a();
   
-  public abstract void b(String paramString1, String paramString2);
+  public abstract URL a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 

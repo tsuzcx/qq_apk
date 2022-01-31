@@ -1,21 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 
-class ajho
-  implements ajie
+public class ajho
+  implements View.OnTouchListener
 {
-  ajho(ajhm paramajhm) {}
+  public ajho(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
-      }
-      if (ajhm.a(this.a) != null) {
-        ajhm.a(this.a).e();
-      }
-      this.a.c();
+    }
+    for (;;)
+    {
+      return true;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
     }
   }
 }

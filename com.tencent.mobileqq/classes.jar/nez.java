@@ -1,8 +1,18 @@
-public class nez
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class nez
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  nez(ney paramney, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
 }
 
 

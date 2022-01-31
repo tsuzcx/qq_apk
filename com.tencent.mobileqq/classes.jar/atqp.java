@@ -1,51 +1,28 @@
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
 
 class atqp
   implements View.OnClickListener
 {
-  atqp(atpi paramatpi, String paramString) {}
+  atqp(atpk paramatpk, String paramString) {}
   
   public void onClick(View paramView)
   {
-    axra localaxra = new axra(this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("live_clk").e(atpi.a(this.jdField_a_of_type_Atpi).uin);
-    if (atpi.a(this.jdField_a_of_type_Atpi).gender == 0) {
-      paramView = "1";
-    }
-    for (;;)
+    Intent localIntent = new Intent(this.jdField_a_of_type_Atpk.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    paramView = this.jdField_a_of_type_Atpk.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atpk.a.j)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      localaxra.a(new String[] { paramView }).a();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "jumpUrl is empty");
-      return;
-      if (atpi.a(this.jdField_a_of_type_Atpi).gender == 1) {
-        paramView = "2";
-      } else {
-        paramView = "0";
-      }
-    }
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
-    {
-      paramView = bbej.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (paramView != null)
-      {
-        paramView.c();
-        return;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("url", paramView);
+      axqy.b(this.jdField_a_of_type_Atpk.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Atpk.a.startActivity(localIntent);
+      this.jdField_a_of_type_Atpk.a.l = true;
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
   }
 }
 

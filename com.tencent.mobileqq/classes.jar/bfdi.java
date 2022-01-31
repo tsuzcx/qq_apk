@@ -1,21 +1,15 @@
-public class bfdi
-  implements beju<Boolean>
+import com.tencent.smtt.sdk.JsContext;
+import com.tencent.smtt.sdk.JsContext.ExceptionHandler;
+import com.tencent.smtt.sdk.JsError;
+
+class bfdi
+  implements JsContext.ExceptionHandler
 {
-  private String a;
+  bfdi(bfdg parambfdg) {}
   
-  public static bfdi a(String paramString)
+  public void handleException(JsContext paramJsContext, JsError paramJsError)
   {
-    bfdi localbfdi = new bfdi();
-    localbfdi.a = paramString;
-    return localbfdi;
-  }
-  
-  public Boolean a(begw parambegw)
-  {
-    if ((parambegw instanceof bfap)) {
-      ((bfap)parambegw).a(this.a);
-    }
-    return Boolean.valueOf(true);
+    betc.d("AppBrandService", "X5Exception:" + paramJsError.getMessage());
   }
 }
 

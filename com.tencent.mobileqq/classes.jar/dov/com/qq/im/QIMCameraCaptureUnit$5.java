@@ -1,18 +1,18 @@
 package dov.com.qq.im;
 
-import bcpw;
-import bify;
+import bcql;
+import bigp;
 import com.tencent.common.app.BaseApplicationImpl;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class QIMCameraCaptureUnit$5
   implements Runnable
 {
-  public QIMCameraCaptureUnit$5(bify parambify) {}
+  public QIMCameraCaptureUnit$5(bigp parambigp) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
     if (this.this$0.h) {
       this.this$0.J();
     }

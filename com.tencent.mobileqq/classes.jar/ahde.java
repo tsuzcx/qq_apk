@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import Wallet.SetSelectedSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public final class ahde
-  implements Parcelable.Creator<RedPacketInfoBase>
+public class ahde
+  implements BusinessObserver
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  public ahde(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new RedPacketInfoBase[paramInt];
+    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
+    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
+    }
   }
 }
 

@@ -1,10 +1,8 @@
-import android.graphics.Bitmap;
-
 public abstract interface bkag
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public abstract void a(int paramInt);
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract void a(bkaf parambkaf);
 }
 
 

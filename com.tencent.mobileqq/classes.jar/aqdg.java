@@ -1,16 +1,29 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 class aqdg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  aqdg(aqdb paramaqdb) {}
+  aqdg(aqdd paramaqdd) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
+    aqdd.a(this.a).setImageResource(2130839619);
+    aqdd.a(this.a).setTag(Integer.valueOf(2130839619));
+    if (aqdd.a(this.a))
+    {
+      aqdd.a(this.a);
+      aqdd.a(this.a).removeView(aqdd.a(this.a));
+      aqdd.a(this.a, false);
+      paramView = this.a.getWindow().getAttributes();
+      paramView.y = 0;
+      this.a.getWindow().setAttributes(paramView);
     }
+    return false;
   }
 }
 

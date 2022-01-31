@@ -1,23 +1,16 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class ahet
-  implements OnCompositionLoadedListener
+  implements DialogInterface.OnClickListener
 {
   public ahet(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.d(this.a) != null) {
-      DrawRedpacketPannelPreviewFragment.d(this.a).setImageDrawable(localLottieDrawable);
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
     }
   }
 }

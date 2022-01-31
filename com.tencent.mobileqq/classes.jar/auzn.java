@@ -1,40 +1,32 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Set;
 
 public class auzn
-  implements ajtg
+  extends bfmx
 {
-  private WeakReference<ProfileHeaderView> a;
+  public auzn(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
   
-  public auzn(ProfileHeaderView paramProfileHeaderView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramProfileHeaderView);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    if (QLog.isColorLevel()) {
+      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772246);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Int < 4)
     {
-      paramObject = (Set)paramObject;
-      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
-      if (localProfileHeaderView == null) {
-        break label80;
-      }
-      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_Auuw.a.jdField_a_of_type_JavaLangString))
-      {
-        localProfileHeaderView.b(localProfileHeaderView.jdField_a_of_type_Auuw, false);
-        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
+      paramAnimation.jdField_a_of_type_Int += 1;
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bfnk.obtainMessage(ProfileHeaderView.b);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Bfnk.sendMessageDelayed(paramAnimation, 4000L);
     }
-    label80:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
   }
 }
 

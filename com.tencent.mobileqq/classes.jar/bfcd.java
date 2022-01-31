@@ -1,17 +1,6 @@
-import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
-import io.flutter.plugin.common.BasicMessageChannel.Reply;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-
-class bfcd
-  implements BasicMessageChannel.MessageHandler<ByteBuffer>
+public abstract interface bfcd
 {
-  bfcd(bfca parambfca) {}
-  
-  public void a(ByteBuffer paramByteBuffer, BasicMessageChannel.Reply<ByteBuffer> paramReply)
-  {
-    besl.c("miniapp-TISSUE", new String(paramByteBuffer.array(), Charset.forName("utf8")));
-  }
+  public abstract void a();
 }
 
 

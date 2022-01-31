@@ -1,26 +1,36 @@
-import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
 public class wvk
-  implements ImageLoader.ImageLoadListener
+  extends wox
 {
-  public wvk(CommodityItemView paramCommodityItemView) {}
+  public wvk(CommodityListView paramCommodityListView) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public woy a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
-    }
+    paramViewGroup = new CommodityItemView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.getContext());
+    paramViewGroup.setIsPublishUI(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
+    paramViewGroup.setCurrentFeed(CommodityListView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView));
+    return new woy(this, paramViewGroup);
   }
   
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (!bfmy.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList))
+    {
+      ((CommodityItemView)paramViewHolder.itemView).setData(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).b().setOnClickListener(new wvl(this, paramInt));
+    }
+  }
 }
 
 

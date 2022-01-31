@@ -1,12 +1,29 @@
-public abstract interface afts
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
+
+public class afts
 {
-  public abstract void a();
+  private BaseActivity a;
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  public afts(BaseActivity paramBaseActivity)
+  {
+    this.a = paramBaseActivity;
+  }
   
-  public abstract void b();
-  
-  public abstract void d();
+  public bfpc a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    bfpc localbfpc = (bfpc)bfpp.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131562573, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837562));
+    localGridView.setAdapter(new aftu(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbfpc.a(localGridView);
+    localbfpc.c(2131690596);
+    return localbfpc;
+  }
 }
 
 

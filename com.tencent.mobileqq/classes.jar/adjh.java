@@ -1,87 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class adjh
-  implements adih
+class adjh
+  implements aoah
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  
-  public adjh(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = ajyc.a(2131714272);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    b();
-  }
+  adjh(adjg paramadjg) {}
   
   public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt == 8) {
+      adjg.a(this.a).b();
+    }
+    while ((paramInt != 0) || (adjg.a(this.a) == 0L)) {
       return;
     }
-    b();
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
-    }
-    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
-      }
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11, 16 };
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
+    long l1 = System.currentTimeMillis();
+    long l2 = adjg.a(this.a);
+    axrn.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    adjg.a(this.a, 0L);
   }
 }
 

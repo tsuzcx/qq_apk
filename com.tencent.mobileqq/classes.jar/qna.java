@@ -1,26 +1,45 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-class qna
-  implements View.OnSystemUiVisibilityChangeListener
+public class qna
+  extends npt
 {
-  qna(qmx paramqmx) {}
+  private qna(qmz paramqmz) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
-    if (qmx.a(this.a) != null)
+    if (paramBundle.getBoolean("is_from_first_recommend_video"))
     {
-      localReadInJoyCommentListFragment = qmx.a(this.a);
-      if ((paramInt & 0x2) != 0) {
+      VideoInfo.EntranceDownloadInfo localEntranceDownloadInfo = (VideoInfo.EntranceDownloadInfo)paramBundle.getParcelable("value_entrance_download_info");
+      if (localEntranceDownloadInfo == null) {
         break label32;
       }
+      qmz.a(this.a, localEntranceDownloadInfo);
     }
-    label32:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localReadInJoyCommentListFragment.a(bool);
       return;
+      label32:
+      qmz.a(this.a, paramBundle.getString("VALUE_COOKIE"));
+      if (paramBoolean)
+      {
+        paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
+        if ((paramBundle != null) && (paramBundle.size() > 0))
+        {
+          paramBundle = (VideoInfo)paramBundle.get(0);
+          qmz.a(this.a, paramBundle);
+        }
+      }
+      while (paramBundle != null)
+      {
+        ThreadManager.post(new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1(this, paramBundle), 5, null, true);
+        return;
+        paramBundle = null;
+      }
     }
   }
 }

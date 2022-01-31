@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class adth
-  implements View.OnClickListener
+  implements bcnl
 {
-  public adth(LightVideoItemBuilder paramLightVideoItemBuilder) {}
+  public adth(LightVideoItemBuilder paramLightVideoItemBuilder, adtj paramadtj) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    this.a.onClick(paramView);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    }
   }
 }
 

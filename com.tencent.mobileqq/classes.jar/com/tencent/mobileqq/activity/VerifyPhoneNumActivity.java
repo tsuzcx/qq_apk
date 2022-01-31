@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acpk;
-import acpl;
-import acpm;
-import ajyc;
+import acpg;
+import acph;
+import acpi;
+import ajya;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import aume;
 import aumg;
 import aumi;
-import bcpq;
-import bcpw;
+import aumk;
+import bcqf;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,14 +30,14 @@ public class VerifyPhoneNumActivity
   implements View.OnClickListener
 {
   protected Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new acpk(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new acpg(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aume jdField_a_of_type_Aume = new acpm(this);
-  private bcpq jdField_a_of_type_Bcpq;
+  private aumg jdField_a_of_type_Aumg = new acpi(this);
+  private bcqf jdField_a_of_type_Bcqf;
   private String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new acpl(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new acph(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
@@ -50,17 +50,17 @@ public class VerifyPhoneNumActivity
   private void b()
   {
     this.leftView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363484));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363483));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363597));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363596));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378451));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378456));
     try
     {
       if ((this.c != null) && (this.c.length() > 4))
       {
         String str = "***" + this.c.substring(this.c.length() - 4, this.c.length());
-        str = getString(2131695026, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
+        str = getString(2131695027, new Object[] { this.jdField_a_of_type_JavaLangString, str, this.d });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
       return;
@@ -84,7 +84,7 @@ public class VerifyPhoneNumActivity
   
   private void d()
   {
-    aumg.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
+    aumi.b(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
   }
   
   private void e()
@@ -92,8 +92,8 @@ public class VerifyPhoneNumActivity
     if (QLog.isColorLevel()) {
       QLog.d("VerifyPhoneNumActivity", 4, "startLogin");
     }
-    aumi.a().a(true);
-    int i = aumi.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    aumk.a().a(true);
+    int i = aumk.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -143,15 +143,15 @@ public class VerifyPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131562591));
-    setTitle(2131695076);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131562590));
+    setTitle(2131695077);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     this.c = getIntent().getStringExtra("key_register_binduin");
     this.d = getIntent().getStringExtra("uin");
     this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("key_register_sign");
     this.e = getIntent().getStringExtra("key_register_password");
-    this.app.registObserver(this.jdField_a_of_type_Aume);
+    this.app.registObserver(this.jdField_a_of_type_Aumg);
     b();
     setRightButton(2131690596, this);
     return true;
@@ -169,18 +169,18 @@ public class VerifyPhoneNumActivity
     if (isFinishing()) {
       return;
     }
-    if (!aumi.a().a())
+    if (!aumk.a().a())
     {
       QLog.d("VerifyPhoneNumActivity", 4, "onAccountChanged not phonenum login");
       return;
     }
-    this.app.unRegistObserver(this.jdField_a_of_type_Aume);
+    this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.registObserver(this.jdField_a_of_type_Aume);
+    this.app.registObserver(this.jdField_a_of_type_Aumg);
     if (this.jdField_a_of_type_Boolean)
     {
       this.app.a(new VerifyPhoneNumActivity.4(this));
-      bcpw.a(BaseApplicationImpl.sApplication, ajyc.a(2131716053), 0).a();
+      bcql.a(BaseApplicationImpl.sApplication, ajya.a(2131716064), 0).a();
     }
     LoginActivity.a(this.app, this.app.getAccount());
     f();
@@ -193,11 +193,11 @@ public class VerifyPhoneNumActivity
     {
     default: 
       return;
-    case 2131363484: 
+    case 2131363483: 
       g();
       d();
       return;
-    case 2131363597: 
+    case 2131363596: 
       g();
       e();
       return;
@@ -210,7 +210,7 @@ public class VerifyPhoneNumActivity
   {
     super.onDestroy();
     a();
-    this.app.unRegistObserver(this.jdField_a_of_type_Aume);
+    this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
   }
 }
 

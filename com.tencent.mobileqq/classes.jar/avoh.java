@@ -1,58 +1,46 @@
-import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
-import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
 public class avoh
-  extends avpg<ReceiptMessageDetailFragment>
+  extends akat
 {
-  public avoh(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public avoh(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(long paramLong1, int paramInt, long paramLong2)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
-      return;
-    }
-    try
-    {
-      paramBundle = new oidb_0x985.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_code.get();
-      if (paramInt == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
-        }
-        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-        paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
-        paramInt = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-        return;
+      if (paramInt != 0) {
+        break label109;
       }
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
+      if (paramLong2 > 0L) {
+        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
+      }
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
+        if (paramLong2 <= 0L) {
+          break label104;
+        }
+        paramInt = 1;
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
+      }
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label104:
+    label109:
+    do
     {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
       return;
-    }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      paramInt = 0;
+      break;
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
   }
 }
 

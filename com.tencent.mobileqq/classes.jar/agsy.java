@@ -1,14 +1,32 @@
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Adapter;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import mqq.util.WeakReference;
 
 class agsy
-  implements View.OnClickListener
+  implements bfpt
 {
-  agsy(agsw paramagsw) {}
+  agsy(agsu paramagsu) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a(false);
+    paramAdapterView = (String)paramAdapterView.getAdapter().getItem(paramInt);
+    if (((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramAdapterView) == 1)
+    {
+      if (((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a != null) {
+        ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a.f();
+      }
+      return;
+    }
+    if (this.a.jdField_a_of_type_Agso.a)
+    {
+      ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a();
+      return;
+    }
+    ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).b();
   }
 }
 

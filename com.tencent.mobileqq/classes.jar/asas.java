@@ -1,19 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
+import com.tencent.qphone.base.util.QLog;
 
-class asas
-  implements View.OnClickListener
+public class asas
+  implements asap
 {
-  asas(asap paramasap, Activity paramActivity) {}
+  asas(asar paramasar) {}
   
-  public void onClick(View paramView)
+  public void a(asam paramasam)
   {
-    LoginUserGuideHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Asap.a.a, asap.a(this.jdField_a_of_type_Asap));
-    this.jdField_a_of_type_Asap.g();
-    axqw.b(this.jdField_a_of_type_Asap.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 2, 0, "2", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
+    }
+    asar.a(this.a, paramasam);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
+    }
+    if (asar.a(this.a) != null) {
+      asar.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    }
   }
 }
 

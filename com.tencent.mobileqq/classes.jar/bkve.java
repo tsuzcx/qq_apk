@@ -1,6 +1,18 @@
-public abstract interface bkve
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+
+public class bkve
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void b(int paramInt);
+  public bkve(CaptureQmcfSoDownloadFragment.7 param7) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+  }
 }
 
 

@@ -10,14 +10,14 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bawz;
+import baxn;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import vzo;
-import wiv;
-import wjm;
+import vzl;
+import wis;
+import wjj;
 
 public class RecommendBannerEntryItemView
   extends RelativeLayout
@@ -52,18 +52,18 @@ public class RecommendBannerEntryItemView
   protected void a(Context paramContext)
   {
     inflate(paramContext, 2131558693, this);
-    setMinimumHeight(bawz.a(paramContext, 213.0F));
-    setPadding(bawz.a(paramContext, 6.0F), bawz.a(paramContext, 10.0F), bawz.a(paramContext, 6.0F), bawz.a(paramContext, 20.0F));
+    setMinimumHeight(baxn.a(paramContext, 213.0F));
+    setPadding(baxn.a(paramContext, 6.0F), baxn.a(paramContext, 10.0F), baxn.a(paramContext, 6.0F), baxn.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362939));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362938));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362954));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131362953));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370816));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361896));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361895));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371745));
-    setOnClickListener(new wjm(this));
+    setOnClickListener(new wjj(this));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -82,10 +82,10 @@ public class RecommendBannerEntryItemView
     {
       if (!this.jdField_b_of_type_Boolean)
       {
-        i2 = bawz.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(bawz.a(getContext(), 15.0F), 0, i2, 436207616);
+        i2 = baxn.a(getContext(), 5.0F);
+        localPaint.setShadowLayer(baxn.a(getContext(), 15.0F), 0, i2, 436207616);
       }
-      int i2 = bawz.a(getContext(), 6.0F);
+      int i2 = baxn.a(getContext(), 6.0F);
       paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
       super.onDraw(paramCanvas);
       return;
@@ -100,10 +100,10 @@ public class RecommendBannerEntryItemView
       return;
     }
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover != null) {
-      vzo.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
+      vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.title.get());
-    if (wiv.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
+    if (wis.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;

@@ -1,9 +1,34 @@
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class afjs
-  extends afjx
+  extends Handler
 {
-  public TextView a;
+  private WeakReference<NewFriendActivity> a;
+  
+  public afjs(NewFriendActivity paramNewFriendActivity)
+  {
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
+  }
 }
 
 

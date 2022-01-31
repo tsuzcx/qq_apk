@@ -1,25 +1,13 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
 public class afxz
-  extends afxr
+  implements DialogInterface.OnClickListener
 {
-  public static final int[] a = { 2131690735 };
-  public static final int[] b = { 2131364095 };
+  public afxz(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public afxz(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

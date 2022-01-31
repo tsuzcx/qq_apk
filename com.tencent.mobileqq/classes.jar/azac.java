@@ -1,41 +1,13 @@
-import android.support.annotation.NonNull;
-
 public class azac
-  implements azab
 {
-  public int a;
-  public String a;
-  public boolean a;
-  
-  public azac()
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return bbvj.a(paramString);
   }
   
-  public int a()
+  public static String a(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(":").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    return bbvj.a(paramString);
   }
 }
 

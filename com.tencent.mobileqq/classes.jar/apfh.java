@@ -1,51 +1,14 @@
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class apfh
-  extends awkd<awog, awwp>
+  extends apfo
 {
-  public apfh(ListView paramListView, baxk parambaxk, List<awog> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public apfh(ViewGroup paramViewGroup)
   {
-    super(parambaxk, paramList);
-    if (paramString == null) {
-      return;
-    }
-    if (paramString.size() == 1)
-    {
-      paramListView = (apfe)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        parambaxk = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new apfe();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          parambaxk.add(paramQQAppInterface);
-        }
-        a(parambaxk);
-        return;
-      }
-    }
-    a(paramString);
-  }
-  
-  protected awrb<awog, awwp> a(int paramInt)
-  {
-    return new apfj(FileSearchFragment.a(this.a));
-  }
-  
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new apfk(paramViewGroup);
+    this.jdField_a_of_type_Int = 2131560477;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
 }
 

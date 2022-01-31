@@ -1,22 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class wqp
-  implements View.OnClickListener
+  extends wps
 {
-  public wqp(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpz paramwpz) {}
-  
-  public void onClick(View paramView)
+  public wqp(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wpz.a.poster.registerCertifiedAccountUrl.get()))
+    super(paramBundle);
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, woz paramwoz)
+  {
+    return SubscribePersonalDetailFragment.a(this.a);
+  }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(wpk paramwpk)
+  {
+    if ((paramwpk.c()) || (paramwpk.d()))
     {
-      wiv.a(this.jdField_a_of_type_Wpz.a.poster.registerCertifiedAccountUrl.get());
-      xhe.b(this.jdField_a_of_type_Wpz.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
+      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
+      {
+        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
+        wpt.a().a(localSubDraftChangeEvent);
+      }
+      SubscribePersonalDetailFragment.a(this.a, paramwpk);
     }
   }
 }

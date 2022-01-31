@@ -1,26 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class anjb
-  implements DialogInterface.OnClickListener
+  extends ClickableSpan
 {
-  public anjb(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  public anjb(MessageForFoldMsgGrayTips paramMessageForFoldMsgGrayTips, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (bbev.d(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin;
+    Object localObject1 = new JSONObject();
+    paramView = new JSONObject();
+    try
     {
-      paramDialogInterface.dismiss();
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
-      return;
+      ((JSONObject)localObject1).put("name", localObject2);
+      ((JSONObject)localObject1).put("grouptype", 1 + "");
+      ((JSONObject)localObject1).put("groupid", str);
+      localObject2 = (agvx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex))) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId = ((String)((agvx)localObject2).h.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex));
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) {
+        return;
+      }
+      localObject2 = (String)((agvx)localObject2).d.get(((agvx)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.istroop) + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        return;
+      }
+      ((JSONObject)localObject1).put("listid", this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      ((JSONObject)localObject1).put("authkey", localObject2);
+      paramView.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramView.put("viewTag", "redgiftDetail");
+      paramView.put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
+      paramView.put("come_from", 2);
+      paramView.put("extra_data", localObject1);
     }
-    bcpw.a(BaseApplication.getContext(), 1, 2131691488, 0).a();
+    catch (Exception localException)
+    {
+      label295:
+      break label295;
+    }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("json", paramView.toString());
+    ((Bundle)localObject1).putString("callbackSn", "0");
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, PayBridgeActivity.class);
+    paramView.putExtras((Bundle)localObject1);
+    paramView.putExtra("pay_requestcode", 5);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    return;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

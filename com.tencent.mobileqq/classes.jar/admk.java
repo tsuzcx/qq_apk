@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.ark.ArkHorizontalListView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 
 public class admk
-  extends aecg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ArkHorizontalListView a;
-  public String b;
+  public admk(ArkAppRootLayout paramArkAppRootLayout) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (ArkAppRootLayout.a(this.a) != null) {
+      ArkAppRootLayout.a(this.a).a();
+    }
+    return super.onSingleTapUp(paramMotionEvent);
+  }
 }
 
 

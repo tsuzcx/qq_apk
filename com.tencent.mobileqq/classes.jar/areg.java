@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.shadow.core.common.ILoggerFactory;
+import com.tencent.shadow.core.common.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
-public final class areg
-  implements Parcelable.Creator<IVPluginInfo>
+public class areg
+  implements ILoggerFactory
 {
-  public IVPluginInfo a(Parcel paramParcel)
+  private static areg jdField_a_of_type_Areg = new areg();
+  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
+  
+  public static ILoggerFactory a()
   {
-    return new IVPluginInfo(paramParcel);
+    return jdField_a_of_type_Areg;
   }
   
-  public IVPluginInfo[] a(int paramInt)
+  public Logger getLogger(String paramString)
   {
-    return new IVPluginInfo[paramInt];
+    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
+    if (localLogger != null) {
+      paramString = localLogger;
+    }
+    areh localareh;
+    do
+    {
+      return paramString;
+      localareh = new areh(this, paramString);
+      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localareh);
+      paramString = localLogger;
+    } while (localLogger != null);
+    return localareh;
   }
 }
 

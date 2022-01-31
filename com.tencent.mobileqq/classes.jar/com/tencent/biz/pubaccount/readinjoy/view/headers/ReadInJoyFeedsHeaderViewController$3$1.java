@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import akja;
-import rom;
+import akiz;
+import roj;
 
 class ReadInJoyFeedsHeaderViewController$3$1
   implements Runnable
@@ -14,8 +14,8 @@ class ReadInJoyFeedsHeaderViewController$3$1
       return;
     }
     this.a.this$0.f();
-    this.a.this$0.jdField_a_of_type_Akja = new akja(this.a.a);
-    this.a.this$0.jdField_a_of_type_Akja.a(this.a.a, 6);
+    this.a.this$0.jdField_a_of_type_Akiz = new akiz(this.a.a);
+    this.a.this$0.jdField_a_of_type_Akiz.a(this.a.a, 6);
   }
 }
 

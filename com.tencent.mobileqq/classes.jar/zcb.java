@@ -1,85 +1,58 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
 public class zcb
-  extends zbu
+  extends URLDrawableParams
 {
-  public zcb(GdtVideoImaxFragment paramGdtVideoImaxFragment, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  Context a;
+  
+  public zcb(Context paramContext, File paramFile)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    super(paramContext);
+    this.a = paramContext;
+    aywm.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new ayqe(paramFile);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
-    super.onPageFinished(paramWebView, paramString);
-    yxs.b("AbsWebView", "onPageFinished:" + paramString);
-    GdtVideoImaxFragment.a(this.a, true);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    yxs.b("AbsWebView", "onPageStarted:" + paramString);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    GdtVideoImaxFragment.a(this.a, false);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-    yxs.b("AbsWebView", "onReceivedTitle: " + paramString);
-    GdtVideoImaxFragment.a(this.a).setWebBarTitle(paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    yxs.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    for (;;)
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-      return true;
-      Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      localObject = AdUriUtil.parse(paramString);
-      if (localObject != null) {}
-      for (paramString = ((Uri)localObject).getScheme(); mvv.a().a(paramWebView.getUrl(), paramString).booleanValue(); paramString = null)
-      {
-        paramWebView = new Intent("android.intent.action.VIEW", (Uri)localObject);
-        paramWebView.addFlags(268435456);
-        try
-        {
-          this.mContext.startActivity(paramWebView);
-          return true;
-        }
-        catch (ActivityNotFoundException paramWebView)
-        {
-          yxs.d("AbsWebView", paramWebView.toString());
-          return true;
-        }
+        return new ayrp(bool, paramObject);
+        bool = false;
       }
     }
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bbqx.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846926);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846926);
   }
 }
 

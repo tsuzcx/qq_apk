@@ -23,9 +23,9 @@ import android.widget.ViewSwitcher.ViewFactory;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import uxy;
-import vxs;
-import vzo;
+import uxv;
+import vxp;
+import vzl;
 
 public class ThumbSlideShowView
   extends ImageSwitcher
@@ -35,7 +35,7 @@ public class ThumbSlideShowView
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ArrayList<LocalMediaInfo> jdField_a_of_type_JavaUtilArrayList;
-  private uxy jdField_a_of_type_Uxy;
+  private uxv jdField_a_of_type_Uxv;
   private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
   private Handler b;
   
@@ -54,10 +54,10 @@ public class ThumbSlideShowView
   private Bitmap a(Context paramContext, LocalMediaInfo paramLocalMediaInfo, int paramInt, BitmapFactory.Options paramOptions)
   {
     Bitmap localBitmap = null;
-    vxs.b();
+    vxp.b();
     if (paramContext == null)
     {
-      vxs.a("Need the context to get thumbnail!", new Object[0]);
+      vxp.a("Need the context to get thumbnail!", new Object[0]);
       paramContext = localBitmap;
     }
     do
@@ -65,7 +65,7 @@ public class ThumbSlideShowView
       return paramContext;
       if ((paramInt != 1) && (paramInt != 3))
       {
-        vxs.a("kind is illegal", new Object[0]);
+        vxp.a("kind is illegal", new Object[0]);
         return null;
       }
       long l = paramLocalMediaInfo._id;
@@ -87,7 +87,7 @@ public class ThumbSlideShowView
     super.setAnimateFirstView(true);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Uxy = new uxy(vzo.b(getContext(), 8.0F), 0, 1.418182F, null, null);
+    this.jdField_a_of_type_Uxv = new uxv(vzl.b(getContext(), 8.0F), 0, 1.418182F, null, null);
   }
   
   public void a()
@@ -170,7 +170,7 @@ public class ThumbSlideShowView
         }
         if (paramMessage != null)
         {
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_Uxy.a(paramMessage));
+          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_Uxv.a(paramMessage));
           paramMessage.recycle();
         }
       }

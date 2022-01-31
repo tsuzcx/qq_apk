@@ -2,15 +2,14 @@ import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiService;
 
 class wyo
-  implements bcaz
+  extends bbwt
 {
-  wyo(wym paramwym, int paramInt, String paramString) {}
+  wyo(wyj paramwyj, Bundle paramBundle) {}
   
-  public void a(Bundle paramBundle)
+  public void onDone(bbwu parambbwu)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Wym.a.a(119, paramBundle);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Wyj.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

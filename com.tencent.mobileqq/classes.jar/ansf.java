@@ -1,419 +1,244 @@
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
-import com.tencent.image.URLDrawable;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Button;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager.2;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager.3;
+import com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback.4;
+import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.manager.Manager;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class ansf
-  implements Manager
+  implements Handler.Callback, auoq
 {
-  public volatile int a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ansg(this);
-  public aukn a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public List<URLDrawable> a;
-  private ConcurrentHashMap<String, EmoticonFromGroupEntity> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(600);
-  public volatile boolean a;
-  public volatile int b;
-  private List<EmoticonFromGroupEntity> jdField_b_of_type_JavaUtilList;
-  private ConcurrentHashMap<String, EmoticonFromGroupEntity> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-  public boolean b;
-  private boolean c;
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+  StructMsgForImageShare jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare;
+  private WeakReference<ansj> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ansf(QQAppInterface paramQQAppInterface)
+  public ansf(QQAppInterface paramQQAppInterface, Context paramContext, CustomEmotionData paramCustomEmotionData, StructMsgForImageShare paramStructMsgForImageShare, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(20);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = paramStructMsgForImageShare;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  private boolean a()
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 400;
-  }
-  
-  private List<EmoticonFromGroupEntity> d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_DBManager", 2, "sortAndSyncData start.");
-    }
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values());
-    Collections.sort(localArrayList1);
-    if (this.jdField_b_of_type_Boolean)
+    if (paramInt == 1)
     {
-      ArrayList localArrayList2 = new ArrayList(100);
-      int j = localArrayList1.size();
-      if (j > 300)
+      paramQQAppInterface = new ansi(paramQQAppInterface, paramContext);
+      if ((paramContext instanceof BaseActivity))
       {
-        int i = 300;
-        while (i < j)
+        if (!((BaseActivity)paramContext).isFinishing())
         {
-          String str = ((EmoticonFromGroupEntity)localArrayList1.get(i)).md5;
-          EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-          if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-          }
-          if (localEmoticonFromGroupEntity != null) {
-            localArrayList2.add(localEmoticonFromGroupEntity);
-          }
-          i += 1;
-        }
-        a(localArrayList2, 2);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_DBManager", 2, "sortAndSyncData end.");
-    }
-    return localArrayList1;
-  }
-  
-  private void d(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    if ((paramEmoticonFromGroupEntity == null) || (paramEmoticonFromGroupEntity.md5 == null) || (paramEmoticonFromGroupEntity.md5.equals("")) || (paramEmoticonFromGroupEntity.thumbURL == null) || (paramEmoticonFromGroupEntity.thumbURL.equals("")) || (paramEmoticonFromGroupEntity.bigURL == null) || (paramEmoticonFromGroupEntity.bigURL.equals(""))) {}
-    do
-    {
-      return;
-      c(paramEmoticonFromGroupEntity);
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-      default: 
-        return;
-      case 0: 
-        b();
-        return;
-      }
-    } while ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() < 10));
-    paramEmoticonFromGroupEntity = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.values());
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    a(paramEmoticonFromGroupEntity, 1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-  }
-  
-  public List<EmoticonFromGroupEntity> a()
-  {
-    if (this.jdField_a_of_type_Aukn == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Aukn.a(EmoticonFromGroupEntity.class);
-  }
-  
-  public void a()
-  {
-    if (!this.c)
-    {
-      this.c = true;
-      new Handler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback).sendEmptyMessageDelayed(1, 10000L);
-    }
-  }
-  
-  public void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    if (paramEmoticonFromGroupEntity != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramEmoticonFromGroupEntity.md5)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramEmoticonFromGroupEntity.md5);
-      }
-      if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramEmoticonFromGroupEntity.md5)) {
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramEmoticonFromGroupEntity.md5);
-      }
-    }
-  }
-  
-  public void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity, int paramInt)
-  {
-    if (paramEmoticonFromGroupEntity == null) {
-      return;
-    }
-    paramEmoticonFromGroupEntity = new EmoticonFromGroupDBManager.2(this, paramInt, paramEmoticonFromGroupEntity);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      paramEmoticonFromGroupEntity.run();
-      return;
-    }
-    ThreadManager.post(paramEmoticonFromGroupEntity, 5, null, true);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    long l = Calendar.getInstance().getTimeInMillis();
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      d(((bbqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(paramMessageRecord));
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        if (a())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("EmoticonFromGroup_DBManager", 2, "clean data start.");
-          }
-          d();
-          if (QLog.isColorLevel()) {
-            QLog.i("EmoticonFromGroup_DBManager", 2, "clean data end.");
+          paramQQAppInterface = bbdj.a(paramContext, 0, "温馨提示", paramContext.getString(2131689688), "取消", "立即开通", paramQQAppInterface, paramQQAppInterface);
+          if (paramQQAppInterface != null) {
+            paramQQAppInterface.show();
           }
         }
-        this.jdField_a_of_type_Boolean = false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StressTesting.Emoticon.EmoticonFromGroup", 2, "EmoticonFromGroup deal with per msg=" + (Calendar.getInstance().getTimeInMillis() - l));
-      }
-      return;
-      if ((paramMessageRecord instanceof MessageForMixedMsg))
-      {
-        paramMessageRecord = (MessageForMixedMsg)paramMessageRecord;
-        Iterator localIterator = paramMessageRecord.msgElemList.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (MessageRecord)localIterator.next();
-          if ((localObject instanceof MessageForPic))
-          {
-            localObject = (MessageForPic)localObject;
-            MessageForMixedMsg.copyBaseInfoFromMixedToPic((MessageForPic)localObject, paramMessageRecord);
-            d(((bbqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a((MessageRecord)localObject));
-          }
-        }
+        askf.c("2007", 1);
       }
     }
-  }
-  
-  public void a(List<EmoticonFromGroupEntity> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)paramList.next();
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localEmoticonFromGroupEntity.md5)) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonFromGroupEntity.md5);
-        }
-        if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localEmoticonFromGroupEntity.md5)) {
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonFromGroupEntity.md5);
-        }
-      }
-    }
-  }
-  
-  public void a(List<EmoticonFromGroupEntity> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    paramList = new EmoticonFromGroupDBManager.3(this, paramInt, paramList);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      paramList.run();
-      return;
-    }
-    ThreadManager.post(paramList, 5, null, true);
-  }
-  
-  public boolean a(aukm paramaukm)
-  {
-    boolean bool = false;
-    if (paramaukm.getStatus() == 1000)
-    {
-      this.jdField_a_of_type_Aukn.b(paramaukm);
-      if (paramaukm.getStatus() == 1001) {
-        bool = true;
-      }
-    }
-    while ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
-      return bool;
-    }
-    return this.jdField_a_of_type_Aukn.a(paramaukm);
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-  }
-  
-  public List<EmoticonFromGroupEntity> b()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Int = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonFromGroup_DBManager", 2, "load db start.");
-      }
-      Object localObject = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonFromGroup_DBManager", 2, "load db mid.");
-      }
-      if ((localObject != null) && (!((List)localObject).isEmpty()))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          b((EmoticonFromGroupEntity)((Iterator)localObject).next());
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonFromGroup_DBManager", 2, "load db end.");
-      }
-      this.jdField_a_of_type_Int = 2;
-    }
-  }
-  
-  public void b(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    if (paramEmoticonFromGroupEntity == null) {}
-    label149:
-    for (;;)
-    {
-      return;
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramEmoticonFromGroupEntity.md5)))
-      {
-        EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramEmoticonFromGroupEntity.md5);
-        if (localEmoticonFromGroupEntity != null)
-        {
-          if (paramEmoticonFromGroupEntity.timestamp < localEmoticonFromGroupEntity.timestamp) {
-            paramEmoticonFromGroupEntity.replaceEntity(localEmoticonFromGroupEntity);
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonFromGroupEntity.md5, paramEmoticonFromGroupEntity);
-        }
-      }
+    while (paramInt != 2) {
       for (;;)
       {
-        if (((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() < 600) && (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() < 300)) || (!QLog.isColorLevel())) {
-          break label149;
-        }
-        QLog.e("EmoticonFromGroup_DBManager", 1, "replaceDBToCache over max limit.");
         return;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramEmoticonFromGroupEntity.md5);
-        break;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonFromGroupEntity.md5, paramEmoticonFromGroupEntity);
+        bcql.a(paramContext, paramContext.getString(2131689689), 0).b(2131298865);
       }
     }
+    bcql.a(paramContext, paramContext.getString(2131689689), 0).b(2131298865);
+    askf.c("2007", 1);
   }
   
-  public void b(MessageRecord paramMessageRecord)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((MessageForPic)paramMessageRecord).md5)) {
-        a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((MessageForPic)paramMessageRecord).md5), 2);
+    return null;
+  }
+  
+  public void a(ansj paramansj)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramansj);
+  }
+  
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor)
+  {
+    int i = paramauor.jdField_a_of_type_Int;
+    if (i == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("EmoAddedAuthCallback", 2, "add custom emotion result success");
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if ((!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)))
+        {
+          paramauor = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
+          this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(paramauor);
+          paramauor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+          if (paramauor != null)
+          {
+            paramauor.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+            paramauor.a();
+          }
+        }
+        ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare != null) {
+          aehw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+        }
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+        paramauor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        if (paramauor != null) {
+          paramauor.obtainMessage(10).sendToTarget();
+        }
       }
     }
-    ArrayList localArrayList;
+    label177:
     do
     {
       do
       {
-        return;
-      } while (!(paramMessageRecord instanceof MessageForMixedMsg));
-      paramMessageRecord = (MessageForMixedMsg)paramMessageRecord;
-      localArrayList = new ArrayList(20);
-      Iterator localIterator = paramMessageRecord.msgElemList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (MessageRecord)localIterator.next();
-        if ((localObject instanceof MessageForPic))
+        do
         {
-          localObject = (MessageForPic)localObject;
-          MessageForMixedMsg.copyBaseInfoFromMixedToPic((MessageForPic)localObject, paramMessageRecord);
-          localObject = ((bbqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a((MessageRecord)localObject);
-          localObject = (EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((EmoticonFromGroupEntity)localObject).md5);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-      }
-    } while (localArrayList.isEmpty());
-    a(localArrayList, 2);
-  }
-  
-  public List<EmoticonFromGroupEntity> c()
-  {
-    this.jdField_b_of_type_JavaUtilList.clear();
-    List localList = d();
-    if (localList != null)
-    {
-      if (localList.size() <= 300) {
-        break label57;
-      }
-      localList = localList.subList(0, 300);
-      this.jdField_b_of_type_JavaUtilList.addAll(localList);
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_JavaUtilList;
-      label57:
-      this.jdField_b_of_type_JavaUtilList.addAll(localList);
-    }
-  }
-  
-  public void c(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    if (paramEmoticonFromGroupEntity == null) {}
-    for (;;)
-    {
-      return;
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramEmoticonFromGroupEntity.md5)))
-      {
-        EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramEmoticonFromGroupEntity.md5);
-        if (localEmoticonFromGroupEntity != null) {
-          if (paramEmoticonFromGroupEntity.timestamp > localEmoticonFromGroupEntity.timestamp)
+          do
           {
-            localEmoticonFromGroupEntity.replaceEntity(paramEmoticonFromGroupEntity);
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(localEmoticonFromGroupEntity.md5, localEmoticonFromGroupEntity);
-          }
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      break label177;
+                      break label177;
+                      break label177;
+                      break label177;
+                      break label177;
+                      break label177;
+                      break label177;
+                      do
+                      {
+                        return;
+                      } while (1 == this.jdField_a_of_type_Int);
+                      if (2 != this.jdField_a_of_type_Int) {
+                        break;
+                      }
+                      ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+                    } while ((2 != this.jdField_a_of_type_Int) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
+                    paramauor = (ansj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+                  } while (paramauor == null);
+                  paramauor.a(0, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+                  return;
+                } while (3 != this.jdField_a_of_type_Int);
+                ((answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149)).c(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+                return;
+              } while (-1 != i);
+              i = paramauor.b;
+              if ((400010 == i) || (400011 == i)) {
+                ThreadManager.getFileThreadHandler().post(new EmoAddedAuthCallback.4(this));
+              }
+              if (QLog.isColorLevel()) {
+                QLog.e("EmoAddedAuthCallback", 2, "add custom emotion result errCode=" + i);
+              }
+              if (this.jdField_a_of_type_Int != 0) {
+                break;
+              }
+              if (400010 == i)
+              {
+                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+                return;
+              }
+            } while (400011 != i);
+            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+            return;
+            if (2 != this.jdField_a_of_type_Int) {
+              break;
+            }
+          } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
+          paramauor = (ansj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (paramauor == null);
+        if (400010 == i)
+        {
+          paramauor.a(2, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+          return;
         }
-      }
-      while (((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 600) || (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 300)) && (QLog.isColorLevel()))
-      {
-        QLog.e("EmoticonFromGroup_DBManager", 1, "add2cache over max limit.");
+        if (400011 == i)
+        {
+          paramauor.a(3, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+          return;
+        }
+        paramauor.a(i, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
         return;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramEmoticonFromGroupEntity.md5);
-        continue;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonFromGroupEntity.md5, paramEmoticonFromGroupEntity);
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonFromGroupEntity.md5, paramEmoticonFromGroupEntity);
+      } while (3 != this.jdField_a_of_type_Int);
+      if (400010 == i)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        return;
       }
-    }
+    } while (400011 != i);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
   
-  public void onDestroy()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
+    switch (paramMessage.what)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.values());
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      a(localArrayList, 1);
+    default: 
+      return true;
+    case 1: 
+    case 2: 
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMessage.what);
+      return true;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (this.jdField_a_of_type_Aukn != null) {
-      this.jdField_a_of_type_Aukn.a();
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2131689686, 0).b(2131298865);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace)) {
+        aexb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h();
+      }
+      if ((bbkb.F(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (this.jdField_a_of_type_Int == 0))
+      {
+        paramMessage = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131755791);
+        paramMessage.setContentView(2131559017);
+        Button localButton1 = (Button)paramMessage.findViewById(2131365110);
+        Button localButton2 = (Button)paramMessage.findViewById(2131365114);
+        localButton1.setOnClickListener(new ansg(this, paramMessage));
+        localButton2.setOnClickListener(new ansh(this, paramMessage));
+        if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())
+        {
+          bbkb.w(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
+          paramMessage.show();
+        }
+      }
     }
-    this.jdField_b_of_type_JavaUtilList.clear();
+    askf.c("0", 1);
+    return true;
   }
 }
 

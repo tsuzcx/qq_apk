@@ -1,39 +1,20 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
-import mqq.util.WeakReference;
 
-final class arjn
+class arjn
   implements Callable<Bundle>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<arjh> jdField_a_of_type_MqqUtilWeakReference;
-  private final String b;
-  
-  arjn(arjh paramarjh, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramarjh);
-  }
+  arjn(arjj paramarjj, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public Bundle a()
   {
-    Object localObject = (arjh)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    arek localarek = new arek();
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Bundle[] arrayOfBundle = new Bundle[1];
-    if (localObject != null)
-    {
-      arei localarei = new arei();
-      CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localarei.a(((arjh)localObject).a, this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new arjo(this, localarei, arrayOfBundle, localCountDownLatch));
-      localCountDownLatch.await();
-      return arrayOfBundle[0];
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("isSuccess", false);
-    ((Bundle)localObject).putInt("code", -1000);
-    arrayOfBundle[0] = localObject;
+    localarek.a(this.jdField_a_of_type_Arjj.a.c(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new arjo(this, localarek, arrayOfBundle, localCountDownLatch), true, this.d);
+    localCountDownLatch.await();
     return arrayOfBundle[0];
   }
 }

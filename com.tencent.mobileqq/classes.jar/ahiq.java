@@ -1,174 +1,110 @@
-import Wallet.AcsMsg;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.ConvertParam;
-import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.1;
-import com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.2;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.microapp.apkg.AppInfo;
-import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.sdk.LaunchParam;
-import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ahiq
 {
-  public static String a(String paramString)
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  
+  public static ahiq a()
   {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("oper_type", 0);
-    ((Bundle)localObject).putString("uin", paramString);
-    EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
-    localObject = paramString;
-    if (localEIPCResult != null)
+    return ahir.a;
+  }
+  
+  public String a()
+  {
+    ResourceInfo localResourceInfo = ((PreloadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(151)).a("text_translate");
+    if (localResourceInfo == null) {
+      return null;
+    }
+    return localResourceInfo.folderPath;
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "";
+    }
+    do
     {
-      localObject = paramString;
-      if (localEIPCResult.isSuccess())
+      do
       {
+        do
+        {
+          return localObject;
+          localObject = paramString;
+        } while (!this.jdField_a_of_type_Boolean);
         localObject = paramString;
-        if (localEIPCResult.data != null) {
-          localObject = localEIPCResult.data.getString("res");
-        }
+      } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+      localObject = paramString;
+    } while (TextUtils.isEmpty(this.b));
+    Object localObject = new StringBuilder();
+    int i = 0;
+    if (i < paramString.length())
+    {
+      char c = paramString.charAt(i);
+      int j = this.jdField_a_of_type_JavaLangString.indexOf(c);
+      if (j != -1) {
+        ((StringBuilder)localObject).append(this.b.charAt(j));
       }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((StringBuilder)localObject).append(c);
+      }
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("FontConvert", 2, "traditionalToSimplified params is " + paramString + ",result is " + (String)localObject);
     }
     return localObject;
   }
   
-  public static void a(int paramInt)
+  /* Error */
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 8);
-    localBundle.putInt("req_id", paramInt);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(int paramInt, MiniAppConfig paramMiniAppConfig)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 5);
-    localBundle.putInt("action", paramInt);
-    localBundle.putSerializable("req_param", paramMiniAppConfig);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(AcsMsg paramAcsMsg)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 11);
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(EmojiGifHelper.ConvertParam paramConvertParam, EIPCResultCallback paramEIPCResultCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 7);
-    localBundle.putSerializable("req_param", paramConvertParam);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
-  }
-  
-  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 4);
-    localBundle.putSerializable("req_param", paramStartCheckParam);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(AppInfo paramAppInfo)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 3);
-    localBundle.putSerializable("req_param", paramAppInfo);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(LaunchParam paramLaunchParam, int paramInt, OnUpdateListener paramOnUpdateListener)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 2);
-    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
-    localBundle.putInt("version", paramInt);
-    localBundle.putParcelable("receiver", ahbw.a(new ComIPCUtils.1(null, paramOnUpdateListener)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(LaunchParam paramLaunchParam, EIPCResultCallback paramEIPCResultCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 1);
-    localBundle.putSerializable("mini_launch_param", paramLaunchParam);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
-  }
-  
-  public static void a(String paramString, agzj paramagzj)
-  {
-    if (paramagzj == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 15);
-    localBundle.putString("key", paramString);
-    localBundle.putInt("code", paramagzj.hashCode());
-    localBundle.putParcelable("receiver", ahbw.a(new ComIPCUtils.2(null, paramagzj, paramString)));
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void a(String paramString, EIPCResultCallback paramEIPCResultCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 14);
-    localBundle.putString("name", paramString);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, paramEIPCResultCallback);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 10);
-    localBundle.putBoolean("req_param", paramBoolean);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static boolean a()
-  {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("oper_type", 9);
-    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "ComIPCUtils", (Bundle)localObject);
-    if ((localObject != null) && (((EIPCResult)localObject).isSuccess()) && (((EIPCResult)localObject).data != null)) {
-      return ((EIPCResult)localObject).data.getBoolean("res");
-    }
-    return false;
-  }
-  
-  public static void b(AcsMsg paramAcsMsg)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 12);
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void b(String paramString, agzj paramagzj)
-  {
-    if (paramagzj == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 16);
-    localBundle.putString("key", paramString);
-    localBundle.putInt("code", paramagzj.hashCode());
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
-  }
-  
-  public static void c(AcsMsg paramAcsMsg)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("oper_type", 13);
-    localBundle.putSerializable("req_param", paramAcsMsg);
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "ComIPCUtils", localBundle, null);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 30	ahiq:jdField_a_of_type_Boolean	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifeq +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: new 113	android/os/Handler
+    //   17: dup
+    //   18: invokestatic 119	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
+    //   21: invokespecial 122	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   24: new 124	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1
+    //   27: dup
+    //   28: aload_0
+    //   29: invokespecial 127	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:<init>	(Lahiq;)V
+    //   32: invokevirtual 131	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   35: pop
+    //   36: goto -25 -> 11
+    //   39: astore_2
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: aload_2
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	44	0	this	ahiq
+    //   6	2	1	bool	boolean
+    //   39	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	39	finally
+    //   14	36	39	finally
   }
 }
 

@@ -1,6 +1,9 @@
-public abstract interface ajtg
+public class ajtg
 {
-  public abstract void onUpdate(int paramInt, boolean paramBoolean, Object paramObject);
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

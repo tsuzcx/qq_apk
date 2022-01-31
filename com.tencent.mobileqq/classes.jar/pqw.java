@@ -1,25 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
 class pqw
-  implements bfsl
+  implements PopupWindow.OnDismissListener
 {
-  pqw(pqt parampqt) {}
+  pqw(pqq parampqq, bfst parambfst) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedItemCell", 2, "onAdComplain");
-    }
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    this.jdField_a_of_type_Bfst.a(1.0F);
+    if (this.jdField_a_of_type_Pqq.a.b)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", ((pax)this.a.jdField_a_of_type_JavaLangObject).a());
-      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      qtr localqtr = this.jdField_a_of_type_Pqq.a.a();
+      if (localqtr != null)
+      {
+        localqtr.c();
+        this.jdField_a_of_type_Pqq.a.b = false;
+      }
     }
   }
 }

@@ -1,22 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public class vxm
+class vxm
+  implements syq<tne, tnf>
 {
-  public TextView a;
-  public TextView b;
+  vxm(vxl paramvxl, JobContext paramJobContext, Integer paramInteger) {}
   
-  public vxm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void a(@NonNull tne paramtne, @Nullable tnf paramtnf, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379557));
-    this.b = ((TextView)paramView.findViewById(2131378941));
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(vyb.c(paramTroopStoryItemInfo.publishTime));
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      ved.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
+    }
+    if ((paramErrorMessage.isFail()) || (paramtnf == null))
+    {
+      ved.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      vxl.a(this.jdField_a_of_type_Vxl, paramErrorMessage);
+      return;
+    }
+    vxl.a(this.jdField_a_of_type_Vxl).a(paramtnf.jdField_a_of_type_JavaUtilList, paramtnf.jdField_a_of_type_JavaLangString, paramtnf.jdField_a_of_type_Boolean);
+    ((uvx)tcz.a(11)).a(paramtnf.jdField_a_of_type_JavaUtilList);
+    paramtne = vxl.a(this.jdField_a_of_type_Vxl).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    vxl.a(this.jdField_a_of_type_Vxl, paramtne);
   }
 }
 

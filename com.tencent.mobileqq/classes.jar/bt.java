@@ -9,15 +9,15 @@ import java.util.Iterator;
 import java.util.List;
 
 class bt
-  implements aptu
+  implements aptw
 {
-  bt(bs parambs, DataLineMsgRecord paramDataLineMsgRecord, ajuo paramajuo) {}
+  bt(bs parambs, DataLineMsgRecord paramDataLineMsgRecord, ajum paramajum) {}
   
   public void a()
   {
     Object localObject1 = null;
     if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.isSendFromLocal()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.strMoloKey != null)) {
-      this.jdField_a_of_type_Ajuo.b(112);
+      this.jdField_a_of_type_Ajum.b(112);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Bs.a).setPaused(false);
     Iterator localIterator = DLFilesViewerActivity.a(this.jdField_a_of_type_Bs.a).values().iterator();
@@ -62,10 +62,10 @@ class bt
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Ajuo.a(localObject2, true);
+      this.jdField_a_of_type_Ajum.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Ajuo.a(localObject1);
+      this.jdField_a_of_type_Ajum.a(localObject1);
     }
     DLFilesViewerActivity.a(this.jdField_a_of_type_Bs.a).notifyDataSetChanged();
   }

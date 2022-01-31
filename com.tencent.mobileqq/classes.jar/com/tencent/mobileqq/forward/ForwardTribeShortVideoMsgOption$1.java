@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.forward;
 
 import android.widget.ScrollView;
-import aqgo;
+import aqgq;
 
 public class ForwardTribeShortVideoMsgOption$1
   implements Runnable
 {
-  public ForwardTribeShortVideoMsgOption$1(aqgo paramaqgo) {}
+  public ForwardTribeShortVideoMsgOption$1(aqgq paramaqgq) {}
   
   public void run()
   {

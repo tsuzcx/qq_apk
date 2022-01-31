@@ -1,17 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopUtils.4;
 
 public class band
+  implements DialogInterface.OnClickListener
 {
-  aglg jdField_a_of_type_Aglg;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  public band(TroopUtils.4 param4) {}
   
-  protected band(banc parambanc) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

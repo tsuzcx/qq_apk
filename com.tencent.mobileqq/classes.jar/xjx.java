@@ -1,43 +1,28 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.GamePartyPlugin;
 
 public class xjx
-  implements SensorEventListener
+  extends anqq
 {
-  protected byte a;
-  protected String a;
+  public xjx(GamePartyPlugin paramGamePartyPlugin) {}
   
-  public xjx(xjw paramxjw, byte paramByte, String paramString)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (this.jdField_a_of_type_Byte)
+    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
     {
-    }
-    do
-    {
-      return;
-      float[] arrayOfFloat = new float[4];
-      if (Build.VERSION.SDK_INT >= 9)
-      {
-        SensorManager localSensorManager = this.jdField_a_of_type_Xjw.a;
-        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
-        xjw.a(this.jdField_a_of_type_Xjw)[0] = arrayOfFloat[1];
-        xjw.a(this.jdField_a_of_type_Xjw)[1] = arrayOfFloat[2];
-        xjw.a(this.jdField_a_of_type_Xjw)[2] = arrayOfFloat[3];
-        xjw.a(this.jdField_a_of_type_Xjw)[3] = arrayOfFloat[0];
+      String str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response").getString("result");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
+        this.a.callJs(str, new String[] { paramBundle });
       }
-    } while ((!xjw.a()) || (!xjw.b()));
-    this.jdField_a_of_type_Xjw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(xjw.a(this.jdField_a_of_type_Xjw)[0]), String.valueOf(xjw.a(this.jdField_a_of_type_Xjw)[1]), String.valueOf(xjw.a(this.jdField_a_of_type_Xjw)[2]), String.valueOf(xjw.a(this.jdField_a_of_type_Xjw)[3]) });
+    }
   }
 }
 

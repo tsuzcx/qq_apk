@@ -1,47 +1,14 @@
-import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bemc
-  implements Iterator<E>
+public final class bemc
+  implements ThreadFactory
 {
-  private int jdField_a_of_type_Int = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-  private int b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-  private int c = -1;
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  private bemc(ArrayDeque paramArrayDeque) {}
-  
-  public boolean hasNext()
+  public Thread newThread(Runnable paramRunnable)
   {
-    return this.jdField_a_of_type_Int != this.b;
-  }
-  
-  public E next()
-  {
-    if (this.jdField_a_of_type_Int == this.b) {
-      throw new NoSuchElementException();
-    }
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
-    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
-    if ((ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
-      throw new ConcurrentModificationException();
-    }
-    this.c = this.jdField_a_of_type_Int;
-    return localObject;
-  }
-  
-  public void remove()
-  {
-    if (this.c < 0) {
-      throw new IllegalStateException();
-    }
-    if (!ArrayDeque.access$500(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque, this.c))
-    {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque).length - 1);
-      this.b = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque);
-    }
-    this.c = -1;
+    return new Thread(paramRunnable, "AsyncTask ##" + this.a.getAndIncrement());
   }
 }
 

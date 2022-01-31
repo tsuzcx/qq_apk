@@ -1,6 +1,7 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class aheh
@@ -10,8 +11,10 @@ public class aheh
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((paramView instanceof TextView))
+    {
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
     }
   }
 }

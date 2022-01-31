@@ -1,45 +1,63 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aecq
-  extends bbwf
+public class aecq
+  extends actm
 {
-  aecq(aecn paramaecn, String paramString1, String paramString2)
+  public aecq(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    super(paramString1, paramString2);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public void onCancel(bbwg parambbwg)
+  protected actn a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambbwg);
-    }
+    return new aecs(this);
   }
   
-  public void onDone(bbwg parambbwg)
+  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambbwg);
-    }
-    if (parambbwg.b()) {}
-    do
+    paramLinearLayout = (aecs)paramactn;
+    paramactn = paramView;
+    if (paramView == null)
     {
-      return;
-      parambbwg.a().getInt("type");
-    } while (parambbwg.a() == -1);
-    parambbwg = new Message();
-    parambbwg.what = aecn.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambbwg);
+      paramactn = LayoutInflater.from(this.a).inflate(2131558784, null);
+      paramLinearLayout.b = ((TextView)paramactn.findViewById(2131377350));
+      paramLinearLayout.c = ((TextView)paramactn.findViewById(2131364691));
+    }
+    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
+    {
+      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
+      if (paramMessageRecord != null)
+      {
+        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramView = new SpannableString(paramMessageRecord.tipsMsg + ajya.a(2131714944));
+        int i = paramView.length();
+        paramView.setSpan(new ForegroundColorSpan(paramactn.getResources().getColor(2131166866)), i - 4, i, 33);
+        paramLinearLayout.c.setText(paramView);
+        paramactn.setOnClickListener(new aecr(this, paramMessageRecord));
+      }
+    }
+    return paramactn;
   }
   
-  public boolean onStart(bbwg parambbwg)
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bbmh[] a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambbwg);
-    }
-    return true;
+    return new bbmf().a();
   }
 }
 

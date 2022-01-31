@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.utils.RandomAccessFileManager;
-import java.io.RandomAccessFile;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bbir
+class bbir
+  implements View.OnClickListener
 {
-  public volatile int a;
-  public long a;
-  public bbir a;
-  public RandomAccessFile a;
-  public long b;
-  public bbir b;
+  bbir(bbin parambbin, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bbir(RandomAccessFileManager paramRandomAccessFileManager) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbin, 1);
+    }
+    this.jdField_a_of_type_Bbin.dismiss();
+  }
 }
 
 

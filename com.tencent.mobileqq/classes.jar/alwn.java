@@ -2,9 +2,7 @@ import org.json.JSONObject;
 
 public abstract interface alwn
 {
-  public abstract boolean needProcess(JSONObject paramJSONObject);
-  
-  public abstract void process(JSONObject paramJSONObject, alwo paramalwo, Object paramObject);
+  public abstract void a(boolean paramBoolean, JSONObject paramJSONObject, Object paramObject);
 }
 
 

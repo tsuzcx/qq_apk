@@ -2,9 +2,9 @@ import java.util.List;
 
 public abstract interface akrr
 {
-  public abstract void a(String paramString, aukm paramaukm);
+  public abstract void a();
   
-  public abstract void a(String paramString, List<? extends aukm> paramList);
+  public abstract void a(List<akrl> paramList);
 }
 
 

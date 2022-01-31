@@ -1,48 +1,87 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class awhy
-  implements awib
+  implements xni
 {
-  awhy(awhv paramawhv, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo) {}
+  awhy(awhx paramawhx) {}
   
-  public void a()
+  public void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
-    String str = localSharedPreferences.getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    akja localakja = new akja(localQQAppInterface);
-    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID))
+    Object localObject;
+    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem;
+    if (paramHotSearchItem != null)
     {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
-      localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", 1).apply();
-      localakja.a(localQQAppInterface, "gif_sta_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
-      return;
-    }
-    localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", i + 1).apply();
-    localakja.a(localQQAppInterface, "gif_sta_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
-  }
-  
-  public void b()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    akja localakja = new akja(localQQAppInterface);
-    if (i == 1) {
-      localakja.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)((Iterator)localObject).next();
+      } while (!TextUtils.equals(paramHotSearchItem.title, localHotSearchItem.title));
     }
     for (;;)
     {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
-      return;
-      localakja.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      if (localHotSearchItem == null) {
+        return;
+      }
+      localObject = localHotSearchItem.jumpUrl;
+      paramHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (this.a.jdField_a_of_type_Int != 10) {
+          break label382;
+        }
+        paramHotSearchItem = awvx.a(localHotSearchItem.title, 5, "kandian_hotword");
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "open Browser append suffix url = " + paramHotSearchItem);
+        }
+        awhx.a(this.a, paramHotSearchItem, localHotSearchItem.title);
+        awwa.a("hot_list", "clk_hot_list", new String[] { localHotSearchItem.title, String.valueOf(this.a.jdField_a_of_type_Int), String.valueOf(this.a.jdField_a_of_type_JavaUtilList.indexOf(localHotSearchItem) + 1) });
+        paramHotSearchItem = new JSONObject();
+        try
+        {
+          paramHotSearchItem.put("project", awsq.a());
+          paramHotSearchItem.put("event_src", "client");
+          paramHotSearchItem.put("experiment_id", awsq.b);
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_hot_list");
+          if (this.a.jdField_a_of_type_Int == 3)
+          {
+            i = 21;
+            awsq.a(null, localReportModelDC02528.ver2(awsq.a(i)).ver4(localHotSearchItem.title).ver7(paramHotSearchItem.toString()).session_id(((QQAppInterface)localObject).getCurrentAccountUin() + this.a.jdField_a_of_type_Long));
+            awsq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D28", 0, 0, null, null);
+            ((akgc)((QQAppInterface)onh.a()).getManager(299)).a(localHotSearchItem.title);
+            return;
+            label382:
+            paramHotSearchItem = awvx.c(this.a.jdField_a_of_type_Int);
+            paramHotSearchItem = awvx.a(localHotSearchItem.title, 5, paramHotSearchItem);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
+            continue;
+            int i = this.a.jdField_a_of_type_Int;
+          }
+        }
+      }
+      localHotSearchItem = null;
     }
   }
 }

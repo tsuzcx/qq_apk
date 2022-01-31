@@ -1,18 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-
 public class beki
+  implements bekl<besl>
 {
-  private static Handler a = new Handler(Looper.getMainLooper());
-  
-  public static void a(Runnable paramRunnable)
+  public static beki a()
   {
-    a.post(paramRunnable);
+    return new beki();
   }
   
-  public static void a(Runnable paramRunnable, long paramLong)
+  public besl a(behn parambehn)
   {
-    a.postDelayed(paramRunnable, paramLong);
+    return parambehn.a();
   }
 }
 

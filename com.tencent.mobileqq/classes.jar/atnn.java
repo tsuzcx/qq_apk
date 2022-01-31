@@ -1,94 +1,50 @@
-import android.support.v4.util.SparseArrayCompat;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import java.util.List;
 
 public class atnn
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  extends BaseAdapter
 {
-  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private SparseArrayCompat<View> b = new SparseArrayCompat();
+  public atnn(TopicLabelListView paramTopicLabelListView) {}
   
-  public atnn(RecyclerView.Adapter paramAdapter)
+  public int getCount()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt < a();
-  }
-  
-  private boolean b(int paramInt)
-  {
-    return paramInt >= a() + c();
-  }
-  
-  private int c()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
-  }
-  
-  public RecyclerView.Adapter a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
-  }
-  
-  public int b()
-  {
-    return this.b.size();
-  }
-  
-  public void b(View paramView)
-  {
-    this.b.put(this.b.size() + 200000, paramView);
-  }
-  
-  public int getItemCount()
-  {
-    return a() + c() + b();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (a(paramInt)) {
-      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
+    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
-    if (b(paramInt)) {
-      return this.b.keyAt(paramInt - a() - c());
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
+    return TopicLabelListView.a(this.a).size();
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public Object getItem(int paramInt)
   {
-    if ((a(paramInt)) || (b(paramInt))) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
+    return null;
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public long getItemId(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
-      return new atno((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new atno(this.a, null);
+      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      paramView.setTag(paramViewGroup);
     }
-    if (this.b.get(paramInt) != null) {
-      return new atno((View)this.b.get(paramInt));
+    for (;;)
+    {
+      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+      ((LabelViewItem)paramView).setText(paramViewGroup.a);
+      return paramView;
+      paramViewGroup = (atno)paramView.getTag();
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

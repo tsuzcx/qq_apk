@@ -1,12 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class agcn
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  agcn(agcm paramagcm) {}
+  agcn(agck paramagck) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

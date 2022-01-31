@@ -1,19 +1,6 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
-
-public class audy
-  implements audz
+public abstract interface audy
 {
-  public audy(GestureFrameLayout paramGestureFrameLayout) {}
-  
-  public void a(auen paramauen)
-  {
-    this.a.a(paramauen);
-  }
-  
-  public void a(auen paramauen1, auen paramauen2)
-  {
-    this.a.a(paramauen2);
-  }
+  public abstract void a(int paramInt, audz paramaudz);
 }
 
 

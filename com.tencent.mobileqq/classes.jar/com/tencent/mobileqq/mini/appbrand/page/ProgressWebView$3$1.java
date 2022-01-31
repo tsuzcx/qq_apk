@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajyc;
+import ajya;
 import android.view.View;
-import bfol;
-import bfoq;
+import bfpc;
+import bfph;
 
 class ProgressWebView$3$1
-  implements bfoq
+  implements bfph
 {
-  ProgressWebView$3$1(ProgressWebView.3 param3, bfol parambfol, String paramString) {}
+  ProgressWebView$3$1(ProgressWebView.3 param3, bfpc parambfpc, String paramString) {}
   
   public void OnClick(View paramView, int paramInt)
   {
     this.val$actionSheet.dismiss();
     paramView = this.val$actionSheet.a(paramInt);
-    if (ajyc.a(2131708507).equals(paramView)) {
+    if (ajya.a(2131708518).equals(paramView)) {
       ProgressWebView.access$600(this.this$1.this$0, this.val$pic);
     }
-    while (!ajyc.a(2131708501).equals(paramView)) {
+    while (!ajya.a(2131708512).equals(paramView)) {
       return;
     }
     ProgressWebView.access$700(this.this$1.this$0, this.val$pic);

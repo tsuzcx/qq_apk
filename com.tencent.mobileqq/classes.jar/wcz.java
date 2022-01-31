@@ -1,9 +1,21 @@
 import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public abstract interface wcz
+public class wcz
+  implements View.OnClickListener
 {
-  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
+  public wcz(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
+      return;
+    }
+    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+  }
 }
 
 

@@ -1,102 +1,121 @@
-import android.graphics.Canvas;
-import android.graphics.PointF;
-import com.tencent.av.doodle.MySurfaceView;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.av.doodle.DoodleSurfaceView;
 
-public abstract class lmd
+public class lmd
 {
-  public int a;
-  public long a;
-  public PointF a;
-  final String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e = -65536;
+  public static boolean a;
   
-  public lmd()
+  public static int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "unused";
-    this.jdField_b_of_type_Int = 12;
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = ("DoodleItem_" + getClass().getSimpleName() + "_" + AudioHelper.b());
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, getClass().getSimpleName());
-    }
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public static int a(int[] paramArrayOfInt, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    if (paramFloat <= 0.0F) {
+      return paramArrayOfInt[0];
+    }
+    if (paramFloat >= 1.0F) {
+      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
+    }
+    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
+    int j = (int)paramFloat;
+    paramFloat -= j;
+    int i = paramArrayOfInt[j];
+    j = paramArrayOfInt[(j + 1)];
+    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
   }
   
-  public abstract void a(long paramLong);
-  
-  public void a(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
   {
-    float f2 = 0.0F;
-    int i = paramMySurfaceView.getWidth();
-    int j = paramMySurfaceView.getHeight();
-    int k = this.d;
-    int m = this.c;
-    float f3;
-    if (i * k < j * m) {
-      f3 = i / m;
-    }
-    for (float f1 = (j - k * f3) / 2.0F;; f1 = 0.0F)
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131372242);
+    Object localObject1 = localObject2;
+    View localView;
+    if (localObject2 == null)
     {
-      if (paramCanvas != null)
-      {
-        paramCanvas.save();
-        paramCanvas.translate(f2, f1);
-        paramCanvas.scale(f3, f3);
-        b(paramCanvas, paramMySurfaceView, paramBoolean);
+      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
+      localObject2 = new ViewGroup.LayoutParams(-1, -1);
+      localView = paramViewGroup.findViewById(2131372534);
+      if (localView == null) {
+        break label67;
       }
-      try
-      {
-        paramCanvas.restore();
-        return;
-      }
-      catch (Exception paramCanvas)
-      {
-        lcl.e(this.jdField_a_of_type_JavaLangString, paramCanvas.getMessage());
-      }
-      f3 = j / k;
-      f2 = (i - m * f3) / 2.0F;
     }
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    float f1 = Math.abs(paramFloat1 - this.jdField_a_of_type_AndroidGraphicsPointF.x);
-    float f2 = Math.abs(paramFloat2 - this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    if ((f1 >= 8.0F) || (f2 >= 8.0F)) {}
-    for (boolean bool = true;; bool = false)
+    label67:
+    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
     {
-      if (bool)
-      {
-        b(paramFloat1, paramFloat2);
-        this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-        this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-      }
-      return bool;
+      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
+      return localObject1;
     }
   }
   
-  public abstract void b(float paramFloat1, float paramFloat2);
-  
-  public abstract void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean);
-  
-  public abstract void c(float paramFloat1, float paramFloat2);
-  
-  public String toString()
+  public static lly a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString + ", mPenType[" + this.jdField_a_of_type_Int + "], mPoint[" + this.jdField_a_of_type_AndroidGraphicsPointF.x + "," + this.jdField_a_of_type_AndroidGraphicsPointF.y + "]";
+    Object localObject;
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      localObject = new lme();
+    }
+    for (;;)
+    {
+      ((lly)localObject).a = paramInt;
+      return localObject;
+      localObject = new lme();
+      continue;
+      localObject = new lmj(2130968654);
+    }
+  }
+  
+  public static void a(ViewGroup paramViewGroup)
+  {
+    View localView = paramViewGroup.findViewById(2131372242);
+    if (localView != null) {
+      paramViewGroup.removeView(localView);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    axqy.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static boolean a()
+  {
+    if (a) {
+      return true;
+    }
+    if (!b()) {
+      return false;
+    }
+    a = true;
+    return a;
+  }
+  
+  public static boolean b()
+  {
+    int i = llw.e();
+    if (i < 4)
+    {
+      lcg.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
+      return false;
+    }
+    long l = llw.c();
+    if (l < 1400000L)
+    {
+      lcg.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
+      return false;
+    }
+    l = bbdh.d();
+    if (l < 1073741824L)
+    {
+      lcg.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
+      return false;
+    }
+    return true;
   }
 }
 

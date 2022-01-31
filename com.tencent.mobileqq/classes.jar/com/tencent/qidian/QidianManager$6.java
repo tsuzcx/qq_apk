@@ -1,16 +1,16 @@
 package com.tencent.qidian;
 
-import bdto;
+import bduf;
 import com.tencent.qidian.data.QidianPAForWpa;
 
 public class QidianManager$6
   implements Runnable
 {
-  public QidianManager$6(bdto parambdto, QidianPAForWpa paramQidianPAForWpa, String paramString1, String paramString2) {}
+  public QidianManager$6(bduf parambduf, QidianPAForWpa paramQidianPAForWpa, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bdto.a(this.this$0, this.jdField_a_of_type_ComTencentQidianDataQidianPAForWpa, this.jdField_a_of_type_JavaLangString, this.b);
+    bduf.a(this.this$0, this.jdField_a_of_type_ComTencentQidianDataQidianPAForWpa, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

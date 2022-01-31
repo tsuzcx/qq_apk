@@ -1,43 +1,36 @@
-import android.view.ViewGroup;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class tiw
+  extends tiv
 {
-  private static String a = tiw.class.getSimpleName();
+  private bayh a;
   
-  public static tbj a(ViewGroup paramViewGroup, int paramInt)
+  public void a(tff paramtff)
   {
-    veg.a(a, "create type=%d", Integer.valueOf(paramInt));
-    switch (paramInt)
+    super.a(paramtff);
+    this.itemView.setTag(paramtff.a);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      localObject = (QQAppInterface)localObject;
+      String str1 = String.valueOf(paramtff.b);
+      this.jdField_a_of_type_Bayh = bayh.a((AppInterface)localObject, 1, str1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bayh);
+      String str2 = bbcz.m((QQAppInterface)localObject, str1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramtff.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_Bayh);
       }
-      return new tbj(paramViewGroup, 2131561303);
-    case 6: 
-      return new tin(paramViewGroup);
-    case 5: 
-      return new tiv(paramViewGroup);
-    case 7: 
-      return new tim(paramViewGroup);
-    case 8: 
-      return new tjc(paramViewGroup, 2131561303);
-    case 9: 
-      return new tiu(paramViewGroup);
-    case 3: 
-      return new tio(paramViewGroup);
-    case 4: 
-      return new tis(paramViewGroup, 4);
-    case 2: 
-      return new tja(paramViewGroup, 2131561305);
-    case 10: 
-    case 11: 
-      return new tit(paramViewGroup);
-    case 12: 
-      return new tix(paramViewGroup);
     }
-    return new tip(paramViewGroup);
   }
 }
 

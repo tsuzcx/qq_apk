@@ -1,31 +1,13 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
 
 class ariq
-  implements arkg
+  implements CustomizedDns
 {
-  ariq(arii paramarii) {}
+  ariq(arik paramarik) {}
   
-  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  public String getip(String paramString)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 101);
-    NowLive.sendServerPushMessage(arii.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 102);
-    NowLive.sendServerPushMessage(arii.a(this.a, localBundle, paramNewTogetherRoomMessageData));
-  }
-  
-  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("ctrl_cmd", 103);
-    NowLive.sendServerPushMessage(arii.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+    return arjj.a().a(paramString);
   }
 }
 

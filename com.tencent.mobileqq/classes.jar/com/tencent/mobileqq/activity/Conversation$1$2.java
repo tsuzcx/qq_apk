@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aavy;
-import avdx;
+import aavu;
+import avdz;
 
 public class Conversation$1$2
   implements Runnable
 {
-  public Conversation$1$2(aavy paramaavy, String paramString) {}
+  public Conversation$1$2(aavu paramaavu, String paramString) {}
   
   public void run()
   {
-    avdx.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavy.a.a);
+    avdz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavu.a.a);
   }
 }
 

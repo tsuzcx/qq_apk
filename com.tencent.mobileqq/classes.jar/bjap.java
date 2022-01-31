@@ -1,39 +1,42 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.1;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.2;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.2.3;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public class bjap
-  implements bkyv
+class bjap
+  implements bkdr
 {
-  bjap(bjan parambjan) {}
+  bjap(bjao parambjao) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.3(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (paramPtvTemplateInfo.usable)
+    if (this.a.jdField_a_of_type_Int != 14)
     {
-      bjkm.a(paramPtvTemplateInfo).b();
-      if ((!(bjan.a(this.a) instanceof bizx)) || (((bizx)bjan.a(this.a)).e())) {
-        break label54;
+      this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(0);
+      bjao.a(this.a).setVisibility(0);
+      bjao.a(this.a).setVisibility(0);
+      bjao.a(this.a).a();
+      if ((!this.a.f()) && (!bjao.a(this.a)))
+      {
+        bjao.a(this.a).setVisibility(0);
+        if (this.a.c()) {
+          bjao.a(this.a).setVisibility(0);
+        }
       }
     }
-    label54:
-    do
-    {
-      return;
-      bjkm.a(paramPtvTemplateInfo).c();
-      break;
-      ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
-    } while (paramBoolean);
-    bkov.a("", "0X80075BB", "", "", "", "");
-    ThreadManager.getUIHandler().post(new QIMPtvTemplateAdapter.2.2(this));
+  }
+  
+  public void a(bkin parambkin)
+  {
+    this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setVisibility(8);
+    bjao.a(this.a).setVisibility(8);
+    bjao.a(this.a).setVisibility(8);
+    if (this.a.c()) {
+      bjao.a(this.a).setVisibility(8);
+    }
+    bjao.a(this.a).a(103, new Object[] { parambkin });
   }
 }
 

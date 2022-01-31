@@ -1,330 +1,265 @@
-import android.opengl.GLES20;
+import android.content.Context;
+import android.opengl.GLSurfaceView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARNativeBridge.ActionCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.1;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.10;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.11;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class alav
+  implements alac, ARNativeBridge.ActionCallback
 {
-  static float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  static float[] jdField_b_of_type_ArrayOfFloat = { -1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F };
-  static float[] jdField_c_of_type_ArrayOfFloat = { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  static float[] jdField_d_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
-  static float[] jdField_e_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  public static float[] f;
-  private static float[] jdField_h_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  public final int a;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ByteBuffer jdField_b_of_type_JavaNioByteBuffer;
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int jdField_e_of_type_Int;
+  private volatile int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private akxp jdField_a_of_type_Akxp;
+  private alae jdField_a_of_type_Alae;
+  private alaw jdField_a_of_type_Alaw;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private volatile int c = 1;
+  private int d;
+  private int e;
   private int f;
-  private int jdField_g_of_type_Int;
-  private float[] jdField_g_of_type_ArrayOfFloat;
-  private int jdField_h_of_type_Int;
-  private int i = -1;
-  private int j = -1;
-  private int k = -1;
-  private int l = -1;
-  private int m = -1;
-  private int n = -1;
-  private int o = -1;
-  private int p = -1;
-  private int q = -1;
-  private int r = -1;
+  private int g;
   
-  static
+  public alav(alae paramalae, alaw paramalaw, GLSurfaceView paramGLSurfaceView)
   {
-    jdField_f_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
-  }
-  
-  public alav(int paramInt)
-  {
-    if (((paramInt < 0) || (paramInt > 4)) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Index can only be 0 to 4");
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    a(this.jdField_a_of_type_Int);
-  }
-  
-  private int a(int paramInt, String paramString)
-  {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
-    {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
-      paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-      if (paramString[0] == 0)
-      {
-        GLES20.glDeleteShader(paramInt);
-        return 0;
-      }
-    }
-    return paramInt;
-  }
-  
-  private void a(String paramString)
-  {
-    int i1 = GLES20.glGetError();
-    if (i1 != 0) {
-      QLog.i("GreetingYUVProgram", 1, paramString + ": glError 0x" + Integer.toHexString(i1));
-    }
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    int i1 = a(35633, paramString1);
-    int i2 = a(35632, paramString2);
-    int i3 = GLES20.glCreateProgram();
-    if (i3 != 0)
-    {
-      GLES20.glAttachShader(i3, i1);
-      a("glAttachShader");
-      GLES20.glAttachShader(i3, i2);
-      a("glAttachShader");
-      GLES20.glLinkProgram(i3);
-      paramString1 = new int[1];
-      GLES20.glGetProgramiv(i3, 35714, paramString1, 0);
-      if (paramString1[0] != 1)
-      {
-        GLES20.glDeleteProgram(i3);
-        return 0;
-      }
-    }
-    return i3;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_b_of_type_Int <= 0) {
-      this.jdField_b_of_type_Int = a("attribute vec4 vPosition;\nattribute vec2 a_texCoord;\nvarying vec2 tc;\nvoid main() {\ngl_Position = vPosition;\ntc = a_texCoord;\n}\n", "precision mediump float;\nuniform sampler2D tex_y;\nuniform sampler2D tex_u;\nuniform sampler2D tex_v;\nvarying vec2 tc;\nvoid main() {\nvec4 c = vec4((texture2D(tex_y, tc).r - 16./255.) * 1.164);\nvec4 U = vec4(texture2D(tex_u, tc).r - 128./255.);\nvec4 V = vec4(texture2D(tex_v, tc).r - 128./255.);\nc += V * vec4(1.596, -0.813, 0, 0);\nc += U * vec4(0, -0.392, 2.017, 0);\nc.a = 1.0;\ngl_FragColor = c;\n}\n");
-    }
-    this.i = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "vPosition");
-    a("glGetAttribLocation vPosition");
-    if ((this.i == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for vPosition");
-    }
-    this.j = GLES20.glGetAttribLocation(this.jdField_b_of_type_Int, "a_texCoord");
-    a("glGetAttribLocation a_texCoord");
-    if ((this.j == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get attribute location for a_texCoord");
-    }
-    this.k = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_y");
-    a("glGetUniformLocation tex_y");
-    if ((this.k == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_y");
-    }
-    this.l = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_u");
-    a("glGetUniformLocation tex_u");
-    if ((this.l == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_u");
-    }
-    this.m = GLES20.glGetUniformLocation(this.jdField_b_of_type_Int, "tex_v");
-    a("glGetUniformLocation tex_v");
-    if ((this.m == -1) && (QLog.isColorLevel())) {
-      QLog.i("GreetingYUVProgram", 1, "Could not get uniform location for tex_v");
-    }
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Alae = paramalae;
+    this.jdField_a_of_type_Alaw = paramalaw;
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_Alae.a();
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)this.jdField_a_of_type_Alae.a(0));
   }
   
   public void a(int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "setNativeState, mCurState=" + this.jdField_a_of_type_Int + ", new State=" + paramInt);
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
     {
+    case 3: 
+    case 4: 
+    case 5: 
+    case 11: 
     default: 
-      this.jdField_g_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
-      return;
-    case 1: 
-      this.jdField_g_of_type_ArrayOfFloat = jdField_b_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33984;
-      this.jdField_d_of_type_Int = 33985;
-      this.jdField_e_of_type_Int = 33986;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 1;
-      this.jdField_h_of_type_Int = 2;
       return;
     case 2: 
-      this.jdField_g_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33987;
-      this.jdField_d_of_type_Int = 33988;
-      this.jdField_e_of_type_Int = 33989;
-      this.jdField_f_of_type_Int = 3;
-      this.jdField_g_of_type_Int = 4;
-      this.jdField_h_of_type_Int = 5;
+      ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
+      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeCreateEngineBusiness(this.b, this.jdField_a_of_type_Alaw.b, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getAssets(), this.jdField_a_of_type_Alaw.c, this.d, this.e, 100);
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
+      a(7);
       return;
-    case 3: 
-      this.jdField_g_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
-      this.jdField_c_of_type_Int = 33990;
-      this.jdField_d_of_type_Int = 33991;
-      this.jdField_e_of_type_Int = 33992;
-      this.jdField_f_of_type_Int = 6;
-      this.jdField_g_of_type_Int = 7;
-      this.jdField_h_of_type_Int = 8;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
+      return;
+    case 7: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
+      this.c = 0;
+      a(11);
+      return;
+    case 9: 
+      this.jdField_a_of_type_Alae.a(new Interactive3DRenderable.1(this));
+      return;
+    case 8: 
+      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
       return;
     }
-    this.jdField_g_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_Int = 33993;
-    this.jdField_d_of_type_Int = 33994;
-    this.jdField_e_of_type_Int = 33995;
-    this.jdField_f_of_type_Int = 9;
-    this.jdField_g_of_type_Int = 10;
-    this.jdField_h_of_type_Int = 11;
-  }
-  
-  public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 != this.q) || (paramInt2 != this.r)) {}
-    for (int i1 = 1;; i1 = 0)
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
+    this.b = 0;
+    if (this.jdField_a_of_type_Akxp != null)
     {
-      if (i1 != 0)
-      {
-        this.q = paramInt1;
-        this.r = paramInt2;
-      }
-      if ((this.n < 0) || (i1 != 0))
-      {
-        if (this.n >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-          a("glDeleteTextures");
-        }
-        int[] arrayOfInt = new int[1];
-        GLES20.glGenTextures(1, arrayOfInt, 0);
-        a("glGenTextures");
-        this.n = arrayOfInt[0];
-      }
-      GLES20.glBindTexture(3553, this.n);
-      a("glBindTexture");
-      GLES20.glTexImage2D(3553, 0, 6409, this.q, this.r, 0, 6409, 5121, paramBuffer1);
-      a("glTexImage2D");
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.o < 0) || (i1 != 0))
-      {
-        if (this.o >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.o = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.o);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer2);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      if ((this.p < 0) || (i1 != 0))
-      {
-        if (this.p >= 0)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-          a("glDeleteTextures");
-        }
-        paramBuffer1 = new int[1];
-        GLES20.glGenTextures(1, paramBuffer1, 0);
-        a("glGenTextures");
-        this.p = paramBuffer1[0];
-      }
-      GLES20.glBindTexture(3553, this.p);
-      GLES20.glTexImage2D(3553, 0, 6409, this.q / 2, this.r / 2, 0, 6409, 5121, paramBuffer3);
-      GLES20.glTexParameterf(3553, 10241, 9728.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      return;
+      this.jdField_a_of_type_Akxp.b();
+      this.jdField_a_of_type_Akxp.c();
     }
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void a(float[] paramArrayOfFloat)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioByteBuffer.asFloatBuffer().put(paramArrayOfFloat);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_JavaNioByteBuffer == null)
-    {
-      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_h_of_type_ArrayOfFloat.length * 4);
-      this.jdField_b_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_h_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioByteBuffer.position(0);
+    this.d = paramInt1;
+    this.e = paramInt2;
+  }
+  
+  public void a(alak paramalak)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.b, paramalak.a, (float[])paramalak.a("CAMERA_POSITION"));
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "playEffectMusic, " + paramString);
     }
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.10(this, paramString));
   }
   
-  public boolean a()
+  public int b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Alaw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d;
   }
   
-  public void b()
+  public void b(String paramString)
   {
-    GLES20.glUseProgram(this.jdField_b_of_type_Int);
-    a("glUseProgram");
-    GLES20.glVertexAttribPointer(this.i, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer mPositionHandle");
-    GLES20.glEnableVertexAttribArray(this.i);
-    GLES20.glVertexAttribPointer(this.j, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioByteBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.j);
-    GLES20.glActiveTexture(this.jdField_c_of_type_Int);
-    GLES20.glBindTexture(3553, this.n);
-    GLES20.glUniform1i(this.k, this.jdField_f_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_d_of_type_Int);
-    GLES20.glBindTexture(3553, this.o);
-    GLES20.glUniform1i(this.l, this.jdField_g_of_type_Int);
-    GLES20.glActiveTexture(this.jdField_e_of_type_Int);
-    GLES20.glBindTexture(3553, this.p);
-    GLES20.glUniform1i(this.m, this.jdField_h_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glFinish();
-    GLES20.glDisableVertexAttribArray(this.i);
-    GLES20.glDisableVertexAttribArray(this.j);
-    GLES20.glUseProgram(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "playBgMusic, " + paramString);
+    }
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.11(this, paramString));
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_Alaw.jdField_a_of_type_JavaLangString;
   }
   
   public void c()
   {
-    if (this.n != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
-      a("glDeleteTextures");
-      this.n = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "init");
     }
-    if (this.o != -1)
-    {
-      GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
-      a("glDeleteTextures");
-      this.o = -1;
+  }
+  
+  public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "fNativeDoActionCallback action=" + paramInt1 + ", params=" + paramString1 + ", callbackId=" + paramInt2 + ", result=" + paramString2);
     }
-    if (this.p != -1)
+    if (this.jdField_a_of_type_Alae == null) {}
+    do
     {
-      GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
-      a("glDeleteTextures");
-      this.p = -1;
+      return;
+      switch (paramInt1)
+      {
+      case 57: 
+      default: 
+        this.jdField_a_of_type_Alae.a(this, this.jdField_a_of_type_Alaw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        return;
+      }
+    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a("res/music/fudai_click.mp3");
+    return;
+    a("res/music/fudai_explode.mp3");
+    return;
+    a("res/music/fudai_appear.mp3");
+    b("res/music/fudai_background.mp3");
+    return;
+    b("res/music/gameing_background.mp3");
+    return;
+    b("res/music/gameend_background.mp3");
+    return;
+    a("res/music/redpack_get.mp3");
+    return;
+    a("res/music/aimed.mp3");
+    return;
+    this.g += 1;
+    this.f += paramInt2;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "start");
     }
-    if (this.jdField_b_of_type_Int > 0)
+    if (1 == this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_Boolean = false;
-      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
-      a("glDeleteProgram");
-      this.jdField_b_of_type_Int = 0;
+      String str = this.jdField_a_of_type_Alaw.c;
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_ArrayOfJavaLangString = new String[8];
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = (str + "res/music/loading.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[1] = (str + "res/music/321ready.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[2] = (str + "res/music/redpack_open.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[3] = (str + "res/music/fudai_click.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[4] = (str + "res/music/fudai_explode.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[5] = (str + "res/music/fudai_appear.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[6] = (str + "res/music/redpack_get.mp3");
+      this.jdField_a_of_type_ArrayOfJavaLangString[7] = (str + "res/music/aimed.mp3");
+      this.jdField_a_of_type_Akxp = new akxp(1, this.jdField_a_of_type_ArrayOfJavaLangString);
+      a(2);
+      this.g = 0;
+      this.f = 0;
+    }
+    if (this.jdField_a_of_type_Alae != null) {
+      this.jdField_a_of_type_Alae.a(this, this.jdField_a_of_type_Alaw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
+    }
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Int == 9) && (this.b != 0);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Int == 11)
+    {
+      int i = this.c + 1;
+      this.c = i;
+      if (i >= 2) {
+        a(9);
+      }
+    }
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, " + this);
+    }
+    if (this.jdField_a_of_type_Int == 9)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, queueEvent, " + this);
+      }
+      if ((this.jdField_a_of_type_Alae != null) && (this.jdField_a_of_type_Boolean == true))
+      {
+        this.jdField_a_of_type_Alae.b(1, 0);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (this.jdField_a_of_type_Alae != null)
+      {
+        this.jdField_a_of_type_Alae.a(this.jdField_a_of_type_Alaw.jdField_a_of_type_JavaLangString);
+        QLog.d("AREngine_Interactive3DRenderable", 2, "onDestroy, remove hsRender here, " + this);
+        this.jdField_a_of_type_Alae.a(this, this.jdField_a_of_type_Alaw.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 101, 0, null);
+      }
+      if (this.jdField_a_of_type_Int == 9) {
+        a(10);
+      }
+    }
+    if (this.g > 0)
+    {
+      float f1 = this.f * 1.0F / this.g;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("fps_total", String.valueOf(this.f));
+      localHashMap.put("fps_count", String.valueOf(this.g));
+      localHashMap.put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
+      axrn.a(BaseApplicationImpl.getContext()).a(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, localHashMap, "", false);
     }
   }
 }

@@ -1,11 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public abstract interface aqyv
+public final class aqyv
+  implements Parcelable.Creator<HotPicData>
 {
-  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
+  public HotPicData a(Parcel paramParcel)
+  {
+    return new HotPicData(paramParcel);
+  }
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public HotPicData[] a(int paramInt)
+  {
+    return new HotPicData[paramInt];
+  }
 }
 
 

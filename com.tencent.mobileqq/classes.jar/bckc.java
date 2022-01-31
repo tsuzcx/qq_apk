@@ -1,8 +1,8 @@
-import android.view.View;
-
 public abstract interface bckc
 {
-  public abstract void a(View paramView, int paramInt);
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

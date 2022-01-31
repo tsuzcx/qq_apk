@@ -1,17 +1,6 @@
-class bjbj
-  implements bkqn
+public abstract interface bjbj
 {
-  bjbj(bjbh parambjbh) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.a(4);
-  }
+  public abstract void a(int paramInt);
 }
 
 

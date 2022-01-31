@@ -1,8 +1,8 @@
-public abstract interface bjjm
+public class bjjm
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public int a;
+  public int b;
+  public int c;
 }
 
 

@@ -19,15 +19,15 @@ import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
-import aszd;
-import atgg;
-import atgk;
-import atgl;
-import ativ;
-import atiw;
+import aszf;
+import atgi;
+import atgm;
+import atgn;
 import atix;
-import axuy;
-import bbjj;
+import atiy;
+import atiz;
+import axva;
+import bbjx;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
 import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
@@ -43,12 +43,12 @@ import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
 import java.util.List;
 import mqq.os.MqqHandler;
-import muf;
-import wcv;
+import muc;
+import wcs;
 
 public class SmallVideoFragment
   extends PublicBaseFragment
-  implements atgg, wcv
+  implements atgi, wcs
 {
   protected int a;
   private long jdField_a_of_type_Long;
@@ -77,7 +77,7 @@ public class SmallVideoFragment
   public SmallVideoFragment()
   {
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new atgl(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new atgn(this);
   }
   
   public static void a(Context paramContext, Bundle paramBundle)
@@ -123,11 +123,11 @@ public class SmallVideoFragment
   
   private int b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)a(2131365392));
-    this.jdField_a_of_type_AndroidViewView = a(2131362525);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)a(2131365391));
+    this.jdField_a_of_type_AndroidViewView = a(2131362524);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131371887));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)a(2131379019));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365407));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)a(2131379024));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131365406));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setDraggableView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setOnDraggingListener(this);
     this.jdField_a_of_type_Int = 0;
@@ -155,7 +155,7 @@ public class SmallVideoFragment
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setOnCloseListener(new atgk(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setOnCloseListener(new atgm(this));
   }
   
   private void f()
@@ -186,7 +186,7 @@ public class SmallVideoFragment
   
   protected int a()
   {
-    return 2131560876;
+    return 2131560875;
   }
   
   public View a(int paramInt)
@@ -220,7 +220,7 @@ public class SmallVideoFragment
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     float f1 = 0.0F;
-    float f2 = 1.0F - (paramInt3 - paramInt5) / muf.a(getActivity(), 60.0F);
+    float f2 = 1.0F - (paramInt3 - paramInt5) / muc.a(getActivity(), 60.0F);
     if (f2 < 0.0F) {}
     for (;;)
     {
@@ -232,9 +232,9 @@ public class SmallVideoFragment
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (paramInt1 - paramInt3 > muf.a(getActivity(), 60.0F))
+    if (paramInt1 - paramInt3 > muc.a(getActivity(), 60.0F))
     {
-      new ativ().h("video").i("slide_quit").b().a(getActivity().app);
+      new atix().h("video").i("slide_quit").b().a(getActivity().app);
       if (this.jdField_a_of_type_Boolean) {
         d();
       }
@@ -306,7 +306,7 @@ public class SmallVideoFragment
   
   public void d()
   {
-    new ativ().h("video").i("clk_quit").b().a(getActivity().app);
+    new atix().h("video").i("clk_quit").b().a(getActivity().app);
     if (!this.jdField_a_of_type_Boolean)
     {
       getActivity().finish();
@@ -351,7 +351,7 @@ public class SmallVideoFragment
       }
       localObject = new Intent();
       ((Intent)localObject).putExtras(paramIntent);
-      paramIntent = axuy.a(((Intent)localObject).getByteArrayExtra("stuctmsg_bytes"));
+      paramIntent = axva.a(((Intent)localObject).getByteArrayExtra("stuctmsg_bytes"));
       if (paramIntent != null) {}
     }
     for (;;)
@@ -359,15 +359,15 @@ public class SmallVideoFragment
       return;
       String str = ((Intent)localObject).getStringExtra("uin");
       paramInt2 = ((Intent)localObject).getIntExtra("uintype", -1);
-      bbjj.a(getActivity().app, str, paramInt2, paramIntent, null);
-      new ativ().h("video").i("playpage_fw_suc").a().a(getActivity().app);
-      ThreadManagerV2.excute(new SmallVideoFragment.4(this, (aszd)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
+      bbjx.a(getActivity().app, str, paramInt2, paramIntent, null);
+      new atix().h("video").i("playpage_fw_suc").a().a(getActivity().app);
+      ThreadManagerV2.excute(new SmallVideoFragment.4(this, (aszf)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
       while (paramInt1 > 1000)
       {
         return;
         label210:
         if (paramInt1 == 124) {
-          ThreadManagerV2.excute(new SmallVideoFragment.5(this, (aszd)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
+          ThreadManagerV2.excute(new SmallVideoFragment.5(this, (aszf)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
         }
       }
     }
@@ -386,21 +386,21 @@ public class SmallVideoFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    atix.a(getActivity(), "shortVideo");
-    atiw.a(0);
+    atiz.a(getActivity(), "shortVideo");
+    atiy.a(0);
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), null);
     this.jdField_c_of_type_AndroidViewView.setFitsSystemWindows(true);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     getActivity().getIntent().putExtra("fling_action_key", 0);
     this.jdField_a_of_type_AndroidOsBundle = super.getActivity().getIntent().getExtras();
-    ativ.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("_from", "");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView = ((StuffContainerView)a(2131379040));
+    atix.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("_from", "");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView = ((StuffContainerView)a(2131379045));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setApp(getActivity().app);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setCallBack(this);
     a(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager;
-    this.jdField_b_of_type_AndroidViewView = a(2131369502);
+    this.jdField_b_of_type_AndroidViewView = a(2131369501);
     int i = b();
     f();
     b(this.jdField_a_of_type_AndroidOsBundle);
@@ -408,7 +408,7 @@ public class SmallVideoFragment
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.b(this.jdField_a_of_type_AndroidOsBundle);
     e();
-    atiw.c();
+    atiy.c();
     return this.jdField_c_of_type_AndroidViewView;
   }
   
@@ -416,12 +416,12 @@ public class SmallVideoFragment
   {
     super.onDestroyView();
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    ativ localativ = new ativ().h("video").i("playpage_time").g(l + "").b();
+    atix localatix = new atix().h("video").i("playpage_time").g(l + "").b();
     if (getActivity() != null) {}
     for (QQAppInterface localQQAppInterface = getActivity().app;; localQQAppInterface = null)
     {
-      localativ.a(localQQAppInterface);
-      ThreadManagerV2.excute(new SmallVideoFragment.3(this, l, (aszd)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
+      localatix.a(localQQAppInterface);
+      ThreadManagerV2.excute(new SmallVideoFragment.3(this, l, (aszf)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(106)), 16, null, false);
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.c();
       if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout != null) {
         this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.a();

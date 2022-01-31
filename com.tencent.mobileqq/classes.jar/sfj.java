@@ -1,40 +1,19 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public class sfj
-  implements ablb
+class sfj
+  implements bckm
 {
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
-  sfi jdField_a_of_type_Sfi = null;
+  sfj(sfh paramsfh) {}
   
-  public sfj(sfi paramsfi, QQAppInterface paramQQAppInterface, String paramString)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.jdField_a_of_type_Sfi = paramsfi;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Sfi);
-    }
-    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Sfi != null)) {
-      this.jdField_a_of_type_Sfi.a = paramDrawable;
-    }
-    try
-    {
-      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(1).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
-    }
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

@@ -1,8 +1,17 @@
-public abstract interface asgg
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class asgg
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  asgg(asge paramasge, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
 }
 
 

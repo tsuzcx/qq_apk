@@ -1,36 +1,42 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertGroupId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
 public class tkf
-  extends syq
+  extends tbb
 {
-  public List<umx> a = new ArrayList();
+  qqstory_service.RspIconPostfix a;
   
-  public tkf(qqstory_service.RspConvertGroupId paramRspConvertGroupId)
+  public tkf() {}
+  
+  public tkf(qqstory_service.RspIconPostfix paramRspIconPostfix)
   {
-    super(paramRspConvertGroupId.result);
-    if (paramRspConvertGroupId.group_rsp_list.has())
-    {
-      paramRspConvertGroupId = paramRspConvertGroupId.group_rsp_list.get().iterator();
-      while (paramRspConvertGroupId.hasNext())
-      {
-        Object localObject = (qqstory_struct.GroupId)paramRspConvertGroupId.next();
-        localObject = new umx(String.valueOf(((qqstory_struct.GroupId)localObject).group_uin.get()), ((qqstory_struct.GroupId)localObject).group_union_id.get().toStringUtf8());
-        this.a.add(localObject);
-      }
+    super(paramRspIconPostfix.result);
+    this.a = paramRspIconPostfix;
+  }
+  
+  public void a()
+  {
+    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
+      Bosses.get().postJob(new tkg(this, "GetUserIconHandler"));
     }
   }
   
-  public String toString()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    return "GetUserGroupUnionIDResponse{groupIDList=" + this.a + '}';
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 

@@ -1,16 +1,91 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bdgm
-  implements View.OnClickListener
+class bdgm
+  implements bdld
 {
-  public bdgm(CommonTitleBar paramCommonTitleBar) {}
+  bdgm(bdgk parambdgk) {}
   
-  public void onClick(View paramView)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).installSucceed(paramString1, paramString2);
+    }
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadCancel(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (arif.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    {
+      if (!arif.b().equals(paramDownloadInfo.l))
+      {
+        arif.a(paramDownloadInfo.l);
+        paramDownloadInfo.l = arif.b();
+      }
+      bdle.a().e(paramDownloadInfo);
+    }
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadFinish(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadPause(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadUpdate(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).onDownloadWait(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).packageReplaced(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).uninstallSucceed(paramString1, paramString2);
     }
   }
 }

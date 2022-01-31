@@ -1,30 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import android.widget.HorizontalScrollView;
-import com.tencent.open.agent.FriendChooser;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardHeadLayout;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdaj
-  extends Handler
+  extends URLDrawableDownListener.Adapter
 {
-  public bdaj(FriendChooser paramFriendChooser) {}
+  public bdaj(CardHeadLayout paramCardHeadLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardHeadLayout", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-      if (QLog.isColorLevel()) {
-        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
-      }
-    }
+    CardHeadLayout.a(this.a);
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
   }
 }
 

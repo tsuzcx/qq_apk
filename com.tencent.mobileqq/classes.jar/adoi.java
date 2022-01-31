@@ -1,21 +1,23 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class adoi
-  extends acun
+  implements bfph
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
+  adoi(adoh paramadoh, MessageForDeviceFile paramMessageForDeviceFile, bfpc parambfpc) {}
   
-  adoi(adof paramadof) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_Adoh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 

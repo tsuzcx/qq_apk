@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import bbju;
+import bbki;
 import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 
 class FriendProfileCardActivity$BlurBackgroundJob
@@ -29,7 +29,7 @@ class FriendProfileCardActivity$BlurBackgroundJob
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      bbju.a((Bitmap)localObject, 2);
+      bbki.a((Bitmap)localObject, 2);
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(12, localObject);
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
     }

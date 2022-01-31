@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 class anli
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  anli(anlh paramanlh, WindowManager paramWindowManager) {}
+  anli(anlh paramanlh) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlh.a.a);
+    anlx.a().b(this.a.jdField_a_of_type_Ankz);
+    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
   }
 }
 

@@ -1,17 +1,7 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
-import mqq.os.MqqHandler;
-
 public class bilf
-  implements INetEventHandler
 {
-  bilf(bile parambile) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
-  }
+  public int a = 0;
+  public int b = 0;
 }
 
 

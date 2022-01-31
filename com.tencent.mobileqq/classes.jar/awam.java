@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class awam
+  implements GLSurfaceView.EGLContextFactory
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  akav jdField_a_of_type_Akav;
-  awap jdField_a_of_type_Awap;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  private int jdField_a_of_type_Int = 12440;
   
-  public boolean a()
+  public awam(HWVideoPlayView paramHWVideoPlayView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    return (this.a != null) && (this.b == 1);
+    int i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
+    }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
   }
   
-  public boolean b()
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    return (this.a != null) && (this.b >= 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.a != null) && (this.c == 3);
-  }
-  
-  public boolean d()
-  {
-    return (this.a != null) && (this.c >= 4);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.m();
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
+      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
+    }
   }
 }
 

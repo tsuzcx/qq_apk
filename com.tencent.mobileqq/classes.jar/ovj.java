@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class ovj
-  implements View.OnClickListener
+  implements bfuy
 {
-  public ovj(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment, ImageView paramImageView) {}
+  public ovj(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
-  }
+  public void a() {}
 }
 
 

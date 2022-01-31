@@ -1,16 +1,10 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class adqd
-  extends actr
+public abstract interface adqd
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public abstract void a();
   
-  adqd(adqb paramadqb) {}
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

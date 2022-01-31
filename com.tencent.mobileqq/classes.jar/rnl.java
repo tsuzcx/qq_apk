@@ -1,161 +1,49 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Reader;
-import java.util.Map;
-import java.util.Stack;
-import org.xmlpull.v1.XmlPullParser;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class rnl
+final class rnl
+  implements bfth
 {
-  XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
-  rnk jdField_a_of_type_Rnk;
+  rnl(Context paramContext, BaseData paramBaseData, AdData paramAdData) {}
   
-  public rnl(XmlPullParser paramXmlPullParser, rnk paramrnk)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
-    this.jdField_a_of_type_Rnk = paramrnk;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getText();
-  }
-  
-  public String a(int paramInt)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(paramInt);
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    int m = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getDepth();
-    switch (i)
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FastWebActivity)) {
+      ((FastWebActivity)this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    }
+    if (((QQAppInterface)onh.a() != null) && (paramArrayList != null))
     {
-    default: 
-    case 2: 
-      String str;
-      do
+      paramView = "";
+      paramInt = 0;
+      if (paramInt < paramArrayList.size())
       {
-        for (;;)
-        {
-          return;
-          str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-          this.jdField_a_of_type_Rnk.jdField_a_of_type_JavaUtilStack.push(str);
-          QLog.d("fast_web", 2, new Object[] { "【start】 depth : ", Integer.valueOf(m), ", name : ", str });
-          if (!rng.c().equals(str)) {
-            break;
-          }
-          i = 0;
-          while (i < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
-          {
-            if (this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(i).trim().equals("style"))
-            {
-              this.jdField_a_of_type_Rnk.b.put(m, rng.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(i).trim()));
-              return;
-            }
-            i += 1;
-          }
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label223;
         }
-        if (rng.d().equals(str))
-        {
-          this.jdField_a_of_type_Rnk.b.put(m, rnj.a(4, new Object[] { Integer.valueOf(1) }));
-          return;
-        }
-        if (rng.e().equals(str))
-        {
-          this.jdField_a_of_type_Rnk.b.put(m, rnj.a(3, new Object[0]));
-          return;
-        }
-        if (rng.f().equals(str))
-        {
-          this.jdField_a_of_type_Rnk.b.put(m, rnj.a(4, new Object[] { Integer.valueOf(2) }));
-          return;
-        }
-      } while ((!rng.g().equals(str)) && (!rng.h().equals(str)));
-      int j = 0;
-      int k = 0;
-      if (j < this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount())
-      {
-        if (!this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeName(j).trim().equals("style")) {
-          i = k;
-        }
-        for (;;)
-        {
-          j += 1;
-          k = i;
-          break;
-          str = (String)rng.a(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(j)).get("text-align");
-          i = k;
-          if (!TextUtils.isEmpty(str)) {
-            if ("right".equals(str))
-            {
-              i = 2;
-            }
-            else if ("left".equals(str))
-            {
-              i = 0;
-            }
-            else
-            {
-              i = k;
-              if ("center".equals(str)) {
-                i = 1;
-              }
-            }
-          }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
         }
       }
-      this.jdField_a_of_type_Rnk.jdField_a_of_type_AndroidUtilSparseArray.put(m, Integer.valueOf(k));
-      return;
     }
-    QLog.d("fast_web", 2, new Object[] { "【remove】 depth : ", Integer.valueOf(m), ", name : ", this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName(), " size : ", Integer.valueOf(this.jdField_a_of_type_Rnk.b.size()) });
-    if (!this.jdField_a_of_type_Rnk.jdField_a_of_type_JavaUtilStack.isEmpty())
+    label223:
+    for (;;)
     {
-      this.jdField_a_of_type_Rnk.jdField_a_of_type_JavaUtilStack.pop();
-      this.jdField_a_of_type_Rnk.b.remove(m);
-      this.jdField_a_of_type_Rnk.jdField_a_of_type_AndroidUtilSparseArray.remove(m);
+      paramInt += 1;
+      break;
+      nmc.a(new nyd().a(this.jdField_a_of_type_AndroidContentContext).a(nmc.c).b(nmc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(oas.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a(paramView).d(nmc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)).a());
+      bcql.a(this.jdField_a_of_type_AndroidContentContext, -1, this.jdField_a_of_type_AndroidContentContext.getString(2131699675), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
       return;
     }
-    throw new RuntimeException("tag is not close !");
-  }
-  
-  public void a(Reader paramReader)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.setInput(paramReader);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeCount();
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-  }
-  
-  public String b(int paramInt)
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(paramInt);
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-  }
-  
-  public int d()
-  {
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-    a();
-    return i;
   }
 }
 

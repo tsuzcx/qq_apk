@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class aqdu
   implements View.OnClickListener
 {
-  aqdu(aqdt paramaqdt) {}
+  aqdu(aqds paramaqds) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    aqds.a(this.a);
   }
 }
 

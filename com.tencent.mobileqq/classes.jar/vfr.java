@@ -1,18 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-class vfr
-  implements bcph
+public final class vfr
+  implements Parcelable.Creator<EditTakeGifSource>
 {
-  vfr(vfo paramvfo) {}
-  
-  public void a(bcpf parambcpf)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpf);
-    }
+    return new EditTakeGifSource(paramParcel);
   }
   
-  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
+  }
 }
 
 

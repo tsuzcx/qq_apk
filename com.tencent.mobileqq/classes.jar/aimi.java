@@ -1,27 +1,27 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-final class aimi
-  implements Comparator<String>
+public class aimi
 {
-  public int a(String paramString1, String paramString2)
+  public LinkedHashMap<String, List<PhoneContact>> a;
+  public List<PhoneContact> a;
+  public int[] a;
+  public String[] a;
+  public List<PhoneContact> b = new ArrayList();
+  
+  public aimi()
   {
-    if ("★".equals(paramString2)) {}
-    do
-    {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
-      }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ArrayOfInt = new int[0];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aimi
  * JD-Core Version:    0.7.0.1
  */

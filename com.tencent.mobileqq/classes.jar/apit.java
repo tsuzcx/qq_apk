@@ -1,43 +1,19 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
 
 final class apit
   implements View.OnClickListener
 {
-  apit(FileManagerEntity paramFileManagerEntity, apkm paramapkm) {}
+  apit(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
   public void onClick(View paramView)
   {
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      int i = apue.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if ((i == 1) || (i == 2) || (i == 4)) {
-        new bgpd(3).a(paramView, BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null, false);
-      }
-      while ((this.jdField_a_of_type_Apkm != null) && (this.jdField_a_of_type_Apkm.b()))
-      {
-        this.jdField_a_of_type_Apkm.a(3);
-        apue.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) && (apvb.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
-        {
-          bgpd.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()).a(paramView).a(BaseActivity.sTopActivity, paramView.getAccount());
-          bgpr.a(paramView, 7, 3);
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.i("FileOperaterUtils", 2, "FileVideoMediaPlayHelperthis is a local file, but favorite fail. [Uuid] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid + " [status] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + " [fileType] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType);
-        }
-      }
-      return;
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, false);
     }
-    catch (Exception paramView) {}
   }
 }
 

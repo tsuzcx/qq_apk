@@ -9,7 +9,11 @@ public class wmi
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    if (CommentBottomBar.a(this.a) != null)
+    {
+      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
+      CommentBottomBar.a(this.a);
+    }
   }
 }
 

@@ -1,26 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForVideo;
+import android.widget.TextView;
 
 class aefj
-  implements View.OnClickListener
+  extends acuj
 {
-  aefj(aefi paramaefi) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
-  {
-    if (!aefi.a(this.a)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!lmb.c()) || (!lmb.d()));
-      paramView = (acve)actn.a(paramView);
-    } while (paramView == null);
-    paramView = (MessageForVideo)paramView.a;
-    aefi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
+  aefj(aefg paramaefg) {}
 }
 
 

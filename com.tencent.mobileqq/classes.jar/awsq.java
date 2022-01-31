@@ -1,287 +1,367 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.search.rich.ArkAppModule.1;
-import com.tencent.mobileqq.search.rich.ArkAppModule.2;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.search.report.ReportModel;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class awsq
-  extends alpd
 {
-  private WeakReference<awsr> a;
+  public static final String a = awsq.class.getSimpleName();
+  public static String b = "";
   
-  public awsq(ark.Application paramApplication, long paramLong)
+  public static String a()
   {
-    super(paramApplication, paramLong);
+    return "old_search";
   }
   
-  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
+  public static String a(int paramInt)
   {
-    if (paramVariantWrapper == null) {}
-    int i;
-    do
-    {
-      return paramInt;
-      i = paramVariantWrapper.GetType();
-      if (i == 4) {
-        return (int)paramVariantWrapper.GetDouble();
-      }
-    } while (i != 3);
-    return paramVariantWrapper.GetInt();
-  }
-  
-  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
-  {
-    if (paramVariantWrapper == null) {}
-    int i;
-    do
-    {
-      return paramLong;
-      i = paramVariantWrapper.GetType();
-      if (i == 4) {
-        return paramVariantWrapper.GetDouble();
-      }
-    } while (i != 3);
-    return paramVariantWrapper.GetInt();
-  }
-  
-  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
-  {
-    if (paramVariantWrapper == null) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramVariantWrapper.GetType();
-      if (i == 5) {
-        return paramVariantWrapper.GetString();
-      }
-    } while (i != 6);
-    return paramVariantWrapper.GetTableAsJsonString();
-  }
-  
-  public void Destruct()
-  {
-    super.Destruct();
-  }
-  
-  public String GetTypeName()
-  {
-    return "QQSearch";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    if (paramString.equals("Report")) {}
-    do
-    {
-      return true;
-      if (paramString.equals("GetContainerInfo")) {
-        return false;
-      }
-    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
-    return false;
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (!a(paramString)) {}
-    do
-    {
-      return false;
-      if (paramString.equals("Report")) {
-        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("SetTalkBackText")) {
-        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-    } while (!paramString.equals("Notify"));
-    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
-  }
-  
-  public void a(awsr paramawsr)
-  {
-    this.a = new WeakReference(paramawsr);
-  }
-  
-  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localQQAppInterface == null) {
-      return false;
+    if (paramInt == 1) {
+      return "message";
     }
-    String str = localQQAppInterface.getCurrentAccountUin();
-    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
-    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
-    int i = 0;
-    int j = 0;
-    long l1 = 0L;
-    long l2 = 0L;
-    Object localObject3 = "";
-    Object localObject2 = "";
-    int k = 0;
-    Object localObject4;
-    int m;
-    long l3;
-    if (k < paramArrayOfVariantWrapper.length) {
-      if (k == 0)
+    if (paramInt == 2) {
+      return "contact";
+    }
+    if ((paramInt == 21) || (paramInt == 3)) {
+      return "dongtai";
+    }
+    if ((paramInt == 25) || (paramInt == 10)) {
+      return "kandian";
+    }
+    return "unknown";
+  }
+  
+  public static void a(int paramInt1, int paramInt2, awnp paramawnp)
+  {
+    if ((paramawnp == null) || (paramawnp.a() == null)) {}
+    do
+    {
+      do
       {
-        localObject4 = paramArrayOfVariantWrapper[0].GetString();
-        m = j;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-        l3 = l2;
-        l2 = l1;
-        l1 = l3;
-        j = i;
-        i = m;
+        return;
+      } while (!paramawnp.a());
+      if (paramawnp.a().equals(awnv.a)) {
+        a(null, 0, paramInt2, "0X8009D4E", 0, 0, null, null);
+      }
+      if (paramawnp.a().equals(awns.a)) {
+        a(null, 0, paramInt2, "0X8009D38", 0, 0, null, null);
+      }
+      if (paramawnp.a().equals(awnu.a)) {
+        a(null, 0, paramInt2, "0X8009D3C", 0, 0, null, null);
+      }
+    } while (!paramawnp.a().equals(ajya.a(2131715916)));
+    a(null, 0, paramInt2, "0X8009D52", 0, 0, null, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
+  {
+    if (paramQQAppInterface == null)
+    {
+      paramQQAppInterface = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(paramQQAppInterface instanceof QQAppInterface))
+      {
+        QLog.e(a, 1, "app is null");
+        return;
+      }
+      paramQQAppInterface = (QQAppInterface)paramQQAppInterface;
+    }
+    for (;;)
+    {
+      int i = 0;
+      if (paramInt1 != 0) {
+        switch (paramInt1)
+        {
+        default: 
+          paramInt1 = i;
+        }
+      }
+      for (;;)
+      {
+        String str2 = "" + paramInt3;
+        String str1 = "" + paramInt4;
+        try
+        {
+          Integer.valueOf(str2);
+          axqy.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, str2, str1, paramString2, "");
+          return;
+        }
+        catch (Exception localException)
+        {
+          axqy.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, "0", str1, paramString2, "");
+          return;
+        }
+        paramInt1 = 1;
+        continue;
+        paramInt1 = 2;
+        continue;
+        paramInt1 = 3;
+        continue;
+        switch (paramInt2)
+        {
+        default: 
+          paramInt1 = 0;
+          break;
+        case 1: 
+          paramInt1 = 1;
+          break;
+        case 2: 
+          paramInt1 = 2;
+          break;
+        case 21: 
+          paramInt1 = 3;
+        }
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (paramInt1 != 0) {
+      switch (paramInt1)
+      {
+      default: 
+        if (paramString2 == null) {
+          paramString2 = "";
+        }
+        break;
       }
     }
     for (;;)
     {
-      m = k + 1;
-      l3 = l2;
-      k = i;
-      i = j;
-      localObject4 = paramVariantWrapper;
-      paramVariantWrapper = (ark.VariantWrapper)localObject1;
-      localObject1 = localObject4;
-      j = k;
-      l2 = l1;
-      l1 = l3;
-      k = m;
+      if (paramString3 == null) {
+        paramString3 = "";
+      }
+      for (;;)
+      {
+        axqy.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, paramInt3 + "", paramInt4 + "", paramString2, paramString3);
+        QLog.d("searchReportClick898", 2, " source: " + paramInt1 + " from: " + paramInt2 + "  sopName: " + paramString1 + " r1: " + paramInt3 + " r2: " + paramInt4 + " r3: " + paramString2 + " r4: " + paramString3);
+        return;
+        i = 1;
+        break;
+        i = 2;
+        break;
+        i = 3;
+        break;
+        if (paramInt2 != 0) {}
+        switch (paramInt2)
+        {
+        default: 
+          i = 0;
+          break;
+        case 1: 
+          i = 1;
+          break;
+        case 2: 
+          i = 2;
+          break;
+        case 21: 
+          i = 3;
+          break;
+        case 25: 
+          i = 4;
+          break;
+        }
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ReportModelDC02528 paramReportModelDC02528)
+  {
+    a("dc02528", paramQQAppInterface, paramReportModelDC02528);
+    if (QLog.isColorLevel()) {}
+  }
+  
+  public static void a(Object paramObject, String paramString, int paramInt)
+  {
+    if ((paramObject instanceof awnp)) {
+      a(0, paramInt, (awnp)paramObject);
+    }
+    if ((paramObject instanceof awny)) {
+      a(null, 0, paramInt, "0X8009D30", 0, 0, null, null);
+    }
+    Object localObject;
+    int i;
+    label137:
+    label270:
+    label533:
+    if ((paramObject instanceof awns))
+    {
+      localObject = (awns)paramObject;
+      if (((awns)localObject).a() == null) {
+        break label611;
+      }
+      i = ((awns)localObject).a().size();
+      if (i > ((awns)localObject).a())
+      {
+        i = ((awns)localObject).a();
+        awwa.a("all_result", "exp_contact", new String[] { "" + paramString, "" + i });
+        a(null, 0, paramInt, "0X8009D36", 0, 0, null, null);
+      }
+    }
+    else
+    {
+      if ((paramObject instanceof awnu)) {
+        a(null, 0, paramInt, "0X8009D3A", 0, 0, null, null);
+      }
+      if ((paramObject instanceof awma))
+      {
+        localObject = (awma)paramObject;
+        if (((awma)localObject).a() == null) {
+          break label655;
+        }
+        i = ((awma)localObject).a().size();
+        if (i <= ((awma)localObject).a()) {
+          break label652;
+        }
+        i = ((awma)localObject).a();
+        label215:
+        awwa.a("all_result", "exp_talk", new String[] { "" + paramString, "" + i });
+        a(null, 0, paramInt, "0X8009D4C", 0, 0, null, null);
+      }
+      if ((paramObject instanceof bgqv))
+      {
+        localObject = (bgqv)paramObject;
+        if (((bgqv)localObject).a() == null) {
+          break label699;
+        }
+        i = ((bgqv)localObject).a().size();
+        if (i <= ((bgqv)localObject).a()) {
+          break label696;
+        }
+        i = ((bgqv)localObject).a();
+        label329:
+        awwa.a("all_result", "exp_collect", new String[] { "" + paramString, "" + i });
+      }
+      if ((paramObject instanceof apfp))
+      {
+        localObject = (apfp)paramObject;
+        if (((apfp)localObject).a() == null) {
+          break label743;
+        }
+        i = ((apfp)localObject).a().size();
+        if (i <= ((apfp)localObject).a()) {
+          break label740;
+        }
+        i = ((apfp)localObject).a();
+        label431:
+        awwa.a("all_result", "exp_file", new String[] { "" + paramString, "" + i });
+      }
+      label486:
+      if ((paramObject instanceof awnz))
+      {
+        localObject = (awnz)paramObject;
+        if (((awnz)localObject).a() == null) {
+          break label787;
+        }
+        i = ((awnz)localObject).a().size();
+        if (i <= ((awnz)localObject).a()) {
+          break label784;
+        }
+        i = ((awnz)localObject).a();
+        awwa.a("all_result", "exp_discuss", new String[] { "" + paramString, "" + i });
+      }
+    }
+    for (;;)
+    {
+      label384:
+      if ((paramObject instanceof awoa)) {
+        a(null, 0, paramInt, "0X8009D50", 0, 0, null, null);
+      }
+      return;
       break;
-      if (k == 1)
-      {
-        localObject1 = paramArrayOfVariantWrapper[1].GetString();
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 2)
-      {
-        m = a(paramArrayOfVariantWrapper[2], 0);
-        i = j;
-        j = m;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 3)
-      {
-        m = a(paramArrayOfVariantWrapper[3], 0);
-        j = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 4)
-      {
-        l3 = a(paramArrayOfVariantWrapper[4], 0L);
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l1 = l2;
-        i = j;
-        j = m;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 5)
-      {
-        l3 = a(paramArrayOfVariantWrapper[5], 0L);
-        m = i;
-        l2 = l1;
-        localObject4 = paramVariantWrapper;
-        l1 = l3;
-        i = j;
-        j = m;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 6)
-      {
-        localObject4 = paramArrayOfVariantWrapper[6].GetString();
-        m = i;
-        localObject3 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if (k == 7)
-      {
-        localObject4 = paramArrayOfVariantWrapper[7].GetString();
-        m = i;
-        localObject2 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-        continue;
-        axqw.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
-        return true;
-      }
-      else
-      {
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
+      label611:
+      awwa.a("all_result", "exp_contact", new String[] { "" + paramString, "0" });
+      break label137;
+      label652:
+      break label215;
+      label655:
+      awwa.a("all_result", "exp_talk", new String[] { "" + paramString, "0" });
+      break label270;
+      label696:
+      break label329;
+      label699:
+      awwa.a("all_result", "exp_collect", new String[] { "" + paramString, "0" });
+      break label384;
+      label740:
+      break label431;
+      label743:
+      awwa.a("all_result", "exp_file", new String[] { "" + paramString, "0" });
+      break label486;
+      label784:
+      break label533;
+      label787:
+      awwa.a("all_result", "exp_discuss", new String[] { "" + paramString, "0" });
     }
   }
   
-  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static void a(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
   {
-    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
-    {
-      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
-      long l = paramArrayOfVariantWrapper[1].GetView();
-      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
+    if (TextUtils.isEmpty(paramString)) {
+      if (!QLog.isColorLevel()) {}
     }
-    return true;
+    do
+    {
+      return;
+      if (paramReportModel != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    return;
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = new Intent();
+      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramQQAppInterface.putExtra("reporting_tag", paramString);
+      paramQQAppInterface.putExtra("reporting_detail", paramReportModel);
+      paramQQAppInterface.putExtra("reporting_count", paramReportModel.report_count);
+      paramQQAppInterface.putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
+      return;
+    }
+    b(paramString, localQQAppInterface, paramReportModel);
   }
   
-  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  protected static void b(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
   {
-    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
-    {
-      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
-      String str = a(paramArrayOfVariantWrapper[2], null);
-      long l = paramArrayOfVariantWrapper[3].GetView();
-      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
+    if ((paramReportModel == null) || (paramQQAppInterface == null)) {
+      if (!QLog.isColorLevel()) {}
     }
-    return true;
+    do
+    {
+      return;
+      paramReportModel.uin = paramQQAppInterface.getCurrentAccountUin();
+      paramReportModel.version = "8.3.0";
+      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), axcv.class);
+      localNewIntent.putExtra("sendType", 2);
+      localNewIntent.putExtra("tag", paramString);
+      localNewIntent.putExtra("content", paramReportModel.toReportString());
+      localNewIntent.setWithouLogin(true);
+      paramQQAppInterface.startServlet(localNewIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d(a, 2, "reportEventRuntime, tag = " + paramString + ", model = " + paramReportModel);
   }
 }
 

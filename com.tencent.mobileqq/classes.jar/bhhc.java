@@ -1,130 +1,59 @@
-import android.util.SparseArray;
-import cooperation.qzone.util.QZLog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.QzoneModuleConst;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.NetworkState;
+import java.util.List;
 
 public class bhhc
-  extends SparseArray<bhhd>
+  extends bhgr
 {
-  private long a;
-  private long b;
-  private long c;
+  public bhhc(QzoneModuleManager paramQzoneModuleManager) {}
   
-  public bhhc(long paramLong)
+  private void a()
   {
-    this.a = paramLong;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    int j = 0;
-    if (this.b + this.c > this.a) {
-      if (!paramBoolean) {}
+    if (!NetworkState.isWifiConn())
+    {
+      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
+      return;
     }
+    QzoneModuleManager.access$008(this.a);
     for (;;)
     {
-      int i;
-      try
+      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
       {
-        if (paramInt >= size()) {
-          break label150;
+        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
+        if (this.a.checkIfNeedUpdate(str)) {
+          this.a.updateModule(str, this);
         }
-        i = paramInt;
-        removeAt(i);
-        return;
-      }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        localIndexOutOfBoundsException.printStackTrace();
-        if ((a()) || (size() <= 0)) {
-          continue;
-        }
-        if (!paramBoolean) {
-          break label139;
-        }
-        i = j;
-        removeAt(i);
-        QZLog.e("PieceCacheList", "trimToSize: IndexOutOfBoundsException temp " + (size() - (36 - paramInt)));
-        return;
-      }
-      if (paramInt < size())
-      {
-        i = size() - 1;
       }
       else
       {
-        i = size();
-        i -= 36 - paramInt;
-        continue;
-        label139:
-        i = size() - 1;
-        continue;
-        return;
-        label150:
-        i = 0;
-      }
-    }
-  }
-  
-  public void a(int paramInt, bhhd parambhhd)
-  {
-    if (parambhhd != null)
-    {
-      super.put(paramInt, parambhhd);
-      this.b += parambhhd.c();
-    }
-  }
-  
-  public void a(int paramInt, bhhd parambhhd, boolean paramBoolean)
-  {
-    if (parambhhd != null) {}
-    try
-    {
-      if (this.c == 0L)
-      {
-        this.c = parambhhd.c();
-        if (this.a < this.c * 8L) {
-          this.a = (this.c * 8L);
+        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
+          break;
         }
+        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
+        return;
       }
-      a(paramInt, paramBoolean);
-      a(paramInt, parambhhd);
-      return;
+      QzoneModuleManager.access$008(this.a);
     }
-    finally {}
   }
   
-  public boolean a()
+  public void onDownloadCanceled(String paramString)
   {
-    if (this.c == 0L) {}
-    while (this.a > this.c * 8L) {
-      return false;
-    }
-    return true;
+    super.onDownloadCanceled(paramString);
+    a();
   }
   
-  public void clear()
+  public void onDownloadFailed(String paramString)
   {
-    super.clear();
-    this.b = 0L;
+    super.onDownloadFailed(paramString);
+    a();
   }
   
-  public void remove(int paramInt)
+  public void onDownloadSucceed(String paramString)
   {
-    bhhd localbhhd = (bhhd)get(paramInt);
-    if (localbhhd != null) {
-      localbhhd.b();
-    }
-    super.remove(paramInt);
-    this.b -= this.c;
-  }
-  
-  public void removeAt(int paramInt)
-  {
-    bhhd localbhhd = (bhhd)valueAt(paramInt);
-    if (localbhhd != null) {
-      localbhhd.b();
-    }
-    super.removeAt(paramInt);
-    this.b -= this.c;
+    super.onDownloadSucceed(paramString);
+    a();
   }
 }
 

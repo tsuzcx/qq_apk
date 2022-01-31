@@ -1,18 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bktv
   implements DialogInterface.OnClickListener
 {
-  public bktv(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  public bktv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PhotoUtils.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(this.a.c);
+    }
+    bkzy.a = true;
   }
 }
 

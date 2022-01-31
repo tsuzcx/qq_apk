@@ -1,37 +1,54 @@
-import android.os.Message;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 
 class qir
-  extends ayvz
+  implements qik
 {
-  qir(qiq paramqiq) {}
+  qir(qip paramqip) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((localayqm == null) || (localayqm.jdField_b_of_type_Int != 24) || (localayqm.c != 10)) {}
-    while ((localayqm.jdField_b_of_type_Long != this.a.a.a) || (localayqm.f.equals(qiq.a(this.a)))) {
-      return;
-    }
-    switch (paramMessage.what)
+    qip.a(this.a, NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public void a(float paramFloat)
+  {
+    qip.a(this.a, paramFloat);
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    switch (paramInt)
     {
-    case 1004: 
     default: 
       return;
+    case 0: 
+      qip.a(this.a, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoDeliverController", 2, "mVideoTransProcessorHandler mVideoMd5=" + paramString2 + ", mVideoUuid=" + paramString3 + ", mVideoUrl=" + paramString1);
+      }
+      qip.b(this.a, NetConnInfoCenter.getServerTimeMillis());
+      nol.a(qip.a(this.a), "", "0X8008181", "0X8008181", 0, 0, String.valueOf(qip.a(this.a)), String.valueOf(qip.b(this.a)), String.valueOf(qip.c(this.a) - qip.d(this.a)), String.valueOf(qip.e(this.a) - qip.f(this.a)));
+      qip.a(this.a, 0, qip.a(this.a), qip.b(this.a), paramString1, paramString2, paramString3);
+      paramString1 = qig.a().a(qip.a(this.a)).b(qip.b(this.a)).d(paramString2).c(paramString1).e(paramString3).a(qip.b(this.a)).b(qip.g(this.a)).a();
+      qip.a(this.a, paramString1);
+      return;
+    case 1001: 
+      qip.b(this.a, 6);
+      return;
     case 1002: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mVideoTransProcessorHandler transfer=" + localayqm.e + ", total=" + localayqm.a);
-      qiq.a(this.a, (float)localayqm.e * 100.0F / (float)localayqm.a);
+      qip.b(this.a, 5);
       return;
     case 1003: 
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler send finished!");
-      qiq.a(this.a, localayqm.f);
-      qiq.b(this.a, localayqm.i);
-      QLog.d("KingsMomentVideoDeliveControllerr", 1, "mPicTransProcessorHandler mImageMd5=" + qiq.a(this.a) + ", mImageUrl=" + qiq.b(this.a));
-      qiq.a(this.a, 0, qiq.b(this.a), qiq.a(this.a), null, null, null);
+      qip.b(this.a, 7);
+      return;
+    case 1004: 
+      qip.b(this.a, 7);
+      qip.c(this.a, 1004);
+      nol.a(qip.a(this.a), "", "0X8008181", "0X8008181", 0, 1, String.valueOf(qip.a(this.a)), String.valueOf(qip.b(this.a)), String.valueOf(qip.c(this.a) - qip.d(this.a)), String.valueOf(qip.e(this.a) - qip.f(this.a)));
       return;
     }
-    QLog.d("KingsMomentVideoDeliveControllerr", 1, "upload king moment cover failed");
-    qiq.a(this.a, 13);
+    qip.b(this.a, 12);
   }
 }
 

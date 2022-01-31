@@ -1,12 +1,8 @@
-import android.text.TextUtils;
+import cooperation.qzone.event.ExoticEventPool;
 
 public class bhdt
-  extends bhdq
 {
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
+  private static final ExoticEventPool a = new ExoticEventPool(null);
 }
 
 

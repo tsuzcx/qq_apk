@@ -1,67 +1,16 @@
-import android.view.View;
-import android.view.ViewStub;
-import java.util.LinkedList;
-import java.util.Queue;
+import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
 
-public abstract class bijx
+public abstract interface bijx
 {
-  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private boolean jdField_a_of_type_Boolean;
+  public abstract void a(int paramInt);
   
-  public bijx(ViewStub paramViewStub)
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  }
+  public abstract void a(avuo paramavuo);
   
-  private void b()
-  {
-    for (;;)
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localRunnable != null) {
-        try
-        {
-          localRunnable.run();
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          throw new RuntimeException("doPendingActions encounter an error", localException);
-        }
-      }
-    }
-  }
+  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
   
-  protected final void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
-    b();
-  }
+  public abstract void m();
   
-  protected abstract void a(View paramView);
-  
-  protected void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      paramRunnable.run();
-    }
-    while (paramRunnable == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public abstract void n();
 }
 
 

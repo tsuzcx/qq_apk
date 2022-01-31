@@ -1,18 +1,26 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
+import cooperation.qzone.model.PictureUrl;
 
 public final class bhfl
-  implements Parcelable.Creator<BroadcastUrl>
+  implements Parcelable.Creator<PictureUrl>
 {
-  public BroadcastUrl a(Parcel paramParcel)
+  public PictureUrl a(Parcel paramParcel)
   {
-    return new BroadcastUrl(paramParcel);
+    PictureUrl localPictureUrl = new PictureUrl();
+    localPictureUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPictureUrl.jdField_a_of_type_Int = paramParcel.readInt();
+    localPictureUrl.jdField_b_of_type_Int = paramParcel.readInt();
+    localPictureUrl.c = paramParcel.readInt();
+    localPictureUrl.jdField_a_of_type_Float = paramParcel.readFloat();
+    localPictureUrl.jdField_b_of_type_Float = paramParcel.readFloat();
+    localPictureUrl.d = paramParcel.readInt();
+    return localPictureUrl;
   }
   
-  public BroadcastUrl[] a(int paramInt)
+  public PictureUrl[] a(int paramInt)
   {
-    return new BroadcastUrl[paramInt];
+    return new PictureUrl[paramInt];
   }
 }
 

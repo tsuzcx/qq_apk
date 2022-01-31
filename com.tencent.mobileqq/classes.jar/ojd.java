@@ -1,14 +1,14 @@
 class ojd
-  extends ojq
+  extends ojn
 {
-  ojd(oio paramoio, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
+  ojd(oil paramoil, int paramInt)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    paramojq.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
   }
 }
 

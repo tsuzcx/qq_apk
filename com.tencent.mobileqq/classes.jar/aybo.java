@@ -1,33 +1,37 @@
 public class aybo
-  extends aybg
+  extends aybi
 {
-  private float d;
-  private float e;
+  private int f;
+  private int g;
   
-  public aybo(int paramInt, float paramFloat1, float paramFloat2)
+  public aybo(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt, 2, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
+    super(paramInt1, 4, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  public aybo(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super(paramInt1, 4, paramInt4);
+    this.f = paramInt2;
+    this.g = paramInt3;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.jdField_c_of_type_Float = (this.d + (this.e - this.d) * paramFloat);
-    if (this.e - this.d > 0.0F) {
-      if (this.jdField_c_of_type_Float >= this.e) {
-        this.jdField_c_of_type_Float = this.e;
+    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.a >= this.g) {
+        this.a = this.g;
       }
     }
     for (;;)
     {
-      if (paramInt >= this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Float = this.e;
-      }
       super.a(paramInt, paramFloat);
       return;
-      if (this.jdField_c_of_type_Float <= this.e) {
-        this.jdField_c_of_type_Float = this.e;
+      if (this.a <= this.g) {
+        this.a = this.g;
       }
     }
   }

@@ -1,49 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.Locale;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
+import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent.IDebuggerMessageListener;
 
-class bewd
-  implements bevb
+public class bewd
+  implements IInspectorAgent
 {
-  private float jdField_a_of_type_Float;
+  private IInspectorAgent.IDebuggerMessageListener jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener;
+  private IInspectorAgent jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent;
   
-  bewd(bewc parambewc, long paramLong) {}
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  public void a(IInspectorAgent paramIInspectorAgent)
   {
-    String str = "";
-    if (paramFloat - this.jdField_a_of_type_Float > 0.1F)
-    {
-      this.jdField_a_of_type_Float = paramFloat;
-      str = String.format(Locale.getDefault(), "%.2f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%";
-      besl.b("GpkgLoadAsyncTask", "[Gpkg]" + paramMiniAppInfo.appId + "(" + paramMiniAppInfo.name + "), progress " + str + ", size=" + paramLong);
-    }
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_Bewc.a().notifyRuntimeEvent(2001, new Object[] { Float.valueOf(paramFloat) });
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent = paramIInspectorAgent;
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.setOnDebuggerMessageListener(this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener);
+  }
+  
+  public void sendMessageToDebugger(@NonNull String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.sendMessageToDebugger(paramString);
     }
   }
   
-  public void onInitGpkgInfo(int paramInt, bevc parambevc, String paramString)
+  public void setOnDebuggerMessageListener(@Nullable IInspectorAgent.IDebuggerMessageListener paramIDebuggerMessageListener)
   {
-    besl.b("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig end, resCode=" + paramInt + ", msg=" + paramString + " ,timecost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if ((paramInt == 0) && (parambevc != null))
-    {
-      beiu.a().a(parambevc, true);
-      besl.b("GpkgLoadAsyncTask", "[Gpkg] getGpkgInfoByConfig appid=" + parambevc.d + ", appName=" + parambevc.c + " success");
-      bewc.a(this.jdField_a_of_type_Bewc, parambevc);
-      bewc.a(this.jdField_a_of_type_Bewc, null);
-      this.jdField_a_of_type_Bewc.c();
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append("[Gpkg] getGpkgInfoByConfig appid=");
-    if (parambevc != null) {}
-    for (parambevc = parambevc.d;; parambevc = "unknown appid")
-    {
-      besl.d("GpkgLoadAsyncTask", parambevc + ", fail " + paramString);
-      bewc.a(this.jdField_a_of_type_Bewc, null);
-      bewc.a(this.jdField_a_of_type_Bewc, null);
-      this.jdField_a_of_type_Bewc.a(paramInt, paramString);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener = paramIDebuggerMessageListener;
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent.setOnDebuggerMessageListener(this.jdField_a_of_type_ComTencentMobileqqTritonSdkBridgeIInspectorAgent$IDebuggerMessageListener);
     }
   }
 }

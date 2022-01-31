@@ -1,63 +1,38 @@
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class bhpe
+final class bhpe
+  implements FilenameFilter
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int;
-  private static bhpe jdField_b_of_type_Bhpe;
-  public int a;
-  private bhpe jdField_a_of_type_Bhpe;
-  public String a;
-  public WeakReference<bhpd> a;
-  public String b;
-  public String c;
-  public String d;
+  bhpe(long paramLong1, long paramLong2) {}
   
-  public bhpe(int paramInt, String paramString)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-  }
-  
-  public static bhpe a(int paramInt, String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
+    long l;
+    do
     {
-      if (jdField_b_of_type_Bhpe != null)
+      File localFile;
+      do
       {
-        bhpe localbhpe = jdField_b_of_type_Bhpe;
-        jdField_b_of_type_Bhpe = localbhpe.jdField_a_of_type_Bhpe;
-        localbhpe.jdField_a_of_type_Bhpe = null;
-        localbhpe.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-        localbhpe.jdField_a_of_type_Int = paramInt;
-        jdField_b_of_type_Int -= 1;
-        return localbhpe;
-      }
-      return new bhpe(paramInt, paramString);
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
-    this.d = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 100)
+        do
+        {
+          return false;
+        } while (paramString.split("_").length == 2);
+        localFile = new File(paramFile + File.separator + paramString);
+      } while ((localFile == null) || (!localFile.exists()));
+      l = localFile.lastModified();
+      if (QLog.isDevelopLevel())
       {
-        this.jdField_a_of_type_Bhpe = jdField_b_of_type_Bhpe;
-        jdField_b_of_type_Bhpe = this;
-        jdField_b_of_type_Int += 1;
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
+        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
       }
-      return;
+    } while ((l < this.a) || (l > this.b));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
     }
+    return true;
   }
 }
 

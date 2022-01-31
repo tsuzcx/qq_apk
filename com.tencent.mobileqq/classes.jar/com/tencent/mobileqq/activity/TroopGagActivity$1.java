@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import bakk;
+import baky;
 
 public class TroopGagActivity$1
   implements Runnable
 {
-  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, bakk parambakk) {}
+  TroopGagActivity$1(TroopGagActivity paramTroopGagActivity, baky parambaky) {}
   
   public void run()
   {

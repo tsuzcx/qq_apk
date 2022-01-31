@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import begz;
-import beka;
-import bemw;
-import besl;
-import bfgt;
+import behq;
+import bekr;
+import benn;
+import betc;
+import bfhk;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 class CustomerJsPlugin$1
   implements AsyncResult
 {
-  CustomerJsPlugin$1(CustomerJsPlugin paramCustomerJsPlugin, beka parambeka) {}
+  CustomerJsPlugin$1(CustomerJsPlugin paramCustomerJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -25,7 +25,7 @@ class CustomerJsPlugin$1
       {
         if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openRobotProfileCard(this.this$0.mMiniAppContext.a(), null, (String)localObject))
         {
-          bemw.a(this.this$0.mContext, 0, "暂不支持在" + bfgt.a(this.this$0.mContext) + "中下载应用", 1);
+          benn.a(this.this$0.mContext, 0, "暂不支持在" + bfhk.a(this.this$0.mContext) + "中下载应用", 1);
           this.val$req.a("app not implement");
           return;
         }
@@ -35,7 +35,7 @@ class CustomerJsPlugin$1
       this.val$req.a("batchGetContact failed.");
       return;
     }
-    besl.d("CustomerJsPlugin", "getRobotUin failed: ");
+    betc.d("CustomerJsPlugin", "getRobotUin failed: ");
     this.val$req.a("batchGetContact failed.");
   }
 }

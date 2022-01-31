@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bcak;
+import bcay;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bcak parambcak) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, bcay parambcay) {}
   
   public void run()
   {

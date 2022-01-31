@@ -1,57 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.1;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
 
 public class aaef
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  aaef(aaee paramaaee) {}
+  public aaef(TestAppFragment paramTestAppFragment, EditText paramEditText1, EditText paramEditText2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = this.a.a;
-    if (paramContext == null) {}
-    do
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.b.getText().toString();
+    if ((TextUtils.isEmpty(paramDialogInterface)) || (TextUtils.isEmpty(str)))
     {
-      return;
-      str1 = paramIntent.getAction();
-      if ("com.tencent.mobileqq.Doraemon.monitor.update".equals(str1))
-      {
-        str1 = paramIntent.getStringExtra("key");
-        int i = paramIntent.getIntExtra("type", 0);
-        String str2 = paramIntent.getStringExtra("appid");
-        String str3 = paramIntent.getStringExtra("api");
-        long l1 = paramIntent.getLongExtra("remain", 0L);
-        long l2 = paramIntent.getLongExtra("time", 0L);
-        if (QLog.isColorLevel()) {
-          QLog.d("DoraemonOpenAPI.report", 2, "receive update key=" + str1 + ", api=" + str3 + ", remain=" + l1 + ", exp=" + l2);
-        }
-        ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.1(this, paramContext, str1, i, str2, str3, l1, l2));
-        return;
-      }
-    } while (!"com.tencent.mobileqq.Doraemon.monitor.update_batch".equals(str1));
-    String str1 = paramIntent.getStringExtra("key");
-    paramIntent.getIntExtra("type", 0);
-    paramIntent.getStringExtra("appid");
-    try
-    {
-      paramIntent = (HashMap)paramIntent.getSerializableExtra("map");
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.report", 2, "receive update all key=" + str1);
-      }
-      ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.2(this, paramContext, str1, paramIntent));
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), ajya.a(2131714859), 1).a();
       return;
     }
-    catch (ClassCastException paramContext)
-    {
-      QLog.e("DoraemonOpenAPI.report", 1, "illegal data");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.c = paramDialogInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int = Integer.parseInt(str);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Aabl = aabq.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity(), "appid切换为:" + paramDialogInterface, 1).a();
   }
 }
 

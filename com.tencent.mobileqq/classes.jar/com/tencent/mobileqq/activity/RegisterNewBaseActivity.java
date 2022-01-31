@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abys;
-import abyu;
+import abyo;
+import abyq;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bcqc;
+import bcqr;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -38,8 +38,8 @@ public class RegisterNewBaseActivity
     this.jdField_b_of_type_JavaLangString = "86";
     this.jdField_c_of_type_Boolean = true;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new abys(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abyu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new abyo(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new abyq(this);
   }
   
   public String a()
@@ -49,12 +49,12 @@ public class RegisterNewBaseActivity
   
   protected void a(int paramInt)
   {
-    ((ProgressBar)findViewById(2131375089)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131375091)).setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    new bcqc(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bcqr(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -66,7 +66,7 @@ public class RegisterNewBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new bcqc(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bcqr(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
@@ -84,7 +84,7 @@ public class RegisterNewBaseActivity
   
   protected void a(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131375089);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131375091);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -100,7 +100,7 @@ public class RegisterNewBaseActivity
   
   protected void b()
   {
-    TextView localTextView = (TextView)findViewById(2131363776);
+    TextView localTextView = (TextView)findViewById(2131363775);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (AppSetting.d) {
       localTextView.setContentDescription(getResources().getString(2131690572));
@@ -122,7 +122,7 @@ public class RegisterNewBaseActivity
   
   protected void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131378479);
+    TextView localTextView = (TextView)findViewById(2131378484);
     localTextView.setText(paramString);
     if (AppSetting.d) {
       localTextView.setContentDescription(paramString);
@@ -167,7 +167,7 @@ public class RegisterNewBaseActivity
   
   protected void c(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131378479);
+    TextView localTextView = (TextView)findViewById(2131378484);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
     if (AppSetting.d) {

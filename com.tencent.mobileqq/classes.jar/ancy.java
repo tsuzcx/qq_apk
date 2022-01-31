@@ -1,73 +1,310 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class ancy
-  extends ampb<ancx>
+public class ancy
 {
-  public static ancx a()
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private SparseArray<ancz> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<anda> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private Map<String, ancz> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString = "";
+  private Map<String, String> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "";
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString = "";
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString = "";
+  
+  public static ancy a(amph[] paramArrayOfamph)
   {
-    QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
-    return (ancx)ampm.a().a(559);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfamph[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfamph = new ancy();
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocTipsConfigBean", 2, "updateConfig json parse faild");
+      }
+      return paramArrayOfamph;
+    }
+    JSONObject localJSONObject2;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    Object localObject5;
+    String str1;
+    try
+    {
+      localObject1 = new JSONObject((String)localObject1);
+      localJSONObject2 = ((JSONObject)localObject1).optJSONObject("File");
+      paramArrayOfamph.jdField_a_of_type_Int = localJSONObject2.optInt("maxCount");
+      paramArrayOfamph.jdField_b_of_type_Int = localJSONObject2.optInt("insertDur");
+      localObject2 = localJSONObject2.optJSONObject("fileType");
+      localObject3 = new StringBuilder();
+      localObject4 = ((JSONObject)localObject2).keys();
+      localObject5 = new StringBuilder();
+      while (((Iterator)localObject4).hasNext())
+      {
+        str1 = (String)((Iterator)localObject4).next();
+        ((StringBuilder)localObject3).append(str1).append("|");
+        String str2 = ((JSONObject)localObject2).getString(str1);
+        paramArrayOfamph.jdField_a_of_type_JavaUtilMap.put("fileType_" + str1, str2);
+        ((StringBuilder)localObject5).append(str2).append("|");
+        ancz localancz = new ancz();
+        localancz.jdField_b_of_type_ArrayOfJavaLangString = a(str2);
+        paramArrayOfamph.jdField_b_of_type_JavaUtilMap.put(str1, localancz);
+        continue;
+        return paramArrayOfamph;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TencentDocTipsConfigBean", 2, localException.toString());
+      localException.printStackTrace();
+    }
+    JSONObject localJSONObject1;
+    do
+    {
+      if (((StringBuilder)localObject5).length() > 0) {
+        ((StringBuilder)localObject5).deleteCharAt(((StringBuilder)localObject5).length() - 1);
+      }
+      if (((StringBuilder)localObject3).length() > 0) {
+        ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+      }
+      paramArrayOfamph.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
+      paramArrayOfamph.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject5).toString();
+      localObject2 = localJSONObject2.optJSONObject("Similarity");
+      paramArrayOfamph.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("durTime");
+      paramArrayOfamph.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("maxQuery");
+      paramArrayOfamph.jdField_a_of_type_Double = ((JSONObject)localObject2).getDouble("Percentage");
+      paramArrayOfamph.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("Tips");
+      paramArrayOfamph.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("Link");
+      localJSONObject2 = localJSONObject2.optJSONObject("KeyWords");
+      localObject2 = paramArrayOfamph.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (String)((Iterator)localObject2).next();
+        localObject4 = localJSONObject2.optJSONObject((String)localObject3);
+        localObject5 = (ancz)paramArrayOfamph.jdField_b_of_type_JavaUtilMap.get(localObject3);
+        str1 = ((JSONObject)localObject4).optString("key");
+        ((ancz)localObject5).jdField_a_of_type_ArrayOfJavaLangString = a(str1);
+        if (paramArrayOfamph.jdField_e_of_type_Int == 1) {
+          ((ancz)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips1");
+        }
+        for (((ancz)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link1");; ((ancz)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link0"))
+        {
+          paramArrayOfamph.jdField_b_of_type_JavaUtilMap.put(localObject3, localObject5);
+          paramArrayOfamph.jdField_c_of_type_JavaUtilMap.put("key_str_key_words" + (String)localObject3, str1);
+          paramArrayOfamph.jdField_c_of_type_JavaUtilMap.put("key_str_key_tips" + (String)localObject3, ((ancz)localObject5).jdField_a_of_type_JavaLangString);
+          paramArrayOfamph.jdField_c_of_type_JavaUtilMap.put("key_str_key_link" + (String)localObject3, ((ancz)localObject5).jdField_b_of_type_JavaLangString);
+          break;
+          ((ancz)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips0");
+        }
+      }
+      localJSONObject1 = localException.optJSONObject("Text");
+    } while (localJSONObject1 == null);
+    paramArrayOfamph.jdField_e_of_type_JavaLangString = localJSONObject1.toString();
+    if (localJSONObject1.optInt("textSwitch", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramArrayOfamph.jdField_a_of_type_Boolean = bool;
+      a(localJSONObject1, paramArrayOfamph);
+      break;
+    }
   }
   
-  public static boolean a(String paramString)
+  private static void a(JSONObject paramJSONObject, ancy paramancy)
   {
-    ancx localancx = a();
-    return (localancx != null) && (localancx.a()) && (localancx.a(paramString));
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("template_list");
+    int i = 0;
+    if (i < localJSONArray.length())
+    {
+      int k = localJSONArray.getJSONObject(i).optInt("template_type", -1);
+      ancz localancz = new ancz();
+      paramancy.jdField_f_of_type_Int = paramJSONObject.optInt("containKeyword");
+      if (paramancy.jdField_f_of_type_Int == 1) {
+        localancz.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
+      }
+      for (localancz.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");; localancz.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0"))
+      {
+        int j = k;
+        if (k == -1) {
+          j = i;
+        }
+        paramancy.jdField_a_of_type_AndroidUtilSparseArray.put(j, localancz);
+        i += 1;
+        break;
+        localancz.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
+      }
+    }
+  }
+  
+  private static String[] a(String paramString)
+  {
+    int i = 0;
+    StringTokenizer localStringTokenizer = new StringTokenizer(paramString, "|");
+    if (!localStringTokenizer.hasMoreTokens())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TencentDocTipsConfigBean", 1, "split String faild :" + paramString);
+      }
+      return new String[0];
+    }
+    paramString = new String[localStringTokenizer.countTokens()];
+    while (localStringTokenizer.hasMoreTokens())
+    {
+      paramString[i] = localStringTokenizer.nextToken();
+      i += 1;
+    }
+    return paramString;
+  }
+  
+  public double a()
+  {
+    return this.jdField_a_of_type_Double;
   }
   
   public int a()
   {
-    return 559;
+    return this.jdField_a_of_type_Int;
   }
   
-  @NonNull
-  public ancx a(int paramInt)
+  public SparseArray<ancz> a()
   {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new ancx();
+    return this.jdField_a_of_type_AndroidUtilSparseArray;
   }
   
-  @Nullable
-  public ancx a(ampi[] paramArrayOfampi)
+  public String a()
   {
-    return ancx.a(paramArrayOfampi);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public Class<ancx> a()
+  public List<anda> a()
   {
-    return ancx.class;
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(int paramInt)
+  public Map<String, ancz> a()
   {
-    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
+    return this.jdField_b_of_type_JavaUtilMap;
   }
   
-  public void a(ancx paramancx)
+  public void a(JSONObject paramJSONObject)
   {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "onUpdate");
+    Object localObject;
+    if (paramJSONObject == null)
+    {
+      localObject = "";
+      this.jdField_f_of_type_JavaLangString = ((String)localObject);
+      if (paramJSONObject != null) {
+        break label33;
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      return;
+      localObject = paramJSONObject.toString();
+      break;
+      try
+      {
+        label33:
+        localObject = paramJSONObject.optJSONArray("template_list");
+        if (paramJSONObject.optInt("retcode", -1) != 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("TencentDocTipsConfigBean", 2, paramJSONObject.toString());
+        return;
+      }
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          paramJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          int k = paramJSONObject.optInt("template_type", -1);
+          if (paramJSONObject.optJSONArray("infos") != null)
+          {
+            paramJSONObject = paramJSONObject.optJSONArray("infos");
+            int j = 0;
+            while (j < paramJSONObject.length())
+            {
+              JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+              anda localanda = new anda();
+              localanda.jdField_a_of_type_JavaLangString = localJSONObject.optString("template_name");
+              localanda.jdField_a_of_type_Int = localJSONObject.optInt("template_id", -1);
+              if (localanda.jdField_a_of_type_Int == -1) {
+                QLog.d("TencentDocTipsConfigBean", 2, "template has no id");
+              }
+              localanda.jdField_b_of_type_Int = k;
+              this.jdField_a_of_type_JavaUtilList.add(localanda);
+              j += 1;
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
   
   public int b()
   {
-    return 0;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean b()
+  public String b()
   {
-    return false;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public boolean c()
+  public int c()
   {
-    return true;
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public String d()
+  {
+    return this.jdField_e_of_type_JavaLangString;
   }
 }
 

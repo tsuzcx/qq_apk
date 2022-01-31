@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axmt;
+import axmv;
 
 class GeneralSettingActivity$16
   implements Runnable
@@ -10,10 +10,10 @@ class GeneralSettingActivity$16
   public void run()
   {
     if (this.this$0.isFinishing()) {}
-    while ((!axmt.b()) || (this.this$0.a())) {
+    while ((!axmv.b()) || (this.this$0.a())) {
       return;
     }
-    this.this$0.a(true, axmt.c());
+    this.this$0.a(true, axmv.c());
   }
 }
 

@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class aknf
-  extends akim
+  extends ajxj
 {
   public aknf(HiddenChatFragment paramHiddenChatFragment) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if ((paramInt2 == 512) && (paramBoolean))
-    {
-      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(52)).b(paramString1);
-      aknl.a(HiddenChatFragment.a(this.a), paramString2);
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch troopUin=" + paramString1);
-      }
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
     }
+    do
+    {
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 

@@ -1,8 +1,10 @@
 public abstract interface aivc
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public abstract void onNotifyLongTouch(String paramString);
   
-  public abstract void a(int paramInt, String paramString);
+  public abstract void onNotifyStatusChanged(int paramInt, String paramString);
+  
+  public abstract void onSurfaceReady(int paramInt1, int paramInt2);
 }
 
 

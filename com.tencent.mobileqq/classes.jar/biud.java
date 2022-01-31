@@ -1,38 +1,86 @@
-import android.graphics.Rect;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View.OnClickListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 class biud
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  biud(biua parambiua, View paramView1, View paramView2, View paramView3) {}
+  biud(biua parambiua) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Log.d("AEGIFTextEditFragment", "onGlobalLayout");
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    if (this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom > 150)
-    {
-      int[] arrayOfInt = new int[2];
-      this.b.getLocationInWindow(arrayOfInt);
-      int i = arrayOfInt[1];
-      int j = this.b.getHeight();
-      int k = localRect.bottom;
-      if (!biua.b(this.jdField_a_of_type_Biua))
+    int j = 0;
+    biua.a(this.a, true);
+    paramView = biua.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + paramView);
+    Object localObject = bizx.a();
+    ((bizx)localObject).k();
+    int i = 0;
+    while (i < biua.a(this.a).size()) {
+      if (!paramView.contains(Integer.valueOf(i)))
       {
-        this.b.scrollBy(0, i + j - k);
-        biua.a(this.jdField_a_of_type_Biua, this.c, localRect.bottom / 2);
+        i += 1;
       }
-      biua.a(this.jdField_a_of_type_Biua, true);
-      return;
+      else
+      {
+        if (((bita)biua.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+        {
+          ((bizx)localObject).k(((bita)biua.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+          ((bizx)localObject).i("none");
+          ((bizx)localObject).j("none");
+        }
+        for (;;)
+        {
+          bizt.a().J();
+          break;
+          if (!((bita)biua.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
+          {
+            ((bizx)localObject).k("none");
+            ((bizx)localObject).i(((bitd)bitc.jdField_a_of_type_JavaUtilList.get(bitc.jdField_a_of_type_ArrayOfInt[(i % bitc.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
+            ((bizx)localObject).j(((bita)biua.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
+          }
+          else
+          {
+            ((bizx)localObject).k("none");
+            ((bizx)localObject).i("none");
+            ((bizx)localObject).j("none");
+          }
+        }
+      }
     }
-    this.b.scrollTo(0, 0);
-    if (biua.b(this.jdField_a_of_type_Biua)) {
-      biua.a(this.jdField_a_of_type_Biua, this.c, localRect.bottom / 2);
+    biua.a(this.a).a(false);
+    localObject = biua.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + ((bivr)localObject).a + ", texts = " + ((bivr)localObject).b);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    i = j;
+    if (i < ((bivr)localObject).a.size())
+    {
+      if (paramView.contains(((bivr)localObject).d.get(i)))
+      {
+        if ((i != 0) || (biua.a(this.a) == null)) {
+          break label474;
+        }
+        localArrayList1.add(biua.a(this.a).jdField_a_of_type_JavaLangString);
+        localArrayList2.add(biua.a(this.a).b);
+        localArrayList3.add(biua.a(this.a).c);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label474:
+        localArrayList1.add(((bivr)localObject).a.get(i));
+        localArrayList2.add(((bivr)localObject).b.get(i));
+        localArrayList3.add(((bivr)localObject).c.get(i));
+      }
     }
-    biua.a(this.jdField_a_of_type_Biua, false);
+    biua.a(this.a, localArrayList1, localArrayList2, localArrayList3);
   }
 }
 

@@ -1,15 +1,48 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 class aepp
-  implements View.OnTouchListener
+  implements bfph
 {
-  aepp(aepg paramaepg) {}
+  aepp(aepe paramaepe, boolean paramBoolean, bfpc parambfpc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    return true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aepe.bA();
+      }
+      else
+      {
+        this.jdField_a_of_type_Aepe.by();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Aepe.by();
+        }
+        else
+        {
+          this.jdField_a_of_type_Aepe.bx();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Aepe.bx();
+          }
+        }
+      }
+    }
   }
 }
 

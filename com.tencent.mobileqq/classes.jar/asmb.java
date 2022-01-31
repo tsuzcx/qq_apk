@@ -1,23 +1,46 @@
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+
 public class asmb
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public asmb()
+  public asma a()
   {
-    this.jdField_b_of_type_Boolean = true;
+    return new asma(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_b_of_type_Int);
   }
   
-  public String toString()
+  public asmb a(int paramInt)
   {
-    return "MsgBackupSessionTask[msg = " + this.jdField_a_of_type_JavaLangString + ", cmd = " + this.jdField_a_of_type_Int + ", isFileTask = " + this.jdField_a_of_type_Boolean + ", sessionId = " + this.jdField_a_of_type_Long + ", path = " + this.jdField_b_of_type_JavaLangString + ", url = " + this.c + ", retryTimes = " + this.jdField_a_of_type_Short + "]";
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public asmb a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public asmb a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public asmb b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public asmb b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

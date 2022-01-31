@@ -1,46 +1,52 @@
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 import com.tencent.qphone.base.util.QLog;
 
 class alcc
-  implements alio
+  implements alin
 {
-  alcc(alcb paramalcb, String paramString, alio paramalio) {}
+  alcc(alca paramalca, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_Alio != null) {
-      this.jdField_a_of_type_Alio.a();
+    alin localalin = alca.a(this.jdField_a_of_type_Alca, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localalin != null) {
+      localalin.a();
     }
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Alio != null) {
-      this.jdField_a_of_type_Alio.a(paramLong1, paramLong2);
+    alin localalin = alca.a(this.jdField_a_of_type_Alca, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localalin != null) {
+      localalin.a(paramLong1, paramLong2);
     }
   }
   
-  public void a(boolean paramBoolean, alip paramalip)
+  public void a(boolean paramBoolean, alio paramalio)
   {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramalip.d + ", filename = " + paramalip.c + ", url = " + paramalip.jdField_a_of_type_JavaLangString);
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramalio.c + ", url = " + paramalio.a);
     if (paramBoolean) {
-      if (!alcb.a(this.jdField_a_of_type_Alcb, paramalip.c, paramalip.b))
+      if (!alca.a(this.jdField_a_of_type_Alca, paramalio.c, paramalio.b))
       {
-        alcb.a(this.jdField_a_of_type_Alcb, paramalip.c);
+        alca.a(this.jdField_a_of_type_Alca, paramalio.c);
         QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
       }
     }
-    while (this.jdField_a_of_type_Alio == null)
+    alin localalin;
+    do
     {
       return;
-      if ((!paramalip.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Alcb.a(paramalip.d, paramalip.c, paramalip.b) != 0)) {}
-    }
-    this.jdField_a_of_type_Alio.a(paramBoolean, paramalip);
+      if (this.jdField_a_of_type_Alca.a(paramalio.d, paramalio.c, paramalio.b) == 0) {}
+      localalin = alca.a(this.jdField_a_of_type_Alca, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localalin == null);
+    localalin.a(paramBoolean, paramalio);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Alio != null) {
-      this.jdField_a_of_type_Alio.b();
+    alin localalin = alca.a(this.jdField_a_of_type_Alca, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localalin != null) {
+      localalin.b();
     }
   }
 }

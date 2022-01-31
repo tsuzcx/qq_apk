@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.transfile;
 
-import ayvw;
-import bcpw;
+import ayvy;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class TransFileController$1$1$1
   implements Runnable
 {
-  public TransFileController$1$1$1(ayvw paramayvw) {}
+  public TransFileController$1$1$1(ayvy paramayvy) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131718204, 0).a();
+    bcql.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131718215, 0).a();
   }
 }
 

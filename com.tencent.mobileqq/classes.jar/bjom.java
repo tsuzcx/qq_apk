@@ -1,85 +1,56 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
-public class bjom
-  implements BusinessObserver
+abstract class bjom<K, V>
+  implements bjon<K, V>, Iterator<Map.Entry<K, V>>
 {
-  public void a(double paramDouble1, double paramDouble2)
+  bjok<K, V> a;
+  bjok<K, V> b;
+  
+  bjom(bjok<K, V> parambjok1, bjok<K, V> parambjok2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "handleChangeMapViewAngle= " + paramDouble1 + "|" + paramDouble2);
-    }
+    this.a = parambjok2;
+    this.b = parambjok1;
   }
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  private bjok<K, V> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetLBSPoiList, isSuccess  = " + paramBoolean);
+    if ((this.b == this.a) || (this.a == null)) {
+      return null;
     }
+    return a(this.b);
   }
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  abstract bjok<K, V> a(bjok<K, V> parambjok);
+  
+  public Map.Entry<K, V> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetRedPackPage, isSuccess  = " + paramBoolean);
-    }
+    bjok localbjok = this.b;
+    this.b = a();
+    return localbjok;
   }
   
-  public void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(@NonNull bjok<K, V> parambjok)
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    if ((this.a == parambjok) && (parambjok == this.b))
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-      do
-      {
-        return;
-        c(paramBoolean, paramBundle);
-        return;
-        d(paramBoolean, paramBundle);
-        return;
-        e(paramBoolean, paramBundle);
-        return;
-        f(paramBoolean, paramBundle);
-        return;
-        b(paramBoolean, paramBundle);
-        return;
-        a(paramBoolean, paramBundle);
-        return;
-      } while (paramBundle == null);
-      a(paramBundle.getDouble("latitude"), paramBundle.getDouble("longitude"));
-      return;
+      this.b = null;
+      this.a = null;
     }
-    ArrayList localArrayList = null;
-    paramInt = i;
-    if (paramBundle != null)
-    {
-      localArrayList = paramBundle.getStringArrayList("key_lbs_template_ids");
-      paramInt = paramBundle.getInt("key_lbs_template_cookie", -1);
+    if (this.a == parambjok) {
+      this.a = b(this.a);
     }
-    a(paramInt, paramBoolean, localArrayList);
+    if (this.b == parambjok) {
+      this.b = a();
+    }
+  }
+  
+  abstract bjok<K, V> b(bjok<K, V> parambjok);
+  
+  public boolean hasNext()
+  {
+    return this.b != null;
   }
 }
 

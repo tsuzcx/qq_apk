@@ -1,30 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 class adxh
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  long jdField_a_of_type_Long = 0L;
-  
   adxh(adxg paramadxg) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {
-      return;
+    if (this.a.jdField_a_of_type_Adxe.a()) {
+      return false;
     }
-    this.jdField_a_of_type_Long = l;
-    paramView = (MessageForQQStoryComment)((acun)actn.a(paramView)).a;
-    if (vws.a(paramView.vid))
-    {
-      tvf.a(this.jdField_a_of_type_Adxg.a, paramView.vid, "CommentItemBuilder_Feed_Id", 1004);
-      vel.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      return;
+    actj.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Adxe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Adxe.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Acxj != null) {
+      this.a.jdField_a_of_type_Acxj.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
     }
-    tvf.b((Activity)this.jdField_a_of_type_Adxg.a, paramView.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
   }
 }
 

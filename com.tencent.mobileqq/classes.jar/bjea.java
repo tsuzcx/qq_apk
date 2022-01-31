@@ -1,35 +1,86 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjea
-  implements bjdz
+  extends BroadcastReceiver
 {
-  private float jdField_a_of_type_Float;
-  private File jdField_a_of_type_JavaIoFile;
+  public bjea(QIMMusicConfigManager paramQIMMusicConfigManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_JavaIoFile == null) || (!this.jdField_a_of_type_JavaIoFile.exists()))
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OriginalBgmRecognizer", 2, "recognize: invoked. info: audioFile not exist. mTargetAudioFile = " + this.jdField_a_of_type_JavaIoFile);
+      paramContext = paramIntent.getStringExtra("data");
+      paramIntent = paramIntent.getStringExtra("event");
+      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {
+        break label43;
       }
-      return;
     }
-    bjed localbjed = (bjed)bjae.a().c(10);
-    localbjed.a(this.jdField_a_of_type_Float);
-    localbjed.a(this.jdField_a_of_type_JavaIoFile);
-    localbjed.c();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(File paramFile)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    for (;;)
+    {
+      return;
+      label43:
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMMusicConfigManager", 2, "onReceive:" + paramContext);
+      }
+      try
+      {
+        localJSONObject = new JSONObject(paramContext);
+        int i = localJSONObject.optInt("id");
+        paramContext = this.a.a(i);
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              boolean bool = localJSONObject.optBoolean("is_from_story", false);
+              if (paramContext != null) {
+                continue;
+              }
+              paramIntent = QIMMusicConfigManager.a(this.a, localJSONObject, bool);
+              paramContext = paramIntent;
+            }
+            catch (JSONException paramIntent)
+            {
+              JSONObject localJSONObject;
+              continue;
+              continue;
+            }
+            try
+            {
+              paramContext.mSongMid = localJSONObject.optString("mid");
+              if (QIMMusicConfigManager.a(this.a) == null) {
+                break;
+              }
+              paramIntent = QIMMusicConfigManager.a(this.a).iterator();
+              if (!paramIntent.hasNext()) {
+                break;
+              }
+              ((bjeb)paramIntent.next()).a(paramContext);
+              continue;
+              paramIntent = paramIntent;
+              paramContext = null;
+            }
+            catch (JSONException paramIntent) {}
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("QIMMusicConfigManager", 2, QLog.getStackTraceString(paramIntent));
+          }
+        }
+      }
+    }
   }
 }
 

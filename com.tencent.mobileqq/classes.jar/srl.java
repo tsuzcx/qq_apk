@@ -1,65 +1,24 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class srl
-  extends srm<sqc>
+class srl
+  implements Animation.AnimationListener
 {
-  private int a = 200;
+  srl(srk paramsrk) {}
   
-  protected double a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 0.3D;
+    this.a.b.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.g.setVisibility(8);
   }
   
-  protected int a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected long a(sqc paramsqc1, sqc paramsqc2)
-  {
-    if ((paramsqc1 != paramsqc2) && (paramsqc1.b == paramsqc2.b)) {
-      return 1L;
-    }
-    return Math.abs(paramsqc1.b - paramsqc2.b);
-  }
-  
-  protected sqc a(List<sqc> paramList)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < paramList.size())
-    {
-      l += ((sqc)paramList.get(i)).b;
-      i += 1;
-    }
-    sqc localsqc = new sqc();
-    localsqc.b = (l / paramList.size());
-    return localsqc;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    int i = b();
-    if (i > 0) {
-      if (paramLong / i >= 1500L) {}
-    }
-    while (paramLong < 200L)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  protected boolean a(sqc paramsqc1, sqc paramsqc2)
-  {
-    return paramsqc1.b == paramsqc2.b;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

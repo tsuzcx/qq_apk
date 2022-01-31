@@ -39,7 +39,7 @@ public class kq
         if (QLog.isColorLevel()) {
           QLog.d("LbsPack", 2, "uploadSuccess " + paramString);
         }
-        axrl.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
+        axrn.a(MobileQQ.sMobileQQ).a(str, paramString, false, 0L, 0L, localHashMap, null);
       }
       return;
     }
@@ -61,7 +61,7 @@ public class kq
         if (QLog.isColorLevel()) {
           QLog.d("LbsPack", 2, "uploadFailure " + paramString + " " + paramInt);
         }
-        axrl.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
+        axrn.a(MobileQQ.sMobileQQ).a(str, paramString, true, 0L, 0L, localHashMap, null);
       }
       return;
     }

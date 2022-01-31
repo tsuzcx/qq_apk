@@ -1,57 +1,26 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import com.tencent.widget.AdapterView;
 
 public class azdu
-  extends AsyncTask<Void, Void, Bundle>
+  implements bfpv
 {
-  public azdu(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public azdu(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  protected Bundle a(Void... paramVarArgs)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(ajsf.bX);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = ajsf.bX + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  protected void a(Bundle paramBundle)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBundle == null)
-    {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, ajyc.a(2131706515), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+    if (paramView == null) {
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    aqbc.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
+    if (this.a.jdField_a_of_type_Baoh != null) {
+      this.a.jdField_a_of_type_Baoh.a(false, paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
   }
 }
 

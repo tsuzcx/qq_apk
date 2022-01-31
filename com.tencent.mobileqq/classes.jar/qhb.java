@@ -1,16 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
 public class qhb
-  extends osp
+  implements bfrw
 {
-  public qhb(FollowingListFragment paramFollowingListFragment) {}
+  public qhb(FriendListFragment paramFriendListFragment) {}
   
-  public void b(boolean paramBoolean1, List<qbc> paramList, long paramLong, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    FollowingListFragment.a(this.a, paramList);
-    if (FollowingListFragment.a(this.a) != null) {
-      FollowingListFragment.a(this.a).notifyDataSetChanged();
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
     }
   }
 }

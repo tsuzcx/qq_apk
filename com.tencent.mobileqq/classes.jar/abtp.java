@@ -1,93 +1,84 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
 public class abtp
-  extends aimu
 {
-  private List<abtm> jdField_a_of_type_JavaUtilList;
-  
-  public abtp(List<abtm> paramList)
+  public static void a(Activity paramActivity)
   {
-    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    b(paramActivity);
   }
   
-  public int getCount()
+  public static void a(Activity paramActivity, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if ((paramActivity instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (bcds.a.containsKey("PublicAccountJs")) {
+      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    localIntent.putExtra("fromLocalUrl", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hideRightButton", true);
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131695524));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131695524));
+    if (TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("url", sfe.b);
+    }
+    for (;;)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559441, paramViewGroup, false);
-      paramViewGroup = new abts();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131367679));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-      paramView.setTag(paramViewGroup);
-      Object localObject = getItem(paramInt);
-      if (localObject != null)
-      {
-        localObject = (abtm)localObject;
-        if (localObject != null)
-        {
-          paramViewGroup.jdField_a_of_type_JavaLangString = ((abtm)localObject).a.getUin();
-          paramViewGroup.jdField_a_of_type_Abtm = ((abtm)localObject);
-          paramViewGroup.c.setImageBitmap(super.a(paramViewGroup.jdField_a_of_type_JavaLangString, 1, (byte)0));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((abtm)localObject).a.name);
-          if (((abtm)localObject).a.certifiedGrade <= 0L) {
-            break label256;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841313);
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
-            ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-          }
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-        }
+      paramActivity.startActivity(localIntent);
+      return;
+      localIntent.putExtra("url", "http://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if (TextUtils.isEmpty(paramString2)) {
+      if ((paramActivity instanceof BaseActivity)) {
+        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
       }
     }
     for (;;)
     {
-      if (AppSetting.d) {
-        paramView.setContentDescription(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText());
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localIntent.putExtra("leftViewText", paramString1);
+        localIntent.putExtra("assignBackText", paramString1);
       }
-      return paramView;
-      paramViewGroup = (abts)paramView.getTag();
-      break;
-      label256:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      if (bcds.a.containsKey("PublicAccountJs")) {
+        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "http://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
+      }
+      localIntent.putExtra("fromLocalUrl", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("hideRightButton", true);
+      paramActivity.startActivity(localIntent);
+      return;
+      localIntent.putExtra("uin", paramString2);
     }
+  }
+  
+  private static void b(Activity paramActivity)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("last_key_words", "");
+    localIntent.putExtra("from_key", 2);
+    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
+    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
+    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 

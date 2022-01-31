@@ -1,58 +1,63 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Status;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class ahmu
-  implements Downloader.DownloadListener
+  implements URLDrawable.URLDrawableListener
 {
-  private volatile int jdField_a_of_type_Int;
-  private ahmr jdField_a_of_type_Ahmr;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile int b;
-  private int c;
+  ahmu(ahmt paramahmt, ahmp paramahmp, ahmq paramahmq) {}
   
-  public ahmu(ahmt paramahmt, QQAppInterface paramQQAppInterface, ahmr paramahmr, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Ahmr = paramahmr;
-    this.c = paramInt;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QbossADBannerConfigManager", 2, "diy data download fail url = " + paramString);
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
+    paramURLDrawable = null;
+    if (paramThrowable != null) {
+      paramURLDrawable = paramThrowable.getMessage();
     }
-    this.b += 1;
-    ahmt.a(this.jdField_a_of_type_Ahmt, this.jdField_a_of_type_Ahmr, paramString, false);
-    if (this.jdField_a_of_type_Ahmr != null) {
-      bhkd.a().a(2741, this.jdField_a_of_type_Ahmr.c, 101, "qboss download resources fail mErrCode = " + paramDownloadResult.getStatus().httpStatus + " resUrl = " + paramString);
+    try
+    {
+      if (this.jdField_a_of_type_Ahmp != null) {
+        bhku.a().a(2741, this.jdField_a_of_type_Ahmp.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Ahmq.a + " filePath = " + this.jdField_a_of_type_Ahmq.c);
+      }
+      this.jdField_a_of_type_Ahmt.e();
+      return;
     }
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.b + this.jdField_a_of_type_Int == this.c) {
-      ahmt.a(this.jdField_a_of_type_Ahmt, paramString);
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QbossADBannerConfigManager", 2, "banner resources download success url = " + paramString);
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success.");
+    try
+    {
+      if ((this.jdField_a_of_type_Ahmt.b != null) && (this.jdField_a_of_type_Ahmt.a != null) && (paramURLDrawable != null))
+      {
+        this.jdField_a_of_type_Ahmt.b.setVisibility(0);
+        this.jdField_a_of_type_Ahmt.a.setImageDrawable(paramURLDrawable);
+        ahmt.a(this.jdField_a_of_type_Ahmt, this.jdField_a_of_type_Ahmp);
+        this.jdField_a_of_type_Ahmt.a(this.jdField_a_of_type_Ahmp);
+        return;
+      }
+      if (this.jdField_a_of_type_Ahmt.b != null)
+      {
+        this.jdField_a_of_type_Ahmt.b.setVisibility(8);
+        return;
+      }
     }
-    this.jdField_a_of_type_Int += 1;
-    ahmt.a(this.jdField_a_of_type_Ahmt, this.jdField_a_of_type_Ahmr, paramString, true);
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_Int == this.c) {
-      ahmt.b(this.jdField_a_of_type_Ahmt, paramString);
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
     }
   }
 }

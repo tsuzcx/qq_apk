@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
 public class azvi
-  implements DialogInterface.OnClickListener
+  implements bany
 {
-  public azvi(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
+  public azvi(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    paramView.setVisibility(8);
   }
 }
 

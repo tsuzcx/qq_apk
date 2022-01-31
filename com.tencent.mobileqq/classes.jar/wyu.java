@@ -1,42 +1,40 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.biz.troop.VideoCombineHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-class wyu
-  implements axeo
+public class wyu
+  extends wzs
 {
-  wyu(wyt paramwyt) {}
-  
-  public void G_()
+  public wyu(VideoCombineHelper.2 param2)
   {
-    this.a.jdField_a_of_type_Wym.a.b = false;
+    super(param2.this$0);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(wzr paramwzr)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label152;
-      }
-      VideoEnvironment.a("TroopMemberApiService", ajyc.a(2131715553) + paramInt + "]", null);
-      ShortVideoResourceManager.a(ajyc.a(2131715607));
-      axds.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    if ((paramwzr instanceof wzm)) {
+      this.a.jdField_a_of_type_Wzb.a("", false, "download failed! msg = " + paramwzr.d);
     }
-    for (;;)
+    do
     {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Wym.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Wym.a.b = false;
       return;
-      label152:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
-    }
+      if ((paramwzr instanceof wze))
+      {
+        this.a.jdField_a_of_type_Wzb.a("", false, "combine failed! msg = " + paramwzr.d);
+        return;
+      }
+    } while (!(paramwzr instanceof wzp));
+    this.a.jdField_a_of_type_Wzb.a("", false, "sending failed! msg = " + paramwzr.d);
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2) {}
+  public void b(wzr paramwzr)
+  {
+    if ((paramwzr instanceof wzp))
+    {
+      paramwzr = paramwzr.a();
+      this.a.jdField_a_of_type_Wzb.a(paramwzr.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
+  }
 }
 
 

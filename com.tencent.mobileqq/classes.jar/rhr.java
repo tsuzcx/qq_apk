@@ -1,21 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-
-public class rhr
+public abstract interface rhr
 {
-  public ReadInJoyBaseFragment a;
-  public qzj a;
-  public boolean a;
-  public boolean b;
+  public abstract void a(rux paramrux);
   
-  public rhr()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public ReadInJoyBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
-  }
+  public abstract void b(rux paramrux);
 }
 
 

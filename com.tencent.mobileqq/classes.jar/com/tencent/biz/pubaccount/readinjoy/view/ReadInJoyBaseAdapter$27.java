@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actn;
+import actj;
 import android.app.Activity;
 import com.tencent.qphone.base.util.QLog;
-import qtu;
-import qty;
-import rap;
+import qtr;
+import qtv;
+import ram;
 
 public class ReadInJoyBaseAdapter$27
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$27(rap paramrap, qty paramqty1, qty paramqty2) {}
+  public ReadInJoyBaseAdapter$27(ram paramram, qtv paramqtv1, qtv paramqtv2) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class ReadInJoyBaseAdapter$27
     if (QLog.isColorLevel()) {
       QLog.i("ReadInJoyBaseAdapter", 2, "setSelectionFromTop selectIndex:" + i);
     }
-    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setSelectionFromTop(i, actn.a(175.0F, this.this$0.jdField_a_of_type_AndroidAppActivity.getResources()));
-    if (this.this$0.jdField_a_of_type_Qtu.a() == 7)
+    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setSelectionFromTop(i, actj.a(175.0F, this.this$0.jdField_a_of_type_AndroidAppActivity.getResources()));
+    if (this.this$0.jdField_a_of_type_Qtr.a() == 7)
     {
       this.this$0.a(this.b);
       return;
     }
-    this.this$0.jdField_a_of_type_Oyl = null;
+    this.this$0.jdField_a_of_type_Oyi = null;
     this.this$0.a(this.b, 0);
   }
 }

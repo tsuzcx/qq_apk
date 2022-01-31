@@ -1,51 +1,39 @@
-public final class aqle
+import android.util.Log;
+import java.nio.charset.Charset;
+
+public class aqle
+  implements aqld
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString = "word";
-  private int c = 1;
+  public static final Charset a = Charset.forName("UTF-8");
   
-  public aqle(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    a(paramString1, paramString2, paramString3, null);
   }
   
-  public final int a()
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public final String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public final String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("(" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_Int);
-    if (!this.jdField_b_of_type_JavaLangString.equals("word")) {
-      localStringBuffer.append(",type=" + this.jdField_b_of_type_JavaLangString);
+    if ("d".equals(paramString2))
+    {
+      Log.d(paramString1, paramString3, paramThrowable);
+      return;
     }
-    if (this.c != 1) {
-      localStringBuffer.append(",posIncr=" + this.c);
+    if ("e".equals(paramString2))
+    {
+      Log.e(paramString1, paramString3, paramThrowable);
+      return;
     }
-    localStringBuffer.append(")");
-    return localStringBuffer.toString();
+    if ("w".equals(paramString2))
+    {
+      Log.w(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    if ("i".equals(paramString2))
+    {
+      Log.i(paramString1, paramString3, paramThrowable);
+      return;
+    }
+    Log.i(paramString1, paramString3, paramThrowable);
   }
 }
 

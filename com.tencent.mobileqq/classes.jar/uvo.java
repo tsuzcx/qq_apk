@@ -1,33 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import android.support.annotation.Nullable;
 
-class uvo
-  extends SimpleObserver<upb>
+public class uvo
 {
-  uvo(uvn paramuvn) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a(upb paramupb)
+  public uvo(String paramString1, int paramInt, @Nullable String paramString2)
   {
-    super.onNext(paramupb);
-    if (paramupb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      tbz localtbz = (tbz)tdc.a(17);
-      localtbz.a(paramupb.jdField_a_of_type_JavaUtilList, paramupb.jdField_a_of_type_JavaLangString, false, false);
-      paramupb.jdField_a_of_type_JavaUtilList.addAll(localtbz.b(paramupb.jdField_a_of_type_JavaLangString, false));
-    }
-    ste.a().dispatch(paramupb);
-    this.a.b();
-    veg.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onError(@NonNull Error paramError)
+  public uvo(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
   {
-    super.onError(paramError);
-    this.a.b();
-    veg.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
+  }
+  
+  public String toString()
+  {
+    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

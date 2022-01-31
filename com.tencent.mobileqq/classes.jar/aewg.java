@@ -1,10 +1,11 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+
 public abstract interface aewg
 {
-  public abstract int a();
+  public abstract List<? extends aewf> a(String paramString);
   
-  public abstract int b();
-  
-  public abstract int c();
+  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
 }
 
 

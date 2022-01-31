@@ -1,16 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlFragment;
+import java.util.List;
 
 public class bczh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bczh(BindGroupFragment paramBindGroupFragment) {}
+  public bczh(AuthorityControlFragment paramAuthorityControlFragment, List paramList) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BindGroupFragment.a(this.a).finish();
+    AuthorityControlFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlFragment).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

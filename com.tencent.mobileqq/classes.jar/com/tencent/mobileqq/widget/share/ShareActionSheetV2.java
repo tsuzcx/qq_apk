@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget.share;
 
-import ajsf;
-import alxg;
-import alxk;
+import ajsd;
+import alxf;
+import alxj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -38,25 +38,25 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axmt;
-import axqw;
-import bbje;
-import bbjh;
-import bcuq;
-import bcur;
-import bcuw;
-import bcux;
-import bcuy;
-import bcuz;
-import bcva;
-import bcvb;
-import bcvc;
-import bcvd;
+import axmv;
+import axqy;
+import bbjs;
+import bbjv;
 import bcvf;
 import bcvg;
-import bfol;
-import bfoy;
-import bfwa;
+import bcvl;
+import bcvm;
+import bcvn;
+import bcvo;
+import bcvp;
+import bcvq;
+import bcvr;
+import bcvs;
+import bcvu;
+import bcvv;
+import bfpc;
+import bfpp;
+import bfwr;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
@@ -67,36 +67,36 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wsu;
+import wsr;
 
 public class ShareActionSheetV2
-  implements bcuq
+  implements bcvf
 {
   protected int a;
-  private alxk jdField_a_of_type_Alxk = new bcux(this);
+  private alxj jdField_a_of_type_Alxj = new bcvm(this);
   public Context a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new bcva(this);
-  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new bcuy(this);
-  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = new bcuz(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new bcvp(this);
+  private DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new bcvn(this);
+  private DialogInterface.OnShowListener jdField_a_of_type_AndroidContentDialogInterface$OnShowListener = new bcvo(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  private SparseArray<alxg> jdField_a_of_type_AndroidUtilSparseArray;
+  private SparseArray<alxf> jdField_a_of_type_AndroidUtilSparseArray;
   protected View a;
   protected AdapterView.OnItemClickListener a;
   public GridView a;
   protected ImageView a;
   protected LinearLayout a;
   protected TextView a;
-  private bcur jdField_a_of_type_Bcur;
-  protected bcvf a;
-  private final bcvg jdField_a_of_type_Bcvg;
-  public bfol a;
+  private bcvg jdField_a_of_type_Bcvg;
+  protected bcvu a;
+  private final bcvv jdField_a_of_type_Bcvv;
+  public bfpc a;
   protected ElasticHorScrView a;
   protected CharSequence a;
   private String jdField_a_of_type_JavaLangString;
-  protected List<bbje> a;
+  protected List<bbjs> a;
   protected boolean a;
-  protected List<bbje>[] a;
+  protected List<bbjs>[] a;
   protected int b;
   private DialogInterface.OnCancelListener jdField_b_of_type_AndroidContentDialogInterface$OnCancelListener;
   private DialogInterface.OnDismissListener jdField_b_of_type_AndroidContentDialogInterface$OnDismissListener;
@@ -119,21 +119,21 @@ public class ShareActionSheetV2
   private int k = 0;
   private int l = 0;
   
-  public ShareActionSheetV2(bcvg parambcvg)
+  public ShareActionSheetV2(bcvv parambcvv)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new bcuw(this);
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new bcvl(this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Bcvg = parambcvg;
-    this.jdField_a_of_type_AndroidContentContext = parambcvg.jdField_a_of_type_AndroidContentContext;
-    parambcvg = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_d_of_type_Int = parambcvg.getDimensionPixelSize(2131296669);
+    this.jdField_a_of_type_Bcvv = parambcvv;
+    this.jdField_a_of_type_AndroidContentContext = parambcvv.jdField_a_of_type_AndroidContentContext;
+    parambcvv = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.jdField_d_of_type_Int = parambcvv.getDimensionPixelSize(2131296669);
     this.f = this.jdField_d_of_type_Int;
-    this.g = parambcvg.getDimensionPixelOffset(2131296671);
-    this.h = parambcvg.getDimensionPixelOffset(2131296672);
-    this.jdField_a_of_type_Bcvf = new bcvf();
-    int m = parambcvg.getDisplayMetrics().widthPixels;
-    int n = parambcvg.getDisplayMetrics().heightPixels;
+    this.g = parambcvv.getDimensionPixelOffset(2131296671);
+    this.h = parambcvv.getDimensionPixelOffset(2131296672);
+    this.jdField_a_of_type_Bcvu = new bcvu();
+    int m = parambcvv.getDisplayMetrics().widthPixels;
+    int n = parambcvv.getDisplayMetrics().heightPixels;
     if (m > n) {
       m = n;
     }
@@ -146,34 +146,34 @@ public class ShareActionSheetV2
     }
   }
   
-  private int a(List<bbje> paramList, TextView paramTextView)
+  private int a(List<bbjs> paramList, TextView paramTextView)
   {
     paramTextView.setText(a(paramList));
     paramTextView.measure(View.MeasureSpec.makeMeasureSpec(this.f, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
     return paramTextView.getMeasuredHeight();
   }
   
-  private void a(bbje parambbje, int paramInt)
+  private void a(bbjs parambbjs, int paramInt)
   {
     String str = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getStringExtra("big_brother_source_key");
-    if (parambbje.jdField_c_of_type_Int == 73) {
-      axqw.b(null, "dc00898", "", "", "0X800AB3F", "0X800AB3F", 0, 0, "", "", str, "");
+    if (parambbjs.jdField_c_of_type_Int == 73) {
+      axqy.b(null, "dc00898", "", "", "0X800AB3F", "0X800AB3F", 0, 0, "", "", str, "");
     }
     do
     {
       return;
-      if (parambbje.jdField_c_of_type_Int == 72)
+      if (parambbjs.jdField_c_of_type_Int == 72)
       {
-        axqw.b(null, "dc00898", "", parambbje.jdField_c_of_type_JavaLangString, "0X800AB3E", "0X800AB3E", 0, 0, "", "", str, parambbje.jdField_d_of_type_JavaLangString);
+        axqy.b(null, "dc00898", "", parambbjs.jdField_c_of_type_JavaLangString, "0X800AB3E", "0X800AB3E", 0, 0, "", "", str, parambbjs.jdField_d_of_type_JavaLangString);
         return;
       }
       if (paramInt == 1)
       {
-        axqw.b(null, "dc00898", "", "", "0X800AB40", "0X800AB40", 0, 0, "", "", str, parambbje.jdField_d_of_type_JavaLangString);
+        axqy.b(null, "dc00898", "", "", "0X800AB40", "0X800AB40", 0, 0, "", "", str, parambbjs.jdField_d_of_type_JavaLangString);
         return;
       }
     } while (paramInt != 2);
-    axqw.b(null, "dc00898", "", "", "0X800AB41", "0X800AB41", 0, 0, "", "", str, parambbje.jdField_d_of_type_JavaLangString);
+    axqy.b(null, "dc00898", "", "", "0X800AB41", "0X800AB41", 0, 0, "", "", str, parambbjs.jdField_d_of_type_JavaLangString);
   }
   
   private void a(ElasticHorScrView paramElasticHorScrView, int paramInt1, int paramInt2)
@@ -197,13 +197,13 @@ public class ShareActionSheetV2
       {
         m += 1;
         break;
-        if ((paramString2 instanceof bbjh))
+        if ((paramString2 instanceof bbjv))
         {
-          paramString2 = (bbjh)paramString2;
-          if (TextUtils.equals(paramString1, paramString2.jdField_a_of_type_Bbje.jdField_c_of_type_JavaLangString))
+          paramString2 = (bbjv)paramString2;
+          if (TextUtils.equals(paramString1, paramString2.jdField_a_of_type_Bbjs.jdField_c_of_type_JavaLangString))
           {
-            paramString2.jdField_a_of_type_Bbje.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
-            paramString2.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramString2.jdField_a_of_type_Bbje.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            paramString2.jdField_a_of_type_Bbjs.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
+            paramString2.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramString2.jdField_a_of_type_Bbjs.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
           }
         }
       }
@@ -222,15 +222,15 @@ public class ShareActionSheetV2
       if (m < 15) {
         break label150;
       }
-      paramArrayList = bbje.a(73);
+      paramArrayList = bbjs.a(73);
       paramArrayList.jdField_b_of_type_Boolean = false;
       localObject1 = BaseApplicationImpl.getApplication().getResources();
-      if (!axmt.a()) {
+      if (!axmv.a()) {
         break label135;
       }
     }
     label135:
-    for (paramArrayList.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Resources)localObject1).getDrawable(2130848641);; paramArrayList.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Resources)localObject1).getDrawable(2130848640))
+    for (paramArrayList.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Resources)localObject1).getDrawable(2130848647);; paramArrayList.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Resources)localObject1).getDrawable(2130848646))
     {
       this.jdField_a_of_type_JavaUtilList.add(paramArrayList);
       m();
@@ -239,29 +239,29 @@ public class ShareActionSheetV2
     }
     label150:
     Object localObject2 = (ResultRecord)paramArrayList.get(m);
-    Object localObject1 = bbje.a(72);
-    ((bbje)localObject1).jdField_a_of_type_JavaLangString = ((ResultRecord)localObject2).jdField_b_of_type_JavaLangString;
-    ((bbje)localObject1).jdField_c_of_type_JavaLangString = ((ResultRecord)localObject2).jdField_a_of_type_JavaLangString;
-    ((bbje)localObject1).f = ((ResultRecord)localObject2).jdField_a_of_type_Int;
-    ((bbje)localObject1).jdField_b_of_type_Boolean = false;
+    Object localObject1 = bbjs.a(72);
+    ((bbjs)localObject1).jdField_a_of_type_JavaLangString = ((ResultRecord)localObject2).jdField_b_of_type_JavaLangString;
+    ((bbjs)localObject1).jdField_c_of_type_JavaLangString = ((ResultRecord)localObject2).jdField_a_of_type_JavaLangString;
+    ((bbjs)localObject1).f = ((ResultRecord)localObject2).jdField_a_of_type_Int;
+    ((bbjs)localObject1).jdField_b_of_type_Boolean = false;
     Object localObject3 = new StringBuilder().append("isNewTroop=");
     int n;
     if (((ResultRecord)localObject2).jdField_a_of_type_Boolean)
     {
       n = 1;
       label228:
-      ((bbje)localObject1).jdField_b_of_type_JavaLangString = n;
-      if ((6000 == ((bbje)localObject1).f) && (TextUtils.equals(ajsf.z, ((bbje)localObject1).jdField_c_of_type_JavaLangString)))
+      ((bbjs)localObject1).jdField_b_of_type_JavaLangString = n;
+      if ((6000 == ((bbjs)localObject1).f) && (TextUtils.equals(ajsd.z, ((bbjs)localObject1).jdField_c_of_type_JavaLangString)))
       {
-        localObject2 = bbje.a(26);
-        ((bbje)localObject1).jdField_a_of_type_JavaLangString = ((bbje)localObject2).jdField_a_of_type_JavaLangString;
-        ((bbje)localObject1).jdField_d_of_type_JavaLangString = ((bbje)localObject2).jdField_d_of_type_JavaLangString;
-        ((bbje)localObject1).jdField_b_of_type_Boolean = false;
-        ((bbje)localObject1).jdField_b_of_type_Int = 2130843408;
-        if (axmt.a()) {
-          ((bbje)localObject1).jdField_b_of_type_Int = 2130843407;
+        localObject2 = bbjs.a(26);
+        ((bbjs)localObject1).jdField_a_of_type_JavaLangString = ((bbjs)localObject2).jdField_a_of_type_JavaLangString;
+        ((bbjs)localObject1).jdField_d_of_type_JavaLangString = ((bbjs)localObject2).jdField_d_of_type_JavaLangString;
+        ((bbjs)localObject1).jdField_b_of_type_Boolean = false;
+        ((bbjs)localObject1).jdField_b_of_type_Int = 2130843409;
+        if (axmv.a()) {
+          ((bbjs)localObject1).jdField_b_of_type_Int = 2130843408;
         }
-        if (bfwa.a())
+        if (bfwr.a())
         {
           localObject2 = new Paint();
           ((Paint)localObject2).setAntiAlias(true);
@@ -273,13 +273,13 @@ public class ShareActionSheetV2
     {
       try
       {
-        localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), ((bbje)localObject1).jdField_b_of_type_Int).copy(Bitmap.Config.ARGB_8888, true);
+        localObject3 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), ((bbjs)localObject1).jdField_b_of_type_Int).copy(Bitmap.Config.ARGB_8888, true);
         localCanvas = new Canvas((Bitmap)localObject3);
-        if (!axmt.a()) {
+        if (!axmv.a()) {
           continue;
         }
         localCanvas.drawRoundRect(new RectF(0.0F, 0.0F, localCanvas.getWidth(), localCanvas.getHeight()), 10.0F, 10.0F, (Paint)localObject2);
-        ((bbje)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject3);
+        ((bbjs)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject3);
       }
       catch (Throwable localThrowable)
       {
@@ -306,7 +306,7 @@ public class ShareActionSheetV2
       {
         try
         {
-          this.jdField_a_of_type_Bfol.e();
+          this.jdField_a_of_type_Bfpc.e();
           this.jdField_a_of_type_AndroidViewView = null;
           return;
         }
@@ -314,7 +314,7 @@ public class ShareActionSheetV2
         {
           QLog.w("ShareActionSheetV2", 2, "Exception while dismiss", localRuntimeException);
         }
-        this.jdField_a_of_type_Bfol.dismiss();
+        this.jdField_a_of_type_Bfpc.dismiss();
       }
     }
   }
@@ -348,15 +348,15 @@ public class ShareActionSheetV2
       int m = 0;
       while (m < arrayOfList[0].size())
       {
-        bbje localbbje = (bbje)arrayOfList[0].get(m);
+        bbjs localbbjs = (bbjs)arrayOfList[0].get(m);
         if (m != 0) {
           localStringBuilder.append(';');
         }
-        localStringBuilder.append(localbbje.jdField_d_of_type_JavaLangString);
+        localStringBuilder.append(localbbjs.jdField_d_of_type_JavaLangString);
         m += 1;
       }
     }
-    axqw.b(null, "dc00898", "", "", "0X800AB3D", "0X800AB3D", 0, 0, "", "", str, localStringBuilder.toString());
+    axqy.b(null, "dc00898", "", "", "0X800AB3D", "0X800AB3D", 0, 0, "", "", str, localStringBuilder.toString());
   }
   
   private void j()
@@ -370,9 +370,9 @@ public class ShareActionSheetV2
       while (m < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
         int n = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(m);
-        alxg localalxg = (alxg)this.jdField_a_of_type_AndroidUtilSparseArray.get(n);
-        if (localalxg != null) {
-          localalxg.b();
+        alxf localalxf = (alxf)this.jdField_a_of_type_AndroidUtilSparseArray.get(n);
+        if (localalxf != null) {
+          localalxf.b();
         }
         m += 1;
       }
@@ -397,13 +397,13 @@ public class ShareActionSheetV2
       if (!a())
       {
         if (this.jdField_d_of_type_Boolean) {
-          wsu.b(a());
+          wsr.b(a());
         }
-        this.jdField_a_of_type_Bfol.show();
+        this.jdField_a_of_type_Bfpc.show();
         if (this.jdField_d_of_type_Boolean)
         {
-          wsu.a(a());
-          wsu.c(a());
+          wsr.a(a());
+          wsr.c(a());
         }
       }
       return;
@@ -417,33 +417,33 @@ public class ShareActionSheetV2
   
   private void m()
   {
-    if (this.jdField_a_of_type_Bcvg.jdField_a_of_type_Boolean) {}
+    if (this.jdField_a_of_type_Bcvv.jdField_a_of_type_Boolean) {}
     int m;
-    for (this.jdField_a_of_type_Bfol = ((bfol)bfoy.b(this.jdField_a_of_type_AndroidContentContext, null));; this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this.jdField_a_of_type_AndroidContentContext, null, m, this.jdField_a_of_type_Bcvg.jdField_a_of_type_AndroidViewViewGroup$LayoutParams)))
+    for (this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.b(this.jdField_a_of_type_AndroidContentContext, null));; this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this.jdField_a_of_type_AndroidContentContext, null, m, this.jdField_a_of_type_Bcvv.jdField_a_of_type_AndroidViewViewGroup$LayoutParams)))
     {
-      this.jdField_a_of_type_Bfol.setOnShowListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener);
-      this.jdField_a_of_type_Bfol.a(new bcvb(this));
-      this.jdField_a_of_type_Bfol.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+      this.jdField_a_of_type_Bfpc.setOnShowListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnShowListener);
+      this.jdField_a_of_type_Bfpc.a(new bcvq(this));
+      this.jdField_a_of_type_Bfpc.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
       if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_AndroidViewView = a();
       }
-      this.jdField_a_of_type_Bfol.a(this.jdField_a_of_type_AndroidViewView, null);
-      Window localWindow = this.jdField_a_of_type_Bfol.getWindow();
-      localWindow.setDimAmount(this.jdField_a_of_type_Bcvg.jdField_a_of_type_Float);
+      this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_AndroidViewView, null);
+      Window localWindow = this.jdField_a_of_type_Bfpc.getWindow();
+      localWindow.setDimAmount(this.jdField_a_of_type_Bcvv.jdField_a_of_type_Float);
       localWindow.setGravity(80);
       localWindow.setLayout(-1, -1);
-      this.jdField_a_of_type_Bfol.c(this.jdField_a_of_type_Bcvg.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_Bfpc.c(this.jdField_a_of_type_Bcvv.jdField_c_of_type_Boolean);
       WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      if (this.jdField_a_of_type_Bcvg.jdField_b_of_type_Boolean) {
+      if (this.jdField_a_of_type_Bcvv.jdField_b_of_type_Boolean) {
         localWindow.setLayout(-1, -2);
       }
-      if (this.jdField_a_of_type_Bcvg.jdField_b_of_type_Boolean) {
+      if (this.jdField_a_of_type_Bcvv.jdField_b_of_type_Boolean) {
         localWindow.setFlags(32, 32);
       }
       localWindow.setAttributes(localLayoutParams);
       return;
       m = 2131558431;
-      if (this.jdField_a_of_type_Bcvg.jdField_b_of_type_Boolean) {
+      if (this.jdField_a_of_type_Bcvv.jdField_b_of_type_Boolean) {
         m = 2131558432;
       }
     }
@@ -478,15 +478,15 @@ public class ShareActionSheetV2
       QLog.d("ShareActionSheetV2", 2, "createViewFlipper() called #this = " + Integer.toHexString(System.identityHashCode(this)));
     }
     View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558830, null);
-    this.jdField_a_of_type_Bcvf.a((RelativeLayout)localView.findViewById(2131362137));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131361921));
-    if (bfwa.a()) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848643);
+    this.jdField_a_of_type_Bcvu.a((RelativeLayout)localView.findViewById(2131362136));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131361920));
+    if (bfwr.a()) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848649);
     }
     int n = 1;
     int i1 = 1;
     int i2 = 1;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361919));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361918));
     Object localObject3;
     Object localObject1;
     label219:
@@ -503,9 +503,9 @@ public class ShareActionSheetV2
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375661));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375662));
-      this.jdField_c_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375663));
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375663));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375664));
+      this.jdField_c_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131375665));
       localObject3 = a();
       if (localObject3.length <= 0) {
         break label461;
@@ -548,7 +548,7 @@ public class ShareActionSheetV2
       if (!((Iterator)localObject4).hasNext()) {
         break label500;
       }
-      if (((bbje)((Iterator)localObject4).next()).jdField_d_of_type_Int != 0) {
+      if (((bbjs)((Iterator)localObject4).next()).jdField_d_of_type_Int != 0) {
         break label1320;
       }
       m += 1;
@@ -580,7 +580,7 @@ public class ShareActionSheetV2
       this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject4).width;
       ((ViewGroup.LayoutParams)localObject4).height = (this.jdField_d_of_type_Int + this.g + i3 + i4);
       this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new bcvd(this.jdField_a_of_type_AndroidContentContext, (List)localObject1, this));
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new bcvs(this.jdField_a_of_type_AndroidContentContext, (List)localObject1, this));
       this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
       this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
       if (i1 != 0)
@@ -593,7 +593,7 @@ public class ShareActionSheetV2
         m = 0;
         if (((Iterator)localObject1).hasNext())
         {
-          if (((bbje)((Iterator)localObject1).next()).jdField_d_of_type_Int != 0) {
+          if (((bbjs)((Iterator)localObject1).next()).jdField_d_of_type_Int != 0) {
             break label1317;
           }
           m += 1;
@@ -611,7 +611,7 @@ public class ShareActionSheetV2
         this.jdField_b_of_type_Int = ((ViewGroup.LayoutParams)localObject1).width;
         ((ViewGroup.LayoutParams)localObject1).height = (this.jdField_d_of_type_Int + this.g + i3 + i4);
         this.jdField_b_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.jdField_b_of_type_AndroidWidgetGridView.setAdapter(new bcvd(this.jdField_a_of_type_AndroidContentContext, (List)localObject2, this));
+        this.jdField_b_of_type_AndroidWidgetGridView.setAdapter(new bcvs(this.jdField_a_of_type_AndroidContentContext, (List)localObject2, this));
         this.jdField_b_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
         this.jdField_b_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
         if (i2 != 0)
@@ -625,7 +625,7 @@ public class ShareActionSheetV2
           m = 0;
           if (((Iterator)localObject1).hasNext())
           {
-            if (((bbje)((Iterator)localObject1).next()).jdField_d_of_type_Int != 0) {
+            if (((bbjs)((Iterator)localObject1).next()).jdField_d_of_type_Int != 0) {
               break label1314;
             }
             m += 1;
@@ -644,11 +644,11 @@ public class ShareActionSheetV2
           ((ViewGroup.LayoutParams)localObject1).height = (this.jdField_d_of_type_Int + this.g + i3 + i4);
           this.jdField_c_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.jdField_c_of_type_AndroidWidgetGridView.setNumColumns(m);
-          this.jdField_c_of_type_AndroidWidgetGridView.setAdapter(new bcvd(this.jdField_a_of_type_AndroidContentContext, (List)localObject3, this));
+          this.jdField_c_of_type_AndroidWidgetGridView.setAdapter(new bcvs(this.jdField_a_of_type_AndroidContentContext, (List)localObject3, this));
           this.jdField_c_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
           this.jdField_c_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361912));
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bcvc(this));
+          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361911));
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bcvr(this));
           if ((n == 0) || (this.j == 8)) {
             this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
           }
@@ -667,27 +667,27 @@ public class ShareActionSheetV2
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bfol == null) {}
+    if (this.jdField_a_of_type_Bfpc == null) {}
     Window localWindow;
     do
     {
       return null;
-      localWindow = this.jdField_a_of_type_Bfol.getWindow();
+      localWindow = this.jdField_a_of_type_Bfpc.getWindow();
     } while (localWindow == null);
     return localWindow.findViewById(paramInt);
   }
   
   public Window a()
   {
-    if (this.jdField_a_of_type_Bfol == null) {
+    if (this.jdField_a_of_type_Bfpc == null) {
       return null;
     }
-    return this.jdField_a_of_type_Bfol.getWindow();
+    return this.jdField_a_of_type_Bfpc.getWindow();
   }
   
-  public bfol a()
+  public bfpc a()
   {
-    return this.jdField_a_of_type_Bfol;
+    return this.jdField_a_of_type_Bfpc;
   }
   
   public String a()
@@ -695,13 +695,13 @@ public class ShareActionSheetV2
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected String a(List<bbje> paramList)
+  protected String a(List<bbjs> paramList)
   {
     Object localObject = "";
     int m = 0;
     if (m < paramList.size())
     {
-      String str = ((bbje)paramList.get(m)).jdField_a_of_type_JavaLangString;
+      String str = ((bbjs)paramList.get(m)).jdField_a_of_type_JavaLangString;
       if (str.length() <= ((String)localObject).length()) {
         break label54;
       }
@@ -776,14 +776,14 @@ public class ShareActionSheetV2
   
   public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_Bcvf.a(paramView, paramLayoutParams);
+    this.jdField_a_of_type_Bcvu.a(paramView, paramLayoutParams);
   }
   
   public void a(AdapterView.OnItemClickListener paramOnItemClickListener) {}
   
-  public void a(bcur parambcur)
+  public void a(bcvg parambcvg)
   {
-    this.jdField_a_of_type_Bcur = parambcur;
+    this.jdField_a_of_type_Bcvg = parambcvg;
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -800,7 +800,7 @@ public class ShareActionSheetV2
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(List<bbje> paramList1, List<bbje> paramList2)
+  public void a(List<bbjs> paramList1, List<bbjs> paramList2)
   {
     a(new ArrayList[] { (ArrayList)paramList1, (ArrayList)paramList2 });
   }
@@ -810,7 +810,7 @@ public class ShareActionSheetV2
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public void a(List<bbje>[] paramArrayOfList)
+  public void a(List<bbjs>[] paramArrayOfList)
   {
     this.jdField_a_of_type_ArrayOfJavaUtilList = paramArrayOfList;
     this.jdField_a_of_type_Boolean = true;
@@ -818,10 +818,10 @@ public class ShareActionSheetV2
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing());
+    return (this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing());
   }
   
-  public List<bbje>[] a()
+  public List<bbjs>[] a()
   {
     if (this.jdField_a_of_type_ArrayOfJavaUtilList != null) {
       return this.jdField_a_of_type_ArrayOfJavaUtilList;
@@ -859,7 +859,7 @@ public class ShareActionSheetV2
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_Bcvf.a(paramInt);
+    this.jdField_a_of_type_Bcvu.a(paramInt);
   }
   
   public void e() {}
@@ -885,12 +885,12 @@ public class ShareActionSheetV2
   
   public void h()
   {
-    if (this.jdField_a_of_type_Bfol == null) {}
-    while (!this.jdField_a_of_type_Bfol.isShowing()) {
+    if (this.jdField_a_of_type_Bfpc == null) {}
+    while (!this.jdField_a_of_type_Bfpc.isShowing()) {
       return;
     }
     this.jdField_a_of_type_AndroidViewView = a();
-    this.jdField_a_of_type_Bfol.a(this.jdField_a_of_type_AndroidViewView, null);
+    this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_AndroidViewView, null);
   }
 }
 

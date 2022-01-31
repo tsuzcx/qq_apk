@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
-import arcm;
+import arco;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationActivityHelper$3
   implements Runnable
 {
-  public IdentificationActivityHelper$3(arcm paramarcm, boolean paramBoolean) {}
+  public IdentificationActivityHelper$3(arco paramarco, boolean paramBoolean) {}
   
   public void run()
   {
-    arcm.a(this.this$0).a(this.a);
+    arco.a(this.this$0).a(this.a);
   }
 }
 

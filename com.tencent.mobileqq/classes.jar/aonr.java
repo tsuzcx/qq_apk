@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-
 public class aonr
-  implements View.OnClickListener
+  extends aonp
 {
-  public aonr(FMActivity paramFMActivity) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  public aonr(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    FMActivity.c(this.a);
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
   }
 }
 

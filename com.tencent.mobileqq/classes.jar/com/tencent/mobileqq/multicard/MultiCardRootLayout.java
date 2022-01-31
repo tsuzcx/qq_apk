@@ -14,13 +14,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import assx;
-import assy;
 import assz;
 import asta;
-import bbkx;
-import bfrj;
-import bfrk;
+import astb;
+import astc;
+import bbll;
+import bfsa;
+import bfsb;
 import com.tencent.widget.FitSystemWindowsRelativeLayout;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ public class MultiCardRootLayout
   extends FitSystemWindowsRelativeLayout
 {
   private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_a_of_type_Float = bbkx.b(18.0F);
+  private float jdField_a_of_type_Float = bbll.b(18.0F);
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bfrj jdField_a_of_type_Bfrj;
-  private bfrk jdField_a_of_type_Bfrk;
-  private WeakReference<asta> jdField_a_of_type_JavaLangRefWeakReference;
+  private bfsa jdField_a_of_type_Bfsa;
+  private bfsb jdField_a_of_type_Bfsb;
+  private WeakReference<astc> jdField_a_of_type_JavaLangRefWeakReference;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c = true;
@@ -71,10 +71,10 @@ public class MultiCardRootLayout
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new assx(this), new Handler(Looper.getMainLooper()));
+      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new assz(this), new Handler(Looper.getMainLooper()));
     }
-    this.jdField_a_of_type_Bfrj = new assy(this);
-    this.jdField_a_of_type_Bfrk = new assz(this);
+    this.jdField_a_of_type_Bfsa = new asta(this);
+    this.jdField_a_of_type_Bfsb = new astb(this);
     a(true);
   }
   
@@ -153,8 +153,8 @@ public class MultiCardRootLayout
   {
     if (paramBoolean)
     {
-      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bfrk);
-      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bfrj);
+      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bfsb);
+      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bfsa);
       return;
     }
     super.setOnInterceptTouchEventListener(null);
@@ -186,14 +186,14 @@ public class MultiCardRootLayout
     super.onDraw(paramCanvas);
   }
   
-  public void setListener(asta paramasta)
+  public void setListener(astc paramastc)
   {
-    if (paramasta == null)
+    if (paramastc == null)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramasta);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramastc);
   }
 }
 

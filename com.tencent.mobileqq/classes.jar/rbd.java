@@ -1,38 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.26.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-
-public class rbd
-  implements rbz
+class rbd
+  extends oyd
 {
-  rbd(rap paramrap) {}
-  
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  rbd(ram paramram, String paramString)
   {
-    rap.d(this.a, false);
-    if (!rap.c(this.a)) {
-      return;
-    }
-    rap.a(this.a, false);
-    if ((this.a.a()) && (rap.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
-      }
-      if (!rap.a(this.a).b()) {
-        break label122;
-      }
-      rap.a(this.a).postDelayed(new ReadInJoyBaseAdapter.26.1(this, paramReadInJoyBaseListView), 1200L);
-    }
-    for (;;)
-    {
-      rap.a(this.a, this.a.a.getLastVisiblePosition() + 1, rap.c());
-      return;
-      label122:
-      this.a.a(paramReadInJoyBaseListView, rap.b);
-    }
+    super(paramString);
+  }
+  
+  public void a(oxx paramoxx)
+  {
+    paramoxx.h();
   }
 }
 

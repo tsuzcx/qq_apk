@@ -1,6 +1,30 @@
-public abstract interface arzv
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class arzv
 {
-  public abstract void a();
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arzw(this);
+  private arzx jdField_a_of_type_Arzx;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public arzv(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+  }
+  
+  public void a()
+  {
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void a(arzx paramarzx)
+  {
+    this.jdField_a_of_type_Arzx = paramarzx;
+  }
 }
 
 

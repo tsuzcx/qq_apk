@@ -1,47 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ayfq
-  extends ayfb
+  implements View.OnClickListener
 {
-  ayfq(ayfp paramayfp) {}
+  ayfq(ayfo paramayfo, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void onClick(View paramView)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if (paramTeamWorkFileImportInfo.e != ayfp.a(this.a).uniseq) {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ayfo, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Ayfo.isShowing()) {
+        this.jdField_a_of_type_Ayfo.dismiss();
+      }
       return;
     }
-    ayfp.a(this.a).saveExtInfoToExtStr("errorString", ayfp.a(this.a, paramTeamWorkFileImportInfo.f));
-    ayfp.a(this.a).saveExtInfoToExtStr("retCode", String.valueOf(paramTeamWorkFileImportInfo.f));
-    ayfp.a(this.a).a().a(ayfp.a(this.a).frienduin, ayfp.a(this.a).istroop, ayfp.a(this.a).uniseq);
-    ayfp.a(this.a).removeObserver(ayfp.a(this.a));
-    ayfp.a(this.a).a().a(ayfp.a(this.a).frienduin, ayfp.a(this.a).istroop, ayfp.a(this.a).uniseq, "extStr", ayfp.a(this.a).extStr);
-    ayfp.a(this.a).a().a(ayfp.a(this.a).frienduin, ayfp.a(this.a).istroop, ayfp.a(this.a).uniseq, 32768, -1);
-    QLog.i("TeamWorkSender", 1, ayfp.a(this.a).uniseq + " import file faild");
-    ayfp.a(this.a).a().a(true, 3, null);
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (paramTeamWorkFileImportInfo.e != ayfp.a(this.a).uniseq) {}
-    do
-    {
-      return;
-      ayfp.a(this.a).removeObserver(ayfp.a(this.a));
-      ayfp.a(this.a).mMsgUrl = paramString;
-      ayfp.a(this.a).structingMsg.mMsgUrl = paramString;
-      ayfp.a(this.a).msgData = ayfp.a(this.a).getBytes();
-      ayfp.a(this.a).removeFlag(1);
-      ayfp.a(this.a).removeFlag(2);
-      ayfp.a(this.a).a().b(ayfp.a(this.a), null, false);
-      QLog.i("TeamWorkSender", 1, "start import file success");
-    } while (!QLog.isColorLevel());
-    QLog.i("TeamWorkSender", 1, "msg uniseq : " + ayfp.a(this.a).uniseq + " import success, url:" + paramString);
+    catch (Exception paramView) {}
   }
 }
 

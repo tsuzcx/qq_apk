@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.app.ProgressDialog;
+import android.content.Context;
 
-public final class bgml
-  implements Parcelable.Creator<RecvMsg>
+public class bgml
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
-  
-  public RecvMsg[] a(int paramInt)
-  {
-    return new RecvMsg[paramInt];
-  }
+  public ProgressDialog a;
+  public Context a;
+  public bglo a;
+  public bglq a;
+  public boolean a = true;
 }
 
 

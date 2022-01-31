@@ -1,108 +1,163 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse;
-import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.SystemClock;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-class onz
-  implements BusinessObserver
+public class onz
 {
-  onz(onx paramonx, long paramLong, NewIntent paramNewIntent, oob paramoob, String paramString) {}
+  private static final Map<String, onz> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private long jdField_a_of_type_Long = -1L;
+  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = -1L;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static long a(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID time : " + (l1 - l2));
+    return a(paramString, false).a();
+  }
+  
+  public static long a(String paramString, boolean paramBoolean)
+  {
+    return a(paramString, false).a(paramBoolean);
+  }
+  
+  public static onz a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
     }
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean)
+    return (onz)jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  private static onz a(String paramString, boolean paramBoolean)
+  {
+    onz localonz2 = a(paramString);
+    onz localonz1 = localonz2;
+    if (localonz2 == null)
     {
-      if (this.jdField_a_of_type_Oob != null) {
-        this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, "error");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID notSuccess!");
-      }
-    }
-    label299:
-    do
-    {
-      do
+      localonz2 = new onz();
+      localonz1 = localonz2;
+      if (paramBoolean)
       {
-        do
-        {
-          for (;;)
-          {
-            return;
-            paramBundle = paramBundle.getByteArray("data");
-            if ((paramBundle == null) || (paramBundle.length <= 0))
-            {
-              if (this.jdField_a_of_type_Oob != null) {
-                this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, "error");
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID empty data!");
-              }
-            }
-            else
-            {
-              try
-              {
-                localObject = new ArticleCenter.GetVidByUrlResponse();
-                ((ArticleCenter.GetVidByUrlResponse)localObject).mergeFrom(paramBundle);
-                if (((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() == 0) {
-                  break label299;
-                }
-                if (this.jdField_a_of_type_Oob != null) {
-                  this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID error:" + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() + ", " + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.err_info.get());
-                  return;
-                }
-              }
-              catch (Exception paramBundle)
-              {
-                if (this.jdField_a_of_type_Oob != null) {
-                  this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-              }
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID exception!");
-        return;
-        paramBundle = ((ArticleCenter.GetVidByUrlResponse)localObject).vid.get();
-        if (paramBundle == null) {
-          break;
-        }
-        Object localObject = paramBundle.toStringUtf8();
-        paramBundle = (Bundle)localObject;
-        if (this.jdField_a_of_type_Oob != null)
-        {
-          paramBundle = (Bundle)localObject;
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramBundle = "error";
-          }
-          this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID vid:" + paramBundle);
-      return;
-      if (this.jdField_a_of_type_Oob != null) {
-        this.jdField_a_of_type_Oob.a(this.jdField_a_of_type_JavaLangString, "error");
+        a(paramString, localonz2);
+        localonz1 = localonz2;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID null vid!");
+    }
+    return localonz1;
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public static void a(String paramString, onz paramonz)
+  {
+    if ((paramString == null) || (paramonz == null)) {
+      return;
+    }
+    jdField_a_of_type_JavaUtilMap.put(paramString, paramonz);
+  }
+  
+  public static long b(String paramString)
+  {
+    return a(paramString, false).b();
+  }
+  
+  public static void b(String paramString)
+  {
+    a(paramString, true).a();
+  }
+  
+  public static void c(String paramString)
+  {
+    a(paramString, false).b();
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public long a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      b();
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (long l1 = 0L; ((Iterator)localObject).hasNext(); l1 = ((Long)((Iterator)localObject).next()).longValue() + l1) {}
+    long l2 = l1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      l2 = l1;
+      if (!paramBoolean) {
+        l2 = l1 + (SystemClock.elapsedRealtime() - this.b);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startMillis : " + this.jdField_a_of_type_Long + "  during : " + l2 + "  :  ");
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        Long localLong = (Long)localIterator.next();
+        ((StringBuilder)localObject).append(localLong + "  : ");
+      }
+      QLog.d("TimeSliceHelper", 1, ((StringBuilder)localObject).toString());
+    }
+    return l2;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Long < 0L) {
+      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.b = SystemClock.elapsedRealtime();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return a(true);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      long l = SystemClock.elapsedRealtime() - this.b;
+      if (l >= 0L) {
+        this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
+      }
+    }
+    else
+    {
+      return;
+    }
+    actj.a("", "", new IllegalArgumentException());
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = -1L;
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.emoticonview;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import anzf;
-import anzo;
+import anzk;
+import anzt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 public class EmoticonPagerAdapter
   extends PagerAdapter
 {
-  private List<anzo> jdField_a_of_type_JavaUtilList;
+  private List<anzt> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = true;
   
   public void a()
@@ -21,19 +21,19 @@ public class EmoticonPagerAdapter
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((anzo)localIterator.next()).a();
+        ((anzt)localIterator.next()).a();
       }
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    anzf.b();
+    anzk.b();
   }
   
-  public void a(List<anzo> paramList)
+  public void a(List<anzt> paramList)
   {
     a(paramList, true);
   }
   
-  public void a(List<anzo> paramList, boolean paramBoolean)
+  public void a(List<anzt> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -56,14 +56,14 @@ public class EmoticonPagerAdapter
       int i;
       for (int j = 0; paramView.hasNext(); j = i)
       {
-        paramObject = (anzo)paramView.next();
+        paramObject = (anzt)paramView.next();
         i = j;
         if (paramObject != null)
         {
           i = j;
-          if ((paramObject instanceof anzf))
+          if ((paramObject instanceof anzk))
           {
-            paramObject = (anzf)paramObject;
+            paramObject = (anzk)paramObject;
             int k = paramObject.b();
             j += k;
             i = j;
@@ -97,9 +97,9 @@ public class EmoticonPagerAdapter
       i = 0;
       j = i;
     } while (!localIterator.hasNext());
-    anzo localanzo = (anzo)localIterator.next();
-    if ((localanzo != null) && ((localanzo instanceof anzf))) {
-      i += ((anzf)localanzo).b();
+    anzt localanzt = (anzt)localIterator.next();
+    if ((localanzt != null) && ((localanzt instanceof anzk))) {
+      i += ((anzk)localanzt).b();
     }
     for (;;)
     {
@@ -122,22 +122,22 @@ public class EmoticonPagerAdapter
     int k;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (anzo)((Iterator)localObject1).next();
+      localObject2 = (anzt)((Iterator)localObject1).next();
       i = j;
       if (localObject2 != null)
       {
         i = j;
-        if ((localObject2 instanceof anzf))
+        if ((localObject2 instanceof anzk))
         {
-          localObject2 = (anzf)localObject2;
-          k = ((anzf)localObject2).b();
+          localObject2 = (anzk)localObject2;
+          k = ((anzk)localObject2).b();
           j += k;
           i = j;
           if (paramInt + 1 > j) {}
         }
       }
     }
-    for (localObject1 = ((anzf)localObject2).b(k - (j - paramInt));; localObject1 = null)
+    for (localObject1 = ((anzk)localObject2).b(k - (j - paramInt));; localObject1 = null)
     {
       if ((localObject1 != null) && (((View)localObject1).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject1);

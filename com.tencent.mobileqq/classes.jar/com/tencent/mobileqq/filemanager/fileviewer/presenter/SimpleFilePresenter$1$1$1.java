@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import appk;
-import appl;
+import appo;
+import appp;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 class SimpleFilePresenter$1$1$1

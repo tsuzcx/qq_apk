@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import bhxk;
+import bhyb;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class TroopHWRecordArrangeActivity
   extends TroopHWRecordBaseActivity
 {
   private int jdField_a_of_type_Int = 20;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bhxk(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhyb(this);
   private String jdField_a_of_type_JavaLangString;
   
   protected void a()

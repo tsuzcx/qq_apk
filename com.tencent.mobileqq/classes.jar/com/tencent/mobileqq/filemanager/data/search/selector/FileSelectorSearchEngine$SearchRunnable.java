@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.data.search.selector;
 
-import apfw;
-import awut;
-import awvg;
+import apga;
+import awuv;
+import awvi;
 import java.util.ArrayList;
 import java.util.List;
 
 class FileSelectorSearchEngine$SearchRunnable
   implements Runnable
 {
-  awut<apfw> jdField_a_of_type_Awut;
-  awvg jdField_a_of_type_Awvg;
+  awuv<apga> jdField_a_of_type_Awuv;
+  awvi jdField_a_of_type_Awvi;
   
   private FileSelectorSearchEngine$SearchRunnable(FileSelectorSearchEngine paramFileSelectorSearchEngine) {}
   
@@ -18,18 +18,18 @@ class FileSelectorSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Awvg == null)
+      if (this.jdField_a_of_type_Awvi == null)
       {
-        this.jdField_a_of_type_Awut.a(new ArrayList(), 6);
+        this.jdField_a_of_type_Awuv.a(new ArrayList(), 6);
         return;
       }
-      awvg localawvg = this.jdField_a_of_type_Awvg;
-      String str = this.jdField_a_of_type_Awvg.a;
-      List localList = this.this$0.a(localawvg);
+      awvi localawvi = this.jdField_a_of_type_Awvi;
+      String str = this.jdField_a_of_type_Awvi.a;
+      List localList = this.this$0.a(localawvi);
       try
       {
-        if ((this.jdField_a_of_type_Awut != null) && (localawvg == this.jdField_a_of_type_Awvg) && (str.equals(this.jdField_a_of_type_Awvg.a))) {
-          this.jdField_a_of_type_Awut.a(localList, 1);
+        if ((this.jdField_a_of_type_Awuv != null) && (localawvi == this.jdField_a_of_type_Awvi) && (str.equals(this.jdField_a_of_type_Awvi.a))) {
+          this.jdField_a_of_type_Awuv.a(localList, 1);
         }
         return;
       }

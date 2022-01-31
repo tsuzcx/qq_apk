@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import aysp;
+import aysr;
 
 public class MultiMsgUpProcessor$2
   implements Runnable
 {
-  public MultiMsgUpProcessor$2(aysp paramaysp) {}
+  public MultiMsgUpProcessor$2(aysr paramaysr) {}
   
   public void run()
   {

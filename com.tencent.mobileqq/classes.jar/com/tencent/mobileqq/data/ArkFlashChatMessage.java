@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import ayla;
+import aylc;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -77,7 +77,7 @@ public class ArkFlashChatMessage
   public String getArkDisplay()
   {
     if (this.promptText != null) {
-      return ayla.a(getSummery());
+      return aylc.a(getSummery());
     }
     return getSummery();
   }

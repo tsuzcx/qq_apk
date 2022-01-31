@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import android.os.Handler;
-import aukn;
+import aukp;
 import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import java.util.List;
-import ork;
+import orh;
 
 public class DynamicChannelDataModule$2
   implements Runnable
 {
-  public DynamicChannelDataModule$2(ork paramork, int paramInt1, int paramInt2) {}
+  public DynamicChannelDataModule$2(orh paramorh, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = ork.a(this.this$0);
+    Object localObject = orh.a(this.this$0);
     int i = this.a;
     int j = this.b;
-    localObject = ((aukn)localObject).a(DynamicChannelDataModel.class, true, "channelID = ?", new String[] { String.valueOf(i) }, null, null, "recommendSeq asc", String.valueOf(j));
+    localObject = ((aukp)localObject).a(DynamicChannelDataModel.class, true, "channelID = ?", new String[] { String.valueOf(i) }, null, null, "recommendSeq asc", String.valueOf(j));
     if ((localObject == null) || (((List)localObject).size() == 0))
     {
-      ork.a(this.this$0, this.a, 2);
+      orh.a(this.this$0, this.a, 2);
       return;
     }
-    localObject = ork.a(this.this$0, this.a, (List)localObject, false);
-    ork.a(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
+    localObject = orh.a(this.this$0, this.a, (List)localObject, false);
+    orh.a(this.this$0).post(new DynamicChannelDataModule.2.1(this, (List)localObject));
   }
 }
 

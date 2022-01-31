@@ -1,88 +1,107 @@
-import android.content.Intent;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+import com.tencent.mobileqq.vip.diy.common.DIYImageView;
+import com.tencent.mobileqq.widget.ProfileNameView;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class bbxu
-  extends AccountObserver
+public class bbxu
+  extends bhzp
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final bbxw jdField_a_of_type_Bbxw;
-  final String jdField_a_of_type_JavaLangString;
+  private View jdField_a_of_type_AndroidViewView;
+  private TemplateLikeView jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
+  private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
+  private String jdField_a_of_type_JavaLangString = "";
+  private HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, bhzo> b;
   
-  bbxu(Intent paramIntent, String paramString, bbxw parambbxw)
+  public bbxu(HashMap<String, View> paramHashMap, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (paramHashMap == null) {
+      throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
+    }
+    this.b = new HashMap();
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bbxw = parambbxw;
   }
   
-  public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public View a(Context paramContext, String paramString)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-    if (paramArrayOfByte2 != null) {}
-    for (;;)
+    if ("pf_name".equals(paramString))
     {
-      try
-      {
-        paramArrayOfByte2 = new String(paramArrayOfByte2, "utf-8");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LHLoginMng", 4, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig isSuccess: %s, code: %s, uin: %s, error: %s, contactSig: %s, lhsig: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString, paramArrayOfByte2, MD5.toMD5(paramArrayOfByte1), MD5.toMD5(paramArrayOfByte3) }));
-        }
-        if (paramInt != 0) {
-          break label311;
-        }
-        paramBoolean = true;
-        if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label283;
-        }
-        paramBoolean = false;
-        if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
-          break label298;
-        }
-        paramBoolean = false;
-        if (!TextUtils.isEmpty(paramArrayOfByte2)) {
-          break label316;
-        }
-        paramString = BaseApplicationImpl.getContext().getString(2131717132);
-        localIntent.putExtra("key_register_prompt_info", paramString);
-        if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0)) {
-          localIntent.putExtra("key_register_lhsig", paramArrayOfByte3);
-        }
-        if (QLog.isDevelopLevel()) {
-          bbxx.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
-        }
-        if (this.jdField_a_of_type_Bbxw != null) {
-          this.jdField_a_of_type_Bbxw.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
-        }
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
       }
-      catch (UnsupportedEncodingException paramArrayOfByte2)
-      {
-        paramArrayOfByte2.printStackTrace();
-      }
-      paramArrayOfByte2 = null;
-      continue;
-      label283:
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      continue;
-      label298:
-      localIntent.putExtra("key_register_sign", paramArrayOfByte1);
-      continue;
-      label311:
-      paramBoolean = false;
-      continue;
-      label316:
-      paramString = paramArrayOfByte2;
+      ved.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
+      paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+      return paramContext;
     }
+    if ("pf_avatar".equals(paramString))
+    {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
+      }
+      ved.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
+      paramContext = LayoutInflater.from(paramContext).inflate(2131561607, null);
+      this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131373501);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
+      return paramContext;
+    }
+    if ("pf_like".equals(paramString))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView != null) {
+        throw new RuntimeException("It have duplicate " + paramString);
+      }
+      ved.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
+      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
+      return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
+    }
+    if ("image_view".equals(paramString)) {
+      return new DIYImageView(paramContext);
+    }
+    return super.a(paramContext, paramString);
+  }
+  
+  public bhzo a(String paramString, View paramView)
+  {
+    if ("pf_name".equals(paramString)) {
+      return new bbxs(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    if ("pf_avatar".equals(paramString)) {
+      return new bbxq(paramString, paramView, this.b);
+    }
+    if ("pf_like".equals(paramString)) {
+      return new bbxr(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    if ("image_view".equals(paramString)) {
+      return new bbxw(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    }
+    return super.a(paramString, paramView);
+  }
+  
+  public void a(bhzo parambhzo, JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.optString("id");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (parambhzo != null)) {
+      this.b.put(localObject, parambhzo);
+    }
+    if ("pf_avatar".equals(paramJSONObject.optString("type")))
+    {
+      localObject = paramJSONObject.optString("border", "");
+      localObject = (bhzo)this.b.get(localObject);
+      if (localObject != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_avatar_sticker", ((bhzo)localObject).a());
+      }
+    }
+    super.a(parambhzo, paramJSONObject);
   }
 }
 

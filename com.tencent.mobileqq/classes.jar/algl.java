@@ -4,7 +4,7 @@ public class algl
   
   public String toString()
   {
-    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
+    return "ARCloudRecogReqPreOcrInfo{timeout = " + this.a + '}';
   }
 }
 

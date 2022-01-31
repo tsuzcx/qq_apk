@@ -1,99 +1,139 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class astd
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends asrs
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public List<RecommendPerson> a;
-  public List<aste> b;
+  private adke a;
   
-  public astd(astc paramastc, View paramView, int paramInt)
+  public astd(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramView);
-    this.jdField_a_of_type_JavaUtilList = ((List)paramastc.a.get(Integer.valueOf(paramInt)));
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramViewGroup);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_Adke != null)
+    {
+      this.jdField_a_of_type_Adke.a(null);
+      this.jdField_a_of_type_Adke = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    if (this.jdField_a_of_type_Adke == null) {
+      return;
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Adke.c(true);
+      this.jdField_a_of_type_Adke.b(true);
+      this.jdField_a_of_type_Adke.d();
+      return;
+    }
+    this.jdField_a_of_type_Adke.b(false);
+    this.jdField_a_of_type_Adke.c(false);
+  }
+  
+  public void a(asrk paramasrk)
+  {
+    super.a(paramasrk);
+    if (this.jdField_a_of_type_Adke != null)
+    {
+      if (a() != 0) {
+        this.jdField_a_of_type_Adke.b(false);
+      }
+      this.jdField_a_of_type_Adke.a(a(), a());
+      this.jdField_a_of_type_Adke.b();
+    }
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Adke == null)
+    {
+      paramBundle = null;
+      Bundle localBundle = a();
+      if (localBundle != null) {
+        paramBundle = localBundle.getString("uin");
+      }
+      this.jdField_a_of_type_Adke = new adke(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
+      this.jdField_a_of_type_Adke.a(this);
+      b(1);
+      a(this.jdField_a_of_type_Adke.a());
+    }
+    b(this.jdField_a_of_type_Adke.a());
+    if (a() != null) {
+      this.jdField_a_of_type_Adke.a(a(), a());
+    }
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StrangerIntimateViewDelegete", 2, "doOnResume() called");
+    }
+    if (this.jdField_a_of_type_Adke == null) {
+      return;
+    }
+    if (a() == 0)
+    {
+      this.jdField_a_of_type_Adke.b(true);
+      this.jdField_a_of_type_Adke.d();
+    }
     for (;;)
     {
+      this.jdField_a_of_type_Adke.o();
       return;
-      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378394));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375460));
-      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramView.hasNext())
-      {
-        Object localObject = (RecommendPerson)paramView.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
-        }
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562559, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131375461);
-        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131368719);
-        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131378395);
-        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131378396);
-        Button localButton = (Button)((View)localObject).findViewById(2131363688);
-        a(actn.a(85.0F, astc.a(paramastc).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
-        aste localaste = new aste(this);
-        localaste.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
-        localaste.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-        localaste.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-        localaste.b = localTextView2;
-        localaste.jdField_a_of_type_AndroidWidgetButton = localButton;
-        this.b.add(localaste);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
-      }
+      this.jdField_a_of_type_Adke.b(false);
+      this.jdField_a_of_type_Adke.e();
     }
   }
   
-  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
+  public void d()
   {
-    if (paramInt2 > 1)
-    {
-      int i = bbkx.a();
-      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
-      localLayoutParams.leftMargin = paramInt2;
-      localLayoutParams.rightMargin = paramInt2;
-      paramRelativeLayout.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("StrangerIntimateViewDelegete", 2, "doOnPause() called");
     }
   }
   
-  public void onClick(View paramView)
+  public void e()
   {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (astc.a(this.jdField_a_of_type_Astc) == null);
-      astc.a(this.jdField_a_of_type_Astc).a((RecyclerView.ViewHolder)paramView.getTag(2131375461), (RecommendPerson)paramView.getTag(2131363688));
+    if (this.jdField_a_of_type_Adke == null) {
       return;
-    } while (astc.a(this.jdField_a_of_type_Astc) == null);
-    astc.a(this.jdField_a_of_type_Astc).b((RecyclerView.ViewHolder)paramView.getTag(2131375461), (RecommendPerson)paramView.getTag(2131363688));
+    }
+    this.jdField_a_of_type_Adke.a(true);
+    this.jdField_a_of_type_Adke.b();
   }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    super.g();
+    if (this.jdField_a_of_type_Adke == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Adke.a());
+      this.jdField_a_of_type_AndroidViewViewGroup = null;
+    }
+    this.jdField_a_of_type_Adke.i();
+  }
+  
+  public void h() {}
 }
 
 

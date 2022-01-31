@@ -1,48 +1,129 @@
-public abstract class bhdg
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
+import cooperation.qzone.contentbox.QZoneMsgFragment.QZoneMsgUIObserver.1;
+import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
+import cooperation.qzone.util.QZLog;
+import java.util.ArrayList;
+
+public class bhdg
+  extends bhdi
 {
-  public static bhdp a(long paramLong)
+  public bhdg(QZoneMsgFragment paramQZoneMsgFragment) {}
+  
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return bhdk.a().a(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg");
+    }
+    super.a(paramBoolean, paramBundle);
+    if (!paramBoolean)
+    {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onLoadMoreMsg error");
+      QZoneMsgFragment.a(this.a, paramBoolean);
+      return;
+    }
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      this.a.a.b(paramBundle.ArkNes_vec);
+      QZoneMsgFragment.a(this.a);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
+    }
+    for (;;)
+    {
+      QZoneMsgFragment.a(this.a, paramBoolean);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onLoadMoreMsg ，rsp=null");
+      }
+    }
   }
   
-  public static bhdq a(long paramLong)
+  protected boolean a(boolean paramBoolean, Bundle paramBundle)
   {
-    return bhdk.a().a(paramLong);
+    return true;
   }
   
-  public static bhdr a(long paramLong)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    return bhdk.a().a(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg");
+    }
+    super.b(paramBoolean, paramBundle);
+    if (!paramBoolean) {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onPreloadMsg error");
+    }
+    do
+    {
+      return;
+      paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+      if (paramBundle != null)
+      {
+        QZoneMsgFragment.a(this.a, paramBundle);
+        QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+        this.a.a.a(paramBundle.ArkNes_vec);
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，hasMore=" + QZoneMsgFragment.c(this.a));
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onPreloadMsg ，rsp=null");
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2, bhdi parambhdi)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    return bhdk.a().a(paramInt, paramString1, paramString2, parambhdi);
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "onReFreshMsg start");
+    super.c(paramBoolean, paramBundle);
+    if (!paramBoolean)
+    {
+      QZLog.e("QZoneMsgManager.QZoneMsgFragment", "onReFreshMsg error");
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+    }
+    paramBundle = (QZoneMsgEntityNew)paramBundle.getSerializable("key_response");
+    if (paramBundle != null)
+    {
+      QZoneMsgFragment.a(this.a, paramBundle);
+      QZoneMsgFragment.a(this.a).postDelayed(new QZoneMsgFragment.QZoneMsgUIObserver.1(this, paramBundle), 500L);
+      QZoneMsgFragment.b(this.a, true);
+      QZoneMsgFragment.a(this.a, paramBundle.hasmore);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("onReFreshMsg ，hasMore=").append(QZoneMsgFragment.c(this.a)).append(" ,ArkNes_vec size:");
+        if (paramBundle.ArkNes_vec == null) {
+          break label175;
+        }
+        paramBundle = String.valueOf(paramBundle.ArkNes_vec.size());
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, paramBundle);
+      }
+    }
+    for (;;)
+    {
+      QZoneMsgFragment.b(this.a, paramBoolean);
+      return;
+      label175:
+      paramBundle = "null";
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "onReFreshMsg ，rsp=null");
+      }
+    }
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2, bhdj parambhdj)
+  protected void d(boolean paramBoolean, Bundle paramBundle)
   {
-    return a(paramInt, paramString1, paramString2, true, parambhdj);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bhdj parambhdj)
-  {
-    return bhdk.a().a(paramInt, paramString1, paramString2, paramBoolean, parambhdj);
-  }
-  
-  public static void a(long paramLong, bhdp parambhdp)
-  {
-    bhdk.a().a(paramLong, parambhdp);
-  }
-  
-  public static void a(long paramLong, bhdq parambhdq)
-  {
-    bhdk.a().a(paramLong, parambhdq);
-  }
-  
-  public static void a(long paramLong, bhdr parambhdr)
-  {
-    bhdk.a().a(paramLong, parambhdr);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onLikeFeed start");
+    }
+    super.d(paramBoolean, paramBundle);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBoolean = paramBundle.getBoolean("like_key");
+      long l = paramBundle.getLong("entity_pushtime");
+      this.a.a.a(l, paramBoolean);
+    }
   }
 }
 

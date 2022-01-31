@@ -1,6 +1,19 @@
-public abstract interface rqs
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+
+public class rqs
 {
-  public abstract void a(boolean paramBoolean);
+  public static rqn a(Context paramContext, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new rqq(paramContext);
+    case 2: 
+      return new ReadInJoySkinAnimManager(paramContext);
+    }
+    return new rqr(paramContext);
+  }
 }
 
 

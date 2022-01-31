@@ -1,60 +1,84 @@
 import android.content.Context;
-import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import mqq.app.AppRuntime;
 
 public class bbsy
 {
-  private static bbso jdField_a_of_type_Bbso = new bbsp();
-  private static final HashMap<Long, bbso> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
-  
-  public static bbso a(long paramLong)
+  public static File a(Context paramContext)
   {
-    bbso localbbso2 = (bbso)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    bbso localbbso1 = localbbso2;
-    if (localbbso2 == null) {
-      localbbso1 = jdField_a_of_type_Bbso;
-    }
-    return localbbso1;
+    return bbsz.a(paramContext);
   }
   
-  public static void a(Context paramContext)
+  public static String a(Context paramContext)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bbso)localIterator.next()).cleanCache(paramContext);
+    paramContext = paramContext.getFilesDir().getAbsolutePath();
+    if (paramContext.endsWith(File.separator)) {
+      return paramContext + "GLDrawableV828.zip";
     }
+    return paramContext + File.separator + "GLDrawableV828.zip";
   }
   
-  public static void a(bbso parambbso)
+  public static void a()
   {
     try
     {
-      jdField_a_of_type_Bbso = parambbso;
-      return;
-    }
-    finally
-    {
-      parambbso = finally;
-      throw parambbso;
-    }
-  }
-  
-  public static void b(bbso parambbso)
-  {
-    try
-    {
-      if (jdField_a_of_type_Bbso == parambbso) {
-        jdField_a_of_type_Bbso = new bbsp();
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "GLDrawableV828", "GLDrawable");
       }
       return;
     }
     finally
     {
-      parambbso = finally;
-      throw parambbso;
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public static void a(Context paramContext, int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      File localFile;
+      try
+      {
+        localFile = a(paramContext);
+        paramContext = a(paramContext);
+        try
+        {
+          String str = localFile.getAbsolutePath() + "_temp";
+          if (new File(str).exists()) {
+            bbdx.a(str, false);
+          }
+          bbdx.a(paramContext, str, false);
+          if (localFile.exists()) {
+            bbdx.a(localFile.getAbsolutePath(), false);
+          }
+          bbdx.c(str, localFile.getAbsolutePath());
+          QLog.d("GLDrawable", 1, "unzip succ..." + new File(paramContext).length() + "..." + bdik.a(paramContext));
+        }
+        catch (IOException localIOException)
+        {
+          bbtb.a("unzip", localIOException.getMessage());
+          QLog.e("GLDrawable", 1, new Object[] { "unzip error, libDir=" + localFile, " zipPath=" + paramContext, localIOException });
+          continue;
+        }
+        return;
+      }
+      finally {}
+      QLog.e("GLDrawable", 1, "error: " + paramInt);
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return new File(a(paramContext)).exists();
   }
 }
 

@@ -1,55 +1,79 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.HashSet;
-import java.util.Set;
 
 public class qhz
-  extends awry
+  implements awoi
 {
-  private awqu jdField_a_of_type_Awqu;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private String jdField_a_of_type_JavaLangString;
+  private qaz jdField_a_of_type_Qaz;
   
-  qhz(baxk parambaxk, awqu paramawqu, Set<String> paramSet)
+  public qhz(qaz paramqaz)
   {
-    super(parambaxk);
-    this.jdField_a_of_type_Awqu = paramawqu;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.jdField_a_of_type_Qaz = paramqaz;
   }
   
-  public void a(awog paramawog, awwp paramawwp)
+  public int a()
   {
-    if ((paramawog instanceof qic))
-    {
-      paramawog = ((qic)paramawog).a().b();
-      paramawwp = paramawwp.b();
-      Drawable localDrawable = paramawwp.getResources().getDrawable(2130839736);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      paramawog = URLDrawable.getDrawable(paramawog, localURLDrawableOptions);
-      paramawog.setTag(bavi.a(140, 140));
-      paramawog.setDecodeHandler(bavi.o);
-      paramawwp.setImageDrawable(paramawog);
-      return;
-    }
-    super.a(paramawog, paramawwp);
+    return 0;
   }
   
-  public void b(awog paramawog, awwp paramawwp)
+  public CharSequence a()
   {
-    super.b(paramawog, paramawwp);
+    return awwa.b(this.jdField_a_of_type_Qaz.a(), this.jdField_a_of_type_JavaLangString, 6, true);
   }
   
-  protected void c(awog paramawog, awwp paramawwp)
+  public String a()
   {
-    super.c(paramawog, paramawwp);
-    if ((this.jdField_a_of_type_Awqu != null) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramawog.b()))) {
-      paramawwp.a().setOnClickListener(new qia(this));
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public qaz a()
+  {
+    return this.jdField_a_of_type_Qaz;
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this.jdField_a_of_type_Qaz.a().contains(paramString);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public CharSequence b()
+  {
+    return "";
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_Qaz.a().toString();
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    return ajya.a(2131704679);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.view.View;
 
-public final class abzz
-  implements Parcelable.Creator<RiskInfoItem>
+public abstract interface abzz
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
-  
-  public RiskInfoItem[] a(int paramInt)
-  {
-    return new RiskInfoItem[paramInt];
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

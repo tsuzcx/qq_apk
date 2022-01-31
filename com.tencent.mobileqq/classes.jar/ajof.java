@@ -1,6 +1,9 @@
-public class ajof
+import android.support.annotation.NonNull;
+import java.util.Map;
+
+public abstract interface ajof
 {
-  public void a(int paramInt, byte[] paramArrayOfByte) {}
+  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
 }
 
 

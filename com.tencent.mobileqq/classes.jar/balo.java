@@ -1,38 +1,70 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xdad.cmd0xdad.RspBody;
 
-public class balo
-  implements Comparable<balo>
+class balo
+  extends mxi
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  balo(balh parambalh, balg parambalg, xcb paramxcb) {}
   
-  public balo(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
-  
-  public int a(@NonNull balo parambalo)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = -1;
-    if ((this.f != null) && (parambalo.f != null)) {
-      i = this.f.compareTo(parambalo.f);
-    }
-    do
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Balg == null))
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0xdad. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Balg);
+      }
+      if (this.jdField_a_of_type_Balg != null)
       {
-        return i;
-        if (this.f != null) {
-          break;
+        if (paramArrayOfByte != null) {
+          paramBundle = new cmd0xdad.RspBody();
         }
-      } while (parambalo.f == null);
-      return 1;
-    } while (parambalo.f == null);
-    return 0;
+      }
+      else {
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.errmsg.get();
+          this.jdField_a_of_type_Balg.b(paramInt, paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(".troop.send_gift", 2, "send_oidb_0xdad. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+          }
+          this.jdField_a_of_type_Balg.a(-1, "InvalidProtocolBufferMicroException");
+          return;
+        }
+      }
+      this.jdField_a_of_type_Balg.a(paramInt, "sso request error or callback is null.");
+      return;
+    }
+    cmd0xdad.RspBody localRspBody;
+    try
+    {
+      localRspBody = new cmd0xdad.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = (int)localRspBody.retcode.get();
+      if ((paramInt == 0) && (paramBundle != null))
+      {
+        this.jdField_a_of_type_Balg.a(this.jdField_a_of_type_Xcb.a);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Balg.a(-1, "InvalidProtocolBufferMicroException");
+      return;
+    }
+    paramArrayOfByte = localRspBody.errmsg.get();
+    this.jdField_a_of_type_Balg.b(paramInt, paramArrayOfByte);
   }
 }
 

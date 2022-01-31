@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.splash;
 
 import android.text.TextUtils;
-import aysa;
-import aysw;
-import aysx;
-import ayxq;
+import aysc;
+import aysy;
+import aysz;
+import ayxs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nay;
+import nav;
 
 public class SplashMiniGameDownloadManager$DownLoadNetEngine
-  implements aysa
+  implements aysc
 {
   QQAppInterface app;
   String appid;
@@ -28,29 +28,29 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
     this.resPath = paramString2;
   }
   
-  public void onResp(aysx paramaysx)
+  public void onResp(aysz paramaysz)
   {
     try
     {
-      if (paramaysx.a == 0)
+      if (paramaysz.a == 0)
       {
         QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile has download!");
         if (!TextUtils.isEmpty(this.resPath))
         {
-          paramaysx = new File(this.resPath);
-          if (paramaysx.exists())
+          paramaysz = new File(this.resPath);
+          if (paramaysz.exists())
           {
-            long l = paramaysx.length();
-            ayxq localayxq = (ayxq)this.app.getManager(193);
-            if (localayxq.a())
+            long l = paramaysz.length();
+            ayxs localayxs = (ayxs)this.app.getManager(193);
+            if (localayxs.a())
             {
               QLog.i("SplashMiniGameDownloadMgr", 1, "preDownloadSuccess");
-              localayxq.a(this.downloadurl, l);
+              localayxs.a(this.downloadurl, l);
             }
             if (this.type == 0)
             {
-              nay.a(paramaysx, paramaysx.getParent() + File.separator);
-              this.resPath = (paramaysx.getParent() + File.separator + "splash.png");
+              nav.a(paramaysz, paramaysz.getParent() + File.separator);
+              this.resPath = (paramaysz.getParent() + File.separator + "splash.png");
             }
             SplashMiniGameUtil.downloadSuccess(this.appid, this.type, this.resPath);
             return;
@@ -58,16 +58,16 @@ public class SplashMiniGameDownloadManager$DownLoadNetEngine
           QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile check not exist");
         }
       }
-      else if (paramaysx.a == 1)
+      else if (paramaysz.a == 1)
       {
         QLog.i("SplashMiniGameDownloadMgr", 1, "ResFile dowload faield");
       }
       return;
     }
-    catch (Exception paramaysx) {}
+    catch (Exception paramaysz) {}
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

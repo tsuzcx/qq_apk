@@ -1,13 +1,4 @@
-class pbv
-  extends akdo
-{
-  pbv(pbu parampbu) {}
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    this.a.f();
-  }
-}
+public abstract interface pbv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

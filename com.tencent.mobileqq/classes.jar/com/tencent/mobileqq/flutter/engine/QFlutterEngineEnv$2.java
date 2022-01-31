@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.engine;
 
-import aqag;
+import aqai;
 
 public final class QFlutterEngineEnv$2
   implements Runnable
@@ -9,7 +9,7 @@ public final class QFlutterEngineEnv$2
   
   public void run()
   {
-    aqag.a(this.a);
+    aqai.a(this.a);
   }
 }
 

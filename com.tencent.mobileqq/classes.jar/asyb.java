@@ -1,103 +1,149 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class asyb
 {
-  public float a;
   public int a;
   public long a;
   public String a;
+  public ArrayList<asyc> a;
   public boolean a;
   public int b;
-  public long b;
   public String b;
   public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public long d;
-  public String d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
   
   public asyb()
   {
+    this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 999;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
   }
   
-  public float a()
+  public static asyb a(JSONObject paramJSONObject)
   {
-    if (c()) {}
-    while (a()) {
-      return 0.4F;
+    int i = 0;
+    if (paramJSONObject == null) {
+      return null;
     }
-    return 1.0F;
+    localasyb = new asyb();
+    try
+    {
+      localasyb.jdField_a_of_type_Long = paramJSONObject.optLong("type");
+      localasyb.jdField_a_of_type_JavaLangString = paramJSONObject.optString("cluster");
+      localasyb.jdField_b_of_type_JavaLangString = paramJSONObject.optString("ruleUrl");
+      if (paramJSONObject.has("disableLocalResource")) {
+        if (paramJSONObject.optInt("disableLocalResource") != 1) {
+          break label145;
+        }
+      }
+      label145:
+      for (boolean bool = true;; bool = false)
+      {
+        localasyb.jdField_b_of_type_Boolean = bool;
+        if (!paramJSONObject.has("typeItem")) {
+          break;
+        }
+        paramJSONObject = paramJSONObject.optJSONArray("typeItem");
+        localasyb.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        while (i < paramJSONObject.length())
+        {
+          asyc localasyc = asyc.a(paramJSONObject.getJSONObject(i));
+          if (localasyc != null)
+          {
+            localasyb.jdField_a_of_type_JavaUtilArrayList.add(localasyc);
+            localasyc.jdField_a_of_type_Asyb = localasyb;
+          }
+          i += 1;
+        }
+      }
+      return localasyb;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
+      return null;
+    }
   }
   
-  public void a(asyc paramasyc)
+  public long a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramasyc.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramasyc.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Float = paramasyc.jdField_a_of_type_Float;
-    this.jdField_c_of_type_Long = paramasyc.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Long = paramasyc.jdField_d_of_type_Long;
-    this.e = paramasyc.e;
-    this.f = paramasyc.f;
-    this.g = paramasyc.g;
-    this.jdField_a_of_type_Boolean = paramasyc.jdField_b_of_type_Boolean;
-    this.h = paramasyc.h;
-    this.jdField_c_of_type_JavaLangString = paramasyc.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramasyc.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_JavaLangString = paramasyc.jdField_c_of_type_JavaLangString;
-    this.jdField_d_of_type_Boolean = paramasyc.jdField_a_of_type_Boolean;
+    long l2 = -1L;
+    long l1 = l2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      l1 = l2;
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        l1 = -1L;
+        if (localIterator.hasNext())
+        {
+          asyc localasyc = (asyc)localIterator.next();
+          if ((localasyc == null) || (!localasyc.jdField_a_of_type_Boolean) || (localasyc.jdField_b_of_type_Long > paramLong)) {
+            break label97;
+          }
+          l1 = localasyc.jdField_b_of_type_Long;
+        }
+      }
+    }
+    label97:
+    for (;;)
+    {
+      break;
+      return l1;
+    }
+  }
+  
+  public asyc a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        asyc localasyc = (asyc)localIterator.next();
+        if ((localasyc != null) && (localasyc.jdField_b_of_type_Long == paramLong)) {
+          return localasyc;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String a(long paramLong)
+  {
+    asyc localasyc = a(paramLong);
+    if (localasyc != null) {
+      return localasyc.jdField_b_of_type_JavaLangString;
+    }
+    return "";
   }
   
   public boolean a()
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_Long == 12L) || (this.jdField_a_of_type_Long == 1L) || (this.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_Long == 3L)) {
-      bool = false;
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      return bool;
-      if ((!asxk.c(this.jdField_a_of_type_Long)) && (this.jdField_a_of_type_Long != 7L)) {
-        break;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        asyc localasyc = (asyc)localIterator.next();
+        if ((localasyc != null) && (localasyc.jdField_a_of_type_Boolean)) {
+          return true;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkForDisplayInfo", 2, "isInTwinkling icon_status:" + this.f + " currentMillis:" + NetConnInfoCenter.getServerTimeMillis() + " icon_status_end_time:" + this.g);
-      }
-    } while ((this.f == 2L) && (NetConnInfoCenter.getServerTimeMillis() < this.g * 1000L));
-    while (!asxk.a(this.jdField_d_of_type_Long * 1000L)) {
-      return false;
     }
-    return true;
+    return false;
   }
   
-  public boolean b()
+  public boolean a(long paramLong)
   {
-    return (this.jdField_a_of_type_Long == 5L) || (this.jdField_a_of_type_Long == 6L) || (this.jdField_a_of_type_Long == 8L) || (this.jdField_a_of_type_Long == 4L);
-  }
-  
-  public boolean c()
-  {
-    return this.f == 1L;
-  }
-  
-  public boolean d()
-  {
-    if ((this.jdField_c_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
-    while ((this.jdField_c_of_type_Int == 0) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      return false;
+    asyc localasyc = a(paramLong);
+    if (localasyc != null) {
+      return localasyc.jdField_a_of_type_Boolean;
     }
-    return true;
+    return false;
   }
 }
 

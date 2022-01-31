@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core;
 
-import bfas;
+import bfbj;
 
 public class EventListener$6
   implements Runnable
 {
-  public EventListener$6(bfas parambfas) {}
+  public EventListener$6(bfbj parambfbj) {}
   
   public void run()
   {

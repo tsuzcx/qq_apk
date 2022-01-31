@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import ntk;
-import ntm;
+import nth;
+import ntj;
 
 public class ReadInJoyChannelViewPagerController$10$1$1
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$10$1$1(ntm paramntm) {}
+  public ReadInJoyChannelViewPagerController$10$1$1(ntj paramntj) {}
   
   public void run()
   {
-    ntk.b(this.a.a.this$0);
+    nth.b(this.a.a.this$0);
   }
 }
 

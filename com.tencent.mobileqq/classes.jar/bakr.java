@@ -1,12 +1,16 @@
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+
 public class bakr
+  implements apag
 {
-  public long a;
-  public String a;
+  public bakr(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
   
-  public bakr(bakk parambakk, String paramString, long paramLong)
+  public void a() {}
+  
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    apab.a(new aplu(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
   }
 }
 

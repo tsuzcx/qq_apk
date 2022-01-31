@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface bftt
-{
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-}
+public class bftt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

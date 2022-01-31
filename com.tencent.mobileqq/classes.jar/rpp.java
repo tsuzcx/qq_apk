@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
 public class rpp
-  implements URLDrawableHandler
+  implements Animator.AnimatorListener
 {
-  public rpp(RunningJob paramRunningJob) {}
+  public rpp(ZImageView paramZImageView) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return false;
+    ZImageView.a(this.a);
   }
   
-  public void onFileDownloadFailed(int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ZImageView.a(this.a);
+  }
   
-  public void onFileDownloadStarted() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

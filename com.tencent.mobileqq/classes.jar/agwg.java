@@ -1,26 +1,19 @@
-import Wallet.GetRandomHbIdiomReq;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.observer.BusinessObserver;
-
-class agwg
-  implements ahjt
+public class agwg
 {
-  agwg(agvz paramagvz, int paramInt, BusinessObserver paramBusinessObserver) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void a(String paramString)
+  public boolean equals(Object paramObject)
   {
-    if (agvz.a(this.jdField_a_of_type_Agvz) != null)
+    if ((paramObject instanceof agwg))
     {
-      GetRandomHbIdiomReq localGetRandomHbIdiomReq = new GetRandomHbIdiomReq();
-      localGetRandomHbIdiomReq.makeUin = agvz.a(this.jdField_a_of_type_Agvz).getLongAccountUin();
-      localGetRandomHbIdiomReq.sKey = paramString;
-      localGetRandomHbIdiomReq.appid = AppSetting.a();
-      localGetRandomHbIdiomReq.fromType = this.jdField_a_of_type_Int;
-      localGetRandomHbIdiomReq.platform = 0;
-      localGetRandomHbIdiomReq.qqVersion = "8.2.8";
-      agwv.a(localGetRandomHbIdiomReq, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      paramObject = (agwg)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
+        return true;
+      }
     }
+    return false;
   }
 }
 

@@ -1,4 +1,9 @@
-class ayiz {}
+public abstract interface ayiz
+{
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

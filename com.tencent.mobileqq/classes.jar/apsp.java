@@ -1,23 +1,56 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.qphone.base.util.QLog;
 
-class apsp
-  implements apsh
+public abstract class apsp
 {
-  apsp(apso paramapso) {}
+  protected apsq a;
+  protected QQAppInterface a;
+  protected ChatMessage a;
   
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public apsp(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  public static apsp a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
+    if (paramChatMessage == null)
+    {
+      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
+      return null;
     }
+    if ((paramChatMessage instanceof MessageForFile)) {
+      return new apsj(paramQQAppInterface, paramChatMessage);
+    }
+    if ((paramChatMessage instanceof MessageForTroopFile)) {
+      return new apss(paramQQAppInterface, paramChatMessage);
+    }
+    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
+    return null;
   }
+  
+  public abstract long a();
+  
+  public abstract apsm a();
+  
+  public abstract String a();
+  
+  public void a(apsq paramapsq)
+  {
+    this.jdField_a_of_type_Apsq = paramapsq;
+  }
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

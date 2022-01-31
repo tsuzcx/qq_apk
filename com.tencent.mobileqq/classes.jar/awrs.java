@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class awrs
   implements View.OnClickListener
 {
-  awrs(awrr paramawrr, awof paramawof) {}
+  awrs(awrr paramawrr, awnq paramawnq) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Awof.a(paramView);
+    this.jdField_a_of_type_Awnq.b(paramView);
   }
 }
 

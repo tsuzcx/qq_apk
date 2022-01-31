@@ -1,28 +1,39 @@
-import android.support.v4.util.ArraySet;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.widget.ListView;
 
-public class acyl
+public abstract class acyl
 {
-  private static ArraySet<Long> a = new ArraySet();
+  public int a;
+  public AIOAnimationConatiner a;
+  public ListView a;
   
-  public static void a()
+  public acyl(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
-    a.clear();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt)
   {
-    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
-    {
-      a.add(Long.valueOf(paramMessageRecord.uniseq));
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
-    }
+    return false;
   }
   
-  public static void a(MessageRecord paramMessageRecord)
+  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(Object... paramVarArgs);
+  
+  public void b() {}
+  
+  public abstract void c();
+  
+  public void d()
   {
-    a.add(Long.valueOf(paramMessageRecord.uniseq));
+    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

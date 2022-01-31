@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class azsx
   implements View.OnClickListener
 {
-  azsx(azsu paramazsu) {}
+  azsx(azsw paramazsw) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
+    this.a.a(paramView);
   }
 }
 

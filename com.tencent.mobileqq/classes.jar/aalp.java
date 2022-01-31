@@ -1,59 +1,37 @@
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aalp
-  extends atzn
+class aalp
+  extends WtloginObserver
 {
-  private WeakReference<atzn> a;
+  aalp(aalo paramaalo) {}
   
-  public aalp(atzn paramatzn)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    this.a = new WeakReference(paramatzn);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    atzn localatzn = (atzn)this.a.get();
-    if (localatzn != null)
+    if (QLog.isColorLevel())
     {
-      localatzn.a(paramString1, paramInt, paramString2);
-      return;
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    super.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    atzn localatzn = (atzn)this.a.get();
-    if (localatzn != null)
+    if (paramInt2 == 0) {}
+    do
     {
-      localatzn.a(paramString1, paramString2);
       return;
-    }
-    super.a(paramString1, paramString2);
-  }
-  
-  public void a(oidb_0x87a.RspBody paramRspBody)
-  {
-    atzn localatzn = (atzn)this.a.get();
-    if (localatzn != null)
-    {
-      localatzn.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
-  }
-  
-  public void a(oidb_0x87c.RspBody paramRspBody)
-  {
-    atzn localatzn = (atzn)this.a.get();
-    if (localatzn != null)
-    {
-      localatzn.a(paramRspBody);
-      return;
-    }
-    super.a(paramRspBody);
+      aalo.a(this.a);
+    } while (aalo.a(this.a) == null);
+    paramString = new Intent(aalo.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", aalo.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    aalo.a(this.a).startActivity(paramString);
+    aalo.a(this.a).finish();
   }
 }
 

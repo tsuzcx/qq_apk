@@ -1,36 +1,27 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.annotation.NonNull;
 import android.widget.EditText;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class vmk
-  implements TextWatcher
+  implements vvm
 {
-  vmk(vmj paramvmj) {}
+  vmk(vmg paramvmg) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull vvt paramvvt)
   {
-    if (this.a.jdField_a_of_type_Vmq == null) {}
+    switch (paramvvt.a)
+    {
+    }
     do
     {
       return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_Vmq != null) {
-          this.a.jdField_a_of_type_Vmq.b(420);
-        }
-      }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+      int i = paramvvt.b;
+      this.a.jdField_a_of_type_Vlp.a = i;
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
+      vej.b("0X80075D8");
+    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
+    LpReportInfo_pf00064.allReport(615, 3, 2);
   }
 }
 

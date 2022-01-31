@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abfu
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public abfu(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public abfu(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.a.f = false;
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,20 +1,8 @@
-public class awqd
+import java.util.List;
+
+public abstract interface awqd<T>
 {
-  public static awqb a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 80000000: 
-      return new awqa();
-    case 80000001: 
-      return new awqg();
-    case 80000002: 
-      return new awqe();
-    }
-    return new awpy();
-  }
+  public abstract List<T> a(Object... paramVarArgs);
 }
 
 

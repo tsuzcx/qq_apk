@@ -1,35 +1,6 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
-
-public class bhhk
-  extends Handler
+public abstract interface bhhk
 {
-  public bhhk(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
-    {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

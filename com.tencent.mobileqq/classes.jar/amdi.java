@@ -1,6 +1,8 @@
 public abstract interface amdi
 {
-  public abstract void a(amdj paramamdj);
+  public abstract int a(int paramInt1, String paramString, int paramInt2, amdf paramamdf);
+  
+  public abstract void a(int paramInt);
 }
 
 

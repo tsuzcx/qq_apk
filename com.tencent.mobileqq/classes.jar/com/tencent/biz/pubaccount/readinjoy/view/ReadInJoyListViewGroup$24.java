@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import oxt;
+import oxq;
 
 class ReadInJoyListViewGroup$24
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$24
   public void run()
   {
     if (this.this$0.a != null) {
-      oxt.a(this.this$0.a, true);
+      oxq.a(this.this$0.a, true);
     }
   }
 }

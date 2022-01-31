@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ApolloPandora
-  extends aukm
+  extends auko
 {
   public static final int BOX_TYPE_BEAN = 3;
   public static final int BOX_TYPE_CARD = 1;
@@ -18,7 +18,7 @@ public class ApolloPandora
   public short hadStolen;
   public String mBoxTipUrl;
   public long queryInterval;
-  @auma
+  @aumc
   public String uin;
   public long updateTime;
   

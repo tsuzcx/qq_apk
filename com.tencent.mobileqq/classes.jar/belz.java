@@ -1,6 +1,34 @@
-public class belz
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
+public abstract class belz
 {
-  public int a;
+  public static String a(String paramString)
+  {
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    try
+    {
+      paramString = URLDecoder.decode(paramString, "UTF-8");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      throw new IllegalArgumentException(paramString);
+    }
+  }
 }
 
 

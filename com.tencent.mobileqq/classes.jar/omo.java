@@ -1,14 +1,16 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class omo
   implements View.OnClickListener
 {
-  omo(omn paramomn, String paramString1, String paramString2) {}
+  omo(omn paramomn, omq paramomq, pay parampay, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    omn.a(this.jdField_a_of_type_Omn).a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Omn.a = new rro((Activity)omn.a(this.jdField_a_of_type_Omn), new omp(this), this.jdField_a_of_type_Pay.b, this.jdField_a_of_type_Pay.a);
+    this.jdField_a_of_type_Omn.a.b(this.jdField_a_of_type_Omq.b);
   }
 }
 

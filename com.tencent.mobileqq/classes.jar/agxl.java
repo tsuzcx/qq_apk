@@ -1,21 +1,16 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
 
 public class agxl
-  extends bcsq
+  implements MediaPlayer.OnCompletionListener
 {
   public agxl(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    super.a();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846385));
-    this.a.c.setText(ajyc.a(2131713302));
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
   }
 }
 

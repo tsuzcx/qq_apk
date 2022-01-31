@@ -1,10 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class aubf
 {
-  public List<aubd> a;
-  public boolean a;
-  public List<audd> b;
+  public int a;
+  public String a;
+  public List<aubg> a = new ArrayList();
+  public String b;
+  public String c;
 }
 
 

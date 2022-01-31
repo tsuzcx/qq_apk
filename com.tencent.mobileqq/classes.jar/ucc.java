@@ -1,93 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.SystemClock;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.io.File;
 
-public class ucc
-  extends JobSegment<StoryVideoItem, StoryVideoItem>
+class ucc
+  implements ude
 {
-  StoryVideoItem a;
+  ucc(ubz paramubz, StoryVideoItem paramStoryVideoItem) {}
   
-  private ucc(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  protected void a(StoryVideoItem paramStoryVideoItem)
+  public void a_(ucz paramucz)
   {
-    if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8))
-    {
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc);
-      super.notifyResult(paramStoryVideoItem);
+    if (this.jdField_a_of_type_Ubz.isCanceled()) {
       return;
     }
-    veg.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "STATE_PREPARE_ED ignore");
-  }
-  
-  protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
-  {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 7);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    paramJobContext = null;
-    File localFile = sum.a(paramStoryVideoItem.mVid, 0, false, false);
-    if ((localFile != null) && (sum.a(localFile))) {
-      paramJobContext = localFile.getAbsolutePath();
-    }
-    for (;;)
-    {
-      if (paramJobContext == null)
-      {
-        veg.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "finalFileName null, hide loading view");
-        VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 8);
-        VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-        veg.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "setVideoPath, fileName is empty !!");
-        VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, ajyc.a(2131716435));
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "fileName null"));
-        return;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.b())
-        {
-          if ((!TextUtils.isEmpty(paramStoryVideoItem.mVideoUrl)) || (!TextUtils.isEmpty(paramStoryVideoItem.mTempVideoUrl)))
-          {
-            localFile = sum.a(paramStoryVideoItem.mVid, 0, true, true);
-            if (localFile != null) {
-              paramJobContext = localFile.getAbsolutePath();
-            }
-            for (;;)
-            {
-              break;
-              veg.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "showVideo, vid=%s, support stream, getLocalFile return null", new Object[] { paramStoryVideoItem.mVid });
-            }
-          }
-        }
-        else {
-          notifyError(new ErrorMessage(-1, "not tvk videoView, and videoFile has not downloaded."));
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(0);
-        veg.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "set video view listeners ... and then setVideoPath");
-        VideoViewVideoHolder.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 0);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(new ucd(this));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(new uce(this, paramJobContext, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(new ucf(this, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(new ucg(this, paramStoryVideoItem));
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a(new uch(this, paramStoryVideoItem));
-        ((sto)tdc.a(28)).a(paramStoryVideoItem.mVid, 0, new uci(this, paramStoryVideoItem, paramJobContext));
-        return;
-      }
-      paramJobContext = null;
-    }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    veg.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "VideoPrepareSegment onCancel");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_Udc.a();
+    ved.a(this.jdField_a_of_type_Ubz.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramucz)));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ubz.a, "VP", SystemClock.uptimeMillis());
+    this.jdField_a_of_type_Ubz.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 

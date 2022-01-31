@@ -1,10 +1,23 @@
-public abstract interface axeo
+public class axeo
 {
-  public abstract void G_();
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
   
-  public abstract void a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public String a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
+    }
+    return "CONFIG_SEND_REQ";
+  }
 }
 
 

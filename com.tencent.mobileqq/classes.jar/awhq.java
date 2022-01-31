@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
-class awhq
-  implements View.OnClickListener
+public class awhq
 {
-  awhq(awhp paramawhp) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public awhq(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    awhp.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public awhq(int paramInt, String paramString1, String paramString2, String paramString3, List<String> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

@@ -1,202 +1,271 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abmn
-  implements DialogInterface.OnClickListener, QQPermissionCallback
+  extends WtloginObserver
 {
-  public static boolean a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { ajyc.a(2131701765), "QQ使用电话权限确定本机号码和设备ID，以保证帐号登录的安全性。QQ不会拨打其他号码或终止通话。\n请在设置中开启电话权限或存储空间，以正常使用QQ功能。" };
-  private abmq jdField_a_of_type_Abmq;
-  private AppActivity jdField_a_of_type_MqqAppAppActivity;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  public abmn(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  private void a(AppActivity paramAppActivity, int paramInt)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    String str2 = bfmw.a();
-    String str1 = "0X800A9DE";
-    if ((paramAppActivity instanceof RegisterPhoneNumActivity)) {
-      str1 = "0X800A9DF";
-    }
-    axqw.a(null, "dc00898", "", "", str1, str1, paramInt, 0, "", "", str2, "");
-  }
-  
-  public void a()
-  {
-    int i = jdField_a_of_type_ArrayOfJavaLangString.length;
-    if (Build.VERSION.SDK_INT > 28) {
-      i = 1;
-    }
-    abmp localabmp = new abmp(this);
-    bbgg localbbgg = bbcv.a(this.jdField_a_of_type_MqqAppAppActivity, 230);
-    String str1 = ajyc.a(2131710203);
-    if (i > 1) {}
-    for (i = 2131694036;; i = 2131694035)
+    if (QLog.isColorLevel())
     {
-      String str2 = ajyc.a(i);
-      localbbgg.setTitle(str1);
-      localbbgg.setMessage(str2);
-      localbbgg.setNegativeButton(ajyc.a(2131694034), localabmp);
-      localbbgg.setPositiveButton(ajyc.a(2131694033), localabmp);
-      localbbgg.show();
-      return;
-    }
-  }
-  
-  public void a(abmq paramabmq)
-  {
-    this.jdField_a_of_type_Abmq = paramabmq;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    int i = jdField_a_of_type_ArrayOfJavaLangString.length;
-    if (Build.VERSION.SDK_INT > 28) {
-      i = 1;
-    }
-    boolean bool1 = b(paramContext);
-    if (i > 1)
-    {
-      boolean bool2 = c(paramContext);
-      return (bool1) && (bool2);
-    }
-    return bool1;
-  }
-  
-  public boolean a(AppActivity paramAppActivity)
-  {
-    return a(paramAppActivity, true);
-  }
-  
-  @TargetApi(23)
-  public boolean a(AppActivity paramAppActivity, boolean paramBoolean)
-  {
-    if ((paramAppActivity != null) && (this.jdField_a_of_type_MqqAppAppActivity != paramAppActivity)) {
-      this.jdField_a_of_type_MqqAppAppActivity = paramAppActivity;
-    }
-    if ((paramBoolean) && (akcz.a(0)))
-    {
-      paramAppActivity = new abmo(this);
-      akcz.a(this.jdField_a_of_type_MqqAppAppActivity, "", paramAppActivity, paramAppActivity).show();
-      return false;
-    }
-    if ((this.jdField_b_of_type_Boolean) && (!jdField_a_of_type_Boolean)) {
-      return true;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    if (!a(this.jdField_a_of_type_MqqAppAppActivity))
-    {
-      a();
-      return false;
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    int i = jdField_a_of_type_ArrayOfJavaLangString.length;
-    if (Build.VERSION.SDK_INT > 28) {
-      i = 1;
-    }
-    if (this.jdField_a_of_type_MqqAppAppActivity.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0) {}
-    for (int j = 1; i == 1; j = 0)
-    {
-      if (j == 0) {
-        this.jdField_a_of_type_MqqAppAppActivity.requestPermissions(this, 0, new String[] { jdField_a_of_type_ArrayOfJavaLangString[0] });
+      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      return;
     }
-    this.jdField_a_of_type_MqqAppAppActivity.requestPermissions(this, 0, jdField_a_of_type_ArrayOfJavaLangString);
-  }
-  
-  public boolean b(Context paramContext)
-  {
-    boolean bool2 = this.c;
-    boolean bool1 = bool2;
-    if (!bool2)
+    this.a.c();
+    if (paramInt2 == 0)
     {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label51;
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
       }
-      bool1 = bool2;
-      if (paramContext != null)
+      paramString = this.a.app.getHandler(LoginPhoneNumActivity.class);
+      if (paramString != null) {
+        paramString.sendEmptyMessage(2015);
+      }
+      this.a.finish();
+    }
+    for (;;)
+    {
+      return;
+      if (paramInt2 == -20160326)
       {
-        bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+        this.a.finish();
+        return;
+      }
+      if (paramInt2 == 2008)
+      {
+        this.a.a(2131693130, 0);
+        this.a.finish();
+        return;
+      }
+      Object localObject2 = null;
+      Object localObject3 = null;
+      Object localObject1 = localObject3;
+      if (paramErrMsg != null)
+      {
+        String str = paramErrMsg.getMessage();
+        localObject1 = localObject3;
+        localObject2 = str;
+        if (paramErrMsg.getType() == 1)
         {
-          this.c = true;
-          bool1 = this.c;
+          localObject1 = paramErrMsg.getOtherinfo();
+          localObject2 = str;
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramErrMsg = new Intent(this.a, NotificationActivity.class);
+        paramErrMsg.putExtra("type", 8);
+        if (paramInt2 == 40) {
+          paramErrMsg.putExtra("msg", localObject2);
+        }
+        for (;;)
+        {
+          paramErrMsg.putExtra("loginalias", paramString);
+          paramErrMsg.putExtra("loginret", paramInt2);
+          paramErrMsg.putExtra("expiredSig", paramArrayOfByte);
+          if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+            break;
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.i("LoginVerifyCodeActivity", 4, "OnGetStViaSMSVerifyLogin, goto Notification");
+          }
+          paramErrMsg.putExtra("lh_is_from_login_verify_code", true);
+          this.a.startActivityForResult(paramErrMsg, 1);
+          return;
+          paramErrMsg.putExtra("msg", localObject2 + " " + (String)localObject1);
+        }
+        this.a.startActivity(paramErrMsg);
+        return;
+      }
+      if (TextUtils.isEmpty(localObject2)) {
+        this.a.a(2131718752, 1);
+      }
+      while (paramInt2 == 155)
+      {
+        this.a.finish();
+        return;
+        this.a.a(localObject2, 0);
+      }
+    }
+  }
+  
+  public void OnGetSubaccountStViaSMSVerifyLogin(String paramString1, String paramString2, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginVerifyCodeActivity", 2, "OnGetSubaccountStViaSMSVerifyLogin  userAccount = " + paramString2 + " mainAccount=" + paramString1 + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnGetSubaccountStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("logintime", 2, "login end.......");
+    }
+    if (paramInt2 == 0) {
+      if ((paramString1 != null) && (paramString2 != null) && (paramString1.equals(paramString2)))
+      {
+        ayap.d(this.a.app);
+        LoginVerifyCodeActivity.b(this.a);
+        LoginVerifyCodeActivity.a(this.a, 2131719882, 0);
+        this.a.finish();
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (this.a.app != null)
+      {
+        paramString1 = new HashMap();
+        paramString1.put("param_FailCode", "12001");
+        paramString1.put("fail_step", "loginsucc");
+        paramString1.put("fail_location", "subLogin");
+        axrn.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBLogin", true, 0L, 0L, paramString1, "");
+        bbkb.a(this.a.app.getApplication().getApplicationContext(), paramString2, true);
+        this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramString2, this.a.a);
+        paramString1 = (ayax)this.a.app.getManager(61);
+        if (paramString1 == null) {
+          break;
+        }
+        paramString1.a(paramString2, 0, "");
+        return;
+        this.a.c();
+        if (paramInt2 == -20160326)
+        {
+          this.a.finish();
+          return;
+        }
+        if (paramInt2 == 2008)
+        {
+          this.a.a(2131693130, 0);
+          this.a.finish();
+          return;
+        }
+        Object localObject1 = null;
+        Object localObject2 = null;
+        paramString1 = localObject2;
+        if (paramErrMsg != null)
+        {
+          String str = paramErrMsg.getMessage();
+          paramString1 = localObject2;
+          localObject1 = str;
+          if (paramErrMsg.getType() == 1)
+          {
+            paramString1 = paramErrMsg.getOtherinfo();
+            localObject1 = str;
+          }
+        }
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramErrMsg = new Intent(this.a, NotificationActivity.class);
+          paramErrMsg.putExtra("type", 8);
+          if (paramInt2 == 40) {
+            paramErrMsg.putExtra("msg", localObject1);
+          }
+          for (;;)
+          {
+            paramErrMsg.putExtra("loginalias", paramString2);
+            paramErrMsg.putExtra("loginret", paramInt2);
+            this.a.startActivity(paramErrMsg);
+            return;
+            paramErrMsg.putExtra("msg", localObject1 + " " + paramString1);
+          }
+        }
+        if (TextUtils.isEmpty(localObject1)) {
+          this.a.a(2131718752, 1);
+        }
+        while (paramInt2 == 155)
+        {
+          this.a.finish();
+          return;
+          this.a.a(localObject1, 0);
         }
       }
     }
-    return bool1;
-    label51:
-    this.c = true;
-    return this.c;
   }
   
-  public boolean c(Context paramContext)
+  public void OnRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    boolean bool2 = this.d;
-    boolean bool1 = bool2;
-    if (!bool2)
+    if (QLog.isColorLevel())
     {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label51;
+      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
+      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
       }
-      bool1 = bool2;
-      if (paramContext != null)
+    }
+    if (this.a.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      this.a.c();
+      if (paramInt3 == 0) {
+        break;
+      }
+      paramString1 = null;
+      if (paramErrMsg != null) {
+        paramString1 = paramErrMsg.getMessage();
+      }
+      if (TextUtils.isEmpty(paramString1)) {
+        this.a.a(2131718752, 1);
+      }
+      while (paramInt3 == 155)
       {
-        bool1 = bool2;
-        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[1]) == 0)
-        {
-          this.d = true;
-          bool1 = this.d;
-        }
+        this.a.finish();
+        return;
+        this.a.a(paramString1, 0);
       }
     }
-    return bool1;
-    label51:
-    this.d = true;
-    return this.d;
+    LoginVerifyCodeActivity.a(this.a, 60);
   }
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void OnVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_Abmq != null) {
-      this.jdField_a_of_type_Abmq.b();
-    }
-    a(this.jdField_a_of_type_MqqAppAppActivity, 2);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("AutoMonitor", 1, "grant" + paramInt);
-    if (this.jdField_a_of_type_Abmq != null) {
-      this.jdField_a_of_type_Abmq.a();
-    }
-    a(this.jdField_a_of_type_MqqAppAppActivity, 1);
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
+    if (QLog.isColorLevel())
     {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
+      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
     }
+    if (this.a.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      if (paramInt == 0) {
+        break;
+      }
+      this.a.c();
+      paramString1 = null;
+      if (paramErrMsg != null) {
+        paramString1 = paramErrMsg.getMessage();
+      }
+      if (TextUtils.isEmpty(paramString1)) {
+        this.a.a(2131718752, 1);
+      }
+      while (paramInt == 155)
+      {
+        this.a.finish();
+        return;
+        this.a.a(paramString1, 0);
+      }
+    }
+    LoginVerifyCodeActivity.a(this.a);
   }
 }
 

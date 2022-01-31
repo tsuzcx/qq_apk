@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.tips;
 
-import biol;
+import bipc;
 
 public class AETipsViewController$2
   implements Runnable
 {
-  public AETipsViewController$2(biol parambiol) {}
+  public AETipsViewController$2(bipc parambipc) {}
   
   public void run()
   {
-    biol.a(this.this$0);
+    bipc.a(this.this$0);
   }
 }
 

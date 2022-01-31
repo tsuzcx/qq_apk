@@ -1,84 +1,89 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amwn
-  extends ampb<amwm>
 {
-  @NonNull
-  public static amwm a()
+  public String a;
+  public boolean a;
+  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+  
+  public amwn()
   {
-    amwm localamwm2 = (amwm)ampm.a().a(550);
-    amwm localamwm1 = localamwm2;
-    if (localamwm2 == null) {
-      localamwm1 = new amwm();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localamwm1.toString());
-    }
-    return localamwm1;
+    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public int a()
+  public static amwn a(amph[] paramArrayOfamph)
   {
-    return 550;
-  }
-  
-  @NonNull
-  public amwm a(int paramInt)
-  {
-    return new amwm();
-  }
-  
-  @Nullable
-  public amwm a(ampi[] paramArrayOfampi)
-  {
-    return amwm.a(paramArrayOfampi);
-  }
-  
-  public Class a()
-  {
-    return amwm.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amwm paramamwm)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    amwn localamwn = new amwn();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(347))
+      int j = paramArrayOfamph.length;
+      int i = 0;
+      while (i < j)
       {
-        ((astm)((QQAppInterface)localObject).getManager(347)).a = paramamwm;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramamwm.toString());
+        Object localObject = paramArrayOfamph[i];
+        if (localObject == null)
+        {
+          i += 1;
+        }
+        else
+        {
+          localObject = ((amph)localObject).jdField_a_of_type_JavaLangString;
+          for (;;)
+          {
+            try
+            {
+              JSONObject localJSONObject = new JSONObject((String)localObject);
+              if (localJSONObject.has("announcementUrl")) {
+                localamwn.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+              }
+              if (localJSONObject.has("autoApprovalUrl")) {
+                localamwn.b = localJSONObject.optString("autoApprovalUrl");
+              }
+              if (!localJSONObject.has("frequencyLimitVisible")) {
+                continue;
+              }
+              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
+                continue;
+              }
+              bool = true;
+              localamwn.jdField_a_of_type_Boolean = bool;
+            }
+            catch (JSONException localJSONException)
+            {
+              boolean bool;
+              localJSONException.printStackTrace();
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
+            break;
+            bool = false;
+            continue;
+            localamwn.jdField_a_of_type_Boolean = false;
+          }
         }
       }
     }
+    if (TextUtils.isEmpty(localamwn.jdField_a_of_type_JavaLangString)) {
+      localamwn.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    }
+    if (TextUtils.isEmpty(localamwn.b)) {
+      localamwn.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+    }
+    return localamwn;
   }
   
-  public int b()
+  public String toString()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
+    return localStringBuilder.toString();
   }
 }
 

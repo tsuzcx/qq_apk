@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import bbby;
-import bbqp;
+import bbcm;
+import bbrd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,14 +13,14 @@ public final class AvatarPendantUtil$1
   
   public void run()
   {
-    bbby.jdField_a_of_type_Boolean = false;
+    bbcm.jdField_a_of_type_Boolean = false;
     do
     {
-      synchronized (bbby.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (bbcm.jdField_a_of_type_JavaUtilArrayList)
       {
-        String[] arrayOfString1 = new String[bbby.jdField_a_of_type_JavaUtilArrayList.size()];
-        bbby.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
-        bbby.jdField_a_of_type_JavaUtilArrayList.clear();
+        String[] arrayOfString1 = new String[bbcm.jdField_a_of_type_JavaUtilArrayList.size()];
+        bbcm.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
+        bbcm.jdField_a_of_type_JavaUtilArrayList.clear();
         if (arrayOfString1.length == 0) {
           return;
         }
@@ -28,10 +28,10 @@ public final class AvatarPendantUtil$1
       if (QLog.isColorLevel()) {
         QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, getStrangerInfo, size=" + arrayOfString2.length);
       }
-      ??? = (bbqp)this.a.a(71);
+      ??? = (bbrd)this.a.a(71);
     } while (??? == null);
-    ((bbqp)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-    bbby.a(System.currentTimeMillis());
+    ((bbrd)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
+    bbcm.a(System.currentTimeMillis());
   }
 }
 

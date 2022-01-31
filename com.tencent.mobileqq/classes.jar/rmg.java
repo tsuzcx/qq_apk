@@ -1,6 +1,6 @@
-class rmg
+public abstract interface rmg
 {
-  private static final rmc a = new rmc(null);
+  public abstract void a(rmh paramrmh);
 }
 
 

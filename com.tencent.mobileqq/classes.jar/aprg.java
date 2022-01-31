@@ -1,13 +1,25 @@
-public final class aprg
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
+
+class aprg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  aprg(aprb paramaprb) {}
   
-  public aprg()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = 1;
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((aprb.a(this.a).getVisibility() == 0) && (Math.abs(aprb.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aprb.a(this.a).setAlpha(f);
+      }
+      if ((aprb.a(this.a).getVisibility() == 0) && (Math.abs(aprb.a(this.a).getAlpha() - f) >= 0.02F)) {
+        aprb.a(this.a).setAlpha(f);
+      }
+    }
   }
 }
 

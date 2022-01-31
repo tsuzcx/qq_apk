@@ -1,18 +1,17 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import mqq.util.WeakReference;
 
 class agtb
   implements View.OnClickListener
 {
-  agtb(agsw paramagsw) {}
+  agtb(agta paramagta) {}
   
   public void onClick(View paramView)
   {
-    ((NewPhotoPreviewActivity)this.a.a.get()).finish();
-    bbbj.a((Activity)this.a.a.get(), true, false);
+    ((NewPhotoPreviewActivity)this.a.a.get()).a.toggle();
   }
 }
 

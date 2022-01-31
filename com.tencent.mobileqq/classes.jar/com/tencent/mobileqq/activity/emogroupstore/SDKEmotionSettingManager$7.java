@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afur;
+import afup;
 import android.app.Activity;
 import android.content.Intent;
 
 public class SDKEmotionSettingManager$7
   implements Runnable
 {
-  public SDKEmotionSettingManager$7(afur paramafur) {}
+  public SDKEmotionSettingManager$7(afup paramafup) {}
   
   public void run()
   {
-    if (afur.a(this.this$0).isFinishing()) {
+    if (afup.a(this.this$0).isFinishing()) {
       return;
     }
-    afur.a(this.this$0).sendBroadcast(new Intent("com.tencent.mobileqq.action.refresh.emotiom"));
+    afup.a(this.this$0).sendBroadcast(new Intent("com.tencent.mobileqq.action.refresh.emotiom"));
   }
 }
 

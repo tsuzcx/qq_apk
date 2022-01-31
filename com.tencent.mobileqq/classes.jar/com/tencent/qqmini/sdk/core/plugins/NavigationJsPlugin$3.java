@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import begz;
-import besl;
+import behq;
+import betc;
 
 class NavigationJsPlugin$3
   extends ResultReceiver
@@ -25,7 +25,7 @@ class NavigationJsPlugin$3
       }
       return;
     }
-    besl.d("NavigationJsPlugin", "navigateBackMiniApp failed");
+    betc.d("NavigationJsPlugin", "navigateBackMiniApp failed");
   }
 }
 

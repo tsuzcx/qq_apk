@@ -1,13 +1,11 @@
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acln
   implements View.OnClickListener
@@ -16,33 +14,20 @@ public class acln
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
-    }
-    TroopRequestActivity.c = l;
-    Bundle localBundle = TroopInfoActivity.a(this.a.jdField_a_of_type_JavaLangString, 4);
-    localBundle.putInt("t_s_f", 1001);
-    int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((i == 2) || (i == 10) || (i == 12))
+    paramView = (akgx)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      i = 1;
-      localQQAppInterface = this.a.app;
-      str = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-      if (i == 0) {
-        break label182;
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
       }
-    }
-    label182:
-    for (paramView = "0";; paramView = "1")
-    {
-      axqw.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-      bamn.a(this.a, localBundle, 2);
+      paramView.a(localArrayList);
       return;
-      i = 0;
-      break;
+    }
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
     }
   }
 }

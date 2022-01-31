@@ -1,28 +1,18 @@
-public class apeu
-  implements Cloneable
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+
+public final class apeu
+  implements Parcelable.Creator<ForwardFileInfo>
 {
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a = new byte[16];
-  public long b;
-  public short b;
-  public boolean b;
-  public long c = -1L;
-  
-  public apeu a()
+  public ForwardFileInfo a(Parcel paramParcel)
   {
-    try
-    {
-      apeu localapeu = (apeu)super.clone();
-      return localapeu;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
+    return new ForwardFileInfo(paramParcel, null);
+  }
+  
+  public ForwardFileInfo[] a(int paramInt)
+  {
+    return new ForwardFileInfo[paramInt];
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import abtu;
-import abtv;
+import abtq;
+import abtr;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,22 +13,22 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<abtv>> a;
+  private ArrayList<WeakReference<abtr>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abtu.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    abtq.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof abtv))
+    if ((localObject1 instanceof abtr))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((abtv)localObject1));
+      this.a.add(new WeakReference((abtr)localObject1));
     }
     if (this.a != null)
     {
@@ -38,9 +38,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (abtv)((WeakReference)localObject2).get();
+          localObject2 = (abtr)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((abtv)localObject2).onBackPressed();
+            ((abtr)localObject2).onBackPressed();
           }
         }
       }

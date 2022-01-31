@@ -1,25 +1,18 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import java.util.Iterator;
+import java.util.Set;
 
 class tva
-  implements View.OnClickListener
+  extends ssv
 {
-  tva(tuw paramtuw) {}
+  tva(tuz paramtuz) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramView = tuw.a(this.a).a();
-    if (!bbev.g(paramView))
-    {
-      bcpw.a(paramView, 1, 2131694607, 0).a();
-      return;
+    ved.a("Q.qqstory.playernew.StoryPlayerImpl", "QQStoryObserver, onUpdate, type=%d, isSuccess=%s, data=%s", Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject);
+    Iterator localIterator = tuz.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((ssv)localIterator.next()).onUpdate(paramInt, paramBoolean, paramObject);
     }
-    veg.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { tuw.a(this.a) });
-    tuw.a(this.a).setVisibility(0);
-    tuw.a(this.a).removeCallbacks(tuw.a(this.a));
-    tuw.a(this.a).postDelayed(tuw.a(this.a), 500L);
   }
 }
 

@@ -1,54 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.1;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.2;
-import com.tencent.mobileqq.app.QQHeadDownloadHandler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView;
 
 public class agib
-  extends ajxl
+  extends agig
 {
-  public agib(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public agib(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
-    }
-    AvatarPendantActivity.c(this.a);
-    if (!this.a.isResume()) {
-      AvatarPendantActivity.a(this.a, true);
-    }
-    String str2 = QQHeadDownloadHandler.a(paramSetting.url, paramSetting.bFaceFlags);
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2)) {
-      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
-    }
-    this.a.d = paramSetting.headImgTimestamp;
-    ThreadManager.getUIHandler().post(new AvatarPendantActivity.22.2(this, str1));
+    super(paramAvatarPendantActivity);
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AvatarPendantActivity.c(this.a);
-    if (!this.a.isResume()) {
-      AvatarPendantActivity.a(this.a, true);
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
     }
-    if (paramBoolean) {
-      ThreadManager.excute(new AvatarPendantActivity.22.1(this), 32, null, false);
-    }
+    this.a.b();
   }
 }
 

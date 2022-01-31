@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import android.content.Context;
-import bcpw;
+import bcql;
 
 final class MiniAppController$3
   implements Runnable
@@ -10,7 +10,7 @@ final class MiniAppController$3
   
   public void run()
   {
-    bcpw.a(this.val$context, "AppID为空", 0).a();
+    bcql.a(this.val$context, "AppID为空", 0).a();
   }
 }
 

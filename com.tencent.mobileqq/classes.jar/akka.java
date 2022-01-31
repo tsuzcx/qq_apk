@@ -1,311 +1,342 @@
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0xd7e.oidb_cmd0xd7e.ReqBody;
-import tencent.im.oidb.cmd0xd82.oidb_cmd0xd82.ReqBody;
-import tencent.im.oidb.cmd0xd82.oidb_cmd0xd82.RspBody;
-import tencent.im.oidb.cmd0xd83.oidb_cmd0xd83.BlockedInfo;
-import tencent.im.oidb.cmd0xd83.oidb_cmd0xd83.ReqBody;
-import tencent.im.oidb.cmd0xd83.oidb_cmd0xd83.RspBody;
-import tencent.im.oidb.cmd0xd86.oidb_cmd0xd86.ReqBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.manager.Manager;
 
 public class akka
-  extends ajtd
+  implements Manager
 {
-  private akkb a;
+  public static int a;
+  private ajto jdField_a_of_type_Ajto = new akkb(this);
+  private ajxj jdField_a_of_type_Ajxj = new akkc(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
+  public List<AddFriendBlockedInfo> a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  private boolean f;
   
   public akka(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
-    this.a = ((akkb)paramQQAppInterface.getManager(332));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.f = a(BaseApplicationImpl.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("e_add_friend_setting", 101));
+    e("add_friend_blocked_expand_entrance");
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajto);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static akka a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.handler", 1, "handleGetAddFriendBlockedRedPoint");
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
-      if (this.a != null) {
-        this.a.b(true);
-      }
-    }
-    while (this.a == null) {
-      return;
-    }
-    this.a.b(paramFromServiceMsg.isSuccess());
+    return (akka)paramQQAppInterface.getManager(332);
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public static void a(Activity paramActivity)
+  {
+    NewFriendVerifyBlockedListFragment.a(paramActivity);
+  }
+  
+  private void a(boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.handler", 1, "handleGetAddFriendBlockedRedPoint");
+      QLog.d("NewFriendVerification.manager", 2, "innerReportAddFriend() isSuccess:" + paramBoolean);
     }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
-      if (this.a != null) {
-        this.a.a(true, false, false, "");
+    if ((!paramBoolean) && (a(paramBundle.getInt("friend_setting"))))
+    {
+      String str = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      int j = paramBundle.getInt("sub_source_id");
+      paramBundle = paramBundle.getString("troop_uin");
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.manager", 2, "innerReportAddFriend  friendUin = " + str + " troopUin = " + paramBundle);
       }
+      a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), str, i, j, paramBundle);
     }
-    label45:
-    while (!paramFromServiceMsg.isSuccess()) {
-      return;
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return (paramInt == 3) || (paramInt == 4);
+  }
+  
+  private boolean a(String paramString, Object paramObject)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("add_friend_blocked_cfg_sp", 0).edit();
+    if (("add_friend_blocked_show_entrance".equals(paramString)) || ("add_friend_blocked_show_red_point".equals(paramString)) || ("add_friend_blocked_expand_entrance".equals(paramString))) {
+      localEditor.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
     }
     for (;;)
     {
-      int j;
-      long l;
-      try
-      {
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramFromServiceMsg = new oidb_cmd0xd82.RspBody();
-        paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        int i = paramFromServiceMsg.uint32_entrance.get();
-        j = paramFromServiceMsg.uint32_redpoint.get();
-        l = paramFromServiceMsg.uint64_blocked_uin.get();
-        if (this.a == null) {
-          break label45;
-        }
-        paramToServiceMsg = this.a;
-        if (i != 1) {
-          break label183;
-        }
-        bool1 = true;
+      return localEditor.commit();
+      if ("add_friend_blocked_recent_uin".equals(paramString)) {
+        localEditor.putString(paramString, (String)paramObject);
+      } else if ("add_friend_blocked_friend_setting".equals(paramString)) {
+        localEditor.putInt(paramString, ((Integer)paramObject).intValue());
       }
-      catch (Exception paramToServiceMsg) {}
-      paramToServiceMsg.a(true, bool1, bool2, String.valueOf(l));
-      return;
-      if (this.a == null) {
-        break;
-      }
-      this.a.a(true, false, false, "");
-      return;
-      label183:
-      boolean bool1 = false;
-      while (j != 1)
-      {
-        bool2 = false;
-        break;
-      }
-      boolean bool2 = true;
     }
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void d(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.handler", 1, "handleGetAddFriendBlockedList");
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
-    {
-      if (this.a != null)
-      {
-        this.a.a(false, false, "");
-        this.a.a(false, null, "");
-      }
-      return;
-    }
-    Object localObject;
-    for (;;)
-    {
-      try
-      {
-        if (!paramFromServiceMsg.isSuccess()) {
-          break;
-        }
-        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = new oidb_cmd0xd83.RspBody();
-        paramToServiceMsg.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramObject = paramToServiceMsg.rpt_block_list.get();
-        paramFromServiceMsg = new ArrayList();
-        paramObject = paramObject.iterator();
-        if (!paramObject.hasNext()) {
-          break label369;
-        }
-        localObject = (oidb_cmd0xd83.BlockedInfo)paramObject.next();
-        long l = ((oidb_cmd0xd83.BlockedInfo)localObject).uint64_uin.get();
-        AddFriendBlockedInfo localAddFriendBlockedInfo = new AddFriendBlockedInfo();
-        localAddFriendBlockedInfo.jdField_a_of_type_JavaLangString = String.valueOf(l);
-        localAddFriendBlockedInfo.jdField_b_of_type_JavaLangString = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_nick.get().toStringUtf8();
-        localAddFriendBlockedInfo.jdField_a_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_age.get();
-        localAddFriendBlockedInfo.jdField_b_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_sex.get();
-        if (((oidb_cmd0xd83.BlockedInfo)localObject).uint32_has_read.get() != 1) {
-          break label363;
-        }
-        bool = true;
-        localAddFriendBlockedInfo.jdField_a_of_type_Boolean = bool;
-        localAddFriendBlockedInfo.jdField_c_of_type_JavaLangString = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_source.get().toStringUtf8();
-        localAddFriendBlockedInfo.jdField_a_of_type_Long = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_time.get();
-        localAddFriendBlockedInfo.jdField_c_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_comm_frd.get();
-        paramFromServiceMsg.add(localAddFriendBlockedInfo);
-        if (!QLog.isDebugVersion()) {
-          continue;
-        }
-        QLog.d("NewFriendVerification.handler", 2, " handleGetAddFriendBlockedList()--> blockedInfo =  " + localAddFriendBlockedInfo.toString());
-        continue;
-        if (this.a == null) {
-          break;
-        }
-      }
-      catch (Exception paramToServiceMsg) {}
-      this.a.a(false, false, "");
-      this.a.a(false, null, "");
-      return;
-      label363:
-      bool = false;
-    }
-    label369:
-    paramObject = paramToServiceMsg.bytes_cookies.get().toStringUtf8();
-    int i = paramToServiceMsg.uint32_entrance.get();
-    if (paramFromServiceMsg.size() > 0)
-    {
-      paramToServiceMsg = ((AddFriendBlockedInfo)paramFromServiceMsg.get(0)).jdField_a_of_type_JavaLangString;
-      label412:
-      if (this.a == null) {
-        break label458;
-      }
-      localObject = this.a;
-      if (i != 1) {
-        break label460;
-      }
-    }
-    label458:
-    label460:
-    for (boolean bool = true;; bool = false)
-    {
-      ((akkb)localObject).a(true, bool, paramToServiceMsg);
-      this.a.a(true, paramFromServiceMsg, paramObject);
-      return;
-      paramToServiceMsg = "";
-      break label412;
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void e(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.handler", 1, "handleReportAddFriendBlocked");
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
-      if (this.a != null) {
-        this.a.a(false);
-      }
-    }
-    while (this.a == null) {
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess());
-  }
-  
-  protected void a(String paramString)
-  {
-    try
-    {
-      oidb_cmd0xd7e.ReqBody localReqBody = new oidb_cmd0xd7e.ReqBody();
-      localReqBody.uin.set(Long.parseLong(paramString));
-      sendPbReq(makeOIDBPkg("OidbSvc.oidb_0xd7e", 3454, 0, localReqBody.toByteArray()));
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (this.a == null) {}
-      this.a.b(false);
-    }
-  }
-  
-  protected void a(String paramString1, int paramInt, String paramString2)
-  {
-    try
-    {
-      oidb_cmd0xd83.ReqBody localReqBody = new oidb_cmd0xd83.ReqBody();
-      localReqBody.uint64_uin.set(Long.parseLong(paramString1));
-      localReqBody.uint32_req_num.set(paramInt);
-      localReqBody.bytes_cookies.set(ByteStringMicro.copyFromUtf8(paramString2));
-      sendPbReq(makeOIDBPkg("OidbSvc.oidb_0xd83", 3459, 0, localReqBody.toByteArray()));
-      return;
-    }
-    catch (NumberFormatException paramString1)
-    {
-      while (this.a == null) {}
-      this.a.a(false, false, "");
-      this.a.a(false, null, "");
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
-  {
-    try
-    {
-      oidb_cmd0xd86.ReqBody localReqBody = new oidb_cmd0xd86.ReqBody();
-      localReqBody.uin.set(Long.parseLong(paramString1));
-      localReqBody.blocked_uin.set(Long.parseLong(paramString2));
-      localReqBody.source_id.set(paramInt1);
-      localReqBody.sub_sourceid.set(paramInt2);
-      localReqBody.group_uin.set(Long.parseLong(paramString3));
-      sendPbReq(makeOIDBPkg("OidbSvc.oidb_0xd86", 3462, 0, localReqBody.toByteArray()));
-      return;
-    }
-    catch (NumberFormatException paramString1)
-    {
-      while (this.a == null) {}
-      this.a.a(false);
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    try
-    {
-      oidb_cmd0xd82.ReqBody localReqBody = new oidb_cmd0xd82.ReqBody();
-      localReqBody.uin.set(Long.parseLong(paramString));
-      sendPbReq(makeOIDBPkg("OidbSvc.oidb_0xd82", 3458, 0, localReqBody.toByteArray()));
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (this.a == null) {}
-      this.a.a(false, false, false, "");
-    }
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return akke.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("OidbSvc.oidb_0xd86".equals(paramFromServiceMsg.getServiceCmd())) {
-      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("add_friend_blocked_cfg_sp", 4);
+    if ("add_friend_blocked_expand_entrance".equals(paramString)) {
+      this.c = localSharedPreferences.getBoolean(paramString, true);
     }
     do
     {
       return;
-      if ("OidbSvc.oidb_0xd83".equals(paramFromServiceMsg.getServiceCmd()))
+      if ("add_friend_blocked_show_entrance".equals(paramString))
       {
-        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.d = localSharedPreferences.getBoolean(paramString, false);
         return;
       }
-      if ("OidbSvc.oidb_0xd82".equals(paramFromServiceMsg.getServiceCmd()))
+      if ("add_friend_blocked_show_red_point".equals(paramString))
       {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.e = localSharedPreferences.getBoolean(paramString, false);
         return;
       }
-    } while (!"OidbSvc.oidb_0xd7e".equals(paramFromServiceMsg.getServiceCmd()));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if ("add_friend_blocked_recent_uin".equals(paramString))
+      {
+        this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramString, "");
+        return;
+      }
+    } while (!"add_friend_blocked_friend_setting".equals(paramString));
+    this.f = a(localSharedPreferences.getInt(paramString, 101));
+  }
+  
+  public int a()
+  {
+    int j = 0;
+    int i;
+    if ((this.d) && (this.c)) {
+      i = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.manager", 2, "getEntranceType, type=" + i + ", entrance=" + this.d + ", isEntranceExpand=" + this.c);
+      }
+      return i;
+      i = j;
+      if (this.d)
+      {
+        i = j;
+        if (!this.c) {
+          i = 3;
+        }
+      }
+    }
+  }
+  
+  public akjz a()
+  {
+    return (akjz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(158);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "leaveNewFriend()");
+    }
+    this.e = false;
+    this.c = false;
+    a("add_friend_blocked_expand_entrance", Boolean.valueOf(false));
+    if (jdField_a_of_type_Int > 0) {
+      axqy.b(null, "dc00898", "", "", "0X800A3A3", "0X800A3A3", 0, jdField_a_of_type_Int, 0, "", "", "", "");
+    }
+    jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.f)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.manager", 2, "start -> getAddFriendBlockedList()");
+      }
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      a().a(paramString, 500, "");
+    }
+  }
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "start --> reportAddFriendBlocked() friendUin :" + paramString1 + " friendSetting=" + paramInt1 + " troopUin = " + paramString2);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("friend_setting", paramInt1);
+    localBundle.putString("uin", paramString1);
+    localBundle.putInt("source_id", paramInt2);
+    localBundle.putInt("sub_source_id", paramInt3);
+    localBundle.putString("troop_uin", paramString2);
+    a(false, localBundle);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, " onReportAddFriendBlocked()-->  success=  " + paramBoolean);
+    }
+    this.b = paramBoolean;
+    a().notifyUI(2, paramBoolean, null);
+  }
+  
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
+  {
+    int i;
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append(" onGetAddFriendBlockedList()--> blockedInfos =  ");
+        if (paramList == null) {
+          break label191;
+        }
+        i = paramList.size();
+        QLog.d("NewFriendVerification.manager", 2, i);
+      }
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NewFriendVerification.manager", 2, " onGetAddFriendBlockedList()--> isRead =  " + ((AddFriendBlockedInfo)paramList.get(0)).jdField_a_of_type_Boolean);
+        }
+        if (((AddFriendBlockedInfo)paramList.get(0)).jdField_a_of_type_Boolean) {
+          break label197;
+        }
+      }
+    }
+    label191:
+    label197:
+    for (boolean bool = true;; bool = false)
+    {
+      this.c = bool;
+      a("add_friend_blocked_expand_entrance", Boolean.valueOf(this.c));
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      a().notifyUI(4, paramBoolean, new Object[] { paramList, paramString });
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (paramBoolean1)
+    {
+      c(paramBoolean2);
+      d(paramString);
+    }
+    a().notifyUI(5, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  {
+    c(paramBoolean2);
+    d(paramBoolean3);
+    d(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, " onGetAddFriendBlockedRedPoint() --> isShowAddFriendBlockedEntrance =  " + paramBoolean2 + " isShowRedPoint =" + paramBoolean3 + " blockedUin =" + paramString);
+    }
+    a().notifyUI(3, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), paramString });
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "isShowRedPoint, isShowRedPoint:" + this.e);
+    }
+    return this.e;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((AddFriendBlockedInfo)localIterator.next()).jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.f)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.manager", 2, "start -> getAddFriendBlockedRedPoint() ");
+      }
+      a().b(paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, " onClearAddFriendBlockedList()-->  success=  " + paramBoolean);
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a().notifyUI(1, paramBoolean, null);
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, " start-> clearAddFriendBlockedList() uin = " + paramString);
+    }
+    a().a(paramString);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajto);
+      this.jdField_a_of_type_Ajto = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
+      this.jdField_a_of_type_Ajxj = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    }
   }
 }
 

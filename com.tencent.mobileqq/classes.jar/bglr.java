@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
 
 final class bglr
-  implements DialogInterface.OnClickListener
 {
-  bglr(DialogInterface.OnClickListener paramOnClickListener) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  bglo jdField_a_of_type_Bglo;
+  bglq jdField_a_of_type_Bglq;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bglr(Context paramContext, bglq parambglq, bglo parambglo)
   {
-    this.a.onClick(paramDialogInterface, paramInt);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bglq = parambglq;
+    this.jdField_a_of_type_Bglo = parambglo;
   }
 }
 

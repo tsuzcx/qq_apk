@@ -1,14 +1,15 @@
-public abstract interface xpm
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class xpm
+  implements View.OnClickListener
 {
-  public abstract int a();
+  xpm(xpk paramxpk) {}
   
-  public abstract xpy a();
-  
-  public abstract xpy a(int paramInt);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract int b();
+  public void onClick(View paramView)
+  {
+    this.a.e();
+  }
 }
 
 

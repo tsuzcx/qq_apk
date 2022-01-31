@@ -1,28 +1,40 @@
-import com.tencent.image.URLDrawable;
-import java.net.URL;
+import android.content.Context;
+import android.view.View;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import java.lang.ref.WeakReference;
 
-class ytt
-  implements zbc
+public class ytt
 {
-  ytt(yts paramyts) {}
-  
-  public void a(URLDrawable paramURLDrawable)
+  public static int a(int paramInt1, int paramInt2)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      yxs.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
-      return;
+    if (paramInt1 == 0) {
+      return Double.valueOf(1.0D * paramInt2 / 1026.0D * 249.0D).intValue();
     }
+    yxp.d("GdtBannerViewBuilder", "getHeight error");
+    return -2147483648;
   }
   
-  public void b(URLDrawable paramURLDrawable)
+  public static yts a(ytr paramytr)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    if ((paramytr == null) || (!paramytr.a()) || (!paramytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a()))
     {
-      yxs.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
-      return;
+      yxp.d("GdtBannerViewBuilder", "build error");
+      return null;
+    }
+    if (paramytr.jdField_a_of_type_Int == 0) {}
+    for (ytw localytw = new ytw((Context)paramytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);; localytw = null)
+    {
+      if ((localytw != null) && (localytw.a() != null) && (yts.a != null))
+      {
+        localytw.a().setOnTouchListener(new ytu(localytw));
+        localytw.a().setOnClickListener(new ytv(localytw, paramytr));
+      }
+      if (localytw != null) {
+        localytw.a(paramytr.b, paramytr.c);
+      }
+      AdReporterForAnalysis.reportForBanner((Context)paramytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_JavaLangRefWeakReference.get(), paramytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+      return localytw;
     }
   }
 }

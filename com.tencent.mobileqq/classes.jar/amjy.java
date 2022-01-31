@@ -1,24 +1,42 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.graphics.Point;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
 import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
 public class amjy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animator.AnimatorListener
 {
-  public amjy(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout1, ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout2, Point paramPoint, LinearLayout.LayoutParams paramLayoutParams, int paramInt) {}
+  public amjy(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
-    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
-    int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
-    if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
-      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
+    if (!this.a.a())
+    {
+      paramAnimator.leftMargin = baxn.a(this.a.getContext(), 14.5F);
+      paramAnimator.rightMargin = 0;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = baxn.a(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    paramAnimator = this.a;
+    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
+    for (int i = 0;; i = 1)
+    {
+      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
+      return;
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

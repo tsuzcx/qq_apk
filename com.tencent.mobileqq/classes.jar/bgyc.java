@@ -1,30 +1,27 @@
-import common.config.service.QzoneConfig;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.LeakHelper.2.1;
 
-public class bgyc
+public final class bgyc
+  implements View.OnClickListener
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onClick(View paramView)
   {
-    return QzoneConfig.getInstance().getConfig("H5Url", "CoverStore", "https://h5.qzone.qq.com/bgcover/index?_wv=2098179&qua={qua}&_proxy=1").replace("{uin}", paramString3).replace("{hostUin}", paramString4).replace("{qua}", bgxr.a()).replace("{pb}", "").replace("{clicktime}", String.valueOf(System.currentTimeMillis())).replace("{from}", paramString1).replace("{page}", paramString2);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return QzoneConfig.getInstance().getConfig("H5Url", "CoverPreview", "https://h5.qzone.qq.com/bgstore/detail/{coverid}?_wv=2098179&from={from}&page={page}&qua={qua}&router=detail&coverid={coverid}&uin={uin}&hostUin={hostUin}&_proxy=1").replace("{qua}", bgxr.a()).replace("{pb}", "").replace("{from}", paramString1).replace("{page}", paramString2).replace("{coverid}", paramString3).replace("{uin}", paramString4).replace("{hostUin}", paramString5);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    paramString1 = QzoneConfig.getInstance().getConfig("H5Url", "PhotoWallUrl", "https://h5.qzone.qq.com/bgstore/photoWall?_wv=2098179&uin={uin}&hostUin={hostUin}&from={from}&page=1&qua={qua}&router=photoWall&_proxy=1").replace("{uin}", paramString1).replace("{hostUin}", paramString2).replace("{qua}", bgxr.a());
-    paramString2 = new StringBuilder().append("");
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0) {
-      return paramString1.replace("{isPhotoWall}", i).replace("{clicktime}", String.valueOf(System.currentTimeMillis())).replace("{from}", paramString3);
+    if (this.a != null) {
+      this.a.dismiss();
     }
-  }
-  
-  public static String b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return QzoneConfig.getInstance().getConfig("H5Url", "MusicCoverPreview", "https://h5.qzone.qq.com/musicCover/preview?id={coverid}&_wv=2098179&from={from}&page={page}&qua={qua}&router=detail&coverid={coverid}&uin={uin}&hostUin={hostUin}&_proxy=1").replace("{qua}", bgxr.a()).replace("{pb}", "").replace("{from}", paramString1).replace("{page}", paramString2).replace("{coverid}", paramString3).replace("{uin}", paramString4).replace("{hostUin}", paramString5);
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706007) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("qzone-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new LeakHelper.2.1(this));
+    }
   }
 }
 

@@ -6,18 +6,16 @@ import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 class adlz
   implements ArkAppCacheMgr.OnGetAppIcon
 {
-  adlz(adly paramadly1, adly paramadly2) {}
+  adlz(adly paramadly) {}
   
   public void callback(String paramString, Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

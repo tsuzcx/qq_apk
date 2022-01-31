@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
 
-public class arrr
-  implements DialogInterface.OnDismissListener
+public final class arrr
+  implements Parcelable.Creator<MusicInfo>
 {
-  public arrr(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, arsq paramarsq) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public MusicInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
-    this.jdField_a_of_type_Arsq.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-    }
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, false);
+    return new MusicInfo(paramParcel, null);
+  }
+  
+  public MusicInfo[] a(int paramInt)
+  {
+    return new MusicInfo[paramInt];
   }
 }
 

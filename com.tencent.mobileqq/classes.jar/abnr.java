@@ -1,23 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
-class abnr
-  implements DialogInterface.OnClickListener
+public class abnr
+  extends tew
 {
-  abnr(abnq paramabnq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abnr(NearbyActivity paramNearbyActivity, String paramString)
   {
-    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth onClick exit");
-    this.a.a.finish();
-    if (bbev.d(BaseApplication.getContext())) {
-      aqhu.a(this.a.a.a);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label103;
+      }
     }
-    new axra(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_clk").e(this.a.a.a.getCurrentAccountUin()).a();
+    label103:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      if ((!this.a.isFinishing()) && (!this.a.c))
+      {
+        this.a.c = false;
+        this.a.a.a(1, paramSosoLbsInfo);
+      }
+      return;
+    }
   }
 }
 

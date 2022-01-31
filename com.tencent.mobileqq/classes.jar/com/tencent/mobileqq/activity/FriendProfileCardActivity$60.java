@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import atxb;
-import auuw;
-import axqw;
-import bazo;
+import atxd;
+import auuy;
+import axqy;
+import bbac;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Locale;
 
@@ -14,12 +14,12 @@ class FriendProfileCardActivity$60
   
   public void run()
   {
-    atxb localatxb;
+    atxd localatxd;
     Object localObject1;
     if (this.this$0.a.a.a == 0)
     {
-      localatxb = (atxb)this.this$0.app.getManager(160);
-      i = localatxb.a();
+      localatxd = (atxd)this.this$0.app.getManager(160);
+      i = localatxd.a();
       localObject1 = null;
     }
     Object localObject2;
@@ -29,11 +29,11 @@ class FriendProfileCardActivity$60
       localObject2 = null;
       if (localObject1 != null)
       {
-        axqw.b(this.this$0.app, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
-        axqw.b(this.this$0.app, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+        axqy.b(this.this$0.app, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        axqy.b(this.this$0.app, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
       }
-      localatxb.a(true);
-      if (bazo.b())
+      localatxd.a(true);
+      if (bbac.b())
       {
         localObject2 = Locale.getDefault().getCountry();
         localObject1 = localObject2;
@@ -50,7 +50,7 @@ class FriendProfileCardActivity$60
     label235:
     for (int i = 1;; i = 2)
     {
-      axqw.b((QQAppInterface)localObject2, "dc00898", "", "", "0X8008CA2", "0X8008CA2", i, 0, "", "", (String)localObject1, "");
+      axqy.b((QQAppInterface)localObject2, "dc00898", "", "", "0X8008CA2", "0X8008CA2", i, 0, "", "", (String)localObject1, "");
       return;
       localObject1 = "0X8007394";
       localObject2 = "0X8007393";

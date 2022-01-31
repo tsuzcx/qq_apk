@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import io.flutter.plugin.common.MethodChannel.Result;
 
@@ -13,9 +13,9 @@ class SCFChannel$1$1$1
   {
     this.a.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(null);
     if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (int i = 2131699488;; i = 2131699487)
+    for (int i = 2131699499;; i = 2131699498)
     {
-      bcpw.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
+      bcql.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
       return;
     }
   }

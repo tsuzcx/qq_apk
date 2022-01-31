@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-class acnl
-  implements DialogInterface.OnClickListener
+public class acnl
+  implements View.OnClickListener
 {
-  acnl(acnj paramacnj, bbgg parambbgg) {}
+  public acnl(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    axqw.b(this.jdField_a_of_type_Acnj.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Acnj.a.a, "", "", "");
-    this.jdField_a_of_type_Bbgg.cancel();
+    this.a.a.cancel();
   }
 }
 

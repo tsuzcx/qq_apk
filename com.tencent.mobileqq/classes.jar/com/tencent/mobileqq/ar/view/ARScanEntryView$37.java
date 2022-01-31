@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajyc;
-import allc;
-import almz;
-import bcpw;
+import ajya;
+import allb;
+import almy;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,18 +14,18 @@ class ARScanEntryView$37
   
   public void run()
   {
-    allc localallc = this.this$0.a.a();
-    boolean bool1 = localallc.c();
-    boolean bool2 = localallc.d();
+    allb localallb = this.this$0.a.a();
+    boolean bool1 = localallb.c();
+    boolean bool2 = localallb.d();
     QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck, AR组件加载超, mIsDownloadTimeout[" + ARScanEntryView.c(this.this$0) + "],isBaseSoReady:=" + bool1 + ",isFaceSoReady:=" + bool2);
     ARScanEntryView.c(this.this$0, true);
     if (!bool1)
     {
-      this.this$0.d_(ajyc.a(2131700741));
+      this.this$0.d_(ajya.a(2131700752));
       return;
     }
     this.this$0.j();
-    bcpw.a(BaseApplicationImpl.getContext(), 2131690173, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), 2131690173, 0).a();
   }
 }
 

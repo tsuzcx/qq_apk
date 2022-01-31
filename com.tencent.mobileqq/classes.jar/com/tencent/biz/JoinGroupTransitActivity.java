@@ -3,12 +3,12 @@ package com.tencent.biz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbds;
-import bbej;
+import bbeg;
+import bbex;
 import com.tencent.mobileqq.app.BaseActivity;
-import mvy;
-import mwc;
-import mwd;
+import mvv;
+import mvz;
+import mwa;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
@@ -16,8 +16,8 @@ public class JoinGroupTransitActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private mvy jdField_a_of_type_Mvy;
-  private mwd jdField_a_of_type_Mwd;
+  private mvv jdField_a_of_type_Mvv;
+  private mwa jdField_a_of_type_Mwa;
   private String b = "";
   
   private void a()
@@ -28,11 +28,11 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Mwd = new mwd(this);
-      bbds localbbds = bbej.a(this.app, this, this.jdField_a_of_type_JavaLangString);
-      this.b = localbbds.b("activity_titile_name");
-      this.jdField_a_of_type_Long = Long.valueOf(localbbds.b("group_code")).longValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(localbbds.b("subsource_id")).intValue();
+      this.jdField_a_of_type_Mwa = new mwa(this);
+      bbeg localbbeg = bbex.a(this.app, this, this.jdField_a_of_type_JavaLangString);
+      this.b = localbbeg.b("activity_titile_name");
+      this.jdField_a_of_type_Long = Long.valueOf(localbbeg.b("group_code")).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localbbeg.b("subsource_id")).intValue();
       return;
     }
     catch (Exception localException)
@@ -46,16 +46,16 @@ public class JoinGroupTransitActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_Mvy = new mvy(this, this.app, this.jdField_a_of_type_Int, this.b, new mwc(this));
-    this.jdField_a_of_type_Mvy.a();
-    this.jdField_a_of_type_Mwd.sendEmptyMessage(0);
+    this.jdField_a_of_type_Mvv = new mvv(this, this.app, this.jdField_a_of_type_Int, this.b, new mvz(this));
+    this.jdField_a_of_type_Mvv.a();
+    this.jdField_a_of_type_Mwa.sendEmptyMessage(0);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Mvy.b();
+    this.jdField_a_of_type_Mvv.b();
   }
 }
 

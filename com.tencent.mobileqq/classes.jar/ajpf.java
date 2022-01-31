@@ -1,18 +1,12 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import android.view.View.OnClickListener;
 
-public class ajpf
-  implements bcsv
+class ajpf
+  implements View.OnClickListener
 {
-  public ajpf(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
+  ajpf(ajpe paramajpe) {}
   
-  public void a(View paramView, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

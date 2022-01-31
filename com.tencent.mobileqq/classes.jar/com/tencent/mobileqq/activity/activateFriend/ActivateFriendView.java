@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
+import acrg;
+import acri;
+import acrj;
 import acrk;
-import acrm;
-import acrn;
-import acro;
-import ajxl;
-import akjw;
-import akjz;
+import ajxj;
+import akjv;
+import akjy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,11 +15,11 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import baxk;
-import baxl;
-import bbcl;
-import bbdr;
-import bbkx;
+import baxy;
+import baxz;
+import bbcz;
+import bbef;
+import bbll;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ActivateFriendItem;
 import java.util.ArrayList;
@@ -28,19 +28,19 @@ import java.util.Iterator;
 
 public class ActivateFriendView
   extends LinearLayout
-  implements baxl
+  implements baxz
 {
-  private static final int jdField_a_of_type_Int = bbkx.b(85.0F);
+  private static final int jdField_a_of_type_Int = bbll.b(85.0F);
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static final int jdField_b_of_type_Int = bbkx.b(70.0F);
-  private static final int jdField_c_of_type_Int = bbkx.b(70.0F);
-  private static final int d = bbkx.b(52.0F);
-  private acrk jdField_a_of_type_Acrk;
-  ajxl jdField_a_of_type_Ajxl = new acrn(this);
-  public akjw a;
-  akjz jdField_a_of_type_Akjz = new acro(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acrm(this);
-  private baxk jdField_a_of_type_Baxk;
+  private static final int jdField_b_of_type_Int = bbll.b(70.0F);
+  private static final int jdField_c_of_type_Int = bbll.b(70.0F);
+  private static final int d = bbll.b(52.0F);
+  private acrg jdField_a_of_type_Acrg;
+  ajxj jdField_a_of_type_Ajxj = new acrj(this);
+  public akjv a;
+  akjy jdField_a_of_type_Akjy = new acrk(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acri(this);
+  private baxy jdField_a_of_type_Baxy;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ArrayList<ActivateFriendItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
@@ -57,12 +57,12 @@ public class ActivateFriendView
   
   private Bitmap a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_Baxk.a(1, paramString);
+    Bitmap localBitmap = this.jdField_a_of_type_Baxy.a(1, paramString);
     if (localBitmap != null) {
       return localBitmap;
     }
-    if (!this.jdField_a_of_type_Baxk.a()) {
-      this.jdField_a_of_type_Baxk.a(paramString, 1, true, (byte)0);
+    if (!this.jdField_a_of_type_Baxy.a()) {
+      this.jdField_a_of_type_Baxy.a(paramString, 1, true, (byte)0);
     }
     return jdField_a_of_type_AndroidGraphicsBitmap;
   }
@@ -76,7 +76,7 @@ public class ActivateFriendView
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_Baxk.a())
+    if (!this.jdField_a_of_type_Baxy.a())
     {
       if (paramBitmap != null) {
         this.jdField_a_of_type_JavaUtilHashtable.put(paramString, paramBitmap);
@@ -108,7 +108,7 @@ public class ActivateFriendView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      jdField_a_of_type_AndroidGraphicsBitmap = bbdr.a();
+      jdField_a_of_type_AndroidGraphicsBitmap = bbef.a();
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -117,14 +117,14 @@ public class ActivateFriendView
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (this.jdField_a_of_type_Baxk == null)
+    if (this.jdField_a_of_type_Baxy == null)
     {
-      this.jdField_a_of_type_Baxk = new baxk(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Baxk.a(this);
+      this.jdField_a_of_type_Baxy = new baxy(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Baxy.a(this);
     }
-    this.jdField_a_of_type_Akjw = ((akjw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Akjz);
+    this.jdField_a_of_type_Akjv = ((akjv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(85));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Akjy);
     this.e = 0;
     int k = this.jdField_a_of_type_JavaUtilArrayList.size();
     int i;
@@ -151,7 +151,7 @@ public class ActivateFriendView
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          if ((!getResources().getString(2131689585).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_Akjw.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
+          if ((!getResources().getString(2131689585).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).birthdayDesc)) && (!this.jdField_a_of_type_Akjv.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type))) {
             break label472;
           }
           paramQQAppInterface.setChecked(false);
@@ -173,10 +173,10 @@ public class ActivateFriendView
       break;
       i = d;
       break;
-      paramQQAppInterface.setNickName(bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
+      paramQQAppInterface.setNickName(bbcz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList, true));
       break label289;
       label472:
-      if ((this.jdField_a_of_type_Akjw.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_Akjw.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
+      if ((this.jdField_a_of_type_Akjv.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)) || (this.jdField_a_of_type_Akjv.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(j)).type)))
       {
         paramQQAppInterface.setChecked(false);
         paramQQAppInterface.setBirthday(getResources().getString(2131689588));
@@ -188,14 +188,14 @@ public class ActivateFriendView
       }
     }
     label592:
-    if (this.jdField_a_of_type_Acrk != null) {
-      this.jdField_a_of_type_Acrk.a(this.e);
+    if (this.jdField_a_of_type_Acrg != null) {
+      this.jdField_a_of_type_Acrg.a(this.e);
     }
   }
   
-  public void setGridCallBack(acrk paramacrk)
+  public void setGridCallBack(acrg paramacrg)
   {
-    this.jdField_a_of_type_Acrk = paramacrk;
+    this.jdField_a_of_type_Acrg = paramacrg;
   }
   
   public void setSkinable(boolean paramBoolean)

@@ -1,25 +1,17 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aosf
-  implements View.OnLongClickListener
+final class aosf
+  implements aptw
 {
-  public aosf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aosf(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    bblr localbblr = new bblr();
-    localbblr.a(2131366634, paramView.getContext().getString(2131692752));
-    localbblr.a(2131364979, paramView.getContext().getString(2131691507));
-    this.a.a = bbcc.a(paramView, localbblr, new aosg(this, paramView), new aosi(this, paramView));
-    return true;
+    apug.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
+  
+  public void b() {}
 }
 
 

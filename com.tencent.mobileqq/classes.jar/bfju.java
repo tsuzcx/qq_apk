@@ -1,9 +1,19 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Pair;
+import java.util.List;
 
-public abstract interface bfju
+class bfju
+  implements bfjk
 {
-  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  bfju(bfjt parambfjt) {}
+  
+  public void a(List<Pair<Integer, Byte>> paramList)
+  {
+    Message localMessage = bfjt.a(this.a).obtainMessage(2);
+    localMessage.obj = paramList;
+    bfjt.a(this.a).sendMessage(localMessage);
+  }
 }
 
 

@@ -1,22 +1,27 @@
-import android.os.Build.VERSION;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.widget.AbsListView;
 
 public class agid
-  extends agii
+  implements Animator.AnimatorListener
 {
-  public agid(AvatarPendantActivity paramAvatarPendantActivity)
+  public agid(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramAvatarPendantActivity);
+    this.a.e = AvatarPendantActivity.c;
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
-      return;
-    }
-    this.a.b();
+    this.a.e = AvatarPendantActivity.a;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.d;
   }
 }
 

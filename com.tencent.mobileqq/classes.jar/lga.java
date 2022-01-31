@@ -1,951 +1,1185 @@
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.RemoteException;
-import android.os.ResultReceiver;
-import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
+import com.tencent.av.qav_gvideo_sdk_transfer.gVideoDownChannelControl;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class lga
+  extends lgd
 {
-  int jdField_a_of_type_Int = -1;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new lgc(this);
-  private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private QQLruCache<String, String> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-  lwu jdField_a_of_type_Lwu = new lgb(this);
-  public lww a;
-  boolean jdField_a_of_type_Boolean = false;
+  public static int L = -1;
+  public static int Y;
+  public int A;
+  public boolean A;
+  public int B;
+  public boolean B;
+  public int C = 0;
+  public boolean C;
+  public int D = -1;
+  public boolean D;
+  public int E = 0;
+  public boolean E;
+  public int F;
+  public boolean F;
+  public int G = 2;
+  public boolean G;
+  public int H = 0;
+  public boolean H;
+  public int I;
+  public boolean I;
+  @Deprecated
+  public int J = -1;
+  public boolean J;
+  public int K = 7;
+  public boolean K;
+  public boolean L;
+  public int M = 1;
+  public boolean M;
+  public int N;
+  public boolean N;
+  public int O;
+  public boolean O;
+  public int P = -1;
+  public boolean P;
+  public int Q;
+  public boolean Q;
+  public int R;
+  public boolean R;
+  public int S;
+  public boolean S;
+  public int T = 0;
+  public boolean T;
+  public int U;
+  public boolean U;
+  public int V;
+  @Deprecated
+  public boolean V;
+  public int W;
+  @Deprecated
+  public boolean W;
+  public int X;
+  @Deprecated
+  public boolean X;
+  @Deprecated
+  public boolean Y;
+  public int Z;
+  @Deprecated
+  public boolean Z;
+  public long a;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public final String a;
+  private WeakReference<mlh> jdField_a_of_type_JavaLangRefWeakReference;
+  public ArrayList<Long> a;
+  public BitSet a;
+  public HashSet<Integer> a;
+  lfm jdField_a_of_type_Lfm = new lfm();
+  private lfz jdField_a_of_type_Lfz;
+  public lgb a;
+  public lgc a;
+  public byte[] a;
+  public long[] a;
+  public String[] a;
+  public boolean aA;
+  public boolean aB;
+  public boolean aC;
+  public int aa;
+  public boolean aa;
+  public int ab = -1;
+  public boolean ab;
+  public volatile boolean ac;
+  private int ad = 0;
+  public boolean ad;
+  public boolean ae;
+  public boolean af = true;
+  public boolean ag;
+  public boolean ah;
+  public boolean ai;
+  public boolean aj;
+  public boolean ak;
+  public boolean al;
+  public boolean am;
+  public boolean an;
+  public boolean ao;
+  public boolean ap;
+  public boolean aq;
+  public boolean ar;
+  public boolean as;
+  public boolean at;
+  public boolean au = true;
+  public boolean av;
+  public boolean aw;
+  public boolean ax;
+  public boolean ay = true;
+  public boolean az;
+  public long b;
+  public String b;
+  public ArrayList<String> b = new ArrayList();
   public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public volatile ArrayList<lon> c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public ArrayList<lon> d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public ArrayList<lon> e;
+  public boolean e;
+  public int f;
+  public long f;
+  public String f;
+  public ArrayList<AVPhoneUserInfo> f;
+  public boolean f;
+  public int g;
+  public long g;
+  public String g;
+  public boolean g;
+  public int h;
+  public long h;
+  public String h;
+  public boolean h;
+  public int i;
+  public long i;
+  public String i;
+  public boolean i;
+  public int j;
+  public long j;
+  public String j;
+  public boolean j;
+  public int k;
+  public long k;
+  public String k;
+  public boolean k;
+  public int l;
+  public String l;
+  public boolean l;
+  public int m;
+  public String m;
+  public boolean m;
+  public int n;
+  public String n;
+  public boolean n;
+  public int o;
+  public String o;
+  public boolean o = true;
+  public int p;
+  public String p;
+  public boolean p;
+  public int q;
+  public String q;
+  public boolean q;
+  public int r;
+  public String r;
+  public boolean r;
+  public int s;
+  public String s;
+  public boolean s;
+  public int t;
+  public String t;
+  public boolean t;
+  public int u;
+  public String u = "";
+  public boolean u;
+  public int v = 0;
+  public String v;
+  public boolean v;
+  public int w;
+  public boolean w;
+  public int x;
+  public boolean x;
+  public int y;
+  public boolean y;
+  public int z;
+  public boolean z;
   
-  public lga(VideoAppInterface paramVideoAppInterface)
+  public lga()
   {
-    this.jdField_a_of_type_Lww = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 15000;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_h_of_type_Int = 0;
+    this.jdField_i_of_type_Int = -1;
+    this.jdField_j_of_type_Int = -1;
+    this.jdField_i_of_type_Boolean = true;
+    this.jdField_l_of_type_Boolean = true;
+    this.jdField_n_of_type_Boolean = true;
+    this.jdField_q_of_type_Boolean = true;
+    this.jdField_k_of_type_Int = 3;
+    this.jdField_n_of_type_Int = -1;
+    this.jdField_s_of_type_Int = 0;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_n_of_type_JavaLangString = "";
+    this.jdField_F_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet(8);
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_y_of_type_Int = -1;
+    this.jdField_F_of_type_Int = 0;
+    this.jdField_I_of_type_Int = 1;
+    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_f_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_t_of_type_JavaLangString = "DEVICE_NONE";
+    this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
+    this.jdField_S_of_type_Int = 1;
+    this.jdField_U_of_type_Int = 0;
+    this.jdField_V_of_type_Int = -1;
+    this.jdField_W_of_type_Int = -1;
+    this.jdField_X_of_type_Int = -1;
+    this.jdField_a_of_type_Lgb = new lgb(this);
+    this.jdField_a_of_type_Lgc = new lgc(this);
+    this.jdField_Z_of_type_Int = -1;
+    this.jdField_aa_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = ("SessionInfo_" + AudioHelper.b());
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "createSession");
   }
   
-  public int a(int paramInt, String paramString)
+  private boolean a(lon paramlon)
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
+    Iterator localIterator = this.jdField_d_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      i = this.jdField_a_of_type_Lww.a(paramInt, paramString);
-      return i;
-    }
-    catch (RemoteException paramString)
-    {
-      do
-      {
-        i = j;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    if (this.jdField_a_of_type_Lww != null) {
-      try
-      {
-        int i = this.jdField_a_of_type_Lww.c(paramString);
-        return i;
+      lon locallon = (lon)localIterator.next();
+      if ((paramlon.jdField_a_of_type_Int == locallon.jdField_a_of_type_Int) && (paramlon.jdField_a_of_type_Long == locallon.jdField_a_of_type_Long)) {
+        return true;
       }
-      catch (RemoteException paramString)
-      {
-        QLog.e("QQServiceProxy", 2, "convertUinTypeEx e = ", paramString);
+    }
+    return false;
+  }
+  
+  public static boolean s()
+  {
+    return true;
+  }
+  
+  public int a()
+  {
+    int i1 = 0;
+    while (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
+    {
+      if (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_Boolean) {
+        return i1;
       }
+      i1 += 1;
     }
-    for (;;)
-    {
-      return -1;
-      QLog.e("QQServiceProxy", 2, "convertUinTypeEx mQQServiceForAV == null");
-    }
+    return -1;
   }
   
-  public long a(String paramString)
+  public int a(long paramLong)
   {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
+    int i1 = 0;
+    while (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
     {
-      l1 = this.jdField_a_of_type_Lww.a(paramString);
-      return l1;
-    }
-    catch (RemoteException paramString)
-    {
-      do
-      {
-        l1 = l2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
-    }
-    return 0L;
-  }
-  
-  public Bitmap a()
-  {
-    return bbdr.a(true);
-  }
-  
-  public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str = a(paramInt, paramString1, paramString2, paramBoolean1);
-    Object localObject = a(str);
-    if (localObject == null) {
-      if (this.jdField_a_of_type_Lww == null) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        Bitmap localBitmap = this.jdField_a_of_type_Lww.a(paramInt, paramString1, paramString2, paramBoolean1, paramBoolean2);
-        localObject = localBitmap;
-        if (localObject == null) {}
+      if ((((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_c_of_type_Boolean) && (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long != paramLong)) {
+        return i1;
       }
-      catch (RemoteException localRemoteException1)
+      i1 += 1;
+    }
+    return -1;
+  }
+  
+  public int a(long paramLong, int paramInt)
+  {
+    int i1;
+    if (paramInt != 0)
+    {
+      i1 = 0;
+      while (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
       {
-        if (paramBoolean2) {
-          localObject = a();
+        if ((((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long == paramLong) && (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Int == paramInt)) {
+          return i1;
         }
-        i = 2;
-        continue;
+        i1 += 1;
       }
-      catch (NullPointerException localNullPointerException1) {}
-      try
-      {
-        a(str, (Bitmap)localObject);
-        i = 0;
+    }
+    paramInt = 0;
+    for (;;)
+    {
+      if (paramInt >= this.jdField_c_of_type_JavaUtilArrayList.size()) {
+        break label112;
       }
-      catch (NullPointerException localNullPointerException2)
-      {
-        break label173;
-      }
-      catch (RemoteException localRemoteException2)
-      {
-        continue;
-        continue;
-      }
-      if (AudioHelper.e()) {
-        QLog.w("QQServiceProxy", 1, "getFaceBitmap, uinType[" + paramInt + "], uin[" + paramString1 + "], extraUin[" + paramString2 + "], isNeedReturnDefaultValue[" + paramBoolean2 + "], ret[" + i + "]");
-      }
-      return localObject;
-      int i = 1;
-      continue;
-      label173:
-      if (paramBoolean2) {
-        localObject = a();
-      }
-      i = 3;
-      continue;
-      i = 4;
-      if (!paramBoolean2) {
+      i1 = paramInt;
+      if (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Long == paramLong) {
         break;
       }
-      localObject = a();
-      continue;
-      i = -3;
+      paramInt += 1;
     }
+    label112:
+    return -1;
   }
   
-  public Bitmap a(String paramString)
+  public long a()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-      return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+    long l1 = 0L;
+    long l2;
+    if ((this.jdField_I_of_type_Boolean) || (this.E == 100))
+    {
+      l2 = this.jdField_g_of_type_Long;
+      l1 = l2;
+      if (l2 != 0L) {}
     }
-    return null;
-  }
-  
-  public Bundle a(int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle, ResultReceiver paramResultReceiver)
-  {
-    if (this.jdField_a_of_type_Lww != null) {
-      try
+    else
+    {
+      do
       {
-        paramBundle = this.jdField_a_of_type_Lww.a(paramInt1, paramInt2, paramInt3, null, paramBundle, paramResultReceiver);
-        return paramBundle;
-      }
-      catch (RemoteException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQServiceProxy", 2, "requestEvent, mainCmd[" + paramInt1 + "], subType[" + paramInt2 + "], seq[" + paramInt3 + "]");
+        do
+        {
+          try
+          {
+            l1 = Long.parseLong(this.jdField_d_of_type_JavaLangString);
+            return l1;
+          }
+          catch (Throwable localThrowable1)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getChatRoomUin", localThrowable1);
+            }
+            return l2;
+          }
+          if ((this.jdField_d_of_type_Int != 1) && (this.jdField_d_of_type_Int != 2) && (this.E != 3)) {
+            break;
+          }
+          try
+          {
+            l2 = Long.parseLong(this.jdField_d_of_type_JavaLangString);
+            return l2;
+          }
+          catch (Throwable localThrowable2) {}
+        } while (!QLog.isDevelopLevel());
+        QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getChatRoomUin", localThrowable2);
+        return 0L;
+      } while ((this.jdField_d_of_type_Int != 3) && (this.jdField_d_of_type_Int != 4) && (this.E != 1) && (this.E != 2));
+      l2 = this.jdField_g_of_type_Long;
+      l1 = l2;
+      if (l2 == 0L) {
+        try
+        {
+          l1 = Long.parseLong(this.jdField_f_of_type_JavaLangString);
+          return l1;
+        }
+        catch (Throwable localThrowable3)
+        {
+          l1 = l2;
+          if (QLog.isDevelopLevel())
+          {
+            QLog.i(this.jdField_a_of_type_JavaLangString, 4, "getChatRoomUin", localThrowable3);
+            l1 = l2;
+          }
         }
       }
     }
-    for (;;)
+    return l1;
+  }
+  
+  public AVPhoneUserInfo a(long paramLong, ArrayList<AVPhoneUserInfo> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.w("QQServiceProxy", 1, "requestEvent, fail, mainCmd[" + paramInt1 + "], subType[" + paramInt2 + "], seq[" + paramInt3 + "]");
+      AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)paramArrayList.next();
+      if ((localAVPhoneUserInfo.accountType != 1) && (localAVPhoneUserInfo.account == paramLong)) {
+        return localAVPhoneUserInfo;
       }
     }
+    return null;
   }
   
   public String a()
   {
-    Object localObject = null;
-    if (this.jdField_a_of_type_Lww != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQServiceProxy", 2, "We will get current user skey");
-      }
-    }
-    while (!QLog.isColorLevel())
+    return this.jdField_h_of_type_JavaLangString;
+  }
+  
+  public lfz a()
+  {
+    if (this.jdField_a_of_type_Lfz == null) {}
+    try
     {
-      try
-      {
-        String str = this.jdField_a_of_type_Lww.a();
-        localObject = str;
+      if (this.jdField_a_of_type_Lfz == null) {
+        this.jdField_a_of_type_Lfz = new lfz();
       }
-      catch (RemoteException localRemoteException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("QQServiceProxy", 2, "getSKey fail", localRemoteException);
-        return null;
-      }
-      return localObject;
+      return this.jdField_a_of_type_Lfz;
     }
-    QLog.d("QQServiceProxy", 2, "getSKey-->mQQServiceForAV is null");
-    return null;
-  }
-  
-  public String a(int paramInt, String paramString1, String paramString2)
-  {
-    return "" + paramInt + "_" + paramString1 + "_" + paramString2;
-  }
-  
-  public String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    paramString2 = new StringBuilder().append("").append(paramInt).append("_").append(paramString1).append("_").append(paramString2).append("_");
-    if (paramBoolean) {}
-    for (paramString1 = "0";; paramString1 = "1") {
-      return paramString1;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) {
-      return (String)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
-    }
-    return "";
+    finally {}
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(10001, 50, 10);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoController", 2, "clearRandomSessionInfo sessionId = " + this.jdField_c_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_Lgb.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Lgb.jdField_c_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Lgb.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Lgb.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Lgb.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Lgb.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Lgb.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Lgb.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Lgb.jdField_b_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Lgb.jdField_c_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_Lgb.jdField_e_of_type_Boolean = false;
+    this.jdField_a_of_type_Lgb.jdField_g_of_type_Boolean = false;
+    this.jdField_a_of_type_Lgb.jdField_e_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Lgb.jdField_c_of_type_Int = -1;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.a(paramInt, paramString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "SessionInfo setAvType:" + paramInt);
     }
-    catch (RemoteException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "startPumpMessage", paramString);
-    }
+    this.C = paramInt;
+    jdField_Y_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.a(paramInt, paramString1, paramString2);
-      return;
+    if ((this.jdField_h_of_type_Int != paramInt2) || (QLog.isColorLevel())) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setSwitchState[" + paramInt1 + "], state[" + this.jdField_h_of_type_Int + "->" + paramInt2 + "]");
     }
-    catch (RemoteException paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "setPeerInfo", paramString1);
-    }
+    this.jdField_h_of_type_Int = paramInt2;
   }
   
-  public void a(long paramLong)
+  public void a(int paramInt, lon paramlon)
   {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.a(paramLong);
-      return;
+    long l1 = paramlon.jdField_a_of_type_Long;
+    int i1 = paramlon.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo-->Uin = " + l1 + " ,VideoSrcType = " + i1 + " ,Pos = " + paramInt);
     }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "syncChatingTime", localRemoteException);
+    int i2 = a(l1, i1);
+    if ((i2 != -1) && (QLog.isColorLevel())) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo Error,The View Info Is Exsit.Uin = " + l1 + " ,VideoSrcType = " + i1 + " ,Index = " + i2);
     }
-  }
-  
-  public void a(long paramLong1, String paramString, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Lww != null) {}
-    while (!QLog.isColorLevel()) {
-      try
+    this.jdField_c_of_type_JavaUtilArrayList.add(paramInt, paramlon);
+    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    {
+      if (!a(paramlon))
       {
-        this.jdField_a_of_type_Lww.a(paramLong1, paramString, paramLong2);
-        return;
+        this.jdField_d_of_type_JavaUtilArrayList.add(paramInt, paramlon);
+        c();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo mMultiVideoTalkList-->Uin = " + l1 + " ,VideoSrcType = " + i1 + " ,Pos = " + paramInt);
+        }
       }
-      catch (RemoteException paramString)
+      return;
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    a(paramLong, 0L);
+    this.jdField_k_of_type_Long = 0L;
+    a("clearSessionInfo", 0);
+    this.jdField_i_of_type_Int = -1;
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_h_of_type_Boolean = false;
+    a(paramLong, "clearSessionInfo", 0);
+    this.T = 0;
+    this.jdField_U_of_type_Int = 0;
+    this.ax = false;
+    this.ay = true;
+    a(false);
+    this.jdField_a_of_type_Lfm.a();
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_s_of_type_JavaLangString = null;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_t_of_type_Boolean = false;
+    this.w = false;
+    this.x = false;
+    this.jdField_y_of_type_Boolean = false;
+    this.aA = false;
+    this.jdField_y_of_type_Int = -1;
+    this.au = true;
+    this.u = "";
+    this.jdField_j_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = null;
+    this.jdField_a_of_type_JavaUtilBitSet.clear();
+    a(paramLong, false);
+    b(paramLong, false);
+    this.M = 1;
+    this.E = 0;
+    this.jdField_X_of_type_Int = -1;
+    this.z = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.v = 0;
+    try
+    {
+      this.jdField_a_of_type_Lfz = null;
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setConnectedTime, connectedTime[" + this.jdField_e_of_type_Long + "->" + paramLong2 + "], seq[" + paramLong1 + "]");
+    this.jdField_e_of_type_Long = paramLong2;
+  }
+  
+  public void a(long paramLong, String paramString, int paramInt)
+  {
+    if ((this.jdField_d_of_type_Int != paramInt) || (QLog.isColorLevel())) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setSessionType[" + paramString + "], SessionType[" + this.jdField_d_of_type_Int + "->" + paramInt + "], seq[" + paramLong + "]");
+    }
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setVideoState[" + paramString + "], startOrStopVideo[" + paramBoolean1 + "], isRemote[" + paramBoolean2 + "], seq[" + paramLong + "]");
+    }
+    if (paramBoolean1) {
+      if (paramBoolean2)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("QQServiceProxy", 2, "addSharpMsgRecordList e = ", paramString);
-        return;
+        b(paramLong, true);
+        if (this.jdField_d_of_type_Int != 1) {
+          break label128;
+        }
+        a(paramLong, "setVideoState.1", 2);
+        label105:
+        if ((this.jdField_d_of_type_Int != 4) || (!paramBoolean2)) {}
       }
     }
-    QLog.e("QQServiceProxy", 2, "addSharpMsgRecordList mQQServiceForAV==null");
+    label128:
+    do
+    {
+      return;
+      a(paramLong, true);
+      break;
+      if (this.jdField_d_of_type_Int != 3) {
+        break label105;
+      }
+      a(paramLong, "setVideoState.2", 4);
+      break label105;
+      if (paramBoolean2) {
+        b(paramLong, false);
+      }
+      while (((this.jdField_d_of_type_Int != 4) || (!paramBoolean2)) || ((this.jdField_d_of_type_Int == 2) && (!this.jdField_k_of_type_Boolean) && (!this.jdField_j_of_type_Boolean)))
+      {
+        a(paramLong, "setVideoState.3", 1);
+        return;
+        a(paramLong, false);
+      }
+    } while ((this.jdField_d_of_type_Int != 4) || (this.jdField_k_of_type_Boolean) || (this.jdField_j_of_type_Boolean));
+    a(paramLong, "setVideoState.4", 3);
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    if ((QLog.isDevelopLevel()) || (this.jdField_j_of_type_Boolean != paramBoolean))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setLocalHasVideo, localHasVideo[" + this.jdField_j_of_type_Boolean + "->" + paramBoolean + "], seq[" + paramLong + "]");
+      if (!paramBoolean) {
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "why call not local hasVideo, str[1], isVisible[]", new Throwable("打印调用栈"));
+      }
+    }
+    this.jdField_j_of_type_Boolean = paramBoolean;
+    if (this.jdField_j_of_type_Boolean)
+    {
+      lpu.e();
+      if (VideoController.a().a() != null) {
+        lpl.c(VideoController.a().a());
+      }
+    }
+    if ((this.jdField_k_of_type_Boolean) && (this.jdField_j_of_type_Boolean))
+    {
+      ltm.a().b(1);
+      return;
+    }
+    ltm.a().a(1);
+  }
+  
+  public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "resetVideoDisplayListExceptTargetUin-->Uin = " + paramLong + " ,clearRenderFlag" + paramBoolean1 + " ,clearRecvDataFlag" + paramBoolean2);
+    }
+    int i1 = 0;
+    while (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
+    {
+      if (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long != paramLong)
+      {
+        if (paramBoolean1) {
+          ((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_Boolean = false;
+        }
+        if (paramBoolean2) {
+          ((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).d = false;
+        }
+      }
+      i1 += 1;
+    }
+  }
+  
+  public void a(AVPhoneUserInfo paramAVPhoneUserInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onPhoneUserInfoInRoom info = " + paramAVPhoneUserInfo.toString());
+    }
+    this.jdField_f_of_type_JavaUtilArrayList.add(paramAVPhoneUserInfo);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      QLog.w("QQServiceProxy", 1, "stopPumpMessage[" + paramString + "]");
-      this.jdField_a_of_type_Lww.a();
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "stopPumpMessage", paramString);
+    this.jdField_h_of_type_JavaLangString = paramString;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "setPhoneNum, phoneNum[" + paramString + "]");
     }
   }
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (paramBitmap != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, paramBitmap);
+    if ((this.jdField_g_of_type_Int != paramInt) || (QLog.isColorLevel())) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setState[" + paramString + "], state[" + this.jdField_g_of_type_Int + "->" + paramInt + "]");
+    }
+    if (this.jdField_g_of_type_Int != paramInt)
+    {
+      lsr.a(this.jdField_g_of_type_Int, paramInt);
+      this.jdField_g_of_type_Int = paramInt;
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) && (!TextUtils.isEmpty(paramString2))) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString1, paramString2);
+    if ((AudioHelper.e()) || (!TextUtils.equals(paramString2, this.jdField_q_of_type_JavaLangString))) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setDeviceName, from[" + paramString1 + "], deviceName[" + this.jdField_q_of_type_JavaLangString + "->" + paramString2 + "]");
     }
+    this.jdField_q_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if ((AudioHelper.e()) || (paramBoolean != this.N)) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setSpeakerOn, from[" + paramString + "], isSpeakerOn[" + this.N + "->" + paramBoolean + "]");
+    }
+    this.N = paramBoolean;
+  }
+  
+  public void a(lon paramlon)
+  {
+    long l1 = paramlon.jdField_a_of_type_Long;
+    int i1 = paramlon.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo-->Uin = " + l1 + " ,VideoSrcType = " + i1);
+    }
+    int i2 = a(l1, i1);
+    if ((i2 != -1) && (QLog.isColorLevel())) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo Error,The View Info Is Exsit.Uin = " + l1 + " ,VideoSrcType = " + i1 + " ,Index = " + i2);
+    }
+    this.jdField_c_of_type_JavaUtilArrayList.add(paramlon);
+    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    {
+      if (!a(paramlon))
+      {
+        this.jdField_d_of_type_JavaUtilArrayList.add(paramlon);
+        c();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "addVideoViewInfo mMultiVideoTalkList-->Uin = " + l1 + " ,VideoSrcType = " + i1 + " ,Pos = ");
+        }
+      }
+      return;
+    }
+  }
+  
+  public void a(mlh parammlh)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() == parammlh)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammlh);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.d(paramBoolean);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQServiceProxy", 1, "keepVideoProcessAlive fail.", localThrowable);
-    }
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setHasChangeDoubleScreen, hasChangeDoubleScreen[" + this.jdField_S_of_type_Boolean + "->" + paramBoolean + "]");
+    this.jdField_S_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    return this.jdField_F_of_type_Int != 0;
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Lfm == null) {
+      return s();
+    }
+    return this.jdField_a_of_type_Lfm.a(paramLong, paramInt);
+  }
+  
+  public boolean a(VideoController paramVideoController)
+  {
+    boolean bool = true;
+    if ((this.ab == -1) && (paramVideoController != null)) {
+      this.ab = paramVideoController.a(this, this.jdField_d_of_type_JavaLangString);
+    }
+    if ((this.jdField_aa_of_type_Int == -1) && (paramVideoController != null)) {
+      this.jdField_aa_of_type_Int = paramVideoController.b(this, this.jdField_d_of_type_JavaLangString);
+    }
+    if (this.ab == 2) {
+      if (this.jdField_aa_of_type_Int < 100) {}
+    }
+    for (;;)
     {
-      localStringBuilder = new StringBuilder().append("isQQServiceBind ");
-      if (this.jdField_a_of_type_Lww == null) {
-        break label51;
+      if (QLog.isColorLevel()) {
+        QLog.i("double_2_multi", 2, "isPeerSupportDMeetingSwitchTroop, end[" + this.ab + "," + this.jdField_aa_of_type_Int + "," + bool + "]");
       }
-    }
-    label51:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("QQServiceProxy", 2, bool);
-      if (this.jdField_a_of_type_Lww == null) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, long paramLong)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.a(paramInt, paramLong);
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "curGAInviteIsRight", localRemoteException);
-    }
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool = this.jdField_a_of_type_Lww.a(paramLong);
       return bool;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      QLog.e("QQServiceProxy", 2, "getTroopAdmins-->troopUin=" + paramLong, localRemoteException);
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool = this.jdField_a_of_type_Lww.a(paramString);
-      return bool;
-    }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QQServiceProxy", 2, "isFriend", paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool = this.jdField_a_of_type_Lww.b(paramString, paramInt);
-      return bool;
-    }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QQServiceProxy", 2, "requestDecodeStrangeFace-->false", paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(lwk paramlwk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "getAVRedPacketConfig start mQQServiceForAV = " + this.jdField_a_of_type_Lww);
-    }
-    if (this.jdField_a_of_type_Lww != null) {
-      try
+      bool = false;
+      continue;
+      if (this.ab == 4)
       {
-        this.jdField_a_of_type_Lww.a(paramlwk);
-        return true;
-      }
-      catch (RemoteException paramlwk)
-      {
-        paramlwk.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQServiceProxy", 2, "getAVRedPacketConfig error", paramlwk);
+        if (this.jdField_aa_of_type_Int < 101) {
+          bool = false;
         }
       }
-    }
-    return false;
-  }
-  
-  public long[] a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      localObject1 = this.jdField_a_of_type_Lww.a(paramString);
-      return localObject1;
-    }
-    catch (RemoteException paramString)
-    {
-      do
+      else if (this.ab == 5)
       {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getDiscussMemberList", paramString);
-    }
-    return null;
-  }
-  
-  public String b(int paramInt, String paramString1, String paramString2)
-  {
-    String str2 = a(paramInt, paramString1, paramString2);
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      String str1 = this.jdField_a_of_type_Lww.a(paramInt, paramString1, paramString2);
-      localObject2 = str1;
-      if (!TextUtils.isEmpty(str1))
-      {
-        localObject2 = str1;
-        a(str2, str1);
+        if (this.jdField_aa_of_type_Int < 5635) {
+          bool = false;
+        }
       }
-      localObject1 = str1;
-      localObject2 = str1;
-      if (AudioHelper.e())
-      {
-        localObject2 = str1;
-        QLog.w("QQServiceProxy", 1, "getDisplayName, uinType[" + paramInt + "], uin[" + paramString1 + "], extraUin[" + paramString2 + "], name[" + str1 + "]");
-        localObject1 = str1;
+      else {
+        bool = false;
       }
     }
-    catch (RemoteException paramString2)
+  }
+  
+  public boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    int i1;
+    if ((this.ad == 0) && (paramVideoAppInterface != null))
     {
+      i1 = this.jdField_i_of_type_Int;
+      if (i1 != -1) {
+        break label210;
+      }
+      i1 = muc.c(this.E);
+    }
+    label67:
+    label204:
+    label210:
+    for (;;)
+    {
+      String str;
+      if (i1 == 0) {
+        str = this.jdField_d_of_type_JavaLangString;
+      }
       for (;;)
       {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
+        boolean bool;
+        int i2;
+        if (i1 != -1)
         {
-          QLog.w("QQServiceProxy", 2, "getDisplayName", paramString2);
-          localObject1 = localObject2;
+          bool = aknj.a(paramVideoAppInterface.getApp(), paramVideoAppInterface.getAccount(), str, i1);
+          if (bool)
+          {
+            i2 = 2;
+            this.ad = i2;
+          }
         }
-      }
-    }
-    paramString2 = (String)localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject1 = a(str2);
-      paramString2 = (String)localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        return paramString1;
-      }
-    }
-    return paramString2;
-  }
-  
-  public String b(String paramString)
-  {
-    Object localObject2 = a(paramString);
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      localObject2 = null;
-      localObject1 = null;
-      if (this.jdField_a_of_type_Lww == null) {}
-    }
-    try
-    {
-      localObject1 = this.jdField_a_of_type_Lww.a(paramString);
-      localObject2 = localObject1;
-      a(paramString, (String)localObject1);
-      localObject2 = localObject1;
-      QLog.w("QQServiceProxy", 1, "getPhoneUserNameByPhoneNum, number[" + paramString + "], name[" + (String)localObject1 + "]");
-    }
-    catch (RemoteException paramString)
-    {
-      do
-      {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.w("QQServiceProxy", 2, "getPhoneUserNameByPhoneNum", paramString);
-    }
-    return localObject1;
-    return localObject2;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
-    }
-    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
-    }
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.b(paramInt, paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "setBindInfo", paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Lww != null) {
-        this.jdField_a_of_type_Lww.d(paramString);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerClick", paramString);
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.a();
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "isQQpaused", localRemoteException);
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.a(paramString);
-      bool1 = true;
-    }
-    catch (RemoteException paramString)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getNearbyProfileData", paramString);
-    }
-    return bool1;
-    return false;
-  }
-  
-  public boolean b(lwk paramlwk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "startDownloadAVRedPacketRes start");
-    }
-    if (this.jdField_a_of_type_Lww != null) {
-      try
-      {
-        this.jdField_a_of_type_Lww.b(paramlwk);
-        return true;
-      }
-      catch (RemoteException paramlwk)
-      {
-        paramlwk.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQServiceProxy", 2, "startDownloadAVRedPacketRes error", paramlwk);
-        }
-      }
-    }
-    return false;
-  }
-  
-  public String c(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      localObject1 = this.jdField_a_of_type_Lww.d(paramString);
-      return localObject1;
-    }
-    catch (RemoteException paramString)
-    {
-      do
-      {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getPhoneNumByUin", paramString);
-    }
-    return null;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "bindQQService");
-    }
-    if ((this.jdField_a_of_type_Lww == null) && (!this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), QQServiceForAV.class);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Lww != null) {
-        this.jdField_a_of_type_Lww.e(paramString);
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerExposure", paramString);
-    }
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.g();
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "isPhoneCalling", localRemoteException);
-    }
-    return false;
-  }
-  
-  public boolean c(String paramString)
-  {
-    if (this.jdField_a_of_type_Lww != null) {
-      try
-      {
-        boolean bool = this.jdField_a_of_type_Lww.a(paramString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-        return bool;
-      }
-      catch (RemoteException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return true;
-  }
-  
-  public void d()
-  {
-    lcl.d("QQServiceProxy", "unbindQQService");
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      this.jdField_a_of_type_Lww.a();
-      this.jdField_a_of_type_Lww.a(this.jdField_a_of_type_Lwu);
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        try
+        for (;;)
         {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          return;
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_JavaLangString, 2, "isVideoMsgBlocked ret[" + bool + "], uin[" + str + "], type[" + i1 + "], flag[" + this.ad + "]");
+          }
+          if (this.ad == 1)
+          {
+            return true;
+            if (i1 == 1)
+            {
+              str = String.valueOf(this.jdField_g_of_type_Long);
+              break;
+            }
+            if (i1 != -1) {
+              break label204;
+            }
+            str = String.valueOf(this.jdField_g_of_type_Long);
+            break;
+            i2 = 1;
+            break label67;
+          }
+          return false;
+          bool = true;
         }
-        catch (Exception localException2)
-        {
-          QLog.e("QQServiceProxy", 2, "unbindService3 ", localException2);
-        }
-        localRemoteException = localRemoteException;
-        QLog.e("QQServiceProxy", 2, "unbindQQService1 ", localRemoteException);
-      }
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        QLog.e("QQServiceProxy", 2, "unbindQQService2 ", localException1);
+        str = null;
       }
     }
   }
   
-  public boolean d()
+  public boolean a(qav_gvideo_sdk_transfer.gVideoDownChannelControl paramgVideoDownChannelControl)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.h();
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "isQQSVIP remote call exception", localRemoteException);
+    if (this.jdField_a_of_type_Lfm != null) {
+      return this.jdField_a_of_type_Lfm.a(paramgVideoDownChannelControl);
     }
     return false;
   }
   
-  public void e()
+  public int b()
   {
-    if (this.jdField_a_of_type_Lww != null) {
-      try
-      {
-        this.jdField_a_of_type_Lww.b();
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("QQServiceProxy", 2, "avStartAddFriendService", localRemoteException);
-        return;
-      }
-    }
-    this.b = true;
+    return this.jdField_aa_of_type_Int;
   }
   
-  public boolean e()
+  public int b(long paramLong, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.b();
-      return bool1;
+    int i1 = 0;
+    int i2 = 0;
+    ArrayList localArrayList = this.jdField_d_of_type_JavaUtilArrayList;
+    if (paramInt != 0) {
+      i1 = i2;
     }
-    catch (RemoteException localRemoteException)
-    {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.e("QQServiceProxy", 2, "getNearbyProfileData", localRemoteException);
-    }
-    return false;
-  }
-  
-  public boolean f()
-  {
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Lww != null)) {}
     for (;;)
     {
       try
       {
-        if (!this.jdField_a_of_type_Lww.c()) {
-          continue;
+        if (i1 < this.jdField_d_of_type_JavaUtilArrayList.size())
+        {
+          if ((((lon)this.jdField_d_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long != paramLong) || (((lon)this.jdField_d_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Int != paramInt)) {
+            break label131;
+          }
+          return i1;
+          if (i1 < this.jdField_d_of_type_JavaUtilArrayList.size())
+          {
+            if (((lon)this.jdField_d_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long != paramLong) {
+              break label140;
+            }
+            return i1;
+          }
         }
-        i = 1;
-        this.jdField_a_of_type_Int = i;
+        return -1;
       }
-      catch (Exception localException)
-      {
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("QQServiceProxy", 2, "getTalkBack", localException);
-        continue;
-      }
-      if (this.jdField_a_of_type_Int != 1) {
-        break label69;
-      }
-      return true;
-      i = 0;
+      finally {}
+      label131:
+      i1 += 1;
+      continue;
+      label140:
+      i1 += 1;
     }
-    label69:
-    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Lgc = new lgc(this);
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.i(this.jdField_a_of_type_JavaLangString, 1, "setPeerSdkVersion [" + paramInt + "]");
+    this.jdField_aa_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "clearDoubleVideoSessionInfo, sessionId[" + this.jdField_c_of_type_JavaLangString + "], seq[" + paramLong + "]");
+    }
+    a(paramLong);
+    b();
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    if ((QLog.isDevelopLevel()) || (this.jdField_k_of_type_Boolean != paramBoolean)) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setRemoteHasVideo, remoteHasVideo[" + this.jdField_k_of_type_Boolean + "->" + paramBoolean + "], seq[" + paramLong + "]");
+    }
+    this.jdField_k_of_type_Boolean = paramBoolean;
+    if ((this.jdField_k_of_type_Boolean) && (this.jdField_j_of_type_Boolean))
+    {
+      ltm.a().b(1);
+      return;
+    }
+    ltm.a().a(1);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setSwitchToGAudioMode[" + paramString + "], switchToGAudioMode[" + this.jdField_F_of_type_Int + "->" + paramInt + "]");
+    this.jdField_F_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if ((AudioHelper.e()) || (paramBoolean != this.jdField_U_of_type_Boolean)) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setRoomMicOff[" + paramString + "], isRoomMicOff[" + this.jdField_U_of_type_Boolean + "->" + paramBoolean + "]");
+    }
+    this.jdField_U_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_F_of_type_Int == 2;
+  }
+  
+  public boolean b(long paramLong, int paramInt)
+  {
+    boolean bool2 = false;
+    int i1 = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
+      {
+        if ((((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Long == paramLong) && (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Int == paramInt)) {
+          bool1 = ((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).d;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public boolean b(VideoController paramVideoController)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("double_2_multi", 2, "isPeerSupportDoubleSwitchToTroop, start[" + this.ab + "," + this.jdField_aa_of_type_Int + "]");
+    }
+    if ((this.ab == -1) && (paramVideoController != null)) {
+      this.ab = paramVideoController.b(this.jdField_d_of_type_JavaLangString);
+    }
+    if ((this.jdField_aa_of_type_Int == -1) && (paramVideoController != null)) {
+      this.jdField_aa_of_type_Int = paramVideoController.c(this.jdField_d_of_type_JavaLangString);
+    }
+    if (this.ab == 2) {
+      if (this.jdField_aa_of_type_Int < 100) {}
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("double_2_multi", 2, "isPeerSupportDoubleSwitchToTroop, end[" + this.ab + "," + this.jdField_aa_of_type_Int + "," + bool + "]");
+      }
+      return bool;
+      bool = false;
+      continue;
+      if (this.ab == 4)
+      {
+        if (this.jdField_aa_of_type_Int < 101) {
+          bool = false;
+        }
+      }
+      else if (this.ab == 5) {
+        bool = false;
+      } else {
+        bool = false;
+      }
+    }
+  }
+  
+  public int c()
+  {
+    return this.ab;
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((mlh)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    QLog.i(this.jdField_a_of_type_JavaLangString, 1, "setPeerTerminalType [" + paramInt + "]");
+    this.ab = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    a(paramLong);
+    b("clearMultiVideoSessionInfo", false);
+    this.jdField_h_of_type_Long = 0L;
+    this.J = -1;
+    this.jdField_V_of_type_Boolean = false;
+    this.jdField_W_of_type_Boolean = false;
+    this.jdField_X_of_type_Boolean = false;
+    this.jdField_Y_of_type_Boolean = false;
+    this.jdField_Z_of_type_Boolean = false;
+    this.jdField_aa_of_type_Boolean = false;
+    this.jdField_c_of_type_JavaUtilArrayList.clear();
+    synchronized (this.jdField_d_of_type_JavaUtilArrayList)
+    {
+      this.jdField_d_of_type_JavaUtilArrayList.clear();
+      c();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.jdField_e_of_type_JavaUtilArrayList.clear();
+      a(0);
+      return;
+    }
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    if ((AudioHelper.e()) || (paramInt != this.G)) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setMicAuthByAdmin[" + paramString + "], micAuthByAdmin[" + this.G + "->" + paramInt + "]");
+    }
+    this.G = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.E == 2;
+  }
+  
+  public int d()
+  {
+    int i1 = 0;
+    if ((this.jdField_I_of_type_Boolean) || (this.E == 100)) {
+      i1 = 1;
+    }
+    do
+    {
+      return i1;
+      if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 2) || (this.E == 3)) {
+        return 2;
+      }
+    } while ((this.jdField_d_of_type_Int != 3) && (this.jdField_d_of_type_Int != 4) && (this.E != 1) && (this.E != 2));
+    return 1;
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_g_of_type_Int == 0) && (this.jdField_a_of_type_Lgb.jdField_b_of_type_Int <= 0);
+  }
+  
+  public boolean e()
+  {
+    return (this.jdField_g_of_type_Int == 0) && ((this.jdField_a_of_type_Lgb.jdField_b_of_type_Int == 1) || (this.jdField_a_of_type_Lgb.jdField_b_of_type_Int == 2));
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_g_of_type_Int == 1;
   }
   
   public boolean g()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_Lww.d();
-      if (QLog.isColorLevel()) {
-        QLog.e("EffectEnable", 2, "getEffectsSoLoadIsOk  result " + this.jdField_a_of_type_Lww + "   " + bool1);
-      }
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QLog.e("EffectEnable", 1, "getEffectsSoLoadIsOk", localRemoteException);
-        bool1 = bool2;
-      }
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        lcl.e("EffectEnable", localNullPointerException.getMessage());
-        bool1 = bool2;
-      }
-    }
+    return this.jdField_g_of_type_Int == 2;
   }
   
   public boolean h()
   {
+    return (this.jdField_g_of_type_Int == 2) || (this.jdField_g_of_type_Int == 7);
+  }
+  
+  public boolean i()
+  {
+    return this.jdField_g_of_type_Int == 3;
+  }
+  
+  public boolean j()
+  {
+    return this.jdField_g_of_type_Int == 4;
+  }
+  
+  public boolean k()
+  {
+    return this.jdField_g_of_type_Int == 10;
+  }
+  
+  public boolean l()
+  {
+    return this.jdField_g_of_type_Int == 14;
+  }
+  
+  public boolean m()
+  {
+    return this.jdField_g_of_type_Int == 5;
+  }
+  
+  public boolean n()
+  {
+    return this.jdField_g_of_type_Int == 6;
+  }
+  
+  public boolean o()
+  {
+    return this.jdField_g_of_type_Int == 15;
+  }
+  
+  public boolean p()
+  {
+    return (this.jdField_d_of_type_Int == 3) || (this.jdField_d_of_type_Int == 4) || ((this.jdField_a_of_type_Lgb.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Lgb.jdField_a_of_type_Int == 3));
+  }
+  
+  public boolean q()
+  {
+    int i1 = 0;
+    while (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
+    {
+      if (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).d) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  public boolean r()
+  {
+    return (this.jdField_d_of_type_Int == 2) || (this.jdField_d_of_type_Int == 4);
+  }
+  
+  public boolean t()
+  {
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Lww != null) {}
-    try
+    int i1 = 0;
+    for (;;)
     {
-      bool1 = this.jdField_a_of_type_Lww.e();
-      if (QLog.isColorLevel()) {
-        QLog.e("getEffectLibPagSoLoadIsOk", 2, "getEffectLibPagSoLoadIsOk  result " + this.jdField_a_of_type_Lww + "   " + bool1);
-      }
-      return bool1;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
+      boolean bool1 = bool2;
+      if (i1 < this.jdField_c_of_type_JavaUtilArrayList.size())
       {
-        QLog.e("getEffectLibPagSoLoadIsOk", 1, "getEffectLibPagSoLoadIsOk", localRemoteException);
-        bool1 = bool2;
+        if (((lon)this.jdField_c_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_Boolean) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i1 += 1;
+    }
+  }
+  
+  public String toString()
+  {
+    return "[" + this.jdField_a_of_type_JavaLangString + "], sessionId[" + this.jdField_c_of_type_JavaLangString + "], SessionType[" + this.jdField_d_of_type_Int + "], sessionStatus[" + this.jdField_c_of_type_Int + "], relationType[" + this.E + "], uinType[" + this.jdField_i_of_type_Int + "], relationId[" + this.jdField_g_of_type_Long + "], state[" + this.jdField_g_of_type_Int + "], switchState[" + this.jdField_h_of_type_Int + "], peerUin[" + this.jdField_d_of_type_JavaLangString + "], peerName[" + this.jdField_e_of_type_JavaLangString + "], extraUin[" + this.jdField_f_of_type_JavaLangString + "], extraCode[" + this.jdField_g_of_type_JavaLangString + "], multiAVType[" + this.C + "], localHasVideo[" + this.jdField_j_of_type_Boolean + "], roomId[" + this.jdField_l_of_type_Long + "], isReceiver[" + this.jdField_e_of_type_Boolean + "]";
+  }
+  
+  public boolean u()
+  {
+    if (this.P == -1) {
+      if (this.E != 2) {
+        break label35;
       }
     }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        lcl.e("EffectEnable", localNullPointerException.getMessage());
-        bool1 = bool2;
-      }
+    label35:
+    for (this.P = bbgi.b(this.jdField_g_of_type_Long);; this.P = 0) {
+      return bbgi.a(this.P);
     }
+  }
+  
+  public boolean v()
+  {
+    return (this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 2);
   }
 }
 

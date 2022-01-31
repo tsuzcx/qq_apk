@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.runtime.task;
 
-import bfdq;
+import bfeh;
 
 public class ServiceCreateTask$2
   implements Runnable
 {
-  public ServiceCreateTask$2(bfdq parambfdq) {}
+  public ServiceCreateTask$2(bfeh parambfeh) {}
   
   public void run()
   {
-    bfdq.a(this.this$0);
+    bfeh.a(this.this$0);
   }
 }
 

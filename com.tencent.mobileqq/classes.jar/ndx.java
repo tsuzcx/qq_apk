@@ -1,23 +1,34 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ndx
-  implements bfoq
+  implements View.OnClickListener
 {
-  public ndx(EqqAccountDetailActivity paramEqqAccountDetailActivity, nmv paramnmv, bfol parambfol, int paramInt) {}
+  public ndx(EqqAccountDetailActivity paramEqqAccountDetailActivity, nms paramnms, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
-    do
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Nms.g)) || (TextUtils.isEmpty(this.jdField_a_of_type_Nms.f)))
     {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.jdField_a_of_type_JavaLangString, 2, "buildMapItemForEqq no lat or lng");
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Nmv, paramInt + 1);
-      this.jdField_a_of_type_Bfol.dismiss();
-    } while ((!((nqq)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((nri)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, QQMapActivity.class);
+    paramView.putExtra("lat", this.jdField_a_of_type_Nms.g);
+    paramView.putExtra("lon", this.jdField_a_of_type_Nms.f);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
+    axqy.b(EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "", "", "");
+    EqqAccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

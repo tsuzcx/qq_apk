@@ -1,28 +1,23 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 class xkj
-  extends anql
 {
-  xkj(xke paramxke) {}
+  xkj(xki paramxki, String paramString) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == xke.a(this.a).key))
-    {
-      String str1 = paramBundle.getString("cmd");
-      String str2 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("request");
-      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
-      {
-        int i = paramBundle.getInt("result", 1);
-        this.a.callJs(str2, new String[] { Integer.toString(i) });
-      }
+    this.jdField_a_of_type_Xki.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    akuf.a(new xkk(this, "webview"));
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPlugin", 2, "SosoInterface.startLocation");
     }
   }
 }

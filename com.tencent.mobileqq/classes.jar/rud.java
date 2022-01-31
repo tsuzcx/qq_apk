@@ -1,16 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-class rud
-  extends AnimatorListenerAdapter
+public class rud
+  implements rtw
 {
-  rud(rub paramrub, int paramInt) {}
+  private final ViewPagerCompat a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public rud(ViewPagerCompat paramViewPagerCompat)
   {
-    this.jdField_a_of_type_Rub.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Rub.jdField_a_of_type_Float = 0.0F;
+    this.a = paramViewPagerCompat;
   }
+  
+  public void a(rub paramrub)
+  {
+    this.a.setCurrentItem(paramrub.a());
+  }
+  
+  public void b(rub paramrub) {}
+  
+  public void c(rub paramrub) {}
 }
 
 

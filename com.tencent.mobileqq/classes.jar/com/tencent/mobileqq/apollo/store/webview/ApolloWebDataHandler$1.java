@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import ajke;
+import ajkc;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ApolloWebDataHandler$1
@@ -9,8 +9,8 @@ public final class ApolloWebDataHandler$1
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (!ajke.a()) {
-      ajke.a();
+    if (!ajkc.a()) {
+      ajkc.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread use:" + (System.currentTimeMillis() - l));

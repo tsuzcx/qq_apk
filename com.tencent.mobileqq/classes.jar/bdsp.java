@@ -1,14 +1,8 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class bdsp
-  implements FilenameFilter
+public abstract interface bdsp
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".so"));
-  }
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
 }
 
 

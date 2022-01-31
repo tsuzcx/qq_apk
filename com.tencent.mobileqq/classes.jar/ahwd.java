@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
 
 class ahwd
-  implements ahwh
+  implements bfso
 {
-  ahwd(ahwb paramahwb) {}
+  ahwd(ahvz paramahvz) {}
   
-  public void a(int paramInt)
+  public void onScrollStateChanged(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
     }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    if (paramInt == 4097)
     {
-      do
-      {
-        return;
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      } while (localPtvTemplateInfo == null);
-      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
-    } while (localPtvTemplateInfo.usable);
-    ahub.b("", "0X8006A1A");
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 

@@ -1,29 +1,26 @@
 import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
 class alxc
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  alxc(alwx paramalwx, View paramView) {}
+  alxc(alww paramalww, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Alwx.p();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Alwx.p();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Alwx.g) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Alww.d * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Alww.g);
+    this.b.setAlpha(1.0F - f);
   }
 }
 

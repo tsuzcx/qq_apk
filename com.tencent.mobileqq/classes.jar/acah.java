@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class acah
-  extends ajxl
+  implements View.OnClickListener
 {
-  public acah(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public acah(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    this.a.a.setText("");
   }
 }
 

@@ -1,14 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-class ajgx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class ajgx
+  implements DialogInterface.OnClickListener
 {
-  ajgx(ajgw paramajgw) {}
+  public ajgx(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onGlobalLayout()
-  {
-    ajgw.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

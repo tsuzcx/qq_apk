@@ -8,7 +8,7 @@ final class arks
   public void onCallback(EIPCResult paramEIPCResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
+      QLog.d("TogetherWatchFloatingUtil", 1, new Object[] { Integer.valueOf(paramEIPCResult.code) });
     }
   }
 }

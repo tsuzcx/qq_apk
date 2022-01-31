@@ -1,8 +1,15 @@
-public abstract interface tgx
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
+
+class tgx
+  implements Comparator<tso>
 {
-  public abstract void a();
+  tgx(tgw paramtgw) {}
   
-  public abstract void b();
+  public int a(tso paramtso1, tso paramtso2)
+  {
+    return thd.a(paramtso1.a.mCreateTime, paramtso2.a.mCreateTime);
+  }
 }
 
 

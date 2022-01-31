@@ -1,39 +1,32 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 
-public final class area
-  implements PluginManagerUpdater
+class area
+  implements Callable<File>
 {
-  private final File a;
+  area(ardz paramardz) {}
   
-  public area(String paramString)
+  public File a()
   {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
+    try
+    {
+      boolean bool = ardz.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
+      }
+      if (!bool)
+      {
+        localFile = this.a.getLatest();
+        return localFile;
+      }
+      File localFile = this.a.a();
+      return localFile;
     }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return akhl.a(16).submit(new arec(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return akhl.a(16).submit(new areb(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    finally
+    {
+      ardz.a(this.a, false);
+    }
   }
 }
 

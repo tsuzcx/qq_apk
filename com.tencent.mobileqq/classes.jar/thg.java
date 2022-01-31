@@ -1,55 +1,56 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
+import android.content.Context;
 import android.text.TextUtils;
-import java.util.Iterator;
+import android.view.ViewGroup;
 import java.util.List;
 
 public class thg
+  extends tbd<tff, tbg<tff>>
 {
-  public static int a(long paramLong1, long paramLong2)
+  private int a;
+  
+  public thg(Context paramContext)
   {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public static tfi a(@NonNull List<tfi> paramList1, @NonNull List<tfi> paramList2, @NonNull String paramString)
+  public int a(int paramInt)
   {
-    paramList2.clear();
-    tfi localtfi = null;
-    Iterator localIterator = paramList1.iterator();
-    paramList1 = localtfi;
-    if (localIterator.hasNext())
+    tff localtff = (tff)a(paramInt);
+    if (localtff != null) {
+      return localtff.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
     {
-      localtfi = (tfi)localIterator.next();
-      if (a(localtfi)) {
-        paramList2.add(localtfi);
+      if (TextUtils.equals(((tff)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
       }
-      if ((paramList1 != null) || (!TextUtils.equals(paramString, localtfi.jdField_a_of_type_JavaLangString))) {
-        break label76;
-      }
-      paramList1 = localtfi;
+      i += 1;
     }
-    label76:
-    for (;;)
-    {
-      break;
-      return paramList1;
-    }
+    return b();
   }
   
-  public static boolean a()
+  public void a(tbg<tff> paramtbg)
   {
-    return Build.VERSION.SDK_INT > 19;
+    super.onViewDetachedFromWindow(paramtbg);
+    paramtbg.a();
   }
   
-  public static boolean a(tfi paramtfi)
+  public tbg b(ViewGroup paramViewGroup, int paramInt)
   {
-    return (paramtfi.jdField_a_of_type_Int == 5) || (paramtfi.jdField_a_of_type_Int == 6) || (paramtfi.jdField_a_of_type_Int == 7) || (paramtfi.jdField_a_of_type_Int == 8) || (paramtfi.jdField_a_of_type_Int == 9) || (paramtfi.jdField_a_of_type_Int == 12) || (paramtfi.jdField_a_of_type_Int == 13);
+    return tit.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(tbg paramtbg, int paramInt)
+  {
+    paramtbg.a((tff)a(paramInt));
   }
 }
 

@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aqfg
-  implements auoo
+class aqfg
+  implements DialogInterface.OnClickListener
 {
-  public aqfg(ForwardSdkShareOption.2 param2) {}
+  aqfg(aqfd paramaqfd) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public void a(auop paramauop)
-  {
-    if ((paramauop != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramauop.toString() });
+    if (this.a.c) {
+      bdes.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
-  }
-  
-  public void b(auop paramauop)
-  {
-    aqgh.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    aqfb.a(this.a.this$0, this.a.this$0.a, paramauop, this.a.b, this.a.c, this.a.d);
+    aqes.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
   }
 }
 

@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public final class avuo
-  extends BroadcastReceiver
+public class avuo
 {
-  private avuo(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public avuo(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      avsd.a().b();
-      avsd.a().a(new avup(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramInt3;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import axad;
+import axaf;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -51,7 +51,7 @@ public class MessageForArkBabyqReply
       this.mArkBabyqReplyCardList = new ArrayList();
     }
     fromBytes(this.msgData);
-    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(axad.g));
+    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(axaf.g));
   }
   
   public boolean fromAppXml(String paramString)

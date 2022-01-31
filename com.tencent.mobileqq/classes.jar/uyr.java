@@ -1,11 +1,17 @@
-public class uyr
-  extends ssk
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
+
+final class uyr
+  implements uzz
 {
-  public int a;
+  uyr(WeakReference paramWeakReference) {}
   
-  public uyr(int paramInt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.a = paramInt;
+    uys localuys = (uys)this.a.get();
+    if (localuys != null) {
+      localuys.a(paramErrorMessage);
+    }
   }
 }
 

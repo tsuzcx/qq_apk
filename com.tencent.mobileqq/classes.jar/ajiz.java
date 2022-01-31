@@ -1,6 +1,13 @@
-public abstract interface ajiz
+import android.widget.ImageView.ScaleType;
+
+public class ajiz
 {
-  public abstract void a(String paramString1, boolean paramBoolean, long paramLong, Object paramObject, String paramString2);
+  public int a;
+  public ImageView.ScaleType a = ImageView.ScaleType.CENTER_INSIDE;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

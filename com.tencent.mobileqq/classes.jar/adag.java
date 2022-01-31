@@ -1,217 +1,35 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.5;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileInputStream;
-import java.io.IOException;
-import mqq.os.MqqHandler;
 
-public class adag
-  extends adal
-  implements Animator.AnimatorListener
+class adag
+  implements ImageAssetDelegate
 {
-  private adbf jdField_a_of_type_Adbf;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
+  adag(adad paramadad) {}
   
-  public adag(Context paramContext)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Adbf = new adbf(paramContext);
-    this.jdField_a_of_type_Adbf.a(new adah(this));
-  }
-  
-  private QQAppInterface a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (a() != null)
-    {
-      localObject1 = localObject2;
-      if ((a() instanceof BaseActivity)) {
-        localObject1 = ((BaseActivity)a()).app;
-      }
-    }
-    return localObject1;
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangString = asxj.a(paramQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c);
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieAnimDirector", 1, "onResourceReady lottieUrl:" + this.jdField_b_of_type_JavaLangString + "  lottieMd5:" + this.c + " mResPath:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new adaj(this));
-    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
     try
     {
-      paramQQAppInterface = new FileInputStream(this.jdField_a_of_type_JavaLangString + "data.json");
-      QLog.i("LottieAnimDirector", 1, "decode anim async");
-      LottieComposition.Factory.fromInputStream(a(), paramQQAppInterface, new adak(this));
-      return;
+      paramLottieImageAsset = bbef.a(adad.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    catch (IOException paramQQAppInterface)
+    catch (Exception paramLottieImageAsset)
     {
-      QLog.e("LottieAnimDirector", 1, "Decode anim json error");
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
     }
-  }
-  
-  private void a(LottieComposition paramLottieComposition)
-  {
-    QLog.i("LottieAnimDirector", 1, "decode json success");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (paramLottieComposition != null))
+    catch (OutOfMemoryError paramLottieImageAsset)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(false);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.addAnimatorListener(this);
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LottieAnimDirector", 2, "refresh Lottie.d");
-        }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-      }
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
     }
+    return null;
   }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "play");
-    }
-    ThreadManager.getUIHandler().postDelayed(new LottieAnimDirector.5(this), 300L);
-  }
-  
-  public void a(adar paramadar)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "prepare");
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null)
-    {
-      paramadar.a(false);
-      return;
-    }
-    if (asxj.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c))
-    {
-      a(localQQAppInterface);
-      paramadar.a(true);
-      return;
-    }
-    asxj.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c, new adai(this, paramadar));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "setLottieResources url:" + paramString1 + " md5:" + paramString2);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "cancel");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-    }
-    if (this.jdField_a_of_type_Adbf != null)
-    {
-      this.jdField_a_of_type_Adbf.b();
-      this.jdField_a_of_type_Adbf.c();
-    }
-    a(8);
-    super.b();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnPause");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
-    }
-    if ((this.jdField_a_of_type_Adbf != null) && (this.jdField_a_of_type_Adbf.a())) {
-      this.jdField_a_of_type_Adbf.d();
-    }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnResume");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
-    }
-    if ((this.jdField_a_of_type_Adbf != null) && (this.jdField_a_of_type_Adbf.a())) {
-      this.jdField_a_of_type_Adbf.e();
-    }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnDestroy");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-    }
-    if (this.jdField_a_of_type_Adbf != null)
-    {
-      this.jdField_a_of_type_Adbf.b();
-      this.jdField_a_of_type_Adbf.c();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    b();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

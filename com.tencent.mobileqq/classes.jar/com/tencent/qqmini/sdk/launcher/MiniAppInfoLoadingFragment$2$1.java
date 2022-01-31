@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.launcher;
 
 import android.text.TextUtils;
-import beqg;
-import besl;
+import beqx;
+import betc;
 import org.json.JSONObject;
 
 public class MiniAppInfoLoadingFragment$2$1
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$2$1(beqg parambeqg, JSONObject paramJSONObject) {}
+  public MiniAppInfoLoadingFragment$2$1(beqx parambeqx, JSONObject paramJSONObject) {}
   
   public void run()
   {
     long l = this.jdField_a_of_type_OrgJsonJSONObject.optLong("retCode");
     String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("errMsg");
-    besl.d("MiniAppInfoLoadingFragment", "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str2);
+    betc.d("MiniAppInfoLoadingFragment", "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str2);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "网络请求错误，无法加载";
     }
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqg.a, str1, l);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqx.a, str1, l);
   }
 }
 

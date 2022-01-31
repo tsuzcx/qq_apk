@@ -1,33 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class awxb
-  extends awww
+  extends awwy
 {
+  public int a;
+  public FrameLayout a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public URLImageView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
+  
   public awxb(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
-    TextView localTextView = c();
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      if (localTextView != null) {
-        ((TextView)localTextView).setTextColor(localTextView.getContext().getResources().getColor(2131166791));
-      }
-    }
-    while (localTextView == null) {
-      return;
-    }
-    ((TextView)localTextView).setTextColor(Color.parseColor("#737373"));
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364810));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376880));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371647));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131376238));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131367872));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368889));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365428));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365440));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131374724));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131379589));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379591));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364484));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364514));
   }
 }
 

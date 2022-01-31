@@ -1,24 +1,9 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.ArrayList;
 
-class pbw
-  extends Handler
+public abstract interface pbw
+  extends pbv
 {
-  pbw(pbu parampbu, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.f();
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<ozx> paramArrayList, String paramString);
 }
 
 

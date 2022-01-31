@@ -1,17 +1,27 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qphone.base.util.QLog;
 
 public class wwb
   implements View.OnClickListener
 {
-  public wwb(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, CertifiedAccountMeta.StYouZanShop paramStYouZanShop) {}
+  public wwb(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
   public void onClick(View paramView)
   {
-    wiv.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StYouZanShop.schema.get());
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      wis.a(ServiceFolderFollowPBHeadView.a(this.a));
+    }
+    for (;;)
+    {
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      axqy.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+    }
   }
 }
 

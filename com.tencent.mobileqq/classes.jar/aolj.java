@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
-import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aolj
-  implements OnCompositionLoadedListener
+class aolj
+  implements Animation.AnimationListener
 {
-  public aolj(MatchingView.1 param1) {}
+  aolj(aoli paramaoli) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
-      return;
-    }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    MatchingView.a(this.a.this$0, localLottieDrawable);
-    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

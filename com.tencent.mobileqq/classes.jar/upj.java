@@ -1,27 +1,44 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.Iterator;
+import java.util.List;
 
 class upj
-  extends ParallelJobSegment<String, upf>
+  implements syq<tmi, tof>
 {
-  public int a;
+  upj(upi paramupi, JobContext paramJobContext, String paramString) {}
   
-  public upj(upd paramupd, int paramInt)
+  public void a(@NonNull tmi paramtmi, @Nullable tof paramtof, @NonNull ErrorMessage paramErrorMessage)
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    upx localupx = new upx();
-    localupx.jdField_a_of_type_JavaLangString = paramString;
-    localupx.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localupx.c = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
+      return;
     }
-    syr.a().a(localupx, new upk(this, paramJobContext, paramString));
+    if ((paramtof == null) || (paramErrorMessage.isFail()))
+    {
+      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
+      upi.a(this.jdField_a_of_type_Upi, paramErrorMessage);
+      return;
+    }
+    if (paramtof.a != null)
+    {
+      paramtmi = paramtof.a.iterator();
+      do
+      {
+        if (!paramtmi.hasNext()) {
+          break;
+        }
+        paramtof = (tec)paramtmi.next();
+      } while (!paramtof.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    }
+    for (int i = paramtof.c;; i = 0)
+    {
+      upi.a(this.jdField_a_of_type_Upi, Integer.valueOf(i));
+      return;
+    }
   }
 }
 

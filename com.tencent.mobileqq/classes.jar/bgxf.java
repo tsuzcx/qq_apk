@@ -1,40 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.os.Bundle;
 
-public final class bgxf
-  implements Parcelable.Creator<LbsDataV2.GeoInfo>
+public abstract class bgxf
 {
-  public LbsDataV2.GeoInfo a(Parcel paramParcel)
+  protected final int a;
+  public String a;
+  protected final int b;
+  public String b;
+  public int c = -9999999;
+  public int d;
+  
+  public bgxf()
   {
-    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
-    if (paramParcel != null)
-    {
-      localGeoInfo.address = paramParcel.readString();
-      localGeoInfo.iDistrictCode = paramParcel.readInt();
-      localGeoInfo.iRange = paramParcel.readInt();
-      localGeoInfo.strCountry = paramParcel.readString();
-      localGeoInfo.strProvince = paramParcel.readString();
-      localGeoInfo.strCity = paramParcel.readString();
-      localGeoInfo.strDistrict = paramParcel.readString();
-      localGeoInfo.strTown = paramParcel.readString();
-      localGeoInfo.strVillage = paramParcel.readString();
-      localGeoInfo.strRoad = paramParcel.readString();
-      localGeoInfo.strDefaultName = paramParcel.readString();
-      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-    }
-    return localGeoInfo;
+    this.jdField_a_of_type_Int = -9999999;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public LbsDataV2.GeoInfo[] a(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    return null;
+    paramBundle.putInt("_mqqpay_baseresp_retcode", this.c);
+    paramBundle.putString("_mqqpay_baseresp_retmsg", this.jdField_a_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_baseapi_apiname", this.jdField_b_of_type_JavaLangString);
+    paramBundle.putInt("_mqqpay_baseapi_apimark", this.d);
+  }
+  
+  public boolean a()
+  {
+    return this.c == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxf
  * JD-Core Version:    0.7.0.1
  */

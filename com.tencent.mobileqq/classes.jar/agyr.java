@@ -1,19 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class agyr
-  extends RecyclerView.OnScrollListener
+  implements PopupWindow.OnDismissListener
 {
   public agyr(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onDismiss()
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    RedPacketManager.getInstance().onActiveAccount();
+    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (agyu.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
     {
-      aelm.a(bool);
-      return;
+      agyu.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
+      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
+    }
+    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
+      ahiw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
     }
   }
 }

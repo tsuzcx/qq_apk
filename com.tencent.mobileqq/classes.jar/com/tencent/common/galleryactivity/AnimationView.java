@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import bfnj;
-import xpv;
+import bfoa;
+import xps;
 
 public class AnimationView
   extends View
@@ -24,8 +24,8 @@ public class AnimationView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator = new AccelerateDecelerateInterpolator();
-  bfnj jdField_a_of_type_Bfnj = new bfnj();
-  private xpv jdField_a_of_type_Xpv;
+  bfoa jdField_a_of_type_Bfoa = new bfoa();
+  private xps jdField_a_of_type_Xps;
   public boolean a;
   float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 3;
@@ -74,8 +74,8 @@ public class AnimationView
       {
         this.jdField_a_of_type_Int = 3;
         this.jdField_e_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Xpv != null) {
-          this.jdField_a_of_type_Xpv.b();
+        if (this.jdField_a_of_type_Xps != null) {
+          this.jdField_a_of_type_Xps.b();
         }
         super.onDraw(paramCanvas);
         return;
@@ -145,8 +145,8 @@ public class AnimationView
       }
     }
     this.jdField_e_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.b();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.b();
     }
     paramCanvas.save();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
@@ -170,8 +170,8 @@ public class AnimationView
         this.jdField_b_of_type_Int = 3;
         this.jdField_f_of_type_Boolean = false;
         super.onDraw(paramCanvas);
-      } while (this.jdField_a_of_type_Xpv == null);
-      this.jdField_a_of_type_Xpv.e();
+      } while (this.jdField_a_of_type_Xps == null);
+      this.jdField_a_of_type_Xps.e();
       return;
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_b_of_type_Int = 2;
@@ -181,7 +181,7 @@ public class AnimationView
         this.jdField_b_of_type_Int = 3;
       }
       f1 = Math.min(f1, 1.0F);
-      f1 = this.jdField_a_of_type_Bfnj.getInterpolation(f1);
+      f1 = this.jdField_a_of_type_Bfoa.getInterpolation(f1);
       Rect localRect1 = this.jdField_a_of_type_AndroidGraphicsRect;
       Rect localRect2 = this.jdField_b_of_type_AndroidGraphicsRect;
       int[] arrayOfInt = new int[2];
@@ -236,8 +236,8 @@ public class AnimationView
         }
       }
     }
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.e();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.e();
     }
     this.jdField_f_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
@@ -286,15 +286,15 @@ public class AnimationView
       paramCanvas.restore();
       return;
       label468:
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_Bfnj.getInterpolation(this.jdField_e_of_type_Float);
+      this.jdField_e_of_type_Float = this.jdField_a_of_type_Bfoa.getInterpolation(this.jdField_e_of_type_Float);
       break;
       label486:
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Xpv != null) {
+      if (this.jdField_a_of_type_Xps != null) {
         if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Xpv.b();
+          this.jdField_a_of_type_Xps.b();
         } else {
-          this.jdField_a_of_type_Xpv.e();
+          this.jdField_a_of_type_Xps.e();
         }
       }
     }
@@ -312,8 +312,8 @@ public class AnimationView
     this.jdField_d_of_type_Int = paramInt2;
     this.jdField_e_of_type_Int = paramInt3;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.d();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.d();
     }
     invalidate();
   }
@@ -328,8 +328,8 @@ public class AnimationView
     this.jdField_b_of_type_AndroidGraphicsRect = paramRect2;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_c_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.c();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.c();
     }
     invalidate();
   }
@@ -349,8 +349,8 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.c();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.c();
     }
   }
   
@@ -369,8 +369,8 @@ public class AnimationView
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     this.jdField_c_of_type_Long = paramLong;
     a();
-    if (this.jdField_a_of_type_Xpv != null) {
-      this.jdField_a_of_type_Xpv.d();
+    if (this.jdField_a_of_type_Xps != null) {
+      this.jdField_a_of_type_Xps.d();
     }
   }
   
@@ -394,9 +394,9 @@ public class AnimationView
     super.onDraw(paramCanvas);
   }
   
-  public void setAnimationListener(xpv paramxpv)
+  public void setAnimationListener(xps paramxps)
   {
-    this.jdField_a_of_type_Xpv = paramxpv;
+    this.jdField_a_of_type_Xps = paramxps;
   }
 }
 

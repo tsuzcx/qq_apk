@@ -1,59 +1,113 @@
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.qphone.base.util.QLog;
+
 public class biby
 {
-  private static bibz a;
-  public static String a;
-  
-  static
+  public static String a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
-  }
-  
-  public static bibz a()
-  {
-    if (jdField_a_of_type_Bibz == null) {
-      a();
-    }
-    return jdField_a_of_type_Bibz;
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangString)
+    localObject2 = null;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      if (jdField_a_of_type_Bibz == null) {
-        jdField_a_of_type_Bibz = new bibz();
+      paramString2 = "";
+      return paramString2;
+    }
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = paramString1.getBytes();
+        localObject1 = localObject2;
+        if (arrayOfByte != null)
+        {
+          localObject1 = localObject2;
+          if (arrayOfByte.length > 0)
+          {
+            paramString2 = new bibx().b(arrayOfByte, paramString2.getBytes());
+            localObject1 = localObject2;
+            if (paramString2 != null)
+            {
+              paramString2 = Base64.encode(paramString2, 2);
+              if (paramString2 == null) {
+                continue;
+              }
+              paramString2 = new String(paramString2);
+              localObject1 = paramString2;
+            }
+          }
+        }
       }
-      jdField_a_of_type_Bibz.a();
-      return;
+      catch (Exception paramString2)
+      {
+        Object localObject1 = localObject2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("WadlProviderUtil", 4, "encodeStr exception:", paramString2);
+        localObject1 = localObject2;
+        continue;
+      }
+      paramString2 = (String)localObject1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("WadlProviderUtil", 4, "encodeStr signStr=" + paramString1 + ",encodeStr=" + (String)localObject1);
+      return localObject1;
+      paramString2 = null;
     }
   }
   
-  public static void a(bibq parambibq)
+  public static String b(String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_Bibz != null) {
-      jdField_a_of_type_Bibz.a(parambibq);
-    }
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Bibz != null)
+    localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      jdField_a_of_type_Bibz.d();
-      jdField_a_of_type_Bibz = null;
+      if (!TextUtils.isEmpty(paramString2)) {
+        break label27;
+      }
+      localObject1 = localObject3;
     }
-  }
-  
-  public static void b(bibq parambibq)
-  {
-    if (jdField_a_of_type_Bibz != null) {
-      jdField_a_of_type_Bibz.b(parambibq);
-    }
+    label27:
+    do
+    {
+      return localObject1;
+      try
+      {
+        paramString1 = Base64.decode(paramString1, 2);
+        if ((paramString1 == null) || (paramString1.length <= 0)) {
+          break;
+        }
+        paramString1 = new bibx().a(paramString1, paramString2.getBytes());
+        if (paramString1 == null) {
+          break;
+        }
+        paramString1 = new String(paramString1);
+      }
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          paramString1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("WadlProviderUtil", 4, "decodeStr exception:", paramString2);
+            paramString1 = localObject2;
+            continue;
+            paramString1 = null;
+          }
+        }
+      }
+      localObject1 = paramString1;
+    } while (!QLog.isColorLevel());
+    QLog.d("WadlProviderUtil", 4, "decodeStr decodeStr=" + paramString1);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biby
  * JD-Core Version:    0.7.0.1
  */

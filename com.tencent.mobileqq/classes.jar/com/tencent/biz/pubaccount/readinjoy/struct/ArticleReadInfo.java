@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
+import auko;
 
 public class ArticleReadInfo
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleReadInfo.class.getSimpleName();

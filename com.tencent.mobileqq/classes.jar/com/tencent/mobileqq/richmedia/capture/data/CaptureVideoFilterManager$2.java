@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avsd;
+import avsf;
 
 public class CaptureVideoFilterManager$2
   implements Runnable
 {
   public void run()
   {
-    avsd.a(this.this$0);
+    avsf.a(this.this$0);
   }
 }
 

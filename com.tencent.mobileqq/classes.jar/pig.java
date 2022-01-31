@@ -1,26 +1,28 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
 
 public class pig
   implements ViewBase.OnClickListener
 {
-  BaseArticleInfo a;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private ram jdField_a_of_type_Ram;
   
-  public pig(BaseArticleInfo paramBaseArticleInfo)
+  public pig(ArticleInfo paramArticleInfo, ram paramram)
   {
-    this.a = paramBaseArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_Ram = paramram;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    rap.a((ArticleInfo)this.a, (int)this.a.mChannelID);
-    onk.a(localBaseActivity, paramViewBase);
+    paramViewBase = this.jdField_a_of_type_Ram.a();
+    if (paramViewBase != null) {
+      paramViewBase.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+    }
   }
 }
 

@@ -1,4 +1,7 @@
-public class xez {}
+public abstract interface xez
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

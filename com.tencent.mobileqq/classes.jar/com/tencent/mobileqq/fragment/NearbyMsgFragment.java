@@ -62,7 +62,7 @@ public class NearbyMsgFragment
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560862, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560861, paramViewGroup, false);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(false);

@@ -1,19 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.util.ArrayList;
 
 class atse
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  atse(atsa paramatsa) {}
+  atse(atsc paramatsc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    atbp.a(this.a.a, 30);
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
+    if (i >= NearbyPeopleProfileActivity.c)
+    {
+      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694557), 0).a();
+      return;
+    }
+    atsc.c(this.a);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

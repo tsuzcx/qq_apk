@@ -1,13 +1,18 @@
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
 
 public class qeo
-  implements ayvy
+  implements qfl
 {
   public qeo(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(ArrayList<MessageRecord> paramArrayList) {}
+  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  {
+    ReadInJoyDeliverUGCActivity.a(this.a, true);
+    ReadInJoyDeliverUGCActivity.a(this.a, ((Integer)paramView.getTag()).intValue());
+    return false;
+  }
 }
 
 

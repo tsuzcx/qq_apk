@@ -1,27 +1,15 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class ujn
-  extends QQUIEventReceiver<ujl, tkn>
+class ujn
+  implements tsn
 {
-  public ujn(@NonNull ujl paramujl)
-  {
-    super(paramujl);
-  }
+  ujn(ujm paramujm) {}
   
-  public void a(@NonNull ujl paramujl, @NonNull tkn paramtkn)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if (paramtkn.a.isSuccess())
-    {
-      veg.a(this.TAG, "receive user info event. %s.", paramtkn.toString());
-      paramujl.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkn.class;
+    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

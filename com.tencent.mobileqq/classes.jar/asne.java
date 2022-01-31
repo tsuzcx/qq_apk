@@ -1,33 +1,13 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
 
 public class asne
-  implements askx
+  implements DialogInterface.OnClickListener
 {
-  public asne(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public asne(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
   
-  public void a(List<RecentBaseData> paramList)
-  {
-    MsgBackupSelectionFragment.a(this.a, true);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-    }
-    for (;;)
-    {
-      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
-      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
-      return;
-      if (MsgBackupSelectionFragment.a(this.a) == 0) {
-        asoe.a("0X800A232");
-      } else if (asle.c) {
-        asoe.a("0X800A257");
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

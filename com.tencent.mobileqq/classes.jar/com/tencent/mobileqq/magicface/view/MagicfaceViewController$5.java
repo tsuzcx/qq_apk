@@ -2,19 +2,19 @@ package com.tencent.mobileqq.magicface.view;
 
 import android.widget.Button;
 import android.widget.RelativeLayout.LayoutParams;
-import asdy;
-import bbdh;
+import asea;
+import bbdv;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class MagicfaceViewController$5
   implements Runnable
 {
-  public MagicfaceViewController$5(asdy paramasdy) {}
+  public MagicfaceViewController$5(asea paramasea) {}
   
   public void run()
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.this$0.c.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)bbdh.a(this.this$0.a.a(), 10.0F));
+    localLayoutParams.rightMargin = ((int)bbdv.a(this.this$0.a.a(), 10.0F));
     this.this$0.c.setLayoutParams(localLayoutParams);
   }
 }

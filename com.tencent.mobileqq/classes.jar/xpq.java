@@ -1,14 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class xpq
-  implements View.OnClickListener
+  implements xps
 {
-  xpq(xpn paramxpn) {}
+  xpq(xpk paramxpk) {}
   
-  public void onClick(View paramView)
+  public void b()
   {
-    this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+    }
+    this.a.b();
+  }
+  
+  public void c()
+  {
+    this.a.c();
+  }
+  
+  public void d()
+  {
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.e();
   }
 }
 

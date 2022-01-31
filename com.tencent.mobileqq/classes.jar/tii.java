@@ -1,55 +1,82 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
 public class tii
+  extends RecyclerView.ItemDecoration
 {
-  public int a;
-  public String a;
-  public int b;
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public tii()
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    tcv localtcv = (tcv)tdc.a(10);
-    String str = vyb.a();
-    this.jdField_a_of_type_JavaLangString = ((String)localtcv.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_Int = ((Integer)localtcv.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
-    this.b = ((Integer)localtcv.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
-    {
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localtcv.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localtcv.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+  }
+  
+  public tii(Context paramContext)
+  {
+    this.jdField_a_of_type_Int = actj.a(5.0F, paramContext.getResources());
+    this.b = actj.a(16.0F, paramContext.getResources());
+    this.c = actj.a(8.5F, paramContext.getResources());
+    this.d = actj.a(3.0F, paramContext.getResources());
+    this.e = actj.a(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
     }
-    veg.a(thy.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_a_of_type_Int += 1;
-    ((tcv)tdc.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
-    veg.a(thy.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a()
-  {
-    b();
-    veg.a(thy.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
-    return this.jdField_a_of_type_Int < this.b;
-  }
-  
-  public void b()
-  {
-    String str = vyb.a();
-    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
     {
-      tcv localtcv = (tcv)tdc.a(10);
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Int = 0;
-      localtcv.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
-      localtcv.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
     }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

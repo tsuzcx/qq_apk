@@ -1,42 +1,31 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vlz
-  implements LocationListener
+  implements syq<tmf, tod>
 {
-  vlz(vlv paramvlv) {}
+  vlz(vls paramvls) {}
   
-  public void onLocationChanged(Location paramLocation)
+  public void a(@NonNull tmf paramtmf, @Nullable tod paramtod, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramLocation != null)
+    ved.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramtod + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
     {
-      veg.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
+      if (!TextUtils.equals(paramtmf.a, this.a.jdField_b_of_type_JavaLangString))
       {
-        this.a.b.remove(0);
-        veg.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+        ved.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramtod);
+        return;
       }
-      this.a.b.add(new Location(paramLocation));
-      return;
+      if ((paramtod == null) || (paramErrorMessage.isFail()))
+      {
+        ved.d("DoodleEmojiManager", "get emoji error : " + paramtod + ", " + paramErrorMessage);
+        return;
+      }
     }
-    veg.d("DoodleEmojiManager", "onLocationChanged, location is null.");
-  }
-  
-  public void onProviderDisabled(String paramString)
-  {
-    veg.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
-  }
-  
-  public void onProviderEnabled(String paramString)
-  {
-    veg.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
-  }
-  
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
-  {
-    veg.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
+    this.a.jdField_b_of_type_JavaLangString = paramtod.a;
+    this.a.a(TextUtils.isEmpty(paramtmf.a), paramtod, false);
   }
 }
 

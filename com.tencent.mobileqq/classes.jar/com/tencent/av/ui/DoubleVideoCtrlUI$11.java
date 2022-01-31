@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import mtt;
+import mtq;
 
 class DoubleVideoCtrlUI$11
   implements Runnable
@@ -9,7 +9,7 @@ class DoubleVideoCtrlUI$11
   
   public void run()
   {
-    mtt.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
+    mtq.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
   }
 }
 

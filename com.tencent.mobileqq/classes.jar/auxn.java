@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class auxn
-  implements DialogInterface.OnClickListener
+  implements bhkn
 {
   public auxn(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(3, "").sendToTarget();
-    axqw.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    }
+    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
+      StickyNotePublishFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
+    {
+      bcql.a(BaseApplication.context, 2, 2131699319, 0).a();
+      if (this.a.getActivity() != null)
+      {
+        StickyNotePublishFragment.b(this.a, false);
+        this.a.a(this.a.getActivity().app);
+        this.a.getActivity().setResult(-1);
+        this.a.getActivity().finish();
+      }
+      return;
+    }
+    int i = 2131699317;
+    if (paramInt == auxf.b) {
+      i = 2131699318;
+    }
+    bcql.a(BaseApplication.context, 1, i, 0).a();
   }
 }
 

@@ -1,26 +1,9 @@
-class biir
-  implements biob
+import java.io.File;
+
+public class biir
 {
-  biir(biim parambiim) {}
-  
-  public void a()
-  {
-    biim.a(this.a).a(null);
-  }
-  
-  public void a(biqn parambiqn)
-  {
-    if (biim.a(this.a) == bivx.a)
-    {
-      biim.a(this.a).a(parambiqn);
-      return;
-    }
-    bizq.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public static final String a = biio.b() + File.separator + "ae";
+  public static final String b = biio.c() + File.separator + "ae";
 }
 
 

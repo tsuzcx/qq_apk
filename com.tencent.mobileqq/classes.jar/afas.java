@@ -1,29 +1,20 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
+import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.7.1;
-import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class afas
-  implements MediaPlayer.OnPreparedListener
+  implements MediaPlayer.OnErrorListener
 {
   public afas(BlessActivity paramBlessActivity) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new BlessActivity.7.1(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    axqw.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
+    return true;
   }
 }
 

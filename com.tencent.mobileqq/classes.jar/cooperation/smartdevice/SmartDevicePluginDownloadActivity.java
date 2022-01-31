@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbev;
-import bcpq;
-import bfni;
-import bhvv;
+import bbfj;
+import bcqf;
+import bfnz;
+import bhwm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -29,24 +29,24 @@ public class SmartDevicePluginDownloadActivity
   protected Button a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  bcpq jdField_a_of_type_Bcpq = null;
+  bcqf jdField_a_of_type_Bcqf = null;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bcpq == null)
+    if (this.jdField_a_of_type_Bcqf == null)
     {
-      this.jdField_a_of_type_Bcpq = new bcpq(this, super.getResources().getDimensionPixelSize(2131298865));
-      this.jdField_a_of_type_Bcpq.c(2131691937);
+      this.jdField_a_of_type_Bcqf = new bcqf(this, super.getResources().getDimensionPixelSize(2131298865));
+      this.jdField_a_of_type_Bcqf.c(2131691937);
     }
-    this.jdField_a_of_type_Bcpq.show();
+    this.jdField_a_of_type_Bcqf.show();
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
     {
-      this.jdField_a_of_type_Bcpq.cancel();
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf.cancel();
+      this.jdField_a_of_type_Bcqf = null;
     }
   }
   
@@ -56,19 +56,19 @@ public class SmartDevicePluginDownloadActivity
     if (getIntent().getBooleanExtra("KEY_OPENAV_RECEIVE", false))
     {
       paramBundle = getIntent();
-      bhvv.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
+      bhwm.a().a(this, this.app, this.app.getAccount(), paramBundle, "com.tencent.device.activities.openav.OpenAVActivity", -1, null, SmartDevicePluginProxyActivity.class);
       finish();
       return false;
     }
     super.setContentView(2131558971);
     super.setTitle(2131691377);
-    bhvv.a().addObserver(this);
+    bhwm.a().addObserver(this);
     this.leftView.setText(2131690331);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365099));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365098));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365096));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370458));
-    if (!bbev.h(this.app.getApp())) {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365095));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370457));
+    if (!bbfj.h(this.app.getApp())) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
     return true;
@@ -77,16 +77,16 @@ public class SmartDevicePluginDownloadActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bhvv.a().deleteObserver(this);
+    bhwm.a().deleteObserver(this);
   }
   
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    if (!bhvv.a().a(this.app))
+    if (!bhwm.a().a(this.app))
     {
       a();
-      bhvv.a().a();
+      bhwm.a().a();
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("nickname", this.app.getCurrentNickname());
@@ -114,7 +114,7 @@ public class SmartDevicePluginDownloadActivity
       bool = ((SharedPreferences)localObject).getBoolean("search_device_enable_https_" + this.app.getCurrentAccountUin(), false);
       localObject = paramView;
       localView = paramView;
-      if (bfni.d())
+      if (bfnz.d())
       {
         localObject = paramView;
         if (bool)
@@ -132,7 +132,7 @@ public class SmartDevicePluginDownloadActivity
         Object localObject = localView;
       }
     }
-    bhvv.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject, 0, null, SmartDevicePluginProxyActivity.class);
+    bhwm.a().a(this, this.app, this.app.getAccount(), localIntent, (String)localObject, 0, null, SmartDevicePluginProxyActivity.class);
   }
   
   public void update(Observable paramObservable, Object paramObject)

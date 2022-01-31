@@ -1,24 +1,18 @@
-import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class arir
-  implements ActionCallback
+final class arir
+  implements amag
 {
-  arir(arii paramarii, arja paramarja) {}
-  
-  public void onResult(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    try
+    if (paramInt1 == arik.a)
     {
-      i = Integer.parseInt(paramString);
-      this.jdField_a_of_type_Arja.a(i, "");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
+      Intent localIntent = new Intent();
+      localIntent.setAction("action.now.jump");
+      localIntent.putExtra("jump_action", paramInt2);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
   }
 }

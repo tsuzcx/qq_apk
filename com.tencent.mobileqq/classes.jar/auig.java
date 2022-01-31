@@ -5,13 +5,11 @@ import com.tencent.mobileqq.data.AutoReplyText;
 class auig
   implements View.OnClickListener
 {
-  auig(auib paramauib, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
+  auig(auid paramauid, AutoReplyText paramAutoReplyText) {}
   
   public void onClick(View paramView)
   {
-    if (auib.a(this.jdField_a_of_type_Auib) != null) {
-      auib.a(this.jdField_a_of_type_Auib).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_Auid.a(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId());
   }
 }
 

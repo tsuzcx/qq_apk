@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
 
-class bjqa
-  implements View.OnClickListener
+public class bjqa
+  extends AnimatorListenerAdapter
 {
-  bjqa(bjpy parambjpy) {}
+  public bjqa(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.jdField_a_of_type_DovComQqImPtvLightWeightProgress.setStatus(true);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleX(1.0F);
-    this.a.a.jdField_a_of_type_DovComQqImPtvBaseButton.setScaleY(1.0F);
-    this.a.a.j();
-    arql.b();
+    this.a.b.setTranslationX(0.0F);
   }
 }
 

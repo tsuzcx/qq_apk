@@ -1,13 +1,14 @@
-import com.tencent.widget.MovingView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class bftb
+class bftb
+  implements PopupWindow.OnDismissListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  bftb(bfsz parambfsz) {}
   
-  public bftb(MovingView paramMovingView) {}
+  public void onDismiss()
+  {
+    this.a.a(1.0F);
+  }
 }
 
 

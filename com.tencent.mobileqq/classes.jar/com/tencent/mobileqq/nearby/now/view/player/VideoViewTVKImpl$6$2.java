@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
 import android.text.TextUtils;
-import atld;
-import atlj;
+import atlf;
+import atll;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class VideoViewTVKImpl$6$2
   implements Runnable
 {
-  public VideoViewTVKImpl$6$2(atlj paramatlj) {}
+  public VideoViewTVKImpl$6$2(atll paramatll) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_Atld.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Atld.c)))
+    if ((this.a.jdField_a_of_type_Atlf.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Atlf.c)))
     {
-      this.a.jdField_a_of_type_Atld.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_Atld.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Atld.c, 0L, 0L, null, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
-      this.a.jdField_a_of_type_Atld.jdField_a_of_type_Int = 1;
+      this.a.jdField_a_of_type_Atlf.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_Atlf.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Atlf.c, 0L, 0L, null, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+      this.a.jdField_a_of_type_Atlf.jdField_a_of_type_Int = 1;
     }
   }
 }

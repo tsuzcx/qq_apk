@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import alcn;
+import alcm;
 
 public final class FaceScanDownloadManager$1
   implements Runnable
 {
-  public FaceScanDownloadManager$1(alcn paramalcn, int paramInt1, int paramInt2) {}
+  public FaceScanDownloadManager$1(alcm paramalcm, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Alcn != null) {
-      this.jdField_a_of_type_Alcn.a(this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_Alcm != null) {
+      this.jdField_a_of_type_Alcm.a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

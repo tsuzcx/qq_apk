@@ -1,15 +1,15 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
-class wna
+public class wna
+  implements Dispatcher.Dispatchable
 {
-  public COMM.StCommonExt a;
-  public boolean a;
-  public boolean b;
+  public int a;
+  public Object a;
   
-  public String toString()
+  public wna(int paramInt, Object... paramVarArgs)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 

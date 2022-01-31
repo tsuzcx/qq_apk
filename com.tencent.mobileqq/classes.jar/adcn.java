@@ -1,16 +1,24 @@
-public abstract interface adcn
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class adcn
+  extends BroadcastReceiver
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public adcn(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      }
+      this.a.finish();
+    }
+  }
 }
 
 

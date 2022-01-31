@@ -1,108 +1,73 @@
-import android.animation.ValueAnimator;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import java.util.ArrayList;
 
 public class azlt
+  extends BaseAdapter
 {
-  protected final Context a;
-  protected final View.OnClickListener a;
-  protected View a;
-  protected final ViewStub a;
-  protected azkf a;
-  protected azlr a;
-  protected final azlx a;
-  protected boolean a;
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
+  protected View.OnClickListener a;
+  protected azmb a;
+  protected ArrayList<azmb> a;
   
-  public azlt(ViewStub paramViewStub, Context paramContext, View.OnClickListener paramOnClickListener, azlx paramazlx)
+  public azlt(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Azlx = paramazlx;
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2, Interpolator paramInterpolator, boolean paramBoolean)
+  public void a(azmb paramazmb)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
-    localValueAnimator.setDuration(200L);
-    localValueAnimator.setInterpolator(paramInterpolator);
-    localValueAnimator.addUpdateListener(new azlu(this, paramView));
-    localValueAnimator.addListener(new azlv(this, paramBoolean, paramView, paramInt2));
-    localValueAnimator.start();
+    this.jdField_a_of_type_Azmb = paramazmb;
+    this.jdField_a_of_type_JavaUtilArrayList = paramazmb.jdField_a_of_type_JavaUtilArrayList;
+    super.notifyDataSetChanged();
   }
   
-  private void a(azkf paramazkf, boolean paramBoolean)
+  public int getCount()
   {
-    if (paramBoolean) {}
-    for (ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 });; localValueAnimator = ValueAnimator.ofInt(new int[] { 100, 0 }))
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    azmb localazmb = (azmb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    azlu localazlu = new azlu();
+    if (paramView != null)
     {
-      localValueAnimator.setDuration(200L);
-      localValueAnimator.setInterpolator(new LinearInterpolator());
-      localValueAnimator.addUpdateListener(new azlw(this, paramazkf));
-      localValueAnimator.start();
-      return;
+      localazlu = (azlu)paramView.getTag();
+      paramViewGroup = paramView;
     }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376626);
-    this.jdField_a_of_type_Azlr = new azlr(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localGridView.setAdapter(this.jdField_a_of_type_Azlr);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Azkf = null;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public boolean a(azkf paramazkf, azlz paramazlz)
-  {
-    b();
-    int i;
-    if (this.jdField_a_of_type_Azkf != null)
+    for (paramView = localazlu;; paramView = localazlu)
     {
-      i = ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).height;
-      if (this.jdField_a_of_type_Azkf == paramazkf)
-      {
-        a(paramazkf, false);
-        a(this.jdField_a_of_type_AndroidViewView, i, 0, new DecelerateInterpolator(), true);
-        this.jdField_a_of_type_Azkf = null;
-        return false;
+      paramView.a.setText(localazmb.b);
+      paramView.a.setTag(localazmb);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        paramView.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
-      a(this.jdField_a_of_type_Azkf, false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Azlr.a(paramazlz);
-      this.jdField_a_of_type_Azkf = paramazkf;
-      int[] arrayOfInt = new int[2];
-      paramazkf.a.getLocationInWindow(arrayOfInt);
-      int j = (int)Math.ceil(paramazlz.a.size() / 3.0F);
-      j = vzo.a(this.jdField_a_of_type_AndroidContentContext, j * 56 - 13 + 30);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(paramazkf, true);
-      a(this.jdField_a_of_type_AndroidViewView, i, j, new AccelerateInterpolator(), false);
-      return true;
-      i = 0;
+      return paramViewGroup;
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560318, null);
+      localazlu.a = ((TextView)paramViewGroup.findViewById(2131377032));
+      paramViewGroup.setTag(localazlu);
     }
   }
 }

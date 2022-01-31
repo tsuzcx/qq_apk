@@ -9,19 +9,19 @@ public class abvq
   
   public void onClick(View paramView)
   {
-    if (!bbev.d(this.a)) {
-      this.a.x();
-    }
-    for (;;)
+    if (this.a.l)
     {
-      xnq.a("see_streetview");
+      this.a.w();
       return;
-      if (bbev.a(this.a)) {
-        this.a.p();
-      } else {
-        bbcv.a(this.a, 230).setTitle(this.a.getString(2131690024)).setMessage(2131694899).setPositiveButton(2131691036, new abvs(this)).setNegativeButton(2131690596, new abvr(this)).show();
-      }
     }
+    if ("group_activity".equals(this.a.o))
+    {
+      this.a.k();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

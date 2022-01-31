@@ -1,6 +1,22 @@
-public abstract interface argn
+class argn
+  implements argp
 {
-  public abstract void a(int paramInt, String paramString);
+  argn(argm paramargm) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    try
+    {
+      if (argm.a(this.a) != null) {
+        argm.a(this.a).a(paramInt, paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
 }
 
 

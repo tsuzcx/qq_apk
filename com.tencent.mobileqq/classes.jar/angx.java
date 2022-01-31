@@ -1,18 +1,26 @@
-import android.view.SurfaceView;
-import android.view.TextureView;
-import android.view.View;
-
 public class angx
 {
-  public static anhb a(View paramView)
+  private static angm jdField_a_of_type_Angm;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static void a(angy paramangy)
   {
-    if ((paramView instanceof SurfaceView)) {
-      return new anhd((SurfaceView)paramView);
+    if (paramangy != null) {
+      anic.a(paramangy);
     }
-    if ((paramView instanceof TextureView)) {
-      return new anhe((TextureView)paramView);
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (b());
+  }
+  
+  private static boolean b()
+  {
+    if (jdField_a_of_type_Angm != null) {
+      return jdField_a_of_type_Angm.a();
     }
-    return null;
+    return true;
   }
 }
 

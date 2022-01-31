@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark.API;
 
-import alob;
-import bcpw;
+import aloa;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ArkAppDownloadModule$9
   implements Runnable
 {
-  public ArkAppDownloadModule$9(alob paramalob, String paramString) {}
+  public ArkAppDownloadModule$9(aloa paramaloa, String paramString) {}
   
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null) {
-      bcpw.a(localBaseActivity, this.a, 0).a();
+      bcql.a(localBaseActivity, this.a, 0).a();
     }
   }
 }

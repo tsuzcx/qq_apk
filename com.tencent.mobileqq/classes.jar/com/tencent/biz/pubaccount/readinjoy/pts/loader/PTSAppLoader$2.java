@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mze;
-import ppk;
-import ppl;
+import mzb;
+import pph;
+import ppi;
 
 public class PTSAppLoader$2
   implements Runnable
 {
-  public PTSAppLoader$2(ppk paramppk, String paramString) {}
+  public PTSAppLoader$2(pph parampph, String paramString) {}
   
   public void run()
   {
-    ppl localppl = new ppl(this);
+    ppi localppi = new ppi(this);
     try
     {
-      mze.a();
+      mzb.a();
     }
     catch (Throwable localThrowable2)
     {
@@ -24,7 +24,7 @@ public class PTSAppLoader$2
       {
         try
         {
-          mze.b(this.a, BaseApplicationImpl.getApplication().getRuntime(), localppl, true, 0, true);
+          mzb.b(this.a, BaseApplicationImpl.getApplication().getRuntime(), localppi, true, 0, true);
           return;
         }
         catch (Throwable localThrowable1)

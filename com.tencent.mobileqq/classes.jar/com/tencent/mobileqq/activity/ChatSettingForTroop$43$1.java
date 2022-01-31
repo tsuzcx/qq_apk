@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,7 +21,7 @@ class ChatSettingForTroop$43$1
     if (localArrayList != null)
     {
       if (this.a.this$0.c != null) {
-        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + ajyc.a(2131701711));
+        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + ajya.a(2131701722));
       }
       int i = localArrayList.size() - 1;
       while (i >= 0)

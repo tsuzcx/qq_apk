@@ -1,11 +1,9 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
-
-public class adwg
-  extends acun
+class adwg
 {
-  PokeEmoItemView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView;
+  int jdField_a_of_type_Int = -1;
+  adwi[] jdField_a_of_type_ArrayOfAdwi;
   
-  public adwg(adwe paramadwe) {}
+  adwg(adwf paramadwf) {}
 }
 
 

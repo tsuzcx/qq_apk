@@ -1,19 +1,20 @@
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothAdapter.LeScanCallback;
+import android.bluetooth.BluetoothDevice;
+import com.tencent.device.qfind.QFindBLEScanMgr;
+import com.tencent.device.qfind.QFindBLEScanMgr.3.1;
+import mqq.os.MqqHandler;
 
 public class ygh
+  implements BluetoothAdapter.LeScanCallback
 {
-  public int a;
-  public BluetoothGatt a;
-  public BluetoothGattCharacteristic a;
-  public BluetoothGattService a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public BluetoothGattCharacteristic b;
-  public int c;
-  public BluetoothGattCharacteristic c;
+  public ygh(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  
+  public void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (this.a.a != null) {
+      this.a.a.post(new QFindBLEScanMgr.3.1(this, paramBluetoothDevice, paramArrayOfByte));
+    }
+  }
 }
 
 

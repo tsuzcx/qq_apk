@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import axhx;
-import bijj;
-import bizq;
+import axhz;
+import bika;
+import bjah;
 
 public class AECameraManager$6
   implements Runnable
 {
-  public AECameraManager$6(bijj parambijj) {}
+  public AECameraManager$6(bika parambika) {}
   
   public void run()
   {
-    bizq.b("AECameraManager", "### cameraStopPreview");
-    bijj.a().a(false);
+    bjah.b("AECameraManager", "### cameraStopPreview");
+    bika.a().a(false);
   }
 }
 

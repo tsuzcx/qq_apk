@@ -1,13 +1,12 @@
 import java.io.File;
-import java.io.FilenameFilter;
 
-class bglf
-  implements FilenameFilter
+public abstract interface bglf
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.endsWith(this.a);
-  }
+  public abstract void a(File paramFile1, File paramFile2);
+  
+  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
+  
+  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
 }
 
 

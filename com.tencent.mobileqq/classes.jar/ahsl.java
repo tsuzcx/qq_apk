@@ -1,9 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahsl
-  extends axgh
+  implements ahtg
 {
-  public ahsl(CameraPreviewNew paramCameraPreviewNew) {}
+  public ahsl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void a() {}
+  
+  public void a(String paramString)
+  {
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
+  }
+  
+  public void b()
+  {
+    bcql.a(this.a, 2131695104, 1).a();
+  }
 }
 
 

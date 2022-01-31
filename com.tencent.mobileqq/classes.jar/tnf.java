@@ -1,21 +1,24 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class tnf
+  extends sym
 {
-  public final String a;
-  public final vuz a;
-  public final vvh a;
-  public final String b;
+  public List<uvp> a = new ArrayList();
   
-  public tnf(String paramString1, vvh paramvvh, vuz paramvuz, String paramString2)
+  public tnf(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Vvh = paramvvh;
-    this.jdField_a_of_type_Vuz = paramvuz;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "TagInfoBaseVidList{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tagInfo=" + this.jdField_a_of_type_Vvh + ", comInfo=" + this.jdField_a_of_type_Vuz + ", extCfgInfo=" + this.b + '}';
+    super(paramRspGroupStoryFeedIdList.result, paramRspGroupStoryFeedIdList.is_end, paramRspGroupStoryFeedIdList.next_cookie);
+    paramRspGroupStoryFeedIdList = paramRspGroupStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspGroupStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
+      this.a.add(new uvp(localFeedSeqInfo));
+    }
   }
 }
 

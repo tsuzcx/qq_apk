@@ -1,72 +1,20 @@
-import android.view.View;
+import android.support.annotation.FloatRange;
 
 public class xfk
 {
-  private int a;
-  private int b;
+  private float jdField_a_of_type_Float = 1.0F;
+  private xfj jdField_a_of_type_Xfj = new xfj();
   
-  public xfk(int paramInt1, int paramInt2)
+  public xfj a()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    xfj.b(this.jdField_a_of_type_Xfj, this.jdField_a_of_type_Float - xfj.a(this.jdField_a_of_type_Xfj));
+    return this.jdField_a_of_type_Xfj;
   }
   
-  public static xfk a(int paramInt)
+  public xfk a(@FloatRange(from=0.01D) float paramFloat)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new xfk(0, -1);
-    case 0: 
-      return new xfk(0, 0);
-    case 1: 
-      return new xfk(0, -1);
-    }
-    return new xfk(0, -2);
-  }
-  
-  public static xfk b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return new xfk(1, -1);
-    case 3: 
-      return new xfk(1, 0);
-    case 1: 
-      return new xfk(1, -1);
-    }
-    return new xfk(1, -2);
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a == 0) {
-      switch (this.b)
-      {
-      default: 
-        paramView.setPivotX(this.b);
-      }
-    }
-    while (this.a != 1)
-    {
-      return;
-      paramView.setPivotX(paramView.getWidth() * 0.5F);
-      return;
-      paramView.setPivotX(paramView.getWidth());
-      return;
-    }
-    switch (this.b)
-    {
-    default: 
-      paramView.setPivotY(this.b);
-      return;
-    case -1: 
-      paramView.setPivotY(paramView.getHeight() * 0.5F);
-      return;
-    }
-    paramView.setPivotY(paramView.getHeight());
+    xfj.a(this.jdField_a_of_type_Xfj, paramFloat);
+    return this;
   }
 }
 

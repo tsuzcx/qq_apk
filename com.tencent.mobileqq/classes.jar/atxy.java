@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class atxy
-  implements ValueAnimator.AnimatorUpdateListener
+  extends atxz
 {
-  public atxy(GradientAnimTextView paramGradientAnimTextView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public atxy(String paramString, atyh paramatyh)
   {
-    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    super(paramString, paramatyh);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839026);
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

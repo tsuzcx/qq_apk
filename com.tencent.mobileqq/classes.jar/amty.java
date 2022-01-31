@@ -1,78 +1,115 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amty
-  extends ampb<amtx>
 {
-  public int a()
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  
+  public amty()
   {
-    return 587;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 8;
+    this.jdField_a_of_type_Long = 100000000L;
+    this.jdField_b_of_type_Int = 7;
+    this.jdField_b_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Long = 16777216L;
+    this.jdField_c_of_type_Int = -1;
   }
   
-  @NonNull
-  public amtx a(int paramInt)
+  public static amty a(amph[] paramArrayOfamph)
   {
-    return new amtx();
-  }
-  
-  @Nullable
-  public amtx a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null)
+    amty localamty = new amty();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfampi.length > 0) {
-        localObject1 = amtx.a(paramArrayOfampi);
+      int j = paramArrayOfamph.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramArrayOfamph[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((amph)localObject).a;
+          try
+          {
+            JSONObject localJSONObject = new JSONObject((String)localObject);
+            a(localJSONObject, localamty);
+            b(localJSONObject, localamty);
+            c(localJSONObject, localamty);
+            if (QLog.isColorLevel()) {
+              QLog.i("PicCommonBean", 2, "parse: " + (String)localObject + " bean:" + localamty);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
       }
     }
-    return localObject1;
+    if (localamty.jdField_a_of_type_Int < 0) {
+      localamty.jdField_a_of_type_Int = 8;
+    }
+    if (localamty.jdField_a_of_type_Long < 0L) {
+      localamty.jdField_a_of_type_Long = 100000000L;
+    }
+    if (localamty.jdField_b_of_type_Int < 1) {
+      localamty.jdField_a_of_type_Long = 7L;
+    }
+    return localamty;
   }
   
-  public Class<amtx> a()
+  private static void a(JSONObject paramJSONObject, amty paramamty)
   {
-    return amtx.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
+    paramJSONObject = paramJSONObject.getJSONObject("regionDecode");
+    if (paramJSONObject.has("ramThreshold")) {
+      paramamty.jdField_a_of_type_Int = paramJSONObject.optInt("ramThreshold");
+    }
+    if (paramJSONObject.has("pxThreshold")) {
+      paramamty.jdField_a_of_type_Long = paramJSONObject.optLong("pxThreshold");
+    }
+    if (paramJSONObject.has("threadCount")) {
+      paramamty.jdField_b_of_type_Int = paramJSONObject.optInt("threadCount");
+    }
+    if (paramJSONObject.has("needRegionDecode")) {
+      paramamty.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("needRegionDecode");
     }
   }
   
-  public void a(amtx paramamtx)
+  private static void b(JSONObject paramJSONObject, amty paramamty)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramamtx.toString());
+    paramJSONObject = paramJSONObject.getJSONObject("uploadLimit");
+    if (paramJSONObject.has("c2c")) {
+      paramamty.jdField_b_of_type_Long = paramJSONObject.optInt("c2c");
     }
-    PhotoListPanel.setShowModeToSp(paramamtx.a);
+    if (paramJSONObject.has("group")) {
+      paramamty.jdField_c_of_type_Long = paramJSONObject.optInt("group");
+    }
   }
   
-  public int b()
+  private static void c(JSONObject paramJSONObject, amty paramamty)
   {
-    return 0;
+    paramJSONObject = paramJSONObject.getJSONObject("switchEXIF");
+    if (paramJSONObject.has("switch")) {
+      paramamty.jdField_c_of_type_Int = paramJSONObject.optInt("switch");
+    }
   }
   
-  public boolean b()
+  public String toString()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return true;
+    return "PicCommonBean{needRegionDecode=" + this.jdField_a_of_type_Boolean + ", ramThreshold=" + this.jdField_a_of_type_Int + ", pxThreshold=" + this.jdField_a_of_type_Long + ", threadCount=" + this.jdField_b_of_type_Int + ", C2C_FileSize_Limit=" + this.jdField_b_of_type_Long + ", GROUP_FileSize_Limit=" + this.jdField_c_of_type_Long + ", EXIF_SWITCH=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

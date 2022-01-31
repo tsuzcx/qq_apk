@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import ajxn;
-import ajyv;
+import ajxl;
+import ajyt;
 
 public class HotChatShare$2
   implements Runnable
 {
-  public HotChatShare$2(ajyv paramajyv, QQAppInterface paramQQAppInterface) {}
+  public HotChatShare$2(ajyt paramajyt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a != null) {
-      ((ajxn)this.a.getManager(51)).e();
+      ((ajxl)this.a.getManager(51)).e();
     }
   }
 }

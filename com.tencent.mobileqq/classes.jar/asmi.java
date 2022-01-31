@@ -1,22 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
 
 public class asmi
   implements DialogInterface.OnClickListener
 {
-  public asmi(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  public asmi(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupCompleteFragment.a(this.a);
-    if (MsgBackupCompleteFragment.a(this.a) == 1) {
-      asoe.a("0X800A253", 5);
+    if (this.a.b == 2) {
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
     }
-    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+    while (this.a.b != 3) {
       return;
     }
-    asoe.a("0X800A267", 2);
+    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
   }
 }
 

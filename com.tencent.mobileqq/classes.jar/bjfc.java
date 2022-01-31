@@ -1,17 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class bjfc
-  implements bjfd
+  implements bjfu
 {
-  bjfc(bjfa parambjfa) {}
+  private float jdField_a_of_type_Float;
+  private WeakReference<bjfa> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bkfm parambkfm)
+  public bjfc(bjfa parambjfa)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambkfm.toString());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjfa);
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public void a(float paramFloat, String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, bkgd parambkgd)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Float = 1.0F;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+        ((bjfa)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+      }
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Float = 0.0F;
+    } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+    ((bjfa)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0);
   }
 }
 

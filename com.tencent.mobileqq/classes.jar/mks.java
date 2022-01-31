@@ -1,16 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
 class mks
   implements DialogInterface.OnClickListener
 {
-  mks(mkr parammkr) {}
+  mks(mkq parammkq) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mqz.e(false, false);
-    if (paramDialogInterface != null) {
+    mqw.e(false, false);
+    if (paramDialogInterface != null)
+    {
       paramDialogInterface.dismiss();
+      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
+        this.a.a.a.a.b();
+      }
     }
   }
 }

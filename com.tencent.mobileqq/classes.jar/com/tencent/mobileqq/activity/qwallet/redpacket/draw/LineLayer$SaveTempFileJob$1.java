@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahfc;
+import ahfa;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -11,11 +11,11 @@ class LineLayer$SaveTempFileJob$1
   
   public void run()
   {
-    ahfc localahfc;
+    ahfa localahfa;
     if (LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob) != null)
     {
-      localahfc = (ahfc)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob).get();
-      if (localahfc != null) {
+      localahfa = (ahfa)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob).get();
+      if (localahfa != null) {
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           break label66;
         }
@@ -24,7 +24,7 @@ class LineLayer$SaveTempFileJob$1
     label66:
     for (boolean bool = true;; bool = false)
     {
-      localahfc.a(bool, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
+      localahfa.a(bool, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
       return;
     }
   }

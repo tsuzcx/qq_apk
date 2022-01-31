@@ -1,43 +1,44 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class assn
-  implements View.OnClickListener
+class assn
+  extends ajxj
 {
-  public assn(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  private assn(assi paramassi) {}
   
-  public void onClick(View paramView)
+  protected void onAddFriend(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
+      QLog.d("MultiCardManager", 2, "onAddFriend " + paramString);
     }
-    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    paramView = paramView.getTag();
-    if ((paramView instanceof assq)) {}
-    for (paramView = (assq)paramView;; paramView = null)
+    ArrayList localArrayList;
+    if ((!assi.a(this.a)) && (assi.a(this.a) != null))
     {
-      if (paramView == null) {}
-      int j;
-      do
+      localArrayList = (ArrayList)assi.a(this.a).get(Long.valueOf(assi.a(this.a)));
+      if (localArrayList == null) {}
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (localArrayList.indexOf(Long.valueOf(l)) != -1)
       {
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        j = paramView.jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        axqw.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
-      } while (MultiCardPageIndicator.a(this.a) == null);
-      MultiCardPageIndicator.a(this.a).a(j);
+        paramString = new ArrayList(1);
+        paramString.add(Long.valueOf(l));
+        localArrayList = new ArrayList(1);
+        localArrayList.add(Long.valueOf(assi.a(this.a)));
+        HashMap localHashMap = new HashMap(5);
+        localHashMap.put("notRequest", paramString);
+        localHashMap.put("groupUin", localArrayList);
+        ((aqkh)assi.a(this.a).a(153)).a(assi.a(this.a), paramString, localHashMap);
+      }
       return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MultiCardManager", 2, "onAddFriend error " + paramString.toString());
     }
   }
 }

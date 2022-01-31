@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class azed
-  implements DialogInterface.OnClickListener
+class azed
+  extends BroadcastReceiver
 {
-  public azed(QLifeCommentActivity paramQLifeCommentActivity, bbgg parambbgg) {}
+  azed(azec paramazec) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.cancel();
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
+    {
+      this.a.a = true;
+      this.a.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
+      }
     }
-    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
-    axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.z);
   }
 }
 

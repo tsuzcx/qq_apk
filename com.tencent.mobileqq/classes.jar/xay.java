@@ -1,60 +1,54 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoRspBody;
-import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RenameFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
 public abstract class xay
-  extends mxm
+  extends mxj
 {
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt != 0) {
-      a(false, paramInt, null);
+    String str;
+    if (paramBundle != null) {
+      str = paramBundle.getString("folderId");
     }
-    label103:
-    do
+    for (paramBundle = paramBundle.getString("folderName");; paramBundle = "")
     {
-      for (;;)
+      if (paramInt != 0)
       {
+        a(false, paramInt, str, paramBundle);
         return;
-        paramBundle = new oidb_0x6d8.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (oidb_0x6d8.GetFileInfoRspBody)paramBundle.file_info_rsp.get();
-          if (!paramArrayOfByte.int32_ret_code.has()) {
-            break label103;
-          }
-          if (paramArrayOfByte.int32_ret_code.get() == 0)
-          {
-            paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-            if (paramArrayOfByte == null) {
-              continue;
-            }
-            a(true, 0, paramArrayOfByte);
-          }
+      }
+      oidb_0x6d7.RspBody localRspBody = new oidb_0x6d7.RspBody();
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (oidb_0x6d7.RenameFolderRspBody)localRspBody.rename_folder_rsp.get();
+        if (!paramArrayOfByte.int32_ret_code.has()) {
+          break label118;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        if (paramArrayOfByte.int32_ret_code.get() == 0)
         {
-          a(false, -1, null);
+          a(true, 0, str, paramBundle);
           return;
         }
       }
-      a(false, paramArrayOfByte.int32_ret_code.get(), null);
-      return;
-      if (!paramArrayOfByte.file_info.has()) {
-        break;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        a(false, -1, str, paramBundle);
+        return;
       }
-      paramArrayOfByte = (group_file_common.FileInfo)paramArrayOfByte.file_info.get();
-    } while (paramArrayOfByte == null);
-    a(true, 0, paramArrayOfByte);
-    return;
-    a(false, -1, null);
+      a(false, paramArrayOfByte.int32_ret_code.get(), str, paramBundle);
+      return;
+      label118:
+      a(false, -1, str, paramBundle);
+      return;
+      str = "";
+    }
   }
   
-  protected abstract void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo);
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
 }
 
 

@@ -1,35 +1,16 @@
-import android.os.SystemClock;
-import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class adyz
-  implements bfoq
+  extends acuj
 {
-  public adyz(ScribbleItemBuilder paramScribbleItemBuilder, View paramView, MessageForScribble paramMessageForScribble, bfol parambfol) {}
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.c = l;
-      paramView = acwd.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder);
-      }
-      awgw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    }
-  }
+  public adyz(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 

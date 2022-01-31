@@ -1,11 +1,8 @@
-final class bbkm
-  implements bbkr<Number>
+import java.util.ArrayList;
+
+public abstract interface bbkm
 {
-  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
-  {
-    float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<bbkl> paramArrayList);
 }
 
 

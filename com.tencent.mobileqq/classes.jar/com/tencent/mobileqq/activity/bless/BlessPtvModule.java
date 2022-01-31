@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.bless;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import apvb;
-import aukm;
-import auma;
+import apvd;
+import auko;
+import aumc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -16,10 +16,10 @@ import java.io.File;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessPtvModule
-  extends aukm
+  extends auko
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = ajyc.a(2131701150);
+  public static final String DEFAULT_MODULE_TITLE = ajya.a(2131701161);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -27,7 +27,7 @@ public class BlessPtvModule
   public String data;
   private String defaultM4aPath;
   public boolean downloaded;
-  @auma
+  @aumc
   public String id;
   public String shareTitle;
   public String title;
@@ -72,7 +72,7 @@ public class BlessPtvModule
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = actn.a(56.0F, paramActivity.getResources());
+      int i = actj.a(56.0F, paramActivity.getResources());
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
       paramActivity = URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
@@ -91,10 +91,10 @@ public class BlessPtvModule
   {
     if (this.id == "0")
     {
-      if ((this.defaultM4aPath == null) || (!apvb.a(this.defaultM4aPath))) {}
+      if ((this.defaultM4aPath == null) || (!apvd.a(this.defaultM4aPath))) {}
     }
     else {
-      while ((apvb.a(getLrcPath())) && (apvb.a(getM4aPath())) && (apvb.a(getPicPath()))) {
+      while ((apvd.a(getLrcPath())) && (apvd.a(getM4aPath())) && (apvd.a(getPicPath()))) {
         return true;
       }
     }

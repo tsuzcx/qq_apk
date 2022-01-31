@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bbhs;
-import bfmr;
+import bbig;
+import bfni;
 
 public class QQCustomDialogWtihInputAndChoose$5
   implements Runnable
 {
-  public QQCustomDialogWtihInputAndChoose$5(bbhs parambbhs) {}
+  public QQCustomDialogWtihInputAndChoose$5(bbig parambbig) {}
   
   public void run()
   {
-    bfmr.a(this.this$0.a);
+    bfni.a(this.this$0.a);
   }
 }
 

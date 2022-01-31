@@ -1,24 +1,73 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class xae
-  implements View.OnClickListener
+public class xae
+  extends xaw
 {
-  xae(wzw paramwzw, azpf paramazpf) {}
+  public xae(MoveFileActivity paramMoveFileActivity, azpi paramazpi) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+    localIntent.putExtra("folderId", this.jdField_a_of_type_Azpi.b);
+    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131298865);
+    if (paramBoolean)
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
+      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
+      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
+      {
+        paramString = "0";
+        axqy.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, ajya.a(2131706911), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
+      }
     }
-    paramView = new Intent(this.jdField_a_of_type_Wzw.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Azpf.b);
-    this.jdField_a_of_type_Wzw.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
-    axqw.b(this.jdField_a_of_type_Wzw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_Wzw.b, String.valueOf(this.jdField_a_of_type_Wzw.jdField_a_of_type_Azpe.a), "8020205751015455", "");
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2130772001);
+      return;
+      paramString = "1";
+      break;
+      switch (paramInt)
+      {
+      default: 
+        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131696381);
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -302: 
+      case -301: 
+      case -103: 
+        axqy.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, ajya.a(2131706904), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -136: 
+        axqy.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, ajya.a(2131706908), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -107: 
+      case -102: 
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, ajya.a(2131706907), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -406: 
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, ajya.a(2131706903), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+        break;
+      case -407: 
+        bcql.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, ajya.a(2131706905), 0).b(i);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
+      }
+    }
   }
 }
 

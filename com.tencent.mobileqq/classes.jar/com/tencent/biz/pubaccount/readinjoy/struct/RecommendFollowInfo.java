@@ -4,20 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aukm;
+import auko;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import qby;
+import qbv;
 import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
 import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
 public class RecommendFollowInfo
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new qby();
+  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new qbv();
   public long algorithmId;
   public String className;
   public boolean hasReport;

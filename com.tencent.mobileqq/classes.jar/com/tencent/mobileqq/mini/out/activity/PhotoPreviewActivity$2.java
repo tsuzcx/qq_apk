@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import bfpc;
+import bfpt;
 import com.tencent.widget.AdapterView;
 
 class PhotoPreviewActivity$2
-  implements bfpc
+  implements bfpt
 {
   PhotoPreviewActivity$2(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   

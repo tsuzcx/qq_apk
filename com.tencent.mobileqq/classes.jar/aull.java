@@ -1,134 +1,134 @@
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aull
-  extends auky
+  extends aula
 {
   public aull()
   {
     this.a = 9;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    paramaukm = (Stranger)paramaukm;
-    if (paramaukx == null)
+    paramauko = (Setting)paramauko;
+    if (paramaukz == null)
     {
-      paramaukm.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramaukm.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
-      paramaukm.age = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("age")));
-      paramaukm.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
-      paramaukm.gender = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gender")));
-      paramaukm.groupName = paramCursor.getString(paramCursor.getColumnIndex("groupName"));
-      paramaukm.login = paramCursor.getString(paramCursor.getColumnIndex("login"));
-      paramaukm.loginId = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("loginId")));
-      paramaukm.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
-      return paramaukm;
+      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramauko.headImgTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("headImgTimestamp"));
+      paramauko.systemHeadID = paramCursor.getShort(paramCursor.getColumnIndex("systemHeadID"));
+      paramauko.bFaceFlags = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bFaceFlags")));
+      paramauko.bUsrType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bUsrType")));
+      paramauko.bHeadType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bHeadType")));
+      paramauko.url = paramCursor.getString(paramCursor.getColumnIndex("url"));
+      paramauko.bSourceType = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bSourceType")));
+      paramauko.updateTimestamp = paramCursor.getLong(paramCursor.getColumnIndex("updateTimestamp"));
+      return paramauko;
     }
     int i = paramCursor.getColumnIndex("uin");
     if (i == -1)
     {
-      paramaukx.a(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("name");
+      paramaukz.a(new NoColumnError("uin", String.class));
+      i = paramCursor.getColumnIndex("headImgTimestamp");
       if (i != -1) {
-        break label504;
+        break label508;
       }
-      paramaukx.a(new NoColumnError("name", String.class));
-      label245:
-      i = paramCursor.getColumnIndex("age");
+      paramaukz.a(new NoColumnError("headImgTimestamp", Long.TYPE));
+      label247:
+      i = paramCursor.getColumnIndex("systemHeadID");
       if (i != -1) {
-        break label519;
+        break label523;
       }
-      paramaukx.a(new NoColumnError("age", Byte.TYPE));
-      label280:
-      i = paramCursor.getColumnIndex("remark");
+      paramaukz.a(new NoColumnError("systemHeadID", Short.TYPE));
+      label282:
+      i = paramCursor.getColumnIndex("bFaceFlags");
       if (i != -1) {
-        break label535;
+        break label538;
       }
-      paramaukx.a(new NoColumnError("remark", String.class));
-      label314:
-      i = paramCursor.getColumnIndex("gender");
+      paramaukz.a(new NoColumnError("bFaceFlags", Byte.TYPE));
+      label317:
+      i = paramCursor.getColumnIndex("bUsrType");
       if (i != -1) {
-        break label550;
+        break label554;
       }
-      paramaukx.a(new NoColumnError("gender", Byte.TYPE));
-      label349:
-      i = paramCursor.getColumnIndex("groupName");
+      paramaukz.a(new NoColumnError("bUsrType", Byte.TYPE));
+      label352:
+      i = paramCursor.getColumnIndex("bHeadType");
       if (i != -1) {
-        break label566;
+        break label570;
       }
-      paramaukx.a(new NoColumnError("groupName", String.class));
-      label383:
-      i = paramCursor.getColumnIndex("login");
+      paramaukz.a(new NoColumnError("bHeadType", Byte.TYPE));
+      label387:
+      i = paramCursor.getColumnIndex("url");
       if (i != -1) {
-        break label581;
+        break label586;
       }
-      paramaukx.a(new NoColumnError("login", String.class));
-      label417:
-      i = paramCursor.getColumnIndex("loginId");
+      paramaukz.a(new NoColumnError("url", String.class));
+      label421:
+      i = paramCursor.getColumnIndex("bSourceType");
       if (i != -1) {
-        break label596;
+        break label601;
       }
-      paramaukx.a(new NoColumnError("loginId", Byte.TYPE));
+      paramaukz.a(new NoColumnError("bSourceType", Byte.TYPE));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("time");
+      i = paramCursor.getColumnIndex("updateTimestamp");
       if (i != -1) {
-        break label612;
+        break label617;
       }
-      paramaukx.a(new NoColumnError("time", Long.TYPE));
-      return paramaukm;
-      paramaukm.uin = paramCursor.getString(i);
+      paramaukz.a(new NoColumnError("updateTimestamp", Long.TYPE));
+      return paramauko;
+      paramauko.uin = paramCursor.getString(i);
       break;
-      label504:
-      paramaukm.name = paramCursor.getString(i);
-      break label245;
-      label519:
-      paramaukm.age = ((byte)paramCursor.getShort(i));
-      break label280;
-      label535:
-      paramaukm.remark = paramCursor.getString(i);
-      break label314;
-      label550:
-      paramaukm.gender = ((byte)paramCursor.getShort(i));
-      break label349;
-      label566:
-      paramaukm.groupName = paramCursor.getString(i);
-      break label383;
-      label581:
-      paramaukm.login = paramCursor.getString(i);
-      break label417;
-      label596:
-      paramaukm.loginId = ((byte)paramCursor.getShort(i));
+      label508:
+      paramauko.headImgTimestamp = paramCursor.getLong(i);
+      break label247;
+      label523:
+      paramauko.systemHeadID = paramCursor.getShort(i);
+      break label282;
+      label538:
+      paramauko.bFaceFlags = ((byte)paramCursor.getShort(i));
+      break label317;
+      label554:
+      paramauko.bUsrType = ((byte)paramCursor.getShort(i));
+      break label352;
+      label570:
+      paramauko.bHeadType = ((byte)paramCursor.getShort(i));
+      break label387;
+      label586:
+      paramauko.url = paramCursor.getString(i);
+      break label421;
+      label601:
+      paramauko.bSourceType = ((byte)paramCursor.getShort(i));
     }
-    label612:
-    paramaukm.time = paramCursor.getLong(i);
-    return paramaukm;
+    label617:
+    paramauko.updateTimestamp = paramCursor.getLong(i);
+    return paramauko;
   }
   
   public String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,name TEXT ,age INTEGER ,remark TEXT ,gender INTEGER ,groupName TEXT ,login TEXT ,loginId INTEGER ,time INTEGER,UNIQUE(uin) ON CONFLICT IGNORE)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,headImgTimestamp INTEGER ,systemHeadID INTEGER ,bFaceFlags INTEGER ,bUsrType INTEGER ,bHeadType INTEGER ,url TEXT ,bSourceType INTEGER ,updateTimestamp INTEGER)");
     return localStringBuilder.toString();
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    paramaukm = (Stranger)paramaukm;
-    paramContentValues.put("uin", paramaukm.uin);
-    paramContentValues.put("name", paramaukm.name);
-    paramContentValues.put("age", Byte.valueOf(paramaukm.age));
-    paramContentValues.put("remark", paramaukm.remark);
-    paramContentValues.put("gender", Byte.valueOf(paramaukm.gender));
-    paramContentValues.put("groupName", paramaukm.groupName);
-    paramContentValues.put("login", paramaukm.login);
-    paramContentValues.put("loginId", Byte.valueOf(paramaukm.loginId));
-    paramContentValues.put("time", Long.valueOf(paramaukm.time));
+    paramauko = (Setting)paramauko;
+    paramContentValues.put("uin", paramauko.uin);
+    paramContentValues.put("headImgTimestamp", Long.valueOf(paramauko.headImgTimestamp));
+    paramContentValues.put("systemHeadID", Short.valueOf(paramauko.systemHeadID));
+    paramContentValues.put("bFaceFlags", Byte.valueOf(paramauko.bFaceFlags));
+    paramContentValues.put("bUsrType", Byte.valueOf(paramauko.bUsrType));
+    paramContentValues.put("bHeadType", Byte.valueOf(paramauko.bHeadType));
+    paramContentValues.put("url", paramauko.url);
+    paramContentValues.put("bSourceType", Byte.valueOf(paramauko.bSourceType));
+    paramContentValues.put("updateTimestamp", Long.valueOf(paramauko.updateTimestamp));
   }
 }
 

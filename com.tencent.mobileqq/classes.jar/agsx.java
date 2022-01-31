@@ -1,16 +1,16 @@
-import android.support.annotation.RequiresApi;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.widget.AdapterView;
 
 class agsx
-  implements View.OnClickListener
+  implements bfpv
 {
-  agsx(agsw paramagsw) {}
+  agsx(agsu paramagsu) {}
   
-  @RequiresApi(api=17)
-  public void onClick(View paramView)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a(paramView);
+    this.a.a(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

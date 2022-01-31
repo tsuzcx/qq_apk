@@ -1,90 +1,135 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ntd
-  extends osp
+public abstract class ntd
 {
-  ntd(ntb paramntb) {}
+  int jdField_a_of_type_Int;
+  protected Activity a;
+  protected Map<Integer, Set<Long>> a;
+  rhm jdField_a_of_type_Rhm;
+  protected Map<Integer, Boolean> b = new HashMap();
+  protected Map<Integer, Map<Long, qao>> c = new HashMap();
+  protected Map<Integer, qao> d = new HashMap();
   
-  public void a(int paramInt)
+  protected ntd()
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt);
-    }
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  protected ntd(Activity paramActivity)
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
-    }
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void a(int paramInt, List<Long> paramList)
+  public Activity a()
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramInt, paramList);
-    }
+    return this.jdField_a_of_type_AndroidAppActivity;
   }
   
-  public void a(Configuration paramConfiguration)
+  public ViewGroup a()
   {
-    if (ntb.a(this.a) != null)
+    return null;
+  }
+  
+  public Map<Long, qao> a(Integer paramInteger)
+  {
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
+    paramInteger = (Map)this.c.get(paramInteger);
+    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
+      localConcurrentHashMap.putAll(paramInteger);
+    }
+    return localConcurrentHashMap;
+  }
+  
+  public Set<Long> a(Integer paramInteger)
+  {
+    Set localSet = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
+    Object localObject = localSet;
+    if (localSet == null)
     {
-      ntb.a(this.a).d();
-      ntb.a(this.a).e();
+      localObject = new HashSet();
+      this.jdField_a_of_type_JavaUtilMap.put(paramInteger, localObject);
     }
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramConfiguration);
-    }
+    return localObject;
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public qtr a()
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramTopBannerInfo);
-    }
+    return null;
   }
   
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  public qum a()
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
+    return null;
   }
   
-  public void ap_()
+  public void a()
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).q();
-    }
+    bhvy.e(true);
   }
   
-  public void b(int paramInt, List<Long> paramList)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(ViewGroup paramViewGroup) {}
+  
+  public void a(rhm paramrhm, int paramInt)
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).c(paramInt, paramList);
-    }
+    this.jdField_a_of_type_Rhm = paramrhm;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public boolean a(Integer paramInteger)
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    paramInteger = (Boolean)this.b.get(paramInteger);
+    if (paramInteger != null) {
+      return paramInteger.booleanValue();
     }
+    return false;
   }
   
-  public void c(int paramInt, List<Long> paramList)
+  public Map<Long, qao> b(Integer paramInteger)
   {
-    if ((ntb.a(this.a) != null) && ((ntb.a(this.a) instanceof ReadInJoyListViewGroup)))
+    Map localMap = (Map)this.c.get(paramInteger);
+    Object localObject = localMap;
+    if (localMap == null)
     {
-      ((ReadInJoyListViewGroup)ntb.a(this.a)).b(paramInt, paramList);
-      ntb.a(this.a, true);
+      localObject = new ConcurrentHashMap();
+      this.c.put(paramInteger, localObject);
     }
+    return localObject;
   }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    bhvy.e(false);
+  }
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void k() {}
+  
+  public void o() {}
 }
 
 

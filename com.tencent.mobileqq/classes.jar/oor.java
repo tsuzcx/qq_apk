@@ -1,49 +1,57 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class oor
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
+  public static String a = "CommentFamilyConfigHandler";
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = oof.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "on_click"))
+      String str1;
+      String str2;
+      try
       {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
-          break;
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bhvy.n(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
         }
       }
-      if (TextUtils.equals(str1, "on_long_pressed"))
+      catch (Throwable paramString)
       {
-        if (TextUtils.equals(str2, "fast_biu")) {}
-        for (paramInt1 = 1;; paramInt1 = 0)
-        {
-          bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
-          break;
-        }
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bhvy.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
       }
     }
-    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
-    bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
+    super.onWipeConfig(paramInt);
+    bhvy.n(0);
   }
 }
 

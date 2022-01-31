@@ -1,25 +1,16 @@
-import android.view.View;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-class bctz
-  implements bctq
+public final class bctz
+  implements DialogInterface.OnClickListener
 {
-  bctz(bcty parambcty) {}
+  public bctz(Context paramContext) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(true, new View[] { this.a.a });
-  }
-  
-  public void b()
-  {
-    this.a.a(false, new View[] { this.a.a });
-  }
-  
-  public void c()
-  {
-    arkt.a().a(2);
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 

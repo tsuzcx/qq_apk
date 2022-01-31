@@ -1,40 +1,96 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.Matrix;
+import android.support.annotation.NonNull;
+import android.view.Surface;
 import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
 
-class avxy
-  implements GLSurfaceView.EGLContextFactory
+public class avxy
+  extends FlowDecodeScreenSurfaceBase
+  implements SurfaceTexture.OnFrameAvailableListener, avyg
 {
-  private int jdField_a_of_type_Int = 12440;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private avyh jdField_a_of_type_Avyh;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
+  private int c;
   
-  avxy(avxx paramavxx) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public avxy(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a);
-    arrayOfInt[2] = 12344;
-    veg.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a) });
-    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a);
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Avxx.a) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
+    super(paramEGLContext, paramInt1, paramInt2);
+    c();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.c = avyi.a(36197);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.c);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_Avyh = new avyh(paramInt1, paramInt2);
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public Surface a()
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(@NonNull avxs paramavxs, boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      veg.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      veg.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
-      avyb.a("eglDestroyContex", paramEGL10.eglGetError());
+      for (;;)
+      {
+        paramBoolean = this.jdField_a_of_type_Boolean;
+        if (!paramBoolean) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait();
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new RuntimeException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException paramavxs)
+          {
+            throw new RuntimeException(paramavxs);
+          }
+        }
+      }
+    }
+    avyi.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    paramavxs.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_Avyh.a(paramavxs.a());
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.c, null, null);
+    this.jdField_a_of_type_Avyh.a();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    ved.b("FlowEdit_FlowDecodeScreenSurface", "awaitNewImage");
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    ved.b("FlowEdit_FlowDecodeScreenSurface", "onFrameAvailable");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        ved.d("FlowEdit_FlowDecodeScreenSurface", "mFrameAvailable already set, frame could be dropped");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
   }
 }

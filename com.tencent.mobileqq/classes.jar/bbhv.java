@@ -1,23 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 class bbhv
-  implements TextWatcher
+  implements aocx
 {
-  bbhv(bbhs parambbhs, int paramInt) {}
+  bbhv(bbhp parambbhp) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Bbhs.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
     {
-      this.jdField_a_of_type_Bbhs.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bbhs.a.setSelection(this.jdField_a_of_type_Int - 1);
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bbhp.a(this.a);
+      return true;
     }
+    return false;
   }
 }
 

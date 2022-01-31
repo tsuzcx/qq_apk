@@ -1,83 +1,49 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
 
-public class bdvf
-  extends WebViewPlugin
+public final class bdvf
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
 {
-  private BroadcastReceiver a = new bdvg(this);
-  
-  private void a(Bundle paramBundle)
+  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
-    if ((paramBundle != null) && (!paramBundle.isEmpty()))
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      paramBundle = anqp.a("ipc_qidian_video_chat", "", 0, paramBundle);
-      anvl.a().a(paramBundle);
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianWpaWebviewPlugin", 2, paramString2 + paramString3 + paramVarArgs[0]);
-    }
-    boolean bool1 = bool2;
-    if (paramString2.equals("qidian"))
-    {
-      bool1 = bool2;
-      if (!paramString3.equals("videochat")) {}
-    }
-    try
-    {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.optString("request_type");
-      paramString1 = paramString3.optString("uin");
-      paramString2 = paramString3.optString("sigt");
-      paramString3 = paramString3.optString("nickname");
-      paramVarArgs = new Bundle();
-      paramVarArgs.putString("request_type", paramJsBridgeListener);
-      paramVarArgs.putString("uin", paramString1);
-      paramVarArgs.putString("sigt", paramString2);
-      paramVarArgs.putString("nickname", paramString3);
-      a(paramVarArgs);
       bool1 = true;
+      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label109;
+      }
+      bool1 = true;
+      label80:
+      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label114;
+      }
     }
-    catch (Exception paramJsBridgeListener)
+    label109:
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      do
-      {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianWpaWebviewPlugin", 2, "handleJsRequest ", paramJsBridgeListener);
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
+      return localQidianSimpleProfileItem;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label80;
     }
-    return bool1;
-    return false;
   }
   
-  public void onCreate()
+  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
   {
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null)
-    {
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qidian.openactionsheet");
-      localActivity.registerReceiver(this.a, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    }
-    super.onCreate();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    Activity localActivity = this.mRuntime.a();
-    if (localActivity != null) {
-      localActivity.unregisterReceiver(this.a);
-    }
+    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
   }
 }
 

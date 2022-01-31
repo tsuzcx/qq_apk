@@ -1,26 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
 
 class afuu
   implements DialogInterface.OnClickListener
 {
-  afuu(afur paramafur) {}
+  afuu(afup paramafup, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      afur.a(this.a, afur.a(this.a), Long.valueOf(afur.a(this.a)).longValue());
-      afur.a(this.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SDKEmotionSettingManager", 2, "setNegativeButton cancel error");
-    }
+    afup.a(this.jdField_a_of_type_Afup, this.jdField_a_of_type_Int);
   }
 }
 

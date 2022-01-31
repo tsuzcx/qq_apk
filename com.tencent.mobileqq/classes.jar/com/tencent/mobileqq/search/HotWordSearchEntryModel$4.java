@@ -3,15 +3,15 @@ package com.tencent.mobileqq.search;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
-import awhv;
-import awib;
+import awhx;
+import awid;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
 
 public class HotWordSearchEntryModel$4
   implements Runnable
 {
-  public HotWordSearchEntryModel$4(awhv paramawhv, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo, awib paramawib) {}
+  public HotWordSearchEntryModel$4(awhx paramawhx, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo, awid paramawid) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class HotWordSearchEntryModel$4
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.this$0.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
     localLayoutParams.height = i;
     this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-    awhv.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight, this.jdField_a_of_type_Awib);
+    awhx.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight, this.jdField_a_of_type_Awid);
   }
 }
 

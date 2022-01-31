@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import acfz;
+import acfv;
 import mqq.os.MqqHandler;
 
 public class TroopAssistantActivity$11$3
   implements Runnable
 {
-  public TroopAssistantActivity$11$3(acfz paramacfz) {}
+  public TroopAssistantActivity$11$3(acfv paramacfv) {}
   
   public void run()
   {

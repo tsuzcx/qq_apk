@@ -1,17 +1,15 @@
-import android.content.Context;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class aluf
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  aluf(aluc paramaluc, String paramString, Context paramContext) {}
+  aluf(alue paramalue) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new alug(this));
+    if (paramBitmap != null) {
+      alub.a(this.a.jdField_a_of_type_Alub, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

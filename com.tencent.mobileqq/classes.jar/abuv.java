@@ -1,46 +1,37 @@
-import android.os.Handler;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class abuv
-  implements bfpc
+  implements bfph
 {
-  public abuv(QQLSActivity paramQQLSActivity) {}
+  public abuv(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bfpc parambfpc) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
-    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
-    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
+    aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
       }
-      QQLSActivity.a(this.a, -1L);
-      QQLSActivity.b(this.a, 0L);
-      QQLSActivity.a(this.a, paramView);
-      QQLSActivity.a(this.a, true);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QQLSActivity", 2, "mRecentList  click once");
-    }
-    QQLSActivity.a(this.a, paramLong);
-    QQLSActivity.b(this.a, System.currentTimeMillis());
-    if (QQLSActivity.a(this.a)) {
-      QQLSActivity.a(this.a).setText(2131699094);
-    }
-    for (;;)
-    {
-      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
-      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
-      return;
-      QQLSActivity.a(this.a).setText(2131699093);
     }
   }
 }

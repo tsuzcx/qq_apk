@@ -1,27 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
 public class adxo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public adxo(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onClick(View paramView)
-  {
-    adxu localadxu = (adxu)actn.a(paramView);
-    if (paramView == localadxu.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localadxu);
-    }
-    for (;;)
-    {
-      axqw.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
-      return;
-      if (paramView == localadxu.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localadxu);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

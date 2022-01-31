@@ -1,29 +1,35 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class sth<T extends IEventReceiver, EVENT extends ssk>
-  extends QQUIEventReceiver<T, EVENT>
+class sth
+  implements syq<tnl, tow>
 {
-  public sth(T paramT)
-  {
-    super(paramT);
-  }
+  sth(stf paramstf) {}
   
-  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  public void a(tnl arg1, tow paramtow, ErrorMessage paramErrorMessage)
   {
-    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess()) {}
+    for (;;)
     {
-      c(paramT, paramEVENT);
-      return;
+      synchronized (this.a.jdField_b_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_Stj = paramtow.jdField_a_of_type_Stj;
+        this.a.jdField_a_of_type_Stj.a();
+        ved.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Stj);
+        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        paramtow = finally;
+        throw paramtow;
+        ved.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
+      }
     }
-    b(paramT, paramEVENT);
   }
-  
-  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
-  
-  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

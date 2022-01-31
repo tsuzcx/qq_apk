@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aakn;
+import aakj;
 import android.view.View;
 import android.widget.ImageView;
-import baxt;
+import bayh;
 
 public class AssociatedAccountManageActivity$8$1
   implements Runnable
 {
-  public AssociatedAccountManageActivity$8$1(aakn paramaakn, String paramString, View paramView) {}
+  public AssociatedAccountManageActivity$8$1(aakj paramaakj, String paramString, View paramView) {}
   
   public void run()
   {
     try
     {
-      baxt localbaxt = baxt.a(this.jdField_a_of_type_Aakn.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      bayh localbayh = bayh.a(this.jdField_a_of_type_Aakj.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
       ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367679);
       if (localImageView != null) {
-        localImageView.setImageDrawable(localbaxt);
+        localImageView.setImageDrawable(localbayh);
       }
       return;
     }

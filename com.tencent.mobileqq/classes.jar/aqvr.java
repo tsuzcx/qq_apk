@@ -1,47 +1,35 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-class aqvr
-  implements aqvz
+public class aqvr
+  extends BroadcastReceiver
 {
-  aqvr(aqvq paramaqvq, int paramInt, String paramString) {}
+  private aqvr(JefsClass paramJefsClass) {}
   
-  public void a(Uri paramUri)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
-    this.jdField_a_of_type_Aqvq.a.finish();
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
-    try
-    {
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Aqvq.a(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 4)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Aqvq.b(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
+    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
       }
     }
-    catch (Throwable paramString1)
+    do
     {
-      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
       return;
-    }
-    if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_a_of_type_Aqvq.a(paramString1, this.jdField_a_of_type_JavaLangString);
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "start");
+      }
+      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
+      {
+        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
+        return;
+      }
+    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
+    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
   }
 }
 

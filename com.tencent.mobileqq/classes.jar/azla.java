@@ -1,31 +1,23 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class azla
-  implements View.OnKeyListener
+  implements AdapterView.OnItemClickListener
 {
   public azla(NewTroopContactView paramNewTroopContactView) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == 67)
+    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
+    if (this.a.a(paramAdapterView))
     {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
-    }
-    for (;;)
-    {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Azld.a();
-      }
+      NewTroopContactView.a(this.a, paramAdapterView);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+      NewTroopContactView.a(this.a);
     }
   }
 }

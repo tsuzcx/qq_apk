@@ -1,14 +1,8 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-
-abstract interface aigo
+public abstract interface aigo
 {
   public abstract void a(int paramInt);
   
-  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
-  
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
 }
 
 

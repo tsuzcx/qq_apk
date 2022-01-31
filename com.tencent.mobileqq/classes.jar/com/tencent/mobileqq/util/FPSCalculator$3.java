@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.util;
 
 import android.os.Handler;
-import baxc;
-import baxe;
+import baxq;
+import baxs;
 import java.util.Vector;
 
 public class FPSCalculator$3
   implements Runnable
 {
-  public FPSCalculator$3(baxc parambaxc) {}
+  public FPSCalculator$3(baxq parambaxq) {}
   
   public void run()
   {
-    Object localObject1 = baxc.a(this.this$0);
+    Object localObject1 = baxq.a(this.this$0);
     int i = 0;
     try
     {
-      while (i < baxc.a(this.this$0).size())
+      while (i < baxq.a(this.this$0).size())
       {
-        baxe localbaxe = (baxe)baxc.a(this.this$0).get(i);
-        baxc.a(this.this$0, System.currentTimeMillis());
-        localbaxe.onInfo(baxc.a(this.this$0), 60.0D);
+        baxs localbaxs = (baxs)baxq.a(this.this$0).get(i);
+        baxq.a(this.this$0, System.currentTimeMillis());
+        localbaxs.onInfo(baxq.a(this.this$0), 60.0D);
         i += 1;
       }
-      baxc.a(this.this$0).postDelayed(baxc.b(this.this$0), 500L);
+      baxq.a(this.this$0).postDelayed(baxq.b(this.this$0), 500L);
       return;
     }
     finally {}

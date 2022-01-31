@@ -9,7 +9,7 @@ class BaseBubbleBuilder$ProcessMemberNickTask$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131364119, this.a);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131364118, this.a);
     this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.this$0.jdField_a_of_type_AndroidViewView$OnLongClickListener);
   }
 }

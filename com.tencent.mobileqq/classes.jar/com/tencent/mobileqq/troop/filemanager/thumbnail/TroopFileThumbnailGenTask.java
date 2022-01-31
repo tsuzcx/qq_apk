@@ -2,19 +2,19 @@ package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
 import android.text.TextUtils;
 import android.util.Pair;
-import apue;
-import apvb;
-import aqvs;
-import aqwd;
-import auoy;
-import azsb;
-import azsr;
-import azuj;
-import azuk;
+import apug;
+import apvd;
+import aqvu;
+import aqwf;
+import aupa;
+import azsd;
+import azst;
 import azul;
-import bakj;
-import bami;
-import bbdj;
+import azum;
+import azun;
+import bakx;
+import bamw;
+import bbdx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,7 +29,7 @@ public class TroopFileThumbnailGenTask
 {
   protected int a;
   protected long a;
-  protected azuk a;
+  protected azum a;
   protected TroopFileTransferManager.Item a;
   protected String a;
   protected Timer a;
@@ -41,18 +41,18 @@ public class TroopFileThumbnailGenTask
   protected String e;
   protected String f;
   
-  protected TroopFileThumbnailGenTask(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, azuk paramazuk)
+  protected TroopFileThumbnailGenTask(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, azum paramazum)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    this.jdField_a_of_type_Azuk = paramazuk;
+    this.jdField_a_of_type_Azum = paramazum;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = azuj.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
+    this.jdField_a_of_type_JavaLangString = azul.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) {}
-    for (paramItem = apvb.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile);; paramItem = apvb.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName))
+    for (paramItem = apvd.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile);; paramItem = apvd.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName))
     {
-      if (apue.a(paramItem) == 2) {
+      if (apug.a(paramItem) == 2) {
         this.jdField_b_of_type_Boolean = true;
       }
       if (TextUtils.isEmpty(paramString)) {
@@ -64,34 +64,34 @@ public class TroopFileThumbnailGenTask
     this.f = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile;
   }
   
-  public static TroopFileThumbnailGenTask a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, azuk paramazuk)
+  public static TroopFileThumbnailGenTask a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString, azum paramazum)
   {
     if (paramLong == 0L)
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "getTask. troopuin=0");
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "getTask. troopuin=0");
       return null;
     }
     if (paramItem == null)
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "getTask. item=null");
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "getTask. item=null");
       return null;
     }
     if (paramItem.Id == null)
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "getTask. item.id=null");
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "getTask. item.id=null");
       return null;
     }
     if (paramInt == 0)
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "getTask. nThumbSize=0");
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "getTask. nThumbSize=0");
       return null;
     }
     if ((TextUtils.isEmpty(paramString)) && (TextUtils.isEmpty(paramItem.LocalFile)))
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "getTask. localfilepath=null");
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "getTask. localfilepath=null");
       return null;
     }
-    return new TroopFileThumbnailGenTask(paramLong, paramItem, paramInt, paramString, paramazuk);
+    return new TroopFileThumbnailGenTask(paramLong, paramItem, paramInt, paramString, paramazum);
   }
   
   private void a(long paramLong)
@@ -123,7 +123,7 @@ public class TroopFileThumbnailGenTask
     //   10: ifnull +80 -> 90
     //   13: aload_0
     //   14: getfield 128	com/tencent/mobileqq/troop/filemanager/thumbnail/TroopFileThumbnailGenTask:d	Ljava/lang/String;
-    //   17: invokestatic 133	bbdj:d	(Ljava/lang/String;)Z
+    //   17: invokestatic 133	bbdx:d	(Ljava/lang/String;)Z
     //   20: pop
     //   21: new 135	com/tencent/mm/vfs/VFSFile
     //   24: dup
@@ -276,10 +276,10 @@ public class TroopFileThumbnailGenTask
         i = 2;
       }
     }
-    while (bakj.a(this.f, this.d, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int)) {
+    while (bakx.a(this.f, this.d, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int)) {
       try
       {
-        boolean bool = auoy.a(this.f, this.d, true, "", i);
+        boolean bool = aupa.a(this.f, this.d, true, "", i);
         if (!bool) {
           break;
         }
@@ -326,24 +326,24 @@ public class TroopFileThumbnailGenTask
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped");
+      azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped");
       return;
     }
-    azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop.");
+    azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop.");
     e();
     this.jdField_a_of_type_Boolean = true;
-    azul.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+    azun.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
     if (!TextUtils.isEmpty(this.d)) {
-      bbdj.d(this.d);
+      bbdx.d(this.d);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-    azsb.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    azsd.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
   }
   
   protected void a(int paramInt, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Boolean) {
-      azsr.b("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr but had stop. errCode:" + paramInt);
+      azst.b("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr but had stop. errCode:" + paramInt);
     }
     do
     {
@@ -351,14 +351,14 @@ public class TroopFileThumbnailGenTask
       e();
       this.jdField_a_of_type_Boolean = true;
       if (!TextUtils.isEmpty(this.d)) {
-        bbdj.d(this.d);
+        bbdx.d(this.d);
       }
-      azul.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr  errCode:" + paramInt + " passvieErr:" + paramBoolean);
+      azun.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenErr  errCode:" + paramInt + " passvieErr:" + paramBoolean);
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      azsb.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-    } while ((paramBoolean) || (this.jdField_a_of_type_Azuk == null));
-    this.jdField_a_of_type_Azuk.a(a(), false, paramInt, this);
+      azsd.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+    } while ((paramBoolean) || (this.jdField_a_of_type_Azum == null));
+    this.jdField_a_of_type_Azum.a(a(), false, paramInt, this);
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString)
@@ -370,27 +370,27 @@ public class TroopFileThumbnailGenTask
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      azsr.b("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] doSuc but had stop.");
+      azst.b("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] doSuc but had stop.");
       return;
     }
     e();
     this.jdField_a_of_type_Boolean = true;
-    if ((!paramBoolean1) && (!apue.a(new VFSFile(this.d), new VFSFile(this.e))))
+    if ((!paramBoolean1) && (!apug.a(new VFSFile(this.d), new VFSFile(this.e))))
     {
-      azsr.a("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
-      if (bbdj.b(this.e))
+      azst.a("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
+      if (bbdx.b(this.e))
       {
-        a(bami.o, false);
+        a(bamw.o, false);
         return;
       }
     }
     d();
-    azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenSuc  mFilePath:" + this.e + " bHit:" + paramBoolean1 + " bPassiveEnd:" + paramBoolean2);
+    azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onGenSuc  mFilePath:" + this.e + " bHit:" + paramBoolean1 + " bPassiveEnd:" + paramBoolean2);
     if (!paramBoolean1) {
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
     }
     Object localObject1;
-    if (aqwd.a().i()) {
+    if (aqwf.a().i()) {
       if (this.f.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) {
         localObject1 = new File(this.e);
       }
@@ -399,19 +399,19 @@ public class TroopFileThumbnailGenTask
     {
       try
       {
-        localObject1 = aqvs.a(BaseApplicationImpl.getContext(), (File)localObject1);
+        localObject1 = aqvu.a(BaseApplicationImpl.getContext(), (File)localObject1);
         if (localObject1 != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl = ((StringBuilder)((Pair)localObject1).first).toString();
           if (QLog.isDevelopLevel()) {
             QLog.i("IMG_FILE_QR", 1, "TroopFIleThumbGenTask success:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl);
           }
-          azsb.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-          azsb.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-          if ((paramBoolean2) || (this.jdField_a_of_type_Azuk == null)) {
+          azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+          azsd.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
+          if ((paramBoolean2) || (this.jdField_a_of_type_Azum == null)) {
             break;
           }
-          this.jdField_a_of_type_Azuk.a(a(), true, 0, this);
+          this.jdField_a_of_type_Azum.a(a(), true, 0, this);
           return;
         }
       }
@@ -422,7 +422,7 @@ public class TroopFileThumbnailGenTask
         }
         Object localObject2 = null;
         continue;
-        if (aqvs.jdField_a_of_type_Boolean)
+        if (aqvu.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.strQRUrl = null;
           continue;
@@ -440,7 +440,7 @@ public class TroopFileThumbnailGenTask
   {
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
-    azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start.");
+    azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start.");
     ThreadManager.post(this, 5, null, true);
     return true;
   }
@@ -452,7 +452,7 @@ public class TroopFileThumbnailGenTask
   
   public void b()
   {
-    azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] passiveStart.");
+    azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] passiveStart.");
     this.jdField_a_of_type_Boolean = false;
     a(90000L);
   }
@@ -467,40 +467,40 @@ public class TroopFileThumbnailGenTask
     if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c))) {
       return;
     }
-    this.jdField_b_of_type_JavaLangString = azul.a();
+    this.jdField_b_of_type_JavaLangString = azun.a();
     this.c = this.jdField_b_of_type_JavaLangString;
   }
   
   protected void d()
   {
-    azul.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    azul.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
+    azun.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
+    azun.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
   }
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      azsr.b("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. but had stop");
+      azst.b("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. but had stop");
       return;
     }
     c();
     this.e = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     this.d = (this.e + ".ttmp");
-    azsr.c("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. mTmpFilePath:" + this.d + " thumbPath:" + this.e);
-    if (bbdj.b(this.e))
+    azst.c("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] run genThumb. mTmpFilePath:" + this.d + " thumbPath:" + this.e);
+    if (bbdx.b(this.e))
     {
-      azsr.b("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] thumb had exsited");
+      azst.b("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] thumb had exsited");
       a(true, false);
       return;
     }
-    if (!bbdj.b(this.f))
+    if (!bbdx.b(this.f))
     {
-      azsr.b("TroopFileThumbnailGenTask", azsr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] origfile is no exsit");
+      azst.b("TroopFileThumbnailGenTask", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] origfile is no exsit");
       a(-111, false);
       return;
     }
-    bbdj.d(this.d);
+    bbdx.d(this.d);
     VFSFile localVFSFile = new VFSFile(this.d);
     for (;;)
     {

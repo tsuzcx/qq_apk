@@ -1,304 +1,460 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabServerInitStep;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import eipc.EIPCResult;
 
 public class aggl
-  extends ajtd
+  extends QIPCModule
+  implements Handler.Callback
 {
-  protected StringBuilder a;
-  Comparator<RecentBaseData> jdField_a_of_type_JavaUtilComparator = new aggm(this);
-  private ConcurrentHashMap<Integer, ArrayList<RecentBaseData>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static aggl jdField_a_of_type_Aggl;
+  private long jdField_a_of_type_Long;
+  private aggm jdField_a_of_type_Aggm;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean;
+  private aggm b;
   
-  public aggl(QQAppInterface paramQQAppInterface)
+  private aggl()
   {
-    super(paramQQAppInterface);
+    super("MiniMsgIPCServer");
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
   }
   
-  private List<RecentBaseData> a(List<RecentUser> paramList, List<RecentBaseData> paramList1)
+  public static aggl a()
   {
-    int i;
-    ArrayList localArrayList;
-    int j;
-    label18:
-    Object localObject2;
-    Object localObject1;
-    int k;
-    if (paramList == null)
+    if (jdField_a_of_type_Aggl == null) {}
+    try
     {
-      i = 0;
-      localArrayList = new ArrayList();
-      j = 0;
-      if (j >= i) {
-        break label348;
+      if (jdField_a_of_type_Aggl == null) {
+        jdField_a_of_type_Aggl = new aggl();
       }
-      RecentUser localRecentUser = (RecentUser)paramList.get(j);
-      Object localObject3 = ahnn.a(localRecentUser.uin, localRecentUser.getType());
-      localObject2 = ahnn.a().a((String)localObject3);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = ahmi.a(localRecentUser, this.app, BaseApplicationImpl.getContext());
-        if (localObject1 != null) {
-          ahnn.a().a((RecentBaseData)localObject1, (String)localObject3);
-        }
-      }
-      if (localObject1 != null)
-      {
-        ((RecentBaseData)localObject1).a(this.app, BaseApplicationImpl.getContext());
-        if ((((RecentBaseData)localObject1).b() <= 0) || ((((RecentBaseData)localObject1).mUnreadFlag != 1) && (((RecentBaseData)localObject1).mUnreadFlag != 4))) {
-          break label280;
-        }
-        k = ((RecentBaseData)localObject1).a();
-        if (k != 1) {
-          break label254;
-        }
-        localObject2 = this.app.a(true).a(((RecentBaseData)localObject1).a());
-        if (localObject2 == null) {
-          break label241;
-        }
-        localObject3 = ((bcic)this.app.a(107)).a("");
-        if ((!((HotChatInfo)localObject2).isGameRoom) && (!((HotChatInfo)localObject2).troopUin.equals(((bcis)localObject3).a))) {
-          break label241;
-        }
-      }
+      return jdField_a_of_type_Aggl;
     }
-    label280:
-    for (;;)
-    {
-      j += 1;
-      break label18;
-      i = paramList.size();
-      break;
-      label241:
-      localArrayList.add(localObject1);
-      continue;
-      label254:
-      if ((k == 0) || (k == 3000))
-      {
-        localArrayList.add(localObject1);
-        continue;
-        if ((paramList1 != null) && (paramList1.size() > 0))
-        {
-          localObject2 = paramList1.iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            if (((RecentBaseData)((Iterator)localObject2).next()).a().equals(((RecentBaseData)localObject1).a())) {
-              localArrayList.add(localObject1);
-            }
-          }
-        }
-      }
-    }
-    label348:
-    return localArrayList;
+    finally {}
   }
   
-  private void a(List<RecentUser> paramList)
+  public static void a(int paramInt)
   {
-    if (QLog.isDevelopLevel())
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      ((aggj)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(147)).a(Integer.valueOf(paramInt));
+    }
+  }
+  
+  private void a(int paramInt, Bundle paramBundle)
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
     {
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      if ((localObject == null) || (localaggm == null)) {
+        break;
+      }
+      if (paramBundle == null) {
+        paramBundle = new Bundle();
       }
       for (;;)
       {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
-        localObject1 = paramList.iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject = ((QQAppInterface)localObject).a();
+        if (localObject != null) {}
+        for (int i = ((QQMessageFacade)localObject).c();; i = 0)
         {
-          localObject2 = (RecentUser)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaLangStringBuilder.append(((RecentUser)localObject2).uin + "|" + ((RecentUser)localObject2).getType() + ",");
-        }
-        this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
-    }
-    Object localObject1 = null;
-    int i;
-    int j;
-    String str;
-    if (paramList != null)
-    {
-      i = paramList.size() - 1;
-      for (;;)
-      {
-        if (i >= 0)
-        {
-          localObject2 = (RecentUser)paramList.get(i);
-          j = ((RecentUser)localObject2).getType();
-          str = ((RecentUser)localObject2).uin;
-          if (TextUtils.isEmpty(str))
-          {
-            paramList.remove(i);
-            if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-            {
-              this.jdField_a_of_type_JavaLangStringBuilder.append(i).append(",").append(((RecentUser)localObject2).getType()).append(";");
-              i -= 1;
-            }
+          paramBundle.putInt("param_cmd", 0);
+          paramBundle.putInt("param_proc_badge_count", i);
+          localObject = new EIPCResult();
+          ((EIPCResult)localObject).data = paramBundle;
+          callbackResult(paramInt, (EIPCResult)localObject);
+          paramBundle.putInt("param_proc_badge_count", i);
+          QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_sync_unreadcount", paramBundle, null);
+          if (!QLog.isColorLevel()) {
+            break;
           }
-          else if ((j == 1) && ((((RecentUser)localObject2).lFlag & 1L) != 0L))
-          {
-            if ((localObject1 != null) || (this.app == null)) {
-              break label483;
-            }
-          }
+          QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
+          return;
         }
       }
     }
-    label483:
-    for (Object localObject2 = this.app.a(true);; localObject2 = localObject1)
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Aggm != null) {
+      QIPCServerHelper.getInstance().callClient(aggm.a(this.jdField_a_of_type_Aggm), aggm.b(this.jdField_a_of_type_Aggm), "actionMiniReportEvent", paramBundle, null);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Aggm != null)
     {
-      localObject1 = localObject2;
-      if (localObject2 == null) {
+      String str1 = paramBundle.getString("param_proc_name");
+      String str2 = paramBundle.getString("param_proc_modulename");
+      paramBundle.getString("param_proc_businame");
+      if ((this.jdField_a_of_type_Aggm.a().equals(str1)) && (this.jdField_a_of_type_Aggm.b().equals(str2))) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  private void c(Bundle paramBundle)
+  {
+    String str1 = paramBundle.getString("param_proc_name");
+    String str2 = paramBundle.getString("param_proc_modulename");
+    String str3 = paramBundle.getString("param_proc_businame");
+    this.jdField_a_of_type_Aggm = new aggm(str1, str2);
+    this.b = new aggm(str1, "aio_client_module");
+    this.jdField_a_of_type_Aggm.a = str3;
+    this.jdField_a_of_type_Boolean = true;
+    boolean bool = paramBundle.getBoolean("param_proc_first_start", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniMsgIPCServer", 2, str1 + "doOnProcForeGround isFirst = " + bool);
+    }
+    if (bool) {
+      a();
+    }
+  }
+  
+  private void d(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    String str = paramBundle.getString("param_proc_uin");
+    int j = paramBundle.getInt("param_proc_uin_type");
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramBundle = null)
+    {
+      aggm localaggm = this.b;
+      if ((paramBundle == null) || (localaggm == null)) {
         break;
       }
-      localObject1 = localObject2;
-      if (((HotChatManager)localObject2).b(str)) {
-        break;
-      }
-      paramList.remove(i);
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("invalide hotchat ").append(i).append(",").append(str).append(";");
-      localObject1 = localObject2;
-      break;
-      if ((j == 3000) && (this.app != null))
+      paramBundle = paramBundle.a();
+      if (paramBundle != null) {}
+      for (int i = paramBundle.a(j, str);; i = 0)
       {
-        localObject2 = ((ajvk)this.app.getManager(53)).a(str);
-        if ((localObject2 == null) || (((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()) || (((DiscussionInfo)localObject2).isHidden()))
-        {
-          paramList.remove(i);
-          if (this.jdField_a_of_type_JavaLangStringBuilder != null) {
-            this.jdField_a_of_type_JavaLangStringBuilder.append("hidden_RecentUser ").append(i).append(",").append(str).append(";");
-          }
+        paramBundle = new Bundle();
+        paramBundle.putString("param_proc_uin", str);
+        paramBundle.putInt("param_proc_uin_type", j);
+        paramBundle.putInt("param_proc_single_con_badge_count", i);
+        if (QLog.isColorLevel()) {
+          QLog.d("mini_msg_IPCServer", 2, "doNotifySingleConUnreadState uin = " + str + "; unread = " + i);
         }
+        QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_sync_single_con_unread_count", paramBundle, null);
+        return;
       }
-      break;
-      if (this.jdField_a_of_type_JavaLangStringBuilder != null)
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_Aggm != null) {
+      QIPCServerHelper.getInstance().callClient(aggm.a(this.jdField_a_of_type_Aggm), aggm.b(this.jdField_a_of_type_Aggm), "actionMiniDirectShareFailCallback", null, null);
+    }
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_Aggm != null) {
+      QIPCServerHelper.getInstance().callClient(aggm.a(this.jdField_a_of_type_Aggm), aggm.b(this.jdField_a_of_type_Aggm), "actionMiniDirectShareSucCallback", null, null);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.jdField_a_of_type_Aggm != null) {
+      QIPCServerHelper.getInstance().callClient(aggm.a(this.jdField_a_of_type_Aggm), aggm.b(this.jdField_a_of_type_Aggm), "actionMiniShareSucCallback", null, null);
+    }
+  }
+  
+  private void h()
+  {
+    if (this.jdField_a_of_type_Aggm != null) {
+      QIPCServerHelper.getInstance().callClient(aggm.a(this.jdField_a_of_type_Aggm), aggm.b(this.jdField_a_of_type_Aggm), "actionMiniShareFailCallback", null, null);
+    }
+  }
+  
+  private void i()
+  {
+    long l = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_Long > l) && (this.jdField_a_of_type_Long - l < 5000L)) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    {
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      if ((localObject == null) || (localaggm == null)) {
+        break;
+      }
+      localObject = ((QQAppInterface)localObject).a();
+      if (localObject != null) {}
+      for (int i = ((QQMessageFacade)localObject).c();; i = 0)
       {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-        QLog.i("MiniMsgHandler", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("param_proc_badge_count", i);
+        if (QLog.isColorLevel()) {
+          QLog.d("mini_msg_IPCServer", 2, "doNotifyUnreadState unread = " + i);
+        }
+        QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_sync_unreadcount", (Bundle)localObject, null);
+        return;
+      }
+    }
+  }
+  
+  private void j()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    {
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      if ((localObject != null) && (localaggm != null))
+      {
+        localObject = new Bundle();
+        if (QLog.isColorLevel()) {
+          QLog.d("mini_msg_IPCServer", 2, "doNotifyGoToConversation  ");
+        }
+        QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_mini_msgtab_notify_to_conversation", (Bundle)localObject, null);
       }
       return;
     }
   }
   
-  private boolean a(int paramInt)
+  private void k()
   {
-    boolean bool = false;
-    if (paramInt == -2050) {
-      bool = true;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
+    {
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
+      if (localQQMessageFacade != null) {}
+      for (int i = localQQMessageFacade.c();; i = 0)
+      {
+        if ((localObject != null) && (localaggm != null))
+        {
+          localObject = new Bundle();
+          ((Bundle)localObject).putInt("param_proc_badge_count", i);
+          if (QLog.isColorLevel()) {
+            QLog.d("MiniMsgIPCServer", 2, "doNotifyUnreadState unread = " + i);
+          }
+          QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_msg_tab_back_refresh", (Bundle)localObject, null);
+        }
+        return;
+      }
     }
-    return bool;
   }
   
-  public List<RecentBaseData> a(int paramInt1, int paramInt2)
+  private void l()
   {
-    Object localObject2 = new ArrayList();
-    List localList = this.app.a().a().a(false);
-    for (;;)
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
     {
-      try
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).a();
+      if (localQQMessageFacade != null) {}
+      for (int i = localQQMessageFacade.c();; i = 0)
       {
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-        if (localObject1 == null)
+        if ((localObject != null) && (localaggm != null))
         {
-          localObject1 = new ArrayList();
-          a(localList);
-          if (paramInt2 != 1) {
-            break label233;
+          localObject = new Bundle();
+          ((Bundle)localObject).putInt("param_proc_badge_count", i);
+          if (QLog.isColorLevel()) {
+            QLog.d("mini_msg_IPCServer", 2, "notifyGetUnread unread = " + i);
           }
-          localObject3 = localObject1;
-          ((List)localObject2).addAll(a(localList, localObject3));
-          Collections.sort((List)localObject2, this.jdField_a_of_type_JavaUtilComparator);
-          if (((List)localObject2).size() > 100)
-          {
-            localList = ((List)localObject2).subList(0, 100);
-            localObject2 = localList;
-          }
-          continue;
+          QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_get_unread", (Bundle)localObject, null);
         }
+        return;
       }
-      catch (Exception localException1)
-      {
-        try
-        {
-          ((ArrayList)localObject1).clear();
-          ((ArrayList)localObject1).addAll((Collection)localObject2);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject1);
-          if (!QLog.isColorLevel()) {
-            break label230;
-          }
-          localObject1 = new StringBuilder().append("initMsgCacheByIndex : resultDataList size = ").append(((List)localObject2).size()).append(",lastDatasize = ");
-          if (localObject3 == null)
-          {
-            paramInt1 = 0;
-            QLog.d("MiniMsgHandler", 2, paramInt1);
-            return localObject2;
-          }
-          paramInt1 = localObject3.size();
-          continue;
-          localException1 = localException1;
-        }
-        catch (Exception localException2)
-        {
-          continue;
-        }
-        localException1.printStackTrace();
-        return localObject2;
-      }
-      continue;
-      label230:
-      return localObject2;
-      label233:
-      Object localObject3 = null;
     }
+  }
+  
+  public aggm a()
+  {
+    return this.jdField_a_of_type_Aggm;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
   }
   
-  public void a(Integer paramInteger)
+  void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+    Message localMessage = Message.obtain();
+    localMessage.what = 11;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("param_proc_uin", paramString);
+    localBundle.putInt("param_proc_uin_type", paramInt);
+    localMessage.setData(localBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public boolean a()
   {
-    if (((paramInt1 == 1) || (paramInt1 == 0) || (paramInt1 == 3000)) && (!a(paramInt2)))
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void c()
+  {
+    j();
+  }
+  
+  public void d()
+  {
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject = null)
     {
-      aggn.a().a();
-      if (!TextUtils.isEmpty(paramString)) {
-        aggn.a().a(paramString, paramInt1);
+      aggm localaggm = this.jdField_a_of_type_Aggm;
+      if ((localObject != null) && (localaggm != null))
+      {
+        localObject = new Bundle();
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniMsgIPCServer", 2, "notifyFromMiniAIOToAIO ");
+        }
+        QIPCServerHelper.getInstance().callClient(aggm.a(localaggm), aggm.b(localaggm), "action_mini_aio_to_aio", (Bundle)localObject, null);
+      }
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      c((Bundle)paramMessage.obj);
+      continue;
+      b((Bundle)paramMessage.obj);
+      continue;
+      if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+      {
+        i();
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
+        continue;
+        d(paramMessage.getData());
+        continue;
+        if (MiniMsgTabServerInitStep.jdField_a_of_type_Boolean)
+        {
+          a(paramMessage.arg1, (Bundle)paramMessage.obj);
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("MiniMsgIPCServer", 2, "isAfterActionB = " + MiniMsgTabServerInitStep.jdField_a_of_type_Boolean);
+          continue;
+          k();
+          continue;
+          g();
+          continue;
+          h();
+          continue;
+          l();
+          continue;
+          j();
+          continue;
+          a((Bundle)paramMessage.obj);
+          continue;
+          f();
+          continue;
+          e();
+        }
       }
     }
   }
   
-  protected Class<? extends ajtg> observerClass()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return null;
+    if ((QLog.isColorLevel()) && (paramBundle != null)) {
+      QLog.d("MiniMsgIPCServer", 2, new Object[] { "MiniMsgIPCServer : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramBundle;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!paramString.equalsIgnoreCase("cmd_proc_foregound")) {
+        break label125;
+      }
+      localMessage.what = 1;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return null;
+      label125:
+      if (paramString.equalsIgnoreCase("cmd_proc_backgound"))
+      {
+        localMessage.what = 2;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_refresh_mini_badge"))
+      {
+        localMessage.what = 4;
+        localMessage.arg1 = paramInt;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_msg_tab_back_refresh"))
+      {
+        localMessage.what = 8;
+        localMessage.arg1 = paramInt;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_share_suc"))
+      {
+        localMessage.what = 6;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_share_fail"))
+      {
+        localMessage.what = 7;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_get_unread"))
+      {
+        localMessage.what = 8;
+        localMessage.arg1 = paramInt;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_clear_business"))
+      {
+        if (paramBundle != null) {
+          a(paramBundle.getInt("PARAM_CMD_BUSIID"));
+        }
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_report_event"))
+      {
+        localMessage.what = 10;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_suc"))
+      {
+        localMessage.what = 12;
+      }
+      else if (paramString.equalsIgnoreCase("cmd_mini_direct_share_fail"))
+      {
+        localMessage.what = 13;
+      }
+    }
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

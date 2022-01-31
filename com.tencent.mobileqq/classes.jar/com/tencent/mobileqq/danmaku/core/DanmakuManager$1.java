@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import anfj;
-import anfr;
-import anfv;
-import anhi;
-import anhs;
+import anfo;
+import anfw;
+import anga;
+import anhn;
+import anhx;
 
 public class DanmakuManager$1
   implements Runnable
 {
-  DanmakuManager$1(DanmakuManager paramDanmakuManager, anfv paramanfv, anhs paramanhs) {}
+  DanmakuManager$1(DanmakuManager paramDanmakuManager, anga paramanga, anhx paramanhx) {}
   
   public void run()
   {
     if (DanmakuManager.a(this.this$0) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Anfv == null)
+    if (this.jdField_a_of_type_Anga == null)
     {
       DanmakuManager.a(this.this$0).a(false);
       return;
     }
-    this.jdField_a_of_type_Anhs.a(this.jdField_a_of_type_Anfv.h(), this.jdField_a_of_type_Anfv.i());
-    anhi localanhi = this.jdField_a_of_type_Anfv.a(this.jdField_a_of_type_Anhs);
-    if (DanmakuManager.a(this.this$0, localanhi))
+    this.jdField_a_of_type_Anhx.a(this.jdField_a_of_type_Anga.h(), this.jdField_a_of_type_Anga.i());
+    anhn localanhn = this.jdField_a_of_type_Anga.a(this.jdField_a_of_type_Anhx);
+    if (DanmakuManager.a(this.this$0, localanhn))
     {
       DanmakuManager.a(this.this$0).a(true);
-      if (localanhi.a) {
-        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Anfv);
+      if (localanhn.a) {
+        DanmakuManager.a(this.this$0).b(this.jdField_a_of_type_Anga);
       }
-      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Anfv, this.jdField_a_of_type_Anhs, localanhi);
+      DanmakuManager.a(this.this$0).a(this.jdField_a_of_type_Anga, this.jdField_a_of_type_Anhx, localanhn);
       return;
     }
     DanmakuManager.a(this.this$0).a(false);

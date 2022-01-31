@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import ajyc;
+import ajya;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-import bbkx;
+import bbll;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.DragDeleteListener;
 
 class MiniAppDesktopLayout$2
@@ -14,9 +14,9 @@ class MiniAppDesktopLayout$2
   
   public void onDeleteDragComplete()
   {
-    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840620);
-    MiniAppDesktopLayout.access$200(this.this$0).setText(ajyc.a(2131706785));
-    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840622, 0, 0, 0);
+    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840617);
+    MiniAppDesktopLayout.access$200(this.this$0).setText(ajya.a(2131706796));
+    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840619, 0, 0, 0);
   }
   
   public void onDeleteDragFinish()
@@ -27,7 +27,7 @@ class MiniAppDesktopLayout$2
     MiniAppDesktopLayout.access$002(this.this$0, false);
     MiniAppDesktopLayout.access$100(this.this$0).clearAnimation();
     if (MiniAppDesktopLayout.access$100(this.this$0).getHeight() > 0) {}
-    for (int i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();; i = bbkx.a(65.0F))
+    for (int i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();; i = bbll.a(65.0F))
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, i);
       localTranslateAnimation.setDuration(200L);
@@ -42,19 +42,19 @@ class MiniAppDesktopLayout$2
   {
     if (MiniAppDesktopLayout.access$000(this.this$0))
     {
-      MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840619);
-      MiniAppDesktopLayout.access$200(this.this$0).setText(ajyc.a(2131706784));
-      MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840621, 0, 0, 0);
+      MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840616);
+      MiniAppDesktopLayout.access$200(this.this$0).setText(ajya.a(2131706795));
+      MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840618, 0, 0, 0);
       return;
     }
     MiniAppDesktopLayout.access$002(this.this$0, true);
     MiniAppDesktopLayout.access$100(this.this$0).setVisibility(0);
-    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840619);
+    MiniAppDesktopLayout.access$100(this.this$0).setBackgroundResource(2130840616);
     MiniAppDesktopLayout.access$100(this.this$0).clearAnimation();
-    MiniAppDesktopLayout.access$200(this.this$0).setText(ajyc.a(2131706787));
-    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840621, 0, 0, 0);
+    MiniAppDesktopLayout.access$200(this.this$0).setText(ajya.a(2131706798));
+    MiniAppDesktopLayout.access$200(this.this$0).setCompoundDrawablesWithIntrinsicBounds(2130840618, 0, 0, 0);
     if (MiniAppDesktopLayout.access$100(this.this$0).getHeight() > 0) {}
-    for (int i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();; i = bbkx.a(65.0F))
+    for (int i = MiniAppDesktopLayout.access$100(this.this$0).getHeight();; i = bbll.a(65.0F))
     {
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, i, 0.0F);
       localTranslateAnimation.setDuration(200L);

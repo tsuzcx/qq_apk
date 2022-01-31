@@ -1,36 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
 
-public class xnc
-  extends WebViewPlugin
+class xnc
+  implements mxl
 {
-  public xnc()
-  {
-    this.mPluginNameSpace = "troop_member_level_JS_API";
-  }
+  xnc(xnb paramxnb) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (!"troop_member_level_JS_API".equals(paramString2)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
     }
-    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
+    }
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
+    do
     {
-      paramString2 = (bcfj)super.getBrowserComponent(2);
-      if (paramString2 != null)
+      do
       {
-        paramString1 = paramVarArgs[0];
-        paramJsBridgeListener = paramString1;
-        if ("RETURN".equals(paramString1)) {
-          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
-        }
-        paramString2.a.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
+        return;
+      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
+      if (this.a.e != xnb.c) {
+        break;
       }
-      return true;
-    }
-    return false;
+    } while (this.a.f != 2);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a();
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(2131691477);
+    return;
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(2131691477);
   }
 }
 

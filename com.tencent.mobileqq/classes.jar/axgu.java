@@ -1,95 +1,162 @@
-import android.content.IntentFilter;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 
-public class axgu
+class axgu
 {
   int jdField_a_of_type_Int = 0;
+  ayrx jdField_a_of_type_Ayrx;
   DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  ArrayList<axgq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c;
   
   axgu()
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = axgw.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_c_of_type_Int = 0;
   }
   
-  void a(boolean paramBoolean, axgq paramaxgq)
+  boolean a(DownloadInfo paramDownloadInfo)
   {
-    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramBoolean) {}
-    for (;;)
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramaxgq);
-        return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.MD5_zip_so))))) {
+        break label382;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramaxgq);
+      bool = true;
     }
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = axgw.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new axgv(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_Int == 1) && (axgw.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))) {}
     for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  boolean d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = axgw.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(1, null, 0);
-    }
-    for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+        QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
       }
-      return bool;
+      if (!bool)
+      {
+        return this.jdField_a_of_type_Boolean;
+        bool = true;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Ayrx != null)
+        {
+          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+          if ((localObject instanceof AppInterface))
+          {
+            localObject = ((AppInterface)localObject).getNetEngine(0);
+            if (localObject != null)
+            {
+              QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Ayrx.a() }));
+              ((aysa)localObject).b(this.jdField_a_of_type_Ayrx);
+            }
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = paramDownloadInfo;
+        this.jdField_c_of_type_Int = 0;
+        this.jdField_a_of_type_Ayrx = null;
+        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
+        if (!axgy.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+        {
+          this.jdField_c_of_type_Int |= 0x1;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if (!axgy.c(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+        {
+          this.jdField_c_of_type_Int |= 0x2;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if ((axgy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)) && (!axgy.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)))
+        {
+          this.jdField_c_of_type_Int |= 0x3;
+          this.jdField_a_of_type_Int += 1;
+        }
+        QLog.d("QavGesture", 1, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+        if (this.jdField_a_of_type_Int == 0) {
+          return this.jdField_a_of_type_Boolean;
+        }
+        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, 3);
+        return this.jdField_a_of_type_Boolean;
+        label382:
+        bool = false;
+      }
+    }
+  }
+  
+  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    String str2;
+    String str1;
+    int i;
+    if (!axgy.d(paramDownloadInfo))
+    {
+      str2 = paramDownloadInfo.url_zip_so;
+      str1 = paramDownloadInfo.MD5_zip_so;
+      i = 1;
+    }
+    String str3;
+    boolean bool2;
+    for (;;)
+    {
+      str3 = axgy.b() + str1;
+      if (paramInt >= 0) {
+        break label154;
+      }
+      QLog.d("QavGesture", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
+      axgt.a(-3);
+      bool2 = false;
+      return bool2;
+      if ((paramDownloadInfo.enable) && (!axgy.c(paramDownloadInfo)))
+      {
+        str2 = paramDownloadInfo.url_zip_model;
+        str1 = paramDownloadInfo.MD5_zip_model;
+        i = 2;
+      }
+      else
+      {
+        if ((!axgy.a(paramDownloadInfo)) || (axgy.b(paramDownloadInfo))) {
+          break;
+        }
+        str2 = paramDownloadInfo.url_zip_gamemodel;
+        str1 = paramDownloadInfo.MD5_zip_gamemodel;
+        i = 3;
+      }
+    }
+    axgt.a(100);
+    return false;
+    label154:
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Aysc = new axgv(this, str1, paramDownloadInfo, i, paramInt);
+    localayrx.a(i + "_" + str1);
+    localayrx.jdField_a_of_type_JavaLangString = str2;
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.jdField_c_of_type_JavaLangString = new File(str3).getPath();
+    localayrx.jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramDownloadInfo instanceof QQAppInterface))
+    {
+      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
+      if (paramDownloadInfo != null)
+      {
+        this.jdField_a_of_type_Ayrx = localayrx;
+        paramDownloadInfo.a(this.jdField_a_of_type_Ayrx);
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (!bool1) {
+        axgt.a(-2);
+      }
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QavGesture", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
+      return bool1;
     }
   }
 }

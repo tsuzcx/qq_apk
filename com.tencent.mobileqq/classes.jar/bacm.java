@@ -1,54 +1,41 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import java.util.List;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class bacm
-  extends bacr
+  extends bacf<babg>
 {
-  private TextView a;
-  private TextView b;
+  public View a;
+  public ImageView a;
+  public RoundCornerImageView a;
+  public URLDrawable a;
+  public MessageProgressView a;
+  public ImageView b;
+  public ImageView c;
   
-  protected bacm(View paramView)
+  public bacm(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378312));
-    this.b = ((TextView)paramView.findViewById(2131378203));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367567);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131367569));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.a = 1;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(10);
+    this.b = ((ImageView)paramView.findViewById(2131367572));
+    this.c = ((ImageView)paramView.findViewById(2131367570));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367568));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)paramView.findViewById(2131367571));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(10.0F, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(actj.a(17.0F, paramView.getResources()), -1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new bacn(this));
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bacp parambacp)
+  protected void a()
   {
-    paramHWReciteItem = (baau)parambacp.a;
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
-      paramView = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(paramView instanceof QQAppInterface));
-    bbbb.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bacp parambacp, baau parambaau, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(parambaau.jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(ajyc.a(2131705304)).append(parambaau.b);
-      if ((parambaau.a != null) && (!parambaau.a.isEmpty())) {
-        localStringBuilder.append(azzy.a(parambaau.a));
-      }
-      parambaau.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambaau.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambacp);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    this.b.setVisibility(4);
   }
 }
 

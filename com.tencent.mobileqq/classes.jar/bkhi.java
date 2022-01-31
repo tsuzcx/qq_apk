@@ -1,23 +1,44 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.1;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.2;
+import mqq.os.MqqHandler;
 
-class bkhi
-  implements Animator.AnimatorListener
+public class bkhi
+  implements bjhm
 {
-  bkhi(bkhg parambkhg) {}
+  public bkhi(EditTextPanel paramEditTextPanel) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    if (bkhg.a(this.a) != null) {
-      bkhg.a(this.a).a();
-    }
+    this.a.post(new EditTextPanel.2.1(this, paramString, paramInt));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.a == null) || (this.a.a.a == null)) {}
+    for (;;)
+    {
+      return;
+      int j = this.a.a.a.getChildCount();
+      DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bjav.a(7);
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = this.a.a.a.getChildAt(i);
+        localObject = (bkhh)this.a.a.getChildViewHolder((View)localObject);
+        if (((bkhh)localObject).a.isContainsResUrl(paramString)) {
+          ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (bkhh)localObject, localDynamicTextConfigManager));
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 

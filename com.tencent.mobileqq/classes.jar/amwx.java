@@ -1,102 +1,67 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amwx
+  extends ampa<amww>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
-  
-  public amwx()
+  public int a()
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
+    return 361;
   }
   
-  public static amwx a(String paramString)
+  @NonNull
+  public amww a(int paramInt)
   {
-    if (paramString == null) {}
-    for (;;)
+    return new amww();
+  }
+  
+  @Nullable
+  public amww a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amwx localamwx = new amwx();
-        paramString = new JSONObject(paramString);
-        if (paramString.has("wvShouldReportPerf"))
-        {
-          if (paramString.optInt("wvShouldReportPerf") == 1)
-          {
-            bool = true;
-            localamwx.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          if (paramString.has("wvShouldReportJsapiCall"))
-          {
-            if (paramString.optInt("wvShouldReportJsapiCall") != 1) {
-              break label212;
-            }
-            bool = true;
-            label70:
-            localamwx.jdField_b_of_type_Boolean = bool;
-          }
-          if (paramString.has("wvShouldReportOpenapiCall")) {
-            if (paramString.optInt("wvShouldReportOpenapiCall") != 1) {
-              break label217;
-            }
-          }
-        }
-        label212:
-        label217:
-        for (boolean bool = true;; bool = false)
-        {
-          localamwx.jdField_c_of_type_Boolean = bool;
-          if (paramString.has("wvPerformanceRate")) {
-            localamwx.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
-          }
-          if (paramString.has("wvJsapiCallRate")) {
-            localamwx.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
-          }
-          if (paramString.has("wvSchemeRate")) {
-            localamwx.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
-          }
-          if (paramString.has("recogniseText")) {
-            localamwx.d = paramString.optString("recogniseText");
-          }
-          QLog.d("ConfBean", 2, "confBean = " + localamwx.toString());
-          return localamwx;
-          bool = false;
-          break;
-          bool = false;
-          break label70;
-        }
-        if (!QLog.isColorLevel()) {}
+      amww localamww = amww.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
+      return localamww;
     }
-    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public String toString()
+  public Class<amww> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("reportPerformance:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" reportJsapi:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" reportOpenapi:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" performanceRate:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" jsapiRate:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" schemeRate:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" recogniseText:").append(this.d);
-    return localStringBuilder.toString();
+    return amww.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amww paramamww)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramamww.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

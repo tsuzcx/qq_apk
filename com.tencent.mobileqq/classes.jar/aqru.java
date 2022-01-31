@@ -1,85 +1,31 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-public abstract class aqru
-  extends aqrr
+public class aqru
+  extends aqrt
 {
-  protected Context a;
-  protected FrameLayout a;
-  protected ImageView a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected TextView b;
-  protected TextView c;
+  private ImageView a;
   
   public aqru(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
     super(paramContext, paramView, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378313));
-    this.b = ((TextView)paramView.findViewById(2131378233));
-    this.c = ((TextView)paramView.findViewById(2131378041));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367925));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368938));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368908));
+    this.a = ((ImageView)paramView.findViewById(2131363042));
   }
   
   public void a(FeedsItemData paramFeedsItemData)
   {
-    this.itemView.setBackgroundDrawable(aqst.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
-      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
-        break label130;
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.itemView.setOnClickListener(new aqrv(this, paramFeedsItemData));
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label130:
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
-      {
-        this.c.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
-          break label287;
-        }
-        this.b.setVisibility(8);
-        break;
-        this.c.setText(paramFeedsItemData.operateText + "");
-        this.c.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840633);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840633);
-        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      }
-      label287:
-      this.b.setText(paramFeedsItemData.label + "");
-      this.b.setVisibility(0);
-    }
+    this.itemView.setBackgroundDrawable(aqsv.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846170);
+    localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846170);
+    this.a.setImageDrawable(URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions));
+    this.a.setOnClickListener(new aqrv(this, paramFeedsItemData));
   }
 }
 

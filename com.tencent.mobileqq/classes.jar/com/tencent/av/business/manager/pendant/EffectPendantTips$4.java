@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.pendant;
 
-import liu;
-import mat;
+import lip;
+import mao;
 
 public class EffectPendantTips$4
   implements Runnable
 {
-  public EffectPendantTips$4(liu paramliu) {}
+  public EffectPendantTips$4(lip paramlip) {}
   
   public void run()
   {
     try
     {
-      mat.a(liu.a(this.this$0), 1016);
+      mao.a(lip.a(this.this$0), 1016);
       return;
     }
     catch (Exception localException)

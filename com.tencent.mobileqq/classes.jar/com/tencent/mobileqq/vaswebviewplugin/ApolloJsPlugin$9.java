@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bcdb;
+import bcdp;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
 

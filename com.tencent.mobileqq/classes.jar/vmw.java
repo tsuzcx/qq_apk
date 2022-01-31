@@ -1,14 +1,19 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
 class vmw
-  implements View.OnFocusChangeListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  vmw(vmt paramvmt) {}
+  private vmw(vmq paramvmq) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    veg.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
+    }
+    this.a.jdField_a_of_type_Vmu.a(this.a.a());
   }
 }
 

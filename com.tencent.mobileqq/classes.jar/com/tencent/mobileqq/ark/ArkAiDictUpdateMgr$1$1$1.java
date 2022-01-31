@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
+import alrl;
 import alrm;
-import alrn;
 
 public class ArkAiDictUpdateMgr$1$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1$1$1(alrn paramalrn) {}
+  public ArkAiDictUpdateMgr$1$1$1(alrm paramalrm) {}
   
   public void run()
   {

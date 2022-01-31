@@ -4,7 +4,7 @@ public class algm
   
   public String toString()
   {
-    return "ARCloudRecogReqPreOcrInfo{timeout = " + this.a + '}';
+    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
   }
 }
 

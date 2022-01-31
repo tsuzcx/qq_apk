@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.text.TextUtils;
-import beka;
-import bekj;
-import belh;
-import besl;
-import beut;
-import bevc;
-import bevi;
-import bevj;
+import bekr;
+import bela;
+import bely;
+import betc;
+import bevk;
+import bevt;
+import bevz;
+import bewa;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import org.json.JSONArray;
@@ -23,17 +23,17 @@ public class GameDataJsPlugin
   
   private static boolean checkNavigationAppIdListForMiniGame(String paramString)
   {
-    if (belh.a(paramString)) {}
+    if (bely.a(paramString)) {}
     for (;;)
     {
       return false;
-      Object localObject = bevi.a().a();
+      Object localObject = bevz.a().a();
       if (localObject == null) {
         continue;
       }
       try
       {
-        localObject = ((bevc)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("navigateToMiniProgramAppIdList");
+        localObject = ((bevt)localObject).jdField_a_of_type_OrgJsonJSONObject.optJSONArray("navigateToMiniProgramAppIdList");
         int i = 0;
         while ((localObject != null) && (i < paramString.length()))
         {
@@ -52,57 +52,57 @@ public class GameDataJsPlugin
     }
   }
   
-  public String getLaunchOptionsSync(beka parambeka)
+  public String getLaunchOptionsSync(bekr parambekr)
   {
     Object localObject2 = null;
-    bevj localbevj = bevi.a().a();
+    bewa localbewa = bevz.a().a();
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      if (TextUtils.isEmpty(localbevj.c))
+      if (TextUtils.isEmpty(localbewa.c))
       {
         localObject1 = null;
         localJSONObject2.put("appId", localObject1);
-        if (!TextUtils.isEmpty(localbevj.b)) {
+        if (!TextUtils.isEmpty(localbewa.b)) {
           break label175;
         }
         localObject1 = null;
         label63:
         localJSONObject2.put("extraData", localObject1);
-        localJSONObject1.put("scene", bekj.a(localbevj.jdField_a_of_type_Int));
-        localJSONObject1.put("query", localbevj.jdField_a_of_type_OrgJsonJSONObject);
-        if (!TextUtils.isEmpty(localbevj.jdField_a_of_type_JavaLangString)) {
+        localJSONObject1.put("scene", bela.a(localbewa.jdField_a_of_type_Int));
+        localJSONObject1.put("query", localbewa.jdField_a_of_type_OrgJsonJSONObject);
+        if (!TextUtils.isEmpty(localbewa.jdField_a_of_type_JavaLangString)) {
           break label184;
         }
       }
       label175:
       label184:
-      for (Object localObject1 = localObject2;; localObject1 = localbevj.jdField_a_of_type_JavaLangString)
+      for (Object localObject1 = localObject2;; localObject1 = localbewa.jdField_a_of_type_JavaLangString)
       {
         localJSONObject1.put("shareTicket", localObject1);
         localJSONObject1.put("referrerInfo", localJSONObject2);
-        localJSONObject1.put("extendData", bevi.a().f());
-        localJSONObject1.put("entryDataHash", localbevj.d);
+        localJSONObject1.put("extendData", bevz.a().f());
+        localJSONObject1.put("entryDataHash", localbewa.d);
         return localJSONObject1.toString();
-        localObject1 = localbevj.c;
+        localObject1 = localbewa.c;
         break;
-        localObject1 = localbevj.b;
+        localObject1 = localbewa.b;
         break label63;
       }
-      return parambeka.b();
+      return parambekr.b();
     }
     catch (JSONException localJSONException)
     {
-      besl.d("GameDataJsPlugin", "API_GET_LAUNCH_OPTIONS_SYNC exception: ", localJSONException);
+      betc.d("GameDataJsPlugin", "API_GET_LAUNCH_OPTIONS_SYNC exception: ", localJSONException);
     }
   }
   
-  public void getOpenDataUserInfo(beka parambeka)
+  public void getOpenDataUserInfo(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
+      Object localObject = new JSONObject(parambekr.b);
       JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("openIdList");
       localObject = ((JSONObject)localObject).optString("lang", "en");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
@@ -114,66 +114,66 @@ public class GameDataJsPlugin
           arrayOfString[i] = localJSONArray.getString(i);
           i += 1;
         }
-        this.mChannelProxy.getUserInfoOpenData(bevi.a().a(), (String)localObject, arrayOfString, new GameDataJsPlugin.1(this, parambeka));
+        this.mChannelProxy.getUserInfoOpenData(bevz.a().a(), (String)localObject, arrayOfString, new GameDataJsPlugin.1(this, parambekr));
       }
       return;
     }
     catch (JSONException localJSONException)
     {
-      parambeka.b();
-      besl.d("GameDataJsPlugin", "handle event:" + parambeka.jdField_a_of_type_JavaLangString + " error , ", localJSONException);
+      parambekr.b();
+      betc.d("GameDataJsPlugin", "handle event:" + parambekr.jdField_a_of_type_JavaLangString + " error , ", localJSONException);
     }
   }
   
-  public String navigateToMiniProgramConfig(beka parambeka)
+  public String navigateToMiniProgramConfig(bekr parambekr)
   {
     try
     {
-      boolean bool = checkNavigationAppIdListForMiniGame(new JSONObject(parambeka.b).optString("appId"));
-      parambeka = new JSONObject();
+      boolean bool = checkNavigationAppIdListForMiniGame(new JSONObject(parambekr.b).optString("appId"));
+      parambekr = new JSONObject();
       try
       {
-        parambeka.put("inList", bool);
-        besl.a("GameDataJsPlugin", "navigateToMiniProgramConfig, callJs jsonObject = " + parambeka);
-        return parambeka.toString();
+        parambekr.put("inList", bool);
+        betc.a("GameDataJsPlugin", "navigateToMiniProgramConfig, callJs jsonObject = " + parambekr);
+        return parambekr.toString();
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          besl.d("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
+          betc.d("GameDataJsPlugin", localJSONException.getMessage(), localJSONException);
           localJSONException.printStackTrace();
         }
       }
       return "";
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
-      besl.d("GameDataJsPlugin", parambeka.getMessage(), parambeka);
-      parambeka.printStackTrace();
+      betc.d("GameDataJsPlugin", parambekr.getMessage(), parambekr);
+      parambekr.printStackTrace();
     }
   }
   
-  public boolean onInterceptJsEvent(beka parambeka)
+  public boolean onInterceptJsEvent(bekr parambekr)
   {
     if (!this.mIsMiniGame) {
       return true;
     }
-    return super.onInterceptJsEvent(parambeka);
+    return super.onInterceptJsEvent(parambekr);
   }
   
-  public void recordOffLineResourceState(beka parambeka)
+  public void recordOffLineResourceState(bekr parambekr)
   {
     try
     {
-      boolean bool = new JSONObject(parambeka.b).optBoolean("isComplete", false);
-      beut.a(bevi.a().a(), bool);
-      parambeka.a();
+      boolean bool = new JSONObject(parambekr.b).optBoolean("isComplete", false);
+      bevk.a(bevz.a().a(), bool);
+      parambekr.a();
       return;
     }
-    catch (Throwable parambeka)
+    catch (Throwable parambekr)
     {
-      besl.d("GameDataJsPlugin", parambeka.getMessage(), parambeka);
+      betc.d("GameDataJsPlugin", parambekr.getMessage(), parambekr);
     }
   }
 }

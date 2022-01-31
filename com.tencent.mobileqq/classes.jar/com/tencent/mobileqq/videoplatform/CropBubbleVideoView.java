@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.videoplatform;
 
-import acum;
+import acui;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -11,12 +11,12 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import bbvs;
+import bbwg;
 import java.util.Arrays;
 
 public class CropBubbleVideoView
   extends BaseVideoView
-  implements acum
+  implements acui
 {
   float jdField_a_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[0];
   private Path jdField_a_of_type_AndroidGraphicsPath;
@@ -33,9 +33,9 @@ public class CropBubbleVideoView
   float j = this.jdField_a_of_type_ArrayOfFloat[9];
   public float k = Math.abs(this.c - this.g);
   
-  public CropBubbleVideoView(Context paramContext, long paramLong, bbvs parambbvs, boolean paramBoolean)
+  public CropBubbleVideoView(Context paramContext, long paramLong, bbwg parambbwg, boolean paramBoolean)
   {
-    super(paramContext, paramLong, parambbvs);
+    super(paramContext, paramLong, parambbwg);
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   

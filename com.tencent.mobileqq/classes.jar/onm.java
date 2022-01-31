@@ -1,13 +1,20 @@
 import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 final class onm
-  implements rwi
+  implements INetEventHandler
 {
-  onm(Context paramContext, String paramString) {}
+  onm(Context paramContext) {}
   
-  public void a()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    onk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
+    {
+      onh.c(this.a);
+      return;
+    }
+    onh.j("");
+    onh.k("");
   }
 }
 

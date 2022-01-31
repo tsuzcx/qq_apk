@@ -3,12 +3,12 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import whx;
+import whu;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScannerParams> CREATOR = new whx();
+  public static final Parcelable.Creator<ScannerParams> CREATOR = new whu();
   public int a;
   public String a;
   public boolean a;

@@ -1,48 +1,20 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.qphone.base.util.QLog;
 
-class njm
-  implements TVK_ICacheMgr.IPreloadCallback
+public class njm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private njm(nji paramnji) {}
+  public njm(AdControlView paramAdControlView) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    synchronized (nji.a(this.a))
-    {
-      nji.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      nji.a(this.a, nji.a(this.a));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (nji.a(this.a))
-    {
-      nji.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
-      {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = new File(nji.b(paramString1));
-          if (paramString2.exists()) {
-            paramString2.renameTo(new File(nji.a(paramString1)));
-          }
-          nji.a(this.a, nji.a(this.a));
-        }
-      }
-      catch (Exception paramString1)
-      {
-        label136:
-        break label136;
-      }
-      return;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 

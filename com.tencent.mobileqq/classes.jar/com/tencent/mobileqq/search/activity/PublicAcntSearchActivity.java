@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import sfh;
+import sfe;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -28,9 +28,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return ajyc.a(2131708740) + sfh.a(this.app, getApplicationContext());
+      return ajya.a(2131708751) + sfe.a(this.app, getApplicationContext());
     }
-    return ajyc.a(2131708798);
+    return ajya.a(2131708809);
   }
 }
 

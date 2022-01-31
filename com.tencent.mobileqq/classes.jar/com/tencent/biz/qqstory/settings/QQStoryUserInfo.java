@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.settings;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.utils.ChnToSpell;
 
 public class QQStoryUserInfo
-  extends aukm
+  extends auko
   implements Comparable<QQStoryUserInfo>
 {
   public int isAllowed;
   public int isInterested;
   public String mPinying;
   public String nick;
-  @auma
+  @aumc
   public String uin;
   
   public int compareTo(QQStoryUserInfo paramQQStoryUserInfo)

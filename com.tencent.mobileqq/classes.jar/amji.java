@@ -1,132 +1,133 @@
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
 
 public class amji
 {
-  private amgp jdField_a_of_type_Amgp = new amgp();
-  private amgu jdField_a_of_type_Amgu;
-  private amgw jdField_a_of_type_Amgw;
-  private boolean jdField_a_of_type_Boolean = true;
+  private amgo jdField_a_of_type_Amgo;
+  private amgv jdField_a_of_type_Amgv;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private bbgu jdField_a_of_type_Bbgu;
   
-  public amji()
+  public amji(Context paramContext)
   {
-    this.jdField_a_of_type_Amgp.a(new amgr());
-    this.jdField_a_of_type_Amgu = new amgu();
-    this.jdField_a_of_type_Amgu.a(this.jdField_a_of_type_Amgp);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Amgo = new amgo();
+    this.jdField_a_of_type_Amgo.a(new amgq());
   }
   
-  private boolean a(int paramInt)
+  private ColorNote b()
   {
-    return paramInt == 16908289;
+    if (this.jdField_a_of_type_Amgv != null) {
+      return this.jdField_a_of_type_Amgv.getColorNote();
+    }
+    return null;
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Bbgu == null)
+    {
+      this.jdField_a_of_type_Bbgu = new bbgu(this.jdField_a_of_type_AndroidContentContext, 2131755791);
+      this.jdField_a_of_type_Bbgu.setContentView(2131558906);
+      this.jdField_a_of_type_Bbgu.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bbgu.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131690864));
+      this.jdField_a_of_type_Bbgu.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690863), new amjj(this));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bbgu.show();
+      TextView localTextView = this.jdField_a_of_type_Bbgu.getTitleTextView();
+      localTextView.setClickable(true);
+      localTextView.setFocusable(true);
+      localTextView.setFocusableInTouchMode(true);
+      baww.a(localTextView, true);
+      return;
+      if (this.jdField_a_of_type_Bbgu.isShowing()) {
+        this.jdField_a_of_type_Bbgu.dismiss();
+      }
+    }
+  }
+  
+  public amgv a()
+  {
+    return this.jdField_a_of_type_Amgv;
+  }
+  
+  public ColorNote a()
+  {
+    if (this.jdField_a_of_type_Amgv != null) {
+      return this.jdField_a_of_type_Amgv.getColorNote();
+    }
+    return null;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgw != null))
+    ColorNote localColorNote = b();
+    if (localColorNote != null)
     {
-      localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
-      if (localColorNote != null)
-      {
-        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
-        localColorNote = amhi.a(localColorNote);
-        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
-  }
-  
-  public void a(amgp paramamgp)
-  {
-    this.jdField_a_of_type_Amgp = paramamgp;
-  }
-  
-  public void a(amgr paramamgr)
-  {
-    if (this.jdField_a_of_type_Amgp != null) {
-      this.jdField_a_of_type_Amgp.a(paramamgr);
+      this.jdField_a_of_type_Amgo.a(localColorNote.parseBundle());
+      axqy.b(null, "dc00898", "", "", "0X800A743", "0X800A743", amgm.a(this.jdField_a_of_type_Amgv.getColorNote().mServiceType), 0, "", "", "", "");
     }
   }
   
-  public void a(amgw paramamgw)
+  public void a(amgq paramamgq)
   {
-    this.jdField_a_of_type_Amgw = paramamgw;
+    this.jdField_a_of_type_Amgo.a(paramamgq);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(amgv paramamgv)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Amgv = paramamgv;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    this.jdField_a_of_type_Amgo.a(paramColorNote);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Amgo.a();
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgw != null))
+    if (this.jdField_a_of_type_Amgv != null)
     {
-      localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
+      ColorNote localColorNote = this.jdField_a_of_type_Amgv.getColorNote();
       if (localColorNote != null)
       {
-        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
-        localColorNote = amhi.a(localColorNote);
-        this.jdField_a_of_type_Amgp.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        this.jdField_a_of_type_Amgo.a(localColorNote.getServiceType(), localColorNote.getSubType());
+        axqy.b(null, "dc00898", "", "", "0X800A748", "0X800A748", amgm.a(this.jdField_a_of_type_Amgv.getColorNote().mServiceType), 0, "", "", "", "");
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      ColorNote localColorNote;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
-      return;
-    }
-    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
   }
   
-  public void b(boolean paramBoolean)
+  public boolean b()
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Amgw != null) && (this.jdField_a_of_type_Amgp != null) && (this.jdField_a_of_type_Amgu != null)) {
-      localObject = null;
-    }
-    try
+    if (this.jdField_a_of_type_Amgv != null)
     {
-      ColorNote localColorNote = this.jdField_a_of_type_Amgw.getColorNote();
-      localObject = localColorNote;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ColorNoteStateNotice", 1, localException, new Object[0]);
-        continue;
-        int i = 0;
+      ColorNote localColorNote = this.jdField_a_of_type_Amgv.getColorNote();
+      if (localColorNote != null) {
+        return this.jdField_a_of_type_Amgo.a(localColorNote.getServiceType(), localColorNote.getSubType());
       }
     }
-    if ((localObject != null) && (a(localObject.getServiceType())))
-    {
-      i = 1;
-      if ((localObject != null) && (i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Amgp.a(localObject.getServiceType(), localObject.getSubType())))
-      {
-        amhi.a(localObject);
-        this.jdField_a_of_type_Amgu.a(localObject);
-      }
-      return;
-    }
+    return false;
   }
   
   public void c()
   {
-    b(true);
+    d();
+    axqy.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 2, 0, "", "", "", "");
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.scribble;
 
-import awhb;
-import ayrv;
-import ayry;
-import aysw;
+import awhd;
+import ayrx;
+import aysa;
 import aysy;
-import ayxq;
-import bbdj;
-import bbev;
+import ayta;
+import ayxs;
+import bbdx;
+import bbfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,14 +21,14 @@ public class ScribbleResMgr$4
   {
     Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject2 = ScribbleResMgr.b(this.a.resType, this.a.sourceId);
-    if (bbdj.a((String)localObject2))
+    if (bbdx.a((String)localObject2))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ScribbleResMgr", 2, "res exist, return:" + this.a.sourceId + " " + this.a.resType + " file:" + (String)localObject2 + " url:" + this.a.sourceUrl);
       }
-      localObject1 = (ayxq)((QQAppInterface)localObject1).getManager(193);
-      if (((ayxq)localObject1).a()) {
-        ((ayxq)localObject1).a(this.a.sourceUrl, bbdj.b((String)localObject2));
+      localObject1 = (ayxs)((QQAppInterface)localObject1).getManager(193);
+      if (((ayxs)localObject1).a()) {
+        ((ayxs)localObject1).a(this.a.sourceUrl, bbdx.b((String)localObject2));
       }
       ScribbleResMgr.a(this.this$0, this.a, 1);
     }
@@ -36,19 +36,19 @@ public class ScribbleResMgr$4
     {
       return;
       ScribbleResMgr.b(this.this$0, this.a.resType, this.a.sourceId, true);
-      localObject2 = new ayrv();
-      ((ayrv)localObject2).jdField_a_of_type_Aysa = new awhb(this);
-      ((ayrv)localObject2).jdField_a_of_type_JavaLangString = this.a.sourceUrl;
-      ((ayrv)localObject2).jdField_a_of_type_Int = 0;
+      localObject2 = new ayrx();
+      ((ayrx)localObject2).jdField_a_of_type_Aysc = new awhd(this);
+      ((ayrx)localObject2).jdField_a_of_type_JavaLangString = this.a.sourceUrl;
+      ((ayrx)localObject2).jdField_a_of_type_Int = 0;
       if (this.a.resType == 1) {
-        ((ayrv)localObject2).jdField_c_of_type_JavaLangString = ScribbleResMgr.b(this.a.resType, this.a.sourceId);
+        ((ayrx)localObject2).jdField_c_of_type_JavaLangString = ScribbleResMgr.b(this.a.resType, this.a.sourceId);
       }
       if (this.a.resType == 2) {
-        ((ayrv)localObject2).jdField_c_of_type_JavaLangString = ScribbleResMgr.a(this.a.sourceId);
+        ((ayrx)localObject2).jdField_c_of_type_JavaLangString = ScribbleResMgr.a(this.a.sourceId);
       }
-      ScribbleResMgr.a(this.this$0, ((ayrv)localObject2).jdField_c_of_type_JavaLangString);
-      ((ayrv)localObject2).jdField_c_of_type_Int = bbev.a(aysy.a().a());
-      ((QQAppInterface)localObject1).getNetEngine(0).a((aysw)localObject2);
+      ScribbleResMgr.a(this.this$0, ((ayrx)localObject2).jdField_c_of_type_JavaLangString);
+      ((ayrx)localObject2).jdField_c_of_type_Int = bbfj.a(ayta.a().a());
+      ((QQAppInterface)localObject1).getNetEngine(0).a((aysy)localObject2);
     } while (!QLog.isColorLevel());
     QLog.i("ScribbleResMgrdownloading", 2, "starthttpDownloadscribbleRes, url: " + this.a.sourceUrl);
   }

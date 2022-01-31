@@ -1,15 +1,20 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
 class agte
-  implements View.OnClickListener
+  implements aptw
 {
-  agte(agtc paramagtc) {}
+  agte(agtd paramagtd) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(paramView, -1, new Bundle(), 2, null);
+    this.a.a.h();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).b.setClickable(true);
   }
 }
 

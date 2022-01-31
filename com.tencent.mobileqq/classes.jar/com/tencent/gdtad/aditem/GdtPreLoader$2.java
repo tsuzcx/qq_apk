@@ -1,33 +1,33 @@
 package com.tencent.gdtad.aditem;
 
-import ardg;
+import ardi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.AppRuntime;
-import ysx;
-import yxs;
+import ysu;
+import yxp;
 
 public class GdtPreLoader$2
   implements Runnable
 {
-  public GdtPreLoader$2(ysx paramysx, GdtAd paramGdtAd) {}
+  public GdtPreLoader$2(ysu paramysu, GdtAd paramGdtAd) {}
   
   public void run()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    yxs.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: app = [" + localAppRuntime + "]");
+    yxp.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: app = [" + localAppRuntime + "]");
     if (localAppRuntime == null) {}
-    ardg localardg;
+    ardi localardi;
     do
     {
       do
       {
         return;
       } while (!(localAppRuntime instanceof QQAppInterface));
-      localardg = (ardg)localAppRuntime.getManager(268);
-    } while (localardg == null);
-    localardg.a(this.a.getTencent_video_id());
-    localardg.a((QQAppInterface)localAppRuntime);
+      localardi = (ardi)localAppRuntime.getManager(268);
+    } while (localardi == null);
+    localardi.a(this.a.getTencent_video_id());
+    localardi.a((QQAppInterface)localAppRuntime);
   }
 }
 

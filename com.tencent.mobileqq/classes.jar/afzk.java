@@ -1,8 +1,10 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afzk
   implements View.OnClickListener
@@ -11,16 +13,19 @@ public class afzk
   
   public void onClick(View paramView)
   {
-    this.a.f = false;
-    this.a.u = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    vxp.a(this.a.jdField_a_of_type_Agau);
+    vxp.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView.add(((agas)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    if (this.a.jdField_a_of_type_Agaw != null) {
-      this.a.jdField_a_of_type_Agaw.a();
-    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

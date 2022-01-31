@@ -1,68 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
+import android.os.Looper;
+import android.os.Message;
 
-public class acwa
+class acwa
+  extends aywb
 {
-  public int a;
-  public acwb a;
-  public acwc a;
-  public byte[] a;
-  
-  public static acwa a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
+  acwa(acvz paramacvz, Looper paramLooper)
   {
-    if (paramRelationalChainInfo != null)
-    {
-      acwa localacwa = new acwa();
-      localacwa.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
-      if (paramRelationalChainInfo.bytes_attr.has()) {
-        localacwa.jdField_a_of_type_Acwc = acwc.a(localacwa.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
-      }
-      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
-        localacwa.jdField_a_of_type_Acwb = acwb.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
-      }
-      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
-        localacwa.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
-      }
-      return localacwa;
-    }
-    return null;
+    super(paramLooper);
   }
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Acwc != null) {
-      return (int)this.jdField_a_of_type_Acwc.b;
-    }
-    if ((this.jdField_a_of_type_Acwb != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))) {
-      return this.jdField_a_of_type_Acwb.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
-    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Acwc).append(", ");
-    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Acwb).append(", ");
-    localStringBuilder.append("relationIconFlag:");
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
-    {
-      int i = 0;
-      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
-      {
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
-        i += 1;
-      }
-    }
-    localStringBuilder.append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    this.a.a(paramMessage);
   }
 }
 

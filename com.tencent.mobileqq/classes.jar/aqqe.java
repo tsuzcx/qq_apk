@@ -1,23 +1,17 @@
-import android.app.Dialog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
 
 class aqqe
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  aqqe(aqqa paramaqqa, String paramString) {}
-  
-  public void onClick(View paramView)
+  aqqe(aqqc paramaqqc, View paramView)
   {
-    paramView = new HashMap();
-    yod.a(paramView, this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(10), "0");
-    yod.a(ajae.a(), "769", "205711", this.jdField_a_of_type_Aqqa.a().gameAppId, "76905", "1", "160", paramView);
-    aqqa.a(this.jdField_a_of_type_Aqqa).dismiss();
+    super(paramView);
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 

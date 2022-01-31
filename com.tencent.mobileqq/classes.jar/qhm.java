@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-
-public final class qhm
-  implements Parcelable.Creator<ResultRecord>
+class qhm
+  implements bfqj
 {
-  public ResultRecord a(Parcel paramParcel)
-  {
-    return new ResultRecord(paramParcel);
-  }
+  qhm(qhk paramqhk) {}
   
-  public ResultRecord[] a(int paramInt)
-  {
-    return new ResultRecord[paramInt];
-  }
+  public void a() {}
 }
 
 

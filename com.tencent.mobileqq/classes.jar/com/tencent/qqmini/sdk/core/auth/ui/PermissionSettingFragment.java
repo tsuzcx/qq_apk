@@ -19,20 +19,20 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import behf;
-import behl;
-import behn;
-import behs;
-import beht;
-import behu;
-import behv;
 import behw;
-import behx;
-import bemn;
-import besl;
-import bfff;
-import bffu;
-import bffy;
+import beic;
+import beie;
+import beij;
+import beik;
+import beil;
+import beim;
+import bein;
+import beio;
+import bene;
+import betc;
+import bffw;
+import bfgl;
+import bfgp;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -49,8 +49,8 @@ public class PermissionSettingFragment
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  public behf a;
-  private behu jdField_a_of_type_Behu;
+  public behw a;
+  private beil jdField_a_of_type_Beil;
   String jdField_a_of_type_JavaLangString;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private TextView c;
@@ -62,23 +62,23 @@ public class PermissionSettingFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("key_appid", paramString1);
     localIntent.putExtra("key_name", paramString2);
-    bfff.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class, paramInt);
+    bffw.a(paramActivity, localIntent, MiniFragmentActivity.class, PermissionSettingFragment.class, paramInt);
   }
   
   private void a(Context paramContext)
   {
-    behs localbehs = new behs(paramContext);
-    paramContext = new beht(paramContext);
-    behl.a().a(new behn[] { localbehs, paramContext });
+    beij localbeij = new beij(paramContext);
+    paramContext = new beik(paramContext);
+    beic.a().a(new beie[] { localbeij, paramContext });
   }
   
   private void a(String paramString)
   {
     List localList;
-    if (this.jdField_a_of_type_Behf != null)
+    if (this.jdField_a_of_type_Behw != null)
     {
-      localList = this.jdField_a_of_type_Behf.a(6);
-      this.jdField_a_of_type_Behu = new behu(getActivity(), this);
+      localList = this.jdField_a_of_type_Behw.a(6);
+      this.jdField_a_of_type_Beil = new beil(getActivity(), this);
       if ((localList == null) || (localList.size() <= 0)) {
         break label125;
       }
@@ -88,11 +88,11 @@ public class PermissionSettingFragment
         this.d.setVisibility(0);
         this.d.setText("允许\"" + paramString + "\"使用我的");
       }
-      this.jdField_a_of_type_Behu.a(localList);
+      this.jdField_a_of_type_Beil.a(localList);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Behu);
+      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Beil);
       return;
       localList = null;
       break;
@@ -110,17 +110,17 @@ public class PermissionSettingFragment
       if ((!paramBoolean) && (!jdField_a_of_type_Boolean))
       {
         jdField_a_of_type_Boolean = true;
-        bemn localbemn = new bemn(getActivity(), 2131755752);
-        localbemn.setContentView(2131559295);
-        localbemn.a("权限设置").a("关闭授权后可能会影响使用小程序的部分功能，请确认").b("关闭授权", Color.parseColor("#5B6B92"), new behx(this, str, paramBoolean)).a("取消", Color.parseColor("#000000"), new behw(this, paramCompoundButton));
-        localbemn.show();
+        bene localbene = new bene(getActivity(), 2131755752);
+        localbene.setContentView(2131559295);
+        localbene.a("权限设置").a("关闭授权后可能会影响使用小程序的部分功能，请确认").b("关闭授权", Color.parseColor("#5B6B92"), new beio(this, str, paramBoolean)).a("取消", Color.parseColor("#000000"), new bein(this, paramCompoundButton));
+        localbene.show();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Behu.a(str, paramBoolean);
-    this.jdField_a_of_type_Behf.a(str, paramBoolean);
+    this.jdField_a_of_type_Beil.a(str, paramBoolean);
+    this.jdField_a_of_type_Behw.a(str, paramBoolean);
   }
   
   public void onClick(View paramView)
@@ -139,7 +139,7 @@ public class PermissionSettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559307, null);
-    if (bffu.jdField_a_of_type_Boolean) {
+    if (bfgl.jdField_a_of_type_Boolean) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
@@ -148,7 +148,7 @@ public class PermissionSettingFragment
       getActivity().getWindow().clearFlags(67108864);
       getActivity().getWindow().addFlags(-2147483648);
       getActivity().getWindow().setStatusBarColor(Color.parseColor("#EFEFF4"));
-      bffy.a(true, getActivity().getWindow());
+      bfgp.a(true, getActivity().getWindow());
     }
     return paramLayoutInflater;
   }
@@ -170,14 +170,14 @@ public class PermissionSettingFragment
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)paramView.findViewById(2131371379));
     this.c = ((TextView)paramView.findViewById(2131371380));
-    this.d = ((TextView)paramView.findViewById(2131370321));
-    this.jdField_a_of_type_Behf = MiniAppEnv.g().getAuthSate(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Behf == null)
+    this.d = ((TextView)paramView.findViewById(2131370320));
+    this.jdField_a_of_type_Behw = MiniAppEnv.g().getAuthSate(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Behw == null)
     {
-      besl.d(jdField_b_of_type_JavaLangString, "getAuthorizeCenter(appId), authState is null?!");
+      betc.d(jdField_b_of_type_JavaLangString, "getAuthorizeCenter(appId), authState is null?!");
       return;
     }
-    if (this.jdField_a_of_type_Behf.a())
+    if (this.jdField_a_of_type_Behw.a())
     {
       a(paramBundle);
       return;
@@ -187,7 +187,7 @@ public class PermissionSettingFragment
     }
     this.jdField_a_of_type_AndroidAppProgressDialog.setMessage("正在获取权限信息，请稍候...");
     this.jdField_a_of_type_AndroidAppProgressDialog.show();
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAuthList(this.jdField_a_of_type_JavaLangString, new behv(this, paramBundle));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAuthList(this.jdField_a_of_type_JavaLangString, new beim(this, paramBundle));
   }
 }
 

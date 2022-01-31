@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
-
-class aggm
-  implements Comparator<RecentBaseData>
+public class aggm
 {
-  aggm(aggl paramaggl) {}
+  public String a;
+  private String b;
+  private String c;
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public aggm(String paramString1, String paramString2)
   {
-    int j = 0;
-    int i = j;
-    long l1;
-    long l2;
-    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
-    {
-      i = j;
-      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
-      {
-        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
-        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
-        if (l1 <= l2) {
-          break label83;
-        }
-        i = -1;
-      }
-    }
-    label83:
-    do
-    {
-      return i;
-      i = j;
-    } while (l1 >= l2);
-    return 1;
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public String b()
+  {
+    return this.c;
   }
 }
 

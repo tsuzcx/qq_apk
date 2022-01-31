@@ -1,8 +1,8 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
 public abstract interface aput
 {
-  public abstract void onClick(View paramView);
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

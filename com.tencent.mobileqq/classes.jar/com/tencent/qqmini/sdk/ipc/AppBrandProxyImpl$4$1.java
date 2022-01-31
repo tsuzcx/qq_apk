@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 class AppBrandProxyImpl$4$1
@@ -42,7 +42,7 @@ class AppBrandProxyImpl$4$1
       }
       catch (Throwable paramBundle)
       {
-        besl.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
+        betc.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
       }
     }
   }

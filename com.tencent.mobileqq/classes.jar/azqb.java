@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class azqb
-  implements bcvx
+  implements DialogInterface.OnClickListener
 {
-  azqb(azpt paramazpt, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  azqb(azpv paramazpv, azpi paramazpi) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    }
+    bajy.a(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpv.jdField_a_of_type_Long).b(this.jdField_a_of_type_Azpi);
+    paramDialogInterface.dismiss();
   }
 }
 

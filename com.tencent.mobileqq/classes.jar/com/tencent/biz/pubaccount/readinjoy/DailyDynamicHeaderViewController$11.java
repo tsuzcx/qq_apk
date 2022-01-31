@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import nsf;
+import nsc;
 
 public class DailyDynamicHeaderViewController$11
   implements Runnable
 {
-  public DailyDynamicHeaderViewController$11(nsf paramnsf) {}
+  public DailyDynamicHeaderViewController$11(nsc paramnsc) {}
   
   public void run()
   {
-    nsf.a(this.this$0, true);
+    nsc.a(this.this$0, true);
   }
 }
 

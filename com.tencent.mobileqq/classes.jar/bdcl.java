@@ -1,6 +1,18 @@
-public abstract interface bdcl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenCardContainer;
+
+public class bdcl
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bdcl(OpenCardContainer paramOpenCardContainer) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
+    this.a.jdField_a_of_type_Bdct.a();
+  }
 }
 
 

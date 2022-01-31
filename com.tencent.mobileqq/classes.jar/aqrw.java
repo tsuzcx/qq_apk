@@ -1,57 +1,85 @@
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-public class aqrw
+public abstract class aqrw
+  extends aqrt
 {
-  public static View a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
+  protected Context a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected TextView b;
+  protected TextView c;
+  
+  public aqrw(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 5: 
-    case 7: 
-      return LayoutInflater.from(paramContext).inflate(2131559082, paramViewGroup, false);
-    }
-    return a(paramContext, paramViewGroup);
+    super(paramContext, paramView, paramViewGroup);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378316));
+    this.b = ((TextView)paramView.findViewById(2131378236));
+    this.c = ((TextView)paramView.findViewById(2131378046));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367925));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368938));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368908));
   }
   
-  public static View a(Context paramContext, ViewGroup paramViewGroup)
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    int i = paramViewGroup.getWidth();
-    ImageView localImageView = new ImageView(paramContext);
-    paramViewGroup = localImageView.getLayoutParams();
-    paramContext = paramViewGroup;
-    if (paramViewGroup == null) {
-      paramContext = new ViewGroup.LayoutParams(-2, -2);
-    }
-    localImageView.setPadding(0, 20, 0, 20);
-    paramContext.width = (i - localImageView.getPaddingLeft() - localImageView.getPaddingRight() - localImageView.getPaddingLeft());
-    paramContext.height = (i * 200 / 718);
-    localImageView.setLayoutParams(paramContext);
-    localImageView.setId(2131363043);
-    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    return localImageView;
-  }
-  
-  public static aqrr a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
-  {
-    View localView = a(paramContext, paramInt, paramViewGroup);
-    switch (paramInt)
+    this.itemView.setBackgroundDrawable(aqsv.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
+    if (!TextUtils.isEmpty(paramFeedsItemData.rcmdReason))
     {
-    default: 
-      return null;
-    case 5: 
-      return new aqry(paramContext, localView, paramViewGroup);
-    case 7: 
-      return new aqrx(paramContext, localView, paramViewGroup);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramFeedsItemData.rcmdReason + "");
+      if ((!TextUtils.isEmpty(paramFeedsItemData.label)) || (!TextUtils.isEmpty(paramFeedsItemData.operateText))) {
+        break label130;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
-    return new aqrs(paramContext, localView, paramViewGroup);
+    for (;;)
+    {
+      this.itemView.setOnClickListener(new aqrx(this, paramFeedsItemData));
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label130:
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (TextUtils.isEmpty(paramFeedsItemData.operateText))
+      {
+        this.c.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(paramFeedsItemData.label)) {
+          break label287;
+        }
+        this.b.setVisibility(8);
+        break;
+        this.c.setText(paramFeedsItemData.operateText + "");
+        this.c.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.itemView.getResources().getDrawable(2130840630);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.itemView.getResources().getDrawable(2130840630);
+        localObject = URLDrawable.getDrawable("https://i.gtimg.cn/channel/imglib/201908/upload_edff4f642a92ef91b6cb1b7209369506.png", (URLDrawable.URLDrawableOptions)localObject);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      label287:
+      this.b.setText(paramFeedsItemData.label + "");
+      this.b.setVisibility(0);
+    }
   }
 }
 

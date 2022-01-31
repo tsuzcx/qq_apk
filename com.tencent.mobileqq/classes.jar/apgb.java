@@ -1,203 +1,69 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class apgb
-  extends apfw
+  implements awrd<awoi, awwr>
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CharSequence b;
+  private apgg a;
   
-  public apgb(String paramString, int paramInt)
+  public void a(apgg paramapgg)
   {
-    super(paramString, paramInt);
+    this.a = paramapgg;
   }
   
-  private String a(FileInfo paramFileInfo)
+  public void a(awoi paramawoi, awwr paramawwr)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(apvu.b(paramFileInfo.b()));
-    localStringBuilder.append("  ");
-    localStringBuilder.append(apvb.a(paramFileInfo.a()));
-    return localStringBuilder.toString();
-  }
-  
-  public CharSequence a()
-  {
-    return awvy.a(((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)).d().toLowerCase(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<awog> a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    paramQQAppInterface = new ArrayList();
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramContext.hasNext())
+    if ((paramawwr.a() != null) && (!TextUtils.isEmpty(paramawoi.a())))
     {
-      FileInfo localFileInfo = (FileInfo)paramContext.next();
-      apgb localapgb = new apgb(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      localapgb.a(this.jdField_a_of_type_AndroidOsBundle);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(localFileInfo);
-      localapgb.a(localArrayList);
-      paramQQAppInterface.add(localapgb);
+      paramawwr.a().setVisibility(0);
+      paramawwr.a().setText(paramawoi.a());
     }
-    return paramQQAppInterface;
-  }
-  
-  public void a(List<FileInfo> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  protected void b(View paramView)
-  {
-    Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    paramView = (BaseActivity)paramView.getContext();
-    localObject = apue.a((FileInfo)localObject);
-    paramView = new apog(paramView, new apoe(paramView.app, paramView, (FileManagerEntity)localObject, 10000));
-    paramView.a(8);
-    paramView.a();
-  }
-  
-  public boolean b()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return apeh.a(localFileInfo);
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    if ((paramawwr.b() != null) && (!TextUtils.isEmpty(paramawoi.b())))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label61;
+      paramawwr.b().setVisibility(0);
+      paramawwr.b().setText(paramawoi.b());
+    }
+    if ((paramawwr.c() != null) && (!TextUtils.isEmpty(paramawoi.c())))
+    {
+      paramawwr.c().setVisibility(0);
+      paramawwr.c().setText(paramawoi.c());
+    }
+    if ((paramawoi.d() == null) && (paramawwr.d() != null)) {
+      paramawwr.d().setVisibility(8);
+    }
+    if ((paramawwr.d() != null) && (paramawoi.d() != null))
+    {
+      paramawwr.d().setVisibility(0);
+      paramawwr.d().setText(paramawoi.d());
+    }
+    apga localapga = (apga)paramawoi;
+    View localView = paramawwr.a();
+    paramawwr = (AsyncImageView)paramawwr.b();
+    String str = localapga.c();
+    int i = localapga.e();
+    if (!TextUtils.isEmpty(str))
+    {
+      apug.a(paramawwr, str, i);
+      paramawwr.setOnClickListener(new apgc(this, paramawoi));
+      paramawwr = (CheckBox)localView.findViewById(2131366225);
+      if (localapga.d() <= 1) {
+        break label336;
       }
-      localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject).append(d());
-    }
-    label61:
-    for (this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);; this.jdField_a_of_type_JavaLangCharSequence = d()) {
-      return this.jdField_a_of_type_JavaLangCharSequence;
-    }
-  }
-  
-  public String c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null)
-    {
-      int i = apue.a(localFileInfo.c());
-      if ((i == 0) || (i == 2) || (i == 5)) {
-        return localFileInfo.c();
-      }
-    }
-    return "";
-  }
-  
-  protected void c(View paramView)
-  {
-    paramView = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (apeh.a(paramView)) {
-      apeh.b(paramView);
+      paramawwr.setVisibility(8);
     }
     for (;;)
     {
-      if (!apvb.b(paramView.c()))
-      {
-        aptv.a(apue.d(paramView.d()) + ajyc.a(2131709623));
-        apeh.b(paramView);
-      }
+      paramawwr.setChecked(localapga.b());
+      localView.setOnClickListener(new apgd(this, paramawoi));
       return;
-      apeh.a(paramView);
-      axqw.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 2, 0, "0", "0", "", "");
+      paramawwr.setDefaultImage(apug.a(i));
+      break;
+      label336:
+      paramawwr.setVisibility(0);
     }
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public CharSequence d()
-  {
-    if (this.b != null) {
-      return this.b;
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 1)
-    {
-      localSpannableStringBuilder = new SpannableStringBuilder(i + ajyc.a(2131704508) + "\"");
-      localSpannableStringBuilder.append(awvy.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      localSpannableStringBuilder.append("\"").append(ajyc.a(2131692462));
-      this.b = localSpannableStringBuilder;
-      return this.b;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(awvy.a(a((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)), this.jdField_a_of_type_JavaLangString));
-    if (this.b == null) {
-      this.b = localSpannableStringBuilder;
-    }
-    return this.b;
-  }
-  
-  public String d()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return localFileInfo.d();
-    }
-    return "";
-  }
-  
-  protected void d(View paramView)
-  {
-    paramView = (BaseActivity)paramView.getContext();
-    FileSelectorSearchGroupFragment.a(this);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
-    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
-  }
-  
-  public int e()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return apue.a(localFileInfo.c());
-    }
-    return 11;
   }
 }
 

@@ -1,42 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
 public class alkg
 {
-  public static alke a(alkh paramalkh, int paramInt)
+  public float a;
+  public int a;
+  public String a;
+  public float b = 0.0F;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public float f = 1.0F;
+  public float g = 0.0F;
+  public float h = 1.0F;
+  public float i = 0.0F;
+  
+  public alkg()
   {
-    if (paramalkh == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramalkh.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject = new alkj(paramInt);
-    }
-    for (;;)
-    {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramalkh.toString());
-      return localObject;
-      localObject = new aljy(paramInt);
-      continue;
-      localObject = new alkl(paramInt);
-      continue;
-      localObject = new alkc(paramInt);
-      continue;
-      localObject = new alkd(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramalkh.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      localObject = new aljz(paramInt, paramalkh.jdField_a_of_type_JavaLangString);
-    }
-    throw new RuntimeException("fragmentShader can not be empty!");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
-  public static alkh a(int paramInt)
+  public alkg(int paramInt)
   {
-    return new alkh(paramInt);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
+    return localStringBuilder.toString();
   }
 }
 

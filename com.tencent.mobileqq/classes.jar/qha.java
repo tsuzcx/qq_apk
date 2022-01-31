@@ -1,50 +1,32 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
 import java.util.List;
 import java.util.Map;
 
 public class qha
-  extends SimpleAdapter
+  extends qgz
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131367894, 2131377225, 2131377224 };
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "key_cover_url", "key_title", "key_summary" };
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-  
-  public qha(Context paramContext, List<Map<String, CharSequence>> paramList)
+  public qha(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramContext, paramList, 2131560039, jdField_a_of_type_ArrayOfJavaLangString, jdField_a_of_type_ArrayOfInt);
+    super(paramContext, paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
   }
   
-  public void setViewImage(ImageView paramImageView, String paramString)
+  protected void a(View paramView, ResultRecord paramResultRecord)
   {
-    if ("create_topic".equals(paramString))
-    {
-      paramImageView.setImageResource(2130848494);
+    if ((paramView == null) || (FollowingListFragment.a(this.b) == null) || (FollowingListFragment.a(this.b).a() == null) || (FollowingListFragment.a(this.b).a().isEmpty())) {
       return;
     }
-    try
+    paramView = (CheckBox)paramView.findViewById(2131364192);
+    paramView.setBackgroundResource(2130848416);
+    if (FollowingListFragment.a(this.b).a().contains(paramResultRecord.a()))
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-      paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+      paramView.setEnabled(false);
       return;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      paramImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      QLog.e("ReadInJoyTopicListAdapt", 2, "setViewImage: illegal url  - " + paramString, localIllegalArgumentException);
-    }
+    paramView.setEnabled(true);
   }
 }
 

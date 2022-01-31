@@ -1,122 +1,150 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.AppInterface;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class nye
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private int jdField_c_of_type_Int;
-  private JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  private int jdField_d_of_type_Int;
-  private JSONObject jdField_d_of_type_OrgJsonJSONObject;
-  private JSONObject e;
-  private JSONObject f;
+  public int a;
+  public String a;
+  public List<nya> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public List<String> b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o = 1;
+  public int p;
+  public int q;
   
-  public int a()
+  public nye(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public Bundle a()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public VideoAdInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
-  }
-  
-  public AdvertisementInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
+    this.jdField_a_of_type_JavaLangString = "1";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "1";
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementExtInfo", 2, "adExt = " + paramString);
+      }
+    }
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("AdSlideSpeed");
+        this.jdField_b_of_type_Int = paramString.optInt("AdRepeatedFlag");
+        this.jdField_c_of_type_Int = paramString.optInt("AdDistance");
+        this.jdField_d_of_type_Int = paramString.optInt("RepeatedReqFlag");
+        this.jdField_e_of_type_Int = paramString.optInt("KdPos");
+        this.jdField_f_of_type_Int = paramString.optInt("refreshLastPos", 0);
+        this.jdField_a_of_type_JavaLangString = paramString.optString("button_flag", "1");
+        this.g = paramString.optInt("showAdType");
+        this.jdField_b_of_type_JavaLangString = paramString.optString("pk_ad_vs_pic");
+        this.h = paramString.optInt("AdSource");
+        this.i = paramString.optInt("slide_effect1");
+        this.j = paramString.optInt("slide_effect2");
+        this.l = paramString.optInt("delivery_effect");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("img_coord");
+        this.m = paramString.optInt("slideShowSlipAllowMs");
+        this.n = paramString.optInt("slideImgDisplayMs");
+        this.o = paramString.optInt("animated_type");
+        this.jdField_d_of_type_JavaLangString = paramString.optString("resZipUrl");
+        this.jdField_e_of_type_JavaLangString = paramString.optString("res_zip_md5");
+        this.p = paramString.optInt("res_zip_version");
+        this.q = paramString.optInt("is_video_new");
+        Object localObject = paramString.optJSONArray("container_ad_item");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          i1 = 0;
+          if (i1 < ((JSONArray)localObject).length())
+          {
+            nya localnya = new nya(((JSONArray)localObject).getJSONObject(i1));
+            this.jdField_a_of_type_JavaUtilList.add(localnya);
+            if (!QLog.isColorLevel()) {
+              break label584;
+            }
+            QLog.d("AdvertisementExtInfo", 2, "adPKImageData = " + localnya.toString());
+            break label584;
+          }
+        }
+        paramString = paramString.optJSONArray("img_urls");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          this.jdField_b_of_type_JavaUtilList = new ArrayList();
+          i1 = i2;
+          if (i1 < paramString.length())
+          {
+            localObject = paramString.getString(i1);
+            this.jdField_b_of_type_JavaUtilList.add(localObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("AdvertisementExtInfo", 2, "imgUrlList = " + this.jdField_b_of_type_JavaUtilList.toString());
+            }
+            i1 += 1;
+            continue;
+          }
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AdvertisementExtInfo", 2, "advertisementExtInfo Exception = " + paramString.getMessage());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementExtInfo", 2, "advertisementExtInfo = " + toString());
+        }
+      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AdvertisementExtInfo", 2, "adExt = null");
+      return;
+      label584:
+      i1 += 1;
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.jdField_b_of_type_Int == 1;
   }
   
-  public int b()
+  public String toString()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public JSONObject b()
-  {
-    return this.jdField_b_of_type_OrgJsonJSONObject;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public JSONObject c()
-  {
-    return this.jdField_c_of_type_OrgJsonJSONObject;
-  }
-  
-  public int d()
-  {
-    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos > 0)) {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
-    }
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public JSONObject d()
-  {
-    return this.jdField_d_of_type_OrgJsonJSONObject;
-  }
-  
-  public JSONObject e()
-  {
-    return this.f;
-  }
-  
-  public JSONObject f()
-  {
-    return this.e;
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append("adSlideSpeed=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append("adRepeatedFlag=").append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append("adDistance=").append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append("repeatedReqFlag=").append(this.jdField_d_of_type_Int).append("|");
+    localStringBuffer.append("kdPos=").append(this.jdField_e_of_type_Int).append("|");
+    localStringBuffer.append("refreshLastPos=").append(this.jdField_f_of_type_Int).append("|");
+    localStringBuffer.append("showAdType=").append(this.g).append("|");
+    localStringBuffer.append("buttonFlag=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append("slidEffect1=").append(this.i).append("|");
+    localStringBuffer.append("slidEffect2=").append(this.j).append("|");
+    localStringBuffer.append("deliveryEffect=").append(this.l).append("|");
+    localStringBuffer.append("imgCoord=").append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append("slideShowSlipAllowMs=").append(this.m).append("|");
+    localStringBuffer.append("slideImgDisplayMs=").append(this.n).append("|");
+    return localStringBuffer.toString();
   }
 }
 

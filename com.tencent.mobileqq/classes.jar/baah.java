@@ -1,27 +1,74 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-class baah
-  extends bbwf
+public class baah
+  extends BaseAdapter
 {
-  baah(baae parambaae, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  protected SearchReciteArticleFragment a;
+  protected String a;
+  protected List<baag> a;
   
-  public void onDone(bbwg parambbwg)
+  public baah(SearchReciteArticleFragment paramSearchReciteArticleFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambbwg.c + " code = " + parambbwg.jdField_a_of_type_Int);
-    }
-    boolean bool = baae.a(this.jdField_a_of_type_Baae, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
-    }
-    baae.b(this.jdField_a_of_type_Baae);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
   }
   
-  public void onProgress(bbwg parambbwg)
+  public baag a(int paramInt)
   {
-    int i = (int)(parambbwg.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
+    return (baag)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(baag parambaag)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(parambaag);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560367, null, false);
+      paramViewGroup = new baai(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378383));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131378112));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      baag localbaag = a(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localbaag.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
+      paramViewGroup.b.setText(localbaag.b);
+      return paramView;
+      paramViewGroup = (baai)paramView.getTag();
     }
   }
 }

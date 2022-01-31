@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.colornote;
 
-import amgn;
-import amhc;
+import amgm;
+import amhb;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class ReaderColorNote
@@ -10,12 +10,12 @@ public class ReaderColorNote
   
   public ReaderColorNote(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.mColorNote = new amhc().d(paramString1).b(paramString2).c(paramString3).a(16908289).a(paramString4).a();
+    this.mColorNote = new amhb().d(paramString1).b(paramString2).c(paramString3).a(16908289).a(paramString4).a();
   }
   
   public int getReportType()
   {
-    return amgn.a(this.mColorNote.getServiceType());
+    return amgm.a(this.mColorNote.getServiceType());
   }
 }
 

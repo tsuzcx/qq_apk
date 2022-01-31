@@ -1,17 +1,33 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.37.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import pb.unite.search.RequestSearchWord.Rcmd;
 
 public class rds
-  extends oyg
+  implements akja
 {
-  public rds(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    super(paramString);
-  }
+  public rds(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
   
-  public void a(oya paramoya)
+  public void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
   {
-    paramoya.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
+    if ((paramPBRepeatMessageField == null) || (paramPBRepeatMessageField.size() <= 0)) {
+      return;
+    }
+    if (ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).containsKey(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime)) {
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
+    }
+    for (;;)
+    {
+      bbkb.a("search_word_prefix_show_times", bbkb.b("search_word_prefix_show_times") + 1L);
+      ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.37.1(this, paramPBRepeatMessageField, paramPBStringField));
+      return;
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));
+    }
   }
 }
 

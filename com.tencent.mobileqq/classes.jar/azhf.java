@@ -9,7 +9,7 @@ public final class azhf
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     if (!this.a.isFinishing()) {
-      bbcv.b(this.a);
+      bbdj.b(this.a);
     }
   }
   

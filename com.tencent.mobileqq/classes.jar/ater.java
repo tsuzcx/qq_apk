@@ -1,49 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class ater
-  extends ayvz
+  extends akuo
 {
-  public ater(NearbyGuideActivity paramNearbyGuideActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ater(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramMessage == null) {
-      return;
-    }
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    switch (paramMessage.what)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localayqm.a <= 0L) {
-        break;
-      }
-    }
-    for (int i = (int)(localayqm.e * 100L / localayqm.a); QLog.isColorLevel(); i = 0)
-    {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + ayst.a);
-      }
-      i = ayst.a;
-      if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
-      }
-      this.a.a(this.a.a);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c(ajyc.a(2131707183));
-      this.a.a(true, null);
-      return;
+      ateo.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.a.b * 1000000.0D));
+      ateo.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.a.a * 1000000.0D));
+      ateo.jdField_a_of_type_Long = System.currentTimeMillis();
     }
   }
 }

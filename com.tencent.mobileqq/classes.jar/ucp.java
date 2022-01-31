@@ -1,10 +1,6 @@
-public class ucp
+public abstract interface ucp
 {
-  public float a;
-  public int a;
-  public Object a;
-  public boolean a;
-  public float b;
+  public abstract boolean a();
 }
 
 

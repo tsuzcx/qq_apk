@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import berb;
+import bers;
 
 public class FirstPageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FirstPageInfo> CREATOR = new berb();
+  public static final Parcelable.Creator<FirstPageInfo> CREATOR = new bers();
   public String a;
   public String b;
   

@@ -1,15 +1,9 @@
-import com.tribe.async.dispatch.Dispatcher;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.data.TemplateData;
+import java.util.List;
 
-public class bjcm
-  implements avuk
+public abstract interface bjcm
 {
-  public bjcm(CaptureModeController paramCaptureModeController) {}
-  
-  public void a()
-  {
-    ste.a().dispatch(new bjqz(2, true));
-  }
+  public abstract void a(List<TemplateData> paramList);
 }
 
 

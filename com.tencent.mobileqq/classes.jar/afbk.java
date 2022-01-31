@@ -1,23 +1,26 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class afbk
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public afbk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!bbev.g(this.a.getApplicationContext())) {
-      bcpw.a(this.a, 2131694971, 1).a();
-    }
-    for (;;)
+    if (paramInt == 84) {}
+    do
     {
-      paramDialogInterface.dismiss();
-      return;
-      this.a.f();
-    }
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 

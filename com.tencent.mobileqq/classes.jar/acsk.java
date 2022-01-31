@@ -1,119 +1,200 @@
 import Wallet.AcsMsg;
+import android.app.AlarmManager;
+import android.app.AlarmManager.AlarmClockInfo;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.activateFriend.biz.ReminderAlarmReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
 
 public class acsk
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements Manager
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  private AlarmManager jdField_a_of_type_AndroidAppAlarmManager;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private ReminderAlarmReceiver jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet;
   
-  public acsk(ReminderListFragment paramReminderListFragment, View paramView)
+  public acsk(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375106));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375105));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.c = ((TextView)paramView.findViewById(2131375110));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375107));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369292));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369291));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375108));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131375109));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "ActivateFriends.Manager--onCreate---");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("pref_act_frd" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
+    this.jdField_a_of_type_AndroidAppAlarmManager = ((AlarmManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("alarm"));
+    b();
   }
   
-  private void a(View paramView, AcsMsg paramAcsMsg)
+  private void b()
   {
-    if ((paramView instanceof FrameLayout))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver = new ReminderAlarmReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("notification_alram_action");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver, localIntentFilter);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver != null) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizReminderAlarmReceiver);
+    }
+  }
+  
+  public void a()
+  {
+    try
     {
-      paramView = ((FrameLayout)paramView).getChildAt(0);
-      if ((paramView instanceof Button))
+      if (!this.jdField_a_of_type_AndroidContentSharedPreferences.getStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new HashSet()).isEmpty())
       {
-        paramView = (Button)paramView;
-        paramView.setTag(paramAcsMsg);
-        paramView = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-        paramAcsMsg = new Rect();
-        this.jdField_a_of_type_AndroidWidgetImageView.getLocalVisibleRect(paramAcsMsg);
-        paramView.rightMargin = paramAcsMsg.right;
-        this.jdField_a_of_type_AndroidWidgetImageView.getGlobalVisibleRect(paramAcsMsg);
-        paramView.topMargin = (paramAcsMsg.top - paramView.width);
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+        while (localIterator.hasNext()) {
+          a(Integer.parseInt((String)localIterator.next()));
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet == null) {
+        break label136;
       }
     }
-  }
-  
-  public void a(acsx paramacsx)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(paramacsx.jdField_a_of_type_WalletAcsMsg);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramacsx.jdField_a_of_type_WalletAcsMsg.title);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(paramacsx.jdField_a_of_type_WalletAcsMsg.jump_url);
-    Object localObject1 = paramacsx.jdField_a_of_type_WalletAcsMsg.busi_icon;
-    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
-    localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-    if (localObject1 != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-    }
-    String str = acrt.a(paramacsx.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "yyyy.MM.dd");
-    localObject2 = acrt.a(paramacsx.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "HH:mm");
-    localObject1 = localObject2;
-    if (paramacsx.jdField_a_of_type_Int == 0) {
-      localObject1 = (String)localObject2 + "　　　开启时提醒";
-    }
-    localObject1 = str + "　　　" + (String)localObject1;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    localObject1 = this.c;
-    if (!bbjw.a(paramacsx.jdField_a_of_type_JavaLangString))
+    catch (Exception localException)
     {
-      ((TextView)localObject1).setText(paramacsx.jdField_a_of_type_JavaLangString);
-      ((TextView)localObject1).setVisibility(0);
+      QLog.e("ActivateFriends.Manager", 2, "clearAllAlarm throw an exception: " + localException);
       return;
     }
-    ((TextView)localObject1).setVisibility(8);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
+    }
+    label136:
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).apply();
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    switch (paramView.getId())
+    try
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "cancelAlarmById alarmId: " + paramInt);
+      }
+      Object localObject = String.valueOf(paramInt);
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(localObject)) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localObject);
+      }
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet).apply();
+      localObject = new Intent();
+      ((Intent)localObject).setAction("notification_alram_action");
+      localObject = PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, paramInt, (Intent)localObject, 0);
+      this.jdField_a_of_type_AndroidAppAlarmManager.cancel((PendingIntent)localObject);
+      return;
     }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ActivateFriends.Manager", 2, "cancelAlarmById throw an exceptio: " + localThrowable);
+    }
+  }
+  
+  public void a(AcsMsg paramAcsMsg)
+  {
+    if (paramAcsMsg == null) {}
+    long l;
+    label331:
     do
     {
       do
       {
+        Object localObject1;
+        do
+        {
+          for (;;)
+          {
+            return;
+            try
+            {
+              l = paramAcsMsg.notice_time * 1000L;
+              int i = paramAcsMsg.hashCode();
+              localObject1 = paramAcsMsg.title;
+              if (l <= NetConnInfoCenter.getServerTimeMillis()) {
+                break label430;
+              }
+              Object localObject2 = String.valueOf(i);
+              if (this.jdField_a_of_type_AndroidContentSharedPreferences.getStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new CopyOnWriteArraySet()).contains(localObject2)) {
+                break label391;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("ActivateFriends.Manager", 2, "setAlarmTimer at " + acrp.a(l, "yyyyMMdd HH:mm:ss") + " msg: " + (String)localObject1 + " alarmId: " + i);
+              }
+              if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(localObject2))
+              {
+                this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(localObject2);
+                this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putStringSet("sp_key_alarmids" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet).apply();
+              }
+              localObject2 = new Intent();
+              ((Intent)localObject2).setAction("notification_alram_action");
+              ((Intent)localObject2).putExtra("msg", (String)localObject1);
+              ((Intent)localObject2).putExtra("msg_id", paramAcsMsg.msg_id);
+              paramAcsMsg = PendingIntent.getBroadcast(this.jdField_a_of_type_AndroidContentContext, i, (Intent)localObject2, 0);
+              if (this.jdField_a_of_type_AndroidAppAlarmManager != null)
+              {
+                if (Build.VERSION.SDK_INT < 23) {
+                  break label331;
+                }
+                this.jdField_a_of_type_AndroidAppAlarmManager.setExactAndAllowWhileIdle(0, l, paramAcsMsg);
+                return;
+              }
+            }
+            catch (Throwable paramAcsMsg) {}
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ActivateFriends.Manager", 2, "setAlarmTimer throw an exceptio: " + paramAcsMsg);
         return;
-      } while (bbjw.a((String)paramView.getTag()));
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", (String)paramView.getTag());
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.startActivity(localIntent);
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          localObject1 = new AlarmManager.AlarmClockInfo(l, paramAcsMsg);
+          this.jdField_a_of_type_AndroidAppAlarmManager.setAlarmClock((AlarmManager.AlarmClockInfo)localObject1, paramAcsMsg);
+          return;
+        }
+        if (Build.VERSION.SDK_INT >= 19)
+        {
+          this.jdField_a_of_type_AndroidAppAlarmManager.setExact(0, l, paramAcsMsg);
+          return;
+        }
+        this.jdField_a_of_type_AndroidAppAlarmManager.set(0, l, paramAcsMsg);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("ActivateFriends.Manager", 2, "has already setAlarmTimer at " + acrp.a(l, "yyyyMMdd HH:mm:ss"));
       return;
-    } while (ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) == null);
-    a(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).getContentView(), (AcsMsg)this.jdField_a_of_type_AndroidWidgetFrameLayout.getTag());
-    ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).showAtLocation(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), 17, 0, 0);
+    } while (!QLog.isColorLevel());
+    label391:
+    label430:
+    QLog.d("ActivateFriends.Manager", 2, "has already setAlarmTimer at " + acrp.a(l, "yyyyMMdd HH:mm:ss"));
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "ActivateFriends.Manager--onDestroy---");
+    }
+    c();
+    a();
   }
 }
 

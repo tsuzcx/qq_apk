@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bejs;
+import bekj;
 import com.tencent.qqmini.sdk.core.widget.NavigationBar;
 
 class AppBrandPage$11
   implements Runnable
 {
-  AppBrandPage$11(AppBrandPage paramAppBrandPage, bejs parambejs) {}
+  AppBrandPage$11(AppBrandPage paramAppBrandPage, bekj parambekj) {}
   
   public void run()
   {

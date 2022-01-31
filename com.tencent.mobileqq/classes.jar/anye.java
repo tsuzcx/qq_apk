@@ -1,8 +1,11 @@
-public abstract interface anye
+public abstract class anye
+  extends anyh
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 

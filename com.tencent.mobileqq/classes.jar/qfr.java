@@ -1,12 +1,6 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-
-public class qfr
+public abstract interface qfr
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  public abstract void b();
 }
 
 

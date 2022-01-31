@@ -1,17 +1,42 @@
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bddy
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public ArrayList<bddw> a;
-  public JSONObject a;
-  public int b = -1;
-  public int c = -1;
-  public int d = 1;
-  public int e = -1;
-  public int f = -1;
+  protected GestureDetector.SimpleOnGestureListener a;
+  protected GestureDetector a;
+  View jdField_a_of_type_AndroidViewView;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public bddy(SwitchAccountActivity paramSwitchAccountActivity)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bddz(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
+    }
+    if (i == 0)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
+        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
+      }
+    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
+  }
 }
 
 

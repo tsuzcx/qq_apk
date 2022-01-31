@@ -1,14 +1,13 @@
-import android.view.View.OnClickListener;
+import android.view.animation.Interpolator;
 
-public abstract interface bfyt
+final class bfyt
+  implements Interpolator
 {
-  public abstract int a();
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract boolean b(int paramInt);
-  
-  public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 

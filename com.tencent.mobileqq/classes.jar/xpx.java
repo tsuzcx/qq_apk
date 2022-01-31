@@ -1,118 +1,79 @@
+import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.widget.Gallery;
+import android.graphics.Color;
+import android.util.TypedValue;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView.3;
+import com.tencent.widget.AdapterView;
 
 public class xpx
+  extends xpe
 {
-  public static float a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int a;
+  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+  public TextView a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new GalleryPageView.3(this);
+  xpf jdField_a_of_type_Xpf;
+  private boolean jdField_a_of_type_Boolean = true;
+  public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
+  
+  public xpx()
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0)) {}
-    do
-    {
-      do
-      {
-        return 1.0F;
-        if ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4 * paramInt1 / paramInt3)) {
-          return paramInt3 / paramInt1;
-        }
-      } while ((paramInt1 < paramInt3) && (paramInt2 >= paramInt4));
-      if ((paramInt1 >= paramInt3) && (paramInt2 < paramInt4 * paramInt1 / paramInt3)) {
-        return paramInt3 / paramInt1;
-      }
-      if ((paramInt1 > paramInt3) || (paramInt2 > paramInt4)) {
-        return Math.min(paramInt4 / paramInt2, paramInt3 / paramInt1);
-      }
-    } while ((paramInt1 >= paramInt3) || (paramInt1 <= paramInt3 / 2) || (paramInt4 <= paramInt3 / paramInt1 * paramInt2));
-    return paramInt3 / paramInt1;
+    this.jdField_a_of_type_Int = 3;
   }
   
-  public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
+  public void a(int paramInt)
   {
-    return a(paramInt1, paramInt2, paramInt3, paramInt4, true, paramObject);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
   }
   
-  public static Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, Object paramObject)
+  public void a(Activity paramActivity, xpf paramxpf, int paramInt)
   {
-    float f = Gallery.a(paramInt1, paramInt2, paramInt3, paramInt4, paramObject);
-    int i;
-    label67:
-    label79:
-    Rect localRect;
-    if (paramInt2 >= paramInt1 * 3)
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramxpf.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(12, -1);
+    localLayoutParams.addRule(14, -1);
+    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366903);
+    localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
+    this.b.setDuration(300L);
+    this.jdField_a_of_type_Xpf = paramxpf;
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new xpy(this));
+    this.b.setAnimationListener(new xpz(this));
+  }
+  
+  public void a(AdapterView paramAdapterView, int paramInt)
+  {
+    if (paramAdapterView.getCount() > 1)
     {
-      i = 1;
-      if ((i == 0) || ((paramInt1 <= paramInt3) && (paramInt2 <= paramInt4)) || ((paramInt1 < aywk.c) && (paramInt2 < aywk.c))) {
-        break label119;
-      }
-      f = Math.min(paramInt3 / paramInt1, Gallery.c);
-      i = 49;
-      if ((paramBoolean) || (f <= 1.0F)) {
-        break label126;
-      }
-      localRect = new Rect(0, 0, paramInt1, paramInt2);
-      if (i != 49) {
-        break label143;
-      }
-      localRect.offset((paramInt3 - paramInt1) / 2, 0);
-    }
-    label119:
-    label126:
-    do
-    {
-      do
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "/" + paramAdapterView.getCount());
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
       {
-        do
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+        if (this.jdField_a_of_type_Boolean)
         {
-          return localRect;
-          i = 0;
-          break;
-          i = 17;
-          break label67;
-          paramInt1 = (int)(paramInt1 * f);
-          paramInt2 = (int)(paramInt2 * f);
-          break label79;
-        } while (i != 17);
-        localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
-      } while ((paramObject == null) || (!(paramObject instanceof AIOImageData)));
-      paramObject = (AIOImageData)paramObject;
-    } while ((paramObject.i == null) || (paramObject.i.length() == 0) || (paramObject.i.equals("null")));
-    label143:
-    localRect.offset(0, (int)(-15.0F * BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density * f));
-    return localRect;
-  }
-  
-  public static Rect a(View paramView)
-  {
-    Rect localRect = new Rect(paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getWidth() - paramView.getPaddingRight(), paramView.getHeight() - paramView.getPaddingBottom());
-    a(paramView, localRect);
-    return localRect;
-  }
-  
-  public static boolean a(View paramView, Rect paramRect)
-  {
-    int i = paramView.getWidth();
-    int j = paramView.getHeight();
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    Point localPoint = new Point();
-    if ((i > 0) && (j > 0))
-    {
-      Rect localRect = paramRect;
-      if (paramRect == null)
-      {
-        localRect = new Rect();
-        localRect.set(0, 0, i, j);
+          this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+        return;
       }
-      localPoint.set(-paramView.getScrollX(), -paramView.getScrollY());
-      localRect.offset((i - localRect.width()) / 2, (j - localRect.height()) / 2);
-      return (localViewGroup == null) || (localViewGroup.getChildVisibleRect(paramView, localRect, localPoint));
+      this.jdField_a_of_type_AndroidWidgetTextView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+      return;
     }
-    return false;
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
 }
 

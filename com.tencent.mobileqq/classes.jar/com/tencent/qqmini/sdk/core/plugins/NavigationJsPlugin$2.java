@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import begz;
-import beka;
+import behq;
+import bekr;
 
 class NavigationJsPlugin$2
   extends ResultReceiver
 {
-  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, beka parambeka)
+  NavigationJsPlugin$2(NavigationJsPlugin paramNavigationJsPlugin, Handler paramHandler, bekr parambekr)
   {
     super(paramHandler);
   }

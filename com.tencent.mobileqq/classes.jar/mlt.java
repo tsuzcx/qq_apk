@@ -1,51 +1,44 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VoiceChangeToolbar;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.av.ui.beauty.BeautySeekView;
 
 public class mlt
-  implements mhc
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mlt(VoiceChangeToolbar paramVoiceChangeToolbar) {}
+  public mlt(BeautySeekView paramBeautySeekView) {}
   
-  public void a(long paramLong)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    if (BeautySeekView.a(this.a) != paramInt)
+    {
+      BeautySeekView.a(this.a, paramInt);
+      if (paramBoolean) {
+        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      }
+      BeautySeekView.a(this.a, paramInt);
+      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
+    }
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
+    }
   }
   
-  public void a(long paramLong, mhw parammhw)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    lcl.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + parammhw.jdField_a_of_type_JavaLangString);
-    lgf locallgf = this.a.mApp.a().a();
-    int i = Integer.parseInt(parammhw.jdField_a_of_type_JavaLangString);
-    if (i == 0) {
-      ltr.a().b(64);
+    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
+    BeautySeekView.a(this.a).setVisibility(0);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
     }
-    while (i == 0)
-    {
-      locallgf.v = null;
-      locallgf.T = i;
-      locallgf.U = 0;
-      parammhw = this.a.getAVActivity();
-      if ((parammhw != null) && (parammhw.a != null)) {
-        parammhw.a.f(paramLong, 8);
-      }
-      this.a.mApp.a().A();
-      mlr.a(locallgf, i);
-      EffectSettingUi.a(this.a.mApp, paramLong);
-      if (locallgf.d == 4) {
-        axqo.e(String.valueOf(i));
-      }
-      return;
-      ltr.a().a(64);
-    }
-    if ((parammhw.jdField_a_of_type_JavaLangObject instanceof mlq)) {}
-    for (locallgf.v = ((mlq)parammhw.jdField_a_of_type_JavaLangObject).b;; locallgf.v = parammhw.b)
-    {
-      mqz.a(parammhw.jdField_a_of_type_JavaLangString);
-      break;
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
+    if (BeautySeekView.a(this.a) != null) {
+      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
     }
   }
 }

@@ -1,21 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.app.AppRuntime;
 
 public class agkz
-  extends BroadcastReceiver
+  extends atzq
 {
   public agkz(AlbumListActivity paramAlbumListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if (!this.a.isFinishing())
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      this.a.finish();
-      QLog.i("AlbumListActivity", 1, "AlbumListActivity has finished by broadcastReceiver.");
+      this.a.jdField_a_of_type_Long = ((get_albumlist_num_rsp)paramBundle).album_num;
+      if (this.a.jdField_a_of_type_Agla != null)
+      {
+        this.a.jdField_a_of_type_Agla.a(this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Agla.a();
+        if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.q)) {
+          LpReportInfo_pf00064.allReport(96, 1, 1);
+        }
+      }
     }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(AlbumListActivity.a(this.a));
   }
 }
 

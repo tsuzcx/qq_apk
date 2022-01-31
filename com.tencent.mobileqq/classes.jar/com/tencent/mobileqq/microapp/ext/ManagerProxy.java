@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import agzf;
+import agzd;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
 import mqq.app.AppRuntime;
@@ -18,9 +18,9 @@ public class ManagerProxy
     return (PreloadManager)paramAppRuntime.getManager(151);
   }
   
-  public static agzf getQWalletConfigManager(AppRuntime paramAppRuntime)
+  public static agzd getQWalletConfigManager(AppRuntime paramAppRuntime)
   {
-    return (agzf)paramAppRuntime.getManager(245);
+    return (agzd)paramAppRuntime.getManager(245);
   }
   
   public static TicketManager getTicketManager(AppRuntime paramAppRuntime)

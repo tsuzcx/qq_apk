@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import axnv;
-import axpk;
+import axnx;
+import axpm;
 
 public class Step$AfterDexStepFactory
-  implements axpk
+  implements axpm
 {
-  public Step a(int paramInt, axnv paramaxnv, int[] paramArrayOfInt)
+  public Step a(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
   {
-    paramaxnv = null;
+    paramaxnx = null;
     switch (paramInt)
     {
     case 7: 
@@ -17,9 +17,9 @@ public class Step$AfterDexStepFactory
     case 12: 
     case 20: 
     default: 
-      paramaxnv = new Step();
+      paramaxnx = new Step();
     case 30: 
-      return paramaxnv;
+      return paramaxnx;
     case 6: 
     case 18: 
       return new LoadData();

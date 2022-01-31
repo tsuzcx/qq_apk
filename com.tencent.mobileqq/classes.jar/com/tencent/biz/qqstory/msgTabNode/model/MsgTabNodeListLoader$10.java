@@ -3,13 +3,13 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import tfn;
-import tfu;
+import tfk;
+import tfr;
 
 public class MsgTabNodeListLoader$10
   implements Runnable
 {
-  public MsgTabNodeListLoader$10(tfn paramtfn, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  public MsgTabNodeListLoader$10(tfk paramtfk, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MsgTabNodeListLoader$10
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((tfu)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
+        ((tfr)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
       }
     }
     if ((QLog.isDevelopLevel()) && (this.this$0.d.isEmpty())) {

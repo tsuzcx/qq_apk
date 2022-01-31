@@ -1,139 +1,122 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 public class aztz
 {
   protected int a;
   protected long a;
-  protected Map<UUID, TroopFileTransferManager.Item> a;
-  xbc a;
-  protected Map<UUID, Integer> b = new HashMap();
+  protected TroopFileTransferManager.Item a;
+  protected String a;
+  xaz a;
   
-  protected aztz(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
+  protected aztz(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Xbc = new azua(this);
+    this.jdField_a_of_type_Xaz = new azua(this);
     this.jdField_a_of_type_Long = paramLong;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id != null) {}
+    for (paramItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id.toString();; paramItem = "")
     {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
-      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
+      this.jdField_a_of_type_JavaLangString = paramItem;
+      this.jdField_a_of_type_Int = paramInt;
+      return;
     }
-    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static aztz a(long paramLong, List<TroopFileTransferManager.Item> paramList)
+  public static aztz a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
     if (paramLong == 0L)
     {
-      azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
       return null;
     }
-    if (paramList == null)
+    if (paramItem == null)
     {
-      azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
       return null;
     }
-    return new aztz(paramLong, paramList, 1);
+    if (paramItem.Id == null)
+    {
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item.id=null");
+      return null;
+    }
+    if (paramItem.ForwardTroopuin == 0L)
+    {
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. ForwardTroopuin=0");
+      return null;
+    }
+    if (paramItem.BusId != 25)
+    {
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. BusId err:" + paramItem.BusId);
+      return null;
+    }
+    if (TextUtils.isEmpty(paramItem.ForwardPath))
+    {
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "get2WeiyunForwarder. ForwardPath=null");
+      return null;
+    }
+    return new aztz(paramLong, paramItem, 1);
   }
   
-  private final void a(TroopFileTransferManager.Item paramItem, boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  private final void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    if (!paramBoolean) {}
-    try
+    paramInt2 = 601;
+    if (!paramBoolean)
     {
-      bici.a(-1);
-      this.b.put(paramItem.Id, Integer.valueOf(-1));
-      azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
+      bicz.a(-1);
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult isSuccess:false ");
+      paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 601);
+      azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
       return;
     }
-    finally {}
-    azsr.c("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
-    bici.a(paramInt1);
-    if (paramInt1 == 0)
+    azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onTroop2weiyunResult retCode:" + paramInt1 + " sClientWording:" + paramString3);
+    bicz.a(paramInt1);
+    if (paramInt1 != 0)
     {
-      this.b.remove(paramItem.Id);
-      if (this.b.size() != 0) {
-        break label212;
+      switch (paramInt1)
+      {
+      default: 
+        paramInt1 = paramInt2;
       }
-      paramString1 = new bajh(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
-      azsb.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
-    }
-    label316:
-    for (;;)
-    {
-      return;
-      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
-      break;
-      label212:
-      paramString1 = this.b.keySet().iterator();
-      do
+      for (;;)
       {
-        if (!paramString1.hasNext()) {
-          break;
+        paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, paramInt1, paramString3);
+        azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+        return;
+        paramInt1 = 202;
+        continue;
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 703;
+        continue;
+        paramInt1 = 702;
+        continue;
+        paramInt1 = 701;
+        continue;
+        paramInt1 = 705;
+        continue;
+        paramInt1 = paramInt2;
+        if (!TextUtils.isEmpty(paramString3)) {
+          paramInt1 = 704;
         }
-        paramString2 = (UUID)paramString1.next();
-      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
-      for (paramInt1 = 0;; paramInt1 = 1)
-      {
-        if (paramInt1 == 0) {
-          break label316;
-        }
-        paramString1 = new bajh(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
-        azsb.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
-        break;
       }
     }
+    paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 5, 602);
+    azsd.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
   }
   
   private int b()
   {
-    QQAppInterface localQQAppInterface = azsp.a();
+    QQAppInterface localQQAppInterface = azsr.a();
     if (localQQAppInterface == null)
     {
-      azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
+      azst.a("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun app=null");
       return -1;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
-      if (localItem.Id == null)
-      {
-        azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
-      }
-      else if (localItem.ForwardTroopuin == 0L)
-      {
-        azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
-      }
-      else if (localItem.BusId != 25)
-      {
-        azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
-      }
-      else if (TextUtils.isEmpty(localItem.ForwardPath))
-      {
-        azsr.a("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
-      }
-      else
-      {
-        azsr.c("TroopFileFromTroopForwarder", azsr.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
-        try
-        {
-          this.b.put(localItem.Id, Integer.valueOf(2147483647));
-          xap.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Xbc);
-        }
-        finally {}
-      }
-    }
+    azst.c("TroopFileFromTroopForwarder", azst.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] troop2weiyun. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath);
+    xam.a(localQQAppInterface, true, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Xaz);
     return 0;
   }
   
@@ -143,6 +126,11 @@ public class aztz
       return b();
     }
     return -1;
+  }
+  
+  public UUID a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
   }
 }
 

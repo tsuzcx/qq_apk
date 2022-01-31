@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acxo;
+import acxk;
+import acxl;
 import acxp;
-import acxs;
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aobj;
-import avpq;
-import bawi;
+import aobo;
+import avps;
+import baww;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -33,14 +33,14 @@ public class PanelAdapter
 {
   int jdField_a_of_type_Int = 4;
   Context jdField_a_of_type_AndroidContentContext;
-  public SparseArray<List<acxs>> a;
+  public SparseArray<List<acxp>> a;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  aobj jdField_a_of_type_Aobj = new aobj();
+  aobo jdField_a_of_type_Aobo = new aobo();
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public String a;
-  ArrayList<acxs> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<acxp> jdField_a_of_type_JavaUtilArrayList;
   public boolean a;
   int b;
   public boolean b;
@@ -54,84 +54,84 @@ public class PanelAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a(int paramInt, acxo paramacxo)
+  private void a(int paramInt, acxk paramacxk)
   {
     int n = this.jdField_a_of_type_Int;
     int i1 = this.jdField_b_of_type_Int;
-    paramacxo.a(paramInt);
+    paramacxk.a(paramInt);
     int i = 0;
     int j = 0;
     while (j < this.jdField_b_of_type_Int)
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramacxo.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)paramacxk.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
         View localView = localLinearLayout.getChildAt(k);
-        acxp localacxp = (acxp)localView.getTag();
+        acxl localacxl = (acxl)localView.getTag();
         int m = n * i1 * paramInt + i;
-        acxs localacxs;
+        acxp localacxp;
         Object localObject;
         if (m < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localacxs = (acxs)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-          localacxp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localacxp.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localacxs.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          if ((localacxs.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
+          localacxp = (acxp)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+          localacxl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localacxl.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localacxp.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          if ((localacxp.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
           {
-            localObject = (URLDrawable)localacxs.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            localObject = (URLDrawable)localacxp.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
             if (((URLDrawable)localObject).getStatus() == 2) {
               ((URLDrawable)localObject).restartDownload();
             }
           }
-          localacxp.jdField_a_of_type_AndroidWidgetTextView.setText(localacxs.jdField_a_of_type_JavaLangString);
-          localacxp.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
-          localacxp.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
-          if (!TextUtils.isEmpty(localacxs.c))
+          localacxl.jdField_a_of_type_AndroidWidgetTextView.setText(localacxp.jdField_a_of_type_JavaLangString);
+          localacxl.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
+          localacxl.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.b();
+          if (!TextUtils.isEmpty(localacxp.c))
           {
-            localacxp.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-            localObject = ((avpq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(10, String.valueOf(localacxs.c));
+            localacxl.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+            localObject = ((avps)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a(10, String.valueOf(localacxp.c));
             if (localObject != null) {
-              localacxp.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject);
+              localacxl.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject);
             }
-            localacxp.jdField_a_of_type_Int = localacxs.jdField_a_of_type_Int;
-            localacxp.jdField_b_of_type_JavaLangString = localacxs.e;
-            localacxp.jdField_a_of_type_JavaLangString = localacxs.d;
-            localacxp.jdField_b_of_type_Int = localacxs.jdField_b_of_type_Int;
-            localacxp.c = localacxs.c;
-            localacxp.jdField_a_of_type_Boolean = localacxs.jdField_a_of_type_Boolean;
-            localView.setContentDescription(localacxs.jdField_a_of_type_JavaLangString + ajyc.a(2131707865));
+            localacxl.jdField_a_of_type_Int = localacxp.jdField_a_of_type_Int;
+            localacxl.jdField_b_of_type_JavaLangString = localacxp.e;
+            localacxl.jdField_a_of_type_JavaLangString = localacxp.d;
+            localacxl.jdField_b_of_type_Int = localacxp.jdField_b_of_type_Int;
+            localacxl.c = localacxp.c;
+            localacxl.jdField_a_of_type_Boolean = localacxp.jdField_a_of_type_Boolean;
+            localView.setContentDescription(localacxp.jdField_a_of_type_JavaLangString + ajya.a(2131707876));
             localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             localView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
             localView.setEnabled(true);
-            bawi.a(localView, true);
+            baww.a(localView, true);
           }
         }
         for (;;)
         {
-          bawi.a(localacxp.jdField_a_of_type_AndroidWidgetTextView, false);
+          baww.a(localacxl.jdField_a_of_type_AndroidWidgetTextView, false);
           i += 1;
           k += 1;
           break;
-          localObject = localacxp.jdField_b_of_type_AndroidWidgetImageView;
-          if (localacxs.jdField_a_of_type_Boolean) {}
+          localObject = localacxl.jdField_b_of_type_AndroidWidgetImageView;
+          if (localacxp.jdField_a_of_type_Boolean) {}
           for (m = 0;; m = 8)
           {
             ((ImageView)localObject).setVisibility(m);
             break;
           }
-          localacxp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          localacxp.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-          localacxp.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(4);
-          localacxp.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          localacxp.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-          localacxp.jdField_a_of_type_Int = 0;
-          localacxp.jdField_b_of_type_JavaLangString = "";
-          localacxp.jdField_a_of_type_JavaLangString = "";
-          localacxp.jdField_b_of_type_Int = 0;
+          localacxl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          localacxl.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+          localacxl.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(4);
+          localacxl.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+          localacxl.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+          localacxl.jdField_a_of_type_Int = 0;
+          localacxl.jdField_b_of_type_JavaLangString = "";
+          localacxl.jdField_a_of_type_JavaLangString = "";
+          localacxl.jdField_b_of_type_Int = 0;
           localView.setOnClickListener(null);
           localView.setEnabled(false);
-          bawi.a(localView, false);
+          baww.a(localView, false);
         }
       }
       j += 1;
@@ -143,7 +143,7 @@ public class PanelAdapter
     return this.jdField_a_of_type_Int;
   }
   
-  public List<acxs> a(int paramInt)
+  public List<acxp> a(int paramInt)
   {
     int i = this.jdField_a_of_type_Int;
     i = this.jdField_b_of_type_Int * i;
@@ -177,10 +177,10 @@ public class PanelAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          acxo localacxo = (acxo)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localacxo != null) && (paramInt == localacxo.jdField_a_of_type_Int))
+          acxk localacxk = (acxk)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localacxk != null) && (paramInt == localacxk.jdField_a_of_type_Int))
           {
-            a(paramInt, localacxo);
+            a(paramInt, localacxk);
             return;
           }
           i += 1;
@@ -204,7 +204,7 @@ public class PanelAdapter
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(ArrayList<acxs> paramArrayList)
+  public void a(ArrayList<acxp> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -216,10 +216,10 @@ public class PanelAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    acxo localacxo = (acxo)paramObject;
-    ((ViewGroup)paramView).removeView(localacxo);
-    localacxo.a();
-    this.jdField_a_of_type_Aobj.a((View)paramObject);
+    acxk localacxk = (acxk)paramObject;
+    ((ViewGroup)paramView).removeView(localacxk);
+    localacxk.a();
+    this.jdField_a_of_type_Aobo.a((View)paramObject);
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
   
@@ -236,7 +236,7 @@ public class PanelAdapter
     if (this.jdField_b_of_type_Boolean) {
       return -2;
     }
-    if (((paramObject instanceof acxo)) && (((acxo)paramObject).jdField_a_of_type_Int >= getCount())) {
+    if (((paramObject instanceof acxk)) && (((acxk)paramObject).jdField_a_of_type_Int >= getCount())) {
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -247,27 +247,27 @@ public class PanelAdapter
     if (QLog.isColorLevel()) {
       QLog.d("PanelIconAdapter", 2, "instantiateItem " + paramInt);
     }
-    acxo localacxo = (acxo)this.jdField_a_of_type_Aobj.a();
+    acxk localacxk = (acxk)this.jdField_a_of_type_Aobo.a();
     Object localObject;
-    if (localacxo != null)
+    if (localacxk != null)
     {
-      localObject = localacxo.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localacxo.getTag()).intValue() != XPanelContainer.d))
+      localObject = localacxk.getTag();
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localacxk.getTag()).intValue() != XPanelContainer.d))
       {
-        this.jdField_a_of_type_Aobj.a();
-        localacxo = null;
+        this.jdField_a_of_type_Aobo.a();
+        localacxk = null;
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-      localObject = localacxo;
-      if (localacxo == null) {
-        localObject = new acxo(this, this.jdField_a_of_type_AndroidContentContext, null);
+      localObject = localacxk;
+      if (localacxk == null) {
+        localObject = new acxk(this, this.jdField_a_of_type_AndroidContentContext, null);
       }
-      ((acxo)localObject).a(paramInt);
-      a(paramInt, (acxo)localObject);
-      if ((((acxo)localObject).getParent() != paramView) && (paramInt < getCount())) {
+      ((acxk)localObject).a(paramInt);
+      a(paramInt, (acxk)localObject);
+      if ((((acxk)localObject).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject);
       }
       return localObject;

@@ -1,25 +1,13 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
 public class afos
-  extends ajta
+  extends akat
 {
   public afos(TroopView paramTroopView) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  protected void a()
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.a()) {
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694927);
-    }
-    bcpw.a(this.a.a(), 1, paramString1, 0).a();
+    this.a.j();
   }
 }
 

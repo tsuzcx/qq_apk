@@ -1,15 +1,14 @@
-import Wallet.AcsMsg;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.io.File;
+import java.io.FileFilter;
 
-public class acsp
+class acsp
+  implements FileFilter
 {
-  public long a;
-  public AcsMsg a;
-  public MessageRecord a;
+  acsp(acsn paramacsn) {}
   
-  public String toString()
+  public boolean accept(File paramFile)
   {
-    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
+    return paramFile.getName().startsWith(acsn.a(this.a));
   }
 }
 

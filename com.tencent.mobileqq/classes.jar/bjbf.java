@@ -1,92 +1,93 @@
 import android.app.Activity;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
+import org.json.JSONObject;
 
-public abstract class bjbf
+class bjbf
+  implements bjbj
 {
-  public int a;
-  protected SegmentKeeper a;
-  public Object a;
-  public ArrayList<bjbg> a;
-  public int b;
-  protected int c;
-  
-  public bjbf(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public abstract float a();
-  
-  public abstract int a();
-  
-  public abstract int a(Activity paramActivity, int paramInt);
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_JavaLangObject.hashCode());
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bjbg)localIterator.next()).a(this);
-      }
-    }
-  }
+  bjbf(bjbe parambjbe) {}
   
   public void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bjbg)localIterator.next()).a(this, paramInt);
-      }
+    bjbe.a(this.a).h();
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
     }
-  }
-  
-  public abstract void a(Activity paramActivity, int paramInt);
-  
-  public void a(bjbg parambjbg)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambjbg)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(parambjbg);
-      }
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    } while (localPtvTemplateInfo == null);
+    if (localPtvTemplateInfo.isWsBanner())
+    {
+      vzw.a(this.a.jdField_a_of_type_AndroidContentContext, localPtvTemplateInfo);
       return;
     }
-  }
-  
-  public void a(SegmentKeeper paramSegmentKeeper)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = paramSegmentKeeper;
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (bjbe.a(this.a) == paramInt)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bjbg)localIterator.next()).b(this);
+      bjbe.jdField_c_of_type_Boolean = true;
+      bjbe.a(this.a, paramInt);
+      bjbe.jdField_c_of_type_Int = paramInt;
+      bjbe.jdField_b_of_type_Int = localPtvTemplateInfo.categoryId;
+      bjbe.jdField_b_of_type_JavaLangString = localPtvTemplateInfo.id;
+    }
+    try
+    {
+      localJSONObject = new JSONObject();
+      if (TextUtils.isEmpty(bjbe.jdField_b_of_type_JavaLangString)) {
+        break label418;
+      }
+      if (!"0".equals(bjbe.jdField_b_of_type_JavaLangString)) {
+        break label393;
       }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        JSONObject localJSONObject;
+        label175:
+        Object localObject;
+        QLog.d("Q.videostory.capture", 1, "report failed");
+        continue;
+        String str = "empty";
+      }
+    }
+    localJSONObject.put("lens_id", localObject);
+    if (bjbe.jdField_b_of_type_Int != 0) {}
+    for (localObject = Integer.valueOf(bjbe.jdField_b_of_type_Int);; localObject = "empty")
+    {
+      localJSONObject.put("lens_tab", localObject);
+      localJSONObject.put("id_pos", bjbe.jdField_c_of_type_Int);
+      xhb.a("mystatus_shoot", "lens_select", 0, 0, new String[] { "", String.valueOf(ahty.a), localJSONObject.toString() });
+      QLog.d("Q.videostory.capture", 1, "change material result:" + localJSONObject.toString());
+      ((bjgo)bjav.a(14)).a(localPtvTemplateInfo.id, 3);
+      if (!localPtvTemplateInfo.id.equals("0"))
+      {
+        bjbe.jdField_b_of_type_Boolean = true;
+        if (!bjbe.jdField_c_of_type_Boolean) {
+          bjbe.jdField_a_of_type_Boolean = false;
+        }
+        this.a.jdField_a_of_type_Bkzp.a(localPtvTemplateInfo, 111);
+      }
+      this.a.a(null);
+      if (!localPtvTemplateInfo.usable) {
+        bkpm.a("", "0X8006A1A");
+      }
+      ((bjcb)bjav.a(5)).a(this.a.d, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bjbe.jdField_c_of_type_Boolean = false;
+      break;
+      label393:
+      localObject = bjbe.jdField_b_of_type_JavaLangString;
+      break label175;
+    }
   }
-  
-  public void b(Activity paramActivity, int paramInt) {}
 }
 
 

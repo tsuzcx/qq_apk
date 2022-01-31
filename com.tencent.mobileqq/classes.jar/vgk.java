@@ -1,66 +1,57 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 class vgk
-  extends QQUIEventReceiver<vgd, vme>
+  extends vpb
 {
-  public vgk(@NonNull vgd paramvgd)
+  private final List<voq> a = new ArrayList();
+  
+  public int a()
   {
-    super(paramvgd);
+    return this.a.size();
   }
   
-  public void a(@NonNull vgd paramvgd, @NonNull vme paramvme)
+  public voq a(int paramInt)
   {
-    if (paramvme.jdField_a_of_type_Int != 0) {
-      paramvgd.jdField_a_of_type_Vhp.a("fail_face", 0, 0, new String[0]);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (voq)this.a.get(paramInt);
     }
-    vgn localvgn = paramvgd.jdField_a_of_type_Vgn;
-    if (localvgn != null)
+    return null;
+  }
+  
+  public voq a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject = localvgn.a(paramvme.jdField_a_of_type_Vlu.a);
-      if (!(localObject instanceof voz))
-      {
-        veg.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + paramvme.jdField_a_of_type_Vlu.a);
-        return;
+      voq localvoq = (voq)localIterator.next();
+      if (TextUtils.equals(paramString, localvoq.a)) {
+        return localvoq;
       }
-      localObject = (voz)localObject;
-      if (paramvme.jdField_a_of_type_Int == 0)
-      {
-        if (paramvme.jdField_a_of_type_Boolean)
-        {
-          veg.b(this.TAG, "notify ui we finish downloading");
-          ((voz)localObject).jdField_a_of_type_Boolean = false;
-          ((voz)localObject).f = paramvme.jdField_a_of_type_Vlu.a();
-          ((voz)localObject).jdField_a_of_type_Int = 0;
-          ((voz)localObject).b = 0;
-          localvgn.a((vot)localObject);
-          return;
-        }
-        veg.a(this.TAG, "notify ui we new progress : " + paramvme.b + " / " + paramvme.jdField_a_of_type_Long);
-        ((voz)localObject).jdField_a_of_type_Boolean = true;
-        ((voz)localObject).f = null;
-        ((voz)localObject).jdField_a_of_type_Int = ((int)paramvme.jdField_a_of_type_Long);
-        ((voz)localObject).b = ((int)paramvme.b);
-        localvgn.a((vot)localObject);
-        return;
-      }
-      ((voz)localObject).jdField_a_of_type_Boolean = false;
-      ((voz)localObject).f = null;
-      ((voz)localObject).jdField_a_of_type_Int = 0;
-      ((voz)localObject).b = 0;
-      localvgn.a((vot)localObject);
-      veg.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + paramvme.jdField_a_of_type_Int);
-      bcpw.a(paramvgd.a(), ajyc.a(2131703917), 1).a();
-      vem.a("0X80076C9");
-      vem.b("0X80075DE");
-      return;
     }
-    veg.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
+    return null;
   }
   
-  public Class acceptEventClass()
+  public void a(Collection<voq> paramCollection)
   {
-    return vme.class;
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(voq paramvoq)
+  {
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvoq);
+    int i = this.a.indexOf(paramvoq);
+    if (i >= 0)
+    {
+      this.a.set(i, paramvoq);
+      a(i);
+    }
   }
 }
 

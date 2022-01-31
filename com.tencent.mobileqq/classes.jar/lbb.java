@@ -1,54 +1,38 @@
 import android.content.Context;
-import android.util.Pair;
 import com.rookery.translate.type.Language;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.rookery.translate.type.TranslateError;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lbb
-  extends lay
+class lbb
+  extends laj
 {
-  private static lbb a;
+  lbb(lba paramlba, Long paramLong, Context paramContext, List paramList, Language paramLanguage, lbm paramlbm) {}
   
-  public static lbb a()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
     try
     {
-      if (a == null) {
-        a = new lbb();
-      }
-      return a;
+      lba.a(this.jdField_a_of_type_Lba).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
+      lba.a(this.jdField_a_of_type_Lba).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
+      lba.a(this.jdField_a_of_type_Lba, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, lba.a(this.jdField_a_of_type_Lba).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Lbm);
+      return;
     }
-    finally {}
+    catch (JSONException paramArrayOfHeader)
+    {
+      this.jdField_a_of_type_Lbm.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
+    }
   }
   
-  public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, lbr paramlbr)
+  public void a(Throwable paramThrowable, String paramString)
   {
-    if (paramLanguage == null) {
-      paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+    this.jdField_a_of_type_Lbm.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
     }
-    Object localObject;
-    for (;;)
-    {
-      localObject = new ArrayList();
-      ((List)localObject).add(new Pair("key", paramString));
-      ((List)localObject).add(new Pair("target", paramLanguage));
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        ((List)localObject).add(new Pair("q", (String)paramList.next()));
-      }
-      localObject = paramLanguage.toString();
-      if (localObject != null)
-      {
-        paramLanguage = (Language)localObject;
-        if (((String)localObject).length() != 0) {}
-      }
-      else
-      {
-        paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
-      }
-    }
-    lba.a(paramContext, null, (List)localObject, new lbc(this, paramlbr, paramLong));
   }
 }
 

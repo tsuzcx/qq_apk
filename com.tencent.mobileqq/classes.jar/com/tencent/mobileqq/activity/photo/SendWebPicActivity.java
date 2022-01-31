@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agqe;
-import ajyc;
+import agqc;
+import ajya;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,15 +9,15 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
-import auoq;
-import ayos;
-import ayvv;
-import ayvz;
-import aywa;
-import bbev;
-import bbjw;
-import bcpw;
-import bfmt;
+import auos;
+import ayou;
+import ayvx;
+import aywb;
+import aywc;
+import bbfj;
+import bbkk;
+import bcql;
+import bfnk;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,8 +33,8 @@ public class SendWebPicActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  ayvz jdField_a_of_type_Ayvz = new agqe(this);
-  private bfmt jdField_a_of_type_Bfmt;
+  aywb jdField_a_of_type_Aywb = new agqc(this);
+  private bfnk jdField_a_of_type_Bfnk;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
@@ -69,7 +69,7 @@ public class SendWebPicActivity
       setResult(-1);
       finish();
       return;
-      bcpw.a(this, ajyc.a(2131713828), 0).a();
+      bcql.a(this, ajya.a(2131713839), 0).a();
     }
   }
   
@@ -118,7 +118,7 @@ public class SendWebPicActivity
     }
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Bfmt.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1003);
       if (QLog.isColorLevel()) {
         QLog.d("SendWebPicActivity", 2, "startUploadPic empty path!");
       }
@@ -130,14 +130,14 @@ public class SendWebPicActivity
       if (((File)localObject).exists()) {
         break;
       }
-      this.jdField_a_of_type_Bfmt.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1003);
     } while (!QLog.isColorLevel());
     QLog.d("SendWebPicActivity", 2, "startUploadPic file not exist, path=" + paramString);
     return;
     this.jdField_a_of_type_Long = ((File)localObject).length();
-    if (!bbev.g(this))
+    if (!bbfj.g(this))
     {
-      this.jdField_a_of_type_Bfmt.sendEmptyMessage(1004);
+      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1004);
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
@@ -145,7 +145,7 @@ public class SendWebPicActivity
     this.d = "";
     CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
     localCompressInfo.f = 0;
-    if (!auoq.a(localCompressInfo)) {
+    if (!auos.a(localCompressInfo)) {
       QLog.d("SendWebPicActivity", 1, "CompressOperator failed");
     }
     if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString)) {}
@@ -157,17 +157,17 @@ public class SendWebPicActivity
         QLog.d("SendWebPicActivity", 2, String.format("startUploadPic outWidth[%s], outHeight[%s], sizeBefore[%s], sizeAfter[%s], compressPath=[%s], originPath[%s]", new Object[] { Integer.valueOf(localCompressInfo.d), Integer.valueOf(localCompressInfo.jdField_e_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_b_of_type_Long), localCompressInfo.jdField_e_of_type_JavaLangString, paramString }));
       }
       paramString = this.app.a();
-      this.jdField_a_of_type_Ayvz.addFilter(new Class[] { ayos.class });
-      paramString.a(this.jdField_a_of_type_Ayvz);
-      localObject = new aywa();
-      ((aywa)localObject).jdField_a_of_type_Boolean = true;
-      ((aywa)localObject).jdField_c_of_type_Int = 51;
-      ((aywa)localObject).i = this.jdField_a_of_type_JavaLangString;
-      ((aywa)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-      ((aywa)localObject).jdField_c_of_type_JavaLangString = "0";
-      ((aywa)localObject).b = 24;
-      ((aywa)localObject).jdField_a_of_type_JavaLangString = "h5UploadPicHit";
-      paramString.a((aywa)localObject);
+      this.jdField_a_of_type_Aywb.addFilter(new Class[] { ayou.class });
+      paramString.a(this.jdField_a_of_type_Aywb);
+      localObject = new aywc();
+      ((aywc)localObject).jdField_a_of_type_Boolean = true;
+      ((aywc)localObject).jdField_c_of_type_Int = 51;
+      ((aywc)localObject).i = this.jdField_a_of_type_JavaLangString;
+      ((aywc)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+      ((aywc)localObject).jdField_c_of_type_JavaLangString = "0";
+      ((aywc)localObject).b = 24;
+      ((aywc)localObject).jdField_a_of_type_JavaLangString = "h5UploadPicHit";
+      paramString.a((aywc)localObject);
       return;
     }
   }
@@ -186,10 +186,10 @@ public class SendWebPicActivity
         }
         a();
         localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557);
-        if (!bbjw.a(paramString)) {
+        if (!bbkk.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131717187);
+        localTextView.setText(2131717198);
       }
       catch (Throwable paramString)
       {
@@ -222,7 +222,7 @@ public class SendWebPicActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bfmt = new bfmt(this);
+    this.jdField_a_of_type_Bfnk = new bfnk(this);
     this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("edit_video_call_back");
     paramBundle = getIntent().getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("shareto_web_mode", -1);
@@ -241,7 +241,7 @@ public class SendWebPicActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().b(this.jdField_a_of_type_Ayvz);
+    this.app.a().b(this.jdField_a_of_type_Aywb);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -255,7 +255,7 @@ public class SendWebPicActivity
       return false;
     case 1003: 
       a();
-      bcpw.a(this, 1, 2131719476, 0).a();
+      bcql.a(this, 1, 2131719487, 0).a();
       finish();
       return true;
     case 1001: 
@@ -263,11 +263,11 @@ public class SendWebPicActivity
       return true;
     case 1002: 
       a();
-      d(ajyc.a(2131713829));
+      d(ajya.a(2131713840));
       return true;
     }
     a();
-    bcpw.a(this, 1, 2131694905, 0).a();
+    bcql.a(this, 1, 2131694906, 0).a();
     finish();
     return true;
   }

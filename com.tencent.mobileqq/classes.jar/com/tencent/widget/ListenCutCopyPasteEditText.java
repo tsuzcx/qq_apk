@@ -7,12 +7,12 @@ import android.content.Context;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import bfsz;
+import bftq;
 
 public class ListenCutCopyPasteEditText
   extends EditText
 {
-  protected bfsz a;
+  protected bftq a;
   
   public ListenCutCopyPasteEditText(Context paramContext)
   {
@@ -104,9 +104,9 @@ public class ListenCutCopyPasteEditText
     return bool;
   }
   
-  public void setCutCopyPasteCallback(bfsz parambfsz)
+  public void setCutCopyPasteCallback(bftq parambftq)
   {
-    this.a = parambfsz;
+    this.a = parambftq;
   }
 }
 

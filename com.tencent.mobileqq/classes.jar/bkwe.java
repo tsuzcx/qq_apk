@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class bkwe
-  extends Handler
+  implements bkva
 {
-  public bkwe(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
+  public void a(boolean paramBoolean)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    }
   }
 }
 

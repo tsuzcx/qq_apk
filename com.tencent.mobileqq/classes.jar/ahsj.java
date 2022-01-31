@@ -1,18 +1,9 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
 
-@TargetApi(11)
 public class ahsj
-  implements Animator.AnimatorListener
+  extends axgj
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public ahsj(CameraPreviewNew paramCameraPreviewNew) {}
 }
 
 

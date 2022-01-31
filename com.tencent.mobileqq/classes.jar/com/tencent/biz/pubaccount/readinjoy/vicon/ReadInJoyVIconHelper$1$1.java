@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.vicon;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import qjd;
-import qje;
+import qja;
+import qjb;
 
 public class ReadInJoyVIconHelper$1$1
   implements Runnable
 {
-  public ReadInJoyVIconHelper$1$1(qje paramqje, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInJoyVIconHelper$1$1(qjb paramqjb, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    qjd.a(this.a, this.this$0.a);
+    qja.a(this.a, this.this$0.a);
   }
 }
 

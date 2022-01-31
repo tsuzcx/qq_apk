@@ -1,21 +1,21 @@
 import com.tencent.ark.ark.VariantWrapper;
 
 class alnr
-  implements aloy
+  implements alos
 {
-  alnr(alnk paramalnk, long paramLong) {}
+  alnr(alnj paramalnj, long paramLong) {}
   
   public void a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  public void a(boolean paramBoolean, String paramString)
   {
-    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

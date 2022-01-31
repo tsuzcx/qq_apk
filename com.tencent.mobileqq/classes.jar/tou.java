@@ -1,60 +1,51 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class tou
-  extends syq
+  extends syn
 {
-  public List<StoryVideoItem> a = new ArrayList();
-  public int b;
-  public List<List<VideoUrlEntry>> b;
+  public long a;
+  public String a;
+  public List<tnv> a;
+  public long b;
+  public String c;
+  public String d;
+  public String e;
   
-  public tou(qqstory_service.RspBatchGetVideoFullInfoList paramRspBatchGetVideoFullInfoList)
+  public tou(qqstory_service.RspPublishVideo paramRspPublishVideo)
   {
-    super(paramRspBatchGetVideoFullInfoList.result);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    Object localObject1 = paramRspBatchGetVideoFullInfoList.video_list.get();
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((Iterator)localObject1).next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
-        this.a.add(localStoryVideoItem);
-        Object localObject3 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
-        if (localObject3 != null)
-        {
-          localObject2 = new ArrayList(((List)localObject3).size());
-          localObject3 = ((List)localObject3).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject3).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = localStoryVideoItem.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject2).add(localVideoUrlEntry);
-          }
-          this.jdField_b_of_type_JavaUtilList.add(localObject2);
-        }
-      }
+    super(paramRspPublishVideo.result);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
+    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
+    this.c = String.valueOf(paramRspPublishVideo.date.get());
+    this.b = paramRspPublishVideo.video_index.get();
+    if (paramRspPublishVideo.story_id.has()) {
+      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
     }
-    this.jdField_b_of_type_Int = paramRspBatchGetVideoFullInfoList.interact_status.get();
+    if (paramRspPublishVideo.vid.has()) {
+      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
+    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
+    while (paramRspPublishVideo.hasNext())
+    {
+      qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
+      this.jdField_a_of_type_JavaUtilList.add(new tnv(localGroupFeed));
+    }
   }
   
   public String toString()
   {
-    return "GetVideoBasicInfoListResponse{mVideoItemList=" + this.a + '}';
+    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

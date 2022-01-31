@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajxn;
+import ajxl;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,10 +22,10 @@ class FrameHelperActivity$2
         localObject = ((FragmentActivity)localObject).app;
         if (localObject != null)
         {
-          ajxn localajxn = (ajxn)((QQAppInterface)localObject).getManager(51);
-          if (localajxn != null)
+          ajxl localajxl = (ajxl)((QQAppInterface)localObject).getManager(51);
+          if (localajxl != null)
           {
-            FrameHelperActivity.a(this.this$0, localajxn.b(((QQAppInterface)localObject).getCurrentAccountUin()));
+            FrameHelperActivity.a(this.this$0, localajxl.b(((QQAppInterface)localObject).getCurrentAccountUin()));
             return;
           }
         }

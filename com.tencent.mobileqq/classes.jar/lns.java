@@ -1,21 +1,31 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
+@SuppressLint({"HandlerLeak"})
 public class lns
+  extends Handler
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public lns(BaseGaInvite paramBaseGaInvite) {}
   
-  public lns(AVNotifyCenter paramAVNotifyCenter) {}
-  
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
+    }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lns
  * JD-Core Version:    0.7.0.1
  */

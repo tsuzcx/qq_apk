@@ -1,367 +1,532 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSpecialTopic;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentInfo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentWhiteSpace;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import cooperation.plugin.PluginBaseActivity;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class pqq
+public abstract class pqq
 {
-  public static View a(int paramInt1, Object paramObject, int paramInt2, View paramView, Context paramContext, rap paramrap, baxk parambaxk)
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  baxy jdField_a_of_type_Baxy;
+  ComponentAccountSummary jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary;
+  ComponentComment jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment;
+  ComponentContentUgcOriginalHeader jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader;
+  ComponentContentUgcSource jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource;
+  ComponentDivider jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider;
+  ComponentHeaderFriendRecommend jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend;
+  ComponentHeaderNewSocial jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial;
+  ComponentHeaderPolymeric jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric;
+  ComponentHeaderPublish jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish;
+  ComponentHeaderRecommend jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend;
+  ComponentHeaderSpecialTopic jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic;
+  ComponentHeaderTopicRecommend jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend;
+  ComponentHeaderUgc jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc;
+  ComponentInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo;
+  ComponentJump jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump;
+  ComponentLastRead jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead;
+  ComponentPolymericView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView;
+  ComponentSocialOperation jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation;
+  ComponentTitle jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle;
+  ComponentTopicItemSingle jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle;
+  ComponentWhiteSpace jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace;
+  Object jdField_a_of_type_JavaLangObject;
+  List<ComponentTopicItemMulti> jdField_a_of_type_JavaUtilList;
+  pqp jdField_a_of_type_Pqp;
+  pqy jdField_a_of_type_Pqy;
+  public ram a;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public pqq(Context paramContext, baxy parambaxy, ram paramram)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof pqt))) {}
-    for (paramContext = (pqt)paramView.getTag();; paramContext = paramrap)
+    if (QLog.isColorLevel()) {
+      QLog.d("FeedItemCell", 2, "FeedItemCell created, class = " + getClass().getSimpleName());
+    }
+    a(paramContext);
+    a(parambaxy);
+    a(paramram);
+    a();
+  }
+  
+  private void a(pau parampau, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ListView localListView = this.jdField_a_of_type_Ram.a();
+    int j = localListView.getChildCount();
+    this.jdField_a_of_type_Ram.n();
+    localArrayList1.add(this.jdField_a_of_type_AndroidViewView);
+    localArrayList2.add(parampau);
+    int i = 0;
+    while (i < j)
     {
-      if (paramContext != null)
+      pau localpau = (pau)localListView.getChildAt(i).getTag(2131379213);
+      View localView = localListView.getChildAt(i);
+      if ((localpau != null) && (localView != null) && (localpau != parampau) && (parampau.a().mGroupId == localpau.a().mGroupId) && (parampau.a().mGroupId != -1L))
       {
-        paramContext.a(paramInt1).a(paramObject);
-        paramContext.o();
-        paramContext.p();
+        localArrayList1.add(localView);
+        localArrayList2.add(localpau);
       }
-      return paramView;
-      paramrap = a(paramInt2, paramContext, paramObject, parambaxk, paramrap);
-      if (paramrap != null) {
-        try
-        {
-          paramView = paramrap.a();
-          paramView.setTag(paramrap);
-          if (!pyp.c(paramInt2)) {
-            olb.a(paramView, paramContext.getResources().getDrawable(2130841265));
-          } else {
-            olb.a(paramView, paramContext.getResources().getDrawable(2131166743));
-          }
+      i += 1;
+    }
+    parampau = new pqx(this, localArrayList2, paramArrayList, paramInt, paramObject);
+    paramInt = 0;
+    while (paramInt < localArrayList1.size())
+    {
+      paramArrayList = (Animation)((View)localArrayList1.get(paramInt)).getTag(2131368790);
+      if (paramArrayList == null)
+      {
+        paramInt += 1;
+      }
+      else
+      {
+        if (paramInt != 0) {
+          paramArrayList.setAnimationListener(null);
         }
-        catch (Exception paramObject)
+        for (;;)
         {
-          QLog.e("CellFactory", 1, "getView: ", paramObject);
-          return null;
+          ((View)localArrayList1.get(paramInt)).startAnimation(paramArrayList);
+          break;
+          paramArrayList.setAnimationListener(parampau);
         }
       }
     }
   }
   
-  private static pqt a(int paramInt, Context paramContext, Object paramObject, baxk parambaxk, rap paramrap)
+  public View a()
   {
-    switch (paramInt)
-    {
-    case 13: 
-    case 38: 
-    case 46: 
-    case 70: 
-    case 72: 
-    case 73: 
-    case 74: 
-    case 75: 
-    case 76: 
-    case 77: 
-    case 78: 
-    case 79: 
-    case 80: 
-    case 81: 
-    case 83: 
-    case 84: 
-    case 85: 
-    case 86: 
-    case 89: 
-    case 90: 
-    case 91: 
-    case 92: 
-    case 94: 
-    case 95: 
-    case 99: 
-    case 100: 
-    case 107: 
-    case 108: 
-    case 109: 
-    case 110: 
-    case 111: 
-    case 112: 
-    case 113: 
-    case 114: 
-    case 118: 
-    case 119: 
-    case 120: 
-    case 121: 
-    default: 
-      paramContext = null;
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new Exception("FeedItemCell convertView is null!");
     }
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public pqp a()
+  {
+    return this.jdField_a_of_type_Pqp;
+  }
+  
+  public abstract pqq a();
+  
+  public pqq a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public pqq a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return this;
+  }
+  
+  public pqq a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    return this;
+  }
+  
+  public pqq a(baxy parambaxy)
+  {
+    this.jdField_a_of_type_Baxy = parambaxy;
+    return this;
+  }
+  
+  public pqq a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
+  public pqq a(ram paramram)
+  {
+    this.jdField_a_of_type_Ram = paramram;
+    return this;
+  }
+  
+  public pqq a(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial = new ComponentHeaderNewSocial(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Pqy = new pqr(this);
+  }
+  
+  public void a(long paramLong, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a(paramLong, paramBitmap);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(paramLong, paramBitmap);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(paramLong, paramBitmap);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(paramLong, paramBitmap);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.a(paramLong, paramBitmap);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject = null;
+    boolean bool = ((pau)this.jdField_a_of_type_JavaLangObject).a() instanceof AdvertisementInfo;
+    if (onh.a(((pau)this.jdField_a_of_type_JavaLangObject).a())) {}
     for (;;)
     {
-      if (paramContext != null) {}
+      bfst localbfst = this.jdField_a_of_type_Ram.a();
+      bfsz localbfsz = this.jdField_a_of_type_Ram.a();
+      if (bool)
+      {
+        if ((localbfst != null) && (localbfst.isShowing())) {
+          localbfst.dismiss();
+        }
+        localbfsz.b((pbf)this.jdField_a_of_type_JavaLangObject, ((AdvertisementInfo)((pau)this.jdField_a_of_type_JavaLangObject).a()).mAdDislikeInfos);
+        localbfsz.a(paramView, new pqs(this));
+        localbfsz.a(new pqt(this));
+        localbfsz.setOnDismissListener(new pqu(this, localbfsz));
+        label148:
+        paramView = this.jdField_a_of_type_Ram.a();
+        if ((paramView != null) && (paramView.b()))
+        {
+          paramView.a();
+          this.jdField_a_of_type_Ram.b = true;
+        }
+      }
       try
       {
-        paramContext.a(paramObject);
-        paramContext.a();
-        paramContext.d();
-        return paramContext;
+        paramView = new JSONObject();
+        paramView.put("time", System.currentTimeMillis() / 1000L);
+        paramView.put("channel_id", ((pbf)this.jdField_a_of_type_JavaLangObject).e());
+        localObject = ((pau)this.jdField_a_of_type_JavaLangObject).a();
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
+        {
+          paramView.put("folder_status", onh.d);
+          paramView.put("kandian_mode", onh.e());
+          paramView.put("feeds_type", "" + onh.a((BaseArticleInfo)localObject));
+          paramView.put("rowkey", shu.a((BaseArticleInfo)localObject));
+          nol.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", paramView.toString(), false);
+        }
+        while (!(this.jdField_a_of_type_AndroidContentContext instanceof PluginBaseActivity))
+        {
+          return;
+          localObject = ((pau)this.jdField_a_of_type_JavaLangObject).a().mDislikeInfos;
+          break;
+          if (shu.a(this.jdField_a_of_type_Ram.a()))
+          {
+            this.jdField_a_of_type_Ram.a().a(paramView, ((pau)this.jdField_a_of_type_JavaLangObject).a(), ((pbf)this.jdField_a_of_type_JavaLangObject).b, this.jdField_a_of_type_AndroidViewView);
+            break label148;
+          }
+          if ((localbfsz != null) && (localbfsz.isShowing())) {
+            localbfsz.dismiss();
+          }
+          localbfst.a((pbf)this.jdField_a_of_type_JavaLangObject, (ArrayList)localObject);
+          localbfst.a(paramView, new pqv(this));
+          localbfst.setOnDismissListener(new pqw(this, localbfst));
+          break label148;
+        }
+        paramView.put("folder_status", 1);
+        axqy.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", paramView.toString());
+        return;
       }
-      catch (Exception paramContext)
+      catch (Exception paramView)
       {
-        paramContext.printStackTrace();
+        paramView.printStackTrace();
       }
-      paramContext = new psh(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptn(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prd(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptx(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptx(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = null;
-      continue;
-      paramContext = new ptv(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pre(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptm(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prc(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptw(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pto(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prp(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psi(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prf(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prp(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psq(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psr(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prm(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pta(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prm(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psy(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pus(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puq(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puo(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puw(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pur(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pup(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puy(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new put(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pul(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pty(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pti(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptk(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pum(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pst(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psv(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pub(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puf(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pud(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prf(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psv(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pto(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prv(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pse(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new prw(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pui(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puh(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puj(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new put(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pur(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new puy(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptc(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptd(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psf(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new pte(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptg(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptf(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new ptl(paramContext, parambaxk, paramrap, ComponentContentRecommend.class);
-      continue;
-      paramContext = new ptl(paramContext, parambaxk, paramrap, ComponentContentRecommendFollowList.class);
-      continue;
-      paramContext = new ptl(paramContext, parambaxk, paramrap, ComponentContentRecommendFollowGroup.class);
-      continue;
-      paramContext = new psg(paramContext, parambaxk, paramrap);
-      continue;
-      paramContext = new psp(paramContext, parambaxk, paramrap);
     }
-    return null;
   }
   
-  public static boolean a(int paramInt)
+  public void a(View paramView, Map<String, Object> paramMap) {}
+  
+  pqq b()
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    case 4: 
-    case 13: 
-    case 38: 
-    case 46: 
-    case 50: 
-    case 51: 
-    case 52: 
-    case 70: 
-    case 80: 
-    case 81: 
-    case 83: 
-    case 84: 
-    case 85: 
-    case 86: 
-    case 89: 
-    case 90: 
-    case 91: 
-    case 92: 
-    case 94: 
-    case 95: 
-    case 97: 
-    case 98: 
-    case 99: 
-    case 100: 
-    case 109: 
-    case 110: 
-    case 111: 
-    case 112: 
-    case 113: 
-    case 114: 
-    case 118: 
-    case 119: 
-    case 120: 
-    case 121: 
-    default: 
-      bool = false;
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 22: 
-    case 23: 
-    case 24: 
-    case 25: 
-    case 26: 
-    case 27: 
-    case 28: 
-    case 29: 
-    case 30: 
-    case 31: 
-    case 32: 
-    case 33: 
-    case 34: 
-    case 35: 
-    case 36: 
-    case 37: 
-    case 39: 
-    case 40: 
-    case 41: 
-    case 42: 
-    case 43: 
-    case 44: 
-    case 45: 
-    case 47: 
-    case 48: 
-    case 49: 
-    case 53: 
-    case 54: 
-    case 55: 
-    case 56: 
-    case 57: 
-    case 58: 
-    case 59: 
-    case 60: 
-    case 61: 
-    case 62: 
-    case 63: 
-    case 64: 
-    case 65: 
-    case 66: 
-    case 67: 
-    case 68: 
-    case 69: 
-    case 71: 
-    case 72: 
-    case 73: 
-    case 74: 
-    case 75: 
-    case 76: 
-    case 77: 
-    case 78: 
-    case 79: 
-    case 82: 
-    case 87: 
-    case 88: 
-    case 93: 
-    case 96: 
-    case 101: 
-    case 102: 
-    case 103: 
-    case 104: 
-    case 105: 
-    case 106: 
-    case 107: 
-    case 108: 
-    case 115: 
-    case 116: 
-    case 117: 
-    case 122: 
-    case 123: 
-      return bool;
+    return g().h().i().k().l().n();
+  }
+  
+  public pqq b(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric = new ComponentHeaderPolymeric(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public void b() {}
+  
+  pqq c()
+  {
+    return g().l().n();
+  }
+  
+  public pqq c(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish = new ComponentHeaderPublish(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public abstract pqq d();
+  
+  public pqq d(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc = new ComponentHeaderUgc(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public abstract pqq e();
+  
+  public pqq e(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend = new ComponentHeaderRecommend(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderRecommend.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public pqq f()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary = new ComponentAccountSummary(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq f(ram paramram, baxy parambaxy)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend = new ComponentHeaderTopicRecommend(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.setLogic(paramram, parambaxy);
+    return this;
+  }
+  
+  public pqq g()
+  {
+    return this;
+  }
+  
+  public pqq h()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle = new ComponentTitle(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangObject);
+    return this;
+  }
+  
+  public pqq i()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo = new ComponentInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangObject);
+    return this;
+  }
+  
+  public pqq j()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource = new ComponentContentUgcSource(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq k()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump = new ComponentJump(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq l()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider = new ComponentDivider(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangObject);
+    return this;
+  }
+  
+  public pqq m()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace = new ComponentWhiteSpace(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangObject);
+    return this;
+  }
+  
+  public pqq n()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead = new ComponentLastRead(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq o()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic.a(this.jdField_a_of_type_JavaLangObject);
     }
-    return false;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_JavaLangObject instanceof pau))
+      {
+        pau localpau = (pau)this.jdField_a_of_type_JavaLangObject;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setReadedStatus(this.jdField_a_of_type_Ram.a(localpau.e(), localpau.a().mArticleID));
+      }
+      label119:
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_Pqp != null) {
+        this.jdField_a_of_type_Pqp.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace.a(this.jdField_a_of_type_JavaLangObject);
+      }
+      try
+      {
+        e();
+        return this;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        return this;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label119;
+    }
+  }
+  
+  public pqq p()
+  {
+    if (this.jdField_a_of_type_Pqy == null) {}
+    do
+    {
+      return this;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_Pqp != null) {
+        this.jdField_a_of_type_Pqp.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_Pqy);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_Pqy);
+      }
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace == null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace.a(this.jdField_a_of_type_Pqy);
+    return this;
+  }
+  
+  public pqq q()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation = new ComponentSocialOperation(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq r()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader = new ComponentContentUgcOriginalHeader(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq s()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTopicItemSingle = new ComponentTopicItemSingle(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pqq t()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new ComponentTopicItemMulti(this.jdField_a_of_type_AndroidContentContext));
+    this.jdField_a_of_type_JavaUtilList.add(new ComponentTopicItemMulti(this.jdField_a_of_type_AndroidContentContext));
+    return this;
+  }
+  
+  public pqq u()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView = new ComponentPolymericView(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

@@ -1,33 +1,32 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
 class vgi
-  implements vos
+  extends QQUIEventReceiver<vga, vmc>
 {
-  vgi(vgd paramvgd) {}
-  
-  public void a()
+  public vgi(@NonNull vga paramvga)
   {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    vgd.a(this.a);
+    super(paramvga);
   }
   
-  public void a(String paramString)
+  public void a(@NonNull vga paramvga, @NonNull vmc paramvmc)
   {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    vhp localvhp = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
+    vgk localvgk = paramvga.a;
+    if (localvgk != null) {
+      localvgk.a(paramvga.a());
+    }
+    for (;;)
     {
-      localvhp.a("download_face", 0, 0, new String[] { str, paramString });
-      vem.b("0X80075DD");
-      if (!((vlv)tdc.a(8)).a(paramString, true)) {
-        veg.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
+      vei.b("edit_video", "face_list_success", 0, paramvmc.a.errorCode, new String[0]);
       return;
+      ved.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
     }
   }
   
-  public void b(String paramString)
+  public Class acceptEventClass()
   {
-    veg.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    return vmc.class;
   }
 }
 

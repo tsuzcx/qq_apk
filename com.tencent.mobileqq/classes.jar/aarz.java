@@ -1,16 +1,17 @@
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
 
-class aarz
-  implements asun
+public class aarz
+  implements aptw
 {
-  aarz(aary paramaary) {}
+  public aarz(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
   
   public void a()
   {
-    this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Asuu.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    apug.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
   }
+  
+  public void b() {}
 }
 
 

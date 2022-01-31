@@ -1,25 +1,14 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arha
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  arha(argq paramargq) {}
+  arha(argx paramargx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ("close.activity".equals(paramContext)) {
-      if (argq.a(this.a) != null) {
-        argq.a(this.a).finish();
-      }
-    }
-    while ((!"close.loading".equals(paramContext)) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.dismiss();
+    args.a(this.a.a, false);
   }
 }
 

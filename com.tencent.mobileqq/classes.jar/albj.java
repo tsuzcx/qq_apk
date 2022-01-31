@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARScanAR;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public final class albj
-  implements Parcelable.Creator<ARScanAR>
+public class albj
 {
-  public ARScanAR a(Parcel paramParcel)
+  public ArCloudConfigInfo a;
+  
+  public albj(ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    return new ARScanAR(paramParcel);
+    this.a = paramArCloudConfigInfo;
   }
   
-  public ARScanAR[] a(int paramInt)
+  public String toString()
   {
-    return new ARScanAR[paramInt];
+    return "ARTarget{arResourceInfo=" + this.a + '}';
   }
 }
 

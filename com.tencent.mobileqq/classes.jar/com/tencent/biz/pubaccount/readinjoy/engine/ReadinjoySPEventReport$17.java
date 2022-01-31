@@ -8,9 +8,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import onk;
-import ota;
-import sgj;
+import onh;
+import osx;
+import sgg;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$17
@@ -26,7 +26,7 @@ public final class ReadinjoySPEventReport$17
       int i;
       try
       {
-        if (!ota.b(61)) {
+        if (!osx.b(61)) {
           return;
         }
         j = -1;
@@ -60,7 +60,7 @@ public final class ReadinjoySPEventReport$17
         localObject1 = new ArrayList();
         ((List)localObject1).add(localObject2);
         ((List)localObject1).add(localAttributeList);
-        localObject2 = onk.d(1008);
+        localObject2 = onh.d(1008);
         if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject2)))
         {
           localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -69,7 +69,7 @@ public final class ReadinjoySPEventReport$17
           localAttributeList.att_value.set((String)localObject2);
           ((List)localObject1).add(localAttributeList);
         }
-        sgj.a(61, (List)localObject1);
+        sgg.a(61, (List)localObject1);
         return;
       }
       catch (Throwable localThrowable)

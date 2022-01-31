@@ -1,6 +1,10 @@
-public abstract interface nmz
+public class nmz
 {
-  public abstract void a(nmv paramnmv);
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

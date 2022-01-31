@@ -1,43 +1,121 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.highway.api.IRequestCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoSureRspInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.VideoInfo;
+import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
+import com.tencent.mobileqq.highway.segment.HwRequest;
+import com.tencent.mobileqq.highway.segment.HwResponse;
+import com.tencent.mobileqq.highway.utils.BdhLogUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 class aysl
-  implements ITransactionCallback
+  implements IRequestCallback
 {
-  public int a;
-  public awbe a;
-  public Transaction a;
+  aysl(aysi paramaysi) {}
   
-  aysl(aysg paramaysg) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt + " sendInfo:" + this.jdField_a_of_type_Awbe);
+      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer  onFailed  erroCode : " + paramInt);
     }
-    this.jdField_a_of_type_Aysg.f(paramInt);
+    this.a.f(paramInt);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onResponse(HwResponse paramHwResponse)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onSuccess  erroCode:  sendInfo:" + this.jdField_a_of_type_Awbe);
+      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost);
     }
-    paramArrayOfByte = this.jdField_a_of_type_Aysg.jdField_a_of_type_Ayqm;
-    paramArrayOfByte.e += this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.totalLength;
-    if (this.jdField_a_of_type_Aysg.jdField_a_of_type_Awbe != null) {
-      this.jdField_a_of_type_Aysg.i();
+    int i;
+    if (paramHwResponse.retCode == 0)
+    {
+      if (paramHwResponse.segmentResp.uint32_cache_addr.has())
+      {
+        i = paramHwResponse.segmentResp.uint32_cache_addr.get();
+        if (i != 0)
+        {
+          BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache_addr res from server is : " + i + " ( " + HwRequest.intToIP(i) + " )");
+          if (aysi.a(this.a) == 0) {
+            aysi.a(this.a, i);
+          }
+          if ((aysi.a(this.a) != 0) && (aysi.a(this.a) != i)) {
+            BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache ip Diff !");
+          }
+        }
+      }
+      Object localObject1 = paramHwResponse.mBuExtendinfo;
+      if ((localObject1 != null) && (localObject1.length > 0)) {
+        try
+        {
+          localObject2 = new Bdh_extinfo.ShortVideoRspExtInfo();
+          ((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).mergeFrom((byte[])localObject1);
+          if (!((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.has())
+          {
+            if ((aysi.jdField_a_of_type_Boolean) || (!QLog.isColorLevel())) {
+              return;
+            }
+            QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspExtInfo.msg_shortvideo_sure_rsp is null");
+            return;
+          }
+          localObject1 = new Bdh_extinfo.ShortVideoSureRspInfo();
+          ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).mergeFrom(((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.toByteArray());
+          if (((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).msg_videoinfo.has()) {
+            break label326;
+          }
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspInfo.msg_videoinfo is null");
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("LightVideoUploadProcessor", 2, "sendAckToBDHServer onResponse ", localInvalidProtocolBufferMicroException);
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_Aysg.f(this.jdField_a_of_type_Awbe);
+    this.a.f(paramHwResponse.retCode);
+    return;
+    label326:
+    Object localObject2 = (Bdh_extinfo.VideoInfo)localInvalidProtocolBufferMicroException.msg_videoinfo.get();
+    if (!((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.has())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LightVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : videoInfo.bytes_bin_md5 is null");
+      }
+    }
+    else
+    {
+      Object localObject3 = ((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.get().toByteArray();
+      i = ((Bdh_extinfo.VideoInfo)localObject2).uint32_size.get();
+      int j = ((Bdh_extinfo.VideoInfo)localObject2).uint32_time.get();
+      ((Bdh_extinfo.VideoInfo)localObject2).uint32_format.get();
+      bbfb.a(String.valueOf(this.a.jdField_a_of_type_Aywc.a), "svrcomp_r", "sendAckToBDHServer success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject3));
+      this.a.jdField_a_of_type_Aywc.f = HexUtil.bytes2HexStr((byte[])localObject3);
+      this.a.jdField_a_of_type_Aywc.i = ShortVideoUtils.a(aysi.a(this.a), "mp4");
+      this.a.c = this.a.jdField_a_of_type_Aywc.f;
+      this.a.f = localInvalidProtocolBufferMicroException.bytes_fileid.get().toStringUtf8();
+      this.a.q = i;
+      aysi.a(this.a, j);
+      ayqo localayqo = this.a.jdField_a_of_type_Ayqo;
+      localObject2 = this.a.jdField_a_of_type_Ayqo;
+      localObject3 = this.a;
+      long l = this.a.q;
+      ((aysi)localObject3).s = l;
+      ((ayqo)localObject2).e = l;
+      localayqo.a = l;
+      this.a.d(1007);
+      this.a.b(false);
+    }
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

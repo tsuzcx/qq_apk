@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
-import java.util.Set;
+import android.graphics.Bitmap;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
 
 public class beon
-  extends beoo
+  implements VideoPlayerProxy.OnCaptureImageListener
 {
-  public beon(BarrageView paramBarrageView, View paramView)
-  {
-    super(paramBarrageView, paramView, null);
-  }
+  public beon(MiniAppVideoPlayer.17 param17) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
+  
+  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
   {
-    super.onAnimationEnd(paramAnimation);
-    BarrageView.a(this.a).remove(paramAnimation);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
+    }
   }
 }
 

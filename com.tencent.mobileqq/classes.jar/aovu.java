@@ -1,98 +1,141 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class aovu
-  extends xbc
+public class aovu
 {
-  aovu(aovt paramaovt) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  public astt a;
+  public asug a;
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  List<aovs> jdField_a_of_type_JavaUtilList;
+  List<aovs> b;
+  List<aovs> c;
+  public List<aovs> d;
+  List<aovs> e;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public aovu(long paramLong, asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
   {
-    if (aovt.a(this.a))
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult but has been stopped filename " + aovt.a(this.a));
-      return;
+    this.jdField_a_of_type_Long = ???;
+    this.jdField_a_of_type_Asug = paramHashMap;
+    this.jdField_a_of_type_Int = 0;
+    Object localObject;
+    this.jdField_a_of_type_Astt = localObject;
+    this.jdField_a_of_type_JavaUtilHashMap = paramastt;
+    this.b = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
+  }
+  
+  public int a()
+  {
+    return this.b.size();
+  }
+  
+  public void a()
+  {
+    c();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aovs)localIterator.next()).a();
     }
-    if (paramInt1 == -103)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult retCode[" + paramInt1 + "] clientwording[" + paramString3 + "] filename " + aovt.a(this.a));
-      aovt.a(this.a).a(aouu.a(aovt.a(this.a), true), false);
-      return;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(aovs paramaovs)
+  {
+    if (paramaovs != null) {
+      this.b.add(paramaovs);
     }
-    if ((paramInt1 != 0) && (paramInt1 != -1))
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult retCode[" + paramInt1 + "] clientwording[" + paramString3 + "] filename " + aovt.a(this.a));
-      aovt.a(this.a).a(aouu.a(aovt.a(this.a), false), false);
-      return;
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aovs)localIterator.next()).b();
     }
-    if (!paramBoolean)
+    this.jdField_a_of_type_Int = 5;
+  }
+  
+  void c()
+  {
+    if (10 <= this.b.size()) {}
+    ArrayList localArrayList;
+    for (int i = 10;; i = this.b.size())
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult return failed filename " + aovt.a(this.a));
-      aovt.a(this.a).a(aouu.a(aovt.a(this.a), false), true);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult strNewPath[" + paramString1 + "] busId[" + paramInt2 + "] mnDstBusId[" + aovt.a(this.a) + "] filename " + aovt.a(this.a));
-    aovt.a(this.a, paramString1);
-    aovt.a(this.a).putString("_m_ForwardUuid", aovt.b(this.a));
-    if (aovt.a(this.a) != 102)
-    {
-      aovt.a(this.a).a(aovt.b(this.a), aovt.a(this.a));
-      return;
-    }
-    aovt.a(this.a, paramInt2);
-    aovt.a(this.a).putString("_m_ForwardBusType", String.valueOf(aovt.b(this.a)));
-    paramInt2 = 0;
-    paramInt1 = paramInt2;
-    if (!aovt.c(this.a).isEmpty()) {}
-    try
-    {
-      paramInt1 = Integer.parseInt(aovt.c(this.a));
-      i = 0;
-      paramInt2 = i;
-      if (aovt.d(this.a).isEmpty()) {}
-    }
-    catch (NumberFormatException paramString1)
-    {
-      try
+      localArrayList = new ArrayList(i);
+      int j = 0;
+      while (j < i)
       {
-        paramInt2 = Integer.parseInt(aovt.d(this.a));
-        j = 0;
-        i = j;
-        if (aovt.e(this.a).isEmpty()) {}
+        aovs localaovs = (aovs)this.b.get(j);
+        this.jdField_a_of_type_JavaUtilList.add(localaovs);
+        localArrayList.add(localaovs);
+        j += 1;
       }
-      catch (NumberFormatException paramString1)
+    }
+    this.b.removeAll(localArrayList);
+  }
+  
+  public void d()
+  {
+    int j = this.c.size();
+    int k = this.e.size();
+    int m = this.d.size();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    aovs localaovs;
+    if (localIterator.hasNext())
+    {
+      localaovs = (aovs)localIterator.next();
+      if ((localaovs.b == 2) || (localaovs.b == 3) || (localaovs.b == 4)) {
+        localIterator.remove();
+      }
+      if (localaovs.b == 2)
       {
-        try
+        this.c.add(localaovs);
+        i += 1;
+      }
+    }
+    for (;;)
+    {
+      break;
+      if (localaovs.b == 3)
+      {
+        this.e.add(localaovs);
+        i += 1;
+      }
+      else if (localaovs.b == 4)
+      {
+        this.d.add(localaovs);
+        i += 1;
+        continue;
+        c();
+        if (QLog.isColorLevel())
         {
-          for (;;)
-          {
-            i = Integer.parseInt(aovt.e(this.a));
-            if (aouu.a(this.a.a) != null) {
-              break;
-            }
-            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mApp is null filename " + aovt.a(this.a));
-            aovt.a(this.a).a(aouu.a(aovt.a(this.a), false), false);
-            return;
-            paramString1 = paramString1;
-            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrImageWidth[" + aovt.c(this.a) + "] is error filename " + aovt.a(this.a));
-            paramInt1 = paramInt2;
-          }
-          paramString1 = paramString1;
-          QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrImageHeight[" + aovt.d(this.a) + "] is error filename " + aovt.a(this.a));
-          paramInt2 = i;
+          int n = this.jdField_a_of_type_JavaUtilList.size();
+          int i1 = this.b.size();
+          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, multiUniseq[ " + this.jdField_a_of_type_Long + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
         }
-        catch (NumberFormatException paramString1)
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((aovs)localIterator.next()).a();
+        }
+        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
         {
-          int i;
-          for (;;)
-          {
-            int j;
-            QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult mstrVideoDuration[" + aovt.e(this.a) + "] is error filename " + aovt.a(this.a));
-            i = j;
+          this.jdField_a_of_type_Int = 5;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: multiUniseq[ " + this.jdField_a_of_type_Long + "]");
           }
-          QLog.d("FileMultiMsgManager<FileAssistant>", 1, "Troop2XXXTaskExcuter onCopyToResult will call sendFeeds filename " + aovt.a(this.a));
-          aouu.a(aouu.a(this.a.a), aovt.b(this.a), aovt.b(this.a), aovt.b(this.a), aovt.a(this.a), 0, paramInt1, paramInt2, i, false, aovt.a(this.a), aovt.a(this.a));
+          aouy.a(this.jdField_a_of_type_Aouy, this.jdField_a_of_type_Long);
         }
+        return;
       }
     }
   }

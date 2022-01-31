@@ -1,9 +1,23 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 public class xbu
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public xcb a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 

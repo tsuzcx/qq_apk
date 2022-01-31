@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.manager;
 
-import besz;
+import betq;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 
 public class EngineManager$1
   implements Runnable
 {
-  public EngineManager$1(besz parambesz, BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel) {}
+  public EngineManager$1(betq parambetq, BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel) {}
   
   public void run()
   {
-    besz.a(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    betq.a(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
   }
 }
 

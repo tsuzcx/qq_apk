@@ -1,26 +1,16 @@
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowEntryData;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedChannel;
+import com.tencent.qqinterface.CommonCallback;
 
 class ariy
-  extends CustomizedReport
+  implements CustomizedChannel
 {
-  ariy(arii paramarii) {}
+  ariy(arik paramarik) {}
   
-  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
-  
-  public void onReport(Bundle paramBundle)
+  public void onSendTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    arhz localarhz = arjh.a().a();
-    if (localarhz != null) {
-      localarhz.a(paramBundle);
-    }
-    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
-      smq.a(arjg.jdField_a_of_type_JavaLangString, "", "", arjg.b, arjg.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
-    }
+    arjj.a().a(paramBundle, paramCommonCallback);
   }
-  
-  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 

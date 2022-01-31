@@ -1,29 +1,6 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-
-public class nkq
-  implements bceb
+public abstract interface nkq
 {
-  public nkq(CustomWebView paramCustomWebView, nkr paramnkr) {}
-  
-  public void a(String paramString, Bundle paramBundle, long paramLong)
-  {
-    switch (this.jdField_a_of_type_Nkr.a)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nkr.c, this.jdField_a_of_type_Nkr.d);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nkr.b, this.jdField_a_of_type_Nkr.c, this.jdField_a_of_type_Nkr.d, this.jdField_a_of_type_Nkr.e);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

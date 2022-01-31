@@ -1,83 +1,48 @@
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import com.tencent.filter.BaseFilter;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
 public class birk
+  extends bire
 {
-  private birm jdField_a_of_type_Birm;
-  private bise jdField_a_of_type_Bise = new bise();
-  private bisf jdField_a_of_type_Bisf = new bisf();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public String n;
+  public String o;
   
-  private Bitmap a()
+  public String a()
   {
-    this.jdField_a_of_type_Bise.a(this.jdField_a_of_type_JavaUtilList);
-    return RendererUtils.saveTexture(this.jdField_a_of_type_Bise.a());
+    File localFile = new File(this.o);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.o + File.separator + this.f;
   }
   
-  public int a()
+  public String b()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    File localFile = new File(this.o);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.o + File.separator;
   }
   
-  public void a()
+  public String c()
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_Bisf.apply();
-    this.jdField_a_of_type_Bise.apply();
+    File localFile = new File(this.n);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return this.n + File.separator + this.f;
   }
   
-  public void a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
+  public boolean d()
   {
-    paramList = this.jdField_a_of_type_Bisf.a(paramInt1, paramList, paramInt2, paramInt3);
-    paramList = this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(paramList.getTextureId(), 64, 64);
-    this.jdField_a_of_type_JavaUtilList.add(paramList);
-  }
-  
-  public void a(birm parambirm)
-  {
-    this.jdField_a_of_type_Birm = parambirm;
-  }
-  
-  public void b()
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    Object localObject = new File(a());
+    if (!((File)localObject).exists()) {}
+    do
     {
-      AppInterface localAppInterface = QQStoryContext.a();
-      biqf localbiqf = (biqf)localAppInterface.getBusinessHandler(3);
-      localAppInterface.addObserver(new birl(this, localAppInterface));
-      localbiqf.a(a());
-      return;
-    }
-    this.jdField_a_of_type_Birm.a(new bisc());
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).unlock();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).clear();
-    }
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSLSelf();
-    this.jdField_a_of_type_Bisf.clearGLSLSelf();
-    this.jdField_a_of_type_Bise.clearGLSLSelf();
+      return false;
+      localObject = ((File)localObject).list();
+    } while ((localObject == null) || (localObject.length <= 0));
+    return true;
   }
 }
 

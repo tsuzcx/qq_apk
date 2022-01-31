@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import osj;
-import rap;
+import osg;
+import ram;
 
 public class ReadInJoyBaseAdapter$13
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$13(rap paramrap, BaseArticleInfo paramBaseArticleInfo) {}
+  public ReadInJoyBaseAdapter$13(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void run()
   {
-    osj.a().b(this.this$0.c, this.a);
+    osg.a().b(this.this$0.c, this.a);
   }
 }
 

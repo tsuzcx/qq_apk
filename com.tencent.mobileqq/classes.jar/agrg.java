@@ -1,21 +1,9 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
-public class agrg
-  implements MessageQueue.IdleHandler
+public abstract interface agrg
 {
-  public agrg(AlbumListFragment paramAlbumListFragment, int paramInt1, int paramInt2) {}
-  
-  public boolean queueIdle()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
-    return false;
-  }
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
 }
 
 

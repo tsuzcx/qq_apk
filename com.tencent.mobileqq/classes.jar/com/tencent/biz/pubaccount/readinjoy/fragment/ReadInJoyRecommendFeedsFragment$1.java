@@ -5,12 +5,12 @@ import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import pyx;
-import pzb;
+import pyu;
+import pyy;
+import pyz;
 import pzc;
 import pzf;
-import pzi;
-import qaa;
+import pzx;
 
 class ReadInJoyRecommendFeedsFragment$1
   implements Runnable
@@ -23,11 +23,11 @@ class ReadInJoyRecommendFeedsFragment$1
     if (localObject1 == null) {
       return;
     }
-    pzf localpzf = (pzf)((QQAppInterface)localObject1).a(121);
-    pzi localpzi = (pzi)((QQAppInterface)localObject1).getManager(261);
-    Object localObject2 = (pzb)((QQAppInterface)localObject1).getManager(271);
-    Object localObject3 = (pzc)((QQAppInterface)localObject1).getManager(270);
-    localObject1 = ((pzc)localObject3).a(this.this$0.getActivity(), 0);
+    pzc localpzc = (pzc)((QQAppInterface)localObject1).a(121);
+    pzf localpzf = (pzf)((QQAppInterface)localObject1).getManager(261);
+    Object localObject2 = (pyy)((QQAppInterface)localObject1).getManager(271);
+    Object localObject3 = (pyz)((QQAppInterface)localObject1).getManager(270);
+    localObject1 = ((pyz)localObject3).a(this.this$0.getActivity(), 0);
     boolean bool1;
     label143:
     boolean bool2;
@@ -54,7 +54,7 @@ class ReadInJoyRecommendFeedsFragment$1
       if ((!bool1) || (!bool2)) {
         break label448;
       }
-      bool3 = qaa.a(((RefreshData)localObject1).id);
+      bool3 = pzx.a(((RefreshData)localObject1).id);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch =" + bool1 + ",timeMatch = " + bool2 + ", resValid =" + bool3);
       }
@@ -64,23 +64,23 @@ class ReadInJoyRecommendFeedsFragment$1
       if (!((RefreshData)localObject1).isShown) {
         break label405;
       }
-      ((pzc)localObject3).a(1, ((RefreshData)localObject1).id, ((RefreshData)localObject1).seq, 0);
-      ((pzc)localObject3).a(true);
+      ((pyz)localObject3).a(1, ((RefreshData)localObject1).id, ((RefreshData)localObject1).seq, 0);
+      ((pyz)localObject3).a(true);
       bool1 = true;
       label277:
-      localObject2 = (GuideData)((pzb)localObject2).a("operation_guide");
-      localObject3 = localpzi.a(this.this$0.getActivity());
+      localObject2 = (GuideData)((pyy)localObject2).a("operation_guide");
+      localObject3 = localpzf.a(this.this$0.getActivity());
       if ((localObject3 == null) || (i < ((SkinData)localObject3).beginTime) || (i > ((SkinData)localObject3).endTime)) {
         break label526;
       }
-      if (!pyx.a(((SkinData)localObject3).id)) {
+      if (!pyu.a(((SkinData)localObject3).id)) {
         break label506;
       }
-      localpzi.a(1, ((SkinData)localObject3).id, bool1);
+      localpzf.a(1, ((SkinData)localObject3).id, bool1);
     }
     for (;;)
     {
-      localpzf.a((SkinData)localObject3, null, (RefreshData)localObject1, (GuideData)localObject2, 0);
+      localpzc.a((SkinData)localObject3, null, (RefreshData)localObject1, (GuideData)localObject2, 0);
       return;
       QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh refreshData = " + ((RefreshData)localObject1).toString());
       break;
@@ -91,27 +91,27 @@ class ReadInJoyRecommendFeedsFragment$1
       bool2 = false;
       break label168;
       label405:
-      ((pzc)localObject3).a(0, "", -1L, 0);
+      ((pyz)localObject3).a(0, "", -1L, 0);
       bool1 = false;
       break label277;
       label422:
-      ((pzc)localObject3).a(0, "", -1L, 0);
-      ((pzc)localObject3).a((RefreshData)localObject1, 0);
+      ((pyz)localObject3).a(0, "", -1L, 0);
+      ((pyz)localObject3).a((RefreshData)localObject1, 0);
       bool1 = false;
       break label277;
       label448:
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch =" + bool1 + ",timeMatch = " + bool2);
       }
-      ((pzc)localObject3).a(0, "", -1L, 0);
+      ((pyz)localObject3).a(0, "", -1L, 0);
       bool1 = bool3;
       break label277;
       label506:
-      localpzi.a(0, "", bool1);
-      localpzi.a((SkinData)localObject3);
+      localpzf.a(0, "", bool1);
+      localpzf.a((SkinData)localObject3);
       continue;
       label526:
-      localpzi.a(0, "", bool1);
+      localpzf.a(0, "", bool1);
     }
   }
 }

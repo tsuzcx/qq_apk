@@ -1,26 +1,40 @@
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.SlideTabWidget;
 
 public class bcrw
-  extends VerticalCenterImageSpan
+  extends Handler
 {
-  private int a;
+  public bcrw(SlideTabWidget paramSlideTabWidget) {}
   
-  public bcrw(Drawable paramDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramDrawable, 0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt) + this.a;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      SlideTabWidget.a(this.a, 0.0F);
+      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (SlideTabWidget.a(this.a) < 1.0F)
+      {
+        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+        if (SlideTabWidget.a(this.a) >= 1.0F) {
+          SlideTabWidget.a(this.a, false);
+        }
+        this.a.invalidate();
+        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    SlideTabWidget.a(this.a, 1.0F);
+    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
   }
 }
 

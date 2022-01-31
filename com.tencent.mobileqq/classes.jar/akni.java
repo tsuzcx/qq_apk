@@ -1,21 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class akni
-  implements DialogInterface.OnClickListener
+public class akni
+  extends ajto
 {
-  akni(aknh paramaknh, Activity paramActivity) {}
+  public akni(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    axqw.b(this.jdField_a_of_type_Aknh.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    super.onSetHiddenSession(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    }
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), aknj.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+      }
+    }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), aknj.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
   }
 }
 

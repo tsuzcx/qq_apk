@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aiga;
+import aify;
 
 public class TroopListBaseAdapter$2
   implements Runnable
 {
-  public TroopListBaseAdapter$2(aiga paramaiga) {}
+  public TroopListBaseAdapter$2(aify paramaify) {}
   
   public void run()
   {
-    aiga.a(this.this$0);
+    aify.a(this.this$0);
   }
 }
 

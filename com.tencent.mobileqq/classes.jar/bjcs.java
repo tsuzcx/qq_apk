@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.FilterCategory;
 
-class bjcs
-  implements View.OnClickListener
+public final class bjcs
+  implements Parcelable.Creator<FilterCategory>
 {
-  bjcs(bjcp parambjcp) {}
-  
-  public void onClick(View paramView)
+  public FilterCategory a(Parcel paramParcel)
   {
-    if (bjcp.a(this.a))
-    {
-      this.a.a.y();
-      return;
-    }
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131713691), 0).a();
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

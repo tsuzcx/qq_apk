@@ -1,23 +1,65 @@
-class artv
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
+
+public class artv
+  implements aysc
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  artv(artt paramartt) {}
   
-  public artv(String paramString1, String paramString2)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = bdhv.d(paramString2);
-    this.d = artr.a(paramString1);
+    boolean bool;
+    Object localObject1;
+    File localFile;
+    int i;
+    String str;
+    label48:
+    Object localObject2;
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      bool = true;
+      localObject1 = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+      localFile = new File(((ayrx)localObject1).c);
+      i = paramaysz.b;
+      if (paramaysz.jdField_a_of_type_JavaLangString != null) {
+        break label164;
+      }
+      str = "0";
+      localObject2 = (Object[])((ayrx)localObject1).a();
+      localObject1 = (MusicInfo)localObject2[0];
+      localObject2 = (artx)localObject2[1];
+      if (!bool) {
+        break label173;
+      }
+      ((artx)localObject2).jdField_a_of_type_Int = 2;
+      this.a.a(((MusicInfo)localObject1).jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, paramaysz, bool, (MusicInfo)localObject1));
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.downloader", 2, String.format("onResp, errCode: %s, errDesc: %s, musicReqInfo: %s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+      }
+      return;
+      bool = false;
+      break;
+      label164:
+      str = paramaysz.jdField_a_of_type_JavaLangString;
+      break label48;
+      label173:
+      if ((localFile != null) && (localFile.exists())) {
+        localFile.delete();
+      }
+      ((artx)localObject2).jdField_a_of_type_Int = 3;
+      artt.a(this.a, (MusicInfo)localObject1);
+    }
   }
   
-  public String toString()
-  {
-    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

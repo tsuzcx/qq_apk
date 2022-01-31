@@ -72,7 +72,7 @@ public class NavigationBar
   private void changeNavIcon()
   {
     if (this.mBarTextStyle == -1) {
-      this.mBackIcon.setImageResource(2130840864);
+      this.mBackIcon.setImageResource(2130840861);
     }
     for (;;)
     {
@@ -80,7 +80,7 @@ public class NavigationBar
         this.mCapsuleButton.changeNavIcon(this.mBarTextStyle);
       }
       return;
-      this.mBackIcon.setImageResource(2130840863);
+      this.mBackIcon.setImageResource(2130840860);
     }
   }
   
@@ -91,7 +91,7 @@ public class NavigationBar
       this.mContainer = getContainerView();
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
-      this.mCapsuleButton.setId(2131364688);
+      this.mCapsuleButton.setId(2131364687);
       localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       localLayoutParams.addRule(11, -1);
       localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
@@ -104,9 +104,9 @@ public class NavigationBar
       addView(this.mStatusBarMask);
       this.mStatusBarMask.setVisibility(8);
       addView(this.mContainer);
-      this.mBackIconContainer = ((RelativeLayout)findViewById(2131362614));
-      this.mBackIcon = ((ImageView)findViewById(2131362613));
-      this.mTitleView = ((TextView)findViewById(2131362611));
+      this.mBackIconContainer = ((RelativeLayout)findViewById(2131362613));
+      this.mBackIcon = ((ImageView)findViewById(2131362612));
+      this.mTitleView = ((TextView)findViewById(2131362610));
       this.mBackTextView = ((TextView)findViewById(2131370665));
       this.mLoadingProgressBar = ((ProgressBar)findViewById(2131370668));
       this.mBackIcon.setOnClickListener(this);
@@ -217,16 +217,16 @@ public class NavigationBar
     localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(getContext()), 0, 0);
     localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     localObject1 = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject1).setId(2131369504);
+    ((RelativeLayout)localObject1).setId(2131369503);
     Object localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 30.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = DisplayUtil.dip2px(getContext(), 7.0F);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject2 = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject2).setId(2131362614);
+    ((RelativeLayout)localObject2).setId(2131362613);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-2, -1));
     Object localObject3 = new ImageView(getContext());
-    ((ImageView)localObject3).setId(2131362613);
+    ((ImageView)localObject3).setId(2131362612);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 12.0F), DisplayUtil.dip2px(getContext(), 21.5F));
     localLayoutParams.addRule(15, -1);
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 16.0F);
@@ -236,7 +236,7 @@ public class NavigationBar
     localObject2 = new TextView(getContext());
     ((TextView)localObject2).setId(2131370665);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131362614);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131362613);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((TextView)localObject2).setGravity(15);
     ((TextView)localObject2).setMaxEms(5);
@@ -244,7 +244,7 @@ public class NavigationBar
     ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject2 = new TextView(getContext());
-    ((TextView)localObject2).setId(2131362611);
+    ((TextView)localObject2).setId(2131362610);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((RelativeLayout.LayoutParams)localObject3).addRule(14, -1);
@@ -257,14 +257,14 @@ public class NavigationBar
     localObject2 = new ProgressBar(getContext());
     ((ProgressBar)localObject2).setId(2131370668);
     localObject3 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 19.0F), DisplayUtil.dip2px(getContext(), 19.0F));
-    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131362611);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(0, 2131362610);
     ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
     ((RelativeLayout.LayoutParams)localObject3).leftMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
     localObject1 = new View(getContext());
     ((View)localObject1).setId(2131370667);
     localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369504);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369503);
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 5.0F);
     ((View)localObject1).setBackgroundColor(getContext().getResources().getColor(2131167087));
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
@@ -272,7 +272,7 @@ public class NavigationBar
     ((WebViewProgressBar)localObject1).setId(2131370666);
     localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 2.0F));
     ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), -2.0F);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369504);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131369503);
     ((WebViewProgressBar)localObject1).setBackgroundColor(getContext().getResources().getColor(2131165349));
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     return localRelativeLayout;
@@ -326,7 +326,7 @@ public class NavigationBar
   
   public void onClick(View paramView)
   {
-    if (((paramView.getId() == 2131362613) || (paramView.getId() == 2131362614)) && (this.mListener != null)) {
+    if (((paramView.getId() == 2131362612) || (paramView.getId() == 2131362613)) && (this.mListener != null)) {
       this.mListener.onClickBack(this);
     }
   }

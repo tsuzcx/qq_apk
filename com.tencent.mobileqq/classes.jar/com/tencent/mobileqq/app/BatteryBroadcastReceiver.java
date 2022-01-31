@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auiz;
+import aujb;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
 import mqq.util.WeakReference;
@@ -89,7 +89,7 @@ public final class BatteryBroadcastReceiver
         this.jdField_a_of_type_Int = i;
         paramIntent = new Bundle();
         paramIntent.putInt("KEY_BATTERY", i);
-        paramContext.notifyObservers(auiz.class, 0, true, paramIntent);
+        paramContext.notifyObservers(aujb.class, 0, true, paramIntent);
       }
     }
     paramContext.setBatteryCapacity(i);

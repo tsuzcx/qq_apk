@@ -1,26 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 class ansg
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  ansg(ansf paramansf) {}
+  ansg(ansf paramansf, Dialog paramDialog) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return true;
-      this.a.b = true;
-      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
-    } while (this.a.b() < 300);
-    ansf.a(this.a).clear();
-    return true;
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    paramView = (answ)this.jdField_a_of_type_Ansf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Ansf.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+    aoaz localaoaz = new aoaz();
+    localaoaz.jdField_c_of_type_Int = 4;
+    localaoaz.jdField_d_of_type_JavaLangString = paramView.a(localCustomEmotionData);
+    localaoaz.jdField_d_of_type_Int = 2;
+    localaoaz.jdField_c_of_type_JavaLangString = localCustomEmotionData.eId;
+    localaoaz.e = localCustomEmotionData.url;
+    localaoaz.jdField_g_of_type_JavaLangString = localCustomEmotionData.RomaingType;
+    localaoaz.jdField_g_of_type_Int = localCustomEmotionData.emoId;
+    localaoaz.f = localCustomEmotionData.resid;
+    AIOEmotionFragment.a(this.jdField_a_of_type_Ansf.jdField_a_of_type_AndroidContentContext, localaoaz, null);
   }
 }
 

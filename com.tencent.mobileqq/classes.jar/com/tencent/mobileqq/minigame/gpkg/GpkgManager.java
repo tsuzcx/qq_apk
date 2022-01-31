@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.gpkg;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
@@ -448,7 +448,7 @@ public class GpkgManager
         return;
       }
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] checkPkgFolderContent failed, delete folder:" + paramString);
-      bbdj.a(paramString, false);
+      bbdx.a(paramString, false);
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg] download gpkg by url1:" + paramMiniAppConfig.config.downloadUrl);
       downloadGpkgByResumableDownloader(paramMiniAppConfig, paramOnInitGpkgListener, paramString);
       return;
@@ -501,7 +501,7 @@ public class GpkgManager
     {
       QLog.i("[minigame] GpkgManager", 1, "[Gpkg]verType is not online " + paramMiniAppConfig.config.verType + ", delete path " + str);
       if (new File(str).exists()) {
-        bbdj.a(str, false);
+        bbdx.a(str, false);
       }
     }
     paramOnInitGpkgListener = new GpkgManager.MergedOnInitListener(paramOnInitGpkgListener);

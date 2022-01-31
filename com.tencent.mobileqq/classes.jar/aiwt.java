@@ -1,11 +1,6 @@
-import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
-import java.util.Timer;
-
-public class aiwt
+public abstract interface aiwt
 {
-  public int a;
-  public ApolloTicker.NativeDrawTask a;
-  public Timer a;
+  public abstract void a(int paramInt);
 }
 
 

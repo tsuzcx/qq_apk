@@ -1,32 +1,121 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Notification;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.RemoteViews;
+import android.widget.TextView;
 
-final class bdms
-  implements URLDrawable.URLDrawableListener
+public class bdms
 {
-  bdms(ImageView paramImageView) {}
+  protected float a;
+  protected DisplayMetrics a;
+  protected Integer a;
+  protected final String a;
+  protected float b;
+  protected Integer b;
+  protected final String b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  bdms(bdmq parambdmq, Context paramContext)
   {
-    QLog.d("CommonUtils_", 1, "onLoadCanceled");
+    this.jdField_a_of_type_Float = 14.0F;
+    this.jdField_b_of_type_Float = 16.0F;
+    this.jdField_a_of_type_JavaLangString = "SearchForText";
+    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
+    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    a(paramContext);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public float a()
   {
-    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
+    return this.jdField_a_of_type_Float;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public Integer a()
   {
-    QLog.d("CommonUtils_", 1, "onLoadProgressed");
+    return this.jdField_a_of_type_JavaLangInteger;
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void a(Context paramContext)
   {
-    this.a.setImageDrawable(paramURLDrawable);
-    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
+      return;
+    }
+    try
+    {
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
+      a(paramContext);
+      b(paramContext);
+      return;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  protected boolean a(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public Integer b()
+  {
+    return this.jdField_b_of_type_JavaLangInteger;
+  }
+  
+  protected boolean b(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
 }
 

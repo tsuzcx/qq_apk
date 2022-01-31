@@ -1,24 +1,52 @@
-import java.util.Map;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class asja
-  extends asix<asiz>
+public class asja
 {
-  public asja(asiz paramasiz)
+  private boolean a(asit paramasit, MiniAppOptions paramMiniAppOptions)
   {
-    super(paramasiz);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "checkMemory. cacheKey=", paramasit.a.h });
+    }
+    return true;
   }
   
-  public void a(asiz paramasiz, boolean paramBoolean, asiu paramasiu)
+  asit a(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
   {
-    if (paramasiz == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "createApp type=", Integer.valueOf(paramInt) });
     }
-    if (paramBoolean)
+    switch (paramInt)
     {
-      asiz.a(paramasiz, (asir)asiz.a(paramasiz).get(paramasiu.h));
+    default: 
+      QLog.e("MiniAppLauncher", 1, "createApp error. unknown appType");
+    case 0: 
+    case 1: 
+    case 2: 
+    case 4: 
+    case 5: 
+      return null;
+    }
+    return new bdtn(paramMiniAppActivity, paramString, paramInt);
+  }
+  
+  void a(asit paramasit, MiniAppOptions paramMiniAppOptions)
+  {
+    if (!a(paramasit, paramMiniAppOptions)) {
       return;
     }
-    asiz.a(paramasiz, paramasiu.jdField_a_of_type_JavaLangString, paramasiu.jdField_a_of_type_Int, 1001);
+    bbdh.a();
+    paramasit.a();
+  }
+  
+  void a(asiw paramasiw, @NonNull asiu paramasiu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppLauncher", 2, new Object[] { "downloadApp. cacheKey=", paramasiw.h });
+    }
+    paramasiu.a(paramasiw.f, "MiniAppLauncher", paramasiw.h);
   }
 }
 

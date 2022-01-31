@@ -1,89 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class agiv
-  extends aume
+  implements DialogInterface.OnClickListener
 {
   public agiv(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f = false;
-    this.a.a();
-    this.a.b();
-    int i;
-    if (paramBoolean)
-    {
-      String str = bbcl.a();
-      if (!TextUtils.isEmpty(str)) {
-        axqw.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      i = paramBundle.getInt("k_result");
-      if (paramBundle.getBoolean("k_buto_bind", false)) {
-        this.a.c();
-      }
-    }
-    for (;;)
-    {
-      bbcl.a();
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      if ((i == 104) || (i == 0))
-      {
-        this.a.b();
-      }
-      else
-      {
-        if (i == 107)
-        {
-          this.a.a(paramBundle);
-          return;
-        }
-        if (i == 106)
-        {
-          this.a.a(null, 2);
-        }
-        else if (i == 227)
-        {
-          this.a.d();
-        }
-        else if (i == 226)
-        {
-          this.a.e();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "bind error " + i);
-          }
-          this.a.a(a(i));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
-          }
-          this.a.b(2131718737);
-        }
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.b();
-    if (paramBoolean) {
-      this.a.b();
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-      return;
-      this.a.b(2131718737);
-    }
+    this.a.a("dc00898", "0X8009F15", 0);
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
 }
 

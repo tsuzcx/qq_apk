@@ -4,62 +4,49 @@ import android.animation.Animator.AnimatorListener;
 class bkne
   implements Animator.AnimatorListener
 {
-  bkne(bkna parambkna) {}
+  bkne(bknb parambknb) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (!bkna.a(this.a)) {
-      return;
-    }
-    if (!bkna.b(this.a))
+    if (!bknb.a(this.a)) {}
+    do
     {
-      bkna.a(this.a, false);
-      if (bkna.b(this.a) == 1)
-      {
-        bkna.a(this.a, 3);
-        return;
+      return;
+      if (bknb.b(this.a)) {
+        break;
       }
-      bkna.a(this.a, 0);
-      bkna.a(this.a, "");
-      return;
-    }
-    if (bkna.b(this.a) == 1)
-    {
-      bkna.a(this.a, 2);
-      bkna.a(this.a, bkna.b(this.a), 1000);
-      return;
-    }
-    bkna.a(this.a, "");
-    bkna.a(this.a, 0);
-    bkna.a(this.a, false);
+      bknb.a(this.a, false);
+    } while (bknb.b(this.a) != 2);
+    bknb.a(this.a, 0);
+    return;
+    bknb.a(this.a, false);
+    bknb.a(this.a, 0);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!bkna.a(this.a)) {
+    if (!bknb.a(this.a)) {
       return;
     }
-    if (!bkna.b(this.a))
+    if (!bknb.b(this.a))
     {
-      bkna.a(this.a, false);
-      if (bkna.b(this.a) == 1)
+      bknb.a(this.a, false);
+      if (bknb.b(this.a) == 1)
       {
-        bkna.a(this.a, 3);
+        bknb.a(this.a, 3);
         return;
       }
-      bkna.a(this.a, 0);
-      bkna.a(this.a, "");
+      bknb.a(this.a, 0);
       return;
     }
-    if (bkna.b(this.a) == 1)
+    if (bknb.b(this.a) == 1)
     {
-      bkna.a(this.a, 2);
-      bkna.a(this.a, bkna.b(this.a), 1000);
+      bknb.a(this.a, 2);
+      bknb.a(this.a, bknb.b(this.a), 1000);
       return;
     }
-    bkna.a(this.a, "");
-    bkna.a(this.a, 0);
-    bkna.a(this.a, false);
+    bknb.a(this.a, false);
+    bknb.a(this.a, 0);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

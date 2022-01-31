@@ -1,21 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.SVIPHandler.1;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.SVIPHandler.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class akfx
-  implements ajtg
+  implements ajte
 {
-  public akfx(SVIPHandler.1 param1, ambf paramambf) {}
+  public akfx(SVIPHandler.2 param2, aiqx paramaiqx) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     try
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
       if ((paramObject instanceof List))
       {
         paramObject = (List)paramObject;
@@ -24,27 +24,12 @@ public class akfx
           paramObject = paramObject.iterator();
           while (paramObject.hasNext())
           {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
             {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_Ambf.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_Ambf.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_Ambf.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_Ambf.b.add(localObject);
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Aiqx.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Aiqx.b.add(localObject);
             }
           }
         }
@@ -57,7 +42,7 @@ public class akfx
         QLog.e("SVIPHandler", 2, paramObject.getMessage());
       }
     }
-    this.jdField_a_of_type_Ambf.b();
+    this.jdField_a_of_type_Aiqx.b();
   }
 }
 

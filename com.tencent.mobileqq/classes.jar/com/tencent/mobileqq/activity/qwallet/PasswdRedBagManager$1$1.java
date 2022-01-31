@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import agvv;
 import agvx;
-import agvz;
-import agwa;
+import agvy;
 
 public class PasswdRedBagManager$1$1
   implements Runnable
 {
-  public PasswdRedBagManager$1$1(agwa paramagwa, int paramInt) {}
+  public PasswdRedBagManager$1$1(agvy paramagvy, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1) {
-      agvz.a(this.jdField_a_of_type_Agwa.a).a(this.jdField_a_of_type_Agwa.a.b);
+      agvx.a(this.jdField_a_of_type_Agvy.a).a(this.jdField_a_of_type_Agvy.a.b);
     }
     while (this.jdField_a_of_type_Int != 0) {
       return;
     }
-    agvz.a(this.jdField_a_of_type_Agwa.a).a(this.jdField_a_of_type_Agwa.a.a);
+    agvx.a(this.jdField_a_of_type_Agvy.a).a(this.jdField_a_of_type_Agvy.a.a);
   }
 }
 

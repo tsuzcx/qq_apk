@@ -1,22 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqo
-  implements DialogInterface.OnKeyListener
+  extends ardw
 {
-  public abqo(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public abqo(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt == 4)
+    int i = 1;
+    if (!paramBoolean1)
     {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
+      this.a.a(2131719386, 1);
+      return;
     }
-    return false;
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {
+      i = 2;
+    }
+    axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    }
   }
 }
 

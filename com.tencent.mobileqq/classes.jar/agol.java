@@ -1,27 +1,21 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class agol
-  implements bbvd
+  implements View.OnClickListener
 {
   public agol(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(bbva parambbva)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
+    if (this.a.y)
     {
-      aptv.a(2131691318);
+      PhotoPreviewActivity.a(this.a);
       return;
     }
-    bbar.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.p, this.a.q, this.a.jdField_a_of_type_Bbva.d(), this.a.jdField_a_of_type_Bbva.e());
-    parambbva.a(localSurfaceHolder);
+    this.a.a.toggle();
   }
 }
 

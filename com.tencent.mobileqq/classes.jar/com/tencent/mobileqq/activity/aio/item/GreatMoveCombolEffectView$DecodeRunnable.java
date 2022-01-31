@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adst;
+import adsr;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
-import bbdr;
+import bbef;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -34,7 +34,7 @@ public class GreatMoveCombolEffectView$DecodeRunnable
         localObject4 = this.this$0;
         int i = ((GreatMoveCombolEffectView)localObject4).b;
         ((GreatMoveCombolEffectView)localObject4).b = (i + 1);
-        localObject4 = (adst)((ArrayList)localObject1).get(i);
+        localObject4 = (adsr)((ArrayList)localObject1).get(i);
         if (localObject4 == null) {
           continue;
         }
@@ -54,7 +54,7 @@ public class GreatMoveCombolEffectView$DecodeRunnable
         try
         {
           Object localObject4;
-          Object localObject1 = bbdr.a(((adst)localObject4).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+          Object localObject1 = bbef.a(((adsr)localObject4).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
           if (localObject1 == null) {
             continue;
           }

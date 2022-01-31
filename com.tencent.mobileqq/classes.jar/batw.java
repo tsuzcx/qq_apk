@@ -1,22 +1,23 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
 class batw
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  batw(batu parambatu) {}
+  batw(batv parambatv) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Int == -1) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)))
-    {
-      ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShareUtility", 2, "mShareActionSheet noItemClick, onDismiss");
-      }
-    }
+    paramDialogInterface = String.format("https://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("selfSet_leftViewText", ajya.a(2131715704));
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
+    this.a.a.startActivity(localIntent);
   }
 }
 

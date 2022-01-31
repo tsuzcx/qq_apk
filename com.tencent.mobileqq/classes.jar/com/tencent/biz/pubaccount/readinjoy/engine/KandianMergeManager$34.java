@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import rij;
+import rig;
 
 class KandianMergeManager$34
   implements Runnable
@@ -15,7 +15,7 @@ class KandianMergeManager$34
       Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianMergeManager.a(this.this$0);
       KandianMergeManager.a(this.this$0, null);
       Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
-      rij.a().a(localKandian210Msg0xeeInfo);
+      rig.a().a(localKandian210Msg0xeeInfo);
     }
   }
 }

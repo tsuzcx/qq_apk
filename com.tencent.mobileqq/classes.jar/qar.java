@@ -1,40 +1,113 @@
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.net.URL;
 
-public abstract class qar
+public class qar
+  implements qbe
 {
-  public int a;
-  public long a;
-  public BaseArticleInfo a;
-  public TabChannelCoverInfo a;
-  public Long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public BaseArticleInfo b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
+  protected BaseArticleInfo a;
+  protected URL a;
+  
+  public qar(BaseArticleInfo paramBaseArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+  }
+  
+  protected Pair<Integer, Integer> a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return omr.g();
+    }
+    return omr.f();
+  }
+  
+  public int getCommentCount()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
+  }
+  
+  public String getShareUrl()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+  }
+  
+  public String getSubscribeName()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeName;
+  }
+  
+  public String getSubscribeUin()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID;
+  }
+  
+  public URL getVideoCoverURL()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture;
+    }
+    return onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFirstPagePicUrl);
+  }
+  
+  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaNetURL == null)
+    {
+      Pair localPair = a(paramBoolean);
+      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+    }
+    return this.jdField_a_of_type_JavaNetURL;
+  }
+  
+  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
+  {
+    if (getVideoCoverURL() != null)
+    {
+      String str2 = getVideoCoverURL().toString();
+      String str1 = str2;
+      if (!TextUtils.isEmpty(str2))
+      {
+        str1 = str2;
+        if (str2.startsWith("pubaccountimage:")) {
+          str1 = str2.replaceFirst("pubaccountimage:", "");
+        }
+      }
+      return onh.a(onh.a(str1, paramInt1, paramInt2));
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public int getVideoDuration()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoDuration;
+    }
+    return 0;
+  }
+  
+  public int getVideoHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonHeight;
+  }
+  
+  public String getVideoVid()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid;
+  }
+  
+  public int getVideoWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonWidth;
+  }
 }
 
 

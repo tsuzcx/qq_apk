@@ -1,34 +1,63 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.os.Process;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-public abstract class vsq<IN, OUT>
-  extends JobSegment<IN, OUT>
+public class vsq
 {
-  protected long a;
-  private final String a;
-  private long b;
+  private static int a;
   
-  public vsq()
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    String str;
+    if (paramInt == 1)
+    {
+      bbdx.c(ssf.e + ".nomedia");
+      str = ssf.e + b(paramInt) + "/";
+    }
+    for (;;)
+    {
+      a(str);
+      return str;
+      str = ajsd.bn + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
+      bbdx.c(str + ".nomedia");
+    }
   }
   
-  public void call(IN paramIN)
+  @NonNull
+  public static String a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
+    if (paramString1 == null) {
+      throw new IllegalArgumentException("folderPath should not be null");
+    }
+    String str = paramString1;
+    if (!paramString1.endsWith("/")) {
+      str = paramString1 + "/";
+    }
+    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
   }
   
-  public void notifyError(Error paramError)
+  private static void a(String paramString)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
+    paramString = new File(paramString);
+    boolean bool;
+    if (paramString.isFile())
+    {
+      bool = paramString.delete();
+      ved.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
+    }
+    if (!paramString.exists())
+    {
+      bool = paramString.mkdirs();
+      ved.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
+    }
   }
   
-  public void notifyResult(OUT paramOUT)
+  private static String b(int paramInt)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
+    paramInt = a;
+    a = paramInt + 1;
+    return paramInt;
   }
 }
 

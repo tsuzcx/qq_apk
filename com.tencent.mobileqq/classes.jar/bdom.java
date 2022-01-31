@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
+import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
 
 public class bdom
-  implements DialogInterface.OnClickListener
 {
-  public bdom(WadlJsBridgeCallBack.2 param2) {}
+  protected void a(boolean paramBoolean, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse) {}
+  
+  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt) {}
+  
+  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdom
  * JD-Core Version:    0.7.0.1
  */

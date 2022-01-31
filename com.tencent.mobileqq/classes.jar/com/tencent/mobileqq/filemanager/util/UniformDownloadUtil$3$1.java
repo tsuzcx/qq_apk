@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apwc;
-import apwd;
+import apwe;
+import apwf;
 
 public class UniformDownloadUtil$3$1
   implements Runnable
 {
-  public UniformDownloadUtil$3$1(apwd paramapwd) {}
+  public UniformDownloadUtil$3$1(apwf paramapwf) {}
   
   public void run()
   {
-    apwc.a(this.this$0.a, this.this$0.b);
+    apwe.a(this.this$0.a, this.this$0.b);
   }
 }
 

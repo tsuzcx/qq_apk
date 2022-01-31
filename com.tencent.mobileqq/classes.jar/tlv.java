@@ -1,19 +1,12 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.database.LikeEntry;
 import java.util.List;
 
 public class tlv
 {
   public int a;
   public String a;
-  public List<CommentEntry> a;
+  public List<LikeEntry> a;
   public int b;
-  public String b;
-  
-  public tlv()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
   
   public boolean equals(Object paramObject)
   {
@@ -25,17 +18,17 @@ public class tlv
         return false;
       }
       paramObject = (tlv)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
       }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    } while (paramObject.a == null);
     return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    if (this.a != null) {
+      return this.a.hashCode();
     }
     return 0;
   }

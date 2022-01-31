@@ -1,53 +1,45 @@
 import android.content.Context;
-import android.widget.BaseAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import java.util.List;
 
-public abstract class vpc<PACKAGE extends vot>
-  extends BaseAdapter
+public class vpc
+  extends voz<vot>
+  implements View.OnClickListener
 {
-  public int a;
-  protected Context a;
-  protected PACKAGE a;
-  protected vov a;
-  
   public vpc(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext);
   }
   
-  public void a(PACKAGE paramPACKAGE)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Vot = paramPACKAGE;
-  }
-  
-  public void a(vov paramvov)
-  {
-    this.jdField_a_of_type_Vov = paramvov;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Vot == null) {
-      return 0;
+    if (this.jdField_a_of_type_Voq == null) {
+      return paramView;
     }
-    int i = this.jdField_a_of_type_Vot.b();
-    int j = this.jdField_a_of_type_Vot.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
+    if (paramView == null) {}
+    for (paramView = new vpd(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((vot)this.jdField_a_of_type_Voq).a(), ((vot)this.jdField_a_of_type_Voq).a(), this);; paramView = (vpd)paramView)
+    {
+      paramView.a((vot)this.jdField_a_of_type_Voq, paramInt, getCount());
+      return paramView;
     }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
   }
   
-  public Object getItem(int paramInt)
+  public void onClick(View paramView)
   {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    int i = ((Integer)paramView.getTag(2131376873)).intValue();
+    vou localvou = (vou)((vot)this.jdField_a_of_type_Voq).a.get(i);
+    paramView = (ImageView)paramView;
+    Boolean localBoolean = (Boolean)paramView.getTag(2131376851);
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    {
+      localvou.a = paramView.getDrawable();
+      this.jdField_a_of_type_Vos.a(localvou);
+      return;
+    }
+    ved.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
   }
 }
 

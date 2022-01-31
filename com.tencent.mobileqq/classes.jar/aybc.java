@@ -1,12 +1,7 @@
-import java.util.List;
-
-public abstract interface aybc<T extends ayay>
+public class aybc
 {
-  public abstract <N extends ayay> N a(String paramString);
-  
-  public abstract List<ayay> a();
-  
-  public abstract void a(T paramT);
+  public float a;
+  public float b;
 }
 
 

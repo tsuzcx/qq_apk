@@ -1,39 +1,28 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
 
 class ahos
-  extends akwt
+  implements bfph
 {
-  ahos(ahoq paramahoq, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  ahos(ahoo paramahoo, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bfpc parambfpc) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow success");
+    if (ahoo.a(this.jdField_a_of_type_Ahoo)) {
+      return;
     }
-    ahoq.a(this.jdField_a_of_type_Ahoq, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    ((baja)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-    ahoq.b(this.jdField_a_of_type_Ahoq, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    ahoq.a(this.jdField_a_of_type_Ahoq, 2131695568);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    ahoq.a(this.jdField_a_of_type_Ahoq);
+    ahoo.a(this.jdField_a_of_type_Ahoo, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
+      ahoo.c(this.jdField_a_of_type_Ahoo, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 

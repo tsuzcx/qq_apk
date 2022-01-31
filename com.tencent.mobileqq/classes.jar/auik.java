@@ -1,15 +1,31 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.data.AutoReplyText;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public abstract interface auik
+class auik
+  extends Animation
 {
-  public abstract void a(AutoReplyText paramAutoReplyText);
+  auik(auid paramauid, View paramView, int paramInt) {}
   
-  public abstract void a(AutoReplyText paramAutoReplyText1, AutoReplyText paramAutoReplyText2);
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat == 1.0F) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    do
+    {
+      return;
+      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    } while (paramTransformation == null);
+    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+  }
   
-  public abstract void a(AutoReplyText paramAutoReplyText, boolean paramBoolean);
-  
-  public abstract void b(@Nullable AutoReplyText paramAutoReplyText, boolean paramBoolean);
+  public boolean willChangeBounds()
+  {
+    return true;
+  }
 }
 
 

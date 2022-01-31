@@ -1,19 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
-public final class nrl
-  implements Parcelable.Creator<RecentShopParcel>
+class nrl
 {
-  public RecentShopParcel a(Parcel paramParcel)
-  {
-    return new RecentShopParcel(paramParcel);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  SingleLineTextView b;
   
-  public RecentShopParcel[] a(int paramInt)
-  {
-    return new RecentShopParcel[paramInt];
-  }
+  nrl(nrj paramnrj) {}
 }
 
 

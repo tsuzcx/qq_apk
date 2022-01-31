@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
 
 public class nwk
-  implements mzb
+  implements pzv
 {
-  public nwk(ReadInJoyNewFeedsActivity.2 param2) {}
+  public nwk(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(int paramInt, String paramString, BaseResData paramBaseResData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    this.a.a(paramInt, paramString, paramBaseResData);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,13 +1,16 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface beqn
+public abstract interface beqn<T>
 {
-  String a();
+  public abstract T a(Context paramContext, Bundle paramBundle);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract boolean a(Bundle paramBundle);
+  
+  public abstract boolean a(MiniAppInfo paramMiniAppInfo);
 }
 
 

@@ -1,37 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.TranslucentActivity;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import org.json.JSONObject;
 
 public class alqh
-  implements alqe
+  implements alqd
 {
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
+  }
+  
   public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    if (paramLong != 0L) {}
-    do
-    {
-      return false;
-      paramJSONObject = BaseActivity.sTopActivity;
-    } while (paramJSONObject == null);
-    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
-    paramString3.addFlags(268435456);
-    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
-    paramString3.setAction("action_js2qzone");
-    paramString3.putExtra("cmd", "Schema");
-    paramString2 = paramString1;
-    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
-    {
-      paramString2 = paramString1;
-      if (!paramString1.contains("from")) {
-        paramString2 = paramString1 + "&from=aio";
-      }
-    }
-    paramString3.putExtra("schema", "mqzone://" + paramString2);
-    paramString3.putExtra("from", 2);
-    paramJSONObject.startActivity(paramString3);
+    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
     return true;
   }
 }

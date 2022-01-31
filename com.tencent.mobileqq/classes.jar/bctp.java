@@ -1,8 +1,22 @@
-public abstract interface bctp
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+
+public class bctp
+  implements Animator.AnimatorListener
 {
-  public abstract boolean a();
+  public bctp(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public abstract boolean a(int paramInt1, int paramInt2);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator.removeAllListeners();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

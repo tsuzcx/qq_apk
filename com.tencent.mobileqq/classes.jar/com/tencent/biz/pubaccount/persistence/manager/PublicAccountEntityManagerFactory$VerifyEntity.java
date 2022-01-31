@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import aukm;
+import auko;
 
 public class PublicAccountEntityManagerFactory$VerifyEntity
-  extends aukm
+  extends auko
 {
   public String flags = "public_account_database_verify_entity";
   public String name = "";

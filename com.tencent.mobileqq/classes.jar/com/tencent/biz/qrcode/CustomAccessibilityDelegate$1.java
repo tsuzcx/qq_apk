@@ -1,17 +1,17 @@
 package com.tencent.biz.qrcode;
 
-import wfg;
-import wfh;
+import wfd;
+import wfe;
 
 public class CustomAccessibilityDelegate$1
   implements Runnable
 {
-  public CustomAccessibilityDelegate$1(wfg paramwfg) {}
+  public CustomAccessibilityDelegate$1(wfd paramwfd) {}
   
   public void run()
   {
-    if (wfg.a(this.this$0) != null) {
-      wfg.a(this.this$0).b();
+    if (wfd.a(this.this$0) != null) {
+      wfd.a(this.this$0).b();
     }
   }
 }

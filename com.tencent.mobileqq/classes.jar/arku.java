@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class arku
-  implements IVideoInnerStatusListener
+final class arku
+  implements EIPCResultCallback
 {
-  arku(arkt paramarkt) {}
-  
-  public void notifyVideoClose(int paramInt) {}
-  
-  public void notifyVideoSeek(int paramInt) {}
-  
-  public void notifyVideoStart()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (arkt.a(this.a) != null)
-    {
-      asgl.a().a(1, arkt.a(this.a));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherWatchFloatingUtil", 2, new Object[] { "ACTION_QUIT_WATCH_FLOATING_WINDOWS result=", Integer.valueOf(paramEIPCResult.code) });
     }
-    this.a.a(false);
   }
-  
-  public void notifyVideoStop() {}
 }
 
 

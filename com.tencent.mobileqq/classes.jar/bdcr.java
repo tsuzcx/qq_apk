@@ -1,10 +1,10 @@
-import android.widget.TextView;
-import com.tencent.widget.Switch;
-
 public class bdcr
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

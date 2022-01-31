@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class abxn
-  implements DialogInterface.OnDismissListener
+  implements BusinessObserver
 {
-  public abxn(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  protected void a() {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
+    if (paramInt == 10000) {
+      a();
+    }
   }
 }
 

@@ -1,26 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class acfh
-  implements TextView.OnEditorActionListener
+  implements audy
 {
   public acfh(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt, audz paramaudz)
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
+    if ((paramaudz != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramaudz.b)))
     {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.b(this.a, paramaudz.b);
       TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
     }
-    return false;
   }
 }
 

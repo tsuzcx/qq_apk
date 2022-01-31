@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.text.TextUtils;
-import bbjn;
-import bhvh;
+import bbkb;
+import bhvy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import noo;
-import npx;
-import onk;
-import onr;
-import pzc;
-import pzi;
+import nol;
+import npu;
+import onh;
+import ono;
+import pyz;
+import pzf;
 
 class ReadInJoyListViewGroup$33
   implements Runnable
@@ -29,10 +29,10 @@ class ReadInJoyListViewGroup$33
     }
     label357:
     label376:
-    for (boolean bool = bbjn.u(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
+    for (boolean bool = bbkb.u(this.this$0.getContext(), ((BaseActivity)this.this$0.a()).getCurrentAccountUin());; bool = false)
     {
       if ((this.this$0.getContext() instanceof BaseActivity)) {}
-      for (Object localObject1 = ((pzi)((BaseActivity)this.this$0.getContext()).app.getManager(261)).a();; localObject1 = "0")
+      for (Object localObject1 = ((pzf)((BaseActivity)this.this$0.getContext()).app.getManager(261)).a();; localObject1 = "0")
       {
         int i;
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals("0")))
@@ -46,31 +46,31 @@ class ReadInJoyListViewGroup$33
           if (!(this.this$0.getContext() instanceof BaseActivity)) {
             break label357;
           }
-          pzc localpzc = (pzc)((BaseActivity)this.this$0.getContext()).app.getManager(270);
+          pyz localpyz = (pyz)((BaseActivity)this.this$0.getContext()).app.getManager(270);
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (localpzc.a() != 1) {
+          if (localpyz.a() != 1) {
             break label357;
           }
           k = i;
           localObject2 = localObject1;
           m = j;
-          if (!localpzc.b()) {
+          if (!localpyz.b()) {
             break label357;
           }
-          localObject1 = localpzc.a();
+          localObject1 = localpyz.a();
           i = 0;
         }
         for (int j = 2;; j = k)
         {
           if (this.this$0.a == 40677)
           {
-            noo.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", onk.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
-            noo.a("0X8009294", "", "", "", "", onk.b(this.this$0.a));
+            nol.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", onh.a(this.this$0.a, (String)localObject1, i, j, false, -1).a(), false);
+            nol.a("0X8009294", "", "", "", "", onh.b(this.this$0.a));
           }
           if (this.this$0.a == 56) {
-            noo.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", npx.a(this.this$0.a, null), false);
+            nol.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", npu.a(this.this$0.a, null), false);
           }
           return;
           if (bool)

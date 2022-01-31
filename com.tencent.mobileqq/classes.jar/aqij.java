@@ -1,42 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import android.graphics.Bitmap;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqij
-  implements bfoq
+  extends atga
 {
   public aqij(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(int paramInt, String paramString) {}
+  
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Bfol != null) {
-        this.a.jdField_a_of_type_Bfol.dismiss();
-      }
-      this.a.o();
-      return;
-      this.a.p();
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((bbev.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
-      {
-        aqhu.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        bcpw.a(BaseApplication.getContext(), 1, this.a.getString(2131694607), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
-      }
+    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
+      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
     }
   }
+  
+  protected void b()
+  {
+    if (this.a.jdField_a_of_type_Aszq != null) {
+      this.a.jdField_a_of_type_Aszq.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+    }
+    this.a.l();
+    this.a.m();
+  }
+  
+  protected void b(int paramInt, String paramString) {}
 }
 
 

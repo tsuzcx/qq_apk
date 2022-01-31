@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class EditWebDanceMachineVideoActivity$2$1
   implements Runnable
@@ -12,14 +12,14 @@ class EditWebDanceMachineVideoActivity$2$1
   {
     String str = "";
     if (this.jdField_a_of_type_Int == -1) {
-      str = ajyc.a(2131703935);
+      str = ajya.a(2131703946);
     }
     for (;;)
     {
-      bcpw.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity$2.this$0, 1, str, 0).a();
+      bcql.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity$2.this$0, 1, str, 0).a();
       return;
       if (this.jdField_a_of_type_Int == -2) {
-        str = ajyc.a(2131703953);
+        str = ajya.a(2131703964);
       }
     }
   }

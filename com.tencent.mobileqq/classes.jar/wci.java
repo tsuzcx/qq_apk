@@ -1,15 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wci
-  implements Handler.Callback
+  implements wdh
 {
   public wci(SegmentList paramSegmentList) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a()
   {
-    return SegmentList.a(this.a, paramMessage);
+    this.a.a.a(false);
   }
 }
 

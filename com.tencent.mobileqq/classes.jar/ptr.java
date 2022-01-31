@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
 
 class ptr
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  ptr(pto parampto, RelativeLayout paramRelativeLayout) {}
+  ptr(ptl paramptl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    return false;
   }
 }
 

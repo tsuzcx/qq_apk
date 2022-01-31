@@ -1,78 +1,132 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.widget.RelativeLayout;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.DisableSlideHorizontalListView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.List;
-import tencent.im.oidb.oidb_0xc90.CommunityConfigInfo;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import java.util.Set;
 
 public class roc
-  extends rog
+  extends BaseAdapter
 {
-  public roc(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController)
+  int jdField_a_of_type_Int;
+  List<CommunityConfigInfo> jdField_a_of_type_JavaUtilList;
+  
+  public roc(List<CommunityConfigInfo> paramList)
   {
-    super(paramReadInJoyDiandianHeaderController);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody)
+  public int getCount()
   {
-    Object localObject = paramRspBody.rpt_community_info_item.get();
-    this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      oidb_0xc90.CommunityConfigInfo localCommunityConfigInfo = (oidb_0xc90.CommunityConfigInfo)((Iterator)localObject).next();
-      CommunityConfigInfo localCommunityConfigInfo1 = new CommunityConfigInfo();
-      localCommunityConfigInfo1.name = localCommunityConfigInfo.bytes_name.get().toStringUtf8();
-      localCommunityConfigInfo1.jumpUrl = localCommunityConfigInfo.bytes_jump_home_page_url.get().toStringUtf8();
-      localCommunityConfigInfo1.bid = localCommunityConfigInfo.uint64_community_bid.get();
-      localCommunityConfigInfo1.picUrl = localCommunityConfigInfo.bytes_pic_url.get().toStringUtf8();
-      localCommunityConfigInfo1.dynamicCount = localCommunityConfigInfo.uint32_dynamic_count.get();
-      localCommunityConfigInfo1.followStatus = localCommunityConfigInfo.uint32_follow_status.get();
-      this.a.jdField_a_of_type_JavaUtilList.add(localCommunityConfigInfo1);
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount() - 1) && (paramInt >= 0)) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    this.a.jdField_a_of_type_JavaLangString = paramRspBody.bytes_jump_concern_community_url.get().toStringUtf8();
-    this.a.c = paramRspBody.bytes_more_url_wording.get().toStringUtf8();
-    this.a.jdField_b_of_type_JavaLangString = paramRspBody.bytes_community_title_wording.get().toStringUtf8();
-    this.a.d = paramRspBody.bytes_jump_community_channel_url.get().toStringUtf8();
-    if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (TextUtils.isEmpty(this.a.c)) {
-        break label456;
+      paramView = new roe(null);
+      localObject1 = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559906, null);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)((View)localObject1).findViewById(2131367872));
+      paramView.b = ((TextView)((View)localObject1).findViewById(2131364569));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131364793));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131368889));
+      paramView.jdField_a_of_type_Rog = new rog(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, null);
+      ((View)localObject1).setTag(paramView);
+      ((View)localObject1).setOnClickListener(paramView.jdField_a_of_type_Rog);
+      paramViewGroup = paramView;
+      paramView = (View)localObject1;
+      paramViewGroup.jdField_a_of_type_Rog.jdField_a_of_type_Int = paramInt;
+      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label533;
       }
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.c);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      localObject1 = (CommunityConfigInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = baxn.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = baxn.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+      if (TextUtils.isEmpty(((CommunityConfigInfo)localObject1).picUrl)) {
+        break label475;
+      }
+      localObject2 = URLDrawable.getDrawable(((CommunityConfigInfo)localObject1).picUrl, (URLDrawable.URLDrawableOptions)localObject2);
+      ((URLDrawable)localObject2).setTag(bavw.a(baxn.a(paramView.getContext(), 60.0F), baxn.a(paramView.getContext(), 60.0F)));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(baxn.a(paramView.getContext(), 2.0F));
+      if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
+        ((URLDrawable)localObject2).restartDownload();
+      }
+      label314:
+      if (((CommunityConfigInfo)localObject1).dynamicCount <= 0) {
+        break label492;
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#7F000000"));
+      int i = ((CommunityConfigInfo)localObject1).dynamicCount;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(i + "");
+      localObject2 = Typeface.create(Typeface.createFromAsset(paramView.getContext().getAssets(), "qzone_din.ttf"), 0);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject2);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new rod(this));
+      paramViewGroup.b.setText(((CommunityConfigInfo)localObject1).name);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).add(Long.valueOf(((CommunityConfigInfo)localObject1).bid));
+      if (this.jdField_a_of_type_Int <= paramInt) {
+        break label517;
       }
-      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() <= 0) || (ReadInJoyDiandianHeaderController.a(this.a).a())) {
-        break label471;
-      }
-      this.a.jdField_a_of_type_Rof = new rof(this.a, this.a.jdField_a_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetDisableSlideHorizontalListView.setAdapter(this.a.jdField_a_of_type_Rof);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, false);
+      return paramView;
+      paramViewGroup = (roe)paramView.getTag();
       break;
-      label456:
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      label475:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a);
+      break label314;
+      label492:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    label471:
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    label517:
+    ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, true);
+    this.jdField_a_of_type_Int = paramInt;
+    return paramView;
+    label533:
+    paramViewGroup.b.setText(ajya.a(2131713060));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#F2F2F2"));
+    nol.a(null, "", "0X8009BA2", "0X8009BA2", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
+    return paramView;
   }
 }
 

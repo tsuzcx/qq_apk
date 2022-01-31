@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import avtm;
-import bbdj;
+import avto;
+import bbdx;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
 import java.util.ArrayList;
 
@@ -15,22 +15,22 @@ public final class ReportBadCase$2
       int i;
       synchronized ()
       {
-        int j = avtm.a().size();
+        int j = avto.a().size();
         if (j > 0)
         {
           i = 0;
           if (i < j)
           {
-            BadcaseReportUtils.BadDataFrame localBadDataFrame = (BadcaseReportUtils.BadDataFrame)avtm.a().get(i);
+            BadcaseReportUtils.BadDataFrame localBadDataFrame = (BadcaseReportUtils.BadDataFrame)avto.a().get(i);
             if ((!localBadDataFrame.mZipSuccess) || (localBadDataFrame.zipPath == null) || ("".equals(localBadDataFrame.zipPath))) {
               break label96;
             }
-            bbdj.d(localBadDataFrame.zipPath);
+            bbdx.d(localBadDataFrame.zipPath);
             break label96;
           }
         }
-        avtm.a().clear();
-        avtm.a();
+        avto.a().clear();
+        avto.a();
         return;
       }
       label96:

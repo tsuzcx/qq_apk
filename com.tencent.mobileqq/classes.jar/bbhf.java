@@ -1,37 +1,33 @@
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class bbhf
-  implements View.OnTouchListener
 {
-  bbhf(bbhb parambbhb) {}
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private void a()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839619);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130839619));
-    if (this.a.c)
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-      bbhb.a(this.a);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label110;
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
+      if ((localDrawable instanceof GradientDrawable)) {
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
       }
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
     }
-    for (;;)
+    else
     {
-      this.a.c = false;
-      paramView = this.a.getWindow().getAttributes();
-      paramView.y = 0;
-      this.a.getWindow().setAttributes(paramView);
-      return false;
-      label110:
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      return;
     }
+    QLog.w("BrandColorManager", 4, "set band border-color fail");
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 

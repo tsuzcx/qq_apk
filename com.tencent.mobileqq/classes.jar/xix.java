@@ -1,52 +1,19 @@
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class xix
-  implements xjb
+  extends BroadcastReceiver
 {
-  xix(xit paramxit) {}
+  xix(xiq paramxiq) {}
   
-  public void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = false;
-    if (paramInt == this.a.a) {
-      return;
-    }
-    xit.a(this.a).setHasAutoSet(false);
-    if (xit.a(this.a) != null)
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
     {
-      paramVsMusicItemInfo = xit.a(this.a);
-      if (!xit.a(this.a)) {
-        bool = true;
-      }
-      paramVsMusicItemInfo.a(bool);
-      xit.a(this.a).b();
-    }
-    xit.a(this.a).smoothScrollToPosition(paramInt);
-  }
-  
-  public void a(int paramInt, xjf paramxjf)
-  {
-    if (xit.a(this.a)) {
-      xit.a(this.a);
-    }
-    VsMusicItemInfo localVsMusicItemInfo = xit.a(this.a).a(paramInt);
-    if ((xit.c(this.a) != null) && (localVsMusicItemInfo != null))
-    {
-      QLog.i("EditVideoSmartMusicPart", 1, "onPositionChange:" + paramInt + ", music name:" + localVsMusicItemInfo.mMusicName + ", musicSongMid:" + localVsMusicItemInfo.mSongMid + ", musicCoverUrl:" + localVsMusicItemInfo.mAlbumUrl + ", musicUrl:" + localVsMusicItemInfo.mUrl);
-      xit.b(this.a);
-      xit.c(this.a).setText(localVsMusicItemInfo.mMusicName);
-      xit.a(this.a, localVsMusicItemInfo, paramInt, paramxjf);
-    }
-    xit.c(this.a);
-  }
-  
-  public void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (xit.a(this.a) != null) && (xit.a(this.a).mSongMid != null) && (xit.a(this.a).mSongMid.equals(paramVsMusicItemInfo.mSongMid))) {
-      xit.a(this.a, paramVsMusicItemInfo, paramInt, null);
+      xiq.a(this.a, paramIntent);
+      xiq.d(this.a);
+      xiq.c(this.a);
     }
   }
 }

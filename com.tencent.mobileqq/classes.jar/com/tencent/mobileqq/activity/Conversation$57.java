@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bcpq;
-import bcpw;
+import bcqf;
+import bcql;
 
 class Conversation$57
   implements Runnable
@@ -13,7 +13,7 @@ class Conversation$57
     if ((Conversation.a(this.this$0) != null) && (Conversation.a(this.this$0).isShowing()))
     {
       Conversation.a(this.this$0).dismiss();
-      bcpw.a(this.this$0.a(), 2, this.this$0.a(2131719892), 1).a();
+      bcql.a(this.this$0.a(), 2, this.this$0.a(2131719903), 1).a();
     }
   }
 }

@@ -2,12 +2,12 @@ package cooperation.qzone;
 
 import android.content.Context;
 import android.text.TextUtils;
-import anow;
-import anox;
-import anpi;
-import anpw;
-import bdhv;
-import bhoh;
+import anpb;
+import anpc;
+import anpn;
+import anqb;
+import bdik;
+import bhoy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -46,7 +46,7 @@ public class SharpPDec
     Object localObject = "";
     try
     {
-      String str = bhoh.a(paramContext);
+      String str = bhoy.a(paramContext);
       localObject = str;
     }
     catch (Exception localException)
@@ -57,7 +57,7 @@ public class SharpPDec
       }
     }
     finally {}
-    if (bhoh.f((String)localObject))
+    if (bhoy.f((String)localObject))
     {
       QLog.i("SharpPDec", 1, "cooperation.SharpPDec:QzoneLive process,return 0.");
       i = j;
@@ -67,7 +67,7 @@ public class SharpPDec
       for (;;)
       {
         return i;
-        if (((!bhoh.b((String)localObject)) && (!bhoh.e((String)localObject))) || (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneSharppGate", 1) != 0)) {
+        if (((!bhoy.b((String)localObject)) && (!bhoy.e((String)localObject))) || (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneSharppGate", 1) != 0)) {
           break;
         }
         QLog.i("SharpPDec", 1, "cooperation.SharpPDec------sharpp gate is closed.");
@@ -93,7 +93,7 @@ public class SharpPDec
     localObject1 = "";
     try
     {
-      localObject2 = bhoh.a((Context)localObject2);
+      localObject2 = bhoy.a((Context)localObject2);
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -108,22 +108,22 @@ public class SharpPDec
       label199:
       QLog.e("SharpPDec", 4, "sharpP--reDownload so：maybe earlyMgr is null,reDownload failed.");
     }
-    bool = bhoh.g((String)localObject1);
+    bool = bhoy.g((String)localObject1);
     QLog.d("SharpPDec", 4, "sharpP--" + (String)localObject1 + ",isQQ:" + bool);
     if (bool)
     {
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
       {
-        localObject1 = (anox)((QQAppInterface)localObject1).getManager(77);
+        localObject1 = (anpc)((QQAppInterface)localObject1).getManager(77);
         if (localObject1 == null) {
           break label199;
         }
-        localObject1 = ((anox)localObject1).a(anpw.e());
+        localObject1 = ((anpc)localObject1).a(anqb.e());
         if (localObject1 == null) {
           break label191;
         }
-        ((anpi)localObject1).a(false);
+        ((anpn)localObject1).a(false);
         QLog.d("SharpPDec", 4, "sharpP--reDownload so");
       }
     }
@@ -140,7 +140,7 @@ public class SharpPDec
       QLog.w("SharpPDec", 1, "soFile is not exist.");
       return false;
     }
-    QavSoData localQavSoData = (QavSoData)anow.a(QavSoData.class);
+    QavSoData localQavSoData = (QavSoData)anpb.a(QavSoData.class);
     long l = ((File)localObject).length();
     localObject = "";
     if (localQavSoData != null) {
@@ -153,7 +153,7 @@ public class SharpPDec
     if (a(LocalMultiProcConfig.getString("Qz_setting", "sharpPSoMD5AndLength_previous", ""), (String)localObject, l)) {
       return true;
     }
-    String str3 = bdhv.a(str1);
+    String str3 = bdik.a(str1);
     StringBuilder localStringBuilder = new StringBuilder().append("sharpP so md5Str:").append(str3).append(",m_TcHevcDec:");
     if (localQavSoData != null) {}
     for (str1 = localQavSoData.m_TcHevcDec;; str1 = "null")

@@ -1,23 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class afgo
-  implements MessageQueue.IdleHandler
+public class afgo
+  implements afip
 {
-  final SearchContactsActivity a;
+  public afgo(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public afgo(SearchContactsActivity paramSearchContactsActivity)
+  public Activity a()
   {
-    this.a = paramSearchContactsActivity;
+    return this.a.a();
   }
   
-  public boolean queueIdle()
+  public QQAppInterface a()
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    return this.a.a;
   }
 }
 

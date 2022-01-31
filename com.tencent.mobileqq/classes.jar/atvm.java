@@ -1,40 +1,30 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class atvm
-  implements URLDrawable.URLDrawableListener
+  implements atvy
 {
   public atvm(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean1, List<atwx> paramList, boolean paramBoolean2, int paramInt)
   {
-    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 1) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 1)
+    NearbyMomentFragment.a(this.a, false);
+    if (paramBoolean1)
     {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
+      NearbyMomentFragment.b(this.a, paramBoolean2);
+      if (paramBoolean2) {
+        NearbyMomentFragment.a(this.a).setText(ajya.a(2131707224));
+      }
+      NearbyMomentFragment.a(this.a, paramInt);
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = NearbyMomentFragment.a(this.a, paramList);
+        NearbyMomentFragment.a(this.a).addAll(paramList);
+        NearbyMomentFragment.a(this.a).b(paramList);
+        NearbyMomentFragment.a(this.a, paramList);
+      }
     }
-    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
   }
 }
 

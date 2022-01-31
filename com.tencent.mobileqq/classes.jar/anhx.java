@@ -1,133 +1,39 @@
-public class anhx
+import android.graphics.Point;
+
+public final class anhx
 {
-  public static final int a;
-  private static angt jdField_a_of_type_Angt;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  public float a;
+  public final int a;
+  public final long a;
+  public final Point a;
+  public float b;
   
-  static
+  public anhx(long paramLong, Point paramPoint, int paramInt)
   {
-    if (anfe.a().a().a()) {}
-    for (int i = 4;; i = 3)
-    {
-      jdField_a_of_type_Int = i;
-      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      return;
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(angt paramangt)
+  public float a()
   {
-    jdField_a_of_type_Angt = paramangt;
+    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.a(paramString1, paramString2);
-    }
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public float b()
   {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.a(paramString1, paramString2, paramThrowable);
-    }
+    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
   }
   
-  public static void a(String paramString, Object... paramVarArgs)
+  public String toString()
   {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Angt != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Angt.a(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.b(paramString1, paramString2);
-    }
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Angt != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Angt.b(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.c(paramString1, paramString2);
-    }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Angt != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Angt.c(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 2) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.d(paramString1, paramString2);
-    }
-  }
-  
-  public static void d(String paramString, Object... paramVarArgs)
-  {
-    int i = 0;
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Angt != null))
-    {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
-        i += 1;
-      }
-      jdField_a_of_type_Angt.e(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
-    }
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Angt != null)) {
-      jdField_a_of_type_Angt.e(paramString1, paramString2);
-    }
+    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

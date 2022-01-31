@@ -1,29 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SerialStepExecutor.1;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
 public class uzt
-  extends uzy
+  extends uzr
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  protected Handler a;
   public Object a;
-  private String jdField_a_of_type_JavaLangString = "SerialStepExecutor";
-  private ConcurrentLinkedQueue<vab> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  public vab a;
+  public String a;
   
-  public uzt(Handler paramHandler)
+  public uzt(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  private void e()
+  public Object a()
   {
-    if (this.jdField_a_of_type_Int == 2) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SerialStepExecutor.1(this));
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
   public String a()
@@ -31,93 +20,14 @@ public class uzt
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public uzt a(uzz paramuzz)
-  {
-    this.jdField_a_of_type_Uzz = paramuzz;
-    return this;
-  }
-  
-  public uzt a(vaa paramvaa)
-  {
-    this.jdField_a_of_type_Vaa = paramvaa;
-    return this;
-  }
-  
-  public uzt a(vab paramvab)
-  {
-    veg.a("Q.qqstory.home.SerialStepExecutor", "add Step:%s", paramvab.a());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramvab);
-    return this;
-  }
-  
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_Int = 1;
-      e();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    if (this.jdField_a_of_type_Vaa != null) {
-      this.jdField_a_of_type_Vaa.a(paramErrorMessage);
-    }
-    if (this.jdField_a_of_type_Vab.a())
-    {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_Vab.a();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        veg.e("Q.qqstory.home.SerialStepExecutor", "error step:" + this.jdField_a_of_type_Vab.a() + ",return null result");
-      }
-      e();
-      return;
-    }
-    c();
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_Vab.a();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        veg.e("Q.qqstory.home.SerialStepExecutor", "done step:" + this.jdField_a_of_type_Vab.a() + ",return null result");
-      }
-      e();
-      return;
-    }
-    finally {}
+    d();
   }
   
   public void b() {}
   
-  public void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = 2;
-      veg.b("Q.qqstory.home.SerialStepExecutor", "reset");
-      if (this.jdField_a_of_type_Vab != null)
-      {
-        this.jdField_a_of_type_Vab.c();
-        this.jdField_a_of_type_Vab.a(null);
-        this.jdField_a_of_type_Vab.a(null);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Vaa = null;
-      this.jdField_a_of_type_Uzz = null;
-      return;
-    }
-    finally {}
-  }
+  public void c() {}
 }
 
 

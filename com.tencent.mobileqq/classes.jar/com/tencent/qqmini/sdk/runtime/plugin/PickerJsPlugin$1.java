@@ -1,29 +1,29 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import begz;
-import beka;
-import beks;
-import bfeh;
+import behq;
+import bekr;
+import belj;
+import bfey;
 import org.json.JSONArray;
 
 class PickerJsPlugin$1
   implements Runnable
 {
-  PickerJsPlugin$1(PickerJsPlugin paramPickerJsPlugin, JSONArray paramJSONArray, int paramInt, beka parambeka) {}
+  PickerJsPlugin$1(PickerJsPlugin paramPickerJsPlugin, JSONArray paramJSONArray, int paramInt, bekr parambekr) {}
   
   public void run()
   {
-    bfeh localbfeh = new bfeh(PickerJsPlugin.access$000(this.this$0).a());
-    String[] arrayOfString = beks.a(this.val$array);
+    bfey localbfey = new bfey(PickerJsPlugin.access$000(this.this$0).a());
+    String[] arrayOfString = belj.a(this.val$array);
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
-      localbfeh.a(arrayOfString);
-      localbfeh.b(0);
-      localbfeh.a(arrayOfString.length - 1);
-      localbfeh.c(this.val$currentIndex);
-      localbfeh.a(this.val$currentIndex, new PickerJsPlugin.1.1(this));
+      localbfey.a(arrayOfString);
+      localbfey.b(0);
+      localbfey.a(arrayOfString.length - 1);
+      localbfey.c(this.val$currentIndex);
+      localbfey.a(this.val$currentIndex, new PickerJsPlugin.1.1(this));
     }
-    localbfeh.show();
+    localbfey.show();
   }
 }
 

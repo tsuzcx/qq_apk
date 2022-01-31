@@ -1,55 +1,28 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
 
 public class avad
-  implements bfpg
+  implements Animation.AnimationListener
 {
-  public avad(QzonePhotoView paramQzonePhotoView) {}
+  public avad(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    do
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373676) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373676).equals(Boolean.valueOf(true))))
     {
-      try
-      {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167087);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131373676, Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131373678)).longValue());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import belx;
-import bely;
-import belz;
+import bemo;
+import bemp;
+import bemq;
 
 public class ThreadPool
 {
-  public static final belx a = new bely(null);
-  belz a;
-  belz b;
+  public static final bemo a = new bemp(null);
+  bemq a;
+  bemq b;
 }
 
 

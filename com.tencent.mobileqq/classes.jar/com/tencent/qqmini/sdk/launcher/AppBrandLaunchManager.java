@@ -20,18 +20,18 @@ import android.os.Process;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.LruCache;
-import beiw;
-import bekc;
-import bekd;
-import belj;
-import bepg;
-import beph;
-import bepj;
-import besf;
-import besg;
-import besl;
-import besn;
-import bexz;
+import bejn;
+import bekt;
+import beku;
+import bema;
+import bepx;
+import bepy;
+import beqa;
+import besw;
+import besx;
+import betc;
+import bete;
+import beyq;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -50,7 +50,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AppBrandLaunchManager
-  implements besf
+  implements besw
 {
   private static final int KILL_MODE_PID = 0;
   private static final int KILL__MODE_BROADCAST = 1;
@@ -64,13 +64,13 @@ public class AppBrandLaunchManager
   private static final int PROCESS_PRELOAD_COUNT_DEFAULT = 2;
   private static final String TAG = "minisdk-start_AppBrandLaunchManager";
   private static List<String> gameProcessReuseBlacklist;
-  private static bepj sInternalProcessInfo;
-  public static LinkedHashMap<String, bepj> subAppProcessorInfoMap = new LinkedHashMap();
-  public static LinkedHashMap<String, bepj> subGameProcessorInfoMap = new LinkedHashMap();
-  public static LinkedHashMap<String, bepj> subProcessorInfoMap = new LinkedHashMap();
+  private static beqa sInternalProcessInfo;
+  public static LinkedHashMap<String, beqa> subAppProcessorInfoMap = new LinkedHashMap();
+  public static LinkedHashMap<String, beqa> subGameProcessorInfoMap = new LinkedHashMap();
+  public static LinkedHashMap<String, beqa> subProcessorInfoMap = new LinkedHashMap();
   public long appProcessRecycleTime = 1800000L;
   public long gameProcessRecycleTime = 900000L;
-  private bepj lastKillingProcessor;
+  private beqa lastKillingProcessor;
   private final Map<String, Messenger> mClientMessengerMap = new HashMap();
   private Context mContext;
   protected Handler mHandler = new Handler(Looper.getMainLooper());
@@ -81,13 +81,13 @@ public class AppBrandLaunchManager
   private int mProcessGameMaxCount;
   private int mProcessMaxCount;
   private int mProcessPreloadCount;
-  private LruCache<String, bepj> mProcessStack;
+  private LruCache<String, beqa> mProcessStack;
   private int mStartTimeInterval = 1500;
   private long mStartTimestamp;
   private MiniAppBaseInfo mStartingMiniAppConfig;
   private HashMap<String, Long> startAppIdMap = new HashMap();
   
-  private boolean canPreloadApp(bepj parambepj)
+  private boolean canPreloadApp(beqa parambeqa)
   {
     return true;
   }
@@ -117,8 +117,8 @@ public class AppBrandLaunchManager
       if (localObject2 == null) {
         break label146;
       }
-      localObject2 = (bepj)((Map.Entry)localObject2).getValue();
-      if ((localObject2 == null) || (!paramString.equals(((bepj)localObject2).jdField_b_of_type_JavaLangString))) {
+      localObject2 = (beqa)((Map.Entry)localObject2).getValue();
+      if ((localObject2 == null) || (!paramString.equals(((beqa)localObject2).jdField_b_of_type_JavaLangString))) {
         break label146;
       }
       i += 1;
@@ -149,11 +149,11 @@ public class AppBrandLaunchManager
       {
         Object localObject1 = (ActivityManager)this.mContext.getSystemService("activity");
         if (localObject1 == null) {
-          break label356;
+          break label370;
         }
         localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
         if (localObject1 == null) {
-          break label355;
+          break label369;
         }
         if (((List)localObject1).size() <= 0) {
           return;
@@ -166,22 +166,26 @@ public class AppBrandLaunchManager
             continue;
           }
           localObject3 = (String)((Map.Entry)localObject4).getKey();
-          localObject4 = (bepj)((Map.Entry)localObject4).getValue();
+          localObject4 = (beqa)((Map.Entry)localObject4).getValue();
           if (localObject4 == null) {
             continue;
           }
           Iterator localIterator2 = ((List)localObject1).iterator();
           if (localIterator2.hasNext())
           {
-            if (((ActivityManager.RunningAppProcessInfo)localIterator2.next()).pid != ((bepj)localObject4).jdField_a_of_type_Int) {
+            if (((ActivityManager.RunningAppProcessInfo)localIterator2.next()).pid != ((beqa)localObject4).jdField_a_of_type_Int) {
               continue;
             }
             i = 1;
             if (i != 0) {
               continue;
             }
-            besl.b("minisdk-start_AppBrandLaunchManager", "Process has been died, clean the record! processName=" + (String)localObject3 + " pid=" + ((bepj)localObject4).jdField_a_of_type_Int);
-            this.mProcessStack.remove(localObject3);
+            betc.b("minisdk-start_AppBrandLaunchManager", "Process has been died, clean the record! processName=" + (String)localObject3 + " pid=" + ((beqa)localObject4).jdField_a_of_type_Int);
+            localObject3 = (beqa)this.mProcessStack.remove(localObject3);
+            if (localObject3 == null) {
+              continue;
+            }
+            ((beqa)localObject3).c();
           }
         }
         else
@@ -191,7 +195,7 @@ public class AppBrandLaunchManager
       }
       catch (Throwable localThrowable)
       {
-        besl.d("minisdk-start_AppBrandLaunchManager", "", localThrowable);
+        betc.d("minisdk-start_AppBrandLaunchManager", "", localThrowable);
         return;
       }
       for (;;)
@@ -212,29 +216,29 @@ public class AppBrandLaunchManager
             for (i = 1;; i = 0)
             {
               if (i != 0) {
-                break label348;
+                break label362;
               }
-              besl.b("minisdk-start_AppBrandLaunchManager", "Process has been died, clean the preloading record! processName=" + (String)localObject3);
+              betc.b("minisdk-start_AppBrandLaunchManager", "Process has been died, clean the preloading record! processName=" + (String)localObject3);
               localIterator1.remove();
               break;
             }
-            label348:
+            label362:
             continue;
             i = 0;
             break;
           }
         }
       }
-      label355:
+      label369:
       return;
-      label356:
+      label370:
       Object localObject2 = null;
     }
   }
   
   private void checkPreload()
   {
-    besl.b("minisdk-start_AppBrandLaunchManager", "checkPreload MiniAppUsed:" + this.mMiniAppUsed);
+    betc.b("minisdk-start_AppBrandLaunchManager", "checkPreload MiniAppUsed:" + this.mMiniAppUsed);
     try
     {
       if (this.mMiniAppUsed)
@@ -248,7 +252,7 @@ public class AppBrandLaunchManager
     }
     catch (Throwable localThrowable)
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "", localThrowable);
+      betc.d("minisdk-start_AppBrandLaunchManager", "", localThrowable);
     }
   }
   
@@ -258,9 +262,9 @@ public class AppBrandLaunchManager
     do
     {
       return;
-      bepj localbepj = (bepj)this.mProcessStack.remove(paramString);
-      if (localbepj != null) {
-        localbepj.c();
+      beqa localbeqa = (beqa)this.mProcessStack.remove(paramString);
+      if (localbeqa != null) {
+        localbeqa.c();
       }
     } while ((this.lastKillingProcessor == null) || (!paramString.equals(this.lastKillingProcessor.jdField_a_of_type_JavaLangString)));
     paramString = this.lastKillingProcessor;
@@ -268,72 +272,72 @@ public class AppBrandLaunchManager
     this.lastKillingProcessor = null;
   }
   
-  private void doPreloadApp(bepj parambepj, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private void doPreloadApp(beqa parambeqa, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if ((parambepj == null) || ((!paramBoolean2) && (!canPreloadApp(parambepj)))) {
+    if ((parambeqa == null) || ((!paramBoolean2) && (!canPreloadApp(parambeqa)))) {
       return;
     }
     for (;;)
     {
       try
       {
-        besl.b("minisdk-start_AppBrandLaunchManager", "do preload mini process name=" + parambepj.jdField_a_of_type_JavaLangString + " Preload=" + parambepj.jdField_b_of_type_JavaLangClass.getSimpleName() + " isMiniApp:" + paramBoolean1);
+        betc.b("minisdk-start_AppBrandLaunchManager", "do preload mini process name=" + parambeqa.jdField_a_of_type_JavaLangString + " Preload=" + parambeqa.jdField_b_of_type_JavaLangClass.getSimpleName() + " isMiniApp:" + paramBoolean1);
         Intent localIntent = new Intent();
-        localIntent.setClass(this.mContext, parambepj.jdField_b_of_type_JavaLangClass);
+        localIntent.setClass(this.mContext, parambeqa.jdField_b_of_type_JavaLangClass);
         if (paramBoolean1)
         {
           localObject = "mini_preload_app";
           localIntent.setAction((String)localObject);
           localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
           localIntent.putExtra("KEY_LOGININFO", new LoginInfo(((MiniAppProxy)localObject).getLoginType(), ((MiniAppProxy)localObject).getAccount(), ((MiniAppProxy)localObject).getNickName(), ((MiniAppProxy)localObject).getPayOpenId(), ((MiniAppProxy)localObject).getPayOpenKey(), ((MiniAppProxy)localObject).getLoginSig(), ((MiniAppProxy)localObject).getPlatformId(), ((MiniAppProxy)localObject).getAppId()));
-          if ((paramBoolean3) && (bekd.a != null)) {
-            localIntent.putExtra("tissuenativelibdir", bekd.a.getNativeLibDir());
+          if ((paramBoolean3) && (beku.a != null)) {
+            localIntent.putExtra("tissuenativelibdir", beku.a.getNativeLibDir());
           }
           localObject = this.mPreloadingTask;
-          String str = parambepj.jdField_a_of_type_JavaLangString;
+          String str = parambeqa.jdField_a_of_type_JavaLangString;
           if (!paramBoolean1) {
             break label264;
           }
-          parambepj = "preload_app";
-          ((ConcurrentHashMap)localObject).put(str, parambepj);
+          parambeqa = "preload_app";
+          ((ConcurrentHashMap)localObject).put(str, parambeqa);
           this.mContext.sendBroadcast(localIntent);
           return;
         }
       }
-      catch (Throwable parambepj)
+      catch (Throwable parambeqa)
       {
-        besl.d("minisdk-start_AppBrandLaunchManager", "send preload Broadcast exception!", parambepj);
+        betc.d("minisdk-start_AppBrandLaunchManager", "send preload Broadcast exception!", parambeqa);
         return;
       }
       Object localObject = "mini_preload_game";
       continue;
       label264:
-      parambepj = "preload_game";
+      parambeqa = "preload_game";
     }
   }
   
   @SuppressLint({"WrongConstant"})
   private void doStartMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    bepj localbepj = obtainIdleProcessor(paramMiniAppInfo);
-    if ((localbepj == null) || (paramMiniAppInfo == null))
+    beqa localbeqa = obtainIdleProcessor(paramMiniAppInfo);
+    if ((localbeqa == null) || (paramMiniAppInfo == null))
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "obtain idle processor config failed!");
+      betc.d("minisdk-start_AppBrandLaunchManager", "obtain idle processor config failed!");
       return;
     }
     if ((this.mStartingMiniAppConfig != null) && (this.mStartingMiniAppConfig.equals(paramMiniAppInfo)) && (System.currentTimeMillis() - this.mStartTimestamp <= this.mStartTimeInterval))
     {
-      besl.c("minisdk-start_AppBrandLaunchManager", "startMiniApp duplicate. The miniapp is starting! interval=" + this.mStartTimeInterval + " appId=" + paramMiniAppInfo.appId);
+      betc.c("minisdk-start_AppBrandLaunchManager", "startMiniApp duplicate. The miniapp is starting! interval=" + this.mStartTimeInterval + " appId=" + paramMiniAppInfo.appId);
       return;
     }
-    bexz.a("2click", null, paramMiniAppInfo.launchParam.c, paramMiniAppInfo);
+    beyq.a("2click", null, paramMiniAppInfo.launchParam.c, paramMiniAppInfo);
     if (paramMiniAppInfo != null) {
       this.startAppIdMap.put(paramMiniAppInfo.appId, Long.valueOf(System.currentTimeMillis()));
     }
     this.mStartingMiniAppConfig = paramMiniAppInfo;
     this.mStartTimestamp = System.currentTimeMillis();
-    besl.b("minisdk-start_AppBrandLaunchManager", "doStartMiniApp appId=" + paramMiniAppInfo.appId + " appName=" + paramMiniAppInfo.name + " engineType=" + paramMiniAppInfo.getEngineType() + " reportType=" + -1 + " targetProcess=" + localbepj.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(this.mContext, localbepj.jdField_a_of_type_JavaLangClass);
+    betc.b("minisdk-start_AppBrandLaunchManager", "doStartMiniApp appId=" + paramMiniAppInfo.appId + " appName=" + paramMiniAppInfo.name + " engineType=" + paramMiniAppInfo.getEngineType() + " reportType=" + -1 + " targetProcess=" + localbeqa.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(this.mContext, localbeqa.jdField_a_of_type_JavaLangClass);
     localIntent.addFlags(805371904);
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     localIntent.putExtra("KEY_LOGININFO", new LoginInfo(localMiniAppProxy.getLoginType(), localMiniAppProxy.getAccount(), localMiniAppProxy.getNickName(), localMiniAppProxy.getPayOpenId(), localMiniAppProxy.getPayOpenKey(), localMiniAppProxy.getLoginSig(), localMiniAppProxy.getPlatformId(), localMiniAppProxy.getAppId()));
@@ -342,11 +346,11 @@ public class AppBrandLaunchManager
       localIntent.putExtras(paramBundle);
     }
     localIntent.putExtra("receiver", paramResultReceiver);
-    localIntent.putExtra("processName", localbepj.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("processName", localbeqa.jdField_a_of_type_JavaLangString);
     localIntent.putExtra("startDuration", System.currentTimeMillis());
     int j = 3;
     int i;
-    if ((localbepj.jdField_a_of_type_Int > 0) && (localbepj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null)) {
+    if ((localbeqa.jdField_a_of_type_Int > 0) && (localbeqa.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null)) {
       i = 1;
     }
     for (;;)
@@ -358,10 +362,10 @@ public class AppBrandLaunchManager
       paramActivity.startActivity(localIntent);
       return;
       i = j;
-      if (localbepj.jdField_a_of_type_Int > 0)
+      if (localbeqa.jdField_a_of_type_Int > 0)
       {
         i = j;
-        if (localbepj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
+        if (localbeqa.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
           i = 2;
         }
       }
@@ -380,7 +384,7 @@ public class AppBrandLaunchManager
   {
     boolean bool = true;
     int i;
-    if (belj.a("MiniApp", "mini_game_process_reuse", 1) > 0)
+    if (bema.a("MiniApp", "mini_game_process_reuse", 1) > 0)
     {
       i = 1;
       if (i != 0) {
@@ -399,7 +403,7 @@ public class AppBrandLaunchManager
     if (gameProcessReuseBlacklist == null)
     {
       gameProcessReuseBlacklist = new ArrayList();
-      Object localObject = belj.a("MiniApp", "mini_game_process_reuse_blacklist", "");
+      Object localObject = bema.a("MiniApp", "mini_game_process_reuse_blacklist", "");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
@@ -421,7 +425,7 @@ public class AppBrandLaunchManager
         }
         catch (Throwable localThrowable)
         {
-          besl.d("minisdk-start_AppBrandLaunchManager", "init gameProcessReuseBlacklist error,", localThrowable);
+          betc.d("minisdk-start_AppBrandLaunchManager", "init gameProcessReuseBlacklist error,", localThrowable);
         }
       }
     }
@@ -432,7 +436,7 @@ public class AppBrandLaunchManager
     }
   }
   
-  private bepj findLastMiniGameProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
+  private beqa findLastMiniGameProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
   {
     Iterator localIterator = this.mProcessStack.snapshot().entrySet().iterator();
     int i = 0;
@@ -443,12 +447,12 @@ public class AppBrandLaunchManager
       if (localObject2 != null)
       {
         String str = (String)((Map.Entry)localObject2).getKey();
-        localObject2 = (bepj)((Map.Entry)localObject2).getValue();
-        if ((localObject2 == null) || (((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
+        localObject2 = (beqa)((Map.Entry)localObject2).getValue();
+        if ((localObject2 == null) || (((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
           break label136;
         }
         i += 1;
-        if ((((bepj)localObject2).a(paramMiniAppBaseInfo)) || (localObject1 != null)) {
+        if ((((beqa)localObject2).a(paramMiniAppBaseInfo)) || (localObject1 != null)) {
           break label133;
         }
         localObject1 = localObject2;
@@ -466,7 +470,7 @@ public class AppBrandLaunchManager
     }
   }
   
-  private bepj findMiniAppProcessInfo(MiniAppInfo paramMiniAppInfo)
+  private beqa findMiniAppProcessInfo(MiniAppInfo paramMiniAppInfo)
   {
     if (paramMiniAppInfo == null) {
       return null;
@@ -483,14 +487,14 @@ public class AppBrandLaunchManager
         localObject = (Map.Entry)localIterator.next();
       } while (localObject == null);
       String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (bepj)((Map.Entry)localObject).getValue();
-    } while ((localObject == null) || (!((bepj)localObject).a(paramMiniAppInfo)));
+      localObject = (beqa)((Map.Entry)localObject).getValue();
+    } while ((localObject == null) || (!((beqa)localObject).a(paramMiniAppInfo)));
     for (paramMiniAppInfo = (MiniAppInfo)localObject;; paramMiniAppInfo = null) {
       return paramMiniAppInfo;
     }
   }
   
-  private boolean finishAndRemoveTask(bepj parambepj)
+  private boolean finishAndRemoveTask(beqa parambeqa)
   {
     if (Build.VERSION.SDK_INT < 21) {
       return false;
@@ -505,9 +509,9 @@ public class AppBrandLaunchManager
       if (localObject == null) {
         return false;
       }
-      if (parambepj == null)
+      if (parambeqa == null)
       {
-        besl.d("miniapp", "当前进程信息为空");
+        betc.d("miniapp", "当前进程信息为空");
         return false;
       }
       localObject = ((List)localObject).iterator();
@@ -517,19 +521,19 @@ public class AppBrandLaunchManager
         if ((localAppTask != null) && (localAppTask.getTaskInfo() != null) && (localAppTask.getTaskInfo().baseIntent != null) && (localAppTask.getTaskInfo().baseIntent.getComponent() != null))
         {
           String str = localAppTask.getTaskInfo().baseIntent.getComponent().getClassName();
-          besl.b("minisdk-start_AppBrandLaunchManager", "finishAndRemoveTask try finish and remove task: id=" + localAppTask.getTaskInfo().id + ", componentName:" + str);
-          if ((!TextUtils.isEmpty(str)) && (parambepj.jdField_a_of_type_JavaLangClass != null) && (str.equals(parambepj.jdField_a_of_type_JavaLangClass.getName())))
+          betc.b("minisdk-start_AppBrandLaunchManager", "finishAndRemoveTask try finish and remove task: id=" + localAppTask.getTaskInfo().id + ", componentName:" + str);
+          if ((!TextUtils.isEmpty(str)) && (parambeqa.jdField_a_of_type_JavaLangClass != null) && (str.equals(parambeqa.jdField_a_of_type_JavaLangClass.getName())))
           {
-            besl.b("minisdk-start_AppBrandLaunchManager", "finishAndRemoveTask finish and remove task: id=" + localAppTask.getTaskInfo().id);
+            betc.b("minisdk-start_AppBrandLaunchManager", "finishAndRemoveTask finish and remove task: id=" + localAppTask.getTaskInfo().id);
             localAppTask.finishAndRemoveTask();
           }
         }
       }
       return true;
     }
-    catch (Throwable parambepj)
+    catch (Throwable parambeqa)
     {
-      besl.d("miniapp", "finishAndRemoveAllTasks exception.");
+      betc.d("miniapp", "finishAndRemoveAllTasks exception.");
     }
     return false;
   }
@@ -551,7 +555,7 @@ public class AppBrandLaunchManager
     }
     catch (Throwable paramContext)
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "", paramContext);
+      betc.d("minisdk-start_AppBrandLaunchManager", "", paramContext);
     }
     return "";
   }
@@ -572,8 +576,8 @@ public class AppBrandLaunchManager
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
       if (localObject2 != null)
       {
-        localObject2 = (bepj)((Map.Entry)localObject2).getValue();
-        if ((localObject2 != null) && (((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && (paramString.equals(((bepj)localObject2).jdField_b_of_type_JavaLangString))) {
+        localObject2 = (beqa)((Map.Entry)localObject2).getValue();
+        if ((localObject2 != null) && (((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && (paramString.equals(((beqa)localObject2).jdField_b_of_type_JavaLangString))) {
           return true;
         }
       }
@@ -597,8 +601,8 @@ public class AppBrandLaunchManager
       Object localObject = (Map.Entry)localIterator.next();
       if (localObject != null)
       {
-        localObject = (bepj)((Map.Entry)localObject).getValue();
-        if ((localObject != null) && (((bepj)localObject).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null)) {
+        localObject = (beqa)((Map.Entry)localObject).getValue();
+        if ((localObject != null) && (((beqa)localObject).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null)) {
           return false;
         }
       }
@@ -606,7 +610,7 @@ public class AppBrandLaunchManager
     return this.mPreloadingTask.size() <= 0;
   }
   
-  private bepj obtainIdleMiniAppProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
+  private beqa obtainIdleMiniAppProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
   {
     Object localObject1 = this.mProcessStack.snapshot();
     if (sInternalProcessInfo != null) {
@@ -622,10 +626,10 @@ public class AppBrandLaunchManager
         if (localObject4 != null)
         {
           localObject3 = (String)((Map.Entry)localObject4).getKey();
-          localObject4 = (bepj)((Map.Entry)localObject4).getValue();
-          if ((localObject4 != null) && (((bepj)localObject4).a(paramMiniAppBaseInfo)))
+          localObject4 = (beqa)((Map.Entry)localObject4).getValue();
+          if ((localObject4 != null) && (((beqa)localObject4).a(paramMiniAppBaseInfo)))
           {
-            besl.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + (String)localObject3);
+            betc.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + (String)localObject3);
             return localObject4;
           }
         }
@@ -638,10 +642,10 @@ public class AppBrandLaunchManager
       if (localObject3 != null)
       {
         localObject2 = (String)((Map.Entry)localObject3).getKey();
-        localObject3 = (bepj)((Map.Entry)localObject3).getValue();
-        if ((localObject3 != null) && (((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && ("preload_app".equals(((bepj)localObject3).jdField_b_of_type_JavaLangString)))
+        localObject3 = (beqa)((Map.Entry)localObject3).getValue();
+        if ((localObject3 != null) && (((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && ("preload_app".equals(((beqa)localObject3).jdField_b_of_type_JavaLangString)))
         {
-          besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack:" + (String)localObject2);
+          betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack:" + (String)localObject2);
           return localObject3;
         }
       }
@@ -653,10 +657,10 @@ public class AppBrandLaunchManager
       {
         localObject3 = (Map.Entry)paramMiniAppBaseInfo.next();
         localObject2 = (String)((Map.Entry)localObject3).getKey();
-        localObject3 = (bepj)((Map.Entry)localObject3).getValue();
+        localObject3 = (beqa)((Map.Entry)localObject3).getValue();
         if ((!((Map)localObject1).containsKey(localObject2)) && (localObject3 != null))
         {
-          besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from create:" + (String)localObject2);
+          betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from create:" + (String)localObject2);
           return localObject3;
         }
       }
@@ -673,15 +677,15 @@ public class AppBrandLaunchManager
       paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
       if (localObject1 != null)
       {
-        localObject3 = (bepj)((Map.Entry)localObject1).getValue();
+        localObject3 = (beqa)((Map.Entry)localObject1).getValue();
         paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
         if (localObject3 != null)
         {
           paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
-          if (((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null)
+          if (((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null)
           {
             paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
-            if (!((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame()) {
+            if (!((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame()) {
               paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
             }
           }
@@ -693,10 +697,10 @@ public class AppBrandLaunchManager
       if (paramMiniAppBaseInfo != null)
       {
         localObject1 = (String)paramMiniAppBaseInfo.getKey();
-        paramMiniAppBaseInfo = (bepj)paramMiniAppBaseInfo.getValue();
+        paramMiniAppBaseInfo = (beqa)paramMiniAppBaseInfo.getValue();
         if (paramMiniAppBaseInfo != null)
         {
-          besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack bottom:" + (String)localObject1);
+          betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack bottom:" + (String)localObject1);
           return paramMiniAppBaseInfo;
         }
       }
@@ -704,7 +708,7 @@ public class AppBrandLaunchManager
     }
   }
   
-  private bepj obtainIdleMiniGameProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
+  private beqa obtainIdleMiniGameProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
   {
     Object localObject1 = this.mProcessStack.snapshot();
     if (sInternalProcessInfo != null) {
@@ -721,10 +725,10 @@ public class AppBrandLaunchManager
         if (localObject3 != null)
         {
           localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = (bepj)((Map.Entry)localObject3).getValue();
-          if ((localObject3 != null) && (((bepj)localObject3).a(paramMiniAppBaseInfo)))
+          localObject3 = (beqa)((Map.Entry)localObject3).getValue();
+          if ((localObject3 != null) && (((beqa)localObject3).a(paramMiniAppBaseInfo)))
           {
-            besl.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + (String)localObject2);
+            betc.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + (String)localObject2);
             return localObject3;
           }
         }
@@ -742,8 +746,8 @@ public class AppBrandLaunchManager
       localObject1 = (Map.Entry)paramMiniAppBaseInfo.next();
       if (localObject1 != null)
       {
-        localObject1 = (bepj)((Map.Entry)localObject1).getValue();
-        if ((localObject1 == null) || (((bepj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((bepj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
+        localObject1 = (beqa)((Map.Entry)localObject1).getValue();
+        if ((localObject1 == null) || (((beqa)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((beqa)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
           break label708;
         }
         i += 1;
@@ -767,10 +771,10 @@ public class AppBrandLaunchManager
           if (localObject3 != null)
           {
             localObject2 = (String)((Map.Entry)localObject3).getKey();
-            localObject3 = (bepj)((Map.Entry)localObject3).getValue();
-            if ((localObject3 != null) && (((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && ("preload_game".equals(((bepj)localObject3).jdField_b_of_type_JavaLangString)))
+            localObject3 = (beqa)((Map.Entry)localObject3).getValue();
+            if ((localObject3 != null) && (((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) && ("preload_game".equals(((beqa)localObject3).jdField_b_of_type_JavaLangString)))
             {
-              besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack:" + (String)localObject2);
+              betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack:" + (String)localObject2);
               return localObject3;
             }
           }
@@ -785,9 +789,9 @@ public class AppBrandLaunchManager
             }
             localObject3 = (Map.Entry)((Iterator)localObject1).next();
             localObject2 = (String)((Map.Entry)localObject3).getKey();
-            localObject3 = (bepj)((Map.Entry)localObject3).getValue();
+            localObject3 = (beqa)((Map.Entry)localObject3).getValue();
           } while ((paramMiniAppBaseInfo.containsKey(localObject2)) || (localObject3 == null));
-          besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from create:" + (String)localObject2);
+          betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from create:" + (String)localObject2);
           return localObject3;
         }
       }
@@ -804,8 +808,8 @@ public class AppBrandLaunchManager
           localObject1 = (Map.Entry)((Iterator)localObject2).next();
           if (localObject1 != null)
           {
-            localObject3 = (bepj)((Map.Entry)localObject1).getValue();
-            if ((localObject3 == null) || (paramMiniAppBaseInfo != null) || (((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((bepj)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
+            localObject3 = (beqa)((Map.Entry)localObject1).getValue();
+            if ((localObject3 == null) || (paramMiniAppBaseInfo != null) || (((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo == null) || (!((beqa)localObject3).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.isEngineTypeMiniGame())) {
               break label705;
             }
             paramMiniAppBaseInfo = (MiniAppBaseInfo)localObject1;
@@ -818,20 +822,20 @@ public class AppBrandLaunchManager
         if (paramMiniAppBaseInfo != null)
         {
           localObject1 = (String)paramMiniAppBaseInfo.getKey();
-          paramMiniAppBaseInfo = (bepj)paramMiniAppBaseInfo.getValue();
+          paramMiniAppBaseInfo = (beqa)paramMiniAppBaseInfo.getValue();
           if (paramMiniAppBaseInfo != null)
           {
-            besl.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack bottom:" + (String)localObject1);
+            betc.b("minisdk-start_AppBrandLaunchManager", "obtain idle processor from stack bottom:" + (String)localObject1);
             return paramMiniAppBaseInfo;
           }
         }
-        besl.d("minisdk-start_AppBrandLaunchManager", "has no idle processor!!!");
+        betc.d("minisdk-start_AppBrandLaunchManager", "has no idle processor!!!");
         return null;
       }
     }
   }
   
-  private bepj obtainIdleProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
+  private beqa obtainIdleProcessor(MiniAppBaseInfo paramMiniAppBaseInfo)
   {
     if (paramMiniAppBaseInfo == null) {
       return null;
@@ -858,43 +862,43 @@ public class AppBrandLaunchManager
         localStringBuilder.append("{").append(localEntry.getKey()).append(" ").append(localEntry.getValue()).append("}*******");
       }
     }
-    besl.c("minisdk-start_AppBrandLaunchManager", "current process count=" + i + " " + localStringBuilder.toString());
+    betc.c("minisdk-start_AppBrandLaunchManager", "current process count=" + i + " " + localStringBuilder.toString());
   }
   
-  public void forceKillProcess(bepj parambepj)
+  public void forceKillProcess(beqa parambeqa)
   {
-    if (parambepj == null) {
+    if (parambeqa == null) {
       return;
     }
-    this.lastKillingProcessor = parambepj;
-    besl.b("minisdk-start_AppBrandLaunchManager", "kill mini process: " + this.lastKillingProcessor);
-    int i = parambepj.jdField_a_of_type_Int;
+    this.lastKillingProcessor = parambeqa;
+    betc.b("minisdk-start_AppBrandLaunchManager", "kill mini process: " + this.lastKillingProcessor);
+    int i = parambeqa.jdField_a_of_type_Int;
     if (i > 0) {
       try
       {
         if (this.mKillProcessMode == 0)
         {
-          besl.c("minisdk-start_AppBrandLaunchManager", "kill process by pid:" + i);
-          finishAndRemoveTask(parambepj);
+          betc.c("minisdk-start_AppBrandLaunchManager", "kill process by pid:" + i);
+          finishAndRemoveTask(parambeqa);
           Process.killProcess(i);
-          cleanProcess(parambepj.jdField_a_of_type_JavaLangString);
+          cleanProcess(parambeqa.jdField_a_of_type_JavaLangString);
           printProcessStack();
           return;
         }
       }
-      catch (Throwable parambepj)
+      catch (Throwable parambeqa)
       {
-        besl.d("minisdk-start_AppBrandLaunchManager", "kill process exception!", parambepj);
+        betc.d("minisdk-start_AppBrandLaunchManager", "kill process exception!", parambeqa);
         return;
       }
     }
-    besl.c("minisdk-start_AppBrandLaunchManager", "kill process by broadcast" + parambepj.jdField_a_of_type_JavaLangString);
+    betc.c("minisdk-start_AppBrandLaunchManager", "kill process by broadcast" + parambeqa.jdField_a_of_type_JavaLangString);
     Intent localIntent = new Intent();
-    localIntent.setClass(this.mContext, parambepj.jdField_b_of_type_JavaLangClass);
+    localIntent.setClass(this.mContext, parambeqa.jdField_b_of_type_JavaLangClass);
     this.mContext.sendBroadcast(localIntent);
   }
   
-  public bepj getCacheApp(MiniAppBaseInfo paramMiniAppBaseInfo)
+  public beqa getCacheApp(MiniAppBaseInfo paramMiniAppBaseInfo)
   {
     Object localObject1 = this.mProcessStack.snapshot();
     if (paramMiniAppBaseInfo != null)
@@ -906,10 +910,10 @@ public class AppBrandLaunchManager
         if (localObject2 != null)
         {
           String str = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = (bepj)((Map.Entry)localObject2).getValue();
-          if ((localObject2 != null) && (((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) && (((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId.equals(paramMiniAppBaseInfo.appId)))
+          localObject2 = (beqa)((Map.Entry)localObject2).getValue();
+          if ((localObject2 != null) && (((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) && (((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId.equals(paramMiniAppBaseInfo.appId)))
           {
-            besl.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + str);
+            betc.b("minisdk-start_AppBrandLaunchManager", "obtain loaded processor from stack:" + str);
             return localObject2;
           }
         }
@@ -945,7 +949,7 @@ public class AppBrandLaunchManager
     {
       for (;;)
       {
-        besl.d("minisdk-start_AppBrandLaunchManager", "get config StartTimeInterval exception!", paramContext);
+        betc.d("minisdk-start_AppBrandLaunchManager", "get config StartTimeInterval exception!", paramContext);
       }
     }
   }
@@ -974,7 +978,7 @@ public class AppBrandLaunchManager
     label118:
     for (int i = paramMiniAppBaseInfo.getEngineType();; i = -1)
     {
-      besl.b("minisdk-start_AppBrandLaunchManager", "onAppBackground process=" + paramString + " appId=" + paramBundle + " appName=" + (String)localObject1 + " engineType=" + i + " reportType=" + -1);
+      betc.b("minisdk-start_AppBrandLaunchManager", "onAppBackground process=" + paramString + " appId=" + paramBundle + " appName=" + (String)localObject1 + " engineType=" + i + " reportType=" + -1);
       if (!TextUtils.isEmpty(paramString)) {
         break label124;
       }
@@ -985,41 +989,41 @@ public class AppBrandLaunchManager
       break label22;
     }
     label124:
-    bepj localbepj = (bepj)this.mProcessStack.get(paramString);
-    if (localbepj != null)
+    beqa localbeqa = (beqa)this.mProcessStack.get(paramString);
+    if (localbeqa != null)
     {
       paramString = localObject2;
-      if (localbepj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
-        paramString = localbepj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId;
+      if (localbeqa.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo != null) {
+        paramString = localbeqa.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo.appId;
       }
       if (paramString != null)
       {
-        localObject1 = localbepj;
+        localObject1 = localbeqa;
         if (paramString.equals(paramBundle)) {}
       }
       else
       {
-        localbepj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
-        localObject1 = localbepj;
+        localbeqa.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
+        localObject1 = localbeqa;
       }
-      ((bepj)localObject1).a();
+      ((beqa)localObject1).a();
       printProcessStack();
       return;
     }
-    Object localObject1 = (bepj)subProcessorInfoMap.get(paramString);
+    Object localObject1 = (beqa)subProcessorInfoMap.get(paramString);
     if (localObject1 != null)
     {
-      paramBundle = ((bepj)localObject1).jdField_a_of_type_JavaLangClass;
+      paramBundle = ((beqa)localObject1).jdField_a_of_type_JavaLangClass;
       label221:
       if (localObject1 == null) {
         break label272;
       }
     }
     label272:
-    for (localObject1 = ((bepj)localObject1).jdField_b_of_type_JavaLangClass;; localObject1 = null)
+    for (localObject1 = ((beqa)localObject1).jdField_b_of_type_JavaLangClass;; localObject1 = null)
     {
-      localObject1 = new bepj(this, paramString, paramBundle, (Class)localObject1);
-      ((bepj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
+      localObject1 = new beqa(this, paramString, paramBundle, (Class)localObject1);
+      ((beqa)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
       this.mProcessStack.put(paramString, localObject1);
       break;
       paramBundle = null;
@@ -1052,7 +1056,7 @@ public class AppBrandLaunchManager
       }
       j = paramBundle.getInt("PID");
       label46:
-      besl.b("minisdk-start_AppBrandLaunchManager", "onAppForeground process=" + paramString + " appId=" + (String)localObject + " appName=" + str + " engineType=" + i + " reportType=" + -1);
+      betc.b("minisdk-start_AppBrandLaunchManager", "onAppForeground process=" + paramString + " appId=" + (String)localObject + " appName=" + str + " engineType=" + i + " reportType=" + -1);
       if (!TextUtils.isEmpty(paramString)) {
         break label146;
       }
@@ -1076,7 +1080,7 @@ public class AppBrandLaunchManager
         break label33;
         j = 0;
         break label46;
-        paramBundle = (bepj)this.mProcessStack.get(paramString);
+        paramBundle = (beqa)this.mProcessStack.get(paramString);
         if (paramBundle == null) {
           break label271;
         }
@@ -1098,20 +1102,20 @@ public class AppBrandLaunchManager
         {
           if (enableGameProcessReuse())
           {
-            besl.c("minisdk-start_AppBrandLaunchManager", "onAppForeground enableGameProcessReuse, try finishAndRemoveTask lastMiniGameProcessor =" + paramString);
+            betc.c("minisdk-start_AppBrandLaunchManager", "onAppForeground enableGameProcessReuse, try finishAndRemoveTask lastMiniGameProcessor =" + paramString);
             finishAndRemoveTask(paramString);
             return;
-            localObject = (bepj)subProcessorInfoMap.get(paramString);
+            localObject = (beqa)subProcessorInfoMap.get(paramString);
             if (localObject != null)
             {
-              paramBundle = ((bepj)localObject).jdField_a_of_type_JavaLangClass;
+              paramBundle = ((beqa)localObject).jdField_a_of_type_JavaLangClass;
               if (localObject == null) {
                 break label344;
               }
             }
-            for (localObject = ((bepj)localObject).jdField_b_of_type_JavaLangClass;; localObject = null)
+            for (localObject = ((beqa)localObject).jdField_b_of_type_JavaLangClass;; localObject = null)
             {
-              paramBundle = new bepj(this, paramString, paramBundle, (Class)localObject);
+              paramBundle = new beqa(this, paramString, paramBundle, (Class)localObject);
               paramBundle.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
               this.mProcessStack.put(paramString, paramBundle);
               paramString = paramBundle;
@@ -1120,7 +1124,7 @@ public class AppBrandLaunchManager
               break label294;
             }
           }
-          besl.c("minisdk-start_AppBrandLaunchManager", "onAppForeground disableGameProcessReuse, try kill lastMiniGameProcessor = " + paramString);
+          betc.c("minisdk-start_AppBrandLaunchManager", "onAppForeground disableGameProcessReuse, try kill lastMiniGameProcessor = " + paramString);
           forceKillProcess(paramString);
           return;
         }
@@ -1161,7 +1165,7 @@ public class AppBrandLaunchManager
     label140:
     for (int j = paramBundle.getInt("PID");; j = 0)
     {
-      besl.b("minisdk-start_AppBrandLaunchManager", "onAppStart process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + -1);
+      betc.b("minisdk-start_AppBrandLaunchManager", "onAppStart process=" + paramString + " appId=" + (String)localObject1 + " appName=" + (String)localObject2 + " engineType=" + i + " reportType=" + -1);
       if (!TextUtils.isEmpty(paramString)) {
         break label146;
       }
@@ -1174,40 +1178,40 @@ public class AppBrandLaunchManager
       break label33;
     }
     label146:
-    Object localObject2 = (bepj)this.mProcessStack.get(paramString);
+    Object localObject2 = (beqa)this.mProcessStack.get(paramString);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = (bepj)subProcessorInfoMap.get(paramString);
+      localObject2 = (beqa)subProcessorInfoMap.get(paramString);
       if (localObject2 == null) {
         break label333;
       }
-      localObject1 = ((bepj)localObject2).jdField_a_of_type_JavaLangClass;
+      localObject1 = ((beqa)localObject2).jdField_a_of_type_JavaLangClass;
       if (localObject2 == null) {
         break label339;
       }
     }
     label333:
     label339:
-    for (localObject2 = ((bepj)localObject2).jdField_b_of_type_JavaLangClass;; localObject2 = null)
+    for (localObject2 = ((beqa)localObject2).jdField_b_of_type_JavaLangClass;; localObject2 = null)
     {
-      localObject2 = new bepj(this, paramString, (Class)localObject1, (Class)localObject2);
-      ((bepj)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
+      localObject2 = new beqa(this, paramString, (Class)localObject1, (Class)localObject2);
+      ((beqa)localObject2).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
       localObject1 = localObject3;
       if (paramBundle != null) {
         localObject1 = paramBundle.getString("mini_key_preload_type", null);
       }
-      ((bepj)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+      ((beqa)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
       this.mProcessStack.put(paramString, localObject2);
       localObject1 = localObject2;
       if (paramMiniAppBaseInfo != null) {
-        ((bepj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
+        ((beqa)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppBaseInfo = paramMiniAppBaseInfo;
       }
-      ((bepj)localObject1).jdField_a_of_type_Int = j;
+      ((beqa)localObject1).jdField_a_of_type_Int = j;
       this.mPreloadingTask.remove(paramString);
       printProcessStack();
       paramString = getprocessName(this.mContext);
-      besl.b("minisdk-start_AppBrandLaunchManager", "updateBaseLib onAppStart " + paramString);
+      betc.b("minisdk-start_AppBrandLaunchManager", "updateBaseLib onAppStart " + paramString);
       updateBaseLib();
       return;
       localObject1 = null;
@@ -1237,7 +1241,7 @@ public class AppBrandLaunchManager
       if (paramBundle != null) {
         paramBundle.getInt("PID");
       }
-      besl.b("minisdk-start_AppBrandLaunchManager", "onAppStop process=" + paramString + " appId=" + str1 + " appName=" + str2 + " engineType=" + i + " reportType=" + -1);
+      betc.b("minisdk-start_AppBrandLaunchManager", "onAppStop process=" + paramString + " appId=" + str1 + " appName=" + str2 + " engineType=" + i + " reportType=" + -1);
       cleanProcess(paramString);
       printProcessStack();
       return;
@@ -1286,7 +1290,7 @@ public class AppBrandLaunchManager
         if (localMap.containsKey((String)localEntry.getKey())) {
           continue;
         }
-        doPreloadApp((bepj)localEntry.getValue(), paramBoolean, false, false);
+        doPreloadApp((beqa)localEntry.getValue(), paramBoolean, false, false);
         continue;
         localObject3 = "preload_game";
       }
@@ -1316,10 +1320,10 @@ public class AppBrandLaunchManager
           continue;
         }
         paramBundle = getprocessName(this.mContext);
-        besl.b("minisdk-start_AppBrandLaunchManager", "updateBaseLib preloadMiniApp " + paramBundle + ", process count=" + j);
+        betc.b("minisdk-start_AppBrandLaunchManager", "updateBaseLib preloadMiniApp " + paramBundle + ", process count=" + j);
         printProcessStack();
         updateBaseLib();
-        beiw.b().post(new AppBrandLaunchManager.1(this));
+        bejn.b().post(new AppBrandLaunchManager.1(this));
         localMap = this.mProcessStack.snapshot();
         i = 0;
       }
@@ -1334,7 +1338,7 @@ public class AppBrandLaunchManager
           if (localMap.containsKey((String)localEntry.getKey())) {
             continue;
           }
-          doPreloadApp((bepj)localEntry.getValue(), bool, true, true);
+          doPreloadApp((beqa)localEntry.getValue(), bool, true, true);
         }
       }
       else
@@ -1367,11 +1371,11 @@ public class AppBrandLaunchManager
     if ((TextUtils.isEmpty(paramString)) || (paramMessenger == null)) {
       return;
     }
-    besl.c("minisdk-start_AppBrandLaunchManager", "registerClientMessenger pName=" + paramString + " messenger:" + paramMessenger);
+    betc.c("minisdk-start_AppBrandLaunchManager", "registerClientMessenger pName=" + paramString + " messenger:" + paramMessenger);
     this.mClientMessengerMap.put(paramString, paramMessenger);
   }
   
-  public void registerProcessInfo(List<besg> paramList)
+  public void registerProcessInfo(List<besx> paramList)
   {
     if ((paramList == null) || (paramList.size() <= 0)) {}
     for (;;)
@@ -1380,34 +1384,34 @@ public class AppBrandLaunchManager
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        besg localbesg = (besg)paramList.next();
-        if ((localbesg != null) && (!TextUtils.isEmpty(localbesg.jdField_a_of_type_JavaLangString)))
+        besx localbesx = (besx)paramList.next();
+        if ((localbesx != null) && (!TextUtils.isEmpty(localbesx.jdField_a_of_type_JavaLangString)))
         {
-          bepj localbepj = new bepj(this, localbesg.jdField_a_of_type_JavaLangString, localbesg.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType, localbesg.jdField_a_of_type_JavaLangClass, localbesg.jdField_b_of_type_JavaLangClass);
-          besl.b("minisdk-start_AppBrandLaunchManager", "registerProcessInfo " + localbepj);
-          switch (bepi.a[localbesg.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType.ordinal()])
+          beqa localbeqa = new beqa(this, localbesx.jdField_a_of_type_JavaLangString, localbesx.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType, localbesx.jdField_a_of_type_JavaLangClass, localbesx.jdField_b_of_type_JavaLangClass);
+          betc.b("minisdk-start_AppBrandLaunchManager", "registerProcessInfo " + localbeqa);
+          switch (bepz.a[localbesx.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType.ordinal()])
           {
           default: 
             break;
           case 1: 
-            if (localbesg.jdField_a_of_type_JavaLangClass != null)
+            if (localbesx.jdField_a_of_type_JavaLangClass != null)
             {
-              subAppProcessorInfoMap.put(localbesg.jdField_a_of_type_JavaLangString, localbepj);
-              subProcessorInfoMap.put(localbesg.jdField_a_of_type_JavaLangString, localbepj);
+              subAppProcessorInfoMap.put(localbesx.jdField_a_of_type_JavaLangString, localbeqa);
+              subProcessorInfoMap.put(localbesx.jdField_a_of_type_JavaLangString, localbeqa);
             }
             break;
           case 2: 
-            if (localbesg.jdField_a_of_type_JavaLangClass != null)
+            if (localbesx.jdField_a_of_type_JavaLangClass != null)
             {
-              subGameProcessorInfoMap.put(localbesg.jdField_a_of_type_JavaLangString, localbepj);
-              subProcessorInfoMap.put(localbesg.jdField_a_of_type_JavaLangString, localbepj);
+              subGameProcessorInfoMap.put(localbesx.jdField_a_of_type_JavaLangString, localbeqa);
+              subProcessorInfoMap.put(localbesx.jdField_a_of_type_JavaLangString, localbeqa);
             }
             break;
           case 3: 
-            if (localbesg.jdField_a_of_type_JavaLangClass != null)
+            if (localbesx.jdField_a_of_type_JavaLangClass != null)
             {
-              sInternalProcessInfo = localbepj;
-              subProcessorInfoMap.put(localbesg.jdField_a_of_type_JavaLangString, localbepj);
+              sInternalProcessInfo = localbeqa;
+              subProcessorInfoMap.put(localbesx.jdField_a_of_type_JavaLangString, localbeqa);
             }
             break;
           }
@@ -1420,19 +1424,19 @@ public class AppBrandLaunchManager
   {
     if (paramMiniAppInfo == null)
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! miniAppInfo is null.");
+      betc.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! miniAppInfo is null.");
       return false;
     }
     Object localObject = findMiniAppProcessInfo(paramMiniAppInfo);
-    if ((localObject == null) || (TextUtils.isEmpty(((bepj)localObject).jdField_a_of_type_JavaLangString)))
+    if ((localObject == null) || (TextUtils.isEmpty(((beqa)localObject).jdField_a_of_type_JavaLangString)))
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! Has no processor info.");
+      betc.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! Has no processor info.");
       return false;
     }
-    Messenger localMessenger = (Messenger)this.mClientMessengerMap.get(((bepj)localObject).jdField_a_of_type_JavaLangString);
+    Messenger localMessenger = (Messenger)this.mClientMessengerMap.get(((beqa)localObject).jdField_a_of_type_JavaLangString);
     if (localMessenger == null)
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! Messenger is null.");
+      betc.d("minisdk-start_AppBrandLaunchManager", "sendCmdToMiniProcess failed! Messenger is null.");
       return false;
     }
     Message localMessage = Message.obtain();
@@ -1446,13 +1450,13 @@ public class AppBrandLaunchManager
     localMessage.setData((Bundle)localObject);
     try
     {
-      besl.b("minisdk-start_AppBrandLaunchManager", "Messenger sendCmdToMiniProcess cmd=" + paramInt);
+      betc.b("minisdk-start_AppBrandLaunchManager", "Messenger sendCmdToMiniProcess cmd=" + paramInt);
       localMessenger.send(localMessage);
       return true;
     }
     catch (Throwable paramBundle)
     {
-      besl.d("minisdk-start_AppBrandLaunchManager", "Messenger sendCmdToMiniProcess exception!", paramBundle);
+      betc.d("minisdk-start_AppBrandLaunchManager", "Messenger sendCmdToMiniProcess exception!", paramBundle);
       if (paramResultReceiver != null) {
         paramResultReceiver.send(-1, new Bundle());
       }
@@ -1463,13 +1467,13 @@ public class AppBrandLaunchManager
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
     if (paramMiniAppInfo == null) {
-      besl.d("minisdk-start_AppBrandLaunchManager", "startMiniApp params is empty! ,appConfig=" + paramMiniAppInfo + " Activity=" + paramActivity);
+      betc.d("minisdk-start_AppBrandLaunchManager", "startMiniApp params is empty! ,appConfig=" + paramMiniAppInfo + " Activity=" + paramActivity);
     }
     do
     {
       return;
       this.mMiniAppUsed = true;
-      besl.b("minisdk-start_AppBrandLaunchManager", "---startApp---- appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name);
+      betc.b("minisdk-start_AppBrandLaunchManager", "---startApp---- appid:" + paramMiniAppInfo.appId + " appName:" + paramMiniAppInfo.name);
       checkAndCleanAllMiniProcess();
       doStartMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
     } while ((paramMiniAppInfo.isFakeAppInfo()) || (paramMiniAppInfo.isShortcutFakeApp()));
@@ -1484,7 +1488,7 @@ public class AppBrandLaunchManager
     label189:
     for (paramBundle = paramMiniAppInfo.via;; paramBundle = "")
     {
-      paramResultReceiver.useUserApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType, 0, paramActivity, paramBundle, null, new bepg(this));
+      paramResultReceiver.useUserApp(paramMiniAppInfo.appId, paramMiniAppInfo.verType, 0, paramActivity, paramBundle, null, new bepx(this));
       return;
       paramActivity = "";
       break;
@@ -1500,7 +1504,7 @@ public class AppBrandLaunchManager
       if (localEntry != null)
       {
         String str = (String)localEntry.getKey();
-        forceKillProcess((bepj)localEntry.getValue());
+        forceKillProcess((beqa)localEntry.getValue());
         cleanProcess(str);
       }
     }
@@ -1518,14 +1522,14 @@ public class AppBrandLaunchManager
   {
     try
     {
-      besn.a().a(new beph(this));
+      bete.a().a(new bepy(this));
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        besl.d("minisdk-start_AppBrandLaunchManager", "updateBaseLib failed ", localThrowable);
+        betc.d("minisdk-start_AppBrandLaunchManager", "updateBaseLib failed ", localThrowable);
       }
     }
     finally {}

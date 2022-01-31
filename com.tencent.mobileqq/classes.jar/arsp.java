@@ -1,34 +1,16 @@
-import android.graphics.Paint.Align;
-
 public abstract interface arsp
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
   public abstract void a();
   
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
+  public abstract void a(int paramInt1, int paramInt2);
   
   public abstract void b();
   
+  public abstract void b(int paramInt1, int paramInt2);
+  
   public abstract void c();
   
-  public abstract void setAlign(Paint.Align paramAlign);
-  
-  public abstract void setLineMaxWidth(int paramInt);
-  
-  public abstract void setLyric(asba paramasba, int paramInt);
-  
-  public abstract void setOnSizeChangeListener(arta paramarta);
-  
-  public abstract void setSongId(String paramString);
-  
-  public abstract void setStrokeColor(int paramInt);
-  
-  public abstract void setStrokeWidth(int paramInt);
+  public abstract void d();
 }
 
 

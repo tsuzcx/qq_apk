@@ -1,24 +1,67 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajyu
+class ajyu
+  extends ajxj
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  ajyu(ajyt paramajyt) {}
+  
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        this.a.jdField_a_of_type_JavaLangString = paramString2;
+      }
+      if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 1;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          ajyt.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 2) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    paramQQAppInterface = paramQQAppInterface.a().a();
-    paramString = paramQQAppInterface.b(paramString, 1);
-    if (paramString != null) {
-      paramQQAppInterface.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
+    }
+    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
+    for (;;)
+    {
+      return;
+      this.a.b = paramString2;
+      if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 2;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          ajyt.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 1) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
     }
   }
 }

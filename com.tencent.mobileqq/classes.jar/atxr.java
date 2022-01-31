@@ -1,29 +1,37 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnTouchListener;
 
 class atxr
-  implements bfpe
+  implements View.OnTouchListener
 {
-  private atxr(atxn paramatxn) {}
+  private atxr(atxp paramatxp) {}
   
-  public void a(AdapterView<?> paramAdapterView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bfpe localbfpe = this.a.jdField_a_of_type_Atxm.a();
-    if (localbfpe != null) {
-      localbfpe.a(paramAdapterView);
+    boolean bool3 = true;
+    boolean bool2 = false;
+    int i = paramMotionEvent.getAction();
+    Object localObject = this.a;
+    boolean bool1 = bool3;
+    if (i != 1) {
+      if (i != 3) {
+        break label105;
+      }
     }
-  }
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Int != 0)
+    label105:
+    for (bool1 = bool3;; bool1 = false)
     {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    bfpe localbfpe = this.a.jdField_a_of_type_Atxm.a();
-    if (localbfpe != null) {
-      localbfpe.a(paramAdapterView, paramView, paramInt, paramLong);
+      ((atxp)localObject).b = bool1;
+      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
+        this.a.a();
+      }
+      localObject = this.a.jdField_a_of_type_Atxo.a();
+      bool1 = bool2;
+      if (localObject != null) {
+        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
+      }
+      return bool1;
     }
   }
 }

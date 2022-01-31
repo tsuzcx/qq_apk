@@ -1,14 +1,22 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.Size;
+import java.util.Comparator;
 
 class aubk
-  implements Camera.PictureCallback
+  implements Comparator<Camera.Size>
 {
-  aubk(aubg paramaubg) {}
+  aubk(aubi paramaubi) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
   {
-    this.a.a(paramArrayOfByte, true);
+    int i = paramSize1.height * paramSize1.width;
+    int j = paramSize2.height * paramSize2.width;
+    if (j < i) {
+      return 1;
+    }
+    if (j > i) {
+      return -1;
+    }
+    return 0;
   }
 }
 

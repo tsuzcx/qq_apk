@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class TroopAioKeyBlackRule
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String mBlackUinKeywordRuleId;
 }
 

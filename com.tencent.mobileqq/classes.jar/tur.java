@@ -1,23 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class tur
-  extends QQUIEventReceiver<StoryPlayerActivity, tuq>
+  implements View.OnTouchListener
 {
-  public tur(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
-  {
-    super(paramStoryPlayerActivity);
-  }
+  public tur(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull tuq paramtuq)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramStoryPlayerActivity.b = paramtuq.a;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tuq.class;
+    return true;
   }
 }
 

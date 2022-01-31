@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qdr;
-import qds;
+import qdo;
+import qdp;
 
 public class TopicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TopicInfo> CREATOR = new qdr();
+  public static final Parcelable.Creator<TopicInfo> CREATOR = new qdo();
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -30,20 +30,20 @@ public class TopicInfo
     this.e = paramParcel.readString();
   }
   
-  private TopicInfo(qds paramqds)
+  private TopicInfo(qdp paramqdp)
   {
-    this.jdField_a_of_type_Long = qds.a(paramqds);
-    this.jdField_a_of_type_JavaLangString = qds.a(paramqds);
-    this.jdField_b_of_type_JavaLangString = qds.b(paramqds);
-    this.c = qds.c(paramqds);
-    this.d = qds.d(paramqds);
-    this.jdField_b_of_type_Long = qds.b(paramqds);
-    this.jdField_a_of_type_Boolean = qds.a(paramqds);
+    this.jdField_a_of_type_Long = qdp.a(paramqdp);
+    this.jdField_a_of_type_JavaLangString = qdp.a(paramqdp);
+    this.jdField_b_of_type_JavaLangString = qdp.b(paramqdp);
+    this.c = qdp.c(paramqdp);
+    this.d = qdp.d(paramqdp);
+    this.jdField_b_of_type_Long = qdp.b(paramqdp);
+    this.jdField_a_of_type_Boolean = qdp.a(paramqdp);
   }
   
-  public static qds a()
+  public static qdp a()
   {
-    return new qds(null);
+    return new qdp(null);
   }
   
   public long a()

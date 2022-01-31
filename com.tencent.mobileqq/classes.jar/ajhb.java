@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajhb
-  implements DialogInterface.OnClickListener
+class ajhb
+  implements ajoc
 {
-  public ajhb(ApolloGameActivity paramApolloGameActivity) {}
+  ajhb(ajha paramajha) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
+    }
+    if (this.a.jdField_a_of_type_Ajob != null) {
+      this.a.jdField_a_of_type_Ajob.a(paramInt);
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
   }
 }
 

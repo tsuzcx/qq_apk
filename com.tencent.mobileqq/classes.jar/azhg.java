@@ -1,15 +1,19 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
 public final class azhg
-  extends Editable.Factory
+  implements QQPermissionCallback
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public azhg(azhl paramazhl, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramCharSequence instanceof ayks)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ayks(paramCharSequence, 3, 20);
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Azhl.a(bajf.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajsd.bc, 1001));
   }
 }
 

@@ -1,58 +1,26 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
 class arit
-  implements aabm
+  implements ActionCallback
 {
-  arit(arii paramarii, WeakReference paramWeakReference, Bundle paramBundle) {}
+  arit(arik paramarik, arjc paramarjc) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onResult(String paramString)
   {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onFailure code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131703573), 0).a();
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onPermission code = " + paramInt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131703574), 0).a();
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-    }
     try
     {
-      QLog.e("XProxy|NowProxy", 1, "doraemonAPIManager call login onSuccess");
-      this.jdField_a_of_type_Arii.b = paramJSONObject.optString("access_token");
-      this.jdField_a_of_type_Arii.jdField_a_of_type_JavaLangString = paramJSONObject.optString("openid");
-      this.jdField_a_of_type_AndroidOsBundle.putString("access_token", this.jdField_a_of_type_Arii.b);
-      this.jdField_a_of_type_AndroidOsBundle.putString("openid", this.jdField_a_of_type_Arii.jdField_a_of_type_JavaLangString);
-      arii.a(this.jdField_a_of_type_Arii);
-      this.jdField_a_of_type_Arii.jdField_a_of_type_Arjc.a(this.jdField_a_of_type_AndroidOsBundle);
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Arjc.a(i, "");
       return;
     }
-    catch (Throwable paramJSONObject)
+    catch (Exception paramString)
     {
-      QLog.e("XProxy|NowProxy", 1, paramJSONObject, new Object[0]);
+      for (;;)
+      {
+        int i = -1;
+      }
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

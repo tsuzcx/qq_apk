@@ -1,63 +1,76 @@
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnShowListener;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.view.Window;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
+import java.util.List;
 
-public class bcvf
+public abstract interface bcvf
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public abstract int a();
   
-  private void a()
-  {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
+  public abstract View a(int paramInt);
   
-  private void a(View paramView)
-  {
-    if (paramView != null)
-    {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
-      }
-    }
-  }
+  public abstract Window a();
   
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
+  public abstract bfpc a();
   
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
+  public abstract String a();
   
-  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
+  public abstract void a();
   
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void a(DialogInterface.OnCancelListener paramOnCancelListener);
+  
+  public abstract void a(DialogInterface.OnDismissListener paramOnDismissListener);
+  
+  public abstract void a(DialogInterface.OnShowListener paramOnShowListener);
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams);
+  
+  @Deprecated
+  public abstract void a(AdapterView.OnItemClickListener paramOnItemClickListener);
+  
+  public abstract void a(bcvg parambcvg);
+  
+  public abstract void a(CharSequence paramCharSequence);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(List<bbjs> paramList1, List<bbjs> paramList2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void a(List<bbjs>[] paramArrayOfList);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  @Deprecated
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  @Deprecated
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

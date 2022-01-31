@@ -1,24 +1,16 @@
 import com.tencent.av.gaudio.AVNotifyCenter;
-import java.util.Vector;
 
 public class lnn
 {
+  public int a;
   public long a;
-  public Vector<lnq> a;
+  public boolean a;
   
-  public lnn(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector = null;
-  }
+  public lnn(AVNotifyCenter paramAVNotifyCenter) {}
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
-    if (this.jdField_a_of_type_JavaUtilVector == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
-      return localObject + "]";
-    }
+    return "relationId[" + this.jdField_a_of_type_Long + "], isOffLine[" + this.jdField_a_of_type_Boolean + "], avType[" + this.jdField_a_of_type_Int + "]";
   }
 }
 

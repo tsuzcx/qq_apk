@@ -1,6 +1,17 @@
-public abstract interface adss
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+
+public class adss
+  implements View.OnTouchListener
 {
-  public abstract void a();
+  public adss(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

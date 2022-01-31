@@ -1,14 +1,14 @@
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
-class aobx
-  implements asko<List<aoah>>
+public class aobx
 {
-  aobx(aobu paramaobu) {}
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
   
-  public void a(List<aoah> paramList)
-  {
-    this.a.a(paramList);
-  }
+  public aobx(aobw paramaobw) {}
 }
 
 

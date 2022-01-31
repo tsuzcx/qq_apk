@@ -1,59 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bava
+  extends BroadcastReceiver
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
+  public bava(SnapshotService paramSnapshotService) {}
   
-  public bava(QQAppInterface paramQQAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bavb(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public String a(int paramInt, JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
+    long l = paramIntent.getLongExtra("id", -1L);
+    int i = paramIntent.getIntExtra("action", -1);
+    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
     {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
+      if (QLog.isColorLevel()) {
+        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
       }
-      localJSONObject2.put("data", localJSONObject1);
-    }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
-        }
-      }
-    }
-    return localJSONObject2.toString();
-  }
-  
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
-  {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bauz.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
+      SnapshotService.a(false);
+      this.a.finish();
     }
   }
 }

@@ -1,32 +1,22 @@
-import android.view.SurfaceHolder;
+import android.os.Handler;
 import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.24.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class azbb
-  implements IVideoViewBase.IVideoViewCallBack
+  implements TVK_IMediaPlayer.OnErrorListener
 {
   public azbb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceChanged");
+      QLog.d("TribeVideoListPlayerFragment", 2, "onError");
     }
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
+    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.24.1(this));
+    return false;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import onk;
-import sdf;
+import onh;
+import sdc;
 
 class KandianMergeManager$2
   implements Runnable
@@ -11,8 +11,8 @@ class KandianMergeManager$2
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)onk.a();
-    sdf.a().j(localQQAppInterface);
+    QQAppInterface localQQAppInterface = (QQAppInterface)onh.a();
+    sdc.a().j(localQQAppInterface);
   }
 }
 

@@ -1,27 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 
-class thb
-  extends SimpleObserver<List<tsr>>
+public class thb
+  extends syn
 {
-  thb(tgy paramtgy, thc paramthc, tfi paramtfi) {}
-  
-  public void a(List<tsr> paramList)
+  public thb(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Thc != null) {
-      this.jdField_a_of_type_Thc.a(this.jdField_a_of_type_Tfi, Collections.emptyList());
-    }
+    super(paramRspQQStoryGuide.result);
   }
   
-  public void onError(@NonNull Error paramError)
+  public String toString()
   {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Thc != null) {
-      this.jdField_a_of_type_Thc.a(this.jdField_a_of_type_Tfi, paramError);
-    }
+    return "QQStoryGuideResponse{}";
   }
 }
 

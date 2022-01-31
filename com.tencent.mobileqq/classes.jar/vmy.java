@@ -1,34 +1,16 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-class vmy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class vmy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private vmy(vmt paramvmt) {}
+  vmy(vna paramvna) {}
   
-  public void onGlobalLayout()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
-    if (this.a.c < 0)
-    {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Vmx.a();
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Vmx == null);
-    this.a.jdField_a_of_type_Vmx.a(true, null);
-    this.a.jdField_a_of_type_Vmx.a(this.a.a());
   }
 }
 

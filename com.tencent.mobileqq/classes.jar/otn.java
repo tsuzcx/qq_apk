@@ -1,32 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
+
 public class otn
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  float[] a;
-  public int b;
-  long jdField_b_of_type_Long;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  public int c;
-  public int d;
-  int e;
-  int f;
-  int g;
-  int h;
-  int i;
+  public otn(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    double d1 = this.g * 1.0D / this.h;
-    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
-    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
-    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
-    double d5 = this.b[0] / this.i;
-    double d6 = this.b[1] / this.h;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int j = 0;; j = 1) {
-      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    this.a.f();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
+      return;
     }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    nmc.a(new nyd().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmc.t).b(nmc.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmc.a(paramView)).a());
   }
 }
 

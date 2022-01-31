@@ -1,89 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bakv
-  extends mxl
+public class bakv
 {
-  bakv(bakt parambakt, baks parambaks) {}
+  public static bakv a;
+  public ajsy a;
+  public QQAppInterface a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bakv()
   {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Baks);
-      }
-      this.jdField_a_of_type_Baks.a(-1, "errorCode=" + paramInt);
+    this.jdField_a_of_type_Ajsy = new bakw(this);
+  }
+  
+  public static bakv a(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_Bakv == null) {
+      b(paramQQAppInterface);
     }
-    do
-    {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
     for (;;)
     {
-      try
+      return jdField_a_of_type_Bakv;
+      if (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
+        if (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+          jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
         }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
-        {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
-          {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            bale localbale = new bale();
-            localbale.a = localStockItem.int32_productid.get();
-            localbale.b = localStockItem.int32_amount.get();
-            paramBundle.add(localbale);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new xch(paramArrayOfByte);
-            if (this.jdField_a_of_type_Baks == null) {
-              break;
-            }
-            this.jdField_a_of_type_Baks.a(paramBundle, paramArrayOfByte);
-            return;
-          }
-        }
+        jdField_a_of_type_Bakv = null;
+        b(paramQQAppInterface);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
-        return;
-      }
-      paramArrayOfByte = null;
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((jdField_a_of_type_Bakv != null) && (jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
+    {
+      paramQQAppInterface.removeObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
+      jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      jdField_a_of_type_Bakv = null;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface)
+  {
+    jdField_a_of_type_Bakv = new bakv();
+    jdField_a_of_type_Bakv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramQQAppInterface.addObserver(jdField_a_of_type_Bakv.jdField_a_of_type_Ajsy);
   }
 }
 

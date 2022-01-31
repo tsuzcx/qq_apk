@@ -1,14 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-class abeu
+public final class abeu
   implements DialogInterface.OnClickListener
 {
-  abeu(abet paramabet) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

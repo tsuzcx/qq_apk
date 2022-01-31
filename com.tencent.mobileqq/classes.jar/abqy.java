@@ -1,25 +1,49 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.widget.Switch;
 
 public class abqy
-  implements View.OnClickListener
+  extends akil
 {
-  public abqy(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
+  public abqy(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramView = bbpp.a("gameIconSetupH5Url");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
+    TextView localTextView;
+    if (paramBoolean1)
+    {
+      this.a.f.a().setChecked(paramBoolean2);
+      localTextView = this.a.a;
+      if (!paramBoolean2) {
+        break label59;
+      }
+    }
+    label59:
+    for (int i = 2131693197;; i = 2131693198)
+    {
+      localTextView.setText(i);
+      bbkb.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    if (!paramBoolean1)
+    {
+      bcql.a(this.a, 1, ajya.a(2131707927), 0).a();
+      Switch localSwitch = this.a.f.a();
+      if (!paramBoolean2) {}
+      for (paramBoolean1 = bool;; paramBoolean1 = false)
+      {
+        localSwitch.setChecked(paramBoolean1);
+        return;
+      }
+    }
+    bbkb.c(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

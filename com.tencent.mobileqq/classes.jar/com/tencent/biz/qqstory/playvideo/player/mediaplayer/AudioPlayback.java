@@ -5,7 +5,7 @@ import android.media.AudioTrack;
 import android.media.MediaFormat;
 import android.util.Log;
 import java.nio.ByteBuffer;
-import ueu;
+import uer;
 
 public class AudioPlayback
 {
@@ -15,7 +15,7 @@ public class AudioPlayback
   private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
   private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
   private AudioPlayback.AudioThread jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread;
-  protected ueu a;
+  protected uer a;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private float jdField_b_of_type_Float = 1.0F;
   private int jdField_b_of_type_Int;
@@ -34,7 +34,7 @@ public class AudioPlayback
   
   public AudioPlayback()
   {
-    this.jdField_a_of_type_Ueu = new ueu();
+    this.jdField_a_of_type_Uer = new uer();
   }
   
   @TargetApi(16)
@@ -68,7 +68,7 @@ public class AudioPlayback
   
   public long a()
   {
-    return (ueu.a(this.jdField_a_of_type_Ueu) / this.jdField_b_of_type_Int / this.jdField_c_of_type_Int * 1000000.0D);
+    return (uer.a(this.jdField_a_of_type_Uer) / this.jdField_b_of_type_Int / this.jdField_c_of_type_Int * 1000000.0D);
   }
   
   public void a()
@@ -190,7 +190,7 @@ public class AudioPlayback
         Log.d("AudioPlayback", "playback head not reset");
       }
     }
-    this.jdField_a_of_type_Ueu.a(paramByteBuffer, paramLong);
+    this.jdField_a_of_type_Uer.a(paramByteBuffer, paramLong);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback$AudioThread.a();
   }
   
@@ -268,7 +268,7 @@ public class AudioPlayback
         this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
       }
       this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-      this.jdField_a_of_type_Ueu.a();
+      this.jdField_a_of_type_Uer.a();
       this.jdField_c_of_type_Long = jdField_a_of_type_Long;
       if (bool) {
         this.jdField_a_of_type_AndroidMediaAudioTrack.play();

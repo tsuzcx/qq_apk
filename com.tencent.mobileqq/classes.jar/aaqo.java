@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aaqo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public aaqo(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(12, true);
+    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
   }
 }
 

@@ -1,27 +1,114 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class aaep
-  implements View.OnClickListener
+public class aaep
 {
-  aaep(aaeo paramaaeo, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    if (!bbev.d(aaeo.a(this.jdField_a_of_type_Aaeo)))
+    switch (paramInt)
     {
-      bcpw.a(aaeo.a(this.jdField_a_of_type_Aaeo), aaeo.a(this.jdField_a_of_type_Aaeo).getString(2131694607), 0).a();
-      return;
+    default: 
+      return 7;
+    case 2: 
+      return 0;
+    case 3: 
+      return 9;
+    case 4: 
+      return 11;
+    case 5: 
+      return 12;
+    case 6: 
+      return 13;
     }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    return 14;
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
     {
-      QLog.e("SdkAuthDialog", 1, "positiveListener is null");
-      return;
+    case 1: 
+    default: 
+      return "android";
+    case 2: 
+      return "ark";
+    case 5: 
+      return "limi";
+    case 3: 
+      return "mini_game";
+    case 4: 
+      return "mini_app";
+    case 6: 
+      return "qqpay";
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    axqw.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
+    return "web";
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
+      }
+    }
+    do
+    {
+      return null;
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
+    return null;
+    int i = paramString.indexOf('?');
+    int j = paramString.indexOf('#');
+    if (i == -1)
+    {
+      i = j;
+      if (j == -1) {
+        i = paramString.length();
+      }
+    }
+    for (;;)
+    {
+      return paramString.substring(0, i);
+      if (j != -1) {
+        i = Math.min(i, j);
+      }
+    }
+  }
+  
+  public static void a(aabi paramaabi, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramaabi, paramInt));
+  }
+  
+  public static void a(aabi paramaabi, int paramInt, String paramString)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramaabi, paramInt, paramString));
+  }
+  
+  public static void a(aabi paramaabi, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramaabi, paramJSONObject));
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.sProcessId == 1;
+  }
+  
+  public static void b(aabi paramaabi, JSONObject paramJSONObject)
+  {
+    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramaabi, paramJSONObject));
   }
 }
 

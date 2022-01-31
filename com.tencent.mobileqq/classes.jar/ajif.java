@@ -1,9 +1,6 @@
-import java.util.List;
-
 public abstract interface ajif
-  extends ajie
 {
-  public abstract void a(boolean paramBoolean, String paramString, List<ajid> paramList);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

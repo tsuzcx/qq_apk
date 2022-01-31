@@ -1,27 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-final class bhra
-  implements DialogInterface.OnClickListener
+class bhra
+  implements bhaf
 {
-  bhra(Context paramContext) {}
+  bhra(bhqz parambhqz, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
+    if (this.jdField_a_of_type_Bhqz.a != null)
     {
-      if (bgxr.a().indexOf("GM") < 0) {
-        bhqy.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
+      this.jdField_a_of_type_Bhqz.a.callJs(str);
     }
   }
 }

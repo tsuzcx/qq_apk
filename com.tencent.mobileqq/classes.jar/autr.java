@@ -1,21 +1,36 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.HashSet;
 
 public class autr
-  extends RecyclerView.ItemDecoration
+  implements Animator.AnimatorListener
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  public autr(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, autu paramautu, View paramView) {}
   
-  private autr(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Autu.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Autu.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

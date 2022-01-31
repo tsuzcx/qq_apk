@@ -1,114 +1,30 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
+import android.widget.TimePicker.OnTimeChangedListener;
 
-public class bffc
-  extends Dialog
+class bffc
+  implements TimePicker.OnTimeChangedListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private bffe jdField_a_of_type_Bffe;
-  private boolean jdField_a_of_type_Boolean;
+  bffc(bffb parambffb) {}
   
-  public bffc(@NonNull Context paramContext)
+  public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
   {
-    super(paramContext, 2131755748);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(200L);
-    localAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new DecelerateInterpolator());
-    localAnimationSet.setDuration(200L);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bffd(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
-  }
-  
-  public void dismiss()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    b();
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    getWindow().getDecorView().setPadding(0, 0, 0, 0);
-    paramBundle = getWindow().getAttributes();
-    paramBundle.height = -2;
-    paramBundle.gravity = 81;
-    int i = bfgx.a();
-    int j = bfgx.b();
-    if (i < j) {}
-    for (;;)
+    bffb.a(this.a, paramInt1);
+    if (paramInt1 == bffb.a(this.a).getMinValue())
     {
-      paramBundle.width = i;
-      getWindow().setAttributes(paramBundle);
-      setCanceledOnTouchOutside(true);
+      bffb.b(this.a).setMinValue(bffb.a(this.a));
+      bffb.b(this.a).setMaxValue(59);
       return;
-      i = j;
     }
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(paramInt, null);
-    super.setContentView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void setContentView(@NonNull View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    super.setContentView(paramView);
-  }
-  
-  public void setContentView(@NonNull View paramView, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    super.setContentView(paramView, paramLayoutParams);
-  }
-  
-  public void show()
-  {
-    super.show();
-    a();
-    if (this.jdField_a_of_type_Bffe != null) {
-      this.jdField_a_of_type_Bffe.a();
+    if (paramInt1 == bffb.a(this.a).getMaxValue())
+    {
+      bffb.b(this.a).setMinValue(0);
+      bffb.b(this.a).setMaxValue(bffb.b(this.a));
+      return;
     }
+    bffb.b(this.a).setMinValue(0);
+    bffb.b(this.a).setMaxValue(59);
+    bffb.b(this.a, paramInt2);
   }
 }
 

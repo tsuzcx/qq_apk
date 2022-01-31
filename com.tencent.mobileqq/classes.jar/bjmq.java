@@ -1,33 +1,46 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class bjmq
+public class bjmq
+  implements waj
 {
-  final Map<bjmy, List<bjmr>> a;
-  final Map<bjmr, bjmy> b;
+  public bjmq(CropVideoActivity paramCropVideoActivity) {}
   
-  bjmq(Map<bjmr, bjmy> paramMap)
+  public void onFailure(String paramString)
   {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      bjmy localbjmy = (bjmy)localEntry.getValue();
-      List localList = (List)this.a.get(localbjmy);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localbjmy, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
+  
+  public void onProgress(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
     }
   }
 }

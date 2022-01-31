@@ -1,27 +1,79 @@
+import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
+import NS_MINI_AD.MiniAppAd.StGetAdForSdkReq;
+import NS_MINI_AD.MiniAppAd.StGetAdForSdkRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.json.JSONObject;
 
 public class bezt
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
+  private MiniAppAd.StGetAdForSdkReq a = new MiniAppAd.StGetAdForSdkReq();
   
-  public bezt(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  public bezt(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap)
   {
-    this.a.appid.set(paramString1);
-    this.a.envId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    this.a.strAppid.set(paramString1);
+    this.a.iAdType.set(paramInt);
+    this.a.strGetAdUrl.set(paramString4);
+    paramString1 = new ArrayList();
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    {
+      paramString4 = paramHashMap.entrySet().iterator();
+      while (paramString4.hasNext())
+      {
+        localObject1 = (Map.Entry)paramString4.next();
+        paramHashMap = (String)((Map.Entry)localObject1).getKey();
+        localObject1 = (String)((Map.Entry)localObject1).getValue();
+        localObject2 = new COMM.Entry();
+        ((COMM.Entry)localObject2).key.set(paramHashMap);
+        ((COMM.Entry)localObject2).value.set((String)localObject1);
+        paramString1.add(localObject2);
+      }
     }
+    if (paramString1.size() > 0) {
+      this.a.mapParam.addAll(paramString1);
+    }
+    paramString4 = new COMM.StCommonExt();
+    paramHashMap = new ArrayList();
+    Object localObject1 = new COMM.Entry();
+    ((COMM.Entry)localObject1).key.set("refer");
+    Object localObject2 = ((COMM.Entry)localObject1).value;
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = "";
+    }
+    ((PBStringField)localObject2).set(paramString1);
+    paramHashMap.add(localObject1);
+    paramString2 = new COMM.Entry();
+    paramString2.key.set("via");
+    localObject1 = paramString2.value;
+    paramString1 = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString1 = "";
+    }
+    ((PBStringField)localObject1).set(paramString1);
+    paramHashMap.add(paramString2);
+    paramString4.mapInfo.set(paramHashMap);
+    this.a.extInfo.setHasFlag(true);
+    this.a.extInfo.set(paramString4);
   }
   
   protected String a()
   {
-    return "mini_app_info";
+    return "mini_app_ad";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -29,36 +81,38 @@ public class bezt
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    MiniAppAd.StGetAdForSdkRsp localStGetAdForSdkRsp = new MiniAppAd.StGetAdForSdkRsp();
     try
     {
-      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetTCBTicketRsp != null)
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetAdForSdkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetAdForSdkRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
-        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
-        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
+        paramArrayOfByte.put("response", localStGetAdForSdkRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
         return paramArrayOfByte;
       }
-      besl.a("GetTcbTicketRequest", "onResponse fail.rsp = null");
+      betc.a("MiniAppPayRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("MiniAppPayRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "GetTCBTicket";
+    return "GetAdForSdk";
   }
 }
 

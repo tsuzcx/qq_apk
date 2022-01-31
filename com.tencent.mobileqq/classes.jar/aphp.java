@@ -4,40 +4,29 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class aphp
-  extends apgu
+  extends aphu
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
   ExcitingTransferUploaderRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp;
-  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.OfflineSenderRP<FileAssistant>";
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  long d = 0L;
+  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.ExtfGroupSenderRP<FileAssistant>";
   
   public aphp(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
+  protected int a()
+  {
+    return 2;
+  }
+  
   protected String a(boolean paramBoolean)
   {
-    return "actC2CXTFUploadSender";
+    return "actGroupXTFUploadSender";
   }
   
   protected HashMap<String, String> a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_TransferType", String.valueOf(0));
-    localHashMap.put("param_Platform", String.valueOf(2));
-    localHashMap.put("param_AppType", String.valueOf(0));
-    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_FileName", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_GroupCode", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_FileSize", String.valueOf(this.d));
+    HashMap localHashMap = super.a();
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp != null)
     {
       localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_nResult));
@@ -52,7 +41,7 @@ public class aphp
     }
     for (;;)
     {
-      QLog.i("ExcitingTransfer.OfflineSenderRP<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> SenderDataReport:" + localHashMap.toString());
+      QLog.i("ExcitingTransfer.ExtfGroupSenderRP<FileAssistant>", 1, "Id[" + this.d + "] >>> GroupSenderDataReport:act=" + a(false) + localHashMap.toString());
       return localHashMap;
       localHashMap.put("param_IsBigData", String.valueOf(false));
       localHashMap.put("param_HttpTime", String.valueOf(0));
@@ -65,43 +54,10 @@ public class aphp
     }
   }
   
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
-  {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.d = paramLong3;
-  }
-  
   public void a(ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp = paramExcitingTransferUploaderRp;
   }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  protected HashMap<String, String> b()
-  {
-    return null;
-  }
-  
-  public void b() {}
 }
 
 

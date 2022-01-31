@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
 
-class atnf
-  implements View.OnClickListener
+public class atnf
+  extends Animation
 {
-  atnf(atne paramatne) {}
+  private atnf(MetaballView paramMetaballView) {}
   
-  public void onClick(View paramView)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (paramView == null) {}
-    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
-      return;
-    }
-    StartLiveTopicLabelListView.a(this.a.a).a();
+    super.applyTransformation(paramFloat, paramTransformation);
+    MetaballView.a(this.a, paramFloat);
+    this.a.invalidate();
   }
 }
 

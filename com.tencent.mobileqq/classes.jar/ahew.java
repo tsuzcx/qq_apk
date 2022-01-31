@@ -1,23 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-
 public class ahew
-  implements DialogInterface.OnClickListener
 {
-  public ahew(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.c(this.a).setText("......");
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

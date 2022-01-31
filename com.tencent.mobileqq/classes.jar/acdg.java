@@ -1,45 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class acdg
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public acdg(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public acdg(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      SoundAndVibrateActivity.b(this.a, 0);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839185);
-      if (this.a.app.b() == 0)
-      {
-        this.a.b.setChecked(false);
-        this.a.app.f(1);
-        label61:
-        paramCompoundButton = this.a.app;
-        if (!paramBoolean) {
-          break label147;
-        }
-      }
-    }
-    for (;;)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
-      return;
-      this.a.b.setChecked(true);
-      break;
-      SoundAndVibrateActivity.b(this.a, 8);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839169);
-      this.a.app.f(0);
-      break label61;
-      label147:
-      i = 0;
-    }
+    QQSettingCleanActivity.a(this.a);
+    axqy.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

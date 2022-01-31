@@ -1,14 +1,16 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface bibj
-  extends IInterface
+class bibj
+  implements View.OnTouchListener
 {
-  public abstract void a(bibm parambibm);
+  bibj(bibh parambibh) {}
   
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(bibm parambibm);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

@@ -1,128 +1,39 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class ajpg
-  extends RelativeLayout
+class ajpg
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 1;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int = 2;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  int c = 3;
+  ajpg(ajpe paramajpe) {}
   
-  public ajpg(ApolloGameInfoFragment paramApolloGameInfoFragment, Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    a(paramString);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, new Object[] { "[setGameId] gameId:", Integer.valueOf(paramInt) });
-    }
-    if (paramInt > 0)
+    if ((!TextUtils.isEmpty(ajpe.a(this.a))) && (!ajpe.a(this.a).equals("0")))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
-    }
-    setOnClickListener(new ajpj(this, paramString, paramInt));
-  }
-  
-  public void a(Bitmap paramBitmap, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, new Object[] { "[setPubAccountInfo] uin:", paramString });
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      setOnClickListener(new ajpi(this));
-      return;
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130838339);
-      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] logoUrl is null");
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    int i = Color.parseColor("#FFDEDFE0");
-    Object localObject = new ImageView(getContext());
-    ((ImageView)localObject).setBackgroundColor(i);
-    ((ImageView)localObject).setId(this.jdField_a_of_type_Int);
-    addView((View)localObject, new RelativeLayout.LayoutParams(-1, 1));
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    localObject = new RelativeLayout.LayoutParams(-2, -2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_a_of_type_Int);
-    ((RelativeLayout.LayoutParams)localObject).addRule(9);
-    ((RelativeLayout.LayoutParams)localObject).setMargins(actn.a(12.0F, getResources()), actn.a(17.0F, getResources()), 100, actn.a(20.0F, getResources()));
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    paramString = new ImageView(getContext());
-    paramString.setBackgroundColor(i);
-    localObject = new RelativeLayout.LayoutParams(-1, 1);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_b_of_type_Int);
-    addView(paramString, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848543);
-    paramString = new RelativeLayout.LayoutParams(actn.a(9.0F, getResources()), actn.a(18.0F, getResources()));
-    paramString.addRule(11);
-    paramString.addRule(15);
-    paramString.rightMargin = actn.a(27.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(this.c);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-7829368);
-    paramString = new RelativeLayout.LayoutParams(-2, -2);
-    paramString.rightMargin = actn.a(11.0F, getResources());
-    paramString.addRule(11);
-    paramString.rightMargin = actn.a(27.0F, getResources());
-    paramString.addRule(15);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, paramString);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
-    paramString = new RelativeLayout.LayoutParams(actn.a(25.0F, getResources()), actn.a(25.0F, getResources()));
-    paramString.rightMargin = actn.a(11.0F, getResources());
-    paramString.addRule(0, this.c);
-    paramString.addRule(15);
-    setBackgroundResource(2130839097);
-    addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramString);
-    setOnClickListener(new ajph(this));
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
+      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
+      {
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
+        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        paramView.putExtra("uin", ajpe.a(this.a));
+        paramView.putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity(paramView);
+        return;
       }
     }
+    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
   }
 }
 

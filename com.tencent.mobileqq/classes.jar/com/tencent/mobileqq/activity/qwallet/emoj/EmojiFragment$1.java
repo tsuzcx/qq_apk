@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahac;
+import ahaa;
 import android.text.Editable;
 import android.widget.EditText;
 
 class EmojiFragment$1
-  extends ahac
+  extends ahaa
 {
   EmojiFragment$1(EmojiFragment paramEmojiFragment) {}
   

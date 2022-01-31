@@ -1,69 +1,245 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcqi
-  extends Animation
+  implements DialogInterface.OnCancelListener, Handler.Callback
 {
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private final float b;
-  private float c;
-  private float d;
-  private final float e;
+  int a;
+  public bcqf a;
+  protected final WeakReference<Activity> a;
+  protected final ArrayList<DialogInterface.OnCancelListener> a;
+  protected final Handler b;
   
-  public bcqi(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public bcqi(Activity paramActivity)
   {
-    this(paramFloat1, paramFloat2, 0, paramFloat3, paramFloat4, paramFloat5, paramBoolean);
+    this(paramActivity, -1);
   }
   
-  public bcqi(float paramFloat1, float paramFloat2, int paramInt, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
+  public bcqi(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = new bfob(Looper.getMainLooper(), this);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    paramTransformation = paramTransformation.getMatrix();
-    localCamera.save();
-    if (this.jdField_a_of_type_Boolean) {
-      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
+    a(paramInt1, paramString, paramInt2, null);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
+      }
+      return;
+    }
+    if (paramOnCancelListener != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
+    }
+    this.b.removeMessages(1);
+    this.b.removeMessages(2);
+    if ((paramInt1 == 0) && (paramInt2 > 0))
+    {
+      paramOnCancelListener = Message.obtain();
+      paramOnCancelListener.what = 1;
+      paramOnCancelListener.arg1 = paramInt1;
+      paramOnCancelListener.arg2 = 0;
+      paramOnCancelListener.obj = paramString;
+      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
+      return;
+    }
+    if (this.jdField_a_of_type_Bcqf == null)
+    {
+      if (this.jdField_a_of_type_Int > 0) {
+        this.jdField_a_of_type_Bcqf = new bcqf(localActivity, 0, this.jdField_a_of_type_Int, 17);
+      }
+    }
+    else
+    {
+      label147:
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        break label290;
+      }
+      this.jdField_a_of_type_Bcqf.setOnCancelListener(null);
+      label165:
+      if (paramInt1 != 0) {
+        break label320;
+      }
+      if ((paramString != null) && (!"".equals(paramString.trim()))) {
+        break label301;
+      }
+      this.jdField_a_of_type_Bcqf.a(localActivity.getString(2131719292));
     }
     for (;;)
     {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
+      this.jdField_a_of_type_Bcqf.a(false);
+      this.jdField_a_of_type_Bcqf.b(true);
+      if (!localActivity.isFinishing()) {
+        break label312;
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
       return;
-      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
+      this.jdField_a_of_type_Bcqf = new bcqf(localActivity, localActivity.getResources().getDimensionPixelSize(2131298865));
+      break label147;
+      label290:
+      this.jdField_a_of_type_Bcqf.setOnCancelListener(this);
+      break label165;
+      label301:
+      this.jdField_a_of_type_Bcqf.a(paramString);
+    }
+    label312:
+    this.jdField_a_of_type_Bcqf.show();
+    return;
+    label320:
+    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
+    {
+      this.jdField_a_of_type_Bcqf.a(paramString);
+      this.jdField_a_of_type_Bcqf.d(2130839302);
+      this.jdField_a_of_type_Bcqf.a(true);
+      this.jdField_a_of_type_Bcqf.b(false);
+      if (!this.jdField_a_of_type_Bcqf.isShowing())
+      {
+        if (!localActivity.isFinishing()) {
+          break label485;
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
+        }
+      }
+      paramString = Message.obtain();
+      paramString.what = 2;
+      paramString.arg1 = paramInt1;
+      paramOnCancelListener = this.b;
+      if (paramInt2 <= 0) {
+        break label495;
+      }
+    }
+    label427:
+    label485:
+    label495:
+    for (long l = paramInt2;; l = 1000L)
+    {
+      paramOnCancelListener.sendMessageDelayed(paramString, l);
+      return;
+      this.jdField_a_of_type_Bcqf.a(paramString);
+      this.jdField_a_of_type_Bcqf.d(2130839315);
+      break;
+      this.jdField_a_of_type_Bcqf.show();
+      break label427;
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean a()
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    if (this.jdField_a_of_type_Int == 1)
+    return (this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing());
+  }
+  
+  public void b()
+  {
+    this.b.removeMessages(1);
+    this.b.removeMessages(2);
+    try
     {
-      this.c = (paramInt1 * this.c);
-      this.d = (paramInt2 * this.d);
+      if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {
+        this.jdField_a_of_type_Bcqf.dismiss();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
+      }
+      return;
+    }
+    a(paramInt1, localActivity.getString(paramInt2), paramInt3);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return true;
+        } while (paramMessage.what != 2);
+        b();
+      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
+      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localActivity != null)
+      {
+        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
+        {
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          localActivity.setResult(-1, paramMessage);
+        }
+        for (;;)
+        {
+          localActivity.finish();
+          return true;
+          localActivity.setResult(-1);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
+    return true;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQProgressNotifier", 4, "onCancel");
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramDialogInterface.hasNext())
+      {
+        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
+        if (localOnCancelListener != null) {
+          localOnCancelListener.onCancel(this.jdField_a_of_type_Bcqf);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 

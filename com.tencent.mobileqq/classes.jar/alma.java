@@ -1,13 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class alma
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public alma(ARScanEntryView paramARScanEntryView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
+  }
 }
 
 

@@ -1,47 +1,66 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class bdtp
-  extends akup
+public class bdtp
+  extends QQUIEventReceiver<bdtn, asiv>
 {
-  bdtp(bdto parambdto, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
+  public bdtp(@NonNull bdtn parambdtn)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+    super(parambdtn);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(@NonNull bdtn parambdtn, @NonNull asiv paramasiv)
   {
-    double d2 = 0.0D;
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
-    }
+    if (!TextUtils.equals(paramasiv.jdField_a_of_type_JavaLangString, "QGameApp")) {}
     String str;
-    double d1;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null)
-      {
-        str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.jdField_b_of_type_Double + ", address=" + str);
-        }
-        d1 = paramSosoLbsInfo.a.a;
-        d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-      }
-    }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Bdto.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
       return;
-      str = "";
-      break;
-      d1 = 0.0D;
+      if (QLog.isColorLevel()) {
+        QLog.d("QGameApp", 2, "receive event:" + paramasiv.toString());
+      }
+      str = (String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[0];
+      switch (paramasiv.jdField_a_of_type_Int)
+      {
+      default: 
+        return;
+      }
+    } while (!TextUtils.equals(str, "ak:3214"));
+    if (paramasiv.jdField_a_of_type_Boolean)
+    {
+      str = (String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[3];
+      if (TextUtils.isEmpty(str))
+      {
+        bdtn.a(parambdtn, 1002);
+        return;
+      }
+      switch (((Integer)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        bdtn.a(parambdtn, true, str);
+        return;
+      case 2: 
+        bdtn.jdField_a_of_type_Boolean = false;
+        return;
+      }
+      bdtn.a(parambdtn, false, str);
+      return;
     }
+    bdtn.a(parambdtn, 1002);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return asiv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdtp
  * JD-Core Version:    0.7.0.1
  */

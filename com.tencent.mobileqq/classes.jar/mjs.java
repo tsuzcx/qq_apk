@@ -1,32 +1,21 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class mjs
-  extends mck
+  implements DialogInterface.OnClickListener
 {
-  public mjs(VideoControlUI paramVideoControlUI) {}
+  public mjs(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.g()) {}
-    do
-    {
-      return;
-      if (this.a.h()) {
-        break;
-      }
-    } while (!paramBoolean);
-    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
-    this.a.a.a(paramLong, paramInt);
-  }
-  
-  protected void f(long paramLong)
-  {
-    if (this.a.g()) {}
-    while ((!this.a.h()) || (!this.a.a.b(0))) {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while (((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) || (paramInt == 1)) {
       return;
     }
-    this.a.a.a(paramLong, 0, true);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, true, new mjt(this));
   }
 }
 

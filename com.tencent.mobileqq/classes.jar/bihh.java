@@ -1,22 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bihh
-  extends BroadcastReceiver
+public class bihh
+  implements View.OnClickListener
 {
-  bihh(bihg parambihg) {}
+  public bihh(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
-    }
-    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
-      bihg.a(this.a);
-    }
+    this.a.g();
   }
 }
 

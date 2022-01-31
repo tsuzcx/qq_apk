@@ -1,27 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
-
-public class lsz
-  implements DialogInterface.OnClickListener
+public abstract interface lsz
 {
-  public lsz(RandomController paramRandomController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (RandomController.a(this.a) == 1) {
-      axqw.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.c();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        axqw.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public abstract void a();
 }
 
 

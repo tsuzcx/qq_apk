@@ -1,10 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract interface avuq
+public final class avuq
+  extends BroadcastReceiver
 {
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  private avuq(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      avsf.a().b();
+      avsf.a().a(new avur(this));
+      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
+  }
 }
 
 

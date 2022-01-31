@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import apge;
-import aztb;
+import apgi;
+import aztd;
 import java.util.List;
 
 public class TroopFileSearchEngine$5
   implements Runnable
 {
-  public TroopFileSearchEngine$5(apge paramapge, int paramInt, List paramList) {}
+  public TroopFileSearchEngine$5(apgi paramapgi, int paramInt, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      this.this$0.jdField_a_of_type_JavaUtilList = aztb.a(this.jdField_a_of_type_JavaUtilList);
-      apge.a(this.this$0, apge.a(this.this$0), apge.b(this.this$0), this.this$0.jdField_a_of_type_JavaUtilList, apge.a(this.this$0), apge.b(this.this$0));
+      this.this$0.jdField_a_of_type_JavaUtilList = aztd.a(this.jdField_a_of_type_JavaUtilList);
+      apgi.a(this.this$0, apgi.a(this.this$0), apgi.b(this.this$0), this.this$0.jdField_a_of_type_JavaUtilList, apgi.a(this.this$0), apgi.b(this.this$0));
       this.jdField_a_of_type_JavaUtilList.clear();
       return;
     }
-    apge.a(this.this$0, false, null);
+    apgi.a(this.this$0, false, null);
   }
 }
 

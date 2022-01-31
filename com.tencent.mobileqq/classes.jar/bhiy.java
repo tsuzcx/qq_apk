@@ -1,52 +1,65 @@
-import com.tencent.component.network.module.base.inter.Log;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class bhiy
-  implements Log
+  implements ServiceConnection
 {
-  public void d(String paramString1, String paramString2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
+  
+  public bhiy(bhix parambhix, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
   {
-    QLog.d(paramString1, 1, paramString2);
+    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        }
+        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+      }
+      catch (Exception localException)
+      {
+        synchronized (bhix.a(this.jdField_a_of_type_Bhix))
+        {
+          do
+          {
+            paramIBinder = (bhiy)bhix.a(this.jdField_a_of_type_Bhix).poll();
+            if (paramIBinder == null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("QZonePluginManger", 2, "continue process");
+            }
+            bhix.a(this.jdField_a_of_type_Bhix, paramIBinder, 300);
+            return;
+            localException = localException;
+          } while (!QLog.isColorLevel());
+          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+        }
+      }
+      bhix.a(this.jdField_a_of_type_Bhix, false);
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "queue empty");
   }
   
-  public void e(String paramString1, String paramString2)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public int getLogLevel()
-  {
-    return 1;
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    }
+    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
   }
 }
 

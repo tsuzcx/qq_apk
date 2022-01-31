@@ -1,47 +1,20 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9.1;
-import com.tencent.widget.XEditTextEx;
 
 public class auxv
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b;
-  
   public auxv(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (ayla.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
-    {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690312, 0).a();
-      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
-    }
-    paramEditable = auxd.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
-    if ((TextUtils.isEmpty(paramEditable)) || (TextUtils.isEmpty(paramEditable.trim()))) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
-    }
-    for (;;)
-    {
-      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
-        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = (paramInt1 + paramInt3);
+    this.a.a(0);
+    this.a.b(false);
+    StickyNotePublishFragment.a(this.a).setImageResource(2130848814);
+    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690313));
   }
 }
 

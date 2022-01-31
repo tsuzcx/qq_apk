@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class acgu
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
   public acgu(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

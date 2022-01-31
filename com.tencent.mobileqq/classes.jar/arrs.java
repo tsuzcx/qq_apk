@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arrs
-  implements DialogInterface.OnClickListener
+  implements bfpj
 {
-  public arrs(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public arrs(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, arss paramarss) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Arss.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

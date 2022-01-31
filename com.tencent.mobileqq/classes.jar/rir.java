@@ -1,21 +1,27 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 
 public class rir
-  implements View.OnClickListener
+  implements rkf
 {
-  public rir(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
+  public rir(FastWebActivity paramFastWebActivity, int paramInt, BaseData paramBaseData) {}
   
-  public void onClick(View paramView)
+  public BaseData a()
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).removeCallbacksAndMessages(null);
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
-    if (!this.jdField_a_of_type_Boolean) {
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 2);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    rke localrke = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).a(this.jdField_a_of_type_Int);
+    if (localrke != null)
+    {
+      rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, localrke.jdField_a_of_type_Float, localrke.jdField_a_of_type_Long);
+      return;
     }
+    rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

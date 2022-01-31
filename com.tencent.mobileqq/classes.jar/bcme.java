@@ -1,160 +1,44 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
 
 public class bcme
-  extends BaseAdapter
+  extends bcnc
 {
-  public bcme(GridListView paramGridListView) {}
+  private float jdField_a_of_type_Float;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+  private int d = -872415232;
+  private int e = 0;
+  private int f;
   
-  private LinearLayout a(ViewGroup paramViewGroup)
+  public void a(float paramFloat)
   {
-    paramViewGroup = new LinearLayout(this.a.getContext());
-    paramViewGroup.setOrientation(0);
-    paramViewGroup.setClickable(false);
-    paramViewGroup.setLongClickable(false);
-    paramViewGroup.setTag(new bcmc(null));
-    return paramViewGroup;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public int getCount()
+  public void a(int paramInt)
   {
-    if (this.a.c == 0)
-    {
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        return 1;
-      }
-      return 0;
-    }
-    return this.a.c;
+    this.f = paramInt;
   }
   
-  public Object getItem(int paramInt)
+  public void draw(@NonNull Canvas paramCanvas)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (this.a.c == 0) {
-      return 0;
-    }
-    if (this.a.jdField_a_of_type_Int == 0) {
-      return this.a.jdField_a_of_type_Bcmd.getItemViewType(paramInt) + 2;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.c == 0)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.a.getWidth(), this.a.getHeight()));
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewView;
-      return paramViewGroup;
-    }
-    Object localObject;
-    int i;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localObject = (LinearLayout)paramView;
-      paramView = (View)localObject;
-      if (localObject == null) {
-        paramView = a(paramViewGroup);
-      }
-      paramView.removeAllViews();
-      i = this.a.d - this.a.b * paramInt;
-      if (i < this.a.b) {
-        break label535;
-      }
-      i = this.a.b;
-    }
-    label535:
-    for (;;)
-    {
-      bcmc localbcmc = (bcmc)paramView.getTag();
-      int j = paramInt * this.a.b;
-      paramInt = 0;
-      paramViewGroup = paramView;
-      if (paramInt >= i) {
-        break;
-      }
-      paramViewGroup = localbcmc.a[paramInt];
-      int k = this.a.jdField_a_of_type_Bcmd.b(j + paramInt);
-      if ((paramViewGroup != null) && (((Integer)paramViewGroup.getTag(2131361823)).intValue() != k)) {
-        paramViewGroup = null;
-      }
-      for (;;)
-      {
-        View localView = this.a.jdField_a_of_type_Bcmd.getView(j + paramInt, paramViewGroup, paramView);
-        localView.setTag(2131361823, Integer.valueOf(k));
-        localbcmc.a[paramInt] = localView;
-        localObject = (LinearLayout.LayoutParams)localView.getLayoutParams();
-        paramViewGroup = (ViewGroup)localObject;
-        if (localObject == null)
-        {
-          paramViewGroup = new LinearLayout.LayoutParams(this.a.g, this.a.h);
-          localView.setLayoutParams(paramViewGroup);
-        }
-        paramViewGroup.width = this.a.g;
-        paramViewGroup.height = this.a.h;
-        paramViewGroup.leftMargin = this.a.e;
-        paramViewGroup.topMargin = this.a.f;
-        paramView.addView(localView);
-        if ((this.a.jdField_a_of_type_Bfpc != null) && (this.a.jdField_a_of_type_Bcmd.isEnabled(j + paramInt)))
-        {
-          localView.setTag(2131361809, Integer.valueOf(j + paramInt));
-          localView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          localView.setOnClickListener(null);
-        }
-        i = this.a.jdField_a_of_type_Bcmd.a(paramInt) + 2;
-        localObject = paramView;
-        if (paramView != null)
-        {
-          localObject = paramView;
-          if (((Integer)paramView.getTag(2131361823)).intValue() != i) {
-            localObject = null;
-          }
-        }
-        paramView = this.a.jdField_a_of_type_Bcmd.getView(paramInt, (View)localObject, paramViewGroup);
-        paramView.setTag(2131361823, Integer.valueOf(i));
-        if ((this.a.jdField_a_of_type_Bfpc != null) && (this.a.jdField_a_of_type_Bcmd.isEnabled(paramInt)))
-        {
-          paramView.setTag(2131361809, Integer.valueOf(paramInt));
-          paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-          return paramView;
-        }
-        paramView.setOnClickListener(null);
-        return paramView;
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return this.a.i + 2;
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    if ((this.a.c == 0) || (this.a.jdField_a_of_type_Int == 1)) {
-      return false;
-    }
-    return super.isEnabled(paramInt);
+    Rect localRect = getBounds();
+    paramCanvas.save();
+    int i = localRect.centerX();
+    int j = this.f;
+    paramCanvas.clipRect(localRect);
+    paramCanvas.drawColor(this.d);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
+    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
   }
 }
 

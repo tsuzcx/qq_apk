@@ -1,8 +1,36 @@
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract interface qkj
+class qkj
+  extends Handler
 {
-  public abstract void a(JSONObject paramJSONObject);
+  qkj(qki paramqki, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      return;
+      paramMessage = this.a.a(false);
+    } while (paramMessage == null);
+    qki.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localAdvertisementInfo != null) {
+      localAdvertisementInfo.isShowingGuide = false;
+    }
+    this.a.a(null, paramMessage);
+  }
 }
 
 

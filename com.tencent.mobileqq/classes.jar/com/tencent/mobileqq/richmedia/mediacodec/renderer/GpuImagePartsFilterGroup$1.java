@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import avzu;
 import avzw;
-import awad;
+import avzy;
+import awaf;
 
 public class GpuImagePartsFilterGroup$1
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$1(awad paramawad, int paramInt1, int paramInt2, int paramInt3) {}
+  public GpuImagePartsFilterGroup$1(awaf paramawaf, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    avzw localavzw1 = null;
-    avzw localavzw2 = awad.a(this.this$0);
-    awad.a(this.this$0, null);
-    if ((awad.b(this.this$0) == null) || (awad.b(this.this$0).getFilterType() != this.a))
+    avzy localavzy1 = null;
+    avzy localavzy2 = awaf.a(this.this$0);
+    awaf.a(this.this$0, null);
+    if ((awaf.b(this.this$0) == null) || (awaf.b(this.this$0).getFilterType() != this.a))
     {
-      localavzw1 = awad.b(this.this$0);
-      awad.b(this.this$0, (avzw)avzu.a(this.a));
-      awad.b(this.this$0).init();
-      awad.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localavzy1 = awaf.b(this.this$0);
+      awaf.b(this.this$0, (avzy)avzw.a(this.a));
+      awaf.b(this.this$0).init();
+      awaf.b(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
-    awad.b(this.this$0).a(false, 0.0F);
-    awad.a(this.this$0, 0.0F);
-    if (localavzw2 != null) {
-      localavzw2.destroy();
+    awaf.b(this.this$0).a(false, 0.0F);
+    awaf.a(this.this$0, 0.0F);
+    if (localavzy2 != null) {
+      localavzy2.destroy();
     }
-    if (localavzw1 != null) {
-      localavzw1.destroy();
+    if (localavzy1 != null) {
+      localavzy1.destroy();
     }
   }
 }

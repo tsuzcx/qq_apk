@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class adgv
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public adgv(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
+    AIOLongShotHelper.a("0X8009DE8");
   }
 }
 

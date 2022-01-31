@@ -1,14 +1,50 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+
 class atkq
-  implements atlb
+  extends Handler
 {
-  atkq(atkm paramatkm) {}
-  
-  public boolean a(atkx paramatkx, int paramInt, Object paramObject)
+  atkq(atko paramatko, Looper paramLooper)
   {
-    if (paramInt == 21) {
-      atiw.f();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    return false;
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Atkz != null)
+      {
+        int i = this.a.jdField_a_of_type_Atkz.a();
+        this.a.jdField_a_of_type_Atkx.a(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayerView", 2, "PROGRESS_MSG :" + i);
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      return;
+      if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) && (((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).getChildAt(0) != this.a.jdField_a_of_type_AndroidWidgetImageView))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayerView", 2, "UPDATE_COVER  mPlayer.getCurrentPosition()=" + this.a.jdField_a_of_type_Atkz.a());
+        }
+        ((ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+        atko.a(this.a).addView(this.a.jdField_a_of_type_AndroidWidgetImageView, 0, new RelativeLayout.LayoutParams(-1, -1));
+        atko.a(this.a).requestLayout();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoPlayerView", 2, "UPDATE_COVER  2do nothing()=");
   }
 }
 

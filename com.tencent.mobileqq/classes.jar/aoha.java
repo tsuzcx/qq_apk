@@ -1,18 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
 public class aoha
-  extends aoeu
+  implements DialogInterface.OnClickListener
 {
-  public aoha(ExtendFriendFragment paramExtendFriendFragment) {}
+  public aoha(ExtendFriendEditFragment paramExtendFriendEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
   
-  protected void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    asfj.a(this.a.a, ExtendFriendFragment.a(this.a).app);
-    Intent localIntent = new Intent("match_chat_notify_update");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    ExtendFriendEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendEditFragment, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
   }
 }
 

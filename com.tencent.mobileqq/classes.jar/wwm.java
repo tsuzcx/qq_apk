@@ -1,6 +1,48 @@
-public abstract interface wwm
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+
+public class wwm
+  extends ClickableSpan
 {
-  public abstract void a(String paramString);
+  private int jdField_a_of_type_Int;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
+  private wwn jdField_a_of_type_Wwn;
+  
+  public wwm(String paramString, int paramInt, wwn paramwwn)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Wwn = paramwwn;
+  }
+  
+  public wwm(String paramString, ColorStateList paramColorStateList, wwn paramwwn)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.jdField_a_of_type_Wwn = paramwwn;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Wwn != null)) {
+      this.jdField_a_of_type_Wwn.a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
+    }
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

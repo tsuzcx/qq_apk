@@ -1,32 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
 
 public class rid
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rid(SlideActiveAnimController paramSlideActiveAnimController) {}
+  public rid(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onAnimationCancel(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationCancel");
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    SlideActiveAnimController.a(this.a, false);
-    SlideActiveAnimController.a(this.a, SlideActiveAnimController.a());
-    SlideActiveAnimController.a(this.a).setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.i("SlideActiveAnimController", 1, "hideTitleViewAnim onAnimationEnd");
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 

@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class afvh
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  afvh(afur paramafur) {}
+  afvh(afvg paramafvg, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
-    {
-      afur.a(this.a, afur.a(this.a), Long.valueOf(afur.a(this.a)).longValue());
-      afur.a(this.a);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvg, 0);
     }
-    return true;
+    try
+    {
+      if (this.jdField_a_of_type_Afvg.isShowing()) {
+        this.jdField_a_of_type_Afvg.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

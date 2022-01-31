@@ -1,33 +1,27 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
-import java.io.File;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
 class aqpc
-  implements bfoq
+  implements aqmb
 {
-  aqpc(aqox paramaqox, bfol parambfol, AIOPicData paramAIOPicData, File paramFile) {}
+  aqpc(aqoz paramaqoz, aqmi paramaqmi, String paramString, URLDrawable paramURLDrawable, AIOPicData paramAIOPicData, GalleryUrlImageView paramGalleryUrlImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramView == null)
+    this.jdField_a_of_type_Aqoz.b.setVisibility(8);
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      aqoz.a(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_Aqmi, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    paramView = this.jdField_a_of_type_Bfol.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
+    if ((!aqoz.a(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView)) && (!aqoz.b(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView)) && (!aqoz.c(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView))) {
+      aqoz.a(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_ComTencentMobileqqGalleryViewGalleryUrlImageView);
     }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
-    if (this.jdField_a_of_type_Aqox.a(paramView, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bfol.dismiss();
+    aqoz.a(this.jdField_a_of_type_Aqoz, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqGalleryModelPicAIOPicData.jdField_a_of_type_Int, 2);
   }
 }
 

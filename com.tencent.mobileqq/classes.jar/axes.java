@@ -1,9 +1,6 @@
-public class axes
+public abstract interface axes
 {
-  public int a;
-  public aunp a;
-  public axeg a;
-  public Object a;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import absf;
+import absb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ProfileActivity$CardContactInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardContactInfo> CREATOR = new absf();
+  public static final Parcelable.Creator<CardContactInfo> CREATOR = new absb();
   public String a;
   public String b;
   public String c;

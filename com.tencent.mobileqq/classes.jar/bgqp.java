@@ -1,7 +1,4 @@
-public abstract interface bgqp
-{
-  public abstract void a(int paramInt, Object paramObject, Object... paramVarArgs);
-}
+public class bgqp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

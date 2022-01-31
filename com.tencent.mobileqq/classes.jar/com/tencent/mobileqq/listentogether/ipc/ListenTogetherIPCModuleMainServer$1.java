@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
 import android.text.TextUtils;
-import arsf;
-import auwz;
+import arsh;
+import auxb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -11,19 +11,19 @@ import com.tencent.mobileqq.music.SongInfo;
 public class ListenTogetherIPCModuleMainServer$1
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$1(arsf paramarsf, String paramString1, String paramString2) {}
+  public ListenTogetherIPCModuleMainServer$1(arsh paramarsh, String paramString1, String paramString2) {}
   
   public void run()
   {
-    auwz localauwz = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localauwz != null)
+    auxb localauxb = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (localauxb != null)
     {
-      localauwz.a(this.a);
-      if ((!localauwz.b()) && (!TextUtils.isEmpty(this.b)))
+      localauxb.a(this.a);
+      if ((!localauxb.b()) && (!TextUtils.isEmpty(this.b)))
       {
         SongInfo localSongInfo = new SongInfo();
         localSongInfo.d = this.b;
-        localauwz.a(localSongInfo);
+        localauxb.a(localSongInfo);
       }
     }
   }

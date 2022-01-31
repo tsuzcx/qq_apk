@@ -1,22 +1,19 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public class wqn
-  implements wpe<wlj>
+  implements View.OnClickListener
 {
-  public wqn(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
+  public wqn(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpw paramwpw) {}
   
-  public void a(wpn paramwpn, wlj paramwlj)
+  public void onClick(View paramView)
   {
-    if ((paramwpn.e()) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      paramwpn = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramwpn.b());
-      VSNetworkHelper.a().a(paramwpn, new wqo(this, paramwlj));
-    }
+    wis.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Wpw.a.poster.id.get()));
+    xhb.b(this.jdField_a_of_type_Wpw.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
   }
 }
 

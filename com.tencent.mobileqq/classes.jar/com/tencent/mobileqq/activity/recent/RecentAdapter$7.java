@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahmx;
+import ahmv;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$7
   implements Runnable
 {
-  public RecentAdapter$7(ahmx paramahmx, String paramString, int paramInt) {}
+  public RecentAdapter$7(ahmv paramahmv, String paramString, int paramInt) {}
   
   public void run()
   {

@@ -1,18 +1,26 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atza
-  extends atyy
+public abstract class atza
 {
-  public ArrayList<afly> a;
+  public long a;
+  public String a;
+  public boolean b;
   
-  public atza(ArrayList<afly> paramArrayList)
+  public String a()
   {
-    this.a = paramArrayList;
+    return "";
   }
   
-  public boolean a()
+  public String a(QQAppInterface paramQQAppInterface)
   {
-    return true;
+    return this.a;
+  }
+  
+  public abstract boolean a();
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return false;
   }
 }
 

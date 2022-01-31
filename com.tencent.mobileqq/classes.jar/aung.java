@@ -1,34 +1,90 @@
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-final class aung
-  implements ayzu
+public class aung
 {
-  aung(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
-  
-  public void a(ayyn paramayyn, ayzc paramayzc)
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 0;
-    if (j < paramayzc.a.size())
+    String str = ayuk.a(paramInt2);
+    return ayuk.a(ayuk.b(paramInt1), ayuk.c(paramInt3), str, "L");
+  }
+  
+  public static void a(Object paramObject, String paramString1, String paramString2)
+  {
+    if ((paramObject instanceof aunj))
     {
-      paramayyn = (ayzp)paramayzc.a.get(j);
-      int i = -1;
-      if ((paramayyn instanceof ayzh)) {
-        i = ((ayzh)paramayyn).c;
-      }
-      for (;;)
+      paramObject = (aunj)paramObject;
+      ayuk.c(paramObject.b, true, 1, paramObject.a, paramString1, paramString2);
+      return;
+    }
+    if ((paramObject instanceof MessageForPic))
+    {
+      paramObject = (MessageForPic)paramObject;
+      ayuk.c(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.d("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, 1);
+  }
+  
+  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (paramInt == 1) {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + paramayyn.toString());
-        }
-        j += 1;
-        break;
-        if ((paramayyn instanceof ayze)) {
-          i = ((ayze)paramayyn).c;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id:");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" \tstep:");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(" \tcont:");
+        localStringBuilder.append(paramString4);
+        QLog.d(paramString1, 2, localStringBuilder.toString());
       }
     }
+    while (paramInt != 2) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" \tstep:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" \tcont:");
+    localStringBuilder.append(paramString4);
+    QLog.e(paramString1, 1, localStringBuilder.toString());
+  }
+  
+  public static void b(Object paramObject, String paramString1, String paramString2)
+  {
+    if ((paramObject instanceof aunj))
+    {
+      paramObject = (aunj)paramObject;
+      ayuk.b(paramObject.b, true, 1, paramObject.a, paramString1, paramString2, null);
+      return;
+    }
+    if ((paramObject instanceof MessageForPic))
+    {
+      paramObject = (MessageForPic)paramObject;
+      ayuk.b(paramObject.istroop, true, 1, paramObject.localUUID, paramString1, paramString2, null);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step:").append(paramString1);
+    localStringBuilder.append("    \tcontent:").append(paramString2);
+    QLog.e("Q.richmedia.L." + paramObject, 2, localStringBuilder.toString());
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, 2);
   }
 }
 

@@ -1,43 +1,19 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import java.nio.ByteBuffer;
 
 public class axhd
-  extends AsyncTask<Void, Void, Integer>
 {
-  public axhd(SVHwEncoder.HwEncode paramHwEncode) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public MediaFormat a;
+  public ByteBuffer a;
+  public boolean a;
   
-  protected Integer a(Void... paramVarArgs)
+  public axhd(axhc paramaxhc)
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = SVHwEncoder.HwEncode.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
-      if (!bbdj.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.a.b = str;
-      i = j;
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.a.jdField_a_of_type_Int = i;
-      SVHwEncoder.HwEncode.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!bbdj.b(str))
-      {
-        this.a.this$0.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
-    }
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

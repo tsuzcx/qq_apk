@@ -1,47 +1,76 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.StructMsgObserver.1;
-import com.tencent.mobileqq.activity.StructMsgObserver.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.observer.SubAccountObserver;
 
 public class acdr
-  implements Observer
+  implements View.OnClickListener
 {
-  public void update(Observable paramObservable, Object paramObject)
+  public acdr(SubAccountBindActivity paramSubAccountBindActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (!acqz.a) {}
+    Object localObject = paramView.findViewById(2131364175);
+    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
+    ayav localayav;
     do
     {
       do
       {
-        do
+        return;
+        int i = ((Integer)paramView.getTag()).intValue();
+        paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
+        localObject = (ayax)this.a.app.getManager(61);
+        if (((ayax)localObject).a(paramView.getUin()))
         {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!acqz.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+          this.a.c(this.a.getString(2131719857));
+          ayap.a(this.a.app);
+          this.a.setTitle("");
+          paramView = new Intent(this.a, SplashActivity.class);
+          paramView.putExtra("tab_index", MainFragment.b);
+          paramView.setFlags(67108864);
+          this.a.startActivity(paramView);
+          this.a.finish();
           return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = acqz.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+        }
+        if (((ayax)localObject).a() >= 2)
+        {
+          ayaq.a(this.a.app, this.a);
+          return;
+        }
+        if (!paramView.isLogined())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
+          }
+          localObject = new Intent(this.a, SubLoginActivity.class);
+          ((Intent)localObject).putExtra("subuin", paramView.getUin());
+          ((Intent)localObject).putExtra("fromWhere", this.a.b);
+          this.a.startActivity((Intent)localObject);
+          return;
+        }
+      } while (!this.a.b());
+      localObject = ((ayax)localObject).a(paramView.getUin());
+      this.a.a(2131719859);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new acds(this, paramView);
+        this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
+        return;
+      }
+      localayav = (ayav)this.a.app.getManager(28);
+    } while (localayav == null);
+    localayav.a(paramView.getUin(), (String)localObject, this.a.b);
   }
 }
 

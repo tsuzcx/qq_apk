@@ -1,135 +1,71 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class avpu
+  extends ayoi
 {
-  public int a;
-  public long a;
-  public BusinessInfoCheckUpdate.AppInfo a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  protected BaseApplicationImpl a;
   
-  public static List<avpu> a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public avpu(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    Object localObject1 = avpt.a(paramAppInfo);
-    ArrayList localArrayList;
-    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+    this.a = paramBaseApplicationImpl;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
-      localArrayList = new ArrayList();
-      try
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = new File(ajsd.bc);
+      paramDownloadParams.mkdirs();
+      paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
+      }
+      if (bbww.a(new bbwu(paramOutputStream, paramDownloadParams), null) == 0) {
+        return paramDownloadParams;
+      }
+    }
+    return null;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams != null) && (paramFile != null))
+    {
+      paramDownloadParams = paramDownloadParams.getHeader("isCircle");
+      if (paramDownloadParams != null)
       {
-        localObject1 = ((Map)localObject1).entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
+        paramDownloadParams = paramDownloadParams.getValue();
+        if (!TextUtils.isEmpty(paramDownloadParams))
         {
-          Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          String str = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = (JSONObject)((Map.Entry)localObject2).getValue();
-          if ((str != null) && (localObject2 != null) && (((JSONObject)localObject2).has("blue_bar_stat")))
+          int j = Integer.valueOf(paramDownloadParams).intValue();
+          int i = 90;
+          if (this.a != null) {
+            i = baxn.a(this.a, 30.0F);
+          }
+          paramDownloadParams = bbef.a(paramFile.getAbsolutePath(), i, i);
+          paramFile = paramDownloadParams;
+          if (j == 1)
           {
-            avpu localavpu = new avpu();
-            localavpu.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo = paramAppInfo;
-            localavpu.jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("blue_bar_stat");
-            localavpu.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("blue_content");
-            localavpu.jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("blue_type");
-            localavpu.jdField_a_of_type_JavaLangString = str;
-            localavpu.jdField_a_of_type_Long = (((JSONObject)localObject2).getLong("duration") * 1000L);
-            localavpu.c = ((JSONObject)localObject2).getString("blue_aid");
-            localavpu.d = ((JSONObject)localObject2).getString("link");
-            localavpu.e = ((JSONObject)localObject2).getString("blue_icon_url");
-            localavpu.f = ((JSONObject)localObject2).getString("blue_button_text");
-            localArrayList.add(localavpu);
-            continue;
-            return null;
+            if (paramDownloadParams != null) {
+              paramFile = bbef.a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
+            }
+          }
+          else {
+            return paramFile;
           }
         }
       }
-      catch (Exception paramAppInfo)
-      {
-        paramAppInfo.printStackTrace();
-      }
     }
-    return localArrayList;
-  }
-  
-  public static void a(Conversation paramConversation)
-  {
-    if ((paramConversation == null) || (paramConversation.jdField_a_of_type_Ahkf.a(23) != 0)) {}
-    SharedPreferences localSharedPreferences;
-    MqqHandler localMqqHandler;
-    do
-    {
-      return;
-      localSharedPreferences = paramConversation.a().getSharedPreferences("mobileQQ", 0);
-      localMqqHandler = paramConversation.jdField_a_of_type_Ahkf.a();
-    } while ((localMqqHandler == null) || ((avpq)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36) == null));
-    ThreadManager.getFileThreadHandler().post(new VipBannerInfo.2(paramConversation, localSharedPreferences, localMqqHandler));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, avpr paramavpr)
-  {
-    if (paramavpr == null) {
-      label4:
-      return;
-    } else {
-      do
-      {
-        do
-        {
-          paramQQAppInterface = (avpq)paramQQAppInterface.getManager(36);
-        } while (paramQQAppInterface == null);
-        paramQQAppInterface = paramQQAppInterface.b(3);
-      } while (paramQQAppInterface == null);
-    }
-    Object localObject;
-    label78:
-    do
-    {
-      paramQQAppInterface = paramQQAppInterface.iterator();
-      break label78;
-      if (!paramQQAppInterface.hasNext()) {
-        break label4;
-      }
-      localObject = a((BusinessInfoCheckUpdate.AppInfo)paramQQAppInterface.next());
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break;
-      }
-      localObject = ((List)localObject).iterator();
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-    } while (!paramavpr.a((avpu)((Iterator)localObject).next()));
-  }
-  
-  public static void b(Conversation paramConversation)
-  {
-    if ((paramConversation != null) && (paramConversation.jdField_a_of_type_Ahkf.a(23) != 0))
-    {
-      paramConversation = paramConversation.jdField_a_of_type_Ahkf.a();
-      if (paramConversation != null)
-      {
-        paramConversation.removeMessages(9);
-        paramConversation.sendEmptyMessage(9);
-      }
-    }
+    return null;
   }
 }
 

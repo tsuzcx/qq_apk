@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
-import bbcv;
-import bbgg;
+import ajya;
+import bbdj;
+import bbgu;
 
 class VideoJsPlugin$2
   implements Runnable
@@ -11,7 +11,7 @@ class VideoJsPlugin$2
   
   public void run()
   {
-    bbcv.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajyc.a(2131716296), ajyc.a(2131716297), ajyc.a(2131716300), ajyc.a(2131716298), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
+    bbdj.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajya.a(2131716307), ajya.a(2131716308), ajya.a(2131716311), ajya.a(2131716309), new VideoJsPlugin.2.1(this), new VideoJsPlugin.2.2(this)).show();
   }
 }
 

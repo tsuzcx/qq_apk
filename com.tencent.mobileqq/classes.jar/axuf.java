@@ -1,109 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 public class axuf
 {
-  public final int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<axud> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
   private short jdField_a_of_type_Short;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  public long b;
-  private short jdField_b_of_type_Short;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private short jdField_c_of_type_Short = 1;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  public axuf(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
+  axuf(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = avcb.a(paramQQAppInterface, paramInt1, aysy.a().a());
-    avbr.a(paramString);
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public File a()
-  {
-    return new File(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<axud> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.jdField_a_of_type_Int;
   }
   
   public short a()
   {
-    return this.jdField_b_of_type_Short;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Short = 0;
+    return this.jdField_a_of_type_Short;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(short paramShort)
   {
-    this.jdField_b_of_type_Short = paramShort;
+    this.jdField_a_of_type_Short = paramShort;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (!paramBoolean)
-    {
-      avbr.b(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    avbr.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt)
+  public boolean a()
   {
-    avbr.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public int b()
+  public byte[] a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public short b()
+  public void b(boolean paramBoolean)
   {
-    return this.jdField_c_of_type_Short;
+    this.b = paramBoolean;
   }
   
-  public void b(short paramShort)
+  public boolean b()
   {
-    this.jdField_c_of_type_Short = paramShort;
-  }
-  
-  public short c()
-  {
-    return this.jdField_a_of_type_Short;
-  }
-  
-  public void c(short paramShort)
-  {
-    this.jdField_a_of_type_Short = paramShort;
+    return this.b;
   }
 }
 

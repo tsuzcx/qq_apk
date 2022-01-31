@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import adgf;
-import asjs;
-import aunj;
-import awan;
-import axaq;
+import adgc;
+import asju;
+import aunl;
+import awap;
+import axas;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ import java.util.List;
 public class MixedMsgManager$1
   implements Runnable
 {
-  public MixedMsgManager$1(asjs paramasjs, SessionInfo paramSessionInfo, int paramInt, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean) {}
+  public MixedMsgManager$1(asju paramasju, SessionInfo paramSessionInfo, int paramInt, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean) {}
   
   public void run()
   {
@@ -28,12 +28,12 @@ public class MixedMsgManager$1
     int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
     String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
-    localObject2 = axaq.a(this.this$0.a, str, (String)localObject2, j);
+    localObject2 = axas.a(this.this$0.a, str, (String)localObject2, j);
     int i;
     if (this.jdField_a_of_type_Int == 0)
     {
       i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.forwardID;
-      adgf.a().a(((MessageForMixedMsg)localObject2).uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, i);
+      adgc.a().a(((MessageForMixedMsg)localObject2).uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, i);
       ((MessageForMixedMsg)localObject2).extraflag = 32772;
       ((MessageForMixedMsg)localObject2).msgData = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData;
       ((MessageForMixedMsg)localObject2).msgElemList = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgElemList;
@@ -59,12 +59,12 @@ public class MixedMsgManager$1
       ((MessageForMixedMsg)localObject2).mIsResend = true;
     }
     ((MessageForMixedMsg)localObject2).prewrite();
-    Object localObject3 = (awan)this.this$0.a.getManager(326);
-    ((awan)localObject3).a(str, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, ((MessageForMixedMsg)localObject2).uniseq);
-    ((awan)localObject3).a((MessageRecord)localObject2, null);
+    Object localObject3 = (awap)this.this$0.a.getManager(326);
+    ((awap)localObject3).a(str, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, ((MessageForMixedMsg)localObject2).uniseq);
+    ((awap)localObject3).a((MessageRecord)localObject2, null);
     this.this$0.a.a().notifyUI(1000, true, str);
     localObject3 = new ArrayList();
-    localObject1 = aunj.a(7, (MessageForMixedMsg)localObject2, j, (String)localObject1, str, this.this$0.a.getAccount());
+    localObject1 = aunl.a(7, (MessageForMixedMsg)localObject2, j, (String)localObject1, str, this.this$0.a.getAccount());
     if (localObject1 != null) {
       ((ArrayList)localObject3).addAll((Collection)localObject1);
     }
@@ -73,7 +73,7 @@ public class MixedMsgManager$1
       if (QLog.isColorLevel()) {
         QLog.d("MixedMsgManager", 2, "[forwardMixedMsg]Upload pictures, count is [" + ((ArrayList)localObject3).size() + "], goto requestUploadPics");
       }
-      asjs.a(this.this$0, this.this$0.a, str, j, (ArrayList)localObject3, (MessageForMixedMsg)localObject2);
+      asju.a(this.this$0, this.this$0.a, str, j, (ArrayList)localObject3, (MessageForMixedMsg)localObject2);
       return;
       if (QLog.isColorLevel()) {
         QLog.e("MixedMsgManager", 2, "[forwardMixedMsg]createForwardPicInfos from MessageForMixedMsg failed");
@@ -82,7 +82,7 @@ public class MixedMsgManager$1
     if (QLog.isColorLevel()) {
       QLog.d("MixedMsgManager", 2, "[forwardMixedMsg]There's not any picture messages, goto onPackAndSendMsg");
     }
-    asjs.a(this.this$0, this.this$0.a, str, j, (MessageForMixedMsg)localObject2, true);
+    asju.a(this.this$0, this.this$0.a, str, j, (MessageForMixedMsg)localObject2, true);
   }
 }
 

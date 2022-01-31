@@ -1,45 +1,45 @@
 package cooperation.qzone.font;
 
-import bhbr;
-import bhdh;
-import bhdk;
+import bhci;
+import bhdy;
+import bheb;
 import java.io.File;
 
 public class FontManager$3
   implements Runnable
 {
-  public FontManager$3(bhdk parambhdk, int paramInt1, int paramInt2, bhdh parambhdh, String paramString1, String paramString2) {}
+  public FontManager$3(bheb parambheb, int paramInt1, int paramInt2, bhdy parambhdy, String paramString1, String paramString2) {}
   
   public void run()
   {
-    File localFile = new File(bhdk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+    File localFile = new File(bheb.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
     if (localFile.exists())
     {
-      if (this.jdField_a_of_type_Bhdh == null) {
+      if (this.jdField_a_of_type_Bhdy == null) {
         break label152;
       }
-      bhdk.a().a(localFile.getAbsolutePath(), true);
-      this.jdField_a_of_type_Bhdh.a(this.jdField_a_of_type_Int, localFile.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
+      bheb.a().a(localFile.getAbsolutePath(), true);
+      this.jdField_a_of_type_Bhdy.a(this.jdField_a_of_type_Int, localFile.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
     }
     label152:
-    while ((bhdk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bhdh)) || (this.jdField_a_of_type_Bhdh == null))
+    while ((bheb.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bhdy)) || (this.jdField_a_of_type_Bhdy == null))
     {
       return;
       if (this.jdField_b_of_type_Int == 1)
       {
-        localFile = new File(bhdk.a(this.this$0, this.jdField_a_of_type_Int, 0));
+        localFile = new File(bheb.a(this.this$0, this.jdField_a_of_type_Int, 0));
         if (localFile.exists())
         {
-          String str = bhdk.a(this.this$0, this.jdField_a_of_type_Int, 1);
-          if (bhdk.a(this.this$0, localFile.getAbsolutePath(), str))
+          String str = bheb.a(this.this$0, this.jdField_a_of_type_Int, 1);
+          if (bheb.a(this.this$0, localFile.getAbsolutePath(), str))
           {
-            this.jdField_a_of_type_Bhdh.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
+            this.jdField_a_of_type_Bhdy.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
             return;
           }
         }
       }
     }
-    this.jdField_a_of_type_Bhdh.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhdy.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
   }
 }
 

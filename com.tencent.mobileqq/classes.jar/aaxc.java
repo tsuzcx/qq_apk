@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation.50.1;
+import com.tencent.util.Pair;
 
 public class aaxc
-  extends akgk
+  implements DialogInterface.OnClickListener
 {
-  public aaxc(Conversation paramConversation) {}
+  public aaxc(Conversation.50.1 param1, ayaq paramayaq, Pair paramPair) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.f) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
-      }
-    } while ((!paramBoolean) || (paramInt != axjq.a));
-    bbcv.a(this.a.a(), 0, null, this.a.a(2131719580), 2131719582, 2131719581, new aaxd(this), new aaxe(this)).show();
+    this.jdField_a_of_type_Ayaq.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

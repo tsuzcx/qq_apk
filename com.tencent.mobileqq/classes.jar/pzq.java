@@ -1,7 +1,16 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
+
 class pzq
-  extends pyw
+  extends pyu
 {
-  pzq(pzi parampzi) {}
+  pzq(pzf parampzf, AppInterface paramAppInterface) {}
+  
+  public Drawable a()
+  {
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
+  }
 }
 
 

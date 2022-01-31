@@ -1,12 +1,16 @@
-import com.tencent.mobileqq.data.RecentUser;
 import java.util.Comparator;
 
 final class awtv
-  implements Comparator<RecentUser>
+  implements Comparator<awoe>
 {
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public int a(awoe paramawoe1, awoe paramawoe2)
   {
-    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
+    int j = Long.signum(paramawoe2.b() - paramawoe1.b());
+    int i = j;
+    if (j == 0) {
+      i = awtu.a(paramawoe1, paramawoe2);
+    }
+    return i;
   }
 }
 

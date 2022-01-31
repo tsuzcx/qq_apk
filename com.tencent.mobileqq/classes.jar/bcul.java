@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
 
-public class bcul
-  implements View.OnLayoutChangeListener
+class bcul
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcul(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
+  bcul(bcuj parambcuj, float paramFloat1, float paramFloat2) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramView.setTop(paramInt6);
-    paramView.setBottom(paramInt8);
-    paramView.setLeft(paramInt5);
-    paramView.setRight(paramInt7);
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramValueAnimator.floatValue();
+    float f3 = this.b;
+    float f4 = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Bcuj.a.setAlpha(f2 * (f3 - f4) + f1);
   }
 }
 

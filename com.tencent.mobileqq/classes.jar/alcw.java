@@ -1,22 +1,10 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-
 public abstract interface alcw
 {
-  public abstract void a();
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(int paramInt);
+  public abstract void b(int paramInt1, int paramInt2);
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo);
-  
-  public abstract void a(ArEffectConfig paramArEffectConfig);
-  
-  public abstract void b();
+  public abstract void j_(int paramInt);
 }
 
 

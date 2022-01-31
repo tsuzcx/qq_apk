@@ -1,26 +1,24 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uma
-  extends uth
+class uma
+  extends SimpleJob<Object>
 {
-  protected final int a;
-  protected final String a;
-  
-  public uma(String paramString1, int paramInt, String paramString2)
+  uma(uly paramuly, String paramString)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString);
   }
   
-  protected tjg a(String paramString, List<String> paramList)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return new tlm(paramString, paramList);
-  }
-  
-  protected tjh a()
-  {
-    return new umb(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
+    if (this.a.a == null) {
+      this.a.a = new umb(this.a, this.a.c);
+    }
+    this.a.d = this.a.a.a;
+    uly.a(this.a);
+    return null;
   }
 }
 

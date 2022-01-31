@@ -1,24 +1,20 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import java.lang.ref.WeakReference;
 
-public class bbro
-  implements URLDrawable.URLDrawableListener
+class bbro<E>
+  extends WeakReference<bbrm<E>>
+  implements bbrm<E>
 {
-  public bbro(VasResDrawable paramVasResDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bbro(bbrm<E> parambbrm)
   {
-    if (paramURLDrawable != null) {
-      VasResDrawable.a(this.a, paramURLDrawable);
+    super(parambbrm);
+  }
+  
+  public void a(E paramE, Object paramObject)
+  {
+    bbrm localbbrm = (bbrm)get();
+    if (localbbrm != null) {
+      localbbrm.a(paramE, paramObject);
     }
-    this.a.invalidateSelf();
   }
 }
 

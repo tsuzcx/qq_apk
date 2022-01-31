@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class abpg
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abpg(NotificationActivity paramNotificationActivity) {}
+  public abpg(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpg
  * JD-Core Version:    0.7.0.1
  */

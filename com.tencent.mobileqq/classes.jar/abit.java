@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
 public class abit
-  implements DialogInterface.OnDismissListener
+  extends akgf
 {
-  public abit(GroupManagerActivity paramGroupManagerActivity) {}
+  public abit(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    GroupManagerActivity.a(this.a, null);
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
   }
 }
 

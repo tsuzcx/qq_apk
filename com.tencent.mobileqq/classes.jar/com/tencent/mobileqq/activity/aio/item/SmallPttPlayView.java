@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import actn;
-import adwq;
-import adwr;
+import actj;
+import adwo;
+import adwp;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -17,20 +17,20 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bblk;
-import bbll;
+import bbly;
+import bblz;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 import com.tencent.qphone.base.util.QLog;
 
 public class SmallPttPlayView
   extends RelativeLayout
-  implements adwq, View.OnClickListener, bbll
+  implements adwo, View.OnClickListener, bblz
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bblk jdField_a_of_type_Bblk;
+  private bbly jdField_a_of_type_Bbly;
   PttAudioWaveView jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -58,7 +58,7 @@ public class SmallPttPlayView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView = new PttAudioWaveView(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-    localLayoutParams.width = actn.a(120.0F, getContext().getResources());
+    localLayoutParams.width = actj.a(120.0F, getContext().getResources());
     localLayoutParams.addRule(15, -1);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setLayoutParams(localLayoutParams);
@@ -68,7 +68,7 @@ public class SmallPttPlayView
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.rightMargin = actn.a(5.0F, getContext().getResources());
+    localLayoutParams.rightMargin = actj.a(5.0F, getContext().getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
@@ -95,14 +95,14 @@ public class SmallPttPlayView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bblk == null)
+    if (this.jdField_a_of_type_Bbly == null)
     {
-      this.jdField_a_of_type_Bblk = new bblk(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bblk.a(getContext());
-      this.jdField_a_of_type_Bblk.b();
-      this.jdField_a_of_type_Bblk.a(this);
-      this.jdField_a_of_type_Bblk.b(paramInt);
-      this.jdField_a_of_type_Bblk.c();
+      this.jdField_a_of_type_Bbly = new bbly(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bbly.a(getContext());
+      this.jdField_a_of_type_Bbly.b();
+      this.jdField_a_of_type_Bbly.a(this);
+      this.jdField_a_of_type_Bbly.b(paramInt);
+      this.jdField_a_of_type_Bbly.c();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(true);
       return;
     }
@@ -144,10 +144,10 @@ public class SmallPttPlayView
   
   void c()
   {
-    if (this.jdField_a_of_type_Bblk != null)
+    if (this.jdField_a_of_type_Bbly != null)
     {
-      this.jdField_a_of_type_Bblk.f();
-      this.jdField_a_of_type_Bblk = null;
+      this.jdField_a_of_type_Bbly.f();
+      this.jdField_a_of_type_Bbly = null;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) && (!this.jdField_a_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_Float - 0.0F) < 1.0E-008D)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(false);
@@ -166,15 +166,15 @@ public class SmallPttPlayView
     if (i <= 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("1\"");
-      int j = (int)actn.a((int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()), getContext().getResources());
-      i = adwr.a(getContext(), i, 0.0F, j, 5, false, false);
+      int j = (int)actj.a((int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()), getContext().getResources());
+      i = adwp.a(getContext(), i, 0.0F, j, 5, false, false);
       if (QLog.isColorLevel()) {
         QLog.d("SmallPttPlayView", 2, "setDuration  length=" + i + " duration=" + paramInt + "  param.waveSampleLen" + paramRecorderParam.f);
       }
-      if (i <= actn.a(121.0F, getContext().getResources())) {
+      if (i <= actj.a(121.0F, getContext().getResources())) {
         break label449;
       }
-      i = actn.a(121.0F, getContext().getResources());
+      i = actj.a(121.0F, getContext().getResources());
     }
     label449:
     for (;;)
@@ -186,12 +186,12 @@ public class SmallPttPlayView
       localObject = new RelativeLayout.LayoutParams(-2, -1);
       ((RelativeLayout.LayoutParams)localObject).width = i;
       ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = actn.a(5.0F, getContext().getResources());
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = actn.a(5.0F, getContext().getResources());
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = actj.a(5.0F, getContext().getResources());
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = actj.a(5.0F, getContext().getResources());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setVisibility(0);
       localObject = (LinearLayout.LayoutParams)getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).width = (i + actn.a(13.0F, getContext().getResources()) + (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()));
+      ((LinearLayout.LayoutParams)localObject).width = (i + actj.a(13.0F, getContext().getResources()) + (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()));
       setLayoutParams((ViewGroup.LayoutParams)localObject);
       ((VoiceTextEditPanel)getParent().getParent().getParent().getParent().getParent()).l();
       this.jdField_a_of_type_JavaLangString = paramString;

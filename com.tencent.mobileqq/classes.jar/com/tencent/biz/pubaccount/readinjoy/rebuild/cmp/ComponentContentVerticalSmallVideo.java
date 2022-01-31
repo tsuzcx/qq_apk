@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import actn;
+import actj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,10 +19,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bavi;
-import bawz;
-import bhvh;
-import bhvl;
+import bavw;
+import baxn;
+import bhvy;
+import bhwc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
@@ -32,18 +32,18 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import olb;
-import omu;
-import onk;
-import pax;
-import prb;
-import pvb;
-import qbq;
-import qbr;
-import qdd;
-import qdf;
-import qol;
-import rap;
+import oky;
+import omr;
+import onh;
+import pau;
+import pqy;
+import puy;
+import qbn;
+import qbo;
+import qda;
+import qdc;
+import qoi;
+import ram;
 
 public class ComponentContentVerticalSmallVideo
   extends ComponentContentBig
@@ -77,7 +77,7 @@ public class ComponentContentVerticalSmallVideo
   
   public static ShapeDrawable a(int paramInt, Context paramContext)
   {
-    int i = bawz.a(paramContext, 2.0F);
+    int i = baxn.a(paramContext, 2.0F);
     paramContext = new ShapeDrawable(new RoundRectShape(new float[] { i, i, i, i, i, i, i, i }, null, null));
     paramContext.getPaint();
     paramContext.getPaint().setColor(paramInt);
@@ -87,7 +87,7 @@ public class ComponentContentVerticalSmallVideo
   @SuppressLint({"Range"})
   private void c()
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pvb.a.a();
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Puy.a.a();
     if (localArticleInfo == null) {
       return;
     }
@@ -102,7 +102,7 @@ public class ComponentContentVerticalSmallVideo
         for (;;)
         {
           this.e.setTextColor(Color.parseColor("#ffffff"));
-          olb.a(this.e, a(Color.parseColor(str), getContext()));
+          oky.a(this.e, a(Color.parseColor(str), getContext()));
           this.e.setText(localArticleInfo.mVideoArticleSubsText);
           this.e.setVisibility(0);
           return;
@@ -117,7 +117,7 @@ public class ComponentContentVerticalSmallVideo
             QLog.w("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 2, "configDefaultItem: ", localException);
           }
           this.e.setTextColor(Color.parseColor("#ffffff"));
-          olb.a(this.e, a(Color.parseColor("#FE6c6c"), getContext()));
+          oky.a(this.e, a(Color.parseColor("#FE6c6c"), getContext()));
         }
       }
     }
@@ -129,50 +129,50 @@ public class ComponentContentVerticalSmallVideo
     return LayoutInflater.from(paramContext).inflate(2131559866, this, true);
   }
   
-  public URL a(pax parampax)
+  public URL a(pau parampau)
   {
     URL localURL = null;
-    Object localObject = parampax.a();
-    if (ComponentPolymericView.a(parampax))
+    Object localObject = parampau.a();
+    if (ComponentPolymericView.a(parampau))
     {
-      parampax = ((qbr)((ArticleInfo)localObject).mNewPolymericInfo.a.get(0)).c;
+      parampau = ((qbo)((ArticleInfo)localObject).mNewPolymericInfo.a.get(0)).c;
       if (QLog.isColorLevel()) {
-        QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "getUrl new polymeric video cover rawUrl = " + parampax);
+        QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "getUrl new polymeric video cover rawUrl = " + parampau);
       }
-      localURL = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), parampax);
+      localURL = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), parampau);
       if (QLog.isColorLevel())
       {
         if ("getUrl new polymeric video cover after smartcut url = " + localURL != null)
         {
-          parampax = localURL.getFile();
-          QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, parampax);
+          parampau = localURL.getFile();
+          QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, parampau);
         }
       }
       else {
-        parampax = localURL;
+        parampau = localURL;
       }
     }
     do
     {
-      return parampax;
-      parampax = null;
+      return parampau;
+      parampau = null;
       break;
-      parampax = ((ArticleInfo)localObject).getVideoCoverURL();
-      if (parampax == null) {
+      parampau = ((ArticleInfo)localObject).getVideoCoverURL();
+      if (parampau == null) {
         break label271;
       }
-      parampax = parampax.getFile();
+      parampau = parampau.getFile();
       if (QLog.isColorLevel()) {
-        QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "getUrl old polymeric video cover rawUrl = " + parampax);
+        QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "getUrl old polymeric video cover rawUrl = " + parampau);
       }
-      localObject = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), parampax);
-      parampax = (pax)localObject;
+      localObject = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), parampau);
+      parampau = (pau)localObject;
     } while (!QLog.isColorLevel());
-    parampax = localURL;
+    parampau = localURL;
     if ("getUrl old polymeric video cover after smartcut url = " + localObject != null) {
-      parampax = ((URL)localObject).getFile();
+      parampau = ((URL)localObject).getFile();
     }
-    QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, parampax);
+    QLog.d("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, parampau);
     return localObject;
     label271:
     return ((ArticleInfo)localObject).getVideoCoverURL();
@@ -182,23 +182,23 @@ public class ComponentContentVerticalSmallVideo
   {
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367847));
     this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367846));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363946));
-    this.d = ((TextView)paramView.findViewById(2131364471));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379032));
-    this.e = ((TextView)paramView.findViewById(2131376696));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363945));
+    this.d = ((TextView)paramView.findViewById(2131364470));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379037));
+    this.e = ((TextView)paramView.findViewById(2131376698));
     this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367848);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131375510));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131375512));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371747));
   }
   
   public void a(Object paramObject)
   {
-    pax localpax;
-    if ((paramObject instanceof pax))
+    pau localpau;
+    if ((paramObject instanceof pau))
     {
-      localpax = (pax)paramObject;
-      this.jdField_a_of_type_Pvb.a(localpax);
-      if (localpax.f() != 1) {
+      localpau = (pau)paramObject;
+      this.jdField_a_of_type_Puy.a(localpau);
+      if (localpau.f() != 1) {
         break label49;
       }
     }
@@ -206,30 +206,30 @@ public class ComponentContentVerticalSmallVideo
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      paramObject = localpax.a();
+      paramObject = localpau.a();
       if (paramObject != null) {
         break;
       }
       return;
     }
-    if (onk.s(paramObject))
+    if (onh.s(paramObject))
     {
-      this.jdField_a_of_type_AndroidUtilPair = new Pair(Integer.valueOf(actn.a(165.0F, getResources())), Integer.valueOf(actn.a(293.0F, getResources())));
-      findViewById(2131365036).setVisibility(8);
+      this.jdField_a_of_type_AndroidUtilPair = new Pair(Integer.valueOf(actj.a(165.0F, getResources())), Integer.valueOf(actj.a(293.0F, getResources())));
+      findViewById(2131365035).setVisibility(8);
     }
     for (;;)
     {
       b();
-      if (this.jdField_a_of_type_Pvb.a.e() == 56)
+      if (this.jdField_a_of_type_Puy.a.e() == 56)
       {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130842580));
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130842581));
         label148:
         if (!this.jdField_a_of_type_Boolean) {
           break label411;
         }
-        Object localObject = omu.a(1, this.jdField_a_of_type_Pvb.a.e());
-        localObject = URLDrawable.getDrawable(a(localpax), ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), new ColorDrawable(-1447447), new ColorDrawable(-1447447));
-        ((URLDrawable)localObject).setDecodeHandler(bavi.t);
+        Object localObject = omr.a(1, this.jdField_a_of_type_Puy.a.e());
+        localObject = URLDrawable.getDrawable(a(localpau), ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), new ColorDrawable(-1447447), new ColorDrawable(-1447447));
+        ((URLDrawable)localObject).setDecodeHandler(bavw.t);
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable((Drawable)localObject);
         this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -237,8 +237,8 @@ public class ComponentContentVerticalSmallVideo
       }
       try
       {
-        this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(a(localpax));
-        if (onk.s(paramObject))
+        this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(a(localpau));
+        if (onh.s(paramObject))
         {
           this.d.setVisibility(8);
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -248,10 +248,10 @@ public class ComponentContentVerticalSmallVideo
           return;
           if (this.jdField_a_of_type_Boolean)
           {
-            this.jdField_a_of_type_AndroidUtilPair = omu.a(3, this.jdField_a_of_type_Pvb.a.e());
+            this.jdField_a_of_type_AndroidUtilPair = omr.a(3, this.jdField_a_of_type_Puy.a.e());
             continue;
           }
-          this.jdField_a_of_type_AndroidUtilPair = omu.a(this.jdField_a_of_type_Pvb.a.f(), this.jdField_a_of_type_Pvb.a.e());
+          this.jdField_a_of_type_AndroidUtilPair = omr.a(this.jdField_a_of_type_Puy.a.f(), this.jdField_a_of_type_Puy.a.e());
           continue;
           this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(null);
           break label148;
@@ -266,21 +266,21 @@ public class ComponentContentVerticalSmallVideo
         {
           QLog.e("PolymericSmallVideo_ComponentContentVerticalSmallVideo", 1, "bindData setVideoCover failed. Exception e = " + localException);
           continue;
-          bhvl localbhvl = bhvh.a(BaseApplicationImpl.getApplication().getRuntime());
-          if ((localbhvl != null) && (localbhvl.jdField_a_of_type_Boolean))
+          bhwc localbhwc = bhvy.a(BaseApplicationImpl.getApplication().getRuntime());
+          if ((localbhwc != null) && (localbhwc.jdField_a_of_type_Boolean))
           {
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(actn.a(3.0F, getResources()));
-            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130848366, 0, 0, 0);
+            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(actj.a(3.0F, getResources()));
+            this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130848372, 0, 0, 0);
             label521:
-            if ((localbhvl == null) || (localbhvl.b)) {
+            if ((localbhwc == null) || (localbhwc.b)) {
               break label585;
             }
             this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
           }
           for (;;)
           {
-            if ((localbhvl == null) || (localbhvl.c)) {
+            if ((localbhwc == null) || (localbhwc.c)) {
               break label658;
             }
             this.d.setVisibility(8);
@@ -289,30 +289,30 @@ public class ComponentContentVerticalSmallVideo
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
             break label521;
             label585:
-            if ((localbhvl != null) && (localbhvl.jdField_a_of_type_Int > 0)) {
-              this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(localbhvl.jdField_a_of_type_Int);
+            if ((localbhwc != null) && (localbhwc.jdField_a_of_type_Int > 0)) {
+              this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(localbhwc.jdField_a_of_type_Int);
             }
-            if (rap.q(paramObject)) {
+            if (ram.q(paramObject)) {
               this.jdField_b_of_type_AndroidWidgetTextView.setText(paramObject.mTitle);
             } else {
-              this.jdField_b_of_type_AndroidWidgetTextView.setText(((qdf)paramObject.mSocialFeedInfo.a.b.get(0)).e);
+              this.jdField_b_of_type_AndroidWidgetTextView.setText(((qdc)paramObject.mSocialFeedInfo.a.b.get(0)).e);
             }
           }
           label658:
-          this.d.setText(getResources().getString(2131718356, new Object[] { paramObject.getCommentCount() + "" }));
+          this.d.setText(getResources().getString(2131718367, new Object[] { paramObject.getCommentCount() + "" }));
           if (paramObject.mVideoPlayCount <= 0) {
             this.jdField_c_of_type_AndroidWidgetTextView.setText("0");
           } else {
-            this.jdField_c_of_type_AndroidWidgetTextView.setText(qol.c(paramObject.mVideoPlayCount));
+            this.jdField_c_of_type_AndroidWidgetTextView.setText(qoi.c(paramObject.mVideoPlayCount));
           }
         }
       }
     }
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.jdField_a_of_type_Pvb.a(paramprb);
+    this.jdField_a_of_type_Puy.a(parampqy);
   }
   
   public void b()

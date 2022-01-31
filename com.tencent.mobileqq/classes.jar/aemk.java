@@ -1,18 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 
 class aemk
-  extends Handler
+  implements View.OnClickListener
 {
-  aemk(aemj paramaemj) {}
+  aemk(aemh paramaemh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
-    }
+    actj.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
   }
 }
 

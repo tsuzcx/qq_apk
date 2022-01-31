@@ -1,39 +1,44 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class abda
-  extends ajta
+  implements awqw
 {
   public abda(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(View paramView)
   {
-    if (paramInt2 == 0)
+    int i = 1;
+    awoe localawoe = (awoe)paramView.getTag(2131379213);
+    if (localawoe == null) {}
+    for (;;)
     {
-      this.a.a();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
+      return;
+      String str1 = localawoe.b();
+      String str2 = localawoe.a().toString();
+      paramView = "-1";
+      if ((localawoe instanceof awms))
+      {
+        paramView = ((awms)localawoe).e();
+        i = 3000;
+      }
+      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        if ((localawoe instanceof awmy)) {
+          paramView = ((awmy)localawoe).a;
+        } else if ((localawoe instanceof awnd)) {
+          paramView = ((awnd)localawoe).a().troopuin;
+        } else if ((localawoe instanceof awmt)) {
+          i = 0;
+        } else {
+          i = -1;
         }
       }
     }
-    label47:
-    while (!this.a.isResumed())
-    {
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131704838), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131704837), 0).a();
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694927);
-    }
-    bcpw.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

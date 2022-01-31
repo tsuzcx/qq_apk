@@ -1,21 +1,15 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class mfp
-  extends mck
+  implements DialogInterface.OnClickListener
 {
-  public mfp(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  public mfp(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  protected void a(bbfr parambbfr)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != parambbfr.a)) {
-      QLog.w(this.a.c, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambbfr.a + "]");
-    }
-    if (this.a.a != parambbfr.a)
-    {
-      this.a.a = parambbfr.a;
-      this.a.f(0L, 65535);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

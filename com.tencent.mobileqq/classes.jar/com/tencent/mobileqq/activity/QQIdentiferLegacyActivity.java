@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import axqw;
-import bfni;
+import axqy;
+import bfnz;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class QQIdentiferLegacyActivity
@@ -22,7 +22,7 @@ public class QQIdentiferLegacyActivity
     if (paramFragmentActivity.findFragmentById(2131367260) != null) {
       localFragmentTransaction.replace(2131367260, paramFragment);
     }
-    while (bfni.e())
+    while (bfnz.e())
     {
       localFragmentTransaction.commitAllowingStateLoss();
       return;
@@ -35,10 +35,10 @@ public class QQIdentiferLegacyActivity
   {
     String str = getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      axqw.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      axqw.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      axqy.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   

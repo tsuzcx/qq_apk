@@ -1,225 +1,175 @@
+import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
 import android.text.TextUtils;
+import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.plugin.IQZonePluginManager.4;
+import cooperation.qzone.plugin.PluginRecord;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import mqq.app.AppRuntime;
 
-public class bhii
-  implements Handler.Callback
+public abstract class bhii
+  extends bhkl
 {
-  private static String jdField_a_of_type_JavaLangString = "livepluginso.jar";
-  private Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
-  private Map<String, bhij> jdField_a_of_type_JavaUtilMap;
-  
-  bhii(Context paramContext)
+  public static void a(Activity paramActivity, bhio parambhio)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(this.jdField_a_of_type_AndroidContentContext).getCommonDownloader();
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.enableResumeTransfer(true);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  private static void a()
-  {
-    String str = bhjq.a(BaseApplicationImpl.getContext());
-    if (TextUtils.isEmpty(str)) {}
-    File localFile;
-    do
+    if (parambhio.f != null)
     {
-      return;
-      localFile = new File(str + jdField_a_of_type_JavaLangString);
-    } while (!localFile.exists());
-    try
+      localObject = Toast.makeText(BaseApplicationImpl.getContext(), parambhio.f, 0);
+      ((Toast)localObject).setGravity(17, 0, 0);
+      ((Toast)localObject).show();
+    }
+    Object localObject = new bhij();
+    if ((parambhio.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
+      new SplashDialogWrapper(paramActivity, parambhio.jdField_a_of_type_AndroidAppDialog, parambhio.d, parambhio.jdField_b_of_type_JavaLangString, parambhio.jdField_a_of_type_Boolean, parambhio.c).show();
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
     {
-      bhnq.b(localFile, new File(str));
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneLiveSoDownloader", 2, "unZipPluginSo success");
-      }
+      b(paramActivity, parambhio, (bhin)localObject);
       return;
     }
-    catch (Exception localException)
+    ((bhii)((QQAppInterface)localAppRuntime).getManager(175)).a(paramActivity, parambhio, (bhin)localObject);
+  }
+  
+  public static void a(Context paramContext, bhio parambhio)
+  {
+    bhik localbhik = new bhik();
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
     {
-      QLog.w("QZoneLiveSoDownloader", 1, "unzipTofolder" + localException.getMessage());
+      b(paramContext, parambhio, localbhik);
       return;
     }
-    finally
-    {
-      localFile.delete();
-    }
+    ((bhii)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhio, localbhik);
   }
   
-  private void a(bhij parambhij)
+  static void b(Activity paramActivity, bhio parambhio)
   {
-    if (parambhij != null)
-    {
-      Object localObject = bhij.a(parambhij);
-      if (localObject != null) {
-        ((bhik)localObject).a(parambhij);
-      }
-      localObject = bhjq.a(BaseApplicationImpl.getContext()) + jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneLiveSoDownloader", 2, "downloadSoInner url:" + bhij.a(parambhij) + "     path:" + (String)localObject);
-      }
-      if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(bhij.a(parambhij), (String)localObject, new bhil(this, parambhij)))
-      {
-        localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3);
-        ((Message)localObject).obj = parambhij;
-        ((Message)localObject).sendToTarget();
-      }
-    }
-  }
-  
-  private void a(bhij parambhij, int paramInt1, int paramInt2)
-  {
-    parambhij = new HashMap();
-    parambhij.put("ret_code", String.valueOf(paramInt1));
-    parambhij.put("refer", String.valueOf(paramInt2));
-    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
-      axrl.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actQZLiveDownloadSoReport", true, 0L, 0L, parambhij, null);
-    }
-  }
-  
-  private void b(bhij parambhij)
-  {
-    if (parambhij != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.cancel(bhij.a(parambhij), new bhil(this, parambhij));
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.obj = paramString;
-  }
-  
-  public void a(String paramString, bhik parambhik, int paramInt)
-  {
-    bhij localbhij = new bhij();
-    bhij.a(localbhij, paramString);
-    bhij.a(localbhij, parambhik);
-    bhij.a(localbhij, paramInt);
-    if ((bhjq.a(BaseApplicationImpl.getContext())) && (parambhik != null))
-    {
-      parambhik.d(localbhij);
-      return;
-    }
-    paramString = Message.obtain();
-    paramString.what = 0;
-    paramString.obj = localbhij;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
+    if ((parambhio == null) || (paramActivity == null) || (parambhio.jdField_a_of_type_AndroidContentIntent == null)) {}
     for (;;)
     {
-      return false;
-      if ((paramMessage.obj instanceof bhij))
+      return;
+      parambhio.jdField_a_of_type_AndroidContentIntent.setClass(paramActivity, parambhio.jdField_a_of_type_JavaLangClass);
+      if (TextUtils.isEmpty(parambhio.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
       {
-        paramMessage = (bhij)paramMessage.obj;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage))) {
-          return false;
-        }
-        this.jdField_a_of_type_JavaUtilMap.put(bhij.a(paramMessage), paramMessage);
-        a(paramMessage);
-        return true;
-        if ((paramMessage.obj instanceof String))
+        parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhio.jdField_a_of_type_JavaLangString);
+        parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhio.jdField_a_of_type_JavaLangString);
+      }
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhio.jdField_a_of_type_JavaLangString);
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqr.class.getName());
+      try
+      {
+        File localFile = new File(bhkh.a(paramActivity), parambhio.jdField_b_of_type_JavaLangString);
+        PluginProxyActivity.openActivityForResult(paramActivity, parambhio.d, parambhio.jdField_b_of_type_JavaLangString, localFile.getCanonicalPath(), parambhio.e, parambhio.jdField_a_of_type_AndroidContentIntent, parambhio.jdField_b_of_type_Int);
+        if ((parambhio.jdField_a_of_type_AndroidAppDialog != null) && ((parambhio.jdField_a_of_type_AndroidAppDialog instanceof bcqv)) && (paramActivity != null))
         {
-          paramMessage = (String)paramMessage.obj;
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramMessage))
-          {
-            Object localObject = (bhij)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
-            a((bhij)localObject, 3, bhij.a((bhij)localObject));
-            this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
-            b((bhij)localObject);
-            continue;
-            if ((paramMessage.obj instanceof bhij))
-            {
-              paramMessage = (bhij)paramMessage.obj;
-              if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
-              {
-                a(paramMessage, 1, bhij.a(paramMessage));
-                this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
-                localObject = bhij.a(paramMessage);
-                if (localObject != null)
-                {
-                  ((bhik)localObject).b(paramMessage);
-                  continue;
-                  if ((paramMessage.obj instanceof bhij))
-                  {
-                    paramMessage = (bhij)paramMessage.obj;
-                    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
-                    {
-                      a(paramMessage, 2, bhij.a(paramMessage));
-                      this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
-                      localObject = bhij.a(paramMessage);
-                      if (localObject != null)
-                      {
-                        ((bhik)localObject).c(paramMessage);
-                        continue;
-                        if ((paramMessage.obj instanceof bhij))
-                        {
-                          paramMessage = (bhij)paramMessage.obj;
-                          if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
-                          {
-                            localObject = bhij.a(paramMessage);
-                            a();
-                            LocalMultiProcConfig.putInt("QzoneLiveSoVersion", QzoneConfig.getInstance().getConfig("LiveSetting", "LivePluginSOVersion", 5));
-                            if (bhjq.a(BaseApplicationImpl.getContext()))
-                            {
-                              a(paramMessage, 0, bhij.a(paramMessage));
-                              this.jdField_a_of_type_JavaUtilMap.remove(bhij.a(paramMessage));
-                              if (localObject != null) {
-                                ((bhik)localObject).d(paramMessage);
-                              }
-                            }
-                            else if (localObject != null)
-                            {
-                              ((bhik)localObject).c(paramMessage);
-                              continue;
-                              if ((paramMessage.obj instanceof bhij))
-                              {
-                                paramMessage = (bhij)paramMessage.obj;
-                                if (this.jdField_a_of_type_JavaUtilMap.containsKey(bhij.a(paramMessage)))
-                                {
-                                  localObject = bhij.a(paramMessage);
-                                  if (localObject != null) {
-                                    ((bhik)localObject).e(paramMessage);
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          paramActivity.overridePendingTransition(2130772097, 2130772097);
+          return;
         }
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("feilongzou", 1, paramActivity, new Object[0]);
       }
     }
   }
+  
+  public static void b(Context paramContext, bhio parambhio)
+  {
+    bhil localbhil = new bhil();
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      b(paramContext, parambhio, localbhil);
+      return;
+    }
+    ((bhii)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhio, localbhil);
+  }
+  
+  private static void b(Context paramContext, bhio parambhio, bhin parambhin)
+  {
+    bhjz.a(paramContext, new bhim(paramContext, parambhio, parambhin));
+  }
+  
+  static void c(Context paramContext, bhio parambhio)
+  {
+    if ((TextUtils.isEmpty(parambhio.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhio.jdField_a_of_type_JavaLangString)))
+    {
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhio.jdField_a_of_type_JavaLangString);
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhio.jdField_a_of_type_JavaLangString);
+    }
+    parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhio.jdField_a_of_type_JavaLangString);
+    parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqr.class.getName());
+    Object localObject = parambhio.jdField_b_of_type_JavaLangString;
+    localObject = new File(bhkh.a(paramContext), (String)localObject);
+    try
+    {
+      PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, parambhio.d, parambhio.jdField_b_of_type_JavaLangString, ((File)localObject).getCanonicalPath(), parambhio.e, parambhio.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PluginDebug", 2, "doLaunchPluginBroadcast", paramContext);
+    }
+  }
+  
+  static void d(Context paramContext, bhio parambhio)
+  {
+    if ((TextUtils.isEmpty(parambhio.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhio.jdField_a_of_type_JavaLangString)))
+    {
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhio.jdField_a_of_type_JavaLangString);
+      parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhio.jdField_a_of_type_JavaLangString);
+    }
+    parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhio.jdField_a_of_type_JavaLangString);
+    parambhio.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqr.class.getName());
+    Object localObject = parambhio.jdField_b_of_type_JavaLangString;
+    localObject = new File(bhkh.a(paramContext), (String)localObject);
+    try
+    {
+      localObject = ((File)localObject).getCanonicalPath();
+      if (parambhio.jdField_a_of_type_AndroidContentServiceConnection != null)
+      {
+        PluginProxyService.bindService(paramContext, parambhio.d, parambhio.jdField_b_of_type_JavaLangString, (String)localObject, parambhio.e, parambhio.jdField_a_of_type_AndroidContentIntent, parambhio.jdField_a_of_type_AndroidContentServiceConnection);
+        return;
+      }
+      ThreadManager.post(new IQZonePluginManager.4(paramContext, parambhio, (String)localObject), 5, null, false);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PluginDebug", 2, "doLaunchPluginService", paramContext);
+      }
+    }
+  }
+  
+  public abstract PluginRecord a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(Context paramContext, bhio parambhio, bhin parambhin);
+  
+  public abstract void a(bhip parambhip, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, bhis parambhis, int paramInt);
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean c(String paramString);
 }
 
 

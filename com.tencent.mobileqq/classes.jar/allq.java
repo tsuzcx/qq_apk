@@ -1,14 +1,37 @@
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
 
 public class allq
-  extends allo
 {
-  public String a;
+  private Bundle a;
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public allq(Bundle paramBundle)
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    this.a = paramBundle;
+  }
+  
+  public Bundle a()
+  {
+    return this.a;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.putLong("downloadItems", paramLong);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.putBoolean("NoLimitParams", paramBoolean);
+  }
+  
+  public void b(long paramLong)
+  {
+    this.a.putLong("recognitionMask", paramLong);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.a.putBoolean("arTransferPromotion", paramBoolean);
   }
 }
 

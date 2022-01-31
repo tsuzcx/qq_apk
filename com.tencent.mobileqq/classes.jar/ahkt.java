@@ -1,23 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
 
 class ahkt
   implements View.OnClickListener
 {
-  ahkt(ahkf paramahkf) {}
+  ahkt(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (ahkf.a(this.a) != null) {}
-    for (paramView = ahkf.a(this.a).app;; paramView = null)
-    {
-      if (paramView != null) {
-        aluc.a().a(ahkf.a(this.a), paramView);
-      }
-      aluc.a().a();
-      return;
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
     }
+    this.a.c();
   }
 }
 

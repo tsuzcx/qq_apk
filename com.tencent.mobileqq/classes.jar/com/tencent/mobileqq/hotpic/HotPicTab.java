@@ -13,10 +13,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import arab;
-import arac;
+import arad;
 import arae;
-import bftl;
+import arag;
+import bfuc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -43,8 +43,8 @@ public class HotPicTab
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new arab(this);
-  arac jdField_a_of_type_Arac;
+  private Handler jdField_a_of_type_AndroidOsHandler = new arad(this);
+  arae jdField_a_of_type_Arae;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = -1;
@@ -93,9 +93,9 @@ public class HotPicTab
   
   public HotPicTagInfo a()
   {
-    if (this.jdField_a_of_type_Arac != null)
+    if (this.jdField_a_of_type_Arae != null)
     {
-      Object localObject = this.jdField_a_of_type_Arac.a;
+      Object localObject = this.jdField_a_of_type_Arae.a;
       if (((List)localObject).size() > this.mCurrentlySelectedAdapterIndex)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.mCurrentlySelectedAdapterIndex);
@@ -112,7 +112,7 @@ public class HotPicTab
     setAdapter(null);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     setOnItemClickListener(null);
-    this.jdField_a_of_type_Arac = null;
+    this.jdField_a_of_type_Arae = null;
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
@@ -153,9 +153,9 @@ public class HotPicTab
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
       }
     }
-    this.jdField_a_of_type_Arac = new arac(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
+    this.jdField_a_of_type_Arae = new arae(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
     this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Arac);
+    setAdapter(this.jdField_a_of_type_Arae);
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -179,7 +179,7 @@ public class HotPicTab
         localView = getSelectedView();
         if ((localView != null) && (localView.getTag() != null))
         {
-          localObject = ((arae)localView.getTag()).a;
+          localObject = ((arag)localView.getTag()).a;
           n = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
           m = localView.getLeft();
           m = (int)(((TextView)localObject).getRight() + m + jdField_b_of_type_Float * 5.0F);
@@ -205,10 +205,10 @@ public class HotPicTab
         if ((localView == null) || (localView.getTag() == null)) {
           break label314;
         }
-        localObject = (arae)localView.getTag();
-        k = (int)(localView.getLeft() + ((arae)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
+        localObject = (arag)localView.getTag();
+        k = (int)(localView.getLeft() + ((arag)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
         j = localView.getLeft();
-        j = (int)(((arae)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
+        j = (int)(((arag)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
         break;
         n = 0;
         break label121;

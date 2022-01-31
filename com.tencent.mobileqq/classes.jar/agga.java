@@ -1,104 +1,23 @@
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class agga
 {
-  private static final agga jdField_a_of_type_Agga = new agga();
-  private Map<String, List<WeakReference<agfx>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  
-  private int a(List<WeakReference<agfx>> paramList, agfx paramagfx)
+  public static void a(String paramString)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        agfx localagfx = (agfx)((WeakReference)paramList.next()).get();
-        if ((localagfx != null) && (localagfx == paramagfx)) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
+    a(paramString, "");
   }
   
-  public static agga a()
+  public static void a(String paramString1, String paramString2)
   {
-    return jdField_a_of_type_Agga;
+    a(paramString1, paramString2, "");
   }
   
-  public void a(int paramInt, String paramString, agfx paramagfx)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    try
-    {
-      String str = akpy.a(paramString, paramInt);
-      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
-      paramString = localList;
-      if (localList == null)
-      {
-        paramString = new ArrayList(2);
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-      }
-      if (a(paramString, paramagfx) < 0) {
-        paramString.add(new WeakReference(paramagfx));
-      }
-      return;
+    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(aghk.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
     }
-    finally {}
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramString = akpy.a(paramString, paramInt);
-        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          paramString = paramString.iterator();
-          if (paramString.hasNext())
-          {
-            if ((agfx)((WeakReference)paramString.next()).get() == null) {
-              continue;
-            }
-            bool = true;
-            if (QLog.isColorLevel()) {
-              QLog.d(aghm.a, 2, "hasOtherInstance -->" + bool);
-            }
-            return bool;
-          }
-        }
-      }
-      finally {}
-      boolean bool = false;
-    }
-  }
-  
-  public void b(int paramInt, String paramString, agfx paramagfx)
-  {
-    try
-    {
-      paramString = akpy.a(paramString, paramInt);
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if ((paramString != null) && (paramString.size() > 0) && (paramagfx != null))
-      {
-        paramInt = a(paramString, paramagfx);
-        if (paramInt >= 0) {
-          paramString.remove(paramInt);
-        }
-      }
-      return;
-    }
-    finally {}
   }
 }
 

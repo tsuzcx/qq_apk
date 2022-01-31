@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abha;
+import abgw;
 
 public class FriendProfilePhotoHelper$2
   implements Runnable
 {
-  public FriendProfilePhotoHelper$2(abha paramabha) {}
+  public FriendProfilePhotoHelper$2(abgw paramabgw) {}
   
   public void run()
   {

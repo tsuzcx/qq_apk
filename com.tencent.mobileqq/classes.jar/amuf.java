@@ -1,46 +1,67 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amuf
+  extends ampa<amue>
 {
-  private int a;
-  private int b;
-  private int c;
-  
-  public static amuf a(String paramString)
+  public int a()
   {
-    if (paramString == null) {}
-    do
+    return 442;
+  }
+  
+  @NonNull
+  public amue a(int paramInt)
+  {
+    return new amue();
+  }
+  
+  @Nullable
+  public amue a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      return null;
-      try
-      {
-        amuf localamuf = new amuf();
-        paramString = new JSONObject(paramString);
-        localamuf.a = paramString.optInt("showVoiceToTextSwitch", -1);
-        localamuf.b = paramString.optInt("grayTipShowPerThousand", -1);
-        localamuf.c = paramString.optInt("mainSwitch", -1);
-        return localamuf;
+      amue localamue = amue.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+      return localamue;
+    }
     return null;
   }
   
-  public int a()
+  public Class<amue> a()
   {
-    return this.b;
+    return amue.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amue paramamue)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramamue.toString());
+    }
   }
   
   public boolean a()
   {
-    return this.a == 1;
+    return true;
   }
   
-  public String toString()
+  public int b()
   {
-    return "open:" + this.a;
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

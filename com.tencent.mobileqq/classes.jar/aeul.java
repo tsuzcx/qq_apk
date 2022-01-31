@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class aeul
-  extends azjt
+  implements Animation.AnimationListener
 {
   public aeul(TroopChatPie paramTroopChatPie) {}
   
-  protected void a(long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!String.valueOf(paramLong).equals(this.a.c())) {}
-    while (TroopChatPie.l(this.a) == null) {
-      return;
-    }
-    TroopChatPie.m(this.a).a();
+    this.a.d.setBackgroundResource(2130843031);
+    this.a.a.setBackgroundResource(2130843037);
+    this.a.q.setVisibility(8);
+    this.a.r.setVisibility(8);
+    this.a.o.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.q.setVisibility(0);
+    this.a.r.setVisibility(0);
   }
 }
 

@@ -1,37 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class bbsu
-  extends bbso
+class bbsu
+  extends hl
 {
-  public static bbsu a = new bbsu();
+  bbsu(bbss parambbss) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bbqb parambbqb, boolean paramBoolean)
+  public void a(ChatMessage paramChatMessage, int paramInt)
   {
-    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambbqb, paramBoolean);
+    if ((bbss.a(this.a) < 0) || (bbss.b(this.a) < bbss.a(this.a)))
+    {
+      bbss.a(this.a).shouldStartAnimation = true;
+      bbss.a(this.a).startAnimation(false, false);
+      if (bbss.a(this.a) > 0) {
+        bbss.c(this.a);
+      }
+    }
   }
   
-  public static boolean a(Context paramContext, int paramInt)
-  {
-    String str = "qqVipLevel." + paramInt;
-    return new File(a.getDir(paramContext, str)).exists();
-  }
-  
-  public long getBID()
-  {
-    return 41L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "qqlevel_icon";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "qqVipLevel.";
-  }
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt) {}
 }
 
 

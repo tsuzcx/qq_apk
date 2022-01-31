@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqbk
-  extends auom
+  implements DialogInterface.OnClickListener
 {
-  aqbk(aqbj paramaqbj, MessageForPic paramMessageForPic) {}
+  aqbk(aqbe paramaqbe) {}
   
-  public void a(int paramInt, aunu paramaunu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aqbj.jdField_a_of_type_Aqbo != null) {
-      this.jdField_a_of_type_Aqbj.jdField_a_of_type_Aqbo.b();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case -2: 
+      this.a.n();
+      return;
     }
-    ayog.d(aywk.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-      aqbc.a(this.jdField_a_of_type_Aqbj.jdField_a_of_type_Aqbc, aehy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic), this.jdField_a_of_type_Aqbj.jdField_a_of_type_JavaLangString);
-    }
+    this.a.o();
   }
-  
-  public void a_(int paramInt, boolean paramBoolean) {}
 }
 
 

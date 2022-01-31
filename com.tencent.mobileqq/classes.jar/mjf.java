@@ -1,33 +1,21 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mjf
-  extends mck
+  implements DialogInterface.OnClickListener
 {
-  public mjf(VideoControlUI paramVideoControlUI, long paramLong1, long paramLong2) {}
+  public mjf(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  protected void a(long paramLong, boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface.dismiss();
     if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
-      }
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onNotify_ScreenShot_Finish, flag[" + this.jdField_a_of_type_Long + "], _flag[" + paramLong + "], path[" + paramString + "], ret[" + paramBoolean + "], seq[" + this.b + "]");
-      } while (this.jdField_a_of_type_Long != paramLong);
-      if (paramBoolean) {
-        awgq.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
-      }
-    } while (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+    muc.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
   }
 }
 

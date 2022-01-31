@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.XListView;
 
 public class ce
-  implements bcpk
+  implements bcpz
 {
   private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131371906);
   

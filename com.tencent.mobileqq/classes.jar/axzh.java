@@ -1,141 +1,95 @@
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.ProgressBar;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axzh
   extends axup
 {
-  public boolean c;
-  public int k;
-  public int l = 3;
+  private int k;
   
   public axzh()
   {
-    this(null);
+    this.a = "progress";
   }
   
-  public axzh(String paramString)
+  public axzh(int paramInt)
   {
-    super(paramString, "summary");
+    this.k = paramInt;
+    this.a = "progress";
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject1;
-    if ((paramBundle != null) && (paramBundle.containsKey("extend-data-json")) && (paramBundle.getInt("serviceID", 0) == 128))
+    if ((paramView != null) && ((paramView instanceof ProgressBar))) {}
+    for (paramContext = (ProgressBar)paramView;; paramContext = paramView)
     {
-      localObject1 = paramBundle.getString("extend-data-json");
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    }
-    try
-    {
-      Object localObject2;
-      Object localObject3;
-      if ((paramContext instanceof BaseActivity))
-      {
-        localObject2 = new JSONObject((String)localObject1);
-        localObject3 = ((BaseActivity)paramContext).app;
-        localStringBuilder = new StringBuilder();
-        if (!((JSONObject)localObject2).has("senderuin")) {
-          break label308;
-        }
-        localObject1 = ((JSONObject)localObject2).optString("senderuin");
-        if (!TextUtils.equals((CharSequence)localObject1, ((QQAppInterface)localObject3).c())) {
-          break label247;
-        }
-        localObject1 = bbcl.a((QQAppInterface)localObject3, ((JSONObject)localObject2).optString("invitedUin"), 0);
-        localStringBuilder.append("你邀请").append(bbcl.a((String)localObject1, 12.0F));
+      paramContext.setTag(this);
+      paramContext.setProgress(this.k);
+      if (this.k == paramContext.getMax()) {
+        paramContext.setVisibility(8);
       }
-      for (;;)
-      {
-        localObject1 = ((JSONObject)localObject2).optString("groupname");
-        localObject3 = (TroopManager)((QQAppInterface)localObject3).getManager(52);
-        if (localObject3 == null) {
-          break;
-        }
-        localObject2 = ((TroopManager)localObject3).b(((JSONObject)localObject2).optString("groupcode"));
-        if (localObject2 == null) {
-          break;
-        }
-        localObject2 = ((TroopInfo)localObject2).getTroopName();
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break;
-        }
-        localObject1 = localObject2;
-        localStringBuilder.append("加入群聊“").append(bbcl.a((String)localObject1, 12.0F)).append("”，进入可查看详情。");
-        this.Y = localStringBuilder.toString();
-        return super.a(paramContext, paramView, paramBundle);
-        label247:
-        localStringBuilder.append(bbcl.a(bbcl.a((QQAppInterface)localObject3, (String)localObject1, 0), 12.0F)).append("邀请你");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        QLog.d("StructMsg", 1, "createView error:" + localThrowable.getMessage());
-        continue;
-        label308:
-        localStringBuilder.append("邀请");
-      }
+      return paramContext;
+      paramView = new ProgressBar(paramContext, null, 16842872);
+      paramView.setId(2131376564);
+      paramView.setMax(100);
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837727));
     }
   }
   
   public String a()
   {
-    return "Summary";
+    return "Progress";
   }
   
-  public void a(AbsShareMsg paramAbsShareMsg)
+  public void a(ObjectInput paramObjectInput)
   {
-    paramAbsShareMsg.mContentSummary = this.Y;
+    super.a(paramObjectInput);
+    this.k = paramObjectInput.readInt();
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void a(ObjectOutput paramObjectOutput)
   {
-    this.c = paramBoolean;
-    this.k = paramInt;
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.k);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "progress");
+    paramXmlSerializer.text(String.valueOf(this.k));
+    paramXmlSerializer.endTag(null, "progress");
+  }
+  
+  public boolean a(axwg paramaxwg)
+  {
+    paramaxwg = axva.a(paramaxwg);
+    try
+    {
+      this.k = Integer.valueOf(paramaxwg).intValue();
+      return true;
+    }
+    catch (NumberFormatException paramaxwg)
+    {
+      for (;;)
+      {
+        this.k = 0;
+      }
+    }
   }
   
   public int b()
   {
-    if ((this.a != null) && (this.a.mMsgServiceID == 35)) {
-      return super.b();
-    }
-    return this.l;
+    return this.k;
   }
   
   public void b(int paramInt)
   {
-    this.l = paramInt;
-  }
-  
-  public int c()
-  {
-    return 2131378362;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.k != 0)) {
-      return -1;
-    }
-    return -8355712;
-  }
-  
-  public int f()
-  {
-    return 28;
+    this.k = paramInt;
   }
 }
 

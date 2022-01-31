@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import bgft;
+import bggk;
 import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 class QzoneBackupConfig
   extends IPConfigStrategy
-  implements bgft
+  implements bggk
 {
   private static final String TAG = "QzoneIPStracyConfig";
   private Map<String, String> mConfigs = new HashMap();

@@ -2,18 +2,18 @@ package com.tencent.biz.qqstory.playvideo.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import ueg;
-import ueo;
+import ued;
+import uel;
 
 public class VideoViewTVKImpl$8$1
   implements Runnable
 {
-  public VideoViewTVKImpl$8$1(ueo paramueo, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoViewTVKImpl$8$1(uel paramuel, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ueo.a.a != null) {
-      this.jdField_a_of_type_Ueo.a.a.onSeekComplete(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
+    if (this.jdField_a_of_type_Uel.a.a != null) {
+      this.jdField_a_of_type_Uel.a.a.onSeekComplete(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
     }
   }
 }

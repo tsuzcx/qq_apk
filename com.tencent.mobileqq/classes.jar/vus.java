@@ -1,8 +1,18 @@
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.util.List;
+
 public class vus
+  extends vup
 {
-  public vur a;
-  public long b;
-  public boolean d;
+  public int a;
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public vut a;
+  public int b;
 }
 
 

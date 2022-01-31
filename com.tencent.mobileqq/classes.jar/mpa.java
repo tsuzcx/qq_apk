@@ -1,16 +1,14 @@
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
 
-public class mpa
-  extends lgl
+class mpa
+  extends lgg
 {
-  mpa(moy parammoy) {}
+  mpa(moz parammoz) {}
   
-  protected void a()
+  protected void a(long paramLong)
   {
-    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
-    this.a.a.b(this);
+    this.a.a("onConnected_init_when_not_support");
+    moz.a(this.a).b(this);
   }
 }
 

@@ -1,29 +1,11 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aedt
-  extends aedl
+class aedt
+  extends aedq
 {
-  public aedt(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
+  public aedt(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
-  
-  public acun a()
-  {
-    return new aedv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562534, paramBaseChatItemLayout, false);
+    super(paramQQAppInterface);
   }
 }
 

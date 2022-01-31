@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
@@ -9,7 +9,7 @@ public final class MessageProtoCodec$1
 {
   public void run()
   {
-    bcpw.a(this.a.getApplication().getApplicationContext(), "TroopStranger senderUin Error!麻烦rtx联系下yellowye", 0).a();
+    bcql.a(this.a.getApplication().getApplicationContext(), "TroopStranger senderUin Error!麻烦rtx联系下yellowye", 0).a();
   }
 }
 

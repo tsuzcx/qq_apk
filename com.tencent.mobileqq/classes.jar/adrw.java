@@ -4,20 +4,20 @@ import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adrw
-  implements bfoq
+  implements bfph
 {
-  adrw(adru paramadru, bfol parambfol) {}
+  adrw(adrs paramadrs, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bfol.dismiss();
+    this.jdField_a_of_type_Bfpc.dismiss();
     switch (paramInt)
     {
     default: 
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adru.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
-    axqw.b(this.jdField_a_of_type_Adru.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+    ChatActivityUtils.a(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adrs.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    axqy.b(this.jdField_a_of_type_Adrs.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

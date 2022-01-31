@@ -1,21 +1,77 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.io.File;
 
+@Deprecated
 public class uof
-  implements bcsv
 {
-  public uof(QQStoryMainController paramQQStoryMainController) {}
+  @NonNull
+  private final QQAppInterface a;
   
-  public void a(View paramView, int paramInt)
+  public uof(@NonNull QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 1) {
-      this.a.jdField_a_of_type_Uoh.a();
+    this.a = paramQQAppInterface;
+  }
+  
+  public Intent a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramContext, paramBoolean1, paramBoolean2, new Intent());
+  }
+  
+  public Intent a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, Intent paramIntent)
+  {
+    boolean bool1 = false;
+    paramIntent.putExtra("videoIsUsable", paramBoolean2);
+    Object localObject1 = (avps)this.a.getManager(36);
+    Object localObject2 = ((avps)localObject1).a("103100.103500.103501");
+    if (localObject2 != null) {
+      if (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1) {
+        paramBoolean1 = true;
+      }
     }
-    while (paramInt != 7) {
-      return;
+    for (;;)
+    {
+      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_sp", 4);
+      if (((SharedPreferences)localObject2).getBoolean("flow_filter_reddot_key", false))
+      {
+        ((avps)localObject1).b("103100.103500.103501");
+        ((SharedPreferences)localObject2).edit().putBoolean("flow_filter_reddot_key", false).commit();
+        paramBoolean1 = false;
+      }
+      for (;;)
+      {
+        if (!BaseApplicationImpl.getApplication().getSharedPreferences("flow_filter_reddot_pkg_sp" + this.a.getCurrentAccountUin(), 4).getBoolean("flow_filter_reddot_key", false)) {
+          bool1 = true;
+        }
+        boolean bool2 = axle.a(this.a, BaseApplicationImpl.getContext());
+        localObject1 = acxs.a(ssf.e);
+        localObject2 = new File(ajsd.bj);
+        if (!((File)localObject2).exists()) {
+          ((File)localObject2).mkdirs();
+        }
+        return sxo.a(paramContext, paramBoolean2, paramIntent, paramBoolean1, bool1, bool2, (String)localObject1, this.a.getAccount());
+        paramBoolean1 = false;
+        break;
+      }
+      paramBoolean1 = false;
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
+  }
+  
+  public void a(@NonNull Intent paramIntent)
+  {
+    paramIntent.putExtra("short_video_refer", "qqstory");
+    paramIntent.putExtra("set_user_callback", QQStoryFlowCallback.class.getCanonicalName());
+    paramIntent.putExtra("enable_local_video", true);
+    paramIntent.putExtra("ignore_dpc_duration", true);
+    paramIntent.putExtra("video_duration", 10);
   }
 }
 

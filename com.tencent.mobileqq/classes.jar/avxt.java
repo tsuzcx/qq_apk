@@ -1,47 +1,36 @@
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+
 public class avxt
-  extends avxk
+  implements GLSurfaceView.EGLContextFactory
 {
-  public android.opengl.EGLContext a;
-  public javax.microedition.khronos.egl.EGLContext a;
-  public int c;
+  private static int jdField_a_of_type_Int = 12440;
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   
-  public avxt(avxk paramavxk)
+  public EGLContext a()
   {
-    super(paramavxk.jdField_a_of_type_JavaLangString, paramavxk.jdField_a_of_type_Int, paramavxk.jdField_b_of_type_Boolean, paramavxk.jdField_a_of_type_Boolean, paramavxk.jdField_a_of_type_Long, paramavxk.jdField_b_of_type_Long);
+    ved.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  public avxt(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramString, paramInt, paramBoolean1, paramBoolean2, paramLong1, paramLong2);
+    int i = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    ved.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   }
   
-  public boolean a(avxk paramavxk)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    boolean bool = super.a(paramavxk);
-    if ((paramavxk instanceof avxt))
-    {
-      paramavxk = (avxt)paramavxk;
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != paramavxk.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)
-      {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramavxk.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-        bool = true;
-      }
-      if (this.jdField_a_of_type_AndroidOpenglEGLContext != paramavxk.jdField_a_of_type_AndroidOpenglEGLContext)
-      {
-        this.jdField_a_of_type_AndroidOpenglEGLContext = paramavxk.jdField_a_of_type_AndroidOpenglEGLContext;
-        bool = true;
-      }
-      if (this.c != paramavxk.c)
-      {
-        this.c = paramavxk.c;
-        return true;
-      }
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+      ved.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
     }
-    else
-    {
-      throw new IllegalArgumentException("should be FlowDecodeConfig's instance");
-    }
-    return bool;
+    ved.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
   }
 }
 

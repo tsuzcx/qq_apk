@@ -1,20 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class auxu
-  implements View.OnClickListener
+public final class auxu
+  implements anyl
 {
-  public auxu(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public void onClick(View paramView)
+  public List<aoap> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a(1);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130837526);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690314));
-    axqw.b(null, "dc00898", "", "", "0X800AB2D", "0X800AB2D", 0, 0, "0", "0", "", "");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aoap(7, 7, null));
+    return localArrayList;
   }
 }
 

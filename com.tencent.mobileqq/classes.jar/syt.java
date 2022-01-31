@@ -1,10 +1,6 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface syt<Request extends syv, Respond extends syq>
+public abstract interface syt<T extends syn>
 {
-  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
+  public abstract void a(int paramInt, String paramString, T paramT);
 }
 
 

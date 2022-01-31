@@ -1,6 +1,12 @@
-public abstract interface mlx
+public class mlx
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

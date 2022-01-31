@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wue
-  implements View.OnClickListener
+  implements wwt
 {
   public wue(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      VideoPlayerView.a(this.a).b();
-      VideoPlayerView.i(this.a);
-      VideoPlayerView.a(this.a, false);
-    }
+    xhb.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 

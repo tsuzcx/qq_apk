@@ -1,29 +1,10 @@
-public class avwh
-  implements Cloneable
+public abstract interface avwh
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(long paramLong);
   
-  public avwh(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public avwh a()
-  {
-    return (avwh)super.clone();
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
-  }
+  public abstract void g();
 }
 
 

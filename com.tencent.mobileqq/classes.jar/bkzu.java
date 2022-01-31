@@ -1,17 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRErrorListener;
-
-class bkzu
-  implements VoiceTextRecognizer.VRErrorListener
+public abstract interface bkzu
 {
-  bkzu(bkzt parambkzt) {}
+  public abstract void a();
   
-  public void onError(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoVoiceRecognizer", 1, "VoiceTextRecognizer error! errorCode = " + paramInt);
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void b();
 }
 
 

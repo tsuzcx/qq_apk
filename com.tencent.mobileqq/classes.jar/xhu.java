@@ -1,6 +1,11 @@
-public abstract interface xhu
+class xhu
 {
-  public abstract asba a(String paramString);
+  public long a;
+  
+  public xhu(long paramLong)
+  {
+    this.a = paramLong;
+  }
 }
 
 

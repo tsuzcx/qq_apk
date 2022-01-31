@@ -1,11 +1,22 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
 public class tnz
-  extends syq
+  extends syn
 {
-  public final byte[] a;
+  public int b;
+  public int c;
   
-  public tnz(byte[] paramArrayOfByte)
+  public tnz(qqstory_service.RspGetBlackList paramRspGetBlackList)
   {
-    this.a = paramArrayOfByte;
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
   }
 }
 

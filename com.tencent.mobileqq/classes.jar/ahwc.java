@@ -1,24 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
-class ahwc
-  implements Handler.Callback
+public class ahwc
+  implements axdj
 {
-  ahwc(ahwb paramahwb) {}
+  ahwc(ahvz paramahvz) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (ahwb.a(this.a) != null) {
-        ahwb.a(this.a).k();
-      }
+    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      ahtz.a("", "0X80075BB", "", "", "", "");
     }
   }
 }

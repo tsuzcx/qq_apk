@@ -1,23 +1,23 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.widget.AdapterView;
 
 public class ody
-  implements View.OnClickListener
+  implements bfpt
 {
-  public ody(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public ody(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
+    this.a.a.doOnBackPressed();
+    paramAdapterView = paramView.getTag();
+    if ((paramAdapterView instanceof oea))
     {
-      this.a.d(ReadInJoyDeliverBiuActivity.n(this.a));
-      return;
+      paramAdapterView = (oea)paramAdapterView;
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_JavaLangString);
+      ReadInjoyFriendsBiuComponentFragment.a(this.a, paramAdapterView.jdField_a_of_type_Long, paramAdapterView.b, "0X800953C", paramAdapterView.jdField_a_of_type_Int);
     }
-    this.a.finish();
-    noo.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

@@ -1,4 +1,7 @@
-class lbz {}
+class lbz
+{
+  private static lbw a = new lbw(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

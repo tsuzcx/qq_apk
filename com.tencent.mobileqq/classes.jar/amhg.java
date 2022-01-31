@@ -1,35 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amhg
+  extends ampa<amhf>
 {
-  private int a = 1;
-  
-  public static amhg a(String paramString)
+  public static amhf a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
+    return (amhf)ampl.a().a(586);
+  }
+  
+  public int a()
+  {
+    return 586;
+  }
+  
+  @NonNull
+  public amhf a(int paramInt)
+  {
+    return new amhf();
+  }
+  
+  @Nullable
+  public amhf a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amhf.a(paramArrayOfamph[0].a);
     }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      try
-      {
-        amhg localamhg = new amhg();
-        localamhg.a = new JSONObject(paramString).getInt("ifrecent");
-        return localamhg;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
     return null;
   }
   
-  public boolean a()
+  public Class<amhf> a()
   {
-    return this.a == 1;
+    return amhf.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amhf paramamhf) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

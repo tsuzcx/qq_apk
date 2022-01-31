@@ -1,25 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-class abzn
-  implements Animation.AnimationListener
+public class abzn
+  implements DialogInterface.OnClickListener
 {
-  abzn(abzm paramabzm) {}
+  public abzn(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.a.a.b.setVisibility(8);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.a.c();
+    this.a.a(this.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

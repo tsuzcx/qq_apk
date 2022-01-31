@@ -1,535 +1,460 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify.1;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONObject;
 
 public class ajnn
+  implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bfph
 {
-  public int a;
-  public long a;
-  private ajno jdField_a_of_type_Ajno;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private bfpc jdField_a_of_type_Bfpc;
   private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private int jdField_b_of_type_Int;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private int c;
-  private int d = 0;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
   
-  public ajnn(int paramInt)
+  public ajnn(Context paramContext, AppInterface paramAppInterface)
   {
-    this(paramInt, 0, "", "");
-  }
-  
-  public ajnn(int paramInt1, int paramInt2, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    QLog.w("cmgame_process.ApolloGameRscVerify", 1, "gameId:" + this.jdField_b_of_type_Int + ",failType:" + paramInt + ",fileName:" + paramString);
-    if ((this.jdField_a_of_type_AndroidContentSharedPreferences == null) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null)) {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, "[onVerifyFailure] fails, param is wrong");
-    }
-    do
+    try
     {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
       return;
-      this.d = paramInt;
-      if (this.jdField_a_of_type_Ajno != null) {
-        this.jdField_a_of_type_Ajno.a(paramInt);
-      }
-    } while ((this.c == 3) || (this.c == 4));
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + a(), true).commit();
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("gameId", Integer.toString(this.jdField_b_of_type_Int));
-    localHashMap.put("rscPath", paramString);
-    localHashMap.put("errType", Integer.toString(paramInt));
-    paramString = b();
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString, "cmshow_game_rsc_error", true, -1L, -1L, localHashMap, "", true);
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.i("ApolloGameShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
+    }
   }
   
-  public static boolean a(int paramInt)
+  private int a(String paramString)
   {
-    try
-    {
-      Object localObject = ajae.a(paramInt);
-      if (localObject == null)
-      {
-        QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], launcher is null.");
-        return false;
-      }
-      CmGameInitParams localCmGameInitParams = ((ajch)localObject).a();
-      if (localCmGameInitParams != null) {
-        return a(localCmGameInitParams.isWhiteUsr, paramInt);
-      }
-      localObject = ((ajch)localObject).a();
-      if (localObject != null)
-      {
-        QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams is null use startCheckParam check");
-        return a(((CmGameStartChecker.StartCheckParam)localObject).isWhiteUsr, paramInt);
-      }
-      QLog.w("cmgame_process.ApolloGameRscVerify", 1, "[isNeedVerify], initParams and startCheckParam is null.");
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameShare", 2, "[parseShareParm],jsonStr:" + paramString);
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
     }
-    return true;
-  }
-  
-  public static boolean a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      if (aiwu.a(paramInt))
-      {
-        paramBoolean = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 4).getBoolean("game_whitelist_verify_switch", true);
-        QLog.i("cmgame_process.ApolloGameRscVerify", 1, "game_rsc_verify_switch:" + paramBoolean);
-        return paramBoolean;
-      }
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
-    }
-    return true;
-  }
-  
-  private String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(500);
-    if (this.c == 0) {
-      localStringBuilder.append(ajmu.s).append(this.jdField_b_of_type_Int);
-    }
-    do
-    {
-      for (;;)
-      {
-        return localStringBuilder.toString();
-        if (this.c != 1) {
-          break;
-        }
-        localStringBuilder.append(ajmu.s).append(this.jdField_b_of_type_Int).append("/").append(this.jdField_b_of_type_JavaLangString);
-      }
-    } while ((this.c != 3) && (this.c != 4));
-    return bfmz.a();
-  }
-  
-  private boolean c()
-  {
     for (;;)
     {
       try
       {
-        if (!a(this.jdField_b_of_type_Int, this.c))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
-          }
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (this.jdField_a_of_type_Ajno == null) {
-            break;
-          }
-          this.jdField_a_of_type_Ajno.a(0);
-          return false;
+        paramString = new JSONObject(paramString);
+        if (paramString.has("title")) {
+          this.jdField_a_of_type_JavaLangString = paramString.getString("title");
         }
-        new ApolloGameData().gameId = this.jdField_b_of_type_Int;
-        File localFile = new File(c(), d());
-        if (!localFile.exists())
+        this.f = (ajya.a(2131700356) + this.jdField_a_of_type_JavaLangString);
+        if (paramString.has("summary")) {
+          this.jdField_b_of_type_JavaLangString = paramString.getString("summary");
+        }
+        if (paramString.has("detailUrl")) {
+          this.c = paramString.getString("detailUrl");
+        }
+        if (paramString.has("picUrl")) {
+          this.d = paramString.getString("picUrl");
+        }
+        if (paramString.has("gameVersion")) {
+          this.e = paramString.getString("gameVersion");
+        }
+        if (paramString.has("gameId")) {
+          this.jdField_a_of_type_Int = paramString.getInt("gameId");
+        }
+        if (paramString.has("roomId")) {
+          this.jdField_b_of_type_Long = paramString.getLong("roomId");
+        }
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.c))) {
+          break;
+        }
+        if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
         {
-          QLog.w("cmgame_process.ApolloGameRscVerify", 1, "game checklist NOT exist, gameId:" + this.jdField_b_of_type_Int);
-          a("checkList", 2);
-          return false;
+          paramString = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+          if (paramString != null)
+          {
+            paramString = paramString.getCurrentAccountUin();
+            this.c = (this.c + "&gameId=" + this.jdField_a_of_type_Int + "&roomId=" + this.jdField_b_of_type_Long + "&gameVersion=" + this.e + "&uin=" + paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloGameShare", 2, "[mDetailUrl]:" + this.c);
+            }
+            return 0;
+          }
         }
       }
-      catch (Throwable localThrowable)
+      catch (Exception paramString)
       {
-        QLog.e("cmgame_process.ApolloGameRscVerify", 1, "[ApolloGameRscVerify], errInfo->", localThrowable);
-        return true;
+        QLog.i("ApolloGameShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
+        return -3;
       }
-      if (((this.c == 0) || (this.c == 1)) && (!new ajox(c() + "/checkList.sig", localThrowable.getAbsolutePath()).a(0)))
-      {
-        a("checkList.sig", 3);
-        return false;
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(bbdj.b(localThrowable));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      paramString = "";
     }
-    return false;
+    return -2;
   }
   
-  private String d()
+  private AppInterface a()
   {
-    if (this.c == 4) {
-      return "checkList_jsc";
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    return "checkList";
+    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
   }
   
-  public String a()
+  private void a(int paramInt)
   {
-    if (this.c == 0) {
-      return String.valueOf(this.jdField_b_of_type_Int);
+    ThreadManager.post(new ApolloGameShare.2(this, paramInt), 5, null, true);
+  }
+  
+  private void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("title", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("desc", this.jdField_b_of_type_JavaLangString);
+    localBundle.putString("detail_url", this.c);
+    Object localObject = new ArrayList(1);
+    ((ArrayList)localObject).add(this.d);
+    localBundle.putStringArrayList("image_url", (ArrayList)localObject);
+    localBundle.putLong("req_share_id", 0L);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    {
+      if (this.jdField_b_of_type_JavaLangRefWeakReference != null) {}
+      for (AppInterface localAppInterface = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();; localAppInterface = null)
+      {
+        if ((localObject != null) && (localAppInterface != null) && (bgzl.a(localAppInterface, (Context)localObject, localBundle, null)))
+        {
+          localObject = a();
+          if (localObject != null) {
+            break label172;
+          }
+        }
+        label172:
+        for (int i = -1;; i = ApolloUtil.b(((BaseChatPie)localObject).a.jdField_a_of_type_Int))
+        {
+          VipUtils.a(a(), "cmshow", "Apollo", "share_url_succeed", i, 1, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+          return;
+        }
+      }
     }
-    return this.jdField_b_of_type_Int + "_" + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  private void c()
+  {
+    Object localObject1 = new axum(StructMsgForGeneralShare.class).c(96).a(this.f).e(this.c).a(ajya.a(2131700384), null).b("web", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326").a();
+    Object localObject2 = axuz.a(2);
+    ((axuq)localObject2).a(this.d, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    ((AbsShareMsg)localObject1).addItem((axup)localObject2);
+    localObject2 = new Intent();
+    ((Intent)localObject2).putExtra("forward_type", -3);
+    ((Intent)localObject2).putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
+    ((Intent)localObject2).putExtra("cmshow_game_id", this.jdField_a_of_type_Int);
+    ((Intent)localObject2).putExtra("forwardDirect", true);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject1 != null) {
+        aqbe.a((Activity)localObject1, (Intent)localObject2, 14002);
+      }
+    }
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    a();
+  }
+  
+  public BaseChatPie a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject == null) {
+        return null;
+      }
+      try
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if (localObject != null)
+        {
+          int i = ((BaseChatPie)localObject).g();
+          if (i < 7) {}
+        }
+        else
+        {
+          return null;
+        }
+      }
+      catch (Throwable localThrowable) {}
+    }
+    return null;
   }
   
   public void a()
   {
-    ThreadManager.post(new ApolloGameRscVerify.1(this), 5, null, true);
+    if (this.jdField_a_of_type_Bfpc != null) {
+      this.jdField_a_of_type_Bfpc.dismiss();
+    }
   }
   
-  public void a(ajno paramajno)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Ajno = paramajno;
-  }
-  
-  public boolean a()
-  {
-    try
+    bfpm localbfpm = null;
+    int i = a(paramString);
+    if (i < 0)
     {
-      long l = System.currentTimeMillis();
-      if (!a(this.jdField_b_of_type_Int, this.c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.ApolloGameRscVerify", 2, "Verifying switch is off in debug mode.");
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        if (this.jdField_a_of_type_Ajno != null) {
-          this.jdField_a_of_type_Ajno.a(0);
-        }
-      }
-      else
-      {
-        if (!c()) {
-          return false;
-        }
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-          return false;
-        }
-        Iterator localIterator = this.jdField_a_of_type_OrgJsonJSONObject.keys();
-        StringBuilder localStringBuilder = new StringBuilder(200);
-        while (localIterator.hasNext())
-        {
-          this.jdField_a_of_type_Int += 1;
-          String str = (String)localIterator.next();
-          localStringBuilder.delete(0, localStringBuilder.length());
-          localStringBuilder.append(c());
-          localStringBuilder.append("/").append(str);
-          if (!a(localStringBuilder.toString(), str)) {
-            return false;
-          }
-        }
-        this.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-        if (this.jdField_a_of_type_Ajno != null) {
-          this.jdField_a_of_type_Ajno.a(0);
-        }
-        return true;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 == 4) || (paramInt2 == 3)) {
-      return true;
-    }
-    return a(paramInt1);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
-  }
-  
-  /* Error */
-  public boolean a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 33	ajnn:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   4: invokevirtual 362	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   7: ifeq +41 -> 48
-    //   10: aload_0
-    //   11: getfield 292	ajnn:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   14: ifnull +34 -> 48
-    //   17: aload_2
-    //   18: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   21: ifne +27 -> 48
-    //   24: aload_1
-    //   25: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   28: ifne +20 -> 48
-    //   31: aload_0
-    //   32: getfield 35	ajnn:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   35: ifnull +13 -> 48
-    //   38: aload_0
-    //   39: getfield 35	ajnn:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   42: invokevirtual 362	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   45: ifeq +5 -> 50
-    //   48: iconst_0
-    //   49: ireturn
-    //   50: invokestatic 319	java/lang/System:currentTimeMillis	()J
-    //   53: pop2
-    //   54: aconst_null
-    //   55: astore 4
-    //   57: aconst_null
-    //   58: astore 5
-    //   60: new 248	java/io/File
-    //   63: dup
-    //   64: aload_1
-    //   65: invokespecial 363	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: astore 7
-    //   70: aload 4
-    //   72: astore_3
-    //   73: aload 7
-    //   75: invokevirtual 258	java/io/File:exists	()Z
-    //   78: ifne +37 -> 115
-    //   81: aload 4
-    //   83: astore_3
-    //   84: aload_0
-    //   85: aload_2
-    //   86: iconst_1
-    //   87: invokespecial 264	ajnn:a	(Ljava/lang/String;I)V
-    //   90: iconst_0
-    //   91: ifeq -43 -> 48
-    //   94: new 365	java/lang/NullPointerException
-    //   97: dup
-    //   98: invokespecial 366	java/lang/NullPointerException:<init>	()V
-    //   101: athrow
-    //   102: astore_1
-    //   103: ldc 66
-    //   105: iconst_1
-    //   106: ldc_w 368
-    //   109: aload_1
-    //   110: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   113: iconst_0
-    //   114: ireturn
-    //   115: aload 4
-    //   117: astore_3
-    //   118: aload_0
-    //   119: getfield 292	ajnn:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   122: aload_2
-    //   123: invokevirtual 351	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   126: astore 6
-    //   128: aload 4
-    //   130: astore_3
-    //   131: new 370	java/io/FileInputStream
-    //   134: dup
-    //   135: aload_1
-    //   136: invokespecial 371	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   139: astore 4
-    //   141: aload 4
-    //   143: aload 7
-    //   145: invokevirtual 373	java/io/File:length	()J
-    //   148: invokestatic 379	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   151: invokestatic 385	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   154: astore_3
-    //   155: aload_3
-    //   156: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   159: ifne +57 -> 216
-    //   162: aload 6
-    //   164: invokestatic 357	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   167: ifne +49 -> 216
-    //   170: aload_3
-    //   171: invokevirtual 388	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   174: aload 6
-    //   176: invokevirtual 388	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   179: invokevirtual 392	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   182: ifne +34 -> 216
-    //   185: aload_0
-    //   186: aload_2
-    //   187: iconst_4
-    //   188: invokespecial 264	ajnn:a	(Ljava/lang/String;I)V
-    //   191: aload 4
-    //   193: ifnull -145 -> 48
-    //   196: aload 4
-    //   198: invokevirtual 395	java/io/FileInputStream:close	()V
-    //   201: iconst_0
-    //   202: ireturn
-    //   203: astore_1
-    //   204: ldc 66
-    //   206: iconst_1
-    //   207: ldc_w 368
-    //   210: aload_1
-    //   211: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   214: iconst_0
-    //   215: ireturn
-    //   216: aload 4
-    //   218: ifnull +8 -> 226
-    //   221: aload 4
-    //   223: invokevirtual 395	java/io/FileInputStream:close	()V
-    //   226: iconst_1
-    //   227: ireturn
-    //   228: astore_1
-    //   229: ldc 66
-    //   231: iconst_1
-    //   232: ldc_w 368
-    //   235: aload_1
-    //   236: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   239: goto -13 -> 226
-    //   242: astore_3
-    //   243: aload 5
-    //   245: astore 4
-    //   247: aload_3
-    //   248: astore 5
-    //   250: aload 4
-    //   252: astore_3
-    //   253: ldc 66
-    //   255: iconst_1
-    //   256: bipush 6
-    //   258: anewarray 4	java/lang/Object
-    //   261: dup
-    //   262: iconst_0
-    //   263: ldc_w 397
-    //   266: aastore
-    //   267: dup
-    //   268: iconst_1
-    //   269: aload 5
-    //   271: aastore
-    //   272: dup
-    //   273: iconst_2
-    //   274: ldc_w 399
-    //   277: aastore
-    //   278: dup
-    //   279: iconst_3
-    //   280: aload_1
-    //   281: aastore
-    //   282: dup
-    //   283: iconst_4
-    //   284: ldc_w 401
-    //   287: aastore
-    //   288: dup
-    //   289: iconst_5
-    //   290: aload_2
-    //   291: aastore
-    //   292: invokestatic 404	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   295: aload 4
-    //   297: ifnull -71 -> 226
-    //   300: aload 4
-    //   302: invokevirtual 395	java/io/FileInputStream:close	()V
-    //   305: goto -79 -> 226
-    //   308: astore_1
-    //   309: ldc 66
-    //   311: iconst_1
-    //   312: ldc_w 368
-    //   315: aload_1
-    //   316: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   319: goto -93 -> 226
-    //   322: astore_1
-    //   323: aload_3
-    //   324: ifnull +7 -> 331
-    //   327: aload_3
-    //   328: invokevirtual 395	java/io/FileInputStream:close	()V
-    //   331: aload_1
-    //   332: athrow
-    //   333: astore_2
-    //   334: ldc 66
-    //   336: iconst_1
-    //   337: ldc_w 368
-    //   340: aload_2
-    //   341: invokestatic 269	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   344: goto -13 -> 331
-    //   347: astore_1
-    //   348: aload 4
-    //   350: astore_3
-    //   351: goto -28 -> 323
-    //   354: astore 5
-    //   356: goto -106 -> 250
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	359	0	this	ajnn
-    //   0	359	1	paramString1	String
-    //   0	359	2	paramString2	String
-    //   72	99	3	localObject1	Object
-    //   242	6	3	localThrowable1	Throwable
-    //   252	99	3	localObject2	Object
-    //   55	294	4	localObject3	Object
-    //   58	212	5	localObject4	Object
-    //   354	1	5	localThrowable2	Throwable
-    //   126	49	6	str	String
-    //   68	76	7	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   94	102	102	java/io/IOException
-    //   196	201	203	java/io/IOException
-    //   221	226	228	java/io/IOException
-    //   73	81	242	java/lang/Throwable
-    //   84	90	242	java/lang/Throwable
-    //   118	128	242	java/lang/Throwable
-    //   131	141	242	java/lang/Throwable
-    //   300	305	308	java/io/IOException
-    //   73	81	322	finally
-    //   84	90	322	finally
-    //   118	128	322	finally
-    //   131	141	322	finally
-    //   253	295	322	finally
-    //   327	331	333	java/io/IOException
-    //   141	191	347	finally
-    //   141	191	354	java/lang/Throwable
-  }
-  
-  public String b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)localAppRuntime).getCurrentAccountUin();
-    }
-    return "";
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      QLog.w("cmgame_process.ApolloGameRscVerify", 1, "mTotalFiles is 0.");
+      QLog.i("ApolloGameShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + i);
       return;
     }
-    Object localObject = new StringBuilder(200);
-    float f = 1.0F * (float)this.jdField_a_of_type_Long / this.jdField_a_of_type_Int;
-    ((StringBuilder)localObject).append("gameId:").append(this.jdField_b_of_type_Int).append(",totalCost:").append(this.jdField_a_of_type_Long).append(",totalFiles:").append(this.jdField_a_of_type_Int).append(",avgCost:").append(f);
-    QLog.i("cmgame_process.ApolloGameRscVerify", 1, ((StringBuilder)localObject).toString());
-    localObject = new HashMap();
-    ((HashMap)localObject).put("gameId", Integer.toString(this.jdField_b_of_type_Int));
-    ((HashMap)localObject).put("avgCost", Float.toString(f));
-    String str = b();
-    axrl.a(BaseApplicationImpl.getContext()).a(str, "cmshow_game_rsc_avg_cost", true, -1L, -1L, (HashMap)localObject, "", true);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(bfpm.a(0));
+    localArrayList.add(bfpm.a(1));
+    localArrayList.add(bfpm.a(2));
+    localArrayList.add(bfpm.a(3));
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
+    {
+      if (paramString != null)
+      {
+        localbfpm = new bfpm(paramString);
+        localbfpm.a(localArrayList);
+      }
+      if ((this.jdField_a_of_type_Bfpc == null) && (paramString != null)) {
+        this.jdField_a_of_type_Bfpc = bfpm.a(paramString, localbfpm, this, this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bfpc != null) && (!this.jdField_a_of_type_Bfpc.isShowing()))
+      {
+        this.jdField_a_of_type_Bfpc.setOnDismissListener(this);
+        this.jdField_a_of_type_Bfpc.show();
+      }
+      paramString = a();
+      if (paramString == null) {}
+      for (i = -1;; i = ApolloUtil.b(paramString.a.jdField_a_of_type_Int))
+      {
+        VipUtils.a(a(), "cmshow", "Apollo", "share_panel_open", i, 0, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+        return;
+      }
+    }
   }
   
-  public boolean b()
+  public void a(String paramString, int paramInt)
   {
-    return c();
+    bfpm localbfpm = null;
+    ArrayList localArrayList;
+    try
+    {
+      paramString = new JSONObject(paramString).optString("path");
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("ApolloGameShare", 2, "showSharePic parse err=" + paramString.toString());
+        paramString = null;
+      }
+      localArrayList = new ArrayList();
+      localArrayList.add(bfpm.a(1));
+      localArrayList.add(bfpm.a(0));
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    }
+    for (Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
+    {
+      if (localActivity != null)
+      {
+        localbfpm = new bfpm(localActivity);
+        localbfpm.a(localArrayList);
+      }
+      if ((this.jdField_a_of_type_Bfpc == null) && (localActivity != null))
+      {
+        paramString = ApolloRender.getSandBoxPathByRealGameId(paramInt, paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloGameShare", 2, new Object[] { "share pic:", paramString });
+        }
+        this.jdField_a_of_type_Bfpc = bfpm.a(localActivity, localbfpm, new ajno(this, paramString), this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bfpc == null) || (this.jdField_a_of_type_Bfpc.isShowing())) {
+        break;
+      }
+      this.jdField_a_of_type_Bfpc.setOnDismissListener(this);
+      this.jdField_a_of_type_Bfpc.show();
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Object localObject;
+    Bundle localBundle;
+    ArrayList localArrayList;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            if (this.jdField_a_of_type_Bfpc != null) {
+              this.jdField_a_of_type_Bfpc.dismiss();
+            }
+          } while (this.jdField_b_of_type_JavaLangRefWeakReference == null);
+          localObject = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        paramMessage = (String)paramMessage.obj;
+        if (!TextUtils.isEmpty(paramMessage)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("ApolloGameShare", 1, "onItemClick share QZone apolloImage no file");
+      return false;
+      localBundle = new Bundle();
+      localArrayList = new ArrayList();
+    }
+    for (;;)
+    {
+      try
+      {
+        localArrayList.add(URLDecoder.decode(paramMessage));
+        localBundle.putStringArrayList("images", localArrayList);
+        localBundle.putString("summary", ajya.a(2131700341));
+        localBundle.putInt("req_type", 7);
+        localBundle.putBoolean("key_need_save_draft", false);
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          break label335;
+        }
+        paramMessage = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramMessage == null) {
+          break;
+        }
+        bgzl.a((AppInterface)localObject, paramMessage, localBundle, this, 15);
+        return false;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.d("ApolloGameShare", 2, "publishToQzone:" + paramMessage.getMessage());
+        return false;
+      }
+      if (this.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      localObject = (String)paramMessage.obj;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QLog.e("ApolloGameShare", 1, "onItemClick share QQ apolloImage no file");
+        return false;
+      }
+      if (!new File((String)localObject).exists())
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("ApolloGameShare", 1, "onItemClick share QQ apolloImage no file");
+        return false;
+      }
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+      for (paramMessage = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); paramMessage != null; paramMessage = null)
+      {
+        ApolloUtil.a(paramMessage, (String)localObject, null, 1);
+        return false;
+      }
+      break;
+      label335:
+      paramMessage = null;
+    }
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
+    }
+    if (paramLong == 1L)
+    {
+      b();
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      paramAdapterView = a();
+      if (paramAdapterView == null) {}
+      for (int i = -1;; i = ApolloUtil.b(paramAdapterView.a.jdField_a_of_type_Int))
+      {
+        VipUtils.a(a(), "cmshow", "Apollo", "send_game_share", i, paramInt, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+        return;
+        if (paramLong == 0L)
+        {
+          c();
+          paramInt = 0;
+          break;
+        }
+        if (paramLong == 2L)
+        {
+          paramInt = 3;
+          a(1);
+          break;
+        }
+        if (paramLong != 3L) {
+          break label186;
+        }
+        paramInt = 4;
+        a(2);
+        break;
+      }
+      label186:
+      paramInt = 0;
+    }
   }
 }
 

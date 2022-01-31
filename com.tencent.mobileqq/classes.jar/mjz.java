@@ -1,31 +1,26 @@
-import android.widget.ImageButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
 import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
 public class mjz
-  implements bfos
+  implements DialogInterface.OnClickListener
 {
-  public mjz(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
+  public mjz(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {}
+    while ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
+      return;
+    }
+    if (paramInt == 1)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (str = "0X80043A4";; str = "0X80043B6")
-      {
-        axqw.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
-        {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
-        }
-        return;
-      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c(this.jdField_a_of_type_Long);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-    for (String str = "0X80043AA";; str = "0X80043B0") {
-      break;
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_Boolean, new mka(this));
   }
 }
 

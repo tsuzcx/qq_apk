@@ -1,66 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.TextureView;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class tvj
+public final class tvj
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public static TextureView a(View paramView)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if ((paramView instanceof ViewGroup))
+    synchronized ()
     {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        TextureView localTextureView = a(paramView.getChildAt(i));
-        if (localTextureView != null) {
-          return localTextureView;
-        }
-        i += 1;
-      }
+      tvn localtvn = tvh.a();
+      tvh.a().post(new TVKPreloader.2.2(this, localtvn, paramString1, paramInt, paramString2));
+      return;
     }
-    if ((paramView instanceof TextureView)) {
-      return (TextureView)paramView;
-    }
-    return null;
   }
   
-  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void onPreLoadSucess(String arg1, String paramString2)
   {
-    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
+    synchronized ()
     {
-      vxs.a(false, "bitmap is not ARGB_8888");
-      return false;
+      paramString2 = tvh.a();
+      tvh.a().post(new TVKPreloader.2.1(this, paramString2));
+      return;
     }
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int m = j / paramInt1;
-    int n = k / paramInt1;
-    paramInt1 = 0;
-    for (;;)
-    {
-      if (paramInt1 >= j) {
-        break label118;
-      }
-      int i = 0;
-      for (;;)
-      {
-        if (i >= k) {
-          break label110;
-        }
-        int i1 = paramBitmap.getPixel(paramInt1, i);
-        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
-          break;
-        }
-        i += n;
-      }
-      label110:
-      paramInt1 += m;
-    }
-    label118:
-    return true;
   }
 }
 

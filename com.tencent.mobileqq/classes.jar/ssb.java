@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-class ssb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ssb
 {
-  ssb(srv paramsrv) {}
+  public abstract void a();
   
-  public void onGlobalLayout()
-  {
-    int i = srv.a(this.a).getHeight();
-    if (i != srv.b(this.a)) {
-      srv.a(this.a, i);
-    }
-  }
+  public abstract void b();
 }
 
 

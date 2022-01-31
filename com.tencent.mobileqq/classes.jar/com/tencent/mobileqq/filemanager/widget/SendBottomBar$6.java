@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import apyf;
+import apyh;
 
 public class SendBottomBar$6
   implements Runnable
@@ -9,7 +9,7 @@ public class SendBottomBar$6
   
   public void run()
   {
-    new apyf(this).execute(new Object[0]);
+    new apyh(this).execute(new Object[0]);
   }
 }
 

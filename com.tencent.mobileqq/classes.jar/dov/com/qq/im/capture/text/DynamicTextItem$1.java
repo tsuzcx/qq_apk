@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.view.View;
-import bjgw;
+import bjhn;
 
 class DynamicTextItem$1
   implements Runnable
@@ -10,11 +10,11 @@ class DynamicTextItem$1
   
   public void run()
   {
-    bjgw localbjgw = DynamicTextItem.a(this.this$0);
+    bjhn localbjhn = DynamicTextItem.a(this.this$0);
     if (!((Boolean)DynamicTextItem.a(this.this$0).b).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      localbjgw.b = Boolean.valueOf(bool);
+      localbjhn.b = Boolean.valueOf(bool);
       this.a.invalidate();
       return;
     }

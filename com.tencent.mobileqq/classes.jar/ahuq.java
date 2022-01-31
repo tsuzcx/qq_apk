@@ -1,18 +1,48 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.TextView;
+import android.content.Context;
+import android.view.OrientationEventListener;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ahuq
-  implements View.OnLayoutChangeListener
+public class ahuq
+  extends OrientationEventListener
 {
-  ahuq(ahup paramahup) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public ahuq(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(ajyc.a(2131707445) + this.a.jdField_a_of_type_Int + "%");
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    NewFlowCameraActivity.a(this.a).a(paramInt);
+    if (this.a.j) {}
+    do
+    {
+      return;
+      if (paramInt == -1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+        }
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 315) || (paramInt < 45))
+      {
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 45) && (paramInt < 135))
+      {
+        this.a.o = 180;
+        return;
+      }
+      if ((paramInt > 135) && (paramInt < 225))
+      {
+        this.a.o = 270;
+        return;
+      }
+    } while ((paramInt <= 225) || (paramInt >= 315));
+    this.a.o = 0;
   }
 }
 

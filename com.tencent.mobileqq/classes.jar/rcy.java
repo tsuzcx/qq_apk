@@ -1,23 +1,26 @@
-import android.widget.RelativeLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class rcy
-  implements bfob
+  extends AnimatorListenerAdapter
 {
   public rcy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((ReadInJoyListViewGroup.a(this.a) != null) && (ReadInJoyListViewGroup.a(this.a).getVisibility() != 4)) {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(4);
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
-    this.a.a(new rda(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a(new rcz(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    super.onAnimationStart(paramAnimator);
   }
 }
 

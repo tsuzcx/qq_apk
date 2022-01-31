@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import nwi;
+import nwf;
 
 public class ReadInJoyNewFeedsActivity$17$1
   implements Runnable
 {
-  public ReadInJoyNewFeedsActivity$17$1(nwi paramnwi) {}
+  public ReadInJoyNewFeedsActivity$17$1(nwf paramnwf) {}
   
   public void run()
   {

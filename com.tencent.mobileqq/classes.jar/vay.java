@@ -1,16 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView.5.1;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public class vay
-  extends AnimatorListenerAdapter
+class vay
+  extends uyi
 {
-  public void onAnimationEnd(Animator paramAnimator)
+  vay(vax paramvax) {}
+  
+  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
   {
-    if (this.a) {
-      new Handler().postDelayed(new StoryDownloadView.5.1(this), 1200L);
-    }
+    if (vzl.b()) {}
+    label6:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label6;
+          do
+          {
+            return;
+          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
+          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
+        paramObject = vax.a(this.a).b(paramObject.mOwnerUid);
+      } while (paramObject == null);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while (vax.a(this.a) == null);
+    vax.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
   }
 }
 

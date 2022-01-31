@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo;
 
 public final class berr
-  implements Parcelable.Creator<ShareChatModel>
+  implements Parcelable.Creator<ExtConfigInfo>
 {
-  public ShareChatModel a(Parcel paramParcel)
+  public ExtConfigInfo a(Parcel paramParcel)
   {
-    return new ShareChatModel(paramParcel, null);
+    return new ExtConfigInfo(paramParcel);
   }
   
-  public ShareChatModel[] a(int paramInt)
+  public ExtConfigInfo[] a(int paramInt)
   {
-    return new ShareChatModel[paramInt];
+    return new ExtConfigInfo[paramInt];
   }
 }
 

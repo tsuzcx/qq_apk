@@ -1,6 +1,16 @@
-public abstract interface aopd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+
+public class aopd
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  public aopd(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    LocalFileBrowserActivity.a(this.a);
+  }
 }
 
 

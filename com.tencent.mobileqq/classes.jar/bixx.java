@@ -1,50 +1,74 @@
-import android.content.Context;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.baseutils.string.StringUtils;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
-class bixx
-  implements View.OnClickListener
+public class bixx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bixx(bixv parambixv) {}
+  public bixx(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (bixv.a(this.a).getText().length() > bixv.a(this.a))
+    double d;
+    int i;
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      bcpw.a(this.a.getContext(), this.a.getContext().getString(2131689807, new Object[] { Integer.valueOf(bixv.a(this.a)) }), 1).a();
-      return;
+      AEVideoShelfEditFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      d = 0.0D;
+      if ((AEVideoShelfEditFragment.a(this.a) == null) || (AEVideoShelfEditFragment.a(this.a).getVideoHeight() == 0)) {
+        break label345;
+      }
+      d = AEVideoShelfEditFragment.a(this.a).getVideoWidth() / AEVideoShelfEditFragment.a(this.a).getVideoHeight();
+      if (d < 1.0D) {
+        break label253;
+      }
+      i = 1;
     }
-    if (bixv.a(this.a) != null) {
-      localObject = null;
-    }
-    try
+    for (;;)
     {
-      paramView = bixv.a(this.a).getText().toString();
-      localObject = paramView;
+      label79:
+      Object localObject;
+      if (i != 0) {
+        if (d < 3.0D)
+        {
+          i = (int)(AEVideoShelfEditFragment.a(this.a).getWidth() / d);
+          localObject = (ViewGroup.MarginLayoutParams)AEVideoShelfEditFragment.a(this.a).getLayoutParams();
+          ((ViewGroup.MarginLayoutParams)localObject).height = i;
+          AEVideoShelfEditFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+          AEVideoShelfEditFragment.a(this.a, AEVideoShelfEditFragment.a(this.a).getWidth());
+          AEVideoShelfEditFragment.b(this.a, ((ViewGroup.MarginLayoutParams)localObject).height);
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isDebugVersion()) {
+          QLog.d("AEVideoShelfEditFrag", 2, new Object[] { "centerView onGlobalLayout: ratio=", Double.valueOf(d), ", wxh=", Integer.valueOf(AEVideoShelfEditFragment.a(this.a)), "x", Integer.valueOf(AEVideoShelfEditFragment.b(this.a)) });
+        }
+        return;
+        AEVideoShelfEditFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        break;
+        label253:
+        i = 0;
+        break label79;
+        if (d > 0.3333333333333333D)
+        {
+          i = (int)(AEVideoShelfEditFragment.a(this.a).getHeight() * d);
+          localObject = AEVideoShelfEditFragment.a(this.a).getLayoutParams();
+          ((ViewGroup.LayoutParams)localObject).width = i;
+          AEVideoShelfEditFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+          AEVideoShelfEditFragment.a(this.a, ((ViewGroup.LayoutParams)localObject).width);
+          AEVideoShelfEditFragment.b(this.a, AEVideoShelfEditFragment.a(this.a).getHeight());
+        }
+      }
+      label345:
+      i = 0;
     }
-    catch (IndexOutOfBoundsException paramView)
-    {
-      label98:
-      break label98;
-    }
-    paramView = (View)localObject;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = StringUtils.removeUTF8Emoji((String)localObject);
-    }
-    Object localObject = paramView;
-    if (!TextUtils.isEmpty(paramView)) {
-      localObject = paramView.replaceAll("\\r|\\n", "");
-    }
-    paramView = (View)localObject;
-    if (localObject != null) {
-      paramView = ((String)localObject).trim();
-    }
-    bixv.a(this.a).a(paramView);
-    this.a.dismiss();
   }
 }
 

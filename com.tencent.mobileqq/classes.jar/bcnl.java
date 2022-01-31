@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.widget.OverScrollCallbackHorizontalListView;
-
 public abstract interface bcnl
 {
-  public abstract void a(OverScrollCallbackHorizontalListView paramOverScrollCallbackHorizontalListView);
+  public abstract void a(String paramString);
 }
 
 

@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.view.View;
 
-class ajre
-  implements DialogInterface.OnClickListener
+public class ajre
 {
-  ajre(ajrc paramajrc) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajre(View paramView, int paramInt1, String paramString, int paramInt2)
   {
-    paramDialogInterface.dismiss();
-    if (ajrc.a(this.a))
-    {
-      ajrc.a(this.a, 1);
-      ajrc.a(this.a);
-      this.a.a.r();
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 

@@ -1,17 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
 
 public class aasd
-  implements aptu
+  implements DialogInterface.OnClickListener
 {
-  public aasd(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public aasd(ChatHistoryFileActivity paramChatHistoryFileActivity, aasg paramaasg) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    apue.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    this.jdField_a_of_type_Aasg.a(false);
   }
-  
-  public void b() {}
 }
 
 

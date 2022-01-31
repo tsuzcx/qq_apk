@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
-public final class qci
-  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
+public class qci
+  implements Cloneable
 {
-  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  
+  public qci(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  
+  public qci a()
   {
-    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
+    try
+    {
+      qci localqci = (qci)super.clone();
+      return localqci;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
   
-  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
+  public boolean a()
   {
-    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
   }
 }
 

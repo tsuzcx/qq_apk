@@ -1,13 +1,44 @@
-public abstract interface uxc
-  extends uvy<uwp>
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+
+public class uxc
+  extends ste<uwq, uxk>
 {
-  public abstract void a(String paramString);
+  public uxc(uwq paramuwq)
+  {
+    super(paramuwq);
+  }
   
-  public abstract void a(uxr paramuxr);
+  public void a(@NonNull uwq paramuwq, @NonNull uxk paramuxk)
+  {
+    Object localObject = paramuxk.a;
+    paramuxk = paramuwq.a(((uxm)localObject).a.feedId);
+    if (paramuxk == null)
+    {
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((uxm)localObject).a.feedId });
+      return;
+    }
+    if ((!(localObject instanceof uxo)) || (!(paramuxk instanceof uxo)))
+    {
+      ved.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
+      return;
+    }
+    localObject = (uxo)localObject;
+    paramuxk = (uxo)paramuxk;
+    paramuxk.a = ((uxo)localObject).a;
+    paramuxk.a(((uxo)localObject).b(), false);
+    paramuxk.b(((uxo)localObject).c(), false);
+    paramuxk.c(((uxo)localObject).a(), false);
+    uwq.a(paramuwq).b(paramuxk.a.feedId);
+    ved.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramuxk);
+  }
   
-  public abstract void b(String paramString);
+  public Class acceptEventClass()
+  {
+    return uxk.class;
+  }
   
-  public abstract void f();
+  public void b(@NonNull uwq paramuwq, @NonNull uxk paramuxk) {}
 }
 
 

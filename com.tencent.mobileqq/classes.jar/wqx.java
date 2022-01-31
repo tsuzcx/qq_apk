@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
-
-public class wqx
-  implements View.OnClickListener
+public abstract class wqx<T>
 {
-  public wqx(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public long a;
+  public boolean a = true;
   
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-  }
+  public abstract void a();
+  
+  public abstract void a(wrd<T> paramwrd);
 }
 
 

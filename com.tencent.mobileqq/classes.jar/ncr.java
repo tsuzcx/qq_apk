@@ -1,22 +1,19 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class ncr
-  extends Handler
+  implements View.OnLayoutChangeListener
 {
-  public ncr(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  public ncr(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
+    if (paramInt1 != this.a.b) {
+      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
     }
-    paramMessage = (Bundle)paramMessage.obj;
-    this.a.jdField_a_of_type_Wxu.a(17, paramMessage, this.a.jdField_a_of_type_Ajtg);
   }
 }
 

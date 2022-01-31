@@ -1,65 +1,17 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.BaseFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
 public class aqju
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public View.OnClickListener a;
-  public BaseFragment a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
-  public boolean c = false;
-  public String d;
-  public String e;
+  public aqju(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public aqju(BaseFragment paramBaseFragment)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
-  }
-  
-  public aqju a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public aqju a(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public aqju a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public aqju b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public aqju b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
+    ((aseu)this.a.a.getManager(303)).a((short)-23310, paramBoolean, true);
+    axqy.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 4, 4, "", "", "", "");
   }
 }
 

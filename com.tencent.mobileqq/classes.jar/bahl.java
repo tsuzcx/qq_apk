@@ -1,59 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import java.util.Comparator;
 
-final class bahl
-  implements akig
+class bahl
+  implements Comparator<baht>
 {
-  bahl(String paramString1, String paramString2, boolean paramBoolean, QQAppInterface paramQQAppInterface, bahm parambahm) {}
+  bahl(bahf parambahf) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public int a(baht parambaht1, baht parambaht2)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    int j = -1;
+    if (((parambaht1 instanceof MessageForDeliverGiftTips)) && ((parambaht2 instanceof MessageForDeliverGiftTips)))
     {
-      localStringBuilder = new StringBuilder().append("checkHomeworkTroopIdentity. troopUin=").append(this.jdField_a_of_type_JavaLangString).append(", memberUin=").append(this.b).append(", level=");
-      if (paramTroopMemberInfo != null) {
-        break label150;
+      parambaht1 = (MessageForDeliverGiftTips)parambaht1;
+      parambaht2 = (MessageForDeliverGiftTips)parambaht2;
+      int i;
+      if ((parambaht1.isToAll()) && (parambaht2.isToAll())) {
+        i = (int)(parambaht1.time - parambaht2.time);
       }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append(localObject).append(", reqMemberInfo=").append(this.jdField_a_of_type_Boolean).append(", hwIdentity=");
-      if (paramTroopMemberInfo != null) {
-        break label162;
-      }
-    }
-    label150:
-    label162:
-    for (Object localObject = "";; localObject = Integer.valueOf(paramTroopMemberInfo.hwIdentity))
-    {
-      QLog.i("hw_troop", 2, localObject);
-      if (paramTroopMemberInfo != null) {
-        break label216;
-      }
-      if (this.jdField_a_of_type_Boolean) {}
-      try
+      do
       {
-        long l1 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-        long l2 = Long.parseLong(this.b);
-        ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(l1, l2, true);
-        return;
+        do
+        {
+          return i;
+          i = j;
+        } while (parambaht1.isToAll());
+        if (parambaht2.isToAll()) {
+          return 1;
+        }
+        if ((parambaht1.receiverUin == this.a.a.getLongAccountUin()) && (parambaht2.receiverUin == this.a.a.getLongAccountUin())) {
+          return (int)(parambaht1.time - parambaht2.time);
+        }
+        i = j;
+      } while (parambaht1.receiverUin == this.a.a.getLongAccountUin());
+      if (parambaht2.receiverUin == this.a.a.getLongAccountUin()) {
+        return 1;
       }
-      catch (NumberFormatException paramTroopMemberInfo)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.jdField_a_of_type_JavaLangString, ", memberuin=", this.b });
-        return;
-      }
-      localObject = Integer.valueOf(paramTroopMemberInfo.level);
-      break;
+      return (int)(parambaht1.time - parambaht2.time);
     }
-    label216:
-    if (!bahk.a(paramTroopMemberInfo.hwIdentity))
-    {
-      ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).d(this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-    }
-    bahk.a(this.jdField_a_of_type_Bahm, paramTroopMemberInfo.level);
+    return (int)(parambaht1.getShmsgseq() - parambaht2.getShmsgseq());
   }
 }
 

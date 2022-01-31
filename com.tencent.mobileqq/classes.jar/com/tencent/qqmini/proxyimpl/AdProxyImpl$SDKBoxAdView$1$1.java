@@ -1,10 +1,10 @@
 package com.tencent.qqmini.proxyimpl;
 
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
-import ytn;
+import ytk;
 
 class AdProxyImpl$SDKBoxAdView$1$1
-  implements ytn
+  implements ytk
 {
   AdProxyImpl$SDKBoxAdView$1$1(AdProxyImpl.SDKBoxAdView.1 param1) {}
   

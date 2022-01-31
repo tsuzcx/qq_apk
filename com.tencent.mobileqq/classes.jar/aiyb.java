@@ -1,19 +1,28 @@
-import android.util.LruCache;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
-class aiyb
-  extends LruCache<String, aiyc>
+public class aiyb
+  implements Observer
 {
-  aiyb(aiya paramaiya, int paramInt)
-  {
-    super(paramInt);
-  }
+  public aiyb(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  protected int a(String paramString, aiyc paramaiyc)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if ((paramaiyc == null) || (paramaiyc.a == null)) {
-      return 0;
+    if ((paramObject != null) && ((paramObject instanceof Bundle)))
+    {
+      paramObservable = (Bundle)paramObject;
+      long l1 = paramObservable.getLong("START_TIME_KEY");
+      long l2 = paramObservable.getLong("END_TIME_KEY");
+      paramObject = paramObservable.getString("MESSAGE");
+      int i = paramObservable.getInt("FROM");
+      int j = paramObservable.getInt("TO");
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      }
     }
-    return paramaiyc.a.length;
   }
 }
 

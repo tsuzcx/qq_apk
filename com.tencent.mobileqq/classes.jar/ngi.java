@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONObject;
 
 class ngi
-  implements View.OnClickListener
+  implements baic
 {
-  ngi(nfu paramnfu, String paramString, nmv paramnmv) {}
+  ngi(nfr paramnfr) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    nfu.b(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_JavaLangString);
-    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
+    nfr.a(this.a, paramJSONObject);
   }
 }
 

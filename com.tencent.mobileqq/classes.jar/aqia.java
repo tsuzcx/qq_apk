@@ -1,18 +1,15 @@
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import java.io.File;
-import java.io.FileFilter;
 
 public class aqia
-  implements FileFilter
+  implements Handler.Callback
 {
   public aqia(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public boolean accept(File paramFile)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramFile.getName().endsWith(".png")) {}
-    while (paramFile.getName().endsWith(".jpg")) {
-      return true;
-    }
+    this.a.a(paramMessage);
     return false;
   }
 }

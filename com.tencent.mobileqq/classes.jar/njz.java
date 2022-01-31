@@ -1,32 +1,32 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class njz
-  implements TVK_SDKMgr.InstallListener
+  implements aptw
 {
-  public njz(VideoCoverView.5 param5) {}
+  public njz(VideoCoverView paramVideoCoverView) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
     }
-    this.a.this$0.b = false;
+    for (;;)
+    {
+      njc.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
+    }
   }
   
-  public void onInstalledSuccessed()
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
-    }
-    this.a.this$0.b = true;
-    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    njc.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 

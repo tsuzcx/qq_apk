@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class acoz
-  implements DialogInterface.OnDismissListener
+  extends WebViewClient
 {
-  public acoz(UpgradeActivity paramUpgradeActivity) {}
+  public acoz(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
+    }
+    axqy.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
+      return true;
+    }
+    this.a.a.loadUrl(paramString);
+    return true;
   }
 }
 

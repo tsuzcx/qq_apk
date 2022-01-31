@@ -1,18 +1,36 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
 
 class bbgx
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bbgx(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener) {}
+  bbgx(bbgu parambbgu, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgu, 0);
+    this.jdField_a_of_type_Bbgu.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i;
+    if (this.jdField_a_of_type_Bbgu.text.getLineCount() > this.jdField_a_of_type_Int)
+    {
+      i = this.jdField_a_of_type_Bbgu.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label134;
+      }
     }
-    this.jdField_a_of_type_Bbgu.dismiss();
+    label134:
+    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
+    {
+      boolean bool1 = aykk.a(str);
+      boolean bool2 = aykk.b(str);
+      if ((!bool1) && (!bool2))
+      {
+        str = this.jdField_a_of_type_Bbgu.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_Bbgu.text.setText(str);
+      }
+      return;
+    }
   }
 }
 

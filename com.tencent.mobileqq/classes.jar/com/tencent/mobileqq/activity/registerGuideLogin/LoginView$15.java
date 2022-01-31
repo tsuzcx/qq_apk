@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.registerGuideLogin;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bkur;
+import bkvi;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -26,7 +26,7 @@ class LoginView$15
     localLayoutParams.addRule(7, 2131368930);
     localLayoutParams.addRule(5, 2131368930);
     localLayoutParams.setMargins(0, (int)(13.0F * LoginView.a(this.this$0) + 0.5F), 0, 0);
-    localLayoutParams.addRule(3, 2131369564);
+    localLayoutParams.addRule(3, 2131369563);
     this.this$0.b.setLayoutParams(localLayoutParams);
     int j = (int)(35.0F * LoginView.a(this.this$0));
     int k = LoginView.a(this.this$0) - j;
@@ -51,7 +51,7 @@ class LoginView$15
         if (LoginView.a(this.this$0).isRunning()) {
           LoginView.a(this.this$0).cancel();
         }
-        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bkur.a()))) {
+        if ((this.this$0.getActivity() == null) || ((!ImmersiveUtils.a(this.this$0.getActivity())) && (!bkvi.a()))) {
           break label655;
         }
       }

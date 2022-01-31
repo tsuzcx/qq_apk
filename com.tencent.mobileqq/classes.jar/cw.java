@@ -4,7 +4,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class cw
-  extends aouj
+  extends aoun
 {
   public cw(LiteActivity paramLiteActivity) {}
   
@@ -24,11 +24,11 @@ public class cw
       return;
       if (paramBoolean)
       {
-        apue.a(paramLong2);
+        apug.a(paramLong2);
         return;
       }
     } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    apue.a(paramLong2, paramInt2, paramString2);
+    apug.a(paramLong2, paramInt2, paramString2);
   }
 }
 

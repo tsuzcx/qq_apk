@@ -1,13 +1,17 @@
-public abstract class bbkw
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
+
+class bbkw
+  extends ThreadPoolExecutor
 {
-  public int a;
+  private static int a;
   
-  public bbkw(int paramInt)
+  public bbkw(int paramInt, long paramLong)
   {
-    this.a = paramInt;
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new bbkx(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
-  
-  public abstract void a();
 }
 
 

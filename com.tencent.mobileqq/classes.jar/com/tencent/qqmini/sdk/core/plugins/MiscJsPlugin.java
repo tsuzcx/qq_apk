@@ -6,9 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import begz;
-import beka;
-import besl;
+import behq;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.AppMode;
@@ -21,20 +21,20 @@ public class MiscJsPlugin
 {
   private static final String TAG = "MiscJsPlugin";
   
-  public static void openUrl(JSONObject paramJSONObject, begz parambegz, MiscJsPlugin.OpenUrlCallback paramOpenUrlCallback)
+  public static void openUrl(JSONObject paramJSONObject, behq parambehq, MiscJsPlugin.OpenUrlCallback paramOpenUrlCallback)
   {
-    if (parambegz != null) {}
+    if (parambehq != null) {}
     for (;;)
     {
       Object localObject;
       try
       {
-        if ((parambegz.a() == null) || (parambegz.a().isFinishing()) || (paramJSONObject == null))
+        if ((parambehq.a() == null) || (parambehq.a().isFinishing()) || (paramJSONObject == null))
         {
           if (paramOpenUrlCallback != null) {
             paramOpenUrlCallback.openResult(false, "activity or json error.");
           }
-          besl.d("MiscJsPlugin", "openurl error, return.");
+          betc.d("MiscJsPlugin", "openurl error, return.");
           return;
         }
         try
@@ -50,7 +50,7 @@ public class MiscJsPlugin
         }
         catch (Exception paramJSONObject)
         {
-          besl.d("MiscJsPlugin", "openUrl error; " + Log.getStackTraceString(paramJSONObject));
+          betc.d("MiscJsPlugin", "openUrl error; " + Log.getStackTraceString(paramJSONObject));
         }
         if (paramOpenUrlCallback == null) {
           continue;
@@ -76,10 +76,10 @@ public class MiscJsPlugin
         {
           localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
           ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_miniapp");
-          if (((Intent)localObject).resolveActivity(parambegz.a().getPackageManager()) != null)
+          if (((Intent)localObject).resolveActivity(parambehq.a().getPackageManager()) != null)
           {
-            besl.a("MiscJsPlugin", "openUrl by system webview.");
-            parambegz.a().startActivity((Intent)localObject);
+            betc.a("MiscJsPlugin", "openUrl by system webview.");
+            parambehq.a().startActivity((Intent)localObject);
           }
         }
         label255:
@@ -96,11 +96,11 @@ public class MiscJsPlugin
             }
             paramOpenUrlCallback.openResult(true, null);
             break;
-            besl.a("MiscJsPlugin", "openUrl by system webview error.");
+            betc.a("MiscJsPlugin", "openUrl by system webview error.");
             break label255;
-            parambegz.a().overridePendingTransition(0, 0);
+            parambehq.a().overridePendingTransition(0, 0);
             continue;
-            parambegz.a().overridePendingTransition(2130772087, 0);
+            parambehq.a().overridePendingTransition(2130772087, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -110,7 +110,7 @@ public class MiscJsPlugin
             if ((i >= 0) && (i <= 2)) {
               break label739;
             }
-            besl.d("MiscJsPlugin", "style error, return.");
+            betc.d("MiscJsPlugin", "style error, return.");
             if (paramOpenUrlCallback == null) {
               continue;
             }
@@ -130,7 +130,7 @@ public class MiscJsPlugin
             label399:
             MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
             Intent localIntent = new Intent();
-            if ((parambegz.a() != null) && (parambegz.a().isInternalApp())) {
+            if ((parambehq.a() != null) && (parambehq.a().isInternalApp())) {
               localIntent.setFlags(402653184);
             }
             localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -139,7 +139,7 @@ public class MiscJsPlugin
             i = paramJSONObject.optInt("animation");
             if ((i < 0) || (i > 2))
             {
-              besl.d("MiscJsPlugin", "animation error, return.");
+              betc.d("MiscJsPlugin", "animation error, return.");
               if (paramOpenUrlCallback == null) {
                 break;
               }
@@ -165,15 +165,15 @@ public class MiscJsPlugin
               localBundle.putBoolean("isTransparentTitleAndClickable", true);
               continue;
             }
-            localMiniAppProxy.startBrowserActivity(parambegz.a(), localIntent);
+            localMiniAppProxy.startBrowserActivity(parambehq.a(), localIntent);
             if (paramOpenUrlCallback == null) {
               break label782;
             }
             paramOpenUrlCallback.openResult(true, null);
             break label782;
-            parambegz.a().overridePendingTransition(0, 0);
+            parambehq.a().overridePendingTransition(0, 0);
             break;
-            parambegz.a().overridePendingTransition(2130772087, 0);
+            parambehq.a().overridePendingTransition(2130772087, 0);
             break;
             break label288;
             label739:
@@ -192,42 +192,42 @@ public class MiscJsPlugin
     }
   }
   
-  public void openUrl(beka parambeka)
+  public void openUrl(bekr parambekr)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambeka.b);
+      JSONObject localJSONObject = new JSONObject(parambekr.b);
       String str = localJSONObject.optString("url");
       if ((TextUtils.isEmpty(str)) || ("null".equals(str))) {
-        parambeka.a("url error");
+        parambekr.a("url error");
       }
-      openUrl(localJSONObject, this.mMiniAppContext, new MiscJsPlugin.2(this, parambeka));
+      openUrl(localJSONObject, this.mMiniAppContext, new MiscJsPlugin.2(this, parambekr));
       return;
     }
     catch (JSONException localJSONException)
     {
-      besl.d("MiscJsPlugin", parambeka.a + " error,", localJSONException);
-      parambeka.b();
+      betc.d("MiscJsPlugin", parambekr.a + " error,", localJSONException);
+      parambekr.b();
     }
   }
   
-  public void saveAppToDesktop(beka parambeka)
+  public void saveAppToDesktop(bekr parambekr)
   {
     try
     {
       if (this.mMiniAppInfo.appMode.j)
       {
-        besl.d("MiscJsPlugin", "app is limited access");
-        parambeka.b();
+        betc.d("MiscJsPlugin", "app is limited access");
+        parambekr.b();
         return;
       }
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).addShortcut(this.mMiniAppContext.a(), this.mMiniAppInfo, new MiscJsPlugin.1(this, parambeka));
+      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).addShortcut(this.mMiniAppContext.a(), this.mMiniAppInfo, new MiscJsPlugin.1(this, parambekr));
       return;
     }
     catch (Exception localException)
     {
-      besl.d("MiscJsPlugin", localException.getMessage(), localException);
-      parambeka.b();
+      betc.d("MiscJsPlugin", localException.getMessage(), localException);
+      parambekr.b();
     }
   }
 }

@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
 
 public class alve
-  implements View.OnClickListener
+  extends alvh
 {
   public alve(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    ArkIDESettingFragment.a(this.a, 0);
+    if (ArkIDESettingFragment.a(this.a) != null)
+    {
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
+    }
   }
 }
 

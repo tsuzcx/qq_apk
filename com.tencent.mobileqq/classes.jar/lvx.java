@@ -1,39 +1,19 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-public class lvx
-  extends Handler
+final class lvx
+  extends mrr
 {
-  WeakReference<RedPacketRollTextView> a;
-  
-  public lvx(RedPacketRollTextView paramRedPacketRollTextView)
+  lvx(String paramString1, String paramString2, String paramString3)
   {
-    this.a = new WeakReference(paramRedPacketRollTextView);
+    super(paramString1, paramString2, paramString3);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(String paramString)
   {
-    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
-    if (localRedPacketRollTextView == null) {}
-    do
-    {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = paramMessage.getData();
-      } while (localBundle == null);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      localRedPacketRollTextView.setText(localBundle.getString("content"));
-    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
-    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
+    lvw.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
+    }
   }
 }
 

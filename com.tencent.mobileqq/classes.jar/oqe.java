@@ -1,133 +1,52 @@
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
 import android.support.v4.util.LruCache;
 import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3.1.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.util.WeakReference;
 
 public class oqe
-  extends LottieDrawable
+  implements ImageAssetDelegate
 {
-  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
-  private static final String jdField_a_of_type_JavaLangString = bbuv.a(ajsf.aW + ".readInjoy/resource/lottie_background_res");
-  private static LruCache<String, LottieComposition> b = new LruCache(1048576);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  
-  private static long a(String paramString)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < paramString.length())
-    {
-      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
-      i += 1;
-    }
-    return l;
-  }
+  public oqe(ReadInJoyLottieDrawable.3 param3) {}
   
   @Nullable
-  private File a(File[] paramArrayOfFile, String paramString)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    int j = paramArrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      File localFile = paramArrayOfFile[i];
-      if (localFile.getName().equals(paramString)) {
-        return localFile;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  public static oqe a(String paramString)
-  {
-    oqe localoqe = new oqe();
-    long l = a(paramString);
-    String str = jdField_a_of_type_JavaLangString + File.separator + l;
-    File localFile1 = new File(str);
-    if (a(localFile1)) {
-      localoqe.a(localFile1);
-    }
+    Object localObject = paramLottieImageAsset.getFileName();
+    paramLottieImageAsset = oqb.a(this.a.this$0, this.a.a, "images");
+    if (paramLottieImageAsset != null) {}
     for (;;)
     {
-      return localoqe;
-      bbwl localbbwl = ((bbwi)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-      File localFile2 = new File(jdField_a_of_type_JavaLangString);
-      if (!localFile2.exists()) {}
-      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
-      {
-        str = str + ".zip";
-        localFile2 = new File(str);
-        paramString = new bbwg(paramString, localFile2);
-        paramString.b = 3;
-        paramString.d = 60L;
-        Bundle localBundle = new Bundle();
-        localBundle.putLong("bgLottieResId", l);
-        localBundle.putString("bgLottieResPath", str);
-        localbbwl.a(paramString, new oqj(l, str, localFile2, localFile1, new WeakReference(localoqe)), localBundle);
-        return localoqe;
+      paramLottieImageAsset = paramLottieImageAsset.getAbsolutePath() + "/" + (String)localObject;
+      localObject = (Bitmap)oqb.b().get(paramLottieImageAsset);
+      if (localObject == null) {
+        break;
       }
+      return localObject;
+      paramLottieImageAsset = this.a.a[0];
     }
-  }
-  
-  private void a(File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
-    }
-    File[] arrayOfFile = paramFile.listFiles(new oqf(this));
-    Object localObject = paramFile.listFiles(new oqg(this));
-    if ((arrayOfFile == null) || (localObject == null)) {}
-    do
+    ThreadManager.excute(new ReadInJoyLottieDrawable.3.1.1(this, paramLottieImageAsset), 64, null, true);
+    try
     {
-      return;
-      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
-    } while (arrayOfFile.length <= 0);
-    if ((LottieComposition)b.get(paramFile.getAbsolutePath()) == null)
+      localObject = BitmapFactory.decodeFile(paramLottieImageAsset);
+      return localObject;
+    }
+    catch (Exception localException)
     {
-      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
-      return;
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation path: " + paramLottieImageAsset);
+      return null;
     }
-    ((Runnable)localObject).run();
-  }
-  
-  private static boolean a(File paramFile)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFile.exists())
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      paramFile = paramFile.listFiles(new oqk());
-      bool1 = bool2;
-      if (paramFile != null)
-      {
-        bool1 = bool2;
-        if (paramFile.length > 0) {
-          bool1 = true;
-        }
-      }
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation oom: " + paramLottieImageAsset);
     }
-    return bool1;
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {
-      cancelAnimation();
-    }
-    return super.setVisible(paramBoolean1, paramBoolean2);
+    return null;
   }
 }
 

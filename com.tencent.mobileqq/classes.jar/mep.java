@@ -1,60 +1,17 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
 
 public class mep
-  extends lfg
+  implements View.OnClickListener
 {
-  public mep(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mep(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void onClick(View paramView)
   {
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_b_of_type_JavaLangString, 1, "onDestroyInviteUI, groupId[" + paramLong + "], reason[" + paramInt + "], mIsDoubleVideoMeeting[" + this.a.jdField_a_of_type_Boolean + "], mPeerUin[" + this.a.c + "], mGroupId[" + this.a.jdField_a_of_type_Long + "], seq[" + l + "]");
-    if (this.a.jdField_a_of_type_Boolean) {
-      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
-      {
-        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
-        this.a.a(l, paramInt);
-      }
-    }
-    while ((this.a.jdField_a_of_type_Long != paramLong) && (0L != paramLong)) {
-      return;
-    }
-    this.a.b("onDestroyInviteUI");
-  }
-  
-  protected void a(long paramLong, String paramString)
-  {
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.finish();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.finish();
-    }
-  }
-  
-  protected void e(long paramLong)
-  {
-    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
-    this.a.finish();
-  }
-  
-  protected void f(long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Long == paramLong)
-    {
-      this.a.b("notifyCloseGroupVideoInviteMsgBox");
-      this.a.finish();
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
   }
 }
 

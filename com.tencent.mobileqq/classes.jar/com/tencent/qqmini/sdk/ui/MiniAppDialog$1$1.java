@@ -1,18 +1,18 @@
 package com.tencent.qqmini.sdk.ui;
 
-import bffc;
-import bffd;
+import bfft;
+import bffu;
 
 public class MiniAppDialog$1$1
   implements Runnable
 {
-  public MiniAppDialog$1$1(bffd parambffd) {}
+  public MiniAppDialog$1$1(bffu parambffu) {}
   
   public void run()
   {
     try
     {
-      bffc.a(this.a.a);
+      bfft.a(this.a.a);
       return;
     }
     catch (Exception localException) {}

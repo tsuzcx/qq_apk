@@ -1,55 +1,117 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
+import org.json.JSONObject;
 
-class nln
-  implements INetInfoHandler
+public class nln
+  extends nli
 {
-  nln(nll paramnll) {}
+  private spa a;
+  public int d;
+  public String d;
+  public int e;
   
-  public void onNetMobile2None()
+  public static nln a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2None");
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        nln localnln = new nln();
+        localnln.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
+        localnln.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
+        localnln.e = paramJSONObject.optInt("imageHeight");
+        boolean bool = TextUtils.isEmpty(localnln.jdField_d_of_type_JavaLangString);
+        if (!bool) {
+          return localnln;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
-    nll.b(this.a);
+    return null;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nla paramnla, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramnla, paramBoolean);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131559973, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131371631);
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
+    try
+    {
+      paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
+      paramString2.a(paramString3);
+      if (rpg.a().a(paramString3)) {
+        this.jdField_a_of_type_Int = 2;
+      }
+      for (;;)
+      {
+        a(paramContext, paramString1);
+        return paramString1;
+        this.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Spa = new nlo(this, paramString1, paramString2);
+        paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_Spa);
+        paramString1.findViewById(2131369489).setVisibility(0);
+      }
+    }
+    catch (Exception paramString2)
+    {
+      for (;;)
+      {
+        paramString2.printStackTrace();
+      }
     }
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
-    }
-    nll.b(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
+    super.a();
+    if (this.jdField_a_of_type_Int == 3) {
+      d();
     }
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      nls localnls = (nls)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248);
+      if (localnls != null) {
+        localnls.a(this.jdField_d_of_type_JavaLangString);
+      }
     }
-    nll.b(this.a);
   }
   
-  public void onNetWifi2None()
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    super.c();
+    this.jdField_a_of_type_Spa = null;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369489).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131365892).setVisibility(8);
+    try
+    {
+      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
+      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371631)).a(localURL);
+      return;
     }
-    nll.b(this.a);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

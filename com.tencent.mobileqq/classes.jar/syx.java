@@ -1,24 +1,21 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
 
-public class syx
-  extends SimpleJob<Void>
+class syx
+  extends Job<Object, Object, Object>
 {
-  public syx(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString)
+  syx(syw paramsyw, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
     super(paramString);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    paramJobContext = ((tcv)tdc.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
-    }
+    ved.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Syw.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
     return null;
   }
 }

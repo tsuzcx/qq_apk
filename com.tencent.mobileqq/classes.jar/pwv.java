@@ -1,16 +1,16 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import java.util.List;
 
 public class pwv
-  extends CharacterStyle
+  implements View.OnClickListener
 {
-  public pwv(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
+  public pwv(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actn.a(2, 14, this.a.getResources()));
+    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
   }
 }
 

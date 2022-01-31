@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.util.ShareUtils;
 import android.content.Context;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import mqq.app.AppActivity;
-import sim;
-import sio;
+import sij;
+import sil;
 
 public final class ShareImageUtils$2
   implements Runnable
@@ -16,9 +16,9 @@ public final class ShareImageUtils$2
     if ((this.a instanceof AppActivity))
     {
       if (!CheckPermission.isHasStoragePermission(this.a)) {
-        CheckPermission.requestSDCardPermission((AppActivity)this.a, new sio(this));
+        CheckPermission.requestSDCardPermission((AppActivity)this.a, new sil(this));
       }
-      sim.c();
+      sij.c();
     }
   }
 }

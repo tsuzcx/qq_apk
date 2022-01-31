@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 
 public final class qcf
-  implements Parcelable.Creator<SimpleChannelInfo>
+  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
 {
-  public SimpleChannelInfo a(Parcel paramParcel)
+  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
   {
-    return new SimpleChannelInfo(paramParcel);
+    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
   }
   
-  public SimpleChannelInfo[] a(int paramInt)
+  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
   {
-    return new SimpleChannelInfo[paramInt];
+    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
   }
 }
 

@@ -1,17 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
 
 public class aqjq
-  implements CompoundButton.OnCheckedChangeListener
+  implements bctk
 {
-  public aqjq(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  public aqjq(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(View paramView, int paramInt)
   {
-    ((ases)this.a.a.getManager(303)).a((short)-23312, paramBoolean, true);
-    axqw.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 2, 2, "", "", "", "");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
   }
 }
 

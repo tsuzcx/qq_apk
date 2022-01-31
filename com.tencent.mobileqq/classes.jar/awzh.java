@@ -1,18 +1,29 @@
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
 
-public final class awzh
-  implements Parcelable.Creator<FriendListInfo>
+public class awzh
 {
-  public FriendListInfo a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  
+  public void a(Parcel paramParcel)
   {
-    return new FriendListInfo(paramParcel);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.c);
   }
   
-  public FriendListInfo[] a(int paramInt)
+  public void b(Parcel paramParcel)
   {
-    return new FriendListInfo[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
 }
 

@@ -1,61 +1,140 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
 public class aqks
-  extends RecyclerView.ViewHolder
+  extends RecyclerView.Adapter<aqku>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
-  private TextView b;
-  private TextView c;
+  private int jdField_a_of_type_Int = 9999;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private final String jdField_a_of_type_JavaLangString;
+  private List<MISC.StAppPlayingInfo> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  aqks(View paramView)
+  public aqks(List<MISC.StAppPlayingInfo> paramList, String paramString, View.OnClickListener paramOnClickListener)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368248));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368250));
-    this.b = ((TextView)paramView.findViewById(2131368253));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368246));
-    this.c = ((TextView)paramView.findViewById(2131368252));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368251));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368247);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  View a()
+  private void a(aqku paramaqku)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    try
+    {
+      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
+      {
+        paramaqku.a().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+        paramaqku.b().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+        return;
+      }
+      paramaqku.a().setTextColor(this.b);
+      paramaqku.b().setTextColor(this.b);
+      return;
+    }
+    catch (Throwable paramaqku)
+    {
+      QLog.e("IntimatePlayTogetherMin", 1, "updateThemeTextColor error", paramaqku);
+    }
   }
   
-  Button a()
+  public aqku a(ViewGroup paramViewGroup, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetButton;
+    return new aqku(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559156, null, false));
   }
   
-  TextView a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    this.jdField_a_of_type_Boolean = true;
+    this.b = paramInt;
   }
   
-  URLImageView a()
+  public void a(ColorStateList paramColorStateList)
   {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
   }
   
-  public ThemeImageView a()
+  public void a(aqku paramaqku, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
+    MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localStAppPlayingInfo != null)
+    {
+      paramaqku.itemView.setOnClickListener(new aqkt(this, localStAppPlayingInfo));
+      paramaqku.a().setVisibility(0);
+      paramaqku.a().setVisibility(0);
+      paramaqku.b().setVisibility(0);
+      if (localStAppPlayingInfo.appMetaInfo != null)
+      {
+        paramaqku.a().setText(localStAppPlayingInfo.appMetaInfo.appName.get());
+        paramaqku.a().setImageDrawable(MiniAppUtils.getIcon(paramaqku.a().getContext(), localStAppPlayingInfo.appMetaInfo.icon.get(), true));
+      }
+      IntimatePlayTogetherMiniGameCardView.a(paramaqku.a(), this.jdField_a_of_type_JavaLangString);
+      if ((localStAppPlayingInfo.myRank.get() == 0) || (localStAppPlayingInfo.friendRank.get() == 0)) {
+        break label230;
+      }
+      if (localStAppPlayingInfo.myRank.get() != localStAppPlayingInfo.friendRank.get()) {
+        break label189;
+      }
+      paramaqku.b().setText(2131693626);
+      paramaqku.a().setText(2131693631);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        a(paramaqku);
+      }
+      return;
+      label189:
+      TextView localTextView = paramaqku.b();
+      if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {}
+      for (paramInt = 2131693628;; paramInt = 2131693627)
+      {
+        localTextView.setText(paramInt);
+        break;
+      }
+      label230:
+      if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
+      {
+        paramaqku.b().setText(String.format(paramaqku.itemView.getContext().getString(2131693629), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
+        paramaqku.a().setText(2131693631);
+      }
+      else
+      {
+        paramaqku.a().setVisibility(8);
+        paramaqku.a().setVisibility(8);
+        paramaqku.b().setVisibility(8);
+        paramaqku.a().setText(2131693631);
+      }
+    }
   }
   
-  TextView b()
+  public void b(int paramInt)
   {
-    return this.c;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int getItemCount()
+  {
+    return 1;
   }
 }
 

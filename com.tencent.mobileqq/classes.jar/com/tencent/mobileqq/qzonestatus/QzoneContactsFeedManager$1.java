@@ -3,29 +3,29 @@ package com.tencent.mobileqq.qzonestatus;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import avnh;
+import avnj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class QzoneContactsFeedManager$1
   implements Runnable
 {
-  public QzoneContactsFeedManager$1(avnh paramavnh) {}
+  public QzoneContactsFeedManager$1(avnj paramavnj) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateQzoneFeeds:" + avnh.a(this.this$0).getCurrentAccountUin());
+      QLog.d("QzoneContactsFeedManager", 2, "updateQzoneFeeds:" + avnj.a(this.this$0).getCurrentAccountUin());
     }
-    Object localObject = avnh.a(this.this$0);
+    Object localObject = avnj.a(this.this$0);
     long l2 = ((SharedPreferences)localObject).getLong("last_click_time", 0L);
     long l1 = System.currentTimeMillis();
     l2 = l1 - l2;
-    if (l2 < avnh.a()) {
+    if (l2 < avnj.a()) {
       return;
     }
     long l3 = this.this$0.a();
-    if ((l3 <= 0L) || (l2 >= avnh.b())) {
+    if ((l3 <= 0L) || (l2 >= avnj.b())) {
       this.this$0.b();
     }
     for (;;)

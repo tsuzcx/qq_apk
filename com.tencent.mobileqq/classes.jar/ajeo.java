@@ -1,28 +1,42 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
 
-class ajeo
-  implements View.OnClickListener
+public abstract interface ajeo
 {
-  ajeo(ajek paramajek) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if ((ajek.a(this.a).d()) || (ajek.b(this.a)))
-    {
-      ajek.b(this.a, false);
-      ajek.a(this.a).a();
-      ajek.c(this.a).setVisibility(8);
-      ajek.b(this.a).setVisibility(8);
-    }
-    while (!ajek.a(this.a).c()) {
-      return;
-    }
-    ajek.b(this.a, true);
-    ajek.a(this.a).b();
-    ajek.b(this.a).setVisibility(0);
-  }
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract void a(ajen paramajen);
+  
+  public abstract void a(Context paramContext, AppInterface paramAppInterface);
+  
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(ajen paramajen);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
 }
 
 

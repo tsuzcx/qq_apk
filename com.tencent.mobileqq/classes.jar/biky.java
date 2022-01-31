@@ -1,32 +1,29 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
 class biky
-  extends Handler
+  implements bjos<bipq>
 {
-  biky(biku parambiku, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  biky(bikt parambikt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@Nullable bipq parambipq)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      xhe.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
-      paramMessage = paramMessage.getData();
-      int i = paramMessage.getInt("sceneLvOne");
-      paramMessage = paramMessage.getString("sceneName");
-      this.a.a(i, paramMessage, true);
+    if (parambipq == null) {
       return;
     }
-    xhe.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
-    this.a.d();
+    boolean bool = parambipq.a();
+    if (bool) {
+      bikt.a(this.a);
+    }
+    for (;;)
+    {
+      bikt.a(this.a).a(bool, new bikz(this, parambipq));
+      return;
+      if (bikt.a(this.a) != null) {
+        bikt.a(this.a).a();
+      }
+    }
   }
 }
 

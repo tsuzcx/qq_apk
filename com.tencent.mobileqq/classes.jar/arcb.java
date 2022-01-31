@@ -1,79 +1,81 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-class arcb
-  extends BroadcastReceiver
+public class arcb
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  private static volatile arcb jdField_a_of_type_Arcb;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arcd(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new arcc(this);
+  private ArrayList<arce> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  arcb(arbz paramarbz) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private arcb(Context paramContext)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    a(true);
+  }
+  
+  public static arcb a(Context paramContext)
+  {
+    if (jdField_a_of_type_Arcb == null) {}
+    try
     {
-      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-      while (paramContext.hasNext()) {
-        ((arcc)paramContext.next()).b(false);
+      if (jdField_a_of_type_Arcb == null) {
+        jdField_a_of_type_Arcb = new arcb(paramContext);
       }
+      return jdField_a_of_type_Arcb;
     }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-      while (paramContext.hasNext()) {
-        ((arcc)paramContext.next()).b(true);
-      }
+    finally {}
+  }
+  
+  public void a(arce paramarce)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramarce)) && (paramarce != null)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramarce);
     }
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-      while (paramContext.hasNext()) {
-        ((arcc)paramContext.next()).c(true);
-      }
-    }
-    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
-    {
-      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-      while (paramContext.hasNext()) {
-        ((arcc)paramContext.next()).c(false);
-      }
-    }
-    if ("VolumeBtnDown".equals(paramIntent.getAction()))
-    {
-      paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-      while (paramContext.hasNext()) {
-        ((arcc)paramContext.next()).i();
-      }
-    }
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
-      }
-    }
-    for (;;)
-    {
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
-      label294:
-      if (paramContext.equals("homekey"))
-      {
-        paramContext = arbz.a(this.jdField_a_of_type_Arbz).iterator();
-        while (paramContext.hasNext())
-        {
-          ((arcc)paramContext.next()).h();
-          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
-        }
-      }
+    }
+    if (paramBoolean)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
+      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      localIntentFilter.addAction("VolumeBtnDown");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void b(arce paramarce)
+  {
+    if ((paramarce != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramarce))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramarce);
     }
   }
 }

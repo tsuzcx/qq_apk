@@ -1,43 +1,33 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
+import org.json.JSONObject;
 
-public class babg
-  extends bach<ArithmeticViewHolder, baap>
+public abstract class babg
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
+  protected JSONObject a;
+  protected boolean b = true;
+  public int c;
   
-  public babg(XMediaEditor paramXMediaEditor, Context paramContext)
+  public abstract int a();
+  
+  public JSONObject a()
   {
-    super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    return this.a;
   }
   
-  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
+  public void a(String paramString) {}
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561142, paramViewGroup, false));
-    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
+    return this.b;
   }
   
-  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
+  public abstract int b();
   
-  public void a(baap parambaap)
+  public String toString()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
+    if (this.a != null) {
+      return this.a.toString();
     }
-  }
-  
-  public void a(ArithmeticViewHolder paramArithmeticViewHolder, baap parambaap, int paramInt)
-  {
-    paramArithmeticViewHolder.a(parambaap, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
-      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
-    }
+    return "";
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class ajpp
   implements DialogInterface.OnClickListener
 {
-  ajpp(ajpn paramajpn) {}
+  ajpp(ajpl paramajpl) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

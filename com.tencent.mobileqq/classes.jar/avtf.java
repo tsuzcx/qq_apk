@@ -1,106 +1,112 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.qmcf.QmcfSwitchStrategy;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import com.tencent.sveffects.SdkContext;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class avtf
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[256];
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private int c = 125;
+  private static avtf jdField_a_of_type_Avtf;
+  private int jdField_a_of_type_Int = -1;
   
-  public void a()
+  public static avtf a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeChecker", 2, "refreshTimer ");
+    if (jdField_a_of_type_Avtf == null) {
+      jdField_a_of_type_Avtf = new avtf();
     }
+    return jdField_a_of_type_Avtf;
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, avtg paramavtg)
+  public void a(BoyDataReport paramBoyDataReport)
   {
-    if ((paramavtg == null) || (paramArrayOfByte == null)) {}
-    int[] arrayOfInt;
-    do
+    HashMap localHashMap = new HashMap();
+    paramBoyDataReport = paramBoyDataReport.mBoyData.iterator();
+    Object localObject2;
+    while (paramBoyDataReport.hasNext())
     {
-      do
+      localObject1 = (BoyDataReport.BoyItem)paramBoyDataReport.next();
+      if (localHashMap.containsKey(((BoyDataReport.BoyItem)localObject1).mId))
       {
-        return;
-        arrayOfInt = ShortVideoUtils.a();
-      } while (arrayOfInt[0] != 1);
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int % 8 != 0);
-    this.jdField_b_of_type_Int = (paramInt1 * paramInt2 * (100 - arrayOfInt[1]) / 100);
-    this.c = arrayOfInt[2];
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    int i = 1;
-    while (i < paramInt2)
-    {
-      int j = 1;
-      while (j < paramInt1)
-      {
-        if (i * paramInt1 + j < paramArrayOfByte.length)
-        {
-          arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-          int k = paramArrayOfByte[(i * paramInt1 + j)] & 0xFF;
-          arrayOfInt[k] += 64;
+        localObject2 = (avtg)localHashMap.get(((BoyDataReport.BoyItem)localObject1).mId);
+        ((avtg)localObject2).b();
+        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {
+          ((avtg)localObject2).a();
         }
-        j += 8;
       }
-      i += 8;
-    }
-    i = 0;
-    paramInt2 = 255;
-    paramInt1 = 255;
-    label172:
-    if (paramInt1 >= 51)
-    {
-      i += this.jdField_a_of_type_ArrayOfInt[paramInt1];
-      if (i < this.jdField_b_of_type_Int) {}
-    }
-    for (;;)
-    {
-      if (paramInt1 <= this.c)
+      else
       {
-        QLog.w("DarkModeChecker", 1, "darkmode = true!");
-        this.jdField_b_of_type_Long = 0L;
-        if (this.jdField_a_of_type_Long == 0L)
+        localObject2 = ((BoyDataReport.BoyItem)localObject1).mId;
+        if (((BoyDataReport.BoyItem)localObject1).status >= 1) {}
+        for (int i = 1;; i = 0)
         {
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          return;
-          paramInt2 = paramInt1;
-          paramInt1 -= 1;
-          break label172;
-        }
-        if ((this.jdField_a_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1500L)) {
+          localObject2 = new avtg(this, (String)localObject2, 1, i);
+          localHashMap.put(((BoyDataReport.BoyItem)localObject1).mId, localObject2);
           break;
         }
-        this.jdField_a_of_type_Long = -1L;
-        QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE on!");
-        this.jdField_b_of_type_Long = 0L;
-        paramavtg.a(true);
-        return;
       }
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_a_of_type_Long = 0L;
+    }
+    paramBoyDataReport = new HashMap();
+    paramBoyDataReport.put("param_manufacture", Build.MANUFACTURER);
+    paramBoyDataReport.put("param_model", Build.MODEL);
+    paramBoyDataReport.put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
+    Object localObject1 = localHashMap.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = ((Iterator)localObject1).next();
+      paramBoyDataReport.put(localObject2, String.valueOf(((avtg)localHashMap.get(localObject2)).a()));
+    }
+    axrn.a(BaseApplicationImpl.getContext()).a(null, "dg_action_match", true, 0L, 0L, paramBoyDataReport, "");
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("entranceReportAlready", 0);
+    }
+    Object localObject;
+    int i;
+    int j;
+    axrn localaxrn;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      this.jdField_a_of_type_Int = 1;
+      localObject = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+      ((SharedPreferences.Editor)localObject).putInt("entranceReportAlready", this.jdField_a_of_type_Int);
+      ((SharedPreferences.Editor)localObject).commit();
+      i = QmcfManager.getInstance().getCurrSwitchStrategy().getEntranceState();
+      j = QmcfManager.getInstance().getCurrFrameType();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_hasPoseEntrance", String.valueOf(paramBoolean1));
+      ((HashMap)localObject).put("param_hasFaceEntrance", String.valueOf(paramBoolean2));
+      ((HashMap)localObject).put("param_entanceState", String.valueOf(i));
+      ((HashMap)localObject).put("param_frameType", String.valueOf(j));
+      ((HashMap)localObject).put("param_manufacture", Build.MANUFACTURER);
+      ((HashMap)localObject).put("param_model", Build.MODEL);
+      ((HashMap)localObject).put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
+      localaxrn = axrn.a(BaseApplicationImpl.getContext());
+      if ((!paramBoolean1) || (!paramBoolean2)) {
+        break label283;
       }
-      if (this.jdField_b_of_type_Long == 0L)
-      {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        return;
+    }
+    label283:
+    for (boolean bool = true;; bool = false)
+    {
+      localaxrn.a(null, "dg_entrance_state", bool, 0L, 0L, (HashMap)localObject, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DanceGameReporter", 2, String.format("reportDGEntranceState, hasPose[%s], hasFace[%s], state[%s], frameTpye[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i), Integer.valueOf(j) }));
       }
-      if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long < 2000L)) {
-        break;
-      }
-      this.jdField_b_of_type_Long = -1L;
-      QLog.w("DarkModeChecker", 1, "ACTION_NIGHT_MODE off!");
-      this.jdField_a_of_type_Long = 0L;
-      paramavtg.a(false);
       return;
-      paramInt1 = paramInt2;
     }
   }
 }

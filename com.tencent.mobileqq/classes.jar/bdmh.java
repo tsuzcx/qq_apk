@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.common.NoticeParam;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class bdmh
-  implements Parcelable.Creator<NoticeParam>
+class bdmh
+  implements View.OnClickListener
 {
-  public NoticeParam a(Parcel paramParcel)
-  {
-    return new NoticeParam(paramParcel);
-  }
+  bdmh(bdmf parambdmf, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
-  public NoticeParam[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new NoticeParam[paramInt];
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdmf, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Bdmf.dismiss();
+    }
   }
 }
 

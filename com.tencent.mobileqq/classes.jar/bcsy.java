@@ -1,25 +1,18 @@
-import android.annotation.TargetApi;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.Workspace.SavedState;
 
-@TargetApi(21)
-public class bcsy
-  extends ViewOutlineProvider
+public final class bcsy
+  implements Parcelable.Creator<Workspace.SavedState>
 {
-  private float a;
-  
-  public bcsy(float paramFloat)
+  public Workspace.SavedState a(Parcel paramParcel)
   {
-    this.a = paramFloat;
+    return new Workspace.SavedState(paramParcel, null);
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public Workspace.SavedState[] a(int paramInt)
   {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    paramOutline.setRoundRect(new Rect(0, 0, localRect.right - localRect.left - 0, localRect.bottom - localRect.top - 0), this.a);
+    return new Workspace.SavedState[paramInt];
   }
 }
 

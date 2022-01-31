@@ -9,14 +9,29 @@ public class asnk
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    asle.a().a().c();
-    asle.a().d();
-    if (this.a.a)
+    paramInt = asnz.a().a();
+    if (1 == paramInt)
     {
-      this.a.g();
+      this.a.l();
+      if (this.a.a) {
+        asog.a("0X800A253", 3);
+      }
+    }
+    while (2 != paramInt)
+    {
+      return;
+      asog.a("0X800A253", 1);
       return;
     }
-    this.a.a(this.a.getActivity());
+    if (this.a.d) {
+      asog.a("0X800A244", 2);
+    }
+    for (;;)
+    {
+      this.a.l();
+      return;
+      asog.a("0X800A244", 1);
+    }
   }
 }
 

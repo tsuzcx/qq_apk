@@ -1,9 +1,10 @@
-import android.graphics.Bitmap;
-
-public class aiac
+public abstract interface aiac
 {
-  public int a;
-  public Bitmap a;
+  public abstract int a(int paramInt1, int paramInt2, ahzv paramahzv);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

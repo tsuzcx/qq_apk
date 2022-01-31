@@ -1,10 +1,14 @@
-import android.view.View;
+import com.tencent.av.ui.QavPanel;
 
-public abstract interface mhx
+public class mhx
+  implements mig
 {
-  public abstract void a(View paramView, int paramInt);
+  public mhx(QavPanel paramQavPanel, Runnable paramRunnable) {}
   
-  public abstract void a(View paramView1, View paramView2);
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

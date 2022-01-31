@@ -1,27 +1,16 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContactAdd;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.graphics.Bitmap;
 
-public class aioo
-  extends bfvn
+class aioo
+  implements awcf
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContactAdd a;
-  public QIMNotifyAddFriend a;
-  public String a;
-  public structmsg.StructMsg a;
-  public long b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  aioo(aion paramaion) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

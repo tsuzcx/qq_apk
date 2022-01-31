@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
-public class adbb
-  implements aybh
+class adbb
+  implements TypeEvaluator
 {
-  public adbb(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    this.a.jdField_a_of_type_Ayce.a = 255;
-    this.a.jdField_a_of_type_Ayce.a(this.a.jdField_a_of_type_Aycf);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    }
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 

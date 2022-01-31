@@ -1,12 +1,12 @@
 package com.tencent.av;
 
 import com.tencent.av.app.VideoAppInterface;
-import lgf;
+import lga;
 
 class VideoController$14
   implements Runnable
 {
-  VideoController$14(VideoController paramVideoController, lgf paramlgf) {}
+  VideoController$14(VideoController paramVideoController, lga paramlga) {}
   
   public void run()
   {

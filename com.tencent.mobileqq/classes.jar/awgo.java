@@ -1,48 +1,94 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-class awgo
+public class awgo
+  implements bfpt
 {
-  private final Drawable a;
-  private final Drawable b;
+  public awgo(ScreenShotFragment paramScreenShotFragment) {}
   
-  awgo(Context paramContext)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
+    }
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    int i = ((awgr)paramAdapterView).a.c;
+    paramAdapterView = null;
+    switch (i)
+    {
+    default: 
+      if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
+        awgs.a("0X800A9A9", paramAdapterView, "1");
+      }
+      if ((i != 9) && (i != 10)) {
+        break label300;
+      }
+      paramInt = -1;
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131720917;
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (paramInt == -1) {
+        break label300;
+      }
+      bcql.a(this.a.getActivity(), this.a.getActivity().getString(paramInt), 0).b(this.a.getActivity().getResources().getDimensionPixelSize(2131298865));
+      return;
+      awgs.a("0X8009FF0", 0);
+      paramAdapterView = "1";
+      break;
+      awgs.a("0X8009FF1", 0);
+      paramAdapterView = "2";
+      break;
+      awgs.a("0X8009FF2", 0);
+      paramAdapterView = "3";
+      break;
+      awgs.a("0X8009FF3", 0);
+      paramAdapterView = "4";
+      break;
+      awgs.a("0X800A77D", 0);
+      paramAdapterView = "5";
+      break;
+      if (!WXShareHelper.a().b()) {
+        paramInt = 2131720918;
+      }
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    case 2: 
+      ScreenShotFragment.a(this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 3: 
+      ScreenShotFragment.a(this.a, this.a.getActivity(), ScreenShotFragment.a(this.a));
+      return;
+    case 9: 
+      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
+      {
+        PicShareToWX.a().a(this.a.getActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
+        axqy.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
+        return;
+      }
+      ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
+    case 10: 
+      label300:
+      ScreenShotFragment.b(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
+      return;
+    }
+    ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a));
   }
 }
 

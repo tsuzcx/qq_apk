@@ -1,6 +1,6 @@
 public abstract interface ajja
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 

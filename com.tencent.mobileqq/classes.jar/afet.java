@@ -1,48 +1,25 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
-import java.util.List;
 
 public class afet
-  implements rff
+  implements View.OnTouchListener
 {
   public afet(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject;
-    if (paramString != null)
-    {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      nut.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
-      return;
-    }
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 

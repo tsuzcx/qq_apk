@@ -1,7 +1,8 @@
 public class axav
 {
-  public int a;
-  public byte[] a;
+  public int c;
+  public int d;
+  public long e;
 }
 
 

@@ -1,46 +1,19 @@
-import java.util.Calendar;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class atti
-  implements amng
+  implements TextWatcher
 {
-  atti(atte paramatte) {}
+  atti(attg paramattg) {}
   
-  public int a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return 3;
+    atbr.a(this.a.f, 90);
   }
   
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + ajyc.a(2131707299);
-    case 1: 
-      return paramInt2 + 1 + ajyc.a(2131707291);
-    }
-    return paramInt2 + 1 + ajyc.a(2131707279);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

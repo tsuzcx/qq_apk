@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.play;
 
-import biwo;
-import biwr;
+import bixf;
+import bixi;
 import com.tencent.qphone.base.util.QLog;
 
 public class AEPlayShowPart$1
   implements Runnable
 {
-  public AEPlayShowPart$1(biwr parambiwr) {}
+  public AEPlayShowPart$1(bixi parambixi) {}
   
   public void run()
   {
     QLog.d("AEPlayShowPart", 4, "load data");
-    biwr.a(this.this$0).d();
+    bixi.a(this.this$0).d();
   }
 }
 

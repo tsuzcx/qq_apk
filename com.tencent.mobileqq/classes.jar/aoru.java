@@ -1,6 +1,6 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.view.ViewStub;
 import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aoru

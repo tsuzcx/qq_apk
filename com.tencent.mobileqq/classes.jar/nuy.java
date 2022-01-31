@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
 
 public class nuy
-  implements bcdu
+  implements View.OnClickListener
 {
-  public nuy(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  public nuy(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public Object a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new nva(this.a);
+    this.a.onBackEvent();
   }
 }
 

@@ -1,61 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
 public class acxm
-  implements View.OnClickListener
+  extends bbdt
 {
-  private long a;
-  public SessionInfo a;
+  public acxm(PlusPanel paramPlusPanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    Object localObject;
-    MessageForPic localMessageForPic;
-    URLDrawable localURLDrawable;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_Long = l;
-          localObject = (URLImageView)paramView;
-          localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364124);
-          localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
-        } while (localURLDrawable == null);
-        switch (localURLDrawable.getStatus())
-        {
-        default: 
-          return;
-        }
-      } while (localURLDrawable.isDownloadStarted());
-      localURLDrawable.startDownload();
-      return;
-      localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
-      if (localObject != null)
-      {
-        bcpw.a(paramView.getContext(), (CharSequence)localObject, 0).a();
-        return;
-      }
-    } while (!bbdj.a(paramView.getContext()));
-    localURLDrawable.restartDownload();
-    return;
-    if (advu.a(localMessageForPic))
-    {
-      AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, xpx.a(paramView));
-      return;
-    }
-    localMessageForPic.isInMixedMsg = true;
-    advu.a(tsu.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
+    paramDialogInterface.dismiss();
   }
 }
 

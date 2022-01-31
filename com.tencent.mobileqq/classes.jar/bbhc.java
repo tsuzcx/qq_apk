@@ -1,12 +1,25 @@
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class bbhc
-  implements bbjt
+  implements View.OnClickListener
 {
-  bbhc(bbhb parambbhb) {}
+  bbhc(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    bbhb.a(this.a, bbjr.a(paramInt));
-    this.a.a.height = bbhb.a(this.a);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgu, 1);
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_Bbgu.isShowing()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bbgu.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

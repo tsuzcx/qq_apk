@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beig;
-import beka;
-import besl;
+import beix;
+import bekr;
+import betc;
 import org.json.JSONObject;
 
 class StorageJsPlugin$2
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, beka parambeka) {}
+  StorageJsPlugin$2(StorageJsPlugin paramStorageJsPlugin, String paramString, bekr parambekr) {}
   
   public String run()
   {
@@ -32,7 +32,7 @@ class StorageJsPlugin$2
     }
     catch (Exception localException)
     {
-      besl.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+      betc.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
     }
   }
 }

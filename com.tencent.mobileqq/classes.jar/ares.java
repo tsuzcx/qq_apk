@@ -1,129 +1,181 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import com.tencent.mobileqq.intervideo.InvalidFileException;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.TicketManager;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-class ares
+public final class ares
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new areu(this);
-  private arkg jdField_a_of_type_Arkg = new aret(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<arkf> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<arkf> b = new ArrayList();
+  public static final IVPluginDataReporter a;
+  private static boolean a;
   
-  private Intent a()
+  static
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("com.tencent.gvideo.message.communicate.qq2gvideo");
-    return localIntent;
+    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    a();
   }
   
-  private void a(Intent paramIntent)
+  public static arej a(Context paramContext, String paramString1, String paramString2)
   {
-    arla localarla = (arla)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338);
-    NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.b = paramIntent.getStringExtra("closeRoomGroupOwnerUin");
-    localNewTogetherRoomMessageData.a = paramIntent.getStringExtra("closeRoomGroupUin");
-    localarla.a(paramIntent.getStringExtra("closeRoomFrom"), localNewTogetherRoomMessageData);
-  }
-  
-  private void a(Intent paramIntent, List<arkf> paramList)
-  {
-    int i;
-    String str;
-    StringBuilder localStringBuilder;
-    if (!paramList.isEmpty())
+    try
     {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
-      paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext()) {
-        ((arkf)paramIntent.next()).a(i, str);
+      paramContext = (arej)akhk.a(192).submit(new aret(paramContext, paramString1)).get(20L, TimeUnit.SECONDS);
+      return paramContext;
+    }
+    catch (TimeoutException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
+    }
+    catch (InterruptedException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
+    }
+    catch (ExecutionException paramContext)
+    {
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("updateException").d1(paramContext.toString()).report();
+      throw paramContext;
+    }
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      LoggerFactory.setILoggerFactory(areg.a());
+      jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public static arej b(Context paramContext, String paramString1, String paramString2)
+  {
+    l1 = System.currentTimeMillis();
+    jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(paramString1).opType("CdnGetBizPm").toUin(paramString2);
+    Object localObject1 = new arec(paramString1);
+    if (((arec)localObject1).getLatest() != null) {
+      return new arer(paramString1, new DynamicPluginManager((PluginManagerUpdater)localObject1));
+    }
+    localardz = new ardz(paramContext, paramString1, paramString2, "8_1");
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::Shadow", 2, "wasUpdating:" + localardz.wasUpdating() + " getLatest:" + localardz.getLatest());
+    }
+    if ((localardz.wasUpdating()) || (localardz.getLatest() == null))
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("shadow::Shadow", 2, "needWaitingUpdate:" + bool);
       }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
+      paramString2 = localardz.update();
+      if (!bool) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2.get();
+        localObject2 = paramContext.getPackageManager();
+        if (localardz.getLatest() != null)
+        {
+          paramContext = localardz.getLatest().getAbsolutePath();
+          l2 = System.currentTimeMillis();
+          localObject1 = null;
+          paramString2 = null;
+        }
       }
+      catch (ExecutionException paramContext)
+      {
+        Object localObject2;
+        l2 = System.currentTimeMillis();
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(1).report();
+        throw paramContext;
+      }
+      catch (InterruptedException paramContext)
+      {
+        l2 = System.currentTimeMillis();
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(2).report();
+        throw paramContext;
+      }
+      try
+      {
+        localObject2 = ((PackageManager)localObject2).getPackageArchiveInfo(paramContext, 128);
+        paramString2 = (String)localObject2;
+        localObject1 = localObject2;
+        QLog.i("shadow::Shadow", 2, "getPackageArchiveInfo，timespan = " + (System.currentTimeMillis() - l2));
+        if (localObject2 == null) {
+          paramString1 = "";
+        }
+      }
+      catch (Exception localException)
+      {
+        if (paramString2 == null) {
+          paramString1 = "";
+        }
+        try
+        {
+          paramString2 = bfko.a(localardz.getLatest());
+          paramString1 = paramString2;
+        }
+        catch (IOException paramString2)
+        {
+          break label471;
+        }
+        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+        localardz.a();
+        throw new InvalidFileException("pluginManager apk file is invalid!");
+      }
+      finally
+      {
+        if (localException == null) {
+          paramString1 = "";
+        }
+        try
+        {
+          paramString2 = bfko.a(localardz.getLatest());
+          paramString1 = paramString2;
+        }
+        catch (IOException paramString2)
+        {
+          break label565;
+        }
+        QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+        localardz.a();
+        throw new InvalidFileException("pluginManager apk file is invalid!");
+        throw paramString1;
+        l2 = System.currentTimeMillis();
+        paramContext = new arer(paramString1, new DynamicPluginManager(localardz));
+        jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(Boolean.toString(bool)).d2(Long.toString(l2 - l1)).opResult(0).report();
+        return paramContext;
+      }
+      try
+      {
+        paramString2 = bfko.a(localardz.getLatest());
+        paramString1 = paramString2;
+      }
+      catch (IOException paramString2)
+      {
+        continue;
+      }
+      QLog.i("shadow::Shadow", 1, "pluginManager apk file is invalid，apk = " + paramContext + " md5 = " + paramString1);
+      jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.d1(paramContext).d2("FileInvalid").d3(paramString1).opResult(1000).report();
+      localardz.a();
+      throw new InvalidFileException("pluginManager apk file is invalid!");
+      bool = false;
+      break;
+      paramContext = "";
     }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
-    {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
-      paramList.clear();
-      return;
-    }
-  }
-  
-  private void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData, int paramInt)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", paramInt);
-    localIntent.putExtra("togetherRoomMessageData", paramNewTogetherRoomMessageData);
-    b(localIntent);
-  }
-  
-  private void b()
-  {
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
-    {
-      localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      Intent localIntent = a();
-      localIntent.putExtra("command_type", 6);
-      localIntent.putExtra("sKeyKey", (String)localObject);
-      b(localIntent);
-      return;
-    }
-    QLog.e("GroupVideoManager|Communicate", 1, "get skey error");
-  }
-  
-  private void b(Intent paramIntent)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramIntent);
-  }
-  
-  public arkg a()
-  {
-    return this.jdField_a_of_type_Arkg;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(Bundle paramBundle, arkf paramarkf)
-  {
-    Intent localIntent = a();
-    localIntent.putExtra("command_type", 4);
-    localIntent.putExtra("closeRoomBundle", paramBundle);
-    b(localIntent);
-    this.jdField_a_of_type_JavaUtilList.add(paramarkf);
-  }
-  
-  void a(arkf paramarkf)
-  {
-    this.b.add(paramarkf);
-  }
-  
-  void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = new IntentFilter();
-    paramQQAppInterface.addAction("com.tencent.gvideo.message.communicate.gvideo2qq");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface);
   }
 }
 

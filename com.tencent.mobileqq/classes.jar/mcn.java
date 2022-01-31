@@ -1,8 +1,24 @@
-public class mcn
-  extends mco
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class mcn
+  extends Handler
 {
-  public int a;
-  public boolean a;
+  public mcn(mcm parammcm, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    mcm.a(this.a);
+  }
 }
 
 

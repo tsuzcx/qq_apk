@@ -1,3 +1,5 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
@@ -5,11 +7,12 @@ import com.tencent.smtt.export.external.interfaces.JsResult;
 class nkm
   implements DialogInterface.OnClickListener
 {
-  nkm(nke paramnke, JsResult paramJsResult) {}
+  nkm(nkb paramnkb, JsResult paramJsResult, Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

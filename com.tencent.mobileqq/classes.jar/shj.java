@@ -1,38 +1,86 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-final class shj
-  implements DialogInterface.OnClickListener
+class shj
+  implements BusinessObserver
 {
-  shj(int paramInt1, int paramInt2, Runnable paramRunnable) {}
+  shj(shh paramshh, Intent paramIntent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramInt = 1;
-    bhvh.a("readinjoy_user_data_switch", Integer.valueOf(1));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
+    shh.c(this.jdField_a_of_type_Shh);
+    if (paramBoolean) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
-      }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 2);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        localJSONException.printStackTrace();
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = xmq.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
       }
-    }
-    noo.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        shh.a(this.jdField_a_of_type_Shh).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = axva.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
+      return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
   }
 }

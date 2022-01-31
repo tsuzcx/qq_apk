@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -38,7 +38,7 @@ public class ViewFactory
     case 80000003: 
       return 2131689721;
     }
-    return 2131720020;
+    return 2131720031;
   }
   
   private View a(Context paramContext)
@@ -47,14 +47,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(ajyc.a(2131716459));
+    localTextView.setText(ajya.a(2131716470));
     localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298820));
     localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298182), 0, 0);
     localTextView.setTextColor(paramContext.getResources().getColor(2131166929));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);
-    localLinearLayout.setContentDescription(ajyc.a(2131716460));
+    localLinearLayout.setContentDescription(ajya.a(2131716471));
     return localLinearLayout;
   }
   

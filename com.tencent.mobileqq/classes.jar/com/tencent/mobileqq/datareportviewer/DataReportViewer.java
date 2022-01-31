@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import abtu;
+import abtq;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,15 +23,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anlg;
-import anlh;
 import anll;
 import anlm;
-import anln;
-import anlo;
 import anlq;
-import bawz;
-import bbct;
+import anlr;
+import anls;
+import anlt;
+import anlv;
+import baxn;
+import bbdh;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import java.util.ArrayList;
 
@@ -48,7 +48,7 @@ public class DataReportViewer
   protected ListView a;
   public RelativeLayout a;
   public TextView a;
-  protected anlq a;
+  protected anlv a;
   public ArrayList<ReportData> a;
   public boolean a;
   protected Button b;
@@ -64,10 +64,10 @@ public class DataReportViewer
     LinearLayout localLinearLayout = (LinearLayout)findViewById(2131372089);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369294));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372088));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370330));
-    this.b = ((Button)findViewById(2131364235));
-    this.c = ((Button)findViewById(2131375960));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362898));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370329));
+    this.b = ((Button)findViewById(2131364234));
+    this.c = ((Button)findViewById(2131375962));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131362897));
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369273));
     localLinearLayout.setBackgroundColor(getResources().getColor(2131165310));
     int i = 0;
@@ -81,9 +81,9 @@ public class DataReportViewer
       }
       i += 1;
     }
-    this.jdField_a_of_type_Anlq = new anlq(this);
+    this.jdField_a_of_type_Anlv = new anlv(this);
     new DefaultItemAnimator().setRemoveDuration(500L);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Anlq);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Anlv);
     setWillNotDraw(false);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -91,8 +91,8 @@ public class DataReportViewer
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new anlg(this));
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new anlh(this, paramContext));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new anll(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new anlm(this, paramContext));
   }
   
   public void a()
@@ -106,7 +106,7 @@ public class DataReportViewer
   {
     this.jdField_a_of_type_JavaUtilArrayList.add(paramReportData);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-    this.jdField_a_of_type_Anlq.notifyDataSetChanged();
+    this.jdField_a_of_type_Anlv.notifyDataSetChanged();
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -125,25 +125,25 @@ public class DataReportViewer
   
   protected void b()
   {
-    Object localObject = ValueAnimator.ofFloat(new float[] { bawz.a(getContext(), 25.0F), (float)bbct.k() });
+    Object localObject = ValueAnimator.ofFloat(new float[] { baxn.a(getContext(), 25.0F), (float)bbdh.k() });
     ((ValueAnimator)localObject).setDuration(500L);
-    ((ValueAnimator)localObject).addUpdateListener(new anll(this));
+    ((ValueAnimator)localObject).addUpdateListener(new anlq(this));
     ((ValueAnimator)localObject).setTarget(this);
     ((ValueAnimator)localObject).start();
     localObject = new AlphaAnimation(1.0F, 0.5F);
     ((AlphaAnimation)localObject).setDuration(200L);
-    ((AlphaAnimation)localObject).setAnimationListener(new anlm(this));
+    ((AlphaAnimation)localObject).setAnimationListener(new anlr(this));
     this.jdField_a_of_type_AndroidWidgetTextView.startAnimation((Animation)localObject);
   }
   
   protected void c()
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { (float)bbct.k(), bawz.a(getContext(), 25.0F) });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { (float)bbdh.k(), baxn.a(getContext(), 25.0F) });
     localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new anln(this));
+    localValueAnimator.addUpdateListener(new anls(this));
     localValueAnimator.setTarget(this);
     localValueAnimator.start();
-    localValueAnimator.addListener(new anlo(this));
+    localValueAnimator.addListener(new anlt(this));
   }
   
   public void d() {}
@@ -153,8 +153,8 @@ public class DataReportViewer
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f2 = bawz.a(getContext(), 25.0F);
-    float f3 = bawz.a(getContext(), 25.0F);
+    float f2 = baxn.a(getContext(), 25.0F);
+    float f3 = baxn.a(getContext(), 25.0F);
     if (this.jdField_a_of_type_Float == 0.0F) {}
     for (float f1 = getWidth();; f1 = this.jdField_a_of_type_Float)
     {
@@ -173,21 +173,21 @@ public class DataReportViewer
     {
     default: 
       return;
-    case 2131370330: 
+    case 2131370329: 
       c();
       return;
     case 2131372088: 
       b();
       return;
-    case 2131364235: 
+    case 2131364234: 
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-      this.jdField_a_of_type_Anlq.notifyDataSetChanged();
+      this.jdField_a_of_type_Anlv.notifyDataSetChanged();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new DataReportViewer.8(this), 3000L);
       return;
     }
-    abtu.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
+    abtq.a(getContext(), PublicFragmentActivity.class, DataReportSettingFragment.class);
   }
 }
 

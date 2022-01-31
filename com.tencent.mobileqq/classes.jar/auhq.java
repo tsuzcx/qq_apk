@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class auhq
-  implements View.OnClickListener
+  extends aujb
 {
-  auhq(auhi paramauhi) {}
+  auhq(auhk paramauhk) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    bbpa.a(auhi.a(this.a), "panel");
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    auhk.a(this.a).b();
   }
 }
 

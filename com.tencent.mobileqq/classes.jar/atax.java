@@ -1,26 +1,53 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.util.ArrayList;
 
 class atax
-  implements baxl
+  extends akat
 {
-  atax(atat paramatat) {}
+  atax(atav paramatav) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    synchronized (this.a.a)
-    {
-      if (this.a.a.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
-        }
-        this.a.a.remove(paramString);
-        atat.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
-      }
+    if (paramInt != 1) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyProxy", 2, "onRemoveFromBlackList from nearby");
+    }
+    if (paramBoolean)
+    {
+      aset localaset = (aset)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(paramString));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Akgh);
+      localaset.b(1001, localArrayList, 1);
+      return;
+    }
+    atav.a(this.a, 4116, new Object[] { Boolean.valueOf(false) });
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (((Integer)paramArrayOfObject[0]).intValue() != 1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyProxy", 2, "onInsertIntoBlackList from nearby");
+    }
+    if ((paramBoolean) && (paramArrayOfObject.length == 4))
+    {
+      ((Long)paramArrayOfObject[1]).longValue();
+      String str = (String)paramArrayOfObject[2];
+      int i = ((Integer)paramArrayOfObject[3]).intValue();
+      atbi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
+      paramArrayOfObject = new ArrayList();
+      paramArrayOfObject.add(Long.valueOf(str));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Akgh);
+      ((aset)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16)).a(1001, paramArrayOfObject, 1);
+      return;
+    }
+    atav.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
   }
 }
 

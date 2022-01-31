@@ -1,13 +1,20 @@
-public abstract class bcfv
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
+
+class bcfv
+  implements View.OnClickListener
 {
-  public final int a;
+  bcfv(bcfs parambcfs) {}
   
-  public bcfv(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramInt;
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
   }
-  
-  public abstract int a();
 }
 
 

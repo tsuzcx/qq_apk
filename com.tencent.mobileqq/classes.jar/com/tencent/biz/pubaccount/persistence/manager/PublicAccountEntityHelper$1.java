@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import nsb;
+import nry;
 
 public class PublicAccountEntityHelper$1
   implements Runnable
 {
-  public PublicAccountEntityHelper$1(nsb paramnsb, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  public PublicAccountEntityHelper$1(nry paramnry, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
   
   public void run()
   {

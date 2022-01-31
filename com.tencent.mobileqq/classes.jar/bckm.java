@@ -1,25 +1,9 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-@TargetApi(16)
-public class bckm
-  implements bfps
+public abstract interface bckm
 {
-  bckm(ContextMenuTextView paramContextMenuTextView) {}
-  
-  public void a()
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
-    }
-  }
+  public abstract void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan);
 }
 
 

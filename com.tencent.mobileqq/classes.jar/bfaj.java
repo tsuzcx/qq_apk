@@ -1,58 +1,104 @@
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StSetUserCloudStorageRsp;
+import NS_COMM.COMM.Entry;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
+import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
 import org.json.JSONObject;
 
 public class bfaj
-  extends bfad
+  extends bfau
 {
-  private CloudStorage.StSetUserCloudStorageReq a = new CloudStorage.StSetUserCloudStorageReq();
+  private MiniProgramShare.StAdaptShareInfoReq a;
   
-  public bfaj(HashMap<String, String> paramHashMap, String paramString)
+  public bfaj(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq)
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      CloudStorage.StKVData localStKVData = new CloudStorage.StKVData();
-      localStKVData.key.set((String)localEntry.getKey());
-      localStKVData.value.set((String)localEntry.getValue());
-      this.a.KVDataList.add(localStKVData);
-    }
-    this.a.appid.set(paramString);
+    this.a = paramStAdaptShareInfoReq;
   }
   
   protected String a()
   {
-    return "mini_app_cloudstorage";
+    return "mini_app_share";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
   {
+    boolean bool3 = false;
+    boolean bool1 = false;
     if (paramArrayOfByte == null) {
       return null;
     }
-    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
-    try
+    Object localObject2 = new PROTOCAL.StQWebRsp();
+    Object localObject1 = new MiniProgramShare.StAdaptShareInfoRsp();
+    for (;;)
     {
-      localStSetUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStSetUserCloudStorageRsp != null) {
-        return new JSONObject();
+      long l;
+      boolean bool2;
+      int i;
+      try
+      {
+        ((PROTOCAL.StQWebRsp)localObject2).mergeFrom(paramArrayOfByte);
+        ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).mergeFrom(((PROTOCAL.StQWebRsp)localObject2).busiBuff.get().toByteArray());
+        if ((localObject2 == null) || (localObject1 == null)) {
+          break label306;
+        }
+        l = ((PROTOCAL.StQWebRsp)localObject2).retCode.get();
+        paramArrayOfByte = ((PROTOCAL.StQWebRsp)localObject2).errMsg.get().toStringUtf8();
+        bool2 = bool3;
+        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo == null) {
+          break label347;
+        }
+        bool2 = bool3;
+        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo == null) {
+          break label347;
+        }
+        i = 0;
+        bool2 = bool1;
+        if (i >= ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.size()) {
+          break label347;
+        }
+        localObject2 = (COMM.Entry)((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.get(i);
+        if ((!"needShareCallBack".equals(((COMM.Entry)localObject2).key.get())) || (!"true".equals(((COMM.Entry)localObject2).value.get()))) {
+          break label340;
+        }
+        bool1 = true;
       }
-      besl.a("SetCloudStorageRequest", "onResponse fail.rsp = null");
-      return null;
+      catch (Exception paramArrayOfByte)
+      {
+        label186:
+        betc.a("GetShareInfoRequest", "onResponse fail." + paramArrayOfByte);
+        return null;
+      }
+      betc.d("GetShareInfoRequest", "onGetShareInfo isSuccess=false, retCode=" + l);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("retCode", l);
+      ((JSONObject)localObject1).put("errMsg", paramArrayOfByte);
+      ((JSONObject)localObject1).put("needShareCallBack", bool2);
+      return localObject1;
+      label306:
+      label340:
+      label347:
+      do
+      {
+        paramArrayOfByte = new JSONObject(((MiniProgramShare.StAdaptShareInfoRsp)localObject1).jsonData.get());
+        paramArrayOfByte.put("needShareCallBack", bool2);
+        return paramArrayOfByte;
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("retCode", -1);
+        paramArrayOfByte.put("errMsg", "数据解析错误");
+        betc.a("GetShareInfoRequest", "onResponse fail.webRsp = null");
+        return paramArrayOfByte;
+        i += 1;
+        break;
+        if (l == -100070004L) {
+          break label186;
+        }
+      } while (l != -1000710003L);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
   }
   
   protected byte[] a()
@@ -62,7 +108,7 @@ public class bfaj
   
   protected String b()
   {
-    return "SetUserCloudStorage";
+    return "AdaptShareInfo";
   }
 }
 

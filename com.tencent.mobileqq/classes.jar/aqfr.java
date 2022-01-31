@@ -1,14 +1,17 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
 class aqfr
   implements DialogInterface.OnClickListener
 {
-  aqfr(aqfo paramaqfo, bbgg parambbgg) {}
+  aqfr(aqfq paramaqfq, bbgu parambbgu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
+    this.jdField_a_of_type_Bbgu.dismiss();
+    this.jdField_a_of_type_Aqfq.a.setResult(-1);
+    this.jdField_a_of_type_Aqfq.a.finish();
   }
 }
 

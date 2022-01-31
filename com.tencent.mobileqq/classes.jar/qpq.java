@@ -1,14 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
 
 public class qpq
-  extends npw
+  extends AnimatorListenerAdapter
 {
-  public qpq(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
+  public qpq(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a(paramBoolean, paramBundle);
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
   }
 }
 

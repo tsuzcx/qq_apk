@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import bekh;
+import bekr;
+import beky;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class MapJsPlugin$3
   implements AsyncResult
 {
-  MapJsPlugin$3(MapJsPlugin paramMapJsPlugin, bekh parambekh, beka parambeka) {}
+  MapJsPlugin$3(MapJsPlugin paramMapJsPlugin, beky parambeky, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

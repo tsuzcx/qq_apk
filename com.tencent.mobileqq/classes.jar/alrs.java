@@ -1,11 +1,33 @@
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
 class alrs
-  implements alry
+  implements alrw
 {
-  alrs(alrm paramalrm, alry paramalry) {}
+  alrs(alrl paramalrl, alrv paramalrv, String paramString, alrx paramalrx) {}
   
-  public void a(boolean paramBoolean)
+  public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Alry.a(paramBoolean);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b }));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Alrx.a(false);
+      return;
+      if (!alrl.b(paramArrayOfByte, this.jdField_a_of_type_Alrv.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b, this.jdField_a_of_type_Alrv.d }));
+      }
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString });
+        if (alrl.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv.b, str }));
+      }
+    }
+    this.jdField_a_of_type_Alrx.a(true);
   }
 }
 

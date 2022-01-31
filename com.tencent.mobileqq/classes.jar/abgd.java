@@ -1,17 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
 
 public class abgd
-  implements bfpd
+  implements DialogInterface.OnClickListener
 {
   public abgd(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    FriendProfileImageActivity.a(this.a);
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,17 +1,12 @@
-import android.support.v4.util.LruCache;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
-class lbm
-  extends LruCache<String, String>
+public abstract interface lbm
 {
-  lbm(lbl paramlbl, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract void a(TranslateError paramTranslateError, Long paramLong);
   
-  protected int a(String paramString1, String paramString2)
-  {
-    return paramString2.length() + 1;
-  }
+  public abstract void a(List<Language> paramList, List<String> paramList1, Long paramLong);
 }
 
 

@@ -1,456 +1,317 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 public class asjo
-  implements Handler.Callback
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  asjp jdField_a_of_type_Asjp;
-  EglHandlerThread jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread;
-  String jdField_a_of_type_JavaLangString;
-  List<aljf> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CopyOnWriteArrayList<WeakReference<asjr>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  Handler jdField_b_of_type_AndroidOsHandler;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString;
-  
-  public asjo(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  /* Error */
+  public static java.lang.String a(java.lang.String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MINICODE_DETECT_THREAD");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread = new EglHandlerThread("MINICODE_EGLHANDLER_THREAD", null);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.start();
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.getLooper();
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext, this);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(200);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      return;
-      QLog.i("MiniRecog.detector", 1, "MiniCodeDetector init eglHandler exception: looper=null");
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: new 12	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   9: astore 4
+    //   11: new 18	java/io/FileInputStream
+    //   14: dup
+    //   15: aload_0
+    //   16: invokespecial 21	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   19: astore_2
+    //   20: new 23	java/io/BufferedReader
+    //   23: dup
+    //   24: new 25	java/io/InputStreamReader
+    //   27: dup
+    //   28: aload_2
+    //   29: ldc 27
+    //   31: invokespecial 30	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   34: invokespecial 33	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   37: astore_0
+    //   38: aload_0
+    //   39: invokevirtual 37	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnull +62 -> 106
+    //   47: aload 4
+    //   49: new 12	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 16	java/lang/StringBuilder:<init>	()V
+    //   56: aload_1
+    //   57: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: bipush 10
+    //   62: invokevirtual 44	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: pop
+    //   72: goto -34 -> 38
+    //   75: astore_3
+    //   76: aload_2
+    //   77: astore_1
+    //   78: aload_3
+    //   79: astore_2
+    //   80: aload_2
+    //   81: invokevirtual 50	java/lang/Exception:printStackTrace	()V
+    //   84: aload_0
+    //   85: ifnull +7 -> 92
+    //   88: aload_0
+    //   89: invokevirtual 53	java/io/BufferedReader:close	()V
+    //   92: aload_1
+    //   93: ifnull +7 -> 100
+    //   96: aload_1
+    //   97: invokevirtual 54	java/io/FileInputStream:close	()V
+    //   100: aload 4
+    //   102: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: areturn
+    //   106: aload_0
+    //   107: ifnull +7 -> 114
+    //   110: aload_0
+    //   111: invokevirtual 53	java/io/BufferedReader:close	()V
+    //   114: aload_2
+    //   115: ifnull -15 -> 100
+    //   118: aload_2
+    //   119: invokevirtual 54	java/io/FileInputStream:close	()V
+    //   122: goto -22 -> 100
+    //   125: astore_0
+    //   126: goto -26 -> 100
+    //   129: astore_1
+    //   130: aconst_null
+    //   131: astore_0
+    //   132: aconst_null
+    //   133: astore_2
+    //   134: aload_0
+    //   135: ifnull +7 -> 142
+    //   138: aload_0
+    //   139: invokevirtual 53	java/io/BufferedReader:close	()V
+    //   142: aload_2
+    //   143: ifnull +7 -> 150
+    //   146: aload_2
+    //   147: invokevirtual 54	java/io/FileInputStream:close	()V
+    //   150: aload_1
+    //   151: athrow
+    //   152: astore_0
+    //   153: goto -39 -> 114
+    //   156: astore_0
+    //   157: goto -65 -> 92
+    //   160: astore_0
+    //   161: goto -61 -> 100
+    //   164: astore_0
+    //   165: goto -23 -> 142
+    //   168: astore_0
+    //   169: goto -19 -> 150
+    //   172: astore_1
+    //   173: aconst_null
+    //   174: astore_0
+    //   175: goto -41 -> 134
+    //   178: astore_1
+    //   179: goto -45 -> 134
+    //   182: astore_3
+    //   183: aload_1
+    //   184: astore_2
+    //   185: aload_3
+    //   186: astore_1
+    //   187: goto -53 -> 134
+    //   190: astore_2
+    //   191: aconst_null
+    //   192: astore_0
+    //   193: goto -113 -> 80
+    //   196: astore_3
+    //   197: aconst_null
+    //   198: astore_0
+    //   199: aload_2
+    //   200: astore_1
+    //   201: aload_3
+    //   202: astore_2
+    //   203: goto -123 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	206	0	paramString	java.lang.String
+    //   1	96	1	localObject1	Object
+    //   129	22	1	localObject2	Object
+    //   172	1	1	localObject3	Object
+    //   178	6	1	localObject4	Object
+    //   186	15	1	localObject5	Object
+    //   19	166	2	localObject6	Object
+    //   190	10	2	localException1	java.lang.Exception
+    //   202	1	2	localObject7	Object
+    //   75	4	3	localException2	java.lang.Exception
+    //   182	4	3	localObject8	Object
+    //   196	6	3	localException3	java.lang.Exception
+    //   9	92	4	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   38	43	75	java/lang/Exception
+    //   47	72	75	java/lang/Exception
+    //   118	122	125	java/io/IOException
+    //   11	20	129	finally
+    //   110	114	152	java/io/IOException
+    //   88	92	156	java/io/IOException
+    //   96	100	160	java/io/IOException
+    //   138	142	164	java/io/IOException
+    //   146	150	168	java/io/IOException
+    //   20	38	172	finally
+    //   38	43	178	finally
+    //   47	72	178	finally
+    //   80	84	182	finally
+    //   11	20	190	java/lang/Exception
+    //   20	38	196	java/lang/Exception
   }
   
-  private int a()
+  /* Error */
+  public static boolean a(android.graphics.Bitmap paramBitmap, java.lang.String paramString, android.graphics.Bitmap.CompressFormat paramCompressFormat, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.detector", 2, "initInEGL");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    asjq localasjq = new asjq();
-    localasjq.jdField_a_of_type_Int = this.jdField_d_of_type_Int;
-    localasjq.jdField_b_of_type_Int = 256;
-    localasjq.jdField_c_of_type_Int = 256;
-    localasjq.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localasjq.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localasjq.jdField_a_of_type_JavaLangString = asjm.a(this.jdField_b_of_type_JavaLangString);
-    localasjq.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("runType").append("=").append(localasjq.jdField_a_of_type_Int).append("\n");
-    localStringBuilder.append("netHeight").append("=").append(localasjq.jdField_b_of_type_Int).append("\n");
-    localStringBuilder.append("netWidth").append("=").append(localasjq.jdField_c_of_type_Int).append("\n");
-    localStringBuilder.append("paramPath").append("=").append(localasjq.jdField_b_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("anchorPath").append("=").append(localasjq.jdField_c_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("kernelBinaryIndex").append("=").append(localasjq.jdField_d_of_type_JavaLangString).append("\n");
-    localStringBuilder.append("modelString").append("=").append(localasjq.jdField_a_of_type_JavaLangString).append("\n");
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.detector", 2, localStringBuilder.toString());
-    }
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0)) {
-      this.jdField_a_of_type_Int = asjk.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    }
-    this.jdField_a_of_type_Asjp = new asjp(localasjq);
-    if (this.jdField_a_of_type_Asjp.a()) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  private static void a(int paramInt, Bitmap paramBitmap)
-  {
-    GLES20.glBindTexture(3553, paramInt);
-    asjk.a("glBindTexture");
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    asjk.a("glTexParameteri");
-    GLUtils.texImage2D(3553, 0, paramBitmap, 0);
-    asjk.a("texImage2D");
-  }
-  
-  private boolean a(long paramLong, boolean paramBoolean)
-  {
-    int i = -1;
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.detector", 2, "processInEGL start **********");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.detector", 2, "processInEGL has not been initialized; Skipped.");
-      }
-      return false;
-    }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.detector", 2, "processInEGL mInBmp invalid");
-      }
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((((Bitmap)localObject).getWidth() != this.jdField_b_of_type_Int) || (((Bitmap)localObject).getHeight() != this.jdField_c_of_type_Int) || (this.jdField_a_of_type_Int < 0))
-    {
-      this.jdField_b_of_type_Int = ((Bitmap)localObject).getWidth();
-      this.jdField_c_of_type_Int = ((Bitmap)localObject).getHeight();
-      if (this.jdField_a_of_type_Int >= 0)
-      {
-        avyg.b(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-      try
-      {
-        int j = avyg.a(3553, (Bitmap)localObject);
-        i = j;
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          localThrowable1.printStackTrace();
-        }
-      }
-      this.jdField_a_of_type_Int = i;
-    }
-    for (;;)
-    {
-      ((Bitmap)localObject).recycle();
-      if (this.jdField_a_of_type_Asjp != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.detector", 2, "processInEGL MiniCodeRecog is null");
-      }
-      return false;
-      try
-      {
-        a(this.jdField_a_of_type_Int, (Bitmap)localObject);
-      }
-      catch (Throwable localThrowable2)
-      {
-        localThrowable2.printStackTrace();
-      }
-    }
-    localObject = null;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      List localList = this.jdField_a_of_type_Asjp.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramLong, paramBoolean);
-      localObject = localList;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MiniRecog.detector", 2, String.format("minicode_timecost processInEGL end consume=%d **********", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-        localObject = localList;
-      }
-    }
-    if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-    }
-    return true;
-  }
-  
-  private void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog.detector", 2, "destroyInEGL()");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      avyg.b(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (this.jdField_a_of_type_Asjp != null) {}
-    try
-    {
-      this.jdField_a_of_type_Asjp.a();
-      if (this.jdField_b_of_type_AndroidOsHandler != null) {
-        this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(100);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.i("MiniRecog.detector", 1, "destroyInEGL exception:" + localException.getLocalizedMessage(), localException);
-      }
-    }
-  }
-  
-  @TargetApi(18)
-  private void c()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.quitSafely();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        for (;;)
-        {
-          this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-          this.jdField_a_of_type_AndroidOsHandlerThread = null;
-          this.jdField_b_of_type_AndroidOsHandler = null;
-          this.jdField_b_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-          this.jdField_a_of_type_JavaUtilList.clear();
-          if (QLog.isColorLevel()) {
-            QLog.i("MiniRecog.detector", 2, "closeLater()");
-          }
-          return;
-          localException1 = localException1;
-          if (QLog.isColorLevel()) {
-            QLog.i("MiniRecog.detector", 2, localException1.getMessage(), localException1);
-          }
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("MiniRecog.detector", 2, localException2.getMessage(), localException2);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_c_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.detector", 2, "close()");
-      }
-      this.jdField_c_of_type_Boolean = true;
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(202);
-    return;
-    c();
-  }
-  
-  public void a(asjr paramasjr)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      asjr localasjr = (asjr)((WeakReference)localIterator.next()).get();
-      if ((localasjr != null) && (localasjr == paramasjr)) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(new WeakReference(paramasjr));
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-  }
-  
-  public boolean a(Bitmap paramBitmap, long paramLong)
-  {
-    boolean bool = false;
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if (!QLog.isColorLevel()) {
-          break label192;
-        }
-        QLog.i("MiniRecog.detector", 2, "detector has not been initialized; Skipped.");
-        return false;
-      }
-      if (this.jdField_c_of_type_Boolean)
-      {
-        if (!QLog.isColorLevel()) {
-          break label192;
-        }
-        QLog.i("MiniRecog.detector", 2, "detector has been closed; Skipped.");
-        return false;
-      }
-    }
-    catch (Exception paramBitmap)
-    {
-      QLog.i("MiniRecog.detector", 1, "detect exception: " + paramBitmap.getMessage(), paramBitmap);
-      return false;
-    }
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MiniRecog.detector", 2, "detect input bitmap invalid");
-        return false;
-      }
-    }
-    else if (this.jdField_b_of_type_Boolean)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.i("MiniRecog.detector", 2, "detect mIsProcessing is true");
-        return false;
-      }
-    }
-    else
-    {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-      if (localHandler == null)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.i("MiniRecog.detector", 2, "mEglHandler is null");
-          return false;
-        }
-      }
-      else
-      {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        localHandler.obtainMessage(201, Long.valueOf(paramLong)).sendToTarget();
-        bool = true;
-      }
-    }
-    label192:
-    return bool;
-  }
-  
-  public void b(asjr paramasjr)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      asjr localasjr = (asjr)localWeakReference.get();
-      if ((localasjr != null) && (localasjr == paramasjr)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
-      }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      int i = a();
-      if (this.jdField_b_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_b_of_type_AndroidOsHandler.obtainMessage(102, i, 0).sendToTarget();
-        return false;
-        long l = ((Long)paramMessage.obj).longValue();
-        boolean bool1 = asjl.jdField_b_of_type_Boolean;
-        boolean bool2 = a(l, bool1);
-        if (this.jdField_b_of_type_AndroidOsHandler != null)
-        {
-          paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(101, new Object[] { Boolean.valueOf(bool2), Long.valueOf(l) });
-          this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramMessage);
-        }
-        if ((this.jdField_b_of_type_AndroidOsHandler != null) && (bool1))
-        {
-          paramMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(103, new Object[] { Long.valueOf(l) });
-          this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramMessage);
-          return false;
-          b();
-          return false;
-          c();
-          return false;
-          paramMessage = (Object[])paramMessage.obj;
-          Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-          asjr localasjr;
-          while (((Iterator)localObject).hasNext())
-          {
-            localasjr = (asjr)((WeakReference)((Iterator)localObject).next()).get();
-            if (localasjr != null) {
-              localasjr.a(this.jdField_a_of_type_JavaUtilList, ((Long)paramMessage[1]).longValue());
-            }
-          }
-          this.jdField_b_of_type_Boolean = false;
-          return false;
-          i = paramMessage.arg1;
-          paramMessage = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-          while (paramMessage.hasNext())
-          {
-            localObject = (asjr)((WeakReference)paramMessage.next()).get();
-            if (localObject != null) {
-              ((asjr)localObject).a(i);
-            }
-          }
-          paramMessage = (Object[])paramMessage.obj;
-          localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            localasjr = (asjr)((WeakReference)((Iterator)localObject).next()).get();
-            if (localasjr != null) {
-              localasjr.a(((Long)paramMessage[0]).longValue());
-            }
-          }
-        }
-      }
-    }
+    // Byte code:
+    //   0: new 58	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 7
+    //   10: new 58	java/io/File
+    //   13: dup
+    //   14: aload_1
+    //   15: iconst_0
+    //   16: aload_1
+    //   17: ldc 61
+    //   19: invokevirtual 67	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   22: invokevirtual 71	java/lang/String:substring	(II)Ljava/lang/String;
+    //   25: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   28: astore_1
+    //   29: aload_1
+    //   30: invokevirtual 75	java/io/File:exists	()Z
+    //   33: ifne +8 -> 41
+    //   36: aload_1
+    //   37: invokevirtual 78	java/io/File:mkdirs	()Z
+    //   40: pop
+    //   41: aload 7
+    //   43: invokevirtual 75	java/io/File:exists	()Z
+    //   46: ifne +9 -> 55
+    //   49: aload 7
+    //   51: invokevirtual 81	java/io/File:createNewFile	()Z
+    //   54: pop
+    //   55: new 83	java/io/BufferedOutputStream
+    //   58: dup
+    //   59: new 85	java/io/FileOutputStream
+    //   62: dup
+    //   63: aload 7
+    //   65: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   68: invokespecial 91	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   71: astore 7
+    //   73: aload 7
+    //   75: astore_1
+    //   76: aload_0
+    //   77: aload_2
+    //   78: iload_3
+    //   79: aload 7
+    //   81: invokevirtual 97	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   84: istore 5
+    //   86: aload 7
+    //   88: astore_1
+    //   89: aload 7
+    //   91: invokevirtual 100	java/io/BufferedOutputStream:flush	()V
+    //   94: iload 4
+    //   96: ifeq +10 -> 106
+    //   99: aload 7
+    //   101: astore_1
+    //   102: aload_0
+    //   103: invokevirtual 103	android/graphics/Bitmap:recycle	()V
+    //   106: iload 5
+    //   108: istore 6
+    //   110: aload 7
+    //   112: ifnull +12 -> 124
+    //   115: aload 7
+    //   117: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   120: iload 5
+    //   122: istore 6
+    //   124: iload 6
+    //   126: ireturn
+    //   127: astore_1
+    //   128: ldc 106
+    //   130: iconst_1
+    //   131: ldc 108
+    //   133: aload_1
+    //   134: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: goto -82 -> 55
+    //   140: astore_0
+    //   141: aload_0
+    //   142: invokevirtual 115	java/io/IOException:printStackTrace	()V
+    //   145: iload 5
+    //   147: ireturn
+    //   148: astore_0
+    //   149: aconst_null
+    //   150: astore_2
+    //   151: iconst_0
+    //   152: istore 4
+    //   154: aload_2
+    //   155: astore_1
+    //   156: ldc 106
+    //   158: iconst_1
+    //   159: ldc 117
+    //   161: aload_0
+    //   162: invokestatic 114	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   165: iload 4
+    //   167: istore 6
+    //   169: aload_2
+    //   170: ifnull -46 -> 124
+    //   173: aload_2
+    //   174: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   177: iload 4
+    //   179: ireturn
+    //   180: astore_0
+    //   181: aload_0
+    //   182: invokevirtual 115	java/io/IOException:printStackTrace	()V
+    //   185: iload 4
+    //   187: ireturn
+    //   188: astore_0
+    //   189: aconst_null
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnull +7 -> 199
+    //   195: aload_1
+    //   196: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   199: aload_0
+    //   200: athrow
+    //   201: astore_1
+    //   202: aload_1
+    //   203: invokevirtual 115	java/io/IOException:printStackTrace	()V
+    //   206: goto -7 -> 199
+    //   209: astore_0
+    //   210: goto -19 -> 191
+    //   213: astore_0
+    //   214: iconst_0
+    //   215: istore 4
+    //   217: aload 7
+    //   219: astore_2
+    //   220: goto -66 -> 154
+    //   223: astore_0
+    //   224: iload 5
+    //   226: istore 4
+    //   228: aload 7
+    //   230: astore_2
+    //   231: goto -77 -> 154
+    //   234: astore_1
+    //   235: goto -194 -> 41
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	238	0	paramBitmap	android.graphics.Bitmap
+    //   0	238	1	paramString	java.lang.String
+    //   0	238	2	paramCompressFormat	android.graphics.Bitmap.CompressFormat
+    //   0	238	3	paramInt	int
+    //   0	238	4	paramBoolean	boolean
+    //   84	141	5	bool1	boolean
+    //   108	60	6	bool2	boolean
+    //   8	221	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   49	55	127	java/lang/Exception
+    //   115	120	140	java/io/IOException
+    //   55	73	148	java/lang/Exception
+    //   173	177	180	java/io/IOException
+    //   55	73	188	finally
+    //   195	199	201	java/io/IOException
+    //   76	86	209	finally
+    //   89	94	209	finally
+    //   102	106	209	finally
+    //   156	165	209	finally
+    //   76	86	213	java/lang/Exception
+    //   89	94	223	java/lang/Exception
+    //   102	106	223	java/lang/Exception
+    //   10	41	234	java/lang/Exception
   }
 }
 

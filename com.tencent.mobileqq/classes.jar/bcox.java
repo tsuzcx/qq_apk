@@ -1,24 +1,19 @@
-public class bcox
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+
+class bcox
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bcox(bcou parambcou) {}
   
-  public String toString()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", vid=").append(this.c);
-    localStringBuilder.append(", jumpUrl=").append(this.d);
-    localStringBuilder.append(", spiritImageUrl=").append(this.e);
-    return localStringBuilder.toString();
+    if (bcou.a(this.a) != null)
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      bcou.a(this.a).setAlpha(f);
+    }
   }
 }
 

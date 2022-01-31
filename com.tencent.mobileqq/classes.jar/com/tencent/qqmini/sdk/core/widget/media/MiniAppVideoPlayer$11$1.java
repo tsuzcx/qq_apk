@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
 import android.view.View;
-import benv;
+import beom;
 
 public class MiniAppVideoPlayer$11$1
   implements Runnable
 {
-  public MiniAppVideoPlayer$11$1(benv parambenv) {}
+  public MiniAppVideoPlayer$11$1(beom parambeom) {}
   
   public void run()
   {

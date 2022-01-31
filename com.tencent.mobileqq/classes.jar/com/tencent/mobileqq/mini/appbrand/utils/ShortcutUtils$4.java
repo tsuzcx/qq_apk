@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 
 final class ShortcutUtils$4
@@ -11,7 +11,7 @@ final class ShortcutUtils$4
   public void run()
   {
     if (ShortcutUtils.PermissionDialog.canShowDialog()) {
-      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, ajyc.a(2131714012), ajyc.a(2131714018), ajyc.a(2131713999), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
+      ShortcutUtils.PermissionDialog.createPermissionDialog(this.val$activity, ajya.a(2131714023), ajya.a(2131714029), ajya.a(2131714010), new ShortcutUtils.4.1(this), new ShortcutUtils.4.2(this)).show();
     }
   }
 }

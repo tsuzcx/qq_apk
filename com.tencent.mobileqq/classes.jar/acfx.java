@@ -1,54 +1,28 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class acfx
-  extends ajxl
+  implements View.OnClickListener
 {
-  public acfx(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public acfx(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Aiqd == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = asfb.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
-    this.a.b();
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if (this.a.jdField_a_of_type_Aiqd == null) {
+    if (this.a.isFinishing()) {
       return;
     }
-    if ((paramBoolean) && (paramMap != null))
+    this.a.c = false;
+    if (this.a.a != null)
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
-        }
-      }
-      this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
-      this.a.b();
-      return;
+      this.a.a.a(4);
+      this.a.d();
+      this.a.c();
     }
-    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
-    this.a.b();
-    bcpw.a(this.a.app.getApp(), 1, this.a.getString(2131720538), 0).b(this.a.getTitleBarHeight());
+    if (asfd.a().c()) {
+      asfd.a().f(this.a.app);
+    }
+    TroopAssistantActivity.b(this.a);
   }
 }
 

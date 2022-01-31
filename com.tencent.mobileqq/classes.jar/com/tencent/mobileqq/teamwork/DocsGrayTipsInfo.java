@@ -3,14 +3,14 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aydp;
-import ayeb;
+import aydr;
+import ayed;
 import com.tencent.qphone.base.util.QLog;
 
 public class DocsGrayTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new aydp();
+  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new aydr();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -70,7 +70,7 @@ public class DocsGrayTipsInfo
     }
     catch (Exception localException)
     {
-      QLog.e(ayeb.i, 1, "get height light area exception = " + localException.toString());
+      QLog.e(ayed.i, 1, "get height light area exception = " + localException.toString());
     }
     return arrayOfInt;
   }

@@ -1,15 +1,21 @@
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
-class afyw
-  implements aprx
+public class afyw
+  extends xau
 {
-  afyw(afyv paramafyv) {}
+  public afyw(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
   {
-    if ((paramInt1 == 3) && (paramInt2 == 0)) {
-      axqw.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
+      return;
     }
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
   }
 }
 

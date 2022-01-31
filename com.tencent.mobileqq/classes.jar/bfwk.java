@@ -1,8 +1,8 @@
-import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.TCWDatePicker;
 
 public abstract interface bfwk
 {
-  public abstract void a(VerticalGallery paramVerticalGallery);
+  public abstract void a(TCWDatePicker paramTCWDatePicker, int paramInt1, int paramInt2, int paramInt3);
 }
 
 

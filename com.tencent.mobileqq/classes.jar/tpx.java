@@ -1,54 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.TicketManager;
 
 public class tpx
-  extends trj
+  extends trg
 {
-  private HashMap<String, String> a;
-  private boolean c;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
   
   public tpx()
   {
-    this(null, false);
+    a(false, true);
   }
   
-  public tpx(HashMap<String, String> paramHashMap, boolean paramBoolean)
+  public tpx(String paramString)
   {
-    a(false, true);
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.c = paramBoolean;
+    this();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void a()
   {
-    Object localObject2 = tsu.a();
-    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-    localObject2 = new Bundle();
-    localObject1 = nam.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
-    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new tpy(this));
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
-      }
-      b(false);
+      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      b(true);
       return;
     }
-    a("ShortenUrlJob_shortenedUrls", localObject1);
-    b(true);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
   }
   
   protected void a(Map<String, Object> paramMap)
   {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
-      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)tsa.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
+      this.jdField_a_of_type_JavaLangString = ((String)trx.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
     }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return false;
+    }
+    return super.a();
   }
 }
 

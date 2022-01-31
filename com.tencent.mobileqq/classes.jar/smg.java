@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public final class smg
-  implements Parcelable.Creator<WSPushOpModel>
+  implements Parcelable.Creator<WSRedDotPushMsg>
 {
-  public WSPushOpModel a(Parcel paramParcel)
+  public WSRedDotPushMsg a(Parcel paramParcel)
   {
-    return new WSPushOpModel(paramParcel);
+    return new WSRedDotPushMsg(paramParcel);
   }
   
-  public WSPushOpModel[] a(int paramInt)
+  public WSRedDotPushMsg[] a(int paramInt)
   {
-    return new WSPushOpModel[paramInt];
+    return new WSRedDotPushMsg[paramInt];
   }
 }
 

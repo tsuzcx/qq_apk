@@ -1,42 +1,36 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class bcni
-  extends ImageSpan
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  public bcni(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
   
-  public bcni(Drawable paramDrawable, int paramInt)
+  public void onGlobalLayout()
   {
-    super(paramDrawable, paramInt);
-  }
-  
-  public bcni a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-    paramInt1 = paramInt2;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
+    int i;
+    if (this.a.a != null)
+    {
+      i = InputMethodRelativeLayout.a(this.a);
+      if (i != InputMethodRelativeLayout.b(this.a))
+      {
+        int j = this.a.getRootView().getHeight();
+        if (j - i <= j / 4) {
+          break label102;
+        }
+        InputMethodRelativeLayout.a(this.a, true);
+      }
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
-      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
+    for (;;)
+    {
+      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
+      this.a.requestLayout();
+      InputMethodRelativeLayout.a(this.a, i);
+      return;
+      label102:
+      InputMethodRelativeLayout.a(this.a, false);
     }
-    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
   }
 }
 

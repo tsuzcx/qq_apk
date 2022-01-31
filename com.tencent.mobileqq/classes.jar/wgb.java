@@ -1,56 +1,52 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class wgb
-  implements AdapterView.OnItemClickListener
+  implements bcww
 {
   public wgb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(BaseResp paramBaseResp)
   {
-    QRDisplayActivity.a(this.a).b();
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720906;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        bcpw.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
-        if (this.a.jdField_c_of_type_Int == 2) {
-          if (paramLong != 2L) {
-            break label165;
-          }
-        }
-        label165:
-        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
-        {
-          bbbb.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-          this.a.h = -1;
-          return;
-          if (WXShareHelper.a().b()) {
-            break label230;
-          }
-          i = 2131720907;
-          break;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      this.a.h = ((int)paramLong);
-      QRDisplayActivity.a(this.a);
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
       return;
-      label230:
-      i = -1;
     }
+    String str1;
+    label53:
+    String str3;
+    int i;
+    if (this.a.jdField_c_of_type_Int == 2)
+    {
+      if (this.a.h != 2) {
+        break label159;
+      }
+      str1 = "qr_wechat";
+      str3 = this.a.jdField_c_of_type_JavaLangString;
+      i = this.a.a;
+      if (paramBaseResp.errCode != 0) {
+        break label165;
+      }
+    }
+    label159:
+    label165:
+    for (String str2 = "0";; str2 = "1")
+    {
+      bbbp.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
+      switch (paramBaseResp.errCode)
+      {
+      case -1: 
+      default: 
+        wij.a(1, 2131719487);
+        this.a.a(false);
+        return;
+        str1 = "qr_circle";
+        break label53;
+      }
+    }
+    wij.a(2, 2131719506);
+    this.a.a(true);
+    return;
+    this.a.a(false);
   }
 }
 

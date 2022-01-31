@@ -1,16 +1,27 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afyt
-  extends apwx
+  implements bfph
 {
-  public afyt(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public afyt(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, bfpc parambfpc) {}
   
-  public void a(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    axqw.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
+    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
+    if ((paramView == null) || (paramView.isEmpty())) {}
+    do
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(paramView);
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new afyu(this));
+      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
+    } while (!this.jdField_a_of_type_Bfpc.isShowing());
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

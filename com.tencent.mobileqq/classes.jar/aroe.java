@@ -1,16 +1,21 @@
-import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class aroe
   implements View.OnClickListener
 {
-  public aroe(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
+  public aroe(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
+    }
   }
 }
 

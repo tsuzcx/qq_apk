@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.report;
 
-import beyu;
+import bezl;
 
 public final class SDKMiniProgramLpReportDC04239$4
   implements Runnable
 {
   public void run()
   {
-    beyu.a("page_view", this.a, this.b);
+    bezl.a("page_view", this.a, this.b);
   }
 }
 

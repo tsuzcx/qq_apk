@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajtk;
-import ajxn;
+import ajti;
+import ajxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -12,7 +12,7 @@ class FriendProfileMoreInfoActivity$6
   
   public void run()
   {
-    Card localCard = ((ajxn)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
+    Card localCard = ((ajxl)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
     this.this$0.app.runOnUiThread(new FriendProfileMoreInfoActivity.6.1(this, localCard));
     this.this$0.a.f();
   }

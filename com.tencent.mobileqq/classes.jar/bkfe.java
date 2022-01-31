@@ -1,37 +1,29 @@
+import android.util.Log;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
+
 public class bkfe
+  implements bkfh
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  public int d;
-  
-  static
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
+    try
+    {
+      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
+      return paramEGL10;
+    }
+    catch (IllegalArgumentException paramEGL10)
+    {
+      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
+    }
+    return null;
   }
   
-  public bkfe() {}
-  
-  public bkfe(int paramInt, float paramFloat1, float paramFloat2)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  public bkfe(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 

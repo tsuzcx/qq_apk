@@ -1,10 +1,23 @@
-public abstract interface mne
+public class mne
 {
-  public abstract void a(int paramInt);
+  public long a;
+  public byte[] a;
+  public long b;
   
-  public abstract void a(String paramString);
+  public mne(byte[] paramArrayOfByte, long paramLong)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Long = paramLong;
+  }
   
-  public abstract void b(String paramString);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
+      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
+    }
+  }
 }
 
 

@@ -1,98 +1,88 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.ThemeURLImageView;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.robotchat.RobotChatPanelLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class awgb
+  implements bams
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static WeakReference<Drawable> jdField_a_of_type_JavaLangRefWeakReference;
+  public awgb(RobotChatPanelLayout paramRobotChatPanelLayout, long paramLong, int paramInt, String paramString, baos parambaos) {}
   
-  public static Drawable a(Context paramContext)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (paramContext == null) {
-      return null;
-    }
-    return paramContext.getResources().getDrawable(2130845311);
-  }
-  
-  private static Drawable a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramInt == 0)
     {
-      Drawable localDrawable = (Drawable)jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localDrawable != null) {
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-        {
-          paramQQAppInterface = localDrawable;
-          if (jdField_a_of_type_JavaLangString.equals(ThemeUtil.curThemeId)) {}
-        }
-        else
-        {
-          ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
-          jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-          paramQQAppInterface = localDrawable;
+      if (RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout) == null) {
+        if (QLog.isColorLevel()) {
+          QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
         }
       }
-    }
-    do
-    {
-      return paramQQAppInterface;
-      paramContext = a(paramContext);
-      paramQQAppInterface = paramContext;
-    } while (paramContext == null);
-    paramQQAppInterface = paramContext.getConstantState().newDrawable().mutate();
-    ThemeUtil.setThemeFilter(paramQQAppInterface, ThemeUtil.curThemeId);
-    jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    return paramQQAppInterface;
-  }
-  
-  public static ThemeURLImageView a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    Drawable localDrawable;
-    do
-    {
-      return null;
-      localDrawable = a(paramContext);
-    } while (localDrawable == null);
-    paramContext = new ThemeURLImageView(paramContext);
-    paramContext.setContentDescription("BOT");
-    paramContext.setImageDrawable(localDrawable);
-    return paramContext;
-  }
-  
-  public static void a(Context paramContext, SingleLineTextView paramSingleLineTextView, String paramString)
-  {
-    if ((paramSingleLineTextView == null) || (TextUtils.isEmpty(paramString)) || (paramContext == null)) {}
-    do
-    {
+      do
+      {
+        return;
+        if (paramRspBody.robot_uin.get() == this.jdField_a_of_type_Long) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("RobotChatPanelLayout", 2, "data not match :" + this.jdField_a_of_type_Long);
       return;
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!(localAppRuntime instanceof QQAppInterface)) || (!bahx.b((QQAppInterface)localAppRuntime, paramString))) {
+      paramInt = paramRspBody.version.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
+      }
+      if (this.jdField_a_of_type_Int != paramInt)
+      {
+        RobotChatPanelLayout.b(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout).a("1", this.jdField_a_of_type_JavaLangString, paramRspBody);
+        paramRspBody = RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, paramRspBody);
+        if ((paramRspBody != null) && (paramRspBody.size() > 0))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(false);
+          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(paramRspBody, true);
+          paramRspBody = this.jdField_a_of_type_Baos;
+          if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() <= 0) {
+            break label297;
+          }
+        }
+      }
+      for (;;)
+      {
+        paramRspBody.a(bool1, this.jdField_a_of_type_JavaLangString);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(true);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("RobotChatPanelLayout", 2, "listDatas is null in new version");
+        break;
+        if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("RobotChatPanelLayout", 2, "item count == 0");
+          }
+          RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.c();
+        break;
+        label297:
+        bool1 = false;
+      }
+    }
+    RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_a_of_type_Baos.a(bool1, this.jdField_a_of_type_JavaLangString);
+      if (!QLog.isColorLevel()) {
         break;
       }
-      paramString = a((QQAppInterface)localAppRuntime, paramContext);
-    } while (paramString == null);
-    paramSingleLineTextView.setCompoundDrawablePadding((int)bbdh.a(paramContext, 5.0F));
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(paramString);
-    return;
-    paramSingleLineTextView.setDrawableRight2WithIntrinsicBounds(null);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    return ((localAppRuntime instanceof QQAppInterface)) && (bahx.b((QQAppInterface)localAppRuntime, paramString));
+      QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList: errorCode = " + paramInt + " hasdata:" + bool1);
+      return;
+    }
   }
 }
 

@@ -1,15 +1,36 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import mqq.os.MqqHandler;
 
 public class abpd
   implements DialogInterface.OnClickListener
 {
-  public abpd(NotificationActivity paramNotificationActivity) {}
+  private int jdField_a_of_type_Int;
+  
+  public abpd(NotificationActivity paramNotificationActivity, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int == 1) {
+        NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+      }
+    }
+    while (paramInt != 1)
+    {
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity).sendEmptyMessage(4);
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 2);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+      return;
+    }
+    NotificationActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
   }
 }
 

@@ -1,25 +1,39 @@
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.net.Uri;
+import java.util.Map;
 
 public class ufg
+  implements ufe
 {
-  public static boolean a(int paramInt)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private Uri jdField_b_of_type_AndroidNetUri;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  
+  public ufg(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramInt)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public uez a()
+  {
+    uez localuez = new uez();
+    localuez.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    return localuez;
+  }
+  
+  public uez b()
+  {
+    if (this.jdField_b_of_type_AndroidNetUri != null)
     {
-    default: 
-      bool1 = false;
-    case 3: 
-    case 1: 
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (Build.VERSION.SDK_INT >= 21);
-      return false;
+      uez localuez = new uez();
+      localuez.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      return localuez;
     }
-    return false;
+    return null;
   }
 }
 

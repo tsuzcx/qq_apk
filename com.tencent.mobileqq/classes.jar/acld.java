@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class acld
-  implements Comparator<acky>
+  extends aimt
 {
-  public acld(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public int a(acky paramacky1, acky paramacky2)
-  {
-    return paramacky1.f.compareToIgnoreCase(paramacky2.f);
-  }
+  public View a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import noo;
-import npx;
+import nol;
+import npu;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,7 +32,7 @@ class ReadInJoyVideoSubChannelActivity$10
         if (this.a.mIsTopic)
         {
           localObject = "0X80088BB";
-          noo.a(null, "", str1, (String)localObject, 0, 0, "2", "", "", npx.a(this.a.mChannelID, localJSONObject), false);
+          nol.a(null, "", str1, (String)localObject, 0, 0, "2", "", "", npu.a(this.a.mChannelID, localJSONObject), false);
           return;
         }
         localObject = "0X8007BE6";
@@ -56,7 +56,7 @@ class ReadInJoyVideoSubChannelActivity$10
             String str2 = "1";
             ((JSONObject)localObject).put("is_followed", str2);
             ((JSONObject)localObject).put("channel_id", 409409);
-            noo.a(null, "", "0X80088BB", "0X80088BB", 0, 0, "3", "", "", npx.a(this.a.mChannelID, (JSONObject)localObject), false);
+            nol.a(null, "", "0X80088BB", "0X80088BB", 0, 0, "3", "", "", npu.a(this.a.mChannelID, (JSONObject)localObject), false);
             return;
           }
         }

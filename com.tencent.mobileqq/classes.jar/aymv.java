@@ -1,11 +1,15 @@
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class aymv
+public abstract interface aymv
 {
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public String b;
+  public abstract void callJs(String paramString, String... paramVarArgs);
+  
+  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
+  
+  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
+  
+  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
 }
 
 

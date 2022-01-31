@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.ecommerce;
 
-import adga;
-import adgb;
-import ampm;
+import adfx;
+import adfy;
+import ampl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ public final class ECommerceDataReportUtil$1
   {
     try
     {
-      adga localadga = (adga)ampm.a().a(592);
-      if ((localadga != null) && (localadga.a != null) && (!localadga.a.isEmpty()))
+      adfx localadfx = (adfx)ampl.a().a(592);
+      if ((localadfx != null) && (localadfx.a != null) && (!localadfx.a.isEmpty()))
       {
-        adgb.a(localadga.a);
-        adgb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        adgb.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        adfy.a(localadfx.a);
+        adfy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        adfy.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
       }
       return;
     }

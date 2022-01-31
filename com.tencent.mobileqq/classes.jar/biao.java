@@ -1,41 +1,60 @@
-import android.app.Activity;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class biao
+  extends MSFServlet
 {
-  public static void a(Activity paramActivity, View paramView, biap parambiap, biaq parambiaq)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramActivity == null) || (paramView == null) || (parambiap == null) || (parambiaq == null)) {}
-    int i;
-    int j;
-    int m;
-    int i1;
-    int i2;
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label151:
     do
     {
       do
       {
-        do
-        {
-          return;
-        } while (parambiaq.isShowing());
-        paramActivity = new int[2];
-        paramView.getLocationOnScreen(paramActivity);
-        i = paramActivity[0] + parambiap.a() + parambiap.c() / 2;
-        j = paramActivity[1] + parambiap.b() + parambiap.d() / 2;
-        int k = bbkx.b();
-        m = parambiaq.a();
-        int n = parambiap.c() / 4;
-        i1 = parambiap.c() / 4;
-        i2 = parambiaq.b();
-        if (k - j - n < m) {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label151;
+        }
+      }
+      for (String str1 = "";; str1 = "not")
+      {
+        QLog.d("MonitorServlet", 2, str1 + " success");
+        if (!str2.equals("TianShu.UserActionMultiReport")) {
           break;
         }
-      } while (!parambiaq.a(i, j + parambiap.c() / 4));
-      parambiaq.b();
-      return;
-    } while ((j - i1 - i2 < m) || (!parambiaq.a(i, j - m - parambiap.c() / 4)));
-    parambiaq.a();
+        biam.a().a(paramIntent, paramFromServiceMsg);
+        return;
+      }
+    } while (!str2.equals("TianShu.GetAds"));
+    biam.a().b(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
+    }
   }
 }
 

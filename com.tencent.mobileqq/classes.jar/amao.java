@@ -1,129 +1,129 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
 import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspPreDownloadRecmd;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class amao
-  implements BusinessObserver
+  implements bdld
 {
-  amao(RockDownloaderTask paramRockDownloaderTask) {}
+  amao(RockDownloaderTask paramRockDownloaderTask, boolean paramBoolean) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void installSucceed(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "type=", Integer.valueOf(paramInt), " success=", Boolean.valueOf(paramBoolean), " bundle=", paramBundle });
+      QLog.d("RockDownloader", 2, new Object[] { "installSucceed: appid=", paramString1, " packageName=", paramString2 });
     }
-    Object localObject;
-    if (1 == paramInt)
-    {
-      if ((!paramBoolean) || (paramBundle == null)) {
-        break label816;
-      }
-      localObject = paramBundle.getByteArray("BUNDLE_KEY_RESPONSE_BYTE");
-      paramBundle = new ServerApi.RspPreDownloadRecmd();
-      if (localObject == null)
-      {
-        if (this.a.getRockDownloadListener() != null)
-        {
-          this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ajyc.a(2131713489), 10003);
-          this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-        }
-        aman.a(this.a, "0x800A1E6");
-      }
-    }
-    else
-    {
-      return;
-    }
-    try
-    {
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = (ServerApi.ErrorInfo)paramBundle.err_info.get();
-      if (localObject == null) {
-        break label757;
-      }
-      if (((ServerApi.ErrorInfo)localObject).err_code.get() != 0) {
-        break label395;
-      }
-      paramBoolean = aman.a(paramBundle, this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, new Object[] { "backend isGetPermission=", Boolean.valueOf(paramBoolean) });
-      }
-      if (!paramBoolean)
-      {
-        aman.a(this.a, "0x800A1E9");
-        if (this.a.getRockDownloadListener() == null) {
-          break label387;
-        }
-        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloader", 2, "InvalidProtocolBufferMicroException,", paramBundle);
-      }
-      if (this.a.getRockDownloadListener() != null)
-      {
-        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_BYTE_INFO", 10003);
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-      }
-      aman.a(this.a, "0x800A1E6");
-      return;
-    }
-    aman.a(this.a, "0x800A1E4");
-    if (this.a.getRockDownloadListener() != null) {
-      this.a.getRockDownloadListener().onPermissionPermit(this.a.getDownloadInfo());
-    }
-    label387:
-    aman.c(this.a);
-    return;
-    label395:
-    if (((ServerApi.ErrorInfo)localObject).err_code.get() == 10006)
-    {
-      if (this.a.getRockDownloadListener() != null)
-      {
-        this.a.getRockDownloadListener().onPermissionDeny(this.a.getDownloadInfo());
-        this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
-        this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
-      }
-      aman.a(this.a, "0x800A1E6");
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "GET_DOWNLOAD_CONFIG error!! ", " ", paramBundle.download_url.get(), " ", Integer.valueOf(paramBundle.start_time.get()), " ", Integer.valueOf(paramBundle.end_time.get()), " ", Integer.valueOf(paramBundle.interval.get()), " ", Integer.valueOf(paramBundle.quota_num.get()), " ", Integer.valueOf(paramBundle.daily_num.get()), " ", ((ServerApi.ErrorInfo)localObject).err_msg.get(), " ", Integer.valueOf(((ServerApi.ErrorInfo)localObject).err_code.get()), " ", ((ServerApi.ErrorInfo)localObject).jump_url.get() });
+      QLog.d("RockDownloader", 2, new Object[] { "onDownloadCancel: info=", paramDownloadInfo });
     }
-    if (this.a.getRockDownloadListener() != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), ((ServerApi.ErrorInfo)localObject).err_msg.get(), ((ServerApi.ErrorInfo)localObject).err_code.get());
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadCancel(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFinish(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
     }
-    aman.a(this.a, "0x800A1E6");
-    return;
-    label757:
-    if (this.a.getRockDownloadListener() != null)
+    bdhk.a().b(this);
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "onDownloadError: info=", paramDownloadInfo, " errorMsg=", paramString, " state=", Integer.valueOf(paramInt2) });
+    }
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR_NULL_ERROR_INFO", 10003);
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      if (paramInt1 != 6) {
+        break label200;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFail(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), ajya.a(2131713502), 10010);
     }
-    aman.a(this.a, "0x800A1E6");
-    return;
-    label816:
-    if (this.a.getRockDownloadListener() != null)
+    for (;;)
     {
-      this.a.getRockDownloadListener().onDownloadFail(this.a.getDownloadInfo(), "GET_PERMISSION_ERROR", 10003);
-      this.a.getRockDownloadListener().onDownloadFinish(this.a.getDownloadInfo());
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFinish(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+      paramString = (DownloadInfo)bdhk.a().a().remove(paramDownloadInfo.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "onDownloadError removedDownload=", paramString });
+      }
+      bdhi.a().a(paramDownloadInfo.b);
+      amam.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, "0x800A1E6");
+      bdhk.a().b(this);
+      return;
+      label200:
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadFail(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), paramString, paramInt1);
     }
-    aman.a(this.a, "0x800A1E6");
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
+      return;
+    }
+    amam.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
+    bdhk.a().b(this);
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {}
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RockDownloader", 2, new Object[] { "onDownloadPause: info=", paramDownloadInfo });
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    DownloadInfo localDownloadInfo;
+    do
+    {
+      return;
+      while (!paramList.hasNext()) {
+        paramList = paramList.iterator();
+      }
+      localDownloadInfo = (DownloadInfo)paramList.next();
+    } while ((localDownloadInfo.e == null) || (!localDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())));
+    this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadProceedOn(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo(), localDownloadInfo.f);
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloader", 2, new Object[] { "onDownloadWait: info=", paramDownloadInfo });
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getRockDownloadListener().onDownloadWait(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo());
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "packageReplaced: appid=", paramString1, " packageName=", paramString2 });
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloader", 2, new Object[] { "uninstallSucceed: appid=", paramString1, " packageName=", paramString2 });
+    }
   }
 }
 

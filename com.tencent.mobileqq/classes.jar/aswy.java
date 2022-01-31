@@ -1,105 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 public class aswy
 {
-  public static void a(QQAppInterface paramQQAppInterface) {}
+  public static final String a = "qqmusic://qq.com/ui/myTab?p=%7B%22tab%22%3A%22home%22%7D&ADTAG=YIQITING&source=" + URLEncoder.encode("https://y.qq.com/m/index.html?ADTAG=YIQITING");
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  public static void a(Context paramContext, String paramString)
   {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
-      {
-        long l1 = asxk.b(str1);
-        long l2 = asxk.a(str1);
-        if ((asxk.b(l1)) && (l2 >= 0L)) {
-          axqw.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E4", asxk.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt, String paramString)
-  {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, asyb paramasyb)
-  {
-    if (paramasyb != null)
-    {
-      axqw.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", asxk.a(paramasyb.a, paramasyb.b), (int)(paramasyb.a * 10L + paramasyb.b), 0, "", "", "", "");
-      switch ((int)paramasyb.a)
-      {
-      }
-    }
+    long l = 0L;
     for (;;)
     {
-      VipUtils.a(paramString, paramasyb, paramQQAppInterface, "C2C_click");
-      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-      axqw.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
-      return;
-      axqw.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, asyb paramasyb1, asyb paramasyb2)
-  {
-    if (paramasyb1 != null) {
-      axqw.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", asxk.a(paramasyb1.a, paramasyb1.b), (int)(paramasyb1.a * 10L + paramasyb1.b), 0, "", "", "", "");
-    }
-    if (paramasyb2 != null) {
-      axqw.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", asxk.a(paramasyb2.a, paramasyb2.b), (int)(paramasyb2.a * 10L + paramasyb2.b), 0, "", "", "", "");
-    }
-    axqw.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
-  {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
+      try
       {
-        long l1 = asxk.b(str1);
-        long l2 = asxk.a(str1);
-        if ((asxk.b(l1)) && (l2 >= 0L)) {
-          axqw.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E5", asxk.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
-        }
+        localObject = new URL(paramString);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject;
+        int i;
+        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+        continue;
+      }
+      try
+      {
+        i = ((URL)localObject).openConnection().getContentLength();
+        l = i;
+      }
+      catch (IOException localIOException)
+      {
+        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
       }
     }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
+    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
+    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694788));
+    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
+    apdc.a().b(paramString, (Bundle)localObject);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return a(paramContext, "com.tencent.qqmusic");
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext.getPackageInfo(paramString, 1);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aswy
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import aquo;
+import aquq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -409,7 +409,7 @@ public class GesturePWDUtils
     }
   }
   
-  public static String patternToString(List<aquo> paramList)
+  public static String patternToString(List<aquq> paramList)
   {
     if (paramList == null) {
       return "";
@@ -419,9 +419,9 @@ public class GesturePWDUtils
     int i = 0;
     while (i < j)
     {
-      aquo localaquo = (aquo)paramList.get(i);
-      int k = localaquo.a();
-      arrayOfByte[i] = ((byte)(localaquo.b() + k * 3));
+      aquq localaquq = (aquq)paramList.get(i);
+      int k = localaquq.a();
+      arrayOfByte[i] = ((byte)(localaquq.b() + k * 3));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);

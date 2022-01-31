@@ -1,22 +1,22 @@
 package cooperation.qlink;
 
-import bgnq;
+import bgoh;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class QlinkServiceProxy$2
   extends Thread
 {
-  public QlinkServiceProxy$2(bgnq parambgnq) {}
+  public QlinkServiceProxy$2(bgoh parambgoh) {}
   
   public void run()
   {
-    while (!bgnq.a(this.this$0).isEmpty())
+    while (!bgoh.a(this.this$0).isEmpty())
     {
-      SendMsg localSendMsg = (SendMsg)bgnq.a(this.this$0).poll();
+      SendMsg localSendMsg = (SendMsg)bgoh.a(this.this$0).poll();
       if (localSendMsg != null) {
         try
         {
-          bgnq.a(this.this$0, localSendMsg);
+          bgoh.a(this.this$0, localSendMsg);
         }
         catch (Exception localException)
         {

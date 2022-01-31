@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atjr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public atjr(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    ShortVideoCommentsView.a(this.a);
   }
 }
 

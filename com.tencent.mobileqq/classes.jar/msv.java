@@ -1,92 +1,102 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.av.utils.QQFrameByFrameAnimation.1;
 
-class msv
+public class msv
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
+  public int a;
+  public Handler a;
+  View jdField_a_of_type_AndroidViewView = null;
+  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
+  public msu a;
+  public int[] a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
   
-  private msv(mss parammss)
+  public msv()
   {
-    a(null);
+    this.jdField_a_of_type_Msu = null;
+    this.jdField_a_of_type_Int = 300;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
-  msv(mss parammss, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramString4;
-  }
-  
-  private void a(msv parammsv)
-  {
-    if (parammsv != null)
+    this.c += 1;
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      this.jdField_a_of_type_JavaLangString = parammsv.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Int = parammsv.jdField_a_of_type_Int;
-      this.jdField_c_of_type_JavaLangString = parammsv.jdField_c_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = parammsv.jdField_b_of_type_JavaLangString;
-      this.d = parammsv.d;
-      this.jdField_b_of_type_Int = parammsv.jdField_b_of_type_Int;
-      this.jdField_c_of_type_Int = parammsv.jdField_c_of_type_Int;
-      this.jdField_a_of_type_Boolean = parammsv.jdField_a_of_type_Boolean;
+      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        break label67;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    }
+    label67:
+    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.d = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
+    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
   }
   
-  private boolean a()
+  public void a(int paramInt)
   {
-    return (this.jdField_a_of_type_Int == 47) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 48) || (this.jdField_a_of_type_Int == 44);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private boolean a(msv parammsv)
+  public void a(View paramView)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (parammsv != null) {
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammsv.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_Int != parammsv.jdField_a_of_type_Int)
-        {
-          bool1 = bool2;
-          if (!parammsv.a()) {}
-        }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(msu parammsu)
+  {
+    this.jdField_a_of_type_Msu = parammsu;
+  }
+  
+  public void a(int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.c = 0;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
       }
-      else
+      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
       {
-        bool1 = true;
+        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Msu != null) {
+        this.jdField_a_of_type_Msu.d();
       }
     }
-    return bool1;
   }
   
-  public String toString()
+  public void b(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("NotifyData{sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], id[").append(this.jdField_c_of_type_JavaLangString).append("], type[").append(this.jdField_a_of_type_Int).append("], uinType[").append(this.jdField_b_of_type_Int).append("], name[").append(this.jdField_b_of_type_JavaLangString).append("], extraName[").append(this.d).append("], head[");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + "], isHide[" + this.jdField_a_of_type_Boolean + "]}";
+    this.d = paramInt;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_Msu != null) {
+      this.jdField_a_of_type_Msu.a();
     }
   }
 }

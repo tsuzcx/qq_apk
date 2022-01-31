@@ -1,19 +1,16 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class obw
-  implements LiveRoomGiftCallback
+  implements View.OnClickListener
 {
-  obw(obt paramobt) {}
+  obw(obv paramobv) {}
   
-  public void onCall(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (paramInt == 7)
-    {
-      QLog.d("KandianAdPandent", 2, "Vpng play completion!");
-      obt.a(this.a).sendEmptyMessage(2);
-    }
+    oar.a(obv.a(this.a), 1000, null);
+    shq.a((Activity)obv.a(this.a), obv.a(this.a), obv.a(this.a).a(), obv.a(this.a).e(), false, oaq.b(obv.a(this.a)), new nxz());
   }
 }
 

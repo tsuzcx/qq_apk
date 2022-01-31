@@ -1,52 +1,26 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abjr
-  extends ajxl
+  extends BroadcastReceiver
 {
-  private abjr(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public abjr(JumpActivity paramJumpActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
+    if (!this.a.isFinishing())
     {
-      return;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
-        }
-        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
-        return;
-      }
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abjr
  * JD-Core Version:    0.7.0.1
  */

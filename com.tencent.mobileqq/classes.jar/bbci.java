@@ -1,81 +1,13 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class bbci
+final class bbci
+  implements MediaPlayer.OnCompletionListener
 {
-  public static Bitmap a(String paramString)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Bitmap))) {
-        return (Bitmap)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static Sizeable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static rpg a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString instanceof rpg)) {
-        return (rpg)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
-  }
-  
-  public static void a(String paramString, Sizeable paramSizeable)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
-  }
-  
-  public static void a(String paramString, rpg paramrpg)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramrpg == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramrpg);
+    paramMediaPlayer.release();
+    bbcf.a = null;
   }
 }
 

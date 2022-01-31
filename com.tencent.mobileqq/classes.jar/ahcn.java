@@ -1,18 +1,16 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
-import eipc.EIPCResult;
+import android.os.ResultReceiver;
 
 class ahcn
-  implements EmojiGifHelper.OnConvertListener
+  implements agzh
 {
-  ahcn(ahci paramahci, int paramInt) {}
+  ahcn(ahcg paramahcg, ResultReceiver paramResultReceiver) {}
   
-  public void onConvertResult(boolean paramBoolean, String paramString)
+  public void a(String paramString1, String paramString2, agzb paramagzb)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("res", paramBoolean);
-    localBundle.putString("path", paramString);
-    this.jdField_a_of_type_Ahci.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
   }
 }
 

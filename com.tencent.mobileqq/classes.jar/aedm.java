@@ -1,22 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class aedm
-  extends Handler
+  implements View.OnTouchListener
 {
-  boolean jdField_a_of_type_Boolean = true;
+  aedm(aedj paramaedj, acxj paramacxj) {}
   
-  aedm(aedl paramaedl) {}
-  
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMessage.what == aedl.a()) {}
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != aedl.b()) {}
-    }
+    this.jdField_a_of_type_Acxj.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

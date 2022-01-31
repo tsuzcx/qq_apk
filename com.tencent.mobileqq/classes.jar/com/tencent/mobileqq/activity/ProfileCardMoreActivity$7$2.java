@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import absn;
+import absj;
 
 public class ProfileCardMoreActivity$7$2
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$2(absn paramabsn, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ProfileCardMoreActivity$7$2(absj paramabsj, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Absn.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Absj.a.a(this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

@@ -1,19 +1,11 @@
-class bjsz
-  implements adgz
+import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+
+public abstract interface bjsz
+  extends bjxm
 {
-  bjsz(bjsy parambjsy) {}
+  public abstract void a(InteractPasterParcelData paramInteractPasterParcelData);
   
-  public void a()
-  {
-    this.a.a.a.a(-1, bjsx.a(this.a.a), 2130772028, 0, false);
-    bjsx.a(this.a.a, null);
-  }
-  
-  public void b()
-  {
-    this.a.a.a.a(-1, bjsx.a(this.a.a), 2130772028, 0, false);
-    bjsx.a(this.a.a, null);
-  }
+  public abstract boolean b();
 }
 
 

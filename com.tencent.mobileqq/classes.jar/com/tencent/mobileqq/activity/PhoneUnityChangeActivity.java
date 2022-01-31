@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import abrq;
-import ajyc;
-import akcp;
+import abrm;
+import ajya;
+import akco;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,14 +12,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import askl;
-import aume;
-import axqw;
-import bbcl;
-import bbev;
-import bbgg;
-import bfol;
-import bfoy;
+import askn;
+import aumg;
+import axqy;
+import bbcz;
+import bbfj;
+import bbgu;
+import bfpc;
+import bfpp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
@@ -32,34 +32,34 @@ public class PhoneUnityChangeActivity
 {
   private int a;
   public Button a;
-  public askl a;
-  public aume a;
-  public bbgg a;
-  public bfol a;
+  public askn a;
+  public aumg a;
+  public bbgu a;
+  public bfpc a;
   public String a;
-  public aume b;
+  public aumg b;
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bfol == null)
+    if (this.jdField_a_of_type_Bfpc == null)
     {
-      this.jdField_a_of_type_Bfol = ((bfol)bfoy.a(this, null));
-      this.jdField_a_of_type_Bfol.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_Bfol.a(ajyc.a(2131708023), 3);
-      this.jdField_a_of_type_Bfol.c(2131690596);
-      this.jdField_a_of_type_Bfol.a(new abrq(this));
-      this.jdField_a_of_type_Bfol.c(2131690596);
+      this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this, null));
+      this.jdField_a_of_type_Bfpc.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Bfpc.a(ajya.a(2131708034), 3);
+      this.jdField_a_of_type_Bfpc.c(2131690596);
+      this.jdField_a_of_type_Bfpc.a(new abrm(this));
+      this.jdField_a_of_type_Bfpc.c(2131690596);
     }
-    if ((this.jdField_a_of_type_Bfol != null) && (!this.jdField_a_of_type_Bfol.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Bfol.show();
+    if ((this.jdField_a_of_type_Bfpc != null) && (!this.jdField_a_of_type_Bfpc.isShowing()) && (!isFinishing())) {
+      this.jdField_a_of_type_Bfpc.show();
     }
   }
   
   public boolean a()
   {
-    Object localObject1 = (askl)this.app.getManager(11);
-    int i = ((askl)localObject1).d();
-    localObject1 = ((askl)localObject1).a();
+    Object localObject1 = (askn)this.app.getManager(11);
+    int i = ((askn)localObject1).d();
+    localObject1 = ((askn)localObject1).a();
     if ((1 != i) && (5 != i)) {}
     try
     {
@@ -78,15 +78,15 @@ public class PhoneUnityChangeActivity
           QLog.d("PhoneUnityChangeActivity", 2, "" + i, localException);
         }
       }
-      super.setTitle(ajyc.a(2131708034));
-      Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", akcp.a(this.jdField_a_of_type_JavaLangString));
-      ((TextView)findViewById(2131378087)).setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363488));
+      super.setTitle(ajya.a(2131708045));
+      Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", akco.a(this.jdField_a_of_type_JavaLangString));
+      ((TextView)findViewById(2131378090)).setText((CharSequence)localObject2);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363487));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       localObject2 = (ImageView)findViewById(2131368441);
       ((ImageView)localObject2).setVisibility(0);
       if (AppSetting.d) {
-        ((ImageView)localObject2).setContentDescription(getString(2131695020));
+        ((ImageView)localObject2).setContentDescription(getString(2131695021));
       }
       ((ImageView)localObject2).setBackgroundResource(2130839753);
       ((ImageView)localObject2).setOnClickListener(this);
@@ -116,7 +116,7 @@ public class PhoneUnityChangeActivity
     {
       return true;
       super.setContentView(2131559376);
-      this.jdField_a_of_type_Askl = ((askl)this.app.getManager(11));
+      this.jdField_a_of_type_Askn = ((askn)this.app.getManager(11));
       this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
     } while (a());
     super.finish();
@@ -125,25 +125,25 @@ public class PhoneUnityChangeActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aume != null)
+    if (this.jdField_a_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
-      this.jdField_a_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
+      this.jdField_a_of_type_Aumg = null;
     }
     if (this.b != null)
     {
       this.app.unRegistObserver(this.b);
       this.b = null;
     }
-    if (this.jdField_a_of_type_Bbgg != null)
+    if (this.jdField_a_of_type_Bbgu != null)
     {
-      this.jdField_a_of_type_Bbgg.dismiss();
-      this.jdField_a_of_type_Bbgg = null;
+      this.jdField_a_of_type_Bbgu.dismiss();
+      this.jdField_a_of_type_Bbgu = null;
     }
-    if (this.jdField_a_of_type_Bfol != null)
+    if (this.jdField_a_of_type_Bfpc != null)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      this.jdField_a_of_type_Bfol = null;
+      this.jdField_a_of_type_Bfpc.dismiss();
+      this.jdField_a_of_type_Bfpc = null;
     }
     this.app.removeHandler(PhoneUnityChangeActivity.class);
     super.doOnDestroy();
@@ -159,9 +159,9 @@ public class PhoneUnityChangeActivity
       a();
       return;
     }
-    if (!bbev.d(this))
+    if (!bbfj.d(this))
     {
-      b(2131694672);
+      b(2131694673);
       return;
     }
     paramView = new Intent(this, BindNumberActivity.class);
@@ -174,8 +174,8 @@ public class PhoneUnityChangeActivity
       paramView.putExtra("kSrouce", i);
       paramView.putExtra("kFPhoneChange", true);
       startActivityForResult(paramView, 1001);
-      axqw.b(this.app, "CliOper", "", "", "0X8005B80", "0X8005B80", 0, 0, "", "", "", "");
-      bbcl.a(1);
+      axqy.b(this.app, "CliOper", "", "", "0X8005B80", "0X8005B80", 0, 0, "", "", "", "");
+      bbcz.a(1);
       return;
     }
   }

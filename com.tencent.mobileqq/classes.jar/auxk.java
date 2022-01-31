@@ -1,20 +1,16 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.XEditTextEx;
+import android.graphics.drawable.Drawable;
 
 public class auxk
-  extends Editable.Factory
 {
-  public auxk(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public long a;
+  public Drawable a;
+  public boolean a;
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public auxk(long paramLong, boolean paramBoolean, Drawable paramDrawable)
   {
-    if ((paramCharSequence instanceof aykx)) {
-      return (Editable)paramCharSequence;
-    }
-    return new aykx(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
 }
 

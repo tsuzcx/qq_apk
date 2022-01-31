@@ -1,39 +1,46 @@
-public abstract class lvf
-  extends lur
+public class lvf
+  extends lum
 {
-  protected long b;
-  public lvr[] c;
+  public boolean a;
   
   public void a(long paramLong)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (this.c != null)
+    long l = paramLong - this.jdField_a_of_type_Long;
+    a((float)(paramLong - this.jdField_a_of_type_Long) / 50.0F);
+    int j = 0;
+    int i;
+    if (l < 500L) {
+      i = (int)(l * 255L / 500L);
+    }
+    for (;;)
     {
-      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
-      if ((i >= 0) && (i < this.c.length)) {
-        this.jdField_a_of_type_Lvr = this.c[i];
+      a(i);
+      return;
+      if (((l >= 500L) && (l <= 5397L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+      }
+      else
+      {
+        i = j;
+        if (l > 5397L)
+        {
+          i = j;
+          if (l < 5564L)
+          {
+            i = j;
+            if (this.jdField_a_of_type_Boolean) {
+              i = (int)((l - 5564L) * 255L / -167L);
+            }
+          }
+        }
       }
     }
   }
   
-  public void b()
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.b();
-    if (this.c != null)
-    {
-      lvr[] arrayOflvr = this.c;
-      int j = arrayOflvr.length;
-      int i = 0;
-      while (i < j)
-      {
-        lvr locallvr = arrayOflvr[i];
-        if (locallvr != null) {
-          locallvr.a();
-        }
-        i += 1;
-      }
-      this.c = null;
-    }
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
 }
 

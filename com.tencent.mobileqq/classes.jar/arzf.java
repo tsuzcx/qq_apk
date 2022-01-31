@@ -4,11 +4,14 @@ import android.view.View.OnClickListener;
 class arzf
   implements View.OnClickListener
 {
-  arzf(arza paramarza, View.OnClickListener paramOnClickListener) {}
+  arzf(arzc paramarzc, View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    this.jdField_a_of_type_Arzc.b();
   }
 }
 

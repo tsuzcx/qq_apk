@@ -1,15 +1,17 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bbyr
-  implements View.OnClickListener
+  implements bbzd
 {
-  bbyr(bbyq parambbyq) {}
+  bbyr(bbyp parambbyp) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(bbyu parambbyu)
   {
-    bbyq.a(this.a).dismiss();
+    if (parambbyu.a)
+    {
+      bbyp.a(this.a, parambbyu);
+      bbyp.a(this.a);
+    }
   }
 }
 

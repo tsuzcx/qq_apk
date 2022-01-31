@@ -1,82 +1,58 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.1;
-import com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2;
-import java.util.List;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class anfs
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private ange jdField_a_of_type_Ange;
+  private final SparseArray<BlockingQueue<anga>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private angj jdField_a_of_type_Angj;
+  private final BlockingQueue<anga> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   
-  public anfs(ange paramange)
+  public anfs(angj paramangj)
   {
-    this.jdField_a_of_type_Ange = paramange;
+    this.jdField_a_of_type_Angj = paramangj;
   }
   
-  private Handler a()
+  protected int a()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
-    try
+    return 300;
+  }
+  
+  public anga a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
+    }
+    localObject = (anga)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DanmakuMeasureThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandlerThread.setUncaughtExceptionHandler(new anhu());
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      return this.jdField_a_of_type_AndroidOsHandler;
+      localObject = this.jdField_a_of_type_Angj.a(paramInt);
+      anic.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      for (;;)
-      {
-        anhx.d("DanmakuMeasureManager", new Object[] { localThrowable });
-      }
+      ((anga)localObject).e();
+      ((anga)localObject).a(paramObject);
+      return localObject;
+      anic.a("DanmakuFactory", new Object[] { localObject, " is reused " });
     }
   }
   
-  public static void a(ange paramange, anfv paramanfv)
+  public void a(anga paramanga)
   {
-    if (paramanfv.b()) {
-      return;
-    }
-    paramange = paramange.a(paramanfv).a(paramanfv);
-    paramanfv.d(paramange.a() + ange.a().g() * 2);
-    paramanfv.e(paramange.b() + ange.a().c() * 2);
-    paramanfv.g();
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (anhv.a())
+    int i = paramanga.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
     }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void a(anfv paramanfv, anft paramanft)
-  {
-    Handler localHandler = a();
-    if (localHandler != null) {
-      localHandler.post(new DanmakuMeasureManager.1(this, paramanfv, paramanft));
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramanga);
     }
-  }
-  
-  public void a(List<anfv> paramList, anft paramanft)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    Handler localHandler;
-    do
-    {
-      return;
-      localHandler = a();
-    } while (localHandler == null);
-    localHandler.post(new DanmakuMeasureManager.2(this, paramList, paramanft));
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import ajxn;
+import ajxl;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -8,17 +8,17 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import axqw;
-import bghf;
-import bgsz;
-import bgtc;
-import bgth;
-import bgtk;
-import bgtm;
-import bgto;
-import bgtp;
-import bguy;
-import bgvo;
+import axqy;
+import bghw;
+import bgtq;
+import bgtt;
+import bgty;
+import bgub;
+import bgud;
+import bguf;
+import bgug;
+import bgvp;
+import bgwf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -43,18 +43,18 @@ public class QRBridgeActivity
   
   private void b()
   {
-    boolean bool = bgtc.a().a();
+    boolean bool = bgtt.a().a();
     if (!bool) {
-      bgtp.a(2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bgug.a(2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("auto_launch", bool);
     a();
-    bgtc.a().b(this);
+    bgtt.a().b(this);
   }
   
   private void c()
   {
-    bguy.a().a();
+    bgvp.a().a();
   }
   
   public int a()
@@ -73,10 +73,10 @@ public class QRBridgeActivity
   {
     int i;
     Object localObject;
-    if (bgto.a(this) == -1)
+    if (bguf.a(this) == -1)
     {
       i = -1;
-      localObject = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject = ((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       if (localObject != null) {
         i = ((Card)localObject).shGender;
       }
@@ -84,30 +84,30 @@ public class QRBridgeActivity
         break label177;
       }
       i = a();
-      bgvo.e("QRBridgeActivity", "set prefer by random " + i);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "VIP_QQREADER", "", "0X8005877", "0X8005877", 0, 0, "" + i, "", "", "");
+      bgwf.e("QRBridgeActivity", "set prefer by random " + i);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "VIP_QQREADER", "", "0X8005877", "0X8005877", 0, 0, "" + i, "", "", "");
     }
     for (;;)
     {
-      bgto.a(this, i);
+      bguf.a(this, i);
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
       if (localObject != null)
       {
         ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(1134028), 1000L);
         ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(1134040), 1000L);
       }
-      bghf.a(null);
+      bghw.a(null);
       return;
       label177:
-      bgvo.e("QRBridgeActivity", "set prefer by gender " + i);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "VIP_QQREADER", "", "0X8005876", "0X8005876", 0, 0, "" + i, "", "", "");
+      bgwf.e("QRBridgeActivity", "set prefer by gender " + i);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "VIP_QQREADER", "", "0X8005876", "0X8005876", 0, 0, "" + i, "", "", "");
     }
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bgvo.e("QRBridgeActivity", "QRBridgeActivity onCreate");
+    bgwf.e("QRBridgeActivity", "QRBridgeActivity onCreate");
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
@@ -118,19 +118,19 @@ public class QRBridgeActivity
     getWindow().setBackgroundDrawableResource(2131167087);
     long l1 = System.currentTimeMillis();
     long l2 = getIntent().getLongExtra("click_start_time", 0L);
-    bgvo.c("cost_time_tag", "QRBridgeActivity :clickToOnCreate =" + (l1 - l2));
+    bgwf.c("cost_time_tag", "QRBridgeActivity :clickToOnCreate =" + (l1 - l2));
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle == null) {
       this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())
     {
-      bgvo.a("QRBridgeActivity", "app is not login");
+      bgwf.a("QRBridgeActivity", "app is not login");
       finish();
       return;
     }
     setContentView(new FrameLayout(this), new FrameLayout.LayoutParams(-1, -1));
-    paramBundle = (bgth)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(129);
+    paramBundle = (bgty)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(129);
     paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), System.currentTimeMillis());
     paramBundle.b();
     b();
@@ -138,11 +138,11 @@ public class QRBridgeActivity
     paramBundle.putExtra("key_click_leba_start_time", l2);
     paramBundle.putExtra("key_enter_qr_bridge_activity_oncreate_time", l1);
     paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    paramBundle = bgsz.a(this, paramBundle, BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    PluginCommunicationHandler.getInstance().register(new bgtm());
-    PluginCommunicationHandler.getInstance().register(new bgtk());
+    paramBundle = bgtq.a(this, paramBundle, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    PluginCommunicationHandler.getInstance().register(new bgud());
+    PluginCommunicationHandler.getInstance().register(new bgub());
     paramBundle.putExtra("startOpenPageTime", l2);
-    paramBundle.putExtra("is_follow_publicaccount", bgto.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    paramBundle.putExtra("is_follow_publicaccount", bguf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     if (!paramBundle.hasExtra("big_brother_source_key")) {
       paramBundle.putExtra("big_brother_source_key", "biz_src_jc_neirong");
     }
@@ -157,7 +157,7 @@ public class QRBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    bgvo.e("QRBridgeActivity", "QRBridgeActivity onDestroy");
+    bgwf.e("QRBridgeActivity", "QRBridgeActivity onDestroy");
   }
 }
 

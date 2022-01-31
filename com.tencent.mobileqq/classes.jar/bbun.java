@@ -1,67 +1,61 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfCommand;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.TracePathData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class bbun
-  extends MSFServlet
+  implements SensorEventListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    QLog.i("health_manager", 1, "MyServlet onReceive." + paramFromServiceMsg.getServiceCmd());
-    if ((paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getServiceCmd().equals("cmd_refresh_steps")))
-    {
-      String str = paramIntent.getStringExtra("json_string");
-      paramFromServiceMsg = (String)paramFromServiceMsg.getAttribute("StepInfoJSON");
-      Bundle localBundle = new Bundle();
-      if (!TextUtils.isEmpty(str)) {
-        localBundle.putString("json_string", str);
-      }
-      if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-        localBundle.putString("StepInfoJSON", paramFromServiceMsg);
-      }
-      if (paramIntent.getExtras().getString("json_getstepcallback") != null) {
-        localBundle.putString("json_getstepcallback", paramIntent.getExtras().getString("json_getstepcallback"));
-      }
-      notifyObserver(paramIntent, 0, true, localBundle, null);
-    }
-  }
+  public bbun(PathTraceManager paramPathTraceManager) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    paramPacket = paramIntent.getStringExtra("msf_cmd_type");
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, "0", paramPacket);
-    localToServiceMsg.setMsfCommand(MsfCommand.msf_step_counter);
-    localToServiceMsg.setNeedCallback(true);
-    localToServiceMsg.setTimeout(30000L);
-    if (paramPacket.equals("cmd_health_switch")) {
-      localToServiceMsg.addAttribute("isOpen", Boolean.valueOf(paramIntent.getBooleanExtra("isOpen", false)));
-    }
-    for (;;)
+    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
+    if (PathTraceManager.a(this.a) == 1)
     {
-      sendToMSF(paramIntent, localToServiceMsg);
-      return;
-      if (paramPacket.equals("cmd_update_lastreport_time"))
-      {
-        long l = paramIntent.getLongExtra("last_report_time", 0L);
-        boolean bool = paramIntent.getBooleanExtra("has_report_yes", false);
-        localToServiceMsg.addAttribute("last_report_time", Long.valueOf(l));
-        localToServiceMsg.addAttribute("has_report_yes", Boolean.valueOf(bool));
-        localToServiceMsg.setNeedCallback(false);
+      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
+      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
+        break label331;
       }
-      else if (paramPacket.equals("cmd_reset_step"))
+      i = PathTraceManager.a(this.a).totalSteps;
+      if (!this.a.e) {
+        break label246;
+      }
+      paramSensorEvent = PathTraceManager.a(this.a);
+      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
+      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
+      PathTraceManager.a(this.a, null);
+      if (PathTraceManager.a(this.a).type == 1)
       {
-        int i = paramIntent.getIntExtra("server_step", -1);
-        if (-1 != i) {
-          localToServiceMsg.addAttribute("server_step", Integer.valueOf(i));
+        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
+          break label281;
         }
+        this.a.a(PathTraceManager.a(this.a), false, true);
       }
     }
+    label246:
+    while (PathTraceManager.c(this.a) != 0)
+    {
+      int i;
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramSensorEvent = PathTraceManager.a(this.a);
+          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
+        }
+      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
+      this.a.a(PathTraceManager.a(this.a), false, false);
+      return;
+    }
+    label281:
+    label331:
+    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 

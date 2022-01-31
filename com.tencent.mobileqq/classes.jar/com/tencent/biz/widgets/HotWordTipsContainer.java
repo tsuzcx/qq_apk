@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awhv;
+import awhx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -28,7 +28,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import xnl;
+import xni;
 
 public class HotWordTipsContainer
   extends LinearLayout
@@ -36,7 +36,7 @@ public class HotWordTipsContainer
 {
   protected Context a;
   private HotWordSearchEntryDataModel jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
-  xnl jdField_a_of_type_Xnl;
+  xni jdField_a_of_type_Xni;
   
   public HotWordTipsContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -89,7 +89,7 @@ public class HotWordTipsContainer
           HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilList.get(j);
           String str1 = a(localHotSearchItem.indexTextColor, "#777777");
           String str2 = a(localHotSearchItem.indexBgColor, "#00000000");
-          RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560583, null);
+          RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560582, null);
           Object localObject1 = new LinearLayout.LayoutParams(0, -2);
           ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
           localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
@@ -98,11 +98,11 @@ public class HotWordTipsContainer
           ((LinearLayout)localObject2).setVisibility(0);
           Object localObject3 = (TextView)((LinearLayout)localObject2).findViewById(2131377409);
           localObject1 = (TextView)((LinearLayout)localObject2).findViewById(2131368071);
-          URLImageView localURLImageView = (URLImageView)((LinearLayout)localObject2).findViewById(2131375277);
-          Object localObject4 = (URLImageView)localRelativeLayout.findViewById(2131363150);
+          URLImageView localURLImageView = (URLImageView)((LinearLayout)localObject2).findViewById(2131375279);
+          Object localObject4 = (URLImageView)localRelativeLayout.findViewById(2131363149);
           ((URLImageView)localObject4).setVisibility(8);
-          if ((paramInt == 10) && (UniteSearchActivity.a != null) && (TextUtils.equals(UniteSearchActivity.a.title, localHotSearchItem.title)) && (!awhv.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrl))) {
-            awhv.a(getContext(), (URLImageView)localObject4, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrlNight, null);
+          if ((paramInt == 10) && (UniteSearchActivity.a != null) && (TextUtils.equals(UniteSearchActivity.a.title, localHotSearchItem.title)) && (!awhx.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrl))) {
+            awhx.a(getContext(), (URLImageView)localObject4, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotWordGifUrlNight, null);
           }
           localObject2 = ((LinearLayout)localObject2).findViewById(2131368069);
           ((TextView)localObject3).setText(localHotSearchItem.title);
@@ -157,14 +157,14 @@ public class HotWordTipsContainer
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Xnl != null) {
-      this.jdField_a_of_type_Xnl.a((HotWordSearchEntryDataModel.HotSearchItem)paramView.getTag());
+    if (this.jdField_a_of_type_Xni != null) {
+      this.jdField_a_of_type_Xni.a((HotWordSearchEntryDataModel.HotSearchItem)paramView.getTag());
     }
   }
   
-  public void setOnTipsClickListener(xnl paramxnl)
+  public void setOnTipsClickListener(xni paramxni)
   {
-    this.jdField_a_of_type_Xnl = paramxnl;
+    this.jdField_a_of_type_Xni = paramxni;
   }
 }
 

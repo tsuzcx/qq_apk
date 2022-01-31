@@ -1,143 +1,113 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import java.util.List;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
 public class adep
+  implements adeg
 {
-  private addv jdField_a_of_type_Addv = new addv();
-  private adem jdField_a_of_type_Adem = new adem();
-  private adeq jdField_a_of_type_Adeq;
+  public static final adeh<adep> a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private float b;
   
-  public adep(addv paramaddv, int paramInt1, List<aden> paramList, int paramInt2)
+  static
   {
-    if (paramaddv == null) {
-      return;
-    }
-    this.jdField_a_of_type_Addv.a(paramaddv);
-    this.jdField_a_of_type_Adem.b(paramInt1);
-    this.jdField_a_of_type_Adem.a(paramInt2);
-    this.jdField_a_of_type_Adem.a(paramList);
+    jdField_a_of_type_Adeh = new adeq();
   }
   
-  public adep(adep paramadep)
+  public adep(adee paramadee)
   {
-    this.jdField_a_of_type_Adem.a(paramadep.a());
+    paramadee.a();
+    this.jdField_a_of_type_Float = paramadee.a();
+    this.jdField_a_of_type_Long = paramadee.a();
+    this.jdField_a_of_type_Int = paramadee.a();
+    this.b = paramadee.a();
+  }
+  
+  public adep(Path paramPath)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Adeq == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Adeq.b();
+    return this.jdField_a_of_type_Int;
   }
   
-  public adem a()
+  public long a()
   {
-    return this.jdField_a_of_type_Adem;
+    return this.jdField_a_of_type_Long;
   }
   
-  public adeq a()
+  public Path a()
   {
-    if (this.jdField_a_of_type_Adeq != null)
+    return this.jdField_a_of_type_AndroidGraphicsPath;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(adee paramadee, int paramInt)
+  {
+    paramadee.a(1);
+    paramadee.a(this.jdField_a_of_type_Float);
+    paramadee.a(this.jdField_a_of_type_Long);
+    paramadee.a(this.jdField_a_of_type_Int);
+    paramadee.a(this.b);
+  }
+  
+  public void a(adep paramadep)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
     {
-      this.jdField_a_of_type_Adeq.a();
-      this.jdField_a_of_type_Adeq.a(this.jdField_a_of_type_Adem.b());
-      this.jdField_a_of_type_Adeq.b(this.jdField_a_of_type_Adem.a());
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Adeq;
-      Rect localRect = this.jdField_a_of_type_Addv.a();
-      this.jdField_a_of_type_Adeq = new adeq(this.jdField_a_of_type_Adem, localRect.width(), localRect.height(), -1, -1, 10, 15, 1.0F);
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramadep.jdField_a_of_type_AndroidGraphicsPath);
+      this.b += paramadep.b;
     }
   }
   
-  public void a()
+  public void a(Path paramPath)
   {
-    if (this.jdField_a_of_type_Adeq != null) {
-      this.jdField_a_of_type_Adeq.b(-1);
-    }
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public float b()
   {
-    if (this.jdField_a_of_type_Adeq != null) {
-      this.jdField_a_of_type_Adeq.a(paramFloat1, paramFloat2, this.jdField_a_of_type_Addv.a(), 0L);
-    }
-    this.jdField_a_of_type_Adem.a();
-    this.jdField_a_of_type_Adem.a(paramFloat1, paramFloat2, this.jdField_a_of_type_Addv.a(), 0L);
+    return this.b;
   }
   
-  public void a(float paramFloat1, float paramFloat2, long paramLong)
+  public void b(float paramFloat)
   {
-    float f = this.jdField_a_of_type_Addv.a();
-    aden localaden = this.jdField_a_of_type_Adem.b();
-    long l;
-    if (localaden != null)
-    {
-      l = paramLong - localaden.a();
-      if (l <= 0L) {
-        f = localaden.c();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Adeq != null) {
-        this.jdField_a_of_type_Adeq.b(paramFloat1, paramFloat2, f, paramLong);
-      }
-      this.jdField_a_of_type_Adem.a(paramFloat1, paramFloat2, f, paramLong);
+    this.b = paramFloat;
+  }
+  
+  public void c(float paramFloat)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       return;
-      f = this.jdField_a_of_type_Addv.a(l, localaden.a(), localaden.b(), paramFloat1, paramFloat2);
-      continue;
-      this.jdField_a_of_type_Adeq = null;
     }
-  }
-  
-  public void a(Canvas paramCanvas, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Adeq != null) && (paramCanvas != null))
-    {
-      if (paramBoolean)
-      {
-        int i = paramCanvas.getWidth();
-        int j = paramCanvas.getHeight();
-        this.jdField_a_of_type_Adeq.a(0, 0, i, j);
-      }
-      this.jdField_a_of_type_Adeq.a(paramCanvas);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Adeq != null) {
-      this.jdField_a_of_type_Adeq.a(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Adem == null) {
-      return false;
-    }
-    a();
-    return true;
-  }
-  
-  public boolean a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Adeq != null) {
-      return this.jdField_a_of_type_Adeq.a(paramCanvas, paramInt1, paramInt2);
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Adem == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Adem.c();
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(paramFloat, paramFloat);
+    Path localPath = new Path();
+    localPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+    this.jdField_a_of_type_AndroidGraphicsPath = localPath;
   }
 }
 

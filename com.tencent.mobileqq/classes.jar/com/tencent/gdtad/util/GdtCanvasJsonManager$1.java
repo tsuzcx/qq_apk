@@ -5,13 +5,13 @@ import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
 import org.json.JSONObject;
-import yxs;
-import yyr;
+import yxp;
+import yyo;
 
 public class GdtCanvasJsonManager$1
   implements Runnable
 {
-  public GdtCanvasJsonManager$1(yyr paramyyr, String paramString1, long paramLong, Ad paramAd, String paramString2) {}
+  public GdtCanvasJsonManager$1(yyo paramyyo, String paramString1, long paramLong, Ad paramAd, String paramString2) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class GdtCanvasJsonManager$1
         {
           long l1;
           long l2;
-          yxs.d("GdtCanvasJsonManager", "invalid canvasJson :" + localThrowable);
+          yxp.d("GdtCanvasJsonManager", "invalid canvasJson :" + localThrowable);
           localObject2 = null;
         }
       }
@@ -44,12 +44,12 @@ public class GdtCanvasJsonManager$1
       }
       l1 = System.currentTimeMillis();
       l2 = this.jdField_a_of_type_Long;
-      yyr.a(this.this$0, this.jdField_a_of_type_ComTencentAdTangramAd, 75, 0, l1 - l2);
-      yyr.a(this.this$0, this.b, (String)localObject1);
+      yyo.a(this.this$0, this.jdField_a_of_type_ComTencentAdTangramAd, 75, 0, l1 - l2);
+      yyo.a(this.this$0, this.b, (String)localObject1);
       return;
     }
     Object localObject2;
-    yxs.b("GdtCanvasJsonManager", "preloadCanvasJson failed :" + localObject2.responseCode);
+    yxp.b("GdtCanvasJsonManager", "preloadCanvasJson failed :" + localObject2.responseCode);
   }
 }
 

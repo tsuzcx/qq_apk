@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
 
-class xjd
-  implements View.OnClickListener
+public class xjd
+  extends RecyclerView.OnScrollListener
 {
-  xjd(xjc paramxjc, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
+  public xjd(SmartMusicRecyclerView paramSmartMusicRecyclerView) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (xjc.a(this.jdField_a_of_type_Xjc) != null) {
-      xjc.a(this.jdField_a_of_type_Xjc).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    SmartMusicRecyclerView.a(this.a, paramRecyclerView, paramInt);
   }
 }
 

@@ -1,14 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.IntentFilter;
 
-class bexh
-  implements DialogInterface.OnClickListener
+public class bexh
 {
-  bexh(bexg parambexg) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private bexi jdField_a_of_type_Bexi;
+  private bexj jdField_a_of_type_Bexj;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bexh(Context paramContext)
   {
-    bexg.a(this.a);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("action.qq.miniapp.show.monitorview");
+    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bexi != null) {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Bexi, this.jdField_a_of_type_AndroidContentIntentFilter);
+    }
+  }
+  
+  public void a(bexj parambexj)
+  {
+    this.jdField_a_of_type_Bexj = parambexj;
+    this.jdField_a_of_type_Bexi = new bexi(this);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bexi != null) {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Bexi);
+    }
   }
 }
 

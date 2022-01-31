@@ -4,24 +4,24 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import atne;
 import atng;
+import atni;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import muf;
+import muc;
 
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2130844662;
+  private int jdField_a_of_type_Int = 2130844663;
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new atne(this);
-  private atng jdField_a_of_type_Atng;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new atng(this);
+  private atni jdField_a_of_type_Atni;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List<String> jdField_a_of_type_JavaUtilList;
   private int b = -1;
-  private int c = 2130844661;
+  private int c = 2130844662;
   private int d = -1;
   
   public StartLiveTopicLabelListView(Context paramContext)
@@ -46,7 +46,7 @@ public class StartLiveTopicLabelListView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)muf.a(paramContext, 5.0F));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)muc.a(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
   }

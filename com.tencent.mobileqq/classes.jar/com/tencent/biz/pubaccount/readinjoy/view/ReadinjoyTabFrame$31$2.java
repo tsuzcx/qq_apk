@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bcpw;
-import onk;
-import rhi;
+import bcql;
+import onh;
+import rhf;
 
 public class ReadinjoyTabFrame$31$2
   implements Runnable
 {
-  public ReadinjoyTabFrame$31$2(rhi paramrhi) {}
+  public ReadinjoyTabFrame$31$2(rhf paramrhf) {}
   
   public void run()
   {
-    if (onk.g() >= 2)
+    if (onh.g() >= 2)
     {
-      bcpw.a(this.a.a, 0, this.a.a.getString(2131718424), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298865));
+      bcql.a(this.a.a, 0, this.a.a.getString(2131718435), 0).b(this.a.a.getResources().getDimensionPixelSize(2131298865));
       return;
     }
     ReadinjoyTabFrame.a(this.a.a);
-    onk.a("1", "2");
+    onh.a("1", "2");
   }
 }
 

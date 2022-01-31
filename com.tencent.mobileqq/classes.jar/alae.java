@@ -1,21 +1,30 @@
+import android.content.Context;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
 public abstract interface alae
 {
+  public abstract alaj a();
+  
+  public abstract allf a();
+  
+  public abstract Context a();
+  
+  public abstract Object a(int paramInt);
+  
   public abstract void a();
   
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  public abstract void a(alac paramalac, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
   
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alaf paramalaf);
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
   
-  public abstract void a(String paramString, int paramInt);
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alae paramalae);
   
-  public abstract void b(String paramString, int paramInt);
+  public abstract void a(Runnable paramRunnable);
   
-  public abstract void c(String paramString, int paramInt);
+  public abstract void a(String paramString);
   
-  public abstract void d(String paramString, int paramInt);
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

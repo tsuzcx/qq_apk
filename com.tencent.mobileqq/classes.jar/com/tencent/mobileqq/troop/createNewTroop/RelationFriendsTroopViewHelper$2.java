@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import azlo;
 import azlq;
+import azls;
 import java.util.ArrayList;
 
 public class RelationFriendsTroopViewHelper$2
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$2(azlo paramazlo) {}
+  public RelationFriendsTroopViewHelper$2(azlq paramazlq) {}
   
   public void run()
   {
-    azlo.a(this.this$0).clear();
-    azlo.b(this.this$0).clear();
-    azlo.a(this.this$0).a();
+    azlq.a(this.this$0).clear();
+    azlq.b(this.this$0).clear();
+    azlq.a(this.this$0).a();
   }
 }
 

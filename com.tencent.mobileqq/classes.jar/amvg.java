@@ -3,62 +3,46 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class amvg
-  extends ampb<amvf>
+  extends ampa<amvh>
 {
-  public static amvf a()
-  {
-    return (amvf)ampm.a().a(441);
-  }
-  
   public int a()
   {
-    return 441;
+    return 545;
   }
   
   @NonNull
-  public amvf a(int paramInt)
+  public amvh a(int paramInt)
   {
-    return new amvf();
+    return new amvh();
   }
   
   @Nullable
-  public amvf a(ampi[] paramArrayOfampi)
+  public amvh a(amph[] paramArrayOfamph)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onParsed ");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      new amvf();
-      return amvf.a(paramArrayOfampi);
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amvh.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public Class<amvf> a()
+  public Class<amvh> a()
   {
-    return amvf.class;
+    return amvh.class;
   }
   
-  public void a() {}
+  public void a(int paramInt) {}
   
-  public void a(int paramInt)
+  public void a(amvh paramamvh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
     }
-  }
-  
-  public void a(amvf paramamvf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramamvf.toString());
-    }
+    anwr.a().a();
   }
   
   public boolean a()
   {
-    return true;
+    return false;
   }
   
   public int b()

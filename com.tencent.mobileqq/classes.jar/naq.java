@@ -1,7 +1,21 @@
-public abstract interface naq
-  extends mzb
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
+
+public class naq
+  extends akat
 {
-  public abstract void a();
+  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
+    a(paramBoolean, (OpenID)paramObject);
+  }
 }
 
 

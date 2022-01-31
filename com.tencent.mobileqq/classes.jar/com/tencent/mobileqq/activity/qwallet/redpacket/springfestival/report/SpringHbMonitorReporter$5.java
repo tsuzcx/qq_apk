@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import ahib;
-import ahic;
-import ahih;
-import ahiy;
+import ahhz;
+import ahia;
+import ahif;
+import ahiw;
 import android.text.TextUtils;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,14 +15,14 @@ public final class SpringHbMonitorReporter$5
   
   public void run()
   {
-    if (ahic.a(this.jdField_a_of_type_JavaLangString))
+    if (ahia.a(this.jdField_a_of_type_JavaLangString))
     {
-      String str = ahiy.c(this.jdField_a_of_type_JavaLangString);
+      String str = ahiw.c(this.jdField_a_of_type_JavaLangString);
       if (!TextUtils.isEmpty(str))
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("ext1", str);
-        ahih.a(ahib.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap);
+        ahif.a(ahhz.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap);
       }
     }
   }

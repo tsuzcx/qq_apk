@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aduh
-  implements asko<EmoticonPackage>
+  implements DialogInterface.OnClickListener
 {
-  aduh(adug paramadug, aduu paramaduu, bcpq parambcpq) {}
+  aduh(adue paramadue) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
-  {
-    axqw.b(this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ep_mall", "Clk_button_follow", 0, 0, "", "", this.jdField_a_of_type_Aduu.a.a.eId, "");
-    if (paramEmoticonPackage == null)
-    {
-      this.jdField_a_of_type_Adug.jdField_a_of_type_Adut.a(107, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Aduu.a, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, adug.a(this.jdField_a_of_type_Adug));
-      anvr.a().a(this.jdField_a_of_type_Adug.jdField_a_of_type_Adut);
-      this.jdField_a_of_type_Adug.jdField_a_of_type_Anvs.a(this.jdField_a_of_type_Aduu.a.a.epId, anvs.c);
-      return;
-    }
-    adug.a(107, this.jdField_a_of_type_Adug.b, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Aduu.a, this.jdField_a_of_type_Adug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bcpq);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

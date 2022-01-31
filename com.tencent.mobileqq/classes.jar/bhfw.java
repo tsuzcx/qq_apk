@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiPictureUrl;
 
-public class bhfw
-  implements DialogInterface.OnClickListener
+public final class bhfw
+  implements Parcelable.Creator<WeishiPictureUrl>
 {
-  public bhfw(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public WeishiPictureUrl a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
-    this.a.isFlowWarningVisible = false;
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
+    return new WeishiPictureUrl(paramParcel);
+  }
+  
+  public WeishiPictureUrl[] a(int paramInt)
+  {
+    return new WeishiPictureUrl[paramInt];
   }
 }
 

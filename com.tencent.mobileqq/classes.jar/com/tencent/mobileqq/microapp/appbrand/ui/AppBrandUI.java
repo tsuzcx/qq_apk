@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.ui;
 
 import Wallet.ApkgConfig;
-import abtu;
+import abtq;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import awwc;
-import awwd;
-import bbct;
+import awwe;
+import awwf;
+import bbdh;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMiniApp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -39,8 +39,8 @@ public class AppBrandUI
   private FrameLayout d;
   private boolean e;
   private boolean f;
-  private awwc g;
-  private awwd h = new a(this);
+  private awwe g;
+  private awwf h = new a(this);
   
   private void a()
   {
@@ -181,7 +181,7 @@ public class AppBrandUI
     if (this.a == null) {
       this.a = new j(this, this.d);
     }
-    this.g = new awwc(this.d);
+    this.g = new awwe(this.d);
     this.g.a(this.h);
     return true;
   }
@@ -278,7 +278,7 @@ public class AppBrandUI
         b(localObject1);
         a(localObject1);
         if (QLog.isColorLevel()) {
-          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bbct.a());
+          QLog.d("AppBrandUI", 4, "onResume miniConfig.launchParam.tempState=" + localObject1.launchParam.tempState + "---" + bbdh.a());
         }
         localObject2 = localObject1.config.mini_appid;
         locala = this.a.a((String)localObject2, localObject1.getRuntimeType());
@@ -311,7 +311,7 @@ public class AppBrandUI
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
         ((Intent)localObject2).putExtra("CONFIG", localObject1);
-        abtu.a(this, (Intent)localObject2, PublicFragmentActivityForMiniApp.class, LoadingFragment.class, 1);
+        abtq.a(this, (Intent)localObject2, PublicFragmentActivityForMiniApp.class, LoadingFragment.class, 1);
         com.tencent.mobileqq.microapp.b.a.a(this);
         return;
       }

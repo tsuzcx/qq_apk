@@ -1,31 +1,157 @@
-import android.annotation.SuppressLint;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeProvider;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-@SuppressLint({"NewApi"})
 public class wfg
-  extends View.AccessibilityDelegate
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
-  private wfh jdField_a_of_type_Wfh;
+  public int a;
+  public ArrayList<wfh> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public wfg(View paramView, wfh paramwfh)
+  public wfg()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Wfh = paramwfh;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
+  public wfg(String paramString)
   {
-    return new wfi(this);
+    a(paramString);
+  }
+  
+  public static wfg a(int paramInt, String paramString)
+  {
+    long l;
+    byte[] arrayOfByte;
+    Object localObject;
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3)) {
+      if (paramString != null)
+      {
+        l = Long.parseLong(paramString);
+        paramString = new wfg();
+        paramString.jdField_a_of_type_Int = 1;
+        paramString.b = 1;
+        paramString.c = paramInt;
+        paramString.d = 0;
+        paramString.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        arrayOfByte = wij.a(l);
+        localObject = ByteBuffer.allocate(4);
+        ((ByteBuffer)localObject).put(arrayOfByte, 4, 4);
+        ((ByteBuffer)localObject).flip();
+        arrayOfByte = new byte[((ByteBuffer)localObject).limit()];
+        ((ByteBuffer)localObject).get(arrayOfByte);
+        if (paramInt != 2) {
+          break label145;
+        }
+        paramInt = 2;
+      }
+    }
+    for (;;)
+    {
+      localObject = new wfh(paramInt, (short)4, arrayOfByte);
+      paramString.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      return paramString;
+      l = 0L;
+      break;
+      label145:
+      if (paramInt == 3)
+      {
+        paramInt = 7;
+        continue;
+        return null;
+      }
+      else
+      {
+        paramInt = 1;
+      }
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      for (int i = 4;; i = ((wfh)((Iterator)localObject1).next()).a() + i)
+      {
+        j = i;
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+      }
+    }
+    int j = 4;
+    Object localObject1 = ByteBuffer.allocate(j);
+    ((ByteBuffer)localObject1).put((byte)this.jdField_a_of_type_Int);
+    ((ByteBuffer)localObject1).put((byte)this.b);
+    ((ByteBuffer)localObject1).put((byte)this.c);
+    ((ByteBuffer)localObject1).put((byte)this.d);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    {
+      ((ByteBuffer)localObject1).put((byte)this.jdField_a_of_type_JavaUtilArrayList.size());
+      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        wfh localwfh = (wfh)((Iterator)localObject2).next();
+        ((ByteBuffer)localObject1).put((byte)localwfh.jdField_a_of_type_Int);
+        ((ByteBuffer)localObject1).putShort(localwfh.jdField_a_of_type_Short);
+        ((ByteBuffer)localObject1).put(localwfh.jdField_a_of_type_ArrayOfByte);
+      }
+    }
+    ((ByteBuffer)localObject1).flip();
+    Object localObject2 = new byte[((ByteBuffer)localObject1).limit()];
+    ((ByteBuffer)localObject1).get((byte[])localObject2);
+    return bbea.a((byte[])localObject2);
+  }
+  
+  public wfh a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      return (wfh)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    }
+    return null;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = bbea.a(paramString);
+    paramString = ByteBuffer.allocate(localObject.length);
+    paramString.put((byte[])localObject);
+    paramString.flip();
+    this.jdField_a_of_type_Int = paramString.get();
+    this.b = paramString.get();
+    this.c = paramString.get();
+    this.d = paramString.get();
+    int j = paramString.get();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+    int i = 0;
+    while (i < j)
+    {
+      localObject = new wfh();
+      ((wfh)localObject).jdField_a_of_type_Int = paramString.get();
+      byte[] arrayOfByte = new byte[2];
+      paramString.get(arrayOfByte);
+      ((wfh)localObject).jdField_a_of_type_Short = wij.a(arrayOfByte);
+      arrayOfByte = new byte[((wfh)localObject).jdField_a_of_type_Short];
+      paramString.get(arrayOfByte);
+      ((wfh)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     wfg
  * JD-Core Version:    0.7.0.1
  */

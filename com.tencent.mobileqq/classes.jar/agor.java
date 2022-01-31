@@ -1,16 +1,17 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class agor
-  implements DialogInterface.OnClickListener
+public class agor
+  implements View.OnClickListener
 {
-  agor(agop paramagop) {}
+  public agor(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    PhotoPreviewActivity.a(this.a.a).dismiss();
+    this.a.a(false);
+    LpReportInfo_pf00064.allReport(603, 3);
   }
 }
 

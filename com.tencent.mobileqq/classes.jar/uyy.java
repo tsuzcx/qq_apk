@@ -1,24 +1,20 @@
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.Arrays;
+import java.util.List;
 
 public class uyy
-  implements vab
+  implements syq<tmi, tof>, uzy
 {
-  protected tje a;
-  private uyf jdField_a_of_type_Uyf;
-  private uza jdField_a_of_type_Uza;
-  protected uze a;
-  protected vac a;
-  protected vad a;
-  
-  public uyy(uza paramuza)
-  {
-    this.jdField_a_of_type_Uza = paramuza;
-    this.jdField_a_of_type_Uyf = new uyf();
-  }
+  protected uzb a;
+  protected uzz a;
+  protected vaa a;
   
   public Object a()
   {
-    return null;
+    return this.jdField_a_of_type_Uzb;
   }
   
   public String a()
@@ -28,60 +24,76 @@ public class uyy
   
   public void a()
   {
-    veg.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
-    if (this.jdField_a_of_type_Uze == null)
+    ved.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
+    if ((this.jdField_a_of_type_Uzb == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString)))
     {
-      if (this.jdField_a_of_type_Vad != null)
+      if (this.jdField_a_of_type_Vaa != null)
       {
-        this.jdField_a_of_type_Vad.a(a());
+        this.jdField_a_of_type_Vaa.a(a());
         return;
       }
-      veg.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
       return;
     }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Uze.a);
-    this.jdField_a_of_type_Tje = tje.a(localArrayList);
-    this.jdField_a_of_type_Tje.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_Tje.a(new uyz(this, localArrayList));
-    this.jdField_a_of_type_Tje.b();
+    tmi localtmi = new tmi();
+    localtmi.a = Arrays.asList(new String[] { this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString });
+    syo.a().a(localtmi, this);
   }
   
   public void a(Object paramObject)
   {
-    boolean bool2 = true;
-    if ((paramObject instanceof uze))
+    this.jdField_a_of_type_Uzb = ((uzb)paramObject);
+  }
+  
+  public void a(@NonNull tmi paramtmi, @Nullable tof paramtof, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramtof != null) && (paramErrorMessage.isSuccess()) && (paramtof.a != null) && (paramtof.a.size() > 0))
     {
-      this.jdField_a_of_type_Uze = ((uze)paramObject);
+      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec = ((tec)paramtof.a.get(0));
+      paramtmi = (tcs)tcz.a(10);
+      paramtmi.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_JavaLangString);
+      paramtmi.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_Int));
+      paramtmi.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.b));
+      paramtmi.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.c));
+      if (this.jdField_a_of_type_Vaa != null)
+      {
+        this.jdField_a_of_type_Vaa.a(a());
+        return;
+      }
+      ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
       return;
     }
-    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-    if (this.jdField_a_of_type_Uze == null)
+    int i = paramErrorMessage.errorCode;
+    if (paramtof == null) {
+      paramtmi = "rsp is null";
+    }
+    for (;;)
     {
-      bool1 = true;
-      veg.e("GetMyStoryDesFromVidListStep", bool1);
-      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
-      if (this.jdField_a_of_type_Uze != null) {
-        break label96;
+      ved.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramtmi });
+      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec = new tec();
+      this.jdField_a_of_type_Uzb.jdField_a_of_type_Tec.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Uzb.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Vaa == null) {
+        break;
+      }
+      this.jdField_a_of_type_Vaa.a(a());
+      return;
+      if (paramtof.a == null) {
+        paramtmi = "features is null";
+      } else {
+        paramtmi = "invalid rsp";
       }
     }
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      vxs.a(bool1, new Object[0]);
-      return;
-      bool1 = false;
-      break;
-    }
+    ved.d("GetMyStoryFeatureDataStep", "finish callBack is null");
   }
   
-  public void a(vac paramvac)
+  public void a(uzz paramuzz)
   {
-    this.jdField_a_of_type_Vac = paramvac;
+    this.jdField_a_of_type_Uzz = paramuzz;
   }
   
-  public void a(vad paramvad)
+  public void a(vaa paramvaa)
   {
-    this.jdField_a_of_type_Vad = paramvad;
+    this.jdField_a_of_type_Vaa = paramvaa;
   }
   
   public boolean a()

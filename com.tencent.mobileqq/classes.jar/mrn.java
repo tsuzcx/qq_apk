@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class mrn
-  implements DialogInterface.OnClickListener
+public class mrn
 {
-  mrn(mrl parammrl) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mrn(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    paramDialogInterface.dismiss();
-    mrl.a(this.a, this.a.a);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

@@ -1,63 +1,23 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class babb
-  extends baas
+  extends RecyclerView.ItemDecoration
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean c;
+  private int a;
   
-  public babb(String paramString)
+  public babb(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "str");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.a = paramInt;
   }
   
-  public babb(JSONObject paramJSONObject)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("text");
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("text", paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
     }
   }
 }

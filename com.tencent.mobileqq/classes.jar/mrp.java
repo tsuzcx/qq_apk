@@ -1,6 +1,8 @@
+import android.content.Context;
+
 public abstract interface mrp
 {
-  public abstract void a(int paramInt);
+  public abstract void a(Context paramContext, String paramString);
 }
 
 

@@ -1,57 +1,16 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
 
 public class aary
-  implements asus
+  implements bfph
 {
-  public aary(ChatHistoryFileActivity paramChatHistoryFileActivity, asul paramasul, asuu paramasuu, List paramList) {}
+  public aary(ChatHistoryFileActivity paramChatHistoryFileActivity, bfpc parambfpc) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Asul.a(new aarz(this));
-    this.jdField_a_of_type_Asul.show();
-  }
-  
-  public void a(asuq paramasuq)
-  {
-    if ((paramasuq != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
-      switch (paramasuq.a)
-      {
-      }
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bfpc.isShowing())) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Asul.isShowing()) {
-        this.jdField_a_of_type_Asul.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-      this.jdField_a_of_type_Asuu.b();
-      return;
-      asur.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      asur.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      asur.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-    }
-  }
-  
-  public void a(asuq paramasuq, int paramInt)
-  {
-    this.jdField_a_of_type_Asul.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Asul.isShowing()) {
-      this.jdField_a_of_type_Asul.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    this.jdField_a_of_type_Asuu.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

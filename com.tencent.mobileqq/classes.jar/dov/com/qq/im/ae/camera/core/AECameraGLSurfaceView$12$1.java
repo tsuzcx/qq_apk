@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bijp;
+import bikg;
 
 class AECameraGLSurfaceView$12$1
   implements Runnable
 {
-  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bijp parambijp) {}
+  AECameraGLSurfaceView$12$1(AECameraGLSurfaceView.12 param12, bikg parambikg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bijp.a(null);
+    this.jdField_a_of_type_Bikg.a(null);
   }
 }
 

@@ -1,78 +1,104 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask;
-import java.util.ArrayList;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import java.util.LinkedList;
 
 public class bkyl
-  implements auoo
+  extends GPUBaseFilter
 {
-  final int jdField_a_of_type_Int;
-  bkzo jdField_a_of_type_Bkzo;
+  private float jdField_a_of_type_Float;
+  private bkyc jdField_a_of_type_Bkyc;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private bkyc b;
   
-  public bkyl(BaseShortVideoOprerator.MultiForwardShortVideoTask paramMultiForwardShortVideoTask, int paramInt)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bkzo = ((bkzo)paramMultiForwardShortVideoTask.b.get(this.jdField_a_of_type_Int));
-  }
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return (MessageForShortVideo)((bkzj)this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-  }
-  
-  public void a(auop paramauop)
-  {
-    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((bkzj)this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-    localMessageForShortVideo.videoFileStatus = 1003;
-    localMessageForShortVideo.md5 = paramauop.jdField_d_of_type_JavaLangString;
-    localMessageForShortVideo.uuid = paramauop.jdField_c_of_type_JavaLangString;
-    localMessageForShortVideo.thumbFileSize = ((int)paramauop.jdField_c_of_type_Long);
-    localMessageForShortVideo.videoAttr = paramauop.jdField_c_of_type_Int;
-    localMessageForShortVideo.videoKandianType = paramauop.jdField_d_of_type_Int;
-    localMessageForShortVideo.serial();
-    paramauop = this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a.a();
-    if (paramauop != null) {
-      paramauop.a(localMessageForShortVideo, null);
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      return;
     }
   }
   
-  public void b(auop paramauop)
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
   {
-    for (;;)
+    try
     {
-      int i;
-      synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b)
+      while (!paramLinkedList.isEmpty())
       {
-        if (paramauop.jdField_a_of_type_Int == 0)
-        {
-          a(paramauop);
-          this.jdField_a_of_type_Bkzo.jdField_a_of_type_Int = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
-          }
-          i = BaseShortVideoOprerator.MultiForwardShortVideoTask.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask);
-          if (i == 0) {
-            this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.this$0.a(3, 0, this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.b);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Bkzo.jdField_a_of_type_Int = -1;
-          this.jdField_a_of_type_Bkzo.jdField_a_of_type_Aunp = new aunp();
-          this.jdField_a_of_type_Bkzo.jdField_a_of_type_Aunp.b = paramauop.jdField_a_of_type_JavaLangString;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramauop.jdField_a_of_type_JavaLangString);
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
         }
       }
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_Int == this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.jdField_a_of_type_JavaUtilArrayList.size() - i) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator$MultiForwardShortVideoTask.a();
-      }
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
+  {
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!bkya.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bkyc != null) || (this.b != null);
+  }
+  
+  public void destroy()
+  {
+    if (this.jdField_a_of_type_Bkyc != null) {
+      this.jdField_a_of_type_Bkyc.destroy();
+    }
+    if (this.b != null) {
+      this.b.destroy();
+    }
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
+    {
+      ved.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
+      return;
+    }
+    if (this.jdField_a_of_type_Bkyc != null) {
+      this.jdField_a_of_type_Bkyc.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public void init()
+  {
+    if ((this.jdField_a_of_type_Bkyc != null) && (!this.jdField_a_of_type_Bkyc.isInitialized())) {
+      this.jdField_a_of_type_Bkyc.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Bkyc != null) {
+      this.jdField_a_of_type_Bkyc.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
 }

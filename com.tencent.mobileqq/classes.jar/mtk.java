@@ -1,29 +1,27 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.beacon.event.UserAction;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
 
-final class mtk
-  extends BroadcastReceiver
+public class mtk
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a = "ShareUtils";
+  
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while (!mtj.a.equals(paramIntent.getAction())) {
-      return;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString1);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("image_url", localArrayList);
+    localBundle.putString("title", paramString2);
+    localBundle.putString("desc", paramString3);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", paramString4);
+    bgzl.a(paramAppInterface, paramContext, localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("SensorReport", 1, "H264_decode");
-    }
-    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("params");
-    paramIntent = paramIntent.getStringExtra("key");
-    paramContext = paramIntent;
-    if (paramIntent == null) {
-      paramContext = mtj.a;
-    }
-    UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
   }
 }
 

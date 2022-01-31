@@ -1,12 +1,21 @@
-import android.content.Intent;
-import java.util.HashSet;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlParams;
 
-public abstract interface bicg
+public final class bicg
+  implements Parcelable.Creator<WadlParams>
 {
-  public abstract HashSet<String> getFilterCmds();
+  public WadlParams a(Parcel paramParcel)
+  {
+    WadlParams localWadlParams = new WadlParams("");
+    localWadlParams.a(paramParcel);
+    return localWadlParams;
+  }
   
-  public abstract void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject);
+  public WadlParams[] a(int paramInt)
+  {
+    return new WadlParams[paramInt];
+  }
 }
 
 

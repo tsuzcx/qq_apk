@@ -1,180 +1,275 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.2;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class alyp
 {
+  private static File jdField_a_of_type_JavaIoFile;
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public long a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArrayList<WeakReference<alyr>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ConcurrentHashMap<String, aysy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public alyp()
+  static
   {
-    a();
-  }
-  
-  public void a()
-  {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.dynamic_avatar.name());
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
-    this.jdField_a_of_type_Boolean = true;
-    for (;;)
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (File localFile = new File(ajsd.bH);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
-      try
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 11) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = false;
-        if (Integer.valueOf(localObject[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        if (!this.jdField_b_of_type_Boolean) {
-          continue;
-        }
-        if (Integer.valueOf(localObject[1]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_c_of_type_Boolean = true;
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        continue;
-        this.jdField_d_of_type_Boolean = false;
-        continue;
-        this.e = false;
-        continue;
-        this.f = false;
-        continue;
-        this.g = false;
-        continue;
-        this.h = false;
-        continue;
-        this.i = false;
-        continue;
-        this.j = false;
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        continue;
-        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
-        if (this.jdField_c_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
-        this.jdField_c_of_type_Int = 18;
-        if (this.jdField_d_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
-        this.jdField_d_of_type_Int = 18;
-      }
-      if (Integer.valueOf(localObject[2]).intValue() != 1) {
-        continue;
-      }
-      this.jdField_d_of_type_Boolean = true;
-      if (Integer.valueOf(localObject[3]).intValue() != 1) {
-        continue;
-      }
-      this.e = true;
-      if (Integer.valueOf(localObject[4]).intValue() != 1) {
-        continue;
-      }
-      this.f = true;
-      if (Integer.valueOf(localObject[5]).intValue() != 1) {
-        continue;
-      }
-      this.g = true;
-      if (Integer.valueOf(localObject[6]).intValue() != 1) {
-        continue;
-      }
-      this.h = true;
-      if (Integer.valueOf(localObject[11]).intValue() != 1) {
-        continue;
-      }
-      this.i = true;
-      if (Integer.valueOf(localObject[12]).intValue() != 1) {
-        continue;
-      }
-      this.j = true;
-      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
-      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
-      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
-      this.e = true;
-      this.f = true;
-      this.g = true;
-      this.h = true;
-      this.jdField_a_of_type_Int = 8;
-      this.jdField_b_of_type_Int = 200;
-      this.jdField_c_of_type_Int = 18;
-      this.jdField_d_of_type_Int = 18;
-      this.i = true;
-      this.j = true;
+      jdField_a_of_type_JavaIoFile = new File(localFile, "_dynamic");
       return;
-      this.jdField_b_of_type_Boolean = false;
     }
   }
   
-  public String toString()
+  public alyp(AppInterface paramAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    c();
+  }
+  
+  public static File a(String paramString)
+  {
+    paramString = a(paramString);
+    return new File(jdField_a_of_type_JavaIoFile, paramString);
+  }
+  
+  public static String a(String paramString)
+  {
+    return "cache_" + Utils.Crc64String(paramString) + ".mp4";
+  }
+  
+  private boolean a()
+  {
+    long l = System.currentTimeMillis();
+    if ((l - this.jdField_a_of_type_Long > 86400000L) || (l - this.jdField_a_of_type_Long < 0L)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      alyo localalyo = ((alyy)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(180)).a();
+      if (this.jdField_a_of_type_Int + 1 > localalyo.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, "isLoadCountSatisfy not satisfy.");
+        }
+        return false;
+      }
+      return true;
+    }
+    return true;
+  }
+  
+  public static String b(String paramString)
+  {
+    return a(paramString).getAbsolutePath();
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = a(paramString);
+      if ((paramString.exists()) && (paramString.isFile())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void c()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_avatar", 4).getString("dynamic_load_count_one_day", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("#");
+      if ((localObject == null) || (localObject.length != 2)) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_Long = Long.valueOf(localObject[0]).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Int += 1;
+    long l = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 86400000L)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = 0;
+    }
+    ThreadManager.executeOnFileThread(new DynamicAvatarDownloadManager.2(this, l));
+  }
+  
+  public final void a()
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    if ((localObject == null) || (((Collection)localObject).isEmpty())) {
+      return;
+    }
+    localObject = ((Collection)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      aysy localaysy = (aysy)((Iterator)localObject).next();
+      if ((localaysy != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localaysy);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(alyr paramalyr)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)localIterator.next();
+          if ((localWeakReference == null) || (localWeakReference.get() == null) || (localWeakReference.get() != paramalyr)) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramalyr));
+          }
+          return;
+        }
+      }
+      int i = 0;
+    }
+  }
+  
+  public final void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+        {
+          aysy localaysy = (aysy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          if ((localaysy != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localaysy);
+          }
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+        }
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    ??? = a(paramString);
+    Iterator localIterator;
+    WeakReference localWeakReference;
+    if ((??? != null) && (((File)???).exists()) && (((File)???).isFile()))
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((alyr)localWeakReference.get()).a(paramString, true, true);
+            }
+          }
+        }
+      }
+      return true;
+    }
+    if ((!bbfj.h(BaseApplicationImpl.getContext())) && (!a()))
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((alyr)localWeakReference.get()).a(paramString, false, false);
+            }
+          }
+        }
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.dynamicAvatar", 2, "url:" + paramString + " has contains");
+      }
+      return false;
+    }
+    ??? = new ayrx();
+    ((ayrx)???).jdField_a_of_type_Aysc = new alyq(this);
+    ((ayrx)???).jdField_a_of_type_JavaLangString = paramString;
+    ((ayrx)???).jdField_a_of_type_Int = 0;
+    ((ayrx)???).jdField_c_of_type_JavaLangString = a(paramString).getPath();
+    ((ayrx)???).jdField_c_of_type_Int = 1;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a((aysy)???);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, ???);
+      QLog.i("Q.dynamicAvatar", 2, "startDownloadDynamicAvatar, url: " + paramString + ", uin:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+  }
+  
+  public void b(alyr paramalyr)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramalyr)) {
+          localIterator.remove();
+        }
+      }
+      return;
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif.giftext.viewmodel;
 
-import biqv;
-import biuo;
-import biuq;
-import bjoa;
+import birm;
+import bivf;
+import bivh;
+import bjor;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public class AEGIFMaterialViewModel$3$2
   implements Runnable
 {
-  public AEGIFMaterialViewModel$3$2(biuq parambiuq, MetaMaterial paramMetaMaterial) {}
+  public AEGIFMaterialViewModel$3$2(bivh parambivh, MetaMaterial paramMetaMaterial) {}
   
   public void run()
   {
-    biuo.a(this.jdField_a_of_type_Biuq.a).b(new biqv(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
+    bivf.a(this.jdField_a_of_type_Bivh.a).b(new birm(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
   }
 }
 

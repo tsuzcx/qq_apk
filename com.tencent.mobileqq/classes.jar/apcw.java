@@ -1,38 +1,106 @@
-import java.io.FileOutputStream;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.2;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class apcw
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = -1L;
-  apam jdField_a_of_type_Apam;
-  apcx jdField_a_of_type_Apcx;
-  bbmg jdField_a_of_type_Bbmg;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
-  String jdField_a_of_type_JavaLangString;
-  short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  bbmg jdField_b_of_type_Bbmg;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  String jdField_d_of_type_JavaLangString;
-  long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private apap jdField_a_of_type_Apap = new apcx(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private LinkedHashMap<String, apcy> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private List<apcy> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  public apcw()
+  public apcw(QQAppInterface paramQQAppInterface)
   {
-    this.e = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public String toString()
+  private void a()
   {
-    return null;
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.3(this));
+  }
+  
+  private void a(apcy paramapcy)
+  {
+    if (paramapcy == null) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramapcy.jdField_a_of_type_JavaLangString, paramapcy);
+    } while (!QLog.isColorLevel());
+    QLog.i("ThumbDownloadManager", 2, "addDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+  }
+  
+  private void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.2(this, paramString));
+  }
+  
+  private boolean a(long paramLong, String paramString1, String paramString2)
+  {
+    paramString2 = apug.g(paramString2);
+    if (!a(paramString1, paramString2)) {
+      return false;
+    }
+    apcy localapcy = new apcy();
+    localapcy.b = paramString1;
+    localapcy.jdField_a_of_type_JavaLangString = paramString2;
+    localapcy.jdField_a_of_type_Long = paramLong;
+    this.b.add(paramString2);
+    this.jdField_a_of_type_JavaUtilList.add(localapcy);
+    return true;
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    if (this.b.contains(paramString2)) {}
+    while (apvd.b(paramString1)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void b(apcy paramapcy)
+  {
+    if (paramapcy == null) {
+      return;
+    }
+    new apao(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramapcy.jdField_a_of_type_Long, paramapcy.b, paramapcy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apap);
+  }
+  
+  private void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("ThumbDownloadManager", 2, "removeDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    if (!this.b.remove(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[" + paramString + "]");
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask currentSize[" + this.b.size() + "]");
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ThumbDownloadManager.1(this, paramLong, paramString1, paramString2));
   }
 }
 

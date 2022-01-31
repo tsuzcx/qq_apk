@@ -1,38 +1,12 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-class xiy
-  implements xhj
+public abstract interface xiy
 {
-  xiy(xit paramxit) {}
+  public abstract void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo);
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
-  {
-    if ((!paramBoolean) || (paramArrayList == null))
-    {
-      this.a.a(ajyc.a(2131703869));
-      QLog.w("EditVideoSmartMusicPart", 1, "extractFrame failed  data is null");
-    }
-    xit localxit;
-    StringBuilder localStringBuilder;
-    if (xit.a(this.a) != null)
-    {
-      localxit = this.a;
-      localStringBuilder = new StringBuilder().append(ajyc.a(2131703755)).append(xit.a(this.a).a()).append("ms\n抽取图片数：");
-      if (paramArrayList != null) {
-        break label133;
-      }
-    }
-    label133:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      localxit.a(i + "\n抽帧字节数：" + xit.a(this.a).b() + "KB");
-      xit.a(this.a, paramArrayList);
-      return;
-    }
-  }
+  public abstract void a(int paramInt, xjc paramxjc);
+  
+  public abstract void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean);
 }
 
 

@@ -1,82 +1,68 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCollectionVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmf
-  extends syv
+  extends sys<tod>
 {
-  public static final String a = sxp.a("StorySvc.new_get_date_share_list");
-  public static final String b = sxp.a("StorySvc.get_share_video_info_list");
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  public final String a;
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public tmf()
+  public tmf(String paramString, int paramInt)
   {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = -1;
+    this(paramString, paramInt, 0, 0);
+  }
+  
+  public tmf(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException("mCookie should not be null");
+    }
+    if (paramInt1 <= 0) {
+      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
+    }
+    this.a = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
   public String a()
   {
-    if (this.jdField_e_of_type_JavaLangString == null) {
-      return a;
-    }
-    return b;
+    return sxm.a("StorySvc.video_emoticon_get");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetCollectionVideoList localRspGetCollectionVideoList = new qqstory_service.RspGetCollectionVideoList();
+    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
     try
     {
-      localRspGetCollectionVideoList.mergeFrom(paramArrayOfByte);
-      return new tod(this.jdField_c_of_type_JavaLangString, localRspGetCollectionVideoList);
+      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
+      return new tod(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetCollectionVideoList localReqGetCollectionVideoList = new qqstory_service.ReqGetCollectionVideoList();
-    localReqGetCollectionVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-    localReqGetCollectionVideoList.count.set(this.jdField_c_of_type_Int);
-    if (this.jdField_e_of_type_JavaLangString == null)
-    {
-      localReqGetCollectionVideoList.collection_id.set(this.jdField_d_of_type_Int);
-      if (this.jdField_e_of_type_Int != -1) {
-        localReqGetCollectionVideoList.time_zone.set(this.jdField_e_of_type_Int);
-      }
-    }
-    for (;;)
-    {
-      vxs.a(this.jdField_c_of_type_JavaLangString);
-      localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-      localReqGetCollectionVideoList.video_dir.set(this.g);
-      return localReqGetCollectionVideoList.toByteArray();
-      localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
-      localReqGetCollectionVideoList.identify.set(this.f);
-    }
+    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetEmoticonPackList.count.set(this.c);
+    return localReqGetEmoticonPackList.toByteArray();
   }
   
   public String toString()
   {
-    return super.toString() + " GetCollectionVideoListRequest{targetUid=" + this.jdField_c_of_type_JavaLangString + ", startCookie='" + this.jdField_d_of_type_JavaLangString + ", count=" + this.jdField_c_of_type_Int + ", collectionId=" + this.jdField_d_of_type_Int + ", timeZoneOffset=" + this.jdField_e_of_type_Int + '\'' + '}';
+    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 

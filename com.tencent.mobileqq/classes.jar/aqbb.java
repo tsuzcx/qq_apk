@@ -1,14 +1,16 @@
-import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class aqbb
-  implements alpc
+  implements alpb
 {
   aqbb(aqba paramaqba) {}
   
   public void a(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      this.a.a.finish();
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {
+      this.a.a.putBoolean("forward_ark_from_h5_success", true);
     }
   }
 }

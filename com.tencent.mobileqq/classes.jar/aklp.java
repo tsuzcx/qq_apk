@@ -9,11 +9,7 @@ public class aklp
   
   public int a(File paramFile1, File paramFile2)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l < 0L) {
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
       return 1;
     }
     return 0;

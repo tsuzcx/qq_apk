@@ -1,82 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import com.tencent.ims.QSecControlBitsQuery.QSecCbResp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 class bfjj
+  implements bfkl
 {
-  private bfjk a;
+  bfjj(bfji parambfji) {}
   
-  public bfjj(bfjk parambfjk)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.a = parambfjk;
-  }
-  
-  public void a(int paramInt)
-  {
-    label348:
-    try
+    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {}
+    for (;;)
     {
-      localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject1 == null) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      Iterator localIterator1;
-      localException.printStackTrace();
       return;
-      return;
-    }
-    finally
-    {
-      if (this.a == null) {
-        break label348;
-      }
-      this.a.a();
-    }
-    localObject1 = new bfjz((QQAppInterface)localObject1).a(1L);
-    if (localObject1 != null)
-    {
-      localIterator1 = ((List)localObject1).iterator();
-      while (localIterator1.hasNext())
+      try
       {
-        localObject1 = (bfke)localIterator1.next();
-        if ((((bfke)localObject1).b == paramInt) && (((bfke)localObject1).a != null))
+        QSecControlBitsQuery.QSecCbResp localQSecCbResp = new QSecControlBitsQuery.QSecCbResp();
+        localQSecCbResp.mergeFrom((byte[])paramObject);
+        int j = -1;
+        int i = j;
+        if (localQSecCbResp.u32_status != null)
         {
-          Iterator localIterator2 = ((bfke)localObject1).a.iterator();
-          while (localIterator2.hasNext())
-          {
-            Object localObject3 = (bfkd)localIterator2.next();
-            if (!TextUtils.isEmpty(((bfkd)localObject3).i))
-            {
-              localObject1 = ((bfkd)localObject3).f;
-              if (!TextUtils.isEmpty(((bfkd)localObject3).g)) {
-                localObject1 = ((bfkd)localObject3).g;
-              }
-              if (localObject1 != null)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("QQProtect.QSec", 2, String.format("ExtraInfo: %s path: %s", new Object[] { ((bfkd)localObject3).i, localObject1 }));
-                }
-                localObject3 = new JSONObject(((bfkd)localObject3).i);
-                int i = ((JSONObject)localObject3).getInt("id");
-                int j = ((JSONObject)localObject3).getInt("type");
-                int k = ((JSONObject)localObject3).getInt("flag");
-                int m = ((JSONObject)localObject3).getInt("mode");
-                localObject3 = ((JSONObject)localObject3).getString("ver");
-                if (this.a != null) {
-                  this.a.a((String)localObject1, (String)localObject3, i, j, k, m);
-                }
-              }
-            }
+          i = j;
+          if (localQSecCbResp.u32_status.has()) {
+            i = localQSecCbResp.u32_status.get();
           }
         }
+        if (i == 0)
+        {
+          if ((localQSecCbResp.u32_time_interval != null) && (localQSecCbResp.u32_time_interval.has())) {
+            localQSecCbResp.u32_time_interval.get();
+          }
+          paramFromServiceMsg = null;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (localQSecCbResp.str_cbstr != null)
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (localQSecCbResp.str_cbstr.has()) {
+              paramToServiceMsg = localQSecCbResp.str_cbstr.get();
+            }
+          }
+          if ((paramToServiceMsg != null) && (!paramToServiceMsg.equals("")))
+          {
+            bfji.a(this.a, paramToServiceMsg);
+            return;
+          }
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
       }
     }
   }

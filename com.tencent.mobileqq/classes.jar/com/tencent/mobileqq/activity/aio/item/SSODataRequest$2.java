@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adyw;
+import adyu;
 import java.lang.ref.WeakReference;
 
 public class SSODataRequest$2
   implements Runnable
 {
-  public SSODataRequest$2(adyw paramadyw, WeakReference paramWeakReference, int paramInt) {}
+  public SSODataRequest$2(adyu paramadyu, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    adyw localadyw = (adyw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localadyw == null) {
+    adyu localadyu = (adyu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localadyu == null) {
       return;
     }
-    localadyw.a(this.jdField_a_of_type_Int, -1, null);
+    localadyu.a(this.jdField_a_of_type_Int, -1, null);
   }
 }
 

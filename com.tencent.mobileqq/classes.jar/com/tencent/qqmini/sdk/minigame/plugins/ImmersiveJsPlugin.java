@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
-import begz;
-import beka;
-import bekg;
+import behq;
+import bekr;
+import bekx;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import org.json.JSONObject;
@@ -49,23 +49,23 @@ public class ImmersiveJsPlugin
     }
   }
   
-  public boolean onInterceptJsEvent(beka parambeka)
+  public boolean onInterceptJsEvent(bekr parambekr)
   {
     if (!this.mIsMiniGame)
     {
-      parambeka.b();
+      parambekr.b();
       return true;
     }
-    return super.onInterceptJsEvent(parambeka);
+    return super.onInterceptJsEvent(parambekr);
   }
   
-  public String setMenuStyle(beka parambeka)
+  public String setMenuStyle(bekr parambekr)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambeka.b);
+      JSONObject localJSONObject = new JSONObject(parambekr.b);
       if (this.mMiniAppContext.a() == null) {
-        return bekg.a(parambeka.a, null, "activity not exist").toString();
+        return bekx.a(parambekr.a, null, "activity not exist").toString();
       }
     }
     catch (Throwable localThrowable)
@@ -78,20 +78,20 @@ public class ImmersiveJsPlugin
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("light".equals(localObject)) || ("dark".equals(localObject))))
       {
         MiniAppEnv.g().setMenuStyle((String)localObject);
-        return parambeka.a();
+        return parambekr.a();
       }
-      return parambeka.a("invalid style " + (String)localObject);
+      return parambekr.a("invalid style " + (String)localObject);
     }
   }
   
-  public String setStatusBarStyle(beka parambeka)
+  public String setStatusBarStyle(bekr parambekr)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambeka.b);
+      JSONObject localJSONObject = new JSONObject(parambekr.b);
       localActivity = this.mMiniAppContext.a();
       if (localActivity == null) {
-        return bekg.a(parambeka.a, null, "activity not exist").toString();
+        return bekx.a(parambekr.a, null, "activity not exist").toString();
       }
     }
     catch (Throwable localThrowable)
@@ -105,9 +105,9 @@ public class ImmersiveJsPlugin
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (("white".equals(localObject)) || ("black".equals(localObject))))
       {
         localActivity.runOnUiThread(new ImmersiveJsPlugin.1(this, localActivity, (String)localObject));
-        return parambeka.a();
+        return parambekr.a();
       }
-      return parambeka.a("invalid style " + (String)localObject);
+      return parambekr.a("invalid style " + (String)localObject);
     }
   }
 }

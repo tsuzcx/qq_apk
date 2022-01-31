@@ -1,43 +1,29 @@
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import org.json.JSONObject;
+import com.tencent.image.URLImageView;
 
 public class ous
-  implements rtw
+  extends ouu
 {
-  public ous(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  ous(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    this.a.a.a(paramBaseArticleInfo, paramInt);
-    JSONObject localJSONObject = olg.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
-    try
-    {
-      localJSONObject.put("card_type", 8);
-      oli localoli = new oli(paramBaseArticleInfo);
-      localoli.e = String.valueOf(paramBaseArticleInfo.mArticleID);
-      localoli.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
-      localoli.g = localJSONObject.toString();
-      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-        localoli.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
-      }
-      localoli.b = "0X8009A79";
-      localoli.c = "0X8009A79";
-      olg.a(localoli);
-      localJSONObject = new JSONObject();
-      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
-      localJSONObject.put("channel_id", this.a.a());
-      localJSONObject.put("folder_status", onk.d);
-      localJSONObject.put("kandian_mode", onk.e());
-      localJSONObject.put("feeds_type", "" + onk.a(paramBaseArticleInfo));
-      localJSONObject.put("rowkey", shx.a(paramBaseArticleInfo));
-      paramBaseArticleInfo = localJSONObject.toString();
-      noo.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", ajyc.a(2131713135), paramBaseArticleInfo, false);
-      return;
-    }
-    catch (Exception paramBaseArticleInfo) {}
+    super(paramReadInJoyPicWaterFallFragment, paramView);
+    this.b = ((URLImageView)paramView.findViewById(2131364783));
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362525));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
+    actj.a(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361945));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
+    paramView.setOnClickListener(new out(this, paramReadInJoyPicWaterFallFragment));
   }
 }
 

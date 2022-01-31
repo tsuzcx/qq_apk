@@ -8,8 +8,8 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
-import nje;
-import sfh;
+import njb;
+import sfe;
 
 public class RecentItemPublicAccountADFolderData
   extends RecentItemPublicAccountChatMsgData
@@ -21,7 +21,7 @@ public class RecentItemPublicAccountADFolderData
   {
     super(paramRecentUser);
     this.mUnreadFlag = 1;
-    this.trueUin = nje.a().a(paramRecentUser.uin);
+    this.trueUin = njb.a().a(paramRecentUser.uin);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -46,7 +46,7 @@ public class RecentItemPublicAccountADFolderData
     if (this.mUnreadNum > 0) {
       this.mUnreadNum = 1;
     }
-    if (sfh.a) {}
+    if (sfe.a) {}
     for (this.mMenuFlag |= 0x1;; this.mMenuFlag &= 0xFFFFFFFE)
     {
       if (AppSetting.d)

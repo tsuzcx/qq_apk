@@ -1,25 +1,11 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class bivr
-  implements ViewPager.OnPageChangeListener
+public class bivr
 {
-  bivr(bivq parambivq) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
-  }
+  public ArrayList<String> a = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<String> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
 }
 
 

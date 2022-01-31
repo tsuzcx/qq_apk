@@ -1,14 +1,26 @@
-import android.view.View;
+import android.text.Editable;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.XEditTextEx;
 
 public class aamr
-  implements bawn
+  implements aejy
 {
   public aamr(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    this.a.onClick(this.a.a);
+    return false;
+  }
+  
+  public boolean b(PhotoListPanel paramPhotoListPanel)
+  {
+    if (this.a.K) {}
+    while ((this.a.o()) || (this.a.a == null) || (this.a.a.getText() == null) || (this.a.a.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.aq();
+    return true;
   }
 }
 

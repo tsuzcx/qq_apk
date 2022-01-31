@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
@@ -9,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bavi;
+import bavw;
 import com.tencent.av.funchat.AVListImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import mhu;
-import mhw;
+import mhp;
+import mhr;
 
 public class VoiceChangeItemView2
   extends QavListItemBase
@@ -34,35 +34,35 @@ public class VoiceChangeItemView2
   public void a(int paramInt1, int paramInt2)
   {
     ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2131559605, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131372250));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379308));
+    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131372252));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379313));
     this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setOnClickListener(this);
     setOnClickListener(this);
   }
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhw parammhw, mhu parammhu)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, mhr parammhr, mhp parammhp)
   {
-    super.a(paramInt, parammhu);
+    super.a(paramInt, parammhp);
     setId(paramInt);
-    setTag(parammhw);
-    if (!TextUtils.isEmpty(parammhw.jdField_b_of_type_JavaLangString))
+    setTag(parammhr);
+    if (!TextUtils.isEmpty(parammhr.jdField_b_of_type_JavaLangString))
     {
-      parammhu = URLDrawable.URLDrawableOptions.obtain();
-      paramInt = actn.a(60.0F, getResources());
+      parammhp = URLDrawable.URLDrawableOptions.obtain();
+      paramInt = actj.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setColor(getResources().getColor(2131165766));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
-      parammhu.mRequestWidth = paramInt;
-      parammhu.mRequestHeight = paramInt;
-      parammhu.mFailedDrawable = localGradientDrawable;
-      parammhu.mLoadingDrawable = localGradientDrawable;
-      parammhu = URLDrawable.getDrawable(parammhw.jdField_b_of_type_JavaLangString, parammhu);
-      parammhu.setTag(bavi.a(paramInt, paramInt));
-      parammhu.setDecodeHandler(bavi.a);
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammhu);
+      parammhp.mRequestWidth = paramInt;
+      parammhp.mRequestHeight = paramInt;
+      parammhp.mFailedDrawable = localGradientDrawable;
+      parammhp.mLoadingDrawable = localGradientDrawable;
+      parammhp = URLDrawable.getDrawable(parammhr.jdField_b_of_type_JavaLangString, parammhp);
+      parammhp.setTag(bavw.a(paramInt, paramInt));
+      parammhp.setDecodeHandler(bavw.a);
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(parammhp);
     }
-    switch (parammhw.jdField_b_of_type_Int)
+    switch (parammhr.jdField_b_of_type_Int)
     {
     default: 
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -84,7 +84,7 @@ public class VoiceChangeItemView2
   
   public void b(int paramInt1, int paramInt2)
   {
-    Object localObject = findViewById(2131379306);
+    Object localObject = findViewById(2131379311);
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;

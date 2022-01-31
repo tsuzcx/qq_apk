@@ -1,100 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webdownload.DownloadURLCheck.RspDownloadUrlCheckRecmd;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
 class aoyc
-  implements BusinessObserver
+  extends ajsy
 {
-  aoyc(aoyb paramaoyb, String paramString, long paramLong, boolean paramBoolean) {}
+  aoyc(aoya paramaoya) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void a(Object paramObject)
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, success: " + paramBoolean + ", canceled: " + aoyb.a(this.jdField_a_of_type_Aoyb));
-    }
-    Activity localActivity = (Activity)aoyb.a(this.jdField_a_of_type_Aoyb).get();
-    if ((aoyb.a(this.jdField_a_of_type_Aoyb)) || (localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
-    localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
-    DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
-    if (paramBoolean)
+    Object localObject1 = (azqv)paramObject;
+    if (localObject1 == null) {}
+    apsm localapsm;
+    do
     {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle != null) {
-        localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
+      do
+      {
+        return;
+        paramObject = ((azqv)localObject1).jdField_b_of_type_Long + "";
+        localObject2 = ((azqv)localObject1).e;
+        localapsm = this.a.a("1", paramObject, (String)localObject2);
+      } while (localapsm == null);
+      switch (((azqv)localObject1).jdField_b_of_type_Int)
+      {
+      default: 
+        return;
       }
-    }
-    for (;;)
+    } while (localapsm.a() == null);
+    Object localObject2 = new Bundle();
+    int i = (int)((float)((azqv)localObject1).d * 1.0F / ((float)((azqv)localObject1).c * 1.0F) * 100.0F);
+    localapsm.a().a(0, Integer.parseInt("1"), paramObject, i, (Bundle)localObject2);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is finish. fileId[" + (String)localObject2 + "]");
+    if (localapsm.a() != null)
     {
-      try
-      {
-        localRspDownloadUrlCheckRecmd.mergeFrom(paramBundle);
-        if (localRspDownloadUrlCheckRecmd.err_code.has())
-        {
-          if (localRspDownloadUrlCheckRecmd.err_code.get() != 0) {
-            continue;
-          }
-          paramInt = 1;
-          if (QLog.isColorLevel()) {
-            QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, code: " + localRspDownloadUrlCheckRecmd.err_code.get());
-          }
-          if (paramInt != 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start download from yyb");
-            }
-            if ((!localRspDownloadUrlCheckRecmd.is_white_url.has()) || (!localRspDownloadUrlCheckRecmd.is_white_url.get())) {
-              continue;
-            }
-            paramBoolean = true;
-            localIntent.putExtra("param_in_white_list", paramBoolean);
-            if (!localRspDownloadUrlCheckRecmd.pkg_name.has()) {
-              continue;
-            }
-            paramBundle = localRspDownloadUrlCheckRecmd.pkg_name.get();
-            localIntent.putExtra("param_pkg_name", paramBundle);
-            paramBundle = localObject;
-            if (localRspDownloadUrlCheckRecmd.extra_info.has()) {
-              paramBundle = localRspDownloadUrlCheckRecmd.extra_info.get();
-            }
-            localIntent.putExtra("param_ext_info", paramBundle);
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
-        continue;
-        this.jdField_a_of_type_Aoyb.a.sendEmptyMessage(2);
-      }
-      abtu.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
-      localActivity.finish();
-      return;
-      paramInt = 0;
-      continue;
-      paramBoolean = false;
-      continue;
-      paramBundle = null;
+      localObject2 = new Bundle();
+      boolean bool = bbdx.b(((azqv)localObject1).a);
+      localapsm.a().a(bool, Integer.parseInt("1"), paramObject, (Bundle)localObject2);
     }
+    this.a.b(localapsm);
+    return;
+    QLog.i("QFileMultiControlManager<QFile>", 1, "troop file download is stop. fileId[" + (String)localObject2 + "]");
+    if (localapsm.a() != null)
+    {
+      localObject1 = new Bundle();
+      localapsm.a().a(false, Integer.parseInt("1"), paramObject, (Bundle)localObject1);
+    }
+    this.a.b(localapsm);
   }
 }
 

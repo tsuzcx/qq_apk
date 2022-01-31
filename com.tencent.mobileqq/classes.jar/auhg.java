@@ -1,30 +1,24 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
 public class auhg
-  extends AccountObserver
+  implements bfvx
 {
   public auhg(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
+    if (AccountOnlineStateActivity.a(this.a) != null) {
+      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
     }
-    if (AccountOnlineStateActivity.a(this.a))
-    {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean1) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
+  }
+  
+  public void b(View paramView)
+  {
+    if (AccountOnlineStateActivity.a(this.a) != null) {
+      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
     }
-    else
-    {
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, false, -1);
   }
 }
 

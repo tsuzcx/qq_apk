@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apnt;
+import apnx;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class TroopFileModel$13$1
   implements Runnable
 {
-  public TroopFileModel$13$1(apnt paramapnt) {}
+  public TroopFileModel$13$1(apnx paramapnx) {}
   
   public void run()
   {

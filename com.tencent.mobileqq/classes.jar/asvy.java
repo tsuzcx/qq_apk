@@ -1,34 +1,66 @@
-import android.os.Build;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class asvy
+public final class asvy
+  extends Handler
 {
-  public static String[] a = { "samsung SM-N7508V", "samsung SM-N9002", "samsung SM-N9005", "samsung SM-N9006", "samsung SM-N9008", "samsung SM-N9009", "samsung SM-N9009V", "samsung SM-G3858", "samsung SM-G7108V", "samsung SM-G7108U", "samsung SM-G9008V", "samsung GT-I9308I", "samsung GT-I9508V", "samsung SM-G3588V", "samsung SM-T2558", "samsung SM-G9300", "HTC T528w", "MI 3", "HTC 802t", "GT-I9100", "GT-I9300", "SCH-I939", "MX4", "HUAWEI C8813D" };
-  
-  public static boolean a()
+  public asvy(QQPlayerService paramQQPlayerService, Looper paramLooper)
   {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
-    int i = 0;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    }
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      return;
+      try
       {
-        if (arrayOfString[i].contains(str)) {
-          bool1 = true;
+        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
+        paramMessage = (asvx)paramMessage.obj;
+        if (paramMessage == null) {
+          continue;
         }
-      }
-      else
-      {
         if (QLog.isColorLevel()) {
-          QLog.d("QQPlayerService", 2, "isPhoneInWhiteList ： phone = " + str + ", result=" + bool1);
+          QLog.i("QQPlayerService", 2, "release player");
         }
-        return bool1;
+        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+        {
+          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
+            QQPlayerService.a(null);
+          }
+        }
+        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
+          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
+        }
+        if (QQPlayerService.d() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
+          continue;
+        }
+        QQPlayerService.a(null);
+        return;
       }
-      i += 1;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
+          }
+        }
+      }
     }
   }
 }

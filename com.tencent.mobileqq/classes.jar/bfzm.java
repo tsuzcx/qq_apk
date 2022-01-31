@@ -1,35 +1,14 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bfzm
-  extends RecyclerView.RecycledViewPool
+class bfzm
+  implements View.OnClickListener
 {
-  public bfzm(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
+  bfzm(bfzl parambfzl) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bfzg)))
-    {
-      localObject = (bfzg)localObject;
-      if (((bfzg)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bfzg)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
-    }
-    return localViewHolder;
+    this.a.b(true);
   }
 }
 

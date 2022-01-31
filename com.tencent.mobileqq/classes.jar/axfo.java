@@ -1,8 +1,9 @@
-public abstract interface axfo
+public class axfo
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

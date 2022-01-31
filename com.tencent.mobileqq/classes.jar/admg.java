@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
-
-class admg
-  implements QQPermissionCallback
+public abstract interface admg
 {
-  admg(adme paramadme, BaseActivity paramBaseActivity) {}
+  public abstract void a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_Adme.denied();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Adme.grant();
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import qub;
+import qty;
 
 public class VideoPlayerWrapper$2
   implements Runnable
 {
-  public VideoPlayerWrapper$2(qub paramqub, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public VideoPlayerWrapper$2(qty paramqty, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {

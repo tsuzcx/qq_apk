@@ -3,27 +3,27 @@ package com.tencent.biz.videostory.video;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
-import xhk;
-import xhl;
-import xhp;
+import xhh;
+import xhi;
+import xhm;
 
 public class MediaCodecGLFrameFetcher$3
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$3(xhl paramxhl) {}
+  public MediaCodecGLFrameFetcher$3(xhi paramxhi) {}
   
   public void run()
   {
-    if (xhl.a(this.this$0) == null) {
+    if (xhi.a(this.this$0) == null) {
       return;
     }
-    xhl.a(this.this$0).updateTexImage();
-    GLES20.glViewport(0, 0, xhl.a(this.this$0), xhl.b(this.this$0));
-    xhl.a(this.this$0).a(xhl.a(this.this$0), xhl.c(this.this$0));
-    if ((xhl.a(this.this$0) != null) && (!xhl.a(this.this$0).isRecycled())) {
-      xhl.a(this.this$0).recycle();
+    xhi.a(this.this$0).updateTexImage();
+    GLES20.glViewport(0, 0, xhi.a(this.this$0), xhi.b(this.this$0));
+    xhi.a(this.this$0).a(xhi.a(this.this$0), xhi.c(this.this$0));
+    if ((xhi.a(this.this$0) != null) && (!xhi.a(this.this$0).isRecycled())) {
+      xhi.a(this.this$0).recycle();
     }
-    xhl.a(this.this$0, xhk.a(xhl.c(this.this$0), xhl.a(this.this$0), xhl.b(this.this$0)));
+    xhi.a(this.this$0, xhh.a(xhi.c(this.this$0), xhi.a(this.this$0), xhi.b(this.this$0)));
   }
 }
 

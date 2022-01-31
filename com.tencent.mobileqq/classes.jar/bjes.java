@@ -1,46 +1,37 @@
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class bjes
-  implements bkyv
+public class bjes
+  implements bjeq
 {
-  bjes(bjer parambjer) {}
+  private File a;
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a()
   {
-    synchronized (bjer.a(this.a))
+    if ((this.a == null) || (!this.a.exists()))
     {
-      if (paramPtvTemplateInfo.id.equals(bjer.a(this.a).id))
-      {
-        bjer.a(this.a).downloading = true;
-        bjer.a(this.a, 1.0F * paramInt / 100.0F);
-        bjer.a(this.a, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("VoiceBgmRecognizer", 2, "recognize: invoked. info: mTargetAudioFile = " + this.a);
       }
       return;
     }
+    bjeu localbjeu = (bjeu)bjav.a().c(10);
+    localbjeu.a(this.a);
+    try
+    {
+      bjeg.a(this.a.getAbsolutePath(), this.a.getAbsolutePath() + "_8kHz", localbjeu);
+      return;
+    }
+    catch (FFmpegCommandAlreadyRunningException localFFmpegCommandAlreadyRunningException)
+    {
+      QLog.d("VoiceBgmRecognizer", 1, String.format("e = %s", new Object[] { localFFmpegCommandAlreadyRunningException }));
+    }
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public void a(File paramFile)
   {
-    synchronized (bjer.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(bjer.a(this.a).id))
-      {
-        bjer.a(this.a).downloading = false;
-        bjer.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (bjer.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          bjer.a(this.a, 3);
-          bjer.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(4);
-      bjer.a(this.a, 2);
-    }
+    this.a = paramFile;
   }
 }
 

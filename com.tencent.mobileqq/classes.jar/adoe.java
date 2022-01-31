@@ -1,47 +1,23 @@
-import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-abstract class adoe
+class adoe
+  implements bfph
 {
-  protected int a;
-  protected adtf a;
-  protected String a;
-  protected int b;
-  protected String b;
+  adoe(adod paramadod, MessageForDeviceFile paramMessageForDeviceFile, bfpc parambfpc) {}
   
-  public int a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(adtf paramadtf)
-  {
-    this.jdField_a_of_type_Adtf = paramadtf;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    switch (paramInt)
+    {
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.jdField_a_of_type_Adod.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
-  
-  public abstract boolean b(String paramString);
 }
 
 

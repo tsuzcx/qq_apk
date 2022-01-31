@@ -1,48 +1,98 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amtv
-  implements ampd<String>
+  extends ampa<amtt>
 {
-  public boolean a;
-  
-  public void a(String paramString)
+  public static amtt b(int paramInt)
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
+    amtt localamtt = (amtt)ampl.a().a(paramInt);
+    if (localamtt != null) {
+      return localamtt;
     }
-    for (;;)
-    {
-      return;
-      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
-      try
-      {
-        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
-          bool = true;
-        }
-        this.a = bool;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
-      }
-    }
+    return new amtt();
   }
   
-  public String toString()
+  public int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
-    localStringBuilder.append("enable:").append(this.a);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return 467;
+  }
+  
+  @NonNull
+  public amtt a(int paramInt)
+  {
+    return new amtt();
+  }
+  
+  @Nullable
+  public amtt a(amph[] paramArrayOfamph)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfamph != null)
+    {
+      localObject1 = localObject2;
+      if (paramArrayOfamph.length > 0)
+      {
+        localObject1 = paramArrayOfamph[0].a;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label125;
+        }
+        QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] type=" + a() + ", content = " + (String)localObject1);
+      }
+    }
+    try
+    {
+      paramArrayOfamph = (amtu)ampv.a(localObject1, amtu.class);
+      localObject1 = new amtt((String)localObject1, paramArrayOfamph);
+      return localObject1;
+    }
+    catch (QStorageInstantiateException paramArrayOfamph)
+    {
+      for (;;)
+      {
+        QLog.i("OpenSdkSwitchProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfamph);
+        paramArrayOfamph = null;
+      }
+    }
+    label125:
+    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + a());
+    return null;
+  }
+  
+  public Class<amtt> a()
+  {
+    return amtt.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amtt paramamtt)
+  {
+    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onUpdate] type=" + a() + ", content = " + paramamtt.a());
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

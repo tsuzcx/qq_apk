@@ -1,42 +1,38 @@
-import android.graphics.Rect;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 final class adwm
-  implements OnCompositionLoadedListener
+  implements DialogInterface.OnClickListener
 {
-  adwm(DiniFlyAnimationView paramDiniFlyAnimationView, adqs paramadqs, String paramString) {}
+  adwm(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new adwn(this));
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(adwl.jdField_a_of_type_JavaLangString, 2, "composition is null ,return");
-      }
+    if (true == adwj.a) {
+      adwj.a = false;
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
+    }
+    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Adqs != null) && ("bubble".equals(this.jdField_a_of_type_JavaLangString)))
+    if (2 == this.jdField_a_of_type_Int)
     {
-      paramLottieComposition = this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getCompRect();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-      int i = paramLottieComposition.width() * localLayoutParams.height / paramLottieComposition.height();
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams().width = i;
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      bbrk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695433), "");
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    bbrk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719975), "");
+    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

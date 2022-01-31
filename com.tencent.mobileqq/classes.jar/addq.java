@@ -1,6 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class addq
@@ -12,14 +12,14 @@ public class addq
   {
     switch (paramInt)
     {
-    case 0: 
     default: 
       return;
+    case 0: 
+      axqy.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
+    axqy.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).b(1);
   }
 }
 

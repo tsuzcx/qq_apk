@@ -1,18 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class atee
-  implements View.OnClickListener
+final class atee
+  implements DialogInterface.OnClickListener
 {
-  public atee(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
+  atee(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
-      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
+      paramDialogInterface.putExtra("isInviteTroop", false);
     }
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
   }
 }
 

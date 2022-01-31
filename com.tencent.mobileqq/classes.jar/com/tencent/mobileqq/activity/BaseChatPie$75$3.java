@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aamz;
-import adyt;
+import aamv;
+import adyr;
 import android.os.Message;
-import awcj;
+import awcl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -18,30 +18,30 @@ import org.json.JSONObject;
 public class BaseChatPie$75$3
   implements Runnable
 {
-  public BaseChatPie$75$3(aamz paramaamz, awcj paramawcj) {}
+  public BaseChatPie$75$3(aamv paramaamv, awcl paramawcl) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, adyt.a);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, adyr.a);
     Object localObject;
     Message localMessage;
     if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForRichState)))
     {
       localObject = new HashMap();
       ((Map)localObject).put("chatMessage", localMessageRecord);
-      ((Map)localObject).put("sigZanInfo", this.jdField_a_of_type_Awcj);
-      this.jdField_a_of_type_Aamz.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(267387138);
-      localMessage = this.jdField_a_of_type_Aamz.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(267387138);
+      ((Map)localObject).put("sigZanInfo", this.jdField_a_of_type_Awcl);
+      this.jdField_a_of_type_Aamv.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(267387138);
+      localMessage = this.jdField_a_of_type_Aamv.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(267387138);
       localMessage.obj = localObject;
     }
     try
     {
       localObject = new JSONObject(localMessageRecord.msg);
-      ((JSONObject)localObject).put("count", this.jdField_a_of_type_Awcj.b);
-      ((JSONObject)localObject).put("zanfalg", this.jdField_a_of_type_Awcj.c);
-      this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
+      ((JSONObject)localObject).put("count", this.jdField_a_of_type_Awcl.b);
+      ((JSONObject)localObject).put("zanfalg", this.jdField_a_of_type_Awcl.c);
+      this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
       label214:
-      this.jdField_a_of_type_Aamz.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 1000L);
+      this.jdField_a_of_type_Aamv.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 1000L);
       return;
     }
     catch (JSONException localJSONException)

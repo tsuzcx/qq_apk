@@ -1,29 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class abcd
-  extends ajsg
+  implements View.OnClickListener
 {
   public abcd(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        ForwardRecentActivity.g(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
-      }
-      this.a.a.h();
-    }
+    axqy.b(this.a.app, "CliOper", "", "", "friendchoose", "0X8009D97", ForwardRecentActivity.a(this.a), 0, "", "", "", "");
   }
 }
 

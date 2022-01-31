@@ -1,14 +1,15 @@
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.BaseVMPeakActivity;
 
 class biuc
-  extends biqh
+  implements View.OnClickListener
 {
-  biuc(biua parambiua, AppInterface paramAppInterface) {}
+  biuc(biua parambiua) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    biua.a(this.jdField_a_of_type_Biua).a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    biua.a(this.a).finish();
   }
 }
 

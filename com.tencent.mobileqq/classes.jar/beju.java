@@ -1,6 +1,10 @@
-public abstract interface beju<T>
+import org.json.JSONArray;
+
+public abstract interface beju
 {
-  public abstract T a(begw parambegw);
+  public abstract void onError(int paramInt);
+  
+  public abstract void onJoinRoom(JSONArray paramJSONArray);
 }
 
 

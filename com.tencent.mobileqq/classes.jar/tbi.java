@@ -1,8 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface tbi
+class tbi
+  implements View.OnClickListener
 {
-  public abstract void b(View paramView, int paramInt);
+  tbi(tbh paramtbh, tbg paramtbg) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = this.jdField_a_of_type_Tbg.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Tbh.a.a(this.jdField_a_of_type_Tbg.itemView, i);
+    }
+  }
 }
 
 

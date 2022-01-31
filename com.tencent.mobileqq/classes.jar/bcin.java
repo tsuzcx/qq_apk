@@ -1,28 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import java.lang.reflect.Method;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
 public class bcin
-  implements bfoq
+  implements View.OnClickListener
 {
-  public bcin(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, bfol parambfol) {}
+  public bcin(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = bcia.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
-    try
-    {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

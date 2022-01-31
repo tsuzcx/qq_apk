@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import actn;
-import agdk;
+import actj;
+import agdi;
 import android.app.Activity;
 import android.view.View;
-import bkur;
+import bkvi;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseMessageSearchDialog$1
   implements Runnable
 {
-  public BaseMessageSearchDialog$1(agdk paramagdk, View paramView, Activity paramActivity) {}
+  public BaseMessageSearchDialog$1(agdi paramagdi, View paramView, Activity paramActivity) {}
   
   public void run()
   {
     int[] arrayOfInt = new int[2];
     this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = bkur.b(this.jdField_a_of_type_AndroidAppActivity);
+    int i = bkvi.b(this.jdField_a_of_type_AndroidAppActivity);
     if (QLog.isColorLevel()) {
       QLog.d("BaseMessageSearchDialog", 2, "rootView post : x -> " + arrayOfInt[0] + ", y -> " + arrayOfInt[1] + ", notchHeight -> " + i);
     }
     if (arrayOfInt[1] < i) {
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
     }
-    actn.a(this.this$0.findViewById(2131365764));
+    actj.a(this.this$0.findViewById(2131365763));
   }
 }
 

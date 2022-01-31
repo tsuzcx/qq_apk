@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.hotpic;
 
-import arah;
-import arai;
 import araj;
-import ayyn;
-import ayyz;
-import ayzt;
-import ayzu;
-import bbdm;
+import arak;
+import aral;
+import ayyp;
+import ayzb;
+import ayzv;
+import ayzw;
+import bbea;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -32,17 +32,17 @@ public class HotVideoData
   public long videoLength;
   public String videoSource;
   
-  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, arai paramarai)
+  private void GetURLByTypeAsync(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, arak paramarak)
   {
-    if (paramarai == null) {
+    if (paramarak == null) {
       return;
     }
     for (;;)
     {
       try
       {
-        araj localaraj = new araj();
-        localaraj.jdField_a_of_type_Int = paramInt2;
+        aral localaral = new aral();
+        localaral.jdField_a_of_type_Int = paramInt2;
         if (paramInt2 == 1)
         {
           str1 = this.mPreviewUUID;
@@ -50,7 +50,7 @@ public class HotVideoData
             break label92;
           }
           str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new arah(this, localaraj, paramarai));
+          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new araj(this, localaral, paramarak));
           break;
         }
       }
@@ -67,54 +67,54 @@ public class HotVideoData
     return true;
   }
   
-  private void requestUrlByUuid(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ayzu paramayzu)
+  private void requestUrlByUuid(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ayzw paramayzw)
   {
-    ayyn localayyn = new ayyn();
-    ayyz localayyz = new ayyz();
-    localayyz.jdField_c_of_type_Int = Calendar.getInstance().get(5);
+    ayyp localayyp = new ayyp();
+    ayzb localayzb = new ayzb();
+    localayzb.jdField_c_of_type_Int = Calendar.getInstance().get(5);
     if (QLog.isColorLevel()) {
-      QLog.d("HotVideoData", 2, "sendGetUrlReq()----busiReq.seq : " + localayyz.jdField_c_of_type_Int);
+      QLog.d("HotVideoData", 2, "sendGetUrlReq()----busiReq.seq : " + localayzb.jdField_c_of_type_Int);
     }
-    localayyz.jdField_c_of_type_JavaLangString = paramString3;
-    localayyz.jdField_d_of_type_JavaLangString = paramQQAppInterface.c();
-    localayyz.jdField_e_of_type_JavaLangString = paramString3;
-    localayyz.f = paramInt1;
-    localayyz.jdField_d_of_type_Int = 0;
-    if (localayyz.f == 0)
+    localayzb.jdField_c_of_type_JavaLangString = paramString3;
+    localayzb.jdField_d_of_type_JavaLangString = paramQQAppInterface.c();
+    localayzb.jdField_e_of_type_JavaLangString = paramString3;
+    localayzb.f = paramInt1;
+    localayzb.jdField_d_of_type_Int = 0;
+    if (localayzb.f == 0)
     {
-      localayyz.jdField_a_of_type_Int = 0;
-      if ((localayyz.f != 0) && (1008 != localayyz.f)) {
+      localayzb.jdField_a_of_type_Int = 0;
+      if ((localayzb.f != 0) && (1008 != localayzb.f)) {
         break label281;
       }
     }
     label281:
-    for (localayyz.jdField_b_of_type_JavaLangString = null;; localayyz.jdField_b_of_type_JavaLangString = localayyz.jdField_d_of_type_JavaLangString)
+    for (localayzb.jdField_b_of_type_JavaLangString = null;; localayzb.jdField_b_of_type_JavaLangString = localayzb.jdField_d_of_type_JavaLangString)
     {
-      localayyz.jdField_b_of_type_Int = 2;
-      localayyz.jdField_a_of_type_JavaLangString = paramString1;
-      localayyz.jdField_a_of_type_ArrayOfByte = bbdm.a(paramString2);
-      localayyz.jdField_e_of_type_Int = 0;
-      localayyz.j = 0;
-      localayyz.g = paramInt2;
-      localayyz.h = 1;
-      localayyz.i = 1;
-      localayyn.jdField_a_of_type_Ayzu = paramayzu;
-      localayyn.jdField_a_of_type_JavaLangString = "short_video_dw";
-      localayyn.jdField_a_of_type_JavaUtilList.add(localayyz);
-      localayyn.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = paramQQAppInterface.getProtoReqManager();
-      ayzt.a(localayyn);
+      localayzb.jdField_b_of_type_Int = 2;
+      localayzb.jdField_a_of_type_JavaLangString = paramString1;
+      localayzb.jdField_a_of_type_ArrayOfByte = bbea.a(paramString2);
+      localayzb.jdField_e_of_type_Int = 0;
+      localayzb.j = 0;
+      localayzb.g = paramInt2;
+      localayzb.h = 1;
+      localayzb.i = 1;
+      localayyp.jdField_a_of_type_Ayzw = paramayzw;
+      localayyp.jdField_a_of_type_JavaLangString = "short_video_dw";
+      localayyp.jdField_a_of_type_JavaUtilList.add(localayzb);
+      localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = paramQQAppInterface.getProtoReqManager();
+      ayzv.a(localayyp);
       return;
-      if (1 == localayyz.f)
+      if (1 == localayzb.f)
       {
-        localayyz.jdField_a_of_type_Int = 1;
+        localayzb.jdField_a_of_type_Int = 1;
         break;
       }
-      if (3000 == localayyz.f)
+      if (3000 == localayzb.f)
       {
-        localayyz.jdField_a_of_type_Int = 2;
+        localayzb.jdField_a_of_type_Int = 2;
         break;
       }
-      localayyz.jdField_a_of_type_Int = 3;
+      localayzb.jdField_a_of_type_Int = 3;
       break;
     }
   }
@@ -124,14 +124,14 @@ public class HotVideoData
     return this.width / this.height + 0.1F < 1.777778F;
   }
   
-  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, arai paramarai)
+  public void GetPreviewURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, arak paramarak)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramarai);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 1, paramarak);
   }
   
-  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, arai paramarai)
+  public void GetVideoURLAsync(QQAppInterface paramQQAppInterface, int paramInt, String paramString, arak paramarak)
   {
-    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramarai);
+    GetURLByTypeAsync(paramQQAppInterface, paramInt, paramString, 2, paramarak);
   }
   
   public void SetPreviewDownloadListener(URLDrawable.DownloadListener paramDownloadListener)

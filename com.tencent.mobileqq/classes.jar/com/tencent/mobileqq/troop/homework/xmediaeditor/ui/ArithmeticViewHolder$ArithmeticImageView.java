@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -10,11 +10,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import baap;
-import baaq;
-import babh;
-import babi;
-import bhws;
+import babd;
+import babe;
+import babv;
+import babw;
+import bhxj;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
@@ -22,16 +22,16 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
-import tsu;
-import ved;
-import vzo;
+import tsr;
+import vea;
+import vzl;
 
 public class ArithmeticViewHolder$ArithmeticImageView
   extends RelativeLayout
   implements View.OnClickListener, URLDrawable.URLDrawableListener
 {
   public ImageView a;
-  private baaq jdField_a_of_type_Baaq;
+  private babe jdField_a_of_type_Babe;
   private RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   public MessageProgressView a;
@@ -45,42 +45,42 @@ public class ArithmeticViewHolder$ArithmeticImageView
   
   private void c()
   {
-    inflate(getContext(), 2131561143, this);
+    inflate(getContext(), 2131561142, this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131367906));
-    this.b = ((ImageView)findViewById(2131365005));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131378696));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375204));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(vzo.a(getContext(), 4.0F));
+    this.b = ((ImageView)findViewById(2131365004));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131378701));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375206));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(vzl.a(getContext(), 4.0F));
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(0.0F, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(actn.a(17.0F, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.itemView.getResources()), -1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new babh(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(actj.a(17.0F, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.itemView.getResources()), -1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new babv(this));
     b();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Baaq.jdField_b_of_type_Int == 1) || (this.jdField_a_of_type_Baaq.jdField_b_of_type_Int == 3)) {}
+    if ((this.jdField_a_of_type_Babe.jdField_b_of_type_Int == 1) || (this.jdField_a_of_type_Babe.jdField_b_of_type_Int == 3)) {}
     do
     {
       return;
-      this.jdField_a_of_type_Baaq.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_Baaq.jdField_a_of_type_Int = 0;
-      ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this, this.jdField_a_of_type_Baaq);
-      bhws localbhws = new bhws(tsu.a(), this.jdField_a_of_type_Baaq.jdField_b_of_type_JavaLangString, ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder));
-      localbhws.a(new babi(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this.jdField_a_of_type_Baaq));
-      ThreadManager.post(new ArithmeticViewHolder.ArithmeticImageView.2(this, localbhws), 8, null, true);
+      this.jdField_a_of_type_Babe.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Babe.jdField_a_of_type_Int = 0;
+      ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this, this.jdField_a_of_type_Babe);
+      bhxj localbhxj = new bhxj(tsr.a(), this.jdField_a_of_type_Babe.jdField_b_of_type_JavaLangString, ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder));
+      localbhxj.a(new babw(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this.jdField_a_of_type_Babe));
+      ThreadManager.post(new ArithmeticViewHolder.ArithmeticImageView.2(this, localbhxj), 8, null, true);
     } while (!QLog.isColorLevel());
-    QLog.d("ArithmeticViewHolder", 2, "upload picture , local path = " + this.jdField_a_of_type_Baaq.jdField_b_of_type_JavaLangString);
+    QLog.d("ArithmeticViewHolder", 2, "upload picture , local path = " + this.jdField_a_of_type_Babe.jdField_b_of_type_JavaLangString);
   }
   
-  public void a(baaq parambaaq, int paramInt)
+  public void a(babe parambabe, int paramInt)
   {
-    this.jdField_a_of_type_Baaq = parambaaq;
-    if (TextUtils.isEmpty(parambaaq.jdField_b_of_type_JavaLangString)) {}
-    for (String str = parambaaq.jdField_a_of_type_JavaLangString;; str = ved.a(parambaaq.jdField_b_of_type_JavaLangString))
+    this.jdField_a_of_type_Babe = parambabe;
+    if (TextUtils.isEmpty(parambabe.jdField_b_of_type_JavaLangString)) {}
+    for (String str = parambabe.jdField_a_of_type_JavaLangString;; str = vea.a(parambabe.jdField_b_of_type_JavaLangString))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder);
@@ -92,7 +92,7 @@ public class ArithmeticViewHolder$ArithmeticImageView
         onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this, parambaaq);
+      ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this, parambabe);
       setVisibility(0);
       return;
     }
@@ -108,11 +108,11 @@ public class ArithmeticViewHolder$ArithmeticImageView
     switch (paramView.getId())
     {
     default: 
-    case 2131365005: 
+    case 2131365004: 
       do
       {
         return;
-        ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).b(this.jdField_a_of_type_Baaq);
+        ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).b(this.jdField_a_of_type_Babe);
         ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder);
       } while (!QLog.isColorLevel());
       QLog.d("ArithmeticViewHolder", 2, "delete picture");

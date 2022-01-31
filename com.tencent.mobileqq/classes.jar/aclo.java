@@ -1,13 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aclo
   implements View.OnClickListener
@@ -16,39 +9,8 @@ public class aclo
   
   public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
-    }
-    TroopRequestActivity.c = l;
-    if (((ajxn)this.a.app.getManager(51)).b(this.a.l)) {
-      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
-    }
-    for (;;)
-    {
-      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
-      return;
-      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
-        break;
-      }
-      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
-      paramView.d = 1;
-    }
-    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
-    bamn.a(this.a.a, paramView);
-    switch (this.a.b)
-    {
-    }
-    for (;;)
-    {
-      break;
-      paramView.l = 3;
-      break;
-      paramView.l = 1;
-      break;
-      paramView.l = 2;
-    }
+    paramView = this.a.d;
+    badv.a(this.a, paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajyc;
-import vja;
+import ajya;
+import vix;
 
 class HWEditLocalVideoPlayer$5
   implements Runnable
@@ -10,7 +10,7 @@ class HWEditLocalVideoPlayer$5
   
   public void run()
   {
-    HWEditLocalVideoPlayer.a(this.this$0, this.this$0.a.getActivity(), ajyc.a(2131705669));
+    HWEditLocalVideoPlayer.a(this.this$0, this.this$0.a.getActivity(), ajya.a(2131705680));
   }
 }
 

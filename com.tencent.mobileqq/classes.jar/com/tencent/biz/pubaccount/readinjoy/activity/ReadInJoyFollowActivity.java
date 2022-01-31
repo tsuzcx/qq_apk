@@ -5,21 +5,21 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.Window;
-import bhvh;
+import bhvy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import nth;
-import nwd;
-import qvn;
+import nte;
+import nwa;
+import qvk;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public nth a;
+  public nte a;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131374831);
-    this.a = new nth(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131374833);
+    this.a = new nte(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
@@ -36,13 +36,13 @@ public class ReadInJoyFollowActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    qvn.a().a(this);
+    qvk.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
     setContentView(2131559931);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new nwd(this));
+    setClickableTitle("BB圈", new nwa(this));
     a();
     this.a.a();
     return true;
@@ -52,7 +52,7 @@ public class ReadInJoyFollowActivity
   {
     super.doOnDestroy();
     this.a.d();
-    qvn.a().b(this);
+    qvk.a().b(this);
   }
   
   public void doOnPause()
@@ -70,7 +70,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bhvh.a(getAppRuntime());
+    bhvy.a(getAppRuntime());
     this.a.e();
   }
   

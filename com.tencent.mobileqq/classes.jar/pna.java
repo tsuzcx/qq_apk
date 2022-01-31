@@ -1,25 +1,60 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pna
-  extends pms
+  extends BaseAdapter
 {
-  public pna(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<rib> b = new ArrayList();
+  
+  public pna(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    super(paramInt1, paramInt2, paramInt3);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void onClick(View paramView)
+  public void a(pnb parampnb)
   {
-    paramView = this.a.a.a.a();
-    if (paramView.isPGCShortContent())
+    this.b = parampnb.a();
+    this.jdField_a_of_type_JavaUtilList = parampnb.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      onk.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
-      pju.a(this.a.getContext(), paramView);
-      return;
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     }
-    onk.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((rib)this.b.get(paramInt));
+      return paramView;
+    }
   }
 }
 

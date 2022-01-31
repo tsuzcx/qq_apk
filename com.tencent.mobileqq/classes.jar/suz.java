@@ -1,21 +1,12 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class suz
+public abstract interface suz
 {
-  protected int a = 0;
+  public abstract void a(String paramString, int paramInt);
   
-  public PreloadQueue a()
-  {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
-  }
+  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
   
-  public suz a(int paramInt)
-  {
-    this.a = paramInt;
-    return this;
-  }
+  public abstract void b(String paramString, int paramInt);
 }
 
 

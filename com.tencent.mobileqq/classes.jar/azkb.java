@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class azkb
-  implements DialogInterface.OnDismissListener
+  implements wxt
 {
-  azkb(azjy paramazjy) {}
+  azkb(azka paramazka, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(Bundle paramBundle)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    long l = paramBundle.getLong("lastMsgTime");
+    paramBundle = paramBundle.getString("lastMsgContent");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("lastMsgTime", l);
+      localJSONObject.put("lastMsgContent", paramBundle);
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localJSONObject.put("ret", 0);
+        localJSONObject.put("errorMsg", "");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Azka.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        localJSONObject.put("ret", -1);
+        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
+      }
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }

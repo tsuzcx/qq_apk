@@ -2,9 +2,9 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bfmf;
-import bfrm;
-import bftl;
+import bfmw;
+import bfsd;
+import bfuc;
 
 class Gallery$FlingRunnable
   implements Runnable
@@ -12,7 +12,7 @@ class Gallery$FlingRunnable
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private bftl jdField_a_of_type_Bftl;
+  private bfuc jdField_a_of_type_Bfuc;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -22,13 +22,13 @@ class Gallery$FlingRunnable
   
   public Gallery$FlingRunnable(Gallery paramGallery)
   {
-    this.jdField_a_of_type_Bftl = new bftl(paramGallery.getContext());
-    this.jdField_a_of_type_Bftl.a(0.04F);
+    this.jdField_a_of_type_Bfuc = new bfuc(paramGallery.getContext());
+    this.jdField_a_of_type_Bfuc.a(0.04F);
   }
   
   private float a(float paramFloat)
   {
-    return bfmf.a(paramFloat);
+    return bfmw.a(paramFloat);
   }
   
   private void a()
@@ -38,10 +38,10 @@ class Gallery$FlingRunnable
   
   private void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bftl.a(true);
+    this.jdField_a_of_type_Bfuc.a(true);
     this.jdField_a_of_type_Long = -1L;
-    if (this.this$0.jdField_a_of_type_Bfrm != null) {
-      this.this$0.jdField_a_of_type_Bfrm.b(this.this$0.mSelectedPosition);
+    if (this.this$0.jdField_a_of_type_Bfsd != null) {
+      this.this$0.jdField_a_of_type_Bfsd.b(this.this$0.mSelectedPosition);
     }
     if (this.this$0.j == 2)
     {
@@ -53,8 +53,8 @@ class Gallery$FlingRunnable
   
   public int a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bftl.a(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
-    return this.jdField_a_of_type_Bftl.d();
+    this.jdField_a_of_type_Bfuc.a(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
+    return this.jdField_a_of_type_Bfuc.d();
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -66,10 +66,10 @@ class Gallery$FlingRunnable
       a();
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Bftl.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
+      this.jdField_a_of_type_Bfuc.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
       this.this$0.post(this);
-    } while (this.this$0.jdField_a_of_type_Bfrm == null);
-    this.this$0.jdField_a_of_type_Bfrm.a(this.this$0.mSelectedPosition);
+    } while (this.this$0.jdField_a_of_type_Bfsd == null);
+    this.this$0.jdField_a_of_type_Bfsd.a(this.this$0.mSelectedPosition);
   }
   
   public void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -80,7 +80,7 @@ class Gallery$FlingRunnable
     a();
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Bftl.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
+    this.jdField_a_of_type_Bfuc.a(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
     this.this$0.post(this);
     this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
     this.jdField_a_of_type_Float = paramFloat1;
@@ -99,17 +99,17 @@ class Gallery$FlingRunnable
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     if (AnimationUtils.currentAnimationTimeMillis() - this.this$0.jdField_a_of_type_Long > 15L) {
-      this.jdField_a_of_type_Bftl.a(this.this$0.jdField_a_of_type_Long + 15L, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
+      this.jdField_a_of_type_Bfuc.a(this.this$0.jdField_a_of_type_Long + 15L, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
     }
     for (;;)
     {
       this.this$0.post(this);
-      if (this.this$0.jdField_a_of_type_Bfrm == null) {
+      if (this.this$0.jdField_a_of_type_Bfsd == null) {
         break;
       }
-      this.this$0.jdField_a_of_type_Bfrm.a(this.this$0.mSelectedPosition);
+      this.this$0.jdField_a_of_type_Bfsd.a(this.this$0.mSelectedPosition);
       return;
-      this.jdField_a_of_type_Bftl.a(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
+      this.jdField_a_of_type_Bfuc.a(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
     }
   }
   
@@ -130,10 +130,10 @@ class Gallery$FlingRunnable
       return;
     }
     Gallery.b(this.this$0, false);
-    Object localObject = this.jdField_a_of_type_Bftl;
-    boolean bool = ((bftl)localObject).b();
-    int i = ((bftl)localObject).a();
-    int j = ((bftl)localObject).b();
+    Object localObject = this.jdField_a_of_type_Bfuc;
+    boolean bool = ((bfuc)localObject).b();
+    int i = ((bfuc)localObject).a();
+    int j = ((bfuc)localObject).b();
     int k = this.jdField_a_of_type_Int;
     int m = this.jdField_b_of_type_Int;
     float f2;

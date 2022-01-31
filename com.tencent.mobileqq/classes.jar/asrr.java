@@ -1,23 +1,18 @@
-import android.view.View;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.multicard.MultiCardItemFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
-class asrr
-  implements View.OnLongClickListener
+public class asrr
+  extends GestureDetector.SimpleOnGestureListener
 {
-  asrr(asrq paramasrq) {}
+  public asrr(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  public boolean onLongClick(View paramView)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      paramView = (MultiCardItemFragment)this.a.a.get();
-      if (paramView != null) {
-        paramView.a(this.a);
-      }
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
     }
-    return true;
   }
 }
 

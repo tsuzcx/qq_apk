@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class acpg
-  implements View.OnClickListener
+  extends Handler
 {
-  public acpg(VerifyCodeActivity paramVerifyCodeActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
+  public acpg(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
 
 public class aiei
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aiei(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  public aiei(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
-    paramDialogInterface.dismiss();
+    this.a.onBackEvent();
+    if (AppSetting.d) {
+      this.a.c.post(new SelectMemberActivity.2.1(this));
+    }
   }
 }
 

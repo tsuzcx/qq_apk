@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif;
 
-import biru;
+import bisl;
 
 public class AEGifTipsPopupPart$5
   implements Runnable
 {
-  public AEGifTipsPopupPart$5(biru parambiru) {}
+  public AEGifTipsPopupPart$5(bisl parambisl) {}
   
   public void run()
   {
-    if (!biru.a(this.this$0)) {
-      biru.a(this.this$0, true, true);
+    if (!bisl.a(this.this$0)) {
+      bisl.a(this.this$0, true, true);
     }
   }
 }

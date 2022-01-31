@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqt;
+import axqv;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ class Conversation$21
   
   public void run()
   {
-    int i = axqt.a();
+    int i = axqv.a();
     try
     {
       MqqHandler localMqqHandler = this.this$0.a;

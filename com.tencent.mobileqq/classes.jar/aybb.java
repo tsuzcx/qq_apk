@@ -1,6 +1,7 @@
-public abstract interface aybb
+public class aybb
 {
-  public abstract String a();
+  public int a;
+  public aybc[] a;
 }
 
 

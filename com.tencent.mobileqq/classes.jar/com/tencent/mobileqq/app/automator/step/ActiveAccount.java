@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import afnu;
-import ajsf;
+import afns;
+import ajsd;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import apcy;
-import awzw;
-import ayao;
-import bbdj;
-import bcic;
+import apdc;
+import awzy;
+import ayaq;
+import bbdx;
+import bciq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -18,7 +18,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mye;
+import myb;
 
 public class ActiveAccount
   extends AsyncStep
@@ -54,32 +54,32 @@ public class ActiveAccount
         }
       }
     }
-    ayao.a((QQAppInterface)localObject);
+    ayaq.a((QQAppInterface)localObject);
     ((QQAppInterface)localObject).b();
-    apcy.a().b();
+    apdc.a().b();
     UnifiedMonitor.a().a();
     OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
-    if (afnu.a(((QQAppInterface)localObject).getCurrentAccountUin()))
+    if (afns.a(((QQAppInterface)localObject).getCurrentAccountUin()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
       }
       ((QQAppInterface)localObject).a().e("last_group_seq", 0L);
       ((QQAppInterface)localObject).a().e("last_group_suspicious_seq", 0L);
-      afnu.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
+      afns.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
       ((QQAppInterface)localObject).a().e("last_friend_seq_47", 0L);
     }
-    if (mye.a != null) {
-      mye.a().a();
+    if (myb.a != null) {
+      myb.a().a();
     }
-    if ((((QQAppInterface)localObject).a(107) instanceof bcic)) {
-      ((bcic)((QQAppInterface)localObject).a(107)).a();
+    if ((((QQAppInterface)localObject).a(107) instanceof bciq)) {
+      ((bciq)((QQAppInterface)localObject).a(107)).a();
     }
-    localObject = new File(ajsf.aW);
-    if (!bbdj.a(ajsf.aW)) {
+    localObject = new File(ajsd.aW);
+    if (!bbdx.a(ajsd.aW)) {
       ((File)localObject).mkdirs();
     }
-    CleanCache.a(ajsf.aW);
+    CleanCache.a(ajsd.aW);
     QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", 0L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
     return 7;
   }

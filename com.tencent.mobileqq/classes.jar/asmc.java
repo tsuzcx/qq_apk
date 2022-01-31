@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class asmc
-  implements Parcelable.Creator<MsgBackupUserData>
+public class asmc
 {
-  public MsgBackupUserData a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public ConcurrentHashMap<Long, asmd> a;
+  public AtomicBoolean a;
+  public boolean a;
+  public String b;
+  public ConcurrentHashMap<Long, asmd> b = new ConcurrentHashMap();
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  
+  public asmc()
   {
-    return new MsgBackupUserData(paramParcel);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public MsgBackupUserData[] a(int paramInt)
+  public String toString()
   {
-    return new MsgBackupUserData[paramInt];
+    return this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Int;
   }
 }
 

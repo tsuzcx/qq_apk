@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-
 public abstract interface ajfl
 {
-  public abstract void b(SpriteTaskParam paramSpriteTaskParam);
+  public abstract void a(int paramInt);
 }
 
 

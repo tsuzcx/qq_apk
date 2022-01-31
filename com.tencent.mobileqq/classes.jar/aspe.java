@@ -1,14 +1,20 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aspe
-  implements asqu
+  implements View.OnClickListener
 {
   public aspe(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    }
+    this.a.getActivity().finish();
   }
 }
 

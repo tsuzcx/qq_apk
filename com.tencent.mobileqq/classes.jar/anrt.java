@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-
-class anrt
-  extends ajtj
+public abstract interface anrt
 {
-  anrt(anrs paramanrs) {}
+  public abstract void a();
   
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData)
-  {
-    this.a.a(paramInt, paramCameraEmotionData);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(anrb paramanrb);
+  
+  public abstract void b();
 }
 
 

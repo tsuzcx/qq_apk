@@ -1,42 +1,51 @@
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class asfk
-  extends aoeu
+  implements Handler.Callback
 {
-  public asfk(MatchChatSettingFragment paramMatchChatSettingFragment) {}
+  public asfk(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  protected void a(boolean paramBoolean1, ArrayList<aogi> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1 + " chatSwitchOpen:" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      MatchChatSettingFragment.a(this.a, paramBoolean2);
-    }
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MatchChatSettingFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean);
-    }
-    MatchChatSettingFragment localMatchChatSettingFragment;
-    if (!paramBoolean)
+    switch (paramMessage.what)
     {
-      localMatchChatSettingFragment = this.a;
-      if (MatchChatSettingFragment.a(this.a).a()) {
-        break label61;
+    }
+    label196:
+    for (;;)
+    {
+      return false;
+      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Ahmv.a(this.a.jdField_b_of_type_JavaUtilList);
+      this.a.jdField_a_of_type_Ahmv.a(21);
+      this.a.c();
+      if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          break label196;
+        }
+        this.a.jdField_a_of_type_Boolean = true;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
+        return false;
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
     }
-    label61:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      MatchChatSettingFragment.a(localMatchChatSettingFragment, paramBoolean);
-      return;
-    }
+    this.a.jdField_b_of_type_Boolean = true;
+    return false;
   }
 }
 

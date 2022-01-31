@@ -1,35 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class pnw
-  extends osp
+public class pnw
+  implements ViewBase.IBuilder
 {
-  pnw(pnr parampnr) {}
-  
-  public void h(int paramInt)
+  public ViewBase build(VafContext paramVafContext)
   {
-    boolean bool;
-    if (paramInt < 3)
-    {
-      bool = true;
-      QLog.d(pnr.a(this.a), 1, "visibility changed, visible :  " + bool);
-      if (!bool) {
-        break label66;
-      }
-      pnr.c(this.a);
-    }
-    for (;;)
-    {
-      if (paramInt == 5) {
-        osm.a().b(this);
-      }
-      return;
-      bool = false;
-      break;
-      label66:
-      if (pnr.a(this.a) != null) {
-        pnr.a(this.a).b();
-      }
-    }
+    return new pno(paramVafContext);
   }
 }
 

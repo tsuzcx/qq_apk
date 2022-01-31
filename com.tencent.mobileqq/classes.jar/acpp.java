@@ -1,29 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class acpp
-  extends auyn
+  implements DialogInterface.OnClickListener
 {
-  public acpp(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  public acpp(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+    this.a.l();
+    this.a.a(auvf.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), "2", "1");
   }
 }
 

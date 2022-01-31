@@ -1,13 +1,14 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.QQKandianInterface;
 
 class ario
-  implements CustomizedDns
+  implements QQKandianInterface
 {
-  ario(arii paramarii) {}
+  ario(arik paramarik) {}
   
-  public String getip(String paramString)
+  public void jumpToKandianBiu(Bundle paramBundle)
   {
-    return arjh.a().a(paramString);
+    arjj.a().c(paramBundle);
   }
 }
 

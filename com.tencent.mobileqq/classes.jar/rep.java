@@ -1,16 +1,16 @@
-import java.util.List;
+import com.tencent.widget.AbsListView;
 
 class rep
-  extends oyg
+  extends oyd
 {
-  rep(reo paramreo, String paramString, List paramList)
+  rep(reo paramreo, String paramString, AbsListView paramAbsListView, int paramInt)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(this.jdField_a_of_type_JavaUtilList);
+    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 

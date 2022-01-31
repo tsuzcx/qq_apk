@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import ajyc;
-import bcpw;
-import bkua;
+import ajya;
+import bcql;
+import bkur;
 
 public class EditWebDanceMachineVideoActivity$2$2$1
   implements Runnable
 {
-  public EditWebDanceMachineVideoActivity$2$2$1(bkua parambkua) {}
+  public EditWebDanceMachineVideoActivity$2$2$1(bkur parambkur) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.this$0, 1, ajyc.a(2131703939), 0).a();
+    bcql.a(this.a.a.this$0, 1, ajya.a(2131703950), 0).a();
   }
 }
 

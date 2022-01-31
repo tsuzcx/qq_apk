@@ -1,32 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 
-class advc
-  implements bcjb
+public class advc
+  extends acuj
 {
-  advc(adva paramadva) {}
+  private long jdField_a_of_type_Long;
+  public aibq a;
+  public TextView a;
+  public ETTextView a;
+  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public boolean a;
+  public TextView b;
+  public ETTextView b;
+  private String b = "0";
+  public int e = -1;
   
-  public void a(View paramView)
-  {
-    actn.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    Object localObject = (FragmentActivity)paramView.getContext();
-    if (localObject != null) {}
-    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
-    {
-      if (localObject == null)
-      {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-        return;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      return;
-    }
-  }
+  public advc(aduy paramaduy) {}
 }
 
 

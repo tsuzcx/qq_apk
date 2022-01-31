@@ -1,29 +1,17 @@
-import android.os.Bundle;
-import com.tencent.widget.AbsListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
 class afmg
-  implements bfob
+  extends aimt
 {
-  afmg(afma paramafma) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    afma.a(this.a, paramInt1 + paramInt2 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    if (afma.b(this.a) >= this.a.getCount() - 2)
-    {
-      paramAbsListView = new Bundle();
-      paramAbsListView.putString("from", "4");
-      afma.a(this.a).b(4, afma.a(this.a), paramAbsListView);
-    }
-    this.a.d();
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

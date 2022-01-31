@@ -1,54 +1,116 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Toast;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aiir
-  extends Handler
+  extends ajxj
 {
   public aiir(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    switch (paramMessage.what)
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
+    }
+    Object localObject;
+    boolean bool;
+    if (!paramBoolean)
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
+      localObject = this.a;
+      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
+      if (!QQSpecialCareSettingActivity.a(this.a).a())
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialCareSettingActivity.a(this.a) == null)
-            {
-              QQSpecialCareSettingActivity.a(this.a, new bcpq(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialCareSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
-      QQSpecialCareSettingActivity.a(this.a).dismiss();
-      QQSpecialCareSettingActivity.a(this.a, null);
+        bool = true;
+        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
+      }
+    }
+    else
+    {
+      this.a.a.sendEmptyMessage(8194);
+      localObject = this.a.a.obtainMessage(8195);
+      if (paramBoolean) {
+        i = 2;
+      }
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label194;
+      }
+      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
+        break label188;
+      }
+      i = 2131699499;
+    }
+    for (;;)
+    {
+      ((Message)localObject).arg2 = i;
+      this.a.a.sendMessage((Message)localObject);
+      QQSpecialCareSettingActivity.b(this.a);
+      ayaq.e(this.a.app);
+      return;
+      bool = false;
+      break;
+      label188:
+      i = 2131699498;
+      continue;
+      label194:
+      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
+        i = 2131699503;
+      } else {
+        i = 2131699494;
+      }
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (!paramBoolean)
+    {
+      paramArrayOfObject = this.a;
+      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
+      if (QQSpecialCareSettingActivity.b(this.a).a()) {
+        break label77;
+      }
+    }
+    label77:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
+      QQSpecialCareSettingActivity.b(this.a);
       return;
     }
-    if (QQSpecialCareSettingActivity.a(this.a) != null) {
-      QQSpecialCareSettingActivity.a(this.a).cancel();
+  }
+  
+  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
     }
-    QQSpecialCareSettingActivity.a(this.a, bcpw.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
   }
 }
 

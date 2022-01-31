@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import aiof;
+import aiod;
 
 class NewFriendMoreSysMsgAdapter$10$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewFriendMoreSysMsgAdapter$10$1
   
   public void run()
   {
-    aiof.c(this.a.this$0);
+    aiod.c(this.a.this$0);
   }
 }
 

@@ -1,72 +1,113 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class akku
-  extends akks
+  implements Comparator<auko>
 {
-  public akku(QQAppInterface paramQQAppInterface, akkr paramakkr)
+  private boolean a;
+  
+  public akku(boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramakkr, AppletsAccountInfo.class);
+    this.a = paramBoolean;
   }
   
-  public AppletsAccountInfo a(String paramString)
+  public int a(auko paramauko1, auko paramauko2)
   {
-    return (AppletsAccountInfo)a(paramString);
-  }
-  
-  protected String a(aukm paramaukm)
-  {
-    return ((AppletsAccountInfo)paramaukm).uin;
-  }
-  
-  public void a(AppletsAccountInfo paramAppletsAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
-    }
-    a(paramAppletsAccountInfo);
-    this.jdField_a_of_type_Akkr.c();
-  }
-  
-  protected void b() {}
-  
-  public void c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = ((aukn)localObject).a(AppletsAccountInfo.class);
-    ((aukn)localObject).a();
-    if (localList != null)
-    {
-      d();
-      localObject = localList.iterator();
-      while (((Iterator)localObject).hasNext())
+    paramauko1 = (RecentUser)paramauko1;
+    paramauko2 = (RecentUser)paramauko2;
+    long l3 = Math.max(paramauko1.lastmsgtime, paramauko1.lastmsgdrafttime);
+    long l2 = Math.max(paramauko2.lastmsgtime, paramauko2.lastmsgdrafttime);
+    long l1;
+    if (this.a) {
+      if ((paramauko1.showUpTime > 0L) && (l3 == 0L))
       {
-        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
+        l1 = Math.max(paramauko1.opTime, paramauko1.showUpTime);
+        if ((paramauko2.showUpTime <= 0L) || (l2 != 0L)) {
+          break label194;
+        }
+        l3 = Math.max(paramauko2.opTime, paramauko2.showUpTime);
+        l2 = l1;
+        l1 = l3;
       }
     }
-    if (QLog.isColorLevel())
+    for (;;)
     {
-      localObject = new StringBuilder().append("doInit size = ");
-      if (localList != null) {
-        break label118;
+      if (l2 > l1)
+      {
+        l1 = 3L;
+        label117:
+        l3 = l1;
+        if (!this.a) {
+          break label280;
+        }
+        l2 = l1;
+        if (paramauko1.showUpTime > 0L) {
+          l2 = l1 | 0x1000;
+        }
+        l3 = l2;
+        if (paramauko2.showUpTime <= 0L) {
+          break label280;
+        }
+        l1 = 0x2 | 0x1000;
+        label167:
+        if (l2 >= l1) {
+          break label269;
+        }
+        return 1;
+        l1 = l3;
+        if (l3 != 0L) {
+          break;
+        }
+        l1 = paramauko1.opTime;
+        break;
+        label194:
+        if (l2 != 0L) {
+          break label310;
+        }
+        l3 = paramauko2.opTime;
+        l2 = l1;
+        l1 = l3;
+        continue;
+        if (l3 != 0L) {
+          break label304;
+        }
       }
+      label269:
+      label280:
+      label304:
+      for (l1 = paramauko1.opTime;; l1 = l3)
+      {
+        if (l2 == 0L)
+        {
+          l3 = paramauko2.opTime;
+          l2 = l1;
+          l1 = l3;
+          break;
+          if (l2 < l1)
+          {
+            l1 = 1L;
+            break label117;
+          }
+          l1 = 2L;
+          break label117;
+          if (l2 == l1) {
+            return 0;
+          }
+          return -1;
+          l2 = l3;
+          l1 = 2L;
+          break label167;
+        }
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        break;
+      }
+      label310:
+      l3 = l1;
+      l1 = l2;
+      l2 = l3;
     }
-    label118:
-    for (int i = 0;; i = localList.size())
-    {
-      QLog.d("AppletAccountCache", 2, i);
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

@@ -1,78 +1,53 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class tqe
-  extends tqj
+  extends tre
 {
   public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&type=" + "onedaylist" + "&feedid=%s&identify=%d";
-  private int[] a;
+  public static final String b = jdField_a_of_type_JavaLangString + "&et=%d&time_zone=%d";
+  protected int a;
+  private final int[] a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + sxp.a(2131699674);
+    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + sxm.a(2131699685);
   }
   
-  public tqe(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
+  public tqe(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    Object localObject = ((uwa)tdc.a(11)).a(paramString);
-    if (localObject == null) {
-      return;
-    }
-    tdo localtdo = (tdo)tdc.a(2);
-    localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
+    tdl localtdl = (tdl)tcz.a(2);
     this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + ajyc.a(2131704437) + ssi.jdField_a_of_type_JavaLangString);
-    this.e = (((QQUserUIItem)localObject).nickName + ajyc.a(2131704436) + ssi.jdField_a_of_type_JavaLangString);
-    this.f = localtdo.a(((QQUserUIItem)localObject).getUnionId(), false);
-    int i;
-    if (((QQUserUIItem)localObject).isMe())
-    {
-      i = 0;
-      this.jdField_a_of_type_Int = i;
-      this.h = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      this.jdField_c_of_type_JavaLangString = ((QQUserUIItem)localObject).nickName;
-      this.g = ((QQUserUIItem)localObject).getUnionId();
-      this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
-      paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
-      this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + ajyc.a(2131704439));
-      this.j = ("#" + ssi.jdField_a_of_type_JavaLangString + "# " + this.jdField_c_of_type_JavaLangString + ajyc.a(2131704438) + ssi.jdField_a_of_type_JavaLangString + "（" + this.i + "）");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label400;
-      }
-    }
-    label400:
-    for (paramInt = 8;; paramInt = 9)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label406;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 81, 82, 83, 84, 85, 45 };
-      return;
-      i = 1;
-      break;
-    }
-    label406:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 69, 70, 71, 72, 73, 45 };
+    this.h = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_e_of_type_Int = paramInt2;
+    this.f = paramStoryVideoItem.mOwnerUid;
+    this.jdField_e_of_type_JavaLangString = localtdl.a(this.f, false);
+    this.c = bbkk.a(paramShareGroupItem.name, 0, 16, "...");
+    this.g = paramStoryVideoItem.mDoodleText;
+    this.jdField_d_of_type_JavaLangString = a();
+    this.k = (ajya.a(2131713918) + this.c + ajya.a(2131713926) + ssf.jdField_a_of_type_JavaLangString);
+    this.l = (this.c + "\n" + paramInt2 + ajya.a(2131713922));
+    new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
+    this.i = b();
+    this.j = ("#" + ssf.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
+    this.jdField_d_of_type_Int = 11;
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
+  }
+  
+  public static tqe a(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt)
+  {
+    return new tqe(paramShareGroupItem, paramStoryVideoItem, paramString, paramLong, 9, paramInt);
   }
   
   protected String a(int paramInt)
   {
     if (paramInt == 1) {
-      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&type=onedaylist&feedid=%s&identify=%d&sharefromtype=%d", new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), this.h, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
+      return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&type=onedaylist&et=%d&time_zone=%d", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(vzl.a()) });
     }
-    return String.format(b, new Object[] { this.f, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.g, Integer.valueOf(5), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), this.h, Integer.valueOf(this.jdField_a_of_type_Int) });
-  }
-  
-  public String a(String paramString, long paramLong)
-  {
-    String str = new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
-    return paramString + ajyc.a(2131704432) + str;
+    return String.format(b, new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(vzl.a()) });
   }
 }
 

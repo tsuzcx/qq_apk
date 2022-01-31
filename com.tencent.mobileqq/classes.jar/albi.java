@@ -1,8 +1,19 @@
-public abstract interface albi
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARScanAR;
+
+public final class albi
+  implements Parcelable.Creator<ARScanAR>
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  public ARScanAR a(Parcel paramParcel)
+  {
+    return new ARScanAR(paramParcel);
+  }
   
-  public abstract void a(float[] paramArrayOfFloat);
+  public ARScanAR[] a(int paramInt)
+  {
+    return new ARScanAR[paramInt];
+  }
 }
 
 

@@ -1,29 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1;
 
-final class atim
-  implements bcwh
+public class atim
+  implements atiu
 {
-  atim(String paramString, atis paramatis) {}
+  atim(atik paramatik) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(boolean paramBoolean)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Atis != null) {
-        this.jdField_a_of_type_Atis.a(true);
-      }
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.2.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
     }
-    label50:
-    while (this.jdField_a_of_type_Atis == null) {
-      return;
-    }
-    this.jdField_a_of_type_Atis.a(false);
   }
 }
 

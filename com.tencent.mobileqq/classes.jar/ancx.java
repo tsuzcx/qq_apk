@@ -1,84 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-final class ancx
+public class ancx
+  extends ampa<ancw>
 {
-  private int jdField_a_of_type_Int = -1;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public static ancx a(ampi[] paramArrayOfampi)
+  public static ancw a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
-    {
-      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
-    }
-    ancx localancx = new ancx();
-    int k = paramArrayOfampi.length;
-    int i = 0;
-    while (i < k)
-    {
-      Object localObject1 = paramArrayOfampi[i];
-      try
-      {
-        localObject1 = new JSONObject(((ampi)localObject1).a);
-        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
-        {
-          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
-          {
-            j = 1;
-            localancx.jdField_a_of_type_Int = j;
-          }
-        }
-        else
-        {
-          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
-            break label189;
-          }
-          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
-          if (localObject1 == null) {
-            break label189;
-          }
-          j = 0;
-          while (j < ((JSONArray)localObject1).length())
-          {
-            String str = ((JSONArray)localObject1).optString(j);
-            if (!TextUtils.isEmpty(str)) {
-              localancx.jdField_a_of_type_JavaUtilList.add(str);
-            }
-            j += 1;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-          continue;
-          int j = 0;
-        }
-        label189:
-        i += 1;
-      }
-    }
-    return localancx;
+    return (ancw)ampl.a().a(348);
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return 348;
   }
   
-  public boolean a(String paramString)
+  @NonNull
+  public ancw a(int paramInt)
   {
-    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
+    return new ancw();
+  }
+  
+  @Nullable
+  public ancw a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ancw.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<ancw> a()
+  {
+    return ancw.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ancw paramancw) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

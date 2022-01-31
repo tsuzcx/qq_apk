@@ -1,21 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
 class arxv
   implements View.OnClickListener
 {
-  arxv(arxr paramarxr, arxh paramarxh) {}
+  arxv(arxt paramarxt, arxj paramarxj) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh.a()) {}
-    while (paramView.isSelected()) {
+    if (this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj.a()) {
       return;
     }
-    this.jdField_a_of_type_Arxr.a(paramView);
-    this.jdField_a_of_type_Arxr.jdField_a_of_type_Int = 2;
-    arxh.a(this.jdField_a_of_type_Arxr.jdField_a_of_type_Arxh, Integer.valueOf(2));
-    axqw.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
+    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj).a(arxt.a(this.jdField_a_of_type_Arxt));
+    axqy.b(null, "CliOper", "", "", "0X800A96F", "0X800A96F", 0, 0, "0", "0", "0", "");
   }
 }
 

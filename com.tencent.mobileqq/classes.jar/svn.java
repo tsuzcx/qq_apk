@@ -1,78 +1,100 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import java.io.File;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class svn
-  extends sve
+final class svn
+  implements syq<tlp, tnu>
 {
-  public svn(@NonNull String[] paramArrayOfString)
-  {
-    super(paramArrayOfString);
-  }
+  svn(VideoListFeedItem paramVideoListFeedItem, List paramList, tcw paramtcw) {}
   
-  protected void a(String[] paramArrayOfString, svf paramsvf)
+  public void a(@NonNull tlp paramtlp, @Nullable tnu paramtnu, @NonNull ErrorMessage paramErrorMessage)
   {
-    int k = paramArrayOfString.length;
-    int i = 0;
+    boolean bool = false;
+    if ((paramtnu == null) || (paramErrorMessage.isFail())) {
+      bool = true;
+    }
+    if ((!bool) && (paramtnu.a() != null) && (paramtnu.a().size() != 1)) {
+      bool = true;
+    }
     for (;;)
     {
-      if (i < k)
+      ved.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add share group fail:%b", new Object[] { Boolean.valueOf(bool) });
+      paramtlp = new svv(false);
+      paramtlp.b = false;
+      paramtlp.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+      paramErrorMessage = new svu();
+      paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem;
+      Object localObject;
+      label176:
+      StoryVideoItem localStoryVideoItem1;
+      if (!bool)
       {
-        paramsvf = new File(paramArrayOfString[i]).listFiles();
-        if (paramsvf == null)
-        {
-          i += 1;
-        }
-        else
-        {
-          int m = paramsvf.length;
-          int j = 0;
-          while (j < m)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile = paramsvf[j];
-              if (a(localFile)) {
-                a(localFile);
-              }
-              j += 1;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                veg.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
+        localObject = (tnv)paramtnu.a().get(0);
+        if (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem)) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId.equals(((tnv)localObject).b))) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
         }
       }
-    }
-  }
-  
-  protected boolean a(File paramFile)
-  {
-    if (!paramFile.isDirectory()) {}
-    while (System.currentTimeMillis() - paramFile.lastModified() <= 86400000L) {
-      return false;
-    }
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label60;
+      else
+      {
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          break label501;
+        }
+        localStoryVideoItem1 = (StoryVideoItem)((Iterator)localObject).next();
+        if (!bool) {
+          break label495;
+        }
       }
-      if (TextUtils.equals(paramFile[i].getName(), "dont_delete.txt")) {
+      label495:
+      for (int i = 6;; i = 5)
+      {
+        localStoryVideoItem1.mUploadStatus = i;
+        svt localsvt = new svt();
+        localsvt.a = this.jdField_a_of_type_Tcw.a(localStoryVideoItem1);
+        paramErrorMessage.jdField_a_of_type_JavaUtilArrayList.add(localsvt);
+        if (bool) {
+          break label176;
+        }
+        StoryVideoItem localStoryVideoItem2 = new StoryVideoItem();
+        localStoryVideoItem2.copy(localStoryVideoItem1);
+        List localList = paramtnu.a();
+        localStoryVideoItem2.mVid = ((String)((tnv)localList.get(0)).a.get(localStoryVideoItem1.sourceVid));
+        localStoryVideoItem2.mVideoIndex = 0L;
+        if (TextUtils.isEmpty(localStoryVideoItem2.mVid))
+        {
+          ved.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "cannot find true vid for sourceVid=%s, %s", new Object[] { localStoryVideoItem1.sourceVid, localList });
+          vxp.a(localStoryVideoItem2.mVid);
+          localStoryVideoItem2.mVid = StoryVideoItem.makeFakeVid();
+        }
+        localsvt.b = this.jdField_a_of_type_Tcw.a(localStoryVideoItem2);
+        break label176;
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = new ShareGroupFeedItem();
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.copy(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId = ((tnv)localObject).b;
+        if (paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount == 0) {
+          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount = 1;
+        }
+        vxp.a(((tnv)localObject).b);
+        localObject = (uvx)tcz.a(11);
+        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)((uvx)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem));
+        ((uvx)localObject).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.ownerId, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.date, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId);
         break;
       }
-      i += 1;
+      label501:
+      paramtlp.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
+      stb.a().dispatch(paramtlp);
+      ved.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add shareGroup video return: %s", new Object[] { paramtlp });
+      return;
     }
-    label60:
-    return true;
   }
 }
 

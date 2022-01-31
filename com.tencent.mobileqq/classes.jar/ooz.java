@@ -1,41 +1,46 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class ooz
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  public static String a()
-  {
-    return (String)bhvh.a("double_short_video_font_size", "14");
-  }
+  public static String a = "HomePageConfigHandler";
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = oof.a(paramString);
+    Object localObject = paramString.keySet();
     try
     {
-      paramString = (String)paramString.get("double_videocard_textsize");
-      if (!TextUtils.isEmpty(paramString)) {
-        bhvh.a("double_short_video_font_size", paramString);
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
+          bhvy.m(Integer.parseInt(str2));
+        }
       }
-      label55:
       return true;
     }
-    catch (Exception paramString)
+    catch (Throwable paramString)
     {
-      break label55;
+      paramString.printStackTrace();
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("double_short_video_font_size", "14");
-    if (QLog.isColorLevel()) {
-      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
-    }
+    super.onWipeConfig(paramInt);
+    bhvy.m(0);
   }
 }
 

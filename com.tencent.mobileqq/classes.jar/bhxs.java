@@ -1,22 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bhxs
-  implements bhyj
+public class bhxs
 {
-  bhxs(bhxr parambhxr) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(boolean paramBoolean)
+  public bhxs(String paramString1, String paramString2, String paramString3)
   {
-    bhxr.a(this.a, paramBoolean);
-    if ((bhxr.a(this.a)) && (bhxr.b(this.a)))
-    {
-      bhxr.a(this.a);
-      if (bhxr.c(this.a))
-      {
-        QLog.d("VipARCameraController", 2, " init onresume");
-        bhxr.a(this.a).a();
-      }
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

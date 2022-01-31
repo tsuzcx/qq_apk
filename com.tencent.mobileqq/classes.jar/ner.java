@@ -1,13 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.util.Pair;
+import java.net.URL;
 
-class ner
+public class ner
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  ner(ned paramned) {}
+  public static ner a(URL paramURL, Pair<Integer, Integer> paramPair)
+  {
+    ner localner = new ner();
+    localner.jdField_a_of_type_JavaNetURL = paramURL;
+    localner.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localner;
+  }
 }
 
 

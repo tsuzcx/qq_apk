@@ -1,28 +1,43 @@
-import android.view.View;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class acab
-  implements acad
+  extends RecyclerView.Adapter<acac>
 {
+  abzz jdField_a_of_type_Abzz;
+  
   public acab(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public acac a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramView = (Button)paramView.findViewById(2131373475);
-    if (paramView.isSelected())
+    return new acac(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559576, paramViewGroup, false), this.jdField_a_of_type_Abzz);
+  }
+  
+  public void a(abzz paramabzz)
+  {
+    this.jdField_a_of_type_Abzz = paramabzz;
+  }
+  
+  public void a(acac paramacac, int paramInt)
+  {
+    paramacac.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
     {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
-    }
-    do
-    {
+      paramacac.a.setSelected(true);
       return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    }
+    paramacac.a.setSelected(false);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

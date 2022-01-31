@@ -1,21 +1,58 @@
+import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import java.math.BigDecimal;
 
 public class avsv
   implements GLGestureListener
 {
-  public float a;
-  public GLSurfaceView a;
-  private float b;
-  private float c;
+  int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  int jdField_b_of_type_Int;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private final int c;
+  private final int d;
+  private final int e;
   
-  public avsv(GLSurfaceView paramGLSurfaceView)
+  public avsv(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    paramContext = ViewConfiguration.get(paramContext);
+    this.c = ViewConfiguration.getDoubleTapTimeout();
+    this.d = 1000;
+    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
+    this.e = paramContext.getScaledTouchSlop();
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    int i = (int)paramFloat3 - (int)paramFloat1;
+    int j = (int)paramFloat4 - (int)paramFloat2;
+    return i * i + j * j > this.e;
+  }
+  
+  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return false;
+      } while ((Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) || (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) || (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())));
+      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    } while (i * i + j * j >= this.jdField_b_of_type_Int);
+    return true;
   }
   
   public int onGetPriority()
@@ -26,83 +63,49 @@ public class avsv
   public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j != 3) || ((i == 1) && (paramBoolean))) {
-      switch (j)
-      {
-      }
-    }
-    float f4;
-    float f2;
-    float f3;
-    for (;;)
+    int j = paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean)) {}
+    switch (j & 0xFF)
     {
+    default: 
       return false;
-      this.c = this.jdField_a_of_type_Float;
-      continue;
-      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+    case 0: 
+      GLSurfaceView localGLSurfaceView;
+      if (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))
       {
-        this.c = this.jdField_a_of_type_Float;
-      }
-      else
-      {
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
+        localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
+        if (localGLSurfaceView != null)
         {
-          if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-            ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if (!(localGLSurfaceView instanceof CameraCaptureView)) {
+            break label168;
           }
-          for (;;)
-          {
-            this.c = paramMotionEvent.getY();
-            break;
-            if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-              ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-            }
-          }
-          if ((i == 2) && (!paramBoolean))
-          {
-            veg.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
-            if (i != 2) {
-              break;
-            }
-            f4 = paramMotionEvent.getX(0);
-            f2 = paramMotionEvent.getY(0);
-            f3 = paramMotionEvent.getX(1);
-            f1 = paramMotionEvent.getY(1);
-            label254:
-            switch (j)
-            {
-            }
-          }
+          ((CameraCaptureView)localGLSurfaceView).q();
+        }
+      }
+      for (;;)
+      {
+        vei.a("camera_clkdouble", avtd.jdField_a_of_type_Int, 0, new String[0]);
+        avtd.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });
+        }
+        if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+          this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+        }
+        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        return false;
+        label168:
+        if ((localGLSurfaceView instanceof AECameraGLSurfaceView)) {
+          ((AECameraGLSurfaceView)localGLSurfaceView).j();
         }
       }
     }
-    float f1 = vjr.a(f4, f2, f3, f1);
-    i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-    if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
-    {
-      if (!(this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-        break label421;
-      }
-      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
     }
-    for (;;)
-    {
-      this.b = f1;
-      return true;
-      f4 = paramMotionEvent.getX(1);
-      f2 = paramMotionEvent.getY(1);
-      f3 = paramMotionEvent.getX(2);
-      f1 = paramMotionEvent.getY(2);
-      break label254;
-      this.b = vjr.a(f4, f2, f3, f1);
-      break;
-      label421:
-      if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof AECameraGLSurfaceView)) {
-        ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(i);
-      }
-    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    return false;
   }
 }
 

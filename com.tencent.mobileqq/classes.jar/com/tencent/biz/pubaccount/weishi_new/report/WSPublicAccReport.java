@@ -12,9 +12,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import smq;
-import sne;
-import sni;
+import smn;
+import snb;
+import snf;
 
 public class WSPublicAccReport
 {
@@ -70,7 +70,7 @@ public class WSPublicAccReport
       }
     }
     localHashMap.put("opvideo_type", paramstReportItem);
-    localHashMap.put("cover_type", sni.a(paramstSimpleMetaFeed));
+    localHashMap.put("cover_type", snf.a(paramstSimpleMetaFeed));
     return localHashMap;
   }
   
@@ -92,7 +92,7 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", sni.b());
+    localHashMap.put("row_key", snf.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
@@ -107,7 +107,7 @@ public class WSPublicAccReport
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", sni.b());
+    localHashMap.put("row_key", snf.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
@@ -120,7 +120,7 @@ public class WSPublicAccReport
   public void backgroundPublicAccReport()
   {
     long l = 0L;
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     if (sToForegroundTime < 1L) {
       sToForegroundTime = sPublicAccEnterTime;
     }
@@ -133,7 +133,7 @@ public class WSPublicAccReport
   public void closePublicAccReport(int paramInt)
   {
     long l = 0L;
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     if (sToForegroundTime > 0L) {
       l = System.currentTimeMillis() - sToForegroundTime;
     }
@@ -155,7 +155,7 @@ public class WSPublicAccReport
     sToForegroundTime = sPublicAccEnterTime;
     WSStatisticsBaseCollector.setSessionId(String.valueOf(sPublicAccEnterTime));
     WSStatisticsBaseCollector.setSessionStamp(String.valueOf(sPublicAccEnterTime));
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     Object localObject = "";
     String str1 = "2";
     HashMap localHashMap = new HashMap();
@@ -181,7 +181,7 @@ public class WSPublicAccReport
       }
     }
     paramWSRedDotPushMsg = str1;
-    if (sni.a(sni.a())) {
+    if (snf.a(snf.a())) {
       paramWSRedDotPushMsg = "1";
     }
     if (paramInt == 3) {
@@ -189,7 +189,7 @@ public class WSPublicAccReport
     }
     for (;;)
     {
-      publicAccActionReport("1", sni.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
+      publicAccActionReport("1", snf.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
       return;
       label182:
       paramWSRedDotPushMsg = String.valueOf(0);
@@ -202,7 +202,7 @@ public class WSPublicAccReport
     sTrendsTabEnterTime = System.currentTimeMillis();
     WSStatisticsBaseCollector.setSessionId(String.valueOf(sTrendsTabEnterTime));
     WSStatisticsBaseCollector.setSessionStamp(String.valueOf(sTrendsTabEnterTime));
-    this.mTestId = sni.a(6);
+    this.mTestId = snf.a(6);
     String str = "";
     this.mPushId = "";
     int i;
@@ -254,7 +254,7 @@ public class WSPublicAccReport
   
   public void foregroundPublicAccReport()
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     sToForegroundTime = System.currentTimeMillis();
     WSStatisticsBaseCollector.setSessionStamp(String.valueOf(sToForegroundTime));
     publicAccActionReport("4", 0, "", "", 0, 0L, 0, null);
@@ -262,26 +262,26 @@ public class WSPublicAccReport
   
   public void reportClickRichBlockPop(int paramInt1, int paramInt2)
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     baseActionReport("gzh_click", "feeds", getFeedsBaseParams("popup", paramInt1), String.valueOf(paramInt2));
   }
   
   public void reportDownload(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     HashMap localHashMap = new HashMap();
     localHashMap.put("position", String.valueOf(paramInt1));
     localHashMap.put("event_type", String.valueOf(paramInt2));
     localHashMap.put("dl_status", String.valueOf(paramInt3));
     localHashMap.put("dl_method", String.valueOf(paramInt4));
     localHashMap.put("install_status", String.valueOf(paramInt5));
-    sne.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
+    snb.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
     baseActionReport("gzh_download", "", localHashMap, "");
   }
   
   public void reportExposeRichBlockPop(int paramInt)
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     baseActionReport("gzh_exposure", "feeds", getFeedsBaseParams("popup", 0), String.valueOf(paramInt));
   }
   
@@ -295,9 +295,9 @@ public class WSPublicAccReport
         Object localObject2 = (Map.Entry)paramHashMap.next();
         Object localObject1 = (Integer)((Map.Entry)localObject2).getKey();
         localObject2 = (stSimpleMetaFeed)((Map.Entry)localObject2).getValue();
-        localObject1 = smq.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
+        localObject1 = smn.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
         if ((((stReportItem)localObject1).video_type != 1) && (((stReportItem)localObject1).video_type != 6)) {
-          feedsItemReport("gzh_exposure", sni.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
+          feedsItemReport("gzh_exposure", snf.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
         }
       }
     }
@@ -305,7 +305,7 @@ public class WSPublicAccReport
   
   public void reportMsgEntry(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.mTestId = sni.a(4);
+    this.mTestId = snf.a(4);
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     baseActionReport(paramString, "feeds", getFeedsBaseParams("msg_extry", paramInt2), localHashMap, String.valueOf(paramInt3));
@@ -313,7 +313,7 @@ public class WSPublicAccReport
   
   public void reportOperationCard(String paramString, int paramInt1, int paramInt2)
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     baseActionReport(paramString, "feeds", getFeedsBaseParams("opcard", paramInt1), String.valueOf(paramInt2));
   }
   
@@ -332,7 +332,7 @@ public class WSPublicAccReport
   
   public void reportPublicAccDetailClick()
   {
-    this.mTestId = sni.a(1);
+    this.mTestId = snf.a(1);
     baseActionReport("gzh_click", "feeds", getFeedsBaseParams("wesee_info", 1000001), "");
   }
   

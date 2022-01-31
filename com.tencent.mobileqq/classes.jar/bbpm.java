@@ -1,114 +1,115 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.CustomOnlineStatusManager.1;
+import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class bbpm
 {
-  public static HashMap<String, bbpo> a;
-  private static HashMap<Integer, String> b;
-  public bbpn a;
-  public String a;
-  public ArrayList<Object> a;
-  public String b;
-  public ArrayList<Object> b;
-  public ArrayList<Object> c;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final ArrayList<WeakReference<Runnable>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int b = 30000;
+  private int c = -1;
   
-  static
+  public static bbpm a()
   {
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100001), "emoji");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100003), "bubble");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100002), "theme");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100011), "font");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100006), "pendant");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100012), "card");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100019), "call");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100020), "suit");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100021), "background");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100018), "ring");
-    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100028), "hongbao");
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("1", new bbpo(2, true, 1, 1));
-    jdField_a_of_type_JavaUtilHashMap.put("2", new bbpo(2, false, 1, 2));
-    jdField_a_of_type_JavaUtilHashMap.put("3", new bbpo(3, true, 2, 3));
-    jdField_a_of_type_JavaUtilHashMap.put("4", new bbpo(3, true, 1, 4));
-    jdField_a_of_type_JavaUtilHashMap.put("5", new bbpo(3, true, 1, 5));
+    return bbpn.a();
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  private final void a()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
-    {
-      return false;
-      paramString1 = paramString1.split("\\.");
-      paramString2 = paramString2.split("\\.");
-    } while ((paramString1 == null) || (paramString2 == null));
-    int m = Math.max(paramString1.length, paramString2.length);
-    int k = 0;
-    label50:
-    if (k < m) {
-      if (k >= paramString1.length) {
-        break label150;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CustomOnlineStatusManager", 4, "resetOnEnableToggle");
     }
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt(paramString1[k]);
-        if (k >= paramString2.length) {
-          break label145;
-        }
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          j = Integer.parseInt(paramString2[k]);
-          if (k == m - 1) {
-            break label131;
-          }
-          if (j > i)
-          {
-            return true;
-            localException1 = localException1;
-            i = 0;
-          }
-        }
-        catch (Exception localException2)
-        {
-          j = 0;
-          continue;
-        }
-      }
-      if (j < i) {
-        break;
-      }
-      label131:
-      do
-      {
-        k += 1;
-        break label50;
-        break;
-        if (j >= i) {
-          return true;
-        }
-      } while (j >= i);
-      return false;
-      label145:
-      int j = 0;
-      continue;
-      label150:
-      int i = 0;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public String toString()
+  private void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("IndividuationConfigInfo: ").append("backgroudImgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\r\n").append("pullBgColor=").append(this.jdField_b_of_type_JavaLangString).append("\r\n").append("bannerConfig=").append(this.jdField_a_of_type_Bbpn).append("\r\n").append("activityConfigs=").append(this.jdField_a_of_type_JavaUtilArrayList).append("\r\n").append("recommendConfigs=").append(this.jdField_b_of_type_JavaUtilArrayList).append("\r\n").append("shapedImgConfigs=").append(this.c);
-    return localStringBuilder.toString();
+    ThreadManager.getUIHandler().post(new CustomOnlineStatusManager.1(this));
+  }
+  
+  public final String a()
+  {
+    if (a())
+    {
+      long l = System.currentTimeMillis();
+      if (Math.abs(this.jdField_a_of_type_Long - l) > this.b)
+      {
+        this.jdField_a_of_type_Long = l;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("CustomOnlineStatusManager", 4, "sync owner status");
+        }
+        bbpo.a();
+      }
+      if (bbpo.a(this.jdField_a_of_type_Int)) {
+        return this.jdField_a_of_type_JavaLangString;
+      }
+    }
+    return "";
+  }
+  
+  public final void a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
+  {
+    this.jdField_a_of_type_Int = bbpo.b(paramCustomOnlineStatusMsg);
+    this.jdField_a_of_type_JavaLangString = bbpo.a(paramCustomOnlineStatusMsg);
+    this.b = bbpo.a(paramCustomOnlineStatusMsg);
+    b();
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramRunnable));
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+  }
+  
+  public final boolean a()
+  {
+    int j = this.c;
+    amyq localamyq = (amyq)ampl.a().a(479);
+    if ((localamyq == null) || (localamyq.a)) {}
+    for (int i = 1;; i = 0)
+    {
+      this.c = i;
+      if (j != this.c) {
+        a();
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "featureEnable = " + this.c);
+      }
+      if (this.c != 1) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (paramString != null) {
+        return Math.abs(System.currentTimeMillis() - paramString.longValue()) > this.b;
+      }
+    }
+    return true;
   }
 }
 

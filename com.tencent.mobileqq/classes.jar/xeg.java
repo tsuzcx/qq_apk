@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.PopupMenu.1.1;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
 public class xeg
-  implements View.OnClickListener
+  extends Handler
 {
-  xeg(xef paramxef, String paramString, int paramInt) {}
+  public xeg(RefreshView paramRefreshView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Xef.a != null) {
-      this.jdField_a_of_type_Xef.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    paramView.post(new PopupMenu.1.1(this));
+    this.a.a();
   }
 }
 

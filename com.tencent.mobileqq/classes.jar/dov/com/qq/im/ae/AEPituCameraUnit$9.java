@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import biim;
+import bijd;
 import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class AEPituCameraUnit$9
   implements Runnable
 {
-  public AEPituCameraUnit$9(biim parambiim) {}
+  public AEPituCameraUnit$9(bijd parambijd) {}
   
   public void run()
   {
-    biim.a(this.this$0).setCameraPermissionResult(true);
+    bijd.a(this.this$0).setCameraPermissionResult(true);
   }
 }
 

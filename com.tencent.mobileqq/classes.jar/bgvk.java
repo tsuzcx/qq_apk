@@ -1,19 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qqreader.ui.ReaderHomeTabFragment;
-import cooperation.qqreader.view.ReaderTabBarView;
+import cooperation.qqreader.net.BaseCgiTask;
 
-public class bgvk
-  extends BroadcastReceiver
+public abstract class bgvk
+  implements bgvh
 {
-  public bgvk(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    bgvm.c(this.a.getActivity());
-    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
-  }
+  public void b(bgvj parambgvj) {}
 }
 
 

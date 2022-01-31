@@ -1,20 +1,40 @@
-class bjod
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+public class bjod
+  extends bjof
 {
-  bjmw jdField_a_of_type_Bjmw;
-  bjmz jdField_a_of_type_Bjmz;
+  @Nullable
+  private volatile Handler jdField_a_of_type_AndroidOsHandler;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(2, new bjoe(this));
   
-  bjod(bjna parambjna, bjmz parambjmz)
+  public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Bjmw = bjnc.a(parambjna);
-    this.jdField_a_of_type_Bjmz = parambjmz;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
   }
   
-  void a(bjnb parambjnb, bjmy parambjmy)
+  public boolean a()
   {
-    bjmz localbjmz = bjoc.a(parambjmy);
-    this.jdField_a_of_type_Bjmz = bjoc.a(this.jdField_a_of_type_Bjmz, localbjmz);
-    this.jdField_a_of_type_Bjmw.a(parambjnb, parambjmy);
-    this.jdField_a_of_type_Bjmz = localbjmz;
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler == null) {
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      return;
+    }
   }
 }
 

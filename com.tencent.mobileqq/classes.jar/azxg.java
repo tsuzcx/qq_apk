@@ -1,15 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
 public class azxg
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
   public azxg(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramCompoundButton, paramBoolean);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    PublishHomeWorkFragment.a(this.a);
   }
 }
 

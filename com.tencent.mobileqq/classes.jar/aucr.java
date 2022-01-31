@@ -1,44 +1,38 @@
-import android.app.Activity;
-import android.text.Editable;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aucr
-  implements aucm
+  extends atzx
 {
   public aucr(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public Activity a()
+  public void a(int paramInt, String paramString, aubh paramaubh)
   {
-    return this.a;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
     }
-    for (;;)
+    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
+      }
       return;
-      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Aucs.a(paramBoolean);
+    this.a.a(false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
+      this.a.b(1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramaubh);
+    this.a.a(1);
+    if ((paramInt == 0) && (paramaubh.a != null) && (paramaubh.a.size() > 0))
+    {
+      axqy.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+      return;
+    }
+    axqy.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
   }
 }
 

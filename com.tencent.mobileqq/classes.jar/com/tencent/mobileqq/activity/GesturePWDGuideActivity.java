@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abia;
+import abhw;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,9 +13,9 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131693003);
+    setTitle(2131693004);
     this.a = ((Button)findViewById(2131367009));
-    this.a.setOnClickListener(new abia(this));
+    this.a.setOnClickListener(new abhw(this));
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

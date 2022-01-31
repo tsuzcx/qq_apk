@@ -1,11 +1,38 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public abstract class rog
+public class rog
+  implements View.OnClickListener
 {
-  public rog(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public int a;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody) {}
+  private rog(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  
+  public void onClick(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str;
+    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.size())
+    {
+      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a.get(this.jdField_a_of_type_Int);
+      str = localCommunityConfigInfo.jumpUrl;
+      paramView.postDelayed(new ReadInJoyDiandianHeaderController.OnCommunityItemListener.1(this, paramView), 300L);
+      nol.a(null, "", "0X8009B9F", "0X8009B9F", 0, 0, localQQAppInterface.getCurrentAccountUin(), localCommunityConfigInfo.bid + "", this.jdField_a_of_type_Int + 1 + "", "", false);
+    }
+    for (;;)
+    {
+      onh.a(paramView.getContext(), str);
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.d;
+      nol.a(null, "", "0X8009BA3", "0X8009BA3", 0, 0, localQQAppInterface.getCurrentAccountUin(), "", "", "", false);
+    }
+  }
 }
 
 

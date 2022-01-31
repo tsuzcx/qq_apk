@@ -1,18 +1,16 @@
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class adxc
-  extends adxa
+  extends adwy
 {
-  public ProgressBar a;
   public RelativeLayout a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
   public int e;
+  public int f;
   
   public adxc(adxb paramadxb)
   {

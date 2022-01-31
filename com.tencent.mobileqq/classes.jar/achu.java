@@ -1,47 +1,50 @@
-import android.os.Bundle;
-import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.List;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
 
 public class achu
-  extends mxm
+  implements View.OnClickListener
 {
   public achu(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
-    {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
       return;
-      try
-      {
-        paramBundle = new oidb_cmd0x6f6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
-            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-            return;
-          }
-        }
-      }
-      catch (Exception paramArrayOfByte) {}
     }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
+    {
+      this.a.c();
+      return;
+    }
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    {
+    default: 
+      return;
+    case 0: 
+    case 1: 
+      this.a.i();
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
+    {
+      paramView = bbdj.a(this.a, 230);
+      paramView.setTitle(null);
+      paramView.setMessage(this.a.getString(2131693494, new Object[] { this.a.jdField_a_of_type_Long + "" }));
+      paramView.setPositiveButton(this.a.getString(2131693471), new bbdt());
+      paramView.setPositiveButtonContentDescription(this.a.getString(2131693471));
+      paramView.show();
+      return;
+    }
+    paramView = TroopInfoActivity.a(this.a);
+    if (!TextUtils.isEmpty(paramView))
+    {
+      this.a.a(paramView);
+      return;
+    }
+    TroopInfoActivity.a(this.a);
   }
 }
 

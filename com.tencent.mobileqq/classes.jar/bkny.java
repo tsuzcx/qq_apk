@@ -1,59 +1,26 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.util.Property;
 
 class bkny
+  extends Property<bknw, Integer>
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
-  
-  public bkny(View paramView)
+  bkny(bknw parambknw, Class paramClass, String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376857));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376879));
-    this.b = ((TextView)paramView.findViewById(2131376848));
-    this.c = ((TextView)paramView.findViewById(2131376847));
-    this.d = ((TextView)paramView.findViewById(2131376881));
+    super(paramClass, paramString);
   }
   
-  private void a(TextView paramTextView, String paramString)
+  public Integer a(bknw parambknw)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramTextView.setVisibility(8);
-      return;
+    if (parambknw != null) {
+      return Integer.valueOf(bknw.b(parambknw));
     }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
+    return Integer.valueOf(255);
   }
   
-  public void a(vvg paramvvg1, vvg paramvvg2)
+  public void a(bknw parambknw, Integer paramInteger)
   {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramvvg1.jdField_a_of_type_Vvh.jdField_a_of_type_JavaLangString);
-    a(this.b, paramvvg1.jdField_a_of_type_Vvh.b);
-    if (paramvvg1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
+    if (parambknw != null) {
+      bknw.b(parambknw, paramInteger.intValue());
     }
-    for (;;)
-    {
-      a(this.d, paramvvg1.jdField_a_of_type_JavaLangString);
-      if (!paramvvg1.equals(paramvvg2)) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845935);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#12B7F5"));
-      return;
-      a(this.c, paramvvg1.jdField_a_of_type_Int + ajyc.a(2131711060));
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845939);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 

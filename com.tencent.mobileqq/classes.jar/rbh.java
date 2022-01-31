@@ -1,35 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 class rbh
-  extends sdt
+  extends akgf
 {
-  rbh(rap paramrap) {}
+  rbh(ram paramram) {}
   
-  public void a(sdu paramsdu)
+  protected void a()
   {
-    if (paramsdu != null)
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (pcb.a(this.a.a(), str) < qcb.d)
     {
-      int j = this.a.a.getHeaderViewsCount();
-      new ArrayList();
-      int i = paramsdu.jdField_a_of_type_Int;
-      while (i <= paramsdu.b)
-      {
-        int k = i - j;
-        if (k >= 0)
-        {
-          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
-          if (localBaseArticleInfo != null)
-          {
-            QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo + " proteusItemsData : " + localBaseArticleInfo.proteusItemsData);
-            shx.a(localBaseArticleInfo, paramsdu.jdField_a_of_type_Long);
-          }
-        }
-        i += 1;
-      }
+      this.a.a.c(6);
+      return;
     }
+    bcql.a(this.a.a(), 0, this.a.a().getString(2131718594), 0).a();
   }
 }
 

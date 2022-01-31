@@ -1,17 +1,43 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class acvg
-  extends QQLruCache<String, aelu>
+  implements acve
 {
-  public acvg(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
+  public agzd a;
+  public PreloadManager a;
+  private QQAppInterface a;
+  
+  public acvg(QQAppInterface paramQQAppInterface)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Agzd = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Agzd = ((agzd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+    }
   }
   
-  protected void a(boolean paramBoolean, String paramString, aelu paramaelu1, aelu paramaelu2)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    super.entryRemoved(paramBoolean, paramString, paramaelu1, paramaelu2);
+    ThreadManager.post(new CustomizeStrategyFactory.PanelStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aels paramaels)
+  {
+    if ((paramRedPacketInfo != null) && ((paramaels instanceof aelu)))
+    {
+      paramaels = (aelu)paramaels;
+      paramRedPacketInfo.icon = paramaels.a;
+      paramRedPacketInfo.resPath = paramaels.b;
+    }
   }
 }
 

@@ -1,116 +1,356 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
+import android.hardware.Camera.Size;
+import android.media.MediaRecorder;
+import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin.2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.1;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.2;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.3;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.4;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.5;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class afvq
-  extends WebViewPlugin
+  extends bigp
+  implements View.OnClickListener
 {
-  public BroadcastReceiver a;
-  private String a;
-  private String b;
+  private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bcme jdField_a_of_type_Bcme;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QFaceUnlockCameraCaptureUnit.1(this);
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int jdField_c_of_type_Int;
+  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private Button jdField_d_of_type_AndroidWidgetButton;
+  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
+  private String jdField_d_of_type_JavaLangString;
+  private int e = 155;
+  private int f = 211;
   
-  public afvq()
+  public afvq(bjrl parambjrl, bjrk parambjrk)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afvr(this);
-    this.mPluginNameSpace = "faceUnblockCamera";
+    super(parambjrl, parambjrk);
   }
   
-  private void a(Activity paramActivity, String paramString)
+  private Camera.Size a(List<Camera.Size> paramList1, List<Camera.Size> paramList2)
   {
-    if (avtc.a())
+    if ((paramList1 == null) || (paramList2 == null))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("edit_video_type", 10025);
-      localBundle.putInt("entrance_type", 132);
-      localBundle.putBoolean("enable_local_video", false);
-      localBundle.putLong("capture_max_duration", 5000L);
-      localBundle.putIntegerArrayList("support_intent_mode", new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(0) })));
-      localBundle.putString("key_face_unlock_code", paramString);
-      paramString = new Intent();
-      paramString.setAction("from_webtool_launchshortvideo");
-      paramString.setClass(paramActivity, JumpActivity.class);
-      paramString.putExtras(localBundle);
-      paramActivity.startActivity(paramString);
-      return;
+      paramList2 = null;
+      return paramList2;
     }
-    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "openQIMCameraCaptureActivity failed: not support media codec");
-    this.b = ShortVideoUtils.c();
-    paramActivity = new Intent("android.media.action.VIDEO_CAPTURE");
-    paramActivity.putExtra("output", Uri.fromFile(new File(this.b)));
-    paramActivity.putExtra("android.intent.extra.videoQuality", 1);
-    startActivityForResult(paramActivity, (byte)0);
-  }
-  
-  private void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    HashSet localHashSet = new HashSet(paramList1);
+    Iterator localIterator = paramList2.iterator();
+    paramList1 = null;
+    int i = -1;
+    for (;;)
     {
-      ThreadManager.excute(new FaceUnblockCameraJsApiPlugin.2(this, paramString), 64, null, true);
-      return;
-    }
-    QLog.d("FaceUnblockCameraJsApiPlugin", 1, "onActivityResult failed: media url is null");
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call FaceUnblockCameraJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
-    }
-    if ("faceUnblockCamera".equals(paramString2))
-    {
-      if ("startPTVActivity".equals(paramString3))
+      paramList2 = paramList1;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramList2 = (Camera.Size)localIterator.next();
+      if (localHashSet.contains(paramList2))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceUnblockCameraJsApiPlugin", 2, "Call startPTVActivity, args:" + paramVarArgs);
-        }
-        this.jdField_a_of_type_JavaLangString = paramString1.split("#")[1];
-        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          a(this.mRuntime.a(), paramVarArgs[0]);
+        int j = paramList2.width * paramList2.height;
+        if (j > i)
+        {
+          i = j;
+          paramList1 = paramList2;
         }
       }
-      return true;
     }
-    return false;
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  private void b(boolean paramBoolean)
   {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if ((paramByte == 0) && (paramInt == -1))
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.4(this, paramBoolean));
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(null);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(null);
+    }
+    try
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FaceUnblockCameraJsApiPlugin", 2, "onActivityResult: RESULT_OK, doParseData");
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord begin");
       }
-      a(this.b);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
+      if (paramBoolean) {
+        this.jdField_a_of_type_AndroidOsHandler.post(new QFaceUnlockCameraCaptureUnit.5(this));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord end");
+      }
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, Exception: " + localException.getMessage());
+      }
+    }
+    this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
+  }
+  
+  private void l()
+  {
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131699026);
+    this.jdField_d_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  private void n()
+  {
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.3(this));
+  }
+  
+  protected int a()
+  {
+    return 2131559061;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    ((TextView)localView.findViewById(2131363851)).setOnClickListener(this);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(3);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.f();
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372764));
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131699026);
+    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366409));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365884));
+    int i = actj.a(this.e, a().getResources());
+    this.jdField_a_of_type_Bcme = new bcme();
+    this.jdField_a_of_type_Bcme.a(actj.a(this.e + this.f, a().getResources()));
+    this.jdField_a_of_type_Bcme.a(i);
+    this.jdField_a_of_type_Bcme.b(1);
+    if (Build.VERSION.SDK_INT > 15) {
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackground(this.jdField_a_of_type_Bcme);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376444));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131375037));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365887));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
+      return localView;
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Bcme);
     }
   }
   
-  public void onCreate()
+  protected avul a()
   {
-    super.onCreate();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
-    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    avul localavul = super.a();
+    localavul.l(3);
+    localavul.i(1);
+    localavul.a(false);
+    return localavul;
   }
   
-  public void onDestroy()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super.onDestroy();
-    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    super.a(paramInt1, paramInt2, paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResult");
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    a().getWindow().setFlags(1024, 1024);
+    a().requestWindowFeature(1);
+    super.a(paramBundle);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bjrl.a().getIntent().getStringExtra("key_face_unlock_code");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      this.jdField_c_of_type_JavaLangString = "6978";
+      QLog.e("QFaceUnlockCameraCaptureUnit", 1, "verification code is null, use default code");
+    }
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult)
+  {
+    super.a(paramVideoCaptureResult);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.getUIHandler().post(new QFaceUnlockCameraCaptureUnit.2(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
+      return;
+    }
+    QLog.e("QFaceUnlockCameraCaptureUnit", 1, "Camera start fail!");
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityPause");
+    }
+    b(false);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onDestroy");
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResume");
+    }
+  }
+  
+  public void g()
+  {
+    int i = 0;
+    l();
+    if (amfv.d()) {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+        if (this.jdField_c_of_type_Boolean) {
+          i = 8;
+        }
+        localViewGroup.setVisibility(i);
+      }
+      this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      }
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+  }
+  
+  protected void i()
+  {
+    super.i();
+  }
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131363851)
+    {
+      a().finish();
+      a().overridePendingTransition(2130772036, 2130772218);
+    }
+    do
+    {
+      return;
+      super.onClick(paramView);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+      if (this.jdField_c_of_type_Int == 0)
+      {
+        this.jdField_c_of_type_Int = 1;
+        this.jdField_d_of_type_AndroidWidgetButton.setText(2131699029);
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        n();
+        return;
+      }
+    } while (this.jdField_c_of_type_Int != 1);
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_c_of_type_Int = 2;
+    b(true);
   }
 }
 

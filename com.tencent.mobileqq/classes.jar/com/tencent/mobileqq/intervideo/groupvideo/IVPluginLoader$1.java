@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.os.Handler;
-import areo;
-import arfn;
+import areq;
+import arfp;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.Map;
 
 public class IVPluginLoader$1
   implements Runnable
 {
-  public IVPluginLoader$1(arfn paramarfn, String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap) {}
+  public IVPluginLoader$1(arfp paramarfp, String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap) {}
   
   public void run()
   {
-    areo.a().a(this.jdField_a_of_type_JavaLangString, arfn.a(this.this$0));
+    areq.a().a(this.jdField_a_of_type_JavaLangString, arfp.a(this.this$0));
     ThreadManagerV2.getUIHandlerV2().post(new IVPluginLoader.1.1(this));
   }
 }

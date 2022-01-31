@@ -1,26 +1,9 @@
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.10.2;
-import com.tencent.mobileqq.data.MessageRecord;
 
 public class reu
-  implements osb
+  extends osm
 {
   public reu(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
-  
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.2(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.10.1(this));
-  }
 }
 
 

@@ -1,3 +1,4 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.net.URL;
 import org.json.JSONObject;
@@ -7,29 +8,35 @@ public class pdz
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
     JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
     JSONObject localJSONObject2 = new JSONObject();
-    if (paramBaseArticleInfo.mSinglePicture != null) {}
-    for (Object localObject = paramBaseArticleInfo.mSinglePicture.getFile();; localObject = null)
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
     {
-      localJSONObject2.put("article_large_imge_url", localObject);
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", str);
       localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      if (paramBaseArticleInfo.mGalleryPicNumber > 1)
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajyc.a(2131712892));
-        localJSONObject1.put("id_gallery_cnt", localObject);
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("gallery_icon", "qq_readinjoy_gallery_count");
-        localJSONObject1.put("id_gallery_img", localObject);
-        localJSONObject1.put("id_gallery_bg", new JSONObject());
+      pek.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label130;
       }
-      pen.a(paramBaseArticleInfo, localJSONObject1, true);
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.i(paramBaseArticleInfo, localJSONObject1);
-      pen.a(localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_gallery_channel_large_cell");
-      pen.a(localJSONObject1, paramBaseArticleInfo);
+      pek.a(paramBaseArticleInfo, localJSONObject1);
+      pek.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      pek.m(paramBaseArticleInfo, localJSONObject1);
+      pek.e(paramBaseArticleInfo, localJSONObject1);
+      pek.g(paramBaseArticleInfo, localJSONObject1);
+      pek.Y(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      pek.a(localJSONObject1, paramBaseArticleInfo);
+      pek.ab(paramBaseArticleInfo, localJSONObject1);
       return localJSONObject1;
+      str = null;
+      break;
+      label130:
+      pek.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }

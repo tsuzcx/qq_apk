@@ -1,6 +1,17 @@
-public abstract interface birm
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+
+public class birm
 {
-  public abstract void a(bisc parambisc);
+  public int a;
+  public MetaMaterial a;
+  public int b;
+  
+  public birm(MetaMaterial paramMetaMaterial, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

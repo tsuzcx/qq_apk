@@ -1,73 +1,67 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ogh
-  implements anyb
 {
-  public ogh(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public int a;
+  public long a;
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
   
-  public void a(anyc paramanyc)
+  public ogh(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
   {
-    if ((paramanyc instanceof aobk))
-    {
-      paramanyc = (aobk)paramanyc;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramanyc.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
+    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
+  }
+  
+  public ogh(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    paramReadInJoyCommentComponentFragment = paramCharSequence;
+    if (paramCharSequence == null) {
+      paramReadInJoyCommentComponentFragment = "";
     }
-    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramanyc, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+    this.b = paramReadInJoyCommentComponentFragment;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(anyc paramanyc1, anyc paramanyc2, Drawable paramDrawable) {}
-  
-  public boolean a(anyc paramanyc)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bbcz.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
+        break label79;
+      }
+      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+    }
     for (;;)
     {
-      return;
-      try
-      {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+      return;
+      label79:
+      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
+        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
       }
     }
   }
   
-  public void b(anyc paramanyc) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
+  public String toString()
+  {
+    int i = 0;
+    if (!TextUtils.isEmpty(this.b)) {
+      i = this.b.length();
+    }
+    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
+  }
 }
 
 

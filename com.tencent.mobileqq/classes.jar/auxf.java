@@ -1,29 +1,141 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QzonePluginProxyActivity;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 
-class auxf
-  implements View.OnClickListener
+public class auxf
 {
-  auxf(auxe paramauxe, int paramInt) {}
+  public static int a = -16692;
+  public static int b = -16693;
   
-  public void onClick(View paramView)
+  public static Drawable a(int paramInt)
   {
-    if (auxe.a(this.jdField_a_of_type_Auxe) == this.jdField_a_of_type_Int) {
+    Iterator localIterator = auxe.a.iterator();
+    while (localIterator.hasNext())
+    {
+      auxk localauxk = (auxk)localIterator.next();
+      if (paramInt == localauxk.jdField_a_of_type_Long) {
+        return localauxk.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
+      }
+    }
+    return null;
+  }
+  
+  private static Class<?> a(Context paramContext, String paramString)
+  {
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = Class.forName(paramString);
+      localObject1 = localObject2;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        try
+        {
+          Object localObject2 = QzonePluginProxyActivity.a(paramContext).loadClass(paramString);
+          return localObject2;
+        }
+        catch (Throwable paramContext)
+        {
+          QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from qzone plugin class loader.");
+        }
+        localThrowable = localThrowable;
+        QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from normal class loader.");
+      }
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {}
+    return localObject1;
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      if ((paramEditText.getText() instanceof ayku))
+      {
+        ayku localayku = (ayku)paramEditText.getText();
+        if (localayku != null) {
+          return localayku.a();
+        }
+      }
+      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
+        return paramEditText.getEditableText().toString();
+      }
+    }
+    return null;
+  }
+  
+  public static void a(Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean, bhkn parambhkn)
+  {
+    try
+    {
+      paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
+      if (paramContext != null) {
+        paramContext.getMethod("modifyStickyNotePriv", new Class[] { Long.TYPE, Long.TYPE, String.class, Boolean.TYPE, bhkn.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Boolean.valueOf(paramBoolean), parambhkn });
+      }
       return;
     }
-    paramView = auxe.a(this.jdField_a_of_type_Auxe).iterator();
-    while (paramView.hasNext()) {
-      ((auxi)paramView.next()).a = false;
+    catch (Exception paramContext)
+    {
+      QLog.e("StickyNotePublishUtils", 1, "modifyStickyNotePriv fail.", paramContext);
     }
-    ((auxi)auxe.a(this.jdField_a_of_type_Auxe).get(this.jdField_a_of_type_Int)).a = true;
-    auxe.a(this.jdField_a_of_type_Auxe, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Auxe.notifyDataSetChanged();
-    if (auxe.a(this.jdField_a_of_type_Auxe) != null) {
-      auxe.a(this.jdField_a_of_type_Auxe).a((auxi)auxe.a(this.jdField_a_of_type_Auxe).get(this.jdField_a_of_type_Int));
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, boolean paramBoolean, String paramString1, String paramString2, String paramString3, bhkn parambhkn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickyNotePublishUtils", 0, String.format("publishStickyNote, hostUin=%s publishUin=%s isPublic=%s bgColor=%s vasExtendInfo=%s content=%s callback=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, parambhkn }));
     }
-    axqw.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
+    if ((paramContext == null) || (paramQQAppInterface == null) || (paramLong1 == 0L) || (paramLong2 == 0L) || (TextUtils.isEmpty(paramString3))) {
+      QLog.e("StickyNotePublishUtils", 1, "publishStickyNote, params invalid.");
+    }
+    for (;;)
+    {
+      return;
+      boolean bool1 = bhby.a(paramContext, paramQQAppInterface);
+      boolean bool2 = bhby.b(paramContext, paramQQAppInterface);
+      if ((!bool1) || (!bool2))
+      {
+        QLog.e("StickyNotePublishUtils", 1, String.format("publishStickyNote, init fail. initEnv=%s initServlet=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        return;
+      }
+      try
+      {
+        paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
+        if (paramContext != null)
+        {
+          paramContext.getMethod("publishStickyNote", new Class[] { Long.TYPE, Long.TYPE, Boolean.TYPE, String.class, String.class, String.class, bhkn.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, parambhkn });
+          return;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("StickyNotePublishUtils", 1, "publishStickyNote fail.", paramContext);
+      }
+    }
+  }
+  
+  public static String b(EditText paramEditText)
+  {
+    if (paramEditText != null)
+    {
+      paramEditText = a(paramEditText);
+      if (!TextUtils.isEmpty(paramEditText)) {
+        return bhve.b(paramEditText.replaceAll(ajya.a(2131705802), ajya.a(2131705804)).replaceAll(ajya.a(2131705801), "/MM"));
+      }
+    }
+    return "";
   }
 }
 

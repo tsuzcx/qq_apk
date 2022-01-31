@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.app.TroopManager;
+import java.util.ArrayList;
 
-public class akij
+public abstract interface akij
 {
-  public int a;
-  public String a;
+  public abstract void a(String paramString);
   
-  public akij(TroopManager paramTroopManager) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof akij))
-    {
-      paramObject = (akij)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
-        return true;
-      }
-    }
-    return false;
-  }
+  public abstract void a(ArrayList<String> paramArrayList);
   
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

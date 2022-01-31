@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
-import axlc;
+import axle;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ArtFilterBridgeActivity$1
@@ -10,7 +10,7 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    axlc.a(this.this$0.app, this.this$0.app.getApplication());
+    axle.a(this.this$0.app, this.this$0.app.getApplication());
   }
 }
 

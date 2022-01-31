@@ -3,7 +3,7 @@ package com.tencent.gdtad.views.form.framework;
 import android.text.TextUtils;
 import com.tencent.gdtad.views.xijing.GdtTextData;
 import java.io.Serializable;
-import zai;
+import zaf;
 
 public abstract class GdtFormItemData
   implements Serializable
@@ -26,7 +26,7 @@ public abstract class GdtFormItemData
     return (this.paddingTop >= 0) && (this.paddingBottom >= 0) && (this.title != null) && (this.title.isValid()) && (!TextUtils.isEmpty(this.title.text)) && (this.titlePaddingLeft >= 0) && (this.titlePaddingRight >= 0) && (this.contentPaddingLeft >= 0) && (this.contentPaddingRight >= 0) && ((this.placeholder == null) || (this.placeholder.isValid()));
   }
   
-  public abstract zai validate();
+  public abstract zaf validate();
 }
 
 

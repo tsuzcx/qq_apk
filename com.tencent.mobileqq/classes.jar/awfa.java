@@ -1,17 +1,24 @@
-import android.view.View;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
-public class awfa
+public abstract class awfa
+  extends ClickableSpan
   implements View.OnClickListener
 {
-  public awfa(CommentsView paramCommentsView, awex paramawex, int paramInt) {}
+  private int a;
   
-  public void onClick(View paramView)
+  public awfa(int paramInt)
   {
-    if ((this.jdField_a_of_type_Awex.a()) && (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null)) {
-      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
-    }
+    this.a = paramInt;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.a);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

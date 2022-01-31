@@ -1,240 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl.1;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.ArrayList;
+import com.tencent.open.appcommon.js.BaseInterface;
+import com.tencent.smtt.sdk.WebView;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import mqq.os.MqqHandler;
 
 public class bdge
-  implements bdfy
 {
-  private ArrayList<bdgi> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Map<String, bdgk> jdField_a_of_type_JavaUtilMap = new HashMap();
+  protected static Map<Integer, List<BaseInterface>> a = new HashMap();
   
-  public void a()
+  public static void a(WebView paramWebView)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    int i;
+    try
+    {
+      i = paramWebView.hashCode();
+      paramWebView = (List)a.get(Integer.valueOf(i));
+      if (paramWebView == null) {
+        return;
+      }
+      Iterator localIterator = paramWebView.iterator();
+      while (localIterator.hasNext()) {
+        ((BaseInterface)localIterator.next()).destroy();
+      }
+      paramWebView.clear();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new DownloadCallbackNativeImpl.1(this, paramInt), 3000L);
-  }
-  
-  public void a(bdgi parambdgi)
-  {
-    if ((parambdgi != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(parambdgi))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(parambdgi);
-    }
-  }
-  
-  public void a(bdgk parambdgk)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    }
-    if ((parambdgk == null) || (TextUtils.isEmpty(parambdgk.jdField_a_of_type_JavaLangString))) {}
-    while (this.jdField_a_of_type_JavaUtilMap.containsKey(parambdgk.jdField_a_of_type_JavaLangString)) {
+    catch (Exception paramWebView)
+    {
+      paramWebView.printStackTrace();
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(parambdgk.jdField_a_of_type_JavaLangString, parambdgk);
+    a.remove(Integer.valueOf(i));
   }
   
-  public void a(DownloadInfo paramDownloadInfo, int paramInt) {}
-  
-  public void a(String paramString)
+  public static void a(WebView paramWebView, String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      ((bdgk)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = true;
-    }
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    if (paramList == null) {
-      label4:
-      return;
-    } else {
-      paramList = paramList.iterator();
-    }
-    for (;;)
+    try
     {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
-      Object localObject = (DownloadInfo)paramList.next();
-      if (localObject == null) {
-        break;
-      }
-      bdgj localbdgj = new bdgj();
-      localbdgj.a((DownloadInfo)localObject);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bdgi)((Iterator)localObject).next()).d(localbdgj);
-      }
-    }
-  }
-  
-  public void b(bdgi parambdgi)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambdgi);
-    }
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.jdField_a_of_type_JavaLangString = paramString1;
-      localbdgj.b = paramString2;
-      localbdgj.jdField_a_of_type_Int = 7;
-      paramString1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString1.hasNext()) {
-        ((bdgi)paramString1.next()).a(localbdgj);
-      }
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramDownloadInfo != null))
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.a(paramDownloadInfo);
-      paramDownloadInfo = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDownloadInfo.hasNext()) {
-        ((bdgi)paramDownloadInfo.next()).a(localbdgj);
-      }
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramDownloadInfo != null))
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.a(paramDownloadInfo);
-      localbdgj.jdField_a_of_type_Int = localbdgj.a(paramDownloadInfo.a());
-      localbdgj.jdField_c_of_type_Int = localbdgj.b(paramInt1);
-      localbdgj.jdField_c_of_type_JavaLangString = paramString;
-      paramString = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString.hasNext()) {
-        ((bdgi)paramString.next()).b(localbdgj);
-      }
-      if (localbdgj.jdField_c_of_type_Int == 201)
+      int i = paramWebView.hashCode();
+      paramWebView = ((List)a.get(Integer.valueOf(i))).iterator();
+      while (paramWebView.hasNext())
       {
-        paramString = (bdgk)this.jdField_a_of_type_JavaUtilMap.get(localbdgj.jdField_a_of_type_JavaLangString);
-        if ((paramString != null) && (!paramString.b)) {
-          bdfv.a().a(paramDownloadInfo);
+        BaseInterface localBaseInterface = (BaseInterface)paramWebView.next();
+        if (localBaseInterface != null) {
+          localBaseInterface.setCurrentUrl(paramString);
         }
       }
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramDownloadInfo != null))
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.a(paramDownloadInfo);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((bdgi)localIterator.next()).a(localbdgj);
-      }
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramDownloadInfo.jdField_c_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramDownloadInfo != null))
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.a(paramDownloadInfo);
-      paramDownloadInfo = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDownloadInfo.hasNext()) {
-        ((bdgi)paramDownloadInfo.next()).a(localbdgj);
-      }
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList == null) {
-      label4:
       return;
-    } else {
-      paramList = paramList.iterator();
     }
-    for (;;)
+    catch (Exception paramWebView)
     {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
-      Object localObject = (DownloadInfo)paramList.next();
-      if (localObject == null) {
-        break;
-      }
-      bdgj localbdgj = new bdgj();
-      localbdgj.a((DownloadInfo)localObject);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((bdgi)((Iterator)localObject).next()).c(localbdgj);
-      }
+      paramWebView.printStackTrace();
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, arlw paramarlw)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramDownloadInfo != null))
+    if (!bdio.a(paramString))
     {
-      bdgj localbdgj = new bdgj();
-      localbdgj.a(paramDownloadInfo);
-      paramDownloadInfo = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDownloadInfo.hasNext()) {
-        ((bdgi)paramDownloadInfo.next()).a(localbdgj);
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
+        paramarlw.a(localBaseInterface, localBaseInterface.getInterfaceName());
+        bdfv.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
+        localBaseInterface.setCurrentUrl(paramString);
       }
     }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.jdField_a_of_type_JavaLangString = paramString1;
-      localbdgj.b = paramString2;
-      localbdgj.jdField_a_of_type_Int = 9;
-      paramString1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString1.hasNext()) {
-        ((bdgi)paramString1.next()).a(localbdgj);
-      }
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      bdgj localbdgj = new bdgj();
-      localbdgj.jdField_a_of_type_JavaLangString = paramString1;
-      localbdgj.b = paramString2;
-      localbdgj.jdField_a_of_type_Int = 8;
-      paramString1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramString1.hasNext()) {
-        ((bdgi)paramString1.next()).a(localbdgj);
-      }
-    }
+    a.put(Integer.valueOf(paramWebView.hashCode()), paramList);
   }
 }
 

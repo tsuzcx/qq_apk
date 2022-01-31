@@ -1,9 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
-public abstract interface okv
-  extends ViewBase.OnClickListener
+class okv
+  implements View.OnKeyListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  okv(okt paramokt) {}
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    okt.a(this.a);
+    return true;
+  }
 }
 
 

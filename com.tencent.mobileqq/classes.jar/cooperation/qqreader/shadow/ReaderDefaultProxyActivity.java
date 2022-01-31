@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
-import bgvo;
-import bgvr;
+import bgwf;
+import bgwi;
 
 public class ReaderDefaultProxyActivity
   extends Activity
@@ -18,8 +18,8 @@ public class ReaderDefaultProxyActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bgvo.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
-    bgvr.a(this, -1, "Recover failed activity=" + this.a);
+    bgwf.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
+    bgwi.a(this, -1, "Recover failed activity=" + this.a);
     finish();
     Process.killProcess(Process.myPid());
   }

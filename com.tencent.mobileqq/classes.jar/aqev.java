@@ -1,17 +1,23 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aqev
   implements DialogInterface.OnClickListener
 {
-  aqev(aqeq paramaqeq) {}
+  aqev(aqes paramaqes) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.f = false;
-    this.a.a.finish();
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
+    }
   }
 }
 

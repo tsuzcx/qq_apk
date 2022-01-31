@@ -1,143 +1,19 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
 import com.tencent.mobileqq.pb.PBStringField;
-import java.util.List;
 
 public class wjk
-  extends RecyclerView.Adapter<wjl>
+  implements wkk
 {
-  protected CertifiedAccountMeta.StEntry a;
-  protected List<wko> a;
-  private wjj jdField_a_of_type_Wjj;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public wjk(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  protected int a()
+  public void a()
   {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public List<wko> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public wjl a(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject = paramViewGroup.getContext();
-    paramViewGroup = new RecyclerView.LayoutParams(bawz.a((Context)localObject, 144.0F), bawz.a((Context)localObject, 213.0F));
-    if (paramInt == 3)
-    {
-      localObject = new RecommendBannerEntryItemView((Context)localObject);
-      ((RecommendBannerEntryItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.b);
-      return new wjl(this, (View)localObject);
-    }
-    if (paramInt == 1)
-    {
-      localObject = new RecommendBannerItemView((Context)localObject);
-      ((RecommendBannerItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerItemView)localObject).setInNightMode(this.b);
-      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.c);
-      return new wjl(this, (View)localObject);
-    }
-    if (paramInt == 2)
-    {
-      localObject = new RecommendBannerFeedItemView((Context)localObject);
-      ((RecommendBannerFeedItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.b);
-      return new wjl(this, (View)localObject);
-    }
-    return null;
-  }
-  
-  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<wko> paramList)
-  {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(wjj paramwjj)
-  {
-    this.jdField_a_of_type_Wjj = paramwjj;
-  }
-  
-  public void a(wjl paramwjl)
-  {
-    super.onViewAttachedToWindow(paramwjl);
-    int i = paramwjl.getAdapterPosition() - a();
-    if ((!bfmh.a(i, a())) && (a().get(i) != null)) {
-      xhe.a(((wko)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((wko)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get() });
-    }
-  }
-  
-  public void a(wjl paramwjl, int paramInt)
-  {
-    if (paramwjl == null) {}
-    do
-    {
+    if (RecommendBannerFeedItemView.a(this.a) == null) {
       return;
-      if ((paramwjl.itemView instanceof RecommendBannerEntryItemView))
-      {
-        ((RecommendBannerEntryItemView)paramwjl.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
-        return;
-      }
-      paramInt -= a();
-      if ((paramwjl.itemView instanceof RecommendBannerItemView))
-      {
-        paramwjl = (RecommendBannerItemView)paramwjl.itemView;
-        paramwjl.setData(((wko)a().get(paramInt)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, paramInt);
-        paramwjl.setRecommendBannerFolwListener(this.jdField_a_of_type_Wjj);
-        return;
-      }
-    } while (!(paramwjl.itemView instanceof RecommendBannerFeedItemView));
-    ((RecommendBannerFeedItemView)paramwjl.itemView).setData(((wko)a().get(paramInt)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, paramInt);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  public int getItemCount()
-  {
-    if (a() == null) {
-      return a();
     }
-    return a().size() + a();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null)) {
-      return 3;
-    }
-    return ((wko)a().get(paramInt - a())).jdField_a_of_type_Int;
+    xhb.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }
 }
 

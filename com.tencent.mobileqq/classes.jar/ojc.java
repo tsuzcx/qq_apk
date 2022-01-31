@@ -1,21 +1,16 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 class ojc
-  extends ojq
+  extends ojn
 {
-  ojc(oio paramoio, boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  ojc(oil paramoil, BaseCommentData paramBaseCommentData)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramojt.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, oio.e(this.jdField_a_of_type_Oio), 4);
-      return;
-    }
-    paramojt.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, oio.e(this.jdField_a_of_type_Oio), 4, 4);
+    paramojq.onCommentReply(true, new oif(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, oil.a(this.jdField_a_of_type_Oil)));
   }
 }
 

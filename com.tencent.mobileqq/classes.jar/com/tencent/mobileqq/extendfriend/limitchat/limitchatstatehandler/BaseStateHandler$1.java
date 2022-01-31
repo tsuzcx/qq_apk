@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
-import aojo;
-import aojq;
+import aojt;
+import aojv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class BaseStateHandler$1
   implements Runnable
 {
-  public BaseStateHandler$1(aojq paramaojq, String paramString1, String paramString2) {}
+  public BaseStateHandler$1(aojv paramaojv, String paramString1, String paramString2) {}
   
   public void run()
   {
-    aojo.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a, this.b);
+    aojt.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a, this.b);
   }
 }
 

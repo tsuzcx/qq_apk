@@ -1,113 +1,142 @@
-import android.opengl.GLES20;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class axlb
 {
   private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private int[] c = new int[1];
-  private int[] d = new int[1];
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private avzb jdField_a_of_type_Avzb;
+  public avzc a;
+  private String jdField_a_of_type_JavaLangString;
+  private float[] jdField_a_of_type_ArrayOfFloat;
   
-  public static void a(String paramString) {}
-  
-  private void d()
+  private static long a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    return paramInt * 1000000000L / 25L;
+  }
+  
+  private Bitmap a(Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap.getWidth() % 2 == 1)
     {
-      GLES20.glGenRenderbuffers(1, this.c, 0);
-      a("glGenRenderbuffers:Depth");
-      GLES20.glBindRenderbuffer(36161, this.c[0]);
-      a("glBindRenderbuffer:Depth");
-      if (this.jdField_b_of_type_Boolean)
+      localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+    }
+    return localBitmap;
+  }
+  
+  private void a()
+  {
+    ved.b("Q.qqstory.publish.upload.PicToVideoConverter", "preparing.");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ved.b("Q.qqstory.publish.upload.PicToVideoConverter", "bitmap's width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    avza localavza = new avza(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), 532480, 1, false, 0);
+    localavza.d = 25;
+    this.jdField_a_of_type_Avzc = new avzc();
+    this.jdField_a_of_type_Avzc.a(localavza);
+    this.jdField_a_of_type_Avzb = new avzb();
+    this.jdField_a_of_type_Avzb.a(localavza, this.jdField_a_of_type_Avzc.a());
+    this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+  }
+  
+  private void b()
+  {
+    ved.b("Q.qqstory.publish.upload.PicToVideoConverter", "releasing.");
+    if (this.jdField_a_of_type_Avzb != null)
+    {
+      this.jdField_a_of_type_Avzb.a();
+      this.jdField_a_of_type_Avzb = null;
+    }
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      throw new IllegalStateException("convert image to video failed. because input path or target path is null!");
+    }
+    ved.d("Q.qqstory.publish.upload.PicToVideoConverter", "input file path is %s. output file path is %s.", new Object[] { paramString1, paramString2 });
+    if (!vyf.c(paramString1))
+    {
+      ved.e("Q.qqstory.publish.upload.PicToVideoConverter", "input file does not exists or is empty.");
+      return 940007;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(paramString1);
+      l = System.currentTimeMillis();
+    }
+    catch (OutOfMemoryError paramString2)
+    {
+      try
       {
-        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        a("glRenderbufferStorage:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Stencil[packed]");
-        this.d[0] = this.c[0];
+        for (;;)
+        {
+          a();
+          i = 0;
+          for (;;)
+          {
+            if (i < 75)
+            {
+              this.jdField_a_of_type_Avzc.a();
+              this.jdField_a_of_type_Avzb.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null, a(i));
+              i += 1;
+              continue;
+              paramString2 = paramString2;
+              System.gc();
+              try
+              {
+                Thread.sleep(1000L);
+                this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a(paramString1, 540, 960);
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+                  this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a(paramString1, 360, 640);
+                }
+                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+                  break;
+                }
+                ved.e("Q.qqstory.publish.upload.PicToVideoConverter", "decode bitmap <%s> error:%s", new Object[] { paramString1, paramString2 });
+                return 942014;
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                for (;;)
+                {
+                  localInterruptedException.printStackTrace();
+                }
+              }
+            }
+          }
+        }
+        this.jdField_a_of_type_Avzc.b();
+        b();
+        i = 0;
       }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          long l;
+          ved.b("Q.qqstory.publish.upload.PicToVideoConverter", "convert picture to video error. %s.", paramString1);
+          int i = 942013;
+          this.jdField_a_of_type_Avzc.c();
+          b();
+        }
+      }
+      finally
+      {
+        b();
+      }
+      ved.d("Q.qqstory.publish.upload.PicToVideoConverter", "convert image to video done. cost time %d. errorCode is %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
+      return i;
     }
-    else
-    {
-      return;
-    }
-    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    a("glRenderbufferStorage:Depth");
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-    a("glFramebufferRenderbuffer:Depth");
-    this.d[0] = 0;
-  }
-  
-  public void a()
-  {
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-  }
-  
-  public void a(int paramInt)
-  {
-    a();
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
-    a("glFramebufferTexture2D");
-    paramInt = GLES20.glCheckFramebufferStatus(36160);
-    if (paramInt != 36053) {
-      a("glCheckFramebufferStatus: status=" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, paramInt1);
-    a("glBindTexture");
-    GLES20.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10241, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    a("glTexParameteri");
-    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
-    a("glTexImage2D");
-    GLES20.glBindTexture(3553, 0);
-    a("glBindTexture");
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    a("glIsTexture");
-    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    a("glGenFramebuffers");
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-    a("glBindFramebuffer");
-    d();
-    return true;
-  }
-  
-  public void b()
-  {
-    GLES20.glBindFramebuffer(36160, 0);
-  }
-  
-  public void c()
-  {
-    b();
-    if (this.jdField_a_of_type_Boolean) {
-      GLES20.glDeleteRenderbuffers(1, this.c, 0);
-    }
-    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    this.jdField_b_of_type_ArrayOfInt[0] = 0;
-    this.c[0] = 0;
-    this.d[0] = 0;
   }
 }
 

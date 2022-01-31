@@ -1,18 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class nwd
-  implements View.OnClickListener
+  implements bfph
 {
-  public nwd(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
+  public nwd(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a(true);
-    ThreadManager.executeOnSubThread(new ReadInJoyFollowActivity.1.1(this));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      osg.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    }
   }
 }
 

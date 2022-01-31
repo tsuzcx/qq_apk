@@ -1,38 +1,33 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class abep
-  implements bfoq
+public class abep
+  extends akfy
 {
-  abep(abel paramabel, int[] paramArrayOfInt, mui parammui) {}
+  public abep(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
     if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
+      QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: ");
     }
-    this.jdField_a_of_type_Mui.dismiss();
-    switch (i)
+    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
     {
-    default: 
-      return;
-    case 1: 
-      FriendProfileCardActivity.a(this.jdField_a_of_type_Abel.a.app, this.jdField_a_of_type_Abel.a, this.jdField_a_of_type_Abel.a.a);
-      axqw.b(this.jdField_a_of_type_Abel.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
-      return;
+      this.a.a(0L, null, null, false);
+      if (FriendProfileCardActivity.b(this.a).compareAndSet(true, false))
+      {
+        if (FriendProfileCardActivity.a(this.a).get())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("FriendProfileCardActivity", 2, "onVipStatusChanged: showDialog");
+          }
+          bbdj.a(this.a, 232, null, ajya.a(2131704898), null, ajya.a(2131704906), new abeq(this), null).show();
+        }
+        this.a.removeObserver(FriendProfileCardActivity.a(this.a));
+      }
     }
-    paramView = new SessionInfo();
-    paramView.jdField_a_of_type_Int = bazo.a(this.jdField_a_of_type_Abel.a.a.a);
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Abel.a.a.a.jdField_a_of_type_JavaLangString;
-    paramView.d = FriendProfileCardActivity.a(this.jdField_a_of_type_Abel.a.a, this.jdField_a_of_type_Abel.a.app);
-    paramView.b = this.jdField_a_of_type_Abel.a.a.a.d;
-    acxv.a(this.jdField_a_of_type_Abel.a.app, this.jdField_a_of_type_Abel.a, paramView, false, null, null);
-    axqw.b(this.jdField_a_of_type_Abel.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
   }
 }
 

@@ -1,5 +1,7 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acjl
@@ -9,8 +11,9 @@ public class acjl
   
   public void onClick(View paramView)
   {
-    TroopMemberListActivity.b(this.a);
-    new axra(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

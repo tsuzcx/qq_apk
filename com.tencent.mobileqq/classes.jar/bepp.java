@@ -1,16 +1,22 @@
-class bepp
-  extends bepn
+import android.os.Bundle;
+import android.os.IInterface;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
+public abstract interface bepp
+  extends IInterface
 {
-  bepp(bepo parambepo) {}
+  public abstract Bundle a(String paramString1, String paramString2, Bundle paramBundle);
   
-  public void a(bepm parambepm)
-  {
-    if ((parambepm == null) || (parambepm.a == null)) {
-      return;
-    }
-    besl.b("minisdk-start_AppRuntimeLoaderManager", "OnRuntimeEvent message:" + parambepm);
-    bepo.a(this.a, parambepm);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
+  
+  public abstract void a(MiniAppInfo paramMiniAppInfo);
+  
+  public abstract void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  
+  public abstract void a(String paramString1, String paramString2, Bundle paramBundle, bepu parambepu);
 }
 
 

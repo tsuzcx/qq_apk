@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukn;
+import aukp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pbm;
+import pbj;
 
 public class ReadInJoyUserInfoRepository$2
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$2(pbm parampbm, int paramInt) {}
+  public ReadInJoyUserInfoRepository$2(pbj parampbj, int paramInt) {}
   
   public void run()
   {
-    Object localObject = pbm.a(this.this$0);
+    Object localObject = pbj.a(this.this$0);
     int i = this.a;
-    localObject = ((aukn)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
+    localObject = ((aukp)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       Iterator localIterator = ((List)localObject).iterator();

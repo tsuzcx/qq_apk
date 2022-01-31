@@ -1,19 +1,12 @@
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.util.Pair;
-import java.util.Comparator;
 
-public class awci
-  implements Comparator<Pair<Integer, Integer>>
+public abstract interface awci
 {
-  public awci(RichStatus paramRichStatus) {}
+  public abstract void a(int paramInt, RichStatus paramRichStatus, Object paramObject);
   
-  public int a(Pair<Integer, Integer> paramPair1, Pair<Integer, Integer> paramPair2)
-  {
-    if (((Integer)paramPair1.second).intValue() < ((Integer)paramPair2.second).intValue()) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, boolean paramBoolean);
 }
 
 

@@ -1,17 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class biuj
-  implements View.OnClickListener
+class biuj
+  implements EIPCResultCallback
 {
   biuj(biua parambiua) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    biua.b(this.a);
-    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
+    if (paramEIPCResult.code == 0)
+    {
+      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
+      return;
+    }
+    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
   }
 }
 

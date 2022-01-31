@@ -1,94 +1,23 @@
-import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoReq;
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.1;
+import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266.2;
 
 public class beyw
-  extends bfad
 {
-  private INTERFACE.StBatchGetUserInfoReq a = new INTERFACE.StBatchGetUserInfoReq();
-  
-  public beyw(String paramString1, String paramString2, String[] paramArrayOfString)
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    this.a.appid.set(paramString1);
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.a.lang.set(paramString2);
-    }
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      paramString1 = paramArrayOfString[i];
-      this.a.openIds.add(paramString1);
-      i += 1;
-    }
+    bezf.a().a().post(new MiniProgramLpReportDC04266.1(paramInt1, paramMiniAppInfo, paramInt2, paramString2, paramLong2, paramLong1, paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10));
   }
   
-  protected String a()
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    return "mini_user_info";
+    bezf.a().a().post(new MiniProgramLpReportDC04266.2(paramMiniAppInfo, paramString1, paramString2, paramInt, paramLong1, paramLong2, paramString3, paramString4, paramString5, paramString6, paramString7));
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  private static boolean b(int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject = new INTERFACE.StBatchGetUserInfoRsp();
-    try
-    {
-      ((INTERFACE.StBatchGetUserInfoRsp)localObject).mergeFrom(a(paramArrayOfByte));
-      if ((localObject == null) || (((INTERFACE.StBatchGetUserInfoRsp)localObject).user == null)) {
-        break label270;
-      }
-      localObject = ((INTERFACE.StBatchGetUserInfoRsp)localObject).user.get();
-      paramArrayOfByte = new JSONArray();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        INTERFACE.StApiUserInfo localStApiUserInfo = (INTERFACE.StApiUserInfo)((Iterator)localObject).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("nickName", localStApiUserInfo.nick.get());
-        localJSONObject.put("avatarUrl", localStApiUserInfo.avatar.get());
-        localJSONObject.put("gender", localStApiUserInfo.gender.get());
-        localJSONObject.put("language", localStApiUserInfo.language.get());
-        localJSONObject.put("country", localStApiUserInfo.address.country.get());
-        localJSONObject.put("province", localStApiUserInfo.address.province.get());
-        localJSONObject.put("city", localStApiUserInfo.address.city.get());
-        localJSONObject.put("openId", localStApiUserInfo.openid.get());
-        paramArrayOfByte.put(localJSONObject);
-      }
-      localObject = new JSONObject();
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("BatchGetUserInfoRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    ((JSONObject)localObject).put("data", paramArrayOfByte);
-    return localObject;
-    label270:
-    besl.a("BatchGetUserInfoRequest", "onResponse fail.rsp = null");
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetUserInfo";
+    return (paramInt == 20) || (paramInt == 22) || (paramInt == 605) || (paramInt == 1011) || (paramInt == 1024) || (paramInt == 1028);
   }
 }
 

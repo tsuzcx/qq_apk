@@ -1,9 +1,9 @@
-import java.io.OutputStream;
+import java.util.List;
 
-final class beia
-  extends OutputStream
+public class beia
 {
-  public void write(int paramInt) {}
+  public String a;
+  public List<String> a;
 }
 
 

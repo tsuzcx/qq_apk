@@ -24,11 +24,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
-import lgf;
-import mat;
-import mby;
-import mbz;
-import mgx;
+import lga;
+import mao;
+import mbt;
+import mbu;
+import mgs;
 
 public abstract class BaseToolbar
 {
@@ -85,9 +85,9 @@ public abstract class BaseToolbar
     }
   }
   
-  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mgx parammgx, int paramInt)
+  public static void setSelectedListViewItemAndShow(HorizontalListView paramHorizontalListView, mgs parammgs, int paramInt)
   {
-    if ((!parammgx.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
+    if ((!parammgs.a(paramInt)) || ((paramInt >= paramHorizontalListView.getFirstVisiblePosition()) && (paramInt <= paramHorizontalListView.getLastVisiblePosition()))) {
       return;
     }
     int j = 0;
@@ -95,8 +95,8 @@ public abstract class BaseToolbar
     if (paramInt > 0)
     {
       i = j;
-      if (paramInt > parammgx.a()) {
-        i = mgx.jdField_a_of_type_Int * (paramInt - 1);
+      if (paramInt > parammgs.a()) {
+        i = mgs.jdField_a_of_type_Int * (paramInt - 1);
       }
     }
     paramHorizontalListView.resetCurrentX(i);
@@ -156,7 +156,7 @@ public abstract class BaseToolbar
     return getUIInfo().d;
   }
   
-  protected abstract mbz getUIInfo();
+  protected abstract mbu getUIInfo();
   
   public String getUnableInfo()
   {
@@ -231,9 +231,9 @@ public abstract class BaseToolbar
   {
     if (this.mEffectBtn != null)
     {
-      this.mEffectBtn.setTag(2131376845, Boolean.valueOf(true));
+      this.mEffectBtn.setTag(2131376847, Boolean.valueOf(true));
       this.mEffectBtn.performClick();
-      this.mEffectBtn.setTag(2131376845, null);
+      this.mEffectBtn.setTag(2131376847, null);
     }
   }
   
@@ -289,7 +289,7 @@ public abstract class BaseToolbar
       }
     } while (((EffectOperateManager)localObject).a() != getEffectBtnId());
     localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new mby(this));
+    ((AnimatorSet)localObject).addListener(new mbt(this));
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleX", new float[] { 1.0F, 1.56F, 1.0F });
     localObjectAnimator1.setDuration(400L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mEffectBtn, "scaleY", new float[] { 1.0F, 1.56F, 1.0F });
@@ -311,7 +311,7 @@ public abstract class BaseToolbar
     {
       paramRelativeLayout = getUnableInfo();
       if (!TextUtils.isEmpty(paramRelativeLayout)) {
-        mat.a(this.mApp, 1010, paramRelativeLayout);
+        mao.a(this.mApp, 1010, paramRelativeLayout);
       }
       QLog.w(this.TAG, 1, "tryShowToolbar, 失败[" + paramRelativeLayout + "], seq[" + paramLong + "]");
       return false;

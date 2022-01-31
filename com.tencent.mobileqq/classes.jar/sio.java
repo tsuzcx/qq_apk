@@ -1,13 +1,35 @@
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class sio
-  implements axod
+  extends Handler
 {
-  public sio(ShareImageUtils.2 param2) {}
+  public sio(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(this.a.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    this.a.c = true;
+    ((Activity)this.a.a).finish();
+  }
 }
 
 

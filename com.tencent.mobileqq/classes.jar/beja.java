@@ -1,116 +1,121 @@
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.VoIPListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
 
 class beja
-  implements VoIPProxy.VoIPListener
+  implements Closeable
 {
-  beja(beiy parambeiy) {}
+  private int jdField_a_of_type_Int;
+  private final InputStream jdField_a_of_type_JavaIoInputStream;
+  private final Charset jdField_a_of_type_JavaNioCharsetCharset;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int b;
   
-  public void onEnterRoom()
+  public beja(InputStream paramInputStream, int paramInt, Charset paramCharset)
   {
-    besl.a("VoIPManager", "onEnterRoom");
-    beiy.a(this.a).set(true);
-    if (beiy.a(this.a) != null) {
-      this.a.a(beiy.a(this.a), null);
+    if ((paramInputStream == null) || (paramCharset == null)) {
+      throw new NullPointerException();
     }
-    beiy.a(this.a).updateRoomInfo();
-    beiy.a(this.a, -1);
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("capacity <= 0");
+    }
+    if (!paramCharset.equals(beiw.jdField_a_of_type_JavaNioCharsetCharset)) {
+      throw new IllegalArgumentException("Unsupported encoding");
+    }
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.jdField_a_of_type_JavaNioCharsetCharset = paramCharset;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  public void onError(int paramInt)
+  public beja(InputStream paramInputStream, Charset paramCharset)
   {
-    besl.a("VoIPManager", String.format("onEnterRoom errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    if ((paramInt == 2) || (paramInt == 1)) {
-      if (beiy.a(this.a) != null)
-      {
-        beiy.a(this.a).onError(paramInt);
-        beiy.a(this.a, null);
+    this(paramInputStream, 8192, paramCharset);
+  }
+  
+  private void a()
+  {
+    int i = this.jdField_a_of_type_JavaIoInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+    if (i == -1) {
+      throw new EOFException();
+    }
+    this.jdField_a_of_type_Int = 0;
+    this.b = i;
+  }
+  
+  public String a()
+  {
+    synchronized (this.jdField_a_of_type_JavaIoInputStream)
+    {
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        throw new IOException("LineReader is closed");
       }
     }
-    do
+    if (this.jdField_a_of_type_Int >= this.b) {
+      a();
+    }
+    int i = this.jdField_a_of_type_Int;
+    for (;;)
     {
-      do
+      if (i != this.b)
       {
-        return;
-        if (paramInt != 4) {
-          break;
+        if (this.jdField_a_of_type_ArrayOfByte[i] != 10) {
+          break label272;
         }
-      } while (beiy.a(this.a) == null);
-      beiy.a(this.a).onInterrupt(4, "第三方通话中断");
-      return;
-    } while ((paramInt != 3) || (beiy.a(this.a) == null));
-    beiy.a(this.a).onInterrupt(3, "网络原因中断");
-  }
-  
-  public void onUserAudioAvailable(VoIPProxy.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    besl.a("VoIPManager", String.format("onUserAudioAvailable userInfo=%s available=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
-  }
-  
-  public void onUserEnter(VoIPProxy.MultiUserInfo paramMultiUserInfo)
-  {
-    besl.a("VoIPManager", String.format("onUserEnter userInfo=%s", new Object[] { paramMultiUserInfo }));
-    if ((beiy.a(this.a) == null) && (beiy.a(this.a, paramMultiUserInfo.mUin) == null))
-    {
-      bejh localbejh = new bejh(this.a, null);
-      localbejh.jdField_a_of_type_Long = paramMultiUserInfo.mUin;
-      localbejh.jdField_a_of_type_JavaLangString = paramMultiUserInfo.mOpenId;
-      localbejh.jdField_a_of_type_Int = 1;
-      beiy.a(this.a, localbejh);
-      if (beiy.a(this.a) != null) {
-        beiy.a(this.a).onRoomMemberChange(beiy.a(this.a));
-      }
-    }
-  }
-  
-  public void onUserExit(VoIPProxy.MultiUserInfo paramMultiUserInfo)
-  {
-    besl.a("VoIPManager", String.format("onUserExit userInfo=%s", new Object[] { paramMultiUserInfo }));
-    if (beiy.a(this.a) == null)
-    {
-      beiy.b(this.a, paramMultiUserInfo.mUin);
-      if (beiy.a(this.a) != null) {
-        beiy.a(this.a).onRoomMemberChange(beiy.a(this.a));
-      }
-    }
-  }
-  
-  public void onUserSpeaking(VoIPProxy.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    besl.a("VoIPManager", String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
-    paramMultiUserInfo = beiy.a(this.a, paramMultiUserInfo.mUin);
-    if (paramMultiUserInfo != null)
-    {
-      paramMultiUserInfo.jdField_a_of_type_Boolean = paramBoolean;
-      if (beiy.a(this.a) != null) {
-        beiy.a(this.a).onRoomMemberSpeaking(beiy.b(this.a));
-      }
-      return;
-    }
-    besl.d("VoIPManager", "onUserSpeaking userModel==null");
-  }
-  
-  public void onUserUpdate(List<VoIPProxy.MultiUserInfo> paramList)
-  {
-    if ((beiy.a(this.a) != null) && (paramList != null))
-    {
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        VoIPProxy.MultiUserInfo localMultiUserInfo = (VoIPProxy.MultiUserInfo)localIterator.next();
-        if (localMultiUserInfo.mUin != 0L) {
-          localJSONArray.put(localMultiUserInfo.mOpenId);
+        if ((i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ArrayOfByte[(i - 1)] != 13)) {
+          break label267;
         }
       }
-      beiy.a(this.a).onJoinRoom(localJSONArray);
-      beiy.a(this.a, paramList);
-      beiy.a(this.a, null);
+      label267:
+      for (int j = i - 1;; j = i)
+      {
+        Object localObject2 = new String(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, j - this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaNioCharsetCharset.name());
+        this.jdField_a_of_type_Int = (i + 1);
+        return localObject2;
+        localObject2 = new bejb(this, this.b - this.jdField_a_of_type_Int + 80);
+        for (;;)
+        {
+          ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b - this.jdField_a_of_type_Int);
+          this.b = -1;
+          a();
+          i = this.jdField_a_of_type_Int;
+          while (i != this.b)
+          {
+            if (this.jdField_a_of_type_ArrayOfByte[i] == 10)
+            {
+              if (i != this.jdField_a_of_type_Int) {
+                ((ByteArrayOutputStream)localObject2).write(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, i - this.jdField_a_of_type_Int);
+              }
+              this.jdField_a_of_type_Int = (i + 1);
+              localObject2 = ((ByteArrayOutputStream)localObject2).toString();
+              return localObject2;
+            }
+            i += 1;
+          }
+        }
+      }
+      label272:
+      i += 1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.b == -1;
+  }
+  
+  public void close()
+  {
+    synchronized (this.jdField_a_of_type_JavaIoInputStream)
+    {
+      if (this.jdField_a_of_type_ArrayOfByte != null)
+      {
+        this.jdField_a_of_type_ArrayOfByte = null;
+        this.jdField_a_of_type_JavaIoInputStream.close();
+      }
+      return;
     }
   }
 }

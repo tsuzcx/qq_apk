@@ -1,18 +1,33 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtt
-  extends OrientationEventListener
+  implements MessageQueue.IdleHandler
 {
-  public ahtt(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ahtt(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onOrientationChanged(int paramInt)
+  public boolean queueIdle()
   {
-    this.a.k = paramInt;
+    if (axhq.d(axhq.b)) {
+      this.a.b(true);
+    }
+    for (;;)
+    {
+      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      return false;
+      this.a.j();
+    }
   }
 }
 

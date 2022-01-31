@@ -1,26 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 public class arry
-  implements bfoq
+  implements DialogInterface.OnClickListener
 {
-  public arry(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager) {}
+  public arry(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(false);
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+      ListenTogetherOverlayFragment.a(this.a, true);
       return;
     }
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment);
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    ListenTogetherOverlayFragment.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment, true);
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 

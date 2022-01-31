@@ -1,46 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
 class rwz
-  implements VRefreshLayout.onRefreshStateChangeListener
+  implements rvw
 {
-  rwz(rwy paramrwy, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  rwz(rwy paramrwy, FrameLayout paramFrameLayout) {}
   
-  public void onRefreshMove(int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!rwy.a(this.jdField_a_of_type_Rwy)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
+    if (rwy.a(this.jdField_a_of_type_Rwy) != null) {
+      rwy.a(this.jdField_a_of_type_Rwy).a(paramInt);
     }
   }
   
-  public void onStateEnd()
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    rwy.a(this.jdField_a_of_type_Rwy, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+    if (paramInt2 == 5)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      rwy.a(this.jdField_a_of_type_Rwy).getActivity().sendBroadcast(localIntent);
+    }
+    rwy.a(this.jdField_a_of_type_Rwy).getActivity().doOnBackPressed();
+    rwy.a(this.jdField_a_of_type_Rwy).getActivity().overridePendingTransition(0, 0);
   }
   
-  public void onStateFinish(boolean paramBoolean, String paramString)
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
   }
   
-  public void onStateIdel()
+  public void b(int paramInt)
   {
-    rwy.a(this.jdField_a_of_type_Rwy, false);
+    if ((paramInt == 2) && (rwy.a(this.jdField_a_of_type_Rwy).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
   }
   
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    rwy.a(this.jdField_a_of_type_Rwy, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
-  }
+  public void c() {}
 }
 
 

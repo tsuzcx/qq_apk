@@ -1,95 +1,166 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-class avru
-  implements aysa
+public class avru
 {
-  avru(avrt paramavrt, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onResp(aysx paramaysx)
+  public avru(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramaysx.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(avrt.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
-    if (!localFile.exists())
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
+    paramString = new File(this.jdField_a_of_type_JavaLangString);
+    boolean bool1 = paramString.mkdirs();
+    boolean bool2 = paramString.isDirectory();
+    if ((!bool1) && (!bool2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
+      paramString = new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
+      QLog.e("AudioDataCache", 2, paramString, new Object[0]);
+      awai.a(paramString);
+    }
+  }
+  
+  private static void a(String paramString, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
       }
-      ahvz.a(0);
+    }
+    else {
       return;
     }
-    Object localObject = "";
+    QLog.d("AudioDataCache", 2, "[@] " + paramString);
+  }
+  
+  /* Error */
+  public String a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 17	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   9: ldc 83
+    //   11: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: aload_0
+    //   15: getfield 85	avru:b	Ljava/lang/String;
+    //   18: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: aconst_null
+    //   25: invokestatic 87	avru:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   28: new 17	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   35: aload_0
+    //   36: getfield 15	avru:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   39: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_0
+    //   43: getfield 85	avru:b	Ljava/lang/String;
+    //   46: invokevirtual 22	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: astore_1
+    //   53: aload_0
+    //   54: getfield 89	avru:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: ifnull +10 -> 69
+    //   62: aload_0
+    //   63: getfield 89	avru:jdField_a_of_type_JavaIoFileOutputStream	Ljava/io/FileOutputStream;
+    //   66: invokevirtual 94	java/io/FileOutputStream:close	()V
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_1
+    //   72: areturn
+    //   73: astore_1
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: aload_1
+    //   77: athrow
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	avru
+    //   52	20	1	str	String
+    //   73	4	1	localObject	Object
+    //   57	2	2	localFileOutputStream	FileOutputStream
+    //   78	1	2	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   2	58	73	finally
+    //   62	69	73	finally
+    //   62	69	78	java/io/IOException
+  }
+  
+  public void a()
+  {
+    File localFile;
     try
     {
-      paramaysx = bbdj.c(localFile.getPath());
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramaysx))) {}
+      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+      this.b = axlx.a();
+      String str = this.jdField_a_of_type_JavaLangString + this.b;
+      localFile = new File(str);
+      if (localFile.exists()) {
+        throw new RuntimeException("AudioDataCache: file exists| " + str);
+      }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    finally {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+      a("initCache: newPath=" + this.b, null);
+      return;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
     {
       for (;;)
       {
-        try
-        {
-          nay.a(localFile, this.b);
-          paramaysx = new File(this.c);
-          if (!paramaysx.exists()) {
-            break label330;
-          }
-          paramaysx = avrt.a(paramaysx);
-          localObject = avrt.a(null, paramaysx, this.jdField_a_of_type_Avrt.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
-          if ((localObject != null) && (!((List)localObject).isEmpty())) {
-            break;
-          }
-          avrt.a(paramaysx, "ptv_template_new.cfg");
-          if (QLog.isColorLevel()) {
-            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
-          }
-          ahvz.a(-4);
-          return;
-          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-          paramaysx = (aysx)localObject;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localUnsatisfiedLinkError.printStackTrace();
-          paramaysx = (aysx)localObject;
-        }
-        catch (Exception paramaysx)
-        {
-          ahvz.a(-3);
-          bbjn.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          paramaysx.printStackTrace();
-          continue;
-        }
-        ahvz.a(-2);
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
       }
-      avrt.a(paramaysx, "ptv_template_new.cfg");
-      this.jdField_a_of_type_Avrt.c(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramaysx);
-      }
-      ahvz.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
-      return;
     }
-    label330:
-    if (QLog.isColorLevel()) {
-      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
-    }
-    bbjn.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    try
+    {
+      FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+      bool1 = bool2;
+      if (localFileOutputStream != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+        bool1 = true;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          a("writeData: exp=", paramArrayOfByte);
+          bool1 = bool2;
+        }
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.b;
+  }
 }
 
 

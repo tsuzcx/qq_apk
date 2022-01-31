@@ -1,8 +1,12 @@
 public abstract interface sse
 {
-  public abstract void a();
+  public abstract void a(spy paramspy);
   
-  public abstract void b();
+  public abstract void a(spy paramspy, int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void e();
 }
 
 

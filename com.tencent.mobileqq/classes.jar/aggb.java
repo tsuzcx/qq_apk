@@ -1,58 +1,64 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForScribble;
 
 public class aggb
+  extends aebx
 {
-  private SparseArrayCompat<SparseArrayCompat<adih>> a = new SparseArrayCompat(15);
-  private SparseArrayCompat<adig> b = new SparseArrayCompat();
-  
-  public aggb(aggy paramaggy)
+  public aggb(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    a(1, new aghm(paramaggy));
-    a(2, new aggx(paramaggy));
-    a(3, new aggf(paramaggy));
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  private void a(int paramInt, adih paramadih)
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, acuj paramacuj, int paramInt1, int paramInt2)
   {
-    this.b.put(paramInt, paramadih);
-    int[] arrayOfInt = paramadih.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramacuj, paramInt1, paramInt2);
+    paramContext = (aece)paramacuj;
+    if (paramContext.d != null)
     {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
+        break label109;
       }
-      localSparseArrayCompat1.put(paramInt, paramadih);
-      i += 1;
+      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
+        break label95;
+      }
+      paramContext.d.setText(ajya.a(2131706846));
     }
-  }
-  
-  public <T extends adig> T a(int paramInt)
-  {
-    return (adig)this.b.get(paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
     for (;;)
     {
+      if (paramContext.b != null) {
+        paramContext.b.setVisibility(8);
+      }
+      if (paramContext.c != null) {
+        paramContext.c.setVisibility(8);
+      }
       return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((adih)localSparseArrayCompat.valueAt(i)).a(paramInt);
-        i += 1;
+      label95:
+      paramContext.d.setText(paramChatMessage.msg);
+      continue;
+      label109:
+      if ((paramChatMessage instanceof MessageForScribble)) {
+        paramContext.d.setText(ajya.a(2131706845));
+      } else {
+        paramContext.d.setText(ajya.a(2131706847));
       }
     }
+  }
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
   }
 }
 

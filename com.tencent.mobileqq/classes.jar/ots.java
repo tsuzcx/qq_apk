@@ -1,14 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ots
-  implements ocn
+  implements Animation.AnimationListener
 {
-  public ots(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
+  public ots(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.getActivity().finish();
+    this.a.a(this.a.a);
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
   }
 }
 

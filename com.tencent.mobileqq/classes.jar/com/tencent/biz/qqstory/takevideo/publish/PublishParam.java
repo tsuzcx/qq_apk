@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import vsu;
+import vsr;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishParam> CREATOR = new vsu();
+  public static final Parcelable.Creator<PublishParam> CREATOR = new vsr();
   public static final String a;
   public final int a;
   public final long a;

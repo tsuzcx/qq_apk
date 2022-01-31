@@ -1,10 +1,8 @@
-public class ajdl
+public abstract interface ajdl
 {
-  int jdField_a_of_type_Int;
-  ajdd jdField_a_of_type_Ajdd;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  public abstract void a();
+  
+  public abstract void d(String paramString);
 }
 
 

@@ -14,8 +14,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
-import auyq;
-import auyr;
 import auys;
 import auyt;
 import auyu;
@@ -24,14 +22,16 @@ import auyw;
 import auyx;
 import auyy;
 import auyz;
-import bbkk;
-import bblx;
-import bbly;
-import bblz;
+import auza;
+import auzb;
+import bbky;
+import bbml;
+import bbmm;
+import bbmn;
 
 public class BreatheEffectView
   extends ImageView
-  implements bblz
+  implements bbmn
 {
   private static int jdField_a_of_type_Int;
   public static final int[] a;
@@ -73,15 +73,15 @@ public class BreatheEffectView
   private void e()
   {
     jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298353);
-    setBackgroundResource(2130846487);
+    setBackgroundResource(2130846493);
     Drawable localDrawable = getBackground();
     if ((localDrawable instanceof LayerDrawable))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)localDrawable);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[3];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363155);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363156);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363148);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363154);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363155);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363147);
       return;
     }
     throw new RuntimeException("Background is not a layer drawable!");
@@ -127,17 +127,17 @@ public class BreatheEffectView
           ((Rect)localObject2).top = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].top - jdField_a_of_type_Int);
           ((Rect)localObject2).right = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].right + jdField_a_of_type_Int);
           ((Rect)localObject2).bottom = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].bottom + jdField_a_of_type_Int);
-          localObject2 = new bbkk(this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], localObject2, new auyq(this, (Drawable)localObject1));
-          ((bbkk)localObject2).setStartOffset(i * 180);
-          ((bbkk)localObject2).setDuration(600L);
-          ((bbkk)localObject2).setInterpolator(new CycleInterpolator(0.5F));
-          localObject1 = new bbkk(Integer.valueOf(0), Integer.valueOf(255), new auyr(this, (Drawable)localObject1));
-          ((bbkk)localObject1).setInterpolator(new CycleInterpolator(0.5F));
-          ((bbkk)localObject1).setStartOffset(i * 180);
-          ((bbkk)localObject1).setDuration(600L);
+          localObject2 = new bbky(this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], localObject2, new auys(this, (Drawable)localObject1));
+          ((bbky)localObject2).setStartOffset(i * 180);
+          ((bbky)localObject2).setDuration(600L);
+          ((bbky)localObject2).setInterpolator(new CycleInterpolator(0.5F));
+          localObject1 = new bbky(Integer.valueOf(0), Integer.valueOf(255), new auyt(this, (Drawable)localObject1));
+          ((bbky)localObject1).setInterpolator(new CycleInterpolator(0.5F));
+          ((bbky)localObject1).setStartOffset(i * 180);
+          ((bbky)localObject1).setDuration(600L);
           this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject1);
           if (2 == i) {
-            ((bbkk)localObject2).setAnimationListener(new auys(this));
+            ((bbky)localObject2).setAnimationListener(new auyu(this));
           }
           this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject2);
           i += 1;
@@ -147,7 +147,7 @@ public class BreatheEffectView
     }
   }
   
-  public void a(auyz paramauyz)
+  public void a(auzb paramauzb)
   {
     int i = 1;
     if (a())
@@ -161,22 +161,22 @@ public class BreatheEffectView
         Object localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
         int j = ((Rect)localObject).centerX();
         int k = ((Rect)localObject).centerY();
-        localObject = new bbkk(new Rect(j, k, j, k), localObject, null);
-        ((bbkk)localObject).a(new auyt(this, localDrawable));
-        ((bbkk)localObject).setDuration(400L);
-        ((bbkk)localObject).setStartOffset(i * 50);
+        localObject = new bbky(new Rect(j, k, j, k), localObject, null);
+        ((bbky)localObject).a(new auyv(this, localDrawable));
+        ((bbky)localObject).setDuration(400L);
+        ((bbky)localObject).setStartOffset(i * 50);
         localAnimationSet.addAnimation((Animation)localObject);
         i += 1;
       }
-      if (paramauyz != null) {
-        localAnimationSet.setAnimationListener(new auyu(this, paramauyz));
+      if (paramauzb != null) {
+        localAnimationSet.setAnimationListener(new auyw(this, paramauzb));
       }
       localAnimationSet.setInterpolator(new OvershootInterpolator(1.6F));
       startAnimation(localAnimationSet);
     }
   }
   
-  public void a(bblx parambblx, bbly parambbly, float paramFloat1, float paramFloat2)
+  public void a(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2)
   {
     d();
     a();
@@ -208,7 +208,7 @@ public class BreatheEffectView
     return false;
   }
   
-  public boolean a(bblx parambblx, bbly parambbly, float paramFloat1, float paramFloat2)
+  public boolean a(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2)
   {
     return true;
   }
@@ -228,12 +228,12 @@ public class BreatheEffectView
     }
   }
   
-  public void b(auyz paramauyz)
+  public void b(auzb paramauzb)
   {
     if (a())
     {
       clearAnimation();
-      paramauyz = new AnimationSet(false);
+      paramauzb = new AnimationSet(false);
       int i = 1;
       while (i < 3)
       {
@@ -241,18 +241,18 @@ public class BreatheEffectView
         Rect localRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
         int j = localRect.centerX();
         int k = localRect.centerY();
-        localObject = new bbkk(localRect, new Rect(j, k, j, k), new auyv(this, (Drawable)localObject));
-        ((bbkk)localObject).setDuration(400L);
-        paramauyz.addAnimation((Animation)localObject);
+        localObject = new bbky(localRect, new Rect(j, k, j, k), new auyx(this, (Drawable)localObject));
+        ((bbky)localObject).setDuration(400L);
+        paramauzb.addAnimation((Animation)localObject);
         i += 1;
       }
-      startAnimation(paramauyz);
+      startAnimation(paramauzb);
     }
   }
   
-  public void b(bblx parambblx, bbly parambbly, float paramFloat1, float paramFloat2) {}
+  public void b(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2) {}
   
-  public boolean b(bblx parambblx, bbly parambbly, float paramFloat1, float paramFloat2)
+  public boolean b(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2)
   {
     c();
     return true;
@@ -273,15 +273,15 @@ public class BreatheEffectView
         ((Rect)localObject2).top -= jdField_a_of_type_Int;
         ((Rect)localObject2).right += jdField_a_of_type_Int;
         ((Rect)localObject2).bottom += jdField_a_of_type_Int;
-        localObject2 = new bbkk(localObject2, localObject3, new auyw(this, (Drawable)localObject1));
-        ((bbkk)localObject2).setDuration(800L);
-        ((bbkk)localObject2).setInterpolator(new AccelerateInterpolator(0.24F));
-        localObject1 = new bbkk(Integer.valueOf(204), Integer.valueOf(0), new auyx(this, (Drawable)localObject1));
-        ((bbkk)localObject1).setInterpolator(new AccelerateInterpolator(0.24F));
-        ((bbkk)localObject1).setDuration(800L);
-        localObject3 = new bbkk(Integer.valueOf(0), Integer.valueOf(0), null);
+        localObject2 = new bbky(localObject2, localObject3, new auyy(this, (Drawable)localObject1));
+        ((bbky)localObject2).setDuration(800L);
+        ((bbky)localObject2).setInterpolator(new AccelerateInterpolator(0.24F));
+        localObject1 = new bbky(Integer.valueOf(204), Integer.valueOf(0), new auyz(this, (Drawable)localObject1));
+        ((bbky)localObject1).setInterpolator(new AccelerateInterpolator(0.24F));
+        ((bbky)localObject1).setDuration(800L);
+        localObject3 = new bbky(Integer.valueOf(0), Integer.valueOf(0), null);
         ((Animation)localObject3).setDuration(1000L);
-        ((Animation)localObject3).setAnimationListener(new auyy(this));
+        ((Animation)localObject3).setAnimationListener(new auza(this));
         localAnimationSet.addAnimation((Animation)localObject1);
         localAnimationSet.addAnimation((Animation)localObject2);
         localAnimationSet.addAnimation((Animation)localObject3);

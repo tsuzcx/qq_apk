@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajsf;
+import ajsd;
+import olj;
 import olm;
-import olp;
-import sgj;
+import sgg;
 
 public final class PublicAccountUtil$22
   implements Runnable
@@ -12,17 +12,17 @@ public final class PublicAccountUtil$22
   
   public void run()
   {
-    if (ajsf.aQ.equals(this.a))
-    {
-      olp.a();
-      return;
-    }
-    if (ajsf.aR.equals(this.a))
+    if (ajsd.aQ.equals(this.a))
     {
       olm.a();
       return;
     }
-    sgj.c(this.a);
+    if (ajsd.aR.equals(this.a))
+    {
+      olj.a();
+      return;
+    }
+    sgg.c(this.a);
   }
 }
 

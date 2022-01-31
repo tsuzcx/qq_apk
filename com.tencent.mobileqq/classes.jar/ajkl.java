@@ -1,78 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 
-@Deprecated
 public class ajkl
+  implements MediaPlayer.OnCompletionListener
 {
-  private static ajkl jdField_a_of_type_Ajkl;
-  public int a;
-  public String a;
-  public AtomicInteger a;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  public ajkl(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
   
-  public ajkl()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public static ajkl a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Ajkl == null) {
-        jdField_a_of_type_Ajkl = new ajkl();
-      }
-      ajkl localajkl = jdField_a_of_type_Ajkl;
-      return localajkl;
-    }
-    finally {}
-  }
-  
-  public ajkl a(QQAppInterface paramQQAppInterface)
+  public void onCompletion(MediaPlayer arg1)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloActionManager", 2, "[setAppInterface] app:" + paramQQAppInterface);
+      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
     }
-    return this;
-  }
-  
-  public ReentrantLock a()
-  {
-    try
+    int i = this.jdField_a_of_type_Int - 1;
+    if (i == 0) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[getLock].");
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionManager", 2, "create lock.");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
+        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
+          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+        return;
       }
-      ReentrantLock localReentrantLock = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-      return localReentrantLock;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[onDestroy]");
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
+      {
+        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
+        return;
       }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
   }
 }
 

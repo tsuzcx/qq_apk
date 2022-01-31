@@ -1,15 +1,25 @@
-import com.tencent.av.gaudio.GaInviteDialogActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
 
 public class loc
-  implements aaqd
+  implements mii
 {
-  public loc(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  public loc(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean)
   {
-    this.a.g = paramInt1;
-    this.a.h = paramInt2;
-    GaInviteDialogActivity.a(this.a);
+    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
+      return;
+    }
+    if ((this.a.a.e) || (this.a.a.l())) {
+      this.a.e();
+    }
+    for (;;)
+    {
+      axqy.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      this.a.d();
+    }
   }
 }
 

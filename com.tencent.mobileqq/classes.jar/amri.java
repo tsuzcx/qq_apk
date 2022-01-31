@@ -1,16 +1,46 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class amri
+  implements ampc<String>
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public boolean a = true;
+  public boolean b = true;
   
-  public amri(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
+      {
+        bool = true;
+        this.a = bool;
+        alqx.a = this.a;
+        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
+          break label115;
+        }
+      }
+      label115:
+      for (boolean bool = true;; bool = false)
+      {
+        this.b = bool;
+        alqx.f = this.b;
+        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
+        return;
+        bool = false;
+        break;
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+    }
   }
 }
 

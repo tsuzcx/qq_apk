@@ -1,46 +1,22 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
 
-public class bccn
-  implements bbah<String>
+class bccn
+  implements bble<Integer>
 {
-  public bccn(WebViewFragment paramWebViewFragment) {}
+  bccn(bccj parambccj, View paramView, int paramInt) {}
   
-  public String a(Bitmap paramBitmap)
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    String str = WebViewFragment.d + System.currentTimeMillis() + ".jpg";
-    asjm.a(paramBitmap, str, Bitmap.CompressFormat.JPEG, 100, true);
-    return str;
-  }
-  
-  public void a(Exception paramException)
-  {
-    QLog.e("WebLog_WebViewFragment", 1, "onScreenShotError, error is " + paramException.getMessage());
-    if (this.a.getActivity() == null)
+    if (!this.jdField_a_of_type_Bccj.a.v) {}
+    do
     {
-      QLog.e("WebLog_WebViewFragment", 1, "screen long shot onScreenShotError, activity is null");
       return;
-    }
-    bcpw.a(this.a.getActivity(), 2131719038, 0).a();
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("WebLog_WebViewFragment", 1, "screen long shot error, activity is null");
-      return;
-    }
-    paramBitmap = new Intent();
-    paramBitmap.putExtra("public_fragment_window_feature", 1);
-    paramBitmap.putExtra("screen_path", paramString);
-    paramBitmap.putExtra("is_web_screen_long_shot", true);
-    abtu.a(this.a.getActivity(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bccj.a.d = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bccj.a.d != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bccj.a.v = false;
   }
 }
 

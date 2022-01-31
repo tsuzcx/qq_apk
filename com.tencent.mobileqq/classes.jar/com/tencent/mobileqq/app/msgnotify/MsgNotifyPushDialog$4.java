@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app.msgnotify;
 
-import aksf;
+import akse;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bawu;
+import baxi;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgNotifyPushDialog$4
   implements Runnable
 {
-  public MsgNotifyPushDialog$4(aksf paramaksf) {}
+  public MsgNotifyPushDialog$4(akse paramakse) {}
   
   public void run()
   {
@@ -20,22 +20,22 @@ public class MsgNotifyPushDialog$4
     AnimationDrawable localAnimationDrawable;
     if (this.this$0.isShowing())
     {
-      aksf.a(this.this$0, true);
+      akse.a(this.this$0, true);
       localAnimationDrawable = new AnimationDrawable();
     }
     try
     {
       long l1 = System.currentTimeMillis();
-      while (i < aksf.jdField_a_of_type_Int)
+      while (i < akse.jdField_a_of_type_Int)
       {
-        Bitmap localBitmap = bawu.a(String.format(aksf.c + aksf.e, new Object[] { Integer.valueOf(i) }));
-        localAnimationDrawable.addFrame(new BitmapDrawable(aksf.a(this.this$0).getResources(), localBitmap), 1000 / aksf.jdField_a_of_type_Int);
+        Bitmap localBitmap = baxi.a(String.format(akse.c + akse.e, new Object[] { Integer.valueOf(i) }));
+        localAnimationDrawable.addFrame(new BitmapDrawable(akse.a(this.this$0).getResources(), localBitmap), 1000 / akse.jdField_a_of_type_Int);
         i += 1;
       }
       localAnimationDrawable.setOneShot(true);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d(aksf.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
+        QLog.d(akse.jdField_a_of_type_JavaLangString, 2, new Object[] { "Frame Animation decode cost ", Long.valueOf(l2 - l1) });
       }
       this.this$0.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new MsgNotifyPushDialog.4.1(this, localAnimationDrawable), 500L);
       return;

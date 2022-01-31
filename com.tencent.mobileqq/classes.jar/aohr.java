@@ -1,38 +1,20 @@
-import android.support.v4.app.Fragment;
-import android.widget.EditText;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-public class aohr
-  implements aola
+class aohr
+  implements View.OnClickListener
 {
-  public aohr(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  aohr(aohp paramaohp, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
+    int j = this.jdField_a_of_type_Aohp.getPosition();
+    int i = j;
+    if (j > 0) {
+      i = j - 1;
     }
-    this.a.b = "";
-    ExtendFriendProfileEditFragment.b(this.a, 0);
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
-      ((ExtendFriendEditFragment)localFragment).a = null;
-    }
-    ExtendFriendProfileEditFragment.a(this.a, null);
-    ExtendFriendProfileEditFragment.c(this.a);
-    if (ExtendFriendProfileEditFragment.b(this.a))
-    {
-      ExtendFriendProfileEditFragment.a(this.a, true);
-      ExtendFriendProfileEditFragment.b(this.a);
-    }
-    do
-    {
-      return;
-      ExtendFriendProfileEditFragment.a(this.a, false);
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())));
-    ExtendFriendProfileEditFragment.a(this.a);
+    aohp.a(this.jdField_a_of_type_Aohp).a(i);
   }
 }
 

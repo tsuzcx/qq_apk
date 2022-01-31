@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.listentogether;
 
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arrk;
-import arrl;
-import aynm;
+import arrm;
+import arrn;
+import ayno;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListenTogetherSession
-  extends aynm
+  extends ayno
   implements Parcelable
 {
-  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new arrk();
+  public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new arrm();
   public int a;
   public String a;
   public List<MusicInfo> a;
@@ -82,7 +82,7 @@ public class ListenTogetherSession
   
   public String a(int paramInt1, int paramInt2)
   {
-    return arrl.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
+    return arrn.a(this.jdField_e_of_type_Int, paramInt1, paramInt2);
   }
   
   public void a(ListenTogetherSession paramListenTogetherSession)
@@ -118,13 +118,13 @@ public class ListenTogetherSession
     do
     {
       return i;
-      if (ajyc.a(2131693821).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (ajya.a(2131693822).equals(this.jdField_a_of_type_JavaLangString)) {
         return 3;
       }
-      if (ajyc.a(2131693832).equals(this.jdField_a_of_type_JavaLangString)) {
+      if (ajya.a(2131693833).equals(this.jdField_a_of_type_JavaLangString)) {
         return 2;
       }
-    } while (ajyc.a(2131693851).equals(this.jdField_a_of_type_JavaLangString));
+    } while (ajya.a(2131693852).equals(this.jdField_a_of_type_JavaLangString));
     return 4;
   }
   

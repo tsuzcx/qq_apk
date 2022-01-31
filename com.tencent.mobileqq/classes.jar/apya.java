@@ -1,5 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class apya
@@ -9,10 +10,14 @@ public class apya
   
   public void onClick(View paramView)
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
+    if (SendBottomBar.a(this.a).isChecked())
+    {
+      SendBottomBar.b(this.a, true);
+      apue.a("0X800942B");
+      return;
     }
-    apue.a(SendBottomBar.a(this.a));
+    SendBottomBar.c(this.a, false);
+    SendBottomBar.b(this.a, false);
   }
 }
 

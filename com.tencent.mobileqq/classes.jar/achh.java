@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class achh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public achh(TroopInfoActivity paramTroopInfoActivity, bbgg parambbgg) {}
+  public achh(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.cancel();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

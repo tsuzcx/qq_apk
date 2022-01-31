@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import aefv;
-import agch;
-import akai;
+import aeft;
+import agcf;
+import akag;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import asty;
-import axsm;
-import bcpw;
+import asua;
+import axso;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(agch paramagch) {}
+  public MainAssistObserver$2(agcf paramagcf) {}
   
   public void run()
   {
@@ -28,16 +28,16 @@ public class MainAssistObserver$2
     }
     try
     {
-      aefv.a(localQQAppInterface);
-      asty.a().a(localQQAppInterface);
+      aeft.a(localQQAppInterface);
+      asua.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
       localObject = BaseApplicationImpl.sImageCache;
-      float f = akai.a().a;
+      float f = akag.a().a;
       ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
       localQQAppInterface.E();
-      bcpw.a(true);
+      bcql.a(true);
       QQAppInterface.a().a();
       return;
     }

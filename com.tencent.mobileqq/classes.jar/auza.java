@@ -1,24 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class auza
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public auza(CircularProgressBar paramCircularProgressBar) {}
+  public auza(BreatheEffectView paramBreatheEffectView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
-    {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
-    }
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

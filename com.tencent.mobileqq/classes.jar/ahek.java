@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.text.Editable;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class ahek
-  implements View.OnClickListener
+  extends ahaa
 {
   public ahek(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
+    DrawHbFragment.a(this.a);
   }
 }
 

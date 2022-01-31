@@ -1,99 +1,43 @@
 import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 final class ytz
-  extends FrameLayout
-  implements ytv
+  extends LinearLayout
+  implements yts
 {
-  ytv a;
+  private int jdField_a_of_type_Int = -2147483648;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ytp jdField_a_of_type_Ytp;
+  private int b = -2147483648;
   
-  public ytz(Context paramContext, GdtAd paramGdtAd)
+  public ytz(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     super(paramContext);
-    if ((paramContext == null) || (paramGdtAd == null) || (!paramGdtAd.isValid()))
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      yxs.d("GdtBannerViewWithLetterStyle", "constructor");
+      yxp.d("GdtBannerViewWithPictureText", "constructor");
       return;
     }
-    setBackgroundResource(2130839678);
-    int k = -2147483648;
-    int m = -2147483648;
-    int i;
-    int j;
-    if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 193) || (paramGdtAd.getCreativeSize() == 194) || (paramGdtAd.getCreativeSize() == 210))
-    {
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData() != null)
-      {
-        i = paramGdtAd.getImageData().jdField_a_of_type_Int;
-        j = paramGdtAd.getImageData().b;
-      }
-      if ((i > 0) && (j > 0)) {
-        break label248;
-      }
-      yxs.d("GdtBannerViewWithLetterStyle", "createBannerViewWithLetterStyle error, image width or image height is zero");
-    }
-    for (;;)
-    {
-      paramContext = new ImageView(getContext());
-      paramContext.setImageResource(2130839679);
-      addView(paramContext, -1, -1);
-      return;
-      i = k;
-      j = m;
-      if (paramGdtAd.getCreativeSize() != 285) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(0) == null) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(1) == null) {
-        break;
-      }
-      i = k;
-      j = m;
-      if (paramGdtAd.getImageData(2) == null) {
-        break;
-      }
-      i = paramGdtAd.getImageData(0).jdField_a_of_type_Int;
-      j = paramGdtAd.getImageData(0).b;
-      break;
-      label248:
-      if ((paramGdtAd.getCreativeSize() == 65) || (paramGdtAd.getCreativeSize() == 184) || (paramGdtAd.getCreativeSize() == 210)) {
-        this.a = new yuc(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
-      }
-      for (;;)
-      {
-        addView(this.a.a());
-        break;
-        if (paramGdtAd.getCreativeSize() == 193)
-        {
-          this.a = new yub(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j);
-        }
-        else if (paramGdtAd.getCreativeSize() == 194)
-        {
-          this.a = new yud(paramContext, paramGdtAd.getImageData().jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText(), paramGdtAd.getDescription());
-        }
-        else
-        {
-          if (paramGdtAd.getCreativeSize() != 285) {
-            break label453;
-          }
-          this.a = new yue(paramContext, paramGdtAd.getImageData(0).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(1).jdField_a_of_type_JavaLangString, paramGdtAd.getImageData(2).jdField_a_of_type_JavaLangString, i, j, paramGdtAd.getText());
-        }
-      }
-      label453:
-      yxs.d("GdtBannerViewWithLetterStyle", String.format("createBannerView error, creative size is %d", new Object[] { Integer.valueOf(paramGdtAd.getCreativeSize()) }));
-    }
+    setOrientation(0);
+    setGravity(16);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Ytp = new ytp(paramContext, paramString1);
+    this.jdField_a_of_type_Ytp.setId(2131366951);
+    addView(this.jdField_a_of_type_Ytp);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366954);
+    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView);
   }
   
   public View a()
@@ -103,47 +47,26 @@ final class ytz
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.a == null) || (this.a.a() == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0) || (this.jdField_a_of_type_Ytp == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      yxs.d("GdtBannerViewWithLetterStyle", "setSize error");
+      yxp.d("GdtBannerViewWithPictureText", "setSize error");
       return;
     }
-    int i = Double.valueOf(0.7076023391812866D * paramInt1).intValue();
-    int j = Double.valueOf(0.9036144578313253D * paramInt2).intValue();
-    paramInt1 = Double.valueOf((paramInt1 - i) * 1.0D / 2.0D).intValue();
-    paramInt2 = Double.valueOf((paramInt2 - j) * 1.0D / 2.0D).intValue();
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = paramInt2;
-    localLayoutParams.bottomMargin = paramInt2;
-    localLayoutParams.leftMargin = paramInt1;
-    localLayoutParams.rightMargin = paramInt1;
-    this.a.a().setLayoutParams(localLayoutParams);
-    this.a.a(i, j);
+    ytx localytx = new ytx(getContext(), paramInt1, paramInt2);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(Double.valueOf(1.0D * (paramInt2 - localytx.b * 2) / this.b * this.jdField_a_of_type_Int + localytx.b * 2).intValue(), paramInt2);
+    this.jdField_a_of_type_Ytp.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Ytp.setPadding(localytx.b, localytx.b, localytx.b, localytx.b);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.leftMargin = localytx.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
   }
   
-  public void a(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.a(paramContext);
-  }
+  public void a(Context paramContext) {}
   
-  public void b(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.b(paramContext);
-  }
+  public void b(Context paramContext) {}
   
-  public void c(Context paramContext)
-  {
-    if (this.a == null) {
-      return;
-    }
-    this.a.c(paramContext);
-  }
+  public void c(Context paramContext) {}
 }
 
 

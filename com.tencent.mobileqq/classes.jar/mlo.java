@@ -1,190 +1,176 @@
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class mlo
-  extends Dialog
-  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public TextView a;
-  public VideoController a;
-  public Runnable a;
-  mln jdField_a_of_type_Mln;
-  public boolean a;
-  View jdField_b_of_type_AndroidViewView;
-  boolean jdField_b_of_type_Boolean;
-  View jdField_c_of_type_AndroidViewView;
-  boolean jdField_c_of_type_Boolean;
+  static int jdField_a_of_type_Int;
+  static long jdField_a_of_type_Long;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
+  static int jdField_b_of_type_Int;
+  static String jdField_b_of_type_JavaLangString = "0";
+  static boolean jdField_b_of_type_Boolean;
+  static int jdField_c_of_type_Int;
+  static String jdField_c_of_type_JavaLangString = "actAVFunChatVoiceChange";
+  static boolean jdField_c_of_type_Boolean;
+  static boolean d;
   
-  private void c()
+  static
   {
-    int i = 2130841797;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-      i = 2130841798;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
+    jdField_a_of_type_JavaLangString = "VoiceChangeDataReport";
   }
   
-  void a()
+  public static void a(int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Mln.getCount() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696264);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().T == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696263);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696262);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("typeid", paramInt + "");
+    localHashMap.put("duration", paramLong + "");
+    UserAction.onUserAction(jdField_c_of_type_JavaLangString, true, -1L, -1L, localHashMap, true);
+    lcg.a(jdField_a_of_type_JavaLangString, String.format("reportVoiceChange voiceType = %s, duration = %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
   }
   
-  public void b()
+  public static void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
+    lcg.a(jdField_a_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    d = true;
+    jdField_b_of_type_JavaLangString = paramString;
+    if ((paramInt == 1) || (paramInt == 3))
     {
-      lcl.e("VoiceChangeChooseDialog", "updateDialogStyle mVideoController is null!!");
-      return;
-    }
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4))
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label118;
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
       }
-      this.jdField_a_of_type_Mln.a(-1);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(16777216);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-534962398);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
+      jdField_a_of_type_Boolean = true;
     }
-    for (;;)
-    {
-      c();
-      return;
-      bool = false;
-      break;
-      label118:
-      this.jdField_a_of_type_Mln.a(-16777216);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-2147483648);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
-      this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-2170912);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentContext = null;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Mln = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-  }
-  
-  public void onClick(View paramView)
-  {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = true;
-        paramView = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772123);
-        paramView.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
-      }
-    case 2131369740: 
+    while ((paramInt != 2) && (paramInt != 4)) {
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay)
-    {
-      paramView.ay = bool;
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().T != 0)
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    lcg.a(jdField_a_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_b_of_type_JavaLangString }));
+    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", jdField_b_of_type_JavaLangString, "");
+  }
+  
+  public static void a(lga paramlga)
+  {
+    if ((!jdField_c_of_type_Boolean) || (!d)) {
+      return;
+    }
+    if ((paramlga.d == 1) || (paramlga.d == 2)) {
+      if (jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvVideoController.a().ay);
-        if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-          break label196;
+        if (jdField_b_of_type_Int == 0) {
+          a("0X8007DC3", "");
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696262);
+      }
+      else if (jdField_b_of_type_Boolean)
+      {
+        if (jdField_c_of_type_Int != 0) {
+          break label115;
+        }
+        a("0X8007DC5", "");
       }
     }
     for (;;)
     {
-      c();
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().ay) {
-        break label224;
-      }
-      mat.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 1017);
-      mlr.a("0X8007EF4", "");
+      a(paramlga, 0);
+      jdField_c_of_type_Boolean = false;
+      d = false;
+      jdField_b_of_type_JavaLangString = "0";
       return;
-      bool = false;
+      a("0X8007DC2", jdField_b_of_type_Int + "");
       break;
-      label196:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696261);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Int = 0;
+      label115:
+      a("0X8007DC4", jdField_c_of_type_Int + "");
+      continue;
+      if ((paramlga.d == 3) || (paramlga.d == 4)) {
+        if (paramlga.C == 1)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            if (jdField_b_of_type_Int != 0) {
+              break label209;
+            }
+            a("0X8007E67", "");
+          }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label236;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label238;
+            }
+            a("0X8007E69", "");
+            break;
+            label209:
+            a("0X8007E68", jdField_b_of_type_Int + "");
+          }
+          label236:
+          continue;
+          label238:
+          a("0X8007E6A", jdField_c_of_type_Int + "");
+        }
+        else if (paramlga.C == 10)
+        {
+          if (jdField_a_of_type_Boolean)
+          {
+            if (jdField_b_of_type_Int != 0) {
+              break label317;
+            }
+            a("0X8007E63", "");
+          }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label344;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label346;
+            }
+            a("0X8007E65", "");
+            break;
+            label317:
+            a("0X8007E64", jdField_b_of_type_Int + "");
+          }
+          label344:
+          continue;
+          label346:
+          a("0X8007E66", jdField_c_of_type_Int + "");
+        }
+      }
     }
-    label224:
-    mlr.a("0X8007EF3", "");
   }
   
-  public void show()
+  public static void a(lga paramlga, int paramInt)
   {
-    int j = 1;
-    int k = 0;
-    super.show();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772124));
-    int i = k;
-    if (this.jdField_a_of_type_Mln.getCount() == 0)
-    {
-      this.jdField_a_of_type_Mln.a(mlp.a().a());
-      i = k;
-      if (this.jdField_a_of_type_Mln.getCount() != 0) {
-        i = 1;
-      }
+    lcg.a(jdField_a_of_type_JavaLangString, String.format("updateReportData sessionType = %d, voiceType = %d", new Object[] { Integer.valueOf(paramlga.d), Integer.valueOf(paramInt) }));
+    long l = System.currentTimeMillis();
+    if (jdField_a_of_type_Int != 0) {
+      a(jdField_a_of_type_Int, (l - jdField_a_of_type_Long) / 1000L);
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().T == 0) {
-      i = j;
-    }
-    for (;;)
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = l;
+    if ((paramlga.d == 1) || (paramlga.d == 3))
     {
-      if (i != 0) {
-        this.jdField_a_of_type_Mln.notifyDataSetChanged();
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
       }
-      a();
+      jdField_a_of_type_Boolean = true;
+    }
+    while ((paramlga.d != 2) && (paramlga.d != 4)) {
       return;
     }
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
   }
 }
 

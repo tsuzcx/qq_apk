@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class bixs
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public bixs(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  public bixs(AETemplateInfoFragment paramAETemplateInfoFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    AEVideoShelfPreviewFragment.a(this.a).cancelSave();
+    birx.a(this.a.getActivity(), 1024, birt.w.a(), null);
+    AETemplateInfoFragment.a(this.a);
   }
 }
 

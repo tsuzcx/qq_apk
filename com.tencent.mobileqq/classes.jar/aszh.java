@@ -1,6 +1,10 @@
-public abstract interface aszh
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class aszh
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = ajsf.aW + ".nearby_hearanim";
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

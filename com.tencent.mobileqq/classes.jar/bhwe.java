@@ -1,33 +1,25 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.common.app.AppInterface;
 
-class bhwe
-  extends RemoteCommand
+public class bhwe
 {
-  bhwe(bhwb parambhwb, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
   {
     if (paramBundle == null) {
-      paramBundle = null;
+      return false;
     }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = this.a.b(paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    paramAppInterface = new Intent();
+    paramAppInterface.putExtra("share_data", paramBundle);
+    paramAppInterface.putExtra("readinjoy_launch_style", 2);
+    paramAppInterface.putExtra("readinjoy_launch_source", 11);
+    paramAppInterface.putExtra("channel_id", 9999);
+    axqy.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
+    bhvy.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
+    return true;
   }
 }
 

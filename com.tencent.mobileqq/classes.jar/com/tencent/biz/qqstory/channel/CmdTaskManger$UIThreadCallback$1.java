@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.channel;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import syq;
-import syu;
-import syv;
+import syn;
+import syr;
+import sys;
 
 public class CmdTaskManger$UIThreadCallback$1
   implements Runnable
 {
-  public CmdTaskManger$UIThreadCallback$1(syu paramsyu, syv paramsyv, syq paramsyq, ErrorMessage paramErrorMessage) {}
+  public CmdTaskManger$UIThreadCallback$1(syr paramsyr, sys paramsys, syn paramsyn, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Syv, this.jdField_a_of_type_Syq, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.this$0.b(this.jdField_a_of_type_Sys, this.jdField_a_of_type_Syn, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

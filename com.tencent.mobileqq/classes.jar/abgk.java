@@ -1,59 +1,26 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-public abstract class abgk
+public class abgk
+  implements amnf
 {
-  protected abgl a;
-  protected abgm a;
-  public QQAppInterface a;
-  protected int b = -1;
-  public String b;
+  public abgk(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public abgk(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 1;
   }
   
-  public abstract int a();
-  
-  public abgm a()
+  public int a(int paramInt)
   {
-    return this.jdField_a_of_type_Abgm;
+    return 2;
   }
   
-  public abstract abgm a(int paramInt);
-  
-  public Drawable a()
+  public String a(int paramInt1, int paramInt2)
   {
-    return null;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public void a(abgl paramabgl)
-  {
-    this.jdField_a_of_type_Abgl = paramabgl;
-  }
-  
-  public abstract void a(abgm paramabgm);
-  
-  public abstract void a(BaseActivity paramBaseActivity);
-  
-  public abstract void a(BaseActivity paramBaseActivity, abgm paramabgm);
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public abstract void b(BaseActivity paramBaseActivity);
-  
-  public void c(abgm paramabgm)
-  {
-    if ((paramabgm == this.jdField_a_of_type_Abgm) && (this.jdField_a_of_type_Abgl != null)) {
-      this.jdField_a_of_type_Abgl.a(paramabgm);
+    if (paramInt2 == 0) {
+      return this.a.getString(2131694074);
     }
+    return this.a.getString(2131692394);
   }
 }
 

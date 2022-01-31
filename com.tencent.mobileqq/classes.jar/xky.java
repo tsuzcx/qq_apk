@@ -1,60 +1,59 @@
 import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Calendar;
 
 public class xky
   implements amnf
 {
-  public xky(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, bfol parambfol) {}
+  private int jdField_a_of_type_Int;
   
-  public void a()
+  public xky(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
   {
-    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
-    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
-    }
-    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing())) {
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (paramInt < 1897)
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
+      paramNewerGuidePlugin = Calendar.getInstance();
+      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
+  {
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.jdField_a_of_type_Int - 1897 + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
+    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
   {
     switch (paramInt1)
     {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1897 + ajya.a(2131707440);
+    case 1: 
+      return paramInt2 + 1 + ajya.a(2131707441);
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-      }
-      return;
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-    }
+    return paramInt2 + 1 + ajya.a(2131707435);
   }
 }
 

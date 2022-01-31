@@ -1,76 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.1;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDK.LeakListener.2;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axoj
-  extends MQLruCache<String, Object>
+  implements zzt
 {
-  public axoj(Integer paramInteger)
+  public List<String> a(String paramString)
   {
-    super(paramInteger.intValue());
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.1(this, paramString));
+    }
+    paramString = new ArrayList(4);
+    paramString.add(zzq.b());
+    paramString.add(zzq.a());
+    paramString.addAll(zzq.b());
+    return paramString;
   }
   
-  protected int a(String paramString, Object paramObject)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDK.LeakListener.2(this, paramString1, paramBoolean, paramString2));
     }
-    if ((paramObject instanceof Bitmap))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
-    }
-    if ((paramObject instanceof BitmapDrawable))
-    {
-      paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
-      {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
-      }
-    }
-    else if ((paramObject instanceof rpg))
-    {
-      paramObject = ((rpg)paramObject).a();
-      if (paramObject != null) {
-        return rpq.a(paramObject);
-      }
-    }
-    else if ((paramObject instanceof Sizeable))
-    {
-      return ((Sizeable)paramObject).getByteSize();
-    }
-    xoz.a(paramString, xoz.m);
-    return 204800;
   }
   
-  public Object a(String paramString, Object paramObject)
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
   {
-    Object localObject = paramObject;
-    if ((paramObject instanceof rpg)) {
-      localObject = ((rpg)paramObject).a();
-    }
-    return super.put(paramString, localObject);
+    return InitMagnifierSDK.a(paramInspectUUID);
   }
   
-  public Object a(String paramString, Object paramObject, byte paramByte)
+  public boolean a(Object paramObject)
   {
-    Object localObject = paramObject;
-    if ((paramObject instanceof rpg)) {
-      localObject = ((rpg)paramObject).a();
-    }
-    return super.put(paramString, localObject, paramByte);
-  }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2)
-  {
-    if ((paramObject1 instanceof rpg)) {
-      ((rpg)paramObject1).a();
-    }
+    return false;
   }
 }
 

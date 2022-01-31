@@ -1,22 +1,45 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import com.tencent.widget.AbsListView;
 
-class qzt
-  implements View.OnClickListener
+public class qzt
+  implements bfos
 {
-  qzt(qzr paramqzr, Activity paramActivity) {}
+  public qzt(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   
-  public void onClick(View paramView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if ((paramInt1 <= 1) && (this.a.getVisibility() == 0))
     {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      rce.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772289);
-      this.jdField_a_of_type_Qzr.b();
+      paramAbsListView = paramAbsListView.getChildAt(0);
+      if (paramAbsListView != null)
+      {
+        paramInt1 = paramAbsListView.getHeight();
+        paramInt2 = paramAbsListView.getTop();
+        if ((paramInt1 != 0) && (paramInt2 != 0))
+        {
+          float f = paramInt2 * -1.0F / paramInt1;
+          DailyTitleBarSwitcher.a(this.a, DailyTitleBarSwitcher.a(this.a).getInterpolation(f));
+          return;
+        }
+        DailyTitleBarSwitcher.a(this.a, 0.0F);
+        return;
+      }
+      DailyTitleBarSwitcher.a(this.a, 0.0F);
+      return;
     }
+    DailyTitleBarSwitcher.a(this.a, 1.0F);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.a.setLayerType(0, null);
+      return;
+    }
+    this.a.setLayerType(2, null);
   }
 }
 

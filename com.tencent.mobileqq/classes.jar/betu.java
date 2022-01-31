@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import org.json.JSONObject;
 
 class betu
-  implements DialogInterface.OnClickListener
+  implements AsyncResult
 {
-  betu(bets parambets) {}
+  betu(bett parambett, int paramInt, EngineChannel paramEngineChannel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    betc.b("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.jdField_a_of_type_Int)));
+      betc.b("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
+      betq.b(this.jdField_a_of_type_Bett.a, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    }
   }
 }
 

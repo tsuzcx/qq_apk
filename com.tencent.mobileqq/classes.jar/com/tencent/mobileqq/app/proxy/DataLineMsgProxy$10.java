@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aksz;
+import aksy;
 
 public class DataLineMsgProxy$10
   implements Runnable
 {
-  public DataLineMsgProxy$10(aksz paramaksz, long paramLong) {}
+  public DataLineMsgProxy$10(aksy paramaksy, long paramLong) {}
   
   public void run()
   {
-    aksz.a(this.this$0, this.a);
+    aksy.a(this.this$0, this.a);
   }
 }
 

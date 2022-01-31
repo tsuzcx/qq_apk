@@ -1,86 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 class nuh
-  extends osp
+  implements rak
 {
-  nuh(nud paramnud) {}
+  private WeakReference<nug> a;
   
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  public nuh(nug paramnug)
   {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if ((paramList != null) && (paramList.size() > 0)) {
-        this.a.a(paramList);
-      }
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (ChannelCoverInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
-          for (;;)
-          {
-            int i;
-            try
-            {
-              for (;;)
-              {
-                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
-                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
-                  break;
-                }
-                localObject = ((URL)localObject).getQuery().split("[&]");
-                int j = localObject.length;
-                i = 0;
-                if (i >= j) {
-                  break;
-                }
-                String[] arrayOfString = localObject[i].split("[=]");
-                if (arrayOfString.length <= 1) {
-                  break label272;
-                }
-                boolean bool = "topicid".equals(arrayOfString[0]);
-                if (!bool) {
-                  break label272;
-                }
-                try
-                {
-                  Integer.valueOf(arrayOfString[1]).intValue();
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
-                }
-                catch (Exception localException) {}
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
-            }
-            catch (MalformedURLException localMalformedURLException) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
-            break;
-            label272:
-            i += 1;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
-      }
+    this.a = new WeakReference(paramnug);
+  }
+  
+  public void a()
+  {
+    nug localnug = (nug)this.a.get();
+    if ((localnug == null) || (!localnug.b())) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
-    }
+    nug.a(localnug).sendEmptyMessage(1);
   }
 }
 

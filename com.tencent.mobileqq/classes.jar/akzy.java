@@ -1,12 +1,34 @@
-public abstract interface akzy
+public class akzy
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private akzz jdField_a_of_type_Akzz = new akzz();
+  private alaa jdField_a_of_type_Alaa = new alaa();
   
-  public abstract void a(int paramInt, String paramString);
+  public akzy()
+  {
+    this.jdField_a_of_type_Akzz.a();
+    this.jdField_a_of_type_Alaa.a();
+  }
   
-  public abstract void c(int paramInt);
+  public void a()
+  {
+    this.jdField_a_of_type_Akzz.c();
+    this.jdField_a_of_type_Alaa.c();
+  }
   
-  public abstract void h();
+  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (paramInt1 == 36197)
+    {
+      this.jdField_a_of_type_Alaa.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
+    }
+    if (paramInt1 == 3553)
+    {
+      this.jdField_a_of_type_Akzz.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
+      return;
+    }
+    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
+  }
 }
 
 

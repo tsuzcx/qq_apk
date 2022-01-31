@@ -1,17 +1,23 @@
-import android.os.Handler;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajws
-  implements akdt
+  extends aujb
 {
   public ajws(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    this.a.a.sendEmptyMessage(17);
+    FrameHelperActivity localFrameHelperActivity = this.a;
+    if (paramInt > 0) {
+      i = 1;
+    }
+    FrameHelperActivity.a(localFrameHelperActivity, i);
+    this.a.v();
   }
 }
 

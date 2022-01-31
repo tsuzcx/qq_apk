@@ -1,12 +1,10 @@
+import android.graphics.drawable.AnimationDrawable;
+
 public abstract interface wsc
 {
-  public abstract void k();
+  public abstract void a();
   
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract void a(AnimationDrawable paramAnimationDrawable);
 }
 
 

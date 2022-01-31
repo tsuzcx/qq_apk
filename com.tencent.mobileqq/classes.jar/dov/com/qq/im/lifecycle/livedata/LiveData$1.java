@@ -1,18 +1,18 @@
 package dov.com.qq.im.lifecycle.livedata;
 
-import bjnx;
+import bjoo;
 
 public class LiveData$1
   implements Runnable
 {
-  public LiveData$1(bjnx parambjnx) {}
+  public LiveData$1(bjoo parambjoo) {}
   
   public void run()
   {
-    synchronized (bjnx.a(this.this$0))
+    synchronized (bjoo.a(this.this$0))
     {
-      Object localObject2 = bjnx.b(this.this$0);
-      bjnx.a(this.this$0, bjnx.b());
+      Object localObject2 = bjoo.b(this.this$0);
+      bjoo.a(this.this$0, bjoo.b());
       this.this$0.b(localObject2);
       return;
     }

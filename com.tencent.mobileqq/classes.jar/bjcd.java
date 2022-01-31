@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract interface bjcd
+class bjcd
+  implements Handler.Callback
 {
-  public abstract void a();
+  bjcd(bjcb parambjcb) {}
   
-  public abstract void a(bkbe parambkbe, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(bkfm parambkfm, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bkfq parambkfq, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bkfq parambkfq, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(bkbe parambkbe, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj instanceof bjcj)) {
+        paramMessage = (bjcj)paramMessage.obj;
+      }
+    }
+  }
 }
 
 

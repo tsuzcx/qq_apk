@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahbv;
+import ahbt;
 import com.tencent.util.Pair;
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +22,7 @@ public class DownloadParam
   
   public void standardlize()
   {
-    if (ahbv.b) {
+    if (ahbt.b) {
       this.filePos = 1;
     }
   }

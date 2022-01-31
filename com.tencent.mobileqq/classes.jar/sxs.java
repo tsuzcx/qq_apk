@@ -1,17 +1,20 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class sxs
 {
-  public static void a(SparseIntArray paramSparseIntArray)
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    syl.a(paramSparseIntArray);
+    return syl.a(paramStoryVideoItem);
   }
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  public static boolean a(String paramString)
   {
-    syl.a(paramMSFServlet, paramIntent, paramBoolean);
+    return syl.a(paramString);
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return syl.a(paramString, paramBoolean);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwm;
-import bbjl;
+import acwi;
+import bbjz;
 
 class IntimateInfoShareHelper$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class IntimateInfoShareHelper$1$1
   
   public void run()
   {
-    acwm.a(this.a.this$0).a();
+    acwi.a(this.a.this$0).a();
   }
 }
 

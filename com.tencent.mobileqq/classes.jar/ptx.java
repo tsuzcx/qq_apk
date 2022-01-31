@@ -1,70 +1,31 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentThree;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ptx
-  extends pqt
+class ptx
+  implements View.OnClickListener
 {
-  public ptx(Context paramContext, baxk parambaxk, rap paramrap)
-  {
-    super(paramContext, parambaxk, paramrap);
-  }
+  ptx(ptv paramptv, ArticleInfo paramArticleInfo, qdq paramqdq) {}
   
-  public pqt a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
-  }
-  
-  public pqt d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    onh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    onh.a(this.jdField_a_of_type_Ptv.a, this.jdField_a_of_type_Qdq.b.b);
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("folder_status", onh.d);
+      paramView.put("kandian_mode", "" + onh.e());
+      paramView.put("tab_source", "" + onh.d());
+      nol.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
+      return;
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Pqs != null) && ((this.jdField_a_of_type_Pqs instanceof ComponentContentThree))) {
-      localLinearLayout.addView((ComponentContentThree)this.jdField_a_of_type_Pqs);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pqt e()
-  {
-    return null;
-  }
-  
-  public pqt g()
-  {
-    this.jdField_a_of_type_Pqs = new ComponentContentThree(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 

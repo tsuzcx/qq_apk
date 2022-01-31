@@ -1,18 +1,16 @@
-import android.os.Message;
 import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class aivi
-  extends ayvz
+  extends akat
 {
   public aivi(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.b();
-    }
+    this.a.b();
   }
+  
+  protected void b() {}
 }
 
 

@@ -1,32 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.adapter;
 
 import android.text.TextUtils;
-import bhvh;
+import bhvy;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import rww;
+import rwt;
 
 public class ViolaReportDelegate$2
   implements Runnable
 {
-  public ViolaReportDelegate$2(rww paramrww) {}
+  public ViolaReportDelegate$2(rwt paramrwt) {}
   
   public void run()
   {
     try
     {
-      String str = bhvh.c();
+      String str = bhvy.c();
       if ((!TextUtils.isEmpty(str)) && (new JSONObject(str) != null))
       {
-        bhvh.h("");
-        bhvh.f(false);
+        bhvy.h("");
+        bhvy.f(false);
       }
       return;
     }
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e(rww.a, 2, "clearCachePageOpenData Exception:" + localException.getMessage());
+      QLog.e(rwt.a, 2, "clearCachePageOpenData Exception:" + localException.getMessage());
     }
   }
 }

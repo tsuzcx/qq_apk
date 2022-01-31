@@ -1,16 +1,10 @@
-import android.graphics.RectF;
+import java.util.ArrayList;
 
 public abstract interface bkmz
 {
-  public abstract void a(int paramInt);
+  public abstract void a(ArrayList<String> paramArrayList);
   
-  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
-  
-  public abstract void a(int paramInt, RectF paramRectF);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public abstract boolean a(ArrayList<String> paramArrayList, bkna parambkna);
 }
 
 

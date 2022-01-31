@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import beka;
-import besl;
+import bekr;
+import betc;
 
 class SchemeJsPlugin$1
   extends ResultReceiver
 {
-  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, beka parambeka, String paramString)
+  SchemeJsPlugin$1(SchemeJsPlugin paramSchemeJsPlugin, Handler paramHandler, bekr parambekr, String paramString)
   {
     super(paramHandler);
   }
@@ -17,7 +17,7 @@ class SchemeJsPlugin$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    besl.a("SchemeJsPlugin", "onReceiveResult resultCode : " + paramInt);
+    betc.a("SchemeJsPlugin", "onReceiveResult resultCode : " + paramInt);
     if (paramInt == 1)
     {
       this.val$req.a();
@@ -27,7 +27,7 @@ class SchemeJsPlugin$1
     if (paramBundle != null) {
       str = paramBundle.getString("errMsg");
     }
-    besl.a("SchemeJsPlugin", this.val$scheme + " failed, errMsg : " + str);
+    betc.a("SchemeJsPlugin", this.val$scheme + " failed, errMsg : " + str);
     this.val$req.a(str);
   }
 }

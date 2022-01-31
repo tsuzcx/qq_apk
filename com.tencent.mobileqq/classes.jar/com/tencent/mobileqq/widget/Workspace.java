@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import bcsi;
+import bcsx;
 import java.util.ArrayList;
 
 public class Workspace
@@ -30,7 +30,7 @@ public class Workspace
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
   protected Scroller a;
-  private bcsi jdField_a_of_type_Bcsi;
+  private bcsx jdField_a_of_type_Bcsx;
   protected boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   protected float b;
@@ -100,8 +100,8 @@ public class Workspace
       if (this.jdField_c_of_type_Int != i)
       {
         this.jdField_c_of_type_Int = i;
-        if (this.jdField_a_of_type_Bcsi != null) {
-          this.jdField_a_of_type_Bcsi.a(i);
+        if (this.jdField_a_of_type_Bcsx != null) {
+          this.jdField_a_of_type_Bcsx.a(i);
         }
       }
       this.jdField_d_of_type_Int = i;
@@ -200,8 +200,8 @@ public class Workspace
       this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
       this.jdField_d_of_type_Int = -1;
       b();
-    } while (this.jdField_a_of_type_Bcsi == null);
-    this.jdField_a_of_type_Bcsi.b(this.jdField_b_of_type_Int);
+    } while (this.jdField_a_of_type_Bcsx == null);
+    this.jdField_a_of_type_Bcsx.b(this.jdField_b_of_type_Int);
   }
   
   public boolean dispatchUnhandledMove(View paramView, int paramInt)
@@ -448,7 +448,7 @@ public class Workspace
           i = (int)(this.jdField_a_of_type_Float - f1);
           if ((i > 0) && (!this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Int == getChildCount() - 1))
           {
-            this.jdField_a_of_type_Bcsi.b(getChildCount());
+            this.jdField_a_of_type_Bcsx.b(getChildCount());
             return true;
           }
           this.jdField_a_of_type_Float = f1;
@@ -560,9 +560,9 @@ public class Workspace
     }
   }
   
-  public void setOnScreenChangeListener(bcsi parambcsi)
+  public void setOnScreenChangeListener(bcsx parambcsx)
   {
-    this.jdField_a_of_type_Bcsi = parambcsi;
+    this.jdField_a_of_type_Bcsx = parambcsx;
   }
 }
 

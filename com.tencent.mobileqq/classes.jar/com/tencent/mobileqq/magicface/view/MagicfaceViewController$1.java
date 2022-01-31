@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.view;
 
-import asdh;
-import asdy;
+import asdj;
+import asea;
 
 public class MagicfaceViewController$1
   implements Runnable
 {
-  public MagicfaceViewController$1(asdy paramasdy) {}
+  public MagicfaceViewController$1(asea paramasea) {}
   
   public void run()
   {

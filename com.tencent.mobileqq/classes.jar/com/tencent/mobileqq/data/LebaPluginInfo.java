@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aukn;
-import aulx;
-import auma;
+import auko;
+import aukp;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 import tencent.im.PluginConfig.PluginConfig.GetResourceRespInfo;
 
 public class LebaPluginInfo
-  extends aukm
+  extends auko
 {
   public static final int STATE_ADD = 3;
   public static final int STATE_DEL = 2;
@@ -21,12 +21,12 @@ public class LebaPluginInfo
   public int cCanChangeState;
   public byte cDataType;
   public String resConf;
-  @aulx
+  @aulz
   public int sPriority;
   public int sResSeq;
   public short sResSubType;
   public int showInSimpleMode;
-  @aulx
+  @aulz
   public int state = 0;
   public String strGotoUrl;
   public String strGridIconUrl;
@@ -34,7 +34,7 @@ public class LebaPluginInfo
   public String strPkgName;
   public String strResName;
   public String strResURL;
-  @auma
+  @aumc
   public long uiResId;
   
   public static LebaPluginInfo convToLocalPluginInfo(PluginConfig.GetResourceRespInfo paramGetResourceRespInfo)
@@ -155,38 +155,38 @@ public class LebaPluginInfo
     }
   }
   
-  public static LebaPluginInfo find(aukn paramaukn, long paramLong)
+  public static LebaPluginInfo find(aukp paramaukp, long paramLong)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramaukn != null)
+    if (paramaukp != null)
     {
       localObject1 = localObject2;
       if (paramLong > 0L) {
-        localObject1 = (LebaPluginInfo)paramaukn.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
+        localObject1 = (LebaPluginInfo)paramaukp.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLong) });
       }
     }
     return localObject1;
   }
   
-  public static List<LebaPluginInfo> getAll(aukn paramaukn)
+  public static List<LebaPluginInfo> getAll(aukp paramaukp)
   {
-    if (paramaukn != null) {}
-    for (paramaukn = paramaukn.a(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramaukn = null)
+    if (paramaukp != null) {}
+    for (paramaukp = paramaukp.a(LebaPluginInfo.class, false, "", null, null, null, null, null);; paramaukp = null)
     {
-      Object localObject = paramaukn;
-      if (paramaukn == null) {
+      Object localObject = paramaukp;
+      if (paramaukp == null) {
         localObject = Collections.EMPTY_LIST;
       }
       return localObject;
     }
   }
   
-  public static void persistOrReplace(aukn paramaukn, LebaPluginInfo paramLebaPluginInfo)
+  public static void persistOrReplace(aukp paramaukp, LebaPluginInfo paramLebaPluginInfo)
   {
-    if ((paramaukn != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
+    if ((paramaukp != null) && (paramLebaPluginInfo != null) && (paramLebaPluginInfo.uiResId > 0L))
     {
-      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramaukn.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
+      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramaukp.a(LebaPluginInfo.class, "uiResId=?", new String[] { String.valueOf(paramLebaPluginInfo.uiResId) });
       if (localLebaPluginInfo != null)
       {
         localLebaPluginInfo.sResSeq = paramLebaPluginInfo.sResSeq;
@@ -200,23 +200,23 @@ public class LebaPluginInfo
         localLebaPluginInfo.cDataType = paramLebaPluginInfo.cDataType;
         localLebaPluginInfo.showInSimpleMode = paramLebaPluginInfo.showInSimpleMode;
         localLebaPluginInfo.strGridIconUrl = paramLebaPluginInfo.strGridIconUrl;
-        paramaukn.a(localLebaPluginInfo);
+        paramaukp.a(localLebaPluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramaukn.a(paramLebaPluginInfo);
+    paramaukp.a(paramLebaPluginInfo);
   }
   
-  public static void remove(aukn paramaukn, long paramLong)
+  public static void remove(aukp paramaukp, long paramLong)
   {
-    if (paramaukn != null)
+    if (paramaukp != null)
     {
-      LebaPluginInfo localLebaPluginInfo = find(paramaukn, paramLong);
+      LebaPluginInfo localLebaPluginInfo = find(paramaukp, paramLong);
       if (localLebaPluginInfo != null) {
-        paramaukn.b(localLebaPluginInfo);
+        paramaukp.b(localLebaPluginInfo);
       }
     }
   }

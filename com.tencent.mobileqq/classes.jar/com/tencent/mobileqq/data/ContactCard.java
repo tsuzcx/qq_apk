@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ContactCard
-  extends aukm
+  extends auko
 {
   public byte bAge;
   public byte bSex = -1;
   public boolean bindQQ;
   public String mobileCode;
-  @auma
+  @aumc
   public String mobileNo;
   public String nationCode;
   public String nickName;

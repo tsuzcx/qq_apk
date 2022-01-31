@@ -1,6 +1,14 @@
-public abstract interface bhxf
+class bhxf
+  implements ajuz
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  bhxf(bhxe parambhxe) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
 }
 
 

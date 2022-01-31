@@ -1,16 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aqgf
-  implements View.OnClickListener
+class aqgf
+  extends bdvm
 {
-  public aqgf(ForwardShortVideoOption paramForwardShortVideoOption) {}
+  aqgf(aqgd paramaqgd) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (this.a.a != null) {
-      ForwardShortVideoOption.a(this.a);
+    this.a.x();
+    if (aqgd.a(this.a) != -1)
+    {
+      if ((!paramBoolean) || (paramHashMap == null)) {
+        break label151;
+      }
+      String str = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("url");
+      aqgd.a(this.a, paramHashMap);
+      aqgd.b(this.a, paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aqgd.a(this.a) + " mTroopNotNeedVefifyLink=" + aqgd.b(this.a));
+      }
+      if ((str != null) && (str.equals(aqgd.c(this.a)))) {
+        aqgd.a(this.a);
+      }
+    }
+    for (;;)
+    {
+      aqgd.a(this.a, -1);
+      return;
+      label151:
+      bcql.a(this.a.a, 1, this.a.a.getString(2131693033), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

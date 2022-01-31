@@ -7,21 +7,7 @@ public class xcr
 {
   public xcr(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
-    {
-      bbqw.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      axqw.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    axqw.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,23 +1,26 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.widget.ListView;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
 
 public class awlm
-  extends awkd<awog, awwp>
+  implements rfc
 {
-  public awlm(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, baxk parambaxk)
-  {
-    super(paramListView, parambaxk);
-  }
+  public awlm(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  protected awrb<awog, awwp> a(int paramInt)
+  public void a(String paramString)
   {
-    return new awry(this.a.a);
-  }
-  
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new awyf(paramViewGroup, 2131562386);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      FragmentActivity localFragmentActivity = this.a.getActivity();
+      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
+      {
+        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
+        if (this.a.a != null) {
+          awwa.a("sub_result", "clk_hot", new String[] { paramString, awwa.a(this.a.a) });
+        }
+      }
+    }
   }
 }
 

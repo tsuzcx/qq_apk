@@ -1,22 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class aceb
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aceb(SubAccountUgActivity paramSubAccountUgActivity, ayao paramayao, Pair paramPair) {}
+  public aceb(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Ayao.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!ayao.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      ayan.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    this.a.b = false;
   }
 }
 

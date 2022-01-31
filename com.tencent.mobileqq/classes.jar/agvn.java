@@ -1,56 +1,116 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Matrix;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class agvn
-  extends agtc
+public abstract class agvn
 {
-  private agvn(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  String a;
+  String b;
+  String c;
+  
+  public agvn(String paramString)
   {
-    super(paramNewPhotoPreviewActivity);
+    this.c = paramString;
   }
   
-  public static agss b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public static agvn a(String paramString)
   {
-    if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
+    if (agvo.a(paramString)) {
+      return new agvo(paramString);
+    }
+    if (agvm.a(paramString)) {
+      return new agvm(paramString);
+    }
+    return null;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    return a(paramString) != null;
+  }
+  
+  public String a()
+  {
+    Object localObject = null;
+    String str = aupa.a(this.c, 2);
+    if (!new File(str).exists())
     {
-      if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Agss = new agvn(paramNewPhotoPreviewActivity);
+      boolean bool = b(str);
+      axrn.a(BaseApplication.getContext()).a(null, this.b, bool, 0L, aupa.a(str), null, "");
+      if (bool)
+      {
+        if (QLog.isColorLevel()) {
+          aung.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile suc", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
+        }
+        localObject = str;
       }
-      return jdField_a_of_type_Agss;
+      while (!QLog.isColorLevel()) {
+        return localObject;
+      }
+      aung.a("PIC_TAG_ERROR", "check file type,generateCompatibleFile fail", " originFile" + this.c + " fileType:" + this.a);
+      return null;
     }
-    finally {}
+    if (QLog.isColorLevel()) {
+      aung.a("PIC_TAG_ERROR", "check file type,compatibleFile exists", "outputPath" + str + " originFile" + this.c + " fileType:" + this.a);
+    }
+    return str;
   }
   
-  protected void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  boolean b(String paramString)
   {
-    super.a(paramAdapterView, paramView, paramInt, paramLong);
-    paramAdapterView = (NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramAdapterView != null) && (!paramAdapterView.isFinishing())) {
-      paramAdapterView.d.setText(ajyc.a(2131708140));
-    }
-  }
-  
-  protected void h()
-  {
-    Object localObject = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a();
-    Intent localIntent = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
-    if (localObject != null)
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    int j = bbef.b(this.c);
+    String str = "generate " + this.a;
+    int i = 1;
+    if (i <= 4) {}
+    for (;;)
     {
-      agqf.a(((ArrayList)localObject).size(), this.jdField_a_of_type_Agsr.b);
-      agqf.a(localIntent, ((ArrayList)localObject).size(), this.jdField_a_of_type_Agsb.c);
+      try
+      {
+        localOptions.inSampleSize = i;
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, str + ",localPath:" + this.c + " sample:" + i + " path:" + paramString + " degree:" + j);
+        }
+        Bitmap localBitmap = SafeBitmapFactory.safeDecode(this.c, localOptions);
+        Object localObject = localBitmap;
+        if (j != 0)
+        {
+          localObject = new Matrix();
+          int k = localBitmap.getWidth();
+          int m = localBitmap.getHeight();
+          ((Matrix)localObject).postRotate(j, k >> 1, m >> 1);
+          localObject = Bitmap.createBitmap(localBitmap, 0, 0, k, m, (Matrix)localObject, true);
+        }
+        bool = aupa.a(paramString, (Bitmap)localObject, 80, "incompatible to jpg", null);
+        if (bool)
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a, 2, str + ",result:" + bool + " sample:" + i + " path:" + paramString + " degree:" + j);
+          }
+          return bool;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, str + ",compressQuality fail");
+        }
+        i *= 2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, str + ",oom localPath:" + this.c + " sample:" + i + " degree:" + j);
+        }
+        localOutOfMemoryError.printStackTrace();
+        System.gc();
+        i *= 2;
+      }
+      break;
+      boolean bool = false;
     }
-    localObject = (NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localObject == null) || (((NewPhotoPreviewActivity)localObject).isFinishing())) {
-      return;
-    }
-    ((NewPhotoPreviewActivity)localObject).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)localObject).finish();
   }
 }
 

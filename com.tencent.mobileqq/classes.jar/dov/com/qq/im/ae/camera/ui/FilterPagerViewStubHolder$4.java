@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import bikb;
-import bkqu;
+import biks;
+import bkrl;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class FilterPagerViewStubHolder$4
   implements Runnable
 {
-  public FilterPagerViewStubHolder$4(bikb parambikb, bkqu parambkqu) {}
+  public FilterPagerViewStubHolder$4(biks parambiks, bkrl parambkrl) {}
   
   public void run()
   {
-    bikb.a(this.this$0).setSecleteCallBack(this.a);
+    biks.a(this.this$0).setSecleteCallBack(this.a);
   }
 }
 

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import mqq.os.MqqHandler;
 
-public final class aezm
-  implements Parcelable.Creator<ZhituImgResponse>
+class aezm
+  implements anog
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  aezm(aezl paramaezl, MqqHandler paramMqqHandler) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ZhituImgResponse[paramInt];
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
   }
 }
 

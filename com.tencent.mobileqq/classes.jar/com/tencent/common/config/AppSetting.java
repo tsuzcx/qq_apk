@@ -13,7 +13,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.format.Time;
-import bbct;
+import bbdh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -38,7 +38,7 @@ public class AppSetting
   public static int e;
   private static String e;
   public static boolean e;
-  private static int jdField_f_of_type_Int = 537063339;
+  private static int jdField_f_of_type_Int = 537063521;
   private static String jdField_f_of_type_JavaLangString;
   public static boolean f;
   private static final String g;
@@ -58,9 +58,9 @@ public class AppSetting
   {
     jdField_a_of_type_Boolean = true;
     jdField_d_of_type_JavaLangString = "CFF538A644DABF88";
-    jdField_e_of_type_JavaLangString = "V 8.2.8.4440";
+    jdField_e_of_type_JavaLangString = "V 8.3.0.4480";
     jdField_a_of_type_JavaLangString = jdField_e_of_type_JavaLangString;
-    jdField_f_of_type_JavaLangString = "8.2.8.4440.2020-02-27.a15c4095.YingYongBao";
+    jdField_f_of_type_JavaLangString = "8.3.0.4480.2020-03-16.a9855103.YingYongBao";
     jdField_c_of_type_Boolean = true;
     g = Build.VERSION.RELEASE;
     h = "0";
@@ -83,7 +83,7 @@ public class AppSetting
   
   public static int a(String paramString)
   {
-    String[] arrayOfString = "8.2.8".split("\\.");
+    String[] arrayOfString = "8.3.0".split("\\.");
     paramString = paramString.split("\\.");
     int n;
     int i1;
@@ -133,7 +133,7 @@ public class AppSetting
       label20:
       break label20;
     }
-    return "8.2.8." + n;
+    return "8.3.0." + n;
   }
   
   public static String a(Context paramContext, String paramString)
@@ -144,7 +144,7 @@ public class AppSetting
     localStringBuffer.append(((Time)localObject1).format("%Y-%m-%d %H:%M:%S") + "/");
     localStringBuffer.append("mobileQQ/");
     localObject2 = "";
-    long l1 = bbct.d() / 1048576L;
+    long l1 = bbdh.d() / 1048576L;
     localObject1 = localObject2;
     try
     {
@@ -364,7 +364,7 @@ public class AppSetting
       jdField_i_of_type_JavaLangString = paramString[3];
     }
     if (!"".equals(jdField_i_of_type_JavaLangString)) {
-      jdField_f_of_type_JavaLangString = "8.2.8.4440.2020-02-27.a15c4095.YingYongBao";
+      jdField_f_of_type_JavaLangString = "8.3.0.4480.2020-03-16.a9855103.YingYongBao";
     }
   }
   
@@ -466,7 +466,7 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.2.84440&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + g + "&" + "V3";
+      jdField_j_of_type_JavaLangString = "AQQ_2013 4.6/2013 8.3.04480&NA_0/000000&ADR&" + jdField_k_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + c() + "&" + d() + "&" + g + "&" + "V3";
       return jdField_j_of_type_JavaLangString;
       label301:
       str2 = "ALL";
@@ -475,12 +475,12 @@ public class AppSetting
   
   public static final String f()
   {
-    return "android 8.2.8";
+    return "android 8.3.0";
   }
   
   public static String g()
   {
-    return "a15c4095";
+    return "a9855103";
   }
 }
 

@@ -1,23 +1,18 @@
-public class avso
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+
+public final class avso
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e = "";
-  public String f;
-  
-  public avso()
+  public FilterCategoryItem a(Parcel paramParcel)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    return new FilterCategoryItem(paramParcel);
+  }
+  
+  public FilterCategoryItem[] a(int paramInt)
+  {
+    return new FilterCategoryItem[paramInt];
   }
 }
 

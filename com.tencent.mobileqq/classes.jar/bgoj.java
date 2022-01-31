@@ -1,20 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
 public class bgoj
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public bgoj(DatalineBridgeActivity paramDatalineBridgeActivity) {}
+  public bgoj(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramDialogInterface.dismiss();
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgoj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
-class bdnl
-  extends Handler
+public class bdnl
+  implements DialogInterface.OnClickListener
 {
-  public bdnl(bdni parambdni, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bdnl(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str1 = null;
-    bdht.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
-    String str2;
-    bdnk localbdnk;
-    switch (paramMessage.what)
-    {
-    default: 
-      str2 = (String)paramMessage.obj;
-      if (str2 != null)
-      {
-        localbdnk = (bdnk)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-        if (localbdnk == null) {
-          bdht.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
-        }
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-        bdjc.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        bdjc.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        if (localbdnk.jdField_b_of_type_Int != 1) {
-          str1 = localbdnk.jdField_b_of_type_JavaLangString.substring(localbdnk.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
-        }
-        for (;;)
-        {
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1: 
-            this.a.jdField_a_of_type_Bdnh.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-            return;
-            str1 = localbdnk.jdField_b_of_type_JavaLangString;
-            continue;
-            bdht.e("PCPushProxy", "handleMessage get key = null");
-            localbdnk = null;
-          }
-        }
-      } while (localbdnk == null);
-      if (localbdnk.c.startsWith("ANDROIDQQ.PCPUSH.")) {
-        bdjc.a("100", localbdnk.c, str1);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Bdnh.a(localbdnk);
-        return;
-        bdjc.a("100", "ANDROIDQQ.PCPUSH." + localbdnk.c, str1);
-      }
-      this.a.jdField_a_of_type_Bdnh.a(str2);
-      return;
-    } while (localbdnk == null);
-    bdjc.a("500", localbdnk.c, str1);
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
+    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bdhz.b(bdib.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
   }
 }
 

@@ -1,4 +1,7 @@
-public abstract interface sli {}
+public class sli
+{
+  public String a = "";
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

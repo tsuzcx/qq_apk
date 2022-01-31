@@ -1,89 +1,63 @@
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
 
 public class aclb
-  implements Comparator<acky>
+  extends aimt
 {
-  int jdField_a_of_type_Int = -1;
-  boolean jdField_a_of_type_Boolean = false;
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TroopHonorView a;
+  public TroopMemberListSlideItem a;
+  public boolean a;
+  public View b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
   
-  public aclb(int paramInt, boolean paramBoolean)
+  public aclb(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a(acky paramacky1, acky paramacky2)
-  {
-    int i = -1;
-    int k = 1;
-    int j = 1;
-    if (this.jdField_a_of_type_Int == 0) {
-      i = paramacky1.c.compareToIgnoreCase(paramacky2.c);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378176));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378223));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131377843));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376270);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364982);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131364983);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368583));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378259));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378260));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131378332);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368621));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378049));
+    this.g = ((TextView)paramView.findViewById(2131363571));
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375300);
+    this.h = ((TextView)paramView.findViewById(2131378648));
+    this.i = ((TextView)paramView.findViewById(2131362791));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364190));
+    this.j = ((TextView)paramView.findViewById(2131378202));
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362092);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHonorWidgetTroopHonorView = ((TroopHonorView)paramView.findViewById(2131377796));
+    if (paramBoolean) {
+      this.k = ((TextView)paramView.findViewById(2131375103));
     }
-    label89:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-            if (this.jdField_a_of_type_Int != 2) {
-              break label89;
-            }
-            if (paramacky1.jdField_b_of_type_Long == paramacky2.jdField_b_of_type_Long) {
-              return 0;
-            }
-            if (paramacky1.jdField_b_of_type_Long <= paramacky2.jdField_b_of_type_Long) {
-              break;
-            }
-          } while (this.jdField_a_of_type_Boolean);
-          return 1;
-          if (this.jdField_a_of_type_Boolean) {}
-          for (i = j;; i = -1) {
-            return i;
-          }
-          if (this.jdField_a_of_type_Int != 3) {
-            break label149;
-          }
-          if (paramacky1.a == paramacky2.a) {
-            return 0;
-          }
-          if (paramacky1.a <= paramacky2.a) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Boolean);
-        return 1;
-        if (this.jdField_a_of_type_Boolean) {}
-        for (i = k;; i = -1) {
-          return i;
-        }
-        if (this.jdField_a_of_type_Int != 1) {
-          break label208;
-        }
-        if (paramacky1.d != paramacky2.d) {
-          break;
-        }
-        j = paramacky1.jdField_b_of_type_JavaLangString.compareToIgnoreCase(paramacky2.jdField_b_of_type_JavaLangString);
-        if (j == 0) {
-          return 0;
-        }
-      } while (j <= 0);
-      return 1;
-    } while (paramacky1.d >= paramacky2.d);
-    label149:
-    return 1;
-    label208:
-    if (this.jdField_a_of_type_Int == 8)
-    {
-      if (paramacky1.l == paramacky2.l) {
-        return paramacky1.c.compareToIgnoreCase(paramacky2.c);
-      }
-      return paramacky2.l - paramacky1.l;
-    }
-    return 0;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

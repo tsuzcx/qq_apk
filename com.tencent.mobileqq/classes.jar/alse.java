@@ -1,11 +1,21 @@
+import java.util.ArrayList;
+
 class alse
-  implements alsk
+  implements alsj
 {
-  alse(alsc paramalsc) {}
+  alse(alsb paramalsb) {}
   
-  public void a(alsn paramalsn, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    alsc.a(this.a, (alsp)paramalsn, paramBoolean, paramArrayOfByte);
+    int i = 0;
+    while (i < paramalsm.b.size())
+    {
+      alsi localalsi = (alsi)paramalsm.b.get(i);
+      if (localalsi != null) {
+        localalsi.b(paramBoolean, paramalsm.a, paramArrayOfByte);
+      }
+      i += 1;
+    }
   }
 }
 

@@ -1,21 +1,19 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class bjwd
-  extends bjzj
+  extends QQUIEventReceiver<bjvt, bkcg>
 {
-  public Bitmap a;
-  public Bitmap b;
-  
-  public bjwd(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public bjwd(@NonNull bjvt parambjvt)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    super(parambjvt);
   }
   
-  public bjwd(bjzj parambjzj, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public void a(@NonNull bjvt parambjvt, @NonNull bkcg parambkcg) {}
+  
+  public Class acceptEventClass()
   {
-    this(parambjzj.jdField_c_of_type_Int, parambjzj.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    return bkcg.class;
   }
 }
 

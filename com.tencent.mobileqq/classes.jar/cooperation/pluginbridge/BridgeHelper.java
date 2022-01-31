@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
 import android.util.Xml;
-import axqw;
-import bbdj;
-import bbjn;
-import bgkq;
-import bgkz;
-import bgmd;
-import bgme;
+import axqy;
+import bbdx;
+import bbkb;
+import bglh;
+import bglq;
+import bgmu;
+import bgmv;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -45,7 +45,7 @@ public class BridgeHelper
   implements Runnable
 {
   private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private static bgme jdField_a_of_type_Bgme;
+  private static bgmv jdField_a_of_type_Bgmv;
   private static BridgeHelper jdField_a_of_type_CooperationPluginbridgeBridgeHelper;
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private int jdField_a_of_type_Int;
@@ -149,7 +149,7 @@ public class BridgeHelper
   {
     if ((paramActivity != null) && (paramQQAppInterface != null))
     {
-      if (((bgkq)paramQQAppInterface.getManager(27)).isPlugininstalled("BridgePlugin.apk")) {
+      if (((bglh)paramQQAppInterface.getManager(27)).isPlugininstalled("BridgePlugin.apk")) {
         b(paramActivity, paramQQAppInterface, paramIntent, paramString1, paramString2, paramString3);
       }
     }
@@ -173,7 +173,7 @@ public class BridgeHelper
   static void a(Context paramContext)
   {
     if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new bgmd(null);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new bgmu(null);
     }
     IntentFilter localIntentFilter = new IntentFilter("bridge.onresume.broadcast");
     localIntentFilter.addAction("bridge.plugin.onresume.broadcast");
@@ -199,13 +199,13 @@ public class BridgeHelper
     localIntent.putExtra("param_plugin_gesturelock", true);
     localIntent.putExtra("userQqResources", -1);
     localIntent.putExtra("useSkinEngine", true);
-    paramIntent = new bgkz(1);
+    paramIntent = new bglq(1);
     paramIntent.jdField_b_of_type_JavaLangString = "BridgePlugin.apk";
     paramIntent.d = "BridgePlugin";
-    if (jdField_a_of_type_Bgme == null) {
-      jdField_a_of_type_Bgme = new bgme(paramActivity, paramString3);
+    if (jdField_a_of_type_Bgmv == null) {
+      jdField_a_of_type_Bgmv = new bgmv(paramActivity, paramString3);
     }
-    paramIntent.jdField_a_of_type_AndroidAppDialog = jdField_a_of_type_Bgme;
+    paramIntent.jdField_a_of_type_AndroidAppDialog = jdField_a_of_type_Bgmv;
     paramIntent.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
     localIntent.putExtra("distParamsString", paramString1);
     localIntent.putExtra("distPluginId", paramString2);
@@ -218,8 +218,8 @@ public class BridgeHelper
     paramIntent.jdField_b_of_type_Boolean = false;
     paramIntent.f = null;
     a(paramActivity);
-    bgkq.a(paramActivity, paramIntent);
-    axqw.b(paramQQAppInterface, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, 1, "", "", "", "");
+    bglh.a(paramActivity, paramIntent);
+    axqy.b(paramQQAppInterface, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, 1, "", "", "", "");
   }
   
   public String a(String paramString)
@@ -245,7 +245,7 @@ public class BridgeHelper
       if (QLog.isColorLevel()) {
         QLog.d("SPLASH_ConfigServlet", 2, "receiveAllConfigs|type: 13,version: " + paramConfig.version.get());
       }
-      bbjn.a(this.jdField_a_of_type_AndroidContentContext, paramConfig.version.get(), this.jdField_a_of_type_JavaLangString);
+      bbkb.a(this.jdField_a_of_type_AndroidContentContext, paramConfig.version.get(), this.jdField_a_of_type_JavaLangString);
     }
     if (paramConfig.content_list != null) {
       break label219;
@@ -360,7 +360,7 @@ public class BridgeHelper
         localObjectOutputStream.writeObject(this.jdField_a_of_type_JavaUtilHashMap);
         localObjectOutputStream.close();
         ((ByteArrayOutputStream)???).close();
-        bbdj.a(new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "entry_config_file_" + this.jdField_a_of_type_JavaLangString).getAbsolutePath(), ((ByteArrayOutputStream)???).toByteArray(), false);
+        bbdx.a(new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "entry_config_file_" + this.jdField_a_of_type_JavaLangString).getAbsolutePath(), ((ByteArrayOutputStream)???).toByteArray(), false);
         return;
       }
       catch (IOException localIOException)
@@ -380,7 +380,7 @@ public class BridgeHelper
       ??? = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "entry_config_file_" + this.jdField_a_of_type_JavaLangString);
       if ((??? != null) && (((File)???).exists()))
       {
-        ??? = bbdj.a((File)???);
+        ??? = bbdx.a((File)???);
         if (??? != null) {
           ??? = new ByteArrayInputStream((byte[])???);
         }

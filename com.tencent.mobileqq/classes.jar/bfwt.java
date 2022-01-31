@@ -1,6 +1,8 @@
 public abstract interface bfwt
 {
   public abstract void a();
+  
+  public abstract void b();
 }
 
 

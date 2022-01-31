@@ -1,166 +1,57 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class aqmm
+public abstract class aqmm
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  public boolean c;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
+  public int c;
+  public Rect c;
+  public boolean d;
   
-  public aqmm(Intent paramIntent)
+  public aqmm()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
-    a(paramIntent);
+    this.jdField_c_of_type_Int = 2;
   }
   
-  private void a(Intent paramIntent)
+  public static int a(Rect paramRect, Drawable paramDrawable)
   {
-    Bundle localBundle = paramIntent.getExtras();
-    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
-    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
-    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
-    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
-    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
-    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
-    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    boolean bool;
-    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
-    {
-      bool = false;
-      this.g = bool;
-      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
-        break label272;
-      }
-      bool = true;
-      label168:
-      this.h = bool;
-      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
-        break label277;
-      }
+    float f1 = paramRect.width();
+    float f2 = paramRect.height();
+    float f3 = paramDrawable.getIntrinsicWidth();
+    float f4 = paramDrawable.getIntrinsicHeight();
+    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {
+      return 0;
     }
-    label272:
-    label277:
-    for (int j = 1;; j = 0)
-    {
-      this.jdField_c_of_type_Int = j;
-      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
-      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
-      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
-      this.jdField_c_of_type_Boolean = localBundle.getBoolean(bgkh.jdField_b_of_type_JavaLangString, true);
-      this.jdField_b_of_type_Boolean = localBundle.getBoolean(bgkh.jdField_a_of_type_JavaLangString);
-      return;
-      bool = true;
-      break;
-      bool = false;
-      break label168;
-    }
+    f1 = f1 * f4 / (f2 * f3);
+    return 0;
   }
   
-  public int a()
+  public abstract int a();
+  
+  public Rect a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.jdField_c_of_type_AndroidGraphicsRect;
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  public abstract Drawable a();
   
-  public String a()
+  public boolean a(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Boolean;
+    return true;
   }
   
   public int b()
   {
-    return this.jdField_c_of_type_Int;
+    return 0;
   }
   
-  public String b()
+  public Rect b()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_e_of_type_Boolean;
+    return null;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.f;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.g;
-  }
-  
-  public boolean e()
-  {
-    return this.h;
-  }
-  
-  public boolean f()
-  {
-    return this.i;
-  }
-  
-  public boolean g()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -1);
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return 0;
   }
 }
 

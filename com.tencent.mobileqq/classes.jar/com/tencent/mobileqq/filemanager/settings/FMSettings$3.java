@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import apti;
-import apto;
+import aptm;
+import apts;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,11 +15,11 @@ public class FMSettings$3
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.this$0.a.keySet().iterator();
     Object localObject;
-    for (long l = 0L; localIterator.hasNext(); l = apti.a(this.this$0, (String)localObject, localArrayList) + l)
+    for (long l = 0L; localIterator.hasNext(); l = aptm.a(this.this$0, (String)localObject, localArrayList) + l)
     {
       localObject = (String)localIterator.next();
-      localObject = (apto)this.this$0.a.get(localObject);
-      localObject = apti.b(this.this$0, ((apto)localObject).b + ((apto)localObject).c);
+      localObject = (apts)this.this$0.a.get(localObject);
+      localObject = aptm.b(this.this$0, ((apts)localObject).b + ((apts)localObject).c);
     }
   }
 }

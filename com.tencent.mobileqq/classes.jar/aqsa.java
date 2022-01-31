@@ -1,18 +1,52 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
 public class aqsa
-  implements View.OnLayoutChangeListener
+  extends aqrw
 {
-  public aqsa(QQGamePadFaceFragment paramQQGamePadFaceFragment) {}
+  private ImageView b;
+  private TextView d;
+  private TextView e;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public aqsa(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559085, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    }
+    this.b = ((ImageView)paramContext.findViewById(2131367992));
+    this.d = ((TextView)paramContext.findViewById(2131378364));
+    this.e = ((TextView)paramContext.findViewById(2131378262));
+  }
+  
+  public void a(FeedsItemData paramFeedsItemData)
+  {
+    super.a(paramFeedsItemData);
+    this.e.setText(paramFeedsItemData.title + "");
+    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
+      this.d.setVisibility(8);
+    }
+    for (;;)
     {
-      QQGamePadFaceFragment.a(this.a, true);
-      QQGamePadFaceFragment.a(this.a);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846170);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846170);
+      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
+      this.b.setImageDrawable(paramFeedsItemData);
+      return;
+      this.d.setVisibility(0);
+      this.d.setText(paramFeedsItemData.subTitle + "");
     }
   }
 }

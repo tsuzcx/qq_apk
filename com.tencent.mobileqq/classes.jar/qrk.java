@@ -1,8 +1,23 @@
-public abstract interface qrk
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+
+public class qrk
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void b();
+  public qrk(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public abstract void c();
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      VideoFeedsRecyclerView.a(this.a, false);
+      return;
+    }
+    VideoFeedsRecyclerView.a(this.a, true);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ShowExternalTroop;
 
-class aiph
-  implements View.OnClickListener
+public class aiph
 {
-  aiph(aipf paramaipf) {}
+  public int a;
+  public ShowExternalTroop a;
   
-  public void onClick(View paramView)
+  public aiph(int paramInt, ShowExternalTroop paramShowExternalTroop)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof azmn)) {
-      return;
-    }
-    paramView = (azmn)paramView;
-    this.a.a.a(paramView.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
   }
 }
 

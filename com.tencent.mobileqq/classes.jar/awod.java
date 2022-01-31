@@ -1,9 +1,15 @@
-public abstract interface awod
-  extends awoe
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+
+public class awod
 {
-  public abstract String b();
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public abstract int c();
+  public awod(HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
 }
 
 

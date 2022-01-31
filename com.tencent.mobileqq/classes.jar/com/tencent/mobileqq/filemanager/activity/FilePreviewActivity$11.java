@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.animation.AlphaAnimation;
-import apuz;
-import apva;
+import apvb;
+import apvc;
 
 class FilePreviewActivity$11
   implements Runnable
@@ -12,16 +12,16 @@ class FilePreviewActivity$11
   public void run()
   {
     if (this.this$0.b == null) {
-      this.this$0.b = new apuz(this.this$0.a);
+      this.this$0.b = new apvb(this.this$0.a);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
-    apva localapva = new apva();
-    localapva.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localapva.jdField_a_of_type_Boolean = false;
-    localapva.jdField_a_of_type_Int = apuz.jdField_a_of_type_Int;
-    localapva.b = 1500;
-    this.this$0.b.a(localapva);
+    apvc localapvc = new apvc();
+    localapvc.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localapvc.jdField_a_of_type_Boolean = false;
+    localapvc.jdField_a_of_type_Int = apvb.jdField_a_of_type_Int;
+    localapvc.b = 1500;
+    this.this$0.b.a(localapvc);
     this.this$0.b.a();
   }
 }

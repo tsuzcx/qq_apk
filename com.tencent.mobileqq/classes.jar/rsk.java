@@ -1,21 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.view.View;
+import android.view.animation.Animation;
 
-public class rsk
-  implements rsl
+class rsk
+  implements rsp
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  rsk(rsj paramrsj) {}
   
-  public rsk(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    if (paramBoolean)
+    {
+      if (rsj.a(this.a) != null)
+      {
+        paramString = (Animation)rsj.a(this.a).getTag(2131368790);
+        paramString.setAnimationListener(new rsl(this));
+        rsj.a(this.a).startAnimation(paramString);
+      }
+      return;
+    }
+    bcql.a(this.a.a, 1, 2131718453, 0).a();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.jdField_a_of_type_Int);
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.b);
+    if (paramBoolean)
+    {
+      rsj.a(this.a).a(rsj.a(this.a), rsj.a(this.a, paramInt), this.a.a, "", "", paramString2);
+      return;
+    }
+    bcql.a(this.a.a, 1, 2131718457, 0).a();
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (rsj.a(this.a) != null)
+      {
+        paramString = (Animation)rsj.a(this.a).getTag(2131368790);
+        paramString.setAnimationListener(new rsm(this));
+        rsj.a(this.a).startAnimation(paramString);
+      }
+      return;
+    }
+    bcql.a(this.a.a, 1, 2131718460, 0).a();
   }
 }
 

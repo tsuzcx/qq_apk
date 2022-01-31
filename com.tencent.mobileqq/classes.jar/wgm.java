@@ -1,25 +1,15 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 
 public class wgm
-  implements Comparator<String>
+  implements DialogInterface.OnCancelListener
 {
-  public wgm(QRDisplayActivity paramQRDisplayActivity) {}
+  public wgm(QRJumpActivity paramQRJumpActivity) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
-    }
-    while (paramString1 != null) {
-      return i;
-    }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
+    this.a.finish();
   }
 }
 

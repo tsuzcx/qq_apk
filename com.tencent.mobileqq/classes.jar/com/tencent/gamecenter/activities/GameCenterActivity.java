@@ -12,8 +12,8 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.widget.TextView;
 import android.widget.Toast;
-import aqsn;
-import bcbv;
+import aqsp;
+import bccj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,7 +25,7 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.io.IOException;
-import nam;
+import naj;
 import org.apache.http.client.ClientProtocolException;
 
 public class GameCenterActivity
@@ -56,7 +56,7 @@ public class GameCenterActivity
     paramString3.putString("Cookie", paramString2);
     try
     {
-      paramContext = nam.a(paramContext, paramString1, "POST", localBundle, paramString3);
+      paramContext = naj.a(paramContext, paramString1, "POST", localBundle, paramString3);
       if (QLog.isColorLevel()) {
         QLog.i("GameCenter", 2, "httpRequest: result:" + paramContext);
       }
@@ -208,7 +208,7 @@ public class GameCenterActivity
   
   public boolean onBackEvent()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = aqsn.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = aqsp.a().a();
     if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.a()))
     {
       localGameCenterVideoViewController.c();

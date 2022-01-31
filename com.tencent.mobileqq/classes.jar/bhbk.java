@@ -1,20 +1,51 @@
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class bhbk
 {
-  public static boolean a(Object paramObject, int paramInt1, int paramInt2, Intent paramIntent)
+  public final int a;
+  public final long a;
+  public String a;
+  public final int b;
+  public final long b;
+  public final int c;
+  public final long c;
+  public final int d;
+  public final long d;
+  public final long e;
+  public final long f;
+  
+  private bhbk(ByteBuffer paramByteBuffer, int paramInt)
   {
-    QZLog.i("QZoneEventHandler", "handleActivityEvent: " + paramInt1 + " " + paramInt2);
-    switch (paramInt1)
+    switch (paramInt)
     {
     default: 
-      return false;
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
     }
-    if (((paramObject instanceof aeoo)) && (((aeoo)paramObject).a != null)) {
-      ((aeoo)paramObject).a.a(paramInt1, paramInt2, paramIntent);
+    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getLong();
     }
-    return true;
   }
 }
 

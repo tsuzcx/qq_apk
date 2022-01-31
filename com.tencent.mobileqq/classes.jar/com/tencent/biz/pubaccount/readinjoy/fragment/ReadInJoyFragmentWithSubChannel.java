@@ -7,39 +7,39 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bhvh;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Constants.LogoutReason;
-import ntk;
-import nts;
-import oun;
-import ouo;
-import qzq;
+import nth;
+import ntp;
+import ouk;
+import oul;
+import qzn;
 
-public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
+public abstract class ReadInJoyFragmentWithSubChannel<C extends qzn>
   extends ReadInJoyBaseFragment
 {
   public ChannelClassificationListView<C> a;
-  public nts a;
-  ouo a;
+  public ntp a;
+  oul a;
   public boolean a;
   
   protected abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<C> paramChannelClassificationListView);
   
-  public abstract ouo a();
+  public abstract oul a();
   
   protected void a() {}
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Nts != null)
+    if (this.jdField_a_of_type_Ntp != null)
     {
-      this.jdField_a_of_type_Nts.a(true, 0);
+      this.jdField_a_of_type_Ntp.a(true, 0);
       return;
     }
-    ntk.e(a());
+    nth.e(a());
   }
   
   public void a(View paramView, int paramInt) {}
@@ -47,31 +47,31 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
   public void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
-    if ((bhvh.i()) && (this.jdField_a_of_type_Nts != null)) {
-      this.jdField_a_of_type_Nts.a(paramLogoutReason);
+    if ((bhvy.i()) && (this.jdField_a_of_type_Ntp != null)) {
+      this.jdField_a_of_type_Ntp.a(paramLogoutReason);
     }
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.b();
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.b();
     }
   }
   
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.a(true);
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.a(true);
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.a(true);
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.a(true);
     }
   }
   
@@ -84,15 +84,15 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
   {
     super.g();
     this.c = false;
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.l();
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.l();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -105,7 +105,7 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (bhvh.C(getActivity().getAppRuntime()) == 0) {}
+    if (bhvy.C(getActivity().getAppRuntime()) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
@@ -115,14 +115,14 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
       if ((!f()) && (this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView = new ChannelClassificationListView(getActivity());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new oun(this));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setOnItemClickListener(new ouk(this));
       }
-      this.jdField_a_of_type_Ouo = a();
-      this.jdField_a_of_type_Nts = new nts(a(), 0, getActivity(), this.jdField_a_of_type_Ouo);
+      this.jdField_a_of_type_Oul = a();
+      this.jdField_a_of_type_Ntp = new ntp(a(), 0, getActivity(), this.jdField_a_of_type_Oul);
       paramLayoutInflater = a(paramLayoutInflater, paramViewGroup, paramBundle, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView);
-      this.jdField_a_of_type_Nts.a();
+      this.jdField_a_of_type_Ntp.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null) {
-        this.jdField_a_of_type_Nts.i();
+        this.jdField_a_of_type_Ntp.i();
       }
       return paramLayoutInflater;
     }
@@ -131,28 +131,28 @@ public abstract class ReadInJoyFragmentWithSubChannel<C extends qzq>
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Nts.d();
+    this.jdField_a_of_type_Ntp.d();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Nts != null) {
-      this.jdField_a_of_type_Nts.g();
+    if (this.jdField_a_of_type_Ntp != null) {
+      this.jdField_a_of_type_Ntp.g();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Nts.h();
+    this.jdField_a_of_type_Ntp.h();
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_Nts != null)) {
-      this.jdField_a_of_type_Nts.c();
+    if ((getActivity().isFinishing()) && (this.jdField_a_of_type_Ntp != null)) {
+      this.jdField_a_of_type_Ntp.c();
     }
   }
 }

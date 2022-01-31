@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
-import aukm;
-import aukn;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -38,7 +38,7 @@ class DesktopDataManager$20
         {
           localObject2 = new DesktopCardEntity((INTERFACE.StModuleInfo)localObject2);
           ((DesktopCardEntity)localObject2).setStatus(1000);
-          DesktopDataManager.access$3100(this.this$0, (aukn)localObject1, (aukm)localObject2);
+          DesktopDataManager.access$3100(this.this$0, (aukp)localObject1, (auko)localObject2);
           localStringBuilder.append(((DesktopCardEntity)localObject2).moduleType).append(":").append(((DesktopCardEntity)localObject2).title).append(", ");
         }
       }

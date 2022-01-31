@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiko
-  implements View.OnClickListener
+class aiko
+  implements DialogInterface.OnClickListener
 {
-  public aiko(SessionClearFragment paramSessionClearFragment) {}
+  aiko(aikm paramaikm) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = ajyc.a(2131713843);
-    paramView = bbcv.a(SessionClearFragment.a(this.a), 230, ajyc.a(2131713845), paramView, 2131694647, 2131720918, new aikp(this), new aikq(this));
-    SessionClearFragment.a(this.a, paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

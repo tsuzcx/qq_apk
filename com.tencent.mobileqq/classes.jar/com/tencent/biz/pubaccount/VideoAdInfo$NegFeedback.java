@@ -6,13 +6,13 @@ import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import npc;
+import noz;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.NegFeedback;
 
 public class VideoAdInfo$NegFeedback
   implements Parcelable
 {
-  public static final Parcelable.Creator<NegFeedback> CREATOR = new npc();
+  public static final Parcelable.Creator<NegFeedback> CREATOR = new noz();
   public long a;
   public String a;
   

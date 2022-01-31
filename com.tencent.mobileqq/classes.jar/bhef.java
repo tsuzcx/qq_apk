@@ -1,34 +1,14 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserActionReportReq;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileFilter;
 
-public class bhef
-  extends QzoneExternalRequest
+class bhef
+  implements FileFilter
 {
-  private final JceStruct a;
+  bhef(bheb parambheb) {}
   
-  public bhef(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public boolean accept(File paramFile)
   {
-    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
-    this.needCompress = false;
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.UserActionReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "UserActionReport";
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 

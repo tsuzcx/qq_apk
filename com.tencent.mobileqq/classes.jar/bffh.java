@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.ui.MoreItem;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qqmini.sdk.task.AsyncTask.1;
 
-public final class bffh
-  implements Parcelable.Creator<MoreItem>
+public abstract class bffh
+  extends bffi
 {
-  public MoreItem a(Parcel paramParcel)
+  public bffh(Context paramContext, beqm parambeqm)
   {
-    return new MoreItem(paramParcel);
+    super(paramContext, 2, parambeqm);
   }
   
-  public MoreItem[] a(int paramInt)
+  public abstract void a();
+  
+  public boolean b()
   {
-    return new MoreItem[paramInt];
+    return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
+  }
+  
+  public void d()
+  {
+    if (!b())
+    {
+      a();
+      return;
+    }
+    bejn.a().post(new AsyncTask.1(this));
   }
 }
 

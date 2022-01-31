@@ -1,38 +1,42 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class oll
-  implements INetInfoHandler
 {
-  public void onNetMobile2None() {}
+  private static boolean a;
   
-  public void onNetMobile2Wifi(String paramString)
+  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(olj.a());
-    olj.a();
+    if (BaseApplicationImpl.sApplication == null) {
+      return null;
+    }
+    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562483, null);
+    ((DragTextView)localView.findViewById(2131378606)).setDragViewType(2);
+    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131376810)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
+    ((TextView)localView.findViewById(2131378370)).setText(paramInt5);
+    return localView;
   }
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
+  public static void a(boolean paramBoolean)
   {
-    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
-    AppNetConnInfo.unregisterNetInfoHandler(olj.a());
-    olj.a();
+    try
+    {
+      a = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public static boolean a()
   {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
-    bdkp.a().a("101480433");
-  }
-  
-  public void onNetWifi2None()
-  {
-    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
-    bdkp.a().a("101480433");
+    return a;
   }
 }
 

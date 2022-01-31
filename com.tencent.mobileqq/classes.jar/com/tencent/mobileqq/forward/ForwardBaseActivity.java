@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.forward;
 
-import aqbt;
+import aqbv;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class ForwardBaseActivity
   extends IphoneTitleBarActivity
-  implements aqbt
+  implements aqbv
 {}
 
 

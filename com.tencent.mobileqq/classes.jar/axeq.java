@@ -1,6 +1,10 @@
 public abstract interface axeq
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void G_();
+  
+  public abstract void a(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
 }
 
 

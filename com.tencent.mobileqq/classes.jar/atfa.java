@@ -1,27 +1,83 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class atfa
-  implements atfr
+  implements View.OnClickListener
 {
   public atfa(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
-    {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
-      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+    if (paramView == ChooseInterestTagActivity.b(this.a)) {
+      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
       {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
+        ChooseInterestTagActivity.a(this.a, true, true);
       }
-      i += 1;
+    }
+    label371:
+    do
+    {
+      do
+      {
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+        break;
+        if (paramView == this.a.leftView)
+        {
+          bfni.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a))
+          {
+            this.a.finish();
+            return;
+          }
+          localObject = this.a.getIntent();
+          paramView = (View)localObject;
+          if (localObject == null) {
+            paramView = new Intent();
+          }
+          Collections.reverse(ChooseInterestTagActivity.a(this.a));
+          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
+          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
+          this.a.setResult(-1, paramView);
+          this.a.finish();
+          return;
+        }
+        if (paramView != this.a.rightViewText) {
+          break label371;
+        }
+        bfni.b(ChooseInterestTagActivity.a(this.a));
+      } while (!ChooseInterestTagActivity.a(this.a));
+      if (ChooseInterestTagActivity.a(this.a).isEmpty())
+      {
+        ChooseInterestTagActivity.a(this.a, ajya.a(2131701805));
+        return;
+      }
+      ChooseInterestTagActivity.a(this.a, 0, ajya.a(2131701799), 0);
+      Collections.reverse(ChooseInterestTagActivity.a(this.a));
+      paramView = new atfm(ChooseInterestTagActivity.a(this.a));
+      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
+      Object localObject = new ArrayList(1);
+      ((List)localObject).add(paramView);
+      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
+      return;
+    } while (paramView != ChooseInterestTagActivity.a(this.a));
+    ChooseInterestTagActivity.a(this.a).setText(ajya.a(2131701822));
+    paramView = ChooseInterestTagActivity.a(this.a);
+    int j = ChooseInterestTagActivity.a(this.a);
+    int k = ChooseInterestTagActivity.b(this.a);
+    if (ChooseInterestTagActivity.a(this.a)) {}
+    for (int i = 1;; i = 0)
+    {
+      paramView.a("", j, k, 30, 0, i);
+      return;
     }
   }
 }

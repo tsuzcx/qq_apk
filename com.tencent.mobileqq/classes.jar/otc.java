@@ -1,13 +1,12 @@
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-
-public class otc
+final class otc
+  implements otf
 {
-  public oidb_cmd0x80a.AttributeList a;
-  public oidb_cmd0x80a.AttributeList b;
-  public oidb_cmd0x80a.AttributeList c;
-  public oidb_cmd0x80a.AttributeList d;
+  public void l() {}
   
-  public otc(ota paramota) {}
+  public void m()
+  {
+    osx.a().a("2909288299", ota.b, false, null, false);
+  }
 }
 
 

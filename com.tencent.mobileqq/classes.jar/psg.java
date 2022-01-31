@@ -1,55 +1,17 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class psg
-  extends pqt
+class psg
+  implements View.OnClickListener
 {
-  public psg(Context paramContext, baxk parambaxk, rap paramrap)
-  {
-    super(paramContext, parambaxk, paramrap);
-  }
+  psg(psf parampsf) {}
   
-  public pqt a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
-  }
-  
-  public pqt d()
-  {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pqs != null) && ((this.jdField_a_of_type_Pqs instanceof ComponentContentHotSearch))) {
-      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Pqs);
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public pqt e()
-  {
-    return this;
-  }
-  
-  public pqt g()
-  {
-    this.jdField_a_of_type_Pqs = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rap);
-    return this;
-  }
-  
-  public pqt o()
-  {
-    super.o();
-    return this;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukm;
-import aukn;
 import auko;
 import aukp;
+import aukq;
+import aukr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUserAppInfoListManager$9
   implements Runnable
 {
-  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, aukm paramaukm) {}
+  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, auko paramauko) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ class MiniAppUserAppInfoListManager$9
     if (localObject1 == null) {
       QLog.e("MiniAppUserAppInfoListManager", 1, "saveToDB, app is null.");
     }
-    aukn localaukn;
+    aukp localaukp;
     do
     {
       return;
-      localaukn = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while ((localaukn == null) || (this.val$entity == null));
-    localObject1 = localaukn.a();
-    ((aukp)localObject1).a();
+      localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while ((localaukp == null) || (this.val$entity == null));
+    localObject1 = localaukp.a();
+    ((aukr)localObject1).a();
     try
     {
-      MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukn, this.val$entity);
-      ((aukp)localObject1).c();
+      MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukp, this.val$entity);
+      ((aukr)localObject1).c();
       QLog.w("MiniAppUserAppInfoListManager", 2, "saveToDB, appInfo: " + this.val$entity);
       return;
     }
@@ -42,7 +42,7 @@ class MiniAppUserAppInfoListManager$9
     }
     finally
     {
-      ((aukp)localObject1).b();
+      ((aukr)localObject1).b();
     }
   }
 }

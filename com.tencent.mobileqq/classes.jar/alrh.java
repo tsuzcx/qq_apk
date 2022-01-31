@@ -1,12 +1,8 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import java.util.List;
 
-public class alrh
+public abstract interface alrh
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  
-  public alrh(alrf paramalrf) {}
+  public abstract void a(List<alsa> paramList);
 }
 
 

@@ -1,22 +1,17 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.33.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.Leba.5;
+import com.tencent.mobileqq.activity.Leba.5.1;
 
 public class abkt
-  extends aszi
+  implements bcay
 {
-  public abkt(Leba paramLeba) {}
+  public abkt(Leba.5.1 param1) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    if (paramBoolean) {
+      Leba.b(this.a.a.this$0).a();
     }
-    if (Leba.a(this.a) == null) {
-      return;
-    }
-    this.a.a.post(new Leba.33.1(this));
   }
 }
 

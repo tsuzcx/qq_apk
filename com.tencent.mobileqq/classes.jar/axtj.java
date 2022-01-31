@@ -1,121 +1,72 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-
 public class axtj
+  extends axtk
 {
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private TreeMap<axtk, String> jdField_a_of_type_JavaUtilTreeMap;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
   
-  private String a()
+  public axtj()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nBusiness\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      localObject = (Map.Entry)localIterator.next();
-      if (i < 20) {}
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.i).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    if (paramInt == 0) {
+      localStringBuilder.append("${count_unknown}").append("|");
     }
-    else
-    {
-      return localStringBuilder.toString();
-    }
-    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((axtk)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
-    Object localObject = new ArrayList(((axtk)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
-    Collections.sort((List)localObject);
-    localObject = ((List)localObject).iterator();
-    int j = 0;
     for (;;)
     {
-      axtk localaxtk;
-      if (((Iterator)localObject).hasNext())
-      {
-        localaxtk = (axtk)((Iterator)localObject).next();
-        if (j >= 5) {
-          localStringBuilder.append("\t\t").append("…").append("\n");
-        }
-      }
-      else
-      {
-        i += 1;
-        break;
-      }
-      j += 1;
-      localStringBuilder.append("\t\t").append(localaxtk.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localaxtk.jdField_a_of_type_Int).append(")").append("\n");
+      localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+      localStringBuilder.append(this.d).append("|");
+      localStringBuilder.append(this.e).append("|");
+      localStringBuilder.append(this.f).append("|");
+      localStringBuilder.append(this.g).append("|");
+      localStringBuilder.append(this.h).append("|");
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
     }
   }
   
-  private void a(axtl paramaxtl)
+  public String toString()
   {
-    paramaxtl.a();
-    c(paramaxtl);
-    b(paramaxtl);
-  }
-  
-  private String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nSystem\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private void b(axtl paramaxtl)
-  {
-    Object localObject = paramaxtl.a();
-    paramaxtl = new HashMap(20);
-    localObject = ((HashMap)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = (String)localEntry.getValue();
-      if (axtl.a(str) == null) {
-        paramaxtl.put(localEntry.getKey(), str);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramaxtl);
-  }
-  
-  private void c(axtl paramaxtl)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
-    paramaxtl = paramaxtl.b().entrySet().iterator();
-    while (paramaxtl.hasNext())
-    {
-      Object localObject = (Map.Entry)paramaxtl.next();
-      axtk localaxtk = (axtk)((Map.Entry)localObject).getKey();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localaxtk.jdField_a_of_type_Int));
-      }
-      else
-      {
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        int i = localInteger.intValue();
-        localMap.put(localObject, Integer.valueOf(localaxtk.jdField_a_of_type_Int + i));
-      }
-    }
-  }
-  
-  public String a(axtl paramaxtl)
-  {
-    a(paramaxtl);
-    return a() + b();
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    return localStringBuffer.toString();
   }
 }
 

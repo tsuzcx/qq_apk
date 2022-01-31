@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahgl;
+import ahgj;
+import ahhi;
+import ahhj;
 import ahhk;
 import ahhl;
-import ahhm;
-import ahhn;
-import ahht;
-import ahih;
+import ahhr;
+import ahif;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,8 +24,8 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbdj;
-import bbjw;
+import bbdx;
+import bbkk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -42,11 +42,11 @@ import mqq.os.MqqHandler;
 
 public class SpringHbTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
-  implements ahht
+  implements ahhr
 {
   private int jdField_a_of_type_Int = 2000;
   private long jdField_a_of_type_Long = System.currentTimeMillis();
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahhl(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahhj(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -165,7 +165,7 @@ public class SpringHbTranslucentBrowserActivity
     //   168: iconst_0
     //   169: iconst_0
     //   170: aconst_null
-    //   171: invokestatic 180	ahih:a	(Ljava/lang/String;IILjava/util/Map;)V
+    //   171: invokestatic 180	ahif:a	(Ljava/lang/String;IILjava/util/Map;)V
     //   174: return
     //   175: aload_0
     //   176: ldc 182
@@ -222,7 +222,7 @@ public class SpringHbTranslucentBrowserActivity
       return;
     }
     SpringHbVideoView localSpringHbVideoView;
-    if (ahgl.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView == null)
+    if (ahgj.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView == null)
     {
       QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "no cache new a QQFudaiVideoView");
       localSpringHbVideoView = new SpringHbVideoView(BaseApplicationImpl.getContext());
@@ -237,12 +237,12 @@ public class SpringHbTranslucentBrowserActivity
       }
       localSpringHbVideoView.setDataByLocalPath(paramString, false, false);
       localSpringHbVideoView.setVideoListener(this);
-      localSpringHbVideoView.setOnClickListener(new ahhn(this));
+      localSpringHbVideoView.setOnClickListener(new ahhl(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView = localSpringHbVideoView;
       return;
       QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "use cache QQFudaiVideoView");
-      localSpringHbVideoView = ahgl.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView;
-      ahgl.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView = null;
+      localSpringHbVideoView = ahgj.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView;
+      ahgj.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView = null;
     }
   }
   
@@ -291,7 +291,7 @@ public class SpringHbTranslucentBrowserActivity
       QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "isNeedPlayInnerVideo -->IsVideoChatting,no need to play");
       return false;
     }
-    if (!bbdj.a(this.jdField_a_of_type_JavaLangString))
+    if (!bbdx.a(this.jdField_a_of_type_JavaLangString))
     {
       QLog.e("springHb_SpringHbTranslucentBrowserActivity", 2, "isNeedPlayInnerVideo -->file is no exists,mVideoPath=" + this.jdField_a_of_type_JavaLangString);
       return false;
@@ -308,7 +308,7 @@ public class SpringHbTranslucentBrowserActivity
     {
       try
       {
-        if (!bbjw.a(this.jdField_b_of_type_JavaLangString)) {
+        if (!bbkk.a(this.jdField_b_of_type_JavaLangString)) {
           bool = getApplicationContext().getSharedPreferences("spring_entry_video_sp", 0).getBoolean(this.jdField_b_of_type_JavaLangString, false);
         }
         boolean bool = false;
@@ -336,7 +336,7 @@ public class SpringHbTranslucentBrowserActivity
   
   private void d()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131364706);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131364705);
     if (localViewGroup != null)
     {
       localViewGroup.setAlpha(0.0F);
@@ -348,7 +348,7 @@ public class SpringHbTranslucentBrowserActivity
   {
     try
     {
-      if (!bbjw.a(this.jdField_b_of_type_JavaLangString))
+      if (!bbkk.a(this.jdField_b_of_type_JavaLangString))
       {
         QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "setHasPlayed ");
         getApplicationContext().getSharedPreferences("spring_entry_video_sp", 0).edit().putBoolean(this.jdField_b_of_type_JavaLangString, true).apply();
@@ -363,7 +363,7 @@ public class SpringHbTranslucentBrowserActivity
   
   private void j()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131364706);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131364705);
     if (localViewGroup == null)
     {
       QLog.e("springHb_SpringHbTranslucentBrowserActivity", 2, "addVideoContainer content_fragment==null");
@@ -382,7 +382,7 @@ public class SpringHbTranslucentBrowserActivity
       return;
     }
     this.jdField_a_of_type_AndroidViewViewGroup = localViewGroup;
-    View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131562614, null);
+    View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131562613, null);
     if (localView == null)
     {
       QLog.e("springHb_SpringHbTranslucentBrowserActivity", 2, "webview_fragment_fudai_videolayout inflate fail.");
@@ -402,7 +402,7 @@ public class SpringHbTranslucentBrowserActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366861));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366859));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahhk(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahhi(this));
     this.jdField_a_of_type_AndroidViewViewGroup.bringChildToFront(this.jdField_a_of_type_AndroidViewView);
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_JavaLangString);
     QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "inflate view webview_fragment_fudai_videolayout");
@@ -412,7 +412,7 @@ public class SpringHbTranslucentBrowserActivity
   {
     try
     {
-      ViewGroup localViewGroup = (ViewGroup)findViewById(2131364706);
+      ViewGroup localViewGroup = (ViewGroup)findViewById(2131364705);
       if (localViewGroup == null)
       {
         QLog.e("springHb_SpringHbTranslucentBrowserActivity", 2, "addVideoContainer content_fragment==null");
@@ -480,12 +480,12 @@ public class SpringHbTranslucentBrowserActivity
       QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "doStartPlayVideo,mDuration:" + this.jdField_c_of_type_Long);
     }
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setAnimationListener(new ahhm(this));
+    localAlphaAnimation.setAnimationListener(new ahhk(this));
     localAlphaAnimation.setDuration(400L);
     this.jdField_a_of_type_AndroidViewView.setAnimation(localAlphaAnimation);
     localAlphaAnimation.start();
     i();
-    ahih.a("sq.kcsp.bf", 0, 0, null);
+    ahif.a("sq.kcsp.bf", 0, 0, null);
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -511,7 +511,7 @@ public class SpringHbTranslucentBrowserActivity
     long l1;
     try
     {
-      View localView = findViewById(2131364706);
+      View localView = findViewById(2131364705);
       if (localView == null)
       {
         QLog.w("springHb_SpringHbTranslucentBrowserActivity", 2, "view content_fragment is null");
@@ -714,7 +714,7 @@ public class SpringHbTranslucentBrowserActivity
         HashMap localHashMap = new HashMap();
         localHashMap.put("ext1", l1 + "");
         localHashMap.put("ext2", l1 + "");
-        ahih.a("sq.kcsp.bw", 0, 0, localHashMap);
+        ahif.a("sq.kcsp.bw", 0, 0, localHashMap);
         if (QLog.isColorLevel()) {
           QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "onCompletion...duration:" + l1 + ",position:" + l1);
         }

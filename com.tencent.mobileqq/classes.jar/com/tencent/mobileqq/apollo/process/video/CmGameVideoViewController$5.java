@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import ajeg;
-import ajek;
-import ajoi;
+import ajee;
+import ajei;
+import ajog;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
@@ -10,15 +10,15 @@ import java.net.URLEncoder;
 public class CmGameVideoViewController$5
   implements Runnable
 {
-  public CmGameVideoViewController$5(ajek paramajek, int paramInt, long paramLong) {}
+  public CmGameVideoViewController$5(ajei paramajei, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if ((ajek.a(this.this$0) == null) || (TextUtils.isEmpty(ajek.a(this.this$0).c))) {
+    if ((ajei.a(this.this$0) == null) || (TextUtils.isEmpty(ajei.a(this.this$0).c))) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ajek.a(this.this$0).c);
+    localStringBuilder.append(ajei.a(this.this$0).c);
     String str3 = "";
     String str1 = str3;
     switch (this.jdField_a_of_type_Int)
@@ -36,7 +36,7 @@ public class CmGameVideoViewController$5
         if (!TextUtils.isEmpty(str1)) {
           localStringBuilder.append("&video=").append(URLEncoder.encode(str1, "UTF-8"));
         }
-        ajoi.a(localStringBuilder.toString(), null, null);
+        ajog.a(localStringBuilder.toString(), null, null);
         return;
       }
       catch (Throwable localThrowable)
@@ -44,29 +44,29 @@ public class CmGameVideoViewController$5
         QLog.e("cmgame_process.CmGameVideoViewController", 1, localThrowable, new Object[0]);
         return;
       }
-      if ((ajek.a(this.this$0) & 0x1) == 1) {
+      if ((ajei.a(this.this$0) & 0x1) == 1) {
         break;
       }
-      String str2 = ajek.a(this.this$0, 0L, 0L, 1L, 0L);
-      ajek.a(this.this$0, ajek.a(this.this$0) | 0x1);
+      String str2 = ajei.a(this.this$0, 0L, 0L, 1L, 0L);
+      ajei.a(this.this$0, ajei.a(this.this$0) | 0x1);
       continue;
-      if ((ajek.a(this.this$0) & 0x2) == 2) {
+      if ((ajei.a(this.this$0) & 0x2) == 2) {
         break;
       }
       str2 = "";
-      ajek.a(this.this$0, ajek.a(this.this$0) | 0x2);
+      ajei.a(this.this$0, ajei.a(this.this$0) | 0x2);
       continue;
-      if ((ajek.a(this.this$0) & 0x4) == 4) {
+      if ((ajei.a(this.this$0) & 0x4) == 4) {
         break;
       }
-      str2 = ajek.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
-      ajek.a(this.this$0, ajek.a(this.this$0) | 0x4);
+      str2 = ajei.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 0L);
+      ajei.a(this.this$0, ajei.a(this.this$0) | 0x4);
       continue;
-      if ((ajek.a(this.this$0) & 0x8) == 8) {
+      if ((ajei.a(this.this$0) & 0x8) == 8) {
         break;
       }
-      str2 = ajek.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
-      ajek.a(this.this$0, ajek.a(this.this$0) | 0x8);
+      str2 = ajei.a(this.this$0, 0L, this.jdField_a_of_type_Long, 1L, 1L);
+      ajei.a(this.this$0, ajei.a(this.this$0) | 0x8);
     }
   }
 }

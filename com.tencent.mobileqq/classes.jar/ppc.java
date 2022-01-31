@@ -1,17 +1,16 @@
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+
 public class ppc
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public ppc(PTSFragment paramPTSFragment) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "InnerMsg{innerUniqId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.jdField_b_of_type_JavaLangString + '\'' + ", algorithID=" + this.jdField_a_of_type_Long + ", strategyID=" + this.jdField_a_of_type_Int + ", jumpSrcType=" + this.jdField_b_of_type_Int + ", pushContext='" + this.jdField_c_of_type_JavaLangString + '\'' + ", templateID=" + this.jdField_c_of_type_Int + ", articleContentType=" + this.d + '}';
+    ((Activity)paramView.getContext()).finish();
   }
 }
 

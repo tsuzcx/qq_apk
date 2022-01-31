@@ -1,35 +1,40 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class adjz
+class adjz
+  implements adkc
 {
-  public static adjx a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
+  adjz(adjy paramadjy) {}
+  
+  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    boolean bool = true;
-    ajxn localajxn = (ajxn)paramQQAppInterface.getManager(51);
-    if (localajxn != null) {
-      bool = localajxn.b(paramString);
-    }
-    if (bool)
+    int j;
+    int i;
+    if (adjy.a(this.a) != null)
     {
-      paramQQAppInterface = new acwp(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-      if (QLog.isColorLevel())
-      {
-        paramContext = new StringBuilder().append("getIntimateView bFriend = ").append(bool).append(" IntimateView ");
-        if (paramQQAppInterface != null) {
-          break label111;
-        }
+      j = adjy.a(this.a).getChildCount();
+      if (j > 0) {
+        i = 0;
       }
     }
-    label111:
-    for (paramFragmentActivity = "null";; paramFragmentActivity = "created")
+    for (;;)
     {
-      QLog.i("IntimateViewFactory", 2, paramFragmentActivity);
-      return paramQQAppInterface;
-      paramQQAppInterface = new adkg(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
-      break;
+      if (i < j)
+      {
+        paramView = adjy.a(this.a).getChildAt(i).getTag();
+        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
+          adjy.a(this.a).removeViewAt(i);
+        }
+      }
+      else
+      {
+        if (adjy.a(this.a).getChildCount() <= 0) {
+          adjy.a(this.a).setVisibility(8);
+        }
+        return;
+      }
+      i += 1;
     }
   }
 }

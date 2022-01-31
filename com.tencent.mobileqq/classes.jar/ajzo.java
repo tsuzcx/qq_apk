@@ -1,659 +1,461 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.LebaHelper.1;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.ResourcePluginListener;
 import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import tencent.im.PluginConfig.PluginConfig.GetResourceReq;
+import tencent.im.PluginConfig.PluginConfig.GetResourceReqInfo;
 
 public class ajzo
 {
-  public static final String a;
-  int jdField_a_of_type_Int = 0;
-  public bciv a;
-  public QQAppInterface a;
-  List<LebaPluginInfo> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  List<LebaPluginInfo> b;
-  public boolean b;
-  List<ResourcePluginListener> c;
-  
-  static
+  public static int a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "mqqapi://forward/url?src_type=internal&plg_auth=1&version=1&style=home&url_prefix=" + bbca.encodeToString("https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&from=dongtai&target=hot&_nav_txtclr=000000&_wwv=265&sonic=1".getBytes(), 0);
+    return paramInt / 1000;
   }
   
-  public ajzo(QQAppInterface paramQQAppInterface)
+  public static int a(ajzn paramajzn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-  }
-  
-  private void a(int paramInt1, List<ajzp> paramList, int paramInt2)
-  {
-    int j = ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (paramList == null) {}
-    for (int i = -1;; i = paramList.size())
-    {
-      QLog.i("LebaHelper", 1, String.format("saveLebaGroupInfo, localSeq=%d, seq=%d , groupListSize=%d, layoutType=%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2) }));
-      if ((paramInt1 > 0) && (paramInt1 != j) && (paramList != null))
-      {
-        ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1);
-        ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
-        ajzq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2);
-      }
-      return;
+    if (paramajzn == null) {
+      return 0;
     }
+    return paramajzn.jdField_a_of_type_Int * 1000 + paramajzn.b;
   }
   
-  private void a(Runnable paramRunnable)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(paramRunnable, 8, null, true);
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {}
-    SharedPreferences localSharedPreferences;
+    int i;
+    if (paramQQAppInterface == null) {
+      i = -1;
+    }
+    int j;
     do
     {
-      return;
-      localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("mobileQQ", 0);
-    } while (!localSharedPreferences.getBoolean("lebaplugin_clear_local" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LebaHelper", 4, "clearLocalDBPlugin.local plugin.");
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    try
-    {
-      List localList = LebaPluginInfo.getAll((aukn)localObject1);
-      if (localList != null)
-      {
-        int i = 0;
-        while (i < localList.size())
-        {
-          LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)localList.get(i);
-          if ((localLebaPluginInfo != null) && (localLebaPluginInfo.cDataType == 1)) {
-            LebaPluginInfo.remove((aukn)localObject1, localLebaPluginInfo.uiResId);
-          }
-          i += 1;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        ((aukn)localObject1).a();
-      }
-    }
-    finally
-    {
-      ((aukn)localObject1).a();
-    }
-    localObject1 = localSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject1).putBoolean("lebaplugin_clear_local" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-    ((SharedPreferences.Editor)localObject1).commit();
-  }
-  
-  private void f()
-  {
-    LebaPluginInfo localLebaPluginInfo = new LebaPluginInfo();
-    localLebaPluginInfo.strPkgName = "qzone_feedlist";
-    localLebaPluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131717870);
-    localLebaPluginInfo.strResURL = "qq_leba_list_seek_feeds";
-    localLebaPluginInfo.sResSubType = 2;
-    localLebaPluginInfo.cCanChangeState = 0;
-    localLebaPluginInfo.cDataType = 1;
-    localLebaPluginInfo.uiResId = 0L;
-    localLebaPluginInfo.strGotoUrl = String.format("mqqapi://app/action?src_type=app&version=1&plg_sid=1&plg_ha3=1&plg_nickname=1&plg_newflag=1&plg_launchtime=1&pkg=com.tencent.mobileqq&cmp=com.qzone.feed.ui.activity.QZoneFriendFeedActivity&isFromQQ=true&qzone_uin=%s&page=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "tab_qzone" });
-    localLebaPluginInfo.showInSimpleMode = 1;
-    this.jdField_b_of_type_JavaUtilList.add(localLebaPluginInfo);
+      return i;
+      j = paramQQAppInterface.getPreferences().getInt("sp_key_leba_group_seq", 0);
+      i = j;
+    } while (!QLog.isColorLevel());
+    QLog.d("LebaHelper", 2, "getLebaGroup, seq=" + j);
+    return j;
   }
   
   /* Error */
-  private void g()
+  public static List<ajzn> a(QQAppInterface paramQQAppInterface)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 60	ajzo:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: ifnull +13 -> 17
-    //   7: aload_0
-    //   8: getfield 60	ajzo:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   11: invokevirtual 135	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
-    //   14: ifne +19 -> 33
-    //   17: invokestatic 262	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   20: ifeq +12 -> 32
-    //   23: ldc 77
-    //   25: iconst_2
-    //   26: ldc_w 264
-    //   29: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   32: return
-    //   33: aload_0
-    //   34: getfield 67	ajzo:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   37: astore_1
-    //   38: aload_1
-    //   39: monitorenter
+    //   0: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +11 -> 14
+    //   6: ldc 39
+    //   8: iconst_2
+    //   9: ldc 69
+    //   11: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   14: new 74	java/util/ArrayList
+    //   17: dup
+    //   18: invokespecial 75	java/util/ArrayList:<init>	()V
+    //   21: astore_3
+    //   22: aload_0
+    //   23: invokevirtual 23	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
+    //   26: ldc 77
+    //   28: ldc 79
+    //   30: invokeinterface 83 3 0
+    //   35: astore_0
+    //   36: new 85	org/json/JSONArray
+    //   39: dup
     //   40: aload_0
-    //   41: getfield 67	ajzo:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   44: invokeinterface 267 1 0
-    //   49: aload_1
-    //   50: monitorexit
-    //   51: aload_0
-    //   52: invokespecial 269	ajzo:f	()V
+    //   41: invokespecial 88	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   44: astore_0
+    //   45: iconst_0
+    //   46: istore_1
+    //   47: iload_1
+    //   48: aload_0
+    //   49: invokevirtual 92	org/json/JSONArray:length	()I
+    //   52: if_icmpge +126 -> 178
     //   55: aload_0
-    //   56: invokespecial 272	ajzo:h	()V
-    //   59: aload_0
-    //   60: getfield 54	ajzo:jdField_a_of_type_ArrayOfByte	[B
-    //   63: astore_1
-    //   64: aload_1
-    //   65: monitorenter
-    //   66: aload_0
-    //   67: getfield 65	ajzo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   70: invokeinterface 267 1 0
-    //   75: aload_0
-    //   76: getfield 65	ajzo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   79: aload_0
-    //   80: getfield 67	ajzo:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   83: invokeinterface 276 2 0
-    //   88: pop
-    //   89: aload_1
-    //   90: monitorexit
-    //   91: invokestatic 262	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   94: ifeq +37 -> 131
-    //   97: ldc 77
-    //   99: iconst_2
-    //   100: new 20	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 23	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 278
-    //   110: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: aload_0
-    //   114: getfield 65	ajzo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   117: invokeinterface 109 1 0
-    //   122: invokevirtual 281	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 166	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload_0
-    //   132: iconst_1
-    //   133: putfield 283	ajzo:jdField_b_of_type_Boolean	Z
-    //   136: return
-    //   137: astore_2
-    //   138: invokestatic 262	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   141: ifeq -92 -> 49
-    //   144: ldc 77
-    //   146: iconst_2
-    //   147: aload_2
-    //   148: iconst_0
-    //   149: anewarray 4	java/lang/Object
-    //   152: invokestatic 286	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   155: goto -106 -> 49
-    //   158: astore_2
-    //   159: aload_1
-    //   160: monitorexit
-    //   161: aload_2
-    //   162: athrow
-    //   163: astore_1
-    //   164: aload_1
-    //   165: invokevirtual 218	java/lang/Exception:printStackTrace	()V
-    //   168: goto -113 -> 55
-    //   171: astore_2
-    //   172: aload_1
-    //   173: monitorexit
-    //   174: aload_2
-    //   175: athrow
+    //   56: iload_1
+    //   57: invokevirtual 96	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   60: astore 4
+    //   62: aload 4
+    //   64: invokevirtual 102	org/json/JSONObject:names	()Lorg/json/JSONArray;
+    //   67: astore 5
+    //   69: aload 5
+    //   71: ifnull +150 -> 221
+    //   74: new 10	ajzn
+    //   77: dup
+    //   78: invokespecial 103	ajzn:<init>	()V
+    //   81: astore 6
+    //   83: iconst_0
+    //   84: istore_2
+    //   85: iload_2
+    //   86: aload 5
+    //   88: invokevirtual 92	org/json/JSONArray:length	()I
+    //   91: if_icmpge +89 -> 180
+    //   94: aload 5
+    //   96: iload_2
+    //   97: invokevirtual 106	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   100: astore 7
+    //   102: ldc 108
+    //   104: aload 7
+    //   106: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   109: ifeq +18 -> 127
+    //   112: aload 6
+    //   114: aload 4
+    //   116: aload 7
+    //   118: invokevirtual 118	org/json/JSONObject:getLong	(Ljava/lang/String;)J
+    //   121: putfield 121	ajzn:jdField_a_of_type_Long	J
+    //   124: goto +104 -> 228
+    //   127: ldc 123
+    //   129: aload 7
+    //   131: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   134: ifeq +18 -> 152
+    //   137: aload 6
+    //   139: aload 4
+    //   141: aload 7
+    //   143: invokevirtual 126	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   146: putfield 13	ajzn:jdField_a_of_type_Int	I
+    //   149: goto +79 -> 228
+    //   152: ldc 128
+    //   154: aload 7
+    //   156: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   159: ifeq +69 -> 228
+    //   162: aload 6
+    //   164: aload 4
+    //   166: aload 7
+    //   168: invokevirtual 126	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   171: putfield 16	ajzn:b	I
+    //   174: goto +54 -> 228
+    //   177: astore_0
+    //   178: aload_3
+    //   179: areturn
+    //   180: aload_3
+    //   181: aload 6
+    //   183: invokeinterface 133 2 0
+    //   188: pop
+    //   189: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   192: ifeq +29 -> 221
+    //   195: ldc 39
+    //   197: iconst_2
+    //   198: new 41	java/lang/StringBuilder
+    //   201: dup
+    //   202: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   205: ldc 79
+    //   207: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: aload 6
+    //   212: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   215: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   221: iload_1
+    //   222: iconst_1
+    //   223: iadd
+    //   224: istore_1
+    //   225: goto -178 -> 47
+    //   228: iload_2
+    //   229: iconst_1
+    //   230: iadd
+    //   231: istore_2
+    //   232: goto -147 -> 85
+    //   235: astore 7
+    //   237: goto -9 -> 228
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	176	0	this	ajzo
-    //   163	10	1	localException1	Exception
-    //   137	11	2	localException2	Exception
-    //   158	4	2	localObject2	Object
-    //   171	4	2	localObject3	Object
+    //   0	240	0	paramQQAppInterface	QQAppInterface
+    //   46	179	1	i	int
+    //   84	148	2	j	int
+    //   21	160	3	localArrayList	ArrayList
+    //   60	105	4	localJSONObject	JSONObject
+    //   67	28	5	localJSONArray	JSONArray
+    //   81	130	6	localajzn	ajzn
+    //   100	67	7	str	String
+    //   235	1	7	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   40	49	137	java/lang/Exception
-    //   40	49	158	finally
-    //   49	51	158	finally
-    //   138	155	158	finally
-    //   159	161	158	finally
-    //   51	55	163	java/lang/Exception
-    //   66	91	171	finally
-    //   172	174	171	finally
+    //   36	45	177	org/json/JSONException
+    //   47	69	177	org/json/JSONException
+    //   74	83	177	org/json/JSONException
+    //   85	102	177	org/json/JSONException
+    //   102	124	177	org/json/JSONException
+    //   127	149	177	org/json/JSONException
+    //   152	174	177	org/json/JSONException
+    //   180	221	177	org/json/JSONException
+    //   102	124	235	java/lang/Exception
+    //   127	149	235	java/lang/Exception
+    //   152	174	235	java/lang/Exception
   }
   
-  private void h()
+  public static Map<Long, ajzn> a(List<ajzn> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "loadServerPlugins");
+    if (paramList == null) {
+      return null;
     }
-    Map localMap = ajzq.a(ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    if (localMap == null)
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LebaHelper", 2, "loadServerPlugins, groupMap is null");
+      ajzn localajzn = (ajzn)paramList.next();
+      if (localajzn != null) {
+        localHashMap.put(Long.valueOf(localajzn.jdField_a_of_type_Long), localajzn);
       }
-      return;
     }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = LebaPluginInfo.getAll((aukn)???);
-    ((aukn)???).a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((localList != null) && (localList.size() > 0)) {}
-    for (;;)
+    return localHashMap;
+  }
+  
+  public static PluginConfig.GetResourceReq a(int paramInt, List<LebaPluginInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      int i;
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        i = localList.size() - 1;
-        if (i >= 0)
+        LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)paramList.next();
+        if (localLebaPluginInfo != null)
         {
-          LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)localList.get(i);
-          ajzp localajzp = (ajzp)localMap.get(Long.valueOf(localLebaPluginInfo.uiResId));
-          if (localajzp == null)
-          {
-            localStringBuilder.append(",remove ").append(localLebaPluginInfo);
-            localList.remove(localLebaPluginInfo);
-          }
-          else
-          {
-            localStringBuilder.append(",add ").append(localLebaPluginInfo);
-            localLebaPluginInfo.sPriority = ajzq.a(localajzp);
-          }
+          PluginConfig.GetResourceReqInfo localGetResourceReqInfo = new PluginConfig.GetResourceReqInfo();
+          localGetResourceReqInfo.res_id.set((int)localLebaPluginInfo.uiResId);
+          localGetResourceReqInfo.res_seq.set(localLebaPluginInfo.sResSeq);
+          localArrayList.add(localGetResourceReqInfo);
         }
       }
-      this.jdField_b_of_type_JavaUtilList.addAll(localList);
-      QLog.i("LebaHelper", 1, "loadServerPlugins data =  " + localStringBuilder);
-      return;
-      i -= 1;
+    }
+    paramList = new PluginConfig.GetResourceReq();
+    paramList.plugin_type.set(4000);
+    paramList.plugin_layout_seq.set(paramInt);
+    paramList.reqinfo_list.set(localArrayList);
+    return paramList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+    paramQQAppInterface.putString("sp_key_leba_upgrade_info", "4480");
+    paramQQAppInterface.commit();
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaHelper", 2, String.format("update version, buildNum[%s]", new Object[] { "4480" }));
     }
   }
   
-  private void i()
-  {
-    Iterator localIterator = new ArrayList(this.c).iterator();
-    while (localIterator.hasNext()) {
-      ResourcePluginListener.a((ResourcePluginListener)localIterator.next(), (byte)5, 1);
-    }
-  }
-  
-  public List<LebaPluginInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public PluginConfig.GetResourceReq a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LebaHelper", 2, "getLebaPluginInfoReq");
+      QLog.d("LebaHelper", 2, "saveLebaGroupSeq，seq=" + paramInt);
     }
-    if (ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-    {
-      QLog.i("LebaHelper", 1, "getLebaPluginInfoReq ，isAppUpgrade");
-      ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-      ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (paramQQAppInterface == null) {
+      return;
     }
-    if (ajzv.c())
-    {
-      QLog.i("LebaHelper", 1, "getLebaPluginInfoReq ，isLocaleUpdated");
-      ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+    paramQQAppInterface.putInt("sp_key_leba_group_seq", paramInt);
+    paramQQAppInterface.commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<ajzn> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaHelper", 2, "saveGroupInfo");
     }
-    try
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    do
     {
-      ((aukn)localObject).a(LebaPluginInfo.class);
-    }
-    catch (Throwable localThrowable)
-    {
+      return;
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
       for (;;)
       {
-        ArrayList localArrayList;
-        LebaPluginInfo localLebaPluginInfo2;
-        QLog.e("LebaHelper", 1, "getLebaPluginInfoReq exception", localThrowable);
-        if (localObject != null) {
-          ((aukn)localObject).a();
-        }
-      }
-    }
-    finally
-    {
-      if (localObject == null) {
-        break label295;
-      }
-      ((aukn)localObject).a();
-    }
-    int k = ajzq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = LebaPluginInfo.getAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager());
-    localArrayList = new ArrayList();
-    if (localObject != null)
-    {
-      i = 0;
-      if (i < ((List)localObject).size())
-      {
-        LebaPluginInfo localLebaPluginInfo1 = (LebaPluginInfo)((List)localObject).get(i);
-        if ((localLebaPluginInfo1 != null) && (localLebaPluginInfo1.cDataType == 0))
+        if (paramList.hasNext())
         {
-          localLebaPluginInfo2 = new LebaPluginInfo();
-          if (k > 0) {
-            break label298;
+          ajzn localajzn = (ajzn)paramList.next();
+          if (localajzn == null) {
+            continue;
+          }
+          try
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("uiResId", localajzn.jdField_a_of_type_Long);
+            localJSONObject.put("groudId", localajzn.jdField_a_of_type_Int);
+            localJSONObject.put("index", localajzn.b);
+            localJSONArray.put(localJSONObject);
+            if (QLog.isColorLevel()) {
+              QLog.i("LebaHelper", 2, "" + localajzn);
+            }
+          }
+          catch (JSONException paramList)
+          {
+            QLog.e("LebaHelper", 1, "saveGroupInfo, exp=", paramList);
           }
         }
-        label295:
-        label298:
-        for (int j = 0;; j = localLebaPluginInfo1.sResSeq)
-        {
-          localLebaPluginInfo2.sResSeq = j;
-          localLebaPluginInfo2.uiResId = localLebaPluginInfo1.uiResId;
-          localArrayList.add(localLebaPluginInfo2);
-          if (QLog.isColorLevel()) {
-            QLog.d("LebaHelper", 2, "" + localLebaPluginInfo1);
-          }
-          i += 1;
-          break;
-        }
       }
-    }
-    if (localList.isEmpty()) {}
-    for (int i = 0;; i = k)
-    {
-      HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("LebaHelper", 2, "getLebaPluginInfoReq, layoutSeq=" + i + ", lebaPluginInfos.size" + localList.size() + ", tempLebaList.size()=" + ((List)localObject).size());
-      }
-      return ajzq.a(i, localList);
-    }
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putString("sp_key_leba_group_info", localJSONArray.toString());
+      paramQQAppInterface.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("LebaHelper", 2, "saveGroupInfo, result=" + true);
   }
   
-  public void a()
+  public static void a(List<anec> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "LebaHelper  init");
-    }
-    a(new LebaHelper.1(this));
-  }
-  
-  public void a(ResourcePluginListener paramResourcePluginListener)
-  {
-    synchronized (this.c)
-    {
-      if (!this.c.contains(paramResourcePluginListener)) {
-        this.c.add(paramResourcePluginListener);
-      }
+    if (paramList == null) {
       return;
     }
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(paramList.size());
+    localLinkedHashSet.addAll(paramList);
+    paramList.clear();
+    paramList.addAll(localLinkedHashSet);
   }
   
-  public void a(boolean paramBoolean, int paramInt1, List<ajzp> arg3, List<LebaPluginInfo> paramList1, int paramInt2)
+  public static void a(List<anec> paramList1, List<anec> paramList2)
   {
-    Object localObject1 = new StringBuilder(" onGetPluginConfig, isSucc= ").append(paramBoolean).append(",layoutSeq=").append(paramInt1).append(",layoutType=").append(paramInt2);
-    ((StringBuilder)localObject1).append(",groupList=");
-    Object localObject2;
-    Object localObject3;
-    if (??? != null)
+    Collections.sort(paramList2, new ajzp());
+    paramList2 = paramList2.iterator();
+    int i = 0;
+    int j = -1;
+    if (paramList2.hasNext())
     {
-      ((StringBuilder)localObject1).append(???.size());
-      localObject2 = ???.iterator();
-      while (((Iterator)localObject2).hasNext())
+      anec localanec1 = (anec)paramList2.next();
+      anec localanec2;
+      if (a(localanec1.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority) != j)
       {
-        localObject3 = (ajzp)((Iterator)localObject2).next();
-        if (localObject3 != null) {
-          ((StringBuilder)localObject1).append(((ajzp)localObject3).toString());
+        localanec2 = new anec();
+        if (paramList1.size() > 0) {
+          if (i < 2)
+          {
+            ((anec)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 0;
+            label101:
+            localanec2.jdField_a_of_type_JavaLangString = "empty_normal";
+            label109:
+            paramList1.add(localanec2);
+            j = a(localanec1.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.sPriority);
+            localanec1.jdField_a_of_type_Int = 1;
+            i = 1;
+          }
         }
       }
-    }
-    ((StringBuilder)localObject1).append(",resultInfos=");
-    if (paramList1 != null)
-    {
-      ((StringBuilder)localObject1).append(paramList1.size());
-      localObject2 = paramList1.iterator();
-      while (((Iterator)localObject2).hasNext())
+      for (;;)
       {
-        localObject3 = (LebaPluginInfo)((Iterator)localObject2).next();
-        if (localObject3 != null) {
-          ((StringBuilder)localObject1).append(((LebaPluginInfo)localObject3).toString());
-        }
+        paramList1.add(localanec1);
+        break;
+        ((anec)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 2;
+        break label101;
+        localanec2.jdField_a_of_type_JavaLangString = "empty_normal";
+        break label109;
+        i += 1;
+        localanec1.jdField_a_of_type_Int = 3;
       }
     }
-    QLog.i("LebaHelper", 1, ((StringBuilder)localObject1).toString());
-    boolean bool2;
-    boolean bool1;
-    boolean bool5;
-    boolean bool3;
-    boolean bool4;
+    if (paramList1.size() > 0)
+    {
+      if (i < 2) {
+        ((anec)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 0;
+      }
+    }
+    else {
+      return;
+    }
+    ((anec)paramList1.get(paramList1.size() - 1)).jdField_a_of_type_Int = 2;
+  }
+  
+  public static boolean a(anec paramanec)
+  {
+    if ((paramanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cDataType == 1) && (!TextUtils.isEmpty(paramanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName))) {
+      return "qzone_feedlist".equals(paramanec.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strPkgName);
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getPreferences().getString("sp_key_leba_upgrade_info", "");
+    if (!"4480".equals(paramQQAppInterface)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LebaHelper", 2, String.format("update version isAppUpgrade[%b], preBuildNum[%s], cur[%s]", new Object[] { Boolean.valueOf(bool), paramQQAppInterface, "4480" }));
+      }
+      return bool;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return true;
+      if (7720L == paramLong)
+      {
+        int i = bbkb.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
+        paramQQAppInterface = (aoeu)paramQQAppInterface.getManager(264);
+        if ((i == 1) && (paramQQAppInterface.b())) {}
+        for (boolean bool = false;; bool = true) {
+          return bool;
+        }
+      }
+      if (7759L != paramLong) {
+        break;
+      }
+      paramQQAppInterface = ((amnn)paramQQAppInterface.getManager(269)).a();
+    } while ((paramQQAppInterface == null) || (paramQQAppInterface.i < 1));
+    return false;
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, boolean paramBoolean, Map<Long, LebaPluginInfo> paramMap)
+  {
+    if (paramLong == 100000L) {
+      return (paramQQAppInterface.a() != null) && (paramQQAppInterface.a().a());
+    }
+    boolean bool;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = false;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = ((aukn)localObject1).a();
-      bool2 = false;
-      bool1 = false;
-      bool5 = false;
-      paramBoolean = false;
-      bool3 = bool5;
-      bool4 = bool2;
+      paramQQAppInterface = (LebaPluginInfo)paramMap.get(Long.valueOf(paramLong));
+      if ((paramQQAppInterface != null) && ((paramQQAppInterface == null) || (paramQQAppInterface.showInSimpleMode != 0))) {
+        break label140;
+      }
+      bool = false;
     }
     for (;;)
     {
-      boolean bool6;
-      boolean bool7;
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          bool3 = bool5;
-          bool4 = bool2;
-          QLog.i("LebaHelper", 2, "onGetPluginConfig saveDb start");
-        }
-        bool3 = bool5;
-        bool4 = bool2;
-        ((aukp)localObject2).a();
-        bool3 = bool5;
-        bool4 = bool2;
-        paramList1 = paramList1.iterator();
-        bool3 = paramBoolean;
-        bool4 = bool1;
-        if (paramList1.hasNext())
-        {
-          bool3 = paramBoolean;
-          bool4 = bool1;
-          localObject3 = (LebaPluginInfo)paramList1.next();
-          if (localObject3 == null) {
-            continue;
-          }
-          bool3 = paramBoolean;
-          bool4 = bool1;
-          if (QLog.isColorLevel())
-          {
-            bool3 = paramBoolean;
-            bool4 = bool1;
-            QLog.i("LebaHelper", 2, "" + localObject3);
-          }
-          bool3 = paramBoolean;
-          bool4 = bool1;
-          if (((LebaPluginInfo)localObject3).sResSubType != 0)
-          {
-            bool3 = paramBoolean;
-            bool4 = bool1;
-            bool6 = paramBoolean;
-            bool7 = bool1;
-            if (((LebaPluginInfo)localObject3).sResSubType != 2) {
-              break label932;
-            }
-          }
-          bool2 = paramBoolean;
-          bool5 = bool1;
-          bool3 = paramBoolean;
-          bool4 = bool1;
-          if (((LebaPluginInfo)localObject3).state == 3)
-          {
-            bool3 = paramBoolean;
-            bool4 = bool1;
-            LebaPluginInfo.persistOrReplace((aukn)localObject1, (LebaPluginInfo)localObject3);
-            bool5 = true;
-            bool2 = true;
-          }
-          bool3 = bool2;
-          bool4 = bool5;
-          bool6 = bool2;
-          bool7 = bool5;
-          if (((LebaPluginInfo)localObject3).state != 1) {
-            break label932;
-          }
-          bool3 = bool2;
-          bool4 = bool5;
-          LebaPluginInfo.persistOrReplace((aukn)localObject1, (LebaPluginInfo)localObject3);
-          bool1 = true;
-          paramBoolean = bool2;
-        }
-      }
-      catch (Exception paramList1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LebaHelper", 2, "An exception was thrown. " + paramList1.toString());
-        }
-        paramBoolean = false;
-        paramList1.printStackTrace();
-        ((aukp)localObject2).b();
-        ((aukn)localObject1).a();
-        bool1 = bool4;
-        continue;
-      }
-      finally
-      {
-        ((aukp)localObject2).b();
-        ((aukn)localObject1).a();
-      }
-      try
-      {
-        if (((LebaPluginInfo)localObject3).state != 2) {
-          break label929;
-        }
-        LebaPluginInfo.remove((aukn)localObject1, ((LebaPluginInfo)localObject3).uiResId);
-        bool1 = true;
-      }
-      catch (Exception paramList1)
-      {
-        bool3 = paramBoolean;
-        bool4 = bool1;
-        continue;
-        continue;
-      }
-      bool2 = true;
-      bool3 = paramBoolean;
-      bool4 = bool1;
-      ((aukp)localObject2).c();
-      ((aukp)localObject2).b();
-      ((aukn)localObject1).a();
-      bool3 = paramBoolean;
-      paramBoolean = bool2;
       if (QLog.isColorLevel()) {
-        QLog.i("LebaHelper", 2, String.format("onGetPluginConfig saveDb end, saveDbSuc=%b, isAddNew=%b, isChange=%b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
+        QLog.i("MainAssistObserver.LebaTabRedTouch", 2, "needShowRedDot, id=" + paramLong + ", isSimpleMode=" + paramBoolean + ", needShow=" + bool);
       }
-      if (paramBoolean) {
-        a(paramInt1, ???, paramInt2);
+      return bool;
+      if (!agby.a().a(paramQQAppInterface, paramLong)) {
+        bool = false;
+      } else {
+        label140:
+        bool = true;
       }
-      g();
-      i();
-      if (bool3) {
-        ((akfi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(87)).a(1);
-      }
-      if (bool1)
-      {
-        ??? = new ArrayList(this.c).iterator();
-        if (!???.hasNext()) {
-          break;
-        }
-        paramList1 = (ResourcePluginListener)???.next();
-        if (bool3)
-        {
-          ResourcePluginListener.a(paramList1, (byte)3, 1);
-          continue;
-        }
-        ResourcePluginListener.a(paramList1, (byte)2, 1);
-        continue;
-      }
-      ??? = this.c;
-      paramInt1 = 0;
-      try
-      {
-        while (paramInt1 < this.c.size())
-        {
-          ResourcePluginListener.a((ResourcePluginListener)this.c.get(paramInt1), (byte)1, 1);
-          paramInt1 += 1;
-        }
-        return;
-      }
-      finally {}
-      synchronized (this.c)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        paramInt1 = 0;
-        while (paramInt1 < this.c.size())
-        {
-          ResourcePluginListener.a((ResourcePluginListener)this.c.get(paramInt1), (byte)-1, 1);
-          paramInt1 += 1;
-        }
-        return;
-      }
-      label929:
-      label932:
-      bool1 = bool7;
-      paramBoolean = bool6;
     }
   }
   
-  public boolean a()
+  public static int b(QQAppInterface paramQQAppInterface)
   {
-    return ajzq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1;
+    if (paramQQAppInterface == null) {
+      return -1;
+    }
+    int i = paramQQAppInterface.getPreferences().getInt("sp_key_leba_layout_type", 0);
+    QLog.d("LebaHelper", 1, "getLebaLayoutType =" + i);
+    return i;
   }
   
-  public void b()
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int < 3))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      ((arpj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(128)).a();
-      this.jdField_a_of_type_Int += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaHelper", 2, "checkPluginConfig, mGetPluginConfigFail=" + this.jdField_a_of_type_Boolean + ", mPluginRetryTime=" + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void b(ResourcePluginListener paramResourcePluginListener)
-  {
-    synchronized (this.c)
-    {
-      this.c.remove(paramResourcePluginListener);
+    QLog.d("LebaHelper", 1, "saveLebaLayoutType，layoutType = " + paramInt);
+    if (paramQQAppInterface == null) {
       return;
     }
-  }
-  
-  public void c()
-  {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bciv != null) {
-      this.jdField_a_of_type_Bciv.a();
-    }
+    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+    paramQQAppInterface.putInt("sp_key_leba_layout_type", paramInt);
+    paramQQAppInterface.commit();
   }
 }
 

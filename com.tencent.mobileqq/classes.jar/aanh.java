@@ -1,26 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.BaseChatpieHelper;
 import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
 
-class aanh
-  implements DialogInterface.OnClickListener
+public class aanh
+  implements View.OnClickListener
 {
-  aanh(aang paramaang) {}
+  public aanh(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
-      this.a.a.a().startActivity(localIntent);
-    }
-    paramDialogInterface.dismiss();
+    asua.a().a = 0;
+    this.a.a.a(this.a.a(), this.a.a().getIntent());
+    this.a.b(1);
   }
 }
 

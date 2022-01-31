@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.bigbrother;
 
+import amah;
 import amai;
 import amaj;
-import amak;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.haoliyou.JefsClass;
 import com.tencent.qphone.base.util.QLog;
@@ -41,10 +41,10 @@ public class JumpConfirmFragment
     this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("key_callback_id", 0);
     try
     {
-      localObject = bbcv.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690596), getString(2131720885), new amai(this), new amaj(this));
-      ((bbgg)localObject).setOnDismissListener(new amak(this));
+      localObject = bbdj.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690596), getString(2131720896), new amah(this), new amai(this));
+      ((bbgu)localObject).setOnDismissListener(new amaj(this));
       getActivity().setJumpDialog((Dialog)localObject);
-      ((bbgg)localObject).show();
+      ((bbgu)localObject).show();
       return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     }
     catch (Throwable localThrowable)

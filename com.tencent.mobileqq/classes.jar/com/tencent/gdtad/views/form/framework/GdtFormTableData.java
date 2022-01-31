@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yxs;
-import zai;
+import yxp;
+import zaf;
 
 public class GdtFormTableData
   implements Serializable
@@ -58,12 +58,12 @@ public class GdtFormTableData
     return true;
   }
   
-  public zai validate()
+  public zaf validate()
   {
     if (!isValid())
     {
-      yxs.d("GdtFormTableData", "validate error");
-      return new zai(3, -1, null);
+      yxp.d("GdtFormTableData", "validate error");
+      return new zaf(3, -1, null);
     }
     int i = 0;
     while (i < getSize())
@@ -71,23 +71,23 @@ public class GdtFormTableData
       GdtFormItemData localGdtFormItemData = getItem(i);
       if (localGdtFormItemData == null)
       {
-        yxs.d("GdtFormTableData", "validate error " + i);
-        return new zai(3, i, null);
+        yxp.d("GdtFormTableData", "validate error " + i);
+        return new zaf(3, i, null);
       }
-      zai localzai = localGdtFormItemData.validate();
-      if (localzai == null)
+      zaf localzaf = localGdtFormItemData.validate();
+      if (localzaf == null)
       {
-        yxs.d("GdtFormTableData", "validate error " + i);
-        return new zai(3, i, localGdtFormItemData.title.text);
+        yxp.d("GdtFormTableData", "validate error " + i);
+        return new zaf(3, i, localGdtFormItemData.title.text);
       }
-      localzai.b = i;
-      if (localzai.a == 2) {
+      localzaf.b = i;
+      if (localzaf.a == 2) {
         i += 1;
       } else {
-        return localzai;
+        return localzaf;
       }
     }
-    return new zai(2, -1, null);
+    return new zaf(2, -1, null);
   }
 }
 

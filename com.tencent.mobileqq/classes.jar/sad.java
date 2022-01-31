@@ -1,28 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
 public class sad
-  extends Handler
+  implements View.OnClickListener
 {
-  private sad(ViolaBaseView paramViolaBaseView) {}
+  public sad(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      ViolaBaseView.d(this.a);
-      return;
-    case 3: 
-      ViolaBaseView.a(this.a);
-      return;
-    }
-    ViolaBaseView.a(this.a, true);
-    ViolaBaseView.d(this.a);
+    this.a.c();
   }
 }
 

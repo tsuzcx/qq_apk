@@ -1,17 +1,18 @@
 import com.tencent.mobileqq.activity.Conversation;
 
 public class aawm
-  extends akiu
+  extends aoun
 {
   public aawm(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (!(paramObject instanceof String)) {
-      return;
-    }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    this.a.a(8, paramString, -2147483648);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a(8, paramString1, -2147483648);
   }
 }
 

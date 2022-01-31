@@ -1,76 +1,91 @@
 import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 
-public abstract class rqq
-  implements rfp
+public class rqq
+  extends rqn
 {
-  private static final String a;
-  protected int a;
-  protected Context a;
-  protected SlideActiveAnimController a;
-  protected rqr a;
-  protected rqs a;
-  public xed a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = rqq.class.getSimpleName();
-  }
+  private RefreshAnimView a;
   
   public rqq(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    if (this.jdField_a_of_type_Rqr != null) {
-      this.jdField_a_of_type_Rqr.a(paramInt1, paramInt2);
+    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298572);
+  }
+  
+  public View a(ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Xea == null)
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562307, paramViewGroup, false);
+      paramViewGroup.findViewById(2131375055).getLayoutParams().width = -2;
+      this.jdField_a_of_type_Xea = ((xea)paramViewGroup);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView = ((RefreshAnimView)((PullRefreshHeader)this.jdField_a_of_type_Xea).findViewById(2131375048));
     }
+    return (View)this.jdField_a_of_type_Xea;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Xea == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xea.a(0L);
+    this.jdField_a_of_type_Xea.ao_();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
+    super.a(paramInt, paramBoolean);
+    if (this.jdField_a_of_type_Xea == null) {
+      return;
     }
-  }
-  
-  public void a(SlideActiveAnimController paramSlideActiveAnimController)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
-  }
-  
-  public void a(rqr paramrqr)
-  {
-    this.jdField_a_of_type_Rqr = paramrqr;
-  }
-  
-  public void a(rqs paramrqs)
-  {
-    this.jdField_a_of_type_Rqs = paramrqs;
+    if (paramInt == 100)
+    {
+      this.jdField_a_of_type_Xea.b(0L);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Xea.ao_();
+      return;
+    }
+    this.jdField_a_of_type_Xea.c(0L);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / 100.0D);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Rqs != null) {
-      this.jdField_a_of_type_Rqs.a(paramBoolean);
+    if (this.jdField_a_of_type_Xea == null) {
+      return;
     }
+    this.jdField_a_of_type_Xea.a(0L);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    return false;
+    if (this.jdField_a_of_type_Xea == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+  }
 }
 
 

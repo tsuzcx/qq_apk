@@ -1,31 +1,48 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+
 public class akfo
-  implements ajtg
+  extends ajtb
 {
-  protected void a(int paramInt) {}
+  public static String a = "Add_friend_to_desktop|";
+  public static String b = "Click_desktop_friend|";
+  private String c = "FuMeiTiCeSu|";
   
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public akfo(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramObject == null);
-        paramObject = (Object[])paramObject;
-        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+    super(paramQQAppInterface);
   }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if ((paramBundle != null) && (paramBundle.containsKey("data")))
+    {
+      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+      localToServiceMsg.extraData.putAll(paramBundle);
+      super.send(localToServiceMsg);
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

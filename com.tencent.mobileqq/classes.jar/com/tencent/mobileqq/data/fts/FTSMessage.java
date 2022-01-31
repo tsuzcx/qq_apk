@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
-import bbbd;
+import bbbr;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec;
 import com.tencent.mobileqq.utils.fts.FTSMessageCodec.MsgExts;
@@ -94,7 +94,7 @@ public class FTSMessage
   
   public String createInsertSQL()
   {
-    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bbbd.a(this.mContent) });
+    return String.format("FTSMessage Info [oId = %d, selfUin&istroop = %s, msgType = %s, senderUin = %s, msg|size = %s]", new Object[] { Long.valueOf(this.mOId), this.mExt1, this.mExt3, this.mExt2, bbbr.a(this.mContent) });
   }
   
   public String createUpdateSQL()

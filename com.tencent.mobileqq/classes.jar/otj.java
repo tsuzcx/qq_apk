@@ -1,39 +1,49 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-class otj
+public class otj
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
+  public static long a;
+  public static List<otk> a;
+  public static long b;
+  public static long c;
   
-  private otj(ota paramota)
+  static
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public ArrayList<Long> a()
+  public static void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
   }
   
-  public String toString()
+  public static void a(otk paramotk)
   {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+      otk localotk = (otk)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (paramotk.b - localotk.b > jdField_a_of_type_Long) {
+        a();
+      }
     }
-    return localStringBuilder.toString();
+    jdField_a_of_type_JavaUtilList.add(paramotk);
+    c += paramotk.jdField_a_of_type_Long;
+    if (a())
+    {
+      paramotk = new ArrayList();
+      paramotk.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      osx.a(paramotk);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return c > b;
   }
 }
 

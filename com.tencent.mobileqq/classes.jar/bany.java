@@ -1,17 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import android.view.View;
+import android.widget.TextView;
 
-public class bany
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bany
 {
-  public bany(RedDotAnimateView paramRedDotAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
-    this.a.invalidate();
-  }
+  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
 }
 
 

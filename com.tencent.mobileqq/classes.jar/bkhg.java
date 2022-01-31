@@ -1,133 +1,82 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import java.util.List;
 
-public abstract class bkhg
-  extends Drawable
+public class bkhg
+  extends RecyclerView.Adapter<bkhh>
 {
-  public static final int g = a(1.0F, BaseApplicationImpl.getContext().getResources());
-  protected ValueAnimator a;
-  protected Context a;
-  protected bkgu a;
-  private bkhj a;
-  protected String a;
-  protected ArrayList<Integer> a;
-  protected Bitmap b;
-  protected int f;
+  public apze a;
+  public DynamicTextConfigManager a;
+  public List<DynamicTextConfigManager.DynamicTextConfigBean> a;
   
-  public bkhg(Context paramContext, String paramString)
+  public bkhg(EditTextEffectView paramEditTextEffectView, apze paramapze)
   {
-    this.jdField_a_of_type_Bkgu = new bkgu();
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Apze = paramapze;
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)bjav.a(7));
   }
   
-  public static final int a(float paramFloat, Resources paramResources)
+  public bkhh a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramFloat == 0.0F) {
-      return 0;
-    }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return new bkhh(LayoutInflater.from(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.getContext()).inflate(2131561230, paramViewGroup, false), this.jdField_a_of_type_Apze);
   }
   
-  public int a()
+  public void a(bkhh parambkhh, int paramInt)
   {
-    return this.f;
-  }
-  
-  protected int a(ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramArrayList != null)
+    Object localObject = (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    parambkhh.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = ((DynamicTextConfigManager.DynamicTextConfigBean)localObject);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)parambkhh.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localMarginLayoutParams.leftMargin = EditTextEffectView.b;
+    localMarginLayoutParams.bottomMargin = EditTextEffectView.jdField_a_of_type_Int;
+    localMarginLayoutParams.topMargin = EditTextEffectView.c;
+    parambkhh.b.setVisibility(8);
+    if (((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id == this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.d)
     {
-      i = paramInt2;
-      if (paramArrayList.size() > paramInt1)
-      {
-        paramArrayList = (Integer)paramArrayList.get(paramInt1);
-        i = paramInt2;
-        if (paramArrayList != null) {
-          i = paramArrayList.intValue();
-        }
+      parambkhh.c.setVisibility(0);
+      parambkhh.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId);
+      if (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a((DynamicTextConfigManager.DynamicTextConfigBean)localObject)) {
+        break label193;
       }
-    }
-    return i;
-  }
-  
-  public Bitmap a()
-  {
-    return a(this.jdField_a_of_type_Bkgu.a());
-  }
-  
-  public Bitmap a(long paramLong)
-  {
-    Bitmap localBitmap = b();
-    Canvas localCanvas = new Canvas(localBitmap);
-    ArrayList localArrayList = this.jdField_a_of_type_Bkgu.a(paramLong);
-    if (localArrayList != null) {
-      a(localCanvas, localArrayList);
-    }
-    return localBitmap;
-  }
-  
-  protected abstract void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList);
-  
-  public abstract String[] a(String paramString);
-  
-  protected Bitmap b()
-  {
-    if (this.b == null) {
-      this.b = Bitmap.createBitmap(getIntrinsicWidth(), getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+      parambkhh.d.setVisibility(8);
     }
     for (;;)
     {
-      return this.b;
-      new Canvas(this.b).drawColor(0, PorterDuff.Mode.CLEAR);
+      parambkhh.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
+      parambkhh.jdField_a_of_type_Int = paramInt;
+      localObject = bjhi.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
+      if (localObject == null) {
+        break label204;
+      }
+      parambkhh.jdField_a_of_type_AndroidViewView.setContentDescription(ajya.a(2131703709) + (String)localObject + ajya.a(2131703710));
+      return;
+      parambkhh.c.setVisibility(8);
+      break;
+      label193:
+      parambkhh.d.setVisibility(0);
     }
+    label204:
+    parambkhh.jdField_a_of_type_AndroidViewView.setContentDescription(null);
   }
   
-  protected abstract void b();
-  
-  public String c()
+  public void a(List<DynamicTextConfigManager.DynamicTextConfigBean> paramList)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  protected void c()
+  public int getItemCount()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_Bkgu, new Object[] { this.jdField_a_of_type_Bkgu.b(), this.jdField_a_of_type_Bkgu.a() });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bkhh(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bkhi(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_Bkgu.a());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

@@ -1,11 +1,17 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
 
-public abstract interface bcow
+class bcow
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
+  bcow(bcou parambcou) {}
   
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, bcox parambcox);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    bcou.a(this.a).setAlpha(f);
+  }
 }
 
 

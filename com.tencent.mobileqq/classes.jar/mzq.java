@@ -1,17 +1,10 @@
-class mzq
+public abstract interface mzq
 {
-  public String a;
-  public mzb a;
-  public String b;
-  public String c;
+  public abstract void a(Runnable paramRunnable);
   
-  public mzq(String paramString1, String paramString2, String paramString3, mzb parammzb)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Mzb = parammzb;
-  }
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract void c(Runnable paramRunnable);
 }
 
 

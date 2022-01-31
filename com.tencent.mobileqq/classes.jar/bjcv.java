@@ -1,15 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-class bjcv
-  extends AnimatorListenerAdapter
+public final class bjcv
+  implements Parcelable.Creator<LockedCategory>
 {
-  bjcv(bjct parambjct) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public LockedCategory a(Parcel paramParcel)
   {
-    this.a.b.setVisibility(8);
+    return new LockedCategory(paramParcel);
+  }
+  
+  public LockedCategory[] a(int paramInt)
+  {
+    return new LockedCategory[paramInt];
   }
 }
 

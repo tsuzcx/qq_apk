@@ -1,14 +1,22 @@
-public abstract interface bbvx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+
+public class bbvx
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  public bbvx(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b(long paramLong1, long paramLong2);
+  public void onClick(View paramView)
+  {
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
+  }
 }
 
 

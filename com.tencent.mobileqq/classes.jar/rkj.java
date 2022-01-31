@@ -1,48 +1,18 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.widget.AbsListView;
 
-public abstract class rkj
+public abstract interface rkj
 {
-  public static int a;
-  public float a;
-  public View a;
-  public BaseData a;
-  protected rkl a;
-  public float b = 14.0F;
-  public int b;
-  public int c = 16;
-  public int d = 18;
+  public abstract void a();
   
-  static
-  {
-    jdField_a_of_type_Int = 32;
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
   
-  public rkj() {}
+  public abstract void b();
   
-  public rkj(View paramView, BaseData paramBaseData)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-  }
+  public abstract void c();
   
-  public void a() {}
+  public abstract void d();
   
-  public abstract void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
-  
-  public void a(String paramString, Bitmap paramBitmap) {}
-  
-  public void a(rkl paramrkl)
-  {
-    this.jdField_a_of_type_Rkl = paramrkl;
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
-    a(paramBaseData1, paramBaseData2, paramBoolean);
-  }
+  public abstract void e();
 }
 
 

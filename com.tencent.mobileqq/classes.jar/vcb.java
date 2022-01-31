@@ -1,22 +1,28 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class vcb
-  extends QQUIEventReceiver<vbd, tdm>
+class vcb
+  extends SimpleJob<Object>
 {
-  public vcb(@NonNull vbd paramvbd)
+  vcb(vca paramvca, String paramString, StoryVideoItem paramStoryVideoItem, List paramList)
   {
-    super(paramvbd);
+    super(paramString);
   }
   
-  public void a(@NonNull vbd paramvbd, @NonNull tdm paramtdm)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    paramvbd.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tdm.class;
+    synchronized (vca.a(this.jdField_a_of_type_Vca))
+    {
+      this.jdField_a_of_type_Vca.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_Vca.jdField_a_of_type_Vcc = new vcc(this.jdField_a_of_type_Vca.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_Vca.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_Vca.b();
+      return null;
+    }
   }
 }
 

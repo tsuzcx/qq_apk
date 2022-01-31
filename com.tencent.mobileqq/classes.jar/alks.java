@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
 public final class alks
-  implements Parcelable.Creator<ArModelResource>
+  implements Parcelable.Creator<ArVideoResourceInfo>
 {
-  public ArModelResource a(Parcel paramParcel)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    return new ArModelResource(paramParcel);
+    return new ArVideoResourceInfo(paramParcel);
   }
   
-  public ArModelResource[] a(int paramInt)
+  public ArVideoResourceInfo[] a(int paramInt)
   {
-    return new ArModelResource[paramInt];
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

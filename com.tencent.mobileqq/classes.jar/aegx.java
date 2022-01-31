@@ -1,38 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class aegx
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  aegx(aegu paramaegu, int paramInt, Object paramObject, aeja paramaeja) {}
+  aegx(aegs paramaegs, bfpc parambfpc, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    if (paramView == null)
     {
-    case 2: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      aegu.a(this.jdField_a_of_type_Aegu, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeja);
-      this.jdField_a_of_type_Aegu.u();
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    aegu.a(this.jdField_a_of_type_Aegu, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeja);
-    this.jdField_a_of_type_Aeja.a.a = true;
-    this.jdField_a_of_type_Aegu.u();
+    }
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Aegs.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

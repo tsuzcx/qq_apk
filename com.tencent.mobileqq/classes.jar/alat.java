@@ -1,32 +1,24 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 public class alat
-  extends alah
+  extends alag
 {
-  public aldz a;
   public String b;
   public String c;
-  public String d;
   
-  public alat(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, aldz paramaldz, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public alat(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3)
   {
     super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString2.split("\\|");
+      if (paramString1.length > 0) {
+        this.b = paramString1[0];
+      }
+    }
     this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Aldz = paramaldz;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aldz).append('\'');
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    QLog.d("GreetingCardResourceInfo", 2, String.format("GreetingCardResourceInfo mLuaScriptPath=%s mResourceDirPath=%s", new Object[] { this.b, this.c }));
   }
 }
 

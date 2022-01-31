@@ -1,24 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class atkp
-  implements atky
+final class atkp
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  atkp(atkm paramatkm) {}
-  
-  public void a(atkx paramatkx)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.jdField_a_of_type_Atkv != null) {
-      this.a.jdField_a_of_type_Atkv.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramatkx = atkm.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      atiw.a(paramatkx, i);
-      return;
-    }
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
   }
 }
 

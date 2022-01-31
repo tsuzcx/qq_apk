@@ -1,10 +1,15 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface adnl
+class adnl
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  adnl(adnk paramadnk) {}
   
-  public abstract void a(Bundle paramBundle);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

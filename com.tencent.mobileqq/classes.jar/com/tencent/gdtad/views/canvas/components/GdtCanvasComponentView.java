@@ -10,80 +10,80 @@ import com.tencent.gdtad.views.canvas.GdtCanvasData;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 import java.lang.ref.WeakReference;
-import yxs;
-import yyg;
-import yzg;
-import yzh;
-import zag;
+import yxp;
+import yyd;
+import yzd;
+import yze;
+import zad;
 
 public abstract class GdtCanvasComponentView
   extends FrameLayout
-  implements yzh
+  implements yze
 {
-  public WeakReference<zag> a;
-  protected yyg a;
-  protected yzg a;
+  public WeakReference<zad> a;
+  protected yyd a;
+  protected yzd a;
   
   public GdtCanvasComponentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
   }
   
   public GdtCanvasComponentView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
   }
   
-  public GdtCanvasComponentView(Context paramContext, WeakReference<zag> paramWeakReference)
+  public GdtCanvasComponentView(Context paramContext, WeakReference<zad> paramWeakReference)
   {
     super(paramContext);
-    this.jdField_a_of_type_Yyg = new yyg();
+    this.jdField_a_of_type_Yyd = new yyd();
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Yyg == null)) {
-      yxs.d("GdtCanvasComponentView", "notifyLoaded error");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Yyd == null)) {
+      yxp.d("GdtCanvasComponentView", "notifyLoaded error");
     }
     long l;
     do
     {
       return;
-      l = this.jdField_a_of_type_Yyg.a();
+      l = this.jdField_a_of_type_Yyd.a();
     } while (l < 0L);
-    ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(a(), l, paramBoolean);
+    ((zad)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(a(), l, paramBoolean);
   }
   
   public GdtCanvasData a()
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      return ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      return ((zad)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     }
     return null;
   }
   
   public abstract GdtCanvasComponentData a();
   
-  public abstract yzg a();
+  public abstract yzd a();
   
   public void a()
   {
     if (a() == null) {
       return;
     }
-    yxs.b("GdtCanvasComponentView", a().id + ": onViewResume");
+    yxp.b("GdtCanvasComponentView", a().id + ": onViewResume");
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Yyg != null) {
-      this.jdField_a_of_type_Yyg.b();
+    if (this.jdField_a_of_type_Yyd != null) {
+      this.jdField_a_of_type_Yyd.b();
     }
     b(paramBoolean);
-    this.jdField_a_of_type_Yyg = null;
+    this.jdField_a_of_type_Yyd = null;
   }
   
   public boolean a()
@@ -96,7 +96,7 @@ public abstract class GdtCanvasComponentView
     if (a() == null) {
       return;
     }
-    yxs.b("GdtCanvasComponentView", a().id + ": onViewPause");
+    yxp.b("GdtCanvasComponentView", a().id + ": onViewPause");
   }
   
   public void c()
@@ -115,7 +115,7 @@ public abstract class GdtCanvasComponentView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null) || (!(this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof GdtCanvasView))) {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((zad)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null) || (!(this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof GdtCanvasView))) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     if (paramMotionEvent.getAction() == 0)
@@ -124,9 +124,9 @@ public abstract class GdtCanvasComponentView
       if ((a() != null) && (!TextUtils.isEmpty(a().id)) && (!a().id.equals(str)) && (getContext() != null)) {
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
       }
-      ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(str, false);
+      ((zad)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(str, false);
       if (a().id.contains("XJWebForm")) {
-        ((zag)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(a().id, true);
+        ((zad)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(a().id, true);
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -148,8 +148,8 @@ public abstract class GdtCanvasComponentView
   
   protected void g()
   {
-    if (this.jdField_a_of_type_Yyg != null) {
-      this.jdField_a_of_type_Yyg.a();
+    if (this.jdField_a_of_type_Yyd != null) {
+      this.jdField_a_of_type_Yyd.a();
     }
   }
 }

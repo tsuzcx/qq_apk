@@ -1,15 +1,38 @@
 public class awty
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
   
-  public awty(int paramInt, String paramString)
+  public awty(awtu paramawtu, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

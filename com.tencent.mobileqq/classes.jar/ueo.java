@@ -1,17 +1,13 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.8.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
-public class ueo
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class ueo
+  implements ufk
 {
-  ueo(ueg paramueg) {}
+  ueo(uem paramuem, udc paramudc, Object paramObject) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean a(ufh paramufh, int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.8.1(this, paramTVK_IMediaPlayer));
+    return this.jdField_a_of_type_Udc.a(this.jdField_a_of_type_Uem, 0, paramInt1, this.jdField_a_of_type_Uem.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

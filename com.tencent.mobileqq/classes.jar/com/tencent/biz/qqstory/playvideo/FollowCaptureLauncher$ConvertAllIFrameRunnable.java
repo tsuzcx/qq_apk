@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
-import bkzb;
-import blbn;
+import bkzs;
+import blce;
 import com.tencent.qphone.base.util.QLog;
 
 class FollowCaptureLauncher$ConvertAllIFrameRunnable
@@ -23,9 +23,9 @@ class FollowCaptureLauncher$ConvertAllIFrameRunnable
   {
     try
     {
-      bkzb.a();
+      bkzs.a();
       long l1 = System.currentTimeMillis();
-      int i = blbn.a(this.jdField_a_of_type_JavaLangString, this.b);
+      int i = blce.a(this.jdField_a_of_type_JavaLangString, this.b);
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("FollowCaptureLauncher", 2, new Object[] { "ffmpegToAllIFrame cost: ", Long.valueOf(l2 - l1), ", ret:", Integer.valueOf(i) });

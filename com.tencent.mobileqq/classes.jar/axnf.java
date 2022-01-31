@@ -1,30 +1,32 @@
-import android.os.Build.VERSION;
-import android.os.Process;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import java.util.List;
 
-public class axnf
+class axnf
+  implements axng
 {
-  private static Boolean a;
+  axnf(axne paramaxne, int paramInt, axnc paramaxnc, axng paramaxng) {}
   
-  public static boolean a()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (a == null)
-    {
-      if (Build.VERSION.SDK_INT >= 21) {
-        break label28;
-      }
-      a = Boolean.valueOf(false);
-    }
-    for (;;)
-    {
-      return a.booleanValue();
-      label28:
-      if (Build.VERSION.SDK_INT >= 23) {
-        a = Boolean.valueOf(Process.is64Bit());
-      } else {
-        a = Boolean.valueOf(AppSetting.b);
+    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, axne.a(this.jdField_a_of_type_Axne));
+    axne.a(this.jdField_a_of_type_Axne, paramLoadExtResult);
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Axnc.a.size() - 1) {
+        if (this.jdField_a_of_type_Axng != null) {
+          this.jdField_a_of_type_Axng.onLoadResult(paramInt, paramLoadExtResult);
+        }
       }
     }
+    do
+    {
+      return;
+      axne.a(this.jdField_a_of_type_Axne, this.jdField_a_of_type_Axnc, this.jdField_a_of_type_Axng, this.jdField_a_of_type_Int + 1);
+      return;
+      if (paramLoadExtResult != null) {
+        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
+      }
+    } while (this.jdField_a_of_type_Axng == null);
+    this.jdField_a_of_type_Axng.onLoadResult(paramInt, paramLoadExtResult);
   }
 }
 

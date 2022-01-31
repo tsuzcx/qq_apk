@@ -1,33 +1,107 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import org.json.JSONObject;
 
 public class bcct
-  implements View.OnLongClickListener
+  extends bccj
 {
-  public bcct(WebViewFragment paramWebViewFragment) {}
-  
-  public boolean onLongClick(View paramView)
+  public bcct(bcfx parambcfx)
   {
-    if (!this.a.jdField_a_of_type_Bces.a("web_view_long_click", true))
+    super(parambcfx);
+  }
+  
+  public int a(RadioGroup paramRadioGroup)
+  {
+    if ((paramRadioGroup != null) && ((paramRadioGroup instanceof WebViewTopTabView)))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      int i = 0;
+      while (i < paramRadioGroup.getChildCount())
+      {
+        if (((RadioButton)paramRadioGroup.getChildAt(i)).isChecked()) {
+          return i;
+        }
+        i += 1;
       }
-      return true;
     }
-    if (!this.a.jdField_a_of_type_Bces.a("image_long_click", false))
+    return -1;
+  }
+  
+  public void a(bccq parambccq)
+  {
+    int i = -1;
+    if (parambccq != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView = new WebViewTopTabView(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonNum(parambccq.jdField_b_of_type_Int, parambccq.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonText(parambccq.jdField_a_of_type_ArrayOfJavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130849670, 2130849671, 2130849672);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131167123);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
+      a(this.jdField_a_of_type_Bcga.t);
     }
-    bced localbced = (bced)this.a.jdField_a_of_type_Bcdq.a(8);
-    if ((localbced != null) && (localbced.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    try
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView, new RelativeLayout.LayoutParams(-2, -1));
+      if (this.jdField_a_of_type_Bcfx.a.getIntent().getBooleanExtra("topTabSwitchFragment", false))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setOnCheckedChangeListener(new bccu(this));
+        if (((QQBrowserActivity)this.jdField_a_of_type_Bcfx.a).jdField_b_of_type_Int != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(((QQBrowserActivity)this.jdField_a_of_type_Bcfx.a).jdField_b_of_type_Int);
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Bcgx != null) {
+          this.jdField_a_of_type_Bcgx.a(parambccq.jdField_b_of_type_JavaLangString, true);
+        }
+        localTouchWebView = this.jdField_a_of_type_Bcfx.a();
+        if ((localTouchWebView != null) && (!TextUtils.isEmpty(parambccq.jdField_a_of_type_JavaLangString)))
+        {
+          str = "ok";
+          if (!TextUtils.isEmpty(parambccq.jdField_b_of_type_JavaLangString)) {
+            break label337;
+          }
+          str = "the subTabCallback isEmpty";
+          localJSONObject = new JSONObject();
+        }
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          TouchWebView localTouchWebView;
+          String str;
+          JSONObject localJSONObject;
+          localJSONObject.put("code", i);
+          localJSONObject.put("message", str);
+          localTouchWebView.callJs(parambccq.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+          localException1 = localException1;
+          localException1.printStackTrace();
+          continue;
+          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(this.jdField_a_of_type_Bcfx.a.getIntent().getIntExtra("topTabSelectIndex", 0));
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          continue;
+        }
+        label337:
+        i = 0;
+      }
     }
   }
 }

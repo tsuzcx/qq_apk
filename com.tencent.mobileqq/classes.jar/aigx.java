@@ -1,16 +1,18 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 final class aigx
   implements DialogInterface.OnClickListener
 {
-  aigx(Context paramContext) {}
+  aigx(boolean paramBoolean, BaseActivity paramBaseActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((Activity)this.a).finish();
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    }
   }
 }
 

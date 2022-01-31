@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import ahfz;
+import ahfx;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 
 public class SpringHbEntryManager$21
   implements Runnable
 {
-  public SpringHbEntryManager$21(ahfz paramahfz, DesktopDataManager paramDesktopDataManager) {}
+  public SpringHbEntryManager$21(ahfx paramahfx, DesktopDataManager paramDesktopDataManager) {}
   
   public void run()
   {

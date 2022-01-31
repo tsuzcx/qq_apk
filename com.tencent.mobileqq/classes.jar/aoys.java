@@ -1,54 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class aoys
-  extends aozs
+class aoys
+  implements DialogInterface.OnClickListener
 {
-  aouj jdField_a_of_type_Aouj = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
-  String b;
-  String c;
+  aoys(aoyr paramaoyr, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public aoys(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = paramString1;
-    this.c = paramString2;
-    a();
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aouj = new aoyt(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aouj);
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.b))
+    switch (paramInt)
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + apue.a());
-      if (this.jdField_a_of_type_Aool != null) {
-        this.jdField_a_of_type_Aool.a(false, "", "", -100005L, "", "", null, this.b, null);
-      }
-      return false;
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_Aoyr.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.c, this.b);
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aouj != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aouj);
-    }
+    new azpv(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aoyr.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

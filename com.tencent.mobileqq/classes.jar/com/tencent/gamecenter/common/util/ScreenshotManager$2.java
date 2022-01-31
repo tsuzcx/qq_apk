@@ -1,23 +1,23 @@
 package com.tencent.gamecenter.common.util;
 
-import yod;
-import yor;
-import yot;
+import yoa;
+import yoo;
+import yoq;
 
 public class ScreenshotManager$2
   implements Runnable
 {
-  public ScreenshotManager$2(yor paramyor, String paramString, yot paramyot) {}
+  public ScreenshotManager$2(yoo paramyoo, String paramString, yoq paramyoq) {}
   
   public void run()
   {
-    if (this.this$0.a(yor.a(this.this$0), this.jdField_a_of_type_JavaLangString))
+    if (this.this$0.a(yoo.a(this.this$0), this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_Yot.a(0, "succ");
-      yod.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Yoq.a(0, "succ");
+      yoa.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_a_of_type_Yot.a(-200, "save file fail");
+    this.jdField_a_of_type_Yoq.a(-200, "save file fail");
   }
 }
 

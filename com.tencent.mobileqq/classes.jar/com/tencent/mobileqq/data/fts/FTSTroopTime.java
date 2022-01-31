@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
-import aukm;
+import auko;
 
 public class FTSTroopTime
-  extends aukm
+  extends auko
 {
   public long mTimeStamp;
   public String mTroopUin;

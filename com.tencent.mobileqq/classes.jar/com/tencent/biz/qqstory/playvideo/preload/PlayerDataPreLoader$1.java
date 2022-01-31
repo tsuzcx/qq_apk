@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.playvideo.preload;
 
-import ujp;
-import ujr;
-import veg;
+import ujm;
+import ujo;
+import ved;
 
 public class PlayerDataPreLoader$1
   implements Runnable
 {
-  public PlayerDataPreLoader$1(ujp paramujp) {}
+  public PlayerDataPreLoader$1(ujm paramujm) {}
   
   public void run()
   {
-    ujr localujr = ujp.a(this.this$0, ujp.a(this.this$0), ujp.a(this.this$0), ujp.a(this.this$0), 5, 5, 5, 20);
-    ujp.a(this.this$0, localujr.a);
-    ujp.b(this.this$0, localujr.b);
+    ujo localujo = ujm.a(this.this$0, ujm.a(this.this$0), ujm.a(this.this$0), ujm.a(this.this$0), 5, 5, 5, 20);
+    ujm.a(this.this$0, localujo.a);
+    ujm.b(this.this$0, localujo.b);
     try
     {
-      ujp.a(this.this$0);
+      ujm.a(this.this$0);
       return;
     }
     catch (Exception localException)
     {
-      veg.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
+      ved.c("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info error:%s", localException);
     }
   }
 }

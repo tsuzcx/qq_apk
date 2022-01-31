@@ -1,12 +1,11 @@
 import android.view.View;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class uib
-  implements bfoq
+  implements bfph
 {
-  uib(uhz paramuhz, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bfol parambfol) {}
+  uib(uhw paramuhw, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -15,9 +14,9 @@ class uib
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
-      tsu.a(this.jdField_a_of_type_Uhz.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new uic(this));
+      uhw.a(this.jdField_a_of_type_Uhw, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
   }

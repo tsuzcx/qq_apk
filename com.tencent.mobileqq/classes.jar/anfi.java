@@ -1,58 +1,6 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
-
-public class anfi
-  implements anfh
+public abstract interface anfi
 {
-  private Handler a;
-  
-  public Resources a()
-  {
-    return BaseApplicationImpl.getApplication().getResources();
-  }
-  
-  public Handler a()
-  {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
-    }
-    return this.a;
-  }
-  
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 11;
-  }
+  public abstract void a(int paramInt);
 }
 
 

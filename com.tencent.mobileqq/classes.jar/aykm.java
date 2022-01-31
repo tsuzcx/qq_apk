@@ -1,13 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
-class aykm
-  implements bfos
+final class aykm
+  implements bfph
 {
-  aykm(ayki paramayki, QQAppInterface paramQQAppInterface, int paramInt) {}
+  aykm(int paramInt, String paramString1, Context paramContext, String paramString2, bfpc parambfpc) {}
   
-  public void onDismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131694067));
+        paramView.putExtra("big_brother_source_key", this.b);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      }
+      else
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        paramView.putExtra("big_brother_source_key", this.b);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        aykk.a("1", "2");
+        continue;
+        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+        aykk.a("2", "1");
+        continue;
+        aykk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+        aykk.b("0X800A00A", "0X800A00A");
+        continue;
+        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
+        aykk.a("3", "1");
+        continue;
+        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
+        aykk.a("4", "1");
+      }
+    }
   }
 }
 

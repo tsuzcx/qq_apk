@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.util.Log;
-import arau;
+import araw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -62,7 +62,7 @@ public class DiskStorageManager
   
   private void b(File paramFile)
   {
-    a(arau.a(paramFile.getParentFile()));
+    a(araw.a(paramFile.getParentFile()));
   }
   
   public void a(File paramFile)

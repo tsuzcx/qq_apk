@@ -1,141 +1,72 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class aixl
+  extends aixj
 {
-  public int a;
-  Handler a;
-  protected boolean a;
-  public boolean b;
-  public boolean c = true;
+  public long a;
+  public String a;
+  public WeakReference<QQSettingMe> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  int g = 7;
+  private int h;
   
-  public aixl(QQAppInterface paramQQAppInterface)
+  public aixl(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    if (paramQQAppInterface == null) {}
-    int i;
-    int j;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 98;
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
+    this.e = paramJSONObject.optInt("bubble_id", 0);
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
+    this.f = paramJSONObject.optInt("show_sum", 1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+  }
+  
+  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExploreDrawerStatus", 2, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
+    }
+    ((airx)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
+  }
+  
+  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (this.h >= this.f) {}
     do
     {
       do
       {
         return;
-        SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-        i = localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_count_" + ApolloUtil.b(), 0);
-        j = localSharedPreferences.getInt("bubble_max_count", 3);
-        this.c = a(paramQQAppInterface);
-      } while (i < j);
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("AplloDrawerStatus", 2, "Bubble show count limited:" + i + "," + j);
-  }
-  
-  public int a(ajfs paramajfs, int paramInt1, int paramInt2, AppInterface paramAppInterface, Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AplloDrawerStatus", 2, new Object[] { "draw execAction default say hi, model:", Integer.valueOf(paramInt1) });
-    }
-    if (paramInt1 == 3) {}
-    for (paramInt1 = 14;; paramInt1 = 5)
-    {
-      paramAppInterface = new ApolloActionData();
-      paramAppInterface.actionId = -1;
-      paramAppInterface.actionType = 0;
-      ajfj.a(paramajfs, paramInt1, paramAppInterface);
-      return 0;
-    }
-  }
-  
-  public int a(ajfs paramajfs, int paramInt, AppInterface paramAppInterface, Context paramContext)
-  {
-    paramAppInterface = new ApolloActionData();
-    paramAppInterface.actionId = -1;
-    paramAppInterface.actionType = 0;
-    ajfj.a(paramajfs, 5, paramAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("AplloDrawerStatus", 2, "draw execAction random say hi");
-    }
-    return 0;
-  }
-  
-  public void a() {}
-  
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  protected void a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject2 = paramContext.getSharedPreferences("apollo_sp", 0);
-    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_count_";
-    paramContext = (String)localObject1 + ApolloUtil.b();
-    paramQQAppInterface = ((SharedPreferences)localObject2).edit();
-    if (((SharedPreferences)localObject2).contains(paramContext)) {
-      paramQQAppInterface.putInt(paramContext, ((SharedPreferences)localObject2).getInt(paramContext, 0) + 1);
-    }
-    for (;;)
-    {
-      paramQQAppInterface.commit();
-      return;
-      Object localObject3 = ((SharedPreferences)localObject2).getAll();
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
-      {
-        localObject3 = ((Map)localObject3).entrySet().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
-          String str = (String)localEntry.getKey();
-          if ((str != null) && (str.startsWith((String)localObject1))) {
-            ((List)localObject2).add(localEntry.getKey());
-          }
+        this.h += 1;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          ajfh.a(paramajfq, this.jdField_a_of_type_JavaLangString, 9, this.e);
         }
-        localObject1 = ((List)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          paramQQAppInterface.remove((String)((Iterator)localObject1).next());
-        }
-      }
-      paramQQAppInterface.putInt(paramContext, 1);
-    }
+      } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
+      paramajfq = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (paramajfq == null);
+    paramajfq.a(this.jdField_c_of_type_JavaLangString);
   }
-  
-  public void a(QQAppInterface paramQQAppInterface, ajfs paramajfs)
-  {
-    this.b = false;
-  }
-  
-  public boolean a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface == null) || (!(paramAppInterface instanceof QQAppInterface))) {}
-    boolean bool;
-    do
-    {
-      return false;
-      bool = ApolloGameUtil.b((QQAppInterface)paramAppInterface);
-      if ((bool) && (QLog.isColorLevel())) {
-        QLog.d("AplloDrawerStatus", 2, "isShowDrawerAction current is 3D User");
-      }
-    } while (bool);
-    return true;
-  }
-  
-  public void b(ajfs paramajfs, Context paramContext, QQAppInterface paramQQAppInterface) {}
 }
 
 

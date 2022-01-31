@@ -7,7 +7,7 @@ import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
 import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 
 public class je
-  extends ajtd
+  extends ajtb
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private jd jdField_a_of_type_Jd;
@@ -27,7 +27,7 @@ public class je
     localIMMRReq.str_url.set(paramString);
     paramString = new oidb_0xa4d.ReqBody();
     paramString.msg_immr_req.set(localIMMRReq);
-    mxi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new jf(false, this.jdField_a_of_type_Jd), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
+    mxf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new jf(false, this.jdField_a_of_type_Jd), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
   public void a(jd paramjd)
@@ -35,7 +35,7 @@ public class je
     this.jdField_a_of_type_Jd = paramjd;
   }
   
-  protected Class<? extends ajtg> observerClass()
+  protected Class<? extends ajte> observerClass()
   {
     return null;
   }

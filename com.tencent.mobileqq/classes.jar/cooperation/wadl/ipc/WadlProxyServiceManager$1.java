@@ -1,16 +1,16 @@
 package cooperation.wadl.ipc;
 
-import bdoe;
-import bibr;
+import bdot;
+import bici;
 
 public class WadlProxyServiceManager$1
   implements Runnable
 {
-  public WadlProxyServiceManager$1(bibr parambibr) {}
+  public WadlProxyServiceManager$1(bici parambici) {}
   
   public void run()
   {
-    bdoe.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
+    bdot.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
     this.this$0.a = false;
   }
 }

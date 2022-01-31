@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
 import android.widget.ImageView;
-import bimj;
-import bivy;
+import bina;
+import biwp;
 
 public class VideoStoryCapturePart$4
   implements Runnable
 {
-  public VideoStoryCapturePart$4(bimj parambimj) {}
+  public VideoStoryCapturePart$4(bina parambina) {}
   
   public void run()
   {
-    bimj.c(this.this$0);
-    bimj.a(this.this$0).b(false);
-    bimj.b(this.this$0);
-    bimj.a(this.this$0).setVisibility(0);
+    bina.c(this.this$0);
+    bina.a(this.this$0).b(false);
+    bina.b(this.this$0);
+    bina.a(this.this$0).setVisibility(0);
   }
 }
 

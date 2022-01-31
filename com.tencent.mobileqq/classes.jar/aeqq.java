@@ -1,11 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class aeqq
-  implements mzc
+  implements View.OnClickListener
 {
-  aeqq(aeqd paramaeqd) {}
+  aeqq(aeqb paramaeqb, String paramString) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    aeqd.a(this.a, 0, 10);
+    paramView = ((HotChatManager)this.jdField_a_of_type_Aeqb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aeqb.jdField_a_of_type_Ajyt.a(paramView);
   }
 }
 

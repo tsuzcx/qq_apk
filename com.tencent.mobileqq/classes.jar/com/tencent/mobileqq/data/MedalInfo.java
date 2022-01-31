@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
-import auma;
-import bbbd;
+import auko;
+import aulz;
+import aumc;
+import bbbr;
 import com.tencent.mobileqq.medalwall.MedalID;
 import java.util.ArrayList;
 
 public class MedalInfo
-  extends aukm
+  extends auko
 {
-  @aulx
+  @aulz
   public static final int READ_STATE_DEFAULT = 0;
-  @aulx
+  @aulz
   public static final int READ_STATE_LOCAL_READ = 2;
-  @aulx
+  @aulz
   public static final int READ_STATE_UNREAD = 1;
-  @auma
+  @aumc
   public int iId;
   public int iLevel;
   public int iLevelCount;
@@ -54,23 +54,23 @@ public class MedalInfo
     }
     long l2 = this.lObtainTimeLevel1;
     long l1 = l2;
-    if (bbbd.b(l2, this.lObtainTimeLevel2) < 0) {
+    if (bbbr.b(l2, this.lObtainTimeLevel2) < 0) {
       l1 = this.lObtainTimeLevel2;
     }
     l2 = l1;
-    if (bbbd.b(l1, this.lObtainTimeLevel3) < 0) {
+    if (bbbr.b(l1, this.lObtainTimeLevel3) < 0) {
       l2 = this.lObtainTimeLevel3;
     }
     long l3 = paramMedalInfo.lObtainTimeLevel1;
     l1 = l3;
-    if (bbbd.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
+    if (bbbr.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
       l1 = paramMedalInfo.lObtainTimeLevel2;
     }
     l3 = l1;
-    if (bbbd.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
+    if (bbbr.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
       l3 = paramMedalInfo.lObtainTimeLevel3;
     }
-    if (bbbd.b(l2, l3) > 0) {}
+    if (bbbr.b(l2, l3) > 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

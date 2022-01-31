@@ -1,39 +1,23 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tku
-  extends QQUIEventReceiver<tks, tkr>
+  extends ssh
 {
-  public tku(tks paramtks)
+  public final int a;
+  public final String a;
+  public final String b;
+  
+  public tku(tkt paramtkt, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    super(paramtks);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull tks paramtks, @NonNull tkr paramtkr)
+  public String toString()
   {
-    if (paramtks.a()) {}
-    do
-    {
-      return;
-      if (paramtkr.jdField_a_of_type_Boolean)
-      {
-        tks.a(paramtks);
-        return;
-      }
-      if ((paramtkr.a() != null) && (!paramtkr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramtkr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    return;
-    tks.a(paramtks);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkr.class;
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
 }
 

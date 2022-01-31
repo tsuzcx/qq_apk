@@ -1,15 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class odv
-  implements bcps
+  implements View.OnClickListener
 {
   public odv(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
-      this.a.finish();
+    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
+    {
+      this.a.d(ReadInJoyDeliverBiuActivity.n(this.a));
+      return;
     }
+    this.a.finish();
+    nol.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

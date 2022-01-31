@@ -1,22 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiUserInfo;
+import cooperation.qzone.model.LocalImageShootInfo;
 
 public final class bhfh
-  implements Parcelable.Creator<WeishiUserInfo>
+  implements Parcelable.Creator<LocalImageShootInfo>
 {
-  public WeishiUserInfo a(Parcel paramParcel)
+  public LocalImageShootInfo a(Parcel paramParcel)
   {
-    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
-    localWeishiUserInfo.uin = paramParcel.readLong();
-    localWeishiUserInfo.nickName = paramParcel.readString();
-    localWeishiUserInfo.logo = paramParcel.readString();
-    return localWeishiUserInfo;
+    return new LocalImageShootInfo(paramParcel);
   }
   
-  public WeishiUserInfo[] a(int paramInt)
+  public LocalImageShootInfo[] a(int paramInt)
   {
-    return new WeishiUserInfo[paramInt];
+    return null;
   }
 }
 

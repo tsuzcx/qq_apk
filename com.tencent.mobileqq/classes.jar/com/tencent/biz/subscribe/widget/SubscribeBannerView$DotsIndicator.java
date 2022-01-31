@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
@@ -23,9 +23,9 @@ public class SubscribeBannerView$DotsIndicator
   
   private void a()
   {
-    this.b = actn.a(10.0F, getResources());
-    this.c = actn.a(7.0F, getResources());
-    this.d = actn.a(7.0F, getResources());
+    this.b = actj.a(10.0F, getResources());
+    this.c = actj.a(7.0F, getResources());
+    this.d = actj.a(7.0F, getResources());
     setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
   }
   

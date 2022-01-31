@@ -1,59 +1,35 @@
-import android.util.SparseArray;
-import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class anzh
+  implements askq<EmoticonPackage>
 {
-  private SparseArray<List<View>> a = new SparseArray();
+  public anzh(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, anyh paramanyh, aobp paramaobp) {}
   
-  public View a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    List localList = (List)this.a.get(paramInt);
-    if ((localList != null) && (localList.size() > 0)) {
-      return (View)localList.remove(0);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      int k = this.a.keyAt(i);
-      ((List)this.a.get(k)).clear();
-      i += 1;
-    }
-    this.a.clear();
-  }
-  
-  public boolean a(int paramInt, View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelViewPool", 2, "[RecyleView] addRecyleView, type=" + paramInt + ", view=" + paramView);
-    }
-    if (paramView == null) {
-      return false;
-    }
-    List localList = (List)this.a.get(paramInt);
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList(3);
-      this.a.put(paramInt, localObject);
-    }
-    if (((List)localObject).size() >= 3)
-    {
+    if (paramEmoticonPackage == null) {
       if (QLog.isColorLevel()) {
-        QLog.w("EmoticonPanelViewPool", 2, "Capacity full for type " + paramInt);
+        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
       }
-      return false;
     }
-    ((List)localObject).add(paramView);
-    return true;
+    do
+    {
+      return;
+      anyg localanyg = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_Anyg;
+      if (localanyg != null) {
+        localanyg.a(this.jdField_a_of_type_Anyh);
+      }
+    } while (this.jdField_a_of_type_Aobp.d != 2);
+    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
+    {
+      axqy.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
+      return;
+    }
+    axqy.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
   }
 }
 

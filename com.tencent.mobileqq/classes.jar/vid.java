@@ -1,23 +1,30 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 class vid
-  implements bfob
+  extends tew
 {
-  int jdField_a_of_type_Int = 0;
-  
-  vid(vic paramvic) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  vid(vic paramvic, String paramString)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    super(paramString);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Vic.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Vic.a.size() - 1)) {
-      this.jdField_a_of_type_Vic.f();
+    super.onLocationFinish(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      this.a.jdField_a_of_type_Vhz.a = paramSosoLbsInfo.a.a;
+      this.a.jdField_a_of_type_Vhz.b = paramSosoLbsInfo.a.b;
+      ved.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Vhz.a + " longitude=" + this.a.jdField_a_of_type_Vhz.b);
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_Vhz.f();
+      }
+      return;
     }
+    this.a.jdField_a_of_type_Vhz.a = 0.0D;
+    this.a.jdField_a_of_type_Vhz.b = 0.0D;
+    ved.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

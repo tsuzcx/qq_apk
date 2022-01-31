@@ -1,32 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arrv
-  implements bfoq
+  implements DialogInterface.OnDismissListener
 {
-  public arrv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, arsq paramarsq) {}
+  public arrv(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, arss paramarss) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
+    this.jdField_a_of_type_Arss.b(false);
+    this.jdField_a_of_type_Arss.d = false;
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Arsq.b(false);
-      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
-      }
-      return;
-      arrl.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Arsq.a().e, this.jdField_a_of_type_Arsq.a().b);
-      continue;
-      this.jdField_a_of_type_Arsq.g();
-      continue;
-      this.jdField_a_of_type_Arsq.g();
+    if (this.jdField_a_of_type_Arss.e) {
+      this.jdField_a_of_type_Arss.f();
     }
   }
 }

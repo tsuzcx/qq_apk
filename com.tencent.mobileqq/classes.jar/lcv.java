@@ -1,25 +1,29 @@
-import java.util.List;
-
 public class lcv
 {
-  @arlx(a="codec")
   public int a;
-  @arlx(a="min_version")
+  public long a;
   public String a;
-  @arlx(a="disable_sdks")
-  public List<Integer> a;
-  @arlx(a="upload")
   public boolean a;
-  @arlx(a="min_sdk")
   public int b;
-  @arlx(a="expdate")
   public String b;
-  @arlx(a="samples")
-  public List<lcw> b;
-  @arlx(a="async_min_sdk")
   public int c;
-  @arlx(a="test_ver")
+  public String c;
   public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_JavaLangString).append(", nick=").append(this.jdField_b_of_type_JavaLangString).append(", level=").append(this.jdField_c_of_type_JavaLangString).append(", distance=").append(this.jdField_d_of_type_JavaLangString).append(", age=").append(this.jdField_a_of_type_Int).append(", gender=").append(this.jdField_b_of_type_Int).append(", isFollowed=").append(this.jdField_a_of_type_Boolean).append(", logoUrl=").append(this.jdField_e_of_type_JavaLangString).append(", hint=").append(this.jdField_f_of_type_JavaLangString).append(",likeState=").append(this.jdField_c_of_type_Int).append(",showTime=").append(this.jdField_d_of_type_Int).append(",vipFee=").append(this.jdField_e_of_type_Int).append(",vipLevel=").append(this.jdField_f_of_type_Int).append(",desc=").append(this.jdField_g_of_type_JavaLangString).append(",selfUserType=").append(this.jdField_g_of_type_Int).append(",threeWord=").append(this.h).append(",tinyId=").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
+  }
 }
 
 

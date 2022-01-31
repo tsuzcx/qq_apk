@@ -1,56 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
+import android.view.View;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.util.ArrayList;
 
 public class atpb
-  extends Handler
+  implements bfph
 {
-  public atpb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public atpb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, bfpc parambfpc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          bfmv localbfmv = bfmv.b;
-          if ((localbfmv != null) && (localbfmv.a())) {
-            localbfmv.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131694563));
-      return;
-    case 207: 
-      this.a.a(ajyc.a(2131707238));
-      return;
     }
-    this.a.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      return;
+      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null) {
+        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.size());
+      }
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.h();
+      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    }
   }
 }
 

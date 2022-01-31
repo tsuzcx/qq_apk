@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class aerx
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  aerx(aerw paramaerw, int paramInt) {}
+  aerx(aert paramaert) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Aerw.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
+    this.a.a.removeHeaderView(aert.a(this.a));
+    aert.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

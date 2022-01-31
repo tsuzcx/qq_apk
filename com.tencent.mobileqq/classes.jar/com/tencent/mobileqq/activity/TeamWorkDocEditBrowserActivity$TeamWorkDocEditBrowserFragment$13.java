@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aydx;
-import ayfe;
+import aydz;
+import ayfg;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import xmt;
+import xmq;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
   implements Runnable
@@ -41,7 +41,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
       if (this.jdField_a_of_type_Int == 3000) {
         localList3 = this.jdField_a_of_type_JavaUtilList;
       }
-      bool = ayfe.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
+      bool = ayfg.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
       ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13.1(this, i, bool), 3000L);
       return;
       bool = false;

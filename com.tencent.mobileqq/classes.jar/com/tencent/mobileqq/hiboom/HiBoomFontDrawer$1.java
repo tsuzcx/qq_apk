@@ -2,11 +2,11 @@ package com.tencent.mobileqq.hiboom;
 
 import android.graphics.Typeface;
 import android.text.TextUtils;
-import aqwz;
-import aqxa;
 import aqxb;
 import aqxc;
-import bbdj;
+import aqxd;
+import aqxe;
+import bbdx;
 import com.etrump.mixlayout.ETEngine;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ import mqq.os.MqqHandler;
 public class HiBoomFontDrawer$1
   implements Runnable
 {
-  public HiBoomFontDrawer$1(aqxb paramaqxb, boolean paramBoolean) {}
+  public HiBoomFontDrawer$1(aqxd paramaqxd, boolean paramBoolean) {}
   
   public void run()
   {
@@ -27,10 +27,10 @@ public class HiBoomFontDrawer$1
     boolean bool1;
     if ((this.this$0.jdField_a_of_type_Int == 1) || (this.this$0.jdField_a_of_type_Int == 3))
     {
-      if (!aqwz.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        aqwz.a().b();
+      if (!aqxb.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        aqxb.a().b();
       }
-      if (aqwz.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      if (aqxb.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
         if (QLog.isColorLevel()) {
           QLog.d("HiBoomFont.FontDrawer", 2, "initHiBoomInfo HYEngine Ready");
@@ -39,22 +39,22 @@ public class HiBoomFontDrawer$1
         if (this.this$0.jdField_a_of_type_Int == 1) {
           localObject = ".hy";
         }
-        localObject = this.this$0.jdField_a_of_type_Aqxa.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + (String)localObject;
+        localObject = this.this$0.jdField_a_of_type_Aqxc.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + (String)localObject;
         if (QLog.isColorLevel()) {
           QLog.d("HiBoomFont.FontDrawer", 2, "initHiboom: path= " + (String)localObject + " fontId=" + this.this$0.jdField_b_of_type_Int);
         }
         if (!new File((String)localObject).exists()) {
           break label371;
         }
-        boolean bool2 = aqwz.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.this$0.jdField_b_of_type_Int);
-        boolean bool3 = aqwz.a().jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.this$0.jdField_b_of_type_Int);
+        boolean bool2 = aqxb.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.this$0.jdField_b_of_type_Int);
+        boolean bool3 = aqxb.a().jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.this$0.jdField_b_of_type_Int);
         bool1 = bool2;
         if (!bool2) {
-          bool1 = aqwz.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, this.this$0.jdField_b_of_type_Int, false);
+          bool1 = aqxb.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, this.this$0.jdField_b_of_type_Int, false);
         }
         bool2 = bool3;
         if (!bool3) {
-          bool2 = aqwz.a().jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, this.this$0.jdField_b_of_type_Int, false);
+          bool2 = aqxb.a().jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, this.this$0.jdField_b_of_type_Int, false);
         }
         localObject = this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
         if ((!bool1) || (!bool2)) {
@@ -68,7 +68,7 @@ public class HiBoomFontDrawer$1
     for (;;)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        aqxb.a(this.this$0);
+        aqxd.a(this.this$0);
       }
       this.this$0.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
@@ -79,19 +79,19 @@ public class HiBoomFontDrawer$1
       if (this.a)
       {
         this.this$0.c.set(false);
-        this.this$0.jdField_a_of_type_Aqxa.a(this.this$0.jdField_b_of_type_Int);
+        this.this$0.jdField_a_of_type_Aqxc.a(this.this$0.jdField_b_of_type_Int);
         continue;
         if (this.this$0.jdField_a_of_type_Int == 2)
         {
-          localObject = new File(this.this$0.jdField_a_of_type_Aqxa.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + ".hb");
-          String str = bbdj.a((File)localObject, -1);
+          localObject = new File(this.this$0.jdField_a_of_type_Aqxc.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + ".hb");
+          String str = bbdx.a((File)localObject, -1);
           if (!TextUtils.isEmpty(str))
           {
-            this.this$0.jdField_a_of_type_Aqxc = aqxc.a(str);
+            this.this$0.jdField_a_of_type_Aqxe = aqxe.a(str);
             if (this.this$0.jdField_a_of_type_AndroidGraphicsTypeface == null)
             {
-              localObject = this.this$0.jdField_a_of_type_Aqxa.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + ".fz";
-              if (!bbdj.a((String)localObject)) {
+              localObject = this.this$0.jdField_a_of_type_Aqxc.a() + this.this$0.jdField_b_of_type_Int + File.separator + this.this$0.jdField_b_of_type_Int + ".fz";
+              if (!bbdx.a((String)localObject)) {
                 break label686;
               }
             }
@@ -105,7 +105,7 @@ public class HiBoomFontDrawer$1
               catch (Exception localException)
               {
                 QLog.e("HiBoomFont.FontDrawer", 2, "file error:" + (String)localObject, localException);
-                bbdj.a(this.this$0.jdField_a_of_type_Aqxa.a() + this.this$0.jdField_b_of_type_Int);
+                bbdx.a(this.this$0.jdField_a_of_type_Aqxc.a() + this.this$0.jdField_b_of_type_Int);
                 return;
               }
               QLog.e("HiBoomFont.FontDrawer", 2, "file is not exist, path=" + (String)localObject);
@@ -114,14 +114,14 @@ public class HiBoomFontDrawer$1
           if ((!((File)localObject).exists()) && (this.a))
           {
             this.this$0.c.set(false);
-            this.this$0.jdField_a_of_type_Aqxa.a(this.this$0.jdField_b_of_type_Int);
+            this.this$0.jdField_a_of_type_Aqxc.a(this.this$0.jdField_b_of_type_Int);
           }
         }
         else if (this.this$0.jdField_a_of_type_Int == 4)
         {
           if (!g.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
           {
-            aqwz.a().c();
+            aqxb.a().c();
             QLog.d("HiBoomFont.FontDrawer", 2, "run: initFZEngine");
           }
           if (g.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())

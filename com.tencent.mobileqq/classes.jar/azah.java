@@ -5,12 +5,12 @@ import android.widget.ListView;
 class azah
   implements ValueAnimator.AnimatorUpdateListener
 {
-  azah(azae paramazae) {}
+  azah(azag paramazag) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    azae.a(this.a).setPadding(bawz.a(azae.a(this.a).getContext(), 8.0F), i, 0, 0);
+    azag.a(this.a).setPadding(baxn.a(azag.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 

@@ -8,9 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import baap;
-import baaq;
-import bbbb;
+import babd;
+import babe;
+import bbbp;
 import com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class ArithmeticCaptureTransferFragment
   extends AbsHomeWorkFragment
 {
-  private baap jdField_a_of_type_Baap;
+  private babd jdField_a_of_type_Babd;
   private String jdField_a_of_type_JavaLangString;
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
@@ -47,7 +47,7 @@ public class ArithmeticCaptureTransferFragment
   {
     try
     {
-      this.jdField_a_of_type_Baap = new baap(new JSONObject(paramString));
+      this.jdField_a_of_type_Babd = new babd(new JSONObject(paramString));
       if (QLog.isColorLevel()) {
         QLog.d("ArithmeticCaptureTransferFragment", 2, "init data ,homework = " + paramString);
       }
@@ -72,16 +72,16 @@ public class ArithmeticCaptureTransferFragment
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
       if ((paramIntent != null) && (paramIntent.size() > 0))
       {
-        baaq localbaaq = new baaq();
-        localbaaq.b = ((String)paramIntent.get(0));
-        this.jdField_a_of_type_Baap.a(localbaaq);
+        babe localbabe = new babe();
+        localbabe.b = ((String)paramIntent.get(0));
+        this.jdField_a_of_type_Babd.a(localbabe);
         if (QLog.isColorLevel()) {
-          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbaaq.b);
+          QLog.d("ArithmeticCaptureTransferFragment", 2, "new picture ,path = " + localbabe.b);
         }
-        bbbb.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
+        bbbp.a("Grp_edu", "Grp_oral", "Oral_Photoedit_Finish", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       }
     }
-    a(this.jdField_a_of_type_Baap.a(1));
+    a(this.jdField_a_of_type_Babd.a(1));
     a();
   }
   

@@ -1,26 +1,18 @@
 import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abgo
-  implements amng
+  extends amdk
 {
   public abgo(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public int a()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131694073);
+    if (paramBoolean)
+    {
+      amdj localamdj = (amdj)this.a.app.getManager(112);
+      this.a.a = localamdj.a(paramString);
     }
-    return this.a.getString(2131692394);
   }
 }
 

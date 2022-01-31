@@ -58,9 +58,9 @@ public class DatePickerView
     this.mDatePicker = new DatePicker(new ContextThemeWrapper(getContext(), 16973934));
     this.mDatePicker.setCalendarViewShown(false);
     ((FrameLayout)localObject).addView(this.mDatePicker);
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378078));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378081));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378108));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378111));
     this.mConfirmTextView.setOnClickListener(this);
     setDatePickerDividerColor(this.mDatePicker);
     setOnCancelListener(this);
@@ -150,14 +150,14 @@ public class DatePickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378078)
+    if (paramView.getId() == 2131378081)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onDateCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378108) {
+    while (paramView.getId() != 2131378111) {
       return;
     }
     int i;

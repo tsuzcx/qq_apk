@@ -1,12 +1,26 @@
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.text.TextUtils;
 
 public class bbpu
+  extends bbpx
 {
+  public int a;
   public String a;
+  public int b;
+  public String b;
+  public int c = 20;
   
-  public bbpu(PendantInfo paramPendantInfo, String paramString)
+  public bbpu()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 100;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.a)) {
+      return "";
+    }
+    return this.a;
   }
 }
 

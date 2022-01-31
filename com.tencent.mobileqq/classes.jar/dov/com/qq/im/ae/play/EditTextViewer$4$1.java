@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.play;
 
-import biyd;
-import biyf;
+import biyu;
+import biyw;
 
 public class EditTextViewer$4$1
   implements Runnable
 {
-  public EditTextViewer$4$1(biyd parambiyd, boolean paramBoolean) {}
+  public EditTextViewer$4$1(biyu parambiyu, boolean paramBoolean) {}
   
   public void run()
   {
-    EditTextViewer.b(this.jdField_a_of_type_Biyd.a);
+    EditTextViewer.b(this.jdField_a_of_type_Biyu.a);
     if (this.jdField_a_of_type_Boolean)
     {
-      EditTextViewer.c(this.jdField_a_of_type_Biyd.a);
-      if (EditTextViewer.a(this.jdField_a_of_type_Biyd.a) != null) {
-        EditTextViewer.a(this.jdField_a_of_type_Biyd.a).c(EditTextViewer.a(this.jdField_a_of_type_Biyd.a));
+      EditTextViewer.c(this.jdField_a_of_type_Biyu.a);
+      if (EditTextViewer.a(this.jdField_a_of_type_Biyu.a) != null) {
+        EditTextViewer.a(this.jdField_a_of_type_Biyu.a).c(EditTextViewer.a(this.jdField_a_of_type_Biyu.a));
       }
     }
   }

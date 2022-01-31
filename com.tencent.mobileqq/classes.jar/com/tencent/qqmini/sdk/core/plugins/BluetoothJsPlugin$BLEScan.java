@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
 import android.os.Handler;
-import besl;
+import betc;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ class BluetoothJsPlugin$BLEScan
   
   public void onBluetoothDeviceFound()
   {
-    besl.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
+    betc.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound foundDevices size =" + this.foundDevices.size());
     JSONArray localJSONArray;
     if (this.hasNewDevice)
     {
@@ -56,13 +56,13 @@ class BluetoothJsPlugin$BLEScan
     label128:
     localObject.put("devices", localJSONArray);
     String str = localObject.toString();
-    besl.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
+    betc.a("BluetoothJsPlugin", "BLEScan.onBluetoothDeviceFound callback data =" + str);
     this.this$0.sendSubscribeEvent("onBluetoothDeviceFound", str);
   }
   
   public void onLeScan(BluetoothDevice arg1, int paramInt, byte[] paramArrayOfByte)
   {
-    besl.a("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
+    betc.a("BluetoothJsPlugin", "BLEScan.onLeScan device =" + ??? + ",rssi=" + paramInt + ",scanRecord=" + paramArrayOfByte);
     if ((??? == null) || (paramArrayOfByte == null) || (!this.isDiscovering)) {}
     for (;;)
     {
@@ -106,7 +106,7 @@ class BluetoothJsPlugin$BLEScan
   
   public boolean startDiscovery(BluetoothAdapter paramBluetoothAdapter, UUID[] paramArrayOfUUID, boolean paramBoolean, long paramLong)
   {
-    besl.a("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
+    betc.a("BluetoothJsPlugin", "BLEScan.startDiscovery serviceUUID=" + paramArrayOfUUID + ",allowDuplicatesKey=" + paramBoolean + ",timeout=" + paramLong);
     boolean bool;
     if ((this.isDiscovering) || (paramBluetoothAdapter == null))
     {
@@ -142,7 +142,7 @@ class BluetoothJsPlugin$BLEScan
   
   public void stopDiscovery(String arg1)
   {
-    besl.a("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
+    betc.a("BluetoothJsPlugin", "BLEScan.stopDiscovery......from=" + ???);
     BluetoothJsPlugin.access$400(this.this$0).removeMessages(1);
     BluetoothJsPlugin.access$400(this.this$0).removeMessages(2);
     if (BluetoothJsPlugin.access$100(this.this$0) != null) {

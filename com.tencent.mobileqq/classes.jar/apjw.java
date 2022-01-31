@@ -1,39 +1,62 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.kwstudio.office.base.ILog;
+import com.tencent.qphone.base.util.QLog;
 
 public final class apjw
-  extends WebViewClient
+  implements ILog
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
-  
-  private apjw(Context paramContext, IHostInterface.IWebClient paramIWebClient)
+  public void d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2);
   }
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
-      super.onPageFinished(paramWebView, paramString);
-    }
+    QLog.d("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void e(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
-    {
-      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-      paramWebView.putExtra("param_force_internal_browser", true);
-      paramWebView.putExtra("url", paramString);
-      acqz.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
-    }
-    return true;
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2);
+  }
+  
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i("TdsReaderView_" + paramString1, 2, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w("TdsReaderView_" + paramString1, 1, paramString2, paramThrowable);
   }
 }
 

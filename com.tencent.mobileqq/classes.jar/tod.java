@@ -1,77 +1,67 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class tod
-  extends syq
+  extends syn
 {
-  public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public int b;
-  public List<List<VideoUrlEntry>> b;
-  public String c;
+  public final long a;
+  public final String a;
+  public final List<toe> a;
+  public final boolean a;
+  public final byte[] a;
   
-  public tod(String paramString, qqstory_service.RspGetCollectionVideoList paramRspGetCollectionVideoList)
+  public tod(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
   {
-    super(paramRspGetCollectionVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramRspGetCollectionVideoList.is_end.get() == 1)
+    super(paramRspGetEmoticonPackList.result);
+    boolean bool;
+    ArrayList localArrayList;
+    if (paramRspGetEmoticonPackList.is_end.get() != 0)
     {
+      bool = true;
       this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramRspGetCollectionVideoList.interact_status.get();
-      this.c = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
-      paramString = paramRspGetCollectionVideoList.full_video_info_list.get().iterator();
+      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
+      localArrayList = new ArrayList();
+      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
+      if (paramRspGetEmoticonPackList != null) {
+        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
+      }
     }
-    for (;;)
+    else
     {
-      if (!paramString.hasNext()) {
-        return;
-      }
-      Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
-      paramRspGetCollectionVideoList = new StoryVideoItem();
-      paramRspGetCollectionVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(paramRspGetCollectionVideoList);
-      Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
-      if (localObject2 != null)
+      for (;;)
       {
-        localObject1 = new ArrayList(((List)localObject2).size());
-        localObject2 = ((List)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = paramRspGetCollectionVideoList.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject1).add(localVideoUrlEntry);
-            continue;
-            bool = false;
-            break;
-          }
+        if (!paramRspGetEmoticonPackList.hasNext()) {
+          break label151;
         }
-        this.jdField_b_of_type_JavaUtilList.add(localObject1);
+        toe localtoe = new toe((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
+        if (localtoe.a())
+        {
+          localArrayList.add(localtoe);
+          continue;
+          bool = false;
+          break;
+        }
+        ved.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localtoe);
       }
     }
+    label151:
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
   }
   
   public String toString()
   {
-    return "GetCollectionVideoListResponse{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nextCookie='" + this.c + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", interactStatus=" + this.jdField_b_of_type_Int + ", videoItems=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -35,10 +35,10 @@ public class UserGuideWeishiFragment
     if (QLog.isColorLevel()) {
       QLog.d("UserGuideWeishiFragment", 2, "initUI has been called");
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363361);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378754);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363360);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378759);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378755));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378760));
     b();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UserGuideWeishiFragment.FinishDeLay5Seconds(new WeakReference(getActivity())), 5000L);
@@ -98,12 +98,12 @@ public class UserGuideWeishiFragment
     //   91: astore 5
     //   93: aload 5
     //   95: ifnull +159 -> 254
-    //   98: new 154	bfpp
+    //   98: new 154	bfqg
     //   101: dup
     //   102: aload 5
     //   104: iload_1
     //   105: iload_2
-    //   106: invokespecial 157	bfpp:<init>	(Landroid/graphics/Bitmap;II)V
+    //   106: invokespecial 157	bfqg:<init>	(Landroid/graphics/Bitmap;II)V
     //   109: astore 5
     //   111: aload 5
     //   113: ifnull +71 -> 184
@@ -357,7 +357,7 @@ public class UserGuideWeishiFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562589, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562588, null);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }

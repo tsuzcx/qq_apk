@@ -1,56 +1,67 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class atjg
-  implements View.OnClickListener
+  extends atko
 {
-  public atjg(ShortVideoCommentsView paramShortVideoCommentsView, LocationInfo paramLocationInfo) {}
+  public atgi a;
+  public VideoData a;
+  private String b = "MagazinePlayerView";
+  private long d;
   
-  public void onClick(View paramView)
+  public atjg(Context paramContext, atgi paramatgi, QQAppInterface paramQQAppInterface)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext(), QQBrowserActivity.class);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lng;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.lat;
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.name;
-    if (TextUtils.isEmpty(str1))
+    super(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Atgi = paramatgi;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.getCity();
-      paramView = String.format("http://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str3, str2, paramView, str1 });
-      ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.getContext().startActivity((Intent)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoComments", 2, "when click location label ; the url is :" + paramView);
-      }
-      localObject = new axra(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long));
-      if (!TextUtils.equals(String.valueOf(ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a.getCurrentAccountUin())) {
-        break label280;
-      }
-      paramView = "1";
-      label224:
-      if (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) == null) {
-        break label286;
-      }
-    }
-    label280:
-    label286:
-    for (str1 = ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_JavaLangString;; str1 = "0")
-    {
-      ((axra)localObject).a(new String[] { paramView, "", "", str1 }).a();
+      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
       return;
-      paramView = str1;
-      break;
-      paramView = "2";
-      break label224;
     }
+    super.a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, atjh paramatjh)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_Atjh = paramatjh;
+    if (paramVideoData.a == 1)
+    {
+      a(paramRelativeLayout);
+      this.d = 0L;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      d();
+      atiw.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      return;
+    }
+    super.a(paramRelativeLayout, paramVideoData, paramatjh);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
+      return;
+    }
+    if (this.jdField_a_of_type_Atgi != null) {
+      this.jdField_a_of_type_Atgi.a();
+    }
+    super.b();
   }
 }
 

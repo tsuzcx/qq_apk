@@ -1,25 +1,70 @@
-import android.graphics.drawable.Animatable;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
+import java.util.ArrayList;
 
-public class wpp
-  extends RecyclerView.ViewHolder
+public abstract class wpp
+  extends woz
 {
-  private Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ComponentRvInnerView a;
   
-  public wpp(View paramView)
+  public wpp(Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371329));
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368868));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378377));
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public abstract wpq a(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(ComponentRvInnerView paramComponentRvInnerView);
+  
+  public void a(ArrayList paramArrayList)
+  {
+    b().clear();
+    b().addAll(paramArrayList);
+    if (this.a != null) {
+      this.a.setData(paramArrayList);
+    }
+  }
+  
+  public abstract int b();
+  
+  protected boolean c()
+  {
+    return false;
+  }
+  
+  public int getItemCount()
+  {
+    if ((!c()) || (b().size() > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder.itemView instanceof ComponentRvInnerView)) {
+      this.a.setData(b());
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    this.a = new ComponentRvInnerView(paramViewGroup.getContext(), this);
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup = new woy(this, this.a);
+    paramViewGroup.setIsRecyclable(false);
+    a(this.a);
+    return paramViewGroup;
   }
 }
 

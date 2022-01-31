@@ -1,159 +1,178 @@
+import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aukf
+  extends aula
 {
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public static MessageRecord a(aukm paramaukm)
+  public aukf()
   {
-    if (paramaukm != null) {}
-    try
-    {
-      paramaukm.postRead();
-      paramaukm = (MessageRecord)paramaukm;
-      return paramaukm;
-    }
-    catch (Exception paramaukm)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Cursor2EntityConvert", 2, "postRead exception = " + paramaukm.getMessage());
-      }
-      return null;
-    }
-    catch (OutOfMemoryError paramaukm)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Cursor2EntityConvert", 2, "postRead OutOfMemoryError");
-        }
-      }
-    }
-    catch (VerifyError paramaukm)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Cursor2EntityConvert", 2, "postRead VerifyError");
-        }
-      }
-    }
+    this.a = 12;
   }
   
-  private void a(List<Field> paramList, Cursor paramCursor)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    if ((paramList == null) || (paramCursor == null)) {}
+    boolean bool = true;
+    paramBoolean = true;
+    paramauko = (ContactCard)paramauko;
+    if (paramaukz == null)
+    {
+      paramauko.mobileNo = paramCursor.getString(paramCursor.getColumnIndex("mobileNo"));
+      paramauko.nationCode = paramCursor.getString(paramCursor.getColumnIndex("nationCode"));
+      paramauko.mobileCode = paramCursor.getString(paramCursor.getColumnIndex("mobileCode"));
+      paramauko.strContactName = paramCursor.getString(paramCursor.getColumnIndex("strContactName"));
+      paramauko.nickName = paramCursor.getString(paramCursor.getColumnIndex("nickName"));
+      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramauko.bSex = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bSex")));
+      paramauko.bAge = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bAge")));
+      paramauko.strProvince = paramCursor.getString(paramCursor.getColumnIndex("strProvince"));
+      paramauko.strCity = paramCursor.getString(paramCursor.getColumnIndex("strCity"));
+      paramauko.strCountry = paramCursor.getString(paramCursor.getColumnIndex("strCountry"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("bindQQ"))) {}
+      for (;;)
+      {
+        paramauko.bindQQ = paramBoolean;
+        return paramauko;
+        paramBoolean = false;
+      }
+    }
+    int i = paramCursor.getColumnIndex("mobileNo");
+    if (i == -1)
+    {
+      paramaukz.a(new NoColumnError("mobileNo", String.class));
+      i = paramCursor.getColumnIndex("nationCode");
+      if (i != -1) {
+        break label673;
+      }
+      paramaukz.a(new NoColumnError("nationCode", String.class));
+      label313:
+      i = paramCursor.getColumnIndex("mobileCode");
+      if (i != -1) {
+        break label688;
+      }
+      paramaukz.a(new NoColumnError("mobileCode", String.class));
+      label347:
+      i = paramCursor.getColumnIndex("strContactName");
+      if (i != -1) {
+        break label703;
+      }
+      paramaukz.a(new NoColumnError("strContactName", String.class));
+      label381:
+      i = paramCursor.getColumnIndex("nickName");
+      if (i != -1) {
+        break label718;
+      }
+      paramaukz.a(new NoColumnError("nickName", String.class));
+      label415:
+      i = paramCursor.getColumnIndex("uin");
+      if (i != -1) {
+        break label733;
+      }
+      paramaukz.a(new NoColumnError("uin", String.class));
+      label449:
+      i = paramCursor.getColumnIndex("bSex");
+      if (i != -1) {
+        break label748;
+      }
+      paramaukz.a(new NoColumnError("bSex", Byte.TYPE));
+      label484:
+      i = paramCursor.getColumnIndex("bAge");
+      if (i != -1) {
+        break label764;
+      }
+      paramaukz.a(new NoColumnError("bAge", Byte.TYPE));
+      label519:
+      i = paramCursor.getColumnIndex("strProvince");
+      if (i != -1) {
+        break label780;
+      }
+      paramaukz.a(new NoColumnError("strProvince", String.class));
+      label553:
+      i = paramCursor.getColumnIndex("strCity");
+      if (i != -1) {
+        break label795;
+      }
+      paramaukz.a(new NoColumnError("strCity", String.class));
+      label587:
+      i = paramCursor.getColumnIndex("strCountry");
+      if (i != -1) {
+        break label810;
+      }
+      paramaukz.a(new NoColumnError("strCountry", String.class));
+    }
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      i = paramCursor.getColumnIndex("bindQQ");
+      if (i != -1) {
+        break label825;
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = ((Field)paramList.next()).getName();
-        int i = paramCursor.getColumnIndex(str);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Integer.valueOf(i));
-      }
+      paramaukz.a(new NoColumnError("bindQQ", Boolean.TYPE));
+      return paramauko;
+      paramauko.mobileNo = paramCursor.getString(i);
+      break;
+      label673:
+      paramauko.nationCode = paramCursor.getString(i);
+      break label313;
+      label688:
+      paramauko.mobileCode = paramCursor.getString(i);
+      break label347;
+      label703:
+      paramauko.strContactName = paramCursor.getString(i);
+      break label381;
+      label718:
+      paramauko.nickName = paramCursor.getString(i);
+      break label415;
+      label733:
+      paramauko.uin = paramCursor.getString(i);
+      break label449;
+      label748:
+      paramauko.bSex = ((byte)paramCursor.getShort(i));
+      break label484;
+      label764:
+      paramauko.bAge = ((byte)paramCursor.getShort(i));
+      break label519;
+      label780:
+      paramauko.strProvince = paramCursor.getString(i);
+      break label553;
+      label795:
+      paramauko.strCity = paramCursor.getString(i);
+      break label587;
+      label810:
+      paramauko.strCountry = paramCursor.getString(i);
+    }
+    label825:
+    if (1 == paramCursor.getShort(i)) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramauko.bindQQ = paramBoolean;
+      return paramauko;
     }
   }
   
-  public aukm a(Class<? extends aukm> paramClass, String paramString, Cursor paramCursor)
+  public String a(String paramString)
   {
-    if (paramCursor.isBeforeFirst()) {
-      paramCursor.moveToFirst();
-    }
-    try
-    {
-      if (paramCursor.getColumnIndex("_id") >= 0) {}
-      for (l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));; l = -1L)
-      {
-        try
-        {
-          if (paramClass.getName().equals(MessageRecord.class.getName()))
-          {
-            int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
-            byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
-            int j = paramCursor.getInt(paramCursor.getColumnIndex("extLong"));
-            String str = paramCursor.getString(paramCursor.getColumnIndex("extStr"));
-            int k = paramCursor.getInt(paramCursor.getColumnIndex("istroop"));
-            paramClass = axaq.a(i, arrayOfByte, j, str, k);
-            paramClass.msgData = arrayOfByte;
-            paramClass._id = l;
-            paramClass.extLong = j;
-            paramClass.extStr = str;
-            paramClass.istroop = k;
-            if (!this.jdField_a_of_type_Boolean)
-            {
-              this.jdField_a_of_type_Boolean = true;
-              a(auln.b(paramClass), paramCursor);
-            }
-            paramClass.selfuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("selfuin")).intValue());
-            paramClass.frienduin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("frienduin")).intValue());
-            paramClass.senderuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("senderuin")).intValue());
-            paramClass.time = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("time")).intValue());
-            paramClass.msgtype = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgtype")).intValue());
-            paramClass.issend = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("issend")).intValue());
-            paramClass.msgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgseq")).intValue());
-            paramClass.shmsgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("shmsgseq")).intValue());
-            paramClass.msgId = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgId")).intValue());
-            paramClass.msgUid = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgUid")).intValue());
-            paramClass.uniseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("uniseq")).intValue());
-            paramClass.versionCode = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("versionCode")).intValue());
-            if (paramClass.versionCode <= 0) {
-              paramClass.msg = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msg")).intValue());
-            }
-            if ((l != -1L) && (paramString != null)) {
-              paramClass._status = 1001;
-            } else {
-              paramClass._status = 1002;
-            }
-          }
-        }
-        catch (Exception paramClass)
-        {
-          a();
-          return null;
-        }
-        catch (VerifyError paramClass)
-        {
-          a();
-          return null;
-        }
-        catch (OutOfMemoryError paramClass)
-        {
-          return null;
-        }
-        paramClass = null;
-        break;
-      }
-      return paramClass;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l = -1L;
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,mobileNo TEXT UNIQUE ,nationCode TEXT ,mobileCode TEXT ,strContactName TEXT ,nickName TEXT ,uin TEXT ,bSex INTEGER ,bAge INTEGER ,strProvince TEXT ,strCity TEXT ,strCountry TEXT ,bindQQ INTEGER)");
+    return localStringBuilder.toString();
   }
   
-  public void a()
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
-    }
+    paramauko = (ContactCard)paramauko;
+    paramContentValues.put("mobileNo", paramauko.mobileNo);
+    paramContentValues.put("nationCode", paramauko.nationCode);
+    paramContentValues.put("mobileCode", paramauko.mobileCode);
+    paramContentValues.put("strContactName", paramauko.strContactName);
+    paramContentValues.put("nickName", paramauko.nickName);
+    paramContentValues.put("uin", paramauko.uin);
+    paramContentValues.put("bSex", Byte.valueOf(paramauko.bSex));
+    paramContentValues.put("bAge", Byte.valueOf(paramauko.bAge));
+    paramContentValues.put("strProvince", paramauko.strProvince);
+    paramContentValues.put("strCity", paramauko.strCity);
+    paramContentValues.put("strCountry", paramauko.strCountry);
+    paramContentValues.put("bindQQ", Boolean.valueOf(paramauko.bindQQ));
   }
 }
 

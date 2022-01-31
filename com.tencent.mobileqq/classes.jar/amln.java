@@ -1,15 +1,8 @@
-class amln
-  implements ango
+public abstract interface amln
 {
-  amln(amll paramamll) {}
+  public abstract void a();
   
-  public long a()
-  {
-    if (amll.a(this.a) != null) {
-      return amll.a(this.a).a();
-    }
-    return 0L;
-  }
+  public abstract void b();
 }
 
 

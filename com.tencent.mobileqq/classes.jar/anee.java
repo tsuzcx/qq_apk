@@ -1,29 +1,20 @@
-import java.util.List;
+import java.io.File;
+import java.util.Comparator;
 
-public class anee
+class anee
+  implements Comparator<File>
 {
-  public int a;
-  public Runnable a;
-  public List<String> a;
-  public int b;
-  public Runnable b;
+  anee(aned paramaned) {}
   
-  public void a(boolean paramBoolean)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (a()) {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
+    if (paramFile2.lastModified() > paramFile1.lastModified()) {
+      return 1;
     }
-    while (this.jdField_b_of_type_JavaLangRunnable == null) {
-      return;
+    if (paramFile2.lastModified() < paramFile1.lastModified()) {
+      return -1;
     }
-    this.jdField_b_of_type_JavaLangRunnable.run();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
+    return 0;
   }
 }
 

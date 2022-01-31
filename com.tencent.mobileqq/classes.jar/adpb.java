@@ -1,14 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class adpb
-  implements aptu
+  implements aptw
 {
-  adpb(adoz paramadoz, MessageForFile paramMessageForFile, Context paramContext) {}
+  adpb(adox paramadox, FileManagerEntity paramFileManagerEntity) {}
   
   public void a()
   {
-    apue.a(this.jdField_a_of_type_Adoz.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Adox.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Adox.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
   public void b() {}

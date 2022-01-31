@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ark;
 
-import alsc;
-import alsk;
-import alsn;
+import alsb;
+import alsj;
+import alsm;
 import java.util.ArrayList;
 
 public class ArkAppCGI$10
   implements Runnable
 {
-  public ArkAppCGI$10(alsc paramalsc, alsn paramalsn, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public ArkAppCGI$10(alsb paramalsb, alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    synchronized (alsc.a(this.this$0))
+    synchronized (alsb.a(this.this$0))
     {
-      alsc.a(this.this$0).remove(this.jdField_a_of_type_Alsn);
-      this.jdField_a_of_type_Alsn.a.a(this.jdField_a_of_type_Alsn, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      alsb.a(this.this$0).remove(this.jdField_a_of_type_Alsm);
+      this.jdField_a_of_type_Alsm.a.a(this.jdField_a_of_type_Alsm, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
       return;
     }
   }

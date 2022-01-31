@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.share;
 
-import aukm;
+import auko;
 import java.io.Serializable;
 
 public class MiniProgramArkShareLocalImageEntity
-  extends aukm
+  extends auko
   implements Serializable
 {
   public String arkPath;

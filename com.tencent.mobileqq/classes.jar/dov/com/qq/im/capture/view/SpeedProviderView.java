@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bjld;
+import bjlu;
 
 public class SpeedProviderView
   extends ProviderView
   implements View.OnClickListener
 {
-  private bjld a;
+  private bjlu a;
   protected View c;
   protected View d;
   protected View e;
@@ -24,14 +24,14 @@ public class SpeedProviderView
   
   protected int a()
   {
-    return 2131560577;
+    return 2131560576;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560577, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560576, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
     this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371752);
@@ -55,8 +55,8 @@ public class SpeedProviderView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bjld != null) {
-        this.jdField_a_of_type_Bjld.a(i);
+      if (this.jdField_a_of_type_Bjlu != null) {
+        this.jdField_a_of_type_Bjlu.a(i);
       }
       return;
       i = 2;
@@ -67,9 +67,9 @@ public class SpeedProviderView
     }
   }
   
-  public void setEditSpeedListener(bjld parambjld)
+  public void setEditSpeedListener(bjlu parambjlu)
   {
-    this.jdField_a_of_type_Bjld = parambjld;
+    this.jdField_a_of_type_Bjlu = parambjlu;
   }
 }
 

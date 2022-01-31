@@ -1,28 +1,11 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public class aokg
+public abstract interface aokg<V extends View>
 {
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aokh.a(paramView, paramDrawable);
-      return;
-    }
-    paramView.setBackgroundDrawable(paramDrawable);
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  public static void a(View paramView, Runnable paramRunnable)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      aokh.a(paramView, paramRunnable);
-      return;
-    }
-    paramView.postDelayed(paramRunnable, 16L);
-  }
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 

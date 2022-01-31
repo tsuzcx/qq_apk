@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import ailu;
+import ails;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,8 +37,8 @@ public class ContactsFPSPinnedHeaderExpandableListView
   public void setChildViewCanAction(boolean paramBoolean)
   {
     ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof ailu)) {
-      ((ailu)localExpandableListAdapter).b(paramBoolean);
+    if ((localExpandableListAdapter instanceof ails)) {
+      ((ails)localExpandableListAdapter).b(paramBoolean);
     }
     this.a = paramBoolean;
   }

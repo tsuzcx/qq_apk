@@ -1,1072 +1,479 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Handler;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.1;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.2;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.3;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.4;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil.5;
-import com.tencent.commonsdk.cache.QQHashMap;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.2;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt.3;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class sfh
+  implements bbiy
 {
-  public static int a;
-  public static long a;
-  private static QQHashMap<Integer, sfi> jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap;
-  public static String a;
-  public static ArrayList<String> a;
-  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  public static int b;
-  public static String b;
-  public static boolean b;
-  public static int c;
-  public static String c;
-  public static boolean c;
-  public static int d;
-  public static String d;
-  public static boolean d;
-  public static int e;
-  public static String e;
-  public static boolean e;
-  public static String f;
-  public static boolean f;
-  public static String g;
-  public static boolean g;
-  public static String h;
-  public static boolean h;
-  public static String i;
-  public static boolean i;
-  public static boolean j;
-  public static boolean k;
-  public static boolean l;
-  public static boolean m;
-  public static boolean n;
-  public static boolean o;
-  public static boolean p;
+  private static double jdField_a_of_type_Double;
+  private static int jdField_a_of_type_Int;
+  private static String c = "";
+  private static String d = "";
+  private static String e = "";
+  private static String f = "";
+  private static String g = "";
+  public Activity a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  bbly jdField_a_of_type_Bbly;
+  private bblz jdField_a_of_type_Bblz = new sfi(this);
+  bcdp jdField_a_of_type_Bcdp;
+  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
+  private File jdField_a_of_type_JavaIoFile;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString = "PublicAccountH5AbilityForPtt";
+  private int jdField_b_of_type_Int = 60000;
+  private String jdField_b_of_type_JavaLangString;
   
-  static
+  public sfh() {}
+  
+  public sfh(Activity paramActivity, String paramString, bcdp parambcdp)
   {
-    jdField_a_of_type_JavaLangString = "http://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
-    jdField_b_of_type_JavaLangString = "http://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
-    jdField_f_of_type_JavaLangString = "";
-    jdField_a_of_type_Long = 3000L;
-    jdField_a_of_type_Int = 10;
-    k = true;
-    jdField_g_of_type_JavaLangString = "";
-    jdField_h_of_type_JavaLangString = "";
-    jdField_i_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Bcdp = parambcdp;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static String a()
   {
-    int i1 = 0;
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + str, 0);
-    if (paramQQAppInterface != null) {
-      i1 = paramQQAppInterface.getInt("service_account_folder_config_version", 0);
+    return c;
+  }
+  
+  public static int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return d;
+  }
+  
+  public static int c()
+  {
+    if (jdField_a_of_type_Double != 0.0D) {
+      return QQRecorder.a(jdField_a_of_type_Double);
     }
-    QLog.d("PublicAccountConfigUtil", 1, "getServiceAccountFolderConfigVersionCode  version:" + i1);
-    return i1;
+    return 0;
   }
   
-  public static Drawable a(Context paramContext, int paramInt)
+  public static String c()
   {
-    switch (paramInt)
+    return e;
+  }
+  
+  public static void c(String paramString)
+  {
+    c = paramString;
+  }
+  
+  public static void d(String paramString)
+  {
+    g = paramString;
+  }
+  
+  private void j()
+  {
+    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131698555));
+    bbdj.a(this.jdField_a_of_type_AndroidAppActivity, ajya.a(2131708810), localSpannableString, 0, 2131720422, null, null, new sfj(this)).show();
+  }
+  
+  public int a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
-      return paramContext.getResources().getDrawable(2130839736);
-    case 1: 
-      return paramContext.getResources().getDrawable(2130840076);
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", "startRecord");
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { localJSONObject.toString() });
+      }
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
+      i();
+      return 0;
     }
-    return paramContext.getResources().getDrawable(2130840081);
-  }
-  
-  public static final String a()
-  {
-    if (b()) {
-      return c();
-    }
-    return ajyc.a(2131716866);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    paramQQAppInterface = localObject;
-    if (localSharedPreferences != null) {
-      paramQQAppInterface = localSharedPreferences.getString("public_account_center_url_config_data", null);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return a(paramQQAppInterface, paramContext, 1);
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
-  {
-    sfi localsfi = a(paramQQAppInterface, paramContext, paramInt);
-    if (localsfi != null) {
-      return localsfi.a();
-    }
-    return b(paramQQAppInterface, paramContext, paramInt);
-  }
-  
-  public static sfi a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
-  {
-    int i1 = paramInt;
-    if (paramInt == 3) {
-      i1 = 2;
-    }
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      a(paramQQAppInterface, paramContext);
-    }
-    if (jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap == null) {
-      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new PublicAccountConfigUtil.1(2011, 0, 1000);
-    }
-    return (sfi)jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.get(Integer.valueOf(i1));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + str, 0);
-    if (localSharedPreferences != null)
+    catch (JSONException localJSONException)
     {
-      jdField_d_of_type_JavaLangString = localSharedPreferences.getString("service_account_folder_name", null);
-      jdField_e_of_type_JavaLangString = localSharedPreferences.getString("service_account_folder_icon", null);
-      jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("service_account_folder_delete", false);
-      p = localSharedPreferences.getBoolean("service_folder_redclean_after_enter", false);
-      jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("service_account_folder_redspots", false);
-      jdField_e_of_type_Boolean = localSharedPreferences.getBoolean("kandian_feeds_preload", false);
-      jdField_f_of_type_Boolean = localSharedPreferences.getBoolean("kandian_feeds_preload_wifi", false);
-      jdField_g_of_type_Boolean = localSharedPreferences.getBoolean("kandian_feeds_preload_4G", false);
-      jdField_h_of_type_Boolean = localSharedPreferences.getBoolean("kandian_feeds_preload_3G", false);
-      jdField_i_of_type_Boolean = localSharedPreferences.getBoolean("kandian_feeds_preload_2G", false);
-      l = localSharedPreferences.getBoolean("public_account_bottom_bar", false);
-      j = localSharedPreferences.getBoolean("kandian_feeds_image_preload", false);
-      jdField_f_of_type_JavaLangString = localSharedPreferences.getString("kandian_feeds_fling_LToR_host", "");
-      jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_ad_background_showtime", 3000L);
-      m = localSharedPreferences.getBoolean("readInJoy_ip_connect", false);
-      jdField_b_of_type_Int = localSharedPreferences.getInt("readInJoy_ip_connect_full_report", 0);
-      jdField_i_of_type_JavaLangString = localSharedPreferences.getString("readInJoy_ip_connect_report_tail", "");
-      n = localSharedPreferences.getBoolean("readInJoy_loading_img", false);
-      jdField_c_of_type_Boolean = localSharedPreferences.getBoolean("service_account_folder_redspots_delete", false);
-      o = localSharedPreferences.getBoolean("big_data_share_channel", false);
-      localSet = bbjo.a(localSharedPreferences, "big_data_share_channel_urls", null);
-      if (localSet != null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList(localSet);
-      }
-      jdField_c_of_type_Int = localSharedPreferences.getInt("album_predown_enable", 0);
-      jdField_d_of_type_Int = localSharedPreferences.getInt("album_predown_photo_rule", 0);
-      jdField_e_of_type_Int = localSharedPreferences.getInt("album_predown_slide_photocounts", 0);
-      k = localSharedPreferences.getBoolean("ad_preload_tool_process", true);
-      jdField_g_of_type_JavaLangString = localSharedPreferences.getString("key_read_in_joy_preload_tool_config", "");
-      jdField_h_of_type_JavaLangString = localSharedPreferences.getString("key_read_in_joy_release_service_config", "");
-      paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.sendEmptyMessage(1009);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountConfigUtil", 2, "getServiceAccountFolderConfigData success, uin:" + str + ", delete:" + jdField_a_of_type_Boolean + ", clean:" + p + ", redspot:" + jdField_b_of_type_Boolean);
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      Set localSet;
-      return;
-    }
-    QLog.d("PublicAccountConfigUtil", 2, "getServiceAccountFolderConfigData failed, uin:" + str);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null)
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = g;
+    }
+    paramString = str.split("/");
+    str = paramString[(paramString.length - 1)];
+    paramString = "";
+    if (str.length() >= 21) {
+      paramString = str.substring(0, str.length() - 4);
+    }
+    return paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
+  {
+    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+  }
+  
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    if (a(ajsd.aW + "c2bPTT/"))
     {
-      paramQQAppInterface = paramQQAppInterface.edit();
-      paramQQAppInterface.putInt("public_account_center_url_config_version", paramInt);
-      paramQQAppInterface.commit();
+      this.jdField_a_of_type_JavaIoFile = new File(paramString);
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+        this.jdField_a_of_type_JavaIoFile.delete();
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
+        this.jdField_a_of_type_JavaIoFileOutputStream.write("#!AMR\n".getBytes());
+        return;
+      }
+      catch (FileNotFoundException paramString)
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        paramString.printStackTrace();
+        return;
+      }
+      catch (IOException paramString)
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        return;
+      }
+    }
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("retCode", -1);
+      paramString.put("msg", "no sdCard");
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
+      }
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
+    }
+    catch (JSONException paramRecorderParam)
+    {
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
+      }
     }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
   {
-    if (jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap == null) {
-      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new PublicAccountConfigUtil.2(2011, 0, 1000);
-    }
-    if (!a(paramQQAppInterface, paramContext, bbjn.e(paramContext)))
-    {
-      localObject = new sfi(paramQQAppInterface, paramContext, 1, 2131696729, 2130840076);
-      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(1), localObject);
-    }
-    Object localObject = bbjn.h(paramContext);
-    String str = bbjn.i(paramContext);
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str)))
-    {
-      paramQQAppInterface = new sfi(paramQQAppInterface, paramContext, 2, 2131695579, 2130840081);
-      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(2), paramQQAppInterface);
-    }
-    for (;;)
-    {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      paramQQAppInterface = new sfi(paramQQAppInterface, paramContext, 2, (String)localObject, str);
-      jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(2), paramQQAppInterface);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      jdField_a_of_type_JavaLangString = "http://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
-      jdField_b_of_type_JavaLangString = "http://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
-      return;
-    }
+    jdField_a_of_type_Double = paramDouble;
+    paramString = new JSONObject();
     for (;;)
     {
       try
       {
-        paramString = new JSONObject(paramString);
-        String str1 = paramString.getString("pacenter_url");
-        String str2 = paramString.getString("pacategory_url");
-        if (a(str1))
+        if (jdField_a_of_type_Double == this.jdField_b_of_type_Int)
         {
-          jdField_a_of_type_JavaLangString = str1;
-          if (!a(str2)) {
-            break label159;
+          paramString.put("retCode", 0);
+          paramString.put("msg", ajya.a(2131708790));
+          paramString.put("localId", d());
+          if (this.jdField_a_of_type_Bcdp.a() != null) {
+            this.jdField_a_of_type_Bcdp.a().callJs(sfk.g, new String[] { paramString.toString() });
           }
-          jdField_b_of_type_JavaLangString = str2;
-          if (!paramString.has("readinjoy_search_url")) {
-            break label167;
-          }
-          str1 = paramString.getString("readinjoy_search_url");
-          if (a(str1)) {
-            jdField_c_of_type_JavaLangString = str1;
-          }
-          if (!paramString.has("image_collection_comment")) {
+          axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
+          return;
+        }
+        if (this.jdField_a_of_type_JavaIoFile.exists())
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", ajya.a(2131708756) + d());
+          paramString.put("localId", d());
+          axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
+          if (this.jdField_a_of_type_Bcdp.a() == null) {
             break;
           }
-          jdField_d_of_type_Boolean = paramString.getBoolean("image_collection_comment");
+          this.jdField_a_of_type_Bcdp.a().callJs(sfk.d, new String[] { paramString.toString() });
           return;
         }
       }
-      catch (Exception paramQQAppInterface)
+      catch (JSONException paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountConfigUtil", 2, "loadPublicAccountCenterUrlConfig error", paramQQAppInterface);
-        }
-        paramQQAppInterface.printStackTrace();
-        jdField_a_of_type_JavaLangString = "http://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
-        jdField_b_of_type_JavaLangString = "http://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
-        jdField_d_of_type_Boolean = false;
+        paramString.printStackTrace();
         return;
       }
-      jdField_a_of_type_JavaLangString = "http://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
-      continue;
-      label159:
-      jdField_b_of_type_JavaLangString = "http://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
-      continue;
-      label167:
-      a(paramQQAppInterface, 0);
+      paramString.put("retCode", -1);
+      paramString.put("msg", ajya.a(2131708816));
+      paramString.put("localId", d());
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
     }
-    a(paramQQAppInterface, 0);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
   {
-    String str7 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    paramString1 = new JSONObject();
     try
     {
-      localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.has("tim_url")) {
-        localJSONObject.getString("tim_url");
+      paramString1.put("retCode", -1);
+      paramString1.put("msg", "onRecorderError");
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString1.toString() });
       }
-      if (!localJSONObject.has("tim_url_card")) {
-        break label576;
-      }
-      paramQQAppInterface = localJSONObject.getString("tim_url_card");
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (JSONException paramRecorderParam)
     {
       for (;;)
       {
-        JSONObject localJSONObject;
-        String str1;
-        String str2;
-        String str3;
-        String str4;
-        String str5;
-        String str6;
-        paramQQAppInterface.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PublicAccountConfigUtil", 2, "update public account qq mail config error.", paramQQAppInterface);
-          continue;
-          str6 = null;
-          continue;
-          str5 = null;
-          continue;
-          str4 = null;
-          continue;
-          str3 = null;
-          continue;
-          str2 = null;
-          continue;
-          str1 = null;
-          continue;
-          paramString = null;
-          continue;
-          paramQQAppInterface = null;
-        }
-      }
-    }
-    if (localJSONObject.has("tim_wording"))
-    {
-      paramString = localJSONObject.getString("tim_wording");
-      if (localJSONObject.has("tim_url_icon"))
-      {
-        str1 = localJSONObject.getString("tim_url_icon");
-        if (localJSONObject.has("tim_url_icon_725"))
-        {
-          str2 = localJSONObject.getString("tim_url_icon_725");
-          if (localJSONObject.has("qim_url_card"))
-          {
-            str3 = localJSONObject.getString("qim_url_card");
-            if (localJSONObject.has("qim_wording"))
-            {
-              str4 = localJSONObject.getString("qim_wording");
-              if (localJSONObject.has("qim_url_icon"))
-              {
-                str5 = localJSONObject.getString("qim_url_icon");
-                if (localJSONObject.has("qim_url_icon_720"))
-                {
-                  str6 = localJSONObject.getString("qim_url_icon_720");
-                  if (localJSONObject.has("qim_url_icon_story")) {
-                    str7 = localJSONObject.getString("qim_url_icon_story");
-                  }
-                  if (a(paramQQAppInterface)) {
-                    localEditor.putString("profile_card_tim_online_url", paramQQAppInterface);
-                  }
-                  if (a(str1)) {
-                    localEditor.putString("profile_card_tim_online_icon_url", str1);
-                  }
-                  if (a(str2)) {
-                    localEditor.putString("profile_card_tim_online_icon_725_url", str2);
-                  }
-                  if (!TextUtils.isEmpty(paramString)) {
-                    localEditor.putString("profile_card_tim_online_wording", paramString);
-                  }
-                  if (a(str3)) {
-                    localEditor.putString("profile_card_qim_online_url", str3);
-                  }
-                  if (a(str5)) {
-                    localEditor.putString("profile_card_qim_online_icon_url", str5);
-                  }
-                  if (a(str6)) {
-                    localEditor.putString("profile_card_qim_online_icon_url_720", str6);
-                  }
-                  if (a(str7)) {
-                    localEditor.putString("key_story_qim_online_icon_url", str7);
-                  }
-                  if (!TextUtils.isEmpty(str4)) {
-                    localEditor.putString("profile_card_qim_online_wording", str4);
-                  }
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PublicAccountConfigUtil", 2, "updatePublicAccountQQMailConfigData url_card_tim_online:" + paramQQAppInterface + "; url_card_qim_online:" + str3);
-                  }
-                  localEditor.putInt("public_account_qq_mail_config_version", paramInt);
-                  localEditor.commit();
-                  return;
-                }
-              }
-            }
-          }
-        }
+        paramRecorderParam.printStackTrace();
       }
     }
   }
   
-  public static void a(String paramString)
+  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "resetPublicAccountConfig uin:" + paramString);
-    }
-    jdField_a_of_type_JavaLangString = "http://find.mp.qq.com/public/index?_wv=67109947&_bid=2258";
-    jdField_b_of_type_JavaLangString = "http://find.mp.qq.com/public/categories?_wv=67109947&_bid=2258";
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Boolean = false;
-    jdField_d_of_type_Boolean = false;
-    jdField_e_of_type_Boolean = false;
-    jdField_f_of_type_Boolean = false;
-    jdField_g_of_type_Boolean = false;
-    jdField_h_of_type_Boolean = false;
-    jdField_i_of_type_Boolean = false;
-    j = false;
-    jdField_f_of_type_JavaLangString = "";
-    jdField_a_of_type_Long = 3000L;
-    k = true;
-    m = false;
-    jdField_b_of_type_Int = 0;
-    jdField_i_of_type_JavaLangString = "";
-    n = false;
-    o = false;
-    jdField_a_of_type_JavaUtilArrayList.clear();
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 0;
-    jdField_e_of_type_Int = 0;
-    jdField_g_of_type_JavaLangString = "";
-    jdField_h_of_type_JavaLangString = "";
-  }
-  
-  public static void a(ArrayList<sfi> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      if (jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap == null) {
-        jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new PublicAccountConfigUtil.5(2011, 0, 1000);
-      }
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        sfi localsfi = (sfi)paramArrayList.next();
-        jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(localsfi.jdField_a_of_type_Int), localsfi);
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return p;
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "parseConfigXml xml: " + paramString);
-    }
     try
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
-        int i2 = paramString.getLength();
-        int i1 = 0;
-        while (i1 < i2)
-        {
-          Object localObject = (Element)paramString.item(i1);
-          int i3 = Integer.parseInt(((Element)localObject).getElementsByTagName("id").item(0).getFirstChild().getNodeValue());
-          localObject = new sfi(paramQQAppInterface, paramContext, i3, ((Element)localObject).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
-          if (jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap == null) {
-            jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap = new PublicAccountConfigUtil.3(2011, 0, 1000);
-          }
-          jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(i3), localObject);
-          i1 += 1;
-        }
+      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
+        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, 0, paramInt1);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountConfigUtil", 2, "parsePublicAccountConfigXml xml is empty");
-      }
+      return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountConfigUtil", 2, "parsePublicAccountConfigXml error", paramQQAppInterface);
-        }
-        paramQQAppInterface.printStackTrace();
-      }
-    }
-    return false;
-    return true;
+    catch (IOException paramString) {}
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public boolean a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "updateSubscribeRecommendConfig xml: " + paramString);
-    }
-    label3077:
-    for (;;)
-    {
-      int i1;
-      boolean bool;
-      try
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        Object localObject1 = paramString.getElementsByTagName("recommendFullVersion");
-        int i2;
-        Object localObject2;
-        int i3;
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          i2 = scu.b(paramQQAppInterface);
-          if (i1 <= i2) {
-            continue;
-          }
-          localObject1 = (Element)paramString.getElementsByTagName("recommendFullScreen").item(0);
-          localObject2 = (Element)paramString.getElementsByTagName("recommendURL").item(0);
-          i3 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          localObject1 = ((Element)localObject2).getFirstChild().getNodeValue();
-          if (i3 != 1) {
-            break label3065;
-          }
-          bool = true;
-          scu.a(paramQQAppInterface, bool, (String)localObject1);
-          scu.b(paramQQAppInterface, i1);
-          if (i3 == 1)
-          {
-            localObject2 = (WebProcessManager)paramQQAppInterface.getManager(13);
-            if (localObject2 != null) {
-              ((WebProcessManager)localObject2).a(66);
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder().append("SubscriptRecommendConfig update fullrecommend config. version : ").append(i1).append(" switch : ");
-            if (i3 != 1) {
-              break label3071;
-            }
-            bool = true;
-            QLog.d("PublicAccountConfigUtil", 2, bool + " url : " + (String)localObject1 + " oldVersion : " + i2);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("recommendBottomVersion");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          i2 = scu.c(paramQQAppInterface);
-          if (i1 <= i2) {
-            break label2957;
-          }
-          i3 = Integer.valueOf(((Element)paramString.getElementsByTagName("recommendBottom").item(0)).getFirstChild().getNodeValue()).intValue();
-          if (i3 != 1) {
-            break label2951;
-          }
-          bool = true;
-          scu.a(paramQQAppInterface, bool);
-          scu.c(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "SubscriptRecommendConfig update innerrecommend config. preversion -> version " + i2 + "->" + i1 + " switch : " + i3);
-          }
-        }
-        localObject1 = (Element)paramString.getElementsByTagName("kandian_read_data").item(0);
-        if (localObject1 != null)
-        {
-          i1 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          localObject1 = paramQQAppInterface.getApp();
-          if (i1 != 1) {
-            break label3077;
-          }
-          bool = true;
-          bbjn.b((Context)localObject1, bool);
-        }
-        localObject1 = paramString.getElementsByTagName("channel_version");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          i2 = bhvh.b(paramQQAppInterface);
-          if (i1 <= i2) {
-            break label2992;
-          }
-          localObject2 = (Element)paramString.getElementsByTagName("channel_id").item(0);
-          Element localElement = (Element)paramString.getElementsByTagName("channel_name").item(0);
-          localObject1 = (Element)paramString.getElementsByTagName("channel_type").item(0);
-          i3 = Integer.valueOf(((Element)localObject2).getFirstChild().getNodeValue()).intValue();
-          localObject2 = String.valueOf(localElement.getFirstChild().getNodeValue());
-          int i4 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          bhvh.a(paramQQAppInterface, i3, (String)localObject2, i4);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "update channelInfo config. preversion -> version " + i2 + "->" + i1 + " channelID : " + i3 + " channelName: " + (String)localObject2 + " channelType: " + i4);
-          }
-        }
-        localObject1 = (Element)paramString.getElementsByTagName("video_sound").item(0);
-        if (localObject1 != null)
-        {
-          i1 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          localObject1 = paramQQAppInterface.getApp();
-          if (i1 != 0) {
-            break label3027;
-          }
-          bool = true;
-          bbjn.c((Context)localObject1, bool);
-          localObject1 = qvn.a();
-          if (i1 != 0) {
-            break label3033;
-          }
-          bool = true;
-          ((qvn)localObject1).a(bool);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "get video sound config " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("multi_video_support_enable");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          if (i1 <= 0) {
-            break label3039;
-          }
-          bool = true;
-          bhvh.b(paramQQAppInterface, bool);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "updateSupportMultiVideoSwitch， supportEnable = " + i1);
-          }
-        }
-        localObject1 = (Element)paramString.getElementsByTagName("rn_switch").item(0);
-        if (localObject1 != null)
-        {
-          i1 = Integer.valueOf(((Element)localObject1).getFirstChild().getNodeValue()).intValue();
-          localObject1 = paramQQAppInterface.getApp();
-          if (i1 == 1) {
-            break label3045;
-          }
-          bool = true;
-          bbjn.a((Context)localObject1, bool, paramQQAppInterface.c());
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "get interesrLableRn config " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_struct_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          if (Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-            break label3051;
-          }
-          bool = true;
-          bhvh.d(paramQQAppInterface, bool);
-        }
-        localObject1 = paramString.getElementsByTagName("video_social_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          if (Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-            break label3057;
-          }
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "parse kandian video social switch = " + bool);
-          }
-          bhvh.h(paramQQAppInterface, bool);
-        }
-        localObject1 = paramString.getElementsByTagName("videochannel_video_autoplay");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video channel auto play switch default value = " + i1);
-          }
-          bhvh.b(paramQQAppInterface, i1);
-        }
-        localObject1 = paramString.getElementsByTagName("video_jump_to");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video jump default value = " + i1);
-          }
-          bhvh.d(paramQQAppInterface, i1);
-        }
-        localObject1 = paramString.getElementsByTagName("defaultBitRate");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          localObject1 = (Element)((NodeList)localObject1).item(0);
-          bhvh.w(paramQQAppInterface, ((Element)localObject1).getFirstChild().getNodeValue());
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "defaultBitRate value = " + ((Element)localObject1).getFirstChild().getNodeValue());
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("CUKingCard_Dlg");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.e(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "CUKingCardDlg value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_channel_style");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.m(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video_channel_style value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_dynamic_recommend_strategyid");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.n(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_strategyid value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_dynamic_recommend_duration_limit");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.o(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_duration_limit value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_dynamic_recommend_duration_percent");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          float f1 = Float.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).floatValue();
-          bhvh.a(paramQQAppInterface, f1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_duration_percent value = " + f1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("video_dynamic_recommend_operator");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.p(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_operator value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("web_viola_render_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.q(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_switch value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("web_viola_render_mode");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.r(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_mode value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("videochannel_video_autoplay_18mo");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video flow video channel auto play switch default value = " + i1);
-          }
-          bhvh.c(paramQQAppInterface, i1);
-        }
-        localObject1 = paramString.getElementsByTagName("click_videocard_jump_comment");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "video channel feeds click switch default value = " + i1);
-          }
-          bhvh.a(paramQQAppInterface, i1);
-        }
-        localObject1 = paramString.getElementsByTagName("viola_dynamic_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.s(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "viola dynamic default value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("viola_dynamic_weishi_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.t(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "viola dynamic weishi default value = " + i1);
-          }
-        }
-        localObject1 = paramString.getElementsByTagName("viola_discover_switch");
-        if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
-        {
-          i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          bhvh.u(paramQQAppInterface, i1);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountConfigUtil", 2, "viola dynamic discover default value = " + i1);
-          }
-        }
-        paramString = paramString.getElementsByTagName("viola_message_box_switch");
-        if ((paramString == null) || (paramString.getLength() <= 0)) {
-          break label3063;
-        }
-        i1 = Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue();
-        bhvh.v(paramQQAppInterface, i1);
-        if (!QLog.isColorLevel()) {
-          break label3063;
-        }
-        QLog.d("PublicAccountConfigUtil", 2, "viola dynamic message box default value = " + i1);
-        break label3063;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PublicAccountConfigUtil", 2, "SubscriptRecommendConfig same version ! " + i1);
-        continue;
-        bool = false;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountConfigUtil", 2, "update subscript recommend config error." + paramQQAppInterface);
-        }
-        return false;
-      }
-      label2951:
-      continue;
-      label2957:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PublicAccountConfigUtil", 2, "SubscriptRecommendConfig update fail same version " + i1);
-        continue;
-        label2992:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PublicAccountConfigUtil", 2, "update channelInfo fail same version " + i1);
-          continue;
-          label3027:
-          bool = false;
-          continue;
-          label3033:
-          bool = false;
-          continue;
-          label3039:
-          bool = false;
-          continue;
-          label3045:
-          bool = false;
-          continue;
-          label3051:
-          bool = false;
-          continue;
-          label3057:
-          bool = false;
-          continue;
-          label3063:
-          return true;
-          label3065:
-          bool = false;
-          continue;
-          label3071:
-          bool = false;
-          continue;
-          bool = false;
-        }
-      }
-    }
+    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b());
   }
   
-  public static boolean a(String paramString)
+  boolean a(String paramString)
+  {
+    paramString = new File(paramString);
+    return (paramString.exists()) || (paramString.mkdirs());
+  }
+  
+  public String b(String paramString)
+  {
+    return ajsd.aW + "c2bPTT/" + paramString + ".amr";
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidAppActivity);
+    }
+    f = ajsd.aW + "c2bPTT/" + ayqo.a() + ".amr";
+    bbcf.a(this.jdField_a_of_type_AndroidAppActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(f);
+  }
+  
+  public void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    int i1 = 0;
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i1 = paramQQAppInterface.getInt("public_account_center_url_config_version", 0);
-    }
-    return i1;
-  }
-  
-  public static final String b()
-  {
-    if (b()) {
-      return c();
-    }
-    return ajyc.a(2131716866);
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return a(paramQQAppInterface, paramContext, 2);
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return paramContext.getString(2131696729);
-    }
-    return paramContext.getString(2131695579);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.executeOnFileThread(new PublicAccountConfigUtil.4(paramQQAppInterface));
-  }
-  
-  public static boolean b()
-  {
-    return "1".equals((String)xfr.a().a("subscribe_entrance_enable", "0"));
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i1;
     do
     {
-      for (;;)
+      return;
+      if ((this.jdField_a_of_type_Bbly == null) || (this.jdField_a_of_type_AndroidOsHandler == null) || ((this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() != 3)))
       {
-        return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountConfigUtil", 2, "update readinjoy folder xml: " + paramString);
-        }
-        try
-        {
-          paramString = paramString.trim();
-          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-          Object localObject = paramString.getElementsByTagName("id");
-          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
-          {
-            i1 = Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue();
-            if (i1 > bbjn.y(paramQQAppInterface.getApp()))
-            {
-              localObject = (Element)paramString.getElementsByTagName("name").item(0);
-              paramString = (Element)paramString.getElementsByTagName("icon").item(0);
-              localObject = ((Element)localObject).getFirstChild().getNodeValue();
-              paramString = paramString.getFirstChild().getNodeValue();
-              if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString))) {
-                bbjn.a(paramQQAppInterface.getApp(), (String)localObject, paramString);
-              }
-              bbjn.p(paramQQAppInterface.getApp(), i1);
-              return false;
-            }
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          return false;
-        }
+        this.jdField_a_of_type_AndroidOsHandler = new Handler();
+        this.jdField_a_of_type_Bbly = new bbly(paramString, this.jdField_a_of_type_AndroidOsHandler);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PublicAccountConfigUtil", 2, "readinjoy folder config same id ! " + i1);
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!TextUtils.isEmpty(str)) && (paramString.indexOf(str) != -1) && (paramString.endsWith(str))) {
-        return true;
+      this.jdField_a_of_type_Bbly.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Bbly.b();
+      this.jdField_a_of_type_Bbly.a(this.jdField_a_of_type_Bblz);
+      if (this.jdField_a_of_type_Bbly.a() == 1)
+      {
+        this.jdField_a_of_type_Bbly.c();
+        return;
       }
-    }
-    return false;
+    } while (this.jdField_a_of_type_Bbly.a() != 3);
+    this.jdField_a_of_type_Bbly.d();
   }
   
-  public static int c(QQAppInterface paramQQAppInterface)
+  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    int i1 = 0;
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i1 = paramQQAppInterface.getInt("public_account_qq_mail_config_version", 0);
-    }
-    return i1;
-  }
-  
-  private static final String c()
-  {
-    return (String)xfr.a().a("subscribe_account_title", xfr.jdField_c_of_type_JavaLangString);
-  }
-  
-  public static String c(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    return a(paramQQAppInterface, paramContext, 3);
-  }
-  
-  public static void c(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (localObject != null) {}
+    d(paramString, paramRecorderParam);
+    paramString = new JSONObject();
     try
     {
-      paramQQAppInterface = new JSONObject();
-      paramQQAppInterface.put("pacenter_url", jdField_a_of_type_JavaLangString);
-      paramQQAppInterface.put("pacategory_url", jdField_b_of_type_JavaLangString);
-      paramQQAppInterface.put("readinjoy_search_url", jdField_c_of_type_JavaLangString);
-      paramQQAppInterface.put("image_collection_comment", jdField_d_of_type_Boolean);
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putString("public_account_center_url_config_data", paramQQAppInterface.toString());
-      ((SharedPreferences.Editor)localObject).commit();
+      paramString.put("retCode", -1);
+      paramString.put("msg", "onRecorderAbnormal");
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
+      }
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
       return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (JSONException paramRecorderParam)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountConfigUtil", 2, "updatePublicAccountCenterUrlConfigData error", paramQQAppInterface);
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
       }
-      paramQQAppInterface.printStackTrace();
     }
   }
   
-  public static boolean c()
+  public boolean b()
   {
-    String str1 = (String)xfr.a().a("subscribe_entrance_enable", "0");
-    String str2 = (String)xfr.a().a("newfollowlist", "1");
-    return ("1".equals(str1)) || ("1".equals(str2));
+    return (this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() == 2);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
+    }
+    d();
+    bbcf.a(this.jdField_a_of_type_AndroidAppActivity, false);
+  }
+  
+  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    d(paramString, paramRecorderParam);
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("retCode", -1);
+      paramString.put("msg", "onInitFailed");
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.c, new String[] { paramString.toString() });
+      }
+      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
+    }
+    catch (JSONException paramRecorderParam)
+    {
+      for (;;)
+      {
+        paramRecorderParam.printStackTrace();
+      }
+    }
+  }
+  
+  public String d()
+  {
+    Object localObject1 = f.split("/");
+    Object localObject2 = localObject1[(localObject1.length - 1)];
+    localObject1 = "";
+    if (localObject2.length() >= 21) {
+      localObject1 = localObject2.substring(0, localObject2.length() - 4);
+    }
+    return localObject1;
+  }
+  
+  public void d()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+      }
+      label14:
+      this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      break label14;
+    }
+  }
+  
+  public void d(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  {
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.3(this));
+  }
+  
+  public void e()
+  {
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_Bbly != null)
+    {
+      this.jdField_a_of_type_Bbly.f();
+      this.jdField_a_of_type_Bbly = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", ajya.a(2131708759) + d() + ajya.a(2131708827));
+      localJSONObject.put("localId", d());
+      if (this.jdField_a_of_type_Bcdp.a() != null) {
+        this.jdField_a_of_type_Bcdp.a().callJs(sfk.f, new String[] { localJSONObject.toString() });
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if (b()) {
+      e();
+    }
+    c();
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_Bbly != null) && (this.jdField_a_of_type_Bbly.a() == 2)) {
+      this.jdField_a_of_type_Bbly.e();
+    }
+  }
+  
+  public void h()
+  {
+    try
+    {
+      File localFile = new File(f);
+      if (localFile.exists())
+      {
+        d = bfko.a(localFile);
+        jdField_a_of_type_Int = (int)localFile.length();
+        e = d;
+      }
+      return;
+    }
+    catch (IOException localIOException) {}
+  }
+  
+  public void i()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new PublicAccountH5AbilityForPtt.2(this));
   }
 }
 

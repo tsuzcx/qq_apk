@@ -1,358 +1,99 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.view.PressDarkImageButton;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.MusicPlayerScene.1;
-import java.util.Iterator;
-import java.util.List;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
+@TargetApi(18)
 public class bjdg
-  implements actw
+  extends bjdc
 {
-  protected int a;
-  private long a;
-  public AudioPlayer a;
-  protected MusicItemInfo a;
-  protected List<bjdh> a;
+  protected ImageView a;
+  protected LinearLayout a;
+  protected bbgu a;
+  private boolean b;
   
-  public bjdg()
+  public bjdg(CaptureModeController paramCaptureModeController)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(BaseApplicationImpl.getApplication(), this);
-  }
-  
-  public int a()
-  {
-    int i = -1;
-    if (a()) {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b();
-    }
-    return i;
+    super(paramCaptureModeController);
+    this.jdField_a_of_type_Int = 1;
   }
   
   public void a()
   {
-    int j = -1;
+    if (this.jdField_a_of_type_Bbgu == null) {
+      this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a(), 230).setMessage(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131698352)).setPositiveButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131694794), new bjdi(this)).setNegativeButton(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().getString(2131719191), new bjdh(this));
+    }
     try
     {
-      this.jdField_a_of_type_Int = -1;
-      StringBuilder localStringBuilder = new StringBuilder("startMusic");
-      String str2 = "";
-      String str1 = str2;
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
-      {
-        str1 = str2;
-        i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
-        {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart < 0)
-          {
-            localStringBuilder.append(" musicStart=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
-          }
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-          a(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart + (int)this.jdField_a_of_type_Long);
-        }
-      }
-      localStringBuilder.append(" musicName=").append(str1);
-      localStringBuilder.append(" position=").append(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, localStringBuilder.toString());
+      if ((this.jdField_a_of_type_Bbgu != null) && (!this.jdField_a_of_type_Bbgu.isShowing())) {
+        this.jdField_a_of_type_Bbgu.show();
       }
       return;
     }
-    finally {}
-  }
-  
-  protected void a(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    catch (Throwable localThrowable)
     {
-      paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMusicItemInfo.hasNext()) {
-        ((bjdh)paramMusicItemInfo.next()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      }
+      QLog.e("SegmentMode", 2, "segment back dialog error:" + localThrowable);
     }
   }
   
-  public void a(long paramLong)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart + (int)this.jdField_a_of_type_Long);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363889));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363888));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
   
-  public void a(AudioPlayer paramAudioPlayer)
+  protected void a(boolean paramBoolean)
   {
-    b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-    d();
     if (QLog.isColorLevel()) {
-      QLog.d("MusicPlayerScene", 2, "MusicPlayerScene onCompletion");
+      QLog.d("SegmentMode", 2, new Object[] { "handleSelectMode", Boolean.valueOf(paramBoolean) });
     }
-  }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-      this.jdField_a_of_type_Int = paramMusicItemInfo.musicStart;
-      return;
-    }
-    finally
-    {
-      paramMusicItemInfo = finally;
-      throw paramMusicItemInfo;
-    }
-  }
-  
-  protected void a(String paramString, int paramInt)
-  {
-    ThreadManager.postImmediately(new MusicPlayerScene.1(this, paramString, paramInt), null, true);
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void a(List<bjdh> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
-      {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
-        if (bool) {
-          return true;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
   }
   
   public void b()
   {
-    int j = -1;
-    String str2 = "";
-    try
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bjdj(this));
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    if (paramBoolean)
     {
-      StringBuilder localStringBuilder = new StringBuilder("resumeMusic");
-      String str1 = str2;
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
+      ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(true);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+      this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
+      return;
+    }
+    ((PressDarkImageButton)this.jdField_a_of_type_AndroidWidgetImageView).setEnableDark(false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131363889: 
+      do
       {
-        str1 = str2;
-        i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
+        return;
+        if (this.jdField_a_of_type_Bigp.c())
         {
-          str1 = str2;
-          i = j;
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
-          {
-            str1 = str2;
-            i = j;
-            if (this.jdField_a_of_type_Int != -1)
-            {
-              str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-              a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_Int);
-              i = this.jdField_a_of_type_Int;
-            }
-          }
+          this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bigp.y();
+          return;
         }
-      }
-      b(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      localStringBuilder.append(" musicName=").append(str1);
-      localStringBuilder.append(" position=").append(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, localStringBuilder.toString());
-      }
+      } while (!QLog.isColorLevel());
+      QLog.e("SegmentMode", 2, "segment video error: jump to edit with no videos");
       return;
     }
-    finally {}
-  }
-  
-  protected void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMusicItemInfo.hasNext()) {
-        ((bjdh)paramMusicItemInfo.next()).c(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      }
-    }
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  protected void b(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMusicItemInfo.hasNext()) {
-        ((bjdh)paramMusicItemInfo.next()).b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      }
-    }
-  }
-  
-  public void c()
-  {
-    int i = -1;
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder("pauseMusic");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
-      {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b();
-        i = this.jdField_a_of_type_Int;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      c(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      localStringBuilder.append(" musicName=").append("");
-      localStringBuilder.append(" position=").append(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, localStringBuilder.toString());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  protected void c(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMusicItemInfo.hasNext()) {
-        ((bjdh)paramMusicItemInfo.next()).d(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      }
-    }
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d()
-  {
-    int j = -1;
-    try
-    {
-      this.jdField_a_of_type_Int = -1;
-      StringBuilder localStringBuilder = new StringBuilder("startMusic");
-      String str2 = "";
-      String str1 = str2;
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
-      {
-        str1 = str2;
-        i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
-        {
-          str1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.b(3);
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart < 0)
-          {
-            localStringBuilder.append(" musicStart=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
-            this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart = 0;
-          }
-          if (a()) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-          }
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart;
-          d(i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-          a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath(), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart);
-        }
-      }
-      localStringBuilder.append(" musicName=").append(str1);
-      localStringBuilder.append(" position=").append(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, localStringBuilder.toString());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  protected void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramMusicItemInfo = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramMusicItemInfo.hasNext()) {
-        ((bjdh)paramMusicItemInfo.next()).b(paramInt, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
-      }
-    }
-  }
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    xij.a().a(paramInt);
-  }
-  
-  public void e()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = -1;
-      String str = "";
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.mMusicName;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-      }
-      g();
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, "MusicPlayerScene stopMusic musicName=" + str);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void f()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
-      this.jdField_a_of_type_JavaUtilList = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerScene", 2, "MusicPlayerScene destroy");
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  protected void g()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((bjdh)localIterator.next()).a();
-      }
-    }
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bigp.A();
   }
 }
 

@@ -1,75 +1,38 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class arnd
-  implements bcwh
+class arnd
+  implements mym
 {
-  public arnd(QQApiPlugin.3 param3) {}
+  arnd(arnc paramarnc) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(Bundle paramBundle)
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    if (!TextUtils.isEmpty(this.a.a))
     {
-    case -1: 
-    default: 
-      wim.a(1, 2131719476);
-      bool = false;
+      paramBundle = paramBundle.getString("info");
+      localJSONObject = new JSONObject();
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
+    while (!QLog.isColorLevel()) {
+      try
       {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        wim.a(2, 2131719495);
-        if ((this.a.this$0.jdField_a_of_type_Bchs != null) && (this.a.this$0.jdField_a_of_type_Bchv != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Bchs.f();
-            str1 = this.a.this$0.jdField_a_of_type_Bchs.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bchv.b());
-            String str4 = this.a.this$0.jdField_a_of_type_Bchs.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bchv.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            noo.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
+        JSONObject localJSONObject;
+        localJSONObject.put("data", paramBundle);
+        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        if (QLog.isColorLevel()) {
+          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
         }
-      }
-      else
-      {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
         return;
       }
-      bool = true;
+      catch (Throwable paramBundle)
+      {
+        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
+        return;
+      }
     }
+    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
   }
 }
 

@@ -1,11 +1,66 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class aggi
+  extends ampa
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
+  public static aggh a()
+  {
+    return (aggh)ampl.a().a(470);
+  }
+  
+  public int a()
+  {
+    return 470;
+  }
+  
+  @NonNull
+  public aggh a(int paramInt)
+  {
+    return new aggh();
+  }
+  
+  @Nullable
+  public aggh a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfamph[0].a);
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return aggh.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<aggh> a()
+  {
+    return aggh.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 

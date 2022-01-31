@@ -1,33 +1,46 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
-import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
-import com.tencent.open.model.CreateVirtualResult;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdac
-  extends bdnx
+  extends Handler
 {
-  public bdac(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
-  
-  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
+  public bdac(CardContainer paramCardContainer, Looper paramLooper)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
+    super(paramLooper);
   }
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.getActivity() == null)
+    switch (paramMessage.what)
     {
-      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
-      return;
     }
-    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
+      }
+      CardContainer.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      continue;
+      if ((paramMessage.obj instanceof String))
+      {
+        Object localObject = (String)paramMessage.obj;
+        localObject = this.a.a((String)localObject);
+        if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
+        {
+          this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject);
+          Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
+        }
+      }
+    }
   }
 }
 

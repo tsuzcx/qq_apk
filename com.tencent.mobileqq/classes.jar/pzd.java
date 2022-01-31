@@ -1,72 +1,43 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RspBody;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 class pzd
-  extends bbwf
+  extends mxj
 {
-  pzd(pzc parampzc, String paramString, RefreshData paramRefreshData, int paramInt) {}
+  pzd(pzc parampzc) {}
   
-  public void onCancel(bbwg parambbwg)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str = parambbwg.a().getString("refreshId");
-    this.jdField_a_of_type_Pzc.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str);
-    super.onCancel(parambbwg);
-  }
-  
-  public void onDone(bbwg parambbwg)
-  {
-    String str1 = parambbwg.a().getString("refreshId");
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes onDone task.errCode =" + parambbwg.jdField_a_of_type_Int);
-    }
-    if (parambbwg.jdField_a_of_type_Int == 0)
+    boolean bool = true;
+    paramBundle = new oidb_0x5bd.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      parambbwg = new File(this.jdField_a_of_type_JavaLangString);
-      if (!parambbwg.exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        bbdj.a(parambbwg.getAbsolutePath(), qaa.a(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown = true;
-        bbjn.f(this.jdField_a_of_type_Pzc.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_Pzc.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString(), this.jdField_a_of_type_Int);
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-        parambbwg.delete();
-        continue;
-      }
-      finally
-      {
-        parambbwg.delete();
-      }
-      this.jdField_a_of_type_Pzc.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str1);
-      return;
+      paramBundle.mergeFrom(paramArrayOfByte);
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadRefreshRes failed: id = " + str2);
+        QLog.d("ReadInJoySkinHandler", 2, "errorCode = " + paramInt + ", rspBody.msg_next_guide_info.has = " + paramBundle.msg_next_guide_info.has());
       }
+      int i = paramBundle.uint32_source.get();
+      paramArrayOfByte = this.a;
+      if (paramInt == 0) {}
+      for (;;)
+      {
+        paramArrayOfByte.notifyUI(1, bool, new Object[] { paramBundle.msg_now_skin_info.get(), paramBundle.msg_next_guide_info.get(), paramBundle.msg_operation_guide_info.get(), paramBundle.msg_operation_refresh_info.get(), Integer.valueOf(i) });
+        return;
+        bool = false;
+      }
+      return;
     }
-  }
-  
-  public void onProgress(bbwg parambbwg)
-  {
-    super.onProgress(parambbwg);
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    return super.onStart(parambbwg);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import achr;
+import achn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.data.TroopInfo;
 public class TroopInfoActivity$22$1
   implements Runnable
 {
-  public TroopInfoActivity$22$1(achr paramachr, TroopInfo paramTroopInfo) {}
+  public TroopInfoActivity$22$1(achn paramachn, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    ((TroopManager)this.jdField_a_of_type_Achr.a.app.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    ((TroopManager)this.jdField_a_of_type_Achn.a.app.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

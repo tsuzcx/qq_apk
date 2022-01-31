@@ -1,16 +1,24 @@
-public class atam
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+
+class atam
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  atam(ataj paramataj, Activity paramActivity) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
-    return localStringBuilder.toString();
+    paramDialogInterface = this.jdField_a_of_type_Ataj.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.a);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+    }
   }
 }
 

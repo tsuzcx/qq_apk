@@ -1,21 +1,15 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 class afxs
-  extends ViewPager.SimpleOnPageChangeListener
+  implements asup
 {
   afxs(afxr paramafxr) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a()
   {
-    if (paramInt == 1) {
-      this.a.b = this.a.a.getCurrentItem();
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    afxr.a(this.a, paramInt);
+    this.a.jdField_a_of_type_Asuw.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Asuw.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
-import auuw;
-import axqw;
+import ajxl;
+import auuy;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
@@ -14,17 +14,17 @@ class FriendProfileCardActivity$8$1
   
   public void run()
   {
-    Object localObject = (ajxn)this.a.this$0.app.getManager(51);
+    Object localObject = (ajxl)this.a.this$0.app.getManager(51);
     if (localObject == null) {}
     do
     {
       return;
-      localObject = ((ajxn)localObject).e(this.a.this$0.a.a.a);
+      localObject = ((ajxl)localObject).e(this.a.this$0.a.a.a);
     } while ((localObject == null) || ((((Friends)localObject).abilityBits & 0x2) == 0L));
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfileCardActivity", 2, "mReportPCCameraAblibityRunnable-->report");
     }
-    axqw.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
+    axqy.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
   }
 }
 

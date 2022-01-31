@@ -1,19 +1,54 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class akjr
-  implements BusinessObserver
+  extends ajtb
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public akjr(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    super(paramQQAppInterface);
+  }
+  
+  public void a(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WifiCloudCheckSvc.req");
+    localToServiceMsg.addAttribute("request_type", Integer.valueOf(paramInt));
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return akjs.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
+    }
+    int i = 0;
+    try
     {
-    default: 
+      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        int j = ((Integer)paramToServiceMsg.getAttribute("request_type")).intValue();
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
+          i = j;
+        }
+      }
+      super.notifyUI(i, paramFromServiceMsg.isSuccess(), paramObject);
       return;
     }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
+    }
   }
 }
 

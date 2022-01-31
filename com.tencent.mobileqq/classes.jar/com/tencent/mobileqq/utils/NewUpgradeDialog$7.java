@@ -2,7 +2,7 @@ package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bdlc;
+import bdlr;
 
 public final class NewUpgradeDialog$7
   implements Runnable
@@ -11,7 +11,7 @@ public final class NewUpgradeDialog$7
   
   public void run()
   {
-    bdlc.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    bdlr.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
   }
 }
 

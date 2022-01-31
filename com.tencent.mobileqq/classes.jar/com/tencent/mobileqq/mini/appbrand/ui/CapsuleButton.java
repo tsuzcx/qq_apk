@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajyc;
-import amgo;
+import ajya;
+import amgn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,8 +26,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbwc;
-import bbxj;
+import bbwq;
+import bbxx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
@@ -121,7 +121,7 @@ public class CapsuleButton
   private boolean isMiniMsgTabShow;
   private boolean isOpenMonitorPanel;
   private int launchFrom = -1;
-  private bbxj lottieLoader;
+  private bbxx lottieLoader;
   private AppBrandRuntime mAppBrandRuntime;
   private Drawable mCloseBtnBgDrawable;
   private Drawable mCloseBtnWhiteBgDrawable;
@@ -171,18 +171,18 @@ public class CapsuleButton
   private View getContainerView()
   {
     this.mMoreView = new DiniFlyAnimationView(getContext());
-    this.mMoreView.setId(2131363586);
-    this.mMoreView.setContentDescription(ajyc.a(2131701342));
+    this.mMoreView.setId(2131363585);
+    this.mMoreView.setContentDescription(ajya.a(2131701353));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
     this.mMoreView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView(this.mMoreView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131363501);
-    ((ImageView)localObject).setContentDescription(ajyc.a(2131701338));
+    ((ImageView)localObject).setId(2131363500);
+    ((ImageView)localObject).setContentDescription(ajya.a(2131701349));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131363586);
+    localLayoutParams.addRule(1, 2131363585);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
@@ -192,7 +192,7 @@ public class CapsuleButton
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131374169);
+    ((TextView)localObject).setId(2131374171);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(getContext(), 19.0F));
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 21.5F);
     localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), -9.5F);
@@ -639,9 +639,9 @@ public class CapsuleButton
           localObject2 = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
           if (localObject2 != null)
           {
-            bool4 = ((amgo)localObject2).a();
+            bool4 = ((amgn)localObject2).a();
             if (bool4) {
-              if (((amgo)localObject2).c())
+              if (((amgn)localObject2).c())
               {
                 j = 2;
                 QLog.d("CapsuleButton", 1, "handleMoreClick, shouldDisplayColorNote : " + bool4);
@@ -806,9 +806,9 @@ public class CapsuleButton
                 m = k;
                 if (localObject1 != null)
                 {
-                  bool8 = ((amgo)localObject1).a();
+                  bool8 = ((amgn)localObject1).a();
                   if (bool8) {
-                    if (!((amgo)localObject1).c()) {
+                    if (!((amgn)localObject1).c()) {
                       break label1416;
                     }
                   }
@@ -1015,8 +1015,8 @@ public class CapsuleButton
   {
     setClipChildren(false);
     getContainerView();
-    this.mCloseView = ((ImageView)findViewById(2131363501));
-    this.mRedDot = ((TextView)findViewById(2131374169));
+    this.mCloseView = ((ImageView)findViewById(2131363500));
+    this.mRedDot = ((TextView)findViewById(2131374171));
     this.mSplider = findViewById(2131369226);
     this.mRedDot.setTextSize(12.0F);
     this.mRedDot.setTextColor(-1);
@@ -1025,20 +1025,20 @@ public class CapsuleButton
     this.mMoreView.setOnClickListener(this);
     this.mMoreView.setOnLongClickListener(this);
     this.mCloseView.setOnClickListener(this);
-    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130840874);
-    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130840868);
-    this.mMoreBtnBgDrawable = getResources().getDrawable(2130840871);
-    this.mCloseBtnBgDrawable = getResources().getDrawable(2130840865);
+    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130840871);
+    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130840865);
+    this.mMoreBtnBgDrawable = getResources().getDrawable(2130840868);
+    this.mCloseBtnBgDrawable = getResources().getDrawable(2130840862);
     if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
     {
-      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130840868, 40, 30);
-      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30);
+      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130840865, 40, 30);
+      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30);
     }
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131694273))
+    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131694274))
     {
       this.mKingCardText = str;
-      this.lottieLoader = new bbxj(null, super.getContext());
+      this.lottieLoader = new bbxx(null, super.getContext());
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       return;
@@ -1174,7 +1174,7 @@ public class CapsuleButton
       QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bbwc.a();
+    i = bbwq.a();
     QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -1225,7 +1225,7 @@ public class CapsuleButton
           localObject2 = null;
           localMiniAppConfig = null;
         }
-        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + ajyc.a(2131701341);
+        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + ajya.a(2131701352);
         localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject3);
         localObject3 = new Bundle();
@@ -1594,7 +1594,7 @@ public class CapsuleButton
     switch (paramView.getId())
     {
     default: 
-    case 2131363586: 
+    case 2131363585: 
       do
       {
         return;
@@ -1896,16 +1896,16 @@ public class CapsuleButton
     {
       if (paramInt == -1)
       {
-        this.mMoreView.setImageResource(2130840874);
-        this.mCloseView.setImageResource(2130840868);
+        this.mMoreView.setImageResource(2130840871);
+        this.mCloseView.setImageResource(2130840865);
         this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
       }
     }
     else {
       return;
     }
-    this.mMoreView.setImageResource(2130840871);
-    this.mCloseView.setImageResource(2130840865);
+    this.mMoreView.setImageResource(2130840868);
+    this.mCloseView.setImageResource(2130840862);
     this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
   }
   

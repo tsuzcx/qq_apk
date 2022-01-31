@@ -1,36 +1,41 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import java.io.PrintStream;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
 
-public class xdd
-  implements InputFilter
+class xdd
+  implements TextView.OnEditorActionListener
 {
-  protected int a;
+  xdd(xdb paramxdb, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public xdd(TroopGiftPanel paramTroopGiftPanel, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    System.out.println("filter() source = " + paramCharSequence + ", dest = " + paramSpanned + ", start = " + paramInt1 + ", dstart = " + paramInt3 + ", dend = " + paramInt4);
-    if (paramCharSequence.length() != 1) {
-      return "";
+    if (paramInt == 6)
+    {
+      this.jdField_a_of_type_Xdb.c();
+      paramTextView = this.jdField_a_of_type_Xdb.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
+        this.jdField_a_of_type_Xdb.b();
+        if (!myb.a().a(this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
+          break label194;
+        }
+      }
+      label194:
+      for (paramInt = 2;; paramInt = 1)
+      {
+        axqy.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mua.a((AppInterface)this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        return true;
+        this.jdField_a_of_type_Xdb.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
+        break;
+      }
     }
-    paramInt1 = paramCharSequence.charAt(0);
-    if ((paramInt1 < 48) || (paramInt1 > 57)) {
-      return "";
-    }
-    if ((paramInt3 == 0) && (paramInt1 == 48)) {
-      return "";
-    }
-    if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
-      return "";
-    }
-    return null;
+    return false;
   }
 }
 

@@ -1,8 +1,8 @@
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.view.View;
 
 public abstract interface yxz
 {
-  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
+  public abstract void reportImpression(View paramView);
 }
 
 

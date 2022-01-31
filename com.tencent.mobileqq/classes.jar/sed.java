@@ -1,19 +1,6 @@
-import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
-
-public class sed
+public abstract interface sed
 {
-  private static int a;
-  
-  public static void a()
-  {
-    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
-  }
-  
-  public static void b()
-  {
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
-  }
+  public abstract void a();
 }
 
 

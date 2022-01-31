@@ -1,114 +1,187 @@
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.provider.MediaStore.Images.Thumbnails;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.SerializationPB.PicInfo;
+import com.tencent.biz.qqstory.database.StoryAlbumPicEntry;
 import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class spz
-  extends spv
 {
-  public spz(int paramInt, sqp paramsqp)
+  public double a;
+  public int a;
+  public long a;
+  public AddressItem a;
+  private LocalMediaInfo a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  @Deprecated
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  private int d;
+  public long d;
+  public String d;
+  public long e;
+  
+  public Bitmap a(Context paramContext, int paramInt, BitmapFactory.Options paramOptions)
   {
-    super(2);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter";
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = new squ();
-    ((squ)localObject).a(paramInt);
-    ((squ)localObject).a(paramsqp);
-    a((sqq)localObject);
-    paramsqp = new sqt();
-    localObject = ((spq)tdc.a(30)).c();
-    if (localObject != null)
+    
+    if (paramContext == null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        sra localsra = (sra)((Iterator)localObject).next();
-        switch (localsra.a)
-        {
-        default: 
-          break;
-        case 2: 
-          paramsqp.a(localsra);
-          break;
-        case 4: 
-          paramsqp.b(localsra);
-          break;
-        case 3: 
-          paramsqp.c(localsra);
-        }
-      }
+      vxp.a("Need the context to get thumbnail!", new Object[0]);
+      return null;
     }
-    paramsqp.a(new sqy());
-    a(paramsqp);
+    if ((paramInt != 1) && (paramInt != 3))
+    {
+      vxp.a("kind is illegal", new Object[0]);
+      return null;
+    }
+    return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.jdField_a_of_type_Long, paramInt, paramOptions);
   }
   
-  private static boolean a(String paramString1, String paramString2)
+  public SerializationPB.PicInfo a()
   {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString2));
-  }
-  
-  public static boolean a(@NonNull sqb paramsqb, int paramInt)
-  {
-    Object localObject = paramsqb.a();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
+    localPicInfo.id.set(this.jdField_a_of_type_Long);
+    PBStringField localPBStringField = localPicInfo.path;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      AddressItem localAddressItem = ((sqc)((List)localObject).get(0)).a;
-      localObject = ((sqc)((List)localObject).get(((List)localObject).size() - 1)).a;
-      if ((localAddressItem == null) || (localObject == null))
-      {
-        veg.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "initAlbumNameByPOI find no poi item :" + paramsqb);
-        paramsqb.b = "";
-        return false;
-      }
-      if ((paramInt <= 5) && (a(localAddressItem.building, ((AddressItem)localObject).building)))
-      {
-        paramsqb.b = localAddressItem.building;
-        return true;
-      }
-      if ((paramInt <= 4) && (a(localAddressItem.district, ((AddressItem)localObject).district)))
-      {
-        paramsqb.b = localAddressItem.district;
-        return true;
-      }
-      if ((paramInt <= 3) && (a(localAddressItem.city, ((AddressItem)localObject).city)))
-      {
-        paramsqb.b = localAddressItem.city;
-        return true;
-      }
-      if ((paramInt <= 2) && (a(localAddressItem.province, ((AddressItem)localObject).province)))
-      {
-        paramsqb.b = localAddressItem.province;
-        return true;
-      }
-      if ((paramInt <= 1) && (a(localAddressItem.country, ((AddressItem)localObject).country)))
-      {
-        paramsqb.b = localAddressItem.country;
-        return true;
+      str = "";
+      localPBStringField.set(str);
+      localPBStringField = localPicInfo.thumb;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label196;
       }
     }
-    paramsqb.b = "";
+    label196:
+    for (String str = "";; str = this.jdField_b_of_type_JavaLangString)
+    {
+      localPBStringField.set(str);
+      localPicInfo.width.set(this.jdField_a_of_type_Int);
+      localPicInfo.height.set(this.jdField_b_of_type_Int);
+      localPicInfo.orientation.set(this.jdField_c_of_type_Int);
+      localPicInfo.create_time.set(this.jdField_b_of_type_Long);
+      localPicInfo.lat.set(this.jdField_a_of_type_Double);
+      localPicInfo.lng.set(this.jdField_b_of_type_Double);
+      localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
+      localPicInfo.state.set(this.jdField_d_of_type_Int);
+      localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
+      localPicInfo.size.set(this.e);
+      localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
+      return localPicInfo;
+      str = this.jdField_a_of_type_JavaLangString;
+      break;
+    }
+  }
+  
+  public StoryAlbumPicEntry a()
+  {
+    StoryAlbumPicEntry localStoryAlbumPicEntry = new StoryAlbumPicEntry();
+    localStoryAlbumPicEntry.path = this.jdField_a_of_type_JavaLangString;
+    localStoryAlbumPicEntry.thumbPath = this.jdField_b_of_type_JavaLangString;
+    localStoryAlbumPicEntry.width = this.jdField_a_of_type_Int;
+    localStoryAlbumPicEntry.height = this.jdField_b_of_type_Int;
+    localStoryAlbumPicEntry.orientation = this.jdField_c_of_type_Int;
+    localStoryAlbumPicEntry.createTime = this.jdField_b_of_type_Long;
+    localStoryAlbumPicEntry.gpsLat = this.jdField_a_of_type_Double;
+    localStoryAlbumPicEntry.gpsLng = this.jdField_b_of_type_Double;
+    localStoryAlbumPicEntry.geohashString = this.jdField_c_of_type_JavaLangString;
+    localStoryAlbumPicEntry.state = this.jdField_d_of_type_Int;
+    localStoryAlbumPicEntry.mime = this.jdField_d_of_type_JavaLangString;
+    localStoryAlbumPicEntry.size = this.e;
+    return localStoryAlbumPicEntry;
+  }
+  
+  public LocalMediaInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize = this.e;
+      LocalMediaInfo localLocalMediaInfo1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      LocalMediaInfo localLocalMediaInfo2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      int i = ayop.jdField_a_of_type_Int;
+      localLocalMediaInfo2.thumbHeight = i;
+      localLocalMediaInfo1.thumbWidth = i;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  }
+  
+  public void a(SerializationPB.PicInfo paramPicInfo)
+  {
+    this.jdField_a_of_type_Long = paramPicInfo.id.get();
+    this.jdField_a_of_type_JavaLangString = paramPicInfo.path.get();
+    this.jdField_b_of_type_JavaLangString = paramPicInfo.thumb.get();
+    this.jdField_a_of_type_Int = paramPicInfo.width.get();
+    this.jdField_b_of_type_Int = paramPicInfo.height.get();
+    this.jdField_c_of_type_Int = paramPicInfo.orientation.get();
+    this.jdField_b_of_type_Long = paramPicInfo.create_time.get();
+    this.jdField_a_of_type_Double = paramPicInfo.lat.get();
+    this.jdField_b_of_type_Double = paramPicInfo.lng.get();
+    this.jdField_c_of_type_JavaLangString = paramPicInfo.geo_hash.get();
+    this.jdField_d_of_type_Int = paramPicInfo.state.get();
+    this.jdField_d_of_type_JavaLangString = paramPicInfo.mime.get();
+    this.e = paramPicInfo.size.get();
+    this.jdField_d_of_type_Long = paramPicInfo.db_create_time.get();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_d_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Int == 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof spz)) {
+      return this.jdField_a_of_type_JavaLangString.equals(((spz)paramObject).jdField_a_of_type_JavaLangString);
+    }
     return false;
   }
   
-  protected List<sqc> a()
+  public String toString()
   {
-    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get start Pic list=" + super.a().size());
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = super.a().iterator();
-    while (localIterator.hasNext())
-    {
-      sqc localsqc = (sqc)localIterator.next();
-      if (localsqc.a != null) {
-        localArrayList.add(localsqc);
-      }
-    }
-    veg.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.recommendAlbum_RecommendAlbumFilter", "get end Pic list=" + localArrayList.size());
-    return localArrayList;
+    StringBuilder localStringBuilder = new StringBuilder("PicInfo=[");
+    localStringBuilder.append(" mId:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mPath:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mThumbPath:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" width:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" height:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" orientation:").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" mCreateTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" mDBCreateTime:").append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(" mGpsLat:").append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mGpsLng:").append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mGeohashString:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mState:").append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
-  
-  protected void c(List<sqb> paramList) {}
 }
 
 

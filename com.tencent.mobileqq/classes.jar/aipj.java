@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import android.widget.TextView;
 
 public class aipj
 {
-  public int a;
-  public ShowExternalTroop a;
-  
-  public aipj(int paramInt, ShowExternalTroop paramShowExternalTroop)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
-  }
+  public TextView a;
 }
 
 

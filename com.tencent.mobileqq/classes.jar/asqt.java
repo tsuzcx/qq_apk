@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class asqt
-  implements asqm
+  implements Comparator<View>
 {
-  public asqt(MultiAIOViewPager paramMultiAIOViewPager) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void b(int paramInt)
+  public int a(View paramView1, View paramView2)
   {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      MultiAIOViewPager.a(this.a).a(paramInt);
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
     }
+    return paramView1.b - paramView2.b;
   }
 }
 

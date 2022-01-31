@@ -1,22 +1,39 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class pvj
-  implements View.OnClickListener
+  implements bfpt
 {
-  public pvj(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
+  public pvj(ComponentContentGridImage paramComponentContentGridImage) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
-    do
+    if ((ComponentContentGridImage.a(this.a) == 62) || (ComponentContentGridImage.a(this.a) == 63) || (ComponentContentGridImage.a(this.a) == 64) || (ComponentContentGridImage.a(this.a) == 65))
     {
+      if (ComponentContentGridImage.a(this.a) != null) {
+        ComponentContentGridImage.a(this.a).a(paramInt);
+      }
       return;
-      paramView = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
-    } while (paramView == null);
-    paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
+    }
+    if ((Aladdin.getConfig(192).getIntegerFromString("picture_click_jumptype", 0) == 1) && (((pbf)this.a.a).a().mSocialFeedInfo != null) && (((pbf)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (((pbf)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qcv.a) && (((pbf)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qco != null)) {
+      try
+      {
+        onh.a(this.a.getContext(), ((pbf)this.a.a).a().mSocialFeedInfo.jdField_a_of_type_Qco.a.c, null);
+        return;
+      }
+      catch (Exception paramAdapterView)
+      {
+        QLog.e("ComponentContentGridImage", 1, paramAdapterView.getLocalizedMessage());
+        return;
+      }
+    }
+    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
   }
 }
 

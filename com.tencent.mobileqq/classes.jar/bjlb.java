@@ -1,12 +1,17 @@
-public abstract interface bjlb
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
+
+public class bjlb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bjlb(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.c();
+  }
 }
 
 

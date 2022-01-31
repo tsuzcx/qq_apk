@@ -1,43 +1,26 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class bgxx
-  extends QzoneExternalRequest
+public final class bgxx
+  implements Parcelable.Creator<LbsDataV2.GetGeoInfoRsp>
 {
-  public JceStruct a;
-  
-  public bgxx(long paramLong1, long paramLong2, String paramString)
+  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
-    localmobile_sub_get_photo_wall_req.uin = paramLong1;
-    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
-    this.a = localmobile_sub_get_photo_wall_req;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
+    if (paramParcel != null)
+    {
+      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
     }
-    return decode(paramArrayOfByte, "getPhotoWall");
+    return localGetGeoInfoRsp;
   }
   
-  public String getCmdString()
+  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
   {
-    return "QzoneNewService.getPhotoWall";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getPhotoWall";
+    return null;
   }
 }
 

@@ -1,16 +1,24 @@
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
 class apyj
-  implements bcvx
+  implements aptw
 {
-  apyj(apyg paramapyg) {}
+  apyj(apyi paramapyi) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (paramInt == 2) {
-      this.a.a.c();
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(apel.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a.a).finish();
   }
+  
+  public void b() {}
 }
 
 

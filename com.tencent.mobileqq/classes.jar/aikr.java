@@ -1,16 +1,25 @@
-import android.app.Activity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.widget.RecentDynamicAvatarView;
 
 public class aikr
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  public aikr(SessionClearFragment paramSessionClearFragment) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecentDynamicAvatarView jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+  TextView b;
   
-  public void onClick(View paramView)
+  public aikr(SessionClearFragment paramSessionClearFragment, View paramView)
   {
-    SessionClearFragment.a(this.a).finish();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364192));
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
+    this.b = ((TextView)paramView.findViewById(2131376250));
   }
 }
 

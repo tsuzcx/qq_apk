@@ -1,33 +1,39 @@
-public class badc
-  implements Comparable<badc>
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem.AudioUploadCallback.2;
+import com.tencent.qphone.base.util.QLog;
+
+public final class badc
+  implements bhxi
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public babi a;
   
-  public badc(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public badc(HWReciteItem paramHWReciteItem, babi parambabi)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Babi = parambabi;
   }
   
-  public int a(badc parambadc)
+  public void a(int paramInt)
   {
-    if (this.jdField_b_of_type_Int < parambadc.jdField_b_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int > parambadc.jdField_b_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.1(this));
   }
   
-  public String toString()
+  public void a(String paramString)
   {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
+    if (QLog.isColorLevel()) {
+      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_Babi.b);
+    }
+    this.jdField_a_of_type_Babi.b(paramString);
+    this.jdField_a_of_type_Babi.g = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
+    }
+    this.jdField_a_of_type_Babi.g = 2;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new HWReciteItem.AudioUploadCallback.2(this));
   }
 }
 

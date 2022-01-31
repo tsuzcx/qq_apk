@@ -1,74 +1,55 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 
 public class axgp
 {
-  private static volatile axgp jdField_a_of_type_Axgp;
-  axgr jdField_a_of_type_Axgr = null;
-  axgu jdField_a_of_type_Axgu = null;
+  private static axgp jdField_a_of_type_Axgp = new axgp();
+  private static String jdField_a_of_type_JavaLangString;
+  private axgq jdField_a_of_type_Axgq;
+  
+  private axgp()
+  {
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+  }
   
   public static axgp a()
   {
-    if (jdField_a_of_type_Axgp == null) {}
-    try
+    return jdField_a_of_type_Axgp;
+  }
+  
+  private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
+  {
+    if (this.jdField_a_of_type_Axgq != null)
     {
-      if (jdField_a_of_type_Axgp == null)
-      {
-        axgp localaxgp = new axgp();
-        localaxgp.b();
-        jdField_a_of_type_Axgp = localaxgp;
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Axgq.a(paramInt, paramString, paramBoolean2);
       }
-      return jdField_a_of_type_Axgp;
     }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    axgp localaxgp = a();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("onDownloadRequest, mStatusGesture[%s]", new Object[] { Integer.valueOf(localaxgp.jdField_a_of_type_Axgu.a) }));
+    else {
+      return;
     }
-    axgr.a();
+    this.jdField_a_of_type_Axgq.b(paramInt, paramString, paramBoolean2);
   }
   
-  private void b()
+  public void a()
   {
-    this.jdField_a_of_type_Axgu = new axgu();
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_Axgr = new axgr();
+    this.jdField_a_of_type_Axgq = null;
+  }
+  
+  public void a(axgq paramaxgq)
+  {
+    this.jdField_a_of_type_Axgq = paramaxgq;
+  }
+  
+  public boolean a(Object paramObject, int paramInt, String paramString)
+  {
+    if ((paramObject instanceof AudioCapture)) {}
+    switch (paramInt)
+    {
+    default: 
+      return true;
     }
-  }
-  
-  public void a(boolean paramBoolean, axgq paramaxgq)
-  {
-    this.jdField_a_of_type_Axgu.a(paramBoolean, paramaxgq);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Axgu.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Axgu.d();
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Axgu.b();
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Axgu.a == 1;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Axgu.c();
+    a(true, 2001, ajya.a(2131704208) + 2001 + "）", true);
+    return false;
   }
 }
 

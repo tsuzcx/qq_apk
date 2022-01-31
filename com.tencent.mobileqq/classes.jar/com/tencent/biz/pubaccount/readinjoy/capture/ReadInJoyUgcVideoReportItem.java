@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.capture;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axtu;
+import axtw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import oem;
+import oej;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ReadInJoyUgcVideoReportItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new oem();
+  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new oej();
   public double a;
   public int a;
   public long a;
@@ -44,7 +44,7 @@ public class ReadInJoyUgcVideoReportItem
     this.h = paramParcel.readString();
   }
   
-  public static ArrayList<ReadInJoyUgcVideoReportItem> a(List<axtu> paramList)
+  public static ArrayList<ReadInJoyUgcVideoReportItem> a(List<axtw> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -52,15 +52,15 @@ public class ReadInJoyUgcVideoReportItem
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        axtu localaxtu = (axtu)paramList.next();
+        axtw localaxtw = (axtw)paramList.next();
         ReadInJoyUgcVideoReportItem localReadInJoyUgcVideoReportItem = new ReadInJoyUgcVideoReportItem();
-        localReadInJoyUgcVideoReportItem.jdField_a_of_type_Double = localaxtu.jdField_a_of_type_Double;
-        localReadInJoyUgcVideoReportItem.jdField_a_of_type_JavaLangString = localaxtu.h;
-        localReadInJoyUgcVideoReportItem.b = localaxtu.i;
-        localReadInJoyUgcVideoReportItem.c = localaxtu.j;
-        localReadInJoyUgcVideoReportItem.d = localaxtu.k;
-        localReadInJoyUgcVideoReportItem.e = localaxtu.l;
-        localReadInJoyUgcVideoReportItem.f = localaxtu.m;
+        localReadInJoyUgcVideoReportItem.jdField_a_of_type_Double = localaxtw.jdField_a_of_type_Double;
+        localReadInJoyUgcVideoReportItem.jdField_a_of_type_JavaLangString = localaxtw.h;
+        localReadInJoyUgcVideoReportItem.b = localaxtw.i;
+        localReadInJoyUgcVideoReportItem.c = localaxtw.j;
+        localReadInJoyUgcVideoReportItem.d = localaxtw.k;
+        localReadInJoyUgcVideoReportItem.e = localaxtw.l;
+        localReadInJoyUgcVideoReportItem.f = localaxtw.m;
         localArrayList.add(localReadInJoyUgcVideoReportItem);
       }
     }

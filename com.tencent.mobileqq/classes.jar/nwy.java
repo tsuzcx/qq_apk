@@ -1,13 +1,48 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nwy
-  implements bfos
+  implements CompoundButton.OnCheckedChangeListener
 {
   public nwy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onDismiss()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    }
+    for (;;)
+    {
+      she.a(i);
+      paramCompoundButton = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramCompoundButton.put("click_opt", i);
+          nol.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

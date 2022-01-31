@@ -1,33 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.20.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class abuu
-  implements Animation.AnimationListener
+  implements Comparator<ChatMessage>
 {
   public abuu(QQLSActivity paramQQLSActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    this.a.a.removeMessages(99);
-    if (bfni.g())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
-      return;
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
     }
-    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

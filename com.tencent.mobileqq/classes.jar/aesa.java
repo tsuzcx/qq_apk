@@ -1,24 +1,26 @@
-import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.13.1;
 
-public class aesa
+class aesa
   implements Animation.AnimationListener
 {
-  aesa(aerv paramaerv) {}
+  aesa(aert paramaert) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.t = 5;
-    aerv.c(this.a).post(new PublicAccountChatPie.13.1(this));
-    this.a.a.sendEmptyMessage(1);
+    this.a.W = false;
+    this.a.s = 0;
+    this.a.X = false;
+    this.a.ag = false;
+    this.a.af = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a(this.a.o, aert.b(this.a));
+  }
 }
 
 

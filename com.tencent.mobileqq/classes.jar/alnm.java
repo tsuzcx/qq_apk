@@ -1,21 +1,18 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
 
-class alnm
-  implements alox
+public class alnm
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  alnm(alnk paramalnk, long paramLong) {}
+  public alnm(ArkAppDeviceModule.ObserverMethod.3 param3, bbgu parambbgu) {}
   
-  public void a(long paramLong)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnk.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgu.findViewById(2131365105)).setImageBitmap(paramBitmap);
     }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    alnh.a(this.jdField_a_of_type_Alnk.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

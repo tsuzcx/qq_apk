@@ -1,24 +1,26 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import mqq.app.AppActivity;
 
 public final class axob
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public axob(axod paramaxod, Activity paramActivity) {}
+  public axob(AppActivity paramAppActivity, axof paramaxof) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Axod != null) {
-      this.jdField_a_of_type_Axod.b();
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
     }
-    bbcv.b(this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Axod != null) {
-      this.jdField_a_of_type_Axod.a();
+    while (this.jdField_a_of_type_Axof == null) {
+      return;
     }
+    this.jdField_a_of_type_Axof.b();
   }
 }
 

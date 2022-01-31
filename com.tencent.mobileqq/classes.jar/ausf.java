@@ -1,61 +1,62 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ausf
 {
-  public final String a;
-  public final ArrayList<aush> a;
+  private static HashMap<Long, ausg> a = new HashMap();
   
-  public ausf(String paramString)
+  public static void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("business_type", String.valueOf(paramInt1));
+    localHashMap.put("prediction_step", String.valueOf(paramInt2));
+    axrn.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
   }
   
-  public static boolean a(aush paramaush)
+  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
-    return (paramaush != null) && (!TextUtils.isEmpty(paramaush.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramaush.b));
-  }
-  
-  public String a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      aush localaush = (aush)localIterator.next();
-      if ((a(localaush)) && (paramString != null) && (paramString.equals(localaush.jdField_a_of_type_JavaLangString))) {
-        return localaush.b;
-      }
-    }
-    return null;
-  }
-  
-  public void a(bblr parambblr)
-  {
-    if (parambblr == null) {}
-    for (;;)
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
     {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aush localaush = (aush)localIterator.next();
-        if (a(localaush)) {
-          parambblr.a(2131364825, localaush.jdField_a_of_type_JavaLangString, 0);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
       }
-    }
+      l = System.currentTimeMillis();
+    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
+    paramQQAppInterface = new ausg(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
+    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
   }
   
-  public void a(String paramString1, String paramString2)
+  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new aush(paramString1, paramString2, null));
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
+        }
+        l = System.currentTimeMillis();
+      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
+      paramQQAppInterface = (ausg)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(l);
+    paramQQAppInterface.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ausf
  * JD-Core Version:    0.7.0.1
  */

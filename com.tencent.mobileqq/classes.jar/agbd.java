@@ -1,24 +1,55 @@
-import android.support.v4.app.FragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agbd
-  extends afxr
 {
-  public static final int[] a = { 2131690730, 2131690735, 2131690732, 2131690733, 2131690737, 2131690734, 2131690731, 2131690736 };
-  public static final int[] b = { 2131364093, 2131364098, 2131364095, 2131364096, 2131364100, 2131364097, 2131364094, 2131364099 };
+  ArrayList<Object> a = new ArrayList();
   
-  public agbd(FragmentActivity paramFragmentActivity)
+  private boolean a()
   {
-    super(paramFragmentActivity);
+    boolean bool = false;
+    if (this.a != null) {}
+    for (int i = this.a.size() + 0;; i = 0)
+    {
+      if (i >= 20) {
+        bool = true;
+      }
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("Q.history.", 2, "isOverLimit");
+      }
+      return bool;
+    }
   }
   
-  protected int[] a()
+  public List<Object> a()
   {
-    return b;
+    return this.a;
   }
   
-  protected int[] b()
+  public void a()
   {
-    return a;
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
+    }
+    if (a())
+    {
+      aptx.a(2131692563);
+      return;
+    }
+    this.a.add(paramObject);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return this.a.contains(paramObject);
   }
 }
 

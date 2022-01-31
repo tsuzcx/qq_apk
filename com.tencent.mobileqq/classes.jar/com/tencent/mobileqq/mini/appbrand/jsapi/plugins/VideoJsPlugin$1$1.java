@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.os.Bundle;
-import bhak;
+import bhbb;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MobileQQ;
 
 class VideoJsPlugin$1$1
-  implements bhak
+  implements bhbb
 {
   VideoJsPlugin$1$1(VideoJsPlugin.1 param1) {}
   

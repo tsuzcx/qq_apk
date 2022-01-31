@@ -1,14 +1,15 @@
 import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.QQKandianInterface;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedRecord;
+import com.tencent.qqinterface.CommonCallback;
 
 class arim
-  implements QQKandianInterface
+  implements CustomizedRecord
 {
-  arim(arii paramarii) {}
+  arim(arik paramarik) {}
   
-  public void jumpToKandianBiu(Bundle paramBundle)
+  public void getRecordInfo(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    arjh.a().c(paramBundle);
+    arjj.a().b(paramBundle, paramCommonCallback);
   }
 }
 

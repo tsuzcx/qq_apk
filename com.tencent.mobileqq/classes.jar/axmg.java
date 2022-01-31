@@ -1,10 +1,14 @@
-import java.io.File;
-
 public abstract interface axmg
 {
-  public abstract boolean a();
+  public abstract axmh a(int paramInt1, int paramInt2);
   
-  public abstract boolean a(File paramFile, axme paramaxme, boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Throwable paramThrowable);
+  
+  public abstract void b();
 }
 
 

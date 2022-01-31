@@ -1,25 +1,22 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
 public class aoij
-  implements Animator.AnimatorListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aoij(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aoij(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onGlobalLayout()
   {
-    this.a.n();
+    Object localObject = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
+    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
+    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.n();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

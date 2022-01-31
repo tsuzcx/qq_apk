@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.part.QIMTemplateItem;
 
-class bjex
-  extends tez
+public final class bjex
+  implements Parcelable.Creator<QIMTemplateItem>
 {
-  bjex(bjew parambjew, String paramString)
+  public QIMTemplateItem a(Parcel paramParcel)
   {
-    super(paramString);
+    return new QIMTemplateItem(paramParcel);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public QIMTemplateItem[] a(int paramInt)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      veg.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      bjeu.a(this.a.jdField_a_of_type_Bjeu, true);
-      bjeu.a(this.a.jdField_a_of_type_Bjeu, this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_Bjeu.a(null);
-      return;
-    }
-    veg.b("PasterDataManager", "onLocationUpdate() error");
+    return new QIMTemplateItem[paramInt];
   }
 }
 

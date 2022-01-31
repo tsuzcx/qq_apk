@@ -1,25 +1,46 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.DragShadowBuilder;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
+@TargetApi(11)
 class attf
-  implements amnf
+  extends View.DragShadowBuilder
 {
-  attf(atte paramatte, IphonePickerView paramIphonePickerView, bfol parambfol) {}
+  public int a;
   
-  public void a()
+  public attf(atsc paramatsc, View paramView)
   {
-    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
-    {
-      atte.a(this.jdField_a_of_type_Atte, this.jdField_a_of_type_Atte.b, false);
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
+    super(paramView);
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Atsc.a.f * 1.4D));
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onDrawShadow(Canvas paramCanvas)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Atte.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Atte.b.setText(atte.a(this.jdField_a_of_type_Atte).a(0, paramInt1));
+    getView().setDrawingCacheEnabled(false);
+    getView().setDrawingCacheEnabled(true);
+    Object localObject = new Paint();
+    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
+    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
+    localObject = getView().getDrawingCache();
+    Matrix localMatrix = new Matrix();
+    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
+    localMatrix.postScale(f, f);
+    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
+  }
+  
+  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
+  {
+    int i = this.jdField_a_of_type_Int + 20;
+    int j = this.jdField_a_of_type_Int + 20;
+    paramPoint1.set(i, j);
+    paramPoint2.set(i / 2, j / 2);
   }
 }
 

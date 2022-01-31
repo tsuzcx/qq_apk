@@ -1,15 +1,14 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 public class anzq
-  extends anxe
 {
-  public Button a;
-  public LinearLayout a;
-  public TextView a;
-  public EmotionInvalidPanelLinearLayout a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
+  
+  public anzq(anzo paramanzo) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint.Align;
@@ -14,17 +14,17 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import arsn;
-import arso;
 import arsp;
-import arta;
+import arsq;
+import arsr;
+import artc;
 
 public class FloatTextLayout
   extends FloatBaseLayout
-  implements View.OnClickListener, arta
+  implements View.OnClickListener, artc
 {
   View a;
-  public arsp a;
+  public arsr a;
   boolean d = true;
   
   public FloatTextLayout(@NonNull Context paramContext)
@@ -35,42 +35,42 @@ public class FloatTextLayout
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560624, null);
-    this.jdField_a_of_type_Arsp = ((arsp)this.jdField_a_of_type_AndroidViewView.findViewById(2131369621));
-    this.jdField_a_of_type_Arsp.setStrokeColor(-1);
-    this.jdField_a_of_type_Arsp.setStrokeWidth(actn.a(1.5F, getResources()));
-    ((TextView)this.jdField_a_of_type_Arsp).setTextColor(-8293377);
-    ((TextView)this.jdField_a_of_type_Arsp).getPaint().setFakeBoldText(true);
-    ((TextView)this.jdField_a_of_type_Arsp).setTextSize(1, 18.0F);
-    ((TextView)this.jdField_a_of_type_Arsp).setOnClickListener(this);
-    ((TextView)this.jdField_a_of_type_Arsp).setContentDescription(ajyc.a(2131704635));
-    this.jdField_b_of_type_Int = actn.a(40.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560623, null);
+    this.jdField_a_of_type_Arsr = ((arsr)this.jdField_a_of_type_AndroidViewView.findViewById(2131369620));
+    this.jdField_a_of_type_Arsr.setStrokeColor(-1);
+    this.jdField_a_of_type_Arsr.setStrokeWidth(actj.a(1.5F, getResources()));
+    ((TextView)this.jdField_a_of_type_Arsr).setTextColor(-8293377);
+    ((TextView)this.jdField_a_of_type_Arsr).getPaint().setFakeBoldText(true);
+    ((TextView)this.jdField_a_of_type_Arsr).setTextSize(1, 18.0F);
+    ((TextView)this.jdField_a_of_type_Arsr).setOnClickListener(this);
+    ((TextView)this.jdField_a_of_type_Arsr).setContentDescription(ajya.a(2131704646));
+    this.jdField_b_of_type_Int = actj.a(40.0F, getResources());
     int i = (int)getResources().getDimension(2131297158);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - actn.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Arsp.setLineMaxWidth(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - actj.a(16.0F, getResources())) - i));
+    this.jdField_a_of_type_Arsr.setLineMaxWidth(this.jdField_a_of_type_Int);
     addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_Arsp.setOnSizeChangeListener(this);
+    this.jdField_a_of_type_Arsr.setOnSizeChangeListener(this);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
   }
   
-  public int a(arso paramarso)
+  public int a(arsq paramarsq)
   {
-    if (paramarso.jdField_a_of_type_Boolean) {
-      return paramarso.jdField_a_of_type_Int + paramarso.jdField_c_of_type_Int / 2;
+    if (paramarsq.jdField_a_of_type_Boolean) {
+      return paramarsq.jdField_a_of_type_Int + paramarsq.jdField_c_of_type_Int / 2;
     }
-    return paramarso.jdField_a_of_type_Int - paramarso.jdField_c_of_type_Int / 2 - this.jdField_a_of_type_Int;
+    return paramarsq.jdField_a_of_type_Int - paramarsq.jdField_c_of_type_Int / 2 - this.jdField_a_of_type_Int;
   }
   
-  public arsp a()
+  public arsr a()
   {
-    return this.jdField_a_of_type_Arsp;
+    return this.jdField_a_of_type_Arsr;
   }
   
-  public void a(arso paramarso)
+  public void a(arsq paramarsq)
   {
-    if (paramarso == null) {}
+    if (paramarsq == null) {}
     label138:
     label143:
     label146:
@@ -79,18 +79,18 @@ public class FloatTextLayout
       return;
       Object localObject;
       int i;
-      if ((paramarso.f) && (!paramarso.g) && (!paramarso.jdField_b_of_type_Boolean))
+      if ((paramarsq.f) && (!paramarsq.g) && (!paramarsq.jdField_b_of_type_Boolean))
       {
-        if (!paramarso.jdField_c_of_type_Boolean) {
-          this.jdField_a_of_type_Arsp.setAlign(Paint.Align.CENTER);
+        if (!paramarsq.jdField_c_of_type_Boolean) {
+          this.jdField_a_of_type_Arsr.setAlign(Paint.Align.CENTER);
         }
       }
       else
       {
-        this.d = paramarso.jdField_a_of_type_Boolean;
+        this.d = paramarsq.jdField_a_of_type_Boolean;
         localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
         i = ((FrameLayout.LayoutParams)localObject).gravity;
-        if (!paramarso.jdField_c_of_type_Boolean) {
+        if (!paramarsq.jdField_c_of_type_Boolean) {
           break label143;
         }
         if (!this.d) {
@@ -106,10 +106,10 @@ public class FloatTextLayout
         ((FrameLayout.LayoutParams)localObject).gravity = i;
         this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         return;
-        if (paramarso.jdField_a_of_type_Boolean) {}
+        if (paramarsq.jdField_a_of_type_Boolean) {}
         for (localObject = Paint.Align.RIGHT;; localObject = Paint.Align.LEFT)
         {
-          this.jdField_a_of_type_Arsp.setAlign((Paint.Align)localObject);
+          this.jdField_a_of_type_Arsr.setAlign((Paint.Align)localObject);
           break;
         }
         i = 3;
@@ -119,13 +119,13 @@ public class FloatTextLayout
     }
   }
   
-  public boolean a(arso paramarso)
+  public boolean a(arsq paramarsq)
   {
     boolean bool = true;
-    if (paramarso == null) {
+    if (paramarsq == null) {
       return false;
     }
-    if ((paramarso.f) && (!paramarso.g) && (!paramarso.jdField_b_of_type_Boolean)) {
+    if ((paramarsq.f) && (!paramarsq.g) && (!paramarsq.jdField_b_of_type_Boolean)) {
       if (a()) {}
     }
     for (;;)
@@ -139,33 +139,33 @@ public class FloatTextLayout
     }
   }
   
-  public int b(arso paramarso)
+  public int b(arsq paramarsq)
   {
-    return paramarso.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
+    return paramarsq.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
   }
   
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Arsp != null)
+    if (this.jdField_a_of_type_Arsr != null)
     {
-      this.jdField_a_of_type_Arsp.setOnSizeChangeListener(null);
-      this.jdField_a_of_type_Arsp.c();
+      this.jdField_a_of_type_Arsr.setOnSizeChangeListener(null);
+      this.jdField_a_of_type_Arsr.c();
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Arsn != null)) {
-      this.jdField_a_of_type_Arsn.b(paramInt1, paramInt2);
+    if ((paramInt1 != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Arsp != null)) {
+      this.jdField_a_of_type_Arsp.b(paramInt1, paramInt2);
     }
   }
   
   public boolean b()
   {
     boolean bool = super.b();
-    if (this.jdField_a_of_type_Arsp != null) {
-      this.jdField_a_of_type_Arsp.c();
+    if (this.jdField_a_of_type_Arsr != null) {
+      this.jdField_a_of_type_Arsr.c();
     }
     return bool;
   }
@@ -174,15 +174,15 @@ public class FloatTextLayout
   {
     int i = (int)getResources().getDimension(2131297158);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - actn.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Arsp.setLineMaxWidth(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - actj.a(16.0F, getResources())) - i));
+    this.jdField_a_of_type_Arsr.setLineMaxWidth(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Arsn != null) {
-      this.jdField_a_of_type_Arsn.b();
+    if (this.jdField_a_of_type_Arsp != null) {
+      this.jdField_a_of_type_Arsp.b();
     }
   }
   

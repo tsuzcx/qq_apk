@@ -1,77 +1,61 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1;
-import com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.2;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.util.List;
 
-public class aodt
-  implements aumy, auol
+public abstract class aodt
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  private WeakReference<aodu> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public aodt(MessageForPic paramMessageForPic, Handler paramHandler, aodu paramaodu)
+  public static aodt a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaodu);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, aunu paramaunu)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    int i;
+    if (paramBundle != null)
+    {
+      localObject1 = localObject2;
+      if (paramBundle.containsKey("cur_data_source_type"))
+      {
+        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
+        i = paramBundle.getInt("cur_data_source_type");
+        if (i != 0) {
+          break label53;
+        }
+        localObject1 = new aoee(null).b(paramBundle);
+      }
     }
+    label53:
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramaunu.jdField_a_of_type_Int) });
-      }
-      if (paramaunu.jdField_a_of_type_Int == 0)
-      {
-        ((aodu)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-        return;
-      }
-    } while (-1 != paramaunu.jdField_a_of_type_Int);
-    if (paramaunu.jdField_a_of_type_Aunp != null) {
-      QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramaunu.jdField_a_of_type_Aunp.b });
-    }
-    ((aodu)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      return localObject1;
+      localObject1 = localObject2;
+    } while (i != 1);
+    return new aoec(null).b(paramBundle);
   }
   
-  public void a(int paramInt, ArrayList<aunu> paramArrayList) {}
+  public abstract int a(List<aodt> paramList);
   
-  public void a(int paramInt, boolean paramBoolean)
+  public abstract long a();
+  
+  public abstract Drawable a(Context paramContext);
+  
+  public abstract anyh a();
+  
+  public abstract CustomEmotionData a();
+  
+  public void a(Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
+    paramBundle.putInt("cur_data_source_type", paramInt);
   }
   
-  public void a(aumz paramaumz)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramaumz));
-  }
+  public abstract boolean a();
   
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", paramInt + " needRefresh:" + paramBoolean, " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
-    }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((aodu)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    }
-  }
+  public abstract boolean a(aodt paramaodt);
   
-  public void b(int paramInt, aunu paramaunu) {}
+  public abstract boolean b();
   
-  public void c(int paramInt, aunu paramaunu) {}
-  
-  public void d(int paramInt, aunu paramaunu) {}
+  public abstract boolean c();
 }
 
 

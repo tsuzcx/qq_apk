@@ -1,20 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.RegionDrawableData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
 
-public abstract interface agpe
+public class agpe
+  implements View.OnClickListener
 {
-  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public agpe(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
-  
-  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
-  
-  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public void onClick(View paramView)
+  {
+    paramView = QzonePhotoPreviewActivity.a(this.a);
+    paramView.putExtra("PhotoConst.send_changtu", true);
+    paramView.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
+    paramView.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
+    PhotoUtils.a(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
+  }
 }
 
 

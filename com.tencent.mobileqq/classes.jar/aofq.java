@@ -1,36 +1,38 @@
-public class aofq
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
+class aofq
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  aofq(aofo paramaofo, View paramView, FrameLayout paramFrameLayout, TextView paramTextView1, TextView paramTextView2, aofn paramaofn, int paramInt) {}
   
-  public aofq()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{SenderUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{SenderNickName: ").append(this.jdField_b_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{bEnter: ").append(this.jdField_a_of_type_Boolean).append("}");
-    localStringBuilder.append("{leaveChatType: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{leftChatTime: ").append(this.jdField_b_of_type_Int).append("}");
-    localStringBuilder.append("{timeStamp: ").append(this.jdField_a_of_type_Long).append("}");
-    localStringBuilder.append("{matchExpired: ").append(this.jdField_c_of_type_Int).append("}");
-    localStringBuilder.append("{c2cExpiredTime: ").append(this.d).append("}");
-    localStringBuilder.append("{tipsWording: ").append(this.jdField_c_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{readyTs: ").append(this.jdField_b_of_type_Long).append("}");
-    return localStringBuilder.toString();
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(0.5F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.b.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+      aofo.a(this.jdField_a_of_type_Aofo, this.jdField_a_of_type_Aofn, this.jdField_a_of_type_Int);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+    }
   }
 }
 

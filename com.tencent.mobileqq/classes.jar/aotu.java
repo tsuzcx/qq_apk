@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
 public class aotu
-  implements View.OnClickListener
+  extends aoun
 {
   public aotu(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void onClick(View paramView)
+  protected void a(apez paramapez)
   {
-    QfileRecentPicFileTabView.a(this.a, paramView, false);
+    super.a(paramapez);
+    if ((paramapez.b != null) && (paramapez.b.length() > 0)) {
+      this.a.i();
+    }
   }
 }
 

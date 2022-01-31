@@ -1,15 +1,34 @@
-import android.graphics.Bitmap;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-class bklt
-  implements alxk
+public abstract class bklt<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  bklt(bklr parambklr) {}
+  protected long a;
+  private final String a;
+  private long b;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public bklt()
   {
-    if (bklr.a(this.a) != null) {
-      bklr.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
-    }
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+  }
+  
+  public void call(IN paramIN)
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
+  }
+  
+  public void notifyError(Error paramError)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
+  }
+  
+  public void notifyResult(OUT paramOUT)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 

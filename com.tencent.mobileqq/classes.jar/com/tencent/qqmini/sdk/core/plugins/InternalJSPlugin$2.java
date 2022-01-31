@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 
 class InternalJSPlugin$2
   implements InternalJSPlugin.openUrlCallback
 {
-  InternalJSPlugin$2(InternalJSPlugin paramInternalJSPlugin, beka parambeka) {}
+  InternalJSPlugin$2(InternalJSPlugin paramInternalJSPlugin, bekr parambekr) {}
   
   public void openResult(boolean paramBoolean, String paramString)
   {

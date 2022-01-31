@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class agyp
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
   public agyp(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aelk.a(bool);
+      return;
     }
   }
 }

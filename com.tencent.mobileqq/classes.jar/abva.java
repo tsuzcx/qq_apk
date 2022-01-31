@@ -1,46 +1,62 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class abva
-  extends akav
+  extends BroadcastReceiver
 {
-  public abva(QQLSActivity paramQQLSActivity) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  private abva(QQLSActivity paramQQLSActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
-    }
-    this.a.a.removeMessages(267387140);
-    Object localObject1 = new ArrayList();
-    Object localObject2;
-    if ((paramList != null) && (paramList.size() > 0))
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
     {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
-      }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
-    }
-    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramIntent != null) {}
+          try
+          {
+            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
+            }
+          }
+          catch (Exception paramContext)
+          {
+            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
+            return;
+          }
+        }
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      return;
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel())
     {
-      localObject1 = (MessageForPtt)((List)localObject1).get(0);
-      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
-      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
-        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
-      }
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, ases.f);
     }
-    super.a(paramBoolean1, paramList, paramBoolean2);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!ases.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

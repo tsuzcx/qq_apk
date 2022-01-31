@@ -1,32 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 
 public class unu
-  implements Subscriber
+  implements uoe
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  public unu(QQStoryMainActivity paramQQStoryMainActivity) {}
   
-  public unu(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public View a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    return QQStoryMainActivity.a(this.a);
   }
   
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  public ImageView a()
   {
-    paramList.add(vya.class);
+    return this.a.rightViewImg;
   }
   
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  public TextView a()
   {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
+    return this.a.rightViewText;
+  }
+  
+  public void a()
+  {
+    this.a.onBackEvent();
+  }
+  
+  public void a(String paramString)
+  {
+    QQStoryMainActivity.a(this.a, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.startTitleProgress();
+      return;
     }
+    this.a.stopTitleProgress();
   }
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, ssf.a, ajya.a(2131710957));
+      return;
+    }
+    a(ssf.a);
+  }
+  
+  public void c() {}
 }
 
 

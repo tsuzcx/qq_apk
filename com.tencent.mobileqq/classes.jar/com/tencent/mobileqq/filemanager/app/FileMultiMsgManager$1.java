@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.text.TextUtils;
-import aouu;
-import aovo;
-import aovq;
-import aovr;
-import apue;
-import astr;
-import asue;
-import axqw;
-import bbev;
+import aouy;
+import aovs;
+import aovu;
+import aovv;
+import apug;
+import astt;
+import asug;
+import axqy;
+import bbfj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -25,14 +25,14 @@ public class FileMultiMsgManager$1
 {
   public void run()
   {
-    long l2 = this.jdField_a_of_type_Asue.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq;
-    String str = this.jdField_a_of_type_Asue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Asue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-    boolean bool = bbev.g(null);
+    long l2 = this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq;
+    String str = this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    boolean bool = bbfj.g(null);
     if (QLog.isColorLevel()) {
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, "isNetworkAvailable:" + bool);
     }
-    aovq localaovq = new aovq(this.this$0, l2, this.jdField_a_of_type_Asue, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Astr);
+    aovu localaovu = new aovu(this.this$0, l2, this.jdField_a_of_type_Asug, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Astt);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     long l1 = 0L;
     Object localObject1;
@@ -47,16 +47,16 @@ public class FileMultiMsgManager$1
       if (((Iterator)localObject1).hasNext())
       {
         localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if ((!apue.a((MessageRecord)localObject2)) || (!aouu.a(this.this$0, (MessageRecord)localObject2))) {
+        if ((!apug.a((MessageRecord)localObject2)) || (!aouy.a(this.this$0, (MessageRecord)localObject2))) {
           continue;
         }
-        aovo localaovo = aouu.a(this.this$0, str, i, l2, (MessageRecord)localObject2);
-        if (localaovo == null) {
+        aovs localaovs = aouy.a(this.this$0, str, i, l2, (MessageRecord)localObject2);
+        if (localaovs == null) {
           continue;
         }
-        localaovq.a(localaovo);
+        localaovu.a(localaovs);
         if (!bool) {
-          localaovo.a.a("", true);
+          localaovs.a.a("", true);
         }
       }
       try
@@ -70,18 +70,18 @@ public class FileMultiMsgManager$1
       }
       catch (NumberFormatException localNumberFormatException) {}
       break;
-      if (localaovq.a() > 0)
+      if (localaovu.a() > 0)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : multiUniseq[" + l2 + "] toUin[" + str + "] toType[" + i + "] uploadCount[" + localaovq.a() + "]");
+          QLog.i("FileMultiMsgManager<FileAssistant>", 2, "addMultiRequest : multiUniseq[" + l2 + "] toUin[" + str + "] toType[" + i + "] uploadCount[" + localaovu.a() + "]");
         }
         str = new DecimalFormat("0.00").format(l1 / 1024.0D / 1024.0D);
-        axqw.b(aouu.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str, "");
-        aouu.a(this.this$0).put(Long.valueOf(l2), localaovq);
-        localaovq.a();
+        axqy.b(aouy.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", str, "");
+        aouy.a(this.this$0).put(Long.valueOf(l2), localaovu);
+        localaovu.a();
         return;
       }
-      this.jdField_a_of_type_Astr.a(0, 2, this.jdField_a_of_type_Asue);
+      this.jdField_a_of_type_Astt.a(0, 2, this.jdField_a_of_type_Asug);
       return;
     }
   }

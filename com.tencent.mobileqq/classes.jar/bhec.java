@@ -1,6 +1,10 @@
-class bhec
+final class bhec
+  extends asbr<bheb, Void>
 {
-  private static final bhdv a = new bhdv(null);
+  protected bheb a(Void paramVoid)
+  {
+    return new bheb();
+  }
 }
 
 

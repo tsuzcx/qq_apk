@@ -1,18 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 class adhj
-  implements bfpc
+  implements DialogInterface.OnClickListener
 {
-  adhj(adhi paramadhi) {}
+  adhj(adhi paramadhi, String paramString, int paramInt) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAdapterView = (ager)adhi.a(this.a).a.getItem(paramInt - 1);
-    adhi.a(this.a, paramAdapterView);
-    adhi.a(this.a).dismiss();
-    axqw.b(adhi.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    paramDialogInterface = new Intent(adhi.a(this.jdField_a_of_type_Adhi), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    adhi.a(this.jdField_a_of_type_Adhi).startActivity(paramDialogInterface);
+    VipUtils.a(adhi.a(this.jdField_a_of_type_Adhi), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(adhi.a(this.jdField_a_of_type_Adhi).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

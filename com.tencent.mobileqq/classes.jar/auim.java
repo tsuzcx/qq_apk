@@ -1,28 +1,15 @@
-import android.annotation.SuppressLint;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.AutoReplyText;
 
-public class auim
-  implements View.OnTouchListener
+public abstract interface auim
 {
-  public auim(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public abstract void a(AutoReplyText paramAutoReplyText);
   
-  @SuppressLint({"ClickableViewAccessibility"})
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
-  }
+  public abstract void a(AutoReplyText paramAutoReplyText1, AutoReplyText paramAutoReplyText2);
+  
+  public abstract void a(AutoReplyText paramAutoReplyText, boolean paramBoolean);
+  
+  public abstract void b(@Nullable AutoReplyText paramAutoReplyText, boolean paramBoolean);
 }
 
 

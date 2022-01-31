@@ -1,22 +1,6 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-
-public class bcoq
-  implements bhwl
+public abstract interface bcoq
 {
-  public bcoq(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.a.g = true;
-      View localView = this.a.a("map_key_troop_mem_recent_said");
-      if (localView != null) {
-        ProfileCardMoreInfoView.a(localView, this.a.a);
-      }
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

@@ -18,15 +18,15 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import mqq.os.MqqHandler;
-import wkv;
-import wlh;
-import wlj;
-import wqk;
-import wql;
-import wrt;
-import wtm;
-import wva;
-import xhe;
+import wks;
+import wle;
+import wlg;
+import wqh;
+import wqi;
+import wrq;
+import wtj;
+import wux;
+import xhb;
 
 public class SubscribeMultiPicFragment
   extends SubscribeBaseFragment
@@ -36,7 +36,7 @@ public class SubscribeMultiPicFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ComponentPageView jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView;
-  private wlh jdField_a_of_type_Wlh;
+  private wle jdField_a_of_type_Wle;
   private View b;
   private View jdField_c_of_type_AndroidViewView;
   private boolean jdField_c_of_type_Boolean;
@@ -46,33 +46,33 @@ public class SubscribeMultiPicFragment
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("bundle_key_subscribe_feed_bytes_array", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray());
     localBundle.putSerializable("bundle_key_feed_extra_type_info", this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_Wlh = new wlh(localBundle);
-    this.jdField_a_of_type_Wlh.a(getActivity().mSystemBarComp);
-    if (this.jdField_a_of_type_Wrt != null) {
-      this.jdField_a_of_type_Wrt.a(this.jdField_a_of_type_Wlh);
+    this.jdField_a_of_type_Wle = new wle(localBundle);
+    this.jdField_a_of_type_Wle.a(getActivity().mSystemBarComp);
+    if (this.jdField_a_of_type_Wrq != null) {
+      this.jdField_a_of_type_Wrq.a(this.jdField_a_of_type_Wle);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.mContentView.findViewById(2131364824));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369401));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.mContentView.findViewById(2131364823));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369400));
     this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368508);
-    this.b = this.mContentView.findViewById(2131368687);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131368623));
+    this.b = this.mContentView.findViewById(2131368686);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131368622));
     this.jdField_c_of_type_AndroidViewView = this.mContentView.findViewById(2131369049);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setParentFragment(this);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setLayoutManagerType(3, 2);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(true);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setExtraTypeInfo(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wlh);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new wkv(localBundle));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new wlj(localBundle));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wqk(this));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(this.jdField_a_of_type_Wle);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new wks(localBundle));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a(new wlg(localBundle));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wqh(this));
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.d();
-    this.b.setOnClickListener(new wql(this));
+    this.b.setOnClickListener(new wqi(this));
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_Wlh != null) && (this.jdField_a_of_type_Wlh.a() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a() != null)) {
-      xhe.a(this.jdField_a_of_type_Wlh.a().poster.id.get(), "auth_" + wva.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a()), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", this.jdField_a_of_type_Wlh.a().id.get() });
+    if ((this.jdField_a_of_type_Wle != null) && (this.jdField_a_of_type_Wle.a() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a() != null)) {
+      xhb.a(this.jdField_a_of_type_Wle.a().poster.id.get(), "auth_" + wux.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a()), "read", 0, 0, new String[] { "", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", this.jdField_a_of_type_Wle.a().id.get() });
     }
   }
   
@@ -103,8 +103,8 @@ public class SubscribeMultiPicFragment
   
   protected void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Wlh != null) {
-      this.jdField_a_of_type_Wlh.a(paramStFeed);
+    if (this.jdField_a_of_type_Wle != null) {
+      this.jdField_a_of_type_Wle.a(paramStFeed);
     }
   }
   
@@ -180,10 +180,10 @@ public class SubscribeMultiPicFragment
     if (this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView != null) {
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.c();
     }
-    wtm.a().a("subscribe_freshman_interaction_guide");
-    wtm.a().a("subscribe_freshman_share_guide");
-    if (this.jdField_a_of_type_Wlh != null) {
-      this.jdField_a_of_type_Wlh.g();
+    wtj.a().a("subscribe_freshman_interaction_guide");
+    wtj.a().a("subscribe_freshman_share_guide");
+    if (this.jdField_a_of_type_Wle != null) {
+      this.jdField_a_of_type_Wle.g();
     }
   }
   

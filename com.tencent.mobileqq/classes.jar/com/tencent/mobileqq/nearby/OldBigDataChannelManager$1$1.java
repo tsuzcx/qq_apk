@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby;
 
-import atbt;
-import atbu;
+import atbv;
+import atbw;
 
 public class OldBigDataChannelManager$1$1
   implements Runnable
 {
-  public OldBigDataChannelManager$1$1(atbu paramatbu) {}
+  public OldBigDataChannelManager$1$1(atbw paramatbw) {}
   
   public void run()
   {
-    atbt.a(this.a.a);
-    atbt.b(this.a.a);
+    atbv.a(this.a.a);
+    atbv.b(this.a.a);
   }
 }
 

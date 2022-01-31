@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
 import android.os.Bundle;
-import beyu;
+import bezl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
@@ -10,13 +10,13 @@ public final class SDKMiniProgramLpReportDC04239$14
 {
   public void run()
   {
-    if (beyu.a() != null)
+    if (bezl.a() != null)
     {
       Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", beyu.a());
-      localBundle.putLong("add_duration_ms", beyu.a());
+      localBundle.putParcelable("app_config", bezl.a());
+      localBundle.putLong("add_duration_ms", bezl.a());
       ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).callServer("MiniAppTransferModule", "record_duration_sdk_4239", localBundle);
-      beyu.b();
+      bezl.b();
     }
   }
 }

@@ -1,18 +1,43 @@
-public class vyr
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
+
+public abstract interface vyr
 {
-  public static long a(String paramString, long paramLong)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      veg.d("NumberUtils", "Invalid num string " + paramString + ", return default number " + paramLong);
-    }
-    return paramLong;
-  }
+  public abstract int a();
+  
+  public abstract Bitmap a();
+  
+  public abstract View a();
+  
+  public abstract vyw a(int paramInt);
+  
+  public abstract vyx a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(tej paramtej, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(vyt paramvyt);
+  
+  public abstract void a(vyv paramvyv);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract vyz[] a();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void e(boolean paramBoolean);
 }
 
 

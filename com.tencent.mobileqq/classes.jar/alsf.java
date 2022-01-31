@@ -1,21 +1,18 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class alsf
-  implements alsk
+  implements ajte
 {
-  alsf(alsc paramalsc) {}
+  alsf(alsb paramalsb) {}
   
-  public void a(alsn paramalsn, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    while (i < paramalsn.b.size())
+    if (!paramBoolean)
     {
-      alsj localalsj = (alsj)paramalsn.b.get(i);
-      if (localalsj != null) {
-        localalsj.b(paramBoolean, paramalsn.a, paramArrayOfByte);
-      }
-      i += 1;
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      return;
     }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
   }
 }
 

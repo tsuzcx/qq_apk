@@ -1,23 +1,26 @@
-import com.tencent.biz.JoinGroupTransitActivity;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
 public class mwc
-  implements mwb
+  implements View.OnKeyListener
 {
-  public mwc(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
+  public mwc(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
-  }
-  
-  public void b()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void c()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      if (!TextUtils.isEmpty(paramView)) {
+        this.a.a(paramView);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

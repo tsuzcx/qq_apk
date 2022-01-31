@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import anzu;
+import anzz;
 import java.util.List;
 
 class EmotionKeywordAdapter$3$1

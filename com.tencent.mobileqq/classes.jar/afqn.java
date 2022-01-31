@@ -1,119 +1,231 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class afqn
-  extends ampb<afsu>
+  extends ajxj
 {
-  public int a()
+  private afqn(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    return 438;
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
   }
   
-  @NonNull
-  public afsu a(int paramInt)
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGroupDataInited()
+  {
+    AlphabetFriendFragment.a(this.a, 1400L, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onSetSpecialCareSwitch_global isSuccess: " + paramBoolean);
     }
-    return new afsu();
-  }
-  
-  @Nullable
-  public afsu a(ampi[] paramArrayOfampi)
-  {
-    int j;
-    int i;
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfampi);
-      if (paramArrayOfampi != null)
+    if ((this.a.b) && (AlphabetFriendFragment.a(this.a) != null)) {
+      AlphabetFriendFragment.a(this.a).a();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      try
       {
-        j = paramArrayOfampi.length;
-        i = 0;
-        while (i < j)
+        String[] arrayOfString = (String[])paramArrayOfObject[1];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[2];
+        if (QLog.isColorLevel()) {
+          QLog.d("contacts.fragment.AlphabetFriendFragment", 2, new Object[] { "onSetSpecialCareSwitch_global uinArray=%s stateArray=%s", Arrays.toString(arrayOfString), Arrays.toString(paramArrayOfObject) });
+        }
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
         {
-          localObject1 = paramArrayOfampi[i];
-          if (localObject1 != null) {
-            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((ampi)localObject1).a);
+          if (paramArrayOfObject[0] != 0)
+          {
+            bcql.a(this.a.getActivity(), 2, ajya.a(2131700231), 0).a();
+            return;
           }
-          i += 1;
+          bcql.a(this.a.getActivity(), 2, ajya.a(2131700232), 0).a();
+          return;
         }
       }
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      j = paramArrayOfampi.length;
-      i = 0;
-      while (i < j)
+      catch (Exception paramArrayOfObject)
       {
-        Object localObject2 = paramArrayOfampi[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((ampi)localObject2).a))) {
-          try
-          {
-            localObject1 = new afsu();
-            localObject2 = new JSONObject(((ampi)localObject2).a);
-            if (((JSONObject)localObject2).has("enable")) {
-              ((afsu)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
-            }
-            if (((JSONObject)localObject2).has("interval")) {
-              ((afsu)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
-            }
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("contacts.fragment.AlphabetFriendFragment", 2, "onSetSpecialCareSwitch_global fail!", paramArrayOfObject);
         }
-        i += 1;
       }
     }
-    return null;
   }
   
-  public Class<afsu> a()
-  {
-    return afsu.class;
-  }
-  
-  public void a(int paramInt)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateAddFriend isSucess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + " addDirect=" + paramBoolean3);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
-  public void a(afsu paramafsu)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 5000L, false);
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateDelFriend isSucess= " + paramBoolean);
     }
-    if (paramafsu != null) {
-      ContactReportUtils.a(paramafsu);
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
   
-  public int b()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AlphabetFriendFragment localAlphabetFriendFragment = this.a;
+    boolean bool;
+    if ((paramBoolean2) || (!paramBoolean1))
+    {
+      bool = true;
+      AlphabetFriendFragment.a(localAlphabetFriendFragment, bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateFriendList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+      }
+      paramBoolean2 = AlphabetFriendFragment.a(this.a);
+      if (AlphabetFriendFragment.a(this.a))
+      {
+        if (AlphabetFriendFragment.b(this.a))
+        {
+          AlphabetFriendFragment.b(this.a, false);
+          if (this.a.a != null) {
+            this.a.a.a(this.a.b(), paramBoolean1, null);
+          }
+        }
+        localAlphabetFriendFragment = this.a;
+        if (!AlphabetFriendFragment.b(this.a)) {
+          break label189;
+        }
+      }
+    }
+    label189:
+    for (long l = 0L;; l = 1400L)
+    {
+      AlphabetFriendFragment.a(localAlphabetFriendFragment, l, true);
+      if ((!paramBoolean2) && (AlphabetFriendFragment.b(this.a))) {
+        AlphabetFriendFragment.a(this.a, 1400L, true);
+      }
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      AlphabetFriendFragment.a(this.a, 0L, true);
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    AlphabetFriendFragment.a(this.a, 1400L, false);
+  }
+  
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if ((paramString != null) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateOlympicTorchList(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+      QLog.d("contacts.fragment.AlphabetFriendFragment", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
     }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((this.a.b) && (paramBoolean1) && (AlphabetFriendFragment.a(this.a) != null))
+    {
+      AlphabetFriendFragment.a(this.a).a();
+      AlphabetFriendFragment.a(this.a, 0L, true);
+    }
   }
 }
 

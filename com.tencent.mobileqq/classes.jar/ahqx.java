@@ -1,241 +1,161 @@
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.FieldChangedException;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper;
 import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.UnsupportedFieldTypeException;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ahqx
-  extends ahqw
+  extends ahqv
 {
-  private static int a(Field paramField)
+  private static final byte[] a = { 1, 2, 3, 0 };
+  private static final byte[] b = { 2, 3, 4, 1 };
+  
+  private static final boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    paramField = paramField.getType();
-    int i = -1;
-    if (paramField == Byte.TYPE) {
-      i = 0;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      bool1 = true;
     }
     do
     {
-      return i;
-      if (paramField == Integer.TYPE) {
-        return 1;
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramArrayOfByte1 == null);
+        bool1 = bool2;
+      } while (paramArrayOfByte2 == null);
+      bool1 = bool2;
+    } while (paramArrayOfByte1.length != paramArrayOfByte2.length);
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramArrayOfByte1.length) {
+        break label66;
       }
-      if (paramField == String.class) {
-        return 2;
+      bool1 = bool2;
+      if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
+        break;
       }
-      if (paramField == CharSequence.class) {
-        return 3;
-      }
-      if (paramField == Boolean.TYPE) {
-        return 5;
-      }
-    } while (paramField != Long.TYPE);
-    return 6;
-  }
-  
-  private void a(CharSequence paramCharSequence, Parcel paramParcel)
-  {
-    if ((paramCharSequence instanceof ayki)) {}
+      i += 1;
+    }
+    label66:
+    return true;
   }
   
   protected Object a(Object paramObject, Field paramField, byte[] paramArrayOfByte)
   {
+    if ((paramObject instanceof RecentBaseData))
+    {
+      if (paramField.getType() == MsgSummary.class)
+      {
+        paramObject = Parcel.obtain();
+        try
+        {
+          paramObject.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+          paramObject.setDataPosition(0);
+          paramField = new byte[4];
+          paramObject.readByteArray(paramField);
+          boolean bool = a(paramField, a);
+          if (bool) {
+            return null;
+          }
+          if (!a(paramField, b)) {
+            throw new RuntimeException("Bad MsgSummary header");
+          }
+        }
+        finally
+        {
+          paramObject.recycle();
+        }
+        paramField = new MsgSummary();
+        b(paramField, paramObject, ParcelHelper.a(paramField));
+        paramObject.recycle();
+        return paramField;
+      }
+      QLog.e("Recent.Processor", 1, new Object[] { "unparcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
+      return null;
+    }
+    QLog.e("Recent.Processor", 1, new Object[] { "unparcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
     return null;
   }
   
-  public final void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
+  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    b(paramObject, paramParcel, paramArrayList);
+    super.a(paramObject, paramArrayList, paramParcel);
   }
-  
-  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
   
   protected byte[] a(Object paramObject, Field paramField)
   {
+    if ((paramObject instanceof RecentBaseData))
+    {
+      if (paramField.getType() == MsgSummary.class)
+      {
+        Parcel localParcel = Parcel.obtain();
+        localParcel.setDataPosition(0);
+        try
+        {
+          localObject = (MsgSummary)paramField.get(paramObject);
+          if (localObject == null) {
+            localParcel.writeByteArray(a);
+          }
+          for (;;)
+          {
+            paramObject = localParcel.marshall();
+            localParcel.recycle();
+            return paramObject;
+            localParcel.writeByteArray(b);
+            c(localObject, ParcelHelper.a(localObject), localParcel);
+          }
+          paramObject = paramObject.getClass();
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localObject = new StringBuilder().append("get MsgSummary error. object=");
+          if (paramObject == null) {
+            break label145;
+          }
+        }
+        Object localObject = ((StringBuilder)localObject).append(paramObject).append(", field=");
+        if (paramField != null) {}
+        for (paramObject = paramField.getName();; paramObject = "NullField")
+        {
+          throw new RuntimeException(paramObject, localIllegalAccessException);
+          label145:
+          paramObject = "NullObject";
+          break;
+        }
+      }
+      StringBuilder localStringBuilder = new StringBuilder().append("unrecognize type ");
+      if (paramField != null)
+      {
+        paramField = paramField.getType();
+        paramField = localStringBuilder.append(paramField).append("(");
+        if (paramObject == null) {
+          break label226;
+        }
+      }
+      label226:
+      for (paramObject = paramObject.getClass();; paramObject = "NullObject")
+      {
+        throw new ParcelHelper.UnsupportedFieldTypeException(paramObject + ")");
+        paramField = "NullField";
+        break;
+      }
+    }
+    QLog.e("Recent.Processor", 1, new Object[] { "parcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
     return null;
   }
   
-  protected void b(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
+  void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    HashMap localHashMap = new HashMap(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    Object localObject;
-    int i;
-    int k;
-    while (paramArrayList.hasNext())
-    {
-      localObject = (Field)paramArrayList.next();
-      ((Field)localObject).setAccessible(true);
-      String str = ((Field)localObject).getName();
-      i = ((Field)localObject).getModifiers();
-      localHashMap.put(str + "_" + i, localObject);
-      continue;
-      switch (k)
-      {
-      }
-    }
-    for (;;)
-    {
-      if (paramParcel.dataAvail() > 0)
-      {
-        localObject = paramParcel.readString();
-        i = paramParcel.readInt();
-        k = paramParcel.readInt();
-        paramArrayList = (Field)localHashMap.remove((String)localObject + "_" + i);
-        if (paramArrayList == null) {
-          throw new ParcelHelper.FieldChangedException("Field " + (String)localObject + "(" + paramObject + ") not found");
-        }
-        int j = a(paramArrayList);
-        i = j;
-        if (k == 4)
-        {
-          i = j;
-          if (j == -1) {
-            i = 4;
-          }
-        }
-        if (i == k) {
-          break;
-        }
-        paramArrayList = new StringBuilder().append("Field ").append((String)localObject).append("(");
-        paramParcel = paramObject;
-        if (paramObject != null) {
-          paramParcel = paramObject.getClass().getName();
-        }
-        throw new ParcelHelper.FieldChangedException(paramParcel + ") type changed" + k + "->" + i);
-        try
-        {
-          paramArrayList.set(paramObject, Byte.valueOf(paramParcel.readByte()));
-        }
-        catch (ParcelHelper.FieldChangedException paramObject)
-        {
-          throw paramObject;
-          paramArrayList.set(paramObject, Integer.valueOf(paramParcel.readInt()));
-        }
-        catch (Throwable paramObject)
-        {
-          throw new RuntimeException(paramObject);
-        }
-        paramArrayList.set(paramObject, paramParcel.readString());
-        continue;
-        paramArrayList.set(paramObject, TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-        continue;
-        localObject = new byte[paramParcel.readInt()];
-        paramParcel.readByteArray((byte[])localObject);
-        paramArrayList.set(paramObject, a(paramObject, paramArrayList, (byte[])localObject));
-        continue;
-        if (paramParcel.readInt() != 1) {
-          break label552;
-        }
-      }
-    }
-    label552:
-    for (boolean bool = true;; bool = false)
-    {
-      paramArrayList.set(paramObject, Boolean.valueOf(bool));
-      break;
-      paramArrayList.set(paramObject, Long.valueOf(paramParcel.readLong()));
-      break;
-      if (localHashMap.size() > 0)
-      {
-        paramObject = "object " + paramObject.getClass() + " field changed";
-        QLog.e("Recent.Parcel", 1, paramObject);
-        throw new RuntimeException(paramObject);
-      }
-      return;
-    }
-  }
-  
-  void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
-  
-  final boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    return c(paramObject, paramArrayList, paramParcel);
-  }
-  
-  protected final boolean c(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    Field localField;
-    int j;
-    for (;;)
-    {
-      try
-      {
-        localIterator = paramArrayList.iterator();
-        paramArrayList = null;
-      }
-      catch (ParcelHelper.UnsupportedFieldTypeException paramObject)
-      {
-        Iterator localIterator;
-        throw paramObject;
-        paramParcel.writeInt(localField.getInt(paramObject));
-        continue;
-      }
-      catch (IllegalAccessException paramObject)
-      {
-        label68:
-        throw new RuntimeException(paramObject);
-      }
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localField = (Field)localIterator.next();
-      localField.setAccessible(true);
-      j = a(localField);
-      i = j;
-      if (j == -1)
-      {
-        paramArrayList = a(paramObject, localField);
-        if (paramArrayList == null) {
-          break label331;
-        }
-        i = 4;
-      }
-      if (i == -1) {
-        QLog.d("Recent.Parcel", 2, "Unsupported type " + paramObject.getClass() + "(" + localField.getName() + ")");
-      }
-      paramParcel.writeString(localField.getName());
-      paramParcel.writeInt(localField.getModifiers());
-      paramParcel.writeInt(i);
-      switch (i)
-      {
-      case 0: 
-        paramParcel.writeByte(localField.getByte(paramObject));
-        break;
-      case 1: 
-      case 2: 
-        paramParcel.writeString((String)localField.get(paramObject));
-        break;
-      case 7: 
-        a((CharSequence)localField.get(paramObject), paramParcel);
-        break;
-      case 3: 
-        TextUtils.writeToParcel((CharSequence)localField.get(paramObject), paramParcel, 0);
-        break;
-      case 4: 
-        paramParcel.writeInt(paramArrayList.length);
-        paramParcel.writeByteArray(paramArrayList);
-      }
-    }
-    if (localField.getBoolean(paramObject)) {}
-    for (int i = 1;; i = 0)
-    {
-      paramParcel.writeInt(i);
-      break;
-      paramParcel.writeLong(localField.getLong(paramObject));
-      break;
-      return true;
-      label331:
-      i = j;
-      break label68;
-      break;
-    }
+    super.b(paramObject, paramArrayList, paramParcel);
   }
 }
 

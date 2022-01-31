@@ -1,22 +1,6 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-public class aope
-  implements View.OnClickListener
+public abstract interface aope
 {
-  public aope(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent();
-    paramView.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
-  }
+  public abstract void a(long paramLong);
 }
 
 

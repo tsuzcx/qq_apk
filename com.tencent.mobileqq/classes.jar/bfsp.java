@@ -1,6 +1,10 @@
+import android.view.View;
+
 public abstract interface bfsp
 {
-  public abstract void a();
+  public abstract void a(View paramView);
+  
+  public abstract void b(View paramView);
 }
 
 

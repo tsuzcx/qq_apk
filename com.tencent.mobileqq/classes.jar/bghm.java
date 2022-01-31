@@ -1,55 +1,55 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper.1;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class bghm
-  extends RemoteCommand
+  implements myy
 {
-  private boolean a;
+  public bghm(VipComicHelper.1 param1) {}
   
-  public bghm(String paramString, boolean paramBoolean)
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramString);
-    this.a = paramBoolean;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new bghm("qqcomicemoticonipccmd", false));
+    int j = 0;
+    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString == null) {
+      return;
     }
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
     }
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return null;
-        localObject = (QQAppInterface)localObject;
-      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
-      localObject = (bghk)((QQAppInterface)localObject).getManager(147);
-    } while (localObject == null);
-    ((bghk)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
-    return null;
+    }
+    for (int i = 0;; i = 1)
+    {
+      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i == 0) {
+        break;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt + "|");
+      ((StringBuilder)localObject).append(j + "|");
+      ((StringBuilder)localObject).append(l + "|");
+      ((StringBuilder)localObject).append("|||||");
+      axpy.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
+      return;
+    }
   }
   
-  public boolean isSynchronized()
-  {
-    return this.a;
-  }
+  public void progress(int paramInt) {}
 }
 
 

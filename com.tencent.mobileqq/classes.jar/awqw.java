@@ -1,17 +1,12 @@
 import android.view.View;
 
-public class awqw
-  implements awrb<awpp, awxw>
+public abstract interface awqw
 {
-  public void a(awpp paramawpp, awxw paramawxw)
-  {
-    paramawxw.a(paramawpp);
-    paramawxw.a().setOnClickListener(new awqx(this, paramawpp));
-  }
+  public abstract void a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awqw
  * JD-Core Version:    0.7.0.1
  */

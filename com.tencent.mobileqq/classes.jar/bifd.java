@@ -1,11 +1,8 @@
-public final class bifd
+import cooperation.weiyun.sdk.download.DownloadType;
+
+public abstract interface bifd
 {
-  public int a;
-  public long a;
-  public String a;
-  public Throwable a = null;
-  public long b;
-  public long c;
+  public abstract void a(biei parambiei, DownloadType paramDownloadType, bifa parambifa);
 }
 
 

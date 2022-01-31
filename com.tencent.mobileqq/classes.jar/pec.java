@@ -1,6 +1,5 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import org.json.JSONObject;
 
 public class pec
@@ -8,36 +7,23 @@ public class pec
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
     JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("id_test", new JSONObject());
+    pek.a(paramBaseArticleInfo, localJSONObject1, Utils.toLong(paramBaseArticleInfo.mSubscribeID));
+    pek.r(paramBaseArticleInfo, localJSONObject1);
+    pek.u(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_multi_image", new JSONObject());
     JSONObject localJSONObject2 = new JSONObject();
-    String str;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      str = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", str);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      pen.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label130;
-      }
-      pen.a(paramBaseArticleInfo, localJSONObject1);
-      pen.b(paramBaseArticleInfo, localJSONObject1);
-    }
-    for (;;)
-    {
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.e(paramBaseArticleInfo, localJSONObject1);
-      pen.g(paramBaseArticleInfo, localJSONObject1);
-      pen.Y(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      pen.a(localJSONObject1, paramBaseArticleInfo);
-      pen.ab(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
-      str = null;
-      break;
-      label130:
-      pen.d(paramBaseArticleInfo, localJSONObject1);
-    }
+    localJSONObject2.put("summary_text", ajya.a(2131713046));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    pek.a(paramBaseArticleInfo, localJSONObject1, false);
+    pek.m(paramBaseArticleInfo, localJSONObject1);
+    pek.C(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 

@@ -1,8 +1,24 @@
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface wxw
+class wxw
+  implements wxt
 {
-  public abstract void a(Bundle paramBundle);
+  wxw(wxv paramwxv, String paramString) {}
+  
+  public void a(Bundle paramBundle)
+  {
+    boolean bool = paramBundle.getBoolean("isSuccess", false);
+    if (bool)
+    {
+      paramBundle = paramBundle.getString("data");
+      this.jdField_a_of_type_Wxv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_Wxv.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+  }
 }
 
 

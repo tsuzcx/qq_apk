@@ -1,25 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoInfo.VideoRemark;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
 public final class bhex
-  implements Parcelable.Creator<VideoInfo.VideoRemark>
+  implements Parcelable.Creator<BusinessAlbumInfo>
 {
-  public VideoInfo.VideoRemark a(Parcel paramParcel)
+  public BusinessAlbumInfo a(Parcel paramParcel)
   {
-    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
-    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.c = paramParcel.readString();
-    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoRemark.d = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
-    return localVideoRemark;
+    return new BusinessAlbumInfo(paramParcel, null);
   }
   
-  public VideoInfo.VideoRemark[] a(int paramInt)
+  public BusinessAlbumInfo[] a(int paramInt)
   {
-    return new VideoInfo.VideoRemark[paramInt];
+    return new BusinessAlbumInfo[paramInt];
   }
 }
 

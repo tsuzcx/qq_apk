@@ -1,31 +1,30 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aeoi
-  extends ajta
+  extends aqup
 {
-  aeoi(aeoe paramaeoe) {}
+  aeoi(aeoc paramaeoc) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  protected void a()
   {
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
-        aeoe.a(this.a);
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (paramBoolean1.booleanValue());
-        paramString1 = BaseActivity.sTopActivity;
-      } while (paramString1 == null);
-      bbcv.a(paramString1, 230, paramString1.getString(2131689957), null, null, paramString1.getString(2131719540), new aeoj(this, paramString1), null).show();
-      return;
+    if (((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      aeoc.a(this.a).a(this.a.jdField_a_of_type_Aexw, new Object[0]);
     }
-    bcpw.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
+  }
+  
+  protected void b()
+  {
+    if (((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Aexw.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aqui)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aeoc.b(this.a).a() == 14)) {
+      aeoc.c(this.a).a();
+    }
   }
 }
 

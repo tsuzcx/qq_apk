@@ -1,13 +1,17 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 
-public abstract class anku
+class anku
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public boolean a = true;
+  anku(ankn paramankn) {}
   
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.cancel();
+    ankn.a(this.a).c();
+  }
 }
 
 

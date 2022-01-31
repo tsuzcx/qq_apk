@@ -1,6 +1,6 @@
 public abstract interface zak
 {
-  public abstract void a(boolean paramBoolean, zai paramzai);
+  public abstract void a(zaf paramzaf);
 }
 
 

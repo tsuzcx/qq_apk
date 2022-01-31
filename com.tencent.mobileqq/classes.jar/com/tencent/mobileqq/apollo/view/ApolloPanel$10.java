@@ -17,7 +17,7 @@ class ApolloPanel$10
         QLog.d("ApolloPanel", 2, "func initLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
       }
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
-      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Ajqg);
+      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Ajqe);
       this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
     }

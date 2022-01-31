@@ -1,69 +1,100 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.PayJsPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class nrx
-  implements View.OnClickListener
+  extends bcaz
+  implements bcbx
 {
-  public nrx(CustomTabView paramCustomTabView, nru paramnru, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2) {}
-  
-  public void onClick(View paramView)
+  public nrx(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    nrk.a(null, "gouwu.tab.click", this.jdField_a_of_type_Nru.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getTag() == null) {}
-    for (int i = 0;; i = ((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue())
-    {
-      paramView = Integer.valueOf(i);
-      if (paramView.intValue() != 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        nrk.a(this.jdField_a_of_type_Nru.a, paramView.intValue());
-      }
-      if (this.jdField_a_of_type_Nru.a != this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a) {
-        break;
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a = this.jdField_a_of_type_Nru.a;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_Nru.f));
-    if ((CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView) != null) && (!bbjw.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView)))) {
-      CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView).setTextColor(Color.parseColor(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView)));
-    }
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_AndroidWidgetTextView);
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Nru.e);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = vzo.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = vzo.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-    paramView = URLDrawable.getDrawable(this.jdField_a_of_type_Nru.d, (URLDrawable.URLDrawableOptions)localObject);
-    if (paramView != null) {
-      this.b.setImageDrawable(paramView);
-    }
-    if ((CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView) != null) && (!bbjw.a(CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView))))
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = vzo.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = vzo.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-      localObject = URLDrawable.getDrawable(CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), localURLDrawableOptions);
-      if (paramView != null) {
-        CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView).setImageDrawable((Drawable)localObject);
-      }
-    }
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.b);
-    CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Nru.c);
-    if (bbjw.a(this.jdField_a_of_type_Nru.b))
-    {
-      nrk.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), "3046055438", "QQ购物");
-      return;
-    }
-    nrk.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a, this.jdField_a_of_type_Nru.b);
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
+  
+  public void a()
+  {
+    super.doOnResume();
+  }
+  
+  public void b()
+  {
+    super.doOnPause();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    super.bindJavaScript(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("EcshopNewPageWebViewBuilder", 2, "[bindJavaScript]");
+    }
+    paramArrayList.add(new QWalletPayJsPlugin());
+    paramArrayList.add(new PayJsPlugin());
+    paramArrayList.add(new QWalletCommonJsPlugin());
+    paramArrayList.add(new QWalletBluetoothJsPlugin());
+    paramArrayList.add(new sfk());
+    paramArrayList.add(new arne());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new armg());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+    paramArrayList.add(new bbvg());
+    paramArrayList.add(new QWalletMixJsPlugin());
+  }
+  
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
+  {
+    super.buildBaseWebView(paramAppInterface);
+  }
+  
+  public void c()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 

@@ -1,6 +1,6 @@
 public abstract interface amki
 {
-  public abstract void e();
+  public abstract void onColorNoteAnimFinish();
 }
 
 

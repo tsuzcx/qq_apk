@@ -1,27 +1,42 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
 public class aijn
-  implements Animation.AnimationListener
+  implements bfub
 {
-  public aijn(SpecailCareListActivity paramSpecailCareListActivity, aijz paramaijz) {}
+  public aijn(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_Aijz.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367679);
-    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Aijz.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Aijz.a.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    if (bbfj.d(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
+      this.a.jdField_a_of_type_Boolean = true;
+      ((avnj)this.a.app.getManager(91)).a();
+      return true;
+    }
+    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    return true;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

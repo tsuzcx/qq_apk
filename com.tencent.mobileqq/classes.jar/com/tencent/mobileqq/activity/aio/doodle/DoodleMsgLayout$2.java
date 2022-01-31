@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.util.MQLruCache;
-import bawu;
+import baxi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -15,7 +15,7 @@ class DoodleMsgLayout$2
   
   public void run()
   {
-    Bitmap localBitmap = bawu.a(BaseApplicationImpl.getContext().getResources(), 2130839145);
+    Bitmap localBitmap = baxi.a(BaseApplicationImpl.getContext().getResources(), 2130839145);
     if ((localBitmap != null) && (BaseApplicationImpl.sImageCache != null)) {
       BaseApplicationImpl.sImageCache.put("aio_doodle_progress", localBitmap, (byte)0);
     }

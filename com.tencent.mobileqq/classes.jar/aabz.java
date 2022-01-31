@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 class aabz
-  implements View.OnClickListener
+  extends JobSegment<asiw, asiw>
 {
-  aabz(aabw paramaabw, aabv paramaabv, aabn paramaabn, JSONObject paramJSONObject, aabm paramaabm) {}
+  aabz(aabx paramaabx, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  protected void a(JobContext paramJobContext, asiw paramasiw)
   {
-    this.jdField_a_of_type_Aabw.d();
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_Aabv.a);
-    aabw.a(this.jdField_a_of_type_Aabw, this.jdField_a_of_type_Aabv, 1);
-    aabw.b(this.jdField_a_of_type_Aabw, 4, this.jdField_a_of_type_Aabn, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Aabm);
+    asjb.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new aaca(this, this));
   }
 }
 

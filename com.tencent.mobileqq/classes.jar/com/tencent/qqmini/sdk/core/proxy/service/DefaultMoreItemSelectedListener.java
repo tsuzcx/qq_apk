@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bemw;
-import beru;
-import besi;
+import benn;
 import besl;
-import beuc;
-import beyu;
-import bffl;
+import besz;
+import betc;
+import beut;
+import bezl;
+import bfgc;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -19,20 +19,20 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class DefaultMoreItemSelectedListener
-  implements bffl
+  implements bfgc
 {
   private static final String TAG = "DefaultMoreItemSelectedListener";
   
-  private void reportClick(besi parambesi, String paramString)
+  private void reportClick(besz parambesz, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (!parambesi.a().isEngineTypeMiniGame()) {
+    while (!parambesz.a().isEngineTypeMiniGame()) {
       return;
     }
-    beyu.a(parambesi.a(), beyu.a(parambesi.a()), null, "user_click", "more_button", paramString);
+    bezl.a(parambesz.a(), bezl.a(parambesz.a()), null, "user_click", "more_button", paramString);
   }
   
-  private void startAboutPage(Activity paramActivity, MiniAppInfo paramMiniAppInfo, beru paramberu)
+  private void startAboutPage(Activity paramActivity, MiniAppInfo paramMiniAppInfo, besl parambesl)
   {
     MainPageFragment.a(paramActivity, paramMiniAppInfo, paramMiniAppInfo.verType);
   }
@@ -51,11 +51,11 @@ public class DefaultMoreItemSelectedListener
     {
       for (;;)
       {
-        besl.d("DefaultMoreItemSelectedListener", "startComplainAndCallback, url = " + "");
+        betc.d("DefaultMoreItemSelectedListener", "startComplainAndCallback, url = " + "");
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + beuc.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
+    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + beut.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
     paramString = new Intent();
     paramString.putExtra("url", (String)localObject);
     paramString.putExtra("title", "投诉与反馈");
@@ -65,41 +65,41 @@ public class DefaultMoreItemSelectedListener
     ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(paramActivity, paramString);
   }
   
-  public void onMoreItemSelected(besi parambesi, int paramInt)
+  public void onMoreItemSelected(besz parambesz, int paramInt)
   {
-    if (parambesi == null) {
+    if (parambesz == null) {
       return;
     }
     String str = "";
     if ((paramInt >= 100) && (paramInt <= 200))
     {
-      parambesi.a(paramInt, null);
-      reportClick(parambesi, "share_" + paramInt);
+      parambesz.a(paramInt, null);
+      reportClick(parambesz, "share_" + paramInt);
       return;
     }
-    Activity localActivity = parambesi.a();
-    MiniAppInfo localMiniAppInfo = parambesi.a();
+    Activity localActivity = parambesz.a();
+    MiniAppInfo localMiniAppInfo = parambesz.a();
     switch (paramInt)
     {
     }
     for (;;)
     {
-      reportClick(parambesi, str);
+      reportClick(parambesz, str);
       return;
-      parambesi.a(1, null);
+      parambesz.a(1, null);
       str = "share_QQ";
       continue;
-      parambesi.a(2, null);
+      parambesz.a(2, null);
       str = "share_QZ";
       continue;
-      parambesi.a(3, null);
+      parambesz.a(3, null);
       str = "share_WX";
       continue;
-      parambesi.a(4, null);
+      parambesz.a(4, null);
       str = "share_Moments";
       continue;
       if ((localActivity != null) && (localMiniAppInfo != null)) {
-        startAboutPage(localActivity, localMiniAppInfo, parambesi.a());
+        startAboutPage(localActivity, localMiniAppInfo, parambesz.a());
       }
       str = "about";
       continue;
@@ -108,10 +108,10 @@ public class DefaultMoreItemSelectedListener
       }
       str = "report";
       continue;
-      parambesi.a();
-      bemw.a(localActivity, "调试面板需重启生效", 1).a();
+      parambesz.a();
+      benn.a(localActivity, "调试面板需重启生效", 1).a();
       continue;
-      parambesi.b();
+      parambesz.b();
       continue;
       str = "cancel";
       continue;

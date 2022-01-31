@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bcpw;
+import bcql;
 
 class PayJsPlugin$3$1
   implements Runnable
@@ -9,7 +9,7 @@ class PayJsPlugin$3$1
   
   public void run()
   {
-    bcpw.a(this.this$1.this$0.jsPluginEngine.getActivityContext(), this.val$errMsg, 0).a();
+    bcql.a(this.this$1.this$0.jsPluginEngine.getActivityContext(), this.val$errMsg, 0).a();
   }
 }
 

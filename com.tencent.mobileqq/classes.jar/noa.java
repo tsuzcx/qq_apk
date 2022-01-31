@@ -1,35 +1,72 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 class noa
-  implements bfoq
+  implements BusinessObserver
 {
-  noa(nnx paramnnx, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, bfol parambfol) {}
+  noa(nnu paramnnu, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    case 0: 
-      acxv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_Bfol.dismiss();
+    Object localObject1 = null;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean) {
       return;
     }
-    acxv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_Bfol.dismiss();
+    for (;;)
+    {
+      try
+      {
+        localObject2 = paramBundle.getByteArray("data");
+        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject2);
+          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+          localObject1 = paramBundle;
+          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
+          {
+            localObject1 = paramBundle;
+            if (paramBundle.seqno.has())
+            {
+              localObject1 = paramBundle;
+              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              {
+                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+                  this.jdField_a_of_type_Nnu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                }
+                localObject1 = ((SharedPreferences)localObject2).edit();
+                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
+                ((SharedPreferences.Editor)localObject1).commit();
+                localObject1 = paramBundle;
+              }
+            }
+          }
+          if (localObject1 != null) {
+            break;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          break label187;
+        }
+        paramBundle = paramBundle;
+        paramBundle = (Bundle)localObject1;
+      }
+      label187:
+      localObject1 = paramBundle;
+    }
   }
 }
 

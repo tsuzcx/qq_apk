@@ -1,59 +1,138 @@
-import android.annotation.TargetApi;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(11)
 public class rft
-  extends BaseMovementMethod
+  extends BaseAdapter
 {
-  private static rft a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  private List<pbo> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private List<Integer> b = new ArrayList();
   
-  public static rft a()
+  public rft(Context paramContext, HorizontalListView paramHorizontalListView, boolean paramBoolean)
   {
-    if (a == null) {
-      a = new rft();
-    }
-    return a;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new rfu(this, paramContext));
   }
   
-  public void initialize(TextView paramTextView, Spannable paramSpannable)
+  private void a(pbo parampbo)
   {
-    Selection.removeSelection(paramSpannable);
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 0))
+    if (!this.b.contains(Integer.valueOf(parampbo.jdField_a_of_type_Int)))
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length > 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramTextView);
-        }
-        for (;;)
-        {
-          return true;
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
-        }
-      }
-      Selection.removeSelection(paramSpannable);
+      nol.a(null, "", "0X800992A", "0X800992A", 0, 0, "", "", "", "", false);
+      this.b.add(Integer.valueOf(parampbo.jdField_a_of_type_Int));
     }
-    return false;
+  }
+  
+  private void a(pbo parampbo, View paramView)
+  {
+    rfv localrfv = (rfv)paramView.getTag();
+    Object localObject = paramView.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
+    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    rfv.a(localrfv).setText(parampbo.jdField_a_of_type_JavaLangString);
+    rfv.b(localrfv).setText(bhvy.a(parampbo.jdField_c_of_type_Int));
+    paramView = URLDrawable.URLDrawableOptions.obtain();
+    localObject = new ColorDrawable(0);
+    paramView.mFailedDrawable = ((Drawable)localObject);
+    paramView.mLoadingDrawable = ((Drawable)localObject);
+    paramView = URLDrawable.getDrawable(parampbo.jdField_c_of_type_JavaLangString, paramView);
+    rfv.a(localrfv).setImageDrawable(paramView);
+    a(parampbo);
+  }
+  
+  public void a(List<pbo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramList = BaseApplicationImpl.getApplication().getResources();
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 2))
+    {
+      this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - actj.a(11.0F, paramList) - actj.a(24, paramList)) * 0.5F));
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      return;
+      if (this.jdField_a_of_type_JavaUtilList.size() == 3)
+      {
+        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - actj.a(15.0F, paramList) - actj.a(24, paramList)) / 3.0F));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = ((int)((paramList.getDisplayMetrics().widthPixels - actj.a(15.0F, paramList) - actj.a(12, paramList)) / 2.5F));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(1);
+      }
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView = paramView.inflate(2131560015, paramViewGroup, false);
+        paramViewGroup = new rfv(this, null);
+        rfv.a(paramViewGroup, (ImageView)paramView.findViewById(2131363736));
+        rfv.a(paramViewGroup, (TextView)paramView.findViewById(2131363737));
+        rfv.b(paramViewGroup, (TextView)paramView.findViewById(2131363727));
+        paramView.setTag(paramViewGroup);
+      }
+    }
+    for (;;)
+    {
+      paramViewGroup = (pbo)getItem(paramInt);
+      if (paramViewGroup != null) {
+        a(paramViewGroup, paramView);
+      }
+      return paramView;
+      paramView = paramView.inflate(2131561192, paramViewGroup, false);
+      break;
+    }
   }
 }
 

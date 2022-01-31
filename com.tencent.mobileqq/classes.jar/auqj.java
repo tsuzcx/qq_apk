@@ -1,27 +1,13 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.BreathEffectView;
 
-class auqj
+public class auqj
   implements ValueAnimator.AnimatorUpdateListener
 {
-  auqj(auqi paramauqi, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public auqj(BreathEffectView paramBreathEffectView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-auqi.a(this.jdField_a_of_type_Auqi) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Auqi.f);
-    this.b.setAlpha(1.0F - f);
-  }
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

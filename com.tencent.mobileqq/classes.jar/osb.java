@@ -1,13 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract interface osb
+public class osb
+  extends akat
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public osb(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
-  
-  public abstract void b(MessageRecord paramMessageRecord);
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
+  }
 }
 
 

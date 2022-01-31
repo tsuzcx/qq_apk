@@ -1,25 +1,23 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import org.xmlpull.v1.XmlSerializer;
 
-class akhs
-  extends akuj
+final class akhs
+  extends axws
 {
-  akhs(akhq paramakhq, String paramString1, long paramLong, String paramString2)
+  akhs(String paramString)
   {
-    super(paramString1);
+    super(paramString);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(XmlSerializer paramXmlSerializer)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.S == null) {}
+    for (String str = "";; str = this.S)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
     }
-    if (paramInt != 0) {
-      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
-    }
-    akhq.a(this.jdField_a_of_type_Akhq, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
   }
 }
 

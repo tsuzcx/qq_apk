@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkp;
+import alko;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArDefaultSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new alkp();
+  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new alko();
   public int a;
   public String a;
   public int b;

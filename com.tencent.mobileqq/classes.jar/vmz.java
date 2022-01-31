@@ -1,19 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 
-class vmz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class vmz
+  implements Animator.AnimatorListener
 {
-  private vmz(vmt paramvmt) {}
+  vmz(vna paramvna, ValueAnimator paramValueAnimator) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
+    if (this.jdField_a_of_type_Vna != null) {
+      this.jdField_a_of_type_Vna.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
     }
-    this.a.jdField_a_of_type_Vmx.a(this.a.a());
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vna != null) {
+      this.jdField_a_of_type_Vna.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vna != null) {
+      this.jdField_a_of_type_Vna.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
   }
 }
 

@@ -1,78 +1,40 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mbl
-  extends BroadcastReceiver
+  extends mbq
 {
-  public mbl(AVActivity paramAVActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mbl(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    super(paramContext, paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.d())
       {
-        if (this.a.a.a().d == 4)
-        {
-          if (this.a.d != 3000) {
-            break label237;
-          }
-          if (!this.a.a.a().j) {
-            break label210;
-          }
-          axqw.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
-        }
-        if (this.a.g)
-        {
-          if (!this.a.a.a().j) {
-            break label424;
-          }
-          axqw.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
-        }
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
       }
     }
-    for (;;)
-    {
-      if (AVActivity.a(this.a) != null) {
-        AVActivity.a(this.a).a(this.a.isResume());
-      }
-      this.a.a.a("backgroundReason", "1");
-      ldj.a = "1";
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
       return;
-      label210:
-      axqw.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
-      break;
-      label237:
-      if (this.a.d != 1) {
-        break;
-      }
-      if (this.a.a.a().j)
-      {
-        if (this.a.a.a().C == 10)
-        {
-          axqw.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
-          break;
-        }
-        axqw.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
-        break;
-      }
-      if (!this.a.a.a().k) {
-        break;
-      }
-      if (this.a.a.a().C == 10)
-      {
-        axqw.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
-        break;
-      }
-      axqw.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
-      break;
-      label424:
-      axqw.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
     }
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
   }
 }
 

@@ -1,75 +1,73 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
 class aepw
-  implements bcij<oidb_0x8e4.RspBody>
+  implements View.OnClickListener
 {
-  aepw(aepg paramaepg) {}
+  aepw(aepe paramaepe) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (paramRspBody == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "startAnotherRound failed! errorCode = " + paramInt);
-      }
-    }
+    if (this.a.jdField_a_of_type_Bcjg == null) {}
+    HashMap localHashMap;
+    label229:
     do
     {
-      bcpw.a(this.a.a(), 1, ajyc.a(2131705092), 1).a();
-      return;
-      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ChatActivity)))
+      Object localObject;
+      do
       {
-        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
-        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
-        localHotChatInfo.isGameRoom = true;
-        paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
-        Object localObject = paramRspBody.a();
-        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
-          ((List)localObject).add(localHotChatInfo);
+        do
+        {
+          return;
+          localObject = this.a.jdField_a_of_type_Bcjg.a();
+        } while (localObject == null);
+        localHashMap = ((bcjf)localObject).b();
+        localObject = ((bcjf)localObject).a();
+        if (paramView != this.a.p) {
+          break label229;
         }
-        paramRspBody.a(localHotChatInfo, 4);
-        localObject = this.a.a().getIntent();
-        paramRspBody = (oidb_0x8e4.RspBody)localObject;
-        if (localObject == null) {
-          paramRspBody = new Intent();
-        }
-        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
-        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uintype", 1);
-        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
-        paramRspBody.putExtra("uinname", localHotChatInfo.name);
-        paramRspBody.putExtra("hotnamecode", (String)localObject);
-        paramRspBody.putExtra("isNeedShowLoading", false);
-        paramRspBody.putExtra("leftViewText", this.a.a().getString(2131690331));
-        atbg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(awzw.a()));
-        paramInt = actn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramRspBody);
-        if (paramInt != 0) {
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() == 0) {
           break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "openAIO by start SplashAct");
+        if (localHashMap != null) {
+          this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
         }
-        localObject = this.a.jdField_a_of_type_Bcis.a();
-        if (localObject != null) {
-          ((bcir)localObject).a();
-        }
-        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramRspBody);
-      }
-      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+        this.a.l.setVisibility(4);
+        aepe.a(this.a).a(25);
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel == null) || (localObject == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
       return;
-    } while (paramInt != 2);
-    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "openAIO rediectToAIOWithMt 2");
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("textIcon"));
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(4);
+      this.a.l.setVisibility(0);
+      this.a.aK();
+      return;
+    } while (paramView != this.a.q);
+    if (aepe.b(this.a).a() != 3)
+    {
+      this.a.a(Integer.valueOf(3));
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+      this.a.l.setVisibility(4);
+      return;
+    }
+    this.a.aK();
   }
 }
 

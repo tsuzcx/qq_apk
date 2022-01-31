@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aoai;
-import aoaj;
+import aoan;
+import aoao;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class EmotionPanelDataBuilder$1
   implements Runnable
 {
-  public EmotionPanelDataBuilder$1(aoai paramaoai, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, aoaj paramaoaj) {}
+  public EmotionPanelDataBuilder$1(aoan paramaoan, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, aoao paramaoao) {}
   
   public void run()
   {

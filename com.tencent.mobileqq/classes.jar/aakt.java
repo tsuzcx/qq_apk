@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
 import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class aakt
-  implements DialogInterface.OnDismissListener
+  extends CharacterStyle
 {
   public aakt(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
-      AuthDevActivity.a(this.a, null);
-    }
+    paramTextPaint.setColor(-5855578);
   }
 }
 

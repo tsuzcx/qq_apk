@@ -1,30 +1,43 @@
-public class axmy
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+class axmy
+  implements ahbr
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  axmy(axmw paramaxmw, axnd paramaxnd) {}
   
-  public String a()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (axnf.a()) {
-      return this.jdField_b_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.DownSoLoader", 2, "[handleConfig] download resCode=" + paramInt + ",pathRes=" + paramPathResult);
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a(axmy paramaxmy)
-  {
-    if (paramaxmy == null) {}
-    while ((this.jdField_b_of_type_Boolean != paramaxmy.jdField_b_of_type_Boolean) || (!ahiy.c(this.jdField_a_of_type_JavaLangString, paramaxmy.jdField_a_of_type_JavaLangString)) || (!ahiy.c(this.jdField_b_of_type_JavaLangString, paramaxmy.jdField_b_of_type_JavaLangString))) {
-      return false;
+    VACDReportUtil.a(axmw.a(this.jdField_a_of_type_Axmw).a, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      axmw.a(this.jdField_a_of_type_Axmw, true);
+      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Axnd.b).getAbsolutePath();
+      axmw.a(this.jdField_a_of_type_Axmw, paramPathResult, this.jdField_a_of_type_Axnd);
+      return;
     }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (axmw.a(this.jdField_a_of_type_Axmw, this.jdField_a_of_type_Axnd))
+    {
+      axmw.a(this.jdField_a_of_type_Axmw, 0);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      axmw.a(this.jdField_a_of_type_Axmw, 4);
+      return;
+    }
+    if (paramPathResult.subErrCode == 404)
+    {
+      axmw.a(this.jdField_a_of_type_Axmw, 9);
+      return;
+    }
+    axmw.a(this.jdField_a_of_type_Axmw, 3);
   }
 }
 

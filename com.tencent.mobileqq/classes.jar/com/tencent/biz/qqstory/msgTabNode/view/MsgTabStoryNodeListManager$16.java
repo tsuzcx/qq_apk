@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.view;
 
-import thy;
+import thv;
 
 public class MsgTabStoryNodeListManager$16
   implements Runnable
 {
-  public MsgTabStoryNodeListManager$16(thy paramthy) {}
+  public MsgTabStoryNodeListManager$16(thv paramthv) {}
   
   public void run()
   {

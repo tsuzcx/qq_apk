@@ -1,36 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 class uqj
-  implements View.OnTouchListener
 {
-  uqj(uqh paramuqh) {}
+  public int a;
+  public CommentEntry a;
+  private int b = -1;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  uqj(uqe paramuqe)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (uqh.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(uqh.a(this.a), uqh.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, uqh.a(this.a).jdField_a_of_type_Boolean);
-      uqh.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      uqh.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
-    return false;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.b = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry)
+  {
+    return paramCommentEntry.commentId != this.b;
   }
 }
 

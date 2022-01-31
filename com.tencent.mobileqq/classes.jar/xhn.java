@@ -1,130 +1,117 @@
 import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.opengl.EGL14;
-import android.support.annotation.RequiresApi;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.mobileqq.shortvideo.filter.QQImage2FrameFilter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.opengl.EGLContext;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.videostory.video.SimpleGLThread.1;
+import com.tencent.biz.videostory.video.SimpleGLThread.3;
+import com.tencent.ttpic.baseutils.gles.EglCore;
+import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 
+@TargetApi(18)
 public class xhn
 {
-  private final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private avzm jdField_a_of_type_Avzm;
-  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private final int c;
-  private int d = 42;
-  private int e;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private EglCore jdField_a_of_type_ComTencentTtpicBaseutilsGlesEglCore;
+  private OffscreenSurface jdField_a_of_type_ComTencentTtpicBaseutilsGlesOffscreenSurface;
   
-  public xhn(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean, int paramInt4)
+  public xhn(EGLContext paramEGLContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt4;
+    paramString = new HandlerThread(paramString, 9);
+    paramString.start();
+    while (!paramString.isAlive()) {}
+    QLog.i("SimpleGLThread", 2, "create SimpleGLThread");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler.post(new SimpleGLThread.1(this, paramEGLContext));
   }
   
-  private int a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a()
   {
-    int i = 0;
-    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0)) {
-      if (paramBitmap == null) {
-        paramInt1 = i;
-      }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new SimpleGLThread.3(this));
     }
-    do
-    {
-      return paramInt1;
-      return GlUtil.createTexture(3553, paramBitmap);
-      i = GlUtil.createTexture(3553, paramBitmap);
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = new QQFilterRenderManager();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.pushChain(new int[] { 170 }, null);
-      List localList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(170);
-      if ((localList != null) && (localList.size() > 0) && ((localList.get(0) instanceof QQImage2FrameFilter))) {
-        ((QQImage2FrameFilter)localList.get(0)).setImageSize(paramBitmap.getWidth(), paramBitmap.getHeight());
-      }
-      paramInt2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(i);
-      paramInt1 = paramInt2;
-    } while (i <= 0);
-    GlUtil.deleteTexture(i);
-    return paramInt2;
   }
   
-  private int b(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a(Runnable paramRunnable)
   {
-    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0))
-    {
-      if (paramBitmap == null) {
-        return 0;
-      }
-      return GlUtil.createTexture(3553, paramBitmap);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    float f = paramInt1 * 1.0F / paramInt2;
-    f = paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight();
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    Matrix localMatrix = new Matrix();
-    localMatrix.postTranslate(i * -0.5F, j * -0.5F);
-    if ((this.e != 180) && (this.e != 270)) {
-      localMatrix.postRotate(-180.0F, 0.0F, 1.0F);
-    }
-    localMatrix.postScale(-1.0F, 1.0F);
-    f = paramInt1 * 1.0F / paramBitmap.getWidth();
-    localMatrix.postScale(f, f);
-    localMatrix.postTranslate(paramInt1 * 0.5F, paramInt2 * 0.5F);
-    localCanvas.drawBitmap(paramBitmap, localMatrix, null);
-    return GlUtil.createTexture(3553, localBitmap);
   }
   
-  public void a(int paramInt)
+  /* Error */
+  public void b(Runnable paramRunnable)
   {
-    this.d = paramInt;
-  }
-  
-  @TargetApi(17)
-  @RequiresApi(api=17)
-  public void a(List<Bitmap> paramList, xhh paramxhh)
-  {
-    xhi localxhi = new xhi(0, "success");
-    this.jdField_a_of_type_Avzm = new avzm();
-    avyy localavyy = new avyy(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, 1, false, 0);
-    localavyy.a(EGL14.eglGetCurrentContext());
-    QLog.d("MuiltiImageToVideo", 2, this.jdField_a_of_type_JavaLangString + " " + this.jdField_b_of_type_Int + " " + this.jdField_a_of_type_Int + " " + this.c);
-    this.jdField_a_of_type_Avzm.a(localavyy, new xho(this, paramList, paramxhh, localxhi));
-    try
-    {
-      try
-      {
-        wait();
-        return;
-      }
-      finally {}
-      return;
-    }
-    catch (InterruptedException paramList)
-    {
-      paramList.printStackTrace();
-    }
+    // Byte code:
+    //   0: new 4	java/lang/Object
+    //   3: dup
+    //   4: invokespecial 16	java/lang/Object:<init>	()V
+    //   7: astore_2
+    //   8: ldc 30
+    //   10: iconst_3
+    //   11: new 79	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 82
+    //   20: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: aload_2
+    //   24: invokevirtual 90	java/lang/Object:hashCode	()I
+    //   27: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 100	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: aload_2
+    //   37: monitorenter
+    //   38: aload_0
+    //   39: aload_1
+    //   40: invokevirtual 102	xhn:a	(Ljava/lang/Runnable;)V
+    //   43: aload_0
+    //   44: new 104	com/tencent/biz/videostory/video/SimpleGLThread$2
+    //   47: dup
+    //   48: aload_0
+    //   49: aload_2
+    //   50: invokespecial 107	com/tencent/biz/videostory/video/SimpleGLThread$2:<init>	(Lxhn;Ljava/lang/Object;)V
+    //   53: invokevirtual 102	xhn:a	(Ljava/lang/Runnable;)V
+    //   56: aload_2
+    //   57: invokevirtual 110	java/lang/Object:wait	()V
+    //   60: ldc 30
+    //   62: iconst_3
+    //   63: new 79	java/lang/StringBuilder
+    //   66: dup
+    //   67: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   70: ldc 112
+    //   72: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: aload_2
+    //   76: invokevirtual 90	java/lang/Object:hashCode	()I
+    //   79: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 100	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: aload_2
+    //   89: monitorexit
+    //   90: return
+    //   91: astore_1
+    //   92: ldc 30
+    //   94: iconst_0
+    //   95: ldc 114
+    //   97: invokestatic 117	com/tencent/TMG/utils/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: goto -12 -> 88
+    //   103: astore_1
+    //   104: aload_2
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	xhn
+    //   0	108	1	paramRunnable	Runnable
+    //   7	98	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   56	88	91	java/lang/InterruptedException
+    //   38	56	103	finally
+    //   56	88	103	finally
+    //   88	90	103	finally
+    //   92	100	103	finally
+    //   104	106	103	finally
   }
 }
 

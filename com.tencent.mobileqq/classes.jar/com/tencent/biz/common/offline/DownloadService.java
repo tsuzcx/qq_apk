@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Messenger;
-import nar;
+import nao;
 
 public class DownloadService
   extends BroadcastReceiver
@@ -13,7 +13,7 @@ public class DownloadService
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (nar.a(paramContext) == 1) {
+    if (nao.a(paramContext) == 1) {
       BidDownloader.a();
     }
   }

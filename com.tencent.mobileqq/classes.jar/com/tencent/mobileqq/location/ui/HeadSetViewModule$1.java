@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.location.ui;
 
-import arvi;
-import aryt;
+import arvk;
+import aryv;
 import java.util.ArrayList;
 
 public class HeadSetViewModule$1
   implements Runnable
 {
-  public HeadSetViewModule$1(arvi paramarvi, ArrayList paramArrayList) {}
+  public HeadSetViewModule$1(arvk paramarvk, ArrayList paramArrayList) {}
   
   public void run()
   {
-    arvi.a(this.this$0).a(this.a);
-    arvi.a(this.this$0, this.a);
+    arvk.a(this.this$0).a(this.a);
+    arvk.a(this.this$0, this.a);
   }
 }
 

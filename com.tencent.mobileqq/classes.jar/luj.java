@@ -1,77 +1,63 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class luj
-  extends LinkMovementMethod
+  extends alxm
 {
-  private static luj a;
-  public int a;
-  public int b = -7447805;
-  
-  public luj()
+  public String a(alxq paramalxq)
   {
-    this.jdField_a_of_type_Int = -10864125;
-  }
-  
-  static int a(TextView paramTextView, int paramInt1, int paramInt2)
-  {
-    paramTextView = paramTextView.getTag(paramInt1);
-    if ((paramTextView instanceof Integer)) {
-      paramInt2 = ((Integer)paramTextView).intValue();
+    paramalxq = lcj.g() + paramalxq.b + File.separator;
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getUnzipDirPath dir = " + paramalxq);
     }
-    return paramInt2;
+    return paramalxq;
   }
   
-  public static MovementMethod a()
+  public boolean a(alxq paramalxq, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Luj == null) {
-      jdField_a_of_type_Luj = new luj();
-    }
-    return jdField_a_of_type_Luj;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    long l1 = -1L;
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (paramalxq.a)
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
+      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getLong(paramalxq.b, -1L);
+      paramalxq = new File(a(paramalxq));
+      paramBoolean = bool2;
+      if (paramalxq.exists())
       {
-        if (i == 1)
+        long l2 = paramalxq.lastModified();
+        l1 = l2;
+        paramBoolean = bool2;
+        if (l3 > 0L)
         {
-          i = a(paramTextView, 2131376864, this.b);
-          localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-        }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
+          l1 = l2;
+          paramBoolean = bool2;
+          if (l3 != l2)
           {
-            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131376863, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+            paramBoolean = false;
+            l1 = l2;
           }
         }
       }
-      Selection.removeSelection(paramSpannable);
+      bool1 = paramBoolean;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AVRedPacketRDHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
+        bool1 = paramBoolean;
+      }
     }
-    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    return bool1;
+  }
+  
+  public String b(alxq paramalxq)
+  {
+    paramalxq = lcj.g() + paramalxq.b + ".end";
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketRDHandler", 2, "getDownloadPath path[" + paramalxq + "]");
+    }
+    return paramalxq;
   }
 }
 

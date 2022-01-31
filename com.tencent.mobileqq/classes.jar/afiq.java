@@ -1,25 +1,44 @@
-import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class afiq
-  implements mya
+  extends Handler
 {
-  public afiq(GroupSearchRecommendView paramGroupSearchRecommendView) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public void a()
+  public afiq(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+    this.a = new WeakReference(paramGroupSearchRecommendView);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
       return;
     }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

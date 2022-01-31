@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import axpt;
+import axpv;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class CrashUtils$1
@@ -10,7 +10,7 @@ public final class CrashUtils$1
   
   public void run()
   {
-    axpt.a(this.a);
+    axpv.a(this.a);
   }
 }
 

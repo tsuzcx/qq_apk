@@ -1,135 +1,43 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.transfile.FileDownloadFailedException;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import mqq.app.AccountNotMatchException;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aysn
-  extends ayrn
+class aysn
+  implements ITransactionCallback
 {
-  private float jdField_a_of_type_Float = 2.0F;
-  BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  public int a;
+  public awbg a;
+  public Transaction a;
   
-  public aysn(BaseApplicationImpl paramBaseApplicationImpl)
+  aysn(aysi paramaysi) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    try
-    {
-      this.jdField_a_of_type_Float = paramBaseApplicationImpl.getResources().getDisplayMetrics().density;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt + " sendInfo:" + this.jdField_a_of_type_Awbg);
     }
-    catch (Exception paramBaseApplicationImpl) {}
+    this.jdField_a_of_type_Aysi.f(paramInt);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    Object localObject1 = paramDownloadParams.url;
-    String str = "http://" + ((URL)localObject1).getAuthority() + "/" + ((URL)localObject1).getFile();
-    try
-    {
-      localObject1 = (MessageForText)paramDownloadParams.tag;
+    if (QLog.isColorLevel()) {
+      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onSuccess  erroCode:  sendInfo:" + this.jdField_a_of_type_Awbg);
     }
-    catch (Exception localException)
-    {
-      try
-      {
-        for (;;)
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(((MessageForText)localObject1).selfuin);
-          if ((localObject1 != null) && (localQQAppInterface != null)) {
-            break;
-          }
-          throw new FileDownloadFailedException(9366, 0L, "textMsg=" + localObject1 + " app=" + localQQAppInterface, false, false);
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-        }
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        Object localObject2;
-        for (;;)
-        {
-          localayvv = null;
-        }
-        ayvv localayvv = localayvv.a();
-        aywa localaywa = new aywa();
-        localaywa.jdField_b_of_type_Int = 131076;
-        localaywa.jdField_a_of_type_Long = localObject2.uniseq;
-        localaywa.jdField_b_of_type_JavaLangString = localObject2.selfuin;
-        localaywa.c = localObject2.frienduin;
-        localaywa.e = str;
-        localaywa.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
-        paramOutputStream = new aywd();
-        paramOutputStream.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-        paramOutputStream.jdField_a_of_type_Int = ((int)paramDownloadParams.downloaded);
-        localaywa.jdField_a_of_type_JavaLangObject = paramOutputStream;
-        paramOutputStream = localayvv.a(localaywa);
-        if (paramOutputStream.jdField_a_of_type_Int == 0) {}
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0)
-          {
-            if (paramOutputStream.jdField_a_of_type_Long != 9037L) {
-              break;
-            }
-            paramURLDrawableHandler.doCancel();
-          }
-          return null;
-        }
-        throw new FileDownloadFailedException((int)paramOutputStream.jdField_a_of_type_Long, 0L, paramOutputStream.jdField_a_of_type_JavaLangString, false, false);
-      }
+    paramArrayOfByte = this.jdField_a_of_type_Aysi.jdField_a_of_type_Ayqo;
+    paramArrayOfByte.e += this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.totalLength;
+    if (this.jdField_a_of_type_Aysi.jdField_a_of_type_Awbg != null) {
+      this.jdField_a_of_type_Aysi.i();
     }
+    this.jdField_a_of_type_Aysi.f(this.jdField_a_of_type_Awbg);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = null;
-    paramURLDrawableHandler = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), null);
-    if (paramURLDrawableHandler == null) {
-      paramFile = paramDownloadParams;
-    }
-    do
-    {
-      do
-      {
-        return paramFile;
-        int i = paramURLDrawableHandler.getWidth();
-        int j = paramURLDrawableHandler.getHeight();
-        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        paramDownloadParams.setDensity(160);
-        paramFile = new Canvas(paramDownloadParams);
-        Paint localPaint = new Paint(1);
-        localPaint.setColor(-16777216);
-        Rect localRect = new Rect(0, 0, i, j);
-        RectF localRectF = new RectF(localRect);
-        float f = 11.0F * this.jdField_a_of_type_Float;
-        paramFile.drawRoundRect(localRectF, f, f, localPaint);
-        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        paramFile.drawBitmap(paramURLDrawableHandler, localRect, localRect, localPaint);
-        paramFile = paramDownloadParams;
-      } while (paramURLDrawableHandler == null);
-      paramFile = paramDownloadParams;
-    } while (paramURLDrawableHandler.isRecycled());
-    paramURLDrawableHandler.recycle();
-    return paramDownloadParams;
-  }
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

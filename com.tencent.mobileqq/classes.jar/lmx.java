@@ -1,20 +1,8 @@
-public class lmx
+public abstract interface lmx
 {
-  public static int a(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals("point"))) {}
-    do
-    {
-      return 0;
-      if (paramString.equals("line")) {
-        return 1;
-      }
-      if (paramString.equals("square")) {
-        return 2;
-      }
-    } while (!paramString.equals("ellipse"));
-    return 3;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

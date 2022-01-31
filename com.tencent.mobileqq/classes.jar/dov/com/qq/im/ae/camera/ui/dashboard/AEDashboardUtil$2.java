@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bimt;
 import bink;
+import biob;
 import java.util.List;
 
 public final class AEDashboardUtil$2
   implements Runnable
 {
-  public AEDashboardUtil$2(bink parambink) {}
+  public AEDashboardUtil$2(biob parambiob) {}
   
   public void run()
   {
-    List localList1 = bimt.a();
-    List localList2 = bimt.b();
-    bimt.a(this.a, localList1, localList2);
+    List localList1 = bink.a();
+    List localList2 = bink.b();
+    bink.a(this.a, localList1, localList2);
   }
 }
 

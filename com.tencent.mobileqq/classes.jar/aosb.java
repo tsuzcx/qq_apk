@@ -1,17 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class aosb
-  implements aptu
+public class aosb
+  extends atzn
 {
-  aosb(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  public aosb(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    apue.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
   }
-  
-  public void b() {}
 }
 
 

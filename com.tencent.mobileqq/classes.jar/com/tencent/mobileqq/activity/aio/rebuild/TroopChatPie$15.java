@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.os.Handler;
 import android.os.Message;
-import bakk;
-import bakq;
+import baky;
+import bale;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -14,9 +14,9 @@ class TroopChatPie$15
   
   public void run()
   {
-    bakq localbakq = ((bakk)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a);
+    bale localbale = ((baky)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a);
     Message localMessage = this.this$0.b.obtainMessage(2);
-    localMessage.obj = localbakq;
+    localMessage.obj = localbale;
     this.this$0.b.sendMessage(localMessage);
   }
 }

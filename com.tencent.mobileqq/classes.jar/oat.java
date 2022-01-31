@@ -1,588 +1,363 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TimeZone;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class oat
 {
-  private static int a(VideoAdInfo paramVideoAdInfo, int paramInt)
+  private static volatile oat jdField_a_of_type_Oat;
+  public static boolean b;
+  public int a;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSystemSharedPreferences("ReadInJoySuperMaskAd", 0);
+  public AdvertisementInfo a;
+  public obp a;
+  public boolean a;
+  private int b;
+  private boolean c;
+  
+  private oat()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "getExtValue pos->" + paramInt + " , VideoAdInfo:" + paramVideoAdInfo);
-    }
-    int i;
-    if (paramVideoAdInfo == null) {
-      i = 0;
-    }
-    int j;
-    do
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  private static long a(long paramLong)
+  {
+    return (TimeZone.getTimeZone("GMT+8").getOffset(paramLong) + paramLong) / 86400000L;
+  }
+  
+  public static oat a()
+  {
+    if (jdField_a_of_type_Oat == null) {}
+    try
     {
-      return i;
-      j = b(paramVideoAdInfo.v, paramInt);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyAdSwitchUtil", 2, "getExtValue pos->" + paramInt + " , value:" + j);
-    return j;
+      if (jdField_a_of_type_Oat == null) {
+        jdField_a_of_type_Oat = new oat();
+      }
+      return jdField_a_of_type_Oat;
+    }
+    finally {}
   }
   
-  public static int a(ProteusBannerVideoItemData paramProteusBannerVideoItemData)
+  public static String b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isWebBottomAutoPlay->BannerVideoAdData:" + paramProteusBannerVideoItemData);
-    }
-    int i;
-    if (paramProteusBannerVideoItemData == null) {
-      i = 0;
-    }
-    int j;
-    do
+    try
     {
-      return i;
-      j = a(paramProteusBannerVideoItemData.v, 3);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyAdSwitchUtil", 2, "isWebBottomAutoPlay->value:" + j);
-    return j;
+      String str = onh.a().a("ad_mengceng", String.valueOf(1)).a();
+      return str;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  public static int a(AdvertisementInfo paramAdvertisementInfo)
+  public static boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isFeedsAutoPlay->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    int i;
-    if (paramAdvertisementInfo == null) {
-      i = 0;
-    }
-    int j;
-    do
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(206);
+    if (localAladdinConfig != null)
     {
-      return i;
-      j = b(paramAdvertisementInfo.mAdExtInfo, 2);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyAdSwitchUtil", 2, "isFeedsAutoPlay->value:" + j);
-    return j;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "getSwitchInt(" + paramInt + ")->switchStr:" + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt <= 0)) {}
-    do
-    {
-      return -1;
-      try
-      {
-        paramInt = Integer.parseInt(paramString.substring(paramInt - 1, paramInt));
-        return paramInt;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    paramString.printStackTrace();
-    return -1;
-  }
-  
-  private static int a(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "getSwitchFromExtra(" + paramInt + ")->extraData:" + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      for (;;)
-      {
-        return -1;
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          if (paramString2.has(paramString1))
-          {
-            paramString1 = paramString2.optString(paramString1);
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadInJoyAdSwitchUtil", 2, "getSwitchFromExtra(" + paramInt + ")->switchs:" + paramString1);
-            }
-            paramInt = a(paramString1, paramInt);
-            return paramInt;
-          }
-        }
-        catch (Exception paramString1) {}
-      }
-    } while (!QLog.isColorLevel());
-    paramString1.printStackTrace();
-    return -1;
-  }
-  
-  public static <T> T a(String paramString1, String paramString2, T paramT)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramT != null)) {
-      try
-      {
-        paramString1 = new JSONObject(paramString1);
-        if (paramString1.has(paramString2))
-        {
-          if ((paramT instanceof String)) {
-            return paramString1.optString(paramString2, (String)paramT);
-          }
-          if ((paramT instanceof Integer)) {
-            return Integer.valueOf(paramString1.optInt(paramString2, ((Integer)paramT).intValue()));
-          }
-          if ((paramT instanceof Double))
-          {
-            double d = paramString1.optDouble(paramString2, ((Double)paramT).doubleValue());
-            return Double.valueOf(d);
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          paramString1.printStackTrace();
-        }
-      }
-    }
-    return paramT;
-  }
-  
-  public static boolean a()
-  {
-    return Aladdin.getConfig(260).getIntegerFromString("interact_button_style", 0) == 1;
-  }
-  
-  public static boolean a(VideoAdInfo paramVideoAdInfo)
-  {
-    return a(paramVideoAdInfo, 1) == 1;
-  }
-  
-  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isADVideoDownloadProgress->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isVideoFeedsAdButtonNewStyle->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean a(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isServerRspReport->AdvertisementInfo:" + paramAdvertisementInfo + " adInfo = " + paramVideoAdInfo);
-    }
-    if ((paramAdvertisementInfo == null) && (paramVideoAdInfo == null)) {
-      return false;
-    }
-    int i = -1;
-    if (paramAdvertisementInfo != null) {
-      i = b(paramAdvertisementInfo.mAdExtInfo, 6);
-    }
-    if (paramVideoAdInfo != null) {
-      i = b(paramVideoAdInfo.v, 6);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isServerRspReport->value:" + i);
-    }
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
-  }
-  
-  public static boolean a(AdvertisementInfo paramAdvertisementInfo, ProteusBannerVideoItemData paramProteusBannerVideoItemData, Context paramContext, int paramInt)
-  {
-    if (((paramInt == 1) && (paramAdvertisementInfo == null)) || ((paramInt == 2) && (paramProteusBannerVideoItemData == null)) || ((paramAdvertisementInfo == null) && (paramProteusBannerVideoItemData == null))) {
-      return false;
-    }
-    if (paramInt == 1) {}
-    for (paramInt = a(paramAdvertisementInfo);; paramInt = a(paramProteusBannerVideoItemData))
-    {
-      paramAdvertisementInfo = onk.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyAdSwitchUtil", 2, " isADVideoAutoPlayFlag adFlag = " + paramInt + " kandianVideoAutoPlaySetting = " + paramAdvertisementInfo);
-      }
-      if (!onk.d.equals(paramAdvertisementInfo)) {
-        break label109;
-      }
-      return false;
-      if (paramInt != 2) {
-        break;
-      }
-    }
-    return false;
-    label109:
-    if (onk.b.equals(paramAdvertisementInfo))
-    {
-      if (paramInt == 0) {
-        return false;
-      }
-      if ((paramInt == 1) && (paramContext != null) && (qku.a(paramContext))) {
-        return true;
-      }
-      if ((paramInt == 2) && (paramContext != null) && (bbev.g(paramContext))) {
-        return true;
-      }
-    }
-    if (onk.c.equals(paramAdvertisementInfo))
-    {
-      if (paramInt == 0) {
-        return false;
-      }
-      if ((paramInt == 1) && (paramContext != null) && (qku.a(paramContext))) {
-        return true;
-      }
-      if ((paramInt == 2) && (paramContext != null) && (qku.a(paramContext))) {
-        return true;
-      }
+      int i = localAladdinConfig.getIntegerFromString("ad_mengceng", 0);
+      QLog.d("ReadInJoySuperMaskAd", 1, new Object[] { "should show super mask, value = ", Integer.valueOf(i) });
+      return i == 1;
     }
     return false;
   }
   
-  public static boolean a(AdData paramAdData)
+  private boolean e()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isNewExposureProtocol->adData:" + paramAdData);
+    if (onh.w()) {
+      QLog.d("ReadInJoySuperMaskAd", 1, "should not show super mask, isFloatWindowShowing = true");
     }
-    if (paramAdData == null) {
-      return false;
-    }
-    int i = -1;
-    if (paramAdData != null) {
-      i = a(paramAdData.v, 7);
-    }
-    if (i == 1) {}
     for (;;)
     {
-      return bool;
-      bool = false;
+      return false;
+      long l1 = NetConnInfoCenter.getServerTimeMillis();
+      long l2 = a();
+      if ((l1 - l2 < 86400000L) && (a(l1) == a(l2))) {}
+      for (int i = 1; (i == 0) || (l2 == -1L) || (d()); i = 0) {
+        return true;
+      }
     }
   }
   
-  public static boolean a(AdData paramAdData, boolean paramBoolean)
+  public int a()
   {
-    boolean bool = true;
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public long a()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str + "_" + "RIJSuperMaskLastShowMaskTimeKey", -1L);
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isNewClickOrNegativeProtocol->adData:" + paramAdData);
+      QLog.d("ReadInJoySuperMaskAd", 2, "current uni last show time : " + str + " at time: " + l);
     }
-    if (paramAdData == null) {
+    return l;
+  }
+  
+  public MaterialData a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo == null)) {
+      return null;
+    }
+    Iterator localIterator = nzn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2).iterator();
+    while (localIterator.hasNext())
+    {
+      MaterialData localMaterialData = (MaterialData)localIterator.next();
+      if ((localMaterialData.adid.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid))) && (localMaterialData.ad_source.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h)))) {
+        return localMaterialData;
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo == null) || (!b())) {
+      return "";
+    }
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str = nzn.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
+    Object localObject2 = new File(str, "manifest.json");
+    if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile()) || (!((File)localObject2).canRead()))
+    {
+      nzn.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
+      return "";
+    }
+    Object localObject3 = new StringBuffer();
+    gp.a((StringBuffer)localObject3, ((File)localObject2).getPath());
+    localObject2 = ((StringBuffer)localObject3).toString();
+    try
+    {
+      localObject3 = new JSONObject((String)localObject2);
+      localObject2 = ((JSONObject)localObject3).getString("animFileName");
+      this.jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("superMaskType", 1);
+      if (localObject2 != null)
+      {
+        localObject3 = new File(str, (String)localObject2);
+        if ((!((File)localObject3).exists()) || (!((File)localObject3).isFile()) || (!((File)localObject3).canRead()))
+        {
+          nzn.a((QQAppInterface)localObject1).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid));
+          return "";
+        }
+        localObject1 = str + (String)localObject2;
+        return localObject1;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      return "";
+    }
+    return "";
+  }
+  
+  public ArrayList a()
+  {
+    Object localObject = nzn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2);
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MaterialData localMaterialData = (MaterialData)((Iterator)localObject).next();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("adId", localMaterialData.adid);
+      localHashMap.put("adSource", localMaterialData.ad_source);
+      localHashMap.put("adMaterial", localMaterialData.ad_material);
+      localArrayList.add(localHashMap);
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.putLong(str + "_" + "RIJSuperMaskLastShowMaskTimeKey", l);
+    localEditor.apply();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySuperMaskAd", 2, "current uni won't show today : " + str + " at time: " + l);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    if ((paramInt == 4) && (this.jdField_a_of_type_Obp != null) && (this.jdField_a_of_type_Obp.a())) {
+      this.jdField_a_of_type_Obp.a();
+    }
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = str + "_" + String.valueOf(paramLong) + "_" + String.valueOf(paramInt);
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.putBoolean(str, true);
+    localEditor.apply();
+  }
+  
+  public void a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((!oar.m(paramAdvertisementInfo)) || (!e()) || (!c())) {
+      return;
+    }
+    if (this.jdField_b_of_type_Int == 4)
+    {
+      this.jdField_b_of_type_Int = 0;
+      return;
+    }
+    a(1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Obp != null) && (this.jdField_a_of_type_Obp.a())) {
+      this.jdField_a_of_type_Obp.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
       return false;
     }
-    int i = -1;
-    if (paramAdData != null)
+    if (d()) {
+      return true;
+    }
+    return this.c;
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    boolean bool2 = false;
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = str + "_" + String.valueOf(paramLong) + "_" + String.valueOf(paramInt);
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(str, false))
     {
-      if (!paramBoolean) {
-        i = a(paramAdData.v, 13);
+      bool1 = bool2;
+      if (!e()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null)) {
+      nmc.a(new nyd().a(BaseApplication.getContext()).a(nmc.jdField_b_of_type_Int).b(nmc.an).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).e(new JSONObject()).a());
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo != null))
+    {
+      if (paramInt == 1)
+      {
+        jdField_b_of_type_Boolean = true;
+        nol.a(null, "", "0X8009819", "0X8009819", 0, 0, "", "", "", b(), false);
       }
     }
     else {
-      if (i != 1) {
-        break label81;
+      return;
+    }
+    JSONObject localJSONObject2;
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
+      if ((paramInt == nmc.jdField_a_of_type_Int) || (paramInt == nmc.B))
+      {
+        localJSONObject2.put("volumn", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.f);
+        if (this.jdField_a_of_type_Int != 1)
+        {
+          if (this.jdField_a_of_type_Int != 3) {
+            break label246;
+          }
+          String str1 = "1";
+          label121:
+          localJSONObject2.put("is_transparent", str1);
+        }
+        localJSONObject1.put("click_info_report", String.valueOf(localJSONObject2));
+        nmc.a(new nyd().a(BaseApplication.getContext()).a(paramInt).b(nmc.an).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).e(localJSONObject1).a());
+        return;
       }
     }
-    label81:
-    for (paramBoolean = bool;; paramBoolean = false)
+    catch (JSONException localJSONException)
     {
-      return paramBoolean;
-      i = a(paramAdData.v, 14);
+      QLog.e("ReadInJoySuperMaskAd", 1, new Object[] { "JSONException", localJSONException.toString() });
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.f.equals("1")) {}
+    for (String str2 = "0";; str2 = "1")
+    {
+      localJSONObject2.put("volumn", str2);
       break;
+      label246:
+      str2 = "";
+      break label121;
     }
   }
   
-  public static boolean a(String paramString)
-  {
-    int i = b(paramString, 21);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isMobileAutoDownloadForBtn->value:" + i);
-    }
-    return i == 1;
-  }
-  
-  public static int b(AdvertisementInfo paramAdvertisementInfo)
+  public void b(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "getFeedsAdStyle->AdvertisementInfo:" + paramAdvertisementInfo);
+      QLog.d("ReadInJoySuperMaskAd", 2, "setShouldAskSuperMask = " + paramBoolean);
     }
-    if (paramAdvertisementInfo == null) {}
-    int i;
-    do
+    if ((e()) && (c()))
     {
-      return 0;
-      i = b(paramAdvertisementInfo.mAdExtInfo, 4);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyAdSwitchUtil", 2, "getFeedsAdStyle->value:" + i);
+      this.c = paramBoolean;
+      return;
+    }
+    this.c = false;
+  }
+  
+  public boolean b()
+  {
+    Iterator localIterator = nzn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(2).iterator();
+    while (localIterator.hasNext())
+    {
+      MaterialData localMaterialData = (MaterialData)localIterator.next();
+      if ((localMaterialData.ad_source.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.h))) && (localMaterialData.adid.equals(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAid))) && (localMaterialData.res_version == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdvertisementExtInfo.p)) {
+        return true;
       }
-    } while (i == -1);
-    return i;
+    }
+    return false;
   }
   
-  private static int b(String paramString, int paramInt)
+  public void c()
   {
-    return a("ad_switchs", paramString, paramInt);
-  }
-  
-  public static boolean b(VideoAdInfo paramVideoAdInfo)
-  {
-    return a(paramVideoAdInfo, 1) == 2;
-  }
-  
-  public static boolean b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isDirectPlay->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 10);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isDirectPlay->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if (this.jdField_a_of_type_Obp != null) {
+      this.jdField_a_of_type_Obp = null;
     }
   }
   
-  public static boolean b(AdData paramAdData)
+  public boolean d()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isDirectPlay->AdData:" + paramAdData);
-    }
-    if (paramAdData == null) {
-      return false;
-    }
-    int i = a(paramAdData.v, 10);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isDirectPlay->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static int c(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "getVideoClickZoneSwitch->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {}
-    int i;
-    do
-    {
-      return 0;
-      i = b(paramAdvertisementInfo.mAdExtInfo, 19);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyAdSwitchUtil", 2, "getVideoClickZoneSwitch->value:" + i);
-      }
-    } while (i == -1);
-    return i;
-  }
-  
-  public static boolean c(VideoAdInfo paramVideoAdInfo)
-  {
-    return a(paramVideoAdInfo, 5) == 1;
-  }
-  
-  public static boolean c(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isAdjustAdExposure->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 17);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "SWITCH_POS_VIDEO_SWITCH->extValue:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean c(AdData paramAdData)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "enableCheckWebProcess->AdData:" + paramAdData);
-    }
-    if (paramAdData == null) {
-      return false;
-    }
-    int i = a(paramAdData.v, 16);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "enableCheckWebProcess->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean d(VideoAdInfo paramVideoAdInfo)
-  {
-    return a(paramVideoAdInfo, 8) == 1;
-  }
-  
-  public static boolean d(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isAmsSubcribeEnable->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 15);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isAmsSubcribeEnable->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean d(AdData paramAdData)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isAmsSubcribeEnable->adData:" + paramAdData);
-    }
-    if (paramAdData == null) {
-      return false;
-    }
-    int i = a(paramAdData.v, 15);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isAmsSubcribeEnable->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean e(VideoAdInfo paramVideoAdInfo)
-  {
-    int i = a(paramVideoAdInfo, 11);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "SWITCH_POS_VIDEO_CIRCLE->extValue:" + i);
-    }
-    return i == 1;
-  }
-  
-  public static boolean e(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isTelephoneComponent->AdData:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 18);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isTelephoneComponent->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean e(AdData paramAdData)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isTelephoneComponentForDetail->AdData:" + paramAdData);
-    }
-    if (paramAdData == null) {
-      return false;
-    }
-    int i = a(paramAdData.v, 18);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "isTelephoneComponentForDetail->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean f(VideoAdInfo paramVideoAdInfo)
-  {
-    int i = a(paramVideoAdInfo, 12);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "SWITCH_POS_VIDEO_SWITCH->extValue:" + i);
-    }
-    return i == 1;
-  }
-  
-  public static boolean f(AdvertisementInfo paramAdvertisementInfo)
-  {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "enableCheckWebProcess->AdvertisementInfo:" + paramAdvertisementInfo);
-    }
-    if (paramAdvertisementInfo == null) {
-      return false;
-    }
-    int i = b(paramAdvertisementInfo.mAdExtInfo, 16);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyAdSwitchUtil", 2, "enableCheckWebProcess->value:" + i);
-    }
-    if (i == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static boolean g(VideoAdInfo paramVideoAdInfo)
-  {
-    return a(paramVideoAdInfo, 20) == 1;
+    return bbkb.az(BaseApplicationImpl.getApplication(), BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 1;
   }
 }
 

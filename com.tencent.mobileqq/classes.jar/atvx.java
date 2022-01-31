@@ -1,16 +1,6 @@
-public abstract class atvx
+public abstract interface atvx
 {
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void b(String paramString) {}
-  
-  public void b(String paramString, long paramLong) {}
-  
-  public void c(String paramString) {}
-  
-  public void c(String paramString, long paramLong) {}
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

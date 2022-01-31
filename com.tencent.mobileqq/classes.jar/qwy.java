@@ -1,16 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class qwy
-  extends AnimatorListenerAdapter
+public abstract interface qwy
 {
-  public qwy(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
+  public abstract void a(String paramString);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    HorizontalRefreshLayout.a(this.a, 0.0F);
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void b(VideoInfo paramVideoInfo);
 }
 
 

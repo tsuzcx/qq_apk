@@ -1,13 +1,8 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public abstract interface qjq
 {
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  public abstract void a(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment);
 }
 
 

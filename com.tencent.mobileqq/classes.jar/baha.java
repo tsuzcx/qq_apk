@@ -1,14 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.6.1.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
 
 public class baha
-  implements aycb
+  implements View.OnTouchListener
 {
-  baha(bagz parambagz) {}
+  public baha(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.a.post(new AIOAnimationControlManager.6.1.1(this));
+    return false;
   }
 }
 

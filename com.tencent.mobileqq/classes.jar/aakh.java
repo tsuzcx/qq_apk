@@ -1,50 +1,23 @@
-import android.os.Message;
-import android.widget.Toast;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
 public class aakh
-  extends MqqHandler
+  implements View.OnClickListener
 {
   public aakh(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    paramView = (View)paramView.getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
       return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new bcpq(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
-      {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, bcpw.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
-      }
-    }
+      axqy.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SubAccountInfo));
+    this.a.a((SubAccountInfo)paramView.getTag());
   }
 }
 

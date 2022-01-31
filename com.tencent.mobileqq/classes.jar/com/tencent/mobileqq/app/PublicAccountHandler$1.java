@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import osm;
+import osj;
 
 class PublicAccountHandler$1
   implements Runnable
@@ -9,7 +9,7 @@ class PublicAccountHandler$1
   
   public void run()
   {
-    osm.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    osj.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

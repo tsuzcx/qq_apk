@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import airo;
-import ajae;
-import ajbc;
-import ajbf;
-import ajch;
-import ajlc;
+import airm;
+import ajac;
+import ajba;
+import ajbd;
+import ajcf;
+import ajla;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import com.tencent.TMG.opengl.GraphicRendererMgr;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class CmGameAvHandler$15$1
   implements Runnable
 {
-  public CmGameAvHandler$15$1(ajbf paramajbf, int paramInt) {}
+  public CmGameAvHandler$15$1(ajbd paramajbd, int paramInt) {}
   
   public void run()
   {
@@ -26,14 +26,14 @@ public class CmGameAvHandler$15$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("res", "ok");
-      ajbc.c(this.jdField_a_of_type_Ajbf.a, true);
-      this.jdField_a_of_type_Ajbf.a.a = new airo(ajae.b(ajbc.a(this.jdField_a_of_type_Ajbf.a)).a(), ajbc.a(this.jdField_a_of_type_Ajbf.a));
-      this.jdField_a_of_type_Ajbf.a.a.a();
+      ajba.c(this.jdField_a_of_type_Ajbd.a, true);
+      this.jdField_a_of_type_Ajbd.a.a = new airm(ajac.b(ajba.a(this.jdField_a_of_type_Ajbd.a)).a(), ajba.a(this.jdField_a_of_type_Ajbd.a));
+      this.jdField_a_of_type_Ajbd.a.a.a();
       GraphicRendererMgr localGraphicRendererMgr = GraphicRendererMgr.getInstance();
-      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Ajbf.a.a.a.getHolder();
+      SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_Ajbd.a.a.a.getHolder();
       QLog.e("onSDKEnterRoom", 1, "onSDKEnterRoom mgr=" + String.valueOf(localGraphicRendererMgr));
-      ajlc.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder(localGraphicRendererMgr, localSurfaceHolder);
-      ajae.a().callbackFromRequest(ajbc.a(this.jdField_a_of_type_Ajbf.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
+      ajla.a(BaseApplicationImpl.getContext()).a().setRenderMgrAndHolder(localGraphicRendererMgr, localSurfaceHolder);
+      ajac.a().callbackFromRequest(ajba.a(this.jdField_a_of_type_Ajbd.a), this.jdField_a_of_type_Int, "cs.audioRoom_enter.local", localJSONObject.toString());
       return;
     }
     catch (Exception localException) {}

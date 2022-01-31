@@ -1,60 +1,73 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.JobReporter;
+import com.tencent.mobileqq.app.ThreadWrapContext;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class akhl
-  extends AbstractExecutorService
+  implements ThreadWrapContext
 {
-  private final int a;
+  private static boolean a;
+  private static volatile boolean b;
   
-  protected akhl(int paramInt)
+  public static void a(long paramLong)
   {
-    this.a = paramInt;
+    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
+    {
+      a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
+      }
+      if (paramLong > 0L)
+      {
+        b = JobReporter.ramdomReport((int)paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
+        }
+      }
+    }
   }
   
-  public static ExecutorService a(int paramInt)
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return new akhl(paramInt);
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public static ExecutorService b(int paramInt)
+  public long getMainProccessThreadMonitorTime()
   {
-    return new SingleThreadExecutor(paramInt);
+    return bbkb.d();
   }
   
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  public long getMainProccessThreadPeakCounts()
   {
-    return false;
+    return bbkb.c();
   }
   
-  public void execute(@NonNull Runnable paramRunnable)
+  public boolean isColorLevel()
   {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
+    return QLog.isColorLevel();
   }
   
-  public boolean isShutdown()
+  public boolean isShotReportRejectedError()
   {
-    return false;
+    return b;
   }
   
-  public boolean isTerminated()
+  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
   {
-    return false;
+    axrn.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
   }
   
-  public void shutdown()
+  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
+  
+  public void setMainProccessThreadMonitorTime(long paramLong)
   {
-    throw new UnsupportedOperationException();
+    bbkb.b(paramLong);
   }
   
-  @NonNull
-  public List<Runnable> shutdownNow()
+  public void setMainProccessThreadPeakCounts(long paramLong)
   {
-    throw new UnsupportedOperationException();
+    bbkb.a(paramLong);
   }
 }
 

@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
-class aucv
-  implements View.OnClickListener
+public class aucv
+  implements TextWatcher
 {
-  aucv(aucu paramaucu) {}
+  private aucv(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.a.a != null) && ((paramView.getTag() instanceof aucw)))
-    {
-      paramView = (aucw)paramView.getTag();
-      this.a.a.a(paramView);
-    }
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

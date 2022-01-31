@@ -1,35 +1,19 @@
-import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
-import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
 class lyp
-  extends lhg<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
+  implements DialogInterface.OnDismissListener
 {
   lyp(lyn paramlyn) {}
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
-    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
-    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
-    int i = lhd.a(paramRspCreateShareUrl);
-    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
-    if (i == 0)
-    {
-      this.a.c = paramObject;
-      this.a.b = paramReqCreateShareUrl;
-      bbfn.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lys + "]");
     }
-    for (;;)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      return;
-      if (i != 11001) {}
+    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lys != null)) {
+      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
     }
   }
 }

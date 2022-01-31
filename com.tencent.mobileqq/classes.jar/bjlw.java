@@ -1,21 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
 public class bjlw
-  implements View.OnTouchListener
+  extends bjdt
 {
-  public bjlw(CropVideoActivity paramCropVideoActivity) {}
+  public bjlw(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void d()
   {
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    CropVideoActivity.a(this.a).a(paramMotionEvent);
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
+    }
+    this.a.g();
   }
 }
 

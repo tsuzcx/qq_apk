@@ -1,108 +1,48 @@
-import IMMsgBodyPack.MsgType0x210;
-import KQQ.InfoItem;
-import KQQ.PluginInfo;
-import KQQ.ReqGetPluginSettings;
-import KQQ.RespGetPluginSettings;
-import KQQ.SyncReq;
-import KQQ.SyncRes;
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.Packet;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public class awzo
+class awzo
+  extends Handler
 {
-  public static MsgType0x210 a(byte[] paramArrayOfByte)
+  awzo(awzl paramawzl, Looper paramLooper, Context paramContext, String paramString1, int paramInt, AppInterface paramAppInterface, String paramString2, String paramString3)
   {
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf-8");
-      MsgType0x210 localMsgType0x210 = new MsgType0x210();
-      localMsgType0x210.readFrom(paramArrayOfByte);
-      return localMsgType0x210;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    super(paramLooper);
   }
   
-  public static List<PluginInfo> a(byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    Object localObject = new UniPacket(true);
-    try
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      ((UniPacket)localObject).setEncodeName("utf-8");
-      ((UniPacket)localObject).decode(paramArrayOfByte);
-      paramArrayOfByte = (SyncRes)((UniPacket)localObject).get("SyncRes");
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.result == 0))
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Awzl.b = true;
+      if (this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent != null)
       {
-        paramArrayOfByte = paramArrayOfByte.vecResPkg;
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (InfoItem)paramArrayOfByte.get(0);
-          if (paramArrayOfByte.vecValue != null)
-          {
-            paramArrayOfByte = new JceInputStream(paramArrayOfByte.vecValue);
-            paramArrayOfByte.setServerEncoding("utf-8");
-            localObject = new RespGetPluginSettings();
-            ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
-            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
-            {
-              paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
-              return paramArrayOfByte;
-            }
-          }
-        }
+        this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent = null;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
+      }
+      paramMessage = awzl.a(this.jdField_a_of_type_Awzl.jdField_a_of_type_JavaLangString);
+      bdjl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
+      awzl.jdField_a_of_type_Boolean = false;
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    this.jdField_a_of_type_Awzl.b = true;
+    if (this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent != null)
     {
-      paramArrayOfByte.printStackTrace();
-      return null;
+      this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+      this.jdField_a_of_type_Awzl.jdField_a_of_type_MqqAppNewIntent = null;
     }
-    return null;
-  }
-  
-  public static void a(Packet paramPacket, List<Long> paramList)
-  {
-    SyncReq localSyncReq = new SyncReq();
-    ArrayList localArrayList = new ArrayList();
-    InfoItem localInfoItem = new InfoItem();
-    localInfoItem.cOperType = 1;
-    localInfoItem.qwServiceId = 22L;
-    localInfoItem.qwTimeStamp = 0L;
-    localInfoItem.vecValue = a(paramList);
-    localArrayList.add(localInfoItem);
-    localSyncReq.vecReqPkg = localArrayList;
-    paramPacket.setSSOCommand("ProfileService.SyncReq");
-    paramPacket.setServantName("ProfileService");
-    paramPacket.setFuncName("SyncReq");
-    paramPacket.addRequestPacket("SyncReq", localSyncReq);
-  }
-  
-  public static byte[] a(List<Long> paramList)
-  {
-    ReqGetPluginSettings localReqGetPluginSettings = new ReqGetPluginSettings();
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0)) {
-      localArrayList.addAll(paramList);
-    }
-    for (;;)
-    {
-      localReqGetPluginSettings.PluginList = localArrayList;
-      paramList = new JceOutputStream();
-      localReqGetPluginSettings.writeTo(paramList);
-      return paramList.toByteArray();
-      localArrayList.add(Long.valueOf(489L));
-    }
+    awzl.a(this.jdField_a_of_type_Awzl, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
   }
 }
 

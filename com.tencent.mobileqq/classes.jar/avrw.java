@@ -1,61 +1,95 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 class avrw
-  implements aysa
+  implements aysc
 {
-  avrw(avrt paramavrt, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, axdh paramaxdh) {}
+  avrw(avrv paramavrv, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
   
-  public void onResp(aysx paramaysx)
+  public void onResp(aysz paramaysz)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramaysx.c);
+      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramaysz.c + " threadid=" + Thread.currentThread().getId());
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_Avrt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    paramaysx = this.jdField_a_of_type_Avrt.a.iterator();
-    while (paramaysx.hasNext())
+    File localFile = new File(avrv.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
+    if (!localFile.exists())
     {
-      Object localObject = (avsp)paramaysx.next();
-      if (((avsp)localObject).a != null)
-      {
-        localObject = ((avsp)localObject).a.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
-            localPtvTemplateInfo.usable = this.jdField_a_of_type_Avrt.a(localPtvTemplateInfo);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      nay.a(new File(avrt.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), avrt.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_Axdh != null) {
-        this.jdField_a_of_type_Axdh.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
-      }
+      ahvx.a(0);
       return;
     }
-    catch (IOException paramaysx)
+    Object localObject = "";
+    try
+    {
+      paramaysz = bbdx.c(localFile.getPath());
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramaysz))) {}
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       for (;;)
       {
-        paramaysx.printStackTrace();
+        try
+        {
+          nav.a(localFile, this.b);
+          paramaysz = new File(this.c);
+          if (!paramaysz.exists()) {
+            break label330;
+          }
+          paramaysz = avrv.a(paramaysz);
+          localObject = avrv.a(null, paramaysz, this.jdField_a_of_type_Avrv.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
+          if ((localObject != null) && (!((List)localObject).isEmpty())) {
+            break;
+          }
+          avrv.a(paramaysz, "ptv_template_new.cfg");
+          if (QLog.isColorLevel()) {
+            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
+          }
+          ahvx.a(-4);
+          return;
+          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+          paramaysz = (aysz)localObject;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localUnsatisfiedLinkError.printStackTrace();
+          paramaysz = (aysz)localObject;
+        }
+        catch (Exception paramaysz)
+        {
+          ahvx.a(-3);
+          bbkb.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          paramaysz.printStackTrace();
+          continue;
+        }
+        ahvx.a(-2);
       }
+      avrv.a(paramaysz, "ptv_template_new.cfg");
+      this.jdField_a_of_type_Avrv.c(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramaysz);
+      }
+      ahvx.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
+      return;
     }
+    label330:
+    if (QLog.isColorLevel()) {
+      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+    }
+    bbkb.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Axdh != null) {
-      this.jdField_a_of_type_Axdh.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
-    }
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

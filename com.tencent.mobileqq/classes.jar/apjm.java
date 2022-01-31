@@ -1,38 +1,8 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
-import java.lang.ref.WeakReference;
-
-public final class apjm
-  implements Handler.Callback
+public abstract interface apjm
 {
-  private final WeakReference<TdsDebugView> a;
+  public abstract void a(boolean paramBoolean);
   
-  private apjm(TdsDebugView paramTdsDebugView)
-  {
-    this.a = new WeakReference(paramTdsDebugView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
-    if (localTdsDebugView == null) {
-      return true;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    case 2: 
-      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-      return true;
-    }
-    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
-    return true;
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

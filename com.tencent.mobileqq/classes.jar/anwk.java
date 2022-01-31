@@ -1,8 +1,16 @@
-public class anwk
+import com.tencent.mobileqq.data.EmoticonPackage;
+
+public abstract class anwk
 {
-  public String a;
-  public String b;
-  public String c;
+  public void a(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

@@ -40,13 +40,13 @@ import tencent.im.oidb.qfind.QFind.HistoryData;
 import tencent.im.oidb.qfind.QFind.HistoryDetail;
 import tencent.im.oidb.qfind.QFind.ReqReportDevs;
 import tencent.im.oidb.qfind.QFind.RspReportDevs;
-import xzu;
-import yak;
-import ygb;
+import xzr;
+import yah;
+import yfy;
+import ygf;
+import ygg;
+import ygh;
 import ygi;
-import ygj;
-import ygk;
-import ygl;
 
 @TargetApi(18)
 public class QFindBLEScanMgr
@@ -64,9 +64,9 @@ public class QFindBLEScanMgr
   private QFindBLEScanMgr.NotifyReceiver jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver;
   public QQAppInterface a;
   public ArrayList<String> a;
-  public HashMap<String, ygb> a;
+  public HashMap<String, yfy> a;
   public MqqHandler a;
-  private ygl jdField_a_of_type_Ygl;
+  private ygi jdField_a_of_type_Ygi;
   public volatile boolean a;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long;
@@ -109,11 +109,11 @@ public class QFindBLEScanMgr
   {
     paramString = "" + paramInt + "|" + paramString;
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      SosoInterface.a(new ygj(this, 0, true, true, 0L, false, false, "smartdevice:lightapp", paramString));
+      SosoInterface.a(new ygg(this, 0, true, true, 0L, false, false, "smartdevice:lightapp", paramString));
     }
   }
   
-  private void a(ygb paramygb, SosoInterface.SosoLbsInfo paramSosoLbsInfo, boolean paramBoolean)
+  private void a(yfy paramyfy, SosoInterface.SosoLbsInfo paramSosoLbsInfo, boolean paramBoolean)
   {
     for (;;)
     {
@@ -128,16 +128,16 @@ public class QFindBLEScanMgr
           }
         }
       }
-      catch (Throwable paramygb)
+      catch (Throwable paramyfy)
       {
         long l1;
-        paramygb.printStackTrace();
+        paramyfy.printStackTrace();
         if (!QLog.isColorLevel()) {
           return;
         }
-        QLog.i("QFindBLE", 2, "SendReqReportAroundDevs  report exception :   " + paramygb.toString());
+        QLog.i("QFindBLE", 2, "SendReqReportAroundDevs  report exception :   " + paramyfy.toString());
         return;
-        QLog.i("QFindBLE", 1, "report lost dev sn=" + paramygb.a() + ", pid=" + paramygb.jdField_a_of_type_Int + " has loc(" + paramSosoLbsInfo.a.jdField_a_of_type_Double + "," + paramSosoLbsInfo.a.b + ", " + paramSosoLbsInfo.a.jdField_a_of_type_Float + "), ble_id = " + paramygb.jdField_c_of_type_Int + ", lastreportcount=" + this.g + ", run = " + paramygb.f + " , walk = " + paramygb.e);
+        QLog.i("QFindBLE", 1, "report lost dev sn=" + paramyfy.a() + ", pid=" + paramyfy.jdField_a_of_type_Int + " has loc(" + paramSosoLbsInfo.a.jdField_a_of_type_Double + "," + paramSosoLbsInfo.a.b + ", " + paramSosoLbsInfo.a.jdField_a_of_type_Float + "), ble_id = " + paramyfy.jdField_c_of_type_Int + ", lastreportcount=" + this.g + ", run = " + paramyfy.f + " , walk = " + paramyfy.e);
         continue;
       }
       try
@@ -146,42 +146,42 @@ public class QFindBLEScanMgr
         if (paramSosoLbsInfo == null)
         {
           if (QLog.isColorLevel()) {
-            QLog.w("QFindBLE", 2, "start to report dev sn=" + paramygb.a() + ", pid=" + paramygb.jdField_a_of_type_Int + ", ble_id = " + paramygb.jdField_c_of_type_Int + ", lastreportcount=" + this.g + ", run = " + paramygb.f + " , walk = " + paramygb.e);
+            QLog.w("QFindBLE", 2, "start to report dev sn=" + paramyfy.a() + ", pid=" + paramyfy.jdField_a_of_type_Int + ", ble_id = " + paramyfy.jdField_c_of_type_Int + ", lastreportcount=" + this.g + ", run = " + paramyfy.f + " , walk = " + paramyfy.e);
           }
           QFind.ReqReportDevs localReqReportDevs = new QFind.ReqReportDevs();
           ArrayList localArrayList1 = new ArrayList();
           QFind.DeviceInfo localDeviceInfo = new QFind.DeviceInfo();
-          localDeviceInfo.pid.set(paramygb.jdField_a_of_type_Int);
+          localDeviceInfo.pid.set(paramyfy.jdField_a_of_type_Int);
           localDeviceInfo.service_uuid.set(2L);
-          localDeviceInfo.sn.set(ByteStringMicro.copyFromUtf8(paramygb.a()));
+          localDeviceInfo.sn.set(ByteStringMicro.copyFromUtf8(paramyfy.a()));
           if (paramBoolean) {
-            localDeviceInfo.bytes_sig.set(ByteStringMicro.copyFrom(paramygb.jdField_b_of_type_ArrayOfByte));
+            localDeviceInfo.bytes_sig.set(ByteStringMicro.copyFrom(paramyfy.jdField_b_of_type_ArrayOfByte));
           }
           localDeviceInfo.timestamp.set((int)(l1 / 1000L));
           ArrayList localArrayList2 = new ArrayList();
           QFind.HistoryDetail localHistoryDetail = new QFind.HistoryDetail();
-          localHistoryDetail.run.set(paramygb.f);
-          localHistoryDetail.walk.set(paramygb.e);
+          localHistoryDetail.run.set(paramyfy.f);
+          localHistoryDetail.walk.set(paramyfy.e);
           localArrayList2.add(localHistoryDetail);
-          paramygb = new QFind.HistoryData();
-          paramygb.details.set(localArrayList2);
-          localDeviceInfo.msg_walking_history.set(paramygb);
+          paramyfy = new QFind.HistoryData();
+          paramyfy.details.set(localArrayList2);
+          localDeviceInfo.msg_walking_history.set(paramyfy);
           localArrayList1.add(localDeviceInfo);
           localReqReportDevs.dev_infos.set(localArrayList1);
           if (paramSosoLbsInfo != null)
           {
-            paramygb = new QFind.DeviceLoc();
-            paramygb.lat.set(Double.valueOf(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D).intValue());
-            paramygb.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
-            paramygb.gps_type.set(1);
-            paramygb.uint32_precision.set((int)paramSosoLbsInfo.a.jdField_a_of_type_Float);
-            localReqReportDevs.dev_loc.set(paramygb);
+            paramyfy = new QFind.DeviceLoc();
+            paramyfy.lat.set(Double.valueOf(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D).intValue());
+            paramyfy.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+            paramyfy.gps_type.set(1);
+            paramyfy.uint32_precision.set((int)paramSosoLbsInfo.a.jdField_a_of_type_Float);
+            localReqReportDevs.dev_loc.set(paramyfy);
           }
           paramSosoLbsInfo = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          paramygb = (yak)paramSosoLbsInfo.a(51);
+          paramyfy = (yah)paramSosoLbsInfo.a(51);
           paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", paramSosoLbsInfo.getCurrentAccountUin(), "QFindSvc.ReqReportDevs");
           paramSosoLbsInfo.putWupBuffer(localReqReportDevs.toByteArray());
-          paramygb.sendPbReq(paramSosoLbsInfo);
+          paramyfy.sendPbReq(paramSosoLbsInfo);
           return;
         }
       }
@@ -197,13 +197,13 @@ public class QFindBLEScanMgr
     return jdField_c_of_type_Boolean;
   }
   
-  private boolean a(ygb paramygb)
+  private boolean a(yfy paramyfy)
   {
-    paramygb = "" + paramygb.jdField_a_of_type_Int + "|" + paramygb.a();
-    return this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramygb);
+    paramyfy = "" + paramyfy.jdField_a_of_type_Int + "|" + paramyfy.a();
+    return this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramyfy);
   }
   
-  private boolean a(ygb paramygb, boolean paramBoolean)
+  private boolean a(yfy paramyfy, boolean paramBoolean)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
     if ((this.jdField_a_of_type_Long <= 0L) || (l - this.jdField_a_of_type_Long > this.jdField_c_of_type_Int))
@@ -214,45 +214,45 @@ public class QFindBLEScanMgr
     if ((this.g > this.d) && (!paramBoolean)) {
       return false;
     }
-    Object localObject = "" + paramygb.jdField_a_of_type_Int + "|" + paramygb.a();
+    Object localObject = "" + paramyfy.jdField_a_of_type_Int + "|" + paramyfy.a();
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject))
     {
-      ygb localygb = (ygb)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      localygb.f = paramygb.f;
-      localygb.e = paramygb.e;
-      if ((!paramBoolean) && (l - localygb.jdField_a_of_type_Long < this.jdField_a_of_type_Int)) {
+      yfy localyfy = (yfy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localyfy.f = paramyfy.f;
+      localyfy.e = paramyfy.e;
+      if ((!paramBoolean) && (l - localyfy.jdField_a_of_type_Long < this.jdField_a_of_type_Int)) {
         return false;
       }
-      if ((paramBoolean) && (l - localygb.jdField_b_of_type_Long < this.e)) {
+      if ((paramBoolean) && (l - localyfy.jdField_b_of_type_Long < this.e)) {
         return false;
       }
-      if ((paramBoolean) && (this.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject)) && (l - ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(localObject)).longValue() > this.f) && (l - localygb.jdField_b_of_type_Long < this.jdField_a_of_type_Int))
+      if ((paramBoolean) && (this.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject)) && (l - ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(localObject)).longValue() > this.f) && (l - localyfy.jdField_b_of_type_Long < this.jdField_a_of_type_Int))
       {
         if (QLog.isColorLevel()) {
           QLog.i("QFindBLE", 2, "report lost dev reach the period: " + this.f);
         }
         return false;
       }
-      localygb.jdField_a_of_type_Long = l;
+      localyfy.jdField_a_of_type_Long = l;
       if (paramBoolean) {
-        localygb.jdField_b_of_type_Long = l;
+        localyfy.jdField_b_of_type_Long = l;
       }
     }
     for (;;)
     {
-      localObject = (ygb)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      if (!((ygb)localObject).jdField_b_of_type_Boolean)
+      localObject = (yfy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      if (!((yfy)localObject).jdField_b_of_type_Boolean)
       {
-        ((ygb)localObject).jdField_c_of_type_Int = paramygb.jdField_c_of_type_Int;
-        ((ygb)localObject).jdField_a_of_type_Boolean = false;
+        ((yfy)localObject).jdField_c_of_type_Int = paramyfy.jdField_c_of_type_Int;
+        ((yfy)localObject).jdField_a_of_type_Boolean = false;
       }
       this.g += 1;
       return true;
-      paramygb.jdField_a_of_type_Long = l;
+      paramyfy.jdField_a_of_type_Long = l;
       if (paramBoolean) {
-        paramygb.jdField_b_of_type_Long = l;
+        paramyfy.jdField_b_of_type_Long = l;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramygb);
+      this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramyfy);
     }
   }
   
@@ -350,10 +350,10 @@ public class QFindBLEScanMgr
       QLog.i("QFindBLE", 2, "QFindBLEScanMgr cancelReceiver");
     }
     a(2);
-    if (this.jdField_a_of_type_Ygl != null) {}
+    if (this.jdField_a_of_type_Ygi != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ygl);
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ygi);
       return;
     }
     catch (Throwable localThrowable)
@@ -369,22 +369,22 @@ public class QFindBLEScanMgr
       this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ble_scan_task", 0);
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
       this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback = new ygk(this);
+      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback = new ygh(this);
       return;
     }
     catch (Throwable localThrowable) {}
   }
   
-  public ygi a(ygb paramygb)
+  public ygf a(yfy paramyfy)
   {
-    ygi localygi = new ygi();
-    localygi.jdField_a_of_type_Int = paramygb.jdField_c_of_type_Int;
-    localygi.jdField_a_of_type_JavaLangString = paramygb.jdField_a_of_type_JavaLangString;
-    localygi.jdField_b_of_type_JavaLangString = paramygb.jdField_b_of_type_JavaLangString;
-    localygi.jdField_a_of_type_ArrayOfByte = paramygb.jdField_a_of_type_ArrayOfByte;
-    localygi.jdField_a_of_type_JavaUtilList = paramygb.jdField_a_of_type_JavaUtilList;
-    localygi.jdField_b_of_type_Int = paramygb.jdField_a_of_type_Int;
-    return localygi;
+    ygf localygf = new ygf();
+    localygf.jdField_a_of_type_Int = paramyfy.jdField_c_of_type_Int;
+    localygf.jdField_a_of_type_JavaLangString = paramyfy.jdField_a_of_type_JavaLangString;
+    localygf.jdField_b_of_type_JavaLangString = paramyfy.jdField_b_of_type_JavaLangString;
+    localygf.jdField_a_of_type_ArrayOfByte = paramyfy.jdField_a_of_type_ArrayOfByte;
+    localygf.jdField_a_of_type_JavaUtilList = paramyfy.jdField_a_of_type_JavaUtilList;
+    localygf.jdField_b_of_type_Int = paramyfy.jdField_a_of_type_Int;
+    return localygf;
   }
   
   public void a()
@@ -407,7 +407,7 @@ public class QFindBLEScanMgr
       paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
       int j = paramToServiceMsg.getAppSeq();
       paramToServiceMsg = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while ((paramToServiceMsg.hasNext()) && (j != ((ygb)paramToServiceMsg.next()).jdField_b_of_type_Int)) {}
+      while ((paramToServiceMsg.hasNext()) && (j != ((yfy)paramToServiceMsg.next()).jdField_b_of_type_Int)) {}
       if (paramObject.result.get() != 0) {
         break label696;
       }
@@ -524,7 +524,7 @@ public class QFindBLEScanMgr
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     }
-    xzu.b();
+    xzr.b();
   }
 }
 

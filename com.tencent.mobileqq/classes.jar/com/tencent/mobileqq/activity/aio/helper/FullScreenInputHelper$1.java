@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adhy;
+import adhw;
 import android.widget.ImageButton;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
@@ -8,7 +8,7 @@ import com.tencent.widget.XEditTextEx;
 public class FullScreenInputHelper$1
   implements Runnable
 {
-  public FullScreenInputHelper$1(adhy paramadhy) {}
+  public FullScreenInputHelper$1(adhw paramadhw) {}
   
   public void run()
   {

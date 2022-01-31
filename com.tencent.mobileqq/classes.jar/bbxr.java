@@ -1,70 +1,97 @@
-import android.app.Activity;
-import android.text.TextPaint;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import org.json.JSONObject;
 
 public class bbxr
-  extends bbxl
+  extends bhzo
 {
-  public bbxr(Activity paramActivity, JSONObject paramJSONObject, auuw paramauuw)
+  private String a;
+  
+  public bbxr(String paramString1, View paramView, String paramString2)
   {
-    super(paramActivity, paramJSONObject, paramauuw);
-    this.d = vzo.a(paramActivity, 3.0F);
+    super(paramString1, paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    ((TemplateLikeView)paramView).a(1);
   }
   
-  public ProfileCardFavorShowView a(Activity paramActivity)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    return new ProfileCardFavorShowView(paramActivity, null, 2131561603);
+    this.jdField_a_of_type_Int = -2;
+    this.b = a(paramJSONObject.optString("height"));
+    paramLayoutParams.width = -2;
+    paramLayoutParams.height = -2;
+    int i = vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
+    int j = vzl.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
+    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
+    return paramLayoutParams;
   }
   
-  protected void a(JSONObject paramJSONObject, View paramView, TextView paramTextView, ImageView paramImageView)
+  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
-    if ((paramView != null) && (paramTextView != null))
-    {
-      paramTextView.setTextColor(this.c);
-      String str = b(paramJSONObject);
-      if (TextUtils.isEmpty(str)) {
-        break label141;
-      }
-      int i = vzo.a(this.jdField_a_of_type_AndroidAppActivity, 300.0F);
-      int j = (int)paramTextView.getPaint().measureText(paramTextView.getText().toString());
-      int k = vzo.a(this.jdField_a_of_type_AndroidAppActivity, 23.0F);
-      int m = vzo.a(this.jdField_a_of_type_AndroidAppActivity, 40.0F);
-      paramView.setBackgroundDrawable(a(str, new bbxs(Math.min(j + k, i), m)));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
+    String str = paramString;
+    if (!paramString.startsWith("http"))
     {
-      if (paramImageView != null)
-      {
-        paramView = c(paramJSONObject);
-        if (TextUtils.isEmpty(paramView)) {
-          break;
+      str = paramString;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
+          break label114;
         }
-        paramImageView.setImageDrawable(a(paramView));
       }
-      return;
-      label141:
-      if (paramJSONObject != null) {
-        QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind title icon is null!");
+    }
+    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
+    {
+      paramString = URLDrawable.URLDrawableOptions.obtain();
+      paramString.mLoadingDrawable = aywm.a;
+      paramString.mFailedDrawable = aywm.a;
+      paramString.mPlayGifImage = false;
+      if (paramDecodeHandler != null) {
+        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
       }
-      paramView.setVisibility(8);
+      paramString = URLDrawable.getDrawable(str, paramString);
+      paramString.setDecodeHandler(paramDecodeHandler);
+      return paramString;
+      label114:
+      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
     }
-    if (paramJSONObject != null) {
-      QLog.e("DIYProfileTemplate.ProfileTemplateBase", 1, paramJSONObject.optString("type") + " bind arrow icon is null!");
-    }
-    paramImageView.setVisibility(8);
   }
   
-  public void b(HashMap<String, View> paramHashMap)
+  protected void a(String paramString1, String paramString2)
   {
-    paramHashMap.put("map_key_qzone", this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561612, null));
+    if ("bg".equals(paramString1)) {
+      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
+        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
+      }
+    }
+    do
+    {
+      return;
+      if (!"style".equals(paramString1)) {
+        break;
+      }
+    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
+    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
+    if ("1".equals(paramString2)) {}
+    for (int i = 0;; i = 1)
+    {
+      paramString1.a(i);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void c()
+  {
+    super.c();
   }
 }
 

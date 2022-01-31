@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import java.util.List;
 
-public abstract interface arxg
+public class arxg
 {
-  public abstract void a(List<LocationRoom.Venue> paramList);
+  private int jdField_a_of_type_Int;
+  private arxi jdField_a_of_type_Arxi;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
 }
 
 

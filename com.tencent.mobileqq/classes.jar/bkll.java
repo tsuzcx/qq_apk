@@ -1,41 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import java.util.ArrayList;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
 
-class bkll
-  extends BroadcastReceiver
+public class bkll
 {
-  bkll(bklj parambklj) {}
+  public final double a;
+  public final float a;
+  public final int a;
+  public final String a;
+  public final WeakReference<Activity> a;
+  public final boolean a;
+  public final double b;
+  public final int b;
+  public final String b;
+  public final boolean b;
+  public final int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bkll(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
   {
-    veg.c("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver onReceive.");
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
-    {
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      int i;
-      if ((paramContext != null) && (paramContext.size() > 0) && (paramIntent != null) && (paramIntent.size() > 0))
-      {
-        veg.b("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=%d headPathList.size()=%d.", Integer.valueOf(paramContext.size()), Integer.valueOf(paramIntent.size()));
-        i = 0;
-      }
-      while (i < paramContext.size())
-      {
-        String str = (String)paramContext.get(i);
-        if (this.a.a.contains(str))
-        {
-          this.a.a.remove(str);
-          this.a.b.put(str, paramIntent.get(i));
-          this.a.a(str, (String)paramIntent.get(i));
-        }
-        i += 1;
-        continue;
-        veg.e("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=0 | headPathList.size()=0.");
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  public String toString()
+  {
+    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

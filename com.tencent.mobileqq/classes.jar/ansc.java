@@ -1,18 +1,31 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class ansc
-  implements View.OnClickListener
+public class ansc
+  implements bivp
 {
-  ansc(ansa paramansa, Dialog paramDialog) {}
+  public ansc(CameraEmoSingleSend paramCameraEmoSingleSend, bivn parambivn, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((!((Activity)this.jdField_a_of_type_Ansa.a).isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("sucFlag", "0");
+    axrn.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
+    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
+    this.jdField_a_of_type_Bivn.a();
+    paramString = new HashMap();
+    paramString.put("sucFlag", "1");
+    axrn.a(BaseApplication.getContext()).a(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
   }
 }
 

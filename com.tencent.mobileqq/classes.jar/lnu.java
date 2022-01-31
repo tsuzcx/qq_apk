@@ -1,14 +1,15 @@
-public class lnu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteActivity;
+
+class lnu
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c = 2;
+  lnu(lnt paramlnt) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
+    this.a.a.a(-1040L, 11);
   }
 }
 

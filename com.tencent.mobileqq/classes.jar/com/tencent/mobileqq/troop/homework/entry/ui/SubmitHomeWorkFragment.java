@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import ajyc;
-import akhq;
-import akim;
+import ajya;
+import akhp;
+import akil;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnClickListener;
@@ -23,41 +23,41 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
-import axli;
-import azvl;
-import azwo;
-import azxn;
-import azxo;
-import azxp;
-import azxq;
-import azxr;
-import azxs;
-import azxt;
+import axlk;
+import azvn;
+import azws;
 import azxu;
 import azxv;
 import azxw;
+import azxx;
+import azxy;
+import azxz;
 import azya;
-import baap;
-import baar;
-import baas;
-import baau;
-import baaw;
-import baax;
-import babc;
+import azyb;
+import azyc;
+import azyd;
+import azyo;
 import babd;
-import babu;
-import bawz;
-import bbbb;
-import bbcv;
-import bbdr;
-import bbev;
-import bbgg;
-import bbkx;
-import bcpq;
-import bcpw;
-import bfmr;
-import bfol;
-import bihe;
+import babf;
+import babg;
+import babi;
+import babk;
+import babl;
+import babq;
+import babr;
+import baci;
+import baxn;
+import bbbp;
+import bbdj;
+import bbef;
+import bbfj;
+import bbgu;
+import bbll;
+import bcqf;
+import bcql;
+import bfni;
+import bfpc;
+import bihv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
@@ -81,20 +81,20 @@ import org.json.JSONObject;
 
 public class SubmitHomeWorkFragment
   extends IphoneTitleBarFragment
-  implements View.OnClickListener, azya
+  implements View.OnClickListener, azyo
 {
   protected static String a;
   protected int a;
   public long a;
-  protected akhq a;
-  protected akim a;
+  protected akhp a;
+  protected akil a;
   protected BroadcastReceiver a;
   protected View a;
   protected ViewGroup a;
-  public azvl a;
-  protected azxw a;
-  protected bcpq a;
-  public bfol a;
+  public azvn a;
+  protected azyd a;
+  protected bcqf a;
+  public bfpc a;
   public CommonRecordSoundPanel a;
   protected QQAppInterface a;
   protected InputMethodGuard a;
@@ -103,7 +103,7 @@ public class SubmitHomeWorkFragment
   public boolean a;
   protected long b;
   protected View b;
-  protected azvl b;
+  protected azvn b;
   public XMediaEditor b;
   protected String b;
   public boolean b;
@@ -117,7 +117,7 @@ public class SubmitHomeWorkFragment
   public SubmitHomeWorkFragment()
   {
     this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new azxo(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new azxv(this);
   }
   
   public static Intent a(Activity paramActivity, long paramLong1, long paramLong2)
@@ -134,7 +134,7 @@ public class SubmitHomeWorkFragment
   
   public static void a(Activity paramActivity)
   {
-    bihe.a(BaseApplicationImpl.getContext());
+    bihv.a(BaseApplicationImpl.getContext());
   }
   
   public static void a(Activity paramActivity, @Nullable Bundle paramBundle, long paramLong1, long paramLong2)
@@ -201,37 +201,37 @@ public class SubmitHomeWorkFragment
   }
   
   @NonNull
-  protected List<String> a(babc parambabc)
+  protected List<String> a(babq parambabq)
   {
     ArrayList localArrayList = new ArrayList();
-    if (parambabc != null)
+    if (parambabq != null)
     {
-      if (!(parambabc instanceof babd)) {
+      if (!(parambabq instanceof babr)) {
         break label49;
       }
-      localArrayList.add(ajyc.a(2131714635) + "");
+      localArrayList.add(ajya.a(2131714646) + "");
     }
     label49:
     do
     {
       return localArrayList;
-      if ((parambabc instanceof baax))
+      if ((parambabq instanceof babl))
       {
-        localArrayList.add(ajyc.a(2131714628) + "");
+        localArrayList.add(ajya.a(2131714639) + "");
         return localArrayList;
       }
-      if ((parambabc instanceof baar))
+      if ((parambabq instanceof babf))
       {
-        localArrayList.add(ajyc.a(2131714622) + "");
+        localArrayList.add(ajya.a(2131714633) + "");
         return localArrayList;
       }
-      if ((parambabc instanceof baap))
+      if ((parambabq instanceof babd))
       {
-        localArrayList.add(ajyc.a(2131714631) + "");
+        localArrayList.add(ajya.a(2131714642) + "");
         return localArrayList;
       }
-    } while (!(parambabc instanceof baau));
-    localArrayList.add(ajyc.a(2131714625) + "");
+    } while (!(parambabq instanceof babi));
+    localArrayList.add(ajya.a(2131714636) + "");
     return localArrayList;
   }
   
@@ -384,7 +384,7 @@ public class SubmitHomeWorkFragment
   protected void a()
   {
     this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Azxw = new azxw(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Azyd = new azyd(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
     if (getActivity() == null)
     {
@@ -401,9 +401,9 @@ public class SubmitHomeWorkFragment
       return;
       localObject = (QQAppInterface)getActivity().getAppInterface();
       break;
-      this.jdField_a_of_type_Akhq = ((akhq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
-      this.jdField_a_of_type_Akim = new azxn(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akim);
+      this.jdField_a_of_type_Akhp = ((akhp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
+      this.jdField_a_of_type_Akil = new azxu(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akil);
     } while (this.jdField_d_of_type_Boolean);
     this.jdField_d_of_type_Boolean = true;
     Object localObject = new IntentFilter();
@@ -418,13 +418,13 @@ public class SubmitHomeWorkFragment
     {
       if (!getActivity().isFinishing())
       {
-        if (this.jdField_a_of_type_Bcpq == null)
+        if (this.jdField_a_of_type_Bcqf == null)
         {
-          this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), getActivity().getTitleBarHeight());
-          this.jdField_a_of_type_Bcpq.setCancelable(false);
-          this.jdField_a_of_type_Bcpq.show();
+          this.jdField_a_of_type_Bcqf = new bcqf(getActivity(), getActivity().getTitleBarHeight());
+          this.jdField_a_of_type_Bcqf.setCancelable(false);
+          this.jdField_a_of_type_Bcqf.show();
         }
-        this.jdField_a_of_type_Bcpq.c(paramInt);
+        this.jdField_a_of_type_Bcqf.c(paramInt);
       }
       return;
     }
@@ -446,9 +446,9 @@ public class SubmitHomeWorkFragment
       localObject = localArrayList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        baas localbaas = (baas)((Iterator)localObject).next();
-        if (localbaas != null) {
-          localJSONArray.put(localbaas.a());
+        babg localbabg = (babg)((Iterator)localObject).next();
+        if (localbabg != null) {
+          localJSONArray.put(localbabg.a());
         }
       }
     }
@@ -457,7 +457,7 @@ public class SubmitHomeWorkFragment
       if (this.jdField_d_of_type_JavaLangString == null)
       {
         localObject = "";
-        bbbb.a("Grp_edu", "homework", paramString, 0, 0, new String[] { localObject, "", String.valueOf(localArrayList.size()), localJSONArray.toString() });
+        bbbp.a("Grp_edu", "homework", paramString, 0, 0, new String[] { localObject, "", String.valueOf(localArrayList.size()), localJSONArray.toString() });
       }
     }
     else
@@ -471,11 +471,11 @@ public class SubmitHomeWorkFragment
       if (!paramString.hasNext()) {
         break label216;
       }
-      localObject = (baas)paramString.next();
-      if ((localObject == null) || (!(localObject instanceof baap))) {
+      localObject = (babg)paramString.next();
+      if ((localObject == null) || (!(localObject instanceof babd))) {
         break label264;
       }
-      paramInt = ((baap)localObject).c();
+      paramInt = ((babd)localObject).c();
     }
     label264:
     for (;;)
@@ -487,30 +487,30 @@ public class SubmitHomeWorkFragment
       if (this.jdField_d_of_type_JavaLangString == null) {}
       for (paramString = "";; paramString = this.jdField_d_of_type_JavaLangString)
       {
-        bbbb.a("Grp_edu", "Grp_oral", "Finish_Oral_Number", 0, 0, new String[] { paramString, String.valueOf(paramInt) });
+        bbbp.a("Grp_edu", "Grp_oral", "Finish_Oral_Number", 0, 0, new String[] { paramString, String.valueOf(paramInt) });
         label255:
         return;
       }
     }
   }
   
-  public void a(int paramInt, ArrayList<babc> paramArrayList1, ArrayList<babc> paramArrayList2, azvl paramazvl)
+  public void a(int paramInt, ArrayList<babq> paramArrayList1, ArrayList<babq> paramArrayList2, azvn paramazvn)
   {
     if (paramInt == 0)
     {
-      paramazvl = new ArrayList();
+      paramazvn = new ArrayList();
       Iterator localIterator = paramArrayList1.iterator();
       while (localIterator.hasNext()) {
-        paramazvl.addAll(a((babc)localIterator.next()));
+        paramazvn.addAll(a((babq)localIterator.next()));
       }
       localIterator = paramArrayList2.iterator();
       while (localIterator.hasNext()) {
-        paramazvl.addAll(a((babc)localIterator.next()));
+        paramazvn.addAll(a((babq)localIterator.next()));
       }
-      paramazvl = new ArrayList(new TreeSet(paramazvl));
-      if (paramazvl.isEmpty())
+      paramazvn = new ArrayList(new TreeSet(paramazvn));
+      if (paramazvn.isEmpty())
       {
-        paramazvl = "";
+        paramazvn = "";
         if (this.jdField_a_of_type_Int != 0) {
           break label353;
         }
@@ -521,8 +521,8 @@ public class SubmitHomeWorkFragment
         if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null) && (!paramArrayList2.isEmpty())) {
           this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(paramArrayList2);
         }
-        paramArrayList1 = getString(2131697743, new Object[] { paramazvl });
-        bcpw.a(getActivity(), paramArrayList1, 0).a();
+        paramArrayList1 = getString(2131697753, new Object[] { paramazvn });
+        bcql.a(getActivity(), paramArrayList1, 0).a();
       }
     }
     for (;;)
@@ -531,23 +531,23 @@ public class SubmitHomeWorkFragment
         QLog.d("SubmitHomeWorkFragment", 2, "Error, reason_code = " + paramInt + ", print trace: ", new RuntimeException("UPLOAD_ERROR"));
       }
       return;
-      if (paramazvl.size() == 1)
+      if (paramazvn.size() == 1)
       {
-        paramazvl = (String)paramazvl.get(0);
+        paramazvn = (String)paramazvn.get(0);
         break;
       }
-      paramazvl = (String)paramazvl.get(0) + "、" + (String)paramazvl.get(1) + ajyc.a(2131714624);
+      paramazvn = (String)paramazvn.get(0) + "、" + (String)paramazvn.get(1) + ajya.a(2131714635);
       break;
       label353:
-      paramArrayList1 = getString(2131697741, new Object[] { paramazvl });
-      bcpw.a(getActivity(), paramArrayList1, 0).a();
+      paramArrayList1 = getString(2131697751, new Object[] { paramazvn });
+      bcql.a(getActivity(), paramArrayList1, 0).a();
       continue;
       if (paramInt == 1) {
-        bcpw.a(getActivity(), 2131697710, 0).a();
+        bcql.a(getActivity(), 2131697715, 0).a();
       } else if (paramInt == 3) {
-        bcpw.a(getActivity(), 2131697737, 0).a();
+        bcql.a(getActivity(), 2131697747, 0).a();
       } else if (paramInt == 2) {
-        bcpw.a(getActivity(), 2131694618, 0).a();
+        bcql.a(getActivity(), 2131694619, 0).a();
       }
     }
   }
@@ -562,7 +562,7 @@ public class SubmitHomeWorkFragment
     {
       if (System.currentTimeMillis() - this.jdField_c_of_type_Long >= 2000L)
       {
-        bcpw.a(getActivity(), ajyc.a(2131714634) + 10 + ajyc.a(2131714632), 0).a();
+        bcql.a(getActivity(), ajya.a(2131714645) + 10 + ajya.a(2131714643), 0).a();
         this.jdField_c_of_type_Long = System.currentTimeMillis();
       }
       return;
@@ -570,10 +570,10 @@ public class SubmitHomeWorkFragment
     paramView = TroopHWJsPlugin.a(10 - i, getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     paramView.putExtra("HomeWorkConstants:homework_request_code_key", 259);
     startActivity(paramView);
-    bfmr.a(getActivity());
+    bfni.a(getActivity());
   }
   
-  public void a(azvl paramazvl)
+  public void a(azvn paramazvn)
   {
     Object localObject1 = this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
@@ -595,23 +595,23 @@ public class SubmitHomeWorkFragment
           localObject1 = ((ArrayList)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            babc localbabc = (babc)((Iterator)localObject1).next();
-            if (localbabc != null) {
-              if (localbabc.e() == 1) {
-                localArrayList3.add(localbabc);
-              } else if ((localbabc.e() == 2) || (localbabc.e() == 0)) {
-                localArrayList1.add(localbabc);
+            babq localbabq = (babq)((Iterator)localObject1).next();
+            if (localbabq != null) {
+              if (localbabq.e() == 1) {
+                localArrayList3.add(localbabq);
+              } else if ((localbabq.e() == 2) || (localbabq.e() == 0)) {
+                localArrayList1.add(localbabq);
               }
             }
           }
           localObject1 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = (babc)((Iterator)localObject1).next();
+            localObject2 = (babq)((Iterator)localObject1).next();
             if (localObject2 != null) {
-              if (((babc)localObject2).e() == 1) {
+              if (((babq)localObject2).e() == 1) {
                 localArrayList3.add(localObject2);
-              } else if ((((babc)localObject2).e() == 2) || (((babc)localObject2).e() == 0)) {
+              } else if ((((babq)localObject2).e() == 2) || (((babq)localObject2).e() == 0)) {
                 localArrayList2.add(localObject2);
               }
             }
@@ -623,21 +623,21 @@ public class SubmitHomeWorkFragment
           }
           if ((!localArrayList1.isEmpty()) || (!localArrayList2.isEmpty()))
           {
-            a(0, localArrayList1, localArrayList2, paramazvl);
+            a(0, localArrayList1, localArrayList2, paramazvn);
             return;
           }
-          a(3, null, null, paramazvl);
+          a(3, null, null, paramazvn);
           return;
         }
-        if ((this.jdField_a_of_type_Akhq != null) && (paramazvl != null))
+        if ((this.jdField_a_of_type_Akhp != null) && (paramazvn != null))
         {
-          a(2131697701);
-          this.jdField_b_of_type_Azvl = paramazvl;
-          this.jdField_b_of_type_Long = paramazvl.jdField_c_of_type_Long;
-          this.jdField_a_of_type_Akhq.a(paramazvl.jdField_c_of_type_Long, paramazvl.jdField_a_of_type_Long, paramazvl.jdField_b_of_type_JavaLangString);
+          a(2131697706);
+          this.jdField_b_of_type_Azvn = paramazvn;
+          this.jdField_b_of_type_Long = paramazvn.jdField_d_of_type_Long;
+          this.jdField_a_of_type_Akhp.a(paramazvn.jdField_d_of_type_Long, paramazvn.jdField_a_of_type_Long, paramazvn.jdField_b_of_type_JavaLangString);
           return;
         }
-        a(3, null, null, paramazvl);
+        a(3, null, null, paramazvn);
         return;
       }
     }
@@ -667,7 +667,7 @@ public class SubmitHomeWorkFragment
             String str = localJSONObject.getString("type");
             if (!TextUtils.isEmpty(str))
             {
-              if (Arrays.asList(azwo.c).contains(str)) {
+              if (Arrays.asList(azws.c).contains(str)) {
                 this.jdField_a_of_type_JavaUtilLinkedList.add(localJSONObject);
               }
             }
@@ -698,12 +698,12 @@ public class SubmitHomeWorkFragment
     }
   }
   
-  protected void a(@NonNull ArrayList<babc> paramArrayList)
+  protected void a(@NonNull ArrayList<babq> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      localArrayList.addAll(a((babc)paramArrayList.next()));
+      localArrayList.addAll(a((babq)paramArrayList.next()));
     }
     paramArrayList = new ArrayList(new TreeSet(localArrayList));
     if (paramArrayList.isEmpty()) {
@@ -711,13 +711,13 @@ public class SubmitHomeWorkFragment
     }
     for (;;)
     {
-      paramArrayList = getString(2131697743, new Object[] { paramArrayList });
-      bcpw.a(getActivity(), paramArrayList, 0).a();
+      paramArrayList = getString(2131697753, new Object[] { paramArrayList });
+      bcql.a(getActivity(), paramArrayList, 0).a();
       return;
       if (paramArrayList.size() == 1) {
         paramArrayList = (String)paramArrayList.get(0);
       } else {
-        paramArrayList = (String)paramArrayList.get(0) + "、" + (String)paramArrayList.get(1) + ajyc.a(2131714633);
+        paramArrayList = (String)paramArrayList.get(0) + "、" + (String)paramArrayList.get(1) + ajya.a(2131714644);
       }
     }
   }
@@ -770,28 +770,28 @@ public class SubmitHomeWorkFragment
     do
     {
       return;
-      this.jdField_a_of_type_AndroidViewView = a(2131376656);
-      this.jdField_b_of_type_AndroidViewView = a(2131363390);
+      this.jdField_a_of_type_AndroidViewView = a(2131376658);
+      this.jdField_b_of_type_AndroidViewView = a(2131363389);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard = ((InputMethodGuard)a(2131368209));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.setOnInputMethodChangeListener(this);
       this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = ((XMediaEditor)a(2131367667));
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getActivity().getLayoutInflater().inflate(2131560349, null, false));
       this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = ((XMediaEditor)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367674));
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setLeftRightPadding(bawz.a(getActivity(), 12.0F));
-      this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setLeftRightPadding(bawz.a(getActivity(), 12.0F));
-      this.jdField_c_of_type_AndroidViewView = a(2131370416);
-      d(this.jdField_c_of_type_AndroidViewView.findViewById(2131370417));
-      this.jdField_c_of_type_AndroidViewView.findViewById(2131370417).setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setLeftRightPadding(baxn.a(getActivity(), 12.0F));
+      this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setLeftRightPadding(baxn.a(getActivity(), 12.0F));
+      this.jdField_c_of_type_AndroidViewView = a(2131370415);
+      d(this.jdField_c_of_type_AndroidViewView.findViewById(2131370416));
+      this.jdField_c_of_type_AndroidViewView.findViewById(2131370416).setOnClickListener(this);
       localView = a(2131372136);
       if (localView != null) {
         localView.setOnClickListener(this);
       }
-      localView = a(2131372143);
+      localView = a(2131372145);
       if (localView != null) {
         localView.setOnClickListener(this);
       }
-      localView = a(2131372144);
+      localView = a(2131372146);
     } while (localView == null);
     localView.setOnClickListener(this);
   }
@@ -805,7 +805,7 @@ public class SubmitHomeWorkFragment
     {
       if (System.currentTimeMillis() - this.jdField_c_of_type_Long >= 2000L)
       {
-        bcpw.a(getActivity(), ajyc.a(2131714636) + 10 + ajyc.a(2131714627), 0).a();
+        bcql.a(getActivity(), ajya.a(2131714647) + 10 + ajya.a(2131714638), 0).a();
         this.jdField_c_of_type_Long = System.currentTimeMillis();
       }
       return;
@@ -814,7 +814,7 @@ public class SubmitHomeWorkFragment
     if (QLog.isColorLevel()) {
       QLog.d("SubmitHomeWorkFragment", 2, new Object[] { "onVideoBtnClick", String.format("mCameraPath=%s", new Object[] { jdField_a_of_type_JavaLangString }) });
     }
-    bfmr.a(getActivity());
+    bfni.a(getActivity());
   }
   
   protected void c()
@@ -826,7 +826,7 @@ public class SubmitHomeWorkFragment
       if (str2 == null) {}
       for (String str1 = "";; str1 = str2)
       {
-        bbbb.a("Grp_edu", "homework", "CompleteHw_Show", 0, 0, new String[] { str1 });
+        bbbp.a("Grp_edu", "homework", "CompleteHw_Show", 0, 0, new String[] { str1 });
         if (TextUtils.isEmpty(str2)) {
           break;
         }
@@ -835,19 +835,19 @@ public class SubmitHomeWorkFragment
         if (this.jdField_a_of_type_Long <= 0L) {
           break label123;
         }
-        a(2131697688);
-        this.jdField_a_of_type_Akhq.a(this.jdField_a_of_type_Long);
+        a(2131697693);
+        this.jdField_a_of_type_Akhp.a(this.jdField_a_of_type_Long);
         return;
       }
-      bcpw.a(getActivity(), 2131697739, 0).a();
+      bcql.a(getActivity(), 2131697749, 0).a();
       getActivity().finish();
       return;
       label123:
-      bcpw.a(getActivity(), 2131697739, 0).a();
+      bcql.a(getActivity(), 2131697749, 0).a();
       getActivity().finish();
       return;
     }
-    bcpw.a(getActivity(), 2131697739, 0).a();
+    bcql.a(getActivity(), 2131697749, 0).a();
     getActivity().finish();
   }
   
@@ -860,34 +860,34 @@ public class SubmitHomeWorkFragment
     {
       if (System.currentTimeMillis() - this.jdField_c_of_type_Long >= 2000L)
       {
-        bcpw.a(getActivity(), ajyc.a(2131714629) + 6 + ajyc.a(2131714623), 0).a();
+        bcql.a(getActivity(), ajya.a(2131714640) + 6 + ajya.a(2131714634), 0).a();
         this.jdField_c_of_type_Long = System.currentTimeMillis();
       }
       return;
     }
-    bfmr.b(paramView);
+    bfni.b(paramView);
     h();
   }
   
   protected void d()
   {
-    setLeftButton(2131697727, new azxp(this));
-    setRightButton(2131697735, new azxq(this));
-    setTitle(getResources().getString(2131697736));
+    setLeftButton(2131697737, new azxw(this));
+    setRightButton(2131697745, new azxx(this));
+    setTitle(getResources().getString(2131697746));
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setShowType(2);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setExtraValue("troopuin", this.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setScrollable(false);
     this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setShowType(0);
-    this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setMinimumHeight((int)(axli.b * 0.4D));
+    this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setMinimumHeight((int)(axlk.b * 0.4D));
     this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setSizeLimit(500);
     this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setExtraValue("troopuin", this.jdField_d_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setHint(getActivity().getString(2131697732));
+    this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setHint(getActivity().getString(2131697742));
   }
   
   protected void d(View paramView)
   {
     if (paramView != null) {
-      paramView.setOnTouchListener(new azxv(this));
+      paramView.setOnTouchListener(new azyc(this));
     }
   }
   
@@ -908,15 +908,15 @@ public class SubmitHomeWorkFragment
   {
     Message localMessage = Message.obtain();
     localMessage.what = 513;
-    this.jdField_a_of_type_Azxw.sendMessage(localMessage);
+    this.jdField_a_of_type_Azyd.sendMessage(localMessage);
   }
   
   public void f()
   {
     int j = 0;
-    if (!bbev.g(getActivity()))
+    if (!bbfj.g(getActivity()))
     {
-      bcpw.a(getActivity(), 0, 2131694607, 0).a();
+      bcql.a(getActivity(), 0, 2131694608, 0).a();
       return;
     }
     Object localObject1;
@@ -929,9 +929,9 @@ public class SubmitHomeWorkFragment
     if (this.jdField_d_of_type_JavaLangString == null)
     {
       localObject1 = "";
-      bbbb.a("Grp_edu", "homework", "CompleteHw_Sub", 0, 0, new String[] { localObject1 });
-      localObject2 = new azvl();
-      ((azvl)localObject2).jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+      bbbp.a("Grp_edu", "homework", "CompleteHw_Sub", 0, 0, new String[] { localObject1 });
+      localObject2 = new azvn();
+      ((azvn)localObject2).jdField_d_of_type_Long = this.jdField_a_of_type_Long;
       localObject3 = new JSONArray();
       localObject4 = new JSONArray();
       localObject1 = a((JSONArray)localObject3, (JSONArray)localObject4);
@@ -940,14 +940,14 @@ public class SubmitHomeWorkFragment
       if (!((Boolean)((List)localObject1).get(3)).booleanValue()) {
         break label294;
       }
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b().iterator();; localObject1 = ajyc.a(2131714626)) {
+      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b().iterator();; localObject1 = ajya.a(2131714637)) {
         for (;;)
         {
           if (((Iterator)localObject1).hasNext())
           {
-            localObject5 = (baaw)((Iterator)localObject1).next();
-            if ((localObject5 != null) && (((baaw)localObject5).d() == 0)) {
-              if (!(localObject5 instanceof baap)) {
+            localObject5 = (babk)((Iterator)localObject1).next();
+            if ((localObject5 != null) && (((babk)localObject5).d() == 0)) {
+              if (!(localObject5 instanceof babd)) {
                 break;
               }
             }
@@ -959,20 +959,20 @@ public class SubmitHomeWorkFragment
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject1 = getActivity().getString(2131697730, new Object[] { localObject1 });
-        bcpw.a(getActivity(), (CharSequence)localObject1, 0).a();
+        localObject1 = getActivity().getString(2131697740, new Object[] { localObject1 });
+        bcql.a(getActivity(), (CharSequence)localObject1, 0).a();
         return;
         localObject1 = this.jdField_d_of_type_JavaLangString;
         break;
-        if (!(localObject5 instanceof baau)) {
+        if (!(localObject5 instanceof babi)) {
           break label169;
         }
-        localObject1 = ajyc.a(2131714621);
+        localObject1 = ajya.a(2131714632);
         continue;
         label294:
         if (!bool)
         {
-          bcpw.a(getActivity(), 2131697729, 0).a();
+          bcql.a(getActivity(), 2131697739, 0).a();
           return;
         }
       }
@@ -1017,22 +1017,22 @@ public class SubmitHomeWorkFragment
           if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
             break label542;
           }
-          ((azvl)localObject2).jdField_a_of_type_Long = 0L;
-          ((azvl)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).toString();
+          ((azvn)localObject2).jdField_a_of_type_Long = 0L;
+          ((azvn)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).toString();
         }
         catch (Exception localException)
         {
           continue;
         }
-        localObject1 = bbcv.a(getActivity(), 230);
-        localObject2 = new azxr(this, (azvl)localObject2);
-        ((bbgg)localObject1).setMessage(2131697728);
-        ((bbgg)localObject1).setPositiveButton(2131697709, (DialogInterface.OnClickListener)localObject2);
-        ((bbgg)localObject1).setNegativeButton(2131697703, (DialogInterface.OnClickListener)localObject2);
-        ((bbgg)localObject1).show();
+        localObject1 = bbdj.a(getActivity(), 230);
+        localObject2 = new azxy(this, (azvn)localObject2);
+        ((bbgu)localObject1).setMessage(2131697738);
+        ((bbgu)localObject1).setPositiveButton(2131697714, (DialogInterface.OnClickListener)localObject2);
+        ((bbgu)localObject1).setNegativeButton(2131697708, (DialogInterface.OnClickListener)localObject2);
+        ((bbgu)localObject1).show();
         return;
         label542:
-        ((azvl)localObject2).jdField_a_of_type_Long = Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue();
+        ((azvn)localObject2).jdField_a_of_type_Long = Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue();
       }
       String str = "";
     }
@@ -1045,14 +1045,14 @@ public class SubmitHomeWorkFragment
     if (this.jdField_d_of_type_JavaLangString == null)
     {
       str = "";
-      if (this.jdField_b_of_type_Azvl != null) {
+      if (this.jdField_b_of_type_Azvn != null) {
         break label167;
       }
       localObject = "";
     }
     for (;;)
     {
-      bbbb.a("Grp_edu", "homework", "CompleteHw_Success", 0, 0, new String[] { str, "", localObject });
+      bbbp.a("Grp_edu", "homework", "CompleteHw_Success", 0, 0, new String[] { str, "", localObject });
       a(1, "CompleteHw_Pic", true);
       a(2, "CompleteHw_Video", true);
       a(3, "CompleteHw_Voice", true);
@@ -1066,10 +1066,10 @@ public class SubmitHomeWorkFragment
       str = this.jdField_d_of_type_JavaLangString;
       break;
       label167:
-      if (this.jdField_b_of_type_Azvl.jdField_b_of_type_JavaLangString == null) {
+      if (this.jdField_b_of_type_Azvn.jdField_b_of_type_JavaLangString == null) {
         localObject = "";
       } else {
-        localObject = this.jdField_b_of_type_Azvl.jdField_b_of_type_JavaLangString;
+        localObject = this.jdField_b_of_type_Azvn.jdField_b_of_type_JavaLangString;
       }
     }
   }
@@ -1081,32 +1081,32 @@ public class SubmitHomeWorkFragment
   
   protected void h()
   {
-    if (this.jdField_a_of_type_Bfol == null)
+    if (this.jdField_a_of_type_Bfpc == null)
     {
-      this.jdField_a_of_type_Bfol = bfol.a(getActivity());
+      this.jdField_a_of_type_Bfpc = bfpc.a(getActivity());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)getActivity().getLayoutInflater().inflate(2131559661, null));
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setBackgroundColor(-1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_Azxw);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_Azyd);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setTimeOutTime(360000);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setMinimumHeight((int)(axli.b * 0.3F));
-      this.jdField_a_of_type_Bfol.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
-      this.jdField_a_of_type_Bfol.e(50);
-      this.jdField_a_of_type_Bfol.a(new azxs(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setMinimumHeight((int)(axlk.b * 0.3F));
+      this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
+      this.jdField_a_of_type_Bfpc.e(50);
+      this.jdField_a_of_type_Bfpc.a(new azxz(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
-    this.jdField_a_of_type_Bfol.c(true);
-    bfmr.a(getActivity());
-    this.jdField_a_of_type_Bfol.show();
+    this.jdField_a_of_type_Bfpc.c(true);
+    bfni.a(getActivity());
+    this.jdField_a_of_type_Bfpc.show();
   }
   
   public void i()
   {
-    this.jdField_a_of_type_Azxw.postDelayed(new SubmitHomeWorkFragment.6(this), 400L);
+    this.jdField_a_of_type_Azyd.postDelayed(new SubmitHomeWorkFragment.6(this), 400L);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Bfol.dismiss();
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
   
   protected void k()
@@ -1114,22 +1114,22 @@ public class SubmitHomeWorkFragment
     if (this.jdField_d_of_type_JavaLangString == null) {}
     for (Object localObject1 = "";; localObject1 = this.jdField_d_of_type_JavaLangString)
     {
-      bbbb.a("Grp_edu", "homework", "Subhw_hwDetail", 0, 0, new String[] { localObject1 });
-      localObject1 = bfol.a(getActivity());
+      bbbp.a("Grp_edu", "homework", "Subhw_hwDetail", 0, 0, new String[] { localObject1 });
+      localObject1 = bfpc.a(getActivity());
       ViewGroup localViewGroup = (ViewGroup)getActivity().getLayoutInflater().inflate(2131560362, null);
       XMediaEditor localXMediaEditor = (XMediaEditor)localViewGroup.findViewById(2131367673);
-      localXMediaEditor.setMaxHeight(axli.b - this.vg.getHeight() - bbkx.a(getActivity()) - axli.a(122.0F));
+      localXMediaEditor.setMaxHeight(axlk.b - this.vg.getHeight() - bbll.a(getActivity()) - axlk.a(122.0F));
       localXMediaEditor.setShowType(1);
       Object localObject2 = (TextView)localViewGroup.findViewById(2131367575);
       View localView = localViewGroup.findViewById(2131367574);
-      if (this.jdField_a_of_type_Azvl != null)
+      if (this.jdField_a_of_type_Azvn != null)
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azvl.jdField_a_of_type_JavaLangString)) {
-          ((TextView)localObject2).setText(this.jdField_a_of_type_Azvl.jdField_a_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azvn.jdField_a_of_type_JavaLangString)) {
+          ((TextView)localObject2).setText(this.jdField_a_of_type_Azvn.jdField_a_of_type_JavaLangString);
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azvl.jdField_d_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azvn.jdField_d_of_type_JavaLangString))
         {
-          localObject2 = (Integer)azwo.a.get(this.jdField_a_of_type_Azvl.jdField_d_of_type_JavaLangString);
+          localObject2 = (Integer)azws.a.get(this.jdField_a_of_type_Azvn.jdField_d_of_type_JavaLangString);
           if (localObject2 != null) {
             localView.setBackgroundResource(((Integer)localObject2).intValue());
           }
@@ -1137,26 +1137,26 @@ public class SubmitHomeWorkFragment
       }
       localView = localViewGroup.findViewById(2131367573);
       d(localView);
-      localView.setOnClickListener(new azxt(this, (bfol)localObject1));
+      localView.setOnClickListener(new azya(this, (bfpc)localObject1));
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
         localXMediaEditor.setData(this.jdField_b_of_type_JavaLangString);
       }
-      ((bfol)localObject1).a(localViewGroup);
-      bfmr.a(getActivity());
-      ((bfol)localObject1).e(300);
-      ((bfol)localObject1).show();
+      ((bfpc)localObject1).a(localViewGroup);
+      bfni.a(getActivity());
+      ((bfpc)localObject1).e(300);
+      ((bfpc)localObject1).show();
       return;
     }
   }
   
   public void l()
   {
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {}
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcqf.dismiss();
       label24:
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf = null;
       return;
     }
     catch (Exception localException)
@@ -1209,19 +1209,19 @@ public class SubmitHomeWorkFragment
         }
       }
     } while (paramInt2 != -1);
-    if (!bbev.d(getActivity()))
+    if (!bbfj.d(getActivity()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SubmitHomeWorkFragment", 2, "no network toast from capture");
       }
-      bcpw.a(getActivity(), 2131697483, 0).a();
+      bcql.a(getActivity(), 2131697484, 0).a();
       return;
     }
     if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
       try
       {
-        bbdr.a(getActivity(), jdField_a_of_type_JavaLangString);
-        paramIntent = new baax(jdField_a_of_type_JavaLangString);
+        bbef.a(getActivity(), jdField_a_of_type_JavaLangString);
+        paramIntent = new babl(jdField_a_of_type_JavaLangString);
         this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(paramIntent);
         return;
       }
@@ -1233,7 +1233,7 @@ public class SubmitHomeWorkFragment
         }
       }
     }
-    bcpw.a(getActivity(), 2131695189, 0).a();
+    bcql.a(getActivity(), 2131695190, 0).a();
     QLog.d("SubmitHomeWorkFragment", 1, new Object[] { "onActivityResult path=%s", jdField_a_of_type_JavaLangString });
   }
   
@@ -1241,12 +1241,12 @@ public class SubmitHomeWorkFragment
   {
     if (((Boolean)a(new JSONArray(), new JSONArray()).get(0)).booleanValue())
     {
-      bbgg localbbgg = bbcv.a(getActivity(), 230);
-      azxu localazxu = new azxu(this);
-      localbbgg.setMessage(2131697731);
-      localbbgg.setPositiveButton(2131697708, localazxu);
-      localbbgg.setNegativeButton(2131697703, localazxu);
-      localbbgg.show();
+      bbgu localbbgu = bbdj.a(getActivity(), 230);
+      azyb localazyb = new azyb(this);
+      localbbgu.setMessage(2131697741);
+      localbbgu.setPositiveButton(2131697713, localazyb);
+      localbbgu.setNegativeButton(2131697708, localazyb);
+      localbbgu.show();
       return true;
     }
     return super.onBackEvent();
@@ -1261,10 +1261,10 @@ public class SubmitHomeWorkFragment
     case 2131372136: 
       a(paramView);
       return;
-    case 2131372143: 
+    case 2131372145: 
       b(paramView);
       return;
-    case 2131372144: 
+    case 2131372146: 
       c(paramView);
       return;
     }
@@ -1274,8 +1274,8 @@ public class SubmitHomeWorkFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Akim != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akim);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Akil != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akil);
     }
     TroopHWJsPlugin.a();
     if (this.jdField_d_of_type_Boolean)
@@ -1288,7 +1288,7 @@ public class SubmitHomeWorkFragment
   public void onDetach()
   {
     super.onDetach();
-    this.jdField_a_of_type_Azxw.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Azyd.removeCallbacksAndMessages(null);
   }
   
   public void onFinish()
@@ -1307,7 +1307,7 @@ public class SubmitHomeWorkFragment
     default: 
       return;
     }
-    this.jdField_c_of_type_Boolean = babu.a(this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, paramIntent, this.jdField_c_of_type_Boolean);
+    this.jdField_c_of_type_Boolean = baci.a(this.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, paramIntent, this.jdField_c_of_type_Boolean);
   }
   
   public void onPause()

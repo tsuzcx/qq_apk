@@ -1,20 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-
 public class omt
-  extends RecyclerView.ViewHolder
 {
-  public View a;
-  public TextView a;
-  public TextView b;
+  public static int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public long c;
+  public long d;
   
-  public omt(omq paramomq, View paramView)
+  static
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378116));
-    this.b = ((TextView)paramView.findViewById(2131378117));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369200);
+    jdField_a_of_type_Int = 300000;
+  }
+  
+  public omt()
+  {
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 0;
   }
 }
 

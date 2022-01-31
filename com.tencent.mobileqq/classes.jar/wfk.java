@@ -1,41 +1,211 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URLEncoder;
+
 public class wfk
 {
-  int jdField_a_of_type_Int = 0;
-  short jdField_a_of_type_Short = 0;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
-  
-  public wfk() {}
-  
-  public wfk(int paramInt, short paramShort, byte[] paramArrayOfByte)
+  public static int a(QQAppInterface paramQQAppInterface, Activity paramActivity, wfg paramwfg, String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Short = paramShort;
+    if ((paramwfg == null) || (paramwfg.a() == 0))
+    {
+      a(paramQQAppInterface, paramActivity, paramString);
+      return 0;
+    }
+    for (;;)
+    {
+      try
+      {
+        switch (paramwfg.c)
+        {
+        case 4: 
+        case 5: 
+        case 7: 
+        case 8: 
+        case 9: 
+          a(paramQQAppInterface, paramActivity, paramString);
+          return 0;
+        }
+      }
+      catch (Exception paramwfg)
+      {
+        String str2;
+        String str3;
+        String str1;
+        Uri localUri;
+        a(paramQQAppInterface, paramActivity, paramString);
+        return 0;
+      }
+      a(paramQQAppInterface, paramActivity, paramwfg.a().a() + "", paramBundle.getBoolean("issupportwpa", false));
+      return 1;
+      str2 = "";
+      str3 = paramBundle.getString("authSig");
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localUri = Uri.parse(paramString);
+        str1 = str2;
+        if (localUri != null)
+        {
+          str1 = str2;
+          if (localUri.isHierarchical()) {
+            str1 = localUri.getQueryParameter("jump_from");
+          }
+        }
+      }
+      a(paramQQAppInterface, paramActivity, paramwfg.a().a() + "", str1, paramBundle.getString("authKey"), str3);
+      return 2;
+      a(paramQQAppInterface, paramActivity, paramwfg.a().a() + "", paramBundle);
+      return 3;
+      a(paramActivity, paramwfg);
+      return paramwfg.c;
+      a(paramQQAppInterface, paramActivity, scz.a(paramwfg.a().a()), paramBundle);
+      return 10;
+    }
   }
   
-  public int a()
+  private static String a(String paramString)
   {
-    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+    if ((paramString == null) || ("".equals(paramString)) || (paramString.length() == 0)) {
+      return null;
+    }
+    try
+    {
+      paramString = new String(bbco.decode(paramString, 0));
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return null;
   }
   
-  public long a()
+  private static void a(Context paramContext, wfg paramwfg)
   {
-    return wim.a(this.jdField_a_of_type_ArrayOfByte);
+    naz.a(paramContext, null, String.valueOf(paramwfg.a().a()), false, 1, true, -1);
   }
   
-  public String a()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
   {
-    return new String(this.jdField_a_of_type_ArrayOfByte);
+    paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
+    paramString = 1024 + "http://qm.qq.com/cgi-bin/result" + "?p=a&v=" + bbdh.c() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
+    paramQQAppInterface.putExtra("title", paramActivity.getString(2131718919));
+    paramQQAppInterface.putExtra("url", paramString);
+    paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
+    if (paramActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
+    {
+      paramActivity.startActivityForResult(paramQQAppInterface, 2);
+      return;
+    }
+    paramActivity.startActivity(paramQQAppInterface);
   }
   
-  public String toString()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, int paramInt)
   {
-    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
+    paramQQAppInterface = new Intent(paramActivity, QRCardActivity.class);
+    paramQQAppInterface.putExtra("CARDMODE", paramInt);
+    paramQQAppInterface.putExtra("QRCARDSTR", paramString);
+    paramActivity.startActivity(paramQQAppInterface);
+  }
+  
+  private static final void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    Intent localIntent = new Intent();
+    if (paramBundle != null)
+    {
+      String str = paramBundle.getString("extvalue");
+      paramBundle = paramBundle.getString("exttype");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle)))
+      {
+        localIntent.putExtra("extvalue", str);
+        localIntent.putExtra("exttype", paramBundle);
+      }
+    }
+    localIntent.putExtra("source", 1);
+    sgg.a(localIntent, paramQQAppInterface, paramActivity, paramString, -1);
+    PublicAccountHandler.a(paramQQAppInterface, paramString, "Pb_account_lifeservice", "mp_msg_sys_1", "scan");
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("src_type", "internal");
+    localBundle.putString("version", "1");
+    localBundle.putString("callback_type", "scheme");
+    localBundle.putString("callback_name", "open_card");
+    localBundle.putString("uin", paramString1);
+    localBundle.putString("card_type", "group");
+    localBundle.putString("authKey", paramString3);
+    localBundle.putString("authSig", paramString4);
+    localBundle.putString("from", "qrcode");
+    if (!TextUtils.isEmpty(bbeg.i)) {
+      localBundle.putString("appid", bbeg.i);
+    }
+    if (!TextUtils.isEmpty(bbeg.j)) {
+      localBundle.putString("openid", a(bbeg.j));
+    }
+    bbeg.i = null;
+    bbeg.j = null;
+    paramString1 = paramString2;
+    if (bbkk.a(paramString2))
+    {
+      if (!(paramActivity instanceof ScannerActivity)) {
+        break label219;
+      }
+      paramString1 = "ScannerActivity";
+    }
+    for (;;)
+    {
+      localBundle.putString("jump_from", paramString1);
+      paramQQAppInterface = bbex.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + naj.a(localBundle)).toString());
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.c();
+      }
+      return;
+      label219:
+      paramString1 = paramString2;
+      if ((paramActivity instanceof QRJumpActivity)) {
+        if (paramActivity.getIntent().getBooleanExtra("fromQrcode", false)) {
+          paramString1 = "ScannerActivity";
+        } else {
+          paramString1 = "QRJumpActivity";
+        }
+      }
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("src_type", "internal");
+    localBundle.putString("version", "1");
+    localBundle.putString("callback_type", "scheme");
+    localBundle.putString("callback_name", "open_card");
+    localBundle.putString("uin", paramString);
+    if (paramBoolean) {}
+    for (paramString = "1";; paramString = "0")
+    {
+      localBundle.putString("wpa", paramString);
+      paramQQAppInterface = bbex.a(paramQQAppInterface, paramActivity, Uri.parse("mqqapi://card/show_pslcard?" + naj.a(localBundle)).toString());
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.b();
+        paramQQAppInterface.c();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfk
  * JD-Core Version:    0.7.0.1
  */

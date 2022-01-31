@@ -1,19 +1,14 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aqdw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   aqdw(aqdv paramaqdv) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    aqdv.a(this.a);
+    this.a.b();
   }
 }
 

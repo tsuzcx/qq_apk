@@ -1,192 +1,101 @@
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
 public class mdc
-  extends lfg
+  implements View.OnClickListener
 {
-  public mdc(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public mdc(EffectSettingUi paramEffectSettingUi) {}
   
-  protected void a(long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "onDestory UI-->relationId = " + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.b(true);
-    }
-  }
-  
-  protected void a(long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "onDestroyInviteUI-->GroupId = " + paramLong);
-    }
-    if (paramLong == this.a.jdField_a_of_type_Long)
+    long l = AudioHelper.b();
+    int k = paramView.getId();
+    paramView = paramView.getTag(2131376847);
+    if ((paramView != null) && ((paramView instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
     {
-      super.a(paramLong);
-      this.a.b(true);
-    }
-  }
-  
-  protected void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
-  {
-    if (this.a.g()) {}
-    label381:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onGaOperationResult, result[" + paramInt1 + "], uin[" + paramLong2 + "], info[" + paramLong3 + "], groupId[" + paramLong4 + "], relationType[" + paramInt2 + "], mCameraNum[" + this.a.o + "], seq[" + paramLong1 + "]");
-      }
-      lgf locallgf = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      switch (paramInt1)
+      int m = this.a.jdField_a_of_type_Int;
+      bool = this.a.a(l, k, bool);
+      int i;
+      int j;
+      if (k == 4)
       {
-      case 93: 
-      case 94: 
-      case 95: 
-      case 97: 
-      case 98: 
-      default: 
-        return;
-      case 90: 
-        if (paramLong3 == 3L) {
-          if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+        i = 1;
+        j = i;
+        if (i != 0)
+        {
+          paramView = ((AVActivity)this.a.getContext()).a;
+          if ((paramView != null) && ((paramView == null) || (paramView.getVisibility() != 8))) {
+            break label321;
+          }
+          j = 1;
+        }
+        label109:
+        if ((bool) && ((m != k) || (j != 0))) {
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
+        }
+        if (bool)
+        {
+          paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+          if (paramView != null)
           {
-            if (this.a.o <= 1) {
-              break label381;
+            if (QLog.isDevelopLevel()) {
+              QLog.d("EffectSettingUi", 1, "onShow clear state");
             }
-            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372519, 0);
+            paramView.b(k);
           }
         }
-        break;
-      case 96: 
-        for (;;)
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+        if (m != k)
         {
-          if ((!locallgf.j) || (this.a.jdField_c_of_type_Boolean))
-          {
-            this.a.jdField_c_of_type_Boolean = false;
-            this.a.i(paramLong1);
-            paramInt1 = locallgf.a(this.a.jdField_b_of_type_Long, 1);
-            boolean bool = false;
-            if (paramInt1 != -1) {
-              bool = ((los)locallgf.c.get(paramInt1)).a;
-            }
-            this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+          if (k != 1) {
+            break label326;
           }
-          DoubleVideoMeetingCtrlUI.c(this.a, paramLong1);
-          return;
-          if ((paramLong3 != 1L) || (locallgf.an)) {
-            break;
-          }
-          this.a.e("OnGaOprationResult->REQUEST_VIDEO_SUC");
-          this.a.a(paramLong1, locallgf.c);
-          return;
-          this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131372519, 8);
+          mbm.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
         }
       }
-    } while ((paramLong3 == 2L) || (paramLong3 != 4L));
-    return;
-    this.a.c(paramLong1, true);
-    this.a.m(paramLong1);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(paramLong1) });
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "onCreateRoomSuc-->relationId = " + paramLong2);
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberVideoOut, groupId[" + paramLong2 + "], friendUin[" + paramLong3 + "], videoSrcType[" + paramInt + "], seq[" + paramLong1 + "]");
-    }
-    this.a.a(paramLong1, paramLong2, paramLong3, 2);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberLeave, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], isQQUser[" + paramBoolean + "], seq[" + l + "]");
-    }
-    this.a.a(l, paramLong1, paramLong2, 6);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberJoin, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], isRfresh[" + paramBoolean1 + "], isQQUser[" + paramBoolean2 + "], seq[" + l + "]");
-    }
-    this.a.a(l, paramLong1, paramLong2, 5);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "EnterRoomSuc-->GroupId = " + paramLong2);
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().J = true;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(3, 0, true, true, this.a.jdField_a_of_type_ComTencentAvVideoController.a().d);
-    }
-    this.a.r();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onGaMemberShareSrcInOrOut, groupId[" + paramLong1 + "], groupId[" + paramLong1 + "], bIn[" + paramBoolean1 + "], isPPT[" + paramBoolean2 + "], seq[" + l + "]");
-    }
-    if (paramBoolean1) {
-      this.a.a(l, paramLong1, paramLong2, 3);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_Boolean = paramBoolean2;
-      return;
-      this.a.a(l, paramLong1, paramLong2, 4);
-    }
-  }
-  
-  protected void c(long paramLong, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+      label321:
+      label326:
+      label372:
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          j = 0;
+          break label109;
+          if (k != 2) {
+            break label372;
+          }
+          mbm.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
+        } while (this.a.jdField_a_of_type_Mcz == null);
+        this.a.jdField_a_of_type_Mcz.a();
+        return;
+        if (k == 4)
+        {
+          mbm.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+          return;
+        }
+        if (k == 3)
+        {
+          mbm.a(this.a.a(), bool);
+          return;
+        }
+      } while (k != 5);
+      mqw.f();
       return;
     }
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onFirstFrameDataComeIn, uin[" + paramLong + "], videoSrcType[" + paramInt + "], seq[" + l + "]");
-    }
-    paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
-    if ((paramInt != -1) && (((los)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).a))
-    {
-      mat.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      mat.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-    }
-    DoubleVideoMeetingCtrlUI.d(this.a, l);
-    this.a.f("OnFirstFrameDataComeIn");
-  }
-  
-  protected void c(long paramLong1, long paramLong2)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberVideoIn, groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], seq[" + l + "]");
-    }
-    this.a.a(l, paramLong1, paramLong2, 1);
   }
 }
 

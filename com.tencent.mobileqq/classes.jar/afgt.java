@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class afgt
-  implements afho
 {
-  public afgt(SearchContactsFragment paramSearchContactsFragment) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 80000001) {
-      awvy.a("add_page", "search", "clk_search_grp", this.a.d + 1, 0, new String[] { "", "", paramString, "" });
-    }
-    this.a.a(paramString, false);
-  }
+  public int a;
+  public AccountSearchPb.ResultItem a;
+  public AccountSearchPb.hotwordrecord a;
+  public AccountSearchPb.record a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

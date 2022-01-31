@@ -1,8 +1,8 @@
-import android.view.KeyEvent;
+import com.tencent.widget.TCWNumberPicker;
 
 public abstract interface bfwq
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
 }
 
 

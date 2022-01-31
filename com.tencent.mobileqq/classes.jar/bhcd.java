@@ -1,34 +1,93 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.contentbox.FootNavigationLayout;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
+import GIFT_MALL_PROTOCOL.DouFuInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
+import cooperation.vip.manager.MonitorManager;
+import java.lang.ref.WeakReference;
+import java.util.Set;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class bhcd
-  implements View.OnClickListener
 {
-  public bhcd(FootNavigationLayout paramFootNavigationLayout, bhcv parambhcv, int paramInt) {}
+  private static bhce a = new bhce();
   
-  public void onClick(View paramView)
+  private static JSONObject a(DouFuInfo paramDouFuInfo)
   {
-    paramView = bbej.a(((BaseActivity)this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext()).app, this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), this.jdField_a_of_type_Bhcv.b);
-    if (paramView != null) {
-      paramView.c();
-    }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramView = new LpReportInfo_dc02880(7, FootNavigationLayout.a()[this.jdField_a_of_type_Int]);
-      LpReportManager.getInstance().reportToDC02880(paramView, false, true);
-      return;
-      paramView = new Intent(this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Bhcv.b);
-      bgxy.c(paramView);
-      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext().startActivity(paramView);
+      localJSONObject.put("friendUin", paramDouFuInfo.uin);
+      localJSONObject.put("background", paramDouFuInfo.background);
+      localJSONObject.put("time", paramDouFuInfo.birthday);
+      localJSONObject.put("blessing", paramDouFuInfo.blessing);
+      localJSONObject.put("link", paramDouFuInfo.doufu_link);
+      localJSONObject.put("icon", paramDouFuInfo.icon);
+      return localJSONObject;
     }
+    catch (Exception paramDouFuInfo)
+    {
+      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
+      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  {
+    String str = paramSessionInfo.a;
+    Set localSet = paramQQAppInterface.a().a();
+    long l1;
+    long l3;
+    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    {
+      l1 = paramQQAppInterface.a().b();
+      l3 = System.currentTimeMillis() / 1000L;
+      if (l3 - l1 >= 86400L)
+      {
+        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
+        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), axbs.class);
+        l1 = 0L;
+      }
+    }
+    try
+    {
+      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
+      }
+    }
+    paramSessionInfo.putExtra("selfuin", l1);
+    a.a = new WeakReference(paramQQAppInterface);
+    paramQQAppInterface.registObserver(a);
+    paramQQAppInterface.startServlet(paramSessionInfo);
+    paramQQAppInterface.a().c(l3);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (asxd.a(paramQQAppInterface, paramString, 5L, false) != null) {}
+    while ((asxd.a(paramQQAppInterface, paramString, 12L, false) != null) || (asxd.a(paramQQAppInterface, paramString, false) != null)) {
+      return true;
+    }
+    return false;
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  {
+    JSONObject localJSONObject = a(paramDouFuInfo);
+    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
+    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
   }
 }
 

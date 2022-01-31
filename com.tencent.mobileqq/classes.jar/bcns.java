@@ -1,14 +1,8 @@
+import android.view.View;
+
 public abstract interface bcns
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public abstract void setMotionView(View paramView, int paramInt);
 }
 
 

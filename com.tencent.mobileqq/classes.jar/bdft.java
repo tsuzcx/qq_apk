@@ -1,11 +1,4 @@
-import com.tencent.smtt.sdk.WebView;
-
-class bdft
-{
-  WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  String jdField_a_of_type_JavaLangString;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdft

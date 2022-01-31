@@ -1,76 +1,113 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
-class ajtv
-  extends bbwf
+public class ajtv
+  extends QIPCModule
 {
-  ajtv(ajtu paramajtu) {}
+  public static ajtv a;
   
-  public void onDone(bbwg parambbwg)
+  private ajtv()
   {
-    super.onDone(parambbwg);
-    parambbwg = parambbwg.a();
-    if ((parambbwg.containsKey("version")) && (parambbwg.containsKey("json_name")))
+    super("CommonModule");
+  }
+  
+  public static ajtv a()
+  {
+    if (a == null) {}
+    try
     {
-      int i = parambbwg.getInt("version", -1);
-      parambbwg = parambbwg.getString("json_name");
-      if (bbnq.e.d.equals(parambbwg))
+      if (a == null) {
+        a = new ajtv();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
+    }
+    if (paramIntent != null)
+    {
+      int i = paramIntent.getIntExtra("param_callback_id", -1);
+      int j = paramIntent.getIntExtra("param_result_code", -99999);
+      paramIntent = paramIntent.getStringExtra("param_result_desc");
+      if (i > 0)
       {
-        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bbnq.e.a);
-        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("param_result_code", j);
+        localBundle.putString("param_result_desc", paramIntent);
+        localBundle.putString("param_action", "set_avatar");
+        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
+      }
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
+    }
+    Bundle localBundle = new Bundle();
+    if ("getPhoneBindState".equals(paramString))
+    {
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramString instanceof QQAppInterface))
+      {
+        localBundle.putInt("selfBindState", ((askn)((QQAppInterface)paramString).getManager(11)).d());
+        return EIPCResult.createSuccessResult(localBundle);
+      }
+    }
+    else
+    {
+      AppRuntime localAppRuntime;
+      if ("set_nickname".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
         {
-          localObject = bbdj.a((File)localObject);
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
-            if (Math.abs(i - l) <= 5L)
-            {
-              bbnq.a(this.a.a.getApplication().getApplicationContext(), parambbwg, i);
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
-              }
-              boolean bool1 = true;
-              if (((JSONObject)localObject).has("enableX5Report"))
-              {
-                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
-                bool1 = bool2;
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
-                  bool1 = bool2;
-                }
-              }
-              parambbwg = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
-              parambbwg.edit().putBoolean("enableX5Report", bool1).commit();
-              parambbwg.edit().putLong("read_vas_asyncCookie", 0L).commit();
-            }
-            for (;;)
-            {
-              ajtu.a(this.a, (JSONObject)localObject);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
-              }
-            }
-            return;
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("nickname");
           }
-          catch (Exception parambbwg)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambbwg.toString());
-            }
+          ((ajti)((QQAppInterface)localAppRuntime).a(2)).notifyUI(94, true, paramString);
+          return EIPCResult.createSuccessResult(localBundle);
+        }
+      }
+      else if ("set_avatar".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("param_avatar_path");
           }
+          paramBundle = new Intent();
+          paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
+          paramBundle.putExtra("param_callback_id", paramInt);
+          paramString = bbac.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
+          if (paramString.jdField_a_of_type_Int == 0) {
+            break label295;
+          }
+          localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
+          localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
+          localBundle.putString("param_action", "set_avatar");
+          callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
         }
       }
     }
+    return EIPCResult.createSuccessResult(localBundle);
+    label295:
+    return null;
   }
 }
 

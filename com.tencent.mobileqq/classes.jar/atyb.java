@@ -1,19 +1,22 @@
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class atyb
   extends Dialog
@@ -22,167 +25,268 @@ public class atyb
   protected int a;
   protected Context a;
   protected Drawable a;
+  public Handler a;
   protected Button a;
   protected ImageView a;
-  protected TextView a;
-  protected asyr a;
+  protected AppInterface a;
   protected RoundRelativeLayout a;
+  protected String a;
   protected int b;
   protected ImageView b;
-  protected TextView b;
+  protected RoundRelativeLayout b;
+  public RoundRelativeLayout c;
   
-  public atyb(Context paramContext)
+  public atyb(AppInterface paramAppInterface, Context paramContext)
   {
     super(paramContext, 2131755791);
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     a();
   }
   
-  protected void a()
+  private void a()
   {
-    setContentView(2131558899);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131364716));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363451));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363152));
+    setContentView(2131558898);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131367944));
+    this.jdField_b_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131363509));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363450));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367945));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367938));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377315));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370398));
+    this.c = ((RoundRelativeLayout)findViewById(2131369493));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setRoundLayoutRadius(axli.a(3.0F));
-    this.jdField_a_of_type_Int = (axli.jdField_a_of_type_Int - axli.a(28.0F) * 2);
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 150 / 320);
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setRoundLayoutRadius(axlk.a(3.0F));
+    this.jdField_b_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setRoundLayoutRadius(axlk.a(3.0F));
+    this.c.setRoundLayoutRadius(axlk.a(3.0F));
+    this.jdField_a_of_type_Int = (axlk.jdField_a_of_type_Int - axlk.a(28.0F) * 2);
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 5 / 4);
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.getLayoutParams();
     localLayoutParams.width = this.jdField_a_of_type_Int;
     localLayoutParams.height = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setLayoutParams(localLayoutParams);
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyAppDownloadDialog", 2, "init, w=" + this.jdField_a_of_type_Int + ", h=" + this.jdField_b_of_type_Int);
+      QLog.d("NearbyActivityDialog", 2, "init, w=" + this.jdField_a_of_type_Int + ", h=" + this.jdField_b_of_type_Int);
     }
   }
   
-  protected void a(ImageView paramImageView, String paramString)
+  /* Error */
+  public void a(ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f4f4f4"));
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 155	atyb:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   4: ifnonnull +19 -> 23
+    //   7: aload_0
+    //   8: new 157	android/graphics/drawable/ColorDrawable
+    //   11: dup
+    //   12: ldc 159
+    //   14: invokestatic 165	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   17: invokespecial 167	android/graphics/drawable/ColorDrawable:<init>	(I)V
+    //   20: putfield 155	atyb:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   23: aconst_null
+    //   24: astore 4
+    //   26: invokestatic 173	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
+    //   29: astore_3
+    //   30: aload_3
+    //   31: aload_0
+    //   32: getfield 103	atyb:jdField_b_of_type_Int	I
+    //   35: putfield 176	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
+    //   38: aload_3
+    //   39: aload_0
+    //   40: getfield 101	atyb:jdField_a_of_type_Int	I
+    //   43: putfield 179	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
+    //   46: aload_3
+    //   47: aload_0
+    //   48: getfield 155	atyb:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   51: putfield 182	com/tencent/image/URLDrawable$URLDrawableOptions:mFailedDrawable	Landroid/graphics/drawable/Drawable;
+    //   54: aload_3
+    //   55: aload_0
+    //   56: getfield 155	atyb:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   59: putfield 185	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
+    //   62: aload_2
+    //   63: invokestatic 191	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   66: ifne +131 -> 197
+    //   69: aload_2
+    //   70: aload_3
+    //   71: invokestatic 197	com/tencent/image/URLDrawable:getDrawable	(Ljava/lang/String;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   74: astore 4
+    //   76: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   79: ifeq +41 -> 120
+    //   82: ldc 127
+    //   84: iconst_2
+    //   85: new 129	java/lang/StringBuilder
+    //   88: dup
+    //   89: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   92: ldc 199
+    //   94: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: aload 4
+    //   99: invokevirtual 203	com/tencent/image/URLDrawable:getStatus	()I
+    //   102: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   105: ldc 205
+    //   107: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: aload_2
+    //   111: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: aload 4
+    //   122: astore_3
+    //   123: aload 4
+    //   125: invokevirtual 203	com/tencent/image/URLDrawable:getStatus	()I
+    //   128: iconst_1
+    //   129: if_icmpeq +51 -> 180
+    //   132: aload_0
+    //   133: getfield 82	atyb:c	Lcom/tencent/mobileqq/nearby/now/view/widget/RoundRelativeLayout;
+    //   136: iconst_0
+    //   137: invokevirtual 208	com/tencent/mobileqq/nearby/now/view/widget/RoundRelativeLayout:setVisibility	(I)V
+    //   140: aload_0
+    //   141: getfield 45	atyb:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   144: new 210	com/tencent/mobileqq/nearby/widget/NearbyActivityDialog$1
+    //   147: dup
+    //   148: aload_0
+    //   149: invokespecial 213	com/tencent/mobileqq/nearby/widget/NearbyActivityDialog$1:<init>	(Latyb;)V
+    //   152: ldc2_w 214
+    //   155: invokevirtual 219	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   158: pop
+    //   159: aload 4
+    //   161: new 221	atyc
+    //   164: dup
+    //   165: aload_0
+    //   166: invokespecial 222	atyc:<init>	(Latyb;)V
+    //   169: invokevirtual 226	com/tencent/image/URLDrawable:setDownloadListener	(Lcom/tencent/image/URLDrawable$DownloadListener;)V
+    //   172: aload 4
+    //   174: invokevirtual 229	com/tencent/image/URLDrawable:restartDownload	()V
+    //   177: aload 4
+    //   179: astore_3
+    //   180: aload_3
+    //   181: astore_2
+    //   182: aload_3
+    //   183: ifnonnull +8 -> 191
+    //   186: aload_0
+    //   187: getfield 155	atyb:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   190: astore_2
+    //   191: aload_1
+    //   192: aload_2
+    //   193: invokevirtual 233	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   196: return
+    //   197: aload 4
+    //   199: astore_3
+    //   200: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   203: ifeq -23 -> 180
+    //   206: ldc 127
+    //   208: iconst_2
+    //   209: ldc 235
+    //   211: invokestatic 238	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   214: aload 4
+    //   216: astore_3
+    //   217: goto -37 -> 180
+    //   220: astore 4
+    //   222: aconst_null
+    //   223: astore_3
+    //   224: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   227: ifeq +30 -> 257
+    //   230: ldc 127
+    //   232: iconst_2
+    //   233: new 129	java/lang/StringBuilder
+    //   236: dup
+    //   237: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   240: ldc 240
+    //   242: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: aload_2
+    //   246: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: aload 4
+    //   254: invokestatic 243	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   257: goto -77 -> 180
+    //   260: astore 5
+    //   262: aload 4
+    //   264: astore_3
+    //   265: aload 5
+    //   267: astore 4
+    //   269: goto -45 -> 224
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	272	0	this	atyb
+    //   0	272	1	paramImageView	ImageView
+    //   0	272	2	paramString	String
+    //   29	236	3	localObject1	java.lang.Object
+    //   24	191	4	localURLDrawable	com.tencent.image.URLDrawable
+    //   220	43	4	localException1	Exception
+    //   267	1	4	localObject2	java.lang.Object
+    //   260	6	5	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   26	76	220	java/lang/Exception
+    //   200	214	220	java/lang/Exception
+    //   76	120	260	java/lang/Exception
+    //   123	177	260	java/lang/Exception
+  }
+  
+  public boolean a(String paramString)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyAppDownloadDialog", 2, "loadImage, url=" + paramString);
+      QLog.d("NearbyActivityDialog", 2, "updateContent=" + paramString);
     }
-    Object localObject2 = null;
     try
     {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-      }
-      for (;;)
-      {
-        paramString = (String)localObject1;
-        if (localObject1 == null) {
-          paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-        paramImageView.setImageDrawable(paramString);
-        return;
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyAppDownloadDialog", 2, "loadImage empty url");
-          localObject1 = localObject2;
-        }
-      }
+      paramString = new JSONObject(paramString);
+      String str = paramString.optJSONObject("pic").optString("pic_url");
+      a(this.jdField_a_of_type_AndroidWidgetImageView, str);
+      paramString = paramString.optJSONObject("jump_button");
+      str = paramString.optString("text");
+      int i = paramString.optInt("text_color");
+      int j = paramString.optInt("bg_color");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("jump_url");
+      this.jdField_a_of_type_AndroidWidgetButton.setText(str);
+      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(i);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundColor(j);
+      return true;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("NearbyAppDownloadDialog", 2, "loadImage exp: url=" + paramString, localException);
-          localObject1 = localObject2;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("NearbyActivityDialog", 2, "updateContent exception:", paramString);
       }
     }
-  }
-  
-  protected void a(String paramString)
-  {
-    new axra(null).a("dc00899").b("grp_lbs").c("home").d(paramString).e(this.jdField_a_of_type_Asyr.g).a(new String[] { this.jdField_a_of_type_Asyr.f }).a();
-  }
-  
-  public boolean a(asyr paramasyr)
-  {
-    this.jdField_a_of_type_Asyr = paramasyr;
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAppDownloadDialog", 2, "initContent=" + paramasyr.toString());
-    }
-    a(this.jdField_a_of_type_AndroidWidgetImageView, paramasyr.a);
-    if (!TextUtils.isEmpty(paramasyr.c))
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(paramasyr.c);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      if (TextUtils.isEmpty(paramasyr.b)) {
-        break label141;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramasyr.b);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty(paramasyr.e)) {
-        break label153;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      return false;
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      break;
-      label141:
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    label153:
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     return false;
   }
   
   public void onClick(View paramView)
   {
+    String str = (Integer)atbi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)) + "";
     int i = paramView.getId();
     if (i == 2131367938)
     {
       dismiss();
-      a("pop_new_quit");
+      axqy.b(null, "dc00899", "grp_lbs", "", "home", "pop_clk_close", 0, 0, str, "", "", "");
     }
-    do
-    {
+    while (i != 2131363450) {
       return;
-      if (i == 2131363451)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyAppDownloadDialog", 2, "btn onClick, jumpUrl=" + this.jdField_a_of_type_Asyr.d);
-        }
-        atyk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Asyr.d);
-        dismiss();
-        a("pop_new_clk");
-        return;
-      }
-    } while (i != 2131370398);
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAppDownloadDialog", 2, "more onClick, jumpUrl=" + this.jdField_a_of_type_Asyr.e);
     }
-    atyk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Asyr.e);
-  }
-  
-  public void show()
-  {
-    super.show();
-    a("pop_new_exp");
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "onClick, mJumpUrl=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
+        break label221;
+      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      sgg.a(paramView, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    }
+    for (;;)
+    {
+      dismiss();
+      axqy.b(null, "dc00899", "grp_lbs", "", "home", "pop_clk_btn", 0, 0, str, "", "", "");
+      return;
+      label221:
+      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi")) {
+        this.jdField_a_of_type_AndroidContentContext.startActivity(new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+      }
+    }
   }
 }
 

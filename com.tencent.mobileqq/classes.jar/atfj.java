@@ -1,15 +1,19 @@
-import android.widget.EditText;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
 public class atfj
-  implements bcmz
+  implements AbsListView.OnScrollListener
 {
   public atfj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
+    if (paramInt == 1) {
+      bfni.b(ChooseInterestTagActivity.a(this.a));
+    }
   }
 }
 

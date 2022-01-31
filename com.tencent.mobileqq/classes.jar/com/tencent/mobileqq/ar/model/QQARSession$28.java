@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ar.model;
 
-import alhc;
-import alkz;
+import alhb;
+import alky;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$28
   implements Runnable
 {
-  public QQARSession$28(alkz paramalkz) {}
+  public QQARSession$28(alky paramalky) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!alkz.a(this.this$0)))
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!alky.a(this.this$0)))
     {
       QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
       return;
@@ -19,17 +19,17 @@ public class QQARSession$28
     if (this.this$0.d())
     {
       this.this$0.l();
-      alkz.c(this.this$0, 0L);
-      alkz.a(this.this$0, null);
-      alkz.b(this.this$0, null);
+      alky.c(this.this$0, 0L);
+      alky.a(this.this$0, null);
+      alky.b(this.this$0, null);
     }
     this.this$0.a(5L);
-    alkz.d(this.this$0);
+    alky.d(this.this$0);
     this.this$0.b = false;
-    if (this.this$0.jdField_a_of_type_Alhc != null) {
-      this.this$0.jdField_a_of_type_Alhc.a(true, alkz.a(this.this$0), alkz.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Alhb != null) {
+      this.this$0.jdField_a_of_type_Alhb.a(true, alky.a(this.this$0), alky.b(this.this$0));
     }
-    alkz.a(this.this$0, 1);
+    alky.a(this.this$0, 1);
     this.this$0.c = true;
   }
 }

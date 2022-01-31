@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
 public final class npi
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+  implements Parcelable.Creator<VideoInfo.GameAdComData>
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
+  public VideoInfo.GameAdComData a(Parcel paramParcel)
   {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
+    return new VideoInfo.GameAdComData(paramParcel);
   }
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  public VideoInfo.GameAdComData[] a(int paramInt)
   {
-    return new VideoInfo.DownloadBarInfo[paramInt];
+    return new VideoInfo.GameAdComData[paramInt];
   }
 }
 

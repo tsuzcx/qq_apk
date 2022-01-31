@@ -1,32 +1,25 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class abfd
-  extends bfmg
+  implements aqhc
 {
   public abfd(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if (this.a.d == null) {
-      return;
+    bfnm localbfnm = bfnm.a;
+    if ((localbfnm != null) && (localbfnm.a()))
+    {
+      if (!localbfnm.a(1)) {
+        localbfnm.b(1);
+      }
+      if ((!localbfnm.a(8)) && (localbfnm.a(5)) && (localbfnm.a(7))) {
+        localbfnm.b(8);
+      }
+      if ((!localbfnm.a(9)) && (localbfnm.a(6)) && (localbfnm.a(7))) {
+        localbfnm.b(9);
+      }
     }
-    if (paramAnimation == FriendProfileCardActivity.b(this.a)) {
-      this.a.i(1);
-    }
-    this.a.d.clearAnimation();
-    this.a.a.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.d == null) {}
-    while (paramAnimation != FriendProfileCardActivity.a(this.a)) {
-      return;
-    }
-    this.a.i(0);
   }
 }
 

@@ -1,83 +1,83 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.text.Layout;
-import android.text.TextPaint;
+import android.os.AsyncTask;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class bazn
-  extends Drawable
+  extends AsyncTask<Object, Void, Drawable>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString;
+  private Object jdField_a_of_type_JavaLangObject;
+  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public bazn(Context paramContext, String paramString)
+  private View a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bawu.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130841580);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (this == bazl.a(this.jdField_a_of_type_Bazl, localView)) {
+      return localView;
+    }
+    return null;
   }
   
-  public void draw(Canvas paramCanvas)
+  public Drawable a(Object... paramVarArgs)
   {
-    Rect localRect = getBounds();
-    float f1 = localRect.width() / this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Int / 2;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1 * f2);
-    Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label172;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
+    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
+    bazj localbazj = (bazj)paramVarArgs[1];
+    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
+    if (((bazl.a(this.jdField_a_of_type_Bazl) == null) || (isCancelled()) || (a() == null) || (bazl.a(this.jdField_a_of_type_Bazl))) || ((0 == 0) && (!isCancelled()) && (a() != null) && (!bazl.a(this.jdField_a_of_type_Bazl)))) {}
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = localbazj.a();
+        if ((bazl.a(this.jdField_a_of_type_Bazl) != null) && (paramVarArgs != null)) {
+          bazl.a(this.jdField_a_of_type_Bazl).a(str, paramVarArgs);
+        }
+        return paramVarArgs;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        if (bazl.a(this.jdField_a_of_type_Bazl) != null) {
+          bazl.a(this.jdField_a_of_type_Bazl).a();
+        }
+        System.gc();
+        Thread.yield();
+        try
+        {
+          paramVarArgs = localbazj.a();
+        }
+        catch (OutOfMemoryError paramVarArgs)
+        {
+          QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
+        }
+      }
+      paramVarArgs = null;
+    }
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    View localView = a();
+    bazo localbazo = (bazo)bazl.a(this.jdField_a_of_type_Bazl).remove(localView);
+    if ((isCancelled()) || (bazl.a(this.jdField_a_of_type_Bazl))) {
+      paramDrawable = null;
+    }
+    if (localView != null)
+    {
+      if (paramDrawable != null) {
+        break label72;
+      }
+      if ((localbazo != null) && (localbazo.a != null)) {
+        localbazo.a.a(localView, null);
       }
     }
-    label172:
-    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
-    {
-      int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
-      j = localRect.left;
-      i = (localRect.width() - i) / 2;
-      f1 = localRect.top;
-      int k = (int)(localRect.height() / 2.0F + f1 - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + j, k, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
-    }
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    return;
+    label72:
+    bazl.a(this.jdField_a_of_type_Bazl, this.jdField_a_of_type_Boolean, localView, paramDrawable, localbazo);
   }
 }
 

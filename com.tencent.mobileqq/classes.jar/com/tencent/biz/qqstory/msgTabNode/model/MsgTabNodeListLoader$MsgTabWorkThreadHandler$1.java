@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import tfn;
-import tft;
-import tfu;
+import tfk;
+import tfq;
+import tfr;
 
 public class MsgTabNodeListLoader$MsgTabWorkThreadHandler$1
   implements Runnable
 {
-  public MsgTabNodeListLoader$MsgTabWorkThreadHandler$1(tft paramtft) {}
+  public MsgTabNodeListLoader$MsgTabWorkThreadHandler$1(tfq paramtfq) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MsgTabNodeListLoader$MsgTabWorkThreadHandler$1
     {
       Iterator localIterator = this.a.a.d.iterator();
       if (localIterator.hasNext()) {
-        ((tfu)localIterator.next()).a();
+        ((tfr)localIterator.next()).a();
       }
     }
   }

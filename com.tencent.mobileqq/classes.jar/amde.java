@@ -1,19 +1,17 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class amde
 {
-  public int a;
-  long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "0";
+  public Set<Integer> a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
   
   public amde()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
 }
 

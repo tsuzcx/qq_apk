@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bkzg
+final class bkzg
+  implements DialogInterface.OnClickListener
 {
-  public abstract MessageRecord a(bkzj parambkzj);
+  bkzg(String paramString) {}
   
-  public abstract MessageRecord a(bkzr parambkzr);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bkze.a(this.a);
+  }
 }
 
 

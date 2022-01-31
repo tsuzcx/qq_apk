@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adjr;
-import adjs;
-import aemf;
+import adjp;
+import adjq;
+import aemd;
 
 public class TroopRobotHelper$1$1
   implements Runnable
 {
-  public TroopRobotHelper$1$1(adjs paramadjs) {}
+  public TroopRobotHelper$1$1(adjq paramadjq) {}
   
   public void run()
   {
-    if ((adjr.a(this.a.a) instanceof aemf))
+    if ((adjp.a(this.a.a) instanceof aemd))
     {
-      ((aemf)adjr.a(this.a.a)).X = false;
+      ((aemd)adjp.a(this.a.a)).X = false;
       this.a.a.a(false);
     }
   }

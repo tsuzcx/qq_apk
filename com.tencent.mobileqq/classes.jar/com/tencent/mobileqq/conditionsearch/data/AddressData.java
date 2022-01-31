@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import ajyc;
+import ajya;
 import android.text.TextUtils;
-import bbjw;
+import bbkk;
 import com.tencent.common.app.AppInterface;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,7 +14,7 @@ public class AddressData
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131699868);
+    jdField_a_of_type_JavaLangString = ajya.a(2131699879);
   }
   
   public AddressData()
@@ -79,7 +79,7 @@ public class AddressData
     if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    Object localObject2 = bbjw.a(paramString, '|');
+    Object localObject2 = bbkk.a(paramString, '|');
     if ((paramString.startsWith("#")) || (localObject2.length < 2)) {
       return true;
     }

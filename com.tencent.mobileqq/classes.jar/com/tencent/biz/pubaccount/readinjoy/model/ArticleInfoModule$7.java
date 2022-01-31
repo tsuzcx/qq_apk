@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bcpw;
+import bcql;
 import com.tencent.qphone.base.util.BaseApplication;
-import ozr;
+import ozo;
 
 public class ArticleInfoModule$7
   implements Runnable
 {
-  public ArticleInfoModule$7(ozr paramozr) {}
+  public ArticleInfoModule$7(ozo paramozo) {}
   
   public void run()
   {
-    bcpw.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131718583), 1).a();
+    bcql.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131718594), 1).a();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.window;
 
-import arzl;
+import arzn;
 
 public class LocationFloatWindowManager$5
   implements Runnable
 {
-  public LocationFloatWindowManager$5(arzl paramarzl, int paramInt) {}
+  public LocationFloatWindowManager$5(arzn paramarzn, int paramInt) {}
   
   public void run()
   {

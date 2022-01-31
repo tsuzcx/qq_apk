@@ -1,7 +1,10 @@
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afzj
   implements View.OnClickListener
@@ -10,8 +13,19 @@ public class afzj
   
   public void onClick(View paramView)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new axra(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    vxp.a(this.a.a);
+    vxp.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((agas)this.a.a.a.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 

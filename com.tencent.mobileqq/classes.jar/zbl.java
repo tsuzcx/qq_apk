@@ -1,8 +1,10 @@
 public abstract interface zbl
 {
-  public abstract void h();
+  public abstract void a(int paramInt);
   
-  public abstract void i();
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

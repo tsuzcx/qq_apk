@@ -1,26 +1,25 @@
 import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
-public class bkno
-  extends Property<PickerContainer, Float>
+class bkno
+  extends Property<bknf, Integer>
 {
-  public bkno(PickerContainer paramPickerContainer, Class paramClass, String paramString)
+  bkno(bknf parambknf, Class paramClass, String paramString)
   {
     super(paramClass, paramString);
   }
   
-  public Float a(PickerContainer paramPickerContainer)
+  public Integer a(bknf parambknf)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
+    if (parambknf != null) {
+      return Integer.valueOf(bknf.d(parambknf));
     }
-    return Float.valueOf(1.0F);
+    return Integer.valueOf(0);
   }
   
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  public void a(bknf parambknf, Integer paramInteger)
   {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
+    if (parambknf != null) {
+      bknf.d(parambknf, paramInteger.intValue());
     }
   }
 }

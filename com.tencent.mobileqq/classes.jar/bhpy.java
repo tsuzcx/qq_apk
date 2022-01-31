@@ -1,29 +1,26 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class bhpy
-  extends JSONObject
+public abstract class bhpy<T>
+  extends Handler
 {
-  public bhpy(QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo) {}
+  private WeakReference<T> a;
   
-  public bhpy a(String paramString1, String paramString2)
+  public bhpy(T paramT)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return this;
+    this.a = new WeakReference(paramT);
+  }
+  
+  public abstract void a(T paramT, Message paramMessage);
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object localObject = this.a.get();
+    if (localObject != null) {
+      a(localObject, paramMessage);
     }
-    try
-    {
-      put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException paramString1)
-    {
-      QZLog.d(QzoneVerticalVideoTopicInfo.a(this.a), 2, "put JSON error", paramString1);
-    }
-    return this;
   }
 }
 

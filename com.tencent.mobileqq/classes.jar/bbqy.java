@@ -1,6 +1,16 @@
-public abstract interface bbqy<E>
+import com.tencent.image.URLDrawableHandler;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class bbqy
+  implements EIPCResultCallback
 {
-  public abstract void a(E paramE, Object paramObject);
+  bbqy(bbqx parambbqx, URLDrawableHandler paramURLDrawableHandler) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    this.jdField_a_of_type_Bbqx.a(this.jdField_a_of_type_ComTencentImageURLDrawableHandler, false);
+  }
 }
 
 

@@ -1,16 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nxa
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public nxa(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.b(this.a, paramBoolean);
-    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    onh.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
   }
 }
 

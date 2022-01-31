@@ -1,81 +1,65 @@
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
+import java.util.List;
 
 public class xhw
 {
-  private int jdField_a_of_type_Int = -1;
-  protected xhv a;
-  private xhy jdField_a_of_type_Xhy = new xhy(this, Looper.getMainLooper());
+  private static xhx jdField_a_of_type_Xhx = new xhx();
+  private xhr jdField_a_of_type_Xhr = new xhq();
+  private xhr b = new xhz();
   
-  public void a()
+  public static xhw a()
   {
-    this.jdField_a_of_type_Xhy.removeCallbacks(null);
-    this.jdField_a_of_type_Xhv = null;
+    return (xhw)jdField_a_of_type_Xhx.getInstance();
   }
   
-  protected void a(int paramInt)
+  public asbc a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
+    {
+      return null;
+      if ("LRC".equals(paramString2.toUpperCase())) {
+        return this.jdField_a_of_type_Xhr.a(paramString1);
+      }
+    } while (!"QRC".equals(paramString2.toUpperCase()));
+    return this.b.a(paramString1);
   }
   
-  public void a(long paramLong)
+  public asbe a(asbc paramasbc, long paramLong)
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Xhy);
-    localMessage.what = 7;
-    localMessage.obj = new xhx(paramLong);
-    localMessage.sendToTarget();
-  }
-  
-  public void a(xhv paramxhv)
-  {
-    this.jdField_a_of_type_Xhv = paramxhv;
-  }
-  
-  public void b()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Xhy);
-    localMessage.what = 4;
-    localMessage.sendToTarget();
-  }
-  
-  protected void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_Xhv != null) {
-      this.jdField_a_of_type_Xhv.a(paramLong);
+    Object localObject;
+    if (paramasbc == null)
+    {
+      localObject = null;
+      return localObject;
     }
-  }
-  
-  public void c()
-  {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Xhy);
-    localMessage.what = 2;
-    localMessage.sendToTarget();
-  }
-  
-  protected void c(long paramLong)
-  {
-    a(3);
-    if (this.jdField_a_of_type_Xhv != null) {
-      this.jdField_a_of_type_Xhv.a(paramLong);
+    List localList = paramasbc.a();
+    if (localList == null) {
+      return null;
     }
-  }
-  
-  protected void d()
-  {
-    a(3);
-    if (this.jdField_a_of_type_Xhv != null) {}
-  }
-  
-  protected void e()
-  {
-    a(4);
-    if (this.jdField_a_of_type_Xhv != null) {}
-  }
-  
-  protected void f()
-  {
-    a(5);
-    if (this.jdField_a_of_type_Xhv != null) {}
+    int j = localList.size();
+    if (j < 1) {
+      return null;
+    }
+    int i = 0;
+    label43:
+    if (i < j - 1)
+    {
+      paramasbc = (asbe)localList.get(i);
+      localObject = (asbe)localList.get(i + 1);
+      if ((paramLong < paramasbc.a) || (((asbe)localObject).a < paramLong)) {}
+    }
+    for (;;)
+    {
+      localObject = paramasbc;
+      if (paramasbc != null) {
+        break;
+      }
+      return (asbe)localList.get(j - 1);
+      i += 1;
+      break label43;
+      paramasbc = null;
+    }
   }
 }
 

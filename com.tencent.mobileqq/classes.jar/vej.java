@@ -1,60 +1,173 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class vej
-  extends syv
 {
-  public String a;
-  private int c;
-  private int d;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static int b;
+  public static long b;
+  public static String b;
   
-  public String a()
+  static
   {
-    return sxp.a("StoryMonitorSvc.client_monitor_report");
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  private static int a()
   {
-    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
-    try
-    {
-      localRspMonitorValue.mergeFrom(paramArrayOfByte);
-      return new vek(localRspMonitorValue);
+    if (jdField_a_of_type_JavaLangString.equals("grp_tribe")) {
+      return 4;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    return null;
+    if (jdField_a_of_type_JavaLangString.equals("grp_qq")) {
+      return 1;
+    }
+    if (jdField_a_of_type_JavaLangString.equals("grp_readinjoy")) {
+      return 5;
+    }
+    return 2;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static String a(int paramInt)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
+    switch (paramInt)
+    {
+    default: 
+      return "grp_qq_pic_base";
+    case 2: 
+      return "grp_qq_pic_base";
+    case 3: 
+      return "grp_qq_pic_qzone";
+    }
+    return "grp_qq_pic_kandian";
   }
   
-  protected byte[] a()
+  public static void a(int paramInt)
   {
-    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
-    localReqMonitorValue.ID.set(this.c);
-    if (this.d > 0) {
-      localReqMonitorValue.Value.set(this.d);
+    jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if ((paramInt == 101) || (paramInt == 102))
+    {
+      if (b()) {
+        b(paramString);
+      }
+    }
+    else {
+      return;
+    }
+    a(paramString);
+  }
+  
+  public static void a(long paramLong, String paramString)
+  {
+    if ((paramLong > 0L) && (jdField_a_of_type_Long > 0L) && (jdField_b_of_type_Long > 0L) && (!TextUtils.isEmpty(paramString)) && (a()))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("create_duration", String.valueOf((jdField_b_of_type_Long - jdField_a_of_type_Long) / 1000.0D));
+      localHashMap.put("frame_duration", String.valueOf((paramLong - jdField_a_of_type_Long) / 1000.0D));
+      paramLong -= jdField_a_of_type_Long;
+      axrn.a(BaseApplicationImpl.getContext()).a(paramString, "actShortVideoEdit", true, paramLong, 0L, localHashMap, "");
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoEditReport", 2, "create_duration:" + (String)localHashMap.get("create_duration") + ", frame_duration:" + (String)localHashMap.get("frame_duration") + ", frameDuration:" + paramLong);
+      }
+      jdField_a_of_type_Long = 0L;
+      jdField_b_of_type_Long = 0L;
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!a()) {
+      return;
+    }
+    axqy.b(null, "dc00898", "", "", paramString, paramString, a(), 0, "", "", "", "");
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (!a()) {
+      return;
+    }
+    axqy.b(null, "dc00898", "", "", paramString, paramString, a(), 0, String.valueOf(paramInt), "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    int i;
+    if (b())
+    {
+      i = 1;
+      if (!jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
+        break label43;
+      }
+      i = 2;
     }
     for (;;)
     {
-      if (this.a != null) {
-        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      axqy.b(null, "dc00898", "", "", paramString1, paramString1, i, 0, "", "", paramString2, "");
+      return;
+      label43:
+      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
+        i = 3;
       }
-      return localReqMonitorValue.toByteArray();
-      localReqMonitorValue.Value.set(1);
     }
   }
   
-  public String toString()
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
+    if (!a()) {
+      return;
+    }
+    axqy.b(null, "dc00898", "", "", paramString1, paramString1, a(), 0, paramString2, paramString3, paramString4, paramString5);
+  }
+  
+  public static boolean a()
+  {
+    return ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals("grp_qq"))) || (jdField_a_of_type_JavaLangString.equals("grp_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_tribe")) || (jdField_a_of_type_JavaLangString.equals("grp_readinjoy"));
+  }
+  
+  public static void b(int paramInt)
+  {
+    jdField_b_of_type_Int = paramInt;
+  }
+  
+  public static void b(String paramString)
+  {
+    a(paramString, "");
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    int i;
+    if (b())
+    {
+      i = 1;
+      if (!jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_qzone")) {
+        break label46;
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      axqy.b(null, "dc00898", "", "", paramString, paramString, i, 0, String.valueOf(paramInt), "", "", "");
+      return;
+      label46:
+      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase("grp_qq_pic_kandian")) {
+        i = 3;
+      }
+    }
+  }
+  
+  private static boolean b()
+  {
+    return (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && ((jdField_a_of_type_JavaLangString.equals("grp_qq_pic_base")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_qzone")) || (jdField_a_of_type_JavaLangString.equals("grp_qq_pic_kandian")));
   }
 }
 

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
 
 public class aode
-  implements asko<EmoticonPackage>
+  implements View.OnClickListener
 {
-  public aode(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  public aode(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    if (paramEmoticonPackage == null)
-    {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7);
-      return;
-    }
-    adug.a(7, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
+    this.a.a("0X8009980");
+    this.a.a();
   }
 }
 

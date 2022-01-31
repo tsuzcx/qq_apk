@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket;
 
 import Wallet.GetGroupRedPackListRsp;
-import ahje;
+import ahjc;
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.qq.taf.jce.JceOutputStream;
 import java.io.File;
 
@@ -19,7 +19,7 @@ class RedPacketManager$8
     }
     try
     {
-      String str = ahje.f + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
+      String str = ahjc.f + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
       Object localObject = new File(str);
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
@@ -27,7 +27,7 @@ class RedPacketManager$8
       localObject = new JceOutputStream();
       ((JceOutputStream)localObject).setServerEncoding("utf-8");
       this.jdField_a_of_type_WalletGetGroupRedPackListRsp.writeTo((JceOutputStream)localObject);
-      bbdj.a(((JceOutputStream)localObject).toByteArray(), str);
+      bbdx.a(((JceOutputStream)localObject).toByteArray(), str);
       return;
     }
     catch (Throwable localThrowable)

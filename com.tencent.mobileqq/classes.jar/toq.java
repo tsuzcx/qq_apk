@@ -1,36 +1,39 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class toq
-  extends syq
+  extends syn
 {
-  public List<StoryVideoItem> a;
+  public final String a;
+  public final List<vvd> a;
+  public final int b;
   
-  public toq(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
+  public toq(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    super(paramRspBatchGetVideoInfo.result);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspBatchGetVideoInfo.vid_info_list.has())
+    Object localObject = paramRspGetTagList.tag_list.get();
+    if (localObject != null)
     {
-      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
-      while (paramRspBatchGetVideoInfo.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilList.add(new vvd(localTagItem));
       }
     }
+    this.b = paramRspGetTagList.is_end.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
   }
   
   public String toString()
   {
-    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

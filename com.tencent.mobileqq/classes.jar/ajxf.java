@@ -1,36 +1,24 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
 
-public final class ajxf
-  implements auhz
+public class ajxf
+  extends MqqHandler
 {
-  private WeakReference<FrameHelperActivity> a;
-  
-  public ajxf(FrameHelperActivity paramFrameHelperActivity)
+  public ajxf(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    this.a = new WeakReference(paramFrameHelperActivity);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
-    if (localFrameHelperActivity == null) {}
-    FragmentActivity localFragmentActivity;
-    QQAppInterface localQQAppInterface;
-    do
+    switch (paramMessage.what)
     {
-      do
-      {
-        return;
-        localFragmentActivity = localFrameHelperActivity.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
-      localQQAppInterface = localFragmentActivity.app;
-    } while ((!aumi.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
-    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
-    axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
+    default: 
+      return;
+    }
+    FriendListHandler.a(this.a);
   }
 }
 

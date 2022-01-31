@@ -1,41 +1,21 @@
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class azze
-  extends CountDownTimer
+  implements Animation.AnimationListener
 {
-  public azze(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  public azze(ReciteFragment paramReciteFragment, Button paramButton) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLong1, paramLong2);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
   
-  public void onFinish()
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.b())
-    {
-      this.a.b();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-      {
-        bbgg localbbgg = bbcv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131697697).setNegativeButton(2131697726, new azzg(this)).setPositiveButton(2131697722, new azzf(this));
-        localbbgg.setCancelable(false);
-        localbbgg.show();
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onTick(long paramLong)
-  {
-    int i = (int)(paramLong / 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
-    }
-    if (i == 5) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131697689);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

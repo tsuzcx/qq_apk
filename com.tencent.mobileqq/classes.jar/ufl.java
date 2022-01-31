@@ -1,6 +1,6 @@
 public abstract interface ufl
 {
-  public abstract void a(ufk paramufk, int paramInt);
+  public abstract boolean a_(ufh paramufh, int paramInt1, int paramInt2);
 }
 
 

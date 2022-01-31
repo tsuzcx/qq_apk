@@ -1,24 +1,56 @@
+import android.os.Looper;
 import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.widget.Button;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class pxu
-  extends ClickableSpan
+  extends osm
 {
-  public pxu(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
+  public pxu(ComponentHeaderUgc paramComponentHeaderUgc) {}
   
-  public void onClick(View paramView)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
-    rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actn.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      i = 1;
+      if (i != 0) {
+        break label32;
+      }
+      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
+    }
+    label32:
+    ArticleInfo localArticleInfo;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = this.a.jdField_a_of_type_Puy.a.a();
+    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131702295));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
+      localArticleInfo.mSocialFeedInfo.h = 2;
+      localArticleInfo.isNeedShowBtnWhenFollowed = true;
+    }
+    for (;;)
+    {
+      osj.a().b();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131702300));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
+      localArticleInfo.mSocialFeedInfo.h = 1;
+    }
   }
 }
 

@@ -14,20 +14,20 @@ final class ac
     //   11: dup
     //   12: getstatic 34	com/tencent/mobileqq/msf/core/y:ac	Ljava/lang/String;
     //   15: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: astore_3
+    //   18: astore_2
     //   19: new 30	java/io/File
     //   22: dup
     //   23: getstatic 40	com/tencent/mobileqq/msf/core/y:af	Ljava/lang/String;
     //   26: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: astore_2
-    //   30: aload_3
+    //   29: astore_3
+    //   30: aload_2
     //   31: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
     //   34: astore 4
     //   36: ldc 48
     //   38: astore_1
     //   39: getstatic 52	com/tencent/mobileqq/msf/core/y:aj	Z
     //   42: ifne +8 -> 50
-    //   45: aload_2
+    //   45: aload_3
     //   46: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
     //   49: astore_1
     //   50: getstatic 52	com/tencent/mobileqq/msf/core/y:aj	Z
@@ -35,7 +35,7 @@ final class ac
     //   56: new 54	com/tencent/qphone/base/util/Cryptor
     //   59: dup
     //   60: invokespecial 55	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   63: astore 6
+    //   63: astore 4
     //   65: new 57	java/io/RandomAccessFile
     //   68: dup
     //   69: getstatic 34	com/tencent/mobileqq/msf/core/y:ac	Ljava/lang/String;
@@ -50,13 +50,13 @@ final class ac
     //   83: invokevirtual 65	java/io/RandomAccessFile:length	()J
     //   86: l2i
     //   87: newarray byte
-    //   89: astore 4
+    //   89: astore 6
     //   91: aload_2
     //   92: astore_1
     //   93: aload_2
     //   94: astore_3
     //   95: aload_2
-    //   96: aload 4
+    //   96: aload 6
     //   98: invokevirtual 69	java/io/RandomAccessFile:read	([B)I
     //   101: pop
     //   102: aload_2
@@ -65,8 +65,8 @@ final class ac
     //   105: astore_3
     //   106: new 24	java/lang/String
     //   109: dup
-    //   110: aload 6
-    //   112: aload 4
+    //   110: aload 4
+    //   112: aload 6
     //   114: ldc 71
     //   116: invokevirtual 75	java/lang/String:getBytes	()[B
     //   119: invokevirtual 79	com/tencent/qphone/base/util/Cryptor:decrypt	([B[B)[B
@@ -212,16 +212,16 @@ final class ac
     //   425: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   428: iconst_0
     //   429: putstatic 207	com/tencent/mobileqq/msf/core/y:ah	Z
-    //   432: aload_3
+    //   432: aload_2
     //   433: invokevirtual 211	java/io/File:exists	()Z
     //   436: ifeq +8 -> 444
-    //   439: aload_3
+    //   439: aload_2
     //   440: invokevirtual 214	java/io/File:delete	()Z
     //   443: pop
-    //   444: aload_2
+    //   444: aload_3
     //   445: invokevirtual 211	java/io/File:exists	()Z
     //   448: ifeq +8 -> 456
-    //   451: aload_2
+    //   451: aload_3
     //   452: invokevirtual 214	java/io/File:delete	()Z
     //   455: pop
     //   456: iconst_0
@@ -440,16 +440,16 @@ final class ac
     //   884	1	1	str2	java.lang.String
     //   888	1	1	localIOException4	java.io.IOException
     //   924	1	1	str3	java.lang.String
-    //   29	423	2	localObject2	Object
+    //   18	422	2	localObject2	Object
     //   546	21	2	localException1	java.lang.Exception
     //   662	95	2	localObject3	Object
     //   928	1	2	localObject4	Object
     //   932	1	2	localException2	java.lang.Exception
     //   937	1	2	localObject5	Object
-    //   18	563	3	localObject6	Object
+    //   29	552	3	localObject6	Object
     //   34	376	4	localObject7	Object
     //   6	287	5	str4	java.lang.String
-    //   63	48	6	localCryptor	com.tencent.qphone.base.util.Cryptor
+    //   89	24	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   30	36	546	java/lang/Exception

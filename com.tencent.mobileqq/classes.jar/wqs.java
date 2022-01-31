@@ -1,34 +1,21 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
 import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class wqs
-  extends wpv
+  extends BroadcastReceiver
 {
-  public wqs(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
+  private wqs(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, wpc paramwpc)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return SubscribePersonalDetailFragment.a(this.a);
-  }
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(wpn paramwpn)
-  {
-    if ((paramwpn.c()) || (paramwpn.d()))
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
     {
-      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).b() == 1))
-      {
-        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
-        wpw.a().a(localSubDraftChangeEvent);
-      }
-      SubscribePersonalDetailFragment.a(this.a, paramwpn);
+      SubscribePersonalDetailFragment.b(this.a, false);
+      wpt.a().a(new UserStateUpdateEvent());
     }
   }
 }

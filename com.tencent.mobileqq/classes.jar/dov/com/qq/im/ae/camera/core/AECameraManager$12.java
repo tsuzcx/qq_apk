@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bijj;
+import bika;
 
 public class AECameraManager$12
   implements Runnable
 {
-  public AECameraManager$12(bijj parambijj, int paramInt) {}
+  public AECameraManager$12(bika parambika, int paramInt) {}
   
   public void run()
   {
-    bijj.c(this.this$0, this.a);
+    bika.c(this.this$0, this.a);
   }
 }
 

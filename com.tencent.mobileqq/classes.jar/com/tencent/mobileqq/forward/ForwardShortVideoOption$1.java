@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import aywk;
-import bbgg;
+import aywm;
+import bbgu;
 import com.tencent.image.URLDrawable;
 
 public class ForwardShortVideoOption$1
   implements Runnable
 {
-  ForwardShortVideoOption$1(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, bbgg parambbgg, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  ForwardShortVideoOption$1(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, bbgu parambbgu, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    aywk.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
+    aywm.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.1.1(this));
   }
 }

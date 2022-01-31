@@ -1,48 +1,78 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aggs
-  implements aggw
+  implements bcvg
 {
   public aggs(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void a(RecentBaseData paramRecentBaseData)
+  public void a(bbjs parambbjs, bcvf parambcvf)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (paramRecentBaseData.a().equals("0"))
+    int i = parambbjs.jdField_c_of_type_Int;
+    int j = parambbjs.f;
+    parambbjs = parambbjs.jdField_c_of_type_JavaLangString;
+    switch (i)
     {
-      MiniMsgTabFragment.a(this.a).findViewById(2131377512).performClick();
-      return;
-    }
-    MiniChatActivity.a(localFragmentActivity, paramRecentBaseData.a(), paramRecentBaseData.a(), paramRecentBaseData.b(), false, MiniMsgTabFragment.a(this.a));
-    aggc.a("0X8009C2D");
-    if (MiniMsgTabFragment.a(this.a) == null) {
-      MiniMsgTabFragment.a(this.a, AnimationUtils.loadAnimation(this.a.getActivity(), 2130771995));
-    }
-    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
-    MiniMsgTabFragment.a(this.a).setAnimationListener(new aggt(this, localFragmentActivity));
-    MiniMsgTabFragment.b(this.a).setVisibility(8);
-    int i = paramRecentBaseData.a();
-    if (akpy.c(i)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      axqw.b(null, "dc00898", "", "", "0X800A0F7", "0X800A0F7", MiniMsgTabFragment.a(this.a), 1, "" + i, "", "", "");
-      return;
-      if (i == 1) {
-        i = 2;
-      } else if (i == 3000) {
-        i = 4;
-      } else {
-        i = 5;
+    default: 
+      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
+    case 2: 
+    case 73: 
+    case 3: 
+    case 9: 
+    case 10: 
+    case 70: 
+    case 82: 
+    case 76: 
+    case 77: 
+    case 14: 
+    case 78: 
+      do
+      {
+        return;
+        MiniMsgTabFragment.a(this.a, 1, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 5, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 6, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 7, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 13, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 8, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 10, null);
+        return;
+      } while (MiniMsgTabFragment.b(this.a) == -1);
+      if (MiniMsgTabFragment.b(this.a))
+      {
+        MainPageFragment.launchForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+        return;
       }
+      MainPageFragment.launch(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a));
+      return;
+    case 11: 
+      MiniMsgTabFragment.a(this.a, 11, null);
+      return;
+    case 74: 
+    case 75: 
+      MiniMsgTabFragment.a(this.a, 2, null);
+      return;
+    case 79: 
+    case 80: 
+      MiniMsgTabFragment.a(this.a, 3, null);
+      return;
+    case 72: 
+      MiniMsgTabFragment.a(this.a, parambbjs, j);
+      return;
+    case 81: 
+      MiniMsgTabFragment.a(this.a, 9, null);
+      return;
     }
+    PublicFragmentActivity.a(this.a.getActivity(), MiniAppEntrySettingFragment.class);
   }
 }
 

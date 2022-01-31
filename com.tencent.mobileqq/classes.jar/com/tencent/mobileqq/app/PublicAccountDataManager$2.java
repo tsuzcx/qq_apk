@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import ajsf;
-import akdi;
+import ajsd;
+import akdh;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import sgj;
+import sgg;
 
 public class PublicAccountDataManager$2
   implements Runnable
 {
-  public PublicAccountDataManager$2(akdi paramakdi) {}
+  public PublicAccountDataManager$2(akdh paramakdh) {}
   
   public void run()
   {
     QLog.d("Q.contacttab.pub", 2, "preGetKandianSubscribe account info!");
-    sgj.a(this.this$0.a, BaseApplication.getContext(), null, ajsf.aQ);
+    sgg.a(this.this$0.a, BaseApplication.getContext(), null, ajsd.aQ);
   }
 }
 

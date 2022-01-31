@@ -1,13 +1,35 @@
-import android.widget.ImageView;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class agdj
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public ImageView a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  protected agdj(agdi paramagdi) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 3)
+    {
+      this.a.a();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.a();
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 

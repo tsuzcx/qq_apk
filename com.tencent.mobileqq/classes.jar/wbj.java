@@ -1,21 +1,44 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-class wbj
+public class wbj
+  implements ViewPager.OnPageChangeListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  public wbj(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  private wbj()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 

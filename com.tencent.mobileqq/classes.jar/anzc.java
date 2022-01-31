@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anzc
-  implements asko<EmoticonPackage>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anzc(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, anyc paramanyc, aobk paramaobk) {}
+  public anzc(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramEmoticonPackage == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-      }
+    com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.a.getParent() != null) {
+      this.a.getParent().requestLayout();
     }
-    do
-    {
-      return;
-      anyb localanyb = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_Anyb;
-      if (localanyb != null) {
-        localanyb.a(this.jdField_a_of_type_Anyc);
-      }
-    } while (this.jdField_a_of_type_Aobk.d != 2);
-    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
-    {
-      axqw.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
-      return;
-    }
-    axqw.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
   }
 }
 

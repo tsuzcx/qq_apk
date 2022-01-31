@@ -1,6 +1,26 @@
-public abstract interface biji
+class biji
+  implements bios
 {
-  public abstract void a();
+  biji(bijd parambijd) {}
+  
+  public void a()
+  {
+    bijd.a(this.a).a(null);
+  }
+  
+  public void a(bire parambire)
+  {
+    if (bijd.a(this.a) == biwo.a)
+    {
+      bijd.a(this.a).a(parambire);
+      return;
+    }
+    bjah.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

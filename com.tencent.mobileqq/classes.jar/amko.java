@@ -1,15 +1,18 @@
-import com.tencent.TMG.utils.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
 
 public class amko
-  implements amkh
+  implements DialogInterface.OnClickListener
 {
   public amko(SwipePostTableLayout paramSwipePostTableLayout) {}
   
-  public void onServiceSyncSucc(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("SwipePostTableLayout", 1, "result: " + paramBoolean);
-    this.a.j();
+    if (SwipePostTableLayout.a(this.a).isShowing()) {
+      SwipePostTableLayout.a(this.a).dismiss();
+    }
+    amkf.a(this.a.a, true);
   }
 }
 

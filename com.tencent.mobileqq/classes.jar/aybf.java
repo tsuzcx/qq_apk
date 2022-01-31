@@ -1,13 +1,8 @@
-public class aybf
+import android.graphics.Bitmap;
+
+public abstract interface aybf<T extends aybg>
 {
-  public float a;
-  public float b;
-  
-  public aybf(float paramFloat1, float paramFloat2)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
+  public abstract void a(T paramT, Bitmap paramBitmap);
 }
 
 

@@ -1,7 +1,6 @@
-public final class apjr
-  implements bbmh
+public abstract interface apjr
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public abstract void a();
 }
 
 

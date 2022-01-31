@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
 import android.text.TextUtils;
-import bbcv;
-import bbgg;
-import bczg;
+import bbdj;
+import bbgu;
+import bczv;
 
 public class BindGroupConfirmActivity$8
   implements Runnable
@@ -13,15 +13,15 @@ public class BindGroupConfirmActivity$8
   public void run()
   {
     if (this.this$0.a == null) {
-      this.this$0.a = bbcv.a(this.this$0, 230);
+      this.this$0.a = bbdj.a(this.this$0, 230);
     }
     if (!TextUtils.isEmpty(this.a)) {
       this.this$0.a.setMessage(this.a);
     }
-    bczg localbczg = new bczg(this);
-    this.this$0.a.setTitle(2131720467);
-    this.this$0.a.setPositiveButton(2131691035, localbczg);
-    this.this$0.a.setNegativeButton(2131690596, localbczg);
+    bczv localbczv = new bczv(this);
+    this.this$0.a.setTitle(2131720478);
+    this.this$0.a.setPositiveButton(2131691035, localbczv);
+    this.this$0.a.setNegativeButton(2131690596, localbczv);
     if (!this.this$0.a.isShowing()) {
       this.this$0.a.show();
     }

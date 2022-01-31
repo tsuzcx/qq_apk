@@ -1,30 +1,30 @@
 package com.tencent.open.base.img;
 
-import bcxm;
-import bdey;
-import bdho;
-import bdhq;
-import bdht;
-import bdis;
-import bdit;
-import bdiu;
-import bdiv;
+import bcyb;
+import bdfn;
+import bdid;
+import bdif;
+import bdii;
+import bdjh;
+import bdji;
+import bdjj;
+import bdjk;
 import java.io.File;
 
 public class ImageCache$UpdateTask
   implements Runnable
 {
-  protected bdit a;
+  protected bdji a;
   protected String a;
   protected String b;
   protected String c;
   
-  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, bdit parambdit)
+  public ImageCache$UpdateTask(String paramString1, String paramString2, String paramString3, bdji parambdji)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Bdit = parambdit;
+    this.jdField_a_of_type_Bdji = parambdji;
   }
   
   public boolean equals(Object paramObject)
@@ -39,69 +39,69 @@ public class ImageCache$UpdateTask
   {
     for (;;)
     {
-      bdiv localbdiv;
+      bdjk localbdjk;
       try
       {
-        if (((!bdey.a()) || (!bdho.b(bcxm.a().a()))) && (this.jdField_a_of_type_Bdit != null)) {
-          this.jdField_a_of_type_Bdit.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+        if (((!bdfn.a()) || (!bdid.b(bcyb.a().a()))) && (this.jdField_a_of_type_Bdji != null)) {
+          this.jdField_a_of_type_Bdji.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
         }
-        Object localObject1 = bdey.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bdhq.a(this.jdField_c_of_type_JavaLangString);
-        bdht.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + bdhq.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_Bdit != null))
+        Object localObject1 = bdfn.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bdif.a(this.jdField_c_of_type_JavaLangString);
+        bdii.c("downloadImage", "imgFilePath = " + (String)localObject1 + " | " + this.jdField_b_of_type_JavaLangString + " | " + bdif.a(this.jdField_c_of_type_JavaLangString) + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+        if ((new File((String)localObject1).exists()) && (this.jdField_a_of_type_Bdji != null))
         {
-          this.jdField_a_of_type_Bdit.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
-          this.jdField_a_of_type_Bdit = null;
+          this.jdField_a_of_type_Bdji.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, (String)localObject1);
+          this.jdField_a_of_type_Bdji = null;
         }
-        localbdiv = ImageCache.jdField_a_of_type_Bdis.a(this.jdField_a_of_type_JavaLangString);
-        if (localbdiv == null)
+        localbdjk = ImageCache.jdField_a_of_type_Bdjh.a(this.jdField_a_of_type_JavaLangString);
+        if (localbdjk == null)
         {
-          bdht.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
-          localObject1 = new bdiv();
-          ((bdiv)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          ((bdiv)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-          ((bdiv)localObject1).jdField_c_of_type_Long = 0L;
-          ((bdiv)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-          if (!bdiu.a((bdiv)localObject1)) {
+          bdii.a("ImageCache", "image not in db. key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          localObject1 = new bdjk();
+          ((bdjk)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          ((bdjk)localObject1).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+          ((bdjk)localObject1).jdField_c_of_type_Long = 0L;
+          ((bdjk)localObject1).jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+          if (!bdjj.a((bdjk)localObject1)) {
             break;
           }
-          bdht.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          ImageCache.jdField_a_of_type_Bdis.a((bdiv)localObject1);
-          if (this.jdField_a_of_type_Bdit == null) {
+          bdii.d("ImageCache", "download image succ. " + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          ImageCache.jdField_a_of_type_Bdjh.a((bdjk)localObject1);
+          if (this.jdField_a_of_type_Bdji == null) {
             return;
           }
-          this.jdField_a_of_type_Bdit.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, bdey.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bdhq.a(((bdiv)localObject1).jdField_b_of_type_JavaLangString));
+          this.jdField_a_of_type_Bdji.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, bdfn.e() + ImageCache.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_JavaLangString + File.separator + bdif.a(((bdjk)localObject1).jdField_b_of_type_JavaLangString));
           return;
         }
-        localbdiv.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        if (this.jdField_a_of_type_Bdit != null)
+        localbdjk.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+        if (this.jdField_a_of_type_Bdji != null)
         {
-          bdht.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-          localbdiv.jdField_c_of_type_Long = 0L;
-          localObject1 = localbdiv;
+          bdii.a("ImageCache", "file is deleted." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+          localbdjk.jdField_c_of_type_Long = 0L;
+          localObject1 = localbdjk;
           continue;
         }
         l = System.currentTimeMillis();
       }
       catch (Exception localException)
       {
-        bdht.b("ImageCache", "Download img warning", localException);
+        bdii.b("ImageCache", "Download img warning", localException);
         return;
       }
       long l;
-      Object localObject2 = localbdiv;
-      if (l > localbdiv.jdField_b_of_type_Long)
+      Object localObject2 = localbdjk;
+      if (l > localbdjk.jdField_b_of_type_Long)
       {
-        localObject2 = localbdiv;
-        if (l < localbdiv.jdField_a_of_type_Long + localbdiv.jdField_b_of_type_Long)
+        localObject2 = localbdjk;
+        if (l < localbdjk.jdField_a_of_type_Long + localbdjk.jdField_b_of_type_Long)
         {
-          bdht.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localbdiv.jdField_a_of_type_Long + localbdiv.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
+          bdii.a("ImageCache", "currenttime=" + System.currentTimeMillis() + "\nmaxage+updatetime=" + localbdjk.jdField_a_of_type_Long + localbdjk.jdField_b_of_type_Long + " key=" + this.jdField_a_of_type_JavaLangString + " url=" + this.jdField_c_of_type_JavaLangString);
           return;
         }
       }
     }
-    bdht.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bdit != null) {
-      this.jdField_a_of_type_Bdit.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    bdii.d("ImageCache", "download failed." + this.jdField_c_of_type_JavaLangString + " key=" + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bdji != null) {
+      this.jdField_a_of_type_Bdji.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
     }
   }
 }

@@ -1,20 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-
-public class aisq
-  implements Manager
+public abstract interface aisq
 {
-  public static String a = "ApolloNativeSSOReqMgr";
-  
-  public aisq(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
-    }
-  }
-  
-  public void onDestroy() {}
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

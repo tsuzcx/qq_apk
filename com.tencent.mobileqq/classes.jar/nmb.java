@@ -1,15 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
 class nmb
-  implements bfot
+  implements DialogInterface.OnShowListener
 {
-  nmb(nma paramnma) {}
+  nmb(nlx paramnlx) {}
   
-  public void ak_()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
-    }
+    nlx.a(this.a).getWindow().clearFlags(8);
   }
 }
 

@@ -1,13 +1,10 @@
-import java.io.File;
-import java.io.FileFilter;
+import java.util.HashMap;
 
-final class oqk
-  implements FileFilter
+public class oqk
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".json");
-  }
+  public String a;
+  public HashMap<String, String> a;
+  public String b;
 }
 
 

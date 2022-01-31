@@ -1,40 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.text.TextUtils;
 
 public class ahpu
-  implements ahpp
+  extends ahpz
 {
-  public View a;
-  public TabDragAnimationView a;
-  private boolean a;
-  
-  public ahpu(TabDragAnimationView paramTabDragAnimationView)
+  public ahpu(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+    a(paramString);
   }
   
-  public void a(float paramFloat1, float paramFloat2, int paramInt, View paramView)
+  public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!this.jdField_a_of_type_AndroidViewView.equals(paramView))) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = '[' + paramString + ']')
     {
+      this.a = paramString;
+      this.b = this.a;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TabDragListener", 2, "drag detect x=" + paramFloat1 + ",y=" + paramFloat2 + ",dragType=" + paramInt);
-      }
-      if ((paramInt == 1) || (paramInt == 2))
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-        }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.a(paramFloat1, paramFloat2, false);
-        return;
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.b();
+    }
   }
 }
 

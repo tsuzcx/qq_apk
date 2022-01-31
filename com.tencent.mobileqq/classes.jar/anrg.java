@@ -1,6 +1,12 @@
-public abstract interface anrg
+class anrg
+  implements asup
 {
-  public abstract void b(boolean paramBoolean);
+  anrg(anrf paramanrf) {}
+  
+  public void a()
+  {
+    anrc.a(this.a.a).a().a();
+  }
 }
 
 

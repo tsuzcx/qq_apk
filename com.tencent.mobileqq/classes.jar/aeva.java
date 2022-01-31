@@ -1,32 +1,22 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
-
 public class aeva
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements bajw
 {
-  private aeva(TroopChatPie paramTroopChatPie) {}
+  public String a;
   
-  public void onGlobalLayout()
+  public aeva(String paramString)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
     {
-      if (!this.a.ab)
-      {
-        this.a.ab = true;
-        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
-      }
-      return;
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      long l = Long.parseLong(this.a);
+      return l;
     }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

@@ -1,16 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class ose
-  extends akav
+  implements RejectedExecutionHandler
 {
-  public ose(KandianSubscribeManager paramKandianSubscribeManager) {}
-  
-  protected void a(boolean paramBoolean)
+  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
+    QLog.e("MonitorTimeExecutor", 1, "[rejectedExecution] r: " + paramRunnable + " executor: " + paramThreadPoolExecutor);
   }
 }
 

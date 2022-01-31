@@ -1,184 +1,111 @@
-import android.util.SparseArray;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aslj
+class aslj
+  implements aslc
 {
-  private static SparseArray<ArrayList<byte[]>> a = new SparseArray(2000);
-  private static SparseArray<Integer> b = new SparseArray(2000);
+  aslj(aslg paramaslg) {}
   
-  public static void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    try
+    if (paramInt1 == paramInt2)
     {
-      a.clear();
-      b.clear();
-      return;
+      asoh.a("total_transport_cost", null);
+      asoh.a();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessionProgress!!! finishedSessions = " + paramInt1 + ", totalSession" + paramInt2);
     }
-  }
-  
-  /* Error */
-  public static void a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: arraylength
-    //   5: istore_1
-    //   6: iload_1
-    //   7: sipush 2000
-    //   10: if_icmple +7 -> 17
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: return
-    //   17: getstatic 19	aslj:a	Landroid/util/SparseArray;
-    //   20: iload_1
-    //   21: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   24: checkcast 32	java/util/ArrayList
-    //   27: astore 4
-    //   29: aload 4
-    //   31: astore_3
-    //   32: aload 4
-    //   34: ifnonnull +24 -> 58
-    //   37: new 32	java/util/ArrayList
-    //   40: dup
-    //   41: bipush 100
-    //   43: invokespecial 33	java/util/ArrayList:<init>	(I)V
-    //   46: astore_3
-    //   47: getstatic 21	aslj:b	Landroid/util/SparseArray;
-    //   50: iload_1
-    //   51: iconst_0
-    //   52: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   55: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   58: aload_3
-    //   59: invokevirtual 47	java/util/ArrayList:size	()I
-    //   62: bipush 100
-    //   64: if_icmpge -51 -> 13
-    //   67: aload_3
-    //   68: aload_0
-    //   69: invokevirtual 51	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   72: pop
-    //   73: getstatic 19	aslj:a	Landroid/util/SparseArray;
-    //   76: aload_0
-    //   77: arraylength
-    //   78: aload_3
-    //   79: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   82: getstatic 21	aslj:b	Landroid/util/SparseArray;
-    //   85: iload_1
-    //   86: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   89: checkcast 35	java/lang/Integer
-    //   92: invokevirtual 54	java/lang/Integer:intValue	()I
-    //   95: istore_2
-    //   96: getstatic 21	aslj:b	Landroid/util/SparseArray;
-    //   99: iload_1
-    //   100: iload_2
-    //   101: iconst_1
-    //   102: iadd
-    //   103: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   106: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   109: goto -96 -> 13
-    //   112: astore_0
-    //   113: ldc 2
-    //   115: monitorexit
-    //   116: aload_0
-    //   117: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	paramArrayOfByte	byte[]
-    //   5	95	1	i	int
-    //   95	8	2	j	int
-    //   31	48	3	localArrayList1	ArrayList
-    //   27	6	4	localArrayList2	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   3	6	112	finally
-    //   17	29	112	finally
-    //   37	58	112	finally
-    //   58	109	112	finally
-  }
-  
-  /* Error */
-  public static byte[] a(int paramInt)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 19	aslj:a	Landroid/util/SparseArray;
-    //   6: iload_0
-    //   7: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   10: checkcast 32	java/util/ArrayList
-    //   13: astore_2
-    //   14: aload_2
-    //   15: ifnonnull +10 -> 25
-    //   18: aconst_null
-    //   19: astore_2
-    //   20: ldc 2
-    //   22: monitorexit
-    //   23: aload_2
-    //   24: areturn
-    //   25: getstatic 21	aslj:b	Landroid/util/SparseArray;
-    //   28: iload_0
-    //   29: invokevirtual 30	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   32: checkcast 35	java/lang/Integer
-    //   35: invokevirtual 54	java/lang/Integer:intValue	()I
-    //   38: istore_1
-    //   39: iload_1
-    //   40: aload_2
-    //   41: invokevirtual 47	java/util/ArrayList:size	()I
-    //   44: if_icmplt +8 -> 52
-    //   47: aconst_null
-    //   48: astore_2
-    //   49: goto -29 -> 20
-    //   52: aload_2
-    //   53: iload_1
-    //   54: invokevirtual 56	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   57: checkcast 58	[B
-    //   60: astore_2
-    //   61: getstatic 21	aslj:b	Landroid/util/SparseArray;
-    //   64: iload_0
-    //   65: iload_1
-    //   66: iconst_1
-    //   67: iadd
-    //   68: invokestatic 39	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   71: invokevirtual 43	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   74: goto -54 -> 20
-    //   77: astore_2
-    //   78: ldc 2
-    //   80: monitorexit
-    //   81: aload_2
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	paramInt	int
-    //   38	30	1	i	int
-    //   13	48	2	localObject1	Object
-    //   77	5	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	14	77	finally
-    //   25	47	77	finally
-    //   52	74	77	finally
-  }
-  
-  public static void b()
-  {
-    int i = 0;
-    try
+    aslg.a(this.a, paramInt2);
+    aslg.b(this.a, paramInt1);
+    if (paramInt1 != paramInt2) {}
+    for (int i = paramInt1 + 1;; i = paramInt1)
     {
-      int j = b.size();
-      while (i < j)
+      String str1;
+      String str2;
+      if (aslg.a(this.a) == 1)
       {
-        b.setValueAt(i, Integer.valueOf(0));
-        i += 1;
+        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690390);
+        str2 = i + "/" + aslg.b;
       }
+      for (;;)
+      {
+        str1 = String.format(str1, new Object[] { str2, asoi.a(aslg.a(this.a)) + "B/s" });
+        i = askv.a().a();
+        if (paramInt1 != paramInt2) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
+        }
+        aslg.m();
+        this.a.a(BaseActivity.sTopActivity, i);
+        return;
+        if (aslg.a(this.a) == 3)
+        {
+          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690392);
+          str2 = i + "/" + aslg.b;
+        }
+        else
+        {
+          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690392);
+          str2 = i + "/" + aslg.b;
+        }
+      }
+      this.a.b(i, str1);
       return;
     }
-    finally {}
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "speedState!!! increment = " + paramLong);
+    }
+    aslg.a(this.a, paramLong);
+    int j = aslg.b(this.a);
+    int i = j;
+    if (j != aslg.b) {
+      i = j + 1;
+    }
+    String str1;
+    String str2;
+    if (aslg.a(this.a) == 1)
+    {
+      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690390);
+      str2 = i + "/" + aslg.b;
+    }
+    for (;;)
+    {
+      str1 = String.format(str1, new Object[] { str2, asoi.a(aslg.a(this.a)) + "B/S" });
+      this.a.b(askv.a().a(), str1);
+      return;
+      if (aslg.a(this.a) == 3)
+      {
+        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690392);
+        str2 = i + "/" + aslg.b;
+      }
+      else
+      {
+        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690392);
+        str2 = i + "/" + aslg.b;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
+  {
+    asoi.b("MsgBackup.BackupAndMigrateManager", "transportStart is called! isStart = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    asoh.b();
+    asoh.a(null, "total_transport_cost");
   }
 }
 

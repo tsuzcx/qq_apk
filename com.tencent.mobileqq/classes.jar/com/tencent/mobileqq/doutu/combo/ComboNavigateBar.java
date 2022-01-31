@@ -10,9 +10,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import anoo;
-import anop;
-import anoq;
+import anot;
+import anou;
+import anov;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ComboNavigateBar
@@ -21,7 +21,7 @@ public class ComboNavigateBar
 {
   protected Animation a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  anoo jdField_a_of_type_Anoo;
+  anot jdField_a_of_type_Anot;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean = true;
@@ -35,47 +35,47 @@ public class ComboNavigateBar
     super(paramContext, paramAttributeSet);
   }
   
-  private Drawable a(View paramView, anoq paramanoq)
+  private Drawable a(View paramView, anov paramanov)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramanoq.jdField_a_of_type_Int;
-    paramView.height = paramanoq.b;
-    return paramanoq.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramView.width = paramanov.jdField_a_of_type_Int;
+    paramView.height = paramanov.b;
+    return paramanov.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private boolean a()
   {
-    anoq localanoq = anop.a();
-    if (localanoq == null)
+    anov localanov = anou.a();
+    if (localanov == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.e.setImageDrawable(a(this.e, localanoq));
+    this.e.setImageDrawable(a(this.e, localanov));
     return true;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    anoq localanoq = anop.a(paramInt);
-    if (localanoq == null)
+    anov localanov = anou.a(paramInt);
+    if (localanov == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localanoq));
+    paramImageView.setImageDrawable(a(paramImageView, localanov));
     return true;
   }
   
   private boolean b()
   {
-    anoq localanoq = anop.b();
-    if (localanoq == null)
+    anov localanov = anou.b();
+    if (localanov == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localanoq));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localanov));
     return true;
   }
   
@@ -91,11 +91,11 @@ public class ComboNavigateBar
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362245));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362239));
-    this.b = ((ImageView)findViewById(2131362240));
-    this.c = ((ImageView)findViewById(2131362241));
-    this.d = ((ImageView)findViewById(2131362242));
+    this.e = ((ImageView)findViewById(2131362244));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362238));
+    this.b = ((ImageView)findViewById(2131362239));
+    this.c = ((ImageView)findViewById(2131362240));
+    this.d = ((ImageView)findViewById(2131362241));
     setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
@@ -120,7 +120,7 @@ public class ComboNavigateBar
   
   public void setCountNum()
   {
-    int k = this.jdField_a_of_type_Anoo.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_Anot.jdField_a_of_type_Int;
     int j = k / 10;
     int i;
     if (j != 0)
@@ -163,12 +163,12 @@ public class ComboNavigateBar
     }
   }
   
-  public void setInfo(anoo paramanoo)
+  public void setInfo(anot paramanot)
   {
-    this.jdField_a_of_type_Anoo = paramanoo;
+    this.jdField_a_of_type_Anot = paramanot;
     this.jdField_a_of_type_Boolean = true;
-    String str = paramanoo.jdField_a_of_type_JavaLangString;
-    int i = paramanoo.jdField_a_of_type_Int;
+    String str = paramanot.jdField_a_of_type_JavaLangString;
+    int i = paramanot.jdField_a_of_type_Int;
     setCountNum();
     if (this.jdField_a_of_type_Boolean == true)
     {

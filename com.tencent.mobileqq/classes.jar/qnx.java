@@ -1,57 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class qnx
+class qnx
+  implements DialogInterface.OnClickListener
 {
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = qnx.class.getSimpleName();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  qnx(qnv paramqnv, boolean paramBoolean) {}
   
-  public qnx(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = onk.a();
-    jdField_a_of_type_Int = 0;
-  }
-  
-  private int c()
-  {
-    int i = 0;
-    boolean bool = bhvh.E(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!bool) {
-      bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0));
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!qnv.a(this.jdField_a_of_type_Qnv)) {}
     }
-    if (bool) {
-      i = ((Integer)bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(0))).intValue();
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    try
+    while (!(qnv.a(this.jdField_a_of_type_Qnv) instanceof Activity))
     {
-      int i = c();
-      jdField_a_of_type_Int += 1;
-      bhvh.a(this.b + "VideoFeedsGameAdComBarConfigure_DALIY", Integer.valueOf(i + 1));
+      return;
+      this.jdField_a_of_type_Qnv.b();
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + localException.getMessage());
-    }
-  }
-  
-  public int b()
-  {
-    return c();
+    oar.b(qnv.a(this.jdField_a_of_type_Qnv));
+    oai.a(qnv.a(this.jdField_a_of_type_Qnv), qnv.a(this.jdField_a_of_type_Qnv).o, qnv.a(this.jdField_a_of_type_Qnv).p, "");
   }
 }
 

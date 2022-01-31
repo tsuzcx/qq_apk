@@ -1,11 +1,21 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bdaq
+class bdaq
+  implements QQPermissionCallback
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  bdaq(bdap parambdap) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbdj.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
+  }
 }
 
 

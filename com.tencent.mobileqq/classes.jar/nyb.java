@@ -1,52 +1,122 @@
-import android.text.TextUtils;
-import org.json.JSONException;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.common.app.AppInterface;
 import org.json.JSONObject;
 
 public class nyb
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private VideoAdInfo jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
+  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
+  private int jdField_c_of_type_Int;
+  private JSONObject jdField_c_of_type_OrgJsonJSONObject;
+  private int jdField_d_of_type_Int;
+  private JSONObject jdField_d_of_type_OrgJsonJSONObject;
+  private JSONObject e;
+  private JSONObject f;
   
-  public static nyb a(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public Bundle a()
+  {
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public VideoAdInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo;
+  }
+  
+  public AdvertisementInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public JSONObject b()
+  {
+    return this.jdField_b_of_type_OrgJsonJSONObject;
+  }
+  
+  public int c()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public JSONObject c()
+  {
+    return this.jdField_c_of_type_OrgJsonJSONObject;
+  }
+  
+  public int d()
+  {
+    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos > 0)) {
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new nyb();
-      try
-      {
-        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
-        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
-        paramString.b = localJSONObject.optString("activity_id", "");
-        paramString.c = localJSONObject.optString("gift_icon", "");
-        paramString.g = localJSONObject.optString("gift_desc", "");
-        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
-        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
-        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
-        paramString.h = localJSONObject.optString("need_role", "");
-        return paramString;
-      }
-      catch (JSONException localJSONException1) {}
-    }
-    catch (JSONException localJSONException2)
-    {
-      for (;;)
-      {
-        paramString = null;
-      }
-    }
-    localJSONException1.printStackTrace();
-    return paramString;
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public JSONObject d()
+  {
+    return this.jdField_d_of_type_OrgJsonJSONObject;
+  }
+  
+  public JSONObject e()
+  {
+    return this.f;
+  }
+  
+  public JSONObject f()
+  {
+    return this.e;
   }
 }
 

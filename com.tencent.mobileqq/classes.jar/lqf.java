@@ -1,555 +1,177 @@
-import android.annotation.TargetApi;
-import android.opengl.GLES20;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.ByteBuffer;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
 
 public class lqf
 {
-  private static final String jdField_a_of_type_JavaLangString = ajsf.aV + "/avdebug/";
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(500);
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "10.AV_SRC", "20.AV_PRE_RENDER", "30.AV_FILTER_NEW", "40.AV_FILTER", "50.AV_POST_RENDER", "60.AV_RETURN", "appleVideoDenoise", "appleLowlightEnhance", "applyBeauty30", "yuvCenterTextureFbo", "rgbRotateCenterTextureFbo", "applyBeauty20" };
-  private static boolean jdField_b_of_type_Boolean;
-  private int jdField_a_of_type_Int;
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private lqg[] jdField_a_of_type_ArrayOfLqg;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean c;
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int = -1;
+  private static int b = -1;
   
-  static String a(int paramInt)
+  public static float a()
   {
-    if (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return "unknown";
-  }
-  
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    String str = "UnKnown";
-    switch (paramInt3)
-    {
+    if (jdField_a_of_type_Float != -1.0F) {
+      return jdField_a_of_type_Float;
     }
     for (;;)
     {
-      return "[w" + paramInt1 + "h" + paramInt2 + "f" + str + "]";
-      str = "RGB32";
-      continue;
-      str = "NV21";
-      continue;
-      str = "YUV420";
-      continue;
-      str = "NV16";
-    }
-  }
-  
-  private lqg a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ArrayOfLqg != null)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_ArrayOfLqg.length) {
-        localObject1 = this.jdField_a_of_type_ArrayOfLqg[paramInt];
+      try
+      {
+        lpe locallpe = lpe.a();
+        if (locallpe == null) {
+          continue;
+        }
+        jdField_a_of_type_Float = locallpe.a();
+        if (QLog.isColorLevel()) {
+          QLog.w("LowlightAndDenoiseTools", 1, "getVideodenoiseRatio[" + jdField_a_of_type_Float + "]");
+        }
       }
+      catch (Exception localException)
+      {
+        QLog.w("LowlightAndDenoiseTools", 1, "getVideoDenoiseRatio, Excpetion", localException);
+        jdField_a_of_type_Float = 15.0F;
+        continue;
+      }
+      return jdField_a_of_type_Float;
+      jdField_a_of_type_Float = 15.0F;
     }
-    return localObject1;
   }
   
-  private void a(int paramInt1, int paramInt2)
+  static boolean a()
   {
-    paramInt1 = paramInt2 * paramInt1 * 4;
-    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramInt1))
+    return lpu.a(8, 1800000, -2147483648);
+  }
+  
+  public static boolean b()
+  {
+    if (AudioHelper.a(12) == 1)
     {
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramInt1];
-      return;
+      AudioHelper.a(ajya.a(2131706404));
+      return true;
     }
-    Arrays.fill(this.jdField_a_of_type_ArrayOfByte, (byte)0);
-  }
-  
-  private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
-  {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
-    GLES20.glFramebufferTexture2D(36160, paramInt2, 3553, paramInt1, 0);
-    GLES20.glReadPixels(0, 0, paramInt3, paramInt4, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
-  }
-  
-  /* Error */
-  private static void a(byte[] paramArrayOfByte, String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +10 -> 11
-    //   4: aload_1
-    //   5: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8: ifeq +4 -> 12
-    //   11: return
-    //   12: new 151	java/io/FileOutputStream
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 154	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload_2
-    //   22: astore_1
-    //   23: aload_2
-    //   24: aload_0
-    //   25: invokestatic 140	lqf:b	(Ljava/io/FileOutputStream;[B)V
-    //   28: aload_2
-    //   29: astore_1
-    //   30: aload_2
-    //   31: invokevirtual 157	java/io/FileOutputStream:flush	()V
-    //   34: aload_2
-    //   35: astore_1
-    //   36: aload_2
-    //   37: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   40: aload_2
-    //   41: ifnull -30 -> 11
-    //   44: aload_2
-    //   45: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   48: return
-    //   49: astore_0
-    //   50: aload_0
-    //   51: invokevirtual 163	java/lang/Exception:printStackTrace	()V
-    //   54: return
-    //   55: astore_3
-    //   56: aconst_null
-    //   57: astore_0
-    //   58: aload_0
-    //   59: astore_1
-    //   60: aload_3
-    //   61: invokevirtual 163	java/lang/Exception:printStackTrace	()V
-    //   64: aload_0
-    //   65: ifnull -54 -> 11
-    //   68: aload_0
-    //   69: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   72: return
-    //   73: astore_0
-    //   74: aload_0
-    //   75: invokevirtual 163	java/lang/Exception:printStackTrace	()V
-    //   78: return
-    //   79: astore_0
-    //   80: aconst_null
-    //   81: astore_1
-    //   82: aload_1
-    //   83: ifnull +7 -> 90
-    //   86: aload_1
-    //   87: invokevirtual 160	java/io/FileOutputStream:close	()V
-    //   90: aload_0
-    //   91: athrow
-    //   92: astore_1
-    //   93: aload_1
-    //   94: invokevirtual 163	java/lang/Exception:printStackTrace	()V
-    //   97: goto -7 -> 90
-    //   100: astore_0
-    //   101: goto -19 -> 82
-    //   104: astore_3
-    //   105: aload_2
-    //   106: astore_0
-    //   107: goto -49 -> 58
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	110	0	paramArrayOfByte	byte[]
-    //   0	110	1	paramString	String
-    //   20	86	2	localFileOutputStream	FileOutputStream
-    //   55	6	3	localException1	java.lang.Exception
-    //   104	1	3	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   44	48	49	java/lang/Exception
-    //   12	21	55	java/lang/Exception
-    //   68	72	73	java/lang/Exception
-    //   12	21	79	finally
-    //   86	90	92	java/lang/Exception
-    //   23	28	100	finally
-    //   30	34	100	finally
-    //   36	40	100	finally
-    //   60	64	100	finally
-    //   23	28	104	java/lang/Exception
-    //   30	34	104	java/lang/Exception
-    //   36	40	104	java/lang/Exception
-  }
-  
-  private static void b(FileOutputStream paramFileOutputStream, byte[] paramArrayOfByte)
-  {
-    if ((paramFileOutputStream == null) || (paramArrayOfByte == null)) {
-      return;
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(ajya.a(2131706406));
+      return true;
     }
+    if (jdField_a_of_type_Int == -1) {}
+    for (;;)
+    {
+      try
+      {
+        locallpe = lpe.a();
+        if (locallpe == null) {
+          continue;
+        }
+        if (!locallpe.a()) {
+          continue;
+        }
+        jdField_a_of_type_Int = 1;
+        i = 1;
+      }
+      catch (Exception localException)
+      {
+        lpe locallpe;
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight, Excpetion", localException);
+        jdField_a_of_type_Int = 0;
+        continue;
+        int i = 4;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 5;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 0;
+        continue;
+      }
+      if (jdField_a_of_type_Int == -1)
+      {
+        if (!msn.b()) {
+          continue;
+        }
+        if (!a()) {
+          continue;
+        }
+        i = 3;
+        jdField_a_of_type_Int = 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight[" + jdField_a_of_type_Int + "], step[" + i + "]");
+      }
+      if (jdField_a_of_type_Int == 1) {
+        break;
+      }
+      return false;
+      if (!locallpe.b()) {
+        continue;
+      }
+      i = 2;
+      jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public static boolean c()
+  {
+    if (AudioHelper.a(12) == 1)
+    {
+      AudioHelper.a(ajya.a(2131706403));
+      return true;
+    }
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(ajya.a(2131706405));
+      return true;
+    }
+    if (b == -1) {}
     try
     {
-      paramFileOutputStream.write(paramArrayOfByte);
-      paramFileOutputStream.flush();
-      return;
+      locallpe = lpe.a();
+      if (locallpe == null) {
+        break label187;
+      }
+      if (!locallpe.c()) {
+        break label145;
+      }
+      b = 1;
+      jdField_a_of_type_Float = 25.0F;
+      i = 1;
     }
-    catch (Throwable paramFileOutputStream)
+    catch (Exception localException)
     {
-      paramFileOutputStream.printStackTrace();
-    }
-  }
-  
-  public void a()
-  {
-    int j = 0;
-    if (AudioHelper.a(24) == 1) {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FilterProcessTest", 2, "startOneChat debug[" + this.jdField_a_of_type_Boolean + "]");
-      }
-      Object localObject1 = null;
-      Object localObject2;
-      if (this.jdField_a_of_type_Boolean)
+      for (;;)
       {
-        localObject1 = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
-        localObject2 = new Date(System.currentTimeMillis());
-        localObject2 = jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject1).format((Date)localObject2);
-        File localFile = new File((String)localObject2);
-        if (localFile.exists())
-        {
-          localObject1 = localObject2;
-          if (localFile.isDirectory()) {}
-        }
-        else
-        {
-          localObject1 = localObject2;
-          if (!localFile.mkdirs())
-          {
-            this.jdField_a_of_type_Boolean = false;
-            localObject1 = localObject2;
-            if (QLog.isDevelopLevel())
-            {
-              QLog.i("FilterProcessTest", 4, "startOneChat mkdir fail path: " + (String)localObject2);
-              localObject1 = localObject2;
-            }
-          }
-        }
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      int i = j;
-      if (this.jdField_a_of_type_ArrayOfLqg == null)
-      {
-        this.jdField_a_of_type_ArrayOfLqg = new lqg[6];
-        i = j;
-      }
-      while (i < this.jdField_a_of_type_ArrayOfLqg.length)
-      {
-        localObject2 = (String)localObject1 + jdField_a_of_type_ArrayOfJavaLangString[i];
-        if (this.jdField_a_of_type_ArrayOfLqg[i] != null) {
-          this.jdField_a_of_type_ArrayOfLqg[i].a();
-        }
-        this.jdField_a_of_type_ArrayOfLqg[i] = new lqg((String)localObject2);
-        i += 1;
-      }
-      break;
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      b();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.c) {}
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    int[] arrayOfInt = new int[1];
-    GLES20.glBindFramebuffer(36160, paramInt2);
-    GLES20.glGetFramebufferAttachmentParameteriv(36160, 36064, 36048, arrayOfInt, 0);
-    GLES20.glGetFramebufferAttachmentParameteriv(36160, 36064, 36049, arrayOfInt, 0);
-    GLES20.glBindFramebuffer(36160, 0);
-    QLog.w("FilterProcessRender", 1, "logFrameBuffer, action[" + a(paramInt1) + "], fbo[" + paramInt2 + "], textureid[" + paramInt3 + "], check[" + arrayOfInt[0] + "]");
-  }
-  
-  @TargetApi(23)
-  void a(lqd paramlqd, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    lqg locallqg;
-    Object localObject2;
-    int i1;
-    int m;
-    int n;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      locallqg = a(paramInt1);
-      if (locallqg != null)
-      {
-        localObject2 = null;
-        i1 = 0;
-        m = paramlqd.jdField_a_of_type_Int;
-        n = paramlqd.jdField_b_of_type_Int;
-        if ((paramInt1 != 0) && (paramInt1 != 5)) {
-          break label91;
-        }
-        i = 17;
-        j = paramlqd.jdField_b_of_type_Int;
-        k = paramlqd.jdField_a_of_type_Int;
-        localObject1 = paramArrayOfByte;
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        locallqg.a((byte[])localObject1, i, j, k);
-      }
-      if (this.c) {
-        break;
-      }
-      return;
-      label91:
-      if (paramInt1 == 3)
-      {
-        k = n;
-        j = m;
-        i = i1;
-        localObject1 = localObject2;
-        if (paramInt3 != -1)
-        {
-          a(m, n);
-          a(paramInt3, 36064, m, n, this.jdField_a_of_type_ArrayOfByte);
-          localObject1 = this.jdField_a_of_type_ArrayOfByte;
-          i = 42;
-          k = n;
-          j = m;
-        }
-      }
-      else if (paramInt1 == 2)
-      {
-        k = n;
-        j = m;
-        i = i1;
-        localObject1 = localObject2;
-        if (paramInt3 != -1)
-        {
-          a(m, n);
-          a(paramInt3, 36064, m, n, this.jdField_a_of_type_ArrayOfByte);
-          localObject1 = this.jdField_a_of_type_ArrayOfByte;
-          i = 42;
-          k = n;
-          j = m;
-        }
-      }
-      else if (paramInt1 == 4)
-      {
-        m = paramlqd.jdField_b_of_type_Int;
-        n = paramlqd.jdField_a_of_type_Int;
-        if (paramlqd.jdField_a_of_type_ArrayOfByte != null)
-        {
-          localObject1 = paramlqd.jdField_a_of_type_ArrayOfByte;
-          i = 42;
-          k = n;
-          j = m;
-        }
-        else
-        {
-          k = n;
-          j = m;
-          i = i1;
-          localObject1 = localObject2;
-          if (paramlqd.jdField_b_of_type_ArrayOfByte != null)
-          {
-            localObject1 = paramlqd.jdField_b_of_type_ArrayOfByte;
-            i = 35;
-            k = n;
-            j = m;
-          }
-        }
-      }
-      else
-      {
-        k = n;
-        j = m;
-        i = i1;
-        localObject1 = localObject2;
-        if (paramInt1 == 1) {
-          if (paramInt3 != -1)
-          {
-            a(m, n);
-            a(paramInt3, 36064, m, n, this.jdField_a_of_type_ArrayOfByte);
-            localObject1 = this.jdField_a_of_type_ArrayOfByte;
-            i = 42;
-            k = n;
-            j = m;
-          }
-          else
-          {
-            k = n;
-            j = m;
-            i = i1;
-            localObject1 = localObject2;
-            if (paramInt2 != -1)
-            {
-              a(m, n);
-              lqd.a(paramInt2, m, n, this.jdField_a_of_type_ArrayOfByte);
-              localObject1 = this.jdField_a_of_type_ArrayOfByte;
-              i = 42;
-              k = n;
-              j = m;
-            }
-          }
-        }
-      }
-    }
-    Object localObject1 = this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Int + "_" + a(paramInt1);
-    int i = paramlqd.jdField_b_of_type_Int * paramlqd.jdField_a_of_type_Int * 4;
-    if (paramArrayOfByte != null) {
-      a(paramArrayOfByte, (String)localObject1 + "_yuvData_" + a(paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, 17) + ".yuv");
-    }
-    if (paramInt3 != -1)
-    {
-      paramArrayOfByte = (String)localObject1 + "_textureId_1_" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 0) + ".jpg";
-      lqd.a(paramInt3, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, paramArrayOfByte);
-    }
-    if (paramInt2 != -1)
-    {
-      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != i)) {
-        this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      }
-      paramArrayOfByte = (String)localObject1 + "_fbo_1_" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 42) + ".yuv";
-      lqd.a(paramInt2, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-      a(this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    }
-    if (paramInt1 == 1)
-    {
-      if (paramlqd.c != -1)
-      {
-        paramArrayOfByte = (String)localObject1 + "_mYuvTextureId_for_Y_1" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 0) + ".jpg";
-        lqd.a(paramlqd.c, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, paramArrayOfByte);
-        if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != i)) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        }
-        paramArrayOfByte = (String)localObject1 + "_mYuvTextureId_for_Y_1" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 42) + ".yuv";
-        a(paramlqd.c, 6409, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-        a(this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-      }
-      if (paramlqd.d != -1)
-      {
-        paramArrayOfByte = (String)localObject1 + "_mYuvTextureId_for_UV_1" + a(paramlqd.jdField_a_of_type_Int / 2, paramlqd.jdField_b_of_type_Int / 2, 0) + ".jpg";
-        lqd.a(paramlqd.d, paramlqd.jdField_a_of_type_Int / 2, paramlqd.jdField_b_of_type_Int / 2, paramArrayOfByte);
-        if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != i)) {
-          this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        }
-        paramArrayOfByte = (String)localObject1 + "_mYuvTextureId_for_UV_1" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 42) + ".yuv";
-        a(paramlqd.d, 6410, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-        a(this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-      }
-    }
-    for (;;)
-    {
-      if (paramlqd.f != -1)
-      {
-        paramArrayOfByte = (String)localObject1 + "_yuvCenterTextureFbo_1" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 0) + ".jpg";
-        lqd.a(paramlqd.f, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, paramArrayOfByte);
-      }
-      if (paramlqd.e != -1)
-      {
-        paramArrayOfByte = (String)localObject1 + "_yuvCenterTextureId_1" + a(paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, 0) + ".jpg";
-        lqd.a(paramlqd.e, paramlqd.jdField_a_of_type_Int, paramlqd.jdField_b_of_type_Int, paramArrayOfByte);
-      }
-      this.jdField_a_of_type_Int += 1;
-      return;
-      if (paramInt1 == 4)
-      {
-        if (paramlqd.h != -1)
-        {
-          if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != i)) {
-            this.jdField_a_of_type_ArrayOfByte = new byte[i];
-          }
-          paramArrayOfByte = (String)localObject1 + "_rgbRotateCenterTextureFbo_" + paramlqd.h + "_" + a(paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, 42) + ".yuv";
-          lqd.a(paramlqd.h, paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-          a(this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-        }
-        if (paramlqd.g != -1)
-        {
-          paramArrayOfByte = (String)localObject1 + "_rgbRotateCenterTextureId_" + a(paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, 0) + ".jpg";
-          lqd.a(paramlqd.g, paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, paramArrayOfByte);
-        }
-        if (paramlqd.jdField_b_of_type_ArrayOfByte != null)
-        {
-          paramArrayOfByte = (String)localObject1 + "_i420Data_" + a(paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, 17) + ".yuv";
-          a(paramlqd.jdField_b_of_type_ArrayOfByte, paramArrayOfByte);
-        }
-        else if (paramlqd.jdField_a_of_type_ArrayOfByte != null)
-        {
-          paramArrayOfByte = (String)localObject1 + "_rgbaData_" + a(paramlqd.jdField_b_of_type_Int, paramlqd.jdField_a_of_type_Int, 42) + ".yuv";
-          a(paramlqd.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-        }
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FilterProcessTest", 2, "endOfOneChat");
-    }
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      if ((this.jdField_a_of_type_ArrayOfLqg != null) && (this.jdField_a_of_type_ArrayOfLqg.length > 0))
-      {
+        lpe locallpe;
+        label70:
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag, Excpetion", localException);
+        b = 0;
+        continue;
         int i = 0;
-        while (i < this.jdField_a_of_type_ArrayOfLqg.length)
-        {
-          if (this.jdField_a_of_type_ArrayOfLqg[i] != null)
-          {
-            this.jdField_a_of_type_ArrayOfLqg[i].a();
-            this.jdField_a_of_type_ArrayOfLqg[i] = null;
-          }
-          i += 1;
-        }
       }
     }
-  }
-  
-  public void c()
-  {
-    this.c = jdField_b_of_type_Boolean;
-    if (this.c)
+    if (b == -1)
     {
-      this.jdField_a_of_type_Int = 0;
-      Object localObject = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
-      Date localDate = new Date(System.currentTimeMillis());
-      this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject).format(localDate));
-      localObject = new File(this.jdField_b_of_type_JavaLangString);
-      if (((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) && (!((File)localObject).mkdirs()))
-      {
-        this.c = false;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("FilterProcessTest", 2, "beginTestSaveData mkdir fail path: " + this.jdField_b_of_type_JavaLangString);
-        }
+      if (!a()) {
+        break label161;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FilterProcessTest", 2, "beginTestSaveData path: " + this.jdField_b_of_type_JavaLangString);
-      }
+      b = 1;
     }
-  }
-  
-  public void d()
-  {
-    if (this.c) {
-      AudioHelper.c("图片已经保存在日志目录下\n" + this.jdField_b_of_type_JavaLangString);
+    for (i = 3;; i = 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag[" + b + "], step[" + i + "]");
+      }
+      if (b == 1) {
+        break;
+      }
+      return false;
+      label145:
+      if (!locallpe.d()) {
+        break label187;
+      }
+      b = 0;
+      i = 2;
+      break label70;
+      label161:
+      b = 0;
     }
   }
 }

@@ -1,31 +1,26 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
+import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.5;
 import com.tencent.qphone.base.util.QLog;
 
 public class aycr
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnErrorListener
 {
-  public aycr(VideoSprite.5 param5) {}
+  public aycr(VideoSprite paramVideoSprite) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+    }
+    if (paramInt1 == 1)
     {
-      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.this$0.g = true;
-      if (this.a.this$0.jdField_a_of_type_Ayct != null) {
-        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
+      if (this.a.a != null) {
+        this.a.a.a();
       }
-      return;
+      this.a.j();
     }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+    return true;
   }
 }
 

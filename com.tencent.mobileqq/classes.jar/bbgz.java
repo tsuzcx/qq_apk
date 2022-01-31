@@ -1,23 +1,21 @@
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class bbgz
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  int jdField_a_of_type_Int;
+  bbgz(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public bbgz(bbgu parambbgu, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bbgu.a != null)
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    bbgu localbbgu = this.jdField_a_of_type_Bbgu;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_Bbgu.a.onClick(this.jdField_a_of_type_Bbgu, this.jdField_a_of_type_Bbgu.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bbgu.dismiss();
+      paramCompoundButton.onClick(localbbgu, i);
+      return;
     }
   }
 }

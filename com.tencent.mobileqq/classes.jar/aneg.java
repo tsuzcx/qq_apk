@@ -1,117 +1,81 @@
-import android.content.ContentProviderOperation;
-import android.content.ContentProviderOperation.Builder;
-import android.content.ContentValues;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class aneg
 {
-  private static String jdField_a_of_type_JavaLangString = anef.jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ContentValues jdField_a_of_type_AndroidContentContentValues;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ContentProviderOperation> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  protected byte a;
+  protected int a;
+  protected long a;
+  protected String a;
+  protected short a;
+  protected boolean a;
+  protected byte[] a;
+  public String b;
+  protected String c;
+  protected String d;
+  protected String e = "";
+  protected String f = "";
   
-  private aneg(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList)
+  public aneg(anef paramanef)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContentValues = new ContentValues();
-  }
-  
-  private aneg(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
-  {
-    this(paramQQAppInterface, paramList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private aneg(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    this(paramQQAppInterface, paramList);
+    this.jdField_a_of_type_Byte = 3;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramList.size();
-    paramQQAppInterface = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", "true").build()).withValue("aggregation_mode", Integer.valueOf(0)).withValue("account_type", "com.tencent.mobileqq.account").withValue("account_name", paramString1).withValue("sourceid", paramString2).withValue("sync1", paramString3).withValue("sync2", paramString4).withValue("sync3", Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilList.add(paramQQAppInterface.build());
   }
   
-  private static ContentProviderOperation.Builder a()
+  public void a(DataInputStream paramDataInputStream)
   {
-    return ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
+    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
+    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
+    this.b = paramDataInputStream.readUTF();
+    this.d = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
+    this.c = paramDataInputStream.readUTF();
+    this.e = paramDataInputStream.readUTF();
+    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
   }
   
-  private static ContentProviderOperation.Builder a(Uri paramUri)
+  public void a(DataOutputStream paramDataOutputStream)
   {
-    return ContentProviderOperation.newUpdate(paramUri.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  public static aneg a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, long paramLong)
-  {
-    return new aneg(paramQQAppInterface, paramList, paramLong);
-  }
-  
-  public static aneg a(QQAppInterface paramQQAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
-  {
-    return new aneg(paramQQAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
-  }
-  
-  private void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidContentContentValues.put("raw_contact_id", Long.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
     }
-    ContentProviderOperation.Builder localBuilder = a();
-    localBuilder.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    if (this.jdField_a_of_type_Boolean) {
-      localBuilder.withValueBackReference("raw_contact_id", this.jdField_a_of_type_Int);
+    if (this.b == null) {
+      this.b = "";
     }
-    this.jdField_a_of_type_JavaUtilList.add(localBuilder.build());
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
+    paramDataOutputStream.writeUTF(this.b);
+    paramDataOutputStream.writeUTF(this.d);
+    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
+    paramDataOutputStream.writeUTF(this.c);
+    paramDataOutputStream.writeUTF(this.e);
+    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
   }
   
-  private void a(Uri paramUri)
+  public void b(DataInputStream paramDataInputStream)
   {
-    paramUri = a(paramUri);
-    paramUri.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    this.jdField_a_of_type_JavaUtilList.add(paramUri.build());
+    a(paramDataInputStream);
+    this.f = paramDataInputStream.readUTF();
   }
   
-  public aneg a(String paramString)
+  public void b(DataOutputStream paramDataOutputStream)
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/name");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a();
-    return this;
-  }
-  
-  public aneg a(String paramString, Uri paramUri)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    a(paramUri);
-    return this;
-  }
-  
-  public aneg b(String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    this.jdField_a_of_type_AndroidContentContentValues.put("data2", "QQ");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data3", ajyc.a(2131702511));
-    a();
-    return this;
+    a(paramDataOutputStream);
+    if (this.f == null) {
+      this.f = "";
+    }
+    paramDataOutputStream.writeUTF(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aneg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,50 @@
-import android.database.sqlite.SQLiteDatabase;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.support.v4.util.SparseArrayCompat;
 
 public class amau
-  extends QQEntityManagerFactory
 {
-  private static Map<String, Class<?>> a = new HashMap();
+  private static final amau jdField_a_of_type_Amau = new amau();
+  private int jdField_a_of_type_Int;
+  private final SparseArrayCompat<amag> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
   
-  static
+  public static amau a()
   {
-    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
+    return jdField_a_of_type_Amau;
   }
   
-  public amau()
+  public int a(amag paramamag)
   {
-    super("RockDownload");
-  }
-  
-  public akfv build(String paramString)
-  {
-    if (this.dbHelper == null)
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
-      this.dbHelper = new akfv(this.mInnerDbHelper);
+      do
+      {
+        this.jdField_a_of_type_Int += 1;
+      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramamag);
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
-    return this.dbHelper;
   }
   
-  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  public void a(int paramInt)
   {
-    paramSQLiteDatabase.execSQL(auln.a(new RockDownloadInfo()));
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
+      return;
+    }
   }
   
-  public String getPackageName()
+  public void a(int paramInt1, int paramInt2)
   {
-    return getClass().getPackage().getName();
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      amag localamag = (amag)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
+      if (localamag != null) {
+        localamag.a(paramInt1, paramInt2);
+      }
+      return;
+    }
   }
-  
-  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

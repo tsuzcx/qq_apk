@@ -10,7 +10,7 @@ public class GesturePWDManualGuideActivity
   {
     super.onCreate(paramBundle);
     super.setContentView(2131559118);
-    setTitle(2131692996);
+    setTitle(2131692997);
   }
 }
 

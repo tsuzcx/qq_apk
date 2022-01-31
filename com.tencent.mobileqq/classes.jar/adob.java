@@ -1,6 +1,9 @@
-public abstract interface adob
+public class adob
 {
-  public abstract void onUpdate(int paramInt);
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

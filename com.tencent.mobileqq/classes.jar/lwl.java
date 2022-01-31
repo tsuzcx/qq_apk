@@ -1,71 +1,40 @@
-import android.os.Binder;
-import android.os.IBinder;
+import android.app.Notification;
+import android.graphics.Bitmap;
 import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.AVPbInfo;
 
-public abstract class lwl
-  extends Binder
-  implements lwk
+public abstract interface lwl
+  extends IInterface
 {
-  public lwl()
-  {
-    attachInterface(this, "com.tencent.av.service.IAVRedPacketCallback");
-  }
+  public abstract int a(long paramLong, int paramInt);
   
-  public static lwk a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVRedPacketCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwk))) {
-      return (lwk)localIInterface;
-    }
-    return new lwm(paramIBinder);
-  }
+  public abstract AVPbInfo a(byte[] paramArrayOfByte);
   
-  public IBinder asBinder()
-  {
-    return this;
-  }
+  public abstract void a();
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    boolean bool = false;
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVRedPacketCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
-      if (paramParcel1.readInt() != 0)
-      {
-        bool = true;
-        if (paramParcel1.readInt() == 0) {
-          break label109;
-        }
-      }
-      label109:
-      for (paramParcel1 = (AVRedPacketConfig)AVRedPacketConfig.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(bool, paramParcel1);
-        return true;
-        bool = false;
-        break;
-      }
-    }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
-    if (paramParcel1.readInt() != 0) {
-      bool = true;
-    }
-    a(bool, paramParcel1.readString(), paramParcel1.readString());
-    return true;
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, Bitmap paramBitmap);
+  
+  public abstract void a(lwi paramlwi);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, Notification paramNotification);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b();
+  
+  public abstract void b(byte[] paramArrayOfByte);
+  
+  public abstract void c();
+  
+  public abstract void c(byte[] paramArrayOfByte);
 }
 
 

@@ -1,32 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.graphics.SurfaceTexture;
 
-class bikd
-  implements Animator.AnimatorListener
+public abstract interface bikd
 {
-  bikd(bikc parambikc) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
-    }
-    if (bikc.a(this.a) != null)
-    {
-      bikc.a(this.a).setAlpha(1.0F);
-      bikc.a(this.a).setVisibility(4);
-      bikc.a(this.a).b().a(Boolean.valueOf(false));
-    }
-    bikc.b(this.a);
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void g();
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void i();
 }
 
 

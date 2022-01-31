@@ -1,12 +1,9 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.data.ComboLockManager;
 
 public class bjco
-  extends bjcl
+  extends ajto
 {
-  public bjco(CaptureModeController paramCaptureModeController)
-  {
-    super(paramCaptureModeController);
-  }
+  public bjco(ComboLockManager paramComboLockManager) {}
 }
 
 

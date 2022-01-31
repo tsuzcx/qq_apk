@@ -1,67 +1,179 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Set;
 
 public class src
 {
-  private srd a = new srd();
+  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
   
-  public src(HashMap<String, List<sqc>> paramHashMap)
+  public static String a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d5 = 90.0D;
+    double d3 = -90.0D;
+    double d2 = 0.0D;
+    double d6 = 180.0D;
+    double d4 = -180.0D;
+    double d1 = 0.0D;
+    int i = 1;
+    int k = 0;
+    while (k < paramInt)
     {
-      Object localObject = (Map.Entry)paramHashMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = ((Map.Entry)localObject).getValue();
-      if (localObject == null)
+      int m = 0;
+      int n = 0;
+      int j = i;
+      i = n;
+      if (m < 5)
       {
-        veg.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "value is null key=%s", new Object[] { str });
-      }
-      else
-      {
-        localObject = (List)localObject;
-        this.a.a(str, ((List)localObject).size());
-      }
-    }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(this.a);
-    while (localLinkedList.size() > 0)
-    {
-      int j = localLinkedList.size();
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = (srd)localLinkedList.poll();
-        if (localObject != null)
+        double d8;
+        double d7;
+        if (j != 0)
         {
-          localStringBuilder.append(" [").append(((srd)localObject).toString()).append("];");
-          localObject = ((srd)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            localLinkedList.offer((srd)((Iterator)localObject).next());
+          i <<= 1;
+          if (paramDouble2 >= d1)
+          {
+            d8 = (d6 + d1) / 2.0D;
+            i += 1;
+            d4 = d6;
+            d7 = d2;
+            d2 = d3;
+            d6 = d5;
+            d5 = d7;
+            d3 = d1;
+            d1 = d8;
+            label131:
+            if (j != 0) {
+              break label309;
+            }
           }
         }
-        i += 1;
+        label309:
+        for (j = 1;; j = 0)
+        {
+          m += 1;
+          d7 = d6;
+          d8 = d2;
+          d2 = d5;
+          d6 = d4;
+          d4 = d3;
+          d3 = d8;
+          d5 = d7;
+          break;
+          d8 = (d1 + d4) / 2.0D;
+          d6 = d3;
+          d7 = d5;
+          d3 = d4;
+          d4 = d1;
+          d1 = d8;
+          d5 = d2;
+          d2 = d6;
+          d6 = d7;
+          break label131;
+          i <<= 1;
+          if (paramDouble1 >= d2)
+          {
+            d3 = (d5 + d2) / 2.0D;
+            i += 1;
+            d7 = d5;
+            d5 = d3;
+            d3 = d4;
+            d4 = d6;
+            d6 = d7;
+            break label131;
+          }
+          d5 = (d2 + d3) / 2.0D;
+          d7 = d2;
+          d2 = d3;
+          d3 = d4;
+          d4 = d6;
+          d6 = d7;
+          break label131;
+        }
       }
-      localStringBuilder.append("\n");
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      k += 1;
+      i = j;
     }
-    localStringBuilder.append("\n]");
-    veg.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
     return localStringBuilder.toString();
   }
   
-  public srd a()
+  public static List<srd> a(String paramString)
   {
-    return this.a;
+    if ((paramString == null) || (paramString.length() == 0)) {
+      throw new Error("Invalid geoHash");
+    }
+    paramString = paramString.toLowerCase();
+    int i = 1;
+    double d3 = -90.0D;
+    double d4 = 90.0D;
+    double d1 = -180.0D;
+    double d2 = 180.0D;
+    int j = 0;
+    while (j < paramString.length())
+    {
+      int k = paramString.charAt(j);
+      int m = jdField_a_of_type_JavaLangString.indexOf(k);
+      if (m == -1) {
+        throw new Error("Invalid geoHash");
+      }
+      k = 4;
+      if (k >= 0)
+      {
+        double d6 = m >> k & 0x1;
+        double d5;
+        if (i != 0)
+        {
+          d5 = (d1 + d2) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d1 = d5;
+            label135:
+            if (i != 0) {
+              break label190;
+            }
+          }
+        }
+        label190:
+        for (i = 1;; i = 0)
+        {
+          k -= 1;
+          break;
+          d2 = d5;
+          break label135;
+          d5 = (d3 + d4) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d3 = d5;
+            break label135;
+          }
+          d4 = d5;
+          break label135;
+        }
+      }
+      j += 1;
+    }
+    paramString = new srd(d3, d1);
+    srd localsrd = new srd(d4, d2);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(localsrd);
+    return localArrayList;
+  }
+  
+  public static srd a(String paramString)
+  {
+    Object localObject = a(paramString);
+    srd localsrd = (srd)((List)localObject).get(0);
+    localObject = (srd)((List)localObject).get(1);
+    double d3 = srd.a(localsrd);
+    double d1 = srd.b(localsrd);
+    double d4 = srd.a((srd)localObject);
+    double d2 = srd.b((srd)localObject);
+    d3 = (d3 + d4) / 2.0D;
+    d1 = (d2 + d1) / 2.0D;
+    localsrd = new srd(d3, d1);
+    ved.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
+    return localsrd;
   }
 }
 

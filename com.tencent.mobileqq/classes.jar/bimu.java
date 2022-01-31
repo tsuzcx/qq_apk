@@ -1,18 +1,14 @@
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-final class bimu
-  implements Comparator<bimw>
+public abstract interface bimu<T extends RecyclerView.ViewHolder>
 {
-  public int a(bimw parambimw1, bimw parambimw2)
-  {
-    if (parambimw1.a) {
-      return 1;
-    }
-    if (parambimw2.a) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
+  
+  public abstract void b(@NonNull T paramT, int paramInt);
+  
+  public abstract void c(@NonNull T paramT, int paramInt);
 }
 
 

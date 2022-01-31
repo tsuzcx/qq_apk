@@ -1,18 +1,27 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+
 public class bioy
-  extends bjof
+  implements Animation.AnimationListener
 {
-  private bjoa<bioz> a = new bjoa();
-  private bjoa<Boolean> b = new bjoa();
+  public bioy(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public bjoa<bioz> a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.a;
+    this.a.setAlpha(1.0F);
+    this.a.setVisibility(8);
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(false, 150);
+    }
+    if (AEProviderContainerView.a(this.a) != null) {
+      AEProviderContainerView.a(this.a).a(131075, new Object[0]);
+    }
   }
   
-  public bjoa<Boolean> b()
-  {
-    return this.b;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

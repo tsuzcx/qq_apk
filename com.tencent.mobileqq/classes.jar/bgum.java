@@ -1,22 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.TextView;
 
 class bgum
-  extends Handler
+  implements bgln
 {
-  bgum(bguk parambguk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bgum(bgui parambgui) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage.what == 100001)
+    if (!paramBoolean)
     {
-      bguk.b(this.a);
-      bguk.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
+      bgwf.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
+      if (bgui.a(this.a) != null) {
+        bgui.a(this.a).setText("跳转失败，请返回重试");
+      }
+      return;
     }
+    bgwf.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
   }
 }
 

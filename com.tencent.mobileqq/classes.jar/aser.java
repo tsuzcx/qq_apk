@@ -1,351 +1,209 @@
-import com.tencent.commonsdk.cache.QQConcurrentHashMap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ShieldListInfo;
-import com.tencent.mobileqq.managers.ShieldMsgManger.1;
-import com.tencent.mobileqq.managers.ShieldMsgManger.2;
+import com.tencent.mobileqq.data.PushSwitchGrayTipsInfo;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.managers.PushNotificationManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
 
 public class aser
   implements Manager
 {
-  private QQConcurrentHashMap<String, ShieldListInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  private long jdField_a_of_type_Long;
+  private amuo jdField_a_of_type_Amuo;
+  private aukp jdField_a_of_type_Aukp;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private int d = -1;
+  
+  static
+  {
+    jdField_a_of_type_Int = 1;
+  }
   
   public aser(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      throw new IllegalArgumentException("ShieldMsgManger this.app = null");
-    }
-    ThreadManager.post(new ShieldMsgManger.1(this), 2, null, false);
+    this.jdField_a_of_type_Aukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    ThreadManager.executeOnSubThread(new PushNotificationManager.1(this, paramQQAppInterface));
   }
   
-  private ShieldListInfo a(int paramInt, String paramString)
+  private int a()
   {
+    Long localLong = Long.valueOf(System.currentTimeMillis());
+    if ((this.d >= 0) && (localLong.longValue() - this.jdField_a_of_type_Long < 86400000L)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PushNotificationManager", 2, "mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+      }
+    }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      return this.d;
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = bbkb.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      }
+      if (localLong.longValue() - this.jdField_a_of_type_Long > 86400000L)
       {
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
-        {
-          if (paramInt == 2)
-          {
-            str = a(paramString);
-            paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
-            return paramString;
-          }
-        }
-        else {
-          return null;
+        this.jdField_a_of_type_Long = bbkp.a(localLong.longValue());
+        bbkb.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Long);
+        bbkb.ah(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
+        this.d = 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "Today First Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
         }
       }
-      String str = paramString;
-      if (paramInt == 1) {
-        str = paramString;
-      }
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    String str2 = paramString.trim();
-    String str1 = str2;
-    if (!str2.startsWith("+"))
-    {
-      str1 = str2;
-      if (str2.length() == 11) {
-        str1 = "+86" + paramString;
-      }
-    }
-    return str1;
-  }
-  
-  private void a() {}
-  
-  private boolean a(int paramInt, String paramString)
-  {
-    boolean bool = false;
-    paramString = a(paramInt, paramString);
-    if (paramString != null) {
-      bool = paramString.isShieldMsg();
-    }
-    return bool;
-  }
-  
-  private boolean a(aukn paramaukn, aukm paramaukm)
-  {
-    boolean bool = false;
-    if (paramaukm.getStatus() == 1000)
-    {
-      paramaukn.b(paramaukm);
-      if (paramaukm.getStatus() == 1001) {
-        bool = true;
-      }
-    }
-    while ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
-      return bool;
-    }
-    return paramaukn.a(paramaukm);
-  }
-  
-  private void b()
-  {
-    for (;;)
-    {
-      aukn localaukn;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      else
       {
-        localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        this.d = bbkb.aV(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "Query, mTodayHadShowCount=" + this.d + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
+        }
+      }
+    }
+  }
+  
+  private boolean a(SessionInfo paramSessionInfo)
+  {
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {}
+    for (String str = paramSessionInfo.jdField_a_of_type_JavaLangString;; str = "") {
+      for (;;)
+      {
+        if ((QLog.isColorLevel()) && (TextUtils.isEmpty(str))) {
+          QLog.d("PushNotificationManager", 2, "sessionInfo.curType=" + paramSessionInfo.jdField_a_of_type_Int + " uin==null sessionInfo.realTroopUin=" + paramSessionInfo.c);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "uin=" + str + "mApp.getAccount()=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        }
         try
         {
-          QQConcurrentHashMap localQQConcurrentHashMap = new QQConcurrentHashMap(1006, 0, 36);
-          List localList = localaukn.a(ShieldListInfo.class);
-          int i;
-          if (localList == null)
+          List localList = this.jdField_a_of_type_Aukp.a(PushSwitchGrayTipsInfo.class, true, "uin=? and toUin=?", new String[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), str }, null, null, null, null);
+          if ((localList == null) || (localList.size() == 0))
           {
-            i = 0;
-            break label169;
-            if (j < i)
-            {
-              ShieldListInfo localShieldListInfo = (ShieldListInfo)localList.get(j);
-              if ((localShieldListInfo == null) || (localShieldListInfo.uin == null)) {
-                break label174;
-              }
-              localQQConcurrentHashMap.put(localShieldListInfo.uin, localShieldListInfo);
-              break label174;
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNotificationManager", 2, "result == null || result.size() == 0");
+            }
+            paramSessionInfo = new PushSwitchGrayTipsInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), str, paramSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 1);
+            this.jdField_a_of_type_Aukp.b(paramSessionInfo);
+            return true;
+            if ((paramSessionInfo.jdField_a_of_type_Int == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+              str = paramSessionInfo.jdField_a_of_type_JavaLangString;
             }
           }
           else
           {
-            i = localList.size();
-            break label169;
-          }
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = localQQConcurrentHashMap;
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break label144;
-          }
-          QLog.d("ShieldMsgManger", 2, localException.toString());
-          localaukn.a();
-          continue;
-          localObject2 = finally;
-          throw localObject2;
-        }
-        finally
-        {
-          localObject2.a();
-        }
-        return;
-      }
-      label144:
-      label169:
-      int j = 0;
-      continue;
-      label174:
-      j += 1;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (paramString != null) && (paramString.length() > 0))
-        {
-          if (paramInt2 != 2) {
-            break label114;
-          }
-          localObject1 = a(paramString);
-          paramString = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject1);
-          if (paramString != null)
-          {
-            paramString.flags = paramInt1;
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).add(paramString);
-            ThreadManager.post(new ShieldMsgManger.2(this, (ArrayList)localObject1), 5, null, false);
-          }
-        }
-        return;
-      }
-      label114:
-      Object localObject1 = paramString;
-      if (paramInt2 == 1) {
-        localObject1 = paramString;
-      }
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    a(paramInt, paramList, 0);
-  }
-  
-  public void a(int paramInt1, List<Long> paramList, int paramInt2)
-  {
-    akgh localakgh = (akgh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(18);
-    int j = paramList.size();
-    long[] arrayOfLong = new long[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
-      i += 1;
-    }
-    localakgh.a(paramInt1, arrayOfLong, paramInt2);
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    boolean bool = a(1, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShieldMsgManger", 2, "isUinInShieldList:" + paramString + ",result:" + bool);
-    }
-    return bool;
-  }
-  
-  public boolean a(List<ShieldListInfo> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return true;
-    }
-    for (;;)
-    {
-      aukn localaukn;
-      aukp localaukp;
-      int i;
-      ShieldListInfo localShieldListInfo1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap == null) {
-          b();
-        }
-        localaukp = localaukn.a();
-        try
-        {
-          localaukp.a();
-          int j = paramList.size();
-          i = 0;
-          if (i >= j) {
-            break label333;
-          }
-          localShieldListInfo1 = (ShieldListInfo)paramList.get(i);
-          localShieldListInfo2 = (ShieldListInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localShieldListInfo1.uin);
-          if ((localShieldListInfo1.flags == 0) && (localShieldListInfo2 == null)) {
-            break label349;
-          }
-          if ((localShieldListInfo2 != null) && ((localShieldListInfo2.getStatus() == 1001) || (localShieldListInfo2.getStatus() == 1002))) {
-            if (localShieldListInfo1.flags != localShieldListInfo2.flags)
-            {
-              localShieldListInfo2.flags = localShieldListInfo1.flags;
-              localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-              localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-              a(localaukn, localShieldListInfo2);
+            paramSessionInfo = (PushSwitchGrayTipsInfo)localList.get(0);
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNotificationManager", 2, "pushSwitchGrayTipsInfo.lastShowTime=" + paramSessionInfo.lastShowTime + " mTodayZeroTimeMillis=" + this.jdField_a_of_type_Long);
             }
+            if (paramSessionInfo.lastShowTime >= this.jdField_a_of_type_Long) {
+              return false;
+            }
+            paramSessionInfo.lastShowTime = this.jdField_a_of_type_Long;
+            paramSessionInfo.showCount += 1;
+            this.jdField_a_of_type_Aukp.a(paramSessionInfo);
+            return true;
           }
         }
-        catch (Exception paramList)
-        {
-          ShieldListInfo localShieldListInfo2;
-          paramList.printStackTrace();
-          localaukp.b();
-          bool = false;
-          localaukn.a();
-          a();
-          return bool;
-          if ((localShieldListInfo1.flags != 1) || (localShieldListInfo2.source_id == localShieldListInfo1.source_id)) {
-            break label349;
-          }
-          localShieldListInfo2.flags = localShieldListInfo1.flags;
-          localShieldListInfo2.source_id = localShieldListInfo1.source_id;
-          localShieldListInfo2.source_sub_id = localShieldListInfo1.source_sub_id;
-          a(localaukn, localShieldListInfo2);
-        }
-        finally
-        {
-          localaukp.b();
-        }
+        finally {}
       }
-      a(localaukn, localShieldListInfo1);
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localShieldListInfo1.uin, localShieldListInfo1);
-      break label349;
-      label333:
-      localaukp.c();
-      localaukp.b();
-      boolean bool = true;
-      continue;
-      label349:
-      i += 1;
     }
   }
   
-  public boolean a(ConcurrentHashMap<String, ShieldListInfo> paramConcurrentHashMap)
+  private void b(SessionInfo paramSessionInfo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShieldMsgManger", 2, "<---saveShieldListTotal : begin....");
+    String str2 = "";
+    String str1 = "";
+    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      str2 = a().a();
     }
-    Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (str1 = a().b();; str1 = a().d())
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (localObject2 != null)
+      do
       {
-        localObject3 = new ShieldListInfo().getTableName();
-        ((SQLiteDatabase)localObject2).a("delete from " + (String)localObject3);
-      }
-      if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap != null) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.size() > 0)) {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
-      }
-      localObject2 = new ArrayList();
-      Object localObject3 = paramConcurrentHashMap.keySet().iterator();
-      if (((Iterator)localObject3).hasNext()) {
-        ((ArrayList)localObject2).add(paramConcurrentHashMap.get((String)((Iterator)localObject3).next()));
-      }
+        aqvb localaqvb = new aqvb(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str2, paramSessionInfo.jdField_a_of_type_Int, -5023, 655383, 0L);
+        if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+          localaqvb.jdField_a_of_type_Long = (awzy.a() + 1L);
+        }
+        int i = str2.indexOf(str1);
+        if (i >= 0)
+        {
+          paramSessionInfo = new Bundle();
+          paramSessionInfo.putInt("key_action", 40);
+          paramSessionInfo.putString("textColor", "");
+          paramSessionInfo.putString("image_resource", null);
+          paramSessionInfo.putString("key_action_DATA", paramInt + "");
+          localaqvb.a(i, str1.length() + i, paramSessionInfo);
+        }
+        paramSessionInfo = new MessageForUniteGrayTip();
+        paramSessionInfo.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localaqvb);
+        aqvc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo);
+        axqy.b(null, "dc00898", "", "", "0X8009ACE", "0X8009ACE", paramInt, paramInt, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "add gray tip =" + str2 + " fromType=" + paramInt);
+        }
+        return;
+      } while ((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000));
+      str2 = a().c();
     }
-    boolean bool = a((List)localObject2);
-    return bool;
   }
   
-  public void b(int paramInt, List<Long> paramList)
+  public amuo a()
   {
-    b(paramInt, paramList, 0);
-  }
-  
-  public void b(int paramInt1, List<Long> paramList, int paramInt2)
-  {
-    akgh localakgh = (akgh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(18);
-    int j = paramList.size();
-    long[] arrayOfLong = new long[j];
-    int i = 0;
-    while (i < j)
+    if (this.jdField_a_of_type_Amuo == null)
     {
-      arrayOfLong[i] = ((Long)paramList.get(i)).longValue();
-      i += 1;
+      this.jdField_a_of_type_Amuo = new amuo();
+      this.jdField_a_of_type_Amuo.a(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("PushNotificationManager", 2, "pushNotificationBean=null, general new bean");
+      }
     }
-    localakgh.b(paramInt1, arrayOfLong, paramInt2);
+    return this.jdField_a_of_type_Amuo;
   }
   
-  public void onDestroy() {}
+  public void a(amuo paramamuo)
+  {
+    this.jdField_a_of_type_Amuo = paramamuo;
+  }
+  
+  public void a(SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (bcql.a() == 0) {
+      if (a().a())
+      {
+        if (a() < a().a()) {
+          break label46;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNotificationManager", 2, "getmTodayHadShowCount > showCount");
+        }
+      }
+    }
+    label46:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (!a(paramSessionInfo));
+      this.d += 1;
+      bbkb.ah(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.d);
+      b(paramSessionInfo, paramInt);
+      return;
+    }
+    QLog.d("PushNotificationManager", 2, "isNotificationEnabled=" + bcql.a());
+  }
+  
+  public void onDestroy()
+  {
+    this.d = -1;
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

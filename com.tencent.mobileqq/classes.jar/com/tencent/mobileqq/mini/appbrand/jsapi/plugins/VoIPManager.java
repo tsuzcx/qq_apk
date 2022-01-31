@@ -4,14 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.AudioRecord;
-import bdrg;
-import bdrh;
-import bdri;
-import bdrl;
-import bdrq;
-import bdrt;
-import bdru;
+import bdrv;
 import bdrw;
+import bdrx;
+import bdsa;
+import bdsf;
+import bdsi;
+import bdsj;
+import bdsl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,7 +40,7 @@ public class VoIPManager
   private boolean mQAvHasEnterRoom;
   private boolean mQAvHasInitSDK;
   private AtomicBoolean mQAvRealEnterRoom = new AtomicBoolean(false);
-  private bdrt mQavMultiObserver = new VoIPManager.3(this);
+  private bdsi mQavMultiObserver = new VoIPManager.3(this);
   private final BroadcastReceiver mReceiver = new VoIPManager.1(this);
   private Map<Long, VoIPManager.UserModel> mRoomUserModelList = new ConcurrentHashMap();
   private int mSelfMicStat = -1;
@@ -50,9 +50,9 @@ public class VoIPManager
   private void doExitRoom()
   {
     QLog.i("VoIPManager", 1, "exitRoom!");
-    bdrq localbdrq = bdri.a().a();
-    if (localbdrq != null) {
-      localbdrq.a();
+    bdsf localbdsf = bdrx.a().a();
+    if (localbdsf != null) {
+      localbdsf.a();
     }
     qavDeInitSDK();
     this.mQAvHasInitSDK = false;
@@ -171,9 +171,9 @@ public class VoIPManager
   {
     QLog.i("VoIPManager", 1, "qavDeInitSDK");
     ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    bdri localbdri = bdri.a();
-    localbdri.b(this.mQavMultiObserver);
-    localbdri.a();
+    bdrx localbdrx = bdrx.a();
+    localbdrx.b(this.mQavMultiObserver);
+    localbdrx.a();
   }
   
   private void qavInitSDK(long paramLong)
@@ -181,13 +181,13 @@ public class VoIPManager
     QLog.i("VoIPManager", 1, "qavInitSDK");
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
-    bdru.a(new bdrw());
-    bdrl localbdrl = bdrl.a();
-    localbdrl.a((AppRuntime)localObject);
-    localbdrl.a(new VoIPManager.2(this));
-    localObject = bdri.a();
-    ((bdri)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbdrl);
-    ((bdri)localObject).a(this.mQavMultiObserver);
+    bdsj.a(new bdsl());
+    bdsa localbdsa = bdsa.a();
+    localbdsa.a((AppRuntime)localObject);
+    localbdsa.a(new VoIPManager.2(this));
+    localObject = bdrx.a();
+    ((bdrx)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbdsa);
+    ((bdrx)localObject).a(this.mQavMultiObserver);
   }
   
   private int qavOpMic(boolean paramBoolean)
@@ -197,10 +197,10 @@ public class VoIPManager
       QLog.e("VoIPManager", 1, "cant op mic currently");
       return -1;
     }
-    Object localObject = bdri.a().a();
+    Object localObject = bdrx.a().a();
     if (localObject != null)
     {
-      ((bdrq)localObject).a(paramBoolean);
+      ((bdsf)localObject).a(paramBoolean);
       if (paramBoolean) {}
       for (int i = 1;; i = 2)
       {
@@ -224,14 +224,14 @@ public class VoIPManager
       QLog.e("VoIPManager", 1, "cant op mute currently");
       return -1;
     }
-    bdrq localbdrq = bdri.a().a();
-    if (localbdrq != null)
+    bdsf localbdsf = bdrx.a().a();
+    if (localbdsf != null)
     {
       boolean bool;
       if (!paramBoolean)
       {
         bool = true;
-        localbdrq.b(bool);
+        localbdsf.b(bool);
         if (!paramBoolean) {
           break label92;
         }
@@ -262,8 +262,8 @@ public class VoIPManager
   private void switchAudioRoute(int paramInt)
   {
     QLog.d("VoIPManager", 1, "switchAudioRoute " + paramInt);
-    bdrq localbdrq = bdri.a().a();
-    if (localbdrq != null)
+    bdsf localbdsf = bdrx.a().a();
+    if (localbdsf != null)
     {
       if (paramInt != -1) {
         break label65;
@@ -271,42 +271,42 @@ public class VoIPManager
       if (!isHeadsetPlugged()) {
         break label57;
       }
-      localbdrq.a(0);
+      localbdsf.a(0);
     }
     label57:
     label65:
     do
     {
       return;
-      localbdrq.a(1);
+      localbdsf.a(1);
       return;
       if (paramInt == 1)
       {
-        localbdrq.a(0);
+        localbdsf.a(0);
         return;
       }
     } while (paramInt != 2);
-    localbdrq.a(1);
+    localbdsf.a(1);
   }
   
-  private void updateUserModelList(List<bdrh> paramList)
+  private void updateUserModelList(List<bdrw> paramList)
   {
     Object localObject1 = this.mRoomUserModelList.keySet();
     Object localObject2 = new HashSet();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext()) {
-      ((Set)localObject2).add(Long.valueOf(((bdrh)localIterator.next()).jdField_a_of_type_Long));
+      ((Set)localObject2).add(Long.valueOf(((bdrw)localIterator.next()).jdField_a_of_type_Long));
     }
     ((Set)localObject1).retainAll((Collection)localObject2);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      localObject1 = (bdrh)paramList.next();
-      if (getUserModel(((bdrh)localObject1).jdField_a_of_type_Long) == null)
+      localObject1 = (bdrw)paramList.next();
+      if (getUserModel(((bdrw)localObject1).jdField_a_of_type_Long) == null)
       {
         localObject2 = new VoIPManager.UserModel(this, null);
-        ((VoIPManager.UserModel)localObject2).mUin = ((bdrh)localObject1).jdField_a_of_type_Long;
-        ((VoIPManager.UserModel)localObject2).mOpenId = ((bdrh)localObject1).jdField_a_of_type_JavaLangString;
+        ((VoIPManager.UserModel)localObject2).mUin = ((bdrw)localObject1).jdField_a_of_type_Long;
+        ((VoIPManager.UserModel)localObject2).mOpenId = ((bdrw)localObject1).jdField_a_of_type_JavaLangString;
         ((VoIPManager.UserModel)localObject2).mMicStat = 1;
         putUserModel((VoIPManager.UserModel)localObject2);
       }
@@ -447,20 +447,20 @@ public class VoIPManager
         {
           this.mJoinRoomListener = paramJoinRoomListener;
           this.mSelfUin = paramIdResult.tinyId;
-          bdrq localbdrq = bdri.a().a();
-          if (localbdrq == null) {
+          bdsf localbdsf = bdrx.a().a();
+          if (localbdsf == null) {
             break label257;
           }
-          bdrg localbdrg = new bdrg();
-          localbdrg.jdField_a_of_type_Int = 11;
-          localbdrg.b = 14;
-          localbdrg.c = 1;
-          localbdrg.d = paramIdResult.roomId;
-          localbdrg.jdField_a_of_type_Long = paramIdResult.tinyId;
-          localbdrg.jdField_a_of_type_JavaLangString = paramIdResult.openId;
-          localbdrg.e = 1;
-          localbdrg.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          int i = localbdrq.a(localbdrg);
+          bdrv localbdrv = new bdrv();
+          localbdrv.jdField_a_of_type_Int = 11;
+          localbdrv.b = 14;
+          localbdrv.c = 1;
+          localbdrv.d = paramIdResult.roomId;
+          localbdrv.jdField_a_of_type_Long = paramIdResult.tinyId;
+          localbdrv.jdField_a_of_type_JavaLangString = paramIdResult.openId;
+          localbdrv.e = 1;
+          localbdrv.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+          int i = localbdsf.a(localbdrv);
           if (i != 0) {
             paramJoinRoomListener.onError(i);
           }

@@ -1,39 +1,37 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 final class alpa
-  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
+  implements alvn
 {
-  alpa(String paramString1, String paramString2, alpc paramalpc) {}
-  
-  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a()
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "ArkSafe.report onDisableReport");
+    }
+    alvj.a().a(null);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, new Object[] { "ArkSafe.report onReportUrlCheck content=", paramString });
+    }
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
-      if (paramString != null)
+      if (localObject != null)
       {
-        boolean bool = paramString.CheckShareUrlLegality(this.b);
-        paramString.Release();
-        if (bool)
-        {
-          this.jdField_a_of_type_Alpc.a(true);
-          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(121)).a();
+        if (localObject != null) {
+          ((alsb)localObject).a(paramString);
         }
       }
-      else
-      {
-        return;
-      }
-      this.jdField_a_of_type_Alpc.a(false);
-      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       return;
     }
-    this.jdField_a_of_type_Alpc.a(false);
-    altd.a(aloz.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
-    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 

@@ -1,6 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
 class biyq
+  implements View.OnClickListener
 {
-  public static final biyo a = new biyo(null);
+  biyq(biym parambiym) {}
+  
+  public void onClick(View paramView)
+  {
+    biym.a(this.a).setText("");
+  }
 }
 
 

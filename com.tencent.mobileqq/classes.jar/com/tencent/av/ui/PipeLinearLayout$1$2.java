@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import ajyc;
+import ajya;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ class PipeLinearLayout$1$2
         localImageView.setVisibility(0);
         i += 1;
       }
-      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131369864)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + ajyc.a(2131708178));
+      ((TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131369863)).setText(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size() + ajya.a(2131708189));
     }
   }
 }

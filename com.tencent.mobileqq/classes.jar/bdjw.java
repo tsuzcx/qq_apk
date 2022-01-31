@@ -1,22 +1,109 @@
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bdjw
+  implements bdje
 {
-  protected String a;
-  protected String b;
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  public bdjw(String paramString1, String paramString2)
+  public bdjw(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String a()
+  public void a(Exception paramException)
   {
-    return this.a;
+    bdii.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (bdjl.a(this.jdField_a_of_type_AndroidContentContext))) {
+      bdjs.b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
+      }
+      catch (Exception paramException) {}
+    }
   }
   
-  public String b()
+  public void a(JSONObject paramJSONObject)
   {
-    return this.b;
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    bdii.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramJSONObject = (JSONObject)localObject;
+            if (bdjl.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              bdjs.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
+            }
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
+      }
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      bdjs.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
+    }
   }
 }
 

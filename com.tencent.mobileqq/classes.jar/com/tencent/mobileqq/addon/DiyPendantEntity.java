@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.pendant.DiyAddonUser.UserStickerInfo;
@@ -16,14 +16,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DiyPendantEntity
-  extends aukm
+  extends auko
 {
   public int borderId;
   public int diyId;
-  @aulx
+  @aulz
   public ArrayList<DiyPendantSticker> stickerList;
   public byte[] stickers;
-  @auma
+  @aumc
   public String uinAndDiyId;
   public long updateTs;
   

@@ -13,8 +13,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbct;
-import bfrr;
+import bbdh;
+import bfsi;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
@@ -27,33 +27,33 @@ import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
-import onk;
-import pax;
-import pmt;
-import pzc;
-import qaa;
-import rab;
-import rad;
-import rca;
-import ren;
-import rfo;
-import rfq;
-import rqq;
-import rqr;
+import onh;
+import pau;
+import pmq;
+import pyz;
+import pzx;
+import qzy;
+import raa;
+import rbx;
+import rek;
+import rfl;
+import rfn;
+import rqn;
+import rqo;
+import rqp;
 import rqs;
-import rqv;
-import sgx;
+import sgu;
 
 public class ReadInJoyXListView
   extends ReadInJoyBaseListView
-  implements ren
+  implements rek
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  private ThreadLocal<Integer> jdField_a_of_type_JavaLangThreadLocal = new rfo(this);
-  private rad jdField_a_of_type_Rad;
-  private rqq jdField_a_of_type_Rqq;
-  private rqr jdField_a_of_type_Rqr;
+  private ThreadLocal<Integer> jdField_a_of_type_JavaLangThreadLocal = new rfl(this);
+  private raa jdField_a_of_type_Raa;
+  private rqn jdField_a_of_type_Rqn;
+  private rqo jdField_a_of_type_Rqo;
   public float[] a;
   public float[] b;
   protected boolean d;
@@ -115,7 +115,7 @@ public class ReadInJoyXListView
         return;
       }
     }
-    onk.b().post(new ReadInJoyXListView.3(this, paramBoolean));
+    onh.b().post(new ReadInJoyXListView.3(this, paramBoolean));
   }
   
   private void d(int paramInt)
@@ -126,11 +126,11 @@ public class ReadInJoyXListView
     }
     this.jdField_a_of_type_JavaLangThreadLocal.set(Integer.valueOf(paramInt));
     int k;
-    if (pzc.b(getContext(), 0) != null)
+    if (pyz.b(getContext(), 0) != null)
     {
       k = 1;
       label42:
-      if ((!(this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager)) || ((paramInt != 2) && (paramInt != 3)) || (this.jdField_d_of_type_Int != 0) || (k == 0)) {
+      if ((!(this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager)) || ((paramInt != 2) && (paramInt != 3)) || (this.jdField_d_of_type_Int != 0) || (k == 0)) {
         break label223;
       }
       k = 1;
@@ -138,14 +138,14 @@ public class ReadInJoyXListView
       if (k == 0) {
         break label234;
       }
-      this.jdField_a_of_type_Rqq.a();
-      if (!qaa.a()) {
+      this.jdField_a_of_type_Rqn.a();
+      if (!pzx.a()) {
         break label228;
       }
       int n = Aladdin.getConfig(189).getIntegerFromString("banner_refresh_length", 0);
       if (n > 0)
       {
-        float f1 = bbct.d() / 160.0F;
+        float f1 = bbdh.d() / 160.0F;
         setOverScrollHeight((int)(n * f1));
         m = k;
       }
@@ -163,13 +163,13 @@ public class ReadInJoyXListView
     for (;;)
     {
       showOverScrollHeader();
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Rqq != null)) {
-        this.jdField_a_of_type_Rqq.a();
+      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Rqn != null)) {
+        this.jdField_a_of_type_Rqn.a();
       }
-      if ((this.jdField_a_of_type_Rqq == null) || (k == 0)) {
+      if ((this.jdField_a_of_type_Rqn == null) || (k == 0)) {
         break;
       }
-      setOverScrollHeight(this.jdField_a_of_type_Rqq.a());
+      setOverScrollHeight(this.jdField_a_of_type_Rqn.a());
       return;
       k = 0;
       break label42;
@@ -198,8 +198,8 @@ public class ReadInJoyXListView
     if (paramInt != 3)
     {
       this.jdField_g_of_type_Boolean = false;
-      if ((getAdapter() instanceof bfrr)) {
-        setAdapter(((bfrr)getAdapter()).getWrappedAdapter());
+      if ((getAdapter() instanceof bfsi)) {
+        setAdapter(((bfsi)getAdapter()).getWrappedAdapter());
       }
       for (;;)
       {
@@ -213,13 +213,13 @@ public class ReadInJoyXListView
   
   private void g()
   {
-    if ((this.jdField_a_of_type_Rqq != null) && (!this.jdField_h_of_type_Boolean))
+    if ((this.jdField_a_of_type_Rqn != null) && (!this.jdField_h_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Rqq.a(this);
-      setOverScrollHeader(this.jdField_a_of_type_Rqq.a(this));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Rqn.a(this);
+      setOverScrollHeader(this.jdField_a_of_type_Rqn.a(this));
       setOverScrollListener(this);
-      setOverScrollHeight(this.jdField_a_of_type_Rqq.a());
-      if ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager)) {
+      setOverScrollHeight(this.jdField_a_of_type_Rqn.a());
+      if ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager)) {
         setOverscrollHeader(new ColorDrawable(Color.parseColor("#F7F7F7")));
       }
     }
@@ -235,7 +235,7 @@ public class ReadInJoyXListView
     return this.mTouchMode;
   }
   
-  public rqq a(int paramInt)
+  public rqn a(int paramInt)
   {
     if (this.j == paramInt) {
       return null;
@@ -243,17 +243,17 @@ public class ReadInJoyXListView
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyXListView", 1, "setAnimType animType = " + paramInt);
     }
-    if ((this.jdField_a_of_type_Rqq != null) && ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager))) {
-      this.jdField_a_of_type_Rqq.d();
+    if ((this.jdField_a_of_type_Rqn != null) && ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager))) {
+      this.jdField_a_of_type_Rqn.d();
     }
-    this.jdField_a_of_type_Rqq = rqv.a(getContext(), paramInt);
-    if (this.jdField_a_of_type_Rqr != null) {
-      this.jdField_a_of_type_Rqq.a(this.jdField_a_of_type_Rqr);
+    this.jdField_a_of_type_Rqn = rqs.a(getContext(), paramInt);
+    if (this.jdField_a_of_type_Rqo != null) {
+      this.jdField_a_of_type_Rqn.a(this.jdField_a_of_type_Rqo);
     }
     if (this.jdField_d_of_type_Boolean) {
       g();
     }
-    return this.jdField_a_of_type_Rqq;
+    return this.jdField_a_of_type_Rqn;
   }
   
   public void a(int paramInt, View paramView, ListView paramListView) {}
@@ -261,10 +261,10 @@ public class ReadInJoyXListView
   public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
   {
     if (paramListView != this) {}
-    while ((this.jdField_a_of_type_Rqq == null) || (paramView != this.jdField_a_of_type_Rqq.a(this)) || (this.jdField_e_of_type_Boolean)) {
+    while ((this.jdField_a_of_type_Rqn == null) || (paramView != this.jdField_a_of_type_Rqn.a(this)) || (this.jdField_e_of_type_Boolean)) {
       return;
     }
-    this.jdField_a_of_type_Rqq.a(paramInt2, this.jdField_f_of_type_Boolean);
+    this.jdField_a_of_type_Rqn.a(paramInt2, this.jdField_f_of_type_Boolean);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -273,17 +273,17 @@ public class ReadInJoyXListView
     paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.ReadInJoyXListView);
     this.jdField_d_of_type_Boolean = paramContext.getBoolean(1, false);
     paramContext.recycle();
-    this.jdField_f_of_type_Int = ((int)bbct.j());
+    this.jdField_f_of_type_Int = ((int)bbdh.j());
     this.jdField_i_of_type_Int = getLayerType();
   }
   
   public void a(View paramView, ListView paramListView, int paramInt)
   {
     if (paramListView != this) {}
-    while ((this.jdField_a_of_type_Rqq == null) || (paramView != this.jdField_a_of_type_Rqq.a(this)) || (this.jdField_e_of_type_Boolean)) {
+    while ((this.jdField_a_of_type_Rqn == null) || (paramView != this.jdField_a_of_type_Rqn.a(this)) || (this.jdField_e_of_type_Boolean)) {
       return;
     }
-    this.jdField_a_of_type_Rqq.a(paramInt, this.mTouchMode);
+    this.jdField_a_of_type_Rqn.a(paramInt, this.mTouchMode);
   }
   
   public void a(String paramString)
@@ -304,19 +304,19 @@ public class ReadInJoyXListView
     removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
-  public void a(rqs paramrqs)
+  public void a(rqp paramrqp)
   {
-    if (this.jdField_a_of_type_Rqq != null) {
-      this.jdField_a_of_type_Rqq.a(paramrqs);
+    if (this.jdField_a_of_type_Rqn != null) {
+      this.jdField_a_of_type_Rqn.a(paramrqp);
     }
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_Rqq != null) && (this.jdField_f_of_type_Boolean))
+    if ((this.jdField_a_of_type_Rqn != null) && (this.jdField_f_of_type_Boolean))
     {
       a(Aladdin.getConfig(222).getIntegerFromString("refresh_bar_animation_total_time", 1000));
-      this.jdField_a_of_type_Rqq.a(paramBoolean, paramString);
+      this.jdField_a_of_type_Rqn.a(paramBoolean, paramString);
     }
   }
   
@@ -333,10 +333,10 @@ public class ReadInJoyXListView
       return true;
       paramInt = ((Integer)this.jdField_a_of_type_JavaLangThreadLocal.get()).intValue();
       this.jdField_a_of_type_JavaLangThreadLocal.set(Integer.valueOf(0));
-    } while ((this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_Rqq == null) || (paramView != this.jdField_a_of_type_Rqq.a(this)));
+    } while ((this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_Rqn == null) || (paramView != this.jdField_a_of_type_Rqn.a(this)));
     if (!this.jdField_e_of_type_Boolean)
     {
-      paramView = this.jdField_a_of_type_Rqq;
+      paramView = this.jdField_a_of_type_Rqn;
       if (paramInt == 0) {
         break label108;
       }
@@ -345,11 +345,11 @@ public class ReadInJoyXListView
     for (boolean bool = true;; bool = false)
     {
       paramView.a(bool);
-      if (this.jdField_a_of_type_Rca == null) {
+      if (this.jdField_a_of_type_Rbx == null) {
         break;
       }
       c(true);
-      this.jdField_a_of_type_Rca.a(this, paramInt);
+      this.jdField_a_of_type_Rbx.a(this, paramInt);
       return true;
     }
   }
@@ -366,10 +366,10 @@ public class ReadInJoyXListView
   public void b(int paramInt, View paramView, ListView paramListView)
   {
     if (paramListView != this) {}
-    while ((this.jdField_a_of_type_Rqq == null) || (paramView != this.jdField_a_of_type_Rqq.a(this)) || (this.jdField_f_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) {
+    while ((this.jdField_a_of_type_Rqn == null) || (paramView != this.jdField_a_of_type_Rqn.a(this)) || (this.jdField_f_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) {
       return;
     }
-    this.jdField_a_of_type_Rqq.a(100, false);
+    this.jdField_a_of_type_Rqn.a(100, false);
   }
   
   public void b(boolean paramBoolean)
@@ -381,10 +381,10 @@ public class ReadInJoyXListView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Rqq != null)
+    if (this.jdField_a_of_type_Rqn != null)
     {
-      this.jdField_a_of_type_Rqq.d();
-      this.jdField_a_of_type_Rqq = null;
+      this.jdField_a_of_type_Rqn.d();
+      this.jdField_a_of_type_Rqn = null;
     }
     this.jdField_a_of_type_AndroidViewView = null;
   }
@@ -402,15 +402,15 @@ public class ReadInJoyXListView
   
   public void c(int paramInt, View paramView, ListView paramListView)
   {
-    if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Rqq != null) && (paramView == this.jdField_a_of_type_Rqq.a(this)) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_Rqq.c();
+    if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Rqn != null) && (paramView == this.jdField_a_of_type_Rqn.a(this)) && (!this.jdField_e_of_type_Boolean)) {
+      this.jdField_a_of_type_Rqn.c();
     }
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Rqq != null) && ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager))) {
-      ((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqq).e();
+    if ((this.jdField_a_of_type_Rqn != null) && ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager))) {
+      ((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqn).e();
     }
   }
   
@@ -434,8 +434,8 @@ public class ReadInJoyXListView
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Rqq != null) && ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager))) {
-      ((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqq).f();
+    if ((this.jdField_a_of_type_Rqn != null) && ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager))) {
+      ((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqn).f();
     }
   }
   
@@ -446,7 +446,7 @@ public class ReadInJoyXListView
   
   public void h()
   {
-    if ((this.jdField_a_of_type_Rqq != null) && (this.jdField_f_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_Rqn != null) && (this.jdField_f_of_type_Boolean)) {
       a(0L);
     }
   }
@@ -455,11 +455,11 @@ public class ReadInJoyXListView
   {
     c(false);
     springBackOverScrollHeaderView();
-    if (this.jdField_a_of_type_Rca != null) {
-      this.jdField_a_of_type_Rca.b();
+    if (this.jdField_a_of_type_Rbx != null) {
+      this.jdField_a_of_type_Rbx.b();
     }
-    if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Rqq != null) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_Rqq.b();
+    if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Rqn != null) && (!this.jdField_e_of_type_Boolean)) {
+      this.jdField_a_of_type_Rqn.b();
     }
   }
   
@@ -494,32 +494,32 @@ public class ReadInJoyXListView
   
   public void onAttachChildView(View paramView)
   {
-    if (((paramView instanceof rab)) && (!((rab)paramView).a()))
+    if (((paramView instanceof qzy)) && (!((qzy)paramView).a()))
     {
-      ((rab)paramView).setIsResume(true);
-      ((rab)paramView).a();
+      ((qzy)paramView).setIsResume(true);
+      ((qzy)paramView).a();
     }
     if ((paramView instanceof ProteusItemView))
     {
       paramView = (ProteusItemView)paramView;
-      if ((paramView.a().a() != null) && (paramView.a().a().a() != null) && (paramView.a().a().a().mResolvedFeedType == 123) && (this.jdField_a_of_type_Rad != null)) {
-        this.jdField_a_of_type_Rad.a();
+      if ((paramView.a().a() != null) && (paramView.a().a().a() != null) && (paramView.a().a().a().mResolvedFeedType == 123) && (this.jdField_a_of_type_Raa != null)) {
+        this.jdField_a_of_type_Raa.a();
       }
     }
   }
   
   public void onDetachChildView(View paramView)
   {
-    if (((paramView instanceof rab)) && (((rab)paramView).a()))
+    if (((paramView instanceof qzy)) && (((qzy)paramView).a()))
     {
-      ((rab)paramView).setIsResume(false);
-      ((rab)paramView).b();
+      ((qzy)paramView).setIsResume(false);
+      ((qzy)paramView).b();
     }
     if ((paramView instanceof ProteusItemView))
     {
       paramView = (ProteusItemView)paramView;
-      if ((paramView.a().a() != null) && (paramView.a().a().a() != null) && (paramView.a().a().a().mResolvedFeedType == 123) && (this.jdField_a_of_type_Rad != null)) {
-        this.jdField_a_of_type_Rad.b();
+      if ((paramView.a().a() != null) && (paramView.a().a().a() != null) && (paramView.a().a().a().mResolvedFeedType == 123) && (this.jdField_a_of_type_Raa != null)) {
+        this.jdField_a_of_type_Raa.b();
       }
     }
   }
@@ -527,15 +527,15 @@ public class ReadInJoyXListView
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new rfq(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new rfn(this));
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     if (this.jdField_i_of_type_Boolean)
     {
-      sgx.a("KANDIAN_NEW_FEEDS_LOAD_ARTICLE_FINISH_TO_MEASURE", null);
-      sgx.a(null, "KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW");
+      sgu.a("KANDIAN_NEW_FEEDS_LOAD_ARTICLE_FINISH_TO_MEASURE", null);
+      sgu.a(null, "KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW");
       this.jdField_i_of_type_Boolean = false;
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -569,7 +569,7 @@ public class ReadInJoyXListView
       {
         return;
       } while (!(getContext() instanceof SplashActivity));
-      paramAbsListView = onk.a(getContext());
+      paramAbsListView = onh.a(getContext());
     } while (paramAbsListView == null);
     paramAbsListView.a(8);
   }
@@ -584,7 +584,7 @@ public class ReadInJoyXListView
     switch (paramMotionEvent.getAction())
     {
     }
-    while ((this.jdField_a_of_type_Rqq != null) && (this.jdField_a_of_type_Rqq.a(paramMotionEvent)))
+    while ((this.jdField_a_of_type_Rqn != null) && (this.jdField_a_of_type_Rqn.a(paramMotionEvent)))
     {
       return true;
       this.jdField_e_of_type_Int = ((int)paramMotionEvent.getRawY());
@@ -592,7 +592,7 @@ public class ReadInJoyXListView
       this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY() - this.jdField_e_of_type_Int);
       continue;
       FrameHelperActivity.c(true);
-      if ((this.jdField_a_of_type_Rqq != null) && ((this.jdField_a_of_type_Rqq instanceof ReadInJoySkinAnimManager)) && (((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqq).a())) {
+      if ((this.jdField_a_of_type_Rqn != null) && ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager)) && (((ReadInJoySkinAnimManager)this.jdField_a_of_type_Rqn).a())) {
         return true;
       }
     }
@@ -612,16 +612,16 @@ public class ReadInJoyXListView
     g();
   }
   
-  public void setNoteCardLifeCycle(rad paramrad)
+  public void setNoteCardLifeCycle(raa paramraa)
   {
-    this.jdField_a_of_type_Rad = paramrad;
+    this.jdField_a_of_type_Raa = paramraa;
   }
   
-  public void setRefreshPullDistanceListener(rqr paramrqr)
+  public void setRefreshPullDistanceListener(rqo paramrqo)
   {
-    this.jdField_a_of_type_Rqr = paramrqr;
-    if (this.jdField_a_of_type_Rqq != null) {
-      this.jdField_a_of_type_Rqq.a(paramrqr);
+    this.jdField_a_of_type_Rqo = paramrqo;
+    if (this.jdField_a_of_type_Rqn != null) {
+      this.jdField_a_of_type_Rqn.a(paramrqo);
     }
   }
 }

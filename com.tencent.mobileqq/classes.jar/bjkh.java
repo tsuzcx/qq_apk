@@ -1,39 +1,40 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.DisplayMetrics;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public abstract interface bjkh
+class bjkh
+  extends LinearSmoothScroller
 {
-  public abstract int a();
+  bjkh(bjkf parambjkf, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  {
+    return 100.0F / paramDisplayMetrics.densityDpi;
+  }
   
-  public abstract void a(int paramInt, Object paramObject);
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return null;
+  }
   
-  public abstract void a(int paramInt, Object... paramVarArgs);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void k();
+  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  {
+    paramView = this.a.a(this.a.a.getLayoutManager(), paramView);
+    int i = paramView[0];
+    int j = paramView[1];
+    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
+    if (k > 0) {
+      paramAction.update(i, j, k, this.mDecelerateInterpolator);
+    }
+  }
 }
 
 

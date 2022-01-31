@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 class alvc
-  implements DialogInterface.OnDismissListener
+  implements bfph
 {
-  alvc(alvb paramalvb, bfol parambfol) {}
+  alvc(alva paramalva, bfpc parambfpc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bfol.dismiss();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    this.jdField_a_of_type_Alva.a.e();
+    this.jdField_a_of_type_Alva.a.b(ajya.a(2131700695));
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

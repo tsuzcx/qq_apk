@@ -1,17 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
 
-public class aucl
-  implements View.OnTouchListener
+public final class aucl
+  implements Parcelable.Creator<TranslateResult>
 {
-  public aucl(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public TranslateResult a(Parcel paramParcel)
   {
-    this.a.a.a(paramView);
-    return false;
+    return new TranslateResult(paramParcel);
+  }
+  
+  public TranslateResult[] a(int paramInt)
+  {
+    return new TranslateResult[paramInt];
   }
 }
 

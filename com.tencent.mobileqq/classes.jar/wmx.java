@@ -1,14 +1,15 @@
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import com.tribe.async.dispatch.Dispatcher;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wmx
-  implements xgx<CertifiedAccountWrite.StDoLikeRsp>
 {
-  wmx(wmq paramwmq) {}
+  public COMM.StCommonExt a;
+  public boolean a;
+  public boolean b;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
+  public String toString()
   {
-    ste.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 

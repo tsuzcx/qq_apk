@@ -1,64 +1,130 @@
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.opengl.GLES20;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.opengl.EGL14;
+import android.support.annotation.RequiresApi;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.filter.QQImage2FrameFilter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xhk
 {
-  public static int a(int paramInt1, int paramInt2)
+  private final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private avzo jdField_a_of_type_Avzo;
+  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+  private final String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private final int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private final int c;
+  private int d = 42;
+  private int e;
+  
+  public xhk(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean, int paramInt4)
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    GLES20.glBindTexture(3553, arrayOfInt[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    return arrayOfInt[0];
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
   }
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  private int a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    try
-    {
-      localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-      Object localObject;
-      localOutOfMemoryError1.printStackTrace();
+    int i = 0;
+    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0)) {
+      if (paramBitmap == null) {
+        paramInt1 = i;
+      }
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
+    do
+    {
+      return paramInt1;
+      return GlUtil.createTexture(3553, paramBitmap);
+      i = GlUtil.createTexture(3553, paramBitmap);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = new QQFilterRenderManager();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.pushChain(new int[] { 170 }, null);
+      List localList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(170);
+      if ((localList != null) && (localList.size() > 0) && ((localList.get(0) instanceof QQImage2FrameFilter))) {
+        ((QQImage2FrameFilter)localList.get(0)).setImageSize(paramBitmap.getWidth(), paramBitmap.getHeight());
+      }
+      paramInt2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(i);
+      paramInt1 = paramInt2;
+    } while (i <= 0);
+    GlUtil.deleteTexture(i);
+    return paramInt2;
+  }
+  
+  private int b(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if ((paramBitmap == null) || (paramInt2 == 0) || (paramInt1 == 0))
+    {
+      if (paramBitmap == null) {
+        return 0;
+      }
+      return GlUtil.createTexture(3553, paramBitmap);
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    float f = paramInt1 * 1.0F / paramInt2;
+    f = paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight();
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    Matrix localMatrix = new Matrix();
+    localMatrix.postTranslate(i * -0.5F, j * -0.5F);
+    if ((this.e != 180) && (this.e != 270)) {
+      localMatrix.postRotate(-180.0F, 0.0F, 1.0F);
+    }
+    localMatrix.postScale(-1.0F, 1.0F);
+    f = paramInt1 * 1.0F / paramBitmap.getWidth();
+    localMatrix.postScale(f, f);
+    localMatrix.postTranslate(paramInt1 * 0.5F, paramInt2 * 0.5F);
+    localCanvas.drawBitmap(paramBitmap, localMatrix, null);
+    return GlUtil.createTexture(3553, localBitmap);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  @TargetApi(17)
+  @RequiresApi(api=17)
+  public void a(List<Bitmap> paramList, xhe paramxhe)
+  {
+    xhf localxhf = new xhf(0, "success");
+    this.jdField_a_of_type_Avzo = new avzo();
+    avza localavza = new avza(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, 1, false, 0);
+    localavza.a(EGL14.eglGetCurrentContext());
+    QLog.d("MuiltiImageToVideo", 2, this.jdField_a_of_type_JavaLangString + " " + this.jdField_b_of_type_Int + " " + this.jdField_a_of_type_Int + " " + this.c);
+    this.jdField_a_of_type_Avzo.a(localavza, new xhl(this, paramList, paramxhe, localxhf));
+    try
     {
       try
       {
-        localObject = new int[1];
-        GLES20.glGenFramebuffers(1, (int[])localObject, 0);
-        GLES20.glBindFramebuffer(36160, localObject[0]);
-        GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-        localObject = ByteBuffer.allocateDirect(paramInt2 * paramInt3 * 4);
-        ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
-        GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject);
-        ((ByteBuffer)localObject).rewind();
-        localBitmap.copyPixelsFromBuffer((Buffer)localObject);
-        GLES20.glBindFramebuffer(36160, 0);
-        return localBitmap;
+        wait();
+        return;
       }
-      catch (OutOfMemoryError localOutOfMemoryError2)
-      {
-        Bitmap localBitmap;
-        break label95;
-      }
-      localOutOfMemoryError1 = localOutOfMemoryError1;
-      localBitmap = null;
+      finally {}
+      return;
     }
-    label95:
-    return localBitmap;
-  }
-  
-  public static void a(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    catch (InterruptedException paramList)
+    {
+      paramList.printStackTrace();
+    }
   }
 }
 

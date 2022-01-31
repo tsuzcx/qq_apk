@@ -1,10 +1,25 @@
+import android.text.TextUtils;
+
 public class algu
 {
-  public int a = 3000;
+  public String a;
+  public String b;
+  public String c;
   
-  public String toString()
+  public String a()
   {
-    return "ARCloudReqMarkerInfo{timeout = " + this.a + '}';
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
+    }
+    return this.c;
   }
 }
 

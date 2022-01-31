@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aavb
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public aavb(ChatSettingForTroop.52 param52) {}
+  public aavb(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 1)
+    int i;
+    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
+      i = 1;
+      if ((!this.a.a.isMember) && (i != 0)) {
+        break label66;
+      }
     }
+    label66:
+    do
+    {
+      return false;
+      i = 0;
+      break;
+      if (paramMotionEvent.getAction() == 0) {
+        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
+      }
+    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131296940) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
+    return false;
   }
 }
 

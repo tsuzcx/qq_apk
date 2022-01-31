@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class azcs
-  implements QQPermissionCallback
 {
-  public azcs(AbsPublishActivity paramAbsPublishActivity) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(JSONObject paramJSONObject)
   {
-    this.a.a(this.a, this.a);
+    this.a = paramJSONObject.optString("left");
+    this.b = paramJSONObject.optString("text");
+    this.c = paramJSONObject.optString("right");
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     azcs
  * JD-Core Version:    0.7.0.1
  */

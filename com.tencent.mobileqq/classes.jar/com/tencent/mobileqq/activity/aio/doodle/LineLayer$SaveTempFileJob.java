@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import adez;
-import ajsf;
+import adew;
+import ajsd;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
@@ -11,7 +11,7 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.os.Handler;
 import android.os.Looper;
-import bbdj;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,14 +23,14 @@ class LineLayer$SaveTempFileJob
   private int jdField_a_of_type_Int = -1;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private WeakReference<adez> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<adew> jdField_a_of_type_JavaLangRefWeakReference;
   private int b = -1;
   
-  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, adez paramadez)
+  public LineLayer$SaveTempFileJob(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, adew paramadew)
   {
-    this.jdField_a_of_type_JavaLangString = (ajsf.cl + "temp" + File.separator);
+    this.jdField_a_of_type_JavaLangString = (ajsd.cl + "temp" + File.separator);
     QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramadez);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramadew);
     if (paramBitmap == null) {
       return;
     }
@@ -83,8 +83,8 @@ class LineLayer$SaveTempFileJob
       try
       {
         String str = this.jdField_a_of_type_JavaLangString + paramInt + ".tmp";
-        if (bbdj.a(str)) {
-          bbdj.d(str);
+        if (bbdx.a(str)) {
+          bbdx.d(str);
         }
         FileOutputStream localFileOutputStream = new FileOutputStream(str);
         paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);

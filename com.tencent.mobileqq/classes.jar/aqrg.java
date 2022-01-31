@@ -1,15 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
 class aqrg
-  implements View.OnClickListener
+  extends Handler
 {
-  aqrg(aqrd paramaqrd) {}
+  aqrg(aqrf paramaqrf) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aqrd.e(this.a);
-    this.a.a(true);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      aqrf.a(this.a);
+      return;
+    case 6: 
+      aqrf.b(this.a);
+      return;
+    case 2: 
+      aqrf.c(this.a);
+      return;
+    case 3: 
+      aqrf.d(this.a);
+      return;
+    case 4: 
+      aqrf.e(this.a);
+      return;
+    }
+    aqrf.f(this.a);
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface wmp
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+
+class wmp
+  implements wre<Object>
 {
-  public abstract void a();
+  wmp(wmn paramwmn, xgu paramxgu) {}
+  
+  public void a(Object... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Xgu.a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetFeedDetailRsp)paramVarArgs[3]);
+    }
+  }
 }
 
 

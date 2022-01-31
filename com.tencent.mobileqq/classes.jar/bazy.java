@@ -1,27 +1,63 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
-final class bazy
-  implements URLDrawable.URLDrawableListener
+public class bazy
 {
-  bazy(WeakReference paramWeakReference) {}
+  private static int a = -1;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public static void a(boolean paramBoolean)
   {
-    if (this.a != null)
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
+      a = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
       }
+      return;
+    }
+  }
+  
+  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  {
+    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackground_Pause) && (bbap.a(BaseApplicationImpl.sApplication)));
+  }
+  
+  public static boolean b(Context paramContext, AppInterface paramAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    amsa localamsa = (amsa)ampl.a().a(528);
+    boolean bool1 = bool3;
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      bool1 = bool3;
+      if (localamsa.a == 1)
+      {
+        if (a != -1) {
+          break label79;
+        }
+        bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
+        if (!bool1) {
+          break label74;
+        }
+      }
+    }
+    label74:
+    for (int i = 1;; i = 0)
+    {
+      a = i;
+      return bool1;
+    }
+    label79:
+    if (a == 1) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
     }
   }
 }

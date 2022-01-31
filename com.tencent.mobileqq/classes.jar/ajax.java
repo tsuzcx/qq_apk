@@ -1,25 +1,121 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
-class ajax
-  implements SoundPool.OnLoadCompleteListener
+public class ajax
+  implements baxz
 {
-  ajax(ajav paramajav, float paramFloat, int paramInt, String paramString, aivy paramaivy, long paramLong) {}
+  ajxj jdField_a_of_type_Ajxj = new ajay(this);
+  private baxy jdField_a_of_type_Baxy;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, Integer> b = new HashMap();
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public ajax(QQAppInterface paramQQAppInterface)
   {
-    if (-1.0F == this.jdField_a_of_type_Float) {}
-    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Baxy = new baxy(paramQQAppInterface);
+    this.jdField_a_of_type_Baxy.a(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
+  }
+  
+  public void a()
+  {
+    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
+    if (this.jdField_a_of_type_Baxy != null)
     {
-      paramInt1 = ajav.a(this.jdField_a_of_type_Ajav).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
-      if (paramInt1 != 0) {
+      this.jdField_a_of_type_Baxy.d();
+      this.jdField_a_of_type_Baxy = null;
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    do
+    {
+      return;
+      switch (paramInt2)
+      {
+      default: 
+        return;
+      case 1: 
+        localObject = bbcz.c((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+        if ((!bahv.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
+          break label147;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
+        }
         break;
       }
-      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
+    return;
+    label147:
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putString("uin", paramString);
+    localBundle.putString("nickName", (String)localObject);
+    paramString = EIPCResult.createResult(0, localBundle);
+    aizu.a().callbackResult(paramInt1, paramString);
+    return;
+    Object localObject = this.jdField_a_of_type_Baxy.a(1, String.valueOf(paramString), 0, (byte)1);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "bm != null:" + paramString);
+      }
+      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
+      localBundle = new Bundle();
+      localBundle.putInt("type", 2);
+      localBundle.putString("uin", paramString);
+      localBundle.putParcelable("head", (Parcelable)localObject);
+      paramString = EIPCResult.createResult(0, localBundle);
+      aizu.a().callbackResult(paramInt1, paramString);
       return;
     }
-    ajav.a(this.jdField_a_of_type_Ajav, this.jdField_a_of_type_Aivy, paramInt1, this.jdField_a_of_type_Long);
+    if (this.b != null) {
+      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
+    }
+    this.jdField_a_of_type_Baxy.a(paramString, 200, false, 1, true, (byte)0, 1);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
+      }
+      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      if ((this.b != null) && (this.b.get(paramString + "head") != null))
+      {
+        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 2);
+        localBundle.putString("uin", paramString);
+        localBundle.putParcelable("head", paramBitmap);
+        paramString = EIPCResult.createResult(0, localBundle);
+        aizu.a().callbackResult(paramInt1, paramString);
+      }
+    }
   }
 }
 

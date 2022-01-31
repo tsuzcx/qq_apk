@@ -1,72 +1,13 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class rfv
-  extends Dialog
-  implements View.OnClickListener
+class rfv
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TextView b;
   
-  public rfv(@NonNull Context paramContext)
-  {
-    this(paramContext, 0);
-  }
-  
-  public rfv(@NonNull Context paramContext, int paramInt)
-  {
-    super(paramContext, 2131755165);
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    requestWindowFeature(1);
-    setContentView(2131559827);
-    getWindow().setLayout(-1, -1);
-    setCancelable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378109));
-    this.b = ((TextView)findViewById(2131378108));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369627));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369632));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-    sgw.a(this.b, actn.a(3.0F, paramContext.getResources()), Color.parseColor("#00CAFC"));
-    sgw.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, actn.a(3.0F, paramContext.getResources()), Color.parseColor("#ffffff"));
-    getWindow().setWindowAnimations(2131755312);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b.setText(paramString2);
-    }
-    show();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    dismiss();
-  }
+  private rfv(rft paramrft) {}
 }
 
 

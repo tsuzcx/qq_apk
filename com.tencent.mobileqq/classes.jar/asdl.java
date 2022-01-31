@@ -1,8 +1,7 @@
-public abstract interface asdl
+class asdl
+  extends akgf
 {
-  public abstract void a(ascp paramascp);
-  
-  public abstract void b(ascp paramascp);
+  asdl(asdj paramasdj) {}
 }
 
 

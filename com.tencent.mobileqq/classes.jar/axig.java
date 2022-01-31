@@ -1,19 +1,8 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.hardware.Camera;
 
-public class axig
+public abstract interface axig
 {
-  int jdField_a_of_type_Int;
-  public axhs a;
-  public AtomicBoolean a;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  axhs jdField_b_of_type_Axhs;
-  int c;
-  
-  public axig()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

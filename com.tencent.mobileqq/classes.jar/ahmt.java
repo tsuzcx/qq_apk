@@ -1,244 +1,411 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView.ScaleType;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.QbossADBannerManager.2;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ahmt
+  implements View.OnClickListener
 {
-  private static ahmt jdField_a_of_type_Ahmt;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-  private File jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getApplication().getCacheDir(), "qboss_ad");
-  private Map<String, ahmr> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
+  private ahkd jdField_a_of_type_Ahkd;
+  protected View a;
+  protected URLImageView a;
+  protected BaseActivity a;
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  protected View b;
+  private boolean b;
+  protected View c;
+  private boolean c;
   
-  public static ahmt a()
+  public static ahmt a(BaseActivity paramBaseActivity, ahkd paramahkd)
   {
-    if (jdField_a_of_type_Ahmt == null) {}
-    try
+    Object localObject = ahmr.a().a(a());
+    if (localObject != null)
     {
-      if (jdField_a_of_type_Ahmt == null) {
-        jdField_a_of_type_Ahmt = new ahmt();
+      localObject = ((ahmp)localObject).a();
+      if (localObject != null) {
+        ((ahmt)localObject).a(paramBaseActivity, paramahkd);
       }
-      return jdField_a_of_type_Ahmt;
+      return localObject;
     }
-    finally {}
+    return null;
   }
   
-  private void a(ahmr paramahmr, String paramString, boolean paramBoolean)
+  private static String a()
   {
-    if ((paramahmr == null) || (TextUtils.isEmpty(paramString)) || (paramahmr.a == null)) {
-      return;
-    }
-    int i = 0;
-    label22:
-    ahms localahms;
-    if (i < paramahmr.a.size())
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null)
     {
-      localahms = (ahms)paramahmr.a.valueAt(i);
-      if ((localahms != null) && (!TextUtils.isEmpty(localahms.a))) {
-        break label73;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QbossADBannerManager", 4, "getCurrentUin = " + localAppRuntime.getAccount());
       }
+      return localAppRuntime.getAccount();
     }
-    for (;;)
-    {
-      i += 1;
-      break label22;
-      break;
-      label73:
-      if (localahms.a.equalsIgnoreCase(paramString)) {
-        localahms.a(paramBoolean);
-      }
-    }
+    return null;
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  private void b(ahmp paramahmp)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "notifyBannerShow");
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null)
+    this.jdField_b_of_type_Boolean = paramahmp.a();
+    if (this.jdField_b_of_type_Boolean)
     {
-      paramQQAppInterface.sendEmptyMessage(1062);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "handle is null.");
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "notifyBannerHide");
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface.sendEmptyMessage(1063);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "handle is null.");
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, ahmr paramahmr)
-  {
-    if ((paramahmr == null) || (paramahmr.a == null) || (paramahmr.a.size() == 0))
-    {
-      b(paramQQAppInterface);
-      return;
-    }
-    paramQQAppInterface = new ahmu(this, paramQQAppInterface, paramahmr, paramahmr.a.size());
-    int i = 0;
-    label47:
-    ahms localahms;
-    if (i < paramahmr.a.size())
-    {
-      localahms = (ahms)paramahmr.a.valueAt(i);
-      if ((localahms != null) && (!TextUtils.isEmpty(localahms.a))) {
-        break label94;
+      this.jdField_c_of_type_Boolean = this.jdField_a_of_type_Ahkd.a();
+      if (this.jdField_c_of_type_Boolean) {
+        i();
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break label47;
-      break;
-      label94:
-      if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader != null) {
-        this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(localahms.a, localahms.c, false, paramQQAppInterface);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossADBannerManager", 2, "startPreloadWebView needed: " + this.jdField_b_of_type_Boolean + ", done: " + this.jdField_c_of_type_Boolean);
     }
   }
   
-  public ahmr a(String paramString)
+  private void i()
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "getQBossADBannerConfig uin is empty. return.");
-      return null;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (ahmr)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("from", -1);
+    localIntent.setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+    localIntent.setPackage(MobileQQ.getContext().getPackageName());
+    BaseApplicationImpl.sApplication.sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+  }
+  
+  private void j()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossADBannerManager", 2, "stopPreloadWebView");
     }
   }
   
-  public String a(String paramString)
+  protected int a()
+  {
+    return 2131561525;
+  }
+  
+  protected int a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      return "";
+      return -1;
     }
-    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + File.separator + Utils.Crc64String(paramString) + paramString.substring(paramString.lastIndexOf("."));
-  }
-  
-  public void a(long paramLong)
-  {
-    a(paramLong, 2741);
-    a(paramLong, 2742);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l2 = NetConnInfoCenter.getServerTime();
-    long l1 = paramLong;
-    if (paramLong > l2 + 86400L)
+    String str = paramString;
+    if (!paramString.startsWith("#")) {
+      str = "#" + paramString;
+    }
+    try
     {
-      paramLong = l2 + 86400L;
-      l1 = paramLong;
-      if (QLog.isDevelopLevel())
+      int i = Color.parseColor(str);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QZLog.i("QbossADBannerManager", 1, " getValidTextColor error color = " + str);
+    }
+    return -1;
+  }
+  
+  public View a()
+  {
+    QLog.i("QbossADBannerManager", 1, "initQbossADBanner");
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(a(), null);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372760);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368038);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368028));
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+    localLayoutParams.width = b();
+    localLayoutParams.height = c();
+    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  protected String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null)) {}
+    for (String str = bbcz.h(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin());; str = "") {
+      return paramString.replace("{nickname}", str);
+    }
+  }
+  
+  public void a()
+  {
+    ahmp localahmp = ahmr.a().a(a());
+    if (localahmp != null) {
+      bhku.a().b(localahmp.jdField_b_of_type_JavaLangString, null);
+    }
+  }
+  
+  protected void a(ahmp paramahmp)
+  {
+    if (paramahmp == null) {
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "onQBossADBannerExposed show");
+    String str = paramahmp.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilMap.put(str, Boolean.valueOf(true));
+    QLog.i("QbossADBannerManager", 1, "onQBossADBannerExposed start expose");
+    bhku.a().c(paramahmp.jdField_b_of_type_JavaLangString, null);
+  }
+  
+  public void a(BaseActivity paramBaseActivity, ahkd paramahkd)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_Ahkd = paramahkd;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerManager", 2, "onScrollChange isScroll = " + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    Object localObject = a();
+    localObject = ahmr.a().a((String)localObject);
+    if ((localObject == null) || (((ahmp)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) || (((ahmp)localObject).jdField_a_of_type_AndroidUtilSparseArray.size() == 0))
+    {
+      QLog.i("QbossADBannerManager", 1, "isNeedShowQBossADBanner configInfo is null, return false.");
+      bool = false;
+    }
+    return bool;
+  }
+  
+  protected int b()
+  {
+    return bbll.a();
+  }
+  
+  public void b()
+  {
+    ahmp localahmp = ahmr.a().a(a());
+    if (localahmp != null) {
+      bhku.a().a(localahmp.jdField_b_of_type_JavaLangString, null);
+    }
+  }
+  
+  protected int c()
+  {
+    return (int)(b() * 0.1333333F);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_ComTencentImageURLImageView == null))
+    {
+      QLog.e("QbossADBannerManager", 1, "showQbossADBanner xml init error");
+      e();
+      return;
+    }
+    QLog.i("QbossADBannerManager", 1, "start showQbossADBanner");
+    ahmp localahmp = ahmr.a().a(a());
+    if ((localahmp != null) && (localahmp.jdField_a_of_type_AndroidUtilSparseArray != null))
+    {
+      ahmq localahmq = (ahmq)localahmp.jdField_a_of_type_AndroidUtilSparseArray.get(1);
+      if (localahmq == null)
       {
-        QLog.i("QbossADBannerConfigManager", 4, "saveQbossNextRequestTime nextRequestTime upper limit 24 " + paramLong);
-        l1 = paramLong;
+        QLog.e("QbossADBannerManager", 1, "initQbossADBanner resourceInfo = null");
+        e();
+        return;
       }
+      if ((!TextUtils.isEmpty(localahmq.c)) && ((localahmp.jdField_a_of_type_Int == 1) || (localahmp.jdField_a_of_type_Int == 0)))
+      {
+        Object localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywm.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywm.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = b();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = c();
+        if (localahmp.jdField_a_of_type_Int == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = bool;
+          localObject = URLDrawable.getFileDrawable(localahmq.c, (URLDrawable.URLDrawableOptions)localObject);
+          if (localObject != null) {
+            break;
+          }
+          QLog.i("QbossADBannerManager", 1, "initQbossADBanner urlDrawable == null  file path = " + localahmq.c);
+          e();
+          return;
+        }
+        if (((URLDrawable)localObject).getStatus() == 1)
+        {
+          this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+          QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable status is success");
+          a(localahmp);
+          return;
+        }
+        ((URLDrawable)localObject).setURLDrawableListener(new ahmu(this, localahmp, localahmq));
+        ThreadManager.executeOnFileThread(new QbossADBannerManager.2(this, (URLDrawable)localObject));
+        return;
+      }
+      QLog.i("QbossADBannerManager", 1, "initQbossADBanner resType is wrong: " + localahmp.jdField_a_of_type_Int + " file path = " + localahmq.c);
+      e();
+      return;
     }
-    SharedPreferences.Editor localEditor = avds.a().edit();
-    localEditor.putLong("qbossNextRequestTime_" + paramInt, l1);
-    localEditor.commit();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QbossADBannerConfigManager", 4, "saveQbossNextRequestTime appid = " + paramInt + " nextRequestTime =  " + l1);
-    }
+    QLog.i("QbossADBannerManager", 1, "initQbossADBanner config info is null, uin: " + a());
+    e();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, ahmr paramahmr)
+  public void d()
   {
-    if (paramQQAppInterface == null)
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify app is null. return.");
-      return;
-    }
-    String str = paramQQAppInterface.c();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify uin is empty. return.");
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QbossADBannerManager", 4, "checkIfHideBanner isClick: " + this.jdField_a_of_type_Boolean);
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify mIsDownloading = " + this.jdField_a_of_type_Boolean + " multi banner show");
-      return;
+      e();
+      this.jdField_a_of_type_Boolean = false;
     }
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
-    if (paramahmr == null) {}
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerManager", 2, "hideBanner");
+    }
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_Ahkd != null)
+    {
+      this.jdField_a_of_type_Ahkd.f();
+      j();
+    }
+    g();
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+  }
+  
+  public void h()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+    {
+      this.jdField_c_of_type_Boolean = true;
+      i();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
     for (;;)
     {
-      try
+      axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 11, 0, "", "", "", "");
+      return;
+      b();
+      e();
+      ahmr.a().a(a());
+      continue;
+      ahmp localahmp = ahmr.a().a(a());
+      if ((localahmp == null) || (TextUtils.isEmpty(localahmp.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(str);
-        if (paramahmr != null) {
-          break;
-        }
-        QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify QBossADBannerConfigInfo = null notifyBannerHide");
-        b(paramQQAppInterface);
+        QLog.e("QbossADBannerManager", 1, "qboss banner configInfo = null || jumpUrl = null");
         return;
       }
-      finally {}
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramahmr);
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.i("QbossADBannerManager", 2, "qboss banner jump url = " + localahmp.jdField_a_of_type_JavaLangString);
+      }
+      if (localahmp.jdField_b_of_type_Int == 1)
+      {
+        Object localObject = localahmp.jdField_a_of_type_JavaLangString;
+        paramView = (View)localObject;
+        if (!((String)localObject).contains("http://"))
+        {
+          paramView = (View)localObject;
+          if (!((String)localObject).contains("https://")) {
+            paramView = "https://" + (String)localObject;
+          }
+        }
+        if (paramView.contains("?")) {}
+        for (paramView = paramView + "&qboss_trace=" + localahmp.jdField_b_of_type_JavaLangString;; paramView = paramView + "?qboss_trace=" + localahmp.jdField_b_of_type_JavaLangString)
+        {
+          paramView = paramView + bhem.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localahmp.jdField_b_of_type_JavaLangString, "&");
+          if (QLog.isDevelopLevel()) {
+            QLog.i("QbossADBannerManager", 4, "TraceInfo qboss banner final traceInfo jump url = " + paramView);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          try
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null)
+            {
+              localObject = (ahfx)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(342);
+              if (((ahfx)localObject).a(paramView))
+              {
+                ((ahfx)localObject).a((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView(), false);
+                return;
+              }
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("springHb_QbossADBannerManager", 1, "intercept url fail" + localThrowable);
+            Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+            localIntent.putExtra("url", paramView);
+            localIntent.putExtra("big_brother_source_key", "biz_src_jc_vip");
+            this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+          }
+          break;
+        }
+      }
+      if (localahmp.jdField_b_of_type_Int == 2)
+      {
+        paramView = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localahmp.jdField_a_of_type_JavaLangString);
+        if (paramView != null)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          paramView.c();
+        }
+        else
+        {
+          bhku.a().a(2741, localahmp.c, 100, "qboss banner jump scheme action = null , url =  " + localahmp.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-    if (paramahmr.b())
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "checkIsFileExist exist , notifyBannerShow ");
-      a(paramQQAppInterface);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "checkIsFileExist is not exist , start downloadFile ");
-    this.jdField_a_of_type_Boolean = true;
-    b(paramQQAppInterface, paramahmr);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "removeQBossADBannerConfig uin is empty. return.");
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    long l = avds.a().getLong("qbossNextRequestTime_" + paramInt, 0L);
-    return NetConnInfoCenter.getServerTime() > l;
   }
 }
 

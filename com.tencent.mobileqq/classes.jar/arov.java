@@ -3,13 +3,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-class arov
-  implements wxw
+public class arov
+  implements wxt
 {
-  arov(arou paramarou, String paramString) {}
+  public arov(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
   
   public void a(Bundle paramBundle)
   {
@@ -17,21 +18,38 @@ class arov
     {
       int i = paramBundle.getInt("appid");
       Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Arou.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Arou.jdField_a_of_type_JavaLangString))) {
-        break label120;
+      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
+        break label178;
       }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
+      str1 = paramBundle.getString("uin");
+      bool = paramBundle.getBoolean("isFriend", false);
+      localObject = paramBundle.getString("nickName");
+      str2 = paramBundle.getString("remark");
+      if (!TextUtils.isEmpty(str1))
       {
-        localObject = new Intent(this.jdField_a_of_type_Arou.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Arou.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+        if (!bool) {
+          break label163;
+        }
+        paramBundle = new ProfileActivity.AllInOne(str1, 1);
+        paramBundle.h = ((String)localObject);
+        paramBundle.i = str2;
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("AllInOne", paramBundle);
+        ((Intent)localObject).addFlags(536870912);
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
       }
     }
-    label120:
+    label163:
+    label178:
     while (!QLog.isColorLevel()) {
-      return;
+      for (;;)
+      {
+        String str1;
+        boolean bool;
+        String str2;
+        return;
+        paramBundle = new ProfileActivity.AllInOne(str1, 105);
+      }
     }
     QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }

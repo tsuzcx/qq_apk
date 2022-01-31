@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aayg
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public aayg(DialogActivity paramDialogActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.cancel();
+    this.a.finish();
   }
 }
 

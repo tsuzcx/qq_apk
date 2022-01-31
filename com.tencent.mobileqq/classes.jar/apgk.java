@@ -1,14 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
-class apgk
-  implements View.OnClickListener
+public class apgk
+  extends ajsy
 {
-  apgk(apgj paramapgj, awog paramawog) {}
+  public apgk(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_Awog.a(paramView);
+    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

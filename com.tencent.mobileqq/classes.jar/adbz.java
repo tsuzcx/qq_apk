@@ -1,16 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
 public class adbz
-  implements View.OnTouchListener
+  implements TextView.OnEditorActionListener
 {
   public adbz(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return true;
+    boolean bool = false;
+    if (paramInt == 4)
+    {
+      axqy.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
+      VoiceTextEditPanel.a(this.a);
+      bool = true;
+    }
+    return bool;
   }
 }
 

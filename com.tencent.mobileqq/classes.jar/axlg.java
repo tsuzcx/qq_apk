@@ -1,77 +1,59 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.Context;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import java.io.File;
 
 public class axlg
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private axlh jdField_a_of_type_Axlh = new axlh(0);
-  private axlh b = new axlh(1);
+  public static int a;
+  public static int[] a;
+  public static final String[] a;
   
-  public axlh a()
+  static
   {
-    if (axlh.a(this.jdField_a_of_type_Axlh).getAndSet(1) == 0) {
-      return this.jdField_a_of_type_Axlh;
-    }
-    if (axlh.a(this.b).getAndSet(1) == 0) {
-      return this.b;
-    }
-    return null;
+    jdField_a_of_type_Int = -4;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
+    jdField_a_of_type_ArrayOfInt = new int[] { -4, -4, -4 };
   }
   
-  public void a()
+  public static boolean a()
   {
-    axlh.a(this.jdField_a_of_type_Axlh).getAndSet(0);
-    axlh.a(this.b).getAndSet(0);
+    return FeatureManager.isBasicFeaturesFunctionReady();
   }
   
-  public void a(Runnable paramRunnable)
+  public static boolean a(Context paramContext)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (axlh.a(this.jdField_a_of_type_Axlh).getAndAdd(0) == 0)
+    paramContext = axle.c(paramContext);
+    if (paramContext == null)
     {
-      bool1 = bool2;
-      if (axlh.a(this.b).getAndAdd(0) == 0) {
-        bool1 = true;
+      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=null", null);
+      return false;
+    }
+    if (!new File(paramContext).exists())
+    {
+      VideoEnvironment.a("PtvFilterSoLoad", "isFilterSoExist:getSVFilterSoPath soRootPath=" + paramContext + ",exists=false", null);
+      return false;
+    }
+    return a(paramContext);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return FeatureManager.isBasicFeaturesReadyInDir(paramString);
+  }
+  
+  public static boolean b(Context arg0)
+  {
+    String str = axle.d(???);
+    synchronized (axle.a())
+    {
+      boolean bool1 = bbdx.a(str + "libQMCF.so");
+      boolean bool2 = bbdx.a(str + jdField_a_of_type_ArrayOfJavaLangString[2]);
+      if (QLog.isColorLevel()) {
+        QLog.i("SVAF_SoLoad", 2, String.format("isArtFilterSoExist, qmcfso[%s], snpeso[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       }
-    }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      return bool1;
     }
   }
 }

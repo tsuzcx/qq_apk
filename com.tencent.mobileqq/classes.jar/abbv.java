@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class abbv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public abbv(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ForwardFriendListActivity.a(this.a).dismiss();
-    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+    if (!this.a.isFinishing()) {
+      ForwardFriendListActivity.a(this.a).dismiss();
+    }
   }
 }
 

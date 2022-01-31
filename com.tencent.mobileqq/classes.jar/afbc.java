@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afbc
-  extends akgk
+class afbc
+  implements DialogInterface.OnClickListener
 {
-  public afbc(BlessResultActivity paramBlessResultActivity) {}
+  afbc(afba paramafba) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
-    }
-    if ((paramBoolean) && (paramInt == axjq.a)) {
-      bbcv.a(this.a.getActivity(), 0, null, this.a.getString(2131719580), 2131719582, 2131719581, new afbd(this), new afbe(this)).show();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

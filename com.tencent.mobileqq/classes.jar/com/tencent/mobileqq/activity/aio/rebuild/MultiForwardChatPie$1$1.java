@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerb;
-import aerc;
+import aeqz;
+import aera;
 
 public class MultiForwardChatPie$1$1
   implements Runnable
 {
-  public MultiForwardChatPie$1$1(aerc paramaerc) {}
+  public MultiForwardChatPie$1$1(aera paramaera) {}
   
   public void run()
   {

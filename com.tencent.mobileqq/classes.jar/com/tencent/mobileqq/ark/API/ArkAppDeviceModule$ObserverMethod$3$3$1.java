@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ark.API;
 
-import alnh;
-import alnk;
+import alng;
+import alnj;
+import alno;
 import alnp;
-import alnq;
-import alop;
+import aloo;
 
 public class ArkAppDeviceModule$ObserverMethod$3$3$1
   implements Runnable
 {
-  public ArkAppDeviceModule$ObserverMethod$3$3$1(alnp paramalnp) {}
+  public ArkAppDeviceModule$ObserverMethod$3$3$1(alno paramalno) {}
   
   public void run()
   {
-    alnq localalnq = new alnq(this);
-    this.a.a.jdField_a_of_type_Alnk.a.a.a(localalnq, this.a.a.jdField_a_of_type_Long);
+    alnp localalnp = new alnp(this);
+    this.a.a.jdField_a_of_type_Alnj.a.a.a(localalnp, this.a.a.jdField_a_of_type_Long);
   }
 }
 

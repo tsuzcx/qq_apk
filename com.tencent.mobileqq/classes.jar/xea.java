@@ -1,18 +1,31 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
 
-public class xea
-  implements View.OnClickListener
+public abstract interface xea
 {
-  public xea(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
+  public abstract long a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
-  }
+  public abstract View a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void ao_();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void setHeaderBgColor(int paramInt);
+  
+  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
+  
+  public abstract void setHeaderBgRes(int paramInt);
+  
+  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
 }
 
 

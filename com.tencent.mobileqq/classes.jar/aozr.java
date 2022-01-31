@@ -1,4 +1,8 @@
-public abstract interface aozr {}
+class aozr
+  implements aozv
+{
+  aozr(aozm paramaozm) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

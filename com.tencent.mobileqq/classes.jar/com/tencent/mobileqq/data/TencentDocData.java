@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.text.TextUtils;
 import java.io.UnsupportedEncodingException;
@@ -27,9 +27,9 @@ public class TencentDocData
   public String peerTips;
   public long sendUin;
   public int serviceId = 95;
-  public String sourceAction = ajyc.a(2131714827);
-  public String sourceName = ajyc.a(2131714823);
-  public String summary = ajyc.a(2131714831);
+  public String sourceAction = ajya.a(2131714838);
+  public String sourceName = ajya.a(2131714834);
+  public String summary = ajya.a(2131714842);
   public String title;
   public String url;
   
@@ -86,7 +86,7 @@ public class TencentDocData
   
   public String getBriefDes(Context paramContext)
   {
-    return paramContext.getString(2131692697, new Object[] { getTitle() });
+    return paramContext.getString(2131692698, new Object[] { getTitle() });
   }
   
   public String getTitle()

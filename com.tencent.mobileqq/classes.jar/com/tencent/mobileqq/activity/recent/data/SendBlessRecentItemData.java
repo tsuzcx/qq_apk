@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import afaz;
-import ahpl;
+import afax;
+import ahpj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import axqw;
+import axqy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.bless.BlessTask;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,25 +23,25 @@ public class SendBlessRecentItemData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    afaz localafaz = (afaz)paramQQAppInterface.getManager(138);
-    BlessTask localBlessTask = localafaz.a();
+    afax localafax = (afax)paramQQAppInterface.getManager(138);
+    BlessTask localBlessTask = localafax.a();
     int i;
-    if (!localafaz.h())
+    if (!localafax.h())
     {
       this.mTitleName = paramContext.getResources().getString(2131690531);
       if (localBlessTask != null) {
         this.mTitleName = localBlessTask.starWord;
       }
-      this.mLastMsg = localafaz.b();
+      this.mLastMsg = localafax.b();
       this.mMsgExtroInfo = "";
       if (QLog.isColorLevel()) {
         QLog.d("SendBlessRecentItemData", 2, "not isVideoNeedToPlay");
       }
-      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
-      if (localafaz.a() < 0) {
+      axqy.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
+      if (localafax.a() < 0) {
         break label490;
       }
-      if (localafaz.a() != 0) {
+      if (localafax.a() != 0) {
         break label485;
       }
       i = 2;
@@ -55,9 +55,9 @@ public class SendBlessRecentItemData
     {
       this.mDisplayTime = this.mUser.lastmsgtime;
       if (this.mDisplayTime > 0L) {
-        this.mShowTime = ahpl.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ahpj.a().a(a(), this.mDisplayTime);
       }
-      localafaz.f();
+      localafax.f();
       if (AppSetting.d)
       {
         paramQQAppInterface = new StringBuilder(24);
@@ -85,15 +85,15 @@ public class SendBlessRecentItemData
         if (QLog.isColorLevel()) {
           QLog.d("SendBlessRecentItemData", 2, "useHint: " + bool);
         }
-        if ((!bool) || (TextUtils.isEmpty(localafaz.b()))) {
+        if ((!bool) || (TextUtils.isEmpty(localafax.b()))) {
           break label428;
         }
-        this.mLastMsg = localafaz.b();
+        this.mLastMsg = localafax.b();
         this.mMsgExtroInfo = "";
       }
       for (;;)
       {
-        axqw.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
+        axqy.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
         break;
         bool = false;
         break label332;

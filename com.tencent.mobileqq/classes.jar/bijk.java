@@ -1,14 +1,19 @@
-import android.graphics.Rect;
-import dov.com.qq.im.ae.camera.core.AECameraManager.7;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class bijk
-  implements axic
+class bijk
+  implements CosFunHelper.CountDownListener
 {
-  public bijk(AECameraManager.7 param7) {}
+  bijk(bijd parambijd) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onCountDownEnd()
   {
-    bijj.a().a(this.a.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.a.this$0.jdField_a_of_type_Int, this.a.this$0.b), this.a.jdField_a_of_type_Aiak, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, 1, this.a.this$0.e);
+    bijd.d(this.a);
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    bijd.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

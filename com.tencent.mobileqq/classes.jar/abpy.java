@@ -1,8 +1,8 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abpy
   implements View.OnClickListener
@@ -11,9 +11,18 @@ public class abpy
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
-    axqw.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    if (NotifyPushSettingActivity.a(this.a) == null)
+    {
+      NotifyPushSettingActivity.a(this.a, new abqe(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      abqe.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+    }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 

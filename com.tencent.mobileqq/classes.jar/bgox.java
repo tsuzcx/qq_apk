@@ -1,23 +1,28 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bgox
-  implements DialogInterface.OnDismissListener
+public class bgox
+  implements DialogInterface.OnClickListener
 {
-  bgox(bgos parambgos) {}
+  public bgox(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.b) {
-      bgos.a(this.a, 1);
-    }
-    this.a.b = false;
-    this.a.a = null;
+    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, ajya.a(2131710034), null);
+    localIntent.putExtra("_FROM_QLINK_", true);
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgox
  * JD-Core Version:    0.7.0.1
  */

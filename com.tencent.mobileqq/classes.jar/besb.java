@@ -1,28 +1,7 @@
-import android.content.Context;
-
-public abstract class besb
+public class besb
+  extends besf
 {
-  public static final String TAG = "BaselibLoader";
-  protected besc mBaselibContent;
-  
-  public besc getBaselib()
-  {
-    return this.mBaselibContent;
-  }
-  
-  public boolean isBaseLibInit()
-  {
-    return (this.mBaselibContent != null) && (this.mBaselibContent.a());
-  }
-  
-  public abstract void loadBaselib(Context paramContext, besd parambesd);
-  
-  public void setBaselib(besc parambesc)
-  {
-    if ((parambesc != null) && (parambesc.a())) {
-      this.mBaselibContent = parambesc;
-    }
-  }
+  public int a;
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aokm;
+import aokr;
 
 class ExtendFriendBaseFragment$3
   implements Runnable

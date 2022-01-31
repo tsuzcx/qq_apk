@@ -1,37 +1,24 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
 
 public class afxo
-  extends aouj
+  extends afxp
 {
-  public afxo(ChatHistoryC2CMediaFragment paramChatHistoryC2CMediaFragment) {}
+  public static final int[] a = { 2131690730, 2131690735, 2131690732, 2131690733, 2131690737, 2131690734, 2131690731 };
+  public static final int[] b = { 2131364085, 2131364090, 2131364087, 2131364088, 2131364091, 2131364089, 2131364086 };
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public afxo(FragmentActivity paramFragmentActivity)
   {
-    if ((bici.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    super(paramFragmentActivity);
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  protected int[] a()
   {
-    if ((bici.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    return b;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected int[] b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bici.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
-    }
+    return a;
   }
 }
 

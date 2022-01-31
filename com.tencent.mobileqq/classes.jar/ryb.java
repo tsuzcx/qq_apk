@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import org.json.JSONObject;
 
 public class ryb
-  implements View.OnClickListener
+  implements ryd
 {
-  public ryb(BridgeModule paramBridgeModule, String paramString) {}
+  public ryb(BridgeModule paramBridgeModule) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 

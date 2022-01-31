@@ -1,77 +1,41 @@
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class uzs
-  extends QQUIEventReceiver<vaf, tcu>
-  implements vab
+public class uzs<T>
+  extends uzr
 {
-  protected vad a;
+  public T a;
+  public String a;
+  public uzu<T> a;
   
-  public uzs(vaf paramvaf)
+  public uzs(uzu<T> paramuzu)
   {
-    super(paramvaf);
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Uzu = paramuzu;
   }
   
   public Object a()
   {
-    return null;
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
   public String a()
   {
-    return "ReportWatchVideoListStep";
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    ste.a().registerSubscriber(this);
-    ((tcs)tdc.a(13)).c();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(vac paramvac) {}
-  
-  public void a(vad paramvad)
-  {
-    this.a = paramvad;
-  }
-  
-  public void a(vaf paramvaf, tcu paramtcu)
-  {
-    ste.a().unRegisterSubscriber(this);
-    if (this.a != null) {
-      this.a.a(a());
-    }
-    for (;;)
-    {
-      veg.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
-      return;
-      veg.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
+    if (this.jdField_a_of_type_Uzu != null) {
+      this.jdField_a_of_type_Uzu.a(this.jdField_a_of_type_JavaLangObject);
     }
   }
   
-  public boolean a()
+  public void a(Object paramObject)
   {
-    return false;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public Class acceptEventClass()
-  {
-    return tcu.class;
-  }
+  public void b() {}
   
-  public void b()
-  {
-    veg.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
-  }
-  
-  public void c()
-  {
-    tcs localtcs = (tcs)tdc.a(13);
-    ste.a().unRegisterSubscriber(this);
-    localtcs.d();
-  }
+  public void c() {}
 }
 
 

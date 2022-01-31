@@ -1,19 +1,83 @@
+import android.app.Activity;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afnm
-  implements afnk
+  implements afmk
 {
   public afnm(TroopActivity paramTroopActivity) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public Activity a()
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
+    return this.a;
+  }
+  
+  public View a()
+  {
+    return this.a.findViewById(2131375493);
+  }
+  
+  public aqbe a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public bfnk a()
+  {
+    return this.a.jdField_a_of_type_Bfnk;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.a.b != 2) {
       return;
     }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
+    switch (paramInt)
+    {
+    }
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.runOnUiThread(paramRunnable);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a.isResume()) {
+      bcql.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public boolean a()
+  {
+    return TroopActivity.a(this.a);
+  }
+  
+  public View b()
+  {
+    return this.a.findViewById(2131375447);
+  }
+  
+  public boolean b()
+  {
+    return TroopActivity.b(this.a);
+  }
+  
+  public View c()
+  {
+    return this.a.findViewById(2131375439);
+  }
+  
+  public View d()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   }
 }
 

@@ -1,14 +1,53 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class tlr
-  extends ssk
+  extends syn
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public List<tls> a;
+  public List<uvo> b = new ArrayList(0);
   
-  public String toString()
+  public tlr(ErrorMessage paramErrorMessage)
   {
-    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public tlr(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  {
+    super(paramRspBatchFeedComment.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
+    while (paramRspBatchFeedComment.hasNext())
+    {
+      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
+      tls localtls = new tls();
+      localtls.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
+      localtls.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
+      localtls.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
+      localtls.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
+      if (localtls.jdField_b_of_type_Int != 1) {
+        this.b.add(new uvo(localtls.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
+      }
+      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
+        localCommentEntry.feedId = localtls.jdField_a_of_type_JavaLangString;
+        localtls.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localtls);
+    }
   }
 }
 

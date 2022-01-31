@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import mze;
-import onk;
+import mzb;
+import onh;
 
 class ViolaBaseView$8
   implements Runnable
@@ -10,7 +10,7 @@ class ViolaBaseView$8
   
   public void run()
   {
-    mze.a(this.a, onk.a());
+    mzb.a(this.a, onh.a());
   }
 }
 

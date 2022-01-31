@@ -1,25 +1,30 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bbhg
-  implements anyz
+  implements View.OnClickListener
 {
-  bbhg(bbhb parambbhb) {}
+  int jdField_a_of_type_Int;
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public bbhg(bbgu parambbgu, int paramInt)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
-    {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bbhb.a(this.a);
-      return true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bbgu.onArrayItemClick != null) {
+      this.jdField_a_of_type_Bbgu.onArrayItemClick.onClick(this.jdField_a_of_type_Bbgu, this.jdField_a_of_type_Bbgu.customWhichToCallBack(this.jdField_a_of_type_Int));
     }
-    return false;
+    try
+    {
+      if (this.jdField_a_of_type_Bbgu.isShowing()) {
+        this.jdField_a_of_type_Bbgu.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

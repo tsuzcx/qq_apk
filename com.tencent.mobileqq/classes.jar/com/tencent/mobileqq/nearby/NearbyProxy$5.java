@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby;
 
-import atat;
-import atgf;
+import atav;
+import atgh;
 
 public class NearbyProxy$5
   implements Runnable
 {
-  public NearbyProxy$5(atat paramatat, atgf paramatgf, int paramInt, Object[] paramArrayOfObject) {}
+  public NearbyProxy$5(atav paramatav, atgh paramatgh, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Atgf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Atgh.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

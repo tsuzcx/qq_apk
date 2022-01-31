@@ -1,39 +1,11 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public abstract class baks
+public class baks
 {
-  public void a(int paramInt) {}
+  public int a;
+  public String a;
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bald> paramList) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(SparseArray<balf> paramSparseArray) {}
-  
-  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(List<bale> paramList, xch paramxch) {}
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void c(int paramInt) {}
+  public baks(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 

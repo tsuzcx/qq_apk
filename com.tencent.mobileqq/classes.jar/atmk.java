@@ -1,11 +1,29 @@
+import android.app.Activity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class atmk
-  implements bfos
+  implements atvx
 {
-  atmk(atlu paramatlu) {}
+  atmk(atmj paramatmj) {}
   
-  public void onDismiss()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.b = false;
+    if (paramBoolean)
+    {
+      atvs localatvs = (atvs)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
+      if (localatvs != null) {
+        localatvs.d(paramString);
+      }
+      atlw.a(this.a.a.a, paramString);
+      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
+      }
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131708266), 0).a();
   }
 }
 

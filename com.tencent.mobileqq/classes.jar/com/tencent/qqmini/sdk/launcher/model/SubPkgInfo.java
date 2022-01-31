@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berv;
+import besm;
 import java.io.Serializable;
 
 public class SubPkgInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<SubPkgInfo> CREATOR = new berv();
+  public static final Parcelable.Creator<SubPkgInfo> CREATOR = new besm();
   public String downloadUrl;
   public int fileSize = -1;
   public int independent;

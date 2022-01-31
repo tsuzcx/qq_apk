@@ -1,8 +1,13 @@
-public abstract interface vov
+public class vov
 {
-  public abstract void a(vlr paramvlr, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(vox paramvox);
+  public int a;
+  public String a;
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

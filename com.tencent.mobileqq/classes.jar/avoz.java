@@ -1,51 +1,66 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
 public class avoz
-  extends RecyclerView.ItemDecoration
+  extends avpi<ReceiptMessageReadMemberListContainerFragment>
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int b;
-  
-  private avoz(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public avoz(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
-  
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int j = paramRecyclerView.getPaddingLeft();
-    int k = this.jdField_a_of_type_Int;
-    int m = paramRecyclerView.getWidth();
-    int n = paramRecyclerView.getPaddingRight();
-    int i1 = this.b;
-    int i2 = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < i2)
-    {
-      paramState = paramRecyclerView.getChildAt(i);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      int i3 = paramState.getBottom();
-      i3 = localLayoutParams.bottomMargin + i3;
-      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
     }
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      for (;;)
+      {
+        try
+        {
+          paramBundle = new oidb_0x986.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
+          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
+          if (!paramArrayOfByte.hasNext()) {
+            break;
+          }
+          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
+          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
+            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
+              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            } else {
+              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+          return;
+        }
+      }
+      if (paramBundle.uint64_next_uin.get() == 0L)
+      {
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        return;
+      }
+      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
+      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 

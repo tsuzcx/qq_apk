@@ -1,37 +1,27 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.open.applist.QZoneAppListActivity.1.1;
 
-class bdha
-  implements ITMAssistantExchangeURLListenner
+public class bdha
+  extends OnPluginInstallListener.Stub
 {
-  bdha(bdgz parambdgz) {}
+  public bdha(QZoneAppListActivity paramQZoneAppListActivity) {}
   
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    bdht.b("DownloadResolver", "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bdgz.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bdgz.a(this.a))
-    {
-      bdgz.a(this.a).notify();
-      return;
-    }
+    this.a.a(paramInt1 / paramInt2 * 100);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QZoneAppListActivity.a(this.a);
   }
 }
 

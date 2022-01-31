@@ -1,33 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import mqq.os.MqqHandler;
 
 public class wpu
-  extends wpa
+  extends QIPCModule
 {
-  public wpu(ComponentRvInnerView paramComponentRvInnerView) {}
-  
-  public wpt a(ViewGroup paramViewGroup, int paramInt)
+  wpu(wpt paramwpt, String paramString)
   {
-    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
-      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewGroup, paramInt);
-    }
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
     return null;
-  }
-  
-  public int getItemCount()
-  {
-    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
-      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).b();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((!bfmh.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null)) {
-      ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewHolder, paramInt);
-    }
   }
 }
 

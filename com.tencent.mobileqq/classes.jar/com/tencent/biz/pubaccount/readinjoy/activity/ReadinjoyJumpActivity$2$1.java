@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import nxp;
+import nxm;
 
 public class ReadinjoyJumpActivity$2$1
   implements Runnable
 {
-  public ReadinjoyJumpActivity$2$1(nxp paramnxp) {}
+  public ReadinjoyJumpActivity$2$1(nxm paramnxm) {}
   
   public void run()
   {

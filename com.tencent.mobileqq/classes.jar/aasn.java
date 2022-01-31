@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TencentDocData;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 class aasn
-  implements View.OnClickListener
+  extends aoun
 {
-  aasn(aasl paramaasl) {}
+  aasn(aash paramaash) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if ((paramView.getTag() instanceof String)) {}
-    do
-    {
-      return;
-      paramView = (aimd)paramView.getTag();
-      if ((paramView.a instanceof FileManagerEntity))
-      {
-        paramView = (FileManagerEntity)paramView.a;
-        this.a.a(paramView);
-        return;
-      }
-    } while (!(paramView.a instanceof TencentDocData));
-    paramView = (TencentDocData)paramView.a;
-    this.a.a(paramView);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

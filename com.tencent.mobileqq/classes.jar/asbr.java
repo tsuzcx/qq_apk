@@ -1,8 +1,21 @@
-public abstract interface asbr
+public abstract class asbr<T, P>
 {
-  public abstract void a(long paramLong);
+  private volatile T a;
   
-  public abstract void b(long paramLong);
+  protected abstract T a(P paramP);
+  
+  public final T b(P paramP)
+  {
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
+  }
 }
 
 

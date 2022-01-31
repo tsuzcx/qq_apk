@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.subaccount;
 
-import ayao;
+import ayaq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class SubAccountControll$4
   implements Runnable
 {
-  public SubAccountControll$4(ayao paramayao) {}
+  public SubAccountControll$4(ayaq paramayaq) {}
   
   public void run()
   {

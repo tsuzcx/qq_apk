@@ -1,52 +1,38 @@
-import android.os.Handler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URLEncoder;
 
 public class afng
-  extends akim
+  implements View.OnClickListener
 {
   public afng(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
+  public void onClick(View paramView)
   {
-    this.a.b = false;
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
+    if (!bbfj.g(this.a.jdField_a_of_type_AndroidAppActivity))
     {
-      this.a.jdField_a_of_type_Int = 0;
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-        ShowExternalTroopListActivity.a(this.a);
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        paramList = new ArrayList();
-        this.a.jdField_a_of_type_Aipf.a(paramList);
-        paramInt = this.a.getTitleBarHeight();
-        bcpw.a(this.a, 1, this.a.getString(2131696474), 0).b(paramInt);
-        return;
-      }
-      this.a.a();
+      bcql.a(this.a, 1, this.a.getString(2131692233), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    paramView = ((TextView)paramView).getText().toString();
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", "http://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(paramView));
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    this.a.startActivity((Intent)localObject);
+    localObject = this.a.app;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (paramView = "0";; paramView = "1")
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
-      ShowExternalTroopListActivity.a(this.a);
+      axqy.b((QQAppInterface)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str, paramView, "", "");
+      return;
     }
-    this.a.c.setVisibility(0);
-    if (this.a.jdField_a_of_type_Aipf != null)
-    {
-      this.a.jdField_a_of_type_Int = paramList.size();
-      this.a.jdField_a_of_type_Aipf.a(paramList);
-    }
-    this.a.a(paramList1, true);
   }
 }
 

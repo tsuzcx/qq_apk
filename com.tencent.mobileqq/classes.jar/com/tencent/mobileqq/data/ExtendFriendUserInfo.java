@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ExtendFriendUserInfo
-  extends aukm
+  extends auko
 {
   public String miniProfileMsg;
-  @auma
+  @aumc
   public String uin;
 }
 

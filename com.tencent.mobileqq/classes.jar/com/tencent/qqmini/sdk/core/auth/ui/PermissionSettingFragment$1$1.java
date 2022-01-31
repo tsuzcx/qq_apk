@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.auth.ui;
 
 import android.app.ProgressDialog;
-import behv;
+import beim;
 
 public class PermissionSettingFragment$1$1
   implements Runnable
 {
-  public PermissionSettingFragment$1$1(behv parambehv) {}
+  public PermissionSettingFragment$1$1(beim parambeim) {}
   
   public void run()
   {

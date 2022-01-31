@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
-import pcb;
+import pby;
 
 public class VideoArticleModule$5
   implements Runnable
 {
-  public VideoArticleModule$5(pcb parampcb, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
+  public VideoArticleModule$5(pby parampby, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo) {}
   
   public void run()
   {

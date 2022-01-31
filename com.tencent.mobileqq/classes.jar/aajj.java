@@ -2,10 +2,6 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
 public class aajj
   implements CompoundButton.OnCheckedChangeListener
@@ -14,71 +10,24 @@ public class aajj
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (AssistantSettingActivity.a(this.a)) {
-      return;
-    }
-    if (!bbev.g(this.a))
+    boolean bool = false;
+    if (!bbfj.d(this.a))
     {
-      bcpw.a(BaseApplication.getContext(), 1, 2131694673, 0).b(this.a.getTitleBarHeight());
-      paramCompoundButton = this.a.e;
-      if (!paramBoolean) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramCompoundButton.setChecked(paramBoolean);
-        return;
-      }
-    }
-    paramCompoundButton = amyv.c();
-    label194:
-    label213:
-    QQAppInterface localQQAppInterface;
-    if ((paramBoolean) && (paramCompoundButton.a <= 1))
-    {
-      if (!bbwv.a(this.a.app, "have_show_ptt_tip", false))
-      {
-        QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box and tip to user");
-        AssistantSettingActivity.a(this.a);
-      }
-      if ((!paramBoolean) && (paramCompoundButton.a <= 1)) {
-        bbwv.b(this.a.app, "have_add_ptt_gray_msg", false);
-      }
-      AssistantSettingActivity.a(this.a, paramBoolean);
-      ((ajtk)this.a.app.a(2)).p(paramBoolean);
+      AssistantSettingActivity.a(this.a, 2131694671, 1);
+      paramCompoundButton = this.a;
       if (!paramBoolean) {
-        break label297;
+        bool = true;
       }
-      axqw.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 1, 0, "", "", "", "");
-      paramCompoundButton = "normal";
-      if (!VipUtils.c(this.a.app)) {
-        break label324;
-      }
-      paramCompoundButton = "vip";
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label343;
-      }
+      AssistantSettingActivity.b(paramCompoundButton, bool);
+      return;
     }
-    label297:
-    label324:
-    label343:
-    for (int i = 1;; i = 2)
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "2")
     {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "", "0X800A415", i, 0, "", "", "", paramCompoundButton);
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X800A5D5", "0X800A5D5", 0, 0, paramCompoundButton, "", "", "");
+      this.a.a.b(paramBoolean);
       return;
-      if ((!paramBoolean) || (VipUtils.b(this.a.app))) {
-        break;
-      }
-      QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box but u r not svip");
-      AssistantSettingActivity.b(this.a);
-      this.a.e.setChecked(false);
-      return;
-      axqw.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 2, 0, "", "", "", "");
-      break label194;
-      if (!VipUtils.b(this.a.app)) {
-        break label213;
-      }
-      paramCompoundButton = "svip";
-      break label213;
     }
   }
 }

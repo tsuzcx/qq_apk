@@ -1,10 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public final class absd
-  implements DialogInterface.OnClickListener
+public class absd
+  implements QQPermissionCallback
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public absd(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
+    this.b.g();
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbay;
-import bhvh;
+import bbbm;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -22,14 +22,14 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
-import onk;
-import osc;
-import qke;
-import sgx;
+import onh;
+import orz;
+import qkb;
+import sgu;
 
 public class ReadInJoySelfActivity
   extends IphoneTitleBarActivity
-  implements osc
+  implements orz
 {
   protected KandianMergeManager a;
   protected ReadInJoySelfFragment a;
@@ -49,12 +49,12 @@ public class ReadInJoySelfActivity
     if (this.app == null) {
       return;
     }
-    qke.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    qkb.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     Object localObject1;
     Object localObject2;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
     {
-      localObject1 = qke.a();
+      localObject1 = qkb.a();
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.i()) {
         break label198;
@@ -63,8 +63,8 @@ public class ReadInJoySelfActivity
     label198:
     for (int i = 0;; i = 1)
     {
-      ((qke)localObject1).a((String)localObject2, i);
-      this.b = bhvh.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ((qkb)localObject1).a((String)localObject2, i);
+      this.b = bhvy.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       setContentView(2131558451);
       d();
       localObject1 = getIntent();
@@ -107,8 +107,8 @@ public class ReadInJoySelfActivity
       }
       return;
     }
-    setTitle(ajyc.a(2131713086));
-    this.leftView.setText(ajyc.a(2131712861));
+    setTitle(ajya.a(2131713097));
+    this.leftView.setText(ajya.a(2131712872));
     a();
   }
   
@@ -125,7 +125,7 @@ public class ReadInJoySelfActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label156;
       }
-      if ((bbay.b()) || (bbay.d())) {
+      if ((bbbm.b()) || (bbbm.d())) {
         break label136;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -133,7 +133,7 @@ public class ReadInJoySelfActivity
     for (;;)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848492);
+      this.leftView.setBackgroundResource(2130848498);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -144,12 +144,12 @@ public class ReadInJoySelfActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label156:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bbay.b()) && (!bbay.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bbay.d())
+      else if (!bbbm.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -169,7 +169,7 @@ public class ReadInJoySelfActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onk.a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)onh.a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.a(this);
     c();
@@ -193,7 +193,7 @@ public class ReadInJoySelfActivity
   {
     super.doOnResume();
     if (!this.jdField_a_of_type_Boolean) {
-      sgx.a("self_tab_cost", null);
+      sgu.a("self_tab_cost", null);
     }
   }
 }

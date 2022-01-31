@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import olm;
-import osj;
+import olj;
+import osg;
 
 class KandianDailyReportUtils$3$1
   implements Runnable
@@ -12,13 +12,13 @@ class KandianDailyReportUtils$3$1
   
   public void run()
   {
-    olm.a(false);
-    if (olm.a().isEmpty()) {
+    olj.a(false);
+    if (olj.a().isEmpty()) {
       return;
     }
-    osj.a().a(olm.a());
-    QLog.d("KandianDailyReportUtils", 1, "execute feeds 64e export, size : " + olm.a().size());
-    olm.a().clear();
+    osg.a().a(olj.a());
+    QLog.d("KandianDailyReportUtils", 1, "execute feeds 64e export, size : " + olj.a().size());
+    olj.a().clear();
   }
 }
 

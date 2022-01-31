@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aehf;
+import aehd;
 import android.view.View;
 
 public class AIOGalleryScene$21$1
   implements Runnable
 {
-  public AIOGalleryScene$21$1(aehf paramaehf, View paramView) {}
+  public AIOGalleryScene$21$1(aehd paramaehd, View paramView) {}
   
   public void run()
   {

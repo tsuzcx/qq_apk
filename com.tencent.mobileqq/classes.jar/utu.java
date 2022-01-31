@@ -1,51 +1,34 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class utu
-  implements IEventReceiver
+class utu
+  extends QQUIEventReceiver<utr, tkk>
 {
-  public int a;
-  public QQUserUIItem a;
-  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  protected ssy a;
-  private utw jdField_a_of_type_Utw;
-  private utx jdField_a_of_type_Utx;
-  
-  public utu(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
+  public utu(@NonNull utr paramutr)
   {
-    this.jdField_a_of_type_Ssy = new utv(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramutr);
   }
   
-  public void a()
+  public void a(@NonNull utr paramutr, @NonNull tkk paramtkk)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdo)tdc.a(2)).b(this.jdField_a_of_type_JavaLangString);
-    tsu.a().addObserver(this.jdField_a_of_type_Ssy);
-    this.jdField_a_of_type_Utw = new utw(this);
-    ste.a().registerSubscriber(this.jdField_a_of_type_Utw);
-    this.jdField_a_of_type_Utx = new utx(this);
-    ste.a().registerSubscriber(this.jdField_a_of_type_Utx);
+    if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramutr.jdField_a_of_type_JavaLangString)))
+    {
+      ved.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramtkk);
+      paramutr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      utr.a(paramutr).e();
+      utr.a(paramutr).c();
+      utr.a(paramutr).d();
+      utr.a(paramutr).a();
+    }
   }
   
-  public void b()
+  public Class acceptEventClass()
   {
-    tsu.a().removeObserver(this.jdField_a_of_type_Ssy);
-    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Utw);
-    ste.a().unRegisterSubscriber(this.jdField_a_of_type_Utx);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return tkk.class;
   }
 }
 

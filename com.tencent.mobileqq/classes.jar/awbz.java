@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class awbz
-  implements View.OnClickListener
+  implements awcd
 {
   public awbz(EditActivity paramEditActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a();
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    {
+      awbm localawbm = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localawbm != null)
+      {
+        EditActivity.a(this.a).actionText = localawbm.d;
+        EditActivity.a(this.a, false);
+      }
+    }
   }
 }
 

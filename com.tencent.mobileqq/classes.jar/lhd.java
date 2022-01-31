@@ -1,170 +1,60 @@
-import com.tencent.av.common.ErrorInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.ParameterizedType;
-import java.util.HashMap;
 
-public class lhd
-  extends ajtd
+public abstract class lhd
 {
-  static volatile long jdField_a_of_type_Long = 1L;
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  static volatile HashMap<Long, lhg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  public lhd(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_INTERACTIVEVideo" };
   }
   
-  public static int a(common.ErrorInfo paramErrorInfo)
+  protected lhd(VideoAppInterface paramVideoAppInterface)
   {
-    if ((paramErrorInfo.has()) && (paramErrorInfo.uint32_errcode.has())) {
-      return paramErrorInfo.uint32_errcode.get();
-    }
-    return -99;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
-  static long a()
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    try
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      jdField_a_of_type_Long += 1L;
-      long l = jdField_a_of_type_Long;
-      return l;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static String a(common.ErrorInfo paramErrorInfo)
-  {
-    if ((paramErrorInfo.has()) && (paramErrorInfo.bytes_errmsg.has())) {
-      return paramErrorInfo.bytes_errmsg.get().toStringUtf8();
-    }
-    return "";
-  }
-  
-  static lhg a(long paramLong)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      lhg locallhg = (lhg)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      return locallhg;
-    }
-  }
-  
-  public static void a(long paramLong, AppInterface paramAppInterface, String paramString, MessageMicro paramMessageMicro, lhg paramlhg)
-  {
-    lhd locallhd = (lhd)paramAppInterface.getBusinessHandler(52);
-    paramAppInterface = new ToServiceMsg("", paramAppInterface.getCurrentAccountUin(), paramString);
-    mtm.a(paramAppInterface.getAttributes(), paramLong);
-    long l = a();
-    paramAppInterface.getAttributes().put("msgSeq_for_callback", Long.valueOf(l));
-    a(l, paramlhg);
-    paramAppInterface.putWupBuffer(paramMessageMicro.toByteArray());
-    locallhd.sendPbReq(paramAppInterface);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVMessageHandler", 1, "sendMsg, msgListener[" + paramlhg + "], msgSeq_for_callback[" + l + "], seq[" + paramLong + "]");
-    }
-  }
-  
-  static void a(long paramLong, lhg paramlhg)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramlhg);
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bbkb.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lcg.e(paramString, "setPreload zzzzz  bid=" + paramInt);
       return;
     }
+    lcg.e(paramString, "setPreload ERROR : bid=" + paramInt);
   }
   
-  private static lhf b(lhg paramlhg)
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    paramlhg = paramlhg.getClass().getGenericSuperclass();
-    Object localObject;
-    String str;
-    if (paramlhg != null) {
-      if ((paramlhg instanceof ParameterizedType))
-      {
-        localObject = ((ParameterizedType)paramlhg).getActualTypeArguments();
-        if (localObject != null) {
-          if (localObject.length == 2)
-          {
-            paramlhg = (Class)localObject[0];
-            localObject = (Class)localObject[1];
-            str = "reqType[" + paramlhg + "]rspType[" + localObject + "]";
-          }
-        }
-      }
-    }
-    while (((paramlhg == null) || (localObject == null)) && (AudioHelper.d()))
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      throw new IllegalArgumentException("QAVMessageHandler get getClassInfo失败, " + str);
-      str = "ActualTypeArguments长度为" + localObject.length;
-      localObject = null;
-      paramlhg = null;
-      continue;
-      localObject = null;
-      str = "getActualTypeArguments为空";
-      paramlhg = null;
-      continue;
-      str = "type[" + paramlhg.getClass().getName() + "]";
-      localObject = null;
-      paramlhg = null;
-      continue;
-      str = "genericInterfaces为空";
-      localObject = null;
-      paramlhg = null;
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bbkb.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lcg.c(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
     }
-    lhf locallhf = new lhf(null);
-    locallhf.jdField_a_of_type_JavaLangString = str;
-    locallhf.jdField_a_of_type_JavaLangClass = paramlhg;
-    locallhf.b = ((Class)localObject);
-    return locallhf;
+    lcg.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
+    return false;
   }
   
-  protected Class<? extends ajtg> observerClass()
-  {
-    return akav.class;
-  }
+  protected abstract void a();
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    long l2 = mtm.a(paramToServiceMsg.getAttributes());
-    long l1 = 0L;
-    Object localObject = paramToServiceMsg.getAttribute("msgSeq_for_callback");
-    if ((localObject instanceof Integer)) {
-      l1 = ((Integer)localObject).intValue();
-    }
-    for (;;)
-    {
-      localObject = a(l1);
-      if (QLog.isColorLevel()) {
-        QLog.w("QAVMessageHandler", 1, "onReceive, cmd[" + str + "], req_cmd[" + paramToServiceMsg.getServiceCmd() + "], isSuccess[" + paramFromServiceMsg.isSuccess() + "], RequestSsoSeq[" + paramToServiceMsg.getRequestSsoSeq() + "], ResultCode[" + paramFromServiceMsg.getResultCode() + "], RequestSsoSeq[" + paramFromServiceMsg.getRequestSsoSeq() + "], msgSeq_for_callback[" + l1 + "], msgListener[" + localObject + "], seq[" + l2 + "]");
-      }
-      if (localObject == null) {
-        break;
-      }
-      ((lhg)localObject).a(l2, paramToServiceMsg, paramFromServiceMsg, paramObject);
-      return;
-      if ((localObject instanceof Long)) {
-        l1 = ((Long)localObject).longValue();
-      }
-    }
-    QLog.w("QAVMessageHandler", 1, "onReceive, 没有MsgListener， cmd[" + str + "], seq[" + l2 + "]");
-  }
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
+  
+  protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected abstract boolean a(String paramString);
 }
 
 

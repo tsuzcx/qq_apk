@@ -1,6 +1,12 @@
-public abstract interface auwv
+import java.util.Vector;
+
+public class auwv
 {
-  public abstract void a(int paramInt1, auwu paramauwu, int paramInt2, String paramString);
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

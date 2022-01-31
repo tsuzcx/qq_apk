@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
-import amdi;
+import amdh;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,9 +18,9 @@ class WordMatchManager$3$1
     Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      amdi localamdi = (amdi)localIterator.next();
-      if (localamdi != null) {
-        localamdi.a(this.a.this$0.jdField_a_of_type_Amdj);
+      amdh localamdh = (amdh)localIterator.next();
+      if (localamdh != null) {
+        localamdh.a(this.a.this$0.jdField_a_of_type_Amdi);
       }
     }
     this.a.this$0.jdField_a_of_type_JavaUtilArrayList.clear();

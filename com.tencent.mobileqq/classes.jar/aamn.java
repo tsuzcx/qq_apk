@@ -1,24 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aamn
-  implements DialogInterface.OnClickListener
+  implements baxb
 {
-  public aamn(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  public aamn(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    this.a.onClick(this.a.a);
   }
 }
 

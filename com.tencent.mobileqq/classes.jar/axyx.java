@@ -1,52 +1,76 @@
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.io.File;
+import android.widget.TextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
-class axyx
-  implements View.OnClickListener
+public class axyx
+  extends axup
 {
-  axyx(axyw paramaxyw) {}
+  String S = "";
   
-  public void onClick(View paramView)
+  public axyx()
   {
-    if (TextUtils.isEmpty(this.a.W)) {
+    this.a = "more";
+  }
+  
+  public axyx(String paramString)
+  {
+    this();
+    this.S = paramString;
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    paramBundle = paramView;
+    if (paramView == null) {
+      paramBundle = LayoutInflater.from(paramContext).inflate(2131562451, null);
+    }
+    paramContext = (TextView)paramBundle.findViewById(2131376581);
+    if (TextUtils.isEmpty(this.S)) {
+      this.S = ajya.a(2131714624);
+    }
+    paramContext.setText(this.S);
+    return paramBundle;
+  }
+  
+  public String a()
+  {
+    return "More";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.S = paramObjectInput.readUTF();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.S == null) {}
+    for (String str = "";; str = axau.a(this.S, false))
+    {
+      paramObjectOutput.writeUTF(str);
       return;
     }
-    for (;;)
-    {
-      String str;
-      try
-      {
-        str = aytb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
-        if (TextUtils.isEmpty(str))
-        {
-          this.a.a();
-          this.a.a(this.a.W, paramView);
-          axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (new File(str).exists())
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          this.a.d();
-        } else {
-          this.a.c();
-        }
-      }
-      else
-      {
-        this.a.a();
-        this.a.a(this.a.W, paramView);
-      }
-    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "title");
+    paramXmlSerializer.text(this.S);
+    paramXmlSerializer.endTag(null, "title");
+  }
+  
+  public boolean a(axwg paramaxwg)
+  {
+    this.S = axau.a(axva.a(paramaxwg), false);
+    return true;
   }
 }
 

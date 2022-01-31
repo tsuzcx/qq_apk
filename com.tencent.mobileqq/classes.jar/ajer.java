@@ -1,206 +1,342 @@
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage.1;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteAioScript.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloSlaveInfo;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.util.Arrays;
 
 public class ajer
+  implements aivp
 {
-  private ajfb a;
+  protected int a;
+  public ajez a;
+  protected ajfe a;
+  protected ajfi a;
+  protected String a;
+  protected boolean a;
+  protected String b;
   
-  public ajer(ajfb paramajfb)
+  public ajer(int paramInt, ajez paramajez)
   {
-    this.a = paramajfb;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new SpriteActionMessage.1(this, paramInt, paramBoolean));
-  }
-  
-  private void a(ApolloActionData paramApolloActionData)
-  {
-    if (paramApolloActionData == null) {
-      QLog.e("cmshow_scripted_SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = ("cmshow_script_" + paramInt + ".js");
+    this.jdField_a_of_type_Ajez = paramajez;
+    if ((paramajez != null) && (paramajez.a() != null)) {
+      this.jdField_a_of_type_Ajfe = ((ajfe)paramajez.a().getManager(249));
     }
-    SpriteTaskParam localSpriteTaskParam;
-    do
-    {
-      return;
-      localSpriteTaskParam = new SpriteTaskParam();
-      localSpriteTaskParam.f = paramApolloActionData.actionId;
-      localSpriteTaskParam.jdField_c_of_type_Int = 0;
-      localSpriteTaskParam.g = 3;
-      localSpriteTaskParam.e = paramApolloActionData.personNum;
-      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
-      localSpriteTaskParam.jdField_a_of_type_Boolean = true;
-      localSpriteTaskParam.b = false;
-      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
-    } while ((this.a == null) || (this.a.a() == null));
-    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
-    ((ajfg)this.a.a().getManager(249)).a().a(localSpriteTaskParam);
+    QLog.i("cmshow_scripted_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
   }
   
-  private void a(String paramString)
+  private void b(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    ajes localajes;
-    if ((this.a != null) && (this.a.a() != null))
+    String str = ajki.b(paramString, paramQQAppInterface);
+    if (TextUtils.isEmpty(str))
     {
-      localajes = ajfj.a(this.a.a());
-      if (localajes != null) {}
-    }
-    else
-    {
+      if (paramBoolean) {
+        a(paramQQAppInterface, paramString, paramInt1, paramArrayOfInt, paramInt2);
+      }
       return;
     }
-    localajes.a("", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteAioScript", 2, new Object[] { "checkThreeFaceDress faceData:", str });
+    }
+    ajfa.a(paramQQAppInterface, str, new ajeu(this, paramBoolean, paramQQAppInterface, paramString, paramInt1, paramArrayOfInt, paramInt2));
+  }
+  
+  public int a()
+  {
+    return 300;
+  }
+  
+  public aiuz a()
+  {
+    if (this.jdField_a_of_type_Ajez == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Ajez.a();
+  }
+  
+  public aivv a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
+  }
+  
+  public QQAppInterface a()
+  {
+    if (this.jdField_a_of_type_Ajez == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Ajez.a();
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ajms.av).append(this.b);
+    return localStringBuilder.toString();
   }
   
   public void a() {}
   
-  public void a(int paramInt)
+  public void a(ajfi paramajfi)
   {
-    if ((this.a == null) || (this.a.a() == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a();
-    ApolloActionData localApolloActionData = ((ajmw)localQQAppInterface.getManager(155)).a(paramInt);
-    String str = ajyc.a(2131714305);
-    if (localApolloActionData == null)
-    {
-      a(str);
-      return;
-    }
-    localApolloActionData.bubbleText = str;
-    if (!ApolloUtil.a(paramInt, localApolloActionData.personNum))
-    {
-      ((airz)localQQAppInterface.getManager(153)).a(localApolloActionData, 4);
-      a(str);
-      return;
-    }
-    a(localApolloActionData);
+    this.jdField_a_of_type_Ajfi = paramajfi;
   }
   
-  public boolean a(MessageForApollo paramMessageForApollo)
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  
+  public void a(String paramString)
   {
-    int k = 2;
-    int j = 0;
-    if ((paramMessageForApollo.actionType != 5) || (this.a == null) || (this.a.a() == null)) {
+    a(paramString, 0, false);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Ajez == null)) {
+      QLog.w("cmshow_scripted_SpriteAioScript", 1, "[execScriptInRenderThread], script is null.");
+    }
+    aiuz localaiuz;
+    do
+    {
+      return;
+      localaiuz = this.jdField_a_of_type_Ajez.a();
+    } while (localaiuz == null);
+    localaiuz.runRenderTask(new SpriteAioScript.1(this, paramString, localaiuz, paramInt, paramBoolean));
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      QLog.w("cmshow_scripted_SpriteAioScript", 2, "[checkDressRsc], script is NOT ready.");
+    }
+    label15:
+    QQAppInterface localQQAppInterface;
+    Object localObject;
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            break label15;
+            break label15;
+            do
+            {
+              return;
+            } while ((TextUtils.isEmpty(paramString)) || ("0".equals(paramString)));
+            localQQAppInterface = a();
+          } while (localQQAppInterface == null);
+          if (QLog.isColorLevel()) {
+            QLog.d("cmshow_scripted_SpriteAioScript", 2, new Object[] { "[checkDressRsc], uin:", paramString, ",notifyIfExist:", Boolean.valueOf(paramBoolean) });
+          }
+          localObject = ajki.a(paramString, a(), false);
+        } while ((localObject == null) || (localObject.length != 2));
+        i = ((Integer)localObject[0]).intValue();
+        localObject = (int[])localObject[1];
+      } while ((localObject == null) || (localObject.length == 0));
+      if (2 != ((airx)localQQAppInterface.getManager(153)).b(paramString)) {
+        break;
+      }
+    } while (!paramBoolean);
+    a(localQQAppInterface, paramString, i, (int[])localObject, 0);
+    return;
+    ajfa.a(localQQAppInterface, paramString, i, (int[])localObject, new ajes(this, paramBoolean));
+  }
+  
+  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    int i = airx.a(a(), paramString);
+    if (i != 2)
+    {
+      if (paramBoolean) {
+        a(paramQQAppInterface, paramString, paramInt1, paramArrayOfInt, paramInt2);
+      }
+      return;
+    }
+    Object localObject = ajki.a(paramString, i, a(), false);
+    i = ((Integer)localObject[0]).intValue();
+    if (localObject[1] == null) {}
+    for (localObject = null;; localObject = (int[])localObject[1])
+    {
+      if ((i > 0) && (localObject != null) && (localObject.length != 0)) {
+        break label116;
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      a(paramQQAppInterface, paramString, paramInt1, paramArrayOfInt, paramInt2);
+      return;
+    }
+    label116:
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteAioScript", 2, new Object[] { "checkThreeDress roleId:", Integer.valueOf(paramInt1), ", dressIds:", Arrays.toString((int[])localObject) });
+    }
+    ajfa.b(paramQQAppInterface, paramString, i, (int[])localObject, new ajet(this, paramBoolean, paramInt1, paramArrayOfInt));
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QLog.i("cmshow_scripted_SpriteAioScript", 1, "script is already read, scriptName:" + this.b);
       return true;
     }
-    QQAppInterface localQQAppInterface = this.a.a();
-    String str1 = paramMessageForApollo.extendJson;
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteActionMessage", 2, new Object[] { "rep data:", str1 });
-    }
-    for (;;)
+    this.jdField_a_of_type_Boolean = b();
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    boolean bool = true;
+    if (!new ajov(paramString + ".sig", paramString).a(1))
     {
-      int i;
-      boolean bool1;
-      boolean bool2;
-      try
+      QLog.w("cmshow_scripted_SpriteAioScript", 1, "verify fails, path:" + paramString);
+      e();
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    try
+    {
+      if ((this.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(airx.e)))
       {
-        paramMessageForApollo = new JSONObject(paramMessageForApollo.extendJson);
-        if (!paramMessageForApollo.has("data")) {
-          break label332;
-        }
-        String str2 = localQQAppInterface.getCurrentAccountUin();
-        JSONObject localJSONObject = paramMessageForApollo.getJSONObject("data");
-        JSONArray localJSONArray = localJSONObject.getJSONArray("slaveInfoList");
-        Object localObject = null;
-        str1 = null;
-        paramMessageForApollo = localObject;
-        if (localJSONArray != null)
-        {
-          paramMessageForApollo = localObject;
-          if (localJSONArray.length() > 0)
-          {
-            i = 0;
-            paramMessageForApollo = str1;
-            if (i < localJSONArray.length())
-            {
-              paramMessageForApollo = (ApolloSlaveInfo)bazb.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
-              if (!str2.equals(String.valueOf(paramMessageForApollo.uin))) {
-                continue;
-              }
-            }
-          }
-        }
-        if (paramMessageForApollo == null) {
-          break label324;
-        }
-        i = paramMessageForApollo.slaveTotal;
-        if (paramMessageForApollo.isCaptured == 1)
-        {
-          bool1 = true;
-          int m = localJSONObject.optInt("defaultActId");
-          a(i, bool1);
-          if ((bool1) || (i != 0)) {
-            break label318;
-          }
-          a(m);
-          bool2 = false;
-          break label343;
-          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clickslaveaction", j, i, new String[0]);
-          return bool2;
-          i += 1;
-          continue;
-        }
-        bool1 = false;
-        continue;
-        if (i > 0) {
-          i = k;
-        } else {
-          i = 3;
-        }
-      }
-      catch (Exception paramMessageForApollo)
-      {
-        QLog.i("cmshow_scripted_SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
+        this.jdField_a_of_type_JavaLangString = airx.e;
+        QLog.i("cmshow_scripted_SpriteAioScript", 1, "Succeed to read script 0 from cache");
         return true;
       }
-      if (i == 0)
-      {
-        i = 0;
+      String str = a();
+      if (TextUtils.isEmpty(str)) {
+        return false;
       }
-      else
+      localFile = new File(str);
+      if (!localFile.exists())
       {
-        i = 1;
-        break label355;
-        label318:
-        bool2 = true;
-        break label343;
-        label324:
-        bool1 = false;
-        i = 0;
-        continue;
-        label332:
-        bool1 = false;
-        i = 0;
-        bool2 = true;
-        break label355;
-        label343:
-        if (!bool1) {
-          continue;
+        QLog.w("cmshow_scripted_SpriteAioScript", 1, "Fail to read script file. " + localFile.getAbsolutePath());
+        f();
+        if (TextUtils.isEmpty(ajms.au)) {
+          ajlo.a(this.jdField_a_of_type_Ajez.a(), 300, 202, new Object[] { "Fail to read script file:", str });
+        } else {
+          ajlo.a(this.jdField_a_of_type_Ajez.a(), 300, 200, new Object[] { "Fail to read script file:", str });
         }
-        if (i < 5) {
-          continue;
-        }
-        i = 1;
-      }
-      label355:
-      if (bool1) {
-        j = 1;
       }
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      File localFile;
+      QLog.e("cmshow_scripted_SpriteAioScript", 1, "[loadScript],OOM:", localOutOfMemoryError);
+      ajlo.a(this.jdField_a_of_type_Ajez.a(), 300, 150, new Object[] { "loadScript:", localOutOfMemoryError });
+      return false;
+      if (!a(localOutOfMemoryError))
+      {
+        ajlo.a(this.jdField_a_of_type_Ajez.a(), 300, 201, new Object[] { "Fail to verify script file:", localOutOfMemoryError });
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = bbdx.b(localFile);
+      QLog.i("cmshow_scripted_SpriteAioScript", 1, "Succeed to read script file, bid:" + this.jdField_a_of_type_Int);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteAioScript", 1, "[loadScript]:", localThrowable);
+      ajlo.a(this.jdField_a_of_type_Ajez.a(), 300, 30, new Object[] { "loadScript:", localThrowable });
+      return false;
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteAioScript", 2, new Object[] { "[loadScript], mIsLoaded:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          QLog.d("cmshow_scripted_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
+          a(this.jdField_a_of_type_JavaLangString, 3, false);
+        }
+        for (;;)
+        {
+          b();
+          return;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("(function(){").append(this.jdField_a_of_type_JavaLangString).append(";registerFunction(\"playAction_bid_").append(this.jdField_a_of_type_Int).append("\", playSpriteAction);").append("registerFunction(\"sendMsg_bid_").append(this.jdField_a_of_type_Int).append("\", sendSpriteMsg);").append("registerFunction(\"stopAction_bid_").append(this.jdField_a_of_type_Int).append("\", stopSpriteAction);").append("})();");
+          a(localStringBuilder.toString());
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteAioScript", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public boolean c()
+  {
+    if (TextUtils.isEmpty(ajms.au)) {}
+    while (new File(ajms.av + "cm3d.js").exists()) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    ApolloCmdChannel.getChannel(localQQAppInterface).addCmdHandler(this);
+  }
+  
+  public void e()
+  {
+    QLog.w("cmshow_scripted_SpriteAioScript", 1, "[onVerifyFailure], check base.zip");
+    akvi.a(a());
+  }
+  
+  public void f()
+  {
+    QLog.w("cmshow_scripted_SpriteAioScript", 1, "[onScriptNotExists], redownload base.zip");
+    akvi.a(a());
+  }
+  
+  public void g()
+  {
+    Object localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ApolloCmdChannel.getChannel((QQAppInterface)localObject);
+    if (localObject != null) {
+      ((ApolloCmdChannel)localObject).removeCmdHandler(this);
+    }
+    this.jdField_a_of_type_Ajfi = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,47 +1,46 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager.20.1;
-import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class aise
-  extends bbwf
+class aise
+  extends bbwt
 {
-  aise(airz paramairz) {}
+  aise(airx paramairx) {}
   
-  public void onDoneFile(bbwg parambbwg)
+  public void onDone(bbwu parambbwu)
   {
-    if ((parambbwg == null) || (this.a.a == null)) {}
-    String str1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + parambbwu.f + ", status: " + parambbwu.a());
+    }
+  }
+  
+  public void onDoneFile(bbwu parambbwu)
+  {
+    if (parambbwu == null) {}
+    Bundle localBundle;
     do
     {
       return;
-      if (parambbwg.a != 0)
-      {
-        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambbwg.a()) });
-        return;
-      }
-      str1 = parambbwg.c;
-      parambbwg = parambbwg.a();
-    } while (parambbwg == null);
-    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambbwg.getSerializable(str1);
-    if (localApolloPreDownloadData == null)
+      localBundle = parambbwu.a();
+    } while (localBundle == null);
+    int i = localBundle.getInt(parambbwu.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + parambbwu.f + ", status: " + parambbwu.a() + ",task.currUrl:" + parambbwu.c);
+    }
+    if (1 == i) {}
+    try
     {
-      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
+      super.onDone(parambbwu);
+      if (parambbwu.a() != 3) {
+        this.a.jdField_a_of_type_Ajok.a(Boolean.valueOf(false));
+      }
+      this.a.b();
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
       return;
     }
-    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
-    for (parambbwg = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambbwg = ajmu.t + localApolloPreDownloadData.resId + ".zip")
+    catch (Exception parambbwu)
     {
-      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
-      }
-      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambbwg, str2));
-      return;
+      QLog.e("ApolloManager", 1, "read apollo panel json content fail", parambbwu);
     }
   }
 }

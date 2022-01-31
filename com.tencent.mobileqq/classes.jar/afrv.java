@@ -1,87 +1,59 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AlphaClickableRelativeLayout;
+import com.tencent.widget.XListView;
 
 public class afrv
-  extends akim
+  extends afpx
 {
-  public afrv(TroopFragment paramTroopFragment) {}
+  protected afrw a;
+  protected FrameLayout a;
+  protected ImageView a;
+  protected TextView a;
+  protected QQAppInterface a;
+  protected AlphaClickableRelativeLayout a;
+  protected XListView a;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public afrv(Activity paramActivity)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.h();
-      }
+    super(paramActivity);
+    if ((paramActivity instanceof SplashActivity)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.h();
-      return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.h();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a.jdField_a_of_type_Afpo != null) {
-      this.a.jdField_a_of_type_Afpo.b();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (this.a.jdField_a_of_type_Afqu != null) {
-        this.a.jdField_a_of_type_Afqu.a(this.a.b(), paramBoolean, null);
-      }
-    }
-    ThreadManager.getUIHandler().postDelayed(new TroopFragment.MyTroopObserver.1(this), 500L);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.h();
+      QLog.i("CTEntryController", 2, "CTEntryController create");
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(afrw paramafrw)
   {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    this.jdField_a_of_type_Afrw = paramafrw;
   }
   
-  protected void b(boolean paramBoolean)
+  public void a(View paramView)
   {
-    if (paramBoolean) {
-      this.a.h();
-    }
+    super.a(paramView);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376269));
+    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131374961));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374967));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131369840));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362124));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
   }
   
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.h();
-    }
-  }
+  public void c(boolean paramBoolean) {}
 }
 
 

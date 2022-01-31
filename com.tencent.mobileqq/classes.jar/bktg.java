@@ -1,27 +1,81 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.pool.RecyclablePool;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import java.util.Arrays;
+import java.util.HashMap;
 
+@TargetApi(18)
 public class bktg
-  extends BroadcastReceiver
+  extends bkph
 {
-  public bktg(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private static bktg a;
+  public boolean d;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private bktg()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public static bktg a()
+  {
+    if (jdField_a_of_type_Bktg == null) {}
+    try
     {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
+      if (jdField_a_of_type_Bktg == null) {
+        jdField_a_of_type_Bktg = new bktg();
       }
-      this.a.j();
+      return jdField_a_of_type_Bktg;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    label253:
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          return;
+        }
+        if (this.jdField_a_of_type_Bkpj != null)
+        {
+          if (!paramBoolean)
+          {
+            l1 = a(this.jdField_a_of_type_Bkpj.c - this.jdField_a_of_type_Bkpj.jdField_b_of_type_Long);
+            if ((this.jdField_a_of_type_Bkpj.jdField_a_of_type_Long > 0L) && (l1 > a()))
+            {
+              long l2 = (this.jdField_a_of_type_Bkpj.c - this.jdField_a_of_type_Bkpj.jdField_b_of_type_Long) / this.jdField_b_of_type_Long;
+              long l3 = this.jdField_a_of_type_Bkpj.jdField_a_of_type_Long;
+              paramString = new HashMap(10);
+              paramString.put("dropCount", String.valueOf(l2 + 1L - l3));
+              paramString.put("totalMs", String.valueOf(l1));
+              paramString.put("scene", this.jdField_a_of_type_Bkpj.jdField_a_of_type_JavaLangString);
+              paramString.put("dropTimes", Arrays.toString(this.jdField_a_of_type_Bkpj.jdField_a_of_type_ArrayOfLong));
+              paramString.put("isFirstLaunch", String.valueOf(BaseApplicationImpl.isFirstLaunchNew));
+              if (jdField_a_of_type_Long <= 0L) {
+                break label253;
+              }
+              l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+              paramString.put("intervalAfterSyncMsg", String.valueOf(l1));
+              UnifiedMonitor.a().addEvent(9, null, 0, 0, paramString);
+            }
+          }
+          this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(this.jdField_a_of_type_Bkpj);
+          this.jdField_a_of_type_Bkpj = null;
+        }
+        else
+        {
+          this.c = false;
+          continue;
+        }
+        long l1 = -1L;
+      }
+      finally {}
     }
   }
 }

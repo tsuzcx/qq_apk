@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.play;
 
-import biym;
+import bizd;
 
 class AEVideoShelfEditFragment$10
   implements Runnable
 {
-  AEVideoShelfEditFragment$10(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, biym parambiym) {}
+  AEVideoShelfEditFragment$10(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, FaceImageViewer paramFaceImageViewer, bizd parambizd) {}
   
   public void run()
   {
-    AEVideoShelfEditFragment.a(this.this$0, this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer, this.jdField_a_of_type_Biym);
+    AEVideoShelfEditFragment.a(this.this$0, this.jdField_a_of_type_DovComQqImAePlayFaceImageViewer, this.jdField_a_of_type_Bizd);
   }
 }
 

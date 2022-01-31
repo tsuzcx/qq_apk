@@ -8,9 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import bbkx;
+import bbll;
 import dov.com.qq.im.capture.view.QIMCircleProgress;
-import vzo;
+import vzl;
 
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
@@ -42,9 +42,9 @@ public class AnimationQIMCircleProgress
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130843627);
-    this.o = bbkx.a(30.0F);
-    this.p = bbkx.a(6.0F);
+    setBackgroundResource(2130843628);
+    this.o = bbll.a(30.0F);
+    this.p = bbll.a(6.0F);
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
@@ -60,7 +60,7 @@ public class AnimationQIMCircleProgress
       if ((paramInt != 1) && (this.d)) {
         setBackgroundDrawable(null);
       } else {
-        setBackgroundResource(2130843627);
+        setBackgroundResource(2130843628);
       }
     }
   }
@@ -103,7 +103,7 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130843627);
+      setBackgroundResource(2130843628);
       setCenterCircleColor(-1);
     }
   }
@@ -123,7 +123,7 @@ public class AnimationQIMCircleProgress
   
   protected void d(Canvas paramCanvas)
   {
-    int i = vzo.a(getContext(), 3.0F);
+    int i = vzl.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.i / 2;
     float f2 = this.i / 2;
@@ -137,8 +137,8 @@ public class AnimationQIMCircleProgress
   public void setCenterView()
   {
     super.setCenterView();
-    this.m = bbkx.a(3.0F);
-    this.n = (bbkx.a(53.0F) / 2);
+    this.m = bbll.a(3.0F);
+    this.n = (bbll.a(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
@@ -160,7 +160,7 @@ public class AnimationQIMCircleProgress
     {
       invalidate();
       return;
-      setBackgroundResource(2130843627);
+      setBackgroundResource(2130843628);
     }
   }
 }

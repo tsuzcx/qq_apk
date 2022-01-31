@@ -1,35 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.1;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.2;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.3;
-import mqq.os.MqqHandler;
 
 public class apif
-  extends amgr
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private apif(FileBrowserActivity paramFileBrowserActivity) {}
+  public apif(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramBundle.getInt("color_note_curd_from_type") == 1) {
-      axqw.b(null, "dc00898", "", "", "0X800A744", "0X800A744", apvk.c(FileBrowserActivity.a(this.a)), 0, "", "", "", "");
-    }
-    super.onAddColorNote(paramBundle, paramBoolean);
-    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.1(this));
-  }
-  
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
-    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.2(this));
-  }
-  
-  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
-  {
-    super.onUpdateColorNoteState(paramInt, paramString, paramBundle);
-    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.3(this));
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    do
+    {
+      return false;
+      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
   }
 }
 

@@ -1,29 +1,15 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class anlc
-  implements View.OnLongClickListener, CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public anku a;
+  public anlc(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  protected anlc(DataReportSettingFragment paramDataReportSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Anku != null)
-    {
-      this.jdField_a_of_type_Anku.a = paramBoolean;
-      anls.a().e();
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, ajyc.a(2131702771), new anld(this), new anle(this)).show();
-    return true;
+    bbdj.a(this.a.getActivity(), 0, 2131559420, ajya.a(2131702780), "", ajya.a(2131702775), ajya.a(2131702781), new anld(this), new anle(this)).show();
   }
 }
 

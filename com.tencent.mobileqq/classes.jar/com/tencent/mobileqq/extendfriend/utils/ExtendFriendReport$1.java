@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import aokk;
-import axrl;
+import aokp;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ExtendFriendReport$1
   implements Runnable
 {
-  public ExtendFriendReport$1(aokk paramaokk, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  public ExtendFriendReport$1(aokp paramaokp, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
   public void run()
   {
     try
     {
-      axrl.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
       return;
     }
     catch (Exception localException) {}

@@ -1,77 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.HighwayConfBean;
 import com.tencent.qphone.base.util.QLog;
 
-public class ayrm
-  extends ampb<HighwayConfBean>
+class ayrm
+  extends akat
 {
-  public int a()
-  {
-    return 15;
-  }
+  ayrm(ayrj paramayrj) {}
   
-  @NonNull
-  public HighwayConfBean a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, akau paramakau)
   {
-    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
+      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
     }
-    return localHighwayConfBean;
-  }
-  
-  @Nullable
-  public HighwayConfBean a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramakau);
+    if (paramBoolean)
     {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      }
-      return localHighwayConfBean;
+      this.a.e();
+      return;
     }
-    return null;
-  }
-  
-  public Class<HighwayConfBean> a()
-  {
-    return HighwayConfBean.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
+    if (paramakau != null) {
+      this.a.v = paramakau.d;
     }
-  }
-  
-  public void a(HighwayConfBean paramHighwayConfBean)
-  {
-    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.a.d();
   }
 }
 

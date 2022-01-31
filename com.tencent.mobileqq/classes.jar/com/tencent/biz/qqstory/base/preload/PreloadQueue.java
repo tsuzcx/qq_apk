@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.base.preload;
 
 import android.annotation.TargetApi;
 import java.util.LinkedList;
-import sul;
-import veg;
+import sui;
+import ved;
 
 @TargetApi(14)
 public class PreloadQueue
-  extends LinkedList<sul>
+  extends LinkedList<sui>
 {
   public static final String TAG = "Q.qqstory.download.preload.PreloadQueue";
   private final Object dataSafeLock = new Object();
   private int mQueueId;
   private final Object notEmptyLock = new Object();
   
-  public void addTask(sul paramsul, boolean paramBoolean)
+  public void addTask(sui paramsui, boolean paramBoolean)
   {
     localObject = this.dataSafeLock;
     if (paramBoolean) {}
@@ -22,12 +22,12 @@ public class PreloadQueue
     {
       try
       {
-        addFirst(paramsul);
+        addFirst(paramsui);
         releaseBlock();
         return;
       }
       finally {}
-      add(paramsul);
+      add(paramsui);
     }
   }
   
@@ -40,17 +40,17 @@ public class PreloadQueue
     }
   }
   
-  public sul getFirstAndBlockIfLowestPriority()
+  public sui getFirstAndBlockIfLowestPriority()
   {
     try
     {
-      sul localsul = pollFirst();
-      ??? = localsul;
+      sui localsui = pollFirst();
+      ??? = localsui;
       if (this.mQueueId == 2)
       {
-        ??? = localsul;
-        if (localsul == null) {
-          veg.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
+        ??? = localsui;
+        if (localsui == null) {
+          ved.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
         }
       }
       synchronized (this.notEmptyLock)
@@ -63,7 +63,7 @@ public class PreloadQueue
     }
     catch (InterruptedException localInterruptedException)
     {
-      veg.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
+      ved.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
     }
   }
   
@@ -88,12 +88,12 @@ public class PreloadQueue
     }
   }
   
-  public sul pollFirst()
+  public sui pollFirst()
   {
     synchronized (this.dataSafeLock)
     {
-      sul localsul = (sul)super.pollFirst();
-      return localsul;
+      sui localsui = (sui)super.pollFirst();
+      return localsui;
     }
   }
   
@@ -101,7 +101,7 @@ public class PreloadQueue
   {
     synchronized (this.notEmptyLock)
     {
-      veg.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
+      ved.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
       this.notEmptyLock.notifyAll();
       return;
     }

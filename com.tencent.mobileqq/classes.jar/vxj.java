@@ -1,12 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class vxj
-  implements View.OnClickListener
+public class vxj
 {
-  vxj(vxi paramvxi) {}
+  public TextView a;
+  public TextView b;
   
-  public void onClick(View paramView) {}
+  public vxj(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379562));
+    this.b = ((TextView)paramView.findViewById(2131378946));
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(vxy.c(paramTroopStoryItemInfo.publishTime));
+  }
 }
 
 

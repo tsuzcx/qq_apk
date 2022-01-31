@@ -1,14 +1,63 @@
-public class bfaz<T>
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarReq;
+import NS_MINI_INTERFACE.INTERFACE.StSetUserAvatarRsp;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
+
+public class bfaz
+  extends bfau
 {
-  public T a;
+  private INTERFACE.StSetUserAvatarReq a = new INTERFACE.StSetUserAvatarReq();
   
-  public bfaz(T paramT)
+  public bfaz(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    this.a.appid.set(paramString1);
+    this.a.uin.set(paramString2);
+    this.a.set_type.set(paramInt);
+    this.a.item_id.set(paramString3);
+    this.a.busi_info.set(paramString4);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  public void a() {}
+  protected String a()
+  {
+    return "mini_app_userapp";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StSetUserAvatarRsp localStSetUserAvatarRsp = new INTERFACE.StSetUserAvatarRsp();
+    try
+    {
+      localStSetUserAvatarRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStSetUserAvatarRsp != null) {
+        return new JSONObject();
+      }
+      betc.a("SetAvatarRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("SetAvatarRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "SetUserAvatar";
+  }
 }
 
 

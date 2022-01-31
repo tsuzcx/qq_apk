@@ -1,13 +1,40 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
 
-public abstract interface aich
+public class aich
+  implements bcoh
 {
-  public abstract void a();
+  public aich(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
   
-  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
+  public void a()
+  {
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+  }
   
-  public abstract boolean a();
+  public void a(String paramString)
+  {
+    ayle.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    ayle.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    ayle.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
+    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+  }
 }
 
 

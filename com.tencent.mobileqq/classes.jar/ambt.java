@@ -1,42 +1,45 @@
-import android.os.Bundle;
+import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ambt
-  extends bbwf
+  extends QQLruCache<Integer, ambg>
 {
-  public ambt(BubbleManager paramBubbleManager, String paramString1, String paramString2)
+  public ambt(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramString1, paramString2);
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void onCancel(bbwg parambbwg)
+  public void a()
   {
-    String str = parambbwg.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
+    Map localMap = snapshot();
+    if (localMap != null)
+    {
+      Iterator localIterator = localMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((ambg)localIterator.next()).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
+      }
     }
-    this.a.a("Bubble_download_cancel", parambbwg.b(), str, 0L);
   }
   
-  public void onDone(bbwg parambbwg)
+  protected void a(boolean paramBoolean, Integer paramInteger, ambg paramambg1, ambg paramambg2)
   {
-    long l = parambbwg.h - parambbwg.g;
+    super.entryRemoved(paramBoolean, paramInteger, paramambg1, paramambg2);
     if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
+      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
     }
-    this.a.a("Bubble_download_succ", parambbwg.b(), "pkgName", l);
+    paramambg1.a();
   }
   
-  public boolean onStart(bbwg parambbwg)
+  public boolean a(int paramInt)
   {
-    String str = parambbwg.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
-    }
-    this.a.a("Bubble_download", parambbwg.b(), str, 0L);
-    super.onStart(parambbwg);
-    return true;
+    return get(Integer.valueOf(paramInt)) != null;
   }
 }
 

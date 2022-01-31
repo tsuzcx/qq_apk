@@ -1,58 +1,19 @@
-import org.json.JSONObject;
-
-public class beka
+class beka
 {
-  public begy a;
-  public String a;
-  public int b;
-  public String b;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public String a()
+  public beka(String paramString, int paramInt1, int paramInt2)
   {
-    return a(null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public String a(String paramString)
+  public String toString()
   {
-    return a(null, paramString);
-  }
-  
-  public String a(JSONObject paramJSONObject)
-  {
-    paramJSONObject = bekg.a(this.jdField_a_of_type_JavaLangString, paramJSONObject).toString();
-    a(paramJSONObject);
-    return paramJSONObject;
-  }
-  
-  public String a(JSONObject paramJSONObject, String paramString)
-  {
-    paramJSONObject = bekg.a(this.jdField_a_of_type_JavaLangString, paramJSONObject, paramString).toString();
-    a(paramJSONObject);
-    return paramJSONObject;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Begy != null) {
-      this.jdField_a_of_type_Begy.a(this.b, paramString);
-    }
-  }
-  
-  public String b()
-  {
-    return a(null);
-  }
-  
-  public String b(JSONObject paramJSONObject)
-  {
-    paramJSONObject = bekg.c(this.jdField_a_of_type_JavaLangString, paramJSONObject).toString();
-    a(paramJSONObject);
-    return paramJSONObject;
-  }
-  
-  public String c()
-  {
-    return b(null);
+    return "WxapkgFile{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", start=" + this.jdField_a_of_type_Int + ", length=" + this.b + '}';
   }
 }
 

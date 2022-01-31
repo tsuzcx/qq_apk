@@ -1,167 +1,70 @@
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StSetAuthsReq;
+import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import org.json.JSONObject;
 
-public class bfay<T, E>
+public class bfay
+  extends bfau
 {
-  private bfay<T, E>.bfaz<T> jdField_a_of_type_Bfaz;
-  private List<E> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<bfaz, List<bfba>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private INTERFACE.StSetAuthsReq a = new INTERFACE.StSetAuthsReq();
   
-  private void a()
+  public bfay(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo)
   {
-    Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-    if (((List)localObject1).size() <= 0) {
-      label21:
-      return;
-    } else {
-      localObject1 = ((List)localObject1).iterator();
-    }
-    label182:
-    for (;;)
+    this.a.appid.set(paramString);
+    if (paramStUserAuthInfo != null)
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break label21;
-      }
-      Object localObject2 = ((Iterator)localObject1).next();
-      if (localObject2 == null) {
-        break;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      for (;;)
+      paramString = new ArrayList();
+      paramString.add(paramStUserAuthInfo);
+      this.a.auths.set(paramString);
+    }
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      if (localStQWebRsp != null)
       {
-        if (!localIterator.hasNext()) {
-          break label182;
-        }
-        Object localObject3 = (Map.Entry)localIterator.next();
-        Object localObject4 = (bfaz)((Map.Entry)localObject3).getKey();
-        if (this.jdField_a_of_type_Bfaz == localObject4)
-        {
-          localObject3 = ((List)((Map.Entry)localObject3).getValue()).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (bfba)((Iterator)localObject3).next();
-            if ((localObject4 == null) || (!localObject2.equals(bfba.a((bfba)localObject4)))) {
-              break;
-            }
-            a(bfba.b((bfba)localObject4));
-            this.jdField_a_of_type_JavaUtilList.remove(localObject2);
-          }
-        }
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode);
+        return paramArrayOfByte;
       }
+      betc.a("SetAuthsRequest", "onResponse fail.rsp = null");
+      return null;
     }
-  }
-  
-  public bfaz a()
-  {
-    return this.jdField_a_of_type_Bfaz;
-  }
-  
-  public void a(bfaz parambfaz)
-  {
-    if ((parambfaz == null) || (parambfaz == this.jdField_a_of_type_Bfaz)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append(" change state from ");
-    if (this.jdField_a_of_type_Bfaz != null) {}
-    for (Object localObject = this.jdField_a_of_type_Bfaz.a;; localObject = "N/A")
+    catch (Exception paramArrayOfByte)
     {
-      besl.b("StateMachine", localObject + " to " + parambfaz.a);
-      this.jdField_a_of_type_Bfaz = parambfaz;
-      this.jdField_a_of_type_Bfaz.a();
-      a();
-      return;
+      betc.a("SetAuthsRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
   }
   
-  public void a(bfay<T, E>.bfba<E> parambfay)
+  protected byte[] a()
   {
-    if ((parambfay == null) || (bfba.a(parambfay) == null)) {
-      return;
-    }
-    List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(parambfay.a());
-    Object localObject = localList;
-    if (localList == null)
-    {
-      localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilMap.put(bfba.a(parambfay), localObject);
-    }
-    ((List)localObject).add(parambfay);
+    return this.a.toByteArray();
   }
   
-  public void a(E paramE)
+  protected String b()
   {
-    if ((paramE == null) || (this.jdField_a_of_type_Bfaz == null)) {}
-    label128:
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label128;
-        }
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (bfaz)((Map.Entry)localObject1).getKey();
-        if (this.jdField_a_of_type_Bfaz == localObject2)
-        {
-          localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (bfba)((Iterator)localObject1).next();
-            if ((localObject2 == null) || (!paramE.equals(bfba.a((bfba)localObject2)))) {
-              break;
-            }
-            a(bfba.b((bfba)localObject2));
-          }
-        }
-      }
-    }
-  }
-  
-  public void b(E paramE)
-  {
-    if ((paramE == null) || (this.jdField_a_of_type_Bfaz == null)) {}
-    label156:
-    label157:
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (bfaz)((Map.Entry)localObject1).getKey();
-        if (this.jdField_a_of_type_Bfaz != localObject2) {
-          break label156;
-        }
-        localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (bfba)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (paramE.equals(bfba.a((bfba)localObject2))))
-          {
-            a(bfba.b((bfba)localObject2));
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        break;
-        if (i != 0) {
-          break label157;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(paramE);
-        return;
-      }
-    }
+    return "SetAuths";
   }
 }
 

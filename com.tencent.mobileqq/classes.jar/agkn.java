@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
 
 public class agkn
-  extends aume
+  implements agjv
 {
-  public agkn(PhoneInnerFrame paramPhoneInnerFrame) {}
+  public agkn(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    if (this.a.a)
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if ((!paramBoolean) && (paramContext != null))
     {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", 2);
+      paramContext.startActivity(localIntent);
     }
   }
 }

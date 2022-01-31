@@ -1,8 +1,34 @@
-public abstract interface bhwv
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+
+class bhwv
+  extends RemoteCommand
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
+  bhwv(bhws parambhws, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
+  }
 }
 
 

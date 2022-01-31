@@ -1,17 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class azxx
   implements View.OnClickListener
 {
-  public azxx(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  public azxx(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    bfni.b(paramView);
+    this.a.f();
   }
 }
 

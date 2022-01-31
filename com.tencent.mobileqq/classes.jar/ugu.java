@@ -1,14 +1,48 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ugu
-  implements uhc
+  extends QQUIEventReceiver<ugk, tth>
 {
-  public ugu(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
-  
-  public void a()
+  public ugu(@NonNull ugk paramugk)
   {
-    ugn.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Ugn, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    super(paramugk);
+  }
+  
+  public void a(@NonNull ugk paramugk, @NonNull tth paramtth)
+  {
+    if (!TextUtils.equals(paramtth.b, String.valueOf(paramugk.hashCode()))) {
+      return;
+    }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramugk.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramugk.l();
+    if (paramtth.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ved.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramtth.jdField_a_of_type_JavaLangString);
+      if (paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        ttf.a().a(paramugk.b(), paramtth.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ttf.a().a(paramugk.b(), paramtth.jdField_a_of_type_JavaLangString, paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramugk.hashCode());
+      return;
+    }
+    ved.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131701174), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tth.class;
   }
 }
 

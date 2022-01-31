@@ -1,216 +1,359 @@
 import android.app.Activity;
 import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
-import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.2;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.3;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
 public class ajcb
-  implements ajbm, Handler.Callback
+  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, bfph
 {
-  private static long jdField_a_of_type_Long;
   private int jdField_a_of_type_Int;
-  protected bfnk a;
-  public WeakReference<Activity> a;
-  private WeakReference<QQAppInterface> b;
+  private long jdField_a_of_type_Long;
+  private bfpc jdField_a_of_type_Bfpc;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private boolean jdField_b_of_type_Boolean;
+  private String c;
+  private String d;
   
-  public ajcb(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
+  public ajcb(Context paramContext, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    try
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
+    }
   }
   
-  private void b(String paramString)
+  private int a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
+      QLog.d("apollo_cmGame_CmGameCommonShare", 2, "[parseShareParm],jsonStr:" + paramString);
     }
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1000L) {
-      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
     }
-    do
+    try
     {
-      return;
-      jdField_a_of_type_Long = l;
-    } while (TextUtils.isEmpty(paramString));
-    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
-  }
-  
-  public int a()
-  {
-    return 100;
-  }
-  
-  public aivx a(String paramString)
-  {
-    aivx localaivx = new aivx();
-    String str = ApolloUtil.a(paramString, "tips");
-    int i = ApolloUtil.a(paramString, "length");
-    if (TextUtils.isEmpty(str)) {
-      return localaivx;
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("extendInfo");
+      this.c = paramString.optString("summary");
+      this.jdField_a_of_type_JavaLangString = paramString.optString("localPicPath");
+      this.jdField_b_of_type_Int = paramString.optInt("activityId");
+      int i = paramString.optInt("reqCode");
+      paramString = ajac.a(this.jdField_a_of_type_Int);
+      if (paramString != null)
+      {
+        paramString.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+        paramString.c = i;
+      }
+      return 0;
     }
-    paramString = this.jdField_a_of_type_Bfnk.obtainMessage(255);
-    paramString.obj = str;
-    paramString.arg1 = i;
-    paramString.sendToTarget();
-    return localaivx;
+    catch (Exception paramString)
+    {
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
+    }
+    return -3;
   }
   
-  public aivx a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private AppInterface a()
   {
-    if (this.b == null) {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
       return null;
     }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+      if (!this.jdField_a_of_type_JavaLangString.startsWith("GameSandBox:")) {
+        break label84;
       }
-      return new aivx();
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    if ("general_cmd_ui_show_toast".equals(paramString1)) {
-      return a(paramString2);
-    }
-    if ("cs.get_dress_path.local".equals(paramString1))
-    {
-      ajne.a(localQQAppInterface, paramString1, paramString2, paramInt1);
-      return new aivx();
-    }
-    if ("cs.report_data_2_backstage.local".equals(paramString1))
-    {
-      ajne.b(localQQAppInterface, paramString2);
-      return new aivx();
-    }
-    if ("cs.report_flow_data.local".equals(paramString1))
-    {
-      ajne.c(localQQAppInterface, paramString2);
-      return new aivx();
-    }
-    if ("cs.save_recommend_ip.local".equals(paramString1))
-    {
-      ajne.a(localQQAppInterface, paramString2);
-      return new aivx();
-    }
-    if ("cs.openFloatTransparentView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        ajne.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aivx();
-      }
-    }
-    else if ("cs.openWebView.local".equals(paramString1))
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-      {
-        ajne.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
-        return new aivx();
-      }
-    }
-    else
-    {
-      if ("cs.script_get_nickname.local".equals(paramString1))
-      {
-        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-        paramInt2 = -1;
-        String str = "";
-        paramString1 = str;
-        paramInt1 = paramInt2;
-        if (localQQMessageFacade != null)
-        {
-          paramString1 = str;
-          paramInt1 = paramInt2;
-          if (localQQMessageFacade.a())
-          {
-            paramString1 = str;
-            paramInt1 = paramInt2;
-            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
-            {
-              paramString1 = localQQMessageFacade.a();
-              paramInt1 = localQQMessageFacade.a();
-            }
-          }
-        }
-        return ajfj.a(paramString2, localQQAppInterface, paramInt1, paramString1);
-      }
-      if (!"cs.send_game_msg.local".equals(paramString1)) {
-        break label403;
-      }
-      ajne.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      str = this.jdField_a_of_type_JavaLangString.substring("GameSandBox:".length() + "//".length());
+      localStringBuilder.append(ajms.s);
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("/sandbox/");
+      localStringBuilder.append(str);
     }
     for (;;)
     {
-      return null;
-      label403:
-      if ("cs.create_xy.local".equals(paramString1))
+      return localStringBuilder.toString();
+      label84:
+      if (this.jdField_a_of_type_JavaLangString.startsWith("GameRes:"))
       {
-        b(paramString2);
-      }
-      else if ("cs.open_cm_aio.local".equals(paramString1))
-      {
-        a(paramString2);
-      }
-      else if ("cs.show_one_more_page.local".equals(paramString1))
-      {
-        paramString1 = (airz)localQQAppInterface.getManager(153);
-        if (paramString1 != null) {
-          paramString1.a().h(paramString2);
-        }
+        str = this.jdField_a_of_type_JavaLangString.substring("GameRes:".length() + "//".length());
+        localStringBuilder.append(ajms.s);
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("/");
+        localStringBuilder.append(str);
       }
     }
+  }
+  
+  private String a(int paramInt)
+  {
+    return ajms.s + paramInt + "/" + "shareQRCode_default_v2.png";
+  }
+  
+  private void a(int paramInt)
+  {
+    ThreadManager.post(new CmGameCommonShare.4(this, paramInt), 5, null, true);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    ajcf localajcf = ajac.a(this.jdField_a_of_type_Int);
+    if (localajcf != null) {
+      localajcf.a(paramInt1, paramInt2, 0, "");
+    }
+  }
+  
+  private boolean a(long paramLong)
+  {
+    try
+    {
+      localajcf = ajac.a(this.jdField_a_of_type_Int);
+      if (localajcf == null) {
+        break label82;
+      }
+      CmGameStartChecker.StartCheckParam localStartCheckParam = localajcf.a();
+      if ((localStartCheckParam == null) || (localStartCheckParam.mGameType != 5)) {
+        break label82;
+      }
+      if (paramLong == 0L) {
+        break label76;
+      }
+      switch ((int)paramLong)
+      {
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        ajcf localajcf;
+        label76:
+        label82:
+        QLog.e("apollo_cmGame_CmGameCommonShare", 1, localThrowable, new Object[0]);
+        continue;
+        int i = 1;
+        continue;
+        i = 2;
+        continue;
+        i = 3;
+        continue;
+        i = 4;
+      }
+    }
+    localajcf.e(i);
+    return true;
+    localajcf.e(1);
+    return false;
+  }
+  
+  private String b(int paramInt)
+  {
+    return ajms.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png";
+  }
+  
+  private void b()
+  {
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      Object localObject = this.jdField_a_of_type_JavaLangString;
+      File localFile = new File(a());
+      if (localFile.isFile())
+      {
+        localObject = localFile;
+        if (localFile.exists()) {}
+      }
+      else
+      {
+        localFile = new File(a(this.jdField_a_of_type_Int));
+        localObject = localFile;
+        if (!localFile.exists()) {
+          localObject = new File(b(this.jdField_a_of_type_Int));
+        }
+      }
+      localArrayList.add(((File)localObject).getAbsolutePath());
+      localBundle.putStringArrayList("images", localArrayList);
+      localBundle.putString("summary", this.c);
+      localBundle.putInt("req_type", 7);
+      localBundle.putBoolean("key_need_save_draft", false);
+      localObject = null;
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+        localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      }
+      if (localObject != null)
+      {
+        bgzl.a(a(), (Context)localObject, localBundle, this, 255);
+        return;
+      }
+      a(1, 4);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("apollo_cmGame_CmGameCommonShare", 1, "publishToQzone:", localException);
+      a(1, 4);
+    }
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Bfnk.removeCallbacksAndMessages(null);
-  }
-  
-  void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
+    if (this.jdField_a_of_type_Bfpc != null) {
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(Bitmap paramBitmap, int paramInt)
   {
-    int i = 1;
-    switch (paramMessage.what)
+    if (paramBitmap == null) {}
+    for (Object localObject = b(paramInt);; localObject = a(paramInt))
     {
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {
+        break;
+      }
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "checkDefaultQRSharePic gameId:", paramInt + " bitmap:" + paramBitmap });
+    }
+    ThreadManager.post(new CmGameCommonShare.2(this, paramInt, paramBitmap, (File)localObject), 5, null, true);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    bfpm localbfpm = null;
+    this.d = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramInt = a(paramString);
+    if (paramInt < 0)
+    {
+      QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + paramInt);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      if ((this.jdField_a_of_type_Bfpc == null) && (paramString != null))
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(bfpm.a(0));
+        localArrayList.add(bfpm.a(1));
+        localArrayList.add(bfpm.a(2));
+        localArrayList.add(bfpm.a(3));
+        if (paramString != null)
+        {
+          localbfpm = new bfpm(paramString);
+          localbfpm.a(localArrayList);
+        }
+        this.jdField_a_of_type_Bfpc = bfpm.a(paramString, localbfpm, this, this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bfpc == null) || (this.jdField_a_of_type_Bfpc.isShowing())) {
+        break;
+      }
+      this.jdField_a_of_type_Bfpc.setOnDismissListener(this);
+      this.jdField_a_of_type_Bfpc.a(new ajcc(this));
+      this.jdField_a_of_type_Bfpc.show();
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (new File(ajms.s + paramInt + "/" + "shareQRCode_default_v2.png").exists()) {}
+    while (new File(ajms.s + paramInt + "/" + "shareQRCode_no_icon_default_v2.png").exists()) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (!this.jdField_b_of_type_Boolean) {
+      a(-1, -1);
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
     do
     {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      bcpw.a(localBaseApplication, localCharSequence, i).a();
-      return false;
-      i = 0;
-    }
+      do
+      {
+        return;
+        this.jdField_a_of_type_Long = l;
+        a();
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_cmGame_CmGameCommonShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
+        }
+        this.jdField_b_of_type_Boolean = true;
+      } while (a(paramLong));
+      if (paramLong == 1L)
+      {
+        b();
+        return;
+      }
+      if (paramLong == 0L)
+      {
+        ThreadManager.post(new CmGameCommonShare.3(this), 5, null, true);
+        return;
+      }
+      if (paramLong == 2L)
+      {
+        a(0);
+        return;
+      }
+    } while (paramLong != 3L);
+    a(1);
   }
 }
 

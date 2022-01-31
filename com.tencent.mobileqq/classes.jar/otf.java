@@ -1,12 +1,8 @@
-final class otf
-  implements oti
+public abstract interface otf
 {
-  public void l() {}
+  public abstract void l();
   
-  public void m()
-  {
-    ota.a().a("2909288299", otd.b, false, null, false);
-  }
+  public abstract void m();
 }
 
 

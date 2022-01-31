@@ -14,7 +14,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import bfum;
+import bfvd;
 
 public class QzoneAutoVerticalScrollTextView
   extends TextSwitcher
@@ -24,10 +24,10 @@ public class QzoneAutoVerticalScrollTextView
   private long jdField_a_of_type_Long = 2500L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bfum jdField_a_of_type_Bfum;
+  private bfvd jdField_a_of_type_Bfvd;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 1000L;
-  private bfum jdField_b_of_type_Bfum;
+  private bfvd jdField_b_of_type_Bfvd;
   
   public QzoneAutoVerticalScrollTextView(Context paramContext)
   {
@@ -41,30 +41,30 @@ public class QzoneAutoVerticalScrollTextView
     b();
   }
   
-  private bfum a(boolean paramBoolean1, boolean paramBoolean2)
+  private bfvd a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bfum localbfum = new bfum(this, paramBoolean1, paramBoolean2);
-    localbfum.setDuration(this.jdField_b_of_type_Long);
-    localbfum.setFillAfter(false);
-    localbfum.setInterpolator(new AccelerateInterpolator());
-    return localbfum;
+    bfvd localbfvd = new bfvd(this, paramBoolean1, paramBoolean2);
+    localbfvd.setDuration(this.jdField_b_of_type_Long);
+    localbfvd.setFillAfter(false);
+    localbfvd.setInterpolator(new AccelerateInterpolator());
+    return localbfvd;
   }
   
   private void b()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Bfum = a(true, true);
-    this.jdField_b_of_type_Bfum = a(false, true);
+    this.jdField_a_of_type_Bfvd = a(true, true);
+    this.jdField_b_of_type_Bfvd = a(false, true);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Bfum) {
-      setInAnimation(this.jdField_a_of_type_Bfum);
+    if (getInAnimation() != this.jdField_a_of_type_Bfvd) {
+      setInAnimation(this.jdField_a_of_type_Bfvd);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Bfum) {
-      setOutAnimation(this.jdField_b_of_type_Bfum);
+    if (getOutAnimation() != this.jdField_b_of_type_Bfvd) {
+      setOutAnimation(this.jdField_b_of_type_Bfvd);
     }
   }
   
@@ -129,8 +129,8 @@ public class QzoneAutoVerticalScrollTextView
       if (paramArrayOfString.length <= 1) {
         break label102;
       }
-      setInAnimation(this.jdField_a_of_type_Bfum);
-      setOutAnimation(this.jdField_b_of_type_Bfum);
+      setInAnimation(this.jdField_a_of_type_Bfvd);
+      setOutAnimation(this.jdField_b_of_type_Bfvd);
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
       }

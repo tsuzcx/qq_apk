@@ -1,8 +1,6 @@
-import android.graphics.Bitmap;
-
 public abstract interface awcd
 {
-  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

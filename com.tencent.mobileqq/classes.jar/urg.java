@@ -1,49 +1,39 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class urg
-  extends sth<uqy, uwh>
+public final class urg
+  extends QQUIEventReceiver<uqv, tde>
 {
-  public urg(uqy paramuqy)
+  public urg(@NonNull uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull uwh paramuwh)
+  public void a(@NonNull uqv paramuqv, @NonNull tde paramtde)
   {
-    if ((paramuwh.jdField_a_of_type_Int == 2) || (!paramuwh.jdField_a_of_type_JavaLangString.equals(uqy.a(paramuqy))) || (uqy.a(paramuqy) == null))
+    if (uqv.a(paramuqv) == null) {
+      ved.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramtde.toString());
+    }
+    do
     {
-      veg.b(this.TAG, "ignore this video cookie change event. %s.", paramuwh.toString());
-      return;
-    }
-    if (!uqy.a(paramuqy).c())
-    {
-      veg.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramuwh.toString() });
-      return;
-    }
-    paramuwh = uqy.a(paramuqy).a(uqy.a(paramuqy), uqy.a(paramuqy).a().mVideoPullType);
-    if (paramuwh == null)
-    {
-      veg.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { uqy.a(paramuqy), Integer.valueOf(uqy.a(paramuqy).a().mVideoPullType) });
-      return;
-    }
-    veg.a(this.TAG, "receive video cookie change event. %s.", paramuwh.toString());
-    uqy.a(paramuqy).a().updateVideoInfo(paramuwh);
-    uqy.a(paramuqy).a(paramuwh.mVideoItemList, true);
-    if (uqy.a(paramuqy) != null) {
-      uqy.a(paramuqy).a(paramuwh.mVideoPullType, paramuwh.mVideoNextCookie, paramuwh.mVideoSeq);
-    }
-    uqy.a(paramuqy).c();
+      do
+      {
+        return;
+      } while (!paramtde.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      ved.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramtde.toString());
+      paramtde = (tmk)paramtde.jdField_a_of_type_JavaUtilMap.get(uqv.a(paramuqv));
+    } while (paramtde == null);
+    paramtde = ((tdc)tcz.a(27)).a(uqv.a(paramuqv).a(), paramtde.a);
+    uqv.a(paramuqv).b(paramtde, true);
+    paramuqv.a();
   }
   
   public Class acceptEventClass()
   {
-    return uwh.class;
+    return tde.class;
   }
-  
-  public void b(@NonNull uqy paramuqy, @NonNull uwh paramuwh) {}
 }
 
 

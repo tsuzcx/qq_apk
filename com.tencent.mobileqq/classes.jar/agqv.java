@@ -1,103 +1,130 @@
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class agqv
-  extends Handler
+public class agqv
+  extends agqs
 {
-  private agqv(agqu paramagqu) {}
+  protected int a;
+  protected agqw a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
   
-  public void handleMessage(Message paramMessage)
+  public agqv()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      b(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365742));
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(agqw paramagqw)
+  {
+    this.jdField_a_of_type_Agqw = paramagqw;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371919));
+    this.b = ((ImageView)paramView.findViewById(2131371918));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371920));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    return false;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.b == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+      }
     }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
-                    }
-                    agqu.a(this.a, 2);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
-                    }
-                    if (this.a.jdField_a_of_type_Agqw != null) {
-                      this.a.jdField_a_of_type_Agqw.a(this.a.jdField_a_of_type_Agrc, this.a.b());
-                    }
-                    if (this.a.a())
-                    {
-                      this.a.m();
-                      this.a.a(false);
-                      return;
-                    }
-                    agqu.a(this.a, 3);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
-                    }
-                  } while (this.a.jdField_a_of_type_Agqw == null);
-                  this.a.jdField_a_of_type_Agqw.v();
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
-                  }
-                  agqu.a(this.a, true);
-                  this.a.a(0);
-                  this.a.b(0);
-                  if (this.a.jdField_a_of_type_Agqw != null) {
-                    this.a.jdField_a_of_type_Agqw.c(this.a.jdField_a_of_type_Agrc);
-                  }
-                  agqu.a(this.a, 0);
-                  return;
-                } while (!QLog.isColorLevel());
-                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
-                }
-              } while ((this.a.jdField_a_of_type_Agmg == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Agmg.a(this.a.jdField_a_of_type_AndroidAppActivity);
-            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-            agqu.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-            }
-            this.a.a(paramMessage.arg1, paramMessage.arg2);
-            return;
-          } while (this.a.jdField_a_of_type_Agqw == null);
-          if (paramMessage.arg1 == 929)
-          {
-            this.a.jdField_a_of_type_Agqw.d(this.a.jdField_a_of_type_Agrc);
-            this.a.b(8);
-            return;
-          }
-        } while (paramMessage.arg1 != 92);
-        this.a.jdField_a_of_type_Agqw.a(this.a.jdField_a_of_type_Agrc, paramMessage.arg2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + agqu.a(this.a));
+        return false;
+        if (this.b.getVisibility() != 0) {
+          break;
         }
-      } while ((this.a.jdField_a_of_type_Agqw == null) || (!agqu.a(this.a)));
-      this.a.jdField_a_of_type_Agqw.b(this.a.jdField_a_of_type_Agrc, paramMessage.arg1);
-    } while (agqu.a(this.a) == 4);
-    this.a.b(8);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
+        }
+      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+      }
+      return true;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
+        this.b.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    this.b.setVisibility(paramInt);
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

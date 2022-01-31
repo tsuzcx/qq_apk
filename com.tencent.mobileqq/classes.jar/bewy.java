@@ -1,163 +1,70 @@
-import android.os.Handler;
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
-import com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView;
-import com.tencent.qqmini.sdk.minigame.ui.VConsoleView;
-import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.3;
-import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.4;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class bewy
-  implements bewo
+class bewy
+  implements AsyncResult
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bexa(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private WebView jdField_a_of_type_AndroidWebkitWebView;
-  private VConsoleDragView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView;
-  private VConsoleView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-  String jdField_a_of_type_JavaLangString = "file:///android_asset/mini/mini_vconsole.html";
-  private ArrayBlockingQueue jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
+  bewy(beww parambeww) {}
   
-  private void a()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.b = true;
-    for (Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll(); localPair != null; localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll()) {
-      b((String)localPair.first, (String)localPair.second);
-    }
-    this.b = false;
-  }
-  
-  private void a(String paramString)
-  {
-    beiw.c().post(new VConsoleLogManager.4(this, paramString));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    boolean bool = false;
-    this.c = paramBoolean;
-    a("javascript:showPannel()");
-    VConsoleView localVConsoleView;
-    if (this.d)
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = 8;; i = 0)
-    {
-      localVConsoleView.setVisibility(i);
-      paramBoolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        paramBoolean = true;
-      }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      a();
-      return;
-    }
-  }
-  
-  private void b()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if ((this.jdField_a_of_type_AndroidWebkitWebView == null) || (this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView == null)) {
-      return;
-    }
-    if (this.c)
-    {
-      VConsoleView localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (int i = 8;; i = 0)
+      long l = paramJSONObject.optLong("retCode");
+      Object localObject = paramJSONObject.optString("errMsg");
+      betc.a("MiniAppInfoLoadTask", "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject);
+      if (l != 0L)
       {
-        localVConsoleView.setVisibility(i);
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool1 = true;
+        if ((TextUtils.isEmpty((CharSequence)localObject)) && (bfgi.a())) {
+          new StringBuilder().append("请求失败").append(", retCode = ").append(l).toString();
         }
-        this.jdField_a_of_type_Boolean = bool1;
-        this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
+        this.a.f();
+      }
+      localObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
+      paramJSONObject = paramJSONObject.optString("shareTicket", "");
+      if ((l == 0L) && (localObject != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).appId)))
+      {
+        ((MiniAppInfo)localObject).launchParam.a(beww.a(this.a).launchParam);
+        ((MiniAppInfo)localObject).apkgInfo = beww.a(this.a).apkgInfo;
+        ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaLangString = ((MiniAppInfo)localObject).appId;
+        ((MiniAppInfo)localObject).launchParam.h = paramJSONObject;
+        ((MiniAppInfo)localObject).launchParam.e = ((MiniAppInfo)localObject).extraData;
+        if (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.h)) {
+          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_Int = 1044;
+        }
+        if (((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap == null) {
+          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        if (((MiniAppInfo)localObject).reportData != null) {
+          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap.putAll(((MiniAppInfo)localObject).reportData);
+        }
+        if (((MiniAppInfo)localObject).verType != 3) {
+          ((MiniAppInfo)localObject).forceReroad = 3;
+        }
+        beww.a(this.a, (MiniAppInfo)localObject);
+        this.a.c();
         return;
       }
-    }
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      this.d = bool1;
-      break;
-      bool1 = false;
-    }
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_AndroidWebkitWebView == null)
-    {
-      besl.d("[minigame] VConsoleLogManager", "consoleWebView is not ready");
-      return;
-    }
-    beiw.c().post(new VConsoleLogManager.3(this, paramString1, paramString2));
-  }
-  
-  public void a(VConsoleView paramVConsoleView, VConsoleDragView paramVConsoleDragView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView = paramVConsoleView;
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView = paramVConsoleDragView;
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
-    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.setListener(this);
-    this.jdField_a_of_type_AndroidWebkitWebView = paramVConsoleView.jdField_a_of_type_AndroidWebkitWebView;
-    this.jdField_a_of_type_AndroidWebkitWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWebkitWebView.setWebViewClient(new bewz(this));
-    this.jdField_a_of_type_Boolean = false;
-    paramVConsoleView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidViewView = paramVConsoleView.jdField_a_of_type_AndroidWidgetImageView;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (paramBoolean) {
-      b();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    String str = paramString2.replace("\n", "\\r\\n").replace("\\\"", "\"").replace("\"", "\\\"");
-    paramString2 = str;
-    if (str.endsWith("\\")) {
-      paramString2 = str + "\\";
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
+      bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+      beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
+      if (localObject == null) {
+        betc.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.size() == 1000) {
-        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.add(new Pair(paramString1, paramString2));
-      if ((this.c) && (!this.b)) {
-        a();
-      }
-    }
-    catch (Throwable paramString1)
-    {
       for (;;)
       {
-        besl.d("[minigame] VConsoleLogManager", "injectLog error", paramString1);
+        this.a.f();
+        return;
+        betc.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject).appId);
       }
     }
-    finally {}
-  }
-  
-  public void d()
-  {
-    b();
+    bezl.a(beww.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
+    beyq.a("2launch_fail", "shotcut_request_fail", null, beww.a(this.a));
+    this.a.f();
   }
 }
 

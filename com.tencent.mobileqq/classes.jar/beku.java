@@ -1,135 +1,67 @@
 import android.text.TextUtils;
-import android.util.Base64;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import java.io.File;
 
 public class beku
 {
-  public static int a;
-  private static String a;
-  public static int b = 2;
-  public byte[] a;
-  public int c;
+  public static bekt a;
+  public static String a = "1.2.0";
   
-  static
+  public static boolean a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = "NativeBuffer";
-    jdField_a_of_type_Int = 1;
+    String str = a;
+    return a(paramString, new String[] { "libtv8rt.so", "libflutter.so", "libapp.so" }, str);
   }
   
-  public static beku a(begz parambegz, JSONObject paramJSONObject, String paramString)
+  public static boolean a(String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramJSONObject != null)
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (paramString != null) {
-        break label22;
-      }
-      localObject1 = localObject2;
-    }
-    label22:
-    int i;
-    do
-    {
-      String str2;
-      String str1;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return localObject1;
-              paramJSONObject = paramJSONObject.optJSONArray("__nativeBuffers__");
-              localObject1 = localObject2;
-            } while (paramJSONObject == null);
-            localObject1 = localObject2;
-          } while (paramJSONObject.length() == 0);
-          paramJSONObject = paramJSONObject.optJSONObject(0);
-          localObject1 = localObject2;
-        } while (paramJSONObject == null);
-        str2 = paramJSONObject.optString("key");
-        str1 = paramJSONObject.optString("base64");
-        i = paramJSONObject.optInt("id", -1);
-        localObject1 = localObject2;
-      } while (!paramString.equals(str2));
-      paramJSONObject = new beku();
-      if (!TextUtils.isEmpty(str1))
-      {
-        paramJSONObject.jdField_a_of_type_ArrayOfByte = Base64.decode(str1, 2);
-        paramJSONObject.c = b;
-        return paramJSONObject;
-      }
-      localObject1 = paramJSONObject;
-    } while (i == -1);
-    paramJSONObject.jdField_a_of_type_ArrayOfByte = parambegz.a(i);
-    paramJSONObject.c = jdField_a_of_type_Int;
-    return paramJSONObject;
-  }
-  
-  public static void a(begz parambegz, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, String paramString, JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (paramString == null)) {
-      return;
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
-      {
-        JSONArray localJSONArray = new JSONArray();
-        localJSONObject = new JSONObject();
-        localJSONObject.put("key", paramString);
-        if (paramInt3 == b)
-        {
-          localJSONObject.put("base64", Base64.encodeToString(paramArrayOfByte, paramInt1, paramInt2, 2));
-          localJSONArray.put(localJSONObject);
-          paramJSONObject.put("__nativeBuffers__", localJSONArray);
-          return;
-        }
-      }
-      catch (JSONException parambegz)
-      {
-        besl.d("[minigame]", "packNativeBuffer err :", parambegz);
-        return;
-      }
-      if (paramInt3 == jdField_a_of_type_Int) {
-        localJSONObject.put("id", parambegz.a(paramArrayOfByte, paramInt1, paramInt2));
-      }
-    }
-  }
-  
-  public static void a(begz parambegz, byte[] paramArrayOfByte, int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    a(parambegz, paramArrayOfByte, 0, paramArrayOfByte.length, paramInt, paramString, paramJSONObject);
-  }
-  
-  public static boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
+      Log.w("Tissue", "basePath is empty");
       return false;
     }
-    return paramJSONObject.has("__nativeBuffers__");
-  }
-  
-  public static byte[] a(JSONArray paramJSONArray)
-  {
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
+    Object localObject = new File(paramString1);
+    if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()))
     {
-      paramJSONArray = paramJSONArray.optJSONObject(0);
-      if (paramJSONArray != null)
-      {
-        paramJSONArray = paramJSONArray.optString("base64");
-        if (!TextUtils.isEmpty(paramJSONArray)) {
-          return Base64.decode(paramJSONArray, 0);
-        }
-      }
+      Log.w("Tissue", localObject + " not exists or not a dir");
+      return false;
     }
-    return null;
+    localObject = EngineVersion.a(((File)localObject).getName());
+    betc.b("Tissue", "currentVersion:" + localObject + ",requiredVersion:" + paramString2);
+    if ((localObject != null) && (EngineVersion.a(((EngineVersion)localObject).b, paramString2) >= 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (!bool)
+      {
+        betc.b("Tissue", "versionCheck:" + bool);
+        return false;
+      }
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString2 = new File(paramString1, paramArrayOfString[i]);
+        if (!paramString2.exists())
+        {
+          Log.w("Tissue", paramString2.getAbsolutePath() + " not exists");
+          return false;
+        }
+        if (!paramString2.isFile())
+        {
+          Log.w("Tissue", paramString2.getAbsolutePath() + " not a file");
+          return false;
+        }
+        if (!paramString2.canRead())
+        {
+          Log.w("Tissue", paramString2.getAbsolutePath() + " not readable");
+          return false;
+        }
+        i += 1;
+      }
+      Log.i("Tissue", paramString1 + " is fine");
+      return true;
+    }
   }
 }
 

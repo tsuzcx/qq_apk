@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Build.VERSION;
+import android.os.Process;
+import com.tencent.common.config.AppSetting;
 
-class axnh
-  implements axne
+public class axnh
 {
-  axnh(axng paramaxng, axna paramaxna) {}
+  private static Boolean a;
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public static boolean a()
   {
-    synchronized (axng.a(this.jdField_a_of_type_Axng))
+    if (a == null)
     {
-      Object localObject2 = (List)axng.a(this.jdField_a_of_type_Axng).get(this.jdField_a_of_type_Axna);
-      axng.a(this.jdField_a_of_type_Axng).remove(this.jdField_a_of_type_Axna);
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_Axna + ",ls=" + localObject2);
+      if (Build.VERSION.SDK_INT >= 21) {
+        break label28;
       }
-      if (localObject2 != null)
-      {
-        ??? = ((List)localObject2).iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localObject2 = (axne)((Iterator)???).next();
-          if (localObject2 != null) {
-            ((axne)localObject2).onLoadResult(paramInt, paramLoadExtResult);
-          }
-        }
+      a = Boolean.valueOf(false);
+    }
+    for (;;)
+    {
+      return a.booleanValue();
+      label28:
+      if (Build.VERSION.SDK_INT >= 23) {
+        a = Boolean.valueOf(Process.is64Bit());
+      } else {
+        a = Boolean.valueOf(AppSetting.b);
       }
     }
   }

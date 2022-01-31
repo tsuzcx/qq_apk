@@ -1,25 +1,25 @@
-import com.tencent.av.ui.VideoLayerUIBase;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class mli
-  implements Observer
+  extends lfb
 {
-  private WeakReference<VideoLayerUIBase> a;
+  public mli(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public mli(VideoLayerUIBase paramVideoLayerUIBase)
+  protected void a(long paramLong1, long paramLong2)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void b(long paramLong1, long paramLong2)
   {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
     }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
+    this.a.i();
   }
 }
 

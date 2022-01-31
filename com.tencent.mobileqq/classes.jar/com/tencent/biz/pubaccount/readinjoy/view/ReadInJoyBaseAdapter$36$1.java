@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import java.util.ArrayList;
-import rap;
-import rbi;
+import ram;
+import rbf;
 
 public class ReadInJoyBaseAdapter$36$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$36$1(rbi paramrbi) {}
+  public ReadInJoyBaseAdapter$36$1(rbf paramrbf) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    this.a.jdField_a_of_type_Rap.a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
+    this.a.jdField_a_of_type_Ram.a(this.a.jdField_a_of_type_Int, localArrayList, new ArrayList(), null, true);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aofy;
-import aogh;
+import aogd;
+import aogm;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniAppRecommInfo
-  extends aogh
+  extends aogm
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new aofy();
+  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new aogd();
   public List<MiniAppRecommInfo.MiniApp> appInfoList = new ArrayList();
   public long cacheValidTime = System.currentTimeMillis() / 1000L + 3600L;
-  public String headDesc = ajyc.a(2131706831);
+  public String headDesc = ajya.a(2131706842);
   
   public MiniAppRecommInfo() {}
   

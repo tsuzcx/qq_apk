@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
 
 class abem
-  implements DialogInterface.OnClickListener
+  implements agjv
 {
-  abem(abel paramabel) {}
+  abem(abeh paramabeh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.p();
-    axqw.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
-    if (this.a.a.a.b) {
-      new axra(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
+    if (paramBoolean)
+    {
+      bcql.a(this.a.a.getApplicationContext(), 1, ajya.a(2131704901), 0).a();
+      return;
     }
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 

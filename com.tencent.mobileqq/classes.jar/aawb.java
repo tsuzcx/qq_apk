@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
 
 public class aawb
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public aawb(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public aawb(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.c);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
+      }
+    }
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
+      return true;
+    }
   }
 }
 

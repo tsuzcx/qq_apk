@@ -1,28 +1,17 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class meq
-  extends lgl
+  implements DialogInterface.OnCancelListener
 {
-  public meq(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public meq(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  protected void a(long paramLong, int paramInt, String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
-    if (TextUtils.equals(this.a.c, paramString))
-    {
-      this.a.b("VideoObserver_onClose");
-      this.a.a(paramLong, paramInt);
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickCancel", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickCancel");
+    bbgg.a(false);
   }
 }
 

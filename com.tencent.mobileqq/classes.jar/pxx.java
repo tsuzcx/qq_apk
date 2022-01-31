@@ -1,55 +1,32 @@
-import android.os.Looper;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pxx
-  extends osp
+  implements View.OnClickListener
 {
-  public pxx(ComponentHeaderUgc paramComponentHeaderUgc) {}
+  public pxx(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
+    int i = 0;
+    nuq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
     }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
+    try
     {
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      nol.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
       return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = this.a.jdField_a_of_type_Pvb.a.a();
-    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131702284));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-      localArticleInfo.mSocialFeedInfo.h = 2;
-      localArticleInfo.isNeedShowBtnWhenFollowed = true;
     }
-    for (;;)
+    catch (JSONException paramView)
     {
-      osm.a().b();
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131702289));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-      localArticleInfo.mSocialFeedInfo.h = 1;
+      paramView.printStackTrace();
     }
   }
 }

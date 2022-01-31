@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tts;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class SilkStreamPlayer$SilkStreamPlayerThread$2
@@ -11,7 +11,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread$2
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.context, ajyc.a(2131714156), 0).a();
+    bcql.a(BaseApplicationImpl.context, ajya.a(2131714167), 0).a();
   }
 }
 

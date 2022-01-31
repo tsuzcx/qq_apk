@@ -1,8 +1,6 @@
-import android.view.MotionEvent;
-
-abstract interface bfxs
+public abstract interface bfxs
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public abstract void l(boolean paramBoolean);
 }
 
 

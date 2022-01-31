@@ -1,59 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class nvq
-  implements INetInfoHandler
+  implements TopGestureLayout.OnGestureListener
 {
-  private nvq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nvq(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onNetMobile2None()
+  public void flingLToR()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
-    }
-    this.a.b(false);
+    ReadInJoyChannelActivity.a(this.a, true);
+    this.a.finish();
   }
   
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
-    }
-    this.a.d(true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
-    }
-    this.a.c(false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
-    }
-    this.a.d(false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
-    }
-    this.a.c(true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
-    }
-    this.a.b(true);
-  }
+  public void flingRToL() {}
 }
 
 

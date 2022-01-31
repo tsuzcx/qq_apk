@@ -1,19 +1,22 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class ucw
-  extends DataSetObserver
+  implements Comparator<View>
 {
-  private ucw(XViewPager paramXViewPager) {}
-  
-  public void onChanged()
+  public int a(View paramView1, View paramView2)
   {
-    this.a.b();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.b();
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.mobileqq.webview.utils;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import axpw;
-import bcgl;
+import axpy;
+import bcgz;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
 public class WebStateReporter$2
   implements Runnable
 {
-  public WebStateReporter$2(bcgl parambcgl, String paramString, long paramLong, int paramInt) {}
+  public WebStateReporter$2(bcgz parambcgz, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
     int i;
-    if (bcgl.a.containsKey(this.jdField_a_of_type_JavaLangString))
+    if (bcgz.a.containsKey(this.jdField_a_of_type_JavaLangString))
     {
-      i = ((Integer)bcgl.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
-      if ((1 != i) && (this.jdField_a_of_type_Long % i != bcgl.c)) {
+      i = ((Integer)bcgz.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
+      if ((1 != i) && (this.jdField_a_of_type_Long % i != bcgz.c)) {
         break label63;
       }
       i = 1;
@@ -75,7 +75,7 @@ public class WebStateReporter$2
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(str1).append("|");
       ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      axpw.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
+      axpy.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
       return;
     }
   }

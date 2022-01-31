@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
-import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.BaseButton;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
 public class bjqh
-  implements DialogInterface.OnCancelListener
+  extends AnimatorListenerAdapter
 {
-  public bjqh(LightWeightSoDownloadUnit.4 param4) {}
+  public bjqh(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView 190ms all end ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    }
+    this.a.jdField_a_of_type_Bjqs.d = 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner captureView begin  ScaleX:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleX() + " ScaleY:" + this.a.jdField_a_of_type_DovComQqImPtvBaseButton.getScaleY());
+    }
   }
 }
 

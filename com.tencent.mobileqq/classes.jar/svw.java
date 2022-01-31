@@ -1,13 +1,30 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class svw
+public class svw
+  extends QQUIEventReceiver<svl, swo>
 {
-  public StoryVideoItem a;
-  public StoryVideoItem b;
-  
-  public String toString()
+  public svw(@NonNull svl paramsvl)
   {
-    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+    super(paramsvl);
+  }
+  
+  public void a(@NonNull svl paramsvl, @NonNull swo paramswo)
+  {
+    if (paramswo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ved.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramswo.jdField_a_of_type_JavaLangString, paramswo.b);
+      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramsvl, paramswo), 0);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return swo.class;
   }
 }
 

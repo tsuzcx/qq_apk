@@ -1,18 +1,26 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 class arbq
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  arbq(arbn paramarbn) {}
+  arbq(arbp paramarbp) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    this.a.c = 7;
-    if (arbn.a(this.a) != null) {
-      arbn.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 

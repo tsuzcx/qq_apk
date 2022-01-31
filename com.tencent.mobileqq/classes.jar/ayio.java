@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
 
 public class ayio
-  implements Comparator<PadInfo>
+  implements View.OnClickListener
 {
-  public ayio(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  public ayio(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
   
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  public void onClick(View paramView)
   {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+    bbkb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
   }
 }
 

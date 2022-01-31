@@ -1,20 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.3;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
+import java.util.List;
 
 public class bjay
-  implements aysa
+  implements View.OnClickListener
 {
-  public bjay(QIMCaptureBannerManager.3 param3) {}
+  public bjay(CaptureModeAdapter paramCaptureModeAdapter) {}
   
-  public void onResp(aysx paramaysx)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMCaptureBannerManager", 2, "onResp url: " + this.a.a.imgUrl + " resultcode: " + paramaysx.c);
-    }
+    Integer localInteger = (Integer)paramView.getTag();
+    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
+    do
+    {
+      return;
+      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
+      CaptureModeAdapter.a(this.a, localInteger.intValue());
+    } while (CaptureModeAdapter.a(this.a) == null);
+    CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

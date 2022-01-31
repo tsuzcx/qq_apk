@@ -1,100 +1,125 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.opengl.GLES20;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.util.MustRunOnGLThread;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.text.TextUtils;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class biqu
 {
-  public static boolean a;
-  private int a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private static bjor<Boolean> a = new bjor();
+  private static bjor<Boolean> b = new bjor();
+  private static bjor<Boolean> c = new bjor();
   
-  public biqu()
+  public static bjor<Boolean> a()
   {
-    jdField_a_of_type_Boolean = false;
+    return a;
   }
   
-  public int a()
+  public static GetCategoryMaterialRsp a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @MustRunOnGLThread
-  public void a()
-  {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_c_of_type_Int = arrayOfInt[0];
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @MustRunOnGLThread
-  public void b()
-  {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_c_of_type_Int;
-    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @MustRunOnGLThread
-  public void c()
-  {
-    if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {}
-    Bitmap localBitmap1;
-    do
-    {
-      return;
-      localBitmap1 = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), "/sdcard/Tencent/aekit/test.png", 1);
-    } while (!BitmapUtils.isLegal(localBitmap1));
-    Bitmap localBitmap2;
-    if (Math.abs(localBitmap1.getHeight() / localBitmap1.getWidth() - 1.777778F) > 0.0001D)
-    {
-      int i = (int)(localBitmap1.getWidth() * 16.0F / 9.0F);
-      localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth(), i, Bitmap.Config.ARGB_8888);
-      localBitmap2.eraseColor(-1);
-      Canvas localCanvas = new Canvas(localBitmap2);
-      Paint localPaint = new Paint(6);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawBitmap(localBitmap1, 0.0F, (i - localBitmap1.getHeight()) / 2, localPaint);
-      GlUtil.loadTexture(this.jdField_c_of_type_Int, localBitmap2);
-      localBitmap1.recycle();
-      localBitmap2.recycle();
-      this.jdField_a_of_type_Int = localBitmap2.getWidth();
+    Object localObject = bbdx.a(new File(biiw.a));
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = (GetCategoryMaterialRsp)new Gson().fromJson((String)localObject, GetCategoryMaterialRsp.class);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    for (this.jdField_b_of_type_Int = localBitmap2.getHeight();; this.jdField_b_of_type_Int = localBitmap1.getHeight())
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return;
-      GlUtil.loadTexture(this.jdField_c_of_type_Int, localBitmap1);
-      localBitmap1.recycle();
-      this.jdField_a_of_type_Int = localBitmap1.getWidth();
+    return new GetCategoryMaterialRsp();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    paramContext = bjaa.a().a("CameraModuleSvc.GetCameraConfig", "", 4);
+    if (!TextUtils.isEmpty(paramContext)) {
+      return paramContext;
     }
+    return "";
+  }
+  
+  public static bjor<Boolean> b()
+  {
+    return b;
+  }
+  
+  public static String b(Context paramContext)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    String str1 = "";
+    for (;;)
+    {
+      try
+      {
+        paramContext = paramContext.getAssets().open("camera_story_default_template.json");
+        localObject1 = paramContext;
+        localObject2 = paramContext;
+        String str2 = nau.a(paramContext);
+        localObject1 = str2;
+        localObject2 = localObject1;
+      }
+      catch (Throwable paramContext)
+      {
+        localObject2 = localObject1;
+        paramContext.printStackTrace();
+        localObject2 = str1;
+        if (localObject1 == null) {
+          continue;
+        }
+        try
+        {
+          ((InputStream)localObject1).close();
+          return "";
+        }
+        catch (IOException paramContext)
+        {
+          paramContext.printStackTrace();
+          return "";
+        }
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label88;
+        }
+      }
+      try
+      {
+        paramContext.close();
+        localObject2 = localObject1;
+        return localObject2;
+      }
+      catch (IOException paramContext)
+      {
+        paramContext.printStackTrace();
+        return localObject1;
+      }
+    }
+    try
+    {
+      ((InputStream)localObject2).close();
+      label88:
+      throw paramContext;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        localIOException.printStackTrace();
+      }
+    }
+  }
+  
+  public static bjor<Boolean> c()
+  {
+    return c;
   }
 }
 

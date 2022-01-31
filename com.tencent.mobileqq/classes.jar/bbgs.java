@@ -1,35 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-class bbgs
-  implements View.OnClickListener
+public class bbgs
 {
-  int jdField_a_of_type_Int;
+  public float a;
+  public SessionInfo a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e = "";
   
-  public bbgs(bbgg parambbgg, int paramInt)
+  public bbgs(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bbgg.onArrayItemClick != null) {
-      this.jdField_a_of_type_Bbgg.onArrayItemClick.onClick(this.jdField_a_of_type_Bbgg, this.jdField_a_of_type_Bbgg.customWhichToCallBack(this.jdField_a_of_type_Int));
-    }
-    try
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("appName");
+    this.b = paramBundle.getString("appView");
+    this.c = paramBundle.getString("appMinVersion");
+    this.d = paramBundle.getString("metaData");
+    this.jdField_a_of_type_Float = paramBundle.getFloat("scale", 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    paramBundle = paramBundle.getString("troopUin");
+    if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_Bbgg.isShowing()) {
-        this.jdField_a_of_type_Bbgg.dismiss();
-      }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
     }
-    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbgs
  * JD-Core Version:    0.7.0.1
  */

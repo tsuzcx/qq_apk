@@ -1,33 +1,37 @@
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.HorizontalListView;
 
-class bboq
-  implements MediaPlayer.OnCompletionListener
+public class bboq
+  extends RecyclerView.ViewHolder
+  implements AdapterView.OnItemClickListener
 {
-  bboq(bbop parambbop, AudioManager paramAudioManager) {}
+  bboj jdField_a_of_type_Bboj;
+  bboo jdField_a_of_type_Bboo;
+  bbop jdField_a_of_type_Bbop;
+  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   
-  public void onCompletion(MediaPlayer arg1)
+  public bboq(View paramView, bboo parambboo, bbop parambbop, bboj parambboj)
   {
-    synchronized (this.jdField_a_of_type_Bbop.jdField_a_of_type_JavaLangObject)
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364385));
+    this.jdField_a_of_type_Bbop = parambbop;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bbop);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
+    this.jdField_a_of_type_Bboo = parambboo;
+    this.jdField_a_of_type_Bboj = parambboj;
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.jdField_a_of_type_Bbop.a(paramInt);
+    this.jdField_a_of_type_Bboj.a(-1);
+    if (this.jdField_a_of_type_Bboo != null)
     {
-      ???.release();
-      this.jdField_a_of_type_Bbop.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Bbop.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bbop.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_Bbop.c.setImageDrawable(this.jdField_a_of_type_Bbop.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130846172));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_Bbop.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    synchronized (this.jdField_a_of_type_Bbop.jdField_a_of_type_Bbow)
-    {
-      this.jdField_a_of_type_Bbop.jdField_a_of_type_Bbow.jdField_a_of_type_Int = 6;
-      return;
-      ??? = finally;
-      throw ???;
+      paramAdapterView = new bbol(2, null, ((Integer)this.jdField_a_of_type_Bbop.getItem(paramInt)).intValue(), null);
+      this.jdField_a_of_type_Bboo.a(paramAdapterView);
     }
   }
 }

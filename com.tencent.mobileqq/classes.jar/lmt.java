@@ -1,23 +1,28 @@
 import java.io.BufferedReader;
 
 public class lmt
+  extends lmo
 {
-  boolean a;
-  boolean b;
+  int a;
+  int b = 0;
+  boolean c;
+  
+  public lmt()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
   
   public void a(BufferedReader paramBufferedReader)
   {
-    if (!this.b)
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
-      this.a = lmq.a(paramBufferedReader, "active");
       return;
-    }
-    this.a = true;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+      this.jdField_a_of_type_Int = lms.a(lml.a(paramBufferedReader, "shape"));
+    } while (this.jdField_a_of_type_Int != 3);
+    this.c = lml.a(paramBufferedReader, "edges");
+    this.b = lmr.a(lml.a(paramBufferedReader, "side"));
   }
 }
 

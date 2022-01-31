@@ -4,7 +4,7 @@ import android.view.View.OnClickListener;
 class azbp
   implements View.OnClickListener
 {
-  azbp(azbm paramazbm) {}
+  azbp(azbo paramazbo) {}
   
   public void onClick(View paramView) {}
 }

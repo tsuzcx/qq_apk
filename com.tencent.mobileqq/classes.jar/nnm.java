@@ -1,17 +1,16 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nnm
-  extends BroadcastReceiver
+  implements DialogInterface.OnCancelListener
 {
-  public nnm(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public nnm(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

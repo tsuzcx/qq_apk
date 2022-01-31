@@ -1,8 +1,30 @@
 import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordConfig;
 
-public final class axoz
+public class axoz
+  implements IRecordConfig
 {
-  public static final RecordTracer a = new RecordTracer();
+  public axoz(RecordTracer paramRecordTracer) {}
+  
+  public int getCachedEventSize()
+  {
+    return 0;
+  }
+  
+  public String getTitleBarId()
+  {
+    return "com.tencent.mobileqq:id/ivTitleName";
+  }
+  
+  public boolean isEnableRelease()
+  {
+    return true;
+  }
+  
+  public boolean isFilterUGC()
+  {
+    return false;
+  }
 }
 
 

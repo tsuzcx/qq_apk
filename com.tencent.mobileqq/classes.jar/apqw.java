@@ -1,67 +1,22 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class apqw
-  implements GestureDetector.OnGestureListener
+  implements bfph
 {
-  private apqw(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
+  public apqw(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bfpc parambfpc) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+    switch (paramInt)
     {
-      paramMotionEvent1 = this.a.a.b();
-      if (paramFloat2 <= 0.0F) {
-        break label97;
-      }
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(8);
-      }
-      if (this.a.a.jdField_a_of_type_Apxa != null) {
-        this.a.a.jdField_a_of_type_Apxa.b(true);
-      }
-      if (this.a.a.jdField_a_of_type_Apwy != null) {
-        this.a.a.jdField_a_of_type_Apwy.b(true);
-      }
+    default: 
+      return;
     }
-    label97:
-    do
-    {
-      do
-      {
-        return false;
-      } while (paramFloat2 >= 0.0F);
-      if (paramMotionEvent1 != null) {
-        paramMotionEvent1.setVisibility(0);
-      }
-      if (this.a.a.jdField_a_of_type_Apxa != null) {
-        this.a.a.jdField_a_of_type_Apxa.a(true);
-      }
-    } while (this.a.a.jdField_a_of_type_Apwy == null);
-    this.a.a.jdField_a_of_type_Apwy.a(true);
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    ayee.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

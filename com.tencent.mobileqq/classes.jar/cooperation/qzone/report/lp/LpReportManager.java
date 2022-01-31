@@ -3,7 +3,7 @@ package cooperation.qzone.report.lp;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import bhkw;
+import bhln;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -306,7 +306,7 @@ public class LpReportManager
     }
     for (;;)
     {
-      bhkw.a().a();
+      bhln.a().a();
       return;
       QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
       continue;

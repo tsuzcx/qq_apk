@@ -1,9 +1,8 @@
 import android.graphics.Bitmap;
-import java.net.URL;
 
 public abstract interface ayww
 {
-  public abstract Bitmap a(URL paramURL);
+  public abstract Bitmap a(Bitmap paramBitmap);
 }
 
 

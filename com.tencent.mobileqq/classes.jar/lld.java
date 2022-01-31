@@ -1,47 +1,19 @@
-public class lld
+class lld
 {
-  private int jdField_a_of_type_Int;
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
-  private int b;
+  byte jdField_a_of_type_Byte = 0;
+  byte b = 0;
+  byte c = 0;
+  byte d = 0;
+  byte e = 0;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
+  byte j = 0;
+  byte k = 0;
+  byte l = 0;
   
-  public lld()
-  {
-    int i = 0;
-    while (i < 512)
-    {
-      this.jdField_a_of_type_ArrayOfByte[i] = 0;
-      i += 1;
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(byte paramByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
-    this.jdField_a_of_type_Int += 1;
-    this.b += 1;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = (byte)(paramInt & 0xFF);
-    int j = (byte)(paramInt >> 8 & 0xFF);
-    int k = (byte)(paramInt >> 16 & 0xFF);
-    int m = (byte)(paramInt >> 24 & 0xFF);
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    paramInt = this.jdField_a_of_type_Int;
-    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
-    this.jdField_a_of_type_Int += 4;
-    this.b += 4;
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[this.b];
-    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
-    return arrayOfByte;
-  }
+  lld(llc paramllc) {}
 }
 
 

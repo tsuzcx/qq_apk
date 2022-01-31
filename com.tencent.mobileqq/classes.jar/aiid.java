@@ -1,10 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
 
-public final class aiid
-  implements DialogInterface.OnClickListener
+public class aiid
+  extends MqqHandler
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aiid(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
+  }
 }
 
 

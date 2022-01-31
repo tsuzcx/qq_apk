@@ -1,133 +1,92 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.text.TextUtils;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Map;
+import org.json.JSONObject;
 
-public class asnp
-  extends asnt<MessageForPic>
+public abstract class asnp
+  extends asno
 {
-  public asnp(MessageForPic paramMessageForPic)
+  protected MsgBackupResEntity a;
+  protected Map<String, String> a;
+  
+  public asnp(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    super(paramMessageForPic);
+    this.jdField_a_of_type_JavaUtilMap = a(paramMsgBackupResEntity.extraDataStr);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity = paramMsgBackupResEntity;
   }
   
-  protected int a()
+  protected static int a()
   {
-    return 1;
+    return ajsd.aW.length();
   }
   
-  public List<MsgBackupResEntity> a()
+  public static HashMap<String, String> a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    int j;
-    int[] arrayOfInt;
-    label46:
-    int k;
-    int i;
-    label55:
-    int i1;
-    MsgBackupResEntity localMsgBackupResEntity;
-    if (((MessageForPic)this.a).fileSizeFlag == 1)
+    localHashMap = new HashMap();
+    try
     {
-      j = 1;
-      if (j == 0) {
-        break label131;
-      }
-      arrayOfInt = new int[] { 1, 2, 3 };
-      int n = arrayOfInt.length;
-      k = 0;
-      i = 0;
-      if (k >= n) {
-        break label389;
-      }
-      i1 = arrayOfInt[k];
-      localMsgBackupResEntity = a();
-      localMsgBackupResEntity.msgSubType = i1;
-      if (i1 != 1) {
-        break label147;
-      }
-      localObject = "chatraw";
-    }
-    label90:
-    int m;
-    for (;;)
-    {
-      localObject = ((MessageForPic)this.a).getFilePath((String)localObject);
-      if (a((String)localObject)) {
-        break label176;
-      }
-      m = i;
-      label131:
-      label147:
-      do
+      paramString = new JSONObject(paramString);
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
       {
-        k += 1;
-        i = m;
-        break label55;
-        j = 0;
-        break;
-        arrayOfInt = new int[] { 2, 3 };
-        break label46;
-        if (i1 == 2)
-        {
-          localObject = "chatimg";
-          break label90;
-        }
-        m = i;
-      } while (i1 != 3);
-      localObject = "chatthumb";
+        String str = localIterator.next().toString();
+        localHashMap.put(str, paramString.get(str).toString());
+      }
+      return localHashMap;
     }
-    label176:
-    localMsgBackupResEntity.filePath = ((String)localObject);
-    a((String)localObject, localMsgBackupResEntity);
-    Object localObject = a(i1);
-    ((HashMap)localObject).put("selfuin", ((MessageForPic)this.a).selfuin);
-    if (((MessageForPic)this.a).uuid != null) {
-      ((HashMap)localObject).put("uuid", ((MessageForPic)this.a).uuid.toUpperCase());
-    }
-    if (((MessageForPic)this.a).md5 != null) {
-      ((HashMap)localObject).put("md5", ((MessageForPic)this.a).md5.toUpperCase());
-    }
-    if (j != 0)
+    catch (Exception paramString)
     {
-      ((HashMap)localObject).put("isOriginal", "1");
-      label299:
-      if (!((MessageForPic)this.a).checkGif()) {
-        break label386;
-      }
-      if ((i1 != 1) && (i1 != 2)) {
-        break label372;
-      }
-      i = 1;
+      paramString.printStackTrace();
     }
-    label386:
-    for (;;)
-    {
-      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
-      if (QLog.isColorLevel()) {}
-      localArrayList.add(localMsgBackupResEntity);
-      m = i;
-      break;
-      ((HashMap)localObject).put("isOriginal", "0");
-      break label299;
-      label372:
-      if (i != 0) {
-        ((HashMap)localObject).put("hasOriginGif", "1");
-      }
-    }
-    label389:
-    return localArrayList;
   }
+  
+  public abstract aslo a();
+  
+  public abstract String a();
   
   public void a()
   {
-    MessageForPic localMessageForPic = (MessageForPic)this.a;
-    a("packMsg uinType:" + localMessageForPic.istroop);
-    localMessageForPic.richText = localMessageForPic.getRichText();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    a("import resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+    localObject = b();
+    String str = a();
+    try
+    {
+      a(str, (String)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      a("importFile null error ");
+    }
+    int i;
+    do
+    {
+      return;
+      i = bbdx.a(paramString1, paramString2);
+    } while (!QLog.isColorLevel());
+    File localFile = new File(paramString2);
+    paramString2 = new StringBuilder().append("restore,quickMove: ").append(paramString1).append(" to ").append(paramString2).append(" status:").append(i).append(" size:");
+    if ((localFile != null) && (localFile.exists())) {}
+    for (paramString1 = Long.valueOf(localFile.length());; paramString1 = "-1")
+    {
+      a(paramString1);
+      return;
+    }
+  }
+  
+  public abstract String b();
 }
 
 

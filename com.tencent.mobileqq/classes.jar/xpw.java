@@ -1,201 +1,235 @@
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.View;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
 import com.tencent.common.galleryactivity.AnimationView;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.common.galleryactivity.GalleryManager.1;
+import com.tencent.common.galleryactivity.GalleryManager.2;
+import com.tencent.image.QQLiveImage;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class xpw
-  extends xpg
+public abstract class xpw
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  protected AnimationView a;
-  xpm jdField_a_of_type_Xpm;
-  View b;
-  View c;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public xpd a;
+  public xpf a;
+  protected xpj a;
+  public xpk a;
+  private xqb jdField_a_of_type_Xqb;
+  public boolean a;
+  public boolean b;
+  private boolean c;
   
-  public xpw(Activity paramActivity, xpm paramxpm)
+  private void d()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Xpm = paramxpm;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
+    this.jdField_a_of_type_Xpj.a().a = this.jdField_a_of_type_Xpk.a();
+    this.jdField_a_of_type_Xpf.m();
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "startImageListScene");
+    }
+    this.jdField_a_of_type_Xpf.o();
+    this.jdField_a_of_type_Xpf.a.setSelectionToNothing();
+    QQLiveImage.releaseAll(this.jdField_a_of_type_AndroidAppActivity);
   }
   
-  private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, xpy paramxpy, boolean paramBoolean)
+  public RelativeLayout a()
   {
-    if (paramxpy == null) {}
-    Drawable localDrawable;
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_AndroidAppActivity.addContentView(localRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
+    return localRelativeLayout;
+  }
+  
+  public AnimationView a()
+  {
+    AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
+    localAnimationView.setId(2131362548);
+    localAnimationView.setVisibility(4);
+    return localAnimationView;
+  }
+  
+  public xpd a()
+  {
+    return this.jdField_a_of_type_Xpd;
+  }
+  
+  public xpd a(Activity paramActivity, xpj paramxpj)
+  {
+    return new xpt(paramActivity, paramxpj);
+  }
+  
+  public xpf a()
+  {
+    return this.jdField_a_of_type_Xpf;
+  }
+  
+  public abstract xpf a(Activity paramActivity, xpj paramxpj);
+  
+  public abstract xpj a(Activity paramActivity);
+  
+  public xpk a()
+  {
+    return this.jdField_a_of_type_Xpk;
+  }
+  
+  public abstract xpk a(Activity paramActivity, xpj paramxpj);
+  
+  public xqb a()
+  {
+    return this.jdField_a_of_type_Xqb;
+  }
+  
+  public void a()
+  {
+    if (!a()) {}
+    label121:
     do
     {
-      return null;
-      localDrawable = paramxpy.c();
-      paramRect1 = paramxpy.b();
-    } while ((paramRect1 == null) || (localDrawable == null) || (!paramxpy.a(paramBoolean)));
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    if ((paramxpy instanceof aeja)) {}
-    for (paramRect2 = ((aeja)paramxpy).a;; paramRect2 = null)
-    {
-      if ((!bfni.e()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable))) {}
-      for (paramRect1 = xpx.a(k, m, i, j, false, paramRect2);; paramRect1 = null)
+      do
       {
-        if (paramRect1 == null) {
-          paramRect1 = xpx.a(k, m, i, j, paramRect2);
-        }
-        for (;;)
+        do
         {
-          paramRect4.set(paramRect1);
-          return localDrawable;
+          return;
+        } while (a().a());
+        if (this.jdField_a_of_type_Xqb != this.jdField_a_of_type_Xpf) {
+          break label121;
         }
-      }
+        if (this.jdField_a_of_type_Xpk != null) {
+          break;
+        }
+        this.jdField_a_of_type_Xpk = a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Xpj);
+      } while (this.jdField_a_of_type_Xpk == null);
+      this.jdField_a_of_type_Xpk.a(this);
+      this.jdField_a_of_type_Xpk.a(this.jdField_a_of_type_AndroidViewViewGroup);
+      this.jdField_a_of_type_Xpk.a(this);
+      this.jdField_a_of_type_Xpk.k();
+      this.jdField_a_of_type_Xpf.a().post(new GalleryManager.1(this));
+      this.jdField_a_of_type_Xqb = this.jdField_a_of_type_Xpk;
+      return;
+    } while (this.jdField_a_of_type_Xqb != this.jdField_a_of_type_Xpk);
+    this.jdField_a_of_type_Xpf.a().post(new GalleryManager.2(this));
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Xqb != null) {
+      this.jdField_a_of_type_Xqb.a(paramInt1, paramInt2, paramIntent);
     }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Xpj = a(paramActivity);
+    this.jdField_a_of_type_Xpd = a(paramActivity, this.jdField_a_of_type_Xpj);
+    if (this.jdField_a_of_type_Xpf == null)
+    {
+      this.jdField_a_of_type_Xpf = a(paramActivity, this.jdField_a_of_type_Xpj);
+      this.jdField_a_of_type_Xpf.a(this);
+    }
+    if (a()) {
+      this.jdField_a_of_type_AndroidViewViewGroup = a();
+    }
+    this.jdField_a_of_type_Xpf.a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_Xpf.a();
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(a());
+    }
+    this.jdField_a_of_type_Xqb = this.jdField_a_of_type_Xpf;
+    this.b = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_AndroidViewViewGroup != null) && (!this.b) && (Build.VERSION.SDK_INT >= 16)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(4);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if (this.jdField_a_of_type_Xqb != null) {
+      this.jdField_a_of_type_Xqb.a(paramConfiguration);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Xpf.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "startGalleryScene jumpFromImageList:" + paramBoolean);
+    }
+    xpv localxpv = this.jdField_a_of_type_Xpj.a();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Xpf.n();
+      this.jdField_a_of_type_Xpk.a();
+      localxpv.a = this.jdField_a_of_type_Xpk.a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Xpf.b(paramBoolean);
+      return;
+      this.jdField_a_of_type_Xpf.i();
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (this.jdField_a_of_type_Xqb != null) {
+      return this.jdField_a_of_type_Xqb.a(paramInt, paramKeyEvent);
+    }
+    return false;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xpv)localIterator.next()).b();
+    this.jdField_a_of_type_Xqb.p();
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    if ((!this.c) && (this.jdField_a_of_type_Xqb == this.jdField_a_of_type_Xpf)) {
+      a(false);
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.c = true;
   }
   
   public boolean b()
   {
-    boolean bool = true;
-    if (a()) {
+    if (this.jdField_a_of_type_Xqb != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GalleryManager", 2, "onBackEvent, isAnimating: " + this.jdField_a_of_type_Xpd.a());
+      }
+      if ((!a().a()) && (!this.jdField_a_of_type_Xqb.e())) {}
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    xpy localxpy = this.jdField_a_of_type_Xpm.a();
-    if (localxpy == null) {
-      return false;
-    }
-    Rect localRect3 = localxpy.a();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localxpy, true);
-    this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label126:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localxpy.c;
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localxpy.a(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
-      }
-    }
+    return false;
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xpv)localIterator.next()).c();
-    }
+    this.jdField_a_of_type_Xqb.s();
   }
   
-  public boolean c()
+  public void c(Activity paramActivity)
   {
-    if (a()) {
-      return true;
+    if (this.jdField_a_of_type_Xpf != null) {
+      this.jdField_a_of_type_Xpf.f();
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
+    if (this.jdField_a_of_type_Xpk != null) {
+      this.jdField_a_of_type_Xpk.f();
     }
-    Rect localRect2 = new Rect();
-    Rect localRect3 = new Rect();
-    xpy localxpy = this.jdField_a_of_type_Xpm.a();
-    Rect localRect1 = null;
-    if (localxpy != null) {
-      localRect1 = localxpy.a();
-    }
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localxpy, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    if (localDrawable != null)
-    {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label127:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localxpy.c;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localxpy.a(), localxpy.c(), localxpy.d(), this.jdField_a_of_type_Long);
-      if (localRect1 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localxpy.a(), localxpy.c(), localxpy.d(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
-      }
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xpv)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((xpv)localIterator.next()).e();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366897);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362549));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131375491);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362999);
   }
 }
 

@@ -1,40 +1,38 @@
-import com.tencent.biz.pubaccount.PublicAccountManager.4;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public class nog
-  extends akup
+class nog
+  extends BroadcastReceiver
 {
-  public nog(PublicAccountManager.4 param4, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
-  }
+  nog(nnu paramnnu, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Nnu.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
+    }
     try
     {
-      if (paramSosoLbsInfo.a != null)
+      for (;;)
       {
-        double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-        double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-        String str1 = "";
-        if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null) {
-          str1 = "" + paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-        }
-        String str2 = str1;
-        if (paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString != null) {
-          str2 = str1 + paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Nnu.a);
+        label65:
+        this.jdField_a_of_type_Nnu.a = null;
+        return;
+        this.jdField_a_of_type_Nnu.a(str, i, 11, -1, null);
       }
-      return;
     }
-    catch (Exception paramSosoLbsInfo)
+    catch (Exception paramContext)
     {
-      paramSosoLbsInfo.printStackTrace();
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      break label65;
     }
   }
 }

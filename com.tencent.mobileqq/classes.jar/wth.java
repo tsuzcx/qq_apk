@@ -1,27 +1,6 @@
-import android.content.Context;
-import android.view.View;
-
-final class wth
-  implements bfoq
+public abstract interface wth
 {
-  wth(Context paramContext, String paramString, wtk paramwtk, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (wte.a()) {
-      return;
-    }
-    wte.a(true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      wte.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wtk);
-    }
-  }
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

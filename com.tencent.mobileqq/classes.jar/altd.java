@@ -1,80 +1,136 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.utils.SecurityUtile;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class altd
+  extends QQEntityManagerFactory
 {
-  public static int a;
-  private static boolean a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f;
-  public static int g = 1;
-  public static int h = 2;
-  public static int i = 3;
-  
-  public static void a()
+  public altd(String paramString)
   {
-    if (a) {}
-    do
-    {
-      return;
-      a = true;
-    } while (ArkEnvironmentManager.getInstance().isHardwareAcceleration());
-    a(null, "ark.lib.software.rendering", 0, 0, 0, 0, "", "");
+    super(paramString);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    axqw.b(paramQQAppInterface, "CliOper", "", "", "0X800776F", paramString1, paramInt1, 1, paramInt2, Integer.toString(paramInt3), Integer.toString(paramInt4), paramString2, paramString3);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    if ((!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, invalid args, app=%s, opName=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
-      return;
+    System.currentTimeMillis();
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    String str1;
+    Cursor localCursor2;
+    if (localCursor1 != null) {
+      do
+      {
+        if (!localCursor1.moveToNext()) {
+          break;
+        }
+        str1 = SecurityUtile.b(localCursor1.getString(0));
+        localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str1 });
+      } while (localCursor2 == null);
     }
-    ArkAppCenter.c("ArkApp.DataReport", String.format("appInsideClickReport, app=%s, op-name=%s, entry=%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
-    axpp.a(paramQQAppInterface, paramString1, "__app__", paramString2, 0L, paramInt, 0L, 0L, 0L, "", "");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, String paramString3, String paramString4)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (!ArkAppMgr.isValidAppName(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, invalid args, app-name=%s, op-name=%s", new Object[] { paramString1, paramString2 }));
-      return;
-    }
-    if (!"HTTPTaskResult".equals(paramString2)) {
-      ArkAppCenter.c("ArkApp.DataReport", String.format("platformEventReport, app=%s, op-name=%s, entry=%d, result=%d, r1=%d, r2=%d, r3=%s, r4=%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), paramString3, paramString4 }));
-    }
-    axpp.a(paramQQAppInterface, paramString1, "__platform__", paramString2, paramInt1, paramInt2, paramLong1, paramLong2, paramLong3, paramString3, paramString4);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    if (paramString3 == null) {
-      paramString3 = "";
-    }
+    label395:
     for (;;)
     {
-      a(paramQQAppInterface, paramString2, paramString1, 0, paramInt3, 0L, paramInt1, paramInt2, paramString3, "");
-      return;
+      Field localField;
+      int i;
+      boolean bool;
+      try
+      {
+        Object localObject = aulp.a(Class.forName(paramString + "." + str1));
+        if (localCursor2.moveToFirst())
+        {
+          String[] arrayOfString = SecurityUtile.b(localCursor2.getString(0)).split(",");
+          localObject = ((List)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            localField = (Field)((Iterator)localObject).next();
+            i = 1;
+            if (i >= arrayOfString.length) {
+              break label395;
+            }
+            String str2 = arrayOfString[i].trim().split(" ")[0];
+            if (!localField.getName().equals(str2)) {
+              break label279;
+            }
+            i = 1;
+            if (i != 0) {
+              continue;
+            }
+            if (!localField.isAnnotationPresent(aulw.class)) {
+              break label286;
+            }
+            i = 0;
+            bool = true;
+            localArrayList.add(aulp.a(str1, localField.getName(), (String)aulp.a.get(localField.getType()), bool, i));
+            continue;
+          }
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localCursor2.close();
+      }
+      label279:
+      i += 1;
+      continue;
+      label286:
+      if (localField.isAnnotationPresent(aulv.class))
+      {
+        i = ((aulv)localField.getAnnotation(aulv.class)).a();
+        bool = true;
+        continue;
+        localCursor1.close();
+        com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+        paramSQLiteDatabase.beginTransaction();
+        try
+        {
+          paramString = localArrayList.iterator();
+          while (paramString.hasNext()) {
+            paramSQLiteDatabase.execSQL((String)paramString.next());
+          }
+          paramSQLiteDatabase.setTransactionSuccessful();
+        }
+        finally
+        {
+          paramSQLiteDatabase.endTransaction();
+          com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+        }
+        paramSQLiteDatabase.endTransaction();
+        com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+      }
+      else
+      {
+        i = 0;
+        bool = false;
+        continue;
+        i = 0;
+      }
     }
   }
   
-  public static void a(String paramString)
+  public akfu build(String paramString)
   {
-    a(null, paramString, 0, 0, 0, 0, "", "");
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "arkapp_" + paramString + ".db", null, 1);
+      this.dbHelper = new akfu(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    a(getPackageName(), paramSQLiteDatabase);
   }
 }
 

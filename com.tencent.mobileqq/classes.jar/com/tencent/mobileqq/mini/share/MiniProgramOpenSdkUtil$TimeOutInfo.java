@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.share;
 
-import bcpq;
+import bcqf;
 
 class MiniProgramOpenSdkUtil$TimeOutInfo
 {
   boolean isTimeout;
-  bcpq progressDialog;
+  bcqf progressDialog;
 }
 
 

@@ -1,24 +1,16 @@
 import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class azie
-  implements URLDrawable.DownloadListener
+  implements azih
 {
-  public azie(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azif paramazif) {}
+  public azie(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Azif.a(null);
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    Bitmap localBitmap = bdhr.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Azif.a(localBitmap);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcww);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

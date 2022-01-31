@@ -1,19 +1,27 @@
-import android.content.res.Resources;
 import android.os.Handler;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.XEditTextEx;
 
-public abstract interface anfh
+class anfh
+  implements View.OnClickListener
 {
-  public abstract Resources a();
+  anfh(anfe paramanfe, String paramString) {}
   
-  public abstract Handler a();
-  
-  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onClick(View paramView)
+  {
+    anfe.a(this.jdField_a_of_type_Anfe).removeCallbacks(anfe.a(this.jdField_a_of_type_Anfe));
+    anfe.a(this.jdField_a_of_type_Anfe).run();
+    int i = anfe.a(this.jdField_a_of_type_Anfe).getSelectionStart();
+    paramView = anfe.a(this.jdField_a_of_type_Anfe).getEditableText();
+    if ((i < 0) || (i >= paramView.length()))
+    {
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

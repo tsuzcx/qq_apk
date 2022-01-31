@@ -1,18 +1,22 @@
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class abwz
-  extends akfz
+class abwz
+  implements QQPermissionCallback
 {
-  public abwz(QQSettingMe paramQQSettingMe) {}
+  abwz(abwy paramabwy) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
-    }
-    this.a.c(this.a.a.getCurrentAccountUin());
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
+    bbdj.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
+    this.a.a.g();
   }
 }
 

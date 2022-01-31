@@ -1,65 +1,36 @@
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class ugv
-  extends QQUIEventReceiver<ugn, ttd>
+public final class ugv
+  extends QQUIEventReceiver<ugk, tjo>
 {
-  public ugv(@NonNull ugn paramugn)
+  public ugv(@NonNull ugk paramugk)
   {
-    super(paramugn);
+    super(paramugk);
   }
   
-  public void a(@NonNull ugn paramugn, @NonNull ttd paramttd)
+  public void a(@NonNull ugk paramugk, @NonNull tjo paramtjo)
   {
-    if (TextUtils.equals(String.valueOf(paramugn.hashCode()), paramttd.jdField_a_of_type_JavaLangString)) {
-      b(paramugn, paramttd);
+    if ((paramtjo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjo.jdField_a_of_type_JavaUtilList != null) && (paramugk.a != null))
+    {
+      paramtjo = paramtjo.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtjo.hasNext())
+      {
+        tec localtec = (tec)paramtjo.next();
+        if (TextUtils.equals(paramugk.a.b, localtec.a)) {
+          paramugk.i();
+        }
+      }
     }
   }
   
   public Class acceptEventClass()
   {
-    return ttd.class;
-  }
-  
-  public void b(ugn paramugn, ttd paramttd)
-  {
-    paramugn = ((StoryPlayerGroupHolder)paramugn.a()).a();
-    if (paramugn != null) {
-      paramugn.c(false);
-    }
-    if (paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = tsu.a(paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramttd.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701164), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramugn = "2";; paramugn = "1")
-      {
-        vel.a("play_video", "down_suc", 0, 0, new String[] { paramugn, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        bcpw.a(BaseApplicationImpl.getContext(), 2, sxp.a(2131699708), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramugn = "2";; paramugn = "1")
-    {
-      vel.a("play_video", "down_fail", 0, 0, new String[] { paramugn, "", "", paramttd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701165), 0).a();
-      return;
-    }
+    return tjo.class;
   }
 }
 

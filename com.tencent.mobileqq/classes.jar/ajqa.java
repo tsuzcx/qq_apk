@@ -1,91 +1,38 @@
-import android.content.Context;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
 
 public class ajqa
-  extends bbqu
+  implements OnCompositionLoadedListener
 {
-  public ajqa(ApolloLinearLayout paramApolloLinearLayout) {}
+  public ajqa(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
   
-  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {}
-    label596:
-    for (;;)
-    {
-      return;
-      Object localObject = new ApolloActionData();
-      paramObject = (HashMap)paramObject;
-      String str = (String)paramObject.get("optFrom");
-      if ((!TextUtils.isEmpty(str)) && ("actionPanel".equals(str)))
-      {
-        int i = Integer.parseInt((String)paramObject.get("id"));
-        ((ApolloActionData)localObject).actionId = i;
-        localObject = this.a.a((ApolloActionData)localObject);
-        if (localObject != null)
-        {
-          ((ImageView)((View)localObject).findViewById(2131377346)).setVisibility(8);
-          ((View)localObject).setClickable(true);
-          if (this.a.b.incrementAndGet() == this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-            this.a.b.set(0);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bbqu);
-          }
-          if (paramBoolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth success actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "toast");
-            paramObject.put("tips", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131690070));
-            ((bbqp)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "obtained action");
-          }
-          for (;;)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-              break label596;
-            }
-            localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-            if (localObject == null) {
-              break;
-            }
-            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_show", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + i, "0" });
-            localObject = ((MqqHandler)localObject).obtainMessage(45);
-            ((Message)localObject).obj = paramObject;
-            ((Message)localObject).sendToTarget();
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloLinearLayout", 2, "action auth fail actionid=" + i);
-            }
-            paramObject.put("APOLLO_POP_TYPE", "dialog");
-            paramObject.put("feeType", String.valueOf(6));
-            paramObject.put("title", ajyc.a(2131700451));
-            if (TextUtils.isEmpty((String)paramObject.get("content"))) {
-              paramObject.put("content", ajyc.a(2131700450));
-            }
-            paramObject.put("rightString", ajyc.a(2131700452));
-            paramObject.put("isActionBack", "true");
-            paramObject.put("actionId", "" + i);
-          }
-        }
+    if (paramLottieComposition == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
       }
     }
+    do
+    {
+      return;
+      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ajqb(this));
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    }
+    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
   }
 }
 

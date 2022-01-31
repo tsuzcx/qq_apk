@@ -1,35 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class ailv
-  implements bfoq
+public class ailv
 {
-  ailv(ailu paramailu, boolean paramBoolean, Friends paramFriends, bfol parambfol) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (!bbev.g(this.jdField_a_of_type_Ailu.a)) {
-      bcpw.a(this.jdField_a_of_type_Ailu.a, 1, 2131692321, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      paramView = (FriendListHandler)ailu.a(this.jdField_a_of_type_Ailu).a(1);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        axqw.b(ailu.a(this.jdField_a_of_type_Ailu), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        axqw.b(ailu.a(this.jdField_a_of_type_Ailu), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public int a;
+  public CheckBox a;
+  public ProgressBar a;
+  public SimpleTextView a;
+  public SingleLineTextView a;
+  public StringBuilder a;
+  public SingleLineTextView b;
 }
 
 

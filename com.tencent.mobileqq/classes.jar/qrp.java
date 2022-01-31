@@ -1,19 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-public class qrp
-  implements View.OnLayoutChangeListener
+class qrp
+  implements rah
 {
-  public qrp(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  qrp(qro paramqro) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(View paramView)
   {
-    this.a.removeOnLayoutChangeListener(this);
-    if (VideoFeedsRecyclerView.a(this.a) != null) {
-      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
-    }
+    paramView.setTag(new qmi(paramView, 6));
   }
 }
 

@@ -1,24 +1,32 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.util.ArrayList;
 
 class aynd
-  extends ajxl
+  implements bial
 {
-  aynd(ayna paramayna) {}
+  aynd(aync paramaync) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    QLog.i("TogetherControlManager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
+    QLog.d("TogetherControlManager", 2, new Object[] { "ongetAdvs result:", Boolean.valueOf(paramBoolean), " rsp:", paramGetAdsRsp.toString() });
     if (paramBoolean)
     {
-      Iterator localIterator = ayna.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((aynl)((Map.Entry)localIterator.next()).getValue()).a(paramObject);
+      paramGetAdsRsp = aynj.a(paramBoolean, paramGetAdsRsp);
+      if (paramGetAdsRsp != null)
+      {
+        this.a.a.add(paramGetAdsRsp);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        URLDrawable.getDrawable(paramGetAdsRsp.c, localURLDrawableOptions).startDownload();
       }
     }
+    else
+    {
+      return;
+    }
+    QLog.d("TogetherControlManager", 2, "ongetAdvs banner is null");
   }
 }
 

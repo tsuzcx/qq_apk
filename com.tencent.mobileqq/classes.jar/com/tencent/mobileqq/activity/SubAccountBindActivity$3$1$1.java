@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import acdv;
-import acdw;
+import acdr;
+import acds;
 import android.content.Intent;
 import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class SubAccountBindActivity$3$1$1
   implements Runnable
 {
-  public SubAccountBindActivity$3$1$1(acdw paramacdw) {}
+  public SubAccountBindActivity$3$1$1(acds paramacds) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Acdv.a.c();
-    this.a.jdField_a_of_type_Acdv.a.b(this.a.jdField_a_of_type_Acdv.a.getString(2131719904));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Acdv.a, SubLoginActivity.class);
+    this.a.jdField_a_of_type_Acdr.a.c();
+    this.a.jdField_a_of_type_Acdr.a.b(this.a.jdField_a_of_type_Acdr.a.getString(2131719915));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Acdr.a, SubLoginActivity.class);
     localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Acdv.a.b);
-    this.a.jdField_a_of_type_Acdv.a.startActivity(localIntent);
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Acdr.a.b);
+    this.a.jdField_a_of_type_Acdr.a.startActivity(localIntent);
   }
 }
 

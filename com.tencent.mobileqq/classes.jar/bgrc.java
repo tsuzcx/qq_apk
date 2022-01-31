@@ -1,22 +1,34 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.RemoteException;
+import cooperation.qqfav.ipc.QfavRemoteProxyForQQ.1;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bgrc
-  extends amgr
 {
-  public bgrc(LocationDetailActivity paramLocationDetailActivity) {}
+  protected bgqz a;
+  public ConcurrentLinkedQueue<bgre> a;
+  protected boolean a;
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  private void a(bgre parambgre)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
+    if ((this.a != null) && (parambgre != null))
     {
-      axqw.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
+      Looper localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
+        new Handler(localLooper).post(new QfavRemoteProxyForQQ.1(this, parambgre));
+      }
+    }
+    else
+    {
       return;
     }
-    axqw.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
+    try
+    {
+      this.a.a(parambgre.jdField_a_of_type_Int, parambgre.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (RemoteException parambgre) {}
   }
 }
 

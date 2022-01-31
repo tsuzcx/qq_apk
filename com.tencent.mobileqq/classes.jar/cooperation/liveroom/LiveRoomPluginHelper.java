@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcbg;
+import bcbu;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import nut;
-import ost;
-import rwa;
+import nuq;
+import osq;
+import rvx;
 
 public class LiveRoomPluginHelper
 {
@@ -22,7 +22,7 @@ public class LiveRoomPluginHelper
   
   public static void backToReadInJoy(Context paramContext)
   {
-    nut.b(paramContext, 11);
+    nuq.b(paramContext, 11);
   }
   
   public static LiveRoomWebViewBuilder createWebView(Activity paramActivity, Intent paramIntent)
@@ -33,7 +33,7 @@ public class LiveRoomPluginHelper
       paramIntent.putExtra("window_no_title", false);
       paramIntent.putExtra("webview_hide_progress", true);
       paramActivity = new LiveRoomWebViewBuilder(paramActivity, paramActivity, paramIntent, localLiveRoomInterfaceProxy);
-      new bcbg(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
+      new bcbu(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
       return paramActivity;
     }
     QLog.e("LiveRoomPluginHelper", 2, "createWebView: app should be AppInterface");
@@ -67,7 +67,7 @@ public class LiveRoomPluginHelper
     if (!violaSoLoaded)
     {
       violaSoLoaded = true;
-      ost.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
+      osq.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
       return;
     }
     initViolaSDKEngine(paramAppRuntime, paramString, paramIReportDelegate, paramInitViolaListener);
@@ -91,7 +91,7 @@ public class LiveRoomPluginHelper
     while ((i != 2) || (TextUtils.isEmpty(paramBundle))) {
       return;
     }
-    rwa.a(paramActivity, str, paramBundle, null);
+    rvx.a(paramActivity, str, paramBundle, null);
   }
 }
 

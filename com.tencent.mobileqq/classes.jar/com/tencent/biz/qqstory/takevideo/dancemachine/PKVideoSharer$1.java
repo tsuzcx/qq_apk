@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.dancemachine;
 
-import ajyc;
-import bcpw;
-import vkh;
+import ajya;
+import bcql;
+import vke;
 
 public class PKVideoSharer$1
   implements Runnable
@@ -11,14 +11,14 @@ public class PKVideoSharer$1
   {
     String str = "";
     if (this.a == -1) {
-      str = ajyc.a(2131708185);
+      str = ajya.a(2131708196);
     }
     for (;;)
     {
-      bcpw.a(this.this$0.a, 1, str, 0).a();
+      bcql.a(this.this$0.a, 1, str, 0).a();
       return;
       if (this.a == -2) {
-        str = ajyc.a(2131708181);
+        str = ajya.a(2131708192);
       }
     }
   }

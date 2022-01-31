@@ -1,23 +1,60 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.SingleThreadExecutor;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import java.util.List;
+import java.util.concurrent.AbstractExecutorService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public final class akhk
-  extends MqqHandler
+public class akhk
+  extends AbstractExecutorService
 {
-  public akhk(Looper paramLooper)
+  private final int a;
+  
+  protected akhk(int paramInt)
   {
-    super(paramLooper);
+    this.a = paramInt;
   }
   
-  public void removeCallbacksAndMessages(Object paramObject)
+  public static ExecutorService a(int paramInt)
   {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
+    return new akhk(paramInt);
+  }
+  
+  public static ExecutorService b(int paramInt)
+  {
+    return new SingleThreadExecutor(paramInt);
+  }
+  
+  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
+  {
+    return false;
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
+  }
+  
+  public boolean isShutdown()
+  {
+    return false;
+  }
+  
+  public boolean isTerminated()
+  {
+    return false;
+  }
+  
+  public void shutdown()
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  @NonNull
+  public List<Runnable> shutdownNow()
+  {
+    throw new UnsupportedOperationException();
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abqv;
-import aneh;
+import abqr;
+import anem;
 
 public class PermisionPrivacyActivity$16$1
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$1(abqv paramabqv, aneh paramaneh, boolean paramBoolean) {}
+  public PermisionPrivacyActivity$16$1(abqr paramabqr, anem paramanem, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aneh.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Anem.a(this.jdField_a_of_type_Boolean);
   }
 }
 

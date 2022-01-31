@@ -1,59 +1,20 @@
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 
 class phm
-  implements rac
+  implements raa
 {
-  phm(pgz parampgz, View paramView, phq paramphq, VideoView paramVideoView) {}
+  phm(phl paramphl) {}
   
   public void a()
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.getLocationInWindow(arrayOfInt);
-    if ((arrayOfInt[0] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a[0]) || (arrayOfInt[1] != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a[1]))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a = arrayOfInt;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.c() == VideoView.b) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b() != 3)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    View localView1 = (View)this.jdField_a_of_type_AndroidViewView.getParent();
-    View localView2 = (View)((View)localView1.getParent()).getParent();
-    boolean bool1 = bool2;
-    if (localView2 != null)
-    {
-      View localView3 = (View)localView2.getParent();
-      bool1 = bool2;
-      if (localView3 != null)
-      {
-        int i = localView1.getTop();
-        int j = localView2.getTop();
-        int k = localView3.getPaddingTop();
-        int m = localView3.getBottom();
-        int n = localView2.getTop();
-        int i1 = localView1.getBottom();
-        if ((!this.jdField_a_of_type_Phq.a()) || (i + j - k < -localView1.getHeight() * 0.3D) || (m - n - i1 < -localView1.getHeight() * 0.3D)) {
-          break label159;
-        }
-      }
-    }
-    label159:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
+    this.a.jdField_a_of_type_Phn.a(true);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.a(false);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.c() == VideoView.b) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b() != 5)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
-    }
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.b();
+    this.a.jdField_a_of_type_Phn.a(false);
   }
 }
 

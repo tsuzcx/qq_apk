@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajyc;
+import ajya;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import bfol;
+import bfpc;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebView.HitTestResult;
@@ -22,13 +22,13 @@ class ProgressWebView$3
       if (QLog.isColorLevel()) {
         QLog.e("ProgressWebView", 2, "onLongClick : " + paramView);
       }
-      bfol localbfol = bfol.a(ProgressWebView.access$500(this.this$0).getContext());
-      localbfol.a(ajyc.a(2131708498), 7);
-      localbfol.a(ajyc.a(2131708500), 7);
-      localbfol.d(ajyc.a(2131708511));
-      localbfol.c(true);
-      localbfol.a(new ProgressWebView.3.1(this, localbfol, paramView));
-      localbfol.show();
+      bfpc localbfpc = bfpc.a(ProgressWebView.access$500(this.this$0).getContext());
+      localbfpc.a(ajya.a(2131708509), 7);
+      localbfpc.a(ajya.a(2131708511), 7);
+      localbfpc.d(ajya.a(2131708522));
+      localbfpc.c(true);
+      localbfpc.a(new ProgressWebView.3.1(this, localbfpc, paramView));
+      localbfpc.show();
       return true;
     }
     return false;

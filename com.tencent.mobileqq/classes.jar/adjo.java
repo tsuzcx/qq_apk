@@ -1,8 +1,10 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class adjo
-  implements adih
+  implements adif
 {
   private BaseChatPie a;
   
@@ -11,17 +13,36 @@ public class adjo
     this.a = paramBaseChatPie;
   }
   
+  private void a()
+  {
+    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
+    }
+  }
+  
+  private void b()
+  {
+    if ((this.a != null) && (this.a.b() == 1)) {
+      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
+    }
+  }
+  
   public void a(int paramInt)
   {
-    String str = this.a.c();
-    if (!TextUtils.isEmpty(str)) {
-      bbtc.a(this.a.a).a(str);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 4: 
+      a();
+      return;
     }
+    b();
   }
   
   public int[] a()
   {
-    return new int[6];
+    return new int[] { 4, 9 };
   }
 }
 

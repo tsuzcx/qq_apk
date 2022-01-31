@@ -1,42 +1,56 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
+import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class aahq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public aahq(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public aahq(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 30)
+    {
+      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131755791);
+      paramView.setContentView(2131562355);
+      ((TextView)paramView.findViewById(2131365146)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691095));
+      ((ProgressBar)paramView.findViewById(2131366570)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131378678)).setImageResource(2130839317);
+      paramView.show();
+    }
+    for (;;)
     {
       return;
-      i = 0;
-      break;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131692078).equals(paramView)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
+        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      if (this.jdField_a_of_type_Int == 0) {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800796F", "0X800796F", 0, 0, "", "", "", "");
+      }
+      while (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c))
+      {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        return;
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8007976", "0X8007976", 0, 0, "", "", "", "");
+      }
     }
-    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

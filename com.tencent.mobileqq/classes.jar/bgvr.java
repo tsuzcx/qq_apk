@@ -1,151 +1,120 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import java.io.File;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public final class bgvr
+public class bgvr
+  implements IShadow
 {
-  public static String a = "VIP_QQREADER";
-  @Deprecated
-  public static String b = "qqreader_1.0." + "8.2.8".replace(".", "") + ".0001_android_qqplugin";
-  private static String c = "0x0";
+  private static bgvr jdField_a_of_type_Bgvr;
+  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   
-  private static String a(Context paramContext)
+  private bgvr()
   {
-    if (("0x0".equals(c)) && ((paramContext instanceof Activity))) {
-      c = bgvt.a((Activity)paramContext);
-    }
-    return c;
+    setILoggerFactory();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = akhk.b(192);
   }
   
-  public static String a(String paramString)
+  public static bgvr a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
+    if (jdField_a_of_type_Bgvr == null) {}
     try
     {
-      localJSONObject.put("message", paramString);
-      paramString = localJSONObject.toString();
-      return paramString;
+      if (jdField_a_of_type_Bgvr == null) {
+        jdField_a_of_type_Bgvr = new bgvr();
+      }
+      return jdField_a_of_type_Bgvr;
     }
-    catch (JSONException paramString)
+    finally {}
+  }
+  
+  private PluginManager a(Context paramContext, String paramString)
+  {
+    new arec("Reader");
+    ardz localardz = new ardz(paramContext, "Reader", paramString, "4");
+    boolean bool;
+    if ((localardz.wasUpdating()) || (localardz.getLatest() == null))
     {
-      Log.e("ReportUtils", "[wrapperException] json error", paramString);
+      bool = true;
+      bgwf.d("ReaderShadowImpl", "needWaitingUpdate:" + bool);
+      paramString = localardz.update();
+      if (!bool) {
+        break label209;
+      }
     }
-    return "";
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    a(paramContext, paramInt, paramString, null);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.2.8.4440", "", "", bbct.a(paramContext).a, "ReaderShadowPlugin_4", a(paramContext), "2", "/plugin/ReaderHost", String.valueOf(paramInt), paramString1, "", "0", a(paramString2) });
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.2.8.4440", "", "", bbct.a(paramContext).a, "4", a(paramContext), "11", "", "", "", "", "", "", paramString, "", "", "", "", "", "", "", "", "", "" });
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.2.8.4440", "", "", bbct.a(paramContext).a, "4", a(paramContext), "10", "", "", "", "", paramString1, "", "", "", "", "", "", "", "", "", "", "", paramString2 });
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, String... paramVarArgs)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramVarArgs != null)
+    for (;;)
     {
-      int j = paramVarArgs.length;
-      int i = 0;
-      for (;;)
+      try
       {
-        str1 = str2;
-        if (i >= j) {
-          break;
+        paramString = (File)paramString.get();
+        if ((paramString == null) || (bgvo.a(paramContext, paramString))) {
+          break label220;
         }
-        str1 = paramVarArgs[i];
-        str2 = str2 + str1 + "|";
-        i += 1;
+        bool = paramString.delete();
+        bgwf.a("ReaderShadowImpl", "[loadPluginManager] pm apk is invalid and delete result=" + bool);
+        paramContext = null;
+        if (paramContext == null) {
+          break label218;
+        }
+        return new DynamicPluginManager(new bgvt(localardz, paramContext));
+        bool = false;
       }
-    }
-    paramVarArgs = str1;
-    if (str1.length() > 0) {
-      paramVarArgs = str1.substring(0, str1.length() - 1);
-    }
-    Log.d("ReportUtils", "dcId=" + paramString + ";detail=" + paramVarArgs);
-    axpw.a(paramQQAppInterface, paramString, paramVarArgs, false);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, int paramInt3, String paramString4)
-  {
-    a(null, "dc05133", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.2.8.4440", "", "", paramString1, b, bgvt.b(), paramString2, paramString3, String.valueOf(paramInt1), String.valueOf(paramFloat), String.valueOf(paramInt2), String.valueOf(paramLong), paramString4, "", "", "", "", "", "", "", "", "", "", String.valueOf(paramInt3) });
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, float paramFloat, int paramInt2, long paramLong, String paramString4)
-  {
-    a(paramString1, paramString2, paramString3, paramInt1, paramFloat, paramInt2, paramLong, 0, paramString4);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    a(paramString1, paramString2, "52", paramString3, paramString4, paramString5, "", paramString6, "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    a(paramString1, paramString2, "66", paramString3, paramString4, paramString5, "", paramString6, paramString7);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
-  {
-    a("109", Build.VERSION.RELEASE, "mobile qq", "8.2.8", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, "", "", "", paramString8, paramString9, "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    a("109", Build.VERSION.RELEASE, "mobile qq", "8.2.8", "", "", "android", paramString1, "", "", b, paramString2, paramString3, paramString4, "", paramString5, "", paramString6, paramString7, paramString8, paramString9, paramString10, "", "", "", "");
-  }
-  
-  private static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, String paramString22, String paramString23, String paramString24, String paramString25, String paramString26)
-  {
-    String str1;
-    if ("1".equals(paramString18))
-    {
-      str1 = "1";
-      if (!bgty.a()) {
-        break label254;
-      }
-    }
-    label254:
-    for (String str2 = "1";; str2 = "0")
-    {
-      a(null, "dc00547", new String[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, paramString14, paramString15, paramString16, paramString17, str1, paramString18, "0", paramString19, paramString20, paramString21, paramString22, paramString23, paramString24, paramString26, "", "", "", "", "", str2, paramString25 });
-      return;
-      if ("2".equals(paramString18))
+      catch (ExecutionException paramString)
       {
-        str1 = "2";
-        break;
+        bgwf.a("ReaderShadowImpl", "[loadPluginManager] ExecutionException:", paramString);
+        bgwi.a(paramContext, -101, "cdn update ExecutionException!", paramString.getMessage());
+        paramString = null;
+        continue;
       }
-      str1 = "3";
-      break;
+      catch (InterruptedException paramString)
+      {
+        bgwf.a("ReaderShadowImpl", "[loadPluginManager] InterruptedException:", paramString);
+        bgwi.a(paramContext, -102, "cdn update InterruptedException!", paramString.getMessage());
+        paramString = null;
+        continue;
+      }
+      label209:
+      paramString = localardz.getLatest();
+      continue;
+      label218:
+      return null;
+      label220:
+      paramContext = paramString;
     }
   }
   
-  public static void b(Context paramContext, int paramInt, String paramString)
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    a(null, "dc05135", new String[] { "109", Build.VERSION.RELEASE, "mobile qq", "8.2.8.4440", "", "", bbct.a(paramContext).a, "", a(paramContext), "2", "/h5/BlankScreen", String.valueOf(paramInt), paramString, "", "0", "" });
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ReaderShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager == null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
+    }
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
+  }
+  
+  public void setILoggerFactory()
+  {
+    if (LoggerFactory.getILoggerFactory() == null) {
+      LoggerFactory.setILoggerFactory(areg.a());
+    }
   }
 }
 

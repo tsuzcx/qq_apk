@@ -1,8 +1,7 @@
-public abstract interface audz
+public class audz
 {
-  public abstract void a(auen paramauen);
-  
-  public abstract void a(auen paramauen1, auen paramauen2);
+  public String a;
+  public String b;
 }
 
 

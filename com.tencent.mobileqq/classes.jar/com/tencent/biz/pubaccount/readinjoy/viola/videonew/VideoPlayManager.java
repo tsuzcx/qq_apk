@@ -15,27 +15,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
-import onk;
-import qub;
-import qud;
-import quf;
+import onh;
+import qty;
+import qua;
+import quc;
+import ryw;
+import ryx;
 import ryz;
 import rza;
-import rzc;
-import rzd;
-import rze;
+import rzb;
 
 public class VideoPlayManager
-  implements quf
+  implements quc
 {
   private int jdField_a_of_type_Int = 1000;
   private Context jdField_a_of_type_AndroidContentContext;
-  private List<rze> jdField_a_of_type_JavaUtilList;
-  private Set<qub> jdField_a_of_type_JavaUtilSet = new ArraySet();
-  private qud jdField_a_of_type_Qud;
-  private rza jdField_a_of_type_Rza = new rza(this, null);
-  private rzc jdField_a_of_type_Rzc = new rzc(this, null);
-  private rzd jdField_a_of_type_Rzd;
+  private List<rzb> jdField_a_of_type_JavaUtilList;
+  private Set<qty> jdField_a_of_type_JavaUtilSet = new ArraySet();
+  private qua jdField_a_of_type_Qua;
+  private ryx jdField_a_of_type_Ryx = new ryx(this, null);
+  private ryz jdField_a_of_type_Ryz = new ryz(this, null);
+  private rza jdField_a_of_type_Rza;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c = true;
@@ -46,103 +46,103 @@ public class VideoPlayManager
   public VideoPlayManager(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Qud = new qud(paramContext.getApplicationContext());
-    this.jdField_a_of_type_Qud.a(this);
+    this.jdField_a_of_type_Qua = new qua(paramContext.getApplicationContext());
+    this.jdField_a_of_type_Qua.a(this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private qub a(rzd paramrzd)
+  private qty a(rza paramrza)
   {
     Object localObject;
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       localObject = null;
     }
-    qub localqub;
+    qty localqty;
     do
     {
       do
       {
         return localObject;
-        localqub = new qub(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-        localqub.a(this.jdField_a_of_type_Rza);
-        localObject = localqub;
-      } while (paramrzd == null);
-      localObject = localqub;
-    } while (!paramrzd.jdField_f_of_type_Boolean);
-    localqub.e(true);
-    return localqub;
+        localqty = new qty(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+        localqty.a(this.jdField_a_of_type_Ryx);
+        localObject = localqty;
+      } while (paramrza == null);
+      localObject = localqty;
+    } while (!paramrza.jdField_f_of_type_Boolean);
+    localqty.e(true);
+    return localqty;
   }
   
-  private void a(qub paramqub)
+  private void a(qty paramqty)
   {
-    if (paramqub == null) {}
+    if (paramqty == null) {}
     int i;
     do
     {
       return;
-      paramqub.a(null);
-      paramqub.p();
-      i = paramqub.e();
+      paramqty.a(null);
+      paramqty.p();
+      i = paramqty.e();
     } while ((i == 7) || (i == 8) || (i == 0) || (i == 6));
-    paramqub.k();
-    ThreadManager.excute(new VideoPlayManager.2(this, paramqub), 64, null, false);
+    paramqty.k();
+    ThreadManager.excute(new VideoPlayManager.2(this, paramqty), 64, null, false);
   }
   
-  private void d(rzd paramrzd)
+  private void d(rza paramrza)
   {
-    if (rzd.a(paramrzd) == null)
+    if (rza.a(paramrza) == null)
     {
-      ThreadManager.post(new VideoPlayManager.1(this, paramrzd), 5, null, true);
+      ThreadManager.post(new VideoPlayManager.1(this, paramrza), 5, null, true);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager innerPlayVideo hit cache");
     }
-    rzd.a(paramrzd).a(paramrzd.jdField_a_of_type_Ryz);
-    e(paramrzd);
+    rza.a(paramrza).a(paramrza.jdField_a_of_type_Ryw);
+    e(paramrza);
   }
   
-  private void e(rzd paramrzd)
+  private void e(rza paramrza)
   {
-    if ((paramrzd == null) || (rzd.a(paramrzd) == null)) {
+    if ((paramrza == null) || (rza.a(paramrza) == null)) {
       return;
     }
-    paramrzd.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+    paramrza.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager innerPlayVideo videoView null");
     }
-    if (paramrzd.jdField_a_of_type_AndroidViewView == null)
+    if (paramrza.jdField_a_of_type_AndroidViewView == null)
     {
-      Object localObject = rzd.a(paramrzd).b();
+      Object localObject = rza.a(paramrza).b();
       if (localObject == null)
       {
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((rze)((Iterator)localObject).next()).a(paramrzd, 123, 99, null);
+          ((rzb)((Iterator)localObject).next()).a(paramrza, 123, 99, null);
         }
-        rzd.a(paramrzd, null);
+        rza.a(paramrza, null);
         return;
       }
-      paramrzd.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      ((View)localObject).setId(2131374778);
-      paramrzd.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      rzd.a(paramrzd).a((IVideoViewBase)localObject);
+      paramrza.jdField_a_of_type_AndroidViewView = ((View)localObject);
+      ((View)localObject).setId(2131374780);
+      paramrza.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
+      rza.a(paramrza).a((IVideoViewBase)localObject);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((rze)((Iterator)localObject).next()).b(paramrzd);
+        ((rzb)((Iterator)localObject).next()).b(paramrza);
       }
     }
-    rzd.a(paramrzd).b(paramrzd.jdField_f_of_type_Int);
-    rzd.a(paramrzd).d(this.e);
-    rzd.a(paramrzd).a().setOutputMute(paramrzd.jdField_a_of_type_Boolean);
-    paramrzd.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    ThreadManager.excute(new VideoPlayManager.PlayStartVideoRunnable(this, paramrzd), 64, null, true);
+    rza.a(paramrza).b(paramrza.jdField_f_of_type_Int);
+    rza.a(paramrza).d(this.e);
+    rza.a(paramrza).a().setOutputMute(paramrza.jdField_a_of_type_Boolean);
+    paramrza.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    ThreadManager.excute(new VideoPlayManager.PlayStartVideoRunnable(this, paramrza), 64, null, true);
   }
   
   public int a()
   {
     if (a()) {
-      return rzd.a(this.jdField_a_of_type_Rzd).e();
+      return rza.a(this.jdField_a_of_type_Rza).e();
     }
     return -1;
   }
@@ -150,24 +150,24 @@ public class VideoPlayManager
   public long a()
   {
     if (a()) {
-      return rzd.a(this.jdField_a_of_type_Rzd).b();
+      return rza.a(this.jdField_a_of_type_Rza).b();
     }
     return 0L;
   }
   
-  public rzd a()
+  public rza a()
   {
-    return this.jdField_a_of_type_Rzd;
+    return this.jdField_a_of_type_Rza;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Rzd != null) && (rzd.a(this.jdField_a_of_type_Rzd) != null))
+    if ((this.jdField_a_of_type_Rza != null) && (rza.a(this.jdField_a_of_type_Rza) != null))
     {
-      rzd.a(this.jdField_a_of_type_Rzd).f();
+      rza.a(this.jdField_a_of_type_Rza).f();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((rze)localIterator.next()).d(this.jdField_a_of_type_Rzd);
+        ((rzb)localIterator.next()).d(this.jdField_a_of_type_Rza);
       }
       if (QLog.isColorLevel()) {
         QLog.d("Viola.VideoPlayManager", 2, "innerChangeCoverImageView: getCurVideoPlayer().start() ");
@@ -177,47 +177,47 @@ public class VideoPlayManager
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Rzd != null) && (rzd.a(this.jdField_a_of_type_Rzd) != null) && ((d()) || (e())))
+    if ((this.jdField_a_of_type_Rza != null) && (rza.a(this.jdField_a_of_type_Rza) != null) && ((d()) || (e())))
     {
-      rzd.a(this.jdField_a_of_type_Rzd).h();
+      rza.a(this.jdField_a_of_type_Rza).h();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((rze)localIterator.next()).a(this.jdField_a_of_type_Rzd, paramInt);
+        ((rzb)localIterator.next()).a(this.jdField_a_of_type_Rza, paramInt);
       }
     }
   }
   
-  public void a(rzd paramrzd)
+  public void a(rza paramrza)
   {
-    this.jdField_a_of_type_Rzd = paramrzd;
-    paramrzd = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramrzd.hasNext()) {
-      ((rze)paramrzd.next()).a(this.jdField_a_of_type_Rzd, false);
+    this.jdField_a_of_type_Rza = paramrza;
+    paramrza = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramrza.hasNext()) {
+      ((rzb)paramrza.next()).a(this.jdField_a_of_type_Rza, false);
     }
   }
   
-  public void a(rze paramrze)
+  public void a(rzb paramrzb)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramrze);
+    this.jdField_a_of_type_JavaUtilList.add(paramrzb);
   }
   
   public void a(boolean paramBoolean)
   {
     this.e = paramBoolean;
     if (a()) {
-      rzd.a(this.jdField_a_of_type_Rzd).d(paramBoolean);
+      rza.a(this.jdField_a_of_type_Rza).d(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Rzd != null) && (rzd.a(this.jdField_a_of_type_Rzd) != null);
+    return (this.jdField_a_of_type_Rza != null) && (rza.a(this.jdField_a_of_type_Rza) != null);
   }
   
   public long b()
   {
     if (a()) {
-      return rzd.a(this.jdField_a_of_type_Rzd).a();
+      return rza.a(this.jdField_a_of_type_Rza).a();
     }
     return 0L;
   }
@@ -229,88 +229,88 @@ public class VideoPlayManager
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Rzd != null) && (rzd.a(this.jdField_a_of_type_Rzd) != null) && ((c()) || (b())))
+    if ((this.jdField_a_of_type_Rza != null) && (rza.a(this.jdField_a_of_type_Rza) != null) && ((c()) || (b())))
     {
-      rzd.a(this.jdField_a_of_type_Rzd).g();
+      rza.a(this.jdField_a_of_type_Rza).g();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((rze)localIterator.next()).b(this.jdField_a_of_type_Rzd, paramInt);
+        ((rzb)localIterator.next()).b(this.jdField_a_of_type_Rza, paramInt);
       }
     }
   }
   
-  public void b(rzd paramrzd)
+  public void b(rza paramrza)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Viola.VideoPlayManager", 2, "VideoFeedsPlayManager playVideo");
     }
     Iterator localIterator;
-    if ((paramrzd != null) && (paramrzd.jdField_a_of_type_Ryz != null))
+    if ((paramrza != null) && (paramrza.jdField_a_of_type_Ryw != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "playVideo() vid=" + paramrzd.jdField_a_of_type_Ryz.a);
+        QLog.d("Viola.VideoPlayManager", 2, "playVideo() vid=" + paramrza.jdField_a_of_type_Ryw.a);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Viola.VideoPlayManager", 2, "playVideo: playerParam=" + paramrzd);
+        QLog.d("Viola.VideoPlayManager", 2, "playVideo: playerParam=" + paramrza);
       }
-      this.jdField_a_of_type_Rzd = paramrzd;
+      this.jdField_a_of_type_Rza = paramrza;
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     }
     while (localIterator.hasNext())
     {
-      ((rze)localIterator.next()).a(this.jdField_a_of_type_Rzd, true);
+      ((rzb)localIterator.next()).a(this.jdField_a_of_type_Rza, true);
       continue;
       if (QLog.isColorLevel()) {
         QLog.d("Viola.VideoPlayManager", 2, "playVideo() error, playerParam or videoInfo is null");
       }
       return;
     }
-    if ((this.jdField_a_of_type_Qud != null) && (!this.jdField_a_of_type_Qud.a()))
+    if ((this.jdField_a_of_type_Qua != null) && (!this.jdField_a_of_type_Qua.a()))
     {
-      this.jdField_a_of_type_Qud.a();
+      this.jdField_a_of_type_Qua.a();
       return;
     }
-    d(paramrzd);
+    d(paramrza);
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((a()) && (rzd.a(this.jdField_a_of_type_Rzd).a() != null)) {
-      rzd.a(this.jdField_a_of_type_Rzd).a().setOutputMute(paramBoolean);
+    if ((a()) && (rza.a(this.jdField_a_of_type_Rza).a() != null)) {
+      rza.a(this.jdField_a_of_type_Rza).a().setOutputMute(paramBoolean);
     }
   }
   
   public boolean b()
   {
-    return (a()) && (rzd.a(this.jdField_a_of_type_Rzd).e() == 2);
+    return (a()) && (rza.a(this.jdField_a_of_type_Rza).e() == 2);
   }
   
   public void c()
   {
     if (a())
     {
-      a(rzd.a(this.jdField_a_of_type_Rzd));
+      a(rza.a(this.jdField_a_of_type_Rza));
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((rze)localIterator.next()).e(this.jdField_a_of_type_Rzd);
+        ((rzb)localIterator.next()).e(this.jdField_a_of_type_Rza);
       }
-      this.jdField_a_of_type_Rzd.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(false);
-      this.jdField_a_of_type_Rzd = null;
+      this.jdField_a_of_type_Rza.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(false);
+      this.jdField_a_of_type_Rza = null;
     }
-    this.jdField_a_of_type_Rzc.removeMessages(0);
+    this.jdField_a_of_type_Ryz.removeMessages(0);
   }
   
   public void c(int paramInt)
   {
     if (a()) {
-      rzd.a(this.jdField_a_of_type_Rzd).b(paramInt);
+      rza.a(this.jdField_a_of_type_Rza).b(paramInt);
     }
   }
   
-  public void c(rzd paramrzd)
+  public void c(rza paramrza)
   {
-    if (paramrzd != null) {
-      a(rzd.a(paramrzd));
+    if (paramrza != null) {
+      a(rza.a(paramrza));
     }
   }
   
@@ -318,21 +318,21 @@ public class VideoPlayManager
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Rzd != null) {
-        d(this.jdField_a_of_type_Rzd);
+      if (this.jdField_a_of_type_Rza != null) {
+        d(this.jdField_a_of_type_Rza);
       }
       return;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((rze)localIterator.next()).a(this.jdField_a_of_type_Rzd, 123, 99, null);
+      ((rzb)localIterator.next()).a(this.jdField_a_of_type_Rza, 123, 99, null);
     }
-    this.jdField_a_of_type_Rzd = null;
+    this.jdField_a_of_type_Rza = null;
   }
   
   public boolean c()
   {
-    return (a()) && (rzd.a(this.jdField_a_of_type_Rzd).e() == 5);
+    return (a()) && (rza.a(this.jdField_a_of_type_Rza).e() == 5);
   }
   
   public void d()
@@ -352,13 +352,13 @@ public class VideoPlayManager
   public void d(int paramInt)
   {
     if (a()) {
-      rzd.a(this.jdField_a_of_type_Rzd).a(paramInt);
+      rza.a(this.jdField_a_of_type_Rza).a(paramInt);
     }
   }
   
   public boolean d()
   {
-    return (a()) && (rzd.a(this.jdField_a_of_type_Rzd).e() == 3);
+    return (a()) && (rza.a(this.jdField_a_of_type_Rza).e() == 3);
   }
   
   public void e()
@@ -375,7 +375,7 @@ public class VideoPlayManager
       return;
       if (this.jdField_f_of_type_Boolean)
       {
-        AppRuntime localAppRuntime = onk.a();
+        AppRuntime localAppRuntime = onh.a();
         if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {}
         for (boolean bool = ((QQAppInterface)localAppRuntime).c();; bool = false)
         {
@@ -397,7 +397,7 @@ public class VideoPlayManager
   
   public boolean e()
   {
-    return (a()) && (rzd.a(this.jdField_a_of_type_Rzd).e() == 4);
+    return (a()) && (rza.a(this.jdField_a_of_type_Rza).e() == 4);
   }
   
   public void f()
@@ -408,32 +408,32 @@ public class VideoPlayManager
     }
     this.b = true;
     c();
-    if (this.jdField_a_of_type_Rzd != null)
+    if (this.jdField_a_of_type_Rza != null)
     {
-      if (rzd.a(this.jdField_a_of_type_Rzd) != null)
+      if (rza.a(this.jdField_a_of_type_Rza) != null)
       {
-        rzd.a(this.jdField_a_of_type_Rzd).m();
-        rzd.a(this.jdField_a_of_type_Rzd, null);
+        rza.a(this.jdField_a_of_type_Rza).m();
+        rza.a(this.jdField_a_of_type_Rza, null);
       }
-      this.jdField_a_of_type_Rzd = null;
+      this.jdField_a_of_type_Rza = null;
     }
     if (this.jdField_a_of_type_JavaUtilSet != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
       while (localIterator.hasNext())
       {
-        qub localqub = (qub)localIterator.next();
-        if ((localqub != null) && (localqub.e() != 8)) {
-          localqub.m();
+        qty localqty = (qty)localIterator.next();
+        if ((localqty != null) && (localqty.e() != 8)) {
+          localqty.m();
         }
       }
     }
-    if (this.jdField_a_of_type_Qud != null)
+    if (this.jdField_a_of_type_Qua != null)
     {
-      this.jdField_a_of_type_Qud.b();
-      this.jdField_a_of_type_Qud = null;
+      this.jdField_a_of_type_Qua.b();
+      this.jdField_a_of_type_Qua = null;
     }
-    this.jdField_a_of_type_Rzc.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Ryz.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidContentContext = null;
   }

@@ -1,12 +1,16 @@
 class axrq
 {
-  public String a;
-  public String b;
+  int jdField_a_of_type_Int = 1;
+  boolean jdField_a_of_type_Boolean = true;
+  int b = 86400;
+  int c = 5;
   
-  axrq(String paramString1, String paramString2)
+  void a()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+    this.b = 86400;
+    this.c = 5;
   }
 }
 

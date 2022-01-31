@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import axum;
-import axwe;
+import axuo;
+import axwg;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -19,23 +19,23 @@ public class StructMsgSubImageVideo$VideoItem
   public String videoUrl;
   public int width;
   
-  private static VideoItem a(axwe paramaxwe)
+  private static VideoItem a(axwg paramaxwg)
   {
-    Iterator localIterator = paramaxwe.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramaxwg.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (axwe)localIterator.next();
-      if ("title".equals(((axwe)localObject3).b)) {
+      localObject3 = (axwg)localIterator.next();
+      if ("title".equals(((axwg)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("video".equals(((axwe)localObject3).b))
+      if ("video".equals(((axwg)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -45,11 +45,11 @@ public class StructMsgSubImageVideo$VideoItem
           return null;
         }
         localObject3 = new VideoItem();
-        ((VideoItem)localObject3).schema = paramaxwe.a("url");
+        ((VideoItem)localObject3).schema = paramaxwg.a("url");
         if (localObject2 == null) {}
-        for (paramaxwe = "";; paramaxwe = localObject2.jdField_a_of_type_JavaLangString)
+        for (paramaxwg = "";; paramaxwg = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((VideoItem)localObject3).title = paramaxwe;
+          ((VideoItem)localObject3).title = paramaxwg;
           ((VideoItem)localObject3).coverUrl = localObject1.a("cover");
           ((VideoItem)localObject3).videoUrl = localObject1.a("url");
           try
@@ -58,9 +58,9 @@ public class StructMsgSubImageVideo$VideoItem
             ((VideoItem)localObject3).height = Integer.parseInt(localObject1.a("height"));
             return localObject3;
           }
-          catch (NumberFormatException paramaxwe)
+          catch (NumberFormatException paramaxwg)
           {
-            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramaxwe);
+            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", paramaxwg);
             return localObject3;
           }
         }
@@ -78,25 +78,25 @@ public class StructMsgSubImageVideo$VideoItem
     this.height = paramObjectInput.readInt();
   }
   
-  public void toXml(axum paramaxum)
+  public void toXml(axuo paramaxuo)
   {
-    paramaxum.startTag(null, "item");
-    paramaxum.attribute(null, "apptype", "10");
-    paramaxum.attribute(null, "type", "0");
-    paramaxum.attribute(null, "url", this.schema);
-    paramaxum.startTag(null, "title");
+    paramaxuo.startTag(null, "item");
+    paramaxuo.attribute(null, "apptype", "10");
+    paramaxuo.attribute(null, "type", "0");
+    paramaxuo.attribute(null, "url", this.schema);
+    paramaxuo.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      paramaxum.text(str);
-      paramaxum.endTag(null, "title");
-      paramaxum.startTag(null, "video");
+      paramaxuo.text(str);
+      paramaxuo.endTag(null, "title");
+      paramaxuo.startTag(null, "video");
       if (this.coverUrl != null) {
         break label173;
       }
       str = "";
       label90:
-      paramaxum.attribute(null, "cover", str);
+      paramaxuo.attribute(null, "cover", str);
       if (this.videoUrl != null) {
         break label181;
       }
@@ -105,11 +105,11 @@ public class StructMsgSubImageVideo$VideoItem
     label181:
     for (String str = "";; str = this.videoUrl)
     {
-      paramaxum.attribute(null, "url", str);
-      paramaxum.attribute(null, "width", Integer.toString(this.width));
-      paramaxum.attribute(null, "height", Integer.toString(this.height));
-      paramaxum.endTag(null, "video");
-      paramaxum.endTag(null, "item");
+      paramaxuo.attribute(null, "url", str);
+      paramaxuo.attribute(null, "width", Integer.toString(this.width));
+      paramaxuo.attribute(null, "height", Integer.toString(this.height));
+      paramaxuo.endTag(null, "video");
+      paramaxuo.endTag(null, "item");
       return;
       str = this.title;
       break;

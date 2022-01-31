@@ -1,19 +1,7 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-
-public final class qdr
-  implements Parcelable.Creator<TopicInfo>
+public class qdr
 {
-  public TopicInfo a(Parcel paramParcel)
-  {
-    return new TopicInfo(paramParcel);
-  }
-  
-  public TopicInfo[] a(int paramInt)
-  {
-    return new TopicInfo[paramInt];
-  }
+  public String a = "";
+  public String b = "";
 }
 
 

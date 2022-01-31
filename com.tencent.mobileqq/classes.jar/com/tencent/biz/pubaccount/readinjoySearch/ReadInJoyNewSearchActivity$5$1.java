@@ -2,35 +2,35 @@ package com.tencent.biz.pubaccount.readinjoySearch;
 
 import android.os.Handler;
 import android.os.Message;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import java.util.Iterator;
 import java.util.List;
-import san;
+import sak;
 
 public class ReadInJoyNewSearchActivity$5$1
   implements Runnable
 {
-  public ReadInJoyNewSearchActivity$5$1(san paramsan) {}
+  public ReadInJoyNewSearchActivity$5$1(sak paramsak) {}
   
   public void run()
   {
-    aukn localaukn = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localaukn.a(ReadInJoySearchHistoryEntity.class);
+    aukp localaukp = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localaukp.a(ReadInJoySearchHistoryEntity.class);
     if (localList == null) {
       return;
     }
     Object localObject = localList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localaukn.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
+      localaukp.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
     }
     localList.clear();
     localObject = this.a.a.a.obtainMessage(1);
     ((Message)localObject).obj = localList;
     this.a.a.a.sendMessage((Message)localObject);
-    localaukn.a();
+    localaukp.a();
   }
 }
 

@@ -1,16 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-final class auch
-  implements ajvb
+public final class auch
+  implements Parcelable.Creator<OcrConfig>
 {
-  public void a(boolean paramBoolean)
+  public OcrConfig a(Parcel paramParcel)
   {
-    if (paramBoolean) {
-      aucg.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
-    }
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
   }
 }
 

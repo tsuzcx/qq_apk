@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,22 +14,22 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import avuh;
 import avuj;
-import axds;
-import axeo;
+import avul;
+import axdu;
 import axeq;
-import axgp;
-import axgq;
-import axlc;
-import bbcv;
-import bbev;
-import bcpw;
-import biqz;
-import birb;
-import bizq;
-import bkuo;
-import bkup;
+import axes;
+import axgr;
+import axgs;
+import axle;
+import bbdj;
+import bbfj;
+import bcql;
+import birq;
+import birs;
+import bjah;
+import bkvf;
+import bkvg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -44,11 +44,11 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.QQPermissionDenied;
 import mqq.os.MqqHandler;
-import wsu;
+import wsr;
 
 public class CaptureQmcfSoDownloadFragment
   extends Fragment
-  implements View.OnClickListener, avuh, axeo, axeq, axgq, birb
+  implements View.OnClickListener, avuj, axeq, axes, axgs, birs
 {
   private int jdField_a_of_type_Int;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -98,28 +98,28 @@ public class CaptureQmcfSoDownloadFragment
   
   private void e()
   {
-    boolean bool = bbev.g(null);
+    boolean bool = bbfj.g(null);
     VideoEnvironment.a("CaptureQmcfSoDownloadFragment", "startDownloadConfig netUsable=" + bool, null);
     if (bool)
     {
-      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701370), null);
+      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701381), null);
       ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return;
     }
-    b(ajyc.a(2131701382));
+    b(ajya.a(2131701393));
   }
   
   private void f()
   {
-    boolean bool = bbev.g(null);
+    boolean bool = bbfj.g(null);
     VideoEnvironment.a("CaptureQmcfSoDownloadFragment", "startDownloadConfig netUsable=" + bool, null);
     if (bool)
     {
-      biqz.a().a(0, this, false);
+      birq.a().a(0, this, false);
       return;
     }
-    bizq.d("CaptureQmcfSoDownloadFragment", "【END】startDownloadAEKitBase:" + ajyc.a(2131701363));
-    b(ajyc.a(2131701363));
+    bjah.d("CaptureQmcfSoDownloadFragment", "【END】startDownloadAEKitBase:" + ajya.a(2131701374));
+    b(ajya.a(2131701374));
   }
   
   private void g()
@@ -132,7 +132,7 @@ public class CaptureQmcfSoDownloadFragment
     do
     {
       return;
-      bizq.b("CaptureQmcfSoDownloadFragment", "【isAvCodecDownloaded】" + this.jdField_a_of_type_Boolean);
+      bjah.b("CaptureQmcfSoDownloadFragment", "【isAvCodecDownloaded】" + this.jdField_a_of_type_Boolean);
     } while ((!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean));
     c();
   }
@@ -142,17 +142,17 @@ public class CaptureQmcfSoDownloadFragment
     if (a())
     {
       int i = (this.jdField_c_of_type_Int + this.jdField_d_of_type_Int) / 2;
-      b(ajyc.a(2131701384) + i + "%");
+      b(ajya.a(2131701395) + i + "%");
       return;
     }
-    b(ajyc.a(2131701393) + this.jdField_c_of_type_Int + "%");
+    b(ajya.a(2131701404) + this.jdField_c_of_type_Int + "%");
   }
   
   public void G_()
   {
-    b(ajyc.a(2131701372));
-    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701360), null);
-    axds.a(3, -1500);
+    b(ajya.a(2131701383));
+    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701371), null);
+    axdu.a(3, -1500);
   }
   
   public void H_()
@@ -195,7 +195,7 @@ public class CaptureQmcfSoDownloadFragment
   
   protected int a()
   {
-    return 2131560683;
+    return 2131560682;
   }
   
   public void a()
@@ -205,7 +205,7 @@ public class CaptureQmcfSoDownloadFragment
       ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     }
-    biqz.a().b(this);
+    birq.a().b(this);
   }
   
   public void a(int paramInt)
@@ -220,16 +220,16 @@ public class CaptureQmcfSoDownloadFragment
     {
       if (paramInt2 != 0)
       {
-        VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701359) + paramInt2 + "]", null);
-        ShortVideoResourceManager.a(ajyc.a(2131701375) + "serverError" + paramInt2);
-        axds.a(1, paramInt2);
+        VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701370) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(ajya.a(2131701386) + "serverError" + paramInt2);
+        axdu.a(1, paramInt2);
         return;
       }
       ArrayList localArrayList = new ArrayList(1);
       paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
       if (paramInt1 == 0)
       {
-        VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701390), null);
+        VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701401), null);
         ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
         return;
       }
@@ -241,7 +241,7 @@ public class CaptureQmcfSoDownloadFragment
           a((ShortVideoResourceManager.SVConfigItem)localArrayList.get(paramInt1));
           paramInt1 += 1;
         }
-        bizq.d("CaptureQmcfSoDownloadFragment", ajyc.a(2131689792));
+        bjah.d("CaptureQmcfSoDownloadFragment", ajya.a(2131689792));
         ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
         return;
       }
@@ -250,18 +250,18 @@ public class CaptureQmcfSoDownloadFragment
         ShortVideoResourceManager.SVConfigItem localSVConfigItem = new ShortVideoResourceManager.SVConfigItem();
         a(localSVConfigItem);
         localArrayList.add(localSVConfigItem);
-        bizq.d("CaptureQmcfSoDownloadFragment", ajyc.a(2131689793));
+        bjah.d("CaptureQmcfSoDownloadFragment", ajya.a(2131689793));
         ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
         return;
       }
-      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701374) + paramInt1 + "]", null);
-      ShortVideoResourceManager.a(ajyc.a(2131701361) + "errorCode:" + paramInt1);
-      axds.a(1, paramInt1);
+      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701385) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(ajya.a(2131701372) + "errorCode:" + paramInt1);
+      axdu.a(1, paramInt1);
       return;
     }
-    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701388) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(ajyc.a(2131701380) + "result:" + paramInt1);
-    axds.a(1, paramInt2);
+    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701399) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(ajya.a(2131701391) + "result:" + paramInt1);
+    axdu.a(1, paramInt2);
   }
   
   public void a(int paramInt, long paramLong1, long paramLong2)
@@ -278,7 +278,7 @@ public class CaptureQmcfSoDownloadFragment
   
   public void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    bizq.b("CaptureQmcfSoDownloadFragment", "【onAEResDownloadResult】[packageIdx] :" + paramInt1 + "[isDownloaded] :" + paramBoolean + "[errorType] :" + paramInt2);
+    bjah.b("CaptureQmcfSoDownloadFragment", "【onAEResDownloadResult】[packageIdx] :" + paramInt1 + "[isDownloaded] :" + paramBoolean + "[errorType] :" + paramInt2);
     if (paramInt1 == 0)
     {
       if (paramBoolean)
@@ -291,9 +291,9 @@ public class CaptureQmcfSoDownloadFragment
     else {
       return;
     }
-    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701362) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(ajyc.a(2131701378));
-    axds.a(2, paramInt2);
+    VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701373) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(ajya.a(2131701389));
+    axdu.a(2, paramInt2);
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -303,9 +303,9 @@ public class CaptureQmcfSoDownloadFragment
       if (paramInt == 0) {
         break label110;
       }
-      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajyc.a(2131701394) + paramInt + "]", null);
-      ShortVideoResourceManager.a(ajyc.a(2131701371));
-      axds.a(2, paramInt);
+      VideoEnvironment.a("CaptureQmcfSoDownloadFragment", ajya.a(2131701405) + paramInt + "]", null);
+      ShortVideoResourceManager.a(ajya.a(2131701382));
+      axdu.a(2, paramInt);
     }
     for (;;)
     {
@@ -341,9 +341,9 @@ public class CaptureQmcfSoDownloadFragment
       this.e = true;
       if ((!this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
       {
-        bkuo localbkuo = (bkuo)getActivity();
-        if (localbkuo != null) {
-          localbkuo.a();
+        bkvf localbkvf = (bkvf)getActivity();
+        if (localbkvf != null) {
+          localbkvf.a();
         }
       }
       return;
@@ -354,8 +354,8 @@ public class CaptureQmcfSoDownloadFragment
   public void d()
   {
     this.jdField_d_of_type_Int = 0;
-    axgp.a().a(true, this);
-    boolean bool = axgp.a().a();
+    axgr.a().a(true, this);
+    boolean bool = axgr.a().a();
     if (QLog.isColorLevel()) {
       QLog.d("CaptureQmcfSoDownloadFragment", 2, "preDownloadGestureRes:" + bool);
     }
@@ -388,7 +388,7 @@ public class CaptureQmcfSoDownloadFragment
       if ((i == 0) || (j == 0)) {
         break label94;
       }
-      localObject = bbcv.a(new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO" });
+      localObject = bbdj.a(new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO" });
     }
     for (;;)
     {
@@ -401,9 +401,9 @@ public class CaptureQmcfSoDownloadFragment
       break label41;
       label94:
       if (i != 0) {
-        localObject = bbcv.a(new String[] { "android.permission.CAMERA" });
+        localObject = bbdj.a(new String[] { "android.permission.CAMERA" });
       } else {
-        localObject = bbcv.a(new String[] { "android.permission.RECORD_AUDIO" });
+        localObject = bbdj.a(new String[] { "android.permission.RECORD_AUDIO" });
       }
     }
   }
@@ -423,7 +423,7 @@ public class CaptureQmcfSoDownloadFragment
     //   11: ifeq +24 -> 35
     //   14: aload_0
     //   15: invokevirtual 226	dov/com/tencent/mobileqq/richmedia/capture/fragment/CaptureQmcfSoDownloadFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-    //   18: checkcast 360	bkuo
+    //   18: checkcast 360	bkvf
     //   21: astore_1
     //   22: aload_1
     //   23: ifnull +9 -> 32
@@ -445,7 +445,7 @@ public class CaptureQmcfSoDownloadFragment
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	51	0	this	CaptureQmcfSoDownloadFragment
-    //   21	6	1	localbkuo	bkuo
+    //   21	6	1	localbkvf	bkvf
     //   46	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -472,15 +472,15 @@ public class CaptureQmcfSoDownloadFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131363833));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131363832));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setDarkModeEnable(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCameraPermissionListener(this);
-    paramViewGroup = bkup.a().a(paramLayoutInflater.getContext());
+    paramViewGroup = bkvg.a().a(paramLayoutInflater.getContext());
     paramViewGroup.a(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.d(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureParam(paramViewGroup);
-    ((Button)paramLayoutInflater.findViewById(2131363852)).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131364822));
+    ((Button)paramLayoutInflater.findViewById(2131363851)).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131364821));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131167134), 100, getResources().getColor(2131165297));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
@@ -491,7 +491,7 @@ public class CaptureQmcfSoDownloadFragment
     this.jdField_a_of_type_JavaLangString = getActivity().getIntent().getExtras().getString("ARG_ACTIVITY_ID");
     if (!bool)
     {
-      bcpw.a(VideoEnvironment.a(), ajyc.a(2131701376), 1);
+      bcql.a(VideoEnvironment.a(), ajya.a(2131701387), 1);
       return paramLayoutInflater;
     }
     int i;
@@ -499,7 +499,7 @@ public class CaptureQmcfSoDownloadFragment
     {
       d();
       bool = VideoEnvironment.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (axlc.a(BaseApplicationImpl.getContext()) == 2) {
+      if (axle.a(BaseApplicationImpl.getContext()) == 2) {
         break label328;
       }
       i = 1;
@@ -510,8 +510,8 @@ public class CaptureQmcfSoDownloadFragment
       if (bool) {
         break label334;
       }
-      axds.a(2);
-      bizq.b("CaptureQmcfSoDownloadFragment", "【START】startDownloadConfig");
+      axdu.a(2);
+      bjah.b("CaptureQmcfSoDownloadFragment", "【START】startDownloadConfig");
       e();
     }
     for (;;)
@@ -519,7 +519,7 @@ public class CaptureQmcfSoDownloadFragment
       if (i != 0) {
         break label348;
       }
-      bizq.b("CaptureQmcfSoDownloadFragment", "【START】startDownloadAEKitBase");
+      bjah.b("CaptureQmcfSoDownloadFragment", "【START】startDownloadAEKitBase");
       f();
       return paramLayoutInflater;
       this.jdField_d_of_type_Int = 101;
@@ -544,7 +544,7 @@ public class CaptureQmcfSoDownloadFragment
   public void onDestroy()
   {
     super.onDestroy();
-    axgp.a().a(false, this);
+    axgr.a().a(false, this);
     if (QLog.isDevelopLevel()) {
       QLog.d("CaptureQmcfSoDownloadFragment", 4, "in CaptureQmcfSoDownloadFragment onDestroy");
     }
@@ -562,7 +562,7 @@ public class CaptureQmcfSoDownloadFragment
     super.onResume();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.onResume();
     if (Build.VERSION.SDK_INT >= 29) {
-      wsu.a(getActivity().getWindow());
+      wsr.a(getActivity().getWindow());
     }
   }
 }

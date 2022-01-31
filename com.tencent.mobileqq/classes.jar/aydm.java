@@ -1,67 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 import com.tencent.mobileqq.tablequery.TableQueryViewer;
-import java.util.List;
 
 public class aydm
-  extends BaseAdapter
+  implements View.OnTouchListener
 {
   public aydm(TableQueryViewer paramTableQueryViewer) {}
   
-  private int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return a().size();
-  }
-  
-  private List<aydd> a()
-  {
-    return TableQueryViewer.a(this.a);
-  }
-  
-  public int getCount()
-  {
-    return a();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return a().get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562486, paramViewGroup, false);
-      paramViewGroup = new aydl(this.a, paramView);
-      paramView.setTag(paramViewGroup);
+    paramView = this.a.getContext();
+    int i = paramMotionEvent.getAction();
+    int j = (int)paramMotionEvent.getRawY();
+    if (i == 0) {
+      TableQueryViewer.a(this.a, (int)paramMotionEvent.getY());
     }
-    for (;;)
+    label171:
+    do
     {
-      aydd localaydd = (aydd)a().get(paramInt);
-      paramViewGroup.a.setText(localaydd.b);
-      paramViewGroup.d.setText(localaydd.k);
-      paramViewGroup.b.setText(localaydd.c);
-      paramViewGroup.c.setText(localaydd.f);
-      if (paramInt % 2 != 0) {
-        break;
+      return false;
+      if (i == 2)
+      {
+        if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > baxn.a(paramView, 10.0F)))
+        {
+          TableQueryViewer.a(this.a, true);
+          paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
+          paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - vpm.b(paramView, 0.0F));
+          i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
+          if (paramMotionEvent.y >= 0) {
+            break label171;
+          }
+          paramMotionEvent.y = 0;
+        }
+        for (;;)
+        {
+          TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
+          return true;
+          if (paramMotionEvent.y > i - this.a.getHeight()) {
+            paramMotionEvent.y = (i - this.a.getHeight());
+          }
+        }
       }
-      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166439));
-      return paramView;
-      paramViewGroup = (aydl)paramView.getTag();
-    }
-    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167134));
-    return paramView;
+    } while ((i != 1) && (i != 3));
+    return false;
   }
 }
 

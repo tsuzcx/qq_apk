@@ -1,47 +1,24 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.map.geolocation.TencentLocation;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public abstract class tjh
+class tjh
+  extends SimpleJob<Object>
 {
-  public long a;
-  protected AtomicBoolean a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  
-  public tjh()
+  tjh(tjf paramtjf, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    super(paramString);
   }
   
-  public void a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    long l2 = System.currentTimeMillis();
-    long l1 = this.b - this.jdField_a_of_type_Long;
-    l2 -= this.b;
-    veg.c(paramString, "page network respond times " + l1);
-    veg.c(paramString, "page db times " + l2);
-  }
-  
-  public void b()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    if (this.a.jdField_a_of_type_Tji == null) {
+      this.a.jdField_a_of_type_Tji = new tji(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Tji.jdField_a_of_type_JavaLangString;
+    tjf.a(this.a);
+    return null;
   }
 }
 

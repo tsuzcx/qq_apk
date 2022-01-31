@@ -1,102 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.util.SparseArrayCompat;
+import android.text.TextUtils;
+import java.util.ArrayList;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ahfv
-  extends ahfo<ahfu>
 {
-  public int a()
+  public int a;
+  public SparseArrayCompat<ArrayList<String>> a;
+  
+  public ahfv()
   {
-    return 539;
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
   }
   
-  @NonNull
-  public ahfu a(int paramInt)
+  public static ahfv a(String paramString)
   {
-    super.a(paramInt);
-    return new ahfu();
-  }
-  
-  protected ahfu a(ampi[] paramArrayOfampi)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null)
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    ahfv localahfv = new ahfv();
+    Object localObject = new JSONObject(paramString);
+    localahfv.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("avoid_peak_interval");
+    paramString = new SparseArrayCompat();
+    localObject = ((JSONObject)localObject).optJSONArray("regions");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfampi.length > 0)
+      int i = 0;
+      while (i < ((JSONArray)localObject).length())
       {
-        paramArrayOfampi = paramArrayOfampi[0].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("springHb_SpringFestivalRedpacketPreloadConfProcessor", 2, "onParsed " + paramArrayOfampi);
-        }
-        localObject1 = ahfu.a(paramArrayOfampi);
+        paramString.put(i, ahfl.a(((JSONArray)localObject).optJSONArray(i)));
+        i += 1;
       }
     }
-    return localObject1;
-  }
-  
-  public Class<ahfu> a()
-  {
-    return ahfu.class;
-  }
-  
-  public void a()
-  {
-    super.a();
-    ahic.a();
-  }
-  
-  public void a(ahfu paramahfu)
-  {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null)
-      {
-        PreloadManager localPreloadManager = (PreloadManager)localQQAppInterface.getManager(151);
-        if (localPreloadManager != null)
-        {
-          localPreloadManager.a(paramahfu.a, 2);
-          localPreloadManager.b();
-          localPreloadManager.b(true);
-        }
-        ahic.a();
-        if ((paramahfu.a != null) && (paramahfu.a.length() > 0)) {
-          ahic.a(localQQAppInterface, 1, 0, a(), ahic.a(a()), ampm.a().a(a(), localQQAppInterface.getCurrentAccountUin()), true, ahic.a(a()));
-        }
-      }
-      return;
-    }
-    catch (Throwable paramahfu)
-    {
-      QLog.e("springHb_SpringFestivalRedpacketPreloadConfProcessor", 1, QLog.getStackTraceString(paramahfu));
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  @Nullable
-  public ahfu b(ampi[] paramArrayOfampi)
-  {
-    return (ahfu)super.b(paramArrayOfampi);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    localahfv.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramString;
+    return localahfv;
   }
 }
 

@@ -1,15 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.qphone.base.util.QLog;
 
 public class xcz
-  implements View.OnClickListener
+  implements ysy
 {
   public xcz(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onClick(View paramView)
+  public void a(GdtAd paramGdtAd)
   {
-    this.a.e();
+    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
+    TroopGiftPanel.a(this.a, paramGdtAd);
+  }
+  
+  public void a(GdtAd paramGdtAd, ysx paramysx)
+  {
+    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramysx.a());
+  }
+  
+  public void b(GdtAd paramGdtAd)
+  {
+    QLog.i("TroopGiftPanel", 1, "onAdImpression");
+  }
+  
+  public void c(GdtAd paramGdtAd)
+  {
+    QLog.i("TroopGiftPanel", 1, "onAdClicked");
+  }
+  
+  public void d(GdtAd paramGdtAd)
+  {
+    QLog.i("TroopGiftPanel", 1, "onAdClosed");
   }
 }
 

@@ -1,26 +1,6 @@
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.util.Observable;
-import java.util.Observer;
-
-public class beof
-  implements Observer
+public abstract interface beof
 {
-  public beof(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (!(paramObject instanceof String)) {}
-    do
-    {
-      return;
-      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
-      {
-        this.a.g();
-        this.a.c();
-        return;
-      }
-    } while (!"resumePlayer".equals((String)paramObject));
-  }
+  public abstract void onDismiss();
 }
 
 

@@ -1,88 +1,184 @@
+import android.content.Context;
 import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class zcr
-  extends zco
 {
-  private ArrayList<String> a;
-  
-  public zcr(JSONObject paramJSONObject)
+  public static zcq a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str1 = super.a();
-    try
+    paramContext = PatchSharedPreUtil.getPatchConfig(paramContext, paramString);
+    paramString = new ArrayList();
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      try
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
+        if (TextUtils.isEmpty(paramContext))
         {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
+          paramContext = new JSONArray();
+          break label125;
+          if (i < paramContext.length())
+          {
+            JSONObject localJSONObject = paramContext.getJSONObject(i);
+            if (localJSONObject == null) {
+              break label130;
+            }
+            paramString.add(new zcq(localJSONObject));
+            break label130;
           }
         }
+        else
+        {
+          paramContext = new JSONArray(paramContext);
+        }
       }
-      localJSONException.put("classIdList", localStringBuilder.toString());
+      catch (JSONException paramContext)
+      {
+        QLog.d("PatchLogTag", 1, "PatchConfigManager getLatestPatchConfig", paramContext);
+        if (paramString.size() > 1) {
+          Collections.sort(paramString, new zcs());
+        }
+        if (paramString.size() > 0) {
+          return (zcq)paramString.get(0);
+        }
+        return null;
+      }
+      label125:
+      int i = 0;
+      continue;
+      label130:
+      i += 1;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
-    }
-    String str2 = localJSONException.toString();
-    return str2;
   }
   
-  public ArrayList<String> a()
+  public static void a(Context paramContext, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    for (;;)
+    {
+      Object localObject2;
+      Object localObject3;
+      try
+      {
+        localObject1 = new HashMap();
+        if (TextUtils.isEmpty(paramString))
+        {
+          paramString = new JSONArray();
+          break label291;
+          if (i >= paramString.length()) {
+            break label159;
+          }
+          localObject2 = paramString.getJSONObject(i);
+          if (localObject2 == null) {
+            break label296;
+          }
+          localObject3 = new zcq((JSONObject)localObject2).a();
+          if ((!"dex".equals(localObject3)) && (!"Native".equals(localObject3))) {
+            break label296;
+          }
+          if (((HashMap)localObject1).containsKey(localObject3))
+          {
+            ((ArrayList)((HashMap)localObject1).get(localObject3)).add(localObject2);
+            break label296;
+          }
+        }
+        else
+        {
+          paramString = new JSONArray(paramString);
+          break label291;
+        }
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(localObject2);
+        ((HashMap)localObject1).put(localObject3, localArrayList);
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.d("PatchLogTag", 1, "PatchConfigManager appendPatchConfigToDisk", paramContext);
+        return;
+      }
+      label159:
+      Object localObject1 = ((HashMap)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        localObject2 = (String)((Map.Entry)localObject3).getKey();
+        paramString = PatchSharedPreUtil.getPatchConfig(paramContext, (String)localObject2);
+        if (TextUtils.isEmpty(paramString)) {}
+        for (paramString = new JSONArray();; paramString = new JSONArray(paramString))
+        {
+          localObject3 = ((ArrayList)((Map.Entry)localObject3).getValue()).iterator();
+          while (((Iterator)localObject3).hasNext()) {
+            paramString.put((JSONObject)((Iterator)localObject3).next());
+          }
+        }
+        PatchSharedPreUtil.updatePatchConfig(paramContext, (String)localObject2, paramString.toString());
+      }
+      continue;
+      label291:
+      int i = 0;
+      continue;
+      label296:
+      i += 1;
+    }
   }
   
-  protected void a(JSONObject paramJSONObject)
+  public static void a(Context paramContext, zcq paramzcq)
   {
     int i = 0;
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
+    if (paramzcq == null) {
+      return;
+    }
+    for (;;)
     {
-      int j = paramJSONObject.length;
-      while (i < j)
+      try
       {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
+        String str = paramzcq.a();
+        localObject = PatchSharedPreUtil.getPatchConfig(paramContext, str);
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          localObject = new JSONArray();
+          ((JSONArray)localObject).put(new JSONObject(paramzcq.e()));
+          PatchSharedPreUtil.updatePatchConfig(paramContext, str, ((JSONArray)localObject).toString());
+          return;
         }
-        i += 1;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.d("PatchLogTag", 1, "PatchConfigManager updatePatchConfigToDisk", paramContext);
+        return;
+      }
+      Object localObject = new JSONArray((String)localObject);
+      if (((JSONArray)localObject).length() == 1)
+      {
+        localObject = new zcq(((JSONArray)localObject).getJSONObject(0));
+        if (localObject != null)
+        {
+          int j = ((zcq)localObject).a();
+          int k = paramzcq.a();
+          if (j >= k) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      }
+      else
+      {
+        i = 1;
       }
     }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
-    }
-    return super.a(paramBoolean);
   }
 }
 

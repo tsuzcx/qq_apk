@@ -1,17 +1,65 @@
-import android.os.IInterface;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import cooperation.qzone.util.QZLog;
 
-public abstract interface bhhy
-  extends IInterface
+public class bhhy
 {
-  public abstract void a();
+  public static int a(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    if (arrayOfInt[0] == 0)
+    {
+      QZLog.e("TextureUtil", "glGenTextures: fail 0 ");
+      return 0;
+    }
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      QZLog.e("TextureUtil", "loadTexture: bitmap  == null || isRecycled");
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      return 0;
+    }
+    GLES20.glBindTexture(3553, arrayOfInt[0]);
+    if (paramBoolean)
+    {
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9728);
+    }
+    for (;;)
+    {
+      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+      GLES20.glGenerateMipmap(3553);
+      GLES20.glBindTexture(3553, 0);
+      return arrayOfInt[0];
+      GLES20.glTexParameteri(3553, 10241, 9728);
+      GLES20.glTexParameteri(3553, 10240, 9729);
+    }
+  }
   
-  public abstract void a(float paramFloat);
+  public static void a(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    GLES20.glFinish();
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public static void a(bhht parambhht)
+  {
+    if (parambhht == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < parambhht.size())
+      {
+        bhhu localbhhu = (bhhu)parambhht.valueAt(i);
+        if (localbhhu != null) {
+          localbhhu.b();
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 

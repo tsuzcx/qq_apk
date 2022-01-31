@@ -1,9 +1,6 @@
-public class akrp
+public abstract interface akrp
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  public abstract void a();
 }
 
 

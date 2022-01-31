@@ -1,28 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.28.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.32.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class rja
-  implements bfwv
+  implements pai
 {
   public rja(FastWebActivity paramFastWebActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if (FastWebActivity.f(this.a))
+    QLog.d(FastWebActivity.a(this.a), 2, " isSucc " + paramBoolean1 + "  useWebView :" + paramBoolean2 + "  data : " + paramFastWebArticleInfo);
+    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
     {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
-      FastWebActivity.e(this.a, false);
-      FastWebActivity.i(this.a);
-      FastWebActivity.a(this.a, new rke(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
-      long l = rnx.a("FastWebActivity.show");
-      rnx.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new FastWebActivity.28.1(this, l, localArrayList), 5, null, false);
+      paramBoolean1 = true;
+      rnu.b("fast_web_show_light_house_2");
+    }
+    for (;;)
+    {
+      this.a.runOnUiThread(new FastWebActivity.32.1(this, paramBoolean1, paramFastWebArticleInfo));
+      return;
+      paramBoolean1 = false;
     }
   }
 }

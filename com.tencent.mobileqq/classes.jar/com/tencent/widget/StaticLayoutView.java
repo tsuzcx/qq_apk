@@ -8,13 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import annf;
+import annk;
 
 public class StaticLayoutView
   extends View
 {
   private Layout jdField_a_of_type_AndroidTextLayout;
-  annf jdField_a_of_type_Annf;
+  annk jdField_a_of_type_Annk;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof annf)) {
-            ((annf)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof annk)) {
+            ((annk)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Annf = null;
+          this.jdField_a_of_type_Annk = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof annf))
+            if ((localObject1[0] instanceof annk))
             {
-              ((annf)localObject1[0]).a(true);
-              this.jdField_a_of_type_Annf = ((annf)localObject1[0]);
+              ((annk)localObject1[0]).a(true);
+              this.jdField_a_of_type_Annk = ((annk)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Annf != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Annk != null))
       {
-        this.jdField_a_of_type_Annf.a(false);
-        this.jdField_a_of_type_Annf = null;
+        this.jdField_a_of_type_Annk.a(false);
+        this.jdField_a_of_type_Annk = null;
         postInvalidate();
       }
     }

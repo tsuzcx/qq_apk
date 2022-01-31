@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import beka;
-import beks;
-import bfee;
+import bekr;
+import belj;
+import bfev;
 import org.json.JSONArray;
 
 class PickerJsPlugin$5
   implements Runnable
 {
-  PickerJsPlugin$5(PickerJsPlugin paramPickerJsPlugin, int paramInt1, int paramInt2, JSONArray paramJSONArray, beka parambeka) {}
+  PickerJsPlugin$5(PickerJsPlugin paramPickerJsPlugin, int paramInt1, int paramInt2, JSONArray paramJSONArray, bekr parambekr) {}
   
   public void run()
   {
     if (PickerJsPlugin.access$100(this.this$0) != null)
     {
-      PickerJsPlugin.access$100(this.this$0).a(this.val$column, this.val$current, beks.a(this.val$jsonArray));
+      PickerJsPlugin.access$100(this.this$0).a(this.val$column, this.val$current, belj.a(this.val$jsonArray));
       this.val$req.a();
     }
   }

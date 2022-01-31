@@ -1,60 +1,72 @@
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.utils.Utils;
+import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
 
-final class bidj
+class bidj
+  implements bieg<WeiyunPB.QqSdkFileUploadMsgRsp>
 {
-  private static String a = "PBSerialization-L";
+  bidj(bidh parambidh, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
   
-  public static bidi a(byte[] paramArrayOfByte)
+  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
   {
-    Object localObject = new bidh();
-    if (paramArrayOfByte.length < bidh.d)
-    {
-      QLog.w(a, 1, "buffer length is short than 16!");
-      return null;
-    }
-    ((bidh)localObject).a(paramArrayOfByte);
-    if (paramArrayOfByte.length < ((bidh)localObject).a())
-    {
-      QLog.w(a, 1, "buffer length is short!");
-      return null;
-    }
-    int i = ((bidh)localObject).a() - ((bidh)localObject).b() - bidh.d;
-    int j = ((bidh)localObject).b();
-    localObject = new byte[i];
-    byte[] arrayOfByte = new byte[j];
-    System.arraycopy(paramArrayOfByte, bidh.d, localObject, 0, i);
-    System.arraycopy(paramArrayOfByte, i + bidh.d, arrayOfByte, 0, j);
-    paramArrayOfByte = new WeiyunPB.MsgHead();
-    try
-    {
-      paramArrayOfByte.mergeFrom((byte[])localObject);
-      paramArrayOfByte = new bidi(paramArrayOfByte, arrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e(a, 1, "throw InvalidProtocolBufferException.");
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
   }
   
-  public static byte[] a(bidi parambidi)
+  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
   {
-    byte[] arrayOfByte1 = parambidi.a().toByteArray();
-    parambidi = parambidi.a();
-    int i = bidh.d + arrayOfByte1.length + parambidi.length;
-    Object localObject = new bidh();
-    ((bidh)localObject).b(parambidi.length);
-    ((bidh)localObject).a(i);
-    localObject = ((bidh)localObject).a();
-    byte[] arrayOfByte2 = new byte[i];
-    System.arraycopy(localObject, 0, arrayOfByte2, 0, localObject.length);
-    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, localObject.length, arrayOfByte1.length);
-    i = localObject.length;
-    System.arraycopy(parambidi, 0, arrayOfByte2, arrayOfByte1.length + i, parambidi.length);
-    return arrayOfByte2;
+    if (paramQqSdkFileUploadMsgRsp == null)
+    {
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, ajya.a(2131715084));
+      return;
+    }
+    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
+    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
+    Object localObject2;
+    label57:
+    boolean bool;
+    String str;
+    if (localObject1 == null)
+    {
+      localObject1 = null;
+      if (localObject3 != null) {
+        break label240;
+      }
+      localObject2 = null;
+      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
+        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
+      }
+      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
+        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
+      }
+      bidp.a((String)localObject2, (String)localObject1);
+      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
+      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
+      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
+      str = paramQqSdkFileUploadMsgRsp.server_name.get();
+      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
+        break label250;
+      }
+    }
+    label240:
+    label250:
+    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
+    {
+      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
+      return;
+      localObject1 = bige.a((ByteStringMicro)localObject1);
+      break;
+      localObject2 = bige.a((ByteStringMicro)localObject3);
+      break label57;
+    }
   }
 }
 

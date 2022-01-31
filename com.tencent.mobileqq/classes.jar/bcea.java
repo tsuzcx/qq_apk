@@ -1,42 +1,17 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class bcea
-  implements WtTicketPromise
+class bcea
+  implements ValueCallback<Bundle>
 {
-  public bcea(String paramString, long paramLong) {}
+  bcea(bcdz parambcdz) {}
   
-  public void Done(Ticket paramTicket)
+  public void a(Bundle paramBundle)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("pt4_token response received for ").append(this.jdField_a_of_type_JavaLangString).append(", cost=").append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      if (paramTicket == null) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramTicket = "";; paramTicket = ". But result was null!")
-    {
-      QLog.d("SwiftBrowserCookieMonster", 2, paramTicket);
-      return;
-    }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
+    int i = paramBundle.getInt("input-box-num", 0);
     if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token failed for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("SwiftBrowserCookieMonster", 2, "Get pt4_token timeout for " + this.jdField_a_of_type_JavaLangString + " because " + paramErrMsg + ", cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
     }
   }
 }

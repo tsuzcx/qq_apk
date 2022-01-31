@@ -1,15 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
 
-public abstract interface ahmq
+public class ahmq
 {
-  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(View paramView, Object paramObject);
+  public void a(boolean paramBoolean)
+  {
+    if (QZLog.isColorLevel()) {
+      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
+    }
+  }
   
-  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
-  
-  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
+    }
+    return apvd.a(this.c);
+  }
 }
 
 

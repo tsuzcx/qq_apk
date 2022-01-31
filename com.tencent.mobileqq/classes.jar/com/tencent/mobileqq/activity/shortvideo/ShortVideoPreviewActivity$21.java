@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.os.Message;
 import android.widget.SeekBar;
-import bbva;
+import bbvo;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -14,10 +14,10 @@ class ShortVideoPreviewActivity$21
   public void run()
   {
     Message localMessage;
-    if ((this.this$0.jdField_a_of_type_Bbva.b()) && (this.this$0.jdField_a_of_type_AndroidViewSurfaceView != null))
+    if ((this.this$0.jdField_a_of_type_Bbvo.b()) && (this.this$0.jdField_a_of_type_AndroidViewSurfaceView != null))
     {
       localMessage = Message.obtain();
-      localMessage.arg1 = this.this$0.jdField_a_of_type_Bbva.b();
+      localMessage.arg1 = this.this$0.jdField_a_of_type_Bbvo.b();
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "此时时间为+" + localMessage.arg1);
       }

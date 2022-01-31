@@ -1,29 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.4.1;
 
 public class azfu
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public azfu(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131371108: 
-      TroopAvatarWallPreviewActivity.e(this.a);
-      return;
-    case 2131371105: 
-      TroopAvatarWallPreviewActivity.f(this.a);
-      return;
-    case 2131371106: 
-      TroopAvatarWallPreviewActivity.g(this.a);
+    if (this.a.jdField_b_of_type_AndroidViewView == null) {
       return;
     }
-    TroopAvatarWallPreviewActivity.h(this.a);
+    this.a.jdField_b_of_type_AndroidViewView.post(new TroopAvatarWallPreviewActivity.4.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

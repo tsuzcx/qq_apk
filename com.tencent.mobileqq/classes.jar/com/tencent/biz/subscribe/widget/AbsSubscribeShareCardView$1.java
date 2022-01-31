@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.widget;
 
-import wuq;
+import wun;
 
 class AbsSubscribeShareCardView$1
   implements Runnable
 {
-  AbsSubscribeShareCardView$1(AbsSubscribeShareCardView paramAbsSubscribeShareCardView, wuq paramwuq) {}
+  AbsSubscribeShareCardView$1(AbsSubscribeShareCardView paramAbsSubscribeShareCardView, wun paramwun) {}
   
   public void run()
   {

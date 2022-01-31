@@ -1,8 +1,8 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajyc;
-import amtc;
-import bcpw;
+import ajya;
+import amtb;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class MiniAppProxyImpl$3$1
@@ -15,12 +15,12 @@ class MiniAppProxyImpl$3$1
     if (this.this$1.val$miniAppInfo != null) {
       this.this$1.val$miniAppInfo.topType = 0;
     }
-    if (amtc.g())
+    if (amtb.g())
     {
-      bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131701340) + amtc.c() + ajyc.a(2131701339), 0).a();
+      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131701351) + amtb.c() + ajya.a(2131701350), 0).a();
       return;
     }
-    bcpw.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();
+    bcql.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();
   }
 }
 

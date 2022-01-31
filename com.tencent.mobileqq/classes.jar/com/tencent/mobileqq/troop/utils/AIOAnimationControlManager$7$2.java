@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bagr;
-import bahb;
+import bahf;
+import bahp;
 
 public class AIOAnimationControlManager$7$2
   implements Runnable
 {
-  public AIOAnimationControlManager$7$2(bahb parambahb) {}
+  public AIOAnimationControlManager$7$2(bahp parambahp) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Bagr.a = 1;
-    this.a.jdField_a_of_type_Bagr.a(this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Bahf.a = 1;
+    this.a.jdField_a_of_type_Bahf.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

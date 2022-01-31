@@ -1,27 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qtb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface qtb
 {
-  qtb(qsx paramqsx, LinearLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ViewGroup.LayoutParams paramLayoutParams1, int paramInt5, int paramInt6, int paramInt7, ViewGroup.LayoutParams paramLayoutParams2, int paramInt8, int paramInt9) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.height = (this.c + (int)(paramValueAnimator.getAnimatedFraction() * this.d));
-    qsx.a(this.jdField_a_of_type_Qsx).t.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.width = (this.e + (int)(paramValueAnimator.getAnimatedFraction() * this.f));
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = (this.g + (int)(paramValueAnimator.getAnimatedFraction() * this.f));
-    qsx.a(this.jdField_a_of_type_Qsx).g.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-    this.jdField_b_of_type_AndroidViewViewGroup$LayoutParams.width = (this.h + (int)(paramValueAnimator.getAnimatedFraction() * this.i));
-    qsx.a(this.jdField_a_of_type_Qsx).v.setLayoutParams(this.jdField_b_of_type_AndroidViewViewGroup$LayoutParams);
-  }
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoInfo paramVideoInfo);
+  
+  public abstract void a(VideoInfo paramVideoInfo, qmp paramqmp);
+  
+  public abstract void a(qmp paramqmp);
+  
+  public abstract void a(qta paramqta);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(VideoInfo paramVideoInfo);
+  
+  public abstract boolean a(VideoInfo paramVideoInfo, qmp paramqmp, double paramDouble, long paramLong);
+  
+  public abstract String b();
+  
+  public abstract void b(qmp paramqmp);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract void c(qmp paramqmp);
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract void onClick(View paramView);
 }
 
 

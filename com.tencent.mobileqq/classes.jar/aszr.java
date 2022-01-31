@@ -1,13 +1,27 @@
-public class aszr
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+
+class aszr
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  aszr(aszq paramaszq, aszu paramaszu, URLDrawable paramURLDrawable) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Aszq.a() != null)
+    {
+      this.jdField_a_of_type_Aszu.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Aszu.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
+      return;
+    }
+    this.jdField_a_of_type_Aszu.b.setAlpha(1.0F);
+  }
 }
 
 

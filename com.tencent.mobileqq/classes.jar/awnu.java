@@ -1,43 +1,56 @@
 import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 import java.util.List;
 
 public class awnu
-  implements awof
+  implements awoh
 {
-  protected int a;
-  private String a;
-  public List<awog> a;
+  public static final String a;
+  private int a;
+  public List<awoi> a;
+  private String b;
   
-  public awnu(List<awog> paramList, String paramString, int paramInt)
+  static
+  {
+    jdField_a_of_type_JavaLangString = ajya.a(2131705390);
+  }
+  
+  public awnu(List<awoi> paramList, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
   {
-    return 3;
+    return awin.a("fts_native_contactor_maxnum", 3);
   }
   
   public String a()
   {
-    return ajyc.a(2131705385);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    awso.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = awvy.a("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = awvy.a("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
+    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
+    awwa.a(this.b, 20, 0, paramView);
+    if ((paramView.getContext() instanceof UniteSearchActivity))
+    {
+      awwa.a("all_result", "more_contact", new String[] { "" + this.b });
+      if (SearchConfigManager.needSeparate) {
+        awwa.a("search", "group", "more", 0, 0, new String[] { awwa.a(this.jdField_a_of_type_Int) });
+      }
+      awsq.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
+    }
   }
   
   public int b()
@@ -47,7 +60,7 @@ public class awnu
   
   public String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
 }
 

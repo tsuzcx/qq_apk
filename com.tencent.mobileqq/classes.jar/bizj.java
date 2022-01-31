@@ -1,144 +1,53 @@
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.config.AppSetting;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.ttpic.openapi.offlineset.utils.IHttpClient;
+import com.tencent.ttpic.openapi.offlineset.utils.IResponseListener;
+import dov.com.qq.im.ae.play.UrlConHttpClient.1;
+import dov.com.qq.im.ae.play.UrlConHttpClient.2;
+import java.util.concurrent.Executor;
 
 public class bizj
+  implements IHttpClient
 {
-  private static final List<Pair<String, Integer>> a = new LinkedList();
+  private static final String jdField_a_of_type_JavaLangString = bizj.class.getSimpleName();
+  private IResponseListener jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener;
   
-  static
+  private void a(int paramInt, String paramString1, String paramString2)
   {
-    a.add(new Pair("AEKIT_CAMERA_FIRST_LAUNCH", Integer.valueOf(0)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqStoryCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetCompressedCategoryMaterialMqEmoCamera", Integer.valueOf(4)));
-    a.add(new Pair("CameraModuleSvc.GetPlayShowCatMatTree", Integer.valueOf(4)));
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener.response(paramInt, 1, paramString1, paramString2);
+    }
   }
   
-  private bizj()
+  public void download(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = bizm.a("key_app_version", "");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
+    LogUtils.i(jdField_a_of_type_JavaLangString, "开始下载文件:" + paramString2);
+    if (TextUtils.isEmpty(paramString2))
     {
-      localObject = a.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Pair localPair = (Pair)((Iterator)localObject).next();
-        if (4 == ((Integer)localPair.second).intValue()) {
-          bizm.a((String)localPair.first);
-        } else {
-          bizl.a((String)localPair.first);
-        }
-      }
-      bizm.a("key_app_version", AppSetting.a());
-    }
-  }
-  
-  public static bizj a()
-  {
-    return bizn.a();
-  }
-  
-  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2) {
-      return bizm.a(paramString, paramInt1);
-    }
-    return bizl.a(paramString, paramInt1);
-  }
-  
-  public long a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bizm.a(paramString, paramLong);
-    }
-    return bizl.a(paramString, paramLong);
-  }
-  
-  @NonNull
-  public SharedPreferences a()
-  {
-    return bizl.a();
-  }
-  
-  @Nullable
-  public String a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bizm.a(paramString1, paramString2);
-    }
-    return bizl.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bizm.a(paramString);
+      LogUtils.e(jdField_a_of_type_JavaLangString, "downUrl 无效：" + paramString2);
       return;
     }
-    bizl.a(paramString);
+    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.2(this, paramString2, paramString3, paramInt, paramString1));
   }
   
-  public void a(@NonNull String paramString, int paramInt1, int paramInt2)
+  public void get(int paramInt, String paramString1, String paramString2)
   {
-    if (4 == paramInt2)
+    if (TextUtils.isEmpty(paramString2))
     {
-      bizm.a(paramString, paramInt1);
+      LogUtils.e(jdField_a_of_type_JavaLangString, "url 无效：" + paramString2);
       return;
     }
-    bizl.a(paramString, paramInt1);
+    LogUtils.i(jdField_a_of_type_JavaLangString, "GET 请求：" + paramString2);
+    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.1(this, paramString2, paramInt, paramString1));
   }
   
-  public void a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bizm.a(paramString, paramLong);
-      return;
-    }
-    bizl.a(paramString, paramLong);
-  }
+  public void post(int paramInt, String paramString1, String paramString2) {}
   
-  public void a(@NonNull String paramString1, String paramString2, int paramInt)
+  public void setResponseListener(IResponseListener paramIResponseListener)
   {
-    if (4 == paramInt)
-    {
-      bizm.a(paramString1, paramString2);
-      return;
-    }
-    bizl.a(paramString1, paramString2);
-  }
-  
-  public void a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt)
-    {
-      bizm.a(paramString, paramBoolean);
-      return;
-    }
-    bizl.a(paramString, paramBoolean);
-  }
-  
-  public boolean a(@NonNull String paramString, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bizm.a(paramString);
-    }
-    return bizl.a(paramString);
-  }
-  
-  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (4 == paramInt) {
-      return bizm.a(paramString, paramBoolean);
-    }
-    return bizl.a(paramString, paramBoolean);
+    LogUtils.i(jdField_a_of_type_JavaLangString, "setResponseListener ");
+    this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener = paramIResponseListener;
   }
 }
 

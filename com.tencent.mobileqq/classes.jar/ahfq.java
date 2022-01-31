@@ -1,270 +1,221 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.support.v4.util.SparseArrayCompat;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.HtmlOfflineCheckConfig;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfigManager.1;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpakcetPreviewConfBean;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
+import java.util.ArrayList;
+import java.util.Iterator;
 import mqq.manager.Manager;
 
 public class ahfq
   implements Manager
 {
-  private long jdField_a_of_type_Long;
-  private ahfp jdField_a_of_type_Ahfp;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ahfo jdField_a_of_type_Ahfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public ahfq(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApplication().getApplicationContext();
-    this.jdField_a_of_type_Ahfp = new ahfp(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ahfo = ((ahfo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(341));
   }
   
-  private void a(SpringFestivalRedpacketConfBean.HtmlOfflineCheckConfig paramHtmlOfflineCheckConfig, int paramInt1, int paramInt2)
+  public static boolean a(String paramString)
   {
-    if (paramHtmlOfflineCheckConfig == null) {}
-    for (;;)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "config is empty, not process!!!");
-        }
-        return;
+      return false;
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localObject1 instanceof QQAppInterface));
+    Object localObject1 = (ahfq)((QQAppInterface)localObject1).getManager(343);
+    if ((localObject1 == null) || (((ahfq)localObject1).a() == null))
+    {
+      localObject1 = null;
+      Object localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = "https://i.qianbao.qq.com/2020-hebao/";
       }
-      finally {}
-      Object localObject = paramHtmlOfflineCheckConfig.bids;
-      if (bbjw.a((String)localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "bids is empty, not process!!!");
-        }
+      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!paramString.startsWith((String)localObject2))) {
+        break label92;
       }
-      else
+    }
+    label92:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      localObject1 = ((ahfq)localObject1).a().activityPrefix;
+      break;
+    }
+  }
+  
+  private boolean a(String paramString, ArrayList<String> paramArrayList)
+  {
+    if ((bbkk.a(paramString)) || (paramString.length() < 2) || (paramArrayList == null) || (paramArrayList.isEmpty())) {
+      return false;
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      String str1 = (String)paramArrayList.next();
+      if ((!bbkk.a(str1)) && (str1.length() >= 2))
       {
-        localObject = ((String)localObject).split("\\|");
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          paramInt2 = localObject.length;
-          paramInt1 = 0;
-          while (paramInt1 < paramInt2)
-          {
-            String str = localObject[paramInt1];
-            if (!a(str))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "should not check offline package!!!");
-              }
-            }
-            else
-            {
-              int i = bbjn.e(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), str);
-              if (i >= paramHtmlOfflineCheckConfig.total_cnt)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "already bigger than total cnt!!!");
-                }
-              }
-              else
-              {
-                long l = bbjn.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), str);
-                if (Math.abs(NetConnInfoCenter.getServerTimeMillis() - l) < paramHtmlOfflineCheckConfig.time_interval * 60 * 60 * 1000)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "time interval not bigger than time interval in config!!!");
-                  }
-                }
-                else if (!ahfn.a(this.jdField_a_of_type_AndroidContentContext, paramHtmlOfflineCheckConfig.net_type))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "current network is not allow download!!!");
-                  }
-                }
-                else {
-                  mze.b(str, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ahfr(this, str, i), true, 0, true);
-                }
-              }
-            }
-            paramInt1 += 1;
-          }
+        str1 = str1.substring(0, 2);
+        String str2 = paramString.substring(0, 2);
+        if (QLog.isColorLevel()) {
+          QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "currFirtstTwoChar: " + str1 + " firstTwoChar: " + str2);
+        }
+        if (str1.equals(str2)) {
+          return true;
         }
       }
     }
+    return false;
   }
   
   public int a()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Ahfp != null) {
-      i = this.jdField_a_of_type_Ahfp.a();
+    if (this.jdField_a_of_type_Ahfo != null) {
+      return this.jdField_a_of_type_Ahfo.b();
     }
-    return i;
+    return 0;
   }
   
-  public SpringFestivalRedpacketConfBean a()
+  public long a(long paramLong)
   {
-    if (this.jdField_a_of_type_Ahfp == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "getSpringFestivalRedpacketConfBean mEntryConfigProcessor is empty!");
-      }
-      return null;
+    long l = paramLong;
+    if (paramLong <= 0L) {
+      l = 0L;
     }
-    return this.jdField_a_of_type_Ahfp.a();
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.excute(new SpringFestivalRedpacketConfigManager.1(this), 16, null, true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    for (paramLong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();; paramLong = 0L)
     {
-      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidContentContext, ahft.class);
-      localNewIntent.putExtra("k_cmd", 1);
-      localNewIntent.putExtra("k_req_occasion", paramInt1);
-      localNewIntent.putExtra("k_offset", paramInt3);
-      localNewIntent.putExtra("k_id", paramInt4);
-      localNewIntent.putExtra("k_version", paramInt2);
-      localNewIntent.putExtra("k_cookie", paramArrayOfByte1);
-      localNewIntent.putExtra("k_buff", paramArrayOfByte2);
-      if (paramInt3 != 0) {}
-      for (boolean bool = true;; bool = false)
+      Object localObject = (ahfv)ampl.a().a(540);
+      if ((localObject == null) || (((ahfv)localObject).jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat == null) || (((ahfv)localObject).jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() == 0))
       {
-        localNewIntent.putExtra("k_new_page", bool);
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
-        return;
+        paramLong = l % 60000 + (int)(paramLong % 13L) * 60 * 1000;
+        if (QLog.isColorLevel()) {
+          QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "not find config, so return default finalDelay:" + paramLong);
+        }
+        return paramLong;
       }
-      return;
-    }
-    catch (Exception paramArrayOfByte1)
-    {
-      QLog.e("springHb_SpringFestivalRedpacketConfigManager", 1, "getEntryConfig fail.", paramArrayOfByte1);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, String.format("getEntryConfigByPush app=%s pushVersion=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt) }));
-    }
-    if ((paramQQAppInterface != null) && (paramInt >= 0)) {
+      int i = ((ahfv)localObject).jdField_a_of_type_Int;
+      int j = i;
+      if (i <= 0) {
+        j = 60;
+      }
+      SparseArrayCompat localSparseArrayCompat = ((ahfv)localObject).jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      int k = (int)(paramLong % localSparseArrayCompat.size());
+      String str;
       try
       {
-        if (this.jdField_a_of_type_Ahfp != null)
+        localObject = akuf.b();
+        if (QLog.isColorLevel()) {
+          QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "getDelayBeginTime adcode: " + (String)localObject);
+        }
+        if (bbkk.a((String)localObject))
         {
-          int i = this.jdField_a_of_type_Ahfp.a();
-          if (QLog.isColorLevel()) {
-            QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, String.format("getEntryConfigByPush app=%s localVersion=%s", new Object[] { paramQQAppInterface, Integer.valueOf(i) }));
-          }
-          if (i != paramInt)
+          ahia.a(0);
+          k = j * k * 1000;
+          i = k;
+          if (QLog.isColorLevel())
           {
-            b(paramQQAppInterface, 2);
-            return;
+            QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "can't get current user's adcode , so return randon region time interval: " + k);
+            i = k;
           }
-          QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, "getEntryConfigByPush push version is same as local.");
-          return;
+          paramLong = l % (j * 1000) + i;
+          if (QLog.isColorLevel()) {
+            QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "current adcode :" + (String)localObject + " time interval: " + j * 1000 + ",configDelay:" + l + ",adDelay:" + i + ",finalDelay:" + paramLong);
+          }
+          return paramLong;
         }
       }
-      catch (Exception paramQQAppInterface)
+      catch (Exception localException)
       {
-        QLog.e("springHb_SpringFestivalRedpacketConfigManager", 1, "getEntryConfigByPush fail.", paramQQAppInterface);
+        for (;;)
+        {
+          QLog.e("springHb_SpringFestivalRedpacketConfigProvider", 1, localException, new Object[0]);
+          ahia.a(1);
+          str = null;
+        }
+        i = 0;
+      }
+      if (i < localSparseArrayCompat.size())
+      {
+        ArrayList localArrayList = (ArrayList)localSparseArrayCompat.get(i);
+        if ((localArrayList == null) || (localArrayList.isEmpty())) {}
+        while (!a(str, localArrayList))
+        {
+          i += 1;
+          break;
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("springHb_SpringFestivalRedpacketConfigProvider", 2, "matchRegionIndex: " + i);
+        }
+        i = j * i * 1000;
+        break;
+        i = k;
       }
     }
   }
   
-  public boolean a(String paramString)
+  public SpringFestivalRedpacketConfBean.HtmlOfflineCheckConfig a()
   {
-    boolean bool1 = true;
-    if (bbjw.a(paramString)) {
-      return false;
-    }
-    boolean bool2 = ahfn.a(paramString);
-    int i;
-    if (bool2)
+    if (this.jdField_a_of_type_Ahfo != null)
     {
-      i = 0;
-      ahic.a(paramString, i, 0);
-      if (bool2) {
-        break label42;
+      SpringFestivalRedpacketConfBean localSpringFestivalRedpacketConfBean = this.jdField_a_of_type_Ahfo.a();
+      if (localSpringFestivalRedpacketConfBean != null) {
+        return localSpringFestivalRedpacketConfBean.htmlOfflineCheckConfig;
       }
     }
-    for (;;)
-    {
-      return bool1;
-      i = 1;
-      break;
-      label42:
-      bool1 = false;
-    }
+    return null;
   }
   
-  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString, List<Integer> paramList, int paramInt3)
+  public SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo a()
   {
-    try
+    if (this.jdField_a_of_type_Ahfo != null)
     {
-      if (this.jdField_a_of_type_Ahfp != null)
-      {
-        paramBoolean = this.jdField_a_of_type_Ahfp.a(paramBoolean, paramInt1, paramInt2, paramString, paramList, paramInt3);
-        return paramBoolean;
+      SpringFestivalRedpacketConfBean localSpringFestivalRedpacketConfBean = this.jdField_a_of_type_Ahfo.a();
+      if (localSpringFestivalRedpacketConfBean != null) {
+        return localSpringFestivalRedpacketConfBean.springFestivalHbEntryInfo;
       }
     }
-    catch (Throwable paramString)
+    return null;
+  }
+  
+  public SpringFestivalRedpakcetPreviewConfBean a()
+  {
+    return (SpringFestivalRedpakcetPreviewConfBean)ampl.a().a(548);
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Ahfo != null)
     {
-      QLog.e("springHb_SpringFestivalRedpacketConfigManager", 1, paramString, new Object[0]);
+      Object localObject = this.jdField_a_of_type_Ahfo.a();
+      if (localObject != null)
+      {
+        localObject = ((SpringFestivalRedpacketConfBean)localObject).htmlOfflineCheckConfig;
+        if (localObject != null) {
+          return ((SpringFestivalRedpacketConfBean.HtmlOfflineCheckConfig)localObject).checkDomain;
+        }
+      }
     }
-    return true;
+    return "";
   }
   
   public int b()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Ahfp != null) {
-      i = this.jdField_a_of_type_Ahfp.b();
+    if (this.jdField_a_of_type_Ahfo != null) {
+      return this.jdField_a_of_type_Ahfo.a();
     }
-    return i;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    boolean bool = false;
-    QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, String.format("getEntryConfig app=%s reqOccasion=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt) }));
-    if (paramQQAppInterface != null)
-    {
-      if (paramInt == 1) {}
-      try
-      {
-        long l = NetConnInfoCenter.getServerTimeMillis();
-        if (Math.abs(l - this.jdField_a_of_type_Long) <= 3600000L) {}
-        for (;;)
-        {
-          QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, String.format("getEntryConfig needReq=%s", new Object[] { Boolean.valueOf(bool) }));
-          if (!bool) {
-            break;
-          }
-          int i = a();
-          QLog.i("springHb_SpringFestivalRedpacketConfigManager", 1, String.format("getEntryConfig localVersion=%s", new Object[] { Integer.valueOf(i) }));
-          a(paramInt, i, 0, 0, null, null);
-          return;
-          this.jdField_a_of_type_Long = l;
-          bool = true;
-        }
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e("springHb_SpringFestivalRedpacketConfigManager", 1, "getEntryConfig fail.", paramQQAppInterface);
-      }
-    }
+    return -1;
   }
   
   public void onDestroy() {}

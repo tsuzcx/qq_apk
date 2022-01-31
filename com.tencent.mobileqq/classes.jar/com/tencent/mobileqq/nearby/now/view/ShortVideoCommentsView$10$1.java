@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import atjh;
+import atjj;
 
 public class ShortVideoCommentsView$10$1
   implements Runnable
 {
-  public ShortVideoCommentsView$10$1(atjh paramatjh) {}
+  public ShortVideoCommentsView$10$1(atjj paramatjj) {}
   
   public void run()
   {

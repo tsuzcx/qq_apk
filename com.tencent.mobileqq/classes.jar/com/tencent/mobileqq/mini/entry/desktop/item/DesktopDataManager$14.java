@@ -9,7 +9,7 @@ import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
-import yxr;
+import yxo;
 
 class DesktopDataManager$14
   implements Runnable
@@ -29,7 +29,7 @@ class DesktopDataManager$14
       while (i < ((JSONArray)localObject1).length())
       {
         Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(yxr.a(new INTERFACE.StApiAppInfo(), localObject2)));
+        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(yxo.a(new INTERFACE.StApiAppInfo(), localObject2)));
         DesktopAppInfo localDesktopAppInfo = new DesktopAppInfo(2, (MiniAppInfo)localObject2);
         ((DesktopAppInfo)localDesktopAppInfo).fromBackup = 1;
         localArrayList.add(localDesktopAppInfo);

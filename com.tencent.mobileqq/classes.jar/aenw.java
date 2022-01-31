@@ -1,17 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class aenw
-  implements axod
+  implements DialogInterface.OnClickListener
 {
-  aenw(aenv paramaenv) {}
+  aenw(aent paramaent) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aenv.a(this.a);
-    this.a.H();
-  }
-  
-  public void b()
-  {
-    this.a.H();
+    paramDialogInterface.dismiss();
+    bbdx.d(this.a.g);
+    this.a.g = "";
   }
 }
 

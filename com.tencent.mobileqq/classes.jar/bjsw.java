@@ -1,311 +1,193 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
+import com.tencent.image.NativeGifImage;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
-import java.util.ArrayList;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
 
 public class bjsw
-  extends bjwu
-  implements View.OnClickListener, bkcu
+  extends bjxl
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  public Bitmap a;
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CropNewView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[5];
-  public Bitmap b;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  boolean jdField_b_of_type_Boolean = false;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  public boolean c;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  boolean jdField_d_of_type_Boolean = false;
-  boolean e = false;
-  public boolean f = false;
+  protected double a;
+  protected final int a;
+  protected LinearLayout a;
+  protected SeekBar a;
+  protected TextView a;
+  protected boolean a;
+  protected int b;
+  protected TextView b;
+  protected int c;
+  protected int d = 50;
+  protected int e = -1;
+  protected int f;
+  protected int g;
   
-  public bjsw(@NonNull bjww parambjww)
+  public bjsw(@NonNull bjxn parambjxn)
   {
-    super(parambjww);
-    this.jdField_c_of_type_Boolean = false;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bjww == null) {}
-    int i;
-    do
-    {
-      return;
-      i = this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("EditPicCropPart", 2, "onBussiRestoreClick , bussiId = " + i + ",hasModified" + paramBoolean);
-  }
-  
-  private boolean c()
-  {
-    boolean bool = false;
-    int i = this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
-    if (i == 103)
-    {
-      this.jdField_a_of_type_Bjww.d();
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EditPicCropPart", 2, "onBussiCropClick , bussiId = " + i + ",clickHit = " + bool);
-    }
-    return bool;
+    super(parambjxn);
+    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
   }
   
   private void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364741));
-      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      if (this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    this.f = bhqe.f;
+    this.g = (this.c * bhqe.g);
+    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+    NativeGifImage.QZONE_DELAY = -1;
+    this.jdField_b_of_type_Int = 50;
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
+    }
+    d();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131375788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131375783));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375784));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367064));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bjsx(this));
+  }
+  
+  public void a(@NonNull bkld parambkld)
+  {
+    if (this.e == -1) {
+      if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_Boolean)
       {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-        localLayoutParams.bottomMargin = bbkx.a(56.5F);
-        this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+        parambkld.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a());
+        parambkld.a.d = this.jdField_a_of_type_Boolean;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+        }
       }
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView = ((CropNewView)a(2131364851));
-      this.jdField_a_of_type_AndroidViewView = a(2131364847);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = a(2131364849);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364739));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = a(2131363859);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364850));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364848));
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131376627));
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.setCropListener(this);
     }
-  }
-  
-  private boolean e()
-  {
-    int i = this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
-    this.jdField_d_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("EditPicCropPart", 2, "onBussiCropClickIntercept , bussiId = " + i + ",intercepte = " + false);
-    }
-    return false;
-  }
-  
-  private boolean f()
-  {
-    boolean bool = false;
-    int i = this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a();
-    if (i == 103)
+    do
     {
-      bool = true;
-      this.jdField_a_of_type_Bjww.e();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EditPicCropPart", 2, "onBussiBackPressed , bussiId = " + i + ",clickHit = " + bool);
-    }
-    return bool;
-  }
-  
-  private void j()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    if (!this.f)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    for (;;)
-    {
-      l();
-      this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-  }
-  
-  private void k()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 103)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof TextView)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699217);
+      bklj localbklj = parambkld.a;
+      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
+      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = bhqe.d)
+      {
+        localbklj.jdField_b_of_type_Int = i;
+        break;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  private void n() {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 1) {
-      this.jdField_b_of_type_AndroidViewView.setEnabled(false);
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidViewView.setEnabled(true);
-  }
-  
-  public void a(int paramInt, @NonNull bkkm parambkkm)
-  {
-    bkks localbkks = parambkkm.jdField_a_of_type_Bkks;
-    localbkks.jdField_a_of_type_Int += this.jdField_a_of_type_Int;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      parambkkm.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064.reservesArray.add("2");
-      vem.b("0X80075E9", vem.jdField_a_of_type_Int);
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+      }
+      parambkld.a.jdField_b_of_type_Int = this.e;
+      parambkld.a.d = this.jdField_a_of_type_Boolean;
+      if (this.e < this.c)
+      {
+        LpReportInfo_pf00064.allReport(628, 5, 3);
+        return;
+      }
+    } while (this.e <= this.c);
+    LpReportInfo_pf00064.allReport(628, 5, 2);
   }
   
   public boolean a()
   {
-    if (this.jdField_b_of_type_Boolean)
+    boolean bool = false;
+    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int == 21)
     {
-      if (!f()) {
-        this.jdField_a_of_type_Bjww.a(0);
+      NativeGifImage.QZONE_DELAY = this.c;
+      if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+        this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(NativeGifImage.QZONE_DELAY);
       }
-      vem.b("0X80075D5");
-      auab.a("0X800AAE5", 0);
-      return true;
+      this.e = this.c;
+      this.d = this.jdField_b_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_Bjxn.a(0);
+      bool = true;
+      LpReportInfo_pf00064.allReport(628, 5, 4);
     }
-    return false;
+    return bool;
   }
   
   public void a_(int paramInt, Object paramObject)
   {
-    d();
-    if (paramInt == 11) {
-      if (!this.jdField_b_of_type_Boolean) {
-        j();
-      }
-    }
-    while (!this.jdField_b_of_type_Boolean) {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
     }
-    k();
+    if (this.e == -1)
+    {
+      if (!this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_Boolean) {
+        break label193;
+      }
+      paramInt = (int)this.jdField_a_of_type_Bjxn.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
+      this.e = paramInt;
+      this.c = paramInt;
+    }
+    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
+    {
+      d();
+      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
+      this.d = paramInt;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
+      }
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
+      this.c = this.e;
+      this.jdField_b_of_type_Int = this.d;
+      return;
+      label193:
+      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
+      this.e = paramInt;
+      this.c = paramInt;
+    }
   }
   
-  public boolean b()
+  public void g()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.e = true;
-    b(this.e);
+    super.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
+    }
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
+    NativeGifImage.QZONE_DELAY = -1;
   }
   
   public void onClick(View paramView)
   {
-    boolean bool1 = true;
     switch (paramView.getId())
     {
     default: 
-    case 2131364847: 
-    case 2131364849: 
-    case 2131364739: 
-      boolean bool2;
+    case 2131375784: 
       do
       {
-        do
-        {
-          return;
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.a();
-          this.jdField_a_of_type_AndroidViewView.setEnabled(false);
-          if (!this.f) {
-            this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-          }
-          if ((this.jdField_a_of_type_Bjww != null) && (this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 103)) {
-            this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-          }
-          this.e = false;
-          c(this.e);
-          vem.b("0X80075D3");
-          auab.a("0X800AAE3", 0);
-          return;
-          c();
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.b();
-          vem.b("0X80075D4");
-          auab.a("0X800AAE4", 0);
-          return;
-        } while (e());
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = true;
-        bool2 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.c();
-        if (QLog.isColorLevel()) {
-          QLog.d("EditPicCrop", 2, "crop remove face items" + bool2);
-        }
-      } while (!bool2);
-      if (this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle != null)
-      {
-        this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle.remove(bjzt.a);
-        this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle.remove("DynamicFaceLayer");
-        this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle.remove(bkaj.a);
-        this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle.remove("VoteLayer");
-        this.jdField_a_of_type_Bjww.jdField_a_of_type_AndroidOsBundle.remove("InteractPasterLayer");
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.a();
-      bkqo.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (this.jdField_a_of_type_Bjww.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 1) {
-        break;
-      }
+        return;
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      } while (this.jdField_a_of_type_Bjxn.jdField_a_of_type_Int != 21);
+      this.jdField_a_of_type_Bjxn.a(0);
+      return;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjww.a(this.jdField_a_of_type_AndroidGraphicsBitmap, bool1);
-      if (!c()) {
-        this.jdField_a_of_type_Bjww.y();
-      }
-      vem.b("0X80075D2");
-      auab.a("0X800AAE6", 0);
-      bkks.a(this.jdField_a_of_type_ArrayOfInt);
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiCropCropNewView.c();
-      a();
-      return;
-      n();
-      return;
-      bool1 = false;
-    }
+    a();
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adnm;
-import adnr;
+import adnk;
+import adnp;
 import com.tencent.mobileqq.data.ApolloGameData;
 
 public class CmGameTipsItemBuilder$ISessionHandler$1
   implements Runnable
 {
-  public CmGameTipsItemBuilder$ISessionHandler$1(adnr paramadnr, adnm paramadnm, ApolloGameData paramApolloGameData) {}
+  public CmGameTipsItemBuilder$ISessionHandler$1(adnp paramadnp, adnk paramadnk, ApolloGameData paramApolloGameData) {}
   
   public void run()
   {
-    adnm.a(this.jdField_a_of_type_Adnm, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
+    adnk.a(this.jdField_a_of_type_Adnk, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData);
   }
 }
 

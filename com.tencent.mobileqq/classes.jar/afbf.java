@@ -1,56 +1,92 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class afbf
-  implements aznu
+  extends akat
 {
-  public afbf(BlessResultActivity paramBlessResultActivity) {}
+  public afbf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt)
   {
+    int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
+      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_Bfmt.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bfmt.removeMessages(1003);
+    if (paramBoolean) {}
+    while ((i != 0) && (!BlessSelectMemberActivity.b()))
+    {
+      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
+      return;
+      if (paramInt != 0) {
+        if (paramInt == 1)
+        {
+          BlessSelectMemberActivity.a(this.a, 2131690501, true);
+          i = 0;
+        }
+        else
+        {
+          if (paramInt == 8) {
+            BlessSelectMemberActivity.a(this.a, 2131690536, true);
+          }
+          i = 0;
+        }
+      }
     }
-    this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1001);
+    this.a.e();
   }
   
-  public void a(long paramLong)
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
     }
-    if (this.a.jdField_a_of_type_Bfmt.hasMessages(1003)) {
-      this.a.jdField_a_of_type_Bfmt.removeMessages(1003);
+    if (!this.a.a) {
+      return;
     }
-    this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1003);
+    this.a.a = false;
+    if (paramInt == 67L)
+    {
+      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      this.a.a(paramLong);
+      this.a.e();
+      BlessSelectMemberActivity.a(this.a, 2131690521, true);
+      return;
+    }
+    if (BlessSelectMemberActivity.b(this.a) == 15)
+    {
+      this.a.a(paramBoolean1);
+      return;
+    }
+    this.a.a(paramBoolean1, paramBoolean2);
   }
   
-  public void b()
+  protected void c(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
     }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    if (BlessSelectMemberActivity.c(this.a) == 3) {
+      if (paramBoolean) {
+        BlessSelectMemberActivity.a(this.a);
+      }
     }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = bbdj.a(this.a.jdField_a_of_type_Afbg.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    do
+    {
+      do
+      {
+        return;
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690520, false);
+        return;
+      } while (BlessSelectMemberActivity.c(this.a) != 2);
+      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
+      {
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690537, false);
+        return;
+      }
+    } while (BlessSelectMemberActivity.b());
+    BlessSelectMemberActivity.b(this.a);
   }
 }
 

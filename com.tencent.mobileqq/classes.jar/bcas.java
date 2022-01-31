@@ -1,35 +1,151 @@
 import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class bcas
 {
-  public static bcbv a(bcfj parambcfj)
+  public static long a;
+  public static WebViewPluginEngine a;
+  public static final Object a;
+  public static HashMap<Integer, bcau> a;
+  public static volatile boolean a;
+  public static WebViewPluginEngine b;
+  public static HashMap<Integer, bcau> b;
+  public static volatile boolean b;
+  public static volatile boolean c;
+  public static volatile boolean d;
+  
+  static
   {
-    int j = 0;
-    int i = j;
-    if (parambcfj.a != null)
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    b = new HashMap();
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static void a()
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
     {
-      i = j;
-      if (parambcfj.a.a() != null) {
-        i = parambcfj.a.a().getIntExtra("titleBarStyle", 0);
+      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      bcau localbcau;
+      HashMap localHashMap;
+      while (localIterator.hasNext())
+      {
+        localbcau = (bcau)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbcau.a));
+        localHashMap.put("totalNum", String.valueOf(localbcau.b));
+        localHashMap.put("hasProc", String.valueOf(localbcau.c));
+        localHashMap.put("noProc", String.valueOf(localbcau.d));
+        axrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
+      }
+      localIterator = b.values().iterator();
+      while (localIterator.hasNext())
+      {
+        localbcau = (bcau)localIterator.next();
+        localHashMap = new HashMap(4);
+        localHashMap.put("type", String.valueOf(localbcau.a));
+        localHashMap.put("totalNum", String.valueOf(localbcau.b));
+        localHashMap.put("hasProc", String.valueOf(localbcau.c));
+        localHashMap.put("noProc", String.valueOf(localbcau.d));
+        axrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
+      }
+      jdField_a_of_type_JavaUtilHashMap.clear();
+      b.clear();
+      jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "reportInterval...");
       }
     }
-    bgvo.d("SwiftWebTitleBuilder", "title bar style is" + i);
-    if (i == 1) {
-      return new bgif(parambcfj);
+  }
+  
+  public static void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("_accelerator_mode_", 3);
+    localBundle.putInt("from", paramInt);
+    bcgn.a().a(localBundle);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return false;
     }
-    if (i == 2) {
-      return new bccf(parambcfj);
+    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
+  }
+  
+  public static void b(int paramInt)
+  {
+    int j = 0;
+    Object localObject = (amwu)ampl.a().a(158);
+    if ((localObject != null) && (((amwu)localObject).b == 1)) {
+      return;
     }
-    if (i == 3) {
-      return new bgwb(parambcfj);
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (!bool)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("from", 305);
+      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
+      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
+      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadService", 2, "preloadWebview...");
+      }
     }
-    return new bcbv(parambcfj);
+    localObject = new bcau(paramInt);
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      localObject = (bcau)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    ((bcau)localObject).b += 1;
+    int k = ((bcau)localObject).c;
+    if (bool)
+    {
+      i = 1;
+      label184:
+      ((bcau)localObject).c = (i + k);
+      k = ((bcau)localObject).d;
+      if (!bool) {
+        break label244;
+      }
+    }
+    label244:
+    for (int i = j;; i = 1)
+    {
+      ((bcau)localObject).d = (k + i);
+      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
+      if (((bcau)localObject).b <= 3) {
+        break;
+      }
+      a();
+      return;
+      i = 0;
+      break label184;
+    }
+  }
+  
+  public static boolean b(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return false;
+    }
+    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcas
  * JD-Core Version:    0.7.0.1
  */

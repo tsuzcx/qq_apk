@@ -1,18 +1,10 @@
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import android.graphics.Bitmap;
 
-class biki
-  implements bkva
+public abstract interface biki
 {
-  biki(bikh parambikh, bioz parambioz) {}
+  public abstract void a(Bitmap paramBitmap);
   
-  public void a()
-  {
-    if (bikc.a(this.jdField_a_of_type_Bikh.a) != null) {
-      bikc.a(this.jdField_a_of_type_Bikh.a).a(this.jdField_a_of_type_Bioz.a(), false);
-    }
-    bikc.a(this.jdField_a_of_type_Bikh.a).setTouchEnable(false);
-  }
+  public abstract void b(int paramInt);
 }
 
 

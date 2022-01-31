@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajyc;
+import ajya;
 import android.os.Handler;
 import android.os.Looper;
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
@@ -53,7 +53,7 @@ public class JsErrorGuard
     if ((this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
       this.mLoadingDialog.dismiss();
     }
-    bcpw.a(this.mAppBrandRuntime.activity, ajyc.a(2131705887), 0).a();
+    bcql.a(this.mAppBrandRuntime.activity, ajya.a(2131705898), 0).a();
   }
   
   private void onX5Succeed()
@@ -66,10 +66,10 @@ public class JsErrorGuard
       if (this.mRestartDialog == null)
       {
         this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755791);
-        this.mRestartDialog.setTitle(ajyc.a(2131705885));
-        this.mRestartDialog.setMessage(ajyc.a(2131705883));
-        this.mRestartDialog.setNegativeButton(ajyc.a(2131705881), new JsErrorGuard.7(this));
-        this.mRestartDialog.setPositiveButton(ajyc.a(2131705884), new JsErrorGuard.8(this));
+        this.mRestartDialog.setTitle(ajya.a(2131705896));
+        this.mRestartDialog.setMessage(ajya.a(2131705894));
+        this.mRestartDialog.setNegativeButton(ajya.a(2131705892), new JsErrorGuard.7(this));
+        this.mRestartDialog.setPositiveButton(ajya.a(2131705895), new JsErrorGuard.8(this));
         this.mRestartDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.mRestartDialog.isShowing()) {
@@ -98,7 +98,7 @@ public class JsErrorGuard
       if (this.mLoadingDialog == null) {
         this.mLoadingDialog = new JsErrorGuard.LoadingDialog(this.mAppBrandRuntime.activity);
       }
-      this.mLoadingDialog.setTitle(ajyc.a(2131705886));
+      this.mLoadingDialog.setTitle(ajya.a(2131705897));
     } while (this.mLoadingDialog.isShowing());
     this.mLoadingDialog.show();
   }

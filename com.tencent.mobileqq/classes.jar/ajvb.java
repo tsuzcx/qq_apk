@@ -1,6 +1,20 @@
-public abstract interface ajvb
+public class ajvb
 {
-  public abstract void a(boolean paramBoolean);
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "0";
+  public String d = "";
+  
+  ajvb()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
+  }
 }
 
 

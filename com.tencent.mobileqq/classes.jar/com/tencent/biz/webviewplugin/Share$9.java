@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import com.tencent.biz.pubaccount.CustomWebView;
-import xmt;
+import xmq;
 
 public class Share$9
   implements Runnable
 {
-  public Share$9(xmt paramxmt, String paramString) {}
+  public Share$9(xmq paramxmq, String paramString) {}
   
   public void run()
   {

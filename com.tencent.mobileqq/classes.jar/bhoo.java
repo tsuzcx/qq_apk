@@ -1,353 +1,238 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QzonePluginProxyService;
-import cooperation.qzone.ServerListProvider;
-import cooperation.qzone.util.QZoneDistributedAppCtrl.1;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import java.io.File;
 
 public class bhoo
-  implements Handler.Callback
 {
-  private static bhoo jdField_a_of_type_Bhoo;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static String a;
-  
-  bhoo(String paramString)
+  public static String a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    return bhcq.d + File.separator + paramString;
   }
   
-  public static bhoo a(String paramString)
+  public static boolean a(Activity paramActivity, Bitmap paramBitmap, int paramInt, String paramString)
   {
-    if (jdField_a_of_type_Bhoo == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      if (jdField_a_of_type_Bhoo == null) {
-        jdField_a_of_type_Bhoo = new bhoo(paramString);
+      bool1 = bool2;
+      if (paramActivity != null) {
+        bool1 = bhpj.a(paramActivity, new bhoq(paramBitmap, paramInt, paramString, paramActivity), 1);
       }
-      return jdField_a_of_type_Bhoo;
     }
+    if (bool1) {
+      return b(paramBitmap, paramInt, paramString);
+    }
+    return false;
   }
   
-  public static void a()
+  public static boolean a(Activity paramActivity, String paramString1, String paramString2)
   {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), QzonePluginProxyService.class);
-    BaseApplicationImpl.getContext().stopService(localIntent);
-    bbbd.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq:qzone");
-  }
-  
-  public static void a(Map<String, String> paramMap)
-  {
-    String str = (String)paramMap.get("key_rndev_bundle_url");
-    paramMap = (String)paramMap.get("key_rndev_bundle_on");
-    LocalMultiProcConfig.putString("Qzone.React.DevBundleUrl", str);
-    LocalMultiProcConfig.putString("Qzone.React.DevBundleOn", paramMap);
-    QLog.i("QZoneDistributedAppCtrl", 1, "rnbundleurl=" + str + ",rndevon=" + paramMap);
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    LocalMultiProcConfig.putBool("comboqz_protect_enable", paramBoolean);
-    LocalMultiProcConfig.putInt("qzapp_vercode", paramInt);
-    if (paramBoolean)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        LocalMultiProcConfig.putString("qzh5_url", paramString);
+      bool1 = bool2;
+      if (paramActivity != null) {
+        bool1 = bhpj.a(paramActivity, new bhop(paramString1, paramString2, paramActivity), 1);
       }
-      LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", false);
-      LocalMultiProcConfig.putString("comboqz_qua", bgxr.a());
     }
+    if (bool1) {
+      return b(paramString1, paramString2);
+    }
+    return false;
   }
   
-  private void b(bhop parambhop)
+  private static Activity b(Activity paramActivity)
   {
-    boolean bool2 = false;
-    int i = parambhop.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneDistributedAppCtrl", 2, "execCtrl cmd:" + i);
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    long l1;
-    long l2;
-    switch (i)
+    do
     {
-    case 6: 
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
-      }
-    case 4: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-      do
-      {
-        do
-        {
-          return;
-          a();
-          return;
-          bgxy.b(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
-          return;
-        } while (!(localObject instanceof QQAppInterface));
-        bgxy.a((AppRuntime)localObject, true);
-        return;
-        a();
-      } while (!(localObject instanceof QQAppInterface));
-      bgxy.a((QQAppInterface)localObject, "QZoneDistributedAppCtrl");
-      return;
-    case 7: 
-      parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_upload_dbname");
-      bhok.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, parambhop);
-      return;
-    case 8: 
-      bhok.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
-      return;
-    case 9: 
-      localObject = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_trace_baseTime");
-      parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_trace_offset");
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        l1 = System.currentTimeMillis();
-        if (!TextUtils.isEmpty(parambhop)) {
-          break label451;
-        }
-        l2 = 1800000L;
-        label311:
-        if (l1 > 0L) {
-          break label1190;
-        }
-        l1 = System.currentTimeMillis();
-      }
-      break;
-    }
-    label451:
-    boolean bool1;
-    label1190:
-    for (;;)
-    {
-      for (;;)
-      {
-        for (;;)
-        {
-          l3 = l2;
-          if (l2 <= 0L) {
-            l3 = 1800000L;
-          }
-          l2 = l1 - l3;
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "trace startTime: " + l2 + "ms\t offsettime: " + l3 + "\t trace endTime: " + l1 + "ms");
-          }
-          bhok.a(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, l2, l1);
-          return;
-          try
-          {
-            l1 = Long.valueOf((String)localObject).longValue();
-            l1 *= 1000L;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            localNumberFormatException.printStackTrace();
-            l1 = 0L;
-          }
-        }
-        break;
-        try
-        {
-          l2 = Long.valueOf(parambhop).longValue();
-          l2 *= 1000L;
-        }
-        catch (NumberFormatException parambhop)
-        {
-          parambhop.printStackTrace();
-          l2 = 0L;
-        }
-      }
-      break label311;
-      String str = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_avsdk_startTime");
-      parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_avsdk_endTime");
-      long l3 = bhok.a(str);
-      l2 = bhok.a(parambhop);
-      if (l3 == -1L) {
-        break;
-      }
-      l1 = l2;
-      if (l2 == -1L) {
-        l1 = System.currentTimeMillis();
-      }
-      l2 = l1;
-      if (l3 > l1) {
-        l2 = System.currentTimeMillis();
-      }
-      bhok.b(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString, l3, l2);
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "avsdk log push, starttime=" + str + ",endTime=" + parambhop);
-      return;
-      bhok.c(BaseApplicationImpl.getContext(), jdField_a_of_type_JavaLangString);
-      return;
-      try
-      {
-        bool1 = Boolean.parseBoolean((String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_qzcombo_protect"));
-        parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_ctrl_param_enable");
-      }
-      catch (Throwable parambhop)
-      {
-        for (;;)
-        {
-          try
-          {
-            i = Integer.parseInt((String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_qzapp_versioncode"));
-          }
-          catch (Throwable parambhop)
-          {
-            i = 82;
-            continue;
-          }
-          try
-          {
-            parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_qzh5_url");
-            a(bool1, i, parambhop);
-            return;
-          }
-          catch (Throwable parambhop)
-          {
-            continue;
-            bool1 = false;
-            continue;
-          }
-          parambhop = parambhop;
-          i = 82;
-          bool1 = bool2;
-          QLog.e("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 1, "error: execute CMD_COMBQZ_PROTECT", parambhop);
-          parambhop = "";
-        }
-      }
-      if (!TextUtils.isEmpty(parambhop)) {
-        ServerListProvider.enableDebug(Boolean.valueOf(parambhop).booleanValue());
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_DEBUG, param：" + parambhop);
-      return;
-      parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_ctrl_param_enable");
-      if (!TextUtils.isEmpty(parambhop))
-      {
-        if (!Boolean.valueOf(parambhop).booleanValue()) {
-          break label882;
-        }
-        LocalMultiProcConfig.putString("LooperMonitor", System.currentTimeMillis() + "");
-      }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_PERFORMANCE_MONITOR, param：" + parambhop);
-        return;
-        label882:
-        LocalMultiProcConfig.putString("LooperMonitor", "-1");
-      }
-      str = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_path_tencent");
-      if (TextUtils.isEmpty(str))
-      {
-        str = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_path_data");
-        bool1 = true;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_upload_maxsize");
-        try
-        {
-          l1 = Long.valueOf(parambhop).longValue();
-          if (QLog.isDevelopLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder().append("CMD_UPLOAD_CUSTOM, param：");
-            if (bool1)
-            {
-              parambhop = "dataPath";
-              QLog.w("QZoneDistributedAppCtrl", 4, parambhop + "," + str);
-            }
-          }
-          else
-          {
-            bhok.a(BaseApplicationImpl.getContext(), str, jdField_a_of_type_JavaLangString, l1, bool1);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.w("QZoneDistributedAppCtrl", 4, "CMD_UPLOAD_CUSTOM, param：" + parambhop + ",error:Not long");
-            }
-            l1 = 1048576L;
-            continue;
-            parambhop = "tencentPath";
-          }
-        }
-        str = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_wns_config_main");
-        parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_wns_config_second");
-        QzoneConfig.getInstance().printWNSConfig(str, parambhop);
-        bbui.d();
-        return;
-        parambhop = (String)parambhop.jdField_a_of_type_JavaUtilMap.get("key_url");
-        bhok.b(BaseApplicationImpl.getContext(), parambhop);
-        return;
-        a(parambhop.jdField_a_of_type_JavaUtilMap);
-        return;
-      }
-    }
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
   }
   
-  private void c(bhop parambhop)
+  /* Error */
+  private static boolean b(Bitmap paramBitmap, int paramInt, String paramString)
   {
-    int i = parambhop.jdField_a_of_type_Int;
-    switch (i)
-    {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.e("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
-      }
-      break;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 4
+    //   3: new 29	java/io/File
+    //   6: dup
+    //   7: new 13	java/lang/StringBuilder
+    //   10: dup
+    //   11: invokespecial 17	java/lang/StringBuilder:<init>	()V
+    //   14: getstatic 23	bhcq:d	Ljava/lang/String;
+    //   17: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: getstatic 32	java/io/File:separator	Ljava/lang/String;
+    //   23: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: aload_2
+    //   27: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 36	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: astore 6
+    //   38: aload 6
+    //   40: invokevirtual 82	java/io/File:exists	()Z
+    //   43: ifne +7 -> 50
+    //   46: aload_0
+    //   47: ifnonnull +5 -> 52
+    //   50: iconst_0
+    //   51: ireturn
+    //   52: aload 6
+    //   54: invokevirtual 85	java/io/File:createNewFile	()Z
+    //   57: istore_3
+    //   58: iload_3
+    //   59: ifne +18 -> 77
+    //   62: iconst_0
+    //   63: ifeq -13 -> 50
+    //   66: new 87	java/lang/NullPointerException
+    //   69: dup
+    //   70: invokespecial 88	java/lang/NullPointerException:<init>	()V
+    //   73: athrow
+    //   74: astore_0
+    //   75: iconst_0
+    //   76: ireturn
+    //   77: new 90	java/io/BufferedOutputStream
+    //   80: dup
+    //   81: new 92	java/io/FileOutputStream
+    //   84: dup
+    //   85: aload 6
+    //   87: invokespecial 95	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   90: invokespecial 98	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   93: astore 5
+    //   95: aload 5
+    //   97: astore_2
+    //   98: aload_0
+    //   99: getstatic 104	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   102: iload_1
+    //   103: aload 5
+    //   105: invokevirtual 110	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   108: pop
+    //   109: aload 5
+    //   111: astore_2
+    //   112: new 112	android/content/Intent
+    //   115: dup
+    //   116: ldc 114
+    //   118: aload 6
+    //   120: invokestatic 120	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
+    //   123: invokespecial 123	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   126: astore_0
+    //   127: aload 5
+    //   129: astore_2
+    //   130: invokestatic 129	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   133: aload_0
+    //   134: invokevirtual 135	com/tencent/qphone/base/util/BaseApplication:sendBroadcast	(Landroid/content/Intent;)V
+    //   137: iload 4
+    //   139: istore_3
+    //   140: aload 5
+    //   142: ifnull +11 -> 153
+    //   145: aload 5
+    //   147: invokevirtual 138	java/io/BufferedOutputStream:close	()V
+    //   150: iload 4
+    //   152: istore_3
+    //   153: iload_3
+    //   154: ireturn
+    //   155: astore 6
+    //   157: aconst_null
+    //   158: astore_0
+    //   159: aload_0
+    //   160: astore_2
+    //   161: ldc 140
+    //   163: iconst_1
+    //   164: ldc 142
+    //   166: aload 6
+    //   168: invokestatic 148	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   171: aload_0
+    //   172: ifnull +7 -> 179
+    //   175: aload_0
+    //   176: invokevirtual 138	java/io/BufferedOutputStream:close	()V
+    //   179: iconst_0
+    //   180: istore_3
+    //   181: goto -28 -> 153
+    //   184: astore_0
+    //   185: iconst_0
+    //   186: istore_3
+    //   187: goto -34 -> 153
+    //   190: astore_0
+    //   191: aconst_null
+    //   192: astore_2
+    //   193: aload_2
+    //   194: ifnull +7 -> 201
+    //   197: aload_2
+    //   198: invokevirtual 138	java/io/BufferedOutputStream:close	()V
+    //   201: aload_0
+    //   202: athrow
+    //   203: astore_0
+    //   204: iload 4
+    //   206: istore_3
+    //   207: goto -54 -> 153
+    //   210: astore_2
+    //   211: goto -10 -> 201
+    //   214: astore_0
+    //   215: goto -22 -> 193
+    //   218: astore 6
+    //   220: aload 5
+    //   222: astore_0
+    //   223: goto -64 -> 159
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	226	0	paramBitmap	Bitmap
+    //   0	226	1	paramInt	int
+    //   0	226	2	paramString	String
+    //   57	150	3	bool1	boolean
+    //   1	204	4	bool2	boolean
+    //   93	128	5	localBufferedOutputStream	java.io.BufferedOutputStream
+    //   36	83	6	localFile	File
+    //   155	12	6	localException1	java.lang.Exception
+    //   218	1	6	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   66	74	74	java/io/IOException
+    //   52	58	155	java/lang/Exception
+    //   77	95	155	java/lang/Exception
+    //   175	179	184	java/io/IOException
+    //   52	58	190	finally
+    //   77	95	190	finally
+    //   145	150	203	java/io/IOException
+    //   197	201	210	java/io/IOException
+    //   98	109	214	finally
+    //   112	127	214	finally
+    //   130	137	214	finally
+    //   161	171	214	finally
+    //   98	109	218	java/lang/Exception
+    //   112	127	218	java/lang/Exception
+    //   130	137	218	java/lang/Exception
   }
   
-  public void a(bhop parambhop)
+  private static boolean b(String paramString1, String paramString2)
   {
-    if (parambhop != null) {
-      ThreadManager.executeOnNetWorkThread(new QZoneDistributedAppCtrl.1(this, parambhop));
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneDistributedAppCtrl", 4, "recv msg " + paramMessage);
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return false;
-    case 1: 
-      b((bhop)paramMessage.obj);
-    }
-    for (;;)
-    {
+      paramString1 = new File(paramString1);
+      paramString2 = new File(bhcq.d + File.separator + paramString2);
+      bhoh.a(paramString1, paramString2);
+      paramString1 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(paramString2));
+      BaseApplicationImpl.getContext().sendBroadcast(paramString1);
       return true;
-      c((bhop)paramMessage.obj);
     }
+    catch (Throwable paramString1)
+    {
+      QLog.e("MediaUtil", 1, "saveFileToSystemAlbum failed:", paramString1);
+    }
+    return false;
   }
 }
 

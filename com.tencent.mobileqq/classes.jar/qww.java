@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
-public final class qww
-  implements Parcelable.Creator<DiscoveryInfo>
+public abstract interface qww
 {
-  public DiscoveryInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo(paramParcel);
-  }
-  
-  public DiscoveryInfo[] a(int paramInt)
-  {
-    return new DiscoveryInfo[paramInt];
-  }
+  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
 }
 
 

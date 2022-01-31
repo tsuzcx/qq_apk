@@ -1,87 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationListener;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.location.data.LocationRoom;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import mqq.os.MqqHandler;
 
 class arut
-  implements TencentLocationListener
+  extends akil
 {
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private volatile boolean c;
+  arut(arus paramarus) {}
   
-  arut(aruq paramaruq, boolean paramBoolean, Runnable paramRunnable, MqqHandler paramMqqHandler, LocationRoom paramLocationRoom)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.c = paramBoolean;
-      this.jdField_b_of_type_JavaLangRunnable = this.jdField_a_of_type_JavaLangRunnable;
-      return;
-    }
-  }
-  
-  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
-  {
-    if (paramInt == 0)
-    {
-      LatLng localLatLng = new LatLng(paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude());
-      paramTencentLocation = localLatLng;
-      if (QLog.isColorLevel())
-      {
-        paramTencentLocation = localLatLng;
-        if (aruq.a != null) {
-          paramTencentLocation = aruq.a;
-        }
-      }
-      if ((paramTencentLocation.getLatitude() == 0.0D) && (paramTencentLocation.getLongitude() == 0.0D))
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = false;
-          QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
-        }
-        return;
-      }
-      aruq.a(this.jdField_a_of_type_Aruq, paramTencentLocation);
-    }
-    if ((this.c) && (this.jdField_b_of_type_JavaLangRunnable != null))
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
+        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_JavaLangRunnable = null;
-    }
-    if (paramInt != 0)
-    {
-      paramTencentLocation = this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-      arxh.a(this.jdField_a_of_type_Aruq.app, paramTencentLocation.a(), paramTencentLocation.a(), 1);
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) || (HwNetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))) {
-        axsn.a().a("requestSoso", new Object[] { Integer.valueOf(-1), Boolean.valueOf(false), "LocationHandler", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
-      return;
-      if (this.c)
-      {
-        this.c = false;
-        this.jdField_a_of_type_Aruq.a(aruq.a(this.jdField_a_of_type_Aruq).a(), aruq.a(this.jdField_a_of_type_Aruq).a());
-      }
-      aruq.a(this.jdField_a_of_type_Aruq, true);
+      arxj.a(this.a.app, 1, paramString);
     }
   }
   
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
+  protected void b(String paramString, int paramInt)
+  {
+    super.b(paramString, paramInt);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if ((localBaseActivity != null) && (this.a.a.a())) {
+        bcql.a(localBaseActivity, 2131693252, 1).a();
+      }
+      arxj.a(this.a.app, 1, paramString);
+    }
+  }
 }
 
 

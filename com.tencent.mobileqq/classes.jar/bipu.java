@@ -1,16 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import android.util.Log;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class bipu
-  implements View.OnClickListener
+  implements xgu<CLIENT.StGetWatermarkDictRsp>
 {
-  bipu(bipt parambipt) {}
+  bipu(bips parambips) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    if (bipt.a(this.a) != null) {
-      bipt.a(this.a).a();
+    if (paramBoolean)
+    {
+      paramString = paramStGetWatermarkDictRsp.extInfo;
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramString = new HashMap();
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
+      while (paramStGetWatermarkDictRsp.hasNext())
+      {
+        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
+        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
+      }
+      bips.a(this.a, paramString);
+      return;
     }
+    Log.d(bips.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 

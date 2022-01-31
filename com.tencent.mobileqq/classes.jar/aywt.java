@@ -1,29 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-
-class aywt
-  implements ayww
+public class aywt
 {
-  aywt(ayws paramayws) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
   
-  public Bitmap a(URL paramURL)
+  public String toString()
   {
-    String str = paramURL.getPath();
-    try
-    {
-      Bitmap localBitmap = ayws.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = ayws.b(this.a, str);
-      }
-      return paramURL;
-    }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoSliceInfo\n");
+    localStringBuilder.append("mIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mVideoDuration=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mEncodeFinish=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mVideoPath(").append(this.jdField_c_of_type_Int + "*" + this.d).append(")=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mVideoMd5=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",mSendClicked=").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mVideoSyncStory=").append(this.jdField_c_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

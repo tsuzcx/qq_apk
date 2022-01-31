@@ -1,20 +1,20 @@
 package dov.com.qq.im.ae;
 
 import android.os.Process;
-import biim;
-import bizq;
+import bijd;
+import bjah;
 import java.util.concurrent.CountDownLatch;
 
 public class AEPituCameraUnit$1
   implements Runnable
 {
-  public AEPituCameraUnit$1(biim parambiim) {}
+  public AEPituCameraUnit$1(bijd parambijd) {}
   
   public void run()
   {
     try
     {
-      bizq.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init ENTER");
+      bjah.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init ENTER");
       Process.setThreadPriority(-2);
     }
     catch (Exception localException)
@@ -23,19 +23,19 @@ public class AEPituCameraUnit$1
       {
         try
         {
-          bizq.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init BEGIN");
-          biim.a(this.this$0);
-          bizq.b("AEPituCameraUnit", "[AEPituCameraUnit] initAEKitReport-end");
-          biim.b(this.this$0);
-          bizq.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init END");
+          bjah.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init BEGIN");
+          bijd.a(this.this$0);
+          bjah.b("AEPituCameraUnit", "[AEPituCameraUnit] initAEKitReport-end");
+          bijd.b(this.this$0);
+          bjah.b("AEPituCameraUnit", "[AEPituCameraUnit] unit init END");
           return;
         }
         finally
         {
-          biim.a(this.this$0).countDown();
+          bijd.a(this.this$0).countDown();
         }
         localException = localException;
-        bizq.d("AEPituCameraUnit", "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
+        bjah.d("AEPituCameraUnit", "[UnitAsyncInit] setThreadPriority exception: " + localException.getMessage());
       }
     }
   }

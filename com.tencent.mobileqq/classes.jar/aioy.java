@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aioy
-  implements DialogInterface.OnClickListener
+  extends akil
 {
-  aioy(aiox paramaiox) {}
+  aioy(aiot paramaiot) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    paramDialogInterface.dismiss();
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(aiot.a(this.a))))
+    {
+      aiot.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
+      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+      return;
+    }
+    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + aiot.a(this.a));
   }
 }
 

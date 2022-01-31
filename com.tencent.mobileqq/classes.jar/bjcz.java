@@ -1,15 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class bjcz
-  extends AnimatorListenerAdapter
+public class bjcz
+  implements Cloneable
 {
-  bjcz(bjcx parambjcx) {}
+  public int a;
+  public String a;
+  public List<PtvTemplateManager.PtvTemplateInfo> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bjcz() {}
+  
+  public bjcz(String paramString)
   {
-    this.a.a.a().setVisibility(8);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public bjcz a()
+  {
+    bjcz localbjcz = new bjcz();
+    localbjcz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbjcz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbjcz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localbjcz.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbjcz.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbjcz.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    localbjcz.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localbjcz.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localbjcz;
   }
 }
 

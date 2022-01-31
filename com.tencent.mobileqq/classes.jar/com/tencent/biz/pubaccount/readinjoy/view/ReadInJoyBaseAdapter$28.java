@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
-import bcpw;
-import bhvh;
-import onk;
-import oyl;
-import qku;
-import qty;
-import rap;
+import bcql;
+import bhvy;
+import onh;
+import oyi;
+import qkr;
+import qtv;
+import ram;
 
 public class ReadInJoyBaseAdapter$28
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$28(rap paramrap, qty paramqty) {}
+  public ReadInJoyBaseAdapter$28(ram paramram, qtv paramqtv) {}
   
   public void run()
   {
-    if (!rap.d(this.this$0)) {}
+    if (!ram.d(this.this$0)) {}
     do
     {
       do
@@ -24,14 +24,14 @@ public class ReadInJoyBaseAdapter$28
         do
         {
           return;
-        } while ((this.this$0.jdField_a_of_type_Oyl == null) || (this.this$0.jdField_a_of_type_Oyl.a() == null) || (this.a == null));
+        } while ((this.this$0.jdField_a_of_type_Oyi == null) || (this.this$0.jdField_a_of_type_Oyi.a() == null) || (this.a == null));
         this.a.d = 0L;
-      } while ((this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView == null) || (!rap.a(this.this$0).a()));
+      } while ((this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView == null) || (!ram.a(this.this$0).a()));
       int i = this.a.a;
       int j = this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getHeaderViewsCount();
       this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.post(new ReadInJoyBaseAdapter.28.1(this, i + j));
-    } while (!bhvh.a(onk.a()));
-    bcpw.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), "为你开启wifi下连续播放功能", 1).a();
+    } while (!bhvy.a(onh.a()));
+    bcql.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), "为你开启wifi下连续播放功能", 1).a();
   }
 }
 

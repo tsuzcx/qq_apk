@@ -1,44 +1,18 @@
-import GIFT_MALL_PROTOCOL.DouFuInfo;
-import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 
-class bhbn
-  extends atzo
+public final class bhbn
+  implements Parcelable.Creator<QZoneCountUserInfo>
 {
-  public WeakReference<QQAppInterface> a;
-  
-  protected void j(boolean paramBoolean, Bundle paramBundle)
+  public QZoneCountUserInfo a(Parcel paramParcel)
   {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.a.get();
-      if (localQQAppInterface != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver", 2, "onGetBirthDayNoticeData app == null ");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof doufu_piece_rsp)))
-    {
-      paramBundle = ((doufu_piece_rsp)paramBundle).doufu.iterator();
-      while (paramBundle.hasNext()) {
-        bhbm.a(localQQAppInterface, (DouFuInfo)paramBundle.next());
-      }
-    }
-    localQQAppInterface.unRegistObserver(bhbm.a());
+    return new QZoneCountUserInfo(paramParcel);
+  }
+  
+  public QZoneCountUserInfo[] a(int paramInt)
+  {
+    return new QZoneCountUserInfo[paramInt];
   }
 }
 

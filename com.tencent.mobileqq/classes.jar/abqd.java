@@ -1,21 +1,36 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqd
   implements CompoundButton.OnCheckedChangeListener
 {
-  public abqd(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajtk paramajtk) {}
+  public abqd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131717475), "qqsetting_special_care_bar", paramBoolean);
-    this.jdField_a_of_type_Ajtk.c(paramBoolean);
-    bfnr.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
+    if (NotifyPushSettingActivity.a())
+    {
+      NotifyPushSettingActivity.b(this.a).setChecked(false);
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      if (!paramBoolean) {
+        break label113;
+      }
+    }
+    label113:
+    for (int i = 1;; i = 0)
+    {
+      axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      return;
+      if (paramBoolean)
+      {
+        NotifyPushSettingActivity.b(this.a).setVisibility(0);
+        NotifyPushSettingActivity.b(this.a).setVisibility(8);
+        break;
+      }
+      NotifyPushSettingActivity.b(this.a).setVisibility(8);
+      break;
     }
   }
 }

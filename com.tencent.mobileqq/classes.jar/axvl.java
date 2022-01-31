@@ -1,28 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
-class axvl
-  extends QIPCModule
+public class axvl
+  implements View.OnClickListener
 {
-  axvl(axvk paramaxvk, String paramString)
-  {
-    super(paramString);
-  }
+  public axvl(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(View paramView)
   {
-    if ("receipt_set_read".equals(paramString)) {
-      axvk.a(this.a, paramBundle);
-    }
-    for (;;)
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
-      }
+    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
+    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    ((nqu)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
+    bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131692381), 1).a();
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }

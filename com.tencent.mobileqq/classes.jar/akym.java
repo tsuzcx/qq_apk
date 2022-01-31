@@ -1,30 +1,32 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
 
 class akym
-  extends ales
+  implements ServiceConnection
 {
-  akym(akyl paramakyl) {}
+  akym(akyk paramakyk) {}
   
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyy.a, 2, "onArSoDownloadSuccess");
+    QLog.w(akyx.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
+    try
+    {
+      this.a.a = alec.a(paramIBinder);
+      this.a.a.a(akyk.a(this.a));
+      this.a.a.c();
+      return;
     }
-    this.a.a();
+    catch (Exception paramComponentName)
+    {
+      QLog.w(akyx.a, 1, "onServiceConnected, Exception", paramComponentName);
+    }
   }
   
-  public void a(int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyy.a, 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(akyy.a, 2, "onArSoDownloadFail");
-    }
+    QLog.w(akyx.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
     this.a.a();
   }
 }

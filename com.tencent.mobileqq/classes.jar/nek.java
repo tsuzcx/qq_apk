@@ -1,20 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.qphone.base.util.QLog;
 
 class nek
-  implements View.OnClickListener
+  implements nhb
 {
-  nek(ned paramned, nep paramnep) {}
+  nek(nea paramnea) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Nep.jdField_a_of_type_AndroidWidgetTextView.setText(2131695584);
-    this.jdField_a_of_type_Nep.b.setVisibility(4);
-    this.jdField_a_of_type_Nep.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    nfh.a(this.jdField_a_of_type_Ned.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Ned.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Ned.jdField_a_of_type_AndroidAppActivity).a());
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    {
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
+      }
+    }
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.o - f)
+    {
+      this.a.d(paramInt);
+      return;
+    }
+    this.a.e();
   }
 }
 

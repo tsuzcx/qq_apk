@@ -1,33 +1,40 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 
 class avbb
-  implements atap
+  implements Animation.AnimationListener
 {
-  avbb(avba paramavba, CardProfile paramCardProfile, ImageView paramImageView) {}
+  avbb(avba paramavba) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Avba.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Avba.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
+    if (!avba.a(this.a)) {
+      for (;;)
+      {
+        int j = (int)(avba.a(this.a) * (Math.random() * 2.0D - 1.0D));
+        int i = (int)Math.sqrt(avba.a(this.a) * avba.a(this.a) - j * j);
+        if (Math.random() > 0.5D) {}
+        while ((avba.b(this.a) + j) * (avba.b(this.a) + j) + (avba.c(this.a) + i) * (avba.c(this.a) + i) <= avba.d(this.a) * avba.d(this.a))
+        {
+          avba.a(this.a, new TranslateAnimation(avba.b(this.a), avba.b(this.a) + j, avba.c(this.a), avba.c(this.a) + i));
+          avba.a(this.a, j + avba.b(this.a));
+          avba.b(this.a, i + avba.c(this.a));
+          avba.a(this.a).setAnimationListener(avba.a(this.a));
+          avba.a(this.a).setDuration(avba.a(this.a) * (int)(50.0D + Math.random() * 30.0D));
+          avba.a(this.a).startAnimation(avba.a(this.a));
+          return;
+          i = -i;
+        }
       }
     }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      atah.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
-      return;
-      str1 = "2";
-      break;
-    }
+    avba.a(this.a, false);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

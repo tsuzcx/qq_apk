@@ -1,25 +1,23 @@
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-
-class lhl
-  implements Observer
+public abstract class lhl
 {
-  private WeakReference<lhk> a;
+  public int cid = -1;
+  public boolean isDownloading;
   
-  lhl(lhk paramlhk)
-  {
-    this.a = new WeakReference(paramlhk);
-  }
+  public abstract String getDesc();
   
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    lhk locallhk = (lhk)this.a.get();
-    if (locallhk == null) {
-      return;
-    }
-    lhk.a(locallhk, paramObservable, paramObject);
-  }
+  public abstract String getIconurl();
+  
+  public abstract String getId();
+  
+  public abstract String getMd5();
+  
+  public abstract int getPlatform();
+  
+  public abstract String getResurl();
+  
+  public abstract boolean isUsable();
+  
+  public abstract void setUsable(boolean paramBoolean);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.biu;
 
-import oed;
-import oee;
+import oea;
+import oeb;
 
 public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(oee paramoee) {}
+  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$1$1(oeb paramoeb) {}
   
   public void run()
   {
-    oed.a(this.a.a, this.a.a.a);
+    oea.a(this.a.a, this.a.a.a);
   }
 }
 

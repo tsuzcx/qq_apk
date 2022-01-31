@@ -1,13 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-public class osh
-  implements RejectedExecutionHandler
+class osh
+  implements qed<TabChannelCoverInfo>
 {
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  osh(osg paramosg, int paramInt) {}
+  
+  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    QLog.e("MonitorTimeExecutor", 1, "[rejectedExecution] r: " + paramRunnable + " executor: " + paramThreadPoolExecutor);
+    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
   }
 }
 

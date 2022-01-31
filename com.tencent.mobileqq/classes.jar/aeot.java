@@ -1,26 +1,44 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aeot
-  implements Animation.AnimationListener
+  extends aqkn
 {
-  aeot(aeos paramaeos) {}
+  aeot(aeom paramaeom) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a.q != null)
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772209);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBandIntimateRelationship");
+      }
+      this.a.E();
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateIntimateRelationship");
+      }
+      this.a.E();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onDisbandIntimateRelationship");
+      }
+      this.a.E();
+    }
+  }
 }
 
 

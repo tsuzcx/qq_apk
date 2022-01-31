@@ -1,109 +1,93 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.StringTokenizer;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class lpd
 {
-  private char jdField_a_of_type_Char = '\r';
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private char b = '\t';
+  private static lpd jdField_a_of_type_Lpd;
+  int jdField_a_of_type_Int = 0;
   
-  public lpd()
+  public static lpd a()
   {
-    this.jdField_a_of_type_Char = '\r';
-    this.b = '\t';
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public lpd(char paramChar1, char paramChar2)
-  {
-    this.jdField_a_of_type_Char = paramChar1;
-    this.b = paramChar2;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public int a(String paramString)
-  {
-    return a(paramString, 0);
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    String str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    int i = paramInt;
-    if (str != null) {}
     try
     {
-      i = Integer.parseInt(str);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("GlStringParser", 1, "getInt, key[" + paramString + "], value[" + str + "], def[" + paramInt + "]", localException);
-    }
-    return paramInt;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(str);
-      localStringBuilder.append(this.jdField_a_of_type_Char);
-      localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilMap.get(str));
-      localStringBuilder.append(this.b);
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.b);
-      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
-      while (paramString.hasMoreElements())
+      lpd locallpd;
+      if (jdField_a_of_type_Lpd != null)
       {
-        String str = paramString.nextToken();
-        int i = str.indexOf(this.jdField_a_of_type_Char);
-        if (i != -1)
-        {
-          localObject = str.substring(0, i);
-          str = str.substring(i + 1);
-          this.jdField_a_of_type_JavaUtilMap.put(localObject, str);
-        }
+        locallpd = jdField_a_of_type_Lpd;
+        return locallpd;
       }
+      return null;
+    }
+    finally
+    {
+      try
+      {
+        jdField_a_of_type_Lpd = new lpd();
+        locallpd = jdField_a_of_type_Lpd;
+        return locallpd;
+      }
+      catch (Exception localException) {}
+      localObject = finally;
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.toString(paramInt));
+    boolean bool = false;
+    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean b()
   {
-    if ((paramString1 == null) || (paramString1.indexOf(this.b) != -1) || (paramString1.indexOf(this.jdField_a_of_type_Char) != -1)) {}
-    while ((paramString2 == null) || (paramString2.indexOf(this.jdField_a_of_type_Char) != -1) || (paramString2.indexOf(this.b) != -1)) {
-      return;
+    boolean bool = false;
+    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
+      bool = true;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    boolean bool = false;
+    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean d()
+  {
+    boolean bool = false;
+    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean e()
+  {
+    boolean bool = false;
+    if (lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean f()
+  {
+    return lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
+  }
+  
+  public boolean g()
+  {
+    return lgj.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
+  }
+  
+  public boolean h()
+  {
+    return 1 == lgj.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
   }
 }
 

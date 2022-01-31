@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import ajtk;
-import ajty;
-import ajxn;
+import ajti;
+import ajtw;
+import ajxl;
 import android.os.Bundle;
-import bazj;
+import bazx;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +17,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class CardHandler$2
   implements Runnable
 {
-  public CardHandler$2(ajtk paramajtk, Bundle paramBundle) {}
+  public CardHandler$2(ajti paramajti, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class CardHandler$2
     localOIDBSSOPkg.uint32_command.set(1279);
     localOIDBSSOPkg.uint32_result.set(0);
     localOIDBSSOPkg.uint32_service_type.set(9);
-    Object localObject2 = ((ajxn)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
+    Object localObject2 = ((ajxl)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
     int j = 0;
     int i = 0;
     long l2 = 0L;
@@ -103,7 +103,7 @@ public class CardHandler$2
       k = this.a.getInt("profession");
       int i1 = i;
       m = j;
-      if (bazj.a(k))
+      if (bazx.a(k))
       {
         m = j + 1;
         i1 = i + 8;
@@ -178,8 +178,8 @@ public class CardHandler$2
       k += 2;
       j += 24;
       arrayOfString = this.a.getStringArray("location");
-      ((ByteBuffer)localObject1).putShort((short)20032).putShort((short)12).putInt(ajty.a(arrayOfString[0])).putInt(ajty.a(arrayOfString[1])).putInt(ajty.a(arrayOfString[2]));
-      ((ByteBuffer)localObject1).putShort((short)20041).putShort((short)4).putInt(ajty.a(arrayOfString[3]));
+      ((ByteBuffer)localObject1).putShort((short)20032).putShort((short)12).putInt(ajtw.a(arrayOfString[0])).putInt(ajtw.a(arrayOfString[1])).putInt(ajtw.a(arrayOfString[2]));
+      ((ByteBuffer)localObject1).putShort((short)20041).putShort((short)4).putInt(ajtw.a(arrayOfString[3]));
       l2 = l1;
       i = j;
       m = k;
@@ -200,8 +200,8 @@ public class CardHandler$2
       k = m + 2;
       i += 24;
       arrayOfString = this.a.getStringArray("hometown");
-      ((ByteBuffer)localObject1).putShort((short)24002).putShort((short)12).putInt(ajty.a(arrayOfString[0])).putInt(ajty.a(arrayOfString[1])).putInt(ajty.a(arrayOfString[2]));
-      ((ByteBuffer)localObject1).putShort((short)20043).putShort((short)4).putInt(ajty.a(arrayOfString[3]));
+      ((ByteBuffer)localObject1).putShort((short)24002).putShort((short)12).putInt(ajtw.a(arrayOfString[0])).putInt(ajtw.a(arrayOfString[1])).putInt(ajtw.a(arrayOfString[2]));
+      ((ByteBuffer)localObject1).putShort((short)20043).putShort((short)4).putInt(ajtw.a(arrayOfString[3]));
       l1 = l2;
       j = i;
       n = k;

@@ -1,57 +1,15 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class aihm
-  implements SeekBar.OnSeekBarChangeListener
+  implements DialogInterface.OnClickListener
 {
   public aihm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    this.a.m = true;
-    if (paramBoolean)
-    {
-      paramSeekBar = this.a;
-      paramSeekBar.h += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-      ShortVideoPlayActivity.c(this.a, true);
-    }
-    this.a.b(paramInt * this.a.b / 10000L);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    paramSeekBar = this.a;
-    paramSeekBar.i += 1;
-    this.a.g = true;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.b / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
+    this.a.a();
   }
 }
 

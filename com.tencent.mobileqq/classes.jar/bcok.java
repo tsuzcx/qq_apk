@@ -1,40 +1,16 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ProfileCardFavorItemDetailView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class bcok
-  extends TextView
+  extends AnimatorListenerAdapter
 {
-  public bcok(ProfileCardFavorItemDetailView paramProfileCardFavorItemDetailView, Context paramContext, Drawable paramDrawable, String paramString, int paramInt)
+  public bcok(ParticipleView paramParticipleView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext);
-    setTextSize(1, 11.0F);
-    setTextColor(-1);
-    if (paramDrawable != null)
-    {
-      paramProfileCardFavorItemDetailView = "[icon] " + paramString;
-      int i = (int)(actn.a(11.0F, getResources()) * 0.8D + 0.5D);
-      paramDrawable.setBounds(0, 0, i, i);
-      paramProfileCardFavorItemDetailView = new SpannableString(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView.setSpan(new ImageSpan(paramDrawable, 1), 0, 6, 17);
-    }
-    for (;;)
-    {
-      setText(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView = new GradientDrawable();
-      paramProfileCardFavorItemDetailView.setColor(paramInt);
-      paramProfileCardFavorItemDetailView.setCornerRadius(8.0F);
-      setBackgroundDrawable(paramProfileCardFavorItemDetailView);
-      setPadding(actn.a(4.0F, getResources()), 0, actn.a(4.0F, getResources()), 0);
-      setLayoutParams(new ViewGroup.LayoutParams(-2, actn.a(15.0F, getResources())));
-      return;
-      paramProfileCardFavorItemDetailView = new SpannableString(paramString);
-    }
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
   }
 }
 

@@ -1,23 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class aqec
-  extends RecyclerView.OnScrollListener
+  extends akil
 {
-  aqec(aqdz paramaqdz) {}
+  aqec(aqeb paramaqeb) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  protected void a(String paramString, List<Pair<String, String>> paramList)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      aqdz.a(this.a).c();
-    }
-    while (!aqdz.a(this.a).a()) {
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("Forward.Preview.Dialog", 2, i);
+      if ((aqeb.a(this.a).equals(paramString)) && (aqeb.a(this.a) != null))
+      {
+        this.a.e();
+        aqeb.a(this.a).a(paramList);
+      }
       return;
     }
-    aqdz.a(this.a).b();
-    aqdz.a(this.a).notifyDataSetChanged();
   }
 }
 

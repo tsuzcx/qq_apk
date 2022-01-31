@@ -1,53 +1,25 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class aojg
-  extends Handler
+  implements View.OnTouchListener
 {
-  public static int a;
-  public static int b = 2;
-  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
+  public aojg(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public aojg(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == jdField_a_of_type_Int)
+    switch (paramMotionEvent.getAction())
     {
-      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramMessage != null)
-      {
-        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
-        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
-      }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramMessage.what != b);
-        paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (paramMessage == null);
-      ExtendFriendLimitChatMatchFragment.b(paramMessage);
-      paramMessage = paramMessage.getActivity();
-    } while (paramMessage == null);
-    paramMessage.finish();
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

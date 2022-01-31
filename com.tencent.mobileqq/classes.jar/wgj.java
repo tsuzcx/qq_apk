@@ -1,75 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class wgj
-  implements View.OnTouchListener
+  implements Comparator<String>
 {
   public wgj(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(String paramString1, String paramString2)
   {
-    switch (paramView.getId())
-    {
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.b.setImageResource(2130846073);
-      }
-      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.b.setImageResource(2130846072);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!QRDisplayActivity.a(paramView, i, j))
-        {
-          this.a.b.setImageResource(2130846072);
-          continue;
-          if (paramMotionEvent.getAction() == 0)
-          {
-            this.a.c.setImageResource(2130846075);
-          }
-          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-          {
-            this.a.c.setImageResource(2130846074);
-          }
-          else if (paramMotionEvent.getAction() == 2)
-          {
-            i = (int)paramMotionEvent.getRawX();
-            j = (int)paramMotionEvent.getRawY();
-            if (!QRDisplayActivity.a(paramView, i, j))
-            {
-              this.a.c.setImageResource(2130846074);
-              continue;
-              if (paramMotionEvent.getAction() == 0)
-              {
-                this.a.d.setImageResource(2130846096);
-              }
-              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-              {
-                this.a.d.setImageResource(2130846095);
-              }
-              else if (paramMotionEvent.getAction() == 2)
-              {
-                i = (int)paramMotionEvent.getRawX();
-                j = (int)paramMotionEvent.getRawY();
-                if (!QRDisplayActivity.a(paramView, i, j)) {
-                  this.a.d.setImageResource(2130846095);
-                }
-              }
-            }
-          }
-        }
-      }
+    while (paramString1 != null) {
+      return i;
     }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

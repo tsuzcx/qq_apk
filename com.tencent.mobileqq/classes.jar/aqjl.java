@@ -1,15 +1,10 @@
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.widget.Switch;
 
 public class aqjl
 {
-  public CompoundButton.OnCheckedChangeListener a;
-  public TextView a;
   public URLImageView a;
-  public Switch a;
-  public String a;
+  
+  public aqjl(aqjj paramaqjj) {}
 }
 
 

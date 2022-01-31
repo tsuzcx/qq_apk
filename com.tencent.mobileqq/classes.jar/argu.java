@@ -1,15 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class argu
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  argu(argt paramargt) {}
+  argu(args paramargs) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    argq.a(this.a.a).finish();
+    args.a(this.a);
   }
 }
 

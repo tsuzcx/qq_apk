@@ -1,17 +1,17 @@
 package cooperation.vip.ar.controller;
 
 import android.widget.TextView;
-import bhxr;
+import bhyi;
 
 public class VipARCameraController$7
   implements Runnable
 {
-  public VipARCameraController$7(bhxr parambhxr) {}
+  public VipARCameraController$7(bhyi parambhyi) {}
   
   public void run()
   {
-    if (bhxr.a(this.this$0) != null) {
-      bhxr.a(this.this$0).setVisibility(8);
+    if (bhyi.a(this.this$0) != null) {
+      bhyi.a(this.this$0).setVisibility(8);
     }
   }
 }

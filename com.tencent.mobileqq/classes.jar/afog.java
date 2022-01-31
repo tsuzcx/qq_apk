@@ -1,27 +1,15 @@
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
 
 public class afog
-  extends MqqHandler
+  implements View.OnClickListener
 {
   public afog(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopSuspiciousFragment.a(this.a) == null);
-      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    this.a.a();
+    TroopSuspiciousFragment.b(this.a);
   }
 }
 

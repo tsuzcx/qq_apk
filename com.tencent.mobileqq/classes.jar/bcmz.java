@@ -1,6 +1,6 @@
 public abstract interface bcmz
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(int paramInt);
 }
 
 

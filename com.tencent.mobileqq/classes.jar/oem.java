@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public final class oem
-  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
+public abstract interface oem
 {
-  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyUgcVideoReportItem(paramParcel);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
   
-  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
-  {
-    return new ReadInJoyUgcVideoReportItem[paramInt];
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 

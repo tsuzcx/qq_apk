@@ -1,6 +1,15 @@
-public abstract interface azsz
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class azsz
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, azpg paramazpg);
+  azsz(azsw paramazsw) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.b(paramView);
+  }
 }
 
 

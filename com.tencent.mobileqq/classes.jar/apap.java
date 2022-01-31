@@ -1,14 +1,14 @@
 public abstract interface apap
 {
-  public abstract void a();
+  public abstract void a(String paramString);
   
-  public abstract void a(apao paramapao);
+  public abstract void a(String paramString, int paramInt);
   
-  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
+  public abstract void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apap
  * JD-Core Version:    0.7.0.1
  */

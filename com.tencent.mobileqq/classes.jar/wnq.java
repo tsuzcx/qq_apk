@@ -1,23 +1,8 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
-
-class wnq
-  implements DialogInterface.OnShowListener
+public abstract interface wnq
 {
-  wnq(wnl paramwnl, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public abstract void h();
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    if (wnl.a(this.jdField_a_of_type_Wnl) != null) {
-      wnl.a(this.jdField_a_of_type_Wnl).a(paramDialogInterface);
-    }
-    paramDialogInterface = wsy.a().a(wnl.a(this.jdField_a_of_type_Wnl), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    wnl.a(this.jdField_a_of_type_Wnl).a(paramDialogInterface);
-    wpw.a().a(new CommentListShowStateEvent(true));
-  }
+  public abstract void i();
 }
 
 

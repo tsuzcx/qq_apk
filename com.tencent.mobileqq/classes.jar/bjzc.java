@@ -1,42 +1,13 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
-public class bjzc
+public abstract interface bjzc
+  extends bjxm
 {
-  private List<bjze> a = new LinkedList();
+  public abstract bjzb a();
   
-  public static bjzc a()
-  {
-    return bjzf.a;
-  }
+  public abstract void a(bkbk parambkbk, float paramFloat1, float paramFloat2);
   
-  public void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bjze)localIterator.next()).b();
-    }
-  }
+  public abstract void b(int paramInt, bkld parambkld);
   
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bjze)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  public boolean a(@NonNull bjze parambjze)
-  {
-    return this.a.add(parambjze);
-  }
-  
-  public boolean b(@NonNull bjze parambjze)
-  {
-    return this.a.remove(parambjze);
-  }
+  public abstract void d();
 }
 
 

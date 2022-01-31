@@ -1,16 +1,8 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class vpa
-  implements FileFilter
+public abstract interface vpa
 {
-  vpa(voz paramvoz) {}
+  public abstract int a();
   
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
-  }
+  public abstract voq a(int paramInt);
 }
 
 

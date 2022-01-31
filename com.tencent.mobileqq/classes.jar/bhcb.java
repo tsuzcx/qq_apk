@@ -1,30 +1,20 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
+import android.content.Intent;
+import cooperation.qzone.util.QZLog;
 
 public class bhcb
-  extends Scroller
 {
-  public int a;
-  
-  public bhcb(Context paramContext, Interpolator paramInterpolator)
+  public static boolean a(Object paramObject, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    QZLog.i("QZoneEventHandler", "handleActivityEvent: " + paramInt1 + " " + paramInt2);
+    switch (paramInt1)
+    {
+    default: 
+      return false;
+    }
+    if (((paramObject instanceof aeom)) && (((aeom)paramObject).a != null)) {
+      ((aeom)paramObject).a.a(paramInt1, paramInt2, paramIntent);
+    }
+    return true;
   }
 }
 

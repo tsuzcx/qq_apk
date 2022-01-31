@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anqd;
+import anqi;
 
 public class QFlutterEngineData
   extends XmlData
 {
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String libEngineSoMD5 = "";
   
   public String getSharedPreferencesName()

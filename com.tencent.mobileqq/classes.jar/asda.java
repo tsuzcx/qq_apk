@@ -1,8 +1,9 @@
-public abstract interface asda
+public class asda
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public String a;
+  public byte[] a;
+  public String b;
+  public byte[] b;
 }
 
 

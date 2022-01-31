@@ -1,138 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ModuleCallbackWrapper;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-public abstract class alpd
-  implements ark.ModuleCallbackWrapper
+public class alpd
 {
-  public static boolean a;
-  protected long a;
-  protected ark.Application a;
-  public String a;
-  HashMap<Long, ark.VariantWrapper> a;
-  protected Map<String, Set<alpe>> a;
-  protected long b;
-  public String b;
-  public String c;
+  private double jdField_a_of_type_Double;
+  private long jdField_a_of_type_Long;
+  private long b;
+  private long c;
   
-  static
+  public alpd(alpc paramalpc, long paramLong1, long paramLong2)
   {
-    jdField_a_of_type_Boolean = true;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Double = paramLong1;
+    this.c = System.currentTimeMillis();
   }
   
-  protected alpd(ark.Application paramApplication, long paramLong)
+  public boolean a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentArkArk$Application = paramApplication;
-    this.jdField_a_of_type_JavaLangString = paramApplication.GetSpecific("appName");
-    this.c = paramApplication.GetSpecific("appPath");
-    this.jdField_b_of_type_JavaLangString = paramApplication.GetID();
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void Destruct()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((ark.VariantWrapper)((Map.Entry)localIterator.next()).getValue()).Reset();
+    if (this.jdField_a_of_type_Long == -1L) {
+      return true;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  long a(ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction())) {
-      return 0L;
-    }
-    this.jdField_b_of_type_Long += 1L;
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = 1L;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_b_of_type_Long), paramVariantWrapper);
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public ark.VariantWrapper a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-    return localVariantWrapper;
-  }
-  
-  protected void a(String paramString, long paramLong1, long paramLong2)
-  {
-    Object localObject;
-    if ((!TextUtils.isEmpty(paramString)) && (paramLong2 > 0L))
+    if (this.b > 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkApp", 2, String.format("ModuleBase.addTokenBucket.api:%s,times:%d,period:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-      }
-      localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (localObject != null) {
-        break label118;
-      }
-      localObject = new HashSet();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
-    }
-    label118:
-    for (paramString = (String)localObject;; paramString = (String)localObject)
-    {
-      paramString.add(new alpe(this, paramLong1, paramLong2));
-      return;
-    }
-  }
-  
-  public void a(List<alqz> paramList)
-  {
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
+      this.c = l;
+      if (this.jdField_a_of_type_Double >= 1.0D)
       {
-        alqz localalqz = (alqz)paramList.next();
-        a(localalqz.jdField_a_of_type_JavaLangString, localalqz.jdField_a_of_type_Long, localalqz.jdField_b_of_type_Long);
-      }
-    }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (localObject == null) {
+        this.jdField_a_of_type_Double -= 1.0D;
         return true;
       }
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        alpe localalpe = (alpe)((Iterator)localObject).next();
-        if (!localalpe.a())
-        {
-          QLog.i("ArkApp", 2, String.format("ModuleBase.checkFrequency.Refuse:%s,%s ", new Object[] { paramString, localalpe.toString() }));
-          return false;
-        }
-      }
-      return true;
     }
     return false;
   }
   
-  public ark.VariantWrapper b(long paramLong)
+  public boolean equals(Object paramObject)
   {
-    return (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (alpd)paramObject;
+      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
+  }
+  
+  public String toString()
+  {
+    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
   }
 }
 

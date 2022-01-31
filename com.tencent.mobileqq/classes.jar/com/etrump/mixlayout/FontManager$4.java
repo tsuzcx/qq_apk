@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import ajxn;
+import ajxl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import ho;
@@ -12,7 +12,7 @@ public class FontManager$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((ajxn)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    ExtensionInfo localExtensionInfo = ((ajxl)this.this$0.a.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
     ho.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
   }
 }

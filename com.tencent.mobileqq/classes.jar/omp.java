@@ -1,16 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
 import android.widget.TextView;
+import java.util.List;
 
-public class omp
-  extends RecyclerView.ViewHolder
+class omp
+  implements rrp
 {
-  public TextView a;
+  omp(omo paramomo) {}
   
-  public omp(omn paramomn, View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368383));
+    this.a.jdField_a_of_type_Omq.b.setText(paramString2);
+    this.a.jdField_a_of_type_Pay.d = paramString2;
+    this.a.jdField_a_of_type_Pay.c = paramString1;
+    if (this.a.jdField_a_of_type_Int < omn.a(this.a.jdField_a_of_type_Omn).size()) {
+      omn.a(this.a.jdField_a_of_type_Omn, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Pay);
+    }
+    this.a.jdField_a_of_type_Omn.a.dismiss();
   }
 }
 

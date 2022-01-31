@@ -1,16 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import java.util.List;
-
-public class rhm
-  implements ntr
+public abstract interface rhm
 {
-  public rhm(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void a(List<TabChannelCoverInfo> paramList)
-  {
-    ReadinjoyTabFrame.a(this.a).a(paramList);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

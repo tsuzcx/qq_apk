@@ -1,15 +1,8 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
-public class sej
+abstract interface sej
 {
-  private static boolean a = true;
+  public abstract void a();
   
-  public static void a(FromServiceMsg paramFromServiceMsg) {}
-  
-  public static void a(ToServiceMsg paramToServiceMsg) {}
-  
-  public static void a(byte[] paramArrayOfByte, String paramString) {}
+  public abstract void b();
 }
 
 

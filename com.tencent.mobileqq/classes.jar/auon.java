@@ -1,15 +1,20 @@
-public abstract class auon
-  implements auol
+import java.util.ArrayList;
+
+public abstract interface auon
 {
-  public final void a(int paramInt, aunu paramaunu) {}
+  public abstract void a(int paramInt);
   
-  public final void a_(int paramInt, boolean paramBoolean) {}
+  public abstract void a(int paramInt, aunw paramaunw);
   
-  public final void b(int paramInt, aunu paramaunu) {}
+  public abstract void a(int paramInt, ArrayList<aunw> paramArrayList);
   
-  public final void c(int paramInt, aunu paramaunu) {}
+  public abstract void a_(int paramInt, boolean paramBoolean);
   
-  public final void d(int paramInt, aunu paramaunu) {}
+  public abstract void b(int paramInt, aunw paramaunw);
+  
+  public abstract void c(int paramInt, aunw paramaunw);
+  
+  public abstract void d(int paramInt, aunw paramaunw);
 }
 
 

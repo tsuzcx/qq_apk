@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class aifx
-  implements Comparator<CommonlyUsedTroop>
+  extends aimt
 {
-  protected aifx(aifu paramaifu) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
-  {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
-  }
+  public aifx(aifs paramaifs) {}
 }
 
 

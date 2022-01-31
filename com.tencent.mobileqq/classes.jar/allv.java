@@ -1,22 +1,25 @@
-import android.os.MessageQueue.IdleHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
 
 public class allv
-  implements MessageQueue.IdleHandler
+  implements View.OnTouchListener
 {
   public allv(ARScanEntryView paramARScanEntryView) {}
   
-  public boolean queueIdle()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
-      ARScanEntryView.a(this.a).c();
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    return false;
   }
 }
 

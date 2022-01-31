@@ -1,20 +1,27 @@
-class mnk
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+
+public class mnk
+  implements View.OnTouchListener
 {
-  public String a;
-  public byte[] a;
+  public mnk(QavRecordButtonView paramQavRecordButtonView) {}
   
-  public mnk(String paramString, byte[] paramArrayOfByte)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    byte[] arrayOfByte = paramArrayOfByte;
-    if (paramArrayOfByte == null) {
-      arrayOfByte = new byte[0];
+    if (QavRecordButtonView.a(this.a) != 1) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
-    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    paramArrayOfByte = paramString;
-    if (paramString == null) {
-      paramArrayOfByte = "";
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 

@@ -1,35 +1,15 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rhw
-  extends RecyclerView.RecycledViewPool
+  implements View.OnClickListener
 {
-  public rhw(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
+  public rhw(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bfzg)))
-    {
-      localObject = (bfzg)localObject;
-      if (((bfzg)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
-      }
-      else if ((((bfzg)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
-    }
-    return localViewHolder;
+    SlideActiveAnimController.a(this.a);
   }
 }
 

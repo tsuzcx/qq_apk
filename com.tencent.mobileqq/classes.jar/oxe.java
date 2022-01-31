@@ -1,29 +1,24 @@
-import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oxe
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
   public oxe(VideoView paramVideoView) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void OnDownloadCallback(String paramString)
   {
-    if ((VideoView.a(this.a) != null) && (VideoView.a(this.a).getDuration() >= 200L))
+    try
     {
-      VideoView.a(this.a, 6);
-      VideoView.a(this.a, VideoView.a(this.a));
-      VideoView.b(this.a, "");
-      VideoView.b(this.a);
-      if (VideoView.a(this.a) != null) {
-        this.a.a.postDelayed(this.a, 500L);
-      }
+      paramString = new JSONObject(paramString);
+      paramString.getInt("callBackType");
+      int i = paramString.getInt("fileSize");
+      this.a.setFileSize(i);
       return;
     }
-    QLog.d("gifvideo.VideoView", 1, "invalid video");
-    this.a.b();
+    catch (JSONException paramString) {}
   }
 }
 

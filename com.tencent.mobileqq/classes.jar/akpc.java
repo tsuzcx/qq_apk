@@ -1,257 +1,250 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.ConversationFacade.1;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.confess.ConfessConvInfo;
 import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import com.tencent.mobileqq.data.MessageForInteractAndFollow;
-import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
 
 public class akpc
-  extends Observable
-  implements Manager
+  extends aksu
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  aukp jdField_a_of_type_Aukp = null;
+  aukz jdField_a_of_type_Aukz = new akpd(this);
+  private QQConcurrentHashMap<String, ConversationInfo> jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = new QQConcurrentHashMap(1005, 0, 100);
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private final String jdField_a_of_type_JavaLangString = "Q.unread.Facade";
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  private Set<String> b;
+  private boolean jdField_a_of_type_Boolean;
   
-  public akpc(QQAppInterface paramQQAppInterface)
+  public akpc(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramProxyManager);
   }
   
-  public static int a(ConfessConvInfo paramConfessConvInfo)
+  private aukp a()
   {
-    if (paramConfessConvInfo == null) {
-      return 0;
-    }
-    return paramConfessConvInfo.unreadCount;
-  }
-  
-  public static int a(ConversationInfo paramConversationInfo)
-  {
-    if (paramConversationInfo == null) {
-      return 0;
-    }
-    return Math.max(paramConversationInfo.unreadCount, paramConversationInfo.unreadMark);
-  }
-  
-  private akpd a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-  }
-  
-  private akpv a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt);
-  }
-  
-  private amnx a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-  }
-  
-  private static SharedPreferences a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 1001) {}
-    for (String str = "sp_nearby_summary_" + paramQQAppInterface.getCurrentAccountUin(); !TextUtils.isEmpty(str); str = "") {
-      return BaseApplicationImpl.sApplication.getSharedPreferences("sp_nearby_summary_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    }
-    return null;
-  }
-  
-  private QQMessageFacade a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-  }
-  
-  private static String a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "lastuin";; str = "sm") {
-      return String.format("%s_%s_%s", new Object[] { str, paramString, Integer.valueOf(paramInt) });
-    }
-  }
-  
-  private Set<String> a(int paramInt)
-  {
-    if (paramInt == 1010)
-    {
-      if (this.jdField_a_of_type_JavaUtilSet == null) {
-        this.jdField_a_of_type_JavaUtilSet = a(ajsf.ak, paramInt, "date_box_last_read_time");
-      }
-      return this.jdField_a_of_type_JavaUtilSet;
-    }
-    if (paramInt == 1001)
-    {
-      if (this.b == null) {
-        this.b = a(ajsf.aj, paramInt, "lbs_box_last_read_time");
-      }
-      return this.b;
-    }
-    return null;
-  }
-  
-  private Set<String> a(String paramString1, int paramInt, String paramString2)
-  {
-    long l1 = 0L;
-    if (QLog.isColorLevel())
-    {
-      l1 = System.currentTimeMillis();
-      QLog.d("Q.msg_box", 2, "initSayHelloSet,boxType:" + paramInt + ",startTime:" + l1);
-    }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-    HashSet localHashSet = new HashSet();
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString1, paramInt);
-    long l2 = localSharedPreferences.getLong(paramString2, 0L);
-    paramString1 = paramString1.iterator();
-    while (paramString1.hasNext())
-    {
-      paramString2 = (MessageRecord)paramString1.next();
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg_box", 4, "lastTime:" + l2 + ",mr.time:" + paramString2.time + ",uin:" + paramString2.senderuin + ",istroop:" + paramString2.istroop);
-      }
-      if ((a(paramString2.senderuin, paramInt) > 0) && (paramString2.time > l2)) {
-        localHashSet.add(paramString2.senderuin);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      l2 = System.currentTimeMillis();
-      QLog.d("Q.msg_box", 2, "initSayHelloSet,endTime:" + l2 + ",costTime:" + (l2 - l1));
-    }
-    return localHashSet;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 3000) || (paramInt == 1);
-  }
-  
-  private boolean a(MessageRecord paramMessageRecord, Set<MessageRecord> paramSet)
-  {
-    if ((paramSet == null) || (paramSet.isEmpty())) {
-      return false;
-    }
-    paramSet = paramSet.iterator();
-    while (paramSet.hasNext()) {
-      if (akpy.a(paramMessageRecord, (MessageRecord)paramSet.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static int b(ConversationInfo paramConversationInfo)
-  {
-    if (paramConversationInfo == null) {
-      return 0;
-    }
-    return paramConversationInfo.unreadCount;
-  }
-  
-  public static int c(ConversationInfo paramConversationInfo)
-  {
-    if (paramConversationInfo == null) {
-      return 0;
-    }
-    return paramConversationInfo.unreadMark;
-  }
-  
-  private void d()
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      ConcurrentHashMap localConcurrentHashMap = akpu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).a();
-      if ((localConcurrentHashMap.get(akpy.a(ajsf.H, 1001)) != null) || (localConcurrentHashMap.get(akpy.a(ajsf.w, 1009)) != null) || (localConcurrentHashMap.get(akpy.a(ajsf.ab, 1010)) != null) || (localConcurrentHashMap.get(akpy.a(ajsf.aM, 1032)) != null) || (localConcurrentHashMap.get(akpy.a(ajsf.I, 1001)) != null) || (localConcurrentHashMap.get(akpy.a(ajsf.aT, 1044)) != null)) {
-        ThreadManager.post(new ConversationFacade.1(this), 8, null, false);
-      }
-      return;
-    }
-    b(ajsf.I, 1001);
-    b(ajsf.H, 1001);
-    b(ajsf.w, 1009);
-    b(ajsf.ab, 1010);
-    b(ajsf.aM, 1032);
-    b(ajsf.aT, 1044);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("sp_key_sayhello_box_unread_count", 0);
-  }
-  
-  public int a(int paramInt)
-  {
-    Set localSet = a(paramInt);
-    int i = 0;
-    if (localSet != null) {}
+    if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      i = localSet.size();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg_box", 2, "getUnreadSayHelloNum,boxType:" + paramInt + ",num:" + i);
+      if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {
+        this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
       }
-      return i;
+      return this.jdField_a_of_type_Aukp;
     }
   }
   
-  public int a(MessageRecord paramMessageRecord)
+  /* Error */
+  protected int a(String paramString, int paramInt)
   {
-    if ((paramMessageRecord != null) && (!paramMessageRecord.isSend()) && (!paramMessageRecord.isread) && (paramMessageRecord.msgtype == -2038)) {
-      return 1;
-    }
-    return 0;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_3
+    //   8: aload_3
+    //   9: ifnull +106 -> 115
+    //   12: aload_0
+    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   16: aload_3
+    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   20: ifeq +95 -> 115
+    //   23: aload_0
+    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   27: aload_3
+    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: ifnull +84 -> 115
+    //   34: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   37: ifeq +55 -> 92
+    //   40: ldc 83
+    //   42: iconst_2
+    //   43: new 85	java/lang/StringBuilder
+    //   46: dup
+    //   47: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   50: ldc 88
+    //   52: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: aload_1
+    //   56: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 94
+    //   61: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: aload_0
+    //   65: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   68: aload_3
+    //   69: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   72: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   75: getfield 100	com/tencent/mobileqq/data/ConversationInfo:extInt3	I
+    //   78: iconst_1
+    //   79: iand
+    //   80: invokestatic 106	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   83: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   92: aload_0
+    //   93: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   96: aload_3
+    //   97: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   103: getfield 100	com/tencent/mobileqq/data/ConversationInfo:extInt3	I
+    //   106: istore_2
+    //   107: iload_2
+    //   108: iconst_1
+    //   109: iand
+    //   110: istore_2
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: iload_2
+    //   114: ireturn
+    //   115: iconst_0
+    //   116: istore_2
+    //   117: goto -6 -> 111
+    //   120: astore_1
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: aload_1
+    //   124: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	125	0	this	akpc
+    //   0	125	1	paramString	String
+    //   0	125	2	paramInt	int
+    //   7	90	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	120	finally
+    //   12	92	120	finally
+    //   92	107	120	finally
   }
   
-  public int a(String paramString, int paramInt)
+  /* Error */
+  protected long a(String paramString, int paramInt)
   {
-    return a(a().a(paramString, paramInt));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ifnull +33 -> 42
+    //   12: aload_0
+    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   16: aload_1
+    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   20: ifeq +22 -> 42
+    //   23: aload_0
+    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   27: aload_1
+    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   34: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
+    //   37: lstore_3
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: lload_3
+    //   41: lreturn
+    //   42: lconst_0
+    //   43: lstore_3
+    //   44: goto -6 -> 38
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	akpc
+    //   0	52	1	paramString	String
+    //   0	52	2	paramInt	int
+    //   37	7	3	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	47	finally
+    //   12	38	47	finally
   }
   
-  public int a(String paramString, int paramInt1, int paramInt2)
+  /* Error */
+  protected ConversationInfo a(String paramString, int paramInt)
   {
-    return a(a().a(paramString, paramInt1, paramInt2));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ifnull +30 -> 39
+    //   12: aload_0
+    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   16: aload_1
+    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   20: ifeq +19 -> 39
+    //   23: aload_0
+    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   27: aload_1
+    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   34: astore_1
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: aload_1
+    //   38: areturn
+    //   39: aconst_null
+    //   40: astore_1
+    //   41: goto -6 -> 35
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	akpc
+    //   0	49	1	paramString	String
+    //   0	49	2	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	44	finally
+    //   12	35	44	finally
   }
   
-  public long a(String paramString, int paramInt)
-  {
-    return a().a(paramString, paramInt);
-  }
-  
-  public ConversationInfo a(String paramString, int paramInt)
+  public Set<ConversationInfo> a()
   {
     try
     {
-      paramString = a().a(paramString, paramInt);
-      return paramString;
+      HashSet localHashSet1 = new HashSet(this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.values());
+      return localHashSet1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.unread.Proxy", 2, "cloneConversationInfoSet OOM!", localOutOfMemoryError);
+        }
+        HashSet localHashSet2 = new HashSet();
+      }
+    }
+    finally {}
+  }
+  
+  protected void a() {}
+  
+  protected void a(String paramString, int paramInt)
+  {
+    try
+    {
+      Object localObject = akpx.a(paramString, paramInt);
+      if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
+      {
+        localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
+        ((ConversationInfo)localObject).extInt3 = (((ConversationInfo)localObject).extInt3 >> 1 << 1);
+        a(paramString, paramInt, (ConversationInfo)localObject);
+      }
+      return;
     }
     finally
     {
@@ -260,1424 +253,766 @@ public class akpc
     }
   }
   
-  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (!akpy.u(paramInt1))) {}
-    for (;;)
-    {
-      return paramString2;
-      SharedPreferences localSharedPreferences = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1);
-      String str;
-      if ((paramInt1 == 1001) || (paramInt1 == 10002))
-      {
-        if ((paramInt2 < 0) || (paramInt2 > 0)) {
-          continue;
-        }
-        if (ajsf.H.equals(paramString1))
-        {
-          paramString1 = localSharedPreferences.getString(a(ajsf.H, paramInt2, true), "");
-          str = paramString1;
-          if (ajsf.aj.equals(paramString1)) {
-            str = localSharedPreferences.getString(a(ajsf.aj, paramInt2, true), "");
-          }
-        }
-      }
-      while (!TextUtils.isEmpty(str))
-      {
-        return SecurityUtile.b(localSharedPreferences.getString(a(str, paramInt2, false), paramString2));
-        str = paramString1;
-        if (ajsf.aj.equals(paramString1))
-        {
-          str = localSharedPreferences.getString(a(ajsf.aj, paramInt2, true), "");
-          continue;
-          str = null;
-        }
-      }
-    }
-  }
-  
-  public Set<ConversationInfo> a()
-  {
-    return a().a();
-  }
-  
-  public void a()
-  {
-    a().c();
-    a().c();
-    Object localObject2 = a().a();
-    Object localObject1 = new HashSet();
-    localObject2 = ((Set)localObject2).iterator();
-    label297:
-    while (((Iterator)localObject2).hasNext())
-    {
-      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject2).next();
-      if (b(localConversationInfo.uin, localConversationInfo.type))
-      {
-        if (akpy.a(localConversationInfo.uin, localConversationInfo.type)) {
-          b(localConversationInfo.uin, localConversationInfo.type);
-        }
-        if ((QLog.isColorLevel()) && ((a(localConversationInfo) != 0) || (localConversationInfo.unreadGiftCount != 0) || (localConversationInfo.extInt1 != 0))) {
-          QLog.d("Q.unread.Facade", 2, "initCache info=" + localConversationInfo.toString());
-        }
-      }
-      for (;;)
-      {
-        if ((a(localConversationInfo) != 0) || ((localConversationInfo.unreadGiftCount == 0) && (localConversationInfo.extInt1 == 0))) {
-          break label297;
-        }
-        a(localConversationInfo.uin, localConversationInfo.unreadGiftCount, false);
-        break;
-        if ((akpy.r(localConversationInfo.type)) && (!akpy.a(localConversationInfo.uin, localConversationInfo.type)) && (!a(localConversationInfo.uin, akpy.a(localConversationInfo.type)))) {
-          ((Set)localObject1).add(localConversationInfo);
-        }
-        if ((QLog.isColorLevel()) && ((a(localConversationInfo) != 0) || (localConversationInfo.unreadGiftCount != 0) || (localConversationInfo.extInt1 != 0))) {
-          QLog.d("Q.unread.Facade", 2, "initCache [not in recent] info=" + localConversationInfo.toString());
-        }
-      }
-    }
-    if (!((Set)localObject1).isEmpty())
-    {
-      localObject1 = ((Set)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (ConversationInfo)((Iterator)localObject1).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "initCache remove info=" + ((ConversationInfo)localObject2).toString());
-        }
-        a().c(((ConversationInfo)localObject2).uin, ((ConversationInfo)localObject2).type);
-      }
-    }
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    Set localSet = a(paramInt);
-    if (localSet == null) {
-      return;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        localSet.clear();
-        ??? = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-        if (paramInt == 1010)
-        {
-          ((SharedPreferences)???).edit().putLong("date_box_last_read_time", paramLong).commit();
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("Q.msg_box", 2, "clearNewSayHelloSet,boxType:" + paramInt + ",time:" + paramLong);
-          return;
-        }
-      }
-      if (paramInt == 1001) {
-        ((SharedPreferences)???).edit().putLong("lbs_box_last_read_time", paramLong).commit();
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Set localSet = a(paramInt);
-    if ((localSet == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!localSet.contains(paramString)) {
-        localSet.add(paramString);
-      }
-      return;
-    }
-  }
-  
-  public void a(ConversationInfo paramConversationInfo, String paramString)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg_box", 2, "updateSummaryLastUin info = " + paramConversationInfo + ", lbsHongbaoLastUin = " + paramString);
-    }
-    if ((paramConversationInfo == null) || (!akpy.u(paramConversationInfo.type)) || (TextUtils.isEmpty(paramConversationInfo.uin))) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
-      return;
-      localEditor = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramConversationInfo.type).edit();
-      if ((paramConversationInfo.type != 1001) && (paramConversationInfo.type != 10002)) {
-        break;
-      }
-    } while ((!ajsf.aj.equals(paramConversationInfo.uin)) && (!ajsf.H.equals(paramConversationInfo.uin)));
-    if ((paramConversationInfo.extInt1 <= 0) || (TextUtils.isEmpty(paramString))) {
-      localEditor.remove(a(paramConversationInfo.uin, 0, true));
-    }
-    for (;;)
-    {
-      i = 1;
-      if (i == 0) {
-        break;
-      }
-      localEditor.commit();
-      return;
-      localEditor.putString(a(paramConversationInfo.uin, 0, true), paramString);
-    }
-  }
-  
-  protected void a(String paramString, int paramInt)
-  {
-    a(paramString, paramInt, true);
-    a().c(paramString, paramInt);
-  }
-  
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    a().b(paramString, paramInt1, paramInt2);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if ((paramInt1 != 1033) && (paramInt1 != 1034))
-    {
-      a(paramString, paramInt1, a().a(paramString, paramInt1), paramBoolean);
-      return;
-    }
-    a(paramString, paramInt1, a().a(paramString, paramInt1, paramInt2), true, paramBoolean, paramInt2);
-  }
-  
-  protected void a(String paramString, int paramInt, long paramLong)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.unread.Facade", 2, "cleanUnreadFrom uin=" + paramString + ",type=" + paramInt + ",lastread=" + paramLong);
-    }
-    if (paramInt == 1008) {}
-    for (boolean bool1 = sbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);; bool1 = false)
-    {
-      if ((paramInt == 1008) && (sdf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) && (!bool1)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "isTroopBarAccount");
-        }
-      }
-      do
-      {
-        return;
-        if ((paramInt != 1008) || (!TextUtils.equals(paramString, ajsf.az))) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.unread.Facade", 2, "NEW_KANDIAN_UIN not unread");
-      return;
-      b(paramString, paramInt, paramLong);
-      a(paramInt).a(paramString, paramInt, paramLong);
-      if ((paramInt == 1008) && (bool1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "inServiceAccountFolder uin=" + paramString);
-        }
-        sbc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.D();
-      OpenApiManager localOpenApiManager = OpenApiManager.getInstance();
-      bool1 = bool2;
-      if (a(paramString, paramInt) == 0) {
-        bool1 = true;
-      }
-      localOpenApiManager.onMessageReaded(paramString, paramInt, bool1, paramLong);
-      return;
-    }
-  }
-  
-  protected void a(String paramString, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    a(paramString, paramInt, paramLong, true, paramBoolean);
-  }
-  
-  protected void a(String paramString, int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramString, paramInt, paramLong, paramBoolean1, paramBoolean2, 0);
-  }
-  
-  protected void a(String paramString, int paramInt1, long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    long l;
-    if ((paramInt1 != 1033) && (paramInt1 != 1034))
-    {
-      l = a().b(paramString, paramInt1);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.unread.Facade", 2, "cleanUnread uin=" + paramString + ",type" + paramInt1 + ",unread" + l + " ,lastread" + paramLong + ",needDelMark" + paramBoolean2);
-      }
-      if (paramBoolean2) {
-        a().b(paramString, paramInt1, 0);
-      }
-      a().a(paramString, paramInt1, paramLong, 0, 0, 0);
-    }
-    for (paramLong = l;; paramLong = l)
-    {
-      if (paramLong > 0L)
-      {
-        if ((akpy.c(paramInt1)) && (paramBoolean1)) {
-          d();
-        }
-        QQMessageFacade.Message localMessage = a().a(paramString, paramInt1, paramInt2);
-        if (localMessage != null) {
-          a(paramInt1).a(paramString, paramInt1, localMessage, paramInt2);
-        }
-      }
-      OpenApiManager.getInstance().onMessageReaded(paramString, paramInt1, true, 0L);
-      return;
-      l = a().a(paramString, paramInt1, paramInt2);
-      if (paramBoolean2) {}
-      a().a(paramString, paramInt1, paramInt2, paramLong, 0);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, MessageRecord paramMessageRecord)
-  {
-    int j = 0;
-    int i;
-    if (paramMessageRecord != null)
-    {
-      i = a(paramMessageRecord) * -1;
-      j = b(paramMessageRecord) * -1;
+    int i = paramInt2;
+    if (paramInt2 > 0) {
+      i = 1;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.unread.Facade", 2, "increaseUnread uin=" + paramString + ",type" + paramInt + ",unreadDiff" + -1 + ",unreadGiftDiff=" + i + ",unreadRedPacketDiff=" + j + ",mr=" + paramMessageRecord);
-      }
-      a().a(paramString, paramInt, -1, i, j);
-      if (akpy.c(paramInt)) {
-        d();
-      }
-      return;
-      i = 0;
-    }
-  }
-  
-  @Deprecated
-  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
-  {
-    paramInt2 = a().b(paramString2, paramInt2);
-    int i = a().b(paramString1, paramInt1);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.unread.Facade", 2, "moveBoxToMessageTab innerItemUnread=" + paramInt2 + ", convsItemUnread=" + i);
-    }
-    b(paramString1, paramInt1);
-  }
-  
-  protected void a(String paramString, int paramInt, List<MessageRecord> paramList)
-  {
-    int i = 0;
-    Iterator localIterator = paramList.iterator();
-    int j = 0;
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      int n = a(localMessageRecord) * -1;
-      int i1 = b(localMessageRecord) * -1;
-      if (localMessageRecord != null)
+      Object localObject;
+      try
       {
-        int k = j + n;
-        int m = i + i1;
-        j = k;
-        i = m;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.unread.Facade", 2, "increaseUnread uin=" + paramString + ",type" + paramInt + ",unreadDiff" + -1 + ",unreadGiftDiff=" + n + ",unreadRedPacketDiff=" + i1 + ",mr=" + localMessageRecord);
-          j = k;
-          i = m;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.unread.Proxy", 2, "setUnreadForImax uin=" + paramString);
         }
-      }
-    }
-    a().a(paramString, paramInt, paramList.size(), j, i);
-    if (akpy.c(paramInt)) {
-      d();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    a(paramString, paramInt, 0, paramBoolean);
-  }
-  
-  public void a(List<MessageRecord> paramList)
-  {
-    HashSet localHashSet = null;
-    int i;
-    MessageRecord localMessageRecord;
-    Object localObject;
-    if (paramList != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.unread.Facade", 2, "addUnread msg size=" + paramList.size());
-      }
-      Iterator localIterator = paramList.iterator();
-      for (i = 0;; i = 1) {
-        for (;;)
+        localObject = akpx.a(paramString, paramInt1);
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
         {
-          if (localIterator.hasNext())
+          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
+          if (((ConversationInfo)localObject).unreadCount != i)
           {
-            localMessageRecord = (MessageRecord)localIterator.next();
-            if ((localMessageRecord.isSendFromLocal()) || (localMessageRecord.isread)) {
-              break label1024;
-            }
-            if ((localMessageRecord.msgtype != -2006) || (!(localMessageRecord instanceof MessageForFoldMsg)))
-            {
-              if (!localMessageRecord.isLongMsg()) {
-                break label1021;
-              }
-              localObject = akpy.b(localMessageRecord);
-              if (localHashSet != null) {
-                break label1018;
-              }
-              localHashSet = new HashSet();
-              label140:
-              if (akpy.c(localMessageRecord))
-              {
-                if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord)) || (localHashSet.contains(localObject))) {
-                  continue;
-                }
-                localHashSet.add(localObject);
-                label191:
-                if ((1001 != localMessageRecord.istroop) && (10002 != localMessageRecord.istroop)) {
-                  break label409;
-                }
-                if (localMessageRecord.msgtype != -2055) {
-                  break label291;
-                }
-                localObject = (MessageForInteractAndFollow)localMessageRecord;
-                b(localMessageRecord.senderuin, localMessageRecord.istroop, ((MessageForInteractAndFollow)localObject).unReadCount);
-                label250:
-                if (!akpy.c(localMessageRecord.istroop)) {
-                  break label1012;
-                }
-              }
-            }
+            ((ConversationInfo)localObject).unreadCount = i;
+            QLog.d("Q.unread.Proxy", 1, "setUnreadForImax update=" + ((ConversationInfo)localObject).toString());
+            a(paramString, paramInt1, (ConversationInfo)localObject);
+            return;
           }
-        }
-      }
-    }
-    label1024:
-    for (;;)
-    {
-      break;
-      if (localHashSet.contains(localObject)) {
-        localHashSet.remove(localObject);
-      }
-      break label191;
-      label291:
-      if (localMessageRecord.msgtype == -2053)
-      {
-        if (!((MessageForNearbyLiveTip)localMessageRecord).isLiving) {
-          break label1015;
-        }
-        if (a(localMessageRecord.frienduin, localMessageRecord.msgtype) > 0) {
-          break;
-        }
-      }
-      if (ajsf.H.equals(localMessageRecord.frienduin))
-      {
-        a().a(localMessageRecord.senderuin, 1001, 1, a(localMessageRecord), b(localMessageRecord));
-        break label250;
-      }
-      a().a(localMessageRecord.frienduin, 1001, 1, a(localMessageRecord), b(localMessageRecord));
-      break label250;
-      label409:
-      if (1009 == localMessageRecord.istroop)
-      {
-        a().a(localMessageRecord.frienduin, 1009, 1, a(localMessageRecord), b(localMessageRecord));
-        break label250;
-      }
-      if ((1033 == localMessageRecord.istroop) || (1034 == localMessageRecord.istroop))
-      {
-        a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.getConfessTopicId(), 1);
-        amns.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, true);
-        break label250;
-      }
-      if (1008 == localMessageRecord.istroop)
-      {
-        if ("1".equals(localMessageRecord.getExtInfoFromExtStr("public_account_msg_unread_flag")))
-        {
-          a().b(localMessageRecord.frienduin, localMessageRecord.istroop);
-          break label250;
-        }
-        if ((ajsf.aQ.equals(localMessageRecord.frienduin)) || (ajsf.aR.equals(localMessageRecord.frienduin))) {
-          a().a(localMessageRecord.frienduin, localMessageRecord.istroop);
-        }
-        a().a(localMessageRecord.frienduin, localMessageRecord.istroop, 1, a(localMessageRecord), b(localMessageRecord));
-        break label250;
-      }
-      if (1044 == localMessageRecord.istroop)
-      {
-        a().a(localMessageRecord.frienduin, localMessageRecord.istroop, 1, a(localMessageRecord), b(localMessageRecord));
-        ((aoeo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(127)).b();
-        break label250;
-      }
-      localObject = a().a(localMessageRecord.frienduin, localMessageRecord.istroop);
-      if ((localObject != null) && (((ConversationInfo)localObject).type == 1037) && (localMessageRecord.istroop != 1037))
-      {
-        a(localMessageRecord.frienduin, 1037);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "addUnread, remove old ConversationInfo,  uin=" + localMessageRecord.frienduin + ",new type" + localMessageRecord.istroop);
-        }
-      }
-      if ((localObject != null) && (((ConversationInfo)localObject).type == 1044) && (localMessageRecord.istroop != 1044))
-      {
-        a(localMessageRecord.frienduin, 1044);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "addUnread, remove old ConversationInfo,  uin=" + localMessageRecord.frienduin + ",new type" + localMessageRecord.istroop);
-        }
-      }
-      if (localMessageRecord.istroop == 10005) {}
-      for (int j = 1;; j = 0)
-      {
-        if (j == 0) {
-          break label933;
-        }
-        a().a(localMessageRecord.frienduin, localMessageRecord.istroop, 1);
-        break;
-      }
-      label933:
-      if (1038 == localMessageRecord.istroop)
-      {
-        localObject = (akwq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(148);
-        if (localObject != null) {
-          ((akwq)localObject).b(paramList);
-        }
-      }
-      a().a(localMessageRecord.frienduin, localMessageRecord.istroop, 1, a(localMessageRecord), b(localMessageRecord));
-      break label250;
-      if (i != 0) {
-        d();
-      }
-      return;
-      label1012:
-      continue;
-      label1015:
-      break;
-      label1018:
-      break label140;
-      label1021:
-      break label191;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.unread.Facade", 2, "cleanAllUnread needUpdateMsgtable=" + paramBoolean1 + ",needDelMark=" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      Iterator localIterator = a().a().iterator();
-      Object localObject;
-      while (localIterator.hasNext())
-      {
-        localObject = (ConversationInfo)localIterator.next();
-        if ((a((ConversationInfo)localObject) > 0) && (!ajsf.M.equals(((ConversationInfo)localObject).uin)) && ((!ajsf.ad.equals(((ConversationInfo)localObject).uin)) || (ajsf.ad.equals(((ConversationInfo)localObject).uin)))) {
-          a(((ConversationInfo)localObject).uin, ((ConversationInfo)localObject).type, paramBoolean2);
-        }
-      }
-      localIterator = a().a().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (ConfessConvInfo)localIterator.next();
-        if (a((ConfessConvInfo)localObject) > 0) {
-          a(((ConfessConvInfo)localObject).uin, ((ConfessConvInfo)localObject).type, ((ConfessConvInfo)localObject).topicId, paramBoolean2);
-        }
-      }
-    }
-    a().d();
-    a().d();
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(paramString);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    if (paramString == null) {}
-    label300:
-    label301:
-    label303:
-    label310:
-    for (;;)
-    {
-      return false;
-      Object localObject;
-      String str;
-      if (paramInt == 1009)
-      {
-        localObject = a(paramInt).a(ajsf.w, 1009);
-        str = null;
-      }
-      for (;;)
-      {
-        if ((localObject == null) || (((List)localObject).isEmpty())) {
-          break label310;
-        }
-        localObject = ((List)localObject).iterator();
-        int i = 0;
-        if (((Iterator)localObject).hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
-          if (paramString.equals(localMessageRecord.senderuin))
-          {
-            return true;
-            if (paramInt == 1001)
-            {
-              localObject = a(paramInt).a(ajsf.H, 1001);
-              if (localObject != null) {
-                ((List)localObject).addAll(a(paramInt).a(ajsf.I, 1001));
-              }
-              for (;;)
-              {
-                str = ajsf.aj;
-                break;
-                localObject = a(paramInt).a(ajsf.I, 1001);
-              }
-            }
-            if (paramInt == 1010)
-            {
-              localObject = a(paramInt).a(ajsf.ab, 1010);
-              str = ajsf.ak;
-              continue;
-            }
-            if (paramInt == 1032)
-            {
-              localObject = a(paramInt).a(ajsf.aM, 1032);
-              str = null;
-              continue;
-            }
-            if (paramInt != 1044) {
-              break label303;
-            }
-            localObject = a(paramInt).a(ajsf.aT, 1044);
-            str = null;
+          if (!QLog.isColorLevel()) {
             continue;
           }
-          if ((str == null) || (i != 0) || (!str.equals(localMessageRecord.senderuin))) {
-            break label300;
-          }
-          i = 1;
+          QLog.d("Q.unread.Proxy", 2, "setUnreadForImax nochange=" + ((ConversationInfo)localObject).toString());
+          continue;
         }
-        for (;;)
-        {
-          break;
-          if (i == 0) {
-            break label301;
-          }
-          return a(paramString, paramInt, str);
-        }
-        break;
-        str = null;
-        localObject = null;
+        localConversationInfo = new ConversationInfo(paramString, paramInt1, 0L, 0);
       }
+      finally {}
+      ConversationInfo localConversationInfo;
+      localConversationInfo.unreadCount = i;
+      QLog.d("Q.unread.Proxy", 1, "setUnreadForImax insert=" + localConversationInfo.toString());
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
+      b(paramString, paramInt1, localConversationInfo);
     }
   }
   
-  public boolean a(String paramString1, int paramInt, String paramString2)
+  /* Error */
+  protected void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    paramString2 = a(paramInt).a(paramString2, paramInt);
-    if ((paramString2 != null) && (!paramString2.isEmpty()))
-    {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext()) {
-        if (paramString1.equals(((MessageRecord)paramString2.next()).senderuin)) {
-          return true;
-        }
-      }
-    }
-    return false;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore 6
+    //   9: aload_0
+    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   13: aload 6
+    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   18: ifeq +66 -> 84
+    //   21: aload_0
+    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   25: aload 6
+    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: ifnull +54 -> 84
+    //   33: aload_0
+    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   37: aload 6
+    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   45: astore 6
+    //   47: aload_0
+    //   48: aload_1
+    //   49: iload_2
+    //   50: aload 6
+    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
+    //   55: aload 6
+    //   57: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
+    //   60: iload_3
+    //   61: iadd
+    //   62: aload 6
+    //   64: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
+    //   67: iload 4
+    //   69: iadd
+    //   70: aload 6
+    //   72: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
+    //   75: iload 5
+    //   77: iadd
+    //   78: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: return
+    //   84: aload_0
+    //   85: aload_1
+    //   86: iload_2
+    //   87: lconst_0
+    //   88: iload_3
+    //   89: iload 4
+    //   91: iload 5
+    //   93: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   96: goto -15 -> 81
+    //   99: astore_1
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: aload_1
+    //   103: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	104	0	this	akpc
+    //   0	104	1	paramString	String
+    //   0	104	2	paramInt1	int
+    //   0	104	3	paramInt2	int
+    //   0	104	4	paramInt3	int
+    //   0	104	5	paramInt4	int
+    //   7	64	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	81	99	finally
+    //   84	96	99	finally
   }
   
-  public int b()
+  protected void a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
   {
-    return a() + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getInterFollowMsgBoxUnreadCount();
-  }
-  
-  public int b(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {}
-    while ((paramMessageRecord.isSend()) || (paramMessageRecord.isread) || (!MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord))) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public int b(String paramString, int paramInt)
-  {
-    return b(a().a(paramString, paramInt));
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = a().a().iterator();
-    while (localIterator.hasNext())
-    {
-      ConfessConvInfo localConfessConvInfo = (ConfessConvInfo)localIterator.next();
-      if (a(localConfessConvInfo) > 0) {
-        a(localConfessConvInfo.uin, localConfessConvInfo.type, localConfessConvInfo.topicId, true);
-      }
-    }
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (ajsf.aM.equals(paramString)) {
-      d(paramString, paramInt);
-    }
-    do
-    {
-      return;
-      localObject1 = a(paramInt).a(paramString, paramInt);
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
-    if (akpy.c(paramString))
-    {
-      c(paramString, paramInt);
-      return;
-    }
-    if (ajsf.H.equals(paramString))
-    {
-      e(paramString, paramInt);
-      return;
-    }
-    if (ajsf.I.equals(paramString))
-    {
-      e(paramString, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(0);
-      return;
-    }
-    String str = "";
-    Object localObject1 = ((List)localObject1).iterator();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    label124:
-    Object localObject2;
-    int m;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      if (akpy.c(((MessageRecord)localObject2).senderuin))
-      {
-        c(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-        m = k;
-        label175:
-        j += d(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-        i += e(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-        if ((!TextUtils.isEmpty(str)) || (i <= 0)) {
-          break label458;
-        }
-        str = ((MessageRecord)localObject2).senderuin;
-      }
-    }
-    label284:
-    label448:
-    label458:
     for (;;)
     {
-      k = m;
-      break label124;
-      m = k;
-      if (akpy.d((MessageRecord)localObject2)) {
-        break label175;
-      }
-      m = k + a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-      break label175;
-      if (e(paramString, paramInt) != i)
+      Object localObject;
+      try
       {
-        m = 1;
-        if ((a(paramString, paramInt) != k) || (d(paramString, paramInt) != j) || (m != 0))
+        localObject = akpx.a(paramString, paramInt1);
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
         {
-          localObject1 = a().a(paramString, paramInt);
-          localObject2 = a();
-          if (localObject1 != null) {
-            break label448;
+          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
+          if (((((ConversationInfo)localObject).lastread < paramLong) && (akpb.a(paramInt1))) || ((((ConversationInfo)localObject).lastread != paramLong) && (!akpb.a(paramInt1))) || (((ConversationInfo)localObject).unreadCount != paramInt2) || (((ConversationInfo)localObject).unreadGiftCount != paramInt3) || (((ConversationInfo)localObject).extInt1 != paramInt4))
+          {
+            long l = paramLong;
+            if (akpb.a(paramInt1)) {
+              l = Math.max(((ConversationInfo)localObject).lastread, paramLong);
+            }
+            ((ConversationInfo)localObject).lastread = l;
+            ((ConversationInfo)localObject).unreadCount = Math.max(0, paramInt2);
+            ((ConversationInfo)localObject).unreadGiftCount = Math.max(0, paramInt3);
+            ((ConversationInfo)localObject).extInt1 = Math.max(0, paramInt4);
+            if (paramInt2 == 0) {
+              ((ConversationInfo)localObject).extInt3 = (((ConversationInfo)localObject).extInt3 >> 1 << 1);
+            }
+            QLog.d("Q.unread.Proxy_UnreadMonitor", 1, "insertOrUpdateUnread update=" + ((ConversationInfo)localObject).toString());
+            a(paramString, paramInt1, (ConversationInfo)localObject);
+            return;
           }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.unread.Proxy", 2, "insertOrUpdateUnread  nochange=" + ((ConversationInfo)localObject).toString());
+          continue;
         }
+        localConversationInfo = new ConversationInfo(paramString, paramInt1, paramLong, Math.max(0, paramInt2));
       }
-      for (long l = 0L;; l = ((ConversationInfo)localObject1).lastread)
-      {
-        ((akpd)localObject2).a(paramString, paramInt, l, k, j, i);
-        if ((akpy.u(paramInt)) && (m != 0)) {
-          a(a().a(paramString, paramInt), str);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.unread.Facade", 2, "calculateMsgBoxUnreadCount boxUin=" + paramString + ", unread=" + k + ", giftCount=" + j + ", redPacketCount=" + i);
-        return;
-        m = 0;
-        break label284;
+      finally {}
+      ConversationInfo localConversationInfo;
+      localConversationInfo.unreadGiftCount = Math.max(0, paramInt3);
+      localConversationInfo.extInt1 = Math.max(0, paramInt4);
+      if (paramInt2 == 0) {
+        localConversationInfo.extInt3 = (localConversationInfo.extInt3 >> 1 << 1);
       }
+      QLog.d("Q.unread.Proxy_UnreadMonitor", 1, "insertOrUpdateUnread insert=" + localConversationInfo.toString());
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
+      b(paramString, paramInt1, localConversationInfo);
     }
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2)
+  protected void a(String paramString, int paramInt, ConversationInfo paramConversationInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.unread.Facade", 2, "rewriteUnreadCount uin=" + paramString + ",type" + paramInt1 + ",unread" + paramInt2);
-    }
-    a().c(paramString, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 4, null);
   }
   
-  protected void b(String paramString, int paramInt, long paramLong)
+  /* Error */
+  public boolean a(com.tencent.mobileqq.activity.recent.RecentBaseData paramRecentBaseData)
   {
-    Object localObject1 = a(paramInt).b(paramString, paramInt);
-    if ((localObject1 == null) || (((List)localObject1).isEmpty()))
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +51 -> 54
+    //   6: aload_1
+    //   7: invokevirtual 216	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()Ljava/lang/String;
+    //   10: aload_1
+    //   11: invokevirtual 219	com/tencent/mobileqq/activity/recent/RecentBaseData:a	()I
+    //   14: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   22: aload_1
+    //   23: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   26: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   29: astore_1
+    //   30: aload_1
+    //   31: ifnull +23 -> 54
+    //   34: aload_1
+    //   35: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
+    //   38: istore_2
+    //   39: iload_2
+    //   40: ifle +9 -> 49
+    //   43: iconst_1
+    //   44: istore_3
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: iload_3
+    //   48: ireturn
+    //   49: iconst_0
+    //   50: istore_3
+    //   51: goto -6 -> 45
+    //   54: iconst_0
+    //   55: istore_3
+    //   56: goto -11 -> 45
+    //   59: astore_1
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: aload_1
+    //   63: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	64	0	this	akpc
+    //   0	64	1	paramRecentBaseData	com.tencent.mobileqq.activity.recent.RecentBaseData
+    //   38	2	2	i	int
+    //   44	12	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	30	59	finally
+    //   34	39	59	finally
+  }
+  
+  /* Error */
+  protected int b(String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ifnull +33 -> 42
+    //   12: aload_0
+    //   13: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   16: aload_1
+    //   17: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   20: ifeq +22 -> 42
+    //   23: aload_0
+    //   24: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   27: aload_1
+    //   28: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   34: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
+    //   37: istore_2
+    //   38: aload_0
+    //   39: monitorexit
+    //   40: iload_2
+    //   41: ireturn
+    //   42: iconst_0
+    //   43: istore_2
+    //   44: goto -6 -> 38
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	akpc
+    //   0	52	1	paramString	String
+    //   0	52	2	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	8	47	finally
+    //   12	38	47	finally
+  }
+  
+  protected void b()
+  {
+    try
     {
-      if (a().b(paramString, paramInt) > 0) {
-        a(paramString, paramInt, paramLong, true);
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.clear();
+      if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a())) {
+        this.jdField_a_of_type_Aukp.a();
       }
       return;
     }
-    ConversationInfo localConversationInfo;
-    long l;
-    label216:
-    int i1;
-    if (((a(paramInt)) && (((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).shmsgseq <= paramLong)) || ((a(paramInt)) || (((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).time > paramLong) || (akpy.a(paramInt)) || (akpy.b(paramInt))))
+    finally
     {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    for (;;)
+    {
+      String str;
+      ConversationInfo localConversationInfo;
+      try
+      {
+        str = akpx.a(paramString, paramInt);
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(str)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str) != null))
+        {
+          localConversationInfo = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str);
+          if ((((ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str)).unreadCount > 0) && (!ajsd.aQ.equals(paramString)) && (!ajsd.aR.equals(paramString)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed return , updateinfo= " + localConversationInfo.toString());
+            }
+            return;
+          }
+          localConversationInfo.unreadCount += 1;
+          localConversationInfo.extInt3 = (((ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str)).extInt3 | 0x1);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed update=" + localConversationInfo.toString());
+          }
+          a(paramString, paramInt, localConversationInfo);
+          continue;
+        }
+        localConversationInfo = new ConversationInfo(paramString, paramInt, 0L, 0);
+      }
+      finally {}
+      localConversationInfo.extInt3 = 1;
+      localConversationInfo.unreadCount += 1;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.unread.Facade", 2, "updateLastReadSeq uin=" + paramString + ",type=" + paramInt + ",lastread=" + paramLong);
+        QLog.d("Q.unread.Proxy", 2, "insertOrUpdatePublicAccountRed insert=" + localConversationInfo.toString());
       }
-      localConversationInfo = a().a(paramString, paramInt);
-      if (localConversationInfo == null) {
-        break label1201;
-      }
-      if (!a(paramInt)) {
-        break label1195;
-      }
-      l = Math.max(paramLong, localConversationInfo.lastread);
-      i1 = localConversationInfo.unreadCount;
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(str, localConversationInfo);
+      b(paramString, paramInt, localConversationInfo);
     }
+  }
+  
+  protected void b(String paramString, int paramInt1, int paramInt2)
+  {
     for (;;)
     {
-      label256:
-      int i;
-      int n;
-      int m;
-      Object localObject2;
-      label314:
-      MessageRecord localMessageRecord;
-      if (a(paramInt))
+      Object localObject;
+      try
       {
-        paramLong = ((MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1)).shmsgseq - l;
-        i = (int)paramLong;
-        n = 0;
-        m = 0;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "updateLastReadSeq unread =" + i);
-        }
-        localObject2 = null;
-        Iterator localIterator = ((List)localObject1).iterator();
-        localObject1 = null;
-        if (!localIterator.hasNext()) {
-          break label1028;
-        }
-        localMessageRecord = (MessageRecord)localIterator.next();
-        if (!a(paramInt)) {
-          break label648;
-        }
-        paramLong = localMessageRecord.shmsgseq;
-        label349:
-        if (paramLong > l) {
-          break label1173;
-        }
-        if (!localMessageRecord.isLongMsg()) {
-          break label707;
-        }
-        if (localObject1 != null) {
-          break label1188;
-        }
-      }
-      label648:
-      label1163:
-      label1166:
-      label1173:
-      label1188:
-      for (Object localObject3 = new HashMap();; localObject3 = localObject1)
-      {
-        localObject1 = akpy.b(localMessageRecord);
-        Object localObject4;
-        int i2;
-        int j;
-        int k;
-        if (((Map)localObject3).containsKey(akpy.b(localMessageRecord)))
+        localObject = akpx.a(paramString, paramInt1);
+        if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject) != null))
         {
-          localObject4 = (Set)((Map)localObject3).get(localObject1);
-          localObject1 = localObject3;
-          i2 = i;
-          j = n;
-          k = m;
-          if (localObject4 != null)
+          localObject = (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(localObject);
+          if (((ConversationInfo)localObject).unreadMark != paramInt2)
           {
-            localObject1 = localObject3;
-            i2 = i;
-            j = n;
-            k = m;
-            if (!((Set)localObject4).isEmpty())
-            {
-              localObject1 = localObject3;
-              i2 = i;
-              j = n;
-              k = m;
-              if (!a(localMessageRecord, (Set)localObject4))
-              {
-                ((Set)localObject4).add(localMessageRecord);
-                k = m;
-                j = n;
-                i2 = i;
-                localObject1 = localObject3;
-              }
-            }
+            ((ConversationInfo)localObject).unreadMark = paramInt2;
+            QLog.d("Q.unread.Proxy", 1, "insertOrUpdateUnreadMark update=" + ((ConversationInfo)localObject).toString());
+            a(paramString, paramInt1, (ConversationInfo)localObject);
+            return;
           }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.unread.Proxy", 2, "insertOrUpdateUnreadMark nochange=" + ((ConversationInfo)localObject).toString());
+          continue;
         }
-        for (;;)
-        {
-          localObject3 = localObject2;
-          n = j;
-          m = k;
-          if (paramLong > l)
-          {
-            if (akpy.q(localMessageRecord.msgtype))
-            {
-              i = i2 - 1;
-              n = j;
-              m = k;
-              break label314;
-              if ((a().b(paramString, paramInt) > 0) || (a().c(paramString, paramInt) > 0) || (a().d(paramString, paramInt) > 0))
-              {
-                a(paramString, paramInt, paramLong, false);
-                return;
-              }
-              if ((paramLong <= 0L) || (a(paramString, paramInt) >= paramLong)) {
-                break;
-              }
-              a(paramString, paramInt, paramLong, false);
-              return;
-              paramLong = a(paramInt).a(paramString, paramInt, paramLong);
-              break label256;
-              paramLong = localMessageRecord.time;
-              break label349;
-              localObject4 = new HashSet();
-              ((Set)localObject4).add(localMessageRecord);
-              ((Map)localObject3).put(localObject1, localObject4);
-              localObject1 = localObject3;
-              i2 = i;
-              j = n;
-              k = m;
-              continue;
-              label707:
-              if ((!akpy.m(localMessageRecord.msgtype)) || (localMessageRecord.isread)) {
-                break label1173;
-              }
-              i2 = i + 1;
-              j = n + a(localMessageRecord);
-              k = m + b(localMessageRecord);
-              continue;
-            }
-            if ((a(paramInt)) && (aqva.a(localMessageRecord)))
-            {
-              i = i2 - 1;
-              n = j;
-              m = k;
-              break label314;
-            }
-            if (!localMessageRecord.isLongMsg()) {
-              break label1166;
-            }
-            if ((localObject1 != null) && (((Map)localObject1).containsKey(akpy.b(localMessageRecord))) && (a(localMessageRecord, (Set)((Map)localObject1).get(akpy.b(localMessageRecord)))))
-            {
-              i = i2 - 1;
-              n = j;
-              m = k;
-              break label314;
-            }
-            if (localObject2 != null) {
-              break label1163;
-            }
-            localObject2 = new HashSet();
-            label872:
-            localObject4 = akpy.b(localMessageRecord);
-            if (!akpy.c(localMessageRecord)) {
-              break label995;
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord))
-            {
-              i = i2 - 1;
-              n = j;
-              m = k;
-              break label314;
-            }
-            if (((Set)localObject2).contains(localObject4))
-            {
-              i = i2 - 1;
-              n = j;
-              m = k;
-              break label314;
-            }
-            ((Set)localObject2).add(localObject4);
-            localObject3 = localObject2;
-          }
-          for (;;)
-          {
-            n = j + a(localMessageRecord);
-            m = k + b(localMessageRecord);
-            localObject2 = localObject3;
-            i = i2;
-            break label314;
-            label995:
-            localObject3 = localObject2;
-            if (((Set)localObject2).contains(localObject4))
-            {
-              ((Set)localObject2).remove(localObject4);
-              localObject3 = localObject2;
-              continue;
-              if (QLog.isColorLevel())
-              {
-                localObject2 = new StringBuilder().append("updateLastReadSeq before=");
-                if (localConversationInfo == null) {
-                  break label1157;
-                }
-              }
-              for (localObject1 = localConversationInfo.toString();; localObject1 = null)
-              {
-                QLog.d("Q.unread.Facade", 2, (String)localObject1 + " , end unread=" + i + ", lastread=" + l + ",unreadGift=" + n + ",unreadRedPacket=" + m);
-                a().a(paramString, paramInt, l, i, n, m);
-                if ((i == i1) || (!akpy.c(paramInt))) {
-                  break;
-                }
-                d();
-                return;
-              }
-              break label872;
-              localObject3 = localObject2;
-            }
-          }
-          i2 = i;
-          j = n;
-          k = m;
-        }
+        localConversationInfo = new ConversationInfo(paramString, paramInt1, 0L, 0);
       }
-      label1028:
-      label1157:
-      label1195:
-      l = paramLong;
-      break label216;
-      label1201:
-      i1 = 0;
-      l = paramLong;
+      finally {}
+      ConversationInfo localConversationInfo;
+      localConversationInfo.unreadMark = paramInt2;
+      QLog.d("Q.unread.Proxy", 1, "insertOrUpdateUnreadMark insert=" + localConversationInfo.toString());
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.put(localObject, localConversationInfo);
+      b(paramString, paramInt1, localConversationInfo);
     }
   }
   
-  public boolean b(String paramString, int paramInt)
+  protected void b(String paramString, int paramInt, ConversationInfo paramConversationInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(paramString, paramInt) != null) {}
-    do
-    {
-      return true;
-      if (7000 == paramInt) {
-        return false;
-      }
-      if (!a(paramInt)) {
-        return a(paramString);
-      }
-    } while (asfb.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString));
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 3, null);
   }
   
-  public int c(String paramString, int paramInt)
+  /* Error */
+  protected int c(String paramString, int paramInt)
   {
-    return c(a().a(paramString, paramInt));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_1
+    //   8: aload_0
+    //   9: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   12: aload_1
+    //   13: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   16: ifeq +22 -> 38
+    //   19: aload_0
+    //   20: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   23: aload_1
+    //   24: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   27: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   30: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
+    //   33: istore_2
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: iload_2
+    //   37: ireturn
+    //   38: iconst_0
+    //   39: istore_2
+    //   40: goto -6 -> 34
+    //   43: astore_1
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_1
+    //   47: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	48	0	this	akpc
+    //   0	48	1	paramString	String
+    //   0	48	2	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	34	43	finally
   }
   
-  public void c()
+  /* Error */
+  protected void c()
   {
-    SharedPreferences localSharedPreferences = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1001);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    akpc localakpc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(ajsf.H, 1001).iterator();
-    int i = 0;
-    int j = 0;
-    Object localObject;
-    if (localIterator.hasNext())
+    // Byte code:
+    //   0: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 83
+    //   8: iconst_2
+    //   9: ldc_w 256
+    //   12: invokestatic 259	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_0
+    //   16: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   19: invokevirtual 222	com/tencent/commonsdk/cache/QQConcurrentHashMap:clear	()V
+    //   22: aload_0
+    //   23: invokespecial 261	akpc:a	()Laukp;
+    //   26: ldc 96
+    //   28: invokestatic 206	com/tencent/mobileqq/data/ConversationInfo:getConversationInfoTableName	()Ljava/lang/String;
+    //   31: iconst_0
+    //   32: aconst_null
+    //   33: aconst_null
+    //   34: aconst_null
+    //   35: aconst_null
+    //   36: aconst_null
+    //   37: aconst_null
+    //   38: aload_0
+    //   39: getfield 31	akpc:jdField_a_of_type_Aukz	Laukz;
+    //   42: invokevirtual 264	aukp:a	(Ljava/lang/Class;Ljava/lang/String;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Laukz;)Ljava/util/List;
+    //   45: astore_2
+    //   46: aload_0
+    //   47: getfield 62	akpc:jdField_a_of_type_Boolean	Z
+    //   50: ifeq +46 -> 96
+    //   53: aload_0
+    //   54: invokespecial 261	akpc:a	()Laukp;
+    //   57: ldc 96
+    //   59: invokevirtual 267	aukp:a	(Ljava/lang/Class;)Z
+    //   62: pop
+    //   63: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq +12 -> 78
+    //   69: ldc 83
+    //   71: iconst_2
+    //   72: ldc_w 269
+    //   75: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   78: invokestatic 275	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   81: invokestatic 280	axrn:a	(Landroid/content/Context;)Laxrn;
+    //   84: aconst_null
+    //   85: ldc_w 282
+    //   88: iconst_1
+    //   89: lconst_1
+    //   90: lconst_0
+    //   91: aconst_null
+    //   92: aconst_null
+    //   93: invokevirtual 285	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   96: aload_2
+    //   97: ifnonnull +4 -> 101
+    //   100: return
+    //   101: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: ifeq +34 -> 138
+    //   107: ldc 83
+    //   109: iconst_2
+    //   110: new 85	java/lang/StringBuilder
+    //   113: dup
+    //   114: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   117: ldc_w 287
+    //   120: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: aload_2
+    //   124: invokeinterface 292 1 0
+    //   129: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   138: iconst_0
+    //   139: istore_1
+    //   140: iload_1
+    //   141: aload_2
+    //   142: invokeinterface 292 1 0
+    //   147: if_icmpge -47 -> 100
+    //   150: aload_0
+    //   151: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   154: aload_2
+    //   155: iload_1
+    //   156: invokeinterface 298 2 0
+    //   161: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   164: getfield 301	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   167: aload_2
+    //   168: iload_1
+    //   169: invokeinterface 298 2 0
+    //   174: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   177: getfield 304	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   180: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   183: aload_2
+    //   184: iload_1
+    //   185: invokeinterface 298 2 0
+    //   190: invokevirtual 165	com/tencent/commonsdk/cache/QQConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   193: pop
+    //   194: iload_1
+    //   195: iconst_1
+    //   196: iadd
+    //   197: istore_1
+    //   198: goto -58 -> 140
+    //   201: astore_2
+    //   202: aload_2
+    //   203: athrow
+    //   204: astore_2
+    //   205: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	206	0	this	akpc
+    //   139	59	1	i	int
+    //   45	139	2	localList	java.util.List
+    //   201	2	2	localObject	Object
+    //   204	1	2	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   140	194	201	finally
+    //   140	194	204	java/lang/Exception
+  }
+  
+  protected void c(String paramString, int paramInt)
+  {
+    try
     {
-      localObject = (MessageRecord)localIterator.next();
-      if (localakpc.e(((MessageRecord)localObject).senderuin, 1001) > 0) {
-        break label289;
-      }
-      localObject = a(((MessageRecord)localObject).senderuin, 0, false);
-      if (!localSharedPreferences.contains((String)localObject)) {
-        break label289;
-      }
-      localEditor.remove((String)localObject);
-      i += 1;
-      j = 1;
-    }
-    label289:
-    for (;;)
-    {
-      break;
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(ajsf.aj, 1001).iterator();
-      while (localIterator.hasNext())
+      String str = akpx.a(paramString, paramInt);
+      if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.containsKey(str))
       {
-        localObject = (MessageRecord)localIterator.next();
-        if (localakpc.e(((MessageRecord)localObject).senderuin, 1001) <= 0)
-        {
-          localObject = a(((MessageRecord)localObject).senderuin, 0, false);
-          if (localSharedPreferences.contains((String)localObject))
-          {
-            localEditor.remove((String)localObject);
-            i += 1;
-            j = 1;
-          }
-        }
-      }
-      if (j != 0) {
-        localEditor.commit();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "clearMrSummary2, count=" + i);
+        c(paramString, paramInt, (ConversationInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(str));
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.remove(str);
       }
       return;
     }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
-  public void c(String paramString, int paramInt)
+  /* Error */
+  protected void c(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject1 = a(paramInt).a(paramString, paramInt);
-    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-      return;
-    }
-    int m = 0;
-    int i = 0;
-    int j = 0;
-    String str = "";
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("sp_key_nearby_clean_unread_time", 0L);
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("sp_key_say_hello_msg_clean_unread_time", 0L);
-    localObject1 = ((List)localObject1).iterator();
-    int k = 0;
-    label88:
-    Object localObject2;
-    int n;
-    int i1;
-    if (((Iterator)localObject1).hasNext())
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore 4
+    //   9: aload_0
+    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   13: aload 4
+    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   18: ifeq +54 -> 72
+    //   21: aload_0
+    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   25: aload 4
+    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: ifnull +42 -> 72
+    //   33: aload_0
+    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   37: aload 4
+    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   45: astore 4
+    //   47: aload_0
+    //   48: aload_1
+    //   49: iload_2
+    //   50: aload 4
+    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
+    //   55: iload_3
+    //   56: aload 4
+    //   58: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
+    //   61: aload 4
+    //   63: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
+    //   66: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: return
+    //   72: aload_0
+    //   73: aload_1
+    //   74: iload_2
+    //   75: lconst_0
+    //   76: iload_3
+    //   77: iconst_0
+    //   78: iconst_0
+    //   79: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   82: goto -13 -> 69
+    //   85: astore_1
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: aload_1
+    //   89: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	90	0	this	akpc
+    //   0	90	1	paramString	String
+    //   0	90	2	paramInt1	int
+    //   0	90	3	paramInt2	int
+    //   7	55	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	69	85	finally
+    //   72	82	85	finally
+  }
+  
+  protected void c(String paramString, int paramInt, ConversationInfo paramConversationInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(paramString, paramInt, ConversationInfo.getConversationInfoTableName(), paramConversationInfo, 5, null);
+  }
+  
+  /* Error */
+  protected int d(String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore_1
+    //   8: aload_0
+    //   9: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   12: aload_1
+    //   13: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   16: ifeq +22 -> 38
+    //   19: aload_0
+    //   20: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   23: aload_1
+    //   24: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   27: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   30: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
+    //   33: istore_2
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: iload_2
+    //   37: ireturn
+    //   38: iconst_0
+    //   39: istore_2
+    //   40: goto -6 -> 34
+    //   43: astore_1
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_1
+    //   47: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	48	0	this	akpc
+    //   0	48	1	paramString	String
+    //   0	48	2	paramInt	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	34	43	finally
+  }
+  
+  protected void d()
+  {
+    try
     {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      Iterator localIterator = a(((MessageRecord)localObject2).istroop).b(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop).iterator();
-      MessageRecord localMessageRecord;
-      while (localIterator.hasNext())
+      if (!this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.isEmpty())
       {
-        localMessageRecord = (MessageRecord)localIterator.next();
-        n = k;
-        if (localMessageRecord.time > l1)
+        Iterator localIterator = this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.values().iterator();
+        while (localIterator.hasNext())
         {
-          n = k;
-          if (!localMessageRecord.isread) {
-            n = k + 1;
-          }
-        }
-        k = n;
-        if (localMessageRecord.time > l2)
-        {
-          k = n;
-          if (!localMessageRecord.isread)
+          ConversationInfo localConversationInfo = (ConversationInfo)localIterator.next();
+          if ((localConversationInfo.unreadCount > 0) || (localConversationInfo.unreadMark > 0))
           {
-            m += 1;
-            k = n;
+            localConversationInfo.unreadCount = 0;
+            localConversationInfo.unreadGiftCount = 0;
+            localConversationInfo.unreadMark = 0;
+            localConversationInfo.extInt1 = 0;
+            localConversationInfo.extInt3 = (localConversationInfo.extInt3 >> 1 << 1);
+            a(localConversationInfo.uin, localConversationInfo.type, localConversationInfo);
           }
         }
       }
-      if (d(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) <= 0)
-      {
-        n = i;
-        i1 = j;
-        if (e(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) <= 0) {}
-      }
-      else
-      {
-        localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop, a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) * 2).iterator();
-        for (;;)
-        {
-          n = i;
-          i1 = j;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord.time > l2)
-          {
-            i += a(localMessageRecord);
-            j += b(localMessageRecord);
-          }
-        }
-      }
-      if ((i1 <= 0) || (!TextUtils.isEmpty(str))) {
-        break label626;
-      }
-      str = ((MessageRecord)localObject2).senderuin;
     }
-    label453:
-    label616:
-    label626:
-    for (;;)
-    {
-      i = n;
-      j = i1;
-      break label88;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("sp_key_sayhello_box_unread_count", k).commit();
-      if (e(paramString, paramInt) != j)
-      {
-        k = 1;
-        if ((a(paramString, paramInt) != m) || (d(paramString, paramInt) != i) || (k != 0))
-        {
-          localObject1 = a().a(paramString, paramInt);
-          localObject2 = a();
-          if (localObject1 != null) {
-            break label616;
-          }
-        }
-      }
-      for (l1 = 0L;; l1 = ((ConversationInfo)localObject1).lastread)
-      {
-        ((akpd)localObject2).a(paramString, paramInt, l1, m, i, j);
-        if ((akpy.u(paramInt)) && (k != 0)) {
-          a(a().a(paramString, paramInt), str);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.unread.Facade", 2, "calculateSayHelloBoxUnreadCount boxUin=" + paramString + ", unread=" + m + ", giftCount=" + i + ", redPacketCount=" + j);
-        return;
-        k = 0;
-        break label453;
-      }
-    }
+    finally {}
   }
   
-  public void c(String paramString, int paramInt1, int paramInt2)
+  /* Error */
+  protected void d(String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.unread.Facade", 2, "increaseUnread uin=" + paramString + ",type" + paramInt1 + ",count" + paramInt2);
-    }
-    a().d(paramString, paramInt1, paramInt2);
-    if (akpy.c(paramInt1)) {
-      d();
-    }
-  }
-  
-  public int d(String paramString, int paramInt)
-  {
-    return a().c(paramString, paramInt);
-  }
-  
-  public void d(String paramString, int paramInt)
-  {
-    Object localObject2 = a(paramInt).a(paramString, paramInt);
-    Object localObject1;
-    int i;
-    int j;
-    if (!amns.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true))
-    {
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new ArrayList();
-      }
-      localObject1 = ((List)localObject1).iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if (((MessageRecord)localObject2).isSelfConfessor()) {}
-        for (j = 1033;; j = 1034)
-        {
-          amns.a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId());
-          i = a(((MessageRecord)localObject2).senderuin, j, ((MessageRecord)localObject2).getConfessTopicId()) + i;
-          break;
-        }
-      }
-      if ((((amno)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269)).a() != null) && (amnk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.unread.Facade", 2, "calcConfessBoxUnreadCount box redpoint show +1");
-        }
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      if (e(paramString, paramInt) != 0)
-      {
-        j = 1;
-        if ((a(paramString, paramInt) != i) || (d(paramString, paramInt) != 0) || (j != 0))
-        {
-          localObject1 = a().a(paramString, paramInt);
-          localObject2 = a();
-          if (localObject1 != null) {
-            break label353;
-          }
-        }
-      }
-      label353:
-      for (long l = 0L;; l = ((ConversationInfo)localObject1).lastread)
-      {
-        ((akpd)localObject2).a(paramString, paramInt, l, i, 0, 0);
-        if ((akpy.u(paramInt)) && (j != 0)) {
-          a(a().a(paramString, paramInt), "");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.unread.Facade", 2, "calcConfessBoxUnreadCount boxUin=" + paramString + ", unread=" + i + ", giftCount=" + 0 + ", redPacketCount=" + 0);
-        }
-        return;
-        j = 0;
-        break;
-      }
-      continue;
-      i = 0;
-    }
-  }
-  
-  public int e(String paramString, int paramInt)
-  {
-    return a().d(paramString, paramInt);
-  }
-  
-  public void e(String paramString, int paramInt)
-  {
-    Object localObject1 = a(paramInt).a(paramString, paramInt);
-    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-      return;
-    }
-    int k = 0;
-    int i = 0;
-    int j = 0;
-    String str = "";
-    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("sp_key_nearby_clean_unread_time", 0L);
-    localObject1 = ((List)localObject1).iterator();
-    label67:
-    Object localObject2;
-    int m;
-    int n;
-    int i1;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      if (akpy.c(((MessageRecord)localObject2).senderuin))
-      {
-        c(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-        m = k;
-      }
-      MessageRecord localMessageRecord;
-      do
-      {
-        do
-        {
-          do
-          {
-            if (d(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) <= 0)
-            {
-              n = i;
-              i1 = j;
-              if (e(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) <= 0) {
-                break label410;
-              }
-            }
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop, a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) * 2).iterator();
-            for (;;)
-            {
-              n = i;
-              i1 = j;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-              if (localMessageRecord.time > l)
-              {
-                i += a(localMessageRecord);
-                j += b(localMessageRecord);
-              }
-            }
-            if ((akpy.d(((MessageRecord)localObject2).senderuin)) || (akpy.e(((MessageRecord)localObject2).senderuin))) {
-              break;
-            }
-            m = k;
-          } while (akpy.d((MessageRecord)localObject2));
-          m = k;
-        } while (((MessageRecord)localObject2).time <= l);
-        localObject3 = a(((MessageRecord)localObject2).istroop).b(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
-        m = k;
-      } while (localObject3 == null);
-      Object localObject3 = ((List)localObject3).iterator();
-      for (;;)
-      {
-        m = k;
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
-        localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-        if ((localMessageRecord.time > l) && (!localMessageRecord.isread)) {
-          k += 1;
-        }
-      }
-      label410:
-      if ((!TextUtils.isEmpty(str)) || (i1 <= 0)) {
-        break label631;
-      }
-      str = ((MessageRecord)localObject2).senderuin;
-    }
-    label458:
-    label621:
-    label631:
-    for (;;)
-    {
-      k = m;
-      i = n;
-      j = i1;
-      break label67;
-      if (e(paramString, paramInt) != j)
-      {
-        m = 1;
-        if ((a(paramString, paramInt) != k) || (d(paramString, paramInt) != i) || (m != 0))
-        {
-          localObject1 = a().a(paramString, paramInt);
-          localObject2 = a();
-          if (localObject1 != null) {
-            break label621;
-          }
-        }
-      }
-      for (l = 0L;; l = ((ConversationInfo)localObject1).lastread)
-      {
-        ((akpd)localObject2).a(paramString, paramInt, l, k, i, j);
-        if ((akpy.u(paramInt)) && (m != 0)) {
-          a(a().a(paramString, paramInt), str);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.unread.Facade", 2, "calculateMsgBoxUnreadCount boxUin=" + paramString + ", unread=" + k + ", giftCount=" + i + ", redPacketCount=" + j);
-        return;
-        m = 0;
-        break label458;
-      }
-    }
-  }
-  
-  public int f(String paramString, int paramInt)
-  {
-    return a().a(paramString, paramInt);
-  }
-  
-  public void onDestroy()
-  {
-    deleteObservers();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: iload_2
+    //   4: invokestatic 68	akpx:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   7: astore 4
+    //   9: aload_0
+    //   10: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   13: aload 4
+    //   15: invokevirtual 72	com/tencent/commonsdk/cache/QQConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   18: ifeq +60 -> 78
+    //   21: aload_0
+    //   22: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   25: aload 4
+    //   27: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: ifnull +48 -> 78
+    //   33: aload_0
+    //   34: getfield 38	akpc:jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap	Lcom/tencent/commonsdk/cache/QQConcurrentHashMap;
+    //   37: aload 4
+    //   39: invokevirtual 76	com/tencent/commonsdk/cache/QQConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 96	com/tencent/mobileqq/data/ConversationInfo
+    //   45: astore 4
+    //   47: aload_0
+    //   48: aload_1
+    //   49: iload_2
+    //   50: aload 4
+    //   52: getfield 119	com/tencent/mobileqq/data/ConversationInfo:lastread	J
+    //   55: aload 4
+    //   57: getfield 151	com/tencent/mobileqq/data/ConversationInfo:unreadCount	I
+    //   60: iload_3
+    //   61: iadd
+    //   62: aload 4
+    //   64: getfield 172	com/tencent/mobileqq/data/ConversationInfo:unreadGiftCount	I
+    //   67: aload 4
+    //   69: getfield 175	com/tencent/mobileqq/data/ConversationInfo:extInt1	I
+    //   72: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: return
+    //   78: aload_0
+    //   79: aload_1
+    //   80: iload_2
+    //   81: lconst_0
+    //   82: iload_3
+    //   83: iconst_0
+    //   84: iconst_0
+    //   85: invokevirtual 178	akpc:a	(Ljava/lang/String;IJIII)V
+    //   88: goto -13 -> 75
+    //   91: astore_1
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: aload_1
+    //   95: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	96	0	this	akpc
+    //   0	96	1	paramString	String
+    //   0	96	2	paramInt1	int
+    //   0	96	3	paramInt2	int
+    //   7	61	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	75	91	finally
+    //   78	88	91	finally
   }
 }
 

@@ -1,29 +1,13 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.os.MqqHandler;
-
-public class bing
-  implements bjob<bimx>
+class bing
+  implements xfa
 {
-  bing(bimz parambimz) {}
+  bing(bina parambina, Runnable paramRunnable) {}
   
-  public void a(@Nullable bimx parambimx)
+  public void a()
   {
-    Object localObject = bimt.a(parambimx);
-    parambimx = new LinkedList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      bimx localbimx = (bimx)((Iterator)localObject).next();
-      binj localbinj = new binj(null);
-      localbinj.a = binl.a(localbimx);
-      parambimx.add(localbinj);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambimx));
   }
 }
 

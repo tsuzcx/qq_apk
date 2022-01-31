@@ -1,35 +1,20 @@
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
-import java.io.IOException;
 
-public class bkyt
-  implements aysa
+final class bkyt
+  implements bkju<Boolean, bkjz>
 {
-  public bkyt(PtvTemplateManager.5 param5) {}
+  bkyt(bkyu parambkyu) {}
   
-  public void onResp(aysx paramaysx)
+  public Void a(Boolean paramBoolean, bkjz parambkjz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramaysx.c);
-    }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
+    if (parambkjz.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      nay.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = parambkjz.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.a.jdField_a_of_type_Long = parambkjz.jdField_a_of_type_Long;
+      QLog.e(bkyr.a(), 2, "MediaCodecThumbnailGenerator progress " + parambkjz.jdField_a_of_type_Long);
     }
-    catch (IOException paramaysx)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramaysx.printStackTrace();
-    }
+    return null;
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

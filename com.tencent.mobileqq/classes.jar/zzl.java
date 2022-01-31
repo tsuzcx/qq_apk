@@ -1,29 +1,25 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.kingkong.UpdateManager;
-import org.json.JSONObject;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class zzl
-  extends Handler
 {
-  public void handleMessage(Message paramMessage)
+  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
+  
+  public static String a(String paramString)
   {
-    paramMessage = paramMessage.getData();
-    try
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (str2 == null)
     {
-      String str = paramMessage.getString("PATCH_JSON_STRING");
-      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
-      paramMessage = zzk.a(new JSONObject(str));
-      if (paramMessage != null) {
-        UpdateManager.a(paramMessage, bool);
+      str2 = SecUtil.getFileMd5(paramString);
+      str1 = str2;
+      if (str2 != null)
+      {
+        a.put(paramString, str2);
+        str1 = str2;
       }
-      return;
     }
-    catch (Exception paramMessage)
-    {
-      zyz.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
-    }
+    return str1;
   }
 }
 

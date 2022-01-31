@@ -1,106 +1,76 @@
-import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
 import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class atlk
-  implements atkx
+class atlk
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  TextureVideoView a;
+  atlk(atlf paramatlf, String paramString1, String paramString2, String paramString3) {}
   
-  public atlk(Context paramContext)
+  public void OnDownloadCallback(String paramString)
   {
-    this.a = new TextureVideoView(paramContext.getApplicationContext());
-  }
-  
-  public int a()
-  {
-    if (this.a == null) {
-      return 0;
-    }
-    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
-  }
-  
-  public long a()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.seekTo((int)paramLong);
-  }
-  
-  public void a(atky paramatky)
-  {
-    this.a.setOnCompletionListener(new atll(this, paramatky));
-  }
-  
-  public void a(atkz paramatkz) {}
-  
-  public void a(atla paramatla)
-  {
-    this.a.setOnErrorListener(new atlm(this, paramatla, null));
-  }
-  
-  public void a(atlb paramatlb)
-  {
-    this.a.setOnInfoListener(new atln(this, paramatlb));
-  }
-  
-  public void a(atlc paramatlc)
-  {
-    TextureVideoView localTextureVideoView = this.a;
-    if (paramatlc == null) {}
-    for (paramatlc = null;; paramatlc = new atlo(this, paramatlc))
+    if (this.jdField_a_of_type_Atlf.a != null) {}
+    for (;;)
     {
-      localTextureVideoView.setOnPreparedListener(paramatlc);
-      return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString3;
-      if (sum.a(new File(paramString2))) {
-        paramString1 = paramString2;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+        }
+        if (i != 7) {
+          break label313;
+        }
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label312;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
+        }
+        this.jdField_a_of_type_Atlf.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        return;
       }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label312;
+        }
+      }
+      int i = paramString.getInt("errorCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
+      }
+      this.jdField_a_of_type_Atlf.a.a(this.b, this.c, i);
+      return;
+      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+      return;
+      label312:
+      label313:
+      do
+      {
+        long l1;
+        if (i == 2)
+        {
+          l1 = paramString.getLong("fileSize");
+          long l2 = paramString.getLong("offset");
+          this.jdField_a_of_type_Atlf.a.a(this.b, this.c, l1, l2);
+          return;
+        }
+        if (i == 1)
+        {
+          l1 = paramString.getLong("fileSize");
+          this.jdField_a_of_type_Atlf.a.a(this.b, this.c, l1);
+        }
+        return;
+        if (i == 4) {
+          break;
+        }
+      } while (i != 5);
     }
-    this.a.setVideoPath(paramString1);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public void b()
-  {
-    this.a.start();
-  }
-  
-  public void c()
-  {
-    this.a.pause();
-  }
-  
-  public void d()
-  {
-    b();
   }
 }
 

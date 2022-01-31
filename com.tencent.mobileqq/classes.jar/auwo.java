@@ -1,6 +1,11 @@
 public class auwo
 {
-  public static final String a = bbuv.a(new StringBuilder().append(ajsf.aW).append(".profilecard/").toString()) + "diyCardFonts/";
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

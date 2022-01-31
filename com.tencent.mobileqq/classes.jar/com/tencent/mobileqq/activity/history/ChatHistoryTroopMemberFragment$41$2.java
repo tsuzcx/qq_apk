@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import agak;
-import agau;
-import ajxn;
-import bbcp;
+import agai;
+import agas;
+import ajxl;
+import bbdd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -12,16 +12,16 @@ import mqq.os.MqqHandler;
 public class ChatHistoryTroopMemberFragment$41$2
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$2(agak paramagak, String paramString) {}
+  public ChatHistoryTroopMemberFragment$41$2(agai paramagai, String paramString) {}
   
   public void run()
   {
-    Object localObject = (ajxn)this.jdField_a_of_type_Agak.a.b.getManager(51);
-    TroopMemberInfo localTroopMemberInfo = bbcp.a().a(this.jdField_a_of_type_Agak.a.b, this.jdField_a_of_type_Agak.a.c, this.jdField_a_of_type_JavaLangString);
+    Object localObject = (ajxl)this.jdField_a_of_type_Agai.a.b.getManager(51);
+    TroopMemberInfo localTroopMemberInfo = bbdd.a().a(this.jdField_a_of_type_Agai.a.b, this.jdField_a_of_type_Agai.a.c, this.jdField_a_of_type_JavaLangString);
     if ((localTroopMemberInfo != null) && (localObject != null))
     {
-      localObject = this.jdField_a_of_type_Agak.a.a(localTroopMemberInfo, (ajxn)localObject);
-      ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.41.2.1(this, (agau)localObject));
+      localObject = this.jdField_a_of_type_Agai.a.a(localTroopMemberInfo, (ajxl)localObject);
+      ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.41.2.1(this, (agas)localObject));
     }
   }
 }

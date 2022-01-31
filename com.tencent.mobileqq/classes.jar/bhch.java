@@ -1,33 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class bhch
-  implements VipResourcesListener
+final class bhch
+  implements bhcp
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<ImageView> b;
-  
-  public bhch(Handler paramHandler, ImageView paramImageView, int paramInt, boolean paramBoolean)
+  public Collection<bhci> a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
-    this.b = new WeakReference(paramImageView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onFailed() {}
-  
-  public void onLoaded(Drawable paramDrawable)
-  {
-    Handler localHandler = (Handler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramDrawable != null) && (localHandler != null)) {
-      localHandler.post(new MsgPhotoView.WeakVipResourcesListener.1(this, paramDrawable));
+    synchronized ()
+    {
+      if (bhcg.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
+      }
+      Object localObject1 = new ArrayList(bhcg.a().values());
     }
   }
 }

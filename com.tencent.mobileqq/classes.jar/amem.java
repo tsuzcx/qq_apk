@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import java.io.IOException;
 
 public class amem
-  implements DialogInterface.OnClickListener
+  extends AsyncTask<Void, Void, String>
 {
   public amem(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected String a(Void... paramVarArgs)
   {
-    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        bbef.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695191) + " " + paramVarArgs;
+      }
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
+      return paramVarArgs;
+    }
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
+  }
+  
+  protected void a(String paramString)
+  {
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
   }
 }
 

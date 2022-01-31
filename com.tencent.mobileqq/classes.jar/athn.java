@@ -1,18 +1,38 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
 
 public final class athn
-  implements Parcelable.Creator<MedalInfo>
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  public MedalInfo a(Parcel paramParcel)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    return new MedalInfo(paramParcel);
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_d_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localLocalMediaInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.h = paramParcel.readInt();
+    localLocalMediaInfo.i = paramParcel.readInt();
+    localLocalMediaInfo.j = paramParcel.readInt();
+    localLocalMediaInfo.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramParcel.readInt());
+    localLocalMediaInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localLocalMediaInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localLocalMediaInfo.g = paramParcel.readInt();
+    localLocalMediaInfo.f = paramParcel.readInt();
+    return localLocalMediaInfo;
   }
   
-  public MedalInfo[] a(int paramInt)
+  public LocalMediaInfo[] a(int paramInt)
   {
-    return new MedalInfo[paramInt];
+    return new LocalMediaInfo[0];
   }
 }
 

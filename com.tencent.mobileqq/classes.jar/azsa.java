@@ -1,23 +1,24 @@
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import java.util.UUID;
 
 class azsa
-  implements akte
+  implements aktd
 {
-  azsa(azrx paramazrx, UUID paramUUID) {}
+  azsa(azrz paramazrz, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
   public void a(String paramString)
   {
-    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+    azst.d("TroopFileDataBaseProxy", azst.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
-    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
+    azst.d("TroopFileDataBaseProxy", azst.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
   }
   
   public void b(String paramString, int paramInt)
   {
-    azsr.d("TroopFileDataBaseProxy", azsr.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+    azst.d("TroopFileDataBaseProxy", azst.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
   }
 }
 

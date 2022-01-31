@@ -1,22 +1,10 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class bgjc
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public abstract interface bgjc
 {
-  bgjc(bgiz parambgiz) {}
-  
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgjc
  * JD-Core Version:    0.7.0.1
  */

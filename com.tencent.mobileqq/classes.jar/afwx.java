@@ -1,23 +1,23 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
 import java.lang.ref.WeakReference;
 
 public class afwx
   implements DialogInterface.OnCancelListener
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public afwx(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  afwx(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
       paramDialogInterface.dismiss();
     }
   }

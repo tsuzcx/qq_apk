@@ -1,19 +1,24 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import android.text.TextUtils;
 
-public class oxv
+class oxv
 {
-  public static oxu a(int paramInt, Context paramContext)
+  public String a;
+  public String b;
+  
+  oxv(String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new MediaGifView(paramContext);
-    case 0: 
-      return new MediaGifView(paramContext);
-    }
-    return new MediaVideoView(paramContext);
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
   }
 }
 

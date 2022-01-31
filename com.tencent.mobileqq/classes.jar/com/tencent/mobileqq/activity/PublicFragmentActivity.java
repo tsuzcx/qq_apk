@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abtu;
+import abtq;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ public class PublicFragmentActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    abtu.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    abtq.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
@@ -33,7 +33,7 @@ public class PublicFragmentActivity
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    abtu.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    abtq.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)

@@ -1,6 +1,6 @@
-public abstract interface auvu
+class auvu
 {
-  public abstract void a(String paramString);
+  private static final auvs a = new auvs(null);
 }
 
 

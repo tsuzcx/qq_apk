@@ -1,20 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bgnp
-  extends RemoteCommand
+  implements DialogInterface.OnClickListener
 {
-  bgnp(bgno parambgno, String paramString)
-  {
-    super(paramString);
-  }
+  bgnp(bgnk parambgnk) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bgno.a(this.a).a().c(paramBundle);
-    return null;
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 

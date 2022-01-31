@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bfng;
+import bfnx;
 import com.tencent.mobileqq.mini.cache.Storage;
 import com.tencent.mobileqq.mini.cache.Util;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
@@ -28,7 +28,7 @@ class StoragePlugin$4
       {
         localObject = ((Set)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(bfng.b((String)((Iterator)localObject).next()));
+          localHashSet.add(bfnx.b((String)((Iterator)localObject).next()));
         }
       }
       localException.put("keys", Util.setToJSONArray(localHashSet));

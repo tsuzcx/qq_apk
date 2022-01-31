@@ -1,7 +1,15 @@
+import android.graphics.Rect;
+import android.hardware.camera2.CameraCharacteristics;
+import java.io.File;
+
 public class axgb
 {
-  public int a = -1;
-  public axfy a;
+  public int a;
+  public aiai a;
+  public Rect a;
+  public CameraCharacteristics a;
+  public File a;
+  public boolean a;
 }
 
 

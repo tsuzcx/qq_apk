@@ -1,250 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.Calendar;
 
 public class qaa
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static int jdField_b_of_type_Int = -1;
-  private static String jdField_b_of_type_JavaLangString;
-  private static int jdField_c_of_type_Int = -1;
-  private static String jdField_c_of_type_JavaLangString;
+  public static int a;
+  private static qaa jdField_a_of_type_Qaa;
+  private SparseArray<qab> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
   static
   {
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static int a()
-  {
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    return jdField_a_of_type_Int;
+    jdField_a_of_type_Int = 1;
   }
   
   public static String a()
   {
-    return bbuv.a(ajsf.aW + ".readInjoy/refresh_res/");
+    Calendar localCalendar = Calendar.getInstance();
+    if (localCalendar == null) {
+      return "";
+    }
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    return String.valueOf(i) + j + k;
   }
   
-  public static String a(String paramString)
+  public static qaa a()
   {
-    return bbuv.a(ajsf.aW + ".readInjoy/refresh_res/" + paramString);
-  }
-  
-  public static List<String> a()
-  {
-    Object localObject3 = null;
-    Object localObject2;
-    if (jdField_a_of_type_JavaUtilList != null)
-    {
-      localObject2 = jdField_a_of_type_JavaUtilList;
-      return localObject2;
-    }
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    Object localObject1;
-    if ((jdField_a_of_type_Int == 1) || (jdField_a_of_type_Int == 3)) {
-      localObject1 = new File(c() + "refreshAnimatePictures" + "/");
-    }
-    for (;;)
-    {
-      localObject2 = localObject3;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = localObject3;
-      if (!((File)localObject1).exists()) {
-        break;
-      }
-      localObject2 = localObject3;
-      if (!((File)localObject1).isDirectory()) {
-        break;
-      }
-      localObject1 = ((File)localObject1).listFiles();
-      localObject2 = localObject3;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = new ArrayList();
-      int i = 0;
-      for (;;)
-      {
-        if (i < localObject1.length)
-        {
-          if (localObject1[i].getName().endsWith(".png")) {
-            ((List)localObject2).add(localObject1[i].getName());
-          }
-          i += 1;
-          continue;
-          if (jdField_a_of_type_Int != 2) {
-            break label206;
-          }
-          localObject1 = new File(c() + "refreshRandomPictures" + "/");
-          break;
-        }
-      }
-      jdField_a_of_type_JavaUtilList = (List)localObject2;
-      return localObject2;
-      label206:
-      localObject1 = null;
-    }
-  }
-  
-  public static void a()
-  {
-    JSONObject localJSONObject = null;
-    String str2 = null;
-    String str1 = str2;
-    Object localObject = localJSONObject;
     try
     {
-      File localFile = new File(c() + "refreshConfig.json");
-      str1 = str2;
-      localObject = localJSONObject;
-      if (localFile.exists())
-      {
-        str1 = str2;
-        localObject = localJSONObject;
-        str2 = bbdj.b(localFile);
-        str1 = str2;
-        localObject = str2;
-        localJSONObject = new JSONObject(str2);
-        if (localJSONObject != null)
-        {
-          str1 = str2;
-          localObject = str2;
-          jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
-          str1 = str2;
-          localObject = str2;
-          jdField_b_of_type_JavaLangString = localJSONObject.optString("voice_path");
-          str1 = str2;
-          localObject = str2;
-          jdField_c_of_type_JavaLangString = localJSONObject.optString("rain_animate_path");
-          str1 = str2;
-          localObject = str2;
-          jdField_b_of_type_Int = localJSONObject.optInt("refresh_sub_type");
-          str1 = str2;
-          localObject = str2;
-          jdField_c_of_type_Int = localJSONObject.optInt("refresh_length_type", 0);
-        }
+      if (jdField_a_of_type_Qaa == null) {
+        jdField_a_of_type_Qaa = new qaa();
       }
-      else
-      {
-        str1 = str2;
-        localObject = localJSONObject;
-        QLog.e("RefreshRes", 1, "parseRefreshParaJson error refreshConfig not exist ");
-        return;
-      }
+      qaa localqaa = jdField_a_of_type_Qaa;
+      return localqaa;
     }
-    catch (IOException localIOException)
+    finally {}
+  }
+  
+  private qab a(int paramInt)
+  {
+    qab localqab2 = (qab)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    qab localqab1 = localqab2;
+    if (localqab2 == null)
     {
-      localIOException.printStackTrace();
+      localqab1 = qac.a(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localqab1);
+    }
+    return localqab1;
+  }
+  
+  public String a(BaseArticleInfo paramBaseArticleInfo, int paramInt, TemplateBean paramTemplateBean, ViewBase paramViewBase)
+  {
+    qab localqab = a(paramInt);
+    if (localqab == null) {
+      return "";
+    }
+    return localqab.a(paramBaseArticleInfo, paramTemplateBean, paramViewBase);
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    qab localqab = a(paramInt);
+    if (localqab == null) {
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("RefreshRes", 1, "parseRefreshParaJson JSONException json = " + localIOException);
-      localJSONException.printStackTrace();
+    localqab.a(paramBaseArticleInfo, paramBoolean1, paramBoolean2);
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    qab localqab = a(paramInt);
+    if (localqab == null) {
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("RefreshRes", 1, localException, new Object[] { "parseRefreshParaJson error json = " + localJSONException });
-      localException.printStackTrace();
+    localqab.a(paramObject);
+  }
+  
+  public boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean, int paramInt)
+  {
+    qab localqab = a(paramInt);
+    if (localqab == null) {
+      return false;
     }
-  }
-  
-  static void a(String paramString, long paramLong)
-  {
-    if ((!jdField_a_of_type_JavaLangString.equals(paramString)) || (jdField_a_of_type_Long != paramLong))
-    {
-      jdField_a_of_type_JavaLangString = paramString;
-      b();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_c_of_type_Int < 0) {
-      a();
-    }
-    return jdField_c_of_type_Int > 0;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return aybq.a(new File(a(paramString)));
-  }
-  
-  public static int b()
-  {
-    return jdField_b_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return bbuv.a(ajsf.aW + ".readInjoy/refresh_res/" + jdField_a_of_type_JavaLangString);
-  }
-  
-  private static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RefreshRes", 2, "clearDataAfterSetRefreshInfo()");
-    }
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_c_of_type_JavaLangString = null;
-    jdField_a_of_type_JavaUtilList = null;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static String c()
-  {
-    return b() + "/" + "refresh" + "/";
-  }
-  
-  public static String d()
-  {
-    return c() + "refreshGuideConfig";
-  }
-  
-  public static String e()
-  {
-    if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      return c() + jdField_b_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public static String f()
-  {
-    if ((TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) {
-      return c() + jdField_c_of_type_JavaLangString;
-    }
-    return null;
+    return localqab.a(paramBaseArticleInfo, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qaa
  * JD-Core Version:    0.7.0.1
  */

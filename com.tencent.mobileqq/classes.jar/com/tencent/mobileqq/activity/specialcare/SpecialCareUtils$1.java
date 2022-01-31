@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import apzt;
-import aqaa;
+import apzv;
+import aqac;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,12 +12,12 @@ public final class SpecialCareUtils$1
   
   public void run()
   {
-    if (apzt.a().a())
+    if (apzv.a().a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SpecialCareUtils", 2, "preLoadSpecialCareSettingPage");
       }
-      aqaa.a(this.a, null);
+      aqac.a(this.a, null);
     }
   }
 }

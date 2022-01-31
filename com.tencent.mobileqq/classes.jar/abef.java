@@ -1,20 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
-public class abef
-  implements View.OnClickListener
+class abef
+  implements bfqj
 {
-  public abef(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView) {}
+  abef(abed paramabed, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ((bbqs)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getManager(235)).a(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.g(1);
-    axqw.b(null, "dc00898", "", "", "qq_vip", "0X800A615", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Abed.a = false;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      this.jdField_a_of_type_Abed.a((TextView)this.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 

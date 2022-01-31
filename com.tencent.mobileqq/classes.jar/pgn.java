@@ -1,34 +1,38 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class pgn
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  pgn(pgk parampgk, Container paramContainer) {}
+  pgn(pgm parampgm, ArticleInfo paramArticleInfo, Context paramContext) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
-      }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.isEmpty())) {
+      QLog.d("PackProteusItem", 1, "articleInfo is null or topicRecommendInfo is null or topicRecommendInfoList is empty");
     }
-    for (;;)
+    String str1;
+    do
     {
-      if ((i == 0) && (pce.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        pgk.a(this.jdField_a_of_type_Pgk, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-      }
       return;
-      i = 0;
-      continue;
-      i = 1;
+      str1 = ((qds)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b;
+    } while (TextUtils.isEmpty(str1));
+    String str2 = onh.a("1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if (shu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID)) {}
+    for (paramView = "0X800935C";; paramView = "0X8007BA3")
+    {
+      nol.a(null, "", paramView, paramView, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId, str2, false);
+      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+      paramView.putExtra("url", str1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
     }
   }
 }

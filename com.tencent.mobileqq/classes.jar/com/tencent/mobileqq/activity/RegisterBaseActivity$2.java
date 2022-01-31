@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abym;
-import bbcv;
-import bbgg;
+import abyi;
+import bbdj;
+import bbgu;
 
 public class RegisterBaseActivity$2
   implements Runnable
@@ -11,11 +11,11 @@ public class RegisterBaseActivity$2
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.this$0, 230);
-    localbbgg.setTitle(this.a);
-    localbbgg.setMessage(this.b);
-    localbbgg.setPositiveButton(2131719867, new abym(this));
-    localbbgg.show();
+    bbgu localbbgu = bbdj.a(this.this$0, 230);
+    localbbgu.setTitle(this.a);
+    localbbgu.setMessage(this.b);
+    localbbgu.setPositiveButton(2131719878, new abyi(this));
+    localbbgu.show();
   }
 }
 

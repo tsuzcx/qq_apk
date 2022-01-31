@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import altd;
+import altc;
 import android.content.Context;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -227,7 +227,7 @@ public class UpdateArkSo
     //   170: aload 9
     //   172: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   175: aload 10
-    //   177: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   177: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   180: aload 8
     //   182: invokevirtual 173	java/io/File:delete	()Z
     //   185: pop
@@ -256,7 +256,7 @@ public class UpdateArkSo
     //   232: aload_0
     //   233: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   236: aload_1
-    //   237: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   237: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   240: goto -103 -> 137
     //   243: astore_0
     //   244: ldc 2
@@ -279,7 +279,7 @@ public class UpdateArkSo
     //   277: aload 9
     //   279: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   282: aload 10
-    //   284: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   284: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   287: goto -107 -> 180
     //   290: new 91	java/lang/StringBuilder
     //   293: dup
@@ -295,7 +295,7 @@ public class UpdateArkSo
     //   313: aload_0
     //   314: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   317: aload_0
-    //   318: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   318: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   321: goto -184 -> 137
     //   324: astore_0
     //   325: new 91	java/lang/StringBuilder
@@ -313,7 +313,7 @@ public class UpdateArkSo
     //   349: aload_0
     //   350: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   353: aload_1
-    //   354: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   354: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   357: goto -220 -> 137
     // Local variable table:
     //   start	length	slot	name	signature
@@ -385,7 +385,7 @@ public class UpdateArkSo
                 QLog.d("ArkApp.ArkEngineExtract", 2, new Object[] { "extract.so.", paramString.getName(), ".spend time.", Long.valueOf(l2 - l1) });
               }
               if (paramContext != null) {
-                altd.a(paramContext);
+                altc.a(paramContext);
               }
               return paramBoolean;
             }
@@ -661,7 +661,7 @@ public class UpdateArkSo
     //   247: aload_0
     //   248: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   251: aload_1
-    //   252: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   252: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   255: iconst_0
     //   256: istore 9
     //   258: goto -44 -> 214
@@ -681,7 +681,7 @@ public class UpdateArkSo
     //   291: aload 12
     //   293: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   296: aload 13
-    //   298: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   298: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   301: aload_0
     //   302: aload_1
     //   303: iconst_1
@@ -758,7 +758,7 @@ public class UpdateArkSo
     //   435: ldc_w 316
     //   438: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   441: ldc_w 316
-    //   444: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   444: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   447: iconst_0
     //   448: istore 9
     //   450: goto -236 -> 214
@@ -778,7 +778,7 @@ public class UpdateArkSo
     //   480: aload_0
     //   481: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   484: aload_1
-    //   485: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   485: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   488: goto -41 -> 447
     //   491: astore_0
     //   492: new 91	java/lang/StringBuilder
@@ -796,7 +796,7 @@ public class UpdateArkSo
     //   518: aload_0
     //   519: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   522: aload_1
-    //   523: invokestatic 223	altd:a	(Ljava/lang/String;)V
+    //   523: invokestatic 223	altc:a	(Ljava/lang/String;)V
     //   526: goto -79 -> 447
     // Local variable table:
     //   start	length	slot	name	signature
@@ -863,7 +863,7 @@ public class UpdateArkSo
           else
           {
             if (paramContext != null) {
-              altd.a(paramContext);
+              altc.a(paramContext);
             }
             return bool;
           }

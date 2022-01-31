@@ -1,76 +1,21 @@
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public abstract class syv<Respond extends syq>
+public class syv
+  extends Job<Object, Object, Object>
 {
-  public int a;
-  public long a;
-  public syw<Respond> a;
-  public int b;
-  private int c;
-  
-  public syv()
+  public syv(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, sys paramsys)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 2;
+    super(paramString);
   }
   
-  @NonNull
-  public static List<ByteStringMicro> a(List<String> paramList)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(ByteStringMicro.copyFromUtf8((String)paramList.next()));
-    }
-    return localArrayList;
-  }
-  
-  public abstract String a();
-  
-  public String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public abstract syq a(byte[] paramArrayOfByte);
-  
-  public syw<Respond> a()
-  {
-    return this.jdField_a_of_type_Syw;
-  }
-  
-  public void a(syw<Respond> paramsyw)
-  {
-    this.jdField_a_of_type_Syw = paramsyw;
-  }
-  
-  protected abstract byte[] a();
-  
-  public int b()
-  {
-    int i = this.c;
-    String str = a();
-    int j = i;
-    if (i == 0)
-    {
-      j = i;
-      if (str.length() > 0)
-      {
-        j = 0;
-        while (j < str.length())
-        {
-          i = i * 31 + str.charAt(j);
-          j += 1;
-        }
-        this.c = i;
-        j = i;
-      }
-    }
-    return j;
+    this.jdField_a_of_type_Sys.a().a(880001, "no network", null);
+    return null;
   }
 }
 

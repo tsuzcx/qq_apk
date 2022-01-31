@@ -1,96 +1,27 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qqfav.QfavLeakHelper.2.1;
 
-public class bgqd
-  extends awry
+public final class bgqd
+  implements View.OnClickListener
 {
-  private BitmapFactory.Options a = new BitmapFactory.Options();
-  
-  public bgqd(baxk parambaxk)
+  public void onClick(View paramView)
   {
-    super(parambaxk);
-  }
-  
-  public void a(awog paramawog, awwp paramawwp)
-  {
-    paramawwp.a().setMaxWidth(800);
-    bgqc localbgqc = (bgqc)paramawog;
-    ImageView localImageView = paramawwp.b();
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if ((5 == localbgqc.f) || (localbgqc.jdField_a_of_type_Boolean))
-    {
-      localImageView.setImageResource(2130843369);
-      if (localbgqc.jdField_d_of_type_JavaLangString == null) {
-        break label186;
-      }
-      paramawog = URLDrawable.URLDrawableOptions.obtain();
-      paramawog.mRequestHeight = paramawwp.b().getHeight();
-      paramawog.mRequestWidth = paramawwp.b().getWidth();
-      if ((5 != localbgqc.f) && (!localbgqc.jdField_a_of_type_Boolean)) {
-        break label136;
-      }
-      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localbgqc.jdField_d_of_type_JavaLangString, paramawog));
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    label136:
-    do
-    {
-      return;
-      localImageView.setImageDrawable(null);
-      localImageView.setBackgroundDrawable(null);
-      break;
-      try
-      {
-        localImageView.setImageDrawable(URLDrawable.getDrawable(localbgqc.jdField_d_of_type_JavaLangString, paramawog));
-        return;
-      }
-      catch (Exception paramawog) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramawog.toString());
-    return;
-    label186:
-    if (localbgqc.jdField_d_of_type_Int != 0)
-    {
-      if ((5 == localbgqc.f) || (localbgqc.jdField_a_of_type_Boolean))
-      {
-        localImageView.setBackgroundResource(localbgqc.jdField_d_of_type_Int);
-        return;
-      }
-      localImageView.setImageResource(localbgqc.jdField_d_of_type_Int);
-      return;
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709609) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("Qfav-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new QfavLeakHelper.2.1(this));
     }
-    if (localbgqc.jdField_a_of_type_ArrayOfByte != null)
-    {
-      this.a.inJustDecodeBounds = true;
-      BitmapFactory.decodeByteArray(localbgqc.jdField_a_of_type_ArrayOfByte, 0, localbgqc.jdField_a_of_type_ArrayOfByte.length, this.a);
-      this.a.inJustDecodeBounds = false;
-      this.a.inSampleSize = (this.a.outWidth / paramawwp.b().getMeasuredWidth());
-      try
-      {
-        paramawog = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localbgqc.jdField_a_of_type_ArrayOfByte, 0, localbgqc.jdField_a_of_type_ArrayOfByte.length, this.a));
-        if ((5 == localbgqc.f) || (localbgqc.jdField_a_of_type_Boolean))
-        {
-          localImageView.setBackgroundDrawable(paramawog);
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramawog)
-      {
-        for (;;)
-        {
-          paramawog = null;
-        }
-        localImageView.setImageDrawable(paramawog);
-        return;
-      }
-    }
-    super.a(paramawog, paramawwp);
   }
 }
 

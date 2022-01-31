@@ -1,31 +1,22 @@
-import com.tencent.av.app.VideoAppInterface;
-import java.util.Observable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class lgk
-  extends Observable
+class lgk
+  extends BroadcastReceiver
 {
-  VideoAppInterface a = null;
+  lgk(lgj paramlgj) {}
   
-  public lgk(VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramVideoAppInterface != null) {
-      this.a = paramVideoAppInterface;
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE")) {
+      this.a.d(paramContext);
     }
-  }
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    try
-    {
-      super.setChanged();
-      super.notifyObservers(paramArrayOfObject);
+    while (!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) {
       return;
     }
-    finally
-    {
-      paramArrayOfObject = finally;
-      throw paramArrayOfObject;
-    }
+    this.a.d(paramContext);
   }
 }
 

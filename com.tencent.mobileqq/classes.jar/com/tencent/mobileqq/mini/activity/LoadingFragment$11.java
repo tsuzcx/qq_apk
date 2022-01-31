@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajyc;
+import ajya;
 import android.os.Handler;
 import android.os.Message;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -29,10 +29,10 @@ class LoadingFragment$11
       if (str != null) {}
       for (;;)
       {
-        bcpw.a(localBaseApplication, 1, str, 1).a();
+        bcql.a(localBaseApplication, 1, str, 1).a();
         this.this$0.uiHandler.postDelayed(new LoadingFragment.11.1(this), 1000L);
         return;
-        str = ajyc.a(2131706233);
+        str = ajya.a(2131706244);
       }
       return;
     }

@@ -1,105 +1,73 @@
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
 
 public class aqem
-  extends aqbc
+  extends aqes
 {
-  AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-  AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+  private boolean o;
   
   public aqem(Intent paramIntent)
   {
     super(paramIntent);
   }
   
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
   public boolean a()
   {
     super.a();
-    AbsStructMsg localAbsStructMsg = axuy.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = axuy.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
-    if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
+    this.b = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
+    this.o = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("is_ec_live_share", false);
+    if ((this.b > 0L) && (!this.o)) {
+      xmq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.b, 0L, this.jdField_a_of_type_MqqObserverBusinessObserver);
     }
+    G();
+    Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
+    ((Bundle)localObject).putInt("req_type", 1);
+    localObject = axva.a((Bundle)localObject);
+    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localObject);
+    }
+    H();
     return true;
   }
   
-  protected boolean a(bbgg parambbgg)
+  protected boolean a(bbgu parambbgu)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      parambbgg.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
-    }
-    for (;;)
+    if (this.o)
     {
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.setMargins(actn.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, actn.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), actn.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
-        }
-        parambbgg.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), localLayoutParams);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_name");
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("struct_share_key_source_icon");
     }
+    if ((parambbgu != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
+    {
+      this.jdField_a_of_type_Aqfb = new aqfb(this, this.jdField_a_of_type_AndroidAppActivity);
+      parambbgu.addView(this.jdField_a_of_type_Aqfb.a());
+      parambbgu.adjustMessageTopBottomMargin(0.0F, 10.0F);
+      a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, parambbgu);
+    }
+    return false;
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_Bbgu.setMessage("");
+  }
+  
+  protected boolean c()
+  {
+    I();
+    return true;
   }
   
   protected void d()
   {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
-    if (i == 63) {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    if (this.d)
     {
-      super.d();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
-        } else {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
-        }
-      }
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005793", "0X8005793", 0, 0, "", "", "", "");
+      this.d = false;
     }
-  }
-  
-  protected void r()
-  {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
-    if (i == 63) {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      super.r();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
-        } else {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
-        }
-      }
-    }
+    super.d();
   }
 }
 

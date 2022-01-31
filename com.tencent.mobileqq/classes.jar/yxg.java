@@ -1,79 +1,36 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class yxg
-  implements yxh
+  implements yso
 {
-  private int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 0;
-    }
-    if (paramInt == 2) {
-      return 8;
-    }
-    return -2147483648;
-  }
+  yxg(yxf paramyxf) {}
   
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public void onResponse(ysn paramysn)
   {
-    Object localObject = null;
-    if (paramywn != null) {}
-    GdtHandler.Options localOptions;
-    for (Activity localActivity = paramywn.a();; localActivity = null)
-    {
-      localOptions = new GdtHandler.Options();
-      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
-      if ((paramywn != null) && (localActivity != null) && (bool)) {
-        break;
-      }
-      yxs.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
-      return true;
+    if ((paramysn == null) || (paramysn.a() == null) || (yxf.a(this.a) == null) || (yxf.a(this.a).get() == null)) {
+      return;
     }
-    for (;;)
+    String str = (String)yxf.a(this.a).get(paramysn);
+    yxf.a(this.a).remove(paramysn);
+    Object localObject1 = yxo.a(paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+    Object localObject2 = yxo.a(paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+    paramysn = new JSONObject();
+    try
     {
-      try
+      paramysn.put("request", localObject1);
+      paramysn.put("response", localObject2);
+      ((ywk)yxf.a(this.a).get()).callJs(str, new String[] { paramysn.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        yxs.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
-        int i = a(paramVarArgs.getJSONObject("options").optInt("orientation"));
-        paramVarArgs = paramywn.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          paramVarArgs = new GdtInterstitialParams();
-          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
-          paramVarArgs.jdField_a_of_type_Int = i;
-          paramVarArgs.jdField_a_of_type_Boolean = true;
-          GdtInterstitialFragment.a(localActivity, paramVarArgs);
-          paramywn.callJs(paramString, null);
-          paramString = localObject;
-          if (paramywn != null) {
-            paramString = paramywn.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
+        localJSONException.printStackTrace();
       }
-      catch (Throwable paramywn)
-      {
-        yxs.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramywn);
-        return true;
-      }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
   }
 }

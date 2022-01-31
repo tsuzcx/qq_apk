@@ -1,139 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.text.TextPaint;
 
 public class bjin
+  extends bjgx
 {
-  public bjiq a(String paramString)
+  protected float a;
+  protected String a;
+  
+  public bjin(int paramInt1, int paramInt2, TextPaint paramTextPaint, String paramString, RectF paramRectF, float paramFloat)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip TextUtils.isEmpty(config) return");
-      }
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        if (!((JSONObject)localObject).has("pendantMD5")) {
-          break label142;
-        }
-        paramString = ((JSONObject)localObject).getString("pendantMD5");
-        if (!((JSONObject)localObject).has("pendantUrl")) {
-          break label136;
-        }
-        str = ((JSONObject)localObject).getString("pendantUrl");
-        if (!((JSONObject)localObject).has("pendantName")) {
-          break label130;
-        }
-        localObject = ((JSONObject)localObject).getString("pendantName");
-        if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str)))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.w("ConfigSimplifier_PTV", 2, "zipMd5 or zipUrl empty return!");
-          return null;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      paramString = new bjiq((String)localObject, str, paramString);
-      return paramString;
-      label130:
-      Object localObject = "";
-      continue;
-      label136:
-      String str = "";
-      continue;
-      label142:
-      paramString = "";
-    }
+    super(paramInt1, paramInt2, paramTextPaint, paramRectF);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public bjiq a(String paramString1, String paramString2, String paramString3, bjip parambjip)
+  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    bjiq localbjiq = a(paramString1);
-    if (localbjiq == null) {
-      paramString1 = null;
+    if (paramCanvas == null) {
+      return;
     }
-    do
-    {
-      for (;;)
-      {
-        return paramString1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ConfigSimplifier_PTV", 2, "parseConfigZip md5=" + localbjiq.jdField_c_of_type_JavaLangString + " url=" + localbjiq.b + " name=" + localbjiq.jdField_a_of_type_JavaLangString);
-        }
-        try
-        {
-          paramString1 = paramString2 + File.separator;
-          String str = paramString2 + File.separator + localbjiq.jdField_a_of_type_JavaLangString;
-          File localFile = new File(paramString2, paramString3);
-          if (localFile.exists())
-          {
-            localFile.delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip file.delete()");
-            }
-          }
-          localObject = new File(str);
-          if (((File)localObject).exists())
-          {
-            ((File)localObject).delete();
-            if (QLog.isColorLevel()) {
-              QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip filejson.delete()");
-            }
-          }
-          localObject = new ayrv();
-          ((ayrv)localObject).jdField_a_of_type_Aysa = new bjio(this, paramString2, paramString3, localbjiq, paramString1, str, parambjip);
-          ((ayrv)localObject).jdField_a_of_type_JavaLangString = localbjiq.b;
-          ((ayrv)localObject).jdField_a_of_type_Int = 0;
-          ((ayrv)localObject).jdField_c_of_type_JavaLangString = localFile.getPath();
-          ((ayrv)localObject).jdField_c_of_type_Int = bbev.a(aysy.a().a());
-        }
-        catch (Exception paramString2)
-        {
-          try
-          {
-            Object localObject;
-            paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-            if (QQAppInterface.class.isInstance(paramString1))
-            {
-              ((QQAppInterface)paramString1).getNetEngine(0).a((aysw)localObject);
-              paramString1 = localbjiq;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.i("ConfigSimplifier", 2, "startDownloadFilterConfigZip, url: " + localbjiq.b);
-              return localbjiq;
-            }
-            paramString1 = localbjiq;
-            if (bizu.a() == null) {
-              continue;
-            }
-            bizu.a().getNetEngine(0).a((aysw)localObject);
-            return localbjiq;
-          }
-          catch (Exception paramString1) {}
-          paramString2 = paramString2;
-          paramString1 = localbjiq;
-        }
-      }
-    } while (!QLog.isColorLevel());
-    paramString2.printStackTrace();
-    return localbjiq;
-    return localbjiq;
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_JavaLangString.length();
+    float f1 = paramInt1;
+    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
+    float f3 = paramInt2;
+    float f4 = this.jdField_a_of_type_Float;
+    paramCanvas.drawText(str, 0, i, f2 + f1, this.jdField_a_of_type_AndroidGraphicsRectF.top + (f3 + f4), this.jdField_a_of_type_AndroidTextTextPaint);
+  }
+  
+  public void a(Canvas paramCanvas, bjgv parambjgv, int paramInt1, int paramInt2)
+  {
+    parambjgv.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRectF, paramInt1, paramInt2);
   }
 }
 

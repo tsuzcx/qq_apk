@@ -1,22 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class yyh
+  implements BusinessObserver
 {
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    yye.a("http://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
-  }
+  protected void a(int paramInt, String paramString1, String paramString2) {}
   
-  public static void a(GdtAd paramGdtAd, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramGdtAd.getUrlForEffect()))
+    if (100 == paramInt)
     {
-      yxs.d("GdtTraceReporter", String.format("report %d error", new Object[] { Integer.valueOf(paramInt) }));
+      if (QLog.isColorLevel()) {
+        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
+      }
+      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    yxs.b("GdtTraceReporter", String.format("report %d", new Object[] { Integer.valueOf(paramInt) }));
-    yye.a(paramGdtAd.getUrlForEffect().replaceAll("__CLICK_ID__", paramGdtAd.getTraceId()).replaceAll("__ACTION_ID__", String.valueOf(paramInt)));
+    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
   }
 }
 

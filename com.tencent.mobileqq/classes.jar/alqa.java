@@ -1,18 +1,139 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.EntryModel;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class alqa
-  extends BroadcastReceiver
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private static HashMap<String, alqd> a = new HashMap();
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
+    a.put("qq", new alqf());
+    a.put("tel", new alqh());
+    a.put("app", new alqb());
+    a.put("mqzone", new alqg());
+    a.put("miniapp", new alqe());
+  }
+  
+  public static List<Object> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject2 = paramJSONArray.get(i);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localArrayList.add(localObject1);
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
     }
-    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
+    return localArrayList;
+  }
+  
+  public static Map<String, Object> a(JSONObject paramJSONObject)
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = paramJSONObject.get(str);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localHashMap.put(str, localObject1);
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
+    Object localObject = paramString1.split(":");
+    if (localObject.length <= 1) {
+      return false;
+    }
+    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
+      try
+      {
+        i = Integer.parseInt((String)bfnx.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
+        paramString2 = b();
+        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
+        return true;
+      }
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
+          int i = 2059;
+        }
+      }
+    }
+    localObject = localObject[0];
+    alqd localalqd = (alqd)a.get(localObject);
+    if (localalqd == null) {
+      return false;
+    }
+    localObject = paramString1.substring(((String)localObject).length() + 1);
+    paramString1 = (String)localObject;
+    if (((String)localObject).startsWith("//")) {
+      paramString1 = ((String)localObject).substring(2);
+    }
+    localalqd.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
+    return true;
+  }
+  
+  private static EntryModel b()
+  {
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = (FragmentActivity)localObject;
+      if (((FragmentActivity)localObject).getChatFragment() != null)
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if ((localObject instanceof TroopChatPie)) {
+          return ((BaseChatPie)localObject).a();
+        }
+      }
+    }
+    return null;
   }
 }
 

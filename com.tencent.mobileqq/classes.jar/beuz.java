@@ -1,6 +1,17 @@
-abstract interface beuz
+import android.os.Handler;
+import com.tencent.mobileqq.triton.sdk.FPSCallback;
+import com.tencent.qqmini.sdk.minigame.GameRuntime.1.1;
+
+public class beuz
+  implements FPSCallback
 {
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  beuz(beuy parambeuy) {}
+  
+  public void onFPSChange(float paramFloat)
+  {
+    beuy.a(this.a).a(paramFloat);
+    beuy.a(this.a).post(new GameRuntime.1.1(this, paramFloat));
+  }
 }
 
 

@@ -1,22 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.widget.DynamicGridView;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.ProxyDrawable;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bfqi
-  extends AnimatorListenerAdapter
+  extends ProxyDrawable
 {
-  public bfqi(DynamicGridView paramDynamicGridView) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bfqi(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
   {
-    DynamicGridView.b(this.a, false);
-    DynamicGridView.a(this.a);
+    super(paramDrawable);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(int paramInt1, int paramInt2)
   {
-    DynamicGridView.b(this.a, true);
-    DynamicGridView.a(this.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    if (this.b > this.jdField_a_of_type_Int)
+    {
+      int i = paramCanvas.save();
+      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
+      this.mCurrDrawable.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+    }
   }
 }
 

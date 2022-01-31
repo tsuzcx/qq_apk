@@ -1,35 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oct
-  implements quk
+  implements ViewBase.IBuilder
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
-  
-  public oct(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
-  }
-  
-  public List<qul> a(int paramInt, boolean paramBoolean)
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    ArrayList localArrayList = new ArrayList();
-    if (localReadInJoyArticleBottomVideoView != null) {
-      localArrayList.add(new qul(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
-    }
-    return localArrayList;
-  }
-  
-  public boolean a()
-  {
-    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (localReadInJoyArticleBottomVideoView == null) {
-      return false;
-    }
-    return bbev.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
+    return new ocs(paramVafContext);
   }
 }
 

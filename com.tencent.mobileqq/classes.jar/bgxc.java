@@ -1,54 +1,46 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bgxc
-  extends QzoneExternalRequest
+final class bgxc
+  implements WtTicketPromise
 {
-  mobile_get_qzone_public_msg_req a;
+  bgxc(bgxd parambgxd, String paramString) {}
   
-  public bgxc(long paramLong, Map<String, String> paramMap)
+  public void Done(Ticket paramTicket)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
-  }
-  
-  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+    if (this.jdField_a_of_type_Bgxd != null) {
+      this.jdField_a_of_type_Bgxd.a(0, new String[] { bgxb.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
   }
   
-  public String getCmdString()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return "QzoneNewService." + uniKey();
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Bgxd != null) {
+      this.jdField_a_of_type_Bgxd.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
   
-  public JceStruct getReq()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getQzonePublicMsg";
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Bgxd != null) {
+      this.jdField_a_of_type_Bgxd.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxc
  * JD-Core Version:    0.7.0.1
  */

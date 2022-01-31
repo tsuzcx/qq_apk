@@ -1,44 +1,38 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
-public abstract class bgpk
-  extends OnPluginInstallListener.Stub
+class bgpk
+  extends RemoteCommand
 {
-  public Bundle a;
-  
-  public bgpk(Bundle paramBundle)
+  bgpk(bgpj parambgpj, String paramString)
   {
-    this.a = paramBundle;
+    super(paramString);
   }
   
-  public void a()
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    bgpf.a(BaseApplication.getContext(), this);
-  }
-  
-  public abstract void a(boolean paramBoolean, Bundle paramBundle);
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    a(false, this.a);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
+    if (paramBundle == null) {
+      paramBundle = null;
+    }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = bgpj.a(this.a, paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgpk
  * JD-Core Version:    0.7.0.1
  */

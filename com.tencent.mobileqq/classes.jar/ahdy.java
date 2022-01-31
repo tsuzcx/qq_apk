@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
 public class ahdy
-  implements aheb
+  implements ahex
 {
-  public ahdy(DoodleLayout paramDoodleLayout) {}
+  public ahdy(DoodleView paramDoodleView) {}
   
   public void a()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
     }
   }
   
   public void b()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
     }
   }
 }

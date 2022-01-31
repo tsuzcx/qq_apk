@@ -1,27 +1,12 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.text.EditTextPreView;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class bkce
-  implements bkog
+final class bkce
+  implements FilenameFilter
 {
-  bkce(bkbv parambkbv) {}
-  
-  public void a(@NonNull bkon parambkon)
+  public boolean accept(File paramFile, String paramString)
   {
-    switch (parambkon.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    int i = parambkon.b;
-    this.a.jdField_a_of_type_Bkbf.jdField_a_of_type_Int = i;
-    this.a.c = i;
-    if ((this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem instanceof bjhs))
-    {
-      ((bjhs)this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).a(i);
-      this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
-    }
-    vel.a("video_edit_text", "clk_color", 0, 0, new String[] { (String)tax.a().a("EditVideoDTextFace.mSrcFrom"), parambkon.jdField_a_of_type_JavaLangString, "", "" });
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
   }
 }
 

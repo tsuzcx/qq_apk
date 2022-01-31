@@ -1,28 +1,48 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class vzp
-  implements DownloadParams.DecodeHandler
+class vzp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public static ConcurrentHashMap<vzn, Boolean> a;
+  private static volatile vzp a;
+  
+  static
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static vzp a()
+  {
+    if (jdField_a_of_type_Vzp == null) {}
+    try
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return vzo.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      if (jdField_a_of_type_Vzp == null) {
+        jdField_a_of_type_Vzp = new vzp();
+      }
+      return jdField_a_of_type_Vzp;
+    }
+    finally {}
+  }
+  
+  public static void a(URLDrawable paramURLDrawable, String paramString)
+  {
+    paramString = new vzn(a(), paramURLDrawable, paramString);
+    paramURLDrawable.setDownloadListener(paramString);
+    paramURLDrawable.setURLDrawableListener(paramString);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(true));
+  }
+  
+  public void a(@NonNull vzn paramvzn)
+  {
+    boolean bool = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramvzn);
+    ved.a("Q.qqstory.UIUtils", "remove(), contains %b", Boolean.valueOf(bool));
+    if (!bool) {
+      axpu.a(vzg.a(ajya.a(2131715877), null), "Story.UIUtils.monitor " + paramvzn.toString());
+    }
+    paramvzn.a.setDownloadListener(null);
+    paramvzn.a.setURLDrawableListener(null);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramvzn);
   }
 }
 

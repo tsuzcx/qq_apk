@@ -1,27 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
-public final class uoa
-  implements URLDrawable.URLDrawableListener
+public class uoa
+  implements vjn
 {
-  public uoa(ImageView paramImageView, Drawable paramDrawable) {}
+  public uoa(QQStoryMainController paramQQStoryMainController) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
+    vei.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
+    this.a.a(false, true, 1, null);
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

@@ -1,12 +1,8 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public abstract interface acvf
 {
-  public abstract void a(int paramInt, Context paramContext, ChatMessage paramChatMessage);
-  
-  public abstract bblt[] a(View paramView);
+  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
 }
 
 

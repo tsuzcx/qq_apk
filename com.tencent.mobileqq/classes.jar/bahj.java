@@ -1,45 +1,69 @@
-import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
-class bahj
-  implements baho
+public class bahj
+  implements aycd
 {
-  bahj(bahi parambahi) {}
+  bahj(bahf parambahf) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.change_machine", 2, "getChangeMachineFlag result:" + paramJSONObject);
-    }
-    int j = 0;
-    int k = -1;
-    paramInt = k;
-    int i = j;
-    if (paramJSONObject != null)
+    this.a.jdField_a_of_type_Int = 1;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) && (this.a.jdField_a_of_type_AndroidAppActivity == null) && (!bahf.jdField_a_of_type_JavaLangString.equals(this.a.jdField_b_of_type_JavaLangString))) {}
+    String str1;
+    List localList;
+    do
     {
-      if (paramJSONObject.has("code")) {
-        break label88;
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
+        break;
       }
-      i = j;
-      paramInt = k;
-    }
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString;
+      localList = (List)this.a.jdField_b_of_type_JavaUtilHashMap.get(str1);
+    } while ((balu.a(localList)) || (localList == null));
+    if (localList != null) {}
     for (;;)
     {
-      if ((paramInt == 0) && (i != 0))
+      try
       {
-        bahi.a(this.a);
-        this.a.b();
+        Object localObject3 = (baht)localList.remove(0);
+        if ((localObject3 instanceof MessageForDeliverGiftTips))
+        {
+          localObject3 = (MessageForDeliverGiftTips)localObject3;
+          String str2 = balu.b((MessageForDeliverGiftTips)localObject3);
+          ((MessageForDeliverGiftTips)localObject3).hasFetchButFailed = false;
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOAnimationControlManager", 2, "onMagicPlayEnd id:" + str2);
+          }
+          if (this.a.jdField_a_of_type_Bahu != null) {
+            this.a.jdField_a_of_type_Bahu.a(str1, str2);
+          }
+        }
+        if (localList.size() == 0) {
+          break label250;
+        }
+        Collections.sort(localList, this.a.jdField_a_of_type_JavaUtilComparator);
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new AIOAnimationControlManager.13.1(this));
+        return;
       }
-      return;
-      label88:
-      k = paramJSONObject.optInt("code");
-      paramInt = k;
-      i = j;
-      if (k == 0)
-      {
-        i = paramJSONObject.optInt("flag");
-        paramInt = k;
+      finally {}
+      Object localObject2 = this.a.jdField_b_of_type_JavaLangString;
+      break;
+      label250:
+      this.a.jdField_a_of_type_Baro.a(null);
+      bahf.a(this.a, false);
+      localObject2 = ChatActivityUtils.a((String)localObject2, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      if ((bahf.jdField_a_of_type_Boolean) && (localObject2 != null) && (-1 == ((Integer)localObject2).intValue()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
+        bahf.jdField_a_of_type_Boolean = false;
       }
     }
   }

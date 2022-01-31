@@ -1,37 +1,14 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aend
-  extends akav
+  implements View.OnClickListener
 {
-  aend(aena paramaena) {}
+  aend(aemy paramaemy) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akas paramakas)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.a.a)) {
-      return;
-    }
-    this.a.u = true;
-    this.a.a(262144, paramakas, paramLong);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
-    }
-    this.a.e(131072);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.e(65536);
+    this.a.v(true);
   }
 }
 

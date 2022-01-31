@@ -1,9 +1,9 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
 
 public class aiek
   implements View.OnClickListener
@@ -12,10 +12,13 @@ public class aiek
   
   public void onClick(View paramView)
   {
-    this.a.onBackEvent();
-    if (AppSetting.d) {
-      this.a.c.post(new SelectMemberActivity.2.1(this));
+    if (this.a.d == 27)
+    {
+      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
+      this.a.setResult(-1, this.a.a);
     }
+    this.a.finish();
   }
 }
 

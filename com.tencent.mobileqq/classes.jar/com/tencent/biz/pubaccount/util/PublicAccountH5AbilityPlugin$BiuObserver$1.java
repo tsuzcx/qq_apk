@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
-import osm;
-import sgg;
+import osj;
+import sgd;
 
 public class PublicAccountH5AbilityPlugin$BiuObserver$1
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$BiuObserver$1(sgg paramsgg) {}
+  public PublicAccountH5AbilityPlugin$BiuObserver$1(sgd paramsgd) {}
   
   public void run()
   {
-    osm.a().b(this.a);
+    osj.a().b(this.a);
   }
 }
 

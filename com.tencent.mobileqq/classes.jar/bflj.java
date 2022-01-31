@@ -1,53 +1,46 @@
-public class bflj
+public final class bflj
+  implements Cloneable
 {
-  public static boolean a;
-  private static volatile boolean b;
+  private int a;
   
-  /* Error */
-  public static void a()
+  public bflj(int paramInt)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 10	bflj:b	Z
-    //   6: istore_0
-    //   7: iload_0
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: invokestatic 16	com/tencent/sveffects/SdkContext:getInstance	()Lcom/tencent/sveffects/SdkContext;
-    //   18: ldc 18
-    //   20: invokestatic 24	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   23: new 26	bfln
-    //   26: dup
-    //   27: invokespecial 29	bfln:<init>	()V
-    //   30: new 31	bflu
-    //   33: dup
-    //   34: invokespecial 32	bflu:<init>	()V
-    //   37: new 34	bflq
-    //   40: dup
-    //   41: invokespecial 35	bflq:<init>	()V
-    //   44: new 37	bflt
-    //   47: dup
-    //   48: invokespecial 38	bflt:<init>	()V
-    //   51: invokevirtual 42	com/tencent/sveffects/SdkContext:init	(Ljava/lang/String;Landroid/app/Application;Lcom/tencent/sveffects/DpcSwitcher;Lcom/tencent/mobileqq/shortvideo/resource/Resources;Lcom/tencent/sveffects/Logger;Lcom/tencent/sveffects/Reporter;)V
-    //   54: iconst_1
-    //   55: putstatic 10	bflj:b	Z
-    //   58: goto -47 -> 11
-    //   61: astore_1
-    //   62: ldc 2
-    //   64: monitorexit
-    //   65: aload_1
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   6	2	0	bool	boolean
-    //   61	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	61	finally
-    //   15	58	61	finally
+    this.a = paramInt;
+  }
+  
+  public bflj(byte[] paramArrayOfByte)
+  {
+    this(paramArrayOfByte, 0);
+  }
+  
+  public bflj(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
+    this.a += (paramArrayOfByte[paramInt] & 0xFF);
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public byte[] a()
+  {
+    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bflj))) {}
+    while (this.a != ((bflj)paramObject).a()) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.a;
   }
 }
 

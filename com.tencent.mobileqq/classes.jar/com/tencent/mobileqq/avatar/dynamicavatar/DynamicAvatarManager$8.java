@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alyz;
-import baxa;
+import alyy;
+import baxo;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class DynamicAvatarManager$8
   implements Runnable
 {
-  public DynamicAvatarManager$8(alyz paramalyz) {}
+  public DynamicAvatarManager$8(alyy paramalyy) {}
   
   public void run()
   {
-    synchronized (baxa.a)
+    synchronized (baxo.a)
     {
-      baxa.b = false;
+      baxo.b = false;
       ThreadManager.getUIHandler().post(new DynamicAvatarManager.8.1(this));
       this.this$0.c();
       return;

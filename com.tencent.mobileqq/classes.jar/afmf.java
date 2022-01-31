@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class afmf
-  implements Comparator<MayKnowRecommend>
+  extends aimt
 {
-  afmf(afma paramafma) {}
-  
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
-  {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

@@ -1,58 +1,74 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.InteractContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import java.io.File;
-import java.net.URI;
+import java.util.Map;
 
-class tpn
-  implements ule
+public class tpn
+  extends trg
 {
-  tpn(tpm paramtpm) {}
+  private String a;
+  public ula a;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public tpn()
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new InteractContainerLayout(paramString);
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (vxy.a((Bitmap)localObject, paramString)) {
-      this.a.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
-    {
-      ((Bitmap)localObject).recycle();
-      tpm.a(this.a, true);
-      return;
-      this.a.a("result", this.a.a.mVideoThumbnailUrl);
-    }
+    this("", null, false);
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public tpn(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.a.a("result", this.a.a.mVideoThumbnailUrl);
-    tpm.b(this.a, true);
+    a(false, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      a(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    b(false);
+  }
+  
+  public void a(String paramString)
+  {
+    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
+    try
+    {
+      File localFile2 = localFile1.getParentFile();
+      if ((localFile2 != null) && (!localFile2.exists())) {
+        localFile2.mkdirs();
+      }
+      if (localFile1.exists()) {
+        localFile1.delete();
+      }
+    }
+    catch (Exception localException)
+    {
+      label45:
+      break label45;
+    }
+    this.jdField_a_of_type_Ula = new ukx();
+    this.jdField_a_of_type_Ula.a(paramString, 0, 0, new tpo(this, paramString));
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()))
+    {
+      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
+        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
+      }
+      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
+        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
+      }
+      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
+        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
+      }
+    }
   }
 }
 

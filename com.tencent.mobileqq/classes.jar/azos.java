@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class azos
-  extends azou
+final class azos
+  extends ajxj
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  WeakReference<azop> a;
+  
+  private azos(azop paramazop)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    localTroopFeedItem.type = 18;
-    try
-    {
-      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + ajyc.a(2131715306) + paramJSONObject.getString("photo_num") + ajyc.a(2131715308));
-      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-          if (localJSONObject.getInt("type") == 3) {
-            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
-          }
-        }
-        else
-        {
-          return localTroopFeedItem;
-        }
-        i += 1;
-      }
-      return null;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
+    this.a = new WeakReference(paramazop);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    azop localazop = (azop)this.a.get();
+    if ((localazop != null) && (paramBoolean) && (paramString != null) && (localazop.a != null) && (localazop.a.size() > 0) && (paramString.equals(((TroopInfo)localazop.a.get(0)).troopuin))) {
+      localazop.c();
     }
   }
 }

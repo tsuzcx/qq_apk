@@ -1,17 +1,70 @@
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import java.util.Comparator;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.NewFriendManager.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class akbq
-  implements Comparator<SysSuspiciousMsg>
+public class akbq
+  extends ajxj
 {
-  akbq(akbo paramakbo) {}
+  akbq(akbn paramakbn) {}
   
-  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
+  protected void onAddFriend(String paramString)
   {
-    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
-      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      atza localatza = (atza)((Iterator)localObject).next();
+      if ((localatza instanceof atyv))
+      {
+        int i = ((atyv)localatza).a.structMsg.msg.sub_type.get();
+        String str = ((atyv)localatza).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          akbn.a(this.a).a().b(ajsd.M, 0, ((atyv)localatza).a.uniseq, false);
+        }
+      }
     }
-    return 0;
+    akbn.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (akbn.a(this.a) != null)) {
+      akbn.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onGetPushRecommend(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (akbn.a(this.a) != null)) {
+      akbn.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    akbn.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (akbn.a(this.a) != null)) {
+      akbn.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

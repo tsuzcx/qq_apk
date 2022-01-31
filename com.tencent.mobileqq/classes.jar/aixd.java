@@ -1,12 +1,19 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+
 public class aixd
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public String a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public aixd(String paramString, int paramInt)
+  public aixd(aixc paramaixc, View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramView);
+    if (paramView == aixc.a(paramaixc)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364313));
   }
 }
 

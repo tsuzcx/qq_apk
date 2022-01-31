@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bcci;
-import bcdb;
-import bchu;
-import bcpq;
+import bccw;
+import bcdp;
+import bcii;
+import bcqf;
 
 class EmojiJsPlugin$8
   implements Runnable
@@ -12,10 +12,10 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    bcci localbcci = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbcci != null) && ((localbcci instanceof bchu)))
+    bccw localbccw = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbccw != null) && ((localbccw instanceof bcii)))
     {
-      this.this$0.progressDialog = new bcpq(this.this$0.mRuntime.a(), ((bchu)localbcci).b());
+      this.this$0.progressDialog = new bcqf(this.this$0.mRuntime.a(), ((bcii)localbccw).b());
       this.this$0.progressDialog.show();
     }
   }

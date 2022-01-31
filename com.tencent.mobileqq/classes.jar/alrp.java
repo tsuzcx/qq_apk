@@ -1,15 +1,20 @@
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class alrp
-  implements alry
+  implements alrx
 {
-  alrp(alrm paramalrm, alrw paramalrw, alry paramalry) {}
+  alrp(alrl paramalrl, alrv paramalrv, alrx paramalrx, String paramString) {}
   
   public void a(boolean paramBoolean)
   {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Alrw.a }));
-    if (paramBoolean) {}
-    this.jdField_a_of_type_Alry.a(paramBoolean);
+    if (paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Alrx.a(true);
+      return;
+    }
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Alrv.jdField_a_of_type_JavaLangString }));
+    alrl.a(this.jdField_a_of_type_Alrl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alrv, new alrq(this));
   }
 }
 

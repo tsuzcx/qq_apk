@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7;
 
-class aetk
-  implements View.OnClickListener
+public class aetk
+  implements noj
 {
-  aetk(aerv paramaerv) {}
+  public aetk(PublicAccountChatPie.7 param7) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mQidianClickListener ... mQidianKefu = " + this.a.ap);
-    }
-    this.a.A(2131695619);
-    this.a.jdField_a_of_type_Nnx.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.k, this.a.l, this.a.m, new aetl(this));
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 

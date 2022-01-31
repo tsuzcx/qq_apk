@@ -1,42 +1,20 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahri
-  implements ImageAssetDelegate
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private Context a;
+  public ahri(LoginView paramLoginView) {}
   
-  public ahri(Context paramContext)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = paramContext;
-  }
-  
-  @Nullable
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    try
-    {
-      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inScaled = false;
-      localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
-      paramLottieImageAsset.close();
-      return localObject;
-    }
-    catch (Throwable paramLottieImageAsset)
-    {
-      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
-    }
-    return null;
+    float f = paramValueAnimator.getAnimatedFraction();
+    int i = (int)((LoginView.b(this.a) - LoginView.c(this.a)) * f + LoginView.c(this.a));
+    int j = (int)((LoginView.d(this.a) - LoginView.e(this.a)) * f + LoginView.e(this.a));
+    int k = (int)((LoginView.f(this.a) - LoginView.g(this.a)) * f + LoginView.g(this.a));
+    int m = (int)((LoginView.h(this.a) - LoginView.i(this.a)) * f + LoginView.i(this.a));
+    LoginView.a(this.a, i, j, k, m, f);
   }
 }
 

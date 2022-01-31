@@ -1,70 +1,56 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class opl
+  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  private final String a = "reset_kandian_configuration";
-  private final String b = "reset_version";
-  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = ooi.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
-    {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "reset_kandian_configuration"))
-      {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-      }
-    }
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = oof.a(paramString);
+    Object localObject = paramString.keySet();
     for (;;)
     {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "reset_version"))
+      String str1;
+      String str2;
+      try
       {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
-        try
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          paramInt1 = Integer.valueOf(paramString).intValue();
-          bbjn.q(BaseApplicationImpl.getApplication(), paramInt1, onk.a());
-          return true;
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
+            bhvy.l(Integer.parseInt(str2));
+          }
         }
-        catch (NumberFormatException paramString)
+        else
         {
-          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
           return true;
         }
       }
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
+        bhvy.g(str2);
+      }
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
+    super.onWipeConfig(paramInt);
+    bhvy.l(0);
+    bhvy.g("");
   }
 }
 

@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.observer.BusinessObserver;
 
-public class akae
-  extends ajxl
+class akae
+  implements BusinessObserver
 {
-  akae(akac paramakac) {}
+  akae(akaa paramakaa, String paramString) {}
   
-  protected void onAddFriend(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
-  }
-  
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
   }
 }
 

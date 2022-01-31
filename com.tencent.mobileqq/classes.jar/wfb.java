@@ -1,34 +1,20 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 
-final class wfb
-  extends AnimatorListenerAdapter
+public final class wfb
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
-  
-  wfb(View paramView, int paramInt)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
+    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
   }
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    wew localwew = wew.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    if (paramInt3 != paramView.getLayerType()) {
+      localwew.addListener(new wey(paramView, paramInt3));
+    }
+    return localwew;
   }
 }
 

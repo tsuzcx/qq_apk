@@ -1,16 +1,16 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import beiu;
-import bekq;
+import bejl;
+import belh;
 
 public class MiniAppFileManager$1
   implements Runnable
 {
-  public MiniAppFileManager$1(beiu parambeiu) {}
+  public MiniAppFileManager$1(bejl parambejl) {}
   
   public void run()
   {
-    bekq.a(beiu.a(this.this$0, 0), false);
+    belh.a(bejl.a(this.this$0, 0), false);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akpc;
-import akpv;
+import akpb;
+import akpu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import anmg;
-import bbcl;
-import bbet;
+import anml;
+import bbcz;
+import bbfh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,14 +48,14 @@ public class RecentSayHelloBoxItem
       synchronized (this.lock)
       {
         this.mUnreadMRList.clear();
-        this.mUnreadNum = ((akpc)localObject1).a(a(), a());
+        this.mUnreadNum = ((akpb)localObject1).a(a(), a());
         if (i > 0)
         {
           localObject3 = ((List)localObject3).iterator();
           if (((Iterator)localObject3).hasNext())
           {
             MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-            if ((((akpc)localObject1).a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
+            if ((((akpb)localObject1).a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
               this.mUnreadMRList.add(localMessageRecord);
             }
             if (this.mUnreadMRList.size() < 6) {
@@ -75,12 +75,12 @@ public class RecentSayHelloBoxItem
         if (localObject3 != null) {
           ??? = ((QQMessageFacade)localObject3).a(a(), a());
         }
-        if (anmg.a(paramQQAppInterface, a(), 1001))
+        if (anml.a(paramQQAppInterface, a(), 1001))
         {
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693287);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693288);
           this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
           ??? = a();
-          ((MsgSummary)???).strContent = ((akpc)localObject1).a(a(), 1001, paramContext.getResources().getString(2131693286), 0);
+          ((MsgSummary)???).strContent = ((akpb)localObject1).a(a(), 1001, paramContext.getResources().getString(2131693287), 0);
           a(paramQQAppInterface, (MsgSummary)???);
           a(paramQQAppInterface, paramContext, (MsgSummary)???);
           if (QLog.isColorLevel()) {
@@ -107,11 +107,11 @@ public class RecentSayHelloBoxItem
           i = ((List)localObject3).size();
         }
       }
-      if (anmg.b(paramQQAppInterface, a(), 1001))
+      if (anml.b(paramQQAppInterface, a(), 1001))
       {
         this.mHasFlowerMsg = true;
         this.mUnreadFlag = 1;
-        this.mMsgExtroInfo = paramContext.getResources().getString(2131694401);
+        this.mMsgExtroInfo = paramContext.getResources().getString(2131694402);
         this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
         this.mLastMsg = "";
         if (QLog.isColorLevel()) {
@@ -130,10 +130,10 @@ public class RecentSayHelloBoxItem
     localObject1 = null;
     if (??? != null)
     {
-      localObject3 = bbcl.q(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin);
+      localObject3 = bbcz.q(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin);
       localObject1 = localObject3;
       if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = bbcl.b(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin, false);
+        localObject1 = bbcz.b(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin, false);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label852;
@@ -145,7 +145,7 @@ public class RecentSayHelloBoxItem
     for (;;)
     {
       localObject3 = a();
-      bbet.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)???, a(), (MsgSummary)localObject3, (String)localObject1, false, false);
+      bbfh.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)???, a(), (MsgSummary)localObject3, (String)localObject1, false, false);
       a(paramQQAppInterface, (MsgSummary)localObject3);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
       break;

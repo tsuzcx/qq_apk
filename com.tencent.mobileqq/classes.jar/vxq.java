@@ -1,81 +1,79 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.annotation.TargetApi;
+import android.media.MediaFormat;
+import com.tencent.mobileqq.shortvideo.util.AudioResample;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.nio.ByteBuffer;
 
+@TargetApi(16)
 public class vxq
-  extends tce
-  implements syt<tnj, tou>
 {
-  String jdField_a_of_type_JavaLangString;
-  tcn jdField_a_of_type_Tcn;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  private static final int[] a = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350, 0, 0, 0 };
   
-  public void a(List<StoryVideoItem> paramList, boolean paramBoolean)
+  public static int a(MediaFormat paramMediaFormat)
   {
-    if (this.jdField_a_of_type_Tcn == null)
-    {
-      tcf localtcf = new tcf();
-      localtcf.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localtcf.jdField_a_of_type_Boolean = paramBoolean;
-      localtcf.b = true;
-      localtcf.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      localtcf.jdField_a_of_type_Int = paramList.size();
-      ste.a().dispatch(localtcf);
-      return;
+    if (paramMediaFormat == null) {
+      return -1;
     }
-    this.jdField_a_of_type_Tcn.a(paramList, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Tcn = null;
+    ByteBuffer localByteBuffer = paramMediaFormat.getByteBuffer("csd-0");
+    if (localByteBuffer.remaining() <= 2) {
+      return paramMediaFormat.getInteger("sample-rate");
+    }
+    int i = localByteBuffer.remaining();
+    int j = localByteBuffer.position();
+    byte[] arrayOfByte = new byte[i];
+    localByteBuffer.get(arrayOfByte);
+    localByteBuffer.position(j);
+    localByteBuffer.limit(i + j);
+    i = (arrayOfByte.length - 2) * 8;
+    if (i > 11) {
+      if (((arrayOfByte[2] & 0xFF) << 3 | (arrayOfByte[3] & 0xFF) >>> 5) == 695)
+      {
+        if (((arrayOfByte[3] & 0x1F) == 5) && (i - 16 > 0) && ((arrayOfByte[4] & 0xFF) >>> 7 == 1))
+        {
+          i = (arrayOfByte[4] & 0x7F) >>> 3;
+          if (i < 13) {
+            return a[i];
+          }
+          return paramMediaFormat.getInteger("sample-rate");
+        }
+      }
+      else if (((arrayOfByte[1] & 0x7) << 8 | arrayOfByte[2] & 0xFF) == 520) {
+        return a[4];
+      }
+    }
+    return paramMediaFormat.getInteger("sample-rate");
   }
   
-  public void a(@NonNull tnj paramtnj, @Nullable tou paramtou, @NonNull ErrorMessage paramErrorMessage)
+  public static int a(MediaFormat paramMediaFormat, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.singleSync", 2, "onResp code=" + paramErrorMessage.errorCode);
+    int j;
+    if (paramMediaFormat == null) {
+      j = -1;
     }
-    paramtnj = new StoryVideoItem();
-    paramtnj.mVid = this.b;
-    paramtnj.mStoryType = 2;
-    if ((paramtou != null) && (paramErrorMessage.isSuccess()))
+    for (;;)
     {
-      paramtnj = paramtou.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramtnj.hasNext())
+      return j;
+      int k = paramMediaFormat.getInteger("channel-count");
+      try
       {
-        paramErrorMessage = (StoryVideoItem)paramtnj.next();
-        if (this.b.equals(paramErrorMessage.mVid)) {
-          if (paramErrorMessage.mErrorCode != 0) {
-            break;
-          }
+        i = AudioResample.parseMp4Info(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("SegmentClipUtils", 2, "getRealAudioChannel:  channels=" + i + " channelsBake: " + k);
+        }
+        j = i;
+        if (i > 0) {
+          continue;
+        }
+        return k;
+      }
+      catch (UnsatisfiedLinkError paramMediaFormat)
+      {
+        for (;;)
+        {
+          int i = -2000;
         }
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        ((sto)tdc.a(28)).a(paramtou.b);
-        a(paramtou.jdField_a_of_type_JavaUtilList, false);
-        return;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      if (paramtou == null) {}
-      for (paramtnj = new ArrayList();; paramtnj = paramtou.jdField_a_of_type_JavaUtilList)
-      {
-        a(paramtnj, false);
-        return;
-      }
-    }
-  }
-  
-  public boolean isValidate()
-  {
-    return false;
   }
 }
 

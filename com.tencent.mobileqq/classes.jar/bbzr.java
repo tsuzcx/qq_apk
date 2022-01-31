@@ -1,32 +1,175 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class bbzr
+  extends bbzo
 {
-  public String a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = true;
-  public boolean d = false;
-  public boolean e = true;
+  public bbzr(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public bbzr(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-    this.e = paramBoolean5;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static bbzr a()
-  {
-    return new bbzr(true, false, true, true, true, null);
-  }
-  
-  public static bbzr a(String paramString)
-  {
-    return new bbzr(false, true, true, false, true, paramString);
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
+    this.a.d = this.a.jdField_a_of_type_JavaUtilArrayList.toString();
+    this.a.a(false, 0);
+    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject1;
+    int i;
+    int j;
+    String str;
+    Object localObject2;
+    Object localObject3;
+    if (!paramBoolean)
+    {
+      localObject1 = (Bundle)paramObject;
+      i = ((Bundle)localObject1).getInt("result");
+      j = ((Bundle)localObject1).getInt("callId", this.a.jdField_a_of_type_Int);
+      paramObject = ((Bundle)localObject1).getString("message");
+      str = ((Bundle)localObject1).getString("svr_url");
+      localObject2 = ((Bundle)localObject1).getString("svr_actStr");
+      if (i != 9002) {
+        break label290;
+      }
+      paramInt = 11;
+      localObject3 = paramObject;
+      if (TextUtils.isEmpty(paramObject)) {
+        localObject3 = ajya.a(2131716756);
+      }
+      paramObject = localObject3;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        break label607;
+      }
+      localObject1 = ajya.a(2131716734);
+      localObject2 = null;
+      paramInt = 11;
+      paramObject = localObject3;
+    }
+    for (;;)
+    {
+      if (TextUtils.isEmpty(paramObject)) {
+        if ((i == 22001) || (i == 6002))
+        {
+          paramObject = ajya.a(2131716750);
+          label222:
+          VipFunCallPreviewActivity localVipFunCallPreviewActivity = this.a;
+          localObject3 = localObject1;
+          if (!TextUtils.isEmpty(str))
+          {
+            localObject3 = localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              localObject3 = ajya.a(2131716754);
+            }
+          }
+          localVipFunCallPreviewActivity.a(paramInt, j, null, paramObject, (String)localObject2, (String)localObject3, str);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
+          return;
+          label290:
+          if (i == 9003)
+          {
+            paramInt = 12;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = ajya.a(2131716737);
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label607;
+            }
+            localObject3 = ajya.a(2131716749);
+            localObject2 = null;
+            paramInt = 12;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if ((i == 1005011) || (i == 5002))
+          {
+            paramInt = 2;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = ajya.a(2131716743);
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label607;
+            }
+            localObject3 = ajya.a(2131716747);
+            localObject2 = null;
+            paramInt = 2;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if ((i == 1005012) || (i == 4002))
+          {
+            paramInt = 1;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = ajya.a(2131716752);
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label607;
+            }
+            localObject3 = ajya.a(2131716744);
+            localObject2 = null;
+            paramInt = 1;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if (i == 461001)
+          {
+            localObject1 = ajya.a(2131716759);
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label601;
+            }
+          }
+        }
+      }
+      label601:
+      for (paramObject = ajya.a(2131716753);; paramObject = localObject2)
+      {
+        localObject3 = ajya.a(2131716742);
+        str = bbqd.a("funCallMine");
+        paramInt = 6;
+        localObject2 = localObject1;
+        localObject1 = paramObject;
+        paramObject = localObject2;
+        localObject2 = localObject3;
+        break;
+        localObject3 = null;
+        localObject1 = localObject2;
+        paramInt = 4;
+        localObject2 = localObject3;
+        break;
+        if (i == 3002)
+        {
+          paramObject = ajya.a(2131716733);
+          break label222;
+        }
+        if (i == 8002)
+        {
+          paramObject = ajya.a(2131716760);
+          break label222;
+        }
+        break label222;
+      }
+      label607:
+      localObject3 = null;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+    }
   }
 }
 

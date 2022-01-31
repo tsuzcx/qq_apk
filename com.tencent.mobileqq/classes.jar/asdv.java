@@ -1,57 +1,57 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-
-public class asdv
-  extends GestureDetector.SimpleOnGestureListener
+class asdv
 {
-  public asdv(MagicfaceContainerView paramMagicfaceContainerView) {}
+  public float a;
+  public int a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public int c;
+  public int d;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(5);
-    }
-    return false;
-  }
+  asdv(asdu paramasdu) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
   {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
+    if (paramArrayOfByte1 != null)
+    {
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label28;
+      }
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label49;
       }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
       return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(4);
+      label28:
+      if (this.jdField_a_of_type_ArrayOfByte.length == paramArrayOfByte1.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      break;
+      label49:
+      System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte1.length);
+      if (this.jdField_b_of_type_ArrayOfByte == null) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+      }
+      while (this.jdField_b_of_type_ArrayOfByte != null)
+      {
+        System.arraycopy(paramArrayOfByte2, 0, this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte2.length);
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = paramInt4;
+        this.c = paramInt1;
+        this.d = paramInt2;
+        this.jdField_a_of_type_Float = paramFloat;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        return true;
+        if (this.jdField_b_of_type_ArrayOfByte.length != paramArrayOfByte2.length) {
+          this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+        }
+      }
     }
-    return false;
   }
 }
 

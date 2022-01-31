@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bijp;
+import bikg;
 
 class AECameraGLSurfaceView$16
   implements Runnable
@@ -9,9 +9,9 @@ class AECameraGLSurfaceView$16
   
   public void run()
   {
-    bijp localbijp = (bijp)AECameraGLSurfaceView.a(this.this$0);
-    if (localbijp != null) {
-      localbijp.a(this.a);
+    bikg localbikg = (bikg)AECameraGLSurfaceView.a(this.this$0);
+    if (localbikg != null) {
+      localbikg.a(this.a);
     }
   }
 }

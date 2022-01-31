@@ -1,56 +1,38 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqdl
+class aqdl
+  implements View.OnClickListener
 {
-  public static int a(int paramInt, double paramDouble)
-  {
-    float f = 1.0F;
-    if (paramInt > 150) {
-      f = paramInt / 100;
-    }
-    if (paramDouble <= 1.5D) {
-      return (int)(f * 9.0F);
-    }
-    if (paramDouble <= 2.0D) {
-      return (int)(f * 9.0F);
-    }
-    return (int)(f * 4.0F);
-  }
+  aqdl(aqdd paramaqdd, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static Drawable a(Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    Bitmap localBitmap = bbdr.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    this.jdField_a_of_type_Aqdd.hideSoftInputFromWindow();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aqdd, 0);
     }
-    return paramBitmap;
-  }
-  
-  public static Drawable a(Bitmap paramBitmap, double paramDouble)
-  {
-    Object localObject = null;
-    Bitmap localBitmap = bbdr.a(paramBitmap, a(0, paramDouble));
-    paramBitmap = localObject;
-    if (localBitmap != null) {
-      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    if (aqdd.a(this.jdField_a_of_type_Aqdd))
+    {
+      aqdd.a(this.jdField_a_of_type_Aqdd).removeView(aqdd.a(this.jdField_a_of_type_Aqdd));
+      aqdd.a(this.jdField_a_of_type_Aqdd, false);
     }
-    return paramBitmap;
-  }
-  
-  public static Drawable a(Drawable paramDrawable, double paramDouble)
-  {
-    return a(bbak.a(paramDrawable), paramDouble);
-  }
-  
-  public static final boolean a(Intent paramIntent)
-  {
-    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
+    try
+    {
+      if (this.jdField_a_of_type_Aqdd.isShowing()) {
+        this.jdField_a_of_type_Aqdd.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
+    }
   }
 }
 

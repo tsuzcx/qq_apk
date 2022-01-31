@@ -1,41 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aldl
-  extends ales
+public class aldl
 {
-  aldl(aldg paramaldg) {}
+  private static int a;
+  public static String a;
+  public static HashMap<String, alct> a;
+  private static int b;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public void a()
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
-    }
-    Message localMessage = aldg.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Int = 5;
+    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    c = "";
+    d = "";
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new alct(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new alct(2147483647));
   }
   
-  public void a(int paramInt)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-    Message localMessage = aldg.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = aldg.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    jdField_a_of_type_JavaLangString = paramString1;
+    jdField_b_of_type_JavaLangString = paramString2;
+    c = paramString3;
+    d = paramString4;
   }
 }
 

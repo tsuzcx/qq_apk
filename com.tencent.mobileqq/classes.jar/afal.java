@@ -1,19 +1,10 @@
-import android.graphics.Paint;
+import java.io.File;
 
-public class afal
+abstract interface afal
 {
-  public final Paint a;
-  public final float[] a;
-  public final String[] a;
-  public final Paint b;
+  public abstract File a(String paramString);
   
-  public afal(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
-  {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
-    this.b = paramPaint2;
-  }
+  public abstract String c();
 }
 
 

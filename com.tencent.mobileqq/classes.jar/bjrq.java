@@ -1,18 +1,19 @@
-class bjrq
-  implements bbll
+public class bjrq
+  extends ssh
 {
-  bjrq(bjrh parambjrh) {}
+  private final int jdField_a_of_type_Int;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public bjrq(int paramInt, boolean paramBoolean)
   {
-    if (bjrh.a(this.a) != null) {
-      bjrh.a(this.a, paramString);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
 }
 
 

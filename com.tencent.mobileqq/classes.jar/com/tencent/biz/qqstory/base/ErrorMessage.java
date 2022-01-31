@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.base;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 
 @TargetApi(14)
@@ -54,7 +54,7 @@ public class ErrorMessage
     }
     else
     {
-      str = ajyc.a(2131704207);
+      str = ajya.a(2131704218);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }

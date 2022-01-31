@@ -1,49 +1,45 @@
-import com.tencent.commonsdk.util.notification.NotificationLimiter;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.QQDeviceInfo.1;
 
 public class bfno
-  implements NotificationLimiter
+  implements ServiceConnection
 {
-  private boolean a(int paramInt)
+  public bfno(QQDeviceInfo.1 param1) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return (paramInt == 241) || (paramInt == 244) || (paramInt == 242) || (paramInt == 243);
+    try
+    {
+      paramComponentName = bgbi.a(paramIBinder);
+      try
+      {
+        bfnn.d(paramComponentName.a());
+        bfnn.a("huawei_oaid", bfnn.c());
+        if (QLog.isColorLevel()) {
+          QLog.d(bfnn.a, 2, "huawei oaid = " + bfnn.c());
+        }
+        return;
+      }
+      catch (SecurityException paramComponentName)
+      {
+        paramComponentName.printStackTrace();
+        QLog.e(bfnn.a, 2, paramComponentName, new Object[0]);
+        return;
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+      QLog.e(bfnn.a, 2, "get huawei oaid throw e", paramComponentName);
+    }
   }
   
-  public boolean shouldNotify(int paramInt)
-  {
-    boolean bool2 = false;
-    if (a(paramInt)) {
-      return true;
-    }
-    boolean bool1;
-    if (aggn.a().a())
-    {
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("NotificationLimiterImpl", 2, "MINI PROC FORE");
-        bool1 = bool2;
-      }
-    }
-    for (;;)
-    {
-      return bool1;
-      if (MiniChatActivity.a())
-      {
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-  }
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 

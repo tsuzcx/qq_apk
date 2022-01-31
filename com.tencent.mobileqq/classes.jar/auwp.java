@@ -1,91 +1,116 @@
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
 
 public class auwp
 {
-  public static int a;
-  public static SparseArray<String> a;
-  public static String a;
-  private static AtomicBoolean a;
-  
-  static
+  public static String a(Context paramContext)
   {
-    jdField_a_of_type_Int = 50;
-    jdField_a_of_type_JavaLangString = ajyc.a(2131716768);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    return bbac.c(paramContext) + "wzryTemplate/";
   }
   
-  public static void a(AppRuntime paramAppRuntime)
+  public static void a(QQAppInterface paramQQAppInterface, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
-    if (paramAppRuntime == null) {}
-    JSONObject localJSONObject;
-    JSONArray localJSONArray;
-    for (;;)
-    {
-      try
+    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
+    paramQQAppInterface.addCallBacker(paramCallBacker);
+    paramQQAppInterface.downloadItem(15L, "cardWZ.zip", "ProfileCard");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    if (paramInt == 0) {
+      if ("cardWZ.zip".equals(paramString1))
       {
-        QLog.e("VipProfileDiyCardConfig", 1, "parseJson, app null");
-        return;
-      }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "card.diyFontConfig.json", true, null);
-        if (localJSONObject == null) {
-          break label217;
-        }
-        localJSONArray = localJSONObject.optJSONArray("fontList");
-        if ((localJSONArray != null) && (localJSONArray.length() > 0)) {
-          if (jdField_a_of_type_AndroidUtilSparseArray == null)
-          {
-            jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-            break label227;
-          }
+        paramQQAppInterface = a(paramQQAppInterface.getApp()) + "xydata.json";
+        auwm.a(paramQQAppInterface);
+        if (QLog.isColorLevel()) {
+          QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete, parseConfig " + paramQQAppInterface);
         }
       }
     }
-    for (;;)
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("VipWZRYTemplateHelper", 2, "onDownloadComplete failed, errorCode = " + paramInt);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return (paramLong == auvf.i) || (paramLong == auvf.j);
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    if ("cardWZ.zip".equals(paramString))
     {
-      if (i < localJSONArray.length())
+      String str = a(paramContext);
+      paramContext = new File(str, "xydata.json");
+      if (auwm.jdField_a_of_type_Auwm == null) {
+        auwm.a(paramContext.getAbsolutePath());
+      }
+      if (auwm.jdField_a_of_type_Auwm != null)
       {
-        paramAppRuntime = localJSONArray.optJSONObject(i);
-        int j = paramAppRuntime.optInt("id");
-        String str = paramAppRuntime.optString("imgUrl");
-        if (TextUtils.isEmpty(str)) {
-          break label232;
-        }
-        paramAppRuntime = str;
-        if (!str.startsWith("http:"))
+        paramContext = new File(str, "logo.png");
+        paramString = new File(str, "bgImage.jpg");
+        Object localObject = new File(str, "shimmer_mask.png");
+        File localFile1 = new File(str, "logo_bg.png");
+        File localFile2 = new File(str, "font_chs.tff");
+        File localFile3 = new File(str, "font_num.tff");
+        File localFile4 = new File(str, "addIcon.png");
+        int i;
+        if ((paramContext.exists()) && (paramString.exists()) && (((File)localObject).exists()) && (localFile1.exists()) && (localFile2.exists()) && (localFile3.exists()) && (localFile4.exists()))
         {
-          paramAppRuntime = str;
-          if (!str.startsWith("https:")) {
-            paramAppRuntime = "http:" + str;
+          bool1 = true;
+          localObject = auwm.jdField_a_of_type_Auwm;
+          if (((auwm)localObject).jdField_a_of_type_AndroidUtilSparseArray == null) {
+            break label338;
+          }
+          i = 0;
+          label207:
+          bool2 = bool1;
+          if (i >= ((auwm)localObject).jdField_a_of_type_AndroidUtilSparseArray.size()) {
+            break label341;
+          }
+          paramContext = (auwn)((auwm)localObject).jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+          bool2 = bool1;
+          if (paramContext.a != null)
+          {
+            bool2 = bool1;
+            if (!TextUtils.isEmpty(paramContext.a.a))
+            {
+              paramString = paramContext.a.a;
+              paramContext = paramString;
+              if (paramString.contains("/")) {
+                paramContext = paramString.substring(paramString.lastIndexOf("/"));
+              }
+              paramContext = new File(str, paramContext);
+              if ((!bool1) || (!paramContext.exists())) {
+                break label333;
+              }
+            }
           }
         }
-        jdField_a_of_type_AndroidUtilSparseArray.put(j, paramAppRuntime);
-        break label232;
-        jdField_a_of_type_AndroidUtilSparseArray.clear();
+        label333:
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          bool2 = bool1;
+          i += 1;
+          bool1 = bool2;
+          break label207;
+          bool1 = false;
+          break;
+        }
       }
-      else
-      {
-        jdField_a_of_type_Int = localJSONObject.optInt("maxTextLength", jdField_a_of_type_Int);
-        jdField_a_of_type_JavaLangString = localJSONObject.optString("inputTip", jdField_a_of_type_JavaLangString);
-        label217:
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        break;
-      }
-      label227:
-      int i = 0;
-      continue;
-      label232:
-      i += 1;
     }
+    label338:
+    boolean bool2 = false;
+    label341:
+    return bool2;
   }
 }
 

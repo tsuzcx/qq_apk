@@ -1,32 +1,14 @@
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class awrp
-  implements awrb<awoe, awwo>
+class awrp
+  implements View.OnClickListener
 {
-  public void a(awoe paramawoe, awwo paramawwo)
+  awrp(awro paramawro) {}
+  
+  public void onClick(View paramView)
   {
-    paramawwo = (awxz)paramawwo;
-    if ((paramawoe instanceof awno))
-    {
-      paramawoe = (awno)paramawoe;
-      if (TextUtils.isEmpty(paramawoe.a)) {
-        break label81;
-      }
-      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      paramawwo.jdField_a_of_type_AndroidWidgetTextView.setText(paramawoe.a);
-    }
-    for (;;)
-    {
-      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new awrq(this, paramawoe));
-      if (TextUtils.isEmpty(paramawoe.b)) {
-        paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(false);
-      }
-      return;
-      label81:
-      paramawwo.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    awro.a(this.a).a(paramView);
   }
 }
 

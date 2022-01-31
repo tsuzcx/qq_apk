@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import bfzp;
+import bgag;
 import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
 import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -15,22 +15,22 @@ import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import oqq;
+import oqn;
+import ora;
 import ord;
-import org;
-import orh;
+import ore;
+import osg;
 import osj;
 import osm;
-import osp;
-import qdn;
+import qdk;
 
 public class ReadInJoyDynamicChannelFragment
   extends ReadInJoyDynamicChannelBaseFragment
 {
-  private bfzp jdField_a_of_type_Bfzp = new orh(this);
+  private bgag jdField_a_of_type_Bgag = new ore(this);
   private TopBannerInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo;
-  private ord jdField_a_of_type_Ord;
-  private osp jdField_a_of_type_Osp = new org(this);
+  private ora jdField_a_of_type_Ora;
+  private osm jdField_a_of_type_Osm = new ord(this);
   private int e;
   public final String e;
   
@@ -67,13 +67,13 @@ public class ReadInJoyDynamicChannelFragment
       label71:
       if (i < paramTopBannerInfo.dynamicItems.size())
       {
-        qdn localqdn = (qdn)paramTopBannerInfo.dynamicItems.get(i);
-        if ((localqdn == null) || (TextUtils.isEmpty(localqdn.a))) {
+        qdk localqdk = (qdk)paramTopBannerInfo.dynamicItems.get(i);
+        if ((localqdk == null) || (TextUtils.isEmpty(localqdk.a))) {
           break label190;
         }
-        QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "json = ", localqdn.a });
-        ProteusItemView localProteusItemView = oqq.a(this.jdField_a_of_type_Ord.a(), a(), oqq.a(localqdn.a));
-        oqq.a(localProteusItemView, this.jdField_a_of_type_Ord.a(), a(), localqdn.a);
+        QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "json = ", localqdk.a });
+        ProteusItemView localProteusItemView = oqn.a(this.jdField_a_of_type_Ora.a(), a(), oqn.a(localqdk.a));
+        oqn.a(localProteusItemView, this.jdField_a_of_type_Ora.a(), a(), localqdk.a);
         a(localProteusItemView);
       }
       for (;;)
@@ -104,7 +104,7 @@ public class ReadInJoyDynamicChannelFragment
     {
       this.jdField_a_of_type_Boolean = true;
       l();
-      osj.a().a(this.b, 20, 9223372036854775807L, true);
+      osg.a().a(this.b, 20, 9223372036854775807L, true);
       return;
     }
     QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "has loaded article, mChannelID = ", Integer.valueOf(this.b) });
@@ -115,14 +115,14 @@ public class ReadInJoyDynamicChannelFragment
     QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "onBindHeader, position = ", Integer.valueOf(paramInt) });
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo.dynamicItems.size() > 0) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo.dynamicItems.size()))
     {
-      qdn localqdn = (qdn)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo.dynamicItems.get(paramInt);
-      if ((localqdn != null) && (!TextUtils.isEmpty(localqdn.a)))
+      qdk localqdk = (qdk)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopBannerInfo.dynamicItems.get(paramInt);
+      if ((localqdk != null) && (!TextUtils.isEmpty(localqdk.a)))
       {
         paramViewHolder = (ProteusItemView)paramViewHolder.itemView;
         if (paramViewHolder != null)
         {
-          QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "onBindHeader, json = ", localqdn.a });
-          oqq.a(paramViewHolder, this.jdField_a_of_type_Ord.a(), a(), localqdn.a);
+          QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "onBindHeader, json = ", localqdk.a });
+          oqn.a(paramViewHolder, this.jdField_a_of_type_Ora.a(), a(), localqdk.a);
         }
       }
     }
@@ -130,34 +130,34 @@ public class ReadInJoyDynamicChannelFragment
   
   public void b()
   {
-    this.jdField_a_of_type_Ord.notifyDataSetChanged();
+    this.jdField_a_of_type_Ora.notifyDataSetChanged();
   }
   
   public void b(int paramInt)
   {
-    osj.a().a(this.b, null, -1, true, false, this.jdField_e_of_type_Int, null, -1L, null, this.jdField_c_of_type_Int, 0L, 0L, null, paramInt, false, null, 0, null);
+    osg.a().a(this.b, null, -1, true, false, this.jdField_e_of_type_Int, null, -1L, null, this.jdField_c_of_type_Int, 0L, 0L, null, paramInt, false, null, 0, null);
     this.jdField_e_of_type_Int += 1;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Ord = new ord(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.b);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_Ord);
+    this.jdField_a_of_type_Ora = new ora(getActivity(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(), this.b);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().setAdapter(this.jdField_a_of_type_Ora);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bfzp);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Bgag);
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_Ord != null)
+    if (this.jdField_a_of_type_Ora != null)
     {
       QLog.d("ReadInJoyDynamicChannelFragment", 2, new Object[] { "reportExposureAndClear, mChannelID = ", Integer.valueOf(this.b) });
-      a(this.jdField_a_of_type_Ord.a());
-      this.jdField_a_of_type_Ord.a();
+      a(this.jdField_a_of_type_Ora.a());
+      this.jdField_a_of_type_Ora.a();
       return;
     }
     QLog.d("ReadInJoyDynamicChannelFragment", 2, "mAdapter is null.");
@@ -166,15 +166,15 @@ public class ReadInJoyDynamicChannelFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    osm.a().a(this.jdField_a_of_type_Osp);
+    osj.a().a(this.jdField_a_of_type_Osm);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    osm.a().b(this.jdField_a_of_type_Osp);
-    if (this.jdField_a_of_type_Ord != null) {
-      this.jdField_a_of_type_Ord.b();
+    osj.a().b(this.jdField_a_of_type_Osm);
+    if (this.jdField_a_of_type_Ora != null) {
+      this.jdField_a_of_type_Ora.b();
     }
   }
 }

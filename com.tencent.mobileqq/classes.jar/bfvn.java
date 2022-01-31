@@ -1,9 +1,8 @@
 import android.view.View;
 
-public class bfvn
+public abstract interface bfvn
 {
-  public bfvo[] a;
-  public View g;
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

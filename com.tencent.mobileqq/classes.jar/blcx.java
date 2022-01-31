@@ -1,23 +1,6 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-
-public class blcx
-  extends blda
+public abstract interface blcx
 {
-  public blcx(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
-  }
+  public abstract void a();
 }
 
 

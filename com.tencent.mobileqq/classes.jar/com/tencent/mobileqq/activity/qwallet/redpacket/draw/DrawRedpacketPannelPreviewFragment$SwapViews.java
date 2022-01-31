@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahix;
+import ahiv;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import bcqi;
+import bcqx;
 
 public final class DrawRedpacketPannelPreviewFragment$SwapViews
   implements Runnable
@@ -26,13 +26,13 @@ public final class DrawRedpacketPannelPreviewFragment$SwapViews
   {
     float f1 = DrawRedpacketPannelPreviewFragment.a(this.this$0).getWidth() / 2.0F;
     float f2 = DrawRedpacketPannelPreviewFragment.a(this.this$0).getHeight() / 2.0F;
-    bcqi localbcqi;
+    bcqx localbcqx;
     if (this.jdField_a_of_type_Boolean)
     {
-      localbcqi = new bcqi(-90.0F, 0.0F, f1, f2, 610.0F, false);
+      localbcqx = new bcqx(-90.0F, 0.0F, f1, f2, 610.0F, false);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.b.setVisibility(0);
-      if (ahix.a(this.this$0.getActivity()))
+      if (ahiv.a(this.this$0.getActivity()))
       {
         DrawRedpacketPannelPreviewFragment.a(this.this$0).setVisibility(0);
         DrawRedpacketPannelPreviewFragment.f(this.this$0).setVisibility(4);
@@ -40,17 +40,17 @@ public final class DrawRedpacketPannelPreviewFragment$SwapViews
     }
     for (;;)
     {
-      localbcqi.setDuration(250L);
-      localbcqi.setFillAfter(true);
-      localbcqi.setInterpolator(new DecelerateInterpolator());
-      DrawRedpacketPannelPreviewFragment.a(this.this$0).startAnimation(localbcqi);
+      localbcqx.setDuration(250L);
+      localbcqx.setFillAfter(true);
+      localbcqx.setInterpolator(new DecelerateInterpolator());
+      DrawRedpacketPannelPreviewFragment.a(this.this$0).startAnimation(localbcqx);
       return;
       DrawRedpacketPannelPreviewFragment.f(this.this$0).setVisibility(0);
       DrawRedpacketPannelPreviewFragment.b(this.this$0).setVisibility(4);
       continue;
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.b.setVisibility(8);
-      localbcqi = new bcqi(90.0F, 0.0F, f1, f2, 610.0F, false);
+      localbcqx = new bcqx(90.0F, 0.0F, f1, f2, 610.0F, false);
     }
   }
 }

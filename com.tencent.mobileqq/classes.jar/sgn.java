@@ -1,22 +1,37 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
 final class sgn
-  implements DialogInterface.OnCancelListener
+  extends akws
 {
-  sgn(Activity paramActivity, ProfileParams paramProfileParams) {}
+  sgn(akdn paramakdn, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public int a()
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-    {
-      aqfb.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    return 4;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akdn != null) {
+      this.jdField_a_of_type_Akdn.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    sgg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akdn != null) {
+      this.jdField_a_of_type_Akdn.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      sgg.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
     }
   }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

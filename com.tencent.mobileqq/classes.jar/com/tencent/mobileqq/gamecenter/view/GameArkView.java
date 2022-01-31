@@ -5,14 +5,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
-import aqsx;
+import aqsz;
 import com.tencent.ark.open.ArkView;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
 public class GameArkView
   extends RelativeLayout
-  implements aqsx
+  implements aqsz
 {
   private ArkView a;
   
@@ -20,7 +20,7 @@ public class GameArkView
   {
     super(paramContext, paramAttributeSet);
     LayoutInflater.from(getContext()).inflate(2131559093, this);
-    this.a = ((ArkView)findViewById(2131373166));
+    this.a = ((ArkView)findViewById(2131373168));
   }
   
   public void a()

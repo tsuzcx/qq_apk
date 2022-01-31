@@ -1,34 +1,17 @@
 import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
 
 public class abxi
-  extends ajtq
+  extends ajxj
 {
   public abxi(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
-  }
-  
-  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      if (paramBoolean1) {
-        this.a.a(this.a.app.getCurrentAccountUin());
-      }
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

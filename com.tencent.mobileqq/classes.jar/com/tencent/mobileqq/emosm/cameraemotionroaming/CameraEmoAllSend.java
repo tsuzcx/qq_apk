@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import ajwa;
-import aklb;
-import bizu;
+import ajvy;
+import akla;
+import bjal;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.LinearGroup;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CameraEmoAllSend
   extends LinearGroup
-  implements aklb
+  implements akla
 {
   public static boolean a;
   public static boolean b;
@@ -29,7 +29,7 @@ public class CameraEmoAllSend
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    ajwa localajwa = (ajwa)((QQAppInterface)bizu.a()).a(72);
+    ajvy localajvy = (ajvy)((QQAppInterface)bjal.a()).a(72);
     if ((paramInt3 < paramInt2) || ((paramInt4 > 0) && (paramInt5 > 0))) {
       if (paramInt3 == 0) {
         paramInt1 = 5;
@@ -37,7 +37,7 @@ public class CameraEmoAllSend
     }
     for (;;)
     {
-      localajwa.notifyUI(2, false, Integer.valueOf(paramInt1));
+      localajvy.notifyUI(2, false, Integer.valueOf(paramInt1));
       return;
       paramInt1 = 6;
       continue;

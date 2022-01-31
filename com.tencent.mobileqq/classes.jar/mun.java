@@ -1,13 +1,12 @@
-class mun<Data>
+public class mun
 {
-  final mul jdField_a_of_type_Mul;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
-  
-  mun(mul parammul, Data... paramVarArgs)
-  {
-    this.jdField_a_of_type_Mul = parammul;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
 }
 
 

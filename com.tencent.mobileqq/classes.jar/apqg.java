@@ -1,9 +1,15 @@
-public class apqg
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class apqg
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
+  apqg(apqe paramapqe) {}
+  
+  public void onClick(View paramView)
+  {
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
+  }
 }
 
 

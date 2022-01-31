@@ -1,27 +1,66 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amqk
 {
-  public boolean a;
+  protected String a = "";
   
-  public static amqk a(String paramString)
+  public amqk() {}
+  
+  public amqk(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        amqk localamqk = new amqk();
-        localamqk.a = new JSONObject(paramString).optBoolean("is_in_messagetab", false);
-        QLog.d("AppletNotificationConfProcessor", 2, "confBean = " + localamqk.toString());
-        return localamqk;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("AppletNotificationConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    if (paramString != null) {
+      this.a = paramString;
+    }
+  }
+  
+  public amql a()
+  {
+    if ((this instanceof amql)) {
+      return (amql)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
     return null;
+  }
+  
+  public amqm a()
+  {
+    if ((this instanceof amqm)) {
+      return (amqm)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
+  }
+  
+  public amqn a()
+  {
+    if ((this instanceof amqn)) {
+      return (amqn)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
+    return null;
+  }
+  
+  public amqo a()
+  {
+    if ((this instanceof amqo)) {
+      return (amqo)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
+  }
+  
+  public amqp a()
+  {
+    if ((this instanceof amqp)) {
+      return (amqp)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 

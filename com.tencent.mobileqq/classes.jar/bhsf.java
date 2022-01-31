@@ -1,14 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bhsf
-  implements DialogInterface.OnClickListener
+public class bhsf
 {
-  bhsf(bhsa parambhsa) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bhsf(int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

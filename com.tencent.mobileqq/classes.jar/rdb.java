@@ -1,26 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.Set;
 
 public class rdb
-  extends AnimatorListenerAdapter
+  extends oyd
 {
-  public rdb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public rdb(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Set paramSet, Map paramMap)
   {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
-    }
+    super(paramString);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(oxx paramoxx)
   {
-    super.onAnimationStart(paramAnimator);
+    paramoxx.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

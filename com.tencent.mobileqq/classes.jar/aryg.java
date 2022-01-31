@@ -1,68 +1,45 @@
-import android.graphics.Point;
+import android.view.ViewTreeObserver;
+import com.tencent.mobileqq.location.data.LocationRoom;
 import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
 
 public class aryg
-  implements TencentMapGestureListener
+  implements TencentMap.OnMapLoadedCallback
 {
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
-  
   public aryg(MapWidget paramMapWidget) {}
   
-  public boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  public void onMapLoaded()
   {
-    return false;
-  }
-  
-  public boolean onDown(float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
+    aruk localaruk = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localaruk.a() });
     }
-    return false;
-  }
-  
-  public boolean onFling(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onLongPress(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onMapStable()
-  {
-    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
-    }
-    this.b = false;
-  }
-  
-  public boolean onScroll(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return false;
-  }
-  
-  public boolean onSingleTap(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onUp(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((localaruk.a() != null) && (!aryf.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localaruk.a())))
     {
-      axqw.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+      this.a.a(false);
+      this.a.setTag(-2147483648, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localaruk.a() });
+      }
     }
-    return false;
+    for (;;)
+    {
+      if (MapWidget.a(this.a) != null)
+      {
+        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
+          break;
+        }
+        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new aryh(this));
+      }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localaruk.a() });
+      }
+    }
+    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
   }
 }
 

@@ -1,22 +1,25 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
 
-public class mwy
+class mwy
+  implements bfpt
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public View d;
-  public ImageView d;
+  mwy(mwx parammwx, PoiMapActivity paramPoiMapActivity) {}
   
-  public mwy(PoiMapActivity paramPoiMapActivity) {}
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.jdField_a_of_type_Mwx.a(paramInt, true);
+    int i = this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (this.jdField_a_of_type_Mwx.e != paramInt) {
+        this.jdField_a_of_type_Mwx.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
+    }
+  }
 }
 
 

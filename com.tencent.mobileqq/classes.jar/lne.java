@@ -1,61 +1,96 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-class lne
-  extends BroadcastReceiver
+public class lne
 {
-  lne(lnd paramlnd) {}
+  private static int d = 48;
+  public int a;
+  public long a;
+  public lom a;
+  public int b;
+  public int c;
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public lne()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    this.jdField_a_of_type_Lom = new lom();
+  }
+  
+  private static int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < 4)
+    {
+      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
+      i += 1;
+    }
+    return j;
+  }
+  
+  private static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < 8)
+    {
+      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
+      i += 1;
+    }
+    return l;
+  }
+  
+  public static ArrayList<lne> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    ArrayList localArrayList = null;
+    Object localObject;
+    if (paramArrayOfByte == null)
+    {
+      localObject = localArrayList;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AVInviteAccount", 2, "getListFromBuffer detail is null");
+        localObject = localArrayList;
+      }
+    }
+    do
+    {
+      return localObject;
+      if (paramInt != 0) {
+        break;
+      }
+      localObject = localArrayList;
+    } while (!QLog.isColorLevel());
+    QLog.e("AVInviteAccount", 2, "getListFromBuffer buflen == 0");
+    return null;
+    int i = paramInt / d;
+    localArrayList = new ArrayList();
+    paramInt = 0;
     for (;;)
     {
-      return;
-      if (!"tencent.video.qavgameplaysomgr.notify".equals(paramIntent.getAction())) {
-        continue;
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
       }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
+      localObject = new lne();
+      ((lne)localObject).jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt);
+      ((lne)localObject).jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 8);
+      try
       {
-        this.a.jdField_a_of_type_Lna = lna.a();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = lni.a(this.a.jdField_a_of_type_Lna);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGPDownloadManager", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGameplay[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_Lna }));
-          }
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((lnc)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
+        ((lne)localObject).jdField_a_of_type_Lom.a = new String(paramArrayOfByte, d * paramInt + 16, 5, "UTF-8");
+        ((lne)localObject).jdField_a_of_type_Lom.b = new String(paramArrayOfByte, d * paramInt + 21, 5, "UTF-8");
+        ((lne)localObject).jdField_a_of_type_Lom.c = new String(paramArrayOfByte, d * paramInt + 26, 12, "UTF-8");
+        ((lne)localObject).b = a(paramArrayOfByte, d * paramInt + 40);
+        ((lne)localObject).c = a(paramArrayOfByte, d * paramInt + 44);
+        localArrayList.add(localObject);
+        paramInt += 1;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
         }
-        ((lnc)???.next()).a(i);
       }
     }
   }

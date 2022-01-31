@@ -1,65 +1,50 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
+import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import org.json.JSONObject;
 
-public class arpc
-  extends MSFServlet
+class arpc
+  extends Handler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  arpc(arpb paramarpb, Looper paramLooper)
   {
-    Object localObject1 = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onReceive, cmd=" + (String)localObject1);
-    }
-    if ("SQQzoneSvc.getUrlInfo".equals(localObject1))
-    {
-      Object localObject2 = paramFromServiceMsg.getWupBuffer();
-      localObject1 = new Bundle();
-      localObject2 = bhoi.a((byte[])localObject2, "getUrlInfo");
-      if ((paramFromServiceMsg.isSuccess()) && ((localObject2 instanceof mobile_get_urlinfo_rsp)))
-      {
-        localObject2 = (mobile_get_urlinfo_rsp)localObject2;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebShareServlet", 2, "onReceive, mobile_get_urlinfo_rsp, ret=" + ((mobile_get_urlinfo_rsp)localObject2).ret + ", title=" + ((mobile_get_urlinfo_rsp)localObject2).title + ", summary=" + ((mobile_get_urlinfo_rsp)localObject2).summary + ", images=" + ((mobile_get_urlinfo_rsp)localObject2).images);
-        }
-        ((Bundle)localObject1).putInt("extra_ret", ((mobile_get_urlinfo_rsp)localObject2).ret);
-        ((Bundle)localObject1).putString("extra_title", ((mobile_get_urlinfo_rsp)localObject2).title);
-        ((Bundle)localObject1).putString("extra_summary", ((mobile_get_urlinfo_rsp)localObject2).summary);
-        ((Bundle)localObject1).putStringArrayList("extra_images", ((mobile_get_urlinfo_rsp)localObject2).images);
-      }
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
-    }
+    super(paramLooper);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void handleMessage(Message paramMessage)
   {
-    String str = paramIntent.getStringExtra("extra_cmd");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onSend, cmd=" + str);
-    }
-    if ("SQQzoneSvc.getUrlInfo".equals(str))
+    switch (paramMessage.what)
     {
-      paramIntent = paramIntent.getStringExtra("extra_url");
+    default: 
+      return;
+    case 16711687: 
+      this.a.b(0);
+      return;
+    case 16711686: 
       if (QLog.isColorLevel()) {
-        QLog.d("WebShareServlet", 2, "onSend, CMD_GET_URL_INFO, url=" + paramIntent);
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
       }
-      if (TextUtils.isEmpty(paramIntent)) {
-        break label116;
-      }
-      paramIntent = new arnj(paramIntent).encode();
-      paramPacket.setSSOCommand("SQQzoneSvc.getUrlInfo");
-      paramPacket.putSendData(paramIntent);
-    }
-    label116:
-    while (!QLog.isColorLevel()) {
+      arpb.a(this.a).c();
+      bbcf.b(2131230744, false);
+      bbcf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+      return;
+    case 1: 
+      this.a.b(1);
+      return;
+    case 16711689: 
+      localObject = (JSONObject)paramMessage.obj;
+      paramMessage = ((JSONObject)localObject).optString("msg", "");
+      localObject = ((JSONObject)localObject).optString("path", "");
+      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
       return;
     }
-    QLog.e("WebShareServlet", 2, "onSend, url is null!!!");
+    Object localObject = (JSONObject)paramMessage.obj;
+    paramMessage = ((JSONObject)localObject).optString("msg", "");
+    localObject = ((JSONObject)localObject).optString("path", "");
+    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
   }
 }
 

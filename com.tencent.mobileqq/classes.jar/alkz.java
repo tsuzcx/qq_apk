@@ -1,2840 +1,963 @@
-import android.app.Activity;
 import android.content.Context;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.text.TextUtils;
+import android.os.SystemClock;
 import com.tencent.common.app.AppInterface;
+import com.tencent.imageboost.ImgProcessScan;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRecognition;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.ar.model.ArModelResource;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.ar.model.QQARSession.1;
-import com.tencent.mobileqq.ar.model.QQARSession.10;
-import com.tencent.mobileqq.ar.model.QQARSession.11;
-import com.tencent.mobileqq.ar.model.QQARSession.12;
-import com.tencent.mobileqq.ar.model.QQARSession.13;
-import com.tencent.mobileqq.ar.model.QQARSession.14;
-import com.tencent.mobileqq.ar.model.QQARSession.15;
-import com.tencent.mobileqq.ar.model.QQARSession.16;
-import com.tencent.mobileqq.ar.model.QQARSession.17;
-import com.tencent.mobileqq.ar.model.QQARSession.18;
-import com.tencent.mobileqq.ar.model.QQARSession.2;
-import com.tencent.mobileqq.ar.model.QQARSession.20;
-import com.tencent.mobileqq.ar.model.QQARSession.21;
-import com.tencent.mobileqq.ar.model.QQARSession.22;
-import com.tencent.mobileqq.ar.model.QQARSession.23;
-import com.tencent.mobileqq.ar.model.QQARSession.24;
-import com.tencent.mobileqq.ar.model.QQARSession.25;
-import com.tencent.mobileqq.ar.model.QQARSession.26;
-import com.tencent.mobileqq.ar.model.QQARSession.27;
-import com.tencent.mobileqq.ar.model.QQARSession.28;
-import com.tencent.mobileqq.ar.model.QQARSession.3;
-import com.tencent.mobileqq.ar.model.QQARSession.4;
-import com.tencent.mobileqq.ar.model.QQARSession.5;
-import com.tencent.mobileqq.ar.model.QQARSession.6;
-import com.tencent.mobileqq.ar.model.QQARSession.7;
-import com.tencent.mobileqq.ar.model.QQARSession.8;
-import com.tencent.mobileqq.ar.model.QQARSession.9;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class alkz
-  extends alkn
-  implements alae, albi, alfu, alhd, alii, Camera.PreviewCallback
+  extends alkm
+  implements alfm, aljc, aljo
 {
-  private static alkz jdField_a_of_type_Alkz;
-  public static boolean a;
-  private static boolean w = true;
-  public long a;
-  private akyf jdField_a_of_type_Akyf;
-  private albg jdField_a_of_type_Albg;
-  private alfo jdField_a_of_type_Alfo;
-  private algo jdField_a_of_type_Algo;
-  private alha jdField_a_of_type_Alha;
-  public alhc a;
-  private alhi jdField_a_of_type_Alhi;
-  private alhs jdField_a_of_type_Alhs;
-  private alhv jdField_a_of_type_Alhv;
-  private alie jdField_a_of_type_Alie;
-  private allg jdField_a_of_type_Allg;
+  private long jdField_a_of_type_Long = 500L;
+  private aljc jdField_a_of_type_Aljc;
+  private aljn jdField_a_of_type_Aljn;
+  private aljo jdField_a_of_type_Aljo;
+  private aljw jdField_a_of_type_Aljw;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-  private ARCommonConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-  ARScanStarFaceConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo = null;
-  public ArCloudConfigInfo a;
-  private ArConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private String jdField_a_of_type_JavaLangString = "0";
-  private ArrayList<ArCloudConfigInfo> jdField_a_of_type_JavaUtilArrayList;
-  private long jdField_b_of_type_Long = 0L;
-  private alhi jdField_b_of_type_Alhi;
-  private alhs jdField_b_of_type_Alhs;
-  public ArCloudConfigInfo b;
-  private ArrayList<Runnable> jdField_b_of_type_JavaUtilArrayList;
-  public boolean b;
-  int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long = 0L;
-  private ArCloudConfigInfo jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  public boolean c;
-  private int jdField_d_of_type_Int = 5;
-  private final long jdField_d_of_type_Long = 5L;
-  private ArCloudConfigInfo jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = 5;
-  private final long jdField_e_of_type_Long = 2183L;
-  private boolean jdField_e_of_type_Boolean;
-  private int jdField_f_of_type_Int = 5;
-  private long jdField_f_of_type_Long = 0L;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private long jdField_b_of_type_Long;
+  private Rect jdField_b_of_type_AndroidGraphicsRect;
+  private boolean jdField_b_of_type_Boolean;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private Rect jdField_c_of_type_AndroidGraphicsRect;
+  private boolean jdField_c_of_type_Boolean;
+  private byte[] jdField_c_of_type_ArrayOfByte;
+  private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
+  private Rect jdField_d_of_type_AndroidGraphicsRect;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private long jdField_e_of_type_Long = SystemClock.uptimeMillis();
+  private boolean jdField_e_of_type_Boolean = true;
+  private int jdField_f_of_type_Int;
+  private long jdField_f_of_type_Long;
   private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int = 5;
-  private long jdField_g_of_type_Long = 0L;
-  private volatile boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int = 5;
-  private long jdField_h_of_type_Long = 0L;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int = 5;
-  private long jdField_i_of_type_Long;
-  private final boolean jdField_i_of_type_Boolean = true;
-  private int jdField_j_of_type_Int;
-  private long jdField_j_of_type_Long;
-  private boolean jdField_j_of_type_Boolean;
-  private int jdField_k_of_type_Int;
-  private long jdField_k_of_type_Long;
-  private boolean jdField_k_of_type_Boolean = true;
-  private int jdField_l_of_type_Int;
-  private long jdField_l_of_type_Long;
-  private boolean jdField_l_of_type_Boolean;
-  private int jdField_m_of_type_Int;
-  private long jdField_m_of_type_Long;
-  private boolean jdField_m_of_type_Boolean;
-  private int jdField_n_of_type_Int = 17;
-  private long jdField_n_of_type_Long;
-  private boolean jdField_n_of_type_Boolean;
-  private int jdField_o_of_type_Int;
-  private long jdField_o_of_type_Long;
-  private volatile boolean jdField_o_of_type_Boolean;
-  private int jdField_p_of_type_Int;
-  private long jdField_p_of_type_Long;
-  private boolean jdField_p_of_type_Boolean;
-  private int jdField_q_of_type_Int;
-  private long jdField_q_of_type_Long;
-  private boolean jdField_q_of_type_Boolean;
-  private volatile int jdField_r_of_type_Int = 0;
-  private long jdField_r_of_type_Long;
-  private boolean jdField_r_of_type_Boolean;
-  private long jdField_s_of_type_Long;
-  private boolean jdField_s_of_type_Boolean = true;
-  private long jdField_t_of_type_Long;
-  private boolean jdField_t_of_type_Boolean = true;
-  private long jdField_u_of_type_Long;
-  private boolean jdField_u_of_type_Boolean = true;
-  private long jdField_v_of_type_Long;
-  private boolean jdField_v_of_type_Boolean;
+  private boolean g;
   
   public alkz()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 4096L;
-    this.jdField_b_of_type_Int = 1;
-    w = false;
-    alkv.a().b(this);
+    this.jdField_b_of_type_Int = 0;
+    alku.a().b(this);
+    alku.a().a(this);
   }
   
-  private void A()
+  private static float a(Rect paramRect1, Rect paramRect2, Point paramPoint)
   {
-    if (this.jdField_r_of_type_Int != 1) {}
-    do
+    int i2 = paramPoint.x;
+    int i3 = paramRect2.left;
+    int i4 = paramRect2.right;
+    int i5 = paramPoint.x;
+    int k = paramPoint.y;
+    int m = paramRect2.top;
+    int n = paramRect2.bottom;
+    int i1 = paramPoint.y;
+    int i;
+    int j;
+    label92:
+    float f1;
+    label108:
+    float f2;
+    label125:
+    float f5;
+    label155:
+    label177:
+    float f3;
+    if (paramRect1.left < paramPoint.x)
     {
-      return;
-      if (this.jdField_a_of_type_Alhc != null) {
-        this.jdField_a_of_type_Alhc.c();
+      i = paramPoint.x - paramRect1.left;
+      if (paramRect1.right <= paramPoint.x) {
+        break label395;
       }
-    } while (this.jdField_a_of_type_Akyf == null);
-    this.jdField_a_of_type_Akyf.d();
+      j = paramRect1.right - paramPoint.x;
+      if (i <= 0) {
+        break label401;
+      }
+      f1 = (i2 - i3) / i;
+      if (j <= 0) {
+        break label407;
+      }
+      f2 = (i4 - i5) / j;
+      f5 = Math.min(f1, f2);
+      if (paramRect1.top >= paramPoint.y) {
+        break label414;
+      }
+      i = paramPoint.y - paramRect1.top;
+      if (paramRect1.bottom <= paramPoint.y) {
+        break label420;
+      }
+      j = paramRect1.bottom - paramPoint.y;
+      if (i <= 0) {
+        break label426;
+      }
+      f3 = (k - m) / i;
+      label194:
+      if (j <= 0) {
+        break label433;
+      }
+    }
+    float f8;
+    label395:
+    label401:
+    label407:
+    label414:
+    label420:
+    label426:
+    label433:
+    for (float f4 = (n - i1) / j;; f4 = 2.147484E+009F)
+    {
+      f5 = Math.min(f5, Math.min(f3, f4));
+      float f6 = paramRect2.width() / paramRect1.width();
+      float f7 = paramRect2.height() / paramRect1.height();
+      f8 = Math.min(f6, f7);
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession", 2, String.format("calcZoomFactor_ori [codeRect,scanRect,prevCenter]=[%s|%s|%s]", new Object[] { paramRect1.toShortString(), paramRect2.toShortString(), paramPoint.toString() }));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession", 2, String.format("calcZoomFactor_calc [ratioLeft,ratioRight]=[%.2f,%.2f], [ratioTop,ratioBot]=[%.2f,%.2f] [wFactor,hFactor]=[%.2f,%.2f]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f6), Float.valueOf(f7) }));
+      }
+      if ((f5 < 0.0F) || (f8 <= f5)) {
+        break label440;
+      }
+      return f5;
+      i = 0;
+      break;
+      j = 0;
+      break label92;
+      f1 = 2.147484E+009F;
+      break label108;
+      f2 = 2.147484E+009F;
+      break label125;
+      i = 0;
+      break label155;
+      j = 0;
+      break label177;
+      f3 = 2.147484E+009F;
+      break label194;
+    }
+    label440:
+    return f8;
   }
   
-  private void B()
+  private int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int n = -1;
+    int k = n;
+    if (paramArrayOfByte.length > paramInt1 * paramInt2)
     {
-      if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_b_of_type_JavaUtilArrayList != null))
+      k = 0;
+      int i = 0;
+      int j = 0;
+      while (k < paramInt2)
       {
-        QLog.i("AREngine_QQARSession", 1, "removeAllTask. task count = " + this.jdField_b_of_type_JavaUtilArrayList.size());
+        int m = i;
         int i1 = 0;
-        while (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
+        i = j;
+        j = m;
+        m = i1;
+        while (m < paramInt1)
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)this.jdField_b_of_type_JavaUtilArrayList.get(i1));
-          i1 += 1;
+          i += (paramArrayOfByte[(k * paramInt1 + m)] & 0xFF);
+          j += 1;
+          m += 3;
         }
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        m = k + 3;
+        k = i;
+        i = j;
+        j = k;
+        k = m;
       }
+      k = n;
+      if (i > 0) {
+        k = j / i;
+      }
+    }
+    return k;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_d_of_type_Int <= 0) || (this.jdField_e_of_type_Int <= 0)) {
       return;
+    }
+    float f1 = this.jdField_e_of_type_Int / allr.jdField_a_of_type_Int;
+    float f2 = this.jdField_d_of_type_Int / allr.jdField_b_of_type_Int;
+    Rect localRect1 = new Rect((int)(this.jdField_a_of_type_AndroidGraphicsRect.left * f1), (int)(this.jdField_a_of_type_AndroidGraphicsRect.top * f2), (int)(f1 * this.jdField_a_of_type_AndroidGraphicsRect.right), (int)(f2 * this.jdField_a_of_type_AndroidGraphicsRect.bottom));
+    Rect localRect2 = new Rect(0, 0, (int)(localRect1.width() * 1.5F), (int)(localRect1.height() * 1.5F));
+    localRect2.offset(localRect1.centerX() - localRect2.centerX(), localRect1.centerY() - localRect2.centerY());
+    localRect2.intersect(0, 0, this.jdField_e_of_type_Int, this.jdField_d_of_type_Int);
+    Rect localRect3 = new Rect(0, 0, localRect1.height(), localRect1.width());
+    localRect3.offset(localRect1.top, localRect1.left);
+    Rect localRect4 = new Rect(0, 0, (int)(1.3F * localRect3.width()), (int)(1.2F * localRect3.height()));
+    localRect4.offset(localRect3.centerX() - localRect4.centerX(), localRect3.centerY() - localRect4.centerY());
+    localRect4.intersect(0, 0, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("QRSession", 2, String.format("initScanRect [mScanRect,qRRecogRect,qRRecogRectExt,rotateQRRecogRectExt]=[%s, %s, %s, %s] [w,h]=[%d,%d]", new Object[] { this.jdField_a_of_type_AndroidGraphicsRect.toShortString(), localRect1.toShortString(), localRect2.toShortString(), localRect4.toShortString(), Integer.valueOf(allr.jdField_a_of_type_Int), Integer.valueOf(allr.jdField_b_of_type_Int) }));
+    }
+    this.jdField_b_of_type_AndroidGraphicsRect = localRect1;
+    this.jdField_d_of_type_AndroidGraphicsRect = localRect2;
+    this.jdField_c_of_type_AndroidGraphicsRect = localRect4;
+  }
+  
+  private void a(Rect paramRect1, Rect paramRect2, boolean paramBoolean)
+  {
+    Rect localRect = new Rect();
+    if ((paramRect1 != null) && (paramRect1.width() > 0) && (paramRect1.height() > 0))
+    {
+      localRect.set(0, 0, paramRect1.height(), paramRect1.width());
+      localRect.offset(this.jdField_e_of_type_Int - paramRect1.top - paramRect1.height(), paramRect1.left);
+    }
+    if ((localRect.width() > 0) && (localRect.height() > 0))
+    {
+      paramRect2.set(localRect);
+      float f1 = allr.jdField_a_of_type_Int / this.jdField_e_of_type_Int;
+      float f2 = allr.jdField_b_of_type_Int / this.jdField_d_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession", 2, String.format("getScreenRect [%.2f,%.2f, %d,%d,%d,%d]", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(allr.jdField_a_of_type_Int), Integer.valueOf(allr.jdField_b_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int) }));
+      }
+      paramRect2.left = ((int)(paramRect2.left * f1));
+      paramRect2.top = ((int)(paramRect2.top * f2));
+      paramRect2.right = ((int)(f1 * paramRect2.right));
+      paramRect2.bottom = ((int)(paramRect2.bottom * f2));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QRSession", 2, String.format("[------ detect_point 2 rect=%s previewRect=%s screenRect=%s isQr=%b ------]", new Object[] { paramRect1, localRect, paramRect2, Boolean.valueOf(paramBoolean) }));
     }
   }
   
-  public static alah a(ArCloudConfigInfo paramArCloudConfigInfo, boolean paramBoolean, long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  private void a(List<alje> paramList)
   {
-    if (paramArCloudConfigInfo == null) {
-      return null;
+    if (paramList.size() <= 0) {
+      return;
     }
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 0)
+    if (this.jdField_e_of_type_Long > 0L)
     {
-      localObject1 = alis.b(paramArCloudConfigInfo);
-      localObject2 = alis.c(paramArCloudConfigInfo);
-      localObject3 = alis.d(paramArCloudConfigInfo);
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!new File((String)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!new File((String)localObject2).exists()))
-      {
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. resource path empty or file not exist.");
-        return null;
-      }
-      localObject4 = albl.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.e);
-      paramArCloudConfigInfo = new alat(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, (String)localObject2, (String)localObject1, (String)localObject3, (aldz)localObject4, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
-      QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo. key = " + paramArCloudConfigInfo.jdField_a_of_type_JavaLangString + ", arType = " + paramArCloudConfigInfo.jdField_a_of_type_Int + ", trackMode = " + paramArCloudConfigInfo.jdField_b_of_type_Int + ", resPath = " + paramArCloudConfigInfo.c + ", luaPath = " + paramArCloudConfigInfo.jdField_b_of_type_JavaLangString + ", musicPath = " + paramArCloudConfigInfo.jdField_d_of_type_JavaLangString + ", recogType = " + paramLong);
-      return paramArCloudConfigInfo;
+      l1 = SystemClock.uptimeMillis();
+      long l2 = this.jdField_e_of_type_Long;
+      this.jdField_e_of_type_Long = 0L;
+      alju.f(this.jdField_a_of_type_Aljn.b(), (int)(l1 - l2));
     }
-    int i2;
-    int i1;
-    if ((paramArCloudConfigInfo.jdField_d_of_type_Int == 2) || (paramArCloudConfigInfo.jdField_d_of_type_Int == 3))
+    Object localObject;
+    int i;
+    if (QLog.isColorLevel())
     {
-      if (!bfni.d())
+      localObject = new StringBuilder("onGetDetectRect:");
+      i = 0;
+      while (i < paramList.size())
       {
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. NOT IceScreamSandwich.");
-        return null;
+        ((StringBuilder)localObject).append(((alje)paramList.get(i)).toString()).append("\n");
+        i += 1;
       }
-      if (albl.a())
-      {
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. isRubbishDeviceNeedsSoftwareDecode.");
-        return null;
-      }
-      localObject2 = alis.e(paramArCloudConfigInfo);
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!new File((String)localObject2).exists()))
-      {
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. video path empty or file not exist.");
-        return null;
-      }
-      localObject1 = new albk(paramArCloudConfigInfo);
-      i2 = albl.a((albk)localObject1);
-      i1 = i2;
-      if (i2 == 0) {
-        i1 = 2147483647;
-      }
-      localObject1 = albl.a((albk)localObject1);
-      i2 = ((Integer)((Pair)localObject1).first).intValue();
-      localObject3 = (alkh)((Pair)localObject1).second;
-      localObject1 = null;
-      if (!paramArCloudConfigInfo.d()) {
-        if (((!paramBoolean) || ((paramLong != 2L) && (paramLong != 2048L))) && ((paramLong != 1L) || (paramArCloudConfigInfo.jdField_c_of_type_Int != 2))) {
-          break label649;
-        }
-      }
-      label649:
-      for (localObject1 = albl.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, allh.jdField_a_of_type_Int, allh.jdField_b_of_type_Int, paramArCloudConfigInfo.j());; localObject1 = albl.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, allh.jdField_a_of_type_Int, allh.jdField_b_of_type_Int))
-      {
-        paramArCloudConfigInfo = new albc(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, i2, (alkh)localObject3, (aldz)localObject1, (String)localObject2, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
-        paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo. key = " + paramArCloudConfigInfo.jdField_a_of_type_JavaLangString + ", arType = " + paramArCloudConfigInfo.jdField_a_of_type_Int + ", trackMode = " + paramArCloudConfigInfo.jdField_b_of_type_Int + ", renderType = " + paramArCloudConfigInfo.jdField_d_of_type_Int + ", keyingParams = " + paramArCloudConfigInfo.jdField_a_of_type_Alkh + ", videoPath = " + paramArCloudConfigInfo.jdField_b_of_type_JavaLangString + ", layout = " + paramArCloudConfigInfo.jdField_a_of_type_Aldz + ", videoPlayCount = " + i1 + ", recogType = " + paramLong);
-        return paramArCloudConfigInfo;
-      }
+      QLog.i("QRSession", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 4)
+    long l1 = System.currentTimeMillis();
+    boolean bool2;
+    boolean bool7;
+    boolean bool5;
+    boolean bool6;
+    label166:
+    boolean bool9;
+    boolean bool8;
+    boolean bool11;
+    boolean bool10;
+    Rect localRect;
+    boolean bool4;
+    boolean bool3;
+    boolean bool1;
+    label324:
+    float f3;
+    label390:
+    float f4;
+    float f2;
+    float f1;
+    if (a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int))
     {
-      localObject1 = new albk(paramArCloudConfigInfo);
-      i2 = albl.a((albk)localObject1);
-      i1 = i2;
-      if (i2 == 0) {
-        i1 = 2147483647;
-      }
-      localObject1 = albl.a((albk)localObject1);
-      i2 = ((Integer)((Pair)localObject1).first).intValue();
-      localObject3 = (alkh)((Pair)localObject1).second;
-      localObject1 = null;
-      if (!paramArCloudConfigInfo.d()) {
-        if (((!paramBoolean) || ((paramLong != 2L) && (paramLong != 2048L))) && ((paramLong != 1L) || (paramArCloudConfigInfo.jdField_c_of_type_Int != 2))) {
-          break label1119;
-        }
-      }
-      label1119:
-      for (localObject1 = albl.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, allh.jdField_a_of_type_Int, allh.jdField_b_of_type_Int, paramArCloudConfigInfo.j());; localObject1 = albl.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_JavaLangString, allh.jdField_a_of_type_Int, allh.jdField_b_of_type_Int))
+      bool2 = false;
+      bool7 = false;
+      bool5 = false;
+      bool6 = false;
+      i = 0;
+      bool9 = bool6;
+      bool8 = bool5;
+      bool11 = bool7;
+      bool10 = bool2;
+      if (i < paramList.size())
       {
-        localObject2 = "";
-        long l1 = 0L;
-        localObject4 = allj.a(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long + "|" + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_d_of_type_JavaLangString);
-        if (localObject4 != null)
+        localObject = (alje)paramList.get(i);
+        bool8 = bool6;
+        bool9 = bool5;
+        bool10 = bool7;
+        bool11 = bool2;
+        if (((alje)localObject).jdField_a_of_type_AndroidGraphicsRect.width() > 0)
         {
-          l1 = ((Long)((Pair)localObject4).first).longValue();
-          localObject2 = (String)((Pair)localObject4).second;
-        }
-        paramBoolean = albl.a();
-        paramArCloudConfigInfo = new albf(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, i2, (alkh)localObject3, (aldz)localObject1, (String)localObject2, l1, paramBoolean, i1, paramInt, paramFloat1, paramFloat2, paramFloat3);
-        paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo. key = " + paramArCloudConfigInfo.jdField_a_of_type_JavaLangString + ", arType = " + paramArCloudConfigInfo.jdField_a_of_type_Int + ", trackMode = " + paramArCloudConfigInfo.jdField_b_of_type_Int + ", renderType = " + paramArCloudConfigInfo.jdField_d_of_type_Int + ", keyingParams = " + paramArCloudConfigInfo.jdField_a_of_type_Alkh + ", videoUrl = " + paramArCloudConfigInfo.jdField_b_of_type_JavaLangString + ", videoSize = " + paramArCloudConfigInfo.jdField_b_of_type_Long + ", layout = " + paramArCloudConfigInfo.jdField_a_of_type_Aldz + ", isSoftDecode = " + paramArCloudConfigInfo.jdField_a_of_type_Boolean + ", videoPlayCount = " + i1 + ", recogType = " + paramLong);
-        return paramArCloudConfigInfo;
-      }
-    }
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 5)
-    {
-      if (albl.a())
-      {
-        localObject1 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
-          if ((localObject2 != null) && ((((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 2) || (((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 3)))
+          bool8 = bool6;
+          bool9 = bool5;
+          bool10 = bool7;
+          bool11 = bool2;
+          if (((alje)localObject).jdField_a_of_type_AndroidGraphicsRect.height() > 0)
           {
-            QLog.i("AREngine_QQARSession", 1, "getMultiFragmentAnimARResourceInfo failed. isRubbishDeviceNeedsSoftwareDecode.");
-            return null;
-          }
-        }
-      }
-      paramArCloudConfigInfo = new alay(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      paramArCloudConfigInfo.jdField_a_of_type_Long = paramLong;
-      return paramArCloudConfigInfo;
-    }
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 100)
-    {
-      localObject1 = alis.a(paramArCloudConfigInfo);
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!new File((String)localObject1).exists()))
-      {
-        QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo failed. resource path empty or file not exist.");
-        return null;
-      }
-      paramArCloudConfigInfo = new alax(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, 1, "", (String)localObject1, "", paramArCloudConfigInfo, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      QLog.i("AREngine_QQARSession", 1, "getARRenderResourceInfo. key = " + paramArCloudConfigInfo.jdField_a_of_type_JavaLangString + ", resType = " + paramArCloudConfigInfo.jdField_a_of_type_Int + ", resPath = " + paramArCloudConfigInfo.c + ", luaPath = " + paramArCloudConfigInfo.jdField_b_of_type_JavaLangString + ", musicPath = " + paramArCloudConfigInfo.jdField_d_of_type_JavaLangString);
-      return paramArCloudConfigInfo;
-    }
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 7)
-    {
-      localObject1 = alis.c(paramArCloudConfigInfo);
-      localObject2 = alis.b(paramArCloudConfigInfo);
-      return new alau(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2);
-    }
-    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 8)
-    {
-      localObject1 = alis.b(paramArCloudConfigInfo);
-      localObject2 = alis.a(paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_b_of_type_JavaLangString);
-      localObject3 = paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_a_of_type_JavaUtilArrayList;
-      boolean bool = paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_a_of_type_Boolean;
-      if (paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_b_of_type_Int == 1) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        i1 = paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_d_of_type_Int;
-        i2 = paramArCloudConfigInfo.jdField_a_of_type_Akyd.jdField_c_of_type_Int;
-        return new alao(paramArCloudConfigInfo.jdField_b_of_type_JavaLangString, paramArCloudConfigInfo.jdField_d_of_type_Int, paramArCloudConfigInfo.jdField_c_of_type_Int, paramInt, paramFloat1, paramFloat2, paramFloat3, (String)localObject1, (String)localObject2, (ArrayList)localObject3, Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), i1, i2);
-      }
-    }
-    return null;
-  }
-  
-  public static alkz a()
-  {
-    if (jdField_a_of_type_Alkz == null) {
-      jdField_a_of_type_Alkz = new alkz();
-    }
-    return jdField_a_of_type_Alkz;
-  }
-  
-  private void a(alfw paramalfw, ArLBSActivity paramArLBSActivity)
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.a(paramalfw, paramArLBSActivity);
-    }
-  }
-  
-  private void a(alfz paramalfz)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processCloudMarkerRecogResult start.");
-    this.jdField_l_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.10(this);
-    if (!this.jdField_a_of_type_Alie.a(paramalfz, this, false, this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.i("AREngine_QQARSession", 1, "processCloudMarkerRecogResult end. download preprocess failed.");
-      this.jdField_l_of_type_Boolean = false;
-      w();
-      return;
-    }
-    b(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-  }
-  
-  private void a(alge paramalge)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult start.");
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.11(this);
-    if (!this.jdField_a_of_type_Alie.a(paramalge, this, false, this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult end. download preprocess failed.");
-      m();
-      return;
-    }
-    QLog.i("AREngine_QQARSession", 1, "processYouTuCloudObjectClassifyResult post task for handle timeout");
-    b(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-  }
-  
-  private void a(algq paramalgq)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processCloudFaceRecogResult start.");
-    this.jdField_a_of_type_Alhc.a(paramalgq);
-    b(4L);
-    this.jdField_r_of_type_Boolean = true;
-    QLog.i("AREngine_QQARSession", 1, "processCloudFaceRecogResult end.");
-  }
-  
-  private void a(algw paramalgw)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult start.");
-    this.jdField_a_of_type_JavaLangRunnable = new QQARSession.13(this);
-    if (!this.jdField_a_of_type_Alie.a(paramalgw, this, false, this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult end. download preprocess failed.");
-      o();
-      return;
-    }
-    QLog.i("AREngine_QQARSession", 1, "processCloudSceneRecogResult post task for handle timeout");
-    b(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-  }
-  
-  private void a(alhi paramalhi1, alhi paramalhi2)
-  {
-    if ((QLog.isColorLevel()) && (alhe.jdField_a_of_type_Boolean)) {
-      QLog.d("AREngine_QQARSession", 2, "ARFaceTest processLocalFaceRecogResult. curLocalFaceRecogResult = " + paramalhi1);
-    }
-    if (this.jdField_a_of_type_Allg != null) {
-      this.jdField_a_of_type_Allg.b(paramalhi1.jdField_a_of_type_Long);
-    }
-    if (this.jdField_a_of_type_Allg != null) {
-      this.jdField_a_of_type_Allg.a();
-    }
-    a(null, paramalhi1);
-  }
-  
-  private void a(alhl paramalhl)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processLocalGestureCircleRecogResult");
-    if (this.jdField_a_of_type_Akyf != null) {
-      this.jdField_a_of_type_Akyf.a(paramalhl, this.jdField_l_of_type_Int, this.jdField_m_of_type_Int, this.jdField_j_of_type_Int, this.jdField_k_of_type_Int);
-    }
-  }
-  
-  private void a(alhs paramalhs1, alhs paramalhs2)
-  {
-    if (paramalhs1.jdField_a_of_type_Int != 2) {
-      if (paramalhs1.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f())
-      {
-        if (this.jdField_a_of_type_Allg != null) {
-          this.jdField_a_of_type_Allg.b(paramalhs1.jdField_a_of_type_Long);
-        }
-        if (this.jdField_a_of_type_Allg != null) {
-          this.jdField_a_of_type_Allg.a();
-        }
-        this.jdField_k_of_type_Long = 0L;
-        this.jdField_l_of_type_Long = 0L;
-        if (paramalhs1.jdField_a_of_type_Int == 0) {
-          a(1L, paramalhs1.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramalhs1.jdField_b_of_type_Int, paramalhs1.jdField_a_of_type_Float, paramalhs1.jdField_b_of_type_Float, paramalhs1.c);
-        }
-        a(new alag(paramalhs1.jdField_b_of_type_Int, paramalhs1.jdField_a_of_type_Float, paramalhs1.jdField_b_of_type_Float, paramalhs1.c, paramalhs1.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Alhc.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int)));
-        this.jdField_q_of_type_Boolean = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((paramalhs2 != null) && (paramalhs2.jdField_a_of_type_Int != 2)) {
-          this.jdField_k_of_type_Long = System.currentTimeMillis();
-        }
-        this.jdField_l_of_type_Long = System.currentTimeMillis();
-      } while (this.jdField_k_of_type_Long <= 0L);
-      if (d())
-      {
-        paramalhs2 = new float[16];
-        a(new alag(paramalhs1.jdField_b_of_type_Int, 0.0F, 0.0F, 0.0F, paramalhs2, this.jdField_a_of_type_Alhc.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int)));
-      }
-    } while (this.jdField_l_of_type_Long - this.jdField_k_of_type_Long <= 1500L);
-    this.jdField_k_of_type_Long = 0L;
-    akzl.a().b(1);
-    k();
-  }
-  
-  private void a(alhv paramalhv)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult start.");
-    if (paramalhv.a() == -1)
-    {
-      n();
-      return;
-    }
-    if (paramalhv.a() == 1)
-    {
-      b(paramalhv);
-      return;
-    }
-    int i1;
-    if (this.jdField_a_of_type_Alhv == null) {
-      i1 = 1;
-    }
-    while ((this.jdField_a_of_type_Alfo != null) && (i1 != 0))
-    {
-      this.jdField_a_of_type_Alfo.b(true);
-      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal setCompareSameSceneFlag.");
-      return;
-      if (!paramalhv.a(this.jdField_a_of_type_Alhv)) {
-        i1 = 1;
-      } else {
-        i1 = 0;
-      }
-    }
-    b(paramalhv);
-  }
-  
-  public static void a(Runnable paramRunnable)
-  {
-    if (b() != null) {
-      b().c(paramRunnable);
-    }
-  }
-  
-  private boolean a(long paramLong, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    alah localalah1 = a(paramArCloudConfigInfo, false, paramLong, paramInt, paramFloat1, paramFloat2, paramFloat3);
-    if (localalah1 == null) {
-      return false;
-    }
-    QLog.d("AREngine_QQARSession", 1, "startModelRender. recogType = " + paramLong + ", key = " + localalah1.jdField_a_of_type_JavaLangString + ", resType = " + localalah1.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Allg != null)
-    {
-      this.jdField_h_of_type_Long = paramLong;
-      this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      alah localalah2 = a(this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, false, paramLong, paramInt, paramFloat1, paramFloat2, paramFloat3);
-      if ((localalah2 != null) && (localalah2.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localalah1.jdField_a_of_type_JavaLangString))) {
-        return true;
-      }
-      if ((localalah2 == null) || (localalah2.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localalah1.jdField_a_of_type_JavaLangString))) {
-        break label337;
-      }
-      this.jdField_a_of_type_Allg.d();
-      this.jdField_a_of_type_Allg.a(localalah1);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Allg != null) {
-        this.jdField_a_of_type_Allg.a();
-      }
-      alkv.a().a();
-      if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null))
-      {
-        if ((!paramArCloudConfigInfo.a()) && (paramArCloudConfigInfo.f())) {
-          akzl.a().a(3);
-        }
-        paramArCloudConfigInfo = new albk(paramArCloudConfigInfo);
-        this.jdField_a_of_type_Alha.a(paramLong, true, paramArCloudConfigInfo);
-      }
-      this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-      if (this.jdField_o_of_type_Int == 0)
-      {
-        this.jdField_p_of_type_Long = System.currentTimeMillis();
-        this.jdField_o_of_type_Int = ((int)(this.jdField_p_of_type_Long - this.jdField_o_of_type_Long));
-      }
-      if ((this.jdField_p_of_type_Int == 0) && (this.jdField_a_of_type_Algo != null))
-      {
-        this.jdField_r_of_type_Long = System.currentTimeMillis();
-        this.jdField_p_of_type_Int = ((int)(this.jdField_r_of_type_Long - this.jdField_q_of_type_Long));
-      }
-      return true;
-      label337:
-      this.jdField_a_of_type_Allg.a(localalah1);
-    }
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    QLog.i("AREngine_QQARSession", 1, "startSensorTrack. isForExternalTrack = " + paramBoolean);
-    this.jdField_p_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Albg != null) {
-      this.jdField_a_of_type_Albg.a();
-    }
-    return true;
-  }
-  
-  public static alkz b()
-  {
-    return jdField_a_of_type_Alkz;
-  }
-  
-  private void b(alhv paramalhv)
-  {
-    QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResultInternal start.");
-    if (paramalhv.a() == 1)
-    {
-      axqw.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "1", "", "", "");
-      if (this.jdField_a_of_type_Alhv != null) {
-        e(false);
-      }
-      this.jdField_a_of_type_JavaLangRunnable = new QQARSession.12(this);
-      if (!this.jdField_a_of_type_Alie.a(paramalhv, this, false, this.jdField_a_of_type_JavaLangString))
-      {
-        QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult end. download preprocess failed.");
-        n();
-      }
-    }
-    alhw localalhw;
-    do
-    {
-      return;
-      QLog.i("AREngine_QQARSession", 1, "processMIGCloudObjectClassifyResult post task for handle timeout");
-      b(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-      return;
-      axqw.b(null, "dc00898", "", "", "0X8008999", "0X8008999", 0, 0, "0", "", "", "");
-      localalhw = paramalhv.a();
-      if (localalhw != null)
-      {
-        this.jdField_a_of_type_Alhv = paramalhv;
-        a(null, localalhw);
-        u();
-      }
-    } while ((localalhw != null) && (localalhw.jdField_a_of_type_Boolean));
-    n();
-  }
-  
-  public static void b(Runnable paramRunnable)
-  {
-    if (b() != null) {
-      b().d(paramRunnable);
-    }
-  }
-  
-  public static void b(Runnable paramRunnable, long paramLong)
-  {
-    if (b() != null) {
-      b().c(paramRunnable, paramLong);
-    }
-  }
-  
-  private void c(Runnable paramRunnable)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramRunnable);
-      }
-      return;
-    }
-  }
-  
-  private void c(Runnable paramRunnable, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramRunnable);
-      }
-      return;
-    }
-  }
-  
-  private void d(Runnable paramRunnable)
-  {
-    for (;;)
-    {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_b_of_type_JavaUtilArrayList != null))
-        {
-          i1 = 0;
-          if (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
-          {
-            if (!paramRunnable.equals(this.jdField_b_of_type_JavaUtilArrayList.get(i1))) {
-              break label107;
+            localRect = ((alje)localObject).jdField_a_of_type_AndroidGraphicsRect;
+            if (((alje)localObject).jdField_a_of_type_Int == 2)
+            {
+              bool6 = true;
+              bool7 = a(localRect);
+              bool4 = bool6;
+              bool3 = bool5;
+              bool1 = bool7;
+              if (!bool7)
+              {
+                bool2 = b(localRect);
+                bool1 = bool7;
+                bool3 = bool5;
+                bool4 = bool6;
+              }
+              bool9 = bool4;
+              bool8 = bool3;
+              bool11 = bool1;
+              bool10 = bool2;
+              if (bool2) {
+                break label1052;
+              }
+              bool8 = bool4;
+              bool9 = bool3;
+              bool10 = bool1;
+              bool11 = bool2;
+              if (!bool1) {
+                break label1004;
+              }
+              bool5 = bool4;
+              bool6 = bool3;
+              bool4 = bool2;
+              bool3 = bool1;
+              bool2 = bool6;
+              bool1 = bool5;
+              f3 = 0.0F;
+              f4 = 0.0F;
+              f2 = f4;
+              f1 = f3;
+              if (bool4) {
+                break label1041;
+              }
+              f2 = f4;
+              f1 = f3;
+              if (bool3) {
+                break label1041;
+              }
+              f2 = f4;
+              f1 = f3;
             }
-            QLog.i("AREngine_QQARSession", 1, "removeTask. task = " + this.jdField_b_of_type_JavaUtilArrayList.get(i1));
-            this.jdField_b_of_type_JavaUtilArrayList.remove(i1);
-            this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
           }
         }
-        return;
       }
-      label107:
-      i1 += 1;
-    }
-  }
-  
-  private void d(boolean paramBoolean)
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.b(paramBoolean);
-    }
-  }
-  
-  private void e(int paramInt)
-  {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_Int = 2;
     }
     for (;;)
     {
-      QLog.d("AREngine_QQARSession", 1, "start end. mCurEngineState = " + this.jdField_a_of_type_Int);
-      QLog.d("AREngine_QQARSession", 1, "onStartComplete. retCode = " + paramInt);
-      if (this.jdField_a_of_type_Alha != null) {
-        this.jdField_a_of_type_Alha.a(paramInt);
+      float f5;
+      try
+      {
+        if (((alje)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect.width() <= 0) {
+          break label1041;
+        }
+        f2 = f4;
+        f1 = f3;
+        if (((alje)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect.height() <= 0) {
+          break label1041;
+        }
+        if (this.jdField_f_of_type_Long != 0L)
+        {
+          f2 = f4;
+          f1 = f3;
+          if (SystemClock.uptimeMillis() - this.jdField_f_of_type_Long <= 500L) {
+            break label1041;
+          }
+        }
+        f4 = ((alje)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect.width() / this.jdField_c_of_type_AndroidGraphicsRect.width();
+        f3 = ((alje)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect.height() / this.jdField_c_of_type_AndroidGraphicsRect.height();
+        if ((f4 >= 0.7F) || (f3 >= 0.7F)) {
+          break label1029;
+        }
+        bool5 = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("QRSession", 2, String.format("[wRatio,hRatio,need]=[%.2f %.2f %b]", new Object[] { Float.valueOf(f4), Float.valueOf(f3), Boolean.valueOf(bool5) }));
+        }
+        f2 = f3;
+        f1 = f4;
+        if (!bool5) {
+          break label1041;
+        }
+        paramList = new Rect(((alje)paramList.get(0)).jdField_a_of_type_AndroidGraphicsRect);
+        localObject = new Point(this.jdField_d_of_type_Int / 2, this.jdField_e_of_type_Int / 2);
+        f5 = a(paramList, this.jdField_c_of_type_AndroidGraphicsRect, (Point)localObject);
+        f2 = f3;
+        f1 = f4;
+        if (f5 < 1.2F) {
+          break label1041;
+        }
+        if (f5 <= 25.0F) {
+          break label1035;
+        }
+        f1 = 25.0F;
+        bool5 = alku.a().a(f1, false);
+        this.g |= bool5;
+        if (!bool5) {
+          break label1086;
+        }
+        this.jdField_f_of_type_Long = SystemClock.uptimeMillis();
+        alku.a().c();
       }
+      catch (Throwable paramList) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QRSession", 2, String.format("doRecognizeInternal ...async onGetDetectRect has=[%b,%b] suc=[%b,%b] zoom=%b [%.2f,%.2f] minicode_timecost=%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool5), Float.valueOf(f3), Float.valueOf(f1), Long.valueOf(System.currentTimeMillis() - l1) }));
       return;
-      this.jdField_a_of_type_Int = 5;
-      this.jdField_f_of_type_Boolean = false;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QRSession", 2, paramList.getMessage(), paramList);
+      return;
+      if (((alje)localObject).jdField_a_of_type_Int == 1)
+      {
+        bool5 = true;
+        bool8 = b(localRect);
+        bool4 = bool6;
+        bool3 = bool5;
+        bool1 = bool7;
+        bool2 = bool8;
+        if (bool8) {
+          break label324;
+        }
+        bool1 = a(localRect);
+        bool4 = bool6;
+        bool3 = bool5;
+        bool2 = bool8;
+        break label324;
+      }
+      bool4 = bool6;
+      bool3 = bool5;
+      bool1 = bool7;
+      if (((alje)localObject).jdField_a_of_type_Int != 3) {
+        break label324;
+      }
+      bool8 = b(localRect);
+      bool4 = bool6;
+      bool3 = bool5;
+      bool1 = bool7;
+      bool2 = bool8;
+      if (bool8) {
+        break label324;
+      }
+      bool1 = a(localRect);
+      bool4 = bool6;
+      bool3 = bool5;
+      bool2 = bool8;
+      break label324;
+      label1004:
+      i += 1;
+      bool6 = bool8;
+      bool5 = bool9;
+      bool7 = bool10;
+      bool2 = bool11;
+      break label166;
+      label1029:
+      bool5 = false;
+      continue;
+      label1035:
+      f1 = f5;
+      continue;
+      label1041:
+      f3 = f1;
+      bool5 = false;
+      f1 = f2;
+      continue;
+      label1052:
+      bool3 = bool11;
+      bool4 = bool10;
+      bool1 = bool9;
+      bool2 = bool8;
+      break label390;
+      bool2 = false;
+      bool3 = false;
+      bool4 = false;
+      bool1 = false;
+      break label390;
+      label1086:
+      bool5 = true;
+      f1 = f3;
+      f3 = f4;
     }
   }
   
-  private void e(boolean paramBoolean)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Alhv = null;
-    alhw.jdField_a_of_type_Alhw.jdField_b_of_type_Boolean = paramBoolean;
-    a(null, alhw.jdField_a_of_type_Alhw);
-  }
-  
-  private void e(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
-    if (l2 >= 1000L) {}
-    for (long l1 = 0L;; l1 = 1000L - l2)
+    int j = -1;
+    long l1 = System.currentTimeMillis();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i = j;
+    long l2;
+    if (this.jdField_c_of_type_Boolean)
     {
-      QLog.i("AREngine_QQARSession", 1, String.format("onARObjectClassifyDownloadComplete result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      b(new QQARSession.16(this, paramBoolean, paramArCloudConfigInfo), l1);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-      return;
+      bool1 = bool2;
+      i = j;
+      if (l1 - this.jdField_c_of_type_Long > 1000L)
+      {
+        l2 = System.currentTimeMillis();
+        i = a(this.jdField_b_of_type_ArrayOfByte, paramInt1, paramInt2);
+        if (i >= this.jdField_c_of_type_Int) {
+          break label152;
+        }
+      }
     }
-  }
-  
-  private void f(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
-    if (l2 >= 1000L) {}
-    for (long l1 = 0L;; l1 = 1000L - l2)
+    label152:
+    for (bool1 = true;; bool1 = false)
     {
-      QLog.i("AREngine_QQARSession", 1, String.format("onARSceneRecogDownloadCompleteInteral result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      b(new QQARSession.18(this, paramBoolean, paramArCloudConfigInfo), l1);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QRSession", 2, String.format("checkAvgLuminance avgLuminance=%s get avg luminance time cost:%sms", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l2) }));
+      }
+      this.jdField_c_of_type_Long = l1;
+      if ((this.jdField_a_of_type_Aljc != null) && (this.jdField_a_of_type_Int == 2) && (i >= 0)) {
+        this.jdField_a_of_type_Aljc.a(i);
+      }
+      return bool1;
     }
   }
   
-  public static boolean f()
+  private boolean a(Rect paramRect)
   {
-    return w;
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Aljn.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramRect.left, paramRect.top, paramRect.width(), paramRect.height(), true);
+      return bool;
+    }
+    catch (Throwable paramRect)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession", 2, paramRect.getMessage(), paramRect);
+      }
+    }
+    return false;
   }
   
-  private boolean g()
+  private boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return (paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (paramArrayOfByte.length == paramInt1 * paramInt2 * 3 / 2);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Aljw.a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Aljn.a();
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  private boolean b(Rect paramRect)
   {
     boolean bool = false;
-    QLog.i("AREngine_QQARSession", 2, "startRenderManager.");
-    if (this.jdField_a_of_type_Allg != null)
-    {
-      this.jdField_a_of_type_Allg.a(0, this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge);
-      this.jdField_a_of_type_Allg.a(8, this.jdField_a_of_type_Akyf);
-      bool = true;
+    if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length != paramRect.width() * paramRect.height() * 3 / 2)) {
+      this.jdField_c_of_type_ArrayOfByte = new byte[paramRect.width() * paramRect.height() * 3 / 2];
+    }
+    int[] arrayOfInt = new int[2];
+    if (ImgProcessScan.gray_rotate_crop_sub(this.jdField_c_of_type_ArrayOfByte, arrayOfInt, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramRect.left, paramRect.top, paramRect.width(), paramRect.height(), 90, 0) == 0) {
+      bool = this.jdField_a_of_type_Aljw.a(this.jdField_c_of_type_ArrayOfByte, arrayOfInt[0], arrayOfInt[1], true);
     }
     return bool;
   }
   
-  private boolean h()
+  private void c()
   {
-    QLog.i("AREngine_QQARSession", 2, "startLocalRecog.");
-    if (this.jdField_a_of_type_Alhc != null)
+    try
     {
-      if (!this.jdField_a_of_type_Alhc.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_f_of_type_Long, this.jdField_l_of_type_Int, this.jdField_m_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this)) {
-        return false;
-      }
-      return this.jdField_a_of_type_Alhc.a();
-    }
-    return false;
-  }
-  
-  private boolean i()
-  {
-    QLog.i("AREngine_QQARSession", 2, "startCloudRecog.");
-    if (this.jdField_a_of_type_Alfo != null)
-    {
-      this.jdField_a_of_type_Alfo.a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int, this.jdField_n_of_type_Int);
-      this.jdField_a_of_type_Alfo.b();
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean j()
-  {
-    QLog.i("AREngine_QQARSession", 2, "stopLocalRecog.");
-    if (this.jdField_a_of_type_Alhc != null) {
-      this.jdField_a_of_type_Alhc.a();
-    }
-    return true;
-  }
-  
-  private boolean k()
-  {
-    QLog.i("AREngine_QQARSession", 2, "stopCloudRecog.");
-    if (this.jdField_a_of_type_Alfo != null) {
-      this.jdField_a_of_type_Alfo.e();
-    }
-    return true;
-  }
-  
-  private boolean l()
-  {
-    return false;
-  }
-  
-  public static void r()
-  {
-    jdField_a_of_type_Alkz = null;
-    w = true;
-  }
-  
-  public static void s()
-  {
-    if (b() != null) {
-      b().B();
-    }
-  }
-  
-  private void t()
-  {
-    QLog.d("AREngine_QQARSession", 1, "pauseCloudRecog.");
-    if (this.jdField_a_of_type_Alfo != null) {
-      this.jdField_a_of_type_Alfo.d();
-    }
-  }
-  
-  private void u()
-  {
-    QLog.d("AREngine_QQARSession", 1, "resumeCloudRecog.");
-    if (this.jdField_p_of_type_Int == 0) {
-      this.jdField_q_of_type_Long = 0L;
-    }
-    this.jdField_a_of_type_Algo = null;
-    this.jdField_l_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Alfo != null) {
-      this.jdField_a_of_type_Alfo.c();
-    }
-  }
-  
-  private void v()
-  {
-    if (this.jdField_a_of_type_Albg != null)
-    {
-      this.jdField_a_of_type_Albg.e();
-      this.jdField_a_of_type_Albg = null;
-    }
-    if (this.jdField_a_of_type_Alhc != null)
-    {
-      this.jdField_a_of_type_Alhc.b();
-      this.jdField_a_of_type_Alhc = null;
-    }
-    if (this.jdField_a_of_type_Alfo != null)
-    {
-      this.jdField_a_of_type_Alfo.f();
-      this.jdField_a_of_type_Alfo = null;
-    }
-    if (this.jdField_a_of_type_Alie != null)
-    {
-      this.jdField_a_of_type_Alie.c();
-      this.jdField_a_of_type_Alie = null;
-    }
-    if (this.jdField_a_of_type_Allg != null) {
-      this.jdField_a_of_type_Allg = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_r_of_type_Int = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      if (this.jdField_a_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        this.jdField_a_of_type_AndroidOsHandler = null;
-        if (Build.VERSION.SDK_INT >= 18) {
-          this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-        }
-        this.jdField_a_of_type_AndroidOsHandlerThread = null;
-        this.jdField_b_of_type_JavaUtilArrayList = null;
+        this.jdField_a_of_type_Aljw.a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aljn.a();
+        this.jdField_b_of_type_Boolean = false;
+      }
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
       }
       return;
     }
-  }
-  
-  private void w()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudMarkerRecogResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      a(1L);
-    }
-    y();
-    this.jdField_q_of_type_Boolean = false;
-  }
-  
-  private void x()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudFaceRecogResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {}
-    for (;;)
+    catch (Exception localException)
     {
-      y();
-      this.jdField_r_of_type_Boolean = false;
-      return;
-      b(1L);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QRSession", 2, "unInitQbar fail!", localException);
     }
   }
   
-  private void y()
+  private void d()
   {
-    QLog.i("AREngine_QQARSession", 1, "processCloudRecogResult end.");
-    u();
-  }
-  
-  private void z()
-  {
-    QLog.i("AREngine_QQARSession", 1, "stopSensorTrack.");
-    this.jdField_p_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Albg != null) {
-      this.jdField_a_of_type_Albg.d();
-    }
-  }
-  
-  public int a()
-  {
-    a(new QQARSession.1(this));
-    return 0;
-  }
-  
-  public int a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, ARCommonConfigInfo paramARCommonConfigInfo, ArConfigInfo paramArConfigInfo, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, alha paramalha, Activity paramActivity, akyf paramakyf, allg paramallg)
-  {
-    QLog.d("AREngine_QQARSession", 1, String.format("initAR isEnableARCloudFromSettings=%s isEnableARCloudFromH5=%s isTestMode=%s commonConfig=%s markerConfig=%s faceConfig=%s arEngineCallback=%s mIsArInited=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean4), paramARCommonConfigInfo, paramArConfigInfo, paramARScanStarFaceConfigInfo, paramalha, Boolean.valueOf(this.jdField_f_of_type_Boolean) }));
-    if (this.jdField_f_of_type_Boolean) {
-      return 0;
-    }
-    if (paramARCommonConfigInfo == null)
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {}
+    for (StringBuilder localStringBuilder = new StringBuilder("doRecognizeInternal ");; localStringBuilder = null)
     {
-      this.jdField_f_of_type_Boolean = false;
-      QLog.i("AREngine_QQARSession", 1, "initAR fail! commonConfig is null.");
-      if (paramalha != null) {
-        paramalha.a(3);
-      }
-      return 3;
-    }
-    jdField_a_of_type_Boolean = paramBoolean4;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = paramArConfigInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo = paramARScanStarFaceConfigInfo;
-    this.jdField_a_of_type_Alha = paramalha;
-    this.jdField_h_of_type_Boolean = paramARCommonConfigInfo.isEnableARCloud();
-    this.jdField_b_of_type_Long = ARRecognition.b(paramARCommonConfigInfo.recognitions);
-    this.jdField_c_of_type_Long = ARRecognition.a(paramARCommonConfigInfo.recognitions);
-    if (this.jdField_h_of_type_Boolean)
-    {
-      paramBoolean4 = true;
-      this.jdField_j_of_type_Boolean = paramBoolean4;
-      if (!paramBoolean2) {
-        this.jdField_j_of_type_Boolean = false;
-      }
-      if (paramBoolean1) {
-        this.jdField_j_of_type_Boolean = true;
-      }
-      if (!paramBoolean3) {
-        break label361;
-      }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_j_of_type_Boolean = false;
-    }
-    label361:
-    for (this.jdField_f_of_type_Long = 4096L;; this.jdField_f_of_type_Long = (this.jdField_b_of_type_Long & 0x5))
-    {
-      this.jdField_g_of_type_Long = (this.jdField_c_of_type_Long & 0x887);
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions == null) {
-        break label376;
-      }
-      int i2;
-      for (int i1 = 0; i1 < this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.size(); i1 = i2 + 1)
+      boolean bool1 = false;
+      boolean bool2;
+      boolean bool3;
+      if (a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int))
       {
-        long l1 = 1 << (int)((ARRecognition)this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.get(i1)).jdField_a_of_type_Long;
-        i2 = i1;
-        if ((this.jdField_f_of_type_Long & l1) == 0L)
+        if ((this.jdField_b_of_type_AndroidGraphicsRect == null) || (this.jdField_d_of_type_AndroidGraphicsRect == null)) {
+          a();
+        }
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(102);
+        bool1 = this.jdField_a_of_type_Aljn.a();
+        if ((this.jdField_f_of_type_Int >= 2) && (bool1)) {
+          break label480;
+        }
+        int i = this.jdField_d_of_type_AndroidGraphicsRect.top;
+        int j = this.jdField_d_of_type_AndroidGraphicsRect.left;
+        int k = this.jdField_d_of_type_AndroidGraphicsRect.height();
+        int m = this.jdField_d_of_type_AndroidGraphicsRect.width();
+        if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != k * m * 3 / 2)) {
+          this.jdField_b_of_type_ArrayOfByte = new byte[k * m * 3 / 2];
+        }
+        int[] arrayOfInt = new int[2];
+        if (ImgProcessScan.gray_rotate_crop_sub(this.jdField_b_of_type_ArrayOfByte, arrayOfInt, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, i, j, k, m, 90, 0) == 0)
         {
-          i2 = i1;
-          if ((l1 & this.jdField_g_of_type_Long) == 0L)
+          i = arrayOfInt[0];
+          j = arrayOfInt[1];
+          long l2 = System.currentTimeMillis();
+          boolean bool4 = this.jdField_a_of_type_Aljw.a(this.jdField_b_of_type_ArrayOfByte, i, j, false);
+          long l3 = System.currentTimeMillis();
+          if ((bool4) || (!this.jdField_a_of_type_Aljn.a(this.jdField_b_of_type_ArrayOfByte, i, j, false))) {
+            break label468;
+          }
+          bool2 = true;
+          long l4 = System.currentTimeMillis();
+          if ((bool4) || (bool2) || (!a(i, j))) {
+            break label474;
+          }
+          bool3 = true;
+          label289:
+          if ((!bool3) && (!bool4) && (!bool2)) {
+            this.jdField_f_of_type_Int += 1;
+          }
+          if ((bool4) || (bool2))
           {
-            this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions.remove(i1);
-            i2 = i1 - 1;
+            this.jdField_f_of_type_Int = 0;
+            this.jdField_d_of_type_Long = 0L;
+          }
+          alju.a((int)(l3 - l2), 0);
+          alju.a((int)(l4 - l3), 1);
+          if (localStringBuilder != null) {
+            localStringBuilder.append(String.format("...1 decode qrSuc=%b miniSuc=%b isDark=%b failCnt=%d", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(this.jdField_f_of_type_Int) }));
           }
         }
-      }
-      paramBoolean4 = false;
-      break;
-    }
-    label376:
-    this.jdField_d_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L);
-    this.jdField_e_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2L);
-    this.jdField_f_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 4L);
-    this.jdField_g_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 64L);
-    this.jdField_h_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 128L);
-    this.jdField_i_of_type_Int = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 2048L);
-    QLog.i("AREngine_QQARSession", 1, "initAR mIsEnableARCloudFromConfig=" + this.jdField_h_of_type_Boolean + " mLocalRecogTypeFromConfig=" + this.jdField_b_of_type_Long + " mCloudRecogTypeFromConfig=" + this.jdField_c_of_type_Long + " mIsEnableARCloudFromClientSupport=" + true + " mLocalRecogTypeFromClientSupport=" + 5L + " mCloudRecogTypeFromClientSupport=" + 2183L + " mIsEnableARCloud=" + this.jdField_j_of_type_Boolean + " mLocalRecogType=" + this.jdField_f_of_type_Long + " mCloudRecogType=" + this.jdField_g_of_type_Long + " mMarkerRecogPriority=" + this.jdField_d_of_type_Int + " mObjectClassifyPriority=" + this.jdField_e_of_type_Int + " mFaceRecogPriority=" + this.jdField_f_of_type_Int + " mPreOcrRecogPriority=" + this.jdField_g_of_type_Int + " mSceneRecogPriority=" + this.jdField_i_of_type_Int);
-    QLog.i("AREngine_QQARSession", 1, "Build.MODEL = " + Build.MODEL);
-    this.jdField_a_of_type_Allg = paramallg;
-    this.jdField_a_of_type_Akyf = paramakyf;
-    this.jdField_a_of_type_Alie = new alie(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext);
-    if ((this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.aRCloudCacheExpireTime > 0L)) {
-      this.jdField_a_of_type_Alie.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.aRCloudCacheExpireTime * 60L * 1000L, jdField_a_of_type_Boolean);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Alie.a();
-      if ((this.jdField_f_of_type_Long != 0L) && (this.jdField_a_of_type_Alhc == null)) {
-        this.jdField_a_of_type_Alhc = new alhc();
-      }
-      if ((!this.jdField_j_of_type_Boolean) || (this.jdField_a_of_type_Alfo != null)) {
-        break;
-      }
-      this.jdField_a_of_type_Alfo = new alfo();
-      if (this.jdField_a_of_type_Alfo.a(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramActivity, 900000000, 900000000, 0, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo)) {
-        break;
-      }
-      QLog.i("AREngine_QQARSession", 1, "initAR fail! ARCloud init ar so fail.");
-      this.jdField_a_of_type_Alfo = null;
-      this.jdField_f_of_type_Boolean = false;
-      if (paramalha != null) {
-        paramalha.a(8);
-      }
-      return 8;
-      this.jdField_a_of_type_Alie.a(86400000L, jdField_a_of_type_Boolean);
-    }
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    return 0;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.mARCloudUploadDelayTime;
-  }
-  
-  public ArrayList<String> a()
-  {
-    if (this.jdField_a_of_type_Alfo != null) {
-      return this.jdField_a_of_type_Alfo.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderReadyStatus ready");
-    a(new QQARSession.20(this));
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
-  
-  public void a(int paramInt)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARMarkerAllDownloadProgress. progress = " + paramInt);
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.a(2, paramInt);
-    }
-  }
-  
-  public void a(int paramInt, algo paramalgo)
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete mIsForbiddenLocalMarkAndCloudRecg:do nothing but return ");
-    }
-    for (;;)
-    {
-      return;
-      QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. retCode = " + paramInt + ", recogResult = " + paramalgo + ":time is:" + (System.currentTimeMillis() - this.jdField_t_of_type_Long));
-      this.jdField_t_of_type_Long = System.currentTimeMillis();
-      if ((paramInt == 0) && (this.jdField_u_of_type_Boolean))
-      {
-        this.jdField_u_of_type_Boolean = false;
-        axqw.b(null, "dc00898", "", "", "0X80085AE", "0X80085AE", 0, 0, "", "", "", "");
-      }
-      if (((this.jdField_a_of_type_Algo == null) || (this.jdField_a_of_type_Alhv != null)) && ((this.jdField_a_of_type_Alhs == null) || (this.jdField_a_of_type_Alhs.jdField_a_of_type_Int == 2)) && ((this.jdField_a_of_type_Alhi == null) || (this.jdField_a_of_type_Alhi.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) && (!d())) {
-        break;
-      }
-      if ((this.jdField_a_of_type_Algo != null) && (this.jdField_a_of_type_Alhv == null)) {
-        QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurCloudRecogResult != null.");
-      }
-      while (this.jdField_a_of_type_Alfo != null)
-      {
-        this.jdField_a_of_type_Alfo.a(true);
-        return;
-        if ((this.jdField_a_of_type_Alhs != null) && (this.jdField_a_of_type_Alhs.jdField_a_of_type_Int != 2)) {
-          QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurLocalMarkerRecogResult.state != ARConstants.AR_TRACK_STATE_LOST.");
-        } else if ((this.jdField_a_of_type_Alhi != null) && (this.jdField_a_of_type_Alhi.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-          QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. mCurLocalFaceRecogResult.faceDatas.size() > 0.");
-        } else if (d()) {
-          QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. isModelRenderStarted().");
-        }
-      }
-    }
-    int i1;
-    boolean bool;
-    Object localObject;
-    if ((this.jdField_a_of_type_Algo == null) && (this.jdField_a_of_type_Alhv != null))
-    {
-      QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. deal mCurMIGObjectClassifyResult sucess");
-      i1 = 0;
-      if ((paramInt != 0) || (paramalgo == null)) {
-        break label1070;
-      }
-      if ((!alfz.a(paramalgo.jdField_a_of_type_Alfz)) && (!alge.a(paramalgo.jdField_a_of_type_Alge)) && (!alhv.a(paramalgo.jdField_a_of_type_Alhv)) && (!algq.a(paramalgo.jdField_a_of_type_Algq)))
-      {
-        paramInt = i1;
-        if (!algw.a(paramalgo.jdField_a_of_type_Algw)) {}
-      }
-      else
-      {
-        paramInt = 1;
-      }
-      bool = algg.a(paramalgo.jdField_a_of_type_Algg);
-      i1 = paramInt;
-      if (bool)
-      {
-        i1 = paramInt;
-        if (paramInt != 0)
-        {
-          i1 = paramInt;
-          if (ARRecognition.a(paramalgo, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 64L))
-          {
-            i1 = 0;
-            QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard other recog result as OCR preRecog has high priority");
-          }
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("onARCloudUploadImgComplete result:  marker{success: ").append(alfz.a(paramalgo.jdField_a_of_type_Alfz)).append(", priority: ").append(this.jdField_d_of_type_Int).append("}");
-        localStringBuilder1.append("  object{success: ").append(alge.a(paramalgo.jdField_a_of_type_Alge)).append(", priority: ").append(this.jdField_e_of_type_Int).append("}");
-        localStringBuilder1.append("  face{success: ").append(algq.a(paramalgo.jdField_a_of_type_Algq)).append(", priority: ").append(this.jdField_f_of_type_Int).append("}");
-        localStringBuilder1.append("  pre ocr{success: ").append(algg.a(paramalgo.jdField_a_of_type_Algg)).append(", priority: ").append(this.jdField_g_of_type_Int).append("}");
-        StringBuilder localStringBuilder2 = localStringBuilder1.append(" \n mig-object{success: ").append(alhv.a(paramalgo.jdField_a_of_type_Alhv)).append(", priority: ").append(this.jdField_h_of_type_Int).append("}name:");
-        if (paramalgo.jdField_a_of_type_Alhv == null) {
-          break label900;
-        }
-        localObject = paramalgo.jdField_a_of_type_Alhv.toString();
-        label666:
-        localStringBuilder2.append((String)localObject);
-        localStringBuilder1.append("  scene{success: ").append(algw.a(paramalgo.jdField_a_of_type_Algw)).append(", priority: ").append(this.jdField_i_of_type_Int).append("}");
-        QLog.i("AREngine_QQARSession", 2, localStringBuilder1.toString());
-      }
-    }
-    for (;;)
-    {
-      if ((i1 != 0) && (!this.jdField_v_of_type_Boolean))
-      {
-        QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete first recognize success.");
-        this.jdField_v_of_type_Boolean = true;
-      }
-      if ((bool) && (i1 == 0))
-      {
-        this.jdField_m_of_type_Boolean = true;
-        a(new QQARSession.5(this));
       }
       for (;;)
       {
-        if (i1 != 0) {
-          break label939;
-        }
-        if (this.jdField_a_of_type_Alhv != null)
+        if ((QLog.isColorLevel()) && (localStringBuilder != null))
         {
-          e(true);
-          if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (!this.jdField_o_of_type_Boolean)) {
-            n();
-          }
+          QLog.i("QRSession", 2, localStringBuilder.toString());
+          QLog.d("QRSession", 2, String.format("doRecognizeInternal ...end isReady2Detect=%b minicode_timecost=%d", new Object[] { Boolean.valueOf(bool1), Long.valueOf(System.currentTimeMillis() - l1) }));
         }
-        if ((!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) && ((this.jdField_f_of_type_Long & 1L) != 0L))
-        {
-          t();
-          b(1L);
-        }
-        if (this.jdField_a_of_type_Alfo != null) {
-          this.jdField_a_of_type_Alfo.a(true);
-        }
-        QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. cloud recog failed.");
         return;
-        if ((this.jdField_a_of_type_Algo == null) || (this.jdField_a_of_type_Alhv == null)) {
-          break;
-        }
-        QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. deal mCurMIGObjectClassifyResult error happen");
+        label468:
+        bool2 = false;
         break;
-        label900:
-        localObject = "";
-        break label666;
-        if ((!bool) && (this.jdField_m_of_type_Boolean))
-        {
-          this.jdField_m_of_type_Boolean = false;
-          a(new QQARSession.6(this));
+        label474:
+        bool3 = false;
+        break label289;
+        label480:
+        this.jdField_d_of_type_Long = this.jdField_a_of_type_Aljn.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_d_of_type_AndroidGraphicsRect);
+        this.jdField_f_of_type_Int = 0;
+        if (this.jdField_d_of_type_Long > 0L) {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(102, 350L);
+        }
+        if (localStringBuilder != null) {
+          localStringBuilder.append(String.format("...2 detect ts=%d", new Object[] { Long.valueOf(this.jdField_d_of_type_Long) }));
         }
       }
-      label939:
-      if (i1 != 0)
-      {
-        localObject = algo.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramalgo);
-        if ((algo.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramalgo)) && (((alfw)localObject).jdField_a_of_type_Int != 1))
-        {
-          a(new QQARSession.7(this, (alfw)localObject, algo.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramalgo)));
-          if (this.jdField_a_of_type_Alfo != null) {
-            this.jdField_a_of_type_Alfo.a(true);
-          }
-          QLog.i("AREngine_QQARSession", 1, "onARCloudUploadImgComplete. discard this recog result. lbs location failed.");
-          return;
-        }
-      }
-      t();
-      this.jdField_i_of_type_Long = 0L;
-      this.jdField_j_of_type_Long = 0L;
-      a(new QQARSession.8(this, paramalgo));
-      if (this.jdField_a_of_type_Alfo == null) {
-        break;
-      }
-      this.jdField_a_of_type_Alfo.a(true);
-      return;
-      label1070:
-      i1 = 0;
-      bool = false;
     }
   }
+  
+  public void a(int paramInt) {}
   
   public void a(long paramLong)
   {
-    QLog.d("AREngine_QQARSession", 1, "pauseLocalRecog. recogType = " + paramLong);
-    if (this.jdField_a_of_type_Alhc != null) {
-      this.jdField_a_of_type_Alhc.a(paramLong);
+    if (this.jdField_a_of_type_Aljo != null) {
+      this.jdField_a_of_type_Aljo.a(paramLong);
     }
   }
   
-  public void a(long paramLong, alhu paramalhu)
+  public void a(aljc paramaljc, aljo paramaljo)
   {
-    if (this.jdField_r_of_type_Int == 1)
+    this.jdField_a_of_type_Aljc = paramaljc;
+    this.jdField_a_of_type_Aljo = paramaljo;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    super.a(paramContext, paramAppInterface);
+    this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QRRecognizerController", 0);
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new alla(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Aljw = new aljw(this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_a_of_type_Aljw.a(this);
+    this.jdField_a_of_type_Aljn = new aljn(this.jdField_a_of_type_AndroidOsHandler, paramContext);
+    this.jdField_a_of_type_Aljn.a(this);
+    this.jdField_a_of_type_Long = 250L;
+    if (aldm.a().jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Long = 120L;
+    }
+    this.jdField_c_of_type_Int = aldm.a().jdField_c_of_type_Int;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
+    QLog.i("QRSession", 1, String.format("init mQRRecognizeInterval=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+  }
+  
+  public void a(Rect paramRect)
+  {
+    if ((paramRect != null) && (!paramRect.equals(this.jdField_a_of_type_AndroidGraphicsRect)))
     {
-      if (paramalhu.jdField_b_of_type_Long != 4096L) {
-        return;
-      }
-      a((alhl)paramalhu);
+      this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+      a();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    int i = 2;
+    this.jdField_e_of_type_Long = 0L;
+    if ((this.jdField_a_of_type_Aljc != null) && (this.jdField_a_of_type_Int == 2) && (!this.jdField_f_of_type_Boolean)) {
+      this.jdField_a_of_type_Aljc.a(paramString1.toString(), paramString2.toString(), paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      alju.a(i);
       return;
-    }
-    alht localalht = new alht();
-    if ((1L & paramLong) != 0L) {
-      localalht.jdField_a_of_type_Alhs = ((alhs)paramalhu);
-    }
-    if ((0x4 & paramLong) != 0L) {
-      localalht.jdField_a_of_type_Alhi = ((alhi)paramalhu);
-    }
-    a(localalht, null);
-  }
-  
-  public void a(long paramLong, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    a(new QQARSession.2(this, paramLong, paramArCloudConfigInfo), 500L);
-  }
-  
-  public void a(alag paramalag)
-  {
-    a(paramalag, null);
-  }
-  
-  public void a(alai paramalai, alhu paramalhu)
-  {
-    if ((paramalhu != null) && (paramalhu.jdField_b_of_type_Long == 4L)) {
-      if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-        this.jdField_a_of_type_Alha.a(paramalhu.jdField_b_of_type_Long, 0, null, paramalhu);
+      if (this.g) {
+        i = 6;
+      } else {
+        i = 1;
       }
     }
-    label211:
-    do
+  }
+  
+  public void a(List<alje> paramList, long paramLong)
+  {
+    if ((this.jdField_a_of_type_Aljo != null) && (!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (paramLong == this.jdField_d_of_type_Long))
     {
-      do
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      int i = 0;
+      while (i < paramList.size())
       {
-        do
-        {
-          do
-          {
-            return;
-            if ((paramalhu == null) || (paramalhu.jdField_b_of_type_Long != 128L)) {
-              break;
-            }
-          } while ((!this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Alha == null));
-          this.jdField_a_of_type_Alha.a(paramalhu.jdField_b_of_type_Long, 0, null, paramalhu);
-          return;
-          if (this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo == null) {
-            break label211;
-          }
-          if (this.jdField_a_of_type_Allg != null) {
-            this.jdField_a_of_type_Allg.a();
-          }
-          if ((!this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()) || (!this.jdField_p_of_type_Boolean)) {
-            break;
-          }
-        } while ((!this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_Int != 2) || (this.jdField_a_of_type_Alha == null));
-        this.jdField_a_of_type_Alha.a(this.jdField_h_of_type_Long, this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_c_of_type_Int, paramalai, null);
-        return;
-      } while (this.jdField_a_of_type_Allg == null);
-      this.jdField_a_of_type_Allg.a(paramalai);
-      return;
-    } while (this.jdField_a_of_type_Allg == null);
-    this.jdField_a_of_type_Allg.a(paramalai);
-  }
-  
-  /* Error */
-  public void a(alht paramalht, algo paramalgo)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 532	alkz:jdField_e_of_type_Boolean	Z
-    //   6: ifeq +13 -> 19
-    //   9: aload_0
-    //   10: getfield 533	alkz:jdField_a_of_type_Int	I
-    //   13: istore_3
-    //   14: iload_3
-    //   15: iconst_2
-    //   16: if_icmpeq +6 -> 22
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_1
-    //   23: ifnull +33 -> 56
-    //   26: aload_1
-    //   27: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   30: ifnull +11 -> 41
-    //   33: aload_0
-    //   34: aload_1
-    //   35: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   38: putfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   41: aload_1
-    //   42: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   45: ifnull +11 -> 56
-    //   48: aload_0
-    //   49: aload_1
-    //   50: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   53: putfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   56: aload_2
-    //   57: ifnull +8 -> 65
-    //   60: aload_0
-    //   61: aload_2
-    //   62: putfield 508	alkz:jdField_a_of_type_Algo	Lalgo;
-    //   65: aload_0
-    //   66: getfield 93	alkz:jdField_f_of_type_Long	J
-    //   69: lconst_0
-    //   70: lcmp
-    //   71: ifeq +1510 -> 1581
-    //   74: aload_0
-    //   75: getfield 95	alkz:jdField_g_of_type_Long	J
-    //   78: lconst_0
-    //   79: lcmp
-    //   80: ifeq +1501 -> 1581
-    //   83: aload_1
-    //   84: ifnull +590 -> 674
-    //   87: aload_1
-    //   88: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   91: ifnull +583 -> 674
-    //   94: aload_1
-    //   95: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   98: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   101: istore_3
-    //   102: iload_3
-    //   103: ifne +227 -> 330
-    //   106: aconst_null
-    //   107: ldc_w 1271
-    //   110: ldc_w 396
-    //   113: ldc_w 396
-    //   116: ldc_w 1273
-    //   119: ldc_w 1273
-    //   122: iconst_0
-    //   123: iconst_0
-    //   124: aload_1
-    //   125: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   128: getfield 648	alhs:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   131: getfield 457	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   134: ldc_w 799
-    //   137: ldc_w 396
-    //   140: ldc_w 396
-    //   143: invokestatic 804	axqw:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   146: aload_0
-    //   147: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   150: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   153: lconst_1
-    //   154: invokestatic 970	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;J)Z
-    //   157: ifne +323 -> 480
-    //   160: aload_1
-    //   161: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   164: getfield 648	alhs:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   167: astore_2
-    //   168: ldc 168
-    //   170: iconst_1
-    //   171: new 170	java/lang/StringBuilder
-    //   174: dup
-    //   175: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   178: ldc_w 1275
-    //   181: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: aload_2
-    //   185: invokevirtual 650	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:f	()Z
-    //   188: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   191: ldc_w 1277
-    //   194: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: aload_2
-    //   198: invokevirtual 1264	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:g	()Z
-    //   201: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   204: ldc_w 1279
-    //   207: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: aload_2
-    //   211: invokevirtual 1281	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:h	()Z
-    //   214: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   217: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   223: aload_0
-    //   224: getfield 532	alkz:jdField_e_of_type_Boolean	Z
-    //   227: ifeq +36 -> 263
-    //   230: aload_0
-    //   231: getfield 533	alkz:jdField_a_of_type_Int	I
-    //   234: iconst_2
-    //   235: if_icmpne +28 -> 263
-    //   238: aload_0
-    //   239: getfield 511	alkz:jdField_a_of_type_Alha	Lalha;
-    //   242: ifnull +21 -> 263
-    //   245: aload_0
-    //   246: getfield 511	alkz:jdField_a_of_type_Alha	Lalha;
-    //   249: lconst_1
-    //   250: new 317	albk
-    //   253: dup
-    //   254: aload_2
-    //   255: invokespecial 320	albk:<init>	(Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)V
-    //   258: invokeinterface 1284 4 0
-    //   263: aload_2
-    //   264: invokevirtual 343	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:d	()Z
-    //   267: ifne +269 -> 536
-    //   270: aload_2
-    //   271: invokevirtual 650	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:f	()Z
-    //   274: ifeq +213 -> 487
-    //   277: aload_0
-    //   278: lconst_1
-    //   279: invokevirtual 972	alkz:a	(J)V
-    //   282: aload_0
-    //   283: lconst_1
-    //   284: aload_2
-    //   285: aload_1
-    //   286: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   289: getfield 656	alhs:jdField_b_of_type_Int	I
-    //   292: aload_1
-    //   293: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   296: getfield 659	alhs:jdField_a_of_type_Float	F
-    //   299: aload_1
-    //   300: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   303: getfield 661	alhs:jdField_b_of_type_Float	F
-    //   306: aload_1
-    //   307: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   310: getfield 663	alhs:c	F
-    //   313: invokespecial 666	alkz:a	(JLcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;IFFF)Z
-    //   316: pop
-    //   317: aload_2
-    //   318: invokevirtual 358	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:j	()Z
-    //   321: ifeq +9 -> 330
-    //   324: aload_0
-    //   325: iconst_0
-    //   326: invokespecial 844	alkz:a	(Z)Z
-    //   329: pop
-    //   330: aload_1
-    //   331: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   334: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   337: iconst_2
-    //   338: if_icmpeq +16 -> 354
-    //   341: aload_1
-    //   342: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   345: getfield 648	alhs:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   348: invokevirtual 343	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:d	()Z
-    //   351: ifeq +36 -> 387
-    //   354: aload_0
-    //   355: aload_1
-    //   356: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   359: aload_0
-    //   360: getfield 1286	alkz:jdField_b_of_type_Alhs	Lalhs;
-    //   363: invokespecial 1288	alkz:a	(Lalhs;Lalhs;)V
-    //   366: aload_1
-    //   367: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   370: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   373: iconst_2
-    //   374: if_icmpeq +211 -> 585
-    //   377: aload_0
-    //   378: lconst_0
-    //   379: putfield 218	alkz:jdField_i_of_type_Long	J
-    //   382: aload_0
-    //   383: lconst_0
-    //   384: putfield 791	alkz:jdField_j_of_type_Long	J
-    //   387: aload_1
-    //   388: ifnull -369 -> 19
-    //   391: aload_1
-    //   392: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   395: ifnull +1353 -> 1748
-    //   398: aload_0
-    //   399: aload_1
-    //   400: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   403: putfield 1286	alkz:jdField_b_of_type_Alhs	Lalhs;
-    //   406: aload_1
-    //   407: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   410: getfield 648	alhs:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   413: ifnull -394 -> 19
-    //   416: aload_1
-    //   417: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   420: getfield 648	alhs:jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;
-    //   423: invokevirtual 343	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:d	()Z
-    //   426: ifne -407 -> 19
-    //   429: aload_0
-    //   430: aconst_null
-    //   431: putfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   434: aload_0
-    //   435: aconst_null
-    //   436: putfield 1286	alkz:jdField_b_of_type_Alhs	Lalhs;
-    //   439: goto -420 -> 19
-    //   442: astore_1
-    //   443: aload_0
-    //   444: monitorexit
-    //   445: aload_1
-    //   446: athrow
-    //   447: astore_2
-    //   448: ldc 168
-    //   450: iconst_1
-    //   451: new 170	java/lang/StringBuilder
-    //   454: dup
-    //   455: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   458: ldc_w 1290
-    //   461: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: aload_2
-    //   465: invokevirtual 1293	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   468: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   471: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   474: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   477: goto -331 -> 146
-    //   480: aload_0
-    //   481: invokespecial 846	alkz:t	()V
-    //   484: goto -324 -> 160
-    //   487: aload_2
-    //   488: invokevirtual 1281	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:h	()Z
-    //   491: ifne +10 -> 501
-    //   494: aload_2
-    //   495: invokevirtual 1264	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:g	()Z
-    //   498: ifeq +31 -> 529
-    //   501: aload_2
-    //   502: invokevirtual 1264	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:g	()Z
-    //   505: ifeq -175 -> 330
-    //   508: aload_0
-    //   509: lconst_1
-    //   510: invokevirtual 972	alkz:a	(J)V
-    //   513: aload_2
-    //   514: invokevirtual 358	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:j	()Z
-    //   517: ifeq -187 -> 330
-    //   520: aload_0
-    //   521: iconst_1
-    //   522: invokespecial 844	alkz:a	(Z)Z
-    //   525: pop
-    //   526: goto -196 -> 330
-    //   529: aload_0
-    //   530: invokespecial 556	alkz:w	()V
-    //   533: goto -203 -> 330
-    //   536: aload_2
-    //   537: invokevirtual 650	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:f	()Z
-    //   540: ifne -210 -> 330
-    //   543: aload_2
-    //   544: invokevirtual 1281	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:h	()Z
-    //   547: ifne +10 -> 557
-    //   550: aload_2
-    //   551: invokevirtual 1264	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:g	()Z
-    //   554: ifeq -224 -> 330
-    //   557: aload_2
-    //   558: invokevirtual 1264	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:g	()Z
-    //   561: ifeq -231 -> 330
-    //   564: aload_0
-    //   565: lconst_1
-    //   566: invokevirtual 972	alkz:a	(J)V
-    //   569: aload_2
-    //   570: invokevirtual 358	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:j	()Z
-    //   573: ifeq -243 -> 330
-    //   576: aload_0
-    //   577: iconst_1
-    //   578: invokespecial 844	alkz:a	(Z)Z
-    //   581: pop
-    //   582: goto -252 -> 330
-    //   585: aload_0
-    //   586: getfield 508	alkz:jdField_a_of_type_Algo	Lalgo;
-    //   589: ifnull +23 -> 612
-    //   592: aload_0
-    //   593: getfield 542	alkz:jdField_l_of_type_Boolean	Z
-    //   596: ifeq +16 -> 612
-    //   599: aload_0
-    //   600: lconst_0
-    //   601: putfield 218	alkz:jdField_i_of_type_Long	J
-    //   604: aload_0
-    //   605: lconst_0
-    //   606: putfield 791	alkz:jdField_j_of_type_Long	J
-    //   609: goto -222 -> 387
-    //   612: aload_0
-    //   613: getfield 218	alkz:jdField_i_of_type_Long	J
-    //   616: lconst_0
-    //   617: lcmp
-    //   618: ifne +10 -> 628
-    //   621: aload_0
-    //   622: invokestatic 687	java/lang/System:currentTimeMillis	()J
-    //   625: putfield 218	alkz:jdField_i_of_type_Long	J
-    //   628: aload_0
-    //   629: invokestatic 687	java/lang/System:currentTimeMillis	()J
-    //   632: putfield 791	alkz:jdField_j_of_type_Long	J
-    //   635: aload_0
-    //   636: getfield 218	alkz:jdField_i_of_type_Long	J
-    //   639: lconst_0
-    //   640: lcmp
-    //   641: ifle -254 -> 387
-    //   644: aload_0
-    //   645: getfield 791	alkz:jdField_j_of_type_Long	J
-    //   648: aload_0
-    //   649: getfield 218	alkz:jdField_i_of_type_Long	J
-    //   652: lsub
-    //   653: ldc2_w 689
-    //   656: lcmp
-    //   657: ifle -270 -> 387
-    //   660: aload_0
-    //   661: ldc2_w 1294
-    //   664: putfield 218	alkz:jdField_i_of_type_Long	J
-    //   667: aload_0
-    //   668: invokespecial 556	alkz:w	()V
-    //   671: goto -284 -> 387
-    //   674: aload_1
-    //   675: ifnull +385 -> 1060
-    //   678: aload_1
-    //   679: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   682: ifnull +378 -> 1060
-    //   685: aload_0
-    //   686: aload_0
-    //   687: getfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   690: aload_0
-    //   691: getfield 1297	alkz:jdField_b_of_type_Alhi	Lalhi;
-    //   694: invokespecial 1299	alkz:a	(Lalhi;Lalhi;)V
-    //   697: iconst_0
-    //   698: istore 5
-    //   700: iconst_0
-    //   701: istore 4
-    //   703: aload_0
-    //   704: getfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   707: getfield 1111	alhi:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   710: invokevirtual 183	java/util/ArrayList:size	()I
-    //   713: istore_3
-    //   714: iload_3
-    //   715: ifle +48 -> 763
-    //   718: aload_0
-    //   719: getfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   722: getfield 1111	alhi:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   725: invokevirtual 442	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   728: astore_2
-    //   729: iload 4
-    //   731: istore 5
-    //   733: aload_2
-    //   734: invokeinterface 447 1 0
-    //   739: ifeq +24 -> 763
-    //   742: aload_2
-    //   743: invokeinterface 451 1 0
-    //   748: checkcast 1301	alcl
-    //   751: getfield 1302	alcl:jdField_e_of_type_Boolean	Z
-    //   754: ifne +1012 -> 1766
-    //   757: iconst_1
-    //   758: istore 4
-    //   760: goto +1006 -> 1766
-    //   763: invokestatic 610	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   766: ifeq +46 -> 812
-    //   769: getstatic 613	alhe:jdField_a_of_type_Boolean	Z
-    //   772: ifeq +40 -> 812
-    //   775: ldc 168
-    //   777: iconst_2
-    //   778: new 170	java/lang/StringBuilder
-    //   781: dup
-    //   782: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   785: ldc_w 1304
-    //   788: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   791: iload_3
-    //   792: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   795: ldc_w 1306
-    //   798: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   801: iload 5
-    //   803: invokevirtual 438	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   806: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   809: invokestatic 617	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   812: iload 5
-    //   814: ifeq +99 -> 913
-    //   817: aconst_null
-    //   818: ldc_w 1271
-    //   821: ldc_w 396
-    //   824: ldc_w 396
-    //   827: ldc_w 1273
-    //   830: ldc_w 1273
-    //   833: iconst_0
-    //   834: iconst_0
-    //   835: aload_1
-    //   836: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   839: getfield 1111	alhi:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   842: iconst_0
-    //   843: invokevirtual 199	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   846: checkcast 1301	alcl
-    //   849: getfield 1307	alcl:jdField_a_of_type_Int	I
-    //   852: invokestatic 1310	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   855: ldc_w 1312
-    //   858: ldc_w 396
-    //   861: ldc_w 396
-    //   864: invokestatic 804	axqw:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   867: aload_0
-    //   868: lconst_0
-    //   869: putfield 1314	alkz:jdField_m_of_type_Long	J
-    //   872: aload_0
-    //   873: lconst_0
-    //   874: putfield 1316	alkz:jdField_n_of_type_Long	J
-    //   877: goto -490 -> 387
-    //   880: astore_2
-    //   881: ldc 168
-    //   883: iconst_1
-    //   884: new 170	java/lang/StringBuilder
-    //   887: dup
-    //   888: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   891: ldc_w 1290
-    //   894: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   897: aload_2
-    //   898: invokevirtual 1293	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   901: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   904: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   907: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   910: goto -43 -> 867
-    //   913: ldc2_w 1317
-    //   916: lstore 6
-    //   918: invokestatic 1319	alhe:a	()Z
-    //   921: ifeq +8 -> 929
-    //   924: ldc2_w 1320
-    //   927: lstore 6
-    //   929: aload_0
-    //   930: getfield 1314	alkz:jdField_m_of_type_Long	J
-    //   933: lconst_0
-    //   934: lcmp
-    //   935: ifne +10 -> 945
-    //   938: aload_0
-    //   939: invokestatic 687	java/lang/System:currentTimeMillis	()J
-    //   942: putfield 1314	alkz:jdField_m_of_type_Long	J
-    //   945: aload_0
-    //   946: invokestatic 687	java/lang/System:currentTimeMillis	()J
-    //   949: putfield 1316	alkz:jdField_n_of_type_Long	J
-    //   952: aload_0
-    //   953: getfield 1314	alkz:jdField_m_of_type_Long	J
-    //   956: lconst_0
-    //   957: lcmp
-    //   958: ifle -571 -> 387
-    //   961: aload_0
-    //   962: getfield 1316	alkz:jdField_n_of_type_Long	J
-    //   965: aload_0
-    //   966: getfield 1314	alkz:jdField_m_of_type_Long	J
-    //   969: lsub
-    //   970: lload 6
-    //   972: lcmp
-    //   973: ifle -586 -> 387
-    //   976: invokestatic 610	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   979: ifeq +30 -> 1009
-    //   982: ldc 168
-    //   984: iconst_2
-    //   985: new 170	java/lang/StringBuilder
-    //   988: dup
-    //   989: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   992: ldc_w 1323
-    //   995: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   998: lload 6
-    //   1000: invokevirtual 301	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1003: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1006: invokestatic 617	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1009: aload_0
-    //   1010: ldc2_w 583
-    //   1013: invokevirtual 972	alkz:a	(J)V
-    //   1016: aload_0
-    //   1017: ldc2_w 1294
-    //   1020: putfield 1314	alkz:jdField_m_of_type_Long	J
-    //   1023: aload_0
-    //   1024: getfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   1027: iconst_1
-    //   1028: putfield 1324	alhi:jdField_a_of_type_Boolean	Z
-    //   1031: aload_0
-    //   1032: aload_0
-    //   1033: getfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   1036: aload_0
-    //   1037: getfield 1297	alkz:jdField_b_of_type_Alhi	Lalhi;
-    //   1040: invokespecial 1299	alkz:a	(Lalhi;Lalhi;)V
-    //   1043: aload_0
-    //   1044: aconst_null
-    //   1045: putfield 1110	alkz:jdField_a_of_type_Alhi	Lalhi;
-    //   1048: aload_0
-    //   1049: aconst_null
-    //   1050: putfield 1297	alkz:jdField_b_of_type_Alhi	Lalhi;
-    //   1053: aload_0
-    //   1054: invokespecial 1326	alkz:x	()V
-    //   1057: goto -670 -> 387
-    //   1060: aload_2
-    //   1061: ifnull -674 -> 387
-    //   1064: aload_0
-    //   1065: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1068: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1071: aload_2
-    //   1072: invokestatic 1329	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;Lalgo;)Lakzf;
-    //   1075: astore 8
-    //   1077: aload 8
-    //   1079: getfield 1332	akzf:jdField_a_of_type_Long	J
-    //   1082: lstore 6
-    //   1084: aload 8
-    //   1086: getfield 1333	akzf:jdField_a_of_type_Boolean	Z
-    //   1089: istore 4
-    //   1091: aload_0
-    //   1092: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1095: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1098: lload 6
-    //   1100: invokestatic 970	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;J)Z
-    //   1103: istore 5
-    //   1105: aload_0
-    //   1106: getfield 514	alkz:jdField_a_of_type_Alhv	Lalhv;
-    //   1109: ifnull +34 -> 1143
-    //   1112: lload 6
-    //   1114: ldc2_w 1013
-    //   1117: lcmp
-    //   1118: ifeq +25 -> 1143
-    //   1121: aload_0
-    //   1122: iconst_0
-    //   1123: invokespecial 806	alkz:e	(Z)V
-    //   1126: aload_0
-    //   1127: getfield 1335	alkz:jdField_n_of_type_Boolean	Z
-    //   1130: ifeq +13 -> 1143
-    //   1133: aload_0
-    //   1134: lconst_1
-    //   1135: invokevirtual 587	alkz:b	(J)V
-    //   1138: aload_0
-    //   1139: iconst_0
-    //   1140: putfield 1335	alkz:jdField_n_of_type_Boolean	Z
-    //   1143: lload 6
-    //   1145: lconst_0
-    //   1146: lcmp
-    //   1147: ifeq -760 -> 387
-    //   1150: lload 6
-    //   1152: ldc2_w 583
-    //   1155: lcmp
-    //   1156: ifne +81 -> 1237
-    //   1159: iload 5
-    //   1161: ifeq +14 -> 1175
-    //   1164: aload_0
-    //   1165: aload_2
-    //   1166: getfield 1148	algo:jdField_a_of_type_Algq	Lalgq;
-    //   1169: invokespecial 1337	alkz:a	(Lalgq;)V
-    //   1172: goto -785 -> 387
-    //   1175: aload_0
-    //   1176: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1179: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1182: ldc2_w 1338
-    //   1185: lconst_1
-    //   1186: invokestatic 1342	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;JJ)Z
-    //   1189: ifeq +14 -> 1203
-    //   1192: aload_0
-    //   1193: aload_2
-    //   1194: getfield 1148	algo:jdField_a_of_type_Algq	Lalgq;
-    //   1197: invokespecial 1337	alkz:a	(Lalgq;)V
-    //   1200: goto -813 -> 387
-    //   1203: aload_0
-    //   1204: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1207: ifnull +14 -> 1221
-    //   1210: aload_0
-    //   1211: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1214: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   1217: iconst_2
-    //   1218: if_icmpne -831 -> 387
-    //   1221: aload_0
-    //   1222: lconst_1
-    //   1223: invokevirtual 972	alkz:a	(J)V
-    //   1226: aload_0
-    //   1227: aload_2
-    //   1228: getfield 1148	algo:jdField_a_of_type_Algq	Lalgq;
-    //   1231: invokespecial 1337	alkz:a	(Lalgq;)V
-    //   1234: goto -847 -> 387
-    //   1237: lload 6
-    //   1239: ldc2_w 344
-    //   1242: lcmp
-    //   1243: ifne +81 -> 1324
-    //   1246: iload 5
-    //   1248: ifeq +14 -> 1262
-    //   1251: aload_0
-    //   1252: aload_2
-    //   1253: getfield 1136	algo:jdField_a_of_type_Alge	Lalge;
-    //   1256: invokespecial 1344	alkz:a	(Lalge;)V
-    //   1259: goto -872 -> 387
-    //   1262: aload_0
-    //   1263: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1266: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1269: ldc2_w 344
-    //   1272: lconst_1
-    //   1273: invokestatic 1342	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;JJ)Z
-    //   1276: ifeq +14 -> 1290
-    //   1279: aload_0
-    //   1280: aload_2
-    //   1281: getfield 1136	algo:jdField_a_of_type_Alge	Lalge;
-    //   1284: invokespecial 1344	alkz:a	(Lalge;)V
-    //   1287: goto -900 -> 387
-    //   1290: aload_0
-    //   1291: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1294: ifnull +14 -> 1308
-    //   1297: aload_0
-    //   1298: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1301: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   1304: iconst_2
-    //   1305: if_icmpne -918 -> 387
-    //   1308: aload_0
-    //   1309: lconst_1
-    //   1310: invokevirtual 972	alkz:a	(J)V
-    //   1313: aload_0
-    //   1314: aload_2
-    //   1315: getfield 1136	algo:jdField_a_of_type_Alge	Lalge;
-    //   1318: invokespecial 1344	alkz:a	(Lalge;)V
-    //   1321: goto -934 -> 387
-    //   1324: lload 6
-    //   1326: ldc2_w 1013
-    //   1329: lcmp
-    //   1330: ifne +120 -> 1450
-    //   1333: iload 5
-    //   1335: ifeq +14 -> 1349
-    //   1338: aload_0
-    //   1339: aload_2
-    //   1340: getfield 1142	algo:jdField_a_of_type_Alhv	Lalhv;
-    //   1343: invokespecial 1346	alkz:a	(Lalhv;)V
-    //   1346: goto -959 -> 387
-    //   1349: aload_0
-    //   1350: getfield 842	alkz:jdField_o_of_type_Boolean	Z
-    //   1353: ifeq +30 -> 1383
-    //   1356: aload_0
-    //   1357: getfield 514	alkz:jdField_a_of_type_Alhv	Lalhv;
-    //   1360: ifnull +8 -> 1368
-    //   1363: aload_0
-    //   1364: iconst_0
-    //   1365: invokespecial 806	alkz:e	(Z)V
-    //   1368: aload_0
-    //   1369: getfield 1335	alkz:jdField_n_of_type_Boolean	Z
-    //   1372: ifeq -1353 -> 19
-    //   1375: aload_0
-    //   1376: iconst_0
-    //   1377: putfield 1335	alkz:jdField_n_of_type_Boolean	Z
-    //   1380: goto -1361 -> 19
-    //   1383: aload_0
-    //   1384: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1387: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1390: ldc2_w 1013
-    //   1393: lconst_1
-    //   1394: invokestatic 1342	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;JJ)Z
-    //   1397: ifeq +14 -> 1411
-    //   1400: aload_0
-    //   1401: aload_2
-    //   1402: getfield 1142	algo:jdField_a_of_type_Alhv	Lalhv;
-    //   1405: invokespecial 1346	alkz:a	(Lalhv;)V
-    //   1408: goto -1021 -> 387
-    //   1411: aload_0
-    //   1412: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1415: ifnull +14 -> 1429
-    //   1418: aload_0
-    //   1419: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1422: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   1425: iconst_2
-    //   1426: if_icmpne -1039 -> 387
-    //   1429: aload_0
-    //   1430: lconst_1
-    //   1431: invokevirtual 972	alkz:a	(J)V
-    //   1434: aload_0
-    //   1435: iconst_1
-    //   1436: putfield 1335	alkz:jdField_n_of_type_Boolean	Z
-    //   1439: aload_0
-    //   1440: aload_2
-    //   1441: getfield 1142	algo:jdField_a_of_type_Alhv	Lalhv;
-    //   1444: invokespecial 1346	alkz:a	(Lalhv;)V
-    //   1447: goto -1060 -> 387
-    //   1450: lload 6
-    //   1452: lconst_1
-    //   1453: lcmp
-    //   1454: ifne +40 -> 1494
-    //   1457: iload 5
-    //   1459: ifeq +14 -> 1473
-    //   1462: aload_0
-    //   1463: aload_2
-    //   1464: getfield 1128	algo:jdField_a_of_type_Alfz	Lalfz;
-    //   1467: invokespecial 1348	alkz:a	(Lalfz;)V
-    //   1470: goto -1083 -> 387
-    //   1473: iload 4
-    //   1475: ifeq +8 -> 1483
-    //   1478: aload_0
-    //   1479: lconst_1
-    //   1480: invokevirtual 587	alkz:b	(J)V
-    //   1483: aload_0
-    //   1484: aload_2
-    //   1485: getfield 1128	algo:jdField_a_of_type_Alfz	Lalfz;
-    //   1488: invokespecial 1348	alkz:a	(Lalfz;)V
-    //   1491: goto -1104 -> 387
-    //   1494: lload 6
-    //   1496: ldc2_w 346
-    //   1499: lcmp
-    //   1500: ifne -1113 -> 387
-    //   1503: iload 5
-    //   1505: ifeq +14 -> 1519
-    //   1508: aload_0
-    //   1509: aload_2
-    //   1510: getfield 1154	algo:jdField_a_of_type_Algw	Lalgw;
-    //   1513: invokespecial 1350	alkz:a	(Lalgw;)V
-    //   1516: goto -1129 -> 387
-    //   1519: aload_0
-    //   1520: getfield 960	alkz:jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo	Lcom/tencent/mobileqq/ar/aidl/ARCommonConfigInfo;
-    //   1523: getfield 965	com/tencent/mobileqq/ar/aidl/ARCommonConfigInfo:recognitions	Ljava/util/ArrayList;
-    //   1526: ldc2_w 346
-    //   1529: lconst_1
-    //   1530: invokestatic 1342	com/tencent/mobileqq/ar/ARRecognition:a	(Ljava/util/ArrayList;JJ)Z
-    //   1533: ifeq +14 -> 1547
-    //   1536: aload_0
-    //   1537: aload_2
-    //   1538: getfield 1154	algo:jdField_a_of_type_Algw	Lalgw;
-    //   1541: invokespecial 1350	alkz:a	(Lalgw;)V
-    //   1544: goto -1157 -> 387
-    //   1547: aload_0
-    //   1548: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1551: ifnull +14 -> 1565
-    //   1554: aload_0
-    //   1555: getfield 1108	alkz:jdField_a_of_type_Alhs	Lalhs;
-    //   1558: getfield 646	alhs:jdField_a_of_type_Int	I
-    //   1561: iconst_2
-    //   1562: if_icmpne -1175 -> 387
-    //   1565: aload_0
-    //   1566: lconst_1
-    //   1567: invokevirtual 972	alkz:a	(J)V
-    //   1570: aload_0
-    //   1571: aload_2
-    //   1572: getfield 1154	algo:jdField_a_of_type_Algw	Lalgw;
-    //   1575: invokespecial 1350	alkz:a	(Lalgw;)V
-    //   1578: goto -1191 -> 387
-    //   1581: aload_0
-    //   1582: getfield 93	alkz:jdField_f_of_type_Long	J
-    //   1585: lconst_0
-    //   1586: lcmp
-    //   1587: ifeq +51 -> 1638
-    //   1590: aload_1
-    //   1591: ifnull -1572 -> 19
-    //   1594: aload_1
-    //   1595: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   1598: ifnull +18 -> 1616
-    //   1601: aload_0
-    //   1602: aload_1
-    //   1603: getfield 1245	alht:jdField_a_of_type_Alhs	Lalhs;
-    //   1606: aload_0
-    //   1607: getfield 1286	alkz:jdField_b_of_type_Alhs	Lalhs;
-    //   1610: invokespecial 1288	alkz:a	(Lalhs;Lalhs;)V
-    //   1613: goto -1226 -> 387
-    //   1616: aload_1
-    //   1617: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   1620: ifnull -1233 -> 387
-    //   1623: aload_0
-    //   1624: aload_1
-    //   1625: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   1628: aload_0
-    //   1629: getfield 1297	alkz:jdField_b_of_type_Alhi	Lalhi;
-    //   1632: invokespecial 1299	alkz:a	(Lalhi;Lalhi;)V
-    //   1635: goto -1248 -> 387
-    //   1638: aload_0
-    //   1639: getfield 95	alkz:jdField_g_of_type_Long	J
-    //   1642: lconst_0
-    //   1643: lcmp
-    //   1644: ifeq -1257 -> 387
-    //   1647: aload_2
-    //   1648: ifnull -1629 -> 19
-    //   1651: aload_2
-    //   1652: getfield 1136	algo:jdField_a_of_type_Alge	Lalge;
-    //   1655: invokestatic 1141	alge:a	(Lalge;)Z
-    //   1658: ifeq +14 -> 1672
-    //   1661: aload_0
-    //   1662: aload_2
-    //   1663: getfield 1136	algo:jdField_a_of_type_Alge	Lalge;
-    //   1666: invokespecial 1344	alkz:a	(Lalge;)V
-    //   1669: goto -1282 -> 387
-    //   1672: aload_2
-    //   1673: getfield 1142	algo:jdField_a_of_type_Alhv	Lalhv;
-    //   1676: invokestatic 1145	alhv:a	(Lalgb;)Z
-    //   1679: ifeq +14 -> 1693
-    //   1682: aload_0
-    //   1683: aload_2
-    //   1684: getfield 1142	algo:jdField_a_of_type_Alhv	Lalhv;
-    //   1687: invokespecial 1346	alkz:a	(Lalhv;)V
-    //   1690: goto -1303 -> 387
-    //   1693: aload_2
-    //   1694: getfield 1128	algo:jdField_a_of_type_Alfz	Lalfz;
-    //   1697: invokestatic 1133	alfz:a	(Lalfz;)Z
-    //   1700: ifeq +10 -> 1710
-    //   1703: aload_0
-    //   1704: invokespecial 556	alkz:w	()V
-    //   1707: goto -1320 -> 387
-    //   1710: aload_2
-    //   1711: getfield 1148	algo:jdField_a_of_type_Algq	Lalgq;
-    //   1714: invokestatic 1151	algq:a	(Lalgq;)Z
-    //   1717: ifeq +10 -> 1727
-    //   1720: aload_0
-    //   1721: invokespecial 1326	alkz:x	()V
-    //   1724: goto -1337 -> 387
-    //   1727: aload_2
-    //   1728: getfield 1154	algo:jdField_a_of_type_Algw	Lalgw;
-    //   1731: invokestatic 1159	algw:a	(Lalgw;)Z
-    //   1734: ifeq -1347 -> 387
-    //   1737: aload_0
-    //   1738: aload_2
-    //   1739: getfield 1154	algo:jdField_a_of_type_Algw	Lalgw;
-    //   1742: invokespecial 1350	alkz:a	(Lalgw;)V
-    //   1745: goto -1358 -> 387
-    //   1748: aload_1
-    //   1749: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   1752: ifnull -1733 -> 19
-    //   1755: aload_0
-    //   1756: aload_1
-    //   1757: getfield 1246	alht:jdField_a_of_type_Alhi	Lalhi;
-    //   1760: putfield 1297	alkz:jdField_b_of_type_Alhi	Lalhi;
-    //   1763: goto -1744 -> 19
-    //   1766: goto -1037 -> 729
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1769	0	this	alkz
-    //   0	1769	1	paramalht	alht
-    //   0	1769	2	paramalgo	algo
-    //   13	779	3	i1	int
-    //   701	773	4	bool1	boolean
-    //   698	806	5	bool2	boolean
-    //   916	579	6	l1	long
-    //   1075	10	8	localakzf	akzf
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	442	finally
-    //   26	41	442	finally
-    //   41	56	442	finally
-    //   60	65	442	finally
-    //   65	83	442	finally
-    //   87	102	442	finally
-    //   106	146	442	finally
-    //   146	160	442	finally
-    //   160	263	442	finally
-    //   263	330	442	finally
-    //   330	354	442	finally
-    //   354	387	442	finally
-    //   391	439	442	finally
-    //   448	477	442	finally
-    //   480	484	442	finally
-    //   487	501	442	finally
-    //   501	526	442	finally
-    //   529	533	442	finally
-    //   536	557	442	finally
-    //   557	582	442	finally
-    //   585	609	442	finally
-    //   612	628	442	finally
-    //   628	671	442	finally
-    //   678	697	442	finally
-    //   703	714	442	finally
-    //   718	729	442	finally
-    //   733	757	442	finally
-    //   763	812	442	finally
-    //   817	867	442	finally
-    //   867	877	442	finally
-    //   881	910	442	finally
-    //   918	924	442	finally
-    //   929	945	442	finally
-    //   945	1009	442	finally
-    //   1009	1057	442	finally
-    //   1064	1112	442	finally
-    //   1121	1143	442	finally
-    //   1164	1172	442	finally
-    //   1175	1200	442	finally
-    //   1203	1221	442	finally
-    //   1221	1234	442	finally
-    //   1251	1259	442	finally
-    //   1262	1287	442	finally
-    //   1290	1308	442	finally
-    //   1308	1321	442	finally
-    //   1338	1346	442	finally
-    //   1349	1368	442	finally
-    //   1368	1380	442	finally
-    //   1383	1408	442	finally
-    //   1411	1429	442	finally
-    //   1429	1447	442	finally
-    //   1462	1470	442	finally
-    //   1478	1483	442	finally
-    //   1483	1491	442	finally
-    //   1508	1516	442	finally
-    //   1519	1544	442	finally
-    //   1547	1565	442	finally
-    //   1565	1578	442	finally
-    //   1581	1590	442	finally
-    //   1594	1613	442	finally
-    //   1616	1635	442	finally
-    //   1638	1647	442	finally
-    //   1651	1669	442	finally
-    //   1672	1690	442	finally
-    //   1693	1707	442	finally
-    //   1710	1724	442	finally
-    //   1727	1745	442	finally
-    //   1748	1763	442	finally
-    //   106	146	447	java/lang/Exception
-    //   817	867	880	java/lang/Exception
-  }
-  
-  public void a(Context arg1, AppInterface paramAppInterface)
-  {
-    super.a(???, paramAppInterface);
-    System.currentTimeMillis();
-    QLog.d("AREngine_QQARSession", 1, String.format("init context=%s appInterface=%s mIsInited=%s", new Object[] { ???, paramAppInterface, Boolean.valueOf(this.jdField_e_of_type_Boolean) }));
-    if (this.jdField_e_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Albg = new albg();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
-      {
-        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("AREngineThread", 0);
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        alje localalje1 = new alje();
+        alje localalje2 = new alje();
+        localalje1.jdField_a_of_type_Int = ((alje)paramList.get(i)).jdField_a_of_type_Int;
+        localalje2.jdField_a_of_type_Int = ((alje)paramList.get(i)).jdField_a_of_type_Int;
+        localalje1.jdField_a_of_type_Float = ((alje)paramList.get(i)).jdField_a_of_type_Float;
+        localalje2.jdField_a_of_type_Float = ((alje)paramList.get(i)).jdField_a_of_type_Float;
+        localalje1.jdField_a_of_type_AndroidGraphicsRect = ((alje)paramList.get(i)).jdField_a_of_type_AndroidGraphicsRect;
+        Rect localRect = ((alje)paramList.get(i)).jdField_a_of_type_AndroidGraphicsRect;
+        if ((localRect.width() > 0) && (localRect.height() > 0)) {
+          a(localRect, localalje2.jdField_a_of_type_AndroidGraphicsRect, true);
+        }
+        localArrayList1.add(localalje1);
+        localArrayList2.add(localalje2);
+        i += 1;
       }
-      this.jdField_e_of_type_Boolean = true;
-      return;
+      if (this.jdField_a_of_type_Aljo != null) {
+        this.jdField_a_of_type_Aljo.a(localArrayList2, paramLong);
+      }
+      a(localArrayList1);
     }
-  }
-  
-  public void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_QQARSession", 2, "onCommonCallbackFromManager, resourceInfo=" + paramArCloudConfigInfo + ", action=" + paramInt1 + ", result=" + paramInt2 + " ,data=" + paramObject);
+    if (paramLong == this.jdField_d_of_type_Long)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(102);
+      alju.a((int)(System.currentTimeMillis() - paramLong), 2);
     }
-    a(new QQARSession.26(this, paramArCloudConfigInfo, paramInt1, paramInt2, paramObject));
-  }
-  
-  public void a(ArVideoResourceInfo paramArVideoResourceInfo, alaf paramalaf)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderManagerCallback. onMultiARAnimationInteraction.");
-    a(new QQARSession.25(this, paramArVideoResourceInfo, paramalaf));
-  }
-  
-  public void a(Runnable paramRunnable, long paramLong)
-  {
-    if ((this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Int == 2)) {
-      b(paramRunnable, paramLong);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderManagerCallback. onARAnimationStart. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new QQARSession.21(this, paramInt));
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_d_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat)
+  {
+    int i;
+    if ((this.jdField_a_of_type_Aljn != null) && (this.jdField_a_of_type_Aljn.b()))
     {
-      QLog.i("AREngine_QQARSession", 1, "onARCloudSelectImageComplete. result = " + paramBoolean);
-      if (this.jdField_q_of_type_Long == 0L) {
-        this.jdField_q_of_type_Long = System.currentTimeMillis();
-      }
-      if (this.jdField_u_of_type_Long > 0L)
-      {
-        long l1 = System.currentTimeMillis() - this.jdField_u_of_type_Long;
-        if (l1 > 0L) {
-          this.jdField_v_of_type_Long = (l1 + this.jdField_v_of_type_Long);
+      i = 1;
+      if (QLog.isColorLevel()) {
+        if (i == 0) {
+          break label203;
         }
-        this.jdField_u_of_type_Long = 0L;
+      }
+    }
+    label203:
+    for (int j = 1;; j = 0)
+    {
+      QLog.d("QRSession", 2, String.format("onQRRecognizeFail hasQR=%s qrAreaRatio=%s isMiniRecgReady =%d", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat), Integer.valueOf(j) }));
+      if ((this.jdField_a_of_type_Aljc != null) && (this.jdField_a_of_type_Int == 2))
+      {
+        if ((paramBoolean) && (paramFloat > 0.003F) && (i == 0))
+        {
+          float f2 = (float)(Math.sqrt(paramFloat) * 100.0D) * 0.75F;
+          float f1 = f2;
+          if (f2 >= 1.2F)
+          {
+            f1 = f2;
+            if (f2 > 25.0F) {
+              f1 = 25.0F;
+            }
+            alku.a().a(f1, false);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("QRSession", 2, String.format("onRecognizeFail onGetDetectRect ratio=%.2f", new Object[] { Float.valueOf(f1) }));
+          }
+        }
+        this.jdField_a_of_type_Aljc.a(paramBoolean, paramFloat);
+      }
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_c_of_type_Long = (System.currentTimeMillis() + paramLong);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.jdField_e_of_type_Long = 0L;
+    }
+    if ((this.jdField_a_of_type_Aljo != null) && (this.jdField_a_of_type_Int == 2) && (!this.jdField_f_of_type_Boolean)) {
+      this.jdField_a_of_type_Aljo.a(paramBoolean1, paramString, paramBoolean2);
+    }
+    int i;
+    if (paramBoolean1)
+    {
+      if (!paramBoolean2) {
+        break label60;
+      }
+      i = 4;
+    }
+    for (;;)
+    {
+      alju.a(i);
+      return;
+      label60:
+      if (this.g) {
+        i = 5;
+      } else {
+        i = 3;
       }
     }
   }
   
-  public void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    QLog.i("AREngine_QQARSession", 1, "onARMarkerResourceDownloadComplete. result = " + paramBoolean + " type  " + paramInt);
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 2)) {}
-  }
-  
-  public void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    QLog.i("AREngine_QQARSession", 1, String.format("onARMarkerAllDownloadComplete result=%s config=%s", new Object[] { Boolean.valueOf(paramBoolean), paramArCloudConfigInfo }));
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
+    long l;
+    if (((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) && (this.jdField_a_of_type_AndroidOsHandler != null) && (!this.jdField_f_of_type_Boolean) && ((paramBoolean) || ((!this.jdField_a_of_type_AndroidOsHandler.hasMessages(101)) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(102)))))
     {
-      this.jdField_a_of_type_Alha.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_c_of_type_Int = 1;
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+      l = System.currentTimeMillis();
+      if ((paramBoolean) || (l - this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)) {}
+    }
+    else
+    {
       return;
     }
-    d(paramBoolean, paramArCloudConfigInfo);
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    if (this.jdField_a_of_type_Allg != null) {
-      this.jdField_a_of_type_Allg.a(0, paramArrayOfFloat);
+    if (a(paramArrayOfByte, paramInt1, paramInt2))
+    {
+      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramArrayOfByte.length)) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+      }
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+      this.jdField_d_of_type_Int = paramInt1;
+      this.jdField_e_of_type_Int = paramInt2;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(alhv paramalhv)
-  {
-    return (this.jdField_a_of_type_Alhv == null) || (!this.jdField_a_of_type_Alhv.a(paramalhv));
+    for (this.jdField_b_of_type_Long = l;; this.jdField_b_of_type_Long = 0L)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(101);
+      return;
+      this.jdField_d_of_type_Int = 0;
+      this.jdField_e_of_type_Int = 0;
+    }
   }
   
   public boolean a(byte[] paramArrayOfByte)
   {
     if (this.jdField_a_of_type_Int == 2)
     {
-      onPreviewFrame(paramArrayOfByte, null);
-      return true;
+      a(paramArrayOfByte, alku.a().a(), alku.a().b(), this.jdField_d_of_type_Boolean);
+      if (alju.a()) {
+        alju.b();
+      }
     }
+    this.jdField_d_of_type_Boolean = false;
     return false;
-  }
-  
-  public long b()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof ScanTorchActivity)) {
-      return ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).a();
-    }
-    return 0L;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_u_of_type_Long == 0L) {
-      this.jdField_u_of_type_Long = System.currentTimeMillis();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.a(2, paramInt);
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.d("AREngine_QQARSession", 1, "resumeLocalRecog. recogType = " + paramLong);
-    if (this.jdField_a_of_type_Alhc != null)
-    {
-      if ((1L & paramLong) != 0L)
-      {
-        this.jdField_a_of_type_Alhs = null;
-        this.jdField_b_of_type_Alhs = null;
-        this.jdField_i_of_type_Long = 0L;
-        this.jdField_j_of_type_Long = 0L;
-        this.jdField_k_of_type_Long = 0L;
-        this.jdField_l_of_type_Long = 0L;
-      }
-      if ((0x4 & paramLong) != 0L)
-      {
-        this.jdField_a_of_type_Alhi = null;
-        this.jdField_b_of_type_Alhi = null;
-        this.jdField_m_of_type_Long = 0L;
-        this.jdField_n_of_type_Long = 0L;
-      }
-      this.jdField_a_of_type_Alhc.b(paramLong);
-    }
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderManagerCallback. onARAnimationComplete. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new QQARSession.22(this, paramInt));
   }
   
   public void b(boolean paramBoolean)
   {
-    QLog.i("AREngine_QQARSession", 1, "onARCloudPretreatComplete. result = " + paramBoolean);
-    if ((paramBoolean) && (this.jdField_t_of_type_Boolean))
+    if (paramBoolean != this.jdField_f_of_type_Boolean)
     {
-      this.jdField_t_of_type_Boolean = false;
-      axqw.b(null, "dc00898", "", "", "0X80085AD", "0X80085AD", 0, 0, "", "", "", "");
+      this.jdField_f_of_type_Boolean = paramBoolean;
+      if (paramBoolean) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+      }
     }
-  }
-  
-  public void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
-    {
-      this.jdField_a_of_type_Alha.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      this.jdField_c_of_type_Int = 2;
-      return;
-    }
-    e(paramBoolean, paramArCloudConfigInfo);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    QLog.d("AREngine_QQARSession", 1, "start startInternal. mCurEngineState = " + this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_Int != 0) || (!alkv.a().b())) {
-      return -1;
-    }
-    this.jdField_o_of_type_Int = 0;
-    this.jdField_o_of_type_Long = System.currentTimeMillis();
-    this.jdField_p_of_type_Long = 0L;
-    this.jdField_p_of_type_Int = 0;
-    this.jdField_q_of_type_Long = 0L;
-    this.jdField_r_of_type_Long = 0L;
-    this.jdField_l_of_type_Int = alkv.a().a();
-    this.jdField_m_of_type_Int = alkv.a().b();
-    this.jdField_n_of_type_Int = alkv.a().c();
-    this.jdField_k_of_type_Int = allh.jdField_b_of_type_Int;
-    this.jdField_j_of_type_Int = allh.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = new ARNativeBridge();
-    if (!this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.isLoadSoSuccess())
-    {
-      QLog.d("AREngine_QQARSession", 1, "startAR internal fail");
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = null;
-      this.jdField_f_of_type_Boolean = false;
-      e(6);
-      return 6;
-    }
-    g();
-    this.jdField_a_of_type_Albg.a(this.jdField_a_of_type_AndroidContentContext, this);
-    if ((this.jdField_a_of_type_Alhc != null) && (!h()))
-    {
-      e(7);
-      return 7;
-    }
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      a(5L);
-    }
-    while ((this.jdField_a_of_type_Alfo != null) && (!i()))
-    {
-      e(3);
-      return 3;
-      a(4L);
-      b(1L);
-    }
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Allg.a(this);
-    e(0);
-    return 0;
-  }
-  
-  public void c()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARCloudUploadStart.");
-    this.jdField_q_of_type_Int += 1;
-  }
-  
-  public void c(int paramInt)
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.a(2, paramInt);
-    }
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderManagerCallback. onARAnimationPlayInterrupt. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new QQARSession.23(this, paramInt));
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Algo != null) && (this.jdField_a_of_type_Algo.jdField_a_of_type_Alhv != null)) {
-      a(new QQARSession.9(this, paramBoolean));
-    }
-  }
-  
-  public void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    if ((paramBoolean) && (paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (!paramArCloudConfigInfo.f()))
-    {
-      this.jdField_a_of_type_Alha.a(0, paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-      this.jdField_c_of_type_Int = 2;
-      return;
-    }
-    f(paramBoolean, paramArCloudConfigInfo);
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public void d()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARMarkerAllDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Alha != null)) {
-      this.jdField_a_of_type_Alha.a(0, 4);
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus on workMode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    if ((paramInt == 1) && (this.jdField_r_of_type_Int != paramInt)) {
-      a(new QQARSession.28(this));
-    }
-  }
-  
-  public void d(String paramString, int paramInt)
-  {
-    QLog.i("AREngine_QQARSession", 1, "onRenderManagerCallback. onARAnimationPlayError. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new QQARSession.24(this, paramInt));
-  }
-  
-  public void d(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    long l2 = System.currentTimeMillis() - this.jdField_s_of_type_Long;
-    if (l2 >= 1000L) {}
-    for (long l1 = 0L;; l1 = 1000L - l2)
-    {
-      QLog.i("AREngine_QQARSession", 1, String.format("onARMarkerAllDownloadCompleteInternal result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      b(new QQARSession.14(this, paramBoolean, paramArCloudConfigInfo), l1);
-      return;
-    }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null;
-  }
-  
-  public void e()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARObjectClassifyDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new QQARSession.15(this));
-  }
-  
-  public boolean e()
-  {
-    QLog.i("AREngine_QQARSession", 1, "stopInternal.");
-    this.jdField_d_of_type_Boolean = true;
-    z();
-    j();
-    k();
-    this.jdField_a_of_type_Alhs = null;
-    this.jdField_b_of_type_Alhs = null;
-    this.jdField_a_of_type_Alhi = null;
-    this.jdField_b_of_type_Alhi = null;
-    this.jdField_a_of_type_Algo = null;
-    this.jdField_l_of_type_Boolean = false;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_i_of_type_Long = 0L;
-    this.jdField_j_of_type_Long = 0L;
-    this.jdField_k_of_type_Long = 0L;
-    this.jdField_l_of_type_Long = 0L;
-    this.jdField_p_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_m_of_type_Long = 0L;
-    this.jdField_n_of_type_Long = 0L;
-    return true;
-  }
-  
-  public void f()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onARSceneRecogDownloadStart.");
-    this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new QQARSession.17(this));
   }
   
   public void g()
   {
-    QLog.d("AREngine_QQARSession", 1, "ARengine status resume now start. + mCurrentSessionStatus:=" + this.jdField_a_of_type_Int);
-    if ((!this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 2)) {
-      return;
-    }
-    this.jdField_a_of_type_Allg.a(this);
-    a(this.jdField_p_of_type_Boolean);
-    this.jdField_a_of_type_Alhs = null;
-    this.jdField_b_of_type_Alhs = null;
-    this.jdField_a_of_type_Alhi = null;
-    this.jdField_b_of_type_Alhi = null;
-    this.jdField_a_of_type_Algo = null;
-    this.jdField_l_of_type_Boolean = false;
-    this.jdField_o_of_type_Boolean = false;
-    this.jdField_a_of_type_Alhv = null;
-    this.jdField_n_of_type_Boolean = false;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_i_of_type_Long = 0L;
-    this.jdField_j_of_type_Long = 0L;
-    this.jdField_k_of_type_Long = 0L;
-    this.jdField_l_of_type_Long = 0L;
-    this.jdField_p_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_m_of_type_Long = 0L;
-    this.jdField_n_of_type_Long = 0L;
-    if ((this.jdField_c_of_type_Boolean) || (this.jdField_r_of_type_Int == 1))
-    {
-      b(4096L);
-      this.jdField_a_of_type_Alhc.a(true, this.jdField_l_of_type_Int, this.jdField_m_of_type_Int);
-      this.jdField_g_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 2;
-      return;
-    }
-    u();
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {
-      a(5L);
-    }
-    for (;;)
-    {
-      this.jdField_g_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = 2;
-      QLog.d("AREngine_QQARSession", 1, "ARengine status resume now end.");
-      return;
-      a(4L);
-      b(1L);
+    super.g();
+    if (this.g) {
+      this.g = false;
     }
   }
   
   public void h()
   {
-    QLog.i("AREngine_QQARSession", 1, "ARengine status  pause. now ");
-    if ((!this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_Int != 2)) {
-      return;
+    super.h();
+    if (this.g) {
+      alku.a().d();
     }
-    z();
-    k();
-    t();
-    if ((this.jdField_a_of_type_Alhc != null) && (!this.jdField_a_of_type_Alhc.a(4L))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(5L);
-      if ((bool) && (this.jdField_a_of_type_Alha != null)) {
-        this.jdField_a_of_type_Alha.a(bool);
-      }
-      this.jdField_o_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Alhv != null) {
-        e(true);
-      }
-      this.jdField_r_of_type_Boolean = false;
-      A();
-      if ((this.jdField_a_of_type_Alhc != null) && (this.jdField_r_of_type_Int == 1))
-      {
-        a(4096L);
-        this.jdField_a_of_type_Alhc.a(false, this.jdField_l_of_type_Int, this.jdField_m_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Alie != null) {
-        this.jdField_a_of_type_Alie.b();
-      }
-      this.jdField_g_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_Allg.a(null);
-      return;
+    if (alju.a()) {
+      alju.c();
     }
-  }
-  
-  public void i()
-  {
-    QLog.i("AREngine_QQARSession", 1, "stop start. mCurEngineState = " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 5) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_d_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      b(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
-    }
-    s();
-    a(new QQARSession.3(this));
   }
   
   public void j()
   {
-    QLog.i("AREngine_QQARSession", 1, "uninit start. mIsInited = " + this.jdField_e_of_type_Boolean);
-    if (!this.jdField_e_of_type_Boolean) {
-      return;
-    }
-    alkv.a().c(this);
-    a(new QQARSession.4(this));
-  }
-  
-  public void k()
-  {
-    QLog.d("AREngine_QQARSession", 1, "stopModelRender.");
-    if ((this.jdField_a_of_type_Allg != null) && (this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null))
-    {
-      this.jdField_a_of_type_Allg.d();
-      if (alkv.a().b()) {
-        alkv.a().a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int);
-      }
-      if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Alha != null) && ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4)))
-      {
-        albk localalbk = new albk(this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-        this.jdField_a_of_type_Alha.a(this.jdField_h_of_type_Long, false, localalbk);
-      }
-    }
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_c_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-    this.jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  }
-  
-  public void l()
-  {
-    QLog.d("AREngine_QQARSession", 1, "stopModelRenderOnly.");
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Allg != null)) {
-      this.jdField_a_of_type_Allg.d();
-    }
-  }
-  
-  public void m()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudObjectClassifyResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {}
-    for (;;)
-    {
-      y();
-      return;
-      b(1L);
-    }
-  }
-  
-  public void n()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessMigCloudObjectClassifyResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Alhv = null;
-      y();
-      return;
-      b(1L);
-      this.jdField_n_of_type_Boolean = false;
-    }
-  }
-  
-  public void o()
-  {
-    QLog.i("AREngine_QQARSession", 1, "onProcessCloudSceneRecogResultComplete.");
-    if (!ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, 1L)) {}
-    for (;;)
-    {
-      y();
-      return;
-      b(1L);
-    }
-  }
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Allg != null))
-    {
-      if ((!this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_Int != 2)) {
-        break label371;
-      }
-      this.jdField_a_of_type_Allg.a(this.jdField_a_of_type_Allg.a() + 1L);
-      if ((this.jdField_a_of_type_Alhc == null) || ((this.jdField_a_of_type_Alhc.a(1L)) && (this.jdField_a_of_type_Alhc.a(4L)) && (this.jdField_a_of_type_Alhc.a(4096L))) || (l())) {
-        break label334;
-      }
-      if ((this.jdField_r_of_type_Int == 0) || ((this.jdField_r_of_type_Int == 1) && (this.jdField_a_of_type_Akyf.a() == 0) && (this.jdField_a_of_type_Akyf.b()))) {
-        this.jdField_a_of_type_Alhc.a(this.jdField_a_of_type_Allg.a(), paramArrayOfByte);
-      }
-      if (!this.jdField_c_of_type_Boolean) {
-        break label209;
-      }
-      this.jdField_a_of_type_Allg.b(this.jdField_a_of_type_Allg.a());
-      if (this.jdField_a_of_type_Allg != null) {
-        this.jdField_a_of_type_Allg.a();
-      }
-    }
-    label209:
-    label371:
-    do
-    {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Alfo != null) {
-          this.jdField_a_of_type_Alfo.a(paramArrayOfByte);
-        }
-        return;
-        if (((!this.jdField_a_of_type_Alhc.a(1L)) && (this.jdField_a_of_type_Alhs != null) && (this.jdField_a_of_type_Alhs.jdField_a_of_type_Int == 2)) || ((!this.jdField_a_of_type_Alhc.a(4L)) && (this.jdField_a_of_type_Alhi != null) && (this.jdField_a_of_type_Alhi.jdField_a_of_type_JavaUtilArrayList.size() == 0)) || ((!this.jdField_a_of_type_Alhc.a(4L)) && (this.jdField_a_of_type_Alhc.b(4L))))
-        {
-          this.jdField_a_of_type_Allg.b(this.jdField_a_of_type_Allg.a());
-          if (this.jdField_a_of_type_Allg != null)
-          {
-            this.jdField_a_of_type_Allg.a();
-            continue;
-            this.jdField_a_of_type_Allg.b(this.jdField_a_of_type_Allg.a());
-            if (this.jdField_a_of_type_Allg != null) {
-              this.jdField_a_of_type_Allg.a();
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_Allg.a(this.jdField_a_of_type_Allg.a() + 1L);
-      this.jdField_a_of_type_Allg.b(this.jdField_a_of_type_Allg.a());
-    } while (this.jdField_a_of_type_Allg == null);
-    label334:
-    this.jdField_a_of_type_Allg.a();
-  }
-  
-  public void p()
-  {
-    QLog.d("AREngine_QQARSession", 1, "engine notifyRenderReady ");
-    if (this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) || (!this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)));
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        d(true, this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-        return;
-      }
-    } while (this.jdField_c_of_type_Int != 2);
-    e(true, this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-  }
-  
-  public void q()
-  {
-    QLog.d("AREngine_QQARSession", 1, String.format("CloseAREngineRecoglizeFunction  ", new Object[0]));
-    a(new QQARSession.27(this));
+    super.j();
+    c();
+    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    alku.a().c(this);
+    alku.a().b(this);
+    alju.a(0);
   }
 }
 

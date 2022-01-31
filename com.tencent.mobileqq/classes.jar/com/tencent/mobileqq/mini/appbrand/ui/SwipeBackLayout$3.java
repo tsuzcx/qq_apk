@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amgr;
+import amgq;
 import android.os.Bundle;
 
 class SwipeBackLayout$3
-  extends amgr
+  extends amgq
 {
   SwipeBackLayout$3(SwipeBackLayout paramSwipeBackLayout) {}
   

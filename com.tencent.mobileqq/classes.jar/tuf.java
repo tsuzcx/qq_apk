@@ -1,12 +1,60 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class tuf
+public class tuf
 {
-  public ImageView a;
-  public TextView a;
+  protected long a;
+  public Handler a;
+  public WeakReference<ucz> a;
+  public Timer a;
+  private TimerTask a;
+  public boolean a;
+  public long b;
+  public long c;
   
-  tuf(tue paramtue) {}
+  private void a()
+  {
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
+  }
+  
+  private void b()
+  {
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  public void a(long paramLong1, long paramLong2, ucz paramucz)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    }
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramucz);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    b();
+  }
 }
 
 

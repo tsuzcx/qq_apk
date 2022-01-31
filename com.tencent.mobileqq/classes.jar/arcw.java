@@ -1,23 +1,53 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
+import java.util.HashMap;
+import org.json.JSONObject;
 
-class arcw
-  implements EIPCResultCallback
+public class arcw
+  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
 {
-  arcw(arcv paramarcv) {}
+  arcw(arcu paramarcu) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
   {
-    arcv.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      arcv.a(this.a).a(2, paramEIPCResult.data);
-      return;
+    arcu.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
+  }
+  
+  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  {
+    paramHashMap = ardb.a().a(5);
+    if (paramHashMap == null) {
+      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
     }
-    arcv.a(this.a).a(1, paramEIPCResult.data);
+    do
+    {
+      return;
+      paramHashMap = paramHashMap.optString("result_api_url", "");
+      if (TextUtils.isEmpty(paramHashMap))
+      {
+        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
+        return;
+      }
+    } while (!paramHashMap.equals(paramString1));
+    QLog.d("qq_Identification.Model", 1, "start upload face data");
+    if (this.a.jdField_a_of_type_Arch == null) {
+      this.a.jdField_a_of_type_Arch = new arcf(arcu.a(this.a), paramString2, this.a.jdField_a_of_type_Arcz);
+    }
+    for (;;)
+    {
+      arcu.a(this.a, new IdentificationPoseReflect.5.2(this));
+      if (!bbfj.g(BaseApplicationImpl.getApplication())) {
+        break;
+      }
+      ((arcf)this.a.jdField_a_of_type_Arch).b();
+      return;
+      ((arcf)this.a.jdField_a_of_type_Arch).a(paramString2);
+    }
   }
 }
 

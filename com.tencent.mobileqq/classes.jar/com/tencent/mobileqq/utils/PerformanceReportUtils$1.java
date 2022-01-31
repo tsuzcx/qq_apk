@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import acte;
-import akde;
-import akhn;
+import acta;
+import akdd;
+import akhm;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
-import axnv;
-import axrl;
-import bbct;
-import bbfh;
-import bbio;
+import axnx;
+import axrn;
+import bbdh;
+import bbfv;
+import bbjc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -27,7 +27,7 @@ public final class PerformanceReportUtils$1
   
   public void run()
   {
-    Object localObject1 = bbio.a(ServerConfigManager.ConfigType.common, bbfh.b());
+    Object localObject1 = bbjc.a(ServerConfigManager.ConfigType.common, bbfv.b());
     if (QLog.isDevelopLevel()) {
       QLog.d("PerformanceReportUtils", 4, "reportUISwitch openStr ：" + (String)localObject1);
     }
@@ -49,11 +49,11 @@ public final class PerformanceReportUtils$1
           }
           i = 0;
           localHashMap.put("actloginTypt", String.valueOf(i));
-          localHashMap.put("param_threadOpId", String.valueOf(akhn.a().a()));
+          localHashMap.put("param_threadOpId", String.valueOf(akhm.a().a()));
           if ((!QQAppInterface.b) && (this.jdField_a_of_type_Int != 10))
           {
             QQAppInterface.b = true;
-            localHashMap.put("aio_preloaded", String.valueOf(acte.jdField_a_of_type_Int));
+            localHashMap.put("aio_preloaded", String.valueOf(acta.jdField_a_of_type_Int));
           }
           localObject1 = BaseApplicationImpl.getApplication().getRuntime();
           if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
@@ -70,9 +70,9 @@ public final class PerformanceReportUtils$1
             localHashMap.put("param_syncing_msg", String.valueOf(bool));
             localHashMap.put("inActionLoginB", String.valueOf(((QQAppInterface)localObject1).a.a()));
           }
-          localHashMap.put("param_cpu_core_num", String.valueOf(akde.a()));
-          localHashMap.put("param_ram", String.valueOf(bbct.d()));
-          if (axnv.j)
+          localHashMap.put("param_cpu_core_num", String.valueOf(akdd.a()));
+          localHashMap.put("param_ram", String.valueOf(bbdh.d()));
+          if (axnx.j)
           {
             localObject2 = "-1";
             str1 = "-1";
@@ -83,19 +83,19 @@ public final class PerformanceReportUtils$1
               continue;
             }
             localObject1 = "-1";
-            if (axnv.e != 0L) {
-              localObject2 = String.valueOf(l1 - axnv.e);
+            if (axnx.e != 0L) {
+              localObject2 = String.valueOf(l1 - axnx.e);
             }
-            if (axnv.d != 0L) {
-              str1 = String.valueOf(l1 - axnv.d);
+            if (axnx.d != 0L) {
+              str1 = String.valueOf(l1 - axnx.d);
             }
-            if (axnv.g != 0L) {
-              str2 = String.valueOf(l1 - axnv.g);
+            if (axnx.g != 0L) {
+              str2 = String.valueOf(l1 - axnx.g);
             }
-            if (axnv.f != 0L) {
-              str3 = String.valueOf(l1 - axnv.f);
+            if (axnx.f != 0L) {
+              str3 = String.valueOf(l1 - axnx.f);
             }
-            localHashMap.put("perfConfigReportValue", String.valueOf(axnv.c));
+            localHashMap.put("perfConfigReportValue", String.valueOf(axnx.c));
             localHashMap.put("automatorFinishtime", localObject1);
             localHashMap.put("qZoneInterval", localObject2);
             localHashMap.put("miniInterval", str1);
@@ -108,13 +108,13 @@ public final class PerformanceReportUtils$1
         switch (this.jdField_a_of_type_Int)
         {
         case 0: 
-          localObject2 = bbfh.a();
+          localObject2 = bbfv.a();
           if ((localObject1 == null) || (this.jdField_a_of_type_Long <= 0L)) {
             break;
           }
           l2 = ((SharedPreferences)localObject2).getLong((String)localObject1, 0L);
-          l1 = bbfh.a();
-          str1 = bbio.a(ServerConfigManager.ConfigType.common, bbfh.n());
+          l1 = bbfv.a();
+          str1 = bbjc.a(ServerConfigManager.ConfigType.common, bbfv.n());
           if (str1 != null) {
             if (QLog.isDevelopLevel()) {
               QLog.d("PerformanceReportUtils", 4, "reportUISwitch  server time：" + str1);
@@ -137,45 +137,45 @@ public final class PerformanceReportUtils$1
           }
           catch (Exception localException2)
           {
-            l1 = bbfh.a();
+            l1 = bbfv.a();
             continue;
           }
           if (QLog.isDevelopLevel()) {
-            QLog.d("PerformanceReportUtils", 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + bbfh.a());
+            QLog.d("PerformanceReportUtils", 4, "reportUISwitch report_time ：" + l1 + ",lastRp" + l2 + ",aioBusiness=" + bbfv.a());
           }
           if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2) && (SystemClock.uptimeMillis() - l2 < l1)) {
             break;
           }
           if (QLog.isDevelopLevel()) {
-            QLog.d("PerformanceReportUtils", 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + bbfh.a());
+            QLog.d("PerformanceReportUtils", 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + bbfv.a());
           }
-          localHashMap.put("aioBusiness", bbfh.a());
-          axrl.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, (String)localObject1, true, this.jdField_a_of_type_Long, 0L, localHashMap, bbfh.o());
+          localHashMap.put("aioBusiness", bbfv.a());
+          axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, (String)localObject1, true, this.jdField_a_of_type_Long, 0L, localHashMap, bbfv.o());
           ((SharedPreferences)localObject2).edit().putLong((String)localObject1, SystemClock.uptimeMillis()).commit();
           return;
           localObject1 = String.valueOf(l1 - AutomatorFinish.jdField_a_of_type_Long);
           continue;
-          localObject1 = bbfh.c();
+          localObject1 = bbfv.c();
           continue;
-          localObject1 = bbfh.d();
+          localObject1 = bbfv.d();
           continue;
-          localObject1 = bbfh.e();
+          localObject1 = bbfv.e();
           continue;
-          localObject1 = bbfh.f();
+          localObject1 = bbfv.f();
           continue;
-          localObject1 = bbfh.g();
+          localObject1 = bbfv.g();
           continue;
-          localObject1 = bbfh.h();
+          localObject1 = bbfv.h();
           continue;
-          localObject1 = bbfh.i();
+          localObject1 = bbfv.i();
           continue;
-          localObject1 = bbfh.j();
+          localObject1 = bbfv.j();
           continue;
-          localObject1 = bbfh.k();
+          localObject1 = bbfv.k();
           continue;
-          localObject1 = bbfh.l();
+          localObject1 = bbfv.l();
           continue;
-          localObject1 = bbfh.m();
+          localObject1 = bbfv.m();
           break;
         }
         int i = 1;

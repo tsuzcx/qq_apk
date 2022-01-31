@@ -1,17 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
-import java.util.List;
 
 public class atdc
-  implements atek
+  implements View.OnClickListener
 {
-  atdc(atdb paramatdb) {}
+  public atdc(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(List<atel> paramList, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.a.b = paramList;
-    this.a.a.g = paramBoolean;
-    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
+    if (!NetworkUtils.isNetworkAvailable(this.a))
+    {
+      bcql.a(this.a, 1, 2131694610, 1).a();
+      return;
+    }
+    this.a.d();
+    this.a.a("invite_page", "clk_exit");
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajbc;
-import ajku;
+import ajba;
+import ajks;
 import com.tencent.qphone.base.util.QLog;
 
 public class CmGameAvHandler$1
   implements Runnable
 {
-  public CmGameAvHandler$1(ajbc paramajbc, String paramString, long paramLong, int paramInt) {}
+  public CmGameAvHandler$1(ajba paramajba, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
-    ajku.a().b(ajbc.a(this.this$0));
-    ajku.a().b(this.jdField_a_of_type_JavaLangString);
-    ajku.a().a(this.jdField_a_of_type_Long);
-    ajku.a().a(0);
-    ajku.a().b("" + this.jdField_a_of_type_Int, true, true);
+    ajks.a().b(ajba.a(this.this$0));
+    ajks.a().b(this.jdField_a_of_type_JavaLangString);
+    ajks.a().a(this.jdField_a_of_type_Long);
+    ajks.a().a(0);
+    ajks.a().b("" + this.jdField_a_of_type_Int, true, true);
     if (QLog.isColorLevel()) {
       QLog.d("CmGameAvHandler", 2, "avHandler enterRoom=" + this.jdField_a_of_type_Int);
     }
-    ajbc.a(this.this$0, this.jdField_a_of_type_Int);
+    ajba.a(this.this$0, this.jdField_a_of_type_Int);
   }
 }
 

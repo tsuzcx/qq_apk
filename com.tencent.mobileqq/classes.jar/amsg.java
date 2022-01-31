@@ -1,7 +1,34 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class amsg
 {
-  public int a;
-  public int b;
+  public String a = "";
+  
+  public static amsg a(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amsg localamsg = new amsg();
+        localamsg.a = paramString;
+        QLog.d("ConfBean", 2, "confBean = " + localamsg.toString());
+        return localamsg;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.a);
+    return localStringBuilder.toString();
+  }
 }
 
 

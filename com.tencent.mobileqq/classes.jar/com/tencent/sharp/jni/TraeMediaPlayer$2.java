@@ -1,24 +1,24 @@
 package com.tencent.sharp.jni;
 
-import bflh;
-import bfli;
+import bfly;
+import bflz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 
 public class TraeMediaPlayer$2
   extends TimerTask
 {
-  public TraeMediaPlayer$2(bflh parambflh, long paramLong) {}
+  public TraeMediaPlayer$2(bfly parambfly, long paramLong) {}
   
   public void run()
   {
-    if (bflh.a(this.this$0) != null)
+    if (bfly.a(this.this$0) != null)
     {
       if (QLog.isColorLevel()) {
         QLog.w("TraeMediaPlay", 1, "playRing, onCompletion, seq[" + this.a + "]");
       }
-      if (bflh.a(this.this$0) != null) {
-        bflh.a(this.this$0).a(this.a);
+      if (bfly.a(this.this$0) != null) {
+        bfly.a(this.this$0).a(this.a);
       }
     }
   }

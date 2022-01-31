@@ -1,25 +1,18 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
-
 class ybu
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<ybv> b;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
   
-  public ybu(ybs paramybs, View paramView, ybv paramybv)
+  public ybu(ybp paramybp, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramybv);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public ybv a()
-  {
-    return (ybv)this.b.get();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

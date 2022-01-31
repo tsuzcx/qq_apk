@@ -1,13 +1,6 @@
-import android.os.Bundle;
-
-class agbt
-  implements bcpl
+public abstract interface agbt
 {
-  agbt(agbs paramagbs) {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public abstract void a(int paramInt);
 }
 
 

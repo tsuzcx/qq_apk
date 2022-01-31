@@ -7,7 +7,7 @@ class SensorAPIJavaScript$5
   
   public void run()
   {
-    SensorAPIJavaScript.returnToAio(this.this$0.jdField_a_of_type_Wxu, this.this$0.jdField_a_of_type_AndroidAppActivity, "", false);
+    SensorAPIJavaScript.returnToAio(this.this$0.jdField_a_of_type_Wxr, this.this$0.jdField_a_of_type_AndroidAppActivity, "", false);
   }
 }
 

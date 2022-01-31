@@ -1,55 +1,60 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.widget.AbsListView;
 
-class rlj
-  extends rkj
+public class rlj
+  implements rkh, rkj
 {
-  private Container a;
+  private static boolean a;
   
-  public rlj(View paramView, BaseData paramBaseData)
+  public static void f()
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.a = ((Container)paramView);
+    a = false;
+    SharedPreferences.Editor localEditor = bhvy.a(onh.a(), true, false).edit();
+    localEditor.putBoolean("key_read_injoy_fast_web_share_guide", false);
+    localEditor.commit();
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 17;
+  }
+  
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559924, null);
+    ((TextView)paramContext.findViewById(2131378209)).setTextSize(0, Utils.dp2px(15.0D));
+    return new rlk(paramContext, paramBaseData);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.p == 19;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (a) {
+      f();
     }
   }
   
-  private JSONObject a(ProteusBookData paramProteusBookData)
-  {
-    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
-      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new rlk(this));
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.p)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a == null);
-    paramBaseData1 = (ProteusBookData)paramBaseData2;
-    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
-      olr.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
-    }
-    b();
-  }
+  public void e() {}
 }
 
 

@@ -1,27 +1,26 @@
 import com.tencent.mobileqq.activity.JumpActivity;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class abjt
-  extends WtloginObserver
+class abjt
+  implements axof
 {
-  public abjt(JumpActivity paramJumpActivity) {}
+  abjt(abjs paramabjs) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a()
   {
-    if (paramDevlockInfo != null) {
-      aoeh.a().a(paramDevlockInfo.TransferInfo);
-    }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramWUserSigInfo.a(paramDevlockInfo);
-      return;
-      paramDevlockInfo = null;
-    }
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog grant");
+    HashMap localHashMap = new HashMap();
+    axrn.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftGrant", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public void b()
+  {
+    QLog.i("JumpAction", 1, "system share.doShare show self dialog denied");
+    HashMap localHashMap = new HashMap();
+    axrn.a(BaseApplication.getContext()).a("", "noSDPermissionShareSelftDeny", true, 0L, 0L, localHashMap, "");
+    this.a.a.finish();
   }
 }
 

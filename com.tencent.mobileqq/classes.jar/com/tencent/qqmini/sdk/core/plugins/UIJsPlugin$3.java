@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.ViewGroup;
-import begz;
-import beka;
-import bene;
+import behq;
+import bekr;
+import benv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class UIJsPlugin$3
   implements Runnable
 {
-  UIJsPlugin$3(UIJsPlugin paramUIJsPlugin, beka parambeka) {}
+  UIJsPlugin$3(UIJsPlugin paramUIJsPlugin, bekr parambekr) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ class UIJsPlugin$3
       boolean bool = ((JSONObject)localObject).optBoolean("mask", false);
       localObject = this.this$0.mMiniAppContext.a();
       if (UIJsPlugin.access$000(this.this$0) == null) {
-        UIJsPlugin.access$002(this.this$0, new bene((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
+        UIJsPlugin.access$002(this.this$0, new benv((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
       }
       for (;;)
       {

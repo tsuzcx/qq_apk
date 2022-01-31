@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.specify;
 
-import ahfj;
-import aycb;
+import ahfh;
+import aycd;
 
 public class SpecifyRedPacketAnimMsg$2
   implements Runnable
 {
-  public SpecifyRedPacketAnimMsg$2(ahfj paramahfj, aycb paramaycb) {}
+  public SpecifyRedPacketAnimMsg$2(ahfh paramahfh, aycd paramaycd) {}
   
   public void run()
   {

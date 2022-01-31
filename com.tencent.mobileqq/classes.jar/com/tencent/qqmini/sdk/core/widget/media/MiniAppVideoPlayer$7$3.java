@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.core.widget.media;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import beoc;
+import beot;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
 
 public class MiniAppVideoPlayer$7$3
   implements Runnable
 {
-  public MiniAppVideoPlayer$7$3(beoc parambeoc) {}
+  public MiniAppVideoPlayer$7$3(beot parambeot) {}
   
   public void run()
   {

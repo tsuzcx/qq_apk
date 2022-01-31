@@ -1,23 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.widget.RoundBGTextView;
 
 public class aohu
-  implements CompoundButton.OnCheckedChangeListener
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public aohu(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  public RoundBGTextView a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aohu(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup)
   {
-    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new aohv(this, paramBoolean));
-    if (paramBoolean) {}
-    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
-    {
-      axqw.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
-      return;
-    }
+    super(paramViewGroup);
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView = ((RoundBGTextView)paramViewGroup.findViewById(2131368872));
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView.setRoundCornerSize(2);
   }
+  
+  public void onClick(View paramView) {}
 }
 
 

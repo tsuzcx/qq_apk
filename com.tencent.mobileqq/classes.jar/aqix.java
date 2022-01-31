@@ -1,8 +1,7 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class aqix
   implements CompoundButton.OnCheckedChangeListener
@@ -11,15 +10,13 @@ public class aqix
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = 1;
-    bfmj.a(true, paramBoolean);
-    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695322), "qqsetting_auto_receive_magic_face_key", paramBoolean);
+    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
     if (paramBoolean) {}
-    for (;;)
+    for (int i = 1;; i = 0)
     {
-      axqw.b(null, "CliOper", "", paramCompoundButton, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
       return;
-      i = 0;
     }
   }
 }

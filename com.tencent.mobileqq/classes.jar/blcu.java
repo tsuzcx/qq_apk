@@ -1,8 +1,14 @@
-import java.io.File;
-
-public abstract interface blcu
+public class blcu
 {
-  public abstract boolean a(File paramFile, blcs paramblcs, boolean paramBoolean);
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

@@ -1,22 +1,25 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
 
-public abstract interface beoy
-  extends IInterface
+public class beoy
+  implements View.OnTouchListener
 {
-  public abstract Bundle a(String paramString1, String paramString2, Bundle paramBundle);
+  public beoy(VideoGestureRelativeLayout paramVideoGestureRelativeLayout) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
-  
-  public abstract void a(String paramString1, String paramString2, Bundle paramBundle, bepd parambepd);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 1) && (VideoGestureRelativeLayout.a(this.a)))
+    {
+      if (VideoGestureRelativeLayout.a(this.a) != null) {
+        VideoGestureRelativeLayout.a(this.a).d(paramMotionEvent);
+      }
+      VideoGestureRelativeLayout.a(this.a, false);
+    }
+    return VideoGestureRelativeLayout.a(this.a).onTouchEvent(paramMotionEvent);
+  }
 }
 
 

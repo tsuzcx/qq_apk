@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import adeu;
+import ader;
 
 public class PlayLastLogic$1
   implements Runnable
 {
-  public PlayLastLogic$1(adeu paramadeu) {}
+  public PlayLastLogic$1(ader paramader) {}
   
   public void run()
   {
     if (this.this$0.a == 0) {
-      adeu.a(this.this$0, true);
+      ader.a(this.this$0, true);
     }
   }
 }

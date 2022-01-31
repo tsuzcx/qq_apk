@@ -1,91 +1,106 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewParent;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 
-class bbtx
-  implements SensorEventListener
+public class bbtx
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  public bbtx(HealthBusinessPlugin paramHealthBusinessPlugin, bbuf parambbuf, IVideoViewBase paramIVideoViewBase, FrameLayout paramFrameLayout) {}
   
-  private void a(long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    bbtt.b = 1;
-    bbtt.a = true;
-  }
-  
-  public void b()
-  {
-    bbtt.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
+    if (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d)
     {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
+      this.jdField_a_of_type_Bbuf.c.setImageResource(2130841326);
+      ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setOnTouchListener(new bbty(this));
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(2131375329).setVisibility(8);
+      if (((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(16908290).getParent().getParent()).getChildAt(1) != null) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(16908290).getParent().getParent()).getChildAt(1).setVisibility(8);
       }
-      a(l1);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().setFlags(1024, 1024);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().setRequestedOrientation(0);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().setFlags(1024, 1024);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.k = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getScrollX();
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.l = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getScrollY();
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().scrollTo(0, 0);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.scrollTo(0, 0);
+      paramView = ((ViewGroup)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getLayoutParams();
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.g = paramView.height;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f = paramView.width;
+      paramView.width = -1;
+      paramView.height = -1;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_Int = ((FrameLayout.LayoutParams)paramView).topMargin;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = ((FrameLayout.LayoutParams)paramView).leftMargin;
+      ((FrameLayout.LayoutParams)paramView).topMargin = 0;
+      ((FrameLayout.LayoutParams)paramView).leftMargin = 0;
+      i = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getResources().getDisplayMetrics().widthPixels;
+      j = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getResources().getDisplayMetrics().heightPixels;
+      QLog.d("HealthBusinessPlugin", 2, "FullScreenWidth ScreenWidth:" + i);
+      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).width = j;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.h = ((FrameLayout.LayoutParams)localObject).width;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.i = ((FrameLayout.LayoutParams)localObject).height;
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.j = ((FrameLayout.LayoutParams)localObject).topMargin;
+      ((FrameLayout.LayoutParams)localObject).topMargin = 0;
+      ((FrameLayout.LayoutParams)localObject).width = j;
+      ((FrameLayout.LayoutParams)localObject).height = i;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ((ViewGroup)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setLayoutParams(paramView);
+      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d = true;
+      return;
     }
-    label66:
-    do
-    {
-      do
-      {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
-      }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
-      {
-        a();
-        a(l1);
-        return;
-      }
-      if (this.jdField_a_of_type_Int < 10)
-      {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
-      }
-      a(l1);
-    } while (bbtt.b >= 3);
-    b();
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(2131375329).setVisibility(0);
+    if (((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(16908290).getParent().getParent()).getChildAt(1) != null) {
+      ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().findViewById(16908290).getParent().getParent()).getChildAt(1).setVisibility(0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().setFlags(1024, 8);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().setVisibility(0);
+    this.jdField_a_of_type_Bbuf.c.setImageResource(2130841325);
+    ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setOnTouchListener(null);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().getAttributes();
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().setRequestedOrientation(1);
+    paramView.flags &= 0xFFFFFBFF;
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().setAttributes(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getWindow().clearFlags(512);
+    paramView = ((ViewGroup)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).getLayoutParams();
+    ((FrameLayout.LayoutParams)paramView).topMargin = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_Int;
+    ((FrameLayout.LayoutParams)paramView).leftMargin = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b;
+    paramView.height = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.g;
+    paramView.width = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.f;
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().scrollTo(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.k, this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.l);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.scrollTo(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.k, this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.l + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_ComTencentBizUiTouchWebView.mTotalYoffset);
+    int i = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getResources().getDisplayMetrics().widthPixels;
+    int j = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.mRuntime.a().getResources().getDisplayMetrics().heightPixels;
+    QLog.d("HealthBusinessPlugin", 2, "onBACKFullScreenWidth ScreenWidth:" + i);
+    Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).width = i;
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.h;
+    ((FrameLayout.LayoutParams)localObject).height = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.i;
+    ((FrameLayout.LayoutParams)localObject).topMargin = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.j;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    ((ViewGroup)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase).setLayoutParams(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d = false;
   }
 }
 

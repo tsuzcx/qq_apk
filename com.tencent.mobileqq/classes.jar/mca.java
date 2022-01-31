@@ -1,53 +1,81 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.BeautyToolbar;
-import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mca
-  implements SeekBar.OnSeekBarChangeListener
+  extends mui
 {
-  public mca(BeautyToolbar paramBeautyToolbar) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public mca(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
   {
-    if (this.a.mBeautyValue != paramInt)
-    {
-      this.a.updateTip(paramInt);
-      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
-        break label125;
-      }
-      this.a.mSeek.setThumb(this.a.mThumb_0);
-    }
+    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+  }
+  
+  public void a(mum parammum)
+  {
+    String str3 = "";
+    if (parammum.a.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      if (paramBoolean) {
-        this.a.mSeek.setContentDescription(paramInt + "%");
+      try
+      {
+        String str1 = new String(parammum.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        if (str1 != null)
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(str1);
+            i = localJSONObject.getInt("retcode");
+            if (QLog.isColorLevel()) {
+              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
+            }
+            str1 = str3;
+            if (localJSONObject.has("result"))
+            {
+              localJSONObject = localJSONObject.getJSONObject("result");
+              str1 = str3;
+              if (localJSONObject.has("result_code")) {
+                str1 = localJSONObject.getString("result_code");
+              }
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            Object localObject;
+            if (!QLog.isColorLevel()) {
+              break label368;
+            }
+            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
+            str2 = "";
+            i = -2;
+            continue;
+            this.a.jdField_a_of_type_Ajvg.c(Long.parseLong(this.a.h));
+            this.a.a(1, 0);
+            return;
+          }
+          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + parammum.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
+          if ((i == 0) && (str1.equals("0")))
+          {
+            this.a.jdField_a_of_type_Ajvg.a(Long.parseLong(this.a.h), this.a.c);
+            this.a.a(this.a.h, this.a.c);
+            this.a.finish();
+            return;
+          }
+        }
       }
-      this.a.mBeautyValue = paramInt;
-      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
-      EffectSettingUi.a(this.a.mApp, -1003L);
-      return;
-      label125:
-      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
-        this.a.mSeek.setThumb(this.a.mThumb_30);
-      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
-        this.a.mSeek.setThumb(this.a.mThumb_60);
-      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
-        this.a.mSeek.setThumb(this.a.mThumb_100);
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
+        }
+        localObject = null;
+        continue;
       }
+      label368:
+      String str2 = "";
+      int i = 1;
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    EffectSettingUi.a(this.a.mApp, -1004L);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
-    EffectSettingUi.a(this.a.mApp, -1005L);
   }
 }
 

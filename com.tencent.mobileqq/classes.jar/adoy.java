@@ -1,16 +1,15 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
 class adoy
-  extends actr
+  implements bcwm
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  TextView b;
+  adoy(adox paramadox, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  adoy(adox paramadox) {}
+  public void a(int paramInt)
+  {
+    apug.a(this.jdField_a_of_type_Adox.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

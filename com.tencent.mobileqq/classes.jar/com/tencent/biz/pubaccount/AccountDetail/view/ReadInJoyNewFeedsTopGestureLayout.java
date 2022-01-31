@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.AccountDetail.view;
 
 import android.content.Context;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
-import nhg;
+import nhd;
 
 public class ReadInJoyNewFeedsTopGestureLayout
   extends AccountDetailTopGestureLayout
@@ -14,7 +14,7 @@ public class ReadInJoyNewFeedsTopGestureLayout
   
   public void a(Context paramContext)
   {
-    this.a = new nhg(this, paramContext);
+    this.a = new nhd(this, paramContext);
     this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.a);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }

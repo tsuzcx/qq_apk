@@ -1,11 +1,19 @@
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
-class lra
-  extends VideoFilterBase
+public class lra
 {
-  lra(lqz paramlqz)
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public boolean a()
   {
-    super(lqz.a(), lqz.b());
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 

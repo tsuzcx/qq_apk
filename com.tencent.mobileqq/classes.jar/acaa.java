@@ -1,86 +1,126 @@
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class acaa
-  implements mvd
+  extends AsyncTask<String, Void, HashMap<Integer, Integer>>
 {
   public acaa(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void a(Object paramObject, int paramInt)
+  protected HashMap<Integer, Integer> a(String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
+    int i = 0;
+    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
+      }
+      return null;
     }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+    paramVarArgs = bbkb.e(this.a.jdField_d_of_type_JavaLangString);
+    this.a.b = paramVarArgs.getString(ldd.h, "");
+    paramVarArgs = msy.a();
+    this.a.b(paramVarArgs);
+    paramVarArgs = lct.b(270).a;
+    this.a.a(paramVarArgs);
+    if (this.a.e.isEmpty())
+    {
+      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696145);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
+      }
+    }
+    if (this.a.f.isEmpty())
+    {
+      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696143);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
+      }
+    }
+    if (this.a.g.isEmpty())
+    {
+      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131696144);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
+      }
+    }
+    if (this.a.jdField_d_of_type_Long == 0L) {
+      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
+    }
+    try
+    {
+      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      {
+        i = 0;
+        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          break label778;
+        }
+      }
+    }
+    catch (Exception paramVarArgs)
     {
       try
       {
-        if (mrv.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrv.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131696145);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
-      }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (mrv.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrv.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131696145);
-        }
-        catch (OutOfMemoryError paramObject)
+        do
         {
           for (;;)
           {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
+            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
+            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
+            int j = Integer.parseInt(paramVarArgs[0]);
+            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
+            i += 1;
+            continue;
+            paramVarArgs = this.a.f + "/" + this.a.g;
+          }
+          paramVarArgs = paramVarArgs;
+          paramVarArgs.printStackTrace();
+        } while (!QLog.isColorLevel());
+        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          paramVarArgs.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
           }
         }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
+      }
+      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713587));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713580));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713583));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713586));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713581));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713585));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713582));
+      this.a.jdField_a_of_type_JavaUtilList.add(ajya.a(2131713584));
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
+        i += 1;
       }
     }
+    label778:
+    return this.a.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  protected void a(HashMap<Integer, Integer> paramHashMap)
+  {
+    super.onPostExecute(paramHashMap);
   }
 }
 

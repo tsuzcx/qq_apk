@@ -1,48 +1,51 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.widget.GridView;
-import java.util.Collection;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class atqr
-  extends AvatarWallPagerAdapter<GridView>
+class atqr
+  implements View.OnClickListener
 {
-  protected LinearLayout.LayoutParams a;
+  atqr(atpk paramatpk, String paramString) {}
   
-  public atqr(atpi paramatpi, AvatarWallViewPager paramAvatarWallViewPager)
+  public void onClick(View paramView)
   {
-    super(paramAvatarWallViewPager);
-  }
-  
-  public View a(int paramInt, GridView paramGridView)
-  {
-    return atpi.a(this.jdField_a_of_type_Atpi, atpi.a(this.jdField_a_of_type_Atpi), paramInt);
-  }
-  
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 30.0F), vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 1.5F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
+    axrc localaxrc = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("live_clk").e(atpk.a(this.jdField_a_of_type_Atpk).uin);
+    if (atpk.a(this.jdField_a_of_type_Atpk).gender == 0) {
+      paramView = "1";
     }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    if (paramBoolean)
+    for (;;)
     {
-      localView.setBackgroundColor(-1);
-      return localView;
+      localaxrc.a(new String[] { paramView }).a();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      QLog.i("NearbyProfileDisplayPanel", 1, "jumpUrl is empty");
+      return;
+      if (atpk.a(this.jdField_a_of_type_Atpk).gender == 1) {
+        paramView = "2";
+      } else {
+        paramView = "0";
+      }
     }
-    localView.setBackgroundColor(1728053247);
-    return localView;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
+    {
+      paramView = bbex.a(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Atpk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      if (paramView != null)
+      {
+        paramView.c();
+        return;
+      }
+      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
   }
 }
 

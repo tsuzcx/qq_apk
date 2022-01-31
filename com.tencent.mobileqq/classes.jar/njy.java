@@ -1,16 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class njy
-  extends AnimatorListenerAdapter
+  implements TVK_IMediaPlayer.OnErrorListener
 {
   public njy(VideoCoverView paramVideoCoverView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    this.a.jdField_a_of_type_Int = 7;
+    njc.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
+    this.a.g();
+    return false;
   }
 }
 

@@ -1,37 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aafg
-  implements View.OnClickListener
+  extends MqqHandler
 {
   public aafg(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!aumi.a().a(this.a.app, this.a)) {
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    switch (paramMessage.what)
     {
-      bcpw.a(this.a, 2131694030, 0).a();
+    default: 
       return;
     }
-    AccountManageActivity.a(this.a, ayao.a(this.a.app));
-    paramView = new Intent();
-    paramView.setPackage(this.a.getPackageName());
-    paramView.setClass(this.a, AddAccountActivity.class);
-    this.a.startActivityForResult(paramView, 1000);
-    this.a.overridePendingTransition(2130771997, 2130771990);
-    ayan.c(this.a.app, this.a);
-    axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
+    this.a.e();
   }
 }
 

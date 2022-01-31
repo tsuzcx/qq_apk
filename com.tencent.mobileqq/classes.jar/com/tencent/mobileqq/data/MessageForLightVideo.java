@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import acxl;
-import ajyc;
+import acxh;
+import ajya;
 import android.text.TextUtils;
-import axad;
-import bbdj;
+import axaf;
+import bbdx;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class MessageForLightVideo
   extends MessageForShortVideo
-  implements acxl
+  implements acxh
 {
   public static final int LIGHT_VIDEO_STATUS_MUTE_PLAY = 3;
   public static final int LIGHT_VIDEO_STATUS_PAUSE = 2;
@@ -29,7 +29,7 @@ public class MessageForLightVideo
   public void doParse()
   {
     super.doParse();
-    if ("1".equals(getExtInfoFromExtStr(axad.u)))
+    if ("1".equals(getExtInfoFromExtStr(axaf.u)))
     {
       this.isLightVideoRead = true;
       return;
@@ -40,14 +40,14 @@ public class MessageForLightVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return ajyc.a(2131706573);
+      return ajya.a(2131706584);
     }
     return this.msg;
   }
   
   public boolean isAllReady()
   {
-    return (bbdj.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
+    return (bbdx.b(ShortVideoUtils.a(this, "mp4"))) && ((!isSendFromLocal()) || (isStatusReady()));
   }
   
   public boolean isStatusReady()

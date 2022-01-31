@@ -8,20 +8,20 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.widget.Toast;
-import bcxm;
-import bdcj;
-import bdcm;
-import bddg;
+import bcyb;
+import bdcy;
+import bddb;
 import bddv;
-import bddy;
-import bdht;
-import bdhz;
-import bdid;
+import bdek;
+import bden;
+import bdii;
 import bdio;
-import bdip;
-import bdix;
-import bdjc;
-import bdnn;
+import bdis;
+import bdjd;
+import bdje;
+import bdjm;
+import bdjr;
+import bdoc;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.open.agent.datamodel.Friend;
 import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
@@ -41,11 +41,11 @@ import org.json.JSONObject;
 
 public class SocialFriendChooser
   extends FriendChooser
-  implements bdcm, bdip
+  implements bddb, bdje
 {
   protected ProgressDialog a;
   public Bundle a;
-  public bdio a;
+  public bdjd a;
   protected String[] a;
   protected Handler b;
   protected String d;
@@ -68,7 +68,7 @@ public class SocialFriendChooser
   
   public SocialFriendChooser()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new bddg(this);
+    this.jdField_b_of_type_AndroidOsHandler = new bddv(this);
   }
   
   protected int a()
@@ -85,17 +85,17 @@ public class SocialFriendChooser
   {
     l();
     if (paramIntent.hasExtra("key_error_msg")) {
-      Toast.makeText(bcxm.a().a(), paramIntent.getStringExtra("key_error_msg"), 0).show();
+      Toast.makeText(bcyb.a().a(), paramIntent.getStringExtra("key_error_msg"), 0).show();
     }
     int i1 = paramIntent.getIntExtra("key_error_code", -6);
     if (i1 != 0) {
-      bdht.e("SocialFriendChooser", "onGetBuddyListError{KEY_ERROR_CODE:" + i1 + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+      bdii.e("SocialFriendChooser", "onGetBuddyListError{KEY_ERROR_CODE:" + i1 + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
     }
     super.setResult(-1, paramIntent);
     super.finish();
   }
   
-  public void a(bddy parambddy)
+  public void a(bden parambden)
   {
     int i1 = 0;
     for (;;)
@@ -105,51 +105,51 @@ public class SocialFriendChooser
         l();
         if (("action_gift".equals(this.f)) || ("action_ask".equals(this.f)) || ("action_invite".equals(this.f)) || ("action_reactive".equals(this.f)) || ("action_story".equals(this.f)))
         {
-          this.jdField_a_of_type_Int = parambddy.d;
-          if (parambddy.jdField_b_of_type_Int != -1)
+          this.jdField_a_of_type_Int = parambden.d;
+          if (parambden.jdField_b_of_type_Int != -1)
           {
-            if (parambddy.jdField_b_of_type_Int - parambddy.c == 0)
+            if (parambden.jdField_b_of_type_Int - parambden.c == 0)
             {
               this.jdField_a_of_type_Int = 0;
-              this.jdField_b_of_type_Int = parambddy.jdField_b_of_type_Int;
+              this.jdField_b_of_type_Int = parambden.jdField_b_of_type_Int;
             }
           }
           else
           {
             if (this.jdField_a_of_type_Int == 0) {
-              Toast.makeText(this, super.getString(2131689863, new Object[] { Integer.valueOf(parambddy.jdField_b_of_type_Int) }), 0).show();
+              Toast.makeText(this, super.getString(2131689863, new Object[] { Integer.valueOf(parambden.jdField_b_of_type_Int) }), 0).show();
             }
-            bddv localbddv = bddv.a();
-            localbddv.a(parambddy.a, parambddy.e, parambddy.f);
+            bdek localbdek = bdek.a();
+            localbdek.a(parambden.a, parambden.e, parambden.f);
             if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
               break label357;
             }
-            parambddy = this.jdField_a_of_type_ArrayOfJavaLangString;
-            int i2 = parambddy.length;
+            parambden = this.jdField_a_of_type_ArrayOfJavaLangString;
+            int i2 = parambden.length;
             if (i1 >= i2) {
               break label357;
             }
-            String str = parambddy[i1];
-            localbddv.a(str);
-            this.jdField_b_of_type_JavaUtilArrayList.add(localbddv.a(str));
+            String str = parambden[i1];
+            localbdek.a(str);
+            this.jdField_b_of_type_JavaUtilArrayList.add(localbdek.a(str));
             i1 += 1;
             continue;
           }
-          if (parambddy.jdField_b_of_type_Int - parambddy.c >= this.jdField_a_of_type_Int) {
+          if (parambden.jdField_b_of_type_Int - parambden.c >= this.jdField_a_of_type_Int) {
             continue;
           }
-          this.jdField_a_of_type_Int = (parambddy.jdField_b_of_type_Int - parambddy.c);
+          this.jdField_a_of_type_Int = (parambden.jdField_b_of_type_Int - parambden.c);
           continue;
         }
         b(true);
       }
-      catch (Exception parambddy)
+      catch (Exception parambden)
       {
-        bdht.c("SocialFriendChooser", "GetBuddyList exception." + parambddy.getMessage(), parambddy);
-        parambddy = new Intent();
-        parambddy.putExtra("key_error_code", -6);
-        parambddy.putExtra("key_error_msg", bdix.d);
-        a(parambddy);
+        bdii.c("SocialFriendChooser", "GetBuddyList exception." + parambden.getMessage(), parambden);
+        parambden = new Intent();
+        parambden.putExtra("key_error_code", -6);
+        parambden.putExtra("key_error_msg", bdjm.d);
+        a(parambden);
         if (QLog.isColorLevel())
         {
           if (!"action_story".equals(this.f)) {
@@ -169,12 +169,12 @@ public class SocialFriendChooser
   public void a(Exception paramException)
   {
     l();
-    bdht.c("SocialFriendChooser", "SendAppInvitation exception." + paramException.getMessage(), paramException);
+    bdii.c("SocialFriendChooser", "SendAppInvitation exception." + paramException.getMessage(), paramException);
     Intent localIntent = new Intent();
     if ((paramException instanceof ConnectTimeoutException))
     {
       localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", bdix.e);
+      localIntent.putExtra("key_error_msg", bdjm.e);
     }
     for (;;)
     {
@@ -183,7 +183,7 @@ public class SocialFriendChooser
       if ((paramException instanceof SocketTimeoutException))
       {
         localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", bdix.f);
+        localIntent.putExtra("key_error_msg", bdjm.f);
       }
       else if ((paramException instanceof MalformedURLException))
       {
@@ -198,17 +198,17 @@ public class SocialFriendChooser
       else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
       {
         localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", bdix.g);
+        localIntent.putExtra("key_error_msg", bdjm.g);
       }
       else if ((paramException instanceof IOException))
       {
         localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", bdix.a);
+        localIntent.putExtra("key_error_msg", bdjm.a);
       }
       else
       {
         localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", bdix.d);
+        localIntent.putExtra("key_error_msg", bdjm.d);
       }
     }
   }
@@ -226,7 +226,7 @@ public class SocialFriendChooser
         if (!"action_invite".equals(this.f)) {
           break label111;
         }
-        bdjc.a("400", "ANDROIDQQ.INVITE.ASSISTANT", this.d);
+        bdjr.a("400", "ANDROIDQQ.INVITE.ASSISTANT", this.d);
       }
       for (;;)
       {
@@ -240,17 +240,17 @@ public class SocialFriendChooser
         label111:
         if ("action_ask".equals(this.f))
         {
-          bdjc.a("400", "ANDROIDQQ.REQUEST.ASSISTANT", this.d);
+          bdjr.a("400", "ANDROIDQQ.REQUEST.ASSISTANT", this.d);
           i1 = 2131689871;
         }
         else if ("action_gift".equals(this.f))
         {
-          bdjc.a("400", "ANDROIDQQ.FREEGIFT.ASSISTANT", this.d);
+          bdjr.a("400", "ANDROIDQQ.FREEGIFT.ASSISTANT", this.d);
           i1 = 2131689869;
         }
         else if ("action_reactive".equals(this.f))
         {
-          bdjc.a("400", "ANDROIDQQ.REACTIVE.ASSISTANT", this.d);
+          bdjr.a("400", "ANDROIDQQ.REACTIVE.ASSISTANT", this.d);
           i1 = 2131689870;
         }
       }
@@ -258,10 +258,10 @@ public class SocialFriendChooser
     }
     catch (JSONException paramJSONObject)
     {
-      bdht.c("SocialFriendChooser", "SendAppInvitation exception." + paramJSONObject.getMessage(), paramJSONObject);
+      bdii.c("SocialFriendChooser", "SendAppInvitation exception." + paramJSONObject.getMessage(), paramJSONObject);
       paramJSONObject = new Intent();
       paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", bdix.b);
+      paramJSONObject.putExtra("key_error_msg", bdjm.b);
       b(paramJSONObject);
     }
   }
@@ -274,7 +274,7 @@ public class SocialFriendChooser
       {
         this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
         this.f = super.getIntent().getStringExtra("key_action");
-        bdht.c("SocialFriendChooser", "-->action = " + this.f + " -- mParms = " + this.jdField_a_of_type_AndroidOsBundle);
+        bdii.c("SocialFriendChooser", "-->action = " + this.f + " -- mParms = " + this.jdField_a_of_type_AndroidOsBundle);
         if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("appid")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("hopenid")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("keystr")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("keytype")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("platform")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("encrytoken")))
         {
           this.d = this.jdField_a_of_type_AndroidOsBundle.getString("appid");
@@ -291,8 +291,8 @@ public class SocialFriendChooser
           if (("action_gift".equals(this.f)) || ("action_ask".equals(this.f)) || ("action_reactive".equals(this.f)))
           {
             this.l = this.jdField_a_of_type_AndroidOsBundle.getString("type");
-            this.o = bdhz.a(this.jdField_a_of_type_AndroidOsBundle.getString("title"), 12, true, false);
-            this.n = bdhz.a(this.jdField_a_of_type_AndroidOsBundle.getString("msg"), 70, true, false);
+            this.o = bdio.a(this.jdField_a_of_type_AndroidOsBundle.getString("title"), 12, true, false);
+            this.n = bdio.a(this.jdField_a_of_type_AndroidOsBundle.getString("msg"), 70, true, false);
             if (!"action_ask".equals(this.f)) {
               break label846;
             }
@@ -312,7 +312,7 @@ public class SocialFriendChooser
                 return false;
               }
               this.r = this.jdField_a_of_type_AndroidOsBundle.getString("recImg");
-              this.s = bdhz.a(this.jdField_a_of_type_AndroidOsBundle.getString("recImgDec"), 20, true, false);
+              this.s = bdio.a(this.jdField_a_of_type_AndroidOsBundle.getString("recImgDec"), 20, true, false);
               this.t = this.jdField_a_of_type_AndroidOsBundle.getString("sendImg");
               if (("".equals(this.r)) || ("".equals(this.s)) || ("".equals(this.t)))
               {
@@ -320,7 +320,7 @@ public class SocialFriendChooser
                 return false;
               }
             }
-            bdht.c("SocialFriendChooser", "-->typeid = " + this.m);
+            bdii.c("SocialFriendChooser", "-->typeid = " + this.m);
           }
           if (this.jdField_a_of_type_AndroidOsBundle.containsKey("pf")) {
             this.k = this.jdField_a_of_type_AndroidOsBundle.getString("pf");
@@ -331,14 +331,14 @@ public class SocialFriendChooser
           if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
             this.q = this.jdField_a_of_type_AndroidOsBundle.getString("source");
           }
-          bdcj.a().a(this.d, this.g);
+          bdcy.a().a(this.d, this.g);
           this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_AndroidOsBundle.getStringArray("BuddiesSelected");
           return true;
         }
       }
       catch (Exception localException)
       {
-        bdht.c("SocialFriendChooser", "initParams exception." + localException.getMessage(), localException);
+        bdii.c("SocialFriendChooser", "initParams exception." + localException.getMessage(), localException);
         j();
         return false;
       }
@@ -355,7 +355,7 @@ public class SocialFriendChooser
     if (i1 != 0)
     {
       Toast.makeText(this, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      bdht.e("SocialFriendChooser", "onSendAppInvitationComplete{KEY_ERROR_CODE:" + i1 + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+      bdii.e("SocialFriendChooser", "onSendAppInvitationComplete{KEY_ERROR_CODE:" + i1 + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
     }
     super.setResult(-1, paramIntent);
     super.finish();
@@ -389,7 +389,7 @@ public class SocialFriendChooser
     }
     for (;;)
     {
-      bdid.a().a(str, 0);
+      bdis.a().a(str, 0);
       return;
       if ("action_ask".equals(this.f))
       {
@@ -419,10 +419,10 @@ public class SocialFriendChooser
     localBundle.putString("keytype", this.h);
     localBundle.putString("platform", this.i);
     localBundle.putString("encrytoken", this.j);
-    localBundle.putString("agentversion", bcxm.a().e());
+    localBundle.putString("agentversion", bcyb.a().e());
     localBundle.putString("appid_for_getting_config", this.d);
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("desc")) {
-      localBundle.putString("desc", bdhz.a(this.jdField_a_of_type_AndroidOsBundle.getString("desc"), 70, true, false));
+      localBundle.putString("desc", bdio.a(this.jdField_a_of_type_AndroidOsBundle.getString("desc"), 70, true, false));
     }
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("picurl")) {
       localBundle.putString("picurl", this.jdField_a_of_type_AndroidOsBundle.getString("picurl"));
@@ -441,11 +441,11 @@ public class SocialFriendChooser
     }
     Object localObject = new StringBuilder();
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_Bddv.b().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Bdek.b().iterator();
     while (localIterator.hasNext())
     {
       String str2 = (String)localIterator.next();
-      Friend localFriend = this.jdField_a_of_type_Bddv.a(str2);
+      Friend localFriend = this.jdField_a_of_type_Bdek.a(str2);
       if (localFriend != null) {
         if (localFriend.jdField_b_of_type_Int == -1) {
           ((StringBuilder)localObject).append(str2).append(",");
@@ -462,21 +462,21 @@ public class SocialFriendChooser
     if (i1 != -1) {
       localStringBuilder.deleteCharAt(i1);
     }
-    localBundle.putString("app_rid", String.valueOf(this.jdField_a_of_type_Bddv.jdField_a_of_type_Int));
-    localBundle.putString("app_tid", String.valueOf(this.jdField_a_of_type_Bddv.jdField_b_of_type_Int));
+    localBundle.putString("app_rid", String.valueOf(this.jdField_a_of_type_Bdek.jdField_a_of_type_Int));
+    localBundle.putString("app_tid", String.valueOf(this.jdField_a_of_type_Bdek.jdField_b_of_type_Int));
     localBundle.putString("recom_openids", localStringBuilder.toString());
     if ("action_invite".equals(this.f))
     {
       localBundle.putString("invitedopenids", ((StringBuilder)localObject).toString());
-      str1 = bdnn.a().a("http://fusion.qq.com/cgi-bin/qzapps/mappinvite_invite.cgi");
+      str1 = bdoc.a().a("http://fusion.qq.com/cgi-bin/qzapps/mappinvite_invite.cgi");
       localObject = "GET";
     }
     for (;;)
     {
       if (str1 != null)
       {
-        this.jdField_a_of_type_Bdio = new bdio(str1, (String)localObject, this);
-        this.jdField_a_of_type_Bdio.a(localBundle);
+        this.jdField_a_of_type_Bdjd = new bdjd(str1, (String)localObject, this);
+        this.jdField_a_of_type_Bdjd.a(localBundle);
         this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10002, 45000L);
       }
       return;
@@ -495,7 +495,7 @@ public class SocialFriendChooser
           }
           localBundle.putString("receiver", ((StringBuilder)localObject).toString());
           localBundle.putString("typeid", this.m);
-          str1 = bdnn.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_sendrequest.cgi");
+          str1 = bdoc.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_sendrequest.cgi");
           localObject = "POST";
           break;
           if (!TextUtils.isEmpty(this.p)) {
@@ -511,8 +511,8 @@ public class SocialFriendChooser
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", bdix.c);
-    bdht.e("SocialFriendChooser", "initParams:error code:-5; error msg:" + bdix.c);
+    localIntent.putExtra("key_error_msg", bdjm.c);
+    bdii.e("SocialFriendChooser", "initParams:error code:-5; error msg:" + bdjm.c);
     Bundle localBundle = super.getIntent().getBundleExtra("key_params");
     if (localBundle != null)
     {
@@ -523,7 +523,7 @@ public class SocialFriendChooser
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + localBundle.get(str).toString() + " ");
       }
-      bdht.e("SocialFriendChooser", "params=" + localStringBuilder.toString());
+      bdii.e("SocialFriendChooser", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -547,9 +547,9 @@ public class SocialFriendChooser
     if (("action_gift".equals(this.f)) || ("action_ask".equals(this.f)) || ("action_reactive".equals(this.f))) {
       localBundle.putString("typeid", this.m);
     }
-    localBundle.putString("agentversion", bcxm.a().e());
+    localBundle.putString("agentversion", bcyb.a().e());
     localBundle.putString("appid_for_getting_config", this.d);
-    bdcj.a().a(localBundle, this, this.f);
+    bdcy.a().a(localBundle, this, this.f);
   }
   
   public void l()
@@ -578,7 +578,7 @@ public class SocialFriendChooser
     {
       while ("action_invite".equals(this.f))
       {
-        bdjc.a("100", "ANDROIDQQ.INVITE.FS", this.d);
+        bdjr.a("100", "ANDROIDQQ.INVITE.FS", this.d);
         return;
         if ((this.f.equals("action_reactive")) || (this.f.equals("action_gift")) || (this.f.equals("action_ask")))
         {
@@ -588,23 +588,23 @@ public class SocialFriendChooser
       }
       if ("action_ask".equals(this.f))
       {
-        bdjc.a("100", "ANDROIDQQ.REQUEST.FS", this.d);
+        bdjr.a("100", "ANDROIDQQ.REQUEST.FS", this.d);
         return;
       }
       if ("action_gift".equals(this.f))
       {
-        bdjc.a("100", "ANDROIDQQ.FREEGIFT.FS", this.d);
+        bdjr.a("100", "ANDROIDQQ.FREEGIFT.FS", this.d);
         return;
       }
     } while (!"action_reactive".equals(this.f));
-    bdjc.a("100", "ANDROIDQQ.REACTIVE.FS", this.d);
+    bdjr.a("100", "ANDROIDQQ.REACTIVE.FS", this.d);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(10001);
-    bdcj.a().a();
+    bdcy.a().a();
   }
 }
 

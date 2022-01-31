@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alam;
+import alal;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$19
   implements Runnable
 {
-  public ARTransferPromotionRenderable$19(alam paramalam, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARTransferPromotionRenderable$19(alal paramalal, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    alam.a(this.this$0, 0);
-    QLog.i("ARTransferPromotionRenderable", 1, "setRecogRes. mInsertedSparkTotalCnt = 0, sparkShaderVertFileName = , circleR = " + this.a + ", circleX = " + this.b + ", circleY = " + this.c + ", clockwise = " + this.d + ", hasDrawedFrame = " + alam.e(this.this$0));
-    if ((alam.a(this.this$0) != null) && (alam.e(this.this$0))) {
-      alam.a(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
+    alal.a(this.this$0, 0);
+    QLog.i("ARTransferPromotionRenderable", 1, "setRecogRes. mInsertedSparkTotalCnt = 0, sparkShaderVertFileName = , circleR = " + this.a + ", circleX = " + this.b + ", circleY = " + this.c + ", clockwise = " + this.d + ", hasDrawedFrame = " + alal.e(this.this$0));
+    if ((alal.a(this.this$0) != null) && (alal.e(this.this$0))) {
+      alal.a(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.msgnotify;
 
-import aksf;
+import akse;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
 

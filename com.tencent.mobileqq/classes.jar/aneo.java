@@ -1,8 +1,27 @@
-public class aneo
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class aneo
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
+  aneo(anem paramanem, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      anem.a(this.a);
+      return;
+    }
+    anem.b(this.a);
+  }
 }
 
 

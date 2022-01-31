@@ -1,48 +1,53 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tyi
-  extends sth<tyf, tah>
+  extends JobSegment<String, upp>
 {
-  public tyi(tyf paramtyf)
-  {
-    super(paramtyf);
-  }
+  public tyi(tyc paramtyc) {}
   
-  public void a(@NonNull tyf paramtyf, @NonNull tah paramtah)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if ((paramtah.jdField_a_of_type_Int == 2) || (!paramtah.jdField_a_of_type_JavaLangString.equals(tyf.a(paramtyf))) || (tyf.a(paramtyf) == null) || (tyf.a(paramtyf).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
-      veg.b(this.TAG, "ignore this feed info change event. %s.", paramtah.toString());
-    }
-    tyo localtyo;
-    do
+    if ((tyc.a(this.a).a != null) && (TextUtils.equals(tyc.a(this.a).a.feedId, paramString)))
     {
+      ved.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
+      notifyError(new ErrorMessage(2223, "feed item already exist"));
       return;
-      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
-      localtyo = paramtyf.a();
-      switch (paramtah.b)
+    }
+    paramString = new upp();
+    Object localObject1 = (CommentLikeFeedItem)((uvx)tcz.a(11)).a(tyc.a(this.a));
+    if (localObject1 != null)
+    {
+      if ((localObject1 instanceof VideoListFeedItem))
       {
-      default: 
-        return;
+        paramJobContext = (VideoListFeedItem)localObject1;
+        localObject2 = ((uwd)tcz.a(12)).a(tyc.a(this.a), paramJobContext.mVideoPullType);
+        if (localObject2 != null)
+        {
+          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
+          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
+          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
+          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
+          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
+        }
       }
-      if (paramtah.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        tyf.a(paramtyf).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramtah.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        tyf.a(paramtyf).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramtah.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        tyf.a(paramtyf).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramtah.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      tyf.a(paramtyf).a(paramtah.c);
-    } while (localtyo == null);
-    localtyo.a(tyf.a(paramtyf), paramtah.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      paramString.a = ((CommentLikeFeedItem)localObject1);
+      notifyResult(paramString);
+      return;
+    }
+    localObject1 = new tlw();
+    ((tlw)localObject1).a = new ArrayList();
+    Object localObject2 = new uvp(tyc.a(this.a), 0, "", "");
+    ((tlw)localObject1).a.add(localObject2);
+    syo.a().a((sys)localObject1, new tyj(this, paramJobContext, paramString));
   }
-  
-  public Class acceptEventClass()
-  {
-    return tah.class;
-  }
-  
-  public void b(@NonNull tyf paramtyf, @NonNull tah paramtah) {}
 }
 
 

@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.data.Friends;
+
 class aiev
-  implements bfps
 {
-  aiev(aieu paramaieu) {}
+  public int a;
+  public Friends a;
   
-  public void a() {}
+  public aiev(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

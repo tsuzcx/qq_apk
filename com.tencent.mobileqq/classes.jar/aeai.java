@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeai
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeai(SixCombolEffectView paramSixCombolEffectView) {}
+  public aeai(SixCombolEffectView paramSixCombolEffectView, aeaw paramaeaw) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return true;
+    this.jdField_a_of_type_Aeaw.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

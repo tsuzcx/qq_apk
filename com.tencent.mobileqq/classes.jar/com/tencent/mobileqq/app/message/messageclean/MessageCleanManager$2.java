@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import akru;
+import akrt;
 
 public class MessageCleanManager$2
   implements Runnable
 {
-  public MessageCleanManager$2(akru paramakru) {}
+  public MessageCleanManager$2(akrt paramakrt) {}
   
   public void run()
   {
-    if (!akru.a(this.this$0)) {
-      akru.b(this.this$0);
+    if (!akrt.a(this.this$0)) {
+      akrt.b(this.this$0);
     }
   }
 }

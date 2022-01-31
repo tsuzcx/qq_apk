@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aane
-  implements asko<Emoticon>
+  implements DialogInterface.OnClickListener
 {
-  aane(aand paramaand, int paramInt1, int paramInt2, String paramString) {}
+  aane(aanc paramaanc) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    adug.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aand.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aand.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aand.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    paramDialogInterface.dismiss();
   }
 }
 

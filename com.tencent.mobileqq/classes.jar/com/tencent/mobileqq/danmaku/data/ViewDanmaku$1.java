@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.danmaku.data;
 
 import android.view.View;
-import angd;
+import angi;
 
 public class ViewDanmaku$1
   implements Runnable
 {
-  public ViewDanmaku$1(angd paramangd, View paramView) {}
+  public ViewDanmaku$1(angi paramangi, View paramView) {}
   
   public void run()
   {

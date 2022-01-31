@@ -1,11 +1,17 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
 class aqki
-  implements aysa
+  extends mxj
 {
   aqki(aqkh paramaqkh) {}
   
-  public void onResp(aysx paramaysx) {}
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("sendFriendRelationRedpointClickEvent, errorCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    }
+  }
 }
 
 

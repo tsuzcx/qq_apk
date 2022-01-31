@@ -1,24 +1,18 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class badw
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  badw(badu parambadu) {}
+  badw(badv parambadv) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Bundle();
-    paramView.putString(bbqw.e, ajyc.a(2131700215));
-    paramView.putString(bbqw.f, "CJCLUBT");
-    paramView.putString(bbqw.d, "1450000516");
-    paramView.putInt(bbqw.b, 3);
-    paramView.putString(bbqw.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    paramView.putString(bbqw.g, "svip");
-    paramView.putString(bbqw.a, badu.a(this.a).getCurrentAccountUin());
-    bbqw.a(badu.a(this.a), badu.a(this.a), paramView);
+    paramContext = paramIntent.getStringExtra("callback");
+    QLog.d("TroopReceiver", 4, paramContext);
+    this.a.e(paramContext);
   }
 }
 

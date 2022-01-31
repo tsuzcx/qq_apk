@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import java.io.Serializable;
 
 public class MiniAppReportEntity
-  extends aukm
+  extends auko
   implements Serializable
 {
   public String appId;
   public String appType;
-  @auma
+  @aumc
   public String launchId;
   public String subActionType;
   public String verType;

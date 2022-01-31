@@ -1,45 +1,37 @@
-import android.view.View;
+import android.app.Activity;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
+import mqq.os.MqqHandler;
 
 public class aubc
-  implements bfoq
+  extends aygc
 {
-  public aubc(OCRResultFragmentNew paramOCRResultFragmentNew, List paramList, auad paramauad) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public aubc(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!paramView.equalsIgnoreCase(this.jdField_a_of_type_Auad.a)) {
-        break label108;
-      }
-      QLog.i("OCRResultFragmentNew", 2, "lanCode equals, return, selectedLan:" + paramView);
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a = null;
-      return;
-      label108:
-      bcpw.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 0, 2131699237, 0).a();
-      auab.a.a(paramView);
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OCRResultFragmentNew", 2, "requestOcr lan:" + paramView + ", ctx:" + auab.a.a());
-        }
-        OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, auab.a);
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
   }
 }
 

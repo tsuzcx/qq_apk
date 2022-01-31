@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import axqw;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -68,7 +68,7 @@ public class PublicAccountShowPictureReport
         localStringBuilder.append((Integer)localIterator.next()).append(",");
       }
     }
-    axqw.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
+    axqy.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
   }
   
   public void reset()

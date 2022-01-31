@@ -1,24 +1,33 @@
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
 import mqq.util.WeakReference;
 
-class agul
-  implements agmj
+public class agul
+  extends agsj
 {
-  agul(aguk paramaguk, Intent paramIntent, ArrayList paramArrayList) {}
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  private agul(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aguk.a.get()).d();
-    if (bkpe.a((Activity)this.jdField_a_of_type_Aguk.a.get(), paramLocalMediaInfo))
+    super(paramNewPhotoListActivity);
+  }
+  
+  public static agsc b(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.a.get() != paramNewPhotoListActivity)) {}
+    try
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a((Activity)this.jdField_a_of_type_Aguk.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+      if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.a.get() != paramNewPhotoListActivity)) {
+        jdField_a_of_type_Agsc = new agul(paramNewPhotoListActivity);
+      }
+      return jdField_a_of_type_Agsc;
     }
+    finally {}
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_Agrz.b = 6291456;
+    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wjm
-  implements View.OnClickListener
+  implements wsm
 {
-  public wjm(RecommendBannerEntryItemView paramRecommendBannerEntryItemView) {}
+  public wjm(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverPageSchema", "mqqapi://miniapp/open?_atype=0&_mappid=1109786902&_mvid=&_vt=3&_sig=f945854d8893417d87b3599d8dce7bdde77f409be5548044ed67383266b1fbf4");
-    MiniAppLauncher.startMiniApp(this.a.getContext(), paramView, 2016, null, null);
-    bgxy.a();
-    xhe.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "auth_page", "clk_find", 0, 0, new String[0]);
+    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      xhb.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+      return;
+    }
   }
 }
 

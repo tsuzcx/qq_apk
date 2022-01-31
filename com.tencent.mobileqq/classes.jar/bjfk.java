@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.InteractPasterParcelData;
 
-class bjfk
-  extends tez
+public final class bjfk
+  implements Parcelable.Creator<InteractPasterParcelData>
 {
-  bjfk(bjfj parambjfj, String paramString)
+  public InteractPasterParcelData a(Parcel paramParcel)
   {
-    super(paramString);
+    return new InteractPasterParcelData(paramParcel);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public InteractPasterParcelData[] a(int paramInt)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Bjfi.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      this.a.jdField_a_of_type_Bjfi.b = paramSosoLbsInfo.a.b;
-      veg.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Bjfi.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Bjfi.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Bjfi.a();
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Bjfi.jdField_a_of_type_Double = 0.0D;
-    this.a.jdField_a_of_type_Bjfi.b = 0.0D;
-    veg.b("FacePoiManager", "onLocationUpdate() error");
-    this.a.jdField_a_of_type_Bjfi.jdField_a_of_type_Bjfl.a(false, false, null, null);
+    return new InteractPasterParcelData[paramInt];
   }
 }
 

@@ -1,54 +1,57 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-class asgd
-  implements AdapterView.OnItemClickListener
+public class asgd
+  extends Animation
 {
-  asgd(asgc paramasgc) {}
+  private final float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private final float c;
+  private final float d;
+  private final float e;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public asgd(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    if (this.a.a.a().isShowing()) {
-      this.a.a.a().dismiss();
-    }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720906;
-      }
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
     }
     for (;;)
     {
-      if (paramInt != -1)
-      {
-        wim.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131720907;
-        }
-      }
-      else
-      {
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          asgc.a(this.a);
-          return;
-        case 1: 
-          asgc.b(this.a);
-          return;
-        case 2: 
-          asgc.c(this.a);
-          return;
-        }
-        asgc.d(this.a);
-        return;
-      }
-      paramInt = -1;
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
+      return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
   }
 }
 

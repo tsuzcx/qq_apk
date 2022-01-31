@@ -1,10 +1,10 @@
 package cooperation.qzone.share;
 
-import ajyc;
+import ajya;
 import android.text.TextUtils;
-import bcpw;
-import bhlq;
-import bhun;
+import bcql;
+import bhmh;
+import bhve;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -24,11 +24,11 @@ class QZoneShareActivity$7$1
   {
     if (this.jdField_a_of_type_Int > this.b)
     {
-      bcpw.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131718309, 0).a();
+      bcql.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131718320, 0).a();
       return;
     }
     this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.g();
-    String str1 = bhun.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
+    String str1 = bhve.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
     try
     {
       l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).f);
@@ -54,7 +54,7 @@ class QZoneShareActivity$7$1
           i = 0;
           if (i != 0)
           {
-            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bhlq.class);
+            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bhmh.class);
             ((NewIntent)localObject).putExtra("reason", str1);
             ((NewIntent)localObject).putExtra("uin", l1);
             ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0));
@@ -80,7 +80,7 @@ class QZoneShareActivity$7$1
         ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, localException, str1), null, false);
         continue;
         label378:
-        bcpw.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, ajyc.a(2131712331), 0).a();
+        bcql.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, ajya.a(2131712342), 0).a();
         continue;
         int i = 1;
         continue;

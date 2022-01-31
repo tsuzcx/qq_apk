@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import begw;
-import bepy;
+import behn;
+import beqp;
 
 public class BaseUIProxy$2
   implements Runnable
 {
-  public BaseUIProxy$2(bepy parambepy) {}
+  public BaseUIProxy$2(beqp parambeqp) {}
   
   public void run()
   {

@@ -1,67 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class agvy
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  @Deprecated
-  public boolean c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public agvy() {}
-  
-  public agvy(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  agvy(agvx paramagvx, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramLooper);
   }
   
-  public agvy(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5)
+  public void handleMessage(Message paramMessage)
   {
-    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
-    this.e = paramString5;
-  }
-  
-  public agvy(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5, String paramString6)
-  {
-    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString5);
-    this.f = paramString6;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Long < NetConnInfoCenter.getServerTime();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof agvy))
+    int i = paramMessage.what;
+    boolean bool;
+    if (paramMessage.arg1 == 1)
     {
-      paramObject = (agvy)paramObject;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label24;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break label56;
       }
     }
-    label24:
-    while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-      return false;
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label56:
+      if ((i == 1) || (i == 0))
+      {
+        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
+        paramMessage = (List)paramMessage.obj;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.iterator();
+          while (paramMessage.hasNext())
+          {
+            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
+            this.a.a(localRedBagInfo);
+          }
+        }
+      }
     }
-    return true;
   }
 }
 

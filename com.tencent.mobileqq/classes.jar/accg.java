@@ -1,83 +1,105 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import java.util.ArrayList;
+import java.util.List;
 
 public class accg
-  extends ajtq
 {
-  public accg(ShowReactiveActivity paramShowReactiveActivity) {}
+  private accj jdField_a_of_type_Accj;
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private GeneralSettingActivity jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity;
   
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  private void a(URLImageView paramURLImageView, acci paramacci)
   {
-    Object localObject;
-    Switch localSwitch;
-    if ((paramBoolean1) && (!this.a.isFinishing()))
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    localObject = URLDrawable.getDrawable(paramacci.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+    boolean bool = a((URLDrawable)localObject);
+    if (paramURLImageView != null)
     {
-      localObject = this.a;
-      localSwitch = this.a.a.a();
-      if (paramBoolean2) {
-        break label117;
-      }
+      paramURLImageView.setImageDrawable(null);
+      paramURLImageView.setImageDrawable((Drawable)localObject);
     }
-    label117:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 2, "onBindViewHolder loadPic colorDrawable=" + localObject + " bReady=" + bool + " checked=" + paramacci.jdField_a_of_type_Boolean);
+    }
+    paramacci.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+    if (!bool)
     {
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject, localSwitch, paramBoolean1);
-      if (QLog.isColorLevel())
-      {
-        localObject = ((ajxn)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-        QLog.d("interactive", 2, " ShowReactiveActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + ((Card)localObject).allowCalInteractive);
-      }
-      return;
+      ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity);
+      ((URLDrawable)localObject).startDownload();
     }
   }
   
-  protected void onSetCalReactiveDays(boolean paramBoolean)
+  private boolean a(URLDrawable paramURLDrawable)
   {
-    boolean bool2 = true;
-    Object localObject1;
-    Object localObject2;
-    boolean bool1;
-    if (!paramBoolean)
-    {
-      bcpw.a(this.a.app.getApp(), 1, this.a.getString(2131719375), 3000).b(this.a.getTitleBarHeight());
-      localObject1 = this.a;
-      localObject2 = this.a.a.a();
-      if (this.a.a.a().isChecked()) {
-        break label217;
-      }
-      bool1 = true;
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject1, (CompoundButton)localObject2, bool1);
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays isSuccess false= ");
-      }
+    return (paramURLDrawable != null) && ((paramURLDrawable.getStatus() == 1) || (paramURLDrawable.getStatus() == 4));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SimpleUIChoiceView", 2, "updateSimpleUIChoice bpref=" + paramInt + " needChangeTheme=" + paramBoolean);
     }
-    Switch localSwitch;
-    if ((paramBoolean) && (!this.a.isFinishing()))
+    if ((paramInt >= 0) && (this.jdField_a_of_type_Accj != null))
     {
-      localObject1 = ((ajxn)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-      localObject2 = this.a;
-      localSwitch = this.a.a.a();
-      if (((Card)localObject1).allowCalInteractive) {
-        break label222;
+      acci localacci = this.jdField_a_of_type_Accj.a(paramInt);
+      localacci.jdField_b_of_type_Boolean = paramBoolean;
+      if ((this.jdField_a_of_type_Accj.a(localacci, paramInt, true)) && (paramBoolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.a(localacci.jdField_a_of_type_Int);
       }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
     }
-    label217:
-    label222:
-    for (paramBoolean = bool2;; paramBoolean = false)
+  }
+  
+  public void a(View paramView, GeneralSettingActivity paramGeneralSettingActivity)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = axmv.c();
+    int i = 0;
+    while (i < axmq.a.length)
     {
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject2, localSwitch, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays allowCalInteractive= " + ((Card)localObject1).allowCalInteractive);
+      acci localacci = new acci(this, axmq.b[i], axmq.a[i], i);
+      if (i == j) {
+        localacci.jdField_a_of_type_Boolean = true;
       }
-      return;
-      bool1 = false;
-      break;
+      a(null, localacci);
+      localArrayList.add(localacci);
+      i += 1;
     }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364364));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemViewCacheSize(7);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramGeneralSettingActivity);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity = paramGeneralSettingActivity;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new acco(this, 8));
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Accj = new accj(this, localArrayList);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Accj);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {}
+    float f;
+    do
+    {
+      return true;
+      f = paramMotionEvent.getY();
+      paramMotionEvent = new int[2];
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
+    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()));
+    return false;
   }
 }
 

@@ -1,10 +1,17 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface agsv
+class agsv
+  implements View.OnClickListener
 {
-  public abstract void a_(SlideItemInfo paramSlideItemInfo);
+  agsv(agsu paramagsu) {}
   
-  public abstract void aq_();
+  @RequiresApi(api=17)
+  public void onClick(View paramView)
+  {
+    this.a.a(paramView);
+  }
 }
 
 

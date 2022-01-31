@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class wky
-  implements View.OnClickListener
+public class wky
+  implements wkf
 {
-  wky(wkx paramwkx) {}
+  public wky(DetailBaseAdapter.3.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.a() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    QLog.d(wku.jdField_a_of_type_JavaLangString, 2, "showFollowTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(wku.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow followTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }

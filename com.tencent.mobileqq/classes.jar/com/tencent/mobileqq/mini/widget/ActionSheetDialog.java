@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbkx;
+import bbll;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qzone.util.QZLog;
@@ -62,7 +62,7 @@ public class ActionSheetDialog
     this.mContext = paramContext;
     setTransparentStatusBar();
     this.mInflater = LayoutInflater.from(paramContext);
-    setContentView(2131561686);
+    setContentView(2131561685);
     init();
     bindEvents();
   }
@@ -74,9 +74,9 @@ public class ActionSheetDialog
   
   private void init()
   {
-    this.customButtonContainer = ((LinearLayout)findViewById(2131364873));
-    this.mContainer = ((LinearLayout)findViewById(2131369657));
-    this.backgroundLayout = ((RelativeLayout)findViewById(2131362999));
+    this.customButtonContainer = ((LinearLayout)findViewById(2131364872));
+    this.mContainer = ((LinearLayout)findViewById(2131369656));
+    this.backgroundLayout = ((RelativeLayout)findViewById(2131362998));
   }
   
   private void prepareContentViews()
@@ -129,10 +129,10 @@ public class ActionSheetDialog
         continue;
         j = this.mContext.getResources().getColor(2131165204);
         continue;
-        bbkx.a(8.0F);
+        bbll.a(8.0F);
         j = this.mContext.getResources().getColor(2131165201);
         localObject2 = new SpannableString(((Button)localObject1).getText());
-        Object localObject3 = this.mContext.getResources().getDrawable(2130848335);
+        Object localObject3 = this.mContext.getResources().getDrawable(2130848341);
         ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
         localObject3 = new ImageSpan((Drawable)localObject3, 1);
         if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
@@ -144,7 +144,7 @@ public class ActionSheetDialog
     if (!this.mCancelButtonHasAdd)
     {
       localObject1 = this.mInflater.inflate(2131558433, null);
-      localObject2 = (Button)((View)localObject1).findViewById(2131361913);
+      localObject2 = (Button)((View)localObject1).findViewById(2131361912);
       ((Button)localObject2).setOnClickListener(this.mDefaultDismissListener);
       ((Button)localObject2).setText(2131690596);
       this.customButtonContainer.addView((View)localObject1);
@@ -355,10 +355,10 @@ public class ActionSheetDialog
   {
     if (paramButton != null)
     {
-      int i = bbkx.a(8.0F);
+      int i = bbll.a(8.0F);
       int j = this.mContext.getResources().getColor(2131165201);
       SpannableString localSpannableString = new SpannableString(paramButton.getText());
-      Drawable localDrawable = this.mContext.getResources().getDrawable(2130848335);
+      Drawable localDrawable = this.mContext.getResources().getDrawable(2130848341);
       localDrawable.setBounds(i, 0, localDrawable.getIntrinsicWidth() + i, localDrawable.getIntrinsicHeight());
       localSpannableString.setSpan(new ImageSpan(localDrawable, 1), localSpannableString.length() - 1, localSpannableString.length(), 33);
       paramButton.setText(localSpannableString);

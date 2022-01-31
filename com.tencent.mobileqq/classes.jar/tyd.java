@@ -1,30 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-
 class tyd
-  extends szu
+  implements urb
 {
-  tyd(tyb paramtyb) {}
+  tyd(tyc paramtyc) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public void a(int paramInt)
   {
-    veg.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!txw.b(this.a.a)) {
-      txw.a(this.a.a).p();
+    if ((paramInt == 1) && (tyc.a(this.a) != null) && (tyc.a(this.a).a != null))
+    {
+      if (tyc.a(this.a).a()) {
+        break label66;
+      }
+      if (tyc.a(this.a).a(true)) {
+        tyc.a(this.a).c();
+      }
     }
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
-  {
-    tbz localtbz = (tbz)tdc.a(17);
-    localtbz.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localtbz.a(paramCommentEntry);
-    return true;
+    label66:
+    do
+    {
+      return;
+      if (tyc.a(this.a).a(false)) {
+        tyc.b(this.a).c();
+      }
+    } while (!tyc.a(this.a).a(true));
+    tyc.a(this.a).c();
   }
 }
 

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.servlet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import axch;
-import axrl;
+import axcj;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class ClearPushReceiver
     localHashMap.put("actiontype", "4");
     localHashMap.put("pushstatkey", paramString);
     localHashMap.put("mergenum", paramInt + "");
-    axrl.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
+    axrn.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -45,7 +45,7 @@ public class ClearPushReceiver
     int j = paramIntent.getIntExtra("pushtype", 0);
     if ((j == 1) || (j == 300))
     {
-      paramIntent = (axch)((QQAppInterface)localObject).getManager(10);
+      paramIntent = (axcj)((QQAppInterface)localObject).getManager(10);
       if (paramIntent != null) {
         paramIntent.a(1, 0);
       }

@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.play;
 
-import abtu;
-import abtv;
-import actn;
-import akwg;
+import abtq;
+import abtr;
+import actj;
+import akwf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -42,35 +42,35 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcpf;
-import bfnh;
-import bihx;
-import biij;
-import biik;
-import bixg;
-import bixh;
-import bixi;
-import bixj;
-import bixk;
-import bixl;
-import bixm;
-import bixn;
-import bixo;
-import bixp;
-import bixq;
+import bcpu;
+import bfny;
+import biio;
+import bija;
+import bijb;
+import bixx;
+import bixy;
+import bixz;
+import biya;
+import biyb;
+import biyc;
+import biyd;
 import biye;
 import biyf;
 import biyg;
-import biyl;
-import biym;
-import biyr;
-import biyt;
+import biyh;
 import biyv;
+import biyw;
 import biyx;
 import bizc;
-import bizp;
-import bizq;
-import blbn;
+import bizd;
+import bizi;
+import bizk;
+import bizm;
+import bizo;
+import bizt;
+import bjag;
+import bjah;
+import blce;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForPeak;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -102,11 +102,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Timer;
-import vyi;
+import vyf;
 
 public class AEVideoShelfEditFragment
   extends PublicBaseFragment
-  implements abtv, View.OnClickListener, biye, biyf, biyl, biyr
+  implements abtr, View.OnClickListener, biyv, biyw, bizc, bizi
 {
   private static double jdField_a_of_type_Double = 0.3D;
   private static int jdField_a_of_type_Int = 200;
@@ -120,9 +120,9 @@ public class AEVideoShelfEditFragment
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bcpf jdField_a_of_type_Bcpf;
-  private biyt jdField_a_of_type_Biyt;
-  private biyv jdField_a_of_type_Biyv = new bixj(this);
+  bcpu jdField_a_of_type_Bcpu;
+  private bizk jdField_a_of_type_Bizk;
+  private bizm jdField_a_of_type_Bizm = new biya(this);
   private VideoShelfEngine jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine;
   private VideoShelfTemplate jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate;
   private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
@@ -193,21 +193,21 @@ public class AEVideoShelfEditFragment
     return paramRelativeLayout;
   }
   
-  private bcpf a()
+  private bcpu a()
   {
-    bcpf localbcpf = new bcpf(getActivity());
-    localbcpf.a(actn.a(50.0F, getActivity().getResources()));
-    localbcpf.a(true);
-    localbcpf.c(false);
-    localbcpf.f(-1);
-    localbcpf.e(0);
-    localbcpf.d(-15550475);
-    localbcpf.g(3);
-    localbcpf.jdField_f_of_type_Boolean = true;
-    localbcpf.jdField_f_of_type_Int = 2;
-    localbcpf.e(true);
-    localbcpf.a(new bixk(this));
-    return localbcpf;
+    bcpu localbcpu = new bcpu(getActivity());
+    localbcpu.a(actj.a(50.0F, getActivity().getResources()));
+    localbcpu.a(true);
+    localbcpu.c(false);
+    localbcpu.f(-1);
+    localbcpu.e(0);
+    localbcpu.d(-15550475);
+    localbcpu.g(3);
+    localbcpu.jdField_f_of_type_Boolean = true;
+    localbcpu.jdField_f_of_type_Int = 2;
+    localbcpu.e(true);
+    localbcpu.a(new biyb(this));
+    return localbcpu;
   }
   
   private NodeItem a(NodeGroup paramNodeGroup, int paramInt)
@@ -420,7 +420,7 @@ public class AEVideoShelfEditFragment
           this.jdField_a_of_type_JavaUtilMap.put(paramString, localBitmap1);
         }
       } while (!BitmapUtils.isLegal(localBitmap1));
-      Bitmap localBitmap1 = biyx.a(localBitmap1, paramString);
+      Bitmap localBitmap1 = bizo.a(localBitmap1, paramString);
       paramString = localBitmap1;
       if (localBitmap1.getWidth() == 1)
       {
@@ -435,7 +435,7 @@ public class AEVideoShelfEditFragment
       localFaceImageViewer.setMovable(true);
       localFaceImageViewer.setScaleType(ImageView.ScaleType.MATRIX);
       localFaceImageViewer.c();
-      biyg.a(new AEVideoShelfEditFragment.9(this, localFaceImageViewer, paramString), false, "");
+      biyx.a(new AEVideoShelfEditFragment.9(this, localFaceImageViewer, paramString), false, "");
     } while (!paramBoolean);
     d(localFaceImageViewer.b());
   }
@@ -448,7 +448,7 @@ public class AEVideoShelfEditFragment
     localIntent.putExtra("MaterialName", paramString3);
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt2);
-    abtu.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
+    abtq.a(paramActivity, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class, paramInt1);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList, int paramInt)
@@ -461,7 +461,7 @@ public class AEVideoShelfEditFragment
     localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramContext));
     localIntent.putStringArrayListExtra("PhotoList", paramArrayList);
     localIntent.putExtra("jump_in_from", paramInt);
-    abtu.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
+    abtq.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AEVideoShelfEditFragment.class);
   }
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -543,7 +543,7 @@ public class AEVideoShelfEditFragment
       }
     }
     localObject1 = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getMaterialPath() + File.separator + localNodeGroup.nodeDefaultMaskCoverImage;
-    localObject1 = biyx.a(BitmapUtils.decodeSampleBitmap(getActivity(), (String)localObject1, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoWidth(), this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoHeight()), (String)localObject1);
+    localObject1 = bizo.a(BitmapUtils.decodeSampleBitmap(getActivity(), (String)localObject1, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoWidth(), this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoHeight()), (String)localObject1);
     Object localObject2 = new ImageView(getActivity());
     ((ImageView)localObject2).setImageBitmap((Bitmap)localObject1);
     paramViewGroup.addView((View)localObject2);
@@ -651,12 +651,12 @@ public class AEVideoShelfEditFragment
   {
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      biyt localbiyt = (biyt)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
+      bizk localbizk = (bizk)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
       paramRelativeLayout = a(paramRelativeLayout, paramRelativeLayout.getWidth(), paramRelativeLayout.getHeight());
-      if ((localbiyt != null) && (BitmapUtils.isLegal(paramRelativeLayout)))
+      if ((localbizk != null) && (BitmapUtils.isLegal(paramRelativeLayout)))
       {
-        localbiyt.a(paramInt, paramRelativeLayout);
-        localbiyt.b();
+        localbizk.a(paramInt, paramRelativeLayout);
+        localbizk.b();
       }
     }
   }
@@ -670,13 +670,13 @@ public class AEVideoShelfEditFragment
       return;
     }
     paramNodeGroup = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getMaterialPath() + File.separator + paramNodeGroup.nodeDefaultMaskCoverImage;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = biyx.a(BitmapUtils.decodeSampleBitmap(getActivity(), paramNodeGroup, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoWidth(), this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoHeight()), paramNodeGroup);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bizo.a(BitmapUtils.decodeSampleBitmap(getActivity(), paramNodeGroup, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoWidth(), this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoHeight()), paramNodeGroup);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
   
   private void a(FaceImageViewer paramFaceImageViewer, Bitmap paramBitmap)
   {
-    paramBitmap = biyg.a(paramBitmap, 0.1666666666666667D);
+    paramBitmap = biyx.a(paramBitmap, 0.1666666666666667D);
     int j = paramBitmap.getFaceCount();
     Object localObject1 = new ArrayList();
     paramBitmap = paramBitmap.getFaceInfoList().iterator();
@@ -688,19 +688,19 @@ public class AEVideoShelfEditFragment
       FaceOffUtil.getFullCoords(((FaceInfo)localObject2).points, 1.5F);
       Object localObject3 = (PointF)((FaceInfo)localObject2).points.get(99);
       PointF localPointF = (PointF)((FaceInfo)localObject2).points.get(103);
-      localObject3 = new biym((int)((PointF)localObject3).x, (int)((PointF)localObject3).y, (int)localPointF.x, (int)localPointF.y);
-      ((biym)localObject3).jdField_a_of_type_ArrayOfFloat = ((FaceInfo)localObject2).angles;
+      localObject3 = new bizd((int)((PointF)localObject3).x, (int)((PointF)localObject3).y, (int)localPointF.x, (int)localPointF.y);
+      ((bizd)localObject3).jdField_a_of_type_ArrayOfFloat = ((FaceInfo)localObject2).angles;
       ((List)localObject1).add(localObject3);
     }
-    bizq.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + j);
+    bjah.a("AEVideoShelfEditFrag", "[PlayShow] onFaceImageChanged faceCount = " + j);
     if (j >= 1)
     {
-      paramBitmap = (biym)((List)localObject1).get(0);
+      paramBitmap = (bizd)((List)localObject1).get(0);
       localObject2 = ((List)localObject1).iterator();
       if (((Iterator)localObject2).hasNext())
       {
-        localObject1 = (biym)((Iterator)localObject2).next();
-        if (((biym)localObject1).a() <= paramBitmap.a()) {
+        localObject1 = (bizd)((Iterator)localObject2).next();
+        if (((bizd)localObject1).a() <= paramBitmap.a()) {
           break label284;
         }
         paramBitmap = (Bitmap)localObject1;
@@ -710,24 +710,24 @@ public class AEVideoShelfEditFragment
     for (;;)
     {
       break;
-      bfnh.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
+      bfny.a(new AEVideoShelfEditFragment.10(this, paramFaceImageViewer, paramBitmap));
       return;
-      bfnh.a(new AEVideoShelfEditFragment.11(this));
+      bfny.a(new AEVideoShelfEditFragment.11(this));
       return;
     }
   }
   
-  private void a(FaceImageViewer paramFaceImageViewer, biym parambiym)
+  private void a(FaceImageViewer paramFaceImageViewer, bizd parambizd)
   {
     float f1 = 1.0F;
     float f5 = paramFaceImageViewer.getWidth();
     float f6 = paramFaceImageViewer.getHeight();
-    float f2 = (float)Math.toDegrees(parambiym.jdField_a_of_type_ArrayOfFloat[2]);
+    float f2 = (float)Math.toDegrees(parambizd.jdField_a_of_type_ArrayOfFloat[2]);
     float f3 = f5 / 2.0F;
-    float f4 = (parambiym.jdField_a_of_type_AndroidGraphicsRect.left + parambiym.jdField_a_of_type_AndroidGraphicsRect.right) / 2;
+    float f4 = (parambizd.jdField_a_of_type_AndroidGraphicsRect.left + parambizd.jdField_a_of_type_AndroidGraphicsRect.right) / 2;
     f6 /= 2.0F;
-    float f7 = (parambiym.jdField_a_of_type_AndroidGraphicsRect.top + parambiym.jdField_a_of_type_AndroidGraphicsRect.bottom) / 2;
-    float f8 = parambiym.jdField_a_of_type_AndroidGraphicsRect.width();
+    float f7 = (parambizd.jdField_a_of_type_AndroidGraphicsRect.top + parambizd.jdField_a_of_type_AndroidGraphicsRect.bottom) / 2;
+    float f8 = parambizd.jdField_a_of_type_AndroidGraphicsRect.width();
     if (f8 > 0.0F) {
       f1 = f5 / f8;
     }
@@ -757,7 +757,7 @@ public class AEVideoShelfEditFragment
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
       label98:
-      ((TextView)localObject).setText(2131695128);
+      ((TextView)localObject).setText(2131695129);
     }
   }
   
@@ -891,19 +891,19 @@ public class AEVideoShelfEditFragment
     if (Build.VERSION.SDK_INT < 23) {
       return true;
     }
-    return akwg.a(paramContext);
+    return akwf.a(paramContext);
   }
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Bcpf == null) {
+    if (this.jdField_a_of_type_Bcpu == null) {
       return;
     }
-    this.jdField_a_of_type_Bcpf.a();
-    this.jdField_a_of_type_Bcpf.c(paramInt);
-    this.jdField_a_of_type_Bcpf.b(true);
-    this.jdField_a_of_type_Bcpf.d(false);
-    this.jdField_a_of_type_Bcpf.a(paramInt + "%");
+    this.jdField_a_of_type_Bcpu.a();
+    this.jdField_a_of_type_Bcpu.c(paramInt);
+    this.jdField_a_of_type_Bcpu.b(true);
+    this.jdField_a_of_type_Bcpu.d(false);
+    this.jdField_a_of_type_Bcpu.a(paramInt + "%");
   }
   
   private void b(int paramInt, String paramString, boolean paramBoolean)
@@ -926,7 +926,7 @@ public class AEVideoShelfEditFragment
           this.jdField_a_of_type_JavaUtilMap.put(paramString, localBitmap1);
         }
       } while (!BitmapUtils.isLegal(localBitmap1));
-      Bitmap localBitmap1 = biyx.a(localBitmap1, paramString);
+      Bitmap localBitmap1 = bizo.a(localBitmap1, paramString);
       paramString = localBitmap1;
       if (localBitmap1.getWidth() == 1)
       {
@@ -1047,12 +1047,12 @@ public class AEVideoShelfEditFragment
   {
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
     {
-      biyt localbiyt = (biyt)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
+      bizk localbizk = (bizk)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
       Bitmap localBitmap = a();
-      if ((localbiyt != null) && (BitmapUtils.isLegal(localBitmap)))
+      if ((localbizk != null) && (BitmapUtils.isLegal(localBitmap)))
       {
-        localbiyt.a(paramInt, localBitmap);
-        localbiyt.b();
+        localbizk.a(paramInt, localBitmap);
+        localbizk.b();
       }
     }
   }
@@ -1067,20 +1067,20 @@ public class AEVideoShelfEditFragment
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131362985);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131363639));
+    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131362984);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getActivity().findViewById(2131363638));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689799);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = getActivity().findViewById(2131365470);
+    this.jdField_b_of_type_AndroidViewView = getActivity().findViewById(2131365469);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getActivity().findViewById(2131364008));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)getActivity().findViewById(2131363372));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getActivity().findViewById(2131364007));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)getActivity().findViewById(2131363371));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(getActivity());
     localLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new bixq(this, a(getActivity(), 12.0F)));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new biyh(this, a(getActivity(), 12.0F)));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().addOnGlobalLayoutListener(new bixg(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().addOnGlobalLayoutListener(new bixx(this));
     h();
   }
   
@@ -1097,15 +1097,15 @@ public class AEVideoShelfEditFragment
       }
     }
     this.jdField_b_of_type_AndroidAppDialog.requestWindowFeature(1);
-    this.jdField_b_of_type_AndroidAppDialog.setContentView(2131561435);
+    this.jdField_b_of_type_AndroidAppDialog.setContentView(2131561434);
     localObject = (ImageView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131371995);
-    this.jdField_a_of_type_Bcpf = a();
-    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Bcpf);
-    ((TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131370453)).setText(2131689813);
+    this.jdField_a_of_type_Bcpu = a();
+    ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_Bcpu);
+    ((TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131370452)).setText(2131689813);
     this.jdField_b_of_type_AndroidAppDialog.setCancelable(true);
     this.jdField_b_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-    this.jdField_b_of_type_AndroidAppDialog.setOnCancelListener(new bixi(this));
-    this.jdField_a_of_type_Bcpf.c(0);
+    this.jdField_b_of_type_AndroidAppDialog.setOnCancelListener(new bixz(this));
+    this.jdField_a_of_type_Bcpu.c(0);
   }
   
   private void i()
@@ -1154,9 +1154,9 @@ public class AEVideoShelfEditFragment
       {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine = null;
         TTPTLogger.e("AEVideoShelfEditFrag", localPagNotSupportSystemException.getMessage());
-        bfnh.a(new AEVideoShelfEditFragment.4(this), 2000L);
+        bfny.a(new AEVideoShelfEditFragment.4(this), 2000L);
       }
-      new bixl(this).execute(new Void[0]);
+      new biyc(this).execute(new Void[0]);
     }
   }
   
@@ -1225,7 +1225,7 @@ public class AEVideoShelfEditFragment
             {
               String str = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getMaterialPath() + File.separator + localNodeItem.coverURL;
               localNodeItem.bitmap = BitmapUtils.decodeSampleBitmap(getActivity(), str, this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoWidth(), this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getVideoHeight());
-              localNodeItem.bitmap = biyx.a(localNodeItem.bitmap, str);
+              localNodeItem.bitmap = bizo.a(localNodeItem.bitmap, str);
             }
             if (((MaskNodeItem)localObject2).getNodeTextGroup() != null)
             {
@@ -1280,7 +1280,7 @@ public class AEVideoShelfEditFragment
         if (localNodeItem.type == 0)
         {
           localObject = new ScaleMoveImageViewer(getActivity());
-          ((ScaleMoveImageViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new bixm(this, (ScaleMoveImageViewer)localObject, localNodeItem));
+          ((ScaleMoveImageViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new biyd(this, (ScaleMoveImageViewer)localObject, localNodeItem));
           ((ScaleMoveImageViewer)localObject).setOnSaveScrollInfoListener(this);
           ((ScaleMoveImageViewer)localObject).setNodeInfo(localNodeItem);
           ((ScaleMoveImageViewer)localObject).setMovable(false);
@@ -1298,7 +1298,7 @@ public class AEVideoShelfEditFragment
           if (localNodeItem.type == 1)
           {
             localObject = new EditTextViewer(getActivity());
-            ((EditTextViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new bixn(this, (EditTextViewer)localObject, localNodeItem));
+            ((EditTextViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new biye(this, (EditTextViewer)localObject, localNodeItem));
             ((EditTextViewer)localObject).setOnSaveTextInfoListener(this);
             ((EditTextViewer)localObject).setOnDownloadDialogListener(this);
             ((EditTextViewer)localObject).setNodeInfo(localNodeItem);
@@ -1324,7 +1324,7 @@ public class AEVideoShelfEditFragment
           if (localNodeItem.type == 2)
           {
             localObject = new FaceImageViewer(getActivity());
-            ((FaceImageViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new bixo(this, (FaceImageViewer)localObject, localNodeItem));
+            ((FaceImageViewer)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new biyf(this, (FaceImageViewer)localObject, localNodeItem));
             ((FaceImageViewer)localObject).setOnSaveScrollInfoListener(this);
             ((FaceImageViewer)localObject).setNodeInfo(localNodeItem);
             ((FaceImageViewer)localObject).setMovable(false);
@@ -1386,7 +1386,7 @@ public class AEVideoShelfEditFragment
     if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate == null) {
       return;
     }
-    new bixh(this).execute(new Void[0]);
+    new bixy(this).execute(new Void[0]);
   }
   
   private void s()
@@ -1405,7 +1405,7 @@ public class AEVideoShelfEditFragment
     {
       this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setSrcPath(str);
       this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setOutputVideoPath(ShortVideoUtils.c());
-      this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setCallback(new bixp(this));
+      this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setCallback(new biyg(this));
       this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setLutPath(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getFilterLutPath());
       if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getWatermarkRect() != null) {
         this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.setWatermarkRect(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getWatermarkRect());
@@ -1443,7 +1443,7 @@ public class AEVideoShelfEditFragment
       if (!bool) {
         break label279;
       }
-      localObject1 = bihx.a(bihx.a());
+      localObject1 = biio.a(biio.a());
       localStringBuilder = new StringBuilder().append("outputDir: ").append((String)localObject1);
       if (!new File((String)localObject1).exists()) {
         break label308;
@@ -1456,7 +1456,7 @@ public class AEVideoShelfEditFragment
       TTPTLogger.i("AEVideoShelfEditFrag", (String)localObject2);
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
       this.jdField_a_of_type_JavaUtilTimer.schedule(new AEVideoShelfEditFragment.16(this), 0L, jdField_a_of_type_Int);
-      if (blbn.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.getOutputVideoPath(), this.jdField_b_of_type_JavaLangString, (String)localObject1, 0) == 0)
+      if (blce.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.getOutputVideoPath(), this.jdField_b_of_type_JavaLangString, (String)localObject1, 0) == 0)
       {
         localObject2 = new File(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelVideoShelfEngine.getOutputVideoPath());
         if (((File)localObject2).exists())
@@ -1471,9 +1471,9 @@ public class AEVideoShelfEditFragment
       if ((!bool) || (this.jdField_f_of_type_JavaLangString == null)) {
         break;
       }
-      vyi.a(BaseApplication.getContext(), new File(this.jdField_f_of_type_JavaLangString));
+      vyf.a(BaseApplication.getContext(), new File(this.jdField_f_of_type_JavaLangString));
       return;
-      localObject1 = bihx.a(biik.jdField_e_of_type_JavaLangString + File.separator);
+      localObject1 = biio.a(bijb.jdField_e_of_type_JavaLangString + File.separator);
       break label97;
     }
   }
@@ -1488,7 +1488,7 @@ public class AEVideoShelfEditFragment
     long l = System.currentTimeMillis();
     if (l - this.jdField_a_of_type_Long > 200L)
     {
-      bfnh.a(new AEVideoShelfEditFragment.14(this, paramInt));
+      bfny.a(new AEVideoShelfEditFragment.14(this, paramInt));
       this.jdField_a_of_type_Long = l;
     }
   }
@@ -1496,7 +1496,7 @@ public class AEVideoShelfEditFragment
   public void a(int paramInt1, int paramInt2, String paramString)
   {
     this.jdField_b_of_type_Long = 0L;
-    bfnh.a(new AEVideoShelfEditFragment.17(this));
+    bfny.a(new AEVideoShelfEditFragment.17(this));
     TTPTLogger.w("AEVideoShelfEditFrag", "Merge Video step onError");
   }
   
@@ -1569,7 +1569,7 @@ public class AEVideoShelfEditFragment
   {
     TTPTLogger.i("AEVideoShelfEditFrag", "Merge Video step onStartGenerate");
     this.jdField_b_of_type_Long = System.currentTimeMillis();
-    bfnh.a(new AEVideoShelfEditFragment.13(this));
+    bfny.a(new AEVideoShelfEditFragment.13(this));
   }
   
   public void c(NodeItem paramNodeItem)
@@ -1585,7 +1585,7 @@ public class AEVideoShelfEditFragment
     {
       this.jdField_b_of_type_Long = 0L;
       u();
-      bfnh.a(new AEVideoShelfEditFragment.15(this, l));
+      bfny.a(new AEVideoShelfEditFragment.15(this, l));
       a(false);
       return;
     }
@@ -1595,7 +1595,7 @@ public class AEVideoShelfEditFragment
   {
     TTPTLogger.i("AEVideoShelfEditFrag", "Merge Video step onCancelCompleted");
     this.jdField_b_of_type_Long = 0L;
-    bfnh.a(new AEVideoShelfEditFragment.18(this));
+    bfny.a(new AEVideoShelfEditFragment.18(this));
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -1621,24 +1621,24 @@ public class AEVideoShelfEditFragment
   
   public void onClick(View paramView)
   {
-    if (bizp.a(paramView)) {}
+    if (bjag.a(paramView)) {}
     int j;
     do
     {
       return;
       j = paramView.getId();
-      if (j == 2131362985)
+      if (j == 2131362984)
       {
         onBackPressed();
         return;
       }
-      if (j == 2131363639)
+      if (j == 2131363638)
       {
         q();
-        bizc.a().g();
+        bizt.a().g();
         return;
       }
-    } while (j != 2131365470);
+    } while (j != 2131365469);
     a(paramView);
   }
   
@@ -1650,10 +1650,10 @@ public class AEVideoShelfEditFragment
   public void onDestroy()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(null);
-    if (this.jdField_a_of_type_Biyt != null) {
-      this.jdField_a_of_type_Biyt.a();
+    if (this.jdField_a_of_type_Bizk != null) {
+      this.jdField_a_of_type_Bizk.a();
     }
-    this.jdField_a_of_type_Biyt = null;
+    this.jdField_a_of_type_Bizk = null;
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
@@ -1773,7 +1773,7 @@ public class AEVideoShelfEditFragment
     k();
     g();
     f();
-    this.jdField_a_of_type_JavaLangString = biij.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = bija.jdField_c_of_type_JavaLangString;
     paramView = new File(this.jdField_a_of_type_JavaLangString);
     if (!paramView.exists()) {
       paramView.mkdirs();

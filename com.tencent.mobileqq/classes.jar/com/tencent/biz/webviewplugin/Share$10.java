@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
-import ayfe;
-import xmt;
+import ayfg;
+import xmq;
 
 public class Share$10
   implements Runnable
 {
-  public Share$10(xmt paramxmt) {}
+  public Share$10(xmq paramxmq) {}
   
   public void run()
   {
-    ayfe.a(this.this$0.n, this.this$0.a);
+    ayfg.a(this.this$0.n, this.this$0.a);
   }
 }
 

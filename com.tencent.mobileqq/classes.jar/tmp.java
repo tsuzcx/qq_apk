@@ -1,54 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmp
-  extends syv<toj>
+  extends sys<toj>
 {
-  public String a = "";
-  public String b = "";
-  public int c;
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public tmp(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = 1;
+  }
   
   public String a()
   {
-    return sxp.a("StorySvc.homepage_feed_loadmore_720");
+    return sxm.a("StorySvc.video_poi_posters_get");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
+    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
     try
     {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new toj(localRspFriendStoryFeedVideoList);
+      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
+      return new toj(localRspGetPOIPosters);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
+    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.lng.set(this.c);
+    localGpsMsg.lat.set(this.d);
+    localReqGetPOIPosters.coordinate.set(this.e);
+    localReqGetPOIPosters.gps.set(localGpsMsg);
+    return localReqGetPOIPosters.toByteArray();
   }
 }
 

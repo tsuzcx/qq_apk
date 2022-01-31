@@ -1,17 +1,12 @@
-import android.app.PendingIntent;
-
-class msu
+public abstract class msu
 {
-  public final int a;
-  public final PendingIntent a;
-  public final String a;
+  public abstract void a();
   
-  public msu(int paramInt, String paramString, PendingIntent paramPendingIntent)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,28 +1,26 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class sam
-  implements TextWatcher
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public sam(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public sam(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
+    if (ServiceAccountFolderActivity.a(this.a) != null)
     {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
+      float f = paramMotionEvent.getY();
+      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
+        return false;
+      }
     }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    return true;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

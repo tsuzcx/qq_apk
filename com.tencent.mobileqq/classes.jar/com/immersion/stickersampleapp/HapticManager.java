@@ -1,15 +1,15 @@
 package com.immersion.stickersampleapp;
 
-import adwl;
+import adwj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Looper;
 import android.text.TextUtils;
-import anow;
-import anox;
-import anpq;
-import axrl;
-import bfjx;
+import anpb;
+import anpc;
+import anpv;
+import axrn;
+import bfko;
 import com.immersion.touchsensesdk.HapticMediaPlayer;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,7 +30,7 @@ import mqq.os.MqqHandler;
 public class HapticManager
 {
   private static HapticManager jdField_a_of_type_ComImmersionStickersampleappHapticManager = new HapticManager(BaseApplicationImpl.sApplication);
-  private static final String jdField_a_of_type_JavaLangString = adwl.a() + "poke/immersion_source/libTouchSenseSDK.so";
+  private static final String jdField_a_of_type_JavaLangString = adwj.a() + "poke/immersion_source/libTouchSenseSDK.so";
   private Context jdField_a_of_type_AndroidContentContext;
   private HapticManager.ClockTask jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask = new HapticManager.ClockTask(this);
   private HapticManager.DisposeTask jdField_a_of_type_ComImmersionStickersampleappHapticManager$DisposeTask = new HapticManager.DisposeTask(this);
@@ -448,19 +448,19 @@ public class HapticManager
     }
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      Object localObject = (anox)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(77);
+      Object localObject = (anpc)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(77);
       if (localObject != null)
       {
-        localObject = (anpq)((anox)localObject).a("qq.android.poke.res_0625");
+        localObject = (anpv)((anpc)localObject).a("qq.android.poke.res_0625");
         if (localObject != null)
         {
           if (paramBoolean)
           {
-            XmlData localXmlData = ((anpq)localObject).a();
+            XmlData localXmlData = ((anpv)localObject).a();
             localXmlData.loadState = 0;
-            anow.a(localXmlData, new String[0]);
+            anpb.a(localXmlData, new String[0]);
           }
-          ((anpq)localObject).a(false);
+          ((anpv)localObject).a(false);
         }
       }
     }
@@ -512,7 +512,7 @@ public class HapticManager
       localIOException.printStackTrace();
       a(true);
       return false;
-      if ((!((String)localObject3).equals(bfjx.a((File)localObject2))) || (((File)localObject2).length() != l))
+      if ((!((String)localObject3).equals(bfko.a((File)localObject2))) || (((File)localObject2).length() != l))
       {
         a(true);
         ((File)localObject2).delete();
@@ -753,7 +753,7 @@ public class HapticManager
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
     localHashMap.put("effectName", paramString);
-    axrl.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).a(null, "pokeEffectSucessRate", bool, 0L, 0L, localHashMap, "");
+    axrn.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).a(null, "pokeEffectSucessRate", bool, 0L, 0L, localHashMap, "");
     ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask);
     ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask, 60000L);
     return paramInt;

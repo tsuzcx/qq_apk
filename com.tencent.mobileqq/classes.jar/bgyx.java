@@ -1,368 +1,464 @@
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.os.FileObserver;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.component.network.utils.NetworkUtils;
+import cooperation.qzone.util.NetworkState;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
+import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
 
 public class bgyx
 {
-  private static asbp<bgyx, Void> jdField_a_of_type_Asbp = new bgyy();
-  private final byte jdField_a_of_type_Byte = 2;
-  private FileObserver jdField_a_of_type_AndroidOsFileObserver;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bgyz(this, ThreadManager.getSubThreadLooper());
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final byte jdField_b_of_type_Byte = 1;
-  private volatile boolean jdField_b_of_type_Boolean;
+  public static final int a = "http://".length();
   
-  public static bgyx a()
+  /* Error */
+  public static int a(String paramString, java.io.File paramFile)
   {
-    return (bgyx)jdField_a_of_type_Asbp.b(null);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 9
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: aconst_null
+    //   7: astore 8
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: invokestatic 30	cooperation/qzone/util/NetworkState:isWap	()Z
+    //   15: ifeq +231 -> 246
+    //   18: getstatic 35	bgyy:a	Lbgyy;
+    //   21: astore 4
+    //   23: aload 4
+    //   25: ifnull +395 -> 420
+    //   28: aload_0
+    //   29: invokestatic 38	bgyx:a	(Ljava/lang/String;)[Ljava/lang/String;
+    //   32: astore 5
+    //   34: new 40	java/lang/StringBuilder
+    //   37: dup
+    //   38: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   41: aload 4
+    //   43: invokevirtual 47	bgyy:toString	()Ljava/lang/String;
+    //   46: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: aload 5
+    //   51: iconst_1
+    //   52: aaload
+    //   53: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: astore_0
+    //   60: aload_0
+    //   61: invokevirtual 55	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   64: ldc 10
+    //   66: invokevirtual 59	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   69: ifeq +183 -> 252
+    //   72: new 61	java/net/URL
+    //   75: dup
+    //   76: aload_0
+    //   77: invokespecial 64	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   80: invokevirtual 68	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   83: checkcast 70	java/net/HttpURLConnection
+    //   86: astore_0
+    //   87: aload_0
+    //   88: sipush 30000
+    //   91: invokevirtual 74	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   94: aload_0
+    //   95: sipush 15000
+    //   98: invokevirtual 77	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   101: aload_0
+    //   102: ldc 79
+    //   104: invokevirtual 82	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   107: aload_0
+    //   108: iconst_1
+    //   109: invokevirtual 86	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   112: aload 4
+    //   114: ifnull +13 -> 127
+    //   117: aload_0
+    //   118: ldc 88
+    //   120: aload 5
+    //   122: iconst_0
+    //   123: aaload
+    //   124: invokevirtual 92	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: aload_0
+    //   128: invokevirtual 95	java/net/HttpURLConnection:getResponseCode	()I
+    //   131: istore_2
+    //   132: aload 9
+    //   134: astore 4
+    //   136: iload_2
+    //   137: invokestatic 98	bgyx:a	(I)Z
+    //   140: ifeq +133 -> 273
+    //   143: new 100	java/io/BufferedOutputStream
+    //   146: dup
+    //   147: new 102	java/io/FileOutputStream
+    //   150: dup
+    //   151: aload_1
+    //   152: iconst_1
+    //   153: invokespecial 105	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   156: invokespecial 108	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   159: astore_1
+    //   160: aload_0
+    //   161: invokevirtual 112	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   164: astore 4
+    //   166: sipush 8192
+    //   169: newarray byte
+    //   171: astore 5
+    //   173: aload 4
+    //   175: aload 5
+    //   177: iconst_0
+    //   178: aload 5
+    //   180: arraylength
+    //   181: invokevirtual 118	java/io/InputStream:read	([BII)I
+    //   184: istore_3
+    //   185: iconst_m1
+    //   186: iload_3
+    //   187: if_icmpeq +75 -> 262
+    //   190: aload_1
+    //   191: aload 5
+    //   193: iconst_0
+    //   194: iload_3
+    //   195: invokevirtual 122	java/io/BufferedOutputStream:write	([BII)V
+    //   198: goto -25 -> 173
+    //   201: astore 5
+    //   203: aload_1
+    //   204: astore 6
+    //   206: aload_0
+    //   207: astore_1
+    //   208: aload 6
+    //   210: astore 4
+    //   212: ldc 124
+    //   214: iconst_1
+    //   215: ldc 126
+    //   217: aload 5
+    //   219: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   222: sipush 1024
+    //   225: istore_3
+    //   226: aload 6
+    //   228: invokestatic 138	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   231: pop
+    //   232: iload_3
+    //   233: istore_2
+    //   234: aload_0
+    //   235: ifnull +9 -> 244
+    //   238: aload_0
+    //   239: invokevirtual 141	java/net/HttpURLConnection:disconnect	()V
+    //   242: iload_3
+    //   243: istore_2
+    //   244: iload_2
+    //   245: ireturn
+    //   246: aconst_null
+    //   247: astore 4
+    //   249: goto -226 -> 23
+    //   252: ldc 10
+    //   254: aload_0
+    //   255: invokevirtual 145	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   258: astore_0
+    //   259: goto -187 -> 72
+    //   262: aload_1
+    //   263: invokevirtual 148	java/io/BufferedOutputStream:flush	()V
+    //   266: aload_1
+    //   267: invokevirtual 151	java/io/BufferedOutputStream:close	()V
+    //   270: aload_1
+    //   271: astore 4
+    //   273: aload 4
+    //   275: invokestatic 138	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   278: pop
+    //   279: aload_0
+    //   280: ifnull +138 -> 418
+    //   283: aload_0
+    //   284: invokevirtual 141	java/net/HttpURLConnection:disconnect	()V
+    //   287: iload_2
+    //   288: ireturn
+    //   289: astore 5
+    //   291: aconst_null
+    //   292: astore_0
+    //   293: aload 7
+    //   295: astore 6
+    //   297: aload_0
+    //   298: astore_1
+    //   299: aload 6
+    //   301: astore 4
+    //   303: ldc 124
+    //   305: iconst_1
+    //   306: ldc 153
+    //   308: aload 5
+    //   310: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   313: sipush 4096
+    //   316: istore_2
+    //   317: aload 6
+    //   319: invokestatic 138	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   322: pop
+    //   323: aload_0
+    //   324: ifnull -80 -> 244
+    //   327: aload_0
+    //   328: invokevirtual 141	java/net/HttpURLConnection:disconnect	()V
+    //   331: sipush 4096
+    //   334: ireturn
+    //   335: astore_0
+    //   336: aconst_null
+    //   337: astore_1
+    //   338: aload 8
+    //   340: astore 4
+    //   342: aload 4
+    //   344: invokestatic 138	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
+    //   347: pop
+    //   348: aload_1
+    //   349: ifnull +7 -> 356
+    //   352: aload_1
+    //   353: invokevirtual 141	java/net/HttpURLConnection:disconnect	()V
+    //   356: aload_0
+    //   357: athrow
+    //   358: astore 4
+    //   360: aload_0
+    //   361: astore_1
+    //   362: aload 4
+    //   364: astore_0
+    //   365: aload 8
+    //   367: astore 4
+    //   369: goto -27 -> 342
+    //   372: astore 5
+    //   374: aload_1
+    //   375: astore 4
+    //   377: aload_0
+    //   378: astore_1
+    //   379: aload 5
+    //   381: astore_0
+    //   382: goto -40 -> 342
+    //   385: astore_0
+    //   386: goto -44 -> 342
+    //   389: astore 5
+    //   391: aload 7
+    //   393: astore 6
+    //   395: goto -98 -> 297
+    //   398: astore 5
+    //   400: aload_1
+    //   401: astore 6
+    //   403: goto -106 -> 297
+    //   406: astore 5
+    //   408: aconst_null
+    //   409: astore_0
+    //   410: goto -204 -> 206
+    //   413: astore 5
+    //   415: goto -209 -> 206
+    //   418: iload_2
+    //   419: ireturn
+    //   420: aconst_null
+    //   421: astore 5
+    //   423: goto -363 -> 60
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	426	0	paramString	String
+    //   0	426	1	paramFile	java.io.File
+    //   131	288	2	i	int
+    //   184	59	3	j	int
+    //   21	322	4	localObject1	Object
+    //   358	5	4	localObject2	Object
+    //   367	9	4	localObject3	Object
+    //   32	160	5	localObject4	Object
+    //   201	17	5	localIOException1	java.io.IOException
+    //   289	20	5	localException1	Exception
+    //   372	8	5	localObject5	Object
+    //   389	1	5	localException2	Exception
+    //   398	1	5	localException3	Exception
+    //   406	1	5	localIOException2	java.io.IOException
+    //   413	1	5	localIOException3	java.io.IOException
+    //   421	1	5	localObject6	Object
+    //   10	392	6	localObject7	Object
+    //   4	388	7	localObject8	Object
+    //   7	359	8	localObject9	Object
+    //   1	132	9	localObject10	Object
+    // Exception table:
+    //   from	to	target	type
+    //   160	173	201	java/io/IOException
+    //   173	185	201	java/io/IOException
+    //   190	198	201	java/io/IOException
+    //   262	270	201	java/io/IOException
+    //   28	60	289	java/lang/Exception
+    //   60	72	289	java/lang/Exception
+    //   72	87	289	java/lang/Exception
+    //   252	259	289	java/lang/Exception
+    //   28	60	335	finally
+    //   60	72	335	finally
+    //   72	87	335	finally
+    //   252	259	335	finally
+    //   87	112	358	finally
+    //   117	127	358	finally
+    //   127	132	358	finally
+    //   136	160	358	finally
+    //   160	173	372	finally
+    //   173	185	372	finally
+    //   190	198	372	finally
+    //   262	270	372	finally
+    //   212	222	385	finally
+    //   303	313	385	finally
+    //   87	112	389	java/lang/Exception
+    //   117	127	389	java/lang/Exception
+    //   127	132	389	java/lang/Exception
+    //   136	160	389	java/lang/Exception
+    //   160	173	398	java/lang/Exception
+    //   173	185	398	java/lang/Exception
+    //   190	198	398	java/lang/Exception
+    //   262	270	398	java/lang/Exception
+    //   28	60	406	java/io/IOException
+    //   60	72	406	java/io/IOException
+    //   72	87	406	java/io/IOException
+    //   252	259	406	java/io/IOException
+    //   87	112	413	java/io/IOException
+    //   117	127	413	java/io/IOException
+    //   127	132	413	java/io/IOException
+    //   136	160	413	java/io/IOException
   }
   
-  private static File a(File paramFile1, File paramFile2)
+  private static String a(String paramString)
   {
-    String str = paramFile1.getName();
-    paramFile1 = str;
-    int i;
-    if (!str.endsWith(".dex"))
-    {
-      i = str.lastIndexOf(".");
-      if (i >= 0) {
-        break label57;
-      }
+    String str = paramString.trim().replace(" ", "");
+    int i = str.indexOf('#');
+    paramString = str;
+    if (i > 0) {
+      paramString = str.substring(0, i);
     }
-    for (paramFile1 = str + ".dex";; paramFile1 = paramFile1.toString())
-    {
-      return new File(paramFile2, paramFile1);
-      label57:
-      paramFile1 = new StringBuilder(i + 4);
-      paramFile1.append(str, 0, i);
-      paramFile1.append(".dex");
-    }
+    return paramString;
   }
   
-  public static void a()
+  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity)
   {
-    File localFile;
-    if (BaseApplicationImpl.sProcessId == 2)
-    {
-      QLog.i("QZoneStartupMonitor", 1, "beforeLoadPlugin");
-      localFile = new File(BaseApplicationImpl.getApplication().getDir("qzone_monitor_dir", 0), "qzone_startup_monitor");
-      if (localFile.exists()) {}
-    }
+    return a(paramContext, paramString, paramHttpEntity, null);
+  }
+  
+  public static HttpResponse a(Context paramContext, String paramString, HttpEntity paramHttpEntity, bgza parambgza)
+  {
+    return a(false).execute(a(paramContext, paramString, paramHttpEntity, parambgza));
+  }
+  
+  public static HttpClient a(boolean paramBoolean)
+  {
+    Object localObject2 = new BasicHttpParams();
+    HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject2, false);
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 20000);
+    HttpConnectionParams.setTcpNoDelay((HttpParams)localObject2, true);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 45000);
+    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
+    HttpProtocolParams.setVersion((HttpParams)localObject2, HttpVersion.HTTP_1_1);
+    HttpProtocolParams.setUserAgent((HttpParams)localObject2, "android-qzone");
+    Object localObject1 = new SchemeRegistry();
+    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
     try
     {
-      localFile.createNewFile();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.w("QZoneStartupMonitor", 1, "", localIOException);
-    }
-  }
-  
-  private void a(int paramInt1, boolean paramBoolean, int paramInt2)
-  {
-    if ((paramInt1 == 0) && (paramBoolean) && (paramInt2 < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "oat 合法，启动成功不上报");
-      }
-    }
-    Object localObject;
-    label122:
-    do
-    {
-      do
+      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+      label98:
+      if (paramBoolean) {}
+      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
       {
-        return;
-        if (a()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QZoneStartupMonitor", 2, "非 art 不上报");
-      return;
-      localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject != null) {}
-      for (localObject = ((AppRuntime)localObject).getAccount();; localObject = null)
-      {
-        if (paramInt2 >= 1) {
-          axrl.a(BaseApplication.getContext()).a((String)localObject, "qzoneRecovery", paramBoolean, 0L, 0L, null, "");
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          break label122;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QZoneStartupMonitor", 2, "已经上报过，不再上报");
-        return;
-      }
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_b_of_type_Boolean = true;
-    HashMap localHashMap = new HashMap();
-    int j;
-    int i;
-    label158:
-    label172:
-    axrl localaxrl;
-    if (paramInt1 == 0)
-    {
-      j = 2;
-      if (!paramBoolean) {
-        break label308;
-      }
-      i = 1;
-      int k = j | i;
-      if (paramInt1 != 0) {
-        break label314;
-      }
-      j = 0;
-      localHashMap.put("oatValid", String.valueOf(j));
-      localHashMap.put("param_FailCode", String.valueOf(k));
-      localHashMap.put("recoveryCount", String.valueOf(paramInt2));
-      localHashMap.put("type", String.valueOf(k));
-      localHashMap.put("errorCode", String.valueOf(paramInt1));
-      localHashMap.put("startupSuccess", String.valueOf(i));
-      if (paramInt2 <= 0) {
-        break label325;
-      }
-      if (!paramBoolean) {
-        break label320;
-      }
-      paramInt1 = 1;
-      label258:
-      localHashMap.put("recovery", String.valueOf(paramInt1));
-      localaxrl = axrl.a(BaseApplication.getContext());
-      if (k != 0) {
-        break label330;
+        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+        return localObject2;
       }
     }
-    label308:
-    label314:
-    label320:
-    label325:
-    label330:
-    for (paramBoolean = true;; paramBoolean = false)
+    catch (Exception localException)
     {
-      localaxrl.a((String)localObject, "qzoneOdexCheck", paramBoolean, 0L, 0L, localHashMap, "");
-      return;
-      j = 0;
-      break;
-      i = 0;
-      break label158;
-      j = 1;
-      break label172;
-      paramInt1 = 0;
-      break label258;
-      paramInt1 = -1;
-      break label258;
+      break label98;
     }
   }
   
-  private static boolean a()
+  public static HttpPost a(Context paramContext, String paramString, HttpEntity paramHttpEntity, bgza parambgza)
   {
-    String str = System.getProperty("java.vm.version");
-    if ((str != null) && (str.startsWith("2"))) {}
-    for (int i = 1; (i != 0) && (Build.VERSION.SDK_INT >= 21); i = 0) {
-      return true;
+    Object localObject = a(paramString);
+    paramString = b((String)localObject);
+    localObject = new HttpPost((String)localObject);
+    ((HttpPost)localObject).addHeader("Host", paramString);
+    ((HttpPost)localObject).addHeader("x-online-host", paramString);
+    if ((paramHttpEntity instanceof ByteArrayEntity)) {
+      ((HttpPost)localObject).addHeader("Content-Type", "application/octet-stream");
     }
-    return false;
+    ((HttpPost)localObject).setEntity(paramHttpEntity);
+    a(paramContext, (HttpRequest)localObject, parambgza);
+    return localObject;
   }
   
-  public static boolean a(File paramFile)
+  private static void a(Context paramContext, HttpRequest paramHttpRequest, bgza parambgza)
   {
-    boolean bool = false;
-    int i = 0;
-    if (paramFile.exists())
-    {
-      int j;
-      do
-      {
-        bool = paramFile.delete();
-        j = i + 1;
-        if (bool) {
-          break;
-        }
-        i = j;
-      } while (j < 2);
-    }
-    return bool;
-  }
-  
-  @NonNull
-  private static Pair<Integer, Throwable> b(Context paramContext, String paramString)
-  {
-    if (a())
-    {
-      File localFile = PluginUtils.getOptimizedDexPath(paramContext);
-      paramContext = a(PluginUtils.getInstalledPluginPath(paramContext, paramString), localFile);
-      if (paramContext.exists()) {
-        return bhap.a(paramContext);
-      }
-      QLog.w("QZoneStartupMonitor", 1, "qzone_plugin.dex不存在");
-      return new Pair(Integer.valueOf(-9), new IOException("pluginid: " + paramString + ",path:" + paramContext + " not found"));
-    }
-    QLog.i("QZoneStartupMonitor", 1, "非ART机器");
-    return new Pair(Integer.valueOf(0), null);
-  }
-  
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "backupQZoneDex:ExternalStorageState():" + Environment.getExternalStorageState().equals("mounted") + ",canWrite:" + Environment.getExternalStorageDirectory().canWrite());
-    }
-    File localFile1 = new File(bhbz.n);
     boolean bool1;
-    if (!localFile1.exists())
+    if (parambgza != null)
     {
-      boolean bool2 = localFile1.mkdirs();
-      bool1 = bool2;
-      if (!bool2) {
-        bool1 = localFile1.mkdirs();
+      bool1 = parambgza.a;
+      if (parambgza == null) {
+        break label90;
       }
+    }
+    label90:
+    for (boolean bool2 = parambgza.b;; bool2 = false)
+    {
+      if ((bool1) && (NetworkState.isMobile()))
+      {
+        paramContext = NetworkUtils.getProxy(paramContext, bool2);
+        if (paramContext != null)
+        {
+          paramContext = (InetSocketAddress)paramContext.address();
+          if (paramContext != null)
+          {
+            paramContext = new HttpHost(paramContext.getHostName(), paramContext.getPort());
+            paramHttpRequest.getParams().setParameter("http.route.default-proxy", paramContext);
+          }
+        }
+      }
+      return;
+      bool1 = true;
+      break;
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt >= 200) && (paramInt < 299);
+  }
+  
+  public static String[] a(String paramString)
+  {
+    String[] arrayOfString = new String[2];
+    if ((paramString == null) || (paramString.length() < a)) {
+      return arrayOfString;
+    }
+    if (paramString.toLowerCase().startsWith("http://"))
+    {
+      int j = paramString.indexOf('/', a);
+      int i = j;
+      if (j <= a) {
+        i = paramString.length();
+      }
+      arrayOfString[0] = paramString.substring(a, i);
+      if (i >= paramString.length()) {
+        break label100;
+      }
+      arrayOfString[1] = paramString.substring(i, paramString.length());
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "创建或者删除目标是否成功：" + bool1);
-      }
-      if (bool1)
-      {
-        File localFile2 = PluginUtils.getOptimizedDexPath(BaseApplicationImpl.getContext());
-        localFile2 = a(PluginUtils.getInstalledPluginPath(BaseApplicationImpl.getContext(), "qzone_plugin.apk"), localFile2);
-        localFile1 = new File(localFile1, "qzone_plugin_" + bgxr.a());
-        QLog.i("QZoneStartupMonitor", 1, "copy from " + localFile2.getPath() + " to " + localFile1.getPath());
-        bbdj.a(localFile2, localFile1);
-      }
-      return;
-      if (!localFile1.isDirectory()) {
-        bool1 = a(localFile1);
-      } else {
-        bool1 = true;
-      }
+      return arrayOfString;
+      paramString = "http://".concat(paramString);
+      break;
+      label100:
+      arrayOfString[1] = "";
     }
   }
   
-  private void d()
+  private static String b(String paramString)
   {
-    if (!QzonePluginProxyActivity.a())
-    {
-      Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-      if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
-        QLog.i("QZoneStartupMonitor", 1, "非手q 进程，不进行卸载");
-      }
-      do
-      {
-        return;
-        localObject1 = (QQAppInterface)localObject1;
-        localObject2 = (bgkq)((QQAppInterface)localObject1).getManager(27);
-        QLog.i("QZoneStartupMonitor", 1, "reInstallQzone cancelInstall:qzone_plugin.apk");
-        ((bgkq)localObject2).cancelInstall("qzone_plugin.apk");
-      } while (((bgkq)localObject2).isPlugininstalled("qzone_plugin.apk"));
-      Object localObject2 = PluginUtils.getOptimizedDexPath(BaseApplicationImpl.getContext());
-      localObject2 = a(PluginUtils.getInstalledPluginPath(BaseApplicationImpl.getContext(), "qzone_plugin.apk"), (File)localObject2);
-      QLog.i("QZoneStartupMonitor", 1, "reInstallQzone delete odex:" + ((File)localObject2).getPath());
-      a((File)localObject2);
-      bgxy.a((QQAppInterface)localObject1, "reInstallQzone");
-      return;
-    }
-    QLog.i("QZoneStartupMonitor", 1, "qzone 进程存在，什么都不要做");
-  }
-  
-  /* Error */
-  public void b()
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: invokestatic 409	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   7: ldc_w 411
-    //   10: ldc_w 413
-    //   13: iconst_1
-    //   14: invokevirtual 417	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   17: iconst_1
-    //   18: if_icmpne +19 -> 37
-    //   21: iload_1
-    //   22: ifne +20 -> 42
-    //   25: ldc 102
-    //   27: iconst_1
-    //   28: ldc_w 419
-    //   31: invokestatic 110	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: return
-    //   37: iconst_0
-    //   38: istore_1
-    //   39: goto -18 -> 21
-    //   42: aload_0
-    //   43: getfield 421	bgyx:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   46: ifnonnull -12 -> 34
-    //   49: invokestatic 114	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   52: ldc 116
-    //   54: iconst_0
-    //   55: invokevirtual 120	com/tencent/common/app/BaseApplicationImpl:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   58: astore_2
-    //   59: invokestatic 139	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   62: ifeq +32 -> 94
-    //   65: ldc 102
-    //   67: iconst_2
-    //   68: new 75	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   75: ldc_w 423
-    //   78: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_2
-    //   82: invokevirtual 351	java/io/File:getPath	()Ljava/lang/String;
-    //   85: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: aload_0
-    //   95: new 425	bgza
-    //   98: dup
-    //   99: aload_0
-    //   100: aload_2
-    //   101: invokevirtual 351	java/io/File:getPath	()Ljava/lang/String;
-    //   104: sipush 768
-    //   107: invokespecial 428	bgza:<init>	(Lbgyx;Ljava/lang/String;I)V
-    //   110: putfield 421	bgyx:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   113: aload_0
-    //   114: getfield 421	bgyx:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
-    //   117: invokevirtual 433	android/os/FileObserver:startWatching	()V
-    //   120: goto -86 -> 34
-    //   123: astore_2
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_2
-    //   127: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	128	0	this	bgyx
-    //   1	38	1	i	int
-    //   58	43	2	localFile	File
-    //   123	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	21	123	finally
-    //   25	34	123	finally
-    //   42	94	123	finally
-    //   94	120	123	finally
+    return new URL(paramString).getAuthority();
   }
 }
 

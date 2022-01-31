@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import bbyi;
+import bbyw;
 
 public class LiangHaoDialogView
   extends LinearLayout
 {
-  public bbyi a;
+  public bbyw a;
   private LiangHaoView a;
   
   public LiangHaoDialogView(Context paramContext)
@@ -33,14 +33,14 @@ public class LiangHaoDialogView
   private void a()
   {
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561523, this, true);
+    LayoutInflater.from(getContext()).inflate(2131561522, this, true);
     this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131369155));
   }
   
-  public void a(bbyi parambbyi)
+  public void a(bbyw parambbyw)
   {
-    this.jdField_a_of_type_Bbyi = parambbyi;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambbyi);
+    this.jdField_a_of_type_Bbyw = parambbyw;
+    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambbyw);
   }
 }
 

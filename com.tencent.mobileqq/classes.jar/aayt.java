@@ -1,21 +1,21 @@
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.data.Card;
 
 public class aayt
-  extends ajtq
+  extends ajsy
 {
   public aayt(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    this.a.h();
+    if (paramBoolean)
     {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
       }
       return;
     }
+    bcql.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

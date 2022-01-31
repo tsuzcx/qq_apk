@@ -20,9 +20,9 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bfpi;
-import bfvq;
-import bfwe;
+import bfpz;
+import bfwh;
+import bfwv;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
@@ -37,7 +37,7 @@ public class Switch
   private Layout jdField_a_of_type_AndroidTextLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private bfwe jdField_a_of_type_Bfwe;
+  private bfwv jdField_a_of_type_Bfwv;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -96,7 +96,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new bfvq(this));
+    setOnClickListener(new bfwh(this));
   }
   
   private int a()
@@ -110,8 +110,8 @@ public class Switch
   
   private Layout a(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Bfwe != null) {
-      paramCharSequence = this.jdField_a_of_type_Bfwe.getTransformation(paramCharSequence, this);
+    if (this.jdField_a_of_type_Bfwv != null) {
+      paramCharSequence = this.jdField_a_of_type_Bfwv.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
@@ -432,8 +432,8 @@ public class Switch
       if (!paramContext.getBoolean(1, false)) {
         break label130;
       }
-      this.jdField_a_of_type_Bfwe = new bfpi(getContext());
-      this.jdField_a_of_type_Bfwe.a(true);
+      this.jdField_a_of_type_Bfwv = new bfpz(getContext());
+      this.jdField_a_of_type_Bfwv.a(true);
     }
     for (;;)
     {
@@ -442,7 +442,7 @@ public class Switch
       this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
       break;
       label130:
-      this.jdField_a_of_type_Bfwe = null;
+      this.jdField_a_of_type_Bfwv = null;
     }
   }
   

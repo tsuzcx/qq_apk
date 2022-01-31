@@ -1,56 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-public abstract class apsl
+public abstract interface apsl
 {
-  protected apsm a;
-  protected QQAppInterface a;
-  protected ChatMessage a;
+  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
   
-  public apsl(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public static apsl a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null)
-    {
-      QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is null");
-      return null;
-    }
-    if ((paramChatMessage instanceof MessageForFile)) {
-      return new apsf(paramQQAppInterface, paramChatMessage);
-    }
-    if ((paramChatMessage instanceof MessageForTroopFile)) {
-      return new apso(paramQQAppInterface, paramChatMessage);
-    }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
-    return null;
-  }
-  
-  public abstract long a();
-  
-  public abstract apsi a();
-  
-  public abstract String a();
-  
-  public void a(apsm paramapsm)
-  {
-    this.jdField_a_of_type_Apsm = paramapsm;
-  }
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
 }
 
 

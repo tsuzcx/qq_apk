@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.util;
 
-import auoq;
-import axqw;
-import bbjw;
+import auos;
+import axqy;
+import bbkk;
 import com.tencent.mobileqq.pic.CompressInfo;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sfn;
+import sfk;
 
 public class PublicAccountH5AbilityPlugin$2
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$2(sfn paramsfn, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public PublicAccountH5AbilityPlugin$2(sfk paramsfk, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
   public void run()
   {
     CompressInfo localCompressInfo = new CompressInfo(this.this$0.n, 0);
     localCompressInfo.f = 0;
-    auoq.a(localCompressInfo);
+    auos.a(localCompressInfo);
     String str;
-    if (!bbjw.a(localCompressInfo.e))
+    if (!bbkk.a(localCompressInfo.e))
     {
       str = "mqqpa://resourceid/" + this.this$0.p;
-      sfn.b.put(str, localCompressInfo.e);
+      sfk.b.put(str, localCompressInfo.e);
     }
     for (;;)
     {
@@ -36,7 +36,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
         this.this$0.n = "";
         this.this$0.o = "";
         this.this$0.p = "";
@@ -53,7 +53,7 @@ public class PublicAccountH5AbilityPlugin$2
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
+        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
       }
       catch (JSONException localJSONException2)
       {

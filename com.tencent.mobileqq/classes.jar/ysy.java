@@ -1,16 +1,16 @@
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.IPrePullListener;
-import org.json.JSONObject;
+import com.tencent.gdtad.api.GdtAd;
 
-public class ysy
-  implements MiniAppPrePullManager.IPrePullListener
+public abstract interface ysy
 {
-  public ysy(GdtPreLoader.1 param1) {}
+  public abstract void a(GdtAd paramGdtAd);
   
-  public void onPrePullCallback(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    yxs.b("GdtPreLoader", String.format("MiniAppPrePullManager.getInstance().prePullAppinfoByLink end:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
+  public abstract void a(GdtAd paramGdtAd, ysx paramysx);
+  
+  public abstract void b(GdtAd paramGdtAd);
+  
+  public abstract void c(GdtAd paramGdtAd);
+  
+  public abstract void d(GdtAd paramGdtAd);
 }
 
 

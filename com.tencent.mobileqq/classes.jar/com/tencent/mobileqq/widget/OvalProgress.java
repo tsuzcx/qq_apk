@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
-import bcnk;
+import bcnz;
 
 public class OvalProgress
   extends RelativeLayout
@@ -19,7 +19,7 @@ public class OvalProgress
   private int jdField_a_of_type_Int = -3355444;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private bcnk jdField_a_of_type_Bcnk;
+  private bcnz jdField_a_of_type_Bcnz;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int = -16745985;
@@ -57,8 +57,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 90;
-    if (this.jdField_a_of_type_Bcnk.jdField_a_of_type_Double > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Bcnk.jdField_a_of_type_Double);; i = 0)
+    if (this.jdField_a_of_type_Bcnz.jdField_a_of_type_Double > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Bcnz.jdField_a_of_type_Double);; i = 0)
     {
       if (i > 90) {
         i = j;
@@ -66,7 +66,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.g, 180.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Bcnk.jdField_a_of_type_Double;
+        return paramDouble - this.jdField_a_of_type_Bcnz.jdField_a_of_type_Double;
       }
     }
   }
@@ -170,16 +170,16 @@ public class OvalProgress
       this.jdField_b_of_type_Float = ((float)(f2 + d1));
       this.jdField_c_of_type_Float = ((float)(f3 - d1));
     }
-    if (this.jdField_a_of_type_Bcnk == null)
+    if (this.jdField_a_of_type_Bcnz == null)
     {
       d1 = (j - 2) * 3.141592653589793D;
       double d2 = 2.0F * f1 + d1;
-      this.jdField_a_of_type_Bcnk = new bcnk(this);
-      this.jdField_a_of_type_Bcnk.jdField_a_of_type_Double = (0.25D * d1 / d2);
-      this.jdField_a_of_type_Bcnk.b = (f1 * 1.0D / d2);
-      this.jdField_a_of_type_Bcnk.c = (0.5D * d1 / d2);
-      this.jdField_a_of_type_Bcnk.d = (f1 * 1.0D / d2);
-      this.jdField_a_of_type_Bcnk.e = (d1 * 0.25D / d2);
+      this.jdField_a_of_type_Bcnz = new bcnz(this);
+      this.jdField_a_of_type_Bcnz.jdField_a_of_type_Double = (0.25D * d1 / d2);
+      this.jdField_a_of_type_Bcnz.b = (f1 * 1.0D / d2);
+      this.jdField_a_of_type_Bcnz.c = (0.5D * d1 / d2);
+      this.jdField_a_of_type_Bcnz.d = (f1 * 1.0D / d2);
+      this.jdField_a_of_type_Bcnz.e = (d1 * 0.25D / d2);
     }
     return true;
   }
@@ -191,8 +191,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Bcnk.b > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Bcnk.b;
+    if (this.jdField_a_of_type_Bcnz.b > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Bcnz.b;
     }
     if (d1 > 1.0D) {
       d1 = d2;
@@ -201,7 +201,7 @@ public class OvalProgress
     {
       float f1 = (float)(d1 * (this.jdField_e_of_type_AndroidGraphicsRectF.right - this.jdField_e_of_type_AndroidGraphicsRectF.left));
       paramCanvas.drawRect(this.jdField_e_of_type_AndroidGraphicsRectF.left, this.jdField_e_of_type_AndroidGraphicsRectF.top, this.jdField_e_of_type_AndroidGraphicsRectF.left + f1, this.jdField_e_of_type_AndroidGraphicsRectF.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-      return paramDouble - this.jdField_a_of_type_Bcnk.b;
+      return paramDouble - this.jdField_a_of_type_Bcnz.b;
     }
   }
   
@@ -211,8 +211,8 @@ public class OvalProgress
       return 0.0D;
     }
     int j = 180;
-    if (this.jdField_a_of_type_Bcnk.c > 0.0D) {}
-    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Bcnk.c);; i = 0)
+    if (this.jdField_a_of_type_Bcnz.c > 0.0D) {}
+    for (int i = (int)(1.0D * paramDouble * '´' / this.jdField_a_of_type_Bcnz.c);; i = 0)
     {
       if (i > 180) {
         i = j;
@@ -220,7 +220,7 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.h, 270.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Bcnk.c;
+        return paramDouble - this.jdField_a_of_type_Bcnz.c;
       }
     }
   }
@@ -231,8 +231,8 @@ public class OvalProgress
     if (paramDouble <= 0.0D) {
       return 0.0D;
     }
-    if (this.jdField_a_of_type_Bcnk.d > 0.0D) {
-      d1 = paramDouble / this.jdField_a_of_type_Bcnk.d;
+    if (this.jdField_a_of_type_Bcnz.d > 0.0D) {
+      d1 = paramDouble / this.jdField_a_of_type_Bcnz.d;
     }
     double d2 = d1;
     if (d1 > 1.0D) {
@@ -240,7 +240,7 @@ public class OvalProgress
     }
     float f1 = (float)((1.0D - d2) * (this.f.right - this.f.left));
     paramCanvas.drawRect(this.f.left + f1, this.f.top, this.f.right, this.f.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-    return paramDouble - this.jdField_a_of_type_Bcnk.d;
+    return paramDouble - this.jdField_a_of_type_Bcnz.d;
   }
   
   private double e(Canvas paramCanvas, double paramDouble)
@@ -250,8 +250,8 @@ public class OvalProgress
     }
     int j = 90;
     int i;
-    if (this.jdField_a_of_type_Bcnk.e > 0.0D) {
-      if (paramDouble > this.jdField_a_of_type_Bcnk.e * 0.99D) {
+    if (this.jdField_a_of_type_Bcnz.e > 0.0D) {
+      if (paramDouble > this.jdField_a_of_type_Bcnz.e * 0.99D) {
         i = 90;
       }
     }
@@ -263,8 +263,8 @@ public class OvalProgress
       for (;;)
       {
         paramCanvas.drawArc(this.g, 90.0F, i, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-        return paramDouble - this.jdField_a_of_type_Bcnk.e;
-        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Bcnk.e);
+        return paramDouble - this.jdField_a_of_type_Bcnz.e;
+        i = (int)(1.0D * paramDouble * 90 / this.jdField_a_of_type_Bcnz.e);
         break;
       }
       i = 0;

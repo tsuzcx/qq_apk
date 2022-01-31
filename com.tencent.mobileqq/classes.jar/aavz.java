@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.Conversation;
 
-class aavz
-  implements View.OnClickListener
+public class aavz
+  implements DialogInterface.OnDismissListener
 {
-  aavz(aavy paramaavy) {}
+  public aavz(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.onClick(this.a.a.a);
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
   }
 }
 

@@ -1,25 +1,26 @@
-public class axnn
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class axnn
+  implements EIPCResultCallback
 {
-  public ampi[] a = new ampi[0];
+  axnn(axnl paramaxnl, axno paramaxno) {}
   
-  public String toString()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    StringBuilder localStringBuilder = new StringBuilder("SoLoadConfBean:");
-    if (this.a != null)
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
     {
-      ampi[] arrayOfampi = this.a;
-      int j = arrayOfampi.length;
-      int i = 0;
-      while (i < j)
-      {
-        ampi localampi = arrayOfampi[i];
-        if (localampi != null) {
-          localStringBuilder.append("confItem ").append(localampi.jdField_a_of_type_Int).append(":").append(localampi.jdField_a_of_type_JavaLangString).append("\n");
-        }
-        i += 1;
+      paramEIPCResult = (SoConfig.SoInfo)paramEIPCResult.data.getSerializable("res");
+      if (this.jdField_a_of_type_Axno != null) {
+        this.jdField_a_of_type_Axno.a(paramEIPCResult);
       }
     }
-    return localStringBuilder.toString();
+    while (this.jdField_a_of_type_Axno == null) {
+      return;
+    }
+    this.jdField_a_of_type_Axno.a(null);
   }
 }
 

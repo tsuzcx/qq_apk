@@ -1,16 +1,6 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-
-class bdcq
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface bdcq
 {
-  bdcq(bdcp parambdcp, bczs parambczs) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bczs.b = paramBoolean;
-    this.jdField_a_of_type_Bdcp.notifyDataSetChanged();
-  }
+  public abstract void a(long paramLong);
 }
 
 

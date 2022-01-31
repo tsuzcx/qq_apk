@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukn;
+import aukp;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import java.util.List;
-import pay;
+import pav;
 
 public class InterestLabelInfoModule$1
   implements Runnable
 {
-  public InterestLabelInfoModule$1(pay parampay) {}
+  public InterestLabelInfoModule$1(pav parampav) {}
   
   public void run()
   {

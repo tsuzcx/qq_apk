@@ -1,35 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class agym
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
   public agym(TransactionActivity paramTransactionActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
-      }
-    }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
-      return;
-    }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
+    this.a.b();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

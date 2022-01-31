@@ -1,10 +1,47 @@
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public abstract interface affx
+public class affx
+  extends afcy
 {
-  public abstract void a();
+  public affx(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
   
-  public abstract void a(ReadInJoySearchHistoryEntity paramReadInJoySearchHistoryEntity);
+  protected int a()
+  {
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    axqy.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    axqy.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    axqy.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
 }
 
 

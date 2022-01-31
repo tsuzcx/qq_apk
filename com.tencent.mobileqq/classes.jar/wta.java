@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wta
-  implements View.OnClickListener
+public abstract interface wta
 {
-  wta(wsz paramwsz, wtk paramwtk, String paramString, bfol parambfol) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Wtk.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bfol.dismiss();
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
 }
 
 

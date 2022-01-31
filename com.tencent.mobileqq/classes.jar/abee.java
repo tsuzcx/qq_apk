@@ -1,17 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public class abee
-  implements View.OnClickListener
+class abee
+  implements bfqj
 {
-  public abee(FriendProfileCardActivity paramFriendProfileCardActivity, TextView paramTextView, int paramInt) {}
+  abee(abed paramabed, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    bbqw.a(paramView.getContext(), bbqs.b(this.jdField_a_of_type_Int), bbqs.c(this.jdField_a_of_type_Int), 3, false, true);
+    this.jdField_a_of_type_Abed.a = false;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

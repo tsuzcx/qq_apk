@@ -65,7 +65,7 @@ public class ImmersiveTitleBar2
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label82;
       }
-      setBackgroundResource(2130849026);
+      setBackgroundResource(2130849032);
       return;
       bool = false;
       break;

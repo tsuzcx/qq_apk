@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
-import org.apache.http.Header;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class bbrp
 {
-  public int a;
-  public String a;
-  public Header[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public bbrp(VasResDrawable paramVasResDrawable)
+  public static void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("authResult", String.valueOf(paramInt));
+    axrn.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", paramString2);
+    axrn.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
   }
 }
 

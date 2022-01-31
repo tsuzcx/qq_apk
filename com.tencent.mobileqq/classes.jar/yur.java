@@ -1,33 +1,30 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
+import android.content.Context;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import java.lang.ref.WeakReference;
 
 final class yur
-  implements AdIPCManager.Handler
+  implements ArkViewImplement.LoadCallback
 {
-  public yur()
+  yur(long paramLong, String paramString, WeakReference paramWeakReference, GdtInterstitialParams paramGdtInterstitialParams) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    AdIPCManager.INSTANCE.register("PRELOAD_INTERSTITIAL_OTHER_TO_MAIN", this);
+    int i = yug.a(paramInt2);
+    yxp.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
+    yuq.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
+    yyc.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, i, paramInt2);
   }
   
-  public AdIPCManager.Result receive(AdIPCManager.Params paramParams)
+  public void onLoadState(int paramInt)
   {
-    yxs.b("GdtInterstitialPreDownloader", "receive");
-    if (!AdProcessManager.INSTANCE.isOnMainProcess().booleanValue()) {
-      return null;
+    yxp.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+    if (paramInt == 1) {
+      yyc.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, 0, -2147483648);
     }
-    yuo.a(yuo.a());
-    paramParams = new AdIPCManager.Result();
-    paramParams.success = true;
-    return paramParams;
-  }
-  
-  public AdIPCManager.Result send(AdIPCManager.Params paramParams)
-  {
-    yxs.b("GdtInterstitialPreDownloader", "send");
-    return AdIPCManager.INSTANCE.send("PRELOAD_INTERSTITIAL_OTHER_TO_MAIN", paramParams);
+    while (paramInt != -1) {
+      return;
+    }
   }
 }
 

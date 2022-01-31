@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import apvb;
-import bhbr;
-import bhor;
+import apvd;
+import bhci;
+import bhpi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -56,9 +56,9 @@ final class QzoneZipCacheHelper$2
         if (!bool1)
         {
           bool3 = bool1;
-          localObject2 = bhor.b(this.c);
+          localObject2 = bhpi.b(this.c);
           bool3 = bool1;
-          bool1 = bhor.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
+          bool1 = bhpi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2, (File)???);
           if (!bool1) {
             continue;
           }
@@ -79,7 +79,7 @@ final class QzoneZipCacheHelper$2
         if (((File)???).exists())
         {
           bool3 = bool2;
-          apvb.a((File)???);
+          apvd.a((File)???);
         }
       }
       catch (Throwable localThrowable)

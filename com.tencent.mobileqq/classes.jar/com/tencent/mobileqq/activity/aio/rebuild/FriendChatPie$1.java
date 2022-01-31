@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeoo;
+import aeom;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class FriendChatPie$1
   implements Runnable
 {
-  public FriendChatPie$1(aeoo paramaeoo) {}
+  public FriendChatPie$1(aeom paramaeom) {}
   
   public void run()
   {

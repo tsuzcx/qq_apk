@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import qvk;
 import qvn;
-import qvq;
 
 public class VideoVolumeControl$VolumeReceiver$1
   implements Runnable
 {
-  public VideoVolumeControl$VolumeReceiver$1(qvq paramqvq) {}
+  public VideoVolumeControl$VolumeReceiver$1(qvn paramqvn) {}
   
   public void run()
   {
-    qvn.d(this.a.a, false);
+    qvk.d(this.a.a, false);
   }
 }
 

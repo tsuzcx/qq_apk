@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import bexf;
+import bexw;
 
 public class WebAudioManager$2
   implements Runnable
 {
-  public WebAudioManager$2(bexf parambexf, int paramInt) {}
+  public WebAudioManager$2(bexw parambexw, int paramInt) {}
   
   public void run()
   {

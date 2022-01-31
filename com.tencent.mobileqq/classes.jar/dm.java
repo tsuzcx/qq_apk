@@ -18,7 +18,7 @@ public class dm
   {
     LiteActivity.a(this.a).setPadding(0, 0, 0, 0);
     ((FrameLayout.LayoutParams)this.a.a.getLayoutParams()).setMargins(0, 0, 0, 0);
-    this.a.a.setPadding(actn.a(24.0F, this.a.app.getApplication().getResources()), actn.a(10.0F, this.a.app.getApplication().getResources()), actn.a(24.0F, this.a.app.getApplication().getResources()), 0);
+    this.a.a.setPadding(actj.a(24.0F, this.a.app.getApplication().getResources()), actj.a(10.0F, this.a.app.getApplication().getResources()), actj.a(24.0F, this.a.app.getApplication().getResources()), 0);
     LiteActivity.a(this.a).getLayoutParams().height = -1;
   }
   

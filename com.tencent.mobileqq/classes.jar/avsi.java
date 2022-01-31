@@ -1,26 +1,49 @@
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class avsi
-  implements aysa
+  implements aysc
 {
-  avsi(avsd paramavsd) {}
+  avsi(avsf paramavsf) {}
   
-  public void onResp(aysx paramaysx)
+  public void onResp(aysz paramaysz)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaysx.jdField_a_of_type_Aysw.a();
-    if (paramaysx.jdField_a_of_type_Int != 0)
+    Object localObject = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
+    if (paramaysz.jdField_a_of_type_Int != 0) {
+      lcg.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    }
+    for (;;)
     {
-      lcl.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramaysx.b + ", errorMsg: " + paramaysx.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
       return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
+      {
+        lcg.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+        return;
+      }
+      lcg.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
+      try
+      {
+        localObject = avsf.b;
+        bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, (String)localObject, false);
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+        if ((avsf.a(this.a).decrementAndGet() == 0) && (avsf.a(this.a) != null))
+        {
+          avsf.a(this.a).a(true);
+          return;
+        }
+      }
+      catch (IOException paramaysz)
+      {
+        paramaysz.printStackTrace();
+        lcg.c("CaptureVideoFilterManager", "unzip file failed.");
+      }
     }
-    if ((avsd.a(this.a).decrementAndGet() == 0) && (avsd.a(this.a) != null)) {
-      avsd.a(this.a).a(true);
-    }
-    lcl.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,82 +1,110 @@
-import com.tencent.open.base.BspatchUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 import java.io.File;
 
-class aiuh
-  extends bbwf
+public class aiuh
 {
-  aiuh(aiug paramaiug, File paramFile, aiuj paramaiuj) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
   
-  public void onDone(bbwg parambbwg)
+  public static String a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    super.onDone(parambbwg);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch task.getStatus:" + parambbwg.a());
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
     }
-    if (3 == parambbwg.a())
+    if (paramString1.endsWith("/")) {
+      return paramString1 + paramLong + "/" + paramInt + "/" + paramString2;
+    }
+    return paramString1 + "/" + paramLong + "/" + paramInt + "/" + paramString2;
+  }
+  
+  public static boolean a(int paramInt, long paramLong, String paramString1, String paramString2)
+  {
+    if (100 == paramInt) {
+      return new File(ajms.jdField_b_of_type_JavaLangString + paramInt + "_" + paramLong + "_" + paramString1 + File.separator + paramString2).exists();
+    }
+    return false;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return ajms.jdField_b_of_type_JavaLangString + a() + File.separator;
+    }
+    return "";
+  }
+  
+  public String c()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String d()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_b_of_type_Int + "_patch.zip";
+    }
+    return "";
+  }
+  
+  public String e()
+  {
+    if (100 == this.jdField_a_of_type_Int) {
+      return b() + this.jdField_c_of_type_Int + ".zip";
+    }
+    return "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ContentUpdateCheckResult{");
+    localStringBuffer.append("mBuzId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mItemId=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mVersion=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", mOldVersion=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", mDownloadFileUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mIsPatch=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", mPatchData=");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      localStringBuffer.append("null");
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        String str = this.jdField_a_of_type_Aiuj.e();
-        parambbwg = this.jdField_a_of_type_Aiuj.c();
-        if (BspatchUtil.a(str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), parambbwg))
-        {
-          try
-          {
-            str = bdhv.a(parambbwg);
-            if (QLog.isColorLevel()) {
-              QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadZipAndPatch onDone dstMd5:" + str + " result.mMd5:" + this.jdField_a_of_type_Aiuj.d);
-            }
-            if (aiug.a(this.jdField_a_of_type_Aiuj, str))
-            {
-              if (aiug.a(this.jdField_a_of_type_Aiuj))
-              {
-                nay.a(new File(parambbwg), this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-                if (QLog.isColorLevel()) {
-                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " dstpath:" + parambbwg);
-                }
-              }
-              for (;;)
-              {
-                aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj.jdField_e_of_type_Int, this.jdField_a_of_type_Aiuj);
-                return;
-                boolean bool = bbdj.d(parambbwg, this.jdField_a_of_type_Aiuj.b() + this.jdField_a_of_type_Aiuj.jdField_e_of_type_JavaLangString);
-                QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch no need unzip copy:" + bool);
-              }
-            }
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
-          }
-          catch (Exception parambbwg)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadZipAndPatch unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambbwg.getMessage());
-            return;
-            QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-            aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
-            return;
-          }
-          catch (OutOfMemoryError parambbwg)
-          {
-            this.jdField_a_of_type_JavaIoFile.delete();
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-          }
-        }
-        else
-        {
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
-        }
-      }
-      else
-      {
-        aiug.a(this.jdField_a_of_type_Aiug, this.jdField_a_of_type_Aiuj);
-        QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch patchFile no exist path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambbwg.a());
-      }
-    }
-    else {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadZipAndPatch  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambbwg.a());
+      localStringBuffer.append(", mPatchSize=").append(this.jdField_b_of_type_Long);
+      localStringBuffer.append(", mDownloadPatchFileUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mMd5='").append(this.jdField_d_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadFileName='").append(this.jdField_e_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mDownloadPatchFileName='").append(this.jdField_f_of_type_JavaLangString).append('\'');
+      localStringBuffer.append(", mFlagWriteIntervalTs=").append(this.jdField_b_of_type_Boolean);
+      localStringBuffer.append(", mCheckServerInterval=").append(this.jdField_d_of_type_Int);
+      localStringBuffer.append(", mCheckRequestId=").append(this.jdField_e_of_type_Int);
+      localStringBuffer.append(", mDomainId=").append(this.jdField_f_of_type_Int);
+      localStringBuffer.append('}');
+      return localStringBuffer.toString();
+      localStringBuffer.append("mPatchData:").append(this.jdField_a_of_type_ArrayOfByte);
     }
   }
 }

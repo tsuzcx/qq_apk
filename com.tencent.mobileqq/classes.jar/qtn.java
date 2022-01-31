@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-
-class qtn
-  extends bfmg
+public class qtn
 {
-  qtn(qtk paramqtk, AlphaAnimation paramAlphaAnimation) {}
+  int jdField_a_of_type_Int;
+  qji jdField_a_of_type_Qji;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public qtn(qji paramqji, int paramInt)
   {
-    this.jdField_a_of_type_Qtk.a.s.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    this.jdField_a_of_type_Qji = paramqji;
+    this.jdField_a_of_type_Int = paramInt;
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

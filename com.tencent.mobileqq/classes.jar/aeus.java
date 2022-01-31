@@ -1,18 +1,27 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeus
-  implements ViewPager.OnPageChangeListener
+  implements baos
 {
   public aeus(TroopChatPie paramTroopChatPie) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    TroopChatPie.a(this.a, paramInt);
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      TroopChatPie.b(this.a, true);
+      paramString = (adjp)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      TroopChatPie.b(this.a, false);
+      paramString = (adjp)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 

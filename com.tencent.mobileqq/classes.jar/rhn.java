@@ -1,17 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.widget.BubblePopupWindow;
 
 public class rhn
   implements View.OnClickListener
 {
-  public rhn(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public rhn(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
   public void onClick(View paramView)
   {
-    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
+    try
+    {
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).b();
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

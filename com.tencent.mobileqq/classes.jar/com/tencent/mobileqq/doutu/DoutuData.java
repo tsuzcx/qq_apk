@@ -3,20 +3,20 @@ package com.tencent.mobileqq.doutu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import annx;
-import aukm;
-import aulx;
+import anoc;
+import auko;
+import aulz;
 
 public class DoutuData
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static final Parcelable.Creator<DoutuData> CREATOR = new annx();
+  public static final Parcelable.Creator<DoutuData> CREATOR = new anoc();
   public String pic_down_url;
   public int pic_height;
   public String pic_md5;
   public long pic_size;
-  @aulx
+  @aulz
   public int pic_type = 1;
   public int pic_width;
   public String suppliers_name;

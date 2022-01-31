@@ -1,16 +1,20 @@
-public class bbnx
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+
+class bbnx
+  extends URLDrawableDownListener.Adapter
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  bbnx(bbnw parambbnw) {}
   
-  public bbnx(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.onLoadSuccessed(paramURLDrawable);
   }
 }
 

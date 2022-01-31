@@ -1,75 +1,84 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import mqq.manager.Manager;
 
 public class ayfk
-  extends QIPCModule
+  implements Manager
 {
-  private static ayfk a;
+  private static String jdField_a_of_type_JavaLangString = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
+  private static String b = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
+  private static String c = "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png";
+  private static String d = "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png";
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  private ayfk()
+  public ayfk(QQAppInterface paramQQAppInterface)
   {
-    super("TeamWorkModule");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static ayfk a()
+  public static String a()
   {
-    if (a == null) {}
-    try
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
+    if (localSharedPreferences != null) {
+      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("tencentdoc_pre_img_url_doc", "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png");
+    }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static String b()
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
+    if (localSharedPreferences != null) {
+      b = localSharedPreferences.getString("tencentdoc_pre_img_url_sheet", "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png");
+    }
+    return b;
+  }
+  
+  public static String c()
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
+    if (localSharedPreferences != null) {
+      c = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_doc", "https://pub.idqqimg.com/pc/misc/files/20180410/1fce078ca2434b18bfec613961d526ff.png");
+    }
+    return c;
+  }
+  
+  public static String d()
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("tencentdoc_url_config", 4);
+    if (localSharedPreferences != null) {
+      d = localSharedPreferences.getString("tencentdoc_pre_img_url_miniproj_sheet", "https://pub.idqqimg.com/pc/misc/files/20180410/5349bc325950481ebde04c38208d9028.png");
+    }
+    return d;
+  }
+  
+  public Boolean a()
+  {
+    boolean bool2 = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    boolean bool3 = anbk.a().a();
+    boolean bool1 = annv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = anbk.a().a();
+    if ((bool1) && (str != null)) {}
+    for (bool1 = true;; bool1 = false)
     {
-      if (a == null) {
-        a = new ayfk();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
-    }
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(localObject)) {
       if (QLog.isColorLevel()) {
-        QLog.e("TeamWorkModule", 2, "[onCall] get app failed.");
+        QLog.d("TeamWorkManager", 2, "WL_DEBUG isShowTencentDocEntry isShowTencentDocEntry = " + bool3 + ", isUser = " + bool1 + ", userConfigPlusURL = " + str);
       }
+      if ((bool3) || (bool1)) {
+        bool2 = true;
+      }
+      if ((!bool3) && (bool1)) {
+        annv.a("0X80094DF");
+      }
+      return Boolean.valueOf(bool2);
     }
-    do
-    {
-      String str1;
-      String str2;
-      do
-      {
-        return null;
-        if (!"send_to_chat_msg".equals(paramString)) {
-          break;
-        }
-        paramString = axuy.a(paramBundle);
-        paramInt = paramBundle.getInt("uin_type");
-        str1 = paramBundle.getString("to_uin");
-        str2 = paramBundle.getString("docs_gray_tips_info_json");
-        paramBundle = paramBundle.getString("detail_url");
-      } while ((localObject == null) || (paramString == null));
-      paramString.mExtraData = "aioPlusPanelTencentDoc";
-      bbjj.a((QQAppInterface)localObject, str1, paramInt, paramString, null, str2, paramBundle);
-      return null;
-    } while (!"action_download_export_file".equals(paramString));
-    boolean bool = paramBundle.getBoolean("isSuccess");
-    paramString = paramBundle.getString("docUrl");
-    localObject = (ayej)((QQAppInterface)localObject).a(142);
-    if (bool)
-    {
-      ((ayej)localObject).notifyUI(2, true, new Object[] { paramBundle.getString("url"), paramBundle.getString("fileName"), paramString, paramBundle.getString("cookie") });
-      return null;
-    }
-    ((ayej)localObject).notifyUI(1, true, new Object[] { ajyc.a(2131714774), paramString });
-    return null;
   }
+  
+  public void onDestroy() {}
 }
 
 

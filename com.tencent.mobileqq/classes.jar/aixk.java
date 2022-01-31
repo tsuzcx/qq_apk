@@ -1,121 +1,93 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloEngine;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aixk
+  extends aixj
 {
-  public static int a(int paramInt)
+  public aixk(QQAppInterface paramQQAppInterface)
   {
-    if (a(paramInt)) {
-      return 1;
+    super(paramQQAppInterface);
+    this.a = 99;
+    if (paramQQAppInterface != null)
+    {
+      int i = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp" + paramQQAppInterface.c(), 0).getInt("hire_priority", 99);
+      if (i > this.a) {
+        this.a = (i + 1);
+      }
     }
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("CardDrawerStatus", 2, "[CardDrawerStatus] onCreate ");
+    }
   }
   
-  public static int a(int paramInt, long paramLong)
+  private void a(QQAppInterface paramQQAppInterface)
   {
-    int i = paramInt * 400 / 540;
-    if (i <= paramLong * 0.7D)
-    {
-      paramInt = i;
-      if (i > 0) {}
-    }
-    else
-    {
-      paramInt = (int)(paramLong * 0.7D);
-    }
-    return paramInt;
+    ThreadManager.getUIHandler().post(new CardDrawerStatus.1(this, paramQQAppInterface));
   }
   
-  public static aisn a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  public static void a(boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    Object localObject = airx.a();
+    if (localObject != null)
     {
-      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
-      return null;
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putBoolean("CardDrawerStatus.VOICE_CONTROL", paramBoolean).commit();
+        return;
+      }
+      QLog.e("CardDrawerStatus", 1, "[setVoicePermission] editor is null ");
+      return;
     }
-    int i = 0;
-    int[] arrayOfInt = null;
-    int j = 0;
-    aisn localaisn = null;
-    int k = airz.a(paramQQAppInterface, paramString);
-    int m = paramApolloBaseInfo.apolloStatus;
-    aiwn localaiwn = paramApolloBaseInfo.getApolloDress();
-    if (localaiwn != null)
-    {
-      i = localaiwn.jdField_a_of_type_Int;
-      arrayOfInt = localaiwn.a();
+    QLog.e("CardDrawerStatus", 1, "[setVoicePermission] sp is null ");
+  }
+  
+  public static boolean a()
+  {
+    SharedPreferences localSharedPreferences = airx.a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean("CardDrawerStatus.VOICE_CONTROL", true);
     }
-    localaiwn = paramApolloBaseInfo.getApolloDress3D();
-    paramApolloBaseInfo = localaisn;
-    if (localaiwn != null)
+    QLog.e("CardDrawerStatus", 1, "[getVoicePermission] sp is null ");
+    return true;
+  }
+  
+  public int a(ajfq paramajfq, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if ((paramajfq == null) || (paramAppInterface == null) || (paramContext == null))
     {
-      j = localaiwn.jdField_a_of_type_Int;
-      paramApolloBaseInfo = localaiwn.a();
+      QLog.e("CardDrawerStatus", 1, "[onExecAction] null pointer");
+      return 0;
     }
-    localaisn = new aisn();
-    localaisn.jdField_a_of_type_Int = i;
-    localaisn.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-    localaisn.jdField_b_of_type_Int = j;
-    localaisn.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
-    localaisn.c = m;
-    localaisn.d = k;
-    localaisn.e = ajfj.b(paramInt);
-    boolean bool;
-    if (m != 1)
+    if (!this.c) {
+      return super.a(paramajfq, paramInt, paramAppInterface, paramContext);
+    }
+    paramContext = ((airx)paramAppInterface.getManager(153)).a((QQAppInterface)paramAppInterface, paramAppInterface.getCurrentAccountUin(), new int[] { 2, 4 });
+    if (paramContext != null)
     {
-      bool = true;
-      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
-      ajlq.a(localaisn.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
+      if (QLog.isColorLevel()) {
+        QLog.d("CardDrawerStatus", 2, new Object[] { "CardDrawerStatus onExecAction actionId:", Integer.valueOf(paramContext.actionId), ",actionType:", Integer.valueOf(paramContext.actionType) });
+      }
+      a((QQAppInterface)paramAppInterface);
+      ajfh.a(paramajfq, 12, paramContext);
     }
     for (;;)
     {
-      localaisn.jdField_a_of_type_Boolean = bool;
-      if ((!bool) && (QLog.isColorLevel())) {
-        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
-      }
-      ajlq.a(localaisn.e, 10, new Object[] { localaisn.toString() });
-      return localaisn;
-      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!ajkk.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
-      {
-        bool = true;
-        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
-        ajlq.a(localaisn.e, 10, 111, new Object[] { "basic not ready:" + localaisn.toString() });
-      }
-      else
-      {
-        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > ajmu.jdField_a_of_type_Int) && (!ajkk.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
-        {
-          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localaisn.toString() });
-          ajlq.a(localaisn.e, 10, new Object[] { "3D role/dress not ready but show basic" });
-        }
-        if (!ApolloEngine.a())
-        {
-          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
-          ajlq.a(localaisn.e, 10, 102, new Object[] { "so not ready" });
-          bool = true;
-        }
-        else
-        {
-          bool = false;
-        }
-      }
+      return 0;
+      paramAppInterface = new ApolloActionData();
+      paramAppInterface.actionId = -1;
+      paramAppInterface.actionType = 0;
+      ajfh.a(paramajfq, 5, paramAppInterface);
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 6;
-  }
-  
-  public static int b(int paramInt)
-  {
-    if (a(paramInt)) {
-      return 3;
-    }
-    return 2;
   }
 }
 

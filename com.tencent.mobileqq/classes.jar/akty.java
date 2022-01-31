@@ -1,76 +1,108 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_ICON.lighting_sweet_key_req;
-import SWEET_NEW_ICON.lighting_sweet_key_rsp;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class akty
-  extends QzoneExternalRequest
+  extends MSFServlet
 {
-  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
-  private String jdField_a_of_type_JavaLangString;
+  private ToServiceMsg a;
   
-  public akty() {}
-  
-  public akty(long paramLong)
+  public static Intent a(Intent paramIntent, long paramLong)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = bgxr.a();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
-    this.jdField_a_of_type_JavaLangString = a();
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.putExtra("hostUin", paramLong);
+    return localIntent;
   }
   
-  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
+    if (paramIntent == null)
     {
-      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
-      return paramArrayOfByte;
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneLoverLightingServlet", 2, "onReceive, request is null");
+      }
+      return;
     }
-    catch (Throwable paramArrayOfByte)
+    paramIntent = new Bundle();
+    if (paramFromServiceMsg != null)
     {
-      paramArrayOfByte.printStackTrace();
+      paramIntent.putInt("rsp_code", paramFromServiceMsg.getResultCode());
+      paramIntent.putString("rsp_message", paramFromServiceMsg.getBusinessFailMsg());
     }
-    return null;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("receive QzoneLoverLightingServlet, code: ");
+      if (paramFromServiceMsg == null) {
+        break label165;
+      }
+    }
+    label165:
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      QLog.d("QzoneLoverLightingServlet", 2, i);
+      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+        break label197;
+      }
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      localObject = aktx.a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      paramIntent.putInt("rsp_code", 0);
+      paramFromServiceMsg = aktx.a(paramFromServiceMsg, (String)localObject);
+      if (paramFromServiceMsg == null) {
+        break label170;
+      }
+      paramIntent.putSerializable("rsp_data", paramFromServiceMsg);
+      notifyObserver(null, 291, true, paramIntent, aktz.class);
+      return;
+    }
+    label170:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneLoverLightingServlet", 2, "inform QzoneLoverLightingServlet isSuccess false");
+    }
+    notifyObserver(null, 291, false, paramIntent, aktz.class);
+    return;
+    label197:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneLoverLightingServlet", 2, "inform QzoneLoverLightingServlet resultcode fail.");
+    }
+    notifyObserver(null, 291, false, paramIntent, aktz.class);
   }
   
-  public static String a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
-    String[] arrayOfString;
+    if (paramIntent == null) {}
+    long l;
     do
     {
-      return null;
-      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
-    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
-    return arrayOfString[(arrayOfString.length - 1)];
+      return;
+      l = paramIntent.getLongExtra("hostUin", 0L);
+      byte[] arrayOfByte = new aktx(l).encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + aktx.a());
+      paramPacket.putSendData(paramIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneLoverLightingServlet", 2, "send req QzoneLoverLightingRequest: " + l);
   }
   
-  public String getCmdString()
+  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    return "SweetQzoneService.lightingSweetKey";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
-  }
-  
-  public String uniKey()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a = paramToServiceMsg;
+    super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 

@@ -1,13 +1,10 @@
-class uad
-  implements bcak
+import java.util.ArrayList;
+
+public class uad
+  extends ssh
 {
-  uad(uac paramuac) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    veg.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
-    this.a.a = true;
-  }
+  public ArrayList<String> a;
+  public boolean a = true;
 }
 
 

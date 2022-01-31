@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afud;
-import ajyc;
+import afub;
+import ajya;
 import android.widget.TextView;
 import java.util.List;
 
@@ -14,7 +14,7 @@ class EmoticonGroupStoreFragment$11
   {
     EmoticonGroupStoreFragment.a(this.this$0).a(EmoticonGroupStoreFragment.a(this.this$0));
     EmoticonGroupStoreFragment.a(this.this$0).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.b(this.this$0).setText(ajyc.a(2131704059) + EmoticonGroupStoreFragment.c(this.this$0).size() + ajyc.a(2131704047));
+    EmoticonGroupStoreFragment.b(this.this$0).setText(ajya.a(2131704070) + EmoticonGroupStoreFragment.c(this.this$0).size() + ajya.a(2131704058));
   }
 }
 

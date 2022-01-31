@@ -1,17 +1,14 @@
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 class wly
-  implements View.OnClickListener
+  implements wlk
 {
-  wly(wlx paramwlx) {}
+  wly(wlu paramwlu) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if ((!xeq.a("SUB_ENTER_FLOAT_MODE")) && (wlx.a(this.a) != null)) {
-      wlx.a(this.a).a();
-    }
+    this.a.d(paramStFeed);
   }
 }
 

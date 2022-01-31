@@ -1,40 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
 
 class bicj
-  extends Handler
+  implements IBinder.DeathRecipient
 {
-  public bicj(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bicj(bici parambici) {}
   
-  public void handleMessage(Message paramMessage)
+  public void binderDied()
   {
-    if (paramMessage.what == 0) {
-      bici.a(0);
+    bdot.b("WadlProxyServiceManager", "wadl download process is died!");
+    bici.a(this.a).asBinder().unlinkToDeath(bici.a(this.a), 0);
+    bici.a(this.a, null);
+    if ((bici.a(this.a) != null) && (bici.a(this.a).a()))
+    {
+      bdot.b("WadlProxyServiceManager", "download process died restart service");
+      this.a.b();
     }
-    while ((paramMessage.what != 1) || (!bici.a()) || (TextUtils.isEmpty(bici.a())) || (TextUtils.isEmpty(bici.b()))) {
-      return;
-    }
-    String str1 = bici.a();
-    String str2 = bici.b();
-    int i = bici.a();
-    int j = bici.b();
-    String str3 = bici.a(BaseApplicationImpl.getApplication());
-    Process.setThreadPriority(10);
-    bici.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
-    bici.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicj
  * JD-Core Version:    0.7.0.1
  */

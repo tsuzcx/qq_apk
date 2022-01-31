@@ -1,37 +1,72 @@
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class uvr
+public abstract class uvr<T extends uvs>
+  extends tje
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  private Stream<T> a;
+  public ter a;
+  public uvt a;
+  protected uvv<T> a;
   
-  public uvr(String paramString1, int paramInt, @Nullable String paramString2)
+  public uvr(@NonNull uvv<T> paramuvv)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Uvt = new uvt();
+    this.jdField_a_of_type_Uvv = paramuvv;
+    vxp.a(this.jdField_a_of_type_Uvv);
   }
   
-  public uvr(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
+  private void d()
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    a();
+    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
   }
   
-  public boolean a()
+  public abstract JobSegment<uvu, T> a();
+  
+  public abstract JobSegment<Integer, uvu> a(uvt paramuvt);
+  
+  protected abstract T a();
+  
+  protected abstract T a(ErrorMessage paramErrorMessage);
+  
+  public uvt a()
   {
-    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
+    return this.jdField_a_of_type_Uvt;
   }
   
-  public String toString()
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
+    super.a(paramTencentLocation, paramInt);
+    this.jdField_a_of_type_Uvt.a();
+    d();
+  }
+  
+  protected abstract void a(List<String> paramList, boolean paramBoolean);
+  
+  public void a(uvt paramuvt)
+  {
+    this.jdField_a_of_type_Uvt = paramuvt;
+    ved.a("Q.qqstory.home.position", "restore last time cache:%s", paramuvt);
+  }
+  
+  public T b()
+  {
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    d();
   }
 }
 

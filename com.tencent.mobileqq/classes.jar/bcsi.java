@@ -1,12 +1,20 @@
-public abstract interface bcsi
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TipsBar;
+
+public class bcsi
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public bcsi(TipsBar paramTipsBar) {}
   
-  public abstract void b(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.a.removeAllViews();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcsi
  * JD-Core Version:    0.7.0.1
  */

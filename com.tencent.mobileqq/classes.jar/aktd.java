@@ -1,17 +1,10 @@
-import android.content.ContentValues;
-
-public class aktd
-  extends aksw
+public abstract interface aktd
 {
-  public aktd(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, akte paramakte)
-  {
-    super(paramString1, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramakte);
-  }
+  public abstract void a(String paramString);
   
-  public aktd(String paramString1, int paramInt1, String paramString2, aukm paramaukm, int paramInt2, akte paramakte)
-  {
-    super(paramString1, paramInt1, paramString2, paramaukm, paramInt2, paramakte);
-  }
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(String paramString, int paramInt);
 }
 
 

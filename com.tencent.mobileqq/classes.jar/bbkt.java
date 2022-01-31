@@ -1,50 +1,32 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import org.json.JSONObject;
 
 final class bbkt
-  extends bbwf
+  extends ClickableSpan
 {
-  bbkt(QQAppInterface paramQQAppInterface) {}
+  bbkt(Context paramContext, athv paramathv) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onClick(View paramView)
   {
-    super.onDone(parambbwg);
-    parambbwg = new File(bbks.jdField_a_of_type_JavaLangString);
-    if (parambbwg.exists())
-    {
-      parambbwg = bbdj.a(parambbwg, -1);
-      if (!TextUtils.isEmpty(parambbwg)) {}
-      try
-      {
-        parambbwg = Base64.decode(parambbwg, 0);
-        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
-        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
-        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
-        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
-        parambbwg = new JSONObject(new String(localCipher.doFinal(parambbwg)));
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + parambbwg.toString());
-        }
-        bbks.a(this.a);
-        bbks.jdField_a_of_type_AndroidOsHandler.sendMessage(bbks.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
-        return;
-      }
-      catch (Exception parambbwg)
-      {
-        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + parambbwg.getMessage());
-        bbks.jdField_a_of_type_AndroidOsHandler.sendMessage(bbks.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
-        return;
-      }
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Athv.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Athv.b());
     }
-    bbks.jdField_a_of_type_AndroidOsHandler.sendMessage(bbks.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

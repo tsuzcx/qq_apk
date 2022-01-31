@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
-import akse;
-import aukm;
-import aulx;
+import aksd;
+import auko;
+import aulz;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 
@@ -17,10 +17,10 @@ public class QQMessageFacade$Message
   public long fileSize = -1L;
   public int fileType = -1;
   public boolean hasReply;
-  @aulx
+  @aulz
   public boolean isCacheValid = true;
   public MessageRecord lastMsg;
-  public ArrayList<akse> msgInfoList;
+  public ArrayList<aksd> msgInfoList;
   public String nickName;
   public String pttUrl;
   public long shareAppID;
@@ -34,7 +34,7 @@ public class QQMessageFacade$Message
     this.fileType = -1;
   }
   
-  public Class<? extends aukm> getClassForTable()
+  public Class<? extends auko> getClassForTable()
   {
     return Message.class;
   }

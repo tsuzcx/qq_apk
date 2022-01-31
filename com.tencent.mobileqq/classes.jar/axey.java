@@ -1,56 +1,70 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-
 public class axey
+  extends axdo
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b = true;
+  public axez a;
+  public Object a;
+  public boolean a = true;
+  public long b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public String h;
+  public boolean h;
+  public int i;
+  public String i;
+  public boolean i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r;
+  public String s;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_Int = 18;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nShortVideoUploadInfo");
+    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-").append("thumbPath:").append(this.j);
+    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.c);
+    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.d);
+    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileTime:").append(this.f);
+    localStringBuilder.append("\n |-").append("fileSource:").append(this.l);
+    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.b);
+    localStringBuilder.append("\n |-").append("fileWidth:").append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-").append("fileHeight:").append(this.i);
+    return localStringBuilder.toString();
   }
   
-  public static void a()
+  public boolean a()
   {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if ((localObject != null) && (localObject.length >= 2))
-        {
-          if (!TextUtils.isEmpty(localObject[0])) {
-            b = localObject[0].equals("1");
-          }
-          if (TextUtils.isEmpty(localObject[1])) {}
-        }
-      }
-    }
-    try
-    {
-      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
-      jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        jdField_a_of_type_Int = 18;
-      }
-    }
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 

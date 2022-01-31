@@ -1,23 +1,44 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class adzu
-  implements VideoDrawable.OnAudioPlayOnceListener
+public class adzu
+  extends Handler
 {
-  adzu(adzs paramadzs) {}
-  
-  public void onFinish()
+  public adzu(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((adzs.a() != null) && (adzs.a().get() != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      adzs.a(adzs.a(this.a), (ChatMessage)adzs.a().get());
-      adzs.a(null);
     }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoPTVItemBuilder", 2, "data is " + paramMessage);
+      return;
+      i = paramMessage.arg1;
+      switch (paramMessage.arg1)
+      {
+      default: 
+        return;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.i("ShortVideoPTVItemBuilder", 2, "ret is " + i);
+    QLog.i("ShortVideoPTVItemBuilder", 2, "targetFile is " + paramMessage);
   }
 }
 

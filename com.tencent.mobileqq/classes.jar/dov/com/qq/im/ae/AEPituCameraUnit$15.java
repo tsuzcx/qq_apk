@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae;
 
 import android.content.Context;
-import bcpw;
-import biim;
+import bcql;
+import bijd;
 
 public class AEPituCameraUnit$15
   implements Runnable
 {
-  public AEPituCameraUnit$15(biim parambiim, Context paramContext) {}
+  public AEPituCameraUnit$15(bijd parambijd, Context paramContext) {}
   
   public void run()
   {
-    bcpw.a(this.a, this.a.getString(2131698925), 0).a();
+    bcql.a(this.a, this.a.getString(2131698935), 0).a();
     this.this$0.q();
   }
 }

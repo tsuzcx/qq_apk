@@ -1,16 +1,17 @@
-import android.graphics.Bitmap;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-public abstract interface bked
+public class bked
+  implements bkbp
 {
-  public abstract int a();
+  public bked(DoodleLayout paramDoodleLayout) {}
   
-  public abstract void a();
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(bkee parambkee);
-  
-  public abstract void a(Runnable paramRunnable);
+  public void a(List<bkbm> paramList, DoodleView paramDoodleView)
+  {
+    paramList.add(this.a.jdField_a_of_type_Bkbi);
+    paramList.add(this.a.jdField_a_of_type_Bkau);
+  }
 }
 
 

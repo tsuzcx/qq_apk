@@ -1,97 +1,102 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.LikeRankingListActivity.2.1;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.LikeRankingInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class ablj
-  extends ajtq
+  extends ajto
 {
-  public ablj(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public ablj(LikeSettingActivity paramLikeSettingActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
+      QLog.i("LikeSettingActivity", 2, "onGetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",voteAllowed=" + paramBoolean2 + ",praiseStatusAllowed=" + paramBoolean3);
     }
-    if ((paramBoolean) && ((paramObject instanceof Card)))
+    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {}
+    while (!paramBoolean1) {
+      return;
+    }
+    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean2);
+  }
+  
+  protected void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1)
     {
-      paramObject = (Card)paramObject;
-      if (paramObject.uin.equals(this.a.b)) {
-        this.a.app.a(new LikeRankingListActivity.2.1(this, paramObject));
-      }
+      LikeSettingActivity.a(this.a, this.a.b.a(), paramBoolean2);
+      this.a.a.a(paramBoolean2);
     }
   }
   
-  protected void onReqLikeRankingListResult(boolean paramBoolean1, String paramString, List<LikeRankingInfo> paramList, int paramInt, boolean paramBoolean2)
+  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i;
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1)
     {
-      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
-      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
-      if (paramList == null)
-      {
-        i = 0;
-        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
+      LikeSettingActivity.a(this.a, this.a.d.a(), paramBoolean2);
+      this.a.a.b(paramBoolean2);
+      if (!paramBoolean2) {
+        this.a.b.setVisibility(8);
       }
     }
     else
     {
-      if (!paramBoolean1) {
-        break label341;
-      }
-      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
-        break label284;
-      }
-      this.a.jdField_a_of_type_Ajzs.a(paramList, paramInt, paramBoolean2);
-      if ((!paramBoolean2) || (paramList.size() != 0)) {
-        break label258;
-      }
-      this.a.e.setVisibility(0);
-      label165:
-      this.a.jdField_a_of_type_Ablk.a(paramList, true);
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        if (paramList.size() <= 0) {
-          break label273;
-        }
-        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
-        LikeRankingListActivity.a(this.a, false);
-      }
-    }
-    for (;;)
-    {
-      paramString = this.a;
-      if (paramBoolean2) {
-        paramInt = -1;
-      }
-      paramString.jdField_a_of_type_Int = paramInt;
       return;
-      i = paramList.size();
-      break;
-      label258:
-      this.a.e.setVisibility(8);
-      break label165;
-      label273:
-      this.a.a(null);
-      continue;
-      label284:
-      this.a.a(null);
-      this.a.jdField_a_of_type_Ablk.a = false;
-      this.a.jdField_a_of_type_Ablk.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Ablk.getCount() <= 1) {
-        this.a.e.setVisibility(0);
-      }
     }
-    label341:
-    this.a.jdField_a_of_type_Ablk.a = false;
-    this.a.jdField_a_of_type_Ablk.notifyDataSetChanged();
-    bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131706099), 0).a();
+    this.a.b.setVisibility(0);
+  }
+  
+  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",forNearPeople=" + paramBoolean2 + ",allowed=" + paramBoolean3);
+    }
+    if ((!this.a.app.getCurrentAccountUin().equals(paramString)) || (!paramBoolean2)) {}
+    while (paramBoolean1) {
+      return;
+    }
+    bcql.a(this.a, 1, 2131719386, 0).b(this.a.getTitleBarHeight());
+    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean3);
+  }
+  
+  protected void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      bcql.a(this.a, 1, 2131719386, 0).b(this.a.getTitleBarHeight());
+      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.a());
+      return;
+    }
+    this.a.a.a(paramBoolean2);
+  }
+  
+  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      bcql.a(this.a, 1, 2131719386, 0).b(this.a.getTitleBarHeight());
+      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.c());
+      return;
+    }
+    this.a.a.b(paramBoolean2);
+    if (!paramBoolean2)
+    {
+      this.a.b.setVisibility(8);
+      return;
+    }
+    this.a.b.setVisibility(0);
   }
 }
 

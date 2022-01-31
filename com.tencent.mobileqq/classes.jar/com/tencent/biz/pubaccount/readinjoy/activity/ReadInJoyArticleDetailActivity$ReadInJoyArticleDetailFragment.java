@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import aabm;
+import aabi;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,14 +15,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbdr;
-import bcbv;
-import bcdq;
-import bcet;
-import bcfa;
-import bcfj;
-import bcfm;
-import bhvh;
+import bbef;
+import bccj;
+import bcee;
+import bcfh;
+import bcfo;
+import bcfx;
+import bcga;
+import bhvy;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,9 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nuy;
-import sgj;
-import xlu;
+import nuv;
+import sgg;
+import xlr;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   extends WebViewFragment
@@ -92,7 +92,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("available_memory", -1L);
     boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("preload_tool_white_list", false);
     int i;
-    if (this.jdField_a_of_type_Bcfa.w)
+    if (this.jdField_a_of_type_Bcfo.w)
     {
       i = 2;
       if (i == 0) {
@@ -106,7 +106,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         ThreadManager.post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3(this, l2, l1, i, bool), 8, null, true);
       }
       return;
-      if (bcfa.s)
+      if (bcfo.s)
       {
         i = 1;
         break;
@@ -115,42 +115,42 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       break;
       label103:
       i = j;
-      if (!bcfa.r) {
+      if (!bcfo.r) {
         i = 0;
       }
     }
   }
   
-  public bcdq a()
+  public bcee a()
   {
-    return new bcdq(this, 127, new nuy(this));
+    return new bcee(this, 127, new nuv(this));
   }
   
   public void a(Intent paramIntent, String paramString)
   {
     super.a(paramIntent, paramString);
-    if ((this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup != null))
+    if ((this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      if ((this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bcfm.m)) {
+      if ((this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bcga.m)) {
         break label92;
       }
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848486);
-      this.jdField_a_of_type_Bcbv.c(-16777216);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848492);
+      this.jdField_a_of_type_Bccj.c(-16777216);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
       label92:
-      paramIntent = bbdr.a(getResources().getDrawable(2130848486), -1);
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramIntent);
-      this.jdField_a_of_type_Bcbv.c(-1);
+      paramIntent = bbef.a(getResources().getDrawable(2130848492), -1);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramIntent);
+      this.jdField_a_of_type_Bccj.c(-1);
     }
   }
   
   public void a(WebView paramWebView, String paramString)
   {
-    boolean bool = this.jdField_a_of_type_Bcfa.k;
+    boolean bool = this.jdField_a_of_type_Bcfo.k;
     super.a(paramWebView, paramString);
     if (bool)
     {
@@ -158,7 +158,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       this.jdField_b_of_type_Boolean = true;
       paramWebView = BaseApplicationImpl.getApplication().getRuntime();
       if (paramWebView != null) {
-        if (!bhvh.z(paramWebView)) {
+        if (!bhvy.z(paramWebView)) {
           break label61;
         }
       }
@@ -174,60 +174,60 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    boolean bool = this.jdField_a_of_type_Bcfa.j;
+    boolean bool = this.jdField_a_of_type_Bcfo.j;
     super.a(paramWebView, paramString, paramBitmap);
     if (bool) {
       this.c = System.currentTimeMillis();
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, aabm paramaabm)
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, aabi paramaabi)
   {
-    this.jdField_a_of_type_Bcbv.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramaabm);
-    if ((this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup != null) && (!paramBoolean) && (paramInt1 == 4))
+    this.jdField_a_of_type_Bccj.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramaabi);
+    if ((this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidViewViewGroup != null) && (!paramBoolean) && (paramInt1 == 4))
     {
-      if ((this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bcfm.m)) {
+      if ((this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bcga.m)) {
         break label128;
       }
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848486);
-      this.jdField_a_of_type_Bcbv.c(-16777216);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848492);
+      this.jdField_a_of_type_Bccj.c(-16777216);
     }
     for (;;)
     {
-      ((bcet)this.jdField_a_of_type_Bcdq.a(4)).d();
-      this.jdField_a_of_type_Bcfj.j();
+      ((bcfh)this.jdField_a_of_type_Bcee.a(4)).d();
+      this.jdField_a_of_type_Bcfx.j();
       return;
       label128:
-      paramString1 = bbdr.a(getResources().getDrawable(2130848486), -1);
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString1);
-      this.jdField_a_of_type_Bcbv.c(-1);
+      paramString1 = bbef.a(getResources().getDrawable(2130848492), -1);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString1);
+      this.jdField_a_of_type_Bccj.c(-1);
     }
   }
   
   public boolean a()
   {
     boolean bool = super.a();
-    if ((this.jdField_a_of_type_Bcbv != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup != null))
+    if ((this.jdField_a_of_type_Bccj != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848493);
-      this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839111);
-      if ((!this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Bcfm.m))
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848499);
+      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839111);
+      if ((!this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Bcga.m))
       {
-        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(0);
-        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-        if (this.jdField_a_of_type_Bcfj.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-          this.jdField_a_of_type_Bcfj.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setCustomColor(-1);
+        this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(0);
+        this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
+        if (this.jdField_a_of_type_Bcfx.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
+          this.jdField_a_of_type_Bcfx.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setCustomColor(-1);
         }
         if (this.jdField_d_of_type_AndroidViewView != null)
         {
           this.jdField_d_of_type_AndroidViewView.setBackgroundColor(-1);
-          this.jdField_a_of_type_Bcfm.i = true;
+          this.jdField_a_of_type_Bcga.i = true;
         }
-        this.jdField_a_of_type_Bcbv.d(-16777216);
-        this.jdField_a_of_type_Bcbv.f(-16777216);
-        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848492);
-        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848486);
-        this.jdField_a_of_type_Bcbv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_a_of_type_Bccj.d(-16777216);
+        this.jdField_a_of_type_Bccj.f(-16777216);
+        this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130848498);
+        this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848492);
+        this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
     if (this.h)
@@ -246,9 +246,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
     String str = localBundle.getString("url");
     Object localObject = str;
-    if (sgj.e(str))
+    if (sgg.e(str))
     {
-      localObject = sgj.a(str);
+      localObject = sgg.a(str);
       localBundle.putString("url", (String)localObject);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("url", (String)localObject);
     }
@@ -261,9 +261,9 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       paramBundle = localBundle.getString("preload_iamge_url");
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null)
       {
-        localObject = (xlu)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("pubAccountPreload");
+        localObject = (xlr)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("pubAccountPreload");
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
-          ((xlu)localObject).a(paramBundle, true);
+          ((xlr)localObject).a(paramBundle, true);
         }
       }
       i();

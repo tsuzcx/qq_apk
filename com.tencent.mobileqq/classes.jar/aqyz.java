@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.PopupWindow;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class aqyz
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public aqyz(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    this.a.b.setVisibility(8);
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

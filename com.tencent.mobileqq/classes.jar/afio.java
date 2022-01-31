@@ -1,26 +1,25 @@
-class afio
-  implements Comparable<afio>
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+
+public class afio
+  implements mxx
 {
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
+  public afio(GroupSearchRecommendView paramGroupSearchRecommendView) {}
   
-  afio(afim paramafim, String paramString, Long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public int a(afio paramafio)
-  {
-    if (this.jdField_a_of_type_JavaLangLong.longValue() > paramafio.jdField_a_of_type_JavaLangLong.longValue()) {
-      return -1;
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-    return 1;
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
   }
   
-  public String a()
+  public void b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
   }
 }
 

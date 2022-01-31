@@ -1,39 +1,32 @@
-import android.os.Debug;
-import java.io.IOException;
+import com.tencent.tar.jni.ScanFeatureFilterView;
 
-public class bfmq
+public final class bfmq
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public boolean b;
   
-  public static void a(String paramString)
+  public float a(int paramInt, long paramLong)
   {
-    if (jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (localObject[i].equals(paramString))
-        {
-          localObject = ajsf.bc + "dump_";
-          try
-          {
-            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
-            jdField_a_of_type_Boolean = true;
-            return;
-          }
-          catch (IOException paramString)
-          {
-            return;
-          }
-        }
-        i += 1;
-      }
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
     }
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

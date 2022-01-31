@@ -1,29 +1,30 @@
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class uim
-  extends sth<uhz, tah>
+public final class uim
+  extends QQUIEventReceiver<uhw, uwc>
 {
-  public uim(uhz paramuhz)
+  public uim(@NonNull uhw paramuhw)
   {
-    super(paramuhz);
+    super(paramuhw);
   }
   
-  public void a(@NonNull uhz paramuhz, @NonNull tah paramtah)
+  public void a(@NonNull uhw paramuhw, @NonNull uwc paramuwc)
   {
-    if ((paramuhz.a != null) && (TextUtils.equals(paramuhz.a.b, paramtah.a)))
+    if ((paramuwc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuwc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramuhw.a != null) && (TextUtils.equals(paramuwc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramuhw.a.b)))
     {
-      veg.a(this.TAG, "receive feed info change event. %s.", paramtah.toString());
-      paramuhz.i();
+      ved.a(paramuhw.b, "refresh feed item , feed id :%s", paramuhw.a.b);
+      paramuhw.i();
     }
   }
   
   public Class acceptEventClass()
   {
-    return tah.class;
+    return uwc.class;
   }
-  
-  public void b(@NonNull uhz paramuhz, @NonNull tah paramtah) {}
 }
 
 

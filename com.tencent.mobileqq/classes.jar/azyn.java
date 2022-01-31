@@ -1,19 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class azyn
-  implements View.OnClickListener
-{
-  public azyn(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.m();
-    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
-  }
-}
+public class azyn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

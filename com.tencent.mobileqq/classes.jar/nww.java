@@ -1,13 +1,33 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nww
-  implements bfos
+  implements DialogInterface.OnKeyListener
 {
   public nww(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onDismiss()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ReadInJoySettingActivity.b(this.a).cancel();
+    boolean bool = true;
+    if (paramInt == 4)
+    {
+      ReadInJoySettingActivity.a(this.a, true);
+      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return false;
+      label53:
+      bool = false;
+    }
   }
 }
 

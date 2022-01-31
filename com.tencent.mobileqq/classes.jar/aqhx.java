@@ -1,16 +1,35 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aqhx
-  implements Handler.Callback
+final class aqhx
+  extends mxg
 {
-  public aqhx(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  aqhx(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    MsgBackupSettingFragment.a(this.a, paramMessage);
-    return false;
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      atbi.b(this.a.getCurrentAccountUin(), false);
+    }
+    for (boolean bool1 = false;; bool1 = atbi.b(this.a.getCurrentAccountUin()))
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = axrn.a(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 

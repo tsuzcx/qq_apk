@@ -1,22 +1,75 @@
-import io.flutter.view.FlutterNativeView;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayReq;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StGamePayRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bfat
-  extends bfar
+  extends bfau
 {
-  private FlutterNativeView a;
+  private MiniAppMidasPay.StGamePayReq a = new MiniAppMidasPay.StGamePayReq();
   
-  public void a(bfdc parambfdc)
+  public bfat(String paramString1, COMM.StCommonExt paramStCommonExt, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    super.a(parambfdc);
-    parambfdc = new bfca(this, this.jdField_a_of_type_Bfas);
-    parambfdc.a(null);
-    this.jdField_a_of_type_Bfbk = parambfdc;
-    parambfdc.a(this.jdField_a_of_type_IoFlutterViewFlutterNativeView);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    this.a.appId.set(paramString1);
+    this.a.prepayId.set(paramString2);
+    this.a.starCurrency.set(paramInt1);
+    this.a.balanceAmount.set(paramInt2);
+    this.a.topupAmount.set(paramInt3);
+    this.a.payChannel.set(paramInt4);
+    this.a.sandboxEnv.set(paramInt5);
   }
   
-  public void a(FlutterNativeView paramFlutterNativeView)
+  protected String a()
   {
-    this.jdField_a_of_type_IoFlutterViewFlutterNativeView = paramFlutterNativeView;
+    return "mini_app_pay";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    MiniAppMidasPay.StGamePayRsp localStGamePayRsp = new MiniAppMidasPay.StGamePayRsp();
+    try
+    {
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGamePayRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGamePayRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGamePayRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      betc.a("MiniAppPayRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("MiniAppPayRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GamePay";
   }
 }
 

@@ -1,378 +1,210 @@
-import android.opengl.GLES20;
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.util.Xml;
+import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.xmlpull.v1.XmlPullParser;
 
 public class albl
 {
-  public static final float[] a;
-  public static final short[] a;
-  public static final float[] b;
+  public static final boolean a = AppSetting.b;
   
-  static
+  public static int a(String paramString)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 1.0F, -0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F };
-    b = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 0.0F, -0.5F, -0.5F, 0.0F, 0.0F, 1.0F, 0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 0.5F, 0.5F, 0.0F, 1.0F, 0.0F };
-    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+    try
+    {
+      int i = albz.a("arcloud", "v8.2.0.1", albz.b("arcloud", "v8.2.0.1", "arcloud"), paramString);
+      return i;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
-  public static int a(albk paramalbk)
+  public static int a(String paramString1, String paramString2)
   {
-    if ((paramalbk == null) || (paramalbk.a == null)) {}
+    int i = -5;
     for (;;)
     {
-      return 0;
       try
       {
-        int i = ((ArVideoResourceInfo)paramalbk.a.a.get(0)).jdField_b_of_type_Int;
-        if (i >= 0) {}
-        for (;;)
-        {
-          return i;
-          i = 0;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Throwable paramalbk) {}
-    }
-    paramalbk.printStackTrace();
-    return 0;
-  }
-  
-  public static aldz a(String paramString)
-  {
-    aldz localaldz = new aldz();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
-      {
-        if (paramString.length >= 1) {
-          localaldz.jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
-        }
-        if (paramString.length >= 2) {
-          localaldz.jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
-        }
-      }
-    }
-    return localaldz;
-  }
-  
-  public static aldz a(String paramString, int paramInt1, int paramInt2)
-  {
-    paramString = a(paramString);
-    if ((paramString.jdField_a_of_type_Int == 0) || (paramString.jdField_b_of_type_Int == 0)) {
-      return paramString;
-    }
-    int i = paramString.jdField_a_of_type_Int;
-    int j = paramString.jdField_b_of_type_Int;
-    if (paramInt2 * 1.0F / j > paramInt1 * 1.0F / i)
-    {
-      paramInt1 = j * 1 * paramInt1 / i;
-      paramString.jdField_a_of_type_Float = 2.0F;
-    }
-    for (paramString.jdField_b_of_type_Float = (paramInt1 * 2.0F / paramInt2);; paramString.jdField_b_of_type_Float = 2.0F)
-    {
-      paramString.c = 0.0F;
-      paramString.d = 0.0F;
-      paramString.e = 0.0F;
-      return paramString;
-      paramString.jdField_a_of_type_Float = (i * 1 * paramInt2 / j * 2.0F / paramInt1);
-    }
-  }
-  
-  public static aldz a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    aldz localaldz = a(paramString);
-    if ((localaldz.jdField_a_of_type_Int == 0) || (localaldz.jdField_b_of_type_Int == 0))
-    {
-      localaldz.jdField_a_of_type_Int = paramInt1;
-      localaldz.jdField_b_of_type_Int = paramInt2;
-    }
-    float f7 = paramInt1 * 1.0F / Math.max(1, paramInt2);
-    float f8 = localaldz.jdField_a_of_type_Int;
-    float f9 = localaldz.jdField_b_of_type_Int;
-    float f2 = 1.0F;
-    float f1 = 1.0F;
-    float f3 = 0.0F;
-    float f4 = 0.0F;
-    float f10 = 1.0F * f8 / f9;
-    float f5;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\|");
-      if (paramString != null)
-      {
-        if (paramString.length >= 3) {
-          f2 = Float.valueOf(paramString[2]).floatValue();
-        }
-        if (paramString.length >= 4) {
-          f1 = Float.valueOf(paramString[3]).floatValue();
-        }
-        if (paramString.length >= 5) {
-          f3 = Float.valueOf(paramString[4]).floatValue();
-        }
-        if (paramString.length >= 6) {
-          f4 = -Float.valueOf(paramString[5]).floatValue();
-        }
-        f5 = f4;
-        paramInt2 = 1;
-        f4 = f3;
-        f3 = f5;
-      }
-    }
-    for (;;)
-    {
-      paramInt1 = 1;
-      f5 = f1;
-      float f6 = f2;
-      if (paramInt2 != 0)
-      {
-        if ((f2 <= 0.05F) || (f1 <= 0.05F)) {
-          break label385;
-        }
-        if (f10 > f7)
-        {
-          paramInt1 = 1;
-          f6 = f2;
-          f5 = f1;
-        }
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label500;
-        }
-        localaldz.jdField_a_of_type_Float = (10.0F * f7);
-        localaldz.jdField_b_of_type_Float = 10.0F;
-        localaldz.c = 0.0F;
-        localaldz.d = 0.0F;
-        localaldz.e = -5.0F;
-        if (paramInt2 != 0)
-        {
-          if (paramInt1 == 0) {
-            break label459;
-          }
-          localaldz.jdField_a_of_type_Float *= f6;
-          localaldz.jdField_b_of_type_Float = (localaldz.jdField_a_of_type_Float * (f9 / f8));
-          f1 = localaldz.jdField_a_of_type_Float / 2.0F;
-          label320:
-          localaldz.c = (f4 * f7 / f1);
-          localaldz.d = (f3 / f1);
-        }
-      }
-      label385:
-      label459:
-      label500:
-      do
-      {
-        QLog.i("ARVideoUtil", 1, "parseVideoLayout layout = " + localaldz);
-        return localaldz;
-        paramInt1 = 0;
-        f5 = f1;
-        f6 = f2;
-        break;
-        if (f2 > 0.05F)
-        {
-          paramInt1 = 1;
-          f5 = f1;
-          f6 = f2;
-          break;
-        }
-        if (f1 > 0.05F)
-        {
-          paramInt1 = 0;
-          f5 = f1;
-          f6 = f2;
-          break;
-        }
-        if (f10 > f7)
-        {
-          paramInt1 = 1;
-          f6 = 1.0F;
-          f5 = f1;
-          break;
-        }
-        paramInt1 = 0;
-        f5 = 1.0F;
-        f6 = f2;
-        break;
-        localaldz.jdField_b_of_type_Float *= f5;
-        localaldz.jdField_a_of_type_Float = (localaldz.jdField_b_of_type_Float * (f8 / f9));
-        f1 = localaldz.jdField_b_of_type_Float / 2.0F;
-        break label320;
-        localaldz.jdField_a_of_type_Float = 2.0F;
-        localaldz.jdField_b_of_type_Float = 2.0F;
-        localaldz.c = 0.0F;
-        localaldz.d = 0.0F;
-        localaldz.e = 0.0F;
-      } while (paramInt2 == 0);
-      if (paramInt1 != 0)
-      {
-        localaldz.jdField_a_of_type_Float *= f6;
-        localaldz.jdField_b_of_type_Float = (localaldz.jdField_a_of_type_Float * f7 * (f9 / f8));
-      }
-      for (f1 = localaldz.jdField_a_of_type_Float / 2.0F;; f1 = localaldz.jdField_b_of_type_Float / 2.0F)
-      {
-        localaldz.c = (f4 / f1);
-        localaldz.d = (f3 / f1);
-        break;
-        localaldz.jdField_b_of_type_Float *= f5;
-        localaldz.jdField_a_of_type_Float = (localaldz.jdField_b_of_type_Float / f7 * (f8 / f9));
-      }
-      f4 = 0.0F;
-      f2 = 1.0F;
-      f3 = 0.0F;
-      paramInt2 = 0;
-    }
-  }
-  
-  public static Pair<Integer, alkh> a(albk paramalbk)
-  {
-    int k = 0;
-    alkh localalkh = alkg.a(0);
-    if (paramalbk.a.d == 2) {}
-    for (;;)
-    {
-      int j;
-      try
-      {
-        j = Integer.parseInt(((ArVideoResourceInfo)paramalbk.a.a.get(0)).jdField_a_of_type_JavaLangString);
-        if (j < 0)
-        {
-          i = k;
-          return new Pair(Integer.valueOf(i), localalkh);
-        }
-      }
-      catch (Throwable paramalbk)
-      {
-        j = 0;
-        continue;
-        if (j != 0)
-        {
-          i = k;
-          if (j != 1) {
-            continue;
-          }
-        }
-        i = j;
-        continue;
-      }
-      if (paramalbk.a.d != 3)
-      {
-        i = k;
-        if (paramalbk.a.d != 4) {}
-      }
-      else if ((paramalbk.a.d == 4) && ("circle".equalsIgnoreCase(((ArVideoResourceInfo)paramalbk.a.a.get(0)).jdField_a_of_type_JavaLangString)))
-      {
-        i = 1;
-      }
-      else
-      {
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
+        albz.a("arcloud", "v8.2.0.1", "arcloud", paramString2);
+        paramString2 = albz.a("arcloud", "v8.2.0.1", paramString2);
         try
         {
-          paramalbk = ((ArVideoResourceInfo)paramalbk.a.a.get(0)).jdField_a_of_type_JavaLangString.split("\\|");
-          if ((paramalbk == null) || (paramalbk.length < 5)) {
-            break;
+          albv.a(paramString1, paramString2);
+          localObject1 = paramString2 + File.separator + "md5_config.xml";
+          localObject2 = new File((String)localObject1);
+          if (!((File)localObject2).exists()) {
+            break label587;
           }
-          i = Integer.parseInt(paramalbk[0]);
-          j = Integer.parseInt(paramalbk[1]);
-          int m = Integer.parseInt(paramalbk[2]);
-          int n = Integer.parseInt(paramalbk[3]);
-          int i1 = Integer.parseInt(paramalbk[4]);
-          if ((i > 255) || (j > 255) || (m > 255) || (n > 255) || (i < 0) || (j < 0) || (m < 0) || (n < 0) || (i1 < 0) || (i1 > 100)) {
-            break label601;
-          }
-          localalkh.a(i / 255.0F, j / 255.0F, m / 255.0F);
-          localalkh.jdField_a_of_type_Int = 1;
-          localalkh.d = (n / 255.0F);
-          localalkh.e = (i1 / 100.0F);
-          if ((paramalbk != null) && (paramalbk.length >= 6) && (Integer.parseInt(paramalbk[5]) == 1)) {
-            localalkh.jdField_a_of_type_Int = 2;
-          }
-          if ((paramalbk != null) && (paramalbk.length >= 8))
-          {
-            i = Integer.parseInt(paramalbk[6]);
-            paramalbk = paramalbk[7];
-            if ((i == 2) && (!TextUtils.isEmpty(paramalbk)))
-            {
-              paramalbk = paramalbk.split(";");
-              if ((paramalbk == null) || (paramalbk.length != 3)) {
-                break label606;
-              }
-              localalkh.f = Float.valueOf(paramalbk[0]).floatValue();
-              localalkh.g = Float.valueOf(paramalbk[1]).floatValue();
-              localalkh.h = Float.valueOf(paramalbk[2]).floatValue();
-              localalkh.jdField_a_of_type_Int = 3;
-              break label606;
-            }
-            if ((i == 3) && (!TextUtils.isEmpty(paramalbk)))
-            {
-              paramalbk = paramalbk.split(";");
-              if ((paramalbk == null) || (paramalbk.length != 3)) {
-                break label611;
-              }
-              localalkh.f = Float.valueOf(paramalbk[0]).floatValue();
-              localalkh.g = Float.valueOf(paramalbk[1]).floatValue();
-              localalkh.h = Float.valueOf(paramalbk[2]).floatValue();
-              localalkh.jdField_a_of_type_Int = 4;
-              break label611;
-            }
-            if ((i == 4) && (!TextUtils.isEmpty(paramalbk)))
-            {
-              localalkh.jdField_a_of_type_JavaLangString = aljz.a(paramalbk, "uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n");
-              localalkh.jdField_a_of_type_Int = 5;
-            }
-          }
-          i = 2;
+          new HashMap();
         }
-        catch (Throwable paramalbk)
+        catch (IOException localIOException)
         {
-          i = k;
-        }
-        if (QLog.isColorLevel())
-        {
-          paramalbk.printStackTrace();
-          i = k;
+          Object localObject1;
+          Object localObject2;
+          Object localObject3;
+          String str;
+          i = -6;
+          bbdx.a(paramString2, false);
+          paramString2 = new File(paramString1);
+          if (paramString2.exists()) {
+            paramString2.delete();
+          }
+          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
+          continue;
         }
       }
-    }
-    int i = 0;
-    break label603;
-    label601:
-    i = 0;
-    for (;;)
-    {
-      label603:
-      break;
-      label606:
-      i = 2;
+      finally {}
+      try
+      {
+        localObject1 = a(bbdx.b((File)localObject2));
+        if (((HashMap)localObject1).size() <= 0) {
+          break label557;
+        }
+        paramString1 = ((HashMap)localObject1).entrySet().iterator();
+        if (!paramString1.hasNext()) {
+          break label628;
+        }
+        localObject2 = (Map.Entry)paramString1.next();
+        localObject3 = (String)((Map.Entry)localObject2).getKey();
+        localObject1 = paramString2 + File.separator + (String)localObject3 + ".so";
+        albz.a("arcloud", "v8.2.0.1", (String)localObject3, (String)((Map.Entry)localObject2).getValue());
+        localObject3 = new File((String)localObject1);
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + (String)localObject1);
+        if (!((File)localObject3).exists()) {
+          break label516;
+        }
+        str = aurn.a((String)localObject1);
+        localObject2 = (String)((Map.Entry)localObject2).getValue();
+        if (((String)localObject2).equalsIgnoreCase(str)) {
+          continue;
+        }
+        ((File)localObject3).delete();
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + (String)localObject1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject2);
+        i = -3;
+      }
+      catch (IOException paramString2)
+      {
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+      }
+      catch (OutOfMemoryError paramString2)
+      {
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + localIOException);
+        i = -2;
+        continue;
+        i = -1;
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
+        continue;
+      }
+      return i;
+      label516:
+      label557:
+      label587:
+      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + localIOException);
+      i = -2;
       continue;
-      label611:
-      i = 2;
+      label628:
+      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
+      i = 0;
     }
   }
   
-  public static void a(String paramString)
+  public static String a()
   {
+    if (a) {
+      return "libARCloud_64";
+    }
+    return "libARCloud";
+  }
+  
+  private static HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
     for (;;)
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
+      try
+      {
+        localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
       }
-      QLog.d("ARVideoUtil", 1, paramString + ": glError " + i);
+      catch (Exception localException)
+      {
+        XmlPullParser localXmlPullParser;
+        QLog.e("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
+        return localHashMap;
+      }
+      int i = localXmlPullParser.next();
+      break label178;
+      str = localXmlPullParser.getName();
+      if (str.equalsIgnoreCase("libARCloud"))
+      {
+        localHashMap.put("libARCloud", localXmlPullParser.nextText());
+      }
+      else if (str.equalsIgnoreCase("libARCloud_64"))
+      {
+        localHashMap.put("libARCloud_64", localException.nextText());
+        label178:
+        while (i == 1)
+        {
+          String str;
+          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
+          return localHashMap;
+        }
+        switch (i)
+        {
+        }
+      }
     }
   }
   
   public static boolean a()
   {
-    String str = Build.MODEL.toLowerCase();
-    return (Build.MANUFACTURER.toLowerCase().contains("meizu")) && (str.contains("m040"));
+    return new File(albz.a("arcloud", "v8.2.0.1", albz.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + a() + ".so").exists();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool1 = false;
+    for (;;)
+    {
+      try
+      {
+        String str = albz.a("arcloud", "v8.2.0.1", albz.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + paramString + ".so";
+        Object localObject = new File(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
+        }
+        if (((File)localObject).exists())
+        {
+          paramString = albz.b("arcloud", "v8.2.0.1", paramString);
+          localObject = aurn.a(str);
+          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
+          if (bool2)
+          {
+            bool1 = true;
+            return bool1;
+          }
+          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
+          continue;
+        }
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
+      }
+      finally {}
+    }
   }
 }
 

@@ -1,27 +1,26 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akho
-  extends MqqHandler
+  extends RecyclablePool.Recyclable
 {
-  public akho(ThreadRegulator paramThreadRegulator, Looper paramLooper)
+  public int a;
+  public long a;
+  ConcurrentHashMap<String, Long> a;
+  long b;
+  
+  public akho()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void recycle()
   {
-    paramMessage = (akhp)paramMessage.obj;
-    if (paramMessage != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-      }
-      paramMessage.recycle();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    super.recycle();
   }
 }
 

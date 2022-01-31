@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.inputstatus;
 
-import ardr;
-import ardv;
+import ardt;
+import ardx;
 
 public class InputStatusPushManager$1
   implements Runnable
 {
-  public InputStatusPushManager$1(ardv paramardv) {}
+  public InputStatusPushManager$1(ardx paramardx) {}
   
   public void run()
   {
-    if (ardv.a(this.this$0) != null) {
-      ardv.a(this.this$0).a(false, "");
+    if (ardx.a(this.this$0) != null) {
+      ardx.a(this.this$0).a(false, "");
     }
   }
 }

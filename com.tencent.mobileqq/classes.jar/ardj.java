@@ -1,66 +1,47 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class ardj
-  implements INetInfoHandler
+  implements TVK_SDKMgr.OnLogListener
 {
-  ardg a;
+  ardj(ardi paramardi) {}
   
-  public ardj(ardg paramardg1, ardg paramardg2)
+  public int d(String paramString1, String paramString2)
   {
-    this.a = paramardg2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    ardf.b("onNetMobile2None");
-    if (this.a != null) {
-      ardg.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public int e(String paramString1, String paramString2)
   {
-    ardf.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      ardg.c(this.a);
-    }
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public int i(String paramString1, String paramString2)
   {
-    ardf.b("onNetNone2Mobile");
-    if (this.a != null) {
-      ardg.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
     }
+    return 0;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public int v(String paramString1, String paramString2)
   {
-    ardf.b("onNetNone2Wifi");
-    if (this.a != null) {
-      ardg.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
+    return 0;
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public int w(String paramString1, String paramString2)
   {
-    ardf.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      ardg.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
     }
-  }
-  
-  public void onNetWifi2None()
-  {
-    ardf.b("onNetWifi2None");
-    if (this.a != null) {
-      ardg.c(this.a);
-    }
+    return 0;
   }
 }
 

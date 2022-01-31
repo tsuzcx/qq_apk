@@ -1,169 +1,512 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.CaptureComboText.1;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.capture.predownload.QIMPredownHistory;
+import dov.com.qq.im.capture.predownload.QIMResClickHistory;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
 
 public class bjgo
-  extends bjbf
+  extends bjan
+  implements Handler.Callback, bjgn
 {
-  private float jdField_a_of_type_Float;
-  private bjgv jdField_a_of_type_Bjgv = new bjgp(this);
-  private DynamicTextConfigManager.DynamicTextConfigBean jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean;
-  private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private float b;
-  private float c;
-  private volatile float jdField_d_of_type_Float;
-  private volatile int jdField_d_of_type_Int = 2;
+  static File jdField_a_of_type_JavaIoFile;
+  public static final String[] a;
+  public Handler a;
+  public bjgm a;
+  bjgp jdField_a_of_type_Bjgp;
+  ArrayList<bjgq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  LinkedList<bjgm> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  public boolean a;
+  ArrayList<bjgq> b;
+  public boolean b;
   
-  public bjgo(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
+  static
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)bjae.a(7));
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText id is: " + paramString);
-    }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "combo", "filter", "music", "ptv", "paster", "text" };
   }
   
-  public float a()
+  public bjgo()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText getProgress, progress is: " + this.jdField_d_of_type_Float);
-    }
-    return this.jdField_d_of_type_Float * 0.01F;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public int a()
+  private bjgm a(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
+    bjgm localbjgm = new bjgm();
+    localbjgm.jdField_a_of_type_Int = paramInt1;
+    localbjgm.jdField_a_of_type_JavaLangString = paramString;
+    localbjgm.b = paramInt2;
+    localbjgm.a(this);
+    return localbjgm;
+  }
+  
+  public static File a()
+  {
+    if (jdField_a_of_type_JavaIoFile == null)
     {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
+      jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getContext().getFilesDir(), "predownload");
+      jdField_a_of_type_JavaIoFile.mkdir();
     }
-    int i;
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      i = 2;
+    return jdField_a_of_type_JavaIoFile;
+  }
+  
+  private void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, "content " + paramString);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        bjgp localbjgp = bjgp.a(paramString);
+        File localFile = new File(a(), "predownload11111.cfg");
+        SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qim_pre_down11111", 0).edit();
+        if (localEditor != null) {
+          localEditor.remove("leftRaw").apply();
+        }
+        bbdx.a(localFile.getAbsolutePath(), paramString);
+        a(localbjgp);
+        d();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("QIMPredownManager", 2, "config  ", paramString);
+        return;
+      }
+    }
+    new File(a(), "predownload11111.cfg").delete();
+  }
+  
+  private void e()
+  {
+    c();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, String.format("startPredown level:%d  queue:%d  left:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bjgp.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()), Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+    }
+    int k = localArrayList.size();
+    int j = 0;
+    int i = 0;
+    if ((j >= k) || (this.jdField_a_of_type_JavaUtilLinkedList.size() >= 30))
+    {
+      if (i != 0) {
+        d();
+      }
+      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMPredownManager", 2, String.format("startPredown: %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedList.size()) }));
+        }
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      }
+      return;
+    }
+    bjgq localbjgq = (bjgq)localArrayList.get(j);
+    bjgm localbjgm;
+    if (this.jdField_a_of_type_Bjgp.jdField_a_of_type_Int >= localbjgq.b)
+    {
+      localbjgm = a(localbjgq.jdField_a_of_type_Int, localbjgq.jdField_a_of_type_JavaLangString, localbjgq.c);
+      switch (localbjgm.a())
+      {
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText getState, state is: " + i + " id is: " + this.jdField_a_of_type_JavaLangString);
+      j += 1;
+      break;
+      this.jdField_b_of_type_JavaUtilArrayList.remove(localbjgq);
+      this.jdField_a_of_type_JavaUtilLinkedList.offer(localbjgm);
+      continue;
+      this.jdField_a_of_type_JavaUtilArrayList.remove(localbjgq);
+      this.jdField_b_of_type_JavaUtilArrayList.remove(localbjgq);
+      i = 1;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(bjgp parambjgp)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    this.jdField_a_of_type_Bjgp = parambjgp;
+    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("qim_pre_down11111", 0).getString("leftRaw", null);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, "updateData leftRaw: " + (String)localObject1);
+    }
+    if (localObject1 == null)
+    {
+      parambjgp = parambjgp.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (parambjgp.hasNext())
+      {
+        localObject1 = (bjgq)parambjgp.next();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        this.jdField_b_of_type_JavaUtilArrayList.add(localObject1);
       }
-      return i;
-      if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean)) && (this.jdField_d_of_type_Int == 2)) {
-        i = 3;
-      } else {
-        i = this.jdField_d_of_type_Int;
+    }
+    localObject1 = ((String)localObject1).split(":");
+    int j = localObject1.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        try
+        {
+          int k = Integer.valueOf((String)localObject2).intValue();
+          localObject2 = parambjgp.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            bjgq localbjgq = (bjgq)((Iterator)localObject2).next();
+            if (localbjgq.jdField_a_of_type_Int == k)
+            {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localbjgq);
+              this.jdField_b_of_type_JavaUtilArrayList.add(localbjgq);
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          i += 1;
+        }
       }
     }
   }
   
-  public int a(Activity paramActivity, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboDText", 2, "apply ComboText");
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("type", Integer.valueOf(paramInt));
+    localHashMap.put("id", paramString);
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3, localHashMap).sendToTarget();
+  }
+  
+  public void a(boolean paramBoolean, bjgm parambjgm)
+  {
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      parambjgm = Message.obtain(localHandler, 2, i, 0, parambjgm);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(parambjgm, 3000L);
+      return;
     }
-    if ((this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) || (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))) {}
-    DoodleLayout localDoodleLayout;
-    DynamicTextItem localDynamicTextItem;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = this.jdField_b_of_type_Boolean;
+    boolean bool3 = AppNetConnInfo.isWifiConn();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+    if ((localAppRuntime != null) && (localAppRuntime.isLogin())) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMPredownManager", 2, "canPredownload bg " + bool2 + " wifi " + bool3 + " log " + bool1);
+      }
+      if ((!bool2) || (!bool1) || (!bool3)) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bjgp != null) {
+      return;
+    }
+    localObject4 = new File(a(), "predownload11111.cfg");
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      localObject4 = bbdx.a((File)localObject4);
+      localObject1 = localObject2;
+      localObject2 = bjgp.a((String)localObject4);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = localObject2;
+        QLog.i("QIMPredownManager", 2, "ensureInit cache " + (String)localObject4);
+      }
+      localObject1 = localObject2;
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMPredownManager", 2, "ensureInit: ", localException2);
+        }
+      }
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject4 = localObject1;
+    }
+    try
+    {
+      String str = bjjt.a("predownload11111.cfg");
+      localObject4 = localObject1;
+      localObject1 = bjgp.a(str);
+      localObject2 = localObject1;
+      localObject4 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject4 = localObject1;
+        QLog.i("QIMPredownManager", 2, "ensureInit asset " + str);
+        localObject2 = localObject1;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        Object localObject3 = localObject4;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("QIMPredownManager", 2, "ensureInit: ", localException1);
+          localObject3 = localObject4;
+        }
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    a((bjgp)localObject2);
+  }
+  
+  public void d()
+  {
+    Object localObject = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size());
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      bjgq localbjgq = (bjgq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (i == 0) {
+        ((StringBuilder)localObject).append(localbjgq.jdField_a_of_type_Int);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(localbjgq.jdField_a_of_type_Int);
+      }
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    BaseApplicationImpl.getApplication().getSharedPreferences("qim_pre_down11111", 0).edit().putString("leftRaw", (String)localObject).apply();
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, "saveWaitingQueue leftRaw: " + (String)localObject);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    Object localObject3;
+    int i;
+    label300:
+    label366:
     do
     {
+      for (;;)
+      {
+        return false;
+        e();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("QIMPredownManager", 2, "checkAndCreateJob: MSG_CHECK_ANDROID_CREATE_EXECUTE");
+        }
+        if (paramMessage.obj != null)
+        {
+          localObject1 = (bjgm)paramMessage.obj;
+          if (QLog.isColorLevel()) {
+            QLog.i("QIMPredownManager", 2, "onJobFinish: " + ((bjgm)localObject1).jdField_a_of_type_Int + ", " + ((bjgm)localObject1).jdField_a_of_type_JavaLangString);
+          }
+          localObject2 = new QIMPredownHistory();
+          ((QIMPredownHistory)localObject2).resId = ((bjgm)localObject1).jdField_a_of_type_JavaLangString;
+          ((QIMPredownHistory)localObject2).resType = jdField_a_of_type_ArrayOfJavaLangString[localObject1.b];
+          localObject3 = a().getEntityManagerFactory().createEntityManager();
+          ((aukp)localObject3).a((auko)localObject2);
+          ((aukp)localObject3).a();
+          if (paramMessage.arg1 == 1)
+          {
+            i = 0;
+            if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+            {
+              paramMessage = (bjgq)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+              if (paramMessage.jdField_a_of_type_Int != ((bjgm)localObject1).jdField_a_of_type_Int) {
+                break label366;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.i("QIMPredownManager", 2, "onJobFinish: remove " + ((bjgm)localObject1).jdField_a_of_type_Int + ", " + ((bjgm)localObject1).jdField_a_of_type_JavaLangString);
+              }
+              this.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
+              d();
+            }
+          }
+        }
+        if (a())
+        {
+          i = 1;
+          if (i != 0)
+          {
+            paramMessage = (bjgm)this.jdField_a_of_type_JavaUtilLinkedList.poll();
+            if (paramMessage != null)
+            {
+              switch (paramMessage.a())
+              {
+              case 1: 
+              default: 
+                if (QLog.isColorLevel()) {
+                  QLog.i("QIMPredownManager", 2, "runJob ignore");
+                }
+                break;
+              }
+              for (;;)
+              {
+                break label300;
+                i += 1;
+                break;
+                this.jdField_a_of_type_Bjgm = paramMessage;
+                paramMessage.a();
+                i = 0;
+                continue;
+                this.jdField_a_of_type_Bjgm = paramMessage;
+                a(true, paramMessage);
+                i = 0;
+              }
+            }
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.i("QIMPredownManager", 2, "runJob aborted");
+          continue;
+          a((String)paramMessage.obj);
+        }
+      }
+      localObject3 = this.jdField_a_of_type_Bjgp;
+    } while (localObject3 == null);
+    paramMessage = (HashMap)paramMessage.obj;
+    Object localObject1 = (String)paramMessage.get("id");
+    int m = ((Integer)paramMessage.get("type")).intValue();
+    paramMessage = a().getEntityManagerFactory().createEntityManager();
+    Object localObject2 = paramMessage.a(QIMResClickHistory.class, true, "resId=? and resType=?", new String[] { localObject1, jdField_a_of_type_ArrayOfJavaLangString[m] }, null, null, null, null);
+    paramMessage.a();
+    int j;
+    if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+    {
+      j = 1;
+      label548:
+      if (j == 0)
+      {
+        localObject2 = new QIMResClickHistory();
+        ((QIMResClickHistory)localObject2).resId = ((String)localObject1);
+        ((QIMResClickHistory)localObject2).resType = jdField_a_of_type_ArrayOfJavaLangString[m];
+        paramMessage = a().getEntityManagerFactory().createEntityManager();
+        paramMessage.a((auko)localObject2);
+        paramMessage.a();
+      }
+      paramMessage = paramMessage.a(QIMPredownHistory.class, true, "resId=? and resType=?", new String[] { localObject1, jdField_a_of_type_ArrayOfJavaLangString[m] }, null, null, null, null);
+      if ((paramMessage == null) || (paramMessage.isEmpty())) {
+        break label872;
+      }
+      i = 1;
+      label649:
+      localObject2 = new axty();
+      ((axty)localObject2).d = "0X80090DF";
+      ((axty)localObject2).f = String.valueOf(m);
+      ((axty)localObject2).h = ((String)localObject1);
+      ((axty)localObject2).i = String.valueOf(bbkb.A(BaseApplicationImpl.context));
+      if (j == 0) {
+        break label877;
+      }
+      paramMessage = "2";
+      label705:
+      ((axty)localObject2).j = paramMessage;
+      int k = -1;
+      paramMessage = ((bjgp)localObject3).jdField_b_of_type_JavaUtilArrayList.iterator();
       do
       {
-        do
-        {
-          return 0;
-        } while (paramActivity == null);
-        localDoodleLayout = bjir.a().a(paramInt);
-      } while ((localDoodleLayout == null) || (localDoodleLayout.a() == null));
-      localDoodleLayout.a().b(4);
-      localDynamicTextItem = new bjgr().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), this.jdField_a_of_type_JavaUtilList);
-    } while (localDynamicTextItem == null);
-    float f = blbz.a * this.c / localDynamicTextItem.a();
-    bkal localbkal = new bkal(this.jdField_a_of_type_Float * blbz.a, this.b * blbz.a, f, 0.0F, 0.0F, 0.0F, localDynamicTextItem.a(), localDynamicTextItem.b());
-    if (localDoodleLayout.a().a(localbkal, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, localDoodleLayout.d()) != null)
-    {
-      localDynamicTextItem.a(true);
-      localDoodleLayout.a().b(localDynamicTextItem);
-      localDoodleLayout.a().k();
-      return 0;
-    }
-    bcpw.a(paramActivity, paramActivity.getString(2131698316), 0).a();
-    ThreadManager.getUIHandler().post(new CaptureComboText.1(this, localDoodleLayout));
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (paramActivity != null)
-    {
-      paramActivity = bjir.a().a(paramInt);
-      if ((paramActivity != null) && (paramActivity.a() != null))
+        j = k;
+        if (!paramMessage.hasNext()) {
+          break;
+        }
+        localObject3 = (bjgq)paramMessage.next();
+      } while ((!TextUtils.equals((CharSequence)localObject1, ((bjgq)localObject3).jdField_a_of_type_JavaLangString)) || (m != ((bjgq)localObject3).c));
+      j = ((bjgq)localObject3).b;
+      if ((j == -1) && (i == 0)) {
+        break label884;
+      }
+      paramMessage = "1";
+      label788:
+      ((axty)localObject2).k = paramMessage;
+      paramMessage = new bjgm();
+      paramMessage.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      paramMessage.b = m;
+      i = 0;
+      paramMessage = paramMessage.a();
+      if (paramMessage != null)
       {
-        paramActivity.a().b(4);
-        paramActivity.a().f();
-        paramActivity.a().k();
+        if (paramMessage.a() != 3) {
+          break label891;
+        }
+        i = 1;
+      }
+      label835:
+      if (i == 0) {
+        break label896;
       }
     }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText download, state is: " + this.jdField_d_of_type_Int);
-    }
-    if ((this.jdField_d_of_type_Int == 1) || (this.jdField_d_of_type_Int == 3)) {
-      return this.jdField_d_of_type_Int;
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null) {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
+    label896:
+    for (paramMessage = "1";; paramMessage = "2")
     {
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_JavaLangString);
+      ((axty)localObject2).l = paramMessage;
+      ((axty)localObject2).m = String.valueOf(j);
+      axqu.a(null, (axty)localObject2);
+      break;
+      j = 0;
+      break label548;
+      label872:
+      i = 0;
+      break label649;
+      label877:
+      paramMessage = "1";
+      break label705;
+      label884:
+      paramMessage = "2";
+      break label788;
+      label891:
+      i = 0;
+      break label835;
     }
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "CaptureComboText download, bean is null.");
-      }
-      this.jdField_d_of_type_Int = 2;
-      return 2;
-    }
-    a();
-    if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QComboDText", 2, "startDownload dynamicText is usable.");
-      }
-      b();
-      this.jdField_d_of_type_Int = 3;
-      return 2;
-    }
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, this.jdField_a_of_type_Bjgv);
-    this.jdField_d_of_type_Int = 1;
-    return 1;
-  }
-  
-  public String toString()
-  {
-    return "Text@" + Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()) + "@" + hashCode();
   }
 }
 

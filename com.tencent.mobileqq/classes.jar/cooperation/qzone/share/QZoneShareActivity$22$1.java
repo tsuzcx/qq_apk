@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import bhli;
+import bhlz;
 
 public class QZoneShareActivity$22$1
   implements Runnable
 {
-  public QZoneShareActivity$22$1(bhli parambhli) {}
+  public QZoneShareActivity$22$1(bhlz parambhlz) {}
   
   public void run()
   {

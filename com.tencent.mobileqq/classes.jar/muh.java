@@ -1,51 +1,48 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
 
 public class muh
 {
-  private aukn jdField_a_of_type_Aukn;
-  private auko jdField_a_of_type_Auko;
-  private ConcurrentHashMap<String, aukm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  int jdField_a_of_type_Int = 0;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public muh(VideoAppInterface paramVideoAppInterface)
+  public muh(Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Auko = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Aukn = this.jdField_a_of_type_Auko.createEntityManager();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public ExtensionInfo a(String paramString)
+  public void a()
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    ??? = localObject2;
-    if (paramString != null)
+    if (b())
     {
-      if (!"".equals(paramString)) {
-        break label24;
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
+    {
+      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
+        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
       }
-      ??? = localObject2;
+      return true;
     }
-    label24:
-    do
-    {
-      do
-      {
-        return ???;
-        localObject2 = localObject3;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-          localObject2 = (ExtensionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        }
-        ??? = localObject2;
-      } while (localObject2 != null);
-      localObject2 = (ExtensionInfo)this.jdField_a_of_type_Aukn.a(ExtensionInfo.class, paramString);
-      ??? = localObject2;
-    } while (localObject2 == null);
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
-      return localObject2;
-    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
   }
 }
 

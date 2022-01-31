@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.net.Uri;
-import azby;
+import azca;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import nam;
+import naj;
 import org.json.JSONObject;
 
 class TribeVideoListPlayerFragment$7
   implements Runnable
 {
-  TribeVideoListPlayerFragment$7(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, boolean paramBoolean, azby paramazby, long paramLong1, long paramLong2) {}
+  TribeVideoListPlayerFragment$7(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, boolean paramBoolean, azca paramazca, long paramLong1, long paramLong2) {}
   
   public void run()
   {
@@ -19,11 +19,11 @@ class TribeVideoListPlayerFragment$7
     JSONObject localJSONObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      l = this.jdField_a_of_type_Azby.jdField_a_of_type_Long;
-      if ((this.jdField_a_of_type_Azby.b != 0) || (this.b != 0L) || (l <= 0L)) {
+      l = this.jdField_a_of_type_Azca.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Azca.b != 0) || (this.b != 0L) || (l <= 0L)) {
         break label265;
       }
-      this.jdField_a_of_type_Azby.b = 1;
+      this.jdField_a_of_type_Azca.b = 1;
       localJSONObject = new JSONObject();
     }
     for (;;)
@@ -37,15 +37,15 @@ class TribeVideoListPlayerFragment$7
         }
         str = "1";
         localJSONObject.put("bf", str);
-        if (l < this.jdField_a_of_type_Azby.jdField_a_of_type_Long - 100L) {
+        if (l < this.jdField_a_of_type_Azca.jdField_a_of_type_Long - 100L) {
           continue;
         }
         str = "1";
         localJSONObject.put("ef", str);
         localJSONObject.put("pp", "3");
-        localJSONObject.put("pa", "" + this.jdField_a_of_type_Azby.b);
-        str = this.jdField_a_of_type_Azby.i + "&video=" + Uri.encode(localJSONObject.toString());
-        nam.a(BaseApplicationImpl.getContext(), str, null, "GET", null, null);
+        localJSONObject.put("pa", "" + this.jdField_a_of_type_Azca.b);
+        str = this.jdField_a_of_type_Azca.i + "&video=" + Uri.encode(localJSONObject.toString());
+        naj.a(BaseApplicationImpl.getContext(), str, null, "GET", null, null);
         return;
       }
       catch (Exception localException)
@@ -59,17 +59,17 @@ class TribeVideoListPlayerFragment$7
       }
       l = this.jdField_a_of_type_Long;
       break;
-      if ((this.jdField_a_of_type_Azby.b != 0) && (this.b > 0L) && (l > 0L))
+      if ((this.jdField_a_of_type_Azca.b != 0) && (this.b > 0L) && (l > 0L))
       {
-        this.jdField_a_of_type_Azby.b = 2;
+        this.jdField_a_of_type_Azca.b = 2;
         break label48;
       }
-      if ((this.jdField_a_of_type_Azby.b != 0) && (this.b == 0L) && (l > 0L))
+      if ((this.jdField_a_of_type_Azca.b != 0) && (this.b == 0L) && (l > 0L))
       {
-        this.jdField_a_of_type_Azby.b = 3;
+        this.jdField_a_of_type_Azca.b = 3;
         break label48;
       }
-      this.jdField_a_of_type_Azby.b = 4;
+      this.jdField_a_of_type_Azca.b = 4;
       break label48;
       str = "0";
       continue;

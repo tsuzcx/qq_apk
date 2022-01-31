@@ -1,25 +1,21 @@
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public class aqav
-  extends aqbc
+  extends aqbe
 {
   public aqav(Intent paramIntent)
   {
     super(paramIntent);
+    this.b = true;
   }
   
   public List<RecentUser> a(List<RecentUser> paramList)
@@ -29,128 +25,74 @@ public class aqav
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bbbd.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000))) {
+      if ((localRecentUser != null) && (!bbbr.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(aqau.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!naz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
     return localArrayList;
   }
   
-  protected void a()
+  public void a()
   {
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    super.a();
+    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_dataline", true))
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(f);
+      this.jdField_a_of_type_JavaUtilSet.add(k);
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  protected void a(Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {}
-    label17:
-    do
+    ArrayList localArrayList3 = null;
+    ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
+    ArrayList localArrayList1 = localArrayList3;
+    if (localArrayList4 != null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          break label17;
-          do
-          {
-            return;
-          } while ((this.jdField_a_of_type_AndroidOsBundle == null) || (paramBundle == null));
-          if (QLog.isColorLevel()) {
-            QLog.d("ForwardApolloGameMsgOption", 2, "[buildForwardDialig]extra:" + paramBundle.toString() + "mExtraData:" + this.jdField_a_of_type_AndroidOsBundle.toString());
-          }
-          this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
-          this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
-          this.jdField_a_of_type_AndroidOsBundle.putInt("share_result_key", 0);
-          paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("apollo.game.invite.from");
-          if (paramInt != 4) {
-            break;
-          }
-          localObject = new SessionInfo();
-          ((SessionInfo)localObject).jdField_a_of_type_Int = paramBundle.getInt("uintype");
-          ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-          ((SessionInfo)localObject).jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-          paramBundle = new ArkAppMessage();
-          paramBundle.appName = "com.tencent.qqpay.b2c_redpacket";
-          paramBundle.appView = "redpacket";
-          paramBundle.appMinVersion = "1.0.0.1";
-          paramBundle.appDesc = ajyc.a(2131704724);
-          paramBundle.promptText = ajyc.a(2131704726);
-          paramBundle.metaList = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.redpacket_info", "");
-          aaod.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, paramBundle);
-        } while (this.jdField_a_of_type_AndroidAppActivity == null);
-        paramBundle = new Intent();
-        paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramBundle);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-        return;
-        if (paramInt != 2) {
-          break;
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("uin", paramBundle.getString("uin"));
-        ((Bundle)localObject).putInt("uintype", paramBundle.getInt("uintype"));
-        ((Bundle)localObject).putString("troop_uin", paramBundle.getString("troop_uin"));
-        ((Bundle)localObject).putString("uinname", paramBundle.getString("uinname"));
-        ((Bundle)localObject).putBoolean("launchApolloGame", true);
-        ((Bundle)localObject).putInt("gameId", this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameid"));
-        ((Bundle)localObject).putInt("gameMode", this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameMode"));
-        ((Bundle)localObject).putInt("enter", 4);
-      } while (this.jdField_a_of_type_AndroidAppActivity == null);
-      this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      this.jdField_a_of_type_AndroidContentIntent = actn.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
-      this.jdField_a_of_type_AndroidContentIntent.putExtras((Bundle)localObject);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-      paramBundle = new Intent();
-      paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      localArrayList1 = (ArrayList)localArrayList4;
+      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
+      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
+      paramIntent.putExtra("dataline_forward_type", 101);
+      paramIntent.putExtra("sendMultiple", true);
+      if (localArrayList1 == null) {
+        paramIntent.putStringArrayListExtra("dataline_forward_pathlist", localArrayList3);
+      }
       return;
-      Object localObject = new ajrf();
-      ((ajrf)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.actionid");
-      ((ajrf)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameid");
-      ((ajrf)localObject).jdField_c_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameMode");
-      ((ajrf)localObject).jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("forward.apollo.roomid");
-      ((ajrf)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.gamename");
-      ((ajrf)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.actionname");
-      ((ajrf)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.msgtype");
-      ((ajrf)localObject).jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.sharejson");
-      SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-      localSessionInfo.jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-      localSessionInfo.jdField_a_of_type_Int = paramBundle.getInt("uintype");
-      ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ajrf)localObject, localSessionInfo);
-      ajco.a(localSessionInfo.jdField_a_of_type_JavaLangString);
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_msg_sent", ApolloUtil.a(localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 3, new String[] { "" + ((ajrf)localObject).jdField_a_of_type_Int });
-    } while (this.jdField_a_of_type_AndroidAppActivity == null);
-    paramBundle = new Intent();
-    paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramBundle);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      for (;;)
+      {
+        ArrayList localArrayList2 = localArrayList3;
+      }
+    }
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(Drawable paramDrawable, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardApolloGameMsgOption", 2, new Object[] { "[endForwardCallback], isCompleted:", Boolean.valueOf(paramBoolean) });
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("share_result_key", 1);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(localBundle);
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    URLDrawable localURLDrawable;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      localURLDrawable = (URLDrawable)paramDrawable;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label33;
+      }
+      aywm.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
     }
+    while (paramDrawable == null)
+    {
+      return;
+      label33:
+      aywm.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    }
+    paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
+  }
+  
+  protected void b()
+  {
+    this.jdField_a_of_type_Bbgu.setMessage(null);
+    this.jdField_a_of_type_Bbgu.setMessageCount(this.jdField_a_of_type_JavaLangString);
   }
 }
 

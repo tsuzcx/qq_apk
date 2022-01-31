@@ -1,19 +1,36 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.1;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton.9.2;
 
-class bjvm
-  extends QQUIEventReceiver<bjvc, bkbp>
+public class bjvm
+  implements ModuleDownloadListener
 {
-  public bjvm(@NonNull bjvc parambjvc)
+  bjvm(bjve parambjve) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    super(parambjvc);
+    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadCanceled " + paramString);
   }
   
-  public void a(@NonNull bjvc parambjvc, @NonNull bkbp parambkbp) {}
-  
-  public Class acceptEventClass()
+  public void onDownloadFailed(String paramString)
   {
-    return bkbp.class;
+    QLog.i("Q.qqstory.record.EditVideoButton", 2, "onDownloadFailed " + paramString);
+    if ((this.a.a != null) && (this.a.a.getActivity() != null)) {
+      this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.2(this));
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("cyber_clink_version_2.jar")) {}
+    while ((this.a.a == null) || (this.a.a.getActivity() == null)) {
+      return;
+    }
+    this.a.a.getActivity().runOnUiThread(new EditVideoButton.9.1(this));
   }
 }
 

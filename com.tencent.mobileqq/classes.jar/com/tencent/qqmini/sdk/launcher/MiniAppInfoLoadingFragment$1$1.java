@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import beqf;
+import beqw;
 
 public class MiniAppInfoLoadingFragment$1$1
   implements Runnable
 {
-  public MiniAppInfoLoadingFragment$1$1(beqf parambeqf, String paramString, long paramLong) {}
+  public MiniAppInfoLoadingFragment$1$1(beqw parambeqw, String paramString, long paramLong) {}
   
   public void run()
   {
-    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqf.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    MiniAppInfoLoadingFragment.a(this.jdField_a_of_type_Beqw.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
   }
 }
 

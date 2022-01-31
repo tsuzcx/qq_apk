@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ajhh
-  extends aizf
+  implements DialogInterface.OnClickListener
 {
   public ajhh(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
-    }
+    muc.a(this.a);
   }
 }
 

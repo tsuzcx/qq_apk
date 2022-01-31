@@ -1,15 +1,14 @@
-import mqq.os.MqqHandler;
-
 class apmw
-  implements aple
+  implements aptw
 {
-  apmw(apmu paramapmu) {}
+  apmw(apmv paramapmv) {}
   
   public void a()
   {
-    this.a.a = System.currentTimeMillis();
-    apmu.a(this.a).sendEmptyMessageDelayed(8001, apmu.a(this.a));
-    apmu.a(this.a).sendEmptyMessageDelayed(8002, apmu.b(this.a));
+    apmt.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
   }
   
   public void b() {}

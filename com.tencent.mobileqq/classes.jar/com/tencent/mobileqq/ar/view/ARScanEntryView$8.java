@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.view;
 
-import albk;
+import albj;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArWebInfo;
 
 class ARScanEntryView$8
   implements Runnable
 {
-  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, albk paramalbk) {}
+  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, albj paramalbj) {}
   
   public void run()
   {

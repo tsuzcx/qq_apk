@@ -1,26 +1,19 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class aeyk
-  implements View.OnAttachStateChangeListener
+  implements View.OnClickListener
 {
   aeyk(aeyj paramaeyj) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void onClick(View paramView)
   {
-    if (aeyj.a(this.a) != null) {
-      aeyj.a(this.a).d();
-    }
-    if (aeyj.a(this.a) != null)
-    {
-      aeyj.a(this.a).c();
-      aeyj.a(this.a, null);
-    }
-    aeyj.a(this.a).removeOnAttachStateChangeListener(this);
+    paramView = new Intent(aeyj.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", aeyj.a(this.a));
+    aeyj.a(this.a).startActivity(paramView);
   }
 }
 

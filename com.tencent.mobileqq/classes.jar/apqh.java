@@ -1,53 +1,13 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
+import android.view.View;
 
-public class apqh
-  extends apxf
+class apqh
+  implements apuv
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new apqi(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  apqh(apqe paramapqe) {}
   
-  public apqh(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-    c();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131375830));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131370887));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131692402) + this.jdField_a_of_type_AndroidContentContext.getString(2131692643) + apeh.b() + this.jdField_a_of_type_AndroidContentContext.getString(2131692644);
-    long l = apeh.d();
-    String str = "";
-    if (l > 0L) {
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131692466) + apvb.a(l);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (apeh.b() > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((TextView)localObject).setEnabled(bool);
-      this.b.setText(str);
-      return;
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean) {}
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
   }
 }
 

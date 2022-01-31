@@ -1,16 +1,32 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.gaudio.BaseGaInvite;
 
 public class lnq
+  implements lnr
 {
-  public long a;
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
+  public lnq(BaseGaInvite paramBaseGaInvite) {}
   
-  public lnq(AVNotifyCenter paramAVNotifyCenter) {}
+  public boolean a(Bitmap paramBitmap, String paramString)
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
+      }
+      return bool;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnq
  * JD-Core Version:    0.7.0.1
  */

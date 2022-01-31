@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import ajyc;
-import bcpw;
-import binu;
+import ajya;
+import bcql;
+import biol;
 
 public class AEMaterialAdapter$3
   implements Runnable
 {
-  public AEMaterialAdapter$3(binu parambinu) {}
+  public AEMaterialAdapter$3(biol parambiol) {}
   
   public void run()
   {
-    bcpw.a(binu.a(this.this$0), ajyc.a(2131709820), 0).a();
+    bcql.a(biol.a(this.this$0), ajya.a(2131709831), 0).a();
   }
 }
 

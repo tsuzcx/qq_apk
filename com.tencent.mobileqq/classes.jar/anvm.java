@@ -1,24 +1,29 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class anvm
-  implements anty
+class anvm
+  implements bbrm<apzg>
 {
-  anvm(anvl paramanvl) {}
+  anvm(anuq paramanuq, int paramInt, akfv paramakfv, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a(int paramInt)
+  public void a(apzg paramapzg, Object paramObject)
   {
-    anvn localanvn = this.a.a(paramInt);
-    if (localanvn != null)
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramapzg != null) || (this.jdField_a_of_type_Int == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
-      }
-      Bundle localBundle = new Bundle();
-      this.a.a(localBundle, 1001);
-      localanvn.a.putBundle("response", localBundle);
-      this.a.a(new WebIPCOperator.5.1(this, localanvn));
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_Akfv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bbrq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bbrp.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
+      paramObject.putInt("result", 1);
     }
   }
 }

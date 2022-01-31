@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
 import android.graphics.Bitmap;
-import apvb;
+import apvd;
 import com.tencent.qphone.base.util.QLog;
 import gr;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public final class FileManagerUtil$10
   
   public void run()
   {
-    if (apvb.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (apvd.b(this.jdField_a_of_type_JavaLangString)) {}
     Bitmap localBitmap;
     do
     {
@@ -23,7 +23,7 @@ public final class FileManagerUtil$10
     } while (localBitmap == null);
     try
     {
-      apvb.a(localBitmap, this.jdField_a_of_type_JavaLangString);
+      apvd.a(localBitmap, this.jdField_a_of_type_JavaLangString);
       localBitmap.recycle();
       int i = gr.a(this.jdField_b_of_type_JavaLangString);
       gr.a(this.jdField_a_of_type_JavaLangString, i);

@@ -1,71 +1,27 @@
-import android.app.Application;
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.io.File;
-import java.net.URL;
-
 public class ayon
-  extends ProtocolDownloader.Adapter
 {
-  public static int a = 200;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public ayon(Application paramApplication) {}
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public ayon(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
-    }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
-    {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new agqt(localBaseApplicationImpl, paramURLDrawableHandler);
-          paramFile = agld.a(localBaseApplicationImpl).a(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new agls(localBaseApplicationImpl, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
-      }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
-      }
-      paramFile = new aglf(localBaseApplicationImpl, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new agqg(localBaseApplicationImpl, paramURLDrawableHandler);
-    }
-    return paramFile;
-  }
-  
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    return true;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(ajsf.aV);
+    this.a = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.jdField_b_of_type_Long = paramLong;
+    this.h = paramString7;
   }
 }
 

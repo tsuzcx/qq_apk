@@ -1,8 +1,9 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.IntimateInfo;
+import java.util.HashMap;
 
 public abstract interface assj
 {
-  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
+  public abstract void a(HashMap<Long, IntimateInfo> paramHashMap);
 }
 
 

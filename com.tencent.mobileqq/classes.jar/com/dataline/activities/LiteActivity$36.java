@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import ajsf;
+import ajsd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -9,9 +9,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axuy;
-import ayki;
-import bbcl;
+import axva;
+import aykk;
+import bbcz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -31,7 +31,7 @@ class LiteActivity$36
       if (this.this$0.jdField_b_of_type_AndroidWidgetTextView == null)
       {
         this.this$0.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.this$0);
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131370507);
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setId(2131370506);
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.this$0.getResources().getDrawable(2130838842));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
@@ -61,7 +61,7 @@ class LiteActivity$36
       localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.nickName);
       label388:
       localStringBuilder.append(":");
-      if (!(localObject instanceof ayki)) {
+      if (!(localObject instanceof aykk)) {
         break label905;
       }
     }
@@ -69,7 +69,7 @@ class LiteActivity$36
     {
       try
       {
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((ayki)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
+        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(((aykk)localObject).a(localStringBuilder.toString(), true, new int[] { 1, 16 }));
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.requestLayout();
         this.this$0.jdField_b_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_AndroidContentIntent);
         localObject = this.this$0.jdField_b_of_type_AndroidWidgetTextView.getHandler();
@@ -85,7 +85,7 @@ class LiteActivity$36
         label510:
         if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype == -2011)
         {
-          localObject = axuy.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgData);
+          localObject = axva.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgData);
           if (localObject != null)
           {
             localObject = ((AbsStructMsg)localObject).mMsgBrief;
@@ -124,9 +124,9 @@ class LiteActivity$36
         }
         if ((1010 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop) || (1001 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop) || (10002 == this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.istroop))
         {
-          if (String.valueOf(ajsf.H).equals(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin))
+          if (String.valueOf(ajsd.H).equals(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin))
           {
-            str2 = bbcl.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin);
+            str2 = bbcz.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin);
             str1 = str2;
             if (TextUtils.isEmpty(str2)) {
               str1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.senderuin;
@@ -137,10 +137,10 @@ class LiteActivity$36
             if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype != -1024) {
               break label388;
             }
-            localObject = String.format(this.this$0.getResources().getString(2131698839), new Object[] { str1 });
+            localObject = String.format(this.this$0.getResources().getString(2131698849), new Object[] { str1 });
             break label388;
           }
-          str2 = bbcl.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);
+          str2 = bbcz.q(this.this$0.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);
           str1 = str2;
           if (!TextUtils.isEmpty(str2)) {
             continue;

@@ -1,23 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agis
-  implements DialogInterface.OnClickListener
+  extends aumg
 {
   public agis(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
     }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.b(2131718748);
     }
   }
 }

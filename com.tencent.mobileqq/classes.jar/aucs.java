@@ -1,31 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class aucs
-  extends FlingGestureHandler
+  implements TextView.OnEditorActionListener
 {
-  boolean a = true;
+  public aucs(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public aucs(Activity paramActivity)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    super(paramActivity);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
     }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
+    return false;
   }
 }
 

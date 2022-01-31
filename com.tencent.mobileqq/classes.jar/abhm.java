@@ -1,35 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class abhm
-  extends Handler
+  implements View.OnClickListener
 {
   public abhm(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_Bcpq.a(this.a.getString(2131690809));
-        this.a.jdField_a_of_type_Bcpq.d(2130848617);
-        this.a.jdField_a_of_type_Bcpq.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bcpq == null) || (!this.a.jdField_a_of_type_Bcpq.isShowing()));
-    this.a.jdField_a_of_type_Bcpq.cancel();
-    this.a.jdField_a_of_type_Bcpq.a(this.a.getString(2131690811));
-    this.a.jdField_a_of_type_Bcpq.c(true);
-    this.a.jdField_a_of_type_Bcpq.a(false);
-    this.a.jdField_a_of_type_Bcpq.b(true);
+    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
   }
 }
 

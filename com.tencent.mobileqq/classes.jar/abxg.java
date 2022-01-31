@@ -1,31 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class abxg
-  implements bcak
+  extends ajuf
 {
-  public abxg(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
+  public abxg(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
-      if (paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQSettingRedesign", 2, paramBoolean);
-      return;
-    }
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.c(this.a);
   }
 }
 

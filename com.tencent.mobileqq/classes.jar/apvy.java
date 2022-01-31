@@ -1,10 +1,19 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface apvy
+final class apvy
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  apvy(QQAppInterface paramQQAppInterface, String paramString, apwa paramapwa, anbw paramanbw) {}
   
-  public abstract void a(ImageView paramImageView);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Apwa.a(this.jdField_a_of_type_Anbw.b());
+  }
 }
 
 

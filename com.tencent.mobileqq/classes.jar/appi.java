@@ -1,15 +1,14 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
 class appi
-  implements aput
+  implements View.OnClickListener
 {
   appi(apph paramapph) {}
   
   public void onClick(View paramView)
   {
-    int i = apvk.b(this.a.a.e());
-    axqw.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
-    this.a.a.h();
+    apph.a(this.a);
   }
 }
 

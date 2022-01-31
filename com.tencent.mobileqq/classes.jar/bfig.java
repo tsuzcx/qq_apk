@@ -1,8 +1,39 @@
-import android.util.Pair;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Date;
 
-abstract interface bfig
+final class bfig
+  extends bfik
 {
-  public abstract Pair<String, String> a(String paramString);
+  bfig(bfif parambfif)
+  {
+    super(null);
+  }
+  
+  public boolean a(String paramString, bfjd parambfjd)
+  {
+    if (this.a.size() >= this.a.maxSize())
+    {
+      bfif.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
+      return false;
+    }
+    if (parambfjd.a > new Date().getTime())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambfjd.toString() }));
+      }
+      this.a.put(paramString, parambfjd);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambfjd.toString() }));
+      }
+    }
+  }
 }
 
 

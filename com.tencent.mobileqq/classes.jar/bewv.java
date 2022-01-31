@@ -1,82 +1,49 @@
-import android.os.Build;
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
 
+@behk(a="InitGameRuntimeTask")
 public class bewv
+  extends bffk
 {
-  private static final boolean a = belj.a("MiniGame", "MiniGameLogEnable", true);
-  
-  public static int a()
+  public bewv(Context paramContext, beqm parambeqm)
   {
-    return belj.a("MiniGame", "MiniGameBlackDetectInterval", 3000);
+    super(paramContext, parambeqm);
   }
   
-  public static String a()
+  public void a()
   {
-    return belj.a("MiniGame", "MiniGameErrorDialogContent", "游戏异常停止, 是否需要重启游戏?");
-  }
-  
-  public static boolean a()
-  {
-    return a;
-  }
-  
-  public static int b()
-  {
-    return belj.a("MiniGame", "MiniGameJsErrorDetectInterval", 5000);
-  }
-  
-  public static String b()
-  {
-    return belj.a("MiniApp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
-  }
-  
-  public static boolean b()
-  {
-    return belj.a("MiniGame", "MiniGameDexEnable", true);
-  }
-  
-  public static int c()
-  {
-    return belj.a("MiniGame", "MiniGamePresentDetectInterval", 1000);
-  }
-  
-  public static boolean c()
-  {
-    return belj.a("MiniGame", "MiniGameErrorDialogEnable", 1) > 0;
-  }
-  
-  public static int d()
-  {
-    return belj.a("MiniGame", "MiniGameFrameNoChangeLimit", 5);
-  }
-  
-  public static boolean d()
-  {
-    String str1 = Build.MANUFACTURER;
-    if (TextUtils.isEmpty(str1)) {
-      return true;
+    String str = null;
+    beuy localbeuy;
+    ITTEngine localITTEngine;
+    if (a() != null)
+    {
+      localbeuy = ((bews)a().getTask(bews.class)).a();
+      localITTEngine = ((bewp)a().getTask(bewp.class)).a();
+      str = bewb.a().b();
     }
-    str1 = str1.toLowerCase();
-    String str2 = belj.a("MiniGame", "MiniGameErrorDialogBlack", "");
-    if (TextUtils.isEmpty(str2)) {
-      return false;
+    for (;;)
+    {
+      if ((localbeuy == null) || (localITTEngine == null))
+      {
+        f();
+        return;
+      }
+      try
+      {
+        localbeuy.a(str);
+        localbeuy.a(localITTEngine);
+        c();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        betc.d("InitGameRuntimeTask", localThrowable.getMessage(), localThrowable);
+        f();
+        return;
+      }
+      localITTEngine = null;
+      localbeuy = null;
     }
-    return str2.contains(str1);
-  }
-  
-  public static int e()
-  {
-    return belj.a("MiniGame", "MiniGameNoPresentDurationLimit", 5000);
-  }
-  
-  public static boolean e()
-  {
-    return belj.a("MiniGame", "enableOpengles3", 1) > 0;
-  }
-  
-  public static int f()
-  {
-    return belj.a("MiniGame", "MiniGameNoPresentTouchLimit", 3);
   }
 }
 

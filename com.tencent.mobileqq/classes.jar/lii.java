@@ -1,166 +1,77 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
-import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
+import java.util.Iterator;
+import java.util.List;
 
 public class lii
-  extends lie
 {
-  public lii()
+  public static boolean a()
   {
-    lcl.c("MagicfaceNormalDecoder", "==init==");
-  }
-  
-  @TargetApi(16)
-  private Bitmap a(String paramString, Bitmap paramBitmap)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramString, localOptions);
-    if (localOptions.outWidth * localOptions.outHeight == 0) {
-      return null;
-    }
-    int i = localOptions.outWidth * localOptions.outHeight;
-    if (Build.VERSION.SDK_INT >= 15) {
-      localOptions.inBitmap = paramBitmap;
-    }
-    for (;;)
+    boolean bool3 = true;
+    Object localObject1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    Object localObject2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
+    boolean bool1;
+    label132:
+    long l;
+    if ((!axle.g()) || (AIManager.installDetector(PTSegmenter.class, (String)localObject2, (String)localObject1)))
     {
-      localOptions.inJustDecodeBounds = false;
-      localOptions.inSampleSize = 1;
-      while (i > 921600)
-      {
-        localOptions.inSampleSize *= 2;
-        i /= 4;
+      bool1 = true;
+      bool2 = lil.a().a();
+      boolean bool4 = lij.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable portraitSo = " + bool1 + "| sensorEnable = " + bool2 + " |DPCEntry = " + bool4);
       }
-      if (paramBitmap != null) {
-        paramBitmap.recycle();
+      if ((!bool1) || (!bool2) || (!bool4)) {
+        break label279;
       }
+      bool2 = true;
+      if (!bool2) {
+        return bool2;
+      }
+      localObject1 = lij.a();
+      if (localObject1 == null) {
+        break label337;
+      }
+      l = lij.a();
+      localObject1 = ((List)localObject1).iterator();
+      bool1 = false;
     }
-    try
+    label163:
+    while (((Iterator)localObject1).hasNext())
     {
-      paramString = BitmapFactory.decodeFile(paramString, localOptions);
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-      lcl.e("MagicfaceNormalDecoder", "getBitmap|decodeFile failed.");
-    }
-    return null;
-  }
-  
-  public int a()
-  {
-    long l2 = 0L;
-    long l1 = 0L;
-    long l4 = 1000 / this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.fps;
-    long l3 = 0L;
-    int m = this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count;
-    String str = this.jdField_a_of_type_Lih.b();
-    Bitmap localBitmap2 = null;
-    if (this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasbackground) {
-      localBitmap2 = a(this.jdField_a_of_type_JavaLangString + "background/background.png", null);
-    }
-    Bitmap localBitmap1 = null;
-    int i = 0;
-    int j = 0;
-    int k;
-    Object localObject;
-    long l5;
-    long l6;
-    for (;;)
-    {
-      if (j < m)
+      localObject2 = (lik)((Iterator)localObject1).next();
+      if (localObject2 != null)
       {
-        k = 0;
-        if ((k >= this.jdField_a_of_type_Lih.a()) || (!this.jdField_a_of_type_Boolean))
+        if (QLog.isColorLevel()) {
+          QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable CPUinfo = " + ((lik)localObject2).b + "|" + ((lik)localObject2).a);
+        }
+        if ((bool1) || (lpu.a(((lik)localObject2).b, ((lik)localObject2).a * 10000, l * 100000000L))) {}
+        for (bool1 = true;; bool1 = false)
         {
-          j += 1;
-        }
-        else
-        {
-          this.jdField_a_of_type_Lih.a(i, j);
-          localObject = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Lih.a(k) + File.separator + this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.src_prefix + k + ".png";
-          lcl.c("MagicfaceNormalDecoder", "maigcfaceDecoder:" + this.jdField_a_of_type_Lih.a() + "|" + (String)localObject);
-          l5 = System.currentTimeMillis();
-          localBitmap1 = a((String)localObject, localBitmap1);
-          l6 = System.currentTimeMillis();
-          l3 = System.currentTimeMillis() - l3;
-          if (l3 >= l4) {
-            break;
-          }
-        }
-      }
-    }
-    label464:
-    label610:
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(l4 - l3);
-        if ((k == this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.frame_index) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-        {
-          a(str, this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat);
-          l3 = System.currentTimeMillis();
-          if (localBitmap1 != null) {
-            continue;
-          }
-          lcl.c("MagicfaceNormalDecoder", "maigcfaceDecoder bmp null:" + (String)localObject);
-          k += 1;
-          l2 += l6 - l5;
-          i += 1;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-        if ((k != this.jdField_a_of_type_Lih.c) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {
-          continue;
-        }
-        c(str);
-        continue;
-        if (this.b == null) {
-          break label610;
-        }
-      }
-      if (this.b.get() != null)
-      {
-        localObject = (lig)this.b.get();
-        long l7 = System.currentTimeMillis();
-        boolean bool1;
-        if (this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width == -1)
-        {
-          bool1 = true;
-          if (this.jdField_a_of_type_Lih.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height != -1) {
-            break label525;
-          }
-        }
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          ((lig)localObject).a(localBitmap1, localBitmap2, bool1, bool2, false, false, this.jdField_a_of_type_Lih.b);
-          l1 = System.currentTimeMillis() - l7 + l1;
-          break;
+          break label163;
           bool1 = false;
-          break label464;
+          break;
+          bool2 = false;
+          break label132;
         }
-        lcl.c("MagicfaceNormalDecoder", String.format("maigcfaceDecoder| readCost=%s(ms), renderCost=%s(ms), r=(%s), frame(%s)", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(m), Integer.valueOf(this.jdField_a_of_type_Lih.a()) }));
-        if (localBitmap1 != null) {
-          localBitmap1.recycle();
-        }
-        if (i == this.jdField_a_of_type_Lih.a() * m) {
-          return 1;
-        }
-        return 0;
       }
     }
+    label279:
+    if ((bool2) && (bool1)) {}
+    for (boolean bool2 = bool3;; bool2 = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable isDeviceSupport = " + bool1);
+      }
+      return bool2;
+    }
+    label337:
+    return false;
+    return bool2;
   }
 }
 

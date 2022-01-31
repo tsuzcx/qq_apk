@@ -1,18 +1,46 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class aedc
-  extends acun
+class aedc
+  implements View.OnClickListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public URLImageView a;
-  public BubbleImageView a;
-  public TextView b;
+  aedc(aedb paramaedb) {}
+  
+  public void onClick(View paramView)
+  {
+    aedd localaedd = (aedd)actj.a(paramView);
+    MessageForTroopFee localMessageForTroopFee = (MessageForTroopFee)localaedd.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", localMessageForTroopFee.actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    paramView = ((TroopManager)this.a.a.getManager(52)).b(localaedd.b);
+    int i;
+    if (paramView != null)
+    {
+      if (!paramView.isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label150;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      axqy.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localaedd.b, i + "", "", "");
+      return;
+      label150:
+      if (paramView.isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+    }
+  }
 }
 
 

@@ -1,52 +1,52 @@
+import android.app.Activity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class aqge
-  extends ajvl
+  extends akil
 {
-  aqge(aqgb paramaqgb) {}
+  aqge(aqgd paramaqgd) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public void a(boolean paramBoolean, bauh parambauh)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
     }
-    if (!paramBoolean)
+    this.a.x();
+    if (aqgd.a(this.a) != -1)
     {
-      this.a.x();
-      switch (paramInt)
+      if ((!paramBoolean) || (parambauh.jdField_a_of_type_Int != 0)) {
+        break label189;
+      }
+      if (parambauh.jdField_a_of_type_Boolean)
       {
-      default: 
-        paramString1 = ajyc.a(2131704822);
-        aqgb.c(this.a, null);
-        aqgb.a(this.a, false);
-        bcpw.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+        aqgd.a(this.a, parambauh.b);
+        if (aqgd.a(this.a) == 0) {}
+      }
+      else
+      {
+        do
+        {
+          return;
+          aqgd.b(this.a, parambauh.b);
+        } while (aqgd.a(this.a) != 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aqgd.a(this.a) + " mTroopNotNeedVefifyLink=" + aqgd.b(this.a));
+      }
+      if ((parambauh.jdField_a_of_type_JavaLangString != null) && (parambauh.jdField_a_of_type_JavaLangString.equals(aqgd.c(this.a)))) {
+        aqgd.a(this.a);
       }
     }
-    while ((aqgb.c(this.a) == null) || (Long.parseLong(aqgb.c(this.a)) != paramLong2)) {
-      for (;;)
-      {
-        return;
-        paramString1 = ajyc.a(2131704829);
-        continue;
-        paramString1 = ajyc.a(2131704828);
-      }
-    }
-    if (aqgb.a(this.a))
+    for (;;)
     {
-      aqgb.c(this.a, paramString1);
-      aqgb.a(this.a, aqgb.c(this.a), true);
-    }
-    aqgb.a(this.a, false);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
-    }
-    if ((aqgb.c(this.a) != null) && (aqgb.c(this.a).equals(paramString))) {
-      aqgb.a(this.a, aqgb.c(this.a), false);
+      aqgd.a(this.a, -1);
+      return;
+      label189:
+      if (((parambauh.jdField_a_of_type_Boolean) && (aqgd.a(this.a) != 0)) || ((!parambauh.jdField_a_of_type_Boolean) && (aqgd.a(this.a) != 1))) {
+        break;
+      }
+      bcql.a(this.a.a, 1, this.a.a.getString(2131693033), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }

@@ -1,19 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.os.ResultReceiver;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class msk
   implements DialogInterface.OnClickListener
 {
-  public msk(PopupDialog paramPopupDialog) {}
+  public msk(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
     }
     paramDialogInterface.dismiss();
-    PopupDialog.a();
   }
 }
 

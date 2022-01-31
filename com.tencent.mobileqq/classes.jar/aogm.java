@@ -1,51 +1,43 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
 public class aogm
-  implements View.OnClickListener
 {
-  public aogm(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  public static final int FOOTER_TYPE_LOADING = 0;
+  public static final int FOOTER_TYPE_LOAD_FAIL = 1;
+  public static final int FOOTER_TYPE_LOAD_OVER = 2;
+  public static final int TYPE_EMTPY = 2;
+  public static final int TYPE_FEED = 0;
+  public static final int TYPE_FEED_ADV = 4;
+  public static final int TYPE_FEED_BANNER = 6;
+  public static final int TYPE_FOOTER = 1;
+  public static final int TYPE_MATCH = 3;
+  public static final int TYPE_MINI_RECOMM = 5;
+  public boolean mAddFriendVerified;
+  public AlumBasicData mAlumbasicdata;
+  public int mAvailLikeCount;
+  public boolean mBigVipHide;
+  public int mBigVipLevel;
+  public String mDeclaration;
+  public int mFooterType;
+  public int mGender;
+  public boolean mIsMyFeed;
+  public boolean mLiked;
+  public String mNickName;
+  public int mPopularity;
+  public String mStrRecomTrace;
+  public int mTemplateId;
+  public int mType;
+  public String mUin;
+  public boolean mVipHide;
+  public int mVipLevel;
+  public int mVipType;
+  public int mVoiceDuration;
+  public String mVoiceUrl;
+  public boolean mbAllowStrangerVote;
   
-  public void onClick(View paramView)
+  public boolean equals(Object paramObject)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363535: 
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
-        return;
-      }
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
-      return;
-    }
-    if (!this.a.jdField_a_of_type_Boolean) {
-      PublicFragmentActivity.a(this.a.getActivity(), ExtendFriendEditFragment.class, 1033);
-    }
-    for (;;)
-    {
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      if (this.a.jdField_a_of_type_Boolean) {
-        break;
-      }
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
-      return;
-      paramView = InterestSwitchEditActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.a.startActivityForResult(paramView, 2);
-    }
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+    return (paramObject != null) && ((paramObject instanceof aogm)) && (bbbr.a(((aogm)paramObject).mUin, this.mUin));
   }
 }
 

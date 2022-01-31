@@ -1,21 +1,25 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class mvx
-  implements WtTicketPromise
+  extends akil
 {
   mvx(mvv parammvv) {}
   
-  public void Done(Ticket paramTicket)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
+    if (paramLong != this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    this.a.jdField_a_of_type_Long = 0L;
     mvv.a(this.a, false);
-    this.a.h();
+    if (paramBoolean)
+    {
+      mvv.a(this.a, paramTroopInfo);
+      return;
+    }
+    mvv.a(this.a, 2131719262, 1);
+    this.a.jdField_a_of_type_Mvy.a();
   }
-  
-  public void Failed(ErrMsg paramErrMsg) {}
-  
-  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 

@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import veg;
+import ved;
 
 public final class SubscribeUtils$2
   implements Runnable
@@ -37,7 +37,7 @@ public final class SubscribeUtils$2
       {
         URL localURL;
         int i;
-        veg.c("SubscribeUtils", "report exception" + localException.toString());
+        ved.c("SubscribeUtils", "report exception" + localException.toString());
         if (!QZLog.isColorLevel()) {
           break;
         }
@@ -47,7 +47,7 @@ public final class SubscribeUtils$2
         boolean bool = false;
       }
     }
-    veg.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
+    ved.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
     return;
   }
 }

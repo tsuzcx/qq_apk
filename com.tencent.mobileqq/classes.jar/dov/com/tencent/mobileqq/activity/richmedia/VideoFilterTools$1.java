@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bkqo;
+import bkrf;
 
 public class VideoFilterTools$1
   implements Runnable
 {
   public void run()
   {
-    bkqo.a(this.this$0);
+    bkrf.a(this.this$0);
   }
 }
 

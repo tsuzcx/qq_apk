@@ -1,134 +1,84 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
 
-public class bbeh
-  extends bbcb
+class bbeh
+  extends mxj
 {
-  private static volatile bbeh jdField_a_of_type_Bbeh;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0);
-  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  bbeh(bbeg parambbeg, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  static
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = localBaseApplication.getFilesDir().getAbsoluteFile() + File.separator + "jumpConfig/";
-    b = jdField_a_of_type_JavaLangString + "qq_safe_jump_whitelist.xml";
-  }
-  
-  public static bbeh a()
-  {
-    if (jdField_a_of_type_Bbeh == null) {}
-    try
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (jdField_a_of_type_Bbeh == null) {
-        jdField_a_of_type_Bbeh = new bbeh();
-      }
-      return jdField_a_of_type_Bbeh;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "reportIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    axrl.a(BaseApplicationImpl.getApplication()).a(null, "JumpIllegal", true, 0L, 0L, localHashMap, null);
-  }
-  
-  protected int a()
-  {
-    return 2131886091;
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  protected Object a(XmlPullParser paramXmlPullParser)
-  {
-    if (paramXmlPullParser == null) {
-      return null;
-    }
-    long l1 = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    for (int i = paramXmlPullParser.getEventType(); i != 1; i = paramXmlPullParser.next()) {
-      if ((i == 2) && (paramXmlPullParser.getName().equalsIgnoreCase("Item")))
+      aqgj.a("KEY_STAGE_2_CONNECT_MINI_D55", bool);
+      if (this.jdField_a_of_type_Bbeg.d)
       {
-        String str1 = paramXmlPullParser.getAttributeValue(null, "pkg");
-        String str2 = paramXmlPullParser.getAttributeValue(null, "cmp");
-        if ((str1 != null) && (str2 != null)) {
-          localArrayList.add(new Pair(str1, str2));
-        }
+        this.jdField_a_of_type_Bbeg.d = false;
+        this.jdField_a_of_type_Bbeg.c();
+      }
+      if (!this.jdField_a_of_type_Bbeg.c) {
+        break;
+      }
+      bcql.a(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, 1, 2131699571, 1).a();
+      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      paramArrayOfByte.addFlags(67108864);
+      paramArrayOfByte.addFlags(268435456);
+      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
+      bbeg.c(this.jdField_a_of_type_Bbeg);
+      return;
+    }
+    if (this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    paramBundle = bbeg.a(this.jdField_a_of_type_Bbeg);
+    if (paramInt == 0)
+    {
+      axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+      paramBundle.putExtra("mini_app_id", this.b);
+      paramBundle.putExtra("mini_app_path", this.c);
+      paramBundle.putExtra("mini_app_type", this.d);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bbeg.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
+      bbeg.c(this.jdField_a_of_type_Bbeg);
+      return;
+      if (paramInt == 25501)
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("JumpFilterHelper", 2, "doParseRules pkg=" + str1 + ";cmp=" + str2);
+          QLog.i("JumpAction", 2, "Account not the same");
         }
+        axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        paramBundle.putExtra("mini_app_id", this.b);
+        paramBundle.putExtra("mini_app_path", this.c);
+        paramBundle.putExtra("mini_app_type", this.d);
+        paramBundle.putExtra("openid", this.e);
+        paramBundle.putExtra("appid", this.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("pull_show_open_id_diff_main", true);
       }
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "doParseRules :  cost time:" + (l2 - l1) + "ms;size=" + localArrayList.size());
-    }
-    return localArrayList;
-  }
-  
-  protected void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "updateConfigVersion version=" + paramLong);
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
-  }
-  
-  protected void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    Pair localPair = new Pair(paramString1, paramString2);
-    if (!this.jdField_a_of_type_Boolean) {}
-    synchronized (jdField_a_of_type_Bbeh)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        a(paramContext);
-      }
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
+      else
       {
-        a(paramString1, paramString2);
-        return true;
+        paramArrayOfByte = ajwj.a(paramArrayOfByte);
+        axqy.b(bbeg.a(this.jdField_a_of_type_Bbeg), "dc01160", "", "", "0X800A51B", "0X800A51B", 0, paramInt, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        if (paramInt == 25601)
+        {
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind", true);
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind_app_name", this.f);
+        }
+        paramBundle.putExtra("pull_mini_app_not_privilege", true);
+        paramBundle.putExtra("pull_mini_app_not_privilege_string", paramArrayOfByte);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpFilterHelper", 2, "isIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbeh
  * JD-Core Version:    0.7.0.1
  */

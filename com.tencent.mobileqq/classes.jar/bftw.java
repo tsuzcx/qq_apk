@@ -1,12 +1,24 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
-public abstract interface bftw
-  extends ExpandableListAdapter
+public class bftw
+  extends ReplacementSpan
 {
-  public abstract int a();
+  private int a;
   
-  public abstract void a(View paramView, int paramInt);
+  public bftw(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
+  }
 }
 
 

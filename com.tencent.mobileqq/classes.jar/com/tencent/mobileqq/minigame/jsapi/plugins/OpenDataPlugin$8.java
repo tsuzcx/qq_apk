@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import bbgg;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.util.ColorUtils;
@@ -21,19 +21,19 @@ class OpenDataPlugin$8
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing())) {
       try
       {
-        bbgg localbbgg = new bbgg(this.this$0.jsPluginEngine.getActivityContext(), 2131755791);
-        localbbgg.setContentView(2131559251);
+        bbgu localbbgu = new bbgu(this.this$0.jsPluginEngine.getActivityContext(), 2131755791);
+        localbbgu.setContentView(2131559251);
         if (TextUtils.isEmpty(this.val$title)) {}
         for (String str = null;; str = this.val$title)
         {
-          localbbgg.setTitle(str).setMessage(this.val$content);
-          localbbgg.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
+          localbbgu.setTitle(str).setMessage(this.val$content);
+          localbbgu.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
           if (this.val$showCancel.booleanValue()) {
-            localbbgg.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
+            localbbgu.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
           }
-          localbbgg.setCanceledOnTouchOutside(true);
-          localbbgg.setOnCancelListener(this.val$onCancelListener);
-          localbbgg.show();
+          localbbgu.setCanceledOnTouchOutside(true);
+          localbbgu.setOnCancelListener(this.val$onCancelListener);
+          localbbgu.show();
           if (!(this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
             break;
           }

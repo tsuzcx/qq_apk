@@ -1,28 +1,47 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import com.tencent.qphone.base.util.QLog;
 
-public class xhd
+class xhd
+  implements waj
 {
-  public static Bitmap a(Bitmap paramBitmap)
+  xhd(xhc paramxhc, xhe paramxhe, xhf paramxhf) {}
+  
+  public void onFailure(String paramString)
   {
-    Object localObject = paramBitmap;
-    if (paramBitmap != null)
+    if (this.jdField_a_of_type_Xhe != null)
     {
-      localObject = paramBitmap;
-      if (!paramBitmap.isRecycled())
-      {
-        int i = paramBitmap.getWidth();
-        int j = paramBitmap.getHeight();
-        int k = ((Long)xfr.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
-        float f1 = k / i;
-        float f2 = k / j;
-        aune.a("Q.videostory", "Q.videostory.capture", "resizeImage", k + " " + k);
-        localObject = new Matrix();
-        ((Matrix)localObject).postScale(f1, f2);
-        localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, true);
-      }
+      this.jdField_a_of_type_Xhf.a(943004);
+      this.jdField_a_of_type_Xhf.a(paramString);
+      this.jdField_a_of_type_Xhe.b(this.jdField_a_of_type_Xhf);
     }
-    return localObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo start");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (this.jdField_a_of_type_Xhe != null) {
+      this.jdField_a_of_type_Xhe.a(this.jdField_a_of_type_Xhf);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+    }
   }
 }
 

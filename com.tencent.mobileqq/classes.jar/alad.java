@@ -1,26 +1,21 @@
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+
 public abstract interface alad
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a();
   
-  public abstract void a(alal paramalal);
+  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
   
-  public abstract int b();
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alae paramalae);
   
-  public abstract int c();
+  public abstract void a(String paramString, int paramInt);
   
-  public abstract String c();
+  public abstract void b(String paramString, int paramInt);
   
-  public abstract void c();
+  public abstract void c(String paramString, int paramInt);
   
-  public abstract void d();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
+  public abstract void d(String paramString, int paramInt);
 }
 
 

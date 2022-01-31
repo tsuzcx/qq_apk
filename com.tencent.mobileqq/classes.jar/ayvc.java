@@ -1,39 +1,95 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.URL;
+
 public class ayvc
+  extends ayoi
 {
-  public float a;
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b = "";
-  public int c;
-  public long c;
-  public String c = "";
-  public int d;
-  public long d;
-  public String d = "";
-  public int e;
-  public long e;
-  public String e = "";
-  public long f;
-  public String f = "";
-  public long g;
-  public long h;
-  public long i;
-  public long j;
-  public long k;
-  public long l;
-  public long m;
-  public long n;
-  public long o;
-  public long p;
-  public long q;
-  
-  public ayvc()
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Float = 0.0F;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      localBitmap.setDensity(160);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint = new Paint();
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF = new RectF(new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()));
+      float f = paramInt;
+      localPaint.setAntiAlias(true);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localPaint.setColor(-16777216);
+      localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), localRect, localPaint);
+      return localBitmap;
+    }
+    catch (Exception localException) {}
+    return paramBitmap;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(paramDownloadParams.url.getFile());
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = paramFile.getAbsolutePath();
+    if (!bbdx.b(paramFile))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoThumbDownloader", 2, "decodeFile file not exits. just return");
+      }
+      return null;
+    }
+    paramURLDrawableHandler = new BitmapFactory.Options();
+    paramURLDrawableHandler.inDensity = 160;
+    paramURLDrawableHandler.inTargetDensity = 160;
+    paramURLDrawableHandler.inScreenDensity = 160;
+    paramURLDrawableHandler.inJustDecodeBounds = true;
+    SafeBitmapFactory.decodeFile(paramFile, paramURLDrawableHandler);
+    paramURLDrawableHandler.inJustDecodeBounds = false;
+    paramURLDrawableHandler.inSampleSize = a(paramURLDrawableHandler, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+    try
+    {
+      paramFile = BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, paramURLDrawableHandler);
+      paramDownloadParams = paramDownloadParams.tag;
+      if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 3))
+      {
+        paramFile = a(paramFile, ((int[])(int[])paramDownloadParams)[2]);
+        return paramFile;
+      }
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoThumbDownloader", 2, "decodeFile : OutOfMemoryError ", paramFile);
+      }
+      return null;
+    }
+    return paramFile;
   }
 }
 

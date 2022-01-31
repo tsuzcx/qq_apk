@@ -1,48 +1,27 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class auhm
-  extends akhc
+  implements DialogInterface.OnClickListener
 {
-  auhm(auhi paramauhi) {}
+  auhm(auhk paramauhk) {}
   
-  protected void a(boolean paramBoolean, ayaw paramayaw)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (auhi.a(this.a) == null) || (auhi.a(this.a).isFinishing()) || (auhi.a(this.a) == null) || (paramayaw == null)) {
-      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "onAccoutChangeFailed -> LoginActivity");
     }
-    do
-    {
-      return;
-      auhi.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void b(boolean paramBoolean, ayaw paramayaw)
-  {
-    if ((!paramBoolean) || (auhi.a(this.a) == null) || (auhi.a(this.a).isFinishing()) || (auhi.a(this.a) == null) || (paramayaw == null)) {
-      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      auhi.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-  }
-  
-  protected void c(boolean paramBoolean, ayaw paramayaw)
-  {
-    if ((!paramBoolean) || (auhi.a(this.a) == null) || (auhi.a(this.a).isFinishing()) || (auhi.a(this.a) == null) || (paramayaw == null)) {
-      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    do
-    {
-      return;
-      auhi.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    paramDialogInterface = new Intent(auhk.a(this.a), LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    paramDialogInterface.putExtra("uin", auhk.a(this.a));
+    paramDialogInterface.putExtra("befault_uin", auhk.a(this.a).getCurrentAccountUin());
+    auhk.a(this.a).startActivity(paramDialogInterface);
+    auhk.a(this.a, null);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import tcw;
 import tcz;
-import tdc;
-import tti;
+import ttf;
 
 public class SendVideoToFriendHelper$2
   implements Runnable
 {
-  public SendVideoToFriendHelper$2(tti paramtti, StoryVideoItem paramStoryVideoItem) {}
+  public SendVideoToFriendHelper$2(ttf paramttf, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    ((tcz)tdc.a(5)).a(this.a);
+    ((tcw)tcz.a(5)).a(this.a);
   }
 }
 

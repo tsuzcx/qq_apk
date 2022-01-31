@@ -4,14 +4,14 @@ import android.view.animation.Transformation;
 import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class auyv
-  implements bbkq<Rect>
+  implements bble<Rect>
 {
   public auyv(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void a(bbkk<Rect> parambbkk, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void a(bbky<Rect> parambbky, float paramFloat, Rect paramRect, Transformation paramTransformation)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
   }
 }
 

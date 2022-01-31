@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bevw
-  implements View.OnClickListener
+final class bevw
+  implements DialogInterface.OnClickListener
 {
-  bevw(bevq parambevq) {}
+  bevw(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bevq.a(this.a) != null)
-    {
-      bevq.a(this.a).a(true);
-      bevq.a(this.a).dismiss();
+    paramDialogInterface.dismiss();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
     }
   }
 }

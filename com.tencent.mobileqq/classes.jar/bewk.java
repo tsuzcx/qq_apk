@@ -1,36 +1,18 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.minigame.manager.MiniGameAuthorizeManager.3.1;
 
-public final class bewk
-  implements AsyncResult
+public class bewk
+  implements View.OnClickListener
 {
-  public bewk(WeakReference paramWeakReference, String paramString, int paramInt) {}
+  public bewk(MiniGameAuthorizeManager.3.1 param1) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    try
+    if (bewh.a(this.a.a.a) != null)
     {
-      TianShuAccess.GetAdsRsp localGetAdsRsp = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
-      besl.a("MiniGameAdBannerPopup", "onGetAdvs() called with: result = [" + paramJSONObject + "], getAdsRsp = [" + localGetAdsRsp + "]");
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        return;
-      }
-      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, localGetAdsRsp);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      besl.d("MiniGameAdBannerPopup", "tianshuRequestAdv onReceiveResult", paramJSONObject);
-    }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, null);
-      return;
+      bewh.a(this.a.a.a).b(true);
+      bewh.a(this.a.a.a).dismiss();
     }
   }
 }

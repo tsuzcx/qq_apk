@@ -1,46 +1,46 @@
 package dov.com.qq.im.ae.camera.core;
 
-import ahvy;
-import axhx;
-import bijj;
-import biwd;
-import bizq;
+import ahvw;
+import axhz;
+import bika;
+import biwu;
+import bjah;
 import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 
 public class AECameraManager$1
   implements Runnable
 {
-  public AECameraManager$1(bijj parambijj) {}
+  public AECameraManager$1(bika parambika) {}
   
   public void run()
   {
     boolean bool = true;
-    bizq.b("AECameraManager", "openCamera---cameraCreated=" + bijj.a(this.this$0));
-    if (bijj.a(this.this$0)) {
+    bjah.b("AECameraManager", "openCamera---cameraCreated=" + bika.a(this.this$0));
+    if (bika.a(this.this$0)) {
       return;
     }
-    bijj.a(this.this$0, false);
-    bijj.a(this.this$0, 0);
-    bijj.b(this.this$0, 0);
-    bijj.a().a(this.this$0);
-    bijj.a().b(bijj.a(this.this$0));
-    bijj.b(this.this$0, true);
-    if (bijj.a(this.this$0) != null) {
-      bijj.a(this.this$0).f();
+    bika.a(this.this$0, false);
+    bika.a(this.this$0, 0);
+    bika.b(this.this$0, 0);
+    bika.a().a(this.this$0);
+    bika.a().b(bika.a(this.this$0));
+    bika.b(this.this$0, true);
+    if (bika.a(this.this$0) != null) {
+      bika.a(this.this$0).f();
     }
-    ahvy localahvy;
-    if (bijj.a(this.this$0) != null)
+    ahvw localahvw;
+    if (bika.a(this.this$0) != null)
     {
-      localahvy = bijj.a(this.this$0);
-      if (bijj.a(this.this$0) != 1) {
+      localahvw = bika.a(this.this$0);
+      if (bika.a(this.this$0) != 1) {
         break label175;
       }
     }
     for (;;)
     {
-      localahvy.a(bool);
-      ahua.a = bijj.a(this.this$0);
-      biwd.a().a("openCamera-end");
+      localahvw.a(bool);
+      ahty.a = bika.a(this.this$0);
+      biwu.a().a("openCamera-end");
       return;
       label175:
       bool = false;

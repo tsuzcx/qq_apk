@@ -1,28 +1,44 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-public class awxn
-  extends awww
+class awxn
 {
+  public int a;
+  public Context a;
+  public View a;
+  public FrameLayout a;
+  public ImageView a;
   public LinearLayout a;
-  public RelativeLayout a;
   public TextView a;
+  public SquareImageView a;
   public TextView b;
+  public SquareImageView b;
+  public TextView c;
   
-  public awxn(ViewGroup paramViewGroup, int paramInt)
+  public awxn(awxm paramawxm, Context paramContext)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
   }
   
-  protected void a()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131375732));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369134));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375300));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368324));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559625, this.jdField_a_of_type_Awxm.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362959));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370647));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371886));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365042));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371647));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376238));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131367872));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368889));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
   }
 }
 

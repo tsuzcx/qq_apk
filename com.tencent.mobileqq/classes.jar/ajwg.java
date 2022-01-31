@@ -1,4 +1,7 @@
-class ajwg {}
+class ajwg
+{
+  private static final ajwd a = new ajwd(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

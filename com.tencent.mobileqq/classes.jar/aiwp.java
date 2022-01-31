@@ -1,26 +1,21 @@
-import java.nio.channels.SocketChannel;
-
 public class aiwp
 {
-  public int a;
-  public long a;
-  public String a;
-  public SocketChannel a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public float a;
+  public float b;
+  public float c;
   
-  public aiwp(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
+  public aiwp(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
-    this.jdField_c_of_type_Int = 0;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

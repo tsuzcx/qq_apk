@@ -1,156 +1,196 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.util.Log;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.util.Arrays;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.TouchDelegate;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.widget.XEditText;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-class bkjp
+public class bkjp
+  extends Dialog
+  implements TextWatcher, View.OnClickListener, ViewTreeObserver.OnGlobalLayoutListener, TextView.OnEditorActionListener
 {
-  private int jdField_a_of_type_Int;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-  private final float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-  private int jdField_b_of_type_Int = -12345;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private int jdField_c_of_type_Int;
-  private float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int d;
-  private int e;
-  private int f;
+  public static final String a;
+  int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bkjq jdField_a_of_type_Bkjq;
+  XEditText jdField_a_of_type_ComTencentWidgetXEditText;
+  boolean jdField_a_of_type_Boolean = false;
+  String b;
   
-  public bkjp()
+  static
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat).position(0);
-    Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+    jdField_a_of_type_JavaLangString = ajya.a(2131706115);
   }
   
-  private int a(int paramInt, String paramString)
+  public bkjp(@NonNull Context paramContext)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
-    {
-      Log.e("STextureRender", "Could not compile shader " + paramInt + ":");
-      Log.e("STextureRender", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
-    }
-    return i;
+    super(paramContext, 2131755176);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private int a(String paramString1, String paramString2)
+  public void a(bjxh parambjxh)
   {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    if (k == 0) {
-      Log.e("STextureRender", "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
-    {
-      Log.e("STextureRender", "Could not link program: ");
-      Log.e("STextureRender", GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
-    }
-    return k;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    if (paramInt < 0) {
-      throw new RuntimeException("Unable to locate '" + paramString + "' in program");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new RuntimeException("failed creating program");
-    }
-    this.e = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aPosition");
-    a(this.e, "aPosition");
-    this.f = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aTextureCoord");
-    a(this.f, "aTextureCoord");
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uMVPMatrix");
-    a(this.jdField_c_of_type_Int, "uMVPMatrix");
-    this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uSTMatrix");
-    a(this.d, "uSTMatrix");
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_b_of_type_Int = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    a("glBindTexture mTextureID");
-    GLES20.glTexParameterf(36197, 10241, 9728.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    a("glTexParameter");
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
-  {
-    a("onDrawFrame start");
-    Log.e("STextureRender", Arrays.toString(this.jdField_c_of_type_ArrayOfFloat));
-    Log.e("STextureRender", String.valueOf(paramBoolean));
-    GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
-    GLES20.glClear(16384);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    a("glUseProgram");
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(this.e, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maPosition");
-    GLES20.glEnableVertexAttribArray(this.e);
-    a("glEnableVertexAttribArray maPositionHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.f);
-    a("glEnableVertexAttribArray maTextureHandle");
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.d, 1, false, this.jdField_c_of_type_ArrayOfFloat, 0);
-    GLES20.glDrawArrays(5, 0, 4);
-    a("glDrawArrays");
-    GLES20.glBindTexture(36197, 0);
+    Window localWindow = super.getWindow();
+    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = vpm.b(getContext());
+    localLayoutParams.flags |= 0x20;
+    localLayoutParams.gravity = 80;
+    localWindow.setAttributes(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131559008, null));
+    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365492));
+    this.jdField_a_of_type_ComTencentWidgetXEditText.setOnEditorActionListener(this);
+    this.jdField_a_of_type_ComTencentWidgetXEditText.addTextChangedListener(this);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365491);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    setOnDismissListener(parambjxh);
+    this.jdField_a_of_type_Int = actj.a(100.0F, getContext().getResources());
+    this.jdField_a_of_type_Bkjq = parambjxh;
+    setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
   }
   
   public void a(String paramString)
   {
-    int i = GLES20.glGetError();
-    if (i != 0)
+    int j = 0;
+    int i = 0;
+    super.show();
+    if (paramString != null)
     {
-      Log.e("STextureRender", paramString + ": glError " + i);
-      throw new RuntimeException(paramString + ": glError " + i);
+      this.jdField_a_of_type_ComTencentWidgetXEditText.setText(paramString);
+      XEditText localXEditText = this.jdField_a_of_type_ComTencentWidgetXEditText;
+      if (paramString == null) {}
+      for (;;)
+      {
+        localXEditText.setSelection(i);
+        i = Color.parseColor("#FF212226");
+        this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(i);
+        this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        return;
+        i = paramString.length();
+      }
+    }
+    this.jdField_a_of_type_ComTencentWidgetXEditText.setText(this.b);
+    paramString = this.jdField_a_of_type_ComTencentWidgetXEditText;
+    if (this.b == null) {}
+    for (i = j;; i = this.b.length())
+    {
+      paramString.setSelection(i);
+      break;
     }
   }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    int i = Color.parseColor("#FF212226");
+    this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(i);
+    if (paramEditable != null)
+    {
+      if (paramEditable.length() == 0) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void dismiss()
+  {
+    super.dismiss();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      dismiss();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetXEditText.setText("");
+    bjxh.a("clk_kbdelete", this.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 6) && (this.jdField_a_of_type_Bkjq != null))
+    {
+      bjxh.a("clk_kbfinish", this.jdField_a_of_type_AndroidContentContext);
+      paramTextView = this.jdField_a_of_type_ComTencentWidgetXEditText.getText().toString();
+      if ((TextUtils.isEmpty(paramTextView)) || (!bbft.d.matcher(paramTextView).matches())) {
+        break label138;
+      }
+    }
+    label138:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0)
+      {
+        this.jdField_a_of_type_Bkjq.a(paramTextView);
+        this.b = null;
+        super.dismiss();
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        return true;
+      }
+      bjxh.a("exp_wronglink", this.jdField_a_of_type_AndroidContentContext);
+      bcql.a(getContext(), jdField_a_of_type_JavaLangString, 0).a();
+      paramInt = Color.parseColor("#ff4222");
+      this.jdField_a_of_type_ComTencentWidgetXEditText.setTextColor(paramInt);
+      return true;
+    }
+  }
+  
+  public void onGlobalLayout()
+  {
+    int i = this.jdField_a_of_type_AndroidViewViewGroup.getBottom();
+    int j = this.jdField_a_of_type_AndroidViewViewGroup.getRootView().getBottom();
+    ved.b(getClass().getName(), "bottom = " + i + " , rootBottom = " + j + " , mMinKeyboardHeight = " + this.jdField_a_of_type_Int);
+    if (j - i > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      localObject = new Rect();
+      this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
+      ((Rect)localObject).top -= vzl.a(getContext(), 5.0F);
+      ((Rect)localObject).bottom += vzl.a(getContext(), 5.0F);
+      localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
+      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    }
+    while (!this.jdField_a_of_type_Boolean)
+    {
+      Object localObject;
+      return;
+    }
+    dismiss();
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,21 +1,21 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import ajeq;
+import ajeo;
 import android.media.AudioManager;
-import yvv;
+import yvs;
 
 public class GdtMvViewController$8
   implements Runnable
 {
-  public GdtMvViewController$8(yvv paramyvv) {}
+  public GdtMvViewController$8(yvs paramyvs) {}
   
   public void run()
   {
-    int i = yvv.a(this.this$0).getStreamVolume(3);
-    yvv localyvv;
-    if (yvv.a(this.this$0) != null)
+    int i = yvs.a(this.this$0).getStreamVolume(3);
+    yvs localyvs;
+    if (yvs.a(this.this$0) != null)
     {
-      localyvv = this.this$0;
+      localyvs = this.this$0;
       if (i > 0) {
         break label74;
       }
@@ -23,9 +23,9 @@ public class GdtMvViewController$8
     label74:
     for (boolean bool = true;; bool = false)
     {
-      localyvv.a = bool;
-      yvv.a(this.this$0).a(this.this$0.a);
-      yvv.a(this.this$0, i, yvv.b(this.this$0), true);
+      localyvs.a = bool;
+      yvs.a(this.this$0).a(this.this$0.a);
+      yvs.a(this.this$0, i, yvs.b(this.this$0), true);
       return;
     }
   }

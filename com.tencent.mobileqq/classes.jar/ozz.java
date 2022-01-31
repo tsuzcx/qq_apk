@@ -1,13 +1,15 @@
-class ozz
-  implements ozv
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule.4;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.Comparator;
+
+public class ozz
+  implements Comparator<TabChannelCoverInfo>
 {
-  ozz(ozy paramozy) {}
+  public ozz(ChannelCoverInfoModule.4 param4) {}
   
-  public void a(int paramInt)
+  public int a(TabChannelCoverInfo paramTabChannelCoverInfo1, TabChannelCoverInfo paramTabChannelCoverInfo2)
   {
-    if (this.a.a(paramInt) == null) {
-      this.a.c(paramInt);
-    }
+    return paramTabChannelCoverInfo1.seq - paramTabChannelCoverInfo2.seq;
   }
 }
 

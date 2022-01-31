@@ -1,27 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.51;
 
-class aetd
-  extends nqv
+public class aetd
+  implements bcay
 {
-  aetd(aerv paramaerv) {}
+  public aetd(PublicAccountChatPie.51 param51) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (aerv.a(this.a).getVisibility() != 0))
-    {
-      if (maz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        aerv.b(this.a).setVisibility(0);
-        aerv.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130846174, 2130846175);
-      }
+    if (paramBoolean) {
+      this.a.this$0.a.a();
     }
-    else {
-      return;
-    }
-    aerv.d(this.a).setVisibility(8);
   }
 }
 

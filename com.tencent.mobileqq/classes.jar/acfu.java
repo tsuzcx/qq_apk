@@ -1,49 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfu
-  implements bfoq
+  extends ajsy
 {
-  public acfu(TroopAssisSettingActivity paramTroopAssisSettingActivity, int paramInt, TroopInfo paramTroopInfo, bfol parambfol) {}
+  public acfu(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    switch (paramInt)
+    if (paramInt2 != 0)
     {
-    default: 
-      paramInt = -1;
-      if (this.jdField_a_of_type_Int != paramInt)
+      paramString1 = paramString2;
+      if (!this.a.isFinishing())
       {
-        if (!bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity())) {
-          break label218;
+        paramString1 = paramString2;
+        if (this.a.isResume())
+        {
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131694928);
+          }
+          bcql.a(this.a, 1, paramString1, 0).a();
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bbix.b.clear();
-        asfb.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Bbix.c.put(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, Boolean.valueOf(true));
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.jdField_a_of_type_Aiqd.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.b();
-        asfb.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.app, "P_CliOper", "Grp_msg", "", "set_page", "Clk_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin, String.valueOf(paramInt - 1), "", "");
       }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
       return;
-      paramInt = 1;
-      break;
-      paramInt = 4;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      label218:
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getActivity(), 2131694609, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssisSettingActivity.getTitleBarHeight());
     }
+    this.a.c();
   }
 }
 

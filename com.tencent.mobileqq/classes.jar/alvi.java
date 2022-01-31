@@ -1,6 +1,26 @@
-public abstract class alvi
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.util.WeakReference;
+
+public class alvi
+  extends agrk
 {
-  public abstract void a(int paramInt);
+  private alvi(AlbumListFragment paramAlbumListFragment)
+  {
+    super(paramAlbumListFragment);
+  }
+  
+  public static agrh b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((a == null) || (a.a.get() != null)) {}
+    try
+    {
+      if ((a == null) || (a.a.get() != null)) {
+        a = new alvi(paramAlbumListFragment);
+      }
+      return a;
+    }
+    finally {}
+  }
 }
 
 

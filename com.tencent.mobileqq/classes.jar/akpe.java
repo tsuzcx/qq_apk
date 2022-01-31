@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class akpe
-  implements aukx
+public class akpe
+  extends akpf
 {
-  akpe(akpd paramakpd) {}
-  
-  public void a(NoColumnError paramNoColumnError)
+  public akpe(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = ajsd.A;
+    this.jdField_a_of_type_Int = 6003;
+  }
+  
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  {
+    if (paramDataLineMsgRecord != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
-      }
-      akpd.a(this.a, true);
+      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
+      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
+      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
+      paramDataLineMsgRecord.dataline_type = 1;
     }
+    return super.a(paramDataLineMsgRecord, paramBoolean);
+  }
+  
+  protected aksy a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+  }
+  
+  protected void a()
+  {
+    ((ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
   }
 }
 

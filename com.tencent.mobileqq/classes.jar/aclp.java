@@ -1,31 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class aclp
-  implements View.OnClickListener
+  extends akgy
 {
   public aclp(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    if (((ajxn)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
-      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
-    }
-    for (;;)
-    {
-      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
+    if (this.a.isFinishing()) {
       return;
-      paramView = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
-      bamn.a(this.a.a, paramView);
     }
+    if (paramBoolean)
+    {
+      bcql.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131719675), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    bcql.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131719672), 0).a();
   }
 }
 

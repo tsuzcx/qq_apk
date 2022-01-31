@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class alpm
-  implements admh
+  implements WtTicketPromise
 {
-  alpm(alpf paramalpf, long paramLong) {}
+  alpm(alpe paramalpe, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
   
-  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void Done(Ticket paramTicket)
   {
-    this.jdField_a_of_type_Alpf.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkApp", 2, "--- pskey async done---  ");
+    }
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    alpe.a(this.jdField_a_of_type_Alpe, this.jdField_a_of_type_Long, true, paramTicket);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    alpe.a(this.jdField_a_of_type_Alpe, this.jdField_a_of_type_Long, false, null);
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.e("ArkApp", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    alpe.a(this.jdField_a_of_type_Alpe, this.jdField_a_of_type_Long, false, null);
   }
 }
 

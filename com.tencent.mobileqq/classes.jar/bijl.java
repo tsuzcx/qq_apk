@@ -1,22 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraManager.8;
-
-public class bijl
-  implements axic
+class bijl
+  implements avsu
 {
-  public bijl(AECameraManager.8 param8) {}
+  bijl(bijd parambijd) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AECameraManager", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
-    }
-    if (paramBoolean1)
-    {
-      bijj.c(this.a.this$0, true);
-      return;
-    }
-    bijj.a().g();
+    bika.a().e();
   }
 }
 

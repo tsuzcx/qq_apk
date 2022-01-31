@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.colornote.anim;
 
-import actn;
-import amha;
+import actj;
+import amgz;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -20,7 +20,7 @@ public class MusicDanceDrawable
   private static List<Double>[] jdField_a_of_type_ArrayOfJavaUtilList;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<amha> jdField_a_of_type_JavaUtilList;
+  private List<amgz> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -64,7 +64,7 @@ public class MusicDanceDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new amha(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.jdField_a_of_type_JavaUtilList.add(new amgz(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2)
@@ -81,7 +81,7 @@ public class MusicDanceDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt3);
     this.b = paramInt2;
-    this.c = actn.a(2.0F, paramContext.getResources());
+    this.c = actj.a(2.0F, paramContext.getResources());
     if (this.c < 0) {}
     paramInt3 = (paramInt1 - this.c * 2) / 3;
     paramInt1 = 0;
@@ -98,9 +98,9 @@ public class MusicDanceDrawable
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      amha localamha = (amha)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - amha.a(localamha), this.jdField_a_of_type_Int + amha.b(localamha), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_Int += amha.b(localamha) + this.c;
+      amgz localamgz = (amgz)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - amgz.a(localamgz), this.jdField_a_of_type_Int + amgz.b(localamgz), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Int += amgz.b(localamgz) + this.c;
       i += 1;
     }
   }
@@ -128,8 +128,8 @@ public class MusicDanceDrawable
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
-        amha localamha = (amha)this.jdField_a_of_type_JavaUtilList.get(i);
-        localamha.a((int)(d1 * amha.c(localamha)));
+        amgz localamgz = (amgz)this.jdField_a_of_type_JavaUtilList.get(i);
+        localamgz.a((int)(d1 * amgz.c(localamgz)));
         i += 1;
       }
       scheduleSelf(this, 50L);

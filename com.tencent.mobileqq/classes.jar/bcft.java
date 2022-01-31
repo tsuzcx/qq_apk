@@ -1,40 +1,24 @@
-import android.os.MessageQueue.IdleHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
 
 class bcft
-  implements MessageQueue.IdleHandler
+  implements TbsDownloader.TbsDownloaderCallback
 {
   bcft(bcfs parambcfs) {}
   
-  public boolean queueIdle()
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    Object localObject;
-    int i;
-    if (!bcfs.a().isEmpty())
+    if (paramBoolean)
     {
-      localObject = (bcfv)bcfs.a().remove(0);
-      i = ((bcfv)localObject).a();
-      if (2 == i) {
-        bcfs.a().add(localObject);
+      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs need download");
       }
-    }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (bcfs.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((bcfs)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
+      this.a.a.a.a(false);
     }
   }
 }

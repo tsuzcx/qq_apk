@@ -1,99 +1,172 @@
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class tbk<M, VH extends tbj<M>>
-  extends RecyclerView.Adapter<tbj<M>>
+public class tbk
+  extends myw
 {
-  protected Context a;
-  protected View a;
-  protected tbh a;
-  protected tbi a;
-  protected View b;
+  public static tbm a;
+  public SparseArray<tbn> a;
+  public boolean a;
+  public int b;
+  public SparseArray<tbl> b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
   
-  public tbk(Context paramContext)
+  public tbk(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext, paramString);
   }
   
-  public int a()
+  public String a()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
+    return "key_for_text_filter_cfg";
   }
   
-  public final tbj a(ViewGroup paramViewGroup, int paramInt)
+  public void a(String paramString)
   {
-    if (paramInt == 1024) {
-      paramViewGroup = new tbj(this.jdField_a_of_type_AndroidViewView);
+    int j = 0;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    Object localObject1 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.StoryCfg.name(), "1|1");
+    this.jdField_b_of_type_Boolean = true;
+    Object localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = new Integer[2];
+      if (DeviceProfileManager.a((String)localObject1, (Object[])localObject2, new ajve()) > 1) {
+        if (localObject2[1].intValue() != 1) {
+          break label115;
+        }
+      }
+    }
+    label115:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_b_of_type_Boolean = bool;
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Tbh != null) {
-        paramViewGroup.itemView.setOnClickListener(new tbl(this, paramViewGroup));
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("is_enable", 0) != 1) {
+          break label644;
+        }
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+        this.jdField_b_of_type_Int = paramString.optInt("bid");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("template_manager", "TemplateManager");
+        this.jdField_c_of_type_Int = paramString.optInt("bg_alpha", 80);
+        localObject1 = paramString.optJSONArray("template");
+        if (localObject1 != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+            if (localObject2 == null) {
+              break label637;
+            }
+            tbn localtbn = new tbn();
+            localtbn.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
+            localtbn.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("report_id");
+            localtbn.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("name");
+            localtbn.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("color_template_id");
+            if (((JSONObject)localObject2).optInt("is_support_other_color") != 1) {
+              break label650;
+            }
+            bool = true;
+            localtbn.jdField_a_of_type_Boolean = bool;
+            localtbn.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("text_color");
+            localtbn.e = ((JSONObject)localObject2).optString("background_color");
+            localtbn.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("max_text_count");
+            if (((JSONObject)localObject2).optInt("is_dynamictmp") != 1) {
+              break label656;
+            }
+            bool = true;
+            localtbn.jdField_b_of_type_Boolean = bool;
+            localtbn.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("res_name");
+            localtbn.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("bid", 0);
+            localtbn.f = ((JSONObject)localObject2).optString("music_file");
+            localtbn.g = ((JSONObject)localObject2).optString("pcm_music_file");
+            localtbn.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("hint");
+            localtbn.h = ((JSONObject)localObject2).optString("image_url");
+            localtbn.jdField_b_of_type_OrgJsonJSONObject = ((JSONObject)localObject2).optJSONObject("extra_json_config");
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(localtbn.jdField_a_of_type_Int, localtbn);
+            break label637;
+          }
+        }
+        paramString = paramString.optJSONArray("color_template");
+        if (paramString != null)
+        {
+          i = j;
+          if (i < paramString.length())
+          {
+            localObject1 = paramString.optJSONObject(i);
+            if (localObject1 != null)
+            {
+              localObject2 = new tbl();
+              ((tbl)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("id");
+              ((tbl)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("report_id");
+              ((tbl)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color");
+              ((tbl)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color2");
+              ((tbl)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("background_color3");
+              ((tbl)localObject2).e = ((JSONObject)localObject1).optString("text_color");
+              ((tbl)localObject2).jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1).optJSONObject("extra_json_config");
+              this.jdField_b_of_type_AndroidUtilSparseArray.put(((tbl)localObject2).jdField_a_of_type_Int, localObject2);
+            }
+            i += 1;
+            continue;
+          }
+        }
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
       }
-      if (this.jdField_a_of_type_Tbi != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new tbm(this, paramViewGroup));
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("read TextFilter Config", 2, paramString.getMessage());
+        }
       }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new tbj(this.b);
-      } else {
-        paramViewGroup = b(paramViewGroup, paramInt);
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
       }
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null)
-    {
-      Log.w("HeaderAndFooterAdapter", "add the header view is null");
       return;
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    notifyDataSetChanged();
-  }
-  
-  public void a(tbh paramtbh)
-  {
-    this.jdField_a_of_type_Tbh = paramtbh;
-  }
-  
-  public void a(tbi paramtbi)
-  {
-    this.jdField_a_of_type_Tbi = paramtbi;
-  }
-  
-  public final void a(tbj paramtbj, int paramInt)
-  {
-    switch (paramtbj.getItemViewType())
-    {
-    default: 
-      b(paramtbj, paramInt);
+      label637:
+      i += 1;
+      continue;
+      label644:
+      bool = false;
+      continue;
+      label650:
+      bool = false;
+      continue;
+      label656:
+      bool = false;
     }
   }
   
-  public int b()
+  public String b()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
+    return "key_for_text_filter_cfg_version";
   }
-  
-  public abstract VH b(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void b(VH paramVH, int paramInt);
 }
 
 

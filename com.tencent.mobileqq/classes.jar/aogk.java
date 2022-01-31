@@ -1,56 +1,55 @@
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import java.util.ArrayList;
 import java.util.List;
 
 public class aogk
+  extends RecyclerView.Adapter<aogj>
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<aogh> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
+  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public aogk()
+  public aogk(aogi paramaogi) {}
+  
+  public aogj a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramViewGroup = LayoutInflater.from(aogi.a(this.jdField_a_of_type_Aogi)).inflate(2131559313, null, false);
+    return new aogj(aogi.a(this.jdField_a_of_type_Aogi), paramViewGroup);
   }
   
-  public boolean equals(Object paramObject)
+  public void a(aogj paramaogj, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramObject != null)
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramaogj.a(localMiniApp);
+    paramaogj.a(paramInt);
+    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
     {
-      bool1 = bool2;
-      if ((paramObject instanceof aogk))
-      {
-        paramObject = (aogk)paramObject;
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_JavaLangString != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-            bool1 = true;
-          }
-        }
-      }
+      paramaogj = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      paramaogj.launchParam.scene = 2065;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(paramaogj, paramInt));
+      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      aogi.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
     }
-    return bool1;
   }
   
-  public String toString()
+  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
-    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
-    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

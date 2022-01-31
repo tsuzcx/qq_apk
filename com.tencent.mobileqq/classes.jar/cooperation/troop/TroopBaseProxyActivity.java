@@ -1,6 +1,6 @@
 package cooperation.troop;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -26,7 +26,7 @@ public class TroopBaseProxyActivity
           paramActivity.setCancelable(true);
           paramActivity.setContentView(2131559386);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131371557)).setText(ajyc.a(2131715251));
+          ((TextView)paramActivity.findViewById(2131371557)).setText(ajya.a(2131715262));
           localActivity = paramActivity;
           return localActivity;
         }

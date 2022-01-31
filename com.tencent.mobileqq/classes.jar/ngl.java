@@ -1,14 +1,15 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.widget.Switch;
 
 class ngl
-  implements baho
+  implements DialogInterface.OnCancelListener
 {
-  ngl(nfu paramnfu) {}
+  ngl(nfr paramnfr, nms paramnms, Switch paramSwitch) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    nfu.a(this.a, paramJSONObject);
+    this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, this.jdField_a_of_type_ComTencentWidgetSwitch);
   }
 }
 

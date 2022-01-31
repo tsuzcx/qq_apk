@@ -1,7 +1,24 @@
-public abstract interface azue
-  extends aztk
+import android.os.Bundle;
+import java.util.UUID;
+
+class azue
+  extends xaz
 {
-  public abstract void a(int paramInt);
+  azue(azud paramazud) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (paramBundle.getLong("troopUin") != azud.a(this.a)) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBoolean) {
+      azst.a("TroopFileToTroopForwarder", azst.a, "[" + azud.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
+    }
+    azud.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
+  }
 }
 
 

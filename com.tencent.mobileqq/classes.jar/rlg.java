@@ -1,42 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
 class rlg
-  implements ViewBase.OnClickListener
+  extends rkg
 {
-  rlg(rlf paramrlf) {}
+  private Container a;
   
-  public void onClick(ViewBase paramViewBase)
+  public rlg(View paramView, BaseData paramBaseData)
   {
-    int i;
-    if ((rle.a(this.a.jdField_a_of_type_Rle) instanceof AdData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-      }
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.a = ((Container)paramView);
     }
-    for (;;)
+  }
+  
+  private JSONObject a(ProteusBookData paramProteusBookData)
+  {
+    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
+      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
+    }
+    return null;
+  }
+  
+  private void b()
+  {
+    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new rlh(this));
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.p)
     {
-      rld.a(this.a.jdField_a_of_type_Rle.a);
-      rmt.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)rle.a(this.a.jdField_a_of_type_Rle), true, true, i);
-      return;
-      rnn.a(rle.a(this.a.jdField_a_of_type_Rle), paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      i = 4;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 8;
-      continue;
-      i = 1;
-      continue;
-      i = 1000;
     }
+    do
+    {
+      return;
+    } while (this.a == null);
+    paramBaseData1 = (ProteusBookData)paramBaseData2;
+    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    {
+      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
+      olo.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
+    }
+    b();
   }
 }
 

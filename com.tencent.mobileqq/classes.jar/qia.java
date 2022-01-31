@@ -1,14 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.widget.ListView;
 
-class qia
-  implements View.OnClickListener
+public class qia
+  extends awkf<awoi, awwr>
 {
-  qia(qhz paramqhz) {}
-  
-  public void onClick(View paramView)
+  public qia(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, baxy parambaxy)
   {
-    qhz.a(this.a).a(paramView);
+    super(paramListView, parambaxy);
+  }
+  
+  protected awrd<awoi, awwr> a(int paramInt)
+  {
+    if (((awoi)a(paramInt) instanceof awmt)) {
+      return new awsm(this.jdField_a_of_type_Baxy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    }
+    return new qhw(this.jdField_a_of_type_Baxy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new awwl(paramViewGroup, 2131562380);
   }
 }
 

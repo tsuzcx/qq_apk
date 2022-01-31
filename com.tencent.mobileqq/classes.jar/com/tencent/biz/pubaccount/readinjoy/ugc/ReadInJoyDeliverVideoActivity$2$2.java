@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import bcpw;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
-import qfa;
+import qex;
 
 public class ReadInJoyDeliverVideoActivity$2$2
   implements Runnable
 {
-  public ReadInJoyDeliverVideoActivity$2$2(qfa paramqfa) {}
+  public ReadInJoyDeliverVideoActivity$2$2(qex paramqex) {}
   
   public void run()
   {
     QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
-    bcpw.a(this.a.a, 2131718426, 0).a();
+    bcql.a(this.a.a, 2131718437, 0).a();
   }
 }
 

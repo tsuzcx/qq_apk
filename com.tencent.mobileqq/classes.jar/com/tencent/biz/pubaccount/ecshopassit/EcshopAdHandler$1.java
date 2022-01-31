@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import nqx;
-import yyw;
-import yyx;
+import nqu;
+import yyt;
+import yyu;
 
 public class EcshopAdHandler$1
   implements Runnable
 {
-  public EcshopAdHandler$1(nqx paramnqx) {}
+  public EcshopAdHandler$1(nqu paramnqu) {}
   
   public void run()
   {
     MiniLog.init();
-    yyw.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new yyx());
+    yyt.a().a(BaseApplicationImpl.getApplication().getApplicationContext(), new yyu());
   }
 }
 

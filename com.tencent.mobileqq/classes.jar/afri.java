@@ -1,22 +1,16 @@
 import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.5.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class afri
-  implements ThreadExcutor.IThreadListener
+  extends ajxj
 {
   public afri(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
+    if (paramBoolean) {
+      this.a.i();
+    }
   }
-  
-  public void onPreRun() {}
 }
 
 

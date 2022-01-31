@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class mpp
-  implements View.OnClickListener
+public abstract interface mpp
 {
-  mpp(mpn parammpn) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false, 1);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

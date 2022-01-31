@@ -1,32 +1,74 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import java.util.ArrayList;
 
-class azkg
-  implements View.OnTouchListener
+public class azkg
+  extends BaseAdapter
 {
-  azkg(azkf paramazkf) {}
+  public static final String a;
+  public static final String b = ajya.a(2131701466);
+  protected Context a;
+  protected LayoutInflater a;
+  protected QQAppInterface a;
+  protected NewTroopCateView a;
+  protected ArrayList<azmb> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    jdField_a_of_type_JavaLangString = ajya.a(2131701465);
+  }
+  
+  public azkg(NewTroopCateView paramNewTroopCateView, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramNewTroopCateView.a;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView = paramNewTroopCateView;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(ArrayList<azmb> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
-      this.a.c.setAlpha(0.5F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560316, null);
+      paramView = new azkj(this, localView);
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
     for (;;)
     {
-      return false;
-      if ((i == 3) || (i == 1))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-        this.a.c.setAlpha(1.0F);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      }
+      paramViewGroup.a((azmb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      return localView;
+      paramViewGroup = (azkj)paramView.getTag();
+      localView = paramView;
     }
   }
 }

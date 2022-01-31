@@ -1,66 +1,170 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import cooperation.photoplus.PhotoPlusModule.1;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class bgkj
-  extends QIPCModule
+class bgkj
+  extends begr
 {
-  private static bgkj a;
+  bgkj(bgki parambgki, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  private bgkj()
+  public void a()
   {
-    super("PhotoPlusModule");
+    if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_exit_room");
+      ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
   }
   
-  public static bgkj a()
+  public void a(int paramInt, String paramString)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bgkj();
-      }
-      return a;
+    if ((paramInt == 0) || (paramInt == 1003)) {
+      bgjq.a().b(this.jdField_a_of_type_Bgki.d, this.jdField_a_of_type_Boolean, this.b);
     }
-    finally {}
+    while ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+    localBundle.putInt("gmesdk_event_ret", paramInt);
+    localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+    ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(int paramInt, String[] paramArrayOfString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
-    }
-    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(paramBundle)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
-      }
-    }
-    do
+    int i = 0;
+    switch (paramInt)
     {
-      return null;
-      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
-      if ("action_get_sticker_templates".equals(paramString))
+    }
+    for (;;)
+    {
+      return;
+      paramInt = 0;
+      String str;
+      Bundle localBundle;
+      while (paramInt < paramArrayOfString.length)
       {
-        paramBundle.b(true);
-        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
-        return null;
+        str = paramArrayOfString[paramInt];
+        if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+        {
+          localBundle = new Bundle();
+          localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+          localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+          localBundle.putString("gmesdk_event_key_member_uin", str);
+          ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+        }
+        paramInt += 1;
       }
-      if ("action_exit_sticker".equals(paramString))
+      continue;
+      while (i < paramArrayOfString.length)
       {
-        paramBundle.b(false);
-        return null;
+        str = paramArrayOfString[i];
+        if (!this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaUtilList.add(str);
+          if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", true);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
+        }
+        i += 1;
       }
-    } while (!"action_jump_to_shortvideo".equals(paramString));
-    paramBundle.c(true);
-    return null;
+      continue;
+      paramInt = 0;
+      while (paramInt < paramArrayOfString.length)
+      {
+        str = paramArrayOfString[paramInt];
+        if (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaUtilList.contains(str))
+        {
+          this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaUtilList.remove(str);
+          if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+          {
+            localBundle = new Bundle();
+            localBundle.putString("gmesdk_event_key", "gmesdk_event_key_member_info");
+            localBundle.putBoolean("gmesdk_event_key_member_speaking", false);
+            localBundle.putString("gmesdk_event_key_member_uin", str);
+            ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+          }
+        }
+        paramInt += 1;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_mic");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void a(String[] paramArrayOfString) {}
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_enterroom");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_eterroom_ret_msg", paramString);
+      ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle;
+    if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      localBundle = new Bundle();
+      if (!paramBoolean) {
+        break label70;
+      }
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_open_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+    for (;;)
+    {
+      ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+      return;
+      label70:
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_close_speaker");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+    }
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    if ((this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gmesdk_event_key", "gmesdk_event_key_room_disconnect");
+      localBundle.putInt("gmesdk_event_ret", paramInt);
+      localBundle.putString("gmesdk_event_value_room_disconnect_ret_msg", paramString);
+      ((bgkk)this.jdField_a_of_type_Bgki.jdField_a_of_type_JavaLangRefWeakReference.get()).a(localBundle);
+    }
   }
 }
 

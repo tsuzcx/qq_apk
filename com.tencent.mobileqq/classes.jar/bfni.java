@@ -1,80 +1,74 @@
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bfni
+public class bfni
 {
-  public static boolean a()
+  public static void a(Activity paramActivity)
   {
-    return Build.VERSION.SDK_INT >= 7;
+    try
+    {
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
+    }
   }
   
-  public static boolean b()
+  public static void a(View paramView)
   {
-    return Build.VERSION.SDK_INT >= 8;
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
   }
   
-  public static boolean c()
+  public static boolean a(Context paramContext)
   {
-    return Build.VERSION.SDK_INT >= 9;
+    boolean bool2 = false;
+    try
+    {
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
+        {
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+    }
+    catch (NullPointerException paramContext)
+    {
+      do
+      {
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
+    }
+    return bool1;
+    return false;
   }
   
-  public static boolean d()
+  public static void b(View paramView)
   {
-    return Build.VERSION.SDK_INT >= 14;
-  }
-  
-  public static boolean e()
-  {
-    return Build.VERSION.SDK_INT >= 11;
-  }
-  
-  public static boolean f()
-  {
-    return Build.VERSION.SDK_INT >= 13;
-  }
-  
-  public static boolean g()
-  {
-    return Build.VERSION.SDK_INT >= 16;
-  }
-  
-  public static boolean h()
-  {
-    return Build.VERSION.SDK_INT >= 17;
-  }
-  
-  public static boolean i()
-  {
-    return Build.VERSION.SDK_INT >= 18;
-  }
-  
-  public static boolean j()
-  {
-    return Build.VERSION.SDK_INT >= 19;
-  }
-  
-  public static boolean k()
-  {
-    return Build.VERSION.SDK_INT >= 21;
-  }
-  
-  public static boolean l()
-  {
-    return Build.VERSION.SDK_INT >= 23;
-  }
-  
-  public static boolean m()
-  {
-    return Build.VERSION.SDK_INT >= 24;
-  }
-  
-  public static boolean n()
-  {
-    return Build.VERSION.SDK_INT >= 26;
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfni
  * JD-Core Version:    0.7.0.1
  */

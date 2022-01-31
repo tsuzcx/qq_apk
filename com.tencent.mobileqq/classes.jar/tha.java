@@ -1,14 +1,65 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class tha
-  implements Comparator<tsr>
+public class tha
+  extends sys
 {
-  tha(tgz paramtgz) {}
+  public static String a = sxm.a("StorySvc.new_user_guide");
+  public String b;
+  public String c;
   
-  public int a(tsr paramtsr1, tsr paramtsr2)
+  public tha(String paramString1, String paramString2)
   {
-    return thg.a(paramtsr1.a.mCreateTime, paramtsr2.a.mCreateTime);
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public syn a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
+    try
+    {
+      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
+      return new thb(localRspQQStoryGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
+    try
+    {
+      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
+      localReqQQStoryGuide.version.set(this.c);
+      return localReqQQStoryGuide.toByteArray();
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        localReqQQStoryGuide.to_uid.set(0L);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import amtc;
+import amtb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -15,7 +15,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bbkx;
+import bbll;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -222,7 +222,7 @@ public abstract class DragAdapter
           MiniProgramLpReportDC04239.reportAsync(localThrowable, "desktop", "add", "add_recommend", null);
           return;
         }
-        if (getItemCount() > amtc.c())
+        if (getItemCount() > amtb.c())
         {
           paramInt = this.mIntertTarget;
           this.mMainHandler.post(new DragAdapter.6(this, paramInt));
@@ -500,7 +500,7 @@ public abstract class DragAdapter
           }
           else {
             label538:
-            if ((Math.abs(paramInt1 - this.lastDragLeft) > bbkx.b(5.0F)) || (Math.abs(paramInt2 - this.lastDragTop) > bbkx.b(5.0F)))
+            if ((Math.abs(paramInt1 - this.lastDragLeft) > bbll.b(5.0F)) || (Math.abs(paramInt2 - this.lastDragTop) > bbll.b(5.0F)))
             {
               this.lastDragLeft = paramInt1;
               this.lastDragTop = paramInt2;
@@ -511,7 +511,7 @@ public abstract class DragAdapter
             if (this.mIntertTarget < 0)
             {
               localObject1 = this.mRecyclerView.findViewHolderForAdapterPosition(getItemCount() - 1);
-              if ((i != 0) || ((localObject1 != null) && (paramInt1 - ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= bbkx.b(20.0F)) && (paramInt2 - ((RecyclerView.ViewHolder)localObject1).itemView.getTop() >= bbkx.b(5.0F))))
+              if ((i != 0) || ((localObject1 != null) && (paramInt1 - ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= bbll.b(20.0F)) && (paramInt2 - ((RecyclerView.ViewHolder)localObject1).itemView.getTop() >= bbll.b(5.0F))))
               {
                 localObject3 = (DesktopItemInfo)this.mData.get(getItemCount() - 1);
                 if ((((DesktopItemInfo)localObject3).dropEnable) && (!((DesktopItemInfo)localObject3).isTemp) && (!isSameModule(this.mDragIndex, getItemCount() - 1)))
@@ -595,7 +595,7 @@ public abstract class DragAdapter
   {
     int i = (int)paramFloat1;
     int j = (int)paramFloat2;
-    int k = bbkx.a(45.0F);
+    int k = bbll.a(45.0F);
     return this.mRecyclerView.findChildViewUnder(i, j - k);
   }
   
@@ -637,10 +637,10 @@ public abstract class DragAdapter
       if (!this.outsideDragCancel)
       {
         bool1 = bool2;
-        if (Math.abs(this.startDragX - i) < bbkx.b(15.0F))
+        if (Math.abs(this.startDragX - i) < bbll.b(15.0F))
         {
           bool1 = bool2;
-          if (Math.abs(this.startDragY - j) >= bbkx.b(15.0F)) {}
+          if (Math.abs(this.startDragY - j) >= bbll.b(15.0F)) {}
         }
       }
       else
@@ -742,7 +742,7 @@ public abstract class DragAdapter
   {
     setDragMirrorPosition(paramInt1, paramInt2);
     this.mMainHandler.removeCallbacks(this.mMoveRunnable);
-    if (paramInt1 >= this.mRecyclerView.getRight() - bbkx.a(80.0F))
+    if (paramInt1 >= this.mRecyclerView.getRight() - bbll.a(80.0F))
     {
       if (this.mRecyclerView.computeHorizontalScrollExtent() + this.mRecyclerView.computeHorizontalScrollOffset() < this.mRecyclerView.computeHorizontalScrollRange()) {
         this.mRecyclerView.startAutoScrollX(true);
@@ -750,7 +750,7 @@ public abstract class DragAdapter
     }
     else
     {
-      if (paramInt1 <= bbkx.a(5.0F) * -1)
+      if (paramInt1 <= bbll.a(5.0F) * -1)
       {
         this.mRecyclerView.startAutoScrollX(false);
         return;
@@ -781,16 +781,16 @@ public abstract class DragAdapter
     paramInt = getDragParentLeft(paramViewHolder);
     int i = getDragParentTop(paramViewHolder);
     int j = paramViewHolder.itemView.getLeft();
-    int k = bbkx.b(8.0F);
+    int k = bbll.b(8.0F);
     int m = paramViewHolder.itemView.getTop();
-    int n = bbkx.b(8.0F);
+    int n = bbll.b(8.0F);
     this.startDragX = (paramInt + j + k);
     this.startDragY = (i + m - n);
     setDragMirrorPosition(this.startDragX, this.startDragY);
     this.mDragMirrorLayout.clearAnimation();
     paramViewHolder = (DesktopAppInfo)this.mData.get(paramViewHolder.getAdapterPosition());
     this.mDragMirrorImage.setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramViewHolder.mMiniAppInfo.iconUrl, true));
-    this.mDragMirrorMarkImage.setImageResource(2130840624);
+    this.mDragMirrorMarkImage.setImageResource(2130840621);
     this.mDragMirrorLayout.setVisibility(0);
     this.mDragMirrorLayout.setAnimation(this.mirrorZoomAnimation);
     this.mirrorZoomAnimation.start();
@@ -858,7 +858,7 @@ public abstract class DragAdapter
       }
       for (;;)
       {
-        if ((Math.abs(j - this.lastDragMoveLeft) <= bbkx.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= bbkx.b(20.0F))) {
+        if ((Math.abs(j - this.lastDragMoveLeft) <= bbll.b(20.0F)) && (Math.abs(j - this.lastDragMoveTop) <= bbll.b(20.0F))) {
           break label240;
         }
         this.lastDragMoveLeft = i;
@@ -893,7 +893,7 @@ public abstract class DragAdapter
         this.mDeletePrepared = true;
         if (this.mDragMirrorMarkImage != null)
         {
-          this.mDragMirrorMarkImage.setImageResource(2130840623);
+          this.mDragMirrorMarkImage.setImageResource(2130840620);
           this.mDragMirrorMarkImage.setVisibility(0);
         }
       }
@@ -907,7 +907,7 @@ public abstract class DragAdapter
       QLog.i("DragAdapter", 1, "Desktop-Drag onItemDelete Prepared target：" + paramInt);
       this.mDeletePrepared = false;
     } while (this.mDragMirrorMarkImage == null);
-    this.mDragMirrorMarkImage.setImageResource(2130840624);
+    this.mDragMirrorMarkImage.setImageResource(2130840621);
     ImageView localImageView = this.mDragMirrorMarkImage;
     paramInt = i;
     if (this.mIntertTarget <= 0) {
@@ -957,8 +957,8 @@ public abstract class DragAdapter
     this.mDragMirrorLayout = paramView;
     if (paramView != null)
     {
-      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131370178));
-      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131370180));
+      this.mDragMirrorImage = ((ImageView)paramView.findViewById(2131370177));
+      this.mDragMirrorMarkImage = ((ImageView)paramView.findViewById(2131370179));
       this.mDragMirrorMarkImage.setVisibility(4);
     }
   }

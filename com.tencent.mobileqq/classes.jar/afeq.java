@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class afeq
-  implements ajuc
+  implements MessageQueue.IdleHandler
 {
-  public afeq(AddContactsView paramAddContactsView) {}
+  public afeq(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public boolean queueIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
-    {
-      this.a.d = true;
-      this.a.f();
-    }
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

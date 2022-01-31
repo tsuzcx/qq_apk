@@ -1,21 +1,36 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import java.util.List;
 
 class atqv
-  implements Handler.Callback
+  extends FragmentPagerAdapter
 {
-  atqv(atqu paramatqu) {}
+  private List<Fragment> jdField_a_of_type_JavaUtilList;
   
-  public boolean handleMessage(Message paramMessage)
+  atqv(FragmentManager paramFragmentManager, List<Fragment> paramList)
   {
-    switch (paramMessage.what)
-    {
+    super(paramList);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  Fragment a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    for (;;)
-    {
-      return true;
-      atqu.a(this.a);
-    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 

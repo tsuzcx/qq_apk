@@ -61,5 +61,5 @@
     </RelativeLayout>
     <ViewStub android:layout_gravity="bottom|center" android:id="@id/hxq" android:layout="@layout/bwv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:layout_gravity="bottom|center" android:id="@id/hxp" android:layout="@layout/bvu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:layout_gravity="bottom|center" android:id="@id/ex1" android:layout="@layout/if" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="bottom|center" android:id="@id/exn" android:layout="@layout/s2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </FrameLayout>

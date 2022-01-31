@@ -1,54 +1,59 @@
 import android.annotation.TargetApi;
-import android.view.Surface;
-import com.tencent.ttpic.openapi.filter.TextureRender;
+import android.opengl.EGL14;
+import android.opengl.EGLSurface;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
+@TargetApi(17)
 public class avyz
 {
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private avyw jdField_a_of_type_Avyw;
-  private avyx jdField_a_of_type_Avyx;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private EGLSurface a;
+  protected avyy a;
+  
+  public avyz(avyy paramavyy)
+  {
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+    this.jdField_a_of_type_Avyy = paramavyy;
+  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
-    {
-      this.jdField_a_of_type_AndroidViewSurface.release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
-    }
-    if (this.jdField_a_of_type_Avyx != null)
-    {
-      this.jdField_a_of_type_Avyx.a();
-      this.jdField_a_of_type_Avyx = null;
-    }
-    if (this.jdField_a_of_type_Avyw != null)
-    {
-      this.jdField_a_of_type_Avyw.a();
-      this.jdField_a_of_type_Avyw = null;
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    }
+    this.jdField_a_of_type_Avyy.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
   }
   
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-    this.jdField_a_of_type_Avyx.a(paramLong);
-    this.jdField_a_of_type_Avyx.a();
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Avyy.a(paramInt1, paramInt2);
   }
   
-  public void a(avyy paramavyy, Surface paramSurface)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    this.jdField_a_of_type_Avyw = new avyw(paramavyy.a(), 1);
-    this.jdField_a_of_type_Avyx = new avyx(this.jdField_a_of_type_Avyw);
-    this.jdField_a_of_type_Avyx.a(paramSurface);
-    this.jdField_a_of_type_Avyx.b();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Avyy.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
+      throw new IllegalStateException("surface already created");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Avyy.a(paramObject);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = this.jdField_a_of_type_Avyy.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Avyy.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
 }
 

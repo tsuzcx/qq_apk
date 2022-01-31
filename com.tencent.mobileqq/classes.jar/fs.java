@@ -27,7 +27,7 @@ class fs
     for (;;)
     {
       localDataLineMsgSet.setPaused(true);
-      ((ajuo)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
+      ((ajum)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
       fq.a(this.a, paramView, localDataLineMsgSet);
       return;
       QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");

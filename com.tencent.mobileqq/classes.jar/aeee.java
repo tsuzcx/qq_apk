@@ -1,331 +1,202 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForTroopSign;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class aeee
-  extends BaseBubbleBuilder
+public class aeee
+  extends aeec
 {
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h = 12303291;
-  protected int i;
-  
   public aeee(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.c = bawz.a(paramContext, 151.5F);
-    this.d = bawz.a(paramContext, 125.5F);
-    this.e = bawz.a(paramContext, 152.0F);
-    this.f = bawz.a(this.jdField_a_of_type_AndroidContentContext, 14.0F);
-    this.g = bawz.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    this.i = bawz.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
   }
   
-  public int a(ChatMessage paramChatMessage)
+  public acuj a()
   {
-    return 0;
+    return new aeef();
   }
   
-  public String a(ChatMessage paramChatMessage)
+  public View a(ChatMessage paramChatMessage, acuj paramacuj, View paramView, BaseChatItemLayout paramBaseChatItemLayout, acxj paramacxj)
   {
-    return ((MessageForTroopSign)paramChatMessage).getSummaryMsg();
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
-  {
-    switch (paramInt)
+    paramacuj = (aeef)paramacuj;
+    boolean bool1 = paramChatMessage.isSend();
+    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramChatMessage;
+    localMessageForTroopSign.parse();
+    if (paramView == null)
     {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    case 2131375123: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    }
-    aaod.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-  }
-  
-  public void a(aeef paramaeef, BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    MessageForTroopSign localMessageForTroopSign = (MessageForTroopSign)paramaeef.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    Resources localResources;
-    Object localObject1;
-    TextView localTextView;
-    Object localObject2;
-    Drawable localDrawable;
-    if (paramaeef.jdField_a_of_type_AndroidWidgetFrameLayout == null)
-    {
-      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      paramaeef.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new FrameLayout.LayoutParams(-2, -2);
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      localTextView.setSingleLine(true);
-      localTextView.setGravity(16);
-      localTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localTextView.setTextColor(-1);
-      localTextView.setTextSize(2, 12.0F);
-      localTextView.setBackgroundResource(2130842091);
-      paramaeef.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject1);
-      paramaeef.e = localTextView;
-      paramaeef.e.setText(localMessageForTroopSign.srcName);
-      if (!TextUtils.isEmpty(localMessageForTroopSign.srcIconUrl))
-      {
-        localObject2 = localMessageForTroopSign.srcIconUrl;
-        localDrawable = localResources.getDrawable(2130849346);
-        localDrawable.setBounds(0, 0, actn.a(12.0F, localResources), actn.a(12.0F, localResources));
-        localObject1 = new ColorDrawable(15790320);
-        ((Drawable)localObject1).setBounds(0, 0, actn.a(12.0F, localResources), actn.a(12.0F, localResources));
-      }
-    }
-    else
-    {
-      try
-      {
-        localObject2 = URLDrawable.getDrawable((String)localObject2, localDrawable, (Drawable)localObject1);
-        if (aywk.a(this.jdField_a_of_type_AndroidContentContext)) {
-          break label399;
-        }
-        bool = true;
-        ((URLDrawable)localObject2).setAutoDownload(bool);
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          boolean bool;
-          label296:
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopSignItemBuilder", 2, "setSourceView exception" + localException.toString());
-          }
-        }
-      }
-      ((Drawable)localObject1).setBounds(0, 0, actn.a(12.0F, localResources), actn.a(12.0F, localResources));
-      localTextView.setCompoundDrawablePadding(actn.a(3.0F, localResources));
-      localTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
-      localTextView.setPadding(actn.a(5.0F, localResources), 0, actn.a(5.0F, localResources), 0);
-      localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131364110);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131364110);
-      paramBaseChatItemLayout.addView(paramaeef.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject1);
-      paramaeef.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-      paramBaseChatItemLayout = (FrameLayout.LayoutParams)paramaeef.e.getLayoutParams();
-      if (!localMessageForTroopSign.isSend()) {
-        break label456;
-      }
-    }
-    label399:
-    label456:
-    for (paramBaseChatItemLayout.leftMargin = BaseChatItemLayout.j;; paramBaseChatItemLayout.leftMargin = this.g)
-    {
-      paramaeef.e.setLayoutParams(paramBaseChatItemLayout);
-      return;
-      bool = false;
-      break;
-      localTextView.setCompoundDrawables(null, null, null, null);
-      break label296;
-    }
-  }
-  
-  public void a(aeef paramaeef, MessageForTroopSign paramMessageForTroopSign)
-  {
-    boolean bool = paramMessageForTroopSign.isSend();
-    if ((paramMessageForTroopSign.markType == 1) || (paramMessageForTroopSign.markType == 2)) {
-      if (TextUtils.isEmpty(paramMessageForTroopSign.markIconUrl)) {}
+      paramChatMessage = LayoutInflater.from(this.a).inflate(2131562450, paramBaseChatItemLayout, false);
+      paramChatMessage.setLayoutParams(new RelativeLayout.LayoutParams(this.c + BaseChatItemLayout.j + baxn.a(this.a, 10.0F), this.e + BaseChatItemLayout.g + BaseChatItemLayout.h));
+      paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364798));
+      paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377350));
+      paramacuj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376712));
+      paramacuj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369774));
+      paramacuj.b = ((TextView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369776));
+      paramacuj.jdField_c_of_type_AndroidViewView = paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369775);
+      paramacuj.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369778));
+      paramacuj.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369773));
+      paramacuj.jdField_d_of_type_AndroidViewView = paramacuj.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369777);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.c(false);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setFocusable(false);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setFocusableInTouchMode(false);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setClickable(false);
+      paramChatMessage.setOnClickListener(this);
+      paramChatMessage.setOnLongClickListener(paramacxj);
+      paramChatMessage.setOnTouchListener(paramacxj);
+      paramView = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { 201326592, 855638016 });
+      paramView.setShape(0);
+      paramView.setGradientType(0);
+      paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramView);
     }
     for (;;)
     {
-      try
+      boolean bool2 = TextUtils.isEmpty(localMessageForTroopSign.msgContent);
+      paramView = (RelativeLayout.LayoutParams)paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+      if (!bool2)
       {
-        Object localObject = new ColorDrawable(0);
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = this.i;
-        localURLDrawableOptions.mRequestHeight = this.i;
-        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-        localObject = URLDrawable.getDrawable(paramMessageForTroopSign.markIconUrl, localURLDrawableOptions);
-        if (((URLDrawable)localObject).getStatus() == 2) {
-          ((URLDrawable)localObject).restartDownload();
+        paramView.height = this.d;
+        if (!bool1) {
+          break label844;
         }
-        paramaeef.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        paramView.leftMargin = 0;
+        paramView.rightMargin = baxn.a(this.a, 10.0F);
+        label395:
+        paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setLayoutParams(paramView);
+        paramView = new ColorDrawable(this.h);
+        paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramView);
+        if (TextUtils.isEmpty(localMessageForTroopSign.msgCoverUrl)) {}
       }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("TroopSignItemBuilder", 2, QLog.getStackTraceString(localException));
-        continue;
-      }
-      if (paramMessageForTroopSign.markType != 1) {
-        break;
-      }
-      paramaeef.jdField_d_of_type_AndroidViewView.setVisibility(4);
-      paramaeef.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      paramaeef.b.setVisibility(4);
-      a(paramaeef.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
-      return;
-      paramaeef.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      continue;
-      paramaeef.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    }
-    if (paramMessageForTroopSign.markType == 2)
-    {
-      paramaeef.jdField_d_of_type_AndroidViewView.setVisibility(4);
-      paramaeef.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      paramaeef.b.setVisibility(0);
-      paramaeef.b.setText(paramMessageForTroopSign.markDesc);
-      a(paramaeef.jdField_c_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
-      return;
-    }
-    if (paramMessageForTroopSign.markType == 3)
-    {
-      paramaeef.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      paramaeef.jdField_c_of_type_AndroidViewView.setVisibility(4);
-      paramaeef.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markWord);
-      paramaeef.jdField_d_of_type_AndroidWidgetTextView.setText(paramMessageForTroopSign.markDesc);
-      a(paramaeef.jdField_d_of_type_AndroidViewView, paramMessageForTroopSign.positonType, bool);
-      return;
-    }
-    paramaeef.jdField_d_of_type_AndroidViewView.setVisibility(4);
-    paramaeef.jdField_c_of_type_AndroidViewView.setVisibility(4);
-  }
-  
-  public void a(View paramView, int paramInt, boolean paramBoolean)
-  {
-    int j = this.f / 2;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    if (paramInt == 7)
-    {
-      localLayoutParams.topMargin = this.f;
-      localLayoutParams.addRule(11, 0);
-      localLayoutParams.addRule(9, 0);
-      localLayoutParams.addRule(14, -1);
-      localLayoutParams.addRule(10, -1);
-    }
-    for (;;)
-    {
-      paramView.setLayoutParams(localLayoutParams);
-      return;
-      localLayoutParams.topMargin = j;
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.addRule(9, 0);
-      localLayoutParams.addRule(14, 0);
-      localLayoutParams.addRule(10, -1);
-      if (paramBoolean) {
-        localLayoutParams.rightMargin = (j + this.g);
-      } else {
-        localLayoutParams.rightMargin = j;
-      }
-    }
-  }
-  
-  public void a(View paramView, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.isSend())
-    {
-      paramView.setPadding(BaseChatItemLayout.j, BaseChatItemLayout.g, 0, BaseChatItemLayout.h);
-      return;
-    }
-    paramView.setPadding(0, BaseChatItemLayout.g, BaseChatItemLayout.j, BaseChatItemLayout.h);
-  }
-  
-  public bblt[] a(View paramView)
-  {
-    bblr localbblr = new bblr();
-    paramView = (MessageForTroopSign)((acve)actn.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    super.a(paramView, localbblr);
-    aaod.a(localbblr, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    b(paramView, localbblr);
-    super.e(localbblr, this.jdField_a_of_type_AndroidContentContext);
-    return localbblr.a();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (a()) {
-      break label7;
-    }
-    label7:
-    while ((this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) {
-      return;
-    }
-    Object localObject1 = (aeef)actn.a(paramView);
-    Object localObject2 = (MessageForTroopSign)((aeef)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    if (paramView == ((aeef)localObject1).jdField_a_of_type_AndroidWidgetFrameLayout)
-    {
-      localObject2 = ((MessageForTroopSign)localObject2).srcAction;
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj_graybar", 0, 0, "", "", "", "");
-      localObject1 = localObject2;
-      if (!QLog.isColorLevel()) {
-        break label267;
-      }
-      QLog.d("TroopSignItemBuilder", 2, "onSrcClick actionURL:" + (String)localObject2);
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      for (;;)
       {
         try
         {
-          paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          paramView.putExtra("url", (String)localObject1);
-          sgj.a(paramView, (String)localObject1);
-          this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-          return;
+          paramacxj = URLDrawable.URLDrawableOptions.obtain();
+          paramacxj.mFailedDrawable = paramView;
+          paramacxj.mLoadingDrawable = paramacxj.mFailedDrawable;
+          paramacxj.mRequestWidth = this.c;
+          if (bool2) {
+            continue;
+          }
+          paramacxj.mRequestHeight = this.d;
+          paramView = URLDrawable.getDrawable(localMessageForTroopSign.msgCoverUrl, paramacxj);
+          if (paramView.getStatus() == 2) {
+            paramView.restartDownload();
+          }
+          paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramView);
         }
-        catch (Exception paramView) {}
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("TroopSignItemBuilder", 2, "onClick exp:", paramView);
-        return;
-        if (paramView != ((aeef)localObject1).jdField_a_of_type_AndroidViewView) {
-          break label276;
-        }
-        localObject2 = ((MessageForTroopSign)localObject2).msgAction;
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_checkin", "", "entry", "clk_obj", 0, 0, "", "", "", "");
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
+        catch (Exception paramView)
         {
-          QLog.d("TroopSignItemBuilder", 2, "onContentClick actionURL:" + (String)localObject2);
-          localObject1 = localObject2;
+          label844:
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("TroopSignItemBuilder", 2, QLog.getStackTraceString(paramView));
+          continue;
+          paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(14.0F);
+          continue;
+          paramView.leftMargin = this.g;
+          paramView.rightMargin = 0;
+          continue;
+          paramacuj.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          continue;
+          paramView.leftMargin = this.g;
+          paramView.rightMargin = 0;
+          continue;
+          if ((TextUtils.isEmpty(localMessageForTroopSign.msgCoverUrl)) || (!localMessageForTroopSign.msgCoverUrl.endsWith("e8e22512720843268d733a5f30f22d7f.png"))) {
+            continue;
+          }
+          paramView.addRule(12, 0);
+          paramView.addRule(15, -1);
+          continue;
+          paramView.addRule(12, -1);
+          paramView.addRule(15, 0);
+          continue;
+          paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText("");
+          continue;
         }
-        label267:
-        continue;
+        if (bool2) {
+          continue;
+        }
+        paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadiusTop(14.0F);
+        if (paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d != bool1)
+        {
+          paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d = bool1;
+          if (paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.a == 1) {
+            paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.a(paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getWidth(), paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getHeight());
+          }
+          paramacuj.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.invalidate();
+        }
+        if (bool2) {
+          continue;
+        }
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramView = (RelativeLayout.LayoutParams)paramacuj.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+        if (!bool1) {
+          continue;
+        }
+        paramView.leftMargin = 0;
+        paramView.rightMargin = this.g;
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramView);
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setText(localMessageForTroopSign.msgContent);
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+        paramacuj.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
+        paramView = (RelativeLayout.LayoutParams)paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.getLayoutParams();
+        if (!bool1) {
+          continue;
+        }
+        paramView.leftMargin = 0;
+        paramView.rightMargin = this.g;
+        if (bool2) {
+          continue;
+        }
+        paramView.addRule(12, 0);
+        paramView.addRule(15, 0);
+        paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setLayoutParams(paramView);
+        if (TextUtils.isEmpty(localMessageForTroopSign.msgTitle)) {
+          continue;
+        }
+        paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setText(localMessageForTroopSign.msgTitle);
+        paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(2);
+        paramacuj.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.END);
+        a(paramacuj, localMessageForTroopSign);
+        if ((AppSetting.d) && (!TextUtils.isEmpty(localMessageForTroopSign.msgTitle))) {
+          paramChatMessage.setContentDescription("" + localMessageForTroopSign.msgTitle);
+        }
+        a(paramacuj, paramBaseChatItemLayout);
+        return paramChatMessage;
+        paramView.height = this.e;
+        break;
+        paramView.leftMargin = baxn.a(this.a, 10.0F);
+        paramView.rightMargin = 0;
+        break label395;
+        paramacxj.mRequestHeight = this.e;
       }
-      super.onClick(paramView);
-      return;
-      label276:
-      localObject1 = "";
+      paramChatMessage = paramView;
     }
   }
 }

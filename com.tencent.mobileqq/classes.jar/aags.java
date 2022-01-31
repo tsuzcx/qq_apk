@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aags
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public aags(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public aags(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.finish();
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

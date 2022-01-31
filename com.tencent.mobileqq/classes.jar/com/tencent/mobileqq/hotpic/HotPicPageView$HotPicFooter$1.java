@@ -2,12 +2,12 @@ package com.tencent.mobileqq.hotpic;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import aqzq;
+import aqzs;
 
 public class HotPicPageView$HotPicFooter$1
   implements Runnable
 {
-  public HotPicPageView$HotPicFooter$1(aqzq paramaqzq, RecyclerView.ViewHolder paramViewHolder) {}
+  public HotPicPageView$HotPicFooter$1(aqzs paramaqzs, RecyclerView.ViewHolder paramViewHolder) {}
   
   public void run()
   {

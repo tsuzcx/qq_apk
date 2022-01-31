@@ -1,67 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amxa
-  extends ampb<amwz>
 {
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  
   public int a()
   {
-    return 207;
+    return this.jdField_a_of_type_Int;
   }
   
-  @NonNull
-  public amwz a(int paramInt)
+  public String a()
   {
-    return new amwz();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  @Nullable
-  public amwz a(ampi[] paramArrayOfampi)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
-    {
-      amwz localamwz = amwz.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfampi[0].a);
-      }
-      return localamwz;
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public Class<amwz> a()
+  public void a(String paramString)
   {
-    return amwz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amwz paramamwz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramamwz.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public int b()
   {
-    return 0;
+    return this.jdField_b_of_type_Int;
   }
   
-  public boolean b()
+  public String b()
   {
-    return false;
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public boolean c()
+  public void b(int paramInt)
   {
-    return true;
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,116 +1,509 @@
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Looper;
-import com.qq.jce.wup.UniPacket;
+import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.text.TextUtils;
+import android.widget.RemoteViews;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.service.MobileQQServiceBase.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.notification.NotificationFactory;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.NotificationDeleteReceiver;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseActionListener;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Random;
 import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
 
-public abstract class awyn
-  implements ajsf
+public class awyn
+  extends awyp
 {
-  public static volatile int a;
-  public static HashMap<String, UniPacket> a;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private ConcurrentHashMap<String, xop> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private amlv jdField_a_of_type_Amlv = new awyo(this);
+  private QQNotificationManager jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = true;
+  private boolean c;
   
-  static
+  public awyn(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public static boolean a(String paramString)
+  private Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2)
   {
-    return ("OnlinePush.PbPushGroupMsg".equalsIgnoreCase(paramString)) || ("OnlinePush.PbPushDisMsg".equalsIgnoreCase(paramString)) || ("OnlinePush.PbC2CMsgSync".equalsIgnoreCase(paramString)) || ("NearFieldTranFileSvr.NotifyList".equalsIgnoreCase(paramString)) || ("NearFieldDiscussSvr.NotifyList".equalsIgnoreCase(paramString)) || ("OnlinePush.PbPushC2CMsg".equalsIgnoreCase(paramString));
+    paramIntent.putExtra("param_notifyid", 275);
+    paramIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 134217728);
+    NotificationCompat.Builder localBuilder = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_HIDE_BADGE").setSmallIcon(2130841012).setAutoCancel(true).setOngoing(true).setWhen(System.currentTimeMillis());
+    localBuilder.setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramIntent);
+    if (paramBitmap != null) {
+      localBuilder.setLargeIcon(paramBitmap);
+    }
+    return localBuilder.build();
   }
   
-  public UniPacket a(ToServiceMsg paramToServiceMsg)
+  private Notification a(Intent paramIntent, Bitmap paramBitmap, String paramString1, String paramString2, String paramString3)
   {
-    if ("StreamSvr.UploadStreamMsg".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))
+    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    int i = paramIntent.getIntExtra("param_notifyid", 0);
+    Object localObject1;
+    int k;
+    String str;
+    Object localObject2;
+    if ((i >= 512) && (i <= 522))
     {
-      String str = paramToServiceMsg.extraData.getString("filepath");
-      UniPacket localUniPacket = (UniPacket)jdField_a_of_type_JavaUtilHashMap.get(str);
-      Object localObject;
-      if (localUniPacket == null)
+      localObject1 = PendingIntent.getActivity(BaseApplication.getContext(), i, paramIntent, 134217728);
+      if (QLog.isColorLevel()) {
+        QLog.i("MobileQQService", 2, "buildNotification by getActivity. contentIntent=" + localObject1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusNoticeManager", 2, new Object[] { "buildNotification url :", paramIntent.getStringExtra("url") });
+      }
+      k = paramIntent.getIntExtra("uintype", -1);
+      if (k != 1008) {
+        break label565;
+      }
+      if (ajsd.u.equals(paramIntent.getStringExtra("uin"))) {
+        break label827;
+      }
+      if (!paramIntent.getBooleanExtra("activepull_push_flag", false)) {
+        break label549;
+      }
+      i = 2130841013;
+      str = "CHANNEL_ID_SHOW_BADGE";
+      localObject2 = localObject1;
+      localObject1 = str;
+    }
+    for (;;)
+    {
+      label167:
+      boolean bool2 = paramIntent.getBooleanExtra("key_notifycation_oneway_message", false);
+      int j = i;
+      if (bool2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MobileQQServiceBase", 2, "no saved packet, new one " + str);
+        j = i;
+        if (k == 1010) {
+          j = 2130844599;
         }
-        localObject = new awyq(true);
-        jdField_a_of_type_JavaUtilHashMap.clear();
-        jdField_a_of_type_JavaUtilHashMap.put(str, localObject);
+      }
+      if ((bool2) && ((k == 1001) || (k == 10002)))
+      {
+        i = 1;
+        label225:
+        if (i != 0) {
+          j = 2130840071;
+        }
+        if (paramIntent.getBooleanExtra("qav_notify_flag", false)) {
+          j = 2130841622;
+        }
+        if ((k == 1037) || (k == 1044)) {
+          localObject1 = "CHANNEL_ID_LIMIT_CHAT";
+        }
+        paramIntent = NotificationFactory.createNotificationCompatBuilder((String)localObject1).setSmallIcon(j).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
+        if ((k != 1030) && (k != 1035) && (k != 1041) && (k != 1042) && (bool1)) {
+          paramIntent.setOngoing(true);
+        }
+        if (bazz.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        {
+          Calendar.getInstance().get(11);
+          paramIntent.setLights(-16711936, 2000, 2000);
+        }
+        if (!this.c) {
+          break label797;
+        }
+        if (paramBitmap != null) {
+          paramIntent.setLargeIcon(paramBitmap);
+        }
+        paramIntent.setContentTitle(paramString2).setContentText(paramString3).setContentIntent((PendingIntent)localObject2);
       }
       for (;;)
       {
-        paramToServiceMsg = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
-        int i = axue.b(str);
-        if (paramToServiceMsg.shortValue() <= i)
+        if (!this.jdField_a_of_type_Boolean)
         {
-          jdField_a_of_type_JavaUtilHashMap.remove(str);
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_b_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "_" + "heads_up_notify_switch", true);
           if (QLog.isColorLevel()) {
-            QLog.d("MobileQQServiceBase", 2, "last stream, remove " + i + ", " + paramToServiceMsg);
+            QLog.i("MobileQQService", 2, "notify init priority flag, " + this.jdField_b_of_type_Boolean);
           }
         }
-        return localObject;
-        localObject = localUniPacket;
-        if (QLog.isColorLevel())
+        if ((Build.VERSION.SDK_INT >= 24) || (this.jdField_b_of_type_Boolean)) {
+          paramIntent.setPriority(1).setVibrate(new long[0]);
+        }
+        return paramIntent.build();
+        localObject1 = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 268435456);
+        break;
+        label549:
+        i = 2130841310;
+        localObject2 = localObject1;
+        localObject1 = "CHANNEL_ID_SHOW_BADGE";
+        break label167;
+        label565:
+        if (k == 1030)
         {
-          QLog.d("MobileQQServiceBase", 2, "got last packet, reuse it " + str);
-          localObject = localUniPacket;
+          i = paramIntent.getIntExtra("campus_notice_id", 100);
+          paramBitmap = baxi.a(BaseApplication.getContext().getResources(), 2130840055);
+          localObject2 = PendingIntent.getActivity(BaseApplication.getContext(), i, paramIntent, 268435456);
+          if (QLog.isColorLevel()) {
+            QLog.d("CampusNoticeManager", 2, new Object[] { "buildNotification UIN_TYPE_CAMPUS_NOTICE url :", paramIntent.getStringExtra("url") });
+          }
+          i = 2130841012;
+          localObject1 = "CHANNEL_ID_SHOW_BADGE";
+          break label167;
+        }
+        if ((k != 1035) && (k != 1041) && (k != 1042)) {
+          break label827;
+        }
+        i = paramIntent.getIntExtra("param_notifyid", 100);
+        paramBitmap = BaseApplication.getContext();
+        j = 2130841012;
+        str = "CHANNEL_ID_OTHER";
+        Bitmap localBitmap = baxi.a(paramBitmap.getResources(), 2130840055);
+        PendingIntent localPendingIntent = PendingIntent.getActivity(BaseApplication.getContext(), i, paramIntent, 268435456);
+        localObject1 = str;
+        i = j;
+        localObject2 = localPendingIntent;
+        paramBitmap = localBitmap;
+        if (!QLog.isColorLevel()) {
+          break label167;
+        }
+        QLog.d("PushNoticeManager", 2, new Object[] { "buildNotification UIN_TYPE_PUSH_NOTICE url :", paramIntent.getStringExtra("url") });
+        localObject1 = str;
+        i = j;
+        localObject2 = localPendingIntent;
+        paramBitmap = localBitmap;
+        break label167;
+        i = 0;
+        break label225;
+        label797:
+        paramIntent.setContentTitle(paramString2).setContentText(paramString3).setContentIntent((PendingIntent)localObject2);
+        if (paramBitmap != null) {
+          paramIntent.setLargeIcon(paramBitmap);
+        }
+      }
+      label827:
+      i = 2130841013;
+      localObject2 = localObject1;
+      localObject1 = "CHANNEL_ID_SHOW_BADGE";
+    }
+  }
+  
+  private PendingIntent a(Intent paramIntent)
+  {
+    String str = paramIntent.getStringExtra("uin");
+    int i = paramIntent.getIntExtra("param_notifyid", 0);
+    paramIntent = new Intent(BaseApplication.getContext(), NotificationDeleteReceiver.class);
+    paramIntent.putExtra("uin", str);
+    paramIntent.putExtra("param_notifyid", i);
+    return PendingIntent.getBroadcast(BaseApplication.getContext(), 0, paramIntent, 268435456);
+  }
+  
+  private void a(boolean paramBoolean) {}
+  
+  private void b(ToServiceMsg paramToServiceMsg)
+  {
+    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("cmds");
+    if (arrayOfString.length != 3) {
+      return;
+    }
+    Bitmap localBitmap = (Bitmap)paramToServiceMsg.extraData.getParcelable("bitmap");
+    paramToServiceMsg = a((Intent)paramToServiceMsg.extraData.getParcelable("intent"), localBitmap, arrayOfString[1], arrayOfString[2]);
+    paramToServiceMsg.flags = 34;
+    b();
+    QLog.i("MobileQQService", 1, "showNotCancelNotification nf=" + paramToServiceMsg);
+    a(275, paramToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg)
+  {
+    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("cmds");
+    if (arrayOfString.length != 3) {
+      return;
+    }
+    Intent localIntent = (Intent)paramToServiceMsg.extraData.getParcelable("intent");
+    Bitmap localBitmap = (Bitmap)paramToServiceMsg.extraData.getParcelable("bitmap");
+    boolean bool = localIntent.getBooleanExtra("key_notifycation_oneway_message", false);
+    Object localObject1;
+    int j;
+    String str;
+    int i;
+    if (!bbnf.e)
+    {
+      paramToServiceMsg = bbnc.a().a(localIntent, localBitmap, arrayOfString[0], arrayOfString[1], arrayOfString[2], this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramToServiceMsg.deleteIntent = a(localIntent);
+      b();
+      localObject1 = localIntent.getStringExtra("param_fromuin");
+      j = localIntent.getIntExtra("uintype", -1);
+      str = localIntent.getStringExtra("KEY_FRIEND_UIN");
+      if (j != -1) {
+        break label389;
+      }
+      i = localIntent.getIntExtra("param_uinType", -1);
+      label155:
+      if (!SettingCloneUtil.readValue(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), BaseApplication.getContext().getString(2131718870), "qqsetting_notify_showcontent_key", true)) {
+        break label1238;
+      }
+      if (j != 1008) {
+        break label394;
+      }
+      if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 267);
+      }
+      a(267, paramToServiceMsg, (String)localObject1, i);
+    }
+    for (;;)
+    {
+      paramToServiceMsg = new Intent("com.tencent.msg.newmessage");
+      paramToServiceMsg.setPackage("com.tencent.mobileqq");
+      paramToServiceMsg.putExtra("cmds", arrayOfString);
+      paramToServiceMsg.putExtra("intent", localIntent);
+      paramToServiceMsg.putExtra("type", 0);
+      paramToServiceMsg.putExtra("bitmap", localBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramToServiceMsg);
+      return;
+      if (bbnf.m)
+      {
+        localObject1 = a(localIntent, null, arrayOfString[0], arrayOfString[1], arrayOfString[2]);
+        i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a("icon");
+        paramToServiceMsg = (ToServiceMsg)localObject1;
+        if (i <= 0) {
+          break;
+        }
+        paramToServiceMsg = (ToServiceMsg)localObject1;
+        if (((Notification)localObject1).contentView == null) {
+          break;
+        }
+        ((Notification)localObject1).contentView.setImageViewBitmap(i, localBitmap);
+        paramToServiceMsg = (ToServiceMsg)localObject1;
+        break;
+      }
+      paramToServiceMsg = a(localIntent, localBitmap, arrayOfString[0], arrayOfString[1], arrayOfString[2]);
+      break;
+      label389:
+      i = j;
+      break label155;
+      label394:
+      if ((bool) && (j == 1010))
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 272);
+        }
+        a(272, paramToServiceMsg, (String)localObject1, i);
+        if (QLog.isColorLevel()) {
+          QLog.d("MobileQQService", 2, "entry show_NOTIFY_ID_DATE_UNREAD notify");
+        }
+      }
+      else if (((bool) && (j == 1001)) || (j == 10002))
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 268);
+        }
+        a(268, paramToServiceMsg, (String)localObject1, i);
+        if (QLog.isColorLevel()) {
+          QLog.d("MobileQQService", 2, "entry show_NOTIFY_ID_LBS_FRIEND_UNREAD notify");
+        }
+      }
+      else if (localIntent.getBooleanExtra("qav_notify_flag", false))
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 236);
+        }
+        a(236, paramToServiceMsg, (String)localObject1, i);
+      }
+      else if (j == 3001)
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 271);
+        }
+        a(271, paramToServiceMsg, (String)localObject1, i);
+      }
+      else if ((j == 1037) || (j == 1044))
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
+        {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 275);
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 266);
+        }
+        a(266, paramToServiceMsg, (String)localObject1, i);
+      }
+      else if (localIntent.getBooleanExtra("activepull_push_flag", false))
+      {
+        if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+          this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 269);
+        }
+        a(269, paramToServiceMsg, (String)localObject1, i);
+      }
+      else if (j == 1030)
+      {
+        str = localIntent.getStringExtra("campus_notice_tag");
+        j = localIntent.getIntExtra("campus_notice_id", 0);
+        Object localObject2 = new axqt();
+        ((axqt)localObject2).e = "0X800923F";
+        ((axqt)localObject2).d = "Android系统通知曝光";
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusNoticeManager", 2, new Object[] { "notification url :", localIntent.getStringExtra("url") });
+        }
+        axqs.a(localIntent.getStringExtra("url"), (axqt)localObject2);
+        axqs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (axqt)localObject2);
+        localObject2 = (amga)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(240);
+        a(str, j, paramToServiceMsg, (String)localObject1, i);
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusNoticeManager", 2, String.format(Locale.getDefault(), "show campus_notice [%d, %s]", new Object[] { Integer.valueOf(j), str }));
+        }
+      }
+      else if ((j == 1035) || (j == 1041) || (j == 1042))
+      {
+        str = localIntent.getStringExtra("push_notice_tag");
+        j = localIntent.getIntExtra("param_notifyid", 0);
+        aseq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent.getStringExtra("push_notice_service_id"), localIntent.getStringExtra("push_notice_content_id"), localIntent.getStringExtra("url"), "0X800923F", "Android系统通知曝光");
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, new Object[] { "notification url :", localIntent.getStringExtra("url") });
+        }
+        a(str, j, paramToServiceMsg, (String)localObject1, i);
+        if (Build.VERSION.SDK_INT >= 19) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.s();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, String.format(Locale.getDefault(), "show push_notice [%d, %s]", new Object[] { Integer.valueOf(j), str }));
+        }
+      }
+      else if (j == 7225)
+      {
+        a(localIntent.getStringExtra("push_notice_tag"), localIntent.getIntExtra("param_notifyid", 0), paramToServiceMsg, (String)localObject1, i);
+      }
+      else
+      {
+        if ((j == 0) && (localIntent.getBooleanExtra("key_reactive_push_tip", false))) {
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 2, 0, "", "", "", "");
+        }
+        if ((bfoi.a(j)) && (bfoi.a(str)))
+        {
+          j = localIntent.getIntExtra("param_notifyid", 0);
+          a(275);
+          a(j, paramToServiceMsg, (String)localObject1, i);
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
+          {
+            this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 265);
+            this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 275);
+          }
+          a(265, paramToServiceMsg, (String)localObject1, i);
+          continue;
+          label1238:
+          if (localIntent.getBooleanExtra("qav_notify_flag", false))
+          {
+            if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+              this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 236);
+            }
+            a(236, paramToServiceMsg, (String)localObject1, i);
+          }
+          else if (j == 1030)
+          {
+            str = localIntent.getStringExtra("campus_notice_tag");
+            j = localIntent.getIntExtra("campus_notice_id", 0);
+            if (QLog.isColorLevel()) {
+              QLog.d("MobileQQService", 2, String.format(Locale.getDefault(), "show campus_notice [%d, %s]", new Object[] { Integer.valueOf(j), str }));
+            }
+            a(str, j, paramToServiceMsg, (String)localObject1, i);
+          }
+          else if ((j == 1035) || (j == 1041) || (j == 1042))
+          {
+            str = localIntent.getStringExtra("push_notice_tag");
+            j = localIntent.getIntExtra("param_notifyid", 0);
+            aseq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent.getStringExtra("push_notice_service_id"), localIntent.getStringExtra("push_notice_content_id"), localIntent.getStringExtra("url"), "0X800923F", "Android系统通知曝光");
+            if (QLog.isColorLevel()) {
+              QLog.d("MobileQQService", 2, String.format(Locale.getDefault(), "show push_notice [%d, %s]", new Object[] { Integer.valueOf(j), str }));
+            }
+            a(str, j, paramToServiceMsg, (String)localObject1, i);
+            if (Build.VERSION.SDK_INT >= 19) {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.s();
+            }
+          }
+          else if ((j == 1037) || (j == 1044))
+          {
+            if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+              this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 266);
+            }
+            a(266, paramToServiceMsg, (String)localObject1, i);
+          }
+          else
+          {
+            if ((j == 0) && (localIntent.getBooleanExtra("key_reactive_push_tip", false))) {
+              axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 2, 0, "", "", "", "");
+            }
+            if ((bfoi.a(j)) && (bfoi.a(str)))
+            {
+              j = localIntent.getIntExtra("param_notifyid", 0);
+              a(275);
+              a(j, paramToServiceMsg, (String)localObject1, i);
+            }
+            else
+            {
+              if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null)
+              {
+                this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 265);
+                this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.showMsgNotification", 275);
+              }
+              a(265, paramToServiceMsg, (String)localObject1, i);
+            }
+          }
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MobileQQServiceBase", 2, "not stream ptt");
-    }
-    return new UniPacket(true);
   }
   
-  public abstract AppInterface a();
-  
-  public xop a(String paramString)
+  public AppInterface a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    int i;
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        a();
-      }
-      i = paramString.indexOf('.');
-      if (i <= 1) {
-        return null;
-      }
-    }
-    finally {}
-    paramString = paramString.substring(0, i);
-    return (xop)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   }
   
   protected void a()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      }
+      super.a();
+      a(new biqr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new axba(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new awzg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new axat(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new awzt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new axbh());
+      axbc localaxbc = new axbc();
+      a(localaxbc);
+      localaxbc.a(this.jdField_a_of_type_Amlv);
+      a(new awza());
+      a(new axbm());
+      a(new awzf());
+      a(new awyt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new awyy());
+      a(new awyz());
+      a(new myu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      a(new axbe());
+      a(new axbf());
+      a(new awyx());
+      a(new axbd());
+      a(new axbq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      super.d();
       return;
     }
     finally
@@ -120,145 +513,156 @@ public abstract class awyn
     }
   }
   
-  protected void a(FromServiceMsg paramFromServiceMsg) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, amlw paramamlw, Class<? extends MSFServlet> paramClass)
+  void a(int paramInt)
   {
-    int j = 0;
-    int i = 0;
-    int k = 0;
-    Object localObject2 = null;
-    boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-    AppInterface localAppInterface = a();
-    Object localObject1;
-    if (bool)
+    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication() != null)) {}
+    try
     {
-      localObject1 = localObject2;
-      j = i;
-      i = k;
-      long l;
-      if (paramToServiceMsg.getWupBuffer() != null)
-      {
-        l = paramToServiceMsg.getWupBuffer().length;
-        localObject1 = new byte[(int)l + 4];
-        bbmj.a((byte[])localObject1, 0, 4L + l);
-        bbmj.a((byte[])localObject1, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-        paramToServiceMsg.putWupBuffer((byte[])localObject1);
-        int m = 1;
-        localObject1 = localObject2;
-        j = m;
-        i = k;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MobileQQServiceBase", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
-          i = k;
-          j = m;
-          localObject1 = localObject2;
-        }
-      }
-      if (j != 0)
-      {
-        paramToServiceMsg.actionListener = paramamlw;
-        paramamlw = new NewIntent(localAppInterface.getApplication(), paramClass);
-        paramamlw.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-        localAppInterface.startServlet(paramamlw);
-        l = System.currentTimeMillis();
-        paramToServiceMsg.extraData.putLong("sendtimekey", l);
-      }
+      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.stopForegroundCompat", paramInt);
+      return;
     }
-    else
+    catch (Throwable localThrowable) {}
+  }
+  
+  void a(int paramInt1, Notification paramNotification, String paramString, int paramInt2)
+  {
+    a(null, paramInt1, paramNotification, paramString, paramInt2);
+  }
+  
+  protected void a(FromServiceMsg paramFromServiceMsg)
+  {
+    asel.a().a(paramFromServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    b(paramToServiceMsg, this.jdField_a_of_type_Amlv, amlx.class);
+  }
+  
+  protected void a(ToServiceMsg paramToServiceMsg, amlv paramamlv, Class<? extends MSFServlet> paramClass)
+  {
+    if (paramToServiceMsg == null) {}
+    do
     {
-      label220:
-      localObject1 = a(paramToServiceMsg.getServiceCmd());
-      if (localObject1 != null)
-      {
-        localObject2 = a(paramToServiceMsg);
-        ((UniPacket)localObject2).setEncodeName("utf-8");
-        i = jdField_a_of_type_Int;
-        jdField_a_of_type_Int = i + 1;
-        ((UniPacket)localObject2).setRequestId(i);
-        if (((xop)localObject1).a())
-        {
-          localObject2 = ((xop)localObject1).a(paramToServiceMsg);
-          if (localObject2 == null) {
-            break label666;
-          }
-          paramToServiceMsg.putWupBuffer((byte[])localObject2);
-        }
-      }
-    }
-    label666:
-    for (i = 1;; i = 0)
-    {
-      k = 1;
-      j = i;
-      i = k;
-      for (;;)
-      {
+      return;
+      paramClass = paramToServiceMsg.getServiceCmd();
+      if (!"CMD_SHOW_NOTIFIYCATION".equals(paramClass)) {
         break;
-        if (((xop)localObject1).a(paramToServiceMsg, (UniPacket)localObject2))
-        {
-          paramToServiceMsg.putWupBuffer(((UniPacket)localObject2).encode());
-          j = 1;
-          i = 0;
-          continue;
-          if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd()))
-          {
-            QLog.i("MobileQQServiceBase", 1, "infoSync error! lookupCoder is null!");
-            localObject2 = (MessageHandler)localAppInterface.getBusinessHandler(0);
-            if (localObject2 != null)
-            {
-              ((MessageHandler)localObject2).notifyUI(4004, false, null);
-              QLog.i("jensenweng", 1, "notifyUI failed!");
-            }
-            localObject2 = new HashMap();
-            ((HashMap)localObject2).put("param_uin", localAppInterface.getCurrentAccountUin());
-            if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().size() > 0)) {
-              ((HashMap)localObject2).put("param_coderMap", this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().toString());
-            }
-            axrl.a(BaseApplication.getContext()).a(null, "prxyLookupCoderNull", true, 0L, 0L, (HashMap)localObject2, null);
-          }
-          j = i;
-          i = k;
-          break;
-          if ((!bool) && ((localObject1 == null) || (i != 0))) {
-            break label220;
-          }
-          paramamlw = new FromServiceMsg(localAppInterface.getCurrentAccountUin(), paramToServiceMsg.getServiceCmd());
-          paramClass = (int[])ajtw.a().get(paramToServiceMsg.getServiceCmd());
-          if ((paramClass == null) || (paramClass.length <= 0)) {
-            break label220;
-          }
-          j = paramClass.length;
-          i = 0;
-          label558:
-          if (i < j)
-          {
-            localObject1 = (ajtd)localAppInterface.getBusinessHandler(paramClass[i]);
-            if ((localObject1 != null) && (!bool)) {
-              break label598;
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break label558;
-            break;
-            try
-            {
-              label598:
-              ((ajtd)localObject1).onReceive(paramToServiceMsg, paramamlw, null);
-            }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-            }
-            if (QLog.isColorLevel()) {
-              QLog.w("MobileQQServiceBase", 2, localObject1.getClass().getSimpleName() + " onReceive error,", localException);
-            }
-          }
+      }
+      if (!((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a())
+      {
+        c(paramToServiceMsg);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("MobileQQService", 2, "pcm blocked msg notification");
+    return;
+    if ("CMD_IDLE_NOTIFIYCATION".equals(paramClass))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
+      b(paramToServiceMsg);
+      return;
+    }
+    if ("CMD_STOP_NOTIFIYCATION".equals(paramClass))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
+      a(275);
+      return;
+    }
+    if ("CMD_CANCLE_NOTIFIYCATION".equals(paramClass))
+    {
+      b(275);
+      return;
+    }
+    super.a(paramToServiceMsg, paramamlv, amlx.class);
+  }
+  
+  void a(String paramString1, int paramInt1, Notification paramNotification, String paramString2, int paramInt2)
+  {
+    int k = 0;
+    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {}
+    int j;
+    for (;;)
+    {
+      try
+      {
+        QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        avet localavet = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        if (localavet == null) {
+          break label305;
         }
-        i = 0;
+        i = localavet.a();
+        if (localQQMessageFacade == null) {
+          break label299;
+        }
+        j = localQQMessageFacade.b();
+        if (!TextUtils.isEmpty(paramString1)) {
+          break label362;
+        }
+        if (paramInt1 == 265) {
+          break;
+        }
+        if ((paramInt1 < 512) || (paramInt1 > 522)) {
+          break label355;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        if (!QLog.isColorLevel()) {
+          break label354;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BadgeUtilImpl", 2, "startForegroundCompat changeMI6Badge count=" + i);
+      }
+      if (bfnb.a(BaseApplicationImpl.getApplication().getApplicationContext())) {
+        bfnb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), i, paramNotification);
+      }
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notifyUseTag("MobileQQService.startForegroundCompat", paramString1, paramNotification, this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.createNotifyBundle(paramInt1, paramString2, paramInt2));
+        return;
+      }
+      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.notify("MobileQQService.startForegroundCompat", paramNotification, this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.createNotifyBundle(paramInt1, paramString2, paramInt2));
+      return;
+      QLog.i("MobileQQService", 2, "startForegroundCompat exception. id=" + paramInt1 + ", mNM=" + this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager, paramString1);
+      return;
+      if (!QLog.isColorLevel()) {
+        break label354;
+      }
+      QLog.i("MobileQQService", 2, "startForegroundCompat. id=" + paramInt1 + ", mNM=" + this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager);
+      return;
+      label292:
+      i = j;
+      continue;
+      label299:
+      j = 0;
+      continue;
+      label305:
+      i = 0;
+    }
+    int i = j;
+    for (;;)
+    {
+      j = i;
+      if (paramInt1 >= 482)
+      {
+        j = i;
+        if (paramInt1 <= 511) {
+          j = 0;
+        }
+      }
+      if (paramInt1 != 266) {
+        break label292;
+      }
+      i = k;
+      break;
+      label354:
+      return;
+      label355:
+      if (paramInt1 != 236) {
+        label362:
+        i = 1;
       }
     }
   }
@@ -268,206 +672,73 @@ public abstract class awyn
     if (paramToServiceMsg == null) {
       return;
     }
-    AppInterface localAppInterface = a();
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    label108:
-    Object localObject;
-    ajtd localajtd;
-    boolean bool;
-    label173:
-    int i;
-    if (paramBoolean)
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileQQServiceBase", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-      }
-      localObject = null;
-      localajtd = null;
-      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MobileQQServiceBase", 4, "bPbResp:" + bool);
-      }
-      if (bool) {
-        break label703;
-      }
-      bool = a(paramFromServiceMsg.getServiceCmd());
-      paramException = (IBaseActionListener)paramToServiceMsg.getAttribute("listener");
-      if (paramException != null) {
-        paramToServiceMsg.actionListener = paramException;
-      }
-      if (!bool) {
-        localObject = a(paramFromServiceMsg.getServiceCmd());
-      }
-      paramException = localajtd;
-      if (paramBoolean)
+      if (paramFromServiceMsg.getResultCode() == 2008)
       {
-        if (!bool) {
-          break label572;
+        paramFromServiceMsg = BaseActivity.sTopActivity;
+        paramToServiceMsg = paramFromServiceMsg;
+        if (paramFromServiceMsg == null) {
+          paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("MobileQQServiceBase", 2, "PB cmd: recv cmd: " + paramFromServiceMsg.getServiceCmd());
-        }
-        paramException = localajtd;
-        if (paramFromServiceMsg.getWupBuffer() != null)
-        {
-          i = paramFromServiceMsg.getWupBuffer().length - 4;
-          paramException = new byte[i];
-          bbmj.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-          paramFromServiceMsg.putWupBuffer(paramException);
-          paramException = paramFromServiceMsg.getWupBuffer();
-        }
+        paramFromServiceMsg = new Intent(paramToServiceMsg, NotificationActivity.class);
+        paramFromServiceMsg.setFlags(872415232);
+        paramFromServiceMsg.putExtra("type", 2);
+        paramToServiceMsg.startActivity(paramFromServiceMsg);
+        return;
+      }
+      if ((paramException == null) && ((paramFromServiceMsg.getResultCode() == 1002) || (paramFromServiceMsg.getResultCode() == 1013)) && ("ProfileService.CheckUpdateReq".equals(paramFromServiceMsg.getServiceCmd()))) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a();
       }
     }
-    label572:
-    label703:
-    label706:
-    for (;;)
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, paramException);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) && (this.jdField_b_of_type_Int < 3)) {}
+    try
+    {
+      this.c = bbdh.a();
+      a(true);
+      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
+      if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager == null) {
+        this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
+      }
+      jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+      if (QLog.isColorLevel()) {
+        QLog.i("MobileQQService", 2, "MobileQQService has created. mNM=" + this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager);
+      }
+      this.jdField_b_of_type_Int += 1;
+      return;
+    }
+    catch (Exception localException)
     {
       for (;;)
       {
-        a(paramFromServiceMsg);
-        if ((!bool) && (localObject == null)) {
-          break;
-        }
-        localObject = (int[])ajtw.a().get(paramFromServiceMsg.getServiceCmd());
-        if ((localObject == null) || (localObject.length <= 0)) {
-          break;
-        }
-        int j = localObject.length;
-        i = 0;
-        label361:
-        if (i >= j) {
-          break;
-        }
-        localajtd = (ajtd)localAppInterface.getBusinessHandler(localObject[i]);
-        if (localajtd != null) {}
-        try
-        {
-          localajtd.onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-          i += 1;
-          break label361;
-          if (paramException != null)
-          {
-            localObject = new ByteArrayOutputStream();
-            paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-            paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-            if (!QLog.isColorLevel()) {
-              break label108;
-            }
-            QLog.d("MobileQQServiceBase", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-            break label108;
-          }
-          if (!QLog.isColorLevel()) {
-            break label108;
-          }
-          QLog.w("MobileQQServiceBase", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
-          break label108;
-          if (localObject != null) {}
-          try
-          {
-            ((xop)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-            paramException = ((xop)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-          }
-          catch (Exception localException1)
-          {
-            localException1.printStackTrace();
-            paramException = localajtd;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MobileQQServiceBase", 2, "bpc null");
-          }
-          paramException = null;
-          break label706;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MobileQQServiceBase", 2, "", localException1);
-            paramException = localajtd;
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            localException2.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.w("MobileQQServiceBase", 2, localajtd.getClass().getSimpleName() + " onReceive error,", localException2);
-            }
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MobileQQService", 2, "e = " + localException.toString());
         }
       }
-      break label173;
     }
   }
   
-  protected boolean a(xop paramxop)
+  void b(int paramInt)
   {
-    int i = 0;
-    String[] arrayOfString = paramxop.a();
-    if ((arrayOfString == null) || (arrayOfString.length == 0)) {
-      return false;
+    if (this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager != null) {
+      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager.cancel("MobileQQService.cancelNotification", paramInt);
     }
-    while (i < arrayOfString.length)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(arrayOfString[i], paramxop);
-      i += 1;
-    }
-    return true;
-  }
-  
-  protected void b(ToServiceMsg paramToServiceMsg, amlw paramamlw, Class<? extends MSFServlet> paramClass)
-  {
-    paramToServiceMsg = new MobileQQServiceBase.1(this, paramToServiceMsg, paramamlw, paramClass);
-    if (Thread.currentThread() == Looper.getMainLooper().getThread())
-    {
-      ThreadManager.post(paramToServiceMsg, 10, null, false);
-      return;
-    }
-    paramToServiceMsg.run();
   }
   
   public void c()
   {
-    e();
-  }
-  
-  protected void d()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    a(false);
+    a(275);
+    if (QLog.isColorLevel()) {
+      QLog.i("MobileQQService", 2, "MobileQQService has destroyed.");
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void e()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        localObject = (xop)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-        if (localObject != null)
-        {
-          try
-          {
-            ((xop)localObject).a();
-          }
-          catch (Exception localException) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("MobileQQServiceBase", 2, "bpc destory error " + localException, localException);
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Amlv = null;
+    super.c();
   }
 }
 

@@ -1,27 +1,20 @@
-import android.app.Activity;
-import android.os.Bundle;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class afvf
-  extends mxm
+  implements DialogInterface.OnKeyListener
 {
-  afvf(afur paramafur) {}
+  afvf(afup paramafup) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((afur.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.c();
-    if (afur.a(this.a) != null) {
-      afur.a(this.a).removeCallbacks(afur.b(this.a));
-    }
-    if (paramInt == 16)
+    if (paramInt == 4)
     {
-      this.a.d();
-      return;
+      afup.a(this.a, afup.a(this.a), Long.valueOf(afup.a(this.a)).longValue());
+      afup.a(this.a);
     }
-    afur.a(this.a, afur.b(this.a));
+    return true;
   }
 }
 

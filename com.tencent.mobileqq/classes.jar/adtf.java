@@ -1,6 +1,16 @@
-abstract interface adtf
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+
+public class adtf
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public adtf(LightVideoItemBuilder paramLightVideoItemBuilder) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onClick(paramView);
+  }
 }
 
 

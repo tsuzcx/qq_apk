@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richstatus;
 
-import awdz;
 import aweb;
+import awed;
 
 public class SignatureHistoryFragment$DataAdapter$2$1
   implements Runnable
 {
-  public SignatureHistoryFragment$DataAdapter$2$1(aweb paramaweb, int paramInt1, int paramInt2) {}
+  public SignatureHistoryFragment$DataAdapter$2$1(awed paramawed, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    SignatureHistoryFragment.a(this.jdField_a_of_type_Aweb.a.a, this.jdField_a_of_type_Int, this.b, true);
+    SignatureHistoryFragment.a(this.jdField_a_of_type_Awed.a.a, this.jdField_a_of_type_Int, this.b, true);
   }
 }
 

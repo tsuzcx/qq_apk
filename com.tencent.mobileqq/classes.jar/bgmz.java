@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.IInterface;
+import cooperation.qappcenter.remote.SendMsg;
 
-class bgmz
-  implements DialogInterface.OnDismissListener
+public abstract interface bgmz
+  extends IInterface
 {
-  bgmz(bgmt parambgmt) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bgmt.a(this.a, null);
-  }
+  public abstract void a(SendMsg paramSendMsg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgmz
  * JD-Core Version:    0.7.0.1
  */

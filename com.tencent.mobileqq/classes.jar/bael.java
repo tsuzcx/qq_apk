@@ -1,8 +1,16 @@
-import android.view.View;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.3.1;
 
-public abstract interface bael
+public class bael
+  extends akil
 {
-  public abstract void a(View paramView);
+  bael(baei parambaei) {}
+  
+  protected void a(boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3)
+  {
+    ThreadManager.getUIHandlerV2().post(new AllMemberItemViewWrapper.3.1(this, paramBoolean1, paramString1, paramBoolean2, paramString2, paramString3, paramBoolean3));
+  }
 }
 
 

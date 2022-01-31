@@ -1,35 +1,53 @@
+import com.tencent.ark.open.ArkAppConfigMgr;
 import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class amqv
-  extends amqr
+  extends amqq
 {
   public int a()
   {
-    return 159;
+    return 380;
   }
   
-  public amql a(String paramString)
+  public amqk a(String paramString)
   {
-    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    QLog.d("ArkPlatformConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
     try
     {
-      amrj localamrj = (amrj)ampw.a(paramString, amrj.class);
+      amrj localamrj = (amrj)ampv.a(paramString, amrj.class);
       return new amqp(paramString, localamrj);
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
     {
       for (;;)
       {
-        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        QLog.i("ArkPlatformConfProcessor", 1, "readJsonOrXml:" + paramString + "fail", localQStorageInstantiateException);
         Object localObject = null;
       }
     }
   }
   
-  public boolean a()
+  public void a(amqk paramamqk)
   {
-    return true;
+    super.a(paramamqk);
+    if (paramamqk == null) {
+      QLog.i("ArkPlatformConfProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      return;
+      QLog.d("ArkPlatformConfProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamqk.a());
+      paramamqk = paramamqk.a();
+      altb.a();
+    } while ((paramamqk == null) || (paramamqk.a() == null));
+    paramamqk = paramamqk.a();
+    if (paramamqk == null)
+    {
+      QLog.i("ArkPlatformConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
+      return;
+    }
+    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramamqk.jdField_a_of_type_Boolean, paramamqk.b, paramamqk.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,15 +1,29 @@
 import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class aywv
+class aywv
+  implements aywy
 {
-  aywu a;
+  aywv(aywu paramaywu) {}
   
-  protected Bitmap b(Bitmap paramBitmap)
+  public Bitmap a(URL paramURL)
   {
-    if (this.a == null) {
-      return paramBitmap;
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = aywu.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = aywu.b(this.a, str);
+      }
+      return paramURL;
     }
-    return this.a.a(paramBitmap);
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 

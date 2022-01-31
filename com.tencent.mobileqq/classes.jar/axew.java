@@ -1,70 +1,61 @@
 public class axew
-  extends axdm
 {
-  public axex a;
-  public Object a;
-  public boolean a = true;
-  public long b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public String m = "";
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public String q = "";
-  public String r;
-  public String s;
+  private String jdField_a_of_type_JavaLangString;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  axew(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+      return -3;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\_");
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
+      return -2;
+    }
+    return 0;
+  }
+  
+  int a(char paramChar)
+  {
+    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+      return -3;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_JavaLangString.split("\\" + paramChar);
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < 2) {
+      return -2;
+    }
+    return 0;
+  }
   
   public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoUploadInfo");
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.j);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.c);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.d);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileTime:").append(this.f);
-    localStringBuilder.append("\n |-").append("fileSource:").append(this.l);
-    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.b);
-    localStringBuilder.append("\n |-").append("fileWidth:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileHeight:").append(this.i);
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
   }
   
-  public boolean a()
+  public String b()
   {
-    return super.a();
+    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
   }
   
-  public String toString()
+  String c()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(super.toString());
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_ArrayOfJavaLangString[0].trim();
+  }
+  
+  String d()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[1].trim();
   }
 }
 

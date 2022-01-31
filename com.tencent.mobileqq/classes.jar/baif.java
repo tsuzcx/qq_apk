@@ -1,12 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class baif
-  implements View.OnClickListener
+public class baif
 {
-  baif(baie parambaie) {}
-  
-  public void onClick(View paramView) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
 }
 
 

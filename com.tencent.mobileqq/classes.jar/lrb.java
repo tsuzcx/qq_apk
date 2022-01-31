@@ -1,70 +1,164 @@
 import android.graphics.Matrix;
 import android.graphics.RectF;
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import java.lang.reflect.Array;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.model.SizeI;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.libpag.PAGComposition;
+import org.libpag.PAGFile;
+import org.libpag.PAGImage;
+import org.libpag.PAGLayer;
+import org.libpag.PAGRenderer;
+import org.libpag.PAGSurface;
 
 public class lrb
+  extends lrc
 {
-  private static int[] a = { 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 30, 31, 32, 33, 34, 35, 36, 37, 22, 23, 24, 25, 26, 27, 28, 29, 46, 47, 48, 49, 50, 51, 52, 53, 38, 39, 40, 41, 42, 43, 44, 45, 54, 55, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 73, 72, 71, 70, 69, 68, 67, 78, 77, 76, 75, 74, 83, 82, 81, 80, 79, 88, 87, 86, 85, 84, 90, 89, 93, 94, 91, 92 };
+  private int jdField_a_of_type_Int = 720;
+  private long jdField_a_of_type_Long;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  private final String jdField_a_of_type_JavaLangString = "PAGFilter-" + Integer.toHexString(hashCode());
+  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
+  private PAGRenderer jdField_a_of_type_OrgLibpagPAGRenderer;
+  private PAGSurface jdField_a_of_type_OrgLibpagPAGSurface;
+  private int jdField_b_of_type_Int = 1280;
+  private long jdField_b_of_type_Long;
   
-  public static TTFaceOriginDataModel a(TTFaceOriginDataModel paramTTFaceOriginDataModel, RectF paramRectF1, RectF paramRectF2, Matrix paramMatrix, float paramFloat, boolean paramBoolean)
+  public lrb(int paramInt1, int paramInt2)
   {
-    TTFaceOriginDataModel localTTFaceOriginDataModel = new TTFaceOriginDataModel();
-    float f = Math.max(paramRectF2.width() / paramRectF1.width(), paramRectF2.height() / paramRectF1.height());
-    int i = (int)(paramRectF1.width() * f);
-    int j = (int)(paramRectF1.height() * f);
-    if (i > paramRectF2.width()) {
-      paramMatrix.preTranslate((paramRectF2.width() - i) / 2.0F, 0.0F);
-    }
-    for (;;)
-    {
-      paramMatrix.preScale(f, f);
-      paramMatrix.postScale(paramFloat, paramFloat);
-      i = 0;
-      while (i < paramTTFaceOriginDataModel.facePoint.length)
-      {
-        if (paramBoolean) {
-          paramTTFaceOriginDataModel.facePoint[i][0] = (paramRectF1.width() - paramTTFaceOriginDataModel.facePoint[i][0]);
-        }
-        paramMatrix.mapPoints(localTTFaceOriginDataModel.facePoint[i], paramTTFaceOriginDataModel.facePoint[i]);
-        i += 1;
-      }
-      if (j > paramRectF2.height()) {
-        paramMatrix.preTranslate(0.0F, (paramRectF2.height() - j) / 2.0F);
-      }
-    }
-    localTTFaceOriginDataModel.facePointVisible = paramTTFaceOriginDataModel.facePointVisible;
-    localTTFaceOriginDataModel.pitch = paramTTFaceOriginDataModel.pitch;
-    if (paramBoolean)
-    {
-      paramFloat = -paramTTFaceOriginDataModel.yaw;
-      localTTFaceOriginDataModel.yaw = paramFloat;
-      if (!paramBoolean) {
-        break label273;
-      }
-    }
-    label273:
-    for (paramFloat = -paramTTFaceOriginDataModel.roll;; paramFloat = paramTTFaceOriginDataModel.roll)
-    {
-      localTTFaceOriginDataModel.roll = paramFloat;
-      localTTFaceOriginDataModel.cls = paramTTFaceOriginDataModel.cls;
-      return localTTFaceOriginDataModel;
-      paramFloat = paramTTFaceOriginDataModel.yaw;
-      break;
-    }
+    super(1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public static void a(TTFaceOriginDataModel paramTTFaceOriginDataModel)
+  private void d()
   {
-    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 94, 2 });
-    int i = 0;
-    while (i < a.length)
+    if (this.jdField_a_of_type_OrgLibpagPAGFile != null)
     {
-      arrayOfFloat[i][0] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][0];
-      arrayOfFloat[i][1] = paramTTFaceOriginDataModel.facePoint[(a[i] - 1)][1];
+      if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
+      {
+        this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+        this.jdField_a_of_type_OrgLibpagPAGSurface = null;
+      }
+      if (this.jdField_a_of_type_OrgLibpagPAGRenderer == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "applyPag: not inited yet");
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
+    this.jdField_a_of_type_OrgLibpagPAGSurface = PAGSurface.FromTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: create surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()));
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(this.jdField_a_of_type_OrgLibpagPAGSurface);
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_OrgLibpagPAGFile.duration() / 1000L);
+  }
+  
+  @NotNull
+  protected Frame a(List<lrg> paramList, long paramLong)
+  {
+    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long > paramLong)) {
+      this.jdField_b_of_type_Long = paramLong;
+    }
+    int j = Math.min(this.jdField_a_of_type_OrgLibpagPAGFile.numImages(), paramList.size());
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = ((lrg)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+      localObject = PAGImage.FromTexture(((Frame)localObject).getTextureId(), 3553, ((Frame)localObject).width, ((Frame)localObject).height, true);
+      if (localObject != null)
+      {
+        ((PAGImage)localObject).setScaleMode(3);
+        this.jdField_a_of_type_OrgLibpagPAGRenderer.replaceImage(i, (PAGImage)localObject);
+      }
       i += 1;
     }
-    paramTTFaceOriginDataModel.facePoint = arrayOfFloat;
+    double d = (paramLong - this.jdField_b_of_type_Long) % this.jdField_a_of_type_Long / this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setProgress(d);
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.flush();
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public SizeI a()
+  {
+    return new SizeI(this.jdField_a_of_type_OrgLibpagPAGFile.width(), this.jdField_a_of_type_OrgLibpagPAGFile.height());
+  }
+  
+  public List<Pair<RectF, Matrix>> a()
+  {
+    int k = 0;
+    PAGComposition localPAGComposition = this.jdField_a_of_type_OrgLibpagPAGRenderer.getRootComposition();
+    int n = this.jdField_a_of_type_OrgLibpagPAGFile.numImages();
+    int m = localPAGComposition.numLayers();
+    ArrayList localArrayList = new ArrayList(n);
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= n) {
+        break;
+      }
+      localArrayList.add(null);
+      i += 1;
+    }
+    while (j < m)
+    {
+      PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
+      if (localPAGLayer.layerType() == 5) {
+        localArrayList.set(localPAGLayer.editableIndex(), new Pair(localPAGLayer.getBounds(), localPAGLayer.getTotalMatrix()));
+      }
+      j += 1;
+    }
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit");
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == null)
+    {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(-1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0.0D);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
+    }
+    this.jdField_a_of_type_OrgLibpagPAGRenderer = new PAGRenderer();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create render#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGRenderer.hashCode()));
+    d();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(paramString);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString + " loaded, width=" + this.jdField_a_of_type_OrgLibpagPAGFile.width() + ", height=" + this.jdField_a_of_type_OrgLibpagPAGFile.height());
+    d();
+  }
+  
+  protected void b()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
+    if (this.jdField_a_of_type_OrgLibpagPAGRenderer != null)
+    {
+      this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(null);
+      this.jdField_a_of_type_OrgLibpagPAGRenderer = null;
+    }
+    if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
+    {
+      this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+      this.jdField_a_of_type_OrgLibpagPAGSurface = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
+    {
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
+    }
   }
 }
 

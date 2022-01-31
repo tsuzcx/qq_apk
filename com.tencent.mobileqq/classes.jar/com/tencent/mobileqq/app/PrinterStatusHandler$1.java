@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import akcw;
-import axqw;
+import akcv;
+import axqy;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PrinterStatusHandler$1
   extends TimerTask
 {
-  public PrinterStatusHandler$1(akcw paramakcw) {}
+  public PrinterStatusHandler$1(akcv paramakcv) {}
   
   public void run()
   {
-    axqw.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (akcw.a(this.this$0) != null)
+    axqy.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (akcv.a(this.this$0) != null)
     {
-      akcw.a(this.this$0).cancel();
-      akcw.a(this.this$0, null);
+      akcv.a(this.this$0).cancel();
+      akcv.a(this.this$0, null);
     }
   }
 }

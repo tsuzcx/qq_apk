@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import ajty;
+import ajtw;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConditionSearchManager$4
   implements Runnable
 {
-  public ConditionSearchManager$4(ajty paramajty) {}
+  public ConditionSearchManager$4(ajtw paramajtw) {}
   
   public void run()
   {

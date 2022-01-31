@@ -1,26 +1,14 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class beul
-  implements bepw<GameRuntimeLoader>
+class beul
+  implements DialogInterface.OnClickListener
 {
-  public GameRuntimeLoader a(Context paramContext, Bundle paramBundle)
-  {
-    return new GameRuntimeLoader(paramContext, null);
-  }
+  beul(beuj parambeuj) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
-  }
-  
-  public boolean a(MiniAppInfo paramMiniAppInfo)
-  {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniGame());
+    paramDialogInterface.dismiss();
   }
 }
 

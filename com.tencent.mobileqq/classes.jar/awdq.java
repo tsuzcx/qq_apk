@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class awdq
-  implements View.OnClickListener
+public final class awdq
+  implements anyl
 {
-  public awdq(SignatureHistoryFragment paramSignatureHistoryFragment) {}
-  
-  public void onClick(View paramView)
+  public List<aoap> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    axqw.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 2, 0, "0", "0", "", "");
-    SignatureHistoryFragment.a(this.a, true);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new aoap(7, 7, null));
+    return localArrayList;
   }
 }
 

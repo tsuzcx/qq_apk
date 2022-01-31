@@ -1,19 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+
 public class aonl
-  extends aonk
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  public aonl(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
   
-  public aonl(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public void onClick(View paramView)
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.a.d();
   }
 }
 

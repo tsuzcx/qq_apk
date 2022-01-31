@@ -3,62 +3,62 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.app.Activity;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import nmf;
-import noz;
-import nyg;
-import oau;
-import onk;
-import qbx;
-import qtu;
+import nmc;
+import now;
+import nyd;
+import oar;
+import onh;
+import qbu;
+import qtr;
+import qts;
 import qtv;
 import qty;
-import qub;
 
 public class VideoPlayManager$1$5
   implements Runnable
 {
-  public VideoPlayManager$1$5(qtv paramqtv, int paramInt1, int paramInt2, String paramString, qub paramqub) {}
+  public VideoPlayManager$1$5(qts paramqts, int paramInt1, int paramInt2, String paramString, qty paramqty) {}
   
   public void run()
   {
-    if (qtu.a(this.jdField_a_of_type_Qtv.a) != null)
+    if (qtr.a(this.jdField_a_of_type_Qts.a) != null)
     {
       int i = this.jdField_a_of_type_Int;
       int j = this.b;
-      qtu.a(this.jdField_a_of_type_Qtv.a, qtu.a(this.jdField_a_of_type_Qtv.a), qtu.a(this.jdField_a_of_type_Qtv.a), 6, new int[] { i, j });
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Int + ":" + this.b);
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_a_of_type_Long = 0L;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_a_of_type_Boolean = false;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.m = this.jdField_a_of_type_Qub.c();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.e = this.jdField_a_of_type_Qub.c();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_f_of_type_Int = this.jdField_a_of_type_Qub.d();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_c_of_type_Boolean = this.jdField_a_of_type_Qub.jdField_b_of_type_Boolean;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.p = this.jdField_a_of_type_Qub.jdField_b_of_type_Long;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.o = this.jdField_a_of_type_Qub.jdField_a_of_type_Long;
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.q = this.jdField_a_of_type_Qub.f();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.r = this.jdField_a_of_type_Qub.i();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Qub.a();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.t = this.jdField_a_of_type_Qub.h();
-      qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.u = this.jdField_a_of_type_Qub.g();
-      qtu.a(this.jdField_a_of_type_Qtv.a, qtu.a(this.jdField_a_of_type_Qtv.a));
-      onk.a(qtu.a(this.jdField_a_of_type_Qtv.a).getApplicationContext(), onk.a(), false, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.a());
-      noz.a(qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx);
-      onk.a(false, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_d_of_type_Boolean, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_f_of_type_Int, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_a_of_type_Int, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_c_of_type_Long, 56, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_c_of_type_JavaLangString, qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_Qbx.jdField_a_of_type_JavaLangString);
-      BaseArticleInfo localBaseArticleInfo = qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      if ((localBaseArticleInfo != null) && (oau.a((int)localBaseArticleInfo.mChannelID)) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)) && (qtu.a(this.jdField_a_of_type_Qtv.a).jdField_b_of_type_Boolean))
+      qtr.a(this.jdField_a_of_type_Qts.a, qtr.a(this.jdField_a_of_type_Qts.a), qtr.a(this.jdField_a_of_type_Qts.a), 6, new int[] { i, j });
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_c_of_type_JavaLangString = (this.jdField_a_of_type_Int + ":" + this.b);
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_a_of_type_Long = 0L;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = false;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.m = this.jdField_a_of_type_Qty.c();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.e = this.jdField_a_of_type_Qty.c();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_f_of_type_Int = this.jdField_a_of_type_Qty.d();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_c_of_type_Boolean = this.jdField_a_of_type_Qty.jdField_b_of_type_Boolean;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.p = this.jdField_a_of_type_Qty.jdField_b_of_type_Long;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.o = this.jdField_a_of_type_Qty.jdField_a_of_type_Long;
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.q = this.jdField_a_of_type_Qty.f();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.r = this.jdField_a_of_type_Qty.i();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_Qty.a();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.t = this.jdField_a_of_type_Qty.h();
+      qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.u = this.jdField_a_of_type_Qty.g();
+      qtr.a(this.jdField_a_of_type_Qts.a, qtr.a(this.jdField_a_of_type_Qts.a));
+      onh.a(qtr.a(this.jdField_a_of_type_Qts.a).getApplicationContext(), onh.a(), false, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.a());
+      now.a(qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu);
+      onh.a(false, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_d_of_type_Boolean, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_f_of_type_Int, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_a_of_type_Int, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_c_of_type_Long, 56, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_c_of_type_JavaLangString, qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_Qbu.jdField_a_of_type_JavaLangString);
+      BaseArticleInfo localBaseArticleInfo = qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      if ((localBaseArticleInfo != null) && (oar.a((int)localBaseArticleInfo.mChannelID)) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo)) && (qtr.a(this.jdField_a_of_type_Qts.a).jdField_b_of_type_Boolean))
       {
-        i = (int)qtu.a(this.jdField_a_of_type_Qtv.a).a(true);
-        nmf.a(new nyg().a(qtu.a(this.jdField_a_of_type_Qtv.a)).a(nmf.jdField_f_of_type_Int).b(nmf.Q).a((AdvertisementInfo)localBaseArticleInfo).a(nmf.a(0, i, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration, 1, 2)).a());
+        i = (int)qtr.a(this.jdField_a_of_type_Qts.a).a(true);
+        nmc.a(new nyd().a(qtr.a(this.jdField_a_of_type_Qts.a)).a(nmc.jdField_f_of_type_Int).b(nmc.Q).a((AdvertisementInfo)localBaseArticleInfo).a(nmc.a(0, i, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration, 1, 2)).a());
       }
-      localBaseArticleInfo = qtu.a(this.jdField_a_of_type_Qtv.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+      localBaseArticleInfo = qtr.a(this.jdField_a_of_type_Qts.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
       if ((localBaseArticleInfo != null) && (localBaseArticleInfo.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))) {
-        nmf.a(new nyg().a(qtu.a(this.jdField_a_of_type_Qtv.a)).a(nmf.jdField_f_of_type_Int).b(nmf.M).a((AdvertisementInfo)localBaseArticleInfo).a(nmf.a(0, 0, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration, nmf.aF, 2)).a());
+        nmc.a(new nyd().a(qtr.a(this.jdField_a_of_type_Qts.a)).a(nmc.jdField_f_of_type_Int).b(nmc.M).a((AdvertisementInfo)localBaseArticleInfo).a(nmc.a(0, 0, 0, 0, 0, 0, localBaseArticleInfo.mVideoDuration, nmc.aF, 2)).a());
       }
     }
-    qtu.c(this.jdField_a_of_type_Qtv.a, null);
-    qtu.a(this.jdField_a_of_type_Qtv.a, null);
-    this.jdField_a_of_type_Qub.m();
+    qtr.c(this.jdField_a_of_type_Qts.a, null);
+    qtr.a(this.jdField_a_of_type_Qts.a, null);
+    this.jdField_a_of_type_Qty.m();
   }
 }
 

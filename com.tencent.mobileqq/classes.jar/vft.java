@@ -1,9 +1,19 @@
-public abstract interface vft
-  extends vho
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+
+public final class vft
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  public abstract void a(long paramLong);
+  public EditTakeVideoSource a(Parcel paramParcel)
+  {
+    return new EditTakeVideoSource(paramParcel);
+  }
   
-  public abstract void b();
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
+  }
 }
 
 

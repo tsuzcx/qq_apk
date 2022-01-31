@@ -2,8 +2,8 @@ package cooperation.qzone.report.lp;
 
 import android.os.Build;
 import android.text.TextUtils;
-import bgxq;
-import bgxr;
+import bgyh;
+import bgyi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -85,7 +85,7 @@ public class LpReportInfo_DC01691
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bgxr.a());
+    localHashMap.put("qua", bgyi.a());
     localHashMap.put("uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
     localHashMap.put("to_uin", String.valueOf(this.toUin));
     localHashMap.put("network_type", String.valueOf(this.networkType));
@@ -101,7 +101,7 @@ public class LpReportInfo_DC01691
     localHashMap.put("feeds_type", String.valueOf(this.feedsType));
     localHashMap.put("mobile_type", Build.MODEL);
     if (TextUtils.isEmpty(deviceId)) {
-      deviceId = bgxq.a().a();
+      deviceId = bgyh.a().a();
     }
     if (!TextUtils.isEmpty(deviceId)) {
       localHashMap.put("imei", deviceId);

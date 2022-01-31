@@ -1,17 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class arvl
-  implements DialogInterface.OnClickListener
+class arvl
+  implements bfph
 {
-  arvl(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2) {}
+  arvl(arvk paramarvk, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    aryd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    axqw.b(null, "CliOper", "", "", "0X800A970", "0X800A970", 0, 0, "0", "0", "0", "");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      return;
+      arvk.a(this.jdField_a_of_type_Arvk).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = arvk.a(this.jdField_a_of_type_Arvk).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      arus.a(paramView).a.a(3, paramInt, str);
+      localObject = new arum(paramInt, str);
+      arus.a(paramView).a((arum)localObject, false);
+      axqy.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+    }
   }
 }
 

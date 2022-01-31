@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.nativemodule.IPTSLoadFeeds;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
 public class ppv
-  implements IPTSLoadFeeds
+  implements IPTSNavigateTo
 {
-  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
-  private ppe jdField_a_of_type_Ppe = new ppw(this);
+  private final String a = "PTSNavigateToModule";
   
-  public ppv()
+  public void navigateTo(String paramString)
   {
-    ppd.a().a(this.jdField_a_of_type_Ppe);
-  }
-  
-  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
-  {
-    oso localoso = (oso)((QQAppInterface)onk.a()).getManager(163);
-    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
-    if (localoso != null) {
-      localoso.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
     }
   }
 }

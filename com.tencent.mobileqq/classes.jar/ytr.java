@@ -1,30 +1,22 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
-import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.api.banner.GdtBannerAd;
 import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
-public class ytr
-  implements View.OnClickListener
+public final class ytr
+  extends ysz
 {
-  public ytr(GdtBannerAd paramGdtBannerAd, ytv paramytv) {}
+  public int a;
+  public GdtDwellTimeStatisticsAfterClick a;
+  public int b = -2147483648;
+  public int c = -2147483648;
   
-  public void onClick(View paramView)
+  public ytr()
   {
-    yxs.b("GdtBannerAd", "onClick");
-    ytv localytv = this.jdField_a_of_type_Ytv;
-    paramView = ytv.a.onClick(paramView);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramView;
-      yxs.b("GdtBannerAd", "onclick:" + GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a);
-    }
-    GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
-    GdtHandler.a(GdtBannerAd.access$000(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params);
-    GdtBannerAd.access$100(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+    this.jdField_a_of_type_Int = -2147483648;
+  }
+  
+  public boolean a()
+  {
+    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import abqn;
-import abqo;
-import ajyc;
+import abqj;
+import abqk;
+import ajya;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axqw;
-import bbcv;
-import bbgg;
+import axqy;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class PCActiveNoticeActiviy
   extends BaseActivity
 {
-  private bbgg jdField_a_of_type_Bbgg;
+  private bbgu jdField_a_of_type_Bbgu;
   private String jdField_a_of_type_JavaLangString;
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -27,27 +27,27 @@ public class PCActiveNoticeActiviy
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    paramBundle = ajyc.a(2131707908);
-    this.jdField_a_of_type_Bbgg = null;
-    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230);
-    this.jdField_a_of_type_Bbgg.setContentView(2131558883);
-    this.jdField_a_of_type_Bbgg.setTitle(null).setMessage(getString(2131694973)).setPositiveButton(2131694972, new abqn(this));
-    this.jdField_a_of_type_Bbgg.setTextContentDescription(paramBundle);
-    this.jdField_a_of_type_Bbgg.setOnKeyListener(new abqo(this));
-    this.jdField_a_of_type_Bbgg.show();
-    axqw.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
+    paramBundle = ajya.a(2131707919);
+    this.jdField_a_of_type_Bbgu = null;
+    this.jdField_a_of_type_Bbgu = bbdj.a(this, 230);
+    this.jdField_a_of_type_Bbgu.setContentView(2131558883);
+    this.jdField_a_of_type_Bbgu.setTitle(null).setMessage(getString(2131694974)).setPositiveButton(2131694973, new abqj(this));
+    this.jdField_a_of_type_Bbgu.setTextContentDescription(paramBundle);
+    this.jdField_a_of_type_Bbgu.setOnKeyListener(new abqk(this));
+    this.jdField_a_of_type_Bbgu.show();
+    axqy.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
     return false;
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_Bbgu = null;
     super.finish();
   }
   

@@ -1,34 +1,93 @@
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uau
+  extends tzh
+  implements IEventReceiver
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  private long jdField_a_of_type_Long;
+  private VideoCoverListBar jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
+  private twg jdField_a_of_type_Twg;
+  private uax jdField_a_of_type_Uax;
+  private volatile boolean b;
+  private boolean c;
+  private boolean d;
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public uau(@NonNull ViewGroup paramViewGroup)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
-    }
-    return null;
+    super(paramViewGroup);
   }
   
-  public void a(@NonNull Object paramObject)
+  protected View a(ViewGroup paramViewGroup)
   {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131378957));
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
+  }
+  
+  public void a(int paramInt, twm paramtwm, @NonNull ArrayList<uas> paramArrayList)
+  {
+    ved.a("VideoCoverListGroupHolder", "onBind() pos=%d, group=%s", Integer.valueOf(paramInt), paramtwm);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    super.a(paramInt, paramtwm, paramArrayList);
+    if (!bool)
     {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
+      this.d = true;
+      if (this.jdField_a_of_type_Uax == null) {
+        this.jdField_a_of_type_Uax = new uax(this);
+      }
+      stb.a().registerSubscriber("", this.jdField_a_of_type_Uax);
     }
-    localLinkedList1.offer(paramObject);
+    if ((paramtwm.c()) || (paramtwm.b())) {}
+    int i;
+    do
+    {
+      return;
+      i = this.jdField_a_of_type_Twg.a().size();
+      this.jdField_a_of_type_Twg.a(paramInt, paramArrayList, paramtwm.a);
+    } while (i == this.jdField_a_of_type_Twg.a().size());
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(paramString);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    this.jdField_a_of_type_Twg = new twg(a().mUIStyle.showVideoCoverList);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a(this.jdField_a_of_type_Twg);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnVideoClickListener(new uav(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.setOnScrollListener(new uaw(this));
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Uax != null)
+    {
+      this.d = false;
+      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Uax);
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.b();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.d;
   }
 }
 

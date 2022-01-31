@@ -1,31 +1,16 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class bgwn
+class bgwn
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  bgwn(bgwm parambgwm) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
-    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
-    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
-    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
-    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("&sv=" + this.b);
-    localStringBuilder.append("&at=" + this.c);
-    localStringBuilder.append("&an=" + this.d);
-    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if (bgwm.a(this.a).isShowing()) {
+      bgwm.a(this.a).dismiss();
+    }
   }
 }
 

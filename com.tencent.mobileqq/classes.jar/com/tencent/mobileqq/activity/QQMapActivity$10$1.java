@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abvm;
+import abvi;
 
 public class QQMapActivity$10$1
   implements Runnable
 {
-  public QQMapActivity$10$1(abvm paramabvm) {}
+  public QQMapActivity$10$1(abvi paramabvi) {}
   
   public void run()
   {

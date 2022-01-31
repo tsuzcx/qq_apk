@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwp;
-import aqkh;
+import acwl;
+import aqkj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class IntimateInfoView$6
   implements Runnable
 {
-  public IntimateInfoView$6(acwp paramacwp) {}
+  public IntimateInfoView$6(acwl paramacwl) {}
   
   public void run()
   {
-    if ((acwp.a(this.this$0) != null) && (this.this$0.a != null)) {
-      ((aqkh)this.this$0.a.getManager(323)).a(acwp.a(this.this$0));
+    if ((acwl.a(this.this$0) != null) && (this.this$0.a != null)) {
+      ((aqkj)this.this$0.a.getManager(323)).a(acwl.a(this.this$0));
     }
   }
 }

@@ -1,93 +1,46 @@
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class bfyu
+class bfyu
+  extends GestureDetector.SimpleOnGestureListener
 {
-  protected int a;
-  Context a;
-  protected bfyt a;
-  protected bfyw a;
-  protected boolean a;
+  bfyu(bfyn parambfyn) {}
   
-  public bfyu(bfyt parambfyt, Context paramContext)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bfyt = parambfyt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return true;
   }
   
-  public int a()
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bfyw parambfyw)
-  {
-    this.jdField_a_of_type_Bfyw = parambfyw;
-    if (parambfyw != null)
+    Object localObject = this.a.findChildView(paramMotionEvent);
+    if (localObject != null)
     {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_Bfyt.setOnClickListener(new bfyv(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Bfyt.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Bfyt.a(0);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_Bfyt.a(5);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_Bfyt.a(i);
-      if ((!this.jdField_a_of_type_Bfyt.b(i)) || (this.jdField_a_of_type_Bfyw == null)) {
-        break;
+      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
+      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
+        break label57;
       }
-      this.jdField_a_of_type_Bfyw.c();
-      return;
     }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
+    label57:
     do
     {
       do
       {
         return;
-      } while ((this.jdField_a_of_type_Bfyt.a() == 0) || (!this.jdField_a_of_type_Bfyt.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_Bfyw != null) {
-        bool = this.jdField_a_of_type_Bfyw.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_Bfyt.a(2);
+      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
+      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+      float f1 = paramMotionEvent.getX(i);
+      float f2 = paramMotionEvent.getY(i);
+      this.a.mInitialTouchX = f1;
+      this.a.mInitialTouchY = f2;
+      paramMotionEvent = this.a;
+      this.a.mDy = 0.0F;
+      paramMotionEvent.mDx = 0.0F;
+    } while (!this.a.mCallback.isLongPressDragEnabled());
+    this.a.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 

@@ -1,6 +1,14 @@
-public abstract interface mzc
+final class mzc
+  implements myy
 {
-  public abstract void loaded(int paramInt, String paramString);
+  public void loaded(String paramString, int paramInt)
+  {
+    if ((paramInt == 0) && (mzb.a.a())) {
+      mzb.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

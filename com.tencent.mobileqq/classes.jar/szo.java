@@ -1,88 +1,12 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-public class szo
-  extends tbe
+public abstract interface szo
 {
-  qqstory_service.RspGetCommentList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList;
+  public abstract void a(szs paramszs, View paramView, String paramString);
   
-  public szo(szh paramszh) {}
-  
-  public szo(szh paramszh, qqstory_service.RspGetCommentList paramRspGetCommentList)
-  {
-    super(paramRspGetCommentList.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList = paramRspGetCommentList;
-  }
-  
-  public void a()
-  {
-    boolean bool = false;
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
-    ArrayList localArrayList = new ArrayList();
-    szh.a(this.jdField_a_of_type_Szh, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
-    tdo localtdo = (tdo)tdc.a(2);
-    int i = 0;
-    if (i < ((List)localObject).size())
-    {
-      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((List)localObject).get(i));
-      QQUserUIItem localQQUserUIItem = localtdo.c(localCommentEntry.authorUnionId);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable()))
-      {
-        localCommentEntry.authorName = tsu.b;
-        label114:
-        if (!TextUtils.isEmpty(localCommentEntry.replyUin))
-        {
-          localQQUserUIItem = localtdo.c(localCommentEntry.replierUnionId);
-          if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-            break label187;
-          }
-        }
-      }
-      label187:
-      for (localCommentEntry.replierName = tsu.b;; localCommentEntry.replierName = localQQUserUIItem.nickName)
-      {
-        localArrayList.add(localCommentEntry);
-        i += 1;
-        break;
-        localCommentEntry.authorName = localQQUserUIItem.nickName;
-        break label114;
-      }
-    }
-    localObject = this.jdField_a_of_type_Szh;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
-      bool = true;
-    }
-    ((szh)localObject).jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Szh.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.total_comment_num.get();
-    this.jdField_a_of_type_Szh.jdField_a_of_type_Szv.a(localArrayList);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Szh.jdField_a_of_type_Szv.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, new Object[] { "ReqGetCommentList NetWork ErrorCode:", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Szh.jdField_a_of_type_Szv.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "ReqGetCommentList fails: " + paramInt + "|" + paramString);
-    }
-  }
+  public abstract void a(szs paramszs, ViewGroup paramViewGroup, View paramView, int paramInt, CommentEntry paramCommentEntry);
 }
 
 

@@ -1,22 +1,19 @@
+import android.view.View;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.ui.AVActivity;
+
 public class may
-  extends mav
+  implements bfph
 {
-  boolean a = false;
+  public may(AVActivity paramAVActivity) {}
   
-  public may(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.a = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
+    if (this.a.a != null)
+    {
+      this.a.a.a();
+      this.a.a.b();
+    }
   }
 }
 

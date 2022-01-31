@@ -1,14 +1,26 @@
+import java.util.ArrayList;
+
 class ojh
-  extends ojq
+  extends ojn
 {
-  ojh(oio paramoio)
+  ojh(oil paramoil, int paramInt)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentReply(false, null);
+    if (paramojq == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramojq.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramojq.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

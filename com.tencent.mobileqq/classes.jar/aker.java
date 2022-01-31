@@ -1,104 +1,107 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class aker
-  extends BroadcastReceiver
+  extends ajzk
 {
-  aker(akeq paramakeq) {}
+  aker(akep paramakep) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-onReceive:" + hashCode() + ", action=" + paramContext);
-    }
-    if (paramContext.equals("com.tencent.mobileqq.addLbsObserver")) {
-      if (akeq.a(this.a) != null) {
-        akeq.a(this.a).addObserver(akeq.a(this.a));
+    String str2 = "";
+    String str1 = str2;
+    if (paramBoolean)
+    {
+      str1 = str2;
+      if (paramArrayOfByte != null)
+      {
+        str1 = new String(paramArrayOfByte);
+        akep.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", str1));
       }
     }
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "mLbsObserver, onGetStreetViewUrl: isSuccess=" + paramBoolean + ", hashCode=" + hashCode() + ",url=" + str1);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        int i;
-        int j;
-        int k;
-        int m;
-        int n;
-        do
-        {
-          String str;
-          int i1;
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
-                    break;
-                  }
-                } while (akeq.a(this.a) == null);
-                akeq.a(this.a).removeObserver(akeq.a(this.a));
-                return;
-                if (!paramContext.equals("com.tencent.mobileqq.getStreetViewUrl")) {
-                  break;
-                }
-              } while (akeq.a(this.a) == null);
-              ((ajzl)akeq.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
-              return;
-              if (!paramContext.equals("com.tencent.mobileqq.unregisterReceiver")) {
-                break;
-              }
-              try
-              {
-                akeq.a(this.a).unregisterReceiver(akeq.a(this.a));
-                return;
-              }
-              catch (Exception paramContext) {}
-            } while (!QLog.isColorLevel());
-            QLog.w("QQMapActivityProxy", 2, "mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + paramContext.toString());
-            return;
-            if (!paramContext.equals("com.tencent.mobileqq.getLbsShareSearch")) {
-              break;
-            }
-            i = paramIntent.getIntExtra("latitude", 0);
-            j = paramIntent.getIntExtra("longitude", 0);
-            k = paramIntent.getIntExtra("coordinate", 0);
-            paramContext = paramIntent.getStringExtra("keyword");
-            str = paramIntent.getStringExtra("category");
-            m = paramIntent.getIntExtra("page", 0);
-            n = paramIntent.getIntExtra("count", 0);
-            i1 = paramIntent.getIntExtra("requireMyLbs", 0);
-          } while (akeq.a(this.a) == null);
-          ((ajzl)akeq.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
-          return;
-          if (!paramContext.equals("com.tencent.mobileqq.getLbsShareShop")) {
-            break;
-          }
-          i = paramIntent.getIntExtra("latitude", 0);
-          j = paramIntent.getIntExtra("longitude", 0);
-          k = paramIntent.getIntExtra("coordinate", 0);
-          m = paramIntent.getIntExtra("begin", 0);
-          n = paramIntent.getIntExtra("count", 0);
-        } while (akeq.a(this.a) == null);
-        ((ajzl)akeq.a(this.a).a(3)).a(i, j, k, m, n);
-        return;
-      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
-      paramContext = paramIntent.getStringExtra("shop_id");
-    } while ((TextUtils.isEmpty(paramContext)) || (akeq.a(this.a) == null));
-    paramIntent = new ArrayList();
-    paramIntent.add(paramContext);
-    ((ajzl)akeq.a(this.a).a(3)).a(paramIntent);
+      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareSearch: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = (ToServiceMsg)paramArrayOfObject[0];
+    paramArrayOfObject = (byte[])paramArrayOfObject[1];
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
+    localIntent.putExtra("data", paramArrayOfObject);
+    localIntent.putExtra("req", ((ToServiceMsg)localObject).extraData.getBundle("req"));
+    akep.a(this.a).sendBroadcast(localIntent);
+  }
+  
+  protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("mLbsObserver, onGetLbsShareShop: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetLbsShareShop");
+    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
+    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    akep.a(this.a).sendBroadcast((Intent)localObject);
+  }
+  
+  protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("mLbsObserver, onGetShareShopDetail: isSuccess=").append(paramBoolean).append(", isDataNull=");
+      if (paramArrayOfObject != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQMapActivityProxy", 2, paramBoolean + ", hashCode=" + hashCode());
+      if (paramArrayOfObject != null) {
+        break;
+      }
+      return;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setAction("com.tencent.mobileqq.onGetShareShopDetail");
+    ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
+    ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
+    akep.a(this.a).sendBroadcast((Intent)localObject);
   }
 }
 

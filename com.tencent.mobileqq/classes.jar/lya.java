@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
-public final class lya
-  implements Parcelable.Creator<RecvMsg>
+public class lya
+  implements DialogInterface.OnClickListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public lya(AVSchema paramAVSchema) {}
   
-  public RecvMsg[] a(int paramInt)
-  {
-    return new RecvMsg[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

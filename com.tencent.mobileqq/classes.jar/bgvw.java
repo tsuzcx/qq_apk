@@ -1,16 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bgvw
-  implements View.OnClickListener
+public class bgvw
+  extends bgvk
 {
-  bgvw(bgvv parambgvv) {}
+  public bgvw(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public void onClick(View paramView)
+  public void a(bgvj parambgvj)
   {
-    if (bgvv.a(this.a).isShowing()) {
-      bgvv.a(this.a).dismiss();
+    boolean bool = false;
+    JSONObject localJSONObject = parambgvj.a();
+    if (localJSONObject == null) {}
+    try
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore response json is null");
+      return;
     }
+    catch (JSONException parambgvj)
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore parse failed: " + parambgvj.getMessage());
+      return;
+    }
+    int i = localJSONObject.getInt("ret");
+    parambgvj = localJSONObject.getString("msg");
+    localJSONObject = localJSONObject.getJSONObject("data");
+    if ((i != 0) || (localJSONObject == null) || (localJSONObject.length() == 0))
+    {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore ret=" + i + "|msg=" + parambgvj);
+      return;
+    }
+    i = localJSONObject.optInt("err_code", 0);
+    parambgvj = localJSONObject.optString("err_msg");
+    if (i == 0) {
+      bool = true;
+    }
+    bgwd.b(ForceUserUpdateActivity.a(this.a), bool);
+    if (bool)
+    {
+      bgwf.d("ForceUserUpdateActivity", "onReceiveData: UpdateToQQBookstore succeed");
+      ForceUserUpdateActivity.c(this.a);
+      return;
+    }
+    ForceUserUpdateActivity.a(this.a, "onReceiveData: UpdateToQQBookstore errMsg=" + parambgvj);
+  }
+  
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  {
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: UpdateToQQBookstore error: " + paramString);
   }
 }
 

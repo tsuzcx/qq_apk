@@ -1,8 +1,6 @@
-import com.tencent.gdtad.util.GdtSmartBlur;
-
-public class yyz
+public abstract interface yyz
 {
-  public static GdtSmartBlur a = new GdtSmartBlur(null);
+  public abstract void a(yza paramyza);
 }
 
 

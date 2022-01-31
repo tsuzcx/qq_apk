@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public abstract interface ahjr
+{
+  public abstract void a(String paramString);
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjr

@@ -1,1293 +1,842 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ClubContentUpdateHandler.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqAppInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqBody;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.ReqItemInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspAppInfo;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspBody;
-import com.tencent.pb.clubcontent.ClubContentUpdateInfoPb.RspItemInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Map;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ajtu
-  extends ajtd
 {
-  bbwf jdField_a_of_type_Bbwf = new ajtv(this);
-  private bbwi jdField_a_of_type_Bbwi;
-  public QQAppInterface a;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public static final String a;
+  private static Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  private static Map<String, int[]> b;
   
-  public ajtu(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_JavaLangString = ajtu.class.getName();
   }
   
-  private void a(int paramInt1, int paramInt2, String paramString)
+  public static Map<String, int[]> a()
   {
-    ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramString, paramInt1, "", paramInt2, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentUpdateHandler", 2, "small emotion has update info.");
-    }
-    bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), "small_emosm_update_flag" + paramString, paramInt1);
-  }
-  
-  private void a(int paramInt, bbnu parambbnu)
-  {
-    if (Math.abs(paramInt - bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambbnu.d)) > 5)
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ClubContentUpdateHandler", 2, "New version json found!");
-      }
-      if (this.jdField_a_of_type_Bbwi == null) {
-        this.jdField_a_of_type_Bbwi = ((bbwi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47));
-      }
-      File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getFilesDir(), parambbnu.a);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("version", paramInt);
-      localBundle.putString("json_name", parambbnu.d);
-      parambbnu = new bbwg(parambbnu.b, localFile);
-      this.jdField_a_of_type_Bbwi.a(1).a(parambbnu, this.jdField_a_of_type_Bbwf, localBundle);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
-      Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
-      localReqBody.int_protocolver.set(1);
-      localReqBody.uint_clientplatid.set(109);
-      localReqBody.str_clientver.set("8.2.8.4440");
-      localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
-      ArrayList localArrayList1 = new ArrayList();
-      int i = paramQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0).getInt("sigTplCfgVer", 0);
-      ArrayList localArrayList2 = new ArrayList();
-      Object localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
-      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).str_name.set("signature_json");
-      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
-      localArrayList2.add(localObject2);
-      localObject2 = new ClubContentUpdateInfoPb.ReqAppInfo();
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject2).uint_appid.set(8);
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject2).rpt_msg_reqiteminfo.set(localArrayList2);
-      localArrayList1.add(localObject2);
-      localReqBody.rpt_msg_reqappinfo.set(localArrayList1);
-      localObject1 = new ToServiceMsg("mobileqq.service", (String)localObject1, "ClubContentUpdate.Req");
-      ((ToServiceMsg)localObject1).putWupBuffer(localReqBody.toByteArray());
-      ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
-      paramQQAppInterface.sendToService((ToServiceMsg)localObject1);
-    } while (!QLog.isColorLevel());
-    QLog.i("ClubContentUpdateHandler", 2, "checkUpdateSigTpl called.");
-  }
-  
-  private void a(String paramString1, int paramInt1, String paramString2, int paramInt2, Map<String, Integer> paramMap, boolean paramBoolean)
-  {
-    if (paramString1.equals(bbnq.d.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, sEmoticonWordingTask!");
-      }
-      a(paramInt1, bbnq.d, paramBoolean);
-    }
-    do
-    {
-      do
+      if (jdField_a_of_type_JavaUtilMap == null)
       {
-        do
+        jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+        if ((BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7))
         {
-          return;
-          if (!paramString1.equals(bbnq.a.e)) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, sEPPromotionTask!");
-          }
-          paramInt2 = bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.a.d);
-        } while (paramInt1 <= paramInt2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-        bbnq.a(MobileQQ.getContext(), bbnq.a.d, paramInt2);
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("recommendEmotion_sp_name", 0);
-        ((ajvp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a();
-        paramString1.edit().putLong("last_get_recommendemotion_time_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), System.currentTimeMillis()).commit();
-        return;
-        if (!paramString1.contains("_json")) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, name.contains(EmosmConstant.EMOTICON_JSON_UPDATE_REQUEST_SUFFIX!");
-        }
-      } while (!anzm.a(paramInt2));
-      ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).b(paramString1.replace("_json", "").trim(), paramInt1, paramString2, paramInt2, 0);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "func updateEmojiJson, update emoji package!");
-      }
-      ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramString1, paramInt1, paramString2, paramInt2, 0);
-      paramMap.put(paramString1, Integer.valueOf(paramInt2));
-    } while (!QLog.isColorLevel());
-    QLog.d("ClubContentUpdateHandler", 2, "emotion has update info.");
-  }
-  
-  private void a(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.has("group_domain")) && (paramJSONObject.has("group_strategy"))) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        String str = paramJSONObject.getString("group_domain");
-        paramJSONObject = paramJSONObject.getString("group_strategy");
-        if (QLog.isColorLevel()) {
-          QLog.i("ClubContentUpdateHandler", 2, "cdnCacheConfig, domain: " + str + ", strategys: " + paramJSONObject);
-        }
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        do
-        {
-          paramJSONObject.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.w("ClubContentUpdateHandler", 2, "", paramJSONObject);
-        return;
-      }
-    }
-    QLog.w("ClubContentUpdateHandler", 2, "no cdnCacheConfig!");
-  }
-  
-  private boolean a(int paramInt, bbnu parambbnu, boolean paramBoolean)
-  {
-    int i = bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambbnu.d);
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentUpdateHandler", 2, "updateResJson name = " + parambbnu.e + " localVersion = " + i + " version = " + paramInt);
-    }
-    if (paramInt > i)
-    {
-      bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambbnu, paramInt, paramBoolean);
-      return true;
-    }
-    return false;
-  }
-  
-  private void b() {}
-  
-  private void g(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
-  {
-    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
-    while (paramRspAppInfo.hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-      String str1 = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      String str2 = localRspItemInfo.str_extend.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "handleGetIndividuationUrlsResponse, name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
-      }
-      if (!str1.equals(bbnq.b.e)) {}
-    }
-  }
-  
-  protected ClubContentUpdateInfoPb.ReqAppInfo a()
-  {
-    Object localObject = ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
-    ArrayList localArrayList = new ArrayList();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentUpdateHandler", 2, "SmallEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag);
-        }
-        if ((localEmoticonPackage.jobType == 4) && (localEmoticonPackage.status == 2) && (!anzm.b(localEmoticonPackage.updateFlag)))
-        {
-          ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
-          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
-          localArrayList.add(localReqItemInfo);
-        }
-      }
-    }
-    localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
-    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(10);
-    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
-    ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
-    return localObject;
-  }
-  
-  protected ClubContentUpdateInfoPb.ReqAppInfo a(bbnu parambbnu, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-    localReqItemInfo.str_name.set(parambbnu.e);
-    localReqItemInfo.uint_version.set(bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambbnu.d));
-    localArrayList.add(localReqItemInfo);
-    parambbnu = new ClubContentUpdateInfoPb.ReqAppInfo();
-    parambbnu.uint_appid.set(paramInt);
-    parambbnu.rpt_msg_reqiteminfo.set(localArrayList);
-    parambbnu.setHasFlag(true);
-    return parambbnu;
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localReqBody.int_protocolver.set(1);
-    localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("8.2.8.4440");
-    localReqBody.uint_uin.set(Long.parseLong((String)localObject));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(b());
-    localArrayList.add(a());
-    localArrayList.add(c());
-    localArrayList.add(b(bbnq.c, 7));
-    localArrayList.add(a(bbnq.e, 105));
-    localArrayList.add(b(bbnq.f, 11));
-    localArrayList.add(b(bbnq.h, 113));
-    localArrayList.add(b(bbnq.i, 5));
-    localReqBody.rpt_msg_reqappinfo.set(localArrayList);
-    localReqBody.setHasFlag(true);
-    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "ClubContentUpdate.Req");
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("ClubContentUpdateHandler", 2, "sendPbReq called cost: " + (System.currentTimeMillis() - l) + "ms");
-    }
-  }
-  
-  public void a(Context paramContext)
-  {
-    int i = 0;
-    Object localObject = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).getString("qvip_res_push_cfg_txt.", "");
-    for (;;)
-    {
-      try
-      {
-        localObject = new JSONObject((String)localObject).getJSONArray("data");
-        if (i >= ((JSONArray)localObject).length()) {
-          continue;
-        }
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        String str = localJSONObject.getString("filename");
-        if (!bbnq.e.a.equals(str)) {
-          break label168;
-        }
-        localObject = localJSONObject.getString("version");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
-        }
-        i = Integer.parseInt((String)localObject);
-      }
-      catch (Exception paramContext)
-      {
-        if (!QLog.isColorLevel()) {
-          break label167;
-        }
-        QLog.e("ClubContentUpdateHandler", 2, "Parse QVIP_RES_PUSH_CFG_TXT failed:" + paramContext.toString());
-        return;
-        i = -1;
-        if (i != -1) {
-          continue;
-        }
-      }
-      if (bbnq.a(paramContext, bbnq.e.d) != i)
-      {
-        a(i, bbnq.e);
-        return;
-      }
-      label167:
-      return;
-      label168:
-      i += 1;
-    }
-  }
-  
-  /* Error */
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    // Byte code:
-    //   0: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +12 -> 15
-    //   6: ldc 44
-    //   8: iconst_2
-    //   9: ldc_w 601
-    //   12: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   15: invokestatic 556	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   18: ldc_w 558
-    //   21: iconst_0
-    //   22: invokevirtual 216	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   25: invokeinterface 327 1 0
-    //   30: ldc_w 560
-    //   33: aload_2
-    //   34: invokeinterface 604 3 0
-    //   39: invokeinterface 347 1 0
-    //   44: pop
-    //   45: new 393	org/json/JSONObject
-    //   48: dup
-    //   49: aload_2
-    //   50: invokespecial 565	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   53: ldc_w 567
-    //   56: invokevirtual 571	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   59: astore_2
-    //   60: iconst_0
-    //   61: istore_3
-    //   62: aload_2
-    //   63: invokevirtual 576	org/json/JSONArray:length	()I
-    //   66: istore 4
-    //   68: iload_3
-    //   69: iload 4
-    //   71: if_icmpge +1194 -> 1265
-    //   74: aload_2
-    //   75: iload_3
-    //   76: invokevirtual 580	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   79: astore 9
-    //   81: aload 9
-    //   83: ldc 122
-    //   85: invokevirtual 606	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   88: istore 4
-    //   90: aload 9
-    //   92: ldc_w 608
-    //   95: invokevirtual 606	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   98: istore 5
-    //   100: aload 9
-    //   102: ldc_w 582
-    //   105: invokevirtual 403	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   108: astore 9
-    //   110: aload 9
-    //   112: ifnonnull +1154 -> 1266
-    //   115: return
-    //   116: getstatic 531	bbnq:e	Lbbnu;
-    //   119: getfield 297	bbnu:e	Ljava/lang/String;
-    //   122: aload 9
-    //   124: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   127: ifeq +1276 -> 1403
-    //   130: aload_0
-    //   131: iload 4
-    //   133: getstatic 531	bbnq:e	Lbbnu;
-    //   136: invokespecial 593	ajtu:a	(ILbbnu;)V
-    //   139: goto +1264 -> 1403
-    //   142: aload_1
-    //   143: invokevirtual 54	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   146: invokevirtual 60	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
-    //   149: new 62	java/lang/StringBuilder
-    //   152: dup
-    //   153: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   156: ldc 67
-    //   158: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: aload 9
-    //   163: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   169: invokestatic 89	bbnq:a	(Landroid/content/Context;Ljava/lang/String;)I
-    //   172: istore 5
-    //   174: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   177: ifeq +52 -> 229
-    //   180: ldc 44
-    //   182: iconst_4
-    //   183: new 62	java/lang/StringBuilder
-    //   186: dup
-    //   187: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   190: ldc_w 610
-    //   193: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: aload 9
-    //   198: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: ldc_w 612
-    //   204: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: iload 4
-    //   209: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   212: ldc_w 614
-    //   215: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: iload 5
-    //   220: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   223: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   229: iload 5
-    //   231: iload 4
-    //   233: if_icmpge -117 -> 116
-    //   236: aload_0
-    //   237: iload 4
-    //   239: iconst_1
-    //   240: aload 9
-    //   242: invokespecial 616	ajtu:a	(IILjava/lang/String;)V
-    //   245: goto -129 -> 116
-    //   248: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   251: ifeq +12 -> 263
-    //   254: ldc 44
-    //   256: iconst_2
-    //   257: ldc_w 618
-    //   260: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   263: aload_0
-    //   264: aload 9
-    //   266: iload 4
-    //   268: ldc 33
-    //   270: iconst_1
-    //   271: new 620	java/util/HashMap
-    //   274: dup
-    //   275: invokespecial 621	java/util/HashMap:<init>	()V
-    //   278: iconst_1
-    //   279: invokespecial 623	ajtu:a	(Ljava/lang/String;ILjava/lang/String;ILjava/util/Map;Z)V
-    //   282: goto -166 -> 116
-    //   285: getstatic 527	bbnq:c	Lbbnu;
-    //   288: getfield 297	bbnu:e	Ljava/lang/String;
-    //   291: aload 9
-    //   293: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   296: ifeq -180 -> 116
-    //   299: aload_0
-    //   300: iload 4
-    //   302: getstatic 527	bbnq:c	Lbbnu;
-    //   305: iconst_1
-    //   306: invokespecial 307	ajtu:a	(ILbbnu;Z)Z
-    //   309: pop
-    //   310: goto -194 -> 116
-    //   313: ldc 44
-    //   315: iconst_1
-    //   316: new 62	java/lang/StringBuilder
-    //   319: dup
-    //   320: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   323: ldc_w 625
-    //   326: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: aload 9
-    //   331: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: ldc_w 627
-    //   337: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: iload 4
-    //   342: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   345: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   348: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   351: aload_1
-    //   352: sipush 153
-    //   355: invokevirtual 29	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   358: checkcast 629	airz
-    //   361: astore 10
-    //   363: aload_1
-    //   364: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   367: invokestatic 632	airz:a	(Landroid/content/Context;)Z
-    //   370: ifeq +43 -> 413
-    //   373: aload 10
-    //   375: ifnull +38 -> 413
-    //   378: iconst_1
-    //   379: aload 10
-    //   381: aload_1
-    //   382: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   385: invokevirtual 634	airz:b	(Ljava/lang/String;)I
-    //   388: if_icmpne +25 -> 413
-    //   391: ldc_w 636
-    //   394: aload 9
-    //   396: invokestatic 639	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   399: ifeq -283 -> 116
-    //   402: aload_0
-    //   403: aload 9
-    //   405: iload 4
-    //   407: invokevirtual 641	ajtu:a	(Ljava/lang/String;I)V
-    //   410: goto -294 -> 116
-    //   413: ldc 44
-    //   415: iconst_1
-    //   416: ldc_w 643
-    //   419: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   422: goto -306 -> 116
-    //   425: ldc 44
-    //   427: iconst_1
-    //   428: new 62	java/lang/StringBuilder
-    //   431: dup
-    //   432: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   435: ldc_w 645
-    //   438: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   441: aload 9
-    //   443: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: ldc_w 627
-    //   449: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   452: iload 4
-    //   454: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   457: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   460: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   463: aconst_null
-    //   464: aload_1
-    //   465: iload 4
-    //   467: iconst_0
-    //   468: invokestatic 650	ajjt:a	(Lajjt;Lcom/tencent/common/app/AppInterface;IZ)V
-    //   471: goto -355 -> 116
-    //   474: ldc 44
-    //   476: iconst_1
-    //   477: new 62	java/lang/StringBuilder
-    //   480: dup
-    //   481: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   484: ldc_w 652
-    //   487: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   490: aload 9
-    //   492: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: ldc_w 654
-    //   498: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   501: iload 4
-    //   503: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   506: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   509: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   512: aload_1
-    //   513: sipush 153
-    //   516: invokevirtual 29	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   519: checkcast 629	airz
-    //   522: astore 10
-    //   524: aload_1
-    //   525: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   528: invokestatic 632	airz:a	(Landroid/content/Context;)Z
-    //   531: ifeq +141 -> 672
-    //   534: aload 10
-    //   536: ifnull +136 -> 672
-    //   539: iconst_1
-    //   540: aload 10
-    //   542: aload_1
-    //   543: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   546: invokevirtual 634	airz:b	(Ljava/lang/String;)I
-    //   549: if_icmpne +123 -> 672
-    //   552: aload 9
-    //   554: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   557: istore 5
-    //   559: aload 10
-    //   561: iconst_1
-    //   562: iload 5
-    //   564: invokevirtual 657	airz:a	(II)J
-    //   567: ldc2_w 658
-    //   570: ldiv
-    //   571: lstore 6
-    //   573: lload 6
-    //   575: iload 4
-    //   577: i2l
-    //   578: lcmp
-    //   579: ifeq -463 -> 116
-    //   582: aload_1
-    //   583: aload_1
-    //   584: invokevirtual 158	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   587: aconst_null
-    //   588: iload 5
-    //   590: aconst_null
-    //   591: iconst_m1
-    //   592: iconst_m1
-    //   593: iconst_1
-    //   594: invokestatic 664	ajhw:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lajie;I[IIIZ)V
-    //   597: ldc 44
-    //   599: iconst_1
-    //   600: new 62	java/lang/StringBuilder
-    //   603: dup
-    //   604: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   607: ldc_w 666
-    //   610: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   613: aload 9
-    //   615: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   618: ldc_w 668
-    //   621: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   624: lload 6
-    //   626: invokevirtual 550	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   629: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   632: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   635: goto -519 -> 116
-    //   638: astore 10
-    //   640: ldc 44
-    //   642: iconst_2
-    //   643: new 62	java/lang/StringBuilder
-    //   646: dup
-    //   647: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   650: ldc_w 670
-    //   653: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   656: aload 9
-    //   658: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   661: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   664: aload 10
-    //   666: invokestatic 672	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   669: goto -553 -> 116
-    //   672: ldc 44
-    //   674: iconst_1
-    //   675: ldc_w 674
-    //   678: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   681: goto -565 -> 116
-    //   684: ldc 44
-    //   686: iconst_1
-    //   687: new 62	java/lang/StringBuilder
-    //   690: dup
-    //   691: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   694: ldc_w 676
-    //   697: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   700: aload 9
-    //   702: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   705: ldc_w 654
-    //   708: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   711: iload 4
-    //   713: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   716: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   719: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   722: aload_1
-    //   723: sipush 153
-    //   726: invokevirtual 29	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   729: checkcast 629	airz
-    //   732: astore 10
-    //   734: aload_1
-    //   735: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   738: invokestatic 632	airz:a	(Landroid/content/Context;)Z
-    //   741: ifeq -625 -> 116
-    //   744: aload 10
-    //   746: ifnull -630 -> 116
-    //   749: iconst_1
-    //   750: aload 10
-    //   752: aload_1
-    //   753: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   756: invokevirtual 634	airz:b	(Ljava/lang/String;)I
-    //   759: if_icmpne -643 -> 116
-    //   762: aload 9
-    //   764: invokestatic 591	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   767: istore 5
-    //   769: aload 10
-    //   771: iconst_2
-    //   772: iload 5
-    //   774: invokevirtual 657	airz:a	(II)J
-    //   777: ldc2_w 658
-    //   780: ldiv
-    //   781: lstore 6
-    //   783: lload 6
-    //   785: iload 4
-    //   787: i2l
-    //   788: lcmp
-    //   789: ifeq -673 -> 116
-    //   792: aload_1
-    //   793: aload_1
-    //   794: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   797: aconst_null
-    //   798: iconst_m1
-    //   799: iconst_1
-    //   800: newarray int
-    //   802: dup
-    //   803: iconst_0
-    //   804: iload 5
-    //   806: iastore
-    //   807: iconst_m1
-    //   808: iconst_m1
-    //   809: iconst_1
-    //   810: invokestatic 678	ajhw:b	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lajie;I[IIIZ)V
-    //   813: ldc 44
-    //   815: iconst_1
-    //   816: new 62	java/lang/StringBuilder
-    //   819: dup
-    //   820: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   823: ldc_w 680
-    //   826: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   829: iload 5
-    //   831: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   834: ldc_w 668
-    //   837: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   840: lload 6
-    //   842: invokevirtual 550	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   845: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   848: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   851: goto -735 -> 116
-    //   854: astore 10
-    //   856: ldc 44
-    //   858: iconst_2
-    //   859: new 62	java/lang/StringBuilder
-    //   862: dup
-    //   863: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   866: ldc_w 682
-    //   869: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   872: aload 9
-    //   874: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   877: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   880: aload 10
-    //   882: invokestatic 672	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   885: goto -769 -> 116
-    //   888: invokestatic 686	akvj:a	()Ljava/lang/String;
-    //   891: aload 9
-    //   893: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   896: ifeq -780 -> 116
-    //   899: aload_1
-    //   900: sipush 153
-    //   903: invokevirtual 29	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   906: checkcast 629	airz
-    //   909: astore 10
-    //   911: aload_1
-    //   912: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   915: invokestatic 632	airz:a	(Landroid/content/Context;)Z
-    //   918: ifeq +149 -> 1067
-    //   921: aload 10
-    //   923: ifnull +144 -> 1067
-    //   926: iconst_1
-    //   927: aload 10
-    //   929: aload_1
-    //   930: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   933: invokevirtual 634	airz:b	(Ljava/lang/String;)I
-    //   936: if_icmpne +131 -> 1067
-    //   939: aload_1
-    //   940: bipush 115
-    //   942: invokevirtual 319	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lajtd;
-    //   945: checkcast 684	akvj
-    //   948: ifnull -832 -> 116
-    //   951: invokestatic 688	akvj:b	()J
-    //   954: lstore 6
-    //   956: lload 6
-    //   958: iload 4
-    //   960: i2l
-    //   961: lcmp
-    //   962: ifeq +64 -> 1026
-    //   965: new 62	java/lang/StringBuilder
-    //   968: dup
-    //   969: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   972: getstatic 693	ajmu:av	Ljava/lang/String;
-    //   975: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   978: ldc_w 695
-    //   981: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   984: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   987: astore 10
-    //   989: new 119	android/os/Bundle
-    //   992: dup
-    //   993: invokespecial 120	android/os/Bundle:<init>	()V
-    //   996: astore 11
-    //   998: aload 11
-    //   1000: ldc 122
-    //   1002: iload 4
-    //   1004: i2l
-    //   1005: invokevirtual 698	android/os/Bundle:putLong	(Ljava/lang/String;J)V
-    //   1008: aload_1
-    //   1009: aload 10
-    //   1011: getstatic 701	ajmu:at	Ljava/lang/String;
-    //   1014: aload 11
-    //   1016: new 703	akvl
-    //   1019: dup
-    //   1020: invokespecial 704	akvl:<init>	()V
-    //   1023: invokestatic 707	ajhw:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Lbbwf;)V
-    //   1026: ldc 44
-    //   1028: iconst_1
-    //   1029: new 62	java/lang/StringBuilder
-    //   1032: dup
-    //   1033: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   1036: ldc_w 709
-    //   1039: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1042: iload 4
-    //   1044: invokevirtual 425	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1047: ldc_w 711
-    //   1050: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1053: lload 6
-    //   1055: invokevirtual 550	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1058: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1061: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1064: goto -948 -> 116
-    //   1067: ldc 44
-    //   1069: iconst_1
-    //   1070: ldc_w 713
-    //   1073: invokestatic 100	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1076: goto -960 -> 116
-    //   1079: getstatic 479	bbnq:b	Lbbnu;
-    //   1082: getfield 297	bbnu:e	Ljava/lang/String;
-    //   1085: aload 9
-    //   1087: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1090: ifeq -974 -> 116
-    //   1093: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1096: ifeq -980 -> 116
-    //   1099: ldc 44
-    //   1101: iconst_2
-    //   1102: ldc_w 715
-    //   1105: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1108: goto -992 -> 116
-    //   1111: getstatic 539	bbnq:h	Lbbnu;
-    //   1114: getfield 297	bbnu:e	Ljava/lang/String;
-    //   1117: aload 9
-    //   1119: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1122: ifeq -1006 -> 116
-    //   1125: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1128: ifeq +12 -> 1140
-    //   1131: ldc 44
-    //   1133: iconst_2
-    //   1134: ldc_w 717
-    //   1137: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1140: aload_0
-    //   1141: iload 4
-    //   1143: getstatic 539	bbnq:h	Lbbnu;
-    //   1146: iconst_1
-    //   1147: invokespecial 307	ajtu:a	(ILbbnu;Z)Z
-    //   1150: pop
-    //   1151: goto -1035 -> 116
-    //   1154: getstatic 541	bbnq:i	Lbbnu;
-    //   1157: getfield 297	bbnu:e	Ljava/lang/String;
-    //   1160: aload 9
-    //   1162: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1165: ifeq -1049 -> 116
-    //   1168: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1171: ifeq +12 -> 1183
-    //   1174: ldc 44
-    //   1176: iconst_2
-    //   1177: ldc_w 719
-    //   1180: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1183: aload_0
-    //   1184: iload 4
-    //   1186: getstatic 541	bbnq:i	Lbbnu;
-    //   1189: iconst_1
-    //   1190: invokespecial 307	ajtu:a	(ILbbnu;Z)Z
-    //   1193: pop
-    //   1194: goto -1078 -> 116
-    //   1197: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1200: ifeq +30 -> 1230
-    //   1203: ldc 44
-    //   1205: iconst_2
-    //   1206: new 62	java/lang/StringBuilder
-    //   1209: dup
-    //   1210: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   1213: ldc_w 721
-    //   1216: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1219: aload 9
-    //   1221: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1224: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1227: invokestatic 50	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1230: aload 9
-    //   1232: ldc_w 723
-    //   1235: invokevirtual 302	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1238: istore 8
-    //   1240: iload 8
-    //   1242: ifeq -1126 -> 116
-    //   1245: goto -1129 -> 116
-    //   1248: astore_1
-    //   1249: invokestatic 42	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1252: ifeq +13 -> 1265
-    //   1255: ldc 44
-    //   1257: iconst_2
-    //   1258: ldc_w 725
-    //   1261: aload_1
-    //   1262: invokestatic 727	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1265: return
-    //   1266: iload 5
-    //   1268: lookupswitch	default:+132->1400, 1:+-1020->248, 2:+-1152->116, 3:+-1152->116, 5:+-114->1154, 7:+-983->285, 10:+-1126->142, 18:+-1152->116, 113:+-157->1111, 201:+-955->313, 202:+-794->474, 203:+-584->684, 205:+-843->425, 206:+-380->888, 302:+-71->1197, 401:+-189->1079
-    //   1401: <illegal opcode>
-    //   1402: <illegal opcode>
-    //   1403: iload_3
-    //   1404: iconst_1
-    //   1405: iadd
-    //   1406: istore_3
-    //   1407: goto -1345 -> 62
-    //   1410: astore 9
-    //   1412: goto -9 -> 1403
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1415	0	this	ajtu
-    //   0	1415	1	paramQQAppInterface	QQAppInterface
-    //   0	1415	2	paramString	String
-    //   61	1346	3	i	int
-    //   66	1119	4	j	int
-    //   98	1169	5	k	int
-    //   571	483	6	l	long
-    //   1238	3	8	bool	boolean
-    //   79	1152	9	localObject1	Object
-    //   1410	1	9	localException1	Exception
-    //   361	199	10	localairz1	airz
-    //   638	27	10	localException2	Exception
-    //   732	38	10	localairz2	airz
-    //   854	27	10	localException3	Exception
-    //   909	101	10	localObject2	Object
-    //   996	19	11	localBundle	Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   474	534	638	java/lang/Exception
-    //   539	573	638	java/lang/Exception
-    //   582	635	638	java/lang/Exception
-    //   672	681	638	java/lang/Exception
-    //   684	744	854	java/lang/Exception
-    //   749	783	854	java/lang/Exception
-    //   792	851	854	java/lang/Exception
-    //   45	60	1248	java/lang/Exception
-    //   62	68	1248	java/lang/Exception
-    //   74	110	1410	java/lang/Exception
-    //   116	139	1410	java/lang/Exception
-    //   142	229	1410	java/lang/Exception
-    //   236	245	1410	java/lang/Exception
-    //   248	263	1410	java/lang/Exception
-    //   263	282	1410	java/lang/Exception
-    //   285	310	1410	java/lang/Exception
-    //   313	373	1410	java/lang/Exception
-    //   378	410	1410	java/lang/Exception
-    //   413	422	1410	java/lang/Exception
-    //   425	471	1410	java/lang/Exception
-    //   640	669	1410	java/lang/Exception
-    //   856	885	1410	java/lang/Exception
-    //   888	921	1410	java/lang/Exception
-    //   926	956	1410	java/lang/Exception
-    //   965	1026	1410	java/lang/Exception
-    //   1026	1064	1410	java/lang/Exception
-    //   1067	1076	1410	java/lang/Exception
-    //   1079	1108	1410	java/lang/Exception
-    //   1111	1140	1410	java/lang/Exception
-    //   1140	1151	1410	java/lang/Exception
-    //   1154	1183	1410	java/lang/Exception
-    //   1183	1194	1410	java/lang/Exception
-    //   1197	1230	1410	java/lang/Exception
-    //   1230	1240	1410	java/lang/Exception
-  }
-  
-  protected void a(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
-  {
-    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
-    while (paramRspAppInfo.hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-      String str1 = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      String str2 = localRspItemInfo.str_extend.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "handleUrlInterceptJSONResponse name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
-      }
-      if (str1.equals(bbnq.h.e)) {
-        a(i, bbnq.h, false);
-      }
-    }
-  }
-  
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      i = 1;
-      if (i != 0) {
-        paramToServiceMsg = new ClubContentUpdateInfoPb.RspBody();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg.int_result.get() != 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentUpdateHandler", 2, "handleResponse, result=" + paramToServiceMsg.int_result.get());
-          }
+          d();
+          a();
           b();
-          return;
-        }
-        paramToServiceMsg = ((ArrayList)paramToServiceMsg.rpt_msg_rspappinfo.get()).iterator();
-        if (!paramToServiceMsg.hasNext()) {
-          break label326;
-        }
-        paramFromServiceMsg = (ClubContentUpdateInfoPb.RspAppInfo)paramToServiceMsg.next();
-        switch (paramFromServiceMsg.uint_appid.get())
-        {
-        case 2: 
-        case 3: 
-        case 9: 
-        case 18: 
-        case 1: 
-          e(paramFromServiceMsg);
-          break;
-        case 10: 
-          d(paramFromServiceMsg);
+          c();
         }
       }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      else
       {
-        paramToServiceMsg.printStackTrace();
-        return;
+        return jdField_a_of_type_JavaUtilMap;
       }
-      continue;
-      c(paramFromServiceMsg);
-      continue;
-      b(paramFromServiceMsg);
-      continue;
-      c(paramFromServiceMsg);
-      continue;
-      g(paramFromServiceMsg);
-      continue;
-      a(paramFromServiceMsg);
-      continue;
-      f(paramFromServiceMsg);
-      continue;
-      c(paramFromServiceMsg);
-      continue;
-      label326:
+      f();
+    }
+  }
+  
+  private static void a()
+  {
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetBusinessTorch", new int[] { 0 });
+  }
+  
+  public static void a(String paramString, int[] paramArrayOfInt)
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    while (TextUtils.isEmpty(paramString)) {
       return;
-      i = 0;
-      break;
     }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new ClubContentUpdateHandler.1(this, paramInt, paramString));
-  }
-  
-  protected ClubContentUpdateInfoPb.ReqAppInfo b()
-  {
-    Object localObject = ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
-    ArrayList localArrayList = new ArrayList();
-    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo;
-    int i;
-    if (localObject != null)
+    if (paramArrayOfInt != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return;
+    }
+    jdField_a_of_type_JavaUtilMap.remove(paramString);
+  }
+  
+  public static Map<String, int[]> b()
+  {
+    if (b == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (b == null)
       {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentUpdateHandler", 2, "BigEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag + "localVersion=" + localEmoticonPackage.localVersion);
-        }
-        if ((localEmoticonPackage.jobType == 0) && (localEmoticonPackage.status == 2) && (!anzm.b(localEmoticonPackage.updateFlag)))
-        {
-          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
-          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
-          localArrayList.add(localReqItemInfo);
-          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-          localReqItemInfo.str_name.set(localEmoticonPackage.epId + "_json");
-          i = localEmoticonPackage.jsonVersion;
-          if (i != 0) {
-            break label378;
-          }
-          i = localEmoticonPackage.localVersion;
-        }
+        b = new ConcurrentHashMap();
+        e();
       }
-    }
-    label378:
-    for (;;)
-    {
-      localReqItemInfo.uint_version.set(i);
-      localArrayList.add(localReqItemInfo);
-      break;
-      localObject = new ClubContentUpdateInfoPb.ReqItemInfo();
-      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).str_name.set(bbnq.d.e);
-      ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).uint_version.set(bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.d.d));
-      localArrayList.add(localObject);
-      localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(1);
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
-      return localObject;
+      return b;
     }
   }
   
-  protected ClubContentUpdateInfoPb.ReqAppInfo b(bbnu parambbnu, int paramInt)
+  private static void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-    localReqItemInfo.str_name.set(parambbnu.e);
-    localReqItemInfo.uint_version.set(bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), parambbnu.d));
-    localArrayList.add(localReqItemInfo);
-    parambbnu = new ClubContentUpdateInfoPb.ReqAppInfo();
-    parambbnu.uint_appid.set(paramInt);
-    parambbnu.rpt_msg_reqiteminfo.set(localArrayList);
-    parambbnu.setHasFlag(true);
-    return parambbnu;
+    jdField_a_of_type_JavaUtilMap.put("XX.XXX", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x95a", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb49", new int[] { 5 });
   }
   
-  protected void b(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  private static void c()
   {
-    Object localObject = (ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get();
-    paramRspAppInfo = new StringBuilder(((ArrayList)localObject).size() * 64);
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)((Iterator)localObject).next();
-      String str1 = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      String str2 = localRspItemInfo.str_extend.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      if (QLog.isColorLevel()) {
-        paramRspAppInfo.append("name=").append(str1).append(", version=").append(i).append(", updateFlag=").append(j).append(", extStr=").append(str2);
-      }
-      if ((str1.equals(bbnq.e.e)) && (i > bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.e.d))) {
-        a(i, bbnq.e);
-      }
-    }
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramRspAppInfo.toString()))) {
-      QLog.d("ClubContentUpdateHandler", 2, paramRspAppInfo.toString());
-    }
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 2 });
   }
   
-  protected ClubContentUpdateInfoPb.ReqAppInfo c()
+  private static void d()
   {
-    Object localObject = ((askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(0);
-    ArrayList localArrayList = new ArrayList();
-    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo;
-    int i;
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Iterator)localObject).next();
-        QLog.d("ClubContentUpdateHandler", 2, "MagicEmojiId= " + localEmoticonPackage.epId + "status=" + localEmoticonPackage.status + "jobType=" + localEmoticonPackage.jobType + "updateFlag=" + localEmoticonPackage.updateFlag + "localVersion=" + localEmoticonPackage.localVersion);
-        if ((localEmoticonPackage.jobType == 3) && (localEmoticonPackage.status == 2) && (!anzm.b(localEmoticonPackage.updateFlag)))
-        {
-          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-          localReqItemInfo.str_name.set(localEmoticonPackage.epId);
-          localReqItemInfo.uint_version.set(localEmoticonPackage.localVersion);
-          localArrayList.add(localReqItemInfo);
-          localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-          localReqItemInfo.str_name.set(localEmoticonPackage.epId + "_json");
-          i = localEmoticonPackage.jsonVersion;
-          if (i != 0) {
-            break label320;
-          }
-          i = localEmoticonPackage.localVersion;
-        }
-      }
-    }
-    label320:
-    for (;;)
-    {
-      localReqItemInfo.uint_version.set(i);
-      localArrayList.add(localReqItemInfo);
-      break;
-      localObject = new ClubContentUpdateInfoPb.ReqAppInfo();
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).uint_appid.set(1);
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).rpt_msg_reqiteminfo.set(localArrayList);
-      ((ClubContentUpdateInfoPb.ReqAppInfo)localObject).setHasFlag(true);
-      return localObject;
-    }
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("RoamClientSvr.GetQualify", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f0_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6be", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_1", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_2", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_3", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xada_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
   }
   
-  protected void c(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  private static void e()
   {
-    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
-    while (paramRspAppInfo.hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-      String str1 = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      String str2 = localRspItemInfo.str_extend.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      if (!TextUtils.isEmpty(str1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentUpdateHandler", 2, "name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
-        }
-        if (str1.equals(bbnq.c.e))
-        {
-          if (i > bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.c.d)) {
-            bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbnq.c, i, false);
-          }
-        }
-        else if (str1.equals(bbnq.f.e))
-        {
-          if (i > bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.f.d)) {
-            bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbnq.f, i, false);
-          }
-        }
-        else if (str1.equals(bbnq.i.e))
-        {
-          j = bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), bbnq.i.d);
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentUpdateHandler", 2, "FontInfoList_json remoteVersion = " + i + " localVersion = " + j);
-          }
-          if (i > j) {
-            bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bbnq.i, i, false);
-          }
-        }
-      }
-    }
+    b.put("CameraModuleSvc.GetRecommandTextByEmotion", new int[] { 3 });
+    b.put("CameraModuleSvc.GetTextValidStatus", new int[] { 3 });
+    b.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 3 });
+    b.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 3 });
+    b.put("CameraModuleSvc.GetCameraConfig", new int[] { 3 });
+    b.put("CameraModuleSvc.GetOnlineUserNum", new int[] { 3 });
+    b.put("CameraModuleSvc.GetFontData", new int[] { 3 });
+    b.put("CameraModuleSvc.GetImgValidStatus", new int[] { 3 });
   }
   
-  protected void d(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  private static void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse begins");
-    }
-    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
-    while (paramRspAppInfo.hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-      String str = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      int k = bbnq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), "small_emosm_update_flag" + str);
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse, name:" + str + ",updateFlag:" + j + ",version" + i + ",localVersion:" + k);
-      }
-      if (k < i) {
-        a(i, j, str);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ClubContentUpdateHandler", 4, "func handleSmallEmosmResponse ends");
-    }
-  }
-  
-  protected void e(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
-  {
-    QLog.d("ClubContentUpdateHandler", 2, "handleEmosmResponse begins");
-    paramRspAppInfo = (ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get();
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramRspAppInfo.iterator();
-    while (localIterator.hasNext())
-    {
-      paramRspAppInfo = (ClubContentUpdateInfoPb.RspItemInfo)localIterator.next();
-      String str1 = paramRspAppInfo.str_name.get();
-      int i = paramRspAppInfo.uint_version.get();
-      String str2 = paramRspAppInfo.str_extend.get();
-      int j = paramRspAppInfo.uint_update_flag.get();
-      String[] arrayOfString = str2.split("\\|\\|");
-      paramRspAppInfo = "";
-      if (arrayOfString.length > 0) {
-        paramRspAppInfo = arrayOfString[0];
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "name=" + str1 + ", version=" + i + ", tip=" + paramRspAppInfo + ", updateFlag=" + j + ",extStr=" + str2);
-      }
-      a(str1, i, paramRspAppInfo, j, localHashMap, false);
-    }
-  }
-  
-  protected void f(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
-  {
-    paramRspAppInfo = ((ArrayList)paramRspAppInfo.rpt_msg_rspiteminfo.get()).iterator();
-    while (paramRspAppInfo.hasNext())
-    {
-      ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-      String str1 = localRspItemInfo.str_name.get();
-      int i = localRspItemInfo.uint_version.get();
-      String str2 = localRspItemInfo.str_extend.get();
-      int j = localRspItemInfo.uint_update_flag.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("ClubContentUpdateHandler", 2, "handleIndividuationMainpageConfigResponse, name=" + str1 + ", version=" + i + ", updateFlag=" + j + ",extStr=" + str2);
-      }
-      if (!str1.equals("individuation_mainpage_config2")) {}
-    }
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("ClubContentUpdate.Req".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ClubContentUpdateHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", new int[] { 159 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", new int[] { 0, 2 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.getGroupInfoReq", new int[] { 20, 2 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ClientMsg", new int[] { 0, 2 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqDeleteBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqInsertBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9db", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqGetBlackList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42024", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqGetSign", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SharpSvr.s2c", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SharpSvr.c2sack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.RequestPushStatus", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqMSFLoginNotify", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ADMsgSvc.PushMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.PushStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushTransMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbC2CMsgSync", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushDisMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PullGroupMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbUnReadMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.RespUploadStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetDiscussMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelMsgV2", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.SetRoamMsgAllUser", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushC2CMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("VideoSvc.Send", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("VideoCCSvc.Adaptation", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("StreamSvr.UploadStreamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MultiVideo.s2c", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldTranFileSvr.NotifyList", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbSendMsg", new int[] { 0, 8 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa89", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushReaded", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.RespPush", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqTmpChatPicDownload", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MultiVideo.c2sack", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushNotify", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetDiscussMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetGroupMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisGroupSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.NoticeEnd", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoLogin", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullGroupMsgSeq", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.getOffMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoSync", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbSyncMsg", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgReadedReport", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbReceiptRead", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb31", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_create_share_url", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_share_backflow_verify", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_terminate_msg", new int[] { 52 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5e1_8", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.delFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetAutoInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.SetGroupReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetLastLoginInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getFriendGroupList", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaed_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.MovGroupMemReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetSimpleOnlineFriendInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("BumpSvc.ReqComfirmContactFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.addFriend", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x777", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc83", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc85", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSimpleInfo", new int[] { 1, 107 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getUserAddFriendSetting", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d1_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4fc_30", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.RecommendAuth", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.ConfirmAuth", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf0_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSearch", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqCondSearch", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("AvatarInfoSvr.QQHeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqGetSettings", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.register", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetRichSig", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.DelDevLoginInfo", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.BindUin", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqSetSettings", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqKikOut", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.CheckUpdateReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ChangeFriendName", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.SetRichSig", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("IncreaseURLSvr.QQHeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetDevLoginInfo", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetOnlineInfoReq", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x49d_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_146", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_147", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_107", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c4_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f4_5", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c6_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c7_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x847_3", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53b_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c9_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7df_3", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_7", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_18", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_19", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77c", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x829_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc36_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc35_0", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_1", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqBatchProcess", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_10", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_20", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xded_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_0", new int[] { 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_75", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b8_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_10", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GroupMngReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetMultiTroopInfoReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopListReqV2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopAppointRemarkReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupInfoReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopMemberList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42d_4", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x903_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91a_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91c_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91b_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("group_member_card.get_group_member_card_info", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x406_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89e_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopRemark", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_1", new int[] { 22, 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a0_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupCardReq", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("group_anonymous_generate_nick.group", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("qunVideoOnlineLevel.0x3fe_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_9", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 20, 22, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 20, 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a7_0", new int[] { 20, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ca_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_11", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x711_127", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9fa", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa80_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b5", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8d", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_4", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_7", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6d1_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_86", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_94", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.querycard", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.modifycard", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyExt.query_user_follow_status", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put(akhu.jdField_a_of_type_JavaLangString, new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.send_msg", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x928", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("qunVideoGray.0x3fb_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0x783_15", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd71", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf6_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f9_14", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd40_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_3", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_6", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd23_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e6_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e7_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_100", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqUpdateIntro", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetVoterList", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("PttCenterSvr.ReqBody", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqHYMakeFriendsCard", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetFavoriteList", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSummaryCard", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqFaceInfo", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqVoiceManage", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqGetFace", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqDelFace", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqGetCardSwitch", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqPicSafetyCheck", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MobileQQ.SendPortraitDownloadVerifyCode", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCard", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCardSwitch", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_100", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqVote", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqAddFace", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.SetLabel", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SummaryCard.LikeIt", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.SetUserInfoReq", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSglUsrFullInfo", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getCover", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getPhotoWall", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.delPhotoWall", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x480_9", new int[] { 98, 2, 66, 59, 91, 109 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_9", new int[] { 98, 2, 66, 59, 109 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_2", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ae_2", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42092", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_40350", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7ba", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqDeleteVisitorRecord", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd2d", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42326", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("MusicSongInfoMatchSvc.songquery", new int[] { 92 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.get_detail_info", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf8", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopFolderSvc.GetAcctBindPuin", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4b", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4a", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4c", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb51", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb9b", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcb5", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdb1", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe03", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe09", new int[] { 127 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.GetGroupList", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEntrance", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborRecommender.ReqGetRecommender", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LBS.AddressService", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetSwitches", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqSetStateSwitch", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.ReqGetAreaList", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.ReqGetGroupInArea", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_20", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7f5_1", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.nearby_shops", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.location", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.get_shops_by_ids", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c0_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c1_0", new int[] { 3 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigService.ClientReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("ResourceConfig.GetResourceReq", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MobileTipsSvc.TipsReport", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MAAControl.CheckSinglePkgSig", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("MAAControl.GetSinglePkgSig", new int[] { 4 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInteRemark", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_geturl", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58a", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqCreateDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_decode", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqJoinDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussFlag", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqChangeDiscussName", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqAddDiscussMember", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussAttr", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInfo", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58b_0", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqQuitDiscuss", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x865_3", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_4", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_5", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x921_0", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x751", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x44c", new int[] { 6 });
+    jdField_a_of_type_JavaUtilMap.put("QzoneService.GetNewAndUnread", new int[] { 7 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PushParam", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoAndroid", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetOnlineStatus", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.QueryIpwdStat", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetMute", new int[] { 10 });
+    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_emp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_reg", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_reg", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_hello", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_pullstatus.pull_status", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_sharp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.multi_video", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_forceoffline", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.msg_send", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_push.msg_push", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_status.stat_queryhb", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x634", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x633", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x632", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x582", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x631", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x630", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61e", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61d", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61f", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_dataline", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.openserver_req", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60f", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60d", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.device_report", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.get_bluetooth_info", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigService.DeviceUp", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x5e6", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("im_msg.open_smart_c2s", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xac7", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportMyDev", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqClearTrack", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqLostStatus", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xa11", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportDevs", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.ReportLbs", new int[] { 11 });
+    jdField_a_of_type_JavaUtilMap.put("QQWeatherReport.getWeatherInfo", new int[] { 11 });
+    jdField_a_of_type_JavaUtilMap.put("BQMallSvc.TabOpReq", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_92", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_99", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("gxzbIpsit.ipsite", new int[] { 12 });
+    jdField_a_of_type_JavaUtilMap.put("AvatarUpdate.checkUpdate", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("Font.fresh", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FriendClone.CloneAuthStatus", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("groupnick.readitem", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.readUserInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserFlag", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserProfile", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getFontRecommend", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getBubbleRecommend", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("GroupCare.getMessageRemindInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.setFontBubble", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("RoamWrap.GetRoamToast", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("Face.setFace", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogin.check", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getMusicList", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getQzoneMusicInfo", new int[] { 13 });
+    jdField_a_of_type_JavaUtilMap.put("FunCallSvr.call", new int[] { 46 });
+    jdField_a_of_type_JavaUtilMap.put("voiceChange.Auth", new int[] { 96 });
+    jdField_a_of_type_JavaUtilMap.put("AuthSvr.ThemeAuth", new int[] { 14 });
+    jdField_a_of_type_JavaUtilMap.put("SpecialRemind.Service", new int[] { 15 });
+    jdField_a_of_type_JavaUtilMap.put("ClubContentUpdate.Req", new int[] { 16 });
+    jdField_a_of_type_JavaUtilMap.put("apollo_content_update.Req", new int[] { 115 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a1_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a0_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a2_0", new int[] { 17 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList", new int[] { 18 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.assign_homework", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.submit_homework", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("HwSvc.get_homework_info", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupSvc.JoinGroupLink", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.CheckJsApiToken", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53c_2", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("mq_crm.get_menu", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("mq_crm.send_key", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("EqqAccountSvc.get_eqq_list", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("CrmSvcEx.ReportLbs", new int[] { 21 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a1_0", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OpenGroupSvc.GroupActivityInfo", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.DelFile", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileInfo", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("CommunityForum.GetLatestPost", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8cf_6", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8d3_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupActivity.GetList", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x78f_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileList", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88c_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileListV2", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_35", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x580_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_48", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_0", new int[] { 22, 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_8", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x570_8", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("VideoShareSrv.get_video_src", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_21", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_22", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 22, 20 });
+    jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.ReportLBS", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 22, 20 });
+    jdField_a_of_type_JavaUtilMap.put("ModifyExamine.GetModifyTimes", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x874_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x904_1", new int[] { 22 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d4_0", new int[] { 26 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new int[] { 26 });
+    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.queryPrivExt", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.guanjiaReport", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("VipCustom.GetCustomOnlineStatus", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniSet", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniGet", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("RedTouchSvc.EntranceSetting", new int[] { 31 });
+    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.GetConfig", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.WxMsgOpt", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("DevLockSecSvc.DevLockQuery", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x614_1", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6de", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6df", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa13", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ad", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.AlertReport", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QPUpdate", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QSecCb", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("QSec.AVEng", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("MamonoSvc.Pa", new int[] { 34 });
+    jdField_a_of_type_JavaUtilMap.put("SecCheckSigSvc.UploadReq", new int[] { 23, 63 });
+    jdField_a_of_type_JavaUtilMap.put("SecSafeChkSvc.MainCmd", new int[] { 63 });
+    jdField_a_of_type_JavaUtilMap.put("SecIntChkSvc.MainCmd", new int[] { 63 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqJoinDiscuss", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqGetList", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqExit", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.NotifyList", new int[] { 33 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a4", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a2", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_3", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x823_0", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ab", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b3", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b2", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x81f", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa81", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x435", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8b", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a3_7", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x897_0", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put("hrtxformqq.getUsrSimpleInfo", new int[] { 37 });
+    jdField_a_of_type_JavaUtilMap.put("QQWalletPayAuthServer.checkChangePwdAuth", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("WalletGestureSvc.GetPassword", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("VacThirdCodeSvc.fetchCodes", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("QWalletPfa.RecFriend", new int[] { 42 });
+    jdField_a_of_type_JavaUtilMap.put("VipSTCheckServer.UinPay", new int[] { 44 });
+    jdField_a_of_type_JavaUtilMap.put("ComicProtoConvSvr.tunnel", new int[] { 80 });
+    jdField_a_of_type_JavaUtilMap.put("QcallOidbSvc.0x5e3_1", new int[] { 79 });
+    jdField_a_of_type_JavaUtilMap.put("Background.checkAuth", new int[] { 54 });
+    jdField_a_of_type_JavaUtilMap.put("red_touch_num_svr.get_num_msg", new int[] { 56 });
+    jdField_a_of_type_JavaUtilMap.put("QQClubComm.getNewFlag", new int[] { 87 });
+    jdField_a_of_type_JavaUtilMap.put("VipPayLogicServer.getCommPayInfo ", new int[] { 73 });
+    jdField_a_of_type_JavaUtilMap.put("QPayReminderSvc.query_over_due_info", new int[] { 47 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqGetGroupList", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqExit", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqJoinGroup", new int[] { 57 });
+    jdField_a_of_type_JavaUtilMap.put("Loginauth.1", new int[] { 58 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42e_3", new int[] { 59 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ab_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ReadAppList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.SortAppList", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ClearRedPoint", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_96", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb5b", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c5_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c8_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9e4_22", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.1081", new int[] { 64 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x472", new int[] { 64 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_41993", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5fc_0", new int[] { 66 });
+    jdField_a_of_type_JavaUtilMap.put("bubble.1", new int[] { 70 });
+    jdField_a_of_type_JavaUtilMap.put("Faceroam.OpReq", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc4", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdcf", new int[] { 72 });
+    jdField_a_of_type_JavaUtilMap.put("SelfGif.Op", new int[] { 160 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x438", new int[] { 76 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 2, 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_1", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_3", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_4", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_6", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_7", new int[] { 60 });
+    jdField_a_of_type_JavaUtilMap.put("MQKanDianSvc.0x001", new int[] { 81 });
+    jdField_a_of_type_JavaUtilMap.put(akjc.jdField_a_of_type_JavaLangString, new int[] { 86 });
+    jdField_a_of_type_JavaUtilMap.put(akjc.b, new int[] { 86 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x59f", new int[] { 84 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaAssignKfext", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.clickReplyCmd", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getUserDetailInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.verifyWpaAndKey", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getShieldStatus", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.blockBulkMsg", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getCustomerTransferInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getNavigationConfig", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.corpUinWpaReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.fetchCorpDetailInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7e7_0", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.emanClickReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.closeAIOSessionReport", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaGenSigMsg", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.webimAddFriend", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getQidianGroupInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x782", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.RtReport", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopMsgSvc.GetRichMsgInfo", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.AdFeedback", new int[] { 88 });
+    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 89 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 89 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 90, 163 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 99, 93 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c8", new int[] { 126 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x83e", new int[] { 126 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbcd", new int[] { 132 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbd2", new int[] { 133 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc13", new int[] { 136 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb73", new int[] { 138 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.ArticleLike", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CreateArticleComment", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleCommentCount", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.PictureInfo", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetRecommendInfo", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GalleryReport", new int[] { 93 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6cd", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6ce", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6f5", new int[] { 91 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77d_0", new int[] { 53 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8db_0", new int[] { 53 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetTorchAward", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6f0", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqDeliverTorch", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqExitDeliverTorch", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqClearTorchFlag", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_40525", new int[] { 94 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f0", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91d", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x909", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x90c", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f3", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f1", new int[] { 112 });
+    jdField_a_of_type_JavaUtilMap.put(sss.jdField_a_of_type_JavaLangString, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.c, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.e, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.b, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.d, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.f, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.h, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.i, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.j, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.k, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.l, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put(sss.m, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42073", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42073", new int[] { 0 });
+    jdField_a_of_type_JavaUtilMap.put("gxhreport.report", new int[] { 103 });
+    jdField_a_of_type_JavaUtilMap.put("HttpConn.0x6ff_501", new int[] { 104 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x922", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x923", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa28", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xac6", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a8", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopAdSdkSvr.getAd", new int[] { 139 });
+    jdField_a_of_type_JavaUtilMap.put("SQQShopAdSdkReportSvr.AdReport", new int[] { 139 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.BusiHotWord", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Unite", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.AssociationWord", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Tab", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Discovery", new int[] { 152 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_busi_hot_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_unite_search.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("dynamic_association_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("qb_association_word.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicScDiscovery.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("qb_discovery.1", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd78_0", new int[] { 111 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x990", new int[] { 113 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x987_0", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("ReadDiyAddonInfo.1", new int[] { 114 });
+    jdField_a_of_type_JavaUtilMap.put("videohub_group_notify_read.cmd0x2323", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x62c_4", new int[] { 35 });
+    jdField_a_of_type_JavaUtilMap.put(sss.n, new int[] { 98 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb01", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf4_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb70_1", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetPadRightInfo", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.SetPadRightInfo", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetSharedPadList", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_1", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_2", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_3", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_4", new int[] { 122 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb14", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xb67", new int[] { 125 });
+    jdField_a_of_type_JavaUtilMap.put("NowGetRecordInfoSvr.get_record_info", new int[] { 130 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xbc3", new int[] { 125 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbe8", new int[] { 134 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbf2", new int[] { 134 });
+    jdField_a_of_type_JavaUtilMap.put("WifiCloudCheckSvc.req", new int[] { 135 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc33_42220", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_22", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.b, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.d, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.f, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.e, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.g, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.h, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put(ayia.c, new int[] { 143 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xc6c", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xcca", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc7a", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc76", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc96", new int[] { 148 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd4", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42261", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42261", new int[] { 150 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd5", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc05", new int[] { 151 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xccd", new int[] { 151 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf3", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("PluginConfig.dynamic_plugin", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd8a", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42315", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x758", new int[] { 20 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_SimpleUI", new int[] { 154 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_SimpleUI", new int[] { 154 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd45", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4_1", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4a", new int[] { 153 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4b", new int[] { 155 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_latest_playing_state", new int[] { 156, 165 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_song_extended_info", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.media_operation", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.room_operation", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_play_show_info", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans_check", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.report_download_fail", new int[] { 156 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_operation", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.report_location", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.assembly_point_operation", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_query", new int[] { 164 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd79", new int[] { 161 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd86", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd83", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd82", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd7e", new int[] { 158 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd69", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd72", new int[] { 1 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcdd", new int[] { 162 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcde", new int[] { 162 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15(2)", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc9", new int[] { 166 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xdcc", new int[] { 167 });
+    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_dynamic_info", new int[] { 165 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_cn_switch", new int[] { 168 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_cn_switch", new int[] { 168 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqEnter", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqExit", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqHeartBeat", new int[] { 169 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe07_0", new int[] { 170 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0a_1", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0a_2", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.Oxe0e_1", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0e_2", new int[] { 171 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2.GetPoint", new int[] { 171 });
   }
 }
 

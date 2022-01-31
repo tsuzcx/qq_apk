@@ -12,7 +12,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 5;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowAbout;
-    localMoreItem.b = 2130840697;
+    localMoreItem.b = 2130840694;
     localMoreItem.jdField_a_of_type_JavaLangString = "关于";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -23,7 +23,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 6;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowComplaint;
-    localMoreItem.b = 2130840730;
+    localMoreItem.b = 2130840727;
     localMoreItem.jdField_a_of_type_JavaLangString = "举报";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -34,7 +34,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 7;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowDebug;
-    localMoreItem.b = 2130840697;
+    localMoreItem.b = 2130840694;
     localMoreItem.jdField_a_of_type_JavaLangString = "调试";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -45,7 +45,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 8;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowMonitor;
-    localMoreItem.b = 2130840697;
+    localMoreItem.b = 2130840694;
     localMoreItem.jdField_a_of_type_JavaLangString = "性能";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -62,7 +62,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 1;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowShareQQ;
-    localMoreItem.b = 2130840731;
+    localMoreItem.b = 2130840728;
     localMoreItem.jdField_a_of_type_JavaLangString = "QQ";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -73,7 +73,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 2;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowShareQzone;
-    localMoreItem.b = 2130840732;
+    localMoreItem.b = 2130840729;
     localMoreItem.jdField_a_of_type_JavaLangString = "QQ空间";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -84,7 +84,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 3;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowShareWxFriends;
-    localMoreItem.b = 2130840733;
+    localMoreItem.b = 2130840730;
     localMoreItem.jdField_a_of_type_JavaLangString = "微信好友";
     this.mMoreItemList.add(localMoreItem);
     return this;
@@ -95,7 +95,7 @@ public class MoreItemList$Builder
     MoreItem localMoreItem = new MoreItem();
     localMoreItem.jdField_a_of_type_Int = 4;
     localMoreItem.jdField_a_of_type_Boolean = this.mDisplaySettings.isShowShareWxMoments;
-    localMoreItem.b = 2130840734;
+    localMoreItem.b = 2130840731;
     localMoreItem.jdField_a_of_type_JavaLangString = "微信朋友圈";
     this.mMoreItemList.add(localMoreItem);
     return this;

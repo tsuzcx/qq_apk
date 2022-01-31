@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aecz;
+import aecx;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
 class TribeShortVideoItemBuilder$3
   implements Runnable
 {
-  TribeShortVideoItemBuilder$3(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, aecz paramaecz) {}
+  TribeShortVideoItemBuilder$3(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, aecx paramaecx) {}
   
   public void run()
   {

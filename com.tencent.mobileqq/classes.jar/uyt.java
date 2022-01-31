@@ -1,16 +1,23 @@
-import java.lang.ref.WeakReference;
+import com.tribe.async.dispatch.IEventReceiver;
 
-final class uyt
-  implements vad
+public class uyt
+  implements IEventReceiver
 {
-  uyt(WeakReference paramWeakReference) {}
+  protected uyc a;
   
-  public void a(String paramString)
+  public uyc a()
   {
-    paramString = (uyv)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((tcv)tdc.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    return this.a;
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    ved.b("Q.qqstory.home.Repository", "executeRunnableOnWorkThread");
+  }
+  
+  public boolean isValidate()
+  {
+    return false;
   }
 }
 

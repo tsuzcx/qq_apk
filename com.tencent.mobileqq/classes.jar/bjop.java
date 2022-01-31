@@ -1,18 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import android.support.annotation.NonNull;
 
-public final class bjop
-  implements Parcelable.Creator<PoiInfo>
+class bjop
+  extends bjoo<T>.bjoq
+  implements bjnn
 {
-  public PoiInfo a(Parcel paramParcel)
+  @NonNull
+  final bjns jdField_a_of_type_Bjns;
+  
+  bjop(bjns parambjns, @NonNull bjos<? super T> parambjos)
   {
-    return new PoiInfo(paramParcel, null);
+    super(parambjns, localbjos);
+    this.jdField_a_of_type_Bjns = parambjos;
   }
   
-  public PoiInfo[] a(int paramInt)
+  void a()
   {
-    return new PoiInfo[paramInt];
+    this.jdField_a_of_type_Bjns.a().b(this);
+  }
+  
+  public void a(bjns parambjns, bjnp parambjnp)
+  {
+    if (this.jdField_a_of_type_Bjns.a().a() == bjnq.a)
+    {
+      this.jdField_a_of_type_Bjoo.a(this.jdField_a_of_type_Bjos);
+      return;
+    }
+    a(a());
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Bjns.a().a().a(bjnq.d);
+  }
+  
+  boolean a(bjns parambjns)
+  {
+    return this.jdField_a_of_type_Bjns == parambjns;
   }
 }
 

@@ -1,55 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-
-public class atkj
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface atkj
 {
-  private atkj(StuffContainerView paramStuffContainerView) {}
+  public abstract void f();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (this.a.a == null) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f2;
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-      if (Math.abs(f1) <= Math.abs(f2)) {
-        break label143;
-      }
-      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
-      {
-        if (f1 >= 0.0F) {
-          break label128;
-        }
-        this.a.a.g();
-      }
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label128:
-      this.a.a.j();
-      continue;
-      label143:
-      if (f2 > 0.0F) {
-        this.a.a.h();
-      } else {
-        this.a.a.i();
-      }
-    }
-  }
+  public abstract void g();
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
-    return false;
-  }
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

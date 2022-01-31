@@ -1,15 +1,15 @@
-import android.net.Uri;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqcd
-  implements aqvz
+  implements DialogInterface.OnClickListener
 {
-  aqcd(aqca paramaqca) {}
+  aqcd(aqcc paramaqcc) {}
   
-  public void a(Uri paramUri) {}
-  
-  public void a(String paramString1, String paramString2, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = aqca.a(this.a, paramString2, paramLong);
+    this.a.a.finish();
   }
 }
 

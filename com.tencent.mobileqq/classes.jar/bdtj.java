@@ -1,22 +1,39 @@
-import android.graphics.SurfaceTexture;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract interface bdtj
+public class bdtj
+  extends BaseJsModule
 {
-  public abstract void a();
+  public String getModuleName()
+  {
+    return "mqq";
+  }
   
-  public abstract void a(int paramInt, Throwable paramThrowable);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    boolean bool = false;
+    if ("getQQVersion".equals(paramString)) {
+      paramString = new JSONObject();
+    }
+    while (!"getQQVersionSync".equals(paramString)) {
+      try
+      {
+        paramString.putOpt("version", "8.3.0");
+        bool = paramInvokeCallback.exec(0, paramString);
+        return bool;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
+    }
+    return false;
+  }
 }
 
 

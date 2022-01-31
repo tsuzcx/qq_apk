@@ -8,11 +8,11 @@ import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import akfp;
+import akfo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beho;
-import behq;
+import beif;
+import beih;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -211,9 +211,9 @@ public class ChannelProxyImpl
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (akfp)((QQAppInterface)localObject).a(5);
+        localObject = (akfo)((QQAppInterface)localObject).a(5);
         if (localObject != null) {
-          ((akfp)localObject).a(paramBundle);
+          ((akfo)localObject).a(paramBundle);
         }
       }
     }
@@ -244,14 +244,14 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().performReport(paramArrayOfByte, createCmdInterface(paramAsyncResult), "LightAppSvc." + paramString1 + "." + paramString2);
   }
   
-  public void setAuth(String paramString, beho parambeho, AsyncResult paramAsyncResult)
+  public void setAuth(String paramString, beif parambeif, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserAuthInfo localStUserAuthInfo = new INTERFACE.StUserAuthInfo();
-    localStUserAuthInfo.scope.set(parambeho.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(parambeho.b)) {
-      localStUserAuthInfo.desc.set(parambeho.b);
+    localStUserAuthInfo.scope.set(parambeif.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(parambeif.b)) {
+      localStUserAuthInfo.desc.set(parambeif.b);
     }
-    localStUserAuthInfo.authState.set(parambeho.jdField_a_of_type_Int);
+    localStUserAuthInfo.authState.set(parambeif.jdField_a_of_type_Int);
     MiniAppCmdUtil.getInstance().setAuth(null, paramString, localStUserAuthInfo, createCmdInterface(paramAsyncResult));
   }
   
@@ -275,12 +275,12 @@ public class ChannelProxyImpl
     return MiniAppCmdUtil.getInstance().updateBaseLibForSDK(paramString, paramBoolean1, paramBoolean2, createCmdInterface(paramAsyncResult));
   }
   
-  public void updateUserSetting(String paramString, behq parambehq, AsyncResult paramAsyncResult)
+  public void updateUserSetting(String paramString, beih parambeih, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserSettingInfo localStUserSettingInfo = new INTERFACE.StUserSettingInfo();
-    localStUserSettingInfo.settingItem.set(parambehq.jdField_a_of_type_JavaLangString);
-    localStUserSettingInfo.authState.set(parambehq.jdField_a_of_type_Int);
-    localStUserSettingInfo.desc.set(parambehq.b);
+    localStUserSettingInfo.settingItem.set(parambeih.jdField_a_of_type_JavaLangString);
+    localStUserSettingInfo.authState.set(parambeih.jdField_a_of_type_Int);
+    localStUserSettingInfo.desc.set(parambeih.b);
     MiniAppCmdUtil.getInstance().updateUserSetting(null, paramString, localStUserSettingInfo, createCmdInterface(paramAsyncResult));
   }
   

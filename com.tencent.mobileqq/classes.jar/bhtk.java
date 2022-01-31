@@ -1,13 +1,15 @@
-import android.app.Activity;
-
 class bhtk
-  implements bgze
 {
-  bhtk(bhth parambhth, int paramInt) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onFail(Activity paramActivity, String paramString)
+  public bhtk(bhtj parambhtj, int paramInt)
   {
-    bcpw.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

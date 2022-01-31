@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class azgx
-  implements bfob
+  implements TextWatcher
 {
-  int jdField_a_of_type_Int = 0;
+  public azgx(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public azgx(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
+    if ((!TextUtils.isEmpty(this.a.G)) && (paramInt1 > 0) && (paramInt1 < this.a.G.length() + 1) && (paramInt2 > paramInt3))
     {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
+      this.a.d(false);
+      return;
     }
+    TroopBarPublishActivity.a(this.a);
   }
 }
 

@@ -1,21 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import java.util.List;
 
 class tzg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
   tzg(tzf paramtzf) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      return;
+    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (paramView != null) {
+      paramView.d = 2;
     }
-    this.a.a.setImageResource(2130849549);
+    this.a.a().finish();
+    String str = "";
+    paramView = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
+    {
+      paramView = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        paramView = ((uas)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
+      }
+    }
+    vei.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", paramView });
   }
 }
 

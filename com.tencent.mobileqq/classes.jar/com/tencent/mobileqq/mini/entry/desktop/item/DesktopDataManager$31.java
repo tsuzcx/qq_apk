@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import android.text.TextUtils;
-import bbdj;
+import bbdx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ class DesktopDataManager$31
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = "/data/data/com.tencent.mobileqq/shared_prefs/" + (String)localObject + "_mini_app_recommend_exposure.xml";
-        if ((bbdj.d((String)localObject)) && (QLog.isColorLevel())) {
+        if ((bbdx.d((String)localObject)) && (QLog.isColorLevel())) {
           QLog.d("DesktopDataManager", 2, "delete : " + (String)localObject);
         }
       }

@@ -1,33 +1,117 @@
-import android.os.Bundle;
+import OnlinePushPack.MsgInfo;
+import OnlinePushPack.SvcReqPushMsg;
+import android.content.Intent;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
 
-class akrj
-  implements akoq
+public class akrj
+  extends akon
 {
-  akrj(akri paramakri, MessageRecord paramMessageRecord, boolean paramBoolean, msg_svc.PbSendMsgReq paramPbSendMsgReq) {}
-  
-  public ToServiceMsg a()
+  public akrj(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
-    long l = System.currentTimeMillis();
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akri.a.createToServiceMsg("MessageSvc.PbMultiMsgSend");
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    localToServiceMsg.extraData.putInt("msgtype", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype);
-    localToServiceMsg.extraData.putBoolean(axad.h, this.jdField_a_of_type_Boolean);
-    localToServiceMsg.extraData.putLong("key_msg_info_time_start", l);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.setTimeout(15000L);
-    localToServiceMsg.setEnableFastResend(true);
-    if (QLog.isColorLevel())
-    {
-      int i = axas.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid);
-      QLog.d("Q.msg.UncommonMessageProcessor", 2, "sendBlessMsg,  mr_uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + " msgSeq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq + " mr_shMsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + " mr_msgUid:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid + " random:" + i + " isRedBagVideo:" + this.jdField_a_of_type_Boolean);
-    }
-    return localToServiceMsg;
+    super(paramQQAppInterface, paramMessageHandler);
   }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
+        try
+        {
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
+          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
+          if (paramArrayOfByte != null) {
+            break label71;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
+    return;
+    label71:
+    long l1 = paramArrayOfByte.uint64_to_uin.get();
+    long l2 = paramArrayOfByte.uint64_room_id.get();
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
+    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
+    paramArrayOfByte.putExtra("c2cuin", l1);
+    paramArrayOfByte.putExtra("c2croomid", l2);
+    this.a.getApp().sendBroadcast(paramArrayOfByte);
+    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
+  }
+  
+  private void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramArrayOfByte);
+  }
+  
+  public akqi a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return new akqi(null, true);
+      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+      {
+        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
+      }
+      else
+      {
+        a(getClass().getName(), paramInt);
+        continue;
+        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+        {
+          boolean bool = llm.a(paramMsgInfo.vMsg);
+          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
+        }
+        else
+        {
+          a(getClass().getName(), paramInt);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
+    {
+      a((byte[])paramVarArgs[2], 11);
+      return;
+    }
+    a(getClass().getName(), paramInt);
+  }
+  
+  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

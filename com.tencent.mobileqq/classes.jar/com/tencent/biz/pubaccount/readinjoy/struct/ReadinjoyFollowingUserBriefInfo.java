@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ReadinjoyFollowingUserBriefInfo
-  extends aukm
+  extends auko
 {
   public int followed = 0;
-  @auma
+  @aumc
   public long uin;
   
   public ReadinjoyFollowingUserBriefInfo()

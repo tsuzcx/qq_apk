@@ -10,16 +10,16 @@ public class opf
 {
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
     Iterator localIterator = paramString.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
-      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "opt_open_cost")) {
-        bhvh.a("preload_controller", Boolean.valueOf("1".equals(str2)));
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "native_article")) {
+        bhvy.a("native_proteus_offline_bid", str2);
       }
     }
     return true;
@@ -27,7 +27,7 @@ public class opf
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("preload_controller", Boolean.valueOf(true));
+    bhvy.a("native_proteus_offline_bid", "0");
   }
 }
 

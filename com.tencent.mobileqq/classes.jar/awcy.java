@@ -1,78 +1,53 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class awcy
-  extends akgp
+  implements Observer
 {
-  private awcy(SignTextEditFragment paramSignTextEditFragment) {}
+  public awcy(SignTextEditFragment paramSignTextEditFragment) {}
   
-  protected void e(boolean paramBoolean, Object paramObject)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramObject == null) {
-      SignTextEditFragment.a(this.a, 2);
-    }
-    for (;;)
+    if (!SignTextEditFragment.a(this.a).get()) {}
+    do
     {
       return;
-      paramObject = (Bundle)paramObject;
-      int i = paramObject.getInt("param_searchResult", 0);
-      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
-      if ((paramObject == null) || (paramObject.size() <= 0)) {
-        if (i == 0) {
-          SignTextEditFragment.a(this.a, 3);
+      SignTextEditFragment.a(this.a).set(false);
+    } while (!(paramObject instanceof Integer));
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    case 3: 
+      paramObservable = awek.a().a(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      if ((paramObservable != null) && (!TextUtils.isEmpty(paramObservable.a)) && (Integer.parseInt(paramObservable.a) > 0) && (paramObservable.f < 2)) {
+        if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
+          bblj.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
         }
       }
-      while (this.a.jdField_a_of_type_Aipq.a(paramObject, true))
+      for (;;)
       {
-        this.a.jdField_a_of_type_Aipq.notifyDataSetChanged();
+        awek.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
         return;
-        SignTextEditFragment.a(this.a, 2);
-        continue;
-        SignTextEditFragment.a(this.a, 4);
+        this.a.a(100, SignTextEditFragment.a(this.a));
       }
     }
-  }
-  
-  protected void f(boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      SignTextEditFragment.a(this.a, 2);
-      return;
-    }
-    Object localObject = (Bundle)paramObject;
-    int j = ((Bundle)localObject).getInt("param_atIndex");
-    int k = ((Bundle)localObject).getInt("param_atKeyLen");
-    paramObject = ((Bundle)localObject).getString("param_atKey");
-    long l = ((Bundle)localObject).getLong("param_reqTs");
-    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
-    int i;
-    if (localObject == null)
-    {
-      i = 0;
-      if (QLog.isColorLevel()) {
-        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
-      }
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        break label240;
-      }
-      SignTextEditFragment.a(this.a, 3);
+    if (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "new_signature_version_826", true)) {
+      bblj.a(this.a.getActivity(), this.a.getActivity().app, 0, "signature_chouti");
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Aipq.a((List)localObject, false)) {
-        this.a.jdField_a_of_type_Aipq.notifyDataSetChanged();
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      awek.a().deleteObserver(this.a.jdField_a_of_type_JavaUtilObserver);
       return;
-      i = ((List)localObject).size();
-      break;
-      label240:
-      SignTextEditFragment.a(this.a, 4);
+      this.a.a(100, SignTextEditFragment.a(this.a));
     }
   }
 }

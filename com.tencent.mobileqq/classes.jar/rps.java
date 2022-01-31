@@ -1,25 +1,47 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class rps
-  implements Animator.AnimatorListener
+  implements ComplementFileStringLoader
 {
-  public rps(ZImageView paramZImageView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private rpz jdField_a_of_type_Rpz;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public rps(Context paramContext, String paramString)
   {
-    ZImageView.a(this.a);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Rpz = new rpz(paramContext, paramString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public String loadFileAsString(String paramString)
   {
-    ZImageView.a(this.a);
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
+    {
+      InputStream localInputStream = this.jdField_a_of_type_Rpz.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      }
+      localObject = rqj.a((InputStream)localObject);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import bbjc;
+import bbjq;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ShareActionSheetBuilder$2
   implements Runnable
 {
-  public ShareActionSheetBuilder$2(bbjc parambbjc) {}
+  public ShareActionSheetBuilder$2(bbjq parambbjq) {}
   
   public void run()
   {

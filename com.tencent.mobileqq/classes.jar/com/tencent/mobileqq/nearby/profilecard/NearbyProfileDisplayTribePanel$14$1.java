@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import asyt;
-import asyu;
-import atqu;
-import atra;
+import asyv;
+import asyw;
+import atqw;
+import atrc;
 
 public class NearbyProfileDisplayTribePanel$14$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$14$1(atra paramatra, asyt paramasyt) {}
+  public NearbyProfileDisplayTribePanel$14$1(atrc paramatrc, asyv paramasyv) {}
   
   public void run()
   {
-    asyu.a(this.jdField_a_of_type_Atra.a.a.getAppInterface(), this.jdField_a_of_type_Asyt);
+    asyw.a(this.jdField_a_of_type_Atrc.a.a.getAppInterface(), this.jdField_a_of_type_Asyv);
   }
 }
 

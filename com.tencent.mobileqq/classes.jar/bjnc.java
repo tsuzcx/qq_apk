@@ -1,195 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bjnc
+class bjnc
+  implements EIPCOnGetConnectionListener
 {
-  private static Map<Class, Integer> a = new HashMap();
-  private static Map<Class, List<Constructor<? extends bjmv>>> b = new HashMap();
+  bjnc(bjna parambjna) {}
   
-  private static int a(Class<?> paramClass)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if (a.containsKey(paramClass)) {
-      return ((Integer)a.get(paramClass)).intValue();
+    if (paramEIPCConnection != null) {
+      bjna.a(this.a, paramEIPCConnection.procName);
     }
-    int i = b(paramClass);
-    a.put(paramClass, Integer.valueOf(i));
-    return i;
-  }
-  
-  private static bjmv a(Constructor<? extends bjmv> paramConstructor, Object paramObject)
-  {
-    try
-    {
-      paramConstructor = (bjmv)paramConstructor.newInstance(new Object[] { paramObject });
-      return paramConstructor;
-    }
-    catch (IllegalAccessException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
-    }
-    catch (InstantiationException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
-    }
-    catch (InvocationTargetException paramConstructor)
-    {
-      throw new RuntimeException(paramConstructor);
+    bjna.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectBind!");
     }
   }
   
-  @NonNull
-  public static bjmw a(Object paramObject)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if ((paramObject instanceof bjmt)) {
-      return new bjmu((bjmt)paramObject);
+    if (paramEIPCConnection != null) {
+      bjna.a(this.a, paramEIPCConnection.procName);
     }
-    if ((paramObject instanceof bjmw)) {
-      return (bjmw)paramObject;
-    }
-    Object localObject = paramObject.getClass();
-    if (a((Class)localObject) == 2)
-    {
-      localObject = (List)b.get(localObject);
-      if (((List)localObject).size() == 1) {
-        return new bjni(a((Constructor)((List)localObject).get(0), paramObject));
-      }
-      bjmv[] arrayOfbjmv = new bjmv[((List)localObject).size()];
-      int i = 0;
-      while (i < ((List)localObject).size())
-      {
-        arrayOfbjmv[i] = a((Constructor)((List)localObject).get(i), paramObject);
-        i += 1;
-      }
-      return new bjms(arrayOfbjmv);
-    }
-    return new bjnf(paramObject);
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString.replace(".", "_") + "_LifecycleAdapter";
-  }
-  
-  @Nullable
-  private static Constructor<? extends bjmv> a(Class<?> paramClass)
-  {
-    for (;;)
-    {
-      try
-      {
-        localObject = paramClass.getPackage();
-        String str = paramClass.getCanonicalName();
-        if (localObject != null)
-        {
-          localObject = ((Package)localObject).getName();
-          if (((String)localObject).isEmpty())
-          {
-            str = a(str);
-            if (((String)localObject).isEmpty())
-            {
-              localObject = str;
-              paramClass = Class.forName((String)localObject).getDeclaredConstructor(new Class[] { paramClass });
-              if (paramClass.isAccessible()) {
-                break label124;
-              }
-              paramClass.setAccessible(true);
-              return paramClass;
-            }
-          }
-          else
-          {
-            str = str.substring(((String)localObject).length() + 1);
-            continue;
-          }
-          localObject = (String)localObject + "." + str;
-          continue;
-          return paramClass;
-        }
-      }
-      catch (ClassNotFoundException paramClass)
-      {
-        return null;
-      }
-      catch (NoSuchMethodException paramClass)
-      {
-        throw new RuntimeException(paramClass);
-      }
-      label124:
-      Object localObject = "";
-    }
-  }
-  
-  private static boolean a(Class<?> paramClass)
-  {
-    return (paramClass != null) && (bjna.class.isAssignableFrom(paramClass));
-  }
-  
-  private static int b(Class<?> paramClass)
-  {
-    if (paramClass.getCanonicalName() == null) {
-      return 1;
-    }
-    Object localObject1 = a(paramClass);
-    if (localObject1 != null)
-    {
-      b.put(paramClass, Collections.singletonList(localObject1));
-      return 2;
-    }
-    if (bjmp.a.a(paramClass)) {
-      return 1;
-    }
-    Object localObject2 = paramClass.getSuperclass();
-    localObject1 = null;
-    if (a((Class)localObject2))
-    {
-      if (a((Class)localObject2) == 1) {
-        return 1;
-      }
-      localObject1 = new ArrayList((Collection)b.get(localObject2));
-    }
-    localObject2 = paramClass.getInterfaces();
-    int j = localObject2.length;
-    int i = 0;
-    Class localClass;
-    while (i < j)
-    {
-      localClass = localObject2[i];
-      if (!a(localClass))
-      {
-        i += 1;
-      }
-      else
-      {
-        if (a(localClass) == 1) {
-          return 1;
-        }
-        if (localObject1 != null) {
-          break label197;
-        }
-        localObject1 = new ArrayList();
-      }
-    }
-    label197:
-    for (;;)
-    {
-      ((List)localObject1).addAll((Collection)b.get(localClass));
-      break;
-      if (localObject1 != null)
-      {
-        b.put(paramClass, localObject1);
-        return 2;
-      }
-      return 1;
+    bjna.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "onConnectUnbind:" + bjna.a(this.a));
     }
   }
 }

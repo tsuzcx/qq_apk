@@ -1,44 +1,88 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class awej
-  implements EIPCResultCallback
+public class awej
+  extends awev
 {
-  awej(awei paramawei) {}
+  private awej(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void a(boolean paramBoolean, List<byte[]> paramList, List<Integer> paramList1)
   {
-    if (paramEIPCResult.data == null) {}
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
+      localObject = new StringBuilder().append("onDeleteStatus. isSuccess=").append(paramBoolean).append(", keyListSize=").append(paramList.size()).append(", errorCodeSize=");
+      if (paramList1 != null) {
+        break label231;
+      }
+    }
+    label231:
+    for (paramList1 = "null";; paramList1 = Integer.valueOf(paramList1.size()))
+    {
+      QLog.d("SignatureHistoryFragment", 2, paramList1);
+      if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+        SignatureHistoryFragment.a(this.a).dismiss();
+      }
+      if ((!paramBoolean) || (paramList == null)) {
+        break label419;
+      }
+      if (this.a.getActivity() != null) {
+        this.a.a(2, 2131691514);
+      }
+      paramList = paramList.iterator();
+      for (;;)
       {
-        do
-        {
-          return;
-          switch (paramEIPCResult.data.getInt("notify_type"))
-          {
-          default: 
-            return;
-          }
-        } while (paramEIPCResult.code != 0);
-        i = paramEIPCResult.data.getInt("id");
-        paramEIPCResult = paramEIPCResult.data.getString("url");
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature.TOOL", 2, "mSignatureManagerIPCCallback get action id = " + i + " url = " + paramEIPCResult);
+        if (!paramList.hasNext()) {
+          break label244;
         }
-      } while (TextUtils.isEmpty(paramEIPCResult));
-      awei.b(this.a).put(Integer.valueOf(i), paramEIPCResult);
-      awei.b(this.a);
-      this.a.notifyObservers(Integer.valueOf(4));
+        paramList1 = (byte[])paramList.next();
+        localObject = SignatureHistoryFragment.b(this.a).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          HistorySignItem localHistorySignItem = (HistorySignItem)((Iterator)localObject).next();
+          if ((localHistorySignItem == null) || (localHistorySignItem.richStatus == null) || (!localHistorySignItem.richStatus.feedsId.equals(new String(paramList1)))) {
+            break;
+          }
+          ((Iterator)localObject).remove();
+        }
+      }
+    }
+    label244:
+    if (SignatureHistoryFragment.b(this.a).size() == 0) {
+      SignatureHistoryFragment.a(this.a, 3);
+    }
+    SignatureHistoryFragment.a(this.a).clear();
+    SignatureHistoryFragment.b(this.a, false);
+    SignatureHistoryFragment.a(this.a).setText(2131719646);
+    SignatureHistoryFragment.b(this.a, false);
+    if (SignatureHistoryFragment.a(this.a) != null) {
+      SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      if ((paramBoolean) && (this.a.getActivity() != null))
+      {
+        BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean(SignatureHistoryFragment.b(this.a) + "_has_history_sig_del_key", true).apply();
+        if (this.a.a != null) {
+          this.a.a.a(Long.parseLong(SignatureHistoryFragment.a(this.a)));
+        }
+      }
       return;
-    } while (paramEIPCResult.code != 0);
-    int i = paramEIPCResult.data.getInt("id");
-    this.a.a(i, true);
+      label419:
+      if (this.a.getActivity() != null) {
+        this.a.a(1, 2131699366);
+      }
+    }
   }
 }
 

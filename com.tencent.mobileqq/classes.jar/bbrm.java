@@ -1,66 +1,6 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasResEngine.VasResController.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
-import mqq.manager.Manager;
-
-public class bbrm
+public abstract interface bbrm<E>
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  bbwf jdField_a_of_type_Bbwf = new bbrn(this);
-  private bbwl jdField_a_of_type_Bbwl;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public bbrm(int paramInt, AppRuntime paramAppRuntime, Handler paramHandler)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new VasResController.2(this, paramString, paramInt1, paramInt2), 5, null, true);
-  }
-  
-  public void a(String paramString1, String paramString2, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bbwl == null) && (this.jdField_a_of_type_MqqAppAppRuntime != null))
-    {
-      Manager localManager = this.jdField_a_of_type_MqqAppAppRuntime.getManager(47);
-      if ((localManager != null) && ((localManager instanceof bbwi))) {
-        this.jdField_a_of_type_Bbwl = ((bbwi)localManager).a(1);
-      }
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("VasResController", 1, "downLoad error url is empty dst =" + paramString2);
-    }
-    if ((this.jdField_a_of_type_Bbwl != null) && (this.jdField_a_of_type_Bbwl.a(paramString1) == null))
-    {
-      paramString1 = new bbwg(paramString1, new File(paramString2));
-      this.jdField_a_of_type_Bbwl.a(paramString1, this.jdField_a_of_type_Bbwf, paramBundle);
-    }
-  }
+  public abstract void a(E paramE, Object paramObject);
 }
 
 

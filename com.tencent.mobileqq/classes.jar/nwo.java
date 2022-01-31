@@ -1,23 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class nwo
-  implements View.OnClickListener
+  implements rei
 {
-  public nwo(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
+  private WeakReference<ReadInJoyNewBaseActivity> a;
   
-  public void onClick(View paramView)
+  public nwo(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
-    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
-      bbjn.r(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+  }
+  
+  public void a()
+  {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
     }
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
+      return;
+    }
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 

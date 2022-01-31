@@ -1,36 +1,40 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.1;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.2;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.4.3;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import mqq.os.MqqHandler;
 
-class bilx
-  extends LinearSmoothScroller
+public class bilx
+  implements birp
 {
-  public bilx(bilw parambilw, Context paramContext)
+  bilx(bilv parambilv) {}
+  
+  public void a(bire parambire, int paramInt)
   {
-    super(paramContext);
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.3(this, parambire, paramInt));
   }
   
-  public int calculateDxToMakeVisible(View paramView, int paramInt)
+  public void a(bire parambire, boolean paramBoolean)
   {
-    return bilw.a(this.a).a(-this.a.g);
-  }
-  
-  public int calculateDyToMakeVisible(View paramView, int paramInt)
-  {
-    return bilw.a(this.a).b(-this.a.g);
-  }
-  
-  public int calculateTimeForScrolling(int paramInt)
-  {
-    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * bilw.a(this.a));
-  }
-  
-  @Nullable
-  public PointF computeScrollVectorForPosition(int paramInt)
-  {
-    return new PointF(bilw.a(this.a).a(this.a.g), bilw.a(this.a).b(this.a.g));
+    if ((!paramBoolean) || (bilv.a(this.a) == null))
+    {
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.1(this, parambire));
+      if (!paramBoolean) {
+        break label126;
+      }
+    }
+    label126:
+    for (int i = 0;; i = 1)
+    {
+      xhb.a("record_decoration_download", xhb.a(i, System.currentTimeMillis() - parambire.jdField_a_of_type_Long, parambire.d, parambire.b, parambire.jdField_a_of_type_JavaLangString));
+      return;
+      if (this.a.a(bilv.a(this.a).a()) == bilv.a(this.a)) {
+        bilv.a(this.a, bilv.a(this.a));
+      }
+      ThreadManager.getUIHandler().post(new AEBottomListAdapter.4.2(this, parambire));
+      break;
+    }
   }
 }
 

@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-
-public final class arrp
-  implements Parcelable.Creator<MusicInfo>
+public abstract interface arrp
 {
-  public MusicInfo a(Parcel paramParcel)
-  {
-    return new MusicInfo(paramParcel, null);
-  }
+  public abstract void a();
   
-  public MusicInfo[] a(int paramInt)
-  {
-    return new MusicInfo[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

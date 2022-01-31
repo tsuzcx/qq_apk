@@ -1,82 +1,79 @@
-import android.content.Context;
+import android.hardware.GeomagneticField;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class alya
-  extends alyc
+public abstract class alya
+  implements SensorEventListener
 {
   private float jdField_a_of_type_Float = -1.0F;
-  boolean jdField_a_of_type_Boolean = false;
+  protected alxt a;
+  protected SensorManager a;
+  protected List<Sensor> a;
+  private boolean jdField_a_of_type_Boolean;
+  protected float[] a;
   private float b = -1.0F;
   private float c = -1.0F;
-  private float[] d = new float[3];
-  private float[] e = new float[3];
-  private float[] f = new float[16];
   
-  public alya(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public alya(SensorManager paramSensorManager, alxt paramalxt)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxu);
-    paramContext = paramSensorManager.getDefaultSensor(1);
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(1));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
+    this.jdField_a_of_type_Alxt = paramalxt;
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  private GeomagneticField a()
   {
-    if (this.jdField_a_of_type_Alxu == null) {
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
     }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    return null;
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  protected float a()
   {
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
-      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
-      this.d[1] = (-(float)Math.atan2(f2, f3));
-      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
-      if (this.jdField_a_of_type_Boolean) {
-        this.d = alxv.a(this.d, this.e);
-      }
-      System.arraycopy(this.d, 0, this.e, 0, 3);
-      this.jdField_a_of_type_Boolean = true;
-      alxw.a(alxw.a(this.d), this.f);
-      if (this.jdField_a_of_type_Int != 1) {
-        super.a(this.f);
-      }
+    GeomagneticField localGeomagneticField = a();
+    if (localGeomagneticField != null) {
+      return localGeomagneticField.getDeclination();
     }
-    else
-    {
-      return;
-    }
-    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
+    return 0.0F;
   }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
+    }
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Sensor localSensor = (Sensor)localIterator.next();
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
+    }
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
 }
 
 

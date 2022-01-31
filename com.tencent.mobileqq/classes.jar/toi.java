@@ -1,28 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
 
 public class toi
-  extends syq
+  extends syn
 {
-  public List<tef> a = new ArrayList();
+  public qqstory_service.RspGetMusicListConfig a;
   
-  public toi(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  public toi(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
   {
-    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
-    {
-      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
-      while (paramRspGetBatchFeedFeature.hasNext())
-      {
-        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
-        tef localtef = new tef();
-        localtef.a(localFeedFeature);
-        this.a.add(localtef);
-      }
-    }
+    super(paramRspGetMusicListConfig.result);
+    this.a = paramRspGetMusicListConfig;
   }
 }
 

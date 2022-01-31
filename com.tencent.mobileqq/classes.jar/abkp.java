@@ -1,32 +1,22 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.Leba.28.1;
+import com.tencent.mobileqq.activity.Leba.33.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class abkp
-  extends atzl
+  extends aszk
 {
   public abkp(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
-      return;
-      if (Leba.b(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        ajzq.a(localArrayList, agca.a().a(this.a.a));
-        this.a.a(new Leba.28.1(this, localArrayList));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
-        return;
-        agca.a |= 0x2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
     }
+    if (Leba.a(this.a) == null) {
+      return;
+    }
+    this.a.a.post(new Leba.33.1(this));
   }
 }
 

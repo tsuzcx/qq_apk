@@ -1,27 +1,24 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View.OnTouchListener;
 
-public class ahnj
-  extends ahnq
+class ahnj
+  implements View.OnTouchListener
 {
-  public View a(int paramInt, Object paramObject, ahnt paramahnt, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpq paramahpq)
+  ahnj(ahni paramahni) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof ahnr))) {}
-    paramObject = super.a(paramInt, paramObject, paramahnt, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramahpq);
-    paramahnt = (ahnr)paramObject.getTag();
-    paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131166928);
-    paramViewGroup = paramViewGroup.getColorStateList(2131166854);
-    paramahnt.a.setTextColor(paramViewGroup);
-    paramahnt.b.setTextColor(paramView);
-    paramahnt.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131375095).setBackgroundResource(2130839129);
-    return paramObject;
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

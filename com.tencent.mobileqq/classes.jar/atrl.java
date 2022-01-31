@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 
 class atrl
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  atrl(atqu paramatqu) {}
+  atrl(atqw paramatqw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.s = false;
+    this.a.d(true);
+    axqy.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

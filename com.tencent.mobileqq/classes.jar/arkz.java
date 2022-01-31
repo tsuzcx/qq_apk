@@ -1,39 +1,52 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.util.WeakReference;
 
 public class arkz
-  extends Handler
+  implements asgr
 {
-  WeakReference<WatchTogetherFloatingView> a;
+  private WeakReference<IVideoOuterStatusListener> a;
   
-  public arkz(WatchTogetherFloatingView paramWatchTogetherFloatingView)
+  public arkz(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    this.a = new WeakReference(paramWatchTogetherFloatingView);
+    this.a = paramWeakReference;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
     }
-    do
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
     {
+      localIVideoOuterStatusListener.onVideoStop();
       return;
-      sendEmptyMessageDelayed(2, 20000L);
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
       return;
-      removeMessages(2);
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      arkv.a().a(false);
+      a(false);
       return;
-      try
-      {
-        ((WatchTogetherFloatingView)this.a.get()).a();
-        return;
-      }
-      catch (NullPointerException paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    arkv.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 

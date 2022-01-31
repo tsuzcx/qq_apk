@@ -1,23 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
 import java.util.List;
 
 class pof
-  implements ViewBase.OnClickListener
+  extends EventCallback
 {
-  pof(poc parampoc) {}
+  pof(pny parampny) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onPagerChange(int paramInt)
   {
-    olr.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    if ((pob.a(this.a.jdField_a_of_type_Pob) != null) && (this.a.jdField_a_of_type_Int < pob.a(this.a.jdField_a_of_type_Pob).size()))
-    {
-      onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), (BaseArticleInfo)pob.a(this.a.jdField_a_of_type_Pob).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
-      return;
+    pny.b(paramInt);
+    if ((pny.b() != null) && (!pny.b().contains(Integer.valueOf(paramInt)))) {
+      pny.b().add(Integer.valueOf(paramInt));
     }
-    onk.a(pob.a(this.a.jdField_a_of_type_Pob).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

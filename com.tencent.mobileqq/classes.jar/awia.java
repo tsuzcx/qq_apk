@@ -1,24 +1,49 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
 
 class awia
-  implements GifDrawable.OnGIFPlayOnceListener
+  implements awid
 {
-  awia(awhz paramawhz, AbstractGifImage paramAbstractGifImage) {}
+  awia(awhx paramawhx, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo) {}
   
-  public void onPlayOnce()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
-    AbstractGifImage.pauseAll();
-    if (this.jdField_a_of_type_Awhz.jdField_a_of_type_Awib != null) {
-      this.jdField_a_of_type_Awhz.jdField_a_of_type_Awib.b();
-    }
-    if (this.jdField_a_of_type_Awhz.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
+    String str = localSharedPreferences.getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    akiz localakiz = new akiz(localQQAppInterface);
+    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID))
+    {
+      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
+      localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", 1).apply();
+      localakiz.a(localQQAppInterface, "gif_sta_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
       return;
     }
-    ((URLImageView)this.jdField_a_of_type_Awhz.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
+    localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", i + 1).apply();
+    localakiz.a(localQQAppInterface, "gif_sta_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+  }
+  
+  public void b()
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    akiz localakiz = new akiz(localQQAppInterface);
+    if (i == 1) {
+      localakiz.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
+      return;
+      localakiz.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+    }
   }
 }
 

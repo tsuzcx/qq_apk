@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import vfc;
+import vez;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new vfc();
+  public static final Parcelable.Creator<EditLocalPhotoSource> CREATOR = new vez();
   public final LocalMediaInfo a;
   public final String a;
   

@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
-class vah
-  implements DialogInterface.OnClickListener
+public class vah
+  implements View.OnClickListener
 {
-  vah(vaf paramvaf) {}
+  public vah(StoryListPresenter.4.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    vel.a("home_page", "guide_known", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    vei.a("home_page", "clk_up_know", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
   }
 }
 

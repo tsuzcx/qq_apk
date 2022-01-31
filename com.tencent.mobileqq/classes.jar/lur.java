@@ -1,133 +1,57 @@
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-
-public abstract class lur
+public class lur
+  extends lum
 {
-  public float a;
-  public int a;
-  public long a;
-  public Matrix a;
-  public Rect a;
-  public lvr a;
-  public float b;
-  public float c;
-  public float d = 1.0F;
+  public boolean a;
   
-  public lur()
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public float a()
-  {
-    return this.d;
-  }
-  
-  protected float a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 + paramInt2) / 2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preRotate(this.c, this.jdField_a_of_type_Float, this.b);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(this.d, this.d, this.jdField_a_of_type_Float, this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.c != paramFloat)
+    paramLong -= this.jdField_a_of_type_Long;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if (paramLong <= 500L)
     {
-      this.c = paramFloat;
-      a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = 1;
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f1 = a(paramInt1, paramInt3);
-    float f2 = b(paramInt2, paramInt4);
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_Float != f1)
-    {
-      this.jdField_a_of_type_Float = f1;
-      paramInt1 = 1;
-    }
-    if (this.b != f2)
-    {
-      this.b = f2;
-      paramInt1 = i;
+      i = 0;
+      f1 = f2;
     }
     for (;;)
     {
-      if (paramInt1 != 0) {
-        a();
-      }
+      a(i);
+      b(f1);
       return;
+      if ((paramLong > 500L) && (paramLong < 1167L))
+      {
+        i = (int)(255L * (paramLong - 500L) / 667L);
+        f1 = (0.5F * (float)(paramLong + 1167L) - 500.0F) / 667.0F;
+      }
+      else if (((paramLong >= 1167L) && (paramLong <= 2167L)) || (!this.jdField_a_of_type_Boolean))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 2167L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 2500L)
+          {
+            i = (int)((paramLong - 2500L) * 255L / -333L);
+            f1 = f2;
+          }
+        }
+      }
     }
   }
   
-  public abstract void a(long paramLong);
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Lvr != null)
-    {
-      paramCanvas.save();
-      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      paramPaint.setAlpha(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Lvr.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      paramCanvas.restore();
-    }
+    a(paramInt1 * 5 / 1500, paramInt2 - paramInt1 * 752 / 750, paramInt1 * 1495 / 1500, paramInt2);
   }
-  
-  protected float b(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 + paramInt2) / 2;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Lvr != null)
-    {
-      this.jdField_a_of_type_Lvr.a();
-      this.jdField_a_of_type_Lvr = null;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void b(float paramFloat)
-  {
-    if (this.d != paramFloat)
-    {
-      this.d = paramFloat;
-      a();
-    }
-  }
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

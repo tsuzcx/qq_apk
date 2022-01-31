@@ -2,8 +2,8 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lgf;
-import mat;
+import lga;
+import mao;
 
 class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
   implements Runnable
@@ -21,8 +21,8 @@ class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
     }
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.f();
     this.this$0.d(true);
-    mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-    mat.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+    mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
+    mao.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.b, true, true);
   }
 }

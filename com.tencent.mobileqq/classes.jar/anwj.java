@@ -1,82 +1,12 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class anwj
+public abstract interface anwj
 {
-  private static anwj jdField_a_of_type_Anwj;
-  ArrayList<WeakReference<anwi>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public abstract void a(EmoticonPackage paramEmoticonPackage);
   
-  public static anwj a()
-  {
-    if (jdField_a_of_type_Anwj == null) {}
-    try
-    {
-      if (jdField_a_of_type_Anwj == null) {
-        jdField_a_of_type_Anwj = new anwj();
-      }
-      return jdField_a_of_type_Anwj;
-    }
-    finally {}
-  }
+  public abstract void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
   
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        anwi localanwi = (anwi)((WeakReference)localIterator.next()).get();
-        if (localanwi != null) {
-          localanwi.a(paramInt);
-        }
-      }
-    }
-  }
-  
-  public void a(anwi paramanwi)
-  {
-    if (paramanwi == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramanwi) {
-          return;
-        }
-      }
-    }
-    paramanwi = new WeakReference(paramanwi);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramanwi);
-  }
-  
-  public void b(anwi paramanwi)
-  {
-    if (paramanwi == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramanwi) {
-          localIterator.remove();
-        }
-      }
-    }
-  }
+  public abstract void b(EmoticonPackage paramEmoticonPackage);
 }
 
 

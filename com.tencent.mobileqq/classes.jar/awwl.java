@@ -3,12 +3,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class awwl
-  extends awyf
+  extends awyh
 {
-  private TextView a;
-  private TextView b;
-  private TextView c;
-  private TextView d;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
   public awwl(View paramView)
   {
@@ -23,30 +21,31 @@ public class awwl
   protected void a()
   {
     super.a();
-    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375874));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375873));
-    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375872));
-    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376246));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378332);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
   
   public TextView e()
   {
-    return this.a;
-  }
-  
-  public TextView f()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView g()
-  {
-    return this.c;
-  }
-  
-  public TextView h()
-  {
-    return this.d;
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

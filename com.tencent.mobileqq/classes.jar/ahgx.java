@@ -1,34 +1,14 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class ahgx
-  extends View
+  implements DialogInterface.OnCancelListener
 {
-  private View jdField_a_of_type_AndroidViewView;
+  ahgx(ahgw paramahgw) {}
   
-  public ahgx(ahgw paramahgw, Context paramContext, View paramView, Drawable paramDrawable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setBackgroundDrawable(paramDrawable);
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
+    ahif.a("sq.cftc", 4, 0, null);
   }
 }
 

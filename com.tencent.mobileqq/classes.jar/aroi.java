@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class aroi
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aroi(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  public aroi(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    if (paramInt == 0) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
+      }
+    }
+    while (paramInt != 1)
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 1})");
+      return;
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs4OpenApiIfNeeded("showDialog", 0, "({button: 0})");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,13 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
 
-class anvb
-  implements acsv
+public class anvb
+  implements ajkp
 {
-  anvb(anul paramanul) {}
+  public anvb(MessengerService.IncomingHandler.30 param30) {}
   
-  public void a()
+  public void a(long paramLong, String paramString)
   {
-    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
   }
 }
 

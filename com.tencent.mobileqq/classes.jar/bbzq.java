@@ -1,67 +1,16 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
-class bbzq
-  extends bbwf
+public class bbzq
+  implements View.OnTouchListener
 {
-  bbzq(bbzp parambbzp) {}
+  public bbzq(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public void onDone(bbwg parambbwg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (parambbwg == null)
-    {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
-          onDone(null);
-        }
-      }
-      else
-      {
-        while (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
-        return;
-      }
-      File localFile = new File(bbzp.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
-      if ((localFile.isFile()) && (localFile.exists()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
-        }
-        onDone(null);
-        return;
-      }
-      parambbwg = new Bundle();
-      Object localObject = new bbwg((String)localObject, localFile);
-      ((bbwg)localObject).n = true;
-      ((bbwi)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1).a((bbwg)localObject, this.a.jdField_a_of_type_Bbwf, parambbwg);
-      return;
-    }
-    super.onDone(parambbwg);
-    parambbwg.a();
-    if ((parambbwg.a() == 3) && (parambbwg.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + parambbwg.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      onDone(null);
-      return;
-      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + parambbwg.jdField_a_of_type_JavaLangString);
-    }
+    return true;
   }
 }
 

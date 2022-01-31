@@ -1,22 +1,28 @@
-import android.database.DataSetObserver;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class ablc
-  extends DataSetObserver
+class ablc
+  implements Animation.AnimationListener
 {
-  public ablc(LebaListMgrActivity paramLebaListMgrActivity) {}
+  ablc(ablb paramablb, boolean paramBoolean) {}
   
-  public void onChanged()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TextView localTextView = LebaListMgrActivity.a(this.a);
-    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
-    for (int i = 0;; i = 8)
+    if ((this.jdField_a_of_type_Boolean) && (ablb.a(this.jdField_a_of_type_Ablb) != null) && (ablb.a(this.jdField_a_of_type_Ablb).size() >= 2)) {
+      ablb.a(this.jdField_a_of_type_Ablb).sendEmptyMessageDelayed(1688002, 1400L);
+    }
+    if (ablb.a(this.jdField_a_of_type_Ablb) != null)
     {
-      localTextView.setVisibility(i);
-      return;
+      ablb.a(this.jdField_a_of_type_Ablb).a();
+      ablb.a(this.jdField_a_of_type_Ablb, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

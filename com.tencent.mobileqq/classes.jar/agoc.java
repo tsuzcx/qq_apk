@@ -9,19 +9,21 @@ public class agoc
   
   public void onClick(View paramView)
   {
-    if (PhotoPreviewActivity.f(this.a))
+    switch (this.a.a())
     {
-      this.a.j();
+    default: 
+      return;
+    case 0: 
+      this.a.a(0);
+      return;
+    case 1: 
+      this.a.m();
+      return;
+    case 2: 
+      this.a.l();
       return;
     }
-    if (this.a.L) {
-      axqw.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.J)) {
-      this.a.setResult(-1);
-    }
-    this.a.finish();
-    bbbj.a(this.a, true, false);
+    this.a.a(0);
   }
 }
 

@@ -1,23 +1,24 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
+import java.util.List;
 
-class nzm
-  extends ReplacementSpan
+public class nzm
+  implements ajte
 {
-  private int a;
+  public void a(boolean paramBoolean, String paramString) {}
   
-  public nzm(int paramInt)
+  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return this.a;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (String)paramObject);
+      return;
+    }
+    a(paramBoolean, (List)paramObject);
   }
 }
 

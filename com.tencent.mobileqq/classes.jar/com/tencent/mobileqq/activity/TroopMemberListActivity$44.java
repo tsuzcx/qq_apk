@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ class TroopMemberListActivity$44
         if (localObject3 == null) {
           break label168;
         }
-        Object localObject1 = ((aukn)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.b }, null, null, null, null);
-        ((aukn)localObject3).a();
+        Object localObject1 = ((aukp)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.b }, null, null, null, null);
+        ((aukp)localObject3).a();
         if (localObject1 == null) {
           break label165;
         }

@@ -1,43 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class axlm
-  extends BroadcastReceiver
+public class axlm
+  implements TVK_SDKMgr.InstallListener
 {
-  axlm(axll paramaxll) {}
+  public axlm(ShortVideoGuideUtil.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    String str3 = paramIntent.getStringExtra("imgurl");
-    String str4 = paramIntent.getStringExtra("mediaType");
-    boolean bool = avtc.e();
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      paramIntent.put("imgurl", str3);
-      paramIntent.put("mediaType", str4);
-      paramIntent.put("hasGesture", bool);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
-      }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(axll.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(axll.a, 2, "installSDK onInstalledSuccessed=");
     }
   }
 }

@@ -1,18 +1,36 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBasicInfo;
+import cooperation.qzone.model.CoverCacheData;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
 public final class bhez
-  implements Parcelable.Creator<WeishiBasicInfo>
+  implements Parcelable.Creator<CoverCacheData>
 {
-  public WeishiBasicInfo a(Parcel paramParcel)
+  public CoverCacheData a(Parcel paramParcel)
   {
-    return new WeishiBasicInfo(paramParcel);
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    if (paramParcel != null)
+    {
+      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
+      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
+      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
+    }
+    return localCoverCacheData;
   }
   
-  public WeishiBasicInfo[] a(int paramInt)
+  public CoverCacheData[] a(int paramInt)
   {
-    return new WeishiBasicInfo[paramInt];
+    return null;
   }
 }
 

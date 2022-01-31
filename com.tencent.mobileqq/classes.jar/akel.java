@@ -1,12 +1,12 @@
 class akel
-  implements lxw
+  implements bgkr
 {
-  akel(akej paramakej) {}
+  akel(akee paramakee, byte[] paramArrayOfByte) {}
   
-  public void a(lxv paramlxv)
+  public void a(bgkq parambgkq)
   {
-    paramlxv.a(this.a.a.a);
-    paramlxv.a();
+    parambgkq.a(this.jdField_a_of_type_ArrayOfByte);
+    parambgkq.a();
   }
 }
 

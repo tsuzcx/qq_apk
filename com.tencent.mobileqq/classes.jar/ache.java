@@ -1,14 +1,25 @@
-import android.widget.Button;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class ache
-  extends aimv
+public class ache
+  implements nch
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public ache(TroopInfoActivity paramTroopInfoActivity) {}
   
-  private ache(achd paramachd) {}
+  public void a()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    }
+    axqy.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
 }
 
 

@@ -1,27 +1,23 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 class bbhx
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  bbhx(bbhs parambbhs, DialogInterface.OnClickListener paramOnClickListener) {}
+  bbhx(bbhp parambbhp, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    if ((this.jdField_a_of_type_Bbhp.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhs, 0);
-      this.jdField_a_of_type_Bbhs.a();
+      this.jdField_a_of_type_Bbhp.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_Bbhp.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
-    try
-    {
-      if (this.jdField_a_of_type_Bbhs.isShowing()) {
-        this.jdField_a_of_type_Bbhs.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
   }
 }
 

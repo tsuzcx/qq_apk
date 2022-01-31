@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajyc;
+import ajya;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -11,7 +11,7 @@ class ApkgBaseInfo$1
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + ajyc.a(2131700275) + this.val$lowCaseUrl, 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), ApkgBaseInfo.access$000()[this.val$domainType] + ajya.a(2131700286) + this.val$lowCaseUrl, 1).show();
   }
 }
 

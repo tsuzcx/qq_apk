@@ -1,63 +1,69 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
+import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class anpv
-  extends anpi
+  extends anpn
 {
-  QQAppInterface b = null;
+  private boolean d;
   
   public anpv(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.qav.image2", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    super("qq.android.poke.res_0625", paramQQAppInterface);
   }
   
   public int a()
   {
-    return 10047;
+    return 10044;
   }
   
   public Class<? extends XmlData> a()
   {
-    return QavImageData.class;
+    return PokeResData.class;
   }
   
   public String a()
   {
-    return "qavDownloadImageDuration";
+    return "PokeResHandler_0625";
+  }
+  
+  public void a()
+  {
+    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
   }
   
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavImageHandler", 2, "download success: " + paramString);
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
     }
-    try
+    if (!new File(paramString).exists())
     {
-      bbdj.a(paramString, mrv.b(), false);
-      super.a(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
+      }
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    String str = bbvj.a(adwj.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
     }
+    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
+    super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
-    QavImageData localQavImageData = (QavImageData)a();
-    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
-    {
-      localQavImageData.autoDownload = true;
-      anow.a(localQavImageData, new String[] { "autoDownload" });
-    }
     super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
   }
   
   public boolean a()
@@ -70,9 +76,12 @@ public class anpv
     return null;
   }
   
-  public boolean h()
+  public boolean g()
   {
-    return ((QavImageData)a()).autoDownload;
+    if (!this.d) {
+      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    }
+    return super.g() & this.d;
   }
 }
 

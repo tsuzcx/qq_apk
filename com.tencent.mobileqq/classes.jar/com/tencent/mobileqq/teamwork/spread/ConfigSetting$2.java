@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import anct;
-import ayhd;
+import ancy;
+import ayhf;
 
 public class ConfigSetting$2
   implements Runnable
 {
-  public ConfigSetting$2(ayhd paramayhd, anct paramanct) {}
+  public ConfigSetting$2(ayhf paramayhf, ancy paramancy) {}
   
   public void run()
   {
-    ayhd.a(this.this$0, this.a);
+    ayhf.a(this.this$0, this.a);
   }
 }
 

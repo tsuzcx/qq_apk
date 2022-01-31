@@ -1,27 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-final class bhnn
-  implements ModuleDownloadListener
+public class bhnn
 {
-  public void onDownloadCanceled(String paramString) {}
+  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
   
-  public void onDownloadFailed(String paramString)
+  public int a()
   {
-    QZLog.i(bhnm.a, "download webp so fail");
+    return this.a.size();
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public Statistic a()
   {
-    if (!paramString.equals("animatedWebp.so")) {
-      return;
+    return (Statistic)this.a.poll();
+  }
+  
+  public List<Statistic> a()
+  {
+    return a(a());
+  }
+  
+  public List<Statistic> a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < 1)
+    {
+      localObject = null;
+      return localObject;
     }
-    bdkd.a().edit().putString("PREFERENCE_SO_MD5_KEY", bhnm.b).commit();
-    QZLog.i(bhnm.a, "download webp so succ");
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramInt, a());
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = a();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public void a(Statistic paramStatistic)
+  {
+    this.a.add(paramStatistic);
   }
 }
 

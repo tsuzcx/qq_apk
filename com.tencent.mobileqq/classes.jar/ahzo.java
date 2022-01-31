@@ -1,78 +1,74 @@
-import java.nio.ByteBuffer;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import java.io.File;
 
 public class ahzo
+  implements bhcr
 {
-  private static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, int paramInt3, ByteBuffer paramByteBuffer)
+  private static ahzo jdField_a_of_type_Ahzo;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ahzp jdField_a_of_type_Ahzp;
+  private String jdField_a_of_type_JavaLangString = "";
+  
+  private ahzo()
   {
-    int i = paramInt3 * 16000 / paramInt1;
-    long l1 = 0L;
-    long l2 = (paramInt3 - 2 << 16) / (i - 2);
-    paramInt1 = 0;
-    while (paramInt1 < i - 1)
-    {
-      long l3 = 0xFFFF & l1;
-      int j = paramArrayOfShort[((int)(l1 >> 16) + paramInt2)];
-      int k = paramArrayOfShort[((int)(l1 >> 16) + 1 + paramInt2)];
-      long l4 = j;
-      j = (int)(l3 * k + l4 * (65536L - l3) >> 16);
-      paramByteBuffer.put((byte)(j & 0xFF));
-      paramByteBuffer.put((byte)((j & 0xFF00) >> 8));
-      l1 += l2;
-      paramInt1 += 1;
-    }
-    paramByteBuffer.put((byte)(paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF));
-    paramByteBuffer.put((byte)((paramArrayOfShort[(paramInt3 - 1 + paramInt2)] & 0xFF00) >> 8));
+    a();
+    SDCardMountMonitorReceiver.a().a(this);
   }
   
-  public static void a(int paramInt1, short[] paramArrayOfShort, int paramInt2, ByteBuffer paramByteBuffer)
+  public static ahzo a()
   {
-    int i = 0;
-    int j = paramInt1 * 5 / 100;
-    if (paramInt2 <= j) {
-      a(paramInt1, paramArrayOfShort, 0, paramInt2, paramByteBuffer);
-    }
-    int k;
-    do
+    if (jdField_a_of_type_Ahzo == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      return;
-      k = paramInt2 / j;
-      while (i < k)
-      {
-        a(paramInt1, paramArrayOfShort, i * j, j, paramByteBuffer);
-        i += 1;
+      if (jdField_a_of_type_Ahzo == null) {
+        jdField_a_of_type_Ahzo = new ahzo();
       }
-    } while (paramInt2 - k * j <= 0);
-    a(paramInt1, paramArrayOfShort, k * j, paramInt2 - j * k, paramByteBuffer);
+      return jdField_a_of_type_Ahzo;
+    }
   }
   
-  public static void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
+  private void a()
   {
-    if ((paramArrayOfShort == null) || (paramInt2 <= 0)) {
+    this.jdField_a_of_type_JavaLangString = bhcg.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
+    }
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
       return;
     }
-    int i = 0;
-    label11:
-    int j;
-    if (i < paramInt2)
+    catch (Exception localException)
     {
-      j = paramArrayOfShort[(paramInt1 + i)] * 10;
-      if (j < 32767.0F) {
-        break label50;
-      }
-      paramArrayOfShort[(paramInt1 + i)] = 32767;
+      QLog.e("StorageManager", 2, "create root path directory error", localException);
     }
-    for (;;)
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
+    }
+    String str = bhcg.b();
+    if ((this.jdField_a_of_type_Ahzp != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
     {
-      i += 1;
-      break label11;
-      break;
-      label50:
-      if (j <= -32768.0F) {
-        paramArrayOfShort[(paramInt1 + i)] = -32768;
-      } else {
-        paramArrayOfShort[(paramInt1 + i)] = ((short)j);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Ahzp.a(1, this.jdField_a_of_type_JavaLangString);
       }
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Ahzp.a(0, this.jdField_a_of_type_JavaLangString);
   }
 }
 

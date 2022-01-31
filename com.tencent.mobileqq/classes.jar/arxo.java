@@ -1,43 +1,78 @@
-import android.util.Pair;
-import android.view.View;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
 class arxo
-  implements arux
+  implements aryo
 {
-  arxo(arxh paramarxh, LocationRoom.Venue paramVenue) {}
+  arxo(arxj paramarxj, Activity paramActivity) {}
   
-  public Pair<aruk, LocationRoom.Venue> a()
+  public void a(LocationRoom.Venue paramVenue)
   {
-    return new Pair(arxh.a(this.jdField_a_of_type_Arxh), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+    if (paramVenue != null)
+    {
+      arxj.a(this.jdField_a_of_type_Arxj);
+      return;
+    }
+    arxj.b(this.jdField_a_of_type_Arxj);
   }
   
-  public void a(aruk paramaruk, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "[venue] removeVenue: onResult. roomKey: " + paramaruk + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
+    if (paramList != null)
+    {
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
+      {
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Arxj.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bbef.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          arxj.a(this.jdField_a_of_type_Arxj).a(paramList, localBitmap);
+        }
+      }
     }
-    if ((!paramaruk.equals(arxh.a(this.jdField_a_of_type_Arxh))) || (arxh.a(this.jdField_a_of_type_Arxh).a() == null) || (paramVenue == null) || (!arxh.a(this.jdField_a_of_type_Arxh).a().equals(paramVenue))) {
-      return;
-    }
-    arxh.a(this.jdField_a_of_type_Arxh).setVenueOprating(false);
-    arxh.a(this.jdField_a_of_type_Arxh).setVisibility(8);
+  }
+  
+  public void a(boolean paramBoolean, Point paramPoint)
+  {
     if (paramBoolean)
     {
-      arxh.a(this.jdField_a_of_type_Arxh).setVenue(null);
-      arxh.b(this.jdField_a_of_type_Arxh);
-      axqw.b(null, "CliOper", "", "", "0X800A969", "0X800A969", 0, 0, "0", "0", "0", "");
-      return;
+      arxj.a(this.jdField_a_of_type_Arxj).setClickable(false);
+      if (bfwr.a()) {
+        arxj.a(this.jdField_a_of_type_Arxj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840251));
+      }
     }
-    bcpw.a(arxh.a(this.jdField_a_of_type_Arxh), 1, "移除失败，请稍后重试", 0).a();
-    if ((paramInt2 == 10001) || (paramInt2 == 10003) || (paramInt2 == 10004) || (paramInt2 == 10100))
+    Rect localRect;
+    do
     {
-      axqw.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 2, 0, "0", "0", "0", "");
       return;
-    }
-    axqw.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 1, 0, "0", "0", "0", "");
+      arxj.a(this.jdField_a_of_type_Arxj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840250));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      arxj.a(this.jdField_a_of_type_Arxj).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    arxj.a(this.jdField_a_of_type_Arxj).setClickable(true);
+    arxj.a(this.jdField_a_of_type_Arxj).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840252));
+  }
+  
+  public void a(boolean paramBoolean, aryp paramaryp)
+  {
+    arxj.a(this.jdField_a_of_type_Arxj, paramBoolean, paramaryp);
   }
 }
 

@@ -1,72 +1,68 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.PrintStream;
+import android.text.TextUtils.TruncateAt;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class apgp
+  implements awwr
 {
-  public static int a(bgam parambgam, long paramLong1, long paramLong2, long paramLong3)
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  
+  public apgp(ViewGroup paramViewGroup)
   {
-    if (paramLong3 == 0L)
-    {
-      if (paramLong1 < parambgam.a(BaseApplication.getContext(), paramLong1, paramLong3, 1024)) {}
-      for (;;)
-      {
-        i = (int)paramLong1;
-        int k = bgap.a(BaseApplication.getContext());
-        int j;
-        if (k != 1)
-        {
-          j = i;
-          if (k != 2) {}
-        }
-        else
-        {
-          j = i;
-          if (i > 16384) {
-            j = 16384;
-          }
-        }
-        i = Math.min(j, 1048576);
-        if (QLog.isColorLevel()) {
-          QLog.d("FileHttpUtils<FileAssistant>", 2, "sendFilePakage transferedSize[" + paramLong2 + "], size[" + i + "]");
-        }
-        return i;
-        paramLong1 = 1024L;
-      }
-    }
-    int i = parambgam.a(BaseApplication.getContext(), paramLong1, paramLong2, 131072);
-    if (paramLong1 < i + paramLong2) {}
-    for (paramLong1 -= paramLong2;; paramLong1 = i)
-    {
-      i = (int)paramLong1;
-      break;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560486, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366211));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366223));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365017));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
   }
   
-  public static String a(byte[] paramArrayOfByte)
+  public View a()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramArrayOfByte == null) {
-      return "";
-    }
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str2 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      String str1 = str2;
-      if (str2.length() == 1) {
-        str1 = '0' + str2;
-      }
-      System.out.print(str1.toUpperCase() + " ");
-      localStringBuffer.append(str1.toUpperCase() + "");
-      i += 1;
-    }
-    return localStringBuffer.toString();
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public static boolean a(int paramInt)
+  public View a(String paramString)
   {
-    return (paramInt == 9052) || (paramInt == 9050) || (paramInt == 9055) || (paramInt == 9053) || (paramInt == 9054);
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

@@ -1,54 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class abms
-  extends SubAccountObserver
+  implements View.OnClickListener
 {
-  public abms(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public abms(MainFragment paramMainFragment, Dialog paramDialog) {}
   
-  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString3))
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364180)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getString(2131718636), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d);
+    int i = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().b();
+    int j = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a().a();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    paramView.putInt("unread", i + j);
+    paramView.commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.g();
+    MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).a = this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.d;
+    MainFragment.c = true;
+    if (QQPlayerService.a())
     {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "subLogin");
-      axrl.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
-      this.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
-      }
-      this.a.a(2131719904, 0);
+      paramView = new Intent();
+      paramView.setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().sendBroadcast(paramView);
     }
-    do
-    {
-      return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "subLogin");
-      axrl.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
-      }
-      paramString1 = (ayat)this.a.app.getManager(28);
-      if (paramString1 != null) {
-        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.a(this.a));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity(), MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.getActivity().finish();
+    axqy.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "0", "", "", "");
   }
 }
 

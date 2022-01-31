@@ -1,12 +1,21 @@
-public abstract interface aozw
+public abstract class aozw
 {
-  public abstract int a(long paramLong1, long paramLong2);
+  public aooq a;
   
-  public abstract void a();
+  public abstract int a();
+  
+  public void a(aooq paramaooq)
+  {
+    this.a = paramaooq;
+  }
+  
+  public abstract boolean a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozw
  * JD-Core Version:    0.7.0.1
  */

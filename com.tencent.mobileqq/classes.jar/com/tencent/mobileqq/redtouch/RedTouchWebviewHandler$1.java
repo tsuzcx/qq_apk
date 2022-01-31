@@ -2,8 +2,8 @@ package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import avpq;
-import bcdb;
+import avps;
+import bcdp;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -177,11 +177,11 @@ class RedTouchWebviewHandler$1
         if ((this.this$0.mRuntime == null) || (this.this$0.mRuntime.a() == null)) {
           break label1789;
         }
-        localObject1 = new avpq(this.this$0.mRuntime.a());
+        localObject1 = new avps(this.this$0.mRuntime.a());
         if (localObject1 == null) {
           break label1789;
         }
-        localObject1 = ((avpq)localObject1).a();
+        localObject1 = ((avps)localObject1).a();
         if ((TextUtils.isEmpty(localObject7)) || (!localObject7.equals(localObject1))) {
           break label1789;
         }

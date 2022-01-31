@@ -1,25 +1,17 @@
-import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import java.util.List;
+import com.tencent.qphone.base.util.Cryptor;
 
 public class lar
-  implements lbr
 {
-  public lar(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, aecm paramaecm, String paramString2, Language paramLanguage, lbq paramlbq, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  public void a(TranslateError paramTranslateError, Long paramLong)
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aecm, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbq, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
   }
   
-  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  protected byte[] a()
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aecm, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lbq, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
   }
 }
 

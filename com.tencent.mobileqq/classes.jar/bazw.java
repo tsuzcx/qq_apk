@@ -1,627 +1,282 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import android.text.SpannableString;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.text.style.ImageSpan;
-import android.view.View;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.util.QQSettingUtil.1;
-import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Hashtable;
+import java.util.LinkedList;
 
 public class bazw
+  extends baya
+  implements ajvt, baxv
 {
-  public static int a(Context paramContext, String paramString)
+  ajvx jdField_a_of_type_Ajvx;
+  FaceDownloader jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  
+  public bazw(NearbyAppInterface paramNearbyAppInterface)
   {
-    return paramContext.getSharedPreferences("mobileQQ", 0).getInt("setting_quit_" + paramString, 0);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader = ((bayr)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a();
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.a(this);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte)
   {
-    return paramQQAppInterface.getApp().getApplicationContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("mywallet_flag", 1);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
+      return null;
+    }
+    paramString = FaceInfo.a(paramInt1, paramString, paramInt2, paramByte);
+    Bitmap localBitmap = ((bayr)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(paramString);
+    atbr.a(4, "Q.qqhead.NearbyFaceDecoder", "getBitmapFromcache", new Object[] { paramString, localBitmap });
+    return localBitmap;
   }
   
-  public static SpannableString a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramResources == null) {
-      return new SpannableString("");
-    }
-    if (!bbsu.a(localAppInterface.getApp(), paramInt1)) {
-      bbsu.a((QQAppInterface)localAppInterface, paramInt1, null, false);
-    }
-    boolean bool = ThemeUtil.isNowThemeIsNight(null, false, null);
-    Object localObject;
-    if (paramInt2 == 0)
-    {
-      localObject = new SpannableString("*");
-      paramInt2 = (int)paramResources.getDimension(2131298247);
-      paramResources = paramResources.getDrawable(2130845003);
-      paramResources = bbql.a(localAppInterface, bazo.a(paramInt1, bazo.a), "", paramResources, bbql.b, "halfStar", false, null);
-      paramResources.setBounds(0, 0, paramInt2, paramInt2);
-      if (bool) {
-        paramResources.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
-      for (;;)
-      {
-        ((SpannableString)localObject).setSpan(new ImageSpan(paramResources), 0, 1, 33);
-        return localObject;
-        paramResources.setColorFilter(0, PorterDuff.Mode.SRC_ATOP);
-      }
-    }
-    int k = paramInt2 / 64;
-    paramInt2 %= 64;
-    int m = paramInt2 / 16;
-    int i1 = paramInt2 % 16;
-    int n = i1 / 4;
-    String str1 = "";
-    int i = 0;
-    while (i < 4)
-    {
-      paramInt2 = 0;
-      localObject = "";
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        int j = 0;
-        while (j < paramInt2)
-        {
-          str1 = str1 + (String)localObject;
-          j += 1;
-        }
-        localObject = "!";
-        paramInt2 = k;
-        continue;
-        localObject = "@";
-        paramInt2 = m;
-        continue;
-        localObject = "#";
-        paramInt2 = n;
-        continue;
-        localObject = "%";
-        paramInt2 = i1 % 4;
-      }
-      i += 1;
-    }
-    if ((paramInt3 > 1) && (str1.length() > paramInt3))
-    {
-      localObject = str1.substring(0, paramInt3 - 1);
-      str1 = (String)localObject + "$";
-    }
-    for (;;)
-    {
-      SpannableString localSpannableString = new SpannableString(str1);
-      paramInt3 = (int)paramResources.getDimension(2131298247);
-      paramInt2 = 0;
-      if (paramInt2 < str1.length())
-      {
-        String str2 = str1.substring(paramInt2, paramInt2 + 1);
-        if ("!".equalsIgnoreCase(str2))
-        {
-          localObject = paramResources.getDrawable(2130845001);
-          localObject = bbql.a(localAppInterface, bazo.a(paramInt1, bazo.e), "", (Drawable)localObject, bbql.b, "crown", false, null);
-          label466:
-          if (localObject != null)
-          {
-            if (!"&".equalsIgnoreCase(str2)) {
-              break label705;
-            }
-            ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-            label498:
-            if (!bool) {
-              break label717;
-            }
-            ((Drawable)localObject).setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-          }
-        }
-        for (;;)
-        {
-          localSpannableString.setSpan(new ImageSpan((Drawable)localObject), paramInt2, paramInt2 + 1, 33);
-          paramInt2 += 1;
-          break;
-          if ("@".equalsIgnoreCase(str2))
-          {
-            localObject = paramResources.getDrawable(2130845005);
-            localObject = bbql.a(localAppInterface, bazo.a(paramInt1, bazo.d), "", (Drawable)localObject, bbql.b, "sun", false, null);
-            break label466;
-          }
-          if ("#".equalsIgnoreCase(str2))
-          {
-            localObject = paramResources.getDrawable(2130845002);
-            localObject = bbql.a(localAppInterface, bazo.a(paramInt1, bazo.c), "", (Drawable)localObject, bbql.b, "moon", false, null);
-            break label466;
-          }
-          if ("%".equalsIgnoreCase(str2))
-          {
-            localObject = paramResources.getDrawable(2130845004);
-            localObject = bbql.a(localAppInterface, bazo.a(paramInt1, bazo.b), "", (Drawable)localObject, bbql.b, "star", false, null);
-            break label466;
-          }
-          if ("$".equalsIgnoreCase(str2))
-          {
-            localObject = paramResources.getDrawable(2130849627);
-            break label466;
-          }
-          localObject = null;
-          break label466;
-          label705:
-          ((Drawable)localObject).setBounds(0, 0, paramInt3, paramInt3);
-          break label498;
-          label717:
-          ((Drawable)localObject).setColorFilter(0, PorterDuff.Mode.SRC_ATOP);
-        }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QQSettingRedesign", 4, "parseQQLevel, sLevel = " + str1 + ", span = " + localSpannableString);
-      }
-      return localSpannableString;
-    }
-  }
+  public void a(int paramInt1, String paramString, int paramInt2, long paramLong) {}
   
-  public static SpannableString a(View paramView, Resources paramResources, long paramLong, int paramInt, boolean paramBoolean)
+  public void a(AppInterface paramAppInterface)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localObject = (QQAppInterface)localObject;
-    }
-    for (localObject = bbrt.a().a(((QQAppInterface)localObject).c(), paramLong, paramInt, paramBoolean);; localObject = "")
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != paramAppInterface)
     {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return new SpannableString("");
-      }
-      SpannableString localSpannableString = new SpannableString("KB");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = URLDrawable.getDrawable((String)localObject, new ColorDrawable(), new ColorDrawable());
-        if (((URLDrawable)localObject).getStatus() == 1) {
-          ((URLDrawable)localObject).setBounds(0, 0, vzo.a(BaseApplicationImpl.getContext(), 47.0F), vzo.a(BaseApplicationImpl.getContext(), 14.0F));
-        }
-      }
-      for (;;)
-      {
-        if (localObject != null)
-        {
-          ((URLDrawable)localObject).setURLDrawableListener(new bazx(paramView));
-          localSpannableString.setSpan(new ImageSpan((Drawable)localObject), 0, 1, 33);
-          paramView = paramResources.getDrawable(2130845026);
-          paramView.setBounds(0, 0, (int)paramResources.getDimension(2131297087), vzo.a(BaseApplicationImpl.getContext(), 5.0F));
-          localSpannableString.setSpan(new ImageSpan(paramView), 1, 2, 33);
-        }
-        return localSpannableString;
-        ((URLDrawable)localObject).restartDownload();
-        ((URLDrawable)localObject).setBounds(0, 0, 1, 1);
-        continue;
-        localObject = null;
+      d();
+      if ((paramAppInterface instanceof NearbyAppInterface)) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
       }
     }
   }
   
-  public static SpannableString a(View paramView, Resources paramResources, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo)
   {
-    WeakReference localWeakReference = new WeakReference(paramView);
-    SpannableString localSpannableString = new SpannableString("");
-    paramView = null;
-    int i = (int)paramResources.getDimension(2131297116);
-    Drawable localDrawable;
-    if ((paramBoolean1) && (paramInt > 0))
+    if (paramFaceInfo == null) {}
+    do
     {
-      localSpannableString = new SpannableString("sb");
-      paramView = "https://i.gtimg.cn/club/mobile/profile/vipicon2016/android/svip_" + paramInt + ".png";
-      localDrawable = paramResources.getDrawable(2130846152);
-      paramView = URLDrawable.getDrawable(paramView, localDrawable, localDrawable);
-      paramView.setBounds(0, 0, (int)(68.0D * (i / 24.0D)), i);
-    }
-    for (;;)
-    {
-      if (paramView != null)
+      do
       {
-        paramView.mutate();
-        ((URLDrawable)paramView).setURLDrawableListener(new bazy(localWeakReference));
-        localSpannableString.setSpan(new ImageSpan(paramView), 0, 1, 33);
-        paramView = paramResources.getDrawable(2130845026);
-        paramView.setBounds(0, 0, (int)paramResources.getDimension(2131297087), i);
-        localSpannableString.setSpan(new ImageSpan(paramView), 1, 2, 33);
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) || (paramFaceInfo == null));
+      this.b -= 1;
+      if ((paramFaceInfo.jdField_a_of_type_Int == 32) && (paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo == null) && ((FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(paramFaceInfo.b()) != null)) {
+        ((ajvw)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(paramFaceInfo);
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QQSettingRedesign", 4, "parseClubLevel, bSuperVipOpen=" + paramBoolean1 + ", bQQVipOpen=" + paramBoolean2 + ",iVipLevel=" + paramInt);
-      }
-      return localSpannableString;
-      if ((paramBoolean2) && (paramInt > 0))
-      {
-        localSpannableString = new SpannableString("vb");
-        paramView = "https://i.gtimg.cn/club/mobile/profile/vipicon2016/android/vip_" + paramInt + ".png";
-        localDrawable = paramResources.getDrawable(2130846153);
-        paramView = URLDrawable.getDrawable(paramView, localDrawable, localDrawable);
-        paramView.setBounds(0, 0, (int)(58.0D * (i / 24.0D)), i);
-      }
-    }
+    } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.b >= this.jdField_a_of_type_Int));
+    e();
   }
   
-  public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public void a(FaceInfo paramFaceInfo, Bitmap paramBitmap)
   {
-    boolean bool = true;
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramActivity, LoginActivity.class);
-    localIntent.putExtra("logout_intent", true);
-    ThemeUiPlugin.destroy(paramQQAppInterface);
-    ChatBackgroundManager.b();
-    if (paramBoolean)
-    {
-      bool = false;
-      localIntent.putExtra("tab_index", MainFragment.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onDecodeTaskCompleted,avatar=" + paramBitmap + ",faceInfo=" + paramFaceInfo);
     }
-    paramQQAppInterface.logout(bool);
-    if (BaseApplicationImpl.sImageCache != null) {
-      BaseApplicationImpl.sImageCache.evictAll();
+    if ((paramFaceInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null)) {
+      return;
     }
-    int i = a(paramActivity, paramQQAppInterface.getCurrentAccountUin());
-    a(paramActivity, paramQQAppInterface.getCurrentAccountUin(), i + 1);
-    paramActivity.startActivityForResult(localIntent, 1000);
-    if (QQPlayerService.a())
-    {
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setAction("qqplayer_exit_action");
-      paramActivity.sendBroadcast(paramQQAppInterface);
+    this.b -= 1;
+    if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (!this.jdField_a_of_type_Boolean)) {
+      e();
     }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt("setting_quit_" + paramString, paramInt);
-    paramContext.commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface.a(new QQSettingUtil.1(paramQQAppInterface));
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject1 = new HashMap();
-    Object localObject2 = paramQQAppInterface.getApp();
-    boolean bool = SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131695321), "qqsetting_auto_receive_pic_key", true);
+    Object localObject = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.remove(paramFaceInfo.b());
     int i;
-    Object localObject3;
-    if (bool)
+    if (localObject != null)
     {
-      i = 1;
-      ((Map)localObject1).put("Clk_auto_receive_pic", Integer.valueOf(i));
-      localObject3 = (aweo)paramQQAppInterface.getManager(15);
-      if (localObject3 != null)
-      {
-        bool = ((aweo)localObject3).b();
-        if (!bool) {
-          break label1197;
+      int j = FaceInfo.r;
+      if (paramBitmap == null) {
+        break label319;
+      }
+      i = FaceInfo.f;
+      label117:
+      ((FaceInfo)localObject).a(j, i);
+      if ((this.c) && (paramBitmap != null)) {
+        if ((paramBitmap == null) || (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] <= 0L) || (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j] <= 0L)) {
+          break label368;
         }
-        i = 1;
-        label83:
-        ((Map)localObject1).put("Clk_signature_qzone", Integer.valueOf(i));
-        if (!ajuf.a(paramQQAppInterface, false)) {
-          break label1202;
-        }
-        i = 1;
-        label108:
-        ((Map)localObject1).put("Download_new", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue((Context)localObject2, null, ((Context)localObject2).getString(2131719381), "qqsetting_notify_icon_key", false)) {
-          break label1207;
-        }
-        i = 1;
-        label146:
-        ((Map)localObject1).put("System_icon", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue((Context)localObject2, null, paramQQAppInterface.getApp().getString(2131695276), "qqsetting_enter_sendmsg_key", false)) {
-          break label1212;
-        }
-        i = 1;
-        label186:
-        ((Map)localObject1).put("Enter_sendmsg", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue((Context)localObject2, paramQQAppInterface.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", true)) {
-          break label1217;
-        }
-        i = 1;
-        label222:
-        ((Map)localObject1).put("Mobile_pc_online", Integer.valueOf(i));
-        if (!paramQQAppInterface.n()) {
-          break label1222;
-        }
-        i = 1;
-        label246:
-        ((Map)localObject1).put("Visible_same", Integer.valueOf(i));
-        if (!paramQQAppInterface.p()) {
-          break label1227;
-        }
-        i = 1;
-        label270:
-        ((Map)localObject1).put("Same_likeme", Integer.valueOf(i));
-        if (!paramQQAppInterface.b(true)) {
-          break label1232;
-        }
-        i = 1;
-        label295:
-        ((Map)localObject1).put("Search_number", Integer.valueOf(i));
-        if (!atbg.b(paramQQAppInterface.getAccount())) {
-          break label1237;
-        }
-        i = 1;
-        label322:
-        ((Map)localObject1).put("Visible_nearby", Integer.valueOf(i));
-        if (!paramQQAppInterface.o()) {
-          break label1242;
-        }
-        i = 1;
-        label346:
-        ((Map)localObject1).put("Nearby_likeme", Integer.valueOf(i));
-        if (paramQQAppInterface.e() != 0) {
-          break label1247;
-        }
-        i = 0;
-        label370:
-        if (i == 0) {
-          break label1252;
-        }
-        i = 1;
-        label376:
-        ((Map)localObject1).put("Latest_chatlog_syn", Integer.valueOf(i));
-        if (GesturePWDUtils.getGesturePWDState((Context)localObject2, paramQQAppInterface.getCurrentAccountUin()) != 2) {
-          break label1257;
-        }
-        i = 1;
-        label406:
-        if (i == 0) {
-          break label1262;
-        }
-        i = 1;
-        label412:
-        ((Map)localObject1).put("Gesture_password", Integer.valueOf(i));
-        if (!SettingCloneUtil.readValue(paramQQAppInterface.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", false)) {
-          break label1267;
-        }
-        i = 1;
-        label447:
-        ((Map)localObject1).put("Security_check", Integer.valueOf(i));
-        if (GesturePWDUtils.getGesturePWDState((Context)localObject2, paramQQAppInterface.getCurrentAccountUin()) != 2) {
-          break label1272;
-        }
-        i = 1;
-        label477:
-        if (i == 0) {
-          break label1277;
-        }
-        i = 1;
-        label483:
-        ((Map)localObject1).put("Setting_Gesture_password", Integer.valueOf(i));
-        if (!asfb.a().a()) {
-          break label1282;
-        }
-        i = 1;
-        label509:
-        ((Map)localObject1).put("Clk_hide_grp_heper", Integer.valueOf(i));
-        if (!asfb.a().b()) {
-          break label1287;
-        }
-        i = 1;
-        label535:
-        ((Map)localObject1).put("Clk_grp_heper_top", Integer.valueOf(i));
-        localObject2 = ((Map)localObject1).keySet();
       }
     }
-    for (;;)
+    label319:
+    label326:
+    label368:
+    for (long l = localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] - localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j];; l = 0L)
+    {
+      if (l > 0L)
+      {
+        i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
+        if (i != 1) {
+          break label326;
+        }
+        localObject = "actNearByFaceShowCostWIFI";
+      }
+      for (;;)
+      {
+        if (localObject != null) {
+          axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onDecodeTaskCompleted.cost=" + l);
+        }
+        if ((this.jdField_a_of_type_Bayb == null) || (paramBitmap == null)) {
+          break;
+        }
+        this.jdField_a_of_type_Bayb.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        return;
+        i = FaceInfo.g;
+        break label117;
+        if (i == 2) {
+          localObject = "actNearByFaceShowCost2G";
+        } else if (i == 3) {
+          localObject = "actNearByFaceShowCost3G";
+        } else if (i == 4) {
+          localObject = "actNearByFaceShowCost4G";
+        } else {
+          localObject = null;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onFaceDownloadFinished,isSuccess=" + paramBoolean + ",faceInfo=" + paramFaceInfo + ",bitmap=" + paramBitmap);
+    }
+    if ((paramFaceInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null)) {
+      return;
+    }
+    Object localObject = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.remove(paramFaceInfo.b());
+    int i;
+    if (localObject != null)
+    {
+      int j = FaceInfo.r;
+      if (paramBitmap == null) {
+        break label304;
+      }
+      i = FaceInfo.f;
+      label96:
+      ((FaceInfo)localObject).a(j, i);
+      if ((this.c) && (paramBitmap != null)) {
+        if ((localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] <= 0L) || (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j] <= 0L)) {
+          break label351;
+        }
+      }
+    }
+    label304:
+    label312:
+    label351:
+    for (long l = localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] - localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j];; l = 0L)
+    {
+      if (l > 0L)
+      {
+        localObject = "";
+        i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
+        if (i != 1) {
+          break label312;
+        }
+        localObject = "actNearByFaceShowCostWIFI";
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          axrn.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onFaceDownloadFinished.cost=" + l);
+        }
+        if ((this.jdField_a_of_type_Bayb == null) || (paramBitmap == null)) {
+          break;
+        }
+        this.jdField_a_of_type_Bayb.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        return;
+        i = FaceInfo.g;
+        break label96;
+        if (i == 2) {
+          localObject = "actNearByFaceShowCost2G";
+        } else if (i == 3) {
+          localObject = "actNearByFaceShowCost3G";
+        } else if (i == 4) {
+          localObject = "actNearByFaceShowCost4G";
+        }
+      }
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3)
+  {
+    if ((paramString == null) || (paramString.length() < 5))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "requestDecodeStrangeFace fail , uin = " + paramString);
+      }
+      return false;
+    }
+    String str = FaceInfo.a(paramInt2, paramString, paramInt1);
+    FaceInfo localFaceInfo = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(str);
+    if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.j, 300000L)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "requestDecodeStrangeFace, uin repeat. uin=" + paramString);
+      }
+      if ((localFaceInfo.b) && (!paramBoolean2)) {
+        localFaceInfo.b = false;
+      }
+      return true;
+    }
+    paramString = new FaceInfo(paramInt2, paramString, paramBoolean2, (byte)1, paramInt3, false, paramInt1, paramBoolean3, paramInt4);
+    paramString.a(FaceInfo.j);
+    this.jdField_a_of_type_JavaUtilHashtable.put(str, paramString);
+    a(paramString);
+    return true;
+  }
+  
+  public void d()
+  {
+    if ((this.jdField_a_of_type_Ajvx != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Ajvx);
+      this.jdField_a_of_type_Ajvx = null;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.b(this);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    super.d();
+  }
+  
+  protected void e()
+  {
+    localObject1 = null;
+    do
     {
       try
       {
-        localObject2 = ((Set)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject2).next();
-          axqw.b(paramQQAppInterface, "CliStatus", "", "", "Setting_tab", (String)localObject3, 0, 0, String.valueOf(((Map)localObject1).get(localObject3)), "", "", "");
+        FaceInfo localFaceInfo = (FaceInfo)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+        if (localObject1 == null) {
           continue;
         }
-        if (!SettingCloneUtil.readValue(paramQQAppInterface.getApp(), null, paramQQAppInterface.getApp().getString(2131695283), "qqsetting_screenshot_key", false)) {
-          break label1292;
-        }
-        i = 1;
-        axqw.b(paramQQAppInterface, "CliStatus", "", "", "Setting_tab", "Shake_screenshot_switch", 0, 0, String.valueOf(i), "", "", "");
-        if (!paramQQAppInterface.c(false)) {
-          break label1297;
-        }
-        i = 1;
-        axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X80044D1", "0X80044D1", 0, 0, String.valueOf(i), "", "", "");
-        localObject1 = ((ajxn)paramQQAppInterface.getManager(51)).b(paramQQAppInterface.getCurrentAccountUin());
-        if (localObject1 != null)
-        {
-          if (!((Card)localObject1).allowPeopleSee) {
-            break label1302;
-          }
-          i = 1;
-          axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004884", "0X8004884", 0, 0, String.valueOf(i), "", "", "");
-        }
-        if (!HotChatManager.b(paramQQAppInterface)) {
-          break label1307;
-        }
-        i = 1;
-        axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004B1E", "0X8004B1E", 0, 0, String.valueOf(i), "", "", "");
-        if (!paramQQAppInterface.e(false)) {
-          break label1312;
-        }
-        i = 1;
-        axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004C5C", "0X8004C5C", 0, 0, String.valueOf(i), "", "", "");
-        if (!paramQQAppInterface.f(false)) {
-          break label1317;
-        }
-        i = 1;
-        axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004C5D", "0X8004C5D", 0, 0, String.valueOf(i), "", "", "");
-        localObject3 = (ajxn)paramQQAppInterface.getManager(51);
-        i = ((ajxn)localObject3).c();
-        if (i <= 0) {
-          break label1322;
-        }
-        localObject1 = "1";
-        if (i > 0)
-        {
-          localObject2 = String.valueOf(i);
-          axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004C69", "0X8004C69", 0, 0, (String)localObject1, (String)localObject2, String.valueOf(((ajxn)localObject3).b()), "");
-          if (((akjw)paramQQAppInterface.getManager(85)).a(false))
-          {
-            i = 1;
-            axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004E0C", "0X8004E0C", 0, i, String.valueOf(i), "", "", "");
-            if (!paramQQAppInterface.n) {
-              continue;
-            }
-            i = 1;
-            axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X8004EDE", "0X8004EDE", 0, 0, String.valueOf(i), "", "", "");
-            localObject1 = ((afsa)paramQQAppInterface.getManager(295)).a();
-            if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-              break label1191;
-            }
-            localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break label1191;
-            }
-            localObject2 = (afrw)((Iterator)localObject1).next();
-            int j = ((afrw)localObject2).a;
-            if (!((afrw)localObject2).e) {
-              continue;
-            }
-            i = 2;
-            axqw.b(paramQQAppInterface, "CliStatus", "", "", "0X80097A1", "0X80097A1", j, 0, String.valueOf(i), "", "", "");
-            continue;
-          }
-        }
-        else
-        {
-          localObject2 = "";
-          continue;
-        }
-        i = 0;
-        continue;
-        i = 0;
-        continue;
-        i = 1;
-        continue;
       }
-      catch (Exception paramQQAppInterface) {}
-      label1191:
-      return;
-      i = 0;
-      break;
-      label1197:
-      i = 0;
-      break label83;
-      label1202:
-      i = 0;
-      break label108;
-      label1207:
-      i = 0;
-      break label146;
-      label1212:
-      i = 0;
-      break label186;
-      label1217:
-      i = 0;
-      break label222;
-      label1222:
-      i = 0;
-      break label246;
-      label1227:
-      i = 0;
-      break label270;
-      label1232:
-      i = 0;
-      break label295;
-      label1237:
-      i = 0;
-      break label322;
-      label1242:
-      i = 0;
-      break label346;
-      label1247:
-      i = 1;
-      break label370;
-      label1252:
-      i = 0;
-      break label376;
-      label1257:
-      i = 0;
-      break label406;
-      label1262:
-      i = 0;
-      break label412;
-      label1267:
-      i = 0;
-      break label447;
-      label1272:
-      i = 0;
-      break label477;
-      label1277:
-      i = 0;
-      break label483;
-      label1282:
-      i = 0;
-      break label509;
-      label1287:
-      i = 0;
-      break label535;
-      label1292:
-      i = 0;
-      continue;
-      label1297:
-      i = 0;
-      continue;
-      label1302:
-      i = 0;
-      continue;
-      label1307:
-      i = 0;
-      continue;
-      label1312:
-      i = 0;
-      continue;
-      label1317:
-      i = 0;
-      continue;
-      label1322:
-      localObject1 = "0";
-    }
-  }
-  
-  public static void c(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Vip_pay_mywallet").append('|').append(paramQQAppInterface.getCurrentAccountUin()).append('|').append("").append('|').append("wallet").append('|').append("index").append('|').append(0).append('|').append(1).append('|').append(0).append('|').append("").append('|').append("").append('|').append("").append('|').append("").append('|');
-      axrl.a(null).b(paramQQAppInterface, localStringBuilder.toString());
-    }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          this.b += 1;
+          FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, localFaceInfo, this));
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          for (;;)
+          {
+            localObject1 = localThrowable1;
+            Object localObject2 = localThrowable2;
+          }
+        }
+        localThrowable1 = localThrowable1;
+      }
+      this.b -= 1;
+    } while (!QLog.isColorLevel());
+    atbr.a("Q.qqhead.NearbyFaceDecoder", new Object[] { "runNextTask", localThrowable1, localObject1 });
   }
 }
 

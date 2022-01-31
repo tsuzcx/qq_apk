@@ -1,12 +1,20 @@
-class vrv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+
+public class vrv
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  final vrw jdField_a_of_type_Vrw;
+  public vrv(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public vrv(vrw paramvrw, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Vrw = paramvrw;
-    this.jdField_a_of_type_Int = paramInt;
+    paramView = PermissionSettingActivity.a(this.a).a();
+    if (paramView != null)
+    {
+      PermissionSettingActivity.a(this.a, paramView);
+      this.a.finish();
+    }
   }
 }
 

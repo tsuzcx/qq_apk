@@ -1,28 +1,55 @@
-import android.content.Context;
-import android.view.View.MeasureSpec;
-import android.widget.FrameLayout;
-import com.tencent.widget.GridView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aodl
-  extends FrameLayout
+public class aodl
+  extends ajvo
 {
-  public aodl(aodj paramaodj, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aodl(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = aodj.a(this.a).getPaddingLeft() + getPaddingLeft();
-    if (i != paramInt1) {
-      offsetLeftAndRight(i - paramInt1);
+    switch (paramInt)
+    {
     }
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  protected void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(aodj.a(this.a).getMeasuredWidth() - aodj.a(this.a).getPaddingLeft() - aodj.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
+    EmoticonResp localEmoticonResp;
+    int i;
+    label134:
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      localEmoticonResp = (EmoticonResp)paramObject;
+      if (paramBoolean)
+      {
+        i = localEmoticonResp.delEpId;
+        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
+          paramObject = ajya.a(2131700023);
+        }
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
+          break label134;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
+        return;
+        paramObject = localEmoticonResp.keySeq;
+        continue;
+        i = -404;
+        paramObject = ajya.a(2131700024);
+      }
+      localQQAppInterface = this.a.a();
+    } while (localQQAppInterface == null);
+    ((askf)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new aodm(this, paramInt, localQQAppInterface, i, paramObject));
   }
 }
 

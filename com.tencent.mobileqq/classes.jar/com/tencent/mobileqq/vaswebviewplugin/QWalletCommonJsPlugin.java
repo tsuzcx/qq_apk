@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import Wallet.AuthCodeItem;
 import Wallet.AuthCodeRsp;
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -21,12 +21,12 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.provider.ContactsContract.Contacts;
 import android.text.TextUtils;
-import anql;
-import anqp;
-import anvl;
-import bbek;
-import bcdb;
-import bgwt;
+import anqq;
+import anqu;
+import anvq;
+import bbey;
+import bcdp;
+import bgxk;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -129,7 +129,7 @@ public class QWalletCommonJsPlugin
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", ajyc.a(2131711425));
+      paramString = ((JSONObject)localObject2).optString("title", ajya.a(2131711436));
       int i = ((JSONObject)localObject2).optInt("type", 1);
       this.mCallback = ((JSONObject)localObject2).optString("callback");
       if ((i & 0x1) == 0) {}
@@ -1193,7 +1193,7 @@ public class QWalletCommonJsPlugin
     if (this.mContext == null) {
       return false;
     }
-    return bbek.f(this.mContext);
+    return bbey.f(this.mContext);
   }
   
   private void notifyViewUpdate(String paramString1, String paramString2)
@@ -1246,7 +1246,7 @@ public class QWalletCommonJsPlugin
               localObject1 = new JSONObject(str);
               paramString1 = ((JSONObject)localObject1).optString("listid");
               localObject1 = ((JSONObject)localObject1).optString("feedsid");
-              localObject2 = bgwt.a().b(paramString1);
+              localObject2 = bgxk.a().b(paramString1);
               paramString1 = paramString2;
               if (!TextUtils.isEmpty((CharSequence)localObject1))
               {
@@ -1298,7 +1298,7 @@ public class QWalletCommonJsPlugin
               break label633;
             }
             mListid = paramString1;
-            mParamForGarpHb = bgwt.a().b(paramString1);
+            mParamForGarpHb = bgxk.a().b(paramString1);
             if (QLog.isColorLevel()) {
               QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb paramForGarpHb:" + mParamForGarpHb);
             }
@@ -1399,8 +1399,8 @@ public class QWalletCommonJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("appId", this.mAuthCodeAppId);
-    localBundle = anqp.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    anvl.a().a(localBundle);
+    localBundle = anqu.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    anvq.a().a(localBundle);
   }
   
   protected void doAuthCodeCallback(String paramString, AuthCodeItem paramAuthCodeItem)

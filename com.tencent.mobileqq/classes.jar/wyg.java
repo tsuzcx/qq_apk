@@ -1,75 +1,62 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.res.Resources;
 import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
 
 public class wyg
-  extends ajta
+  extends atcd
 {
   public wyg(TroopMemberApiService paramTroopMemberApiService) {}
   
-  protected void a(Object paramObject)
+  protected void a(boolean paramBoolean)
   {
-    paramObject = (azqt)paramObject;
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("ProgressTotal", paramObject.jdField_c_of_type_Long);
-    localBundle.putLong("ProgressValue", paramObject.jdField_d_of_type_Long);
-    localBundle.putString("FileName", paramObject.g);
-    localBundle.putString("FilePath", paramObject.e);
-    localBundle.putString("LocalFile", paramObject.a);
-    localBundle.putString("ThumbnailFile_Middle", paramObject.jdField_d_of_type_JavaLangString);
-    localBundle.putString("ThumbnailFile_Large", paramObject.jdField_c_of_type_JavaLangString);
-    localBundle.putInt("Status", paramObject.b);
-    if ((paramObject.b == 8) || ((paramObject.b == 11) && (bbdj.a(paramObject.e)))) {
-      this.a.a(57, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberApiService", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
     }
-    do
+    ((aszf)TroopMemberApiService.f(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.g(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean)
     {
-      return;
-      if (!TextUtils.isEmpty(paramObject.jdField_c_of_type_JavaLangString))
-      {
-        localBundle.putInt("size", 640);
-        this.a.a(58, localBundle);
-        return;
+      bbkb.a(BaseApplication.getContext(), false);
+      bcql.a(BaseApplication.getContext(), 2, ajya.a(2131715565), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+      if (!paramBoolean) {
+        break label163;
       }
-    } while (TextUtils.isEmpty(paramObject.jdField_d_of_type_JavaLangString));
-    localBundle.putInt("size", 383);
-    this.a.a(58, localBundle);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
+    }
+    label163:
+    for (String str = "1";; str = "2")
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("type", 36);
-      localBundle.putBoolean("isSuccess", paramBoolean);
-      localBundle.putSerializable("data", (Object[])paramObject);
-      localBundle.putSerializable("observer_type", Integer.valueOf(4));
-      this.a.a(3, localBundle);
+      atbt.a("clk_del_video", new String[] { str });
+      return;
+      bcql.a(BaseApplication.getContext(), 1, ajya.a(2131715642), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+      break;
     }
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 30);
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putSerializable("data", Boolean.valueOf(paramBoolean2));
-    localBundle.putSerializable("observer_type", Integer.valueOf(4));
-    localBundle.putString("processName", "com.tencent.mobileqq:troopmanage");
-    this.a.a(3, localBundle);
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberApiService", 2, "onUpdateNearbyPeopleAuthVideo + HeadInfo = " + paramHeadInfo.toString());
+    }
+    ((aszf)TroopMemberApiService.h(this.a).getManager(106)).d.put(((QQAppInterface)TroopMemberApiService.i(this.a)).getCurrentAccountUin(), Integer.valueOf(1));
+    if (paramBoolean)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("type", 44);
-      localBundle.putBoolean("isSuccess", paramBoolean);
-      localBundle.putSerializable("data", (Object[])paramObject);
-      localBundle.putSerializable("observer_type", Integer.valueOf(4));
-      this.a.a(3, localBundle);
+      bbkb.a(BaseApplication.getContext(), true);
+      bcql.a(BaseApplication.getContext(), 2, ajya.a(2131715643), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+      if (!paramBoolean) {
+        break label166;
+      }
+    }
+    label166:
+    for (paramHeadInfo = "1";; paramHeadInfo = "2")
+    {
+      atbt.a("clk_upload_video", new String[] { paramHeadInfo });
+      return;
+      bcql.a(BaseApplication.getContext(), 1, ajya.a(2131715571), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+      break;
     }
   }
 }

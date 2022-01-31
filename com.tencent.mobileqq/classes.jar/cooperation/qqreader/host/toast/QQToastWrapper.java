@@ -1,19 +1,19 @@
 package cooperation.qqreader.host.toast;
 
 import android.content.Context;
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class QQToastWrapper
   implements Toast
 {
   private android.widget.Toast jdField_a_of_type_AndroidWidgetToast;
-  private bcpw jdField_a_of_type_Bcpw;
+  private bcql jdField_a_of_type_Bcql;
   
   public static Toast makeText(Context paramContext, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     paramContext = new QQToastWrapper();
-    paramContext.jdField_a_of_type_Bcpw = bcpw.a(BaseApplicationImpl.getApplication(), paramInt2, paramCharSequence, paramInt1);
+    paramContext.jdField_a_of_type_Bcql = bcql.a(BaseApplicationImpl.getApplication(), paramInt2, paramCharSequence, paramInt1);
     return paramContext;
   }
   
@@ -26,34 +26,34 @@ public class QQToastWrapper
   
   public void setDuration(int paramInt)
   {
-    if (this.jdField_a_of_type_Bcpw == null) {
-      this.jdField_a_of_type_Bcpw = new bcpw(BaseApplicationImpl.getApplication());
+    if (this.jdField_a_of_type_Bcql == null) {
+      this.jdField_a_of_type_Bcql = new bcql(BaseApplicationImpl.getApplication());
     }
-    this.jdField_a_of_type_Bcpw.d(paramInt);
+    this.jdField_a_of_type_Bcql.d(paramInt);
   }
   
   public void setText(CharSequence paramCharSequence)
   {
-    if (this.jdField_a_of_type_Bcpw == null) {
-      this.jdField_a_of_type_Bcpw = new bcpw(BaseApplicationImpl.getApplication());
+    if (this.jdField_a_of_type_Bcql == null) {
+      this.jdField_a_of_type_Bcql = new bcql(BaseApplicationImpl.getApplication());
     }
-    this.jdField_a_of_type_Bcpw.a(paramCharSequence);
+    this.jdField_a_of_type_Bcql.a(paramCharSequence);
   }
   
   public void show()
   {
-    if (this.jdField_a_of_type_Bcpw == null) {
+    if (this.jdField_a_of_type_Bcql == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetToast = this.jdField_a_of_type_Bcpw.a();
+    this.jdField_a_of_type_AndroidWidgetToast = this.jdField_a_of_type_Bcql.a();
   }
   
   public void show(int paramInt)
   {
-    if (this.jdField_a_of_type_Bcpw == null) {
+    if (this.jdField_a_of_type_Bcql == null) {
       return;
     }
-    this.jdField_a_of_type_Bcpw.b(paramInt);
+    this.jdField_a_of_type_Bcql.b(paramInt);
   }
 }
 

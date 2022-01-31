@@ -1,14 +1,15 @@
-public class bbpk
+class bbpk
 {
-  public static int b = 2;
-  public static int c = 1;
   public int a;
-  public bbph a;
+  public long a;
   public String a;
-  public bbph b;
-  public bbph c;
-  public int d;
-  public int e;
+  public String b = "";
+  
+  bbpk(bbpd parambbpd)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 

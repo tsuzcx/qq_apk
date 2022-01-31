@@ -1,11 +1,16 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import java.util.List;
 
 public class rhj
-  implements bfuh
+  implements nto
 {
   public rhj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a() {}
+  public void a(List<TabChannelCoverInfo> paramList)
+  {
+    ReadinjoyTabFrame.a(this.a).a(paramList);
+  }
 }
 
 

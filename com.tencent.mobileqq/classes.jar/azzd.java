@@ -1,42 +1,15 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class azzd
-  implements INetInfoHandler
+  implements DialogInterface.OnClickListener
 {
-  public azzd(ReciteRecordLayout paramReciteRecordLayout) {}
+  public azzd(ReciteFragment paramReciteFragment) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b.cancel();
-    this.a.b.start();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.b.cancel();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.b.cancel();
-    this.a.b.start();
+    ReciteFragment.a(this.a);
   }
 }
 

@@ -1,842 +1,1070 @@
+import SummaryCard.CondFitUser;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.ConditionSearchManager.2;
+import com.tencent.mobileqq.app.ConditionSearchManager.3;
+import com.tencent.mobileqq.app.ConditionSearchManager.4;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.data.AddressData;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.manager.Manager;
+import protocol.KQQConfig.GetResourceReqInfo;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ajtw
+  implements Manager
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static final String a;
-  private static Map<String, int[]> jdField_a_of_type_JavaUtilMap;
-  private static Map<String, int[]> b;
+  public static final int[] a;
+  public static final String[] a;
+  public static final int[] b;
+  public static final String[] b;
+  public static final int[] c;
+  public static final String[] c;
+  public static final String[] d;
+  public static final String[] e;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  private ajub jdField_a_of_type_Ajub;
+  private ajxj jdField_a_of_type_Ajxj = new ajty(this);
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AddressData jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
+  public volatile Card a;
+  public Object a;
+  public String a;
+  public LinkedList<ajua> a;
+  List<Object> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+  public boolean a;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString;
+  LinkedList<ajuc> jdField_b_of_type_JavaUtilLinkedList = null;
+  List<CondFitUser> jdField_b_of_type_JavaUtilList;
+  public volatile boolean b;
+  int jdField_c_of_type_Int;
+  private volatile long jdField_c_of_type_Long = 0L;
+  private final String jdField_c_of_type_JavaLangString = "condation_search_sp";
+  public volatile boolean c;
+  int jdField_d_of_type_Int;
+  private volatile long jdField_d_of_type_Long;
+  public volatile boolean d;
+  int jdField_e_of_type_Int;
+  boolean jdField_e_of_type_Boolean = false;
+  int jdField_f_of_type_Int = 0;
+  private boolean jdField_f_of_type_Boolean;
+  String[] jdField_f_of_type_ArrayOfJavaLangString;
+  int jdField_g_of_type_Int = 0;
+  private boolean jdField_g_of_type_Boolean;
+  String[] jdField_g_of_type_ArrayOfJavaLangString;
+  private volatile boolean jdField_h_of_type_Boolean;
+  private String[] jdField_h_of_type_ArrayOfJavaLangString;
+  private String[] i;
+  private String[] j;
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajtw.class.getName();
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "不限", "男", "女" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "不限", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99" };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "不限", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
+    jdField_d_of_type_ArrayOfJavaLangString = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
+    jdField_e_of_type_ArrayOfJavaLangString = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130845048, 2130844110, 2130844110, 2130844110, 2130844808, 2130844808, 2130845065, 2130845065, 2130844590, 2130844590, 2130844590, 2130845048, 2130845048, 2130844869, 2130845048 };
+    jdField_b_of_type_ArrayOfInt = new int[] { -16777216, -11362561, -11362561, -11362561, -274353, -274353, -893603, -893603, -7745469, -7745469, -7745469, -8291118, -8291118, -16723548, -16777216 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 11, 12 };
   }
   
-  public static Map<String, int[]> a()
+  public ajtw(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = null;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilLinkedList = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("condation_search_sp", 0);
+    this.jdField_f_of_type_Boolean = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_first_run" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_config_version", 0L);
+    this.jdField_d_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_last_checkup_time", 0L);
+    this.jdField_g_of_type_Boolean = c();
+  }
+  
+  public static final int a(String paramString)
+  {
+    int k = 0;
+    int n = 0;
+    int m = n;
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (jdField_a_of_type_JavaUtilMap == null)
+      if (paramString.equals("0")) {
+        m = n;
+      }
+    }
+    else {
+      return m;
+    }
+    int i1 = paramString.length();
+    m = 0;
+    for (;;)
+    {
+      n = m;
+      m = k;
+      if (n >= i1) {
+        break;
+      }
+      int i2 = paramString.charAt(n);
+      m = n + 1;
+      k = (i2 << (i1 - 1 - n) * 8) + k;
+    }
+  }
+  
+  public static final String a(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return "0";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(6);
+    while (paramLong != 0L) {
+      try
       {
-        jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-        if ((BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7))
+        localStringBuilder.append((char)(int)(paramLong % 256L));
+        paramLong >>= 8;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ConditionSearch.Manager", 2, localOutOfMemoryError, new Object[0]);
+        }
+        return "0";
+      }
+    }
+    return localOutOfMemoryError.reverse().toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/condition_search/" + paramString;
+  }
+  
+  private boolean c()
+  {
+    boolean bool = true;
+    if (this.jdField_f_of_type_Boolean) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_frist_run_add_contact" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    }
+    while ((this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_frist_run_in_5_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true)) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_sex_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0) == 0) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_age_index_v2_1" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0) == 0) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_age_index_v2_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0) == 0) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_job_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0) == 0) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_xingzuo_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0) == 0) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_loc_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0").equals("0")) && (this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_home_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0").equals("0"))) {
+      return bool;
+    }
+    return false;
+  }
+  
+  private int e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "updateLocal | isParsing = " + this.jdField_h_of_type_Boolean);
+    }
+    if (this.jdField_h_of_type_Boolean) {
+      return 0;
+    }
+    File localFile = new File(a("admin_region_config"));
+    if ((localFile == null) || (!localFile.exists()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "updateLocal | file is not exist");
+      }
+      this.jdField_c_of_type_Long = 0L;
+      return 3;
+    }
+    this.jdField_h_of_type_Boolean = true;
+    ThreadManagerV2.excute(new ConditionSearchManager.2(this, localFile), 128, null, true);
+    return 0;
+  }
+  
+  public int a()
+  {
+    int k;
+    if (this.jdField_c_of_type_Long == 0L) {
+      k = 1;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "checkUpdate | result = " + k);
+      }
+      return k;
+      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData == null) {
+        k = 2;
+      } else {
+        k = 0;
+      }
+    }
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt, false);
+  }
+  
+  public int a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "update, result=" + paramInt + ", downloadNow=" + paramBoolean);
+    }
+    if (paramInt == 1)
+    {
+      l = System.currentTimeMillis();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("update | isCheckingUpdate = ").append(this.jdField_b_of_type_Boolean).append(" | interval is enough ");
+        if (Math.abs(l - this.jdField_d_of_type_Long) >= 60000L)
         {
-          d();
-          a();
-          b();
-          c();
+          bool = true;
+          QLog.d("ConditionSearch.Manager", 2, bool + " | isNetAvaiable = " + bbfj.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
         }
       }
       else
       {
-        return jdField_a_of_type_JavaUtilMap;
+        if (!this.jdField_b_of_type_Boolean) {
+          break label264;
+        }
+        if ((!paramBoolean) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+          break label246;
+        }
+        localObject = ((ayxs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193)).a(this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("ConditionSearch.Manager", 2, "update, find task=" + localObject);
+        }
+        if ((localObject != null) && ((localObject instanceof ajtz))) {
+          ((ajtz)localObject).realStart();
+        }
       }
-      f();
     }
-  }
-  
-  private static void a()
-  {
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetBusinessTorch", new int[] { 0 });
-  }
-  
-  public static void a(String paramString, int[] paramArrayOfInt)
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    while (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (paramArrayOfInt != null)
+    label246:
+    while (paramInt != 2)
     {
-      jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
-      return;
-    }
-    jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
-  
-  public static Map<String, int[]> b()
-  {
-    if (b == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (b == null)
+      long l;
+      Object localObject;
+      do
       {
-        b = new ConcurrentHashMap();
-        e();
+        for (;;)
+        {
+          return 0;
+          boolean bool = false;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ConditionSearch.Manager", 2, "update mUrl might be null");
+      return 0;
+      if (Math.abs(l - this.jdField_d_of_type_Long) < 60000L) {
+        return 1;
       }
-      return b;
+      if (!bbfj.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+        return 2;
+      }
+      if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        localObject = (ajud)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(4);
+        ((ajud)localObject).a(null, new GetResourceReqInfo[] { ((ajud)localObject).e() });
+        return 0;
+      }
+    }
+    label264:
+    return e();
+  }
+  
+  public final long a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_checkup_time", this.jdField_d_of_type_Long).commit();
+      this.jdField_b_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "getConfigVersion | version = " + this.jdField_c_of_type_Long);
+    }
+    return this.jdField_c_of_type_Long;
+  }
+  
+  public BaseAddress a(String paramString)
+  {
+    BaseAddress localBaseAddress = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData != null) {
+      localBaseAddress = (BaseAddress)this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.get(paramString);
+    }
+    return localBaseAddress;
+  }
+  
+  public String a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("location_string" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "不限");
+    }
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString("home_string" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "不限");
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (((paramInt1 > paramInt2) && (paramInt2 != 0)) || (paramInt1 < 0) || (paramInt2 < 0)) {
+      return jdField_b_of_type_ArrayOfJavaLangString[0];
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      return jdField_b_of_type_ArrayOfJavaLangString[0];
+    }
+    if ((paramInt1 == 0) && (paramInt2 != 0)) {
+      return jdField_b_of_type_ArrayOfJavaLangString[paramInt2] + "岁及以下";
+    }
+    if ((paramInt1 != 0) && (paramInt2 == 0)) {
+      return jdField_b_of_type_ArrayOfJavaLangString[paramInt1] + "岁及以上";
+    }
+    if (paramInt1 == paramInt2) {
+      return jdField_b_of_type_ArrayOfJavaLangString[paramInt1] + "岁";
+    }
+    return jdField_b_of_type_ArrayOfJavaLangString[paramInt1] + "-" + jdField_b_of_type_ArrayOfJavaLangString[paramInt2] + "岁";
+  }
+  
+  public String a(String[] paramArrayOfString)
+  {
+    String str2 = b(paramArrayOfString);
+    String str1 = str2;
+    if ("1".equals(paramArrayOfString[0]))
+    {
+      str1 = str2;
+      if (str2.split("-").length > 1) {
+        str1 = str2.substring(str2.indexOf("-") + 1, str2.length());
+      }
+    }
+    return str1;
+  }
+  
+  public List<BaseAddress> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData != null)
+    {
+      localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.size());
+      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.values());
+      Collections.sort(localArrayList, new ajtx(this));
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Ajub != null) {
+      this.jdField_a_of_type_Ajub.a();
     }
   }
   
-  private static void b()
+  public void a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilMap.put("XX.XXX", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x95a", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb49", new int[] { 5 });
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_job_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
   
-  private static void c()
+  public void a(int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 2 });
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_age_index_v2_1" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt1).commit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_age_index_v2_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt2).commit();
   }
   
-  private static void d()
+  public void a(int paramInt, File paramFile, GetResourceRespInfo paramGetResourceRespInfo)
   {
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("RoamClientSvr.GetQualify", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f0_0", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6be", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_1", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_2", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xafc_3", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xada_0", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
+    boolean bool3 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "onConfigFileDownloadSuccess, result=" + paramInt + ", file=" + paramFile + ", resp=" + paramGetResourceRespInfo);
+    }
+    boolean bool1;
+    if (paramInt == 0)
+    {
+      File localFile = new File(a("admin_region_config"));
+      if ((paramFile.renameTo(localFile)) || (paramFile.renameTo(localFile)) || (paramFile.renameTo(localFile)))
+      {
+        this.jdField_c_of_type_Long = paramGetResourceRespInfo.uiNewVer;
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_config_version", this.jdField_c_of_type_Long).commit();
+        bool1 = true;
+        bool2 = bool1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | rename result = " + bool1);
+        }
+      }
+    }
+    for (boolean bool2 = bool1;; bool2 = true)
+    {
+      if ((paramInt == 0) && (bool2)) {}
+      for (bool1 = bool3;; bool1 = false)
+      {
+        a(bool1);
+        return;
+        bool1 = false;
+        break;
+      }
+    }
   }
   
-  private static void e()
+  public void a(int paramInt, String paramString)
   {
-    b.put("CameraModuleSvc.GetRecommandTextByEmotion", new int[] { 3 });
-    b.put("CameraModuleSvc.GetTextValidStatus", new int[] { 3 });
-    b.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 3 });
-    b.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 3 });
-    b.put("CameraModuleSvc.GetCameraConfig", new int[] { 3 });
-    b.put("CameraModuleSvc.GetOnlineUserNum", new int[] { 3 });
-    b.put("CameraModuleSvc.GetFontData", new int[] { 3 });
-    b.put("CameraModuleSvc.GetImgValidStatus", new int[] { 3 });
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("location_string" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString).commit();
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("home_string" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString).commit();
   }
   
-  private static void f()
+  public void a(ajub paramajub)
   {
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCompressedCategoryMaterial", new int[] { 159 });
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetPlayShowCatMatTree", new int[] { 159 });
-    jdField_a_of_type_JavaUtilMap.put("CameraModuleSvc.GetCameraConfig", new int[] { 159 });
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", new int[] { 0, 2 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.getGroupInfoReq", new int[] { 20, 2 });
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ClientMsg", new int[] { 0, 2 });
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqDeleteBlackList", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqInsertBlackList", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9db", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.ReqGetBlackList", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42024", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqGetSign", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("SharpSvr.s2c", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelRoamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("SharpSvr.c2sack", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.RequestPushStatus", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqMSFLoginNotify", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ADMsgSvc.PushMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("StreamSvr.PushStreamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushTransMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbC2CMsgSync", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushDisMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PullGroupMsgSeq", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbUnReadMsgSeq", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("StreamSvr.RespUploadStreamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetGroupMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetDiscussMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.DelMsgV2", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.SetRoamMsgAllUser", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushGroupMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.PbPushC2CMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("VideoSvc.Send", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("VideoCCSvc.Adaptation", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("StreamSvr.UploadStreamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MultiVideo.s2c", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldTranFileSvr.NotifyList", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbSendMsg", new int[] { 0, 8 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa89", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushReaded", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.RespPush", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqTmpChatPicDownload", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MultiVideo.c2sack", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PushNotify", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisMsgSeq", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetDiscussMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbGetGroupMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullDisGroupSeq", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.NoticeEnd", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoLogin", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PullGroupMsgSeq", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.getOffMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoSync", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PbSyncMsg", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgReadedReport", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbReceiptRead", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb31", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_create_share_url", new int[] { 52 });
-    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_share_backflow_verify", new int[] { 52 });
-    jdField_a_of_type_JavaUtilMap.put("QQRTCSvc.group_video_terminate_msg", new int[] { 52 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5e1_8", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.delFriend", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetAutoInfoReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.SetGroupReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetLastLoginInfoReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getFriendGroupList", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaed_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.MovGroupMemReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetSimpleOnlineFriendInfoReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("BumpSvc.ReqComfirmContactFriend", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.addFriend", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x777", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc34_1", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc83", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc85", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSimpleInfo", new int[] { 1, 107 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getUserAddFriendSetting", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d1_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4fc_30", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.RecommendAuth", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.ConfirmAuth", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf0_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSearch", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqCondSearch", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("AvatarInfoSvr.QQHeadUrlReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqGetSettings", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.register", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetRichSig", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.DelDevLoginInfo", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.BindUin", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqSetSettings", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SvcReqKikOut", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.CheckUpdateReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ChangeFriendName", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.SetRichSig", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("IncreaseURLSvr.QQHeadUrlReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("MultibusidURLSvr.HeadUrlReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetDevLoginInfo", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetOnlineInfoReq", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x49d_107", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_146", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x476_147", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_107", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_107", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c4_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4f4_5", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c6_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7c7_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x847_3", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53b_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c9_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7df_3", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_7", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_18", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_19", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77c", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x829_1", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc36_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc35_0", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_21", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc26_1", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.ReqBatchProcess", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_9", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_10", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x935_20", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xded_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_0", new int[] { 20, 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_7", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_75", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b8_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_10", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.GroupMngReq", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetMultiTroopInfoReq", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopListReqV2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.GetTroopAppointRemarkReq", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x899_9", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupInfoReq", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopMemberList", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42d_4", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x903_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91a_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91c_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91b_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("group_member_card.get_group_member_card_info", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x406_3", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89e_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopRemark", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88d_1", new int[] { 22, 20, 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a0_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("friendlist.ModifyGroupCardReq", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("group_anonymous_generate_nick.group", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("qunVideoOnlineLevel.0x3fe_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_9", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8bb_7", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 20, 22, 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 20, 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a7_0", new int[] { 20, 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ca_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_11", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x711_127", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9fa", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa80_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b6", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6b5", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6c3", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8d", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_4", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ba_7", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6d1_3", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_86", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_94", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.querycard", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("SHomeworkSvc.modifycard", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("NearbyExt.query_user_follow_status", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put(akhv.jdField_a_of_type_JavaLangString, new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.send_msg", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x928", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("qunVideoGray.0x3fb_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa2a_6", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("oidbSvc.0x783_15", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd71", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf6_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f9_14", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd40_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_3", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xce5_6", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd22_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd23_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqFavorite", new int[] { 2, 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e6_1", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8e7_1", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x491_100", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqUpdateIntro", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetVoterList", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("PttCenterSvr.ReqBody", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqHYMakeFriendsCard", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqGetFavoriteList", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqSummaryCard", new int[] { 2, 60 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqFaceInfo", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.ReqVoiceManage", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqGetFace", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqDelFace", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqGetCardSwitch", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqPicSafetyCheck", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MobileQQ.SendPortraitDownloadVerifyCode", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCard", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqSetCardSwitch", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_100", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqVote", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MCardSvc.ReqAddFace", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.SetLabel", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SummaryCard.LikeIt", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.SetUserInfoReq", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.GetSglUsrFullInfo", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getCover", new int[] { 2, 60 });
-    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.getPhotoWall", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SQQzoneSvc.delPhotoWall", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x480_9", new int[] { 98, 2, 66, 59, 91, 109 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_9", new int[] { 98, 2, 66, 59, 109 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_2", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x82f_0", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ae_2", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42092", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_40350", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7ba", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("VisitorSvc.ReqDeleteVisitorRecord", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd2d", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42326", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("MusicSongInfoMatchSvc.songquery", new int[] { 92 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.get_detail_info", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf8", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopFolderSvc.GetAcctBindPuin", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4b", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4a", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4c", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb51", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb9b", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcb5", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdb1", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe03", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe09", new int[] { 127 });
-    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.GetGroupList", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEntrance", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NeighborRecommender.ReqGetRecommender", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("LBS.AddressService", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetSwitches", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqSetStateSwitch", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NeighborSvc.ReqGetPoint", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.ReqGetAreaList", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("NearbyGroup.ReqGetGroupInArea", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_20", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7f5_1", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.nearby_shops", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.location", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("LbsShareSvr.get_shops_by_ids", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c0_0", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c1_0", new int[] { 3 });
-    jdField_a_of_type_JavaUtilMap.put("ConfigService.ClientReq", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("ResourceConfig.GetResourceReq", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("MobileTipsSvc.TipsReport", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("MAAControl.CheckSinglePkgSig", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("MAAControl.GetSinglePkgSig", new int[] { 4 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInteRemark", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_geturl", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58a", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqCreateDiscuss", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QRCodeSvc.discuss_decode", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqJoinDiscuss", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussFlag", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqChangeDiscussName", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqAddDiscussMember", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqSetDiscussAttr", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqGetDiscussInfo", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58b_0", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QQServiceDiscussSvc.ReqQuitDiscuss", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x865_3", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_4", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x870_5", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x921_0", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x751", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x44c", new int[] { 6 });
-    jdField_a_of_type_JavaUtilMap.put("QzoneService.GetNewAndUnread", new int[] { 7 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.PushParam", new int[] { 10 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.infoAndroid", new int[] { 10 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.GetOnlineStatus", new int[] { 10 });
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.QueryIpwdStat", new int[] { 10 });
-    jdField_a_of_type_JavaUtilMap.put("StatSvc.SetMute", new int[] { 10 });
-    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_emp", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("wtlogin_device.trans_reg", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_status.stat_reg", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_status.stat_hello", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_pullstatus.pull_status", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.device_sharp", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.multi_video", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_status.stat_forceoffline", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.msg_send", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_push.msg_push", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_status.stat_queryhb", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x634", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x633", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x632", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x582", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x631", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x630", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61e", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61d", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x61f", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.device_dataline", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.openserver_req", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60f", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x60d", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.device_report", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.get_bluetooth_info", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("ConfigService.DeviceUp", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0x5e6", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("im_msg.open_smart_c2s", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xac7", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportMyDev", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqClearTrack", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqLostStatus", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc_device.0xa11", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("QFindSvc.ReqReportDevs", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("ConfigPushSvc.RTOSReq", new int[] { 51 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.ReportLbs", new int[] { 11 });
-    jdField_a_of_type_JavaUtilMap.put("QQWeatherReport.getWeatherInfo", new int[] { 11 });
-    jdField_a_of_type_JavaUtilMap.put("BQMallSvc.TabOpReq", new int[] { 12 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x490_92", new int[] { 12 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_99", new int[] { 12 });
-    jdField_a_of_type_JavaUtilMap.put("gxzbIpsit.ipsite", new int[] { 12 });
-    jdField_a_of_type_JavaUtilMap.put("AvatarUpdate.checkUpdate", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("Font.fresh", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("FriendClone.CloneAuthStatus", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("groupnick.readitem", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("profilelogic.readUserInfo", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserFlag", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("profilelogic.setUserProfile", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getFontRecommend", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.getBubbleRecommend", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("GroupCare.getMessageRemindInfo", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("FontBubbleRecommend.setFontBubble", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("RoamWrap.GetRoamToast", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("Face.setFace", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogin.check", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getMusicList", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("ProfileMusicBox.getQzoneMusicInfo", new int[] { 13 });
-    jdField_a_of_type_JavaUtilMap.put("FunCallSvr.call", new int[] { 46 });
-    jdField_a_of_type_JavaUtilMap.put("voiceChange.Auth", new int[] { 96 });
-    jdField_a_of_type_JavaUtilMap.put("AuthSvr.ThemeAuth", new int[] { 14 });
-    jdField_a_of_type_JavaUtilMap.put("SpecialRemind.Service", new int[] { 15 });
-    jdField_a_of_type_JavaUtilMap.put("ClubContentUpdate.Req", new int[] { 16 });
-    jdField_a_of_type_JavaUtilMap.put("apollo_content_update.Req", new int[] { 115 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a1_0", new int[] { 17 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a0_0", new int[] { 17 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a2_0", new int[] { 17 });
-    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x3_FuncDelBlockList", new int[] { 18 });
-    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x1_FuncGetBlockList", new int[] { 18 });
-    jdField_a_of_type_JavaUtilMap.put("SsoSnsSession.Cmd0x3_SubCmd0x2_FuncAddBlockList", new int[] { 18 });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.assign_homework", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.submit_homework", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("HwSvc.get_homework_info", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("GroupSvc.JoinGroupLink", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.CheckJsApiToken", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x53c_2", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("mq_crm.get_menu", new int[] { 21 });
-    jdField_a_of_type_JavaUtilMap.put("mq_crm.send_key", new int[] { 21 });
-    jdField_a_of_type_JavaUtilMap.put("EqqAccountSvc.get_eqq_list", new int[] { 21 });
-    jdField_a_of_type_JavaUtilMap.put("CrmSvcEx.ReportLbs", new int[] { 21 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a1_0", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OpenGroupSvc.GroupActivityInfo", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.DelFile", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileInfo", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileSearch", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("CommunityForum.GetLatestPost", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8cf_6", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8d3_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupActivity.GetList", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x78f_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileList", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x88c_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("GroupFileAppSvr.GetFileListV2", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_35", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x580_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x852_48", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_0", new int[] { 22, 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89a_8", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x570_8", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("VideoShareSrv.get_video_src", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_21", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x568_22", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d6_3", new int[] { 22, 20 });
-    jdField_a_of_type_JavaUtilMap.put("GrpMemberLBS.ReportLBS", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b4", new int[] { 22, 20 });
-    jdField_a_of_type_JavaUtilMap.put("ModifyExamine.GetModifyTimes", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x874_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x904_1", new int[] { 22 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d4_0", new int[] { 26 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new int[] { 26 });
-    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.queryPrivExt", new int[] { 27 });
-    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.guanjiaReport", new int[] { 27 });
-    jdField_a_of_type_JavaUtilMap.put("VipCustom.GetCustomOnlineStatus", new int[] { 27 });
-    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniSet", new int[] { 27 });
-    jdField_a_of_type_JavaUtilMap.put("QCUniBusinessLogic.uniGet", new int[] { 27 });
-    jdField_a_of_type_JavaUtilMap.put("RedTouchSvc.EntranceSetting", new int[] { 31 });
-    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.GetConfig", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("DevLockAuthSvc.WxMsgOpt", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("DevLockSecSvc.DevLockQuery", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x614_1", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6de", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6df", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa13", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ad", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("SecuritySvc.AlertReport", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QPUpdate", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("MobileQQprotect.QSecCb", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("QSec.AVEng", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("MamonoSvc.Pa", new int[] { 34 });
-    jdField_a_of_type_JavaUtilMap.put("SecCheckSigSvc.UploadReq", new int[] { 23, 63 });
-    jdField_a_of_type_JavaUtilMap.put("SecSafeChkSvc.MainCmd", new int[] { 63 });
-    jdField_a_of_type_JavaUtilMap.put("SecIntChkSvc.MainCmd", new int[] { 63 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqJoinDiscuss", new int[] { 33 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqGetList", new int[] { 33 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.ReqExit", new int[] { 33 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldDiscussSvr.NotifyList", new int[] { 33 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a4", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a2", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x89b_3", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x823_0", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8ab", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b3", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8b2", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x81f", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa81", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x435", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa8b", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8a3_7", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x897_0", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put("hrtxformqq.getUsrSimpleInfo", new int[] { 37 });
-    jdField_a_of_type_JavaUtilMap.put("QQWalletPayAuthServer.checkChangePwdAuth", new int[] { 42 });
-    jdField_a_of_type_JavaUtilMap.put("WalletGestureSvc.GetPassword", new int[] { 42 });
-    jdField_a_of_type_JavaUtilMap.put("VacThirdCodeSvc.fetchCodes", new int[] { 42 });
-    jdField_a_of_type_JavaUtilMap.put("QWalletPfa.RecFriend", new int[] { 42 });
-    jdField_a_of_type_JavaUtilMap.put("VipSTCheckServer.UinPay", new int[] { 44 });
-    jdField_a_of_type_JavaUtilMap.put("ComicProtoConvSvr.tunnel", new int[] { 80 });
-    jdField_a_of_type_JavaUtilMap.put("QcallOidbSvc.0x5e3_1", new int[] { 79 });
-    jdField_a_of_type_JavaUtilMap.put("Background.checkAuth", new int[] { 54 });
-    jdField_a_of_type_JavaUtilMap.put("red_touch_num_svr.get_num_msg", new int[] { 56 });
-    jdField_a_of_type_JavaUtilMap.put("QQClubComm.getNewFlag", new int[] { 87 });
-    jdField_a_of_type_JavaUtilMap.put("VipPayLogicServer.getCommPayInfo ", new int[] { 73 });
-    jdField_a_of_type_JavaUtilMap.put("QPayReminderSvc.query_over_due_info", new int[] { 47 });
-    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqGetGroupList", new int[] { 57 });
-    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqExit", new int[] { 57 });
-    jdField_a_of_type_JavaUtilMap.put("NearfieldGroupSvr.ReqJoinGroup", new int[] { 57 });
-    jdField_a_of_type_JavaUtilMap.put("Loginauth.1", new int[] { 58 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x42e_3", new int[] { 59 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9ab_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ReadAppList", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.SortAppList", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("GroupOpen.ClearRedPoint", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_96", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_0", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c9_1", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb5b", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c5_0", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c8_0", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9c7_0", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x9e4_22", new int[] { 66 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.1081", new int[] { 64 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x472", new int[] { 64 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_41993", new int[] { 66 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5fc_0", new int[] { 66 });
-    jdField_a_of_type_JavaUtilMap.put("bubble.1", new int[] { 70 });
-    jdField_a_of_type_JavaUtilMap.put("Faceroam.OpReq", new int[] { 72 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc4", new int[] { 72 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdcf", new int[] { 72 });
-    jdField_a_of_type_JavaUtilMap.put("SelfGif.Op", new int[] { 160 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x438", new int[] { 76 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x66b", new int[] { 2, 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x682", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x686", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_1", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_3", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_4", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_6", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5ea_7", new int[] { 60 });
-    jdField_a_of_type_JavaUtilMap.put("MQKanDianSvc.0x001", new int[] { 81 });
-    jdField_a_of_type_JavaUtilMap.put(akjd.jdField_a_of_type_JavaLangString, new int[] { 86 });
-    jdField_a_of_type_JavaUtilMap.put(akjd.b, new int[] { 86 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x59f", new int[] { 84 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaAssignKfext", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.clickReplyCmd", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getUserDetailInfo", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.verifyWpaAndKey", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getShieldStatus", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.blockBulkMsg", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getCustomerTransferInfo", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getNavigationConfig", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.corpUinWpaReport", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.fetchCorpDetailInfo", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7e7_0", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.emanClickReport", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.closeAIOSessionReport", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaGenSigMsg", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.webimAddFriend", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getQidianGroupInfo", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x782", new int[] { 85 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.RtReport", new int[] { 88 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopMsgSvc.GetRichMsgInfo", new int[] { 88 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.AdFeedback", new int[] { 88 });
-    jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEncounter", new int[] { 89 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8dd", new int[] { 89 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6cf", new int[] { 90, 163 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6a6", new int[] { 99, 93 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c8", new int[] { 126 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x83e", new int[] { 126 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbcd", new int[] { 132 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbd2", new int[] { 133 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc13", new int[] { 136 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb73", new int[] { 138 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.ArticleLike", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CheckArticleLike", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleLikeCount", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.CreateArticleComment", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetArticleCommentCount", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.PictureInfo", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GetRecommendInfo", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("PubAccountArticleCenter.GalleryReport", new int[] { 93 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6cd", new int[] { 91 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6ce", new int[] { 91 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0x6f5", new int[] { 91 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x77d_0", new int[] { 53 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8db_0", new int[] { 53 });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqGetTorchAward", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x6f0", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqDeliverTorch", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqExitDeliverTorch", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OlympicTorchSvc.ReqClearTorchFlag", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_40525", new int[] { 94 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x74b", new int[] { 97 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f0", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x91d", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x909", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x90c", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f3", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8f1", new int[] { 112 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.jdField_a_of_type_JavaLangString, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.c, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.e, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.b, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.d, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.f, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.h, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.i, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.j, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.k, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.l, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.m, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42073", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42073", new int[] { 0 });
-    jdField_a_of_type_JavaUtilMap.put("gxhreport.report", new int[] { 103 });
-    jdField_a_of_type_JavaUtilMap.put("HttpConn.0x6ff_501", new int[] { 104 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x922", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x923", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa28", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xac6", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x7a8", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopAdSdkSvr.getAd", new int[] { 139 });
-    jdField_a_of_type_JavaUtilMap.put("SQQShopAdSdkReportSvr.AdReport", new int[] { 139 });
-    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("UnifySearch.BusiHotWord", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Unite", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("UnifySearch.AssociationWord", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Tab", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("UnifySearch.Discovery", new int[] { 152 });
-    jdField_a_of_type_JavaUtilMap.put("dynamic_tab_search.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("dynamic_busi_hot_word.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("dynamic_unite_search.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("dynamic_association_word.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("qb_association_word.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("DynamicScDiscovery.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("qb_discovery.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd78_0", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x990", new int[] { 113 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x987_0", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("ReadDiyAddonInfo.1", new int[] { 114 });
-    jdField_a_of_type_JavaUtilMap.put("videohub_group_notify_read.cmd0x2323", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x62c_4", new int[] { 35 });
-    jdField_a_of_type_JavaUtilMap.put(ssv.n, new int[] { 98 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb01", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xaf4_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb70_1", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetPadRightInfo", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.SetPadRightInfo", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("TimDocSvc.GetSharedPadList", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_1", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_2", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_3", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbab_4", new int[] { 122 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb14", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xb67", new int[] { 125 });
-    jdField_a_of_type_JavaUtilMap.put("NowGetRecordInfoSvr.get_record_info", new int[] { 130 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xbc3", new int[] { 125 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbe8", new int[] { 134 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xbf2", new int[] { 134 });
-    jdField_a_of_type_JavaUtilMap.put("WifiCloudCheckSvc.req", new int[] { 135 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc33_42220", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_22", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.b, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.d, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.f, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.e, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.g, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.h, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put(ayhy.c, new int[] { 143 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xc6c", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xcca", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc7a", new int[] { 148 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc76", new int[] { 148 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc96", new int[] { 148 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd4", new int[] { 150 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_42261", new int[] { 150 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42261", new int[] { 150 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcd5", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xc05", new int[] { 151 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xccd", new int[] { 151 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf3", new int[] { 153 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4", new int[] { 153 });
-    jdField_a_of_type_JavaUtilMap.put("PluginConfig.dynamic_plugin", new int[] { 128 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd8a", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_42315", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0x758", new int[] { 20 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_SimpleUI", new int[] { 154 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_SimpleUI", new int[] { 154 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd45", new int[] { 153 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcf4_1", new int[] { 153 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4a", new int[] { 153 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd4b", new int[] { 155 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_latest_playing_state", new int[] { 156, 165 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_song_extended_info", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.media_operation", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.room_operation", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_play_show_info", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans_check", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.share_trans", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.report_download_fail", new int[] { 156 });
-    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_operation", new int[] { 164 });
-    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.report_location", new int[] { 164 });
-    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.assembly_point_operation", new int[] { 164 });
-    jdField_a_of_type_JavaUtilMap.put("QQLBSShareSvc.room_query", new int[] { 164 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd79", new int[] { 161 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd86", new int[] { 158 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd83", new int[] { 158 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd82", new int[] { 158 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xd7e", new int[] { 158 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd69", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xd72", new int[] { 1 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcdd", new int[] { 162 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xcde", new int[] { 162 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_15(2)", new int[] { 2 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xdc9", new int[] { 166 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.oidb_0xdcc", new int[] { 167 });
-    jdField_a_of_type_JavaUtilMap.put("QQAIOMediaSvc.get_dynamic_info", new int[] { 165 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5eb_cn_switch", new int[] { 168 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x4ff_cn_switch", new int[] { 168 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqEnter", new int[] { 169 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqExit", new int[] { 169 });
-    jdField_a_of_type_JavaUtilMap.put("NearFieldFriendSvr.ReqHeartBeat", new int[] { 169 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe07_0", new int[] { 170 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0a_1", new int[] { 171 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0a_2", new int[] { 171 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.Oxe0e_1", new int[] { 171 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xe0e_2", new int[] { 171 });
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x8c9_2.GetPoint", new int[] { 171 });
+    this.jdField_a_of_type_Ajub = paramajub;
+  }
+  
+  public void a(Card paramCard)
+  {
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+    a(this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ConditionSearchManager.4(this));
+  }
+  
+  public void a(Object paramObject)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramObject))
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramObject);
+        this.jdField_c_of_type_Boolean = true;
+        a(a());
+        if ((paramObject instanceof ConditionSearchFriendActivity))
+        {
+          this.jdField_f_of_type_Boolean = false;
+          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_first_run" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false).commit();
+        }
+      }
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
+  }
+  
+  public void a(GetResourceRespInfo paramGetResourceRespInfo)
+  {
+    Object localObject;
+    int k;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onCheckupConfig | resp = ").append(paramGetResourceRespInfo).append(" | iResult = ");
+      if (paramGetResourceRespInfo != null)
+      {
+        k = paramGetResourceRespInfo.iResult;
+        QLog.d("ConditionSearch.Manager", 2, k + ", needDownloadNow=" + this.jdField_a_of_type_Boolean);
+      }
+    }
+    else
+    {
+      if ((paramGetResourceRespInfo != null) && (paramGetResourceRespInfo.iResult == 0)) {
+        break label93;
+      }
+      a(false);
+    }
+    label93:
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+        k = -1000;
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | local version = " + this.jdField_c_of_type_Long + " | server version = " + paramGetResourceRespInfo.uiNewVer);
+        }
+      } while (this.jdField_c_of_type_Long == paramGetResourceRespInfo.uiNewVer);
+      localObject = paramGetResourceRespInfo.strResURL_big;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ConditionSearch.Manager", 2, "onCheckupConfig | url is null");
+        }
+        a(false);
+        return;
+      }
+      File localFile = new File(a("temp_admin_regin_config"));
+      paramGetResourceRespInfo = new ajtz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, paramGetResourceRespInfo, localFile);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        paramGetResourceRespInfo.realStart();
+        return;
+      }
+      bool = ((ayxs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193)).a(10023, "prd", (String)localObject, 0, (String)localObject, localFile.getAbsolutePath(), 2, 0, false, paramGetResourceRespInfo);
+    } while (!QLog.isColorLevel());
+    QLog.d("ConditionSearch.Manager", 2, "innerDownload, PreDownloadController.ret=" + bool);
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ConditionSearchManager.3(this, paramBoolean));
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seachFriend | restart = ").append(paramBoolean).append(" | keyword = ").append(paramString).append(" | sexIndex = ").append(paramInt1).append(" | ageIndex1 = ").append(paramInt2).append(" | ageIndex2 = ").append(paramInt3).append(" | jobIndex = ").append(paramInt4).append(" | xingzuoIndex = ").append(paramInt5).append(" | searchFromMore = ").append(paramInt6);
+      int k;
+      if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+      {
+        localStringBuilder.append(" | locCodes = ");
+        k = 0;
+        while (k < paramArrayOfString1.length)
+        {
+          localStringBuilder.append(paramArrayOfString1[k]).append("、");
+          k += 1;
+        }
+      }
+      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
+      {
+        localStringBuilder.append(" | homeCodes = ");
+        k = 0;
+        while (k < paramArrayOfString2.length)
+        {
+          localStringBuilder.append(paramArrayOfString2[k]).append("、");
+          k += 1;
+        }
+      }
+      QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Long += 1L;
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_c_of_type_Int = paramInt3;
+      this.jdField_f_of_type_ArrayOfJavaLangString = paramArrayOfString1;
+      this.jdField_g_of_type_ArrayOfJavaLangString = paramArrayOfString2;
+      this.jdField_d_of_type_Int = paramInt4;
+      this.jdField_e_of_type_Int = paramInt5;
+      this.jdField_f_of_type_Int = -1;
+      this.jdField_b_of_type_Long = 0L;
+    }
+    while (this.jdField_e_of_type_Boolean)
+    {
+      this.jdField_g_of_type_Int = 0;
+      this.jdField_b_of_type_JavaUtilList = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.jdField_a_of_type_Long, this.jdField_f_of_type_Int + 1, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_f_of_type_ArrayOfJavaLangString, this.jdField_g_of_type_ArrayOfJavaLangString, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt6);
+      return;
+    }
+    throw new RuntimeException("No more elements");
+  }
+  
+  void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
+    if (this.jdField_b_of_type_JavaUtilLinkedList != null)
+    {
+      Object localObject = new LinkedList();
+      ((LinkedList)localObject).addAll(this.jdField_b_of_type_JavaUtilLinkedList);
+      localObject = ((LinkedList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ajuc)((Iterator)localObject).next()).a(paramBoolean1, paramList, paramBoolean2, paramInt);
+      }
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString == null) {
+      return;
+    }
+    if (paramArrayOfString.length != 4) {
+      throw new IllegalArgumentException("Error size " + paramArrayOfString.length);
+    }
+    this.jdField_h_of_type_ArrayOfJavaLangString = ((String[])paramArrayOfString.clone());
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_cur_loc_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_h_of_type_ArrayOfJavaLangString[0]).putString("key_cur_loc_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_h_of_type_ArrayOfJavaLangString[1]).putString("key_cur_loc_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_h_of_type_ArrayOfJavaLangString[2]).putString("key_cur_loc_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_h_of_type_ArrayOfJavaLangString[3]).commit();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_g_of_type_Boolean;
+  }
+  
+  public int[] a()
+  {
+    Card localCard;
+    int k;
+    int m;
+    if (this.jdField_g_of_type_Boolean)
+    {
+      localCard = ((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (localCard == null) {
+        break label357;
+      }
+      if ((localCard.age <= 5) || (localCard.age >= 60))
+      {
+        k = 0;
+        m = 0;
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_age_index_v2_1" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), m).commit();
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_age_index_v2_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), k).commit();
+      }
+    }
+    for (;;)
+    {
+      return new int[] { m, k };
+      if ((localCard.age >= 6) && (localCard.age <= 11))
+      {
+        k = 11;
+        m = 6;
+        break;
+      }
+      if ((localCard.age >= 12) && (localCard.age <= 17))
+      {
+        k = 17;
+        m = 12;
+        break;
+      }
+      if ((localCard.age >= 18) && (localCard.age <= 21))
+      {
+        k = 21;
+        m = 18;
+        break;
+      }
+      if (localCard.shGender != 0)
+      {
+        m = localCard.age - 5;
+        k = localCard.age + 10;
+        break;
+      }
+      k = localCard.age + 5;
+      m = 18;
+      break;
+      m = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_age_index_v2_1" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      k = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_age_index_v2_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      continue;
+      label357:
+      k = 0;
+      m = 0;
+    }
+  }
+  
+  public String[] a()
+  {
+    if (this.jdField_h_of_type_ArrayOfJavaLangString == null)
+    {
+      this.jdField_h_of_type_ArrayOfJavaLangString = new String[4];
+      this.jdField_h_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_cur_loc_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.jdField_h_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_cur_loc_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.jdField_h_of_type_ArrayOfJavaLangString[2] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_cur_loc_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.jdField_h_of_type_ArrayOfJavaLangString[3] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_cur_loc_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+    }
+    return this.jdField_h_of_type_ArrayOfJavaLangString;
+  }
+  
+  public String[] a(String paramString)
+  {
+    String[] arrayOfString = new String[2];
+    arrayOfString[0] = "不限";
+    arrayOfString[1] = "不限";
+    if ((!TextUtils.isEmpty(paramString)) && (!"不限".equals(paramString)))
+    {
+      int k = paramString.indexOf("-");
+      if (k != -1)
+      {
+        arrayOfString[0] = paramString.substring(0, k);
+        arrayOfString[1] = paramString.substring(k + 1);
+      }
+    }
+    else
+    {
+      return arrayOfString;
+    }
+    arrayOfString[0] = paramString;
+    return arrayOfString;
+  }
+  
+  public String[] a(String[] paramArrayOfString)
+  {
+    int k = 1;
+    if ((paramArrayOfString == null) || (paramArrayOfString.length != 4) || ("-1".equals(paramArrayOfString[0]))) {
+      return null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfString = new StringBuilder().append("praseCodeArrayToAddress addressData == null is ");
+        if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData != null) {
+          break label79;
+        }
+      }
+      label79:
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.d("ConditionSearch.Manager", 2, bool);
+        return null;
+      }
+    }
+    String[] arrayOfString = new String[4];
+    arrayOfString[0] = "";
+    arrayOfString[1] = "";
+    arrayOfString[2] = "";
+    arrayOfString[3] = "";
+    if ("-1".equals(paramArrayOfString[0])) {
+      return arrayOfString;
+    }
+    Object localObject1 = (BaseAddress)this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.get(paramArrayOfString[0]);
+    if (localObject1 == null) {
+      return arrayOfString;
+    }
+    arrayOfString[0] = ((BaseAddress)localObject1).name;
+    while (k < 4)
+    {
+      Object localObject2 = localObject1;
+      if (!"0".equals(paramArrayOfString[k]))
+      {
+        localObject2 = (BaseAddress)((BaseAddress)localObject1).dataMap.get(paramArrayOfString[k]);
+        if (localObject2 == null) {
+          break;
+        }
+        arrayOfString[k] = ((BaseAddress)localObject2).name;
+      }
+      k += 1;
+      localObject1 = localObject2;
+    }
+    return arrayOfString;
+  }
+  
+  public int b()
+  {
+    int k = 0;
+    if (!this.jdField_g_of_type_Boolean) {
+      k = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_job_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return k;
+  }
+  
+  public String b(String paramString)
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = "";
+    }
+    String str;
+    do
+    {
+      for (;;)
+      {
+        return localObject;
+        str = paramString;
+        try
+        {
+          String[] arrayOfString = paramString.split("-");
+          str = paramString;
+          if (arrayOfString[0].equals("中国"))
+          {
+            str = paramString;
+            if (arrayOfString.length > 2)
+            {
+              paramString = arrayOfString[2];
+              localObject = paramString;
+              str = paramString;
+              if (arrayOfString.length > 3)
+              {
+                str = paramString;
+                return paramString + "-" + arrayOfString[3];
+              }
+            }
+            else
+            {
+              localObject = paramString;
+              str = paramString;
+              if (arrayOfString.length > 1) {
+                return arrayOfString[1];
+              }
+            }
+          }
+          else
+          {
+            localObject = paramString;
+            str = paramString;
+            if (arrayOfString.length > 2)
+            {
+              str = paramString;
+              paramString = arrayOfString[(arrayOfString.length - 2)] + "-" + arrayOfString[(arrayOfString.length - 1)];
+              return paramString;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          localObject = str;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ConditionSearch.Manager", 2, "", paramString);
+    return str;
+  }
+  
+  public String b(String[] paramArrayOfString)
+  {
+    if ((paramArrayOfString == null) || (paramArrayOfString.length != 4) || ("-1".equals(paramArrayOfString[0]))) {
+      return "0";
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "praseCodeArrayToAddress addressData == null is");
+      }
+      return "不限";
+    }
+    if ("-1".equals(paramArrayOfString[0])) {
+      return "不限";
+    }
+    if (((AddressData)localObject1).a != null) {}
+    for (localObject1 = (BaseAddress)((AddressData)localObject1).a.get(paramArrayOfString[0]); localObject1 == null; localObject1 = null) {
+      return "不限";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((BaseAddress)localObject1).name);
+    int k = 1;
+    while (k < 4)
+    {
+      Object localObject2 = localObject1;
+      if (!"0".equals(paramArrayOfString[k]))
+      {
+        localObject2 = (BaseAddress)((BaseAddress)localObject1).dataMap.get(paramArrayOfString[k]);
+        if (localObject2 == null) {
+          break;
+        }
+        localStringBuilder.append("-").append(((BaseAddress)localObject2).name);
+      }
+      k += 1;
+      localObject1 = localObject2;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_g_of_type_Boolean)
+    {
+      this.jdField_g_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_frist_run_in_5_2" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_frist_run_add_contact" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false).commit();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_xingzuo_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+  }
+  
+  public void b(Object paramObject)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramObject);
+      if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+      {
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
+      }
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
+  }
+  
+  public void b(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString == null) {
+      return;
+    }
+    if (paramArrayOfString.length != 4) {
+      throw new IllegalArgumentException("Error size " + paramArrayOfString.length);
+    }
+    this.i = ((String[])paramArrayOfString.clone());
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_loc_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.i[0]).putString("key_loc_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.i[1]).putString("key_loc_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.i[2]).putString("key_loc_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.i[3]).commit();
+  }
+  
+  public boolean b()
+  {
+    boolean bool = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("key_first_select_location" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    if (bool) {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("key_first_select_location" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false).commit();
+    }
+    return bool;
+  }
+  
+  public String[] b()
+  {
+    if (this.i == null)
+    {
+      this.i = new String[4];
+      this.i[0] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_loc_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.i[1] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_loc_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.i[2] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_loc_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.i[3] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_loc_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+    }
+    return this.i;
+  }
+  
+  public int c()
+  {
+    int k = 0;
+    if (!this.jdField_g_of_type_Boolean) {
+      k = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_xingzuo_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    return k;
+  }
+  
+  public String c(String paramString)
+  {
+    String str = paramString;
+    if (paramString.startsWith("中国"))
+    {
+      String[] arrayOfString = bbkk.a(paramString, '-');
+      str = paramString;
+      if (arrayOfString.length >= 2)
+      {
+        paramString = new StringBuilder();
+        int k = 1;
+        while (k < arrayOfString.length)
+        {
+          paramString.append(arrayOfString[k]);
+          if (k != arrayOfString.length - 1) {
+            paramString.append("-");
+          }
+          k += 1;
+        }
+        str = paramString.toString();
+      }
+    }
+    return str;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_sex_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt).commit();
+  }
+  
+  public void c(Object paramObject)
+  {
+    if ((paramObject instanceof ajua))
+    {
+      if (this.jdField_a_of_type_JavaUtilLinkedList == null) {
+        this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+      }
+      if (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramObject)) {}
+    }
+    do
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.add((ajua)paramObject);
+      do
+      {
+        return;
+      } while (!(paramObject instanceof ajuc));
+      if (this.jdField_b_of_type_JavaUtilLinkedList == null) {
+        this.jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
+      }
+    } while (this.jdField_b_of_type_JavaUtilLinkedList.contains(paramObject));
+    this.jdField_b_of_type_JavaUtilLinkedList.add((ajuc)paramObject);
+  }
+  
+  public void c(String[] paramArrayOfString)
+  {
+    if (paramArrayOfString == null) {
+      return;
+    }
+    if (paramArrayOfString.length != 4) {
+      throw new IllegalArgumentException("Error size " + paramArrayOfString.length);
+    }
+    this.j = ((String[])paramArrayOfString.clone());
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("key_home_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.j[0]).putString("key_home_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.j[1]).putString("key_home_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.j[2]).putString("key_home_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.j[3]).commit();
+  }
+  
+  public String[] c()
+  {
+    if (this.j == null)
+    {
+      this.j = new String[4];
+      this.j[0] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_home_country_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.j[1] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_home_prov_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.j[2] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_home_city_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+      this.j[3] = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("key_home_dist_code" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "0");
+    }
+    return this.j;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_g_of_type_Boolean)
+    {
+      Card localCard = ((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (localCard == null) {
+        break label134;
+      }
+      if (localCard.shGender != 0) {
+        break label129;
+      }
+    }
+    label129:
+    for (int k = 2;; k = 0)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_sex_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), k).commit();
+      return k;
+      return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_sex_index" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    }
+    label134:
+    return 0;
+  }
+  
+  public void d(Object paramObject)
+  {
+    if ((paramObject instanceof ajua)) {
+      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramObject);
+      }
+    }
+    while ((!(paramObject instanceof ajuc)) || (this.jdField_b_of_type_JavaUtilLinkedList == null)) {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilLinkedList.remove(paramObject);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a();
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData = null;
+    }
   }
 }
 

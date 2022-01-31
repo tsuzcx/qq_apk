@@ -1,43 +1,81 @@
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.1;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public class ajbr
-  implements ajod
+class ajbr
+  implements aabi
 {
-  public ajbr(CmGameSubProcessHandler.1 param1) {}
+  ajbr(ajbo paramajbo, CmGameInitParams paramCmGameInitParams, long paramLong) {}
   
-  public void a(int paramInt)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    int i = 0;
-    ApolloCmdChannel localApolloCmdChannel = ajae.a();
-    if (localApolloCmdChannel != null) {}
-    for (;;)
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
+    try
     {
-      try
+      paramString = ajac.a();
+      if (paramString != null)
       {
-        if (!QLog.isColorLevel()) {
-          break label106;
-        }
-        QLog.d("cmgame_process.CmGameSubProcessHandler", 2, new Object[] { "createGameShortCut errorCode:", Integer.valueOf(paramInt) });
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "failure");
+        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
       }
-      catch (Exception localException)
-      {
-        JSONObject localJSONObject;
-        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, "createGameShortCut Exception:" + localException);
-        return;
-      }
-      localJSONObject = new JSONObject();
-      localJSONObject.put("ret", i);
-      localApolloCmdChannel.callbackFromRequest(this.a.a, i, "cs.create_xy_shortcut.local", localJSONObject.toString());
       return;
-      label106:
-      if (paramInt == 1) {
-        i = -1;
-      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramString, new Object[0]);
     }
   }
+  
+  public void onPermission(int paramInt)
+  {
+    QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[onPermission], code:" + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
+    }
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = ajac.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("type", "unauthorized");
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", localJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    try
+    {
+      ApolloCmdChannel localApolloCmdChannel = ajac.a();
+      if (localApolloCmdChannel != null)
+      {
+        paramJSONObject.put("ret", 0);
+        paramJSONObject.put("type", "success");
+        ajbo.a(this.jdField_a_of_type_Ajbo, paramJSONObject.optString("access_token"));
+        localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.xy_login.local", paramJSONObject.toString());
+      }
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

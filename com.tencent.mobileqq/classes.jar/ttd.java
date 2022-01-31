@@ -1,19 +1,8 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
-public final class ttd
-  extends ssk
+public abstract interface ttd
 {
-  public int a;
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  public abstract void a();
   
-  public ttd(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-  }
+  public abstract void b();
 }
 
 

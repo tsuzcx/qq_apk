@@ -1,14 +1,26 @@
-import com.tencent.open.appstore.js.DINewForCommonWebView.2;
-import com.tencent.smtt.sdk.ValueCallback;
-
 public class bdhf
-  implements ValueCallback<String>
 {
-  public bdhf(DINewForCommonWebView.2 param2) {}
+  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
+  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
   
-  public void a(String paramString)
+  public void a(String paramString1, String paramString2)
   {
-    bdht.b("DINewForCommonWebView", "[jsCallBack]:" + paramString);
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    }
   }
 }
 

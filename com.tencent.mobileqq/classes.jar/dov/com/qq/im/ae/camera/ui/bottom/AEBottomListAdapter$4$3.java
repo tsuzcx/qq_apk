@@ -1,28 +1,28 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bile;
-import bilg;
-import bili;
-import biqn;
+import bilv;
+import bilx;
+import bilz;
+import bire;
 import java.util.Map;
 
 public class AEBottomListAdapter$4$3
   implements Runnable
 {
-  public AEBottomListAdapter$4$3(bilg parambilg, biqn parambiqn, int paramInt) {}
+  public AEBottomListAdapter$4$3(bilx parambilx, bire parambire, int paramInt) {}
   
   public void run()
   {
-    if (bile.a(this.jdField_a_of_type_Bilg.a).get(this.jdField_a_of_type_Biqn.a) != null)
+    if (bilv.a(this.jdField_a_of_type_Bilx.a).get(this.jdField_a_of_type_Bire.a) != null)
     {
-      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Biqn.d) && (this.jdField_a_of_type_Biqn.e)) {
-        ((bili)bile.a(this.jdField_a_of_type_Bilg.a).get(this.jdField_a_of_type_Biqn.a)).a(1);
+      if ((this.jdField_a_of_type_Int < 100) && (!this.jdField_a_of_type_Bire.d) && (this.jdField_a_of_type_Bire.e)) {
+        ((bilz)bilv.a(this.jdField_a_of_type_Bilx.a).get(this.jdField_a_of_type_Bire.a)).a(1);
       }
     }
     else {
       return;
     }
-    ((bili)bile.a(this.jdField_a_of_type_Bilg.a).get(this.jdField_a_of_type_Biqn.a)).a(2);
+    ((bilz)bilv.a(this.jdField_a_of_type_Bilx.a).get(this.jdField_a_of_type_Bire.a)).a(2);
   }
 }
 

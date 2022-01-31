@@ -1,15 +1,20 @@
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.22.1;
+import mqq.os.MqqHandler;
 
 public class anys
-  implements bcak
+  extends ajvz
 {
-  public anys(EmoticonMainPanel.32 param32) {}
+  public anys(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a(boolean paramBoolean)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
-      this.a.this$0.a.a();
+      this.a.p();
+    }
+    if ((paramObject != null) && ((paramObject instanceof Integer))) {
+      ThreadManager.getUIHandler().post(new EmoticonMainPanel.22.1(this, paramObject));
     }
   }
 }

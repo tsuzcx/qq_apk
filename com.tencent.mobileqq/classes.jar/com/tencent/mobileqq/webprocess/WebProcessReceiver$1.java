@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import ajae;
+import ajac;
 
 class WebProcessReceiver$1
   implements Runnable
@@ -9,7 +9,7 @@ class WebProcessReceiver$1
   
   public void run()
   {
-    ajae.a();
+    ajac.a();
   }
 }
 

@@ -1,25 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class agct
-  implements DialogInterface.OnClickListener
+  extends akfk
 {
-  agct(agch paramagch) {}
+  agct(agcf paramagcf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    if (this.a.a.getIntent().getExtras() != null) {
-      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
     }
-    paramDialogInterface.addFlags(268435456);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.b.dismiss();
+    this.a.e();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    }
+    this.a.g();
   }
 }
 

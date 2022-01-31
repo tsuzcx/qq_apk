@@ -1,19 +1,54 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class anyr
-  implements askp<String, Integer>
+  extends ajth
 {
-  public anyr(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
+  public anyr(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public Integer a(String paramString)
+  protected void a()
   {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoInsert");
     }
-    return Integer.valueOf(i);
+    this.a.o();
+    if ((this.a.a != null) && (((anse)this.a.a.getManager(333)).a() > 0)) {
+      EmoticonMainPanel.c(this.a);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnGetEmoListResult");
+    }
+    if (paramInt == 0)
+    {
+      if ((this.a.a != null) && (((anse)this.a.a.getManager(333)).a() > 0)) {
+        EmoticonMainPanel.c(this.a);
+      }
+      this.a.o();
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoSend");
+    }
+    this.a.o();
+    EmoticonMainPanel.a(this.a, paramInt);
+  }
+  
+  protected void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnDeleteEmoResult");
+    }
+    if (paramInt == 0) {
+      this.a.o();
+    }
   }
 }
 

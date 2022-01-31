@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew.common;
 
-import bdht;
-import bdkp;
+import bdii;
+import bdle;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$2
@@ -11,9 +11,9 @@ class PackageInstallReceiver$2
   
   public void run()
   {
-    bdht.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
+    bdii.c(this.this$0.a, "ACTION_PACKAGE_REPLACED >> " + this.a);
     DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bdkp.a().a(13, localDownloadInfo);
+    bdle.a().a(13, localDownloadInfo);
   }
 }
 

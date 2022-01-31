@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import acut;
+import acup;
 import android.util.Pair;
-import azmu;
-import azmy;
+import azmw;
 import azna;
 import aznc;
+import azne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -17,17 +17,17 @@ import java.util.List;
 public class TroopAioKeywordTipBar$4
   implements Runnable
 {
-  public TroopAioKeywordTipBar$4(azmu paramazmu) {}
+  public TroopAioKeywordTipBar$4(azmw paramazmw) {}
   
   public void run()
   {
-    azmu.b(this.this$0, false);
-    if (!azmu.c(this.this$0)) {
+    azmw.b(this.this$0, false);
+    if (!azmw.c(this.this$0)) {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
       }
     }
-    aznc localaznc;
+    azne localazne;
     ArrayList localArrayList1;
     do
     {
@@ -41,13 +41,13 @@ public class TroopAioKeywordTipBar$4
           return;
           i = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
           j = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          localaznc = (aznc)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(225);
+          localazne = (azne)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(225);
         } while ((i < 0) || (j < 0));
         localArrayList1 = new ArrayList(10);
         localArrayList2 = new ArrayList(10);
         if (i <= j)
         {
-          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Acut.getItem(i);
+          localObject = (MessageRecord)this.this$0.jdField_a_of_type_Acup.getItem(i);
           if (localObject == null) {}
           for (;;)
           {
@@ -63,19 +63,19 @@ public class TroopAioKeywordTipBar$4
         if (localArrayList2.size() <= 0) {
           break;
         }
-      } while ((azmu.b(this.this$0) != null) && (azmu.b(this.this$0) == localArrayList2.get(0)));
-      Object localObject = localaznc.a(localArrayList2, azmu.a(this.this$0), 1);
-      if ((azmu.a(this.this$0)) && ((((Pair)localObject).second == null) || ((azmu.a(this.this$0) != null) && (azmu.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
-        azmu.a(this.this$0, false);
+      } while ((azmw.b(this.this$0) != null) && (azmw.b(this.this$0) == localArrayList2.get(0)));
+      Object localObject = localazne.a(localArrayList2, azmw.a(this.this$0), 1);
+      if ((azmw.a(this.this$0)) && ((((Pair)localObject).second == null) || ((azmw.a(this.this$0) != null) && (azmw.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
+        azmw.a(this.this$0, false);
       }
       for (;;)
       {
-        localaznc.a(localArrayList2, azmu.a(this.this$0), 1, new azmy(this, localArrayList1, localaznc));
+        localazne.a(localArrayList2, azmw.a(this.this$0), 1, new azna(this, localArrayList1, localazne));
         return;
-        azmu.b(this.this$0, (MessageRecord)localArrayList2.get(0));
+        azmw.b(this.this$0, (MessageRecord)localArrayList2.get(0));
       }
-    } while ((localArrayList1.size() <= 0) || (azmu.a(this.this$0)));
-    localaznc.a(localArrayList1, null, 2, new azna(this));
+    } while ((localArrayList1.size() <= 0) || (azmw.a(this.this$0)));
+    localazne.a(localArrayList1, null, 2, new aznc(this));
   }
 }
 

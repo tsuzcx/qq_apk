@@ -1,17 +1,25 @@
 import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 import com.tencent.mobileqq.multicard.MultiCardFragment;
 import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 import com.tencent.qphone.base.util.QLog;
 
 public class assd
-  implements asrd
+  extends asqs
 {
   public assd(MultiCardFragment paramMultiCardFragment) {}
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+      QLog.d("MultiCardFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
     }
     switch (paramInt)
     {
@@ -25,9 +33,13 @@ public class assd
           return;
           MultiCardFragment.a(this.a);
           MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
+          if ((MultiCardFragment.a(this.a) != null) && (MultiCardFragment.a(this.a).a() > MultiCardFragment.a(this.a).a()))
+          {
+            MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
+            MultiCardFragment.a(this.a).a();
+          }
+        } while (MultiCardFragment.a(this.a) == null);
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
         return;
         MultiCardFragment.b(this.a, true);
         MultiCardFragment.a(this.a, false);

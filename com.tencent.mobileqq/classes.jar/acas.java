@@ -1,22 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class acas
-  implements TextWatcher
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public acas(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public acas(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramEditable);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

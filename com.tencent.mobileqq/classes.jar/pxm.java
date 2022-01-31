@@ -1,15 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
 public class pxm
-  implements View.OnClickListener
+  implements bfph
 {
-  public pxm(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
+  public pxm(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ComponentHeaderSubscribe.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      return;
+      ComponentHeaderTopicRecommend.a(this.a, false);
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import aosw;
+import aota;
 
 public class QfileBaseRecentFileTabView$10$4
   implements Runnable
 {
-  public QfileBaseRecentFileTabView$10$4(aosw paramaosw) {}
+  public QfileBaseRecentFileTabView$10$4(aota paramaota) {}
   
   public void run()
   {

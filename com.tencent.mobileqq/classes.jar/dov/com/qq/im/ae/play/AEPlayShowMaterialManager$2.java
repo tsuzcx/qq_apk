@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.play;
 
-import axgh;
-import biwo;
+import axgj;
+import bixf;
 
 public class AEPlayShowMaterialManager$2
   implements Runnable
 {
-  public AEPlayShowMaterialManager$2(biwo parambiwo) {}
+  public AEPlayShowMaterialManager$2(bixf parambixf) {}
   
   public void run()
   {
-    biwo.a(this.this$0).a(1, null);
+    bixf.a(this.this$0).a(1, null);
   }
 }
 

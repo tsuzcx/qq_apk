@@ -1,45 +1,99 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
-public class bape
+class bape
+  implements URLDrawableDownListener
 {
-  public static final int[] a;
-  public static final int[] b = { 2130839240, 2130839240, 2130839239 };
-  public static final int[] c = { 2131377927, 2131377928, 2131377926 };
-  protected bfvm a;
+  bape(bapd parambapd, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
   
-  static
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131697784, 2131697785, 2131697783 };
-  }
-  
-  public final View a(Context paramContext, int paramInt, bfvn parambfvn)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if (this.jdField_a_of_type_Bfvm == null) {
-      this.jdField_a_of_type_Bfvm = a(paramContext);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
     }
-    return this.jdField_a_of_type_Bfvm.a(paramContext, localView, parambfvn, -1);
+    axqy.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
   }
   
-  public bfvm a(Context paramContext)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298603);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298604);
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = b;
-    return new bapf(this, 3, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
-  }
-  
-  public void a(Context paramContext, View paramView, Object paramObject, bfvn parambfvn, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Bfvm != null) {
-      this.jdField_a_of_type_Bfvm.a(paramContext, paramView, 0, paramObject, parambfvn, paramOnClickListener);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
     }
+    if (paramThrowable == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    {
+      axqy.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (paramInterruptedException == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    {
+      axqy.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+    if ((this.jdField_a_of_type_Bapd.a != null) && (this.jdField_a_of_type_Bapd.a.get() != null)) {
+      ((TextView)this.jdField_a_of_type_Bapd.a.get()).setText(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.a());
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Bapd.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if ((this.jdField_a_of_type_Bapd.a != null) && (this.jdField_a_of_type_Bapd.a.get() != null)) {
+      ((TextView)this.jdField_a_of_type_Bapd.a.get()).setVisibility(8);
+    }
+    this.jdField_a_of_type_Bapd.a = null;
+    this.jdField_a_of_type_Bapd.c = false;
+    axqy.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

@@ -1,567 +1,226 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unify.search.UnifySearchCommon.ResultItemGroup;
 
 public class awqh
-  extends awry
+  implements awqd<awoh>
 {
-  int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new awqi(this);
-  private awkf jdField_a_of_type_Awkf;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  boolean jdField_a_of_type_Boolean = false;
+  private boolean a;
   
-  public awqh(baxk parambaxk, int paramInt)
+  public List<awoh> a(Object... paramVarArgs)
   {
-    super(parambaxk);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-  }
-  
-  public awqh(baxk parambaxk, int paramInt, awkf paramawkf)
-  {
-    super(parambaxk);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Awkf = paramawkf;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-  }
-  
-  private void a(Context paramContext, awne paramawne)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "joinTroop, ctx = " + paramContext + ", model = " + paramawne);
+    if ((paramVarArgs == null) || (paramVarArgs.length < 3)) {
+      return null;
     }
-    if ((paramContext == null) || (paramawne == null)) {
-      return;
+    String str1 = "";
+    if ((paramVarArgs[0] instanceof String)) {
+      str1 = (String)paramVarArgs[0];
     }
-    Object localObject;
-    if ((paramContext instanceof Activity))
-    {
-      localObject = ((Activity)paramContext).getIntent();
-      if (localObject == null) {}
-    }
-    for (int j = ((Intent)localObject).getIntExtra("from_type_for_report", 0);; j = 0)
-    {
-      if (j == 9) {}
-      for (int i = 112; (paramContext instanceof ActiveEntitySearchActivity); i = 103)
-      {
-        localObject = ((Activity)paramContext).getIntent().getLongArrayExtra("group_mask_long_array");
-        if ((localObject != null) && (localObject.length == 1) && (localObject[0] == 1002L)) {
-          if (j == 9) {
-            i = 113;
-          }
-        }
-        for (;;)
-        {
-          azdl.a(paramContext, paramawne.jdField_b_of_type_JavaLangString, paramawne.jdField_c_of_type_JavaLangString, i, "", paramawne.jdField_k_of_type_JavaLangString, false, new awql(this, paramawne));
-          return;
-          i = 104;
-        }
-      }
-      break;
-    }
-  }
-  
-  public static void a(ImageView paramImageView1, ImageView paramImageView2, int paramInt)
-  {
-    Drawable localDrawable;
-    if (paramInt == 1)
-    {
-      localDrawable = paramImageView2.getResources().getDrawable(2130841821);
-      paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
-      paramImageView2.setImageDrawable(localDrawable);
-      paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
-      paramImageView2.setVisibility(0);
-      return;
-    }
-    if (paramInt == 2)
-    {
-      localDrawable = paramImageView2.getResources().getDrawable(2130841848);
-      paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
-      paramImageView2.setImageDrawable(localDrawable);
-      paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
-      paramImageView2.setVisibility(0);
-      return;
-    }
-    paramImageView1.setColorFilter(0);
-    paramImageView2.setVisibility(8);
-  }
-  
-  public static void a(TextView paramTextView1, TextView paramTextView2, CharSequence paramCharSequence, TextView paramTextView3)
-  {
-    Paint localPaint = new Paint();
-    if ((paramTextView1 == null) || (paramTextView2 == null) || (paramCharSequence == null)) {
-      return;
-    }
-    int i = paramTextView1.getContext().getResources().getDisplayMetrics().widthPixels;
-    float f1;
-    if (paramTextView3 != null)
-    {
-      localPaint.setTextSize(paramTextView3.getTextSize());
-      f1 = localPaint.measureText(paramTextView3.getText(), 0, paramTextView3.getText().length()) + actn.a(4.0F, paramTextView1.getContext().getResources());
-      paramTextView3.getLayoutParams().width = ((int)f1);
-      paramTextView3.setLayoutParams(paramTextView3.getLayoutParams());
-      paramTextView3.setPadding(actn.a(2.0F, paramTextView1.getContext().getResources()), 0, actn.a(2.0F, paramTextView1.getContext().getResources()), 0);
-    }
-    for (;;)
-    {
-      float f2 = i - actn.a(89.0F, paramTextView1.getContext().getResources());
-      if (f1 != 0.0F) {}
-      for (f1 = f2 - (f1 + actn.a(6.0F, paramTextView1.getContext().getResources()));; f1 = f2)
-      {
-        localPaint.setTextSize(paramTextView1.getTextSize());
-        if (localPaint.measureText(paramCharSequence, 0, paramCharSequence.length()) > f1)
-        {
-          paramTextView1.setMaxLines(2);
-          paramTextView2.setMaxLines(1);
-          return;
-        }
-        paramTextView1.setMaxLines(1);
-        paramTextView2.setMaxLines(2);
-        return;
-      }
-      f1 = 0.0F;
-    }
-  }
-  
-  private void a(TextView paramTextView, String paramString)
-  {
-    if ((paramString != null) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
-    {
-      paramString = URLDrawable.getDrawable(paramString);
-      if ((paramString.getStatus() != 1) && (paramString.getStatus() != 0)) {
-        paramString.restartDownload();
-      }
-      Resources localResources = paramTextView.getContext().getResources();
-      paramString.setBounds(0, 0, actn.a(14.0F, localResources), actn.a(14.0F, localResources));
-      paramTextView.setCompoundDrawablePadding(actn.a(4.0F, localResources));
-      paramTextView.setCompoundDrawables(null, null, paramString, null);
-      return;
-    }
-    paramTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Awkf != null) {
-      this.jdField_a_of_type_Awkf.notifyDataSetChanged();
-    }
-  }
-  
-  public void a(View paramView, CharSequence paramCharSequence, boolean paramBoolean)
-  {
-    a(paramView, paramCharSequence, paramBoolean, false);
-  }
-  
-  public void a(View paramView, CharSequence paramCharSequence, boolean paramBoolean1, boolean paramBoolean2)
-  {
+    if ((paramVarArgs[1] instanceof List)) {}
     int i;
-    if (paramView != null)
+    ArrayList localArrayList1;
+    UnifySearchCommon.ResultItemGroup localResultItemGroup;
+    long l3;
+    String str2;
+    ArrayList localArrayList2;
+    for (Object localObject = (List)paramVarArgs[1];; localObject = new ArrayList())
     {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label32;
+      i = -1;
+      if ((paramVarArgs[2] instanceof Integer)) {
+        i = ((Integer)paramVarArgs[2]).intValue();
       }
-      i = 1;
-      if ((i == 0) || (paramView.getVisibility() == 0)) {
-        break label38;
+      localArrayList1 = new ArrayList(((List)localObject).size());
+      Iterator localIterator = ((List)localObject).iterator();
+      if (!localIterator.hasNext()) {
+        break label1241;
       }
-      paramView.setVisibility(0);
+      localResultItemGroup = (UnifySearchCommon.ResultItemGroup)localIterator.next();
+      l3 = localResultItemGroup.group_mask.get();
+      str2 = localResultItemGroup.group_name.get().toStringUtf8();
+      paramVarArgs = localResultItemGroup.rpt_highlight_words.get();
+      localArrayList2 = new ArrayList(paramVarArgs.size());
+      paramVarArgs = paramVarArgs.iterator();
+      while (paramVarArgs.hasNext()) {
+        localArrayList2.add(((ByteStringMicro)paramVarArgs.next()).toStringUtf8());
+      }
     }
-    label32:
-    label38:
-    do
+    List localList = localResultItemGroup.result_items.get();
+    ArrayList localArrayList3 = new ArrayList(localList.size());
+    boolean bool1;
+    if (localResultItemGroup.hide_title.get() == 1)
     {
-      do
-      {
-        return;
-        i = 0;
-        break;
-      } while (i != 0);
-      if ((paramBoolean1) && (!paramBoolean2) && (paramView.getVisibility() != 4))
-      {
-        paramView.setVisibility(4);
-        return;
+      bool1 = true;
+      if (!this.a) {
+        break label1244;
       }
-    } while (paramView.getVisibility() == 8);
-    paramView.setVisibility(8);
-  }
-  
-  public void a(awog paramawog, awwp paramawwp)
-  {
-    Object localObject = paramawwp.b();
-    if (localObject == null) {
-      return;
+      bool1 = true;
     }
+    label458:
+    label595:
+    label1114:
+    label1244:
     for (;;)
     {
-      awne localawne;
-      ViewGroup.LayoutParams localLayoutParams;
-      try
-      {
-        if ((!(paramawog instanceof awne)) || (!(paramawwp instanceof awxx))) {
-          break label468;
-        }
-        localawne = (awne)paramawog;
-        awxx localawxx = (awxx)paramawwp;
-        localLayoutParams = ((ImageView)localObject).getLayoutParams();
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localLayoutParams.height = actn.a(30.0F, ((ImageView)localObject).getContext().getResources());
-          ((ImageView)localObject).setLayoutParams(localLayoutParams);
-          if (localawxx.c() != null) {
-            localawxx.c().setLayoutParams(localLayoutParams);
-          }
-          if ((localawne.d() == 1001) || (localawne.d() == 1002)) {
-            break label459;
-          }
-          int i = paramawwp.a().getResources().getDimensionPixelSize(2131297291);
-          paramawog = URLDrawable.URLDrawableOptions.obtain();
-          paramawog.mRequestWidth = i;
-          paramawog.mRequestHeight = i;
-          if (localawne.jdField_b_of_type_Boolean) {
-            paramawog.mMemoryCacheKeySuffix = "isAvatar";
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            localObject = new GradientDrawable();
-            ((GradientDrawable)localObject).setColor(Color.parseColor("#ECEAE8"));
-            ((GradientDrawable)localObject).setShape(1);
-            paramawog.mLoadingDrawable = ((Drawable)localObject);
-            paramawog.mFailedDrawable = ((Drawable)localObject);
-          }
-          paramawog = URLDrawable.getDrawable(localawne.c(), paramawog);
-          if (localawne.jdField_b_of_type_Boolean) {
-            paramawog.setDecodeHandler(bavi.a);
-          }
-          if ((paramawog.getStatus() != 1) && (paramawog.getStatus() != 0)) {
-            paramawog.restartDownload();
-          }
-          paramawwp.b().setImageDrawable(paramawog);
-          if ((paramawwp.b() == null) || (localawxx.c() == null)) {
-            break;
-          }
-          a(paramawwp.b(), localawxx.c(), localawne.jdField_b_of_type_Int);
-          return;
-        }
-      }
-      catch (Exception paramawog)
-      {
-        QLog.e("Q.uniteSearch.ActiveEntitySearchResultPresenter", 1, "get face drawable error:" + paramawog.toString());
-        return;
-      }
-      if ((localawne.d() == 8192) || (localawne.d() == 16) || (localawne.d() == 8))
-      {
-        localLayoutParams.height = actn.a(70.0F, ((ImageView)localObject).getContext().getResources());
-      }
-      else if (localawne.d() == 1001)
-      {
-        localLayoutParams.height = actn.a(60.0F, ((ImageView)localObject).getContext().getResources());
-      }
-      else if ((localawne.d() != 1024) && (localawne.d() != 1002))
-      {
-        localLayoutParams.height = ((ImageView)localObject).getResources().getDimensionPixelSize(2131298200);
-        continue;
-        label459:
-        super.a(paramawog, paramawwp);
-      }
-    }
-    label468:
-    super.a(paramawog, paramawwp);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = false;
-    switch (paramInt)
-    {
-    default: 
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void b(awog paramawog, awwp paramawwp)
-  {
-    if (!(paramawog instanceof awne))
-    {
-      QLog.e("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "Model is not GroupBaseNetSearchModelItem type. m = " + paramawog);
-      throw new RuntimeException("Model is not GroupBaseNetSearchModelItem type. m = " + paramawog);
-    }
-    awne localawne = (awne)paramawog;
-    this.jdField_a_of_type_Int = localawne.d();
-    Object localObject1 = paramawwp.a();
-    Object localObject2 = paramawwp.b();
-    Object localObject3 = paramawwp.c();
-    Resources localResources = paramawwp.a().getContext().getResources();
-    if ((localObject3 != null) && (localawne.jdField_c_of_type_Int != -1)) {
-      ((TextView)localObject3).setTextColor(localResources.getColor(localawne.jdField_c_of_type_Int));
-    }
-    int i;
-    if ((paramawwp instanceof awxx))
-    {
-      paramawog = (awxx)paramawwp;
-      if (paramawog.e() != null) {
-        paramawog.e().setVisibility(8);
-      }
-      if (localObject1 != null) {
-        a((TextView)localObject1, localawne.h);
-      }
-      if (localObject2 != null) {
-        a((TextView)localObject2, localawne.i);
-      }
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        if (localObject3 != null) {
-          ((TextView)localObject3).setMaxLines(1);
-        }
-        if (this.jdField_a_of_type_Int == 1002)
-        {
-          paramawog = paramawwp.a("ActiveEntitySearchResultPresenter_add_troop");
-          localObject1 = (Pair)localawne.a("ActiveEntitySearchResultPresenter_add_troop");
-          if ((paramawog != null) && (localObject1 != null))
-          {
-            paramawog.setVisibility(0);
-            if ((paramawog instanceof TextView))
-            {
-              localObject2 = (TextView)paramawog;
-              ((TextView)localObject2).setText((CharSequence)((Pair)localObject1).first);
-              ((TextView)localObject2).setEnabled(((Boolean)((Pair)localObject1).second).booleanValue());
-              ((TextView)localObject2).setTextAppearance(((TextView)localObject2).getContext(), 2131755338);
-              localObject3 = ((TextView)localObject2).getLayoutParams();
-              if (!((Boolean)((Pair)localObject1).second).booleanValue()) {
-                break label1242;
-              }
-              i = paramawog.getContext().getResources().getDimensionPixelSize(2131296616);
-              ((TextView)localObject2).setPadding(i, 0, i, 0);
-              ((TextView)localObject2).setMinWidth(axli.a(60.0F));
-              ((TextView)localObject2).setMinWidth(axli.a(29.0F));
-              ((TextView)localObject2).setBackgroundResource(2130839060);
-              if (localObject3 != null)
-              {
-                ((ViewGroup.LayoutParams)localObject3).height = -2;
-                ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-              }
-            }
-          }
-          label462:
-          localObject2 = paramawwp.a("ActiveEntitySearchResultPresenter_pay_troop");
-          localObject1 = (Boolean)localawne.a("ActiveEntitySearchResultPresenter_pay_troop");
-          paramawog = (awog)localObject1;
-          if (localObject1 == null) {
-            paramawog = Boolean.valueOf(false);
-          }
-          if (localObject2 != null)
-          {
-            if (!paramawog.booleanValue()) {
-              break label1295;
-            }
-            i = 0;
-            label513:
-            ((View)localObject2).setVisibility(i);
-          }
-          localObject1 = paramawwp.a("ActiveEntitySearchResultPresenter_hot_troop");
-          paramawog = (Integer)localawne.a("ActiveEntitySearchResultPresenter_hot_troop");
-          if (paramawog != null) {
-            break label1311;
-          }
-          paramawog = Integer.valueOf(0);
-        }
-        break;
-      }
-    }
-    label769:
-    label1033:
-    label1295:
-    label1301:
-    label1311:
-    for (;;)
-    {
-      if ((localObject1 instanceof TroopActiveLayout))
-      {
-        if (paramawog.intValue() <= 0) {
-          break label1301;
-        }
-        ((View)localObject1).setVisibility(0);
-        ((TroopActiveLayout)localObject1).setHotLevel(paramawog.intValue());
-      }
+      String str3 = localResultItemGroup.group_footer_name.get().toStringUtf8();
+      String str4 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
+      long l1 = localList.size();
+      int j = 0;
+      label381:
+      boolean bool2;
       for (;;)
       {
-        paramawog = paramawwp.a("ActiveEntitySearchResultPresenter_expand_desc");
-        localObject1 = localawne.c();
-        if (((paramawog instanceof FolderTextView)) && (localObject1 != null)) {
-          ((FolderTextView)paramawog).setText(new ayki((CharSequence)localObject1, 11, 16));
+        if (j >= localList.size()) {
+          break label1114;
         }
-        super.b(localawne, paramawwp);
-        a(paramawwp.a(), localawne.a(), true, false);
-        a(paramawwp.b(), localawne.b(), false);
-        a(paramawwp.c(), localawne.c(), false);
-        a(paramawwp.d(), localawne.d(), false);
-        return;
-        if (paramawog.b() != null) {
-          paramawog.b().a(localawne.jdField_b_of_type_JavaUtilList, localawne.e, localawne.d - 1, 1);
-        }
-        if (paramawog.h() != null)
+        paramVarArgs = (UnifySearchCommon.ResultItem)localList.get(j);
+        localObject = paramVarArgs.sub_result_items.get();
+        int m = ((List)localObject).size() + 1;
+        ArrayList localArrayList4 = new ArrayList(m);
+        localArrayList4.add(paramVarArgs);
+        localArrayList4.addAll((Collection)localObject);
+        int k = 0;
+        if (k < m)
         {
-          if (!TextUtils.isEmpty(localawne.m)) {
-            paramawog.h().setText(localawne.m);
+          UnifySearchCommon.ResultItem localResultItem = (UnifySearchCommon.ResultItem)localArrayList4.get(k);
+          paramVarArgs = localResultItem.result_id.get().toStringUtf8();
+          bool2 = localResultItem.layout_id.has();
+          localObject = localResultItem.name.get().toStringUtf8();
+          long l2;
+          String str5;
+          String str6;
+          String str7;
+          if (localResultItem.group_mask.has())
+          {
+            l2 = localResultItem.group_mask.get();
+            str5 = localResultItem.pic_url.get().toStringUtf8();
+            str6 = localResultItem.jmp_url.get().toStringUtf8();
+            str7 = localResultItem.extension.get().toStringUtf8();
+            if (!bool2) {
+              break label932;
+            }
+            localObject = null;
+            paramVarArgs = (Object[])localObject;
+            switch (localResultItem.layout_id.get())
+            {
+            default: 
+              paramVarArgs = (Object[])localObject;
+            case 5: 
+            case 10: 
+              if ((paramVarArgs != null) && (paramVarArgs.b()))
+              {
+                paramVarArgs.r = localResultItem.seporator_type.get();
+                paramVarArgs.a = bool1;
+                localArrayList3.add(paramVarArgs);
+                l2 = l1;
+              }
+              break;
+            }
           }
-        }
-        else if ((paramawog.g() != null) && (paramawog.f() != null))
-        {
-          localObject1 = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-          if (!((ajxn)localObject1).b(localawne.jdField_b_of_type_JavaLangString)) {
-            break label930;
-          }
-          localawne.jdField_k_of_type_Int = 2;
-          label816:
-          if (localawne.jdField_k_of_type_Int != 0) {
-            break label964;
-          }
-          if (bahx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localawne.jdField_b_of_type_JavaLangString)) {
-            break label952;
-          }
-          paramawog.f().setVisibility(0);
-          paramawog.f().setText(ajyc.a(2131689628));
-          label860:
-          paramawog.g().setVisibility(8);
-        }
-        for (;;)
-        {
-          localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if ((paramawog.b() == null) || (paramawog.f() == null)) {
+          for (;;)
+          {
+            k += 1;
+            l1 = l2;
+            break label381;
+            bool1 = false;
             break;
-          }
-          if (!bahx.b((QQAppInterface)localObject1, localawne.jdField_b_of_type_JavaLangString)) {
-            break label1033;
-          }
-          paramawog.b().setVisibility(0);
-          break;
-          paramawog.h().setText("");
-          break label769;
-          label930:
-          if (!((ajxn)localObject1).d(localawne.jdField_b_of_type_JavaLangString)) {
-            break label816;
-          }
-          localawne.jdField_k_of_type_Int = 1;
-          break label816;
-          label952:
-          paramawog.f().setVisibility(8);
-          break label860;
-          label964:
-          if (localawne.jdField_k_of_type_Int == 1)
-          {
-            paramawog.f().setVisibility(8);
-            paramawog.g().setVisibility(0);
-            paramawog.g().setText(2131718743);
-          }
-          else
-          {
-            paramawog.f().setVisibility(8);
-            paramawog.g().setVisibility(0);
-            paramawog.g().setText(2131690035);
+            l2 = l3;
+            break label458;
+            paramVarArgs = new awop(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpl(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awoq(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awoy(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awph(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpe(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpf(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awov(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awot(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awow(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpg(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpd(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            paramVarArgs = new awpb(str1, l3, localArrayList2, localResultItem, i);
+            break label595;
+            l2 = l1 - 1L;
+            continue;
+            if (!awwa.b(l2))
+            {
+              QLog.e("Q.uniteSearch.NetBaseParser", 1, "itemGroupMask is not valid. mask=" + l2);
+              l2 = l1;
+            }
+            else if (l2 == 2073745984L)
+            {
+              paramVarArgs = new awpr(str1, str7, -4, str5);
+              paramVarArgs.r = localResultItem.seporator_type.get();
+              localArrayList3.add(paramVarArgs);
+              l2 = l1;
+            }
+            else
+            {
+              paramVarArgs = new awng(str1, paramVarArgs, (String)localObject, str5, str6, str7, l2, localArrayList2, i);
+              l2 = l1;
+              if (paramVarArgs != null)
+              {
+                paramVarArgs.r = localResultItem.seporator_type.get();
+                paramVarArgs.c = bool1;
+                paramVarArgs.g = j;
+                paramVarArgs.h = j;
+                paramVarArgs.a = i;
+                localArrayList3.add(paramVarArgs);
+                l2 = l1;
+              }
+            }
           }
         }
-        paramawog.b().setVisibility(8);
-        break;
-        if (paramawog.a() != null)
-        {
-          paramawog.a().setVisibility(0);
-          paramawog.a().setLabelType(1);
-          paramawog.a().a(localawne.a);
-        }
-        if (paramawog.a != null)
-        {
-          if ((localawne.jdField_b_of_type_Long & 0x800) == 0L) {
-            break label1129;
-          }
-          paramawog.a.setVisibility(0);
-        }
-        while (paramawog.b != null)
-        {
-          paramawog.b.setVisibility(8);
-          break;
-          label1129:
-          paramawog.a.setVisibility(8);
-        }
-        if (localObject1 == null) {
-          break;
-        }
-        ((TextView)localObject1).setCompoundDrawablePadding(actn.a(4.0F, localResources));
-        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841179, 0);
-        break;
-        a((TextView)localObject1, (TextView)localObject3, localawne.a(), null);
-        break;
-        QLog.e("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "View is not SearchResultFromNetView. View = " + paramawwp);
-        throw new RuntimeException("View is not SearchResultFromNetView. View = " + paramawwp);
-        label1242:
-        ((TextView)localObject2).setPadding(0, 0, 0, 0);
-        ((TextView)localObject2).setMinWidth(0);
-        ((TextView)localObject2).setMinHeight(0);
-        ((TextView)localObject2).setBackgroundDrawable(null);
-        if (localObject3 == null) {
-          break label462;
-        }
-        ((ViewGroup.LayoutParams)localObject3).height = axli.a(20.0F);
-        ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        break label462;
-        i = 8;
-        break label513;
-        ((View)localObject1).setVisibility(8);
+        j += 1;
       }
+      if (l1 <= 0L) {
+        break;
+      }
+      l1 = localResultItemGroup.total_result_count.get();
+      paramVarArgs = localResultItemGroup.more_url.get().toStringUtf8();
+      localObject = localResultItemGroup.more_name.get().toStringUtf8();
+      if (localResultItemGroup.highlight_title_keyword.get() == 1)
+      {
+        bool2 = true;
+        if (localResultItemGroup.hide_title_blank_view.get() != 1) {
+          break label1235;
+        }
+      }
+      for (boolean bool3 = true;; bool3 = false)
+      {
+        localArrayList1.add(new awnf(str1, l3, str2, localArrayList3, l1, paramVarArgs, (String)localObject, localArrayList2, bool1, bool2, bool3, str3, str4));
+        break;
+        bool2 = false;
+        break label1171;
+      }
+      return localArrayList1;
     }
   }
   
-  protected void c(awog paramawog, awwp paramawwp)
+  public void a(boolean paramBoolean)
   {
-    super.c(paramawog, paramawwp);
-    if ((paramawog instanceof awne))
-    {
-      paramawog = (awne)paramawog;
-      if (paramawog.d() != 1002) {
-        break label56;
-      }
-      paramawwp = paramawwp.a("ActiveEntitySearchResultPresenter_add_troop");
-      if (paramawwp != null) {
-        paramawwp.setOnClickListener(new awqj(this, paramawog));
-      }
-    }
-    label56:
-    while ((paramawog.d() != 1001) || (((awxx)paramawwp).f() == null)) {
-      return;
-    }
-    ((awxx)paramawwp).f().setOnClickListener(new awqk(this, paramawog));
-  }
-  
-  public void d(awog paramawog, awwp paramawwp)
-  {
-    if (((paramawog instanceof awne)) && (!this.jdField_a_of_type_Boolean) && (a(((awne)paramawog).d()))) {
-      awwb.a(paramawog.a(), paramawog.b(), paramawwp.a(), ((awne)paramawog).r);
-    }
+    this.a = paramBoolean;
   }
 }
 

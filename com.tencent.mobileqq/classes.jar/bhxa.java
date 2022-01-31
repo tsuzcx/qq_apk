@@ -1,20 +1,31 @@
-import android.app.Activity;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import mqq.app.QQPermissionCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
 
 public class bhxa
-  implements QQPermissionCallback
+  extends Handler
 {
-  public bhxa(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bhxa(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
   {
-    bbcv.b(this.jdField_a_of_type_AndroidAppActivity);
+    super(paramLooper);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.d(this.jdField_a_of_type_Int);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 

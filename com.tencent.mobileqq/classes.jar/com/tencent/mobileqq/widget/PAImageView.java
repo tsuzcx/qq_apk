@@ -16,7 +16,7 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import bfni;
+import bfnz;
 import com.tencent.image.URLDrawable;
 
 public class PAImageView
@@ -141,7 +141,7 @@ public class PAImageView
   @TargetApi(11)
   public void f()
   {
-    if (bfni.e())
+    if (bfnz.e())
     {
       this.jdField_c_of_type_Int = 2;
       if (this.jdField_c_of_type_Int != 1) {

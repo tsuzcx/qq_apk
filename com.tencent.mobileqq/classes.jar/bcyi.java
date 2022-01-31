@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
 
-class bcyi
-  implements DialogInterface.OnClickListener
+public class bcyi
+  implements View.OnClickListener
 {
-  bcyi(bcyf parambcyf) {}
+  public bcyi(AuthorityAccountView paramAuthorityAccountView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.b(110405, "", "", "");
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof String))) {
+      this.a.b((String)paramView);
+    }
   }
 }
 

@@ -1,52 +1,18 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.2.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class owd
-  implements saf
+  implements View.OnTouchListener
 {
-  public owd(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
+  public owd(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.2.1(this), 200L);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola success!");
-    }
-    if ((ReadInJoyViolaChannelFragment.a(this.a) != null) && (ReadInJoyViolaChannelFragment.a(this.a).c()) && (this.a.c()) && (ReadinjoyTabFrame.c_())) {
-      ReadInJoyViolaChannelFragment.a(this.a).a(true);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    ReadInJoyViolaChannelFragment.a(this.a);
-    ReadInJoyViolaChannelFragment.a(this.a).c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyViolaChannelFragment", 2, "initViola error,error code=" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((1 == paramInt) && (oot.a())) {
-      osm.a().n();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola process,process code=" + paramInt);
-    }
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

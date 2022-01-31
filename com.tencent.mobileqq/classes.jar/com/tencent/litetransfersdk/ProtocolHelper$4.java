@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import aptv;
+import aptx;
 
 class ProtocolHelper$4
   implements Runnable
@@ -9,7 +9,7 @@ class ProtocolHelper$4
   
   public void run()
   {
-    aptv.a(2131693943);
+    aptx.a(2131693944);
   }
 }
 

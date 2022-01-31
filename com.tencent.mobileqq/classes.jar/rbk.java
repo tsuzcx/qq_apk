@@ -1,22 +1,14 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class rbk
-  extends akgg
+  implements View.OnClickListener
 {
-  rbk(rap paramrap) {}
+  rbk(ram paramram, String paramString) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (pce.a(this.a.a(), str) < qce.d)
-    {
-      this.a.a.c(6);
-      return;
-    }
-    bcpw.a(this.a.a(), 0, this.a.a().getString(2131718583), 0).a();
+    nol.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

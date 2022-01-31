@@ -1,25 +1,48 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-final class avsz
-  implements bbkq<Float>
+public class avsz
 {
-  avsz(View paramView) {}
-  
-  @TargetApi(11)
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public static int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    int j = 2;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
+    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
+    int i = j;
+    if (l != 0L)
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      i = j;
+      if (System.currentTimeMillis() - l < 300000L) {
+        i = localSharedPreferences.getInt("camera", 2);
+      }
     }
+    return i;
+  }
+  
+  public static void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putInt("camera", paramInt);
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
+  }
+  
+  public static int b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", 1);
   }
 }
 

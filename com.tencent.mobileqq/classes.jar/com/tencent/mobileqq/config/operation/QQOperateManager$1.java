@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.operation;
 
-import andi;
+import andn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -11,12 +11,12 @@ import com.tencent.qphone.base.util.QLog;
 public class QQOperateManager$1
   implements Runnable
 {
-  public QQOperateManager$1(andi paramandi, int paramInt) {}
+  public QQOperateManager$1(andn paramandn, int paramInt) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(andi.a())) {
-      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(andi.a() + "QQOperationVoIPRequestCount", this.a).commit();
+    if (!TextUtils.isEmpty(andn.a())) {
+      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(andn.a() + "QQOperationVoIPRequestCount", this.a).commit();
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("QQOperateVoIP", 4, "onDestroy.......");

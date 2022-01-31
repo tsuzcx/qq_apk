@@ -1,15 +1,10 @@
-import java.io.File;
-import java.io.FileFilter;
+import Wallet.AcsMsg;
 
-class acst
-  implements FileFilter
+public class acst
 {
-  acst(acsr paramacsr) {}
-  
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().startsWith(acsr.a(this.a));
-  }
+  public int a;
+  public AcsMsg a;
+  public String a;
 }
 
 

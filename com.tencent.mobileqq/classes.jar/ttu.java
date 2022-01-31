@@ -1,38 +1,15 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import java.util.Comparator;
 
-class ttu
-  extends PagerAdapter
+public class ttu
+  implements Comparator<QQUserUIItem>
 {
-  private List<View> jdField_a_of_type_JavaUtilList;
+  public ttu(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public ttu(List<View> paramList)
+  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    return ajuh.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
   }
 }
 

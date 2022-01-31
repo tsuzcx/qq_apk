@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import awcg;
-import aweo;
-import awer;
+import awci;
+import aweq;
+import awet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,16 +13,16 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (aweo.b(this.a.jdField_a_of_type_Awer.a) != null)
+    if (aweq.b(this.a.jdField_a_of_type_Awet.a) != null)
     {
-      Iterator localIterator = aweo.b(this.a.jdField_a_of_type_Awer.a).iterator();
+      Iterator localIterator = aweq.b(this.a.jdField_a_of_type_Awet.a).iterator();
       if (localIterator.hasNext())
       {
-        awcg localawcg = (awcg)localIterator.next();
+        awci localawci = (awci)localIterator.next();
         if (this.a.jdField_a_of_type_Boolean) {}
         for (int i = 100;; i = -1)
         {
-          localawcg.a(i, RichStatus.getEmptyStatus(), null);
+          localawci.a(i, RichStatus.getEmptyStatus(), null);
           break;
         }
       }

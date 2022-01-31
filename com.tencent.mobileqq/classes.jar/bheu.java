@@ -1,26 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PictureUrl;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import NS_USER_ACTION_REPORT.PageInfo;
+import NS_USER_ACTION_REPORT.TraceInfo;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import java.util.ArrayList;
 
-public final class bheu
-  implements Parcelable.Creator<PictureUrl>
+class bheu
 {
-  public PictureUrl a(Parcel paramParcel)
+  private bher jdField_a_of_type_Bher;
+  private ArrayList<ItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public UserActionReport a()
   {
-    PictureUrl localPictureUrl = new PictureUrl();
-    localPictureUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPictureUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localPictureUrl.jdField_b_of_type_Int = paramParcel.readInt();
-    localPictureUrl.c = paramParcel.readInt();
-    localPictureUrl.jdField_a_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.jdField_b_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.d = paramParcel.readInt();
-    return localPictureUrl;
+    UserActionReport localUserActionReport = new UserActionReport();
+    Object localObject = new PageInfo();
+    ((PageInfo)localObject).appid = this.jdField_a_of_type_Bher.c;
+    ((PageInfo)localObject).page_id = this.jdField_a_of_type_Bher.d;
+    ((PageInfo)localObject).item_infos = this.jdField_a_of_type_JavaUtilArrayList;
+    localUserActionReport.page_info = ((PageInfo)localObject);
+    localObject = new TraceInfo();
+    ((TraceInfo)localObject).trace_id = this.jdField_a_of_type_Bher.jdField_a_of_type_JavaLangString;
+    ((TraceInfo)localObject).trace_num = this.jdField_a_of_type_Bher.jdField_a_of_type_Int;
+    ((TraceInfo)localObject).trace_detail = this.jdField_a_of_type_Bher.a();
+    localUserActionReport.trace_info = ((TraceInfo)localObject);
+    return localUserActionReport;
   }
   
-  public PictureUrl[] a(int paramInt)
+  public bheu a(ItemInfo paramItemInfo)
   {
-    return new PictureUrl[paramInt];
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramItemInfo);
+    return this;
+  }
+  
+  public bheu a(bher parambher)
+  {
+    this.jdField_a_of_type_Bher = parambher;
+    return this;
   }
 }
 

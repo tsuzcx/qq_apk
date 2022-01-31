@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import aavh;
-import aavi;
-import aazf;
+import aavd;
+import aave;
+import aazb;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.widget.TextView;
-import ayju;
-import bboe;
+import ayjw;
+import bbos;
 
 public class ChatSettingForTroop$ListAdapter$1$1
   implements Runnable
 {
-  public ChatSettingForTroop$ListAdapter$1$1(aavi paramaavi, String paramString) {}
+  public ChatSettingForTroop$ListAdapter$1$1(aave paramaave, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aavi.jdField_a_of_type_Aavh.a.c) {}
-    while (!TextUtils.equals(this.jdField_a_of_type_Aavi.jdField_a_of_type_Aazf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavi.jdField_a_of_type_JavaLangString)) {
+    if (this.jdField_a_of_type_Aave.jdField_a_of_type_Aavd.a.c) {}
+    while (!TextUtils.equals(this.jdField_a_of_type_Aave.jdField_a_of_type_Aazb.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aave.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    SpannableString localSpannableString = new ayju(this.jdField_a_of_type_JavaLangString, 12).a();
-    this.jdField_a_of_type_Aavi.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-    bboe.a(this.jdField_a_of_type_Aavi.jdField_a_of_type_Aavh.a.app, this.jdField_a_of_type_Aavi.jdField_a_of_type_AndroidWidgetTextView, localSpannableString);
+    SpannableString localSpannableString = new ayjw(this.jdField_a_of_type_JavaLangString, 12).a();
+    this.jdField_a_of_type_Aave.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
+    bbos.a(this.jdField_a_of_type_Aave.jdField_a_of_type_Aavd.a.app, this.jdField_a_of_type_Aave.jdField_a_of_type_AndroidWidgetTextView, localSpannableString);
   }
 }
 

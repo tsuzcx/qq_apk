@@ -1,51 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class oam
+final class oam
+  implements DialogInterface.OnClickListener
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
-    case 13: 
-      return 3;
-    }
-    return 4;
-  }
+  oam(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!sht.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
-    {
-      return;
-      if ((paramViewBase instanceof ple))
-      {
-        nmf.a(new nyg().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
-      {
-        nmf.a(new nyg().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
-      }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      nmf.a(new nyg().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-      return;
-    }
-    nmf.a(new nyg().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 

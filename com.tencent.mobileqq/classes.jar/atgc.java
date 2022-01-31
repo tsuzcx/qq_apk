@@ -1,13 +1,53 @@
-import android.os.IInterface;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface atgc
-  extends IInterface
+class atgc
+  implements ServiceConnection
 {
-  public abstract Message a(Message paramMessage);
+  atgc(atgb paramatgb) {}
   
-  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceConnected");
+    }
+    this.a.jdField_a_of_type_Atfw = atfx.a(paramIBinder);
+    try
+    {
+      this.a.jdField_a_of_type_Atfw.a(this.a.jdField_a_of_type_Atge);
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramComponentName.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName arg1)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "onServiceDisconnected");
+    }
+    synchronized (atgb.a(this.a))
+    {
+      this.a.jdField_a_of_type_Atfw = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
+      }
+      return;
+    }
+  }
 }
 
 

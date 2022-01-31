@@ -1,39 +1,25 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.ims.signature.SignatureKickData;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 
 public class abou
   implements DialogInterface.OnClickListener
 {
-  public abou(NotificationActivity paramNotificationActivity, signature.SignatureKickData paramSignatureKickData) {}
+  public abou(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setPositiveButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
+    paramDialogInterface = new Intent("qqplayer_exit_action");
+    this.a.sendBroadcast(paramDialogInterface);
     paramDialogInterface = new Bundle();
     paramDialogInterface.putString("password", null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
-      label106:
-      paramDialogInterface = new Intent("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.sendBroadcast(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label106;
-    }
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    this.a.finish();
   }
 }
 

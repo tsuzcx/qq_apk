@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
+import auko;
 import com.tencent.qphone.base.util.MD5;
 import java.io.Serializable;
 
 public class RockDownloadInfo
-  extends aukm
+  extends auko
   implements Serializable
 {
   public static final int CHECK_LEVEL_DELETE = 3;

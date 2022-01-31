@@ -1,20 +1,56 @@
 import com.tencent.qphone.base.util.QLog;
 
 class mpr
-  extends mck
+  implements lgm
 {
-  mpr(mpn parammpn) {}
+  mpr(mpq parammpq) {}
   
-  protected void b(mco parammco)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    if (parammco.jdField_b_of_type_Boolean) {
-      return;
+    boolean bool2 = true;
+    if (11 != paramInt1) {}
+    do
+    {
+      return false;
+      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
+      paramArrayOfByte = this.a.a();
+    } while (paramArrayOfByte == null);
+    boolean bool1;
+    switch (paramInt2)
+    {
+    default: 
+      bool1 = false;
     }
-    parammco.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (parammco.jdField_b_of_type_Boolean) {
-      parammco.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
+    for (;;)
+    {
+      return bool1;
+      this.a.jdField_a_of_type_Int = 2;
+      paramArrayOfByte.b("AbilityResDownloading");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 1;
+      paramArrayOfByte.b("AbilityEnable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 0;
+      paramArrayOfByte.b("AbilityDisable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Boolean = true;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int != 1)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        paramArrayOfByte.b("Enter_SendMode");
+        bool1 = bool2;
+        continue;
+        this.a.jdField_a_of_type_Boolean = false;
+        bool1 = bool2;
+        continue;
+        paramArrayOfByte.a(this.a.b);
+        bool1 = bool2;
+      }
     }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammco.jdField_b_of_type_Boolean + "]");
   }
 }
 

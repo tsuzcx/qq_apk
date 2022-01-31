@@ -1,118 +1,322 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.HWTroopMemberCard;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadVideoThumbJob;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.ServerConfigManager.ConfigType;
+import mqq.os.MqqHandler;
 
-class bhxd
-  implements bhwr
+public class bhxd
+  extends RemoteCommand
 {
-  bhxd(bhxc parambhxc) {}
+  QQAppInterface a;
   
-  public void a(int paramInt)
+  public bhxd(QQAppInterface paramQQAppInterface)
   {
-    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxb.c, this.a.jdField_a_of_type_Int, this.a.b, "uploading", "", 0);
-    try
-    {
-      if (this.a.b == 2)
-      {
-        float f2 = paramInt / 100.0F * 0.85F + 0.1F;
-        f1 = f2;
-        if (f2 <= 1.0F) {}
-      }
-      for (float f1 = 1.0F;; f1 = paramInt / 100.0F)
-      {
-        localJSONObject.put("progress", f1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopHWJsPlugin", 4, "id = " + this.a.jdField_a_of_type_Int + " progress = " + paramInt + " realProgress = " + f1);
-        }
-        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxb.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        this.a.jdField_a_of_type_Boolean = true;
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    super("troop.troopmemcard.get_app_interface_data");
+    this.a = paramQQAppInterface;
   }
   
-  public void a(String paramString)
+  public Bundle a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHWJsPlugin", 2, "onComplete id = " + this.a.jdField_a_of_type_Int + " url = " + paramString);
-    }
-    if (this.a.b == 0) {}
-    for (int i = 11;; i = 0)
+    paramOnInvokeFinishLinstener = paramBundle.getString("troopUin");
+    String str2 = paramBundle.getString("memUin");
+    paramBundle = this.a.a().a(paramOnInvokeFinishLinstener, 1, 100);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("chatmsg:");
+    if (!TextUtils.isEmpty(str2)) {}
+    for (int i = 10;; i = 20)
     {
-      Object localObject = "uploaded";
-      if (this.a.b == 2) {
-        localObject = "uploading";
-      }
-      localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxb.c, this.a.jdField_a_of_type_Int, this.a.b, (String)localObject, paramString, i);
-      this.a.jdField_a_of_type_JavaLangString = paramString;
+      Iterator localIterator = paramBundle.iterator();
+      int j = 0;
+      MessageRecord localMessageRecord;
       do
       {
-        for (;;)
+        if (localIterator.hasNext())
         {
-          try
-          {
-            ((JSONObject)localObject).put("result", 0);
-            if (2 == this.a.b)
-            {
-              ((JSONObject)localObject).put("progress", 0.949999988079071D);
-              if (this.a.b != 2) {
-                this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxb.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-              }
-              this.a.jdField_a_of_type_Boolean = false;
-              if (!this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-                break;
-              }
-              return;
-            }
-            if (this.a.b == 1)
-            {
-              ((JSONObject)localObject).put("progress", 1.0D);
-              ((JSONObject)localObject).put("size", "[0,400,694,1000]");
-              continue;
-            }
-            if (this.a.b != 0) {
-              continue;
-            }
-          }
-          catch (Exception paramString)
-          {
-            paramString.printStackTrace();
-            return;
-          }
-          ((JSONObject)localObject).put("progress", 1.0D);
+          localMessageRecord = (MessageRecord)localIterator.next();
+          if (j <= i) {}
         }
-      } while (this.a.b != 2);
-      paramString = new bhxe(this);
-      ThreadManager.postImmediately(new TroopHWJsPlugin.UploadVideoThumbJob(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, this.a, paramString, TroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin)), null, false);
-      return;
+        else
+        {
+          paramBundle = "";
+        }
+        try
+        {
+          paramOnInvokeFinishLinstener = URLEncoder.encode(localStringBuilder.toString(), "UTF-8");
+          paramBundle = paramOnInvokeFinishLinstener;
+        }
+        catch (Throwable paramOnInvokeFinishLinstener)
+        {
+          for (;;)
+          {
+            String str1;
+            paramOnInvokeFinishLinstener.printStackTrace();
+          }
+        }
+        paramOnInvokeFinishLinstener = new Bundle();
+        paramOnInvokeFinishLinstener.putString("msgtoupload", paramBundle);
+        return paramOnInvokeFinishLinstener;
+      } while ((localMessageRecord == null) || ((!TextUtils.isEmpty(str2)) && (!TextUtils.equals(localMessageRecord.senderuin, str2))));
+      if ((localMessageRecord instanceof MessageForPic)) {
+        paramOnInvokeFinishLinstener = ((MessageForPic)localMessageRecord).uuid;
+      }
+      for (str1 = "2";; str1 = "1")
+      {
+        paramBundle = paramOnInvokeFinishLinstener;
+        try
+        {
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("\"", "\\\"");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("'", "\\'");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("|", "\\|");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace(":", "\\:");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace(";", "\\;");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("[", "\\[");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("]", "\\]");
+          paramBundle = paramOnInvokeFinishLinstener;
+          paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.replace("=", "\\=");
+          paramBundle = paramOnInvokeFinishLinstener;
+        }
+        catch (Throwable paramOnInvokeFinishLinstener)
+        {
+          for (;;)
+          {
+            paramOnInvokeFinishLinstener.printStackTrace();
+          }
+        }
+        localStringBuilder.append("[");
+        localStringBuilder.append("uin=" + localMessageRecord.senderuin);
+        localStringBuilder.append(";");
+        localStringBuilder.append("content=" + paramBundle);
+        localStringBuilder.append(";");
+        localStringBuilder.append("type=" + str1);
+        localStringBuilder.append("]");
+        j += 1;
+        break;
+        if (((!(localMessageRecord instanceof MessageForText)) && (!(localMessageRecord instanceof MessageForLongMsg))) || (localMessageRecord.msgtype != -1000)) {
+          break;
+        }
+        paramOnInvokeFinishLinstener = localMessageRecord.msg;
+      }
     }
   }
   
-  public void b(int paramInt)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    QLog.d("TroopHWJsPlugin", 1, "upload failed! errorCode = " + paramInt);
-    this.a.jdField_a_of_type_Boolean = false;
-    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bhxb.c, this.a.jdField_a_of_type_Int, this.a.b, "uploaded", "", 0);
-    try
+    Bundle localBundle;
+    if (paramBundle == null)
     {
-      localJSONObject.put("result", paramInt);
-      this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bhxb.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
+      localBundle = null;
+      label7:
+      return localBundle;
     }
-    catch (Exception localException)
+    int i;
+    Object localObject2;
+    String str1;
+    for (;;)
     {
-      for (;;)
+      try
       {
-        QLog.e("TroopHWJsPlugin", 1, "upload error!", localException);
+        i = paramBundle.getInt("req_sub_cmd");
+        localBundle = new Bundle();
+        switch (i)
+        {
+        case 1001: 
+          localBundle = paramBundle;
+          if (paramOnInvokeFinishLinstener == null) {
+            break label7;
+          }
+          paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
+          return paramBundle;
+        }
       }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemCardCmd", 2, "invoke Exception hanppend! ExceptionClass = + " + paramBundle.getClass().getName() + "msg = " + paramBundle.getMessage());
+        }
+        axqy.b(this.a, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "plugin_cmd_exp", 0, 0, paramBundle.getClass().getName(), null, null, null);
+        return null;
+      }
+      paramBundle = a(paramBundle, paramOnInvokeFinishLinstener);
+      continue;
+      paramBundle = (TroopInfo)paramBundle.getSerializable("troopInfo");
+      ((TroopManager)this.a.getManager(52)).b(paramBundle);
+      paramBundle = localBundle;
+      continue;
+      paramBundle = paramBundle.getString("troopUin");
+      localBundle.putSerializable("troopInfo", ((TroopManager)this.a.getManager(52)).b(paramBundle));
+      paramBundle = localBundle;
+      continue;
+      localObject1 = paramBundle.getString("troopUin");
+      paramBundle = paramBundle.getString("memUin");
+      localBundle.putSerializable("card", ((TroopManager)this.a.getManager(52)).a((String)localObject1, paramBundle));
+      paramBundle = localBundle;
+      continue;
+      localObject1 = paramBundle.getString("troopUin");
+      localObject2 = paramBundle.getString("memUin");
+      paramBundle = (HWTroopMemberCard)paramBundle.getSerializable("card");
+      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, paramBundle);
+      paramBundle = localBundle;
+      continue;
+      localObject1 = paramBundle.getString("troopUin");
+      localObject2 = paramBundle.getString("memUin");
+      byte b = paramBundle.getByte("flag");
+      localBundle.putBoolean("result", ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, b));
+      paramBundle = localBundle;
+      continue;
+      localObject1 = paramBundle.getString("troopUin");
+      localObject2 = paramBundle.getString("memUin");
+      str1 = paramBundle.getString("uniqueTitle");
+      i = paramBundle.getInt("uniqueTitleExpire");
+      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, str1, i);
+      paramBundle = localBundle;
+      continue;
+      paramBundle = paramBundle.getString("troopCode");
+      localObject1 = (TroopManager)this.a.getManager(52);
+      this.a.a().a(paramBundle, 1);
+      ((TroopManager)localObject1).a(paramBundle);
+      bbdd.a().a(this.a, paramBundle, this.a.getCurrentAccountUin(), this.a.getApp());
+      paramBundle = localBundle;
+      continue;
+      localObject1 = paramBundle.getString("key");
+      paramBundle = (ServerConfigManager.ConfigType)paramBundle.getSerializable("type");
+      localBundle.putString("result", this.a.a(paramBundle, (String)localObject1));
+      paramBundle = localBundle;
+      continue;
+      paramBundle = paramBundle.getString("uin");
+      localObject1 = (ajxl)this.a.getManager(51);
+      localObject2 = ((ajxl)localObject1).b(paramBundle);
+      if ((localObject2 == null) || (!((Friends)localObject2).isFriend())) {
+        break label1375;
+      }
+      paramBundle = ((ajxl)localObject1).a(paramBundle);
+      if ((paramBundle == null) || (paramBundle.globalSwitch == 0)) {
+        break label1381;
+      }
+      bool = true;
+      label692:
+      localBundle.putBoolean("is_special_care", bool);
+      paramBundle = localBundle;
+    }
+    Object localObject1 = paramBundle.getString("uin");
+    boolean bool = paramBundle.getBoolean("do_not_disturb");
+    paramBundle = this.a;
+    if (bool) {}
+    for (long l1 = awzy.a();; l1 = 0L)
+    {
+      FriendsStatusUtil.a(paramBundle, (String)localObject1, 0, l1, true, false, null, true);
+      paramBundle = localBundle;
+      break;
+      localObject1 = paramBundle.getString("uin");
+      bool = paramBundle.getBoolean("is_gather");
+      paramBundle = (FriendListHandler)this.a.a(1);
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(localObject1);
+      paramBundle.a((short)1, (List)localObject2, bool, true);
+      paramBundle = localBundle;
+      break;
+      paramBundle = paramBundle.getString("uin");
+      ((FriendListHandler)this.a.a(1)).c(paramBundle, (byte)2);
+      localObject1 = this.a.getHandler(ChatActivity.class);
+      if (localObject1 != null) {
+        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(16711681, paramBundle));
+      }
+      localObject1 = this.a.getHandler(ChatSettingActivity.class);
+      if (localObject1 != null) {
+        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(16711681, paramBundle));
+      }
+      if (bbbr.b(paramBundle)) {
+        axqy.b(this.a, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+      }
+      localObject1 = new Intent("ACTION_DELETE_FRIEND");
+      ((Intent)localObject1).putExtra("KEY_DELETE_FRIEND_UIN", paramBundle);
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject1);
+      paramBundle = localBundle;
+      break;
+      localObject1 = paramBundle.getString("troopUin");
+      paramBundle = paramBundle.getStringArrayList("memberUins");
+      ((TroopManager)this.a.getManager(52)).c((String)localObject1, (String)paramBundle.get(0));
+      paramBundle = localBundle;
+      break;
+      localObject1 = paramBundle.getString("troopUin");
+      localObject2 = paramBundle.getString("memberUin");
+      str1 = paramBundle.getString("troopNick");
+      i = paramBundle.getInt("level");
+      String str2 = paramBundle.getString("friendNick");
+      String str3 = paramBundle.getString("troopRemark");
+      int j = paramBundle.getInt("age");
+      int k = paramBundle.getInt("sex");
+      int m = paramBundle.getInt("distance");
+      l1 = paramBundle.getLong("msgseq");
+      long l2 = paramBundle.getLong("gagTimeStamp");
+      ((TroopManager)this.a.getManager(52)).a((String)localObject1, (String)localObject2, str1, i, str2, str3, j, k, m, l1, l2);
+      paramBundle = localBundle;
+      break;
+      paramBundle = paramBundle.getString("troopUin");
+      ((akhp)this.a.a(20)).l(paramBundle);
+      paramBundle = localBundle;
+      break;
+      paramBundle = paramBundle.getString("troopUin");
+      ((akhp)this.a.a(20)).k(paramBundle);
+      paramBundle = localBundle;
+      break;
+      localObject1 = paramBundle.getString("uin");
+      paramBundle = "";
+      localObject1 = asxd.a(this.a, (String)localObject1, false);
+      if (localObject1 != null)
+      {
+        if (((asyd)localObject1).a == 1L) {
+          paramBundle = this.a.getApp().getString(2131693609);
+        }
+        for (;;)
+        {
+          i = ((asyd)localObject1).c;
+          localBundle.putString("bind_name", paramBundle);
+          localBundle.putInt("bind_icon", i);
+          paramBundle = localBundle;
+          break;
+          if (((asyd)localObject1).a == 2L) {
+            paramBundle = this.a.getApp().getString(2131693607);
+          } else if (((asyd)localObject1).a == 3L) {
+            paramBundle = this.a.getApp().getString(2131693608);
+          }
+        }
+      }
+      label1375:
+      paramBundle = localBundle;
+      break;
+      label1381:
+      bool = false;
+      break label692;
     }
   }
 }

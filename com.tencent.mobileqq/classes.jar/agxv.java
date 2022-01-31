@@ -1,24 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class agxv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agxv(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
+  public agxv(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
-    }
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

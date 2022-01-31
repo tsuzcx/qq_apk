@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwm;
+import acwi;
 import com.tencent.qphone.base.util.QLog;
-import wim;
+import wij;
 
 public class IntimateInfoShareHelper$6
   implements Runnable
 {
-  public IntimateInfoShareHelper$6(acwm paramacwm, int paramInt1, int paramInt2) {}
+  public IntimateInfoShareHelper$6(acwi paramacwi, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     try
     {
-      wim.a(this.a, this.b);
+      wij.a(this.a, this.b);
       return;
     }
     catch (Exception localException)

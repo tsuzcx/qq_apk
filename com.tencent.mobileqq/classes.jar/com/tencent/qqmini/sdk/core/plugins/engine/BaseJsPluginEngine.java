@@ -10,24 +10,24 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import begy;
-import begz;
-import behe;
-import behf;
-import behk;
-import behl;
-import behn;
-import behs;
-import beht;
-import beil;
-import bejw;
-import bejy;
-import beka;
-import bekb;
-import bekg;
-import belh;
-import bemg;
-import besl;
+import behp;
+import behq;
+import behv;
+import behw;
+import beib;
+import beic;
+import beie;
+import beij;
+import beik;
+import bejc;
+import bekn;
+import bekp;
+import bekr;
+import beks;
+import bekx;
+import bely;
+import bemx;
+import betc;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
@@ -51,33 +51,33 @@ public abstract class BaseJsPluginEngine
   private static final String TAG = "JsPluginEngine[AuthGuard]";
   private static final int WHAT_NOTIFY_SCOPE_PERMISSION_QUEUE = 1;
   private static final int WHAT_SHOW_AUTH_DIALOG = 2;
-  bemg authDialog;
+  bemx authDialog;
   private DialogInterface.OnDismissListener dismissListener = new BaseJsPluginEngine.8(this);
   private Handler mHandler = new Handler(Looper.getMainLooper(), new BaseJsPluginEngine.7(this));
-  protected begz mMiniAppContext;
-  ConcurrentLinkedQueue<beka> scopePermissionQueue = new ConcurrentLinkedQueue();
+  protected behq mMiniAppContext;
+  ConcurrentLinkedQueue<bekr> scopePermissionQueue = new ConcurrentLinkedQueue();
   
   public BaseJsPluginEngine(Context paramContext)
   {
     initPermissionParser(paramContext);
   }
   
-  private String checkRequestScopePermission(beka parambeka)
+  private String checkRequestScopePermission(bekr parambekr)
   {
-    String str1 = parambeka.a;
-    String str2 = parambeka.b;
+    String str1 = parambekr.a;
+    String str2 = parambekr.b;
     if ("subscribeAppMsg".equals(str1)) {
-      return reqGrantSubscribeApiPermission(parambeka);
+      return reqGrantSubscribeApiPermission(parambekr);
     }
-    Object localObject = behl.a().a("scope.getPhoneNumber");
+    Object localObject = beic.a().a("scope.getPhoneNumber");
     if (localObject != null) {}
-    for (localObject = ((behk)localObject).c; ("getPhoneNumber".equals(str1)) && (TextUtils.isEmpty((CharSequence)localObject)); localObject = "")
+    for (localObject = ((beib)localObject).c; ("getPhoneNumber".equals(str1)) && (TextUtils.isEmpty((CharSequence)localObject)); localObject = "")
     {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(getAppId(), new BaseJsPluginEngine.3(this, parambeka));
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(getAppId(), new BaseJsPluginEngine.3(this, parambekr));
       return "";
     }
     localObject = getAppId();
-    if ((behe.a(this.mMiniAppContext.a())) || (behe.a((String)localObject))) {
+    if ((behv.a(this.mMiniAppContext.a())) || (behv.a((String)localObject))) {
       setScopePermissionAuthState(getRequestScopePermission(str1, str2), true);
     }
     for (boolean bool2 = true;; bool2 = false)
@@ -107,22 +107,22 @@ public abstract class BaseJsPluginEngine
           bool1 = false;
         }
       }
-      besl.a("JsPluginEngine[AuthGuard]", "checkRequestScopePermission granted=" + bool1 + ",eventName=" + str1);
+      betc.a("JsPluginEngine[AuthGuard]", "checkRequestScopePermission granted=" + bool1 + ",eventName=" + str1);
       if (bool1)
       {
-        if ("authorize".equals(parambeka.a)) {
-          return handleAuthorizeEvent(parambeka);
+        if ("authorize".equals(parambekr.a)) {
+          return handleAuthorizeEvent(parambekr);
         }
-        return dispatchRequestEvent(parambeka);
+        return dispatchRequestEvent(parambekr);
       }
-      showRequestPermissionDialog(parambeka, (String)localObject);
+      showRequestPermissionDialog(parambekr, (String)localObject);
       return "";
     }
   }
   
-  private beka createRequestEvent(String paramString1, String paramString2, begy parambegy, int paramInt)
+  private bekr createRequestEvent(String paramString1, String paramString2, behp parambehp, int paramInt)
   {
-    return new bekb().a(paramString1).b(paramString2).a(parambegy).a(paramInt).a();
+    return new beks().a(paramString1).b(paramString2).a(parambehp).a(paramInt).a();
   }
   
   private static String extractApiNameInJsonParams(String paramString)
@@ -185,7 +185,7 @@ public abstract class BaseJsPluginEngine
     if (TextUtils.isEmpty(paramString2)) {}
     for (;;)
     {
-      return behl.a().c(paramString1);
+      return beic.a().c(paramString1);
       paramString1 = paramString1 + "." + paramString2;
     }
   }
@@ -195,54 +195,54 @@ public abstract class BaseJsPluginEngine
     if ("authorize".equals(paramString1))
     {
       paramString1 = extractScopeNameInJsonParams(paramString2);
-      paramString1 = behl.a().b(paramString1);
-      return behl.a().a(paramString1);
+      paramString1 = beic.a().b(paramString1);
+      return beic.a().a(paramString1);
     }
-    return behl.a().a(paramString1);
+    return beic.a().a(paramString1);
   }
   
-  private String handleAuthorizeEvent(beka parambeka)
+  private String handleAuthorizeEvent(bekr parambekr)
   {
     for (;;)
     {
       try
       {
         str1 = getAppId();
-        localbehf = MiniAppEnv.g().getAuthSate(str1);
-        str2 = extractScopeNameInJsonParams(parambeka.b);
-        if ((localbehf == null) || (!isScopePermissionValid(str2))) {
+        localbehw = MiniAppEnv.g().getAuthSate(str1);
+        str2 = extractScopeNameInJsonParams(parambekr.b);
+        if ((localbehw == null) || (!isScopePermissionValid(str2))) {
           continue;
         }
-        bool = localbehf.a();
+        bool = localbehw.a();
         if ((!str2.startsWith("setting")) || (bool)) {
           continue;
         }
-        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAuthList(str1, new BaseJsPluginEngine.2(this, localbehf, str2, str1, parambeka));
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAuthList(str1, new BaseJsPluginEngine.2(this, localbehw, str2, str1, parambekr));
       }
       catch (Throwable localThrowable)
       {
         String str1;
-        behf localbehf;
+        behw localbehw;
         String str2;
         boolean bool;
-        besl.d("JsPluginEngine[AuthGuard]", localThrowable.getMessage(), localThrowable);
-        parambeka.b();
+        betc.d("JsPluginEngine[AuthGuard]", localThrowable.getMessage(), localThrowable);
+        parambekr.b();
         continue;
-        sendShowAuthDialogMessage(parambeka, str2);
+        sendShowAuthDialogMessage(parambekr, str2);
         continue;
-        besl.c("JsPluginEngine[AuthGuard]", "handleAuthorizeEvent, authState is null or scope invalid, scope = " + str2);
-        parambeka.b();
+        betc.c("JsPluginEngine[AuthGuard]", "handleAuthorizeEvent, authState is null or scope invalid, scope = " + str2);
+        parambekr.b();
         continue;
       }
       return "";
-      bool = localbehf.a(str2);
-      if (behe.a(str1)) {
+      bool = localbehw.a(str2);
+      if (behv.a(str1)) {
         bool = true;
       }
       if (!bool) {
         continue;
       }
-      parambeka.a();
+      parambekr.a();
     }
   }
   
@@ -278,7 +278,7 @@ public abstract class BaseJsPluginEngine
   
   private static boolean isScopePermissionValid(String paramString)
   {
-    return behl.a().a(paramString);
+    return beic.a().a(paramString);
   }
   
   private void notifyScopePermissionQueue(Message paramMessage)
@@ -290,20 +290,20 @@ public abstract class BaseJsPluginEngine
       if (!TextUtils.isEmpty(paramMessage))
       {
         if (paramMessage.equals("scope.camera")) {
-          this.mMiniAppContext.a(bejw.a("onCameraNeedAuthCancel", null, 0));
+          this.mMiniAppContext.a(bekn.a("onCameraNeedAuthCancel", null, 0));
         }
         while (localIterator.hasNext())
         {
-          beka localbeka = (beka)localIterator.next();
-          if (paramMessage.equals(getRequestScopePermission(localbeka.a, localbeka.b)))
+          bekr localbekr = (bekr)localIterator.next();
+          if (paramMessage.equals(getRequestScopePermission(localbekr.a, localbekr.b)))
           {
             localIterator.remove();
-            localbeka.a("auth deny");
+            localbekr.a("auth deny");
           }
         }
       }
     }
-    paramMessage = (beka)this.scopePermissionQueue.peek();
+    paramMessage = (bekr)this.scopePermissionQueue.peek();
     if (paramMessage != null)
     {
       this.scopePermissionQueue.remove(paramMessage);
@@ -317,34 +317,34 @@ public abstract class BaseJsPluginEngine
     this.mHandler.removeMessages(2);
   }
   
-  private String reqGrantSubscribeApiPermission(beka parambeka)
+  private String reqGrantSubscribeApiPermission(bekr parambekr)
   {
     localObject1 = MiniAppEnv.g().getAuthSate(getAppId());
-    String str = getRequestScopePermission(parambeka.a, parambeka.b);
-    if (besl.a()) {
-      besl.a("JsPluginEngine[AuthGuard]", "reqGrantSubscribeApiPermission scopePermission=" + str);
+    String str = getRequestScopePermission(parambekr.a, parambekr.b);
+    if (betc.a()) {
+      betc.a("JsPluginEngine[AuthGuard]", "reqGrantSubscribeApiPermission scopePermission=" + str);
     }
     for (;;)
     {
       try
       {
-        Object localObject2 = new JSONObject(parambeka.b).opt("subscribe");
+        Object localObject2 = new JSONObject(parambekr.b).opt("subscribe");
         if (!(localObject2 instanceof Boolean)) {
           continue;
         }
         if (!((Boolean)localObject2).booleanValue()) {
           continue;
         }
-        if (((behf)localObject1).a(str) != 1) {
+        if (((behw)localObject1).a(str) != 1) {
           continue;
         }
-        this.scopePermissionQueue.offer(parambeka);
+        this.scopePermissionQueue.offer(parambekr);
         if ((this.authDialog == null) || (!this.authDialog.isShowing()))
         {
           localObject1 = this.mHandler.obtainMessage(2);
           localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("key_event_name", parambeka.a);
-          ((Bundle)localObject2).putString("key_params", parambeka.b);
+          ((Bundle)localObject2).putString("key_event_name", parambekr.a);
+          ((Bundle)localObject2).putString("key_params", parambekr.b);
           ((Bundle)localObject2).putString("key_scope_name", str);
           ((Message)localObject1).setData((Bundle)localObject2);
           ((Message)localObject1).sendToTarget();
@@ -352,35 +352,35 @@ public abstract class BaseJsPluginEngine
       }
       catch (JSONException localJSONException)
       {
-        parambeka.a("参数错误，json解析错误");
+        parambekr.a("参数错误，json解析错误");
         localJSONException.printStackTrace();
         continue;
-        parambeka.a("no permission");
+        parambekr.a("no permission");
         continue;
-        ((behf)localObject1).a(localJSONException, false);
-        parambeka.a();
+        ((behw)localObject1).a(localJSONException, false);
+        parambekr.a();
         continue;
-        parambeka.a("参数错误, subscribe需要传入boolean类型");
+        parambekr.a("参数错误, subscribe需要传入boolean类型");
         continue;
       }
       return "";
-      if (!((behf)localObject1).a(str)) {
+      if (!((behw)localObject1).a(str)) {
         continue;
       }
-      ((behf)localObject1).a(str, true);
-      parambeka.a();
+      ((behw)localObject1).a(str, true);
+      parambekr.a();
     }
   }
   
-  private void sendShowAuthDialogMessage(beka parambeka, String paramString)
+  private void sendShowAuthDialogMessage(bekr parambekr, String paramString)
   {
-    this.scopePermissionQueue.offer(parambeka);
+    this.scopePermissionQueue.offer(parambekr);
     if ((this.authDialog == null) || (!this.authDialog.isShowing()))
     {
       Message localMessage = this.mHandler.obtainMessage(2);
       Bundle localBundle = new Bundle();
-      localBundle.putString("key_event_name", parambeka.a);
-      localBundle.putString("key_params", parambeka.b);
+      localBundle.putString("key_event_name", parambekr.a);
+      localBundle.putString("key_params", parambekr.b);
       localBundle.putString("key_scope_name", paramString);
       localMessage.setData(localBundle);
       localMessage.sendToTarget();
@@ -403,7 +403,7 @@ public abstract class BaseJsPluginEngine
   {
     if (this.authDialog == null)
     {
-      this.authDialog = new bemg(this.mMiniAppContext.a());
+      this.authDialog = new bemx(this.mMiniAppContext.a());
       this.authDialog.setOnDismissListener(this.dismissListener);
     }
     this.authDialog.a(paramBundle);
@@ -411,11 +411,11 @@ public abstract class BaseJsPluginEngine
     Object localObject;
     if (paramBundle != null)
     {
-      localObject = behl.a().a(paramBundle);
+      localObject = beic.a().a(paramBundle);
       if (localObject != null) {
         break label99;
       }
-      besl.d("JsPluginEngine[AuthGuard]", "Can NOT find scope permission: " + paramBundle);
+      betc.d("JsPluginEngine[AuthGuard]", "Can NOT find scope permission: " + paramBundle);
     }
     label99:
     String str1;
@@ -426,39 +426,39 @@ public abstract class BaseJsPluginEngine
     String str4;
     do
     {
-      bejy localbejy;
+      bekp localbekp;
       ChannelProxy localChannelProxy;
       do
       {
         return;
-        str1 = ((behk)localObject).b;
-        str2 = ((behk)localObject).c;
-        localObject = ((behk)localObject).d;
+        str1 = ((beib)localObject).b;
+        str2 = ((beib)localObject).c;
+        localObject = ((beib)localObject).d;
         localContext = this.mMiniAppContext.a();
-        localbejy = getApkgInfo();
+        localbekp = getApkgInfo();
         localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
         localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      } while (localbejy == null);
-      str3 = localbejy.e;
-      str4 = localbejy.c;
+      } while (localbekp == null);
+      str3 = localbekp.e;
+      str4 = localbekp.c;
       if ("scope.userInfo".equals(paramBundle))
       {
-        localChannelProxy.getUserInfo(localbejy.d, false, "en", new BaseJsPluginEngine.4(this, localMiniAppProxy, localContext, str3, str4, str1, str2));
+        localChannelProxy.getUserInfo(localbekp.d, false, "en", new BaseJsPluginEngine.4(this, localMiniAppProxy, localContext, str3, str4, str1, str2));
         return;
       }
     } while (this.authDialog == null);
     this.authDialog.a(localMiniAppProxy.getDrawable(localContext, str3, 0, 0, null), str4, str1, null, null, str2, (String)localObject, new BaseJsPluginEngine.5(this), "允许", new BaseJsPluginEngine.6(this));
   }
   
-  private void showRequestPermissionDialog(beka parambeka, String paramString)
+  private void showRequestPermissionDialog(bekr parambekr, String paramString)
   {
-    Object localObject = parambeka.a;
-    String str = parambeka.b;
+    Object localObject = parambekr.a;
+    String str = parambekr.b;
     boolean bool1;
     if (!isOpenDataEvent((String)localObject, str))
     {
       bool1 = isScopePermissionGranted(paramString);
-      besl.a("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
+      betc.a("JsPluginEngine[AuthGuard]", "handleNativeRequest hasRefused=" + bool1);
       if ((bool1) && (!shouldAskEveryTime(paramString))) {
         break label167;
       }
@@ -487,17 +487,17 @@ public abstract class BaseJsPluginEngine
       {
         label167:
         boolean bool3;
-        besl.d("JsPluginEngine[AuthGuard]", Log.getStackTraceString(localThrowable));
+        betc.d("JsPluginEngine[AuthGuard]", Log.getStackTraceString(localThrowable));
         boolean bool2 = bool1;
         continue;
-        besl.a("JsPluginEngine[AuthGuard]", "handleNativeRequest callbackJsEventFail");
-        parambeka.a("auth deny");
+        betc.a("JsPluginEngine[AuthGuard]", "handleNativeRequest callbackJsEventFail");
+        parambekr.a("auth deny");
         this.mHandler.obtainMessage(1).sendToTarget();
       }
       if (!bool2) {
         continue;
       }
-      sendShowAuthDialogMessage(parambeka, paramString);
+      sendShowAuthDialogMessage(parambekr, paramString);
       return;
       bool1 = false;
       break;
@@ -515,25 +515,25 @@ public abstract class BaseJsPluginEngine
     }
   }
   
-  public String checkAuthorization(beka parambeka)
+  public String checkAuthorization(bekr parambekr)
   {
-    String str1 = parambeka.a;
-    String str2 = parambeka.b;
+    String str1 = parambekr.a;
+    String str2 = parambekr.b;
     Object localObject;
-    if (behe.b(str1)) {
+    if (behv.b(str1)) {
       localObject = extractApiNameInJsonParams(str2);
     }
-    while (!behe.a(str1, (String)localObject))
+    while (!behv.a(str1, (String)localObject))
     {
-      besl.d("JsPluginEngine[AuthGuard]", "eventname : " + str1 + "; apiName : " + (String)localObject + " request failed.");
+      betc.d("JsPluginEngine[AuthGuard]", "eventname : " + str1 + "; apiName : " + (String)localObject + " request failed.");
       if (str1.endsWith("Sync"))
       {
-        return bekg.a(str1, null, "no permission").toString();
+        return bekx.a(str1, null, "no permission").toString();
         localObject = "";
       }
       else
       {
-        parambeka.a("no permission");
+        parambekr.a("no permission");
         return "";
       }
     }
@@ -544,7 +544,7 @@ public abstract class BaseJsPluginEngine
       if (localObject != null)
       {
         str3 = getRequestSystemPermission(str1, str2);
-        if (belh.a(str3)) {
+        if (bely.a(str3)) {
           break label223;
         }
         if (((Activity)localObject).checkSelfPermission(str3) != 0) {
@@ -554,23 +554,23 @@ public abstract class BaseJsPluginEngine
       label212:
       for (int i = 1; i == 0; i = 0)
       {
-        beil.a().a(new BaseJsPluginEngine.1(this, str3, str1, str2, parambeka));
+        bejc.a().a(new BaseJsPluginEngine.1(this, str3, str1, str2, parambekr));
         ((Activity)localObject).requestPermissions(new String[] { str3 }, 9527);
         return "";
       }
-      return checkRequestScopePermission(parambeka);
+      return checkRequestScopePermission(parambekr);
       label223:
-      return checkRequestScopePermission(parambeka);
+      return checkRequestScopePermission(parambekr);
     }
-    return checkRequestScopePermission(parambeka);
+    return checkRequestScopePermission(parambekr);
   }
   
-  public abstract String dispatchRequestEvent(beka parambeka);
+  public abstract String dispatchRequestEvent(bekr parambekr);
   
-  protected bejy getApkgInfo()
+  protected bekp getApkgInfo()
   {
     if ((this.mMiniAppContext != null) && (this.mMiniAppContext.a() != null)) {
-      return (bejy)this.mMiniAppContext.a().apkgInfo;
+      return (bekp)this.mMiniAppContext.a().apkgInfo;
     }
     return null;
   }
@@ -583,35 +583,35 @@ public abstract class BaseJsPluginEngine
     return null;
   }
   
-  public String handleNativeRequest(String paramString1, String paramString2, begy parambegy, int paramInt)
+  public String handleNativeRequest(String paramString1, String paramString2, behp parambehp, int paramInt)
   {
     if (this.mMiniAppContext == null) {
       return "";
     }
-    return checkAuthorization(createRequestEvent(paramString1, paramString2, parambegy, paramInt));
+    return checkAuthorization(createRequestEvent(paramString1, paramString2, parambehp, paramInt));
   }
   
   public void initPermissionParser(Context paramContext)
   {
-    behs localbehs = new behs(paramContext);
-    paramContext = new beht(paramContext);
-    behl.a().a(new behn[] { localbehs, paramContext });
+    beij localbeij = new beij(paramContext);
+    paramContext = new beik(paramContext);
+    beic.a().a(new beie[] { localbeij, paramContext });
   }
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    this.mMiniAppContext = parambegz;
-    parambegz = this.mMiniAppContext.a();
-    if (parambegz != null)
+    this.mMiniAppContext = parambehq;
+    parambehq = this.mMiniAppContext.a();
+    if (parambehq != null)
     {
-      behe.a(parambegz.blackList, parambegz.whiteList);
-      behe.a(parambegz.secondApiRightInfoList);
+      behv.a(parambehq.blackList, parambehq.whiteList);
+      behv.a(parambehq.secondApiRightInfoList);
     }
   }
   
   public void onDestroy()
   {
-    behe.a();
+    behv.a();
     this.scopePermissionQueue.clear();
     if (this.authDialog != null)
     {
@@ -631,15 +631,15 @@ public abstract class BaseJsPluginEngine
     this.mHandler.obtainMessage(1).sendToTarget();
   }
   
-  public void requestAuthorize(beka parambeka)
+  public void requestAuthorize(bekr parambekr)
   {
-    this.scopePermissionQueue.offer(parambeka);
+    this.scopePermissionQueue.offer(parambekr);
     if ((this.authDialog == null) || (!this.authDialog.isShowing()))
     {
       Message localMessage = this.mHandler.obtainMessage(2);
       Bundle localBundle = new Bundle();
-      localBundle.putString("key_event_name", parambeka.a);
-      localBundle.putString("key_params", parambeka.b);
+      localBundle.putString("key_event_name", parambekr.a);
+      localBundle.putString("key_params", parambekr.b);
       localMessage.setData(localBundle);
       localMessage.sendToTarget();
     }

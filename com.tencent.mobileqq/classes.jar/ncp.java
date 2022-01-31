@@ -1,126 +1,61 @@
-import android.app.Activity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.Utils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class ncp
-  extends WebViewPlugin
+  implements ajte
 {
-  public ajtg a;
-  bbgg jdField_a_of_type_Bbgg;
-  String jdField_a_of_type_JavaLangString = null;
-  wxu jdField_a_of_type_Wxu = null;
-  bbgg b = null;
+  public ncp(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public ncp()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Ajtg = new ncq(this);
-    this.mPluginNameSpace = "lebaPlugin";
-  }
-  
-  private void a(int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if ((this.mRuntime.a() == null) || (this.mRuntime.a().isFinishing())) {}
-    do
-    {
+    if (paramObject == null) {
       return;
-      if (this.jdField_a_of_type_Bbgg == null) {
-        this.jdField_a_of_type_Bbgg = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_Wxu, this.jdField_a_of_type_Ajtg, paramInt, paramLong, paramString1, paramString2);
-      }
-    } while (this.jdField_a_of_type_Bbgg.isShowing());
-    this.jdField_a_of_type_Bbgg.show();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramJsBridgeListener = paramVarArgs[0];
-    if (paramString3 == null) {
-      return false;
     }
-    if (paramString3.equals("showOpenDialog")) {}
-    for (;;)
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
     {
-      long l;
-      try
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
       {
-        paramString1 = new JSONObject(paramJsBridgeListener);
-        l = paramString1.optLong("id", -1L);
-        paramJsBridgeListener = paramString1.optString("msg");
-        paramString1 = paramString1.optString("callback");
-        if (l != -1L)
-        {
-          paramString2 = new Bundle();
-          paramString2.putInt("reqCode", 10000);
-          paramString2.putLong("uiResId", l);
-          paramString2.putString("msg", paramJsBridgeListener);
-          paramString2.putString("callback", paramString1);
-          paramString2.putInt("dialogType", 1);
-          this.jdField_a_of_type_Wxu.a(18, paramString2, this.jdField_a_of_type_Ajtg);
+        paramObject = this.a.getString(2131696286);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131696284));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
+        }
+        paramInt = 2;
+        label104:
+        bcql.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
         }
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        continue;
+      break;
+    }
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
+    {
+      paramObject.setResult(paramInt);
+      return;
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131696346, new Object[] { this.a.c });
       }
-      return true;
-      if (paramString3.equals("getPluginStatus")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
-          l = paramJsBridgeListener.optLong("id", -1L);
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (l == -1L) {
-            continue;
-          }
-          paramString1 = new Bundle();
-          paramString1.putInt("reqCode", 10002);
-          paramString1.putLong("uiResId", l);
-          paramString1.putString("callback", paramJsBridgeListener);
-          this.jdField_a_of_type_Wxu.a(18, paramString1, this.jdField_a_of_type_Ajtg);
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-        }
-      } else if (paramString3.equals("search")) {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener).optString("keyWord");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
-          {
-            if (this.mRuntime.a() != null) {}
-            awvy.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-        }
-      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131696285);
+      break;
+      paramInt = 1;
+      break label104;
     }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_Wxu = wxu.a();
-    this.jdField_a_of_type_Wxu.a();
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Wxu != null) {
-      this.jdField_a_of_type_Wxu.b();
-    }
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
-    }
-    super.onDestroy();
   }
 }
 

@@ -1,23 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
 
 public class ovz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ovz(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public ovz(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    ReadInJoySelfFragment.b(this.a).setAnimation(null);
+    ReadInJoyViolaChannelFragment.a(this.a).d();
+    ReadInJoyViolaChannelFragment.a(this.a);
+    ReadInJoyViolaChannelFragment.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

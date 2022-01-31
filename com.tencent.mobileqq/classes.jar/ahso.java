@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class ahso
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public ahso(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    {
+      EditLocalVideoActivity.b(this.a, false);
+      EditLocalVideoActivity.a(this.a).pause();
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+      return;
+    }
+    EditLocalVideoActivity.b(this.a, true);
+    EditLocalVideoActivity.b(this.a).setVisibility(8);
+    EditLocalVideoActivity.a(this.a).start();
+    EditLocalVideoActivity.a(this.a).setVisibility(4);
   }
 }
 

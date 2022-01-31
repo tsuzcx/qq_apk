@@ -1,57 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class tml
-  extends syv<toi>
+  extends syn
 {
-  public static final String a;
-  public List<String> a;
+  public List<tmk> a;
   
-  static
+  public tml(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_feature_775");
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
-    try
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
+    if (paramRspStoryFeedTagInfo != null)
     {
-      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
-      return new toi(localRspGetBatchFeedFeature);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.iterator();
+      while (paramRspStoryFeedTagInfo.hasNext())
       {
-        paramArrayOfByte.printStackTrace();
+        Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
+        tmk localtmk = new tmk();
+        localtmk.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
+        localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            vve localvve = new vve((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
+            localtmk.jdField_a_of_type_JavaUtilList.add(localvve);
+          }
+        }
+        this.jdField_a_of_type_JavaUtilList.add(localtmk);
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 

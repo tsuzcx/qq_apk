@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajyc;
-import amgo;
+import ajya;
+import amgn;
+import amkf;
 import amkg;
-import amkh;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -47,15 +47,15 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import awwc;
-import awwd;
-import bbev;
-import bbkx;
-import bcpw;
-import bctn;
-import bfng;
-import bgxq;
-import bkur;
+import awwe;
+import awwf;
+import bbfj;
+import bbll;
+import bcql;
+import bcuc;
+import bfnx;
+import bgyh;
+import bkvi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
@@ -159,9 +159,9 @@ import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import ytu;
-import ytv;
-import ytw;
+import ytr;
+import yts;
+import ytt;
 
 public class GameActivity
   extends BaseActivity
@@ -176,7 +176,7 @@ public class GameActivity
   private static boolean killAllGamesWhenReuse;
   public static boolean mHasStorageReport;
   public static final int sIconSize = DisplayUtil.dip2px(BaseApplicationImpl.getContext(), 100.0F);
-  private ytu bannerParams;
+  private ytr bannerParams;
   protected boolean doNotMoveTaskToBackThisTime;
   Runnable execJS = new GameActivity.31(this);
   private ApkgInfo mApkgInfo;
@@ -192,8 +192,8 @@ public class GameActivity
   private GameActivityStatusWatcher mBroadCastWatcher;
   private LinearLayout mCenterLayout;
   private ImageView mCloseView;
-  protected amgo mColorNoteController;
-  private amkh mColorNoteServiceListenr;
+  protected amgn mColorNoteController;
+  private amkg mColorNoteServiceListenr;
   private ViewGroup mContentView;
   private TextView mDebuggerEndBtn;
   private View mDebuggerLayer;
@@ -215,7 +215,7 @@ public class GameActivity
   private View mGameSurfaceView;
   private TextView mGameVersionDesc;
   private int mGameWidth;
-  protected ytv mGdtBannerView;
+  protected yts mGdtBannerView;
   protected GdtDwellTimeStatisticsAfterClick mGdtDwellTimeStatisticsAfterClick;
   private boolean mHasExecJS;
   private boolean mHasInitDataMustOnResume;
@@ -232,7 +232,7 @@ public class GameActivity
   private long mLastOnShowReportTime;
   private int mLaunchResult;
   private int mLaunchStatus = 0;
-  private awwd mListener = new GameActivity.36(this);
+  private awwf mListener = new GameActivity.36(this);
   private long mLoadGameStartTime;
   private RelativeLayout mLoadingContainer;
   private SquareImageView mLogoView;
@@ -256,7 +256,7 @@ public class GameActivity
   private QQDebugWebSocket mQQDebugSocket;
   private MqqHandler mReportHandler;
   private RelativeLayout mRightContainer;
-  private awwc mSoftKeyboardStateHelper;
+  private awwe mSoftKeyboardStateHelper;
   private LinearLayout mSplashLayout;
   private boolean mSplashLoadComplete;
   private ProgressBar mSplashProgressBar;
@@ -272,7 +272,7 @@ public class GameActivity
   
   static
   {
-    defaultDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840894);
+    defaultDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130840891);
     killAllGamesWhenReuse = GameWnsUtils.killAllGamesWhenReuse();
   }
   
@@ -497,12 +497,12 @@ public class GameActivity
     localObjectAnimator = ObjectAnimator.ofFloat(this.mGameSurfaceView, "alpha", new float[] { 0.5F, 1.0F });
     localObjectAnimator.setDuration(300L);
     localObjectAnimator.start();
-    if ((!this.mIsOrientationLandscape) && (bkur.jdField_c_of_type_Int > bkur.b))
+    if ((!this.mIsOrientationLandscape) && (bkvi.jdField_c_of_type_Int > bkvi.b))
     {
-      bkur.jdField_c_of_type_Boolean = false;
-      bkur.a(this);
-      if (bkur.b()) {
-        bkur.c(this);
+      bkvi.jdField_c_of_type_Boolean = false;
+      bkvi.a(this);
+      if (bkvi.b()) {
+        bkvi.c(this);
       }
       if (this.mNavBar != null) {
         this.mNavBar.requestPortraitLayout();
@@ -612,10 +612,10 @@ public class GameActivity
   {
     if (this.mDebuggerView == null)
     {
-      this.mDebuggerView = ((DragLinearLayout)((ViewStub)findViewById(2131364954)).inflate());
-      this.mDebuggerLayer = findViewById(2131364950);
-      this.mDebuggerStatusTv = ((TextView)findViewById(2131364953));
-      this.mDebuggerEndBtn = ((TextView)findViewById(2131364951));
+      this.mDebuggerView = ((DragLinearLayout)((ViewStub)findViewById(2131364953)).inflate());
+      this.mDebuggerLayer = findViewById(2131364949);
+      this.mDebuggerStatusTv = ((TextView)findViewById(2131364952));
+      this.mDebuggerEndBtn = ((TextView)findViewById(2131364950));
       this.mDebuggerEndBtn.setOnClickListener(new GameActivity.29(this));
     }
   }
@@ -672,7 +672,7 @@ public class GameActivity
       {
         k = j;
         if (this.mGameInfo.isOrientationLandscape()) {
-          k = j - bbkx.a(this);
+          k = j - bbll.a(this);
         }
       }
       j = k;
@@ -700,7 +700,7 @@ public class GameActivity
       this.mGameHeight = m;
       QLog.d("[minigame] GameActivity", 1, " createGameView width :" + k + " height:" + m);
       this.mGameSurfaceView = this.mTTEngine.createGameView(this, k, m);
-      this.mGameSurfaceView.setId(2131370270);
+      this.mGameSurfaceView.setId(2131370269);
       this.mContentView.addView(this.mGameSurfaceView, 0);
       GameVideoPlayerManager.getInstance().init(this, (ViewGroup)this.mGameSurfaceView);
       localObject = this.mTTEngine.getGameLauncher();
@@ -718,11 +718,11 @@ public class GameActivity
         QLog.i("[minigame] GameActivity", 1, "xiaomi has notch");
         if (this.mGameInfo.isOrientationLandscape())
         {
-          j -= bbkx.a(this);
+          j -= bbll.a(this);
         }
         else
         {
-          k = bbkx.a(this);
+          k = bbll.a(this);
           i -= k;
         }
       }
@@ -755,7 +755,7 @@ public class GameActivity
   
   private void initNavBar()
   {
-    this.mNavBar = ((NavigatorBarForMiniGame)findViewById(2131370269));
+    this.mNavBar = ((NavigatorBarForMiniGame)findViewById(2131370268));
     this.mNavBar.setApkgInfoAndInit(this.mApkgInfo);
     this.mNavBar.setWindowInfo(fakeWindowInfo());
   }
@@ -763,46 +763,46 @@ public class GameActivity
   private void initUI()
   {
     setContentView(2131559278);
-    this.mContentView = ((ViewGroup)findViewById(2131370267));
-    this.mBannerAdContainer = ((FrameLayout)findViewById(2131370265));
+    this.mContentView = ((ViewGroup)findViewById(2131370266));
+    this.mBannerAdContainer = ((FrameLayout)findViewById(2131370264));
     this.mLoadingContainer = ((RelativeLayout)findViewById(2131366671));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131364688));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131364687));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(this, 80.0F), DisplayUtil.dip2px(this, 30.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-    if (bkur.b()) {}
+    if (bkvi.b()) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(this);; i = 0)
     {
       ((RelativeLayout.LayoutParams)localObject).topMargin = i;
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(this, 12.5F);
       this.mRightContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mCenterLayout = ((LinearLayout)findViewById(2131364003));
-      this.mBottonLayout = ((LinearLayout)findViewById(2131363369));
-      this.mSplashLayout = ((LinearLayout)findViewById(2131376398));
+      this.mCenterLayout = ((LinearLayout)findViewById(2131364002));
+      this.mBottonLayout = ((LinearLayout)findViewById(2131363368));
+      this.mSplashLayout = ((LinearLayout)findViewById(2131376400));
       this.mGameInstruction = ((TextView)findViewById(2131366919));
       this.mGameVersionDesc = ((TextView)findViewById(2131366940));
       this.mJumpBtn = ((TextView)findViewById(2131368768));
-      this.mMoreView = ((ImageView)findViewById(2131363586));
+      this.mMoreView = ((ImageView)findViewById(2131363585));
       this.mMoreView.setOnLongClickListener(this);
-      this.mCloseView = ((ImageView)findViewById(2131363501));
+      this.mCloseView = ((ImageView)findViewById(2131363500));
       this.mNameView = ((TextView)findViewById(2131366923));
-      this.mDeveloperDescView = ((TextView)findViewById(2131365086));
-      this.mDeveloperDescLayout = ((LinearLayout)findViewById(2131365087));
-      this.mLogoView = ((SquareImageView)findViewById(2131369583));
+      this.mDeveloperDescView = ((TextView)findViewById(2131365085));
+      this.mDeveloperDescLayout = ((LinearLayout)findViewById(2131365086));
+      this.mLogoView = ((SquareImageView)findViewById(2131369582));
       this.mLogoView.setRoundRect(sIconSize);
       this.mGameFakeFirstFrame = ((URLImageView)findViewById(2131366918));
-      this.mProgressTxt = ((TextView)findViewById(2131378460));
-      this.mSplashProgressTxt = ((TextView)findViewById(2131376400));
-      this.mSplashProgressBar = ((ProgressBar)findViewById(2131376397));
+      this.mProgressTxt = ((TextView)findViewById(2131378465));
+      this.mSplashProgressTxt = ((TextView)findViewById(2131376402));
+      this.mSplashProgressBar = ((ProgressBar)findViewById(2131376399));
       this.mMoreView.setOnClickListener(this);
       this.mCloseView.setOnClickListener(this);
       this.mJumpBtn.setOnClickListener(this);
-      new ImmersionBar(this, 0, findViewById(2131376451));
+      new ImmersionBar(this, 0, findViewById(2131376453));
       if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
       {
-        localObject = MiniAppUtils.getIcon(this, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30);
+        localObject = MiniAppUtils.getIcon(this, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30);
         this.mCloseView.setImageDrawable((Drawable)localObject);
       }
-      this.mColorNoteController = new amgo(this, false, true);
+      this.mColorNoteController = new amgn(this, false, true);
       this.mColorNoteController.a(this);
       this.mColorNoteController.a(new GameActivity.23(this));
       this.mColorNoteController.a(new GameActivity.24(this));
@@ -833,11 +833,11 @@ public class GameActivity
   private void initVConsoleView()
   {
     this.vConsoleBtn = new VConsoleDragView(this);
-    this.vConsoleBtn.setImageResource(2130840686);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bbkx.b(90.0F), -2);
+    this.vConsoleBtn.setImageResource(2130840683);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(bbll.b(90.0F), -2);
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(12);
-    localLayoutParams.setMargins(0, 0, bbkx.b(12.0F), bbkx.b(12.0F));
+    localLayoutParams.setMargins(0, 0, bbll.b(12.0F), bbll.b(12.0F));
     this.vConsoleBtn.setLayoutParams(localLayoutParams);
     this.vConsoleBtn.setListener(this);
     this.mContentView.addView(this.vConsoleBtn);
@@ -850,7 +850,7 @@ public class GameActivity
   {
     if ((this.mGameAppConfig != null) && (this.mGameAppConfig.config != null))
     {
-      String str = "var __wxConfig = __wxConfig || {}; __wxConfig.accountInfo = __wxConfig.accountInfo || {}; \n__wxConfig.accountInfo.appId = '" + this.mGameAppConfig.config.appId + "';\n__wxConfig.accountInfo.icon = '" + this.mGameAppConfig.config.iconUrl + "'; __wxConfig.deviceinfo='" + bgxq.a().f() + "'; __wxConfig.miniapp_version='" + this.mGameAppConfig.config.version + "';";
+      String str = "var __wxConfig = __wxConfig || {}; __wxConfig.accountInfo = __wxConfig.accountInfo || {}; \n__wxConfig.accountInfo.appId = '" + this.mGameAppConfig.config.appId + "';\n__wxConfig.accountInfo.icon = '" + this.mGameAppConfig.config.iconUrl + "'; __wxConfig.deviceinfo='" + bgyh.a().f() + "'; __wxConfig.miniapp_version='" + this.mGameAppConfig.config.version + "';";
       if (QLog.isColorLevel()) {
         QLog.i("[minigame] GameActivity", 1, "injectAccountInfoConfig:" + str);
       }
@@ -1052,7 +1052,7 @@ public class GameActivity
               break;
               label276:
               this.mDeveloperDescLayout.setVisibility(0);
-              this.mDeveloperDescView.setText(ajyc.a(2131705009) + this.mGameAppConfig.config.developerDesc + ajyc.a(2131705008));
+              this.mDeveloperDescView.setText(ajya.a(2131705020) + this.mGameAppConfig.config.developerDesc + ajya.a(2131705019));
               break label103;
             }
           }
@@ -1081,7 +1081,7 @@ public class GameActivity
         this.mLogoView.setVisibility(0);
         localObject1 = getFakeFristFrameUrlByAppid(GameWnsUtils.getFakeFristFrameUrl(), this.mGameAppConfig.config.appId);
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          if (!bfng.a((String)localObject1)) {
+          if (!bfnx.a((String)localObject1)) {
             break label545;
           }
         }
@@ -1114,7 +1114,7 @@ public class GameActivity
             this.mLoadingContainer.setBackground(new BitmapDrawable(getResources(), PreloadManager.g().mSlashPic));
             if (PreloadManager.g().mStartBtnPic != null)
             {
-              this.mStartView = ((ImageView)findViewById(2131363668));
+              this.mStartView = ((ImageView)findViewById(2131363667));
               this.mStartView.setImageDrawable(new BitmapDrawable(getResources(), PreloadManager.g().mStartBtnPic));
               this.mStartView.setOnClickListener(this);
               if (this.mSplashLoadComplete) {
@@ -1270,12 +1270,12 @@ public class GameActivity
       QLog.i("[minigame] GameActivity", 1, "createBannerAd");
       this.mBannerAdPosInfo = paramBannerAdPosInfo;
       this.mBannerAdOpInfo = paramAdInfo;
-      this.bannerParams = new ytu();
+      this.bannerParams = new ytr();
       this.bannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams();
       this.bannerParams.jdField_a_of_type_Int = 0;
       this.bannerParams.b = gameDpTopx(paramBannerAdPosInfo.mAdRealWidth);
       this.bannerParams.jdField_c_of_type_Int = gameDpTopx(paramBannerAdPosInfo.mAdRealHeight);
-      this.mGdtBannerView = ytw.a(this.bannerParams);
+      this.mGdtBannerView = ytt.a(this.bannerParams);
       if (this.mGdtBannerView != null)
       {
         this.bannerParams.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(this.mBannerAdOpInfo), new WeakReference(this.mGdtBannerView.a()));
@@ -1383,7 +1383,7 @@ public class GameActivity
         MiniProgramLpReportDC04239.reportPageView(localMiniAppConfig, "1", null, "load_fail", "system_version_limit_fail");
         MiniAppReportManager2.reportPageView("2launch_fail", "system_version_limit_fail", null, localMiniAppConfig);
       }
-      bcpw.a(getApplicationContext(), 2131694285, 1).a();
+      bcql.a(getApplicationContext(), 2131694286, 1).a();
       finish();
       return false;
     }
@@ -1399,8 +1399,8 @@ public class GameActivity
       reportLaunch();
       this.mTTEngine = GameLoadManager.g().getGameEngine();
       this.mActNeedImmersive = false;
-      bkur.a(this);
-      if (bkur.b())
+      bkvi.a(this);
+      if (bkvi.b())
       {
         if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
           enableXiaoMiNotch(this);
@@ -1425,7 +1425,7 @@ public class GameActivity
       {
         QLog.e("[minigame] GameActivity", 1, "[MiniEng]禁用右滑关闭失败:" + localThrowable.getMessage());
         continue;
-        bkur.c(this);
+        bkvi.c(this);
       }
     }
   }
@@ -1576,7 +1576,7 @@ public class GameActivity
         this.mColorNoteController.b();
       }
       WebAudioManager.getInstance().suspendAudioContext(this.mTTEngine);
-      amkg.a(BaseApplicationImpl.getContext(), 2, true);
+      amkf.a(BaseApplicationImpl.getContext(), 2, true);
       return;
       QLog.e("[minigame] GameActivity", 1, "no need report product onHide, mOnShowReported=false");
     }
@@ -1592,7 +1592,7 @@ public class GameActivity
     }
     MiniAppReportManager2.reportPageView("2show", "bring_to_front", null, this.mGameAppConfig);
     MiniReportManager.reportEventType(this.mGameAppConfig, 1, "1");
-    bctn.a(this);
+    bcuc.a(this);
     lifecycleReport("launch_report_app_resume");
     long l;
     label249:
@@ -1666,7 +1666,7 @@ public class GameActivity
       if (this.mColorNoteController != null) {
         this.mColorNoteController.a();
       }
-      amkg.a(BaseApplicationImpl.getContext(), 2, false);
+      amkf.a(BaseApplicationImpl.getContext(), 2, false);
       l = System.currentTimeMillis() - this.mBeginOnResume;
       if (!this.mHasReportStepOnResume)
       {
@@ -1799,7 +1799,7 @@ public class GameActivity
     return this.mBannerAdPosInfo;
   }
   
-  public amgo getColorNoteController()
+  public amgn getColorNoteController()
   {
     return this.mColorNoteController;
   }
@@ -1837,8 +1837,8 @@ public class GameActivity
       ((WindowManager)getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
     }
     this.mGameDensity = localDisplayMetrics.density;
-    QLog.i("[minigame] GameActivity", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bbkx.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
-    if (this.mGameDensity != bbkx.a()) {
+    QLog.i("[minigame] GameActivity", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bbll.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
+    if (this.mGameDensity != bbll.a()) {
       this.mReportHandler.post(new GameActivity.38(this));
     }
     return this.mGameDensity;
@@ -1867,7 +1867,7 @@ public class GameActivity
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(12);
       this.mContentView.addView(this.mKeyboardLayout, localLayoutParams);
-      this.mSoftKeyboardStateHelper = new awwc(this.mContentView);
+      this.mSoftKeyboardStateHelper = new awwe(this.mContentView);
       this.mSoftKeyboardStateHelper.a(this.mListener);
     }
     return this.mKeyboardLayout;
@@ -1978,20 +1978,20 @@ public class GameActivity
       MiniAppReportManager2.reportPageView("2launch_fail", "not_ready", null, this.mGameAppConfig);
       return;
     }
-    if (bbev.a(getActivity()) == 0)
+    if (bbfj.a(getActivity()) == 0)
     {
       if (!this.mGameAppConfig.config.isSupportOffline)
       {
         MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "offline_not_support");
         MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_support", null, this.mGameAppConfig);
-        bcpw.a(this, ajyc.a(2131704999), 0).a();
+        bcql.a(this, ajya.a(2131705010), 0).a();
         return;
       }
       if (!GpkgManager.isOfflineResourceReady(this.mGameAppConfig))
       {
         MiniProgramLpReportDC04239.reportPageView(this.mGameAppConfig, "1", null, "load_fail", "offline_not_ready");
         MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_ready", null, this.mGameAppConfig);
-        bcpw.a(this, ajyc.a(2131705004), 0).a();
+        bcql.a(this, ajya.a(2131705015), 0).a();
         return;
       }
     }
@@ -2106,7 +2106,7 @@ public class GameActivity
         if (l - this.mFirstBackPressTime > 2000L)
         {
           if (!TextUtils.isEmpty(this.mBackPressHint)) {
-            bcpw.a(this, 0, this.mBackPressHint, 0).a();
+            bcql.a(this, 0, this.mBackPressHint, 0).a();
           }
           this.mFirstBackPressTime = l;
           if ((this.mGameJsPluginEngine != null) && (this.mGameJsPluginEngine.getGameJsRuntime(1) != null)) {
@@ -2409,7 +2409,7 @@ public class GameActivity
       this.mBannerAdPosInfo.mAdTop = paramInt2;
       continue;
       this.mBannerAdPosInfo.mAdRealWidth = paramInt2;
-      this.mBannerAdPosInfo.mAdRealHeight = ytw.a(0, paramInt2);
+      this.mBannerAdPosInfo.mAdRealHeight = ytt.a(0, paramInt2);
       continue;
       label275:
       bool = true;

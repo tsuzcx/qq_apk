@@ -1,9 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import com.tencent.qqmini.sdk.launcher.model.EntryModel;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
 
-public abstract interface besj
+public class besj
 {
-  public abstract void a(Context paramContext, Intent paramIntent);
+  public int a;
+  public Activity a;
+  public EntryModel a;
+  public MiniAppInfo a;
+  public ShareChatModel a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 

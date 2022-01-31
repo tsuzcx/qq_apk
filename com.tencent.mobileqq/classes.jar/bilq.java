@@ -1,31 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import android.support.annotation.Nullable;
 
 class bilq
-  implements Animation.AnimationListener
+  implements bjos<biks>
 {
-  bilq(bilj parambilj) {}
+  bilq(bill parambill) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@Nullable biks parambiks)
   {
-    if ((bilj.a(this.a) != null) && (!bilj.a(this.a)))
-    {
-      bilj.a(this.a).setAlpha(1.0F);
-      bilj.a(this.a).setVisibility(4);
+    bill.a(this.a, parambiks);
+    if (bill.a(this.a) != null) {
+      bill.a(this.a).a(this.a);
     }
-    if (bilj.e(this.a) != null)
-    {
-      bilj.f(this.a).a(327684, new Object[0]);
-      bilj.g(this.a).a(196612, new Object[0]);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bilj.a(this.a).a().a(true, 150);
   }
 }
 

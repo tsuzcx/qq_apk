@@ -1,6 +1,20 @@
-public abstract interface ahjt
+public class ahjt
 {
-  public abstract void a(String paramString);
+  float a;
+  public String a;
+  public boolean a;
+  
+  public ahjt()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "RecogResult{isRecog=" + this.jdField_a_of_type_Boolean + ", cfd=" + this.jdField_a_of_type_Float + ", scoreId='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

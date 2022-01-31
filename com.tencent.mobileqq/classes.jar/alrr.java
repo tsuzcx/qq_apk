@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
 class alrr
-  implements alry
+  implements alrx
 {
-  alrr(alrq paramalrq) {}
+  alrr(alrl paramalrl, alrx paramalrx) {}
   
   public void a(boolean paramBoolean)
   {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Alrw.a }));
-    if (paramBoolean) {}
-    this.a.jdField_a_of_type_Alry.a(paramBoolean);
+    this.jdField_a_of_type_Alrx.a(paramBoolean);
   }
 }
 

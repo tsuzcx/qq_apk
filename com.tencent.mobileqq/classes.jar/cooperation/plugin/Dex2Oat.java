@@ -3,11 +3,11 @@ package cooperation.plugin;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
-import bbmt;
-import bgkm;
-import bgkn;
-import bgko;
-import bglk;
+import bbnh;
+import bgld;
+import bgle;
+import bglf;
+import bgmb;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +27,7 @@ public final class Dex2Oat
   
   public static String a()
   {
-    String str2 = (String)bbmt.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
+    String str2 = (String)bbnh.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "arm";
@@ -69,7 +69,7 @@ public final class Dex2Oat
   
   public static boolean a(String paramString)
   {
-    String str = bglk.a();
+    String str = bgmb.a();
     if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals("")))
     {
       Log.d("plugin_tag.Dex2Oat", "fingerprint empty:" + paramString + ",current:" + str);
@@ -84,24 +84,24 @@ public final class Dex2Oat
     return true;
   }
   
-  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, bgko parambgko)
+  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, bglf parambglf)
   {
-    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), parambgko, 2);
+    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), parambglf, 2);
   }
   
-  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, bgko parambgko, int paramInt)
+  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, bglf parambglf, int paramInt)
   {
     try
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(paramCollection.size());
-      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new bgkm());
+      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new bgld());
       long l = System.nanoTime();
       Object localObject = new ArrayList(paramCollection);
-      Collections.sort((List)localObject, new bgkn());
+      Collections.sort((List)localObject, new bgle());
       Collections.reverse((List)localObject);
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, parambgko));
+        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, parambglf));
       }
       try
       {

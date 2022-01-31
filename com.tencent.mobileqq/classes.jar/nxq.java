@@ -1,31 +1,16 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.Comparator;
+import com.tencent.widget.SwipListView;
 
-public class nxq
-  implements Comparator<nxv>
+class nxq
+  implements View.OnClickListener
 {
-  public nxq(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  nxq(nxp paramnxp, View paramView) {}
   
-  public int a(nxv paramnxv1, nxv paramnxv2)
+  public void onClick(View paramView)
   {
-    int j = 2147483647;
-    int i;
-    if (TextUtils.isEmpty(nxv.a(paramnxv1)))
-    {
-      i = 2147483647;
-      if (!TextUtils.isEmpty(nxv.a(paramnxv2))) {
-        break label44;
-      }
-    }
-    for (;;)
-    {
-      return i - j;
-      i = nxv.a(paramnxv1).codePointAt(0);
-      break;
-      label44:
-      j = nxv.a(paramnxv2).codePointAt(0);
-    }
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nxp.a).a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

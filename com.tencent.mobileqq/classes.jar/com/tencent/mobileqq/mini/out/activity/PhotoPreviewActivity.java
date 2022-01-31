@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bbbj;
+import bbbx;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.BubblePopupWindow;
@@ -34,7 +34,7 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bbbj.a(this, true, false);
+    bbbx.a(this, true, false);
     super.finish();
   }
   
@@ -51,7 +51,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561565);
+    setContentView(2131561564);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -131,7 +131,7 @@ public class PhotoPreviewActivity
   void initUI()
   {
     this.topBar = findViewById(2131377553);
-    this.backBtn = ((TextView)findViewById(2131362996));
+    this.backBtn = ((TextView)findViewById(2131362995));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);

@@ -1,12 +1,12 @@
 package cooperation.qzone.zipanimate;
 
-import bhus;
-import bhut;
+import bhvj;
+import bhvk;
 
 public class ZipAnimationDrawable$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$1$1(bhut parambhut) {}
+  public ZipAnimationDrawable$1$1(bhvk parambhvk) {}
   
   public void run()
   {

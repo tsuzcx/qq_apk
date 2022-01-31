@@ -1,36 +1,41 @@
+import android.graphics.Color;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import java.util.List;
 
 public class aftz
-  implements AdapterView.OnItemClickListener
+  extends RecyclerView.OnScrollListener
 {
   public aftz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    paramAdapterView = (afuf)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
-    if (bool)
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
+    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
+    if ((str != null) && (paramInt2 != 0))
     {
-      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
-        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
-      }
-      paramAdapterView = (afuf)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-      if (bool) {
-        break label126;
-      }
+      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
+      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
+      EmoticonGroupStoreFragment.a(this.a).setText(str);
     }
-    label126:
-    for (bool = true;; bool = false)
+    if (paramInt2 < 0)
     {
-      paramAdapterView.jdField_a_of_type_Boolean = bool;
-      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-      return;
-      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
-      break;
+      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
+      if (paramRecyclerView != null)
+      {
+        float f = paramRecyclerView.getY();
+        if ((paramInt1 == 0) && (0.0F == f))
+        {
+          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
+          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
+          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
+        }
+      }
     }
   }
 }

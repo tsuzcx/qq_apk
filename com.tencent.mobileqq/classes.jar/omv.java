@@ -1,12 +1,16 @@
-public class omv
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.util.Pair;
+import java.util.Comparator;
+
+class omv
+  implements Comparator<Pair<Long, Pair<View, BaseArticleInfo>>>
 {
-  public String a;
-  public String b;
-  public String c;
+  omv(omu paramomu) {}
   
-  public String toString()
+  public int a(Pair<Long, Pair<View, BaseArticleInfo>> paramPair1, Pair<Long, Pair<View, BaseArticleInfo>> paramPair2)
   {
-    return "appCode = " + this.a + "\nappVersion = " + this.b + "\nappUsedDate = " + this.c + "\n";
+    return ((Long)paramPair2.first).compareTo((Long)paramPair1.first);
   }
 }
 

@@ -1,49 +1,43 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.os.SystemClock;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 
-public class uaw
-  extends twp
+class uaw
+  implements AbsListView.OnScrollListener
 {
-  public final ErrorMessage a;
-  public final boolean a;
-  public final String b;
+  uaw(uau paramuau) {}
   
-  public uaw(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(new two("ERROR_" + paramErrorMessage));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
+    if (SystemClock.uptimeMillis() - uau.a(this.a) < 500L) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        uau.a(this.a, SystemClock.uptimeMillis());
+      } while (!(this.a.jdField_a_of_type_Twl instanceof twz));
+      i = paramInt1 + paramInt2;
+      ((twz)this.a.jdField_a_of_type_Twl).a = i;
+    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
+    this.a.jdField_a_of_type_Tzi.a();
+    ved.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Twl.toString());
   }
   
-  public uaw(@NonNull String paramString, boolean paramBoolean)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super(new two("LOADING_" + paramString));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return this.b != null;
+    if (paramInt == 0) {
+      uau.a(this.a, false);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (uau.a(this.a))) {
+        this.a.d();
+      }
+      return;
+      uau.a(this.a, true);
+    }
   }
 }
 

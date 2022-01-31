@@ -1,40 +1,81 @@
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class adkb
-  implements adke
+  implements View.OnClickListener
 {
   adkb(adka paramadka) {}
   
-  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public void onClick(View paramView)
   {
-    int j;
-    int i;
+    Object localObject;
     if (adka.a(this.a) != null)
     {
-      j = adka.a(this.a).getChildCount();
-      if (j > 0) {
-        i = 0;
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      long l1;
+      switch (adka.a(this.a).jumpType)
+      {
+      default: 
+        if (localObject != null)
+        {
+          localObject = (aqkh)((QQAppInterface)localObject).a(153);
+          l1 = 0L;
+        }
+        break;
       }
+      try
+      {
+        long l2 = Long.valueOf(adjy.a(this.a.a)).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err");
+        }
+      }
+      ((aqkh)localObject).a(l1, adka.a(this.a).dateType);
     }
     for (;;)
     {
-      if (i < j)
+      if (adka.a(this.a) != null) {
+        adka.a(this.a).a(paramView, adka.a(this.a));
+      }
+      return;
+      if ((adka.a(this.a).linkUrl != null) && (this.a.a.a != null))
       {
-        paramView = adka.a(this.a).getChildAt(i).getTag();
-        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
-          adka.a(this.a).removeViewAt(i);
+        axqy.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adka.a(this.a).dateType, 0, "", "", "", "");
+        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+        bbeg localbbeg = bbex.a((QQAppInterface)localObject, this.a.a.a, adka.a(this.a).linkUrl);
+        if (localbbeg != null) {
+          localbbeg.c();
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("intimate_relationship", 2, "click  scheme: " + adka.a(this.a).linkUrl);
+          break;
+          if (adka.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
+            bgyp.c(this.a.a.a, adka.a(this.a).linkUrl);
+          } else {
+            adjy.a(this.a.a.a, adka.a(this.a).linkUrl);
+          }
         }
       }
-      else
-      {
-        if (adka.a(this.a).getChildCount() <= 0) {
-          adka.a(this.a).setVisibility(8);
-        }
-        return;
+      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
+      break;
+      axqy.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adka.a(this.a).dateType, 0, "", "", "", "");
+      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
+      if (adjy.a(this.a.a) == null) {
+        break;
       }
-      i += 1;
+      adjy.a(this.a.a).a(adka.a(this.a));
+      break;
+      QLog.e("intimate_relationship", 2, "click  mInfo is null");
     }
   }
 }

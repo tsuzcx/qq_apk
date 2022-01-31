@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class azhe
-  implements QQPermissionCallback
+public class azhe
 {
-  public azhe(azhj paramazhj, BaseActivity paramBaseActivity) {}
+  protected ImageView a;
+  protected TextView a;
+  protected ImageView b;
+  protected TextView b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Azhj.a(bair.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajsf.bc, 1001));
-  }
+  protected azhe(azhd paramazhd) {}
 }
 
 

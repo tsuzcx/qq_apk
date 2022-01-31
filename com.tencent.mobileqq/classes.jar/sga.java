@@ -1,40 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class sga
-  implements qpe
+class sga
+  implements qvw
 {
-  public sga(PublicAccountH5AbilityPlugin.5 param5, bcpq parambcpq, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8) {}
+  sga(sfk paramsfk) {}
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    int i;
-    if ("CMD_CAMERA_CAPTURE_SO_DOWNLOAD".equals(paramString))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
-      i = paramBundle.getInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage VideoFeedsIPCClient.callback downloadResult=" + i);
-      }
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    case 3: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2131718781, 0).a();
-      return;
-    case 1: 
-      boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.jdField_a_of_type_Qpc.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() isSoReady:" + bool);
-      }
-      sfn.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.g, this.h);
+      localJSONObject.put("video_vid", paramString1);
+      localJSONObject.put("retCode", paramInt);
+      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
       return;
     }
-    bbcv.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$5.this$0.jdField_a_of_type_AndroidAppActivity, 230).setMessage(ajyc.a(2131708784)).setNegativeButton(2131690596, new bbdf()).setPositiveButton(2131694793, new sgb(this)).show();
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 

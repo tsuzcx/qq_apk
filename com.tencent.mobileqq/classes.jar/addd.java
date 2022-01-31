@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.view.View;
 
-public class addd
-  implements adea
+public abstract interface addd
 {
-  public addd(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

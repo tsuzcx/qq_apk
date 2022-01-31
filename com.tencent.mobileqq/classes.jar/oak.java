@@ -1,25 +1,16 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-
 public class oak
 {
-  public SparseArray<oaj> a = new SparseArray();
-  
-  public oak()
+  public static boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
+    if (!oln.a()) {
+      return false;
     }
-  }
-  
-  public oaj a(int paramInt)
-  {
-    return (oaj)this.a.get(paramInt);
-  }
-  
-  public void a(int paramInt, oaj paramoaj)
-  {
-    this.a.put(paramInt, paramoaj);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 

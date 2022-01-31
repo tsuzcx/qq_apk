@@ -1,16 +1,15 @@
-import android.os.Bundle;
+import com.tencent.component.animation.rebound.SimpleSpringListener;
+import com.tencent.component.animation.rebound.Spring;
 
-public abstract interface bibi
+class bibi
+  extends SimpleSpringListener
 {
-  public abstract void a();
+  bibi(bibh parambibh) {}
   
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
+  public void onSpringUpdate(Spring paramSpring)
+  {
+    bibh.a(this.a);
+  }
 }
 
 

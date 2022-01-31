@@ -1,14 +1,10 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class beyt
 {
-  public String a;
-  public Map<Integer, Long> a = new HashMap();
-  public boolean a;
-  public Map<Integer, Long> b = new HashMap();
-  public boolean b;
-  public Map<Integer, String> c = new HashMap();
+  public int a = -1;
+  public int b = -1;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
 }
 
 

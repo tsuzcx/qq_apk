@@ -1,20 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aepc
+public class aepc
   implements View.OnClickListener
 {
-  aepc(aeoo paramaeoo) {}
+  aepc(aeom paramaeom) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
+    if (aeom.a(this.a).getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.7.1(this), 5, null, false);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
-    aekr.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
+    actj.n = true;
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    acxs.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
   }
 }
 

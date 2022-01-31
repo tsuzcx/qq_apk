@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import osg;
 import osj;
-import osm;
 
 public class ReadInJoyLogicEngine$7
   implements Runnable
 {
-  public ReadInJoyLogicEngine$7(osj paramosj) {}
+  public ReadInJoyLogicEngine$7(osg paramosg) {}
   
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
   }
 }
 

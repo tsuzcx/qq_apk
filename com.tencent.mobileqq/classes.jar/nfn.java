@@ -1,28 +1,56 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class nfn
-  implements TVK_SDKMgr.InstallListener
+  implements ViewPager.OnPageChangeListener
 {
-  public nfn(AccountDetailVideoManager.5 param5) {}
+  public nfn(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
     }
-    nfj.a = false;
+    AccountDetailBannerViewPager.a(this.a, paramInt);
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
   }
   
-  public void onInstalledSuccessed()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
     }
-    nfj.a = true;
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null)
+    {
+      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
+    if (AccountDetailBannerViewPager.a(this.a) != null) {
+      AccountDetailBannerViewPager.a(this.a).a(paramInt);
+    }
   }
 }
 

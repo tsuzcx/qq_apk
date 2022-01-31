@@ -1,16 +1,89 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class agit
-  implements DialogInterface.OnClickListener
+  extends aumg
 {
   public agit(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    this.a.f = false;
+    this.a.a();
+    this.a.b();
+    int i;
+    if (paramBoolean)
+    {
+      String str = bbcz.a();
+      if (!TextUtils.isEmpty(str)) {
+        axqy.b(this.a.app, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      i = paramBundle.getInt("k_result");
+      if (paramBundle.getBoolean("k_buto_bind", false)) {
+        this.a.c();
+      }
+    }
+    for (;;)
+    {
+      bbcz.a();
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      if ((i == 104) || (i == 0))
+      {
+        this.a.b();
+      }
+      else
+      {
+        if (i == 107)
+        {
+          this.a.a(paramBundle);
+          return;
+        }
+        if (i == 106)
+        {
+          this.a.a(null, 2);
+        }
+        else if (i == 227)
+        {
+          this.a.d();
+        }
+        else if (i == 226)
+        {
+          this.a.e();
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "bind error " + i);
+          }
+          this.a.a(a(i));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("BindNumberActivity", 2, "onBindMobile failed");
+          }
+          this.a.b(2131718748);
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.b();
+    if (paramBoolean) {
+      this.a.b();
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+      return;
+      this.a.b(2131718748);
+    }
   }
 }
 

@@ -1,22 +1,20 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class apie
-  extends BroadcastReceiver
+  implements amkg
 {
   public apie(FileBrowserActivity paramFileBrowserActivity) {}
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onServiceSyncSucc(boolean paramBoolean)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    if (QLog.isDebugVersion()) {
+      QLog.i("FileBrowserActivity<FileAssistant>", 4, "color note update.");
     }
+    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserActivity.2.1(this));
   }
 }
 

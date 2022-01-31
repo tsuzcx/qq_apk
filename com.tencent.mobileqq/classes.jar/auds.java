@@ -1,17 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class auds
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  public auds(ScanOcrView paramScanOcrView, audt paramaudt) {}
+  public auds(ScanOcrView paramScanOcrView, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Audt.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
+      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    }
   }
 }
 

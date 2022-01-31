@@ -1,8 +1,10 @@
-import java.util.List;
+import android.view.View;
 
 public abstract interface atek
 {
-  public abstract void a(List<atel> paramList, boolean paramBoolean);
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, aten paramaten);
 }
 
 

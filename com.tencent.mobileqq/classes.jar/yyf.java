@@ -1,272 +1,152 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
-import com.tencent.ad.tangram.protocol.gdt_analysis_event;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.util.AdUriUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public final class yyf
+  implements yxw
 {
-  private static gdt_analysis_event a(Context paramContext, int paramInt1, GdtAd paramGdtAd, int paramInt2, int paramInt3, String paramString)
+  public int a;
+  public long a;
+  private String jdField_a_of_type_JavaLangString;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  public qq_ad_get.QQAdGetRsp.AdInfo a;
+  yyh jdField_a_of_type_Yyh = new yyg(this);
+  public int b;
+  private List<String> b;
+  private List<String> c;
+  
+  public yyf()
   {
-    paramString = AdUriUtil.parse(paramString);
-    paramGdtAd = AdReporterForAnalysis.createEventForAd(paramContext, paramInt1, paramGdtAd);
-    if (paramInt2 == 0)
-    {
-      paramGdtAd.statisticsType = 101;
-      paramGdtAd.businessId = String.valueOf(paramInt3);
-      if (paramString == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramContext = paramString.getHost();; paramContext = null)
-    {
-      paramGdtAd.hostName = paramContext;
-      return paramGdtAd;
-      if (paramInt2 == 1)
-      {
-        paramGdtAd.statisticsType = 102;
-        break;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-      paramGdtAd.statisticsType = 105;
-      break;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Long = -2147483648L;
   }
   
-  public static void a(Context paramContext)
+  private int a(String paramString, int paramInt)
   {
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1081, localgdt_analysis_event);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
-  }
-  
-  public static void a(Context paramContext, long paramLong, int paramInt)
-  {
-    long l = -2147483648L;
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    if (paramLong != -2147483648L) {
-      l = System.currentTimeMillis() - paramLong;
-    }
-    localgdt_analysis_event.duration = l;
-    localgdt_analysis_event.status = paramInt;
-    AdAnalysisUtil.initEvent(paramContext, 1083, localgdt_analysis_event);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
-  }
-  
-  public static void a(Context paramContext, long paramLong, int paramInt1, int paramInt2)
-  {
-    long l = -2147483648L;
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent(paramContext, 1082, localgdt_analysis_event);
-    if (paramLong != -2147483648L) {
-      l = System.currentTimeMillis() - paramLong;
-    }
-    localgdt_analysis_event.duration = l;
-    localgdt_analysis_event.internalErrorCode = paramInt1;
-    localgdt_analysis_event.errorCode1 = paramInt2;
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(localgdt_analysis_event, 102));
-  }
-  
-  public static void a(Context paramContext, GdtAd paramGdtAd, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    paramGdtAd = a(paramContext, 1058, paramGdtAd, paramInt1, paramInt2, null);
-    if (paramBoolean) {}
-    for (paramInt1 = 0;; paramInt1 = 4)
-    {
-      paramGdtAd.internalErrorCode = paramInt1;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtAd, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
-  {
-    long l2 = -2147483648L;
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {}
-    for (GdtAd localGdtAd = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;; localGdtAd = null)
-    {
-      long l1 = l2;
-      if (paramGdtInterstitialParams != null)
-      {
-        l1 = l2;
-        if (paramGdtInterstitialParams.jdField_a_of_type_Long != -2147483648L) {
-          l1 = System.currentTimeMillis() - paramGdtInterstitialParams.jdField_a_of_type_Long;
-        }
-      }
-      paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(paramContext, 1077, localGdtAd);
-      paramGdtInterstitialParams.duration = l1;
-      paramGdtInterstitialParams.status = yuo.a().a();
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, int paramInt)
-  {
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {}
-    for (paramGdtInterstitialParams = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;; paramGdtInterstitialParams = null)
-    {
-      paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(paramContext, 1076, paramGdtInterstitialParams);
-      paramGdtInterstitialParams.internalErrorCode = paramInt;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, int paramInt1, int paramInt2)
-  {
-    long l2 = -2147483648L;
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {}
-    for (GdtAd localGdtAd = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;; localGdtAd = null)
-    {
-      long l1 = l2;
-      if (paramGdtInterstitialParams != null)
-      {
-        l1 = l2;
-        if (paramGdtInterstitialParams.jdField_a_of_type_Long != -2147483648L) {
-          l1 = System.currentTimeMillis() - paramGdtInterstitialParams.jdField_a_of_type_Long;
-        }
-      }
-      paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(paramContext, 1078, localGdtAd);
-      paramGdtInterstitialParams.internalErrorCode = paramInt1;
-      paramGdtInterstitialParams.errorCode1 = paramInt2;
-      paramGdtInterstitialParams.duration = l1;
-      paramGdtInterstitialParams.status = yuo.a().a();
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams, int paramInt1, int paramInt2, int paramInt3)
-  {
-    long l2 = -2147483648L;
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {}
-    for (GdtAd localGdtAd = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;; localGdtAd = null)
-    {
-      long l1 = l2;
-      if (paramGdtInterstitialParams != null)
-      {
-        l1 = l2;
-        if (paramGdtInterstitialParams.jdField_a_of_type_Long != -2147483648L) {
-          l1 = System.currentTimeMillis() - paramGdtInterstitialParams.jdField_a_of_type_Long;
-        }
-      }
-      paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(paramContext, 1080, localGdtAd);
-      paramGdtInterstitialParams.internalErrorCode = paramInt1;
-      paramGdtInterstitialParams.errorCode1 = paramInt2;
-      paramGdtInterstitialParams.errorCode2 = paramInt3;
-      paramGdtInterstitialParams.duration = l1;
-      paramGdtInterstitialParams.status = yuo.a().a();
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, yyi paramyyi, int paramInt, long paramLong)
-  {
-    paramyyi = a(paramContext, 1059, new GdtAd(paramyyi.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyyi.jdField_a_of_type_Int, paramyyi.b, null);
-    if (paramInt == 0)
-    {
-      paramyyi.internalErrorCode = 0;
-      paramyyi.errorCode1 = paramInt;
-      if (paramLong == -2147483648L) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramLong = System.currentTimeMillis() - paramLong;; paramLong = -2147483648L)
-    {
-      paramyyi.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyyi, 102));
-      return;
-      if (paramInt == 1)
-      {
-        paramyyi.internalErrorCode = 2;
-        break;
-      }
-      if (paramInt == 2)
-      {
-        paramyyi.internalErrorCode = 4;
-        break;
-      }
-      paramyyi.internalErrorCode = 0;
-      break;
-    }
-  }
-  
-  public static void a(Context paramContext, yyi paramyyi, String paramString)
-  {
-    paramyyi = a(paramContext, 1056, new GdtAd(paramyyi.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyyi.jdField_a_of_type_Int, paramyyi.b, paramString);
-    AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyyi, 102));
-  }
-  
-  public static void a(Context paramContext, yyi paramyyi, String paramString, int paramInt)
-  {
-    paramyyi = a(paramContext, 1060, new GdtAd(paramyyi.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyyi.jdField_a_of_type_Int, paramyyi.b, paramString);
-    paramyyi.httpErrorCode = paramInt;
-    if (paramyyi.httpErrorCode == 200) {
-      paramyyi.internalErrorCode = 0;
-    }
+    long l = System.currentTimeMillis();
+    yyc.a(BaseApplicationImpl.getApplication(), this, paramString);
+    j = -1;
+    i = j;
     for (;;)
     {
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyyi, 102));
-      return;
-      if (paramyyi.httpErrorCode == -1) {
-        paramyyi.internalErrorCode = 3;
-      } else {
-        paramyyi.internalErrorCode = 5;
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, yyi paramyyi, String paramString, int paramInt, long paramLong)
-  {
-    paramyyi = a(paramContext, 1057, new GdtAd(paramyyi.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo), paramyyi.jdField_a_of_type_Int, paramyyi.b, paramString);
-    paramyyi.httpErrorCode = paramInt;
-    if (paramyyi.httpErrorCode == 200) {
-      paramyyi.internalErrorCode = 0;
-    }
-    for (;;)
-    {
-      paramyyi.duration = paramLong;
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramyyi, 102));
-      return;
-      if (paramyyi.httpErrorCode == -1) {
-        paramyyi.internalErrorCode = 3;
-      } else {
-        paramyyi.internalErrorCode = 5;
-      }
-    }
-  }
-  
-  public static void b(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
-  {
-    long l2 = -2147483648L;
-    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null)) {}
-    for (GdtAd localGdtAd = paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a;; localGdtAd = null)
-    {
-      long l1 = l2;
-      if (paramGdtInterstitialParams != null)
+      try
       {
-        l1 = l2;
-        if (paramGdtInterstitialParams.jdField_a_of_type_Long != -2147483648L) {
-          l1 = System.currentTimeMillis() - paramGdtInterstitialParams.jdField_a_of_type_Long;
+        yxp.a("GdtC2SReporter", "index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int);
+        i = j;
+        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+        i = j;
+        localHttpURLConnection.setRequestMethod("GET");
+        i = j;
+        localHttpURLConnection.setConnectTimeout(10000);
+        i = j;
+        localHttpURLConnection.setReadTimeout(10000);
+        i = j;
+        localHttpURLConnection.setUseCaches(false);
+        i = j;
+        localHttpURLConnection.setInstanceFollowRedirects(true);
+        i = j;
+        localHttpURLConnection.connect();
+        i = j;
+        j = localHttpURLConnection.getResponseCode();
+        i = j;
+        yxp.a("GdtC2SReporter", "rspCode:  " + j + " index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int + " reportUrl =" + paramString);
+        i = j;
+        int k = this.jdField_a_of_type_Int;
+        if (j != 200) {
+          continue;
         }
+        paramInt = 0;
+        i = j;
+        axqy.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
       }
-      paramGdtInterstitialParams = AdReporterForAnalysis.createEventForAd(paramContext, 1079, localGdtAd);
-      paramGdtInterstitialParams.duration = l1;
-      paramGdtInterstitialParams.status = yuo.a().a();
-      AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramGdtInterstitialParams, 102));
+      catch (Throwable localThrowable)
+      {
+        yxp.d("GdtC2SReporter", "c2sReport excetpion: " + localThrowable.getMessage());
+        j = i;
+        continue;
+      }
+      yyc.a(BaseApplicationImpl.getApplication(), this, paramString, j, System.currentTimeMillis() - l);
+      return j;
+      paramInt = 1;
+    }
+  }
+  
+  private void a(List<String> paramList)
+  {
+    int i = -1;
+    paramList = paramList.iterator();
+    int j = 0;
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      j += 1;
+      int k = a(str, j);
+      i = k;
+      if (k < 0) {
+        i = a(str, j);
+      }
+      yyc.a(BaseApplicationImpl.getApplication(), this, str, i);
+    }
+    axqy.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, i, "", "", this.jdField_a_of_type_JavaLangString, "");
+  }
+  
+  public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    int j = 1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
+    if (paramAdInfo == null) {}
+    do
+    {
+      yyc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
+      return;
+      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
+      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
+      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
+      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
+    } while (this.jdField_a_of_type_JavaLangString == null);
+    if ((paramInt1 == 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      this.jdField_a_of_type_Int = paramInt1;
+    }
+    for (int i = 1;; i = 0)
+    {
+      if ((paramInt1 == 1) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
+        this.jdField_a_of_type_Int = paramInt1;
+      }
+      if ((paramInt1 == 2) && (this.c != null) && (this.c.size() > 0)) {
+        this.jdField_a_of_type_Int = paramInt1;
+      }
+      if (this.jdField_a_of_type_Int == -1) {
+        break;
+      }
+      yxp.a("GdtC2SReporter", "reportAsync for ADID: " + this.jdField_a_of_type_JavaLangString + ", operationType: " + paramInt1);
+      yyc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramAdInfo = BaseApplicationImpl.getApplication().getRuntime();
+      String str = paramAdInfo.getAccount();
+      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), yyi.class);
+      localNewIntent.putExtra("key_uin", str);
+      localNewIntent.putExtra("key_adID", this.jdField_a_of_type_JavaLangString);
+      paramInt1 = j;
+      if (i != 0) {
+        paramInt1 = 0;
+      }
+      localNewIntent.putExtra("key_operation", paramInt1);
+      localNewIntent.setObserver(this.jdField_a_of_type_Yyh);
+      paramAdInfo.startServlet(localNewIntent);
+      axqy.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.jdField_a_of_type_Int, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
       return;
     }
   }

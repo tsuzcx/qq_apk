@@ -1,20 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
-public class azyx
-  implements bcjx
+class azyx
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public azyx(ReciteRecordLayout paramReciteRecordLayout) {}
+  azyx(azyw paramazyw, String paramString) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onGlobalLayout()
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    azyw.a(this.jdField_a_of_type_Azyw).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    azyw.a(this.jdField_a_of_type_Azyw, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
 
 public class agkq
-  extends aume
+  implements bfph
 {
-  public agkq(PhoneMatchView.1 param1) {}
+  public agkq(SettingActivity2 paramSettingActivity2, bfpc parambfpc) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    this.jdField_a_of_type_Bfpc.cancel();
+    bbdj.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, ajya.a(2131713869), ajya.a(2131713866), ajya.a(2131713867), ajya.a(2131713865), new agkr(this), new agks(this)).show();
   }
 }
 

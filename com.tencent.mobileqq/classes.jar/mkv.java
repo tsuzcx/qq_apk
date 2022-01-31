@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
-class mkv
-  implements DialogInterface.OnClickListener
+public class mkv
+  implements ldq
 {
-  mkv(mkt parammkt) {}
+  public mkv(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    mqz.e(false, false);
-    if (paramDialogInterface != null)
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdz != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdz.length > this.jdField_a_of_type_Int))
     {
-      paramDialogInterface.dismiss();
-      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-        this.a.a.a.a.b();
-      }
+      mqn.a("switch_camera", "switchCameraFristData", 3, new Object[0]);
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdz[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "switchCameraFristData Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 

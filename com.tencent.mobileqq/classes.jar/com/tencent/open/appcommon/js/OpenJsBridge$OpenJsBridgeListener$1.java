@@ -1,17 +1,17 @@
 package com.tencent.open.appcommon.js;
 
-import bdfs;
-import bdht;
+import bdgh;
+import bdii;
 import com.tencent.smtt.sdk.WebView;
 
 public class OpenJsBridge$OpenJsBridgeListener$1
   implements Runnable
 {
-  public OpenJsBridge$OpenJsBridgeListener$1(bdfs parambdfs, String paramString1, String paramString2, WebView paramWebView) {}
+  public OpenJsBridge$OpenJsBridgeListener$1(bdgh parambdgh, String paramString1, String paramString2, WebView paramWebView) {}
   
   public void run()
   {
-    bdht.b("OpenJsBridge", "[onOpenComplete]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':0,'data':" + this.b + "});");
+    bdii.b("OpenJsBridge", "[onOpenComplete]AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':0,'data':" + this.b + "});");
     try
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.this$0.b + ",'r':0,'data':" + this.b + "});");

@@ -1,13 +1,12 @@
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-class afkb
-  extends afjx
+public class afkb
 {
-  public ImageButton a;
+  public Button a;
+  public ImageView a;
   public TextView a;
-  public Button b;
   public TextView b;
 }
 

@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.os.Bundle;
+import mqq.os.MqqHandler;
 
 class afvd
-  implements DialogInterface.OnClickListener
+  extends mxj
 {
-  afvd(afur paramafur, boolean paramBoolean, String paramString) {}
+  afvd(afup paramafup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    axqw.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, afur.a(this.jdField_a_of_type_Afur), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false);
+    if ((afup.a(this.a).isFinishing()) || (this.a.a)) {
       return;
     }
-    afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    this.a.c();
+    if (afup.a(this.a) != null) {
+      afup.a(this.a).removeCallbacks(afup.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.d();
+      return;
+    }
+    afup.a(this.a, afup.b(this.a));
   }
 }
 

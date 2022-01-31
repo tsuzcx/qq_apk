@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bcpq;
+import bcqf;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;

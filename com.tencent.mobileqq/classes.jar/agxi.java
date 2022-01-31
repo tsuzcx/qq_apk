@@ -1,27 +1,19 @@
 import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
-import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
 
 public class agxi
-  extends bcsq
+  extends bctf
 {
-  public agxi(RedPacketKSongFragment.10.1 param1) {}
+  public agxi(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (!this.a.a.a.c())
-    {
-      if (paramBoolean) {
-        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
-      }
+    super.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
+    this.a.a(ajya.a(2131713331));
+    if (this.a.jdField_a_of_type_Ahjk != null) {
+      this.a.jdField_a_of_type_Ahjk.b();
     }
-    else {
-      return;
-    }
-    this.a.a.a.g();
   }
 }
 

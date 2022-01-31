@@ -1,23 +1,36 @@
-public abstract interface axmo
+import android.graphics.Canvas;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
+
+public class axmo
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
+  public boolean d = true;
+  public boolean e = true;
+  public int f;
+  public boolean f;
+  public int g;
   
-  static
+  axmo(TCProgressBar paramTCProgressBar)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "http://pub.idqqimg.com/pc/misc/files/20190823/721f0f8c828844578d033f880eed7038.png", "http://pub.idqqimg.com/pc/misc/files/20190823/789cf004424d4272826729e8ce62faa7.png", "http://pub.idqqimg.com/pc/misc/files/20190823/20417d3e1e6f42f48888b2a446fbb2e0.png", "http://pub.idqqimg.com/pc/misc/files/20190823/1e82870d00414961873b3eeeb489a76e.png", "http://pub.idqqimg.com/pc/misc/files/20190823/f87abe50bf834f52bf28f1bebfe81007.png", "http://pub.idqqimg.com/pc/misc/files/20200102/dbf0f70f909c4ddbbebfdfdce402b48d.png", "http://pub.idqqimg.com/pc/misc/files/20190823/13f5af4d045943b0b85f4aa91f6a8e20.png", "http://pub.idqqimg.com/pc/misc/files/20190823/aaae8674703045769cf4575ce8361dde.png", "http://pub.idqqimg.com/pc/misc/files/20191210/207d5348096d4b5494c5bd066693a08a.png" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "2921", "2971", "3063", "3064", "3066", "3491", "3065", "3067", "2920" };
-    c = new String[] { ajyc.a(2131714179), ajyc.a(2131714170), ajyc.a(2131714172), ajyc.a(2131714177), ajyc.a(2131714167), ajyc.a(2131714174), ajyc.a(2131714166), ajyc.a(2131714169), ajyc.a(2131719391) };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3, 4, 6, 7, 8, 5 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3, 4, 8, 5, 6, 7 };
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  void a(Canvas paramCanvas)
+  {
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    }
+    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     axmo
  * JD-Core Version:    0.7.0.1
  */

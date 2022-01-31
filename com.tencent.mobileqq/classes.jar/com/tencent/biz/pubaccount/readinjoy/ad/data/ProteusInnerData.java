@@ -6,22 +6,22 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.regex.Pattern;
-import nyk;
-import oad;
-import oal;
-import oas;
+import nyh;
+import oaa;
+import oai;
+import oap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rpu;
-import sfd;
+import rpr;
+import sfa;
 
 public class ProteusInnerData
   extends AdData
 {
   public int a;
   private String jdField_a_of_type_JavaLangString = "";
-  public nyk a;
+  public nyh a;
   private boolean jdField_a_of_type_Boolean;
   public int b;
   private int u = 1;
@@ -36,8 +36,8 @@ public class ProteusInnerData
   private JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    if (oal.a(this)) {
-      return oad.a(localJSONObject, this);
+    if (oai.a(this)) {
+      return oaa.a(localJSONObject, this);
     }
     if (this.u == 2) {
       return b(localJSONObject);
@@ -61,7 +61,7 @@ public class ProteusInnerData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = sfd.a(this.l, 4);
+        localObject = sfa.a(this.l, 4);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("image_url", ((URL)localObject).toString());
         paramJSONObject.put("id_ad_banner_inner_imge", localJSONObject);
@@ -111,7 +111,7 @@ public class ProteusInnerData
       localObject2 = ((JSONArray)localObject2).optJSONObject(0);
       int i = ((JSONObject)localObject2).optInt("regexType");
       localObject1 = ((JSONObject)localObject1).optJSONObject("formContent").getJSONObject("formRegex").getString("" + i);
-      this.jdField_a_of_type_Nyk = new nyk(this, ((JSONObject)localObject2).optInt("regexType"), ((JSONObject)localObject2).optString("name"), ((JSONObject)localObject2).optString("placeholder"), paramJSONObject.optString("text"), (JSONObject)localObject2, Pattern.compile((String)localObject1));
+      this.jdField_a_of_type_Nyh = new nyh(this, ((JSONObject)localObject2).optInt("regexType"), ((JSONObject)localObject2).optString("name"), ((JSONObject)localObject2).optString("placeholder"), paramJSONObject.optString("text"), (JSONObject)localObject2, Pattern.compile((String)localObject1));
       return;
     }
     catch (Exception paramJSONObject)
@@ -134,7 +134,7 @@ public class ProteusInnerData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = sfd.a(this.l, 4);
+        localObject = sfa.a(this.l, 4);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("image_url", ((URL)localObject).toString());
         paramJSONObject.put("id_inner_small_img", localJSONObject);
@@ -151,7 +151,7 @@ public class ProteusInnerData
         if (!TextUtils.isEmpty(this.L)) {
           break label262;
         }
-        ((JSONObject)localObject).put("text", oas.a(this.I, 16));
+        ((JSONObject)localObject).put("text", oap.a(this.I, 16));
       }
       for (;;)
       {
@@ -168,7 +168,7 @@ public class ProteusInnerData
         paramJSONObject.put("id_operate_edit_area", localObject);
         return paramJSONObject;
         label262:
-        ((JSONObject)localObject).put("text", oas.a(this.I, 12));
+        ((JSONObject)localObject).put("text", oap.a(this.I, 12));
       }
       paramJSONObject.put("id_view_AdDownloadView", localJSONException);
     }
@@ -201,10 +201,10 @@ public class ProteusInnerData
     this.jdField_b_of_type_OrgJsonJSONObject = a();
     try
     {
-      rpu localrpu = rpu.a("native_article", true);
+      rpr localrpr = rpr.a("native_article", true);
       localObject1 = localObject3;
-      if (localrpu != null) {
-        localObject1 = localrpu.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
+      if (localrpr != null) {
+        localObject1 = localrpr.getTemplateBean(this.jdField_b_of_type_OrgJsonJSONObject);
       }
     }
     catch (JSONException localJSONException)
@@ -316,7 +316,7 @@ public class ProteusInnerData
   
   public String toString()
   {
-    return "ProteusInnerData[formId:" + this.jdField_b_of_type_Int + ",  style:" + this.u + ",  pos_type:" + this.v + ",  para_pos:" + this.jdField_a_of_type_Int + ",\n formItem:" + this.jdField_a_of_type_Nyk + "]";
+    return "ProteusInnerData[formId:" + this.jdField_b_of_type_Int + ",  style:" + this.u + ",  pos_type:" + this.v + ",  para_pos:" + this.jdField_a_of_type_Int + ",\n formItem:" + this.jdField_a_of_type_Nyh + "]";
   }
 }
 

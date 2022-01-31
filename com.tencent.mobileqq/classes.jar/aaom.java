@@ -1,19 +1,19 @@
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class aaom
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public aaom(aaqf paramaaqf, aaqe paramaaqe) {}
+  public aaom(aaqb paramaaqb, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqa paramaaqa) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aaqf.a) {
-      axqw.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aaqe != null) {
-      this.jdField_a_of_type_Aaqe.a();
-    }
+    this.jdField_a_of_type_Aaqb.d = false;
+    this.jdField_a_of_type_Aaqb.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_Aaqb);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }

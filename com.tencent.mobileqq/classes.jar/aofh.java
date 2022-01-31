@@ -1,13 +1,43 @@
 import java.util.ArrayList;
 
 public class aofh
-  extends aogh
 {
-  public ArrayList<aofi> a;
+  public int a;
+  public String a;
+  public ArrayList<aogl> a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public aofh()
+  public String toString()
   {
-    this.mType = 6;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{age: ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{constellation: ").append(this.c).append("}");
+    localStringBuilder.append("{city: ").append(this.d).append("}");
+    localStringBuilder.append("{school: ").append(this.e).append("}");
+    localStringBuilder.append("{constel:").append(this.c).append("}");
+    localStringBuilder.append("{company:").append(this.f).append("}");
+    localStringBuilder.append("{mGender: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{mDeclaration: ").append(this.g).append("}");
+    localStringBuilder.append("{mVoiceUrl: ").append(this.h).append("}");
+    localStringBuilder.append("{mVoiceDuration: ").append(this.jdField_b_of_type_Int).append("}");
+    localStringBuilder.append("{signWords: ").append(this.i).append("}");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      localStringBuilder.append("{personalTags: is empty ").append("}");
+    }
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
+    }
   }
 }
 

@@ -1,10 +1,78 @@
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
+import com.tencent.component.network.module.report.ImageDownloadReporter;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface bhjc
+class bhjc
+  implements Downloader.DownloadListener
 {
-  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
+  bhja jdField_a_of_type_Bhja;
   
-  public abstract void d(PluginRecord paramPluginRecord);
+  public bhjc(bhiz parambhiz, bhja parambhja)
+  {
+    this.jdField_a_of_type_Bhja = parambhja;
+  }
+  
+  public void onDownloadCanceled(String paramString)
+  {
+    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 2);
+    paramString.obj = this.jdField_a_of_type_Bhja;
+    paramString.sendToTarget();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 3);
+    paramString.obj = this.jdField_a_of_type_Bhja;
+    paramString.arg1 = -9999;
+    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
+    for (;;)
+    {
+      try
+      {
+        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
+        if (paramDownloadResult != null)
+        {
+          paramString.arg1 = paramDownloadResult.retCode;
+          QLog.w("QZoneLiveSoDownloader", 1, "So download failed, code=" + paramDownloadResult.retCode);
+          this.jdField_a_of_type_Bhja.jdField_a_of_type_Int = paramDownloadResult.retCode;
+        }
+      }
+      catch (Exception paramDownloadResult)
+      {
+        QLog.w("QZoneLiveSoDownloader", 1, "", paramDownloadResult);
+        continue;
+      }
+      paramString.sendToTarget();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneLiveSoDownloader", 2, "So download failed downloadResult:null");
+      }
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    int i = (int)(100.0F * paramFloat);
+    if (this.jdField_a_of_type_Bhja != null) {
+      this.jdField_a_of_type_Bhja.jdField_a_of_type_Float = i;
+    }
+    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 5);
+    paramString.obj = this.jdField_a_of_type_Bhja;
+    paramString.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneLiveSoDownloader", 2, "onDownloadSucceed path:" + paramDownloadResult.getPath());
+    }
+    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 4);
+    paramString.obj = this.jdField_a_of_type_Bhja;
+    paramString.sendToTarget();
+  }
 }
 
 

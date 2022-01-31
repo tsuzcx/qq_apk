@@ -1,28 +1,11 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-
-final class nac
-  extends AsyncTask<Void, Void, Void>
+class nac
+  implements bfpj
 {
-  String jdField_a_of_type_JavaLangString = "";
+  nac(nab paramnab) {}
   
-  nac(nad paramnad, String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_JavaLangString = nab.a(this.b);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Nad.a();
-      return;
-    }
-    this.jdField_a_of_type_Nad.a(this.jdField_a_of_type_JavaLangString);
+    nab.a(this.a);
   }
 }
 

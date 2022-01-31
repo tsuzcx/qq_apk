@@ -1,32 +1,25 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.util.List;
 
 public class auat
-  extends auef
+  extends aylg
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public auat(OCRResultActivity paramOCRResultActivity) {}
   
-  public auat(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      auab.a("0X800AC97", 0);
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
+      return;
     }
-  }
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131707834), 0).a();
   }
 }
 

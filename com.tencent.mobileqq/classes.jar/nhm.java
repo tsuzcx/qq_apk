@@ -1,30 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhm
-  implements bfoq
+  implements DialogInterface.OnDismissListener
 {
   public nhm(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.o) {
-      return;
-    }
-    this.a.o = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.E();
-      continue;
-      AccountDetailActivity.a(this.a, this.a.d);
-    }
+    this.a.o = false;
   }
 }
 

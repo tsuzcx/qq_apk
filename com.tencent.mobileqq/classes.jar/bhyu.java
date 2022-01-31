@@ -1,18 +1,14 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
+import android.text.TextUtils;
 
 public class bhyu
-  extends bhys
+  extends bdta
 {
-  public bhyu(String paramString, View paramView)
+  public void i(String paramString1, String paramString2)
   {
-    super(paramString, paramView);
-  }
-  
-  protected void a(String paramString)
-  {
-    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+      return;
+    }
+    super.i(paramString1, paramString2);
   }
 }
 

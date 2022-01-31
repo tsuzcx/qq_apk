@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
 import android.content.Context;
-import bbdj;
+import bbdx;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.cache.Storage;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
@@ -18,15 +18,15 @@ class AppBrandLaunchManager$StartMiniAppReceiver$1
   {
     String str = AppLoaderFactory.PATH_WXAPKG_ROOT + this.val$appid + "_debug";
     if (new File(str).exists()) {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
     }
     str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$appid);
     if (new File(str).exists()) {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
     }
     str = Storage.getCacheDir(this.val$context.getCacheDir().getAbsolutePath(), this.val$uin, this.val$appid);
     if (new File(str).exists()) {
-      bbdj.a(str, false);
+      bbdx.a(str, false);
     }
     QLog.e("debug", 1, "clear miniapp");
   }

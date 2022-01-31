@@ -1,11 +1,14 @@
-class bbzi
-  implements mzb
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+final class bbzi
+  implements View.OnTouchListener
 {
-  bbzi(bbzg parambbzg) {}
-  
-  public void loaded(String paramString, int paramInt) {}
-  
-  public void progress(int paramInt) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

@@ -1,194 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 public class bhpa
-  extends FilterOutputStream
 {
+  private static int jdField_a_of_type_Int = 0;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bhpa jdField_b_of_type_Bhpa;
-  private static int c;
-  protected int a;
+  private static bhpa b;
   private bhpa jdField_a_of_type_Bhpa;
-  private boolean jdField_a_of_type_Boolean;
-  protected byte[] a;
-  private final int jdField_b_of_type_Int = 4;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
   
-  private bhpa(@NonNull OutputStream paramOutputStream)
+  public static bhpa a()
   {
-    this(paramOutputStream, 8192);
-  }
-  
-  private bhpa(@NonNull OutputStream paramOutputStream, int paramInt)
-  {
-    super(paramOutputStream);
-    this.jdField_a_of_type_ArrayOfByte = ByteArrayPool.getGenericInstance().getBuf(paramInt);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static bhpa a(@NonNull OutputStream paramOutputStream)
-  {
-    bhpa localbhpa = null;
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_b_of_type_Bhpa != null)
+      if (b != null)
       {
-        localbhpa = jdField_b_of_type_Bhpa;
-        jdField_b_of_type_Bhpa = localbhpa.jdField_a_of_type_Bhpa;
+        bhpa localbhpa = b;
+        b = localbhpa.jdField_a_of_type_Bhpa;
         localbhpa.jdField_a_of_type_Bhpa = null;
-        c -= 1;
-      }
-      if (localbhpa != null)
-      {
-        localbhpa.out = paramOutputStream;
-        localbhpa.jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Int -= 1;
         return localbhpa;
       }
-    }
-    return new bhpa(paramOutputStream);
-  }
-  
-  private void a()
-  {
-    c();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 4)
-      {
-        this.jdField_a_of_type_Bhpa = jdField_b_of_type_Bhpa;
-        jdField_b_of_type_Bhpa = this;
-        c += 1;
-      }
-      return;
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
-      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
+      return new bhpa();
     }
   }
   
   private void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new IOException("BufferedOutputStream is closed");
-    }
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
   }
   
-  private void c()
+  public bhpa a(Object paramObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.out = null;
-    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
+    return this;
   }
   
-  private void d()
+  public void a()
   {
-    if (this.jdField_a_of_type_Int > 0)
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void close()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (bool) {
-        break label14;
-      }
-    }
-    finally
-    {
-      try
+      if (jdField_a_of_type_Int < 50)
       {
-        for (;;)
-        {
-          label14:
-          super.close();
-          a();
-        }
+        this.jdField_a_of_type_Bhpa = b;
+        b = this;
+        jdField_a_of_type_Int += 1;
       }
-      finally
-      {
-        a();
-      }
-      localObject1 = finally;
-    }
-  }
-  
-  public void flush()
-  {
-    try
-    {
-      b();
-      d();
-      this.out.flush();
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  public void write(int paramInt)
+  public String toString()
   {
-    try
-    {
-      b();
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
-      {
-        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = 0;
-      }
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      arrayOfByte[i] = ((byte)paramInt);
-      return;
-    }
-    finally {}
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      b();
-      if (paramArrayOfByte == null) {
-        throw new NullPointerException("buffer == null");
-      }
-    }
-    finally {}
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    if (paramInt2 >= arrayOfByte.length)
-    {
-      d();
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      return;
-      a(paramArrayOfByte.length, paramInt1, paramInt2);
-      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
-        d();
-      }
-      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
-      this.jdField_a_of_type_Int += paramInt2;
-    }
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhpa
  * JD-Core Version:    0.7.0.1
  */

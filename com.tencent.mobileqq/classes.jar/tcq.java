@@ -1,120 +1,63 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
 
 public class tcq
-  implements tck
 {
-  protected HashMap<String, WeakReference<QQStoryBaseActivity>> a;
-  public Map<String, WeakReference<QQStoryBaseActivity>> a;
+  public int a;
+  public long a;
+  public String a;
   public boolean a;
+  public int b;
+  public String b;
   
-  public tcq()
+  public tcq() {}
+  
+  public tcq(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public ArrayList<Integer> a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  public ReportWatchVideoEntry a()
   {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    ArrayList localArrayList2 = new ArrayList();
-    int j = localArrayList1.size();
-    int i = 0;
-    while (i < j)
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localArrayList1.get(i)).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing()) && (localQQStoryBaseActivity.getActivityName().equals(paramQQStoryBaseActivity.getActivityName())))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "QQStoryActivityManager getActivityFirstIndex: " + i + ", class = " + paramQQStoryBaseActivity.getActivityName());
-        }
-        localArrayList2.add(Integer.valueOf(i));
-      }
-      i += 1;
-    }
-    return localArrayList2;
+    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
+    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
+    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
+    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
+    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
+    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
+    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
+    return localReportWatchVideoEntry;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
   {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      Object localObject = (QQStoryBaseActivity)((WeakReference)localArrayList.get(paramInt2)).get();
-      if ((localObject != null) && (!((QQStoryBaseActivity)localObject).isFinishing()))
-      {
-        ((QQStoryBaseActivity)localObject).finish();
-        localObject = ((QQStoryBaseActivity)localObject).getActivityName() + "_" + localObject.hashCode();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
-        if (this.jdField_a_of_type_JavaUtilMap != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        }
-      }
-      paramInt2 -= 1;
-    }
+    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
+    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
+    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
+    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
+    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
+    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
   }
   
-  public void a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  public boolean equals(Object paramObject)
   {
-    String str = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    paramQQStoryBaseActivity = new WeakReference(paramQQStoryBaseActivity);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null)) {
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramQQStoryBaseActivity);
+    if (this == paramObject) {
+      return true;
     }
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
+    }
+    paramObject = (tcq)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
   }
   
-  public boolean a()
+  public String toString()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localIterator.next()).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing())) {
-        localQQStoryBaseActivity.finish();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    paramQQStoryBaseActivity = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null))
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramQQStoryBaseActivity);
-      if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-      {
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("qqstory.QQStoryActivityManager", 2, "player activity stack is empty, disable!");
-        }
-      }
-    }
+    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
   }
 }
 

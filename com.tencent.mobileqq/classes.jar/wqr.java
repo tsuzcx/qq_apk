@@ -1,35 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class wqr
-  implements View.OnClickListener
+  implements wre<Object>
 {
-  public wqr(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpz paramwpz) {}
+  public wqr(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, xgu paramxgu) {}
   
-  public void onClick(View paramView)
+  public void a(Object... paramVarArgs)
   {
-    paramView = new Intent();
-    paramView.putExtra("postUin", this.jdField_a_of_type_Wpz.a.poster.id.get());
-    if (this.jdField_a_of_type_Wpz.a.poster.youZhan.size() > 0) {
-      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Wpz.a.poster.youZhan.get(0)).type.get() <= 1) {
-        break label132;
-      }
-    }
-    label132:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.putExtra("has_shop", bool);
-      bgxy.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), paramView, 0);
-      xhe.b(this.jdField_a_of_type_Wpz.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
-      return;
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Xgu.a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
     }
   }
 }

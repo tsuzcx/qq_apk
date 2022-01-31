@@ -1,11 +1,36 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
 public class ajiu
+  extends bbwt
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
+  public ajiu(ApolloCardWindow paramApolloCardWindow) {}
+  
+  public void onDoneFile(bbwu parambbwu)
+  {
+    if (parambbwu == null) {
+      return;
+    }
+    try
+    {
+      ??? = parambbwu.a().getString("path");
+      String str = parambbwu.a().getString("url");
+      parambbwu = this.a.a((String)???);
+      str = bdik.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambbwu);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambbwu)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambbwu);
+    }
+  }
 }
 
 

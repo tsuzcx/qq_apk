@@ -1,6 +1,7 @@
-public abstract interface bdex
+public class bdex
 {
-  public abstract void a(boolean paramBoolean);
+  public long a;
+  public String a;
 }
 
 

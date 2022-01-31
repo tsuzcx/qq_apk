@@ -1,11 +1,23 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo;
 
-public abstract interface besh
+public final class besh
+  implements Parcelable.Creator<SecondApiRightInfo>
 {
-  public abstract void init(Context paramContext);
+  public SecondApiRightInfo a(Parcel paramParcel)
+  {
+    SecondApiRightInfo localSecondApiRightInfo = new SecondApiRightInfo();
+    localSecondApiRightInfo.apiName = paramParcel.readString();
+    localSecondApiRightInfo.secondName = paramParcel.readString();
+    localSecondApiRightInfo.right = paramParcel.readInt();
+    return localSecondApiRightInfo;
+  }
   
-  public abstract void setLoginInfo(LoginInfo paramLoginInfo);
+  public SecondApiRightInfo[] a(int paramInt)
+  {
+    return new SecondApiRightInfo[paramInt];
+  }
 }
 
 

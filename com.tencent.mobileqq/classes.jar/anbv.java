@@ -1,60 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbv
-  extends ampb<anbt>
 {
-  public static anbt a()
-  {
-    return (anbt)ampm.a().a(569);
-  }
+  private Map<String, List<anbw>> a = new HashMap();
   
-  public int a()
+  public static anbv a(amph[] paramArrayOfamph)
   {
-    return 569;
-  }
-  
-  @NonNull
-  public anbt a(int paramInt)
-  {
-    return new anbt();
-  }
-  
-  @Nullable
-  public anbt a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbt.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
+    localanbv = new anbv();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
+      Iterator localIterator = paramArrayOfamph.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONArray localJSONArray = paramArrayOfamph.getJSONArray(str);
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localArrayList.add(anbw.a(localJSONArray.getJSONObject(i)));
+          i += 1;
+        }
+        localanbv.a.put(str, localArrayList);
+      }
+      return localanbv;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfamph);
+    }
   }
   
-  public Class<anbt> a()
+  public Map<String, List<anbw>> a()
   {
-    return anbt.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbt paramanbt) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a;
   }
 }
 

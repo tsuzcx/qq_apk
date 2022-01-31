@@ -1,43 +1,42 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class aeth
-  extends bduv
+  implements BusinessObserver
 {
-  aeth(aerv paramaerv) {}
+  aeth(aert paramaert) {}
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.E(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.E(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.ap = true;
+          this.a.bE();
+          this.a.bp();
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
     }
-    this.a.ao = true;
-    this.a.bE();
-    if ((aerv.a(this.a) != null) && (aerv.a(this.a).isShowing())) {
-      aerv.a(this.a).dismiss();
-    }
-    this.a.bF();
-  }
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.ar = true;
-    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bE();
-    this.a.bF();
+    this.a.B(2131695569);
+    this.a.bp();
   }
 }
 

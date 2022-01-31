@@ -1,18 +1,32 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ulk
-  extends umz
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tjj>
 {
-  public ulk(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public ulk(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    tlo localtlo = new tlo();
-    localtlo.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localtlo.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    ste.a().dispatch(localtlo);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tjj paramtjj)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramtjj.jdField_a_of_type_JavaLangString)) {}
+    while ((paramtjj.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramtjj.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramtjj.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramtjj);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjj.class;
   }
 }
 

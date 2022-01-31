@@ -1,35 +1,45 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 import mqq.os.MqqHandler;
 
-class azmx
-  implements Animation.AnimationListener
+public class azmx
+  extends akat
 {
-  azmx(azmu paramazmu, boolean paramBoolean) {}
+  azmx(azmw paramazmw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    if (azmu.a(this.jdField_a_of_type_Azmu) != null)
+    if ((!azmw.a(this.a)) || (azmw.a(this.a) == null)) {}
+    for (;;)
     {
-      azmu.a(this.jdField_a_of_type_Azmu).a.clearAnimation();
-      azmu.a(this.jdField_a_of_type_Azmu).a.setVisibility(8);
-    }
-    azmu.a(this.jdField_a_of_type_Azmu, false);
-    azmu.a(this.jdField_a_of_type_Azmu, null);
-    azmu.a(this.jdField_a_of_type_Azmu, null);
-    azmu.a(this.jdField_a_of_type_Azmu, -1);
-    if ((!this.jdField_a_of_type_Boolean) && (!azmu.b(this.jdField_a_of_type_Azmu)))
-    {
-      ThreadManager.getUIHandler().post(azmu.a(this.jdField_a_of_type_Azmu));
-      azmu.b(this.jdField_a_of_type_Azmu, true);
+      return;
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
+        }
+      }
+      else
+      {
+        paramList = paramList.iterator();
+        do
+        {
+          if (!paramList.hasNext()) {
+            break;
+          }
+        } while (((MessageRecord)paramList.next()).uniseq != azmw.a(this.a).uniseq);
+        for (int i = 1; i != 0; i = 0)
+        {
+          ThreadManager.getUIHandler().post(new TroopAioKeywordTipBar.1.1(this));
+          return;
+        }
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

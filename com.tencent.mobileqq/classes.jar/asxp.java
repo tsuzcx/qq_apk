@@ -1,265 +1,196 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.text.style.ImageSpan;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
 import mqq.util.WeakReference;
 
 public class asxp
+  extends ImageSpan
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  WeakReference<ayxq> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  ArrayList<asxt> b = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Drawable.Callback> jdField_a_of_type_MqqUtilWeakReference;
   
-  private static String a()
+  public asxp(Context paramContext, int paramInt1, String paramString, int paramInt2, Drawable.Callback paramCallback)
   {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject2 != null)
-    {
-      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/common_resources";
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
-      {
-        localFile.mkdirs();
-        localObject1 = localObject2;
-      }
+    super(paramContext, paramInt1, 0);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt2;
+    if (paramCallback != null) {
+      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCallback);
     }
-    return localObject1;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public asxp(Context paramContext, int paramInt, String paramString, Drawable.Callback paramCallback)
   {
-    return c(paramString2);
+    this(paramContext, paramInt, paramString, 0, paramCallback);
   }
   
-  private void a(String paramString1, String arg2, boolean paramBoolean, asxu paramasxu)
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, "onDownloadEnd url:" + paramString1 + " success:" + paramBoolean + " mDestroyed:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Boolean) {
+    paramCharSequence = getDrawable();
+    if (paramCharSequence == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if ((paramCharSequence instanceof URLDrawable))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString1);
-      if (paramasxu != null) {
-        paramasxu.a(paramBoolean);
-      }
-    }
-    synchronized (this.b)
-    {
-      int i = this.b.size() - 1;
-      while (i >= 0)
+      paramInt2 = 0;
+      paramInt1 = 0;
+      if (((URLDrawable)paramCharSequence).getStatus() == 1)
       {
-        paramasxu = (asxt)this.b.get(i);
-        if ((paramasxu != null) && (TextUtils.equals(paramString1, paramasxu.jdField_a_of_type_JavaLangString)))
+        paramInt4 = paramCharSequence.getIntrinsicWidth();
+        i = paramCharSequence.getIntrinsicHeight();
+        paramInt1 = i;
+        paramInt2 = paramInt4;
+        if (i > this.jdField_a_of_type_Int)
         {
-          if (paramasxu.jdField_a_of_type_Asxu != null) {
-            paramasxu.jdField_a_of_type_Asxu.a(paramBoolean);
-          }
-          this.b.remove(i);
-        }
-        i -= 1;
-        continue;
-        paramString1 = finally;
-        throw paramString1;
-      }
-      return;
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return new File(paramString).exists();
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return c(paramString1, paramString2, paramArrayOfString);
-  }
-  
-  private static String b(String paramString)
-  {
-    return String.format("%s/%s.zip", new Object[] { a(), paramString });
-  }
-  
-  private static void b(String paramString)
-  {
-    bbdj.a(paramString, false);
-  }
-  
-  private static String c(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { a(), paramString });
-  }
-  
-  private static boolean c(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (new File(paramString1).exists())
-    {
-      paramString1 = aurl.a(paramString1);
-      bool1 = bool2;
-      if (paramString2 != null)
-      {
-        bool1 = bool2;
-        if (paramString2.equalsIgnoreCase(paramString1)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      paramString1 = a(paramString1, paramString2);
-      if (a(paramString1)) {}
-    }
-    else
-    {
-      return false;
-    }
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString2 = paramArrayOfString[i];
-        paramString2 = paramString1 + "/" + paramString2;
-        if (!a(paramString2))
-        {
-          QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
-          return false;
-        }
-        i += 1;
-      }
-    }
-    return true;
-  }
-  
-  private static boolean d(String paramString1, String paramString2)
-  {
-    try
-    {
-      albw.a(paramString1, paramString2);
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("ZipResourcesDownloader", 1, "unzipResource fail.", paramString1);
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(QQAppInterface arg1, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, asxu paramasxu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource url=%s md5=%s callback=%s", new Object[] { paramString2, paramString3, paramasxu }));
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (??? == null)) {
-      QLog.e("ZipResourcesDownloader", 1, "downloadResource invalid parameters.");
-    }
-    label359:
-    boolean bool1;
-    do
-    {
-      Object localObject1;
-      Object localObject2;
-      for (;;)
-      {
-        return;
-        localObject1 = null;
-        if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-          localObject1 = (ayxq)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = (ayxq)???.getManager(193);
-          this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject2);
-        }
-        if (localObject2 != null)
-        {
-          localObject1 = b(paramString3);
-          if (c((String)localObject1, paramString3)) {
-            break label359;
-          }
-          int i = 0;
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          paramInt1 = i;
+          paramInt2 = paramInt4;
+          if (this.jdField_a_of_type_Int > 0)
           {
-            if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString2)) {
-              i = 1;
-            }
-            if (i != 0)
-            {
-              if (paramasxu == null) {
-                continue;
-              }
-              synchronized (this.b)
-              {
-                this.b.add(new asxt(this, paramString2, paramasxu));
-                return;
-              }
-            }
+            paramInt2 = paramInt4 * this.jdField_a_of_type_Int / i;
+            paramInt1 = this.jdField_a_of_type_Int;
           }
         }
+        paramPaint = this.jdField_a_of_type_ComTencentImageURLDrawable;
+        if (paramInt2 <= 0) {
+          break label221;
+        }
+        paramInt4 = paramInt2;
+        if (paramInt1 <= 0) {
+          break label227;
+        }
       }
-      b((String)localObject1);
-      ??? = new ayrv();
-      ((ayrv)???).jdField_a_of_type_Aysa = new asxq(this);
-      ((ayrv)???).jdField_a_of_type_JavaLangString = paramString2;
-      ((ayrv)???).jdField_a_of_type_Int = 0;
-      ((ayrv)???).c = ((String)localObject1);
-      ((ayrv)???).e = 0;
-      ((ayrv)???).jdField_a_of_type_Ayrz = new asxr(this);
-      ((ayxq)localObject2).a(paramInt, paramString1, paramString3, 0, paramString2, (String)localObject1, 2, 0, false, new ayxo(???, paramString3, new asxs(this, paramString3, paramArrayOfString, paramasxu), (ayrv)???));
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
-        return;
+    }
+    label221:
+    label227:
+    for (int i = paramInt1;; i = 0)
+    {
+      paramPaint.setBounds(0, 0, paramInt4, i);
+      if (QLog.isColorLevel()) {
+        QLog.i("UrlBottomImageSpan", 2, "draw status:" + ((URLDrawable)paramCharSequence).getStatus() + " width:" + paramInt2 + " height:" + paramInt1);
       }
-      boolean bool2 = c(paramString2, paramString3, paramArrayOfString);
-      bool1 = bool2;
-      if (!bool2)
+      paramCanvas.save();
+      paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+      paramCharSequence.draw(paramCanvas);
+      paramCanvas.restore();
+      return;
+      paramInt4 = 0;
+      break;
+    }
+  }
+  
+  public Drawable getDrawable()
+  {
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
+      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+    }
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      StringBuilder localStringBuilder;
+      if (this.jdField_a_of_type_MqqUtilWeakReference != null)
       {
-        boolean bool3 = d((String)localObject1, c(paramString3));
-        bool2 = c(paramString2, paramString3, paramArrayOfString);
-        bool1 = bool2;
+        localObject = (Drawable.Callback)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject);
+        }
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new asxq(this));
         if (QLog.isColorLevel())
         {
-          QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
-          bool1 = bool2;
+          localStringBuilder = new StringBuilder().append("getDrawable. first get url:").append(this.jdField_a_of_type_JavaLangString).append("  cb:");
+          if (localObject == null) {
+            break label141;
+          }
         }
       }
-    } while (paramasxu == null);
-    paramasxu.a(bool1);
+      label141:
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.i("UrlBottomImageSpan", 2, bool);
+        return this.jdField_a_of_type_ComTencentImageURLDrawable;
+        localObject = null;
+        break;
+      }
+    }
+    return super.getDrawable();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramInt2 = 0;
+    paramCharSequence = getDrawable();
+    if (paramCharSequence == null) {
+      return 0;
+    }
+    int i;
+    int j;
+    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1))
+    {
+      i = paramCharSequence.getIntrinsicWidth();
+      j = paramCharSequence.getIntrinsicHeight();
+      paramInt2 = j;
+      paramInt1 = i;
+      if (j > this.jdField_a_of_type_Int)
+      {
+        paramInt2 = j;
+        paramInt1 = i;
+        if (this.jdField_a_of_type_Int > 0)
+        {
+          paramInt1 = i * this.jdField_a_of_type_Int / j;
+          paramInt2 = this.jdField_a_of_type_Int;
+        }
+      }
+      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      if (paramInt1 > 0)
+      {
+        i = paramInt1;
+        if (paramInt2 <= 0) {
+          break label293;
+        }
+        j = paramInt2;
+        label113:
+        localURLDrawable.setBounds(0, 0, i, j);
+      }
+    }
+    for (;;)
+    {
+      paramCharSequence = paramCharSequence.getBounds();
+      if (paramFontMetricsInt != null)
+      {
+        paramPaint = paramPaint.getFontMetricsInt();
+        j = paramPaint.bottom - paramPaint.top;
+        int k = paramCharSequence.bottom - paramCharSequence.top;
+        i = k / 2 - j / 4;
+        k /= 2;
+        j = j / 4 + k;
+        paramFontMetricsInt.ascent = (-j);
+        paramFontMetricsInt.top = (-j);
+        paramFontMetricsInt.bottom = i;
+        paramFontMetricsInt.descent = i;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("UrlBottomImageSpan", 2, "getSize size:" + paramCharSequence.right + " width:" + paramInt1 + " height:" + paramInt2 + " imageUrl:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return paramCharSequence.right;
+      i = 0;
+      break;
+      label293:
+      j = 0;
+      break label113;
+      paramInt1 = 0;
+    }
   }
 }
 

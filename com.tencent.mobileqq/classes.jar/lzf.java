@@ -1,18 +1,28 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class lzf
-  extends OrientationEventListener
+final class lzf
+  implements Animation.AnimationListener
 {
-  public lzf(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
+  lzf(View paramView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramInt);
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramAnimation.setVisibility(i);
+      return;
+    }
   }
   
-  public void onOrientationChanged(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

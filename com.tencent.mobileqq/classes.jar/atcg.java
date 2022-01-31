@@ -1,8 +1,10 @@
-public abstract interface atcg
+import android.widget.TextView;
+
+class atcg
 {
-  public abstract void bt();
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void bu();
+  atcg(atcf paramatcf) {}
 }
 
 

@@ -1,17 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import org.json.JSONObject;
 
 class aswh
-  extends BroadcastReceiver
+  implements ServiceConnection
 {
-  aswh(aswe paramaswe) {}
+  aswh(aswg paramaswg) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      aswe.a(this.a);
+    aswg.a(this.a, asvo.a(paramIBinder));
+    try
+    {
+      aswg.a(this.a).a(aswg.a(this.a));
+      if (aswg.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "0");
+        aswg.a(this.a).a(paramComponentName);
+        aswg.a(this.a, null);
+      }
+      return;
     }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      if (aswg.a(this.a) != null) {
+        aswg.a(this.a).b(aswg.a(this.a));
+      }
+      if (aswg.a(this.a) != null)
+      {
+        paramComponentName = new JSONObject();
+        paramComponentName.put("code", "1");
+        aswg.a(this.a).a(paramComponentName);
+        aswg.a(this.a, null);
+      }
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
+    aswg.a(this.a, null);
   }
 }
 

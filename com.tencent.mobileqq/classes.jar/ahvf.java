@@ -1,15 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahvf
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
   public ahvf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    vei.a("video_shoot", "down_now", 0, 0, new String[0]);
+    arik.b(null);
+    paramDialogInterface.dismiss();
   }
 }
 

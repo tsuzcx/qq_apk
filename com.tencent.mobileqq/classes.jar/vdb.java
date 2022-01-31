@@ -1,13 +1,16 @@
 import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
 
-class vdb
-  implements uza
+public class vdb
+  implements uzw
 {
-  vdb(vda paramvda) {}
+  vdb(vcp paramvcp) {}
   
-  public void a(uyf paramuyf)
+  public void a()
   {
-    vcs.a(this.a.a).sendMessage(vcs.a(this.a.a).obtainMessage(0, paramuyf));
+    ved.d("NewMyStorySegment", "finish get all data from server steps");
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
-import aukm;
+import ajxl;
+import auko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
@@ -10,12 +10,12 @@ import java.lang.ref.WeakReference;
 public class BaseChatPie$SaveInputTypeTask
   implements Runnable
 {
-  private aukm jdField_a_of_type_Aukm;
+  private auko jdField_a_of_type_Auko;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public BaseChatPie$SaveInputTypeTask(aukm paramaukm, QQAppInterface paramQQAppInterface)
+  public BaseChatPie$SaveInputTypeTask(auko paramauko, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Aukm = paramaukm;
+    this.jdField_a_of_type_Auko = paramauko;
     if (paramQQAppInterface != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     }
@@ -32,14 +32,14 @@ public class BaseChatPie$SaveInputTypeTask
         return;
         localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      localObject = (ajxn)((QQAppInterface)localObject).getManager(51);
-      if ((this.jdField_a_of_type_Aukm instanceof ExtensionInfo))
+      localObject = (ajxl)((QQAppInterface)localObject).getManager(51);
+      if ((this.jdField_a_of_type_Auko instanceof ExtensionInfo))
       {
-        ((ajxn)localObject).a((ExtensionInfo)this.jdField_a_of_type_Aukm);
+        ((ajxl)localObject).a((ExtensionInfo)this.jdField_a_of_type_Auko);
         return;
       }
-    } while (!(this.jdField_a_of_type_Aukm instanceof NoC2CExtensionInfo));
-    ((ajxn)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_Aukm, true);
+    } while (!(this.jdField_a_of_type_Auko instanceof NoC2CExtensionInfo));
+    ((ajxl)localObject).a((NoC2CExtensionInfo)this.jdField_a_of_type_Auko, true);
   }
 }
 

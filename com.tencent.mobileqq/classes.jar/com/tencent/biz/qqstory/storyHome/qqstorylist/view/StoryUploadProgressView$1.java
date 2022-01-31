@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view;
 
 import com.tencent.mobileqq.widget.MessageProgressView;
-import vaz;
+import vaw;
 
 public class StoryUploadProgressView$1
   implements Runnable
 {
-  public StoryUploadProgressView$1(vaz paramvaz) {}
+  public StoryUploadProgressView$1(vaw paramvaw) {}
   
   public void run()
   {
-    this.this$0.a.b(vaz.a(this.this$0) + "_" + hashCode());
+    this.this$0.a.b(vaw.a(this.this$0) + "_" + hashCode());
   }
 }
 

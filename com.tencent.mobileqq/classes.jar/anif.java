@@ -1,26 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.data.AutoReplyText;
 
 public final class anif
-  implements Parcelable.Creator
+  implements Parcelable.Creator<AutoReplyText>
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
+  public AutoReplyText a(Parcel paramParcel)
   {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
+    return new AutoReplyText(paramParcel);
   }
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public AutoReplyText[] a(int paramInt)
   {
-    return new IPSiteModel.Book[paramInt];
+    return new AutoReplyText[paramInt];
   }
 }
 

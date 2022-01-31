@@ -11,44 +11,68 @@ public class omn
   extends RecyclerView.Adapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rrs jdField_a_of_type_Rrs;
-  private List<String> b = new ArrayList();
+  private List<pay> jdField_a_of_type_JavaUtilList = new ArrayList();
+  rro jdField_a_of_type_Rro;
+  private List<pay> b = new ArrayList();
   
-  public omn(Context paramContext, List<String> paramList1, List<String> paramList2, rrs paramrrs)
+  public omn(Context paramContext, List<pay> paramList1, List<pay> paramList2)
   {
-    this.b = paramList1;
-    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rrs = paramrrs;
+  }
+  
+  private void a(int paramInt, pay parampay)
+  {
+    if (paramInt == 0) {
+      bhvy.a("readinjoy_show_recommend_reason_in_title_b", parampay.c);
+    }
   }
   
   public int getItemCount()
   {
-    if (this.b != null) {
-      return this.b.size();
+    int j = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    {
+      if (this.b != null) {
+        j = this.b.size();
+      }
+      return i + 0 + j;
     }
-    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.b.size()) {
+      return 0;
+    }
+    return 1;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((paramViewHolder instanceof omp))
+    omq localomq = (omq)paramViewHolder;
+    if (paramInt >= this.b.size())
     {
-      paramViewHolder = (omp)paramViewHolder;
-      if ((paramInt >= 0) && (paramInt < this.b.size()))
-      {
-        String str1 = (String)this.b.get(paramInt);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        paramViewHolder.a.setText(str1);
-        paramViewHolder.a.setOnClickListener(new omo(this, str2, str1));
-      }
+      paramInt -= this.b.size();
+      paramViewHolder = (pay)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localomq.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      localomq.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewHolder.b);
+      localomq.b.setText(paramViewHolder.d);
+      localomq.itemView.setOnClickListener(new omo(this, localomq, paramViewHolder, paramInt));
+      return;
+      paramViewHolder = (pay)this.b.get(paramInt);
+      localomq.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new omp(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559889, null));
+    return new omq(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559950, null));
   }
 }
 

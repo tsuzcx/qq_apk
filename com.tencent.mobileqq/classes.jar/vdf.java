@@ -1,17 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vdf
-  implements vaa
+  extends QQUIEventReceiver<vcp, svv>
 {
-  vdf(vcs paramvcs) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public vdf(@NonNull vcp paramvcp)
   {
-    veg.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
+    super(paramvcp);
+  }
+  
+  public void a(@NonNull vcp paramvcp, @NonNull svv paramsvv)
+  {
+    if (paramsvv.a())
+    {
+      ved.b(this.TAG, "group video upload");
+      return;
+    }
+    if (!paramsvv.b())
+    {
+      ved.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramvcp.a(paramsvv);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return svv.class;
   }
 }
 

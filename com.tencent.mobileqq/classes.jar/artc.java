@@ -1,6 +1,6 @@
 public abstract interface artc
 {
-  public abstract void a(int paramInt);
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

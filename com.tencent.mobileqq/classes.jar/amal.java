@@ -1,6 +1,11 @@
-public abstract interface amal
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.ArrayList;
+
+public abstract class amal
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
+  public abstract void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt);
+  
+  public abstract void a(ArrayList<RockDownloadInfo> paramArrayList);
 }
 
 

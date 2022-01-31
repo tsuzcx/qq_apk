@@ -1,46 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.2.1.1;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class bitw
-  implements bivo
+  extends RecyclerView.ViewHolder
 {
-  bitw(bitv parambitv) {}
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  ImageView b;
   
-  public void a()
+  public bitw(View paramView)
   {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateFail");
-    bitt.d(this.a.a);
-    bfnh.a(new AEGIFSinglePreviewFragment.2.1.1(this));
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("AEGIFSinglePreviewFragment", 4, "onGifCreateSuccess, come from AECAMERA_MODE_ALL");
-    bitt.d(this.a.a);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    String str;
-    if (!bitt.a(this.a.a)) {
-      if (bitt.a(this.a.a) != null) {
-        str = bitt.a(this.a.a).a();
-      }
-    }
-    for (;;)
-    {
-      localArrayList1.add(paramString);
-      localArrayList2.add(str);
-      bitt.a(this.a.a, localArrayList1, localArrayList2);
-      if ((!bitt.b(this.a.a)) || (bitt.a(this.a.a) == null)) {
-        break;
-      }
-      bitt.a(this.a.a, paramString, bitt.a(this.a.a), str);
-      return;
-      str = "";
-      continue;
-      str = bitt.b(this.a.a);
-    }
-    bjzb.a(bitt.a(this.a.a), paramString, birc.b(this.a.a.getActivity()), true, str);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362168));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362165));
+    this.b = ((ImageView)paramView.findViewById(2131362170));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362169));
   }
 }
 

@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
-import com.tencent.mobileqq.webview.webso.WebSoService.12;
+import android.view.animation.Transformation;
 
-public class bcgw
-  implements Animator.AnimatorListener
+class bcgw
+  implements bble<Integer>
 {
-  public bcgw(WebSoService.12 param12, ViewPropertyAnimator paramViewPropertyAnimator) {}
+  bcgw(bcgu parambcgu, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
+    if (!this.jdField_a_of_type_Bcgu.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Bcgu.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_Bcgu.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_Bcgu.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bcgu.jdField_a_of_type_Boolean = false;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

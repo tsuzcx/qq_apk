@@ -1,19 +1,16 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import java.util.List;
 
-public abstract interface aici
+public class aici
+  extends aylg
 {
-  public abstract int a();
+  public aici(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public abstract void a();
-  
-  public abstract void a(@Nullable aicg paramaicg);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
+  protected void a(boolean paramBoolean, List<String> paramList)
+  {
+    TextPreviewMenu.b(this.a);
+    TextPreviewMenu.a(this.a, paramList);
+  }
 }
 
 

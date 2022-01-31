@@ -1,12 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
 
 class axyz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  axyz(axyw paramaxyw) {}
+  axyz(axyy paramaxyy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (TextUtils.isEmpty(this.a.W)) {
+      return;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        str = aytd.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.V);
+        if (TextUtils.isEmpty(str))
+        {
+          this.a.a();
+          this.a.a(this.a.W, paramView);
+          axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.W, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.U, this.a.V);
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (new File(str).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.W, paramView);
+      }
+    }
+  }
 }
 
 

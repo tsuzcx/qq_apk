@@ -1,16 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class atwp
-  extends atuy
+public abstract class atwp
+  extends atut
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
-  
-  public atwp(atwo paramatwo)
+  public atwp(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    super(paramatwo);
+    super(paramContext, paramQQAppInterface);
   }
 }
 

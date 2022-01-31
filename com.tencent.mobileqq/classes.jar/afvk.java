@@ -1,17 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.widget.ProgressBar;
 
-class afvk
-  implements View.OnClickListener
+public class afvk
 {
-  afvk(afvi paramafvi, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afvi, 1);
-    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
+    localValueAnimator.addUpdateListener(new afvl(paramProgressBar));
+    return localValueAnimator;
   }
 }
 

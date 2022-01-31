@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class ContactMatch
-  extends aukm
+  extends auko
 {
   public short age;
   public int commonFriend;
   public short gender = 255;
   public boolean isReaded;
-  @auma
+  @aumc
   public String mobileNo;
   public String name;
   public long timestamp;

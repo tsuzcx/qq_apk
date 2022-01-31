@@ -1,110 +1,67 @@
+import android.animation.Animator.AnimatorListener;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
 public class tyy
-  implements tyo
 {
-  private tyy(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
-  
-  public void a()
+  public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
-    this.a.p();
+    ved.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
+    View localView = paramViewGroup.findViewById(2131375493);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131362543);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379156);
+    Drawable localDrawable = paramAnimationParam.a();
+    ImageView localImageView1 = null;
+    if (localDrawable != null)
+    {
+      localImageView1 = new ImageView(paramViewGroup.getContext());
+      localViewGroup.addView(localImageView1, new RelativeLayout.LayoutParams(-1, -1));
+      localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localImageView1.setImageDrawable(localDrawable);
+    }
+    int i = localView.getMeasuredWidth();
+    int j = localView.getMeasuredHeight();
+    float f1 = paramAnimationParam.c * 1.0F / i;
+    float f2 = paramAnimationParam.d * 1.0F / j;
+    paramViewGroup = new ValueAnimator();
+    paramViewGroup.setInterpolator(new DecelerateInterpolator());
+    paramViewGroup.setDuration(250L);
+    paramViewGroup.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, f1 }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, f2 }), PropertyValuesHolder.ofInt("width", new int[] { i, paramAnimationParam.c }), PropertyValuesHolder.ofInt("height", new int[] { j, paramAnimationParam.d }), PropertyValuesHolder.ofFloat("translateX", new float[] { 0.0F, paramAnimationParam.a }), PropertyValuesHolder.ofFloat("translateY", new float[] { 0.0F, paramAnimationParam.b }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 1.0F, 0.0F }) });
+    paramViewGroup.addUpdateListener(new tyz(localViewGroup, localDrawable, localImageView1, localImageView2));
+    paramViewGroup.addListener(new tza(paramAnimatorListener));
+    paramViewGroup.start();
   }
   
-  public void a(@NonNull ups paramups, ErrorMessage paramErrorMessage, boolean paramBoolean)
+  public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
-    Object localObject;
-    if (paramErrorMessage.isSuccess())
-    {
-      localObject = "suc";
-      veg.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramups);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tyr)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tyr)localObject).a(paramups);
-      }
-      localObject = (tyv)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tyv)localObject).a(paramups);
-      }
-      localObject = (tyq)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tyq)localObject).a(paramups);
-        if (!paramBoolean) {
-          break label183;
-        }
-        ((tyq)localObject).a(true);
-      }
-      label118:
-      localObject = this.a;
-      if (paramups.a(bool)) {
-        break label192;
-      }
-    }
-    label183:
-    label192:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
-      this.a.p();
-      if (StoryPlayerCommentListView.a(this.a) != null) {
-        StoryPlayerCommentListView.a(this.a).a(paramups, paramErrorMessage);
-      }
-      return;
-      localObject = "fail";
-      break;
-      ((tyq)localObject).a(false);
-      break label118;
-    }
-  }
-  
-  public void a(@NonNull ups paramups, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = "suc";
-      veg.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramups);
-      boolean bool = StoryPlayerCommentListView.a(this.a).a();
-      localObject = (tyr)this.a.a("PlayerCommentSegment");
-      if (localObject != null) {
-        ((tyr)localObject).a(paramups);
-      }
-      localObject = (tyv)this.a.a("PlayerDoubleTabSegment");
-      if (localObject != null) {
-        ((tyv)localObject).a(paramups);
-      }
-      localObject = (tyq)this.a.a("PlayerCommentEmptySegment");
-      if (localObject != null)
-      {
-        ((tyq)localObject).a(paramups);
-        ((tyq)localObject).a(false);
-      }
-      if (!paramBoolean) {
-        break label159;
-      }
-      localObject = this.a;
-      if (paramups.a(bool)) {
-        break label154;
-      }
-      paramBoolean = true;
-      label130:
-      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
-    }
-    for (;;)
-    {
-      this.a.p();
-      return;
-      localObject = "fail";
-      break;
-      label154:
-      paramBoolean = false;
-      break label130;
-      label159:
-      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
-    }
+    ved.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
+    Object localObject = paramViewGroup.findViewById(2131375493);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362543);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379156);
+    paramViewGroup = new ImageView(paramViewGroup.getContext());
+    localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
+    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    paramViewGroup.setImageDrawable(paramAnimationParam.a());
+    int i = ((View)localObject).getMeasuredWidth();
+    int j = ((View)localObject).getMeasuredHeight();
+    float f1 = paramAnimationParam.c * 1.0F / i;
+    float f2 = paramAnimationParam.d * 1.0F / j;
+    localObject = new ValueAnimator();
+    ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { f1, 1.0F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, 1.0F }), PropertyValuesHolder.ofInt("width", new int[] { paramAnimationParam.c, i }), PropertyValuesHolder.ofInt("height", new int[] { paramAnimationParam.d, j }), PropertyValuesHolder.ofFloat("translateX", new float[] { paramAnimationParam.a, 0.0F }), PropertyValuesHolder.ofFloat("translateY", new float[] { paramAnimationParam.b, 0.0F }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 0.0F, 1.0F }) });
+    ((ValueAnimator)localObject).addUpdateListener(new tzb(localViewGroup, paramViewGroup, localImageView));
+    ((ValueAnimator)localObject).addListener(new tzc(paramAnimatorListener, localViewGroup, paramViewGroup));
+    ((ValueAnimator)localObject).start();
   }
 }
 

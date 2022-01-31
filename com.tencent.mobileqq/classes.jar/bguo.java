@@ -1,8 +1,19 @@
-public final class bguo
+import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+
+public class bguo
+  implements myy
 {
-  public static String a = "tab_index";
-  public static String b = "url_params";
-  public static String c = "com.qqreader.redpoint_change";
+  public bguo(VipProxyRreLoadReaderProcess.1 param1) {}
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    bgwf.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
+    if (paramInt != 0) {
+      bgwf.a("VipProxyRreLoadReaderProcess", "offline update failed.");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

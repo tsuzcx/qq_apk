@@ -1,89 +1,112 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aknk
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
-  }
-  
-  public static void a(String paramString, Context paramContext, boolean paramBoolean)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    int k = 0;
+    int m = 0;
+    int j = 1;
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
+    if (localTroopInfo == null)
     {
-      return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_unread_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2;
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
-      bool2 = true;
+      localTroopInfo = new TroopInfo();
+      localTroopInfo.cmdUinFlagEx2 = paramInt;
     }
-    boolean bool1;
-    do
+    for (int i = 1;; i = 0)
     {
-      return bool2;
-      paramContext = a(paramContext, paramString1);
-      bool2 = paramContext.getBoolean("show_video_msg", false);
-      bool1 = bool2;
-      if (!bool2)
-      {
-        paramContext = paramContext.getString("KeyHiddenChatList", "");
-        String str = paramString2 + "|" + paramInt + ";";
-        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
-          bool2 = true;
-        }
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
-          bool1 = bool2;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRankConfig", 2, "decodeSinglePbMsg_GroupDis, groupMemberFlagEx2=" + paramInt + ", troopUin=" + paramLong + ", hummer message cmdUinFlagEx2=" + localTroopInfo.cmdUinFlagEx2);
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+      if (localTroopInfo.cmdUinFlagEx2 != paramInt)
+      {
+        i = m;
+        if (TroopInfo.isCmdUinFlagEx2Open(localTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramInt, 512)) {
+          i = 1;
+        }
+        localTroopInfo.cmdUinFlagEx2 = paramInt;
+        paramInt = j;
+      }
+      for (;;)
+      {
+        if (paramInt != 0)
+        {
+          localTroopManager.b(localTroopInfo);
+          if (i != 0) {
+            a(paramQQAppInterface, localTroopInfo);
+          }
+        }
+        return;
+        paramInt = i;
+        i = k;
+      }
     }
-    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
   }
   
-  public static void b(String paramString, Context paramContext, boolean paramBoolean)
+  public static void a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512)) {}
+    for (int i = 1;; i = 0)
     {
+      FriendsStatusUtil.a(paramQQAppInterface, paramTroopInfo.troopuin, 1, i);
       return;
-      paramContext = a(paramContext, paramString).edit();
-      paramContext.putBoolean("show_video_msg", paramBoolean);
-      paramContext.commit();
-    } while (!QLog.isColorLevel());
-    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+    }
   }
   
-  public static boolean b(String paramString, Context paramContext)
+  public static void a(QQAppInterface paramQQAppInterface, Map<String, Boolean> paramMap)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return true;
+    paramMap = paramMap.entrySet().iterator();
+    if (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {}
+      for (int i = 1;; i = 0)
+      {
+        FriendsStatusUtil.a(paramQQAppInterface, (String)localEntry.getKey(), 1, i);
+        break;
+      }
     }
-    return a(paramContext, paramString).getBoolean("show_video_msg", false);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    int i = 0;
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
+    }
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
+    TroopInfo localTroopInfo1 = localTroopInfo2;
+    if (localTroopInfo2 == null)
+    {
+      localTroopInfo1 = new TroopInfo();
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = 1;
+    }
+    if (localTroopInfo1.udwCmdUinRingtoneID != paramInt)
+    {
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = j;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        localTroopManager.b(localTroopInfo1);
+        amgb.a(paramQQAppInterface).a(paramInt);
+      }
+      return;
+    }
   }
 }
 

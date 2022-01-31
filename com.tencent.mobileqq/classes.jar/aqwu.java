@@ -1,57 +1,20 @@
-import QC.BubbleRecommendRsp;
-import QC.CommonRsp;
-import QC.FontRecommendRsp;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.hiboom.FontBubble;
 import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
 
 public class aqwu
-  extends akfz
+  implements askr<T, List<FontBubble>>
 {
   public aqwu(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
+  public List<FontBubble> a(T paramT)
   {
-    if (FontBubblePanelView.a(this.a) == 4)
-    {
-      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
-      }
-    }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
-    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
-  }
-  
-  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
-  {
-    if (FontBubblePanelView.a(this.a) == 3)
-    {
-      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
-      }
-    }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
-    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
+    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
+    FontBubble localFontBubble = new FontBubble();
+    localFontBubble.viewType = 0;
+    paramT.add(localFontBubble);
+    return paramT;
   }
 }
 

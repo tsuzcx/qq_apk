@@ -1,78 +1,112 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class anps
-  extends anpi
+  extends anpn
 {
+  private int a;
+  private boolean d;
+  
   public anps(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
+    super("qq.android.minidecode.so_v8.2.0", paramQQAppInterface);
   }
   
   public int a()
   {
-    return 10007;
+    return 10083;
   }
   
   public Class<? extends XmlData> a()
   {
-    return PttSilkAndChangeVoiceSoData.class;
+    return MiniScanDecodeSoData.class;
   }
   
   public String a()
   {
-    return "actEarlyPttSilkAndChangeVoiceSo";
+    return "MiniScanDecodeSoData";
+  }
+  
+  public void a()
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("mini_scan_sp", 4).edit().putInt("minidecode_so_version", b()).apply();
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    this.a = ((int)(100L * paramLong1 / paramLong2));
+    aljp.a(0, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download progress: " + this.a);
+    }
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  {
+    if (!paramBoolean)
+    {
+      g();
+      a();
+      aljp.a(0, false);
+    }
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download finish: " + paramBoolean);
+    }
   }
   
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download success: " + paramString);
+    }
+    int i = aljr.a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
+    }
+    if (i != 0)
+    {
+      g();
+      a();
+      aljp.a(0, false);
     }
     for (;;)
     {
-      try
-      {
-        str = avbz.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          bbdj.a(str);
-          if (new File(str).mkdir())
-          {
-            bbdj.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
-      }
-      try
-      {
-        if (!avbz.a)
-        {
-          bbdj.a(avbz.b());
-          bbdj.c(str, avbz.b());
-        }
-        super.a(paramString);
-        return;
-      }
-      finally {}
+      super.a(paramString);
+      return;
+      aljp.a(0, true);
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = a();
+    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
+    {
+      localObject = (MiniScanDecodeSoData)localObject;
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
+      }
+      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
+    }
+    do
+    {
+      return;
+      if (!this.d) {
+        this.d = paramBoolean;
+      }
+      super.a(paramBoolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
   }
   
   public boolean a()
@@ -82,35 +116,100 @@ public class anps
   
   public String b()
   {
-    return null;
+    return "prd";
   }
   
-  public boolean h()
+  public void b(XmlData paramXmlData)
   {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = lmb.f();
+    super.b(paramXmlData);
     if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.2.8" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "download begin");
     }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
-    {
-      aytl.a();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public boolean b()
+  {
+    if (this.d)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
+        QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "isNetValid2Download by user ");
       }
-      return bool;
+      return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "isNetValid2Download by startup ");
+    }
+    return super.b();
+  }
+  
+  public void c()
+  {
+    boolean bool = apvd.a(new File(aljr.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
+    }
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    int i = 0;
+    long l1 = alju.a("report_tag_so_cover", 0L);
+    long l2 = System.currentTimeMillis();
+    String str;
+    if (l2 - l1 > 86400000L)
+    {
+      str = "";
+      XmlData localXmlData = a();
+      if ((localXmlData == null) || (!(localXmlData instanceof MiniScanDecodeSoData))) {
+        break label107;
+      }
+      i = ((MiniScanDecodeSoData)localXmlData).Version;
+      str = aljr.c("minicode");
+      if ((localXmlData.loadState != 1) || (i <= 0) || (TextUtils.isEmpty(str))) {
+        break label102;
+      }
+      paramBoolean = true;
+    }
+    for (;;)
+    {
+      alju.a(paramBoolean, i, str);
+      alju.a("report_tag_so_cover", l2);
+      return;
+      label102:
+      paramBoolean = false;
+      continue;
+      label107:
+      paramBoolean = false;
+    }
+  }
+  
+  public boolean e()
+  {
+    if (!this.d)
+    {
+      if (BaseActivity.mAppForground) {}
+      for (boolean bool = false;; bool = true)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "downloadResource later " + bool);
+        }
+        if (!bool) {
+          break;
+        }
+        return false;
+      }
+    }
+    return super.e();
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDecodeSoDownloadHandler", 2, "restoreState");
+    }
+    a().loadState = 0;
+    a().Version = 0;
+    anpb.a(a(), new String[0]);
   }
 }
 

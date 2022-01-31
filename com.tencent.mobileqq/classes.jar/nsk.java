@@ -1,29 +1,24 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class nsk
-  implements View.OnClickListener
+  extends osm
 {
-  nsk(nsf paramnsf) {}
+  nsk(nsc paramnsc) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
-    paramView = (BaseActivity)paramView.getContext();
-    if (Build.VERSION.SDK_INT >= 23)
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
     {
-      if (paramView.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION"))
+      if ((nsc.a(this.a) == -1) || (nsc.a(this.a) == 0))
       {
-        nsf.a(this.a, true);
+        nsc.a(this.a, 0);
         return;
       }
-      paramView.requestPermissions(new nsl(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      nsc.a(this.a, 4);
       return;
     }
-    nsf.a(this.a, 5);
+    nsc.a(this.a, 1);
   }
 }
 

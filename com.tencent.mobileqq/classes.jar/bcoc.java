@@ -1,9 +1,12 @@
+import android.graphics.Bitmap;
+
 public class bcoc
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public float a;
+  public Bitmap a;
+  public float b;
+  public float c;
+  public float d;
 }
 
 

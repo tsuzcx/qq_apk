@@ -1,95 +1,279 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.1;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.2;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.3;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.4;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class anjj
-  implements Parcelable.Creator<MessageForShortVideo>
+public class anjj
+  extends ClickableSpan
 {
-  public MessageForShortVideo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MessageForNearbyMarketGrayTips jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_b_of_type_Int;
+  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  private int c;
+  private int d;
+  private int e = 2147483647;
+  
+  public anjj(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, MessageForNearbyMarketGrayTips paramMessageForNearbyMarketGrayTips)
   {
-    boolean bool2 = true;
-    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
-    localMessageForShortVideo.uniseq = paramParcel.readLong();
-    localMessageForShortVideo.istroop = paramParcel.readInt();
-    localMessageForShortVideo.selfuin = paramParcel.readString();
-    localMessageForShortVideo.frienduin = paramParcel.readString();
-    localMessageForShortVideo.senderuin = paramParcel.readString();
-    localMessageForShortVideo.uuid = paramParcel.readString();
-    localMessageForShortVideo.md5 = paramParcel.readString();
-    localMessageForShortVideo.videoFileName = paramParcel.readString();
-    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForShortVideo.fileType = paramParcel.readInt();
-    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForShortVideo.fileSource = paramParcel.readString();
-    localMessageForShortVideo.lastModified = paramParcel.readLong();
-    localMessageForShortVideo.thumbFileSize = paramParcel.readInt();
-    localMessageForShortVideo.busiType = paramParcel.readInt();
-    localMessageForShortVideo.fromChatType = paramParcel.readInt();
-    localMessageForShortVideo.toChatType = paramParcel.readInt();
-    localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
-    localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips = paramMessageForNearbyMarketGrayTips;
+  }
+  
+  public String a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = (NearbyGrayTipsManager)((QQAppInterface)localObject).getManager(93);
+    if (localObject != null) {
+      return ((NearbyGrayTipsManager)localObject).a(this.c, paramInt, paramBoolean);
+    }
+    return "";
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return null;
+    }
+    localObject = (NearbyGrayTipsManager)((QQAppInterface)localObject).getManager(93);
+    if (localObject != null) {
+      return ((NearbyGrayTipsManager)localObject).a(this.c, paramBoolean);
+    }
+    return "";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickJumpWeb, url = " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    Context localContext;
+    do
     {
-      bool1 = true;
-      localMessageForShortVideo.supportProgressive = bool1;
-      localMessageForShortVideo.fileWidth = paramParcel.readInt();
-      localMessageForShortVideo.fileHeight = paramParcel.readInt();
-      localMessageForShortVideo.transferedSize = paramParcel.readInt();
-      localMessageForShortVideo.subBusiType = paramParcel.readInt();
-      localMessageForShortVideo.videoAttr = paramParcel.readInt();
-      localMessageForShortVideo.binarySet = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label457;
+      return;
+      localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    } while (localContext == null);
+    Object localObject = paramString;
+    if (paramString.contains("strangerUin=xxx")) {
+      localObject = paramString.replace("strangerUin=xxx", "strangerUin=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (String)localObject;
+    if (localQQAppInterface != null)
+    {
+      paramString = (String)localObject;
+      if (((String)localObject).contains("sign=xxx"))
+      {
+        if (1001 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+          break label352;
+        }
+        paramString = ((String)localObject).replace("sign=xxx", "sign=" + bbbr.a(localQQAppInterface.a().m(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
       }
-      bool1 = true;
-      label314:
-      localMessageForShortVideo.mediacodecEncode = bool1;
-      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
-      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
-      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
-      localMessageForShortVideo.msgTailType = paramParcel.readInt();
-      localMessageForShortVideo.redBagType = paramParcel.readInt();
-      localMessageForShortVideo.shortVideoId = paramParcel.readString();
-      localMessageForShortVideo.redBagStat = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label462;
-      }
-      bool1 = true;
-      label410:
-      localMessageForShortVideo.syncToStory = bool1;
-      localMessageForShortVideo.videoKandianType = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label467;
+      localObject = paramString;
+      if (paramString.contains("sourceType=xxx"))
+      {
+        if (1001 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+          break label472;
+        }
+        localObject = paramString.replace("sourceType=xxx", "sourceType=1");
       }
     }
-    label457:
-    label462:
-    label467:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      localMessageForShortVideo.sendRawVideo = bool1;
-      localMessageForShortVideo.templateId = paramParcel.readString();
-      return localMessageForShortVideo;
-      bool1 = false;
+      paramString = (String)localObject;
+      if (((String)localObject).equals("https://imgcache.qq.com/club/client/flower/release/html/index.html"))
+      {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin;
+        localObject = bbbr.a(localQQAppInterface.a().m(paramString));
+        localObject = String.format("https://imgcache.qq.com/club/client/flower/release/html/index.html?strangerUin=%s&sign=%s&sourceType=%d&ADTAG=%s&groupCode=%s&_wv=2147347&_bid=2050", new Object[] { atbp.a(paramString), ((String)localObject).toLowerCase(), Integer.valueOf(1), "aio.plus.s", "" });
+        paramString = (String)localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("MessageForNearbyMarketGrayTips", 2, "jump flow store, " + (String)localObject);
+          paramString = (String)localObject;
+        }
+      }
+      localObject = new Intent(localContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
+      localContext.startActivity((Intent)localObject);
+      return;
+      label352:
+      if (1010 == this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop)
+      {
+        paramString = ((String)localObject).replace("sign=xxx", "sign=" + bbbr.a(localQQAppInterface.a().p(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
+        break;
+      }
+      paramString = (String)localObject;
+      if (10002 != this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+        break;
+      }
+      paramString = ((String)localObject).replace("sign=xxx", "sign=" + bbbr.a(localQQAppInterface.a().k(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin)));
       break;
-      bool1 = false;
-      break label314;
-      bool1 = false;
-      break label410;
+      label472:
+      localObject = paramString;
+      if (1010 == this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.istroop) {
+        localObject = paramString.replace("sourceType=xxx", "sourceType=2");
+      }
     }
   }
   
-  public MessageForShortVideo[] a(int paramInt)
+  public void b(String paramString)
   {
-    return new MessageForShortVideo[paramInt];
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickJumpNative, schema = " + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    Context localContext;
+    do
+    {
+      return;
+      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localContext = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    } while ((localObject == null) || (localContext == null));
+    Object localObject = bbex.a((QQAppInterface)localObject, localContext, paramString);
+    if (localObject != null)
+    {
+      ((bbeg)localObject).c();
+      return;
+    }
+    a(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "clickAutoInput, content = " + paramString);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {}
+    long l;
+    do
+    {
+      return;
+      l = Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      if (l <= 5000L) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MessageForNearbyMarketGrayTips", 2, "clickAutoInput, time = " + l);
+    return;
+    ((atbe)localQQAppInterface.a(66)).a("tag_nearby_chat", paramString, null);
+    ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.4(this, localQQAppInterface), 2, null, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface != null)
+    {
+      axqy.b(localQQAppInterface, "CliOper", "", "", "0X800524C", "0X800524C", 0, 0, String.valueOf(this.c), "", "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.AioType == 0)
+      {
+        paramView = "0";
+        axqy.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_link", 0, 0, paramView, "", "", "");
+      }
+    }
+    else
+    {
+      switch (this.jdField_b_of_type_Int)
+      {
+      }
+    }
+    label343:
+    label350:
+    do
+    {
+      do
+      {
+        return;
+        paramView = "1";
+        break;
+        a(this.jdField_a_of_type_JavaLangString);
+        return;
+        b(this.jdField_a_of_type_JavaLangString);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = a(false);
+        if (TextUtils.isEmpty(paramView))
+        {
+          ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.1(this), 5, null, true);
+          return;
+        }
+        c(paramView);
+        return;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. mGender=" + this.e);
+        }
+      } while (localQQAppInterface == null);
+      if (asyw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips, "isFaceScoreSecondMember"))
+      {
+        paramView = "2";
+        if (!asyw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips, "isFaceScoreSpecialLike")) {
+          break label343;
+        }
+      }
+      for (String str = "2";; str = "1")
+      {
+        asyw.a("clk_hi", this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyMarketGrayTips.frienduin, new String[] { paramView, "", "", str });
+        if (this.e != 2147483647) {
+          break label350;
+        }
+        ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.2(this, localQQAppInterface), 5, null, true);
+        return;
+        paramView = "1";
+        break;
+      }
+      paramView = a(this.e, false);
+      if (TextUtils.isEmpty(paramView))
+      {
+        ThreadManager.post(new MessageForNearbyMarketGrayTips.HightlightClickableSpan.3(this), 5, null, true);
+        return;
+      }
+      c(paramView);
+    } while (!QLog.isColorLevel());
+    QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from cache. FaceScoreWording=" + paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      paramTextPaint.setColor(paramTextPaint.linkColor);
+    }
+    for (;;)
+    {
+      paramTextPaint.setUnderlineText(false);
+      return;
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    }
   }
 }
 

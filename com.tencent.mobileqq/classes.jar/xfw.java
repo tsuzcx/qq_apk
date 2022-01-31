@@ -1,50 +1,69 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfw
+  extends ampa<xfv>
 {
-  private String a = "";
-  private String b = "";
-  private String c = "";
-  
-  public static xfw a(String paramString)
+  public int a()
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    return 595;
+  }
+  
+  public Class<xfv> a()
+  {
+    return xfv.class;
+  }
+  
+  @NonNull
+  public xfv a(int paramInt)
+  {
+    return new xfv();
+  }
+  
+  @Nullable
+  public xfv a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      xfw localxfw = new xfw();
-      paramString = new JSONObject(paramString);
-      localxfw.a = paramString.optString("icon_image_url", "");
-      localxfw.b = paramString.optString("md5", "");
-      localxfw.c = paramString.optString("widget_id", "");
-      return localxfw;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      xfv localxfv = xfv.a(paramArrayOfamph[0].a);
+      a(localxfv);
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      return localxfv;
     }
     return null;
   }
   
-  public String a()
+  public void a(int paramInt) {}
+  
+  public void a(xfv paramxfv)
   {
-    return this.a;
+    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
+    if (paramxfv != null)
+    {
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramxfv.toString());
+      xfo.a().a("sticky_note_publish_entrance_config", paramxfv.a());
+    }
   }
   
-  public String b()
+  public boolean a()
   {
-    return this.b;
+    return true;
   }
   
-  public String c()
+  public int b()
   {
-    return this.c;
+    return 0;
   }
   
-  public String toString()
+  public boolean b()
   {
-    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

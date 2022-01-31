@@ -1,38 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import android.widget.TextView;
 
-public class ujb
-  extends BroadcastReceiver
+class ujb
+  implements svz
 {
-  public ujb(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
+  ujb(uja paramuja) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString, int paramInt)
   {
-    veg.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      paramContext = paramIntent.getStringExtra("event");
-      veg.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
-      if (!"closeMeEvent".equals(paramContext)) {
-        break label70;
-      }
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-    }
-    label70:
-    do
-    {
-      return;
-      if (!"readyEvent".equals(paramContext)) {
-        break;
-      }
-    } while (this.a.a == null);
-    this.a.a.b();
-    return;
-    bcpw.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
+    uja.a(this.a).setText(ajya.a(2131715937) + paramInt + "%");
   }
 }
 

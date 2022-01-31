@@ -1,37 +1,54 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class adiz
-  implements View.OnClickListener
+public class adiz
+  implements adif
 {
-  adiz(adiy paramadiy, String paramString1, String paramString2) {}
+  private BaseChatPie a;
   
-  public void onClick(View paramView)
+  public adiz(BaseChatPie paramBaseChatPie)
   {
-    try
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
-      {
-        adiy.a(this.jdField_a_of_type_Adiy).a.getText().clear();
-        adiy.a(this.jdField_a_of_type_Adiy).c(adiy.a(this.jdField_a_of_type_Adiy));
-      }
-      int i = adiy.a(this.jdField_a_of_type_Adiy).a.getSelectionStart();
-      paramView = adiy.a(this.jdField_a_of_type_Adiy).a.getText();
-      this.jdField_a_of_type_Adiy.a = true;
-      paramView.insert(i, this.b);
-      this.jdField_a_of_type_Adiy.a = false;
-      adiy.a(this.jdField_a_of_type_Adiy).a.setSelection(paramView.length());
-      this.jdField_a_of_type_Adiy.a();
+    default: 
       return;
     }
-    catch (Throwable paramView)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.a != null)
     {
-      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + paramView);
+      BaseActivity localBaseActivity = this.a.a();
+      localObject1 = localObject2;
+      if (localBaseActivity != null) {
+        localObject1 = localBaseActivity.getIntent();
+      }
     }
+    a((Intent)localObject1);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if ((paramIntent == null) || (this.a == null)) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = this.a.a;
+    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
+    axqy.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11 };
   }
 }
 

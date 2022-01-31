@@ -1,20 +1,24 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class aavq
-  implements aaqe
+  extends aumg
 {
   public aavq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).d();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
+    }
   }
 }
 

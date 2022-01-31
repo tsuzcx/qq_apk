@@ -1,30 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-
-class tgd
-  implements syt<tgi, tgj>
+public class tgd
 {
-  tgd(tgc paramtgc, ssv paramssv, ssw paramssw) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void a(@NonNull tgi paramtgi, @Nullable tgj paramtgj, @NonNull ErrorMessage paramErrorMessage)
+  public void a(tgd paramtgd)
   {
-    if ((paramErrorMessage.isFail()) || (paramtgj == null))
-    {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+    if (paramtgd == null) {
       return;
     }
-    if (paramtgj.b == 1)
+    this.jdField_a_of_type_Long = paramtgd.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramtgd.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramtgd.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramtgd.jdField_b_of_type_JavaLangString;
+    this.c = paramtgd.c;
+    this.d = paramtgd.d;
+    this.jdField_a_of_type_Boolean = paramtgd.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramtgd.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    boolean bool1;
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
     {
-      this.jdField_a_of_type_Tgc.a(true);
-      this.jdField_a_of_type_Ssv.b(2);
-      this.jdField_a_of_type_Tgc.a = 2;
+      bool1 = true;
+      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+        break label68;
+      }
+      bool1 = bool2;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramtgj.b);
+    label68:
+    for (;;)
+    {
+      ved.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
+      return bool1;
+      bool1 = false;
+      break;
     }
-    this.jdField_a_of_type_Ssw.a(paramtgj.a);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
+    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:").append(this.c);
+    localStringBuilder.append(" contentId:").append(this.d);
+    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

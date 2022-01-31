@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.interstitial;
 
-import abtu;
-import ajyc;
+import abtq;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bcpq;
+import bcqf;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
@@ -30,22 +30,22 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
+import yug;
+import yui;
 import yuj;
-import yul;
-import yum;
-import yut;
-import yxs;
-import yyf;
-import yze;
+import yuq;
+import yxp;
+import yyc;
+import yzb;
 
 public final class GdtInterstitialFragment
   extends PublicBaseFragment
 {
   private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_a_of_type_Int = 0;
-  private bcpq jdField_a_of_type_Bcpq;
+  private bcqf jdField_a_of_type_Bcqf;
   private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
-  private yut jdField_a_of_type_Yut;
+  private yuq jdField_a_of_type_Yuq;
   private boolean jdField_a_of_type_Boolean;
   
   private String a()
@@ -58,31 +58,31 @@ public final class GdtInterstitialFragment
   
   private void a(boolean paramBoolean)
   {
-    yxs.b("GdtInterstitialFragment", String.format("setLoading visible:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
+    yxp.b("GdtInterstitialFragment", String.format("setLoading visible:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     if (paramBoolean) {
-      if ((this.jdField_a_of_type_Bcpq == null) || (!this.jdField_a_of_type_Bcpq.isShowing())) {}
+      if ((this.jdField_a_of_type_Bcqf == null) || (!this.jdField_a_of_type_Bcqf.isShowing())) {}
     }
-    while ((paramBoolean) || (this.jdField_a_of_type_Bcpq == null))
+    while ((paramBoolean) || (this.jdField_a_of_type_Bcqf == null))
     {
       return;
-      this.jdField_a_of_type_Bcpq = new bcpq(getActivity(), getResources().getDimensionPixelSize(2131298865));
-      this.jdField_a_of_type_Bcpq.setCancelable(false);
-      this.jdField_a_of_type_Bcpq.a(ajyc.a(2131705171) + "加载");
-      this.jdField_a_of_type_Bcpq.show();
+      this.jdField_a_of_type_Bcqf = new bcqf(getActivity(), getResources().getDimensionPixelSize(2131298865));
+      this.jdField_a_of_type_Bcqf.setCancelable(false);
+      this.jdField_a_of_type_Bcqf.a(ajya.a(2131705182) + "加载");
+      this.jdField_a_of_type_Bcqf.show();
       return;
     }
-    if (this.jdField_a_of_type_Bcpq.isShowing()) {}
+    if (this.jdField_a_of_type_Bcqf.isShowing()) {}
     try
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf.dismiss();
+      this.jdField_a_of_type_Bcqf = null;
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        yxs.d("GdtInterstitialFragment", "setLoading", localThrowable);
+        yxp.d("GdtInterstitialFragment", "setLoading", localThrowable);
       }
     }
   }
@@ -97,8 +97,8 @@ public final class GdtInterstitialFragment
     }
     for (;;)
     {
-      yxs.b("GdtInterstitialFragment", String.format("start errorCode:%d", new Object[] { Integer.valueOf(i) }));
-      yyf.a(paramActivity, paramGdtInterstitialParams, i);
+      yxp.b("GdtInterstitialFragment", String.format("start errorCode:%d", new Object[] { Integer.valueOf(i) }));
+      yyc.a(paramActivity, paramGdtInterstitialParams, i);
       if (i == 0) {
         bool = true;
       }
@@ -144,7 +144,7 @@ public final class GdtInterstitialFragment
             Intent localIntent = new Intent();
             localIntent.putExtra("public_fragment_window_feature", 1);
             localIntent.putExtras(localBundle);
-            abtu.a(paramActivity, localIntent, (Class)localObject, GdtInterstitialFragment.class, 10001);
+            abtq.a(paramActivity, localIntent, (Class)localObject, GdtInterstitialFragment.class, 10001);
             i = 0;
           }
         }
@@ -157,21 +157,21 @@ public final class GdtInterstitialFragment
     long l = -2147483648L;
     this.jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_Int == 2) {
-      yum.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
+      yuj.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
     }
     a(false);
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams == null) {}
     while (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b != -2147483648L)
     {
-      yxs.d("GdtInterstitialFragment", "onLoaded error");
+      yxp.d("GdtInterstitialFragment", "onLoaded error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Long != -2147483648L) {
       l = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b - this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Long;
     }
-    yxs.b("GdtInterstitialFragment", String.format("onLoaded timeMillis:%d", new Object[] { Long.valueOf(l) }));
-    yyf.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
+    yxp.b("GdtInterstitialFragment", String.format("onLoaded timeMillis:%d", new Object[] { Long.valueOf(l) }));
+    yyc.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
   }
   
   boolean a()
@@ -183,7 +183,7 @@ public final class GdtInterstitialFragment
     }
     for (;;)
     {
-      yxs.d("GdtInterstitialFragment", "onClick error");
+      yxp.d("GdtInterstitialFragment", "onClick error");
       return bool1;
       bool1 = bool2;
       if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null)
@@ -193,7 +193,7 @@ public final class GdtInterstitialFragment
         {
           GdtHandler.Params localParams = new GdtHandler.Params();
           localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(getActivity());
-          localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(yul.a().a());
+          localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(yui.a().a());
           localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
           localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
           localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
@@ -228,7 +228,7 @@ public final class GdtInterstitialFragment
     }
     for (;;)
     {
-      yxs.b("GdtInterstitialFragment", String.format("finish %b error:%d arkError:%d arkScriptError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+      yxp.b("GdtInterstitialFragment", String.format("finish %b error:%d arkError:%d arkScriptError:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
       return bool;
       a(false);
       if (getActivity() == null)
@@ -238,7 +238,7 @@ public final class GdtInterstitialFragment
       else
       {
         getActivity().finish();
-        yyf.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, paramInt1, paramInt2, paramInt3);
+        yyc.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, paramInt1, paramInt2, paramInt3);
         bool = true;
       }
     }
@@ -246,12 +246,12 @@ public final class GdtInterstitialFragment
   
   public void beforeFinish()
   {
-    yxs.b("GdtInterstitialFragment", "beforeFinish");
+    yxp.b("GdtInterstitialFragment", "beforeFinish");
     this.jdField_a_of_type_Int = 4;
-    if (this.jdField_a_of_type_Yut != null) {
-      this.jdField_a_of_type_Yut.c(getActivity());
+    if (this.jdField_a_of_type_Yuq != null) {
+      this.jdField_a_of_type_Yuq.c(getActivity());
     }
-    yul.a().a(a());
+    yui.a().a(a());
     getActivity().setResult(-1);
     super.beforeFinish();
   }
@@ -290,13 +290,13 @@ public final class GdtInterstitialFragment
   {
     this.jdField_a_of_type_Int = 1;
     a(true);
-    AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragment.1(this), 0, yul.a().a(getActivity()));
-    yuj.a();
+    AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragment.1(this), 0, yui.a().a(getActivity()));
+    yug.a();
     paramLayoutInflater = new FrameLayout(getActivity());
     if (getArguments() == null) {}
     for (;;)
     {
-      yxs.b("GdtInterstitialFragment", String.format("onCreateView traceId:%s", new Object[] { a() }));
+      yxp.b("GdtInterstitialFragment", String.format("onCreateView traceId:%s", new Object[] { a() }));
       return paramLayoutInflater;
       if (getArguments().containsKey("params"))
       {
@@ -304,15 +304,15 @@ public final class GdtInterstitialFragment
         if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null) && (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.b()) && (!TextUtils.isEmpty(a())) && (getArguments().containsKey("startToShowTimeMillis")))
         {
           this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Long = getArguments().getLong("startToShowTimeMillis");
-          if ((yul.a().a(a(), new WeakReference(this))) || (getActivity() != null))
+          if ((yui.a().a(a(), new WeakReference(this))) || (getActivity() != null))
           {
             getActivity().setRequestedOrientation(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Int);
-            this.jdField_a_of_type_Yut = new yut(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
-            if (this.jdField_a_of_type_Yut.a() != null)
+            this.jdField_a_of_type_Yuq = new yuq(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
+            if (this.jdField_a_of_type_Yuq.a() != null)
             {
-              paramViewGroup = new FrameLayout.LayoutParams(yze.b(getActivity()), yze.d(getActivity()));
+              paramViewGroup = new FrameLayout.LayoutParams(yzb.b(getActivity()), yzb.d(getActivity()));
               paramViewGroup.gravity = 17;
-              paramLayoutInflater.addView(this.jdField_a_of_type_Yut.a(), paramViewGroup);
+              paramLayoutInflater.addView(this.jdField_a_of_type_Yuq.a(), paramViewGroup);
               if (!this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.jdField_a_of_type_Boolean) {
                 getActivity().getWindow().addFlags(1024);
               }
@@ -325,7 +325,7 @@ public final class GdtInterstitialFragment
   
   public void onFinish()
   {
-    yxs.b("GdtInterstitialFragment", "onFinish");
+    yxp.b("GdtInterstitialFragment", "onFinish");
     super.onFinish();
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (Build.VERSION.SDK_INT >= 5)) {
@@ -335,13 +335,13 @@ public final class GdtInterstitialFragment
   
   public void onPause()
   {
-    yxs.b("GdtInterstitialFragment", "onPause");
+    yxp.b("GdtInterstitialFragment", "onPause");
     this.jdField_a_of_type_Int = 3;
-    if (this.jdField_a_of_type_Yut != null) {
-      this.jdField_a_of_type_Yut.a(getActivity());
+    if (this.jdField_a_of_type_Yuq != null) {
+      this.jdField_a_of_type_Yuq.a(getActivity());
     }
     if (this.jdField_a_of_type_Boolean) {
-      yum.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
+      yuj.b(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
     }
     super.onPause();
   }
@@ -349,15 +349,15 @@ public final class GdtInterstitialFragment
   public void onResume()
   {
     super.onResume();
-    yxs.b("GdtInterstitialFragment", "onResume");
+    yxp.b("GdtInterstitialFragment", "onResume");
     this.jdField_a_of_type_Int = 2;
-    if (this.jdField_a_of_type_Yut != null) {
-      this.jdField_a_of_type_Yut.b(getActivity());
+    if (this.jdField_a_of_type_Yuq != null) {
+      this.jdField_a_of_type_Yuq.b(getActivity());
     }
     if (this.jdField_a_of_type_Boolean)
     {
       a(false);
-      yum.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
+      yuj.a(getActivity(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams);
     }
   }
 }

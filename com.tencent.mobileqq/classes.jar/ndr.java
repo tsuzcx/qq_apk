@@ -1,21 +1,30 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
 
 public class ndr
-  implements View.OnClickListener
+  implements bfph
 {
-  public ndr(EqqAccountDetailActivity paramEqqAccountDetailActivity, String paramString, nmv paramnmv) {}
+  public ndr(EqqAccountDetailActivity paramEqqAccountDetailActivity, bfpc parambfpc, String paramString) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString.contains(ajyc.a(2131704178))))
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
     {
-      noo.a(EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    default: 
+    case 0: 
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      naz.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
       return;
     }
-    EqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_Nmv.jdField_a_of_type_JavaLangString);
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 

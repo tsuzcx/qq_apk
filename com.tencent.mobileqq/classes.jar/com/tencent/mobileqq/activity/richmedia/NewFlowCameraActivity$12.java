@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class NewFlowCameraActivity$12
@@ -11,7 +11,7 @@ class NewFlowCameraActivity$12
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131707452), 1).a();
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131707463), 1).a();
     this.this$0.finish();
   }
 }

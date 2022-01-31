@@ -1,13 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bktw
   implements DialogInterface.OnClickListener
 {
-  public bktw(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.pauseDownload();
+    }
+  }
 }
 
 

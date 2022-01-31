@@ -1,29 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.richmedia.capture.view.SimpleEffectsCaptureView;
+import dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.10;
 
 public class bjps
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bjps(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bjps(LightWeightCameraCaptureUnit.10 param10) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView 140ms translate end");
+    paramDialogInterface = this.a.this$0.jdField_a_of_type_Bjrl.a();
+    if (paramInt == 1)
+    {
+      this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSimpleEffectsCaptureView.setCameraPermissionResult(false);
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
+      paramDialogInterface.startActivity(localIntent);
+      return;
     }
-    this.a.a.d = 4;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.a = SystemClock.uptimeMillis();
-    this.a.a.b = 140L;
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation deleteView begin");
-    }
+    paramDialogInterface.finish();
   }
 }
 

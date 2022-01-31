@@ -1,16 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
-class aore
+public class aore
   implements View.OnClickListener
 {
-  aore(aord paramaord) {}
+  public aore(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
   public void onClick(View paramView)
   {
-    QfileCloudFileTabView.a(this.a.a, false);
-    this.a.a.h();
+    if (!QfileBaseCloudFileTabView.a(this.a)) {
+      return;
+    }
+    QfileBaseCloudFileTabView.a(this.a);
+    this.a.f();
+    if (this.a.jdField_a_of_type_Aoqb.getGroupCount() > 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Aoqb.getGroupCount() - 1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+    QfileBaseCloudFileTabView.a(this.a, false);
+    this.a.h();
   }
 }
 

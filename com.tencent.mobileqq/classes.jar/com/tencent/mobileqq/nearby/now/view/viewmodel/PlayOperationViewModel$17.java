@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
 import android.text.TextUtils;
-import aszd;
-import ativ;
-import atlu;
-import axra;
+import aszf;
+import atix;
+import atlw;
+import axrc;
 
 public class PlayOperationViewModel$17
   implements Runnable
 {
-  public PlayOperationViewModel$17(atlu paramatlu, aszd paramaszd) {}
+  public PlayOperationViewModel$17(atlw paramatlw, aszf paramaszf) {}
   
   public void run()
   {
-    axra localaxra = new axra(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_post_click").e(ativ.d);
+    axrc localaxrc = new axrc(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_post_click").e(atix.d);
     int i = this.a.b();
-    String str2 = ativ.a;
-    if (TextUtils.equals(ativ.a, "2")) {}
-    for (String str1 = ativ.c;; str1 = "")
+    String str2 = atix.a;
+    if (TextUtils.equals(atix.a, "2")) {}
+    for (String str1 = atix.c;; str1 = "")
     {
-      localaxra.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localaxrc.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

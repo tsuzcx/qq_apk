@@ -1,20 +1,35 @@
-import android.view.MotionEvent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class abhi
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends Handler
 {
   public abhi(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
-    return true;
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690809));
+        this.a.jdField_a_of_type_Bcqf.d(2130848623);
+        this.a.jdField_a_of_type_Bcqf.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()));
+    this.a.jdField_a_of_type_Bcqf.cancel();
+    this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690811));
+    this.a.jdField_a_of_type_Bcqf.c(true);
+    this.a.jdField_a_of_type_Bcqf.a(false);
+    this.a.jdField_a_of_type_Bcqf.b(true);
   }
 }
 

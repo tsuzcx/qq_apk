@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.app.Activity;
-import bijj;
+import bika;
 
 class AECameraGLSurfaceView$8
   implements Runnable
@@ -10,8 +10,8 @@ class AECameraGLSurfaceView$8
   
   public void run()
   {
-    if (bijj.a().c()) {
-      bijj.a().a((Activity)this.this$0.getContext(), false);
+    if (bika.a().c()) {
+      bika.a().a((Activity)this.this$0.getContext(), false);
     }
   }
 }

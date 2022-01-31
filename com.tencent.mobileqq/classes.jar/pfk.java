@@ -1,24 +1,23 @@
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
 
 class pfk
   implements View.OnClickListener
 {
-  pfk(pfe parampfe, pax parampax, Container paramContainer, int paramInt) {}
+  pfk(pfj parampfj, ArticleInfo paramArticleInfo, Context paramContext) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = paramView.a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
+    if (ram.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (int i = 3;; i = 2)
+    {
+      onh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i, false, 2, false);
+      ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
       return;
     }
-    paramView = (qcz)paramView.a.get(0);
-    pfe.a(this.jdField_a_of_type_Pfe, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pax.a(), (int)paramView.a, this.jdField_a_of_type_Pax.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Pax.a());
   }
 }
 

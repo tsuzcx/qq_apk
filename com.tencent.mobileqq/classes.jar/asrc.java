@@ -1,6 +1,15 @@
-public abstract interface asrc
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+
+public class asrc
+  implements asqy
 {
-  public abstract void a(int paramInt);
+  public asrc(TabPageIndicator paramTabPageIndicator) {}
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    TabPageIndicator.a(this.a);
+    return false;
+  }
 }
 
 

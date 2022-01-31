@@ -1,63 +1,73 @@
-import android.text.Editable;
-import android.text.Spanned;
-import android.widget.EditText;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Arrays;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.widget.Switch;
+import java.util.List;
 
 public class bdde
-  extends bdhs
+  extends bdei
 {
-  public bdde(SendStoryActivity paramSendStoryActivity, EditText paramEditText, int paramInt)
+  List<bdah> jdField_a_of_type_JavaUtilList;
+  
+  public bdde(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
+  
+  public List<bdah> a()
   {
-    super(paramEditText, paramInt);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(List<bdah> paramList)
   {
-    paramInt3 = 0;
-    paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
-    StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
-    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
-    Arrays.sort(arrayOfFriend, new bddf(this, paramSpanned));
-    paramInt4 = arrayOfFriend.length;
-    while (paramInt3 < paramInt4)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bdah localbdah = (bdah)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    View localView;
+    if (paramView == null)
     {
-      Friend localFriend = arrayOfFriend[paramInt3];
-      localStringBuilder.delete(paramSpanned.getSpanStart(localFriend), paramSpanned.getSpanEnd(localFriend));
-      paramInt3 += 1;
+      localView = this.jdField_a_of_type_ComTencentOpenAgentOpenSelectPermissionFragment.getActivity().getLayoutInflater().inflate(2131559495, paramViewGroup, false);
+      paramView = new bddg();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371383));
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131371382));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    paramInt4 = this.jdField_a_of_type_Int - bdhz.a(localStringBuilder.toString());
-    paramInt3 = bdhz.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
-    }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    for (;;)
     {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bdhz.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label257;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = bdhz.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
-      }
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bddf(this, localbdah));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(localbdah.b);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbdah.a);
+      return localView;
+      paramViewGroup = (bddg)paramView.getTag();
+      localView = paramView;
     }
-    label257:
-    if (paramInt3 == paramInt1) {
-      return "";
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

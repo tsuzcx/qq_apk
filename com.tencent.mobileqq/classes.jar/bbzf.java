@@ -1,20 +1,15 @@
-public class bbzf
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bbzf
+  implements View.OnClickListener
 {
-  public long a;
-  public String a = "";
-  public long b;
-  public String b = "";
-  public long c;
-  public String c = "";
-  public long d;
-  public String d;
-  public long e;
-  public long f;
+  bbzf(bbze parambbze) {}
   
-  public bbzf()
+  public void onClick(View paramView)
   {
-    this.jdField_d_of_type_Long = 999L;
-    this.jdField_d_of_type_JavaLangString = "";
+    bbze.a(this.a).dismiss();
   }
 }
 

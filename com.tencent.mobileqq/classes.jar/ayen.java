@@ -1,262 +1,304 @@
-class ayen
-  extends aowe
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AutoVerticalScrollTextView;
+
+public class ayen
 {
-  ayen(ayem paramayem) {}
+  private int jdField_a_of_type_Int = 1;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bbgu jdField_a_of_type_Bbgu;
+  public AppInterface a;
+  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  private AutoVerticalScrollTextView jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View jdField_c_of_type_AndroidViewView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  /* Error */
-  protected void a(boolean paramBoolean, long paramLong1, java.lang.String paramString1, java.lang.String paramString2, com.tencent.mobileqq.pb.ByteStringMicro paramByteStringMicro, java.lang.String paramString3, short paramShort, java.lang.String paramString4, java.util.List<java.lang.String> paramList, int paramInt, java.lang.String paramString5, java.lang.String paramString6, java.lang.String paramString7, long paramLong2, android.os.Bundle paramBundle)
+  public ayen(RelativeLayout paramRelativeLayout, Activity paramActivity, AppInterface paramAppInterface)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 11
-    //   3: new 19	org/json/JSONObject
-    //   6: dup
-    //   7: invokespecial 20	org/json/JSONObject:<init>	()V
-    //   10: astore 6
-    //   12: iload_1
-    //   13: ifeq +383 -> 396
-    //   16: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   19: ifeq +68 -> 87
-    //   22: ldc 28
-    //   24: iconst_2
-    //   25: new 30	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   32: ldc 33
-    //   34: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: lload_2
-    //   38: invokevirtual 40	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   41: ldc 42
-    //   43: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: aload 4
-    //   48: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: ldc 44
-    //   53: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: aload 5
-    //   58: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc 46
-    //   63: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: aload 7
-    //   68: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: ldc 48
-    //   73: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   76: iload 8
-    //   78: invokevirtual 51	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   81: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: invokestatic 59	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   87: new 30	java/lang/StringBuilder
-    //   90: dup
-    //   91: ldc 61
-    //   93: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   96: astore 4
-    //   98: aload 4
-    //   100: aload 7
-    //   102: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: ldc 66
-    //   107: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: iload 8
-    //   112: invokevirtual 51	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   115: aload 9
-    //   117: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: pop
-    //   121: new 68	org/json/JSONArray
-    //   124: dup
-    //   125: invokespecial 69	org/json/JSONArray:<init>	()V
-    //   128: astore 7
-    //   130: aload 7
-    //   132: iconst_0
-    //   133: aload 4
-    //   135: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   138: invokevirtual 73	org/json/JSONArray:put	(ILjava/lang/Object;)Lorg/json/JSONArray;
-    //   141: pop
-    //   142: aload 6
-    //   144: ldc 75
-    //   146: aload 7
-    //   148: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   151: pop
-    //   152: aload 6
-    //   154: ldc 80
-    //   156: aload 12
-    //   158: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   161: pop
-    //   162: aload 6
-    //   164: ldc 82
-    //   166: aload 5
-    //   168: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   171: pop
-    //   172: iconst_1
-    //   173: istore 8
-    //   175: iconst_0
-    //   176: istore 11
-    //   178: aload_0
-    //   179: getfield 10	ayen:a	Layem;
-    //   182: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   185: ifnull +132 -> 317
-    //   188: iload 8
-    //   190: ifne +21 -> 211
-    //   193: aload 6
-    //   195: ldc 80
-    //   197: aload_0
-    //   198: getfield 10	ayen:a	Layem;
-    //   201: getfield 90	ayem:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   204: getfield 96	com/tencent/mobileqq/teamwork/TeamWorkFileImportInfo:b	Ljava/lang/String;
-    //   207: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   210: pop
-    //   211: aload 6
-    //   213: ldc 98
-    //   215: iconst_1
-    //   216: invokevirtual 101	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   219: pop
-    //   220: aload 6
-    //   222: ldc 103
-    //   224: aload_0
-    //   225: getfield 10	ayen:a	Layem;
-    //   228: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   231: getfield 108	com/tencent/mobileqq/filemanager/data/FileManagerEntity:Uuid	Ljava/lang/String;
-    //   234: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   237: pop
-    //   238: aload 6
-    //   240: ldc 110
-    //   242: aload_0
-    //   243: getfield 10	ayen:a	Layem;
-    //   246: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   249: getfield 113	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileMd5	Ljava/lang/String;
-    //   252: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   255: pop
-    //   256: aload 6
-    //   258: ldc 115
-    //   260: aload_0
-    //   261: getfield 10	ayen:a	Layem;
-    //   264: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   267: getfield 118	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFileSHA	Ljava/lang/String;
-    //   270: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   273: pop
-    //   274: aload 6
-    //   276: ldc 120
-    //   278: aload_0
-    //   279: getfield 10	ayen:a	Layem;
-    //   282: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   285: getfield 124	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileSize	J
-    //   288: invokevirtual 127	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   291: pop
-    //   292: aload_0
-    //   293: getfield 10	ayen:a	Layem;
-    //   296: getfield 87	ayem:jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity	Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   299: getfield 131	com/tencent/mobileqq/filemanager/data/FileManagerEntity:bSend	Z
-    //   302: ifeq +141 -> 443
-    //   305: aload 6
-    //   307: ldc 133
-    //   309: iconst_1
-    //   310: invokevirtual 101	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   313: pop
-    //   314: iconst_1
-    //   315: istore 11
-    //   317: iload 11
-    //   319: ifne +8 -> 327
-    //   322: iload 8
-    //   324: ifeq +168 -> 492
-    //   327: aload 6
-    //   329: ifnull +163 -> 492
-    //   332: aload_0
-    //   333: getfield 10	ayen:a	Layem;
-    //   336: getfield 136	ayem:jdField_a_of_type_Ayeo	Layeo;
-    //   339: aload 6
-    //   341: aload_0
-    //   342: getfield 10	ayen:a	Layem;
-    //   345: getfield 90	ayem:jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo	Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;
-    //   348: aload_0
-    //   349: getfield 10	ayen:a	Layem;
-    //   352: invokevirtual 142	java/lang/Object:hashCode	()I
-    //   355: invokevirtual 147	ayeo:b	(Lorg/json/JSONObject;Lcom/tencent/mobileqq/teamwork/TeamWorkFileImportInfo;I)V
-    //   358: return
-    //   359: astore 4
-    //   361: iconst_0
-    //   362: istore 8
-    //   364: ldc 28
-    //   366: iconst_2
-    //   367: new 30	java/lang/StringBuilder
-    //   370: dup
-    //   371: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   374: ldc 149
-    //   376: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   379: aload 4
-    //   381: invokevirtual 150	java/lang/Exception:toString	()Ljava/lang/String;
-    //   384: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   393: goto -218 -> 175
-    //   396: ldc 28
-    //   398: iconst_1
-    //   399: new 30	java/lang/StringBuilder
-    //   402: dup
-    //   403: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   406: ldc 33
-    //   408: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   411: lload_2
-    //   412: invokevirtual 40	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   415: ldc 155
-    //   417: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: aload 12
-    //   422: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   425: ldc 157
-    //   427: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   436: iload 11
-    //   438: istore 8
-    //   440: goto -265 -> 175
-    //   443: aload 6
-    //   445: ldc 133
-    //   447: iconst_2
-    //   448: invokevirtual 101	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   451: pop
-    //   452: goto -138 -> 314
-    //   455: astore 4
-    //   457: ldc 28
-    //   459: iconst_2
-    //   460: new 30	java/lang/StringBuilder
-    //   463: dup
-    //   464: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   467: ldc 159
-    //   469: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   472: aload 4
-    //   474: invokevirtual 150	java/lang/Exception:toString	()Ljava/lang/String;
-    //   477: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 153	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   486: iconst_0
-    //   487: istore 11
-    //   489: goto -172 -> 317
-    //   492: aload_0
-    //   493: getfield 10	ayen:a	Layem;
-    //   496: iconst_1
-    //   497: invokevirtual 162	ayem:a	(Z)V
-    //   500: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	501	0	this	ayen
-    //   0	501	1	paramBoolean	boolean
-    //   0	501	2	paramLong1	long
-    //   0	501	4	paramString1	java.lang.String
-    //   0	501	5	paramString2	java.lang.String
-    //   0	501	6	paramByteStringMicro	com.tencent.mobileqq.pb.ByteStringMicro
-    //   0	501	7	paramString3	java.lang.String
-    //   0	501	8	paramShort	short
-    //   0	501	9	paramString4	java.lang.String
-    //   0	501	10	paramList	java.util.List<java.lang.String>
-    //   0	501	11	paramInt	int
-    //   0	501	12	paramString5	java.lang.String
-    //   0	501	13	paramString6	java.lang.String
-    //   0	501	14	paramString7	java.lang.String
-    //   0	501	15	paramLong2	long
-    //   0	501	17	paramBundle	android.os.Bundle
-    // Exception table:
-    //   from	to	target	type
-    //   121	172	359	java/lang/Exception
-    //   178	188	455	java/lang/Exception
-    //   193	211	455	java/lang/Exception
-    //   211	314	455	java/lang/Exception
-    //   443	452	455	java/lang/Exception
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  private void c()
+  {
+    if ((this.jdField_a_of_type_Bbgu == null) || (this.jdField_a_of_type_Bbgu.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bbgu.dismiss();
+      this.jdField_a_of_type_Bbgu = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("TeamWorkFileImportCover", 1, " dismiss exception: " + localException.toString());
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298865);
+  }
+  
+  public View a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidAppActivity.findViewById(paramInt);
+  }
+  
+  public View a(Bundle paramBundle)
+  {
+    this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131562492, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+    paramBundle = new RelativeLayout.LayoutParams(-1, -1);
+    paramBundle.addRule(3, 2131375329);
+    paramBundle.topMargin = (-a());
+    this.jdField_c_of_type_AndroidViewView.setLayoutParams(paramBundle);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, 1);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329).setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidViewView = a(2131376913);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131376910));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131376909));
+    this.jdField_b_of_type_AndroidViewView = a(2131376914);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131362548));
+    paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
+    paramBundle.height = bbll.b(60.0F);
+    paramBundle.width = bbll.b(60.0F);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(paramBundle);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131376915));
+    this.d = ((TextView)a(2131376918));
+    this.e = ((TextView)a(2131376916));
+    this.f = ((TextView)a(2131376917));
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView = ((AutoVerticalScrollTextView)a(2131376911));
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidAppActivity.getString(2131720118);
+    this.jdField_a_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidAppActivity.getString(2131720119);
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setTextArray(this.jdField_a_of_type_ArrayOfJavaLangString);
+    a(this.jdField_a_of_type_AndroidAppActivity.getIntent(), this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.i("teamConvert", 2, "show loading view start time [" + System.currentTimeMillis() / 1000L + "]");
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131562488, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+    paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+    paramBundle.addRule(14, -1);
+    paramBundle.addRule(12, -1);
+    paramBundle.bottomMargin = bbll.b(12.0F);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramBundle);
+    ayfx.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X8009ED4");
+    return this.jdField_c_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    if (a()) {
+      ayfx.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X8009ED5");
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    if (this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView != null) {
+      this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.b();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
+    c();
+    this.jdField_a_of_type_AndroidOsHandler = null;
+    this.jdField_c_of_type_AndroidViewView = null;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = 4;
+    ayfx.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X800A2F2");
+    if (this.jdField_a_of_type_AndroidAppActivity == null)
+    {
+      QLog.i("teamConvert", 1, "showFailedView, but activity is null");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    }
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.d.setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    label146:
+    String str;
+    if ((paramInt == 116) || (paramInt == -116))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramInt == 116)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720121));
+        if (!TextUtils.isEmpty(paramString)) {
+          break label281;
+        }
+        str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720128);
+        label167:
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329).setBackgroundColor(Color.parseColor("#f6f7f9"));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("teamConvert", 2, "tencentdoc log:show failed view finish time [" + System.currentTimeMillis() / 1000L + "] error code = " + paramInt + " errorStr = " + paramString);
+      return;
+      if (paramInt != -116) {
+        break label146;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720149));
+      break label146;
+      label281:
+      str = paramString;
+      break label167;
+      if (paramInt == 106)
+      {
+        str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720150);
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+      }
+      else
+      {
+        if ((Math.abs(paramInt) >= 100) && (Math.abs(paramInt) < 116))
+        {
+          if (TextUtils.isEmpty(paramString)) {}
+          for (str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720128);; str = paramString)
+          {
+            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+            break;
+          }
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720128));
+      }
+    }
+  }
+  
+  public void a(Intent paramIntent, Context paramContext)
+  {
+    if ((paramIntent != null) && (paramIntent.getExtras() != null))
+    {
+      paramIntent.getExtras().setClassLoader(TeamWorkFileImportInfo.class.getClassLoader());
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = ((TeamWorkFileImportInfo)paramIntent.getParcelableExtra("key_team_work_file_import_info"));
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d()) {
+          break label213;
+        }
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131720137));
+        this.d.setText(paramContext.getString(2131720140));
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("teamwork/tim_data_loading.json");
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
+      if (!bbfj.d(BaseApplicationImpl.getContext())) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TeamWorkFileImportCover", 2, "tencentdoc log:---FileImport start, fileName： " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b + " ---");
+      }
+      ayhm.a("cover_loading_time");
+      ayhm.a("get_url_time");
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+      if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 9)) {
+        ayhm.a(null, "0X800A4B4");
+      }
+      return;
+      label213:
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g == 6)
+      {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131720136));
+        this.d.setText(paramContext.getString(2131720139));
+      }
+      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 12)
+      {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131720177));
+        this.d.setText(paramContext.getString(2131720140));
+      }
+      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 13)
+      {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131720162));
+        this.d.setVisibility(8);
+        this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
+        this.e.setVisibility(0);
+        this.f.setVisibility(0);
+      }
+      else
+      {
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131720135));
+        this.d.setText(paramContext.getString(2131720138));
+      }
+    }
+    bcql.a(paramContext, 2131694610, 0).b(a());
+    a(-1, null);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView.getVisibility() == 0);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329).setBackgroundColor(Color.parseColor("#f6f7f9"));
+    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("teamConvert", 2, "hide loading view finish time [" + System.currentTimeMillis() / 1000L + "]");
+    }
+    long l = ayhm.a("cover_loading_time");
+    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k)
+    {
+      ayhm.a(null, str, "0X8009E9C", String.valueOf(l), "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {
+        break;
+      }
+      ayhm.a("TeamWorkFileImportCover", "cover_loading_time", String.valueOf(l), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k);
+      return;
+    }
+    ayhm.a("TeamWorkFileImportCover", "cover_loading_time", String.valueOf(l));
   }
 }
 

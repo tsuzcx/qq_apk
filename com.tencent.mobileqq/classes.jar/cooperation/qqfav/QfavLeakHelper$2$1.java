@@ -1,28 +1,28 @@
 package cooperation.qqfav;
 
-import bgpl;
-import bgpm;
+import bgqc;
+import bgqd;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.mfsdk.reporter.ReporterMachine;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zzt;
+import zzq;
 
 public class QfavLeakHelper$2$1
   implements Runnable
 {
-  public QfavLeakHelper$2$1(bgpm parambgpm) {}
+  public QfavLeakHelper$2$1(bgqd parambgqd) {}
   
   public void run()
   {
-    Object localObject1 = zzt.a("mobile_Qfav_leak");
+    Object localObject1 = zzq.a("mobile_Qfav_leak");
     Object localObject2;
     if (((Boolean)localObject1[0]).booleanValue())
     {
       localObject2 = (String)localObject1[1];
-      bgpl.a((String)localObject2);
+      bgqc.a((String)localObject2);
     }
     try
     {

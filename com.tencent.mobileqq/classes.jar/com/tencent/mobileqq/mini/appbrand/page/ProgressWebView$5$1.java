@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
 
 class ProgressWebView$5$1
@@ -12,7 +12,7 @@ class ProgressWebView$5$1
   public void run()
   {
     QLog.e("ProgressWebView", 1, "savaPicToAlbum failed, because of picture downloadFailed");
-    bcpw.a(ProgressWebView.access$300(this.this$1.this$0), 1, ajyc.a(2131708503), 0).a();
+    bcql.a(ProgressWebView.access$300(this.this$1.this$0), 1, ajya.a(2131708514), 0).a();
   }
 }
 

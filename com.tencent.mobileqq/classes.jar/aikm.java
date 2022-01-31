@@ -1,18 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class aikm
-  implements alxk
+  implements View.OnClickListener
 {
   public aikm(SessionClearFragment paramSessionClearFragment) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-    }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    paramView = ajya.a(2131713854);
+    paramView = bbdj.a(SessionClearFragment.a(this.a), 230, ajya.a(2131713856), paramView, 2131694648, 2131720929, new aikn(this), new aiko(this));
+    SessionClearFragment.a(this.a, paramView);
   }
 }
 

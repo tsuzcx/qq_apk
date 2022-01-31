@@ -1,9 +1,8 @@
-public class banp
+import com.tencent.map.lib.basemap.data.GeoPoint;
+
+public abstract interface banp
 {
-  int jdField_a_of_type_Int;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  int b;
-  int c;
+  public abstract void a(int paramInt, GeoPoint paramGeoPoint);
 }
 
 

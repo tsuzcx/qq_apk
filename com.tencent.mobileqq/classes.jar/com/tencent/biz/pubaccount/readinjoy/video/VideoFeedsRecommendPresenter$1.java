@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.List;
-import qqo;
-import qrm;
+import qql;
+import qrj;
 
 public class VideoFeedsRecommendPresenter$1
   implements Runnable
 {
-  public VideoFeedsRecommendPresenter$1(qrm paramqrm, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, qqo paramqqo, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public VideoFeedsRecommendPresenter$1(qrj paramqrj, Intent paramIntent, VideoInfo paramVideoInfo, List paramList, qql paramqql, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
   public void run()
   {
-    qrm.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qqo.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    qrj.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Qql.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

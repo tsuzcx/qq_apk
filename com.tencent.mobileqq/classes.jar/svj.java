@@ -1,26 +1,65 @@
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
 import java.io.File;
 
-class svj
-  implements Comparable<svj>
+@TargetApi(14)
+public class svj
+  extends svb
 {
-  public final long a;
-  public final File a;
-  
-  public svj(svi paramsvi, File paramFile)
+  public svj(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
+    super(paramArrayOfString);
   }
   
-  public int a(svj paramsvj)
+  protected void a(String[] paramArrayOfString, svc paramsvc)
   {
-    if (this.jdField_a_of_type_Long < paramsvj.jdField_a_of_type_Long) {
-      return -1;
+    int n = paramArrayOfString.length;
+    int i = 0;
+    if (i < n)
+    {
+      File localFile1 = new File(paramArrayOfString[i]);
+      double d = a(localFile1);
+      File[] arrayOfFile = localFile1.listFiles();
+      if (arrayOfFile == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        long l = System.currentTimeMillis();
+        int i1 = arrayOfFile.length;
+        int k = 0;
+        int j = 0;
+        for (;;)
+        {
+          if (j < i1)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile2 = arrayOfFile[j];
+              int m = k;
+              if (l - localFile2.lastModified() > 86400000L)
+              {
+                a(localFile2);
+                m = k + 1;
+              }
+              j += 1;
+              k = m;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                ved.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
+        }
+        paramsvc.jdField_b_of_type_Double = (d - a(localFile1) + paramsvc.jdField_b_of_type_Double);
+        paramsvc.jdField_b_of_type_Int = (k + paramsvc.jdField_b_of_type_Int);
+      }
     }
-    if (this.jdField_a_of_type_Long == paramsvj.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
   }
 }
 

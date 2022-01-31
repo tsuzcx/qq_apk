@@ -1,45 +1,10 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
 
-public abstract class aqyn
+public abstract interface aqyn
 {
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected aqyh a;
+  public abstract void a(Animation paramAnimation);
   
-  public aqyn(Context paramContext, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public aqyn(Context paramContext, int paramInt, aqyh paramaqyh)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aqyh = paramaqyh;
-  }
-  
-  public Bitmap a()
-  {
-    if (this.jdField_a_of_type_Aqyh != null) {
-      a(this.jdField_a_of_type_Aqyh.a());
-    }
-    return null;
-  }
-  
-  public void a(aqyj paramaqyj)
-  {
-    paramaqyj.c = 1.0F;
-  }
-  
-  public Drawable[] a(QQAppInterface paramQQAppInterface)
-  {
-    return null;
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 

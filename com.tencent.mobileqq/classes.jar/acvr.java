@@ -1,14 +1,16 @@
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class acvr
-  implements ahbt
+  implements ahbr
 {
-  public acvr(CustomizeStrategyFactory.ThemeAnimStrategy.1 param1) {}
+  public acvr(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
   
   public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
@@ -16,12 +18,16 @@ public class acvr
     if (paramInt == 0) {}
     try
     {
-      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
+      Object localObject = paramPathResult + File.separator;
+      localObject = (String)localObject + "aio.png";
+      localObject = SafeBitmapFactory.decodeFile((String)localObject, bbef.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
+      if (localObject != null) {
+        this.a.a.icon = ((Bitmap)localObject);
       }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
     }
     catch (Throwable paramPathResult)
     {
@@ -30,6 +36,7 @@ public class acvr
         paramPathResult.printStackTrace();
       }
     }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

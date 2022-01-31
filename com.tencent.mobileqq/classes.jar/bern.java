@@ -1,22 +1,28 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.PreCacheInfo;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 
 public final class bern
-  implements Parcelable.Creator<PreCacheInfo>
+  implements Parcelable.Creator<BaseLibInfo>
 {
-  public PreCacheInfo a(Parcel paramParcel)
+  public BaseLibInfo a(Parcel paramParcel)
   {
-    PreCacheInfo localPreCacheInfo = new PreCacheInfo();
-    localPreCacheInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPreCacheInfo.b = paramParcel.readString();
-    localPreCacheInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    return localPreCacheInfo;
+    BaseLibInfo localBaseLibInfo = new BaseLibInfo();
+    try
+    {
+      paramParcel = new BaseLibInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt());
+      return paramParcel;
+    }
+    catch (Throwable paramParcel)
+    {
+      betc.d("BaseLibInfo", "BaseLibInfo createFromParcel exception!", paramParcel);
+    }
+    return localBaseLibInfo;
   }
   
-  public PreCacheInfo[] a(int paramInt)
+  public BaseLibInfo[] a(int paramInt)
   {
-    return new PreCacheInfo[paramInt];
+    return new BaseLibInfo[paramInt];
   }
 }
 

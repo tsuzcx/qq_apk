@@ -1,15 +1,9 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.TMG.utils.QLog;
-
-class airs
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+public class airs
 {
-  airs(airp paramairp) {}
-  
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

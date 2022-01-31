@@ -1,6 +1,9 @@
+import SummaryCard.CondFitUser;
+import java.util.List;
+
 public abstract interface ajuc
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

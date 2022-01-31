@@ -1,13 +1,17 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
 
-class apyz
-  implements admw
+public class apyz
+  extends apyt
 {
-  apyz(apyy paramapyy) {}
+  public apyz(FlashChatTextEffectView paramFlashChatTextEffectView) {}
   
-  public boolean a(int paramInt)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    return (aqxh.c.get()) && (paramInt == 0);
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      this.a.b();
+    }
   }
 }
 

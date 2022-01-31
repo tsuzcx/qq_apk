@@ -1,37 +1,20 @@
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class tew
-  extends akup
+public abstract class tew
+  extends akuo
 {
-  tew(tev paramtev, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public tew(String paramString)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(0, true, false, 300000L, false, false, paramString);
   }
   
   public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    veg.b("LbsManager", "onLocationFinish.");
-    boolean bool;
     if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      bool = true;
-      if (!bool) {
-        break label114;
-      }
-      this.a.b = teu.a(paramSosoLbsInfo.a);
-      veg.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
-    }
-    for (;;)
-    {
-      if (!tev.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
-      veg.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+      tes.a = new ter((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      ved.b("LbsManager", "onLocationFinish success : " + tes.a);
     }
   }
 }

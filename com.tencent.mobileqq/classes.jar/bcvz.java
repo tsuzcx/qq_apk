@@ -1,195 +1,214 @@
-import com.wifisdk.ui.api.RProxy.Impl;
-
-public class bcvz
-  implements RProxy.Impl
+class bcvz
+  extends bcvy
 {
-  public void init()
+  private static final int[] a;
+  private static final int[] jdField_b_of_type_ArrayOfInt = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+  private int jdField_b_of_type_Int;
+  private int jdField_c_of_type_Int;
+  private final int[] jdField_c_of_type_ArrayOfInt;
+  
+  static
   {
-    com.wifisdk.ui.api.RProxy.anim.tmsdk_wifi_secure_rotate = 2130772326;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_bg_color = 2131167064;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_custom_main_color = 2131167065;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_floor_text_color = 2131167066;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_gray = 2131167067;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_item_header_bg = 2131167068;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_item_ssid_color = 2131167069;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_button_bg = 2131167070;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_checking1 = 2131167071;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_checking2 = 2131167072;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_high_danger = 2131167073;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_header_normal = 2131167074;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_right_text_danger = 2131167075;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_right_text_safe = 2131167076;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_item_text = 2131167077;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_recommend_item_sub_text = 2131167078;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_security_recommend_item_text = 2131167079;
-    com.wifisdk.ui.api.RProxy.color.tmsdk_wifi_white = 2131167080;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_best_icon_margin_left = 2131298876;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_margin_left = 2131298877;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_margin_right = 2131298878;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_button_text_size = 2131298879;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_des_padding = 2131298880;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_height = 2131298881;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_height_landscape = 2131298882;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_image_margin_left = 2131298883;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_image_margin_right = 2131298884;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_item_star_inside_padding = 2131298885;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_list_item_ssid_max_width = 2131298886;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_no_text = 2131298887;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_poi_margin_left = 2131298888;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_ssid_text_size = 2131298889;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_star_margin_left = 2131298890;
-    com.wifisdk.ui.api.RProxy.dimen.tmsdk_wifi_star_size = 2131298891;
-    com.wifisdk.ui.api.RProxy.drawable.aio_tips_webview_default = 2130838181;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_button_shape = 2130849492;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_progress_selector = 2130849493;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_banner_progress_text_selector = 2130849494;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_button_shape = 2130849495;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_icon = 2130849496;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_logo = 2130849497;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_floor_progress_selector = 2130849498;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_icon_no_wifi = 2130849499;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_button_shape = 2130849500;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_button_shape_pressed = 2130849501;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_item_connect_button_selector = 2130849502;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_logo = 2130849503;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_permission_button_shape = 2130849504;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_checking = 2130849505;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_loading = 2130849506;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_risk = 2130849507;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_item_safe = 2130849508;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_risk = 2130849509;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_rotate = 2130849510;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_round = 2130849511;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_secure_safe = 2130849512;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_star_off = 2130849513;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_star_on = 2130849514;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_subway_tag = 2130849515;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_tag = 2130849516;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_tick_icon = 2130849517;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_title_back = 2130849518;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_title_gradient = 2130849519;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_vip_icon = 2130849520;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_1 = 2130849521;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_2 = 2130849522;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_3 = 2130849523;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_1_4 = 2130849524;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_1 = 2130849525;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_2 = 2130849526;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_3 = 2130849527;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_5_4 = 2130849528;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_1 = 2130849529;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_2 = 2130849530;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_3 = 2130849531;
-    com.wifisdk.ui.api.RProxy.drawable.tmsdk_wifi_wifi_config_4 = 2130849532;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_button = 2131377458;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_progress = 2131377459;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_banner_progress_text = 2131377460;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_anchor = 2131377461;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_banner = 2131377462;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_bottom_icon = 2131377463;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_btn_layout = 2131377464;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img = 2131377465;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img_rotate = 2131377466;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_img_round = 2131377467;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_checking_state = 2131377468;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_connect = 2131377469;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_description = 2131377470;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_button = 2131377471;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_content = 2131377472;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_des = 2131377473;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_icon = 2131377474;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_main_title = 2131377475;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_progress = 2131377476;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_progress_text = 2131377477;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_tip = 2131377478;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_floor_title = 2131377479;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_frag_container = 2131377480;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_latency_layout = 2131377481;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_empty_hint = 2131377482;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_line_for_security = 2131377483;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_rotate = 2131377484;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_header_text = 2131377485;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_list_layout = 2131377486;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_listview = 2131377487;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_middle_container = 2131377488;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout = 2131377489;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_btn = 2131377490;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_des = 2131377491;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_icon = 2131377492;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_permission_layout_title = 2131377493;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_quality = 2131377494;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_button = 2131377495;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_sub_text = 2131377496;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_recommend_text = 2131377497;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_score = 2131377498;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star1 = 2131377499;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star2 = 2131377500;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star3 = 2131377501;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star4 = 2131377502;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_star5 = 2131377503;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_tip = 2131377504;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_back_text = 2131377505;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_container = 2131377506;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_title_text = 2131377507;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_tv = 2131377508;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_wifi_disable_layout = 2131377509;
-    com.wifisdk.ui.api.RProxy.id.tmsdk_wifi_wifi_icon = 2131377510;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_header_container = 2131379446;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_left_text = 2131379447;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_right_img = 2131379448;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_item_right_text = 2131379449;
-    com.wifisdk.ui.api.RProxy.id.wifi_sdk_security_list = 2131379450;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_fragment = 2131562620;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_main_full = 2131562621;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_activity_title = 2131562622;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_common_view = 2131562623;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_floor_view = 2131562624;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_list_item_header = 2131562625;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_list_view_item = 2131562626;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_item = 2131562627;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_view = 2131562628;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_check_view_header = 2131562629;
-    com.wifisdk.ui.api.RProxy.layout.wifi_sdk_security_result_recomand_item = 2131562630;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_banner_btn_install = 2131720280;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_banner_btn_no_wifi = 2131720281;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_connect = 2131720282;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_connection_success = 2131720283;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_download_wifi_manager_tip = 2131720284;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_btn_text = 2131720285;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_content_des = 2131720286;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_content_title = 2131720287;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_main_title = 2131720288;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_floor_tip = 2131720289;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_btn = 2131720290;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_des = 2131720291;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_no_wifi_title = 2131720292;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_checking = 2131720293;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item1 = 2131720294;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item2 = 2131720295;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item3 = 2131720296;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item4 = 2131720297;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_item5 = 2131720298;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_cloud_title = 2131720299;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_downloading_wifiapp = 2131720300;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_bt_text = 2131720301;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_sub_text = 2131720302;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_high_risk_text = 2131720303;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_item_danger = 2131720304;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_item_safe = 2131720305;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_ip = 2131720306;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_link_speed = 2131720307;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_mac = 2131720308;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_security_type = 2131720309;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_signal_level = 2131720310;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_item_ssid = 2131720311;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_local_title = 2131720312;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_bt_text = 2131720313;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_sub_text = 2131720314;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_normal_risk_text = 2131720315;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_security_result = 2131720316;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_see_more_wifi = 2131720317;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_updating_list = 2131720318;
-    com.wifisdk.ui.api.RProxy.string.tmsdk_wifi_wifi_list_main_title = 2131720319;
+    jdField_a_of_type_ArrayOfInt = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+  }
+  
+  public bcvz(int paramInt, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    if ((paramInt & 0x8) == 0) {}
+    for (paramArrayOfByte = jdField_a_of_type_ArrayOfInt;; paramArrayOfByte = jdField_b_of_type_ArrayOfInt)
+    {
+      this.jdField_c_of_type_ArrayOfInt = paramArrayOfByte;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_c_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Int == 6) {
+      return false;
+    }
+    int i2 = paramInt2 + paramInt1;
+    int j = this.jdField_b_of_type_Int;
+    paramInt2 = this.jdField_c_of_type_Int;
+    int i = 0;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    int k;
+    int m;
+    int i1;
+    if (paramInt1 < i2)
+    {
+      k = i;
+      m = paramInt2;
+      i1 = paramInt1;
+      if (j == 0)
+      {
+        int n = paramInt1;
+        for (paramInt1 = paramInt2; n + 4 <= i2; paramInt1 = paramInt2)
+        {
+          paramInt2 = arrayOfInt[(paramArrayOfByte[n] & 0xFF)] << 18 | arrayOfInt[(paramArrayOfByte[(n + 1)] & 0xFF)] << 12 | arrayOfInt[(paramArrayOfByte[(n + 2)] & 0xFF)] << 6 | arrayOfInt[(paramArrayOfByte[(n + 3)] & 0xFF)];
+          paramInt1 = paramInt2;
+          if (paramInt2 < 0) {
+            break;
+          }
+          arrayOfByte[(i + 2)] = ((byte)paramInt2);
+          arrayOfByte[(i + 1)] = ((byte)(paramInt2 >> 8));
+          arrayOfByte[i] = ((byte)(paramInt2 >> 16));
+          i += 3;
+          n += 4;
+        }
+        k = i;
+        m = paramInt1;
+        i1 = n;
+        if (n >= i2) {
+          paramInt2 = paramInt1;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (!paramBoolean)
+      {
+        this.jdField_b_of_type_Int = j;
+        this.jdField_c_of_type_Int = paramInt2;
+        this.jdField_a_of_type_Int = i;
+        return true;
+        paramInt2 = arrayOfInt[(paramArrayOfByte[i1] & 0xFF)];
+        switch (j)
+        {
+        }
+        label292:
+        label577:
+        do
+        {
+          do
+          {
+            paramInt1 = j;
+            paramInt2 = m;
+            i = k;
+            for (;;)
+            {
+              j = paramInt1;
+              paramInt1 = i1 + 1;
+              break;
+              if (paramInt2 >= 0)
+              {
+                paramInt1 = j + 1;
+                i = k;
+              }
+              else
+              {
+                if (paramInt2 == -1) {
+                  break label292;
+                }
+                this.jdField_b_of_type_Int = 6;
+                return false;
+                if (paramInt2 >= 0)
+                {
+                  paramInt2 = m << 6 | paramInt2;
+                  paramInt1 = j + 1;
+                  i = k;
+                }
+                else
+                {
+                  if (paramInt2 == -1) {
+                    break label292;
+                  }
+                  this.jdField_b_of_type_Int = 6;
+                  return false;
+                  if (paramInt2 >= 0)
+                  {
+                    paramInt2 = m << 6 | paramInt2;
+                    paramInt1 = j + 1;
+                    i = k;
+                  }
+                  else if (paramInt2 == -2)
+                  {
+                    arrayOfByte[k] = ((byte)(m >> 4));
+                    paramInt1 = 4;
+                    i = k + 1;
+                    paramInt2 = m;
+                  }
+                  else
+                  {
+                    if (paramInt2 == -1) {
+                      break label292;
+                    }
+                    this.jdField_b_of_type_Int = 6;
+                    return false;
+                    if (paramInt2 >= 0)
+                    {
+                      paramInt2 = m << 6 | paramInt2;
+                      arrayOfByte[(k + 2)] = ((byte)paramInt2);
+                      arrayOfByte[(k + 1)] = ((byte)(paramInt2 >> 8));
+                      arrayOfByte[k] = ((byte)(paramInt2 >> 16));
+                      i = k + 3;
+                      paramInt1 = 0;
+                    }
+                    else if (paramInt2 == -2)
+                    {
+                      arrayOfByte[(k + 1)] = ((byte)(m >> 2));
+                      arrayOfByte[k] = ((byte)(m >> 10));
+                      i = k + 2;
+                      paramInt1 = 5;
+                      paramInt2 = m;
+                    }
+                    else
+                    {
+                      if (paramInt2 == -1) {
+                        break label292;
+                      }
+                      this.jdField_b_of_type_Int = 6;
+                      return false;
+                      if (paramInt2 != -2) {
+                        break label577;
+                      }
+                      paramInt1 = j + 1;
+                      i = k;
+                      paramInt2 = m;
+                    }
+                  }
+                }
+              }
+            }
+          } while (paramInt2 == -1);
+          this.jdField_b_of_type_Int = 6;
+          return false;
+        } while (paramInt2 == -1);
+        this.jdField_b_of_type_Int = 6;
+        return false;
+      }
+      paramInt1 = i;
+      switch (j)
+      {
+      default: 
+        paramInt1 = i;
+      case 0: 
+      case 1: 
+      case 2: 
+      case 3: 
+        for (;;)
+        {
+          this.jdField_b_of_type_Int = j;
+          this.jdField_a_of_type_Int = paramInt1;
+          return true;
+          this.jdField_b_of_type_Int = 6;
+          return false;
+          arrayOfByte[i] = ((byte)(paramInt2 >> 4));
+          paramInt1 = i + 1;
+          continue;
+          k = i + 1;
+          arrayOfByte[i] = ((byte)(paramInt2 >> 10));
+          paramInt1 = k + 1;
+          arrayOfByte[k] = ((byte)(paramInt2 >> 2));
+        }
+      }
+      this.jdField_b_of_type_Int = 6;
+      return false;
+    }
   }
 }
 

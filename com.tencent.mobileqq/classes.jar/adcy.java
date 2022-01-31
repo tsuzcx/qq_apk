@@ -1,71 +1,48 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract class adcy
+class adcy
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
   
-  public adcy(DoodleView paramDoodleView)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
-  }
+  adcy(adcw paramadcw) {}
   
   public void a()
   {
-    c();
+    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    {
+      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
+      localHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(Runnable paramRunnable)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-  }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    b();
-    return b(paramMotionEvent);
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
+      this.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
   
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
+  public void c()
   {
-    return true;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
   }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
 }
 
 

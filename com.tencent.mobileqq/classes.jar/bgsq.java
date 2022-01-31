@@ -1,12 +1,15 @@
-public abstract interface bgsq
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+
+class bgsq
+  extends akiw
 {
-  public abstract void a();
+  bgsq(bgsp parambgsp) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void a()
+  {
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+  }
 }
 
 

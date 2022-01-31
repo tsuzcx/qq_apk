@@ -1,55 +1,27 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
 import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.ArrayList;
 
 public class bdav
-  extends bddt
+  implements AdapterView.OnItemClickListener
 {
-  public bdav(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public bdav(FriendChooser paramFriendChooser) {}
   
-  public int getCount()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.a.jdField_a_of_type_Bddv.b();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str;
-    int i;
-    if (paramView == null)
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_Bdaz.getItem(paramInt);
+    if ((paramAdapterView != null) && (this.a.jdField_a_of_type_Bdek.a(paramAdapterView.a)))
     {
-      paramViewGroup = new bdax(this);
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559491, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363430));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131367189));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367188));
-      paramView.setTag(paramViewGroup);
-      str = this.a.jdField_a_of_type_Bddv.a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      paramViewGroup.b.setText(String.valueOf(this.a.jdField_a_of_type_Bddv.a(paramInt)));
-      i = (int)(10.0F * this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a);
-      if (paramInt != 0) {
-        break label194;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839185);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bdaw(this, paramInt, str));
-      return paramView;
-      paramViewGroup = (bdax)paramView.getTag();
-      break;
-      label194:
-      if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839176);
-      } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839179);
-      }
+      this.a.jdField_a_of_type_Bdek.b(paramAdapterView.a);
+      this.a.b.remove(paramAdapterView);
+      this.a.e();
+      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.b(false);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import bbwf;
+import bbwt;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.TimerTask;
@@ -8,13 +8,13 @@ import java.util.TimerTask;
 class PreloadManager$4
   extends TimerTask
 {
-  PreloadManager$4(PreloadManager paramPreloadManager, WeakReference paramWeakReference, List paramList, bbwf parambbwf) {}
+  PreloadManager$4(PreloadManager paramPreloadManager, WeakReference paramWeakReference, List paramList, bbwt parambbwt) {}
   
   public void run()
   {
     PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (PreloadManager.a(localPreloadManager)) {
-      PreloadManager.a(localPreloadManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bbwf);
+      PreloadManager.a(localPreloadManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bbwt);
     }
   }
 }

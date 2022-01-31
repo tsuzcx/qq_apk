@@ -1,14 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import java.util.List;
 
-class apfy
-  implements View.OnClickListener
+public class apfy
+  extends awke<awoi, awwr>
 {
-  apfy(apfx paramapfx, awog paramawog) {}
-  
-  public void onClick(View paramView)
+  public apfy(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment, apga paramapga)
   {
-    ((apfw)this.jdField_a_of_type_Awog).a(paramView);
+    try
+    {
+      paramFileSelectorSearchGroupFragment = paramapga.a(paramFileSelectorSearchGroupFragment.getActivity().app, paramFileSelectorSearchGroupFragment.getActivity());
+      if ((paramFileSelectorSearchGroupFragment != null) && (!paramFileSelectorSearchGroupFragment.isEmpty())) {
+        a(paramFileSelectorSearchGroupFragment);
+      }
+      return;
+    }
+    catch (Exception paramFileSelectorSearchGroupFragment) {}
+  }
+  
+  protected awrd<awoi, awwr> a(int paramInt)
+  {
+    apgb localapgb = new apgb();
+    localapgb.a(new apfz(this));
+    return localapgb;
+  }
+  
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apge(paramViewGroup);
   }
 }
 

@@ -1,57 +1,58 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import cooperation.qzone.QZoneShareData;
+import java.util.ArrayList;
 
 public class sne
 {
-  private static final String a = "weishi" + "8.2.8".replaceAll("\\.", "");
-  
-  public static void a(String paramString)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    b(a, 4, paramString);
+    if (paramContext == null) {
+      return;
+    }
+    paramString2 = (Activity)paramContext;
+    paramContext = paramString2;
+    if ((paramString2 instanceof BasePluginActivity)) {
+      paramContext = ((BasePluginActivity)paramString2).getOutActivity();
+    }
+    paramString2 = new Intent(paramContext, ForwardRecentActivity.class);
+    if (!TextUtils.isEmpty(paramString4))
+    {
+      paramString2.putExtra("forward_type", 2);
+      paramString2.putExtra("req_type", 1);
+      paramString2.putExtra("req_share_id", Long.parseLong("1101083114"));
+      paramString2.putExtra("title", paramString1);
+      paramString2.putExtra("app_name", ajya.a(2131716928));
+      paramString2.putExtra("image_url_remote", paramString3);
+      paramString2.putExtra("desc", ajya.a(2131716927));
+      paramString2.putExtra("detail_url", paramString4);
+    }
+    paramContext.startActivity(paramString2);
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(a + "-" + paramString1, 4, paramString2);
-  }
-  
-  public static void b(String paramString)
-  {
-    d(a, 1, paramString);
-  }
-  
-  public static void b(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    b(a + "-" + paramString1, 4, paramString2);
-  }
-  
-  public static void c(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(a + "-" + paramString1, 4, paramString2);
-  }
-  
-  public static void d(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(a + "-" + paramString1, 1, paramString2);
+    if (paramContext == null) {
+      return;
+    }
+    Object localObject = (Activity)paramContext;
+    paramContext = (Context)localObject;
+    if ((localObject instanceof BasePluginActivity)) {
+      paramContext = ((BasePluginActivity)localObject).getOutActivity();
+    }
+    localObject = new QZoneShareData();
+    ((QZoneShareData)localObject).jdField_b_of_type_JavaLangString = paramString1;
+    ((QZoneShareData)localObject).c = paramString2;
+    ((QZoneShareData)localObject).a = new ArrayList();
+    ((QZoneShareData)localObject).a.add(paramString3);
+    ((QZoneShareData)localObject).jdField_b_of_type_Int = 0;
+    ((QZoneShareData)localObject).d = paramString4;
+    ((QZoneShareData)localObject).f = paramString5;
+    bgzl.a(paramContext, paramString5, (QZoneShareData)localObject, null, paramInt);
   }
 }
 

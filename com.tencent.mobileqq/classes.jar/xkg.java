@@ -1,22 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.os.Bundle;
 
 class xkg
-  implements View.OnClickListener
+  extends anqq
 {
-  xkg(xke paramxke, String paramString, Activity paramActivity) {}
+  xkg(xkb paramxkb) {}
   
-  public void onClick(View paramView)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Xke.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == xkb.a(this.a).key))
     {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      String str1 = paramBundle.getString("cmd");
+      String str2 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("request");
+      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
+      {
+        int i = paramBundle.getInt("result", 1);
+        this.a.callJs(str2, new String[] { Integer.toString(i) });
       }
     }
   }

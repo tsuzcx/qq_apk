@@ -1,29 +1,23 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.widget.ListView;
 
 public class awlo
-  implements View.OnTouchListener
+  extends awkf<awoi, awwr>
 {
-  public awlo(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public awlo(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, baxy parambaxy)
   {
-    if ((!awvy.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-      return false;
-    }
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    super(paramListView, parambaxy);
+  }
+  
+  protected awrd<awoi, awwr> a(int paramInt)
+  {
+    return new awsa(this.a.a);
+  }
+  
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new awyh(paramViewGroup, 2131562385);
   }
 }
 

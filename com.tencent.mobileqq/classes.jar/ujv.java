@@ -1,15 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ujv
-  implements CompoundButton.OnCheckedChangeListener
+class ujv
+  extends ssv
 {
-  public ujv(QGSettingFragment paramQGSettingFragment) {}
+  ujv(uju paramuju) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    QGSettingFragment.c(paramBoolean);
+    sst localsst = (sst)this.a.a.app.getManager(181);
+    this.a.a(2, localsst.a());
+    this.a.a(3, localsst.b());
   }
 }
 

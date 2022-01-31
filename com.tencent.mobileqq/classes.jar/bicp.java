@@ -1,30 +1,59 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-
-final class bicp
-  implements UploadManager.IUploadStatusListener
+public class bicp
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  private static bicq a;
+  public static String a;
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  static
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      bifq.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
+    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
+  }
+  
+  public static bicq a()
+  {
+    if (jdField_a_of_type_Bicq == null) {
+      a();
     }
-    label26:
-    while (paramStatusInfo.state != 5) {
+    return jdField_a_of_type_Bicq;
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangString)
+    {
+      if (jdField_a_of_type_Bicq == null) {
+        jdField_a_of_type_Bicq = new bicq();
+      }
+      jdField_a_of_type_Bicq.a();
       return;
     }
-    bifq.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+  }
+  
+  public static void a(bich parambich)
+  {
+    if (jdField_a_of_type_Bicq != null) {
+      jdField_a_of_type_Bicq.a(parambich);
+    }
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Bicq != null)
+    {
+      jdField_a_of_type_Bicq.d();
+      jdField_a_of_type_Bicq = null;
+    }
+  }
+  
+  public static void b(bich parambich)
+  {
+    if (jdField_a_of_type_Bicq != null) {
+      jdField_a_of_type_Bicq.b(parambich);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicp
  * JD-Core Version:    0.7.0.1
  */

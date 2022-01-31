@@ -1,15 +1,15 @@
 package com.tencent.av.camera;
 
-import lkg;
+import lkb;
 
 public class CameraObserver$1
   implements Runnable
 {
-  public CameraObserver$1(lkg paramlkg, Object paramObject) {}
+  public CameraObserver$1(lkb paramlkb, Object paramObject) {}
   
   public void run()
   {
-    lkg.a(this.this$0, this.a);
+    lkb.a(this.this$0, this.a);
   }
 }
 

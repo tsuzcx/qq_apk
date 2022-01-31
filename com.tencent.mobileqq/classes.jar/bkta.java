@@ -1,13 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bkta
-  implements DialogInterface.OnClickListener
-{
-  bkta(bksy parambksy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
-}
+public class bkta {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

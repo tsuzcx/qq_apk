@@ -1,45 +1,43 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class achb
-  extends akim
+  extends BroadcastReceiver
 {
-  public achb(TroopGagActivity paramTroopGagActivity) {}
+  public achb(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.d = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
+      }
+      this.a.a(9, paramContext, true, 1, true);
       return;
     }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Achd.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Achd.getCount() != 0) {
-        break label209;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new TroopGagActivity.3.1(this, (bakk)this.a.app.getManager(48)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
-      return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    catch (JSONException paramContext) {}
   }
 }
 

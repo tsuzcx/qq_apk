@@ -1,16 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.crop.CropNewView;
 
 public class bkdm
-  implements bkay
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bkdm(DoodleLayout paramDoodleLayout) {}
+  private bkdm(CropNewView paramCropNewView) {}
   
-  public void a(List<bkav> paramList, DoodleView paramDoodleView)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramList.add(this.a.jdField_a_of_type_Bkar);
-    paramList.add(this.a.jdField_a_of_type_Bkad);
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return CropNewView.a(this.a, paramFloat1, paramFloat2);
   }
 }
 

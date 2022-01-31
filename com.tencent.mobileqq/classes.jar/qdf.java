@@ -1,21 +1,21 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+
 public class qdf
 {
   public int a;
   public long a;
+  public UrlJumpInfo a;
   public String a;
   public int b;
   public String b;
-  public int c;
   public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
+  }
 }
 
 

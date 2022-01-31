@@ -1,28 +1,28 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
 
 class ardn
-  implements URLDrawable.URLDrawableListener
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  ardn(ardm paramardm, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  private ardn(ardi paramardi) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onComplete(String paramString1, String paramString2)
   {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = atih.a(paramURLDrawable);
-    ardm.a(this.jdField_a_of_type_Ardm, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
+    synchronized (ardi.a(this.a))
+    {
+      String str = ardi.a(paramString1);
+      ardh.b("onComplete path:" + str);
+      ardh.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      ardi.a(this.a, paramString1);
+      paramString2 = new File(ardi.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(str));
+      }
+      ardi.b(this.a, paramString1);
+      ardi.b(this.a, ardi.a(this.a));
+      ardi.b(this.a);
+      return;
+    }
   }
 }
 

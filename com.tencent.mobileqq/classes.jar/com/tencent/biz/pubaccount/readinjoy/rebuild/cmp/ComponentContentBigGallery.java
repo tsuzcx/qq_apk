@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pax;
+import pau;
 
 public class ComponentContentBigGallery
   extends ComponentContentBig
@@ -42,9 +42,9 @@ public class ComponentContentBigGallery
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = ((pax)paramObject).a();
+      paramObject = ((pau)paramObject).a();
       this.b.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }

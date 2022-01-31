@@ -1,15 +1,21 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
 
 public class acma
   implements View.OnClickListener
 {
-  public acma(TroopRequestActivity paramTroopRequestActivity) {}
+  public acma(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
+    paramView = new Intent(this.a, CountrySelectActivity.class);
+    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    paramView.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(paramView, 111);
   }
 }
 

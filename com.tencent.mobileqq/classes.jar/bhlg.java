@@ -1,44 +1,44 @@
-import android.os.Bundle;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.observer.BusinessObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import common.config.service.QzoneConfig;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bhlg
-  implements BusinessObserver
 {
-  public bhlg(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(int paramInt, String paramString, long paramLong)
   {
-    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
+    boolean bool = true;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    HashMap localHashMap;
+    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationSampleRate", 1)))
     {
-      this.a.h = false;
-      if (paramBoolean) {}
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-          }
-        }
+      localObject = ((AppRuntime)localObject).getAccount();
+      localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", Integer.toString(paramInt));
+      localHashMap.put("param_businessId", paramString);
+      paramString = axrn.a(BaseApplicationImpl.getContext());
+      if (paramInt != 0) {
+        break label104;
       }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, paramBundle.getMessage());
-          }
-        }
-      }
-      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+    }
+    for (;;)
+    {
+      paramString.a((String)localObject, "QzoneNewLocation", bool, paramLong, 0L, localHashMap, "");
       return;
+      label104:
+      bool = false;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && (System.currentTimeMillis() % 1000L < QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneLocationCacheSampleRate", 1)))
+    {
+      localObject = ((AppRuntime)localObject).getAccount();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_businessId", paramString);
+      axrn.a(BaseApplicationImpl.getContext()).a((String)localObject, "QzoneNewLocationCache", paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
 }

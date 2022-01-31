@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class NearbyPeopleProfileActivity$2$1
   implements Runnable
@@ -11,7 +11,7 @@ class NearbyPeopleProfileActivity$2$1
   public void run()
   {
     this.a.this$0.a();
-    bcpw.a(this.a.this$0, 1, ajyc.a(2131707237), 0).a();
+    bcql.a(this.a.this$0, 1, ajya.a(2131707248), 0).a();
   }
 }
 

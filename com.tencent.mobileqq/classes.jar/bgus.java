@@ -1,38 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.net.BaseCgiTask;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bgus
+class bgus
+  implements INetInfoHandler
 {
-  private BaseCgiTask jdField_a_of_type_CooperationQqreaderNetBaseCgiTask;
-  private String jdField_a_of_type_JavaLangString;
+  bgus(bgur parambgur) {}
   
-  public bgus(BaseCgiTask paramBaseCgiTask, String paramString)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask = paramBaseCgiTask;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    bgur.a(this.a);
   }
   
-  public String a()
+  public void onNetNone2Wifi(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    bgur.a(this.a);
   }
   
-  public JSONObject a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      return localJSONObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("ReaderCgiResponse", 2, "json format error", localJSONException);
-    }
-    return localJSONObject1;
-  }
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

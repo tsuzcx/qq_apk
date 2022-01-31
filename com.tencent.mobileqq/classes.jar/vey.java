@@ -1,35 +1,19 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class vey
-  implements SeekBar.OnSeekBarChangeListener
+public final class vey
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  vey(vex paramvex) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    if (paramBoolean)
-    {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_Vhp.a.a != null) {
-        this.a.jdField_a_of_type_Vhp.a.a.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
-    }
+    return new EditLocalGifSource(paramParcel);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
+  }
 }
 
 

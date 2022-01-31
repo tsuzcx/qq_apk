@@ -1,21 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class mcy
   implements View.OnClickListener
 {
-  public mcy(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public mcy(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
   public void onClick(View paramView)
   {
-    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
-    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
-      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
-    }
+    QLog.d(this.a.c, 1, "onClick R.id.qav_btn_accept_video");
+    this.a.p();
+    this.a.a.a().ao = true;
   }
 }
 

@@ -1,19 +1,20 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class abtk
-  implements View.OnTouchListener
+  extends aimt
 {
-  public abtk(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public abti a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

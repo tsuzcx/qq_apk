@@ -1,30 +1,71 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class babm
-  implements bhwr
+  extends JobSegment<babl, babl>
 {
-  public baar a;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public babm(babj parambabj, baar parambaar)
+  public babm(int paramInt)
   {
-    this.jdField_a_of_type_Baar = parambaar;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
+  protected void a(JobContext paramJobContext, babl parambabl)
   {
-    this.jdField_a_of_type_Baar.g = 3;
-    this.jdField_a_of_type_Baar.c(paramString);
-    ((Activity)babj.a(this.jdField_a_of_type_Babj)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(parambabl.g) });
+    }
+    babl.b();
+    try
+    {
+      String str = TroopHWJsPlugin.a(-1, parambabl.a, this.jdField_a_of_type_Int, null);
+      if (apvd.b(str)) {}
+      for (parambabl.c = str;; parambabl.c = parambabl.a)
+      {
+        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", parambabl.a, ", out path=", parambabl.c });
+        if (isCanceled()) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(parambabl.g) });
+        }
+        notifyResult(parambabl);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
+        }
+      }
+      return;
+    }
+    catch (Exception paramJobContext)
+    {
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
+      notifyError(new Error("101"));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
+      URLDrawable.clearMemoryCache();
+      System.gc();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        a(paramJobContext, parambabl);
+        return;
+      }
+      notifyError(new Error("-1"));
+    }
   }
   
-  public void b(int paramInt)
+  public void onCancel()
   {
-    this.jdField_a_of_type_Baar.g = 2;
-    ((Activity)babj.a(this.jdField_a_of_type_Babj)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
+    notifyError(new Error("c_1000"));
   }
 }
 

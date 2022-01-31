@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import qxw;
+import qxt;
 
 public class MultiVideoLoadingFooter
   extends FrameLayout
@@ -19,20 +19,20 @@ public class MultiVideoLoadingFooter
   {
     super(paramContext);
     inflate(paramContext, 2131560060, this);
-    addOnLayoutChangeListener(new qxw(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369501));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369510));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369507));
+    addOnLayoutChangeListener(new qxt(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369500));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369509));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369506));
     a(1);
   }
   
   private String a(int paramInt)
   {
     if (paramInt == 1) {
-      return ajyc.a(2131716245);
+      return ajya.a(2131716256);
     }
     if (paramInt == 2) {
-      return ajyc.a(2131716242);
+      return ajya.a(2131716253);
     }
     return null;
   }

@@ -2,21 +2,21 @@ package com.tencent.mobileqq.onlinestatus;
 
 import android.view.View;
 import android.view.animation.TranslateAnimation;
-import auhi;
+import auhk;
 
 public class AccountPanel$2
   implements Runnable
 {
-  public AccountPanel$2(auhi paramauhi) {}
+  public AccountPanel$2(auhk paramauhk) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, auhi.a(this.this$0).getHeight(), 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, auhk.a(this.this$0).getHeight(), 0.0F);
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(300L);
     localTranslateAnimation.setDuration(300L);
-    auhi.a(this.this$0).startAnimation(localTranslateAnimation);
-    auhi.a(this.this$0, true);
+    auhk.a(this.this$0).startAnimation(localTranslateAnimation);
+    auhk.a(this.this$0, true);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Debug;
 import android.widget.Toast;
-import aree;
-import arii;
-import axoe;
+import areg;
+import arik;
+import axog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.shadow.core.common.LoggerFactory;
@@ -26,12 +26,12 @@ public class HuayangPluginContainer
       Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
       Debug.waitForDebugger();
     }
-    LoggerFactory.setILoggerFactory(aree.a());
+    LoggerFactory.setILoggerFactory(areg.a());
     BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
     DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
-    arii.d();
-    axoe localaxoe = new axoe(BaseApplicationImpl.getApplication());
-    URLDrawable.init(BaseApplicationImpl.getApplication(), localaxoe);
+    arik.d();
+    axog localaxog = new axog(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localaxog);
     new InitUrlDrawable().step();
     new InitMemoryCache().step();
     return true;

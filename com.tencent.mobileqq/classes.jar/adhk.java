@@ -1,18 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class adhk
-  implements bfpc
+  implements DialogInterface.OnClickListener
 {
   adhk(adhi paramadhi) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAdapterView = (ager)adhi.a(this.a).a.getItem(paramInt - 1);
-    adhi.a(this.a, paramAdapterView);
-    adhi.a(this.a).dismiss();
-    axqw.b(adhi.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class AECameraGLSurfaceView$11
@@ -10,7 +10,7 @@ class AECameraGLSurfaceView$11
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), this.a, 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), this.a, 0).a();
   }
 }
 

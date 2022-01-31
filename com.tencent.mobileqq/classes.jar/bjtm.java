@@ -1,11 +1,21 @@
-class bjtm
-  implements bjfq
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+public class bjtm
 {
-  bjtm(bjtg parambjtg) {}
+  public static String a;
   
-  public void aX_()
+  public static boolean a(long paramLong, Context paramContext)
   {
-    bjtg.a(this.a).e();
+    a = ajwa.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
 }
 

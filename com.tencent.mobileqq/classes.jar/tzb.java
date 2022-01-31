@@ -1,67 +1,55 @@
-import android.animation.Animator.AnimatorListener;
-import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
-public class tzb
+final class tzb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
-  {
-    veg.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
-    View localView = paramViewGroup.findViewById(2131375491);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131362544);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379151);
-    Drawable localDrawable = paramAnimationParam.a();
-    ImageView localImageView1 = null;
-    if (localDrawable != null)
-    {
-      localImageView1 = new ImageView(paramViewGroup.getContext());
-      localViewGroup.addView(localImageView1, new RelativeLayout.LayoutParams(-1, -1));
-      localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localImageView1.setImageDrawable(localDrawable);
-    }
-    int i = localView.getMeasuredWidth();
-    int j = localView.getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    paramViewGroup = new ValueAnimator();
-    paramViewGroup.setInterpolator(new DecelerateInterpolator());
-    paramViewGroup.setDuration(250L);
-    paramViewGroup.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, f1 }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, f2 }), PropertyValuesHolder.ofInt("width", new int[] { i, paramAnimationParam.c }), PropertyValuesHolder.ofInt("height", new int[] { j, paramAnimationParam.d }), PropertyValuesHolder.ofFloat("translateX", new float[] { 0.0F, paramAnimationParam.a }), PropertyValuesHolder.ofFloat("translateY", new float[] { 0.0F, paramAnimationParam.b }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 1.0F, 0.0F }) });
-    paramViewGroup.addUpdateListener(new tzc(localViewGroup, localDrawable, localImageView1, localImageView2));
-    paramViewGroup.addListener(new tzd(paramAnimatorListener));
-    paramViewGroup.start();
-  }
+  tzb(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    veg.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
-    Object localObject = paramViewGroup.findViewById(2131375491);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362544);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379151);
-    paramViewGroup = new ImageView(paramViewGroup.getContext());
-    localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
-    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramViewGroup.setImageDrawable(paramAnimationParam.a());
-    int i = ((View)localObject).getMeasuredWidth();
-    int j = ((View)localObject).getMeasuredHeight();
-    float f1 = paramAnimationParam.c * 1.0F / i;
-    float f2 = paramAnimationParam.d * 1.0F / j;
-    localObject = new ValueAnimator();
-    ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
-    ((ValueAnimator)localObject).setDuration(250L);
-    ((ValueAnimator)localObject).setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { f1, 1.0F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, 1.0F }), PropertyValuesHolder.ofInt("width", new int[] { paramAnimationParam.c, i }), PropertyValuesHolder.ofInt("height", new int[] { paramAnimationParam.d, j }), PropertyValuesHolder.ofFloat("translateX", new float[] { paramAnimationParam.a, 0.0F }), PropertyValuesHolder.ofFloat("translateY", new float[] { paramAnimationParam.b, 0.0F }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 0.0F, 1.0F }) });
-    ((ValueAnimator)localObject).addUpdateListener(new tze(localViewGroup, paramViewGroup, localImageView));
-    ((ValueAnimator)localObject).addListener(new tzf(paramAnimatorListener, localViewGroup, paramViewGroup));
-    ((ValueAnimator)localObject).start();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    float f3;
+    if (f1 < f2)
+    {
+      f1 = f2 / f1;
+      f2 = i;
+      f3 = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+    }
+    for (;;)
+    {
+      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+      return;
+      if (f2 < f1)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+        f1 /= f2;
+        f2 = j;
+        f3 = j;
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
+      }
+    }
   }
 }
 

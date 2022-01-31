@@ -1,10 +1,48 @@
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.content.Context;
+import android.media.AudioManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bcus
+class bcus
+  implements asgr
 {
-  public static bcuq a(bcvg parambcvg)
+  bcus(bcuq parambcuq) {}
+  
+  public void a(int paramInt)
   {
-    return new bcuv(new bcuu(new ShareActionSheetV2(parambcvg)));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (bcuq.a(this.a) == null);
+        ((AudioManager)((Context)bcuq.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
+        bcuq.a(this.a).c();
+        bcuq.a(this.a, 1);
+        if (bcuq.a(this.a) != null) {
+          bcuq.a(this.a).onVideoStart((int)bcuq.a(this.a).c());
+        }
+        bcuq.a(this.a).postDelayed(this.a.a, 100L);
+        return;
+      } while (bcuq.a(this.a) == null);
+      bcuq.a(this.a).b();
+      bcuq.a(this.a, 4);
+      if (bcuq.a(this.a) != null) {
+        bcuq.a(this.a).onVideoStop();
+      }
+      bcuq.a(this.a).removeCallbacks(this.a.a);
+      return;
+    } while (bcuq.a(this.a) == null);
+    bcuq.a(this.a).a(true);
   }
 }
 

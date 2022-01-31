@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bbbj;
+import bbbx;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.net.URL;
-import sqb;
-import vts;
+import spy;
+import vtp;
 
 public class SlideItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new vts();
+  public static final Parcelable.Creator<SlideItemInfo> CREATOR = new vtp();
   public int a;
   public long a;
   public LocalMediaInfo a;
   public String a;
   public URL a;
-  public sqb a;
+  public spy a;
   public boolean a;
   public int b;
   public long b;
@@ -89,7 +89,7 @@ public class SlideItemInfo
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
       this.jdField_b_of_type_JavaLangString = paramLocalMediaInfo.path;
-      this.jdField_b_of_type_Int = bbbj.a(paramLocalMediaInfo);
+      this.jdField_b_of_type_Int = bbbx.a(paramLocalMediaInfo);
       if (!TextUtils.isEmpty(paramLocalMediaInfo.mTransId)) {
         this.jdField_e_of_type_JavaLangString = paramLocalMediaInfo.mTransId;
       }
@@ -103,7 +103,7 @@ public class SlideItemInfo
         StringBuilder localStringBuilder = new StringBuilder("albumthumb");
         localStringBuilder.append("://");
         localStringBuilder.append(paramLocalMediaInfo.path);
-        this.jdField_a_of_type_JavaNetURL = bbbj.a(paramLocalMediaInfo);
+        this.jdField_a_of_type_JavaNetURL = bbbx.a(paramLocalMediaInfo);
         this.jdField_a_of_type_Long = 2000L;
         this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
         return;
@@ -115,7 +115,7 @@ public class SlideItemInfo
       return;
     }
     if (paramLocalMediaInfo.isSystemMeidaStore == true) {}
-    for (this.jdField_a_of_type_JavaNetURL = bbbj.a(paramLocalMediaInfo, "VIDEO");; this.jdField_a_of_type_JavaNetURL = bbbj.a(paramLocalMediaInfo, "APP_VIDEO"))
+    for (this.jdField_a_of_type_JavaNetURL = bbbx.a(paramLocalMediaInfo, "VIDEO");; this.jdField_a_of_type_JavaNetURL = bbbx.a(paramLocalMediaInfo, "APP_VIDEO"))
     {
       this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
       if (this.jdField_c_of_type_Long != 0L) {

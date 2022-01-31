@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
-import vot;
+import voq;
 
 class FaceListPage$1
   implements Runnable
 {
-  FaceListPage$1(FaceListPage paramFaceListPage, vot paramvot) {}
+  FaceListPage$1(FaceListPage paramFaceListPage, voq paramvoq) {}
   
   public void run()
   {

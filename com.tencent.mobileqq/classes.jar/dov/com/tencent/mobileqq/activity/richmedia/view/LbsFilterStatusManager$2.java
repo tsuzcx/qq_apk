@@ -1,16 +1,16 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import bksl;
+import bktc;
 import java.util.ArrayList;
 
 public class LbsFilterStatusManager$2
   implements Runnable
 {
-  public LbsFilterStatusManager$2(bksl parambksl, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public LbsFilterStatusManager$2(bktc parambktc, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bksl.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    bktc.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

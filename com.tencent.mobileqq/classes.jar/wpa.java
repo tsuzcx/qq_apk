@@ -1,45 +1,45 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.1;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.2;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.3;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.4;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.5;
+import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.6;
 
-public abstract class wpa<E>
-  extends RecyclerView.Adapter
+public class wpa
+  extends RecyclerView.AdapterDataObserver
 {
-  public final ArrayList<E> a = new ArrayList();
+  wpa(woz paramwoz) {}
   
-  public void a()
+  public void onChanged()
   {
-    this.a.clear();
+    woz.a(this.a).post(new ComponentAdapter.1.1(this));
   }
   
-  public void a(ArrayList<E> paramArrayList)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    this.a.clear();
-    notifyDataSetChanged();
-    if (paramArrayList == null) {
-      return;
-    }
-    this.a.addAll(paramArrayList);
-    notifyDataSetChanged();
+    woz.a(this.a).post(new ComponentAdapter.1.2(this, paramInt1, paramInt2));
   }
   
-  public void a(List<E> paramList)
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (paramList == null) {
-      return;
-    }
-    this.a.addAll(paramList);
-    notifyItemRangeInserted(this.a.size(), paramList.size());
+    woz.a(this.a).post(new ComponentAdapter.1.3(this, paramInt1, paramInt2, paramObject));
   }
   
-  public ArrayList<E> b()
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    return this.a;
+    woz.a(this.a).post(new ComponentAdapter.1.4(this, paramInt1, paramInt2));
   }
   
-  public int getItemCount()
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.a.size();
+    woz.a(this.a).post(new ComponentAdapter.1.6(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    woz.a(this.a).post(new ComponentAdapter.1.5(this, paramInt1, paramInt2));
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abpi;
-import abpj;
-import abpk;
-import abpl;
-import ajtk;
-import ajtq;
-import ajuf;
+import abpe;
+import abpf;
+import abpg;
+import abph;
+import ajti;
+import ajto;
+import ajud;
 import android.content.Intent;
 import android.os.Bundle;
-import axqw;
-import bbcv;
-import bbgg;
+import axqy;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,48 +21,48 @@ public class NotifyPCActiveActivity
 {
   public static NotifyPCActiveActivity a;
   private int jdField_a_of_type_Int;
-  private ajtq jdField_a_of_type_Ajtq = new abpl(this);
-  private bbgg jdField_a_of_type_Bbgg;
+  private ajto jdField_a_of_type_Ajto = new abph(this);
+  private bbgu jdField_a_of_type_Bbgu;
   
   private void a()
   {
-    ajuf localajuf = (ajuf)this.app.a(4);
-    if (localajuf != null) {
-      localajuf.a();
+    ajud localajud = (ajud)this.app.a(4);
+    if (localajud != null) {
+      localajud.a();
     }
   }
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_Bbgu = null;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bbgg != null)
+      if (this.jdField_a_of_type_Bbgu != null)
       {
-        this.jdField_a_of_type_Bbgg.setCancelable(false);
-        this.jdField_a_of_type_Bbgg.show();
+        this.jdField_a_of_type_Bbgu.setCancelable(false);
+        this.jdField_a_of_type_Bbgu.show();
       }
       return;
-      this.app.addObserver(this.jdField_a_of_type_Ajtq, true);
-      Object localObject1 = (ajtk)this.app.a(2);
+      this.app.addObserver(this.jdField_a_of_type_Ajto, true);
+      Object localObject1 = (ajti)this.app.a(2);
       Object localObject3 = getIntent().getExtras();
       Object localObject2 = ((Bundle)localObject3).getString("Message");
       String str = ((Bundle)localObject3).getString("lButton");
       localObject3 = ((Bundle)localObject3).getString("rButton");
-      this.jdField_a_of_type_Bbgg = bbcv.a(this, 230);
-      this.jdField_a_of_type_Bbgg.setContentView(2131558883);
-      this.jdField_a_of_type_Bbgg.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new abpj(this, (ajtk)localObject1)).setNegativeButton(str, new abpi(this));
+      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230);
+      this.jdField_a_of_type_Bbgu.setContentView(2131558883);
+      this.jdField_a_of_type_Bbgu.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new abpf(this, (ajti)localObject1)).setNegativeButton(str, new abpe(this));
       continue;
       localObject2 = getIntent().getExtras();
       localObject1 = ((Bundle)localObject2).getString("Message");
       localObject2 = ((Bundle)localObject2).getString("button");
-      this.jdField_a_of_type_Bbgg = bbcv.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new abpk(this));
+      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new abpg(this));
     }
   }
   
@@ -78,7 +78,7 @@ public class NotifyPCActiveActivity
     }
     if ("mqq.intent.action.PCACTIVE_TIPS".equals(paramBundle))
     {
-      axqw.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
+      axqy.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
       this.jdField_a_of_type_Int = 1;
       a();
     }
@@ -94,7 +94,7 @@ public class NotifyPCActiveActivity
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ajtq);
+    this.app.removeObserver(this.jdField_a_of_type_Ajto);
     super.doOnDestroy();
     if (jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity != null) {
       jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
@@ -126,10 +126,10 @@ public class NotifyPCActiveActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      this.jdField_a_of_type_Bbgg.dismiss();
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
+      this.jdField_a_of_type_Bbgu.dismiss();
     }
-    this.jdField_a_of_type_Bbgg = null;
+    this.jdField_a_of_type_Bbgu = null;
     super.finish();
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
   }

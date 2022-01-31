@@ -1,8 +1,16 @@
 import android.os.Bundle;
 
-public abstract interface atig
+class atig
+  extends mxi
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  atig(atib paramatib, atii paramatii) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Atii != null) {
+      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 

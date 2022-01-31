@@ -1,26 +1,21 @@
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bioj
   extends RecyclerView.ViewHolder
 {
-  public ImageView a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
   public bioj(View paramView)
   {
     super(paramView);
-    this.a = ((ImageView)paramView.findViewById(2131377240));
-  }
-  
-  public void a()
-  {
-    this.a.setImageResource(2130845098);
-  }
-  
-  public void b()
-  {
-    this.a.setImageResource(2130845099);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
+    this.b = ((ImageView)paramView.findViewById(2131368057));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366265));
   }
 }
 

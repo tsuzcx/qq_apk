@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -46,7 +46,7 @@ public class MayknowContactItemParentView
     {
       this.d = getResources().getColor(2131166912);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839224);
-      this.jdField_a_of_type_Int = actn.a(6.0F, getResources());
+      this.jdField_a_of_type_Int = actj.a(6.0F, getResources());
       return;
     }
     catch (Throwable paramContext)

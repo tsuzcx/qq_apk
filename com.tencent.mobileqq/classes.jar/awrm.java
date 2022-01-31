@@ -1,109 +1,71 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import java.util.List;
 
 public class awrm
-  extends awry
-  implements awtb
+  extends awrx
 {
-  private awro jdField_a_of_type_Awro;
-  private WeakReference<awkf> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  
-  public awrm(baxk parambaxk, awkf paramawkf)
+  public awrm(baxy parambaxy)
   {
-    super(parambaxk);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawkf);
+    super(parambaxy);
   }
   
-  private void a()
+  protected awrc<awoi, awwr> a(baxy parambaxy)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    awkf localawkf;
-    do
+    return new awrn(parambaxy);
+  }
+  
+  public void a(awog paramawog, awwq paramawwq)
+  {
+    int i = 0;
+    Object localObject = (awoh)paramawog;
+    a(paramawwq, (awoh)localObject);
+    int k = ((awoh)localObject).a();
+    paramawog = paramawwq.a();
+    if ((paramawog != null) && (paramawog != null))
     {
-      return;
-      localawkf = (awkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localawkf == null);
-    localawkf.notifyDataSetChanged();
-  }
-  
-  private void a(int paramInt1, int paramInt2, awtc paramawtc)
-  {
-    if (!(paramawtc instanceof awtm)) {
-      return;
-    }
-    boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    ((awtm)paramawtc).b(bool);
-    if (paramInt1 == 1)
-    {
-      ((awtm)paramawtc).a(true);
-      return;
-    }
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      ((awtm)paramawtc).a(true);
-      return;
-    case 1: 
-      ((awtm)paramawtc).a(true);
-      return;
-    }
-    ((awtm)paramawtc).a(true);
-  }
-  
-  public void a(awog paramawog, awwp paramawwp, Bitmap paramBitmap)
-  {
-    super.a(paramawog, paramawwp, paramBitmap);
-  }
-  
-  public void a(awta paramawta)
-  {
-    a();
-  }
-  
-  public void a(awta paramawta, String paramString1, String paramString2) {}
-  
-  public void b(awog paramawog, awwp paramawwp)
-  {
-    super.b(paramawog, paramawwp);
-    if (!(paramawog instanceof awpm)) {}
-    do
-    {
-      do
+      localObject = ((awoh)localObject).a();
+      if (localObject != null)
       {
-        return;
-      } while (!(paramawwp instanceof awtc));
-      paramawwp = ((awtc)paramawwp).a();
-      paramawwp.a(((awpm)paramawog).c(), ((awpm)paramawog).d(), ((awpm)paramawog).e());
-      paramawwp.a(this);
-    } while (!(paramawwp instanceof awsy));
-    ((awsy)paramawwp).a(true);
-  }
-  
-  protected void c(awog paramawog, awwp paramawwp)
-  {
-    if (this.jdField_a_of_type_Awro != null)
-    {
-      if (paramawwp.a() != null) {
-        paramawwp.a().setOnClickListener(new awrn(this));
+        int m = Math.min(Math.min(paramawog.size(), ((List)localObject).size()), k);
+        i = 0;
+        if (i < m)
+        {
+          ((awwr)paramawog.get(i)).a().setVisibility(0);
+          ((awwr)paramawog.get(i)).a().setTag(2131379213, ((List)localObject).get(i));
+          ((awwr)paramawog.get(i)).a().setTag(2131379218, paramawog.get(i));
+          ((awwr)paramawog.get(i)).a().setTag(2131379214, Integer.valueOf(i));
+          ((awwr)paramawog.get(i)).a().setTag(2131379212, Integer.valueOf(paramawog.size()));
+          ((awwr)paramawog.get(i)).a().setTag(2131379215, this.a);
+          awwd.a((awoi)((List)localObject).get(i), m, i);
+          int n = ((awoi)((List)localObject).get(i)).a();
+          int i1 = ((awoi)((List)localObject).get(i)).b();
+          View localView = ((awwr)paramawog.get(i)).a();
+          if ((((List)localObject).get(i) instanceof awoj)) {}
+          for (int j = ((awoj)((List)localObject).get(i)).r;; j = 0)
+          {
+            awwd.a(n, i1, localView, j);
+            this.a.a((awog)((List)localObject).get(i), (awws)paramawog.get(i));
+            i += 1;
+            break;
+          }
+        }
+        i = Math.min(((List)localObject).size(), k);
+        while (i < paramawog.size())
+        {
+          ((awwr)paramawog.get(i)).a().setVisibility(8);
+          i += 1;
+        }
       }
-      return;
+      while (i < paramawog.size())
+      {
+        ((awwr)paramawog.get(i)).a().setVisibility(8);
+        i += 1;
+      }
     }
-    super.c(paramawog, paramawwp);
-  }
-  
-  public void d(awog paramawog, awwp paramawwp)
-  {
-    if (!(paramawwp instanceof awtc)) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
+    if (paramawwq.b() != null) {
+      paramawwq.b().setVisibility(8);
     }
-    a(paramawog.a(), paramawog.b(), (awtc)paramawwp);
   }
 }
 

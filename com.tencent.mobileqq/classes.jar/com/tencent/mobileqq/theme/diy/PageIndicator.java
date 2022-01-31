@@ -40,7 +40,7 @@ public class PageIndicator
       localLayoutParams.setMargins((int)(4.0F * this.density), 0, (int)(5.0F * this.density), 0);
       localImageView.setLayoutParams(localLayoutParams);
       super.addView(localImageView);
-      localImageView.setBackgroundResource(2130846560);
+      localImageView.setBackgroundResource(2130846566);
       if (i == j - 1) {
         generatePageControl(paramScrollLayout.getCurScreen());
       }
@@ -58,7 +58,7 @@ public class PageIndicator
     {
       localView = super.getChildAt(i);
       if (localView != null) {
-        localView.setBackgroundResource(2130846560);
+        localView.setBackgroundResource(2130846566);
       }
       i += 1;
     }
@@ -71,7 +71,7 @@ public class PageIndicator
       {
         localView = super.getChildAt(i);
         if (localView != null) {
-          localView.setBackgroundResource(2130846561);
+          localView.setBackgroundResource(2130846567);
         }
       }
       return;

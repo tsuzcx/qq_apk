@@ -1,40 +1,36 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideoBatch;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.VideoItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-public class tpc
-  extends syq
+class tpc
+  implements tpi
 {
-  public List<tct> a;
+  tpc(tpb paramtpb) {}
   
-  public tpc(qqstory_service.RspWatchVideoBatch paramRspWatchVideoBatch)
+  public void a(trm paramtrm)
   {
-    super(paramRspWatchVideoBatch.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
-    if (paramRspWatchVideoBatch == null) {}
-    for (;;)
-    {
-      return;
-      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
-      while (paramRspWatchVideoBatch.hasNext())
-      {
-        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
-        tct localtct = new tct();
-        localtct.a = localVideoItem.vid.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.add(localtct);
-      }
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).a(paramtrm.a);
+    }
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).a();
     }
   }
   
-  public String toString()
+  public void b(trm paramtrm)
   {
-    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).c(paramtrm.a);
+    }
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).a();
+    }
+  }
+  
+  public void c(trm paramtrm)
+  {
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).d(paramtrm.a);
+    }
+    if (tpb.a(this.a) != null) {
+      tpb.a(this.a).a();
+    }
   }
 }
 

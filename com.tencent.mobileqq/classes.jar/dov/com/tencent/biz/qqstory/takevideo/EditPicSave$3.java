@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bjtb;
+import bjts;
 
 public class EditPicSave$3
   implements Runnable
 {
-  public EditPicSave$3(bjtb parambjtb) {}
+  public EditPicSave$3(bjts parambjts) {}
   
   public void run()
   {
-    bjtb.a(this.this$0).show();
+    bjts.a(this.this$0).show();
   }
 }
 

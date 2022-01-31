@@ -1,128 +1,148 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.text.TextPaint;
-import android.view.animation.LinearInterpolator;
-import com.tencent.mobileqq.utils.ChnToSpell;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
-public class bkhe
-  extends bkhg
+class bkhe
+  extends LinearLayout
 {
-  int jdField_a_of_type_Int = 0;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "15:29";
-  int c = 0;
-  int d = 0;
-  int e;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private bkgn jdField_a_of_type_Bkgn;
+  private int b;
+  private int c;
+  private int d;
   
-  public bkhe(Context paramContext, String paramString)
+  public bkhe(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener, bkgn parambkgn)
   {
-    super(paramContext, paramString);
-    a(paramString);
-    b();
-    c();
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Bkgn = parambkgn;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
   }
   
-  public static String a(int paramInt, String paramString)
+  private void a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      localJSONObject.put("type", paramInt);
-      localJSONObject.put("first_line", paramString);
-      paramString = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("FilmDigitInfoStickerDrawable", 2, paramString);
+      URLImageView localURLImageView = new URLImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = bkik.a(getContext(), 7.0F);
       }
-      return paramString;
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = bkik.a(getContext(), 7.0F);
+      }
+      localURLImageView.setLayoutParams(localLayoutParams);
+      localURLImageView.setPadding(this.c, this.c, this.c, this.c);
+      localURLImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+      addView(localURLImageView);
+      i += 1;
     }
-    catch (JSONException paramString)
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = 0;
+    int j;
+    for (;;)
     {
-      for (;;)
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
+  }
+  
+  public void a(bkgj parambkgj, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    int i = paramInt1 * this.b;
+    label31:
+    ImageView localImageView;
+    Object localObject;
+    if (paramInt1 == paramInt2 - 1)
+    {
+      paramInt1 = parambkgj.b();
+      a(paramInt1 - i);
+      paramInt2 = i;
+      if (paramInt2 >= paramInt1) {
+        return;
+      }
+      localImageView = (ImageView)getChildAt(paramInt2 - i);
+      localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localObject = parambkgj.a(paramInt2);
+      localImageView.setTag(2131376882, localObject);
+      localImageView.setTag(2131376873, Integer.valueOf(paramInt2));
+      if (parambkgj.a(paramInt2) != 1) {
+        break label252;
+      }
+      if (!(getContext() instanceof EditPicActivity)) {
+        break label158;
+      }
+      localObject = parambkgj.b(paramInt2);
+      localImageView.setTag(2131376882, localObject);
+      bkbx.a().a(localImageView, (String)localObject, this.d, this.d, paramBoolean);
+    }
+    for (;;)
+    {
+      paramInt2 += 1;
+      break label31;
+      paramInt1 = this.b + i;
+      break;
+      label158:
+      localObject = Uri.parse((String)localObject).getPath();
+      localObject = bbqz.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FilmDigitInfoStickerDrawable", 2, paramString, new Object[0]);
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
         }
-        paramString = null;
-      }
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
-  {
-    int i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicWidth(), this.jdField_a_of_type_AndroidTextTextPaint, 31);
-    int j = a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-    float f2 = ((Integer)paramArrayList.get(this.e)).intValue() % 100 * 1.0F / 99.0F;
-    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(f2 * 20.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165570));
-    paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), j + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-    paramCanvas.restoreToCount(i);
-  }
-  
-  public String[] a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        this.f = paramString.optInt("type", 0);
-        String str = paramString.optString("first_line", "");
-        paramString = str;
-        if (str.contains("·")) {
-          paramString = str.substring(0, str.indexOf("·"));
+        if (paramBoolean) {}
+        for (;;)
+        {
+          localImageView.setImageDrawable((Drawable)localObject);
+          break;
+          localObject = null;
         }
-        this.jdField_b_of_type_JavaLangString = ChnToSpell.a(paramString, 1);
       }
-      return new String[] { this.jdField_b_of_type_JavaLangString };
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        paramString.printStackTrace();
-        paramString = null;
+        QLog.d("NormalFaceAdapter", 2, "urlDrawable apng error");
+        continue;
+        label252:
+        bkbx.a().a(localImageView, (String)localObject, this.d, this.d, paramBoolean);
       }
     }
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165569));
-    Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/dov_digital.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface((Typeface)localObject);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    this.d = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top));
-    this.c = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length()));
-    this.jdField_a_of_type_Int = (this.c + a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = (a(30.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.e = this.jdField_a_of_type_Bkgu.a("anim", 0L, 1000L, 0, 999, new LinearInterpolator());
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 

@@ -188,7 +188,7 @@ class ThemeDIYActivity$13
     //   356: ifnull +150 -> 506
     //   359: aload 5
     //   361: bipush 8
-    //   363: invokestatic 175	bbju:a	(Landroid/graphics/Bitmap;I)V
+    //   363: invokestatic 175	bbki:a	(Landroid/graphics/Bitmap;I)V
     //   366: new 177	android/graphics/drawable/BitmapDrawable
     //   369: dup
     //   370: aload 5

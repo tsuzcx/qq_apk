@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-final class bgks
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class bgks
+  implements ServiceConnection
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  bgks(bgkq parambgkq) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
     }
-    bgkq.a(paramPluginManagerClient);
-    bgkq.a(null);
-    while (!bgkq.a().isEmpty())
-    {
-      paramPluginManagerClient = (bgla)bgkq.a().poll();
-      if (paramPluginManagerClient != null) {
-        bgkq.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_Bgkz, paramPluginManagerClient.jdField_a_of_type_Bgkx);
-      }
+    this.a.jdField_a_of_type_Loo = lop.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_Loo != null) && (this.a.jdField_a_of_type_Bgkr != null)) {
+      this.a.jdField_a_of_type_Bgkr.a(this.a);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_Loo = null;
   }
 }
 

@@ -1,19 +1,28 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.Map;
 
 public class abdc
-  implements abcx
+  extends ajxj
 {
   public abdc(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ForwardTroopListFragment.a(this.a, paramView);
+    if (paramBoolean1) {
+      this.a.a();
+    }
   }
   
-  public boolean a(String paramString, int paramInt)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
+    this.a.a();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

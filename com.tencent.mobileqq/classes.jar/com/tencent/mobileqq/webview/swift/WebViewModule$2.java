@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bccv;
-import bcfx;
+import bcdj;
+import bcgl;
 
 public class WebViewModule$2
   implements Runnable
 {
-  public WebViewModule$2(bccv parambccv) {}
+  public WebViewModule$2(bcdj parambcdj) {}
   
   public void run()
   {
-    bcfx.a(this.this$0.b());
+    bcgl.a(this.this$0.b());
   }
 }
 

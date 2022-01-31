@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import xmt;
+import xmq;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13$1
   implements Runnable

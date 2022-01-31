@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import noo;
-import qty;
-import qvd;
-import qzd;
-import qze;
+import nol;
+import qtv;
+import qva;
+import qza;
+import qzb;
 
 public class VideoUIManager$8
   implements Runnable
 {
-  public VideoUIManager$8(qvd paramqvd, int paramInt) {}
+  public VideoUIManager$8(qva paramqva, int paramInt) {}
   
   public void run()
   {
-    if ((qvd.a(this.this$0) != null) && (qvd.a(this.this$0).a != null))
+    if ((qva.a(this.this$0) != null) && (qva.a(this.this$0).a != null))
     {
-      qze localqze = new qze("", "", qvd.a(this.this$0).a.mVideoVid, qvd.a(this.this$0).a.innerUniqueID).a((int)qvd.a(this.this$0).a.mChannelID);
-      noo.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localqze.a().a(), false);
-      noo.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localqze.a().a(), false);
+      qzb localqzb = new qzb("", "", qva.a(this.this$0).a.mVideoVid, qva.a(this.this$0).a.innerUniqueID).a((int)qva.a(this.this$0).a.mChannelID);
+      nol.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localqzb.a().a(), false);
+      nol.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localqzb.a().a(), false);
     }
   }
 }

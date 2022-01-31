@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="grpID,mId")
 public class GrpMemberInfo
-  extends aukm
+  extends auko
 {
   public String grpID;
   public String mId;

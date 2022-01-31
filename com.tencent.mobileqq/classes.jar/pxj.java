@@ -1,22 +1,15 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
 
 public class pxj
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public pxj(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  public pxj(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
   
   public void onClick(View paramView)
   {
-    onk.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actn.a(2, 14, this.a.getResources()));
+    ComponentHeaderSubscribe.a(this.a);
   }
 }
 

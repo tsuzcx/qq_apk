@@ -1,46 +1,56 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ancp
+  extends ampa<anco>
 {
-  private boolean a;
-  
-  public static ancp a(ampi[] paramArrayOfampi)
+  public static anco a()
   {
-    boolean bool = true;
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
-    {
-      paramArrayOfampi = null;
-      return paramArrayOfampi;
-    }
-    ancp localancp = new ancp();
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfampi[0].a);
-        paramArrayOfampi = localancp;
-        if (!localJSONObject.has("SendAsTxDoc")) {
-          break;
-        }
-        if (localJSONObject.getJSONObject("SendAsTxDoc").getInt("enableSendAsTxDoc") == 1)
-        {
-          localancp.a = bool;
-          return localancp;
-        }
-      }
-      catch (JSONException paramArrayOfampi)
-      {
-        paramArrayOfampi.printStackTrace();
-        return localancp;
-      }
-      bool = false;
-    }
+    return (anco)ampl.a().a(487);
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.a;
+    return 487;
+  }
+  
+  @NonNull
+  public anco a(int paramInt)
+  {
+    return new anco();
+  }
+  
+  @Nullable
+  public anco a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anco.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<anco> a()
+  {
+    return anco.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anco paramanco) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

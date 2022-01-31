@@ -1,16 +1,6 @@
-import android.os.Bundle;
-
-class atia
-  extends mxl
+public abstract interface atia
 {
-  atia(athz paramathz, atig paramatig) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Atig != null) {
-      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public abstract void a(int paramInt, byte[] paramArrayOfByte);
 }
 
 

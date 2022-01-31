@@ -1,8 +1,10 @@
-import android.hardware.Camera.Face;
-
 public abstract interface amfe
 {
-  public abstract void a(Camera.Face[] paramArrayOfFace, amfi paramamfi);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(amfa paramamfa);
+  
+  public abstract void b(int paramInt);
 }
 
 

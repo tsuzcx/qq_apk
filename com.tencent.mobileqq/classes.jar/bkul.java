@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public final class bkul
-  implements Parcelable.Creator<FilterCategoryItem>
+public class bkul
+  implements DialogInterface.OnClickListener
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public bkul(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public FilterCategoryItem[] a(int paramInt)
-  {
-    return new FilterCategoryItem[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

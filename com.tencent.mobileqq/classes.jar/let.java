@@ -1,71 +1,49 @@
+import com.tencent.av.app.DeviceCapabilityExamination;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class let
+  implements aysc
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  
-  public int a()
+  public void onResp(aysz paramaysz)
   {
-    if (this.a == 1) {
-      return 2;
+    boolean bool = false;
+    String str1 = (String)paramaysz.jdField_a_of_type_Aysy.a();
+    if (paramaysz.jdField_a_of_type_Int == 0) {
+      bool = true;
     }
-    if (this.a == 4) {
-      return 1;
-    }
-    if (this.a == 2) {
-      return 4;
-    }
-    if (this.a == 8) {
-      return 3;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    lpd locallpd = new lpd('=', ';');
-    locallpd.a("s_path", this.jdField_b_of_type_JavaLangString);
-    if (a())
+    try
     {
-      locallpd.a("i_fps", this.jdField_b_of_type_Int);
-      locallpd.a("i_bitrate", this.jdField_c_of_type_Int);
-      locallpd.a("s_outpath", this.d);
-      File localFile = new File(this.d);
-      if (localFile.exists()) {
-        localFile.delete();
+      if (DeviceCapabilityExamination.a != null)
+      {
+        DeviceCapabilityExamination.a.a(str1, bool);
+        if (DeviceCapabilityExamination.a.a()) {
+          DeviceCapabilityExamination.a = null;
+        }
+      }
+      if (!bool)
+      {
+        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + paramaysz.jdField_a_of_type_Int + "]");
+        return;
       }
     }
-    for (;;)
+    finally {}
+    try
     {
-      return locallpd.a();
-      locallpd.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
+      String str2 = DeviceCapabilityExamination.b(str1);
+      bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, str2, false);
+      bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+      paramaysz = new File(DeviceCapabilityExamination.a(str1));
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + paramaysz.exists() + "]");
+      return;
+    }
+    catch (Exception paramaysz)
+    {
+      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
     }
   }
   
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a == 2) || (this.a == 8)) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a == 1);
-      bool1 = bool2;
-    } while (this.a != 4);
-    return false;
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.hardcoder;
 
-import aabj;
-import aabk;
+import aabf;
+import aabg;
 import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
@@ -53,10 +53,10 @@ public class HardCoderJNI
   public static final int SCENE_SNS_SCROLL = 701;
   public static final int SCENE_UPDATE_CHATROOM = 401;
   private static final String TAG = "HardCoder.JNI";
-  private static aabj callback;
+  private static aabf callback;
   public static boolean checkEnv = true;
   public static boolean hcDebug;
-  public static final boolean sHCDEBUG = aabk.a;
+  public static final boolean sHCDEBUG = aabg.a;
   
   static
   {
@@ -85,7 +85,7 @@ public class HardCoderJNI
       QLog.i("HardCoder.JNI", 2, "onData callbackType:" + paramInt1 + " timestamp:" + paramLong + " errCode:" + paramInt2 + " funcid:" + paramInt3 + " dataType:" + paramInt4);
     }
     if (paramInt2 == -20001) {
-      aabk.a().a();
+      aabg.a().a();
     }
     if (callback != null) {}
     try
@@ -105,9 +105,9 @@ public class HardCoderJNI
   
   public static native int registerANRCallback(int paramInt, long paramLong);
   
-  public static int registerANRCallback(aabj paramaabj)
+  public static int registerANRCallback(aabf paramaabf)
   {
-    callback = paramaabj;
+    callback = paramaabf;
     return registerANRCallback(Process.myTid(), SystemClock.elapsedRealtime());
   }
   

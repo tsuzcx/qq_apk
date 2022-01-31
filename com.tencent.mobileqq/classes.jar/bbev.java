@@ -1,120 +1,134 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.net.NetworkInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import cooperation.qzone.util.NetworkState;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
 
 public class bbev
+  extends bbcp
 {
-  public static int a(int paramInt)
+  private static volatile bbev jdField_a_of_type_Bbev;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0);
+  private List<Pair<String, String>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  static
   {
-    switch (paramInt)
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    jdField_a_of_type_JavaLangString = localBaseApplication.getFilesDir().getAbsoluteFile() + File.separator + "jumpConfig/";
+    b = jdField_a_of_type_JavaLangString + "qq_safe_jump_whitelist.xml";
+  }
+  
+  public static bbev a()
+  {
+    if (jdField_a_of_type_Bbev == null) {}
+    try
     {
-    case 2: 
-    default: 
-      return 2;
-    case 1: 
-    case 4: 
-    case 5: 
-      return 4;
+      if (jdField_a_of_type_Bbev == null) {
+        jdField_a_of_type_Bbev = new bbev();
+      }
+      return jdField_a_of_type_Bbev;
     }
-    return 3;
+    finally {}
   }
   
-  public static int a(Context paramContext)
+  private void a(String paramString1, String paramString2)
   {
-    int j = nam.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpFilterHelper", 2, "reportIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
     }
-    return i;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(paramString1, paramString2);
+    axrn.a(BaseApplicationImpl.getApplication()).a(null, "JumpIllegal", true, 0L, 0L, localHashMap, null);
   }
   
-  public static String a(int paramInt)
+  protected int a()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".").append(paramInt >> 8 & 0xFF).append(".").append(paramInt >> 16 & 0xFF).append(".").append(paramInt >> 24 & 0xFF);
-    return localStringBuffer.toString();
+    return 2131886091;
   }
   
-  public static String a(Context paramContext)
+  public long a()
   {
-    return NetworkState.getAPN();
+    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_jump_whitelist_version", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpFilterHelper", 2, "getConfigVersion version=" + l);
+    }
+    return l;
   }
   
-  public static boolean a()
+  protected Object a(XmlPullParser paramXmlPullParser)
   {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
-  
-  public static boolean a(NetworkInfo paramNetworkInfo)
-  {
-    return HwNetworkUtil.isMobileNetworkInfo(paramNetworkInfo);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int j = -1;
-    int i = j;
-    if (AppNetConnInfo.isNetSupport())
-    {
-      paramContext = AppNetConnInfo.getRecentNetworkInfo();
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.getType();
+    if (paramXmlPullParser == null) {
+      return null;
+    }
+    long l1 = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    for (int i = paramXmlPullParser.getEventType(); i != 1; i = paramXmlPullParser.next()) {
+      if ((i == 2) && (paramXmlPullParser.getName().equalsIgnoreCase("Item")))
+      {
+        String str1 = paramXmlPullParser.getAttributeValue(null, "pkg");
+        String str2 = paramXmlPullParser.getAttributeValue(null, "cmp");
+        if ((str1 != null) && (str2 != null)) {
+          localArrayList.add(new Pair(str1, str2));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpFilterHelper", 2, "doParseRules pkg=" + str1 + ";cmp=" + str2);
+        }
       }
     }
-    return i;
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpFilterHelper", 2, "doParseRules :  cost time:" + (l2 - l1) + "ms;size=" + localArrayList.size());
+    }
+    return localArrayList;
   }
   
-  public static boolean b(Context paramContext)
+  protected void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    return AppNetConnInfo.isMobileConn();
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpFilterHelper", 2, "updateConfigVersion version=" + paramLong);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_jump_whitelist_version", paramLong).commit();
   }
   
-  public static boolean c(Context paramContext)
+  protected void a(Object paramObject)
   {
-    int i = bcxh.a(paramContext);
-    return (i == 4) || (i == 3);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static boolean d(Context paramContext)
+  public boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return HwNetworkUtil.isNetSupport(paramContext);
-  }
-  
-  @TargetApi(13)
-  public static boolean f(Context paramContext)
-  {
-    return (Build.VERSION.SDK_INT >= 13) && (b(paramContext) == 7);
-  }
-  
-  public static boolean g(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static boolean h(Context paramContext)
-  {
-    return NetworkState.isWifiConn();
+    Pair localPair = new Pair(paramString1, paramString2);
+    if (!this.jdField_a_of_type_Boolean) {}
+    synchronized (jdField_a_of_type_Bbev)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        a(paramContext);
+      }
+      if (!this.jdField_a_of_type_JavaUtilList.contains(localPair))
+      {
+        a(paramString1, paramString2);
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpFilterHelper", 2, "isIllegalJump pkg=" + paramString1 + ";cmp=" + paramString2);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbev
  * JD-Core Version:    0.7.0.1
  */

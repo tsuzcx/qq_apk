@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ahbt;
+import ahbr;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.microapp.c.c;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 final class m
-  implements ahbt
+  implements ahbr
 {
   m(g paramg, f paramf, String paramString, g.d paramd) {}
   

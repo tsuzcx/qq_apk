@@ -1,70 +1,18 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lwb
+public final class lwb
+  implements Parcelable.Creator<AVRedPacketConfig>
 {
-  private static mru a;
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
-    }
-    if (a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVPushReport", 2, "ReportTask is running.");
-      }
-      return;
-    }
-    String str;
-    if (a()) {
-      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
-    }
-    try
-    {
-      for (;;)
-      {
-        paramString = new JSONObject(paramString).optJSONObject("attach");
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-          localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.2.8");
-          localJSONObject.put("time", System.currentTimeMillis());
-          if (paramString != null) {
-            localJSONObject.put("attach", paramString);
-          }
-        }
-        catch (JSONException paramVideoAppInterface)
-        {
-          for (;;)
-          {
-            paramVideoAppInterface.printStackTrace();
-          }
-        }
-        a = new lwc(str, localJSONObject.toString(), null);
-        a.execute(new Void[0]);
-        return;
-        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
+    return new AVRedPacketConfig(paramParcel);
   }
   
-  public static boolean a()
+  public AVRedPacketConfig[] a(int paramInt)
   {
-    return false;
+    return new AVRedPacketConfig[paramInt];
   }
 }
 

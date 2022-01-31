@@ -1,38 +1,61 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.loaders.StyleLoaderHelper.DummyCallback.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
+
 public class rpy
+  implements myy
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
   
-  public rpy(String paramString)
+  public rpy(rpx paramrpx, String paramString1, String paramString2)
   {
-    this.a = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public void a(String paramString)
+  public void a(String paramString, int paramInt)
   {
-    this.d = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
+    QLog.d("TemplateFactory", 2, "loaded: bid : " + this.jdField_a_of_type_JavaLangString + " param " + paramString + " code : " + paramInt);
+    if (paramInt == 0)
     {
-      return true;
-      if ((paramObject instanceof rpy)) {
-        return false;
+      if (paramString == null) {}
+      try
+      {
+        QLog.d("TemplateFactory", 2, "下载离线样式包完成 : " + this.jdField_a_of_type_JavaLangString);
+        rqj.a(rpx.a(this.jdField_a_of_type_Rpx));
+        if ((paramString == null) && (rqj.a(this.jdField_a_of_type_JavaLangString).a))
+        {
+          QLog.d("TemplateFactory", 2, "加载离线包 : " + this.jdField_a_of_type_JavaLangString);
+          sez.a(2, rpx.a(this.jdField_a_of_type_Rpx));
+          paramString = this.jdField_a_of_type_Rpx.a(BaseApplicationImpl.getApplication());
+          if (paramString == null)
+          {
+            QLog.d("TemplateFactory", 2, "templateFactory == null  bid : " + this.jdField_a_of_type_JavaLangString + " code : " + paramInt);
+            return;
+          }
+          paramString.a(rpx.a().incrementAndGet());
+          rqj.a(this.jdField_a_of_type_JavaLangString, paramString);
+          rpr.a();
+          return;
+        }
       }
-      paramObject = (rpy)paramObject;
-    } while ((this.b != null) && (this.b.equals(paramObject.b)) && (this.c != null) && (this.c.equals(paramObject.c)));
-    return false;
+      catch (Exception paramString)
+      {
+        QLog.e("TemplateFactory", 1, "loaded: bid : " + this.jdField_a_of_type_JavaLangString, paramString);
+      }
+    }
   }
   
-  public String toString()
+  public void loaded(String paramString, int paramInt)
   {
-    return " bid :" + this.b + " localPath:" + this.c + "  ";
+    ThreadManager.getFileThreadHandler().post(new StyleLoaderHelper.DummyCallback.1(this, paramInt, paramString));
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

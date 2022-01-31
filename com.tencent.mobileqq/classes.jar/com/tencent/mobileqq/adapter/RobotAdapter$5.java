@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.adapter;
 
-import aiov;
+import aiot;
 import java.util.ArrayList;
 
 public class RobotAdapter$5
   implements Runnable
 {
-  public RobotAdapter$5(aiov paramaiov, String paramString, boolean paramBoolean, int paramInt) {}
+  public RobotAdapter$5(aiot paramaiot, String paramString, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    aiov.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
-    aiov.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+    aiot.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
+    aiot.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
     this.this$0.notifyDataSetChanged();
     if (!this.jdField_a_of_type_Boolean) {
       this.this$0.a(this.jdField_a_of_type_Int);

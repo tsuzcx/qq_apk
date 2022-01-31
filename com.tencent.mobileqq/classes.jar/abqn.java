@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abqn
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
-  public abqn(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public abqn(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-    this.a.finish();
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131719386, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 

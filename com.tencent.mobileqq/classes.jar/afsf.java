@@ -1,21 +1,52 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class afsf
-  extends ajxl
+public class afsf
 {
-  afsf(afsa paramafsa) {}
+  public int a;
+  public short a;
+  public short b;
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    try
     {
-      afsa.a(this.a, true);
-      afsa.a(this.a);
+      localJSONObject = new JSONObject();
+      localException1.printStackTrace();
     }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
+        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
+        localJSONObject.put("flagValue", this.b);
+        return localJSONObject;
+      }
+      catch (Exception localException2)
+      {
+        JSONObject localJSONObject;
+        break label46;
+      }
+      localException1 = localException1;
+      localJSONObject = null;
+    }
+    label46:
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
+      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
+      this.b = ((short)paramJSONObject.optInt("flagValue"));
+    }
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
   }
 }
 

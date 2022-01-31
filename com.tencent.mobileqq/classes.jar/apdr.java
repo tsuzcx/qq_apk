@@ -1,45 +1,32 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
+import mqq.app.MobileQQ;
 
 class apdr
-  implements bidp<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
+  implements bieg<WeiyunPB.PwdQueryMsgRsp>
 {
-  apdr(apdj paramapdj, TroopFileTransferManager paramTroopFileTransferManager, azqt paramazqt, FileManagerEntity paramFileManagerEntity) {}
+  apdr(apdn paramapdn) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.a, paramInt, null, paramString);
+    apdn.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
-  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
-    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onSucceed,But uuid is null!!!");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.a, -1, null, ajyc.a(2131716921));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_Azqt.a, 0, paramCrossBidProxyCopyFileToOtherBidMsgRsp, null);
+    bieh.a(apdn.a(this.a).getApplication().getApplicationContext(), true);
+    if (paramPwdQueryMsgRsp.pwd_open.get()) {
+      bieh.b(apdn.a(this.a).getApplication().getApplicationContext(), true);
+    }
+    apdn.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
   }
 }
 

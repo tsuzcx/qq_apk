@@ -1,14 +1,43 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bgsf
+  extends OnPluginInstallListener.Stub
 {
-  public int a;
-  public Bundle a;
+  public bgsf(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  bgsf(bgsd parambgsd, int paramInt, Bundle paramBundle)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    String str = String.valueOf(paramInt);
+    paramString = ajya.a(2131710398);
+    if (this.a.b == QQIndividualityBridgeActivity.c) {
+      paramString = ajya.a(2131710391);
+    }
+    for (;;)
+    {
+      bglh.a(str, paramString);
+      int i = bbfj.a(this.a);
+      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.c(this.a);
+      axqy.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
+      return;
+      if (this.a.b == QQIndividualityBridgeActivity.d) {
+        paramString = ajya.a(2131710392);
+      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
+        paramString = ajya.a(2131710395);
+      }
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    this.a.b();
   }
 }
 

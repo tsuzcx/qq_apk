@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import bcpw;
-import wnl;
+import bcql;
+import wni;
 
 public class CommentPresenter$12
   implements Runnable
 {
-  public CommentPresenter$12(wnl paramwnl) {}
+  public CommentPresenter$12(wni paramwni) {}
   
   public void run()
   {
-    bcpw.a(wnl.s(this.this$0), "评论已被删除", 0).a();
+    bcql.a(wni.s(this.this$0), "评论已被删除", 0).a();
   }
 }
 

@@ -1,8 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-public abstract interface qjt
+public final class qjt
+  implements Parcelable.Creator<LikeAnimationInfo>
 {
-  public abstract void a(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment);
+  public LikeAnimationInfo a(Parcel paramParcel)
+  {
+    return new LikeAnimationInfo(paramParcel);
+  }
+  
+  public LikeAnimationInfo[] a(int paramInt)
+  {
+    return new LikeAnimationInfo[paramInt];
+  }
 }
 
 

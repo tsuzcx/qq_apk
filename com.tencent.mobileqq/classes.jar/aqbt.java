@@ -1,10 +1,16 @@
-public abstract interface aqbt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aqbt
+  implements DialogInterface.OnClickListener
 {
-  public static final String g = ajyc.a(2131704741);
+  aqbt(aqbr paramaqbr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aqbt
  * JD-Core Version:    0.7.0.1
  */

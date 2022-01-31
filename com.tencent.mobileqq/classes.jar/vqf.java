@@ -1,52 +1,65 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import com.tencent.widget.XEditTextEx;
+import com.tribe.async.dispatch.IEventReceiver;
 
 public class vqf
-  extends vpv<vqe>
+  implements IEventReceiver
 {
-  public final ImageView a;
-  public final TextView a;
-  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377103);
+  public View.OnClickListener a;
+  public final View a;
+  public ImageButton a;
+  public TextView a;
+  public XEditTextEx a;
+  public String a;
+  public vqi a;
   
-  vqf(vqe paramvqe, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vqf(View paramView)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377030));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a(paramView);
   }
   
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  private void a(View paramView)
   {
-    return LayoutInflater.from(paramContext).inflate(2131561254, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363006));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364584));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131365514));
+    paramView = new SpannableString(ajya.a(2131710808));
+    paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new vqh(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new vqg(this));
   }
   
-  public void a()
+  public int a()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    return this.jdField_a_of_type_AndroidViewView.getVisibility();
   }
   
-  public void a(vqe paramvqe, int paramInt)
+  public void a(int paramInt)
   {
-    super.a(paramvqe, paramInt);
-    if ((this.jdField_a_of_type_Vpu != null) && (((vqe)this.jdField_a_of_type_Vpu).c != 0) && (((vqe)this.jdField_a_of_type_Vpu).a != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((vqe)this.jdField_a_of_type_Vpu).c);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((vqe)this.jdField_a_of_type_Vpu).a);
-      this.b.setText(((vqe)this.jdField_a_of_type_Vpu).b);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.b.setText("");
+    this.jdField_a_of_type_AndroidViewView.setVisibility(paramInt);
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public boolean isValidate()
+  {
+    return true;
   }
 }
 

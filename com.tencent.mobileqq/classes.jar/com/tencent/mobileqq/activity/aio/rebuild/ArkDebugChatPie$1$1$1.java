@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aemd;
-import aeme;
-import ajyc;
-import bcpw;
+import aemb;
+import aemc;
+import ajya;
+import bcql;
 
 public class ArkDebugChatPie$1$1$1
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$1(aeme paramaeme) {}
+  public ArkDebugChatPie$1$1$1(aemc paramaemc) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.this$0.a, ajyc.a(2131700646), 0).a();
+    bcql.a(this.a.a.this$0.a, ajya.a(2131700657), 0).a();
   }
 }
 

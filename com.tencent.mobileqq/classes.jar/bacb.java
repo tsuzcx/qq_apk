@@ -1,22 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bacb
-  implements View.OnClickListener
+  extends bacf<babf>
 {
-  bacb(baca parambaca) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public ImageView c;
   
-  public void onClick(View paramView)
+  public bacb(View paramView)
   {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362852));
+    this.c = ((ImageView)paramView.findViewById(2131375207));
+    this.b = ((ImageView)paramView.findViewById(2131364274));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362859));
   }
 }
 

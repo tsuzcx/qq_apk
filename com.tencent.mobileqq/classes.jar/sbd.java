@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
-class sbd
-  extends akav
+public class sbd
+  extends wps
 {
-  sbd(sbc paramsbc) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public sbd(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderManager", 2, "onUpdateSendMsgError->uin:" + paramString1 + ", type:" + paramInt1 + ", uniseq:" + paramLong2 + ", errorCode:" + paramInt2);
-    }
-    sbc.a(this.a, paramString1);
+    super(paramBundle);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, woz paramwoz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderManager", 2, "onSendResult->puin:" + paramString + ", isSuccess:" + paramBoolean);
-    }
-    sbc.a(this.a, paramString);
+    return FolderFollowTabFragment.a(this.a);
   }
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(wpk paramwpk) {}
 }
 
 

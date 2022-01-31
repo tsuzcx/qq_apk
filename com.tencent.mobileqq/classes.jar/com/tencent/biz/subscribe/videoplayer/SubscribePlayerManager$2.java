@@ -1,29 +1,29 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import adni;
+import adng;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import nar;
-import wto;
+import nao;
+import wtl;
 
 public class SubscribePlayerManager$2
   implements Runnable
 {
-  public SubscribePlayerManager$2(wto paramwto) {}
+  public SubscribePlayerManager$2(wtl paramwtl) {}
   
   public void run()
   {
-    if (nar.a(BaseApplicationImpl.context) != 1) {
+    if (nao.a(BaseApplicationImpl.context) != 1) {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
     }
-    while ((wto.a(this.this$0)) || (wto.a(this.this$0).size() <= 0)) {
+    while ((wtl.a(this.this$0)) || (wtl.a(this.this$0).size() <= 0)) {
       return;
     }
-    wto.a(this.this$0, true);
-    Object localObject = wto.a(this.this$0).keySet().iterator();
+    wtl.a(this.this$0, true);
+    Object localObject = wtl.a(this.this$0).keySet().iterator();
     int i = 0;
     label73:
     if (((Iterator)localObject).hasNext())
@@ -38,11 +38,11 @@ public class SubscribePlayerManager$2
     for (;;)
     {
       break label73;
-      localObject = (adni)wto.a(this.this$0).get(Integer.valueOf(i));
+      localObject = (adng)wtl.a(this.this$0).get(Integer.valueOf(i));
       if (localObject == null) {
         break;
       }
-      wto.a(this.this$0, (adni)localObject, ((adni)localObject).b);
+      wtl.a(this.this$0, (adng)localObject, ((adng)localObject).b);
       return;
     }
   }

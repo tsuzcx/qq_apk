@@ -1,6 +1,22 @@
-public abstract interface besd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
+
+public final class besd
+  implements Parcelable.Creator<PluginInfo>
 {
-  public abstract void a(int paramInt, String paramString, besc parambesc);
+  public PluginInfo a(Parcel paramParcel)
+  {
+    PluginInfo localPluginInfo = new PluginInfo();
+    PluginInfo.a(localPluginInfo, paramParcel.readString());
+    PluginInfo.b(localPluginInfo, paramParcel.readString());
+    return localPluginInfo;
+  }
+  
+  public PluginInfo[] a(int paramInt)
+  {
+    return new PluginInfo[paramInt];
+  }
 }
 
 

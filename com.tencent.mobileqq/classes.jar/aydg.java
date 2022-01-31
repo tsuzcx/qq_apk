@@ -1,65 +1,166 @@
-import com.tencent.TMG.utils.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.tablequery.ReportData.ReqBody;
-import com.tencent.mobileqq.tablequery.ReportData.ReqMqqParam;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tablequery.TableQueryController.1;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class aydg
-  implements Manager
 {
-  private aydh a;
+  private static aydg jdField_a_of_type_Aydg;
+  public static boolean a;
+  public static boolean b = true;
+  public static boolean c;
+  private static boolean e;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aydh(this);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private aydi jdField_a_of_type_Aydi = new aydi();
+  private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean d;
   
-  public void a(QQAppInterface paramQQAppInterface, ReportData.ReqBody paramReqBody)
+  /* Error */
+  public static aydg a()
   {
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), aydi.class);
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(3380);
-    localOIDBSSOPkg.uint32_service_type.set(2);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramReqBody.toByteArray()));
-    localNewIntent.setObserver(this.a);
-    localNewIntent.putExtra("RequestBytes", localOIDBSSOPkg.toByteArray());
-    paramQQAppInterface.startServlet(localNewIntent);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 40	aydg:jdField_a_of_type_Aydg	Laydg;
+    //   6: ifnonnull +19 -> 25
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: new 2	aydg
+    //   15: dup
+    //   16: invokespecial 41	aydg:<init>	()V
+    //   19: putstatic 40	aydg:jdField_a_of_type_Aydg	Laydg;
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: getstatic 40	aydg:jdField_a_of_type_Aydg	Laydg;
+    //   31: areturn
+    //   32: astore_0
+    //   33: ldc 2
+    //   35: monitorexit
+    //   36: aload_0
+    //   37: athrow
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   32	5	0	localObject1	Object
+    //   38	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	25	32	finally
+    //   33	36	32	finally
+    //   3	12	38	finally
+    //   25	28	38	finally
+    //   36	38	38	finally
+    //   39	42	38	finally
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  public int a(aydf paramaydf)
   {
-    ReportData.ReqMqqParam localReqMqqParam = new ReportData.ReqMqqParam();
-    localReqMqqParam.department.set(paramString2);
-    localReqMqqParam.opername.set(paramString3);
-    localReqMqqParam.action.set(paramString4);
-    if (this.a == null) {
-      this.a = new aydh();
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null) {
+      return 0;
     }
-    try
+    return this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(paramaydf);
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a();
+    }
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramString2 = new ReportData.ReqBody();
-      paramString3 = new ArrayList();
-      paramString3.add(paramString1);
-      paramString2.reportId.set(paramString3);
-      paramString2.type.set(paramInt);
-      paramString1 = new ArrayList();
-      paramString1.add(localReqMqqParam);
-      paramString2.params.set(paramString1);
-      a(paramQQAppInterface, paramString2);
+      e = true;
+      if (!c) {
+        a().a();
+      }
+    }
+    while (paramMotionEvent.getAction() != 1) {
       return;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("TableQueryManager", 1, paramQQAppInterface.toString());
+    paramMotionEvent = new TableQueryController.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(paramMotionEvent, 400L);
+  }
+  
+  public void a(aydf paramaydf)
+  {
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(paramaydf);
     }
   }
   
-  public void onDestroy() {}
+  public void b()
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = new TableQueryViewer(localBaseApplication);
+    }
+    if (!this.d) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+      label56:
+      int i;
+      if (Build.VERSION.SDK_INT >= 26) {
+        i = 2038;
+      }
+      for (;;)
+      {
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+        localLayoutParams.gravity = 51;
+        localLayoutParams.x = 0;
+        localLayoutParams.y = baxn.a(localBaseApplication, 72.0F);
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer, localLayoutParams);
+          this.d = true;
+          return;
+          i = 2003;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            bcql.a(localBaseApplication, 1, localBaseApplication.getString(2131690475), 0).a();
+          }
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label56;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.d) {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+    }
+    this.d = false;
+  }
 }
 
 

@@ -1,183 +1,710 @@
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.JNICallCenter.DataPoint;
 import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.device.file.DevLittleVideoOperator.1;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.device.file.DeviceFileHandler;
+import com.tencent.device.msg.data.DeviceCommonMsgProcessor;
+import com.tencent.device.msg.data.MessageForDevPtt;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.litetransfersdk.ActionInfo;
+import com.tencent.litetransfersdk.MsgHeader;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ybp
-  extends BaseShortVideoOprerator
+  extends ybw
 {
-  public ybp() {}
+  private final aywb jdField_a_of_type_Aywb = new ybq(this, Looper.getMainLooper());
+  private final ArrayList<ybr> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Set<Long> jdField_a_of_type_JavaUtilSet = new HashSet(10);
+  private ConcurrentHashMap<String, ybu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
+  ybl jdField_a_of_type_Ybl = new ybl();
+  ybo jdField_a_of_type_Ybo = new ybo();
+  private ConcurrentHashMap<Long, Long> b = new ConcurrentHashMap(10);
   
-  public ybp(QQAppInterface paramQQAppInterface)
+  private void a(long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    super(paramQQAppInterface);
+    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramLong1 + ""))
+    {
+      paramString = new ybu(this, paramString, paramLong2, paramInt, "", 0L);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(paramLong1), paramString);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DeviceAVFileMsgObserver", 2, "found resume");
   }
   
-  public axdt a(Object paramObject, axeg paramaxeg)
+  private void b(Session paramSession, boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public axew a(Object paramObject, axeg paramaxeg)
-  {
-    if (paramObject == null)
-    {
-      aune.a(this.jdField_g_of_type_JavaLangString, this.f, "createShortVideoUploadInfo", "unknow obj");
-      return null;
+    ybu localybu = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    if (localybu == null) {
+      return;
     }
-    String str7 = "0";
-    String str6 = "0";
-    int m = 0;
-    long l = 0L;
-    int k = 0;
-    String str5 = "";
-    String str4 = "";
-    Object localObject = "";
-    String str3 = "";
-    boolean bool = false;
-    int j = 0;
-    int i = 0;
-    String str2 = "";
-    String str1 = "";
-    if ((paramObject instanceof Intent))
+    Object localObject1;
+    Object localObject2;
+    if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.e))
     {
-      localObject = (Intent)paramObject;
-      str7 = ((Intent)localObject).getStringExtra("uin");
-      str6 = ((Intent)localObject).getStringExtra("troop_uin");
-      m = ((Intent)localObject).getIntExtra("uintype", 1003);
-      l = ((Intent)localObject).getLongExtra("file_send_size", 0L);
-      ((Intent)localObject).getIntExtra("file_send_business_type", -1);
-      k = ((Intent)localObject).getIntExtra("file_send_duration", -1);
-      str5 = ((Intent)localObject).getStringExtra("file_send_path");
-      str4 = ((Intent)localObject).getStringExtra("thumbfile_send_path");
-      str3 = ((Intent)localObject).getStringExtra("file_shortvideo_md5");
-      bool = ((Intent)localObject).getBooleanExtra("mediacodec_encode_enable", false);
-      j = ((Intent)localObject).getIntExtra("thumbfile_send_width", 0);
-      i = ((Intent)localObject).getIntExtra("thumbfile_send_height", 0);
-      str2 = ((Intent)localObject).getStringExtra("thumbfile_md5");
-      str1 = ((Intent)localObject).getStringExtra("file_source");
-      localObject = ((Intent)localObject).getStringExtra("file_video_source_dir");
-    }
-    for (;;)
-    {
-      axew localaxew = new axew();
-      localaxew.jdField_c_of_type_JavaLangString = str7;
-      localaxew.h = str5;
-      localaxew.j = str4;
-      localaxew.b = m;
-      localaxew.jdField_d_of_type_JavaLangString = str6;
-      localaxew.jdField_e_of_type_Int = ((int)l);
-      localaxew.f = k;
-      localaxew.jdField_e_of_type_JavaLangString = str3;
-      localaxew.jdField_c_of_type_Boolean = bool;
-      localaxew.jdField_c_of_type_Int = j;
-      localaxew.jdField_d_of_type_Int = i;
-      localaxew.jdField_g_of_type_Int = paramaxeg.a;
-      localaxew.jdField_a_of_type_JavaLangObject = paramObject;
-      localaxew.jdField_g_of_type_JavaLangString = str2;
-      localaxew.l = str1;
-      localaxew.k = ((String)localObject);
-      aune.a(this.jdField_g_of_type_JavaLangString, this.f, "createShortVideoUploadInfo", "");
-      return localaxew;
-      if ((paramObject instanceof MessageForDevLittleVideo))
+      this.jdField_a_of_type_Ybo.a(paramSession, localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Long, localybu.jdField_a_of_type_Int, paramBoolean);
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 instanceof QQAppInterface))
       {
-        localObject = (MessageForShortVideo)paramObject;
-        str7 = ((MessageForShortVideo)localObject).frienduin;
-        str6 = ((MessageForShortVideo)localObject).frienduin;
-        m = ((MessageForShortVideo)localObject).istroop;
-        l = ((MessageForShortVideo)localObject).videoFileSize;
-        k = ((MessageForShortVideo)localObject).videoFileTime;
-        str5 = ((MessageForShortVideo)localObject).videoFileName;
-        str4 = ShortVideoUtils.a(((MessageForShortVideo)localObject).thumbMD5, "jpg");
-        str3 = ((MessageForShortVideo)localObject).md5;
-        bool = ((MessageForShortVideo)localObject).mediacodecEncode;
-        j = ((MessageForShortVideo)localObject).thumbWidth;
-        i = ((MessageForShortVideo)localObject).thumbHeight;
-        str2 = ((MessageForShortVideo)localObject).thumbMD5;
-        str1 = ((MessageForShortVideo)localObject).fileSource;
-        localObject = ((MessageForShortVideo)localObject).mVideoFileSourceDir;
+        localObject1 = (QQAppInterface)localObject1;
+        localObject2 = ((yah)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localybu.jdField_a_of_type_JavaLangString));
+        if (localObject2 == null) {
+          break label377;
+        }
+      }
+    }
+    label157:
+    label170:
+    label364:
+    label377:
+    for (int i = ((DeviceInfo)localObject2).productId;; i = 0)
+    {
+      if (localObject2 != null) {}
+      for (long l = ((DeviceInfo)localObject2).din;; l = 0L)
+      {
+        int j;
+        if (paramSession.actionInfo.strServiceName.compareTo(yer.f) == 0) {
+          if (paramBoolean)
+          {
+            j = 0;
+            ymt.a((AppRuntime)localObject1, l, "Net_SendMsg_Audio", 0, j, i);
+            localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
+            if (localObject1 != null) {
+              ((MqqHandler)localObject1).sendEmptyMessage(1009);
+            }
+            localObject1 = this.jdField_a_of_type_Aywb.obtainMessage();
+            localObject2 = new ybt(this);
+            if (!paramBoolean) {
+              break label364;
+            }
+          }
+        }
+        for (i = 1003;; i = 1005)
+        {
+          ((ybt)localObject2).jdField_a_of_type_Int = i;
+          ((ybt)localObject2).jdField_a_of_type_Long = localybu.jdField_a_of_type_Long;
+          ((Message)localObject1).obj = localObject2;
+          this.jdField_a_of_type_Aywb.sendMessageDelayed((Message)localObject1, 0L);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramSession.uSessionID));
+          return;
+          if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.f)) {
+            break;
+          }
+          this.jdField_a_of_type_Ybl.a(paramSession, localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Long, localybu.jdField_a_of_type_Int, paramBoolean);
+          break;
+          j = 1;
+          break label157;
+          if (paramSession.actionInfo.strServiceName.compareTo(yer.e) != 0) {
+            break label170;
+          }
+          if (paramBoolean) {}
+          for (j = 0;; j = 1)
+          {
+            ymt.a((AppRuntime)localObject1, l, "Net_SendMsg_Video", 0, j, i);
+            break;
+          }
+        }
       }
     }
   }
   
-  public MessageRecord a(axdt paramaxdt)
+  private void c(Session paramSession)
   {
-    return null;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      MessageForDevShortVideo localMessageForDevShortVideo = (MessageForDevShortVideo)axas.a(-4503);
+      localMessageForDevShortVideo.videoFileName = paramSession.strFilePathSrc;
+      localMessageForDevShortVideo.msgtype = -4503;
+      localMessageForDevShortVideo.istroop = 9501;
+      localMessageForDevShortVideo.issend = 0;
+      localMessageForDevShortVideo.isread = false;
+      localMessageForDevShortVideo.selfuin = ((QQAppInterface)localObject).getCurrentAccountUin();
+      localMessageForDevShortVideo.senderuin = Long.toString(paramSession.msgHeader.uint64_src_uin);
+      localMessageForDevShortVideo.frienduin = Long.toString(paramSession.msgHeader.uint64_src_uin);
+      localMessageForDevShortVideo.uuid = "";
+      localMessageForDevShortVideo.videoFileFormat = 2;
+      localMessageForDevShortVideo.videoFileSize = ((int)paramSession.uFileSizeSrc);
+      localMessageForDevShortVideo.videoFileStatus = 2000;
+      localMessageForDevShortVideo.videoFileProgress = 0;
+      localMessageForDevShortVideo.fileType = 19;
+      localMessageForDevShortVideo.lastModified = 0L;
+      localMessageForDevShortVideo.fileSessionId = paramSession.uSessionID;
+      localMessageForDevShortVideo.msg = localMessageForDevShortVideo.getSummary();
+      localMessageForDevShortVideo.serial();
+      a(paramSession.uSessionID, localMessageForDevShortVideo.frienduin, localMessageForDevShortVideo.uniseq, localMessageForDevShortVideo.istroop);
+      ((QQAppInterface)localObject).a().a(localMessageForDevShortVideo, ((QQAppInterface)localObject).getCurrentAccountUin());
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceAVFileMsgObserver", 2, "recievemsg msg.uniseq:" + localMessageForDevShortVideo.uniseq + " ===> filesize:" + localMessageForDevShortVideo.videoFileSize + " fileStatus:" + ShortVideoUtils.b(localMessageForDevShortVideo.videoFileStatus));
+      }
+    }
   }
   
-  public MessageRecord a(axew paramaxew)
+  public String a(DataPoint paramDataPoint)
   {
-    long l = System.currentTimeMillis();
-    MessageForDevLittleVideo localMessageForDevLittleVideo = axaq.a(this.a, paramaxew.jdField_c_of_type_JavaLangString, paramaxew.jdField_d_of_type_JavaLangString, paramaxew.b);
-    localMessageForDevLittleVideo.videoFileName = paramaxew.h;
-    if (paramaxew.jdField_a_of_type_JavaLangString == null) {
-      paramaxew.jdField_a_of_type_JavaLangString = "";
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = new JSONObject(paramDataPoint.mValue);
+        long l1 = ((JSONObject)localObject1).optLong("msg_time", awzy.a());
+        long l2 = ((JSONObject)localObject1).optLong("duration", 0L);
+        String str2 = ((JSONObject)localObject1).optString("file_key", "");
+        String str3 = ((JSONObject)localObject1).optString("file_url", "");
+        String str1 = ((JSONObject)localObject1).optString("file_mini", "");
+        if (TextUtils.isEmpty(str1))
+        {
+          str1 = ((JSONObject)localObject1).optString("media_mini", "");
+          localObject1 = ((JSONObject)localObject1).optString("fkey2", "");
+          Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject2 instanceof QQAppInterface))
+          {
+            localObject2 = (QQAppInterface)localObject2;
+            if (QLog.isColorLevel()) {
+              QLog.d("DeviceAVFileMsgObserver", 2, "receive audiomsg length:" + l2);
+            }
+            MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)axas.a(-4501);
+            localMessageForDevPtt.url = "";
+            localMessageForDevPtt.channeltype = 1;
+            localMessageForDevPtt.urlAtServer = str2;
+            if (!TextUtils.isEmpty(str3))
+            {
+              localMessageForDevPtt.channeltype = 2;
+              localMessageForDevPtt.urlAtServer = str3;
+              localMessageForDevPtt.itemType = 2;
+              localMessageForDevPtt.sttAbility = 0;
+              localMessageForDevPtt.longPttVipFlag = 0;
+              localMessageForDevPtt.c2cViaOffline = true;
+              localMessageForDevPtt.msgtype = -4501;
+              localMessageForDevPtt.istroop = 9501;
+              localMessageForDevPtt.issend = 0;
+              localMessageForDevPtt.isread = false;
+              localMessageForDevPtt.selfuin = ((QQAppInterface)localObject2).getCurrentAccountUin();
+              localMessageForDevPtt.senderuin = Long.toString(paramDataPoint.mDin);
+              localMessageForDevPtt.frienduin = Long.toString(paramDataPoint.mDin);
+              localMessageForDevPtt.time = l1;
+              localMessageForDevPtt.msg = localMessageForDevPtt.getSummary();
+              localMessageForDevPtt.voiceLength = ((int)l2);
+              if (QLog.isColorLevel()) {
+                QLog.d("DeviceAVFileMsgObserver", 2, "voiceLength onReceiveAudioMsg " + localMessageForDevPtt.voiceLength);
+              }
+              localMessageForDevPtt.serial();
+              localMessageForDevPtt.saveExtInfoToExtStr("smartdevice_ptt_channeltype", String.valueOf(localMessageForDevPtt.channeltype));
+              ((QQAppInterface)localObject2).a().a(localMessageForDevPtt, ((QQAppInterface)localObject2).getCurrentAccountUin());
+              return localMessageForDevPtt.msg;
+            }
+            if (TextUtils.isEmpty(str1)) {
+              continue;
+            }
+            localMessageForDevPtt.channeltype = 3;
+            localMessageForDevPtt.urlAtServer = str1;
+            localMessageForDevPtt.strFileKey2 = ((String)localObject1);
+            continue;
+          }
+          return "";
+        }
+      }
+      catch (JSONException paramDataPoint)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DeviceAVFileMsgObserver", 2, "getString from json error:" + paramDataPoint.getMessage());
+        }
+      }
     }
-    localMessageForDevLittleVideo.uuid = paramaxew.jdField_a_of_type_JavaLangString;
-    if (paramaxew.jdField_e_of_type_JavaLangString == null) {
-      paramaxew.jdField_e_of_type_JavaLangString = "";
-    }
-    localMessageForDevLittleVideo.mediacodecEncode = paramaxew.jdField_c_of_type_Boolean;
-    localMessageForDevLittleVideo.md5 = paramaxew.jdField_e_of_type_JavaLangString;
-    localMessageForDevLittleVideo.videoFileFormat = 2;
-    localMessageForDevLittleVideo.videoFileSize = paramaxew.jdField_e_of_type_Int;
-    localMessageForDevLittleVideo.videoFileTime = paramaxew.f;
-    localMessageForDevLittleVideo.thumbWidth = paramaxew.jdField_c_of_type_Int;
-    localMessageForDevLittleVideo.thumbHeight = paramaxew.jdField_d_of_type_Int;
-    localMessageForDevLittleVideo.mThumbFilePath = paramaxew.j;
-    localMessageForDevLittleVideo.mVideoFileSourceDir = paramaxew.k;
-    localMessageForDevLittleVideo.videoFileStatus = 1001;
-    localMessageForDevLittleVideo.videoFileProgress = 0;
-    localMessageForDevLittleVideo.extraflag = 32772;
-    localMessageForDevLittleVideo.thumbMD5 = paramaxew.jdField_g_of_type_JavaLangString;
-    if (paramaxew.l == null) {
-      paramaxew.l = "";
-    }
-    localMessageForDevLittleVideo.fileSource = paramaxew.l;
-    localMessageForDevLittleVideo.lastModified = 0L;
-    localMessageForDevLittleVideo.issend = 1;
-    localMessageForDevLittleVideo.uiOperatorFlag = 1;
-    localMessageForDevLittleVideo.msg = ajyc.a(2131703239);
-    localMessageForDevLittleVideo.serial();
-    paramaxew.jdField_a_of_type_Long = localMessageForDevLittleVideo.uniseq;
-    aune.a(this.jdField_g_of_type_JavaLangString, this.f, "packmsg", "cost:" + (System.currentTimeMillis() - l));
-    aune.a(this.jdField_g_of_type_JavaLangString, this.f, "packMsg", "mr: " + localMessageForDevLittleVideo.toLogString() + "-" + localMessageForDevLittleVideo.toString());
-    return localMessageForDevLittleVideo;
   }
   
-  public void a(auop paramauop) {}
-  
-  public void a(axew paramaxew)
+  public void a()
   {
-    aune.a(this.jdField_g_of_type_JavaLangString, this.f, "sendPic.start", "");
-    ThreadManager.getSubThreadHandler().post(new DevLittleVideoOperator.1(this, paramaxew));
+    this.b.clear();
   }
   
-  public boolean a(String paramString)
+  public void a(Bundle paramBundle)
   {
-    yak localyak = (yak)this.a.a(51);
-    DeviceInfo localDeviceInfo = localyak.a(Long.parseLong(paramString));
-    if (localDeviceInfo == null) {
-      return false;
+    if (paramBundle == null) {}
+    float f;
+    do
+    {
+      return;
+      int i = paramBundle.getInt("cookie", 0);
+      f = paramBundle.getFloat("percent", 0.0F);
+      localObject = new Session();
+      ((Session)localObject).uSessionID = i;
+      paramBundle = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(i));
+    } while (paramBundle == null);
+    this.jdField_a_of_type_Ybl.a((Session)localObject, paramBundle.jdField_a_of_type_JavaLangString, paramBundle.jdField_a_of_type_Long, paramBundle.jdField_a_of_type_Int, f);
+    Object localObject = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    localybt.jdField_a_of_type_Int = 1002;
+    localybt.jdField_a_of_type_Float = f;
+    localybt.jdField_a_of_type_Long = paramBundle.jdField_a_of_type_Long;
+    ((Message)localObject).obj = localybt;
+    this.jdField_a_of_type_Aywb.sendMessageDelayed((Message)localObject, 0L);
+  }
+  
+  void a(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceAVFileMsgObserver", 2, "handleMessage" + ((ybt)paramMessage.obj).jdField_a_of_type_Long + " status " + paramMessage.what + "retCode " + paramMessage.arg1);
     }
-    if (localyak.a(Long.parseLong(paramString)).booleanValue()) {
-      return true;
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      Object localObject = (ybr)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((ybr)localObject).a();
+      localObject = ((ybr)localObject).a();
+      if ((localView != null) && (localObject != null)) {
+        ((ybs)localObject).a(localView, (ybt)paramMessage.obj);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        i -= 1;
+      }
     }
-    if (localDeviceInfo.SSOBid_Platform == 1027) {
-      return true;
+  }
+  
+  public void a(View paramView, ybs paramybs)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ybr localybr = (ybr)localIterator.next();
+      if (localybr.a() == paramView)
+      {
+        localybr.b = new WeakReference(paramybs);
+        return;
+      }
     }
-    if ((localDeviceInfo.SSOBid_Platform == 0) && (localDeviceInfo.SSOBid_Version.equals(""))) {
-      return true;
+    this.jdField_a_of_type_JavaUtilArrayList.add(new ybr(this, paramView, paramybs));
+  }
+  
+  public void a(MessageForDevPtt paramMessageForDevPtt)
+  {
+    if (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramMessageForDevPtt.uniseq))) {}
+    do
+    {
+      long l;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!this.b.containsKey(Long.valueOf(paramMessageForDevPtt.uniseq))) {
+              break;
+            }
+            l = ((Long)this.b.get(Long.valueOf(paramMessageForDevPtt.uniseq))).longValue();
+          } while (awzy.a() - l < 3600L);
+        } while (TextUtils.isEmpty(paramMessageForDevPtt.urlAtServer));
+        localObject = BaseApplicationImpl.getApplication().getRuntime();
+      } while (!(localObject instanceof QQAppInterface));
+      Object localObject = (QQAppInterface)localObject;
+      DeviceFileHandler localDeviceFileHandler = (DeviceFileHandler)((QQAppInterface)localObject).a(50);
+      if (paramMessageForDevPtt.channeltype == 0) {}
+      try
+      {
+        paramMessageForDevPtt.channeltype = Integer.parseInt(paramMessageForDevPtt.getExtInfoFromExtStr("smartdevice_ptt_channeltype"));
+        l = localDeviceFileHandler.a((QQAppInterface)localObject, paramMessageForDevPtt.urlAtServer, paramMessageForDevPtt.strFileKey2, paramMessageForDevPtt.channeltype, 2108);
+        this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramMessageForDevPtt.uniseq));
+        localObject = String.valueOf(l);
+        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
+        {
+          paramMessageForDevPtt = new ybu(this, paramMessageForDevPtt.frienduin, paramMessageForDevPtt.uniseq, paramMessageForDevPtt.istroop, "", 0L);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramMessageForDevPtt);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DeviceAVFileMsgObserver", 2, "found resume");
+  }
+  
+  public void a(Session paramSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionNew : service@" + paramSession.actionInfo.strServiceName);
     }
-    paramString = localDeviceInfo.SSOBid_Version;
-    return (!bbjw.a(paramString)) && (Double.valueOf(paramString).doubleValue() >= 1.3D);
+    if ((!paramSession.bSend) && (paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.e))) {
+      c(paramSession);
+    }
+  }
+  
+  public void a(Session paramSession, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionProgress : service@" + paramSession.actionInfo.strServiceName);
+    }
+    ybu localybu = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    Message localMessage;
+    ybt localybt;
+    if (localybu != null)
+    {
+      if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.e)) {
+        break label165;
+      }
+      this.jdField_a_of_type_Ybo.a(paramSession, localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Long, localybu.jdField_a_of_type_Int, paramFloat);
+      localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+      localybt = new ybt(this);
+      if (!paramSession.bSend) {
+        break label205;
+      }
+    }
+    label165:
+    label205:
+    for (localybt.jdField_a_of_type_Int = 1002;; localybt.jdField_a_of_type_Int = 2002)
+    {
+      localybt.jdField_a_of_type_Float = paramFloat;
+      localybt.jdField_a_of_type_Long = localybu.jdField_a_of_type_Long;
+      localMessage.obj = localybt;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+      return;
+      if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.f)) {
+        break;
+      }
+      this.jdField_a_of_type_Ybl.a(paramSession, localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Long, localybu.jdField_a_of_type_Int, paramFloat);
+      break;
+    }
+  }
+  
+  public void a(Session paramSession, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionComplete : service@" + paramSession.actionInfo.strServiceName);
+    }
+    if (paramSession == null) {
+      QLog.e("DeviceAVFileMsgObserver", 1, "onServiceSessionComplete, session == null !!!!!");
+    }
+    ybu localybu;
+    do
+    {
+      return;
+      if (paramSession.bSend)
+      {
+        b(paramSession, paramBoolean);
+        return;
+      }
+      localybu = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    } while (localybu == null);
+    label135:
+    Object localObject1;
+    Object localObject2;
+    if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.e))
+    {
+      DeviceCommonMsgProcessor.a(paramSession, paramBoolean);
+      this.jdField_a_of_type_Ybo.a(paramSession, localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Long, localybu.jdField_a_of_type_Int, paramBoolean);
+      localObject1 = this.jdField_a_of_type_Aywb.obtainMessage();
+      localObject2 = new ybt(this);
+      if (!paramBoolean) {
+        break label432;
+      }
+    }
+    label432:
+    for (int i = 2003;; i = 2005)
+    {
+      ((ybt)localObject2).jdField_a_of_type_Int = i;
+      ((ybt)localObject2).jdField_a_of_type_Long = localybu.jdField_a_of_type_Long;
+      ((Message)localObject1).obj = localObject2;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed((Message)localObject1, 0L);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramSession.uSessionID));
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(localybu.jdField_a_of_type_Long));
+      if (!paramBoolean) {
+        break label439;
+      }
+      this.b.remove(Long.valueOf(localybu.jdField_a_of_type_Long));
+      return;
+      if ((paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.f)) || (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(yer.g))) {
+        break label135;
+      }
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(localObject1 instanceof QQAppInterface)) {
+        break label135;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+      localObject2 = ((QQAppInterface)localObject1).a().a(localybu.jdField_a_of_type_JavaLangString, localybu.jdField_a_of_type_Int, localybu.jdField_a_of_type_Long);
+      if (localObject2 == null) {
+        break;
+      }
+      if (!(localObject2 instanceof MessageForDevPtt)) {
+        break label135;
+      }
+      MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)localObject2;
+      localMessageForDevPtt.url = paramSession.strFilePathSrc;
+      if (paramBoolean) {}
+      for (localMessageForDevPtt.fileSize = apug.a(paramSession.strFilePathSrc);; localMessageForDevPtt.fileSize = -1L)
+      {
+        localMessageForDevPtt.msg = localMessageForDevPtt.getSummary();
+        localMessageForDevPtt.serial();
+        ((QQAppInterface)localObject1).a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, localMessageForDevPtt.msgData);
+        break;
+      }
+    }
+    label439:
+    this.b.put(Long.valueOf(localybu.jdField_a_of_type_Long), Long.valueOf(awzy.a()));
+  }
+  
+  public void a(MessageRecord paramMessageRecord, float paramFloat)
+  {
+    Message localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    localybt.jdField_a_of_type_Int = 1002;
+    localybt.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+    localybt.jdField_a_of_type_Float = paramFloat;
+    localMessage.obj = localybt;
+    this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, Boolean paramBoolean)
+  {
+    Message localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    int i;
+    if (paramBoolean.booleanValue())
+    {
+      i = 1003;
+      localybt.jdField_a_of_type_Int = i;
+      localybt.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+      if (!paramBoolean.booleanValue()) {
+        break label89;
+      }
+    }
+    label89:
+    for (float f = 1.0F;; f = 0.0F)
+    {
+      localybt.jdField_a_of_type_Float = f;
+      localMessage.obj = localybt;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+      return;
+      i = 1005;
+      break;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2;
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      localObject1 = (QQAppInterface)localObject1;
+      localObject2 = (yah)((QQAppInterface)localObject1).a(51);
+      if ((!paramString1.equalsIgnoreCase(yer.f)) || (localObject2 == null) || (!((yah)localObject2).b(paramLong1))) {
+        break label192;
+      }
+      localObject1 = new Session();
+      ((Session)localObject1).uSessionID = ((yah)localObject2).a(paramLong1, paramString2, paramInt2);
+      ((Session)localObject1).strFilePathSrc = paramString2;
+      ((Session)localObject1).uFileSizeSrc = apug.a(paramString2);
+      localObject2 = String.valueOf(((Session)localObject1).uSessionID);
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject2)) {
+        break label221;
+      }
+      paramString2 = new ybu(this, String.valueOf(paramLong1), paramLong2, paramInt1, paramString2, ((Session)localObject1).uFileSizeSrc);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, paramString2);
+      label154:
+      if (!bbfj.d(BaseApplication.getContext()))
+      {
+        if (!paramString1.equalsIgnoreCase(yer.e)) {
+          break label238;
+        }
+        this.jdField_a_of_type_Ybo.a((Session)localObject1, String.valueOf(paramLong1), paramLong2, paramInt1, false);
+      }
+    }
+    label192:
+    label221:
+    label238:
+    while (!paramString1.equalsIgnoreCase(yer.f))
+    {
+      return;
+      localObject2 = ((DeviceFileHandler)((QQAppInterface)localObject1).a(50)).a(paramString2, paramString1, null, paramLong1);
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      return;
+      if (!QLog.isColorLevel()) {
+        break label154;
+      }
+      QLog.d("DeviceAVFileMsgObserver", 2, "found resume");
+      break label154;
+    }
+    this.jdField_a_of_type_Ybl.a((Session)localObject1, String.valueOf(paramLong1), paramLong2, paramInt1, false);
+  }
+  
+  public boolean a(long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (((ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).jdField_a_of_type_Long == paramLong) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    boolean bool = true;
+    if (paramBundle == null) {}
+    ybu localybu;
+    do
+    {
+      return;
+      j = paramBundle.getInt("cookie", 0);
+      i = paramBundle.getInt("err_code", 1);
+      paramBundle = new Session();
+      paramBundle.uSessionID = j;
+      localybu = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramBundle.uSessionID));
+    } while (localybu == null);
+    paramBundle.strFilePathSrc = localybu.jdField_b_of_type_JavaLangString;
+    paramBundle.uFileSizeSrc = localybu.jdField_b_of_type_Long;
+    Object localObject1 = this.jdField_a_of_type_Ybl;
+    Object localObject2 = localybu.jdField_a_of_type_JavaLangString;
+    long l = localybu.jdField_a_of_type_Long;
+    int j = localybu.jdField_a_of_type_Int;
+    if (i == 0)
+    {
+      ((ybl)localObject1).a(paramBundle, (String)localObject2, l, j, bool);
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 instanceof QQAppInterface))
+      {
+        localObject1 = (QQAppInterface)localObject1;
+        localObject2 = ((yah)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localybu.jdField_a_of_type_JavaLangString));
+        if (localObject2 != null) {
+          j = ((DeviceInfo)localObject2).productId;
+        }
+        if (localObject2 != null) {
+          l = ((DeviceInfo)localObject2).din;
+        }
+        localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
+        if (localObject1 != null) {
+          ((MqqHandler)localObject1).sendEmptyMessage(1009);
+        }
+      }
+      localObject1 = this.jdField_a_of_type_Aywb.obtainMessage();
+      localObject2 = new ybt(this);
+      if (i != 0) {
+        break label300;
+      }
+    }
+    label300:
+    for (int i = 1003;; i = 1005)
+    {
+      ((ybt)localObject2).jdField_a_of_type_Int = i;
+      ((ybt)localObject2).jdField_a_of_type_Long = localybu.jdField_a_of_type_Long;
+      ((Message)localObject1).obj = localObject2;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed((Message)localObject1, 0L);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramBundle.uSessionID));
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  public void b(Session paramSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionStart : service@" + paramSession.actionInfo.strServiceName);
+    }
+    ybu localybu = (ybu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    if (localybu == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    if (paramSession.bSend) {}
+    for (localybt.jdField_a_of_type_Int = 1001;; localybt.jdField_a_of_type_Int = 2001)
+    {
+      localybt.jdField_a_of_type_Long = localybu.jdField_a_of_type_Long;
+      localMessage.obj = localybt;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+      return;
+    }
+  }
+  
+  public void b(MessageRecord paramMessageRecord, float paramFloat)
+  {
+    Message localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    if (paramMessageRecord.isSendFromLocal()) {}
+    for (int i = 1002;; i = 2002)
+    {
+      localybt.jdField_a_of_type_Int = i;
+      localybt.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+      localybt.jdField_a_of_type_Float = paramFloat;
+      localMessage.obj = localybt;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+      return;
+    }
+  }
+  
+  public void b(MessageRecord paramMessageRecord, Boolean paramBoolean)
+  {
+    Message localMessage = this.jdField_a_of_type_Aywb.obtainMessage();
+    ybt localybt = new ybt(this);
+    int i;
+    if (paramMessageRecord.isSendFromLocal()) {
+      if (paramBoolean.booleanValue())
+      {
+        i = 1003;
+        localybt.jdField_a_of_type_Int = i;
+        localybt.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+        if (!paramBoolean.booleanValue()) {
+          break label119;
+        }
+      }
+    }
+    label119:
+    for (float f = 1.0F;; f = 0.0F)
+    {
+      localybt.jdField_a_of_type_Float = f;
+      localMessage.obj = localybt;
+      this.jdField_a_of_type_Aywb.sendMessageDelayed(localMessage, 0L);
+      return;
+      i = 1005;
+      break;
+      if (paramBoolean.booleanValue())
+      {
+        i = 2003;
+        break;
+      }
+      i = 2005;
+      break;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpe;
+import afpc;
 import java.util.List;
 
 class AlphabetFriendAdapter$1$1

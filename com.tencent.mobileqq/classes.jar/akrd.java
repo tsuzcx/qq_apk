@@ -5,27 +5,27 @@ import tencent.mobileim.structmsg.structmsg.RspHead;
 import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 class akrd
-  implements ayth
+  implements aytj
 {
-  akrd(akqx paramakqx, long paramLong1, long paramLong2, long paramLong3) {}
+  akrd(akqw paramakqw, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void a(aytj paramaytj, ayti paramayti)
+  public void a(aytl paramaytl, aytk paramaytk)
   {
     try
     {
-      paramaytj = paramaytj.a.getWupBuffer();
-      paramayti = new structmsg.RspSystemMsgRead();
-      paramayti.mergeFrom(paramaytj);
-      int i = paramayti.head.result.get();
+      paramaytl = paramaytl.a.getWupBuffer();
+      paramaytk = new structmsg.RspSystemMsgRead();
+      paramaytk.mergeFrom(paramaytl);
+      int i = paramaytk.head.result.get();
       if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
       return;
     }
-    catch (Exception paramaytj)
+    catch (Exception paramaytl)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaytj);
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaytl);
     }
   }
 }

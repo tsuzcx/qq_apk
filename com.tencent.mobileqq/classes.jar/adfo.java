@@ -1,13 +1,16 @@
-public class adfo
+import com.tencent.qphone.base.util.QLog;
+
+final class adfo
+  implements ajuz
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
-  
-  public adfo(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    if (paramBoolean) {
+      adfn.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

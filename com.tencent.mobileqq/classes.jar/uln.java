@@ -1,32 +1,47 @@
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class uln
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tjm>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tka>
 {
-  public uln(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public uln(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
     super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tjm paramtjm)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tka paramtka)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramtjm.jdField_a_of_type_JavaLangString)) {}
-    while ((paramtjm.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramtka.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramtka.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      paramtka = paramtka.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtka.hasNext())
+      {
+        umu localumu = (umu)paramtka.next();
+        if (paramQQStoryShareGroupProfileActivity.c.equals(localumu.a))
+        {
+          paramQQStoryShareGroupProfileActivity.b = localumu.b;
+          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
+            break label111;
+          }
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramtjm.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramtjm.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramtjm);
   }
   
   public Class acceptEventClass()
   {
-    return tjm.class;
+    return tka.class;
   }
 }
 

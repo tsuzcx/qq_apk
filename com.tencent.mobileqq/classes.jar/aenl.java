@@ -1,34 +1,27 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-class aenl
-  implements ViewTreeObserver.OnPreDrawListener
+public class aenl
 {
-  aenl(aena paramaena, aenn paramaenn) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public boolean onPreDraw()
+  public String toString()
   {
-    aena.a(this.jdField_a_of_type_Aena).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (this.jdField_a_of_type_Aenn.b == 1)
-    {
-      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#1fa4fc"), 5.0F, actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources()), actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources())));
-      aena.b(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#1fa4fc"), 5.0F, aena.b(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.b(this.jdField_a_of_type_Aena).getMeasuredHeight()));
-      aena.a(this.jdField_a_of_type_Aena).setImageResource(2130838953);
-    }
-    for (;;)
-    {
-      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#b2b5bd"), 5.0F, aena.a(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.a(this.jdField_a_of_type_Aena).getMeasuredHeight()));
-      aena.c(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#b2b5bd"), 5.0F, aena.c(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.c(this.jdField_a_of_type_Aena).getMeasuredHeight()));
-      return true;
-      aena.a(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#ff5fb5"), 5.0F, actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources()), actn.a(14.0F, this.jdField_a_of_type_Aena.a.getResources())));
-      aena.b(this.jdField_a_of_type_Aena).setBackgroundDrawable(new anov(Color.parseColor("#ff5fb5"), 5.0F, aena.b(this.jdField_a_of_type_Aena).getMeasuredWidth(), aena.b(this.jdField_a_of_type_Aena).getMeasuredHeight()));
-      aena.a(this.jdField_a_of_type_Aena).setImageResource(2130838952);
-    }
+    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
+    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", headPic='").append(this.d).append('\'');
+    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", uin='").append(this.e).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

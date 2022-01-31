@@ -1,33 +1,90 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class aakg
-  implements bfoq
+  implements View.OnClickListener
 {
-  public aakg(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, bfol parambfol) {}
+  public aakg(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    this.jdField_a_of_type_Bfol.cancel();
-    switch (i)
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    View localView2;
+    do
     {
-    default: 
+      do
+      {
+        return;
+        localView1 = AssociatedAccountManageActivity.a(this.a, paramView);
+        localView2 = AssociatedAccountManageActivity.b(this.a, paramView);
+        if (AssociatedAccountManageActivity.a(this.a) != null) {
+          break;
+        }
+        AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        AssociatedAccountManageActivity.a(this.a).b();
+        if (localView2 != null)
+        {
+          localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.a(this.a) * 12.0F + AssociatedAccountManageActivity.b(this.a) * 75.0F));
+          localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).b();
+        }
+      } while (!AppSetting.d);
+      paramView.setContentDescription(this.a.getString(2131690799));
       return;
-    case 0: 
-      AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
-      return;
-    case 2: 
-      AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
-      return;
+      if (AssociatedAccountManageActivity.a(this.a) != paramView) {
+        break;
+      }
+      AssociatedAccountManageActivity.a(this.a).a();
+      if (localView2 != null)
+      {
+        localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.c(this.a) * 12.0F));
+        localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      if ((localView1 instanceof ShaderAnimLayout)) {
+        ((ShaderAnimLayout)localView1).f();
+      }
+      AssociatedAccountManageActivity.a(this.a, null);
+    } while (!AppSetting.d);
+    paramView.setContentDescription(this.a.getString(2131720648));
+    return;
+    AssociatedAccountManageActivity.a(this.a).a();
+    Object localObject = AssociatedAccountManageActivity.b(this.a, AssociatedAccountManageActivity.a(this.a));
+    if (localObject != null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+      localLayoutParams.rightMargin = ((int)(AssociatedAccountManageActivity.d(this.a) * 12.0F));
+      ((View)localObject).setLayoutParams(localLayoutParams);
     }
-    AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
+    ((RotateSwitchImageView)paramView).b();
+    if (localView2 != null)
+    {
+      localObject = (RelativeLayout.LayoutParams)localView2.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(AssociatedAccountManageActivity.e(this.a) * 12.0F + AssociatedAccountManageActivity.f(this.a) * 75.0F));
+      localView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (AppSetting.d)
+    {
+      paramView.setContentDescription(this.a.getString(2131690799));
+      AssociatedAccountManageActivity.a(this.a).setContentDescription(this.a.getString(2131720648));
+    }
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).b();
+    }
+    View localView1 = AssociatedAccountManageActivity.a(this.a, AssociatedAccountManageActivity.a(this.a));
+    if ((localView1 instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localView1).f();
+    }
+    AssociatedAccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
   }
 }
 

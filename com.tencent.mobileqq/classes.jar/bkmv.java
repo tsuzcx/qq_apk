@@ -1,21 +1,23 @@
-import android.util.Property;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
-class bkmv
-  extends Property<bkmo, Float>
+public class bkmv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bkmv(bkmo parambkmo, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bkmv(SlideBottomPanel paramSlideBottomPanel, View paramView) {}
   
-  public Float a(bkmo parambkmo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return Float.valueOf(bkmo.c(parambkmo));
-  }
-  
-  public void a(bkmo parambkmo, Float paramFloat)
-  {
-    bkmo.b(parambkmo, paramFloat.floatValue());
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
+    {
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.b - this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.j));
+      }
+    }
   }
 }
 

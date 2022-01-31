@@ -1,6 +1,11 @@
-public abstract interface mro
+import android.content.Context;
+
+public class mro
 {
-  public abstract void a(int paramInt1, mrq parammrq, int paramInt2);
+  public static void a(Context paramContext, String paramString, int paramInt, mrp parammrp)
+  {
+    parammrp.a(paramContext, paramString);
+  }
 }
 
 

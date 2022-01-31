@@ -1,16 +1,8 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import android.view.View;
 
-public class uug
-  implements bfrx
+public abstract interface uug
 {
-  public uug(MemoriesInnerListView paramMemoriesInnerListView) {}
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
-  }
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
 }
 
 

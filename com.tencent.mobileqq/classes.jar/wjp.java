@@ -1,22 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
 
-public class wjp
-  implements wsp
+class wjp
+  implements wsn
 {
-  public wjp(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
+  wjp(wjo paramwjo) {}
   
   public void a(boolean paramBoolean)
   {
-    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean) {}
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      xhe.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
-      return;
+    if (paramBoolean) {
+      wpt.a().a(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
     }
   }
 }

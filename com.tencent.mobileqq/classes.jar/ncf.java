@@ -1,11 +1,31 @@
-import com.tencent.mobileqq.data.TroopAppInfo;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public abstract interface ncf
+final class ncf
+  implements BusinessObserver
 {
-  public abstract void a();
+  ncf(QQAppInterface paramQQAppInterface, nch paramnch) {}
   
-  public abstract void a(ArrayList<TroopAppInfo> paramArrayList);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        ncd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nch);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+      }
+      this.jdField_a_of_type_Nch.a("");
+      return;
+    }
+    this.jdField_a_of_type_Nch.a("");
+  }
 }
 
 

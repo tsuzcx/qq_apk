@@ -1,19 +1,15 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
 
-public abstract interface arym
+public class arym
+  implements aruy
 {
-  public abstract void a(LocationRoom.Venue paramVenue);
+  public arym(MapWidget paramMapWidget) {}
   
-  public abstract void a(LatLng paramLatLng);
-  
-  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
-  
-  public abstract void a(boolean paramBoolean, Point paramPoint);
-  
-  public abstract void a(boolean paramBoolean, aryn paramaryn);
+  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
+  {
+    this.a.a(paramLatLng, paramDouble, paramBoolean);
+  }
 }
 
 

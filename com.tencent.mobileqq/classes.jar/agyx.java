@@ -1,15 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 class agyx
-  extends RecyclerView.ViewHolder
+  extends agyt
 {
-  agyy jdField_a_of_type_Agyy;
+  agyx(agyw paramagyw) {}
   
-  agyx(agyw paramagyw, View paramView)
+  public void a(int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_Agyy = ((agyy)paramView);
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
+    }
   }
 }
 

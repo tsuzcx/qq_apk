@@ -1,38 +1,28 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qphone.base.util.QLog;
 
-public class afzw
-  extends baks
+class afzw
+  implements View.OnClickListener
 {
-  public afzw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  afzw(afzv paramafzv) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
-    }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
-    }
-    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
-    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
-    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
-    ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368429));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Agau != null) {
+      this.a.a.jdField_a_of_type_Agau.a();
     }
   }
 }

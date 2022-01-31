@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity.2;
+import android.view.animation.Interpolator;
 
 public class qqg
-  implements View.OnClickListener
+  implements Interpolator
 {
-  public qqg(VideoFeedsPlayActivity.2 param2) {}
-  
-  public void onClick(View paramView)
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    qol.a(this.a.this$0, this.a.a.a.d);
-    qze localqze = new qze(this.a.a).h(this.a.a.g).u(this.a.a.a.a);
-    if (this.a.a.a.d != null) {}
-    for (paramView = this.a.a.a.d.e;; paramView = "")
-    {
-      noo.b(null, "", "0X800A18B", "0X800A18B", 0, 0, "", "", "", localqze.p(paramView).a().a(), false);
-      return;
-    }
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 

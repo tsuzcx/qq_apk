@@ -1,115 +1,33 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class atoe
-  implements xpm
+class atoe
+  implements URLDrawableDownListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<atob> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  atoe(atod paramatod, atof paramatof, int paramInt) {}
   
-  public atoe(Context paramContext, List<PicInfo> paramList)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      int i = 0;
-      if (i < paramList.size())
-      {
-        paramContext = (PicInfo)paramList.get(i);
-        if ((ShortVideoUtils.a()) && ((!TextUtils.isEmpty(paramContext.d)) || (!TextUtils.isEmpty(paramContext.e)))) {}
-        for (paramContext = new atnr(this.jdField_a_of_type_AndroidContentContext, paramContext);; paramContext = new atnq(this.jdField_a_of_type_AndroidContentContext, paramContext))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-          i += 1;
-          break;
-        }
-      }
+    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int, false);
+    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if ((paramInt > 0) && (paramInt < 10000)) {
+      this.jdField_a_of_type_Atof.b(this.jdField_a_of_type_Int, paramInt / 100);
     }
   }
   
-  public int a()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public atob a()
-  {
-    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (atob)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-  }
-  
-  public atob a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (atob)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public ArrayList<PicInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((atob)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      ((atob)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      atob localatob = (atob)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramInt == i) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localatob.a(bool);
-        i += 1;
-        break;
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public atob b(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          localObject1 = (atob)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-        }
-      }
-    }
-    return localObject1;
+    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_Atof.a(this.jdField_a_of_type_Int);
   }
 }
 

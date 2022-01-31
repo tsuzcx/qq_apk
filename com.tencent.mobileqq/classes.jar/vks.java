@@ -1,29 +1,28 @@
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 
 class vks
-  implements Animator.AnimatorListener
+  extends AnimatorListenerAdapter
 {
   vks(vkq paramvkq) {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a = false;
+    ved.b("FaceLayer", "scaleAnimator cancel!");
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
+    ved.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a = true;
+    ved.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

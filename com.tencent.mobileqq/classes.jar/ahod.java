@@ -1,19 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.URLThemeImageView;
+import android.view.View.OnTouchListener;
 
-public class ahod
-  extends ahoa
+class ahod
+  implements View.OnTouchListener
 {
-  public View a;
-  public TextView a;
-  public DragTextView a;
-  public URLThemeImageView a;
-  public TextView b;
-  public URLThemeImageView b;
-  public TextView c;
-  public TextView d;
+  ahod(ahoc paramahoc) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

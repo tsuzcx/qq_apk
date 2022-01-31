@@ -1,53 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.thread.QzoneThreadMonitor;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.qzone.statistic.access.concept.Key;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.List;
 
-public class bhnf
-  extends Handler
+final class bhnf
+  extends bhne
 {
-  public bhnf(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
+  public String a(List<Statistic> paramList)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    Key[] arrayOfKey = ((Statistic)paramList.get(0)).getKeys();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
     {
-    default: 
-      return;
+      Statistic localStatistic = (Statistic)paramList.get(i);
+      int k = arrayOfKey.length;
+      int j = 0;
+      while (j < k)
+      {
+        Key localKey = arrayOfKey[j];
+        localStringBuilder.append(localKey).append("→").append(localStatistic.getValue(localKey)).append(",");
+        j += 1;
+      }
+      localStringBuilder.append("\n");
+      i += 1;
     }
-    bhnh localbhnh = (bhnh)paramMessage.obj;
-    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localbhnh.jdField_a_of_type_JavaLangString))
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localbhnh.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    if (paramMessage.arg1 >= 10)
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localbhnh.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localbhnh.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localbhnh.jdField_b_of_type_JavaLangString + " id=" + localbhnh.jdField_a_of_type_JavaLangString + ": ");
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localbhnh.jdField_b_of_type_JavaLangString, " id=", localbhnh.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localbhnh.jdField_a_of_type_Int), " msg.target=", localbhnh.c, " msg.callback=", localbhnh.d });
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
-      bhoq.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
-    }
-    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localbhnh);
-    localObject = QzoneThreadMonitor.access$200(this.a);
-    if (localbhnh.jdField_b_of_type_Int == 1) {}
-    for (long l = 500L;; l = 250L)
-    {
-      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
-      return;
-    }
+    return localStringBuilder.toString();
   }
 }
 

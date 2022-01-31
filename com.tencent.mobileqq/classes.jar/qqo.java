@@ -1,56 +1,43 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment.1.1;
 
 public class qqo
+  implements qjh
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public View a;
-  public ViewGroup a;
-  public VideoInfo a;
-  public qbw a;
-  public qbx a;
-  public qjv a;
-  public qub a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public qqo(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public qqo()
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    try
+    if ((VideoFeedsRecommendFragment.a(this.a)) && (VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a != null) && (VideoFeedsRecommendFragment.a(this.a).a.a.a != null) && (VideoFeedsRecommendFragment.a(this.a) != null)) {
+      if ((oaq.e(VideoFeedsRecommendFragment.a(this.a).a.a.a)) && (!VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c)))
+      {
+        localVideoInfo = VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).c);
+        if (localVideoInfo != null)
+        {
+          i = VideoFeedsRecommendFragment.a(this.a).getAdapterPosition() - 1;
+          j = VideoFeedsRecommendFragment.a(this.a).c;
+          VideoFeedsRecommendFragment.a(this.a).a(i, j, localVideoInfo);
+          oag.a(this.a.getActivity(), 50, true);
+        }
+      }
+    }
+    while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a) == null))
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
+      VideoInfo localVideoInfo;
+      int i;
+      int j;
+      VideoFeedsRecommendFragment.a(this.a).postDelayed(new VideoFeedsRecommendFragment.1.1(this, i + 1), 0L);
+      do
+      {
+        return;
+      } while (VideoFeedsRecommendFragment.a(this.a) == null);
+      VideoFeedsRecommendFragment.a(this.a).c();
       return;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
-      return paramBoolean;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    VideoFeedsRecommendFragment.a(this.a).c(VideoFeedsRecommendFragment.a(this.a).a);
   }
 }
 

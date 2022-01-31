@@ -1,72 +1,179 @@
 import android.content.Intent;
+import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.SonicTemplateUpdateManager.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.sonic.sdk.SonicEngine;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbqv
-  extends MSFServlet
+  implements Manager
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  QQAppInterface a;
+  
+  public bbqv(QQAppInterface paramQQAppInterface)
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bbmj.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    this.a = paramQQAppInterface;
+  }
+  
+  private JSONObject a()
+  {
+    File localFile = new File(this.a.getApplication().getFilesDir() + File.separator + "sonicTemplateUpdate.json");
+    if (localFile.exists()) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(bbdx.a(localFile));
+        return localJSONObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
+        }
+        localFile.delete();
+      }
     }
     for (;;)
     {
-      bbqp localbbqp = (bbqp)((QQAppInterface)super.getAppRuntime()).a(71);
-      if (localbbqp != null) {
-        localbbqp.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
+      return null;
+      ((VasQuickUpdateManager)this.a.getManager(184)).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  private boolean a(JSONObject paramJSONObject)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
+    boolean bool = bbsh.a().a(this.a, paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "isConfigValid isValid = " + bool);
+    }
+    return bool;
+  }
+  
+  public void a()
+  {
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
+      if (QLog.isColorLevel()) {
+        QLog.d("SonicTemplateUpdateManager", 2, "parseJson isMainThread = " + bool);
       }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bbmj.a(paramIntent, 0, arrayOfByte.length + 4);
-      bbmj.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      if (!bool) {
+        break;
+      }
+      ThreadManager.post(new SonicTemplateUpdateManager.1(this), 5, null, true);
+      return;
+    }
+    b();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
+    }
+    Object localObject1 = a();
+    if (localObject1 == null)
+    {
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
+      return;
+    }
+    Object localObject4 = ((JSONObject)localObject1).optJSONArray("sonicTemplateUpdate");
+    if ((localObject4 == null) || (((JSONArray)localObject4).length() < 1))
+    {
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
+      return;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
+      try
+      {
+        int j = ((JSONArray)localObject4).length();
+        localObject3 = new HashMap();
+        i = 0;
+        if (i >= j) {
+          break label222;
+        }
+        localObject5 = ((JSONArray)localObject4).getJSONObject(i);
+        if (!a((JSONObject)localObject5)) {
+          break label429;
+        }
+        String str = ((JSONObject)localObject5).optString("url");
+        if (TextUtils.isEmpty(str)) {
+          break label429;
+        }
+        localObject1 = null;
+        if (WebAccelerateHelper.getSonicEngine() != null) {
+          localObject1 = SonicEngine.makeSessionId(str, true);
+        }
+        if (localObject1 == null) {
+          QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable sonicSessionId = null, url = " + str);
+        }
       }
+      catch (Exception localException)
+      {
+        QLog.e("SonicTemplateUpdateManager", 1, "parseJsonRunnable exception e = " + localException.getMessage());
+        return;
+      }
+      ((Map)localObject3).put(localException, Long.valueOf(((JSONObject)localObject5).optLong("templateUpdateTime")));
+      break label429;
+      label222:
+      if (((Map)localObject3).size() <= 0) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SonicTemplateUpdateManager", 2, "parseJsonRunnable ready remove expire sonic template");
+      }
+      if (!WebProcessManager.c())
+      {
+        localObject2 = WebAccelerateHelper.getSonicEngine();
+        if (localObject2 == null) {
+          break;
+        }
+        ((SonicEngine)localObject2).removeExpiredSessionCache((Map)localObject3);
+        return;
+      }
+      QLog.d("SonicTemplateUpdateManager", 1, "parseJsonRunnable WebProcess Exist");
+      Object localObject2 = new Intent(BaseApplicationImpl.getApplication(), WebProcessReceiver.class);
+      ((Intent)localObject2).setAction("action_delete_sonic_templateinfo");
+      localObject4 = ((Map)localObject3).keySet();
+      Object localObject3 = ((Map)localObject3).values();
+      localObject4 = (String[])((Set)localObject4).toArray(new String[((Set)localObject4).size()]);
+      Object localObject5 = new long[((Collection)localObject3).size()];
+      localObject3 = ((Collection)localObject3).iterator();
+      int i = 0;
+      while (((Iterator)localObject3).hasNext()) {
+        if (i < localObject5.length)
+        {
+          localObject5[i] = ((Long)((Iterator)localObject3).next()).longValue();
+          i += 1;
+        }
+      }
+      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId", (String[])localObject4);
+      ((Intent)localObject2).putExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime", (long[])localObject5);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
       return;
-      label117:
-      paramIntent = new byte[4];
-      bbmj.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+      label429:
+      i += 1;
     }
   }
+  
+  public void onDestroy() {}
 }
 
 

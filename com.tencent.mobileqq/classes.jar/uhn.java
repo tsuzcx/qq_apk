@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class uhn
-  implements DialogInterface.OnDismissListener
+public final class uhn
+  extends QQUIEventReceiver<uhg, tjo>
 {
-  uhn(uhm paramuhm) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public uhn(@NonNull uhg paramuhg)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
+    super(paramuhg);
+  }
+  
+  public void a(@NonNull uhg paramuhg, @NonNull tjo paramtjo)
+  {
+    if ((paramtjo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjo.jdField_a_of_type_JavaUtilList != null) && (paramuhg.a != null))
+    {
+      paramtjo = paramtjo.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramtjo.hasNext())
+      {
+        tec localtec = (tec)paramtjo.next();
+        if (TextUtils.equals(paramuhg.a.b, localtec.a)) {
+          paramuhg.i();
+        }
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjo.class;
   }
 }
 

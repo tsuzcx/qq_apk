@@ -1,58 +1,29 @@
-import android.content.Context;
-import android.os.SystemClock;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
 import com.tencent.mobileqq.richmedia.dc.DataReport;
 import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
 
-public class avwp
-  extends avxb
+class avwp
+  extends Handler
 {
-  private avwr a;
-  private boolean b;
-  
-  public avwp(Context paramContext)
+  avwp(avwo paramavwo, Looper paramLooper)
   {
-    super(paramContext);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a != null) && (!this.b))
+    paramMessage = DataReport.a();
+    int j = avwo.a(this.a).size();
+    int i = 0;
+    while (i < j)
     {
-      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localReportTask);
-      this.b = true;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.a == null) && (!this.b))
-    {
-      avwr localavwr = new avwr(null);
-      avwr.a(localavwr, paramBoolean);
-      avwr.a(localavwr, SystemClock.uptimeMillis());
-      this.a = localavwr;
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwr.b(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void c()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwr.c(this.a, SystemClock.uptimeMillis());
-    }
-  }
-  
-  public void d()
-  {
-    if ((this.a != null) && (!this.b)) {
-      avwr.b(this.a, true);
+      avwq localavwq = (avwq)avwo.a(this.a).valueAt(i);
+      paramMessage.a(new DataReport.ReportTask("Pic.AioPreview", localavwq.a("Pic.AioPreview")));
+      paramMessage.a(new DataReport.ReportTask("Pic.AioPreview.Preload", localavwq.a("Pic.AioPreview.Preload")));
+      i += 1;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.text.TextUtils;
-import bazt;
+import bbah;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
@@ -11,13 +11,13 @@ public class QQAvatarFHDDecoder$2
 {
   public void run()
   {
-    if (bazt.a(this.this$0)) {
+    if (bbah.a(this.this$0)) {
       return;
     }
-    Setting localSetting = bazt.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
+    Setting localSetting = bbah.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
     if ((this.jdField_a_of_type_Boolean) || (localSetting == null) || (TextUtils.isEmpty(localSetting.url)) || (System.currentTimeMillis() - localSetting.updateTimestamp > 86400000L))
     {
-      bazt.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
+      bbah.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
       return;
     }
     this.this$0.a(localSetting);

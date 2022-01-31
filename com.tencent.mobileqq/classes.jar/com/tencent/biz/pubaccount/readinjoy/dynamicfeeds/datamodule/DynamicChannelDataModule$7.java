@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
 import java.util.List;
-import ori;
-import ork;
+import orf;
+import orh;
 
 public class DynamicChannelDataModule$7
   implements Runnable
 {
-  public DynamicChannelDataModule$7(ork paramork, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, List paramList) {}
+  public DynamicChannelDataModule$7(orh paramorh, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      ori.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
+      orf.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
       return;
     }
-    ori.a().b(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
+    orf.a().b(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

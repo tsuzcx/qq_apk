@@ -1,32 +1,31 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.QLog;
 
 class akxr
-  implements SoundPool.OnLoadCompleteListener
+  implements MediaPlayer.OnPreparedListener
 {
-  akxr(akxq paramakxq) {}
+  akxr(akxp paramakxp) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (paramInt2 != 0) {}
     try
     {
-      QLog.e("ARMusicController", 2, "load fire music failed. " + akxq.a(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + akxp.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      akxp.b(this.a, true);
+      if (akxp.b(this.a))
+      {
+        this.a.a.start();
+        akxp.c(this.a, false);
+      }
       return;
     }
-    catch (Exception paramSoundPool)
+    catch (Exception paramMediaPlayer)
     {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. : " + akxq.a(this.a));
-    }
-    akxq.a(this.a, true);
-    if (akxq.a(this.a))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
+      paramMediaPlayer.printStackTrace();
     }
   }
 }

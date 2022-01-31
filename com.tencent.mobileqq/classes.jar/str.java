@@ -1,44 +1,36 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.Iterator;
+import java.util.List;
 
 class str
-  extends SimpleJob<Void>
+  implements syq<tng, tor>
 {
-  str(sto paramsto, String paramString1, String paramString2, int paramInt)
-  {
-    super(paramString1);
-  }
+  str(stl paramstl, stu paramstu, String paramString) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull tng paramtng, @Nullable tor paramtor, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramJobContext = sto.a(this.jdField_a_of_type_Sto, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    long l1;
-    if (paramJobContext != null)
+    ved.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramtor);
+    if ((paramErrorMessage.isFail()) || (paramtor == null))
     {
-      paramVarArgs = ((tcz)tdc.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null) {
-        break label132;
-      }
-      l1 = 0L;
-      if (paramJobContext.updatedMs <= 0L) {
-        break label141;
+      ved.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Stu.a(true);
+      return;
+    }
+    paramtng = (tcw)tcz.a(5);
+    if (paramtor.a != null)
+    {
+      paramErrorMessage = paramtor.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
       }
     }
-    label132:
-    label141:
-    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
-    {
-      int i = paramJobContext.compressLevel;
-      vel.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
-      veg.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
-      return null;
-      l1 = paramVarArgs.mCreateTime;
-      break;
-    }
+    paramtor.a = paramtng.a(paramtor.a);
+    ((stl)tcz.a(28)).a(paramtor.b);
+    this.jdField_a_of_type_Stl.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Stu.a(true);
   }
 }
 

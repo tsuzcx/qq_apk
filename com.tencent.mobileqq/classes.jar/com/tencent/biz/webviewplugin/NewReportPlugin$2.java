@@ -2,15 +2,15 @@ package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcpq;
+import bcqf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import xkq;
+import xkn;
 
 public final class NewReportPlugin$2
   implements Runnable
 {
-  public NewReportPlugin$2(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, bcpq parambcpq) {}
+  public NewReportPlugin$2(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, bcqf parambcqf) {}
   
   public void run()
   {
@@ -36,15 +36,15 @@ public final class NewReportPlugin$2
         }
       }
       label234:
-      for (String str1 = xkq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
+      for (String str1 = xkn.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
       {
-        localObject1 = xkq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
+        localObject1 = xkn.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
         if (QLog.isColorLevel()) {
           QLog.i("NewReportPlugin", 2, String.format("nearbySafetyRealReport post: %s", new Object[] { localObject1 }));
         }
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.2.1(this, (String)localObject1));
         return;
-        localObject2 = xkq.a(this.jdField_a_of_type_Int);
+        localObject2 = xkn.a(this.jdField_a_of_type_Int);
         break;
       }
       return;

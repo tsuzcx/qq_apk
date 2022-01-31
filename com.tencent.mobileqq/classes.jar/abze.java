@@ -1,57 +1,31 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.observer.AccountObserver;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
 public class abze
-  extends AccountObserver
+  extends MqqHandler
 {
-  public abze(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public abze(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    switch (paramMessage.what)
+    {
+    case 107: 
+    default: 
+      return;
+    case 106: 
+      this.a.finish();
+      return;
     }
-    RegisterQQNumberActivity.a(this.a);
-    paramString1 = new Intent(this.a, LoginActivity.class);
-    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString1.putExtra("tab_index", MainFragment.b);
-    paramString1.addFlags(131072);
-    this.a.startActivity(paramString1);
-    this.a.finish();
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
+    int i = 0;
+    while (i < 6)
+    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      i += 1;
     }
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterQQNumberActivity.a(this.a);
-    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
-    }
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

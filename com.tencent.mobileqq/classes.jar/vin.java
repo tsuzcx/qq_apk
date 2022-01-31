@@ -1,66 +1,81 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vin
-  extends SimpleObserver<vsd>
+public class vin
+  extends vhk
 {
-  vin(vim paramvim, vsd paramvsd) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(vsd paramvsd)
+  public vin(@NonNull vhm paramvhm)
   {
-    super.onNext(paramvsd);
-    this.jdField_a_of_type_Vim.a(5);
-    paramvsd = this.jdField_a_of_type_Vsd.a;
-    veg.b("EditVideoSave", "publishParam = " + paramvsd);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.getActivity() != null)
+    super(paramvhm);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Vhm.a.a("shareGroupId");
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Vhm.a.a("shareGroupName");
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_Vhm.a.a("shareGroupType", 0);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_Vhm.a.a("groupUin", -1L);
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Vhm.a.a("ignorePersonalPublish", false);
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_Vhm.a.a("add_video_source", 0);
+    ved.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s, source=%d", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131376006));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new vio(this));
+    if (this.jdField_a_of_type_JavaLangString == null)
     {
-      localIntent = this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.getActivity().getIntent();
-      if (localIntent == null) {
-        break label212;
+      ved.e("EditVideoShareGroup", "shareGroupId should not be null");
+      a().a(0, null, 0, 0);
+    }
+  }
+  
+  public void a(int paramInt, @NonNull vsa paramvsa)
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    synchronized (this.jdField_a_of_type_Vhm)
+    {
+      qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
+      byte[] arrayOfByte = paramvsa.a.spreadGroupBytes;
+      if (arrayOfByte != null) {}
+      try
+      {
+        localVideoSpreadGroupList.mergeFrom(paramvsa.a.spreadGroupBytes);
+        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+        localVideoSpreadGroupList.visibility_sharegroup_type.set(2);
+        localVideoSpreadGroupList.setHasFlag(true);
+        paramvsa.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
+        if (this.jdField_a_of_type_Int == 1) {
+          paramvsa.a.putExtra("groupUin", Long.valueOf(this.jdField_a_of_type_Long));
+        }
+        ved.d("EditVideoShareGroup", "editVideoPrePublish fragment index = %d, share-group %s %s %s %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
+        paramvsa.a.putExtra("ignorePersonalPublish", Boolean.valueOf(this.jdField_a_of_type_Boolean));
+        paramvsa.a.putExtra("add_video_source", Integer.valueOf(this.jdField_b_of_type_Int));
+        return;
       }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        for (;;)
+        {
+          ved.c("EditVideoShareGroup", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
+        }
+      }
     }
-    for (;;)
-    {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.a(), paramvsd.b, i, j, this.jdField_a_of_type_Vim.jdField_a_of_type_Vhp.a.a());
-      vim.a(this.jdField_a_of_type_Vim, paramvsd.b);
-      this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.getActivity().startActivityForResult(localIntent, 111);
-      this.jdField_a_of_type_Vim.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_Vim.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Vim.b = ((int)(7000.0D / paramvsd.a * 4.0D));
-      this.jdField_a_of_type_Vim.f();
-      return;
-      label212:
-      i = 0;
-      j = 0;
-    }
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    veg.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_Vim.jdField_a_of_type_Vhp.a(0);
-    this.jdField_a_of_type_Vim.g();
-    bcpw.a(this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.a(), ajyc.a(2131703829), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    veg.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_Vim.jdField_a_of_type_Vhp.a(0);
-    bcpw.a(this.jdField_a_of_type_Vim.jdField_a_of_type_Vja.a(), 1, ajyc.a(2131703764) + paramError, 0).a();
-    this.jdField_a_of_type_Vim.g();
   }
 }
 

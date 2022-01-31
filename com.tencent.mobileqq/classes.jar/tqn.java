@@ -1,37 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.HashMap;
 
 class tqn
-  extends tpo
+  extends tpu
 {
-  tqn(tqk paramtqk, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  tqn(tqh paramtqh, trl paramtrl) {}
   
   public boolean b()
   {
-    Object localObject = (String)a("result");
-    try
-    {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      veg.c(this.b, "Error: 保存投票失败", localURISyntaxException);
-    }
-    return false;
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Trl.a = ((String)localHashMap.get(this.jdField_a_of_type_Trl.a));
+    return true;
   }
 }
 

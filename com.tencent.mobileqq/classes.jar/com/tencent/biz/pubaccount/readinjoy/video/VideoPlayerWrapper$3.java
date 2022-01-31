@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.util.concurrent.atomic.AtomicInteger;
-import qub;
+import qty;
 
 public class VideoPlayerWrapper$3
   implements Runnable
 {
-  public VideoPlayerWrapper$3(qub paramqub, boolean paramBoolean) {}
+  public VideoPlayerWrapper$3(qty paramqty, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((qub.a(this.this$0) != null) && (qub.a(this.this$0).get() != 6) && (qub.a(this.this$0).get() != 8)) {
-      qub.a(this.this$0).setLoopback(this.a);
+    if ((qty.a(this.this$0) != null) && (qty.a(this.this$0).get() != 6) && (qty.a(this.this$0).get() != 8)) {
+      qty.a(this.this$0).setLoopback(this.a);
     }
   }
 }

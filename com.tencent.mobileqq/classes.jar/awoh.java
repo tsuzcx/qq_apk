@@ -1,37 +1,18 @@
-public abstract class awoh
-  implements awog
+import android.view.View;
+import java.util.List;
+
+public abstract interface awoh
+  extends awog
 {
-  private int a;
-  private int b;
-  public boolean f = true;
-  public int r;
-  public int s;
+  public abstract int a();
   
-  public int a()
-  {
-    return this.a;
-  }
+  public abstract String a();
   
-  public Object a(String paramString)
-  {
-    return null;
-  }
+  public abstract List<awoi> a();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(View paramView);
   
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.s = paramInt;
-  }
+  public abstract String b();
 }
 
 

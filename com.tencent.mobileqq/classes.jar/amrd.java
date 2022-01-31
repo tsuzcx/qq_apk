@@ -7,159 +7,289 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amrd
-  extends amrp
-  implements ampd<String>
+  implements ampc<String>
 {
-  protected String a;
-  public ArrayList<amrn> a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<amrk> a;
+  public int b;
+  public String b;
+  public ArrayList<String> b;
+  public int c;
+  public String c;
+  public ArrayList<amrh> c;
+  public int d;
+  public ArrayList<amrg> d;
+  public int e;
+  public ArrayList<String> e;
+  public int f;
+  public ArrayList<String> f;
+  public int g;
+  public ArrayList<amrf> g;
+  public int h;
+  public int i;
+  public int j;
   
   public amrd()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private static alrw a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    alrw localalrw = new alrw();
-    localalrw.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
-    localalrw.d = paramJSONObject.optString("md5", null);
-    localalrw.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url", null);
-    localalrw.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name", null);
-    localalrw.c = paramJSONObject.optString("identifier", null);
-    if (!localalrw.a())
-    {
-      QLog.i("AIDictConfig", 1, "getDictInfoFromJSON, invalid dict info");
-      return null;
-    }
-    QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON  info.type=" + localalrw.jdField_a_of_type_Int + ", info.md5=" + localalrw.d + ", info.url=" + localalrw.jdField_b_of_type_JavaLangString + ",  info.name =" + localalrw.jdField_a_of_type_JavaLangString + ",  info.identifier =" + localalrw.c);
-    paramJSONObject = paramJSONObject.optJSONObject("diff");
-    if (paramJSONObject != null)
-    {
-      localalrw.e = paramJSONObject.optString("url");
-      localalrw.f = paramJSONObject.optString("diff-md5");
-      localalrw.g = paramJSONObject.optString("source-md5");
-      if (!localalrw.b()) {
-        localalrw.a();
-      }
-      QLog.i("AIDictConfig", 1, "onParse getDictInfoFromJSON info.diffURL=" + localalrw.e + ", info.diffMD5=" + localalrw.f + ", info.diffSourceMD5=" + localalrw.g);
-    }
-    return localalrw;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_g_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public void a(String paramString)
   {
-    int k = 0;
     if (TextUtils.isEmpty(paramString))
     {
-      ArkAppCenter.c("AIDictConfig", "onParse,fileOrRes is null");
+      QLog.e("AiKeywordConfig", 1, "onParse,fileOrRes is null");
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    Object localObject1;
-    int i;
+    int k;
     Object localObject2;
     Object localObject3;
-    Object localObject5;
-    int j;
     try
     {
       paramString = new JSONObject(paramString);
-      this.c = paramString.optString("environment");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("timestamp");
-      this.d = paramString.optString("ark_dict_init");
-      this.e = paramString.optString("netType", "");
-      localObject1 = paramString.optJSONArray("conditional_dict_list");
-      if (localObject1 == null) {
-        break label420;
-      }
-      i = 0;
-      if (i >= ((JSONArray)localObject1).length()) {
-        break label420;
-      }
-      localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-      if (localObject2 == null) {
-        break label517;
-      }
-      localObject3 = ((JSONObject)localObject2).optJSONObject("condition");
-      Object localObject4 = ((JSONObject)localObject2).optJSONObject("dict");
-      if ((localObject3 == null) || (localObject4 == null)) {
-        break label517;
-      }
-      localObject2 = new amrn();
-      localObject5 = new amrm();
-      ((amrm)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("date", "");
-      ((amrn)localObject2).jdField_a_of_type_Amrm = ((amrm)localObject5);
-      localObject3 = new amrp();
-      ((amrp)localObject3).c = ((JSONObject)localObject4).optString("environment");
-      ((amrp)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("timestamp");
-      ((amrp)localObject3).d = ((JSONObject)localObject4).optString("ark_dict_init");
-      ((amrp)localObject3).e = ((JSONObject)localObject4).optString("netType", "");
-      QLog.i("AIDictConfig", 1, "onParse conditional_dict_list tDict.environment=" + ((amrp)localObject3).c + ", tDict.mTimestamp =" + ((amrp)localObject3).jdField_b_of_type_JavaLangString + ", tDict.mArkDictInit =" + ((amrp)localObject3).d + ", tDict.mNetType =" + ((amrp)localObject3).e + ", tCondition.mData =" + ((amrm)localObject5).jdField_a_of_type_JavaLangString);
-      localObject4 = ((JSONObject)localObject4).optJSONArray("word_dict_list");
-      if (localObject4 == null) {
-        break label400;
-      }
-      localObject5 = new ArrayList();
-      j = 0;
-      label343:
-      if (j < ((JSONArray)localObject4).length())
+      localObject1 = paramString.optJSONArray("ark_server_keyword_configs");
+      if (localObject1 != null)
       {
-        JSONObject localJSONObject = ((JSONArray)localObject4).optJSONObject(j);
-        if (localJSONObject == null) {
-          break label524;
+        k = 0;
+        if (k >= ((JSONArray)localObject1).length()) {
+          break label304;
         }
-        ((ArrayList)localObject5).add(a(localJSONObject));
+        localObject2 = ((JSONArray)localObject1).optJSONObject(k);
+        if (localObject2 == null) {
+          break label1802;
+        }
+        localObject3 = new amrk();
+        ((amrk)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("context", "");
+        ((amrk)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("type", "");
+        ((amrk)localObject3).jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(((JSONObject)localObject2).optBoolean("enable", false));
+        ((amrk)localObject3).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("regex", "");
+        ((amrk)localObject3).d = ((JSONObject)localObject2).optString("tips", "");
+        ArkAppCenter.c("AiKeywordConfig", String.format("onParse, ark_server_keyword_configs, name=%s, type=%s, enable=%s, pattern=%s, tip=%s", new Object[] { ((amrk)localObject3).jdField_a_of_type_JavaLangString, ((amrk)localObject3).jdField_b_of_type_JavaLangString, Boolean.toString(((amrk)localObject3).jdField_a_of_type_JavaLangBoolean.booleanValue()), ((amrk)localObject3).jdField_c_of_type_JavaLangString, ((amrk)localObject3).d }));
+        if ((TextUtils.isEmpty(((amrk)localObject3).jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(((amrk)localObject3).jdField_b_of_type_JavaLangString)) || (!((amrk)localObject3).jdField_a_of_type_JavaLangBoolean.booleanValue()) || (TextUtils.isEmpty(((amrk)localObject3).jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(((amrk)localObject3).d))) {
+          break label1802;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
       }
     }
     catch (JSONException paramString)
     {
-      QLog.e("AIDictConfig", 1, "onParse error e = ", paramString);
+      ArkAppCenter.c("AiKeywordConfig", String.format("onParse AiKeywordConfig onParse, parse json failed, err=%s", new Object[] { paramString.getMessage() }));
       return;
     }
-    ((amrp)localObject3).jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject5);
-    label400:
-    ((amrn)localObject2).jdField_a_of_type_Amrp = ((amrp)localObject3);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-    break label517;
-    label420:
-    paramString = paramString.optJSONArray("word_dict_list");
-    if (paramString != null)
+    ArkAppCenter.c("AiKeywordConfig", "onParse, ark_server_keyword_configs is empty");
+    label304:
+    this.jdField_a_of_type_JavaLangString = paramString.optString("ark_ai_match_graytips_visibility");
+    Object localObject1 = paramString.optJSONArray("ark_navi_msg_appnames");
+    if (localObject1 != null)
     {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      i = k;
+      k = 0;
+      label329:
+      if (k < ((JSONArray)localObject1).length())
+      {
+        localObject2 = ((JSONArray)localObject1).optString(k);
+        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (this.jdField_b_of_type_JavaUtilArrayList.contains(localObject2))) {
+          break label1809;
+        }
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_navi_msg_appnames appName = ", localObject2 });
+        this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
+        break label1809;
+      }
+    }
+    localObject1 = paramString.optJSONArray("ark_module_api_frequency");
+    label414:
+    Object localObject4;
+    if (localObject1 != null)
+    {
+      k = 0;
+      if (k < ((JSONArray)localObject1).length())
+      {
+        localObject2 = ((JSONArray)localObject1).optJSONObject(k);
+        if (localObject2 == null) {
+          break label1816;
+        }
+        localObject3 = ((JSONObject)localObject2).optString("module");
+        localObject4 = ((JSONObject)localObject2).optString("api");
+        long l1 = ((JSONObject)localObject2).optLong("times", -1L);
+        long l2 = ((JSONObject)localObject2).optLong("period", -1L);
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_module_api_frequency module = ", localObject3, "api = ", localObject4, "times = ", Long.valueOf(l1), "period = ", Long.valueOf(l2) });
+        if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject4)) || (l1 == -1L) || (l2 == -1L)) {
+          break label1816;
+        }
+        localObject2 = new amrh((String)localObject3, (String)localObject4, l1, l2);
+        this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
+        break label1816;
+      }
+    }
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse,mArkModuleApiFrequencyList list size =", Integer.valueOf(this.jdField_c_of_type_JavaUtilArrayList.size()) });
+    localObject1 = paramString.optJSONArray("ark_jsdebugger_download");
+    int m;
+    if (localObject1 != null)
+    {
+      m = ((JSONArray)localObject1).length();
+      k = 0;
+      label650:
+      if (k < m)
+      {
+        localObject4 = ((JSONArray)localObject1).optJSONObject(k);
+        if (localObject4 == null) {
+          break label1823;
+        }
+        localObject2 = ((JSONObject)localObject4).optString("jscmd5");
+        localObject3 = ((JSONObject)localObject4).optString("url");
+        localObject4 = ((JSONObject)localObject4).optString("md5");
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse jscomd5 = ", localObject2, "ur = ", localObject3, "md5 = ", localObject4 });
+        if ((localObject2 == null) || (TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty((CharSequence)localObject3))) {
+          break label1823;
+        }
+        this.jdField_d_of_type_JavaUtilArrayList.add(new amrg((String)localObject2, (String)localObject3, (String)localObject4));
+        break label1823;
+      }
+    }
+    QLog.e("AiKeywordConfig", 1, new Object[] { "mArkJsdebuggerDownloadList list size =", Integer.valueOf(this.jdField_d_of_type_JavaUtilArrayList.size()) });
+    this.jdField_a_of_type_Int = paramString.optInt("singlecontext_singleapp_card_limit", 5);
+    this.jdField_b_of_type_Int = paramString.optInt("ark_app_limit", 3);
+    this.jdField_c_of_type_Int = paramString.optInt("ark_each_app_card_limit", 1);
+    this.jdField_d_of_type_Int = paramString.optInt("ark_input_apps_limit", 3);
+    this.jdField_e_of_type_Int = paramString.optInt("ark_input_each_context_apps_limit", 3);
+    this.jdField_f_of_type_Int = paramString.optInt("ark_babyq_card_limit_total", 10);
+    this.jdField_g_of_type_Int = paramString.optInt("ark_babyq_card_limit_per_app", 1);
+    this.h = paramString.optInt("ark_babyq_guide_count_limit_per_day", 1);
+    this.i = paramString.optInt("ark_babyq_guide_day_limit_total", 3);
+    this.jdField_b_of_type_JavaLangString = paramString.optString("ark_babyq_guide_hint_text");
+    this.jdField_a_of_type_Long = paramString.optLong("ark_babyq_bubble_disappear_duration", 10000L);
+    localObject1 = paramString.optJSONArray("ark_babyq_input_hint_text_list");
+    if (localObject1 != null)
+    {
+      m = ((JSONArray)localObject1).length();
+      k = 0;
+      label964:
+      if (k < m)
+      {
+        localObject2 = ((JSONArray)localObject1).optString(k);
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label1830;
+        }
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_input_hint_text_list itemStr = ", localObject2 });
+        this.jdField_e_of_type_JavaUtilArrayList.add(localObject2);
+        break label1830;
+      }
+    }
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqInputHintTextList list size =", Integer.valueOf(this.jdField_e_of_type_JavaUtilArrayList.size()) });
+    this.jdField_c_of_type_JavaLangString = paramString.optString("ark_babyq_no_result_recommend_title");
+    localObject1 = paramString.optJSONArray("ark_babyq_no_result_recommend_items");
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    {
+      k = 0;
+      label1083:
+      if (k < ((JSONArray)localObject1).length())
+      {
+        localObject2 = ((JSONArray)localObject1).optString(k);
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label1837;
+        }
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_no_result_recommend_items itemStr = ", localObject2 });
+        this.jdField_f_of_type_JavaUtilArrayList.add(localObject2);
+        break label1837;
+      }
+    }
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqNoResultRecommendItems list size =", Integer.valueOf(this.jdField_f_of_type_JavaUtilArrayList.size()) });
+    this.j = paramString.optInt("ark_babyq_gray_tip_total_limit", 1);
+    paramString = paramString.optJSONArray("ark_babyq_gray_tip_configs");
+    if ((paramString != null) && (paramString.length() > 0)) {
+      k = 0;
     }
     for (;;)
     {
-      if (i < paramString.length())
+      int n;
+      int i1;
+      if (k < paramString.length())
       {
-        localObject1 = paramString.optJSONObject(i);
-        if (localObject1 != null)
+        localObject1 = paramString.optJSONObject(k);
+        if (localObject1 == null) {
+          break label1851;
+        }
+        n = ((JSONObject)localObject1).optInt("type");
+        i1 = ((JSONObject)localObject1).optInt("limit");
+        QLog.d("AiKeywordConfig", 1, new Object[] { "onParse tipType =", Integer.valueOf(n), "itemLimit = ", Integer.valueOf(i1) });
+        if (n == 4)
         {
-          localObject1 = a((JSONObject)localObject1);
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject1);
+          localObject1 = ((JSONObject)localObject1).optJSONArray("tips_array");
+          if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
+            break label1851;
+          }
+          localObject2 = new ArrayList();
+          m = 0;
         }
       }
-      else
+      for (;;)
       {
-        QLog.d("AIDictConfig", 1, new Object[] { "mWordDictList list size =", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) });
-        return;
-        label517:
-        i += 1;
-        break;
-        label524:
-        j += 1;
-        break label343;
+        if (m < ((JSONArray)localObject1).length())
+        {
+          Object localObject5 = ((JSONArray)localObject1).optJSONObject(m);
+          if (localObject5 != null)
+          {
+            localObject3 = ((JSONObject)localObject5).optString("prefix");
+            localObject4 = ((JSONObject)localObject5).optString("keyword");
+            String str = ((JSONObject)localObject5).optString("postfix");
+            localObject5 = ((JSONObject)localObject5).optString("app");
+            if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
+            {
+              QLog.d("AiKeywordConfig", 1, new Object[] { "onParse prefix =", localObject3, "keyword = ", localObject4, "postfix = ", str, "appName = ", localObject5 });
+              ((ArrayList)localObject2).add(new amrp((String)localObject3, (String)localObject4, str, (String)localObject5));
+            }
+          }
+        }
+        else
+        {
+          this.jdField_g_of_type_JavaUtilArrayList.add(new amrf(n, i1, null, (ArrayList)localObject2));
+          break label1851;
+          if (n <= 0) {
+            break label1851;
+          }
+          localObject1 = ((JSONObject)localObject1).optString("tip");
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label1851;
+          }
+          QLog.d("AiKeywordConfig", 1, new Object[] { "onParse tipText =", localObject1 });
+          this.jdField_g_of_type_JavaUtilArrayList.add(new amrf(n, i1, (String)localObject1, null));
+          break label1851;
+          QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqGrayTipConfigs list size =", Integer.valueOf(this.jdField_g_of_type_JavaUtilArrayList.size()) });
+          QLog.i("AiKeywordConfig", 1, "onParse ark_ai_match_graytips_visibility=" + this.jdField_a_of_type_JavaLangString + ", singlecontext_singleapp_card_limit=" + this.jdField_a_of_type_Int + ", ark_app_limit=" + this.jdField_b_of_type_Int + ", ark_each_app_card_limit=" + this.jdField_c_of_type_Int + ", ark_input_apps_limit=" + this.jdField_d_of_type_Int + ", ark_input_each_context_apps_limit=" + this.jdField_e_of_type_Int + ", ark_babyq_card_limit_total=" + this.jdField_f_of_type_Int + ", ark_babyq_card_limit_total=" + this.jdField_g_of_type_Int + ", ark_babyq_guide_count_limit_per_day=" + this.h + ", ark_babyq_guide_hint_text=" + this.jdField_b_of_type_JavaLangString + ", ark_babyq_bubble_disappear_duration=" + this.jdField_a_of_type_Long + ", ark_babyq_no_result_recommend_title=" + this.jdField_c_of_type_JavaLangString + ", ark_babyq_gray_tip_total_limit=" + this.j);
+          return;
+          label1802:
+          k += 1;
+          break;
+          label1809:
+          k += 1;
+          break label329;
+          label1816:
+          k += 1;
+          break label414;
+          label1823:
+          k += 1;
+          break label650;
+          label1830:
+          k += 1;
+          break label964;
+          label1837:
+          k += 1;
+          break label1083;
+        }
+        m += 1;
       }
-      i += 1;
+      label1851:
+      k += 1;
     }
   }
 }

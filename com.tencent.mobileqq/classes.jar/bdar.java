@@ -1,45 +1,33 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
+import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdar
-  extends Handler
+  extends bdom
 {
-  public bdar(FriendListOpenFrame paramFriendListOpenFrame) {}
+  public bdar(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
   {
-    switch (paramMessage.what)
+    if (this.a.getActivity() == null)
     {
+      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
+      return;
     }
-    for (;;)
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    if (this.a.getActivity() == null)
     {
+      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
       return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        bdat localbdat = (bdat)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localbdat != null) && (str.equals(localbdat.b)))
-        {
-          localbdat.a.setImageBitmap(paramMessage);
-          return;
-        }
-        i += 1;
-      }
     }
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
   }
 }
 

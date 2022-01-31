@@ -1,24 +1,19 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
 import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
 public class xid
-  implements xib
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public xid(SingleLyricView paramSingleLyricView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SingleLyricView.a(this.a).b();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.post(new SingleLyricView.1.1(this, paramLong));
-  }
-  
-  public void b()
-  {
-    SingleLyricView.a(this.a).c();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(f);
+    }
   }
 }
 

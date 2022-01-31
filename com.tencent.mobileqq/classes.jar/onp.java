@@ -1,20 +1,48 @@
 import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
 
-final class onp
-  implements INetEventHandler
+public class onp
 {
-  onp(Context paramContext) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramBoolean)
+    int j = 0;
+    int i = j;
+    if (b(paramBaseArticleInfo))
     {
-      onk.c(this.a);
-      return;
+      i = j;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
+        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
+      }
     }
-    onk.j("");
-    onk.k("");
+    return i;
+  }
+  
+  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  {
+    int j = paramView.getPaddingTop();
+    int k = paramView.getPaddingBottom();
+    if (onh.s()) {
+      paramRoundAngleFrameLayout.setRaduis(baxn.a(paramContext, 8.0F));
+    }
+    for (int i = baxn.a(paramContext, 14.0F);; i = baxn.a(paramContext, 6.0F))
+    {
+      paramView.setPadding(i, j, i, k);
+      return;
+      paramRoundAngleFrameLayout.setRaduis(baxn.a(paramContext, 0.0F));
+    }
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
   }
 }
 

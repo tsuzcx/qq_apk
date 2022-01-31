@@ -1,10 +1,21 @@
-import com.tencent.av.VideoController;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class mra
 {
-  public static void a()
+  public static String a()
   {
-    mqz.a("0X800A3D8", VideoController.a().a().d);
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DingdongSoundUtil", 2, "[sound_early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/dingdong/sound_early/";
   }
 }
 

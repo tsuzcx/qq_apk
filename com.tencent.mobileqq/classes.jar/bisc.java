@@ -1,53 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.common.app.AppInterface;
 
-public class bisc
+class bisc
+  extends biqy
 {
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b = 6;
+  bisc(bisb parambisb, AppInterface paramAppInterface) {}
   
-  public bisc()
+  public void a(boolean paramBoolean, bist parambist)
   {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public bisc(List<String> paramList, String paramString, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_JavaLangString = "default";
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramJSONObject != null)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean)
     {
-      a(paramJSONObject);
+      bisb.a(this.jdField_a_of_type_Bisb).a(parambist);
       return;
     }
-    this.jdField_a_of_type_Int = 3;
-    this.b = 6;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangString != null) {}
-      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
-      {
-        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
-        this.b = paramJSONObject.getInt("pendantNum");
-        return;
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
+    bisb.a(this.jdField_a_of_type_Bisb).a(new bist());
   }
 }
 

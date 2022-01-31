@@ -1,9 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
 
-public abstract interface agbz
+public class agbz
+  extends BroadcastReceiver
 {
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
+  public agbz(QzoneFrame paramQzoneFrame) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (QzoneFrame.a(this.a) != null) {
+      ((bhcc)QzoneFrame.a(this.a)).updatePublishBox(paramIntent);
+    }
+  }
 }
 
 

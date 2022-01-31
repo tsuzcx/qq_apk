@@ -1,16 +1,68 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.CustomFace;
 
 public class aywl
-  implements URLDrawable.URLDrawableListener
+  extends ayrf
 {
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public im_msg_body.CustomFace a;
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public aywl(ayvx paramayvx, aywc paramaywc)
+  {
+    super(paramayvx, paramaywc);
+  }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  void t()
+  {
+    if (this.jdField_a_of_type_Aywc.a != null)
+    {
+      x();
+      auor localauor = new auor();
+      localauor.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
+      localauor.d = this.c;
+      localauor.c = this.d;
+      localauor.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Aywc.i;
+      localauor.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      localauor.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace;
+      this.jdField_a_of_type_Aywc.a.b(localauor);
+      a(true);
+    }
+  }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  protected void x()
+  {
+    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
+    localCustomFace.uint32_file_id.set((int)this.jdField_a_of_type_Long);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      localObject = (ayuq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      localCustomFace.uint32_server_ip.set(a(((ayuq)localObject).jdField_a_of_type_JavaLangString));
+      localCustomFace.uint32_server_port.set(((ayuq)localObject).jdField_a_of_type_Int);
+    }
+    localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
+    localCustomFace.uint32_useful.set(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
+      localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
+    }
+    localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+    localCustomFace.str_file_path.set(this.d);
+    Object localObject = localCustomFace.uint32_origin;
+    if (this.l) {}
+    for (int i = 1;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      localCustomFace.uint32_width.set(this.p);
+      localCustomFace.uint32_height.set(this.jdField_q_of_type_Int);
+      localCustomFace.uint32_size.set((int)this.jdField_q_of_type_Long);
+      localCustomFace.uint32_source.set(200);
+      this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace = localCustomFace;
+      return;
+    }
+  }
 }
 
 

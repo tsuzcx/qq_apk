@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-final class aylg
-  implements DialogInterface.OnClickListener
+public class aylg
+  implements ajte
 {
-  aylg(boolean paramBoolean1, boolean paramBoolean2) {}
+  protected void a(boolean paramBoolean, List<String> paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    aylf.a("0X800A5B5");
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "showDarkModeTips systemDarMode  = " + this.a);
+    if (paramInt == 1) {
+      try
+      {
+        if ((paramObject instanceof List))
+        {
+          a(paramBoolean, (List)paramObject);
+          return;
+        }
+        if (!paramBoolean)
+        {
+          a(false, null);
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("ParticipleObserver", 1, paramObject, new Object[0]);
+      }
     }
-    aylf.a(true);
-    aylf.a(this.a, this.b, null);
   }
 }
 

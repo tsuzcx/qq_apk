@@ -1,39 +1,39 @@
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 public class sjo
-  implements bfzp
+  extends StaggeredGridLayoutManager
 {
-  public sjo(WSRecommendFragment paramWSRecommendFragment) {}
-  
-  public void a()
+  public sjo(int paramInt1, int paramInt2)
   {
-    sne.b("WSRecommendFragment", "endOfRefresh");
-    WSRecommendFragment.a(this.a).d();
+    super(paramInt1, paramInt2);
   }
   
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    sne.b("WSRecommendFragment", "startLoadMore");
-    WSRecommendFragment.a(this.a).a(false, false, "");
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
-  {
-    sne.b("WSRecommendFragment", "startTopRefresh");
-    if (WSRecommendFragment.a(this.a)) {
-      WSRecommendFragment.a(this.a, false);
-    }
-    do
+    try
     {
+      super.onLayoutChildren(paramRecycler, paramState);
       return;
-      if (!WSRecommendFragment.b(this.a)) {
-        WSRecommendFragment.b(this.a, true);
-      }
-      WSRecommendFragment.a(this.a, System.currentTimeMillis());
-      WSRecommendFragment.a(this.a).a(true, false, "");
-    } while (WSRecommendFragment.c(this.a));
-    WSRecommendFragment.a(this.a).a("");
+    }
+    catch (Exception paramRecycler)
+    {
+      snb.d("WSStaggeredGridLayoutManager", "onLayoutChildren exception: " + paramRecycler.getLocalizedMessage());
+    }
+  }
+  
+  public void scrollToPosition(int paramInt)
+  {
+    try
+    {
+      super.scrollToPosition(paramInt);
+      return;
+    }
+    catch (Exception localException)
+    {
+      snb.d("WSStaggeredGridLayoutManager", "scrollToPosition exception: " + localException.getLocalizedMessage());
+    }
   }
 }
 

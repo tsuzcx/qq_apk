@@ -1,8 +1,6 @@
 public abstract interface awim
 {
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean b();
+  public abstract void a(int paramInt);
 }
 
 

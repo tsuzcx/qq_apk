@@ -1,20 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 class bikw
-  implements Animation.AnimationListener
+  implements bjos<String>
 {
-  bikw(biku parambiku) {}
+  bikw(bikt parambikt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@Nullable String paramString)
   {
-    biku.b(this.a).setVisibility(8);
+    if (bikt.a(this.a) == biwo.c) {
+      bikt.a(this.a).setMaterial(paramString);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

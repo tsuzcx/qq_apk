@@ -2,10 +2,10 @@ package com.tencent.mobileqq.profile;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import auuv;
-import bazo;
-import bbwg;
-import bbwi;
+import auux;
+import bbac;
+import bbwu;
+import bbww;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.io.File;
 public class ProfileCardCheckUpdate$2
   implements Runnable
 {
-  public ProfileCardCheckUpdate$2(auuv paramauuv, String paramString1, String paramString2) {}
+  public ProfileCardCheckUpdate$2(auux paramauux, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -23,14 +23,14 @@ public class ProfileCardCheckUpdate$2
     }
     try
     {
-      Object localObject = bazo.a(this.this$0.a.getApplication());
+      Object localObject = bbac.a(this.this$0.a.getApplication());
       localObject = new File((String)localObject + ".tmp");
-      bbwg localbbwg = new bbwg(this.a, (File)localObject);
-      localbbwg.f = "profileCardDownload";
-      localbbwg.e = "VIP_profilecard";
-      localbbwg.a = 1;
-      localbbwg.n = true;
-      int j = bbwi.a(localbbwg, this.this$0.a);
+      bbwu localbbwu = new bbwu(this.a, (File)localObject);
+      localbbwu.f = "profileCardDownload";
+      localbbwu.e = "VIP_profilecard";
+      localbbwu.a = 1;
+      localbbwu.n = true;
+      int j = bbww.a(localbbwu, this.this$0.a);
       if (j == 0) {}
       for (;;)
       {
@@ -43,7 +43,7 @@ public class ProfileCardCheckUpdate$2
             QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "ProfileCardCheckUpdate downloadLabelConfigJson update label config  success version=" + this.b);
           }
           this.this$0.a.getPreferences().edit().putString("profileLabelVersion", this.b).commit();
-          auuv.a(this.this$0, (File)localObject);
+          auux.a(this.this$0, (File)localObject);
         }
         return;
         i = 0;

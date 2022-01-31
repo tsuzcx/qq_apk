@@ -1,9 +1,4 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
-
-public abstract interface bemm
-{
-  public abstract void a(NavigationBar paramNavigationBar);
-}
+public class bemm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

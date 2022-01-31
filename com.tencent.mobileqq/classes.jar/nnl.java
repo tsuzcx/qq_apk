@@ -1,27 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.smtt.sdk.WebView;
 
 public class nnl
   implements DialogInterface.OnClickListener
 {
-  public nnl(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  public nnl(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

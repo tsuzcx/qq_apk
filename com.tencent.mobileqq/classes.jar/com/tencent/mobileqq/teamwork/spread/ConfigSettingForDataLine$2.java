@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.teamwork.spread;
 
 import android.content.SharedPreferences;
-import ayhf;
+import ayhh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ConfigSettingForDataLine$2
   implements Runnable
 {
-  public ConfigSettingForDataLine$2(ayhf paramayhf) {}
+  public ConfigSettingForDataLine$2(ayhh paramayhh) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = this.this$0.a.getApp().getSharedPreferences(this.this$0.a.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0);
-    ayhf.a(this.this$0, localSharedPreferences.getInt("file_str_key_max_count_local", 0));
+    ayhh.a(this.this$0, localSharedPreferences.getInt("file_str_key_max_count_local", 0));
   }
 }
 

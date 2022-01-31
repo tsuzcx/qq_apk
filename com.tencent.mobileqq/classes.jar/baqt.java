@@ -1,56 +1,38 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.widget.AdapterView;
 
-class baqt
-  implements ITransactionCallback
+public class baqt
+  implements bfpv
 {
-  baqt(baqs parambaqs) {}
+  public baqt(WheelPickerLayout paramWheelPickerLayout) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onFailed errn:" + paramInt);
-    }
-    this.a.e();
-  }
+  public void a(AdapterView<?> paramAdapterView) {}
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
-    }
-    paramHashMap = new Bdh_extinfo.CommFileExtRsp();
-    try
+    WheelPickerLayout.a(this.a, paramView, 1);
+    WheelPickerLayout.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
     {
-      paramHashMap.mergeFrom(paramArrayOfByte);
-      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
       {
-        paramArrayOfByte.printStackTrace();
+        if (i != paramInt)
+        {
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
       }
     }
   }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import bbdj;
+import bbdx;
 import java.io.File;
 import java.io.IOException;
-import sac;
+import rzz;
 
 class ViolaAccessHelper$6$1
   implements Runnable
@@ -14,7 +14,7 @@ class ViolaAccessHelper$6$1
   {
     try
     {
-      this.this$0.a.a(bbdj.b(new File(this.a)));
+      this.this$0.a.a(bbdx.b(new File(this.a)));
       return;
     }
     catch (IOException localIOException)

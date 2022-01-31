@@ -1,21 +1,6 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
-import com.tencent.widget.AdapterView;
-import java.util.List;
-
-public class nmw
-  implements bfpc
+public abstract interface nmw
 {
-  public nmw(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (nmv)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Nmz == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Nmz.a(paramAdapterView);
-  }
+  public abstract void a(nms paramnms);
 }
 
 

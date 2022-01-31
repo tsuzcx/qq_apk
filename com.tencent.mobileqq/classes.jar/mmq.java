@@ -1,58 +1,73 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
 
-class mmq
-  implements lkw
+public class mmq
+  implements ViewPager.OnPageChangeListener
 {
-  private final WeakReference<mmn> a;
+  private int jdField_a_of_type_Int;
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener;
   
-  mmq(mmn parammmn)
+  public mmq(EffectCycleViewPager paramEffectCycleViewPager, ViewPager.OnPageChangeListener paramOnPageChangeListener, int paramInt)
   {
-    this.a = new WeakReference(parammmn);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    int i;
-    mmn localmmn;
-    if ((paramInt & 0x4) == 4)
+    if (paramInt == 0)
     {
-      i = 1;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
+      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 1) {
+        break label57;
       }
-      localmmn = (mmn)this.a.get();
-      if (localmmn != null) {
-        break label77;
-      }
+      lcg.c("EffectCycleViewPager", "onPageScrollStateChanged 00:1");
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1, false);
     }
-    label77:
-    do
+    for (;;)
     {
+      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+        this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+      }
       return;
-      i = 0;
-      break;
-      if (localmmn.a())
+      label57:
+      if (this.jdField_a_of_type_Int == 0)
       {
-        mmn.a(localmmn, paramChatRoomInfo);
-        return;
+        lcg.c("EffectCycleViewPager", "onPageScrollStateChanged 11:" + (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2));
+        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2, false);
       }
-    } while (i == 0);
-    mmn.a(localmmn, 0);
+    }
   }
   
-  public void a(lkv paramlkv)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlkv + "]");
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
-    mmn localmmn = (mmn)this.a.get();
-    if ((paramlkv == null) || (localmmn == null)) {}
-    while (!localmmn.a()) {
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onPageSelected, pos[").append(paramInt).append("], mSelectListener[");
+      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w("EffectCycleViewPager", 1, bool + "]");
+      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null)
+      {
+        paramInt = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.a(paramInt);
+        this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+      }
       return;
     }
-    mmn.a(localmmn, paramlkv.a);
   }
 }
 

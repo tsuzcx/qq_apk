@@ -1,38 +1,81 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 class tie
-  extends RecyclerView.OnScrollListener
+  extends SimpleObserver<List<tso>>
 {
-  boolean jdField_a_of_type_Boolean = false;
+  tie(thv paramthv, tff paramtff, View paramView, Activity paramActivity) {}
   
-  tie(thy paramthy) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
+    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
+      paramString1 = "NO_SUCH_FEED_ID";
+    }
+    for (;;)
     {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Thy.jdField_a_of_type_Thk.d();
+      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Tff.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
+      paramString1.a(this.jdField_a_of_type_Thv.a());
+      paramString1 = paramString1.a();
+      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
+      {
+        tvc.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
+        return;
       }
+      tvc.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    thy.a(this.jdField_a_of_type_Thy);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(List<tso> paramList)
   {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    Object localObject = twy.a(paramList);
+    String str1;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_Thy.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-        this.jdField_a_of_type_Thy.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
-      }
-      return;
+      str1 = ((tso)localObject).a;
+      localObject = ((tso)localObject).b;
     }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      for (;;)
+      {
+        String str2;
+        if (i < paramList.size())
+        {
+          str2 = ((tso)paramList.get(i)).b;
+          if (!TextUtils.isEmpty(str2)) {}
+        }
+        else
+        {
+          a(str1, (String)localObject, localArrayList, localHashMap);
+          return;
+        }
+        localArrayList.add(str2);
+        localHashMap.put(str2, ((tso)paramList.get(i)).a);
+        i += 1;
+      }
+      localObject = null;
+      str1 = null;
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    a("", "", null, null);
   }
 }
 

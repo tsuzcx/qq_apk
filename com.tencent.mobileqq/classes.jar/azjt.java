@@ -1,28 +1,62 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.troop.aioapp.FullListGroupAppsDbHelper.1;
+import com.tencent.mobileqq.troop.aioapp.data.FullListGroupAppEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class azjt
-  implements BusinessObserver
+public class azjt
 {
-  protected abstract void a(long paramLong);
+  private final QQAppInterface a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  azjt(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel())
+    this.a = paramQQAppInterface;
+  }
+  
+  private void b(FullListGroupAppEntity paramFullListGroupAppEntity)
+  {
+    if ((paramFullListGroupAppEntity == null) || (azjx.a(paramFullListGroupAppEntity.troopAIOAppInfos)))
     {
-      String str = "success = [" + paramBoolean + "], [" + paramBundle + "]";
-      QLog.i("GroupAppsObserver", 2, " onReceive: invoked. " + str);
-    }
-    if (!paramBoolean) {
+      if (QLog.isColorLevel()) {
+        QLog.i("FullListGroupAppsDbHelper", 2, "saveToDb: invoked. empty full list, no need to persist");
+      }
       return;
     }
-    switch (paramInt)
+    aukp localaukp = this.a.getEntityManagerFactory().createEntityManager();
+    paramFullListGroupAppEntity.setStatus(1000);
+    localaukp.a(FullListGroupAppEntity.class.getSimpleName(), null, null);
+    localaukp.b(paramFullListGroupAppEntity);
+    localaukp.a();
+  }
+  
+  public void a()
+  {
+    aukp localaukp = this.a.getEntityManagerFactory().createEntityManager();
+    azjs localazjs = azjs.a(this.a);
+    Object localObject = localaukp.a(FullListGroupAppEntity.class);
+    if (!azjx.a((Collection)localObject))
     {
-    default: 
-      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        FullListGroupAppEntity localFullListGroupAppEntity = (FullListGroupAppEntity)((Iterator)localObject).next();
+        if (!azjx.a(localFullListGroupAppEntity.troopAIOAppInfos))
+        {
+          localazjs.a = localFullListGroupAppEntity.troopAIOAppInfos;
+          QLog.i("FullListGroupAppsDbHelper", 1, "buildFullListFromDb: invoked. " + localazjs.a);
+          return;
+        }
+      }
     }
-    a(paramBundle.getLong("KEY_GROUP_UIN"));
+    localaukp.a();
+  }
+  
+  void a(FullListGroupAppEntity paramFullListGroupAppEntity)
+  {
+    ThreadManagerV2.excute(new FullListGroupAppsDbHelper.1(this, paramFullListGroupAppEntity), 32, null, false);
   }
 }
 

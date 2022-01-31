@@ -1,7 +1,6 @@
-public class auve
+public abstract interface auve
 {
-  public int a;
-  public auvd a;
+  public abstract void a(int paramInt, String paramString);
 }
 
 

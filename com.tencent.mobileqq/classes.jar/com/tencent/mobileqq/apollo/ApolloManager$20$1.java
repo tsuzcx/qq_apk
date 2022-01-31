@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import aise;
+import airx;
+import aisc;
 import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
 
 public class ApolloManager$20$1
   implements Runnable
 {
-  public ApolloManager$20$1(aise paramaise, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
+  public ApolloManager$20$1(aisc paramaisc, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aise.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Aisc.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

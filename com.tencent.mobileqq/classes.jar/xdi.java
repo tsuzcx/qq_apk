@@ -1,18 +1,8 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-
-class xdi
-  implements DialogInterface.OnShowListener
+public abstract interface xdi
 {
-  xdi(xde paramxde) {}
+  public abstract void a();
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
-  }
+  public abstract void b();
 }
 
 

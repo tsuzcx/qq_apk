@@ -1,8 +1,21 @@
-public abstract interface asbw
+import android.util.Log;
+
+class asbw
+  implements asby
 {
-  public abstract void a(int paramInt);
+  asbw(asbv paramasbv) {}
   
-  public abstract void b(int paramInt);
+  public void a(int paramInt)
+  {
+    this.a.a = true;
+    this.a.c(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
+  }
 }
 
 

@@ -1,141 +1,190 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AuthorizationItem;
+import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class bfpm
-  extends bfol
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  private final List<bfpn> jdField_a_of_type_JavaUtilList;
-  private yzc jdField_a_of_type_Yzc;
-  private final yzd jdField_a_of_type_Yzd;
+  Context jdField_a_of_type_AndroidContentContext;
+  final List<bfpo> jdField_a_of_type_JavaUtilList;
   
-  public bfpm(Activity paramActivity, yzd paramyzd, yzc paramyzc, List<bfpn> paramList)
+  public bfpm(Context paramContext)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Yzd = paramyzd;
-    this.jdField_a_of_type_Yzc = paramyzc;
-    f();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private AuthorizationItem a(bfpn parambfpn, int paramInt, String paramString)
+  public static bfpc a(Context paramContext, bfpm parambfpm, AdapterView.OnItemClickListener paramOnItemClickListener, DialogInterface.OnDismissListener paramOnDismissListener, bfph parambfph, boolean paramBoolean)
   {
-    return new AuthorizationItem(getContext(), paramString, parambfpn, paramInt);
-  }
-  
-  private void f()
-  {
-    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131558977, null);
-    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131368324);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if (paramContext != null)
     {
-      int k = this.jdField_a_of_type_JavaUtilList.size();
-      int j = 0;
-      if (j < k)
+      if (parambfpm == null) {
+        return null;
+      }
+      bfpc localbfpc = (bfpc)bfpp.a(paramContext, null);
+      paramContext = (GridView)View.inflate(paramContext, 2131562573, null);
+      paramContext.setBackgroundResource(2130837572);
+      paramContext.setAdapter(parambfpm);
+      paramContext.setOnItemClickListener(paramOnItemClickListener);
+      localbfpc.a(paramContext);
+      localbfpc.c(2131690596);
+      if (paramBoolean) {
+        localbfpc.setOnDismissListener(new bfpn(paramOnDismissListener));
+      }
+      for (;;)
       {
-        int i;
-        if ((bfpn)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
-        {
-          if (k != 1) {
-            break label145;
-          }
-          i = 3;
-        }
-        for (;;)
-        {
-          localLinearLayout2.addView(a((bfpn)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_Yzd.a(((bfpn)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
-          j += 1;
-          break;
-          label145:
-          if (k == 2)
-          {
-            if (j == 0) {
-              i = 0;
-            } else {
-              i = 2;
-            }
-          }
-          else if (j == 0) {
-            i = 0;
-          } else if (j < k - 1) {
-            i = 1;
-          } else {
-            i = 2;
-          }
-        }
+        localbfpc.a(parambfph);
+        return localbfpc;
+        localbfpc.setOnDismissListener(paramOnDismissListener);
       }
     }
-    a(localLinearLayout1);
-    localLinearLayout1.findViewById(2131363479).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131363504).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131368601).setOnClickListener(this);
+    return null;
   }
   
-  public void onClick(View paramView)
+  public static bfpo a(int paramInt)
   {
-    Object localObject;
-    switch (paramView.getId())
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt <= 7) {
+        localObject1 = new bfpo();
+      }
+    }
+    switch (paramInt)
     {
     default: 
-      return;
-    case 2131368601: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionSheet", 2, "onClick to show authorize description");
-      }
-      paramView = new bfpj(getContext());
-      localObject = paramView.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).setWindowAnimations(2131755010);
-      }
-      paramView.show();
-      return;
-    case 2131363479: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
-      }
-      if (this.jdField_a_of_type_Yzc != null)
-      {
-        this.jdField_a_of_type_Yzd.a = 2;
-        this.jdField_a_of_type_Yzc.a(this.jdField_a_of_type_Yzd);
-      }
-      dismiss();
-      return;
+      return localObject1;
+    case 3: 
+      ((bfpo)localObject1).a = 3;
+      ((bfpo)localObject1).b = 2131719511;
+      ((bfpo)localObject1).c = 2130838752;
+      ((bfpo)localObject1).d = 2131720065;
+      return localObject1;
+    case 2: 
+      ((bfpo)localObject1).a = 2;
+      ((bfpo)localObject1).b = 2131719522;
+      ((bfpo)localObject1).c = 2130838758;
+      ((bfpo)localObject1).d = 2131720082;
+      return localObject1;
+    case 0: 
+      ((bfpo)localObject1).a = 0;
+      ((bfpo)localObject1).b = 2131692796;
+      ((bfpo)localObject1).c = 2130838754;
+      ((bfpo)localObject1).d = 2131720074;
+      return localObject1;
+    case 1: 
+      ((bfpo)localObject1).a = 1;
+      ((bfpo)localObject1).b = 2131719516;
+      ((bfpo)localObject1).c = 2130838755;
+      ((bfpo)localObject1).d = 2131720075;
+      return localObject1;
+    case 5: 
+      ((bfpo)localObject1).a = 5;
+      ((bfpo)localObject1).b = 2131717202;
+      ((bfpo)localObject1).c = 2130841940;
+      ((bfpo)localObject1).d = 2131692226;
+      return localObject1;
+    case 4: 
+      ((bfpo)localObject1).a = 4;
+      ((bfpo)localObject1).c = 2130838750;
+      ((bfpo)localObject1).b = 2131719499;
+      ((bfpo)localObject1).d = 2131720058;
+      return localObject1;
+    case 6: 
+      ((bfpo)localObject1).a = 4;
+      ((bfpo)localObject1).c = 2130838750;
+      ((bfpo)localObject1).b = 2131719497;
+      ((bfpo)localObject1).d = 2131720064;
+      return localObject1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
-    }
-    paramView = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    ((bfpo)localObject1).a = 7;
+    ((bfpo)localObject1).c = 2130838751;
+    ((bfpo)localObject1).b = 2131719486;
+    ((bfpo)localObject1).d = 2131720061;
+    return localObject1;
+  }
+  
+  public void a(List<bfpo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject = (bfpn)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Yzd.a(((bfpn)localObject).b)))
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramView.edit().putBoolean(((bfpn)localObject).b, true).apply();
-        if (QLog.isColorLevel()) {
-          QLog.d("ActionSheet", 2, "record " + ((bfpn)localObject).b + " authorize");
+        bfpo localbfpo = (bfpo)paramList.next();
+        if ((localbfpo != null) && (localbfpo.a >= 0)) {
+          this.jdField_a_of_type_JavaUtilList.add(localbfpo);
         }
       }
-      i += 1;
     }
-    if (this.jdField_a_of_type_Yzc != null)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    bfpo localbfpo = (bfpo)getItem(paramInt);
+    if (localbfpo != null) {
+      return localbfpo.a;
+    }
+    return -1L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bfpo localbfpo = (bfpo)getItem(paramInt);
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562537, null);
+    }
+    paramView = (ImageView)paramViewGroup.findViewById(2131362667);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131362679);
+    if (localbfpo != null)
     {
-      this.jdField_a_of_type_Yzd.a = 0;
-      this.jdField_a_of_type_Yzc.a(this.jdField_a_of_type_Yzd);
+      paramView.setImageResource(localbfpo.c);
+      localTextView.setText(localbfpo.b);
     }
-    dismiss();
+    for (;;)
+    {
+      if (AppSetting.d)
+      {
+        if (localbfpo == null) {
+          break;
+        }
+        paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(localbfpo.d));
+      }
+      return paramViewGroup;
+      paramView.setImageResource(2130847289);
+      localTextView.setText("");
+    }
+    paramViewGroup.setContentDescription("");
+    return paramViewGroup;
   }
 }
 

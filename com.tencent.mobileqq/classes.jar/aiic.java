@@ -1,17 +1,23 @@
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiic
-  implements aptu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public aiic(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.e = this.a.a.getWidth();
+    this.a.f = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
-  
-  public void b() {}
 }
 
 

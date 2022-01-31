@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class atrk
   implements DialogInterface.OnClickListener
 {
-  atrk(atqu paramatqu) {}
+  atrk(atqw paramatqw) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

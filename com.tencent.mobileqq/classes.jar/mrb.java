@@ -1,141 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.util.Pair;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
 public class mrb
 {
-  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
+  public static Drawable a(Resources paramResources, int paramInt)
   {
-    int j = 1;
-    switch (paramInt2)
+    return a(paramResources, paramInt, 2131165905, true, 2130841489, 2131165908, null);
+  }
+  
+  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
+  {
+    Drawable localDrawable = paramResources.getDrawable(paramInt1);
+    Object localObject;
+    if (paramBoolean)
     {
-    default: 
-      return null;
-    }
-    for (int i = 1;; i = 2)
-    {
-      paramInt2 = j;
-      switch (paramInt1)
-      {
-      default: 
-        return null;
+      localObject = mtp.a(paramResources, paramInt1, paramInt2);
+      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      localDrawable = paramResources.getDrawable(paramInt3);
+      paramResources = mtp.a(paramResources, paramInt3, paramInt4);
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      if (paramDrawable != null) {
+        break label138;
       }
-    }
-    paramInt2 = 2;
-    for (;;)
-    {
-      return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
-      paramInt2 = 3;
-      continue;
-      paramInt2 = 4;
-      continue;
-      paramInt2 = 5;
-      continue;
-      paramInt2 = 7;
-    }
-  }
-  
-  public static void a()
-  {
-    mqz.b("0X800A2B9");
-  }
-  
-  public static void a(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    case 4: 
-      str = "0X800A2BF";
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
     }
     for (;;)
     {
-      mqz.b(str);
-      return;
-      str = "0X800A2C1";
-      continue;
-      str = "0X800A2BE";
-      continue;
-      str = "0X800A2C3";
+      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      return paramResources;
+      localObject = localDrawable;
+      break;
+      label138:
+      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
+      paramResources.setLayerInset(0, 0, 0, 0, 0);
+      paramResources.setLayerInset(1, 0, 0, 0, 0);
+      paramResources.setLayerInset(2, 0, 0, 0, 0);
     }
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
   {
-    Pair localPair = a(paramInt1, paramInt2);
-    if (localPair == null) {
-      return;
-    }
-    axqw.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
+    return a(paramResources, paramInt, 2131165905, paramBoolean, 2130841489, 2131165908, paramDrawable);
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    String str;
-    switch (paramInt3)
-    {
-    default: 
-      return;
-    case 1: 
-      str = "0X800A3E3";
-    }
-    for (;;)
-    {
-      Object localObject = a(paramInt1, paramInt2);
-      if (localObject == null) {
-        break;
-      }
-      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
-      localObject = String.valueOf(((Pair)localObject).second);
-      if (!TextUtils.isEmpty(paramString)) {
-        localObject = paramString;
-      }
-      axqw.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
-      return;
-      str = "0X800A3E1";
-      continue;
-      str = "0X800A2BC";
-    }
+    return a(paramResources, paramInt, 2131165905, paramBoolean, 2130841489, 2131165908, null);
   }
   
-  public static void a(int paramInt, String paramString)
+  public static Drawable b(Resources paramResources, int paramInt)
   {
-    if (paramInt == 1) {
-      axqw.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
-    }
-  }
-  
-  public static void b()
-  {
-    mqz.b("0X800A2BA");
-  }
-  
-  public static void c()
-  {
-    mqz.b("0X800A2BD");
-  }
-  
-  public static void d()
-  {
-    mqz.b("0X800A2C0");
-  }
-  
-  public static void e()
-  {
-    mqz.b("0X800A2C2");
-  }
-  
-  public static void f()
-  {
-    mqz.b("0X800A3DB");
-  }
-  
-  public static void g()
-  {
-    mqz.b("0X800A3DC");
+    Drawable localDrawable = paramResources.getDrawable(paramInt);
+    paramResources = mtp.a(paramResources, paramInt, 2131165905);
+    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    return paramResources;
   }
 }
 

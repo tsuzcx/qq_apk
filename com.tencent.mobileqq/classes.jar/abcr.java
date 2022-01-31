@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class abcr
-  extends BroadcastReceiver
+class abcr
+  implements View.OnClickListener
 {
-  public abcr(ForwardRecentActivity paramForwardRecentActivity) {}
+  abcr(abcq paramabcq) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (!this.a.isFinishing()) {
-      this.a.finish();
-    }
+    paramView = paramView.getTag();
+    abcq.a(this.a, (ailv)paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcr
  * JD-Core Version:    0.7.0.1
  */

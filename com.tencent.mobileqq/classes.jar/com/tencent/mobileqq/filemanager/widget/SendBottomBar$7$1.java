@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import apyg;
+import apyi;
 
 public class SendBottomBar$7$1
   implements Runnable
 {
-  public SendBottomBar$7$1(apyg paramapyg) {}
+  public SendBottomBar$7$1(apyi paramapyi) {}
   
   public void run()
   {

@@ -1,48 +1,40 @@
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
+import com.tencent.gdtad.aditem.GdtAd;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class yxm
-  implements yxh
+public class yxm
+  implements yxe
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    Object localObject = null;
-    if (paramywn != null) {}
-    for (paramVarArgs = paramywn.a(); (paramywn == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      yxs.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("netType", yxu.a(paramVarArgs));
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      yxp.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
+      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
+      ysu.a().a(paramVarArgs);
+      paramywk.callJs(paramString, null);
+      if (paramywk != null)
+      {
+        paramString = paramywk.a();
+        if (paramywk == null) {
+          break label99;
+        }
+      }
+      label99:
+      for (paramywk = paramywk.a();; paramywk = null)
+      {
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramywk, paramVarArgs);
+        return true;
+        paramString = null;
+        break;
+      }
+      return true;
     }
-    catch (JSONException localJSONException)
+    catch (Throwable paramywk)
     {
-      try
-      {
-        for (;;)
-        {
-          paramywn.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywn != null) {
-            paramString = paramywn.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
-          return true;
-          localJSONException = localJSONException;
-          yxs.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          yxs.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
+      paramywk.printStackTrace();
     }
   }
 }

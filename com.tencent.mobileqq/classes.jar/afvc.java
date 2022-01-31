@@ -1,22 +1,68 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 class afvc
-  implements DialogInterface.OnClickListener
+  implements aabi
 {
-  afvc(afur paramafur, boolean paramBoolean, String paramString) {}
+  afvc(afup paramafup, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete()
   {
-    axqw.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, afur.a(this.jdField_a_of_type_Afur), "", "", "");
-    if (this.jdField_a_of_type_Boolean) {
-      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onComplete");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afur.f();
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
+    }
+    if ((afup.a(this.jdField_a_of_type_Afup).isFinishing()) || (this.jdField_a_of_type_Afup.b)) {
       return;
-      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_Afup.c();
+    if (afup.a(this.jdField_a_of_type_Afup) != null) {
+      afup.a(this.jdField_a_of_type_Afup).removeCallbacks(afup.a(this.jdField_a_of_type_Afup));
+    }
+    this.jdField_a_of_type_Afup.a(ajya.a(2131713610), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
+    }
+    if ((afup.a(this.jdField_a_of_type_Afup).isFinishing()) || (this.jdField_a_of_type_Afup.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Afup.c();
+    if (afup.a(this.jdField_a_of_type_Afup) != null) {
+      afup.a(this.jdField_a_of_type_Afup).removeCallbacks(afup.a(this.jdField_a_of_type_Afup));
+    }
+    this.jdField_a_of_type_Afup.a(ajya.a(2131713611), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onSuccess");
+    }
+    if ((afup.a(this.jdField_a_of_type_Afup).isFinishing()) || (this.jdField_a_of_type_Afup.b)) {
+      return;
+    }
+    if (afup.a(this.jdField_a_of_type_Afup) != null) {
+      afup.a(this.jdField_a_of_type_Afup).removeCallbacks(afup.a(this.jdField_a_of_type_Afup));
+    }
+    afup.b(this.jdField_a_of_type_Afup);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onTrigger");
     }
   }
 }

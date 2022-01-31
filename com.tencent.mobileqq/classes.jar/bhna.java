@@ -1,385 +1,47 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
-import com.tencent.ditto.utils.ClassLoadUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.stickynote.QzoneStickyNoteManager.1;
-import cooperation.qzone.stickynote.QzoneStickyNoteManager.2;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-public class bhna
-  implements bfob
+public abstract class bhna
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private Class jdField_a_of_type_JavaLangClass;
-  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
-  private Object jdField_b_of_type_JavaLangObject;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d = true;
+  protected String a;
+  protected boolean a;
   
-  private int a()
+  public bhna(String paramString, boolean paramBoolean)
   {
-    return this.jdField_c_of_type_Int - 2;
+    a(paramString);
+    a(paramBoolean);
   }
   
-  private Class a()
+  public abstract String a();
+  
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangClass != null) {
-      return this.jdField_a_of_type_JavaLangClass;
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaLangClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter");
-      return this.jdField_a_of_type_JavaLangClass;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.w("QzoneStickyNoteManager", 4, "getConverterClass failed: " + localException.getMessage());
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private Object a()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_JavaLangObject != null) {
-      return this.jdField_b_of_type_JavaLangObject;
-    }
-    try
-    {
-      Class localClass = ClassLoadUtils.load(this.jdField_a_of_type_JavaLangClassLoader, "com.qzone.homepage.ui.activity.FriendProfileCardAdapterConverter$LoadCallback");
-      ClassLoader localClassLoader = this.jdField_a_of_type_JavaLangClassLoader;
-      bhnb localbhnb = new bhnb(this);
-      this.jdField_b_of_type_JavaLangObject = Proxy.newProxyInstance(localClassLoader, new Class[] { localClass }, localbhnb);
-      return this.jdField_b_of_type_JavaLangObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.w("QzoneStickyNoteManager", 1, "getLocalCallback failed: " + localThrowable.getMessage());
-      }
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private Object a(ListView paramListView)
+  public boolean a()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangClassLoader == null) {
-      return null;
-    }
-    try
-    {
-      Constructor localConstructor = a().getConstructor(new Class[] { Activity.class, ListView.class, Long.TYPE, Boolean.TYPE });
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin())) {}
-      for (;;)
-      {
-        paramListView = localConstructor.newInstance(new Object[] { this.jdField_a_of_type_AndroidAppActivity, paramListView, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(bool) });
-        return paramListView;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramListView)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "newConverter failed: " + paramListView.getMessage());
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  private void a(int paramInt, boolean paramBoolean)
+  public String b()
   {
-    QZLog.d("QzoneStickyNoteManager", 4, "onLoad " + this.jdField_a_of_type_Int + ", hasMore: " + paramBoolean);
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_Int = 0;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    this.d = paramBoolean;
+    return null;
   }
   
-  private void a(ListAdapter paramListAdapter)
+  public String c()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null) && (paramListAdapter != null))
-    {
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramListAdapter);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      this.jdField_b_of_type_Boolean = true;
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  private void a(AbsListView paramAbsListView, int paramInt)
+  public String d()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    if (a()) {
+      return a();
     }
-    try
-    {
-      a().getDeclaredMethod("onScrollStateChanged", new Class[] { AbsListView.class, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt) });
-      return;
-    }
-    catch (Exception paramAbsListView)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "onScrollStateChangedProxy failed: " + paramAbsListView.getMessage());
-    }
-  }
-  
-  private void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    try
-    {
-      a().getDeclaredMethod("onScroll", new Class[] { AbsListView.class, Integer.TYPE, Integer.TYPE, Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramAbsListView, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      return;
-    }
-    catch (Exception paramAbsListView)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "onScrollProxy failed: " + paramAbsListView.getMessage());
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    try
-    {
-      a().getDeclaredMethod("onLifecycle", new Class[] { String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "onLifecycle failed: " + paramString.getMessage());
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    QZLog.d("QzoneStickyNoteManager", 4, "onLoadFinish " + paramBoolean);
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  private void d()
-  {
-    QLog.i("QzoneStickyNoteManager", 1, "tryLoadMore");
-    if ((this.d) && (this.jdField_a_of_type_Int != 2) && (this.jdField_b_of_type_Int == 0))
-    {
-      this.jdField_a_of_type_Int = 2;
-      e();
-    }
-  }
-  
-  private void e()
-  {
-    QLog.i("QzoneStickyNoteManager", 1, "loadMore");
-    Object localObject = a();
-    if (localObject == null)
-    {
-      QLog.e("QzoneStickyNoteManager", 1, "loadMore exit due to null callback");
-      return;
-    }
-    try
-    {
-      a().getDeclaredMethod("loadMore", new Class[] { Object.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { localObject });
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneStickyNoteManager", 1, "loadMore failed: " + localException.getMessage());
-    }
-  }
-  
-  public BaseAdapter a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
-    }
-    if (this.jdField_a_of_type_JavaLangObject == null) {
-      return null;
-    }
-    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter = ((BaseAdapter)a().getDeclaredMethod("getAdapter", new Class[0]).invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]));
-      return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.w("QzoneStickyNoteManager", 4, "getAdapter failed: " + localException.getMessage());
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentWidgetListView != null)) {
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(new bfxg(null));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    QZLog.d("QzoneStickyNoteManager", 4, "onActivityResult " + paramInt1 + ", " + paramInt2 + ", " + paramIntent);
-    try
-    {
-      a().getDeclaredMethod("onActivityResult", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramIntent });
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "onActivityResult failed: " + paramIntent.getMessage());
-    }
-  }
-  
-  public void a(Activity paramActivity, QQAppInterface paramQQAppInterface, Card paramCard, ListView paramListView, View paramView)
-  {
-    if ((paramActivity == null) || (paramQQAppInterface == null)) {
-      QLog.w("QzoneStickyNoteManager", 1, "init failed due to null parameter");
-    }
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-        this.jdField_a_of_type_AndroidViewView = paramView;
-      } while (!bhbh.b());
-      this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
-      paramView = new StringBuilder().append("tryLoadQzonePlugin: loader = ");
-      if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        QLog.i("QzoneStickyNoteManager", 1, bool1);
-        if (this.jdField_a_of_type_JavaLangClassLoader != null) {
-          break;
-        }
-        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QzoneStickyNoteManager.1(this, paramActivity, paramQQAppInterface, paramListView, paramCard));
-        return;
-      }
-      bool1 = bhbh.a(paramActivity, paramQQAppInterface);
-      bool2 = bhbh.b(paramActivity, paramQQAppInterface);
-    } while ((!bool1) || (!bool2));
-    a(paramQQAppInterface, paramActivity, paramListView, paramCard);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, ListView paramListView, Card paramCard)
-  {
-    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramCard == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        l = Long.parseLong(paramCard.uin);
-        QZLog.i("QzoneStickyNoteManager", "attach: " + this.jdField_a_of_type_Boolean + ", " + l);
-        if ((l <= 0L) || (this.jdField_a_of_type_Boolean)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_JavaLangClassLoader == null) {
-          this.jdField_a_of_type_JavaLangClassLoader = QzonePluginProxyActivity.a();
-        }
-        if (paramQQAppInterface != bhbh.a()) {
-          bhbh.a(paramActivity, paramQQAppInterface);
-        }
-        this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_AndroidOsHandler.post(new QzoneStickyNoteManager.2(this, paramListView, paramCard));
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          long l = 0L;
-        }
-      }
-    }
-  }
-  
-  public void a(Card paramCard)
-  {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (this.jdField_a_of_type_JavaLangClassLoader == null) {
-      return;
-    }
-    try
-    {
-      a().getDeclaredMethod("updateFriendProfileCard", new Class[] { Card.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramCard });
-      return;
-    }
-    catch (Exception paramCard)
-    {
-      QLog.w("QzoneStickyNoteManager", 4, "updateFriendProfileCard failed: " + paramCard.getMessage());
-    }
-  }
-  
-  public void b()
-  {
-    a("onResume");
-  }
-  
-  public void c()
-  {
-    a("onDestroy");
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangObject = null;
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_c_of_type_Int = paramInt3;
-    a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    if (paramInt == 0)
-    {
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-        this.jdField_c_of_type_Boolean = false;
-      }
-      if (paramAbsListView.getLastVisiblePosition() >= a()) {
-        d();
-      }
-    }
-    a(paramAbsListView, paramInt);
+    return null;
   }
 }
 

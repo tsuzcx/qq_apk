@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.music;
 
-import ayry;
 import aysa;
-import aysw;
-import aysx;
-import bfkp;
+import aysc;
+import aysy;
+import aysz;
+import bflg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -15,9 +15,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 abstract class QIMMusicConfigManager$LoadMusicStepTask
-  implements aysa, Runnable
+  implements aysc, Runnable
 {
-  final ayry jdField_a_of_type_Ayry;
+  final aysa jdField_a_of_type_Aysa;
   final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   final QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
   final String b;
@@ -29,7 +29,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.a();
     this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     this.c = paramQIMMusicConfigManager.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Ayry = paramQIMMusicConfigManager.jdField_a_of_type_Ayry;
+    this.jdField_a_of_type_Aysa = paramQIMMusicConfigManager.jdField_a_of_type_Aysa;
   }
   
   String a(long paramLong)
@@ -37,7 +37,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = bfkp.a((String)localObject).toLowerCase();
+    String str = bflg.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
       QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
@@ -89,9 +89,9 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     ThreadManager.executeOnSubThread(this);
   }
   
-  public void onResp(aysx paramaysx) {}
+  public void onResp(aysz paramaysz) {}
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

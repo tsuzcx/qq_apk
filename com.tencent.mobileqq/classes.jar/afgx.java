@@ -1,20 +1,22 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class afgx
+  implements afdr
 {
-  public int a;
-  public AccountSearchPb.hotwordrecord a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public List<AccountSearchPb.record> b;
-  public boolean b;
-  public int c;
-  public List<AccountSearchPb.ResultItem> c;
+  public afgx(TroopView paramTroopView) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
+    }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    TroopView.b(this.a, paramInt);
+    TroopView.a(this.a).setCurrentItem(paramInt, false);
+  }
 }
 
 

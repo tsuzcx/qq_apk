@@ -1,19 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.Comparator;
+import java.util.HashMap;
 
-public class aimn
-  extends ailr
+class aimn
+  implements Comparator<auko>
 {
-  public View a;
-  public TextView a;
-  public boolean a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public TextView d;
+  aimn(aimm paramaimm, HashMap paramHashMap) {}
+  
+  public int a(auko paramauko1, auko paramauko2)
+  {
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramauko1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramauko2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
+    }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

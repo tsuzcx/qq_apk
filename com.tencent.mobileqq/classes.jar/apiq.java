@@ -1,20 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.link.LinkByWeiyunFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-final class apiq
-  implements View.OnClickListener
+class apiq
+  implements aptw
 {
-  apiq(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  apiq(apip paramapip) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      LinkByWeiyunFragment.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, true);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    apug.a(this.a.jdField_a_of_type_JavaLangString);
+    aptx.d(BaseActivity.sTopActivity.getString(2131692830));
+    if (this.a.jdField_a_of_type_Apkq != null) {
+      this.a.jdField_a_of_type_Apkq.a(1);
+    }
+    if (this.a.jdField_a_of_type_Apkq.b())
+    {
+      long l = this.a.jdField_a_of_type_Apkq.a().b();
+      apug.a(this.a.jdField_a_of_type_Apkq.a(), l);
     }
   }
+  
+  public void b() {}
 }
 
 

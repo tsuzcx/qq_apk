@@ -1,37 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity.8;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.widget.XListView;
 
 public class bczg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bczg(BindGroupConfirmActivity.8 param8) {}
+  public bczg(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    try
-    {
-      aqfb.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      BindGroupConfirmActivity.a(this.a.this$0, -1);
-      BindGroupConfirmActivity.a(this.a.this$0);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    AuthorityControlFragment.a(this.a).c();
+    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690284);
+    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
+    this.a.rightViewText.setEnabled(true);
+    this.a.setLeftButton("", null);
+    this.a.leftView.setVisibility(0);
+    AuthorityControlFragment.a(this.a).setText(2131690298);
+    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
   }
 }
 

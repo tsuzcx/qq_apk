@@ -1,39 +1,56 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.util.Property;
-import android.widget.ImageView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class wrx
-  extends Property<ImageView, Matrix>
+public class wrx
 {
-  wrx(Class paramClass, String paramString)
+  int a;
+  public String a;
+  int jdField_b_of_type_Int;
+  private final String jdField_b_of_type_JavaLangString = "image_url";
+  private final String c = "image_width";
+  private final String d = "image_height";
+  
+  public wrx() {}
+  
+  public wrx(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramClass, paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public Matrix a(ImageView paramImageView)
+  public String a()
   {
-    return null;
-  }
-  
-  public void a(ImageView paramImageView, Matrix paramMatrix)
-  {
-    Drawable localDrawable = paramImageView.getDrawable();
-    if (localDrawable == null) {
-      return;
-    }
-    if (paramMatrix == null) {
-      localDrawable.setBounds(0, 0, paramImageView.getWidth(), paramImageView.getHeight());
-    }
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramImageView.invalidate();
-      return;
-      localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramImageView.getImageMatrix() == null) {
-        paramImageView.setImageMatrix(new Matrix());
+      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
+      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
-      paramImageView.setImageMatrix(paramMatrix);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
+      this.jdField_a_of_type_Int = paramString.getInt("image_width");
+      this.jdField_b_of_type_Int = paramString.getInt("image_height");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

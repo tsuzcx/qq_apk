@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aecd
-  implements DialogInterface.OnClickListener
+public class aecd
+  extends hl
 {
-  aecd(aebz paramaebz, MessageForText paramMessageForText) {}
+  aecd(aebx paramaebx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    aaod.a(this.jdField_a_of_type_Aebz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aebz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
+    if ((!paramBoolean) && (paramChatMessage != null))
+    {
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.c();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
+      return;
+    }
   }
 }
 

@@ -1,24 +1,60 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.util.SparseBooleanArray;
+import android.view.View;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class vnp
-  implements Animation.AnimationListener
+  implements vmn
 {
-  public vnp(DoodleLayout paramDoodleLayout) {}
+  private vnp(DoodleLayout paramDoodleLayout) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Vnq != null) {
-      this.a.jdField_a_of_type_Vnq.a(null);
+    this.a.a().c();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a().a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean, vlp paramvlp)
+  {
+    vla localvla = this.a.a();
+    if (paramBoolean)
+    {
+      localvla.a(true);
+      switch (this.a.b)
+      {
+      }
+      for (;;)
+      {
+        this.a.c(3);
+        return;
+        this.a.a().b(false);
+      }
+    }
+    if (paramvlp.jdField_a_of_type_Int != -1) {
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
+    }
+    for (;;)
+    {
+      localvla.a(paramvlp);
+      localvla.a(false);
+      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+      this.a.c(0);
+      this.a.d(0);
+      this.a.jdField_a_of_type_Vno.i();
+      return;
+      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Vno != null) {
+      this.a.jdField_a_of_type_Vno.b(3, paramInt);
+    }
+  }
 }
 
 

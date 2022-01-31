@@ -1,54 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.RejectedExecutionException;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.VipIPSiteInfo;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class anxm
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  anxm(anxf paramanxf) {}
+  anxm(anxk paramanxk, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if ((paramThrowable instanceof RejectedExecutionException)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
-      }
-    }
-    label41:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label41;
-          do
-          {
-            return;
-          } while (paramURLDrawable == null);
-          paramThrowable = paramURLDrawable.getFileInLocal();
-          if ((paramThrowable != null) && (paramThrowable.exists())) {
-            paramThrowable.delete();
-          }
-          paramThrowable = paramURLDrawable.getTag();
-        } while (!(paramThrowable instanceof Integer));
-        i = ((Integer)paramThrowable).intValue();
-      } while (i >= 3);
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-    } while (!QLog.isColorLevel());
-    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
+    paramView = new Intent(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

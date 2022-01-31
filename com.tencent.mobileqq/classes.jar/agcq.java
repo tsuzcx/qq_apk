@@ -1,17 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class agcq
-  extends atzm
+  implements DialogInterface.OnClickListener
 {
-  agcq(agch paramagch) {}
+  agcq(agcf paramagcf) {}
   
-  protected void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
-    }
+    this.a.a.getIntent().removeExtra("if_check_account_same");
+    this.a.b.dismiss();
   }
 }
 

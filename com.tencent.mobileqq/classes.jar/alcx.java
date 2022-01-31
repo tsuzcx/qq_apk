@@ -1,10 +1,10 @@
 public abstract interface alcx
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void b(int paramInt);
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public abstract void c();
   
-  public abstract void j_(int paramInt);
+  public abstract void d();
 }
 
 

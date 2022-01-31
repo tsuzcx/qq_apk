@@ -1,24 +1,24 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.TextView;
-import bjtg;
+import bjtx;
 
 public class EditProviderPart$4
   implements Runnable
 {
-  public EditProviderPart$4(bjtg parambjtg, boolean paramBoolean) {}
+  public EditProviderPart$4(bjtx parambjtx, boolean paramBoolean) {}
   
   public void run()
   {
-    if (bjtg.a(this.this$0) == null) {
+    if (bjtx.a(this.this$0) == null) {
       return;
     }
     if (this.a)
     {
-      bjtg.a(this.this$0).setVisibility(0);
+      bjtx.a(this.this$0).setVisibility(0);
       return;
     }
-    bjtg.a(this.this$0).setVisibility(8);
+    bjtx.a(this.this$0).setVisibility(8);
   }
 }
 

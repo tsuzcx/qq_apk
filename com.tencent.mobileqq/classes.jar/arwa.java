@@ -1,16 +1,15 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.8;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
 
 public class arwa
   implements DialogInterface.OnClickListener
 {
-  public arwa(LocationDialogUtil.8 param8) {}
+  public arwa(LocationDialogUtil.6 param6) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.finish();
+    arvm.a(this.a.b, "0X800A76A");
   }
 }
 

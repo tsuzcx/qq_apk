@@ -1,77 +1,226 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ajcl
 {
-  public int a;
-  public long a;
-  public String a;
-  public volatile boolean a;
-  public volatile int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "-1";
-  public String g;
+  private int jdField_a_of_type_Int = -1;
+  private CopyOnWriteArrayList<ajck> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   
-  public ajcl()
+  public int a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "0";
+    return this.jdField_a_of_type_Int;
   }
   
-  public String a()
+  public ajck a(int paramInt)
   {
-    Object localObject = new JSONObject();
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      try
-      {
-        String str = this.jdField_c_of_type_JavaLangString + "?amount=" + this.jdField_d_of_type_JavaLangString + "&state=" + this.f + "&goalScore=" + this.jdField_a_of_type_Int + "&curScore=" + this.jdField_d_of_type_Int + "&nickName=" + this.e;
-        ((JSONObject)localObject).put("url", str);
-        ((JSONObject)localObject).put("ret", this.f);
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameLauncher", 2, "url:" + str + ",state:" + this.f);
-        }
-        localObject = ((JSONObject)localObject).toString();
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
+      localObject = null;
     }
-    for (;;)
+    ajck localajck;
+    do
     {
-      return null;
-      QLog.e("cmgame_process.CmGameLauncher", 1, "[getResult] baseUrl is null");
-    }
+      return localObject;
+      localajck = b(paramInt);
+      localObject = localajck;
+    } while (localajck != null);
+    Object localObject = new ajck(paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, localObject);
+    QLog.i("cmgame_process.CmGameLifeCycleMgr", 1, "[add] size of cycles:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    return localObject;
   }
   
-  public String toString()
+  public ajck a(int paramInt1, int paramInt2)
   {
-    StringBuffer localStringBuffer = new StringBuffer("RedPacketInfo{");
-    localStringBuffer.append("targetScore=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", grabState=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", res='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", needNotifyResult=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", listId='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", url='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", gameId=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", amount='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", nickname='").append(this.e).append('\'');
-    localStringBuffer.append(", endScore=").append(this.jdField_d_of_type_Int);
-    localStringBuffer.append(", state='").append(this.f).append('\'');
-    localStringBuffer.append(", payParam='").append(this.g).append('\'');
-    localStringBuffer.append(", uin=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajck localajck = (ajck)localIterator.next();
+      if ((localajck != null) && (localajck.a() == paramInt1) && (localajck.jdField_a_of_type_Int == paramInt2)) {
+        return localajck;
+      }
+    }
+    return null;
+  }
+  
+  public List<ajck> a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajck localajck = (ajck)localIterator.next();
+      if (localajck != null) {
+        localajck.a();
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((ajac.a(paramInt)) || (ajac.b(paramInt))) {}
+    ajck localajck;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null);
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 1)
+      {
+        QLog.i("cmgame_process.CmGameLifeCycleMgr", 1, "curGame:" + paramInt);
+        this.jdField_a_of_type_Int = paramInt;
+        return;
+      }
+      localajck = b(paramInt);
+    } while ((localajck == null) || (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localajck)));
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, localajck);
+    QLog.i("cmgame_process.CmGameLifeCycleMgr", 1, "curGame:" + paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    int i = 0;
+    Object localObject2 = b(paramInt1);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = localObject2;
+      if (paramInt2 == 1)
+      {
+        localObject2 = a(paramInt1);
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (paramStartCheckParam != null)
+          {
+            ((ajck)localObject2).jdField_a_of_type_Int = paramInt3;
+            if (BaseActivity.sTopActivity == null) {
+              break label133;
+            }
+            ((ajck)localObject2).a(BaseActivity.sTopActivity, paramStartCheckParam);
+            localObject1 = localObject2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("cmgame_process.CmGameLifeCycleMgr", 2, "[handleActLifeCycle] rebuild game");
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+    }
+    if (paramInt2 == 1) {
+      if (localObject1 != null)
+      {
+        if (localObject1.jdField_a_of_type_Int != 0) {
+          break label144;
+        }
+        localObject1.jdField_a_of_type_Int = paramInt3;
+        localObject2 = localObject1;
+        label125:
+        ((ajck)localObject2).a(paramInt1, paramInt2);
+      }
+    }
+    label133:
+    label144:
+    do
+    {
+      do
+      {
+        return;
+        QLog.e("cmgame_process.CmGameLifeCycleMgr", 1, "[handleActLifeCycle] context is null");
+        break;
+        localObject2 = localObject1;
+        if (localObject1.jdField_a_of_type_Int == paramInt3) {
+          break label125;
+        }
+        localObject1.a(paramInt1, 5);
+        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject1);
+        }
+        QLog.e("cmgame_process.CmGameLifeCycleMgr", 1, "handleActLifeCycle remove last same gameId activity");
+        localObject2 = new ajck(paramInt1);
+        ((ajck)localObject2).jdField_a_of_type_Int = paramInt3;
+        if ((BaseActivity.sTopActivity != null) && (paramStartCheckParam != null)) {
+          ((ajck)localObject2).a(BaseActivity.sTopActivity, paramStartCheckParam);
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, localObject2);
+        QLog.i("cmgame_process.CmGameLifeCycleMgr", 1, "handleActLifeCycle [add] size of cycles:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+        break label125;
+        if (paramInt2 == 5)
+        {
+          paramStartCheckParam = a(paramInt1, paramInt3);
+          if (paramStartCheckParam == null)
+          {
+            QLog.e("cmgame_process.CmGameLifeCycleMgr", 1, "findLifeCycleByActivityId not found ON_DESTROY");
+            return;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("cmgame_process.CmGameLifeCycleMgr", 2, "findLifeCycleByActivityId found ON_DESTROY lifeCycle:" + paramStartCheckParam);
+          }
+          paramStartCheckParam.a(paramInt1, paramInt2);
+          paramInt1 = i;
+          if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramStartCheckParam);
+            paramInt1 = i;
+          }
+          for (;;)
+          {
+            if (paramInt1 < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+            {
+              paramStartCheckParam = (ajck)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt1);
+              if ((!ajac.a(paramStartCheckParam.a())) && (!ajac.b(paramStartCheckParam.a())))
+              {
+                paramStartCheckParam.b();
+                this.jdField_a_of_type_Int = paramStartCheckParam.a();
+              }
+            }
+            else
+            {
+              QLog.i("cmgame_process.CmGameLifeCycleMgr", 1, "[remove], size of cycles:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+      } while (localObject1 == null);
+      localObject1.a(paramInt1, paramInt2);
+    } while (paramInt2 != 2);
+    a(paramInt1);
+  }
+  
+  public ajck b(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajck localajck = (ajck)localIterator.next();
+      if ((localajck != null) && (localajck.a() == paramInt)) {
+        return localajck;
+      }
+    }
+    return null;
   }
 }
 

@@ -1,18 +1,6 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
-
-public class bftg
-  extends bfvf
+public abstract interface bftg
 {
-  public int a;
-  
-  public void a(SpannableString paramSpannableString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
-    }
-    paramSpannableString.setSpan(new bftf(this.a), this.b, this.c, 17);
-  }
+  public abstract void a();
 }
 
 

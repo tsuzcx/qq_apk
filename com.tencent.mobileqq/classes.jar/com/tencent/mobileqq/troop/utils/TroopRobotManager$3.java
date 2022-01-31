@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.utils;
 
-import balw;
-import bamf;
+import bamk;
+import bamt;
 import java.lang.ref.WeakReference;
 
 public class TroopRobotManager$3
   implements Runnable
 {
-  public TroopRobotManager$3(balw parambalw) {}
+  public TroopRobotManager$3(bamk parambamk) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bamf localbamf = (bamf)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbamf != null) {
-        localbamf.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
+      bamt localbamt = (bamt)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbamt != null) {
+        localbamt.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
       }
     }
   }

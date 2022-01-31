@@ -1,43 +1,24 @@
-import android.app.Activity;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-
-public class beqh
+class beqh
+  implements beqo
 {
-  private static volatile beqh jdField_a_of_type_Beqh;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  beqh(beqf parambeqf, beqo parambeqo) {}
   
-  public static beqh a()
+  public void a(int paramInt, String paramString, beqm parambeqm)
   {
-    if (jdField_a_of_type_Beqh == null) {}
     try
     {
-      if (jdField_a_of_type_Beqh == null) {
-        jdField_a_of_type_Beqh = new beqh();
+      if (this.jdField_a_of_type_Beqo != null) {
+        this.jdField_a_of_type_Beqo.a(paramInt, paramString, parambeqm);
       }
-      return jdField_a_of_type_Beqh;
+      if (paramInt != 0) {
+        this.jdField_a_of_type_Beqf.a(parambeqm);
+      }
+      return;
     }
-    finally {}
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+    catch (Throwable paramString)
+    {
+      betc.d("minisdk-start_AppRuntimeLoaderManager", "runtime load result exception!", paramString);
+    }
   }
 }
 

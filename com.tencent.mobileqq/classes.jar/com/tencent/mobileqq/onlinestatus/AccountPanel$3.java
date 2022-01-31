@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import auhi;
-import ayao;
+import auhk;
+import ayaq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPanel$3
   implements Runnable
 {
-  public AccountPanel$3(auhi paramauhi) {}
+  public AccountPanel$3(auhk paramauhk) {}
   
   public void run()
   {
-    if ((auhi.a(this.this$0) != null) && (auhi.a(this.this$0) != null))
+    if ((auhk.a(this.this$0) != null) && (auhk.a(this.this$0) != null))
     {
-      auhi.b(this.this$0, true);
-      auhi.c(this.this$0, false);
-      auhi.a(this.this$0, auhi.a(this.this$0));
-      auhi.a(this.this$0).g(false);
-      ayao.a(auhi.a(this.this$0), false);
+      auhk.b(this.this$0, true);
+      auhk.c(this.this$0, false);
+      auhk.a(this.this$0, auhk.a(this.this$0));
+      auhk.a(this.this$0).g(false);
+      ayaq.a(auhk.a(this.this$0), false);
     }
   }
 }

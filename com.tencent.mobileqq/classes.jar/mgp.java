@@ -1,66 +1,72 @@
-import android.app.Activity;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mgp
+  extends lfb
 {
-  public Button a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  public TextView a;
-  public Button b;
-  public TextView b;
+  public mgp(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public mgp()
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetButton = null;
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
-    }
-    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mgq != null)) {
+      this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
     }
   }
   
-  public void a(Activity paramActivity)
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131372404));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372239));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131372238));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372269));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131372262));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131372267));
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mgq != null)) {
+      this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Mgq != null) {
+        this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Mgq != null) {
+        this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mgq != null)) {
+      this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
+    }
+  }
+  
+  protected void c(long paramLong1, long paramLong2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Mgq != null)) {
+      this.a.jdField_a_of_type_Mgq.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
+    }
+    if (paramLong == this.a.jdField_a_of_type_Long) {
+      MultiVideoMembersListviewAvtivity.a(this.a);
+    }
+    super.d(paramLong);
   }
 }
 

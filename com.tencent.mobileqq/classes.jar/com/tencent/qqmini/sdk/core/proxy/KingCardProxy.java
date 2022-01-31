@@ -2,13 +2,13 @@ package com.tencent.qqmini.sdk.core.proxy;
 
 import android.content.Context;
 import android.widget.ImageView;
-import besi;
+import besz;
 
 public abstract interface KingCardProxy
 {
   public abstract ImageView getCapsuleButtonMoreView(Context paramContext);
   
-  public abstract boolean showKingCardTips(besi parambesi, ImageView paramImageView);
+  public abstract boolean showKingCardTips(besz parambesz, ImageView paramImageView);
 }
 
 

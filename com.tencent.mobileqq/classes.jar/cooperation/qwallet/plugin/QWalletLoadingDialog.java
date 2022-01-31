@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ahiu;
+import ahis;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -72,7 +72,7 @@ public class QWalletLoadingDialog
         localObject = getWindow();
         if ((localObject != null) && (ImmersiveUtils.isSupporImmersive() == 1))
         {
-          if ((Build.VERSION.SDK_INT >= 21) && (!ahiu.d()))
+          if ((Build.VERSION.SDK_INT >= 21) && (!ahis.d()))
           {
             if (Build.VERSION.SDK_INT >= 28)
             {
@@ -90,7 +90,7 @@ public class QWalletLoadingDialog
           }
         }
         else {
-          paramContext = LayoutInflater.from(paramContext).inflate(2131561666, null);
+          paramContext = LayoutInflater.from(paramContext).inflate(2131561665, null);
         }
       }
       catch (Throwable paramContext)
@@ -101,7 +101,7 @@ public class QWalletLoadingDialog
       try
       {
         setContentView(paramContext);
-        paramContext.findViewById(2131376451).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
+        paramContext.findViewById(2131376453).getLayoutParams().height = ImmersiveUtils.getStatusBarHeight(this.mContext);
         paramContext.setFitsSystemWindows(false);
         localLayoutParams = ((Window)localObject).getAttributes();
         localLayoutParams.width = -1;
@@ -112,15 +112,15 @@ public class QWalletLoadingDialog
         if (this.mCenterView != null)
         {
           this.mCenterView.setVisibility(0);
-          this.mCenterView.setText(2131717406);
+          this.mCenterView.setText(2131717417);
         }
         paramContext = (TextView)paramContext.findViewById(2131368435);
         if (paramContext != null)
         {
           paramContext.setVisibility(0);
-          paramContext.setText(2131717405);
+          paramContext.setText(2131717416);
         }
-        paramContext = (ImageView)super.findViewById(2131372586);
+        paramContext = (ImageView)super.findViewById(2131372588);
         localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
         ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
         ((TranslateAnimation)localObject).setDuration(800L);

@@ -1,25 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class batc
-  implements View.OnTouchListener
+class batc
+  extends bbwt
 {
-  public batc(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  batc(batb parambatb, File paramFile, batd parambatd) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDone(bbwu parambbwu)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
     }
-    for (;;)
+    if ((parambbwu.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Batb.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Batb.b(BaseApplicationImpl.getContext())))
     {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
+      this.jdField_a_of_type_Batb.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
+      if (this.jdField_a_of_type_Batd != null) {
+        this.jdField_a_of_type_Batd.a(true);
       }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (this.jdField_a_of_type_Batd != null))
+      {
+        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
+        this.jdField_a_of_type_Batd.a(false);
+      }
+      return;
     }
   }
 }

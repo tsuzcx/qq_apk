@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bacy;
-import badc;
-import badf;
-import bbkx;
+import badm;
+import badq;
+import badt;
+import bbll;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.Collections;
@@ -20,11 +20,11 @@ import java.util.List;
 public class TroopHonorView
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = bbkx.a(16.0F);
-  private static final int b = bbkx.a(16.0F);
-  private static final int c = bbkx.a(1.0F);
+  private static final int jdField_a_of_type_Int = bbll.a(16.0F);
+  private static final int b = bbll.a(16.0F);
+  private static final int c = bbll.a(1.0F);
   private String jdField_a_of_type_JavaLangString = "";
-  private List<badc> jdField_a_of_type_JavaUtilList;
+  private List<badq> jdField_a_of_type_JavaUtilList;
   
   public TroopHonorView(Context paramContext)
   {
@@ -52,12 +52,12 @@ public class TroopHonorView
   
   public String a()
   {
-    return bacy.c(this.jdField_a_of_type_JavaUtilList);
+    return badm.c(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void setHonorList(List<badc> paramList)
+  public void setHonorList(List<badq> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(bacy.b(paramList))) {}
+    if (this.jdField_a_of_type_JavaLangString.equals(badm.b(paramList))) {}
     for (;;)
     {
       return;
@@ -65,7 +65,7 @@ public class TroopHonorView
         Collections.sort(paramList);
       }
       this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaLangString = bacy.b(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaLangString = badm.b(this.jdField_a_of_type_JavaUtilList);
       removeAllViews();
       if ((paramList != null) && (paramList.size() > 0))
       {
@@ -73,17 +73,17 @@ public class TroopHonorView
         int k;
         for (int j = 0; i < paramList.size(); j = k)
         {
-          badc localbadc = (badc)paramList.get(i);
+          badq localbadq = (badq)paramList.get(i);
           k = j;
-          if (!TextUtils.isEmpty(localbadc.b))
+          if (!TextUtils.isEmpty(localbadq.b))
           {
             Object localObject = URLDrawable.URLDrawableOptions.obtain();
-            localObject = URLDrawable.getDrawable(localbadc.b, (URLDrawable.URLDrawableOptions)localObject);
+            localObject = URLDrawable.getDrawable(localbadq.b, (URLDrawable.URLDrawableOptions)localObject);
             LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
             ImageView localImageView = new ImageView(getContext());
-            ((URLDrawable)localObject).setURLDrawableListener(new badf(this, localImageView));
+            ((URLDrawable)localObject).setURLDrawableListener(new badt(this, localImageView));
             localImageView.setImageDrawable((Drawable)localObject);
-            localImageView.setContentDescription(localbadc.jdField_a_of_type_JavaLangString);
+            localImageView.setContentDescription(localbadq.jdField_a_of_type_JavaLangString);
             if (j != 0) {
               localLayoutParams.leftMargin = c;
             }

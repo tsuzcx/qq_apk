@@ -1,483 +1,256 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class axll
-  extends WebViewPlugin
 {
-  public BroadcastReceiver a = new axlm(this);
+  private static int jdField_a_of_type_Int;
+  public static String a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015" };
+  private static String jdField_b_of_type_JavaLangString;
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = new String[0];
+  private static String c = "";
   
-  public axll()
+  static
   {
-    this.mPluginNameSpace = "ptv";
+    jdField_a_of_type_JavaLangString = "ShortVideoGuideUtil";
   }
   
-  public void a(Intent paramIntent, int paramInt1, int paramInt2)
+  public static void a(Activity paramActivity)
+  {
+    if (!TextUtils.isEmpty(c))
+    {
+      Intent localIntent = new Intent();
+      localIntent.setClassName("com.tencent.mobileqq", SendWebPicActivity.class.getName());
+      localIntent.putExtra("shareto_web_mode", jdField_a_of_type_Int);
+      localIntent.putExtra("edit_video_call_back", jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", c);
+      localIntent.setFlags(536870912);
+      paramActivity.startActivity(localIntent);
+    }
+  }
+  
+  public static void a(AppInterface paramAppInterface, Activity paramActivity, int paramInt)
+  {
+    paramAppInterface = new Intent(paramActivity, StoryTransitionActivity.class);
+    paramAppInterface.putExtra("jump_action", 6);
+    paramAppInterface.putExtra("web_target_type", paramInt);
+    paramActivity.startActivity(paramAppInterface);
+  }
+  
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    if (!b(paramAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= false");
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isGuideReaded isPubicSo= true");
+    }
+    return true;
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, String paramString20, String paramString21, biic parambiic)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoJsApiPlugin", 2, "onActivityResult, requestCode:" + paramInt1 + "，resultCode：" + paramInt2);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "startPTVActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", beauty:" + paramString4 + ", unfoldDDStr:" + paramString6 + ", dDCategoryName:" + paramString7 + ", dDItemID:" + paramString8 + ", unfoldFilter:" + paramString10 + ", filterCategoryName:" + paramString11 + ", filterItemID:" + paramString12 + ", dealtype:" + paramString14 + ", activityType:" + paramString15 + ", activityId:" + paramString16 + ", callback:" + paramString17 + " subtitle:" + paramString13 + ", callerType:" + paramString18 + ", topicId:" + paramString19 + ", topicName:" + paramString20 + ", adTag=" + paramString21);
     }
-    if ((paramInt1 != 11000) || (paramIntent == null)) {}
-    String str;
+    boolean bool1 = "1".equals(paramString1);
+    boolean bool2 = "1".equals(paramString2);
+    int i;
+    boolean bool3;
+    boolean bool4;
+    boolean bool5;
+    boolean bool6;
+    boolean bool7;
+    if ("1".equals(paramString3))
+    {
+      i = 2;
+      bool3 = "1".equals(paramString4);
+      bool4 = "1".equals(paramString5);
+      bool5 = "1".equals(paramString9);
+      bool6 = "1".equals(paramString6);
+      bool7 = "1".equals(paramString10);
+      "1".equals(paramString13);
+      if (!"1".equals(paramString14)) {
+        break label400;
+      }
+    }
+    label400:
+    for (int j = 1;; j = 0)
+    {
+      if (parambiic != null)
+      {
+        parambiic.jdField_a_of_type_Boolean = "1".equals(parambiic.jdField_a_of_type_JavaLangString);
+        parambiic.jdField_b_of_type_Boolean = "1".equals(parambiic.jdField_b_of_type_JavaLangString);
+        parambiic.c = "1".equals(parambiic.e);
+        parambiic.d = "1".equals(parambiic.f);
+      }
+      if (avte.a()) {
+        break label406;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "supportMediaCodec = false");
+      }
+      return false;
+      i = 1;
+      break;
+    }
+    label406:
+    paramAppInterface = biid.a(bool1, bool2, i, bool3, bool4, bool6, paramString7, paramString8, bool5, bool7, paramString11, paramString12, j, paramString15, paramString16, paramString17, paramString18, paramString19, paramString20, paramString21, parambiic);
+    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
+    paramString1.putExtras(paramAppInterface);
+    paramString1.putExtra("jump_action", 7);
+    paramActivity.startActivity(paramString1);
+    return true;
+  }
+  
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    boolean bool2 = axle.c();
+    boolean bool1;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
+        bool1 = bool2;
+      }
+    }
+    do
+    {
+      return bool1;
+      if (VideoEnvironment.b(paramAppInterface)) {
+        break;
+      }
+      bool1 = false;
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady isVersion fasle");
+    return false;
+    return true;
+  }
+  
+  public static boolean c(AppInterface paramAppInterface)
+  {
+    boolean bool = true;
+    if (paramAppInterface.getCurrentAccountUin() == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "isAccLoginSucdess false.");
+      }
+    }
     do
     {
       do
       {
-        return;
-        str = paramIntent.getStringExtra("arg_callback");
-      } while (TextUtils.isEmpty(str));
-      if (paramInt2 != -1) {
-        break;
-      }
-      paramIntent = paramIntent.getStringExtra("arg_result_json");
-    } while (paramIntent == null);
-    try
+        do
+        {
+          return false;
+          if (a(paramAppInterface)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "isGuideReaded false.");
+        return false;
+        if (axle.a(BaseApplicationImpl.getContext()) == 1) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "ispublicResReady iissupportFilterSo is false");
+      return false;
+    } while (!avte.a());
+    if (ShortVideoUtils.a()) {}
+    for (;;)
     {
-      paramIntent = new JSONObject(paramIntent);
-      paramIntent.put("retCode", 0);
-      paramIntent = paramIntent.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoJsApiPlugin", 2, "startNewPTVActivity" + " result:" + ReadInJoyDeliverUGCActivity.a(paramIntent));
+      return bool;
+      ShortVideoUtils.a(paramAppInterface);
+      if (!ShortVideoUtils.a()) {
+        bool = false;
       }
-      callJs(str, new String[] { paramIntent });
-      return;
     }
-    catch (Exception paramIntent)
-    {
-      return;
-    }
-    try
-    {
-      paramIntent = new JSONObject();
-      paramIntent.put("retCode", -1);
-      paramIntent = paramIntent.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoJsApiPlugin", 2, "startNewPTVActivity" + " result:" + paramIntent);
-      }
-      callJs(str, new String[] { paramIntent });
-      return;
-    }
-    catch (Exception paramIntent) {}
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public static boolean d(AppInterface paramAppInterface)
   {
-    if ((paramLong == 8589934600L) && (paramMap != null))
+    if (!ShortVideoUtils.a())
     {
-      int i = ((Integer)paramMap.get("requestCode")).intValue();
-      if (i == 11000)
-      {
-        int j = ((Integer)paramMap.get("resultCode")).intValue();
-        a((Intent)paramMap.get("data"), i, j);
-        return true;
+      ShortVideoUtils.a(paramAppInterface);
+      if (!ShortVideoUtils.a()) {
+        return false;
       }
     }
-    return super.handleEvent(paramString, paramLong, paramMap);
+    return true;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static boolean e(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoJsApiPlugin", 2, "Call ShortVideoJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
+    boolean bool = VideoEnvironment.b(paramAppInterface);
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "isMobileSupportPTV fasle");
     }
-    if ("ptv".equals(paramString2))
+    return bool;
+  }
+  
+  public static boolean f(AppInterface paramAppInterface)
+  {
+    boolean bool = axle.c();
+    if ((!bool) && (QLog.isColorLevel())) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "issupportFilterSo false");
+    }
+    return bool;
+  }
+  
+  public static boolean g(AppInterface paramAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool2 = bool1;
+    }
+    do
     {
-      if ("GSBase64Encode".equals(paramString3))
+      return bool2;
+      bool1 = bool2;
+      if (e(paramAppInterface))
       {
+        bool1 = bool2;
+        if (f(paramAppInterface)) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+    } while (!bool1);
+    return axgo.c();
+  }
+  
+  public static boolean h(AppInterface paramAppInterface)
+  {
+    if ((e(paramAppInterface)) && (f(paramAppInterface))) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (axki.b()) {
+          break;
+        }
         if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api GSBaze64Encode, args:" + paramVarArgs);
-        }
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-      }
-      for (;;)
-      {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          paramString1 = paramJsBridgeListener.optString("need_encode_string");
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
-          {
-            paramString1 = atbn.a(paramString1);
-            paramString2 = new JSONObject();
-            paramString2.put("encoded_string", paramString1);
-            callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
-          }
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          paramJsBridgeListener.printStackTrace();
-          continue;
-        }
-        boolean bool1;
-        if ("isSupportPTV".equals(paramString3))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportPTV, args:" + paramVarArgs);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-              if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                continue;
-              }
-              bool1 = axlj.c(this.mRuntime.a());
-              paramString1 = new JSONObject();
-              paramString1.put("is_support_ptv", bool1);
-              callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-        }
-        else if ("startNewPTVActivity".equals(paramString3))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api startPTVActivity, args:" + paramVarArgs);
-          }
-          if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-            continue;
-          }
-          try
-          {
-            localObject2 = new JSONObject(paramVarArgs[0]);
-            str4 = ((JSONObject)localObject2).optString("supportvideo");
-            str5 = ((JSONObject)localObject2).optString("supportphoto");
-            str6 = ((JSONObject)localObject2).optString("cameramode");
-            str7 = ((JSONObject)localObject2).optString("beauty");
-            str8 = ((JSONObject)localObject2).optString("dealtype");
-            str9 = ((JSONObject)localObject2).optString("callback");
-            str10 = ((JSONObject)localObject2).optString("supportDD");
-            str11 = ((JSONObject)localObject2).optString("unfoldDD");
-            str12 = ((JSONObject)localObject2).optString("DDCategoryName");
-            str13 = ((JSONObject)localObject2).optString("DDItemID");
-            str14 = ((JSONObject)localObject2).optString("supportFilter");
-            str15 = ((JSONObject)localObject2).optString("unfoldFilter");
-            str16 = ((JSONObject)localObject2).optString("filterCategoryName");
-            str17 = ((JSONObject)localObject2).optString("filterItemID");
-            str18 = ((JSONObject)localObject2).optString("supportSubtitle");
-            str19 = ((JSONObject)localObject2).optString("activityType");
-            paramString3 = "";
-          }
-          catch (JSONException paramJsBridgeListener)
-          {
-            Object localObject2;
-            String str4;
-            String str5;
-            String str6;
-            String str7;
-            String str8;
-            String str9;
-            String str10;
-            String str11;
-            String str12;
-            String str13;
-            String str14;
-            String str15;
-            String str16;
-            String str17;
-            String str18;
-            String str19;
-            label540:
-            String str1;
-            paramJsBridgeListener.printStackTrace();
-          }
-        }
-        try
-        {
-          paramJsBridgeListener = ((JSONObject)localObject2).getString("activityId");
-          paramString3 = paramJsBridgeListener;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          int i;
-          break label540;
-        }
-        paramString1 = "";
-        Object localObject1 = "";
-        str1 = "";
-        String str2 = "";
-        paramString2 = str1;
-        paramJsBridgeListener = (JsBridgeListener)localObject1;
-        try
-        {
-          paramVarArgs = ((JSONObject)localObject2).getString("callerType");
-          paramString2 = str1;
-          paramJsBridgeListener = (JsBridgeListener)localObject1;
-          paramString1 = paramVarArgs;
-          localObject1 = ((JSONObject)localObject2).getString("topicId");
-          paramString2 = str1;
-          paramJsBridgeListener = (JsBridgeListener)localObject1;
-          paramString1 = paramVarArgs;
-          str1 = ((JSONObject)localObject2).getString("topicName");
-          paramString2 = str1;
-          paramJsBridgeListener = (JsBridgeListener)localObject1;
-          paramString1 = paramVarArgs;
-          str3 = ((JSONObject)localObject2).getString("adtag");
-          paramJsBridgeListener = str3;
-          paramString2 = str1;
-          paramString1 = (String)localObject1;
-          localObject1 = paramJsBridgeListener;
-          paramJsBridgeListener = paramString1;
-          paramString1 = paramVarArgs;
-        }
-        catch (JSONException paramVarArgs)
-        {
-          for (;;)
-          {
-            String str3;
-            String str20;
-            String str21;
-            String str22;
-            bihl localbihl;
-            localObject1 = str2;
-          }
-        }
-        paramVarArgs = ((JSONObject)localObject2).optString("supportCombo", "1");
-        str1 = ((JSONObject)localObject2).optString("unfoldCombo");
-        str2 = ((JSONObject)localObject2).optString("comboCategoryName");
-        str3 = ((JSONObject)localObject2).optString("comboId");
-        str20 = ((JSONObject)localObject2).optString("supportMusic", "1");
-        str21 = ((JSONObject)localObject2).optString("unfoldMusic");
-        str22 = ((JSONObject)localObject2).optString("musicCategoryName");
-        localObject2 = ((JSONObject)localObject2).optString("musicId");
-        localbihl = new bihl();
-        localbihl.a = paramVarArgs;
-        localbihl.b = str1;
-        localbihl.c = str2;
-        localbihl.d = str3;
-        localbihl.e = str20;
-        localbihl.f = str21;
-        localbihl.g = str22;
-        localbihl.h = ((String)localObject2);
-        if (!TextUtils.isEmpty(str9))
-        {
-          axlj.a(this.mRuntime.a(), this.mRuntime.a(), str4, str5, str6, str7, str10, str11, str12, str13, str14, str15, str16, str17, str18, str8, str19, paramString3, str9, paramString1, paramJsBridgeListener, paramString2, (String)localObject1, localbihl);
-          continue;
-          continue;
-          if ("isMobileSupportPTV".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isMobileSupportPTV, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = axlj.e(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_mobile_support_ptv", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportDynamicDecoration".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportDynamicDecoration, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = axlj.f(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_DynamicDecoration", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportGestureDecoration".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportGestureDecoration, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              for (;;)
-              {
-                try
-                {
-                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                  if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                    break;
-                  }
-                  bool1 = axlj.c(this.mRuntime.a());
-                  boolean bool2 = axje.c();
-                  boolean bool3 = VideoEnvironment.e(this.mRuntime.a());
-                  boolean bool4 = axlc.a(BaseApplicationImpl.getContext());
-                  QLog.i("ShortVideoJsApiPlugin", 1, "call isSupportGestureDecoration isSupportPTV:" + bool1 + ",isSupportGesture:" + bool2);
-                  paramString1 = new JSONObject();
-                  if ((!bool2) || (!bool1) || (!bool3) || (!bool4)) {
-                    break label1364;
-                  }
-                  bool1 = true;
-                  paramString1.put("is_support_GestureDecoration", bool1);
-                  callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                }
-                catch (JSONException paramJsBridgeListener)
-                {
-                  paramJsBridgeListener.printStackTrace();
-                }
-                break;
-                label1364:
-                bool1 = false;
-              }
-            }
-          }
-          else if ("getGestureRecognitionResult".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api getGestureRecognitionResult, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = avtc.e();
-                QLog.i("ShortVideoJsApiPlugin", 1, "call getGestureRecognitionResult result:" + bool1);
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_GestureDecoration", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportDanceGame".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportDanceGame, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = axlj.g(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_dance_game", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("isSupportFaceDanceGame".equals(paramString3))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ShortVideoJsApiPlugin", 2, "Call Ptv Api isSupportFaceDanceGame, args:" + paramVarArgs);
-            }
-            if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-              try
-              {
-                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-                if (TextUtils.isEmpty(paramJsBridgeListener)) {
-                  continue;
-                }
-                bool1 = axlj.h(this.mRuntime.a());
-                paramString1 = new JSONObject();
-                paramString1.put("is_support_facedance_game", bool1);
-                callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-              }
-              catch (JSONException paramJsBridgeListener)
-              {
-                paramJsBridgeListener.printStackTrace();
-              }
-            }
-          }
-          else if ("onClickShareBattle".equals(paramString3))
-          {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramJsBridgeListener.optString("shareWebUrl");
-              i = paramJsBridgeListener.optInt("rank", 0);
-              vkf.a().a(paramString1, Integer.valueOf(i).toString());
-            }
-            catch (JSONException paramJsBridgeListener) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ShortVideoJsApiPlugin", 2, "onClickShareBattle error");
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-          else if ("onClickShareVideo".equals(paramString3))
-          {
-            vkf.a().b();
-          }
-          else if (("startStoryActivity".equals(paramString3)) && (paramVarArgs != null))
-          {
-            try
-            {
-              if (paramVarArgs.length <= 0) {
-                continue;
-              }
-              i = new JSONObject(paramVarArgs[0]).optInt("dealType", 0);
-              axlj.a(this.mRuntime.a(), this.mRuntime.a(), i);
-            }
-            catch (Exception paramJsBridgeListener) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.e("ShortVideoJsApiPlugin", 2, "startStoryActivity exception:", paramJsBridgeListener);
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "isSupportDanceGame false");
         }
       }
+      return false;
     }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.shortVideoJsApiPulgin");
-    this.mRuntime.a().registerReceiver(this.a, localIntentFilter);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.mRuntime.a().unregisterReceiver(this.a);
+    return true;
   }
 }
 

@@ -1,19 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acoi
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
   public acoi(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.a();
-    }
-    return false;
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 

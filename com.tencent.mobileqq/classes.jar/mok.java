@@ -1,29 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mok
-  extends Handler
+public class mok
+  implements View.OnTouchListener
 {
-  WeakReference<ZimuViewMotion> a;
+  public mok(GuideHelper paramGuideHelper, long paramLong) {}
   
-  public mok(ZimuViewMotion paramZimuViewMotion)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    QLog.w("GuideHelper", 1, "onTouch to hide, seq[" + this.jdField_a_of_type_Long + "]");
+    GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
+    return false;
   }
 }
 

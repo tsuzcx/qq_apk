@@ -1,33 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.1;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.2;
-import com.tencent.mobileqq.activity.AddRequestActivity.13.3;
-import java.util.ArrayList;
 
 public class aaid
-  extends ajvl
+  implements View.OnClickListener
 {
   public aaid(AddRequestActivity paramAddRequestActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new AddRequestActivity.13.3(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.2(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new AddRequestActivity.13.1(this));
-    }
+    axqy.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
+    this.a.b();
   }
 }
 

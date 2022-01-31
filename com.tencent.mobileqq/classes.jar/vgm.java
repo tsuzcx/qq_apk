@@ -1,61 +1,17 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 
-class vgm
-  extends QQUIEventReceiver<vgd, vmg>
+public class vgm
+  implements View.OnTouchListener
 {
-  public vgm(@NonNull vgd paramvgd)
-  {
-    super(paramvgd);
-  }
+  public vgm(EditVideoFilter paramEditVideoFilter) {}
   
-  public void a(@NonNull vgd paramvgd, @NonNull vmg paramvmg)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    vgn localvgn = paramvgd.jdField_a_of_type_Vgn;
-    int i = paramvmg.jdField_a_of_type_Int;
-    paramvmg = paramvmg.jdField_a_of_type_JavaUtilList;
-    paramvgd = paramvgd.jdField_a_of_type_Vow;
-    if (localvgn != null)
-    {
-      if (i != 0)
-      {
-        veg.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location failed.");
-        paramvgd.jdField_a_of_type_Boolean = false;
-        localvgn.a(paramvgd);
-        vem.a("0X80076CD");
-        vem.b("0X80075E2");
-        return;
-      }
-      veg.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location success.");
-      paramvgd.jdField_a_of_type_JavaUtilList.clear();
-      paramvmg = paramvmg.iterator();
-      while (paramvmg.hasNext())
-      {
-        teh localteh = (teh)paramvmg.next();
-        if ((TextUtils.isEmpty(localteh.d)) || (TextUtils.isEmpty(localteh.a)) || (TextUtils.isEmpty(localteh.b))) {
-          veg.d(this.TAG, "find illegal content : url=%s, name=%s, des=%s", new Object[] { localteh.d, localteh.a, localteh.b });
-        }
-        vox localvox = new vox();
-        localvox.d = localteh.d;
-        localvox.b = localteh.a;
-        localvox.c = localteh.b;
-        localvox.a = localteh.c;
-        localvox.e = localteh.e;
-        paramvgd.jdField_a_of_type_JavaUtilList.add(localvox);
-      }
-      paramvgd.jdField_a_of_type_Boolean = false;
-      localvgn.a(paramvgd);
-      return;
-    }
-    veg.b(this.TAG, "DoodleEmojiPoiPostersReceiver adapter is null");
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vmg.class;
+    return this.a.a.a(paramMotionEvent);
   }
 }
 

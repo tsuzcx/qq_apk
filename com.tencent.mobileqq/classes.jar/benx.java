@@ -1,4 +1,8 @@
-// INTERNAL ERROR //
+public class benx
+{
+  public int a;
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     benx

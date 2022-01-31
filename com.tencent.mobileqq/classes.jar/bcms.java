@@ -1,6 +1,20 @@
-public abstract interface bcms
+import android.widget.BaseAdapter;
+
+public abstract class bcms
+  extends BaseAdapter
 {
-  public abstract void a(boolean paramBoolean);
+  protected int a = 0;
+  
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public abstract int b(int paramInt);
 }
 
 

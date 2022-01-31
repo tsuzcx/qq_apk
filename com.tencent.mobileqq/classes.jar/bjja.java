@@ -1,27 +1,4 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.qphone.base.util.QLog;
-
-final class bjja
-  implements bbkq<Float>
-{
-  bjja(View paramView) {}
-  
-  @TargetApi(11)
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
-    {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
-    }
-  }
-}
+public abstract class bjja {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

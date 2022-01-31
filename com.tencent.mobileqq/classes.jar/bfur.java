@@ -1,46 +1,16 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
+import android.view.View;
+import android.widget.BaseExpandableListAdapter;
 
-public class bfur
+public abstract class bfur
+  extends BaseExpandableListAdapter
 {
-  public float a;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  String jdField_a_of_type_JavaLangString;
+  public abstract int a();
   
-  public bfur(String paramString, float paramFloat)
-  {
-    this(paramString, paramFloat, null);
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public bfur(String paramString, float paramFloat, Point paramPoint)
+  public boolean a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint, bfuo parambfuo)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
-      return;
-    }
-    paramPaint.setTextSize(this.jdField_a_of_type_Float);
-    int i = paramPaint.getColor();
-    paramPaint.setColor(parambfuo.a);
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
-    paramPaint.setColor(i);
+    return false;
   }
 }
 

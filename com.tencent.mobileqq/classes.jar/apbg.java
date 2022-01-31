@@ -1,34 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-
 class apbg
-  extends apbi
 {
-  public apbg(apbe paramapbe)
-  {
-    super(paramapbe);
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  protected String a()
+  apbg(apbc paramapbc, int paramInt)
   {
-    return "StateAcceptByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    apbe.b(this.jdField_a_of_type_Apbe, 11, 5);
-    apbe.c(this.jdField_a_of_type_Apbe, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Apbi = new apbf(this.jdField_a_of_type_Apbe);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = awzy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apbg
  * JD-Core Version:    0.7.0.1
  */

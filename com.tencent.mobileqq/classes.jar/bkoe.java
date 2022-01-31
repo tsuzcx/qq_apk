@@ -1,19 +1,14 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-public class bkoe
-  implements AdapterView.OnItemSelectedListener
+public abstract interface bkoe
 {
-  public bkoe(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a(int paramInt);
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

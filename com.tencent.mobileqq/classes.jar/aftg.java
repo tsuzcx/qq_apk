@@ -1,17 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
-
-public class aftg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface aftg
 {
-  public aftg(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
-  }
+  public abstract void b(int paramInt);
 }
 
 

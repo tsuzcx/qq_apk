@@ -1,25 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
-import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
-import java.util.Map;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
+import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-public final class ysl
-  implements AdThreadManagerAdapter
+public class ysl
+  implements AdVideoSpliceAdapter
 {
-  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
+  public AdError show(AdVideoSpliceAdapter.Params paramParams)
   {
-    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
-    if (paramInt == 0) {
-      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
-    }
-    if (local1.containsKey(Integer.valueOf(paramInt)))
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
-      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
+      yxp.d("GdtVideoSpliceAdapter", "show error");
+      return new AdError(4);
     }
-    return false;
+    yxp.b("GdtVideoSpliceAdapter", "show");
+    new TransitionContext(paramParams).b();
+    return new AdError(0);
   }
 }
 

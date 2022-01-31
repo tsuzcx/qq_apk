@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aafu;
+import aafq;
 
 public class AccountManageActivity$3$1
   implements Runnable
 {
-  public AccountManageActivity$3$1(aafu paramaafu) {}
+  public AccountManageActivity$3$1(aafq paramaafq) {}
   
   public void run()
   {

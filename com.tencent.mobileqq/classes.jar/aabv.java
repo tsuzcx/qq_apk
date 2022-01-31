@@ -1,12 +1,19 @@
-public class aabv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+class aabv
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  aabv(aabs paramaabs, aabr paramaabr, aabj paramaabj, JSONObject paramJSONObject, aabi paramaabi) {}
   
-  public aabv(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_Aabs.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_Aabr.a);
+    aabs.a(this.jdField_a_of_type_Aabs, this.jdField_a_of_type_Aabr, 1);
+    aabs.b(this.jdField_a_of_type_Aabs, 4, this.jdField_a_of_type_Aabj, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Aabi);
   }
 }
 

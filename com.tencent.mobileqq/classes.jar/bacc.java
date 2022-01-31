@@ -1,21 +1,60 @@
-import android.view.KeyEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
-class bacc
-  implements View.OnKeyListener
+public abstract class bacc<VH extends RecyclerView.ViewHolder, D extends babg>
+  implements View.OnClickListener
 {
-  bacc(baca parambaca, bacg parambacg) {}
+  public bacd a;
+  public XMediaEditor a;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public bacc(XMediaEditor paramXMediaEditor)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bacg.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Baca.a.b(this.jdField_a_of_type_Bacg);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
+  }
+  
+  public abstract VH a(ViewGroup paramViewGroup);
+  
+  public bacc a(bacd parambacd)
+  {
+    this.jdField_a_of_type_Bacd = parambacd;
+    return this;
+  }
+  
+  public bacd a()
+  {
+    return this.jdField_a_of_type_Bacd;
+  }
+  
+  public void a() {}
+  
+  public void a(VH paramVH) {}
+  
+  public abstract void a(VH paramVH, D paramD, int paramInt);
+  
+  public abstract void a(View paramView, VH paramVH);
+  
+  public void b(VH paramVH) {}
+  
+  public void b(View paramView, VH paramVH)
+  {
+    paramView.setTag(paramVH);
+    paramView.setOnClickListener(this);
+  }
+  
+  public void b(D paramD) {}
+  
+  public void c(VH paramVH) {}
+  
+  public void c(D paramD) {}
+  
+  public void d(D paramD) {}
+  
+  public void onClick(View paramView)
+  {
+    a(paramView, (RecyclerView.ViewHolder)paramView.getTag());
   }
 }
 

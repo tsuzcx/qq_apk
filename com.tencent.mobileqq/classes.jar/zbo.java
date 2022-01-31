@@ -1,10 +1,8 @@
+import android.view.View;
+
 public abstract interface zbo
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public abstract void a(View paramView);
 }
 
 

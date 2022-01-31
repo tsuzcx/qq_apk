@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
-import avog;
+import avoi;
 
 public class ReceiptMessageDetailFragment$DetailHandler$1
   implements Runnable
 {
-  public ReceiptMessageDetailFragment$DetailHandler$1(avog paramavog, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ReceiptMessageDetailFragment$DetailHandler$1(avoi paramavoi, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {

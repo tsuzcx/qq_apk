@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.view.View;
+import android.widget.ImageView;
 
-public final class vfw
-  implements Parcelable.Creator<EditTakeVideoSource>
+class vfw
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public EditTakeVideoSource[] a(int paramInt)
-  {
-    return new EditTakeVideoSource[paramInt];
-  }
+  vfw(vfv paramvfv) {}
 }
 
 

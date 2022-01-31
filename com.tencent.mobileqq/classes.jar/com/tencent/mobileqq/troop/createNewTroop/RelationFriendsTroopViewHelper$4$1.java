@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import azlo;
-import azlp;
 import azlq;
+import azlr;
+import azls;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,18 +10,18 @@ import java.util.ArrayList;
 public class RelationFriendsTroopViewHelper$4$1
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$4$1(azlp paramazlp, ArrayList paramArrayList) {}
+  public RelationFriendsTroopViewHelper$4$1(azlr paramazlr, ArrayList paramArrayList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      azlo.b(this.jdField_a_of_type_Azlp.a).clear();
+      azlq.b(this.jdField_a_of_type_Azlr.a).clear();
       int i = 0;
       if ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 5))
       {
         Object localObject = (RelationTroopEntity)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        azlo.b(this.jdField_a_of_type_Azlp.a).add(localObject);
+        azlq.b(this.jdField_a_of_type_Azlr.a).add(localObject);
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
@@ -38,7 +38,7 @@ public class RelationFriendsTroopViewHelper$4$1
           break;
         }
       }
-      azlo.a(this.jdField_a_of_type_Azlp.a).a();
+      azlq.a(this.jdField_a_of_type_Azlr.a).a();
     }
   }
 }

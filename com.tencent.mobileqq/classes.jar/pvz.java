@@ -1,18 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class pvz
+class pvz
   implements View.OnClickListener
 {
-  public pvz(ComponentContentRecommend paramComponentContentRecommend) {}
+  pvz(pvx parampvx, RecommendFollowInfo paramRecommendFollowInfo) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(ComponentContentRecommend.a(this.a));
-    osj.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
-    ComponentContentRecommend.a(this.a);
+    paramView = this.jdField_a_of_type_Pvx.a;
+    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.a(localRecommendFollowInfo, bool);
+      return;
+    }
   }
 }
 

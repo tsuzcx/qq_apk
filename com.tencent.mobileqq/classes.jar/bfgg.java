@@ -1,52 +1,209 @@
 import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class bfgg
 {
-  public static boolean a(String paramString)
+  public static final int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!b(paramString)) && (!c(paramString))) {
-      return false;
+    jdField_a_of_type_Int = bfhp.a();
+  }
+  
+  private bfgg(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
+    this.f = paramInt3;
+    this.g = paramInt4;
+  }
+  
+  public bfgg(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
+    this.f = paramInt5;
+    this.g = paramInt6;
+  }
+  
+  public static int a(int paramInt)
+  {
+    return Double.valueOf(1.0D * paramInt / 1026.0D * 249.0D).intValue();
+  }
+  
+  public static int a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4)
+  {
+    if (paramFloat == 0.0F) {
+      return paramInt1;
     }
-    return true;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("http://m.q.qq.com/a/"))) {
-      return false;
+    if (paramInt1 < jdField_a_of_type_Int) {}
+    int i;
+    int j;
+    int i1;
+    int n;
+    for (int k = jdField_a_of_type_Int;; k = paramInt1)
+    {
+      i = Math.round(paramInt3 * 1.0F / paramFloat);
+      j = Math.round(paramInt4 * 1.0F / paramFloat);
+      switch (paramInt2)
+      {
+      default: 
+        i1 = i;
+        n = j;
+        i = k;
+        betc.b("BannerAdPosInfo", "buildFormatInfo，deviceOrientation = " + paramInt2 + ", density = " + paramFloat + ", screeWpx = " + paramInt3 + ", screeHpx = " + paramInt4 + ", screenW = " + i1 + ", screenH = " + n + ", originWidth = " + paramInt1 + ", realWidth = " + i);
+        return i;
+      }
     }
-    return true;
+    int m;
+    if (i < j)
+    {
+      m = j;
+      j = i;
+    }
+    for (;;)
+    {
+      i = k;
+      n = j;
+      i1 = m;
+      if (k <= m / 2) {
+        break;
+      }
+      i = m / 2;
+      n = j;
+      i1 = m;
+      break;
+      m = i;
+      n = j;
+      if (j < i)
+      {
+        n = i;
+        m = j;
+      }
+      i = k;
+      if (k > m) {
+        i = m;
+      }
+      i1 = m;
+      break;
+      m = i;
+    }
   }
   
-  public static boolean c(String paramString)
+  public static bfgg a(bfgg parambfgg, int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    return (e(paramString)) || (d(paramString)) || (f(paramString));
+    if ((parambfgg == null) || (paramFloat == 0.0F)) {
+      return null;
+    }
+    paramInt1 = a(parambfgg.d, paramInt1, paramFloat, paramInt2, paramInt3);
+    paramInt2 = Double.valueOf(1.0D * paramInt1 / 1026.0D * 249.0D).intValue();
+    return new bfgg(parambfgg.jdField_a_of_type_JavaLangString, parambfgg.b, parambfgg.c, parambfgg.d, parambfgg.e, paramInt1, paramInt2);
   }
   
-  public static boolean d(String paramString)
+  public static bfgg a(String paramString)
   {
+    int m = 0;
     if (TextUtils.isEmpty(paramString)) {
-      return false;
+      return null;
     }
-    return paramString.startsWith("mqqapi://miniapp/open?");
+    for (;;)
+    {
+      try
+      {
+        localObject2 = new JSONObject(paramString);
+        String str = ((JSONObject)localObject2).getString("adUnitId");
+        betc.b("BannerAdPosInfo", "parseBannerAdPosInfoFromJson error " + paramString, localException1);
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          k = ((JSONObject)localObject2).getJSONObject("style").getInt("left");
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            i = 0;
+            j = 0;
+            int k = 0;
+            localObject2 = localObject1;
+            localObject1 = localException2;
+          }
+        }
+        try
+        {
+          j = ((JSONObject)localObject2).getJSONObject("style").getInt("top");
+        }
+        catch (Exception localException3)
+        {
+          i = 0;
+          j = 0;
+          localObject2 = localObject1;
+          localObject1 = localException3;
+          break label133;
+        }
+        try
+        {
+          i = ((JSONObject)localObject2).getJSONObject("style").getInt("width");
+        }
+        catch (Exception localException4)
+        {
+          i = 0;
+          localObject2 = localObject1;
+          localObject1 = localException4;
+          break label133;
+        }
+        try
+        {
+          if (((JSONObject)localObject2).getJSONObject("style").has("height")) {
+            m = ((JSONObject)localObject2).getJSONObject("style").getInt("height");
+          }
+          if ((!TextUtils.isEmpty(str)) && (k >= 0) && (j >= 0) && (i > 0)) {
+            break;
+          }
+          return null;
+        }
+        catch (Exception localException5)
+        {
+          localObject2 = localObject1;
+          localObject1 = localException5;
+          break label133;
+        }
+        localException1 = localException1;
+        i = 0;
+        j = 0;
+        localObject2 = "";
+        k = 0;
+      }
+      label133:
+      m = 0;
+      localObject1 = localObject2;
+    }
+    return new bfgg(localObject1, k, j, i, m);
   }
   
-  private static boolean e(String paramString)
+  public boolean a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("mqqapi://microapp/open?");
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.f > 0) && (this.g > 0);
   }
   
-  private static boolean f(String paramString)
+  public String toString()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("mqqapi://miniapp/adopen");
+    return "mAdUnitId = " + this.jdField_a_of_type_JavaLangString + ", left = " + this.b + ", top = " + this.c + ", width = " + this.d + ", height = " + this.e + ", realWidth = " + this.f + ", realHeight = " + this.g;
   }
 }
 

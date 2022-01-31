@@ -1,119 +1,137 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Looper;
+import android.widget.Toast;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
+import com.tencent.qphone.base.util.QLog;
 
-class arfx
-  extends BroadcastReceiver
+public class arfx
+  implements areo
 {
-  arfx(arfw paramarfw) {}
+  private final long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
+  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public arfx(arfu paramarfu, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    JSONObject localJSONObject;
-    if ((paramContext.equals(arfw.a(this.a.b))) || (paramContext.equals(arfw.d(this.a.b))))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
+    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (!paramBoolean2))
     {
-      i = paramIntent.getIntExtra("key_state", -1);
-      arfw.a(this.a, i);
-      localJSONObject = arfw.a(this.a, i);
-      switch (i)
+      arfu.a(this.jdField_a_of_type_Arfu).a(5, new Object[] { "" });
+      return;
+    }
+    if (paramBoolean1) {}
+    for (long l = 0L;; l = 2000L)
+    {
+      if (!this.b) {
+        break label66;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
+      return;
+    }
+    label66:
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+  }
+  
+  public void a()
+  {
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    int j = 1;
+    long l1;
+    label99:
+    String str;
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
       {
-      default: 
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = arfu.a(this.jdField_a_of_type_Arfu).a().a.getExtras();
+        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          argk.a("2653752");
+        }
+        a(this.jdField_a_of_type_Boolean, paramBoolean);
+        long l2 = System.currentTimeMillis();
+        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          break label421;
+        }
+        l1 = arfu.a(this.jdField_a_of_type_Arfu);
+        l1 = l2 - l1;
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
+        }
+        if (!argk.jdField_a_of_type_Boolean) {
+          break label433;
+        }
+        str = "huayang";
+        label175:
+        if (!paramBoolean) {
+          break label440;
+        }
+        i = 1;
+        label182:
+        vei.a(str, "getLoginKey", i, (int)l1, new String[] { arfu.c(this.jdField_a_of_type_Arfu), paramInt + "", paramString, "8.3.0" });
+        paramString = arfu.a(this.jdField_a_of_type_Arfu).opName(arfu.a(this.jdField_a_of_type_Arfu)).opType("getLoginKey");
+        if (!paramBoolean) {
+          break label446;
+        }
       }
     }
-    do
+    label421:
+    label433:
+    label440:
+    label446:
+    for (int i = j;; i = 0)
     {
+      paramString.opIn(i).opResult(paramInt).report();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = arjw.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, arfu.a(this.jdField_a_of_type_Arfu));
+      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      argk.a("2691711");
+      break;
+      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        argk.a("2653753");
+      }
       for (;;)
       {
-        return;
-        l = paramIntent.getLongExtra("key_totalSize", 0L);
-        arfw.a(this.a, "size:" + l);
-        try
-        {
-          localJSONObject.putOpt("totalSize", Long.valueOf(l));
-          localJSONObject.remove("state");
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-      }
-      int j = paramIntent.getIntExtra("key_progress", 0);
-      long l = paramIntent.getLongExtra("key_totalSize", 0L);
-      paramIntent = this.a;
-      if (i == 1) {}
-      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
-      {
-        for (;;)
-        {
-          arfw.a(paramIntent, paramContext);
-          if (i == 4)
-          {
-            if (j <= 90) {
-              break;
-            }
-            arfw.a(this.a).removeCallbacksAndMessages(null);
-          }
-          try
-          {
-            localJSONObject.putOpt("totalSize", Long.valueOf(l));
-            localJSONObject.putOpt("pro", Integer.valueOf(j));
-          }
-          catch (JSONException paramContext)
-          {
-            paramContext.printStackTrace();
-          }
-        }
+        Toast.makeText(arfu.a(this.jdField_a_of_type_Arfu), ajya.a(2131705638) + paramInt, 0).show();
         break;
-      }
-      arfw.a(this.a, "STATE_DOWANLODAD_COMPLETE");
-      paramContext = Message.obtain();
-      if (arfw.a(this.a) == 1) {}
-      for (paramContext.arg1 = 40; !TextUtils.equals(arfw.a(this.a), "checkVersion"); paramContext.arg1 = 0)
-      {
-        arfw.b(this.a, 0);
-        arfw.a(this.a).sendMessage(paramContext);
-        break;
-      }
-      arfw.a(this.a, "STATE_DOWANLODAD_FAILED");
-      break;
-      arfw.a(this.a, "STATE_PRELOAD_FALIED");
-      break;
-      arfw.a(this.a, "STATE_LOAD_COMPLETE");
-      break;
-      arfw.a(this.a, "STATE_LOAD_FALIED");
-      break;
-      arfw.a(this.a, "STATE_LAUNCHERING");
-      break;
-      arfw.a(this.a, "STATE_LAUNCHER_SUCC");
-      break;
-      arfw.a(this.a, "STATE_LAUNCHER_FAILED");
-      break;
-      if (arfw.b(this.a.b).equals(paramContext))
-      {
-        paramContext = this.a.mRuntime.a();
-        if ((paramContext instanceof BaseActivity))
-        {
-          ((BaseActivity)paramContext).doOnBackPressed();
-          return;
+        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          argk.a("2691712");
         }
-        paramContext.onBackPressed();
-        return;
       }
-    } while (!arfw.c(this.a.b).equals(paramContext));
-    arfw.c(this.a, paramIntent.getIntExtra("key_isCache", -1));
+      l1 = arfu.b(this.jdField_a_of_type_Arfu);
+      break label99;
+      str = "group_video";
+      break label175;
+      i = 0;
+      break label182;
+    }
   }
 }
 

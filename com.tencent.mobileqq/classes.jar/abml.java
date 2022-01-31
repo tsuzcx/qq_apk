@@ -1,20 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abml
-  extends MqqHandler
+class abml
+  implements DialogInterface.OnClickListener
 {
-  public abml(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  abml(abmj paramabmj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramInt == 1) {
+      this.a.b();
+    }
+    while (abmj.a(this.a) == null) {
       return;
     }
-    this.a.finish();
+    abmj.a(this.a).b();
   }
 }
 

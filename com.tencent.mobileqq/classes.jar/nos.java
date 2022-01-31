@@ -1,21 +1,29 @@
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+
 public class nos
+  extends nor
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public nos(nop paramnop, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
+    paramFromServiceMsg = super.a(paramFromServiceMsg);
+    if (paramFromServiceMsg != null)
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      try
+      {
+        localStQWebRsp.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
+        return paramFromServiceMsg;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

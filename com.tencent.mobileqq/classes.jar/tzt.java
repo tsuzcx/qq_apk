@@ -1,70 +1,22 @@
-import android.view.View;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.Nullable;
 
 public class tzt
-  implements uct
+  extends ssh
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = vzo.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  public String a;
+  public twl a;
+  public String b;
   
-  public tzt(tzr paramtzr) {}
-  
-  public void a(int paramInt)
+  public tzt(@Nullable String paramString1, twl paramtwl, String paramString2)
   {
-    if (this.jdField_a_of_type_Tzr.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Twl = paramtwl;
+    this.b = paramString2;
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public String toString()
   {
-    if (this.jdField_a_of_type_Tzr.a() != 0) {
-      return;
-    }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
-    }
-    if (this.jdField_a_of_type_Float > 0.5D)
-    {
-      this.jdField_a_of_type_Tzr.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Tzr.a.setTranslationY(-paramInt2);
-  }
-  
-  public void b(int paramInt)
-  {
-    veg.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Tzr.a()));
-    if (this.jdField_a_of_type_Tzr.a() != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Tzr.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Tzr.a.setTranslationY(0.0F);
-        return;
-      }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Tzr.a.setTranslationY(this.jdField_a_of_type_Int);
+    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Twl + ", vid='" + this.b + '\'' + '}';
   }
 }
 

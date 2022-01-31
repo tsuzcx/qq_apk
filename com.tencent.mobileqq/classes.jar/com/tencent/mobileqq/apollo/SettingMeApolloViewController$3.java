@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import ajru;
+import ajrs;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
@@ -33,7 +33,7 @@ class SettingMeApolloViewController$3
       this.this$0.b.b();
       return;
     }
-    this.this$0.b.setGifData(30, null, this.a, ajru.a(this.a), true);
+    this.this$0.b.setGifData(30, null, this.a, ajrs.a(this.a), true);
   }
 }
 

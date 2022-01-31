@@ -1,25 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class usx
-  extends ajxl
+public class usx
+  extends QQUIEventReceiver<ust, utn>
 {
-  usx(usw paramusw) {}
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public usx(ust paramust)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (usw.a(this.a) == null) {
-      return;
-    }
-    paramString = usw.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    super(paramust);
+  }
+  
+  public void a(@NonNull ust paramust, @NonNull utn paramutn)
+  {
+    if (paramutn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      paramString.b(paramBoolean);
-      return;
+      paramutn = paramutn.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0; paramutn.hasNext(); i = ((MomeriesYearNode)paramutn.next()).videoCount + i) {}
+      if (i >= 0)
+      {
+        ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
+        ust.a(paramust, i);
+        if (paramust.a != null)
+        {
+          paramust.a.videoCount = ust.a(paramust);
+          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramust), 5, null, false);
+        }
+      }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return utn.class;
   }
 }
 

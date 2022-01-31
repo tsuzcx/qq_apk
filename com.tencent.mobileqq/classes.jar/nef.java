@@ -1,21 +1,15 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 
 class nef
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  nef(ned paramned) {}
+  nef(nea paramnea) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    this.a.d(this.a.b());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

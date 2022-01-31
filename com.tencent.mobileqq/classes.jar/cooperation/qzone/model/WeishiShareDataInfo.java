@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfg;
+import bhfx;
 import java.util.ArrayList;
 
 public class WeishiShareDataInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new bhfg();
+  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new bhfx();
   public String a;
   public ArrayList<WeishiPictureUrl> a;
   public String b;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.swipeback;
 
-import amhb;
+import amha;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -105,9 +105,9 @@ public class PostTable
     }
     this.jdField_a_of_type_Boolean = true;
     this.i = 0;
-    amhb.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    amhb.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    amhb.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
+    amha.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    amha.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    amha.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
   }
   
   public void a(double paramDouble)
@@ -133,9 +133,9 @@ public class PostTable
     }
     this.jdField_a_of_type_Boolean = true;
     this.i = 1;
-    amhb.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    amhb.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    amhb.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
+    amha.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    amha.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    amha.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
   }
   
   public void c()

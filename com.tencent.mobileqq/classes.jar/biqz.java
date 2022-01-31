@@ -1,542 +1,120 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.qq.im.ae.download.AEResDownloader.1;
-import dov.com.qq.im.ae.download.AEResDownloader.2;
-import dov.com.qq.im.ae.download.AEResDownloader.3;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class biqz
-  implements axeo, axeq
+  extends UniPacket
 {
-  private static final biqz jdField_a_of_type_Biqz = new biqz();
-  private static final HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AEResDownloader");
-  private List<ShortVideoResourceManager.SVConfigItem> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<Integer, Long> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private ConcurrentLinkedQueue<Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private boolean jdField_a_of_type_Boolean;
-  private List<birb> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private final String a = "compressed";
   
-  static
+  public biqz(boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), "new_qq_android_native_short_filter_");
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), "new_qq_android_native_ptu_res_");
+    super(paramBoolean);
   }
   
-  private biqz()
+  private void a(boolean paramBoolean) {}
+  
+  /* Error */
+  private byte[] a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    Looper localLooper = this.jdField_a_of_type_AndroidOsHandlerThread.getLooper();
-    if (localLooper != null)
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 20	java/util/zip/Inflater
+    //   9: dup
+    //   10: invokespecial 23	java/util/zip/Inflater:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: aload_1
+    //   16: iconst_0
+    //   17: aload_1
+    //   18: arraylength
+    //   19: invokevirtual 27	java/util/zip/Inflater:setInput	([BII)V
+    //   22: sipush 4096
+    //   25: newarray byte
+    //   27: astore_3
+    //   28: new 29	java/io/ByteArrayOutputStream
+    //   31: dup
+    //   32: invokespecial 30	java/io/ByteArrayOutputStream:<init>	()V
+    //   35: astore 4
+    //   37: aload_2
+    //   38: invokevirtual 34	java/util/zip/Inflater:finished	()Z
+    //   41: ifne +29 -> 70
+    //   44: aload 4
+    //   46: aload_3
+    //   47: iconst_0
+    //   48: aload_2
+    //   49: aload_3
+    //   50: invokevirtual 38	java/util/zip/Inflater:inflate	([B)I
+    //   53: invokevirtual 41	java/io/ByteArrayOutputStream:write	([BII)V
+    //   56: goto -19 -> 37
+    //   59: astore_3
+    //   60: aload_3
+    //   61: invokevirtual 44	java/util/zip/DataFormatException:printStackTrace	()V
+    //   64: aload_2
+    //   65: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   68: aload_1
+    //   69: areturn
+    //   70: aload 4
+    //   72: invokevirtual 51	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   75: astore_3
+    //   76: aload_2
+    //   77: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   80: aload_3
+    //   81: areturn
+    //   82: astore_1
+    //   83: aload_2
+    //   84: invokevirtual 47	java/util/zip/Inflater:end	()V
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	biqz
+    //   0	89	1	paramArrayOfByte	byte[]
+    //   13	71	2	localInflater	java.util.zip.Inflater
+    //   27	23	3	arrayOfByte1	byte[]
+    //   59	2	3	localDataFormatException	java.util.zip.DataFormatException
+    //   75	6	3	arrayOfByte2	byte[]
+    //   35	36	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   37	56	59	java/util/zip/DataFormatException
+    //   70	76	59	java/util/zip/DataFormatException
+    //   37	56	82	finally
+    //   60	64	82	finally
+    //   70	76	82	finally
+  }
+  
+  public <T> T getByClass(String paramString, T paramT)
+  {
+    Object localObject;
+    if ((this._data != null) && (this._data.containsKey("compressed")) && (this._data.get("compressed") != null))
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localLooper);
-      return;
-    }
-    bizq.d("AEResDownloader", "[HandlerThread init error:loop = null]");
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public static biqz a()
-  {
-    return jdField_a_of_type_Biqz;
-  }
-  
-  private List<ShortVideoResourceManager.SVConfigItem> a(List<ShortVideoResourceManager.SVConfigItem> paramList)
-  {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localObject = (byte[])((HashMap)this._data.get("compressed")).get("string");
+      if ("true".equalsIgnoreCase(new String((byte[])localObject)))
       {
-        ShortVideoResourceManager.SVConfigItem localSVConfigItem1 = (ShortVideoResourceManager.SVConfigItem)paramList.next();
-        ShortVideoResourceManager.SVConfigItem localSVConfigItem2 = new ShortVideoResourceManager.SVConfigItem();
-        localSVConfigItem2.name = localSVConfigItem1.name;
-        localSVConfigItem2.arm_url = localSVConfigItem1.arm_url;
-        localSVConfigItem2.armv7a_url = localSVConfigItem1.armv7a_url;
-        localSVConfigItem2.x86_url = localSVConfigItem1.x86_url;
-        localSVConfigItem2.arm64v8a_url = localSVConfigItem1.arm64v8a_url;
-        localSVConfigItem2.arm_md5 = localSVConfigItem1.arm_md5;
-        localSVConfigItem2.armv7a_md5 = localSVConfigItem1.armv7a_md5;
-        localSVConfigItem2.x86_md5 = localSVConfigItem1.x86_md5;
-        localSVConfigItem2.arm64v8a_md5 = localSVConfigItem1.arm64v8a_md5;
-        localSVConfigItem2.versionCode = localSVConfigItem1.versionCode;
-        localSVConfigItem2.predownload = localSVConfigItem1.predownload;
-        localSVConfigItem2.extend1 = localSVConfigItem1.extend1;
-        localSVConfigItem2.extend2 = localSVConfigItem1.extend2;
-        localCopyOnWriteArrayList.add(localSVConfigItem2);
-      }
-      return localCopyOnWriteArrayList;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    }
-    bizq.b("AEResDownloader", "【onConfigResult】mDownLoadListItem.size :" + this.jdField_a_of_type_JavaUtilList.size());
-    int i;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 1)
-    {
-      i = ShortVideoResourceManager.a(null, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_b_of_type_JavaUtilMap == null)
-      {
-        bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
-        this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-      }
-      if (i != 0) {
-        break label209;
-      }
-      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(4));
-      bizq.b("AEResDownloader", "【onConfigResult Info】download config success");
-      a(a(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1);
-    }
-    Object localObject2;
-    label209:
-    do
-    {
-      return;
-      localObject2 = new CopyOnWriteArrayList();
-      int j = ShortVideoResourceManager.a(null, (List)localObject2);
-      i = j;
-      if (j != 0) {
-        break;
-      }
-      i = j;
-      if (((List)localObject2).size() <= 0) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList = null;
-      this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
-      i = j;
-      break;
-      if (ShortVideoResourceManager.a("[{\n        \"name\": \"new_qq_android_native_short_filter_62\",\n        \"arm_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"armv7a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"x86_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62.zip\",\n        \"arm64v8a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_short_filter_62_64bit.zip\",\n        \"arm_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"armv7a_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"x86_md5\": \"124a724c15ec4750ba2c7c839d0940e7\",\n        \"arm64v8a_md5\": \"c2389ffc9a539aeac0a6921ad6321ee2\",\n        \"versionCode\": \"62\",\n        \"predownload\": false\n    },{\n        \"name\": \"new_qq_android_native_ptu_res_70\",\n        \"arm_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"armv7a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"x86_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70.zip\",\n        \"arm64v8a_url\": \"http://down.qq.com/shadow_qqcamera/Android/new_qq_android_native_ptu_res_70_64bit.zip\",\n        \"arm_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"armv7a_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"x86_md5\": \"68611e650a7057e4cca3fe9091c589c8\",\n        \"arm64v8a_md5\": \"858d312925b6e2edcaa44e92a104d92c\",\n        \"versionCode\": \"70\",\n        \"predownload\": false\n    }]", this.jdField_a_of_type_JavaUtilList) == 0)
-      {
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(4));
-        bizq.b("AEResDownloader", "【onConfigResult Info】Use Local to Download package");
-        a(a(this.jdField_a_of_type_JavaUtilList), (QQAppInterface)localObject1);
-        return;
-      }
-      this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(-1));
-      bizq.d("AEResDownloader", "【Error】Local Config is not useful！！！！");
-    } while ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() <= 0));
-    localObject1 = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      i = ((Integer)((Iterator)localObject1).next()).intValue();
-      localObject2 = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((birb)((Iterator)localObject2).next()).a(i, false, -102);
-      }
-    }
-  }
-  
-  private void a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable QQAppInterface paramQQAppInterface)
-  {
-    if ((paramList == null) || (paramQQAppInterface == null)) {
-      bizq.d("AEResDownloader", "【SERIOUS ERROR】startDownLoad: listItem == null || appInterface == null");
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
-    {
-      int i;
-      int j;
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek() == null)
+        localObject = (HashMap)this._data.get(paramString);
+        if (localObject != null)
         {
-          bizq.d("AEResDownloader", "[Download Queue empty]");
-          return;
-        }
-        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek()).intValue();
-        if ((this.jdField_b_of_type_JavaUtilMap != null) && (this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(i))))
-        {
-          j = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i))).intValue();
-          bizq.a("AEResDownloader", "[ready to Download] res_to_download:" + i);
-          bizq.a("AEResDownloader", "[ready to Download] status:" + j);
-          if (!a()) {
-            break label265;
-          }
-          if (j == 3) {
-            return;
-          }
-          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
-          if (j == 2) {
-            a(paramList, paramQQAppInterface, i);
-          }
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
-          bizq.b("AEResDownloader", "【AEResDownloader】follow doUserDownloadResourceFilterAsync");
-          ShortVideoResourceManager.a(paramQQAppInterface, paramList, this, (String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
-          return;
-        }
-      }
-      catch (NoSuchElementException paramList)
-      {
-        bizq.d("AEResDownloader", "【SERIOUS ERROR】LinkedList.getFirst():NoSuchElementException ");
-        return;
-      }
-      bizq.d("AEResDownloader", "[SERIOUS ERROR] cant find mission");
-      return;
-      label265:
-      if ((j != 3) && (j != 2))
-      {
-        if (!a(paramList, this, paramQQAppInterface, i))
-        {
-          bizq.b("AEResDownloader", "【AEResDownloader】follow doUserDownloadResourceFilterAsync");
-          a(paramList, paramQQAppInterface, i);
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), Long.valueOf(System.currentTimeMillis()));
-          ShortVideoResourceManager.a(paramQQAppInterface, paramList, this, (String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
-          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
-          return;
-        }
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(2));
-      }
-    }
-  }
-  
-  private void a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable QQAppInterface paramQQAppInterface, @Nullable int paramInt)
-  {
-    if ((paramList == null) || (paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) == null)) {}
-    for (;;)
-    {
-      return;
-      paramQQAppInterface = (ayxq)paramQQAppInterface.getManager(193);
-      Iterator localIterator = paramList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        paramList = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
-      } while (!paramList.name.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))));
-      while ((paramQQAppInterface.a()) && (paramList != null))
-      {
-        if ((axfp.a()) && (paramList.check64BitReady()))
-        {
-          paramQQAppInterface.a(paramList.arm64v8a_url);
-          return;
-        }
-        paramQQAppInterface.a(paramList.armv7a_url);
-        return;
-        paramList = null;
-      }
-    }
-  }
-  
-  private boolean a(@Nullable List<ShortVideoResourceManager.SVConfigItem> paramList, @Nullable axeo paramaxeo, @Nullable QQAppInterface paramQQAppInterface, @Nullable int paramInt)
-  {
-    if ((paramList == null) || (paramQQAppInterface == null) || (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) == null)) {
-      return false;
-    }
-    ayxq localayxq = (ayxq)paramQQAppInterface.getManager(193);
-    Iterator localIterator = paramList.iterator();
-    ShortVideoResourceManager.SVConfigItem localSVConfigItem;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localSVConfigItem = (ShortVideoResourceManager.SVConfigItem)localIterator.next();
-    } while (!localSVConfigItem.name.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))));
-    for (;;)
-    {
-      if (localayxq.a())
-      {
-        paramaxeo = new bira(this, paramQQAppInterface, "ae_camera_res", new AEResDownloader.3(this, paramInt, paramQQAppInterface, paramList, paramaxeo), 4000L);
-        if (localSVConfigItem != null)
-        {
-          if ((axfp.a()) && (localSVConfigItem.check64BitReady())) {}
-          for (paramList = localSVConfigItem.arm64v8a_url;; paramList = localSVConfigItem.armv7a_url)
+          localObject = ((HashMap)localObject).entrySet().iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            boolean bool = localayxq.a(10091, null, localSVConfigItem.name, 0, paramList, ShortVideoResourceManager.a(localSVConfigItem.name), 4, 0, true, paramaxeo);
-            bizq.b("AEResDownloader", "【onConfigResult】ctrl.requestPreDownload :" + bool);
-            return bool;
-          }
-        }
-        return false;
-      }
-      return false;
-      localSVConfigItem = null;
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    bizj.a().a("key_ae_res_" + paramInt2, paramInt1, 4);
-  }
-  
-  private void b(int paramInt, @Nullable birb parambirb, boolean paramBoolean)
-  {
-    bizq.b("AEResDownloader", "【START】[requestAEKitDownload] + BEGIN, index = " + paramInt);
-    if (this.jdField_b_of_type_JavaUtilMap == null)
-    {
-      bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
-      this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-    }
-    if (!this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(0));
-    }
-    int i = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).intValue();
-    if (i == 4)
-    {
-      if (parambirb != null) {
-        parambirb.a(paramInt, true, 0);
-      }
-      bizq.b("AEResDownloader", "【AEDownLoad Ready】: package_index :" + paramInt);
-    }
-    do
-    {
-      return;
-      if (i == 3)
-      {
-        a(parambirb);
-        bizq.b("AEResDownloader", "【AEDownLoad DOWNLOADING】: package_index :" + paramInt);
-        return;
-      }
-      if ((bbev.g(null)) && ((!paramBoolean) || (bbev.h(null)))) {}
-      for (i = 1; i == 0; i = 0)
-      {
-        if (parambirb != null) {
-          parambirb.a(paramInt, false, -6);
-        }
-        bizq.d("AEResDownloader", "【AEDownLoad Error】: NetWork Error");
-        return;
-      }
-      a(parambirb);
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(Integer.valueOf(paramInt)))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(Integer.valueOf(paramInt));
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(1));
-      }
-      if (!this.jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(-1)))
-      {
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(-1), Integer.valueOf(3));
-        ShortVideoResourceManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this);
-        return;
-      }
-    } while ((this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(-1)) == null) || (((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(-1))).intValue() != 4));
-    a(1, 0);
-  }
-  
-  public void G_()
-  {
-    bizq.d("AEResDownloader", ajyc.a(2131699995));
-    axds.a(3, -1500);
-  }
-  
-  public int a(int paramInt)
-  {
-    if (this.jdField_b_of_type_JavaUtilMap != null)
-    {
-      Integer localInteger = (Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (localInteger != null) {
-        return localInteger.intValue();
-      }
-      return 0;
-    }
-    return 0;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new AEResDownloader.2(this));
-      return;
-    }
-    a();
-  }
-  
-  public void a(int paramInt, @Nullable birb parambirb, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new AEResDownloader.1(this, paramInt, parambirb, paramBoolean));
-      return;
-    }
-    b(paramInt, parambirb, paramBoolean);
-  }
-  
-  public void a(@Nullable birb parambirb)
-  {
-    if (parambirb == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.contains(parambirb))) {
-          continue;
-        }
-        this.jdField_b_of_type_JavaUtilList.add(parambirb);
-      }
-      finally {}
-    }
-  }
-  
-  public void a(@Nullable String paramString1, int paramInt, String paramString2)
-  {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    int i;
-    if ((paramInt == 0) || (paramInt == 1))
-    {
-      i = 0;
-      if (this.jdField_b_of_type_JavaUtilMap == null)
-      {
-        bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
-        this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-      }
-      paramString1 = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    }
-    int j;
-    label268:
-    label297:
-    label380:
-    long l;
-    for (;;)
-    {
-      if (paramString1.hasNext())
-      {
-        j = ((Integer)paramString1.next()).intValue();
-        if (str.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j))))
-        {
-          bizq.b("AEResDownloader", "【onDownloadFinish】 result = " + paramInt + ", name = " + str + ", filePath = " + paramString2);
-          if (i == 0)
-          {
-            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(j), Integer.valueOf(4));
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Integer.valueOf(j));
-            paramString1 = new Intent();
-            paramString1.setAction((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
-            paramString1.setPackage(BaseApplicationImpl.getContext().getPackageName());
-            BaseApplicationImpl.getContext().sendBroadcast(paramString1);
-            b(Integer.valueOf(str.substring(((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j))).length())).intValue(), j);
-            if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() <= 0)) {
-              break label386;
-            }
-            paramString1 = this.jdField_b_of_type_JavaUtilList.iterator();
-            if (!paramString1.hasNext()) {
-              break label386;
-            }
-            paramString2 = (birb)paramString1.next();
-            if (i != 0) {
-              break label380;
-            }
-          }
-          for (bool = true;; bool = false)
-          {
-            paramString2.a(j, bool, i);
-            break label297;
-            i = paramInt;
-            break;
-            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(j), Integer.valueOf(0));
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(Integer.valueOf(j));
-            break label268;
-          }
-          label386:
-          if (paramInt != 1)
-          {
-            l = -1L;
-            if (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j)) != null) {
-              l = System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j))).longValue();
-            }
-            paramString1 = bizc.a();
-            if (paramInt != 0) {
-              break label493;
-            }
+            localObject = (Map.Entry)((Iterator)localObject).next();
+            ((Map.Entry)localObject).setValue(a((byte[])((Map.Entry)localObject).getValue()));
           }
         }
       }
     }
-    label493:
     for (boolean bool = true;; bool = false)
     {
-      paramString1.a(bool, j, paramInt, l);
-      bizq.b("AEResDownloader", "【On DownLoadFinish】start download next");
-      paramString1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      a(a(this.jdField_a_of_type_JavaUtilList), paramString1);
-      return;
-    }
-  }
-  
-  public void a(@Nullable String paramString, long paramLong1, long paramLong2)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    if (this.jdField_b_of_type_JavaUtilMap == null)
-    {
-      bizq.d("AEResDownloader", "【AEDownLoad Error】: mStatusMap NULL");
-      this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
-    }
-    bizq.a("AEResDownloader", "[onUpdateProgress] name = " + str + ", totalLen = " + paramLong2 + ", curOffset = " + paramLong1);
-    paramString = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (paramString.hasNext())
-    {
-      int i = ((Integer)paramString.next()).intValue();
-      if (str.startsWith((String)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i))))
-      {
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), Integer.valueOf(3));
-        if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
-        {
-          Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext()) {
-            ((birb)localIterator.next()).a(i, paramLong1, paramLong2);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(@Nullable birb parambirb)
-  {
-    if (parambirb == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (this.jdField_b_of_type_JavaUtilList == null) {
-          continue;
-        }
-        this.jdField_b_of_type_JavaUtilList.remove(parambirb);
-      }
-      finally {}
+      a(bool);
+      return super.getByClass(paramString, paramT);
+      QLog.e("CompressUniPacket", 1, "not compressed " + new String((byte[])localObject));
     }
   }
 }

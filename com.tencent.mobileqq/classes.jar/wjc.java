@@ -1,8 +1,16 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
-public abstract interface wjc
+public class wjc
+  implements View.OnClickListener
 {
-  public abstract void a(List<wko> paramList, boolean paramBoolean);
+  public wjc(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  
+  public void onClick(View paramView)
+  {
+    FollowedRecommendBannerView.a(this.a);
+  }
 }
 
 

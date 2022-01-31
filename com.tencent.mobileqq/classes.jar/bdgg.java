@@ -1,17 +1,87 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.net.Uri;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.OpenJsBridge.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.List;
 
 public class bdgg
-  implements DialogInterface.OnClickListener
+  extends arlw
 {
-  public bdgg(DownloadNativeApi.1 param1) {}
+  public HashMap<String, arly> b = new HashMap();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public HashMap<String, arly> a()
   {
-    bdfv.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    bdgf.a(this.a.this$0).a(this.a.jdField_a_of_type_Bdgk);
-    paramDialogInterface.dismiss();
+    return this.b;
+  }
+  
+  public void a(arly paramarly, String paramString)
+  {
+    this.b.put(paramString, paramarly);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.b.clear();
+      return;
+    }
+    this.b.remove(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2, List<String> paramList, arlx paramarlx)
+  {
+    long l1 = System.currentTimeMillis();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j) {
+        try
+        {
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
+            }
+          }
+        }
+      }
+    }
+    long l2 = System.currentTimeMillis();
+    bdii.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
+    paramString1 = (arly)this.b.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramarlx);
+    }
+    while (!(paramarlx instanceof bdgh)) {
+      return;
+    }
+    ((bdgh)paramarlx).b(paramString2);
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    if (paramString == null) {}
+    Uri localUri;
+    do
+    {
+      return false;
+      localUri = Uri.parse(paramString);
+    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
+    bdii.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
+    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
+    return true;
   }
 }
 

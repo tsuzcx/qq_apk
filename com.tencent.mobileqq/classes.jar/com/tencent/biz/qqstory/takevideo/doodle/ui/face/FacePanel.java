@@ -7,22 +7,22 @@ import android.widget.RelativeLayout;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.LogoIconListView;
+import vop;
+import vor;
 import vos;
-import vou;
-import vov;
+import voy;
 import vpb;
-import vpe;
-import vpi;
+import vpf;
 
 public class FacePanel
   extends RelativeLayout
-  implements vpb
+  implements voy
 {
   public FacePagerAdapter a;
   public FaceViewPager a;
   public LogoIconListView a;
-  public vpe a;
-  public vpi a;
+  public vpb a;
+  public vpf a;
   
   public FacePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,11 +32,11 @@ public class FacePanel
   
   private void b()
   {
-    LayoutInflater.from(super.getContext()).inflate(2131561236, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView = ((LogoIconListView)super.findViewById(2131369580));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setOnItemClickListener(new vou(this));
-    this.jdField_a_of_type_Vpi = new vpi(super.getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setAdapter(this.jdField_a_of_type_Vpi);
+    LayoutInflater.from(super.getContext()).inflate(2131561235, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView = ((LogoIconListView)super.findViewById(2131369579));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setOnItemClickListener(new vor(this));
+    this.jdField_a_of_type_Vpf = new vpf(super.getContext());
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetLogoIconListView.setAdapter(this.jdField_a_of_type_Vpf);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)super.findViewById(2131365857));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
@@ -47,26 +47,26 @@ public class FacePanel
   public void a()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a();
-    this.jdField_a_of_type_Vpi.a();
+    this.jdField_a_of_type_Vpf.a();
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramInt);
-    this.jdField_a_of_type_Vpi.a();
+    this.jdField_a_of_type_Vpf.a();
   }
   
-  public void setAdapter(vpe paramvpe)
+  public void setAdapter(vpb paramvpb)
   {
-    if (this.jdField_a_of_type_Vpe != null) {
-      this.jdField_a_of_type_Vpe.b(this);
+    if (this.jdField_a_of_type_Vpb != null) {
+      this.jdField_a_of_type_Vpb.b(this);
     }
-    this.jdField_a_of_type_Vpe = paramvpe;
-    if (this.jdField_a_of_type_Vpe != null) {
-      this.jdField_a_of_type_Vpe.a(this);
+    this.jdField_a_of_type_Vpb = paramvpb;
+    if (this.jdField_a_of_type_Vpb != null) {
+      this.jdField_a_of_type_Vpb.a(this);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Vpe);
-    this.jdField_a_of_type_Vpi.a(this.jdField_a_of_type_Vpe);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Vpb);
+    this.jdField_a_of_type_Vpf.a(this.jdField_a_of_type_Vpb);
   }
   
   public void setCurrentItem(int paramInt)
@@ -74,14 +74,14 @@ public class FacePanel
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
   }
   
-  public void setDownloadListener(vos paramvos)
+  public void setDownloadListener(vop paramvop)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramvos);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramvop);
   }
   
-  public void setOnFaceSelectedListener(vov paramvov)
+  public void setOnFaceSelectedListener(vos paramvos)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramvov);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramvos);
   }
 }
 

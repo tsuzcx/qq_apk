@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import osj;
+import osg;
 
 class ReadInJoyListViewGroup$23
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyListViewGroup$23
   
   public void run()
   {
-    osj.a().a(this.this$0.getContext());
+    osg.a().a(this.this$0.getContext());
   }
 }
 

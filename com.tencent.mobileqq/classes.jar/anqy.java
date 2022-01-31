@@ -1,19 +1,17 @@
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anqy
-  implements QQPermissionCallback
+public final class anqy
 {
-  anqy(anqx paramanqx) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static anqj a(QQAppInterface paramQQAppInterface, anrc paramanrc, int paramInt)
   {
-    bbcv.b(this.a.a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.c();
-    anqx.a(this.a).f();
+    switch (paramInt)
+    {
+    default: 
+      return new anrm(paramQQAppInterface, paramanrc);
+    case 0: 
+      return new anrm(paramQQAppInterface, paramanrc);
+    }
+    return new anqk(paramQQAppInterface, paramanrc);
   }
 }
 

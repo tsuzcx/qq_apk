@@ -1,41 +1,11 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
 
-final class yus
-  extends QIPCModule
+public class yus
+  implements ytk
 {
-  private static volatile yus a;
+  public yus(GdtDemoMvFragment paramGdtDemoMvFragment) {}
   
-  private yus(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public static yus a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new yus("gdt_server_ipc");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    yxs.b("GdtInterstitialPreDownloader", String.format("onCall action:%s", new Object[] { paramString }));
-    if (TextUtils.equals(paramString, "PRELOAD_INTERSTITIAL_MAIN_TO_TOOL")) {
-      yuo.b(yuo.a());
-    }
-    paramString = new EIPCResult();
-    paramString.code = 0;
-    return paramString;
-  }
+  public void onDismiss() {}
 }
 
 

@@ -1,12 +1,15 @@
-public abstract interface aiyo
+public class aiyo
 {
-  public abstract void a();
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public aiyo(String paramString1, String paramString2, String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 

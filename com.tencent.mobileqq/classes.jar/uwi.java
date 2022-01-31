@@ -1,49 +1,35 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public class uwi
-  extends uxr<GeneralFeedItem>
+class uwi
+  implements syq<tlw, tlx>
 {
-  public boolean a;
+  uwi(uwh paramuwh, JobContext paramJobContext, uvu paramuvu) {}
   
-  public uwi(@NonNull GeneralFeedItem paramGeneralFeedItem)
+  public void a(@NonNull tlw paramtlw, @Nullable tlx arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramGeneralFeedItem);
-  }
-  
-  public GeneralFeedItem a()
-  {
-    return (GeneralFeedItem)super.a();
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
-    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    veg.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
+      return;
     }
-    c(paramStoryFeed, true);
-    return true;
+    tlx localtlx = ???;
+    if (??? == null) {
+      localtlx = new tlx(paramErrorMessage);
+    }
+    if (paramErrorMessage.isFail()) {
+      ved.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
+    }
+    synchronized (this.jdField_a_of_type_Uwh)
+    {
+      uwh.a(this.jdField_a_of_type_Uwh, localtlx);
+      uwh.a(this.jdField_a_of_type_Uwh).remove(paramtlw);
+      uwh.a(this.jdField_a_of_type_Uwh, this.jdField_a_of_type_Uvu);
+      return;
+    }
   }
 }
 

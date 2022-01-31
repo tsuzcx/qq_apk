@@ -1,8 +1,7 @@
-import android.view.View;
-
-public abstract interface mvg
+public class mvg
 {
-  public abstract void a(View paramView);
+  public int a;
+  public String a;
 }
 
 

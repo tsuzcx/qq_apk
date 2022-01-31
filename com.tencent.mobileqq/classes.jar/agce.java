@@ -1,6 +1,10 @@
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+
 public abstract interface agce
 {
-  public abstract void c();
+  public abstract void a();
+  
+  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
 }
 
 

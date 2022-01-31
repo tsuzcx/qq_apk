@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeno;
+import aenm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 public class ConfessChatPie$4
   implements Runnable
 {
-  public ConfessChatPie$4(aeno paramaeno) {}
+  public ConfessChatPie$4(aenm paramaenm) {}
   
   public void run()
   {

@@ -1,22 +1,52 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Context;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class ptt
-  implements View.OnTouchListener
+public class ptt
+  extends pqq
 {
-  ptt(pto parampto, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ptt(Context paramContext, baxy parambaxy, ram paramram)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return c();
+  }
+  
+  public pqq d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    return false;
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentSpecialTopic))) {
+      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Pqp);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pqq e()
+  {
+    return null;
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

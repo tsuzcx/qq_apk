@@ -1,20 +1,21 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class abkg
-  implements View.OnClickListener
+  implements ViewSwitcher.ViewFactory
 {
-  public abkg(LbsBaseActivity paramLbsBaseActivity) {}
+  public abkg(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public View makeView()
   {
-    atbg.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
-    }
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

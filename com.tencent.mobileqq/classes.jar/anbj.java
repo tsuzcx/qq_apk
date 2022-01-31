@@ -1,65 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbj
-  extends ampb<anbi>
 {
-  public int a()
-  {
-    return 294;
-  }
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  @NonNull
-  public anbi a(int paramInt)
+  public static anbj a(amph[] paramArrayOfamph)
   {
-    return new anbi();
-  }
-  
-  @Nullable
-  public anbi a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anbi.a(paramArrayOfampi);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocAIOPlusPanelEntryConfigBean", 2, "AIO_TENCENTDOC_ENTRY_CONFIG handleAioPlusPenalTencentDocEntryCofig");
     }
-    return null;
-  }
-  
-  public Class<anbi> a()
-  {
-    return anbi.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(anbi paramanbi)
-  {
-    if (paramanbi == null) {}
-    while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0))
+    {
+      paramArrayOfamph = null;
+      return paramArrayOfamph;
     }
-    ayfv.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramanbi.a());
-    ayfv.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramanbi.b());
+    anbj localanbj = new anbj();
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfamph = localanbj;
+        if (!localJSONObject.has("tencentDocAioSendEntry")) {
+          break;
+        }
+        localJSONObject = localJSONObject.getJSONObject("tencentDocAioSendEntry");
+        if (localJSONObject.has("aioSendDocSwitch"))
+        {
+          if (localJSONObject.getInt("aioSendDocSwitch") == 1) {
+            localanbj.jdField_a_of_type_Boolean = bool;
+          }
+        }
+        else
+        {
+          paramArrayOfamph = localanbj;
+          if (!localJSONObject.has("webDocSelectorUrl")) {
+            break;
+          }
+          localanbj.jdField_a_of_type_JavaLangString = localJSONObject.getString("webDocSelectorUrl");
+          return localanbj;
+        }
+      }
+      catch (JSONException paramArrayOfamph)
+      {
+        paramArrayOfamph.printStackTrace();
+        return localanbj;
+      }
+      bool = false;
+    }
   }
   
-  public int b()
+  public String a()
   {
-    return 0;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean b()
+  public boolean a()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

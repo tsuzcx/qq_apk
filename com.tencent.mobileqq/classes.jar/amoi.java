@@ -1,39 +1,88 @@
+import android.util.Pair;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
-class amoi
-  implements Comparator<amoj>
+public class amoi
 {
-  amoi(amoe paramamoe, boolean paramBoolean, ArrayList paramArrayList) {}
+  public float a;
+  public int a;
+  public String a;
+  public ArrayList<Pair<String, Float>> a;
+  Set<Integer> a;
+  public boolean a;
+  public int b;
+  public int c = 36;
   
-  public int a(amoj paramamoj1, amoj paramamoj2)
+  public amoi(String paramString)
   {
-    int i = -1;
-    if (paramamoj1.jdField_a_of_type_Int > paramamoj2.jdField_a_of_type_Int) {}
-    do
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = amoa.a(paramString, this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Float = amoa.a(paramString);
+    this.b = this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.c = a(this.b);
+    this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
+    if (this.jdField_a_of_type_Boolean)
     {
-      return 1;
-      if (paramamoj1.jdField_a_of_type_Int < paramamoj2.jdField_a_of_type_Int) {
-        return -1;
+      this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b));
+      if (this.b % 2 != 0) {
+        break label172;
       }
-      if ((paramamoj1.jdField_a_of_type_Boolean) && (!paramamoj2.jdField_a_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
-      }
-      if ((paramamoj1.jdField_a_of_type_Boolean) || (!paramamoj2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramamoj1.jdField_a_of_type_Float - paramamoj2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramamoj1.jdField_a_of_type_Float, paramamoj2.jdField_a_of_type_Float);
     }
-    return 0;
+    for (;;)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(2));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 2));
+      }
+      return;
+      label172:
+      i = 0;
+    }
+  }
+  
+  private int a(int paramInt)
+  {
+    if (paramInt <= 2) {
+      paramInt = amoa.a.nextInt(8) - 4 + 74;
+    }
+    for (;;)
+    {
+      return paramInt / 4 * 4;
+      if (paramInt <= 4) {
+        paramInt = amoa.a.nextInt(8) - 4 + 70;
+      } else if (paramInt <= 6) {
+        paramInt = amoa.a.nextInt(8) - 4 + 66;
+      } else if (paramInt <= 8) {
+        paramInt = amoa.a.nextInt(8) - 4 + 62;
+      } else {
+        paramInt = amoa.a.nextInt(8) - 4 + 60;
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b % 3 != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(this.b / 3));
+      }
+      return;
+    }
   }
 }
 

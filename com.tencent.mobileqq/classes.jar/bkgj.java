@@ -1,158 +1,182 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class bkgj
-  extends LinearLayout
+public class bkgj
+  extends bkfz
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  private final int d = 5;
+  public final List<bkgl> a;
+  public boolean b;
+  public int c;
+  public int d;
+  public String f;
+  public String g;
   
-  public bkgj(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public bkgj(@NonNull String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    paramInt1 = bkht.a(getContext(), 6.0F);
-    this.c = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
-    a();
+    super(paramString);
+    this.jdField_c_of_type_Int = 100;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a()
+  public int a(int paramInt)
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = bkht.a(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    if (i < this.b)
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    if ((!bbkk.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131559002, null);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.c);
-      if (i == 0) {
-        localLayoutParams.setMargins(0, j, j / 2, 0);
-      }
-      for (;;)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        localView.setLayoutParams(localLayoutParams);
-        ((ImageView)localView.findViewById(2131369540)).setPadding(k, k, k, k);
-        addView(localView);
-        i += 1;
-        break;
-        if (this.b - 1 == i) {
-          localLayoutParams.setMargins(j / 2, j, 0, 0);
-        } else {
-          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
+        bkgl localbkgl = (bkgl)localIterator.next();
+        if (paramString.equals(localbkgl.jdField_a_of_type_JavaLangString)) {
+          return localbkgl.jdField_a_of_type_Int;
         }
       }
     }
+    return 0;
   }
   
-  private void a(int paramInt)
+  public String a()
   {
-    int i = 0;
+    return "NormalFacePackage";
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    }
+    return null;
+  }
+  
+  public String a(String paramString)
+  {
+    if ((!bbkk.a(paramString)) && (this.jdField_a_of_type_JavaUtilList != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bkgl localbkgl = (bkgl)localIterator.next();
+        if (paramString.equals(localbkgl.jdField_a_of_type_JavaLangString)) {
+          return localbkgl.b;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public List<bkgl> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(this.g)) {}
+    Object localObject;
+    do
+    {
+      return null;
+      localObject = new File(this.g);
+    } while (!((File)localObject).exists());
     int j;
+    File localFile1;
+    if (((File)localObject).isDirectory())
+    {
+      File[] arrayOfFile = ((File)localObject).listFiles(new bkgk(this));
+      if (arrayOfFile != null)
+      {
+        int k = arrayOfFile.length;
+        j = 0;
+        if (j < k)
+        {
+          localFile1 = arrayOfFile[j];
+          if (this.jdField_a_of_type_JavaUtilList.size() < 100) {
+            break label104;
+          }
+        }
+      }
+    }
+    return localArrayList;
+    label104:
+    String str = localFile1.getName();
+    int i;
+    if (str.endsWith(".apng")) {
+      i = 1;
+    }
     for (;;)
     {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
+      label123:
+      File localFile2;
+      if (i == 1)
+      {
+        localObject = localFile1.getAbsolutePath();
+        localObject = ((String)localObject).substring(0, ((String)localObject).length() - 5) + ".bpng";
+        localFile2 = new File((String)localObject);
+        if ((!localFile2.isFile()) || (!localFile2.exists())) {}
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
+      for (localObject = localFile2.toURI().toString();; localObject = null)
+      {
+        localArrayList.add(new bkgl(str, localFile1.toURI().toString(), i, (String)localObject));
+        j += 1;
         break;
+        if (!str.endsWith(".gif")) {
+          break label293;
+        }
+        i = 2;
+        break label123;
+        if (QLog.isColorLevel()) {
+          QLog.d("FacePackage", 2, "dynamicStatic thumbFile not exist " + (String)localObject);
+        }
       }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
+      label293:
+      i = 0;
     }
   }
   
-  public void a(bkfp parambkfp, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(List<bkgl> paramList)
   {
-    int i = paramInt1 * this.b;
-    label31:
-    URLImageView localURLImageView;
-    ProgressBar localProgressBar;
-    String str;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = parambkfp.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
-      }
-      localObject1 = getChildAt(paramInt2 - i);
-      localObject2 = ((View)localObject1).findViewById(2131369551);
-      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131369540);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131369552);
-      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131369550);
-      str = parambkfp.b(paramInt2);
-      localObject1 = parambkfp.a(paramInt2);
-      if (localObject1 != null) {
-        break label146;
-      }
-      veg.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { parambkfp.toString() });
+    if (paramList == null) {
+      return;
     }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label146:
-      ((TextView)localObject3).setText(str);
-      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131376871, Integer.valueOf(paramInt2));
-      if (paramBoolean) {
-        break label193;
-      }
-      localProgressBar.setVisibility(4);
-      localURLImageView.setImageDrawable(null);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((bkgl)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_JavaLangString;
     }
-    label193:
-    localURLImageView.setTag(2131376880, localObject1);
-    localURLImageView.setTag(2131376849, Boolean.valueOf(false));
-    localProgressBar.setVisibility(0);
-    Object localObject2 = new bkgk((String)localObject1, localURLImageView, localProgressBar);
-    localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = aywk.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = aywk.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-    Object localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-    if (((URLDrawable)localObject1).getStatus() == 1) {
-      ((bkgk)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      break;
-      localObject1 = null;
-    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append(", zipDownloadUrl='").append(this.f).append('\'');
+    localStringBuffer.append(", facePkgPath='").append(this.g).append('\'');
+    localStringBuffer.append(", isDownloading=").append(this.b);
+    localStringBuffer.append(", maxProgress=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", currentProgress=").append(this.d);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

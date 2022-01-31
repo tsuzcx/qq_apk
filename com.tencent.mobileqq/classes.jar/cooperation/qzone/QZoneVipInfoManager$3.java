@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bgxy;
+import bgyp;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class QZoneVipInfoManager$3
@@ -10,7 +10,7 @@ public final class QZoneVipInfoManager$3
   
   public void run()
   {
-    bgxy.a(this.a, "h5");
+    bgyp.a(this.a, "h5");
   }
 }
 

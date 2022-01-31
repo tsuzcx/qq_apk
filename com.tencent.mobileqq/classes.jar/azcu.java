@@ -1,13 +1,16 @@
-import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import mqq.app.QQPermissionCallback;
 
-class azcu
-  implements azhj
+public class azcu
+  implements QQPermissionCallback
 {
-  azcu(azct paramazct) {}
+  public azcu(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void a(Uri paramUri)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.a = paramUri;
+    this.a.a(this.a, this.a);
   }
 }
 

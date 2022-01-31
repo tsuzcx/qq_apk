@@ -1,52 +1,33 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
 
 public class aijd
+  extends Handler
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public aijd(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  static aijd a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramJSONObject == null) {
-      return new aijd();
-    }
-    aijd localaijd = new aijd();
-    try
+    switch (paramMessage.what)
     {
-      localaijd.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localaijd.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localaijd.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localaijd.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localaijd.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localaijd.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localaijd.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localaijd.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localaijd.g = paramJSONObject.getString("classifyName");
-      localaijd.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localaijd.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localaijd.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localaijd.h = paramJSONObject.getString("trialstartday");
-      localaijd.i = paramJSONObject.getString("trialendday");
-      return localaijd;
     }
-    catch (JSONException paramJSONObject)
+    do
     {
-      paramJSONObject.printStackTrace();
-    }
-    return localaijd;
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      bcql.a(BaseApplication.getContext(), 1, 2131694610, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (this.a.jdField_a_of_type_Bcqf == null) {
+        this.a.jdField_a_of_type_Bcqf = new bcqf(this.a, this.a.getTitleBarHeight());
+      }
+      this.a.jdField_a_of_type_Bcqf.c(2131699495);
+    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bcqf.isShowing()));
+    this.a.jdField_a_of_type_Bcqf.show();
   }
 }
 

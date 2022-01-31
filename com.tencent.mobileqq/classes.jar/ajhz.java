@@ -1,69 +1,57 @@
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.concurrent.atomic.AtomicInteger;
 
 final class ajhz
-  extends bbwf
+  extends bbwt
 {
-  ajhz(File paramFile, airz paramairz, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, ajie paramajie, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
+  ajhz(String paramString, File paramFile, ajif paramajif) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onDone(bbwu parambbwu)
   {
-    boolean bool = true;
-    super.onDone(parambbwg);
-    if (3 == parambbwg.a()) {
+    super.onDone(parambbwu);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData onDone url" + this.jdField_a_of_type_JavaLangString + " task.getStatus():" + parambbwu.a());
+    }
+    if (3 == parambbwu.a()) {
       if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-    for (;;)
+    while (this.jdField_a_of_type_Ajif == null)
     {
-      try
+      do
       {
-        nay.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-        ajhw.a(this.jdField_a_of_type_Airz, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
-          break label421;
-        }
-        if (this.jdField_a_of_type_Ajie != null)
+        try
         {
-          parambbwg = this.jdField_a_of_type_Ajie;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
-            bool = false;
+          nav.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          if (this.jdField_a_of_type_Ajif != null) {
+            this.jdField_a_of_type_Ajif.a(true, 0);
           }
-          parambbwg.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          return;
+        }
+        catch (Exception parambbwu)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error  error->" + parambbwu.getMessage());
+            }
           }
         }
-        this.jdField_a_of_type_JavaIoFile.delete();
-        return;
-      }
-      catch (Exception parambbwg)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
+        catch (OutOfMemoryError parambbwu)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_JavaIoFile.delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloResDownloader", 2, "checkDownloadFaceData unZipFile file error resType->" + parambbwu.getMessage());
+            }
+          }
         }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
-        continue;
-      }
-      catch (OutOfMemoryError parambbwg)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwg.getMessage());
-        continue;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambbwg.a());
-      continue;
-      label421:
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      }
+      } while (this.jdField_a_of_type_Ajif == null);
+      this.jdField_a_of_type_Ajif.a(false, 0);
+      return;
     }
+    this.jdField_a_of_type_Ajif.a(false, 0);
   }
 }
 

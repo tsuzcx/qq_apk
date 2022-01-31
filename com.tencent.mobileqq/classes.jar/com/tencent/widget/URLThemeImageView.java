@@ -3,15 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bfwa;
-import bfwb;
+import bfwr;
+import bfws;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bfwb
+  implements bfws
 {
-  public bfwa a;
+  public bfwr a;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class URLThemeImageView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bfwa();
+        this.a = new bfwr();
       }
       this.a.a(true);
     }

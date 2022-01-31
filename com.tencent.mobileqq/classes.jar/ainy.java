@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class ainy
-  implements Animation.AnimationListener
+  implements bfso
 {
-  ainy(ainv paramainv, View paramView) {}
+  ainy(aint paramaint) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScrollStateChanged(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getTag() instanceof aiob))) {
-      ((aiob)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+    if (paramInt != 4097) {
+      return;
     }
-    ainv.a(this.jdField_a_of_type_Ainv);
+    this.a.e();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

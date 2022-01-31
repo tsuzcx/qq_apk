@@ -1,17 +1,45 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxp
-  implements DialogInterface.OnClickListener
+  extends adxr
 {
-  public adxp(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
+  public adxp(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    aaod.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
+    }
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+    do
+    {
+      return;
+      paramString1 = ((tcw)tcz.a(5)).a(paramString1);
+      if (paramString1 != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxs, this.jdField_a_of_type_Long, paramString1, false);
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxs, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Adxs, this.jdField_a_of_type_Long);
   }
 }
 

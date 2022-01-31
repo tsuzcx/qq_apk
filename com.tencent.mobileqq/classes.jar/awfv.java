@@ -1,16 +1,8 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.view.View;
 
-public final class awfv
-  extends Editable.Factory
+public abstract interface awfv
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof ayks)) {
-      return (Editable)paramCharSequence;
-    }
-    return new ayks(paramCharSequence, 1, 20);
-  }
+  public abstract void a(awfu paramawfu, View paramView);
 }
 
 

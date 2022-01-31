@@ -1,17 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-public abstract interface ahuc
+public class ahuc
 {
-  public abstract String a();
-  
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Activity paramActivity, Intent paramIntent);
-  
-  public abstract void c_(String paramString);
+  public static <T extends ahub> T a(FlowActivity paramFlowActivity, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new ahud(paramFlowActivity);
+  }
 }
 
 

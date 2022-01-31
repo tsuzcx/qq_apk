@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
 public class abxe
-  extends akup
+  extends ajto
 {
-  public abxe(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public abxe(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
     {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
       }
-      aikz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      return;
     }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

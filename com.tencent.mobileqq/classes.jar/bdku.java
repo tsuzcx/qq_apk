@@ -1,22 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import android.os.Bundle;
 
-class bdku
-  implements ITMAssistantDownloadLogListener
+public abstract interface bdku
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
-  
-  bdku(bdkp parambdkp) {}
-  
-  public void onLog(ArrayList<TMAssistantDownloadLogInfo> paramArrayList)
-  {
-    if ((paramArrayList == null) && (QLog.isColorLevel())) {
-      QLog.i("DownloadManager_", 2, "logList is null");
-    }
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle);
 }
 
 

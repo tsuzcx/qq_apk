@@ -1,51 +1,55 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class abzd
-  extends aume
+  extends AccountObserver
 {
-  public abzd(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public abzd(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
+    RegisterSendUpSms.c(this.a, paramInt1);
     if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
-    }
-    if (paramBoolean1)
+    if (paramInt1 == 4) {}
+    for (;;)
     {
-      if (paramBoolean2)
-      {
-        RegisterQQNumberActivity.a(this.a, true);
-        RegisterQQNumberActivity.b(this.a);
-        return;
-      }
-      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
-      {
-        RegisterQQNumberActivity.a(this.a);
-        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
-        localIntent.putExtra("phonenum", this.a.a);
-        localIntent.putExtra("key", this.a.b);
-        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_binduin", paramString);
-        this.a.startActivity(localIntent);
-        this.a.finish();
-        return;
-      }
-      RegisterQQNumberActivity.b(this.a);
+      RegisterSendUpSms.a(this.a, 0);
       return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
+      {
+        RegisterSendUpSms.a(this.a).setText(ajya.a(2131713373));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
+      }
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131717152);
+        }
+        bcql.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
     }
-    RegisterQQNumberActivity.b(this.a);
   }
 }
 

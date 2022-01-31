@@ -1,12 +1,16 @@
-public abstract interface vdy
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+
+public class vdy
+  extends DataSetObserver
 {
-  public abstract void O_();
+  public vdy(TagFlowLayout paramTagFlowLayout) {}
   
-  public abstract void a(vvh paramvvh);
-  
-  public abstract void f();
-  
-  public abstract void h();
+  public void onChanged()
+  {
+    super.onChanged();
+    this.a.a();
+  }
 }
 
 

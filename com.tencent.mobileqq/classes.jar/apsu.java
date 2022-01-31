@@ -1,16 +1,15 @@
-public abstract interface apsu
+public class apsu
 {
-  public abstract long a(aysx paramaysx);
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void b();
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
 }
 
 

@@ -1,26 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
-class anns
+public abstract interface anns
 {
-  anns(annr paramannr) {}
-  
-  @QQPermissionDenied(1819)
-  public void denied()
-  {
-    QLog.e("CameraHelper", 1, "checkPermission user denied");
-    annr.a(this.a);
-    annr.a(this.a, false, 1830003);
-  }
-  
-  @QQPermissionGrant(1819)
-  public void grant()
-  {
-    QLog.d("CameraHelper", 1, "checkPermission user grant");
-    annr.a(this.a);
-    annr.a(this.a, true, 0);
-  }
+  public abstract void a(annr paramannr);
 }
 
 

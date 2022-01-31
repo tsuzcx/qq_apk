@@ -1,298 +1,447 @@
-import android.os.Looper;
+import android.content.ServiceConnection;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.DeadObjectException;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.IBinder.DeathRecipient;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.ResponseHandler.1;
+import cooperation.wadl.ipc.WadlProxyService;
+import cooperation.wadl.ipc.WadlProxyServiceManager.1;
+import cooperation.wadl.ipc.WadlProxyServiceMonitor;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bici
 {
-  private static volatile int jdField_a_of_type_Int;
-  private static bicj jdField_a_of_type_Bicj = new bicj(Looper.getMainLooper());
-  private static volatile String jdField_a_of_type_JavaLangString;
-  private static volatile int jdField_b_of_type_Int;
-  private static volatile String jdField_b_of_type_JavaLangString;
-  private static volatile int c;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bick(this);
+  public Handler a;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("WadlClientMessage.Thread", 10);
+  private IBinder.DeathRecipient jdField_a_of_type_AndroidOsIBinder$DeathRecipient = new bicj(this);
+  private bibz jdField_a_of_type_Bibz;
+  private bica jdField_a_of_type_Bica;
+  private bicm jdField_a_of_type_Bicm;
+  private bicn jdField_a_of_type_Bicn = new bicn(this);
+  private List<Bundle> jdField_a_of_type_JavaUtilList = new Vector();
+  private CopyOnWriteArrayList<bich> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  public boolean a;
+  private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  /* Error */
-  public static String a(android.content.Context paramContext)
+  public bici()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   6: sipush 1127
-    //   9: if_icmpne +15 -> 24
-    //   12: aload_0
-    //   13: ldc 40
-    //   15: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
-    //   18: astore_0
-    //   19: ldc 2
-    //   21: monitorexit
-    //   22: aload_0
-    //   23: areturn
-    //   24: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   27: sipush 22000
-    //   30: if_icmpne +13 -> 43
-    //   33: aload_0
-    //   34: ldc 40
-    //   36: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
-    //   39: astore_0
-    //   40: goto -21 -> 19
-    //   43: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   46: sipush 1053
-    //   49: if_icmpeq +12 -> 61
-    //   52: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   55: sipush -20001
-    //   58: if_icmpne +13 -> 71
-    //   61: aload_0
-    //   62: ldc 47
-    //   64: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
-    //   67: astore_0
-    //   68: goto -49 -> 19
-    //   71: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   74: sipush 22081
-    //   77: if_icmpne +13 -> 90
-    //   80: aload_0
-    //   81: ldc 48
-    //   83: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
-    //   86: astore_0
-    //   87: goto -68 -> 19
-    //   90: getstatic 39	bici:jdField_b_of_type_Int	I
-    //   93: sipush 22121
-    //   96: if_icmpne +13 -> 109
-    //   99: aload_0
-    //   100: ldc 49
-    //   102: invokevirtual 46	android/content/Context:getString	(I)Ljava/lang/String;
-    //   105: astore_0
-    //   106: goto -87 -> 19
-    //   109: aconst_null
-    //   110: astore_0
-    //   111: goto -92 -> 19
-    //   114: astore_0
-    //   115: ldc 2
-    //   117: monitorexit
-    //   118: aload_0
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	paramContext	android.content.Context
-    // Exception table:
-    //   from	to	target	type
-    //   3	19	114	finally
-    //   24	40	114	finally
-    //   43	61	114	finally
-    //   61	68	114	finally
-    //   71	87	114	finally
-    //   90	106	114	finally
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_Bicm = new bicm(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("WadlClientJob.Thread", 10);
+    this.jdField_b_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_Bibz = new WadlProxyServiceMonitor(this);
   }
   
-  public static void a()
+  private void c(Bundle paramBundle)
   {
+    if (this.jdField_a_of_type_JavaUtilList.size() > 100)
+    {
+      bdot.a("WadlProxyServiceManager", "##@there must be an error too many unproceed message!");
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramBundle);
+  }
+  
+  private void d(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      paramBundle = (WadlResult)paramBundle.getParcelable("download_result");
+      bdot.b("WadlProxyServiceManager", "downloadActionCallback params:" + paramBundle + ",callBackList size=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      if (paramBundle != null)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        while (localIterator.hasNext()) {
+          ((bich)localIterator.next()).onWadlTaskStatusChanged(paramBundle);
+        }
+      }
+    }
+    else
+    {
+      bdot.a("WadlProxyServiceManager", "callBackList is null");
+    }
+  }
+  
+  private void e()
+  {
+    Message localMessage = this.jdField_a_of_type_Bicm.obtainMessage();
+    localMessage.what = 2;
+    this.jdField_a_of_type_Bicm.sendMessage(localMessage);
+  }
+  
+  private void e(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      ArrayList localArrayList = paramBundle.getParcelableArrayList("query_result");
+      bdot.b("WadlProxyServiceManager", "onQueryCallback params:" + paramBundle.toString() + ",callBackList size=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      paramBundle = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (paramBundle.hasNext()) {
+        ((bich)paramBundle.next()).onQueryCallback(localArrayList);
+      }
+    }
+    bdot.a("WadlProxyServiceManager", "callBackList is null");
+  }
+  
+  private void f(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      ArrayList localArrayList = paramBundle.getParcelableArrayList("query_result");
+      bdot.b("WadlProxyServiceManager", "onQueryCallbackVia params" + paramBundle.toString() + ",callBackList size=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      paramBundle = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (paramBundle.hasNext()) {
+        ((bich)paramBundle.next()).onQueryCallbackVia(localArrayList);
+      }
+    }
+    bdot.a("WadlProxyServiceManager", "callBackList is null");
+  }
+  
+  private void g(Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    {
+      ArrayList localArrayList = paramBundle.getParcelableArrayList("query_result");
+      bdot.b("WadlProxyServiceManager", "onQueryAllTaskCallback params" + paramBundle.toString() + ",callBackList size=" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      paramBundle = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (paramBundle.hasNext()) {
+        ((bich)paramBundle.next()).onQueryCallback(localArrayList);
+      }
+    }
+    bdot.a("WadlProxyServiceManager", "callBackList is null");
+  }
+  
+  private void h(Bundle paramBundle)
+  {
+    String str = paramBundle.getString("report_oper_id");
+    Object localObject = paramBundle.getString("report_sso_event");
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramBundle != null)) {}
     try
     {
-      jdField_a_of_type_Int += 1;
-      QLog.d("ResponseHandler", 2, "start count=" + jdField_a_of_type_Int);
-      jdField_a_of_type_Bicj.removeMessages(0);
-      jdField_a_of_type_Bicj.sendEmptyMessageDelayed(0, 60000L);
+      WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
+      localUniSsoServerReqComm.platform.set(109L);
+      localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+      localUniSsoServerReqComm.mqqver.set("8.3.0");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+      localUniSsoServerReq.reqdata.set((String)localObject);
+      localObject = new NewIntent(BaseApplicationImpl.getContext(), arpd.class);
+      ((NewIntent)localObject).putExtra("extra_cmd", "DownloaderReport.DownloaderMsg");
+      ((NewIntent)localObject).putExtra("extra_data", localUniSsoServerReq.toByteArray());
+      ((NewIntent)localObject).putExtra("extra_timeout", 5000L);
+      ((NewIntent)localObject).setObserver(new bicl(this, str));
+      paramBundle.startServlet((NewIntent)localObject);
       return;
     }
-    finally
+    catch (Exception paramBundle)
     {
-      localObject = finally;
-      throw localObject;
+      bdot.a("WadlProxyServiceManager", "onReportDownloadEvent exception:" + paramBundle.toString());
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public Bundle a(Bundle paramBundle)
   {
+    String str = paramBundle.getString("WADL.REVERSE_ACTION_CMD_NAME");
+    if (QLog.isColorLevel()) {
+      bdot.b("WadlProxyServiceManager", "onRemoteReverseInvoke begin cmd=" + str);
+    }
+    if (str == null) {
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_StartWadlService"))
+    {
+      a();
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_onWadlTaskStatusChanged"))
+    {
+      d(paramBundle);
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_QnQureyResult"))
+    {
+      e(paramBundle);
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_QnQureyResultVia"))
+    {
+      f(paramBundle);
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_Report_Event"))
+    {
+      h(paramBundle);
+      return paramBundle;
+    }
+    if (str.equals("Wadl_Reverse_QnQureyAllTask"))
+    {
+      g(paramBundle);
+      return paramBundle;
+    }
+    bdot.a("WadlProxyServiceManager", "onRemoteReverseInvoke unknow invokeCmd");
+    return paramBundle;
+  }
+  
+  public List<bich> a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    Message localMessage = this.jdField_a_of_type_Bicm.obtainMessage();
+    localMessage.what = 1;
+    this.jdField_a_of_type_Bicm.sendMessage(localMessage);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    String str = paramBundle.getString("WADL.REMOTE_NOTIFY_CMD_NAME");
+    bdot.a("WadlProxyServiceManager", 4, "send action msg cmd=" + str);
+    if (!a())
+    {
+      bdot.a("WadlProxyServiceManager", "postRemoteNotify start but service is not launched and start service");
+      b();
+    }
+    c(paramBundle);
+    e();
+  }
+  
+  public void a(bich parambich)
+  {
+    if ((parambich != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambich))) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambich);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Bica != null) && (!this.jdField_a_of_type_Boolean);
+  }
+  
+  public void b()
+  {
+    bdot.b("WadlProxyServiceManager", "innerStartService start");
+    if (this.jdField_a_of_type_Bica != null)
+    {
+      if (QLog.isColorLevel()) {
+        bdot.b("WadlProxyServiceManager", "innerStartService:mWadlService is working");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("##@innerStartService:mWadlService is connecting >> [mServiceConnecting:").append(this.jdField_a_of_type_Boolean).append(",mWadlService:");
+      if (this.jdField_a_of_type_Bica == null) {}
+      for (String str = "invaliad";; str = "valid")
+      {
+        bdot.b("WadlProxyServiceManager", str + "]");
+        return;
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
     try
     {
-      QLog.d("ResponseHandler", 2, "sFriendUin =" + jdField_a_of_type_JavaLangString + ";  sSenderUin=" + jdField_b_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString))) {
-        b(paramQQAppInterface);
-      }
+      bdot.b("WadlProxyServiceManager", "##@innerStartService:bindWadlService");
+      WadlProxyService.a(this.jdField_a_of_type_AndroidContentServiceConnection);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new WadlProxyServiceManager.1(this), 5000L);
       return;
     }
-    finally
+    catch (Exception localException)
     {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
+      for (;;)
+      {
+        bdot.b("WadlProxyServiceManager", "##@failed to lauch servie", localException);
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
   }
   
-  static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public void b(Bundle paramBundle)
   {
-    String str2;
-    String str1;
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      str2 = "";
-      str1 = "";
-      if (paramInt2 != 1127) {
-        break label55;
-      }
-      str2 = paramQQAppInterface.getApp().getString(2131693705);
-      str1 = bicy.b(paramQQAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
-      if (!TextUtils.isEmpty(str2)) {
-        break label181;
-      }
+    if (this.jdField_a_of_type_Bibz != null) {
+      this.jdField_a_of_type_Bibz.a(paramBundle);
     }
-    label55:
+  }
+  
+  public void b(bich parambich)
+  {
+    if (parambich != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambich);
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      bdot.b("WadlProxyServiceManager", "##@sendAsynRemoteCommandMessage()");
+    }
+    if (a())
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        break label42;
+      }
+      bdot.b("WadlProxyServiceManager", "##@sendAsynRemoteCommandMessage(empty) END");
+    }
+    label41:
+    label42:
+    Bundle localBundle;
     do
     {
+      break label42;
+      break label42;
       return;
-      if (paramInt2 == 22000)
+      for (;;)
       {
-        str2 = paramQQAppInterface.getApp().getString(2131693705);
-        str1 = bicy.b(paramQQAppInterface.getCurrentAccountUin(), "mvip.n.a.zcwy_xht");
-        break;
+        if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label41;
+        }
+        localBundle = (Bundle)this.jdField_a_of_type_JavaUtilList.remove(0);
+        if (localBundle == null) {
+          break;
+        }
+        String str = localBundle.getString("WADL.REMOTE_NOTIFY_CMD_NAME");
+        if (QLog.isColorLevel()) {
+          bdot.b("WadlProxyServiceManager", "##@sendAsynRemoteCommandMessage():" + str);
+        }
+        try
+        {
+          localBundle.setClassLoader(getClass().getClassLoader());
+          if (this.jdField_a_of_type_Bica != null)
+          {
+            bdot.a("WadlProxyServiceManager", 5, "send action to service cmd=" + str);
+            this.jdField_a_of_type_Bica.a("WADL.REMOTE_ACTION_CMD", localBundle);
+          }
+        }
+        catch (Exception localException) {}
       }
-      if (paramInt2 == 1053)
-      {
-        str2 = paramQQAppInterface.getApp().getString(2131693708);
-        str1 = bicy.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
-        break;
-      }
-      if (paramInt2 == 22081)
-      {
-        str2 = paramQQAppInterface.getApp().getString(2131693707);
-        str1 = bicy.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
-        break;
-      }
-      if (paramInt2 != 22121) {
-        break;
-      }
-      str2 = paramQQAppInterface.getApp().getString(2131693706);
-      str1 = bicy.c();
-      break;
-      paramInt2 = paramString3.indexOf(str2);
-    } while (paramInt2 == -1);
-    label181:
-    new Thread(new ResponseHandler.1(paramString1, paramString2, paramString3, paramInt1, str1, paramInt2, str2, paramQQAppInterface)).start();
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = paramString1;
-      jdField_b_of_type_JavaLangString = paramString2;
-      c = paramInt;
-      return;
-    }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
-    }
+    } while (!(localException instanceof DeadObjectException));
+    c(localBundle);
+    bdot.b("WadlProxyServiceManager", "remote service is dead", localException);
   }
   
   /* Error */
-  public static boolean a()
+  void d()
   {
     // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 33	bici:jdField_a_of_type_Int	I
-    //   6: istore_0
-    //   7: iload_0
-    //   8: ifne +10 -> 18
-    //   11: iconst_1
-    //   12: istore_1
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_1
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_1
-    //   20: goto -7 -> 13
-    //   23: astore_2
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_2
-    //   28: athrow
+    //   0: ldc 117
+    //   2: new 144	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   9: ldc_w 501
+    //   12: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: aload_0
+    //   16: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokestatic 166	bdot:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   25: aload_0
+    //   26: iconst_1
+    //   27: putfield 107	bici:jdField_b_of_type_Boolean	Z
+    //   30: aload_0
+    //   31: getfield 91	bici:jdField_a_of_type_Bibz	Lbibz;
+    //   34: ifnull +12 -> 46
+    //   37: aload_0
+    //   38: getfield 91	bici:jdField_a_of_type_Bibz	Lbibz;
+    //   41: invokeinterface 502 1 0
+    //   46: aload_0
+    //   47: getfield 56	bici:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   50: ifnull +11 -> 61
+    //   53: aload_0
+    //   54: getfield 56	bici:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   57: invokevirtual 505	android/os/HandlerThread:quit	()Z
+    //   60: pop
+    //   61: aload_0
+    //   62: getfield 74	bici:jdField_b_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   65: ifnull +11 -> 76
+    //   68: aload_0
+    //   69: getfield 74	bici:jdField_b_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   72: invokevirtual 505	android/os/HandlerThread:quit	()Z
+    //   75: pop
+    //   76: aload_0
+    //   77: getfield 98	bici:jdField_a_of_type_Bica	Lbica;
+    //   80: astore_1
+    //   81: aload_1
+    //   82: ifnull +46 -> 128
+    //   85: aload_1
+    //   86: aload_0
+    //   87: getfield 47	bici:jdField_a_of_type_Bicn	Lbicn;
+    //   90: invokeinterface 508 2 0
+    //   95: ldc 117
+    //   97: ldc_w 510
+    //   100: invokestatic 166	bdot:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   103: aload_1
+    //   104: invokeinterface 514 1 0
+    //   109: aload_0
+    //   110: getfield 37	bici:jdField_a_of_type_AndroidOsIBinder$DeathRecipient	Landroid/os/IBinder$DeathRecipient;
+    //   113: iconst_0
+    //   114: invokeinterface 520 3 0
+    //   119: pop
+    //   120: ldc 117
+    //   122: ldc_w 522
+    //   125: invokestatic 166	bdot:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   128: invokestatic 241	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   131: aload_0
+    //   132: getfield 42	bici:jdField_a_of_type_AndroidContentServiceConnection	Landroid/content/ServiceConnection;
+    //   135: invokevirtual 525	com/tencent/common/app/BaseApplicationImpl:unbindService	(Landroid/content/ServiceConnection;)V
+    //   138: ldc 117
+    //   140: ldc_w 527
+    //   143: invokestatic 166	bdot:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   146: return
+    //   147: astore_1
+    //   148: aload_1
+    //   149: invokevirtual 530	java/lang/Exception:printStackTrace	()V
+    //   152: goto -76 -> 76
+    //   155: astore_2
+    //   156: aload_2
+    //   157: invokevirtual 531	android/os/RemoteException:printStackTrace	()V
+    //   160: goto -57 -> 103
+    //   163: astore_1
+    //   164: return
+    //   165: astore_1
+    //   166: goto -38 -> 128
     // Local variable table:
     //   start	length	slot	name	signature
-    //   6	2	0	i	int
-    //   12	8	1	bool	boolean
-    //   23	5	2	localObject	Object
+    //   0	169	0	this	bici
+    //   80	24	1	localbica	bica
+    //   147	2	1	localException1	Exception
+    //   163	1	1	localException2	Exception
+    //   165	1	1	localException3	Exception
+    //   155	2	2	localRemoteException	android.os.RemoteException
     // Exception table:
     //   from	to	target	type
-    //   3	7	23	finally
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    boolean bool = true;
-    for (;;)
-    {
-      try
-      {
-        if ((d(paramInt)) && (!b(jdField_b_of_type_Int))) {
-          jdField_b_of_type_Int = paramInt;
-        }
-        if (jdField_a_of_type_Int == 0)
-        {
-          jdField_a_of_type_Bicj.removeMessages(0);
-          return bool;
-        }
-        jdField_a_of_type_Int -= 1;
-        QLog.d("ResponseHandler", 2, "end count=" + jdField_a_of_type_Int);
-        if (jdField_a_of_type_Int <= 0)
-        {
-          jdField_a_of_type_Bicj.removeMessages(0);
-          jdField_a_of_type_Int = 0;
-        }
-        else
-        {
-          bool = false;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  static void b()
-  {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    c = 0;
-    jdField_b_of_type_Int = 0;
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    Message localMessage = jdField_a_of_type_Bicj.obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = paramQQAppInterface;
-    jdField_a_of_type_Bicj.sendMessageDelayed(localMessage, 1000L);
-  }
-  
-  public static boolean b()
-  {
-    return d(jdField_b_of_type_Int);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt == 1053) || (paramInt == 22081) || (paramInt == 22121) || (jdField_b_of_type_Int == -20001);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == 1127) || (paramInt == 22000);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && ((c(paramInt)) || (b(paramInt)));
+    //   30	46	147	java/lang/Exception
+    //   46	61	147	java/lang/Exception
+    //   61	76	147	java/lang/Exception
+    //   85	103	155	android/os/RemoteException
+    //   128	146	163	java/lang/Exception
+    //   103	128	165	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bici
  * JD-Core Version:    0.7.0.1
  */

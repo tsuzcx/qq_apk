@@ -1,31 +1,56 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import java.util.Map.Entry;
 
-public class bjok
+class bjok<K, V>
+  implements Map.Entry<K, V>
 {
-  private final HashMap<String, bjof> a = new HashMap();
+  bjok<K, V> jdField_a_of_type_Bjok;
+  @NonNull
+  final K jdField_a_of_type_JavaLangObject;
+  bjok<K, V> jdField_b_of_type_Bjok;
+  @NonNull
+  final V jdField_b_of_type_JavaLangObject;
   
-  final bjof a(String paramString)
+  bjok(@NonNull K paramK, @NonNull V paramV)
   {
-    return (bjof)this.a.get(paramString);
+    this.a = paramK;
+    this.b = paramV;
   }
   
-  public final void a()
+  public boolean equals(Object paramObject)
   {
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((bjof)localIterator.next()).b();
-    }
-    this.a.clear();
+    if (paramObject == this) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bjok)) {
+        return false;
+      }
+      paramObject = (bjok)paramObject;
+    } while ((this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)));
+    return false;
   }
   
-  final void a(String paramString, bjof parambjof)
+  @NonNull
+  public K getKey()
   {
-    paramString = (bjof)this.a.put(paramString, parambjof);
-    if (paramString != null) {
-      paramString.b();
-    }
+    return this.a;
+  }
+  
+  @NonNull
+  public V getValue()
+  {
+    return this.b;
+  }
+  
+  public V setValue(V paramV)
+  {
+    throw new UnsupportedOperationException("An entry modification is not supported");
+  }
+  
+  public String toString()
+  {
+    return this.a + "=" + this.b;
   }
 }
 

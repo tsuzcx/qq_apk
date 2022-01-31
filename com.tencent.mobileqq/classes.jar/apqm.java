@@ -1,14 +1,30 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.util.ArrayList;
+
 class apqm
-  implements aptu
+  implements View.OnClickListener
 {
   apqm(apql paramapql) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    apqk.a(this.a.a);
+    if (!apql.a(this.a)) {
+      return;
+    }
+    if ((apug.a()) && (apel.c() > apei.a()))
+    {
+      aptt.a(SplashActivity.sTopActivity, 2131692673, 2131692678, new apqn(this));
+      return;
+    }
+    paramView = new ArrayList();
+    paramView.addAll(apel.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", paramView);
+    apql.b(this.a, localIntent);
   }
-  
-  public void b() {}
 }
 
 

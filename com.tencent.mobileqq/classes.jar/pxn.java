@@ -1,22 +1,17 @@
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class pxn
-  implements spd
+  implements pbx
 {
   public pxn(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, rpg paramrpg)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+    if ((paramBoolean) && (paramInt == 2)) {
+      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
     }
-    ComponentHeaderTopicRecommend.a(this.a, paramrpg.a());
   }
 }
 

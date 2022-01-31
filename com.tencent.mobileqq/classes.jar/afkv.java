@@ -1,23 +1,38 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.ThemeImageView;
+import java.util.ArrayList;
 
 public class afkv
-  extends afjv
+  extends afjt
   implements View.OnClickListener
 {
-  public afkv(Context paramContext, QQAppInterface paramQQAppInterface, aipp paramaipp, atyy paramatyy)
+  public afkv(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
   {
-    super(paramContext, paramQQAppInterface, paramaipp, paramatyy);
+    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
+  }
+  
+  private void a(TextView paramTextView, atza paramatza)
+  {
+    if ((paramatza == null) || (!(paramatza instanceof atzh))) {}
+    do
+    {
+      return;
+      paramatza = (atzh)paramatza;
+    } while ((paramatza.jdField_a_of_type_JavaUtilArrayList == null) || (paramatza.jdField_a_of_type_JavaUtilArrayList.size() == 0));
+    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131699210);
+    paramTextView.setVisibility(0);
+    paramTextView.setText(str);
+    if (paramatza.jdField_a_of_type_Boolean)
+    {
+      paramTextView.setPadding(0, bbll.a(16.0F), 0, bbll.a(6.0F));
+      return;
+    }
+    paramTextView.setPadding(0, bbll.a(16.0F), 0, bbll.a(6.0F));
   }
   
   public View a(int paramInt, View paramView)
@@ -28,42 +43,35 @@ public class afkv
     {
       paramView = new afkw();
       localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560920, null);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(localView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865) - bbkx.a(80.0F));
-      paramView.a = ((Button)localView.findViewById(2131367245));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        paramView.a.setBackgroundResource(2130839048);
-      }
-      localObject = (ThemeImageView)localView.findViewById(2131367242);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bfwa.b);
+      paramView.a = ((TextView)localView.findViewById(2131376799));
       localView.setTag(paramView);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
       localObject = paramView;
     }
     for (;;)
     {
-      ((afkw)localObject).a.setOnClickListener(this);
+      c(((afkw)localObject).a);
+      a(((afkw)localObject).a, this.jdField_a_of_type_Atza);
+      localView.setOnClickListener(this);
       return localView;
       localObject = (afkw)paramView.getTag();
       localView = paramView;
     }
   }
   
-  public void onClick(View paramView)
+  public void c(View paramView)
   {
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (bbev.d(this.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (afsa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
-      if (paramView != null) {
-        paramView.b(true);
-      }
+    if (paramView == null) {
       return;
     }
-    bcpw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692321), 0).a();
+    if (ThemeUtil.isDefaultTheme())
+    {
+      paramView.setBackgroundResource(2130839132);
+      return;
+    }
+    paramView.setBackgroundResource(2130849139);
   }
+  
+  public void onClick(View paramView) {}
 }
 
 

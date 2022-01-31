@@ -1,32 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.UUID;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class aedi
-  implements DialogInterface.OnClickListener
+public class aedi
+  extends acuj
 {
-  aedi(aedg paramaedg, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface = bajk.a(this.jdField_a_of_type_Aedg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
-      this.jdField_a_of_type_Aedg.h(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_Aedg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Aedg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aedg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      return;
-    }
-    new azpt(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aedg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
-  }
+  public aedi(aede paramaede) {}
 }
 
 

@@ -1,45 +1,30 @@
-import android.view.View;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vdg
-  extends uyl
+public class vdg
+  extends QQUIEventReceiver<vcp, tkk>
 {
-  vdg(vcs paramvcs) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public vdg(@NonNull vcp paramvcp)
   {
-    boolean bool;
-    switch (paramView.getId())
-    {
-    default: 
-      if (vcs.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!vcs.a(this.a))
-      {
-        bool = true;
-        vcs.a(paramView, bool);
-        vcs.a(this.a);
-        if (!vcs.a(this.a)) {
-          break label143;
-        }
-      }
-      break;
+    super(paramvcp);
+  }
+  
+  public void a(@NonNull vcp paramvcp, @NonNull tkk paramtkk)
+  {
+    if ((paramtkk == null) || (paramtkk.a == null) || (TextUtils.isEmpty(paramtkk.a.headUrl))) {
+      ved.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
     }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      vel.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      vel.a("home_page", "exp_share_day", 0, 0, new String[0]);
+    while (!paramtkk.a.isMe()) {
       return;
-      vcs.a(this.a, vcs.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
     }
-    label149:
-    vcs.a(this.a, vcs.a(this.a), paramView);
+    vcp.b(paramvcp);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 

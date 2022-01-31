@@ -1,53 +1,63 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import mqq.app.AppRuntime;
 
 public class bbry
-  extends Dialog
+  implements Handler.Callback
 {
-  private static int jdField_a_of_type_Int = 150;
-  private static int b = 56;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bbrz(this);
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bbsa jdField_a_of_type_Bbsa;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bbrz jdField_a_of_type_Bbrz;
+  private bbsa jdField_a_of_type_Bbsa;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public bbry(Context paramContext)
+  public bbry(AppRuntime paramAppRuntime, int paramInt)
   {
-    super(paramContext, 2131755168);
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bbsa = new bbsa(paramInt, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidOsHandler);
   }
   
-  public void a(bbsa parambbsa)
+  public bbrz a()
   {
-    this.jdField_a_of_type_Bbsa = parambbsa;
+    return this.jdField_a_of_type_Bbrz;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public bbsa a()
   {
-    super.onCreate(paramBundle);
-    setContentView(2131561639);
-    findViewById(2131373681).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131373682).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131373683).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373684));
-    paramBundle = new ColorDrawable(15856629);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Resources localResources = BaseApplicationImpl.sApplication.getResources();
-    float f = localResources.getDisplayMetrics().density;
-    localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
-    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
-    localURLDrawableOptions.mFailedDrawable = paramBundle;
-    localURLDrawableOptions.mLoadingDrawable = paramBundle;
-    paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+    return this.jdField_a_of_type_Bbsa;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbrz != null) {
+      this.jdField_a_of_type_Bbrz.c();
+    }
+  }
+  
+  public void a(bbrz parambbrz)
+  {
+    this.jdField_a_of_type_Bbrz = parambbrz;
+    this.jdField_a_of_type_Bbrz.b();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bbrz == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Bbrz.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return true;
+      this.jdField_a_of_type_Bbrz.b();
+    }
   }
 }
 

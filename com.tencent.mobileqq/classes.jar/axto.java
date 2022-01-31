@@ -1,22 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
 
-class axto
-  implements EIPCResultCallback
+public class axto
 {
-  axto(axtn paramaxtn) {}
+  public static void a() {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitor", 2, new Object[] { "eipcResult=", Integer.valueOf(paramEIPCResult.code), paramEIPCResult.data });
-    }
-  }
+  public static void a(Context paramContext) {}
+  
+  public static void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     axto
  * JD-Core Version:    0.7.0.1
  */

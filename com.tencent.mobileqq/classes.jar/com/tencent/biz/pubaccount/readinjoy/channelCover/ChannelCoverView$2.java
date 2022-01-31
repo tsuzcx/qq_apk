@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import noo;
-import npx;
-import oes;
+import nol;
+import npu;
+import oep;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ChannelCoverView$2
   implements Runnable
 {
-  public ChannelCoverView$2(oes paramoes, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverView$2(oep paramoep, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class ChannelCoverView$2
           if (this.a.mIsTopic)
           {
             str3 = "0X80088BB";
-            noo.a(null, "", str1, str3, 0, 0, "1", "", "", npx.a(this.a.mChannelCoverId, localJSONObject), false);
+            nol.a(null, "", str1, str3, 0, 0, "1", "", "", npu.a(this.a.mChannelCoverId, localJSONObject), false);
             return;
           }
           String str3 = "0X8007BE6";

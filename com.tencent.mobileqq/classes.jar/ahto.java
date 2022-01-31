@@ -1,38 +1,18 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import java.io.File;
-import java.util.ArrayList;
 
 public class ahto
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahto(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
+  public ahto(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.m();
-      paramView = new ArrayList();
-      paramView.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
-      ahub.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
-      if (ahua.a == 1) {
-        ahub.b("", "0X8005F5C", "0");
-      }
-    }
-    else
-    {
-      return;
-    }
-    ahub.b("", "0X8005F5C", "1");
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

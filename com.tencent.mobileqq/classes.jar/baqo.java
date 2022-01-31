@@ -1,12 +1,16 @@
-public abstract interface baqo
+import android.view.animation.Interpolator;
+
+public class baqo
+  implements Interpolator
 {
-  public abstract void a(baqn parambaqn);
-  
-  public abstract void b(baqn parambaqn);
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqo
  * JD-Core Version:    0.7.0.1
  */

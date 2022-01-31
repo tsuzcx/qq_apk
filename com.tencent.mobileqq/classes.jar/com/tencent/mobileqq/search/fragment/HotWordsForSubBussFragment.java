@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
+import akix;
 import akiy;
 import akiz;
-import akja;
-import akjc;
+import akjb;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -15,14 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import awhl;
-import awli;
-import awlj;
+import awhn;
 import awlk;
-import awmi;
-import awmj;
+import awll;
+import awlm;
 import awmk;
-import awvy;
+import awml;
+import awmm;
+import awwa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,22 +37,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import rff;
+import rfc;
 
 public class HotWordsForSubBussFragment
   extends Fragment
 {
   public static int a;
   public static final String a;
+  protected akix a;
   protected akiy a;
   protected akiz a;
-  protected akja a;
-  protected akjc a;
+  protected akjb a;
   protected View a;
   protected TextView a;
   protected QQAppInterface a;
   protected HotWordForSubTipsContainer a;
-  rff jdField_a_of_type_Rff = new awlk(this);
+  rfc jdField_a_of_type_Rfc = new awlm(this);
   private boolean jdField_a_of_type_Boolean;
   public long[] a;
   private int b;
@@ -65,11 +65,11 @@ public class HotWordsForSubBussFragment
   
   public HotWordsForSubBussFragment()
   {
-    this.jdField_a_of_type_Akiz = new awli(this);
-    this.jdField_a_of_type_Akjc = new awlj(this);
+    this.jdField_a_of_type_Akiy = new awlk(this);
+    this.jdField_a_of_type_Akjb = new awll(this);
   }
   
-  private void a(List<awmk> paramList)
+  private void a(List<awmm> paramList)
   {
     if (this.jdField_a_of_type_ArrayOfLong == null) {
       return;
@@ -109,13 +109,13 @@ public class HotWordsForSubBussFragment
         while (paramList.hasNext())
         {
           Object localObject1 = (BusinessGroupWord)paramList.next();
-          Object localObject2 = awvy.a(((BusinessGroupWord)localObject1).groupID.a);
+          Object localObject2 = awwa.a(((BusinessGroupWord)localObject1).groupID.a);
           if ((localObject2 != null) && (Arrays.equals((long[])localObject2, this.jdField_a_of_type_ArrayOfLong)))
           {
             localObject2 = ((BusinessGroupWord)localObject1).clueWordItem;
             FragmentActivity localFragmentActivity = getActivity();
             if ((localFragmentActivity instanceof ActiveEntitySearchActivity)) {
-              ((ActiveEntitySearchActivity)localFragmentActivity).d(((awmi)localObject2).b);
+              ((ActiveEntitySearchActivity)localFragmentActivity).d(((awmk)localObject2).b);
             }
             localObject1 = ((BusinessGroupWord)localObject1).hotWordItemList;
             if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -138,9 +138,9 @@ public class HotWordsForSubBussFragment
     boolean bool = false;
     long l2;
     long l1;
-    if (this.jdField_a_of_type_Akja != null)
+    if (this.jdField_a_of_type_Akiz != null)
     {
-      String str1 = BaseApplication.getContext().getSharedPreferences(akja.jdField_a_of_type_JavaLangString, 0).getString(akja.b, "");
+      String str1 = BaseApplication.getContext().getSharedPreferences(akiz.jdField_a_of_type_JavaLangString, 0).getString(akiz.b, "");
       l2 = -1L;
       l1 = l2;
       if (!TextUtils.isEmpty(str1)) {}
@@ -156,7 +156,7 @@ public class HotWordsForSubBussFragment
           if (QLog.isColorLevel()) {
             QLog.i(jdField_a_of_type_JavaLangString, 2, "requestData, send netWork request");
           }
-          this.jdField_a_of_type_Akja.a();
+          this.jdField_a_of_type_Akiz.a();
         }
         ThreadManager.post(new HotWordsForSubBussFragment.1(this, bool), 5, null, true);
         return;
@@ -174,9 +174,9 @@ public class HotWordsForSubBussFragment
         }
       }
     }
-    if (this.jdField_a_of_type_Akiy != null)
+    if (this.jdField_a_of_type_Akix != null)
     {
-      String str2 = BaseApplication.getContext().getSharedPreferences(akiy.jdField_a_of_type_JavaLangString, 0).getString(akiy.b, "");
+      String str2 = BaseApplication.getContext().getSharedPreferences(akix.jdField_a_of_type_JavaLangString, 0).getString(akix.b, "");
       l2 = -1L;
       l1 = l2;
       if (!TextUtils.isEmpty(str2)) {}
@@ -192,7 +192,7 @@ public class HotWordsForSubBussFragment
             if (QLog.isColorLevel()) {
               QLog.i(jdField_a_of_type_JavaLangString, 2, "UnifySearchHandler requestData, send netWork request");
             }
-            this.jdField_a_of_type_Akiy.a();
+            this.jdField_a_of_type_Akix.a();
           }
           ThreadManager.post(new HotWordsForSubBussFragment.2(this, bool), 5, null, true);
           return;
@@ -220,24 +220,24 @@ public class HotWordsForSubBussFragment
   {
     if (this.b == 10)
     {
-      this.jdField_a_of_type_Akja = ((akja)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111));
-      this.jdField_a_of_type_Akiy = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akjc);
+      this.jdField_a_of_type_Akiz = ((akiz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111));
+      this.jdField_a_of_type_Akix = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akjb);
       return;
     }
-    this.jdField_a_of_type_Akiy = ((akiy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152));
-    this.jdField_a_of_type_Akja = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akiz);
+    this.jdField_a_of_type_Akix = ((akix)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(152));
+    this.jdField_a_of_type_Akiz = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akiy);
   }
   
   protected void b()
   {
     if (this.b == 10)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjc);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjb);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akiz);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akiy);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -262,10 +262,10 @@ public class HotWordsForSubBussFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561195, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378217));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561194, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378220));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer = ((HotWordForSubTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377315));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Rff);
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Rfc);
     this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     if (this.jdField_a_of_type_Boolean)
     {
@@ -274,7 +274,7 @@ public class HotWordsForSubBussFragment
     }
     for (;;)
     {
-      a((List)awhl.a.get(awhl.a(this.jdField_a_of_type_ArrayOfLong)));
+      a((List)awhn.a.get(awhn.a(this.jdField_a_of_type_ArrayOfLong)));
       return this.jdField_a_of_type_AndroidViewView;
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#999999"));
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839123);

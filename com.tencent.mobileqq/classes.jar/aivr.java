@@ -1,14 +1,6 @@
-import android.app.Activity;
-
 public abstract interface aivr
 {
-  public abstract int a();
-  
-  public abstract aivx a(long paramLong, String paramString1, String paramString2);
-  
-  public abstract void a();
-  
-  public abstract boolean a(Activity paramActivity);
+  public abstract void a(String paramString);
 }
 
 

@@ -10,13 +10,13 @@ import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
-import xen;
+import xek;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected xen helper;
+  protected xek helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
@@ -156,9 +156,9 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(xen paramxen)
+  public void setWebViewHelper(xek paramxek)
   {
-    this.helper = paramxen;
+    this.helper = paramxek;
   }
 }
 

@@ -1,16 +1,23 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-public abstract interface bgoz
-  extends IInterface
+public final class bgoz
+  implements Parcelable.Creator<SendMsg>
 {
-  public abstract Bundle a(String paramString, Bundle paramBundle);
+  public SendMsg a(Parcel paramParcel)
+  {
+    return new SendMsg(paramParcel);
+  }
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgoz
  * JD-Core Version:    0.7.0.1
  */

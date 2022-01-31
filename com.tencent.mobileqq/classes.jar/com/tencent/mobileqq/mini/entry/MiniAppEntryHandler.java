@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajtd;
-import ajtg;
+import ajtb;
+import ajte;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class MiniAppEntryHandler
-  extends ajtd
+  extends ajtb
 {
   public MiniAppEntryHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  public Class<? extends ajtg> observerClass()
+  public Class<? extends ajte> observerClass()
   {
     return MiniAppEntryObserver.class;
   }

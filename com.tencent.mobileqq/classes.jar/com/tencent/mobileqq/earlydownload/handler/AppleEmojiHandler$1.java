@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import ajsf;
+import ajsd;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.preference.PreferenceManager;
-import anpe;
-import ayjt;
+import anpj;
+import ayjv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.io.File;
 public class AppleEmojiHandler$1
   implements Runnable
 {
-  public AppleEmojiHandler$1(anpe paramanpe, File paramFile, String paramString) {}
+  public AppleEmojiHandler$1(anpj paramanpj, File paramFile, String paramString) {}
   
   public void run()
   {
@@ -23,9 +23,9 @@ public class AppleEmojiHandler$1
     if (Build.VERSION.SDK_INT >= 24) {}
     for (String str = PreferenceManager.getDefaultSharedPreferencesName(localBaseApplication);; str = localBaseApplication.getPackageName() + "_preferences")
     {
-      localBaseApplication.getSharedPreferences(str, 4).edit().putString("apple_emoji_file", ajsf.aW + "early/" + this.jdField_a_of_type_JavaIoFile.getName()).commit();
-      ayjt.a(this.jdField_a_of_type_JavaIoFile);
-      anpe.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      localBaseApplication.getSharedPreferences(str, 4).edit().putString("apple_emoji_file", ajsd.aW + "early/" + this.jdField_a_of_type_JavaIoFile.getName()).commit();
+      ayjv.a(this.jdField_a_of_type_JavaIoFile);
+      anpj.a(this.this$0, this.jdField_a_of_type_JavaLangString);
       return;
     }
   }

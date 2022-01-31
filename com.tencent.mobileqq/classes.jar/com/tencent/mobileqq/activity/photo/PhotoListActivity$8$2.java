@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agns;
+import agnq;
 import android.util.Log;
 
 public class PhotoListActivity$8$2
   implements Runnable
 {
-  public PhotoListActivity$8$2(agns paramagns) {}
+  public PhotoListActivity$8$2(agnq paramagnq) {}
   
   public void run()
   {

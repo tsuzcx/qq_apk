@@ -1,42 +1,61 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
 import android.os.Message;
+import android.widget.RelativeLayout;
 import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class vfx
-  implements EIPCResultCallback
+  extends Handler
 {
-  public vfx(EditVideoArtFilter paramEditVideoArtFilter, vkb paramvkb) {}
+  public vfx(EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void dispatchMessage(Message paramMessage)
   {
-    if (paramEIPCResult.data == null) {}
-    int j;
-    Object localObject;
+    super.dispatchMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
     do
     {
+      do
+      {
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        localObject = (String)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
+        }
+        this.a.a((String)localObject, paramMessage.arg1);
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
+        return;
+        EditVideoArtFilter.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
+        }
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
+        bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690245), 0).a();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+        }
+      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+      EditVideoArtFilter.a(this.a, false);
+      this.a.f();
+      bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690245), 0).a();
       return;
-      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
-      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
-      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
       }
-    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
-    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
-      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
-      ((Message)localObject).obj = paramEIPCResult;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Vkb.a;
-      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
-      return;
-    }
-    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
-    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
+    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
+    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
+    ((Message)localObject).arg1 = paramMessage.arg1;
+    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
+    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
   }
 }
 

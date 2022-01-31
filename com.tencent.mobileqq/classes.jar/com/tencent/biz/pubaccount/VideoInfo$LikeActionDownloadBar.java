@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import npp;
+import npm;
 
 public class VideoInfo$LikeActionDownloadBar
   implements Parcelable
 {
-  public static final Parcelable.Creator<LikeActionDownloadBar> CREATOR = new npp();
+  public static final Parcelable.Creator<LikeActionDownloadBar> CREATOR = new npm();
   public UrlJumpInfo a;
   public String a;
   public String b;

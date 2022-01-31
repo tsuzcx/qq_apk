@@ -1,70 +1,245 @@
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Matrix;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditJumpToPtu.1;
+import dov.com.tencent.biz.qqstory.takevideo.EditJumpToPtu.2;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicRawImage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import java.io.File;
-import mqq.app.AppRuntime;
+import java.util.Iterator;
+import java.util.List;
 
-class bjta
-  implements bfoq
+public class bjta
+  extends bjxl
 {
-  bjta(bjsx parambjsx, bfol parambfol, Intent paramIntent, String paramString, Activity paramActivity) {}
+  bcqf jdField_a_of_type_Bcqf;
+  public bjtb a;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public bjta(@NonNull bjxn parambjxn)
   {
-    if (paramView == null)
+    super(parambjxn);
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Bjxn.b())
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
+      if (this.jdField_a_of_type_Bjxn.a()) {
+        return 3;
+      }
+      return 4;
     }
-    Object localObject = this.jdField_a_of_type_Bfol.a(paramInt);
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
+    if (this.jdField_a_of_type_Bjxn.a()) {
+      return 1;
     }
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    return 2;
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_Bjyv.getActivity().getResources().getDisplayMetrics();
+    int i = EditPicRawImage.a((BitmapFactory.Options)localObject, localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+    ((BitmapFactory.Options)localObject).inSampleSize = i;
+    try
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
-    if (((String)localObject).equals(paramView.getResources().getString(2131693383)))
-    {
-      int i = 1;
-      paramInt = i;
-      if (this.jdField_a_of_type_Bjsx.a.c() == 130)
+      localObject = bbef.a(paramString, (BitmapFactory.Options)localObject);
+      if (localObject == null)
       {
-        paramInt = i;
-        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_edited_pic", false)) {
-          paramInt = 0;
+        QLog.e("EditJumpToPtu", 1, "decode" + null);
+        this.jdField_a_of_type_Bjyv.a(0, null, 2130772028, 0);
+        return null;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      Bitmap localBitmap;
+      for (;;)
+      {
+        ved.e("EditJumpToPtu", "decodeoom");
+        localBitmap = null;
+      }
+      ved.b("EditJumpToPtu", "sampleSize" + i + " w " + localBitmap.getWidth() + " h " + localBitmap.getHeight());
+      i = bbef.b(paramString);
+      paramString = localBitmap;
+      if (i != 0)
+      {
+        paramString = localBitmap;
+        if (i % 90 == 0)
+        {
+          ved.b("EditJumpToPtu", "has exif rotate" + i);
+          int j = localBitmap.getWidth();
+          int k = localBitmap.getHeight();
+          paramString = new Matrix();
+          paramString.postRotate(i, j / 2.0F, k / 2.0F);
+          paramString = Bitmap.createBitmap(localBitmap, 0, 0, j, k, paramString, true);
         }
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", paramInt);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_filepath", this.jdField_a_of_type_JavaLangString);
-      aqbc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 19003);
-      axqw.b(null, "dc00898", "", "", "0X800A184", "0X800A184", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Bjtb.obtainMessage(2, paramString).sendToTarget();
+    }
+    return paramString;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_Bjtb = new bjtb(this);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bjxn.a(0);
+    Activity localActivity;
+    if (paramInt1 == 100)
+    {
+      if (paramInt2 != -1) {
+        break label181;
+      }
+      localActivity = this.jdField_a_of_type_Bjxn.a().getActivity();
+      if (localActivity != null) {}
+    }
+    else
+    {
+      return;
+    }
+    ((bjcb)bjav.a(5)).a[a()].c(localActivity);
+    if (this.jdField_a_of_type_Bjxn.jdField_a_of_type_AndroidOsBundle != null) {
+      this.jdField_a_of_type_Bjxn.jdField_a_of_type_AndroidOsBundle.clear();
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      try
+      {
+        paramIntent = ((Uri)paramIntent.getParcelableExtra("android.intent.extra.STREAM")).toString();
+        ved.b("EditJumpToPtu", "onActivityResult PI_TU, new path " + paramIntent);
+        if (!TextUtils.isEmpty(paramIntent)) {
+          ThreadManager.excute(new EditJumpToPtu.2(this, paramIntent), 64, null, true);
+        }
+        if (this.jdField_a_of_type_JavaLangString == null) {
+          break;
+        }
+        gp.a(new File(this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_JavaLangString = null;
+        return;
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
+        continue;
+      }
+      label181:
+      ved.b("EditJumpToPtu", "onActivityResult cancel ");
+    }
+  }
+  
+  public void a(int paramInt, @NonNull bkld parambkld)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      parambkld = parambkld.a;
+      parambkld.a += 1;
+    }
+  }
+  
+  void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcqf == null) {
+      this.jdField_a_of_type_Bcqf = new bcqf(a(), a().getDimensionPixelSize(2131298865));
+    }
+    this.jdField_a_of_type_Bcqf.a(paramString);
+    this.jdField_a_of_type_Bcqf.setCancelable(false);
+    this.jdField_a_of_type_Bcqf.show();
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    paramContext = paramContext.getPackageManager().getInstalledPackages(0);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        PackageInfo localPackageInfo = (PackageInfo)paramContext.next();
+        if ("com.tencent.ttpic".equals(localPackageInfo.packageName)) {
+          if (localPackageInfo.versionCode >= 490) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    DoodleLayout localDoodleLayout = this.jdField_a_of_type_Bjxn.jdField_a_of_type_Bjvt.a();
+    if (localDoodleLayout != null)
+    {
+      Bitmap localBitmap3 = localDoodleLayout.a(0, false);
+      Bitmap localBitmap2 = this.jdField_a_of_type_Bjxn.a();
+      if (localBitmap2 == null) {
+        return false;
+      }
+      Bitmap localBitmap1 = localBitmap2;
+      if (localBitmap3 != null)
+      {
+        localBitmap1 = vxv.c(localBitmap2, localBitmap3);
+        localDoodleLayout.a(localBitmap3);
+      }
+      return vxv.a(localBitmap1, paramString);
+    }
+    return false;
+  }
+  
+  public void a_(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
       return;
-      if (((String)localObject).equals(paramView.getResources().getString(2131693393)))
-      {
-        localObject = new File(this.jdField_a_of_type_JavaLangString);
-        String str = ((File)localObject).getAbsolutePath();
-        aehy.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.jdField_a_of_type_Bjsx);
-        axqw.b(null, "dc00898", "", "", "0X800A185", "0X800A185", 0, 0, "", "", "", "");
-      }
-      else if (((String)localObject).equals(paramView.getResources().getString(2131693381)))
-      {
-        paramView = BaseApplicationImpl.getApplication();
-        bgpd.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, paramView.getRuntime().getAccount(), 2131695162, this.jdField_a_of_type_Bjsx);
-        axqw.b(null, "dc00898", "", "", "0X800A186", "0X800A186", 0, 0, "", "", "", "");
-      }
+    }
+    vej.b("0X80080E2", vej.a);
+    if (a(this.jdField_a_of_type_Bjyv.a()))
+    {
+      ThreadManager.post(new EditJumpToPtu.1(this), 5, null, true);
+      a(ajya.a(2131703646));
+      return;
+    }
+    vej.b("0X80080E4", vej.a);
+    paramObject = new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserActivity");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", "http://tu.qq.com/websites/guide/sticker.html");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_editor");
+    localIntent.setComponent(paramObject);
+    this.jdField_a_of_type_Bjyv.getActivity().startActivityForResult(localIntent, 101);
+  }
+  
+  void c()
+  {
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {
+      this.jdField_a_of_type_Bcqf.dismiss();
     }
   }
 }

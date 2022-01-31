@@ -1,31 +1,46 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class obe
+class obe
+  implements obl
 {
-  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
+  obe(obd paramobd) {}
   
-  public static Object a(int paramInt)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return a.get(Integer.valueOf(paramInt));
+    Object localObject = obd.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!((String)localObject).equals(paramGiftServiceBean.t)))
+    {
+      obd.a(this.a, paramGiftServiceBean);
+      obd.a(this.a).setText(paramGiftServiceBean.t);
+      obd.b(this.a, null);
+      if (obd.a(this.a)) {
+        obd.c(this.a, null);
+      }
+      obd.b(this.a).setText("");
+      obd.c(this.a).setText("");
+      obd.a(this.a, new ArrayList());
+      localObject = obd.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        GiftServiceBean localGiftServiceBean = (GiftServiceBean)((Iterator)localObject).next();
+        if ((!TextUtils.isEmpty(localGiftServiceBean.ck)) && (localGiftServiceBean.ck.equals(paramGiftServiceBean.ck)) && (localGiftServiceBean.c.equals(paramGiftServiceBean.v))) {
+          obd.b(this.a).add(localGiftServiceBean);
+        }
+      }
+      if (obd.b(this.a).size() <= 0)
+      {
+        paramGiftServiceBean = new GiftServiceBean();
+        paramGiftServiceBean.t = ajya.a(2131705282);
+        paramGiftServiceBean.v = "0";
+        obd.b(this.a).add(paramGiftServiceBean);
+      }
+      obd.a(this.a);
     }
-    return null;
-  }
-  
-  public static void a(int paramInt)
-  {
-    a.remove(Integer.valueOf(paramInt));
-  }
-  
-  public static void a(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      a.remove(Integer.valueOf(paramInt));
-    }
-    a.put(Integer.valueOf(paramInt), paramObject);
   }
 }
 

@@ -1,13 +1,10 @@
-public class ahdx
+public abstract interface ahdx
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a();
   
-  public ahdx(String paramString, float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

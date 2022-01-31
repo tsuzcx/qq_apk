@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.widget.XListView;
-import vic;
+import vhz;
 
 public class EditVideoPoi$4
   implements Runnable
 {
-  public EditVideoPoi$4(vic paramvic) {}
+  public EditVideoPoi$4(vhz paramvhz) {}
   
   public void run()
   {

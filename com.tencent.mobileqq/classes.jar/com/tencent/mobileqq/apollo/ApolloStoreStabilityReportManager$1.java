@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import aits;
-import ajmq;
+import aitq;
+import ajmo;
 
 public class ApolloStoreStabilityReportManager$1
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$1(aits paramaits) {}
+  public ApolloStoreStabilityReportManager$1(aitq paramaitq) {}
   
   public void run()
   {
-    ajmq.a(null);
-    aits.a(this.this$0, System.currentTimeMillis());
+    ajmo.a(null);
+    aitq.a(this.this$0, System.currentTimeMillis());
   }
 }
 

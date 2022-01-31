@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aoye;
-import aoza;
-import apue;
-import apvb;
+import aoyi;
+import aoze;
+import apug;
+import apvd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$3
   implements Runnable
 {
-  public OfflineFileBubbleModel$3(aoye paramaoye, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$3(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apue.d(this.a);
-    if (apvb.b(this.a.strLargeThumPath)) {
+    apug.d(this.a);
+    if (apvd.b(this.a.strLargeThumPath)) {
       this.this$0.a.a().c(this.a);
     }
   }

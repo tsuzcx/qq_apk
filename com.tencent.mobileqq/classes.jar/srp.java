@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
 class srp
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  srp(srn paramsrn) {}
+  srp(sro paramsro) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
+    if (srk.a(this.a.a) == 1)
     {
+      this.a.a.b.setVisibility(8);
+      srk.a(this.a.a).sendEmptyMessage(1);
     }
-    do
-    {
-      return;
-    } while (srn.a(this.a) == null);
-    srn.a(this.a).b(srn.a(this.a));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

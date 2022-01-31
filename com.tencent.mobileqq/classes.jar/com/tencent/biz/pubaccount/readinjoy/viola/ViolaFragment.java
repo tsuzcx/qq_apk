@@ -17,25 +17,25 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rwa;
+import rvx;
+import rwg;
+import rwh;
+import rwi;
 import rwj;
 import rwk;
 import rwl;
-import rwm;
-import rwn;
-import rwo;
+import rwy;
 import rxb;
-import rxe;
-import rxg;
-import whm;
+import rxd;
+import whj;
 
 public class ViolaFragment
   extends ViolaLazyFragment
 {
   public static String a;
-  private rwo jdField_a_of_type_Rwo;
+  private rwl jdField_a_of_type_Rwl;
+  public rwy a;
   public rxb a;
-  public rxe a;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -45,13 +45,13 @@ public class ViolaFragment
   
   public ViolaFragment()
   {
+    this.jdField_a_of_type_Rwy = new rwy(this);
     this.jdField_a_of_type_Rxb = new rxb(this);
-    this.jdField_a_of_type_Rxe = new rxe(this);
   }
   
   private void b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Rxb.a(paramBundle);
+    this.jdField_a_of_type_Rwy.a(paramBundle);
   }
   
   private void b(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -63,10 +63,10 @@ public class ViolaFragment
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("param"));
-        this.jdField_a_of_type_Rxe.c(paramViewGroup);
-        this.jdField_a_of_type_Rxe.b(paramViewGroup);
-        this.jdField_a_of_type_Rxe.a(paramViewGroup, new rwj(this));
-        this.jdField_a_of_type_Rxb.a(a(), paramBundle, this.jdField_a_of_type_Rxe.b(), new rwk(this));
+        this.jdField_a_of_type_Rxb.c(paramViewGroup);
+        this.jdField_a_of_type_Rxb.b(paramViewGroup);
+        this.jdField_a_of_type_Rxb.a(paramViewGroup, new rwg(this));
+        this.jdField_a_of_type_Rwy.a(a(), paramBundle, this.jdField_a_of_type_Rxb.b(), new rwh(this));
         return;
       }
       catch (JSONException paramBundle)
@@ -80,7 +80,7 @@ public class ViolaFragment
   
   private void d(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Rxe.a(paramViewGroup);
+    this.jdField_a_of_type_Rxb.a(paramViewGroup);
   }
   
   private void t() {}
@@ -92,22 +92,22 @@ public class ViolaFragment
   
   public CommonSuspensionGestureLayout a()
   {
-    return this.jdField_a_of_type_Rxb.a();
+    return this.jdField_a_of_type_Rwy.a();
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_Rxb.a();
+    return this.jdField_a_of_type_Rwy.a();
   }
   
   public HashMap a()
   {
-    return this.jdField_a_of_type_Rxe.a();
+    return this.jdField_a_of_type_Rxb.a();
   }
   
-  public rxg a()
+  public rxd a()
   {
-    return this.jdField_a_of_type_Rxe.a();
+    return this.jdField_a_of_type_Rxb.a();
   }
   
   public void a()
@@ -115,13 +115,13 @@ public class ViolaFragment
     if (QLog.isColorLevel()) {
       QLog.d("ViolaFragment", 2, "reload viola Page");
     }
-    this.jdField_a_of_type_Rxe.a();
-    this.jdField_a_of_type_Rxb.a(new rwn(this));
+    this.jdField_a_of_type_Rxb.a();
+    this.jdField_a_of_type_Rwy.a(new rwk(this));
   }
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Rxe.a(paramBundle);
+    this.jdField_a_of_type_Rxb.a(paramBundle);
   }
   
   public void a(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -135,38 +135,38 @@ public class ViolaFragment
   
   public void a(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Rxe.b())
+    if (this.jdField_a_of_type_Rxb.b())
     {
-      this.jdField_a_of_type_Rxb.a(paramViewGroup);
-      this.jdField_a_of_type_Rxb.a(new rwl(this));
-      this.jdField_a_of_type_Rxe.a(new rwm(this, paramViewGroup));
+      this.jdField_a_of_type_Rwy.a(paramViewGroup);
+      this.jdField_a_of_type_Rwy.a(new rwi(this));
+      this.jdField_a_of_type_Rxb.a(new rwj(this, paramViewGroup));
     }
   }
   
   public void a(HashMap<String, Object> paramHashMap, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Rxe.a(paramHashMap, paramViewGroup);
+    this.jdField_a_of_type_Rxb.a(paramHashMap, paramViewGroup);
   }
   
-  public void a(rwo paramrwo)
+  public void a(rwl paramrwl)
   {
-    this.jdField_a_of_type_Rwo = paramrwo;
+    this.jdField_a_of_type_Rwl = paramrwl;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Rxe.a(paramBoolean);
+    this.jdField_a_of_type_Rxb.a(paramBoolean);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Rxe.b();
+    return this.jdField_a_of_type_Rxb.b();
   }
   
   public void b()
   {
     FrameLayout localFrameLayout;
-    if ((b() != null) && (!TextUtils.isEmpty(a())) && ("1".equals(rwa.a(a(), "support_night"))))
+    if ((b() != null) && (!TextUtils.isEmpty(a())) && ("1".equals(rvx.a(a(), "support_night"))))
     {
       boolean bool = ThemeUtil.isInNightMode(getActivity().app);
       localFrameLayout = new FrameLayout(a().getContext());
@@ -191,14 +191,14 @@ public class ViolaFragment
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Rxb.c(paramBoolean);
+    this.jdField_a_of_type_Rwy.c(paramBoolean);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Rxb.d();
-    if (this.jdField_a_of_type_Rxe.b()) {
-      this.jdField_a_of_type_Rxb.a(a(), true);
+    this.jdField_a_of_type_Rwy.d();
+    if (this.jdField_a_of_type_Rxb.b()) {
+      this.jdField_a_of_type_Rwy.a(a(), true);
     }
     while (getActivity() == null) {
       return;
@@ -210,10 +210,10 @@ public class ViolaFragment
   {
     if (paramInt == 4)
     {
-      boolean bool = this.jdField_a_of_type_Rxb.a();
-      if (this.jdField_a_of_type_Rxe.b())
+      boolean bool = this.jdField_a_of_type_Rwy.a();
+      if (this.jdField_a_of_type_Rxb.b())
       {
-        this.jdField_a_of_type_Rxb.a(a(), true);
+        this.jdField_a_of_type_Rwy.a(a(), true);
         return true;
       }
       return bool;
@@ -223,7 +223,7 @@ public class ViolaFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Rxb.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Rwy.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onDestroy()
@@ -240,9 +240,9 @@ public class ViolaFragment
     {
       for (;;)
       {
-        this.jdField_a_of_type_Rxb.c();
+        this.jdField_a_of_type_Rwy.c();
         label33:
-        whm.a(getActivity());
+        whj.a(getActivity());
         return;
         label41:
         BaseActivity.sTopActivity.finishAndRemoveTask();
@@ -256,20 +256,20 @@ public class ViolaFragment
   
   public void onPause()
   {
-    this.jdField_a_of_type_Rxb.b();
+    this.jdField_a_of_type_Rwy.b();
     super.onPause();
   }
   
   public void onResume()
   {
-    this.jdField_a_of_type_Rxb.a();
+    this.jdField_a_of_type_Rwy.a();
     super.onResume();
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    this.jdField_a_of_type_Rxb.a(paramBoolean);
+    this.jdField_a_of_type_Rwy.a(paramBoolean);
   }
 }
 

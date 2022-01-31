@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aows;
+import aoww;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class QFileConfigManager$1
   implements Runnable
 {
-  public QFileConfigManager$1(aows paramaows, HashMap paramHashMap) {}
+  public QFileConfigManager$1(aoww paramaoww, HashMap paramHashMap) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      aows.a(this.this$0).clear();
-      aows.a(this.this$0).putAll(this.a);
+      aoww.a(this.this$0).clear();
+      aoww.a(this.this$0).putAll(this.a);
       QLog.i("QFileConfigManager", 1, "setFileDownloadConfig: set download config. ");
     }
   }

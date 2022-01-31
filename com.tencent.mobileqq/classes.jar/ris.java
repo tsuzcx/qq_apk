@@ -1,31 +1,19 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class ris
-  implements DialogInterface.OnDismissListener
+  implements rkf
 {
-  public ris(FastWebActivity paramFastWebActivity) {}
+  public ris(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public BaseData a()
   {
-    Context localContext;
-    if (!FastWebActivity.a(this.a))
-    {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.b(this.a)) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
-    {
-      rnb.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      rnr.a(this.a, this.a.getAppInterface(), FastWebActivity.a(this.a), -1, -1, true);
-      FastWebActivity.d(this.a, false);
-      return;
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+  }
+  
+  public void a()
+  {
+    rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

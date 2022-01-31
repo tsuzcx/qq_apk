@@ -1,57 +1,78 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amtx
+  extends ampa<amtw>
 {
-  public int a = -1;
-  
-  public static amtx a(ampi[] paramArrayOfampi)
+  public int a()
   {
-    amtx localamtx = new amtx();
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    return 587;
+  }
+  
+  @NonNull
+  public amtw a(int paramInt)
+  {
+    return new amtw();
+  }
+  
+  @Nullable
+  public amtw a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfamph != null)
     {
-      int j = paramArrayOfampi.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = paramArrayOfampi[i];
-        if (localObject == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((ampi)localObject).a;
-          try
-          {
-            a(new JSONObject((String)localObject), localamtx);
-            if (QLog.isColorLevel()) {
-              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localamtx);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
+      localObject1 = localObject2;
+      if (paramArrayOfamph.length > 0) {
+        localObject1 = amtw.a(paramArrayOfamph);
       }
     }
-    return localamtx;
+    return localObject1;
   }
   
-  private static void a(JSONObject paramJSONObject, amtx paramamtx)
+  public Class<amtw> a()
   {
-    if (paramJSONObject.has("showMode")) {
-      paramamtx.a = paramJSONObject.optInt("showMode");
+    return amtw.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public String toString()
+  public void a(amtw paramamtw)
   {
-    return "PhotoListPanelBean{showMode=" + this.a + '}';
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramamtw.toString());
+    }
+    PhotoListPanel.setShowModeToSp(paramamtw.a);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 

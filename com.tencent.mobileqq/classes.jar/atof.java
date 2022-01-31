@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-
-public final class atof
-  implements Parcelable.Creator<PicInfo>
+public abstract interface atof
 {
-  public PicInfo a(Parcel paramParcel)
-  {
-    return new PicInfo(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public PicInfo[] a(int paramInt)
-  {
-    return new PicInfo[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

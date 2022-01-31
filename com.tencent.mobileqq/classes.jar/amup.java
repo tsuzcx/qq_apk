@@ -1,90 +1,70 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class amup
+  extends ampa<amuo>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "";
-  private String c = "";
-  private String d = "";
-  
-  public static amup a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      amup localamup = new amup();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("enable", 0) == 1) {}
-      for (;;)
-      {
-        localamup.jdField_a_of_type_Boolean = bool;
-        localamup.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
-        localamup.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
-        localamup.b = paramString.optString("c2cHighlightContent", "");
-        localamup.c = paramString.optString("groupTipsContent", "");
-        localamup.d = paramString.optString("groupHighlightContent", "");
-        return localamup;
-        bool = false;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 390;
   }
   
-  public String a()
+  @NonNull
+  public amuo a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    return new amuo();
+  }
+  
+  @Nullable
+  public amuo a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      amuo localamuo = amuo.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamuo;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return new amuo();
   }
   
-  public void a(boolean paramBoolean)
+  public Class<amuo> a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return amuo.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amuo paramamuo)
+  {
+    ((aser)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramamuo);
+    if (QLog.isColorLevel()) {
+      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramamuo);
+    }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return true;
   }
   
-  public String b()
+  public int b()
   {
-    if (TextUtils.isEmpty(this.b)) {
-      return "打开消息推送";
-    }
-    return this.b;
+    return 0;
   }
   
-  public String c()
+  public boolean b()
   {
-    if (TextUtils.isEmpty(this.c)) {
-      return "想及时收到对方的回复，快去打开消息推送设置吧。";
-    }
-    return this.c;
+    return false;
   }
   
-  public String d()
+  public boolean c()
   {
-    if (TextUtils.isEmpty(this.d)) {
-      return "打开消息推送";
-    }
-    return this.d;
+    return true;
   }
 }
 

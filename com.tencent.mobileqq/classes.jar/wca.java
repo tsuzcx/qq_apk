@@ -1,23 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
 
-class wca
-  implements View.OnTouchListener
+public abstract interface wca
 {
-  wca(wbz paramwbz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
-  }
+  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
 }
 
 

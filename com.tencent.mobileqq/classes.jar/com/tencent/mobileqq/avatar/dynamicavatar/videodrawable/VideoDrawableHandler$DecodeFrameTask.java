@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
-import alzr;
+import alzq;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -39,8 +39,8 @@ public class VideoDrawableHandler$DecodeFrameTask
           this.this$0.b = this.this$0.jdField_a_of_type_AndroidGraphicsBitmap;
           this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
           this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, 0, 0).sendToTarget();
-          if (this.this$0.jdField_a_of_type_Alzr != null) {
-            this.this$0.jdField_a_of_type_Alzr.a(this.a, i);
+          if (this.this$0.jdField_a_of_type_Alzq != null) {
+            this.this$0.jdField_a_of_type_Alzq.a(this.a, i);
           }
           if (QLog.isColorLevel()) {
             QLog.i("VideoDrawableHandler", 2, "task run at:" + this.a + " bmp:" + this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);

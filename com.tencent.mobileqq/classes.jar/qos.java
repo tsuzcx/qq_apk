@@ -1,16 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
 import android.view.View;
 
 final class qos
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qos(View paramView) {}
+  qos(View paramView1, View paramView2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setTag(2131362551, null);
+    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
+    qoi.a(this.a, paramValueAnimator);
+    qoi.a(this.b, paramValueAnimator);
   }
 }
 

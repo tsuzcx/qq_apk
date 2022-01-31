@@ -5,30 +5,30 @@ import android.content.SharedPreferences;
 import android.os.SystemClock;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import java.util.concurrent.ConcurrentHashMap;
-import mvv;
-import mys;
-import myt;
+import mvs;
+import myp;
+import myq;
 
 public class AuthorizeConfig$1
   implements Runnable
 {
-  public AuthorizeConfig$1(mvv parammvv) {}
+  public AuthorizeConfig$1(mvs parammvs) {}
   
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    if (l > mvv.jdField_a_of_type_Long + 10000L)
+    if (l > mvs.jdField_a_of_type_Long + 10000L)
     {
       this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      mvv.jdField_a_of_type_Long = l;
+      mvs.jdField_a_of_type_Long = l;
     }
     FlatBuffersParser.b();
     l = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != mvv.jdField_b_of_type_Long)
+    if (l != mvs.jdField_b_of_type_Long)
     {
-      mvv.jdField_b_of_type_Long = l;
-      this.this$0.jdField_a_of_type_Myt.b();
-      this.this$0.jdField_a_of_type_Mys.a();
+      mvs.jdField_b_of_type_Long = l;
+      this.this$0.jdField_a_of_type_Myq.b();
+      this.this$0.jdField_a_of_type_Myp.a();
       this.this$0.i = null;
       this.this$0.jdField_b_of_type_OrgJsonJSONObject = null;
       this.this$0.c = null;

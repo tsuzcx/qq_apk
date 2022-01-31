@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import snq;
-import son;
+import snn;
+import sok;
 
 public class PublicAccountImageCollectionMainActivity$3$5
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$5(son paramson) {}
+  public PublicAccountImageCollectionMainActivity$3$5(sok paramsok) {}
   
   public void run()
   {

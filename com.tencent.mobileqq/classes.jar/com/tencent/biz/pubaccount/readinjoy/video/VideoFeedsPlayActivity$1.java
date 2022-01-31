@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
-import qtg;
+import qtd;
 
 class VideoFeedsPlayActivity$1
   implements Runnable
@@ -12,7 +12,7 @@ class VideoFeedsPlayActivity$1
   public void run()
   {
     if (VideoFeedsPlayActivity.a(this.this$0) != null) {
-      qtg.a(VideoFeedsPlayActivity.a(this.this$0).getApplication().getApplicationContext());
+      qtd.a(VideoFeedsPlayActivity.a(this.this$0).getApplication().getApplicationContext());
     }
   }
 }

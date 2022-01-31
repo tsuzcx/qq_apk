@@ -1,8 +1,17 @@
-public abstract interface bkrx
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+
+public class bkrx
 {
-  public abstract void a(float paramFloat);
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public boolean b;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  private bkrx(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  {
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+  }
 }
 
 

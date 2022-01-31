@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import acuv;
-import aggy;
-import aghf;
-import aghm;
+import acur;
+import aggw;
+import aghd;
+import aghk;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -32,7 +32,7 @@ public class MiniChatFragment
 {
   private float jdField_a_of_type_Float = 0.85F;
   int jdField_a_of_type_Int;
-  protected aggy a;
+  protected aggw a;
   protected SessionInfo a;
   
   public MiniChatFragment()
@@ -93,7 +93,7 @@ public class MiniChatFragment
       }
       ((Window)localObject).setAttributes(localLayoutParams);
       localObject = ((Window)localObject).getDecorView();
-      if (aghm.a())
+      if (aghk.a())
       {
         this.jdField_a_of_type_Float = a(paramActivity).getFloatExtra("minaio_scaled_ration", 0.95F);
         ((View)localObject).setScaleX(this.jdField_a_of_type_Float);
@@ -125,8 +125,8 @@ public class MiniChatFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.r();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.r();
     }
     return true;
   }
@@ -157,9 +157,9 @@ public class MiniChatFragment
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f = paramBundle.getIntExtra("key_mini_from", 0);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acuv = new acuv();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acuv.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848965);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acuv.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165272);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur = new acur();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848971);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165272);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(getActivity());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Long = paramBundle.getLongExtra("key_mini_aio_msg_shmsgseq", 0L);
       int i = paramBundle.getIntExtra("key_mini_from", 0);
@@ -180,15 +180,15 @@ public class MiniChatFragment
           paramBundle.putInt("key_mini_msgtab_businame", i);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(paramBundle);
         }
-        this.jdField_a_of_type_Aggy = aghf.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
-        if (this.jdField_a_of_type_Aggy != null) {
+        this.jdField_a_of_type_Aggw = aghd.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
+        if (this.jdField_a_of_type_Aggw != null) {
           break;
         }
         getActivity().finish();
         return null;
       }
-      paramViewGroup = this.jdField_a_of_type_Aggy.a(paramLayoutInflater, null, paramViewGroup);
-      this.jdField_a_of_type_Aggy.a();
+      paramViewGroup = this.jdField_a_of_type_Aggw.a(paramLayoutInflater, null, paramViewGroup);
+      this.jdField_a_of_type_Aggw.a();
       paramLayoutInflater = paramViewGroup;
     } while (paramViewGroup != null);
     getActivity().finish();
@@ -198,56 +198,56 @@ public class MiniChatFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.p();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.p();
     }
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.j();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.j();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.m();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.m();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.k();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.k();
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.n();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.n();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.o();
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.o();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Aggy != null) {
-      this.jdField_a_of_type_Aggy.c(paramBoolean);
+    if (this.jdField_a_of_type_Aggw != null) {
+      this.jdField_a_of_type_Aggw.c(paramBoolean);
     }
   }
 }

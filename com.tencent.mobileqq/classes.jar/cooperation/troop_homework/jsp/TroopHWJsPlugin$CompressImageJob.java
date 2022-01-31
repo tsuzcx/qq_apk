@@ -2,8 +2,8 @@ package cooperation.troop_homework.jsp;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bhxb;
-import bhxc;
+import bhxs;
+import bhxt;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -58,10 +58,10 @@ class TroopHWJsPlugin$CompressImageJob
         label207:
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localException);
         ((HashMap)localObject1).put(Integer.valueOf(i), localException);
-        bhxb localbhxb = new bhxb(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
-        bhxc localbhxc = this.this$0.a(this.this$0, i, localException, null, localbhxb, 1);
-        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbhxc);
-        localbhxc.a();
+        bhxs localbhxs = new bhxs(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
+        bhxt localbhxt = this.this$0.a(this.this$0, i, localException, null, localbhxs, 1);
+        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbhxt);
+        localbhxt.a();
       }
       else
       {

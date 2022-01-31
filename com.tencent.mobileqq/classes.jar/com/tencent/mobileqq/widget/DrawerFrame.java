@@ -15,11 +15,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Scroller;
-import bbkx;
-import bclk;
-import bcll;
-import bclm;
-import bfnk;
+import bbll;
+import bclz;
+import bcma;
+import bcmb;
+import bfob;
 import com.tencent.qphone.base.util.QLog;
 
 public class DrawerFrame
@@ -32,8 +32,8 @@ public class DrawerFrame
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bcll jdField_a_of_type_Bcll;
-  private bfnk jdField_a_of_type_Bfnk;
+  private bcma jdField_a_of_type_Bcma;
+  private bfob jdField_a_of_type_Bfob;
   public boolean a;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -60,8 +60,8 @@ public class DrawerFrame
     if (paramContext == null) {
       throw new NullPointerException("context is null");
     }
-    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bclm());
+    this.jdField_a_of_type_Bfob = new bfob(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bcmb());
     a(paramViewGroup);
   }
   
@@ -79,7 +79,7 @@ public class DrawerFrame
       paramView = new FrameLayout.LayoutParams(-1, -1);
       addView(this.jdField_a_of_type_AndroidViewView, paramView);
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this);
-      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new bclk(this));
+      this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new bclz(this));
       return;
     }
     this.jdField_a_of_type_AndroidViewViewGroup = null;
@@ -92,8 +92,8 @@ public class DrawerFrame
     }
     float f2 = this.h * this.jdField_a_of_type_Float;
     float f1 = f2;
-    if (f2 < bbkx.a(50.0F)) {
-      f1 = bbkx.a(50.0F);
+    if (f2 < bbll.a(50.0F)) {
+      f1 = bbll.a(50.0F);
     }
     if ((this.j == 1) && (paramInt >= this.h - f1) && (paramInt <= this.h) && (this.j == 1)) {
       return true;
@@ -201,8 +201,8 @@ public class DrawerFrame
       if (localView != null) {
         localView.setTranslationX(f2);
       }
-      if (this.jdField_a_of_type_Bcll != null) {
-        this.jdField_a_of_type_Bcll.a(this.j, f1);
+      if (this.jdField_a_of_type_Bcma != null) {
+        this.jdField_a_of_type_Bcma.a(this.j, f1);
       }
       return;
       f1 = -paramInt2 / this.jdField_c_of_type_Int;
@@ -221,10 +221,10 @@ public class DrawerFrame
     this.j = paramInt;
     if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(1);
-      this.jdField_a_of_type_Bfnk.removeMessages(2);
-      this.jdField_a_of_type_Bfnk.removeMessages(4);
-      this.jdField_a_of_type_Bfnk.removeMessages(3);
+      this.jdField_a_of_type_Bfob.removeMessages(1);
+      this.jdField_a_of_type_Bfob.removeMessages(2);
+      this.jdField_a_of_type_Bfob.removeMessages(4);
+      this.jdField_a_of_type_Bfob.removeMessages(3);
       label63:
       if (this.j != 0) {
         break label162;
@@ -234,16 +234,16 @@ public class DrawerFrame
     for (;;)
     {
       this.jdField_d_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Bcll != null) {
-        this.jdField_a_of_type_Bcll.b(this.j);
+      if (this.jdField_a_of_type_Bcma != null) {
+        this.jdField_a_of_type_Bcma.b(this.j);
       }
       switch (paramInt)
       {
       default: 
-        if (this.jdField_a_of_type_Bcll != null) {
-          this.jdField_a_of_type_Bcll.e();
+        if (this.jdField_a_of_type_Bcma != null) {
+          this.jdField_a_of_type_Bcma.e();
         }
-        this.jdField_a_of_type_Bfnk.sendEmptyMessage(1);
+        this.jdField_a_of_type_Bfob.sendEmptyMessage(1);
         return;
         if (!this.jdField_c_of_type_Boolean) {
           break label63;
@@ -322,16 +322,16 @@ public class DrawerFrame
     int n;
     if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(1);
-      this.jdField_a_of_type_Bfnk.removeMessages(2);
-      this.jdField_a_of_type_Bfnk.removeMessages(4);
-      this.jdField_a_of_type_Bfnk.removeMessages(3);
+      this.jdField_a_of_type_Bfob.removeMessages(1);
+      this.jdField_a_of_type_Bfob.removeMessages(2);
+      this.jdField_a_of_type_Bfob.removeMessages(4);
+      this.jdField_a_of_type_Bfob.removeMessages(3);
       this.jdField_d_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Bcll != null) {
-        this.jdField_a_of_type_Bcll.b(this.j);
+      if (this.jdField_a_of_type_Bcma != null) {
+        this.jdField_a_of_type_Bcma.b(this.j);
       }
-      if (this.jdField_a_of_type_Bcll != null) {
-        this.jdField_a_of_type_Bcll.f();
+      if (this.jdField_a_of_type_Bcma != null) {
+        this.jdField_a_of_type_Bcma.f();
       }
       localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
       m = this.jdField_a_of_type_Int;
@@ -344,7 +344,7 @@ public class DrawerFrame
     for (int k = 300;; k = 0)
     {
       localScroller.startScroll(m, 0, n, 0, k);
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(2);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(2);
       return;
       if (this.jdField_c_of_type_Boolean) {
         break;
@@ -370,13 +370,13 @@ public class DrawerFrame
   
   public void d()
   {
-    this.jdField_a_of_type_Bfnk.removeMessages(1);
-    this.jdField_a_of_type_Bfnk.removeMessages(2);
-    this.jdField_a_of_type_Bfnk.removeMessages(4);
-    this.jdField_a_of_type_Bfnk.removeMessages(3);
+    this.jdField_a_of_type_Bfob.removeMessages(1);
+    this.jdField_a_of_type_Bfob.removeMessages(2);
+    this.jdField_a_of_type_Bfob.removeMessages(4);
+    this.jdField_a_of_type_Bfob.removeMessages(3);
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bcll = null;
+    this.jdField_a_of_type_Bcma = null;
     this.jdField_f_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
     if (this.jdField_b_of_type_AndroidViewView != null) {}
@@ -390,7 +390,7 @@ public class DrawerFrame
       if (this.jdField_c_of_type_Boolean)
       {
         this.jdField_c_of_type_Boolean = false;
-        this.jdField_a_of_type_Bfnk.sendEmptyMessage(4);
+        this.jdField_a_of_type_Bfob.sendEmptyMessage(4);
       }
       b(this.j, 1);
       return;
@@ -425,10 +425,10 @@ public class DrawerFrame
       {
         this.jdField_d_of_type_Boolean = false;
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_Bfnk.sendEmptyMessage(3);
+        this.jdField_a_of_type_Bfob.sendEmptyMessage(3);
         return true;
       }
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(1);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(1);
       return true;
       bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
       k = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
@@ -450,15 +450,15 @@ public class DrawerFrame
         if (this.jdField_c_of_type_AndroidViewView != null) {
           this.jdField_c_of_type_AndroidViewView.setVisibility(8);
         }
-        this.jdField_a_of_type_Bfnk.sendEmptyMessage(4);
+        this.jdField_a_of_type_Bfob.sendEmptyMessage(4);
         return true;
       }
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(2);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(2);
       return true;
       if (!this.jdField_d_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Bcll != null) {
-          this.jdField_a_of_type_Bcll.h();
+        if (this.jdField_a_of_type_Bcma != null) {
+          this.jdField_a_of_type_Bcma.h();
         }
         if (this.jdField_b_of_type_AndroidViewView != null) {}
         for (this.j = 0;; this.j = 1)
@@ -469,9 +469,9 @@ public class DrawerFrame
         if (!this.jdField_d_of_type_Boolean)
         {
           b(this.j, 0);
-          if (this.jdField_a_of_type_Bcll != null)
+          if (this.jdField_a_of_type_Bcma != null)
           {
-            this.jdField_a_of_type_Bcll.g();
+            this.jdField_a_of_type_Bcma.g();
             return true;
             if (a())
             {
@@ -552,10 +552,10 @@ public class DrawerFrame
         if (!this.jdField_d_of_type_Boolean) {
           break label336;
         }
-        this.jdField_a_of_type_Bfnk.removeMessages(1);
-        this.jdField_a_of_type_Bfnk.removeMessages(2);
-        this.jdField_a_of_type_Bfnk.removeMessages(4);
-        this.jdField_a_of_type_Bfnk.removeMessages(3);
+        this.jdField_a_of_type_Bfob.removeMessages(1);
+        this.jdField_a_of_type_Bfob.removeMessages(2);
+        this.jdField_a_of_type_Bfob.removeMessages(4);
+        this.jdField_a_of_type_Bfob.removeMessages(3);
       }
       label317:
       if ((k == 0) || (!c())) {
@@ -568,20 +568,20 @@ public class DrawerFrame
       k = 0;
       break;
       label336:
-      if ((c()) || (this.jdField_a_of_type_Bcll == null)) {
+      if ((c()) || (this.jdField_a_of_type_Bcma == null)) {
         break label317;
       }
       if ((this.jdField_e_of_type_Int > this.jdField_d_of_type_Int) && (this.jdField_g_of_type_Boolean))
       {
         this.jdField_g_of_type_Boolean = false;
-        this.jdField_a_of_type_Bcll.a(0);
+        this.jdField_a_of_type_Bcma.a(0);
         break label317;
       }
       if ((this.jdField_e_of_type_Int >= this.jdField_d_of_type_Int) || (!this.jdField_f_of_type_Boolean)) {
         break label317;
       }
       this.jdField_f_of_type_Boolean = false;
-      this.jdField_a_of_type_Bcll.a(1);
+      this.jdField_a_of_type_Bcma.a(1);
       break label317;
       label422:
       bool = false;
@@ -617,8 +617,8 @@ public class DrawerFrame
     }
     if ((k != this.h) && (k != 0))
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(5);
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(5);
+      this.jdField_a_of_type_Bfob.removeMessages(5);
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(5);
     }
   }
   
@@ -646,16 +646,16 @@ public class DrawerFrame
     case 0: 
       if (this.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bfnk.removeMessages(1);
-        this.jdField_a_of_type_Bfnk.removeMessages(2);
-        this.jdField_a_of_type_Bfnk.removeMessages(4);
-        this.jdField_a_of_type_Bfnk.removeMessages(3);
+        this.jdField_a_of_type_Bfob.removeMessages(1);
+        this.jdField_a_of_type_Bfob.removeMessages(2);
+        this.jdField_a_of_type_Bfob.removeMessages(4);
+        this.jdField_a_of_type_Bfob.removeMessages(3);
       }
     case 2: 
       boolean bool = this.jdField_d_of_type_Boolean;
       this.jdField_d_of_type_Boolean = true;
-      if ((!bool) && (this.jdField_a_of_type_Bcll != null)) {
-        this.jdField_a_of_type_Bcll.b(this.j);
+      if ((!bool) && (this.jdField_a_of_type_Bcma != null)) {
+        this.jdField_a_of_type_Bcma.b(this.j);
       }
       if ((this.j == 0) && (this.jdField_a_of_type_Int + n > this.jdField_b_of_type_Int)) {
         if (this.jdField_a_of_type_Int != this.jdField_b_of_type_Int)
@@ -767,9 +767,9 @@ public class DrawerFrame
     }
   }
   
-  public void setDrawerCallbacks(bcll parambcll)
+  public void setDrawerCallbacks(bcma parambcma)
   {
-    this.jdField_a_of_type_Bcll = parambcll;
+    this.jdField_a_of_type_Bcma = parambcma;
   }
   
   public void setDrawerEnabled(boolean paramBoolean)

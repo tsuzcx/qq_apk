@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqjg;
+import aqji;
 
 public class QUSDebugFragment
   extends IphoneTitleBarFragment
@@ -14,7 +14,7 @@ public class QUSDebugFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.mContentView.findViewById(2131363620).setOnClickListener(new aqjg(this));
+    this.mContentView.findViewById(2131363619).setOnClickListener(new aqji(this));
   }
   
   protected int getContentLayoutId()

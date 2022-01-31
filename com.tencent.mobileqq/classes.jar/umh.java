@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
 
 public class umh
-  implements View.OnClickListener
+  implements wdd
 {
-  public umh(MyMemoriesListView paramMyMemoriesListView) {}
+  public umh(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_Umi != null) {
-        this.a.jdField_a_of_type_Umi.c();
-      }
+    if ((this.a.jdField_a_of_type_Umi != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_Umi.a(this.a.jdField_a_of_type_JavaLangString);
     }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Umi != null) {
+      return this.a.jdField_a_of_type_Umi.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
 }
 

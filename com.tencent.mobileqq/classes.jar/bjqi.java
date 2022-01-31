@@ -1,6 +1,21 @@
-public abstract interface bjqi
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+
+public class bjqi
+  extends Handler
 {
-  public abstract void b();
+  public bjqi(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
+  }
 }
 
 

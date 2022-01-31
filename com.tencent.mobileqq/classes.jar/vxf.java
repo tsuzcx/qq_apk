@@ -1,56 +1,54 @@
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.widget.TextView;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import java.io.File;
 
 public class vxf
-  extends wdw
+  extends vxh
 {
-  public View a(Context paramContext, View paramView, bfvn parambfvn, int paramInt)
+  public vxf(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    parambfvn.a = new bfvo[this.b];
-    paramInt = 0;
-    while (paramInt < this.b)
-    {
-      parambfvn.a[paramInt] = new bfvo();
-      parambfvn.a[paramInt].jdField_a_of_type_Int = -1;
-      parambfvn.a[paramInt].c = 0;
-      parambfvn.a[paramInt].jdField_a_of_type_AndroidViewView = null;
-      paramInt += 1;
-    }
-    parambfvn.g = paramView.findViewById(2131368899);
-    return paramView;
+    super(paramTroopStoryMemoriesListAdapter, paramView);
   }
   
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
   {
-    paramArrayOfbfvo[0].jdField_a_of_type_Int = 0;
-    paramArrayOfbfvo[0].b = 0;
-    paramArrayOfbfvo[1].jdField_a_of_type_Int = -1;
-    paramArrayOfbfvo[1].b = -1;
-    String str = QQStoryContext.a().a();
-    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(vxy.d(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130845995);
+    try
     {
-      paramArrayOfbfvo[1].jdField_a_of_type_Int = 1;
-      paramArrayOfbfvo[1].b = 1;
-    }
-  }
-  
-  protected void a(ViewGroup paramViewGroup, View paramView, bfvo parambfvo, int paramInt)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null) {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(parambfvo.c, parambfvo.d));
-    }
-    for (;;)
-    {
-      paramViewGroup.addView(paramView, paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(bavw.b(vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), vzl.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(bavw.i);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      paramTroopStoryItemInfo = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130839140);
+      paramTroopStoryItemInfo.setBounds(0, 0, 26, 26);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131715800));
+      ((Animatable)paramTroopStoryItemInfo).start();
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new vxg(this));
       return;
-      localLayoutParams.width = parambfvo.c;
-      localLayoutParams.height = parambfvo.d;
+    }
+    catch (Exception paramTroopStoryItemInfo)
+    {
+      for (;;)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+      }
     }
   }
 }

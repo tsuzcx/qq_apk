@@ -1,12 +1,9 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 
 public abstract interface ruh
 {
-  public abstract View a(ViewGroup paramViewGroup);
-  
-  public abstract void a(rue paramrue1, @Nullable rue paramrue2, int paramInt);
+  public abstract void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 

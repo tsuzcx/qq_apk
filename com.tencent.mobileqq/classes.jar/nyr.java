@@ -1,22 +1,17 @@
-public abstract interface nyr
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
+class nyr
+  implements ViewFactory.FoundClickableViewListener
 {
-  public abstract void a();
+  nyr(nyq paramnyq, Context paramContext, BaseData paramBaseData, ViewBase paramViewBase) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void onFound(ViewBase paramViewBase)
+  {
+    paramViewBase.setOnClickListener(new nys(this));
+  }
 }
 
 

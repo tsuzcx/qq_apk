@@ -1,22 +1,13 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Canvas;
 
-public class bjsv
+public abstract interface bjsv
+  extends bjxm
 {
-  public static String a;
+  public abstract int a(int paramInt);
   
-  public static boolean a(long paramLong, Context paramContext)
-  {
-    a = ajwc.a + "QQEditPic" + File.separator;
-    paramContext = new File(a);
-    boolean bool1 = paramContext.mkdirs();
-    boolean bool2 = paramContext.isDirectory();
-    if (QLog.isColorLevel()) {
-      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
-    }
-    return (bool1) || (bool2);
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
 }
 
 

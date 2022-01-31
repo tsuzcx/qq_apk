@@ -1,63 +1,88 @@
-import android.text.TextUtils;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.2;
+import com.tencent.mobileqq.earlydownload.xmldata.ChirpSoData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class anpl
-  extends anpi
+  extends anpn
 {
+  private LinkedList<anpm> a = new LinkedList();
+  private QQAppInterface b;
+  private boolean d;
+  
   public anpl(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.hotfriend.res", paramQQAppInterface);
+    super("qq.android.system.chirp", paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
   public int a()
   {
-    return 10042;
+    return 10040;
   }
   
   public Class<? extends XmlData> a()
   {
-    return HotFriendResData.class;
+    return ChirpSoData.class;
   }
   
   public String a()
   {
-    return "HotFriendResHandler";
+    return "actEarlyChirpSo";
+  }
+  
+  public void a(anpm paramanpm)
+  {
+    synchronized (this.a)
+    {
+      if (!this.a.contains(paramanpm)) {
+        this.a.add(paramanpm);
+      }
+      return;
+    }
   }
   
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+      QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
     }
-    if (!new File(paramString).exists())
+    paramString = new ChirpSoHandler.1(this, paramString);
+    if (Looper.getMainLooper() == Looper.myLooper()) {
+      ThreadManager.getSubThreadHandler().post(paramString);
+    }
+    for (;;)
+    {
+      BaseApplicationImpl.sUiHandler.post(new ChirpSoHandler.2(this));
+      return;
+      paramString.run();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChirpSoHandler", 2, "restartDownload " + paramBoolean);
+    }
+    if (!this.d) {
+      this.d = paramBoolean;
+    }
+    if ((a() != null) && (a().loadState == 2))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+        QLog.d("ChirpSoHandler", 2, "is in downloading");
       }
       return;
     }
-    try
-    {
-      String str = asyh.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
-      }
-      if (!TextUtils.isEmpty(str)) {
-        bbdj.a(paramString, str, false);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    super.a(paramString);
+    super.a(paramBoolean);
   }
   
   public boolean a()
@@ -68,6 +93,32 @@ public class anpl
   public String b()
   {
     return null;
+  }
+  
+  public void b(anpm paramanpm)
+  {
+    synchronized (this.a)
+    {
+      this.a.remove(paramanpm);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.d)
+    {
+      this.b.E();
+      if (QLog.isColorLevel()) {
+        QLog.d("ChirpSoHandler", 2, "isNetValid2Download by user " + AppSetting.d);
+      }
+      return AppSetting.d;
+    }
+    this.b.E();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChirpSoHandler", 2, "isNetValid2Download by startup " + AppSetting.d);
+    }
+    return (AppSetting.d) && (super.b());
   }
 }
 

@@ -1,62 +1,38 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
+import java.lang.ref.Reference;
+import java.util.List;
 
 public class auzf
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public auzf(ProfileHeaderView paramProfileHeaderView) {}
+  public auzf(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
-    }
-    if (ProfileHeaderView.jdField_b_of_type_Int == paramMessage.what)
+    int i = paramView.getId();
+    if (PhotoViewForShopping.a(this.a.a).get() != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.jdField_a_of_type_Int);
-      }
-      if ((this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        this.a.k(this.a.jdField_a_of_type_Auuw);
+      paramView = new Intent((Context)PhotoViewForShopping.a(this.a.a).get(), QQBrowserActivity.class);
+      paramView.putExtra("url", ((auvr)this.a.a.jdField_a_of_type_JavaUtilList.get(i)).b);
+      ((Activity)PhotoViewForShopping.a(this.a.a).get()).startActivity(paramView);
+      if (PhotoViewForShopping.a(this.a.a).a.a.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        axqy.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Mtemplatewindowclk", "0X8005B94", 0, 0, "", "", "", "");
       }
     }
-    do
+    else
     {
-      do
-      {
-        return true;
-      } while (ProfileHeaderView.c != paramMessage.what);
-      localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-    } while (!(localObject instanceof ImageView));
-    Object localObject = (ImageView)localObject;
-    paramMessage = (ExtensionInfo)paramMessage.obj;
-    if ((paramMessage != null) && (paramMessage.isPendantValid()))
-    {
-      this.a.jdField_a_of_type_Long = paramMessage.pendantId;
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      ((ImageView)localObject).setVisibility(0);
-      if (bbby.a(this.a.jdField_a_of_type_Long))
-      {
-        localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-        return true;
-      }
-      localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-      return true;
+      return;
     }
-    ((ImageView)localObject).setVisibility(4);
-    this.a.jdField_a_of_type_Long = 0L;
-    return true;
+    axqy.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Ftemplatewindowclk", "0X8005B98", 0, 0, "", "", "", "");
   }
 }
 

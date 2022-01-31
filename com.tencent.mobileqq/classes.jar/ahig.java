@@ -1,48 +1,40 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
 
 public class ahig
-  extends MSFServlet
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_report_SpringHbReportServlet", 2, "[onReceive] cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bbmj.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-      arrayOfByte = null;
-    }
-  }
+  public ahig(ViewPagerTabLayout paramViewPagerTabLayout) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_report_SpringHbReportServlet", 2, "[onSend] cmd=" + str);
+    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
+    if (i != -1)
+    {
+      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
+        break label85;
+      }
+      if (ViewPagerTabLayout.a(this.a)) {
+        break label74;
+      }
+      this.a.setCurrentTab(i, false);
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).a(i);
+      }
     }
+    label74:
+    label85:
+    while (ViewPagerTabLayout.a(this.a) == null) {
+      for (;;)
+      {
+        return;
+        this.a.setCurrentTab(i);
+      }
+    }
+    ViewPagerTabLayout.a(this.a).b(i);
   }
 }
 

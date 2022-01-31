@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wqk
-  implements View.OnClickListener
+  implements wpb<wlg>
 {
-  public wqk(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
+  public wqk(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
   
-  public void onClick(View paramView)
+  public void a(wpk paramwpk, wlg paramwlg)
   {
-    this.a.onBackEvent();
+    if ((paramwpk.e()) && (this.a.a != null) && (this.a.a.a != null))
+    {
+      paramwpk = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramwpk.b());
+      VSNetworkHelper.a().a(paramwpk, new wql(this, paramwlg));
+    }
   }
 }
 

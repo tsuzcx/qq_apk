@@ -9,7 +9,6 @@ public class abog
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.b(this.a), "");
     this.a.finish();
   }
 }

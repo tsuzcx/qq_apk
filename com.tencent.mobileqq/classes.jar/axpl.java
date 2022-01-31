@@ -1,26 +1,74 @@
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.startup.step.InitMemoryCache;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.OldApplication;
+import com.tencent.mobileqq.startup.step.SetSplash;
+import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Update;
 
 public class axpl
+  implements axpm
 {
+  private static axpm a;
+  
   public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect");
-    }
-    try
+    a = (axpm)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+  }
+  
+  public static Step b(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
+  {
+    Object localObject;
+    switch (paramInt)
     {
-      Method localMethod = BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.qipc.QIPCEnvironmentInit").getDeclaredMethod("initEnvironment", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[0]);
-      return;
+    case 5: 
+    case 6: 
+    case 10: 
+    case 11: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    default: 
+      if (a != null) {
+        localObject = a.a(paramInt, paramaxnx, paramArrayOfInt);
+      }
+      break;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QIPCEnvironmentInit", 2, "tryConnect", localException);
+      ((Step)localObject).mId = paramInt;
+      ((Step)localObject).mDirector = paramaxnx;
+      if (paramInt == 0) {
+        Step.access$002((Step)localObject, paramArrayOfInt);
+      }
+      return localObject;
+      localObject = new LoadDex();
+      continue;
+      localObject = new InitMemoryCache();
+      continue;
+      localObject = new OldApplication();
+      continue;
+      localObject = new SetSplash();
+      continue;
+      localObject = new CheckPermission();
+      continue;
+      localObject = new Update();
+      continue;
+      localObject = new StartService();
+      continue;
+      localObject = new Step();
     }
+  }
+  
+  public Step a(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
+  {
+    return null;
   }
 }
 

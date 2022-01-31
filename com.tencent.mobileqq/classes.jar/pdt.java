@@ -1,121 +1,118 @@
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.net.URL;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class pdt
 {
-  public static JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    int j = 1;
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
-    localJSONObject1.put("id_large_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
-    localJSONObject1.put("id_large_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
-    label157:
-    int i;
-    label239:
-    boolean bool;
-    if (localObject != null)
+    Object localObject3 = null;
+    JSONObject localJSONObject = new JSONObject();
+    pek.a(paramBaseArticleInfo, localJSONObject, true);
+    oar.b(paramBaseArticleInfo, localJSONObject);
+    oar.a(paramBaseArticleInfo, localJSONObject);
+    pek.m(paramBaseArticleInfo, localJSONObject);
+    pek.e(paramBaseArticleInfo, localJSONObject);
+    pek.g(paramBaseArticleInfo, localJSONObject);
+    pek.aa(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_ad_triple_img_cell");
+    pek.a(localJSONObject, paramBaseArticleInfo);
+    Object localObject1;
+    Object localObject2;
+    label140:
+    Object localObject4;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
     {
-      localObject = ((URL)localObject).getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      if ((!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) || (((AdvertisementInfo)paramBaseArticleInfo).mImaxShowAdType != 1001) || (paramBaseArticleInfo.mVideoDuration != 0)) {
-        break label526;
+      localObject3 = ram.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
+        return localJSONObject;
       }
-      localObject = "";
-      localJSONObject2.put("large_video_duration", localObject);
-      localJSONObject1.put("id_large_video_duration", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("video_play_icon", "video_play_icon");
-      localJSONObject1.put("id_video_play_icon", localObject);
-      localJSONObject1.put("id_video_paly_text", new JSONObject());
-      if ((!((AdvertisementInfo)paramBaseArticleInfo).isIMaxAndNewStyle) || (paramInt != 115)) {
-        break label538;
-      }
-      i = 1;
-      if (i != 0) {
-        break label543;
-      }
-      bool = true;
-      label246:
-      pen.a(paramBaseArticleInfo, localJSONObject1, bool, "3");
-      if (!AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label584;
-      }
-      pen.d(paramBaseArticleInfo, localJSONObject1);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_view_AdDownloadView", localObject);
-      if (!TextUtils.isEmpty(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg))
+      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
+      if (localObject1 == null)
       {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(-16777216);
-        localObject = URLDrawable.getDrawable(((AdvertisementInfo)paramBaseArticleInfo).mImaxImg, (URLDrawable.URLDrawableOptions)localObject);
-        if (localObject != null) {
-          ((URLDrawable)localObject).startDownload();
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
+        if (localObject2 != null) {
+          break label279;
+        }
+        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
+        if (localObject3 != null) {
+          break label289;
         }
       }
-      if (new JSONObject(((AdvertisementInfo)paramBaseArticleInfo).mAdExtInfo).optInt("is_video_new") != 1) {
-        break label549;
-      }
-      paramInt = j;
-    }
-    for (;;)
-    {
-      label384:
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.e(paramBaseArticleInfo, localJSONObject1);
-      oau.b(paramBaseArticleInfo, localJSONObject1);
-      oau.a(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
-      localJSONObject1.put("id_large_video_activity_img", localObject);
-      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
-      localJSONObject1.put("id_view_Ad_CompleteGudie", new JSONObject());
-      localJSONObject1.put("id_video_cell_container", new JSONObject());
-      if (i != 0) {
-        localJSONObject1.put("style_ID", "ReadInjoy_ad_video_imax_cell");
-      }
-      for (;;)
+      label279:
+      label289:
+      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
       {
-        pen.a(localJSONObject1, paramBaseArticleInfo);
-        return localJSONObject1;
-        localObject = null;
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
+        localJSONObject.put("id_multi_img_1", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
+        localJSONObject.put("id_multi_img_3", localObject1);
+        localJSONObject.put("id_info_operate_parent", new JSONObject());
+        localJSONObject.put("id_ad_triple_container", new JSONObject());
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
         break;
-        label526:
-        localObject = omu.a(paramBaseArticleInfo.mVideoDuration);
-        break label157;
-        label538:
-        i = 0;
-        break label239;
-        label543:
-        bool = false;
-        break label246;
-        label549:
-        paramInt = 0;
-        break label384;
-        if (paramInt != 0) {
-          localJSONObject1.put("style_ID", "ReadInjoy_ad_video_cell_new_division");
-        } else {
-          localJSONObject1.put("style_ID", "ReadInjoy_ad_video_cell");
-        }
+        localObject2 = ((JSONObject)localObject2).optString("picture");
+        break label140;
       }
-      label584:
-      paramInt = 0;
+    }
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    {
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label322:
+      if (localObject1 == null) {
+        break label423;
+      }
+      localObject1 = ((URL)localObject1).getFile();
+      label331:
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label428;
+      }
+      localObject2 = paramBaseArticleInfo.mSinglePicture;
+      label354:
+      if (localObject2 == null) {
+        break label438;
+      }
+      localObject2 = ((URL)localObject2).getFile();
+      label363:
+      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
+        break label443;
+      }
+    }
+    label423:
+    label428:
+    label438:
+    label443:
+    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
+    {
+      localObject4 = localObject1;
+      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
+      localObject3 = localObject2;
+      if (localURL == null) {
+        break;
+      }
+      paramBaseArticleInfo = localURL.getFile();
+      localObject4 = localObject1;
+      localObject3 = localObject2;
+      break;
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label322;
+      localObject1 = null;
+      break label331;
+      localObject2 = paramBaseArticleInfo.mPictures[1];
+      break label354;
+      localObject2 = null;
+      break label363;
     }
   }
 }

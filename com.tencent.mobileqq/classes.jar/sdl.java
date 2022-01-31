@@ -1,192 +1,363 @@
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class sdl
 {
-  private static final Comparator<sdr> a = new sdm();
+  private final int jdField_a_of_type_Int;
+  private final List<sdo> jdField_a_of_type_JavaUtilList;
+  private final sdk jdField_a_of_type_Sdk;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int[] jdField_a_of_type_ArrayOfInt;
+  private final int jdField_b_of_type_Int;
+  private final int[] jdField_b_of_type_ArrayOfInt;
   
-  @NonNull
-  public static sdo a(@NonNull sdn paramsdn)
+  sdl(sdk paramsdk, List<sdo> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean)
   {
-    return a(paramsdn, true);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
+    this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt2;
+    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
+    Arrays.fill(this.jdField_b_of_type_ArrayOfInt, 0);
+    this.jdField_a_of_type_Sdk = paramsdk;
+    this.jdField_a_of_type_Int = paramsdk.a();
+    this.jdField_b_of_type_Int = paramsdk.b();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a();
+    b();
   }
   
-  @NonNull
-  public static sdo a(@NonNull sdn paramsdn, boolean paramBoolean)
+  private static sdm a(List<sdm> paramList, int paramInt, boolean paramBoolean)
   {
-    int i = paramsdn.a();
-    int j = paramsdn.b();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(new sdq(0, i, 0, j));
-    i = i + j + Math.abs(i - j);
-    int[] arrayOfInt1 = new int[i * 2];
-    int[] arrayOfInt2 = new int[i * 2];
-    ArrayList localArrayList3 = new ArrayList();
-    while (!localArrayList2.isEmpty())
+    int i = paramList.size() - 1;
+    while (i >= 0)
     {
-      sdq localsdq2 = (sdq)localArrayList2.remove(localArrayList2.size() - 1);
-      sdr localsdr = a(paramsdn, localsdq2.jdField_a_of_type_Int, localsdq2.jdField_b_of_type_Int, localsdq2.c, localsdq2.d, arrayOfInt1, arrayOfInt2, i);
-      if (localsdr != null)
+      sdm localsdm2 = (sdm)paramList.get(i);
+      if ((localsdm2.jdField_a_of_type_Int == paramInt) && (localsdm2.jdField_a_of_type_Boolean == paramBoolean))
       {
-        if (localsdr.c > 0) {
-          localArrayList1.add(localsdr);
+        paramList.remove(i);
+        paramInt = i;
+        localsdm1 = localsdm2;
+        if (paramInt >= paramList.size()) {
+          break label123;
         }
-        localsdr.jdField_a_of_type_Int += localsdq2.jdField_a_of_type_Int;
-        localsdr.jdField_b_of_type_Int += localsdq2.c;
-        sdq localsdq1;
-        if (localArrayList3.isEmpty())
+        localsdm1 = (sdm)paramList.get(paramInt);
+        int j = localsdm1.jdField_b_of_type_Int;
+        if (paramBoolean) {}
+        for (i = 1;; i = -1)
         {
-          localsdq1 = new sdq();
-          label217:
-          localsdq1.jdField_a_of_type_Int = localsdq2.jdField_a_of_type_Int;
-          localsdq1.c = localsdq2.c;
-          if (!localsdr.jdField_b_of_type_Boolean) {
-            break label362;
-          }
-          localsdq1.jdField_b_of_type_Int = localsdr.jdField_a_of_type_Int;
-          localsdq1.d = localsdr.jdField_b_of_type_Int;
-          label265:
-          localArrayList2.add(localsdq1);
-          if (!localsdr.jdField_b_of_type_Boolean) {
-            break label457;
-          }
-          if (!localsdr.jdField_a_of_type_Boolean) {
-            break label420;
-          }
-          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c + 1);
-          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c);
-        }
-        for (;;)
-        {
-          localArrayList2.add(localsdq2);
+          localsdm1.jdField_b_of_type_Int = (i + j);
+          paramInt += 1;
           break;
-          localsdq1 = (sdq)localArrayList3.remove(localArrayList3.size() - 1);
-          break label217;
-          label362:
-          if (localsdr.jdField_a_of_type_Boolean)
-          {
-            localsdq1.jdField_b_of_type_Int = (localsdr.jdField_a_of_type_Int - 1);
-            localsdq1.d = localsdr.jdField_b_of_type_Int;
-            break label265;
-          }
-          localsdq1.jdField_b_of_type_Int = localsdr.jdField_a_of_type_Int;
-          localsdq1.d = (localsdr.jdField_b_of_type_Int - 1);
-          break label265;
-          label420:
-          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c);
-          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c + 1);
-          continue;
-          label457:
-          localsdq2.jdField_a_of_type_Int = (localsdr.jdField_a_of_type_Int + localsdr.c);
-          localsdq2.c = (localsdr.jdField_b_of_type_Int + localsdr.c);
         }
       }
-      localArrayList3.add(localsdq2);
+      i -= 1;
     }
-    Collections.sort(localArrayList1, a);
-    return new sdo(paramsdn, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
+    sdm localsdm1 = null;
+    label123:
+    return localsdm1;
   }
   
-  private static sdr a(sdn paramsdn, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt5)
+  private void a()
   {
-    int m = paramInt2 - paramInt1;
-    int n = paramInt4 - paramInt3;
-    if ((paramInt2 - paramInt1 < 1) || (paramInt4 - paramInt3 < 1)) {
-      return null;
-    }
-    int i1 = m - n;
-    int i2 = (m + n + 1) / 2;
-    Arrays.fill(paramArrayOfInt1, paramInt5 - i2 - 1, paramInt5 + i2 + 1, 0);
-    Arrays.fill(paramArrayOfInt2, paramInt5 - i2 - 1 + i1, paramInt5 + i2 + 1 + i1, m);
-    int i;
-    if (i1 % 2 != 0)
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (sdo localsdo = null;; localsdo = (sdo)this.jdField_a_of_type_JavaUtilList.get(0))
     {
-      paramInt4 = 1;
-      i = 0;
+      if ((localsdo == null) || (localsdo.jdField_a_of_type_Int != 0) || (localsdo.jdField_b_of_type_Int != 0))
+      {
+        localsdo = new sdo();
+        localsdo.jdField_a_of_type_Int = 0;
+        localsdo.jdField_b_of_type_Int = 0;
+        localsdo.jdField_a_of_type_Boolean = false;
+        localsdo.c = 0;
+        localsdo.jdField_b_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList.add(0, localsdo);
+      }
+      return;
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_a_of_type_ArrayOfInt[(paramInt1 - 1)] != 0) {
+      return;
+    }
+    a(paramInt1, paramInt2, paramInt3, false);
+  }
+  
+  private void a(List<sdm> paramList, sef paramsef, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      paramsef.a(paramInt1, paramInt2);
+    }
+    do
+    {
+      return;
+      paramInt2 -= 1;
+    } while (paramInt2 < 0);
+    int i = this.jdField_b_of_type_ArrayOfInt[(paramInt3 + paramInt2)] & 0x1F;
+    Iterator localIterator;
+    switch (i)
+    {
+    default: 
+      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
+    case 0: 
+      paramsef.a(paramInt1, 1);
+      localIterator = paramList.iterator();
+    case 4: 
+    case 8: 
+      while (localIterator.hasNext())
+      {
+        sdm localsdm = (sdm)localIterator.next();
+        localsdm.jdField_b_of_type_Int += 1;
+        continue;
+        int j = this.jdField_b_of_type_ArrayOfInt[(paramInt3 + paramInt2)] >> 5;
+        paramsef.c(a(paramList, j, true).jdField_b_of_type_Int, paramInt1);
+        if (i == 4) {
+          paramsef.a(paramInt1, 1, this.jdField_a_of_type_Sdk.a(j, paramInt3 + paramInt2));
+        }
+      }
     }
     for (;;)
     {
-      if (i > i2) {
-        break label664;
+      paramInt2 -= 1;
+      break;
+      paramList.add(new sdm(paramInt3 + paramInt2, paramInt1, false));
+    }
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    int m = 8;
+    int j;
+    int k;
+    int i;
+    if (paramBoolean)
+    {
+      j = paramInt2 - 1;
+      k = paramInt2 - 1;
+      i = paramInt1;
+      paramInt2 = j;
+      j = k;
+      k = i;
+      i = paramInt2;
+      paramInt2 = k;
+    }
+    for (;;)
+    {
+      if (paramInt3 < 0) {
+        break label289;
       }
-      int j = -i;
-      boolean bool;
-      int k;
+      sdo localsdo = (sdo)this.jdField_a_of_type_JavaUtilList.get(paramInt3);
+      k = localsdo.jdField_a_of_type_Int;
+      int n = localsdo.c;
+      int i1 = localsdo.jdField_b_of_type_Int;
+      int i2 = localsdo.c;
+      if (paramBoolean)
+      {
+        paramInt2 -= 1;
+        for (;;)
+        {
+          if (paramInt2 < k + n) {
+            break label269;
+          }
+          if (this.jdField_a_of_type_Sdk.a(paramInt2, j))
+          {
+            if (this.jdField_a_of_type_Sdk.b(paramInt2, j)) {}
+            for (paramInt1 = 8;; paramInt1 = 4)
+            {
+              this.jdField_b_of_type_ArrayOfInt[j] = (paramInt2 << 5 | 0x10);
+              this.jdField_a_of_type_ArrayOfInt[paramInt2] = (paramInt1 | j << 5);
+              return true;
+              j = paramInt1 - 1;
+              i = paramInt1 - 1;
+              break;
+            }
+          }
+          paramInt2 -= 1;
+        }
+      }
+      paramInt2 = i - 1;
+      while (paramInt2 >= i1 + i2)
+      {
+        if (this.jdField_a_of_type_Sdk.a(j, paramInt2))
+        {
+          if (this.jdField_a_of_type_Sdk.b(j, paramInt2)) {}
+          for (paramInt3 = m;; paramInt3 = 4)
+          {
+            this.jdField_a_of_type_ArrayOfInt[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
+            this.jdField_b_of_type_ArrayOfInt[paramInt2] = (paramInt1 - 1 << 5 | paramInt3);
+            return true;
+          }
+        }
+        paramInt2 -= 1;
+      }
+      label269:
+      paramInt2 = localsdo.jdField_a_of_type_Int;
+      i = localsdo.jdField_b_of_type_Int;
+      paramInt3 -= 1;
+    }
+    label289:
+    return false;
+  }
+  
+  private void b()
+  {
+    int j = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    while (k >= 0)
+    {
+      sdo localsdo = (sdo)this.jdField_a_of_type_JavaUtilList.get(k);
+      int i2 = localsdo.jdField_a_of_type_Int;
+      int i3 = localsdo.c;
+      int n = localsdo.jdField_b_of_type_Int;
+      int i1 = localsdo.c;
+      int m;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        for (;;)
+        {
+          m = i;
+          if (j <= i2 + i3) {
+            break;
+          }
+          a(j, i, k);
+          j -= 1;
+        }
+        while (m > n + i1)
+        {
+          b(j, m, k);
+          m -= 1;
+        }
+      }
+      i = 0;
+      if (i < localsdo.c)
+      {
+        m = localsdo.jdField_a_of_type_Int + i;
+        n = localsdo.jdField_b_of_type_Int + i;
+        if (this.jdField_a_of_type_Sdk.b(m, n)) {}
+        for (j = 1;; j = 2)
+        {
+          this.jdField_a_of_type_ArrayOfInt[m] = (n << 5 | j);
+          this.jdField_b_of_type_ArrayOfInt[n] = (j | m << 5);
+          i += 1;
+          break;
+        }
+      }
+      j = localsdo.jdField_a_of_type_Int;
+      i = localsdo.jdField_b_of_type_Int;
+      k -= 1;
+    }
+  }
+  
+  private void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.jdField_b_of_type_ArrayOfInt[(paramInt2 - 1)] != 0) {
+      return;
+    }
+    a(paramInt1, paramInt2, paramInt3, true);
+  }
+  
+  private void b(List<sdm> paramList, sef paramsef, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      paramsef.b(paramInt1, paramInt2);
+    }
+    do
+    {
+      return;
+      paramInt2 -= 1;
+    } while (paramInt2 < 0);
+    int i = this.jdField_a_of_type_ArrayOfInt[(paramInt3 + paramInt2)] & 0x1F;
+    Object localObject;
+    switch (i)
+    {
+    default: 
+      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
+    case 0: 
+      paramsef.b(paramInt1 + paramInt2, 1);
+      localObject = paramList.iterator();
+    case 4: 
+    case 8: 
+      while (((Iterator)localObject).hasNext())
+      {
+        sdm localsdm = (sdm)((Iterator)localObject).next();
+        localsdm.jdField_b_of_type_Int -= 1;
+        continue;
+        int j = this.jdField_a_of_type_ArrayOfInt[(paramInt3 + paramInt2)] >> 5;
+        localObject = a(paramList, j, false);
+        paramsef.c(paramInt1 + paramInt2, ((sdm)localObject).jdField_b_of_type_Int - 1);
+        if (i == 4) {
+          paramsef.a(((sdm)localObject).jdField_b_of_type_Int - 1, 1, this.jdField_a_of_type_Sdk.a(paramInt3 + paramInt2, j));
+        }
+      }
+    }
+    for (;;)
+    {
+      paramInt2 -= 1;
+      break;
+      paramList.add(new sdm(paramInt3 + paramInt2, paramInt1 + paramInt2, true));
+    }
+  }
+  
+  public void a(@NonNull RecyclerView.Adapter paramAdapter)
+  {
+    a(new sdg(paramAdapter));
+  }
+  
+  public void a(@NonNull sef paramsef)
+  {
+    ArrayList localArrayList;
+    int j;
+    int k;
+    int i;
+    if ((paramsef instanceof sdh))
+    {
+      paramsef = (sdh)paramsef;
+      localArrayList = new ArrayList();
+      j = this.jdField_a_of_type_Int;
+      k = this.jdField_b_of_type_Int;
+      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    for (;;)
+    {
+      if (i < 0) {
+        break label234;
+      }
+      sdo localsdo = (sdo)this.jdField_a_of_type_JavaUtilList.get(i);
+      int m = localsdo.c;
+      int n = localsdo.jdField_a_of_type_Int + m;
+      int i1 = localsdo.jdField_b_of_type_Int + m;
+      if (n < j) {
+        b(localArrayList, paramsef, n, j - n, n);
+      }
+      if (i1 < k) {
+        a(localArrayList, paramsef, n, k - i1, i1);
+      }
+      j = m - 1;
       for (;;)
       {
-        if (j > i) {
-          break label382;
-        }
-        if ((j == -i) || ((j != i) && (paramArrayOfInt1[(paramInt5 + j - 1)] < paramArrayOfInt1[(paramInt5 + j + 1)]))) {
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j + 1)];
-        }
-        for (bool = false;; bool = true)
+        if (j >= 0)
         {
-          k = paramInt2;
-          paramInt2 -= j;
-          while ((k < m) && (paramInt2 < n) && (paramsdn.a(paramInt1 + k, paramInt3 + paramInt2)))
-          {
-            k += 1;
-            paramInt2 += 1;
+          if ((this.jdField_a_of_type_ArrayOfInt[(localsdo.jdField_a_of_type_Int + j)] & 0x1F) == 2) {
+            paramsef.a(localsdo.jdField_a_of_type_Int + j, 1, this.jdField_a_of_type_Sdk.a(localsdo.jdField_a_of_type_Int + j, localsdo.jdField_b_of_type_Int + j));
           }
-          paramInt4 = 0;
+          j -= 1;
+          continue;
+          paramsef = new sdh(paramsef);
           break;
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j - 1)] + 1;
         }
-        paramArrayOfInt1[(paramInt5 + j)] = k;
-        if ((paramInt4 != 0) && (j >= i1 - i + 1) && (j <= i1 + i - 1) && (paramArrayOfInt1[(paramInt5 + j)] >= paramArrayOfInt2[(paramInt5 + j)]))
-        {
-          paramsdn = new sdr();
-          paramsdn.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + j)];
-          paramsdn.jdField_b_of_type_Int = (paramsdn.jdField_a_of_type_Int - j);
-          paramsdn.c = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
-          paramsdn.jdField_a_of_type_Boolean = bool;
-          paramsdn.jdField_b_of_type_Boolean = false;
-          return paramsdn;
-        }
-        j += 2;
       }
-      label382:
-      j = -i;
-      while (j <= i)
-      {
-        int i3 = j + i1;
-        if ((i3 == i + i1) || ((i3 != -i + i1) && (paramArrayOfInt2[(paramInt5 + i3 - 1)] < paramArrayOfInt2[(paramInt5 + i3 + 1)]))) {
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 - 1)];
-        }
-        for (bool = false;; bool = true)
-        {
-          k = paramInt2;
-          paramInt2 -= i3;
-          while ((k > 0) && (paramInt2 > 0) && (paramsdn.a(paramInt1 + k - 1, paramInt3 + paramInt2 - 1)))
-          {
-            k -= 1;
-            paramInt2 -= 1;
-          }
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 + 1)] - 1;
-        }
-        paramArrayOfInt2[(paramInt5 + i3)] = k;
-        if ((paramInt4 == 0) && (j + i1 >= -i) && (j + i1 <= i) && (paramArrayOfInt1[(paramInt5 + i3)] >= paramArrayOfInt2[(paramInt5 + i3)]))
-        {
-          paramsdn = new sdr();
-          paramsdn.jdField_a_of_type_Int = paramArrayOfInt2[(paramInt5 + i3)];
-          paramsdn.jdField_b_of_type_Int = (paramsdn.jdField_a_of_type_Int - i3);
-          paramsdn.c = (paramArrayOfInt1[(paramInt5 + i3)] - paramArrayOfInt2[(paramInt5 + i3)]);
-          paramsdn.jdField_a_of_type_Boolean = bool;
-          paramsdn.jdField_b_of_type_Boolean = true;
-          return paramsdn;
-        }
-        j += 2;
-      }
-      i += 1;
+      j = localsdo.jdField_a_of_type_Int;
+      k = localsdo.jdField_b_of_type_Int;
+      i -= 1;
     }
-    label664:
-    throw new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
+    label234:
+    paramsef.a();
   }
 }
 

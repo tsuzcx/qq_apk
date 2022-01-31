@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
-
 public class bbzt
 {
-  int jdField_a_of_type_Int;
-  bbzm jdField_a_of_type_Bbzm;
-  bbzr jdField_a_of_type_Bbzr;
-  bbzu jdField_a_of_type_Bbzu;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  public long a;
+  public String a = "";
+  public long b;
+  public String b = "";
+  public long c;
+  public String c = "";
+  public long d;
+  public String d;
+  public long e;
+  public long f;
+  
+  public bbzt()
+  {
+    this.jdField_d_of_type_Long = 999L;
+    this.jdField_d_of_type_JavaLangString = "";
+  }
 }
 
 

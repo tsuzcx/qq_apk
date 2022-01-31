@@ -1,50 +1,56 @@
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import java.util.ArrayList;
 
-public class awlw
+public abstract class awlw
+  extends awoj
 {
-  public static awls a(QQAppInterface paramQQAppInterface, int paramInt)
+  protected QQAppInterface a;
+  protected FTSEntity a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected CharSequence b;
+  protected CharSequence c;
+  private CharSequence d;
+  
+  public awlw(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
-    return new awlz(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
   }
   
-  public static awlu a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public String a()
   {
-    return new awmf(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public static awvg a(int paramInt, String paramString, FTSEntity paramFTSEntity)
+  public boolean a()
   {
-    paramString = new awvg(paramString);
-    paramFTSEntity = (FTSMessage)paramFTSEntity;
-    paramString.a = new Bundle();
-    paramString.a.putLong("uin", paramFTSEntity.uin);
-    paramString.a.putInt("uinType", paramFTSEntity.istroop);
-    return paramString;
+    return false;
   }
   
-  public static String a(Context paramContext, int paramInt)
+  public CharSequence b()
   {
-    return paramContext.getString(2131719079);
-  }
-  
-  public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
-  {
-    String str = paramString;
-    if (paramString.length() > 13) {
-      str = paramString.substring(0, 10) + "…";
+    if (this.d == null) {
+      this.d = awwa.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
     }
-    return paramContext.getString(2131719078, new Object[] { Integer.valueOf(paramInt1), str });
+    return this.d;
   }
   
-  public static String b(Context paramContext, int paramInt)
+  public int c()
   {
-    return ajyc.a(2131704947);
+    return 1;
   }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public abstract CharSequence e();
 }
 
 

@@ -1,85 +1,77 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public class aexa
-  extends aewe
+  extends aewc
 {
-  private Collection<String> a;
-  
   public aexa(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  public List<? extends aewh> a(String paramString)
+  private List<aewz> b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticon search start.");
+      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "local emoticon search start.");
     }
-    ArrayList localArrayList = new ArrayList();
-    askd localaskd = (askd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    Object localObject = (ansr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    aexd localaexd = aexd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localObject = ((ansr)localObject).a();
-    if (localObject != null)
+    askf localaskf = (askf)this.a.getManager(14);
+    List localList = localaskf.b(paramString, true);
+    if ((localList == null) || (localList.isEmpty()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite emoticonDataList.size : " + ((List)localObject).size());
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
-        if (("isUpdate".equals(localCustomEmotionData.RomaingType)) || ("needDownload".equals(localCustomEmotionData.RomaingType)) || ("overflow".equals(localCustomEmotionData.RomaingType)) || ("overflow_downloaded".equals(localCustomEmotionData.RomaingType))) {
-          if ((!TextUtils.isEmpty(localCustomEmotionData.modifyWord)) && (paramString.equals(localaexd.b(localCustomEmotionData.modifyWord))))
-          {
-            localArrayList.add(new aewz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-          }
-          else if ((!TextUtils.isEmpty(localCustomEmotionData.ocrWord)) && (paramString.equals(localaexd.b(localCustomEmotionData.ocrWord))))
-          {
-            localArrayList.add(new aewz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-          }
-          else if (localCustomEmotionData.isMarkFace)
-          {
-            Emoticon localEmoticon = localaskd.a(localCustomEmotionData.emoPath, localCustomEmotionData.eId);
-            if ((localEmoticon != null) && (!TextUtils.isEmpty(localEmoticon.name)) && (paramString.equals(localaexd.b(localEmoticon.name)))) {
-              localArrayList.add(new aewz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCustomEmotionData));
-            }
-          }
-        }
-      }
-    }
-    if (localArrayList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecFavoriteEmoHandleListener", 2, "favorite onSearchStickerRecLocalEmoticon matchList is null or empty,keyWord: " + bbbd.a(paramString));
+        QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons arrEmoticon is null or empty,keyWord: " + bbbr.a(paramString));
       }
       return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < localList.size())
+    {
+      Object localObject = (Emoticon)localList.get(i);
+      EmoticonPackage localEmoticonPackage = localaskf.a(((Emoticon)localObject).epId);
+      if (localEmoticonPackage == null) {
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons emoticonPackage is null.");
+        }
+      }
+      label225:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if ((localaskf.a == null) || (!localaskf.a.contains(((Emoticon)localObject).epId)) || (localEmoticonPackage.status != 2)) {
+            break label225;
+          }
+          localArrayList.add(new aewz((Emoticon)localObject));
+        }
+      } while (!QLog.isColorLevel());
+      localObject = new StringBuilder().append("findLocalMatchEmoticons emoticonPackage not match, status: ").append(localEmoticonPackage.status).append(" tabCache.size: ");
+      if (localaskf.a != null) {}
+      for (int j = localaskf.a.size();; j = -1)
+      {
+        QLog.d("StickerRecLocalEmoticonHandleListener", 2, j);
+        break;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecLocalEmoticonHandleListener", 2, "findLocalMatchEmoticons stickerRecEmotionList.size:" + localArrayList.size() + ",keyWord: " + bbbr.a(paramString));
     }
     return localArrayList;
   }
   
-  public void a()
+  public List<aewz> a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilCollection = aexd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
-      a();
-    }
-    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
+    return b(paramString);
   }
 }
 

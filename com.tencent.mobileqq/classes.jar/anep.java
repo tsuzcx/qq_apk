@@ -1,9 +1,18 @@
-public class anep
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.qphone.base.util.QLog;
+
+class anep
+  implements AccountManagerCallback<Boolean>
 {
-  public int a;
-  public String a = "";
-  public String b;
-  public String c;
+  anep(anem paramanem) {}
+  
+  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    }
+  }
 }
 
 

@@ -1,39 +1,29 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class tbb
+public abstract class tbb
 {
-  public static tbb a;
+  public int a;
+  public String a;
   
-  public static tbb a()
+  public tbb() {}
+  
+  public tbb(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    if (a == null) {
-      a = new tbb();
-    }
-    return a;
+    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
+    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
   }
   
-  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
-  {
-    QQStoryContext.a();
-    AppInterface localAppInterface = QQStoryContext.a();
-    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), mxh.class);
-    localNewIntent.putExtra("cmd", paramString);
-    localNewIntent.putExtra("data", paramArrayOfByte);
-    localNewIntent.putExtra("isResend", false);
-    localNewIntent.setObserver(paramBusinessObserver);
-    localAppInterface.startServlet(localNewIntent);
-  }
+  public abstract void a();
   
-  public void a(tbd paramtbd, tbe paramtbe)
-  {
-    byte[] arrayOfByte = paramtbd.a();
-    String str = paramtbd.a();
-    long l = System.currentTimeMillis();
-    a(paramtbd.a(), arrayOfByte, new tbc(this, l, paramtbd, str, paramtbe));
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

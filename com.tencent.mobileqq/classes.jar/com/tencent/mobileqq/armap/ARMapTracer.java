@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import alwr;
+import alwq;
 import android.os.SystemClock;
-import bbct;
+import bbdh;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -12,7 +12,7 @@ public class ARMapTracer
 {
   private static int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private alwr jdField_a_of_type_Alwr;
+  private alwq jdField_a_of_type_Alwq;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private final int[] jdField_a_of_type_ArrayOfInt;
@@ -30,9 +30,9 @@ public class ARMapTracer
     float f2;
     if (jdField_a_of_type_Int == 0)
     {
-      f1 = (float)bbct.d() / 1.073742E+009F;
-      i = bbct.b();
-      f2 = (float)bbct.b() / 1000000.0F;
+      f1 = (float)bbdh.d() / 1.073742E+009F;
+      i = bbdh.b();
+      f2 = (float)bbdh.b() / 1000000.0F;
       if ((i < 4) || (f2 < 2.0F) || (f1 < 2.5F)) {
         break label106;
       }
@@ -153,7 +153,7 @@ public class ARMapTracer
       arrayOfInt1[i] += 1;
       arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
       arrayOfInt1[i] += 1;
-    } while ((this.f < 30) || (this.jdField_a_of_type_Alwr == null));
+    } while ((this.f < 30) || (this.jdField_a_of_type_Alwq == null));
     if (this.jdField_b_of_type_Int > 0) {
       this.jdField_b_of_type_Int -= 1;
     }
@@ -164,7 +164,7 @@ public class ARMapTracer
     }
     for (;;)
     {
-      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Alwr.a(i)))
+      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Alwq.a(i)))
       {
         this.c = i;
         this.jdField_b_of_type_Int = 3;

@@ -1,6 +1,6 @@
 public abstract interface ogm
 {
-  public abstract void onViewState(boolean paramBoolean, String paramString);
+  public abstract void onScroll(int paramInt);
 }
 
 

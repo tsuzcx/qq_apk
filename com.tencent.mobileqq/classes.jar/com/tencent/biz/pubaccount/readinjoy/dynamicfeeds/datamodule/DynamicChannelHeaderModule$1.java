@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import oqu;
-import oro;
+import oqr;
+import orl;
 
 public class DynamicChannelHeaderModule$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$1(oro paramoro, int paramInt1, int paramInt2, oqu paramoqu) {}
+  public DynamicChannelHeaderModule$1(orl paramorl, int paramInt1, int paramInt2, oqr paramoqr) {}
   
   public void run()
   {
-    oro.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Oqu);
+    orl.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Oqr);
   }
 }
 

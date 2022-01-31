@@ -1,51 +1,19 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.open.agent.BindGroupActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import org.json.JSONObject;
 
-public class bcyy
-  extends bddt
+class bcyy
+  implements DialogInterface.OnClickListener
 {
-  public bcyy(BindGroupActivity paramBindGroupActivity) {}
+  bcyy(bcyu parambcyu, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
   
-  public int getCount()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      localObject = (bcyz)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    for (;;)
-    {
-      localObject = (bcyx)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bcyx)localObject).b);
-      paramView.jdField_a_of_type_JavaLangString = ((bcyx)localObject).c;
-      Bitmap localBitmap = bddz.a().a(((bcyx)localObject).c);
-      if (localBitmap == null) {
-        break;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      return paramViewGroup;
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562407, paramViewGroup, false);
-      paramView = new bcyz();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131365824));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377864));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840212);
-    bddz.a().a(((bcyx)localObject).c, this.a);
-    return paramViewGroup;
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bcyu.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

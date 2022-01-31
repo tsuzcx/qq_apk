@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -40,9 +40,9 @@ public class MoveDistIndicateView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = actn.a(29.0F, paramContext);
-    this.jdField_b_of_type_Int = actn.a(42.0F, paramContext);
-    this.e = actn.a(8.0F, paramContext);
+    this.jdField_a_of_type_Int = actj.a(29.0F, paramContext);
+    this.jdField_b_of_type_Int = actj.a(42.0F, paramContext);
+    this.e = actj.a(8.0F, paramContext);
     this.c = this.jdField_a_of_type_Int;
     if (QLog.isDevelopLevel()) {
       QLog.d("MoveDistIndicateView", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);

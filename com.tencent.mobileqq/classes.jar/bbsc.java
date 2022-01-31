@@ -1,45 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
 
-class bbsc
-  implements Observer
+public class bbsc
+  implements URLDrawable.URLDrawableListener
 {
-  bbsc(bbsb parambbsb) {}
+  public bbsc(VasResDrawable paramVasResDrawable) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramObject instanceof ArrayList))
-    {
-      paramObservable = (ArrayList)paramObject;
-      switch (((Integer)paramObservable.get(0)).intValue())
-      {
-      default: 
-        return;
-      }
-      paramObservable = (RichStatus)paramObservable.get(1);
-      bbsb.a(this.a, paramObservable);
-      if (bbsb.a(this.a).plainText != null)
-      {
-        paramObject = awei.a().b;
-        if (paramObject != null)
-        {
-          paramObject.plainText = ((ArrayList)bbsb.a(this.a).plainText.clone());
-          paramObject.topics.clear();
-          paramObject.topics.addAll(bbsb.a(this.a).topics);
-        }
-      }
-      if (paramObservable != null) {
-        bbsb.b(this.a).copyFrom(paramObservable);
-      }
-      bbsb.a(this.a).a().sendEmptyMessage(10003);
-      awei.a().deleteObserver(bbsb.a(this.a));
-      return;
+    if (paramURLDrawable != null) {
+      VasResDrawable.a(this.a, paramURLDrawable);
     }
-    bbsb.a(this.a).a().sendEmptyMessage(10003);
+    this.a.invalidateSelf();
   }
 }
 

@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.ImageView;
 
 class plc
-  implements View.OnAttachStateChangeListener
+  implements Animator.AnimatorListener
 {
-  plc(pla parampla, osp paramosp) {}
+  plc(plb paramplb) {}
   
-  public void onViewAttachedToWindow(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    osm.a().a(this.jdField_a_of_type_Osp);
+    plb.a(this.a).setSelected(this.a.isSelected());
   }
   
-  public void onViewDetachedFromWindow(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    osm.a().b(this.jdField_a_of_type_Osp);
+    plb.a(this.a).setSelected(this.a.isSelected());
+    plb.a(this.a).start();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    plb.a(this.a, true);
   }
 }
 

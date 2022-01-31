@@ -1,9 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.NotificationActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class abny
   implements DialogInterface.OnClickListener
@@ -12,7 +9,7 @@ public class abny
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new NotificationActivity.1.1(this), 1000L);
+    this.a.finish();
   }
 }
 

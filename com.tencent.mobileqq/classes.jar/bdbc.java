@@ -1,29 +1,84 @@
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.List;
 
 public class bdbc
-  implements View.OnClickListener
+  extends bdei
 {
-  public bdbc(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  protected List<Friend> a;
   
-  public void onClick(View paramView)
+  public bdbc(List<Friend> paramList)
   {
-    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
-      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562411, paramViewGroup, false);
+      paramViewGroup = new bdbf();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368583));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131378356));
+      paramView.setTag(paramViewGroup);
+    }
+    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      return paramView;
+      paramViewGroup = (bdbf)paramView.getTag();
+    }
+    Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject;
+    if ((localFriend.c == null) || ("".equals(localFriend.c)))
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.b);
+      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
+        localFriend.d = bder.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
+      }
+      localObject = bdeo.a().a(localFriend.d);
+      if (localObject != null) {
+        break label290;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839736);
+      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      bdeo.a().a(localFriend.d, new bdbd(this, (ImageView)localObject));
     }
     for (;;)
     {
-      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
-        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
+      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
+        break label302;
       }
-      return;
-      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
+      paramViewGroup.b.setText(2131691845);
+      return paramView;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
+      break;
+      label290:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
     }
+    label302:
+    paramViewGroup.b.setText("");
+    return paramView;
   }
 }
 

@@ -1,42 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class pbl
+  extends akuo
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
-  
-  public ReadInJoyUserInfoModule.Request0xb81Params a()
+  public pbl(SelectPositionModule paramSelectPositionModule, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public pbl a(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.b = paramInt;
-    return this;
-  }
-  
-  public pbl a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public pbl b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public pbl c(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPositionModule", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (!TextUtils.isEmpty(paramSosoLbsInfo.a.e)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectPositionModule", 2, "onLocationFinish() info.mLocation =" + paramSosoLbsInfo.a);
+      }
+      SelectPositionModule.a(this.a, new SelectPositionModule.PositionData(paramSosoLbsInfo.a));
+      SelectPositionModule.a(this.a, SelectPositionModule.a(this.a));
+      SelectPositionModule.b(this.a, SelectPositionModule.a(this.a));
+      if (SelectPositionModule.a(this.a) != null) {
+        SelectPositionModule.a(this.a).a(SelectPositionModule.a(this.a));
+      }
+    }
   }
 }
 

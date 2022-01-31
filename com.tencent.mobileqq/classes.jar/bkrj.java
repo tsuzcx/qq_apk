@@ -1,34 +1,21 @@
-public abstract interface bkrj
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1;
+
+public class bkrj
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  public bkrj(VideoFilterViewPager.1 param1) {}
   
-  public abstract void a();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(8);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

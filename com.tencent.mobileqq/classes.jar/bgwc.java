@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class bgwc
-  implements View.OnClickListener
+public final class bgwc
 {
-  bgwc(bgwb parambgwb) {}
-  
-  public void onClick(View paramView)
+  private static SharedPreferences b(Context paramContext)
   {
-    bgvr.a(bgwb.a(this.a), bgwb.b(this.a), "5", "27", "", "3", "", "", "");
-    this.a.a.a.a.loadUrl("jsbridge://JSTittlebarAction/managerBtnSingleClick");
+    return paramContext.getSharedPreferences("reader_user" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
   }
 }
 

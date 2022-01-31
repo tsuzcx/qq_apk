@@ -1,55 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class xlm
-  extends WebViewPlugin
+class xlm
+  implements bfph
 {
-  public xlm()
-  {
-    this.mPluginNameSpace = "openToAppDetail";
-  }
+  xlm(xll paramxll) {}
   
-  public void a(String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    a(paramString1, paramString2, null);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
-    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
-    if ((paramString2 != null) && (paramString2.equals("true"))) {
-      localBundle.putBoolean("autoDownload", true);
-    }
-    if (paramString3 != null) {
-      localBundle.putString("packageName", paramString3);
-    }
-    bdev.a(this.mRuntime.a(), paramString1, 2470, localBundle);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"openToAppDetail".equals(paramString2)) {}
-    do
+    this.a.a.dismiss();
+    switch (paramInt)
     {
-      do
-      {
-        return false;
-      } while (!"openAppDetailPage".equals(paramString3));
-      if (paramVarArgs.length == 2)
-      {
-        a(paramVarArgs[0], paramVarArgs[1]);
-        return true;
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
       }
-    } while (paramVarArgs.length != 3);
-    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-    return true;
+      return;
+    case 0: 
+      xll.a(this.a);
+      return;
+    case 1: 
+      xll.b(this.a);
+      return;
+    case 2: 
+      xll.c(this.a);
+      return;
+    }
+    xll.d(this.a);
   }
 }
 

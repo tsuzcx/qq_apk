@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akpc;
-import akpy;
+import akpb;
+import akpx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import anmg;
-import ayki;
-import bbbd;
-import bbcl;
+import anml;
+import aykk;
+import bbbr;
+import bbcz;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
@@ -73,27 +73,27 @@ public class RecentSayHelloListItem
         this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
         if ((localObject2 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((akpc)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
-          if (akpy.d((MessageRecord)localObject1)) {
+          this.mUnreadNum = ((akpb)localObject2).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          if (akpx.d((MessageRecord)localObject1)) {
             this.mUnreadFlag = 3;
           }
           localMsgSummary = super.a();
           this.mHasFlowerMsg = false;
           this.mExtraInfoColor = 0;
           this.mMsgExtroInfo = null;
-          if (!anmg.a(paramQQAppInterface, a(), 1001)) {
+          if (!anml.a(paramQQAppInterface, a(), 1001)) {
             break label366;
           }
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693287);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131693288);
           this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
           if (localObject2 != null) {
-            localMsgSummary.strContent = ((akpc)localObject2).a(a(), 1001, paramContext.getResources().getString(2131693286), 0);
+            localMsgSummary.strContent = ((akpb)localObject2).a(a(), 1001, paramContext.getResources().getString(2131693287), 0);
           }
           label171:
-          localObject2 = bbcl.q(paramQQAppInterface, a());
+          localObject2 = bbcz.q(paramQQAppInterface, a());
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = bbcl.b(paramQQAppInterface, a(), false);
+            localObject1 = bbcz.b(paramQQAppInterface, a(), false);
           }
           localObject2 = localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -128,10 +128,10 @@ public class RecentSayHelloListItem
         this.mDisplayTime = 0L;
         break label78;
         label366:
-        if (anmg.b(paramQQAppInterface, a(), 1001))
+        if (anml.b(paramQQAppInterface, a(), 1001))
         {
           this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131694401);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131694402);
           this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
           break label171;
         }
@@ -170,13 +170,13 @@ public class RecentSayHelloListItem
     } while (this.mDisplayTime > l);
     this.mDisplayTime = l;
     paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new ayki(paramQQAppInterface.getSummary(), 3, 16);
+    paramMsgSummary.mDraft = new aykk(paramQQAppInterface.getSummary(), 3, 16);
   }
   
   public boolean a(FansEntity paramFansEntity)
   {
     boolean bool = false;
-    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bbbd.a(this.common, paramFansEntity.common)))
+    if ((this.age != paramFansEntity.age) || (this.gender != paramFansEntity.gender) || (this.career != paramFansEntity.career) || (this.constellation != paramFansEntity.constellation) || (this.vip != paramFansEntity.vip) || (this.charmIcon != paramFansEntity.charmIcon) || (this.charmLevel != paramFansEntity.charmLevel) || (this.commonId != paramFansEntity.commonId) || (!bbbr.a(this.common, paramFansEntity.common)))
     {
       this.age = paramFansEntity.age;
       this.gender = paramFansEntity.gender;

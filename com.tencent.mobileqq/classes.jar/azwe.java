@@ -1,36 +1,49 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tribe.async.reactive.SimpleObserver;
+import android.graphics.Bitmap;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class azwe
-  extends SimpleObserver<azvx>
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public azwe(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  private azwe(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public void a(azvx paramazvx)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    super.onNext(paramazvx);
-    veg.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    vxs.a(paramazvx.a);
-    vxs.a(paramazvx.b);
-    CheckArithHWResultFragment.a(this.a, paramazvx.a, paramazvx.b);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    veg.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    bcpw.a(this.a.getActivity(), 1, ajyc.a(2131701754), 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
+    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
+    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    {
+      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
+        break label323;
+      }
+      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
+    }
+    for (;;)
+    {
+      ved.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
+      this.a.invalidate();
+      return true;
+      if (this.a.b(0.0F) >= 0.0F)
+      {
+        this.a.b = 0.0F;
+        break;
+      }
+      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
+        break;
+      }
+      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      break;
+      label323:
+      if (this.a.a(0.0F) >= 0.0F) {
+        this.a.jdField_a_of_type_Float = 0.0F;
+      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
+        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      }
+    }
   }
 }
 

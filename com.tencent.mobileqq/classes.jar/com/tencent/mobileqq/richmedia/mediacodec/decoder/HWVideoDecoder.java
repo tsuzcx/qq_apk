@@ -3,27 +3,27 @@ package com.tencent.mobileqq.richmedia.mediacodec.decoder;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.view.Surface;
-import avxk;
-import avxl;
+import avxm;
 import avxn;
-import avxo;
+import avxp;
+import avxq;
 import com.tencent.mobileqq.app.ThreadManager;
-import veg;
+import ved;
 
 @TargetApi(16)
 public class HWVideoDecoder
-  implements avxo
+  implements avxq
 {
-  private avxl jdField_a_of_type_Avxl;
+  private avxn jdField_a_of_type_Avxn;
   private HWVideoDecoder.DecodeRunnable jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable;
   private Thread jdField_a_of_type_JavaLangThread;
   
-  private void a(avxk paramavxk, Surface paramSurface, avxn paramavxn)
+  private void a(avxm paramavxm, Surface paramSurface, avxp paramavxp)
   {
-    if ((paramavxk == null) || (paramSurface == null)) {
+    if ((paramavxm == null) || (paramSurface == null)) {
       throw new IllegalArgumentException("both decodeConfig and surface should not be null");
     }
-    veg.b("HWVideoDecoder", "startDecode config = %s", paramavxk);
+    ved.b("HWVideoDecoder", "startDecode config = %s", paramavxm);
     Thread localThread;
     if (this.jdField_a_of_type_JavaLangThread != null)
     {
@@ -33,8 +33,8 @@ public class HWVideoDecoder
     try
     {
       localThread.join();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(paramavxk.a, paramSurface, paramavxn);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(paramavxk);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(paramavxm.a, paramSurface, paramavxp);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(paramavxm);
       this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable, "HWVideoDecoder-Thread", 8);
       this.jdField_a_of_type_JavaLangThread.start();
       return;
@@ -68,10 +68,10 @@ public class HWVideoDecoder
     if (localDecodeRunnable != null)
     {
       localDecodeRunnable.a(paramInt);
-      veg.a("HWVideoDecoder", "setSpeedType %d", Integer.valueOf(paramInt));
+      ved.a("HWVideoDecoder", "setSpeedType %d", Integer.valueOf(paramInt));
       return;
     }
-    veg.d("HWVideoDecoder", "setSpeedType %d failed, can not find DecodeRunnable", new Object[] { Integer.valueOf(paramInt) });
+    ved.d("HWVideoDecoder", "setSpeedType %d failed, can not find DecodeRunnable", new Object[] { Integer.valueOf(paramInt) });
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -79,17 +79,17 @@ public class HWVideoDecoder
     HWVideoDecoder.DecodeRunnable localDecodeRunnable = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder$DecodeRunnable;
     if (localDecodeRunnable != null)
     {
-      veg.a("HWVideoDecoder", "setPlayRange [%d ms, %d ms]", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+      ved.a("HWVideoDecoder", "setPlayRange [%d ms, %d ms]", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
       localDecodeRunnable.a(paramLong1, paramLong2);
       return;
     }
-    veg.d("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
+    ved.d("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
   }
   
-  public void a(avxk paramavxk, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, avxn paramavxn)
+  public void a(avxm paramavxm, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, avxp paramavxp)
   {
-    this.jdField_a_of_type_Avxl = new avxl(paramInt, paramOnFrameAvailableListener);
-    a(paramavxk, this.jdField_a_of_type_Avxl.a, paramavxn);
+    this.jdField_a_of_type_Avxn = new avxn(paramInt, paramOnFrameAvailableListener);
+    a(paramavxm, this.jdField_a_of_type_Avxn.a, paramavxp);
   }
   
   public int b()
@@ -103,10 +103,10 @@ public class HWVideoDecoder
     if (localDecodeRunnable != null)
     {
       HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable, true);
-      veg.b("HWVideoDecoder", "pauseDecode");
+      ved.b("HWVideoDecoder", "pauseDecode");
       return;
     }
-    veg.d("HWVideoDecoder", "pauseDecode failed, can not find DecodeRunnable");
+    ved.d("HWVideoDecoder", "pauseDecode failed, can not find DecodeRunnable");
   }
   
   public void c()
@@ -118,11 +118,11 @@ public class HWVideoDecoder
       synchronized (HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable))
       {
         HWVideoDecoder.DecodeRunnable.a(localDecodeRunnable).notifyAll();
-        veg.b("HWVideoDecoder", "resumeDecode");
+        ved.b("HWVideoDecoder", "resumeDecode");
         return;
       }
     }
-    veg.d("HWVideoDecoder", "resumeDecode failed, can not find DecodeRunnable");
+    ved.d("HWVideoDecoder", "resumeDecode failed, can not find DecodeRunnable");
   }
 }
 

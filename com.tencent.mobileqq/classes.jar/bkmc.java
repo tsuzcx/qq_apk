@@ -1,21 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.util.LruCache;
+import java.util.ArrayList;
 
-public class bkmc
-  implements ValueAnimator.AnimatorUpdateListener
+class bkmc
+  extends BroadcastReceiver
 {
-  public bkmc(SlideBottomPanel paramSlideBottomPanel, View paramView, int paramInt) {}
+  bkmc(bkma parambkma) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver onReceive.");
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+      int i;
+      if ((paramContext != null) && (paramContext.size() > 0) && (paramIntent != null) && (paramIntent.size() > 0))
+      {
+        ved.b("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=%d headPathList.size()=%d.", Integer.valueOf(paramContext.size()), Integer.valueOf(paramIntent.size()));
+        i = 0;
+      }
+      while (i < paramContext.size())
+      {
+        String str = (String)paramContext.get(i);
+        if (this.a.a.contains(str))
+        {
+          this.a.a.remove(str);
+          this.a.b.put(str, paramIntent.get(i));
+          this.a.a(str, (String)paramIntent.get(i));
+        }
+        i += 1;
+        continue;
+        ved.e("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=0 | headPathList.size()=0.");
       }
     }
   }

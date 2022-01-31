@@ -1,27 +1,61 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.1;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ascr
 {
+  public float a;
   public int a;
+  public ascs a;
+  public ascv a;
   public String a;
-  public List<ascu> a = new ArrayList();
-  public int b = -1;
-  public String b;
+  TimerTask a;
+  public boolean a;
+  public int b;
+  public String b = "non-ver";
+  public boolean b;
+  public int c;
   public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public boolean e = true;
+  public int f = 50;
+  public String f;
+  public boolean f;
+  public int g = 30;
+  public String g;
+  public boolean g;
+  public int h = 0;
+  public String h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public int a(int paramInt)
+  public ascr()
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      ascu localascu = (ascu)localIterator.next();
-      if ((localascu.a <= paramInt) && (localascu.b > paramInt)) {
-        return localascu.c;
-      }
-    }
-    return 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = "send";
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
+    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
+  }
+  
+  public void a(ascs paramascs)
+  {
+    this.jdField_a_of_type_Ascs = paramascs;
   }
 }
 

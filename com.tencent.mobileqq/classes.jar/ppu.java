@@ -1,13 +1,23 @@
-import com.tencent.pts.nativemodule.IPTSHandleJSException;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
+import com.tencent.qphone.base.util.QLog;
 
 public class ppu
-  implements IPTSHandleJSException
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  private final String a = "PTSHandleJSException";
+  public final String a = "PTSMarkArticleReadModule";
   
-  public void handleJSException(int paramInt1, int paramInt2, String paramString)
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
-    pqh.a("0X800A7C6", "", "", "", new pqi().a("type", "1").a("line", "" + paramInt1).a("column", "" + paramInt2).a("msg", paramString).a());
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
+    try
+    {
+      osg.a().a(paramLong1, System.currentTimeMillis());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+    }
   }
 }
 

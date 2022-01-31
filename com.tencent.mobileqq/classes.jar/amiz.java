@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import java.util.Comparator;
 
 public class amiz
-  implements Comparator<ColorNote>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public amiz(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
+  public amiz(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
+    amgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new amgo().b(null);
+    }
+    ((amhc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      axqy.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      return;
+    }
   }
 }
 

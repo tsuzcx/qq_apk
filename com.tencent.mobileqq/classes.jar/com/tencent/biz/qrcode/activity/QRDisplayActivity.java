@@ -1,12 +1,12 @@
 package com.tencent.biz.qrcode.activity;
 
-import actn;
-import aftu;
+import actj;
+import afts;
+import ajvg;
 import ajvi;
-import ajvk;
-import ajvl;
-import ajxn;
-import ajyc;
+import ajvj;
+import ajxl;
+import ajya;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -36,26 +36,26 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anox;
-import anpg;
-import anph;
-import axqw;
-import axra;
-import axrl;
-import bbbb;
-import bbbr;
-import bbcl;
-import bbcv;
-import bbev;
-import bbgg;
-import bbjc;
-import bbje;
-import bcpq;
-import bcpw;
-import bcwh;
-import bduv;
-import bfol;
-import bfoy;
+import anpc;
+import anpl;
+import anpm;
+import axqy;
+import axrc;
+import axrn;
+import bbbp;
+import bbcf;
+import bbcz;
+import bbdj;
+import bbfj;
+import bbgu;
+import bbjq;
+import bbjs;
+import bcqf;
+import bcql;
+import bcww;
+import bdvm;
+import bfpc;
+import bfpp;
 import com.tencent.biz.qrcode.CodeMaskManager;
 import com.tencent.chirp.ChirpWrapper;
 import com.tencent.chirp.PcmPlayer;
@@ -83,59 +83,59 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import lzj;
+import lze;
 import mqq.os.MqqHandler;
-import wff;
-import wfh;
+import wfc;
+import wfe;
+import wfu;
+import wfv;
+import wfw;
 import wfx;
 import wfy;
 import wfz;
 import wga;
 import wgb;
 import wgc;
-import wgd;
 import wge;
 import wgf;
+import wgg;
 import wgh;
 import wgi;
 import wgj;
 import wgk;
-import wgl;
-import wgm;
-import wgn;
-import wim;
-import xon;
+import wij;
+import xok;
 
 public class QRDisplayActivity
   extends IphoneTitleBarActivity
-  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, anph, wff, wfh, xon
+  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, anpm, wfc, wfe, xok
 {
   public static final String h;
   public int a;
   protected long a;
-  public ajvi a;
-  ajvl jdField_a_of_type_Ajvl = new wgf(this);
+  public ajvg a;
+  ajvj jdField_a_of_type_Ajvj = new wgc(this);
   public Bitmap a;
   public Bundle a;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new wgh(this, 1000L, 200L);
+  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new wge(this, 1000L, 200L);
   protected Handler a;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new wgj(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new wgg(this);
   protected View a;
   public ImageView a;
   protected TextView a;
-  private anpg jdField_a_of_type_Anpg;
-  private bbjc jdField_a_of_type_Bbjc;
-  bcpq jdField_a_of_type_Bcpq;
-  bcwh jdField_a_of_type_Bcwh;
-  bduv jdField_a_of_type_Bduv = new wgi(this);
-  bfol jdField_a_of_type_Bfol;
+  private anpl jdField_a_of_type_Anpl;
+  private bbjq jdField_a_of_type_Bbjq;
+  bcqf jdField_a_of_type_Bcqf;
+  bcww jdField_a_of_type_Bcww;
+  bdvm jdField_a_of_type_Bdvm = new wgf(this);
+  bfpc jdField_a_of_type_Bfpc;
   protected CodeMaskManager a;
   private PcmPlayer jdField_a_of_type_ComTencentChirpPcmPlayer;
   public ij a;
   public Runnable a;
   public String a;
   List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  wgn jdField_a_of_type_Wgn = new wfx(this);
+  wgk jdField_a_of_type_Wgk = new wfu(this);
   public boolean a;
   protected int b;
   public long b;
@@ -144,7 +144,7 @@ public class QRDisplayActivity
   public View b;
   public ImageView b;
   protected TextView b;
-  public bfol b;
+  public bfpc b;
   public Runnable b;
   public String b;
   public List<String> b;
@@ -181,7 +181,7 @@ public class QRDisplayActivity
   
   static
   {
-    jdField_h_of_type_JavaLangString = ajyc.a(2131711196);
+    jdField_h_of_type_JavaLangString = ajya.a(2131711207);
   }
   
   public QRDisplayActivity()
@@ -456,35 +456,35 @@ public class QRDisplayActivity
     //   164	183	355	java/lang/Exception
   }
   
-  public static List<bbje>[] a(Context paramContext)
+  public static List<bbjs>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    bbje localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = paramContext.getString(2131696695);
-    localbbje.jdField_b_of_type_Int = 2130838754;
-    localbbje.jdField_b_of_type_Boolean = true;
-    localbbje.jdField_c_of_type_Int = 0;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = paramContext.getString(2131696708);
-    localbbje.jdField_b_of_type_Int = 2130838755;
-    localbbje.jdField_b_of_type_Boolean = true;
-    localbbje.jdField_c_of_type_Int = 1;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = paramContext.getString(2131696715);
-    localbbje.jdField_b_of_type_Int = 2130838758;
-    localbbje.jdField_c_of_type_Int = 2;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = paramContext.getString(2131696698);
-    localbbje.jdField_b_of_type_Int = 2130838752;
-    localbbje.jdField_c_of_type_Int = 3;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
+    bbjs localbbjs = new bbjs();
+    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696696);
+    localbbjs.jdField_b_of_type_Int = 2130838754;
+    localbbjs.jdField_b_of_type_Boolean = true;
+    localbbjs.jdField_c_of_type_Int = 0;
+    localbbjs.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbjs);
+    localbbjs = new bbjs();
+    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696709);
+    localbbjs.jdField_b_of_type_Int = 2130838755;
+    localbbjs.jdField_b_of_type_Boolean = true;
+    localbbjs.jdField_c_of_type_Int = 1;
+    localbbjs.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbjs);
+    localbbjs = new bbjs();
+    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696716);
+    localbbjs.jdField_b_of_type_Int = 2130838758;
+    localbbjs.jdField_c_of_type_Int = 2;
+    localbbjs.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbjs);
+    localbbjs = new bbjs();
+    localbbjs.jdField_a_of_type_JavaLangString = paramContext.getString(2131696699);
+    localbbjs.jdField_b_of_type_Int = 2130838752;
+    localbbjs.jdField_c_of_type_Int = 3;
+    localbbjs.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbbjs);
     return (List[])new ArrayList[] { localArrayList };
   }
   
@@ -494,16 +494,16 @@ public class QRDisplayActivity
       QLog.d("QRDisplayActivity", 2, "sendIsResumeBroadcast isNeedSend = " + this.jdField_e_of_type_Boolean + " ,isResume = " + paramBoolean);
     }
     if (this.jdField_e_of_type_Boolean) {
-      lzj.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lze.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
   private void l()
   {
     String str1;
-    if (!bbev.d(BaseApplication.getContext()))
+    if (!bbfj.d(BaseApplication.getContext()))
     {
-      bcpw.a(this, getString(2131692321), 0).b(getTitleBarHeight());
+      bcql.a(this, getString(2131692321), 0).b(getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.i("QRDisplayActivity", 2, "tryToGetShareLink: net is not supported");
       }
@@ -537,7 +537,7 @@ public class QRDisplayActivity
             break;
             str1 = "qr_wechat";
             break;
-            bbbb.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+            bbbp.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
             this.jdField_h_of_type_Int = -1;
             return;
             switch (this.jdField_h_of_type_Int)
@@ -553,53 +553,53 @@ public class QRDisplayActivity
                 if (this.jdField_c_of_type_Int != 2) {
                   break label481;
                 }
-                axqw.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qq", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
+                axqy.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qq", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
                 return;
               }
               catch (OutOfMemoryError localOutOfMemoryError2)
               {
                 String str2;
-                wim.a(1, 2131696769);
+                wij.a(1, 2131696770);
               }
               try
               {
-                if (this.jdField_a_of_type_Bcwh == null)
+                if (this.jdField_a_of_type_Bcww == null)
                 {
-                  this.jdField_a_of_type_Bcwh = new wge(this);
-                  WXShareHelper.a().a(this.jdField_a_of_type_Bcwh);
+                  this.jdField_a_of_type_Bcww = new wgb(this);
+                  WXShareHelper.a().a(this.jdField_a_of_type_Bcww);
                 }
                 ThreadManager.post(new QRDisplayActivity.19(this), 8, null, true);
                 return;
               }
               catch (OutOfMemoryError localOutOfMemoryError1)
               {
-                wim.a(1, 2131696769);
+                wij.a(1, 2131696770);
               }
             }
           } while (this.jdField_c_of_type_Int != 2);
           if (this.jdField_h_of_type_Int == 2) {}
           for (str2 = "qr_wechat";; str2 = "qr_circle")
           {
-            bbbb.a("Grp_share", "grpData_admin", str2, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+            bbbp.a("Grp_share", "grpData_admin", str2, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
             return;
           }
         } while (this.jdField_c_of_type_Int != 2);
-        bbbb.a("Grp_share", "grpData_admin", "qr_qq", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
+        bbbp.a("Grp_share", "grpData_admin", "qr_qq", 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), "1" });
         return;
       } while (this.jdField_c_of_type_Int != 5);
-      axqw.b(this.app, "CliOper", "", "", "0X8006674", "0X8006674", 0, 0, "", "", "", "");
+      axqy.b(this.app, "CliOper", "", "", "0X8006674", "0X8006674", 0, 0, "", "", "", "");
       return;
       e();
       if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-        axqw.b(this.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+        axqy.b(this.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
       }
       if (this.jdField_c_of_type_Int == 2)
       {
-        axqw.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qzone", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
+        axqy.b(this.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_qzone", 0, 0, this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int), "");
         return;
       }
     } while (this.jdField_c_of_type_Int != 5);
-    axqw.b(this.app, "CliOper", "", "", "0X8006675", "0X8006675", 0, 0, "", "", "", "");
+    axqy.b(this.app, "CliOper", "", "", "0X8006675", "0X8006675", 0, 0, "", "", "", "");
   }
   
   private void m()
@@ -632,7 +632,7 @@ public class QRDisplayActivity
         QLog.d("QRDisplayActivity", 2, "getPrefMatrix uin: " + paramString + " type: " + paramInt1 + " data: " + str);
       }
     } while (str == null);
-    return wim.a(str, paramInt2);
+    return wij.a(str, paramInt2);
   }
   
   public String a()
@@ -682,22 +682,22 @@ public class QRDisplayActivity
     switch (paramInt)
     {
     default: 
-      str = ajyc.a(2131711194);
+      str = ajya.a(2131711205);
     }
     for (;;)
     {
       a(2130839302, str);
       finish();
       return;
-      str = ajyc.a(2131711195);
+      str = ajya.a(2131711206);
       continue;
-      str = ajyc.a(2131711192);
+      str = ajya.a(2131711203);
     }
   }
   
   void a(int paramInt, String paramString)
   {
-    bcpw.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+    bcql.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
   }
   
   public void a(Bundle paramBundle)
@@ -720,7 +720,7 @@ public class QRDisplayActivity
       j = paramBundle.getInt("qrsz");
       localObject = a();
       if (localObject != null) {
-        this.jdField_a_of_type_Ij = wim.a((String)localObject, j);
+        this.jdField_a_of_type_Ij = wij.a((String)localObject, j);
       }
     }
     int i2 = this.jdField_a_of_type_Ij.a();
@@ -748,7 +748,7 @@ public class QRDisplayActivity
     if ((this.jdField_a_of_type_Long & 0x800) != 0L)
     {
       if (this.jdField_b_of_type_Int == 2) {
-        j = 2130843232;
+        j = 2130843233;
       }
     }
     else
@@ -757,7 +757,7 @@ public class QRDisplayActivity
       if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
         this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
       }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = wim.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, localBitmap2, localBitmap3, paramBundle.getInt("head"), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, localRect, localArrayList, j);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = wij.a(this, localBitmap1, this.jdField_a_of_type_AndroidGraphicsBitmap, paramBundle.getInt("nameClr"), this.jdField_a_of_type_JavaLangString, localBitmap2, localBitmap3, paramBundle.getInt("head"), paramBundle.getInt("tipsClr"), this.jdField_b_of_type_JavaLangString, localRect, localArrayList, j);
       localBitmap3.recycle();
       if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {
         break label412;
@@ -772,14 +772,14 @@ public class QRDisplayActivity
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      j = 2130843232;
+      j = 2130843233;
       break;
       label412:
       if (super.isResume())
       {
-        paramBundle = bbcv.a(this, 230);
-        paramBundle.setMessage(2131718906);
-        paramBundle.setPositiveButton(2131694793, new wfy(this));
+        paramBundle = bbdj.a(this, 230);
+        paramBundle.setMessage(2131718917);
+        paramBundle.setPositiveButton(2131694794, new wfv(this));
         paramBundle.show();
       }
       else
@@ -871,20 +871,20 @@ public class QRDisplayActivity
   
   protected void c()
   {
-    if (this.jdField_b_of_type_Bfol == null)
+    if (this.jdField_b_of_type_Bfpc == null)
     {
-      this.jdField_b_of_type_Bfol = ((bfol)bfoy.a(this, null));
-      this.jdField_b_of_type_Bfol.a(2131717196, 1);
-      this.jdField_b_of_type_Bfol.a(2131717198, 1);
-      this.jdField_b_of_type_Bfol.a(2131717195, 1);
-      this.jdField_b_of_type_Bfol.c(2131690596);
-      this.jdField_b_of_type_Bfol.setOnDismissListener(new wgk(this));
-      this.jdField_b_of_type_Bfol.a(new wgl(this));
+      this.jdField_b_of_type_Bfpc = ((bfpc)bfpp.a(this, null));
+      this.jdField_b_of_type_Bfpc.a(2131717207, 1);
+      this.jdField_b_of_type_Bfpc.a(2131717209, 1);
+      this.jdField_b_of_type_Bfpc.a(2131717206, 1);
+      this.jdField_b_of_type_Bfpc.c(2131690596);
+      this.jdField_b_of_type_Bfpc.setOnDismissListener(new wgh(this));
+      this.jdField_b_of_type_Bfpc.a(new wgi(this));
     }
-    if (!this.jdField_b_of_type_Bfol.isShowing())
+    if (!this.jdField_b_of_type_Bfpc.isShowing())
     {
       this.jdField_f_of_type_Boolean = false;
-      this.jdField_b_of_type_Bfol.show();
+      this.jdField_b_of_type_Bfpc.show();
     }
   }
   
@@ -915,7 +915,7 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      axrl.a(BaseApplication.getContext()).b(this.app, "", str, 1);
+      axrn.a(BaseApplication.getContext()).b(this.app, "", str, 1);
       return;
       if (this.jdField_c_of_type_Int == 2) {
         str = "saveGroupQRcard";
@@ -940,7 +940,7 @@ public class QRDisplayActivity
         if (paramInt2 == -1)
         {
           localObject2 = "0";
-          bbbb.a("Grp_share", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), localObject2 });
+          bbbp.a("Grp_share", "grpData_admin", (String)localObject1, 0, 0, new String[] { this.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Int), localObject2 });
         }
       }
       else
@@ -956,12 +956,12 @@ public class QRDisplayActivity
           if (paramInt1 != 1) {
             break label230;
           }
-          a(0, getString(2131717197));
+          a(0, getString(2131717208));
           if (QLog.isColorLevel()) {
             QLog.i("QRDisplayActivity", 2, "shareQRCode success");
           }
           if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-            axqw.b(this.app, "P_CliOper", "flag1", "", "0X800416F", "0X800416F", 0, 0, "", "", "", "");
+            axqy.b(this.app, "P_CliOper", "flag1", "", "0X800416F", "0X800416F", 0, 0, "", "", "", "");
           }
         }
       }
@@ -990,7 +990,7 @@ public class QRDisplayActivity
       }
       else if (paramInt1 == 21)
       {
-        localObject1 = actn.a(new Intent(this, SplashActivity.class), null);
+        localObject1 = actj.a(new Intent(this, SplashActivity.class), null);
         ((Intent)localObject1).putExtras(new Bundle(paramIntent.getExtras()));
         startActivity((Intent)localObject1);
         finish();
@@ -1020,18 +1020,18 @@ public class QRDisplayActivity
     Object localObject1;
     if (this.jdField_c_of_type_Int == 1)
     {
-      this.jdField_b_of_type_JavaLangString = getString(2131717242);
+      this.jdField_b_of_type_JavaLangString = getString(2131717253);
       paramBundle = findViewById(2131367224);
       paramBundle.setVisibility(0);
-      this.jdField_f_of_type_AndroidViewView = findViewById(2131373438);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373437));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373439));
-      this.jdField_g_of_type_AndroidViewView = findViewById(2131373441);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373440));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373442));
-      this.jdField_h_of_type_AndroidViewView = findViewById(2131373454);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373453));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373455));
+      this.jdField_f_of_type_AndroidViewView = findViewById(2131373440);
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373439));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373441));
+      this.jdField_g_of_type_AndroidViewView = findViewById(2131373443);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373442));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373444));
+      this.jdField_h_of_type_AndroidViewView = findViewById(2131373456);
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373455));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373457));
       j = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131297814) * 3) / 8;
       localObject1 = (ViewGroup.MarginLayoutParams)paramBundle.getLayoutParams();
       if (localObject1 != null)
@@ -1049,13 +1049,13 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131373460);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373431));
-      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131373457);
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373446);
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131373448);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131372612);
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131696762));
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131373462);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373433));
+      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131373459);
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373448);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131373450);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131372614);
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131696763));
       if (QLog.isDevelopLevel()) {
         QLog.d("QRDisplayActivity", 4, "display qrcode, type: " + this.jdField_c_of_type_Int);
       }
@@ -1063,18 +1063,18 @@ public class QRDisplayActivity
         break label1456;
       }
       getIntent().getStringExtra("discussion_shorturl");
-      addObserver(this.jdField_a_of_type_Ajvl);
+      addObserver(this.jdField_a_of_type_Ajvj);
       if (this.app != null)
       {
-        this.jdField_a_of_type_Ajvi = ((ajvi)this.app.a(6));
-        this.app.registObserver(this.jdField_a_of_type_Wgn);
+        this.jdField_a_of_type_Ajvg = ((ajvg)this.app.a(6));
+        this.app.registObserver(this.jdField_a_of_type_Wgk);
       }
-      this.leftView.setContentDescription(getString(2131696397));
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131696398));
+      this.leftView.setContentDescription(getString(2131696398));
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131696399));
       setResult(-1, getIntent());
-      paramBundle = (ajxn)this.app.getManager(51);
-      localObject2 = (ajvk)this.app.getManager(53);
-      localObject1 = ((ajvk)localObject2).a(this.jdField_c_of_type_JavaLangString);
+      paramBundle = (ajxl)this.app.getManager(51);
+      localObject2 = (ajvi)this.app.getManager(53);
+      localObject1 = ((ajvi)localObject2).a(this.jdField_c_of_type_JavaLangString);
       if (localObject1 != null) {
         break;
       }
@@ -1088,37 +1088,37 @@ public class QRDisplayActivity
         this.jdField_c_of_type_AndroidViewView.post(this.jdField_a_of_type_JavaLangRunnable);
       }
       if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-        axqw.b(this.app, "P_CliOper", "flag1", "", "0X800416D", "0X800416D", 0, 0, "", "", "", "");
+        axqy.b(this.app, "P_CliOper", "flag1", "", "0X800416D", "0X800416D", 0, 0, "", "", "", "");
       }
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
       this.jdField_b_of_type_AndroidOsHandler.obtainMessage(1004, 1, 0).sendToTarget();
       return true;
       if (this.jdField_c_of_type_Int == 2)
       {
-        findViewById(2131372611).setVisibility(0);
+        findViewById(2131372613).setVisibility(0);
         findViewById(2131367223).setVisibility(0);
-        findViewById(2131373443).setOnClickListener(this);
-        findViewById(2131373444).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131717210);
+        findViewById(2131373445).setOnClickListener(this);
+        findViewById(2131373446).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131717221);
       }
       else if (this.jdField_c_of_type_Int == 5)
       {
-        findViewById(2131372611).setVisibility(0);
+        findViewById(2131372613).setVisibility(0);
         findViewById(2131367223).setVisibility(0);
-        findViewById(2131373443).setOnClickListener(this);
-        findViewById(2131373444).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131717206);
+        findViewById(2131373445).setOnClickListener(this);
+        findViewById(2131373446).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131717217);
       }
       else if (this.jdField_c_of_type_Int == 11)
       {
-        findViewById(2131372611).setVisibility(0);
+        findViewById(2131372613).setVisibility(0);
         findViewById(2131367223).setVisibility(0);
-        findViewById(2131373443).setOnClickListener(this);
-        findViewById(2131373444).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131717234);
+        findViewById(2131373445).setOnClickListener(this);
+        findViewById(2131373446).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131717245);
       }
     }
-    Object localObject2 = ((ajvk)localObject2).a(this.jdField_c_of_type_JavaLangString);
+    Object localObject2 = ((ajvi)localObject2).a(this.jdField_c_of_type_JavaLangString);
     if (localObject2 != null)
     {
       this.jdField_f_of_type_Int = ((List)localObject2).size();
@@ -1142,7 +1142,7 @@ public class QRDisplayActivity
         localObject2 = (DiscussionMemberInfo)((Iterator)localObject1).next();
         if (this.app.getAccount().equals(((DiscussionMemberInfo)localObject2).memberUin))
         {
-          this.jdField_b_of_type_JavaUtilList.add(bbcl.h(this.app, ((DiscussionMemberInfo)localObject2).memberUin));
+          this.jdField_b_of_type_JavaUtilList.add(bbcz.h(this.app, ((DiscussionMemberInfo)localObject2).memberUin));
           continue;
           this.jdField_f_of_type_Int = 0;
           break;
@@ -1171,7 +1171,7 @@ public class QRDisplayActivity
         paramBundle[j] = ((String)((Iterator)localObject1).next());
         j += 1;
       }
-      ((ajvi)this.app.a(6)).a(new String[] { "20002" }, paramBundle);
+      ((ajvg)this.app.a(6)).a(new String[] { "20002" }, paramBundle);
     }
     label1555:
     for (int k = 0;; k = 1)
@@ -1180,20 +1180,20 @@ public class QRDisplayActivity
       if (this.jdField_b_of_type_JavaUtilList.size() <= 0) {
         break;
       }
-      Collections.sort(this.jdField_b_of_type_JavaUtilList, new wgm(this));
+      Collections.sort(this.jdField_b_of_type_JavaUtilList, new wgj(this));
       this.jdField_a_of_type_JavaLangString = a(this.jdField_b_of_type_JavaUtilList);
       j = k;
       break;
       label1456:
       if (this.jdField_c_of_type_Int == 2)
       {
-        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131717208, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
-        addObserver(this.jdField_a_of_type_Bduv);
+        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131717219, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        addObserver(this.jdField_a_of_type_Bdvm);
         j = 1;
         break;
       }
       if (this.jdField_c_of_type_Int == 11) {
-        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131717208, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131717219, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
       }
       j = 1;
       break;
@@ -1212,23 +1212,23 @@ public class QRDisplayActivity
     this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a();
     if (this.jdField_c_of_type_Int == 5)
     {
-      removeObserver(this.jdField_a_of_type_Ajvl);
-      this.app.unRegistObserver(this.jdField_a_of_type_Wgn);
+      removeObserver(this.jdField_a_of_type_Ajvj);
+      this.app.unRegistObserver(this.jdField_a_of_type_Wgk);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bcwh != null)
+      if (this.jdField_a_of_type_Bcww != null)
       {
-        WXShareHelper.a().b(this.jdField_a_of_type_Bcwh);
-        this.jdField_a_of_type_Bcwh = null;
+        WXShareHelper.a().b(this.jdField_a_of_type_Bcww);
+        this.jdField_a_of_type_Bcww = null;
       }
-      if (this.jdField_a_of_type_Anpg != null) {
-        this.jdField_a_of_type_Anpg.b(this);
+      if (this.jdField_a_of_type_Anpl != null) {
+        this.jdField_a_of_type_Anpl.b(this);
       }
       super.doOnDestroy();
       return;
       if (this.jdField_c_of_type_Int == 2) {
-        removeObserver(this.jdField_a_of_type_Bduv);
+        removeObserver(this.jdField_a_of_type_Bdvm);
       }
     }
   }
@@ -1260,7 +1260,7 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      axrl.a(BaseApplication.getContext()).b(this.app, "", str, 1);
+      axrn.a(BaseApplication.getContext()).b(this.app, "", str, 1);
       return;
       if (this.jdField_c_of_type_Int == 2) {
         str = "shareGroupQRcard";
@@ -1293,7 +1293,7 @@ public class QRDisplayActivity
     if (this.jdField_c_of_type_Int == 1) {}
     for (localObject = "changeConsumerQRcard";; localObject = "changeGroupQRcard")
     {
-      axrl.a(BaseApplication.getContext()).b(this.app, "", (String)localObject, 1);
+      axrn.a(BaseApplication.getContext()).b(this.app, "", (String)localObject, 1);
       return;
     }
   }
@@ -1309,10 +1309,10 @@ public class QRDisplayActivity
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
     if (super.isResume())
     {
-      bbgg localbbgg = bbcv.a(this, 230);
-      localbbgg.setMessage(2131718904);
-      localbbgg.setPositiveButton(2131694793, new wfz(this));
-      localbbgg.show();
+      bbgu localbbgu = bbdj.a(this, 230);
+      localbbgu.setMessage(2131718915);
+      localbbgu.setPositiveButton(2131694794, new wfw(this));
+      localbbgu.show();
       return;
     }
     finish();
@@ -1320,23 +1320,23 @@ public class QRDisplayActivity
   
   protected void h()
   {
-    if (this.jdField_a_of_type_Bbjc == null)
+    if (this.jdField_a_of_type_Bbjq == null)
     {
-      wgb localwgb = new wgb(this);
-      wgc localwgc = new wgc(this);
-      this.jdField_a_of_type_Bbjc = new bbjc(this);
-      this.jdField_a_of_type_Bbjc.a(getString(2131719497));
-      this.jdField_a_of_type_Bbjc.a(a(this));
-      this.jdField_a_of_type_Bbjc.a(localwgc);
-      this.jdField_a_of_type_Bbjc.a(new wgd(this));
-      this.jdField_a_of_type_Bbjc.a(localwgb);
+      wfy localwfy = new wfy(this);
+      wfz localwfz = new wfz(this);
+      this.jdField_a_of_type_Bbjq = new bbjq(this);
+      this.jdField_a_of_type_Bbjq.a(getString(2131719508));
+      this.jdField_a_of_type_Bbjq.a(a(this));
+      this.jdField_a_of_type_Bbjq.a(localwfz);
+      this.jdField_a_of_type_Bbjq.a(new wga(this));
+      this.jdField_a_of_type_Bbjq.a(localwfy);
     }
     try
     {
-      if ((this.jdField_a_of_type_Bbjc != null) && (!this.jdField_a_of_type_Bbjc.a()))
+      if ((this.jdField_a_of_type_Bbjq != null) && (!this.jdField_a_of_type_Bbjq.a()))
       {
         this.jdField_f_of_type_Boolean = false;
-        this.jdField_a_of_type_Bbjc.a();
+        this.jdField_a_of_type_Bbjq.a();
       }
       return;
     }
@@ -1370,11 +1370,11 @@ public class QRDisplayActivity
           }
           if (!bool1)
           {
-            if (this.jdField_a_of_type_Anpg == null) {
-              this.jdField_a_of_type_Anpg = ((anpg)((anox)this.app.getManager(77)).a("qq.android.system.chirp"));
+            if (this.jdField_a_of_type_Anpl == null) {
+              this.jdField_a_of_type_Anpl = ((anpl)((anpc)this.app.getManager(77)).a("qq.android.system.chirp"));
             }
-            this.jdField_a_of_type_Anpg.a(this);
-            this.jdField_a_of_type_Anpg.a(true);
+            this.jdField_a_of_type_Anpl.a(this);
+            this.jdField_a_of_type_Anpl.a(true);
             bool1 = false;
           }
         }
@@ -1423,12 +1423,12 @@ public class QRDisplayActivity
           {
             this.jdField_a_of_type_ComTencentChirpPcmPlayer = new PcmPlayer(this, this, 44100, str);
             this.jdField_a_of_type_ComTencentChirpPcmPlayer.a();
-            bbbr.a(this, true);
+            bbcf.a(this, true);
           }
           if (paramMessage.arg1 != 5) {
             break;
           }
-          axqw.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 0, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 0, 0, "", "", "", "");
           break;
         }
         label530:
@@ -1440,12 +1440,12 @@ public class QRDisplayActivity
         this.jdField_a_of_type_ComTencentChirpPcmPlayer.b();
         this.jdField_a_of_type_ComTencentChirpPcmPlayer = null;
         if (paramMessage.arg1 == 5) {
-          axqw.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
         }
         if (paramMessage.arg1 == 3) {
-          axqw.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8007099", "0X8007099", 1, 0, "", "", "", "");
         }
-        bbbr.a(this, false);
+        bbcf.a(this, false);
         break;
         if (this.jdField_a_of_type_ComTencentChirpPcmPlayer == null) {
           break;
@@ -1461,11 +1461,11 @@ public class QRDisplayActivity
   
   public void i()
   {
-    axqw.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "scan_QR_code", "code_click", 0, 0, "", "", "", "");
+    axqy.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "scan_QR_code", "code_click", 0, 0, "", "", "", "");
     if ("ScannerActivity".equals(this.jdField_f_of_type_JavaLangString))
     {
       if (isInMultiWindow()) {
-        bcpw.a(this, ajyc.a(2131711191), 0).a();
+        bcql.a(this, ajya.a(2131711202), 0).a();
       }
       setResult(-1);
       finish();
@@ -1473,7 +1473,7 @@ public class QRDisplayActivity
     }
     if (isInMultiWindow())
     {
-      bcpw.a(this, ajyc.a(2131711193), 0).a();
+      bcql.a(this, ajya.a(2131711204), 0).a();
       return;
     }
     Intent localIntent = new Intent(this, ScannerActivity.class);
@@ -1498,7 +1498,7 @@ public class QRDisplayActivity
     {
       return;
       this.jdField_c_of_type_Long = l;
-      if (paramView.getId() == 2131373448)
+      if (paramView.getId() == 2131373450)
       {
         if (this.jdField_a_of_type_Boolean) {
           continue;
@@ -1509,73 +1509,73 @@ public class QRDisplayActivity
           if ((this.jdField_g_of_type_Int & 0x1) == 0) {
             continue;
           }
-          axqw.b(this.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+          axqy.b(this.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
           return;
         }
         if ((this.jdField_c_of_type_Int == 5) || (this.jdField_c_of_type_Int == 11))
         {
           f();
-          axqw.b(this.app, "CliOper", "", "", "0X8006671", "0X8006671", 0, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8006671", "0X8006671", 0, 0, "", "", "", "");
           return;
         }
         c();
         return;
       }
-      if (paramView.getId() == 2131373433) {
-        if (this.jdField_a_of_type_Bfol == null) {
-          this.jdField_a_of_type_Bfol = new aftu(this).a(this);
+      if (paramView.getId() == 2131373435) {
+        if (this.jdField_a_of_type_Bfpc == null) {
+          this.jdField_a_of_type_Bfpc = new afts(this).a(this);
         }
       }
       try
       {
-        this.jdField_a_of_type_Bfol.show();
+        this.jdField_a_of_type_Bfpc.show();
         label204:
-        axqw.b(this.app, "CliOper", "", "", "0X80040F6", "0X80040F6", 0, 0, "", "", "", "");
+        axqy.b(this.app, "CliOper", "", "", "0X80040F6", "0X80040F6", 0, 0, "", "", "", "");
         return;
-        if (paramView.getId() == 2131373443)
+        if (paramView.getId() == 2131373445)
         {
           if (this.jdField_a_of_type_Boolean) {
             continue;
           }
           d();
           if ((this.jdField_g_of_type_Int & 0x1) != 0) {
-            axqw.b(this.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+            axqy.b(this.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
           }
           if (this.jdField_c_of_type_Int == 5) {
-            axqw.b(this.app, "CliOper", "", "", "0X8006672", "0X8006672", 0, 0, "", "", "", "");
+            axqy.b(this.app, "CliOper", "", "", "0X8006672", "0X8006672", 0, 0, "", "", "", "");
           }
           if (this.jdField_c_of_type_Int != 2) {
             continue;
           }
-          new axra(this.app).a("P_CliOper").b("Grp_set").c("Grp_data").d("qr_save").a(new String[] { this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int) }).a();
+          new axrc(this.app).a("P_CliOper").b("Grp_set").c("Grp_data").d("qr_save").a(new String[] { this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int) }).a();
           return;
         }
-        if (paramView.getId() == 2131373444)
+        if (paramView.getId() == 2131373446)
         {
           h();
           if (this.jdField_c_of_type_Int != 5) {
             continue;
           }
-          axqw.b(this.app, "CliOper", "", "", "0X8006673", "0X8006673", 0, 0, "", "", "", "");
+          axqy.b(this.app, "CliOper", "", "", "0X8006673", "0X8006673", 0, 0, "", "", "", "");
           return;
         }
-        if ((paramView.getId() == 2131373453) || (paramView.getId() == 2131373455))
+        if ((paramView.getId() == 2131373455) || (paramView.getId() == 2131373457))
         {
           i();
           return;
         }
-        if (paramView.getId() == 2131373438)
+        if (paramView.getId() == 2131373440)
         {
           b(7);
           return;
         }
-        if (paramView.getId() == 2131373441)
+        if (paramView.getId() == 2131373443)
         {
           b(8);
-          axqw.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "fukuanTCclick", 0, 0, "", "", "", "");
+          axqy.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "fukuanTCclick", 0, 0, "", "", "", "");
           return;
         }
-        if (paramView.getId() != 2131373454) {
+        if (paramView.getId() != 2131373456) {
           continue;
         }
         i();
@@ -1595,28 +1595,28 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
       int j = -1;
       if (!WXShareHelper.a().a()) {
-        j = 2131720906;
+        j = 2131720917;
       }
       for (;;)
       {
         if (j == -1) {
           break label93;
         }
-        wim.a(1, j);
+        wij.a(1, j);
         break;
         if (!WXShareHelper.a().b()) {
-          j = 2131720907;
+          j = 2131720918;
         }
       }
       label93:
-      if (this.jdField_a_of_type_Bcwh == null)
+      if (this.jdField_a_of_type_Bcww == null)
       {
-        this.jdField_a_of_type_Bcwh = new wga(this);
-        WXShareHelper.a().a(this.jdField_a_of_type_Bcwh);
+        this.jdField_a_of_type_Bcww = new wfx(this);
+        WXShareHelper.a().a(this.jdField_a_of_type_Bcww);
       }
       paramView = this.app;
       label136:
@@ -1626,11 +1626,11 @@ public class QRDisplayActivity
       if (paramInt == 2)
       {
         paramAdapterView = "1";
-        axqw.b(paramView, "CliOper", "", "", "discuss", "share_discuss_to", 0, 0, paramAdapterView, "", "", "");
+        axqy.b(paramView, "CliOper", "", "", "discuss", "share_discuss_to", 0, 0, paramAdapterView, "", "", "");
         this.jdField_g_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
         paramAdapterView = String.format(getString(2131691838), new Object[] { this.jdField_a_of_type_JavaLangString });
         if (this.jdField_c_of_type_Int == 11) {
-          paramAdapterView = getString(2131693245);
+          paramAdapterView = getString(2131693246);
         }
         paramView = WXShareHelper.a();
         str1 = this.jdField_g_of_type_JavaLangString;
@@ -1648,13 +1648,13 @@ public class QRDisplayActivity
         paramAdapterView = "0";
         break label136;
       }
-      if (this.jdField_a_of_type_Bcpq == null)
+      if (this.jdField_a_of_type_Bcqf == null)
       {
-        this.jdField_a_of_type_Bcpq = new bcpq(this, getTitleBarHeight());
-        this.jdField_a_of_type_Bcpq.c(2131694930);
-        this.jdField_a_of_type_Bcpq.c(false);
+        this.jdField_a_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bcqf.c(2131694931);
+        this.jdField_a_of_type_Bcqf.c(false);
       }
-      DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_a_of_type_Bcpq);
+      DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_a_of_type_Bcqf);
       continue;
       DiscussionInfoCardActivity.a(this.app, this, this.jdField_d_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
       continue;

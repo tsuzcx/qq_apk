@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.managers;
 
-import aseg;
+import asei;
 
 public class CUOpenCardGuideMng$GuideConfigData$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$GuideConfigData$1(aseg paramaseg) {}
+  public CUOpenCardGuideMng$GuideConfigData$1(asei paramasei) {}
   
   public void run()
   {

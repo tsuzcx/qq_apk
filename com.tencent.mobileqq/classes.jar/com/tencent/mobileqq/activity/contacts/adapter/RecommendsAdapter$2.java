@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpw;
+import afpu;
 
 public class RecommendsAdapter$2
   implements Runnable
 {
-  public RecommendsAdapter$2(afpw paramafpw) {}
+  public RecommendsAdapter$2(afpu paramafpu) {}
   
   public void run()
   {

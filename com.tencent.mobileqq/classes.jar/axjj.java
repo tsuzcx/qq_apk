@@ -1,37 +1,10 @@
-public class axjj
+public abstract interface axjj
 {
-  private axjf a;
+  public abstract void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public axjj(axjh paramaxjh)
-  {
-    this.a = new axjf(paramaxjh);
-  }
+  public abstract void a(long paramLong, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2);
   
-  public void a(axjk paramaxjk, long paramLong)
-  {
-    switch (paramaxjk.jdField_a_of_type_Int)
-    {
-    case 4: 
-    default: 
-      return;
-    case 5: 
-      this.a.a(paramLong, paramaxjk.c, paramaxjk.jdField_a_of_type_Float, paramaxjk.jdField_b_of_type_Float, 5, paramaxjk.jdField_a_of_type_Long);
-      return;
-    case 0: 
-      this.a.a(paramLong, paramaxjk.jdField_a_of_type_ArrayOfInt[0], paramaxjk.jdField_a_of_type_ArrayOfFloat[0], paramaxjk.jdField_b_of_type_ArrayOfFloat[0], 0, paramaxjk.jdField_a_of_type_Long);
-      return;
-    case 2: 
-      this.a.a(paramLong, paramaxjk.jdField_a_of_type_ArrayOfInt, paramaxjk.jdField_a_of_type_ArrayOfFloat, paramaxjk.jdField_b_of_type_ArrayOfFloat, paramaxjk.jdField_a_of_type_Long);
-      return;
-    case 6: 
-      this.a.b(paramLong, paramaxjk.c, paramaxjk.jdField_a_of_type_Float, paramaxjk.jdField_b_of_type_Float, 6, paramaxjk.jdField_a_of_type_Long);
-      return;
-    case 1: 
-      this.a.b(paramLong, paramaxjk.jdField_a_of_type_ArrayOfInt[0], paramaxjk.jdField_a_of_type_ArrayOfFloat[0], paramaxjk.jdField_b_of_type_ArrayOfFloat[0], 1, paramaxjk.jdField_a_of_type_Long);
-      return;
-    }
-    this.a.b(paramLong, paramaxjk.jdField_a_of_type_ArrayOfInt, paramaxjk.jdField_a_of_type_ArrayOfFloat, paramaxjk.jdField_b_of_type_ArrayOfFloat, paramaxjk.jdField_a_of_type_Long);
-  }
+  public abstract boolean a(long paramLong, int paramInt);
 }
 
 

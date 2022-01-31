@@ -1,21 +1,14 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.content.DialogInterface.OnClickListener;
 
 class aehh
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  aehh(aegu paramaegu) {}
+  aehh(aegs paramaegs) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      this.a.n = true;
-      aegu.a(this.a).dismiss();
-    }
-    return false;
+    this.a.e();
   }
 }
 

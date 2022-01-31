@@ -1,242 +1,95 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.EffectPendantTools.1;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.opengl.effects.AEFilterSupport;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.FabbyMvPart;
-import com.tencent.ttpic.openapi.filter.FabbyParts;
-import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
-public class liv
-  extends lis
+final class liv
+  implements Handler.Callback
 {
-  private liu a;
-  public String d;
-  
-  public liv(VideoAppInterface paramVideoAppInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Liu = null;
-  }
-  
-  public static int a(PendantItem paramPendantItem, boolean paramBoolean)
-  {
-    if ((paramPendantItem != null) || (paramBoolean)) {}
-    switch (AEFilterSupport.a())
+    Bundle localBundle = paramMessage.getData();
+    switch (paramMessage.what)
     {
-    case 5: 
-    case 6: 
-    default: 
-      return 0;
-    case 3: 
-      return 3;
-    case 4: 
-      return 4;
     }
-    return 5;
-  }
-  
-  public static boolean a(VideoMaterial paramVideoMaterial)
-  {
-    if (paramVideoMaterial != null)
-    {
-      if (paramVideoMaterial.getFabbyParts() != null)
-      {
-        paramVideoMaterial = paramVideoMaterial.getFabbyParts().getParts().iterator();
-        FabbyMvPart localFabbyMvPart;
-        do
-        {
-          if (!paramVideoMaterial.hasNext()) {
-            break;
-          }
-          localFabbyMvPart = (FabbyMvPart)paramVideoMaterial.next();
-        } while ((localFabbyMvPart.bgItem == null) || (localFabbyMvPart.bgItem.name == null) || (!localFabbyMvPart.bgItem.name.endsWith("_360")));
-        return true;
-      }
-    }
-    else {
-      return false;
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    return 106;
-  }
-  
-  public VideoMaterial a(String paramString)
-  {
-    VideoMaterial localVideoMaterial = QQTemplateParser.parseVideoMaterial(paramString, "params");
-    localVideoMaterial.setDataPath(paramString);
-    return localVideoMaterial;
-  }
-  
-  public lit a(int paramInt1, int paramInt2)
-  {
-    lit locallit = super.a(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_Liu != null) && (locallit != null) && (locallit.a != null))
-    {
-      boolean bool = liq.a().b();
-      if ((!a(locallit.a)) || (bool)) {
-        this.jdField_a_of_type_Liu.a(0);
-      }
-    }
-    return locallit;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    long l = AudioHelper.b();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, seq[" + l + "], fromMuteKey[" + paramInt + "], data[" + paramString + "]");
-    }
-    if (paramInt == b()) {}
     do
     {
       do
       {
-        return;
-        if (paramInt != 3003) {
-          break;
-        }
-      } while (!"creativecop".equals(paramString));
-      a(l, "0");
-      return;
-    } while ((paramInt != 3001) && (paramInt != 3004));
-    a(l, "0");
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramString1 = (PendantItem)a();
-    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
-    a(paramLong, null);
-  }
-  
-  public void a(liu paramliu)
-  {
-    this.jdField_a_of_type_Liu = paramliu;
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
-    {
-      localObject = (lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (localObject != null) {
-        ((lhs)localObject).a(3002, paramPendantItem.getId());
-      }
-    }
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (paramPendantItem == null) {}
-    for (Object localObject = null;; localObject = paramPendantItem.getId())
-    {
-      liw.a(str, (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "setCurrentItem, item[" + paramPendantItem + "]");
-      }
-      return bool;
-    }
-  }
-  
-  protected boolean a(PendantItem paramPendantItem)
-  {
-    int j = 1;
-    if ((a() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId())))
-    {
-      lcl.e(this.jdField_a_of_type_JavaLangString, "isTemplateUsable:" + a() + "|");
-      return false;
-    }
-    if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
-      return true;
-    }
-    File localFile = new File(a(paramPendantItem));
-    boolean bool = localFile.exists();
-    Object localObject1;
-    long l1;
-    Object localObject2;
-    if (!bool)
-    {
-      localObject1 = lco.b() + paramPendantItem.getName();
-      localFile = new File((String)localObject1);
-      if (localFile.exists())
-      {
-        l1 = System.currentTimeMillis();
-        localObject1 = SecUtil.getFileMd5((String)localObject1);
-        long l2 = System.currentTimeMillis();
-        localObject2 = paramPendantItem.getMd5();
-        lcl.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + (String)localObject1 + "|" + (String)localObject2 + "|" + (l2 - l1));
-        bool = ((String)localObject2).equalsIgnoreCase((String)localObject1);
-      }
-    }
-    for (;;)
-    {
-      int i;
-      if (bool)
-      {
-        localObject1 = c(paramPendantItem);
-        localObject2 = new File((String)localObject1, "params.json");
-        l1 = ((File)localObject2).length();
-        if (((((File)localObject2).exists()) && (l1 < 1L)) || (!((File)localObject2).exists()))
+        long l1;
+        int i;
+        long l2;
+        boolean bool;
+        do
         {
-          i = 1;
-          if (i == 0) {
-            break label370;
-          }
-          localObject1 = new File((String)localObject1, "params.dat");
-          l1 = ((File)localObject1).length();
-          if (((File)localObject1).exists())
+          do
           {
-            i = j;
-            if (l1 < 1L) {}
-          }
-          else
-          {
-            if (((File)localObject1).exists()) {
-              break label362;
+            do
+            {
+              return false;
+            } while (liu.a() == null);
+            liu.c();
+            liu.a(24, liu.b());
+            try
+            {
+              liu.a().sendEmptyMessageDelayed(1, 5000L);
+              return false;
             }
-            i = j;
+            catch (NullPointerException paramMessage)
+            {
+              paramMessage.printStackTrace();
+              return false;
+            }
+            l1 = localBundle.getLong("roomId");
+            i = localBundle.getInt("node");
+            l2 = localBundle.getLong("value");
+            bool = localBundle.getBoolean("isNode");
+            liu.a(i, true);
+          } while (liu.a(i, true, bool));
+          if ((bool) && (liu.a(33, true)))
+          {
+            lcg.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + lit.a(i));
+            return false;
           }
-        }
-      }
-      label362:
-      label370:
-      for (;;)
-      {
-        if (i != 0)
-        {
-          ThreadManager.post(new EffectPendantTools.1(this, localFile, paramPendantItem), 5, null, false);
+          liu.a(i + "", l2 + "", bool);
+          liu.a(i, l2, true);
+          lcg.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + lit.a(i) + ", value = " + l2 + "   isNode = " + bool);
           return false;
-          i = 0;
-          break;
-          i = 0;
-          continue;
+          l1 = localBundle.getLong("roomId");
+          i = localBundle.getInt("node");
+          l2 = localBundle.getLong("value");
+          bool = localBundle.getBoolean("isNode");
+          liu.a(i, false);
+        } while (liu.a(i, false, bool));
+        if ((bool) && (liu.a(33, false)))
+        {
+          lcg.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + lit.a(i));
+          return false;
         }
-        return bool;
-      }
-    }
-  }
-  
-  public int b()
-  {
-    return 3002;
+        if (liu.a(i)) {
+          lcg.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + lit.a(i) + ",  value = " + l2 + "   isNode = " + bool);
+        }
+        liu.b(i + "", l2 + "", bool);
+        liu.a(i, l2, false);
+        return false;
+        paramMessage = liu.a();
+        if (!TextUtils.isEmpty(paramMessage))
+        {
+          lcg.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
+          axpy.a(null, "dc03209", paramMessage);
+          liu.e();
+        }
+      } while ((liu.a() == null) || (liu.a().size() == 0));
+      liu.j();
+      return false;
+      paramMessage = liu.b();
+      lcg.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
+    } while (TextUtils.isEmpty(paramMessage));
+    axpy.a(null, "dc03209", paramMessage);
+    liu.f();
+    return false;
   }
 }
 

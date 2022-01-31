@@ -1,25 +1,76 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Now;
 
 public class abqf
-  implements CompoundButton.OnCheckedChangeListener
+  implements uoe
 {
-  public abqf(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public abqf(Now paramNow) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public View a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
+      vxp.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    }
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      vxp.a(bool);
+      return this.a.c;
+    }
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Now.a(this.a);
       return;
     }
+    Now.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.a(true);
   }
 }
 

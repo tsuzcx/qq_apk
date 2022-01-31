@@ -4,14 +4,14 @@ import java.util.Comparator;
 class ajna
   implements Comparator<ApolloActionData>
 {
-  ajna(ajmw paramajmw) {}
+  ajna(ajmu paramajmu) {}
   
   public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
       return 0;
     }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
       return 1;
     }
     return -1;

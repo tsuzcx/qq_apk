@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import osm;
-import ozr;
+import osj;
+import ozo;
 
 public class ArticleInfoModule$54
   implements Runnable
 {
-  public ArticleInfoModule$54(ozr paramozr, List paramList1, List paramList2) {}
+  public ArticleInfoModule$54(ozo paramozo, List paramList1, List paramList2) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 2, "onTopicInfoListFetched: keywordList: " + this.a + " topicInfoList: " + this.b);
     }
-    osm.a().a(this.a, this.b);
+    osj.a().a(this.a, this.b);
   }
 }
 

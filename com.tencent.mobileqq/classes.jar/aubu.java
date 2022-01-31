@@ -2,16 +2,16 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class aubu
-  implements audw
+  implements audy
 {
-  public aubu(TranslateFragment paramTranslateFragment, auad paramauad) {}
+  public aubu(TranslateFragment paramTranslateFragment, auaf paramauaf) {}
   
-  public void a(int paramInt, audx paramaudx)
+  public void a(int paramInt, audz paramaudz)
   {
-    if ((paramaudx != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Auad.c)) && (!this.jdField_a_of_type_Auad.c.equals(paramaudx.b))) {
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Auad.b, paramaudx.b);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Auaf.b)) && (!this.jdField_a_of_type_Auaf.b.equals(paramaudz.b))) {
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramaudz.b, this.jdField_a_of_type_Auaf.c);
     }
-    auab.a("0X800AAF9", auab.a(paramaudx.b));
+    auad.a("0X800AAF9", auad.a(paramaudz.b));
   }
 }
 

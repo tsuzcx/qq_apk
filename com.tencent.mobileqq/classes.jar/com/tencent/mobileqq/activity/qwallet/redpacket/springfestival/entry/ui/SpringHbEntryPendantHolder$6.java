@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahhd;
-import auqf;
+import ahhb;
+import auqh;
 
 public class SpringHbEntryPendantHolder$6
   implements Runnable
 {
-  public SpringHbEntryPendantHolder$6(ahhd paramahhd) {}
+  public SpringHbEntryPendantHolder$6(ahhb paramahhb) {}
   
   public void run()
   {
-    ahhd.b(this.this$0, false);
-    this.this$0.a = ahhd.a(this.this$0);
-    this.this$0.b(ahhd.a(this.this$0).a);
-    ahhd.a(this.this$0, this.this$0.a);
+    ahhb.b(this.this$0, false);
+    this.this$0.a = ahhb.a(this.this$0);
+    this.this$0.b(ahhb.a(this.this$0).a);
+    ahhb.a(this.this$0, this.this$0.a);
   }
 }
 

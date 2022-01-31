@@ -1,35 +1,28 @@
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 class aqqv
   implements View.OnClickListener
 {
-  aqqv(aqqu paramaqqu) {}
+  aqqv(aqqt paramaqqt, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.b) {}
-    do
-    {
-      return;
-      aqsp.a(aqqu.a(this.a), aqqu.b(this.a), "205928", aqqu.a(this.a));
-    } while (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl));
-    if (this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl.startsWith("mqqapi://miniapp/")) {
-      MiniAppLauncher.startMiniApp(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl, 2016, null);
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi://miniapp/")) {
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_Aqqt.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 2016, null);
     }
     for (;;)
     {
-      this.a.c();
+      yoa.a(ajac.a(), "769", "205647", this.jdField_a_of_type_Aqqt.jdField_a_of_type_Aqqc.a().gameAppId, "76903", "1", "160", new String[] { "", "", "20" });
       return;
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.jumpUrl);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      paramView = new Intent(this.jdField_a_of_type_Aqqt.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqqt.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
   }
 }

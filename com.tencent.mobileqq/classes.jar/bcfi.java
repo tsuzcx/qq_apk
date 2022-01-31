@@ -1,21 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 class bcfi
-  implements URLDrawable.URLDrawableListener
+  implements wxt
 {
-  bcfi(bcfe parambcfe) {}
+  bcfi(bcfh parambcfh) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(Bundle paramBundle)
   {
-    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
+    {
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
+    }
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      bcql.a(BaseApplicationImpl.getApplication(), 2, 2131720410, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getApplication(), 1, 2131720407, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

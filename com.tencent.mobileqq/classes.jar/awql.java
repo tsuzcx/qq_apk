@@ -1,28 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class awql
-  implements azdp
+  implements View.OnClickListener
 {
-  awql(awqh paramawqh, awne paramawne) {}
+  awql(awqj paramawqj, awng paramawng) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Awne.b != null) && (this.jdField_a_of_type_Awne.b.equals(paramString)))
-    {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Awne.j = 2;
+    if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramView.getTag())) {
+      awqj.a(this.jdField_a_of_type_Awqj, paramView.getContext(), this.jdField_a_of_type_Awng);
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_Awqh.a();
+      axqy.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_Awng.b, "", "", "");
       return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Awne.j = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Awne.j = 0;
-      }
     }
+    catch (Throwable paramView) {}
   }
 }
 

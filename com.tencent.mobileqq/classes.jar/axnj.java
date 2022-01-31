@@ -1,73 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.soload.config.SoConfig;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import com.tencent.mobileqq.soload.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
-public class axnj
+class axnj
+  implements axng
 {
-  private static volatile axnj jdField_a_of_type_Axnj;
-  SoConfig jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig;
+  axnj(axni paramaxni, axnc paramaxnc) {}
   
-  private axnj()
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoConfigManager", 2, "SoConfigManager init");
-    }
-    if (a()) {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig = SoConfig.readConfig();
-    }
-  }
-  
-  public static axnj a()
-  {
-    if (jdField_a_of_type_Axnj == null) {}
-    try
+    synchronized (axni.a(this.jdField_a_of_type_Axni))
     {
-      if (jdField_a_of_type_Axnj == null) {
-        jdField_a_of_type_Axnj = new axnj();
-      }
-      return jdField_a_of_type_Axnj;
-    }
-    finally {}
-  }
-  
-  private SoConfig.SoInfo a(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos != null)) {
-      return (SoConfig.SoInfo)this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos.get(paramString);
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface;
-  }
-  
-  public void a(axnn paramaxnn)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.update(paramaxnn);
-  }
-  
-  public void a(String paramString, axnm paramaxnm)
-  {
-    if (a())
-    {
+      Object localObject2 = (List)axni.a(this.jdField_a_of_type_Axni).get(this.jdField_a_of_type_Axnc);
+      axni.a(this.jdField_a_of_type_Axni).remove(this.jdField_a_of_type_Axnc);
       if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.SoConfigManager", 2, "getSoInfo, name=" + paramString + ", SoConfig=" + this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig);
+        QLog.i("SoLoadWidget.SoLoadManager", 2, "load resCode=" + paramInt + ", loadExtResult=" + paramLoadExtResult + ",loadParam=" + this.jdField_a_of_type_Axnc + ",ls=" + localObject2);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos == null) || (this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig.mSoInfos.size() == 0)) {
-        ((axno)ampm.a().a(526)).a(new axnk(this, paramaxnm, paramString));
+      if (localObject2 != null)
+      {
+        ??? = ((List)localObject2).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject2 = (axng)((Iterator)???).next();
+          if (localObject2 != null) {
+            ((axng)localObject2).onLoadResult(paramInt, paramLoadExtResult);
+          }
+        }
       }
-      while (paramaxnm == null) {
-        return;
-      }
-      paramaxnm.a(a(paramString));
-      return;
     }
-    ahiq.a(paramString, new axnl(this, paramaxnm));
   }
 }
 

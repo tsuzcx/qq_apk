@@ -1,31 +1,44 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
+
 public class ayti
+  extends CheckConErroObserver
 {
-  public int a;
-  public ayth a;
-  public aytj a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
+  aytk jdField_a_of_type_Aytk;
+  aytl jdField_a_of_type_Aytl;
   
-  public ayti()
+  public ayti(ProtoReqManager paramProtoReqManager, aytl paramaytl, aytk paramaytk)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Aytl = paramaytl;
+    this.jdField_a_of_type_Aytk = paramaytk;
   }
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = 30000;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 1;
+    if (paramBundle != null)
+    {
+      Object localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      if (this.jdField_a_of_type_Aytl != null)
+      {
+        localObject = this.jdField_a_of_type_Aytl.a;
+        if (localObject != null) {
+          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Aytk.a != null) {
+      this.jdField_a_of_type_Aytk.a.a(this.jdField_a_of_type_Aytl, this.jdField_a_of_type_Aytk);
+    }
   }
 }
 

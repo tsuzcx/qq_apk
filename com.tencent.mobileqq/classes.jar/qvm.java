@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
-
 class qvm
-  implements auoo
+  implements qtu
 {
   qvm(qvk paramqvk) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void a(qtv paramqtv, qty paramqty, int paramInt1, int paramInt2, Object paramObject)
   {
-    return null;
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
-  
-  public void a(auop paramauop) {}
-  
-  public void b(auop paramauop) {}
 }
 
 

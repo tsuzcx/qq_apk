@@ -1,13 +1,10 @@
-import com.tencent.YTFace.model.FaceStatus;
-
 public class algk
 {
   public int a = 3000;
-  public FaceStatus[] a;
   
   public String toString()
   {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+    return "ARCloudRecogReqObjectClassifyInfo{timeout = " + this.a + '}';
   }
 }
 

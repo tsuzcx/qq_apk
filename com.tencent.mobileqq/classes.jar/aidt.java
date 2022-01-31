@@ -1,40 +1,62 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public class aidt
-  extends aume
+class aidt
+  implements View.OnClickListener
 {
-  public aidt(PhoneContactTabView paramPhoneContactTabView) {}
+  aidt(aids paramaids) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
+    if (paramView.getId() == 2131365217) {}
+    aidz localaidz;
+    PhoneContact localPhoneContact;
+    do
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
+      do
+      {
+        return;
+        localaidz = (aidz)paramView.getTag();
+      } while ((localaidz == null) || (localaidz.jdField_a_of_type_AndroidWidgetCheckBox == null) || (localaidz.jdField_a_of_type_ComTencentMobileqqDataPhoneContact == null));
+      localPhoneContact = localaidz.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+    } while (!localaidz.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled());
+    if (localaidz.jdField_a_of_type_JavaLangString.startsWith("+")) {}
+    for (boolean bool = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
+    {
+      localaidz.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (!AppSetting.d) {
+        break;
+      }
+      if (!localaidz.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label255;
+      }
+      if (!localaidz.jdField_a_of_type_Boolean) {
+        break label216;
+      }
+      paramView.setContentDescription(localaidz.b.getText() + this.a.a.a.getString(2131719236));
       return;
     }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    label216:
+    paramView.setContentDescription(localaidz.b.getText().toString() + ajya.a(2131708006));
+    return;
+    label255:
+    if (localaidz.jdField_a_of_type_Boolean) {}
+    for (int i = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString);; i = 0)
     {
-      this.a.d();
+      if ((localaidz.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        paramView.setContentDescription(localaidz.b.getText() + this.a.a.a.getString(i));
+        return;
+      }
+      paramView.setContentDescription(localaidz.b.getText().toString() + ajya.a(2131708003));
       return;
     }
-    PhoneContactTabView.a(this.a);
   }
 }
 

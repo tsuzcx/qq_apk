@@ -3,8 +3,8 @@ package com.tencent.gdtad.views.form.textbox;
 import android.text.TextUtils;
 import com.tencent.gdtad.views.form.framework.GdtFormItemData;
 import com.tencent.gdtad.views.xijing.GdtTextData;
-import yxs;
-import zai;
+import yxp;
+import zaf;
 
 public class GdtFormItemTextBoxData
   extends GdtFormItemData
@@ -27,20 +27,20 @@ public class GdtFormItemTextBoxData
     return super.isValid();
   }
   
-  public zai validate()
+  public zaf validate()
   {
     if (!isValid())
     {
-      yxs.d("GdtFormItemTextBoxData", "validate error");
-      return new zai(3, -1, null);
+      yxp.d("GdtFormItemTextBoxData", "validate error");
+      return new zaf(3, -1, null);
     }
     if ((this.required) && (TextUtils.isEmpty(getResult()))) {
-      return new zai(5, -1, this.title.text);
+      return new zaf(5, -1, this.title.text);
     }
     if ((!TextUtils.isEmpty(this.regex)) && (!TextUtils.isEmpty(getResult())) && (!getResult().matches(this.regex))) {
-      return new zai(6, -1, this.title.text);
+      return new zaf(6, -1, this.title.text);
     }
-    return new zai(2, -1, this.title.text);
+    return new zaf(2, -1, this.title.text);
   }
 }
 

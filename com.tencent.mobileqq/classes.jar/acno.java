@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
 public class acno
-  implements View.OnClickListener
+  implements Comparator<acnq>
 {
-  public acno(TroopTransferActivity paramTroopTransferActivity) {}
+  private acno(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public int a(acnq paramacnq1, acnq paramacnq2)
   {
-    this.a.a.setText("");
+    return paramacnq1.f.compareToIgnoreCase(paramacnq2.f);
   }
 }
 

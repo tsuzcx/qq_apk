@@ -1,31 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class ajic
-  extends bbwf
+public abstract interface ajic
 {
-  ajic(int paramInt, ajig paramajig) {}
-  
-  public void onDone(bbwg parambbwg)
-  {
-    super.onDone(parambbwg);
-    if (3 == parambbwg.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Ajig != null) {
-        this.jdField_a_of_type_Ajig.a(true, this.jdField_a_of_type_Int);
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambbwg.a());
-      }
-    } while (this.jdField_a_of_type_Ajig == null);
-    this.jdField_a_of_type_Ajig.a(false, this.jdField_a_of_type_Int);
-  }
+  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

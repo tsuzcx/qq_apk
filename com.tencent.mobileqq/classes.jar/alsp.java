@@ -1,13 +1,4 @@
-class alsp
-  extends alsn
-{
-  public String d;
-  
-  private alsp()
-  {
-    super(null);
-  }
-}
+public class alsp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

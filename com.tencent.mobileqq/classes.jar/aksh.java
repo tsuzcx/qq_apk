@@ -1,24 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
 class aksh
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  aksh(aksf paramaksf) {}
+  aksh(akse paramakse, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    axqw.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
-    axqw.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
-    paramView = PreferenceManager.getDefaultSharedPreferences(aksf.a(this.a));
-    int i = paramView.getInt("push_msg_notify_cancle", 0);
-    paramView = paramView.edit();
-    paramView.putInt("push_msg_notify_cancle", i + 1);
-    paramView.commit();
-    this.a.dismiss();
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

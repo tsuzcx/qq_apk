@@ -1,12 +1,35 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bida
+class bida
+  extends Handler
 {
-  boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  public bida(Looper paramLooper)
   {
-    if (!AppSetting.e) {}
-    return false;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      bicz.a(0);
+    }
+    while ((paramMessage.what != 1) || (!bicz.a()) || (TextUtils.isEmpty(bicz.a())) || (TextUtils.isEmpty(bicz.b()))) {
+      return;
+    }
+    String str1 = bicz.a();
+    String str2 = bicz.b();
+    int i = bicz.a();
+    int j = bicz.b();
+    String str3 = bicz.a(BaseApplicationImpl.getApplication());
+    Process.setThreadPriority(10);
+    bicz.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
+    bicz.b();
   }
 }
 

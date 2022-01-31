@@ -1,19 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public class qqy
-  extends osp
+  extends qji
 {
-  private qqy(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  private VideoInfo a;
   
-  public void j()
+  public VideoInfo a()
   {
-    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
-    {
-      ((VideoFeedsPlayActivity)this.a.getActivity()).d();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.g;
   }
 }
 

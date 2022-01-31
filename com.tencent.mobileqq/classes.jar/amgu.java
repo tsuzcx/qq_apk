@@ -1,78 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class amgu
 {
-  private amgp a;
-  
-  private static SharedPreferences a()
+  public static void a(ArrayList<ColorNote> paramArrayList)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "color_note_recent_view_switch" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
-      if (!paramBoolean) {
-        amkg.a(BaseApplicationImpl.getContext(), 5, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
-    }
-    return bool;
-  }
-  
-  public static boolean b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
-    {
-      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  public void a(amgp paramamgp)
-  {
-    this.a = paramamgp;
-  }
-  
-  public void a(ColorNote paramColorNote)
-  {
-    Object localObject = amhh.a();
-    if ((localObject != null) && (((amhg)localObject).a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (amhk.a().a()))
+      ColorNote localColorNote = (ColorNote)paramArrayList.next();
+      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
+      if (localHashMap.containsKey(localInteger))
       {
-        localObject = amhi.a(paramColorNote);
-        this.a.b((ColorNote)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
-        }
+        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
       }
-      return;
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(localColorNote);
+        localHashMap.put(localInteger, localArrayList);
+      }
     }
+    rno.a((List)localHashMap.get(Integer.valueOf(16908290)));
   }
 }
 

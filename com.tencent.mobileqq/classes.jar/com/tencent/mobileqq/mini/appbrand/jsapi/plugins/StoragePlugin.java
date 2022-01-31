@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bfng;
+import bfnx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -74,7 +74,7 @@ public class StoragePlugin
         if (TextUtils.isEmpty(str1)) {
           return handleCallbackFail(paramJsRuntime, paramString1, null, "key is empty", paramInt);
         }
-        str1 = bfng.a(str1);
+        str1 = bfnx.a(str1);
         String str2 = paramString2.optString("data");
         paramString2 = paramString2.optString("dataType", "String");
         if ("setStorage".equals(paramString1)) {
@@ -99,7 +99,7 @@ public class StoragePlugin
       try
       {
         paramString2 = new JSONObject(paramString2);
-        return execStorageTask(paramString1, new StoragePlugin.3(this, bfng.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
+        return execStorageTask(paramString1, new StoragePlugin.3(this, bfnx.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
       }
       catch (Throwable paramString2)
       {
@@ -117,7 +117,7 @@ public class StoragePlugin
       try
       {
         paramString2 = new JSONObject(paramString2);
-        return execStorageTask(paramString1, new StoragePlugin.5(this, bfng.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
+        return execStorageTask(paramString1, new StoragePlugin.5(this, bfnx.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
       }
       catch (Throwable paramString2)
       {
@@ -135,7 +135,7 @@ public class StoragePlugin
       try
       {
         paramString2 = new JSONObject(paramString2);
-        return execStorageTask(paramString1, new StoragePlugin.7(this, bfng.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
+        return execStorageTask(paramString1, new StoragePlugin.7(this, bfnx.a(paramString2.optString("key")), paramJsRuntime, paramString1, paramInt));
       }
       catch (Throwable paramString2)
       {
@@ -150,7 +150,7 @@ public class StoragePlugin
       try
       {
         paramString2 = new JSONObject(paramString2);
-        return execStorageTask(paramString1, new StoragePlugin.8(this, bfng.a(paramString2.optString("key")), paramString2.optString("data"), paramJsRuntime, paramString1, paramInt));
+        return execStorageTask(paramString1, new StoragePlugin.8(this, bfnx.a(paramString2.optString("key")), paramString2.optString("data"), paramJsRuntime, paramString1, paramInt));
       }
       catch (Throwable paramString2)
       {

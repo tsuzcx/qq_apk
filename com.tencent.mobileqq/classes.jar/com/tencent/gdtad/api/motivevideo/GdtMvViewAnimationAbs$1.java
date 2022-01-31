@@ -1,15 +1,15 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import yvu;
+import yvr;
 
 public class GdtMvViewAnimationAbs$1
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$1(yvu paramyvu) {}
+  public GdtMvViewAnimationAbs$1(yvr paramyvr) {}
   
   public void run()
   {
-    yvu.a(this.this$0, this.this$0.a);
+    yvr.a(this.this$0, this.this$0.a);
   }
 }
 

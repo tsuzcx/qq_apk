@@ -1,79 +1,207 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
+import tencent.im.oidb.redInfo.RedInfo;
 
 public class atxc
+  implements atxh
 {
-  public static HashMap<Integer, Integer> a;
-  public int a;
-  public String a;
-  public List<String> a;
-  public int b;
-  public int c;
-  public int d;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  WeakReference<atxd> jdField_a_of_type_MqqUtilWeakReference;
   
-  static
+  public atxc(QQAppInterface paramQQAppInterface, atxd paramatxd)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), Integer.valueOf(40));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(5), Integer.valueOf(60));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), Integer.valueOf(80));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), Integer.valueOf(100));
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramatxd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public atxc()
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return "file_redpoint_handler_" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + paramInt;
   }
   
-  public void a(int paramInt)
+  public atxd a()
   {
-    if (((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).intValue() < ((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int))).intValue()) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+      return null;
     }
+    return (atxd)this.jdField_a_of_type_MqqUtilWeakReference.get();
   }
   
-  public void a(String paramString)
+  public void a(RedTouchItem paramRedTouchItem, int paramInt)
   {
-    int i = 0;
-    try
-    {
-      int j = Integer.valueOf(paramString).intValue();
-      i = j;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+    RedTouchItemExtMsg localRedTouchItemExtMsg = null;
+    boolean bool = true;
+    if ((paramInt == 10016) || (paramInt == 10015)) {
+      if (!atxk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        QLog.e("NearbyRedInfo", 1, localNumberFormatException, new Object[0]);
-        this.jdField_a_of_type_JavaLangString = paramString;
+        bool = true;
+        paramRedTouchItem.isClosed = bool;
       }
     }
-    this.b = (i + this.b);
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if (paramInt == 100601)
+      {
+        if (!atxk.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+        for (;;)
+        {
+          paramRedTouchItem.isClosed = bool;
+          return;
+          bool = false;
+        }
+      }
+    } while (!atxf.a(paramInt));
+    if (paramRedTouchItem.extMsgs.size() > 0)
+    {
+      localRedTouchItemExtMsg = (RedTouchItemExtMsg)paramRedTouchItem.extMsgs.get(0);
+      if ((localRedTouchItemExtMsg.bytesData == null) || (localRedTouchItemExtMsg.bytesData.length <= 0)) {}
+    }
+    label275:
+    label288:
+    for (;;)
+    {
+      Object localObject1;
+      try
+      {
+        localObject1 = new redInfo.RedInfo();
+        localObject2 = localObject1;
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          ((redInfo.RedInfo)localObject1).mergeFrom(localRedTouchItemExtMsg.bytesData);
+          localObject2 = localObject1;
+          if ((localObject2 == null) || (!localObject2.uint64_from_uin.has())) {
+            break label288;
+          }
+          localObject1 = localObject2.uint64_from_uin.get() + "";
+          bool = true;
+          if (!bool) {
+            break label275;
+          }
+          bbdx.a(a(-4), localRedTouchItemExtMsg);
+          QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool), " uin=", bbkk.e((String)localObject1) });
+          return;
+        }
+        catch (Throwable localThrowable2)
+        {
+          Object localObject2;
+          break label245;
+        }
+        localThrowable1 = localThrowable1;
+        localObject1 = null;
+      }
+      label245:
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DefaultRedPointPrePostHandler", 2, localThrowable1.getMessage(), localThrowable1);
+        localObject2 = localObject1;
+        continue;
+        paramRedTouchItem.count = 0;
+        continue;
+        bool = false;
+        localObject1 = "";
+        continue;
+        localObject1 = "";
+        bool = false;
+      }
+    }
   }
   
-  public void a(List<String> paramList, boolean paramBoolean)
+  public void a(List<RedTouchItem> paramList)
   {
-    if (paramList == null) {
+    atxd localatxd = a();
+    if ((paramList == null) || (localatxd == null)) {
       return;
     }
-    if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    Object localObject2 = null;
+    Object localObject3 = paramList.iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject1 = localObject2;
+      if (((RedTouchItem)((Iterator)localObject3).next()).taskId == 10005) {
+        localObject1 = "0X800761B";
+      }
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        localObject2 = localObject1;
+      }
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b += paramInt;
-  }
-  
-  public String toString()
-  {
-    return "[redType=" + this.jdField_a_of_type_Int + ", redNum=" + this.b + ", redTxt=" + this.jdField_a_of_type_JavaLangString + ", redAppIdType=" + this.d + ", url=" + this.jdField_a_of_type_JavaUtilList + "]";
+    localObject3 = localatxd.a(10015);
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject1 = localObject2;
+      if (paramList.contains(localObject3))
+      {
+        localObject1 = "0X8007391";
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
+        ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).b();
+      }
+    }
+    localObject2 = localatxd.a(10016);
+    if ((localObject2 != null) && (paramList.contains(localObject2)) && (((RedTouchItem)localObject2).bytes != null) && (((RedTouchItem)localObject2).bytes.length > 0)) {}
+    for (;;)
+    {
+      try
+      {
+        int i = new JSONObject(new String(((RedTouchItem)localObject2).bytes, "utf-8")).optInt("type", 1);
+        switch (i)
+        {
+        default: 
+          localObject2 = localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("DefaultRedPointPrePostHandler", 2, localException, new Object[0]);
+        localObject2 = localObject1;
+        continue;
+        paramList.a((RedTouchItem)localObject1);
+      }
+      if (localObject2 != null) {
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+      }
+      localObject1 = localatxd.a(10018);
+      if ((localObject1 == null) || (!paramList.contains(localObject1)) || (((RedTouchItem)localObject1).extMsgs == null) || (((RedTouchItem)localObject1).extMsgs.size() <= 0) || (!((RedTouchItem)localObject1).unReadFlag)) {
+        break;
+      }
+      paramList = (amnn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269);
+      localObject2 = paramList.a();
+      if ((localObject2 != null) && (((amnj)localObject2).c())) {
+        continue;
+      }
+      ((RedTouchItem)localObject1).unReadFlag = false;
+      localatxd.c();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("DefaultRedPointPrePostHandler", 2, "onPostDealReachedRedPoints frdRecMsgSwitch is off");
+      return;
+      localObject2 = "0X8007396";
+      continue;
+      localObject2 = "0X80073B5";
+    }
   }
 }
 

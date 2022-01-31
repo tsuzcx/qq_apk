@@ -1,16 +1,15 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class trt
-  extends trp
+class trt
+  implements DialogInterface.OnDismissListener
 {
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
+  trt(trr paramtrr) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.e();
+  }
 }
 
 

@@ -1,5 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahry
@@ -7,7 +9,13 @@ public class ahry
 {
   public ahry(LoginView paramLoginView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
+  }
 }
 
 

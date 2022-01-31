@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpf;
-import bcpw;
+import alpe;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppModuleReg$ModuleQQ$21
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$21(alpf paramalpf, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$21(alpe paramalpe, String paramString) {}
   
   public void run()
   {
     if (BaseActivity.sTopActivity != null) {
-      bcpw.a(BaseActivity.sTopActivity, this.a, 0).a();
+      bcql.a(BaseActivity.sTopActivity, this.a, 0).a();
     }
     while (!QLog.isColorLevel()) {
       return;

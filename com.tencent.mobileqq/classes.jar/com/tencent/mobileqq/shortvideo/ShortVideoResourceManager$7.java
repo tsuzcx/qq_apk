@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axeo;
+import axeq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 final class ShortVideoResourceManager$7
   implements Runnable
 {
-  ShortVideoResourceManager$7(QQAppInterface paramQQAppInterface, List paramList, axeo paramaxeo) {}
+  ShortVideoResourceManager$7(QQAppInterface paramQQAppInterface, List paramList, axeq paramaxeq) {}
   
   public void run()
   {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Axeo, "new_qq_android_native_art_filter_");
+    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Axeq, "new_qq_android_native_art_filter_");
   }
 }
 

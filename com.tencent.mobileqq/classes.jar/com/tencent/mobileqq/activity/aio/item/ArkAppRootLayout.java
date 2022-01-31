@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import admm;
-import admn;
+import admk;
+import adml;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 public class ArkAppRootLayout
   extends RelativeLayout
 {
-  private admn jdField_a_of_type_Admn;
+  private adml jdField_a_of_type_Adml;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private boolean jdField_a_of_type_Boolean;
   
@@ -36,7 +36,7 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new admm(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new admk(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -68,9 +68,9 @@ public class ArkAppRootLayout
     }
   }
   
-  public void setCallback(admn paramadmn)
+  public void setCallback(adml paramadml)
   {
-    this.jdField_a_of_type_Admn = paramadmn;
+    this.jdField_a_of_type_Adml = paramadml;
   }
   
   public void setDisableParentReturn(boolean paramBoolean)

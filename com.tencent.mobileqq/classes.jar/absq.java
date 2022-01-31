@@ -1,24 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class absq
-  extends ajtq
+  implements DialogInterface.OnClickListener
 {
   public absq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131720039);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131720037);
-    }
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aaod;
-import ajsf;
+import aanz;
+import ajsd;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -15,7 +15,7 @@ class KandianMergeManager$20
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).a().a(ajsf.aA, 7220, false, false);
+    KandianMergeManager.a(this.this$0).a().a(ajsd.aA, 7220, false, false);
     if (this.a.extInt == 2)
     {
       this.a.isValid = false;
@@ -29,14 +29,14 @@ class KandianMergeManager$20
       if (this.a.extInt == 1)
       {
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = ajsf.az;
+        localSessionInfo.jdField_a_of_type_JavaLangString = ajsd.az;
         localSessionInfo.jdField_a_of_type_Int = 1008;
-        aaod.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        aanz.a(KandianMergeManager.a(this.this$0), localSessionInfo);
         return;
       }
     } while (this.a.extInt != 5);
     this.a.isValid = false;
-    KandianMergeManager.a(this.this$0).a().b(ajsf.aA, 7220, this.a.uniseq);
+    KandianMergeManager.a(this.this$0).a().b(ajsd.aA, 7220, this.a.uniseq);
   }
 }
 

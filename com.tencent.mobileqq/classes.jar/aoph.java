@@ -1,15 +1,34 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Timer;
 
 public class aoph
-  extends aouj
+  implements View.OnClickListener
 {
-  public aoph(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  public aoph(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    if (!bbfj.d(BaseApplicationImpl.getContext())) {
+      aptx.a(BaseApplicationImpl.getContext().getString(2131694608));
     }
+    do
+    {
+      return;
+      aptx.a(BaseApplicationImpl.getContext().getString(2131694333));
+      paramView = (ajum)MPFileVerifyPwdView.a(this.a).a(8);
+      MPFileVerifyPwdView.a(this.a, paramView.a().a(3));
+      MPFileVerifyPwdView.b(this.a).setEnabled(false);
+      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
+      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+    } while (MPFileVerifyPwdView.a(this.a) == null);
+    MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
   }
 }
 

@@ -1,93 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amwa
 {
-  private amwb[] a = new amwb[0];
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 1;
+  public int d = -1;
   
-  public static amwa a(String paramString)
+  public amwa()
   {
-    int i = 0;
-    amwa localamwa = new amwa();
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
-      }
-    }
-    for (;;)
-    {
-      return localamwa;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONArray("array");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          localamwa.a = new amwb[paramString.length()];
-          while (i < paramString.length())
-          {
-            amwb localamwb = amwb.a(paramString.getJSONObject(i));
-            localamwa.a[i] = localamwb;
-            i += 1;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localamwa);
-            return localamwa;
-          }
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    return localamwa;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public amwb a(int paramInt)
+  public static amwa a(JSONObject paramJSONObject)
   {
-    Object localObject;
-    if ((this.a == null) || (this.a.length <= 0))
-    {
-      localObject = null;
-      return localObject;
-    }
-    amwb[] arrayOfamwb = this.a;
-    int j = arrayOfamwb.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label64;
-      }
-      amwb localamwb = arrayOfamwb[i];
-      localObject = localamwb;
-      if (localamwb.a == paramInt) {
-        break;
-      }
-      i += 1;
-    }
-    label64:
-    return null;
+    amwa localamwa = new amwa();
+    localamwa.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
+    localamwa.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
+    localamwa.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
+    localamwa.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
+    localamwa.c = paramJSONObject.optInt("version", -1);
+    localamwa.d = paramJSONObject.optInt("appid", -1);
+    localamwa.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
+    return localamwa;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
-    if ((this.a != null) && (this.a.length > 0))
-    {
-      amwb[] arrayOfamwb = this.a;
-      int j = arrayOfamwb.length;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(arrayOfamwb[i]).append(" ");
-        i += 1;
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
 }

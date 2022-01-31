@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.ArrayList;
 
-public class oux
-  extends RecyclerView.ViewHolder
+class oux
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  oux(ouw paramouw) {}
   
-  oux(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-  }
-  
-  protected int a()
-  {
-    return getAdapterPosition() - 1;
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    old.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((ouv)this.a.a.a.get(i)).a.mChannelCoverId);
   }
 }
 

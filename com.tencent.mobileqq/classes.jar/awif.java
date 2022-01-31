@@ -1,11 +1,19 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.HotWordSearchSpecialDataModel.TopicImage;
 
-public class awif
+class awif
+  implements View.OnClickListener
 {
-  public TextView a;
-  public TextView b;
+  awif(awie paramawie, HotWordSearchSpecialDataModel.TopicImage paramTopicImage) {}
   
-  public awif(awic paramawic) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Awie.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.jumpUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
+    awie.a(this.jdField_a_of_type_Awie, false, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
+    ((akgc)((QQAppInterface)onh.a()).getManager(299)).a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchSpecialDataModel$TopicImage.imageText);
+  }
 }
 
 

@@ -1,28 +1,39 @@
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
+
 public class aevh
+  extends NativeGifImage
 {
-  public double a;
-  public double b;
-  
-  public aevh(double paramDouble1, double paramDouble2)
+  public aevh(File paramFile, boolean paramBoolean)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    super(paramFile, paramBoolean);
   }
   
-  public aevh(aevh paramaevh)
+  public int a()
   {
-    a(paramaevh);
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
   }
   
-  public void a(aevh paramaevh)
+  public Bitmap a()
   {
-    this.a = paramaevh.a;
-    this.b = paramaevh.b;
+    return this.mCurrentFrameBitmap;
   }
   
-  public String toString()
+  public void a()
   {
-    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

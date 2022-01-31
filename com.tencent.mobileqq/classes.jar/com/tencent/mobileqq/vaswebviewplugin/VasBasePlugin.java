@@ -2,7 +2,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import bcdb;
+import bcdp;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract class VasBasePlugin

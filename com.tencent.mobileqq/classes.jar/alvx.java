@@ -1,12 +1,22 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.ark.open.ArkAppReport;
+import com.tencent.ark.open.delegate.IArkDelegateSetup;
+import java.util.ArrayList;
 
 final class alvx
-  implements ArkEnvironmentManager.IDataReport
+  extends IArkDelegateSetup
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  public ArrayList<String> onGetPredownloadApp()
   {
-    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    return null;
+  }
+  
+  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  {
+    axpr.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
+  }
+  
+  public void setupArkEnvironment(boolean paramBoolean)
+  {
+    alvs.a(paramBoolean);
   }
 }
 

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vas.adapter;
 
 import android.os.Bundle;
 import android.os.Handler;
-import bbqc;
-import bbrm;
-import bbsb;
-import bbwi;
+import bbqq;
+import bbsa;
+import bbsp;
+import bbww;
 import java.io.File;
 
 public class SignatureAdapter$3
   implements Runnable
 {
-  public SignatureAdapter$3(bbsb parambbsb, Bundle paramBundle) {}
+  public SignatureAdapter$3(bbsp parambbsp, Bundle paramBundle) {}
   
   public void run()
   {
@@ -27,12 +27,12 @@ public class SignatureAdapter$3
       if (localObject != null)
       {
         localObject = new File((String)localObject);
-        if (bbwi.a(new File(bbqc.a(str1, str2)), (File)localObject, true)) {
-          bbsb.a(this.this$0).a().sendEmptyMessage(10003);
+        if (bbww.a(new File(bbqq.a(str1, str2)), (File)localObject, true)) {
+          bbsp.a(this.this$0).a().sendEmptyMessage(10003);
         }
       }
       return;
-      localObject = bbqc.a(str1, "dynamic_aio");
+      localObject = bbqq.a(str1, "dynamic_aio");
     }
   }
 }

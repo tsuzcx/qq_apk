@@ -4,8 +4,8 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.View;
-import bcqw;
-import bcqx;
+import bcrl;
+import bcrm;
 
 public class ScrollerRunnable$4
   implements Runnable
@@ -20,8 +20,8 @@ public class ScrollerRunnable$4
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofInt(this.a, "backgroundColor", new int[] { 867218367, 11580351 });
     localObjectAnimator2.setDuration(400L);
     localObjectAnimator2.setEvaluator(new ArgbEvaluator());
-    localObjectAnimator1.addListener(new bcqw(this, localObjectAnimator2));
-    localObjectAnimator2.addListener(new bcqx(this));
+    localObjectAnimator1.addListener(new bcrl(this, localObjectAnimator2));
+    localObjectAnimator2.addListener(new bcrm(this));
     localObjectAnimator1.start();
     ScrollerRunnable.a(this.this$0, -1L);
   }

@@ -1,205 +1,235 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoPtuResManager.1;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
 
 public class axeh
-  implements axeq
 {
-  private static ConcurrentHashMap<Integer, axeh> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public int a;
-  private axej jdField_a_of_type_Axej;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
-  boolean jdField_a_of_type_Boolean;
-  public boolean b;
+  public static boolean a;
   
-  private axeh(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Axej = new axej(this.jdField_a_of_type_JavaLangString, this);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    int i = 0;
+    if (a()) {
+      if (!a(paramContext)) {
+        break label50;
+      }
     }
-  }
-  
-  private boolean a()
-  {
-    boolean bool = bbev.g(null);
-    if (bool)
+    label50:
+    for (i = 1;; i = 2)
     {
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajyc.a(2131714090), null);
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      return bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPtuResManager", 2, "getPtuResState " + i);
+      }
+      return i;
     }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajyc.a(2131714029), null);
+  }
+  
+  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    int i = 0;
+    String str = "new_qq_android_native_ptu_res_" + paramSVConfigItem.versionCode;
+    if (paramSVConfigItem.name.equalsIgnoreCase(str))
+    {
+      if (paramSVConfigItem.versionCode < 70)
+      {
+        i = -2;
+        VideoEnvironment.a("ShortVideoPtuResManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPendant=" + 62, null);
+      }
+      return i;
+    }
+    return -4;
+  }
+  
+  public static String a()
+  {
+    return axle.a(VideoEnvironment.a()) + "ptu_res";
+  }
+  
+  private static String a(Context paramContext)
+  {
+    String str = b(paramContext);
+    if (str != null) {}
+    for (paramContext = str;; paramContext = "null")
+    {
+      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathLog = " + paramContext, null);
+      return str;
+    }
+  }
+  
+  private static void a()
+  {
+    ThreadManager.excute(new ShortVideoPtuResManager.1(), 64, null, false);
+  }
+  
+  private static boolean a()
+  {
+    return axle.c();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = a(paramContext);
+    if (paramContext == null)
+    {
+      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath = null", null);
+      return false;
+    }
+    if (!new File(paramContext).exists())
+    {
+      VideoEnvironment.a("ShortVideoPtuResManager", "isFilterSoExist:getPtuResPath soRootPath=" + paramContext + ",exists=false", null);
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).edit();
+    localEditor.putString("ptu_short_video_so_name_key", paramString);
+    boolean bool = localEditor.commit();
+    VideoEnvironment.a("ShortVideoPtuResManager", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
     return bool;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  private static boolean a(String paramString, int paramInt)
   {
-    return a(paramQQAppInterface, true);
+    boolean bool2 = false;
+    String str = paramString.trim();
+    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK signature=" + paramString, null);
+    paramString = axev.a(str);
+    int i = paramString.a();
+    VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
+    boolean bool1 = bool2;
+    if (i == 0)
+    {
+      paramString = paramString.b().trim();
+      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK versionValid=" + paramString, null);
+      i = Integer.parseInt(paramString);
+      VideoEnvironment.a("ShortVideoPtuResManager", "checkSignatureVersionIsOK version=" + i + ",limitVersion=" + paramInt, null);
+      bool1 = bool2;
+      if (i >= paramInt) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static boolean a(String paramString1, String paramString2)
   {
-    try
-    {
-      paramBoolean = a(paramQQAppInterface, paramBoolean, false);
-      return paramBoolean;
-    }
-    finally
-    {
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = false;
+    boolean bool3 = false;
+    boolean bool2 = true;
+    bool1 = true;
     for (;;)
     {
       try
       {
-        if (!VideoEnvironment.c(paramQQAppInterface))
+        String str = a();
+        str = str + File.separator + paramString1 + File.separator;
+        File localFile = new File(str);
+        if (localFile.exists())
         {
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          paramBoolean1 = bool;
-          return paramBoolean1;
+          if ((c().equals(paramString1)) && (b(str, "ptu_config_file")))
+          {
+            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[checkUnzipFileListSizeIsOK]success=true", null);
+            bool1 = false;
+            return bool1;
+          }
+          bbdx.a(str);
+          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[deleteDirectory|already exists]unzipPath=" + str, null);
         }
-        if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
+        boolean bool4 = localFile.mkdirs();
+        VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:[exists]mkOK=" + bool4, null);
+        if (!localFile.exists())
         {
-          VideoEnvironment.a("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-          paramBoolean1 = bool;
+          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:unzipFile.exists=false[error]", null);
           continue;
         }
-        paramQQAppInterface = new axeh(paramQQAppInterface, paramBoolean1);
+        try
+        {
+          bbdx.a(paramString2, str, false);
+          bool1 = b(str, "ptu_config_file");
+          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK success=" + bool1, null);
+          if (!bool1) {
+            break label434;
+          }
+          bool1 = axde.a(str);
+          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:copyResFileToFinalDir copyOK=" + bool1, null);
+          if (!bool1) {
+            break;
+          }
+          bool4 = a(paramString1);
+          VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK saveOK=" + bool4, null);
+          bool1 = bool3;
+          if (!bool4)
+          {
+            bool4 = a(paramString1);
+            VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool4, null);
+            bool1 = bool3;
+            if (!bool4)
+            {
+              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
+              bool1 = a("ptu_config_file");
+              VideoEnvironment.a("ShortVideoPtuResManager", "uncompressPtuZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+              bool1 = true;
+            }
+          }
+          a();
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
+          {
+            paramString1.printStackTrace();
+            continue;
+            bool1 = true;
+            continue;
+            bool1 = true;
+          }
+        }
       }
       finally {}
-      paramQQAppInterface.b = paramBoolean2;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool = paramQQAppInterface.a();
-      if (!bool) {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-      }
-      paramBoolean1 = bool;
-      if (paramBoolean2)
-      {
-        biqz.a().a(1, null, false);
-        paramBoolean1 = bool;
-      }
-    }
-  }
-  
-  private static void b(axeh paramaxeh)
-  {
-    if (paramaxeh != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramaxeh.jdField_a_of_type_Int));
-    }
-  }
-  
-  private boolean b()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "startDownloadConfigNoLogin");
-    boolean bool = bbev.g(null);
-    if (bool)
-    {
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajyc.a(2131714090), null);
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new axei(this));
-      return bool;
-    }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, ajyc.a(2131714029), null);
-    return bool;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    if (!VideoEnvironment.c(paramQQAppInterface)) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= 3)
-      {
-        VideoEnvironment.a("startDownloadResourceNoLogin", "reach to max session size=" + jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size(), null);
-        return false;
-      }
-      paramQQAppInterface = new axeh(paramQQAppInterface, true);
-      paramQQAppInterface.b = false;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int), paramQQAppInterface);
-      bool2 = paramQQAppInterface.b();
+      bool2 = bool1;
       bool1 = bool2;
-    } while (bool2);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramQQAppInterface.jdField_a_of_type_Int));
-    return bool2;
+      if (bool2)
+      {
+        bbdx.a(str);
+        bool1 = bool2;
+      }
+    }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private static String b(Context paramContext)
   {
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
+    paramContext = c();
+    if (paramContext.equals("Ptu000_0"))
     {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
-        b(this);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
-        this.jdField_a_of_type_Axej.jdField_a_of_type_Boolean = false;
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Axej);
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (axlc.a(VideoEnvironment.a()) == 0) {
-            break label239;
-          }
-          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Axej);
-          this.jdField_a_of_type_Axej.b = false;
-        }
-        for (;;)
-        {
-          if (axlc.f())
-          {
-            this.jdField_a_of_type_Axej.c = false;
-            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Axej);
-          }
-          if (axlc.i())
-          {
-            this.jdField_a_of_type_Axej.e = false;
-            ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Axej);
-          }
-          this.jdField_a_of_type_Axej.a();
-          return;
-          label239:
-          VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| getFilterSoState != 2", null);
-        }
-      }
-      VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
-      b(this);
-      return;
+      VideoEnvironment.a("ShortVideoPtuResManager", "getPtuResPath:pathVersion=Pendant000_0", null);
+      return null;
     }
-    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
-    b(this);
+    return a() + File.separator + paramContext + File.separator;
+  }
+  
+  private static boolean b(String paramString1, String paramString2)
+  {
+    return axde.b(paramString1, paramString2);
+  }
+  
+  private static String c()
+  {
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("ptu_short_video_mgr_sp", 4).getString("ptu_short_video_so_name_key", "Ptu000_0");
+    boolean bool = a(str, 70);
+    VideoEnvironment.a("ShortVideoPtuResManager", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "Ptu000_0";
   }
 }
 

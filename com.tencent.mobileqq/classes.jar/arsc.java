@@ -1,15 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class arsc
-  implements aswa
+  implements DialogInterface.OnClickListener
 {
-  public arsc(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  public arsc(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, arss paramarss) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a(true);
+    this.jdField_a_of_type_Arss.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

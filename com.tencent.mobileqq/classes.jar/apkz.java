@@ -1,60 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-public class apkz
-  implements amgw
+class apkz
+  implements apim
 {
-  private String a;
+  apkz(apky paramapky, BaseActivity paramBaseActivity) {}
   
-  public apkz(String paramString)
+  public apnb a()
   {
-    this.a = paramString;
-    if (bbdj.b(this.a)) {
-      this.a = new File(this.a).getAbsolutePath();
-    }
-  }
-  
-  private String a()
-  {
-    try
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Apky.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new apnq(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, apky.a(this.jdField_a_of_type_Apky));
+      }
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (!bbdj.b(this.a))
-    {
-      QLog.i("FavFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
-      return null;
-    }
-    amhc localamhc = new amhc();
-    localamhc.a(17039360);
-    String str = apvk.b(4, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("FavFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localamhc.a(str);
-    str = apue.a(this.a);
-    localamhc.b(str);
-    localamhc.c(apvb.a(apue.a(this.a)));
-    int i = apue.a(apue.a(str));
-    localamhc.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localamhc.a(str.getBytes());
-    }
-    return localamhc.a();
+    return localObject1;
   }
 }
 

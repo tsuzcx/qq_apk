@@ -1,23 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aess
-  implements DialogInterface.OnClickListener
+class aess
+  implements DialogInterface.OnDismissListener
 {
-  aess(aerv paramaerv, PublicAccountInfo paramPublicAccountInfo, akdi paramakdi) {}
+  aess(aert paramaert) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
-    this.jdField_a_of_type_Akdi.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-    this.jdField_a_of_type_Aerv.a(1, null);
-    paramDialogInterface = new PublicAccountChatPie.35.1(this);
-    this.jdField_a_of_type_Aerv.a.a(paramDialogInterface);
-    aerv.c(this.jdField_a_of_type_Aerv);
+    this.a.g = null;
   }
 }
 

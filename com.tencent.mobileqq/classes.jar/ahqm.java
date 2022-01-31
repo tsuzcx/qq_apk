@@ -3,12 +3,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ahqm
-  extends ahpv
+  extends ahpt
 {
+  public boolean a;
+  
   public ahqm(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131697677), new Object[] { ajyc.a(2131715717) });
+    this(paramContext, false);
+  }
+  
+  public ahqm(Context paramContext, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697933);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -17,14 +25,15 @@ public class ahqm
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Azmk == null) {
-        this.jdField_a_of_type_Azmk = new azmk();
+      this.jdField_a_of_type_Long = paramArrayOfByte.optLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.optLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.optString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.optInt("color");
+      this.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("isToAll");
+      if (this.jdField_a_of_type_Azmm == null) {
+        this.jdField_a_of_type_Azmm = new azmm();
       }
-      this.jdField_a_of_type_Azmk.a(paramArrayOfByte.getString("messageNavInfo"));
+      this.jdField_a_of_type_Azmm.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
     catch (JSONException paramArrayOfByte)
@@ -47,8 +56,9 @@ public class ahqm
       localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
       localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Azmk != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmk.a());
+      localJSONObject.put("isToAll", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Azmm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmm.a());
       }
       return localJSONObject.toString().getBytes();
     }

@@ -1,107 +1,81 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class akgf
-  implements ajtg
+  implements SensorEventListener
 {
-  protected void a(int paramInt, Bundle paramBundle) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void b(int paramInt, Bundle paramBundle) {}
-  
-  protected void b(int paramInt, String paramString) {}
-  
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private void a(long paramLong)
   {
-    String str = null;
-    Object localObject2 = null;
-    Object localObject1 = null;
-    int i = -1;
-    switch (paramInt)
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.c = 0.0F;
+    this.d = 0.0F;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void a() {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    float f1 = 0.0F;
+    float f2;
+    float f3;
+    float f4;
+    long l1;
+    long l2;
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-    default: 
-      return;
-    case 1: 
-      b(paramInt, (Bundle)paramObject);
-      return;
-    case 2: 
-      a(paramInt, (Bundle)paramObject);
-      return;
-    case 3: 
-      i = 0;
-      str = "";
-      localObject1 = str;
-      paramInt = i;
-      if (paramBoolean)
-      {
-        paramObject = (Bundle)paramObject;
-        localObject1 = str;
-        paramInt = i;
-        if (paramObject != null)
-        {
-          paramInt = paramObject.getInt("status");
-          localObject1 = paramObject.getString("wording");
-        }
+      f2 = paramSensorEvent.values[0];
+      f3 = paramSensorEvent.values[1];
+      f4 = paramSensorEvent.values[2];
+      l1 = System.currentTimeMillis();
+      l2 = l1 - this.jdField_a_of_type_Long;
+      if (l2 <= 5000L) {
+        break label66;
       }
-      a(paramBoolean, paramInt, (String)localObject1);
-      return;
-    case 4: 
-      if (paramBoolean)
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject != null)
-        {
-          paramInt = paramObject.getInt(AuthDevRenameActivity.i);
-          localObject1 = paramObject.getByteArray(AuthDevRenameActivity.h);
-          paramObject = paramObject.getString(AuthDevRenameActivity.f);
-        }
-      }
-      break;
+      a(l1);
     }
-    for (;;)
+    label66:
+    while (l2 <= 80L) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
+      f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+    }
+    this.d += f1;
+    if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
     {
-      a(paramBoolean, paramInt, (byte[])localObject1, paramObject);
-      return;
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-      b(paramBoolean, (Bundle)paramObject);
-      return;
-      localObject1 = (Bundle)paramObject;
-      paramObject = str;
-      if (localObject1 != null)
+      if (QLog.isColorLevel())
       {
-        i = ((Bundle)localObject1).getInt("ret_code", -1);
-        paramObject = ((Bundle)localObject1).getString("err_msg");
+        QLog.d("CIO_test", 2, "now[" + f2 + "," + f3 + "," + f4 + "]duration:" + l2 + " shake:" + f1);
+        QLog.d("CIO_test", 2, "last[" + this.jdField_a_of_type_Float + "," + this.b + "," + this.c + "]total_shake:" + f1);
       }
-      a(i, paramObject);
+      a();
+      a(l1);
       return;
-      localObject1 = (Bundle)paramObject;
-      paramObject = localObject2;
-      if (localObject1 != null)
-      {
-        i = ((Bundle)localObject1).getInt("ret_code", -1);
-        paramObject = ((Bundle)localObject1).getString("err_msg");
-      }
-      b(i, paramObject);
-      return;
-      a(paramObject);
-      return;
-      paramInt = -1;
-      str = null;
-      paramObject = localObject1;
-      localObject1 = str;
     }
+    if (this.jdField_a_of_type_Int < 10)
+    {
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Float = f2;
+      this.b = f3;
+      this.c = f4;
+      this.jdField_a_of_type_Long = l1;
+      return;
+    }
+    a(l1);
   }
 }
 

@@ -1,21 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
 class arzo
-  implements View.OnClickListener
+  implements bcue
 {
-  arzo(arzl paramarzl, BaseActivity paramBaseActivity, aruk paramaruk) {}
+  bbgu jdField_a_of_type_Bbgu;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  arzo(arzn paramarzn, BaseActivity paramBaseActivity, arum paramarum) {}
+  
+  public boolean a()
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-    int i = this.jdField_a_of_type_Aruk.a();
-    Object localObject = this.jdField_a_of_type_Aruk.a();
-    aruq.a(paramView).a.a(3, i, (String)localObject);
-    localObject = new aruk(i, (String)localObject);
-    aruq.a(paramView).a((aruk)localObject, false);
-    axqw.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
+    if ((this.jdField_a_of_type_Arzn.a.isBackground_Pause) || (this.jdField_a_of_type_Arzn.a.isBackground_Stop)) {
+      arzn.a(this.jdField_a_of_type_Arzn, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Arum);
+    }
+    for (;;)
+    {
+      axqy.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
+      return true;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Bbgu = arvm.a(this.jdField_a_of_type_Arum.a(), this.jdField_a_of_type_Arum.a());
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Bbgu != null) {
+          this.jdField_a_of_type_Bbgu.setOnDismissListener(new arzp(this));
+        }
+      }
+    }
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Arum.a(), this.jdField_a_of_type_Arum.a(), 4);
+    arza.e();
+    if (this.jdField_a_of_type_Bbgu != null) {}
+    try
+    {
+      this.jdField_a_of_type_Bbgu.dismiss();
+      return false;
+    }
+    catch (Exception localException) {}
+    return false;
   }
 }
 

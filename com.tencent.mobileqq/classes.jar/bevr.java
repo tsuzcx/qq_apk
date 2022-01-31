@@ -1,46 +1,83 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bevr
-  implements DialogInterface.OnDismissListener
+final class bevr
+  implements bevq, bevs
 {
-  bevr(bevq parambevq, String paramString1, String paramString2, bevx parambevx) {}
+  private int jdField_a_of_type_Int;
+  private final bevs jdField_a_of_type_Bevs;
+  private bevt jdField_a_of_type_Bevt;
+  private String jdField_a_of_type_JavaLangString;
+  private Throwable jdField_a_of_type_JavaLangThrowable;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  bevr(bevs parambevs)
   {
-    paramDialogInterface = (bemg)paramDialogInterface;
-    boolean bool1 = paramDialogInterface.a();
-    boolean bool2 = paramDialogInterface.b();
-    if (MiniAppEnv.g().getAuthSate(this.jdField_a_of_type_JavaLangString) != null)
-    {
-      if (!bool1) {
-        break label81;
-      }
-      MiniAppEnv.g().getAuthSate(this.jdField_a_of_type_JavaLangString).a(this.b, true);
-    }
-    for (;;)
-    {
-      bevq.a(this.jdField_a_of_type_Bevq, null);
-      if (this.jdField_a_of_type_Bevx != null)
+    this.jdField_a_of_type_Bevs = parambevs;
+  }
+  
+  private void a()
+  {
+    bevs localbevs;
+    bevt localbevt;
+    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+      if (!this.c)
       {
-        if (!bool1) {
-          break;
+        localbevs = this.jdField_a_of_type_Bevs;
+        localbevt = this.jdField_a_of_type_Bevt;
+        if (this.jdField_a_of_type_JavaLangThrowable == null) {
+          break label79;
         }
-        this.jdField_a_of_type_Bevx.a(true);
-      }
-      return;
-      label81:
-      if (bool2) {
-        MiniAppEnv.g().getAuthSate(this.jdField_a_of_type_JavaLangString).a(this.b, false);
       }
     }
-    if (bool2)
+    label79:
+    for (String str = this.jdField_a_of_type_JavaLangThrowable.getMessage();; str = "download plugin fail")
     {
-      this.jdField_a_of_type_Bevx.a(false);
+      localbevs.onInitGpkgInfo(2022, localbevt, str);
+      this.jdField_a_of_type_Bevs.onInitGpkgInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bevt, this.jdField_a_of_type_JavaLangString);
       return;
     }
-    besl.a("MiniGameAuthorizeManager", "showDialog, onDismiss: just dismiss");
+  }
+  
+  public void a(boolean paramBoolean, Throwable paramThrowable)
+  {
+    try
+    {
+      this.b = true;
+      this.c = paramBoolean;
+      this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+      a();
+      return;
+    }
+    finally
+    {
+      paramThrowable = finally;
+      throw paramThrowable;
+    }
+  }
+  
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
+  {
+    this.jdField_a_of_type_Bevs.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
+  }
+  
+  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Bevt = parambevt;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      a();
+      return;
+    }
+    finally
+    {
+      parambevt = finally;
+      throw parambevt;
+    }
   }
 }
 

@@ -1,23 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import com.tencent.mobileqq.activity.GeneralSettingActivity.ThemeCallback.1;
+import mqq.util.WeakReference;
 
 public class abhs
-  implements CompoundButton.OnCheckedChangeListener
+  extends aymo
 {
-  public abhs(GeneralSettingActivity paramGeneralSettingActivity) {}
+  WeakReference<accg> a;
+  WeakReference<View> b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  abhs(accg paramaccg, View paramView)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131719381), "qqsetting_notify_icon_key", paramBoolean);
-      return;
+    this.a = new WeakReference(paramaccg);
+    this.b = new WeakReference(paramView);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    accg localaccg = (accg)this.a.get();
+    View localView = (View)this.b.get();
+    if ((localaccg != null) && (localView != null)) {
+      localView.post(new GeneralSettingActivity.ThemeCallback.1(this, localaccg, localView));
     }
+    return super.a(paramInt);
   }
 }
 

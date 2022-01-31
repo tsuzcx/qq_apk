@@ -1,21 +1,46 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Context;
 import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class psc
-  implements View.OnTouchListener
+public class psc
+  extends pqq
 {
-  psc(prw paramprw, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public psc(Context paramContext, baxy parambaxy, ram paramram)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
+  
+  public pqq d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    return false;
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(actj.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Pqp != null) && ((this.jdField_a_of_type_Pqp instanceof ComponentContentHotQuestion))) {
+      localLinearLayout.addView((ComponentContentHotQuestion)this.jdField_a_of_type_Pqp);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pqq e()
+  {
+    return null;
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentHotQuestion(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

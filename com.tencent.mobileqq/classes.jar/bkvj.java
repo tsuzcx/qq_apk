@@ -1,10 +1,17 @@
-public abstract interface bkvj
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+
+public class bkvj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public bkvj(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f);
+  }
 }
 
 

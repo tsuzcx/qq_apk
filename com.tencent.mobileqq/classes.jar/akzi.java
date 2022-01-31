@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
 public class akzi
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akzi(ARRecordUtils.1 param1) {}
+  public akzi(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
+  }
 }
 
 

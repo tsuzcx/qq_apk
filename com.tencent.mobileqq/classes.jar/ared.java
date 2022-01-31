@@ -1,30 +1,17 @@
+import java.io.File;
+import java.util.concurrent.Callable;
+
 class ared
+  implements Callable<File>
 {
-  public static ared a;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  ared(arec paramarec) {}
   
-  static
+  public File a()
   {
-    jdField_a_of_type_Ared = new ared(null);
-  }
-  
-  public ared(String paramString)
-  {
-    this(paramString, null, null);
-  }
-  
-  public ared(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (arec.a(this.a).exists()) {
+      return arec.a(this.a);
+    }
+    return null;
   }
 }
 

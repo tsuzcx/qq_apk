@@ -2,10 +2,10 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bcdb;
-import bgxy;
-import bhrr;
-import bhrs;
+import bcdp;
+import bgyp;
+import bhsi;
+import bhsj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -18,26 +18,26 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class QzoneMoodPlugin$1
   implements Runnable
 {
-  public QzoneMoodPlugin$1(bhrr parambhrr, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
+  public QzoneMoodPlugin$1(bhsi parambhsi, ArrayList paramArrayList1, String paramString1, int paramInt, Activity paramActivity, String paramString2, ArrayList paramArrayList2, PublishEventTag paramPublishEventTag) {}
   
   public void run()
   {
     Object localObject2;
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      if (bhrr.a().isEmpty()) {
-        bhrr.a(this.this$0);
+      if (bhsi.a().isEmpty()) {
+        bhsi.a(this.this$0);
       }
-      localObject1 = bhrr.a().iterator();
+      localObject1 = bhsi.a().iterator();
       do
       {
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (bhrs)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((bhrs)localObject2).jdField_a_of_type_JavaLangString == null) || (((bhrs)localObject2).jdField_a_of_type_JavaUtilHashMap == null) || (!((bhrs)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
+        localObject2 = (bhsj)((Iterator)localObject1).next();
+      } while ((localObject2 == null) || (((bhsj)localObject2).jdField_a_of_type_JavaLangString == null) || (((bhsj)localObject2).jdField_a_of_type_JavaUtilHashMap == null) || (!((bhsj)localObject2).jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
     }
-    for (Object localObject1 = ((bhrs)localObject2).jdField_a_of_type_JavaUtilHashMap;; localObject1 = null)
+    for (Object localObject1 = ((bhsj)localObject2).jdField_a_of_type_JavaUtilHashMap;; localObject1 = null)
     {
       if (localObject1 != null)
       {
@@ -53,10 +53,10 @@ public class QzoneMoodPlugin$1
       }
       if (this.jdField_a_of_type_Int == 1)
       {
-        bgxy.b(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
+        bgyp.b(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
         return;
       }
-      bgxy.a(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
+      bgyp.a(this.jdField_a_of_type_AndroidAppActivity, this.this$0.a.mRuntime.a().getCurrentAccountUin(), this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_CooperationQzoneModelPublishEventTag, -1);
       return;
     }
   }

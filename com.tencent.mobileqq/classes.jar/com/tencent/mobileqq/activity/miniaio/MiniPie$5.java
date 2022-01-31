@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aggy;
+import aggw;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class MiniPie$5
   implements Runnable
 {
-  public MiniPie$5(aggy paramaggy) {}
+  public MiniPie$5(aggw paramaggw) {}
   
   public void run()
   {

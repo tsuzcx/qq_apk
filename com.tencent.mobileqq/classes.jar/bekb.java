@@ -1,34 +1,56 @@
+import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
+import java.io.File;
+
 public class bekb
+  extends bess
 {
-  beka a = new beka();
-  
-  public beka a()
+  public void loadBaselib(Context paramContext, besu parambesu)
   {
-    return this.a;
-  }
-  
-  public bekb a(int paramInt)
-  {
-    this.a.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bekb a(begy parambegy)
-  {
-    this.a.jdField_a_of_type_Begy = parambegy;
-    return this;
-  }
-  
-  public bekb a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public bekb b(String paramString)
-  {
-    this.a.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    for (;;)
+    {
+      best localbest;
+      try
+      {
+        if (isBaseLibInit())
+        {
+          if (parambesu != null) {
+            parambesu.a(0, "", this.mBaselibContent.a());
+          }
+          return;
+        }
+        localbest = new best();
+        localbest.a = belh.a(paramContext, "mini/QView.js");
+        File localFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator, "QLogic.js");
+        if ((localFile.exists()) && (localFile.isFile()))
+        {
+          Log.i("InternalBaselibLoader", "load ServiceJs from " + localFile.getAbsolutePath());
+          localbest.b = belh.a(localFile);
+          localbest.h = localFile.getAbsolutePath();
+          localbest.c = belh.a(paramContext, "mini/QVConsole.js");
+          localbest.d = belh.a(paramContext, "mini/QRemoteDebug.js");
+          localbest.e = belh.a(paramContext, "mini/QWebview.js");
+          localbest.f = belh.a(paramContext, "mini/QWorker.js");
+          setBaselib(localbest);
+          if (parambesu == null) {
+            continue;
+          }
+          if (!isBaseLibInit()) {
+            break label256;
+          }
+          parambesu.a(0, "", this.mBaselibContent.a());
+          continue;
+        }
+        Log.i("InternalBaselibLoader", "load ServiceJs from assets");
+      }
+      finally {}
+      localbest.b = belh.a(paramContext, "mini/QLogic.js");
+      localbest.h = "assets://mini/QLogic.js";
+      continue;
+      label256:
+      parambesu.a(-1, "基础库加载失败", null);
+    }
   }
 }
 

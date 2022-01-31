@@ -1,34 +1,13 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.smtt.sdk.ValueCallback;
-import java.lang.ref.WeakReference;
-
 final class apum
-  implements ValueCallback<String>
+  implements bcwm
 {
-  apum(WeakReference paramWeakReference, Activity paramActivity) {}
+  apum(aptw paramaptw) {}
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
-    {
-      if (apcy.a().a() == null)
-      {
-        paramString = new Bundle();
-        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131694785));
-        paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
-        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-        localIntent.putExtra("param", paramString);
-        localIntent.putExtra("url", "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
-        localActivity.sendBroadcast(localIntent);
-      }
+    if (paramInt == 2) {
+      this.a.a();
     }
-    else {
-      return;
-    }
-    apue.c(localActivity, "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 

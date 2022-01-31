@@ -1,15 +1,19 @@
-import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class atqe
-  implements atyj
+  implements View.OnClickListener
 {
-  atqe(atpi paramatpi) {}
+  atqe(atpk paramatpk) {}
   
-  public void a(Dialog paramDialog, View paramView, atyi paramatyi)
+  public void onClick(View paramView)
   {
-    atyk.a(this.a.a, paramatyi, "data_card");
-    paramDialog.dismiss();
+    if (!this.a.a.onBackEvent())
+    {
+      this.a.a.finish();
+      this.a.a.b(false);
+    }
   }
 }
 

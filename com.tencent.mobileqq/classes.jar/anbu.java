@@ -1,25 +1,64 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class anbu
+  extends ampa<anbr>
 {
-  public String a;
-  public String[] a;
-  public String b;
-  public String[] b;
-  
-  public anbu(JSONObject paramJSONObject)
+  public static anbr a()
   {
-    String str = paramJSONObject.optString("words");
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\/");
+    return (anbr)ampl.a().a(383);
+  }
+  
+  public int a()
+  {
+    return 383;
+  }
+  
+  @NonNull
+  public anbr a(int paramInt)
+  {
+    return new anbr();
+  }
+  
+  @Nullable
+  public anbr a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anbr.a(paramArrayOfamph);
     }
-    str = paramJSONObject.optString("overlay");
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_b_of_type_ArrayOfJavaLangString = str.split("\\/");
+    return null;
+  }
+  
+  public Class<anbr> a()
+  {
+    return anbr.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(anbr paramanbr)
+  {
+    if ((paramanbr != null) && (!TextUtils.isEmpty(paramanbr.b()))) {
+      ((ayhj)BaseApplicationImpl.getApplication().getRuntime().getManager(305)).a(paramanbr);
     }
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("optString");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("aioTips");
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

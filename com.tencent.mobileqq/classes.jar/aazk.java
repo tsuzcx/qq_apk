@@ -1,17 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazk
-  implements View.OnClickListener
 {
-  public aazk(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
-  }
+  private aazk(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

@@ -1,23 +1,15 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class tul
-  extends uyl
+class tul
+  extends AnimatorListenerAdapter
 {
-  public tul(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  tul(tuk paramtuk) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, vas paramvas)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      sxp.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        vel.a("home_page", "clk_head_list", vel.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", vel.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
-      }
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
   }
 }
 

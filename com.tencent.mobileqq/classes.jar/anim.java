@@ -1,32 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
 public final class anim
   implements Parcelable.Creator
 {
-  public IPSiteModel.Video a(Parcel paramParcel)
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    IPSiteModel.Video localVideo = new IPSiteModel.Video();
-    localVideo.id = paramParcel.readString();
-    localVideo.buttonDesc = paramParcel.readString();
-    localVideo.content = paramParcel.readString();
-    localVideo.cover = paramParcel.readString();
-    localVideo.desc = paramParcel.readString();
-    localVideo.name = paramParcel.readString();
-    localVideo.endTime = paramParcel.readString();
-    localVideo.isShow = paramParcel.readInt();
-    localVideo.newStartTime = paramParcel.readLong();
-    localVideo.newEndTime = paramParcel.readLong();
-    localVideo.redirectUrl = paramParcel.readString();
-    localVideo.videoSource = paramParcel.readString();
-    localVideo.showDate = paramParcel.readString();
-    return localVideo;
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
   }
   
-  public IPSiteModel.Video[] a(int paramInt)
+  public IPSiteModel.ComicRich[] a(int paramInt)
   {
-    return new IPSiteModel.Video[paramInt];
+    return new IPSiteModel.ComicRich[paramInt];
   }
 }
 

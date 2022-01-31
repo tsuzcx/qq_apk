@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import aukn;
+import airx;
+import aukp;
 import com.tencent.mobileqq.DrawerPushItem;
 import java.util.List;
 
 public class ApolloManager$16
   implements Runnable
 {
-  public ApolloManager$16(airz paramairz, DrawerPushItem paramDrawerPushItem) {}
+  public ApolloManager$16(airx paramairx, DrawerPushItem paramDrawerPushItem) {}
   
   public void run()
   {
     if (this.a == null) {
       return;
     }
-    synchronized (airz.a(this.this$0))
+    synchronized (airx.a(this.this$0))
     {
-      if ((airz.a(this.this$0) != null) && (this.a != null) && (airz.a(this.this$0).contains(this.a))) {
-        airz.a(this.this$0).remove(this.a);
+      if ((airx.a(this.this$0) != null) && (this.a != null) && (airx.a(this.this$0).contains(this.a))) {
+        airx.a(this.this$0).remove(this.a);
       }
-      if (airz.a(this.this$0) != null)
+      if (airx.a(this.this$0) != null)
       {
-        airz.a(this.this$0).b(this.a);
-        airz.a(this.this$0).a();
+        airx.a(this.this$0).b(this.a);
+        airx.a(this.this$0).a();
       }
       return;
     }

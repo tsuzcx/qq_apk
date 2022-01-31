@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.nearby.redtouch;
 
-import atxb;
+import atxd;
 
 public class LocalRedTouchManager$1
   implements Runnable
 {
-  public LocalRedTouchManager$1(atxb paramatxb) {}
+  public LocalRedTouchManager$1(atxd paramatxd) {}
   
   public void run()
   {
-    atxb.a(this.this$0);
+    atxd.a(this.this$0);
   }
 }
 

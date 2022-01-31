@@ -1,39 +1,33 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.3;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4;
 
 public class aubz
-  implements aubl
+  implements View.OnTouchListener
 {
   public aubz(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.6.3(this));
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.1(this, paramInt1));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new ScanOcrActivity.6.4(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.runOnUiThread(new ScanOcrActivity.6.2(this));
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
+      }
     }
   }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
 }
 
 

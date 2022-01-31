@@ -4,14 +4,12 @@ import android.text.Editable.Factory;
 final class aykv
   extends Editable.Factory
 {
-  aykv(int paramInt) {}
-  
   public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence instanceof ayks)) {
+    if ((paramCharSequence instanceof ayku)) {
       return (Editable)paramCharSequence;
     }
-    return new ayks(paramCharSequence, 3, this.a);
+    return new ayku(paramCharSequence, 3);
   }
 }
 

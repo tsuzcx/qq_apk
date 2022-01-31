@@ -1,11 +1,4 @@
-import android.os.Bundle;
-
-public abstract interface lbx
-{
-  public abstract void a();
-  
-  public abstract void a(Bundle paramBundle);
-}
+class lbx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

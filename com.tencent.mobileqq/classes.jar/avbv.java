@@ -1,247 +1,116 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class avbv
+  implements ajuz, Manager
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static long jdField_a_of_type_Long = 1L;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int = 1;
-  private static long jdField_b_of_type_Long = 2L;
-  private static int jdField_c_of_type_Int = 1;
-  private static long jdField_c_of_type_Long = 4L;
-  private static int jdField_d_of_type_Int = 1;
-  private static long jdField_d_of_type_Long = 8L;
-  private static int jdField_e_of_type_Int = 480000;
-  private static long jdField_e_of_type_Long = 16L;
-  private static int f = 9;
-  private static int g = 3;
-  private static int h = 1;
+  private QQAppInterface a;
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public avbv(QQAppInterface paramQQAppInterface)
   {
-    a(paramQQAppInterface, false);
-    return jdField_e_of_type_Int;
-  }
-  
-  public static long a(QQAppInterface paramQQAppInterface)
-  {
-    return a(paramQQAppInterface, false);
-  }
-  
-  public static long a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    long l2 = 0L;
-    if (a(paramQQAppInterface)) {
-      l2 = 0L | jdField_a_of_type_Long;
+    this.a = paramQQAppInterface;
+    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
+    if (!"null".equalsIgnoreCase(str))
+    {
+      bbjg.a(paramQQAppInterface, str);
+      bbjg.a(paramQQAppInterface, true);
+      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
+      if ("null".equalsIgnoreCase(str)) {
+        break label161;
+      }
+      avcd.a(paramQQAppInterface, str);
+      avcd.a(paramQQAppInterface, true);
     }
-    long l1 = l2;
-    if (b(paramQQAppInterface)) {
-      l1 = l2 | jdField_b_of_type_Long;
-    }
-    l2 = l1;
-    if (c(paramQQAppInterface)) {
-      l2 = l1 | jdField_c_of_type_Long;
-    }
-    l1 = l2;
-    if (d(paramQQAppInterface)) {
-      l1 = l2 | jdField_d_of_type_Long;
-    }
-    l2 = l1;
-    if (paramBoolean) {
-      l2 = l1 | jdField_e_of_type_Long;
-    }
-    return l2;
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).getString("ptt_optimize_cfg_v2", null);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "getSavedPttOptimizeCfg: " + paramQQAppInterface);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    BaseApplicationImpl.sApplication.getSharedPreferences("RecordParams_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putString("ptt_optimize_cfg_v2", paramString).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "savePttOptimizeCfg: " + paramString);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
     for (;;)
     {
-      try
+      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (paramQQAppInterface.length > 13)
       {
-        boolean bool = jdField_a_of_type_Boolean;
-        if ((bool) && (!paramBoolean)) {
-          return;
-        }
-        jdField_a_of_type_Boolean = true;
-        try
+        boolean bool = "1".equals(paramQQAppInterface[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, bool);
+        if (paramQQAppInterface.length > 14)
         {
-          Object localObject = a(paramQQAppInterface);
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initPttOptimizeCfgStr: " + (String)localObject);
-          }
-          if (localObject != null)
-          {
-            localObject = ((String)localObject).split("\\|");
-            jdField_a_of_type_Int = Integer.valueOf(localObject[0]).intValue();
-            jdField_b_of_type_Int = Integer.valueOf(localObject[1]).intValue();
-            jdField_e_of_type_Int = Integer.valueOf(localObject[2]).intValue();
-            f = Integer.valueOf(localObject[3]).intValue();
-            g = Integer.valueOf(localObject[4]).intValue();
-            jdField_c_of_type_Int = Integer.valueOf(localObject[5]).intValue();
-            jdField_d_of_type_Int = Integer.valueOf(localObject[6]).intValue();
-            h = Integer.valueOf(localObject[7]).intValue();
-          }
-          localObject = paramQQAppInterface.getCurrentAccountUin();
-          if (jdField_a_of_type_Int == 0)
-          {
-            if (!((String)localObject).endsWith("1")) {
-              break label514;
-            }
-            jdField_a_of_type_Int = 2;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initDirectDownloadCfgStr: " + jdField_a_of_type_Int);
-          }
-          if (jdField_b_of_type_Int == 0)
-          {
-            if (!((String)localObject).endsWith("2")) {
-              break label521;
-            }
-            jdField_b_of_type_Int = 2;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initSSCMCfgStr: " + jdField_b_of_type_Int);
-          }
-          if (jdField_c_of_type_Int == 0)
-          {
-            if (!((String)localObject).endsWith("3")) {
-              break label528;
-            }
-            jdField_c_of_type_Int = 2;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initActivateNet: " + jdField_c_of_type_Int);
-          }
-          if (jdField_d_of_type_Int == 0)
-          {
-            if (!paramQQAppInterface.getCurrentAccountUin().endsWith("5")) {
-              break label535;
-            }
-            jdField_d_of_type_Int = 2;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initHttpSideWay: " + jdField_d_of_type_Int);
-          }
-          if (h == 0)
-          {
-            if (!((String)localObject).endsWith("4")) {
-              break label542;
-            }
-            h = 2;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("PttOptimizeParams", 2, "sPreSendSwitch: " + h);
+          bool = "1".equals(paramQQAppInterface[13]);
+          axqi.a(BaseApplicationImpl.sApplication, bool);
         }
-        catch (Exception paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PttOptimizeParams", 2, "initOptimizeCfg exception: " + paramQQAppInterface);
-          }
-          jdField_a_of_type_Int = 1;
-          jdField_b_of_type_Int = 1;
-          jdField_e_of_type_Int = 480000;
-          f = 9;
-          g = 3;
-          jdField_c_of_type_Int = 1;
-          jdField_d_of_type_Int = 1;
-          h = 1;
-        }
-        continue;
-        jdField_a_of_type_Int = 1;
       }
-      finally {}
-      label514:
-      continue;
-      label521:
-      jdField_b_of_type_Int = 1;
-      continue;
-      label528:
-      jdField_c_of_type_Int = 1;
-      continue;
-      label535:
-      jdField_d_of_type_Int = 1;
-      continue;
-      label542:
-      h = 1;
+      DeviceProfileManager.a(this);
+      return;
+      bbjg.a(paramQQAppInterface, false);
+      break;
+      label161:
+      avcd.a(paramQQAppInterface, false);
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void a(String paramString)
   {
-    a(paramQQAppInterface, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "doesSupportDirectDownload:" + jdField_a_of_type_Int);
+    QQAppInterface localQQAppInterface = this.a;
+    ayta.a();
+    if (localQQAppInterface != null)
+    {
+      avcd.b(localQQAppInterface, paramString);
+      avcd.b(localQQAppInterface, true);
     }
-    return jdField_a_of_type_Int == 1;
   }
   
-  public static int b(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean)
   {
-    a(paramQQAppInterface, false);
-    return f;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "doesSupportSSCM:" + jdField_b_of_type_Int);
+    Object localObject = this.a;
+    if ((localObject != null) && (paramBoolean))
+    {
+      bbjg.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
+      bbjg.a((QQAppInterface)localObject, true);
+      avcd.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
+      avcd.a((QQAppInterface)localObject, true);
+      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (localObject.length > 13)
+      {
+        paramBoolean = "1".equals(localObject[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
+        if (localObject.length > 14)
+        {
+          paramBoolean = "1".equals(localObject[13]);
+          axqi.a(BaseApplicationImpl.sApplication, paramBoolean);
+        }
+      }
     }
-    return jdField_b_of_type_Int == 1;
   }
   
-  public static int c(QQAppInterface paramQQAppInterface)
+  public void b(String paramString)
   {
-    a(paramQQAppInterface, false);
-    return g;
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "doesSupportActivateNet:" + jdField_c_of_type_Int);
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      avbx.a(localQQAppInterface, paramString);
+      avbx.a(localQQAppInterface, true);
     }
-    return jdField_c_of_type_Int == 1;
   }
   
-  public static int d(QQAppInterface paramQQAppInterface)
+  public void c(String paramString)
   {
-    a(paramQQAppInterface, false);
-    return h;
-  }
-  
-  public static boolean d(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttOptimizeParams", 2, "doesSupportHttpSideWay:" + jdField_d_of_type_Int);
+    if (TextUtils.isEmpty(paramString)) {}
+    ayta.a();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      avcm.a(localQQAppInterface, paramString);
+      avcm.a(localQQAppInterface, true);
     }
-    return jdField_d_of_type_Int == 1;
+  }
+  
+  public void onDestroy()
+  {
+    avcm.a();
+    DeviceProfileManager.b(this);
+    bbjg.a();
+    avcd.a();
   }
 }
 

@@ -1,19 +1,13 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class afep
-  implements bfvg
+  implements ajub
 {
   public afep(AddContactsView paramAddContactsView) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    AddContactsView.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    AddContactsView.a(this.a, true);
+    this.a.c = false;
   }
 }
 

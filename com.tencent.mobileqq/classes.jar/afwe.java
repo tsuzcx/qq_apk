@@ -1,50 +1,16 @@
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class afwe
-  extends apwx
+  implements View.OnClickListener
 {
   public afwe(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365764) {
-      ChatHistoryBaseTenDocFragment.a(this.a);
-    }
-    while ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    TencentDocItem localTencentDocItem = ((afwb)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Agbf.a(localTencentDocItem);
-      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    paramView = "unknown";
-    if (apef.b(localTencentDocItem.mUrl)) {
-      paramView = "doc";
-    }
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("url", localTencentDocItem.mUrl);
-      localBundle.putString("tdsourcetag", "s_qq_history_tab");
-      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
-      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
-      return;
-      if (apef.e(localTencentDocItem.mUrl)) {
-        paramView = "form";
-      } else if (apef.d(localTencentDocItem.mUrl)) {
-        paramView = "ppt";
-      } else if (apef.c(localTencentDocItem.mUrl)) {
-        paramView = "sheet";
-      }
-    }
+    axqy.b(this.a.a, "dc00898", "", "", "0X800A16A", "0X800A16A", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", "");
+    ayfx.a(this.a.getActivity(), "s_qq_history_tab", 1121);
   }
 }
 

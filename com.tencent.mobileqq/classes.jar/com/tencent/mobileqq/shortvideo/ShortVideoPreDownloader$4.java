@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axdr;
-import axdz;
-import axeg;
+import axdt;
+import axeb;
+import axei;
 
 public class ShortVideoPreDownloader$4
   implements Runnable
 {
-  public ShortVideoPreDownloader$4(axdz paramaxdz, axeg paramaxeg) {}
+  public ShortVideoPreDownloader$4(axeb paramaxeb, axei paramaxei) {}
   
   public void run()
   {
-    axdz.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
+    axeb.a("consumeShortVideo", "start pre download short video type=" + this.a.b + " uniseq=" + this.a.a.jdField_a_of_type_Long + ", uuid=" + this.a.a.jdField_a_of_type_JavaLangString);
     this.this$0.a(this.a);
   }
 }

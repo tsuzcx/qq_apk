@@ -1,42 +1,44 @@
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class ambl
-  implements Animator.AnimatorListener
+  extends AnimatorListenerAdapter
 {
-  ambl(ambj paramambj, ambq paramambq) {}
+  ambl(ambi paramambi, ObjectAnimator paramObjectAnimator, ambp paramambp) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Ambq.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Ambj.a(this.jdField_a_of_type_Ambq);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Ambq.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Ambj.a(this.jdField_a_of_type_Ambq);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Ambq.jdField_a_of_type_Long);
-    }
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Ambq.jdField_a_of_type_Long);
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
     }
-    this.jdField_a_of_type_Ambq.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    }
+    if ((this.jdField_a_of_type_Ambp != null) && (this.jdField_a_of_type_Ambp.a != null))
+    {
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Ambp.a.istroop != 0) {
+        break label98;
+      }
+      paramAnimator = "1";
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(akfv.a(this.jdField_a_of_type_Ambp.a.vipBubbleID)), "");
+      return;
+      label98:
+      if (this.jdField_a_of_type_Ambp.a.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Ambp.a.istroop == 3000) {
+        paramAnimator = "3";
+      }
+    }
   }
 }
 

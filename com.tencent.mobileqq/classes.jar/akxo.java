@@ -1,20 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
 class akxo
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  akxo(akxm paramakxm) {}
+  akxo(akxl paramakxl) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
+    this.a.a.setVisibility(8);
     this.a.dismiss();
-    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Alfx.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Alfx.b * 1.0D / 1000000.0D));
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

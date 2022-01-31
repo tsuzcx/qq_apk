@@ -2,18 +2,18 @@ package com.tencent.open.appstore.dl;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import bcxm;
-import bdgv;
+import bcyb;
+import bdhk;
 
 public class DownloadManagerV2$2
   implements Runnable
 {
-  public DownloadManagerV2$2(bdgv parambdgv, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
+  public DownloadManagerV2$2(bdhk parambdhk, IntentFilter paramIntentFilter1, IntentFilter paramIntentFilter2) {}
   
   public void run()
   {
-    bcxm.a().a().registerReceiver(bdgv.a(this.this$0), this.a);
-    bcxm.a().a().registerReceiver(bdgv.a(this.this$0), this.b);
+    bcyb.a().a().registerReceiver(bdhk.a(this.this$0), this.a);
+    bcyb.a().a().registerReceiver(bdhk.a(this.this$0), this.b);
   }
 }
 

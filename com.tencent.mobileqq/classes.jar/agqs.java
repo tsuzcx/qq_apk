@@ -1,690 +1,475 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.zebra.ZebraPluginProxy;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupHeadPortrait;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupHeadPortraitInfo;
-import tencent.im.oidb.cmd0x8b8.oidb_0x8b8.GroupPicListInfo;
-import tencent.im.oidb.cmd0x8b8.oidb_0x8b8.RspBody;
+import android.media.AudioManager;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.1;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.2;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.3;
+import com.tencent.mobileqq.activity.photo.VideoPlayController.4;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import java.util.HashMap;
 
-public class agqs
+public abstract class agqs
 {
-  public static int a(int paramInt)
-  {
-    return (int)(0.5653333F * paramInt);
-  }
+  private int jdField_a_of_type_Int = 0;
+  protected aejb a;
+  agme jdField_a_of_type_Agme = new agme();
+  agqt jdField_a_of_type_Agqt = new agqt(this, null);
+  public agqu a;
+  public agra a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  View jdField_a_of_type_AndroidViewView;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VideoPlayController.1(this);
+  private final String jdField_a_of_type_JavaLangString = "carverW VideoPlayController";
+  protected boolean a;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a(agra paramagra)
   {
-    int j = 1;
-    int i = paramInt4;
-    paramInt4 = paramInt3;
-    paramInt3 = j;
-    if ((paramInt4 > paramInt2) || (i > paramInt1))
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "#initMediaPlayVideo  ");
+    }
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_Agme != null)
     {
-      j = Math.round(paramInt4 / paramInt2);
-      int k = Math.round(i / paramInt1);
-      if (j > k) {}
-      for (;;)
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_Agme.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Agqt, paramagra, this.jdField_a_of_type_Aejb);
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        if (j < 2) {
-          return paramInt3;
-        }
-        i /= 2;
-        paramInt4 /= 2;
-        paramInt3 *= 2;
-        break;
-        j = k;
+        a(this.jdField_a_of_type_AndroidAppActivity);
+        paramagra = new HashMap();
+        axrn.a(BaseApplication.getContext()).a(null, "previewVideoViewCreateSuc", true, 0L, 0L, paramagra, null);
       }
     }
-    return paramInt3;
   }
   
-  public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  private void a(Activity paramActivity)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt1 == -1) || (paramInt2 == -1)) {
-      paramInt1 = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "#setupVideoView  ");
     }
-    do
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
     {
-      return paramInt1;
-      paramInt2 = a(paramInt1, paramInt2, paramOptions.outHeight, paramOptions.outWidth);
-      paramInt1 = paramInt2;
-    } while (!com.tencent.TMG.utils.QLog.isColorLevel());
-    com.tencent.TMG.utils.QLog.i("TroopPhotoUtil", 0, String.format("calculateInSampleSize [%d,%d,%d]", new Object[] { Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight), Integer.valueOf(paramInt2) }));
-    return paramInt2;
-  }
-  
-  /* Error */
-  public static int a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: iconst_0
-    //   7: istore_2
-    //   8: new 60	java/io/FileInputStream
-    //   11: dup
-    //   12: aload_0
-    //   13: invokespecial 64	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   16: astore_0
-    //   17: new 66	java/io/FileOutputStream
-    //   20: dup
-    //   21: aload_1
-    //   22: invokespecial 67	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   25: astore 4
-    //   27: sipush 8192
-    //   30: newarray byte
-    //   32: astore_1
-    //   33: aload_0
-    //   34: aload_1
-    //   35: invokevirtual 73	java/io/InputStream:read	([B)I
-    //   38: istore_3
-    //   39: iload_3
-    //   40: ifle +44 -> 84
-    //   43: aload 4
-    //   45: aload_1
-    //   46: iconst_0
-    //   47: iload_3
-    //   48: invokevirtual 79	java/io/OutputStream:write	([BII)V
-    //   51: goto -18 -> 33
-    //   54: astore_1
-    //   55: aload_0
-    //   56: astore_1
-    //   57: aload 4
-    //   59: astore_0
-    //   60: iconst_m1
-    //   61: istore_3
-    //   62: aload_1
-    //   63: ifnull +7 -> 70
-    //   66: aload_1
-    //   67: invokevirtual 83	java/io/InputStream:close	()V
-    //   70: iload_3
-    //   71: istore_2
-    //   72: aload_0
-    //   73: ifnull +9 -> 82
-    //   76: aload_0
-    //   77: invokevirtual 84	java/io/OutputStream:close	()V
-    //   80: iload_3
-    //   81: istore_2
-    //   82: iload_2
-    //   83: ireturn
-    //   84: aload_0
-    //   85: ifnull +7 -> 92
-    //   88: aload_0
-    //   89: invokevirtual 83	java/io/InputStream:close	()V
-    //   92: aload 4
-    //   94: ifnull -12 -> 82
-    //   97: aload 4
-    //   99: invokevirtual 84	java/io/OutputStream:close	()V
-    //   102: iconst_0
-    //   103: ireturn
-    //   104: astore_0
-    //   105: aload_0
-    //   106: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   109: iconst_0
-    //   110: ireturn
-    //   111: astore_0
-    //   112: aload_0
-    //   113: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   116: goto -24 -> 92
-    //   119: astore_1
-    //   120: aload_1
-    //   121: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   124: goto -54 -> 70
-    //   127: astore_0
-    //   128: aload_0
-    //   129: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   132: iconst_m1
-    //   133: ireturn
-    //   134: astore_1
-    //   135: aconst_null
-    //   136: astore_0
-    //   137: aload 5
-    //   139: astore 4
-    //   141: aload_0
-    //   142: ifnull +7 -> 149
-    //   145: aload_0
-    //   146: invokevirtual 83	java/io/InputStream:close	()V
-    //   149: aload 4
-    //   151: ifnull +8 -> 159
-    //   154: aload 4
-    //   156: invokevirtual 84	java/io/OutputStream:close	()V
-    //   159: aload_1
-    //   160: athrow
-    //   161: astore_0
-    //   162: aload_0
-    //   163: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   166: goto -17 -> 149
-    //   169: astore_0
-    //   170: aload_0
-    //   171: invokevirtual 87	java/io/IOException:printStackTrace	()V
-    //   174: goto -15 -> 159
-    //   177: astore_1
-    //   178: aload 5
-    //   180: astore 4
-    //   182: goto -41 -> 141
-    //   185: astore_1
-    //   186: goto -45 -> 141
-    //   189: astore_0
-    //   190: aconst_null
-    //   191: astore_0
-    //   192: aload 4
-    //   194: astore_1
-    //   195: goto -135 -> 60
-    //   198: astore_1
-    //   199: aconst_null
-    //   200: astore 4
-    //   202: aload_0
-    //   203: astore_1
-    //   204: aload 4
-    //   206: astore_0
-    //   207: goto -147 -> 60
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	210	0	paramString1	String
-    //   0	210	1	paramString2	String
-    //   7	76	2	i	int
-    //   38	43	3	j	int
-    //   4	201	4	localObject1	Object
-    //   1	178	5	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   27	33	54	java/lang/Exception
-    //   33	39	54	java/lang/Exception
-    //   43	51	54	java/lang/Exception
-    //   97	102	104	java/io/IOException
-    //   88	92	111	java/io/IOException
-    //   66	70	119	java/io/IOException
-    //   76	80	127	java/io/IOException
-    //   8	17	134	finally
-    //   145	149	161	java/io/IOException
-    //   154	159	169	java/io/IOException
-    //   17	27	177	finally
-    //   27	33	185	finally
-    //   33	39	185	finally
-    //   43	51	185	finally
-    //   8	17	189	java/lang/Exception
-    //   17	27	198	java/lang/Exception
-  }
-  
-  public static int a(oidb_0x88d.GroupHeadPortrait paramGroupHeadPortrait, List<TroopClipPic> paramList)
-  {
-    int n = paramGroupHeadPortrait.uint32_default_id.get();
-    paramGroupHeadPortrait = paramGroupHeadPortrait.rpt_msg_info.get().iterator();
-    if (paramGroupHeadPortrait.hasNext())
-    {
-      oidb_0x88d.GroupHeadPortraitInfo localGroupHeadPortraitInfo = (oidb_0x88d.GroupHeadPortraitInfo)paramGroupHeadPortrait.next();
-      TroopClipPic localTroopClipPic = new TroopClipPic();
-      localTroopClipPic.id = String.valueOf(localGroupHeadPortraitInfo.rpt_uint32_pic_id.get());
-      int i;
-      label87:
-      int j;
-      label107:
-      int k;
-      if (localGroupHeadPortraitInfo.uint32_left_x.has())
-      {
-        i = localGroupHeadPortraitInfo.uint32_left_x.get();
-        if (!localGroupHeadPortraitInfo.uint32_left_y.has()) {
-          break label217;
-        }
-        j = localGroupHeadPortraitInfo.uint32_left_y.get();
-        if (!localGroupHeadPortraitInfo.uint32_right_x.has()) {
-          break label222;
-        }
-        k = localGroupHeadPortraitInfo.uint32_right_x.get();
-        label128:
-        if (!localGroupHeadPortraitInfo.uint32_right_y.has()) {
-          break label228;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "#setupVideoView  layout is null#");
       }
-      label217:
-      label222:
-      label228:
-      for (int m = localGroupHeadPortraitInfo.uint32_right_y.get();; m = 0)
-      {
-        if ((i >= 0) && (j >= 0) && (k >= 0) && (m >= 0)) {
-          localTroopClipPic.clipInfo = a(i, j, k, m);
-        }
-        if (n == localGroupHeadPortraitInfo.rpt_uint32_pic_id.get()) {
-          localTroopClipPic.type = 1;
-        }
-        paramList.add(localTroopClipPic);
-        break;
-        i = 0;
-        break label87;
-        j = 0;
-        break label107;
-        k = 0;
-        break label128;
-      }
-    }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.i("TroopPhotoUtil", 0, String.format("getPicsFrom88d avatarId=%d %s", new Object[] { Integer.valueOf(n), Arrays.toString(paramList.toArray()) }));
-    }
-    return n;
-  }
-  
-  public static int a(oidb_0x8b8.RspBody paramRspBody, List<TroopClipPic> paramList)
-  {
-    int n = paramRspBody.uint32_default_id.get();
-    if ((paramRspBody.rpt_msg_pic_list_info.has()) && (paramRspBody.rpt_msg_pic_list_info.get().size() > 0))
-    {
-      paramRspBody = paramRspBody.rpt_msg_pic_list_info.get().iterator();
-      while (paramRspBody.hasNext())
-      {
-        oidb_0x8b8.GroupPicListInfo localGroupPicListInfo = (oidb_0x8b8.GroupPicListInfo)paramRspBody.next();
-        if (localGroupPicListInfo.uint32_pic_id.get() > 0)
-        {
-          TroopClipPic localTroopClipPic = new TroopClipPic();
-          localTroopClipPic.id = String.valueOf(localGroupPicListInfo.uint32_pic_id.get());
-          int i;
-          label123:
-          int j;
-          label143:
-          int k;
-          if (localGroupPicListInfo.uint32_left_x.has())
-          {
-            i = localGroupPicListInfo.uint32_left_x.get();
-            if (!localGroupPicListInfo.uint32_left_y.has()) {
-              break label253;
-            }
-            j = localGroupPicListInfo.uint32_left_y.get();
-            if (!localGroupPicListInfo.uint32_right_x.has()) {
-              break label258;
-            }
-            k = localGroupPicListInfo.uint32_right_x.get();
-            label164:
-            if (!localGroupPicListInfo.uint32_right_y.has()) {
-              break label264;
-            }
-          }
-          label258:
-          label264:
-          for (int m = localGroupPicListInfo.uint32_right_y.get();; m = 0)
-          {
-            if ((i >= 0) && (j >= 0) && (k >= 0) && (m >= 0)) {
-              localTroopClipPic.clipInfo = a(i, j, k, m);
-            }
-            if (n == localGroupPicListInfo.uint32_pic_id.get()) {
-              localTroopClipPic.type = 1;
-            }
-            paramList.add(localTroopClipPic);
-            break;
-            i = 0;
-            break label123;
-            label253:
-            j = 0;
-            break label143;
-            k = 0;
-            break label164;
-          }
-        }
-      }
-    }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.i("TroopPhotoUtil", 0, String.format("getPicsFrom8b8 avatarId=%d %s", new Object[] { Integer.valueOf(n), Arrays.toString(paramList.toArray()) }));
-    }
-    return n;
-  }
-  
-  public static final Point a(Activity paramActivity, int paramInt)
-  {
-    Point localPoint = new Point();
-    DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
-    if (localDisplayMetrics.widthPixels < localDisplayMetrics.heightPixels) {}
-    for (int i = localDisplayMetrics.widthPixels;; i = localDisplayMetrics.heightPixels) {
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i - actn.a(65.0F, paramActivity.getResources());
-        localPoint.set(paramInt, paramInt);
-        return localPoint;
-      }
-    }
-    localPoint.set(i, a(i));
-    return localPoint;
-  }
-  
-  public static String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (bbay.a())
-    {
-      localStringBuilder.append(ajsf.cT).append("tmp/").append(System.currentTimeMillis()).append("_photo.tmp");
-      return bbuv.a(localStringBuilder.toString());
-    }
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir()).append("/tmp/").append(System.currentTimeMillis()).append("_photo.tmp");
-    return localStringBuilder.toString();
-  }
-  
-  public static final String a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return "" + paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-  }
-  
-  public static String a(Context paramContext, int paramInt)
-  {
-    if (paramInt == 0) {
-      return paramContext.getString(2131719303);
-    }
-    if (paramInt == 1) {
-      return paramContext.getString(2131696388);
-    }
-    if (paramInt == 2) {
-      return paramContext.getString(2131696387);
-    }
-    if (paramInt == 3) {
-      return paramContext.getString(2131696389);
-    }
-    if (paramInt == 5) {
-      return paramContext.getString(2131696386);
-    }
-    if (paramInt == 100) {
-      return paramContext.getString(2131696370);
-    }
-    if (paramInt == 101) {
-      return paramContext.getString(2131696371);
-    }
-    if (paramInt == 102) {
-      return paramContext.getString(2131696368);
-    }
-    if (paramInt == 103) {
-      return paramContext.getString(2131696372);
-    }
-    if (paramInt == 1793) {
-      return paramContext.getString(2131693515);
-    }
-    return paramContext.getString(2131696385);
-  }
-  
-  public static String a(List<aglg> paramList, TroopInfo paramTroopInfo)
-  {
-    String str = aglg.a;
-    if (paramTroopInfo == null) {
-      return str;
-    }
-    Iterator localIterator = paramTroopInfo.mTroopPicList.iterator();
-    while (localIterator.hasNext())
-    {
-      TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-      if (localTroopClipPic.type == 1) {
-        str = localTroopClipPic.id;
-      } else {
-        paramList.add(aglg.a(localTroopClipPic, paramTroopInfo.mTroopVerifyingPics));
-      }
-    }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-      com.tencent.TMG.utils.QLog.i("TroopPhotoController", 0, String.format("getCoverFromDb infs=%s", new Object[] { Arrays.toString(paramList.toArray()) }));
-    }
-    return str;
-  }
-  
-  public static URL a(String paramString)
-  {
-    String str = Uri.parse(paramString).getScheme();
-    Object localObject = null;
-    if ((TextUtils.isEmpty(str)) || ((!str.equals("http")) && (!str.equals("https")))) {}
-    do
-    {
-      try
-      {
-        paramString = new File(paramString).toURL();
-        return paramString;
-      }
-      catch (MalformedURLException localMalformedURLException1)
-      {
-        do
-        {
-          paramString = localObject;
-        } while (!com.tencent.qphone.base.util.QLog.isColorLevel());
-        com.tencent.qphone.base.util.QLog.i("Q.troopinfo", 2, localMalformedURLException1.toString());
-        return null;
-      }
-      try
-      {
-        paramString = aysr.a(paramString);
-        return paramString;
-      }
-      catch (MalformedURLException localMalformedURLException2)
-      {
-        paramString = localObject;
-      }
-    } while (!com.tencent.qphone.base.util.QLog.isColorLevel());
-    com.tencent.qphone.base.util.QLog.i("Q.troopinfo", 2, localMalformedURLException2.toString());
-    return null;
-  }
-  
-  public static Set<String> a(oidb_0x88d.GroupHeadPortrait paramGroupHeadPortrait)
-  {
-    int i = paramGroupHeadPortrait.uint32_verifying_pic_cnt.get();
-    int j = paramGroupHeadPortrait.rpt_msg_verifyingpic_info.size();
-    if ((i != j) && (com.tencent.TMG.utils.QLog.isColorLevel())) {
-      com.tencent.TMG.utils.QLog.d("TroopInfo", 0, String.format("wrong data from server! uint32_verifying_pic_cnt = %d not equals rpt_msg_verifyingpic_info's size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    HashSet localHashSet = new HashSet();
-    paramGroupHeadPortrait = paramGroupHeadPortrait.rpt_msg_verifyingpic_info.get().iterator();
-    while (paramGroupHeadPortrait.hasNext()) {
-      localHashSet.add(String.valueOf(((oidb_0x88d.GroupHeadPortraitInfo)paramGroupHeadPortrait.next()).rpt_uint32_pic_id.get()));
-    }
-    return localHashSet;
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    String str = String.valueOf(paramInt);
-    URL localURL = a(bahh.b(bahh.a(str, paramString2, 1)));
-    if (localURL != null)
-    {
-      paramInt = a(paramString1, ayog.d(localURL.toString()));
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d("TroopPhotoUtil", 0, "cacheFileFromLocal origin photo,result:" + paramInt);
-      }
-    }
-    paramString2 = a(bahh.a(bahh.a(str, paramString2, 1)));
-    if (paramString2 != null)
-    {
-      paramInt = b(paramString1, ayog.d(paramString2.toString()));
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d("TroopPhotoUtil", 0, "cacheFileFromLocal thumb photo,result:" + paramInt);
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", localArrayList);
-    localBundle.putInt("PhotoConst.MAXUM_SELECTED_NUM", paramInt);
-    if (paramInt == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localBundle.putBoolean("PhotoConst.IS_SINGLE_MODE", bool);
-      localBundle.putBoolean("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-      localBundle.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
-      localBundle.putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      localBundle.putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      paramActivity.overridePendingTransition(2130771979, 2130771977);
-      ZebraPluginProxy.startPhotoList(paramActivity, localBundle);
       return;
     }
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramActivity.getWindow().addFlags(67108864);
+    }
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    b(paramActivity);
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, String paramString, int paramInt)
+  private void b(Activity paramActivity)
   {
-    Point localPoint = a(paramActivity, paramInt);
-    paramIntent.putExtra("Business_Origin", paramInt);
-    paramIntent.putExtra("BUSINESS_ORIGIN_NEW", paramInt);
-    paramIntent.putExtra("PhotoConst.SOURCE_FROM", "FROM_TAKE_PHOTO");
-    paramIntent.putExtra("PhotoConst.TARGET_SAMPLE_SIZE", 1024);
-    paramIntent.putExtra("PhotoConst.ORIGIN_WITH_CLIPINFO", a(paramInt));
-    paramIntent.putExtra("PhotoConst.IS_WITH_PENDANT", false);
-    PhotoUtils.a(paramIntent, paramActivity, paramActivity.getClass().getName(), localPoint.x, localPoint.y, 640, 640, paramString, a());
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt)
-  {
-    a(paramActivity, new Intent(), paramString, paramInt);
-  }
-  
-  public static final void a(Rect paramRect, String paramString)
-  {
-    paramRect.set(0, 0, 0, 0);
-    if (!TextUtils.isEmpty(paramString))
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Agme != null))
     {
-      paramString = paramString.split("_");
-      if ((paramString.length == 4) && (aurl.a(paramString[0])) && (aurl.a(paramString[1])) && (aurl.a(paramString[2])) && (aurl.a(paramString[3])))
+      this.jdField_a_of_type_Agme.a(paramActivity, (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
+      this.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  private void p()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agme != null)) {
+      this.jdField_a_of_type_Agme.b();
+    }
+    if ((bfnz.b()) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      Activity localActivity1 = this.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity2 = this.jdField_a_of_type_AndroidAppActivity;
+      ((AudioManager)localActivity1.getSystemService("audio")).abandonAudioFocus(null);
+    }
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.2(this));
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      return this.jdField_a_of_type_Agme.b();
+    }
+    return 0L;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  void a(int paramInt1, int paramInt2)
+  {
+    String str1 = ajya.a(2131716332);
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      str1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131719585);
+    }
+    if ((paramInt1 == 101) && (this.jdField_a_of_type_Agra != null) && (this.jdField_a_of_type_Agra.jdField_a_of_type_ArrayOfJavaLangString != null) && (!bbkk.a(this.jdField_a_of_type_Agra.c)))
+    {
+      localObject = this.jdField_a_of_type_Agra.jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        int i = Integer.valueOf(paramString[0]).intValue();
-        int j = Integer.valueOf(paramString[1]).intValue();
-        int k = Integer.valueOf(paramString[2]).intValue();
-        int m = Integer.valueOf(paramString[3]).intValue();
-        if ((i >= 0) && (j >= 0) && (k > i) && (m > j)) {
-          paramRect.set(i, j, k, m);
+        String str2 = localObject[i];
+        if (!bbkk.a(str2)) {
+          ayxg.a().a(this.jdField_a_of_type_Agra.c, ayxg.a(str2), 1005);
+        }
+        i += 1;
+      }
+      aejk.a().a();
+    }
+    Object localObject = str1;
+    if (paramInt1 == 122) {
+      if (paramInt2 != 204)
+      {
+        localObject = str1;
+        if (paramInt2 != 202) {}
+      }
+      else
+      {
+        localObject = str1;
+        if (this.jdField_a_of_type_AndroidAppActivity != null) {
+          localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131719582);
         }
       }
     }
+    if (this.jdField_a_of_type_Agqu != null) {
+      this.jdField_a_of_type_Agqu.a(this.jdField_a_of_type_Agra, paramInt1, paramInt2, (String)localObject);
+    }
   }
   
-  public static final boolean a(int paramInt)
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(aejb paramaejb)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Aejb = paramaejb;
+  }
+  
+  public void a(agqu paramagqu)
+  {
+    this.jdField_a_of_type_Agqu = paramagqu;
+  }
+  
+  public abstract void a(View paramView);
+  
+  public void a(View paramView, agra paramagra)
+  {
+    if ((paramView == null) || (paramagra == null) || (this.jdField_a_of_type_Agme == null)) {
+      return;
+    }
+    h();
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    }
+    if (paramView == null)
     {
-    default: 
-      return false;
+      a();
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
+      this.jdField_a_of_type_AndroidAppActivity = null;
     }
-    return true;
-  }
-  
-  public static final int b(int paramInt)
-  {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    return -1;
-  }
-  
-  public static int b(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {}
     for (;;)
     {
-      return -1;
-      Object localObject = new File(paramString1);
-      BitmapFactory.Options localOptions = bbdr.a(((File)localObject).getPath(), 100);
-      try
-      {
-        localObject = bbdr.a(((File)localObject).getPath(), localOptions);
-        paramString2 = new File(paramString2);
-        if (paramString2.exists()) {
-          return 0;
-        }
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).removeViewCallBack(this.jdField_a_of_type_Agme);
       }
-      catch (OutOfMemoryError paramString1)
-      {
-        paramString1.printStackTrace();
-        return -1;
+      this.jdField_a_of_type_Agqt.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.c = false;
+      this.d = false;
+      a(false);
+      this.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Agme.a();
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Agra = paramagra;
+      if ((this.jdField_a_of_type_Agra == null) || (paramView == null) || (paramView.getContext() == null)) {
+        break;
       }
-      try
-      {
-        int i = bamn.a(paramString1);
-        paramString1 = (String)localObject;
-        if (i != 0) {
-          paramString1 = bbdr.b((Bitmap)localObject, i);
-        }
-        if (paramString1 != null)
-        {
-          bbdr.a(paramString1, paramString2);
-          return 0;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemSelect no == " + this.jdField_a_of_type_Agra.hashCode() + " id=" + paramagra.jdField_a_of_type_Long);
       }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+      this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramView.getContext());
+      a(this.jdField_a_of_type_Agra);
+      return;
+      a(paramView);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131371921));
     }
-    return -1;
   }
   
-  public static String b(List<TroopClipPic> paramList, TroopInfo paramTroopInfo)
+  public void a(AIOShortVideoData paramAIOShortVideoData, boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str = aglg.a;
-    if (paramTroopInfo == null) {}
+    if ((this.jdField_a_of_type_Agra != null) && (paramAIOShortVideoData.jdField_f_of_type_Long != this.jdField_a_of_type_Agra.jdField_a_of_type_Long)) {
+      QLog.d("carverW VideoPlayController", 2, "onGetUrl data.id = " + paramAIOShortVideoData.jdField_f_of_type_Long + " mInfo,id=" + this.jdField_a_of_type_Agra.jdField_a_of_type_Long);
+    }
+    while (this.jdField_a_of_type_Agqu == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "onGetUrl data=" + paramAIOShortVideoData.jdField_f_of_type_Long + " isNeedShowCenterBtn=" + paramBoolean2 + " isStart=" + paramBoolean1);
+    }
+    agra localagra = new agra();
+    localagra.jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
+    localagra.jdField_b_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
+    this.jdField_a_of_type_Agqu.a(localagra, paramBoolean1);
+    if (paramBoolean2)
+    {
+      b(0);
+      return;
+    }
+    b(8);
+  }
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Agme.c();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Agra != null) {
+      this.jdField_a_of_type_Agra.d = true;
+    }
+    b(8);
+    a(8, "");
+  }
+  
+  public abstract void b(int paramInt);
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      g();
+    }
+    return this.jdField_a_of_type_Agra.jdField_a_of_type_Boolean;
+  }
+  
+  public long c()
+  {
+    return this.jdField_a_of_type_Agme.a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Agme.a(paramInt);
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      return this.jdField_a_of_type_Agme.b();
+    }
+    return false;
+  }
+  
+  public long d()
+  {
+    return this.jdField_a_of_type_Agme.d();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt)
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      this.jdField_a_of_type_Agme.b(paramInt);
+    }
+  }
+  
+  public boolean d()
+  {
+    return (this.jdField_a_of_type_Agme != null) && (this.jdField_a_of_type_Agme.a());
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Agra == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemClick  onItemClick mCurInfo is null");
+      }
+    }
     do
     {
-      return str;
-      paramList.addAll(paramTroopInfo.mTroopPicList);
-    } while (!com.tencent.TMG.utils.QLog.isColorLevel());
-    com.tencent.TMG.utils.QLog.i("TroopPhotoController", 0, String.format("getAllPicFromDb infs=%s", new Object[] { Arrays.toString(paramList.toArray()) }));
-    return str;
+      return;
+      this.c = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("carverW VideoPlayController", 2, "onItemClick curState=" + this.jdField_a_of_type_Int + " no = " + this.jdField_a_of_type_Agra.hashCode() + " id=" + this.jdField_a_of_type_Agra.jdField_a_of_type_Long);
+      }
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("carverW VideoPlayController", 2, "onItemClick  isComplete=" + this.d);
+        }
+        if (this.d)
+        {
+          if (!this.jdField_a_of_type_Agra.jdField_b_of_type_Boolean) {
+            g();
+          }
+          this.d = false;
+        }
+        a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        m();
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        h();
+        this.jdField_a_of_type_Int = 4;
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 4);
+    m();
   }
   
-  public static void b(Activity paramActivity, int paramInt)
+  public void g()
   {
-    Intent localIntent = new Intent();
-    Point localPoint = a(paramActivity, paramInt);
-    localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    localIntent.putExtra("Business_Origin", paramInt);
-    localIntent.putExtra("BUSINESS_ORIGIN_NEW", paramInt);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
-    localIntent.putExtra("PhotoConst.TARGET_SAMPLE_SIZE", 1024);
-    localIntent.putExtra("PhotoConst.IS_WITH_PENDANT", false);
-    localIntent.putExtra("PhotoConst.ORIGIN_WITH_CLIPINFO", a(paramInt));
-    PhotoUtils.a(localIntent, paramActivity, paramActivity.getClass().getName(), localPoint.x, localPoint.y, 640, 640, a());
-  }
-  
-  public static final int c(int paramInt)
-  {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Agme != null) && (this.jdField_a_of_type_Agra != null))
     {
-    default: 
-      return 0;
+      if (this.jdField_a_of_type_Agra.jdField_a_of_type_Boolean) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Agra.jdField_a_of_type_JavaLangString != null) {
+        this.jdField_a_of_type_Agme.a(this.jdField_a_of_type_Agra.jdField_a_of_type_JavaLangString, 0L);
+      }
     }
-    return 1;
+    return;
+    label50:
+    String str1;
+    if (this.jdField_a_of_type_Agra.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)
+    {
+      str1 = "0";
+      if (this.jdField_a_of_type_Agra.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
+        break label124;
+      }
+    }
+    label124:
+    for (String str2 = "";; str2 = this.jdField_a_of_type_Agra.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)
+    {
+      this.jdField_a_of_type_Agme.a(this.jdField_a_of_type_Agra.a(), str1, this.jdField_a_of_type_Agra.jdField_a_of_type_ArrayOfJavaLangString, 0L, str2, this.jdField_a_of_type_AndroidAppActivity);
+      return;
+      str1 = String.valueOf(this.jdField_a_of_type_Agra.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
+      break;
+    }
   }
   
-  public static final int d(int paramInt)
+  public void h()
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return 102;
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = Pasue ");
     }
-    return 103;
+    this.jdField_a_of_type_Int = 4;
+    p();
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, " play = onPause ");
+    }
+    p();
+  }
+  
+  public void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = onResume mVideoState=" + this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int == 1))
+    {
+      a(true);
+      if (this.jdField_a_of_type_AndroidAppActivity != null) {
+        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.3(this));
+      }
+    }
+  }
+  
+  public void k()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("carverW VideoPlayController", 2, "  play = onDestory ");
+    }
+    this.jdField_a_of_type_Agra = null;
+    if (this.jdField_a_of_type_Agme != null)
+    {
+      this.jdField_a_of_type_Agme.f();
+      this.jdField_a_of_type_Agme.a();
+      this.jdField_a_of_type_Agme = null;
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_Agqt.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Agqt = null;
+  }
+  
+  public void l() {}
+  
+  protected void m()
+  {
+    if ((bfnz.b()) && (!this.jdField_a_of_type_Agra.e) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      Activity localActivity1 = this.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity2 = this.jdField_a_of_type_AndroidAppActivity;
+      ((AudioManager)localActivity1.getSystemService("audio")).requestAudioFocus(null, 3, 2);
+    }
+    this.jdField_a_of_type_Agme.c();
+    if (this.jdField_a_of_type_AndroidAppActivity != null) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new VideoPlayController.4(this));
+    }
+    this.jdField_a_of_type_Agqt.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+  }
+  
+  public void n()
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      this.jdField_a_of_type_Agme.d();
+    }
+  }
+  
+  public void o()
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      this.jdField_a_of_type_Agme.e();
+    }
   }
 }
 

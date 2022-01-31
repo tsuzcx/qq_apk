@@ -1,69 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-public class aspu
-  extends ampb<aspt>
+final class aspu
+  implements asqb
 {
-  public int a()
-  {
-    return 478;
-  }
+  aspu(Context paramContext) {}
   
-  @NonNull
-  public aspt a(int paramInt)
+  public void a(Intent paramIntent)
   {
-    return new aspt();
-  }
-  
-  @Nullable
-  public aspt a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfampi[0].a);
-      }
-      return aspt.a(paramArrayOfampi[0].a);
+    if ((this.a instanceof ChatActivity)) {
+      ((ChatActivity)this.a).a(paramIntent);
     }
-    return new aspt();
-  }
-  
-  public Class<aspt> a()
-  {
-    return aspt.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
-    }
-  }
-  
-  public void a(aspt paramaspt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramaspt);
-    }
-    ((aspv)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramaspt);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

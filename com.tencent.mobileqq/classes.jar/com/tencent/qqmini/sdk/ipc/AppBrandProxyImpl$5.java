@@ -7,14 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import beou;
-import besl;
+import bepl;
+import betc;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public class AppBrandProxyImpl$5
   extends ResultReceiver
 {
-  public AppBrandProxyImpl$5(beou parambeou, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
+  public AppBrandProxyImpl$5(bepl parambepl, Handler paramHandler, ResultReceiver paramResultReceiver, Activity paramActivity)
   {
     super(paramHandler);
   }
@@ -43,7 +43,7 @@ public class AppBrandProxyImpl$5
       }
       catch (Throwable paramBundle)
       {
-        besl.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
+        betc.d("minisdk-start_AppBrandProxy", "startMiniApp startActivity exception!", paramBundle);
       }
     }
   }

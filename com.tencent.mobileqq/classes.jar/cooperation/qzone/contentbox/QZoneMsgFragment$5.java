@@ -1,7 +1,7 @@
 package cooperation.qzone.contentbox;
 
 import android.os.Handler;
-import bhcq;
+import bhdh;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class QZoneMsgFragment$5
   implements Runnable
 {
-  QZoneMsgFragment$5(QZoneMsgFragment paramQZoneMsgFragment, bhcq parambhcq) {}
+  QZoneMsgFragment$5(QZoneMsgFragment paramQZoneMsgFragment, bhdh parambhdh) {}
   
   public void run()
   {

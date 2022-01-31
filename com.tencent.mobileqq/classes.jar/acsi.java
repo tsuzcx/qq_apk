@@ -1,110 +1,27 @@
-import Wallet.AcsMsg;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 public class acsi
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+  extends akjy
 {
-  private ArrayList<acsx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public acsi(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  private acsi(ReminderListFragment paramReminderListFragment) {}
-  
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return;
+    this.a.e();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
     }
-    int j = 0;
-    acsx localacsx;
-    int i;
-    if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (paramInt != 2)
     {
-      localacsx = (acsx)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (paramString.equals(localacsx.jdField_a_of_type_WalletAcsMsg.msg_id))
-      {
-        i = j;
-        if (!bbjw.a(localacsx.jdField_a_of_type_JavaLangString))
-        {
-          i = j;
-          if (j + 1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            if ((localacsx.jdField_a_of_type_Int != 1) || (((acsx)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_Int != 1)) {
-              break label206;
-            }
-            ((acsx)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_JavaLangString = ajyc.a(2131713385);
-            i = j;
-          }
-        }
-      }
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
     }
-    for (;;)
-    {
-      j = i;
-      if (i == this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        j = i - 1;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(j);
-      notifyItemRemoved(j);
-      notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilArrayList.size());
-      if (getItemCount() == 0) {
-        ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
-      }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramString);
-      return;
-      label206:
-      i = j;
-      if (localacsx.jdField_a_of_type_Int == 0)
-      {
-        i = j;
-        if (((acsx)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_Int == 0)
-        {
-          ((acsx)this.jdField_a_of_type_JavaUtilArrayList.get(j + 1)).jdField_a_of_type_JavaLangString = ajyc.a(2131713374);
-          i = j;
-          continue;
-          j += 1;
-          break;
-          i = 0;
-        }
-      }
-    }
-  }
-  
-  public void a(ArrayList<acsx> paramArrayList, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof acsk))
-    {
-      paramViewHolder = (acsk)paramViewHolder;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-        paramViewHolder.a((acsx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-      }
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560602, null, false);
-    return new acsk(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramViewGroup);
   }
 }
 

@@ -1,63 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgRsp;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDownloadRspItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class bicn
-  implements bidp<WeiyunPB.DiskFileBatchDownloadMsgRsp>
+  extends bice
 {
-  bicn(bicm parambicm, bidr parambidr, biej parambiej, DownloadType paramDownloadType) {}
+  private WeakReference<bici> a;
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
+  bicn(bici parambici)
   {
-    this.jdField_a_of_type_Biej.a(this.jdField_a_of_type_Bidr, false, paramInt, paramString);
+    this.a = new WeakReference(parambici);
   }
   
-  public void a(WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
+  public void a(String paramString, Bundle paramBundle)
   {
-    Object localObject;
-    if ((paramDiskFileBatchDownloadMsgRsp != null) && (paramDiskFileBatchDownloadMsgRsp.file_list != null))
+    bici localbici = (bici)this.a.get();
+    if (localbici == null) {
+      bdot.b("WadlProxyServiceManager", "##@transferAsync, manager gc: " + paramString);
+    }
+    do
     {
-      localObject = paramDiskFileBatchDownloadMsgRsp.file_list.get().iterator();
       do
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
+        return;
+        if (QLog.isColorLevel()) {
+          bdot.b("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
         }
-        paramDiskFileBatchDownloadMsgRsp = (WeiyunPB.DiskFileDownloadRspItem)((Iterator)localObject).next();
-      } while ((paramDiskFileBatchDownloadMsgRsp == null) || (!TextUtils.equals(paramDiskFileBatchDownloadMsgRsp.file_id.get(), this.jdField_a_of_type_Bidr.jdField_a_of_type_JavaLangString)));
-    }
-    for (;;)
-    {
-      if (paramDiskFileBatchDownloadMsgRsp == null)
+        paramBundle.setClassLoader(getClass().getClassLoader());
+      } while (paramString == null);
+      if (paramString.equals("WADL.REVERSE_HEART_CMD"))
       {
-        this.jdField_a_of_type_Biej.a(this.jdField_a_of_type_Bidr, false, 1828004, ajyc.a(2131715071));
+        paramString = bici.a(localbici).obtainMessage();
+        paramString.what = 4;
+        paramString.setData(paramBundle);
+        bici.a(localbici).sendMessage(paramString);
         return;
       }
-      localObject = paramDiskFileBatchDownloadMsgRsp.cookie_name.get();
-      String str = paramDiskFileBatchDownloadMsgRsp.cookie_value.get();
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str))) {}
-      for (localObject = "";; localObject = (String)localObject + '=' + str)
+      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
       {
-        this.jdField_a_of_type_Bidr.a(paramDiskFileBatchDownloadMsgRsp.server_name.get(), paramDiskFileBatchDownloadMsgRsp.server_port.get(), (String)localObject, paramDiskFileBatchDownloadMsgRsp.download_url.get(), paramDiskFileBatchDownloadMsgRsp.video_url.get(), "0");
-        if (this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadType == DownloadType.FILE_ORDINARY) {
-          this.jdField_a_of_type_Bidr.jdField_a_of_type_Bidt.c = bidu.a(this.jdField_a_of_type_Bidr.jdField_a_of_type_Bidt.c);
-        }
-        this.jdField_a_of_type_Biej.a(this.jdField_a_of_type_Bidr, true, 0, null);
+        paramString = bici.a(localbici).obtainMessage();
+        paramString.what = 3;
+        paramString.setData(paramBundle);
+        bici.a(localbici).sendMessage(paramString);
         return;
       }
-      paramDiskFileBatchDownloadMsgRsp = null;
-    }
+      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
+      {
+        paramString = bici.a(localbici).obtainMessage();
+        paramString.what = 5;
+        paramString.setData(paramBundle);
+        bici.a(localbici).sendMessage(paramString);
+        return;
+      }
+    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
+    paramString = bici.a(localbici).obtainMessage();
+    paramString.what = 6;
+    paramString.setData(paramBundle);
+    bici.a(localbici).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicn
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import java.util.Comparator;
 class ajmz
   implements Comparator<ApolloActionData>
 {
-  ajmz(ajmw paramajmw) {}
+  ajmz(ajmu paramajmu) {}
   
   public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {

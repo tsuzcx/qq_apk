@@ -1,65 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class baeu
-  extends ampb<baev>
+final class baeu
+  implements Comparator
 {
-  public static baev a()
+  baeu(Editable paramEditable) {}
+  
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    baev localbaev = (baev)ampm.a().a(547);
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localbaev);
-    }
-    return localbaev;
-  }
-  
-  public int a()
-  {
-    return 547;
-  }
-  
-  @NonNull
-  public baev a(int paramInt)
-  {
-    return new baev();
-  }
-  
-  @Nullable
-  public baev a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
-      return null;
-    }
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfampi);
-    }
-    return baev.a(paramArrayOfampi);
-  }
-  
-  public Class<baev> a()
-  {
-    return baev.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(baev parambaev) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

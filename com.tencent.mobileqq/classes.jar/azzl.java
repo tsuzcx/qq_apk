@@ -1,18 +1,20 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class azzl
-  implements azzq
+  implements bckm
 {
-  public azzl(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public azzl(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    paramView = this.a.jdField_a_of_type_Azzp.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-    bbbb.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

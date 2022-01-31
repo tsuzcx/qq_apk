@@ -1,22 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class nvc
-  implements TextWatcher
+  implements bfpj
 {
   public nvc(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onDismiss()
   {
-    this.a.a(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
+    }
+    this.a.a = false;
   }
 }
 

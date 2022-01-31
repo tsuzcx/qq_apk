@@ -1,32 +1,16 @@
-import android.view.View;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
 
 class afps
-  implements bfoq
+  extends akil
 {
-  afps(afpo paramafpo, boolean paramBoolean, TroopInfo paramTroopInfo, bfol parambfol) {}
+  afps(afpm paramafpm) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (!bbev.g(this.jdField_a_of_type_Afpo.jdField_a_of_type_AndroidContentContext)) {
-      bcpw.a(this.jdField_a_of_type_Afpo.jdField_a_of_type_AndroidContentContext, 1, 2131692321, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      paramView = (ajsz)this.jdField_a_of_type_Afpo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
-        axqw.b(this.jdField_a_of_type_Afpo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
-      }
-      else
-      {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
-        axqw.b(this.jdField_a_of_type_Afpo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
-      }
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      afpm.a(this.a, paramString, localBitmap);
     }
   }
 }

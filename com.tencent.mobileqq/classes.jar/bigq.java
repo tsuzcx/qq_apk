@@ -1,15 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import dov.com.qq.im.QIMCameraCaptureUnit.10;
+import mqq.app.AppRuntime;
 
 public class bigq
-  implements View.OnClickListener
+  implements agmh
 {
-  public bigq(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public bigq(QIMCameraCaptureUnit.10 param10) {}
   
-  public void onClick(View paramView)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a.g();
+    if (!paramBoolean)
+    {
+      this.a.this$0.a(101);
+      return;
+    }
+    bigp.a(this.a.this$0, false);
+    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
+    {
+      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
+      return;
+    }
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    this.a.this$0.e = true;
   }
 }
 

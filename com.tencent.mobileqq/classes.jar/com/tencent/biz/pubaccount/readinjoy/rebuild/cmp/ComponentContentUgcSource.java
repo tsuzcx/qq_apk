@@ -18,22 +18,22 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import noo;
-import onk;
-import pax;
-import pqr;
-import prb;
-import pvb;
-import rap;
+import nol;
+import onh;
+import pau;
+import pqo;
+import pqy;
+import puy;
+import ram;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, pqr
+  implements View.OnClickListener, pqo
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  pvb jdField_a_of_type_Pvb;
+  puy jdField_a_of_type_Puy;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -60,15 +60,15 @@ public class ComponentContentUgcSource
       localObject = new Intent(getContext(), PublicAccountBrowser.class);
       ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       getContext().startActivity((Intent)localObject);
-      localObject = this.jdField_a_of_type_Pvb.a.a();
+      localObject = this.jdField_a_of_type_Puy.a.a();
     } while (localObject == null);
-    noo.a((ArticleInfo)localObject);
-    rap.a((ArticleInfo)localObject, this.jdField_a_of_type_Pvb.a.e());
+    nol.a((ArticleInfo)localObject);
+    ram.a((ArticleInfo)localObject, this.jdField_a_of_type_Puy.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Pvb = new pvb();
+    this.jdField_a_of_type_Puy = new puy();
     a(paramContext);
     a();
   }
@@ -90,17 +90,17 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378562));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378567));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378563));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378568));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      paramObject = (pax)paramObject;
-      this.jdField_a_of_type_Pvb.a(paramObject);
+      paramObject = (pau)paramObject;
+      this.jdField_a_of_type_Puy.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
         break label46;
@@ -111,7 +111,7 @@ public class ComponentContentUgcSource
     }
     return;
     label46:
-    if ((rap.a(paramObject)) || ((rap.i(paramObject)) && (!rap.m(paramObject))) || (onk.g(paramObject)) || ((onk.h(paramObject)) && (!rap.l(paramObject))) || (rap.d(paramObject)))
+    if ((ram.a(paramObject)) || ((ram.i(paramObject)) && (!ram.m(paramObject))) || (onh.g(paramObject)) || ((onh.h(paramObject)) && (!ram.l(paramObject))) || (ram.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -139,9 +139,9 @@ public class ComponentContentUgcSource
     }
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.jdField_a_of_type_Pvb.a(paramprb);
+    this.jdField_a_of_type_Puy.a(parampqy);
   }
   
   public void onClick(View paramView)

@@ -1,23 +1,27 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahvo
-  implements axhw
+  implements Animation.AnimationListener
 {
   public ahvo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(Exception paramException)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
+    NewFlowCameraActivity.a(this.a).setVisibility(4);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    this.a.e.setVisibility(4);
+    ahtz.a("", "0X8007C05", this.a.c + "", "", "", "");
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
   }
 }
 

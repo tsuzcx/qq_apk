@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import akwr;
-import amtc;
+import akwq;
+import amtb;
 import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
 class DesktopDataManager$27
-  extends akwr
+  extends akwq
 {
   DesktopDataManager$27(DesktopDataManager paramDesktopDataManager) {}
   
   public void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    if ((amtc.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    if ((amtb.h()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
       paramObject = (MiniAppRedDotEntity)paramObject;
       this.this$0.setMiniAppPushRedDotData(paramObject);

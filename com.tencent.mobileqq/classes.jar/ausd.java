@@ -1,58 +1,105 @@
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import eipc.EIPCResult;
 
 public class ausd
+  implements auru
 {
-  private static HashMap<Long, ause> a = new HashMap();
+  private static ausd jdField_a_of_type_Ausd;
+  private aurv jdField_a_of_type_Aurv;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new ause(this, "PrecoverIPCServer_MODEL");
   
-  public static void a(int paramInt1, int paramInt2)
+  private ausd()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("business_type", String.valueOf(paramInt1));
-    localHashMap.put("prediction_step", String.valueOf(paramInt2));
-    axrl.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      this.jdField_a_of_type_Aurv = ((aurv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(179));
+      this.jdField_a_of_type_Aurv.a().a(this);
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  public static ausd a()
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    if (jdField_a_of_type_Ausd == null) {}
+    try
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
+      if (jdField_a_of_type_Ausd == null) {
+        jdField_a_of_type_Ausd = new ausd();
       }
-      l = System.currentTimeMillis();
-    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
-    paramQQAppInterface = new ause(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
-    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
+      return jdField_a_of_type_Ausd;
+    }
+    finally {}
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  private EIPCResult a(Bundle paramBundle, int paramInt)
   {
-    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
-    long l;
-    do
+    Object localObject1 = null;
+    Object localObject2 = paramBundle.getString("businessId");
+    String str = paramBundle.getString("md5");
+    if (TextUtils.isEmpty(str))
     {
-      do
+      localObject1 = EIPCResult.createResult(10, paramBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "getResource, md5 emtpy");
+      }
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
+    }
+    if (this.jdField_a_of_type_Aurv != null)
+    {
+      localObject1 = this.jdField_a_of_type_Aurv.a((String)localObject2, str);
+      if (localObject1 == null) {
+        break label100;
+      }
+      paramBundle.putParcelable("resource", (Parcelable)localObject1);
+      localObject1 = EIPCResult.createSuccessResult(paramBundle);
+    }
+    for (;;)
+    {
+      paramBundle.putInt("callbackId", paramInt);
+      return localObject1;
+      label100:
+      localObject2 = EIPCResult.createResult(12, paramBundle);
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
-        }
-        l = System.currentTimeMillis();
-      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
-      paramQQAppInterface = (ause)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(l);
-    paramQQAppInterface.a();
+        QLog.d("PrecoverIPCServer", 2, "getResource, RESULT_RESOURCE_NOT_FOUND");
+        localObject1 = localObject2;
+      }
+    }
   }
+  
+  public QIPCModule a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+  }
+  
+  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Object[])) && ("PrecoverIPCServer_MODEL".equals(((Object[])(Object[])paramObject)[0])))
+    {
+      int i = ((Integer)((Object[])(Object[])paramObject)[1]).intValue();
+      paramObject = new Bundle();
+      paramObject.putString("key_action", ausc.b);
+      paramObject.putParcelable("resource", paramPrecoverResource);
+      paramObject.putInt("errCode", paramInt);
+      paramObject.putString("errDesc", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverIPCServer", 2, "onDownloadFinish, errCode=" + paramInt + ", errDesc=" + paramString + ", resource" + paramPrecoverResource);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule.callbackResult(i, EIPCResult.createSuccessResult(paramObject));
+    }
+  }
+  
+  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 

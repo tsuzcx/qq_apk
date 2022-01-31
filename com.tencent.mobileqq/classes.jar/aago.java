@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class aago
-  implements affn
+  implements DialogInterface.OnDismissListener
 {
-  public aago(AddFriendActivity paramAddFriendActivity) {}
+  public aago(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (AddFriendActivity.a(this.a))
-    {
-      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-      return;
-    }
-    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+    this.a.finish();
   }
 }
 

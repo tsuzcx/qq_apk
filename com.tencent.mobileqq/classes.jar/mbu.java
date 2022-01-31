@@ -1,6 +1,12 @@
-public abstract interface mbu
+public class mbu
 {
-  public abstract void a();
+  public int a = 2131165906;
+  public String a;
+  public int b = 2131165869;
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 

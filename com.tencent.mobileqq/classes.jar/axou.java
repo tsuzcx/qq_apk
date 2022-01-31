@@ -1,23 +1,22 @@
 import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import java.io.File;
+import java.util.Comparator;
 
 public class axou
+  implements Comparator<File>
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public axou(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  private axou(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
+  public int a(File paramFile1, File paramFile2)
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    long l = paramFile2.lastModified() - paramFile1.lastModified();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

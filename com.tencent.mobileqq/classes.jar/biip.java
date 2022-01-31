@@ -1,15 +1,4 @@
-import android.support.annotation.Nullable;
-
-class biip
-  implements bjob<bivx>
-{
-  biip(biim parambiim) {}
-  
-  public void a(@Nullable bivx parambivx)
-  {
-    biim.a(this.a, parambivx);
-  }
-}
+public class biip {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

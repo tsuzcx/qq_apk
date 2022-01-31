@@ -1,13 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
 public class aohi
-  extends RecyclerView.ViewHolder
+  implements View.OnTouchListener
 {
-  public aohi(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  public aohi(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

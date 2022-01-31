@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 
 public class ApolloActionPackageData
-  extends aukm
+  extends auko
 {
   public int acitonId;
   public int packageId;

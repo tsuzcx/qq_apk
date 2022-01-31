@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acol
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public acol(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.finish();
   }

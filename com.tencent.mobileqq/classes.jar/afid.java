@@ -1,13 +1,31 @@
-class afid
-  extends ajxl
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+public class afid
 {
-  afid(afhz paramafhz) {}
+  public int a;
+  public String a;
+  public String b;
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public boolean a()
   {
-    if ((paramBoolean) && (afhz.a(this.a) != null)) {
-      afhz.a(this.a).a(String.valueOf(paramObject));
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof afid))
+    {
+      paramObject = (afid)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
     }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 

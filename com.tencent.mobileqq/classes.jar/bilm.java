@@ -1,23 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class bilm
-  implements Animation.AnimationListener
+  implements bilu
 {
-  bilm(bilj parambilj) {}
+  bilm(bill parambill) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(int paramInt, AEFilterManager paramAEFilterManager)
   {
-    if ((bilj.a(this.a) != null) && (!bilj.a(this.a)))
-    {
-      bilj.a(this.a).setAlpha(1.0F);
-      bilj.a(this.a).setVisibility(0);
-    }
+    this.a.a(paramInt, paramAEFilterManager);
   }
 }
 

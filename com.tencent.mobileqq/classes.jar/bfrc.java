@@ -1,9 +1,22 @@
-import android.view.View;
-import com.tencent.widget.ExpandableListView;
+import android.view.ViewTreeObserver;
+import com.tencent.widget.DynamicGridView;
 
-public abstract interface bfrc
+public class bfrc
+  implements bfrl
 {
-  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public bfrc(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bfrd(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+  }
 }
 
 

@@ -1,14 +1,6 @@
-import com.tencent.common.app.AppInterface;
-
-class arhj
-  implements arhp
+public class arhj
 {
-  arhj(arhi paramarhi, AppInterface paramAppInterface) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Arhi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-  }
+  public static arhk a = new arhk();
 }
 
 

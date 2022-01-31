@@ -1,24 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import java.util.List;
 
 class nup
-  implements ViewFactory.FoundClickableViewListener
+  extends osm
 {
-  nup(nuo paramnuo, TemplateBean paramTemplateBean) {}
+  nup(nuo paramnuo) {}
   
-  public void onFound(ViewBase paramViewBase)
-  {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramViewBase instanceof pnr));
-    ((pnr)paramViewBase).a(new nuq(this, paramViewBase));
-  }
+  public void a_(List<sda> paramList) {}
 }
 
 

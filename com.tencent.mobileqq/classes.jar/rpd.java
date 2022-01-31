@@ -1,68 +1,114 @@
 import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.List;
 
-class rpd
-  implements rpo<Bitmap>
+public class rpd
 {
-  rpd(rpc paramrpc) {}
+  rpk<Bitmap> a;
   
-  public void a(Bitmap paramBitmap)
+  public rpd(Bitmap paramBitmap, rpl<Bitmap> paramrpl)
   {
-    if (paramBitmap == null) {
-      return;
+    this.a = new rpk(paramBitmap, paramrpl);
+    if (QLog.isColorLevel()) {
+      rpn.a(toString(), "onCreate", true);
     }
-    rpq.a(rpc.a, "recycle:" + paramBitmap);
-    if (!rpq.a())
-    {
-      paramBitmap.recycle();
-      return;
+  }
+  
+  public rpd(rpk<Bitmap> paramrpk)
+  {
+    paramrpk.a();
+    this.a = paramrpk;
+    if (QLog.isColorLevel()) {
+      rpn.a(toString(), "createFromClone", true);
     }
-    for (;;)
+  }
+  
+  public Bitmap a()
+  {
+    if (this.a != null) {
+      return (Bitmap)this.a.a();
+    }
+    axqy.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
+    return null;
+  }
+  
+  public rpd a()
+  {
+    try
     {
-      synchronized (this.a.b)
-      {
-        ArrayList localArrayList = new ArrayList();
-        i = 0;
-        if (i >= this.a.b.size()) {
-          break label226;
-        }
-        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
-        if (localBitmap != null)
-        {
-          if (localBitmap != paramBitmap) {
-            break label231;
-          }
-          i = 1;
-          if (!localArrayList.isEmpty()) {
-            this.a.b.removeAll(localArrayList);
-          }
-          if (i == 0)
-          {
-            paramBitmap = new SoftReference(paramBitmap);
-            this.a.b.add(paramBitmap);
-          }
-        }
-        else
-        {
-          localArrayList.add(this.a.b.get(i));
-        }
+      if (QLog.isColorLevel()) {
+        rpn.a(toString(), "clone", true);
       }
-      QLog.e(rpc.a, 1, "reuse same bitmap " + paramBitmap);
-      return;
-      label226:
-      int i = 0;
-      continue;
-      label231:
-      i += 1;
+      rpd localrpd = new rpd(this.a);
+      return localrpd;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	rpd:a	Lrpk;
+    //   6: ifnull +34 -> 40
+    //   9: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +13 -> 25
+    //   15: aload_0
+    //   16: invokevirtual 29	rpd:toString	()Ljava/lang/String;
+    //   19: ldc 70
+    //   21: iconst_1
+    //   22: invokestatic 36	rpn:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   25: aload_0
+    //   26: getfield 19	rpd:a	Lrpk;
+    //   29: invokevirtual 72	rpk:b	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: putfield 19	rpd:a	Lrpk;
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: aload_0
+    //   41: invokevirtual 29	rpd:toString	()Ljava/lang/String;
+    //   44: ldc 74
+    //   46: invokestatic 77	rpn:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: goto -12 -> 37
+    //   52: astore_1
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: aload_1
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	rpd
+    //   52	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	25	52	finally
+    //   25	37	52	finally
+    //   37	39	52	finally
+    //   40	49	52	finally
+    //   53	55	52	finally
+  }
+  
+  public boolean a()
+  {
+    return this.a != null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("zimage.closeable@").append(hashCode()).append("_bitmap@");
+    if ((this.a != null) && (this.a.a() != null)) {}
+    for (Integer localInteger = Integer.valueOf(((Bitmap)this.a.a()).hashCode());; localInteger = null) {
+      return localInteger;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rpd
  * JD-Core Version:    0.7.0.1
  */

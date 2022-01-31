@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,9 +10,9 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bbwc;
-import bbxj;
-import besi;
+import bbwq;
+import bbxx;
+import besz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
@@ -32,7 +32,7 @@ public class KingCardProxyImpl
 {
   private String KINGCARD_GUIDE_KEY_PREFFIX = "mini_app_kingcard_guide_";
   private final String TAG = "KingCardProxyImpl";
-  private bbxj lottieLoader;
+  private bbxx lottieLoader;
   private String mKingCardText;
   
   private boolean hasKingCardGuideShowed()
@@ -61,7 +61,7 @@ public class KingCardProxyImpl
       QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bbwc.a();
+    i = bbwq.a();
     QLog.i("KingCardProxyImpl", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -74,15 +74,15 @@ public class KingCardProxyImpl
   public ImageView getCapsuleButtonMoreView(Context paramContext)
   {
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694273))
+    for (Object localObject = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; localObject = paramContext.getResources().getString(2131694274))
     {
       this.mKingCardText = ((String)localObject);
-      this.lottieLoader = new bbxj(null, paramContext);
+      this.lottieLoader = new bbxx(null, paramContext);
       int i = (int)(MemoryManager.a() / 2L);
       this.lottieLoader.a(i);
       localObject = new DiniFlyAnimationView(paramContext);
       ((DiniFlyAnimationView)localObject).setVisibility(0);
-      ((DiniFlyAnimationView)localObject).setContentDescription(ajyc.a(2131701342));
+      ((DiniFlyAnimationView)localObject).setContentDescription(ajya.a(2131701353));
       paramContext = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramContext, 40.0F), -1);
       paramContext.addRule(9, -1);
       ((DiniFlyAnimationView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -91,18 +91,18 @@ public class KingCardProxyImpl
     }
   }
   
-  public boolean showKingCardTips(besi parambesi, ImageView paramImageView)
+  public boolean showKingCardTips(besz parambesz, ImageView paramImageView)
   {
     QLog.i("KingCardProxyImpl", 1, "showKingCardTips trigger");
-    Activity localActivity = parambesi.a();
+    Activity localActivity = parambesz.a();
     if ((localActivity == null) || (localActivity.isFinishing())) {
       return false;
     }
     if (!(paramImageView instanceof DiniFlyAnimationView)) {
       return false;
     }
-    parambesi = parambesi.a();
-    if (parambesi == null) {
+    parambesz = parambesz.a();
+    if (parambesz == null) {
       return false;
     }
     DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)paramImageView;
@@ -111,7 +111,7 @@ public class KingCardProxyImpl
       QLog.i("KingCardProxyImpl", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
       return false;
     }
-    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (shouldShowKingCardTip(parambesi))) {
+    if ((paramImageView != null) && (localActivity != null) && (!localActivity.isFinishing()) && (shouldShowKingCardTip(parambesz))) {
       AppBrandTask.runTaskOnUiThreadIfNot(new KingCardProxyImpl.1(this, localActivity, localDiniFlyAnimationView));
     }
     return true;

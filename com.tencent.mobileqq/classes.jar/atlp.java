@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-
-public abstract interface atlp
+class atlp
+  implements ufl
 {
-  public abstract int a();
+  atlp(atlm paramatlm, atld paramatld) {}
   
-  public abstract void a();
-  
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void b();
-  
-  public abstract void b(Comments.Comment paramComment);
-  
-  public abstract void c();
+  public boolean a_(ufh paramufh, int paramInt1, int paramInt2)
+  {
+    int i;
+    if (paramInt1 == 3) {
+      i = 1;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Atld.a(this.jdField_a_of_type_Atlm, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
+      {
+        i = 2;
+      }
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
+    }
+  }
 }
 
 

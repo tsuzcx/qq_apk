@@ -1,19 +1,11 @@
-import com.tencent.widget.RangeButtonView;
+import android.view.View;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public class bfuo
+public abstract interface bfuo
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  public float f;
+  public abstract void a();
   
-  public bfuo(RangeButtonView paramRangeButtonView) {}
+  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
 }
 
 

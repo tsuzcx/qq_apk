@@ -1,36 +1,90 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0xe0a.cmd0xe0a.App;
 
 public class bafo
-  implements bfoq
 {
-  public bafo(VisitorTroopCardFragment paramVisitorTroopCardFragment, bfol parambfol) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 0;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString;
   
-  public void OnClick(View paramView, int paramInt)
+  public static bafo a(String paramString1, String paramString2)
   {
-    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new bcpt(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
-    }
-    paramView = (akhq)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((bbev.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramView != null))
+    bafo localbafo = new bafo();
+    localbafo.jdField_a_of_type_Long = 999L;
+    localbafo.jdField_a_of_type_JavaLangString = paramString1;
+    localbafo.jdField_b_of_type_JavaLangString = paramString2;
+    localbafo.jdField_c_of_type_JavaLangString = "local";
+    localbafo.jdField_a_of_type_Int = 0;
+    return localbafo;
+  }
+  
+  public static bafo a(cmd0xe0a.App paramApp)
+  {
+    if (paramApp != null)
     {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131692213, 0);
-      paramView.k(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    }
-    for (;;)
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bfol.cancel();
-      return;
-      if (paramView != null) {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694672, 1500);
-      } else {
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131692212, 1500);
+      bafo localbafo = new bafo();
+      localbafo.jdField_a_of_type_Long = paramApp.appid.get();
+      localbafo.jdField_a_of_type_JavaLangString = paramApp.name.get();
+      localbafo.jdField_b_of_type_JavaLangString = paramApp.icon.get();
+      localbafo.jdField_c_of_type_JavaLangString = paramApp.url.get();
+      localbafo.jdField_a_of_type_Int = paramApp.disabled.get();
+      if (paramApp.default_disabled.has()) {
+        localbafo.jdField_c_of_type_Int = paramApp.default_disabled.get();
       }
+      return localbafo;
     }
+    return null;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
   }
 }
 

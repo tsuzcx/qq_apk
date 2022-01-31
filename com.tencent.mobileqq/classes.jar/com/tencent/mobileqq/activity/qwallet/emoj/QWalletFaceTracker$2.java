@@ -2,9 +2,9 @@ package com.tencent.mobileqq.activity.qwallet.emoj;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ltu;
-import ltv;
-import ltw;
+import ltp;
+import ltq;
+import ltr;
 
 class QWalletFaceTracker$2
   implements Runnable
@@ -29,9 +29,9 @@ class QWalletFaceTracker$2
             QWalletFaceTracker.ExpressionInfo localExpressionInfo = (QWalletFaceTracker.ExpressionInfo)this.this$0.expressionItemList.get(this.val$index);
             if (localExpressionInfo != null)
             {
-              ltv localltv = localExpressionInfo.expressionItem;
-              ltw localltw = ltu.a(localltv, (List)localObject, ltu.b(arrayOfFloat));
-              f2 = localltw.a;
+              ltq localltq = localExpressionInfo.expressionItem;
+              ltr localltr = ltp.a(localltq, (List)localObject, ltp.b(arrayOfFloat));
+              f2 = localltr.a;
               if (QLog.isColorLevel()) {
                 QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression score: " + f2 + " threshold: " + this.val$threshold);
               }
@@ -41,7 +41,7 @@ class QWalletFaceTracker$2
                 f1 = f2;
                 if (this.this$0.normalFaceExpression != null)
                 {
-                  if ((localltv.expressionWeight[0] <= 0.0D) || (localltv.expressionWeight[1] <= 0.0D) || (ltu.a(localltw))) {
+                  if ((localltq.expressionWeight[0] <= 0.0D) || (localltq.expressionWeight[1] <= 0.0D) || (ltp.a(localltr))) {
                     break label453;
                   }
                   if (!QLog.isColorLevel()) {
@@ -49,7 +49,7 @@ class QWalletFaceTracker$2
                   }
                   QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression, invalid EyeOpenClose,reset score");
                   break label458;
-                  boolean bool = QWalletFaceTracker.access$000(this.this$0, localltw.a, localExpressionInfo.coolValue, localltv.expressionWeight, localltv.a, this.this$0.normalFaceExpression, (List)localObject, ltu.b(arrayOfFloat));
+                  boolean bool = QWalletFaceTracker.access$000(this.this$0, localltr.a, localExpressionInfo.coolValue, localltq.expressionWeight, localltq.a, this.this$0.normalFaceExpression, (List)localObject, ltp.b(arrayOfFloat));
                   if (QLog.isColorLevel()) {
                     QLog.d(QWalletFaceTracker.TAG, 2, "isNormalExpression: " + f1);
                   }

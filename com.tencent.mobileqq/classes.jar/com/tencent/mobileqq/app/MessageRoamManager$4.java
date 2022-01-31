@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import akay;
-import akwc;
+import akaw;
+import akwb;
 import android.util.Pair;
 import java.util.Calendar;
 
 public class MessageRoamManager$4
   implements Runnable
 {
-  public MessageRoamManager$4(akay paramakay, Calendar paramCalendar) {}
+  public MessageRoamManager$4(akaw paramakaw, Calendar paramCalendar) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class MessageRoamManager$4
       this.this$0.a(0, null);
       return;
     }
-    this.this$0.jdField_a_of_type_Akwc.a(this.this$0.jdField_a_of_type_JavaLangString, (Calendar)this.a.clone(), true, 8 - i);
+    this.this$0.jdField_a_of_type_Akwb.a(this.this$0.jdField_a_of_type_JavaLangString, (Calendar)this.a.clone(), true, 8 - i);
   }
 }
 

@@ -1,44 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class baty
-  implements bfoq
+public class baty
 {
-  baty(batu parambatu) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public baty(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    switch (paramInt)
-    {
-    default: 
-      this.a.b(false);
-      this.a.jdField_a_of_type_Int = -1;
-      this.a.jdField_b_of_type_Int = -1;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_Bfol.dismiss();
-      return;
-      this.a.b(true);
-      this.a.jdField_b_of_type_Int = 1;
-      batu.a(this.a);
-      continue;
-      this.a.b(true);
-      this.a.jdField_b_of_type_Int = 0;
-      batu.a(this.a);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = ("http://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

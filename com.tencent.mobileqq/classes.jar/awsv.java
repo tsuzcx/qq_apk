@@ -1,29 +1,45 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-final class awsv
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class awsv
 {
-  protected WeakReference<awsu> a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public awsv(awsu paramawsu)
+  public awsv(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a = new WeakReference(paramawsu);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString3;
+    this.c = paramString2;
+    this.d = paramString4;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.e = paramString5;
   }
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public int a()
   {
-    awsu localawsu = (awsu)this.a.get();
-    if (localawsu == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    localawsu.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.b;
   }
 }
 

@@ -1,52 +1,45 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.widget.RecyclerView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import java.util.Set;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
 
-class afhr
-  extends RecyclerView.ViewHolder
-  implements Animator.AnimatorListener, View.OnClickListener
+public class afhr
+  extends Handler
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  public afhr(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
   
-  public afhr(afhp paramafhp, View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131375527));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    afhp.a(this.jdField_a_of_type_Afhp).add(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    if (paramMessage.what == 5)
     {
-    default: 
-      return;
+      Face2FaceAddContactFragment.a(this.a).setText(2131692295);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
+      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
     }
-    afhp.a(this.jdField_a_of_type_Afhp, this.jdField_a_of_type_JavaLangString);
+    do
+    {
+      return;
+      if (paramMessage.what == 301)
+      {
+        Face2FaceAddContactFragment.a(this.a);
+        return;
+      }
+      if (paramMessage.what == 500)
+      {
+        Face2FaceAddContactFragment.b(this.a);
+        return;
+      }
+      if (paramMessage.what == 401)
+      {
+        removeMessages(301);
+        this.a.d();
+        return;
+      }
+    } while (paramMessage.what != 6);
+    Face2FaceAddContactFragment.c(this.a);
+    bcql.a(this.a.getActivity(), this.a.getString(2131691018), 0).a();
   }
 }
 

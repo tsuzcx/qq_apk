@@ -1,39 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 class qve
-  extends Handler
+  implements SeekBar.OnSeekBarChangeListener
 {
-  qve(qvd paramqvd) {}
+  qve(qva paramqva) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 100: 
-    case 101: 
-    case 102: 
-      do
-      {
-        return;
-        qvd.a(this.a);
-        return;
-        this.a.i();
-        return;
-        qvd.b(this.a);
-        sendEmptyMessageDelayed(102, 1000L);
-      } while (qvd.a(this.a) != 1);
-      qvd.c(this.a);
-      return;
-    case 103: 
-      qvd.a(this.a, 3);
-      return;
-    case 104: 
-      qvd.d(this.a);
+    int i = paramSeekBar.getProgress();
+    int j = qva.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + qtx.a(j));
+    }
+    if (j == 3) {
+      qva.a(this.a).a(i * 1000, qva.a(this.a));
+    }
+    while (j != 5) {
       return;
     }
-    qvd.e(this.a);
+    qva.a(this.a).c(i * 1000);
   }
 }
 

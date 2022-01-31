@@ -1,39 +1,28 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import java.util.Map;
 
 public class afrr
-  extends ajta
+  extends ajxj
 {
   public afrr(TroopFragment paramTroopFragment) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt2 == 0)
-    {
+    if (paramBoolean1) {
       this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
     }
-    label47:
-    while (!this.a.isResumed())
-    {
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131715382), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131715381), 0).a();
-      return;
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.h();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.h();
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694927);
-    }
-    bcpw.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

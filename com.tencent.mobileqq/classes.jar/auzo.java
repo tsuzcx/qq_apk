@@ -1,9 +1,16 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-public abstract interface auzo
+public class auzo
+  implements View.OnClickListener
 {
-  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
+  public auzo(ProfileHeaderView paramProfileHeaderView, auuy paramauuy) {}
+  
+  public void onClick(View paramView)
+  {
+    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Auuy);
+  }
 }
 
 

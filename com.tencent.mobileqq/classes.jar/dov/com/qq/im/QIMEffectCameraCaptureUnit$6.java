@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bawu;
+import baxi;
 
 class QIMEffectCameraCaptureUnit$6
   implements Runnable
@@ -27,7 +27,7 @@ class QIMEffectCameraCaptureUnit$6
     if (!TextUtils.isEmpty(this.b)) {}
     try
     {
-      Bitmap localBitmap = bawu.a(this.b);
+      Bitmap localBitmap = baxi.a(this.b);
       QIMEffectCameraCaptureUnit.a(this.this$0).setImageBitmap(localBitmap);
       QIMEffectCameraCaptureUnit.a(this.this$0).setVisibility(0);
       return;

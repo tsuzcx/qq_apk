@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aool;
-import apcq;
+import aooq;
+import apcu;
 import com.tencent.qphone.base.util.QLog;
 
 public class QfavFilePreviewController$2
   implements Runnable
 {
-  public QfavFilePreviewController$2(apcq paramapcq) {}
+  public QfavFilePreviewController$2(apcu paramapcu) {}
   
   public void run()
   {
-    if (3 != apcq.b(this.this$0))
+    if (3 != apcu.b(this.this$0))
     {
-      this.this$0.a.a(false, apcq.a(this.this$0), String.valueOf(apcq.a(this.this$0)), apcq.a(this.this$0), null, apcq.b(this.this$0), null, apcq.c(this.this$0), null);
-      apcq.b(this.this$0, 3);
+      this.this$0.a.a(false, apcu.a(this.this$0), String.valueOf(apcu.a(this.this$0)), apcu.a(this.this$0), null, apcu.b(this.this$0), null, apcu.c(this.this$0), null);
+      apcu.b(this.this$0, 3);
       if (QLog.isColorLevel()) {
         QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
       }

@@ -1,19 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcwg
-  extends BroadcastReceiver
+final class bcwg
+  implements DialogInterface.OnClickListener
 {
-  public bcwg(WXShareHelper paramWXShareHelper) {}
+  bcwg(bcwm parambcwm, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    this.jdField_a_of_type_Bcwm.a(2);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Int == 1) {
+      bcwb.a("0X80094F8");
     }
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
+      {
+        bcwb.a("0X80094F7");
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 3);
+    bcwb.a("0X80094F9");
   }
 }
 

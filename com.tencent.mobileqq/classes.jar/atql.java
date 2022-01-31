@@ -1,37 +1,32 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 class atql
-  implements Animation.AnimationListener
+  implements apwm
 {
-  atql(atpi paramatpi) {}
+  atql(atpk paramatpk, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if (paramAnimation == atpi.b(this.a))
-    {
-      atpi.a(this.a).setVisibility(8);
-      atpi.a(this.a).clearAnimation();
-      atpi.a(this.a).setBackgroundResource(2130848196);
-      atpi.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
-    }
+    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void b(int paramInt, Bundle paramBundle) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == atpi.a(this.a))
-    {
-      atpi.a(this.a).setVisibility(0);
-      atpi.a(this.a).setBackgroundResource(2130849538);
-      atpi.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
-    }
-  }
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

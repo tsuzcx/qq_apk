@@ -1,37 +1,24 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.BindGroupFragment;
 
 public class bczz
-  implements InputFilter
+  implements DialogInterface.OnClickListener
 {
-  public bczz(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
+  public bczz(BindGroupFragment paramBindGroupFragment, String paramString) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt3 = 12 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
+    if (paramInt == 1)
     {
-      CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-      return "";
+      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, ajya.a(2131701118));
+      ((akhp)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
     }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
+    while (paramInt != 0) {
+      return;
     }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-        return "";
-      }
-    }
-    CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    paramDialogInterface.dismiss();
   }
 }
 

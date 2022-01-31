@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
 import android.app.Activity;
-import arcs;
+import arcu;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationPoseReflect$4
   implements Runnable
 {
-  public IdentificationPoseReflect$4(arcs paramarcs, Activity paramActivity) {}
+  public IdentificationPoseReflect$4(arcu paramarcu, Activity paramActivity) {}
   
   public void run()
   {

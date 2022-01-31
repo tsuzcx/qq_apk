@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import ajxn;
-import asyh;
+import ajxl;
+import asyj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,13 +13,13 @@ public final class OldMutualMarkLogicHelper$2
   
   public void run()
   {
-    ajxn localajxn = (ajxn)this.a.getManager(51);
-    if (localajxn != null)
+    ajxl localajxl = (ajxl)this.a.getManager(51);
+    if (localajxl != null)
     {
-      HashSet localHashSet = asyh.a();
+      HashSet localHashSet = asyj.a();
       if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localajxn.b(new ArrayList(localHashSet));
+        localajxl.b(new ArrayList(localHashSet));
         localHashSet.clear();
       }
     }

@@ -1,18 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-
-public class arsl
-  implements ValueAnimator.AnimatorUpdateListener
+class arsl
 {
-  public arsl(FloatIconLayout paramFloatIconLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setRotation(f);
-  }
+  private static arsj a = new arsj(null);
 }
 
 

@@ -1,17 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import android.support.annotation.NonNull;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class azwg
-  implements View.OnClickListener
+  extends SimpleObserver<azvz>
 {
-  public azwg(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  public azwg(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void onClick(View paramView)
+  public void a(azvz paramazvz)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    super.onNext(paramazvz);
+    ved.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    vxp.a(paramazvz.a);
+    vxp.a(paramazvz.b);
+    CheckArithHWResultFragment.a(this.a, paramazvz.a, paramazvz.b);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ved.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
+    bcql.a(this.a.getActivity(), 1, ajya.a(2131701765), 0).a();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    CheckArithHWResultFragment.a(this.a, null, null);
   }
 }
 

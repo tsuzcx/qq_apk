@@ -4,14 +4,15 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
 class akrf
-  implements akoq
+  implements akop
 {
-  akrf(akqx paramakqx, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  akrf(akqw paramakqw, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
   public ToServiceMsg a()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqx.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqw.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
     localToServiceMsg.extraData.putLong("type", 1L);
     localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
     localToServiceMsg.setEnableFastResend(true);

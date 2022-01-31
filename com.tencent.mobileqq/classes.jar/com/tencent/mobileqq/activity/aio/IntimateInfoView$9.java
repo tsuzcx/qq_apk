@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwp;
+import acwl;
 import com.tencent.image.URLDrawable;
 
 public class IntimateInfoView$9
   implements Runnable
 {
-  public IntimateInfoView$9(acwp paramacwp) {}
+  public IntimateInfoView$9(acwl paramacwl) {}
   
   public void run()
   {
-    if (acwp.a(this.this$0).getStatus() == 0)
+    if (acwl.a(this.this$0).getStatus() == 0)
     {
-      acwp.a(this.this$0).downloadImediatly();
+      acwl.a(this.this$0).downloadImediatly();
       return;
     }
-    acwp.a(this.this$0).restartDownload();
+    acwl.a(this.this$0).restartDownload();
   }
 }
 

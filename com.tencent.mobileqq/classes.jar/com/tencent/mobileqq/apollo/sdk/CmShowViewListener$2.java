@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgd;
-import ajge;
-import ajgh;
-import ajgs;
+import ajgb;
+import ajgc;
+import ajgf;
+import ajgq;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class CmShowViewListener$2
   implements Runnable
 {
-  public CmShowViewListener$2(ajgs paramajgs, boolean paramBoolean, Object paramObject) {}
+  public CmShowViewListener$2(ajgq paramajgq, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -20,23 +20,23 @@ public class CmShowViewListener$2
     {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
-        if (ajgs.a(this.this$0).get() == null) {
+        if (ajgq.a(this.this$0).get() == null) {
           return;
         }
         Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
         {
-          Object localObject1 = (ajgd)ajgs.a(this.this$0).get();
-          ajge localajge = ((ajgd)localObject1).a();
-          localObject1 = ((ajgd)localObject1).a();
-          if ((localajge != null) && (localObject1 != null))
+          Object localObject1 = (ajgb)ajgq.a(this.this$0).get();
+          ajgc localajgc = ((ajgb)localObject1).a();
+          localObject1 = ((ajgb)localObject1).a();
+          if ((localajgc != null) && (localObject1 != null))
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
               String str = (String)((Iterator)localObject2).next();
-              if (str.equals(((ajgh)localObject1).b)) {
-                localajge.a(str, true);
+              if (str.equals(((ajgf)localObject1).b)) {
+                localajgc.a(str, true);
               }
             }
           }

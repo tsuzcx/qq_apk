@@ -1,80 +1,62 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.MotionEvent;
 
-public abstract class bkio
-  implements TextWatcher, TextView.OnEditorActionListener
+public class bkio
 {
-  protected EditText a;
-  protected TextView a;
-  protected bkip a;
-  
-  @NonNull
-  public static bkio a(int paramInt)
+  public static float a(float paramFloat1, float paramFloat2)
   {
-    switch (paramInt)
-    {
-    default: 
-      throw new IllegalArgumentException("unSupport interactType:" + paramInt);
+    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+    if (!Float.isNaN(paramFloat1)) {
+      return paramFloat1;
     }
-    return new bkir();
+    return 1.0F;
   }
   
-  protected abstract View a();
-  
-  public abstract bkiq a();
-  
-  public void a() {}
-  
-  public void a(Context paramContext, bkiq parambkiq, EditText paramEditText, TextView paramTextView, bkip parambkip)
+  public static float a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_Bkip = parambkip;
-  }
-  
-  protected void a(CharSequence paramCharSequence, int paramInt)
-  {
-    int i = bbjw.b(paramCharSequence.toString());
-    if (paramInt - i <= 6)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%s/%s", new Object[] { Integer.valueOf(i / 2), Integer.valueOf(paramInt / 2) }));
-      return;
+    if (paramMotionEvent.getPointerCount() > 1) {
+      return a(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    return 1.0F;
   }
   
-  protected void a(CharSequence paramCharSequence, boolean paramBoolean)
+  public static float[] a(MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
+    float[] arrayOfFloat = new float[2];
+    if (paramMotionEvent.getPointerCount() > 1)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
-      return;
+      arrayOfFloat[0] = ((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F);
+      arrayOfFloat[1] = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    return arrayOfFloat;
   }
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static float b(float paramFloat1, float paramFloat2)
   {
-    return false;
+    float f = (float)Math.toDegrees(Math.asin(paramFloat2 / a(paramFloat1, paramFloat2)));
+    if (!Float.isNaN(f))
+    {
+      if ((paramFloat2 >= 0.0F) && (paramFloat1 >= 0.0F)) {}
+      do
+      {
+        return f;
+        if ((paramFloat2 >= 0.0F) && (paramFloat1 <= 0.0F)) {
+          return 180.0F - f;
+        }
+      } while ((paramFloat2 <= 0.0F) && (paramFloat1 >= 0.0F));
+      if ((paramFloat2 <= 0.0F) && (paramFloat1 <= 0.0F)) {
+        return -180.0F - f;
+      }
+    }
+    return 0.0F;
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static float b(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getPointerCount() > 1) {
+      return b(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
+    }
+    return 0.0F;
+  }
 }
 
 

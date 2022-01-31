@@ -1,24 +1,19 @@
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-class aqfx
+final class aqfx
   implements DialogInterface.OnClickListener
 {
-  aqfx(aqft paramaqft) {}
+  aqfx(long paramLong, int paramInt, Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      aqeq.a(aqft.a(this.a), false, "shareToQQ", aqft.a(this.a));
-      nax.a(aqft.a(this.a), 0, "", "");
-      if (aqft.a(this.a) != null) {
-        aqft.a(this.a).b(1);
-      }
-      aqft.a(this.a).moveTaskToBack(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardShareByServerHelper", 2, "-->qbShowShareResultDialog--stay");
     }
+    aqfv.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

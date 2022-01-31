@@ -1,16 +1,48 @@
 public class aonm
-  extends aonk
+  extends aonp
 {
   public String a;
-  public boolean a;
   public String b;
+  public String c;
+  public String d;
   
-  public aonm(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  public aonm(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    super(2, paramString1);
+    this.a = paramString2;
     this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aonm))
+    {
+      paramObject = (aonm)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
+      {
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return this.e + "_" + this.b;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import ajty;
-import ajub;
-import ayxq;
+import ajtw;
+import ajtz;
+import ayxs;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConditionSearchManager$DownloadTask$1
   implements Runnable
 {
-  public ConditionSearchManager$DownloadTask$1(ajub paramajub, String paramString, File paramFile, QQAppInterface paramQQAppInterface, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConditionSearchManager$DownloadTask$1(ajtz paramajtz, String paramString, File paramFile, QQAppInterface paramQQAppInterface, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
@@ -21,18 +21,18 @@ public class ConditionSearchManager$DownloadTask$1
       QLog.d("ConditionSearch.Manager", 2, "DownloadTask runnable start, url=" + this.jdField_a_of_type_JavaLangString);
     }
     Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.a(ajub.a(this.this$0), (String)localObject, this.jdField_a_of_type_JavaIoFile);
+    int i = HttpDownloadUtil.a(ajtz.a(this.this$0), (String)localObject, this.jdField_a_of_type_JavaIoFile);
     if (i == 0) {}
     for (boolean bool = true;; bool = false)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | download result = " + bool);
       }
-      localObject = (ajty)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59);
+      localObject = (ajtw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59);
       if (localObject != null) {
-        ((ajty)localObject).a(i, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+        ((ajtw)localObject).a(i, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
       }
-      localObject = (ayxq)ajub.b(this.this$0).getManager(193);
+      localObject = (ayxs)ajtz.b(this.this$0).getManager(193);
       String str = this.jdField_a_of_type_JavaLangString;
       long l1 = l2;
       if (bool)
@@ -42,7 +42,7 @@ public class ConditionSearchManager$DownloadTask$1
           l1 = this.jdField_a_of_type_JavaIoFile.length();
         }
       }
-      ((ayxq)localObject).a(str, l1);
+      ((ayxs)localObject).a(str, l1);
       return;
     }
   }

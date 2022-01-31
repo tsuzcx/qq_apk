@@ -1,40 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
 
-class ayqq
-  extends ayvz
+public class ayqq
+  extends ayqp
 {
-  ayqq(ayqp paramayqp) {}
+  public HashMap<String, String> a = new HashMap();
+  public String b;
+  public String c;
+  public boolean c;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public long f;
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    int i = paramMessage.what;
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((i == 2002) || ((ayqp.a(this.a).equals(localayqm.p)) && (localayqm.b == 1) && (i != 2002)))
+    if (a())
     {
-      if ((localayqm.r == null) || (!localayqm.r.equals(ayqp.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{");
+      localStringBuilder.append("elapsed:" + a());
+      localStringBuilder.append(",tryCount:" + this.b);
+      localStringBuilder.append("}");
+      return localStringBuilder.toString();
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ayqp.a(this.a);
-      continue;
-      if (bbdj.b(ayqp.c(this.a)))
-      {
-        ayqp.a(this.a).a().b(this);
-        ayqp.b(this.a);
-      }
-      else
-      {
-        ayqp.a(this.a);
-      }
-    }
+    return "{}";
   }
 }
 

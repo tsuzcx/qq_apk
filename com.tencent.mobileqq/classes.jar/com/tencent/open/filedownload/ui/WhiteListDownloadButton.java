@@ -1,10 +1,10 @@
 package com.tencent.open.filedownload.ui;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.util.AttributeSet;
-import axqw;
-import bdmt;
+import axqy;
+import bdni;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -40,7 +40,7 @@ public class WhiteListDownloadButton
     label70:
     for (paramString = "";; paramString = this.a.h)
     {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
+      axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
       return;
     }
   }
@@ -48,9 +48,9 @@ public class WhiteListDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return ajyc.a(2131716956);
+      return ajya.a(2131716967);
     }
-    return ajyc.a(2131716957);
+    return ajya.a(2131716968);
   }
 }
 

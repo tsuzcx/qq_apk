@@ -1,28 +1,28 @@
 package com.tencent.biz.webviewplugin;
 
-import aukm;
-import aukn;
+import auko;
+import aukp;
 import com.tencent.mobileqq.data.OfflineWebRes;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xll;
+import xli;
 
 public class OfflineWebResManager$2
   implements Runnable
 {
-  public OfflineWebResManager$2(xll paramxll, int paramInt) {}
+  public OfflineWebResManager$2(xli paramxli, int paramInt) {}
   
   public void run()
   {
     try
     {
       Thread.sleep(this.a * 1000);
-      if (!xll.jdField_a_of_type_Boolean)
+      if (!xli.jdField_a_of_type_Boolean)
       {
-        xll.c();
-        if (!xll.b)
+        xli.c();
+        if (!xli.b)
         {
-          this.this$0.jdField_a_of_type_Aukn.a(OfflineWebRes.class.getSimpleName());
+          this.this$0.jdField_a_of_type_Aukp.a(OfflineWebRes.class.getSimpleName());
           return;
         }
       }
@@ -33,19 +33,19 @@ public class OfflineWebResManager$2
       {
         localException.printStackTrace();
       }
-      xll.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_Aukn.d(OfflineWebRes.class.getSimpleName());
+      xli.jdField_a_of_type_Boolean = this.this$0.jdField_a_of_type_Aukp.d(OfflineWebRes.class.getSimpleName());
       Object localObject;
-      if (!xll.jdField_a_of_type_Boolean)
+      if (!xli.jdField_a_of_type_Boolean)
       {
         localObject = new OfflineWebRes();
         ((OfflineWebRes)localObject).fileName = "test";
         ((OfflineWebRes)localObject).hashName = "test";
         ((OfflineWebRes)localObject).md5 = "test_md5";
-        this.this$0.jdField_a_of_type_Aukn.a((aukm)localObject);
+        this.this$0.jdField_a_of_type_Aukp.a((auko)localObject);
       }
-      while (!xll.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+      while (!xli.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
       {
-        localObject = (String)xll.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        localObject = (String)xli.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
         this.this$0.b((String)localObject);
       }
       this.this$0.a();

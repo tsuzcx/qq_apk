@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
-class yvd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yvd
+  implements ywa
 {
-  yvd(yuz paramyuz, ViewGroup paramViewGroup, View paramView) {}
+  public yvd(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public void onGlobalLayout()
+  public Activity a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    yxs.a("GdtMotiveVideoDialog", "onGlobalLayout: l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
-    yxs.a("GdtMotiveVideoDialog", "onGlobalLayout: " + this.jdField_a_of_type_AndroidViewView);
+    return this.a.getActivity();
+  }
+  
+  public void a()
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
+    }
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import qjv;
-import qqo;
-import qqq;
+import qjs;
+import qql;
+import qqn;
 
 class VideoFeedsPlayManager$4
   implements Runnable
@@ -15,14 +15,14 @@ class VideoFeedsPlayManager$4
   {
     if ((VideoFeedsPlayManager.a(this.this$0) != null) && (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_AndroidViewView != null))
     {
-      if (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qjv != null) {
-        VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qjv.a(VideoFeedsPlayManager.b(this.this$0));
+      if (VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qjs != null) {
+        VideoFeedsPlayManager.b(this.this$0).jdField_a_of_type_Qjs.a(VideoFeedsPlayManager.b(this.this$0));
       }
       if (VideoFeedsPlayManager.a(this.this$0) != null)
       {
         Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((qqq)localIterator.next()).b(VideoFeedsPlayManager.b(this.this$0));
+          ((qqn)localIterator.next()).b(VideoFeedsPlayManager.b(this.this$0));
         }
       }
     }

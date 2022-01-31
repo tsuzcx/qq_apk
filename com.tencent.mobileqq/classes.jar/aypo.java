@@ -1,16 +1,19 @@
 class aypo
-  extends akav
+  extends akat
 {
-  aypo(aypn paramaypn) {}
+  aypo(aypl paramaypl) {}
   
-  public void a(boolean paramBoolean, long paramLong, akaw paramakaw)
+  public void a(boolean paramBoolean, long paramLong, akau paramakau)
   {
     this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramakaw);
+    this.a.a(this.a.c, false, paramBoolean, paramakau);
     if (paramBoolean)
     {
       this.a.e();
       return;
+    }
+    if (paramakau != null) {
+      this.a.v = paramakau.d;
     }
     this.a.d();
   }

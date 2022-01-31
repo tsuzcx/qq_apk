@@ -1,17 +1,13 @@
-import android.os.SystemClock;
+import java.util.Collections;
 
-public class lsg
+class lsg
+  implements lse
 {
-  private static volatile long a;
+  lsg(lsf paramlsf) {}
   
-  public static long a()
+  public void a(lsc paramlsc, int paramInt1, int paramInt2)
   {
-    return a;
-  }
-  
-  public static void a()
-  {
-    a = SystemClock.uptimeMillis();
+    Collections.sort(lsf.a(this.a), lsf.a(this.a));
   }
 }
 

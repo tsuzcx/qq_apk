@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import aawg;
-import akxc;
+import aawc;
+import akxb;
 
 public class Conversation$18$1
   implements Runnable
 {
-  public Conversation$18$1(aawg paramaawg) {}
+  public Conversation$18$1(aawc paramaawc) {}
   
   public void run()
   {
-    akxc.a().a(this.a.a.a);
+    akxb.a().a(this.a.a.a);
   }
 }
 

@@ -16,8 +16,8 @@ public class QQLevelIconConfig
   public QQLevelIconConfig()
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    this.mNotifyPaymentText = localResources.getString(2131717285);
-    this.mExpiredNotifyPaymentText = localResources.getString(2131717282);
+    this.mNotifyPaymentText = localResources.getString(2131717296);
+    this.mExpiredNotifyPaymentText = localResources.getString(2131717293);
   }
   
   public String toString()

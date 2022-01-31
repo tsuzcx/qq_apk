@@ -1,46 +1,41 @@
 import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONObject;
 
 public class uqn
-  implements uqr
+  implements uqo
 {
-  public static final String a;
-  public static final String b = ajyc.a(2131703139);
-  public static final String c = ajyc.a(2131703141);
-  public static final String d = ajyc.a(2131703140);
-  public static final String e = ajyc.a(2131703142);
-  public static final String f = ajyc.a(2131703138);
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-  private uqo jdField_a_of_type_Uqo;
+  private uql jdField_a_of_type_Uql;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131703137);
-  }
-  
-  public uqn(Context paramContext, int paramInt, CommentLikeFeedItem paramCommentLikeFeedItem, uqo paramuqo)
+  public uqn(Context paramContext, int paramInt, CommentLikeFeedItem paramCommentLikeFeedItem, uql paramuql)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
-    this.jdField_a_of_type_Uqo = paramuqo;
+    this.jdField_a_of_type_Uql = paramuql;
+    if (!(paramCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
+      throw new IllegalStateException("initial comment event proxy while owner is not share group item.");
+    }
   }
   
   public boolean a()
   {
-    veg.c("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on comment button click.");
-    if (!bbev.d(this.jdField_a_of_type_AndroidContentContext))
+    ved.c("Q.qqstory.detail.DetailShareGroupCommentEventProxy", "on comment button click.");
+    if (!bbfj.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131703143), 0).a();
+      bcql.a(BaseApplication.getContext(), 1, ajya.a(2131703164), 0).a();
+      return false;
+    }
+    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+    if ((!localShareGroupItem.isPublic()) && (!localShareGroupItem.isSubscribe()))
+    {
+      bcql.a(BaseApplication.getContext(), 1, sxm.a(2131699690), 0).a();
       return false;
     }
     return true;
@@ -49,55 +44,43 @@ public class uqn
   public boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
     boolean bool;
-    if (paramCommentEntry.commentType == 5)
+    if (!bbfj.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      paramCommentEntry = new OpenPlayerBuilder(new VidListPlayInfo(paramCommentEntry.togetherFeedId, paramCommentEntry.togetherVid), 126);
-      tvf.a(this.jdField_a_of_type_AndroidContentContext, paramCommentEntry.a(), null);
-      vel.a("play_video", "multishoot_icon", 0, 0, new String[0]);
+      bcql.a(BaseApplication.getContext(), 1, ajya.a(2131703165), 0).a();
       bool = false;
-      paramInt1 = vel.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      paramInt1 = vei.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
       if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
-        break label330;
+        break label252;
       }
     }
-    label330:
+    label252:
     for (paramCommentEntry = "1";; paramCommentEntry = "2")
     {
-      vel.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, vel.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      vei.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, vei.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
       return bool;
-      Object localObject;
-      if (paramCommentEntry.commentType == 4)
-      {
-        localObject = paramCommentEntry.getExtraJson().optString("vid");
-        paramCommentEntry = paramCommentEntry.getExtraJson().optString("feedid");
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramCommentEntry))) {
-          tvf.b(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramCommentEntry, 74);
-        }
-        bool = false;
-        break;
-      }
-      if (!bbev.d(this.jdField_a_of_type_AndroidContentContext))
-      {
-        bcpw.a(BaseApplication.getContext(), 1, ajyc.a(2131703136), 0).a();
-        bool = false;
-        break;
-      }
       if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
       {
-        localObject = bfol.a(this.jdField_a_of_type_AndroidContentContext);
+        bfpc localbfpc = bfpc.a(this.jdField_a_of_type_AndroidContentContext);
         if (paramCommentEntry.status == 2) {
-          ((bfol)localObject).c(d);
+          localbfpc.c(uqk.d);
         }
         for (;;)
         {
-          ((bfol)localObject).a(jdField_a_of_type_JavaLangString, 3);
-          ((bfol)localObject).d(f);
-          ((bfol)localObject).a(new uqp((bfol)localObject, paramCommentEntry, paramInt1, this.jdField_a_of_type_Uqo));
-          ((bfol)localObject).show();
+          localbfpc.a(uqk.a, 3);
+          localbfpc.d(uqk.f);
+          localbfpc.a(new uqm(localbfpc, paramCommentEntry, paramInt1, this.jdField_a_of_type_Uql));
+          localbfpc.show();
           bool = false;
           break;
-          ((bfol)localObject).c(e);
+          localbfpc.c(uqk.e);
         }
+      }
+      paramCommentEntry = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+      if ((!paramCommentEntry.isPublic()) && (!paramCommentEntry.isSubscribe()))
+      {
+        bcql.a(BaseApplication.getContext(), 1, sxm.a(2131699690), 0).a();
+        bool = false;
+        break;
       }
       bool = true;
       break;
@@ -106,34 +89,33 @@ public class uqn
   
   public boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    bfol localbfol = bfol.a(this.jdField_a_of_type_AndroidContentContext);
+    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+    bfpc localbfpc = bfpc.a(this.jdField_a_of_type_AndroidContentContext);
     if (QQStoryContext.a().a(paramCommentEntry.authorUnionId)) {
       if (paramCommentEntry.status == 2)
       {
-        localbfol.c(d);
-        localbfol.a(jdField_a_of_type_JavaLangString, 3);
+        localbfpc.c(uqk.d);
+        localbfpc.a(uqk.a, 3);
       }
     }
     for (;;)
     {
-      localbfol.d(f);
-      localbfol.a(new uqp(localbfol, paramCommentEntry, paramInt1, this.jdField_a_of_type_Uqo));
-      localbfol.show();
+      localbfpc.d(uqk.f);
+      localbfpc.a(new uqm(localbfpc, paramCommentEntry, paramInt1, this.jdField_a_of_type_Uql));
+      localbfpc.show();
       return false;
-      localbfol.c(e);
+      localbfpc.c(uqk.e);
       break;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe())
+      if ((localShareGroupItem.isPublic()) && (localShareGroupItem.isOwner()))
       {
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isVip()) || (paramInt2 == 2)) {
-          localbfol.a(jdField_a_of_type_JavaLangString, 3);
-        }
-        localbfol.c(c);
-        localbfol.c(e);
+        localbfpc.c(uqk.c);
+        localbfpc.a(uqk.a, 3);
+        localbfpc.c(uqk.e);
       }
       else
       {
-        localbfol.c(c);
-        localbfol.c(e);
+        localbfpc.c(uqk.c);
+        localbfpc.c(uqk.e);
       }
     }
   }

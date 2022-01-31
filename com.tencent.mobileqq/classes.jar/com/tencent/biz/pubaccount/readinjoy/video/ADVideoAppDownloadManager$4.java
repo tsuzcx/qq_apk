@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import bdgv;
-import qjf;
+import bdhk;
+import qjc;
 
 class ADVideoAppDownloadManager$4
   implements Runnable
 {
-  ADVideoAppDownloadManager$4(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjf paramqjf) {}
+  ADVideoAppDownloadManager$4(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjc paramqjc) {}
   
   public void run()
   {
     this.a.c = ADVideoAppDownloadManager.a(this.this$0, this.a.b, 1);
     if (!TextUtils.isEmpty(this.a.c)) {
-      bdgv.a().a(this.a.c);
+      bdhk.a().a(this.a.c);
     }
   }
 }

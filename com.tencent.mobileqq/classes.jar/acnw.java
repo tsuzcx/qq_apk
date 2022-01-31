@@ -1,10 +1,18 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class acnw
-  extends aimv
+  extends aumg
 {
-  public acnu a;
-  public TextView a;
+  public acnw(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
 }
 
 

@@ -1,20 +1,11 @@
-import android.app.Activity;
+import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
 
-public abstract interface aqpl
+public class aqpl
+  extends aqoo
 {
-  public abstract void a();
+  public GalleryUrlImageView a;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Activity paramActivity, aqoi paramaqoi);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
+  public aqpl(aqoz paramaqoz) {}
 }
 
 

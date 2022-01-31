@@ -1,20 +1,15 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nkh
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  nkh(nke paramnke, JsResult paramJsResult, Context paramContext) {}
+  nkh(nkb paramnkb, JsResult paramJsResult) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
-    if (this.jdField_a_of_type_Nke.a > 2) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 

@@ -1,17 +1,4 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
-
-public class wjw
-  implements wjj
-{
-  public wjw(RecommendBannerViewNew paramRecommendBannerViewNew) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      RecommendBannerViewNew.a(this.a, paramInt);
-    }
-  }
-}
+public class wjw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

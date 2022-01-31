@@ -1,6 +1,6 @@
 package com.tencent.av.ui.beauty;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -17,9 +17,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mlv;
-import mlw;
-import mlx;
+import mls;
+import mlt;
+import mlu;
 
 public class BeautySeekView
   extends RelativeLayout
@@ -28,12 +28,12 @@ public class BeautySeekView
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new mlw(this);
+  SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new mlt(this);
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public Runnable a;
   private String jdField_a_of_type_JavaLangString;
-  private mlx jdField_a_of_type_Mlx;
+  private mlu jdField_a_of_type_Mlu;
   public boolean a;
   private int jdField_b_of_type_Int;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -77,17 +77,17 @@ public class BeautySeekView
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     paramContext = inflate(paramContext, 2131559562, this);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372471);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841442);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131372388));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372387));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372389));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841450);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372473);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130841440);
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramContext.findViewById(2131372390));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372389));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131372391));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841448);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new mlv(this));
-    this.jdField_b_of_type_Int = actn.a(24.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new mls(this));
+    this.jdField_b_of_type_Int = actj.a(24.0F, getResources());
     if (AudioHelper.a(0) == 1)
     {
       setBackgroundColor(-270080262);
@@ -127,7 +127,7 @@ public class BeautySeekView
       View localView = this.jdField_a_of_type_AndroidViewView;
       if (paramInt > this.c)
       {
-        i = 2130841443;
+        i = 2130841441;
         localView.setBackgroundResource(i);
       }
     }
@@ -136,21 +136,21 @@ public class BeautySeekView
       if (paramInt != 0) {
         break label65;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841446);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841444);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setThumb(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       return;
-      i = 2130841442;
+      i = 2130841440;
       break;
       label65:
       if (paramInt <= 30) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841448);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841446);
       } else if (paramInt <= 60) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841449);
-      } else {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841447);
+      } else {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130841445);
       }
     }
   }
@@ -188,9 +188,9 @@ public class BeautySeekView
     }
   }
   
-  public void setBeautySeekActionListener(mlx parammlx)
+  public void setBeautySeekActionListener(mlu parammlu)
   {
-    this.jdField_a_of_type_Mlx = parammlx;
+    this.jdField_a_of_type_Mlu = parammlu;
   }
   
   public void setMarginRight(int paramInt)

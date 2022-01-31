@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.Map;
 
-public final class aaqb
-  implements DialogInterface.OnClickListener
+public class aaqb
 {
-  public aaqb(aaqf paramaaqf, aaqe paramaaqe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aaqf.a) {
-      axqw.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_Aaqe != null) {
-      this.jdField_a_of_type_Aaqe.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public int a;
+  public String a;
+  public Map<String, String> a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
 }
 
 

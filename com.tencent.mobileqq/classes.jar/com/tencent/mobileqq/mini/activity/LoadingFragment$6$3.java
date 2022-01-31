@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.os.Handler;
-import bcpw;
+import bcql;
 
 class LoadingFragment$6$3
   implements Runnable
@@ -12,7 +12,7 @@ class LoadingFragment$6$3
   
   public void run()
   {
-    bcpw.a(this.this$1.this$0.getActivity().getApplicationContext(), ajyc.a(2131706235), 0).a();
+    bcql.a(this.this$1.this$0.getActivity().getApplicationContext(), ajya.a(2131706246), 0).a();
     this.this$1.this$0.uiHandler.postDelayed(new LoadingFragment.6.3.1(this), 1000L);
   }
 }

@@ -1,6 +1,17 @@
-public abstract interface vdt
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class vdt
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  vdt(vdr paramvdr) {}
+  
+  public void onClick(View paramView)
+  {
+    if (vdr.a(this.a) != null) {
+      vdr.a(this.a).O_();
+    }
+  }
 }
 
 

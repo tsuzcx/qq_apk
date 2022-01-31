@@ -1,141 +1,98 @@
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout.LayoutParams;
+import java.io.File;
 
-class vpg
-  extends LinearLayout
+public class vpg
+  extends voz<vow>
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  
-  public vpg(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public vpg(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.c = (this.jdField_a_of_type_Int / this.b);
-    a();
   }
   
-  private void a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = vpp.b(getContext(), 3.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    while (i < this.b)
+    if (this.jdField_a_of_type_Voq == null) {
+      return paramView;
+    }
+    if (paramView == null) {}
+    for (paramView = new vph(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((vow)this.jdField_a_of_type_Voq).a(), ((vow)this.jdField_a_of_type_Voq).a(), this);; paramView = (vph)paramView)
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131561282, null);
-      localView.setLayoutParams(new ViewGroup.LayoutParams(this.c - j * 2, this.c - j * 2));
-      ((ImageView)localView.findViewById(2131369540)).setPadding(k, k, k, k);
-      addView(localView);
-      i += 1;
+      paramView.a((vow)this.jdField_a_of_type_Voq, paramInt, getCount());
+      return paramView;
     }
   }
   
-  private void a(int paramInt)
+  public void onClick(View paramView)
   {
     int i = 0;
-    int j;
-    for (;;)
+    ImageView localImageView = (ImageView)paramView;
+    int j = ((Integer)localImageView.getTag(2131376873)).intValue();
+    vow localvow = (vow)this.jdField_a_of_type_Voq;
+    Object localObject3 = Uri.parse(localvow.a(j));
+    Object localObject1 = ((Uri)localObject3).getPath();
+    String str = new File((String)localObject1).getName();
+    try
     {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
-      }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
-      }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  public void a(vow paramvow, int paramInt1, int paramInt2)
-  {
-    int i = paramInt1 * this.b;
-    label31:
-    Object localObject3;
-    URLImageView localURLImageView;
-    TextView localTextView;
-    Object localObject2;
-    String str;
-    Object localObject1;
-    if (paramInt1 == paramInt2 - 1)
-    {
-      paramInt1 = paramvow.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
-      }
-      localObject3 = getChildAt(paramInt2 - i);
-      localURLImageView = (URLImageView)((View)localObject3).findViewById(2131369540);
-      localTextView = (TextView)((View)localObject3).findViewById(2131369552);
-      localObject2 = (ProgressBar)((View)localObject3).findViewById(2131369550);
-      str = paramvow.b(paramInt2);
-      localObject1 = paramvow.a(paramInt2);
-      if (localObject1 != null) {
-        break label137;
-      }
-      veg.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramvow.toString() });
-    }
-    for (;;)
-    {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label137:
-      ((View)localObject3).setContentDescription(str);
-      localTextView.setText(str);
-      localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131376871, Integer.valueOf(paramInt2));
-      localObject3 = (Boolean)localURLImageView.getTag(2131376849);
-      if ((localObject3 != null) && (((Boolean)localObject3).booleanValue()) && (((String)localObject1).equals(localURLImageView.getTag(2131376880))))
+      localObject1 = Drawable.createFromPath((String)localObject1);
+      if (localObject1 != null)
       {
-        ((ProgressBar)localObject2).setVisibility(4);
-      }
-      else
-      {
-        localURLImageView.setTag(2131376880, localObject1);
-        localURLImageView.setTag(2131376849, Boolean.valueOf(false));
-        ((ProgressBar)localObject2).setVisibility(0);
-        localObject2 = new vph((String)localObject1, localURLImageView, (ProgressBar)localObject2);
-        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = aywk.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = aywk.a;
-        ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-        if (((URLDrawable)localObject1).getStatus() == 1) {
-          ((vph)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
+        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+        try
+        {
+          j = ((RelativeLayout.LayoutParams)((ListView)paramView.getParent().getParent()).getLayoutParams()).leftMargin;
+          i = j;
         }
-        localURLImageView.setImageDrawable((Drawable)localObject1);
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            float f2;
+            float f3;
+            float f4;
+            float f5;
+            int k;
+            Object localObject2;
+            ved.c("NormalFaceAdapter", "get marginLeft error : %s", localException);
+            continue;
+            float f1 = (i - (k + (i - j) / 2) * 2) / i;
+          }
+        }
+        localObject3 = (vph)paramView.getParent();
+        j = (int)vkk.b((View)localObject3);
+        f2 = vkk.a(paramView);
+        f3 = paramView.getWidth() / 2;
+        f4 = i;
+        f5 = ((vph)localObject3).getHeight() / 2 + j;
+        i = ((Drawable)localObject1).getIntrinsicWidth();
+        j = localImageView.getWidth();
+        k = localImageView.getPaddingLeft();
+        if (j > i)
+        {
+          f1 = (((j - i) / 2 - k) * 2 + i) / i;
+          paramView = new vlo(localvow.b, str, (Drawable)localObject1);
+          this.jdField_a_of_type_Vos.a(paramView, f4 + (f2 + f3), f5, f1 * 1.2F);
+          return;
+        }
       }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        ved.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
+        localObject2 = null;
+      }
+      ved.e("NormalFaceAdapter", "can create drawable from uri:" + localException);
     }
   }
 }

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bblo;
-import bbyt;
+import bbmc;
+import bbzh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import java.util.TreeMap;
 public class QAVFunCallHandler
   extends NormalConfigHandler<QAVFunCallConfig>
 {
-  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bblo(this);
+  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bbmc(this);
   
   public QAVFunCallHandler(String paramString)
   {
@@ -62,7 +62,7 @@ public class QAVFunCallHandler
           int i = localFCItem.fcid;
           if ((i != 0) && (!TextUtils.isEmpty(localFCItem.media)))
           {
-            Object localObject = bbyt.a(paramAppInterface, 0, String.valueOf(i));
+            Object localObject = bbzh.a(paramAppInterface, 0, String.valueOf(i));
             if ((localObject != null) && ((((SharedPreferences)localObject).getLong("local_version", 0L) != localQAVFunCallConfig.serverVer) || (TextUtils.isEmpty(((SharedPreferences)localObject).getString("_6", null)))))
             {
               localObject = ((SharedPreferences)localObject).edit();

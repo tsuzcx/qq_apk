@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class abvw
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public abvw(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((bfol)bfoy.a(this.a, null));
-      this.a.a.b(2131698133);
-      this.a.a.b(2131692324);
-      this.a.a.c(2131690596);
-      this.a.a.a(new abvx(this));
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
     }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    axqw.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    this.a.m = false;
   }
 }
 

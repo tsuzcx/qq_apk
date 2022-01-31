@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alas;
+import alar;
 
 public class GeneralAR3DRenderable$2
   implements Runnable

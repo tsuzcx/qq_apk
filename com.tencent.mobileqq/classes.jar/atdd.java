@@ -1,36 +1,39 @@
-import android.view.View;
+import android.os.Bundle;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class atdd
-  implements atei
+  implements baic
 {
   public atdd(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.f();
-    axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
-  }
-  
-  public void a(View paramView, atel paramatel)
-  {
-    if (paramatel.jdField_a_of_type_Boolean) {
-      bcpw.a(this.a, 1, ajyc.a(2131705106), 1).a();
-    }
-    do
+    if (paramJSONObject != null)
     {
-      return;
-      GameRoomInviteActivity.a(this.a, paramatel.jdField_a_of_type_JavaLangString, paramatel.jdField_a_of_type_Int);
-      paramatel.jdField_a_of_type_Boolean = true;
-      this.a.a.a(paramView, paramatel.jdField_a_of_type_Boolean);
-      if (paramatel.jdField_a_of_type_Int == 1)
+      paramInt = paramJSONObject.optInt("retcode", -1);
+      paramBundle = new ArrayList();
+      if (paramInt == 0)
       {
-        axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
-        return;
+        paramJSONObject = paramJSONObject.optJSONObject("data");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
+          if (paramJSONObject != null)
+          {
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
+              paramInt += 1;
+            }
+          }
+        }
       }
-    } while (paramatel.jdField_a_of_type_Int != 0);
-    axqw.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_Atel.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new atde(this));
+    }
   }
 }
 

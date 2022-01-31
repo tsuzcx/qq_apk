@@ -1,22 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acjs
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public acjs(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
+    this.a.a.setText("");
   }
 }
 

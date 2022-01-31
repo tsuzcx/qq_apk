@@ -1,34 +1,26 @@
-import android.os.AsyncTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 class afus
-  extends AsyncTask<Void, Void, ArrayList<String>>
+  implements DialogInterface.OnClickListener
 {
-  afus(afur paramafur, List paramList) {}
+  afus(afup paramafup) {}
   
-  protected ArrayList<String> a(Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.jdField_a_of_type_Afur.a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  protected void a(ArrayList<String> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SDKEmotionSettingManager", 2, " openSetEmotion error pathList = " + paramArrayList);
-      }
-      afur.a(this.jdField_a_of_type_Afur, afur.a(this.jdField_a_of_type_Afur), Long.valueOf(afur.a(this.jdField_a_of_type_Afur)).longValue(), false, "");
-      afur.a(this.jdField_a_of_type_Afur);
+      paramDialogInterface.dismiss();
+      afup.a(this.a, afup.a(this.a), Long.valueOf(afup.a(this.a)).longValue());
+      afup.a(this.a);
       return;
     }
-    int i = paramArrayList.size();
-    axqw.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    afur.a(this.jdField_a_of_type_Afur).clear();
-    afur.a(this.jdField_a_of_type_Afur).addAll(paramArrayList);
-    this.jdField_a_of_type_Afur.a(paramArrayList);
+    catch (Exception paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SDKEmotionSettingManager", 2, "setNegativeButton cancel error");
+    }
   }
 }
 

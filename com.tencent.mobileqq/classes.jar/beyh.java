@@ -1,62 +1,82 @@
-import NS_COMM.COMM.Entry;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONObject;
-
 public class beyh
 {
-  private static List<COMM.Entry> a(MiniAppInfo paramMiniAppInfo)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(beyn.a("platform", "Android"));
-    localArrayList.add(beyn.a("uin", String.valueOf(beuc.a().a())));
-    if (paramMiniAppInfo != null)
-    {
-      localArrayList.add(beyn.a("appid", paramMiniAppInfo.appId));
-      localArrayList.add(beyn.a("appname", paramMiniAppInfo.name));
-    }
-    return localArrayList;
-  }
+  volatile int jdField_a_of_type_Int = 0;
+  private beyi jdField_a_of_type_Beyi = new beyi();
+  volatile int b = 0;
   
-  private static List<COMM.Entry> a(JSONObject paramJSONObject)
+  public beyh(Class<? extends beyi> paramClass, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONObject != null)
+    for (;;)
     {
-      localArrayList.add(beyn.a("pos_id", String.valueOf(paramJSONObject.optInt("pos_id"))));
-      localArrayList.add(beyn.a("opt_type", String.valueOf(paramJSONObject.optInt("opt_type"))));
-      localArrayList.add(beyn.a("activ_web", paramJSONObject.optString("activ_web")));
-    }
-    return localArrayList;
-  }
-  
-  public static void a(MiniAppInfo paramMiniAppInfo, JSONObject paramJSONObject)
-  {
-    StringBuilder localStringBuilder;
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
-    {
-      localStringBuilder = new StringBuilder().append("report mobile game ad with args: ");
-      if (paramJSONObject == null) {
-        break label111;
+      int i;
+      synchronized (this.jdField_a_of_type_Beyi)
+      {
+        this.b = paramInt;
+        this.jdField_a_of_type_Beyi.a = true;
+        i = 0;
+        if (i >= paramInt) {}
+      }
+      try
+      {
+        beyi localbeyi2 = (beyi)paramClass.newInstance();
+        localbeyi2.a = true;
+        localbeyi2.a(this.jdField_a_of_type_Beyi.a(), false);
+        this.jdField_a_of_type_Beyi.a(localbeyi2, false);
+        this.jdField_a_of_type_Int += 1;
+        label102:
+        i += 1;
+        continue;
+        return;
+        paramClass = finally;
+        throw paramClass;
+      }
+      catch (Throwable localThrowable)
+      {
+        break label102;
       }
     }
-    label111:
-    for (Object localObject = paramJSONObject.toString();; localObject = "empty")
+  }
+  
+  public beyi a(Class<? extends beyi> paramClass)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    beyi localbeyi;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      besl.a("MiniProgramLpReportDC04682", (String)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).addAll(a(paramMiniAppInfo));
-      ((List)localObject).addAll(a(paramJSONObject));
-      if (!bfgt.a()) {
-        ((List)localObject).addAll(beyn.a());
+      localbeyi = this.jdField_a_of_type_Beyi;
+      localObject1 = localObject2;
+      try
+      {
+        if (this.jdField_a_of_type_Int <= 0) {
+          break label101;
+        }
+        localObject1 = this.jdField_a_of_type_Beyi.a();
+        if (localObject1 == null) {
+          throw new RuntimeException("WTF");
+        }
       }
-      paramMiniAppInfo = beyn.a(7, (List)localObject, null);
-      beyo.a().a(paramMiniAppInfo);
-      return;
+      finally {}
+      if (!((beyi)localObject1).a) {
+        throw new RuntimeException("WTF");
+      }
+      this.jdField_a_of_type_Beyi.a(beyi.a((beyi)localObject1), false);
+      ((beyi)localObject1).a = false;
+      this.jdField_a_of_type_Int -= 1;
     }
+    label101:
+    if (localObject1 == null) {
+      try
+      {
+        paramClass = (beyi)paramClass.newInstance();
+        return paramClass;
+      }
+      catch (Throwable paramClass)
+      {
+        return localObject1;
+      }
+    }
+    return localObject1;
   }
 }
 

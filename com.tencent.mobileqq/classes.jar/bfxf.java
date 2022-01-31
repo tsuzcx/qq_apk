@@ -1,6 +1,6 @@
-public abstract interface bfxf
+abstract interface bfxf
 {
-  public abstract int a();
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

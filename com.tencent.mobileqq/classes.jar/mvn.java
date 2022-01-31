@@ -1,32 +1,33 @@
-import com.tencent.av.widget.stageview.StageEffectView;
-import com.tencent.av.widget.stageview.StageMemberView;
-import java.util.Comparator;
+import android.os.SystemClock;
 
 public class mvn
-  implements Comparator<StageMemberView>
 {
-  public mvn(StageEffectView paramStageEffectView) {}
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
+  private mvn(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
-      return 0;
+    this.b = mvf.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mvf.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
     }
-    if (paramStageMemberView2 == null) {
-      return -1;
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
+    {
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
+      return;
+      this.d = paramInt1;
     }
-    if (paramStageMemberView1 == null) {
-      return 1;
-    }
-    paramStageMemberView1 = (mvt)paramStageMemberView1.getTag();
-    paramStageMemberView2 = (mvt)paramStageMemberView2.getTag();
-    if (paramStageMemberView1.a == paramStageMemberView2.a) {
-      return 0;
-    }
-    if (mvi.a(paramStageMemberView1.a - 10000, 20000) < mvi.a(paramStageMemberView2.a - 10000, 20000)) {
-      return -1;
-    }
-    return 1;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 

@@ -1,22 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-public final class wbk
-  implements mzb
+public class wbk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
-      PngQuantUtils.a.set(false);
-    }
-  }
+  public wbk(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void progress(int paramInt) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
+  }
 }
 
 

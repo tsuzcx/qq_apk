@@ -1,4 +1,3 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
@@ -10,9 +9,7 @@ public class aati
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
-    }
+    ChatSettingActivity.c(this.a);
   }
 }
 

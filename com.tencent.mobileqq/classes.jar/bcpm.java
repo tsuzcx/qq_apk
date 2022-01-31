@@ -1,18 +1,24 @@
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mobileqq.widget.QQBlurView;
-
 public class bcpm
-  implements ViewTreeObserver.OnPreDrawListener
 {
-  public bcpm(QQBlurView paramQQBlurView) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public boolean onPreDraw()
+  public String toString()
   {
-    if (!QQBlurView.a(this.a)) {}
-    while (!QQBlurView.a(this.a).a()) {
-      return true;
-    }
-    return QQBlurView.a(this.a).b();
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", vid=").append(this.c);
+    localStringBuilder.append(", jumpUrl=").append(this.d);
+    localStringBuilder.append(", spiritImageUrl=").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 

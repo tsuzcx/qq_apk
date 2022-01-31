@@ -1,18 +1,19 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLoading;
-import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
+import com.tencent.qphone.base.util.QLog;
 
 class arix
-  implements CustomizedLoading
+  implements CustomizedLog
 {
-  arix(arii paramarii) {}
+  arix(arik paramarik) {}
   
-  public void onShowLoading(Context paramContext, Bundle paramBundle, View paramView)
+  public void onFlushLogs() {}
+  
+  public void onLog(int paramInt, String paramString1, String paramString2)
   {
-    LoadingFragment.a(paramContext, paramBundle, paramView);
+    QLog.i(paramString1, 1, paramString2);
   }
+  
+  public void onUploadLogs() {}
 }
 
 

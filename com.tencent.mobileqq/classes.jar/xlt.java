@@ -1,38 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 class xlt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  xlt(xlo paramxlo) {}
+  xlt(xls paramxls) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
-      }
-      switch (paramInt)
-      {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
-        }
-        break;
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      xlo.h(this.a);
-      return;
-      xlo.i(this.a);
-      return;
-    }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
+    this.a.b.setClickable(false);
   }
 }
 

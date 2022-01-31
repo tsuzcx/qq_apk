@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bdgv;
+import bdhk;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$12
   implements Runnable
 {
-  public DownloadManagerV2$12(bdgv parambdgv, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$12(bdhk parambdhk, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    bdgv.c(this.this$0, this.a);
+    bdhk.c(this.this$0, this.a);
   }
 }
 

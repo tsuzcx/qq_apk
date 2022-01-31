@@ -1,18 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
 public class abaa
-  implements View.OnClickListener
+  extends ajxj
 {
-  public abaa(EditActivity paramEditActivity) {}
+  public abaa(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
     }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
   }
 }
 

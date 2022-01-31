@@ -1,8 +1,10 @@
 public abstract interface amnf
 {
-  public abstract void a();
+  public abstract int a();
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract int a(int paramInt);
+  
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

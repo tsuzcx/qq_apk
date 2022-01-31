@@ -9,7 +9,7 @@ public class cg
   
   public void onClick(View paramView)
   {
-    actn.n = true;
+    actj.n = true;
     paramView = (fw)((fw)paramView.getTag()).clone();
     this.a.a(paramView);
   }

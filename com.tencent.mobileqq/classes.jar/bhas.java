@@ -1,42 +1,59 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Vector;
 
-public class bhas
+class bhas
+  implements Downloader.DownloadListener
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  public final long c;
-  public final long d;
-  public final long e;
-  public final long f;
+  bhas(bhar parambhar, bhat parambhat) {}
   
-  private bhas(ByteBuffer paramByteBuffer, int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    switch (paramInt)
+    bhar.a(this.jdField_a_of_type_Bhar, false);
+    if (bhar.a(this.jdField_a_of_type_Bhar).size() > 0)
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.c = paramByteBuffer.getInt();
-      this.d = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.f = paramByteBuffer.getInt();
-      return;
+      bhat localbhat = (bhat)bhar.a(this.jdField_a_of_type_Bhar).get(0);
+      bhar.a(this.jdField_a_of_type_Bhar).remove(0);
+      bhar.a(this.jdField_a_of_type_Bhar, localbhat);
     }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-    this.c = paramByteBuffer.getLong();
-    this.d = paramByteBuffer.getLong();
-    this.e = paramByteBuffer.getLong();
-    this.f = paramByteBuffer.getLong();
+    if (this.jdField_a_of_type_Bhat.a != null) {
+      this.jdField_a_of_type_Bhat.a.onDownloadCanceled(paramString);
+    }
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    bhar.a(this.jdField_a_of_type_Bhar, false);
+    if (bhar.a(this.jdField_a_of_type_Bhar).size() > 0)
+    {
+      bhat localbhat = (bhat)bhar.a(this.jdField_a_of_type_Bhar).get(0);
+      bhar.a(this.jdField_a_of_type_Bhar).remove(0);
+      bhar.a(this.jdField_a_of_type_Bhar, localbhat);
+    }
+    if (this.jdField_a_of_type_Bhat.a != null) {
+      this.jdField_a_of_type_Bhat.a.onDownloadFailed(paramString, paramDownloadResult);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (this.jdField_a_of_type_Bhat.a != null) {
+      this.jdField_a_of_type_Bhat.a.onDownloadProgress(paramString, paramLong, paramFloat);
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    bhar.a(this.jdField_a_of_type_Bhar, false);
+    if (bhar.a(this.jdField_a_of_type_Bhar).size() > 0)
+    {
+      bhat localbhat = (bhat)bhar.a(this.jdField_a_of_type_Bhar).get(0);
+      bhar.a(this.jdField_a_of_type_Bhar).remove(0);
+      bhar.a(this.jdField_a_of_type_Bhar, localbhat);
+    }
+    if (this.jdField_a_of_type_Bhat.a != null) {
+      this.jdField_a_of_type_Bhat.a.onDownloadSucceed(paramString, paramDownloadResult);
+    }
   }
 }
 

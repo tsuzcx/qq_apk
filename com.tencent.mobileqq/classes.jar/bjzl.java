@@ -1,29 +1,46 @@
 import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
 
 public class bjzl
-  extends JobSegment<Bitmap, Bitmap>
+  extends bkaa
 {
-  public final float a;
-  public final boolean a;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public String a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public bjzl(float paramFloat, boolean paramBoolean)
+  public bjzl(int paramInt, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramInt, paramBitmap);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  public bjzl a(Bitmap paramBitmap)
   {
-    paramJobContext = vxy.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
-      return;
-    }
-    super.notifyResult(paramJobContext);
+    paramBitmap = new bjzl(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

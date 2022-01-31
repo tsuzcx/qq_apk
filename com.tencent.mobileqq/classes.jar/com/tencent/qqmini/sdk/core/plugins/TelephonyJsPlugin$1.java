@@ -1,27 +1,27 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import bekg;
-import besl;
+import bekr;
+import bekx;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class TelephonyJsPlugin$1
   implements AsyncResult
 {
-  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, beka parambeka) {}
+  TelephonyJsPlugin$1(TelephonyJsPlugin paramTelephonyJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.a("TelephonyJsPlugin", "onCmdListener result = " + paramJSONObject);
+    betc.a("TelephonyJsPlugin", "onCmdListener result = " + paramJSONObject);
     if ((paramBoolean) && (paramJSONObject != null))
     {
       paramJSONObject.remove("countryCode");
       paramJSONObject.remove("purePhoneNumber");
-      this.val$req.a(bekg.a(this.val$req.a, paramJSONObject));
+      this.val$req.a(bekx.a(this.val$req.a, paramJSONObject));
       return;
     }
-    this.val$req.a(bekg.b(this.val$req.a, null).toString());
+    this.val$req.a(bekx.b(this.val$req.a, null).toString());
   }
 }
 

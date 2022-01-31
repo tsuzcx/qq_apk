@@ -1,18 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
+import java.util.ArrayList;
 
-class bkpr
-  implements DialogInterface.OnClickListener
+public abstract interface bkpr
 {
-  bkpr(bkpo parambkpo) {}
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ((bkpk)this.a.a).f(false);
-    bkpo.a(this.a).setSelected(false);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

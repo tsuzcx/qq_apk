@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry;
 
-import ahfz;
+import ahfx;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
@@ -10,7 +10,7 @@ import mqq.app.AppRuntime;
 public class SpringHbEntryManager$19
   implements Runnable
 {
-  public SpringHbEntryManager$19(ahfz paramahfz, boolean paramBoolean, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo) {}
+  public SpringHbEntryManager$19(ahfx paramahfx, boolean paramBoolean, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo) {}
   
   public void run()
   {

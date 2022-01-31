@@ -1,69 +1,21 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.TMG.utils.QLog;
 
-public class aaen
-  implements aabm
+class aaen
+  implements DialogInterface.OnCancelListener
 {
-  EditText a;
+  aaen(aaek paramaaek, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public aaen() {}
-  
-  public aaen(EditText paramEditText)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a = paramEditText;
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.a == null) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
     {
-      a(paramString, bool);
+      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
       return;
     }
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    QLog.d("DoraemonOpenAPI.test", 2, paramString);
-    if (this.a != null) {
-      this.a.append(paramString);
-    }
-    if (paramBoolean) {
-      bcpw.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
-    }
-  }
-  
-  public void onComplete()
-  {
-    a("onComplete\n");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    a("onPermission " + paramInt + "\n", true);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    a("onSuccess " + paramJSONObject + "\n", true);
-    if (this.a != null) {
-      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(ajyc.a(2131714846), null).create().show();
-    }
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    a("onTrigger\n");
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+    axqy.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
   }
 }
 

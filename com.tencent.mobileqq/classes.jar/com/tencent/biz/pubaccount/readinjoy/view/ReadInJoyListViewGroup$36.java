@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rao;
+import ral;
 
 class ReadInJoyListViewGroup$36
   implements Runnable

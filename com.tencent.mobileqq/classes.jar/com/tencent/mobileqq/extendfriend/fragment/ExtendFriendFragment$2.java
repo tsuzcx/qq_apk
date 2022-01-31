@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import bgxy;
+import bgyp;
 
 class ExtendFriendFragment$2
   implements Runnable
@@ -11,7 +11,7 @@ class ExtendFriendFragment$2
   public void run()
   {
     if (ExtendFriendFragment.a(this.this$0) != null) {
-      bgxy.a(ExtendFriendFragment.a(this.this$0).app, "extend");
+      bgyp.a(ExtendFriendFragment.a(this.this$0).app, "extend");
     }
   }
 }

@@ -1,18 +1,37 @@
-import android.view.View;
 import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.widget.AdapterView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
 class arwl
-  implements bfpc
+  implements bfos
 {
-  arwl(arwh paramarwh, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
+  private int jdField_a_of_type_Int;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  arwl(arwj paramarwj) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    arwh.a(this.jdField_a_of_type_Arwh, true);
-    arwh.a(this.jdField_a_of_type_Arwh).a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
-      axqw.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
+    paramInt = paramAbsListView.getFirstVisiblePosition();
+    if (paramInt > this.jdField_a_of_type_Int)
+    {
+      if (!arwj.a(this.jdField_a_of_type_Arwj).b()) {
+        arwj.a(this.jdField_a_of_type_Arwj).a();
+      }
+      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LocationShareController", 4, "onScrollStateChanged");
+        }
+        arwj.a(this.jdField_a_of_type_Arwj).a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      if (paramInt >= this.jdField_a_of_type_Int) {}
     }
   }
 }

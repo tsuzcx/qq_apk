@@ -1,13 +1,8 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.MotionEvent;
 
-final class bkbn
-  implements FilenameFilter
+public abstract interface bkbn<T extends bkbm>
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
-  }
+  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
 }
 
 

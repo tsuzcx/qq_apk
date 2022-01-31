@@ -1,18 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-final class bbyv
-  implements MediaPlayer.OnPreparedListener
+public class bbyv
 {
-  bbyv(bbyz parambbyz) {}
+  public int a;
+  public boolean a;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public bbyv()
   {
-    paramMediaPlayer.start();
-    paramMediaPlayer.setLooping(true);
-    if (this.a != null) {
-      this.a.a();
+    this.jdField_a_of_type_Int = -30009;
+  }
+  
+  public bbyv(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+    if ((this.jdField_a_of_type_Int == 0) && (paramJSONObject.optInt("flag", 0) == 1)) {}
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+      bool = false;
     }
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoStatusRsp{ret=" + this.jdField_a_of_type_Int + ", flag=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

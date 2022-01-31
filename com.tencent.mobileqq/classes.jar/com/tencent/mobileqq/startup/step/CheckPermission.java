@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajyc;
-import akcz;
+import ajya;
+import akcy;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -11,15 +11,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Process;
-import axnv;
-import axny;
-import axnz;
+import axnx;
 import axoa;
 import axob;
 import axoc;
 import axod;
-import bbcv;
-import bbgg;
+import axoe;
+import axof;
+import bbdj;
+import bbgu;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppActivity;
 import mqq.app.BaseActivity;
@@ -29,7 +29,7 @@ public class CheckPermission
   extends Step
   implements DialogInterface.OnClickListener, QQPermissionCallback
 {
-  private static final String[] EXPLAINS = { ajyc.a(2131701765), "QQ使用电话权限确定本机号码和设备ID，以保证帐号登录的安全性。QQ不会拨打其他号码或终止通话。\n请在设置中开启电话权限，以正常使用QQ功能。" };
+  private static final String[] EXPLAINS = { ajya.a(2131701776), "QQ使用电话权限确定本机号码和设备ID，以保证帐号登录的安全性。QQ不会拨打其他号码或终止通话。\n请在设置中开启电话权限，以正常使用QQ功能。" };
   private static final String[] PERMS;
   private static boolean sHasPhonePermission;
   private static boolean sHasStoragePermission;
@@ -99,9 +99,9 @@ public class CheckPermission
     paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { PERMS[1] });
   }
   
-  public static void requestSDCardPermission(AppActivity paramAppActivity, axod paramaxod)
+  public static void requestSDCardPermission(AppActivity paramAppActivity, axof paramaxof)
   {
-    paramAppActivity.requestPermissions(new axoa(paramaxod, paramAppActivity), 1, new String[] { PERMS[0] });
+    paramAppActivity.requestPermissions(new axoc(paramaxof, paramAppActivity), 1, new String[] { PERMS[0] });
   }
   
   public static void requestStoragePermission(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
@@ -110,42 +110,42 @@ public class CheckPermission
   }
   
   @TargetApi(23)
-  public static void requestStorePermission(Activity paramActivity, axod paramaxod)
+  public static void requestStorePermission(Activity paramActivity, axof paramaxof)
   {
     if ((paramActivity instanceof AppActivity))
     {
-      requestSDCardPermission((AppActivity)paramActivity, paramaxod);
+      requestSDCardPermission((AppActivity)paramActivity, paramaxof);
       return;
     }
     if ((paramActivity instanceof BaseActivity))
     {
-      ((BaseActivity)paramActivity).requestPermissions(new axob(paramaxod, paramActivity), 1, new String[] { PERMS[0] });
+      ((BaseActivity)paramActivity).requestPermissions(new axod(paramaxof, paramActivity), 1, new String[] { PERMS[0] });
       return;
     }
     paramActivity.requestPermissions(new String[] { PERMS[0] }, 1);
   }
   
-  public static void requestStorePermissionWithWarning(Activity paramActivity, axod paramaxod)
+  public static void requestStorePermissionWithWarning(Activity paramActivity, axof paramaxof)
   {
     if ((paramActivity instanceof BaseActivity)) {
-      ((BaseActivity)paramActivity).requestPermissions(new axoc(paramaxod, paramActivity), 1, new String[] { PERMS[0] });
+      ((BaseActivity)paramActivity).requestPermissions(new axoe(paramaxof, paramActivity), 1, new String[] { PERMS[0] });
     }
   }
   
-  public static void showSDCardExplainDialog(AppActivity paramAppActivity, axod paramaxod)
+  public static void showSDCardExplainDialog(AppActivity paramAppActivity, axof paramaxof)
   {
     try
     {
-      String str1 = ajyc.a(2131707939);
-      String str2 = ajyc.a(2131701762);
-      bbgg localbbgg = bbcv.a(paramAppActivity, 230);
-      localbbgg.setTitle(str2);
-      localbbgg.setMessage(str1);
-      paramAppActivity = new axnz(paramAppActivity, paramaxod);
-      localbbgg.setNegativeButton(ajyc.a(2131701764), paramAppActivity);
-      localbbgg.setPositiveButton(ajyc.a(2131701763), paramAppActivity);
-      localbbgg.setOnDismissListener(null);
-      localbbgg.show();
+      String str1 = ajya.a(2131707950);
+      String str2 = ajya.a(2131701773);
+      bbgu localbbgu = bbdj.a(paramAppActivity, 230);
+      localbbgu.setTitle(str2);
+      localbbgu.setMessage(str1);
+      paramAppActivity = new axob(paramAppActivity, paramaxof);
+      localbbgu.setNegativeButton(ajya.a(2131701775), paramAppActivity);
+      localbbgu.setPositiveButton(ajya.a(2131701774), paramAppActivity);
+      localbbgu.setOnDismissListener(null);
+      localbbgu.show();
       return;
     }
     catch (Throwable paramAppActivity) {}
@@ -161,10 +161,10 @@ public class CheckPermission
     for (;;)
     {
       return true;
-      if (akcz.a(0))
+      if (akcy.a(0))
       {
-        paramAppActivity = new axny(this);
-        akcz.a(this.mAct, "", paramAppActivity, paramAppActivity).show();
+        paramAppActivity = new axoa(this);
+        akcy.a(this.mAct, "", paramAppActivity, paramAppActivity).show();
         return false;
       }
       if (sSystemPermissionShow)
@@ -191,14 +191,14 @@ public class CheckPermission
   {
     QLog.d("AutoMonitor", 1, "deny" + paramInt);
     paramArrayOfString = EXPLAINS[(paramInt - 1)];
-    paramArrayOfInt = ajyc.a(2131701762);
-    bbgg localbbgg = bbcv.a(this.mAct, 230);
-    localbbgg.setTitle(paramArrayOfInt);
-    localbbgg.setMessage(paramArrayOfString);
-    localbbgg.setNegativeButton(ajyc.a(2131701764), this);
-    localbbgg.setPositiveButton(ajyc.a(2131701763), this);
-    localbbgg.setOnDismissListener(null);
-    localbbgg.show();
+    paramArrayOfInt = ajya.a(2131701773);
+    bbgu localbbgu = bbdj.a(this.mAct, 230);
+    localbbgu.setTitle(paramArrayOfInt);
+    localbbgu.setMessage(paramArrayOfString);
+    localbbgu.setNegativeButton(ajya.a(2131701775), this);
+    localbbgu.setPositiveButton(ajya.a(2131701774), this);
+    localbbgu.setOnDismissListener(null);
+    localbbgu.show();
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)

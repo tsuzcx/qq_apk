@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abwv;
+import abwr;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class QQSettingMe$31$2
   implements Runnable
 {
-  public QQSettingMe$31$2(abwv paramabwv) {}
+  public QQSettingMe$31$2(abwr paramabwr) {}
   
   public void run()
   {

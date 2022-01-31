@@ -1,38 +1,42 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class afzp
-  implements View.OnClickListener
+  extends mxj
 {
-  public afzp(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public afzp(ChatHistoryTroopMemberFragment.21 param21) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("troop_uin", this.a.c);
-    List localList = (List)this.a.jdField_a_of_type_Agaw.a.get(ChatHistoryTroopMemberFragment.a(this.a));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localList.size())
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
     {
-      localArrayList.add(((agau)localList.get(i)).a);
-      i += 1;
-    }
-    localIntent.putExtra("members_uin", localArrayList);
-    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
-    paramView = ((TroopManager)this.a.getActivity().app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
-    bbbb.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bbbb.a(paramView) });
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
+            ChatHistoryTroopMemberFragment.c(this.a.this$0);
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
   }
 }
 

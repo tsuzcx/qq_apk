@@ -1,13 +1,29 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.qphone.base.util.QLog;
 
 public final class alst
-  implements ArkEnvironmentManager.ThreadCreater
+  implements ArkEnvironmentManager.Log
 {
-  public HandlerThread createHanderThread(String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 

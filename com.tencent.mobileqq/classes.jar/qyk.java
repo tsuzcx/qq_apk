@@ -1,30 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class qyk
-  extends Handler
+public class qyk
 {
-  qyk(qyj paramqyj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qyj.a(this.a));
-      }
-    } while (!qyj.a(this.a));
-    this.a.a(1);
-  }
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public SeekBar a;
+  public TextView a;
+  public URLImageView a;
+  public ViewGroup b;
+  public SeekBar b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
 }
 
 

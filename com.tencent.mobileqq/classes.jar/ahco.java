@@ -1,17 +1,32 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
-import eipc.EIPCResult;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 
 class ahco
-  implements axnm
+  implements OnUpdateListener
 {
-  ahco(ahci paramahci, int paramInt) {}
+  ahco(ahcg paramahcg, ResultReceiver paramResultReceiver) {}
   
-  public void a(SoConfig.SoInfo paramSoInfo)
+  public void onCheckForUpdate(boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("res", paramSoInfo);
-    this.jdField_a_of_type_Ahci.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 0);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
+  }
+  
+  public void onUpdateSucc(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 1);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
   }
 }
 

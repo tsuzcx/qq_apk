@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.model;
 
-import askd;
+import askf;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonManager$8
   implements Runnable
 {
-  public EmoticonManager$8(askd paramaskd, EmoticonPackage paramEmoticonPackage) {}
+  public EmoticonManager$8(askf paramaskf, EmoticonPackage paramEmoticonPackage) {}
   
   public void run()
   {
-    if (!askd.a(this.this$0, this.a)) {
+    if (!askf.a(this.this$0, this.a)) {
       QLog.e("EmoticonManager", 1, "saveEmoticonPackage fail epId = " + this.a.epId);
     }
   }

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.gallery.view;
 
-import aqnd;
-import aqob;
+import aqnf;
+import aqod;
 
 public class AIOGalleryActivity$2$2
   implements Runnable
 {
-  public AIOGalleryActivity$2$2(aqob paramaqob, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  public AIOGalleryActivity$2$2(aqod paramaqod, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_Aqob.a) != null) {
-      AIOGalleryActivity.a(this.jdField_a_of_type_Aqob.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    if (AIOGalleryActivity.a(this.jdField_a_of_type_Aqod.a) != null) {
+      AIOGalleryActivity.a(this.jdField_a_of_type_Aqod.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
     }
   }
 }

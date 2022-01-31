@@ -1,31 +1,35 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uvg
-  extends QQUIEventReceiver<StoryMessageListActivity, tdm>
+  extends uvh<BannerFeedItem>
 {
-  public uvg(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  public uvg(@NonNull BannerFeedItem paramBannerFeedItem)
   {
-    super(paramStoryMessageListActivity);
+    super(paramBannerFeedItem);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull tdm paramtdm)
+  public List<StoryVideoItem> a()
   {
-    if (paramtdm.a.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.g();
-    }
+    return new ArrayList(0);
   }
   
-  public Class acceptEventClass()
+  public void a() {}
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    return tdm.class;
+    qqstory_struct.BannerFeed localBannerFeed = (qqstory_struct.BannerFeed)paramStoryFeed.banner_feed.get();
+    ((BannerFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), localBannerFeed);
+    ((BannerFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    return true;
   }
 }
 

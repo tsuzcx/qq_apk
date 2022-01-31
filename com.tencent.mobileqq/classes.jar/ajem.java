@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
 class ajem
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ajem(ajek paramajek) {}
+  ajem(ajei paramajei) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ajek.a(this.a) != null)
+    if ((ajei.a(this.a).d()) || (ajei.b(this.a)))
     {
-      ajek.b(this.a).setVisibility(8);
-      ajek.c(this.a).setVisibility(8);
-      ajek.b(this.a, false);
-      ajek.a(this.a).a();
+      ajei.b(this.a, false);
+      ajei.a(this.a).a();
+      ajei.c(this.a).setVisibility(8);
+      ajei.b(this.a).setVisibility(8);
     }
-    this.a.a(6, 3, true);
+    while (!ajei.a(this.a).c()) {
+      return;
+    }
+    ajei.b(this.a, true);
+    ajei.a(this.a).b();
+    ajei.b(this.a).setVisibility(0);
   }
 }
 

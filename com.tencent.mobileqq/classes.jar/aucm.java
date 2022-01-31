@@ -1,13 +1,19 @@
-import android.app.Activity;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
 
-public abstract interface aucm
+public final class aucm
+  implements Parcelable.Creator<TranslateResult.Record>
 {
-  public abstract Activity a();
+  public TranslateResult.Record a(Parcel paramParcel)
+  {
+    return new TranslateResult.Record(paramParcel);
+  }
   
-  public abstract void a(View paramView);
-  
-  public abstract void a(boolean paramBoolean);
+  public TranslateResult.Record[] a(int paramInt)
+  {
+    return new TranslateResult.Record[paramInt];
+  }
 }
 
 

@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface aycl
 {
-  public abstract int a();
+  public abstract boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
 }
 
 

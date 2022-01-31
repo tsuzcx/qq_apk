@@ -1,98 +1,19 @@
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class tel
 {
+  @vyj(a="oa_task_id")
   public int a;
-  private final String a;
-  public final String[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public final int h;
-  
-  private tel(JSONObject paramJSONObject)
-  {
-    int j;
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
-      this.h = paramJSONObject.getJSONObject("a").getInt("r");
-      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      this.b = localJSONArray.getInt(0);
-      this.c = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
-      this.d = localJSONArray.getInt(0);
-      this.e = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
-      this.f = localJSONArray.getInt(0);
-      this.g = localJSONArray.getInt(1);
-      paramJSONObject = paramJSONObject.getJSONArray("c");
-      j = paramJSONObject.length();
-      if (j < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-    while (i < j)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
-      i += 1;
-    }
-  }
-  
-  public static tel a(@Nullable String paramString)
-  {
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-      return null;
-    }
-    catch (NullPointerException paramString)
-    {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-    }
-    return null;
-  }
-  
-  public static tel a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = new tel(paramJSONObject);
-      return paramJSONObject;
-    }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  @vyj(a="bg_url")
+  public String a;
+  @vyj(a="is_comp_able")
+  public boolean a;
+  @vyj(a="comp_vid")
+  public String b;
+  @vyj(a="icon_url")
+  public String c;
   
   public String toString()
   {
-    return "PollLayout{type=" + this.jdField_a_of_type_Int + ", screenWidth=" + this.b + ", screenHeight=" + this.c + ", layoutWidth=" + this.d + ", layoutHeight=" + this.e + ", layoutCenterX=" + this.f + ", layoutCenterY=" + this.g + ", rotation=" + this.h + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
+    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

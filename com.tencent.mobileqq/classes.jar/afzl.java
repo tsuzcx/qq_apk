@@ -1,10 +1,8 @@
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.ArrayList;
-import java.util.List;
 
 public class afzl
   implements View.OnClickListener
@@ -13,19 +11,9 @@ public class afzl
   
   public void onClick(View paramView)
   {
-    vxs.a(this.a.a);
-    vxs.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((agau)this.a.a.a.get(i)).a);
-      i += 1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.getActivity().setResult(-1, localIntent);
-    this.a.getActivity().finish();
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

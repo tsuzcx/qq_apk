@@ -1,14 +1,52 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
 
 public class bfmg
-  implements Animation.AnimationListener
+  implements GestureResource
 {
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public static String a;
+  public static boolean a;
+  public static String b = "200";
+  public static String c = "20";
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  static
+  {
+    jdField_a_of_type_JavaLangString = "5";
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String getGestureGapFrame()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public String getGestureGapTime()
+  {
+    return b;
+  }
+  
+  public boolean getGestureShouldUpload()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public String getGestureThreadColdTime()
+  {
+    return c;
+  }
+  
+  public String getModelPath()
+  {
+    return axgy.a();
+  }
+  
+  public String getSoPathDir()
+  {
+    return axgy.b();
+  }
+  
+  public boolean isGestureEnable()
+  {
+    return axgr.a().d();
+  }
 }
 
 

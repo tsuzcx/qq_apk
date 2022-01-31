@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,12 +22,12 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axqw;
-import bawu;
-import bbdr;
-import bbio;
-import bdto;
-import bgxy;
+import axqy;
+import baxi;
+import bbef;
+import bbjc;
+import bduf;
+import bgyp;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -62,7 +62,7 @@ public class ShortcutGuideActivity
     //   19: aload_0
     //   20: aload_0
     //   21: ldc 37
-    //   23: invokestatic 42	bbio:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokestatic 42	bbjc:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   26: putfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   29: aload_0
     //   30: getfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
@@ -203,7 +203,7 @@ public class ShortcutGuideActivity
       if (paramString != null)
       {
         int i = getResources().getDimensionPixelSize(2131298688);
-        localObject = bbdr.c(paramString, i, i);
+        localObject = bbef.c(paramString, i, i);
         this.jdField_b_of_type_Boolean = true;
       }
       return localObject;
@@ -213,7 +213,7 @@ public class ShortcutGuideActivity
   private static Bitmap a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte.length != 0) {
-      return bawu.a(paramArrayOfByte, 0, paramArrayOfByte.length);
+      return baxi.a(paramArrayOfByte, 0, paramArrayOfByte.length);
     }
     return null;
   }
@@ -230,39 +230,39 @@ public class ShortcutGuideActivity
     }
     if ("shortcutFromQZonePhotolist".equals(localObject2))
     {
-      findViewById(2131365143).setVisibility(8);
+      findViewById(2131365142).setVisibility(8);
       return;
     }
     Object localObject1;
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
     {
-      findViewById(2131373107).setVisibility(8);
-      findViewById(2131373110).setVisibility(8);
+      findViewById(2131373109).setVisibility(8);
+      findViewById(2131373112).setVisibility(8);
       localObject1 = a(false, localIntent.getStringExtra("sid"));
       label130:
       if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
         this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(b());
       }
-      findViewById(2131365143).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+      findViewById(2131365142).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
       if (localObject1 == null) {
         break label448;
       }
-      ((ImageView)findViewById(2131373106)).setImageBitmap((Bitmap)localObject1);
+      ((ImageView)findViewById(2131373108)).setImageBitmap((Bitmap)localObject1);
     }
     for (;;)
     {
       localObject1 = localIntent.getStringExtra("uinname");
-      TextView localTextView = (TextView)findViewById(2131373108);
+      TextView localTextView = (TextView)findViewById(2131373110);
       if (localObject1 != null)
       {
         localTextView.setText((CharSequence)localObject1);
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
         {
-          localTextView.setText((String)localObject1 + ajyc.a(2131714016));
+          localTextView.setText((String)localObject1 + ajya.a(2131714027));
           localTextView.setTextSize(16.0F);
-          ((TextView)findViewById(2131373109)).setVisibility(8);
-          ((TextView)findViewById(2131376428)).setVisibility(0);
-          localObject1 = (TextView)findViewById(2131376429);
+          ((TextView)findViewById(2131373111)).setVisibility(8);
+          ((TextView)findViewById(2131376430)).setVisibility(0);
+          localObject1 = (TextView)findViewById(2131376431);
           localObject2 = (String)((TextView)localObject1).getText();
           int i = ((String)localObject2).indexOf("TA");
           localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
@@ -271,17 +271,17 @@ public class ShortcutGuideActivity
           ((TextView)localObject1).setVisibility(0);
         }
       }
-      if ((this.mRuntime == null) || (!(this.mRuntime instanceof QQAppInterface)) || (!bdto.b((QQAppInterface)this.mRuntime, localIntent.getStringExtra("uin")))) {
+      if ((this.mRuntime == null) || (!(this.mRuntime instanceof QQAppInterface)) || (!bduf.b((QQAppInterface)this.mRuntime, localIntent.getStringExtra("uin")))) {
         break;
       }
-      findViewById(2131373110).setVisibility(8);
+      findViewById(2131373112).setVisibility(8);
       return;
-      findViewById(2131373107).setOnClickListener(this);
-      findViewById(2131373110).setOnClickListener(this);
+      findViewById(2131373109).setOnClickListener(this);
+      findViewById(2131373112).setOnClickListener(this);
       localObject1 = a(true, localIntent.getStringExtra("uin"));
       break label130;
       label448:
-      ((ImageView)findViewById(2131373106)).setImageResource(2130840058);
+      ((ImageView)findViewById(2131373108)).setImageResource(2130840055);
     }
   }
   
@@ -296,17 +296,17 @@ public class ShortcutGuideActivity
   
   private Bitmap b()
   {
-    return bbdr.b(bawu.a(getResources(), 2130845255), 14.0F, 540, 620);
+    return bbef.b(baxi.a(getResources(), 2130845257), 14.0F, 540, 620);
   }
   
   private Bitmap b(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {}
-    for (paramString = QQAppInterface.a(paramString);; paramString = bbio.a(paramString))
+    for (paramString = QQAppInterface.a(paramString);; paramString = bbjc.a(paramString))
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      return bawu.a(paramString, localOptions);
+      return baxi.a(paramString, localOptions);
     }
   }
   
@@ -352,7 +352,7 @@ public class ShortcutGuideActivity
         if (paramBundle != null) {
           paramBundle.b();
         }
-        bgxy.a(this, getIntent().getStringExtra("UploadPhoto.key_album_id"), getIntent().getLongExtra("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
+        bgyp.a(this, getIntent().getStringExtra("UploadPhoto.key_album_id"), getIntent().getLongExtra("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
         finish();
         return true;
       }
@@ -377,11 +377,11 @@ public class ShortcutGuideActivity
         if (paramBundle == null) {
           break label528;
         }
-        ((ImageView)findViewById(2131373106)).setImageBitmap(paramBundle);
+        ((ImageView)findViewById(2131373108)).setImageBitmap(paramBundle);
       }
       for (;;)
       {
-        axqw.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_head", 0, 0, "", "", "", "");
+        axqy.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_head", 0, 0, "", "", "", "");
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals("starShortcut")))
         {
           localIntent.putExtra("shotcut_forward", ChatActivity.class.getName());
@@ -397,7 +397,7 @@ public class ShortcutGuideActivity
         paramBundle = a(true, localIntent.getStringExtra("uin"));
         break;
         label528:
-        ((ImageView)findViewById(2131373106)).setImageResource(2130840058);
+        ((ImageView)findViewById(2131373108)).setImageResource(2130840055);
       }
       return false;
     }
@@ -434,11 +434,11 @@ public class ShortcutGuideActivity
       finish();
       return;
       localIntent.putExtra("shotcut_forward", SplashActivity.class.getName());
-      actn.a(localIntent, new int[] { 2 });
-      axqw.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "0", "", "", "");
+      actj.a(localIntent, new int[] { 2 });
+      axqy.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "0", "", "", "");
       continue;
       localIntent.putExtra("shotcut_forward", AVActivity.class.getName());
-      axqw.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_call", 0, 0, "", "", "", "");
+      axqy.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_call", 0, 0, "", "", "", "");
     }
   }
   
@@ -463,7 +463,7 @@ public class ShortcutGuideActivity
       if ("shortcutFromQZonePhotolist".equals(str)) {
         return true;
       }
-      super.setContentView(2131561101);
+      super.setContentView(2131561100);
       a();
       this.jdField_a_of_type_Boolean = true;
       return true;

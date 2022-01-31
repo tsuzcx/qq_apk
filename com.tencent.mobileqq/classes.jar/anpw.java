@@ -1,35 +1,60 @@
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class anpw
-  extends anpx
+  extends anpn
 {
   public anpw(QQAppInterface paramQQAppInterface)
   {
-    super(e(), paramQQAppInterface);
+    super("qq.android.early.precover", paramQQAppInterface);
   }
   
-  public static String e()
+  public int a()
   {
-    if (AppSetting.b) {
-      return "qq.android.qav.sov9_828_for_arm64";
-    }
-    if (lmb.f() <= 2) {
-      return "qq.android.qav.so_665";
-    }
-    return "qq.android.qav.sov9_828";
+    return 10045;
   }
   
   public Class<? extends XmlData> a()
   {
-    return QavSoData.class;
+    return PrecoverData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPrecover";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
   
   public String b()
   {
-    return null;
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
   }
 }
 

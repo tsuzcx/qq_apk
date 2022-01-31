@@ -1,16 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
 public class wud
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public wud(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VideoPlayerView.h(this.a);
-    this.a.f();
+    VideoPlayerView.a(this.a);
+    return false;
   }
 }
 

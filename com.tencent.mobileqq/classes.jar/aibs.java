@@ -1,186 +1,228 @@
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewConfiguration;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.ListView;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public final class aibs
-  implements aicg
+  implements adif, aica
 {
-  private aice jdField_a_of_type_Aice;
-  private aicf jdField_a_of_type_Aicf;
-  private aici jdField_a_of_type_Aici;
-  private boolean jdField_a_of_type_Boolean = true;
-  private aicf b;
+  private static final int jdField_a_of_type_Int = bbll.b(50.0F);
+  private static int jdField_b_of_type_Int = -1;
+  private long jdField_a_of_type_Long = -1L;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
+  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d = -1;
+  private int e = -1;
   
-  private aibp a()
+  public aibs(BaseChatPie paramBaseChatPie)
   {
-    aibp localaibp = aibp.a();
-    if (this != localaibp.a()) {
-      throw new IllegalStateException("The proxy has been not attached.");
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if (jdField_b_of_type_Int == -1)
+    {
+      int i = ViewConfiguration.get(paramBaseChatPie.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop();
+      jdField_b_of_type_Int = i * i;
     }
-    return localaibp;
-  }
-  
-  public int a()
-  {
-    return a().a();
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    return a().a(paramInt1, paramInt2);
   }
   
   public void a()
   {
-    a().a();
+    aibn localaibn = aibn.a();
+    if (localaibn.c()) {
+      localaibn.d();
+    }
   }
   
   public void a(int paramInt)
   {
-    a().a(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    a().a(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    a().a(paramInt1, paramInt2, paramBoolean);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    a().a(paramInt, paramBoolean);
-  }
-  
-  public void a(@NonNull aice paramaice)
-  {
-    this.jdField_a_of_type_Aice = paramaice;
-    this.jdField_a_of_type_Aice.bind(this);
-  }
-  
-  public void a(@NonNull aicf paramaicf1, @NonNull aicf paramaicf2)
-  {
-    this.jdField_a_of_type_Aicf = paramaicf1;
-    this.jdField_a_of_type_Aicf.a(this);
-    this.b = paramaicf2;
-    this.b.a(this);
-  }
-  
-  public void a(@NonNull aici paramaici)
-  {
-    this.jdField_a_of_type_Aici = paramaici;
-    this.jdField_a_of_type_Aici.a(this);
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    aibp localaibp = aibp.a();
-    aibs localaibs = localaibp.a();
-    if (localaibs != null)
+    switch (paramInt)
     {
-      if (this == localaibs) {}
-      localaibp.d();
     }
-    localaibp.a(this);
-    localaibp.a(this.jdField_a_of_type_Aice);
-    localaibp.a(this.jdField_a_of_type_Aicf, this.b);
-    localaibp.a(this.jdField_a_of_type_Aici);
-    localaibp.a(paramChatMessage);
-  }
-  
-  public boolean a()
-  {
-    return a().a();
-  }
-  
-  public int b()
-  {
-    return a().b();
-  }
-  
-  public void b()
-  {
-    a().b();
-  }
-  
-  public void b(int paramInt)
-  {
-    aibp.a().b(paramInt);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    a().b(paramInt1, paramInt2);
-  }
-  
-  public void b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    aibp localaibp;
+    aibn localaibn;
     do
     {
+      View localView;
       do
       {
         do
         {
+          do
+          {
+            do
+            {
+              return;
+              localaibn = aibn.a();
+              localaibn.a(this);
+              this.jdField_b_of_type_Boolean = true;
+            } while ((!localaibn.c()) || (localaibn.a()));
+            localaibn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+            return;
+            aibn.a().b(this);
+            this.jdField_b_of_type_Boolean = false;
+            return;
+            localaibn = aibn.a();
+          } while (!localaibn.c());
+          localaibn.d();
           return;
-          localaibp = aibp.a();
-        } while ((!localaibp.c()) || (localaibp.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null));
-        if (paramChatMessage.uniseq == localaibp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) {
-          break;
+          localaibn = aibn.a();
+        } while ((!localaibn.c()) || (localaibn.a()));
+        localView = localaibn.a();
+      } while (localView == null);
+      localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+      if (this.jdField_a_of_type_ArrayOfInt[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() < jdField_a_of_type_Int + ImmersiveUtils.c)
+      {
+        localaibn.d();
+        return;
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.getVisibility() == 0))
+      {
+        paramInt = this.jdField_a_of_type_ArrayOfInt[1];
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+        if (paramInt > this.jdField_a_of_type_ArrayOfInt[1])
+        {
+          localaibn.d();
+          return;
         }
-      } while (this != localaibp.a());
-      localaibp.f();
+        localaibn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+        return;
+      }
+      localaibn.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
       return;
-    } while (this == localaibp.a());
-    localaibp.a(this);
-    localaibp.a(this.jdField_a_of_type_Aice);
-    localaibp.a(this.jdField_a_of_type_Aicf, this.b);
-    if (localaibp.jdField_a_of_type_Aici != null) {
-      a(localaibp.jdField_a_of_type_Aici);
+      localaibn = aibn.a();
+    } while ((!localaibn.c()) || (!localaibn.a()));
+    localaibn.b();
+  }
+  
+  public void a(@NonNull aice paramaice)
+  {
+    boolean bool = paramaice.c();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeqz)) {}
+    for (paramaice = ((aeqz)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();; paramaice = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView)
+    {
+      if (paramaice != null) {
+        paramaice.requestDisallowInterceptTouchEvent(bool);
+      }
+      return;
     }
-    localaibp.e();
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    boolean bool = true;
+    aibn localaibn = aibn.a();
+    if ((!localaibn.c()) || (!this.jdField_b_of_type_Boolean)) {}
+    int i;
+    label102:
+    do
+    {
+      do
+      {
+        int j;
+        int k;
+        do
+        {
+          return;
+          i = paramMotionEvent.getAction();
+          j = (int)paramMotionEvent.getRawX();
+          k = (int)paramMotionEvent.getRawY();
+          if (i == 0)
+          {
+            if (!localaibn.a(j, k))
+            {
+              this.jdField_a_of_type_Boolean = bool;
+              this.jdField_a_of_type_Long = localaibn.jdField_a_of_type_Long;
+              if (!this.jdField_a_of_type_Boolean) {
+                break label102;
+              }
+              this.d = j;
+            }
+            for (this.e = k;; this.e = -1)
+            {
+              this.c = 0;
+              return;
+              bool = false;
+              break;
+              this.d = -1;
+            }
+          }
+          if (i != 2) {
+            break;
+          }
+        } while ((!this.jdField_a_of_type_Boolean) || (Math.pow(this.d - j, 2.0D) + Math.pow(this.e - k, 2.0D) <= jdField_b_of_type_Int));
+        this.c = 2;
+      } while (!QLog.isColorLevel());
+      QLog.d("ChatPieSelectableHelper", 0, "detect scrolling.");
+      return;
+    } while (((i != 1) && (i != 3)) || (!this.jdField_a_of_type_Boolean));
+    if (this.c == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatPieSelectableHelper", 0, "detect taping.");
+      }
+      long l = localaibn.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
+        break label281;
+      }
+      if (this.jdField_a_of_type_Long == l) {
+        localaibn.d();
+      }
+    }
+    for (;;)
+    {
+      this.c = 1;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = -1L;
+      return;
+      label281:
+      localaibn.d();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (aibn.a().c())
+    {
+      aibn.a().d();
+      return true;
+    }
+    return false;
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 4, 8, 10, 14, 12, 13 };
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup != null)
+    {
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup.a.jdField_a_of_type_Int = 1;
+      }
+    }
+    else {
+      return;
+    }
+    if ("2101".equals(ThemeUtil.getCurrentThemeId()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup.a.jdField_a_of_type_Int = 2;
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup.a.jdField_a_of_type_Int = 0;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return a().c();
-  }
-  
-  public void c()
-  {
-    aibp.a().c();
-  }
-  
-  public void c(int paramInt)
-  {
-    aibp.a().c(paramInt);
-  }
-  
-  public boolean c()
-  {
-    aibp localaibp = aibp.a();
-    return (this == localaibp.a()) && (localaibp.c());
-  }
-  
-  public int d()
-  {
-    return a().d();
-  }
-  
-  public void d()
-  {
-    aibp localaibp = aibp.a();
-    if (this == localaibp.a()) {
-      localaibp.d();
-    }
+    return aibn.a().c();
   }
 }
 

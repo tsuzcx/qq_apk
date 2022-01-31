@@ -1,7 +1,7 @@
 package com.tencent.av;
 
 import com.tencent.av.core.VcControllerImpl;
-import lgf;
+import lga;
 
 class VideoController$7
   implements Runnable
@@ -10,11 +10,11 @@ class VideoController$7
   
   public void run()
   {
-    lgf locallgf = this.this$0.a();
-    if ((locallgf.e) && (locallgf.m) && (locallgf.jdField_d_of_type_Int == 2))
+    lga locallga = this.this$0.a();
+    if ((locallga.e) && (locallga.m) && (locallga.jdField_d_of_type_Int == 2))
     {
-      locallgf.a(this.a, false);
-      this.this$0.a.pauseVideo(locallgf.jdField_d_of_type_JavaLangString);
+      locallga.a(this.a, false);
+      this.this$0.a.pauseVideo(locallga.jdField_d_of_type_JavaLangString);
     }
   }
 }

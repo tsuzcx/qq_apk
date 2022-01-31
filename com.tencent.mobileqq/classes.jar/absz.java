@@ -1,16 +1,58 @@
-import android.app.Dialog;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
 public class absz
-  implements View.OnClickListener
+  implements bfpt
 {
   public absz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.dismiss();
+    paramAdapterView = null;
+    paramView = paramView.getTag();
+    if ((paramView instanceof abtk)) {}
+    String str;
+    do
+    {
+      paramAdapterView = ((abtk)paramView).a;
+      while (paramAdapterView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("PublicAccountListActivity", 2, "onItemClick - info = null[position = " + paramInt + "]");
+        }
+        return;
+        if ((paramView instanceof abto)) {
+          paramAdapterView = ((abto)paramView).a;
+        }
+      }
+      paramView = new Intent(this.a, ChatActivity.class);
+      str = paramAdapterView.a.getUin();
+      paramInt = 1008;
+      if (paramAdapterView.a.extendType == 2)
+      {
+        paramView.putExtra("chat_subType", 1);
+        paramInt = 0;
+      }
+      if (!TextUtils.isEmpty(str)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("PublicAccountListActivity", 2, "onItemClick - uin = null");
+    return;
+    paramView.putExtra("uin", str);
+    paramView.putExtra("uintype", paramInt);
+    paramView.putExtra("uinname", paramAdapterView.a.name);
+    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131695524));
+    paramView.putExtra("jump_from", 3);
+    this.a.startActivity(paramView);
+    nol.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
+    nol.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573B", "0X800573B", 0, 0, str, "", "", "", false);
   }
 }
 

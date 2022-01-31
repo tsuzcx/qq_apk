@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbew;
+import bbfk;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.TimeUnit;
 import mqq.os.MqqHandler;
@@ -8,7 +8,7 @@ import mqq.os.MqqHandler;
 public class NewUpgradeDialog$6
   implements Runnable
 {
-  public NewUpgradeDialog$6(bbew parambbew) {}
+  public NewUpgradeDialog$6(bbfk parambbfk) {}
   
   public void run()
   {
@@ -33,8 +33,8 @@ public class NewUpgradeDialog$6
         }
       }
     }
-    if (!bbew.a(this.this$0)) {
-      bbew.b(this.this$0);
+    if (!bbfk.a(this.this$0)) {
+      bbfk.b(this.this$0);
     }
   }
 }

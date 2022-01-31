@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
-import aznt;
+import ajya;
+import aznv;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -19,7 +19,7 @@ public class MessageForTroopReward
   public int expiredTimeStamp;
   public String md5;
   public String mediaPath = "";
-  public aznt resq;
+  public aznv resq;
   public String rewardContent = "";
   public int rewardCreateTime;
   public String rewardId = "";
@@ -181,7 +181,7 @@ public class MessageForTroopReward
   
   public String getSummaryMsg()
   {
-    return ajyc.a(2131706585) + this.rewardContent;
+    return ajya.a(2131706596) + this.rewardContent;
   }
   
   public boolean isSupportReply()

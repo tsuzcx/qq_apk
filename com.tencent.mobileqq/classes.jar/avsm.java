@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
-public final class avsm
-  implements Parcelable.Creator<FilterCategoryItem>
+public class avsm
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public int a;
+  public String a;
+  public String b;
   
-  public FilterCategoryItem[] a(int paramInt)
+  public avsm(int paramInt, String paramString1, String paramString2)
   {
-    return new FilterCategoryItem[paramInt];
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

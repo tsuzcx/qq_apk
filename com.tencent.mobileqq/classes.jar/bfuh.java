@@ -1,6 +1,11 @@
-public abstract interface bfuh
+import com.tencent.widget.AbsListView;
+
+public class bfuh
+  implements bfos
 {
-  public abstract void a();
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

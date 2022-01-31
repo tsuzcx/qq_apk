@@ -1,14 +1,25 @@
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ajhp
-  implements Comparator<ajio>
+public class ajhp
+  implements Animator.AnimatorListener
 {
-  ajhp(ajhm paramajhm) {}
+  public ajhp(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public int a(ajio paramajio1, ajio paramajio2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return paramajio1.h - paramajio2.h;
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,10 +1,11 @@
-public class axfd
+public abstract class axfd
+  implements axfb
 {
-  public float a;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, axeu paramaxeu) {}
+  
+  public void b(int paramInt, axeu paramaxeu) {}
 }
 
 

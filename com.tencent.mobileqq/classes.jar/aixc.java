@@ -1,82 +1,68 @@
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.apollo.debug.log.CmGameDebugLogView.1;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import java.util.List;
 
 public class aixc
+  extends RecyclerView.Adapter<aixd>
 {
-  private int jdField_a_of_type_Int;
-  private aixe jdField_a_of_type_Aixe;
   private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private View jdField_a_of_type_AndroidViewView;
+  private List<aixb> jdField_a_of_type_JavaUtilList;
   
-  public aixc(Context paramContext, int paramInt)
+  public aixc(Context paramContext, List<aixb> paramList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  private List<aixd> a()
+  public aixd a(ViewGroup paramViewGroup, int paramInt)
   {
-    aiwu localaiwu = ajae.a();
-    if (localaiwu != null) {
-      return localaiwu.a(this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 1)) {
+      return new aixd(this, this.jdField_a_of_type_AndroidViewView);
     }
-    return new ArrayList();
+    return new aixd(this, LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558796, paramViewGroup, false));
   }
   
-  public int a()
+  public void a(aixd paramaixd, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    View localView = b();
-    a(localView);
-    return localView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new CmGameDebugLogView.1(this));
+    if (getItemViewType(paramInt) == 0)
+    {
+      aixb localaixb = (aixb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramaixd.a.setText(localaixb.jdField_a_of_type_JavaLangString);
+      paramaixd.a.setTextColor(Color.parseColor(aiws.c[localaixb.jdField_a_of_type_Int]));
+    }
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364315));
-    paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_Aixe = new aixe(this.jdField_a_of_type_AndroidContentContext, a());
-    paramView = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, bawz.a(this.jdField_a_of_type_AndroidContentContext, 32.0F)));
-    this.jdField_a_of_type_Aixe.a(paramView);
-    paramView.setId(2131362598);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aixe);
-    a();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    notifyItemInserted(getItemCount() - 1);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(List<aixb> paramList)
   {
-    if (this.jdField_a_of_type_Aixe != null)
-    {
-      if (paramBoolean) {
-        a();
-      }
-      this.jdField_a_of_type_Aixe.a(a());
-      this.jdField_a_of_type_Aixe.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(this.jdField_a_of_type_Aixe.getItemCount() - 1);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
     }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public View b()
+  public int getItemViewType(int paramInt)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558795, null);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == getItemCount() - 1)) {
+      return 1;
+    }
+    return 0;
   }
 }
 

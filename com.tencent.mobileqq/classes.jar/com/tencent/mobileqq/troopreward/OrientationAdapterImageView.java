@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import bats;
+import baug;
 import com.tencent.qphone.base.util.QLog;
 
 public class OrientationAdapterImageView
@@ -25,7 +25,7 @@ public class OrientationAdapterImageView
     super(paramContext);
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new bats(this);
+    this.jdField_a_of_type_AndroidOsHandler = new baug(this);
     a(paramContext);
   }
   
@@ -34,7 +34,7 @@ public class OrientationAdapterImageView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new bats(this);
+    this.jdField_a_of_type_AndroidOsHandler = new baug(this);
     a(paramContext);
   }
   

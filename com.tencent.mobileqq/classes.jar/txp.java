@@ -1,28 +1,22 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class txp
-  extends Subscriber.SingleEventSubscriberNoRefect<svy>
+class txp
+  implements syq<tne, tnf>
 {
-  txk a;
+  txp(txo paramtxo, twr paramtwr) {}
   
-  public txp(@NonNull txk paramtxk)
+  public void a(@NonNull tne paramtne, @Nullable tnf paramtnf, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramtxk;
-  }
-  
-  protected void a(@NonNull svy paramsvy)
-  {
-    if ((paramsvy.b != null) && (paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      txk.a(this.a, paramsvy.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramsvy.b.mVid, paramsvy.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    if ((paramErrorMessage.isFail()) || (paramtnf == null))
+    {
+      ved.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Twr.a(paramErrorMessage, null, false);
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svy.class;
+    this.jdField_a_of_type_Txo.a.a(paramtnf.jdField_a_of_type_JavaUtilList, paramtnf.jdField_a_of_type_JavaLangString, paramtnf.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Twr.a(paramErrorMessage, tvz.b(paramtnf.jdField_a_of_type_JavaUtilList), paramtnf.jdField_a_of_type_Boolean);
   }
 }
 

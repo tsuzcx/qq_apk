@@ -1,11 +1,8 @@
-public class amos
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract interface amos
 {
-  public int a;
-  public String a = "";
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, amor paramamor);
 }
 
 

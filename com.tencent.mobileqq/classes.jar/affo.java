@@ -1,60 +1,22 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class affo
-  extends Dialog
+  extends akuo
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public affo(Context paramContext)
+  public affo(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramContext, 2131755382);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public affo(Context paramContext, String paramString)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    super(paramContext, 2131755382);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public View a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
     }
-    return null;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561187, null);
-    Object localObject = getWindow();
-    ((Window)localObject).setContentView(paramBundle);
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131298939);
-    ((Window)localObject).setAttributes(localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = (TextView)paramBundle.findViewById(2131370458);
-      if (localObject != null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    setCanceledOnTouchOutside(false);
+    PublicView.a(this.a, true);
+    PublicView.a(this.a, paramSosoLbsInfo);
   }
 }
 

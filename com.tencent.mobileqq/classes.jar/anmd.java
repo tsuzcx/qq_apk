@@ -1,42 +1,37 @@
-import android.text.TextUtils;
-import mqq.manager.Manager;
+import android.content.Intent;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class anmd
-  implements Manager
+  implements bcsc
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  protected aukn a;
+  public anmd(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
     }
-    if (!atbp.c())
+    Intent localIntent;
+    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
     {
-      atbg.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      atbg.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      atbg.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
+      localIntent = new Intent();
+      localIntent.putExtra("curIndex", paramInt2);
+      if (!this.a.e) {
+        break label176;
+      }
     }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Aukn != null) {}
-    try
+    label176:
+    for (paramInt1 = this.a.c;; paramInt1 = 0)
     {
-      this.jdField_a_of_type_Aukn.a();
+      localIntent.putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772211, 2130772211);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.msgbox.tab", 2, "finish");
+      }
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }

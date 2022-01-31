@@ -5,11 +5,12 @@ import android.content.DialogInterface.OnClickListener;
 class aqvy
   implements DialogInterface.OnClickListener
 {
-  aqvy(aqvt paramaqvt) {}
+  aqvy(aqvv paramaqvv) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aqvt.a(this.a).finish();
+    this.a.a = false;
+    aqvv.a(this.a).finish();
   }
 }
 

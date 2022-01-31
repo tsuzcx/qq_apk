@@ -1,10 +1,17 @@
-public abstract interface adbi
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import mqq.app.QQPermissionCallback;
+
+public class adbi
+  implements QQPermissionCallback
 {
-  public abstract boolean a();
+  public adbi(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public abstract void d();
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbdj.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
   
-  public abstract void e();
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,14 +1,6 @@
-public class bakf
+public abstract interface bakf
 {
-  public int a;
-  public String a;
-  public short a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public abstract boolean a(azpi paramazpi);
 }
 
 

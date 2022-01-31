@@ -1,98 +1,45 @@
+import MWIFI.SCGet3rdCloudCheck;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bcwc
+final class bcwc
+  extends bcwn
 {
-  public static int a(Context paramContext, String paramString)
+  bcwc(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, akjs paramakjs) {}
+  
+  public void a(int paramInt)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwsjt_" + paramString, -1);
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akjs);
+    }
   }
   
-  public static long a(Context paramContext, String paramString)
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslcdt_" + paramString, -1L);
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsbddbw", null);
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsg_" + paramString, "");
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("kwsbddbw", paramString);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("kwscdf_" + paramString, paramInt);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("kwsjt_" + paramString1, paramInt);
-    paramContext.putString("kwsjhu_" + paramString1, paramString2);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwslcdt_" + paramString, paramLong);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("kwsg_" + paramString1, paramString2);
-    paramContext.apply();
-  }
-  
-  public static int b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwscdf_" + paramString, 24);
-  }
-  
-  public static long b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslftjt_" + paramString, -1L);
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsjhu_" + paramString, null);
-  }
-  
-  public static void b(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwslftjt_" + paramString, paramLong);
-    paramContext.apply();
-  }
-  
-  public static long c(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwsrgrt_" + paramString, -1L);
-  }
-  
-  public static void c(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwsrgrt_" + paramString, paramLong);
-    paramContext.apply();
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+    }
+    if (paramSCGet3rdCloudCheck != null)
+    {
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bcwr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bcwb.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+      }
+    }
   }
 }
 

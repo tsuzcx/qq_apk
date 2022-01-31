@@ -1,16 +1,50 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
+import java.security.InvalidParameterException;
 
 public class atgl
-  implements AudioManager.OnAudioFocusChangeListener
 {
-  public atgl(SmallVideoFragment paramSmallVideoFragment) {}
+  private SplitedProgressBar a;
   
-  public void onAudioFocusChange(int paramInt)
+  public atgl(SplitedProgressBar paramSplitedProgressBar)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.a();
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
     }
+    this.a = paramSplitedProgressBar;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setTotalCount(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < this.a.b) {
+      this.a.setProgress(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    SplitedProgressBar localSplitedProgressBar = this.a;
+    if (paramBoolean) {}
+    for (int i = 8;; i = 0)
+    {
+      localSplitedProgressBar.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setShowMaxCount(paramInt);
   }
 }
 

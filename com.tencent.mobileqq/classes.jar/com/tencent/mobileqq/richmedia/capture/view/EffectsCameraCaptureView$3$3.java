@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import ahua;
-import aibf;
-import ajyc;
+import ahty;
+import aibd;
+import ajya;
 import android.os.SystemClock;
-import avvd;
+import avvf;
 import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -92,7 +92,7 @@ class EffectsCameraCaptureView$3$3
           break label917;
         }
         localObject1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial.mGuideTips;
-        if ((!this.jdField_a_of_type_Boolean) || (ahua.jdField_a_of_type_Int == 2)) {
+        if ((!this.jdField_a_of_type_Boolean) || (ahty.jdField_a_of_type_Int == 2)) {
           break label692;
         }
         i = 1;
@@ -137,12 +137,12 @@ class EffectsCameraCaptureView$3$3
         label697:
         if ((i != 0) && (!this.b))
         {
-          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, ajyc.a(2131703977));
+          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, ajya.a(2131703988));
           EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, 0);
         }
         else if (this.b)
         {
-          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, aibf.a());
+          EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, aibd.a());
           EffectsCameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$3.this$0, 3);
         }
         else

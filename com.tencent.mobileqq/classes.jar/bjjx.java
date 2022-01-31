@@ -1,29 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
 public class bjjx
-  implements bjdk
+  implements View.OnClickListener
 {
-  public bjjx(MusicProviderView paramMusicProviderView) {}
+  public bjjx(AdvancedProviderView paramAdvancedProviderView) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    paramView = bkzo.a().a();
+    if (paramView.size() > 0) {
+      vzw.a(this.a.a, paramView.get(0));
     }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
-    }
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
   }
 }
 

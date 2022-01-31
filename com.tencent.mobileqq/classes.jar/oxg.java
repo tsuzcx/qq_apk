@@ -1,22 +1,28 @@
-import android.os.Handler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 
 public class oxg
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+  implements Animator.AnimatorListener
 {
   public oxg(VideoView paramVideoView) {}
   
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (VideoView.a(this.a) != null) {
-      VideoView.a(this.a).start();
+      VideoView.a(this.a).setVisibility(4);
     }
-    if (VideoView.a(this.a) != null) {
-      this.a.a.postDelayed(this.a, 500L);
+    if (VideoView.b(this.a) != null) {
+      VideoView.b(this.a).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

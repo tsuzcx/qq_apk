@@ -1,20 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aifz
-  extends aimv
+class aifz
+  extends akil
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public DiscussionInfo a;
-  public TroopInfo a;
-  public ImageView b;
-  public TextView b;
+  aifz(aify paramaify) {}
   
-  public aifz(aifu paramaifu) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      aify.a(this.a, paramString, localBitmap);
+    }
+  }
 }
 
 

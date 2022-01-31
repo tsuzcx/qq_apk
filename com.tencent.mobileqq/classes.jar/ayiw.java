@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ayiw
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  ayiw(ayit paramayit) {}
+  ayiw(ayiv paramayiv) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (ayit.a(this.a) != null)) {
-      ayit.a(this.a).a();
+    if (ayiv.a(this.a).isShowing()) {
+      ayiv.a(this.a).dismiss();
     }
-    return paramInt == 4;
   }
 }
 

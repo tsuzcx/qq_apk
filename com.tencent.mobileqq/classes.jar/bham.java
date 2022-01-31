@@ -1,53 +1,16 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class bham
-  implements axeo
+public final class bham
+  implements DialogInterface.OnClickListener
 {
-  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
-  
-  public bham(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
-  }
-  
-  public void G_()
-  {
-    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajyc.a(2131712468));
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label111;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, ajyc.a(2131712477) + paramInt + "]");
-      axds.b(2, paramInt);
+    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
+      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
     }
-    for (;;)
-    {
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
-      return;
-      label111:
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramString2 = new Bundle();
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

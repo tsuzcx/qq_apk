@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import apuw;
+import apuy;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public final class FilePicURLDrawlableHelper$1
@@ -10,7 +10,7 @@ public final class FilePicURLDrawlableHelper$1
   
   public void run()
   {
-    apuw.b(this.a);
+    apuy.b(this.a);
   }
 }
 

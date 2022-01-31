@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
+import com.tencent.qphone.base.util.QLog;
 
-class ayik
-  implements DialogInterface.OnDismissListener
+public class ayik
+  implements bcay
 {
-  ayik(ayij paramayij) {}
+  public ayik(GroupTeamWorkListActivity.3 param3) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean)
   {
-    this.a.a.a = null;
+    if ((paramBoolean) && (QLog.isColorLevel())) {
+      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
+    }
   }
 }
 

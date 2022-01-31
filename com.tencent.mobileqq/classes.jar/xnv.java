@@ -1,8 +1,33 @@
-public abstract interface xnv
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.widgets.ScannerView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public class xnv
+  implements SensorEventListener
 {
-  public abstract void a(int paramInt);
+  private WeakReference<ScannerView> a;
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public xnv(ScannerView paramScannerView)
+  {
+    this.a = new WeakReference(paramScannerView);
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    ScannerView localScannerView = (ScannerView)this.a.get();
+    if (localScannerView != null) {
+      localScannerView.a(paramSensorEvent);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
+  }
 }
 
 

@@ -1,115 +1,120 @@
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.lang.reflect.Method;
 
 public class ahis
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public static ahis a()
+  public static String a()
   {
-    return ahit.a;
+    if (a()) {
+      return a("ro.miui.ui.version.name", "");
+    }
+    return "";
   }
   
-  public String a()
+  private static String a(String paramString1, String paramString2)
   {
-    ResourceInfo localResourceInfo = ((PreloadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(151)).a("text_translate");
-    if (localResourceInfo == null) {
-      return null;
+    try
+    {
+      Class localClass = Class.forName("android.os.SystemProperties");
+      paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, paramString2 });
+      return paramString1;
     }
-    return localResourceInfo.folderPath;
+    catch (Throwable paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return paramString2;
   }
   
-  public String a(String paramString)
+  public static boolean a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = "";
+    return !TextUtils.isEmpty(a("ro.miui.ui.version.name", ""));
+  }
+  
+  public static String b()
+  {
+    if (c()) {
+      return a("ro.build.version.emui", "");
     }
-    do
+    return "";
+  }
+  
+  public static boolean b()
+  {
+    String str = a();
+    try
     {
-      do
+      if (!str.isEmpty())
       {
-        do
-        {
-          return localObject;
-          localObject = paramString;
-        } while (!this.jdField_a_of_type_Boolean);
-        localObject = paramString;
-      } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-      localObject = paramString;
-    } while (TextUtils.isEmpty(this.b));
-    Object localObject = new StringBuilder();
-    int i = 0;
-    if (i < paramString.length())
-    {
-      char c = paramString.charAt(i);
-      int j = this.jdField_a_of_type_JavaLangString.indexOf(c);
-      if (j != -1) {
-        ((StringBuilder)localObject).append(this.b.charAt(j));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((StringBuilder)localObject).append(c);
+        int i = Integer.valueOf(str.substring(1)).intValue();
+        if (i >= 6) {
+          return true;
+        }
       }
     }
-    localObject = ((StringBuilder)localObject).toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("FontConvert", 2, "traditionalToSimplified params is " + paramString + ",result is " + (String)localObject);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
-    return localObject;
+    return false;
   }
   
-  /* Error */
-  public void a()
+  public static String c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 30	ahis:jdField_a_of_type_Boolean	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: new 113	android/os/Handler
-    //   17: dup
-    //   18: invokestatic 119	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
-    //   21: invokespecial 122	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   24: new 124	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1
-    //   27: dup
-    //   28: aload_0
-    //   29: invokespecial 127	com/tencent/mobileqq/activity/qwallet/utils/FontConvert$1:<init>	(Lahis;)V
-    //   32: invokevirtual 131	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   35: pop
-    //   36: goto -25 -> 11
-    //   39: astore_2
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_2
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	ahis
-    //   6	2	1	bool	boolean
-    //   39	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	39	finally
-    //   14	36	39	finally
+    if (e()) {
+      return a("ro.build.display.id", "");
+    }
+    return "";
+  }
+  
+  public static boolean c()
+  {
+    return !TextUtils.isEmpty(a("ro.build.version.emui", ""));
+  }
+  
+  private static String d()
+  {
+    return a("ro.build.display.id", "");
+  }
+  
+  public static boolean d()
+  {
+    String str = b();
+    return ("EmotionUI 3".equals(str)) || (str.contains("EmotionUI_3.1"));
+  }
+  
+  public static boolean e()
+  {
+    return d().toLowerCase().contains("flyme");
+  }
+  
+  public static boolean f()
+  {
+    String str = c();
+    int i;
+    try
+    {
+      if (!str.isEmpty()) {
+        if (str.toLowerCase().contains("os")) {
+          i = Integer.valueOf(str.substring(9, 10)).intValue();
+        } else {
+          i = Integer.valueOf(str.substring(6, 7)).intValue();
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    while (i < 4) {
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ahis
  * JD-Core Version:    0.7.0.1
  */

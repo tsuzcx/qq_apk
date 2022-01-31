@@ -2,25 +2,25 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ohe;
-import oju;
-import ojv;
-import ojw;
+import ohb;
+import ojr;
+import ojs;
+import ojt;
 
 public class ReadInJoyCommentPBModule$4
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$4(oju paramoju, int paramInt, ojv paramojv, ojw paramojw, CommentData paramCommentData) {}
+  public ReadInJoyCommentPBModule$4(ojr paramojr, int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData) {}
   
   public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("handleFamilyCommentList | retCode ").append(this.jdField_a_of_type_Int).append(" | hasFamilyNextPage ").append(this.jdField_a_of_type_Ojv.jdField_a_of_type_Boolean).append(" | familyPageCookie ").append(this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaLangString).append("| familyCommentCnt ").append(this.jdField_a_of_type_Ojw.a).append(" | familyCommentListSize ");
-    if (this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    StringBuilder localStringBuilder = new StringBuilder().append("handleFamilyCommentList | retCode ").append(this.jdField_a_of_type_Int).append(" | hasFamilyNextPage ").append(this.jdField_a_of_type_Ojs.jdField_a_of_type_Boolean).append(" | familyPageCookie ").append(this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaLangString).append("| familyCommentCnt ").append(this.jdField_a_of_type_Ojt.a).append(" | familyCommentListSize ");
+    if (this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
       QLog.d("ReadInJoyCommentPBModule", 1, i);
-      if (oju.a(this.this$0) != null) {
-        oju.a(this.this$0).c(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ojv, this.jdField_a_of_type_Ojw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommentData);
+      if (ojr.a(this.this$0) != null) {
+        ojr.a(this.this$0).c(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ojs, this.jdField_a_of_type_Ojt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommentData);
       }
       return;
     }

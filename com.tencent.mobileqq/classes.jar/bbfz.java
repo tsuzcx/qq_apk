@@ -1,35 +1,68 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.commonsdk.pool.ByteArrayPool;
+import java.io.ByteArrayOutputStream;
 
 public class bbfz
-  implements ArkViewImplement.LoadCallback
+  extends ByteArrayOutputStream
 {
-  bbfz(bbfx parambbfx) {}
+  private final ByteArrayPool a;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public bbfz(ByteArrayPool paramByteArrayPool, int paramInt)
   {
-    onLoadState(paramInt1);
+    this.a = paramByteArrayPool;
+    this.buf = this.a.getBuf(Math.max(paramInt, 256));
   }
   
-  public void onLoadState(int paramInt)
+  private void a(int paramInt)
   {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
-    do
-    {
+    if (this.count + paramInt <= this.buf.length) {
       return;
-      bbfx.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bbfx.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bbfx.b(this.a)) });
-      }
-    } while (!bbfx.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    }
+    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
+    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
+    this.a.returnBuf(this.buf);
+    this.buf = arrayOfByte;
+  }
+  
+  public byte[] a()
+  {
+    return this.buf;
+  }
+  
+  public void close()
+  {
+    this.a.returnBuf(this.buf);
+    this.buf = null;
+    super.close();
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      a(1);
+      super.write(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      a(paramInt2);
+      super.write(paramArrayOfByte, paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
+    }
   }
 }
 

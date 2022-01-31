@@ -1,128 +1,88 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
-class afic
-  extends afhy
+public class afic
 {
-  afic(afhz paramafhz) {}
-  
-  public void a(String paramString1, String paramString2, List<afif> paramList)
+  public static void a(long paramLong, List<afid> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactPush mSessionId:" + afhz.a(this.a) + " sessionId:" + paramString2 + " faceFriends:" + paramList + " currentUin:" + paramString1);
-    }
-    if ((TextUtils.equals(paramString2, afhz.a(this.a))) && (afhz.a(this.a) != null) && (TextUtils.equals(paramString1, afhz.a(this.a).getCurrentAccountUin())) && (paramList != null) && (paramList.size() > 0))
+    int j = (int)(SystemClock.elapsedRealtime() - paramLong) / 1000;
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
     {
-      afhz.b(this.a);
-      if (afhz.a(this.a) != null) {
-        afhz.a(this.a).a(paramString1, paramList);
+      if (!((afid)paramList.next()).a()) {
+        break label99;
       }
+      i += 1;
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onExitFace2FaceAddContact isSuccess:" + paramBoolean + " mSessionId:" + afhz.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2);
-    }
-    afhz.b(this.a);
-    if (afhz.a(this.a) != null) {
-      afhz.a(this.a).a();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, boolean paramBoolean2)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onEnterFace2FaceAddContact isSuccess:" + paramBoolean1 + " mSessionId:" + afhz.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt1 + " errorMsg:" + paramString2 + " securityLevel:" + paramInt2 + " verifyUrl:" + paramString3 + " heartbeatTime:" + paramInt3 + " expireTime:" + paramInt4 + " isEnterAfterVerify:" + paramBoolean2);
-    }
-    if ((paramBoolean1) && (TextUtils.equals(afhz.a(this.a), paramString1)) && (afhz.a(this.a) != null)) {
-      if (paramInt2 == 2) {
-        if (afhz.a(this.a) != null) {
-          afhz.a(this.a).f();
-        }
-      }
-    }
-    while (afhz.a(this.a) == null)
+    label99:
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (paramInt2 != 3) {
-                  break;
-                }
-              } while (afhz.a(this.a) == null);
-              afhz.a(this.a).b(paramString3);
-              return;
-              switch (paramInt1)
-              {
-              default: 
-                return;
-              case 0: 
-                afhz.a(this.a, Math.max(paramInt3 * 1000, 10000));
-                afhz.b(this.a, Math.max(paramInt4 * 1000, 10000));
-                if (afhz.a(this.a) != null)
-                {
-                  afhz.a(this.a).a(afhz.a(this.a));
-                  afhz.a(this.a).b(afhz.b(this.a));
-                }
-                afhz.a(this.a);
-                return;
-              }
-            } while (afhz.a(this.a) == null);
-            afhz.a(this.a).g();
-            return;
-          } while (afhz.a(this.a) == null);
-          afhz.a(this.a).c();
-          return;
-        } while (afhz.a(this.a) == null);
-        afhz.a(this.a).d();
-        return;
-      } while (afhz.a(this.a) == null);
-      afhz.a(this.a).e();
+      break;
+      a("0X800AB63", i + "", j + "", "");
       return;
     }
-    afhz.a(this.a).e();
   }
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, List<String> paramList)
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putBoolean("face2face_add_contact_guide_tip", true);
+      paramQQAppInterface.commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onFace2FaceAddContactHeartBeat isSuccess:" + paramBoolean + " mSessionId:" + afhz.a(this.a) + " sessionId:" + paramString1 + " errorCode:" + paramInt + " errorMsg:" + paramString2 + " missingList:" + paramList);
+      QLog.d("Face2FaceAddContactUtils", 2, " face2faceReport tValue = " + paramString1 + " r2 = " + paramString2 + " r3 = " + paramString3 + " r4 =" + paramString4);
     }
-    if ((paramBoolean) && (TextUtils.equals(paramString1, afhz.a(this.a)))) {
-      switch (paramInt)
-      {
+    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_tip", false)) {
+        bool1 = true;
       }
     }
-    do
+    return bool1;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (afhz.a(this.a) == null);
-        if ((paramList != null) && (paramList.size() > 0)) {
-          afhz.a(this.a).a(paramList);
-        }
-        afhz.a(this.a).b(afhz.b(this.a));
-        return;
-      } while (afhz.a(this.a) == null);
-      afhz.a(this.a).c();
-      return;
-    } while (afhz.a(this.a) == null);
-    afhz.a(this.a).d();
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putBoolean("face2face_add_contact_guide_dialog", true);
+      paramQQAppInterface.commit();
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

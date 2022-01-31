@@ -1,20 +1,20 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import beki;
+import bekr;
+import bekz;
 
 public class ClipboardJsPlugin
   extends BaseJsPlugin
 {
-  public String getClipboardData(beka parambeka)
+  public String getClipboardData(bekr parambekr)
   {
-    beki.a(new ClipboardJsPlugin.1(this, parambeka));
+    bekz.a(new ClipboardJsPlugin.1(this, parambekr));
     return "";
   }
   
-  public String setClipboardData(beka parambeka)
+  public String setClipboardData(bekr parambekr)
   {
-    beki.a(new ClipboardJsPlugin.2(this, parambeka));
+    bekz.a(new ClipboardJsPlugin.2(this, parambekr));
     return "";
   }
 }

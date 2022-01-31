@@ -1,9 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
-public abstract interface qfo
+public class qfo
 {
-  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
 }
 
 

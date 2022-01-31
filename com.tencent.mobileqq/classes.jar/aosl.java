@@ -1,59 +1,41 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.io.File;
 
-public class aosl
-  extends aouj
+class aosl
+  implements bfph
 {
-  public aosl(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aosl(aosk paramaosk, FileInfo paramFileInfo, bfpc parambfpc) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.a(paramInt, paramLong, paramString);
-    apue.a(paramLong, paramInt, paramString);
-    bifs.a(this.a.a, paramInt);
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    apue.a(paramLong);
-  }
-  
-  protected void a(apev paramapev)
-  {
-    if (paramapev == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    if ((!apvd.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (apvd.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
     {
-      do
-      {
-        return;
-      } while (!(paramapev.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramapev.a;
-    } while ((paramapev.b == null) || (paramapev.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramapev.b;
-    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
+      apug.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
+      this.jdField_a_of_type_Aosk.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    }
+    try
+    {
+      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
+      this.jdField_a_of_type_Aosk.a.a.a.sendBroadcast(paramView);
+      label104:
+      this.jdField_a_of_type_Aosk.a.a.f();
+      if (this.jdField_a_of_type_Bfpc.isShowing()) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      return;
+      aptx.a(2131692410);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      break label104;
+    }
   }
 }
 

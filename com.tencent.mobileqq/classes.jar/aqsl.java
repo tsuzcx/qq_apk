@@ -1,17 +1,26 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
 public class aqsl
-  implements View.OnTouchListener
+  implements bctk
 {
   public aqsl(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, int paramInt)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    if ((paramInt == 5) || (paramInt == 4))
+    {
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "2747277822");
+      this.a.startActivity(paramView);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    this.a.getActivity().finish();
   }
 }
 

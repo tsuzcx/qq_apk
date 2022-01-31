@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins.engine;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import bemg;
+import bemx;
 
 class BaseJsPluginEngine$5
   implements View.OnClickListener

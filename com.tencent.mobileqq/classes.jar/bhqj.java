@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
-class bhqj
-  implements bgzo
+public final class bhqj
+  implements bhlf
 {
-  bhqj(bhqi parambhqi, String paramString) {}
+  public bhqj(Handler paramHandler) {}
   
-  public void a()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bhqi.a != null)
+    if ("cmd.uploadCommentVideo".equals(paramString))
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_Bhqi.a.callJs(str);
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        bhlc.a().b(this);
+      }
     }
   }
 }

@@ -1,7 +1,19 @@
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
+
 public class xbv
+  extends GridView
 {
-  public String a;
-  public String b;
+  public xbv(GridListViewPager paramGridListViewPager, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 

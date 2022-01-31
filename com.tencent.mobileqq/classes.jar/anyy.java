@@ -1,20 +1,16 @@
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import java.util.List;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
 
 public class anyy
-  implements anyg
+  implements bcay
 {
-  private anyy(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public anyy(EmoticonMainPanel.32 param32) {}
   
-  public List<aoak> a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(boolean paramBoolean)
   {
-    if (paramBoolean2) {
-      return anzm.b(this.a.a);
+    if (paramBoolean) {
+      this.a.this$0.a.a();
     }
-    if (!paramBoolean1) {
-      return anzm.a(this.a.a);
-    }
-    return anzm.a(this.a.a, this.a.h, this.a.q);
   }
 }
 

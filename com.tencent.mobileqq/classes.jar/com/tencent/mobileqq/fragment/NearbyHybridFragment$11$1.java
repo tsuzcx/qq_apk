@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.fragment;
 
 import android.widget.LinearLayout;
-import aqic;
+import aqie;
 
 public class NearbyHybridFragment$11$1
   implements Runnable
 {
-  public NearbyHybridFragment$11$1(aqic paramaqic) {}
+  public NearbyHybridFragment$11$1(aqie paramaqie) {}
   
   public void run()
   {

@@ -1,41 +1,39 @@
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ahhw
-  implements EIPCResultCallback
+  extends BroadcastReceiver
 {
-  ahhw(ahhu paramahhu) {}
+  private ahhw(ahhs paramahhs) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null)) {}
+    if ("open_video_callback".equals(paramIntent.getAction())) {}
     try
     {
-      String str = paramEIPCResult.data.getString("key1");
-      paramEIPCResult = paramEIPCResult.data.getString("key2");
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 2, "[init] getEmergencyInfo ori prefix:" + str + ",emerUrl:" + paramEIPCResult);
+      int i = paramIntent.getIntExtra("retcode", 4);
+      paramContext = paramIntent.getStringExtra("retmsg");
+      int j = paramIntent.getIntExtra("isDownloaded", -1);
+      long l1 = paramIntent.getLongExtra("played_time", 0L);
+      long l2 = paramIntent.getLongExtra("total_time", 0L);
+      paramIntent = new JSONObject();
+      paramIntent.put("retcode", i);
+      paramIntent.put("retmsg", paramContext);
+      paramIntent.put("played_time", l1);
+      paramIntent.put("total_time", l2);
+      if (j != -1) {
+        paramIntent.put("is_downloaded", j);
       }
-      if (bbff.d.matcher(str).matches()) {
-        ahhu.a(this.a, str);
-      }
-      if (bbff.d.matcher(paramEIPCResult).matches()) {
-        ahhu.b(this.a, paramEIPCResult);
-      }
+      ahhs.a(this.a, "openVideoPlayer", paramIntent.toString());
+      return;
     }
-    catch (Throwable paramEIPCResult)
+    catch (JSONException paramContext)
     {
-      for (;;)
-      {
-        paramEIPCResult.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 2, "[init] getEmergencyInfo final prefix:" + ahhu.a(this.a) + ",mEmerUrl:" + ahhu.b(this.a));
+      QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, paramContext, new Object[0]);
     }
   }
 }

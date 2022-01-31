@@ -1,22 +1,8 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-
 class xgi
-  implements Animation.AnimationListener
 {
-  xgi(xge paramxge) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (xge.b(this.a) != null) {
-      xge.b(this.a).setVisibility(0);
-    }
-  }
+  private xgi(xgg paramxgg) {}
 }
 
 

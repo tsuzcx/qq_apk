@@ -1,14 +1,20 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.29.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkm
-  implements abky
+  extends akuc
 {
-  public abkm(Leba paramLeba, View paramView, andx paramandx) {}
+  public abkm(Leba paramLeba) {}
   
-  public void a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_Andx);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new Leba.29.1(this));
+    }
   }
 }
 

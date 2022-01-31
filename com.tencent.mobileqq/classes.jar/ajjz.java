@@ -1,28 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 
 class ajjz
 {
-  public int a;
-  public String a;
-  public List<ajjx> a;
-  public List<ajjw> b = new ArrayList();
-  
-  public ajjz()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
-    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", mCGIConfigs=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
-  }
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
+  boolean jdField_a_of_type_Boolean;
 }
 
 

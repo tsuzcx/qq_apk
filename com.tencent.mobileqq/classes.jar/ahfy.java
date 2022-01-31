@@ -1,78 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahfy
-  extends ahfo<ahfx>
+class ahfy
+  implements Handler.Callback
 {
-  public int a()
-  {
-    return 540;
-  }
+  ahfy(ahfx paramahfx) {}
   
-  @NonNull
-  public ahfx a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[migrateOldOrDefaultContent]");
-    }
-    return new ahfx();
-  }
-  
-  protected ahfx a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (paramMessage.what == 1001) {}
+    try
     {
-      paramArrayOfampi = paramArrayOfampi[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "onParsed " + paramArrayOfampi);
+      ahfx.a(this.a, paramMessage);
+      return false;
+    }
+    catch (Throwable paramMessage)
+    {
+      for (;;)
+      {
+        QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramMessage));
       }
-      return ahfx.a(paramArrayOfampi);
     }
-    return null;
-  }
-  
-  public Class<ahfx> a()
-  {
-    return ahfx.class;
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketStaggerConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
-    }
-  }
-  
-  public void a(ahfx paramahfx)
-  {
-    super.a(paramahfx);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  @Nullable
-  public ahfx b(ampi[] paramArrayOfampi)
-  {
-    return (ahfx)super.b(paramArrayOfampi);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

@@ -4,7 +4,7 @@ import NS_MINI_USERAUTH.MiniUserAuth.StUserAuthScope;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bery;
+import besp;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.Serializable;
@@ -15,7 +15,7 @@ public class UserAuthScope
 {
   public static final int AUTH_TYPE_ASK_EVERY_TIME = 1;
   public static final int AUTH_TYPE_ASK_ONLY_ONCE = 0;
-  public static final Parcelable.Creator<UserAuthScope> CREATOR = new bery();
+  public static final Parcelable.Creator<UserAuthScope> CREATOR = new besp();
   public int authType;
   public String desc;
   public String scope;

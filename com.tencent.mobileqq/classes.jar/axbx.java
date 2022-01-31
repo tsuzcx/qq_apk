@@ -1,32 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
 public class axbx
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  
+  public axbx(axbv paramaxbv)
   {
-    paramIntent = (QQAppInterface)getAppRuntime();
-    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      ayxe.a().a(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
-    }
-    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
-    paramPacket.setTimeout(15000L);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mTab=" + this.c);
+    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

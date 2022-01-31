@@ -1,22 +1,23 @@
 import android.view.View;
 
 public class yvj
-  extends yvm
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  public float a;
+  public float b;
+  public View f;
+  public View g;
+  public View h;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  
+  public String toString()
+  {
+    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
+  }
 }
 
 

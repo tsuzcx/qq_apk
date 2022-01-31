@@ -1,17 +1,13 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class wtp
-  implements View.OnClickListener
+  implements wtr
 {
-  wtp(wto paramwto, adni paramadni) {}
+  wtp(wtl paramwtl, adng paramadng) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    wto.a(this.jdField_a_of_type_Wto).removeCallbacks(wto.a(this.jdField_a_of_type_Wto));
-    wto.a(this.jdField_a_of_type_Wto, true);
-    wto.a(this.jdField_a_of_type_Wto, this.jdField_a_of_type_Adni, this.jdField_a_of_type_Adni.b);
+    if (!paramBoolean) {
+      wtl.a(this.jdField_a_of_type_Wtl, this.jdField_a_of_type_Adng, true);
+    }
   }
 }
 

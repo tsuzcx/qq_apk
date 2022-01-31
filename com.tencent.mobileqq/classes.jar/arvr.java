@@ -1,17 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 final class arvr
   implements DialogInterface.OnClickListener
 {
-  arvr(BaseActivity paramBaseActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bctm.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    axqy.b(null, "CliOper", "", "", "0X800A97A", "0X800A97A", 0, 0, "", "0", "0", "");
   }
 }
 

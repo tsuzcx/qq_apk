@@ -1,43 +1,28 @@
 import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class aoak
+class aoak
+  extends anwk
 {
-  public int a;
-  public EmoticonPackage a;
-  public int b;
+  aoak(aoai paramaoai) {}
   
-  public aoak(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+    this.a.b(paramEmoticonPackage);
   }
   
-  public boolean equals(Object paramObject)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof aoak)) {
-        return false;
-      }
-      paramObject = (aoak)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
-    return false;
-    return false;
+    this.a.a(paramEmoticonPackage, paramInt);
   }
   
-  public String toString()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    String str = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-    }
-    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
   }
 }
 

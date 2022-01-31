@@ -1,8 +1,22 @@
-import android.view.View;
-
-public abstract interface ahpt
+public abstract class ahpt
+  implements ahpv
 {
-  public abstract void a(View paramView, int paramInt);
+  public int a;
+  public long a;
+  public azmm a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
+  
+  public ahpt()
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Azmm = new azmm();
+  }
 }
 
 

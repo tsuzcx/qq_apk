@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import anls;
+import anlx;
 
 class DataReportViewer$8
   implements Runnable
@@ -9,8 +9,8 @@ class DataReportViewer$8
   
   public void run()
   {
-    if (anls.a) {
-      anls.a().b();
+    if (anlx.a) {
+      anlx.a().b();
     }
   }
 }

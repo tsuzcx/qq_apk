@@ -1,14 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
-class wmg
+public class wmg
   implements View.OnClickListener
 {
-  wmg(wmf paramwmf) {}
+  public wmg(CommentBottomBar paramCommentBottomBar) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    this.a.a();
   }
 }
 

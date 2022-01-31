@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas;
 
-import bbni;
-import bbnm;
+import bbnw;
+import bboa;
 
 public class ApngQueuePlayer$RepeatListener$1
   implements Runnable
 {
-  public ApngQueuePlayer$RepeatListener$1(bbnm parambbnm) {}
+  public ApngQueuePlayer$RepeatListener$1(bboa parambboa) {}
   
   public void run()
   {
-    bbni.a(this.a.a);
+    bbnw.a(this.a.a);
   }
 }
 

@@ -1,37 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
-
-class vmu
-  implements TextWatcher
+public abstract interface vmu
 {
-  vmu(vmt paramvmt) {}
+  public abstract void a();
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    if (this.a.jdField_a_of_type_Vmx != null)
-    {
-      this.a.jdField_a_of_type_Vls.a = paramEditable.toString();
-      this.a.jdField_a_of_type_Vmx.a(this.a.jdField_a_of_type_Vls);
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(vlp paramvlp);
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_Vmx == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a(paramCharSequence.toString()) <= 420);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.setSelection(paramInt1);
-    } while (this.a.jdField_a_of_type_Vmx == null);
-    this.a.jdField_a_of_type_Vmx.b(420);
-  }
+  public abstract void a(boolean paramBoolean, vlp paramvlp);
+  
+  public abstract void b(int paramInt);
 }
 
 

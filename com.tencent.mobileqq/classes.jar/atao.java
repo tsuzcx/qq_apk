@@ -1,21 +1,15 @@
-import tencent.im.oidb.oidb_0x8e7.oidb_0x8e7.WarnMsg;
-
 public class atao
 {
   public int a;
-  public String a;
-  public oidb_0x8e7.WarnMsg a;
+  public long a;
   public int b;
-  public String b;
   public int c;
   public int d;
-  public int e;
-  public int f;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[level=").append(this.jdField_a_of_type_Int).append(",stockPerLike=").append(this.jdField_b_of_type_Int).append(",freeLikePeopleLimit=").append(this.c).append(",freeLikeOneLimit=").append(this.d).append(",stockCount=").append(this.e).append(",freeLikePeopleCount=").append(this.f).append(",buyStockUrl=").append(this.jdField_a_of_type_JavaLangString).append(",updateLevelUrl=").append(this.jdField_b_of_type_JavaLangString).append("]");
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
     return localStringBuilder.toString();
   }
 }

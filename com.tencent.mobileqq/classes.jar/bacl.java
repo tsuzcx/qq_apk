@@ -1,20 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bacl
-  extends baby
+final class bacl
+  implements DialogInterface.OnClickListener
 {
-  public bacl(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-  }
-  
-  protected void a()
-  {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
+    paramDialogInterface.dismiss();
   }
 }
 

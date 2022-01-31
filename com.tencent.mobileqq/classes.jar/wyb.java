@@ -1,36 +1,21 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class wyb
-  implements wze
+public class wyb
+  extends akjq
 {
-  wyb(wxy paramwxy, String paramString) {}
+  public wyb(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_Wxy.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_Wxy.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
+    if (paramBoolean) {
+      this.a.a(145, paramBundle);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
   }
 }
 

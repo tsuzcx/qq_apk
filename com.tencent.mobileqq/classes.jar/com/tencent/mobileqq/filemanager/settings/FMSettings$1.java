@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import apti;
+import aptm;
 import java.io.File;
 
 public class FMSettings$1
   implements Runnable
 {
-  public FMSettings$1(apti paramapti, String paramString) {}
+  public FMSettings$1(aptm paramaptm, String paramString) {}
   
   public void run()
   {

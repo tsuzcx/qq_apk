@@ -1,46 +1,23 @@
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-
-public class yym
-  extends QzoneExternalRequest
+public final class yym
 {
-  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public final int a;
+  public final long a;
+  final String jdField_a_of_type_JavaLangString;
+  final Throwable jdField_a_of_type_JavaLangThrowable;
+  final String b;
   
-  public yym(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
+  private yym(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-    long l = Long.parseLong(paramString1);
-    super.setHostUin(l);
-    super.setLoginUserId(l);
-    this.needCompress = false;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
+    this(paramString1, paramString2, paramInt, paramLong, null);
   }
   
-  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
+  private yym(String paramString1, String paramString2, int paramInt, long paramLong, Throwable paramThrowable)
   {
-    JceStruct localJceStruct = null;
-    if (paramArrayOfByte != null) {
-      localJceStruct = decode(paramArrayOfByte, paramString);
-    }
-    return localJceStruct;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return this.b;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
 }
 

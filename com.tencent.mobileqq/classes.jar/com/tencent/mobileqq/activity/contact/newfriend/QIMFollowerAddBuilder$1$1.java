@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afld;
-import aipp;
+import aflb;
+import aipn;
 
 class QIMFollowerAddBuilder$1$1
   implements Runnable

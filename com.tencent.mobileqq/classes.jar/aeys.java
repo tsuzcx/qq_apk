@@ -1,80 +1,47 @@
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeys
-  implements aeyv
+  implements aeyt, View.OnClickListener
 {
-  private aeyx jdField_a_of_type_Aeyx;
+  private aeyv jdField_a_of_type_Aeyv;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Intent jdField_a_of_type_AndroidContentIntent;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected String a;
-  private String b;
-  private String c;
+  private String jdField_a_of_type_JavaLangString;
   
-  public aeys(QQAppInterface paramQQAppInterface, aeyx paramaeyx, Context paramContext, Intent paramIntent)
+  public aeys(QQAppInterface paramQQAppInterface, Context paramContext, aeyv paramaeyv)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeyx = paramaeyx;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_Aeyv = paramaeyv;
   }
   
   public int a()
   {
-    return 30;
+    return 5;
   }
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558589, null);
-    paramVarArgs.setOnClickListener(new aeyt(this));
-    ((TextView)paramVarArgs.findViewById(2131362407)).setText(this.jdField_a_of_type_JavaLangString);
-    return paramVarArgs;
+    paramVarArgs = ((acto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(218)).a();
+    this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
+    paramVarArgs = paramVarArgs.tipsMsg;
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558590, null);
+    ((TextView)localView.findViewById(2131362412)).setText(paramVarArgs);
+    localView.setOnClickListener(this);
+    localView.findViewById(2131362410).setOnClickListener(this);
+    return localView;
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {}
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReaderTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-          }
-          paramVarArgs = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-          if (paramVarArgs != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("ReaderTipsBar", 2, "data == null");
-        return;
-        str = paramVarArgs.getString("bookname");
-        if (!TextUtils.isEmpty(str)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ReaderTipsBar", 2, "onAIOEvent() : bookName is empty");
-      return;
-      this.jdField_a_of_type_JavaLangString = String.format(ajyc.a(2131712700), new Object[] { str });
-      this.b = paramVarArgs.getString("bookid");
-      this.c = paramVarArgs.getString("book_new_id");
-      this.jdField_a_of_type_Aeyx.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReaderTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + str);
-  }
+  public void a(int paramInt, Object... paramVarArgs) {}
   
   public int[] a()
   {
@@ -83,7 +50,26 @@ public class aeys
   
   public int b()
   {
-    return 1;
+    return 18;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131362409: 
+      if (QLog.isColorLevel()) {
+        QLog.d("TimTipsBar", 2, "click tips, jump");
+      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      axqy.b(null, "dc00898", "", "", "0X8008948", "0X8008948", 0, 0, "", "", "", "");
+    }
+    this.jdField_a_of_type_Aeyv.a();
   }
 }
 

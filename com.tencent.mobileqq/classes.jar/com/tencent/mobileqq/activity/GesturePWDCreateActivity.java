@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abhy;
-import abhz;
+import abhu;
+import abhv;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import aquo;
+import aquq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 import java.util.Iterator;
@@ -47,13 +47,13 @@ public class GesturePWDCreateActivity
   
   private void b()
   {
-    setTitle(2131692993);
-    setLeftButton(2131690596, new abhy(this));
+    setTitle(2131692994);
+    setLeftButton(2131690596, new abhu(this));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367008));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131367007));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new abhz(this));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new abhv(this));
     if (this.mDensity <= 1.0D)
     {
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
@@ -92,78 +92,78 @@ public class GesturePWDCreateActivity
       if (this.jdField_a_of_type_ArrayOfInt[0] != 1) {
         break label192;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844406);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844407);
       if (this.jdField_a_of_type_ArrayOfInt[1] != 1) {
         break label204;
       }
-      this.b.setBackgroundResource(2130844406);
+      this.b.setBackgroundResource(2130844407);
       label55:
       if (this.jdField_a_of_type_ArrayOfInt[2] != 1) {
         break label216;
       }
-      this.c.setBackgroundResource(2130844406);
+      this.c.setBackgroundResource(2130844407);
       label74:
       if (this.jdField_a_of_type_ArrayOfInt[3] != 1) {
         break label228;
       }
-      this.d.setBackgroundResource(2130844406);
+      this.d.setBackgroundResource(2130844407);
       label93:
       if (this.jdField_a_of_type_ArrayOfInt[4] != 1) {
         break label240;
       }
-      this.e.setBackgroundResource(2130844406);
+      this.e.setBackgroundResource(2130844407);
       label112:
       if (this.jdField_a_of_type_ArrayOfInt[5] != 1) {
         break label252;
       }
-      this.f.setBackgroundResource(2130844406);
+      this.f.setBackgroundResource(2130844407);
       label131:
       if (this.jdField_a_of_type_ArrayOfInt[6] != 1) {
         break label264;
       }
-      this.g.setBackgroundResource(2130844406);
+      this.g.setBackgroundResource(2130844407);
       label151:
       if (this.jdField_a_of_type_ArrayOfInt[7] != 1) {
         break label276;
       }
-      this.h.setBackgroundResource(2130844406);
+      this.h.setBackgroundResource(2130844407);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_ArrayOfInt[8] != 1) {
         break label288;
       }
-      this.i.setBackgroundResource(2130844406);
+      this.i.setBackgroundResource(2130844407);
       return;
       label192:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844405);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844406);
       break;
       label204:
-      this.b.setBackgroundResource(2130844405);
+      this.b.setBackgroundResource(2130844406);
       break label55;
       label216:
-      this.c.setBackgroundResource(2130844405);
+      this.c.setBackgroundResource(2130844406);
       break label74;
       label228:
-      this.d.setBackgroundResource(2130844405);
+      this.d.setBackgroundResource(2130844406);
       break label93;
       label240:
-      this.e.setBackgroundResource(2130844405);
+      this.e.setBackgroundResource(2130844406);
       break label112;
       label252:
-      this.f.setBackgroundResource(2130844405);
+      this.f.setBackgroundResource(2130844406);
       break label131;
       label264:
-      this.g.setBackgroundResource(2130844405);
+      this.g.setBackgroundResource(2130844406);
       break label151;
       label276:
-      this.h.setBackgroundResource(2130844405);
+      this.h.setBackgroundResource(2130844406);
     }
     label288:
-    this.i.setBackgroundResource(2130844405);
+    this.i.setBackgroundResource(2130844406);
   }
   
-  public void a(List<aquo> paramList)
+  public void a(List<aquq> paramList)
   {
     c();
     if (paramList != null)
@@ -171,11 +171,11 @@ public class GesturePWDCreateActivity
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        aquo localaquo = (aquo)paramList.next();
-        if (localaquo != null)
+        aquq localaquq = (aquq)paramList.next();
+        if (localaquq != null)
         {
-          int j = localaquo.a();
-          j = localaquo.b() + j * 3;
+          int j = localaquq.a();
+          j = localaquq.b() + j * 3;
           if ((j >= 0) && (j < this.jdField_a_of_type_ArrayOfInt.length)) {
             this.jdField_a_of_type_ArrayOfInt[j] = 1;
           }

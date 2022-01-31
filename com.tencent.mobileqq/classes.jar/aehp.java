@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class aehp
-  implements DialogInterface.OnClickListener
+  implements EIPCResultCallback
 {
-  aehp(aehn paramaehn) {}
+  aehp(aeho paramaeho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if (-102 == paramEIPCResult.code) {
+      aegs.n(this.a.a).finish();
+    }
+  }
 }
 
 

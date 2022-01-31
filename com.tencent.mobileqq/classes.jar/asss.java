@@ -1,17 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.ThemeRecentDynamicAvatarView;
 
 public class asss
-  implements baxl
 {
-  public asss(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (MultiCardRecommendFragment.a(this.a) != null) {
-      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public ThemeRecentDynamicAvatarView a;
+  public String a;
 }
 
 

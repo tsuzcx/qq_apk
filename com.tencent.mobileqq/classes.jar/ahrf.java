@@ -1,135 +1,55 @@
-import android.net.Uri;
-import android.os.Build;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
 public class ahrf
-  implements ufm, ufn, ufo, ufp
+  implements OnCompositionLoadedListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015", "MI 1S", "GT-S7568I", "ZTE N909" };
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "SM-A7000", "HM NOTE 1S", "MI 2S" };
-  private static final String[] c = { "vivo X6D" };
-  private static final String[] d = { "MI 4" };
-  private static final String[] e = { "Nexus 5" };
-  private static final String[] f = { "Nexus 5" };
-  private static final String[] g = { "OPPO R7sm" };
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ahrg jdField_a_of_type_Ahrg;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean jdField_b_of_type_Boolean;
+  public ahrf(LoginAnimBtnView.2 param2) {}
   
-  private void a()
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "handleError");
+    if ((paramLottieComposition == null) || (LoginAnimBtnView.a(this.a.this$0))) {
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
     }
-    if (this.jdField_a_of_type_Ahrg != null) {
-      this.jdField_a_of_type_Ahrg.a();
-    }
-  }
-  
-  public static boolean a(String[] paramArrayOfString)
-  {
-    boolean bool2 = false;
-    String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "isNotSupportLoopVideo model=" + str);
-    }
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (str != null)
+    do
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(ufk paramufk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onCompletion has been called.   at " + paramufk.b() + " mIsPause" + this.jdField_a_of_type_Boolean);
-    }
-    this.jdField_a_of_type_Int = paramufk.b();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramufk.c();
-      paramufk.a(true);
-    }
-    if ((a(c)) && (!this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI(this.jdField_a_of_type_AndroidNetUri);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
-    }
-  }
-  
-  public boolean a(ufk paramufk, int paramInt1, int paramInt2)
-  {
-    paramufk = new StringBuilder(64);
-    paramufk.append("bgVideo error-- what=");
-    paramufk.append(paramInt1);
-    paramufk.append(" extra=");
-    paramufk.append(paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, paramufk.toString());
-    }
-    a();
-    paramufk = Build.MODEL;
-    if (paramufk != null)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("crashModel", paramufk);
-      axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()).a(null, "newHandGuide_error", true, 0L, 0L, localHashMap, "", false);
-    }
-    return true;
-  }
-  
-  public void a_(ufk paramufk)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.E();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onPrepared has been called. talkback=" + AppSetting.d + " videoPrepareTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-  }
-  
-  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 3)
-    {
+      return;
+      int i = actj.a(70.0F, this.a.this$0.getResources());
+      int j = actj.a(70.0F, this.a.this$0.getResources());
+      Object localObject = paramLottieComposition.getBounds();
+      float f1 = i / ((Rect)localObject).width();
+      float f2 = j / ((Rect)localObject).height();
       if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.GuideVideoHandler", 2, "onInfo what===>" + paramInt1);
+        QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject).width() + ", rh:" + ((Rect)localObject).height());
       }
-      if (a(f)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
+      localObject = new LottieDrawable();
+      ((LottieDrawable)localObject).setImageAssetDelegate(new ahrg(this.a.this$0.getContext().getApplicationContext()));
+      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+      ((LottieDrawable)localObject).setScale(f1, f2);
+      ((LottieDrawable)localObject).loop(true);
+      paramLottieComposition = ((LottieDrawable)localObject).getBounds();
+      if (QLog.isColorLevel()) {
+        QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + paramLottieComposition.width() + ", rh:" + paramLottieComposition.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
       }
-    }
-    return false;
+      LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject);
+      if (LoginAnimBtnView.a(this.a.this$0))
+      {
+        ((LottieDrawable)localObject).cancelAnimation();
+        ((LottieDrawable)localObject).recycleBitmaps();
+        ((LottieDrawable)localObject).clearComposition();
+        ((LottieDrawable)localObject).setImageAssetDelegate(null);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        return;
+      }
+    } while (!this.a.this$0.isEnabled());
+    this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+    this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
   }
 }
 

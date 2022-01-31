@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import sez;
+import sew;
 
 public class ProfileParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProfileParams> CREATOR = new sez();
+  public static final Parcelable.Creator<ProfileParams> CREATOR = new sew();
   public int a;
   public ProfileParams.CurLoginUsr a;
   public String a;

@@ -1,46 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.TextView;
 import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class mjk
-  implements DialogInterface.OnClickListener
+  implements GestureDetector.OnGestureListener
 {
-  public mjk(VideoControlUI paramVideoControlUI, long paramLong) {}
+  public mjk(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface arg1, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f != null)) {
-          axqw.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, "");
-        }
-        muf.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
-      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.x != 1));
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
-    } while (paramInt == -1);
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
-    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
-    {
-      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
-      if (paramInt != -1)
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
-      }
-      return;
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.f != null) && (this.a.f.isShown())) {
+      this.a.r(false);
     }
+    return false;
   }
 }
 

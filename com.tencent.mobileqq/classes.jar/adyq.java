@@ -1,23 +1,11 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adyq
-  extends aecg
+public abstract interface adyq
 {
-  protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
-  protected ETTextView a;
-  protected BubbleImageView a;
-  protected TextView b;
-  protected ETTextView b;
-  protected TextView c;
-  public int e;
-  
-  adyq(adyh paramadyh) {}
+  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
 }
 
 

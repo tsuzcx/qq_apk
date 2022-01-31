@@ -1,14 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class mpo
-  implements View.OnClickListener
+  extends mcf
 {
-  mpo(mpn parammpn) {}
+  mpo(mpk parammpk) {}
   
-  public void onClick(View paramView)
+  protected void b(mcj parammcj)
   {
-    this.a.a(true, 0);
+    if (parammcj.jdField_b_of_type_Boolean) {
+      return;
+    }
+    parammcj.jdField_b_of_type_Boolean = this.a.a(false, 2);
+    if (parammcj.jdField_b_of_type_Boolean) {
+      parammcj.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcj.jdField_b_of_type_Boolean + "]");
   }
 }
 

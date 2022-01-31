@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anqd;
+import anqi;
 
 public class QFlutterAppData
   extends XmlData
 {
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String assetResMD5 = "";
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String libAppSoMD5 = "";
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String libSkinSoMD5 = "";
   
   public String getSharedPreferencesName()

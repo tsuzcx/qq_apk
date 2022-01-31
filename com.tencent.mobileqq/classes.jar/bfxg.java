@@ -1,43 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import java.util.ArrayList;
 
-public class bfxg
-  extends BaseAdapter
-  implements bfwu
+class bfxg
+  extends DataSetObservable
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  bfxg(bfxe parambfxe) {}
   
-  public bfxg(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (paramView == null)
+    for (;;)
     {
-      this.jdField_a_of_type_Int = 0;
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof bfxf)) {
+            ((bfxf)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
       return;
+      i -= 1;
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidViewView;
   }
 }
 

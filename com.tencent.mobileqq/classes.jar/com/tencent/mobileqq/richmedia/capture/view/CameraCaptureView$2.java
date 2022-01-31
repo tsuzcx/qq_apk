@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import axgg;
+import axgi;
 
 class CameraCaptureView$2
   implements Runnable

@@ -4,11 +4,11 @@ import android.text.TextWatcher;
 class atsg
   implements TextWatcher
 {
-  atsg(atsa paramatsa) {}
+  atsg(atsc paramatsc) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    atbp.a(this.a.e, 40);
+    atbr.a(this.a.a, 30);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

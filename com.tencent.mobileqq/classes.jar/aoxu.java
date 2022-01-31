@@ -1,51 +1,141 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class aoxu
-  extends aoxr
+public class aoxu
 {
-  private long jdField_a_of_type_Long;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aoxp jdField_a_of_type_Aoxp;
-  private azuy jdField_a_of_type_Azuy = new aoxv(this);
-  private String jdField_a_of_type_JavaLangString;
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  int jdField_a_of_type_Int;
+  public apfc a;
+  String jdField_a_of_type_JavaLangString;
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  List<aoxr> jdField_a_of_type_JavaUtilList;
+  List<aoxr> b;
+  List<aoxr> c;
+  public List<aoxr> d;
+  List<aoxr> e;
   
-  private aoxu(aowt paramaowt, String paramString1, String paramString2)
+  public aoxu(String paramString, apfc paramapfc, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
   {
-    super(paramaowt);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramapfc;
+    this.jdField_a_of_type_Apfc = paramHashMap;
+    this.jdField_a_of_type_Int = 0;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilHashMap = localObject;
+    this.b = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
+    this.d = new ArrayList();
+    this.e = new ArrayList();
   }
   
-  void a(String paramString, int paramInt)
+  public int a()
   {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-    azuu.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+    return this.b.size();
   }
   
-  void a(String paramString, int paramInt, aoxp paramaoxp)
+  public void a()
   {
-    if (paramaoxp == null)
-    {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
-      return;
+    c();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aoxr)localIterator.next()).a();
     }
-    this.jdField_a_of_type_Aoxp = paramaoxp;
-    this.jdField_b_of_type_Long = Long.parseLong(paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    azuu.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Azuy);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(aoxr paramaoxr)
+  {
+    if (paramaoxr != null) {
+      this.b.add(paramaoxr);
+    }
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((aoxr)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_Int = 5;
+  }
+  
+  void c()
+  {
+    if (10 <= this.b.size()) {}
+    ArrayList localArrayList;
+    for (int i = 10;; i = this.b.size())
+    {
+      localArrayList = new ArrayList(i);
+      int j = 0;
+      while (j < i)
+      {
+        aoxr localaoxr = (aoxr)this.b.get(j);
+        this.jdField_a_of_type_JavaUtilList.add(localaoxr);
+        localArrayList.add(localaoxr);
+        j += 1;
+      }
+    }
+    this.b.removeAll(localArrayList);
+  }
+  
+  public void d()
+  {
+    int j = this.c.size();
+    int k = this.e.size();
+    int m = this.d.size();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    aoxr localaoxr;
+    if (localIterator.hasNext())
+    {
+      localaoxr = (aoxr)localIterator.next();
+      if ((localaoxr.b == 2) || (localaoxr.b == 3) || (localaoxr.b == 4)) {
+        localIterator.remove();
+      }
+      if (localaoxr.b == 2)
+      {
+        this.c.add(localaoxr);
+        i += 1;
+      }
+    }
+    for (;;)
+    {
+      break;
+      if (localaoxr.b == 3)
+      {
+        this.e.add(localaoxr);
+        i += 1;
+      }
+      else if (localaoxr.b == 4)
+      {
+        this.d.add(localaoxr);
+        i += 1;
+        continue;
+        c();
+        if (QLog.isColorLevel())
+        {
+          int n = this.jdField_a_of_type_JavaUtilList.size();
+          int i1 = this.b.size();
+          QLog.i("FileMultiMsgManager<FileAssistant>", 1, "request update, forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "] removeCount[" + i + "] leftCount[" + (n + i1) + "] finishCount[" + (m + (j + k)) + "]");
+        }
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext()) {
+          ((aoxr)localIterator.next()).a();
+        }
+        if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
+        {
+          this.jdField_a_of_type_Int = 5;
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FileMultiMsgManager<FileAssistant>", 1, "all task upload finish , remove multi request: forwardSeq[ " + this.jdField_a_of_type_JavaLangString + "]");
+          }
+          aowx.a(this.jdField_a_of_type_Aowx, this.jdField_a_of_type_JavaLangString);
+        }
+        return;
+      }
+    }
   }
 }
 

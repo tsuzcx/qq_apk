@@ -1,8 +1,8 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import bbev;
-import bbkv;
+import bbfj;
+import bblj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import f;
@@ -73,7 +73,7 @@ public class FontManager$5
           {
             ((hn)localObject).jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(((hn)localObject).jdField_a_of_type_JavaLangString);
             ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-            bbkv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             ho.a(this.this$0);
             return;
           }
@@ -99,7 +99,7 @@ public class FontManager$5
         }
         ho.c = true;
         ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-        bbkv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         ho.a(this.this$0);
         return;
       } while (!QLog.isColorLevel());
@@ -109,10 +109,10 @@ public class FontManager$5
       ((hn)localObject).c = f.f(this.jdField_a_of_type_Int);
       ((hn)localObject).b = 4;
       ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-      bbkv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       ho.a(this.this$0);
       return;
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Boolean) || (bbev.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) || (bbev.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))) {
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Boolean) || (bbfj.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) || (bbfj.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))) {
         break;
       }
     } while (!QLog.isColorLevel());

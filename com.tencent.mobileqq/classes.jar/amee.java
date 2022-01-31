@@ -1,109 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
 public class amee
-  extends BaseAdapter
+  extends akfy
 {
   public amee(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public String a(int paramInt)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
     {
-      paramView = this.a.getLayoutInflater().inflate(2131560674, null);
-      paramViewGroup = new ameo();
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131363942));
-      paramView.setTag(paramViewGroup);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
       }
-      if (localObject == null) {}
-    }
-    else
-    {
-      for (;;)
+      if (i == 0)
       {
-        try
+        if (this.a.app != null)
         {
-          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-            continue;
-          }
-          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          paramViewGroup.a.setImageDrawable((Drawable)localObject);
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          bcql.a(this.a, 0, 2131720547, 0).a();
         }
-        catch (Exception paramViewGroup)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          paramViewGroup.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          return paramView;
-        }
-        if ((this.a.d != 1) || (this.a.jdField_a_of_type_Boolean)) {
-          continue;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup = (ameo)paramView.getTag();
-        break;
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+        this.a.finish();
       }
     }
-    try
+    while (!"profilelogic.setUserProfile".equals(paramObject))
     {
-      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        paramViewGroup.a.setImageDrawable((Drawable)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup.a.setImageDrawable(null);
-      }
+      int i;
+      return;
+      bcql.a(this.a, 1, 2131720544, 0).a();
+      return;
     }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
-      {
-        paramViewGroup.printStackTrace();
-      }
-    }
+    bcql.a(this.a, 1, 2131720544, 0).a();
   }
 }
 

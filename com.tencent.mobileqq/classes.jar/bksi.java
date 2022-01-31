@@ -1,85 +1,166 @@
-import android.opengl.GLES20;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.widget.Scroller;
 
 public class bksi
+  implements bksg
 {
-  private static int[] a = new int[1];
+  public static final boolean a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private Scroller jdField_a_of_type_AndroidWidgetScroller;
+  private bksf jdField_a_of_type_Bksf;
+  private bksh jdField_a_of_type_Bksh;
+  private bksk jdField_a_of_type_Bksk;
+  private bksl jdField_a_of_type_Bksl;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private Rect jdField_b_of_type_AndroidGraphicsRect;
+  private float jdField_c_of_type_Float;
+  private final int jdField_c_of_type_Int;
+  private Rect jdField_c_of_type_AndroidGraphicsRect;
+  private float jdField_d_of_type_Float;
+  private int jdField_d_of_type_Int;
+  private float e;
+  private float f;
+  private float g;
+  private float h;
   
-  public static int a()
+  static
   {
-    return a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", "precision mediump float;varying   vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.y = texture2D(SamplerU, texturecoordinateOut).r-0.5;\nyuv.z = texture2D(SamplerV, texturecoordinateOut).r-0.5;\nrgb = mat3(      1,       1,      1,\n0, \t\t-.34414, 1.772,\n1.402, \t-.71414, 0) * yuv;\nrgba = vec4(rgb, 1);\ngl_FragColor = rgba;\n}\n");
+    if (Build.VERSION.SDK_INT >= 10) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  private static int a(int paramInt1, int paramInt2)
+  private boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = GLES20.glCreateProgram();
-    if (i == 0)
-    {
-      bksg.a("glCreateProgram:program == 0");
-      return 0;
-    }
-    GLES20.glAttachShader(i, paramInt1);
-    GLES20.glAttachShader(i, paramInt2);
-    GLES20.glLinkProgram(i);
-    GLES20.glGetProgramiv(i, 35714, a, 0);
-    if (a[0] == 0)
-    {
-      String str = GLES20.glGetProgramInfoLog(i);
-      GLES20.glDeleteProgram(i);
-      bksg.a("linkProgram:GL_COMPILE_STATUS errorinfo =" + str);
-      return 0;
-    }
-    return i;
+    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
   }
   
-  private static int a(int paramInt, String paramString)
+  private void b()
   {
-    int i = GLES20.glCreateShader(paramInt);
-    if (i == 0)
+    if ((this.jdField_a_of_type_Bksf == null) || (this.jdField_a_of_type_Bksf.a())) {}
+    int i;
+    do
     {
-      bksg.a("glCreateShader:shader==0 type=" + a(paramInt));
-      return 0;
-    }
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    GLES20.glGetShaderiv(i, 35713, a, 0);
-    if (a[0] == 0)
-    {
-      paramString = GLES20.glGetShaderInfoLog(i);
-      GLES20.glDeleteShader(i);
-      bksg.a("glGetShaderiv:GL_COMPILE_STATUS error  loginfo=" + paramString);
-      return 0;
-    }
-    return i;
+      return;
+      i = (int)(this.jdField_d_of_type_Float / this.jdField_b_of_type_Float);
+      this.jdField_a_of_type_Int = Math.max(i, 0);
+    } while (this.jdField_c_of_type_Int < 6);
+    this.jdField_b_of_type_Int = Math.min(i + this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
   }
   
-  public static int a(String paramString1, String paramString2)
+  private void c()
   {
-    int i = a(35633, paramString1);
-    int j = a(35632, paramString2);
-    if ((i == 0) || (j == 0))
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-16777216);
+    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
     {
-      bksg.a("compileShader:vertext or fragment == 0");
-      return 0;
+      this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+      if (this.jdField_d_of_type_Float < this.h)
+      {
+        this.jdField_d_of_type_Float = this.h;
+        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+      }
+      if (this.jdField_d_of_type_Float > this.g)
+      {
+        this.jdField_d_of_type_Float = this.g;
+        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+      }
+      b();
+      if (this.jdField_a_of_type_Bksh != null) {
+        this.jdField_a_of_type_Bksh.invalidate();
+      }
+      float f1 = this.jdField_d_of_type_Float;
+      float f2 = this.e;
+      this.e = this.jdField_d_of_type_Float;
+      if (!a(f1 - f2, 0.0F)) {
+        break label157;
+      }
     }
-    int k = a(i, j);
-    if (k == 0)
+    label157:
+    while (this.jdField_a_of_type_Bksk == null)
     {
-      GLES20.glDeleteShader(i);
-      GLES20.glDeleteShader(j);
-      return 0;
+      return;
+      this.jdField_a_of_type_Bksl.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      break;
     }
-    return k;
+    this.jdField_a_of_type_Bksk.a(this.jdField_d_of_type_Float, -this.jdField_d_of_type_Float, this.f - this.jdField_d_of_type_Float);
   }
   
-  private static String a(int paramInt)
+  public void a()
   {
-    if (paramInt == 35633) {
-      return "GL_VERTEX_SHADER";
+    this.jdField_a_of_type_Bksh.postInvalidate();
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.right;
+    float f1 = this.h;
+    this.h = (i - paramInt + f1);
+    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt;
+    this.jdField_a_of_type_Bksh.invalidate();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Bksf == null) {
+      return;
     }
-    if (paramInt == 35632) {
-      return "GL_FRAGMENT_SHADER";
+    c();
+    int i = Math.max(this.jdField_a_of_type_Int - 1, 0);
+    float f1 = i;
+    f1 = this.jdField_b_of_type_Float * f1;
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(f1 - this.jdField_d_of_type_Float + this.jdField_a_of_type_Float, 0.0F);
+    int k = Math.min(this.jdField_b_of_type_Int + 3, this.jdField_d_of_type_Int);
+    int j = (int)this.jdField_b_of_type_Float;
+    while (i < k)
+    {
+      bksj localbksj = this.jdField_a_of_type_Bksf.a(i);
+      if (localbksj != null)
+      {
+        j = (int)Math.min(this.f - f1, this.jdField_b_of_type_Float);
+        this.jdField_c_of_type_AndroidGraphicsRect.set(0, 0, j, (int)this.jdField_c_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(localbksj.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      this.jdField_a_of_type_AndroidGraphicsCanvas.translate(j, 0.0F);
+      f1 += j;
+      i += 1;
     }
-    return "unKnown";
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-f1 + this.jdField_d_of_type_Float - this.jdField_a_of_type_Float, 0.0F);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null) {
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    int i = this.jdField_b_of_type_AndroidGraphicsRect.left;
+    float f1 = this.g;
+    this.g = (i - paramInt + f1);
+    this.jdField_b_of_type_AndroidGraphicsRect.left = paramInt;
+    this.jdField_a_of_type_Bksh.invalidate();
   }
 }
 

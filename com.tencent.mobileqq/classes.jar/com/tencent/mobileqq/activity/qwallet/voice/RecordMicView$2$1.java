@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import ahjk;
+import ahji;
 
 class RecordMicView$2$1
   implements Runnable

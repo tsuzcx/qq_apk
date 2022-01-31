@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alfo;
-import alfu;
+import alfn;
+import alft;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARCloudControl$5
   implements Runnable
 {
-  public ARCloudControl$5(alfo paramalfo) {}
+  public ARCloudControl$5(alfn paramalfn) {}
   
   public void run()
   {
-    if ((alfo.a(this.this$0) != null) && (alfo.b(this.this$0)))
+    if ((alfn.a(this.this$0) != null) && (alfn.b(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "onARCloudUploadImgComplete .isTimeOut= ");
-      if (!alfo.a(this.this$0)) {}
+      if (!alfn.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    alfo.a(this.this$0, true);
-    alfo.a(this.this$0).a(1, null);
+    alfn.a(this.this$0, true);
+    alfn.a(this.this$0).a(1, null);
     this.this$0.b = System.currentTimeMillis();
   }
 }

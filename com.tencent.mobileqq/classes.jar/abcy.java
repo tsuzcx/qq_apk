@@ -1,22 +1,19 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class abcy
-  implements View.OnClickListener
+  implements abct
 {
   public abcy(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    paramView = new Intent();
-    paramView.putParcelableArrayListExtra("selected_target_list", new ArrayList(ForwardTroopListFragment.a(this.a).values()));
-    this.a.getActivity().setResult(0, paramView);
-    this.a.getActivity().finish();
+    ForwardTroopListFragment.a(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardTroopListFragment.a(this.a, paramString, paramInt);
   }
 }
 

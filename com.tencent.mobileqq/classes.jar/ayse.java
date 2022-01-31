@@ -1,455 +1,409 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.transfile.FileDownloadFailedException;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import mqq.manager.ProxyIpManager;
+import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
+import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
 
 public class ayse
-  extends ayoh
-  implements ProtocolDownloader
+  extends ayow
+  implements aysb
 {
-  public ayse(BaseApplicationImpl paramBaseApplicationImpl)
+  String[] a;
+  String e;
+  
+  public ayse(ayvx paramayvx, aywc paramaywc)
   {
-    super("lbs", paramBaseApplicationImpl);
+    super(paramayvx, paramaywc);
+    this.jdField_a_of_type_ArrayOfJavaLangString = null;
+    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
   }
   
-  private String a(MessageForPic paramMessageForPic, String paramString)
+  private cmd0x346.ReqBody a()
   {
-    if (bbdj.a(paramString)) {}
-    while (!bbdj.a(paramMessageForPic.path)) {
-      return paramString;
-    }
-    paramMessageForPic = new CompressInfo(paramMessageForPic.path, 0);
-    auoq.b(paramMessageForPic);
-    return paramMessageForPic.e;
-  }
-  
-  private void a(DownloadParams paramDownloadParams, OutputStream paramOutputStream, URLDrawableHandler paramURLDrawableHandler, boolean paramBoolean)
-  {
-    URL localURL = paramDownloadParams.url;
-    localObject1 = paramDownloadParams.headers;
-    localObject1 = paramDownloadParams.cookies;
-    String str1 = localURL.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("lbs", 2, "LBS Image download start, url:" + str1);
-    }
-    Object localObject8 = null;
-    String str2 = localURL.getFile();
-    Object localObject5;
-    Object localObject4;
-    Object localObject2;
-    Object localObject3;
-    Object localObject7;
-    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof MessageForPic)))
-    {
-      localObject5 = (MessageForPic)paramDownloadParams.tag;
-      localObject4 = ((MessageForPic)localObject5).selfuin;
-      localObject2 = ((MessageForPic)localObject5).frienduin;
-      l1 = ((MessageForPic)localObject5).time;
-      localObject1 = String.valueOf(((MessageForPic)localObject5).uniseq);
-      localObject3 = ((MessageForPic)localObject5).uuid;
-      i = aywk.a(paramDownloadParams.url.getProtocol(), false);
-      if (((MessageForPic)localObject5).isSendFromLocal()) {
-        if (i == 65537) {
-          if ((((MessageForPic)localObject5).isShareAppActionMsg) || (((MessageForPic)localObject5).msgtype == -3001))
-          {
-            paramDownloadParams = ((MessageForPic)localObject5).path;
-            localObject5 = localObject2;
-            localObject7 = localObject4;
-            localObject4 = localObject3;
-            localObject3 = localObject1;
-            localObject2 = paramDownloadParams;
-            localObject1 = localObject7;
-            paramDownloadParams = (DownloadParams)localObject5;
-          }
-        }
-      }
+    int j = 17;
+    cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
+    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString));
+    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Aywc.e));
+    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
+    localReqBody.uint32_cmd.set(1000);
+    localReqBody.uint32_seq.set(0);
+    int i;
+    if ("ftn".equals(this.d)) {
+      i = 3;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("lbs", 2, "[lbs_file][down][start]  ,localPath:" + (String)localObject2 + ",serverPath:" + (String)localObject4 + ",uniseq:" + (String)localObject3 + ",msgTime:" + l1);
+      localReqBody.uint32_business_id.set(i);
+      localReqBody.uint32_client_type.set(104);
+      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
+      return localReqBody;
+      i = j;
+      if ("pttcenter".equals(this.d)) {
+        i = j;
       }
-      localObject5 = (QQAppInterface)this.a.getAppRuntime((String)localObject1);
-      if (localObject2 != null) {}
-      try
-      {
-        paramDownloadParams = new File((String)localObject2);
-        if (paramDownloadParams.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("lbs", 2, "file exist, copy file from:" + (String)localObject2 + ", url:" + str1);
-          }
-          aypt.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-        }
-        return;
-      }
-      catch (Exception paramDownloadParams)
-      {
-        for (;;)
-        {
-          i = 1;
-          paramOutputStream = null;
-          paramURLDrawableHandler = null;
-          localObject1 = null;
-          int j = 1;
-          continue;
-          if ((paramDownloadParams != null) && (localObject1 != null)) {
-            if (l1 == -1L)
-            {
-              continue;
-              i = 1;
-              continue;
-              continue;
-              continue;
-              i += 1;
-            }
-          }
-        }
-      }
-      if (((MessageForPic)localObject5).picExtraFlag == ayvu.f)
-      {
-        paramDownloadParams = ((ayte)((MessageForPic)localObject5).picExtraObject).c;
-        if ((paramDownloadParams != null) && (!"".equals(paramDownloadParams))) {
-          break label1978;
-        }
-        paramDownloadParams = a((MessageForPic)localObject5, paramDownloadParams);
-        break;
-      }
-      paramDownloadParams = a((MessageForPic)localObject5, null);
-      break;
-      localObject5 = ((MessageForPic)localObject5).path;
-      paramDownloadParams = (DownloadParams)localObject2;
-      localObject2 = localObject4;
-      localObject4 = localObject3;
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject5;
-      continue;
-      if (str2.startsWith("http/"))
-      {
-        paramDownloadParams = str2.substring(5);
-        j = 1;
-        localObject1 = null;
-        i = 1;
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          try
-          {
-            if ((QLog.isColorLevel()) && (localObject1 != null)) {
-              QLog.i("lbs", 2, "CONVERT_URL success,@time:" + ((ayqn)localObject1).jdField_b_of_type_Long + ",uniseq=" + (String)localObject3);
-            }
-            localObject4 = new ayqo();
-          }
-          catch (Exception localException1)
-          {
-            long l2;
-            paramURLDrawableHandler = null;
-            k = i;
-            paramOutputStream = paramDownloadParams;
-            paramDownloadParams = localException1;
-            i = j;
-            j = k;
-            continue;
-          }
-          try
-          {
-            ((ayqo)localObject4).jdField_a_of_type_Long = System.currentTimeMillis();
-            if (QLog.isColorLevel()) {
-              QLog.i("lbs", 2, "DOWNLOAD_FILE start,@time:" + ((ayqo)localObject4).jdField_a_of_type_Long + ",uniseq=" + (String)localObject3);
-            }
-            paramURLDrawableHandler = new ayoj(paramOutputStream, paramURLDrawableHandler, (QQAppInterface)localObject5);
-            paramURLDrawableHandler.jdField_a_of_type_JavaLangString = "lbs";
-            localObject7 = new ayoi(paramDownloadParams, null, paramURLDrawableHandler, true);
-            paramOutputStream = "gprs";
-            if (bbev.b(BaseApplication.getContext()) == 1) {
-              paramOutputStream = "wifi";
-            }
-            ((ayoi)localObject7).a("Net-type", paramOutputStream);
-            ((ayoi)localObject7).b(5);
-            ((ayoi)localObject7).a(true);
-            ((ayoi)localObject7).a("Accept-Encoding", "identity");
-            j = 0;
-            if (i > 3) {
-              continue;
-            }
-            try
-            {
-              ((ayoi)localObject7).a("Range", "bytes=" + j + "-");
-              paramURLDrawableHandler.jdField_a_of_type_Boolean = false;
-              ((ayoi)localObject7).jdField_a_of_type_Boolean = false;
-              ((QQAppInterface)localObject5).getHttpCommunicatort().b((bbmg)localObject7);
-              j = paramURLDrawableHandler.jdField_a_of_type_Int;
-              if (!paramURLDrawableHandler.jdField_a_of_type_Boolean) {
-                continue;
-              }
-              ((ayqo)localObject4).jdField_e_of_type_Int = ((ayoi)localObject7).jdField_e_of_type_Int;
-              throw new FileDownloadFailedException(9301, 0L, "write to Cache failed", false);
-            }
-            catch (Exception localException2)
-            {
-              k = 4;
-              paramURLDrawableHandler = (URLDrawableHandler)localObject4;
-              j = i;
-              paramOutputStream = paramDownloadParams;
-              i = k;
-              paramDownloadParams = localException2;
-            }
-          }
-          catch (Exception localException4)
-          {
-            k = 4;
-            paramURLDrawableHandler = localException1;
-            j = i;
-            paramOutputStream = paramDownloadParams;
-            paramDownloadParams = localException4;
-            i = k;
-            continue;
-            j = 3;
-            i = 1;
-            paramDownloadParams = localObject8;
-            localObject1 = localException1;
-          }
-          int k = 9001;
-          l2 = 0L;
-          if ((paramDownloadParams instanceof FileDownloadFailedException))
-          {
-            localObject4 = (FileDownloadFailedException)paramDownloadParams;
-            k = ((FileDownloadFailedException)localObject4).errorCode;
-            l2 = ((FileDownloadFailedException)localObject4).errorDetailCode;
-            paramBoolean = ((FileDownloadFailedException)localObject4).needReport;
-          }
-          if (i == 3)
-          {
-            ((ayqn)localObject1).jdField_a_of_type_Boolean = false;
-            ((ayqn)localObject1).jdField_b_of_type_Long = System.currentTimeMillis();
-            ((ayqn)localObject1).jdField_b_of_type_Int = j;
-            ((ayqn)localObject1).jdField_a_of_type_Int = k;
-            ((ayqn)localObject1).c = l2;
-            ((ayqn)localObject1).jdField_a_of_type_JavaLangString = paramDownloadParams.getMessage();
-            paramURLDrawableHandler = new StringBuilder();
-            paramURLDrawableHandler.append("msg.id=").append((String)localObject3).append(",actualUrl=").append(paramOutputStream).append(",errorCode=").append(k).append(",detailErrCode=").append(l2).append(",msg=").append(paramDownloadParams.getMessage());
-            if (QLog.isColorLevel()) {
-              QLog.e("lbs", 2, "[lbs_file][down][result] failed  ,localPath:" + (String)localObject2 + ",serverPath:" + str1 + ",msgTime:" + l1 + ",errStr:" + paramURLDrawableHandler.toString(), paramDownloadParams);
-            }
-            throw paramDownloadParams;
-            if (str2.startsWith("file/"))
-            {
-              paramDownloadParams = new File(str2.substring(4));
-              if (!paramDownloadParams.exists()) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("lbs", 2, "file exist, copy to catch, url:" + str1);
-              }
-              aypt.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-              paramDownloadParams.delete();
-              return;
-            }
-            localObject7 = localURL.getPath();
-            if (!QLog.isColorLevel()) {
-              break label2053;
-            }
-            QLog.d("lbs", 2, "<--downloadLBSImage serverPath=" + (String)localObject7);
-            break label2053;
-            paramOutputStream = new StringBuffer("wrong argument(header) for LBS. ");
-            if (paramDownloadParams == null) {
-              paramOutputStream.append(" peerUin is not set. ");
-            }
-            if (localObject1 == null) {
-              paramOutputStream.append(" myUin is not set. ");
-            }
-            if (l1 == -1L) {
-              paramOutputStream.append(" msgTime is not set. ");
-            }
-            throw new FileDownloadFailedException(9302, 0L, paramOutputStream.toString(), false);
-            if ((localException2 == null) || (!localException2.isLogin()))
-            {
-              paramDownloadParams = new FileDownloadFailedException(0, 0L, "Account is logout", false);
-              paramDownloadParams.needReport = false;
-              throw paramDownloadParams;
-            }
-            if (!bbev.d(BaseApplication.getContext()))
-            {
-              paramDownloadParams = new FileDownloadFailedException(0, 0L, "No alive Network.", false);
-              paramDownloadParams.needReport = false;
-              throw paramDownloadParams;
-            }
-            localObject4 = new ayqn();
-          }
-          DownloadParams localDownloadParams;
-          try
-          {
-            ((ayqn)localObject4).jdField_a_of_type_Long = System.currentTimeMillis();
-            if (QLog.isColorLevel())
-            {
-              QLog.i("lbs", 2, "CONVERT_URL start @time:" + ((ayqn)localObject4).jdField_a_of_type_Long + ",uniseq=" + (String)localObject3);
-              break label2074;
-              if (i <= 3)
-              {
-                paramDownloadParams = new ayok();
-                if (paramBoolean)
-                {
-                  j = 1;
-                  byte b = (byte)j;
-                  localException2.a().a((String)localObject1, (String)localObject7, b, paramDownloadParams);
-                }
-                try
-                {
-                  if (!paramDownloadParams.jdField_a_of_type_Boolean) {
-                    paramDownloadParams.wait(60000L);
-                  }
-                  if (paramDownloadParams.jdField_b_of_type_Int == 0) {
-                    continue;
-                  }
-                  if (paramDownloadParams.jdField_b_of_type_Int != 1002)
-                  {
-                    j = paramDownloadParams.jdField_b_of_type_Int;
-                    if (j != 1013) {
-                      continue;
-                    }
-                  }
-                  i += 1;
-                  continue;
-                }
-                finally {}
-                j = 0;
-                continue;
-                ((ayqn)localObject4).jdField_b_of_type_Int = i;
-                i = paramDownloadParams.jdField_a_of_type_Int;
-              }
-            }
-          }
-          catch (Exception paramDownloadParams)
-          {
-            Object localObject6;
-            i = 3;
-            paramOutputStream = null;
-            paramURLDrawableHandler = null;
-            localObject1 = localDownloadParams;
-            j = 1;
-          }
-          try
-          {
-            if (!paramDownloadParams.jdField_a_of_type_Boolean) {
-              throw new FileDownloadFailedException(9006, 0L, "onGetTempChatPic Time out.", false);
-            }
-            if (!paramDownloadParams.jdField_b_of_type_Boolean) {
-              throw new FileDownloadFailedException(paramDownloadParams.jdField_b_of_type_Int, paramDownloadParams.jdField_a_of_type_Long, "onGetTempChatPic Time out.", false);
-            }
-            if (paramDownloadParams.jdField_a_of_type_JavaLangString == null) {
-              throw new FileDownloadFailedException(9007, 0L, "onDownloadPicReqReturn downUrl is null", false);
-            }
-            paramDownloadParams = paramDownloadParams.jdField_a_of_type_JavaLangString;
-            try
-            {
-              ((ayqn)localObject4).jdField_b_of_type_Long = System.currentTimeMillis();
-              if (QLog.isColorLevel()) {
-                QLog.d("lbs", 2, "<--downloadLBSImage actualUrl=" + paramDownloadParams);
-              }
-              ((ayqn)localObject4).jdField_a_of_type_Boolean = true;
-              j = 3;
-              localObject1 = localObject4;
-            }
-            catch (Exception localException3)
-            {
-              paramOutputStream = paramDownloadParams;
-              paramURLDrawableHandler = null;
-              localObject1 = localObject4;
-              k = 3;
-              j = i;
-              paramDownloadParams = localException3;
-              i = k;
-            }
-            if ((paramURLDrawableHandler.jdField_a_of_type_Long > 0L) && (j >= paramURLDrawableHandler.jdField_a_of_type_Long)) {
-              ((ayoi)localObject7).jdField_a_of_type_Boolean = true;
-            }
-            if (!((ayoi)localObject7).jdField_a_of_type_Boolean) {
-              break label2121;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("lbs", 2, "[lbs_file][down][result] success  ,localPath:" + (String)localObject2 + ",serverPath:" + str1 + ",msgTime:" + l1 + ",uniseq:" + (String)localObject3);
-            }
-            if (!((ayoi)localObject7).jdField_a_of_type_Boolean)
-            {
-              ((ayqo)localObject4).jdField_e_of_type_Int = ((ayoi)localObject7).jdField_e_of_type_Int;
-              ((ayqo)localObject4).jdField_a_of_type_Int = ((ayoi)localObject7).f;
-              ((ayqo)localObject4).jdField_a_of_type_JavaLangString = ((ayoi)localObject7).b;
-              throw new FileDownloadFailedException(((ayoi)localObject7).f, ((ayoi)localObject7).c, ((ayoi)localObject7).b, false);
-            }
-            ((ayqo)localObject4).jdField_a_of_type_Boolean = ((ayoi)localObject7).jdField_a_of_type_Boolean;
-            ((ayqo)localObject4).jdField_b_of_type_Long = System.currentTimeMillis();
-            ((ayqo)localObject4).jdField_e_of_type_Long = paramURLDrawableHandler.jdField_a_of_type_Int;
-            ((ayqo)localObject4).f = paramURLDrawableHandler.jdField_a_of_type_Long;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("lbs", 2, "DOWNLOAD_FILE success,@time:" + ((ayqo)localObject4).jdField_b_of_type_Long + ",uniseq=" + (String)localObject3);
-            return;
-          }
-          catch (Exception paramDownloadParams)
-          {
-            k = 3;
-            paramOutputStream = null;
-            paramURLDrawableHandler = null;
-            localObject1 = localDownloadParams;
-            j = i;
-            i = k;
-          }
-        }
-        if (i == 4)
-        {
-          paramURLDrawableHandler.jdField_a_of_type_Boolean = false;
-          paramURLDrawableHandler.jdField_b_of_type_Long = System.currentTimeMillis();
-          paramURLDrawableHandler.jdField_b_of_type_Int = j;
-          paramURLDrawableHandler.jdField_a_of_type_Int = k;
-          paramURLDrawableHandler.c = l2;
-          paramURLDrawableHandler.jdField_a_of_type_JavaLangString = paramDownloadParams.getMessage();
-          continue;
-        }
-      }
-      label1978:
-      break;
-      paramDownloadParams = (DownloadParams)localObject3;
-      localObject6 = localException1;
-      localObject3 = localObject1;
-      localObject7 = null;
-      localDownloadParams = paramDownloadParams;
-      paramDownloadParams = (DownloadParams)localObject2;
-      localObject1 = localObject6;
-      localObject2 = localObject7;
-      continue;
-      l1 = -1L;
-      localObject3 = "0";
-      localObject1 = null;
-      localDownloadParams = null;
-      localObject2 = null;
-      paramDownloadParams = null;
     }
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private void h()
   {
-    a(paramDownloadParams, paramOutputStream, paramURLDrawableHandler, paramDownloadParams.url.getProtocol().equals("lbsthumb"));
-    return null;
+    b("setSuccess", "req");
+    String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
+    if ("pttcenter".equals(this.d)) {
+      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
+    }
+    aytk localaytk;
+    for (;;)
+    {
+      cmd0x346.ReqBody localReqBody = a();
+      localaytk = new aytk();
+      localaytk.jdField_a_of_type_JavaLangString = str;
+      localaytk.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
+      localaytk.c = 1;
+      localaytk.jdField_a_of_type_Int = 30000;
+      localaytk.jdField_b_of_type_Int = 1;
+      localaytk.jdField_a_of_type_Aytj = this;
+      if (e()) {
+        break;
+      }
+      a(9366, "illegal app", null, this.jdField_a_of_type_Aypd);
+      d();
+      return;
+      if ("ftn".equals(this.d)) {
+        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localaytk);
   }
   
-  public boolean a()
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    return true;
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramaysy instanceof ayrx));
+      paramaysy = (ayrx)paramaysy;
+      paramaysy.jdField_a_of_type_Long += paramaysz.c;
+    } while (0L != paramaysy.jdField_b_of_type_Long);
+    paramaysz.c = 0L;
+    paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
+    paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+  }
+  
+  public void a(aytl paramaytl, aytk paramaytk)
+  {
+    a(null, paramaytl.a, paramaytl.a.getWupBuffer());
+  }
+  
+  public void a(ayyp paramayyp, ayze paramayze)
+  {
+    this.jdField_a_of_type_Ayyp = null;
+    if (paramayze != null)
+    {
+      int i = 0;
+      while (i < paramayze.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramayyp = (ayzh)paramayze.jdField_a_of_type_JavaUtilList.get(i);
+        if (QLog.isColorLevel()) {
+          b("procUrl", paramayyp.toString());
+        }
+        this.i = paramayyp.d;
+        if (QLog.isColorLevel()) {
+          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
+        }
+        a(this.jdField_a_of_type_Aypd, paramayyp);
+        if (paramayyp.c == 0)
+        {
+          this.c = paramayyp.jdField_a_of_type_JavaLangString;
+          this.jdField_a_of_type_Ayqo.i = this.c;
+          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+          {
+            paramayyp = ayuk.a(this.c);
+            if (paramayyp != null) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(paramayyp);
+            }
+          }
+          g();
+          i += 1;
+        }
+        else
+        {
+          d();
+        }
+      }
+    }
+  }
+  
+  /* Error */
+  protected void a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ldc 126
+    //   3: ldc_w 317
+    //   6: invokevirtual 131	ayse:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: aload_2
+    //   10: invokevirtual 320	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   13: sipush 1000
+    //   16: if_icmpeq +38 -> 54
+    //   19: aload_2
+    //   20: invokevirtual 320	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   23: istore 4
+    //   25: aload_0
+    //   26: ldc_w 322
+    //   29: new 196	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 197	java/lang/StringBuilder:<init>	()V
+    //   36: ldc_w 324
+    //   39: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: iload 4
+    //   44: invokevirtual 327	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   47: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokevirtual 131	ayse:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: return
+    //   54: new 329	tencent/im/cs/cmd0x346/cmd0x346$RspBody
+    //   57: dup
+    //   58: invokespecial 330	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
+    //   61: astore_1
+    //   62: aload_1
+    //   63: aload_3
+    //   64: invokevirtual 334	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: pop
+    //   68: aload_1
+    //   69: getfield 335	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   72: invokevirtual 338	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   75: ifeq +91 -> 166
+    //   78: aload_1
+    //   79: getfield 335	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   82: invokevirtual 340	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   85: i2l
+    //   86: lstore 5
+    //   88: lload 5
+    //   90: ldc2_w 341
+    //   93: lcmp
+    //   94: ifne -41 -> 53
+    //   97: aload_1
+    //   98: getfield 346	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   101: invokevirtual 349	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
+    //   104: ifeq -51 -> 53
+    //   107: aload_1
+    //   108: getfield 346	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
+    //   111: invokevirtual 352	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   114: checkcast 348	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
+    //   117: getfield 356	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   120: invokevirtual 359	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   123: istore 4
+    //   125: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   128: ifeq -75 -> 53
+    //   131: aload_0
+    //   132: ldc_w 322
+    //   135: new 196	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 197	java/lang/StringBuilder:<init>	()V
+    //   142: ldc_w 361
+    //   145: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: iload 4
+    //   150: invokevirtual 327	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokevirtual 131	ayse:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: return
+    //   160: astore_1
+    //   161: aload_1
+    //   162: invokevirtual 364	java/lang/Exception:printStackTrace	()V
+    //   165: return
+    //   166: ldc2_w 365
+    //   169: lstore 5
+    //   171: goto -83 -> 88
+    //   174: astore_1
+    //   175: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	176	0	this	ayse
+    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
+    //   0	176	2	paramFromServiceMsg	FromServiceMsg
+    //   0	176	3	paramArrayOfByte	byte[]
+    //   23	126	4	i	int
+    //   86	84	5	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   54	62	160	java/lang/Exception
+    //   68	88	160	java/lang/Exception
+    //   97	159	160	java/lang/Exception
+    //   62	68	174	java/lang/Exception
+  }
+  
+  public void aR_()
+  {
+    super.aR_();
+    d(2001);
+    f();
+  }
+  
+  public int c()
+  {
+    super.c();
+    b("uiParam", this.jdField_a_of_type_Aywc.toString());
+    String str = this.jdField_a_of_type_Aywc.e;
+    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bbdx.c(str)) || (str.startsWith("http://")))
+    {
+      b(9302, a(new Exception("uuid illegal " + str)));
+      d();
+      return -1;
+    }
+    return 0;
+  }
+  
+  void d()
+  {
+    super.d();
+    d(2005);
+  }
+  
+  void e()
+  {
+    super.e();
+    d(2003);
+  }
+  
+  void f()
+  {
+    this.jdField_a_of_type_Aypd.a();
+    this.d = "pttcenter";
+    b("findDbRec", "not found");
+    ayyp localayyp = new ayyp();
+    ayyr localayyr = new ayyr();
+    localayyr.c = this.jdField_a_of_type_Aywc.jdField_b_of_type_JavaLangString;
+    localayyr.d = this.jdField_a_of_type_Aywc.c;
+    localayyr.e = this.jdField_a_of_type_Aywc.d;
+    localayyr.f = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
+    localayyr.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aywc.e;
+    localayyr.jdField_b_of_type_JavaLangString = this.d;
+    localayyr.jdField_a_of_type_Boolean = this.jdField_a_of_type_Aywc.jdField_b_of_type_Boolean;
+    localayyr.jdField_a_of_type_Int = 0;
+    localayyr.jdField_b_of_type_Int = 102;
+    localayyp.jdField_a_of_type_Ayzw = this;
+    localayyp.jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
+    localayyp.jdField_a_of_type_JavaUtilList.add(localayyr);
+    localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
+    if (!e())
+    {
+      a(9366, "illegal app", null, this.jdField_a_of_type_Aypd);
+      d();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        b("requestStart", localayyp.toString());
+      }
+    } while (!f());
+    this.jdField_a_of_type_Ayyp = localayyp;
+    ayzv.a(localayyp);
+  }
+  
+  void g()
+  {
+    this.jdField_b_of_type_Aypd.a();
+    String str3 = a(this.c, this.jdField_a_of_type_JavaUtilArrayList);
+    aypb.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_Aysc = this;
+    localayrx.jdField_a_of_type_JavaLangString = str3;
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
+    localayrx.c = this.jdField_a_of_type_Aywc.h;
+    localayrx.e = String.valueOf(this.jdField_a_of_type_Aywc.jdField_a_of_type_Long);
+    localayrx.g = this.jdField_a_of_type_Aywc.jdField_a_of_type_Int;
+    localayrx.f = this.jdField_a_of_type_Aywc.jdField_b_of_type_Int;
+    localayrx.jdField_a_of_type_Long = 0L;
+    localayrx.k = true;
+    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+    localayrx.l = true;
+    localayrx.jdField_a_of_type_Aysb = this;
+    localayrx.d = this.e;
+    String str2 = null;
+    String str1 = str2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      str1 = str2;
+      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        str1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
+      }
+    }
+    str2 = ayuk.a(str3);
+    b("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.jdField_a_of_type_Aywc.e + " downOffset:" + localayrx.jdField_a_of_type_Long);
+    if (!f()) {
+      return;
+    }
+    this.jdField_a_of_type_Aysy = localayrx;
+    n();
+    this.jdField_a_of_type_Aysa.a(localayrx);
+  }
+  
+  protected void n()
+  {
+    if ((this.jdField_a_of_type_Aysy != null) && ((this.jdField_a_of_type_Aysy instanceof ayrx))) {
+      ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((ayrx)this.jdField_a_of_type_Aysy).jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onResp(aysz paramaysz)
+  {
+    boolean bool2 = true;
+    super.onResp(paramaysz);
+    this.jdField_a_of_type_Aysy = null;
+    Object localObject = new StringBuilder().append(" result:");
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      bool1 = true;
+      b("onHttpResp", bool1);
+      localObject = this.jdField_b_of_type_Aypd;
+      if (paramaysz.jdField_a_of_type_Int != 0) {
+        break label152;
+      }
+    }
+    label152:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      a((aypd)localObject, paramaysz, bool1);
+      this.jdField_a_of_type_Long = paramaysz.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_Long <= 0L) {
+        this.jdField_a_of_type_Long = (paramaysz.jdField_b_of_type_Long + paramaysz.jdField_a_of_type_Aysy.jdField_a_of_type_Long);
+      }
+      this.jdField_b_of_type_Long += paramaysz.c;
+      if (paramaysz.jdField_a_of_type_Int != 0) {
+        break label157;
+      }
+      sfh.d(this.jdField_a_of_type_Aywc.h);
+      h();
+      e();
+      return;
+      bool1 = false;
+      break;
+    }
+    label157:
+    if ((paramaysz.jdField_b_of_type_Int == 9364) && (this.l < 3))
+    {
+      b("[netChg]", "failed.but net change detect.so retry");
+      this.l += 1;
+      m();
+      f();
+      return;
+    }
+    d();
   }
 }
 

@@ -1,32 +1,29 @@
+import android.util.Pair;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class abmz
-  implements View.OnLongClickListener
+  implements bfph
 {
-  public abmz(MainFragment paramMainFragment) {}
+  public abmz(MainFragment paramMainFragment, List paramList, bfpc parambfpc) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a() == MainFragment.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
-      }
-      paramView = (Conversation)this.a.a(Conversation.class);
-      if (paramView != null)
-      {
-        paramView = paramView.a().a();
-        if (paramView != null) {
-          aspr.a(this.a.getActivity(), paramView.a(), paramView.a(), paramView.b(), "conversation_tab_bottom");
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    return true;
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (abng)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

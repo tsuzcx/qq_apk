@@ -1,16 +1,17 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.3.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import cooperation.wadl.ipc.WadlResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.4;
 
 public class aloe
-  implements alom
+  implements DialogInterface.OnClickListener
 {
-  aloe(alob paramalob) {}
+  public aloe(ArkAppDownloadModule.4 param4) {}
   
-  public void a(WadlResult paramWadlResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArkAppCenter.a().post(this.a.a, new ArkAppDownloadModule.3.1(this, paramWadlResult));
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

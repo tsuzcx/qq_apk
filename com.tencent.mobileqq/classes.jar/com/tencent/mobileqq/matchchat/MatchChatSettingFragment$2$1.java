@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.matchchat;
 
 import android.support.v4.app.FragmentActivity;
-import bcpw;
+import bcql;
 
 class MatchChatSettingFragment$2$1
   implements Runnable
@@ -12,7 +12,7 @@ class MatchChatSettingFragment$2$1
   {
     FragmentActivity localFragmentActivity = this.a.this$0.getActivity();
     if (localFragmentActivity != null) {
-      bcpw.a(localFragmentActivity, 2131699103, 0).a();
+      bcql.a(localFragmentActivity, 2131699113, 0).a();
     }
   }
 }

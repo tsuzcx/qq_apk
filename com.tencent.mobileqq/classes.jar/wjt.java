@@ -1,36 +1,14 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
 
-class wjt
-  implements wsp
+public class wjt
+  implements wjg
 {
-  wjt(wjr paramwjr) {}
+  public wjt(RecommendBannerViewNew paramRecommendBannerViewNew) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
-    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
-    if (paramBoolean)
-    {
-      str1 = "cancel";
-      xhe.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
-      if (RecommendBannerItemView.a(this.a.a))
-      {
-        str2 = RecommendBannerItemView.a(this.a.a).id.get();
-        localStringBuilder = new StringBuilder().append("reco_");
-        if (!paramBoolean) {
-          break label252;
-        }
-      }
-    }
-    label252:
-    for (String str1 = "cancel";; str1 = "dislike")
-    {
-      xhe.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
-      return;
-      str1 = "dislike";
-      break;
+    if (paramBoolean) {
+      RecommendBannerViewNew.a(this.a, paramInt);
     }
   }
 }

@@ -1,27 +1,30 @@
-import mqq.os.MqqHandler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
 class ansn
-  implements apdx
+  implements Handler.Callback
 {
-  public MqqHandler a;
+  ansn(ansm paramansm) {}
   
-  public ansn(MqqHandler paramMqqHandler)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = paramMqqHandler;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      bcql.a(ansm.a(this.a), 2131692830, 0).b(2131298865);
+      return true;
     }
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
+      this.a.a(paramMessage);
+      return true;
     }
+    bcql.a(ansm.a(this.a), 1, 2131689687, 0).b(2131298865);
+    return true;
   }
 }
 

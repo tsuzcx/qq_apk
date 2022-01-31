@@ -1,18 +1,15 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-class bbjd
+final class bbjd
   implements View.OnClickListener
 {
-  bbjd(bbjc parambbjc) {}
+  bbjd(Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    this.a.dismiss();
   }
 }
 

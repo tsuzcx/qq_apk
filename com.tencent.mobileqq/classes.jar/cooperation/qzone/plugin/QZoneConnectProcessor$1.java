@@ -1,16 +1,16 @@
 package cooperation.qzone.plugin;
 
-import bhig;
-import bhih;
+import bhix;
+import bhiy;
 
 public class QZoneConnectProcessor$1
   implements Runnable
 {
-  public QZoneConnectProcessor$1(bhig parambhig, bhih parambhih) {}
+  public QZoneConnectProcessor$1(bhix parambhix, bhiy parambhiy) {}
   
   public void run()
   {
-    bhig.a(this.this$0, this.a);
+    bhix.a(this.this$0, this.a);
   }
 }
 

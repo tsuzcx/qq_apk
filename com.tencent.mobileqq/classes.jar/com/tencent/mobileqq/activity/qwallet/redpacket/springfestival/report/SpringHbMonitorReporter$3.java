@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import ahic;
-import ahiy;
+import ahia;
+import ahiw;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
@@ -21,7 +21,7 @@ public final class SpringHbMonitorReporter$3
     if (QLog.isColorLevel()) {
       QLog.i("springHb_report_SpringHbMonitorReporter", 2, "[checkResCover] start");
     }
-    QQAppInterface localQQAppInterface = ahiy.a();
+    QQAppInterface localQQAppInterface = ahiw.a();
     if (localQQAppInterface == null) {}
     do
     {
@@ -49,7 +49,7 @@ public final class SpringHbMonitorReporter$3
                 i += 1;
               }
             }
-            ahic.a(bool, i, localQQAppInterface, this.a);
+            ahia.a(bool, i, localQQAppInterface, this.a);
           }
         }
       }

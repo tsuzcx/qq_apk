@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import tdc;
-import tdo;
-import usw;
-import utc;
+import tcz;
+import tdl;
+import ust;
+import usz;
 
 public class MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1(utc paramutc, usw paramusw) {}
+  public MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1(usz paramusz, ust paramust) {}
   
   public void run()
   {
-    ((tdo)tdc.a(2)).a(this.a.a);
+    ((tdl)tcz.a(2)).a(this.a.a);
   }
 }
 

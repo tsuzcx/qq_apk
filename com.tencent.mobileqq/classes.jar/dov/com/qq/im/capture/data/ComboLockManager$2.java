@@ -3,8 +3,8 @@ package dov.com.qq.im.capture.data;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class ComboLockManager$2
@@ -15,7 +15,7 @@ class ComboLockManager$2
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    bbcv.a(localBaseActivity, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131720654), localBaseActivity.getString(2131720651), 2131720652, 2131720653, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener).show();
+    bbdj.a(localBaseActivity, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131720665), localBaseActivity.getString(2131720662), 2131720663, 2131720664, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener).show();
   }
 }
 

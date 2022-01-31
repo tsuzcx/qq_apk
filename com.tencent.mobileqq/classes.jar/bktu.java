@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bktu
   implements DialogInterface.OnClickListener
 {
-  public bktu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

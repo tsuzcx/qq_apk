@@ -1,14 +1,17 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
-public abstract interface wkb
-  extends wiz<wka>
+public class wkb
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  public wkb(TopPanelViewNew paramTopPanelViewNew) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(CertifiedAccountMeta.StEntry paramStEntry, List<wko> paramList, boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
+  }
 }
 
 

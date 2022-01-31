@@ -1,16 +1,21 @@
-import android.content.Context;
-import com.tencent.ad.tangram.net.AdNet;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 
 public class yxu
 {
-  public static int a(Context paramContext)
+  public GdtAd a;
+  public landing_page_collect_data.LandingPageCollectData a;
+  
+  public yxu()
   {
-    return AdNet.getType(paramContext);
+    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
   }
   
-  public static boolean a(Context paramContext)
+  public boolean a()
   {
-    return bbev.d(paramContext);
+    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId())) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData != null) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.has());
   }
 }
 

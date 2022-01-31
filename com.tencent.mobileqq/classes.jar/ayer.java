@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class ayer
+class ayer
+  implements WtTicketPromise
 {
-  protected ayeo a;
-  TeamWorkFileImportInfo a;
+  ayer(ayeq paramayeq, Runnable paramRunnable) {}
   
-  public ayer(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public void Done(Ticket paramTicket)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Ayeo = ((ayeo)paramQQAppInterface.a(120));
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
+    }
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  protected void a(boolean paramBoolean)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    int i = 0;
-    if ((paramBoolean) && (bbdj.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      }
-      this.jdField_a_of_type_Ayeo.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
-      this.jdField_a_of_type_Ayeo.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Ayeo.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.jdField_a_of_type_Ayeo.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-      return;
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
     }
   }
 }

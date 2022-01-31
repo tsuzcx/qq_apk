@@ -1,25 +1,19 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-
 public class tdu
-  extends ssk
 {
-  public long a;
+  @vyj(a="id")
+  public int a;
+  @vyj(a="name")
   public String a;
-  public String b;
-  
-  public tdu(String paramString, StoryVideoItem paramStoryVideoItem)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
-    this.b = paramStoryVideoItem.mVid;
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
-    }
-  }
+  @vyj(a="items")
+  public tdw[] a;
   
   public String toString()
   {
-    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
+    if (this.jdField_a_of_type_ArrayOfTdw != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfTdw.length;; i = 0) {
+      return i + '}';
+    }
   }
 }
 

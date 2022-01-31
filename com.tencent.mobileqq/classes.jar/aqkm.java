@@ -1,31 +1,64 @@
-import NS_MINI_APP_MISC.MISC.StGetFriendPlayListV2Rsp;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aqkm
-  implements View.OnClickListener
+class aqkm
+  implements ayxr
 {
-  public aqkm(IntimatePlayTogetherMiniGameCardView paramIntimatePlayTogetherMiniGameCardView, MISC.StGetFriendPlayListV2Rsp paramStGetFriendPlayListV2Rsp) {}
+  aqkm(aqkj paramaqkj) {}
   
-  public void onClick(View paramView)
+  public void a(ayxq paramayxq)
   {
-    if (this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.total.get() <= 1)
-    {
-      QLog.d("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "will not jump because total count less than 2" });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onPreDownloadStart url=%s", new Object[] { paramayxq.a.a }));
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get()))
-    {
-      QLog.e("IntimatePlayTogetherMin", 1, new Object[] { "onClick", "Could not launch with empty jump url" });
-      return;
+  }
+  
+  public void onResp(aysz paramaysz)
+  {
+    Object localObject = ((ayrx)paramaysz.jdField_a_of_type_Aysy).a;
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onResp url=%s result=%s", new Object[] { localObject, Integer.valueOf(paramaysz.jdField_a_of_type_Int) }));
     }
-    MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimatePlayTogetherMiniGameCardView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StGetFriendPlayListV2Rsp.moreJumpLink.get(), 2064, new aqkn(this));
+    switch (paramaysz.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      boolean bool1;
+      boolean bool2;
+      do
+      {
+        return;
+        if (aqkj.a(this.a) != null) {
+          aqkj.a(this.a).a((String)localObject, paramaysz.jdField_a_of_type_Long);
+        }
+        paramaysz = (ayrx)paramaysz.jdField_a_of_type_Aysy;
+        if (!aqkj.a(this.a, paramaysz.c, aqkj.a(this.a))) {
+          break;
+        }
+        localObject = new File(aqkj.a());
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        bool1 = aqkj.b(this.a, paramaysz.c, aqkj.a());
+        bool2 = aqkj.a(this.a);
+      } while (!QLog.isColorLevel());
+      QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("IntimateInfoManager", 2, "onResp ResultOk file check invalid.");
+      }
+      aqkj.a(this.a, paramaysz.c);
+      return;
+    } while (aqkj.a(this.a) == null);
+    aqkj.a(this.a).a((String)localObject, -1L);
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IntimateInfoManager", 2, String.format("onUpdateProgeress url=%s totalLen=%s curOffset=%s", new Object[] { ((ayrx)paramaysy).a, Long.valueOf(paramLong2), Long.valueOf(paramLong1) }));
+    }
   }
 }
 

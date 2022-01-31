@@ -1,6 +1,33 @@
-public abstract interface aprx
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
+
+class aprx
+  implements aptw
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  aprx(aprw paramaprw, List paramList, aouu paramaouu, apsb paramapsb) {}
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aouu.b(localFileManagerEntity);
+      }
+    }
+    if (this.jdField_a_of_type_Apsb != null) {
+      this.jdField_a_of_type_Apsb.a(1, 0);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apsb != null) {
+      this.jdField_a_of_type_Apsb.a(1, 1);
+    }
+  }
 }
 
 

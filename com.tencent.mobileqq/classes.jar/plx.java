@@ -1,47 +1,45 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
-import tencent.im.oidb.oidb_0xc2f.RspBody;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
-public class plx
-  extends mxj
+class plx
+  implements View.OnClickListener
 {
-  plx(plp paramplp) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private plx(plm paramplm) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131366528: 
+      paramView = this.jdField_a_of_type_Plm;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramBundle = new oidb_0xc2f.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        plp.a(this.a).mRecommendFollowInfos = qca.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((plp.a(this.a).mRecommendFollowInfos.a != null) && (plp.a(this.a).mRecommendFollowInfos.a.size() >= 3))
-        {
-          plp.a(this.a).a(plp.a(this.a).mRecommendFollowInfos.a);
-          plp.a(this.a).isShowRecommendList = true;
-          plp.a(this.a);
-          plp.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
+        paramView.a(localRecommendFollowInfo, bool);
+        nol.a(null, onh.a() + "", "0X800984A", "0X800984A", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
+        return;
       }
     }
+    plm.b(this.jdField_a_of_type_Plm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    nol.a(null, onh.a() + "", "0X8009849", "0X8009849", 0, 0, "1", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.uin + "", "", "", false);
   }
 }
 

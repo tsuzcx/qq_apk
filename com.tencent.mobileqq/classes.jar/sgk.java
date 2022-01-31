@@ -1,22 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
 
-public final class sgk
-  implements BusinessObserver
+final class sgk
+  implements DialogInterface.OnCancelListener
 {
-  sgk(QQAppInterface paramQQAppInterface) {}
+  sgk(Activity paramActivity, ProfileParams paramProfileParams) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    {
+      aqfd.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import agau;
+import agas;
 import android.os.Handler;
 import android.os.Message;
-import baeq;
-import baer;
+import bafe;
+import baff;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,12 +18,12 @@ public class AIOAtSearchManager$AtSearchRunnable
   private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<agau> jdField_a_of_type_JavaUtilList;
+  private List<agas> jdField_a_of_type_JavaUtilList;
   public volatile boolean a;
   private boolean b;
   private boolean c;
   
-  public AIOAtSearchManager$AtSearchRunnable(String paramString, List<agau> paramList, Handler paramHandler, QQAppInterface paramQQAppInterface, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
+  public AIOAtSearchManager$AtSearchRunnable(String paramString, List<agas> paramList, Handler paramHandler, QQAppInterface paramQQAppInterface, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -42,18 +42,18 @@ public class AIOAtSearchManager$AtSearchRunnable
     if (this.jdField_a_of_type_Boolean) {}
     do
     {
-      baer localbaer;
+      baff localbaff;
       do
       {
         do
         {
           return;
         } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
-        localbaer = new baeq(this.jdField_a_of_type_JavaUtilList).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
+        localbaff = new bafe(this.jdField_a_of_type_JavaUtilList).a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.b);
       } while (this.jdField_a_of_type_Boolean);
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
       localMessage.what = 1;
-      localMessage.obj = localbaer;
+      localMessage.obj = localbaff;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
     } while (!QLog.isColorLevel());
     QLog.e("AIOAtSearchManager", 2, "taa AtSearchRunnable end: " + System.currentTimeMillis());

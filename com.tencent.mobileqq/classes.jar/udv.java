@@ -1,17 +1,16 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
 
 public class udv
-  implements ufs
+  implements ufl
 {
   public udv(TextureVideoView paramTextureVideoView) {}
   
-  @TargetApi(15)
-  public void a(ufk paramufk, int paramInt1, int paramInt2)
+  public boolean a_(ufh paramufh, int paramInt1, int paramInt2)
   {
-    this.a.getHandler().post(new TextureVideoView.1.1(this, paramufk));
+    if (this.a.a != null) {
+      this.a.a.a_(paramufh, paramInt1, paramInt2);
+    }
+    return true;
   }
 }
 

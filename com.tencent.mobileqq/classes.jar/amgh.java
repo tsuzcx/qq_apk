@@ -1,15 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class amgh
   implements View.OnClickListener
 {
-  amgh(amgg paramamgg, ahkf paramahkf) {}
+  amgh(amgf paramamgf, BaseActivity paramBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Amgg.a(this.jdField_a_of_type_Ahkf);
-    this.jdField_a_of_type_Amgg.a();
+    amgf.a(this.jdField_a_of_type_Amgf, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    axqy.a(this.jdField_a_of_type_Amgf.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
   }
 }
 

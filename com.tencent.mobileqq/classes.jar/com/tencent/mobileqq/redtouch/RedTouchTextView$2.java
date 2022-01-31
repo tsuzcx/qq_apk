@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import bbdr;
+import bbef;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 
@@ -19,7 +19,7 @@ class RedTouchTextView$2
       localBitmap = this.this$0.a((File)localObject);
       localObject = localBitmap;
       if (this.a == 1) {
-        localObject = bbdr.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+        localObject = bbef.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
       }
       this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject);
       this.this$0.a();
@@ -33,7 +33,7 @@ class RedTouchTextView$2
       localBitmap = this.this$0.a((File)localObject);
       localObject = localBitmap;
       if (this.a == 1) {
-        localObject = bbdr.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+        localObject = bbef.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
       }
       this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject);
       this.this$0.a();

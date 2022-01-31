@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ajyc;
-import alfo;
-import alfv;
-import bcpw;
+import ajya;
+import alfn;
+import alfu;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ARCloudControl$2
   implements Runnable
 {
-  public ARCloudControl$2(alfo paramalfo) {}
+  public ARCloudControl$2(alfn paramalfn) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), String.format(ajyc.a(2131700629), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), String.format(ajya.a(2131700640), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
   }
 }
 

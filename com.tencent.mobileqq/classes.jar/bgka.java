@@ -1,6 +1,6 @@
 public abstract interface bgka
 {
-  public abstract void a(bgjz parambgjz);
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -1,14 +1,8 @@
-import java.util.Comparator;
-
-class azrg
-  implements Comparator<azrj>
+public class azrg
 {
-  azrg(azrf paramazrf) {}
-  
-  public int a(azrj paramazrj1, azrj paramazrj2)
-  {
-    return paramazrj2.b - paramazrj1.b;
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 

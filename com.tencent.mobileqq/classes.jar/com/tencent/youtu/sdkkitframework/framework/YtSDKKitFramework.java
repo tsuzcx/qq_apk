@@ -13,7 +13,7 @@ public class YtSDKKitFramework
 {
   private static final String TAG = YtSDKKitFramework.class.getSimpleName();
   private static YtSDKKitFramework instance;
-  private static final String version = "1.0.8.2";
+  private static final String version = "1.0.8.2f";
   private Rect detectRect = new Rect(20, 270, 700, 1130);
   private YtSDKKitFramework.IYtSDKKitFrameworkEventListener eventListener;
   private Rect previewRect = new Rect(0, 0, 720, 1280);
@@ -147,7 +147,7 @@ public class YtSDKKitFramework
   
   public String version()
   {
-    return "1.0.8.2";
+    return "1.0.8.2f";
   }
 }
 

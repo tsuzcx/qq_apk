@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import mqq.app.QQPermissionCallback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class aubw
-  implements QQPermissionCallback
+  implements audy
 {
-  public aubw(ScanOcrActivity paramScanOcrActivity) {}
+  public aubw(TranslateFragment paramTranslateFragment, auaf paramauaf) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, audz paramaudz)
   {
-    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
+    if ((paramaudz != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Auaf.c)) && (!this.jdField_a_of_type_Auaf.c.equals(paramaudz.b))) {
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Auaf.b, paramaudz.b);
+    }
+    auad.a("0X800AAF9", auad.a(paramaudz.b));
   }
 }
 

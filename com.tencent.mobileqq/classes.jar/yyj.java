@@ -1,24 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class yyj
-  extends yyk
+  extends QzoneExternalRequest
 {
-  yyj(yyi paramyyi) {}
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public yyj(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
   {
-    yxs.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
-    yyf.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_Long = -2147483648L;
-    if (yyi.a(this.a).equals(paramString2))
-    {
-      axqw.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", yyi.a(this.a), "");
-      if ((paramInt != 1) && (paramInt != 2)) {
-        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
-      }
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+    long l = Long.parseLong(paramString1);
+    super.setHostUin(l);
+    super.setLoginUserId(l);
+    this.needCompress = false;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
+  {
+    JceStruct localJceStruct = null;
+    if (paramArrayOfByte != null) {
+      localJceStruct = decode(paramArrayOfByte, paramString);
     }
+    return localJceStruct;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return this.b;
   }
 }
 

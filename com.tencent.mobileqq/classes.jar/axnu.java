@@ -1,45 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class axnu
-  extends WebViewPlugin
+  implements View.OnClickListener
 {
-  private boolean a;
+  public axnu(SplashADView paramSplashADView) {}
   
-  public axnu()
+  public void onClick(View paramView)
   {
-    this.mPluginNameSpace = "splashADPlugin";
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934598L)
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      QLog.i("QSplash@QbossSplashUtil", 1, "handleEvent finish or destroy. isFromSP:" + this.a);
-      if (this.a) {
-        this.mRuntime.a().startActivity(new Intent(this.mRuntime.a(), SplashActivity.class));
+      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
+      {
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849328);
       }
-      return true;
     }
-    return false;
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
-    if (this.mRuntime.a().getIntent() != null) {
-      this.a = this.mRuntime.a().getIntent().getBooleanExtra("key_from_splash_ad", false);
+    else {
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849329);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axnu
  * JD-Core Version:    0.7.0.1
  */

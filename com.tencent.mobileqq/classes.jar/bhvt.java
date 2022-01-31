@@ -1,20 +1,8 @@
-public class bhvt
+import android.graphics.drawable.Drawable;
+
+public abstract interface bhvt
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public long e;
-  public long f;
-  public long g;
+  public abstract void a(Drawable paramDrawable);
 }
 
 

@@ -1,6 +1,6 @@
 public abstract interface alrx
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  public abstract void a(boolean paramBoolean);
 }
 
 

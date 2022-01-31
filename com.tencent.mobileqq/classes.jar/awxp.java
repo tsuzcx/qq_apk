@@ -1,25 +1,16 @@
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
 
 public class awxp
-  extends awww
+  extends awwy
 {
-  public Button a;
-  public ImageView a;
   public LinearLayout a;
   public RelativeLayout a;
   public TextView a;
-  public SquareImageView a;
-  public Button b;
-  public LinearLayout b;
   public TextView b;
-  public LinearLayout c;
   
   public awxp(ViewGroup paramViewGroup, int paramInt)
   {
@@ -28,19 +19,10 @@ public class awxp
   
   protected void a()
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131375419));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363639));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368680));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369368));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369369));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378083));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378082));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131368522));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369367));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363481));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131375734));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369134));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375302));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368324));
   }
 }
 

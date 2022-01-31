@@ -1,8 +1,8 @@
 package cooperation.qqpim;
 
 import android.os.Bundle;
-import bgsj;
-import bgso;
+import bgta;
+import bgtf;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
@@ -15,8 +15,8 @@ public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(bgsj.r, 3);
-      QIPCServerHelper.getInstance().callClient(bgsj.b, bgsj.c, bgsj.e, localBundle, new bgso(this));
+      localBundle.putInt(bgta.r, 3);
+      QIPCServerHelper.getInstance().callClient(bgta.b, bgta.c, bgta.e, localBundle, new bgtf(this));
       return;
     }
     catch (Throwable localThrowable)

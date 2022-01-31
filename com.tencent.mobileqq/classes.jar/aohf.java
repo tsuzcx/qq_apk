@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import java.util.List;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class aohf
+  extends aoez
 {
-  public long a;
-  public List<GroupInfo> a;
-  public boolean a;
+  public aohf(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public String toString()
+  protected void a(int paramInt)
   {
-    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
+    asfl.a(this.a.a, ExtendFriendFragment.a(this.a).app);
+    Intent localIntent = new Intent("match_chat_notify_update");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
   }
 }
 

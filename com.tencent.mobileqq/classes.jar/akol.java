@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageForFoldMsg;
+import java.util.LinkedHashSet;
 
-public class akol
+class akol
 {
-  public ajxn a;
-  public akpc a;
-  public aktg a;
-  public askq a;
-  public Map<String, RecentUser> a;
-  public Map<String, MessageRecord> b = new HashMap();
-  public Map<String, MessageRecord> c = new HashMap();
-  public Map<String, MessageRecord> d = new HashMap();
-  public Map<String, MessageRecord> e = new HashMap();
-  public Map<String, List<MessageRecord>> f = new HashMap();
-  public Map<String, List<MessageRecord>> g = new HashMap();
-  
-  public akol(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Ajxn = ((ajxn)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_Askq = ((askq)paramQQAppInterface.getManager(37));
-    this.jdField_a_of_type_Aktg = paramQQAppInterface.a().a();
-    this.jdField_a_of_type_Akpc = paramQQAppInterface.a();
-  }
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 9223372036854775807L;
+  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
+  boolean jdField_a_of_type_Boolean = false;
+  long jdField_b_of_type_Long = 0L;
+  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
+  boolean jdField_b_of_type_Boolean = true;
 }
 
 

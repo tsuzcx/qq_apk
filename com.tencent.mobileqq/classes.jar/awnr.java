@@ -1,15 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
 import java.util.List;
 
 public class awnr
-  implements awof
+  implements awoh
 {
   private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  public List<awog> a;
+  private final String jdField_a_of_type_JavaLangString;
+  public final List<awoi> a;
   
-  public awnr(List<awog> paramList, String paramString, int paramInt)
+  public awnr(List<awoi> paramList, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -18,23 +19,28 @@ public class awnr
   
   public int a()
   {
-    return 3;
+    return awin.a("fts_native_function_maxnum", 3);
   }
   
   public String a()
   {
-    return ajyc.a(2131705373);
+    return awin.a();
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View paramView)
   {
-    ContactSearchActivity.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 197437, true);
-    awvy.a(this.jdField_a_of_type_JavaLangString, 20, 0, paramView);
+    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    awsq.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
   
   public String b()

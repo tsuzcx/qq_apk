@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 final class apul
-  implements aptu
+  implements bbws
 {
-  apul(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  apul(aptw paramaptw) {}
   
-  public void a()
+  public void callback(int paramInt)
   {
-    apue.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.a.a();
+      return;
+    }
+    this.a.b();
   }
-  
-  public void b() {}
 }
 
 

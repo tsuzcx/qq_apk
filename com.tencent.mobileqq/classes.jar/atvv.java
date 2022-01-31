@@ -1,6 +1,15 @@
-public abstract interface atvv
+class atvv
+  implements atwh
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  atvv(atvs paramatvs, atvx paramatvx) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_Atvs.c(paramString);
+    if (this.jdField_a_of_type_Atvx != null) {
+      this.jdField_a_of_type_Atvx.a(paramBoolean, paramString);
+    }
+  }
 }
 
 

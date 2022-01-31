@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import aidh;
+import aidi;
 import aidj;
-import aidk;
-import aidl;
-import aieu;
+import aies;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +20,7 @@ public class FriendTabView
   extends TroopDiscussionBaseV
   implements View.OnClickListener
 {
-  private aieu jdField_a_of_type_Aieu;
+  private aies jdField_a_of_type_Aies;
   private PinnedFooterExpandableListView jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView;
   public boolean a;
   boolean b = false;
@@ -59,7 +59,7 @@ public class FriendTabView
   {
     super.a(paramBundle);
     a(2131560143);
-    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131365774));
+    this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView = ((PinnedFooterExpandableListView)findViewById(2131365773));
     this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("FriendTabView", 2, "firstUserClicked is " + this.jdField_a_of_type_Boolean);
@@ -69,16 +69,16 @@ public class FriendTabView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new aidj(this));
-      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562537, null);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setListener(new aidh(this));
+      paramBundle = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562536, null);
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.addHeaderView(paramBundle);
-      paramBundle.findViewById(2131363686).setOnClickListener(new aidk(this));
+      paramBundle.findViewById(2131363685).setOnClickListener(new aidi(this));
       QLog.d("FriendTabView", 2, "----->onCreate");
-      this.jdField_a_of_type_Aieu = new aieu(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new aidl(this), true);
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Aieu);
+      this.jdField_a_of_type_Aies = new aies(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView, new aidj(this), true);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setAdapter(this.jdField_a_of_type_Aies);
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setSelector(2131167087);
       this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setGroupIndicator(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getResources().getDrawable(2130839212));
-      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Aieu);
+      this.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setOnScrollListener(this.jdField_a_of_type_Aies);
       paramBundle = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11);
       if ((paramBundle != null) && (!paramBundle.c()) && (paramBundle.d() == 8)) {}
       return;
@@ -89,8 +89,8 @@ public class FriendTabView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Aieu != null) {
-      this.jdField_a_of_type_Aieu.b();
+    if (this.jdField_a_of_type_Aies != null) {
+      this.jdField_a_of_type_Aies.b();
     }
   }
   
@@ -102,8 +102,8 @@ public class FriendTabView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Aieu != null) {
-      this.jdField_a_of_type_Aieu.a();
+    if (this.jdField_a_of_type_Aies != null) {
+      this.jdField_a_of_type_Aies.a();
     }
   }
   

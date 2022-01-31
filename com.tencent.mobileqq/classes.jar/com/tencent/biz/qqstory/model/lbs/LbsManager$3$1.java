@@ -2,17 +2,17 @@ package com.tencent.biz.qqstory.model.lbs;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.Collections;
+import teu;
 import tex;
-import tfa;
 
 public class LbsManager$3$1
   implements Runnable
 {
-  public LbsManager$3$1(tex paramtex, tfa paramtfa, ErrorMessage paramErrorMessage) {}
+  public LbsManager$3$1(teu paramteu, tex paramtex, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tfa.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, this.jdField_a_of_type_Tex.a, Collections.EMPTY_LIST);
+    this.jdField_a_of_type_Tex.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, this.jdField_a_of_type_Teu.a, Collections.EMPTY_LIST);
   }
 }
 

@@ -1,191 +1,181 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.app.ActivityManager;
+import android.os.Build.VERSION;
+import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.common.app.ToolRuntimePeak;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginRuntime;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.buscard.BuscardHelper;
-import cooperation.pluginbridge.BridgeHelper;
-import cooperation.qwallet.plugin.QWalletHelper;
-import cooperation.troop.NearbyVideoChatProxyActivity;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.ISkinEngineLog;
+import com.tencent.theme.SkinEngineHandler;
+import java.util.HashMap;
 
 public class xoo
+  implements ISkinEngineLog, SkinEngineHandler
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  private int jdField_a_of_type_Int = -1;
+  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  
+  public xoo(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    Object localObject2 = null;
-    String str = paramBaseApplicationImpl.getPackageName();
-    Object localObject1;
-    if (str.equals(paramString)) {
-      localObject1 = new QQAppInterface(paramBaseApplicationImpl, paramString);
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+  }
+  
+  public boolean onDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
     }
-    for (;;)
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    paramOutOfMemoryError = new StringBuffer("decode resources oom, fileName: ");
+    paramOutOfMemoryError.append(paramString);
+    paramOutOfMemoryError.append(", is skin file: ");
+    paramOutOfMemoryError.append(paramBoolean);
+    paramOutOfMemoryError.append(", memory used:");
+    paramOutOfMemoryError.append(l);
+    paramOutOfMemoryError.append(" , heap size: ");
+    paramOutOfMemoryError.append(this.jdField_a_of_type_Int);
+    paramOutOfMemoryError.append(", api level:");
+    paramOutOfMemoryError.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
     {
-      return localObject1;
-      localObject1 = localObject2;
-      if (paramString.equals(str + ":msf")) {
-        continue;
+      paramOutOfMemoryError.append(", imageCache size:");
+      paramOutOfMemoryError.append(BaseApplicationImpl.sImageCache.size());
+    }
+    QLog.e("res-OOM", 1, paramOutOfMemoryError.toString());
+    paramOutOfMemoryError = new HashMap(4);
+    paramOutOfMemoryError.put("param_FailCode", Integer.toString(89100));
+    paramOutOfMemoryError.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramOutOfMemoryError.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramOutOfMemoryError.put("param_cacheUsed", Long.toString(l));
+    try
+    {
+      axrn.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramOutOfMemoryError, "");
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
       }
-      localObject1 = localObject2;
-      if (paramString.equals(str + ":notifypush")) {
-        continue;
-      }
-      if (paramString.equals(str + ":video")) {
-        return new VideoAppInterface(paramBaseApplicationImpl, "video");
-      }
-      if (paramString.equals(str + ":qzone"))
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramOutOfMemoryError)
+    {
+      for (;;)
       {
-        paramBaseApplicationImpl = bgxy.b(paramBaseApplicationImpl, "qzone");
-        paramBaseApplicationImpl.setAsToolRuntime();
-        return paramBaseApplicationImpl;
-      }
-      if (paramString.equals(str + ":qzonevideo")) {
-        return bgxy.e(paramBaseApplicationImpl, "qzonevideo");
-      }
-      if (paramString.equals(str + ":qzonelive")) {
-        return bgxy.c(paramBaseApplicationImpl, "qzonelive");
-      }
-      if (paramString.equals(str + ":picture")) {
-        return bgxy.d(paramBaseApplicationImpl, "picture");
-      }
-      if (paramString.equals(str + ":openSdk")) {
-        return new OpenSDKAppInterface(paramBaseApplicationImpl, "openSdk");
-      }
-      if (paramString.equals(str + ":photoedit"))
-      {
-        paramBaseApplicationImpl = new PluginRuntime();
-        axqw.a(paramBaseApplicationImpl);
-        return paramBaseApplicationImpl;
-      }
-      if (paramString.equals(str + ":zebra")) {
-        return new PluginRuntime();
-      }
-      if (paramString.equals(str + ":demoji"))
-      {
-        paramBaseApplicationImpl = new PluginRuntime();
-        axqw.a(paramBaseApplicationImpl);
-        return paramBaseApplicationImpl;
-      }
-      if (paramString.equals(str + ":map")) {
-        return new QQMapActivity.MapRuntime();
-      }
-      if (paramString.equals(str + ":weiyun"))
-      {
-        paramBaseApplicationImpl = bicy.a(paramBaseApplicationImpl);
-        axqw.a(paramBaseApplicationImpl);
-        return paramBaseApplicationImpl;
-      }
-      if (paramString.equals(str + ":qwallet"))
-      {
-        paramBaseApplicationImpl = QWalletHelper.createQWalletAppInterface(paramBaseApplicationImpl, "qwallet");
-        localObject1 = paramBaseApplicationImpl;
-        if (paramBaseApplicationImpl == null) {
-          continue;
-        }
-        axqw.a((PluginRuntime)paramBaseApplicationImpl);
-        return paramBaseApplicationImpl;
-      }
-      if (paramString.equals(str + ":qqfav")) {
-        return bgpf.a(paramBaseApplicationImpl);
-      }
-      if (paramString.equals(str + ":qlink")) {
-        return bgnf.a(paramBaseApplicationImpl, "qlink");
-      }
-      if (paramString.equals(str + ":miniapp")) {
-        return new com.tencent.mobileqq.microapp.MiniAppInterface(paramBaseApplicationImpl, "miniapp");
-      }
-      if ((paramString.equals(str + ":mini")) || (paramString.equals(str + ":mini1")) || (paramString.equals(str + ":mini2")) || (paramString.equals(str + ":mini3")) || (paramString.equals(str + ":mini4")) || (paramString.equals(str + ":mini5")) || (paramString.equals(str + ":mini6")) || (paramString.equals(str + ":mini7")) || (paramString.equals(str + ":mini_internal"))) {
-        localObject1 = "mini";
-      }
-      try
-      {
-        paramString = paramString.substring(str.length() + 1);
-        return new com.tencent.mobileqq.mini.MiniAppInterface(paramBaseApplicationImpl, paramString);
-        localObject1 = localObject2;
-        if (paramString.equals(str + ":qqwifi")) {
-          continue;
-        }
-        localObject1 = localObject2;
-        if (paramString.equals(str + ":qqwifiditu")) {
-          continue;
-        }
-        if (paramString.equals(str + ":dataline")) {
-          return bgok.a(paramBaseApplicationImpl, "dataline");
-        }
-        if (paramString.equals(str + ":smartdevice")) {
-          return bhvv.a(paramBaseApplicationImpl, "smartdevice");
-        }
-        if (paramString.equals(str + ":buscard"))
-        {
-          paramBaseApplicationImpl = BuscardHelper.a(paramBaseApplicationImpl, "buscard");
-          axqw.a((PluginRuntime)paramBaseApplicationImpl);
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":hce")) {
-          return QWalletHelper.createVfcPluginAppInterface(paramBaseApplicationImpl, "hce");
-        }
-        localObject1 = localObject2;
-        if (paramString.equals(str + ":readinjoy")) {
-          continue;
-        }
-        if (paramString.equals(str + ":troopmemcard"))
-        {
-          paramBaseApplicationImpl = bhwh.a(paramBaseApplicationImpl, "troop_member_card_plugin.apk");
-          axqw.a((PluginRuntime)paramBaseApplicationImpl);
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":troopmanage"))
-        {
-          paramBaseApplicationImpl = bhwh.a(paramBaseApplicationImpl, "troop_manage_plugin.apk");
-          axqw.a((PluginRuntime)paramBaseApplicationImpl);
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":pluginbridge"))
-        {
-          paramBaseApplicationImpl = BridgeHelper.a(paramBaseApplicationImpl, "pluginbridge");
-          localObject1 = paramBaseApplicationImpl;
-          if (paramBaseApplicationImpl == null) {
-            continue;
-          }
-          axqw.a((PluginRuntime)paramBaseApplicationImpl);
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":groupvideo")) {
-          return bgjy.a(paramBaseApplicationImpl, "groupvideo");
-        }
-        if (paramString.equals(str + ":tool"))
-        {
-          paramBaseApplicationImpl = new ToolAppRuntime();
-          paramBaseApplicationImpl.setAsToolRuntime();
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":peak"))
-        {
-          paramBaseApplicationImpl = new ToolRuntimePeak();
-          paramBaseApplicationImpl.setAsToolRuntime();
-          return paramBaseApplicationImpl;
-        }
-        if (paramString.equals(str + ":huanji")) {
-          return bgmp.a(paramBaseApplicationImpl, "huanji");
-        }
-        if (paramString.equals(str + ":nearby_video")) {
-          return NearbyVideoChatProxyActivity.a(paramBaseApplicationImpl, "nearby_video");
-        }
-        paramBaseApplicationImpl = new PluginRuntime();
-        axqw.a(paramBaseApplicationImpl);
-        return paramBaseApplicationImpl;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-        }
+        paramOutOfMemoryError.printStackTrace();
       }
     }
+  }
+  
+  public boolean onDecodeReturnNullBitmap(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    }
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    StringBuffer localStringBuffer = new StringBuffer("decode resources return null, fileName: ");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append(", is skin file: ");
+    localStringBuffer.append(paramBoolean);
+    localStringBuffer.append(", memory used:");
+    localStringBuffer.append(l);
+    localStringBuffer.append(" , heap size: ");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", api level:");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      localStringBuffer.append(", imageCache size:");
+      localStringBuffer.append(BaseApplicationImpl.sImageCache.size());
+    }
+    paramString = new HashMap(4);
+    paramString.put("param_FailCode", Integer.toString(89102));
+    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramString.put("param_cacheUsed", Long.toString(l));
+    try
+    {
+      axrn.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      QLog.e("res-OOM", 1, localStringBuffer.toString());
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean onSecondDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    }
+    long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    StringBuffer localStringBuffer = new StringBuffer("decode resources second oom, fileName: ");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append(", is skin file: ");
+    localStringBuffer.append(paramBoolean);
+    localStringBuffer.append(", memory used:");
+    localStringBuffer.append(l);
+    localStringBuffer.append(" , heap size: ");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", api level:");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    if (BaseApplicationImpl.sImageCache != null)
+    {
+      localStringBuffer.append(", imageCache size:");
+      localStringBuffer.append(BaseApplicationImpl.sImageCache.size());
+    }
+    paramString = new HashMap(4);
+    paramString.put("param_FailCode", Integer.toString(89101));
+    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
+    paramString.put("param_cacheUsed", Long.toString(l));
+    try
+    {
+      axrn.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).a(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      QLog.e("res-OOM", 1, localStringBuffer.toString(), paramOutOfMemoryError);
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      System.gc();
+      Thread.yield();
+      System.gc();
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
+  {
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
+    {
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
+      return;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
+    }
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

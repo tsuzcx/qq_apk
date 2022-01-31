@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import beil;
-import bein;
-import beka;
-import besl;
+import bejc;
+import beje;
+import bekr;
+import betc;
 
 class BaseJsPluginEngine$1
-  implements bein
+  implements beje
 {
-  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, beka parambeka) {}
+  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, bekr parambekr) {}
   
   public boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
@@ -17,7 +17,7 @@ class BaseJsPluginEngine$1
     do
     {
       return false;
-      beil.a().b(this);
+      bejc.a().b(this);
     } while ((paramArrayOfString == null) || (paramArrayOfString.length == 0));
     if (paramArrayOfString[0].equals(this.val$systemPermission))
     {
@@ -28,7 +28,7 @@ class BaseJsPluginEngine$1
       if (paramInt == 0) {
         break label128;
       }
-      besl.a("JsPluginEngine[AuthGuard]", "request system permission user granted");
+      betc.a("JsPluginEngine[AuthGuard]", "request system permission user granted");
       paramArrayOfString = BaseJsPluginEngine.access$000(this.val$event, this.val$jsonParams);
       BaseJsPluginEngine.access$100(this.this$0, paramArrayOfString, true);
       if (!"authorize".equals(this.val$req.a)) {
@@ -43,7 +43,7 @@ class BaseJsPluginEngine$1
       this.this$0.dispatchRequestEvent(this.val$req);
       continue;
       label128:
-      besl.a("JsPluginEngine[AuthGuard]", "request system permission user denied");
+      betc.a("JsPluginEngine[AuthGuard]", "request system permission user denied");
       this.val$req.a("system permission denied");
     }
   }

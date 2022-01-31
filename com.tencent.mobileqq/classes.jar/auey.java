@@ -1,118 +1,93 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.olympic.OlympicTorchSvc.SceneWording;
-import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
 
 public class auey
-  implements ajtg
+  implements aufd
 {
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2) {}
+  public auey(OlympicManager paramOlympicManager) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString, torch_transfer.TorchbearerInfo paramTorchbearerInfo, OlympicTorchSvc.SceneWording paramSceneWording) {}
-  
-  public void b(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    if ((paramObject == null) || (!(paramObject instanceof String[]))) {}
+    do
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 6: 
-      do
+      for (;;)
       {
-        do
+        return;
+        augv.b("OlympicManager", new Object[] { "onDownloadFinish, url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt) });
+        if (paramInt == 0) {
+          this.a.a(paramString1, 0, true);
+        }
+        String[] arrayOfString = (String[])paramObject;
+        String str = arrayOfString[0];
+        if ("shuayishua".equals(str))
         {
-          do
-          {
-            do
+          int i = Integer.valueOf(arrayOfString[1]).intValue();
+          if (QLog.isColorLevel()) {
+            QLog.i("OlympicManager", 2, "onDownloadFinish.type=shuayishuaurl=" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",errCode=" + paramInt + ",filePath=" + paramString3);
+          }
+          paramString1 = OlympicManager.a(this.a);
+          if ((paramInt == 0) && (paramString1 != null) && (paramString1.id == i)) {
+            OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+          }
+        }
+        else if ("shuayishua_anim".equals(str))
+        {
+          if (paramInt == 0) {
+            try
             {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                      if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                        break;
-                      }
-                    } while (!QLog.isColorLevel());
-                    QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, data is null or not Object[]");
-                    return;
-                    paramObject = (Object[])paramObject;
-                    if (paramObject.length >= 4) {
-                      break;
-                    }
-                  } while (!QLog.isColorLevel());
-                  QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, objs.length < 4, is " + paramObject.length);
-                  return;
-                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (torch_transfer.TorchbearerInfo)paramObject[3], (OlympicTorchSvc.SceneWording)paramObject[4]);
-                  return;
-                  if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                    break;
-                  }
-                } while (!QLog.isColorLevel());
-                QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, data is null or not Object[]");
-                return;
-                paramObject = (Object[])paramObject;
-                if (paramObject.length >= 6) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, objs.length < 6, is " + paramObject.length);
-              return;
-              a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (byte[])paramObject[5]);
-              return;
-              if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                break;
+              OlympicManager.a(this.a);
+              paramString1 = aufb.a(paramString2);
+              bbdx.a(paramString3, paramString1, false);
+              if (QLog.isColorLevel()) {
+                QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim success.destDir=" + paramString1);
               }
-            } while (!QLog.isColorLevel());
-            QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, data is null or not Object[]");
-            return;
-            paramObject = (Object[])paramObject;
-            if (paramObject.length >= 2) {
-              break;
+              paramString1 = OlympicManager.a(this.a);
+              if ((paramString1 == null) || (paramString1.id != -1)) {
+                continue;
+              }
+              OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+              return;
             }
-          } while (!QLog.isColorLevel());
-          QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, objs.length < 2, is " + paramObject.length);
-          return;
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (byte[])paramObject[2], (TorchInfo)paramObject[3]);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (TorchInfo)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, "NOTIFY_PUSH_0Xb4");
-    }
-    a(true, (TorchInfo)((Object[])(Object[])paramObject)[0]);
+            catch (Exception paramString1)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim failed: " + paramString1.getMessage());
+                }
+              }
+            }
+          }
+        }
+        else if ("ActConfig".equals(str))
+        {
+          paramObject = arrayOfString[1];
+          augv.a("OlympicManager", new Object[] { "mDownloadListener.onDownloadFinish, type=", str, ", itemType=", paramObject, ", url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt), ", filePath=", paramString3 });
+          if (("TorchAnim".equals(paramObject)) && (paramInt == 0)) {
+            try
+            {
+              OlympicManager.a(this.a);
+              paramString1 = aufb.a(paramString2);
+              bbdx.a(paramString3, paramString1, false);
+              if (QLog.isColorLevel())
+              {
+                QLog.d("OlympicManager", 2, "un compressZip TorchAnim success.destDir=" + paramString1);
+                return;
+              }
+            }
+            catch (Exception paramString1) {}
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("OlympicManager", 2, "un compressZip TorchAnim failed: " + paramString1.getMessage());
   }
+  
+  public void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2) {}
 }
 
 

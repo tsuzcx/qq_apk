@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import anql;
-import anqp;
-import aymt;
+import anqq;
+import anqu;
+import aymv;
 import org.json.JSONObject;
 
 class ThemeJsPlugin$2
-  implements aymt
+  implements aymv
 {
   ThemeJsPlugin$2(ThemeJsPlugin paramThemeJsPlugin) {}
   
@@ -23,7 +23,7 @@ class ThemeJsPlugin$2
   
   public void downloadBgPic(String paramString, Bundle paramBundle)
   {
-    paramString = anqp.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
+    paramString = anqu.a("chatbackground_startDownload", paramString, this.this$0.mOnRemoteResp.key, paramBundle);
     this.this$0.sendRemoteReq(paramString, false, true);
   }
   

@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationBanner;
+import com.tencent.mobileqq.data.ContactMatch;
 
 public class atyu
-  extends atyy
+  extends atza
 {
-  public ConnectsExplorationBanner a;
+  public ContactMatch a;
   
-  public atyu(ConnectsExplorationBanner paramConnectsExplorationBanner)
+  public atyu(ContactMatch paramContactMatch)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
-    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectsExplorationBanner.uin;
+    this.jdField_a_of_type_ComTencentMobileqqDataContactMatch = paramContactMatch;
+    this.jdField_a_of_type_Long = paramContactMatch.timestamp;
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_ComTencentMobileqqDataContactMatch.isReaded;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.widget.media;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
-import beod;
+import beou;
 
 public class MiniAppVideoPlayer$8$2
   implements Runnable
 {
-  public MiniAppVideoPlayer$8$2(beod parambeod) {}
+  public MiniAppVideoPlayer$8$2(beou parambeou) {}
   
   public void run()
   {

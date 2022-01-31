@@ -1,27 +1,84 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopStatisticsInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class akkx
-  implements Comparator<Map.Entry<String, aukm>>
+public class akkx
+  extends akkr
 {
-  akkx(akkw paramakkw) {}
-  
-  public int a(Map.Entry<String, aukm> paramEntry1, Map.Entry<String, aukm> paramEntry2)
+  public akkx(QQAppInterface paramQQAppInterface, akkq paramakkq)
   {
-    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
+    super(paramQQAppInterface, paramakkq, TroopStatisticsInfo.class);
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    long l = System.currentTimeMillis();
+    if (l - auns.a(auog.b, 0L) > 604800000L) {}
+    for (;;)
+    {
+      try
+      {
+        auns.a(auog.b, l);
+        paramQQAppInterface.a(TroopStatisticsInfo.class);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, "doInit record time over 7 days, drop table");
+        }
+        return;
+        paramakkq = paramQQAppInterface.a(TroopStatisticsInfo.class);
+        if (paramakkq != null)
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          localObject = paramakkq.iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            TroopStatisticsInfo localTroopStatisticsInfo = (TroopStatisticsInfo)((Iterator)localObject).next();
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(localTroopStatisticsInfo), localTroopStatisticsInfo);
+            continue;
+          }
+        }
+      }
+      catch (Exception paramakkq)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.db.Cache.TroopStatisticsCache", 2, paramakkq.getMessage());
+        }
+        return;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        Object localObject = new StringBuilder().append("doInit size = ");
+        if (paramakkq == null)
+        {
+          i = 0;
+          QLog.d("Q.db.Cache.TroopStatisticsCache", 2, i);
+          continue;
+        }
+      }
+      finally
+      {
+        paramQQAppInterface.a();
+      }
+      int i = paramakkq.size();
     }
-    if (i == k) {
-      return j - m;
-    }
-    return -1;
   }
+  
+  public TroopStatisticsInfo a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (paramString == null)) {
+      return null;
+    }
+    return (TroopStatisticsInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  protected String a(auko paramauko)
+  {
+    return ((TroopStatisticsInfo)paramauko).troopUin;
+  }
+  
+  protected void a() {}
+  
+  protected void b() {}
 }
 
 

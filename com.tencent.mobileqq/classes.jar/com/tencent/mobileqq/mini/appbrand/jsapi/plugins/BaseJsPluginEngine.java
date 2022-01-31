@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
+import ajya;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -309,6 +309,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     this.defaultBlackList.add("showMiniAIOEntrance");
     this.defaultBlackList.add("hideMiniAIOEntrance");
     this.defaultBlackList.add("getGroupInfoExtra");
+    this.defaultBlackList.add("wnsGroupRequest");
   }
   
   public static boolean isAuthWhiteAppId(String paramString)
@@ -495,7 +496,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     }
     catch (JSONException paramString)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajyc.a(2131700999), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajya.a(2131701010), paramInt);
       paramString.printStackTrace();
       return;
     }
@@ -507,7 +508,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
       this.authorizeCenter.setAuthorize(AuthorizeCenter.getScopeName("subscribeAppMsg", paramString), false, (MiniAppCmdInterface)localObject);
       return;
       label300:
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajyc.a(2131700998), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, ajya.a(2131701009), paramInt);
     }
   }
   
@@ -626,7 +627,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         String str1 = (String)AuthorizeCenter.scopeDescMap.get(localObject1);
         paramMessage = (String)AuthorizeCenter.negativeButtonDesMap.get(localObject1);
         if (TextUtils.isEmpty(paramMessage)) {
-          paramMessage = ajyc.a(2131701002);
+          paramMessage = ajya.a(2131701013);
         }
         Object localObject3;
         String str2;
@@ -647,7 +648,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         label303:
         if ((this.authDialog != null) && (!this.isPause))
         {
-          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), ajyc.a(2131701000), new BaseJsPluginEngine.7(this));
+          this.authDialog.show(str2, (String)localObject3, (String)localObject2, null, null, str1, paramMessage, new BaseJsPluginEngine.6(this), ajya.a(2131701011), new BaseJsPluginEngine.7(this));
           continue;
           localObject1 = this.sysPermissionQueue.iterator();
           if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
@@ -765,7 +766,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         if (localObject != null)
         {
           str2 = AuthorizeCenter.getSystemPermission(paramString1, paramString2);
-          if (bbjw.a(str2)) {
+          if (bbkk.a(str2)) {
             break label436;
           }
           if (((BaseActivity)localObject).checkSelfPermission(str2) != 0) {

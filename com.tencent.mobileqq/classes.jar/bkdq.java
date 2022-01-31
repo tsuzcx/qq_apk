@@ -1,16 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 
-class bkdq
-  implements bkdz
+public class bkdq
+  extends AnimatorListenerAdapter
 {
-  bkdq(bkdp parambkdp, boolean paramBoolean) {}
+  public bkdq(DoodleEditView paramDoodleEditView, bkin parambkin) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Bkdp.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Bkdp.a).c(true);
-    }
-    this.jdField_a_of_type_Bkdp.a.a().b(this.jdField_a_of_type_Boolean);
+    ved.b("DoodleEditView", "onAnimationEnd");
+    this.jdField_a_of_type_Bkin.n = 1.0F;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ved.b("DoodleEditView", "onAnimationStart");
   }
 }
 

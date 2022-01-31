@@ -1,25 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class ubs
-  implements View.OnClickListener
+public class ubs<T>
+  extends SimpleObserver<T>
 {
-  public ubs(VideoViewVideoHolder paramVideoViewVideoHolder, ErrorMessage paramErrorMessage) {}
+  private ubs(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onClick(View paramView)
+  public void onCancel()
   {
-    if (!bbev.g(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext()))
-    {
-      bcpw.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694607, 0).a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a(10, true, "retry " + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+    super.onCancel();
+    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
+  }
+  
+  public void onNext(T paramT)
+  {
+    super.onNext(paramT);
+    ved.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
+    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    this.b.b = null;
   }
 }
 

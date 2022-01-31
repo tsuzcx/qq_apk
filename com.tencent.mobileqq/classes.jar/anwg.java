@@ -1,9 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
-public abstract class anwg
+public class anwg
 {
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
+  public double a;
+  public float a = 1.0F;
+  public int a;
+  public Drawable a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Drawable b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 

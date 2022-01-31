@@ -1,11 +1,8 @@
-import java.util.Comparator;
-
-public final class baiv
-  implements Comparator<baiw>
+public class baiv
 {
-  public int a(baiw parambaiw1, baiw parambaiw2)
+  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    return Long.signum(parambaiw2.a - parambaiw1.a);
+    new axrc(null).a("dc00899").b("Grp_tribe").c(paramString1).d(paramString2).a(paramInt1).b(paramInt2).a(paramVarArgs).a();
   }
 }
 

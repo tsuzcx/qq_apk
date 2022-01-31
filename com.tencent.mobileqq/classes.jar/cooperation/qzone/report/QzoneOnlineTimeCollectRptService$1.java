@@ -1,7 +1,7 @@
 package cooperation.qzone.report;
 
-import axmt;
-import bhkr;
+import axmv;
+import bhli;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -13,24 +13,24 @@ import mqq.os.MqqHandler;
 public class QzoneOnlineTimeCollectRptService$1
   implements Runnable
 {
-  public QzoneOnlineTimeCollectRptService$1(bhkr parambhkr) {}
+  public QzoneOnlineTimeCollectRptService$1(bhli parambhli) {}
   
   public void run()
   {
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bhkr.a(this.this$0));
-    if (!bhkr.a(this.this$0)) {}
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "beginTrace isForeground:" + bhli.a(this.this$0));
+    if (!bhli.a(this.this$0)) {}
     try
     {
       this.this$0.a = Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      bhkr.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
+      bhli.a(this.this$0, QzoneConfig.getInstance().getConfig("ClientReport", "OnlineLocalSaveFrequency", 10000));
       this.this$0.b();
-      if (!axmt.c())
+      if (!axmv.c())
       {
-        bhkr.a(this.this$0);
-        bhkr.a(this.this$0, true);
+        bhli.a(this.this$0);
+        bhli.a(this.this$0, true);
         LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", true);
-        if (bhkr.a(this.this$0) != 0) {
-          ThreadManager.getSubThreadHandler().post(bhkr.a(this.this$0));
+        if (bhli.a(this.this$0) != 0) {
+          ThreadManager.getSubThreadHandler().post(bhli.a(this.this$0));
         }
         return;
       }

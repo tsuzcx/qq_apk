@@ -6,13 +6,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import rrm;
+import rrj;
 
 public class ChannelTopPositionView
   extends RelativeLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rrm(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rrj(this);
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   
   public ChannelTopPositionView(Context paramContext)

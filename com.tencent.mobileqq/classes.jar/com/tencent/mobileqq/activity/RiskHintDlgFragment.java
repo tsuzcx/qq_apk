@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
+import abzm;
+import abzn;
+import abzo;
+import abzp;
 import abzq;
 import abzr;
 import abzs;
 import abzt;
-import abzu;
-import abzv;
-import abzw;
-import abzx;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,13 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aoen;
-import axqw;
-import bbcv;
-import bbev;
-import bbgg;
-import bcae;
-import bcpw;
+import aoes;
+import axqy;
+import bbdj;
+import bbfj;
+import bbgu;
+import bcas;
+import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -42,13 +42,13 @@ public class RiskHintDlgFragment
   public RiskHintDlgFragment()
   {
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
-    this.jdField_a_of_type_MqqObserverWtloginObserver = new abzx(this);
+    this.jdField_a_of_type_MqqObserverWtloginObserver = new abzt(this);
   }
   
   void a()
   {
     String str = getActivity().app.getCurrentAccountUin();
-    int i = aoen.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    int i = aoes.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -63,10 +63,10 @@ public class RiskHintDlgFragment
     if ("1".equals(paramString)) {
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
       {
-        if (bbev.d(getActivity())) {
+        if (bbfj.d(getActivity())) {
           break label126;
         }
-        bcpw.a(getActivity(), getString(2131692321), 0).b(getActivity().getTitleBarHeight());
+        bcql.a(getActivity(), getString(2131692321), 0).b(getActivity().getTitleBarHeight());
       }
     }
     label126:
@@ -84,7 +84,7 @@ public class RiskHintDlgFragment
       }
       for (;;)
       {
-        axqw.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
+        axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
         a();
         if (getActivity() == null) {
           break;
@@ -121,10 +121,10 @@ public class RiskHintDlgFragment
         localIntent.putExtra("url", paramString);
         localIntent.putExtra("from_risk_hint", true);
         getActivity().startActivity(localIntent);
-        axqw.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
         return;
       }
-      axqw.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
+      axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
     } while (getActivity() == null);
     getActivity().finish();
   }
@@ -133,8 +133,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bbcv.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new abzq(this), new abzr(this));
-      paramString1.setOnDismissListener(new abzs(this));
+      paramString1 = bbdj.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new abzm(this), new abzn(this));
+      paramString1.setOnDismissListener(new abzo(this));
       paramString1.show();
       return;
     }
@@ -149,8 +149,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bbcv.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new abzt(this), new abzu(this), new abzv(this));
-      paramString1.setOnDismissListener(new abzw(this));
+      paramString1 = bbdj.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new abzp(this), new abzq(this), new abzr(this));
+      paramString1.setOnDismissListener(new abzs(this));
       paramString1.show();
       return;
     }
@@ -186,8 +186,8 @@ public class RiskHintDlgFragment
     for (;;)
     {
       a();
-      bcae.b(2);
-      axqw.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
+      bcas.b(2);
+      axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
       return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       if (l == 1063L)
       {

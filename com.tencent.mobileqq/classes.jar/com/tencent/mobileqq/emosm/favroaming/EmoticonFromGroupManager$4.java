@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansh;
-import ansp;
+import ansm;
+import ansu;
 
 public class EmoticonFromGroupManager$4
   implements Runnable
 {
-  public EmoticonFromGroupManager$4(ansh paramansh) {}
+  public EmoticonFromGroupManager$4(ansm paramansm) {}
   
   public void run()
   {
-    ansh.a(this.this$0).b = (ansp.a - this.this$0.b());
+    ansm.a(this.this$0).b = (ansu.a - this.this$0.b());
   }
 }
 

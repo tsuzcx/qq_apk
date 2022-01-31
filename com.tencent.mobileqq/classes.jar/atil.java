@@ -1,31 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
 
-final class atil
-  implements URLDrawable.URLDrawableListener
+public class atil
+  implements atiu
 {
-  atil(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, atis paramatis) {}
+  atil(atik paramatik) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean)
   {
-    veg.c("ShortVideoShareUtil", "onLoadCanceled --");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    atih.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Atis);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    veg.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = atih.a(paramURLDrawable);
-    atih.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Atis);
+    if (paramBoolean) {
+      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
+    }
   }
 }
 

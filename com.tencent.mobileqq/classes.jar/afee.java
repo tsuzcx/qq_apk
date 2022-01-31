@@ -1,25 +1,18 @@
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 class afee
   implements Animator.AnimatorListener
 {
-  afee(afec paramafec) {}
+  afee(afea paramafea) {}
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a = true;
-    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimator.putExtra("from_key", this.a.a.a());
-    paramAnimator.putExtra("fromType", 13);
-    this.a.a.startActivity(paramAnimator);
-    this.a.a.overridePendingTransition(0, 0);
-    bbaz.a(false);
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.util.Log;
-import asvj;
 import asvl;
+import asvn;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class AudioJsPlugin$2
-  extends asvj
+  extends asvl
 {
   AudioJsPlugin$2(AudioJsPlugin paramAudioJsPlugin) {}
   

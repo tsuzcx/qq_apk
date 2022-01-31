@@ -1,27 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
 public class zbt
-  implements ValueAnimator.AnimatorUpdateListener
+  extends URLDrawableParams
 {
-  public zbt(GdtVideoCeilingView paramGdtVideoCeilingView, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, GdtVideoCeilingLandView paramGdtVideoCeilingLandView, boolean paramBoolean) {}
+  Context a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public zbt(Context paramContext, File paramFile)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
-    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin < 1) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView))) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Boolean)) {
-      GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, this.jdField_a_of_type_Boolean);
+    super(paramContext);
+    this.a = paramContext;
+    aywm.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new ayqe(paramFile);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    {
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
+      {
+        return new ayrp(bool, paramObject);
+        bool = false;
+      }
     }
-    while (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return bbqx.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846926);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846926);
   }
 }
 

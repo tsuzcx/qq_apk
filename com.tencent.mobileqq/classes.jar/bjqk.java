@@ -1,11 +1,26 @@
-import android.content.DialogInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
 
-final class bjqk
-  extends bbdf
+public class bjqk
+  extends AnimatorListenerAdapter
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjqk(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.d = 5;
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView 190ms all end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteAdsorptionAnimation captureView begin");
+    }
   }
 }
 

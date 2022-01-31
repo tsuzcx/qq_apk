@@ -1,80 +1,48 @@
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.BinaryMessenger;
-import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-public class apzi
+public abstract class apzi
 {
-  private static apzi jdField_a_of_type_Apzi;
-  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
-  private HashMap<String, apzg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public static int a;
+  public static int b = 2;
+  private String a;
   
-  public static apzi a()
+  static
   {
-    if (jdField_a_of_type_Apzi == null) {}
-    try
-    {
-      if (jdField_a_of_type_Apzi == null) {
-        jdField_a_of_type_Apzi = new apzi();
-      }
-      return jdField_a_of_type_Apzi;
-    }
-    finally {}
+    jdField_a_of_type_Int = 1;
   }
   
-  private void a()
+  public apzi(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    a(new apzq("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new apzj("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
-    a(new apzm("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(apzg paramapzg)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramapzg.a())) {
-      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
-    }
-    do
-    {
-      return;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramapzg.a()))
-      {
-        apzg localapzg = (apzg)this.jdField_a_of_type_JavaUtilHashMap.remove(paramapzg.a());
-        if (localapzg != null) {
-          localapzg.a();
-        }
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramapzg.a(), paramapzg);
-    } while (!QLog.isColorLevel());
-    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramapzg.a() }));
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  private void b() {}
-  
-  private void c() {}
-  
-  public <T extends apzg> T a(String paramString)
+  public AppRuntime a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      return (apzg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return null;
+    return BaseApplicationImpl.getApplication().getRuntime();
   }
   
-  public void a(BinaryMessenger paramBinaryMessenger)
+  public void a()
   {
-    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
-    {
-      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
     }
-    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
-    a();
-    b();
-    c();
+  }
+  
+  public String b()
+  {
+    AppRuntime localAppRuntime = a();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
+    }
+    return "";
   }
 }
 

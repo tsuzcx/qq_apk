@@ -1,19 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class ablm
+public class ablm
+  extends atzn
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  public ablm(LoginInfoActivity paramLoginInfoActivity) {}
   
-  ablm(ablk paramablk) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    LoginInfoActivity.a(this.a);
+    LoginInfoActivity.b(this.a);
+  }
 }
 
 

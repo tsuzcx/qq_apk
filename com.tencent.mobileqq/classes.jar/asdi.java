@@ -1,31 +1,6 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import mqq.app.AppRuntime;
-
-class asdi
-  implements asdn
+public abstract interface asdi
 {
-  asdi(asdh paramasdh) {}
-  
-  public void a()
-  {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        axqw.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
-    }
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    axqw.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-  }
+  public abstract void a(int paramInt);
 }
 
 

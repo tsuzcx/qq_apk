@@ -1,49 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 
-class aiiw
-  implements DialogInterface.OnDismissListener
+public class aiiw
+  extends Handler
 {
-  aiiw(aiiv paramaiiv, aksl paramaksl) {}
+  public aiiw(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
-    }
-    if (bbev.g(this.jdField_a_of_type_Aiiv.a))
+    switch (paramMessage.what)
     {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiiv.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Aiiv.a).a();
-      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiiv.a);
-      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiiv.a);
-      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiiv.a);
-      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramDialogInterface = this.jdField_a_of_type_Aiiv.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_Aiiv.a.getString(2131699485);
-      this.jdField_a_of_type_Aiiv.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
+    default: 
+    case 8193: 
+    case 8194: 
+      do
       {
-        paramDialogInterface = "0";
-        axqw.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aksl.a();
+        do
+        {
+          do
+          {
+            return;
+            if (QQSpecialFriendSettingActivity.a(this.a) == null)
+            {
+              QQSpecialFriendSettingActivity.a(this.a, new bcqf(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialFriendSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+      QQSpecialFriendSettingActivity.a(this.a).dismiss();
+      QQSpecialFriendSettingActivity.a(this.a, null);
       return;
-      paramDialogInterface = "1";
-      break;
-      paramDialogInterface = this.jdField_a_of_type_Aiiv.a.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692321;
-      this.jdField_a_of_type_Aiiv.a.a.sendMessage(paramDialogInterface);
     }
+    bcql.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
   }
 }
 

@@ -1,92 +1,39 @@
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
 public class lbp
 {
-  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  private static lbp a;
   
-  @TargetApi(8)
-  public static File a(Context paramContext)
+  public static lbp a()
   {
-    if (Build.VERSION.SDK_INT >= 8) {
-      return paramContext.getExternalCacheDir();
-    }
-    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
-    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
-  }
-  
-  public static String a(String paramString)
-  {
+    if (a == null) {}
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramString.getBytes("UTF-8"));
-      paramString = a(localMessageDigest.digest());
-      return paramString;
+      if (a == null) {
+        a = new lbp();
+      }
+      return a;
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new AssertionError();
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new AssertionError();
-    }
-    catch (Throwable paramString)
-    {
-      throw new AssertionError();
-    }
+    finally {}
   }
   
-  public static String a(String paramString1, String paramString2)
+  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
   {
-    return paramString1 + "{@}" + paramString2;
-  }
-  
-  public static String a(String paramString1, String paramString2, long paramLong)
-  {
-    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
-  }
-  
-  static String a(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    while (i < k)
-    {
-      int m = paramArrayOfByte[i];
-      int n = j + 1;
-      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
-      j = n + 1;
-      arrayOfChar[n] = a[(m & 0xF)];
-      i += 1;
-    }
-    return new String(arrayOfChar);
-  }
-  
-  @TargetApi(9)
-  public static boolean a()
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      return Environment.isExternalStorageRemovable();
-    }
-    return true;
+    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), lbq.class);
+    paramContext.setObserver(paramBusinessObserver);
+    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
+    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
+    paramAppRuntime.startServlet(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lbp
  * JD-Core Version:    0.7.0.1
  */

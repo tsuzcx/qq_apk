@@ -1,10 +1,10 @@
 package com.tencent.av.config;
 
 import android.content.Context;
-import bbdm;
+import bbea;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import lcl;
+import lcg;
 
 public class ConfigInfo
 {
@@ -31,10 +31,10 @@ public class ConfigInfo
       }
       String str1 = paramContext.substring(0, i);
       String str2 = paramContext.substring(i + 1);
-      lcl.c(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + paramContext + "| version=" + str1 + "| payload=" + str2);
+      lcg.c(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + paramContext + "| version=" + str1 + "| payload=" + str2);
       return str2;
     }
-    lcl.c(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
+    lcg.c(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
     return "";
   }
   
@@ -72,7 +72,7 @@ public class ConfigInfo
       i = j;
     } while (!QLog.isDevelopLevel());
     QLog.w(TAG, 1, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
-    bbdm.b(TAG, localException);
+    bbea.b(TAG, localException);
     return 0;
   }
   

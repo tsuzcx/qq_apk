@@ -1,16 +1,17 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 class arkk
+  implements DialogInterface.OnClickListener
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  arkk(arkj paramarkj, Bundle paramBundle) {}
   
-  public arkk(arkh paramarkh, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    paramDialogInterface.dismiss();
+    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Arkj);
   }
 }
 

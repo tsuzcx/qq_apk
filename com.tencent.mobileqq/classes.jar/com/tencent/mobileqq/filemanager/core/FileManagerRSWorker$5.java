@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aozc;
-import aozi;
-import apuc;
-import apud;
+import aozg;
+import aozm;
 import apue;
-import awzw;
-import bbev;
+import apuf;
+import apug;
+import awzy;
+import bbfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -15,12 +15,12 @@ import com.tencent.qphone.base.util.QLog;
 public class FileManagerRSWorker$5
   implements Runnable
 {
-  public FileManagerRSWorker$5(aozi paramaozi) {}
+  public FileManagerRSWorker$5(aozm paramaozm) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "Running RSWorker:" + awzw.a());
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "Running RSWorker:" + awzy.a());
     }
     Object localObject;
     if (QLog.isColorLevel())
@@ -28,18 +28,18 @@ public class FileManagerRSWorker$5
       if ("run task sessionid[" + String.valueOf(this.this$0.c) + "]," + " actionType[" + String.valueOf(this.this$0.jdField_b_of_type_Int) + "], " + "strUin[" + this.this$0.e == null) {
         break label380;
       }
-      localObject = apue.e(this.this$0.e);
+      localObject = apug.e(this.this$0.e);
     }
     for (;;)
     {
       QLog.i("FileManagerRSWorker<FileAssistant>", 2, (String)localObject);
-      if (bbev.d(BaseApplicationImpl.getContext())) {
+      if (bbfj.d(BaseApplicationImpl.getContext())) {
         break;
       }
       this.this$0.a(0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_b_of_type_Long, this.this$0.c, this.this$0.e, this.this$0.jdField_a_of_type_Int, 1, null, 2, null);
-      apue.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_i_of_type_JavaLangString, this.this$0.jdField_g_of_type_Long, aozi.a(this.this$0), this.this$0.e, this.this$0.jdField_g_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9004L, "", 0L, 0L, this.this$0.d, "", "", aozi.a(this.this$0), "NoNetWork", null);
-      apue.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.j, this.this$0.jdField_g_of_type_Long, aozi.a(this.this$0), this.this$0.e, this.this$0.jdField_g_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9004L, "", 0L, 0L, this.this$0.d, "", "", aozi.b(this.this$0), "NoNetWork", null);
+      apug.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_i_of_type_JavaLangString, this.this$0.jdField_g_of_type_Long, aozm.a(this.this$0), this.this$0.e, this.this$0.jdField_g_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9004L, "", 0L, 0L, this.this$0.d, "", "", aozm.a(this.this$0), "NoNetWork", null);
+      apug.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.j, this.this$0.jdField_g_of_type_Long, aozm.a(this.this$0), this.this$0.e, this.this$0.jdField_g_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9004L, "", 0L, 0L, this.this$0.d, "", "", aozm.b(this.this$0), "NoNetWork", null);
       return;
       label380:
       if ("null], filePath[" + this.this$0.jdField_b_of_type_JavaLangString != null) {
@@ -58,19 +58,19 @@ public class FileManagerRSWorker$5
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
       return;
-      localObject = new apud();
-      ((apud)localObject).jdField_b_of_type_JavaLangString = "send_file_number";
-      apuc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (apud)localObject);
+      localObject = new apuf();
+      ((apuf)localObject).jdField_b_of_type_JavaLangString = "send_file_number";
+      apue.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (apuf)localObject);
       this.this$0.b();
       continue;
-      localObject = new apud();
-      ((apud)localObject).jdField_b_of_type_JavaLangString = "rece_file_number";
-      apuc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (apud)localObject);
+      localObject = new apuf();
+      ((apuf)localObject).jdField_b_of_type_JavaLangString = "rece_file_number";
+      apue.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (apuf)localObject);
       this.this$0.f();
       continue;
       this.this$0.h();
       continue;
-      aozi.a(this.this$0);
+      aozm.a(this.this$0);
       continue;
       this.this$0.i();
     }

@@ -1,13 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.11.1;
+import mqq.os.MqqHandler;
 
 public class bktj
-  implements DialogInterface.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public bktj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    this.a.a(ajya.a(2131714034));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    this.a.a.post(new ShortVideoPlayActivity.11.1(this));
+  }
 }
 
 

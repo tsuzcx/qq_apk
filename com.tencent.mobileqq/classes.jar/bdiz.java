@@ -1,60 +1,20 @@
-import java.util.ArrayList;
+import java.io.InputStream;
 
 public class bdiz
 {
-  protected static bdiz a;
-  protected ArrayList<bdiy> a;
+  public int a;
+  public long a;
+  public InputStream a;
+  public String a;
+  public long b;
   
-  public static bdiz a()
+  public bdiz(String paramString, int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (jdField_a_of_type_Bdiz == null)
-      {
-        jdField_a_of_type_Bdiz = new bdiz();
-        jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bdiz localbdiz = jdField_a_of_type_Bdiz;
-      return localbdiz;
-    }
-    finally {}
-  }
-  
-  public ArrayList<bdiy> a()
-  {
-    return jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bdiy parambdiy)
-  {
-    int j = jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bdiy)jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.add(parambdiy);
-  }
-  
-  public void b(bdiy parambdiy)
-  {
-    int j = jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bdiy)jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdiy) {
-          jdField_a_of_type_Bdiz.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.b = this.jdField_a_of_type_JavaLangString.length();
     }
   }
 }

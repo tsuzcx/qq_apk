@@ -1,19 +1,33 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abuq
-  extends akav
+  implements Animation.AnimationListener
 {
   public abuq(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    this.a.a.removeMessages(99);
+    if (bfnz.g())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
+      }
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
     }
-    QQLSActivity.a(this.a);
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,19 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
 
-public class atmx
+class atmx
   implements View.OnClickListener
 {
-  atmx(atlu paramatlu) {}
+  atmx(atlw paramatlw) {}
   
   public void onClick(View paramView)
   {
-    this.a.c(paramView);
-    new ativ().h("video").i("playpage_like_click").b().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (aszd)this.a.a.getManager(106)), 16, null, false);
+    this.a.j(paramView);
   }
 }
 

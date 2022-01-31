@@ -1,30 +1,68 @@
-import android.widget.NumberPicker;
-import android.widget.TimePicker;
-import android.widget.TimePicker.OnTimeChangedListener;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bfel
-  implements TimePicker.OnTimeChangedListener
+@behk(a="V8ServiceInitTask")
+public class bfel
+  extends bfej
 {
-  bfel(bfek parambfek) {}
-  
-  public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
+  public bfel(Context paramContext, beqm parambeqm)
   {
-    bfek.a(this.a, paramInt1);
-    if (paramInt1 == bfek.a(this.a).getMinValue())
+    super(paramContext, parambeqm);
+  }
+  
+  public void a()
+  {
+    beyq.a(208, "", a().getMiniAppInfoForReport());
+    try
     {
-      bfek.b(this.a).setMinValue(bfek.a(this.a));
-      bfek.b(this.a).setMaxValue(59);
+      Object localObject = (bfef)a().getTask(bfef.class);
+      long l1;
+      label67:
+      bfdn localbfdn;
+      if (localObject != null)
+      {
+        localObject = ((bfef)localObject).a();
+        this.a = ((bfbi)localObject);
+        l1 = System.currentTimeMillis();
+        if (this.a == null) {
+          break label167;
+        }
+        localObject = this.a.a();
+        bezi.a((MiniAppInfo)localObject, 100, "0");
+        localbfdn = new bfdn(this.a);
+        if (this.a == null) {
+          break label173;
+        }
+      }
+      label167:
+      label173:
+      for (localObject = this.a.a();; localObject = null)
+      {
+        bezi.a((MiniAppInfo)localObject, 101, "0");
+        long l2 = System.currentTimeMillis();
+        if (this.a != null) {
+          localbfdn.a(this.a.a());
+        }
+        localbfdn.a(new bfem(this, localbfdn, l2 - l1));
+        localbfdn.b();
+        return;
+        localObject = null;
+        break;
+        localObject = null;
+        break label67;
+      }
       return;
     }
-    if (paramInt1 == bfek.a(this.a).getMaxValue())
+    catch (Throwable localThrowable)
     {
-      bfek.b(this.a).setMinValue(0);
-      bfek.b(this.a).setMaxValue(bfek.b(this.a));
-      return;
+      betc.d("minisdk-start", "ServiceInitTask execute exception!", localThrowable);
     }
-    bfek.b(this.a).setMinValue(0);
-    bfek.b(this.a).setMaxValue(59);
-    bfek.b(this.a, paramInt2);
+  }
+  
+  public void c()
+  {
+    super.c();
+    beyq.a(209, "", a().getMiniAppInfoForReport());
   }
 }
 

@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
+import java.util.Comparator;
 
 public class aort
-  implements axod
+  implements Comparator<Long>
 {
-  public aort(FileAssistantActivity paramFileAssistantActivity) {}
+  public aort(QfileLocalFileDelPicTabView.1 param1) {}
   
-  public void a()
+  public int a(Long paramLong1, Long paramLong2)
   {
-    FileAssistantActivity.b(this.a);
-  }
-  
-  public void b()
-  {
-    FileAssistantActivity.b(this.a);
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
+    }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 

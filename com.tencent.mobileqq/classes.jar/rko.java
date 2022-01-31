@@ -1,124 +1,48 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.widget.HorizontalLabelLayout;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
 
 class rko
-  extends rkj
-  implements View.OnClickListener
+  extends rkg
 {
-  private HorizontalLabelLayout jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View b;
+  private View c;
   
-  public rko(rkn paramrkn, View paramView, BaseData paramBaseData)
+  public rko(rkk paramrkk, View paramView, BaseData paramBaseData)
   {
     super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramView);
-  }
-  
-  private View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131559913, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
-  }
-  
-  private void a(String paramString, rjz paramrjz, ArticleInfo paramArticleInfo)
-  {
-    long l1 = paramArticleInfo.mArticleID;
-    long l2 = paramrjz.jdField_a_of_type_Long;
-    noo.a(null, "CliOper", "", onk.a(), paramString, paramString, 0, 0, String.valueOf(l1), String.valueOf(l2), paramArticleInfo.innerUniqueID, "", false);
-  }
-  
-  public SpannableStringBuilder a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append("# ");
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#07D0B0")), 0, localSpannableStringBuilder.length(), 33);
-    double d = 0.0D;
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramString.length()) {
-        if (!bbjw.c(paramString.charAt(i))) {
-          break label144;
-        }
-      }
-      label144:
-      for (d += 1.0D; d >= 11.0D; d += 0.5D)
-      {
-        String str = paramString;
-        if (i < paramString.length() - 1) {
-          str = paramString.substring(0, i + 1) + omm.jdField_a_of_type_JavaLangString;
-        }
-        localSpannableStringBuilder.append(str);
-        return localSpannableStringBuilder;
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378383));
+    this.b = paramView.findViewById(2131365275);
+    this.c = paramView.findViewById(2131376355);
   }
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    paramBaseData1 = (ArticleTopicData)paramBaseData2;
-    int j = paramBaseData1.jdField_a_of_type_JavaUtilList.size();
-    View localView;
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount() < j)
+    paramBaseData1 = "";
+    if (paramBaseData2.p == 7)
     {
-      int k = this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount();
-      i = 0;
-      while (i < j - k)
-      {
-        localView = a(this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getContext());
-        this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.addView(localView);
-        localView.setOnClickListener(this);
-        i += 1;
-      }
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).jdField_a_of_type_JavaLangString;
+      this.b.setVisibility(0);
     }
-    int i = 0;
-    if (i < this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount())
+    for (;;)
     {
-      localView = this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildAt(i);
-      if (i < j)
-      {
-        localView.setVisibility(0);
-        rjz localrjz = (rjz)paramBaseData1.jdField_a_of_type_JavaUtilList.get(i);
-        localView.setTag(localrjz);
-        ((TextView)localView.findViewById(2131374757)).setText(a(localrjz.jdField_a_of_type_JavaLangString));
-        if ((!paramBoolean) && (!paramBaseData1.jdField_a_of_type_Boolean))
-        {
-          a("0X800919F", localrjz, paramBaseData2.b);
-          paramBaseData1.jdField_a_of_type_Boolean = true;
-        }
-      }
-      for (;;)
-      {
-        i += 1;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if ((paramBaseData2.p != 7) || (!((RecommendTitleData)paramBaseData2).jdField_a_of_type_Boolean)) {
         break;
-        localView.setVisibility(8);
+      }
+      this.c.setVisibility(8);
+      return;
+      if (paramBaseData2.p == 13)
+      {
+        paramBaseData1 = ((CommentHeaderData)paramBaseData2).jdField_a_of_type_JavaLangString;
+        this.b.setVisibility(8);
       }
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    rjz localrjz = (rjz)paramView.getTag();
-    if (localrjz != null)
-    {
-      onk.a(paramView.getContext(), localrjz.b);
-      a("0X80091A0", localrjz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b);
-    }
+    this.c.setVisibility(0);
   }
 }
 

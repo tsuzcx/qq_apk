@@ -1,59 +1,26 @@
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
+import java.io.InputStream;
 
 public class xgp
 {
-  public String a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
   
-  public xgp(xgm paramxgm, String paramString, JSONObject paramJSONObject)
+  public xgp(xgo paramxgo) {}
+  
+  public InputStream a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    try
-    {
-      this.b = paramJSONObject.getString("title");
-      this.c = paramJSONObject.getString("title_color");
-      this.d = paramJSONObject.getString("bg_color");
-      this.e = paramJSONObject.getString("bg_border_color");
-      return;
-    }
-    catch (JSONException paramxgm)
-    {
-      paramxgm.printStackTrace();
-    }
+    return this.jdField_a_of_type_JavaIoInputStream;
   }
   
-  public void a(String paramString)
+  public void a(DiskLruCache.Snapshot paramSnapshot)
   {
-    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
-    {
-      localObject = Arrays.asList(((File)localObject).list());
-      if (((List)localObject).contains("take_video@2x.png"))
-      {
-        String str = paramString + "/" + "take_video@2x.png";
-        if (new File(str).exists()) {
-          this.f = str;
-        }
-      }
-      if (((List)localObject).contains("take_video_no_bg@2x.png"))
-      {
-        paramString = paramString + "/" + "take_video_no_bg@2x.png";
-        if (new File(paramString).exists()) {
-          this.g = paramString;
-        }
-      }
-    }
+    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+  }
+  
+  public void a(InputStream paramInputStream)
+  {
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
 }
 

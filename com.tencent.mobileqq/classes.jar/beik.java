@@ -1,29 +1,29 @@
-import java.io.ByteArrayOutputStream;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
+import android.content.Context;
+import java.util.Map;
 
-class beik
-  extends ByteArrayOutputStream
+public class beik
+  implements beie
 {
-  beik(beij parambeij, int paramInt)
+  public beik(Context paramContext) {}
+  
+  public Map<String, beib> a()
   {
-    super(paramInt);
+    return null;
   }
   
-  public String toString()
+  public boolean a()
   {
-    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
-    for (int i = this.count - 1;; i = this.count) {
-      try
-      {
-        String str = new String(this.buf, 0, i, beij.a(this.a).name());
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        throw new AssertionError(localUnsupportedEncodingException);
-      }
-    }
+    return false;
+  }
+  
+  public Map<String, beib> b()
+  {
+    return null;
+  }
+  
+  public Map<String, beia> c()
+  {
+    return null;
   }
 }
 

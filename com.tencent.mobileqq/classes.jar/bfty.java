@@ -1,8 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.NegativeChildrenLayout;
 
-public abstract interface bfty
+public class bfty
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public bfty(NegativeChildrenLayout paramNegativeChildrenLayout) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
+    }
+  }
 }
 
 

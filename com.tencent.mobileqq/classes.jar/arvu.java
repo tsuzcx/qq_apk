@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.16;
 
 public class arvu
   implements DialogInterface.OnClickListener
 {
-  public arvu(LocationDialogUtil.4 param4) {}
+  public arvu(LocationDialogUtil.16 param16) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.b();
-    axqw.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
+    paramDialogInterface = arzn.a(this.a.a.app);
+    paramDialogInterface.a(3);
+    paramDialogInterface.a = false;
   }
 }
 

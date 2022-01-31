@@ -1,53 +1,31 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahxn
-  extends FileObserver
+  extends ahxr
 {
-  private boolean a;
-  
-  private void a()
+  public void a()
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
+    RMVideoStateMgr.a().a.q();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public boolean a()
   {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
-    }
-    do
-    {
-      return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
     }
-    a();
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
   }
 }
 

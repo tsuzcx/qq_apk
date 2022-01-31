@@ -1,205 +1,88 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.os.Build.VERSION;
-import android.text.TextPaint;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.lang.ref.WeakReference;
 
-public class bkhb
-  extends bkhg
+class bkhb
+  implements URLDrawableDownListener
 {
-  private static int e = 30;
-  private static int h = 30;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
-  private int i;
-  private int j;
-  private int k = 16;
-  private int l = 16;
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<ProgressBar> b;
   
-  public bkhb(Context paramContext, String paramString)
+  public bkhb(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
   {
-    super(paramContext, paramString);
-    a(this.jdField_a_of_type_JavaLangString);
-    b();
-    c();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.b = new WeakReference(paramProgressBar);
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2)
+  private boolean a(ImageView paramImageView)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", paramInt);
-      localJSONObject.put("iconpath", paramString1);
-      localJSONObject.put("locationString", paramString2);
-      paramString1 = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ExpandLocationStickerDrawable", 2, paramString1);
-      }
-      return paramString1;
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ExpandLocationStickerDrawable", 2, paramString1, new Object[0]);
-        }
-        paramString1 = null;
-      }
-    }
+    paramImageView = (String)paramImageView.getTag(2131376882);
+    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
   }
   
-  public String a()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
-  {
-    int i1 = e + 0;
-    int m = h;
-    int i2 = ((Integer)paramArrayList.get(this.jdField_c_of_type_Int)).intValue();
-    m += (this.jdField_c_of_type_JavaLangString.length() - 1) * (this.k - i2) / 2;
-    int n = ((Integer)paramArrayList.get(this.d)).intValue();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(n);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(n);
-    bkhm.a(n, this.jdField_a_of_type_AndroidTextTextPaint);
-    paramArrayList = new Rect(m, a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i1, this.j + m, this.i + i1 + a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    n = this.j;
-    n = this.l + (n + m);
-    m = 0;
-    while (m < this.jdField_c_of_type_JavaLangString.length())
+    ved.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
     {
-      paramArrayList = this.jdField_c_of_type_JavaLangString.substring(m, m + 1);
-      paramCanvas.drawText(paramArrayList, n, this.i + i1, this.jdField_a_of_type_AndroidTextTextPaint);
-      n = n + (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramArrayList) + i2;
-      m += 1;
-    }
-  }
-  
-  public String[] a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        this.f = paramString.optInt("type", 0);
-        this.jdField_b_of_type_JavaLangString = paramString.optString("iconpath", "");
-        this.jdField_c_of_type_JavaLangString = paramString.optString("locationString", "");
-      }
-      return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString };
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-    }
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    e = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    h = e;
-    this.l = a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.k = a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_c_of_type_JavaLangString = TroopBarPOI.b(this.jdField_c_of_type_JavaLangString);
-    Paint.FontMetrics localFontMetrics;
-    label312:
-    int n;
-    int m;
-    if ((this.jdField_c_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
-    {
-      this.jdField_c_of_type_JavaLangString = ChnToSpell.a(this.jdField_c_of_type_JavaLangString, 1);
-      this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.toUpperCase();
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      this.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(true);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
-      }
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_Bkgu.a("X", 190L, 630L, 0, this.k, new DecelerateInterpolator());
-      this.d = this.jdField_a_of_type_Bkgu.a("T", 190L, 2110L, 0, 255, new DecelerateInterpolator());
-      if (!bbdj.a(this.jdField_b_of_type_JavaLangString)) {
-        break label494;
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        break label506;
-      }
-      n = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      m = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, n, m);
-      this.i = (-(int)localFontMetrics.ascent - (int)localFontMetrics.descent + a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      if (m != 0) {
-        this.j = (n * this.i / m);
-      }
-      this.jdField_b_of_type_Int = (this.i + e * 2);
-      float f = this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_c_of_type_JavaLangString);
-      m = this.j;
-      n = h;
-      int i1 = this.l;
-      this.jdField_a_of_type_Int = ((int)f + (m + n * 2 + i1) + this.k * (this.jdField_c_of_type_JavaLangString.length() - 1) + a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
       return;
-      this.jdField_c_of_type_JavaLangString = "YOUR CITY";
-      break;
-      label494:
-      QLog.e("ExpandLocationStickerDrawable", 2, "mIconPath not exist");
-      break label312;
-      label506:
-      m = 0;
-      n = 0;
     }
+    ved.b("LocationFaceAdapter", "onLoadCanceled error.");
   }
   
-  public int getIntrinsicHeight()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_b_of_type_Int;
+    ved.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadFialed error.");
   }
   
-  public int getIntrinsicWidth()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    ved.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadProgressed error.");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ved.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131376851, Boolean.valueOf(true));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

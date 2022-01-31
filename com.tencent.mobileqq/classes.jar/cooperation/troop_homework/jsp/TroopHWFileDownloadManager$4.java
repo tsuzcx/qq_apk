@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bhwt;
+import bhxk;
 import com.tencent.tmdownloader.TMAssistantDownloadSettingClient;
 
 public class TroopHWFileDownloadManager$4
@@ -8,7 +8,7 @@ public class TroopHWFileDownloadManager$4
 {
   public void run()
   {
-    bhwt.a(this.this$0).setDownloadSDKWifiOnly(this.a);
+    bhxk.a(this.this$0).setDownloadSDKWifiOnly(this.a);
   }
 }
 

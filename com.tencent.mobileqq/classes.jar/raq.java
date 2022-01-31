@@ -1,38 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 class raq
-  extends Handler
+  extends quz
 {
-  raq(rap paramrap, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  raq(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    switch (paramMessage.what)
+    if (paramBoolean3)
     {
-    default: 
-      super.handleMessage(paramMessage);
+      if (paramBoolean4) {
+        this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.c();
+      }
     }
-    do
+    else
     {
+      if (paramBoolean1) {
+        break label77;
+      }
+      this.jdField_a_of_type_Ram.b = false;
+    }
+    for (;;)
+    {
+      if ((paramBoolean2) && (this.jdField_a_of_type_Ram.jdField_a_of_type_Qum != null)) {
+        this.jdField_a_of_type_Ram.jdField_a_of_type_Qum.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
+      }
       return;
-      if (!this.a.g) {
-        break;
-      }
-      if (this.a.f)
+      this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.b(2);
+      break;
+      label77:
+      if (this.jdField_a_of_type_Ram.b)
       {
-        rap.a(this.a, this.a.a);
-        return;
+        this.jdField_a_of_type_Ram.jdField_a_of_type_Qtr.c();
+        this.jdField_a_of_type_Ram.b = false;
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
-    return;
-    rap.a(this.a, this.a.a);
+    }
   }
 }
 

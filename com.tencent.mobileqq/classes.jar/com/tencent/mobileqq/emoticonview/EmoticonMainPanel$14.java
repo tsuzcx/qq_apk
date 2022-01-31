@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.view.GestureDetector;
-import aoci;
+import aocn;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 class EmoticonMainPanel$14
@@ -11,7 +11,7 @@ class EmoticonMainPanel$14
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(((aoci)this.jdField_a_of_type_AndroidViewGestureDetector).a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(((aocn)this.jdField_a_of_type_AndroidViewGestureDetector).a);
   }
 }
 

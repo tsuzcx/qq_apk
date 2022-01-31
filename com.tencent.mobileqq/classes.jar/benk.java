@@ -1,40 +1,32 @@
-import android.util.SparseArray;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import java.util.HashSet;
 
 class benk
-  implements View.OnClickListener
 {
-  benk(benh parambenh) {}
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onClick(View paramView)
+  private void a()
   {
-    int i = paramView.getId();
-    Object localObject;
-    if ((benh.a(this.a)) && ((benh.a(this.a) == null) || (!benh.a(this.a).contains(Integer.valueOf(i)))) && (benh.b(this.a) != -1) && (i != benh.b(this.a)))
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-      localObject = (View)benh.a(this.a).get(benh.b(this.a));
-      ((View)localObject).findViewById(2131361915).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361914);
-      benh.a(this.a, (TextView)localObject, false);
-      localObject = (View)benh.a(this.a).get(i);
-      ((View)localObject).findViewById(2131361915).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361914);
-      benh.a(this.a, (TextView)localObject, true);
-      benh.a(this.a, i);
-    }
-    if (benh.a(this.a) != null) {
-      benh.a(this.a).OnClick(paramView, i);
-    }
-    if (benh.a(this.a) != null)
-    {
-      localObject = (TextView)paramView.findViewById(2131361914);
-      if ((localObject != null) && ((localObject instanceof TextView))) {
-        benh.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
+      if ((localDrawable instanceof GradientDrawable)) {
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
       }
     }
+    else
+    {
+      return;
+    }
+    betc.c("BrandColorManager", "set band border-color fail");
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 

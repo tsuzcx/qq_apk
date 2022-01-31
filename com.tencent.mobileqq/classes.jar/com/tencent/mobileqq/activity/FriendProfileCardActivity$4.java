@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbnq;
+import bboe;
 
 class FriendProfileCardActivity$4
   implements Runnable
@@ -9,7 +9,7 @@ class FriendProfileCardActivity$4
   
   public void run()
   {
-    bbnq.b(this.this$0.app);
+    bboe.b(this.this$0.app);
   }
 }
 

@@ -1,13 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import mqq.util.WeakReference;
 
 public class aubd
+  implements bcoh
 {
-  public int a;
-  public String a;
-  public List<aube> a = new ArrayList();
-  public String b;
-  public String c;
+  public aubd(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  
+  public void a()
+  {
+    OCRResultFragmentNew.a(this.a, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    ayle.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    auad.a(OCRResultFragmentNew.a(this.a), paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    ayle.a(OCRResultFragmentNew.a(this.a), (QQAppInterface)OCRResultFragmentNew.a(this.a).get(), paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
+  }
 }
 
 

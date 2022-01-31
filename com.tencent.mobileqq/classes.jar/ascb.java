@@ -1,56 +1,125 @@
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
+import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
 
-final class ascb
-  extends Drawable.ConstantState
+public class ascb
+  extends Drawable
+  implements asca
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int;
-  Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
-  String[] jdField_b_of_type_ArrayOfJavaLangString;
-  int c = 119;
-  int d = 160;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ascd jdField_a_of_type_Ascd;
+  private ascm jdField_a_of_type_Ascm;
   
-  public ascb(ascm paramascm)
+  private ascb(ascd paramascd, Resources paramResources)
   {
-    if (paramascm == null)
+    this.jdField_a_of_type_Ascd = paramascd;
+    if (paramResources != null) {}
+    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = paramascd.d)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PngFrameDrawable", 2, "【ramdom magic】 png frame param is null.");
-      }
-      throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
+      a();
+      return;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramascm.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramascm.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_Int = paramascm.c;
-    this.jdField_b_of_type_Int = paramascm.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramascm.jdField_a_of_type_Boolean;
   }
   
-  public int getChangingConfigurations()
+  public ascb(asco paramasco, Resources paramResources)
+  {
+    this(new ascd(paramasco), paramResources);
+  }
+  
+  private void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func initGifEngine");
+    }
+    ascn localascn = new ascn();
+    localascn.jdField_a_of_type_Asca = this;
+    localascn.jdField_a_of_type_Int = this.jdField_a_of_type_Ascd.jdField_b_of_type_Int;
+    localascn.jdField_b_of_type_Int = this.jdField_a_of_type_Ascd.jdField_a_of_type_Int;
+    if (!this.jdField_a_of_type_Ascd.jdField_a_of_type_Boolean) {}
+    for (localascn.jdField_a_of_type_ArrayOfJavaLangString = null;; localascn.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_Ascd.jdField_a_of_type_ArrayOfJavaLangString)
+    {
+      this.jdField_a_of_type_Ascm = new ascm();
+      this.jdField_a_of_type_Ascm.a(localascn);
+      return;
+    }
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Ascm == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Ascd.jdField_b_of_type_ArrayOfJavaLangString != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_Ascd.jdField_b_of_type_ArrayOfJavaLangString.length)) {
+      this.jdField_a_of_type_Ascm.a(this.jdField_a_of_type_Ascd.jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    }
+    this.jdField_a_of_type_Ascm.a();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func onBitmapReady,bitmap:" + paramBitmap);
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    invalidateSelf();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func draw,bitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_Ascd.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public Drawable.ConstantState getConstantState()
+  {
+    return this.jdField_a_of_type_Ascd;
+  }
+  
+  public int getOpacity()
   {
     return 0;
   }
   
-  public Drawable newDrawable()
+  public void setAlpha(int paramInt)
   {
-    return new asbz(this, null, null);
+    if (paramInt != this.jdField_a_of_type_Ascd.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_Ascd.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
   }
   
-  public Drawable newDrawable(Resources paramResources)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameDrawable", 2, "func newDrawable");
-    }
-    return new asbz(this, paramResources, null);
+    this.jdField_a_of_type_Ascd.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
 }
 

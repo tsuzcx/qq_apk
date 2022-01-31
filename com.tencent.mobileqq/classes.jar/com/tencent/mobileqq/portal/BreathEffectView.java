@@ -8,7 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import auqh;
+import auqj;
 
 public class BreathEffectView
   extends ImageView
@@ -29,21 +29,21 @@ public class BreathEffectView
   public void a()
   {
     g();
-    setImageResource(2130844427);
+    setImageResource(2130844428);
     d();
   }
   
   public void b()
   {
     g();
-    setImageResource(2130844428);
+    setImageResource(2130844429);
     d();
   }
   
   public void c()
   {
     g();
-    setImageResource(2130845721);
+    setImageResource(2130845727);
     e();
   }
   
@@ -63,7 +63,7 @@ public class BreathEffectView
     setVisibility(0);
     this.a = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
     this.a.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.addUpdateListener(new auqh(this));
+    this.a.addUpdateListener(new auqj(this));
     this.a.setDuration(4000L);
     this.a.setRepeatCount(0);
     this.a.start();

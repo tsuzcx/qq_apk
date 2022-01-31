@@ -4,20 +4,20 @@ import java.util.Comparator;
 class amog
   implements Comparator<Rect>
 {
-  amog(amoe paramamoe) {}
+  amog(amod paramamod) {}
   
   public int a(Rect paramRect1, Rect paramRect2)
   {
     if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
     do
     {
-      return 1;
+      return -1;
       if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return -1;
+        return 1;
       }
     } while (paramRect1.width() > paramRect2.width());
     if (paramRect1.width() < paramRect2.width()) {
-      return -1;
+      return 1;
     }
     return 0;
   }

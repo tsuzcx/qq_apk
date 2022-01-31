@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import aukm;
-import aukn;
 import auko;
 import aukp;
+import aukq;
+import aukr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -21,14 +21,14 @@ class DesktopDataManager$19
     if (localObject1 == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    aukn localaukn;
+    aukp localaukp;
     do
     {
       return;
-      localaukn = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localaukn == null);
-    aukp localaukp = localaukn.a();
-    localaukp.a();
+      localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while (localaukp == null);
+    aukr localaukr = localaukp.a();
+    localaukr.a();
     for (;;)
     {
       try
@@ -61,17 +61,17 @@ class DesktopDataManager$19
           continue;
         }
         QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
-        localaukp.c();
+        localaukr.c();
         return;
       }
       finally
       {
-        localaukp.b();
+        localaukr.b();
       }
       if (localObject1 != null)
       {
         ((DeskTopAppEntity)localObject1).setStatus(1000);
-        DesktopDataManager.access$3100(this.this$0, localaukn, (aukm)localObject1);
+        DesktopDataManager.access$3100(this.this$0, localaukp, (auko)localObject1);
         localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
         continue;
         label231:

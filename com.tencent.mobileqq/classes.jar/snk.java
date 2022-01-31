@@ -1,24 +1,10 @@
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-
-final class snk
-  implements rpi
+public abstract interface snk
 {
-  snk(RoundImageView paramRoundImageView) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void a(rpk paramrpk, int paramInt) {}
+  public abstract void b(String paramString, int paramInt);
   
-  public void a(rpk paramrpk, Throwable paramThrowable) {}
-  
-  public void a(rpk paramrpk, rpg paramrpg)
-  {
-    if (paramrpg != null)
-    {
-      paramrpk = paramrpg.a();
-      if (paramrpk != null) {
-        this.a.setImageBitmap(paramrpk);
-      }
-    }
-  }
+  public abstract void c(String paramString, int paramInt);
 }
 
 

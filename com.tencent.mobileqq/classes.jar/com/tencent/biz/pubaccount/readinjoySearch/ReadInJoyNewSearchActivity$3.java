@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoySearch;
 
-import aukm;
-import aukn;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ class ReadInJoyNewSearchActivity$3
   
   public void run()
   {
-    aukn localaukn = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    List localList = localaukn.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    aukp localaukp = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    List localList = localaukp.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
     if (localList != null)
     {
@@ -26,7 +26,7 @@ class ReadInJoyNewSearchActivity$3
       {
         localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
         if (localReadInJoySearchHistoryEntity.keyWord.equals(this.a)) {
-          localaukn.b(localReadInJoySearchHistoryEntity);
+          localaukp.b(localReadInJoySearchHistoryEntity);
         }
       }
     }
@@ -37,7 +37,7 @@ class ReadInJoyNewSearchActivity$3
       }
       if (localList.size() == 20)
       {
-        localaukn.b((aukm)localList.get(localList.size() - 1));
+        localaukp.b((auko)localList.get(localList.size() - 1));
         localList.remove(localList.size() - 1);
       }
       for (;;)
@@ -45,8 +45,8 @@ class ReadInJoyNewSearchActivity$3
         localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
         localReadInJoySearchHistoryEntity.keyWord = this.a;
         localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
-        localaukn.a(localReadInJoySearchHistoryEntity);
-        localaukn.a();
+        localaukp.a(localReadInJoySearchHistoryEntity);
+        localaukp.a();
         return;
         new ArrayList();
       }

@@ -1,19 +1,19 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
 
-public abstract class azmi
+public final class azmi
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
+  {
+    return new InviteToGroupInfo.UinInfo(paramParcel);
+  }
   
-  public abstract String getJsonText();
-  
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo.UinInfo[paramInt];
+  }
 }
 
 

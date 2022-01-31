@@ -1,45 +1,9 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-
-public class aotr
-  extends apvd
+class aotr
 {
-  public aotr(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void a()
-  {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
-  }
+  aotr(aotq paramaotq) {}
 }
 
 

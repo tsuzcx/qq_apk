@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcpw;
+import bcql;
 
 final class ShortVideoResourceManager$13
   implements Runnable
@@ -9,7 +9,7 @@ final class ShortVideoResourceManager$13
   
   public void run()
   {
-    bcpw.a(VideoEnvironment.a(), "" + this.a, 1).a();
+    bcql.a(VideoEnvironment.a(), "" + this.a, 1).a();
   }
 }
 

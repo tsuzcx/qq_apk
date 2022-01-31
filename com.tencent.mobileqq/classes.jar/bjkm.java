@@ -1,200 +1,44 @@
 import android.os.SystemClock;
-import android.util.SparseArray;
-import android.view.animation.AccelerateInterpolator;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bjkm
+  extends bjdv
 {
-  public static final SparseArray<ConcurrentHashMap<String, bjkm>> a;
-  public static final AccelerateInterpolator a;
-  public static final ConcurrentHashMap<String, bjkm> a;
-  public byte a;
-  float jdField_a_of_type_Float = 1.0F;
-  long jdField_a_of_type_Long;
-  public ArrayList<WeakReference<bjkn>> a;
-  long b = 0L;
-  long c = 0L;
+  public bjkm(MusicProviderView paramMusicProviderView) {}
   
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
-    jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator();
-  }
+  public void a(int paramInt) {}
   
-  public bjkm()
-  {
-    this.jdField_a_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public void a(String paramString) {}
   
-  static bjkm a(int paramInt, String paramString)
+  public void a(String paramString, int paramInt)
   {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localConcurrentHashMap == null)
+    long l = SystemClock.uptimeMillis();
+    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
     {
-      localConcurrentHashMap = new ConcurrentHashMap(50);
-      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localConcurrentHashMap);
-    }
-    for (;;)
-    {
-      bjkm localbjkm2 = (bjkm)localConcurrentHashMap.get(paramString);
-      bjkm localbjkm1 = localbjkm2;
-      if (localbjkm2 == null)
-      {
-        localbjkm1 = new bjkm();
-        localConcurrentHashMap.put(paramString, localbjkm1);
-      }
-      return localbjkm1;
+      this.a.jdField_a_of_type_Bfob.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_Long = l;
     }
   }
   
-  public static bjkm a(Object paramObject)
+  public void a(String paramString, boolean paramBoolean)
   {
-    bjkm localbjkm = null;
-    if ((paramObject instanceof bjbz)) {
-      localbjkm = a(1, ((bjbz)paramObject).a());
+    this.a.jdField_a_of_type_Bfob.sendEmptyMessage(2);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
     }
-    do
-    {
-      return localbjkm;
-      if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo)) {
-        return a(3, ((PtvTemplateManager.PtvTemplateInfo)paramObject).id);
-      }
-      if ((paramObject instanceof biqn)) {
-        return a(3, ((biqn)paramObject).a);
-      }
-      if ((paramObject instanceof MusicItemInfo)) {
-        return a(2, ((MusicItemInfo)paramObject).mMusicName);
-      }
-      if ((paramObject instanceof bjcc)) {
-        return a(4, ((bjcc)paramObject).a());
-      }
-    } while (!(paramObject instanceof bjcj));
-    return a(5, ((bjcj)paramObject).a());
-  }
-  
-  public float a()
-  {
-    float f1 = 0.01F;
-    switch (this.jdField_a_of_type_Byte)
-    {
+    this.a.jdField_a_of_type_Bfob.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Bfob.sendEmptyMessage(1);
     }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Float;
-      if (this.jdField_a_of_type_Long == 0L) {
-        return 0.0F;
-      }
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      if ((float)l > 4250.0F) {
-        f1 = 0.85F;
-      }
-      float f2;
-      for (;;)
-      {
-        this.jdField_a_of_type_Float = f1;
-        break;
-        f2 = (float)l * 1.0F / 5000.0F;
-        if (f2 >= 0.01F) {
-          f1 = f2;
-        }
-      }
-      if (this.b == 0L)
-      {
-        this.b = SystemClock.elapsedRealtime();
-      }
-      else
-      {
-        l = SystemClock.elapsedRealtime() - this.b;
-        if (l > 1L)
-        {
-          this.jdField_a_of_type_Float = 1.0F;
-        }
-        else
-        {
-          f1 = this.jdField_a_of_type_Float;
-          f2 = this.jdField_a_of_type_Float;
-          this.jdField_a_of_type_Float = (jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation((float)l * 1.0F / 1.0F) * (1.0F - f2) + f1);
-          continue;
-          if (this.c == 0L)
-          {
-            this.c = SystemClock.elapsedRealtime();
-          }
-          else
-          {
-            l = SystemClock.elapsedRealtime() - this.c;
-            if (l > 1L) {
-              this.jdField_a_of_type_Float = 0.0F;
-            }
-            this.jdField_a_of_type_Float *= (1.0F - (float)l * 1.0F / 1.0F);
-          }
-        }
-      }
+    if ((!paramBoolean) && (paramInt == -104)) {
+      this.a.jdField_a_of_type_Bfob.sendEmptyMessage(5);
     }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Float == 0.0F) || (this.jdField_a_of_type_Float == 1.0F))
-    {
-      this.jdField_a_of_type_Byte = 2;
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.b = 0L;
-      this.c = 0L;
-      this.jdField_a_of_type_Float = 0.01F;
-      a(0.01F);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    if (i >= 0)
-    {
-      bjkn localbjkn = (bjkn)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if (localbjkn == null) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        localbjkn.a();
-      }
-    }
-  }
-  
-  public void a(bjkn parambjkn)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    while (i >= 0)
-    {
-      bjkn localbjkn = (bjkn)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if ((localbjkn == null) || (localbjkn == parambjkn)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-      i -= 1;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Byte = 1;
-  }
-  
-  public void b(bjkn parambjkn)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(parambjkn));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Byte = 3;
   }
 }
 

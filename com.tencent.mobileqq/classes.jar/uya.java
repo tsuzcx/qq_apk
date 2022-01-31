@@ -1,40 +1,37 @@
 import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import android.widget.ImageView;
 
 public class uya
-  extends wcf<uyd>
 {
-  private LruCache<uyd, Drawable> a = new uyb(this, 5242880);
+  public int a;
+  public Drawable a;
+  public String a;
+  public uxw a;
+  public int b;
   
-  public LruCache<uyd, Drawable> a()
+  public String a()
   {
-    return this.a;
-  }
-  
-  public wcg a(ImageView paramImageView, uyd paramuyd)
-  {
-    return new uye(paramImageView, paramuyd);
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-  }
-  
-  public void b()
-  {
-    super.b();
-    try
-    {
-      this.a.evictAll();
-      return;
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return "?";
     }
-    catch (Exception localException)
-    {
-      this.a = new uyc(this, 5242880);
+    if (this.jdField_a_of_type_Uxw == null) {
+      return this.jdField_a_of_type_JavaLangString;
     }
+    return uyl.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Uxw.a() });
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return a().equals(((uya)paramObject).a());
+  }
+  
+  public int hashCode()
+  {
+    return a().hashCode();
+  }
+  
+  public String toString()
+  {
+    return a();
   }
 }
 

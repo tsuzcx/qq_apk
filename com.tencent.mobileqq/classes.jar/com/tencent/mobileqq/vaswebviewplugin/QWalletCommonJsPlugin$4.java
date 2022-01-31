@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.text.TextUtils;
-import axpw;
+import axpy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -32,7 +32,7 @@ class QWalletCommonJsPlugin$4
           str3 = "";
           l = 0L;
         }
-        axpw.a(null, "dc01021", "" + i + '|' + str3 + '|' + str1 + '|' + "2|" + this.val$appid + "|||" + l, false);
+        axpy.a(null, "dc01021", "" + i + '|' + str3 + '|' + str1 + '|' + "2|" + this.val$appid + "|||" + l, false);
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import anje;
-import aszd;
+import anjj;
+import aszf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$2
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$2(anje paramanje, QQAppInterface paramQQAppInterface) {}
+  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$2(anjj paramanjj, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject = (aszd)this.a.getManager(106);
-    anje.a(this.this$0, ((aszd)localObject).b());
-    String str = this.this$0.a(anje.a(this.this$0), false);
+    Object localObject = (aszf)this.a.getManager(106);
+    anjj.a(this.this$0, ((aszf)localObject).b());
+    String str = this.this$0.a(anjj.a(this.this$0), false);
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = this.this$0.a(anje.a(this.this$0), true);
+      localObject = this.this$0.a(anjj.a(this.this$0), true);
     }
     this.this$0.c((String)localObject);
     if (QLog.isColorLevel()) {

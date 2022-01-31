@@ -1,6 +1,6 @@
 package com.etrump.mixlayout;
 
-import bbkv;
+import bblj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import eipc.EIPCResult;
@@ -17,7 +17,7 @@ public class VasFontIPCModule$1
   public void run()
   {
     Object localObject;
-    if (new File(bbkv.a() + "libvipfont808.so").exists())
+    if (new File(bblj.a() + "libvipfont808.so").exists())
     {
       localObject = EIPCResult.createResult(0, null);
       this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);

@@ -1,14 +1,14 @@
-class bcqe
+import com.tencent.map.lib.basemap.data.GeoPoint;
+
+public abstract interface bcqe
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  int d;
+  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
+  
+  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcqe
  * JD-Core Version:    0.7.0.1
  */

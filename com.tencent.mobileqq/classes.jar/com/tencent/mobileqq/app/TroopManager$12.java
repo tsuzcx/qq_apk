@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import akil;
+import akik;
 import mqq.os.MqqHandler;
 
 class TroopManager$12
   implements Runnable
 {
-  TroopManager$12(TroopManager paramTroopManager, String paramString, akil paramakil) {}
+  TroopManager$12(TroopManager paramTroopManager, String paramString, akik paramakik) {}
   
   public void run()
   {

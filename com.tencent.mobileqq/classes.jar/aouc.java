@@ -1,39 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aouc
-  implements View.OnClickListener
+  implements aptw
 {
-  aouc(aoub paramaoub) {}
+  aouc(aoub paramaoub, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    acun localacun = (acun)actn.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localacun != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 3) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 0))
     {
-      i = -1;
-      localChatMessage = apue.a(localacun.a);
-      if (!this.a.b(localChatMessage)) {
-        break label76;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+      {
+        this.jdField_a_of_type_Aoub.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        return;
       }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localacun, localChatMessage, i);
-      if (this.a.a != null) {
-        this.a.a.g(localacun.a);
-      }
+      this.jdField_a_of_type_Aoub.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
       return;
-      label76:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
-      }
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Aoub.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Aoub.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

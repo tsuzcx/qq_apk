@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-public class azyz
-  implements DialogInterface.OnClickListener
+class azyz
+  implements URLDrawable.DownloadListener
 {
-  public azyz(ReciteRecordLayout paramReciteRecordLayout) {}
+  azyz(azyw paramazyw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    this.a.a(this.a.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).f();
-    }
+    azyw.a(this.a);
   }
 }
 

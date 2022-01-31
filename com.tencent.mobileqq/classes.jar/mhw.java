@@ -1,26 +1,19 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ClipDrawable;
+import com.tencent.av.ui.QavPanel;
+
 public class mhw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
+  public mhw(QavPanel paramQavPanel) {}
   
-  public mhw()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (QavPanel.a(this.a)) {
+      this.a.a.setLevel(i);
+    }
   }
 }
 

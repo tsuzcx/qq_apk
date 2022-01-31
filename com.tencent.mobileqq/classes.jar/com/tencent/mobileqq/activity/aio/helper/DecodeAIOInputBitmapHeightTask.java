@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import actn;
+import actj;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,16 +32,16 @@ public class DecodeAIOInputBitmapHeightTask
     Object localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
     Object localObject2 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject2).inScaled = false;
-    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources(), 2130848771, (BitmapFactory.Options)localObject2);
+    localObject2 = BitmapFactory.decodeResource(localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources(), 2130848777, (BitmapFactory.Options)localObject2);
     float f;
     int j;
     int k;
     if (localObject2 != null)
     {
-      i = actn.a(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
+      i = actj.a(((Bitmap)localObject2).getHeight() / 2, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
       localObject2 = ((EditText)localObject1).getPaint().getFontMetrics();
       f = Math.abs(((Paint.FontMetrics)localObject2).bottom - ((Paint.FontMetrics)localObject2).top);
-      j = actn.a(36.0F, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
+      j = actj.a(36.0F, localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources());
       k = ((EditText)localObject1).getPaddingTop();
     }
     for (int i = (Math.max(j, Math.max((int)(((EditText)localObject1).getPaddingBottom() + k + f), i)) - localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDimensionPixelSize(2131297946)) / 2;; i = 0)

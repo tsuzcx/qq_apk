@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.triton.sdk.APICallback;
+import com.tencent.qqmini.sdk.core.plugins.QQFriendJsPlugin.IAddFriendCallBack;
+import org.json.JSONObject;
 
-final class bevf
-  implements DialogInterface.OnClickListener
+class bevf
+  implements QQFriendJsPlugin.IAddFriendCallBack
 {
-  bevf(DialogInterface.OnClickListener paramOnClickListener) {}
+  bevf(bevd parambevd, APICallback paramAPICallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAddFriendCallBack(String paramString1, boolean paramBoolean, String paramString2)
   {
-    paramDialogInterface.dismiss();
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback != null) {
+      if (!paramBoolean) {
+        break label32;
+      }
+    }
+    label32:
+    for (paramString1 = bekx.a(paramString1, null);; paramString1 = bekx.a(paramString1, null, paramString2))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback.onCallback(paramBoolean, paramString1.toString());
+      return;
     }
   }
 }

@@ -1,208 +1,149 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactoryCache;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateWithHotReloadFactory;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class rpu
-  extends TemplateWithHotReloadFactory
 {
-  private static TemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryTemplateFactoryCache = new TemplateFactoryCache();
-  private String jdField_a_of_type_JavaLangString = "-1";
-  private oqm jdField_a_of_type_Oqm;
-  private rpx jdField_a_of_type_Rpx = new rpx();
-  private String b;
+  private final Map<String, rpv> a = new HashMap();
   
-  public static rpu a(String paramString, boolean paramBoolean)
+  public rpu()
   {
-    if (paramBoolean)
-    {
-      rqj.a(paramString, true);
-      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
-    }
-    paramString = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryTemplateFactoryCache.get(paramString);
-    if (paramString != null) {
-      return paramString.a;
-    }
-    return null;
+    b();
   }
   
-  public static void a()
+  public static String a(String paramString)
   {
-    QLog.d("TemplateFactory", 2, "reset: ");
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryTemplateFactoryCache.reset();
+    return (String)bhvy.a(b(paramString), "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    bhvy.a(b(paramString1), paramString2);
+  }
+  
+  private static String b(String paramString)
+  {
+    return "kandian_" + paramString;
+  }
+  
+  private static rpv b(String paramString)
+  {
+    rpv localrpv = new rpv(paramString);
+    localrpv.a("default_feeds");
+    localrpv.c = ("proteus/" + paramString + "");
+    paramString = a(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramString.endsWith("")) {
+        localrpv.c = paramString;
+      }
+    }
+    else {
+      return localrpv;
+    }
+    localrpv.b = paramString;
+    return localrpv;
   }
   
   private void b()
   {
-    Iterator localIterator = this.nameTemplateMap.entrySet().iterator();
+    rpv localrpv = new rpv("default_feeds");
+    localrpv.b = bhvy.a("default_feeds_proteus_offline_bid");
+    localrpv.c = ("proteus/" + localrpv.a + "");
+    a(localrpv);
+    localrpv = new rpv("comment_feeds");
+    localrpv.b = bhvy.a("comment_proteus_offline_bid");
+    localrpv.c = ("proteus/" + localrpv.a);
+    a(localrpv);
+    localrpv = new rpv("native_article");
+    localrpv.a("default_feeds");
+    localrpv.c = ("proteus/" + localrpv.a + "");
+    localrpv.b = bhvy.a("native_proteus_offline_bid");
+    a(localrpv);
+    c();
+    localrpv = new rpv("daily_dynamic_header");
+    localrpv.b = bhvy.a("daily_header_proteus_bid");
+    localrpv.c = ("proteus/" + localrpv.a + "");
+    QLog.i("StyleConfigHelper", 1, "[init]: dailyDynamicHeader.bid=" + localrpv.b);
+    a(localrpv);
+    QLog.d("TemplateFactory", 2, "init: " + this);
+  }
+  
+  public static void b(String paramString)
+  {
+    rpv localrpv = b(paramString);
+    QLog.d("StyleConfigHelper", 2, new Object[] { "checkStyleUpdate, serviceId = ", paramString, ", config.bid = ", localrpv.b, ", config.localPath = ", localrpv.c });
+    new rpx(localrpv.b, localrpv.c).a();
+  }
+  
+  private void c() {}
+  
+  public Map<String, rpv> a()
+  {
+    return this.a;
+  }
+  
+  public rpv a(String paramString)
+  {
+    if (this.a.containsKey(paramString)) {
+      return (rpv)this.a.get(paramString);
+    }
+    rpv localrpv = b(paramString);
+    this.a.put(paramString, localrpv);
+    return localrpv;
+  }
+  
+  public rpw a(Context paramContext, String paramString)
+  {
+    rpv localrpv = a(paramString);
+    rpx localrpx = new rpx(localrpv.b, localrpv.c);
+    rpx.a(paramString);
+    paramString = localrpx.a(paramContext);
+    if (paramString == null)
+    {
+      paramContext = localrpx.b(paramContext);
+      return new rpw(localrpv.c, paramContext, true);
+    }
+    return new rpw(localrpv.b, paramString, false);
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.a.entrySet().iterator();
     while (localIterator.hasNext())
     {
-      TemplateBean localTemplateBean = (TemplateBean)((Map.Entry)localIterator.next()).getValue();
-      localTemplateBean.setId(this.templateId.get());
-      localTemplateBean.setStyleSource(this.jdField_a_of_type_JavaLangString);
+      rpv localrpv = (rpv)((Map.Entry)localIterator.next()).getValue();
+      new rpx(localrpv.b, localrpv.c).a();
     }
-  }
-  
-  public int a()
-  {
-    String str;
-    if (this.jdField_a_of_type_Oqm != null)
-    {
-      str = this.jdField_a_of_type_Oqm.a("column_count");
-      if (str == null) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        i = Integer.valueOf(str).intValue();
-        QLog.d("TemplateFactory", 2, new Object[] { "getColumnCount = ", Integer.valueOf(i) });
-        if (i <= 0) {
-          break;
-        }
-        return i;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        QLog.d("TemplateFactory", 2, new Object[] { "getColumnCount e = ", localNumberFormatException, ", s = ", str });
-      }
-      int i = 1;
-    }
-    return 1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public oqm a()
-  {
-    return this.jdField_a_of_type_Oqm;
-  }
-  
-  public rpu a()
-  {
-    rpu localrpu = new rpu();
-    localrpu.templateId = new AtomicInteger(getTemplateId());
-    localrpu.a(this.jdField_a_of_type_JavaLangString);
-    localrpu.b(this.b);
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.nameTemplateMap);
-    localrpu.nameTemplateMap = localHashMap;
-    return localrpu;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.templateId.set(paramInt);
-    b();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    b();
-  }
-  
-  public void a(rqn paramrqn)
-  {
-    if (paramrqn == null)
-    {
-      QLog.d("TemplateFactory", 2, "updateProteusConfig, configData is null.");
-      return;
+    paramString = (rpv)this.a.get(paramString);
+    if (paramString != null) {
+      new rpx(paramString.b, paramString.c).a();
     }
-    this.jdField_a_of_type_Oqm = paramrqn.jdField_a_of_type_Oqm;
   }
   
-  public boolean a(TemplateBean paramTemplateBean)
+  public void a(rpv paramrpv)
   {
-    if (paramTemplateBean == null) {}
-    do
-    {
-      return true;
-      rqj localrqj = rqj.a(this.b, false);
-      if ((localrqj != null) && (localrqj.getTemplate(paramTemplateBean.getStyleName()) != null)) {
-        return localrqj.a(paramTemplateBean);
-      }
-    } while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource())));
-    return false;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public Map<String, TemplateBean> getNameTemplateMap()
-  {
-    Map localMap = super.getNameTemplateMap();
-    rqj localrqj = rqj.a(this.b, false);
-    if (localrqj != null) {
-      localMap.putAll(localrqj.getNameTemplateMap());
+    if (paramrpv.a == null) {
+      throw new IllegalArgumentException();
     }
-    return localMap;
-  }
-  
-  public TemplateBean getTemplate(String paramString)
-  {
-    Object localObject1 = rqj.a(this.b, false);
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = ((rqj)localObject1).getTemplate(paramString);
-      if (localObject2 == null) {}
-    }
-    do
-    {
-      return localObject2;
-      localObject2 = super.getTemplate(paramString);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        Object localObject3 = this.jdField_a_of_type_Rpx.a(this.b);
-        localObject1 = localObject2;
-        if (((rpy)localObject3).d != null)
-        {
-          localObject3 = a(((rpy)localObject3).d, true);
-          localObject1 = localObject2;
-          if (localObject3 != null) {
-            localObject1 = ((rpu)localObject3).getTemplate(paramString);
-          }
-        }
-      }
-      localObject2 = localObject1;
-    } while (localObject1 != null);
-    sfc.a(this.jdField_a_of_type_JavaLangString, this.b, paramString);
-    return localObject1;
-  }
-  
-  public boolean isUsable()
-  {
-    return getTemplateId() > 0;
-  }
-  
-  public void onAddTemplate(String paramString, TemplateBean paramTemplateBean)
-  {
-    paramTemplateBean.setStyleSource(this.jdField_a_of_type_JavaLangString);
+    this.a.put(paramrpv.a, paramrpv);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("serviceId: " + this.b + " bid: " + this.jdField_a_of_type_JavaLangString + "\n");
-    Iterator localIterator = getNameTemplateMap().entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("" + (String)localEntry.getKey() + " : " + localEntry.getValue() + "\n");
+    Iterator localIterator = this.a.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      localStringBuilder.append(((rpv)((Map.Entry)localIterator.next()).getValue()).toString());
     }
     return localStringBuilder.toString();
   }

@@ -1,12 +1,12 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhfj;
+import bhga;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bhfj();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bhga();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
@@ -148,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = ajyc.a(2131701198);
+        localObject2 = ajya.a(2131701209);
       }
       return localObject2;
     }

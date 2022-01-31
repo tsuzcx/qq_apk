@@ -1,15 +1,18 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aoqx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aoqx
+  implements aptw
 {
-  public aoqx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  aoqx(aoqv paramaoqv, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    this.a.av_();
+    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Aoqv.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

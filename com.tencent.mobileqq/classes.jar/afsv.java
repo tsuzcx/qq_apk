@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface afsv
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract View a();
 }
 
 

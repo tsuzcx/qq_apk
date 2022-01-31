@@ -1,9 +1,13 @@
 import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.FaceDownloader;
 import com.tencent.mobileqq.util.FaceInfo;
 
-public abstract interface ajvv
+public class ajvv
 {
-  public abstract void a(boolean paramBoolean, FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public Bitmap a;
+  public FaceInfo a;
+  
+  public ajvv(FaceDownloader paramFaceDownloader) {}
 }
 
 

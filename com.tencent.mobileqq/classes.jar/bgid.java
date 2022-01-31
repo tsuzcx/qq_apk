@@ -1,83 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.ui.QQComicFragment;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
-import mqq.util.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bgid
-  implements View.OnClickListener
+  extends RemoteCommand
 {
-  final int jdField_a_of_type_Int;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<QQComicTabBarView> jdField_a_of_type_MqqUtilWeakReference;
-  final boolean jdField_a_of_type_Boolean;
+  private boolean a;
   
-  public bgid(QQComicTabBarView paramQQComicTabBarView, int paramInt, boolean paramBoolean, List<WebViewTabBarData> paramList)
+  public bgid(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQComicTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramString);
+    this.a = paramBoolean;
   }
   
-  void a(QQComicTabBarView paramQQComicTabBarView)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
-    JSONObject localJSONObject;
-    if ((paramQQComicTabBarView.getContext() instanceof QQBrowserActivity))
-    {
-      localObject = ((QQBrowserActivity)paramQQComicTabBarView.getContext()).a();
-      if ((localObject instanceof QQComicFragment))
-      {
-        localObject = ((QQComicFragment)localObject).a();
-        if (localObject != null) {
-          localJSONObject = new JSONObject();
-        }
-      }
-    }
-    try
-    {
-      localJSONObject.put("source", "comic");
-      ((bghs)localObject).dispatchJsEvent("qbrowserTabClick", null, localJSONObject);
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int))
-      {
-        localObject = ((WebViewTabBarData)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).tag;
-        QQComicTabBarView.a(paramQQComicTabBarView.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, true);
-      }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("WebViewTabBarView", 1, localJSONException, new Object[0]);
-      }
+    paramQQAppInterface = PluginCommunicationHandler.getInstance();
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.register(new bgid("qqcomicemoticonipccmd", false));
     }
   }
   
-  public void onClick(View paramView)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    paramView = (QQComicTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramView == null) {}
-    long l;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
+      }
+    }
     do
     {
-      return;
-      if (this.jdField_a_of_type_Int == paramView.i)
+      do
       {
-        a(paramView);
-        return;
-      }
-      l = System.currentTimeMillis();
-    } while (l - paramView.jdField_a_of_type_Long < 500L);
-    paramView.jdField_a_of_type_Long = l;
-    paramView.setSelectedTab(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        return null;
+        localObject = (QQAppInterface)localObject;
+      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
+      localObject = (bgib)((QQAppInterface)localObject).getManager(147);
+    } while (localObject == null);
+    ((bgib)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
+    return null;
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
   }
 }
 

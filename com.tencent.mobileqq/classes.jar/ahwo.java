@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
 public class ahwo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public ahwo(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneSlideShowPreparingFragment.a(this.a);
+    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
   }
 }
 

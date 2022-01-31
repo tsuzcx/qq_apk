@@ -1,14 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.List;
 
 class apns
-  implements View.OnClickListener
+  implements xax
 {
-  apns(apnm paramapnm) {}
+  apns(apnr paramapnr, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onClick(View paramView)
+  public void a(List<apqk> paramList)
   {
-    apue.b(this.a.a, this.a.c());
+    if (this.jdField_a_of_type_Apnr.a.jdField_a_of_type_Apng != null) {
+      this.jdField_a_of_type_Apnr.a.jdField_a_of_type_Apng.a(paramList, this.jdField_a_of_type_Apnr.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apnr.a.b, this.jdField_a_of_type_Apnr.a.c, this.jdField_a_of_type_Apnr.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
   }
 }
 

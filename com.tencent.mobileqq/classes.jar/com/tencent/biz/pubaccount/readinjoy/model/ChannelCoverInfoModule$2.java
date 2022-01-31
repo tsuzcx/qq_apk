@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukn;
+import aukp;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import pab;
+import ozy;
 
 public class ChannelCoverInfoModule$2
   implements Runnable
 {
-  public ChannelCoverInfoModule$2(pab parampab, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverInfoModule$2(ozy paramozy, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {

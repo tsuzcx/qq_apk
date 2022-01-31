@@ -1,22 +1,16 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class wxg
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements View.OnTouchListener
 {
-  public wxg(TribeVideoPlugin paramTribeVideoPlugin, wxo paramwxo) {}
+  public wxg(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, wxo.a(this.jdField_a_of_type_Wxo));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = wxo.a(this.jdField_a_of_type_Wxo);
-      paramTVK_IMediaPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
-    }
+    return true;
   }
 }
 

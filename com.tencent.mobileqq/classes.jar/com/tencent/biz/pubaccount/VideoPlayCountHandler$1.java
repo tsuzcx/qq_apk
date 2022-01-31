@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import npt;
+import npq;
 
 public class VideoPlayCountHandler$1
   implements Runnable
 {
-  public VideoPlayCountHandler$1(npt paramnpt, String paramString1, String paramString2) {}
+  public VideoPlayCountHandler$1(npq paramnpq, String paramString1, String paramString2) {}
   
   public void run()
   {

@@ -1,83 +1,83 @@
-import android.app.Activity;
 import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afno
-  implements afmm
+  implements bfph
 {
-  public afno(TroopActivity paramTroopActivity) {}
+  public afno(TroopActivity paramTroopActivity, bfpc parambfpc) {}
   
-  public Activity a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a;
-  }
-  
-  public View a()
-  {
-    return this.a.findViewById(2131375491);
-  }
-  
-  public aqbc a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public bfmt a()
-  {
-    return this.a.jdField_a_of_type_Bfmt;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.a.b != 2) {
-      return;
-    }
+    paramView = (akfc)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(22);
+    long l = 0L;
+    int i = 0;
     switch (paramInt)
     {
+    default: 
+      paramInt = 0;
+    case 0: 
+      for (i = 0;; i = 1)
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a().c(ajsd.W, 9000, -paramInt);
+        paramView = (akfb)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(33);
+        if (i == 0) {
+          break;
+        }
+        paramView.a(ajsd.W, 9000);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(Conversation.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(1009));
+        }
+        return;
+        paramInt = aydd.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(NotificationView.class);
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(TroopNotifyAndRecommendView.class);
+        if (paramView != null) {
+          paramView.sendEmptyMessage(1014);
+        }
+        if (localMqqHandler != null) {
+          localMqqHandler.sendEmptyMessage(1014);
+        }
+      }
     }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.a.runOnUiThread(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.isResume()) {
-      bcpw.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    paramInt = i;
+    if (paramView != null)
+    {
+      i = akfc.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app);
+      paramView.c();
+      paramView.b();
+      paramView.a(1);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getHandler(TroopNotifyAndRecommendView.class);
+      paramInt = i;
+      if (paramView != null)
+      {
+        paramView.sendEmptyMessage(105);
+        paramInt = i;
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public View b()
-  {
-    return this.a.findViewById(2131375445);
-  }
-  
-  public boolean b()
-  {
-    return TroopActivity.b(this.a);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131375437);
-  }
-  
-  public View d()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.a().b(ajsd.N, 0);
+    if ((paramView == null) || (paramView.size() == 0)) {
+      l = 0L;
+    }
+    for (i = 1;; i = 0)
+    {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app, "CliOper", "", "", "Grp_recommend", "Grp_recom_empty", 0, 0, "", "", "", "");
+      axqy.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_del", 0, 0, "", "", "", "");
+      break;
+      l = ((MessageForSystemMsg)paramView.get(paramView.size() - 1)).getSystemMsg().msg_time.get() * 1000L;
+    }
+    paramView.a(ajsd.W, 9000, l);
   }
 }
 

@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
 
 public class ajhe
-  implements DialogInterface.OnClickListener
+  extends anqq
 {
-  public ajhe(ApolloGameActivity paramApolloGameActivity, ajod paramajod, int paramInt) {}
+  public ajhe(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ajod != null) {
-      this.jdField_a_of_type_Ajod.a(1);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
-  }
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

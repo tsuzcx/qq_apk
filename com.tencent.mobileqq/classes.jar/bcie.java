@@ -1,21 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import com.tencent.mobileqq.widget.WebViewProgressBar;
 
-class bcie
-  implements bcij<oidb_0x8ed.RspBody>
+public abstract interface bcie
+  extends bccw
 {
-  bcie(bcic parambcic, bcij parambcij) {}
+  public abstract WebViewProgressBar a();
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
-    }
-    this.jdField_a_of_type_Bcij.a(-1, null);
-  }
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

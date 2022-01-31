@@ -1,23 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class afeg
-  implements Animator.AnimatorListener
+public class afeg
+  extends Handler
 {
-  afeg(afec paramafec) {}
+  public afeg(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Affi.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    sek.a().a(300);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

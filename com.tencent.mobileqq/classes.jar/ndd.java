@@ -1,29 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-
-public final class ndd
-  implements DialogInterface.OnClickListener
+public abstract interface ndd
 {
-  public ndd(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      agca.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      l = NetConnInfoCenter.getServerTimeMillis();
-      ((akfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
-      return;
-    }
-    agca.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    ((akfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
-  }
+  public abstract void b(int paramInt);
 }
 
 

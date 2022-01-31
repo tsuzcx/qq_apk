@@ -1,43 +1,33 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bgro
-  extends OnPluginInstallListener.Stub
+  implements amgv
 {
-  public bgro(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Long jdField_a_of_type_JavaLangLong;
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public bgro(Context paramContext, Long paramLong)
   {
-    String str = String.valueOf(paramInt);
-    paramString = ajyc.a(2131710387);
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = ajyc.a(2131710380);
-    }
-    for (;;)
-    {
-      bgkq.a(str, paramString);
-      int i = bbev.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      axqw.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = ajyc.a(2131710381);
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = ajyc.a(2131710384);
-      }
-    }
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onInstallFinish(String paramString)
+  public ColorNote getColorNote()
   {
-    this.a.b();
+    amhb localamhb = new amhb();
+    if (QLog.isColorLevel()) {
+      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
+    }
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689642);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692324);
+    localamhb.a(17104896);
+    localamhb.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
+    localamhb.b(str1);
+    localamhb.c(str2);
+    localamhb.d("resdrawable://2130843378");
+    return localamhb.a();
   }
 }
 

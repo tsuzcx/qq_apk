@@ -1,45 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class ajej
-  implements TVK_SDKMgr.OnLogListener
+class ajej
+  implements View.OnClickListener
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  ajej(ajei paramajei) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    if (ajei.a(this.a) == null) {
+      return;
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
+    boolean bool = ajei.a(this.a).a();
+    if (bool)
+    {
+      ajei.a(this.a).setImageDrawable(ajei.a(this.a).getContext().getResources().getDrawable(2130838315));
+      paramView = this.a;
+      if (bool) {
+        break label124;
+      }
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    label124:
+    for (bool = true;; bool = false)
+    {
+      ajei.a(paramView, bool);
+      ajei.a(this.a).a(ajei.a(this.a));
+      return;
+      ajei.a(this.a).setImageDrawable(ajei.a(this.a).getContext().getResources().getDrawable(2130838314));
+      break;
     }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
   }
 }
 

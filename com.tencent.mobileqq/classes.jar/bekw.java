@@ -1,114 +1,19 @@
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-public class bekw
+final class bekw
+  extends View.AccessibilityDelegate
 {
-  public static int a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return 0;
-    }
-    try
-    {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable())) {
-        switch (localNetworkInfo.getType())
-        {
-        case 0: 
-        case 2: 
-        case 3: 
-        case 4: 
-        case 5: 
-          i = ((TelephonyManager)paramContext.getSystemService("phone")).getNetworkType();
-          switch (i)
-          {
-          case 4: 
-          case 7: 
-          case 11: 
-          default: 
-            i = 2;
-            break;
-          case 13: 
-            i = 4;
-            break;
-          case 3: 
-          case 5: 
-          case 6: 
-          case 8: 
-          case 9: 
-          case 10: 
-          case 12: 
-          case 14: 
-          case 15: 
-            i = 3;
-          }
-          break;
-        }
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      besl.d("NetworkUtil", "fail to get active network info", paramContext);
-      i = 0;
-    }
-    int i = 0;
-    for (;;)
-    {
-      return i;
-      i = 5;
-      continue;
-      i = 1;
-    }
-  }
+  bekw(CharSequence paramCharSequence, String paramString) {}
   
-  public static String a(Context paramContext)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    switch (a(paramContext))
-    {
-    default: 
-      return null;
-    case -1: 
-      return "UNKNOWN";
-    case 0: 
-      return "NONE";
-    case 1: 
-      return "WIFI";
-    case 2: 
-      return "2G";
-    case 3: 
-      return "3G";
-    case 4: 
-      return "4G";
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
-    return "CABLE";
-  }
-  
-  public static String b(Context paramContext)
-  {
-    try
-    {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if ((paramContext != null) && (paramContext.getSSID() != null))
-      {
-        paramContext = paramContext.getSSID().replaceAll("\"", "");
-        boolean bool = paramContext.equals("<unknown ssid>");
-        if (!bool) {
-          return paramContext;
-        }
-        return null;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      besl.d("NetworkUtil", "fail to get active network info", paramContext);
-      return null;
-    }
-    paramContext = null;
-    return paramContext;
+    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,18 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class afap
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   public afap(BlessActivity paramBlessActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      BlessActivity.a(this.a, true);
-    }
+    axqy.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
   }
 }
 

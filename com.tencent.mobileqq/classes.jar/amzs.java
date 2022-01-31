@@ -1,54 +1,27 @@
 import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
 
 public class amzs
-  extends amyi<amzr>
+  extends amyp<amzr>
 {
-  public static final amzr a = new amzr();
-  
-  public static amzr c()
-  {
-    amzr localamzr2 = (amzr)ampm.a().a(423);
-    amzr localamzr1 = localamzr2;
-    if (localamzr2 == null) {
-      localamzr1 = new amzr();
-    }
-    return localamzr1;
-  }
-  
   public int a()
   {
-    return 423;
+    return 580;
   }
   
   @NonNull
   public amzr a()
   {
-    return a;
+    return amzr.a();
   }
   
   @NonNull
-  public amzr a(ampi[] paramArrayOfampi)
+  public amzr a(@NonNull amph[] paramArrayOfamph)
   {
-    boolean bool = true;
-    localamzr = new amzr();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    try
-    {
-      if (new JSONObject(paramArrayOfampi).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localamzr.a = bool;
-        return localamzr;
-        bool = false;
-      }
-      return localamzr;
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfamph[0].a);
     }
-    catch (JSONException paramArrayOfampi)
-    {
-      veg.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfampi.getMessage());
-    }
+    return amzr.a(paramArrayOfamph[0].a);
   }
   
   public Class<amzr> a()
@@ -56,10 +29,15 @@ public class amzs
     return amzr.class;
   }
   
+  public boolean a()
+  {
+    return false;
+  }
+  
   @NonNull
   public amzr b()
   {
-    return a;
+    return amzr.a();
   }
 }
 

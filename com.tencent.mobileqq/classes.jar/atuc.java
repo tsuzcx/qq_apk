@@ -1,19 +1,29 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
 
 public class atuc
-  extends baks
+  implements View.OnClickListener
 {
   public atuc(NearbyProfileFragment paramNearbyProfileFragment) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    if (paramLong > 0L)
+    this.a.a(false);
+    if (this.a.a.app != null)
     {
-      NearbyProfileFragment.a(this.a).setText(String.format(ajyc.a(2131707320), new Object[] { Long.valueOf(paramLong) }));
+      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
+        break label82;
+      }
+      axqy.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
+    }
+    label82:
+    while ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 1)) {
       return;
     }
-    NearbyProfileFragment.a(this.a).setText(ajyc.a(2131707282));
+    axqy.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
   }
 }
 

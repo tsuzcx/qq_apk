@@ -1,92 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.List;
 
-public abstract class asnn
-  extends asnm
+public class asnn
+  extends asnv<MessageRecord>
 {
-  protected MsgBackupResEntity a;
-  protected Map<String, String> a;
-  
-  public asnn(MsgBackupResEntity paramMsgBackupResEntity)
+  public asnn(MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaUtilMap = a(paramMsgBackupResEntity.extraDataStr);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity = paramMsgBackupResEntity;
+    super(paramMessageRecord);
+    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
   }
   
-  protected static int a()
+  protected int a()
   {
-    return ajsf.aW.length();
+    return 0;
   }
   
-  public static HashMap<String, String> a(String paramString)
+  public List<MsgBackupResEntity> a()
   {
-    localHashMap = new HashMap();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = localIterator.next().toString();
-        localHashMap.put(str, paramString.get(str).toString());
-      }
-      return localHashMap;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return null;
   }
   
-  public abstract aslm a();
-  
-  public abstract String a();
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    a("import resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-    localObject = b();
-    String str = a();
-    try
-    {
-      a(str, (String)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      a("importFile null error ");
-    }
-    int i;
-    do
-    {
-      return;
-      i = bbdj.a(paramString1, paramString2);
-    } while (!QLog.isColorLevel());
-    File localFile = new File(paramString2);
-    paramString2 = new StringBuilder().append("restore,quickMove: ").append(paramString1).append(" to ").append(paramString2).append(" status:").append(i).append(" size:");
-    if ((localFile != null) && (localFile.exists())) {}
-    for (paramString1 = Long.valueOf(localFile.length());; paramString1 = "-1")
-    {
-      a(paramString1);
-      return;
-    }
-  }
-  
-  public abstract String b();
+  public void a() {}
 }
 
 

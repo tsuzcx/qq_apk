@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import aitl;
-import aivd;
-import ajkk;
-import ajkl;
-import ajks;
-import ajyc;
+import airx;
+import aitj;
+import aivb;
+import ajki;
+import ajkj;
+import ajkq;
+import ajya;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
-import bfnk;
+import bfob;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,18 +27,18 @@ public class ApolloRenderDriver
   implements Handler.Callback
 {
   int jdField_a_of_type_Int = 20;
-  aivd jdField_a_of_type_Aivd;
-  bfnk jdField_a_of_type_Bfnk;
+  aivb jdField_a_of_type_Aivb;
+  bfob jdField_a_of_type_Bfob;
   public ApolloEngine a;
   private ApolloRenderDriver.RenderRunnable jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver$RenderRunnable;
-  private WeakReference<aitl> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<aitj> jdField_a_of_type_JavaLangRefWeakReference;
   public AtomicBoolean a;
   public AtomicInteger a;
   ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
   public int b;
   private AtomicBoolean b;
   
-  public ApolloRenderDriver(aivd paramaivd, ApolloEngine paramApolloEngine)
+  public ApolloRenderDriver(aivb paramaivb, ApolloEngine paramApolloEngine)
   {
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -49,10 +49,10 @@ public class ApolloRenderDriver
     if (paramApolloEngine == null) {
       throw new NullPointerException();
     }
-    this.jdField_a_of_type_Aivd = paramaivd;
+    this.jdField_a_of_type_Aivb = paramaivb;
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine = paramApolloEngine;
-    this.jdField_a_of_type_Bfnk = new bfnk(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ajkl.a().a();
+    this.jdField_a_of_type_Bfob = new bfob(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ajkj.a().a();
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver$RenderRunnable = new ApolloRenderDriver.RenderRunnable(this);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
@@ -78,7 +78,7 @@ public class ApolloRenderDriver
     if (TextUtils.isEmpty(paramString)) {
       str = ApolloUtil.f(paramInt1);
     }
-    paramString = ajkk.a(str, paramInt2, paramFloat1, paramFloat2, paramFloat3);
+    paramString = ajki.a(str, paramInt2, paramFloat1, paramFloat2, paramFloat3);
     if (TextUtils.isEmpty(paramString)) {
       return 1;
     }
@@ -95,7 +95,7 @@ public class ApolloRenderDriver
     if (TextUtils.isEmpty(paramString1)) {
       str = ApolloUtil.f(paramInt1);
     }
-    paramString1 = ajkk.a(str, paramInt2, paramInt3, paramString2, paramString3);
+    paramString1 = ajki.a(str, paramInt2, paramInt3, paramString2, paramString3);
     if (paramString1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -107,7 +107,7 @@ public class ApolloRenderDriver
     return 0;
   }
   
-  public int a(int paramInt, String paramString, int[] paramArrayOfInt, ajks paramajks)
+  public int a(int paramInt, String paramString, int[] paramArrayOfInt, ajkq paramajkq)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ApolloRenderDriver", 2, "[onChangeDress], roleType:" + paramInt);
@@ -120,9 +120,9 @@ public class ApolloRenderDriver
       if (TextUtils.isEmpty(paramString)) {
         str = ApolloUtil.f(paramInt);
       }
-      paramString = ajkk.a(str, paramArrayOfInt);
+      paramString = ajki.a(str, paramArrayOfInt);
     } while (paramString == null);
-    a(new ApolloRenderDriver.5(this, paramString, paramajks));
+    a(new ApolloRenderDriver.5(this, paramString, paramajkq));
     return 0;
   }
   
@@ -131,12 +131,12 @@ public class ApolloRenderDriver
     if (QLog.isColorLevel()) {
       QLog.d("ApolloRenderDriver", 2, "[startLoop]. mIsLoopStart:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
     }
-    if ((this.jdField_a_of_type_Bfnk != null) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    if ((this.jdField_a_of_type_Bfob != null) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(15);
+      this.jdField_a_of_type_Bfob.removeMessages(15);
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
-        QLog.d("ApolloRenderDriver", 2, "[startLoop]. ticker Loop: gameId=" + this.jdField_b_of_type_Int + " view=" + this.jdField_a_of_type_Aivd);
+        QLog.d("ApolloRenderDriver", 2, "[startLoop]. ticker Loop: gameId=" + this.jdField_b_of_type_Int + " view=" + this.jdField_a_of_type_Aivb);
         a(new ApolloRenderDriver.2(this));
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       }
@@ -152,39 +152,39 @@ public class ApolloRenderDriver
     if (TextUtils.isEmpty(paramString1)) {
       str = ApolloUtil.f(paramInt);
     }
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, ajkk.a(str, paramString2), this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, ajki.a(str, paramString2), this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine));
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Bfnk != null)
+    if (this.jdField_a_of_type_Bfob != null)
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(15);
-      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(15, paramLong);
+      this.jdField_a_of_type_Bfob.removeMessages(15);
+      this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(15, paramLong);
     }
   }
   
-  public void a(aitl paramaitl)
+  public void a(aitj paramaitj)
   {
-    if (paramaitl == null) {
+    if (paramaitj == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaitl);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaitj);
   }
   
   public void a(IApolloRunnableTask paramIApolloRunnableTask)
   {
-    if ((paramIApolloRunnableTask == null) || (this.jdField_a_of_type_Aivd == null)) {}
+    if ((paramIApolloRunnableTask == null) || (this.jdField_a_of_type_Aivb == null)) {}
     do
     {
       return;
-      if ((this.jdField_a_of_type_Aivd instanceof ApolloSurfaceView))
+      if ((this.jdField_a_of_type_Aivb instanceof ApolloSurfaceView))
       {
-        ((ApolloSurfaceView)this.jdField_a_of_type_Aivd).runRenderTask(paramIApolloRunnableTask);
+        ((ApolloSurfaceView)this.jdField_a_of_type_Aivb).runRenderTask(paramIApolloRunnableTask);
         return;
       }
-    } while (!(this.jdField_a_of_type_Aivd instanceof ApolloTextureView));
-    ((ApolloTextureView)this.jdField_a_of_type_Aivd).queueEvent(paramIApolloRunnableTask);
+    } while (!(this.jdField_a_of_type_Aivb instanceof ApolloTextureView));
+    ((ApolloTextureView)this.jdField_a_of_type_Aivb).queueEvent(paramIApolloRunnableTask);
   }
   
   public void a(String paramString)
@@ -218,11 +218,11 @@ public class ApolloRenderDriver
       }
       if ((1 == paramInt1) && (localObject1 != null))
       {
-        localObject2 = (airz)((QQAppInterface)localObject1).getManager(153);
+        localObject2 = (airx)((QQAppInterface)localObject1).getManager(153);
         if (paramString3.equals(((QQAppInterface)localObject1).getCurrentAccountUin()))
         {
-          paramString2 = ajyc.a(2131700507);
-          if ((localObject2 != null) && (((airz)localObject2).a(paramString3))) {
+          paramString2 = ajya.a(2131700518);
+          if ((localObject2 != null) && (((airx)localObject2).a(paramString3))) {
             if ((1 == paramInt2) && ((ApolloUtil.e(0, 28)) || (ApolloUtil.e(paramInt3, 28)))) {
               paramInt1 = 28;
             }
@@ -247,7 +247,7 @@ public class ApolloRenderDriver
               continue;
               paramInt1 = 25;
               continue;
-              if ((localObject2 != null) && (((airz)localObject2).a(paramString3)))
+              if ((localObject2 != null) && (((airx)localObject2).a(paramString3)))
               {
                 if ((1 == paramInt2) && ((ApolloUtil.e(0, 30)) || (ApolloUtil.e(paramInt3, 30))))
                 {
@@ -325,7 +325,7 @@ public class ApolloRenderDriver
           if (TextUtils.isEmpty(paramString1)) {
             paramString3 = ApolloUtil.f(paramInt2);
           }
-          paramString1 = ajkk.a(paramString3, paramInt1, paramInt3, paramString2);
+          paramString1 = ajki.a(paramString3, paramInt1, paramInt3, paramString2);
           if (TextUtils.isEmpty(paramString1))
           {
             if (QLog.isColorLevel()) {
@@ -347,9 +347,9 @@ public class ApolloRenderDriver
     if (QLog.isColorLevel()) {
       QLog.d("ApolloRenderDriver", 2, "[stopLoop].");
     }
-    if ((this.jdField_a_of_type_Bfnk != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    if ((this.jdField_a_of_type_Bfob != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
     {
-      this.jdField_a_of_type_Bfnk.removeMessages(15);
+      this.jdField_a_of_type_Bfob.removeMessages(15);
       a(new ApolloRenderDriver.3(this));
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
@@ -369,10 +369,10 @@ public class ApolloRenderDriver
       QLog.d("ApolloRenderDriver", 2, "[onDestroy]");
     }
     b();
-    if (this.jdField_a_of_type_Bfnk != null)
+    if (this.jdField_a_of_type_Bfob != null)
     {
-      this.jdField_a_of_type_Bfnk.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Bfnk = null;
+      this.jdField_a_of_type_Bfob.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Bfob = null;
       if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       }

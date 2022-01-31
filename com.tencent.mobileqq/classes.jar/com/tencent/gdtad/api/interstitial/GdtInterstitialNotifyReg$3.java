@@ -2,12 +2,12 @@ package com.tencent.gdtad.api.interstitial;
 
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
-import yum;
+import yuj;
 
 public class GdtInterstitialNotifyReg$3
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$3(yum paramyum, AdHttp.Params paramParams) {}
+  public GdtInterstitialNotifyReg$3(yuj paramyuj, AdHttp.Params paramParams) {}
   
   public void run()
   {

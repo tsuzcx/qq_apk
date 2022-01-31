@@ -1,53 +1,26 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import mqq.app.QQPermissionCallback;
 
-public class axoe
-  extends URLDrawableParams
+public final class axoe
+  implements QQPermissionCallback
 {
-  private ProtocolDownloader a;
+  public axoe(axof paramaxof, Activity paramActivity) {}
   
-  public axoe(MobileQQ paramMobileQQ)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramMobileQQ);
+    bbdj.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Axof);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new ayrn();
+    if (this.jdField_a_of_type_Axof != null) {
+      this.jdField_a_of_type_Axof.a();
     }
-    return this.a;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bbqj.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846920);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axoe
  * JD-Core Version:    0.7.0.1
  */

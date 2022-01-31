@@ -1,79 +1,36 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class utl
-  extends QQUIEventReceiver<uth, tjm>
+  implements syq<tms, tmt>
 {
-  public utl(uth paramuth)
-  {
-    super(paramuth);
-  }
+  utl(utk paramutk, boolean paramBoolean) {}
   
-  public void a(uth paramuth, tjm paramtjm)
+  public void a(@NonNull tms paramtms, @Nullable tmt arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (!TextUtils.equals(paramtjm.jdField_a_of_type_JavaLangString, paramuth.c)) {}
-    do
+    if (utk.a(this.jdField_a_of_type_Utk).get())
     {
-      do
-      {
-        return;
-        paramuth.b(paramuth.b);
-      } while ((paramtjm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (!paramtjm.e));
-      if (paramtjm.c) {
-        paramuth.a.clear();
-      }
-      paramtjm = paramtjm.jdField_a_of_type_JavaUtilList;
-    } while (paramtjm == null);
-    paramtjm = paramtjm.iterator();
-    label72:
-    VideoCollectionItem localVideoCollectionItem;
-    Object localObject1;
-    ArrayList localArrayList;
-    Object localObject2;
-    if (paramtjm.hasNext())
-    {
-      localVideoCollectionItem = (VideoCollectionItem)paramtjm.next();
-      localObject1 = new ArrayList();
-      localArrayList = new ArrayList(localVideoCollectionItem.videoVidList);
-      localObject2 = new ArrayList();
-      Iterator localIterator = localVideoCollectionItem.videoItemList.iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject2).add(((StoryVideoItem)localIterator.next()).mVid);
-      }
-      localArrayList.removeAll((Collection)localObject2);
+      ved.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
+      return;
     }
-    int j;
-    for (int i = 0;; i = j)
+    ved.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
+    paramtms = new utn(this.jdField_a_of_type_Utk, paramErrorMessage);
+    paramtms.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()))
     {
-      if (i < localArrayList.size())
-      {
-        j = Math.min(localArrayList.size(), i + 20);
-        if (i < j) {}
-      }
-      else
-      {
-        localObject1 = new tje((List)localObject1);
-        ((tje)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
-        paramuth.a.put(localVideoCollectionItem.collectionId, localObject1);
-        break label72;
-        break;
-      }
-      localObject2 = localArrayList.subList(i, j);
-      ((List)localObject1).add(paramuth.a(localVideoCollectionItem.collectionId, (List)localObject2));
+      stb.a().dispatch(paramtms);
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tjm.class;
+    paramtms.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    ((tcm)tcz.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+    synchronized (this.jdField_a_of_type_Utk)
+    {
+      stb.a().dispatch(paramtms);
+      return;
+    }
   }
 }
 

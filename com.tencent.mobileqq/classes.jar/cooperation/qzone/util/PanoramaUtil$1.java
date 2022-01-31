@@ -1,15 +1,15 @@
 package cooperation.qzone.util;
 
 import android.text.TextUtils;
-import axql;
-import bhod;
+import axqn;
+import bhou;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import java.util.Properties;
 
 public class PanoramaUtil$1
   implements Runnable
 {
-  public PanoramaUtil$1(bhod parambhod, String paramString1, String paramString2, int paramInt) {}
+  public PanoramaUtil$1(bhou parambhou, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PanoramaUtil$1
     {
       Properties localProperties = new Properties();
       localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
-      axql.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
+      axqn.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
     }
   }
 }

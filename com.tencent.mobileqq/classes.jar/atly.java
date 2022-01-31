@@ -1,14 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.10.1;
 
-class atly
+public class atly
   implements View.OnClickListener
 {
-  atly(atlu paramatlu) {}
+  atly(atlw paramatlw) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
+    this.a.f(paramView);
+    new atix().h("video").i("playpage_fw_click").a().a(this.a.a);
+    ThreadManagerV2.excute(new PlayOperationViewModel.10.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
   }
 }
 

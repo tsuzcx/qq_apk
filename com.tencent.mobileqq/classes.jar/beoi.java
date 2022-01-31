@@ -1,20 +1,9 @@
-import android.view.MotionEvent;
-
-public abstract interface beoi
+public class beoi
 {
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(MotionEvent paramMotionEvent);
-  
-  public abstract void b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void c(MotionEvent paramMotionEvent);
-  
-  public abstract void c(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
-  
-  public abstract void d(MotionEvent paramMotionEvent);
+  public static void a(String paramString, beok parambeok)
+  {
+    new beoj(parambeok).execute(new String[] { paramString });
+  }
 }
 
 

@@ -1,11 +1,33 @@
 class vgf
-  implements vnh
+  implements vop
 {
-  vgf(vgd paramvgd) {}
+  vgf(vga paramvga) {}
   
-  public void a(vps paramvps)
+  public void a()
   {
-    this.a.a.a(6);
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    vga.a(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    vhm localvhm = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localvhm.a("download_face", 0, 0, new String[] { str, paramString });
+      vej.b("0X80075DD");
+      if (!((vls)tcz.a(8)).a(paramString, true)) {
+        ved.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

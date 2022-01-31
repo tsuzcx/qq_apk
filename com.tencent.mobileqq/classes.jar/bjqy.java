@@ -1,18 +1,16 @@
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
+import dov.com.qq.im.ptv.LightWeightSoDownloadUnit.4;
 
-class bjqy
-  extends bdsm
+public class bjqy
+  implements DialogInterface.OnCancelListener
 {
-  bjqy(bjqx parambjqx) {}
+  public bjqy(LightWeightSoDownloadUnit.4 param4) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ste.a().dispatch(new bjqz(1, true));
-  }
-  
-  public void b()
-  {
-    ste.a().dispatch(new bjqz(1, false));
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import amgw;
+import amgv;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.KeyEvent;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract interface IAppUIProxy
-  extends amgw
+  extends amgv
 {
   public abstract void completeLoading(BaseActivity paramBaseActivity);
   

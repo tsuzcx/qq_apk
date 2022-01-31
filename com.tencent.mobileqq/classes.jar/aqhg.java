@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.widget.Switch;
 
 public class aqhg
-  extends akup
+  implements DialogInterface.OnClickListener
 {
-  public aqhg(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aqhg(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    if (paramInt != 0)
+    boolean bool = true;
+    if (paramInt == 1)
     {
-      bcpw.a(this.a.a, 1, ajyc.a(2131702239), 1).a();
-      this.a.e();
-      return;
+      paramDialogInterface = this.a;
+      if (!AppletsSettingFragment.a(this.a))
+      {
+        AppletsSettingFragment.a(paramDialogInterface, bool);
+        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+        this.a.a.cancel();
+      }
     }
-    this.a.a(paramSosoLbsInfo);
+    while (paramInt != 0) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
+    }
+    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
+    this.a.a.cancel();
   }
 }
 

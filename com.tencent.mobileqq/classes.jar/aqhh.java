@@ -1,24 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
-public class aqhh
-  implements View.OnClickListener
+public abstract interface aqhh
 {
-  public aqhh(CommonTabFragment paramCommonTabFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
-    do
-    {
-      return;
-      paramView = this.a.a.mWebview.getPluginEngine();
-    } while (paramView == null);
-    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
-  }
+  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem);
 }
 
 

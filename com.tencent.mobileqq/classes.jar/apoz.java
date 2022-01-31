@@ -4,16 +4,12 @@ import android.view.View.OnClickListener;
 class apoz
   implements View.OnClickListener
 {
-  apoz(apox paramapox) {}
+  apoz(apow paramapow) {}
   
   public void onClick(View paramView)
   {
-    if (apox.a(this.a))
-    {
-      apox.a(this.a);
-      return;
-    }
-    apox.b(this.a);
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
+    this.a.b = true;
   }
 }
 

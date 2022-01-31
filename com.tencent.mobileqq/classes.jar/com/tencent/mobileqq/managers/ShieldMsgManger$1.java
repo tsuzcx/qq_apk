@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import aser;
+import aset;
 
 public class ShieldMsgManger$1
   implements Runnable
 {
-  public ShieldMsgManger$1(aser paramaser) {}
+  public ShieldMsgManger$1(aset paramaset) {}
   
   public void run()
   {
-    aser.a(this.this$0);
+    aset.a(this.this$0);
   }
 }
 

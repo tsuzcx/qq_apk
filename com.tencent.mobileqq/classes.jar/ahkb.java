@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import android.view.View;
 
 public class ahkb
-  implements bfos
 {
-  public ahkb(AppletsFolderManager.2 param2) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  public void onDismiss()
+  public ahkb(int paramInt1, int paramInt2)
   {
-    ahjz.a(this.a.this$0, false);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt >= 2;
+  }
+  
+  public boolean a()
+  {
+    return this.b >= 2;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,30 +1,6 @@
-import android.text.Editable;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import java.util.Comparator;
-
-public class ogj
-  implements Comparator<BiuNicknameSpan>
+public abstract interface ogj
 {
-  private Editable jdField_a_of_type_AndroidTextEditable;
-  
-  public ogj(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, Editable paramEditable)
-  {
-    this.jdField_a_of_type_AndroidTextEditable = paramEditable;
-  }
-  
-  public int a(BiuNicknameSpan paramBiuNicknameSpan1, BiuNicknameSpan paramBiuNicknameSpan2)
-  {
-    int i = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan1);
-    int j = this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramBiuNicknameSpan2);
-    if (i > j) {
-      return 1;
-    }
-    if (i < j) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void onViewState(boolean paramBoolean, String paramString);
 }
 
 

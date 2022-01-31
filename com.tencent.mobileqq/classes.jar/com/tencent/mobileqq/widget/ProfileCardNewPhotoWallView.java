@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bcou;
+import bcpj;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -86,7 +86,7 @@ public class ProfileCardNewPhotoWallView
   
   protected View a()
   {
-    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561000, null);
+    return this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560999, null);
   }
   
   public ViewGroup a(int paramInt1, int paramInt2, int paramInt3)
@@ -159,9 +159,9 @@ public class ProfileCardNewPhotoWallView
       localStateListDrawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(0));
       ((ViewGroup)localObject4).setLayoutParams(localLayoutParams);
       localURLImageView.setImageDrawable((Drawable)localObject1);
-      localURLImageView.setContentDescription(String.format(ajyc.a(2131708458), new Object[] { Integer.valueOf(paramInt3 + 1) }));
+      localURLImageView.setContentDescription(String.format(ajya.a(2131708469), new Object[] { Integer.valueOf(paramInt3 + 1) }));
       localView.setBackgroundDrawable(localStateListDrawable);
-      ((ViewGroup)localObject4).setOnClickListener(new bcou(this, localProfilePhotoWall, paramInt3));
+      ((ViewGroup)localObject4).setOnClickListener(new bcpj(this, localProfilePhotoWall, paramInt3));
       return localObject4;
     }
   }

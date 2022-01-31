@@ -1,43 +1,41 @@
+import android.view.Surface;
 import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
+import android.view.SurfaceView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class aiii
-  implements SurfaceHolder.Callback
+  implements bbvr
 {
   public aiii(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void a(bbvo parambbvo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
     }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
+      aptx.a(2131691318);
+    }
+    do
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
+      do
+      {
+        return;
+        bbbf.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bbvo.d(), this.a.jdField_a_of_type_Bbvo.e());
+      } while (this.a.j != 10);
+      parambbvo.a(localSurfaceHolder);
+      this.a.jdField_a_of_type_Int = parambbvo.c();
+    } while (this.a.jdField_a_of_type_Int <= 0);
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
     }
-    if (this.a.jdField_a_of_type_Bbva != null) {
-      this.a.jdField_a_of_type_Bbva.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
   }
 }
 

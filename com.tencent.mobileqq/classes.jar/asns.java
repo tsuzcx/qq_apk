@@ -1,66 +1,132 @@
 import android.text.TextUtils;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 
 public class asns
-  extends asnn
+  extends asnp
 {
-  public static String b = ajsf.aW + "ptt" + File.separator;
-  private static final String c = azaa.a(asoa.jdField_a_of_type_JavaLangString + "ptt" + File.separator);
-  private String d = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
-  private String e = (String)this.jdField_a_of_type_JavaUtilMap.get("uuid");
-  private String f = (String)this.jdField_a_of_type_JavaUtilMap.get("selfuin");
-  
   public asns(MsgBackupResEntity paramMsgBackupResEntity)
   {
     super(paramMsgBackupResEntity);
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if ((TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {
-      a("md5:" + this.d + " mUUID:" + this.e + " mSelfuin:" + this.f);
-    }
   }
   
-  public static String a(String paramString1, String paramString2)
+  public aslo a()
   {
-    return azaa.a(b + paramString2 + File.separator + paramString1);
-  }
-  
-  public aslm a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    String str = a();
-    boolean bool = a(str);
-    if (QLog.isColorLevel()) {
-      a("getResDownloadObject,entity:" + ((MsgBackupResEntity)localObject).toLogString() + " tempPath:" + str + " exist:" + bool);
-    }
-    localObject = new aslm();
-    if (!bool) {}
-    for (bool = true;; bool = false)
+    boolean bool2 = false;
+    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    aslo localaslo = new aslo();
+    String str1 = b(localMsgBackupResEntity);
+    if (str1 == null)
     {
-      ((aslm)localObject).jdField_a_of_type_Boolean = bool;
-      ((aslm)localObject).jdField_a_of_type_JavaLangString = str;
-      return localObject;
+      a("getResDownloadObject realPath is null");
+      localaslo.jdField_a_of_type_Boolean = false;
+      return localaslo;
     }
+    String str2 = a(str1);
+    boolean bool3 = a(str2);
+    boolean bool4 = a(str1);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str2 + " exist:" + bool3 + " realPath:" + str1 + " exist:" + bool4);
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!bool4) {
+        bool1 = true;
+      }
+    }
+    localaslo.jdField_a_of_type_Boolean = bool1;
+    localaslo.jdField_a_of_type_JavaLangString = str2;
+    return localaslo;
   }
   
   public String a()
   {
-    return c + this.d + this.e + this.f;
+    String str = b(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
+    if (TextUtils.isEmpty(str))
+    {
+      a("getTempPath realPath is null");
+      return null;
+    }
+    return a(str);
+  }
+  
+  public String a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    String str1 = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilMap.get("isOriginal");
+    int i;
+    if (str2 != null) {
+      if (!str2.equals("0")) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      int j = paramMsgBackupResEntity.msgSubType;
+      if (j == 1) {
+        if (i == 0) {
+          paramMsgBackupResEntity = "chatimg";
+        }
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(str1))
+        {
+          try
+          {
+            paramMsgBackupResEntity = ayoi.d(new URL(paramMsgBackupResEntity, null, str1).toString());
+            return paramMsgBackupResEntity;
+          }
+          catch (MalformedURLException paramMsgBackupResEntity)
+          {
+            paramMsgBackupResEntity.printStackTrace();
+          }
+          i = 0;
+          break;
+          paramMsgBackupResEntity = "chatraw";
+          continue;
+          if (j == 2) {
+            paramMsgBackupResEntity = "chatimg";
+          } else if (j == 3) {
+            paramMsgBackupResEntity = "chatthumb";
+          } else {
+            return null;
+          }
+        }
+      }
+      return null;
+      i = 1;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = paramString.substring(a());
+      paramString = asoc.jdField_a_of_type_JavaLangString + paramString;
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
   public String b()
   {
-    return a(this.d, this.f);
+    return a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
+  }
+  
+  public String b(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return a(paramMsgBackupResEntity);
   }
 }
 

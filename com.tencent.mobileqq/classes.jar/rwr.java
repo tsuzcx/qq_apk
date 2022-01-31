@@ -1,18 +1,22 @@
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import javax.annotation.Nullable;
+import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
+import org.json.JSONObject;
 
 class rwr
-  implements rwq
+  implements qkf
 {
-  public InputStream a(@Nullable InputStream paramInputStream)
+  IJSApiAdapter.OnInovkeCallback a;
+  
+  public rwr(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
   {
-    return paramInputStream;
+    this.a = paramOnInovkeCallback;
   }
   
-  public void a() {}
-  
-  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
+  public void a(JSONObject paramJSONObject)
+  {
+    if (this.a != null) {
+      this.a.callback(paramJSONObject);
+    }
+  }
 }
 
 

@@ -1,22 +1,30 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.List;
 
 public class qes
-  implements AdapterView.OnItemLongClickListener
+  implements bfph
 {
   public qes(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!ReadInJoyDeliverUGCActivity.a(this.a).a().get(paramInt).equals(ReadInJoyDeliverUGCActivity.a(this.a))) {
-      ReadInJoyDeliverUGCActivity.a(this.a).a(paramInt);
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
     }
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    return true;
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      nol.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", onh.e(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
+    }
   }
 }
 

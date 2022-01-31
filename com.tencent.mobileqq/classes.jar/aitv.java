@@ -1,21 +1,31 @@
-import android.view.SurfaceHolder;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aitv
+  implements aiur
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  private int a;
   
-  public String toString()
+  public aitv(int paramInt)
   {
-    StringBuffer localStringBuffer = new StringBuffer("SurfaceCallBackData{");
-    localStringBuffer.append("holder=").append(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    localStringBuffer.append(", format=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", w=").append(this.b);
-    localStringBuffer.append(", h=").append(this.c);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
+  }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
+    {
+      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
+    }
+    return arrayOfEGLConfig[0];
   }
 }
 

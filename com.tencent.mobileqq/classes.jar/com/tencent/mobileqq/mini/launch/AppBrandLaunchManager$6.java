@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.launch;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ class AppBrandLaunchManager$6
   public void run()
   {
     QLog.e("miniapp-process_AppBrandLaunchManager", 1, "启动失败, scene未知" + this.val$appConfig.toString());
-    bcpw.a(AppBrandLaunchManager.access$100(this.this$0), ajyc.a(2131700591), 2000).a();
+    bcql.a(AppBrandLaunchManager.access$100(this.this$0), ajya.a(2131700602), 2000).a();
   }
 }
 

@@ -1,42 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class afrf
-  extends aume
+  implements View.OnClickListener
 {
-  private afrf(PhoneContactFragment paramPhoneContactFragment) {}
+  public afrf(PublicAccountFragment paramPublicAccountFragment) {}
   
-  private void g(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.a.c)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(this.a.b(), paramBoolean, null);
-      }
-      if (paramBoolean) {
-        this.a.c();
-      }
-      this.a.c = false;
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
-    }
-    g(paramBoolean1);
+    abtp.a(this.a.a, null);
   }
 }
 

@@ -6,36 +6,36 @@ import com.tencent.mobileqq.pb.PBField;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ywn;
-import ywy;
-import yxr;
-import yxs;
-import yys;
-import yyt;
-import yyu;
+import ywk;
+import ywv;
+import yxo;
+import yxp;
+import yyp;
+import yyq;
+import yyr;
 
 public class GdtDeviceInfoJsCallHandler$1
   implements Runnable
 {
-  public GdtDeviceInfoJsCallHandler$1(ywy paramywy, WeakReference paramWeakReference, String[] paramArrayOfString, String paramString) {}
+  public GdtDeviceInfoJsCallHandler$1(ywv paramywv, WeakReference paramWeakReference, String[] paramArrayOfString, String paramString) {}
   
   public void run()
   {
     JSONObject localJSONObject2 = null;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((ywn)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null))
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null))
     {
-      yxs.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
+      yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
       return;
     }
     try
     {
       localObject1 = new JSONObject(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-      yxs.b("GdtDeviceInfoJsCallHandler", String.format("handleJsCallRequest %s", new Object[] { ((JSONObject)localObject1).toString() }));
+      yxp.b("GdtDeviceInfoJsCallHandler", String.format("handleJsCallRequest %s", new Object[] { ((JSONObject)localObject1).toString() }));
       localObject1 = ((JSONObject)localObject1).getJSONObject("params").optString("businessIdForAidTicketAndTaidTicket");
-      localObject2 = ((ywn)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getApplicationContext();
-      yyt localyyt = new yyt();
-      localyyt.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = yys.a((Context)localObject2, localyyt);
+      localObject2 = ((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getApplicationContext();
+      yyq localyyq = new yyq();
+      localyyq.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = yyp.a((Context)localObject2, localyyq);
       if (localObject1 == null)
       {
         localObject1 = localJSONObject2;
@@ -55,16 +55,16 @@ public class GdtDeviceInfoJsCallHandler$1
           localJSONObject2.put("deviceInfo", localObject1);
           try
           {
-            ((ywn)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject2.toString() });
+            ((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject2.toString() });
             return;
           }
           catch (Throwable localThrowable1)
           {
-            yxs.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable1);
+            yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable1);
             return;
           }
           localThrowable2 = localThrowable2;
-          yxs.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable2);
+          yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable2);
           JSONObject localJSONObject1 = null;
           continue;
           Object localObject2 = localJSONObject1.a;
@@ -72,7 +72,7 @@ public class GdtDeviceInfoJsCallHandler$1
           if (localObject2 == null) {
             continue;
           }
-          localObject2 = yxr.a((PBField)localObject2);
+          localObject2 = yxo.a((PBField)localObject2);
           localJSONObject1 = localJSONObject2;
           if (localObject2 == null) {
             continue;
@@ -85,11 +85,11 @@ public class GdtDeviceInfoJsCallHandler$1
         }
         catch (JSONException localJSONException)
         {
-          yxs.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localJSONException);
+          yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localJSONException);
           continue;
         }
         label271:
-        yxs.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
+        yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
       }
     }
   }

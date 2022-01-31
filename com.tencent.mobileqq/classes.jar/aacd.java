@@ -1,14 +1,22 @@
-import com.tribe.async.async.JobContext;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tribe.async.async.JobSegment;
 
 class aacd
-  extends JobSegment<asiu, asiu>
+  extends asiz<JobSegment>
 {
-  aacd(aacb paramaacb, String paramString, int paramInt) {}
-  
-  protected void a(JobContext paramJobContext, asiu paramasiu)
+  aacd(aacc paramaacc, JobSegment paramJobSegment)
   {
-    asiz.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new aace(this, this));
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, asiw paramasiw)
+  {
+    if (paramBoolean)
+    {
+      aacc.a(this.a, paramasiw);
+      return;
+    }
+    aacc.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 

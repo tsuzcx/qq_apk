@@ -1,8 +1,134 @@
-import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.RichMsg;
+import tencent.im.msg.im_msg_body.RichText;
+import tencent.im.msg.im_msg_body.Text;
 
-public abstract interface sig
+class sig
+  implements auoq
 {
-  public abstract void a(Uri paramUri, String paramString, int paramInt);
+  sig(sif paramsif, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, akat paramakat, boolean paramBoolean) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor)
+  {
+    MessageForStructing localMessageForStructing;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    for (;;)
+    {
+      try
+      {
+        if (paramauor.jdField_a_of_type_Int != 0) {
+          break label541;
+        }
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForStructing))
+        {
+          localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+          if (localMessageForStructing.richText != null) {
+            break label306;
+          }
+          localObject1 = axaq.a(localMessageForStructing);
+          if (localObject1 == null) {
+            break label283;
+          }
+          localObject2 = ((im_msg_body.RichText)localObject1).elems.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramauor.c);
+          }
+          localObject2 = ((List)localObject2).iterator();
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          localObject3 = (im_msg_body.Elem)((Iterator)localObject2).next();
+          if (((im_msg_body.Elem)localObject3).rich_msg.has())
+          {
+            ((im_msg_body.Elem)localObject3).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramauor.c.getBytes()));
+            ((im_msg_body.Elem)localObject3).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
+            continue;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramauor)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, catch exception", paramauor);
+        }
+        this.jdField_a_of_type_Sif.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      }
+      if ((((im_msg_body.Elem)localObject3).text.has()) && (((im_msg_body.Elem)localObject3).text.str.has()))
+      {
+        String str = ((im_msg_body.Elem)localObject3).text.str.get().toStringUtf8();
+        if (str.length() > 500)
+        {
+          str = str.substring(0, 500);
+          ((im_msg_body.Elem)localObject3).text.str.set(ByteStringMicro.copyFromUtf8(str));
+        }
+      }
+    }
+    localMessageForStructing.richText = ((im_msg_body.RichText)localObject1);
+    for (;;)
+    {
+      label283:
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Akat, this.jdField_a_of_type_Boolean);
+      return;
+      label306:
+      localObject1 = localMessageForStructing.richText.elems.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShareStructLongMessageManager", 2, "current uid is" + paramauor.c);
+      }
+      if ((localObject1 != null) && (sif.b(localMessageForStructing.structingMsg)))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (im_msg_body.Elem)((Iterator)localObject1).next();
+          if (((im_msg_body.Elem)localObject2).rich_msg.has())
+          {
+            ((im_msg_body.Elem)localObject2).rich_msg.bytes_msg_resid.set(ByteStringMicro.copyFrom(paramauor.c.getBytes()));
+            ((im_msg_body.Elem)localObject2).rich_msg.bytes_template_1.set(ByteStringMicro.EMPTY);
+            ((im_msg_body.Elem)localObject2).rich_msg.uint32_service_id.set(localMessageForStructing.structingMsg.mMsgServiceID);
+          }
+          else if ((((im_msg_body.Elem)localObject2).text.has()) && (((im_msg_body.Elem)localObject2).text.str.has()))
+          {
+            localObject3 = ((im_msg_body.Elem)localObject2).text.str.get().toStringUtf8();
+            if (((String)localObject3).length() > 500)
+            {
+              localObject3 = ((String)localObject3).substring(0, 500);
+              ((im_msg_body.Elem)localObject2).text.str.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+            }
+          }
+        }
+      }
+    }
+    label541:
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareStructLongMessageManager", 2, "upload  msg pack failed, result.errStr=" + paramauor.b + ",result.errStr=" + paramauor.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_Sif.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+  }
 }
 
 

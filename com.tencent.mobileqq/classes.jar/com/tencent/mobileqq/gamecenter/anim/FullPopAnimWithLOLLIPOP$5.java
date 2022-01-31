@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import aqrd;
+import aqrf;
 
 public class FullPopAnimWithLOLLIPOP$5
   implements Runnable
 {
-  public FullPopAnimWithLOLLIPOP$5(aqrd paramaqrd) {}
+  public FullPopAnimWithLOLLIPOP$5(aqrf paramaqrf) {}
   
   public void run()
   {
-    aqrd.e(this.this$0);
+    aqrf.e(this.this$0);
   }
 }
 

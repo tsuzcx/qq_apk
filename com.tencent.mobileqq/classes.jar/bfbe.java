@@ -1,21 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.Context;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.4;
 
+@behk(a="PageCreateTask")
 public class bfbe
-  implements DialogInterface.OnClickListener
+  extends bffk
 {
-  public bfbe(AppBrandPageContainer.4 param4) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfbe(Context paramContext, beqm parambeqm)
   {
-    bfgv.a().edit().putBoolean(AppBrandPageContainer.a(this.a.this$0).a().appId + "_debug", this.a.a);
-    this.a.this$0.a(this.a.this$0);
-    bfgs.a(AppBrandPageContainer.a(this.a.this$0));
+    super(paramContext, parambeqm);
+  }
+  
+  public void a()
+  {
+    if (a().getRuntime() == null)
+    {
+      betc.c("ServiceInitTask", "runtime is null!");
+      c();
+      return;
+    }
+    behs localbehs = a().getRuntime().a();
+    if (!(localbehs instanceof AppBrandPageContainer))
+    {
+      betc.c("ServiceInitTask", "PageContainer type is incorrect! page=" + localbehs);
+      c();
+      return;
+    }
+    try
+    {
+      ((AppBrandPageContainer)localbehs).a(null);
+      c();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      betc.d("ServiceInitTask", "pageContainer init exception!", localThrowable);
+      a(10, "Page创建失败");
+    }
   }
 }
 

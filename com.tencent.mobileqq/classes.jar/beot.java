@@ -1,71 +1,90 @@
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.ipc.AppBrandProxy;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.2;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beot
+  implements VideoPlayerProxy.OnVideoPreparedListener
 {
-  private static volatile beot jdField_a_of_type_Beot;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private AppBrandProxy jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy;
+  public beot(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public static beot a()
+  public void onVideoPrepared(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    if (jdField_a_of_type_Beot == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Beot == null) {
-        jdField_a_of_type_Beot = new beot();
-      }
-      return jdField_a_of_type_Beot;
-    }
-  }
-  
-  /* Error */
-  public void a(AppBrandProxy paramAppBrandProxy)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	beot:jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy	Lcom/tencent/qqmini/sdk/ipc/AppBrandProxy;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: aload_1
-    //   16: putfield 23	beot:jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy	Lcom/tencent/qqmini/sdk/ipc/AppBrandProxy;
-    //   19: goto -8 -> 11
-    //   22: astore_1
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_1
-    //   26: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	27	0	this	beot
-    //   0	27	1	paramAppBrandProxy	AppBrandProxy
-    //   6	2	2	localAppBrandProxy	AppBrandProxy
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	22	finally
-    //   14	19	22	finally
-  }
-  
-  public void a(String paramString, Bundle paramBundle, bepd parambepd)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkIpcAppBrandProxy.sendCmd(paramString, paramBundle, parambepd);
-      }
+    boolean bool = true;
+    if (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    finally
+    if (!this.a.jdField_a_of_type_Behp.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "waiting");
+    }
+    for (;;)
     {
-      paramString = finally;
-      throw paramString;
+      MiniAppVideoPlayer.b(this.a, false);
+      MiniAppVideoPlayer.b(this.a, false);
+      this.a.jdField_a_of_type_Boolean = true;
+      if (!MiniAppVideoPlayer.a(this.a)) {
+        break;
+      }
+      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
+        MiniAppVideoPlayer.a(this.a).pause();
+      }
+      bejn.c().post(new MiniAppVideoPlayer.7.1(this));
+      MiniAppVideoPlayer.c(this.a, false);
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Behp.a("onVideoWaiting", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
+    MiniAppVideoPlayer.a(this.a).start();
+    this.a.postDelayed(new MiniAppVideoPlayer.7.2(this), 200L);
+    if (!this.a.jdField_a_of_type_Behp.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
+    {
+      MiniAppVideoPlayer.a(this.a, "play");
+      MiniAppVideoPlayer.e(this.a);
+      bejn.c().post(new MiniAppVideoPlayer.7.3(this));
+      paramVideoPlayerProxy = new StringBuilder().append("onVideoPrepared: ").append(MiniAppVideoPlayer.a(this.a).getDuration()).append(" ").append(MiniAppVideoPlayer.a(this.a).getCurrentPostion()).append(" ");
+      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+        break label464;
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        Log.i("MiniAppVideoPlayer", bool);
+        MiniAppVideoPlayer.a(this.a, 200L);
+        return;
+        try
+        {
+          paramVideoPlayerProxy = new JSONObject();
+          paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+          paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+          this.a.jdField_a_of_type_Behp.a("onVideoPlay", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+          betc.a("MiniAppVideoPlayer", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + paramVideoPlayerProxy.toString());
+        }
+        catch (JSONException paramVideoPlayerProxy)
+        {
+          paramVideoPlayerProxy.printStackTrace();
+        }
+      }
+      break;
+      label464:
+      bool = false;
     }
   }
 }

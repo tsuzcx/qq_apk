@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
-import axqw;
-import bcpw;
+import axqy;
+import bcql;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -43,15 +43,15 @@ class PressToChangeVoicePanel$3
     PressToChangeVoicePanel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, "0X8006386");
     if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null)
     {
-      bcpw.a(BaseApplication.getContext(), 2131698458, 0).a();
+      bcql.a(BaseApplication.getContext(), 2131698468, 0).a();
       return;
     }
-    aytl.a = SystemClock.uptimeMillis();
+    aytn.a = SystemClock.uptimeMillis();
     int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getTitleBarHeight();
     Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
     if (!QQRecorder.d())
     {
-      bcpw.a(BaseApplication.getContext(), 2131719049, 0).b(i);
+      bcql.a(BaseApplication.getContext(), 2131719060, 0).b(i);
       label173:
       if (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e) {
         break label623;
@@ -60,7 +60,7 @@ class PressToChangeVoicePanel$3
     label623:
     for (i = 1;; i = 2)
     {
-      axqw.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005472", "0X8005472", i, 0, "", "", "", "8.2.8");
+      axqy.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005472", "0X8005472", i, 0, "", "", "", "8.3.0");
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel == null) {
         break;
       }
@@ -68,12 +68,12 @@ class PressToChangeVoicePanel$3
       return;
       if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
       {
-        bcpw.a(BaseApplication.getContext(), 2131693599, 0).b(i);
+        bcql.a(BaseApplication.getContext(), 2131693600, 0).b(i);
         break label173;
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
       {
-        bcpw.a(BaseApplication.getContext(), 2131695521, 0).a();
+        bcql.a(BaseApplication.getContext(), 2131695522, 0).a();
         break label173;
       }
       if (AudioHelper.b(1))

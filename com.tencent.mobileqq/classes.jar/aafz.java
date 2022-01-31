@@ -1,15 +1,70 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aafz
-  implements View.OnClickListener
+  implements bfph
 {
+  int jdField_a_of_type_Int = -1;
+  
   public aafz(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Bfpc.dismiss();
+      }
+      switch (paramInt)
+      {
+      default: 
+      case 0: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
+          }
+        }
+      case 1: 
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+          if (this.jdField_a_of_type_Int < 0) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+          return;
+        }
+        catch (Throwable paramView)
+        {
+          for (;;)
+          {
+            paramView.printStackTrace();
+            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

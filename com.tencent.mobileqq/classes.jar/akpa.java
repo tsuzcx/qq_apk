@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class akpa
-  implements Comparator<MessageRecord>
+public class akpa
 {
-  akpa(akow paramakow) {}
+  public boolean a;
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public akpa(akov paramakov)
   {
-    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

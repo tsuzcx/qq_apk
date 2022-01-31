@@ -1,13 +1,16 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.METHOD})
-public @interface bhgi
+public class bhgi
+  implements DialogInterface.OnCancelListener
 {
-  String a();
+  public bhgi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.getPlayMode();
+  }
 }
 
 

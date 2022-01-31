@@ -15,13 +15,13 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import audn;
-import audo;
 import audp;
 import audq;
 import audr;
 import auds;
 import audt;
+import audu;
+import audv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,17 +36,17 @@ public class ScanOcrView
   Context jdField_a_of_type_AndroidContentContext;
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler = new audn(this);
-  public audt a;
+  Handler jdField_a_of_type_AndroidOsHandler = new audp(this);
+  public audv a;
   public boolean a;
   int jdField_b_of_type_Int;
   AnimatorSet jdField_b_of_type_AndroidAnimationAnimatorSet;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  audt jdField_b_of_type_Audt;
+  audv jdField_b_of_type_Audv;
   public boolean b;
   int jdField_c_of_type_Int;
   Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  audt jdField_c_of_type_Audt;
+  audv jdField_c_of_type_Audv;
   boolean jdField_c_of_type_Boolean = false;
   int d;
   int e;
@@ -85,7 +85,7 @@ public class ScanOcrView
     return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  private audt a()
+  private audv a()
   {
     int i1 = a(200.0F, getResources());
     int i2 = a(200.0F, getResources());
@@ -98,19 +98,19 @@ public class ScanOcrView
     localRect.top = (i3 - i2 / 2);
     localRect.right = (localRect.left + i1);
     localRect.bottom = (localRect.top + i2);
-    audt localaudt = new audt();
-    localaudt.jdField_b_of_type_AndroidGraphicsRect = localRect;
-    localaudt.jdField_a_of_type_Int = i1;
-    localaudt.jdField_b_of_type_Int = i2;
-    localaudt.jdField_c_of_type_AndroidGraphicsRect = new Rect(localRect);
-    localaudt.e = 0;
+    audv localaudv = new audv();
+    localaudv.jdField_b_of_type_AndroidGraphicsRect = localRect;
+    localaudv.jdField_a_of_type_Int = i1;
+    localaudv.jdField_b_of_type_Int = i2;
+    localaudv.jdField_c_of_type_AndroidGraphicsRect = new Rect(localRect);
+    localaudv.e = 0;
     if (QLog.isColorLevel()) {
-      QLog.i("ScanOcrView", 2, "generateScanRectHoldAniParam, \n" + localaudt);
+      QLog.i("ScanOcrView", 2, "generateScanRectHoldAniParam, \n" + localaudv);
     }
-    return localaudt;
+    return localaudv;
   }
   
-  private audt a(int paramInt, audt paramaudt)
+  private audv a(int paramInt, audv paramaudv)
   {
     int i1 = a(200.0F, getResources());
     int i2 = a(100.0F, getResources());
@@ -129,7 +129,7 @@ public class ScanOcrView
       ((List)localObject2).add(Integer.valueOf(i1));
       i1 += 1;
     }
-    if ((paramInt == 0) || (paramaudt == null)) {
+    if ((paramInt == 0) || (paramaudv == null)) {
       i1 = ((Random)localObject1).nextInt(2);
     }
     for (;;)
@@ -144,7 +144,7 @@ public class ScanOcrView
         i9 = (i9 - i8) / 2;
         i1 = i8 + i9 * i2;
         i8 = i9 + i1;
-        paramaudt = new Rect(i6, i1, i7, i8);
+        paramaudv = new Rect(i6, i1, i7, i8);
         i9 = ((Random)localObject1).nextInt(i7);
         int i10 = ((Random)localObject1).nextInt(i8);
         localObject1 = new Rect();
@@ -152,24 +152,24 @@ public class ScanOcrView
         ((Rect)localObject1).top = (i10 % (i8 - i1 + 1) + i1 - i3 / 2);
         ((Rect)localObject1).right = (((Rect)localObject1).left + i3);
         ((Rect)localObject1).bottom = (((Rect)localObject1).top + i3);
-        localObject2 = new audt();
-        ((audt)localObject2).jdField_c_of_type_Int = 500;
-        ((audt)localObject2).d = 700;
-        if (((audt)localObject2).d < 0) {
-          ((audt)localObject2).d = 0;
+        localObject2 = new audv();
+        ((audv)localObject2).jdField_c_of_type_Int = 500;
+        ((audv)localObject2).d = 700;
+        if (((audv)localObject2).d < 0) {
+          ((audv)localObject2).d = 0;
         }
-        ((audt)localObject2).jdField_a_of_type_Int = i3;
-        ((audt)localObject2).jdField_b_of_type_Int = i3;
-        ((audt)localObject2).jdField_b_of_type_AndroidGraphicsRect = ((Rect)localObject1);
-        ((audt)localObject2).jdField_c_of_type_AndroidGraphicsRect = new Rect((Rect)localObject1);
-        ((audt)localObject2).e = 0;
-        ((audt)localObject2).jdField_a_of_type_AndroidGraphicsRect = paramaudt;
-        ((audt)localObject2).f = i2;
+        ((audv)localObject2).jdField_a_of_type_Int = i3;
+        ((audv)localObject2).jdField_b_of_type_Int = i3;
+        ((audv)localObject2).jdField_b_of_type_AndroidGraphicsRect = ((Rect)localObject1);
+        ((audv)localObject2).jdField_c_of_type_AndroidGraphicsRect = new Rect((Rect)localObject1);
+        ((audv)localObject2).e = 0;
+        ((audv)localObject2).jdField_a_of_type_AndroidGraphicsRect = paramaudv;
+        ((audv)localObject2).f = i2;
         if (QLog.isColorLevel()) {
           QLog.i("ScanOcrView", 2, "generateScanRectAniParam, hasDoneCnt=" + paramInt + "," + i4 + "*" + i5 + "\n" + localObject2);
         }
         return localObject2;
-        ((List)localObject2).remove(Integer.valueOf(paramaudt.f));
+        ((List)localObject2).remove(Integer.valueOf(paramaudv.f));
         if (((List)localObject2).size() <= 0) {
           break label554;
         }
@@ -190,18 +190,18 @@ public class ScanOcrView
     if (paramInt == 2) {
       return;
     }
-    this.jdField_c_of_type_Audt = this.jdField_a_of_type_Audt;
-    this.jdField_a_of_type_Audt = a(paramInt, this.jdField_c_of_type_Audt);
+    this.jdField_c_of_type_Audv = this.jdField_a_of_type_Audv;
+    this.jdField_a_of_type_Audv = a(paramInt, this.jdField_c_of_type_Audv);
     ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 1.1F, 1.0F });
-    localValueAnimator1.addUpdateListener(new audo(this));
+    localValueAnimator1.addUpdateListener(new audq(this));
     localValueAnimator1.setDuration(200L);
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 255, 0 });
-    localValueAnimator2.addUpdateListener(new audp(this));
+    localValueAnimator2.addUpdateListener(new audr(this));
     localValueAnimator2.setDuration(200L);
-    localValueAnimator2.addListener(new audq(this, paramInt));
-    int i1 = this.jdField_a_of_type_Audt.d;
+    localValueAnimator2.addListener(new auds(this, paramInt));
+    int i1 = this.jdField_a_of_type_Audv.d;
     if (paramInt == 0) {
-      i1 = this.jdField_a_of_type_Audt.jdField_c_of_type_Int;
+      i1 = this.jdField_a_of_type_Audv.jdField_c_of_type_Int;
     }
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
@@ -213,9 +213,9 @@ public class ScanOcrView
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844783);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844782);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844784);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844784);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844783);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844785);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
     this.jdField_c_of_type_Int = a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -242,13 +242,13 @@ public class ScanOcrView
     if (QLog.isColorLevel()) {
       QLog.i("ScanOcrView", 2, "realPlayScanRectHoldAnimation, ,mScanRectHoldPlaying=" + this.jdField_c_of_type_Boolean + ",mPlaying=" + this.jdField_a_of_type_Boolean);
     }
-    this.jdField_b_of_type_Audt = a();
+    this.jdField_b_of_type_Audv = a();
     ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 1.1F, 1.0F });
-    Object localObject = this.jdField_b_of_type_Audt;
-    localValueAnimator1.addUpdateListener(new audr(this, (audt)localObject));
+    Object localObject = this.jdField_b_of_type_Audv;
+    localValueAnimator1.addUpdateListener(new audt(this, (audv)localObject));
     localValueAnimator1.setDuration(200L);
     ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { 255, 0 });
-    localValueAnimator2.addUpdateListener(new auds(this, (audt)localObject));
+    localValueAnimator2.addUpdateListener(new audu(this, (audv)localObject));
     localValueAnimator2.setDuration(100L);
     localValueAnimator2.setRepeatCount(3);
     localValueAnimator2.setRepeatMode(2);
@@ -389,17 +389,17 @@ public class ScanOcrView
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       invalidate();
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Audt != null))
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Audv != null))
       {
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_Audt.e);
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_Audv.e);
+        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.bottom);
         this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
-      if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Audt == null)) {
+      if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Audv == null)) {
         break;
       }
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Audt.e);
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Audt.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Audv.e);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_Audv.jdField_c_of_type_AndroidGraphicsRect.bottom);
       this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       return;
       label403:

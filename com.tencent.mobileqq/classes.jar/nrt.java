@@ -1,74 +1,52 @@
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class nrt
 {
-  public int a;
-  public String a;
-  public ArrayList<nru> a;
-  
-  public nrt()
+  public static nrq a()
   {
-    this.jdField_a_of_type_JavaLangString = "#FFFFFF";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    nrq localnrq2 = nrs.a();
+    nrq localnrq1 = localnrq2;
+    if (localnrq2 == null) {
+      localnrq1 = new nrq();
+    }
+    return localnrq1;
   }
   
-  public static nrt a(String paramString)
+  public static nrr a(int paramInt)
   {
-    nrt localnrt = new nrt();
-    if (!bbjw.a(paramString)) {}
-    try
+    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-      paramString = new JSONObject(paramString);
-      localnrt.jdField_a_of_type_Int = paramString.optInt("tab_switch");
-      localnrt.jdField_a_of_type_JavaLangString = paramString.optString("tab_background", "#FFFFFF");
-      paramString = paramString.optJSONArray("tabs");
-      if ((paramString != null) && (paramString.length() > 0))
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ArrayList localArrayList = new ArrayList(paramString.length());
-        int i = 0;
-        while (i < paramString.length())
-        {
-          JSONObject localJSONObject = paramString.optJSONObject(i);
-          nru localnru = new nru();
-          localnru.jdField_a_of_type_Int = localJSONObject.optInt("tabid");
-          localnru.c = localJSONObject.optString("icon_normal");
-          localnru.d = localJSONObject.optString("icon_selected");
-          localnru.e = localJSONObject.optString("textcolor_normal");
-          localnru.f = localJSONObject.optString("textcolor_selected");
-          localnru.b = localJSONObject.optString("jump_url");
-          localnru.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-          localArrayList.add(localnru);
-          i += 1;
+        nrr localnrr = (nrr)((Iterator)localObject).next();
+        if (localnrr.jdField_a_of_type_Int == paramInt) {
+          return localnrr;
         }
-        localnrt.jdField_a_of_type_JavaUtilArrayList = localArrayList;
       }
-      return localnrt;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localnrt;
+    return new nrr();
   }
   
-  public nru a(int paramInt)
+  public static boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    nrq localnrq = nrs.a();
+    if (localnrq == null) {}
+    for (String str = "false";; str = localnrq.jdField_a_of_type_Int + "")
     {
-      nru localnru = (nru)localIterator.next();
-      if (localnru.jdField_a_of_type_Int == paramInt) {
-        return localnru;
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localnrq != null) {
+        break;
       }
+      return false;
     }
-    return null;
+    if (localnrq.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

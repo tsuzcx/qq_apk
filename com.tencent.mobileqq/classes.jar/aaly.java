@@ -1,27 +1,44 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aaly
-  implements View.OnClickListener
+class aaly
+  implements bfph
 {
-  public aaly(AutoRemarkActivity paramAutoRemarkActivity) {}
+  aaly(aalx paramaalx, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
-    try
+    switch (paramInt)
     {
-      this.a.a.dismiss();
-      label46:
-      this.a.a = null;
-      return;
+    default: 
+      this.jdField_a_of_type_Bfpc.dismiss();
     }
-    catch (Throwable paramView)
+    do
     {
-      break label46;
-    }
+      for (;;)
+      {
+        return;
+        axqy.b(this.jdField_a_of_type_Aalx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Aalx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+        paramView = (akgx)this.jdField_a_of_type_Aalx.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
+        ArrayList localArrayList = new ArrayList();
+        try
+        {
+          localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Aalx.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+          paramView.a(localArrayList);
+          if (this.jdField_a_of_type_Aalx.a.c == null) {
+            this.jdField_a_of_type_Aalx.a.c = new bcqf(this.jdField_a_of_type_Aalx.a.jdField_a_of_type_AndroidContentContext, 0);
+          }
+          this.jdField_a_of_type_Aalx.a.c.show();
+        }
+        catch (NumberFormatException paramView) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.jdField_a_of_type_Aalx.a.jdField_a_of_type_JavaLangString, 2, "delete Stranger parseLong() error", paramView);
   }
 }
 

@@ -1,22 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
 
 public class ablv
-  implements Animation.AnimationListener
+  extends atzp
 {
   public ablv(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    LoginInfoActivity.a(this.a, paramSecureCheckResponse);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    bcql.a(this.a, paramString2, 0).a();
+    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
+  }
 }
 
 

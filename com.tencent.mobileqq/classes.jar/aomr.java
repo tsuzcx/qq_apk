@@ -1,219 +1,244 @@
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.SnowView;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aomr
-  extends Handler
+  extends akat
 {
   public aomr(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void a(long paramLong)
+  protected void a(String paramString)
   {
-    removeMessages(0);
-    sendMessageDelayed(obtainMessage(0), paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin 同意添加好友失败" + paramString);
+    }
+    long l2 = aydc.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString);
+      Object localObject = aydc.a().a(Long.valueOf(l1));
+      if (localObject != null)
+      {
+        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
+        Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
+        localMessage.what = 2;
+        localMessage.arg1 = 3;
+        localMessage.obj = localObject;
+        Face2FaceAddFriendActivity.a(this.a).sendMessage(localMessage);
+        Face2FaceAddFriendActivity.a(this.a, 3, (String)localObject);
+        this.a.jdField_a_of_type_Aomx.b((String)localObject);
+        localObject = this.a.getResources().getString(2131692269);
+        bcql.a(this.a, 0, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
+        super.a(paramString);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError structMsg = null");
+        }
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    boolean bool1 = false;
-    int i;
-    int k;
+    if (QLog.isColorLevel()) {
+      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 issuc" + paramBoolean + "logStr=" + paramString1 + ";actionType=" + paramInt1 + ";msgDetail=" + paramString2 + ";resultCode=" + paramInt2 + ";respType=" + paramInt3 + ";msgFail=" + paramString3 + ";msgInvalidDecided=" + paramString4 + ";remarkRet=" + paramInt4);
+    }
+    long l2 = aydc.a().b();
     Object localObject;
-    boolean bool2;
-    int j;
-    switch (paramMessage.what)
+    if ((!paramBoolean) && (paramInt2 == 32))
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceSnowView.invalidate();
-      a(20L);
-      return;
-    case 2: 
-      Face2FaceAddFriendActivity.a(this.a, (String)paramMessage.obj, paramMessage.arg1);
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_Aoms.a(1, false);
-      return;
-    case 4: 
-      i = paramMessage.arg1;
-      k = paramMessage.arg2;
-      Bundle localBundle = paramMessage.getData();
-      localObject = Boolean.valueOf(localBundle.getBoolean("key_data _ispush"));
-      bool2 = localBundle.getBoolean("key_data _hasfriend");
-      j = this.a.jdField_d_of_type_JavaUtilList.size();
-      if (j >= 10) {
-        j = 10;
+      bcql.a(this.a, 0, paramString3, 0).b(this.a.getTitleBarHeight());
+      localObject = aydc.a().a(Long.valueOf(l2));
+      if (localObject != null)
+      {
+        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
+        Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
+        localMessage.what = 2;
+        localMessage.arg1 = 3;
+        localMessage.obj = localObject;
+        Face2FaceAddFriendActivity.a(this.a).sendMessage(localMessage);
+        Face2FaceAddFriendActivity.a(this.a, 3, (String)localObject);
       }
-      break;
+      super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
+      return;
+    }
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      localObject = aydc.a().a(Long.valueOf(l1));
+      if (localObject != null)
+      {
+        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
+        if ((QLog.isColorLevel()) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 =" + ((String)localObject).substring(0, 4));
+        }
+        this.a.e.add(localObject);
+        super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        l1 = l2;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin structMsg = null");
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.benginisSuccess=" + paramBoolean + "uin" + paramString);
+    }
+    super.a(paramBoolean, paramString, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.bengin");
+    }
+    if (paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.success");
+      }
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramMessage.obj))
+      Object localObject;
+      int i;
+      try
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        new ArrayList();
+        localObject = this.a.app.a().b(ajsd.M, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin mDataList size=" + ((List)localObject).size());
         }
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "push的数据是显示列表中已有数据");
-        return;
-      }
-      if (i >= j) {
-        break;
-      }
-      if (k == 1)
-      {
-        paramMessage = (aonm)paramMessage.obj;
-        if (paramMessage.a)
+        i = ((List)localObject).size() - 1;
+        if (i >= 0)
         {
-          i = 2;
-          if (this.a.jdField_c_of_type_Int != j - 1) {
-            break label1253;
+          MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)((List)localObject).get(i);
+          if (localMessageForSystemMsg == null) {
+            return;
           }
-        }
-      }
-      label444:
-      label1245:
-      label1253:
-      for (bool1 = true;; bool1 = false)
-      {
-        if (((Boolean)localObject).booleanValue())
-        {
-          this.a.jdField_a_of_type_Aoms.c();
-          bool1 = true;
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "show next isPush=" + localObject + "isNeedShake=" + bool1 + "currentFriendIndex=" + this.a.jdField_c_of_type_Int + "count=" + j);
-          }
-          this.a.jdField_a_of_type_Aoms.a(paramMessage, ((Boolean)localObject).booleanValue(), i, bool2, bool1);
-          if (this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(paramMessage.e))
+          if (QLog.isColorLevel())
           {
-            this.a.jdField_c_of_type_JavaUtilHashMap.remove(paramMessage.e);
-            this.a.jdField_c_of_type_JavaUtilHashMap.put(paramMessage.e, Integer.valueOf(i));
+            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "msg_type=" + localMessageForSystemMsg.structMsg.msg_type.get() + "source id" + localMessageForSystemMsg.structMsg.msg.src_id.get() + "senderuin" + localMessageForSystemMsg.senderuin);
+            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin" + localMessageForSystemMsg.senderuin + "请求加好友");
           }
+          if ((localMessageForSystemMsg.structMsg.msg.src_id.get() == 3021) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2021)) {
+            break label323;
+          }
+          if (!QLog.isColorLevel()) {
+            break label671;
+          }
+          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "此请求加好友来源不是面对面不予处理");
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      super.a(paramBoolean1, paramBoolean2, paramList);
+      return;
+      label323:
+      if (localException.structMsg.msg_type.get() == 1)
+      {
+        Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = Face2FaceAddFriendActivity.a(this.a, localException.senderuin, 1);
+        int j;
+        if (localFace2FaceFriendBubbleView == null)
+        {
+          this.a.c.put(localException.senderuin, Integer.valueOf(3));
+          if (QLog.isColorLevel()) {
+            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin getViewFromUin=null");
+          }
+        }
+        else
+        {
+          Iterator localIterator = this.a.e.iterator();
+          String str2;
           do
           {
-            for (;;)
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            str2 = (String)localIterator.next();
+          } while (!localException.senderuin.equals(str2));
+          for (boolean bool = true;; bool = false)
+          {
+            if ((localFace2FaceFriendBubbleView != null) && (bool) && (Face2FaceAddFriendActivity.a(this.a, localException.senderuin)))
             {
-              Face2FaceAddFriendActivity.b(this.a);
+              if (!QLog.isColorLevel()) {
+                break label671;
+              }
+              QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin isAddFriend=true" + bool);
               return;
-              i = 1;
-              break;
-              this.a.jdField_c_of_type_JavaUtilHashMap.put(paramMessage.e, Integer.valueOf(i));
             }
-          } while (k != 2);
-          paramMessage = (aonk)paramMessage.obj;
-          if (this.a.b == 0)
-          {
-            if (!this.a.a(paramMessage.e)) {
-              break label1245;
-            }
-            i = 2;
-          }
-          for (;;)
-          {
-            if (this.a.jdField_c_of_type_Int == j - 1) {
-              bool1 = true;
-            }
-            if (((Boolean)localObject).booleanValue())
-            {
-              this.a.jdField_a_of_type_Aoms.c();
-              bool1 = true;
-            }
-            this.a.jdField_a_of_type_Aoms.a(paramMessage, ((Boolean)localObject).booleanValue(), i, bool2, bool1);
-            if (this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(paramMessage.e))
-            {
-              this.a.jdField_c_of_type_JavaUtilHashMap.remove(paramMessage.e);
-              this.a.jdField_c_of_type_JavaUtilHashMap.put(paramMessage.e, Integer.valueOf(i));
-              break label444;
-              if ((this.a.b != 1) || (((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_d_of_type_JavaLangString, paramMessage.e) == null)) {
-                break label1245;
-              }
-              i = 2;
-              continue;
-            }
-            this.a.jdField_c_of_type_JavaUtilHashMap.put(paramMessage.e, Integer.valueOf(i));
-            break label444;
-            if (this.a.jdField_a_of_type_Ajzl == null) {
-              break;
-            }
-            this.a.jdField_a_of_type_Ajzl.a(this.a.app.getCurrentAccountUin(), true);
-            sendMessageDelayed(obtainMessage(5), Face2FaceAddFriendActivity.h);
+            j = localException.structMsg.msg.sub_type.get();
             if (!QLog.isColorLevel()) {
+              break label672;
+            }
+            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin subType=" + j);
+            break label672;
+            localObject = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
+            ((Message)localObject).what = 2;
+            ((Message)localObject).arg1 = 3;
+            ((Message)localObject).obj = localException.senderuin;
+            Face2FaceAddFriendActivity.a(this.a).sendMessage((Message)localObject);
+            Face2FaceAddFriendActivity.a(this.a, 3, localException.senderuin);
+            return;
+            if (!paramBoolean2) {
               break;
             }
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "FTF_MSG_SEND_HEARTBEAT=" + this.a.app.getCurrentAccountUin());
-            return;
-            if (Face2FaceAddFriendActivity.a(this.a)) {
-              break;
-            }
-            paramMessage = this.a.getResources().getString(2131692270);
-            bcpw.a(this.a, 0, paramMessage, 0).b(this.a.getTitleBarHeight());
-            return;
-            this.a.a();
-            return;
-            this.a.jdField_a_of_type_Aoms.b();
-            return;
-            this.a.f();
-            return;
-            Face2FaceAddFriendActivity.a(this.a, (aonk)paramMessage.obj);
-            return;
-            Face2FaceAddFriendActivity.a(this.a, paramMessage.arg1);
-            return;
-            this.a.a((aonh)paramMessage.obj);
-            return;
-            paramMessage = this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-            while (paramMessage.hasNext())
-            {
-              localObject = (aonk)paramMessage.next();
-              if ((((aonk)localObject).a == 1) && (Face2FaceAddFriendActivity.a(this.a, ((aonk)localObject).e))) {
-                Face2FaceAddFriendActivity.a(this.a, ((aonk)localObject).a);
-              } else if ((((aonk)localObject).a == 2) && (this.a.a(((aonk)localObject).e))) {
-                Face2FaceAddFriendActivity.a(this.a, ((aonk)localObject).a);
-              }
-            }
-            long l = this.a.o;
-            paramMessage = new aonl(l + 2396794490L + "", "Member " + this.a.o, 1, 1, "");
-            localObject = this.a;
-            ((Face2FaceAddFriendActivity)localObject).o += 1;
-            Face2FaceAddFriendActivity.a(this.a).a(paramMessage);
-            Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(17, 300L);
-            return;
-            if (!(paramMessage.obj instanceof aonl)) {
-              break;
-            }
-            paramMessage = (aonl)paramMessage.obj;
-            this.a.a(paramMessage);
-            return;
-            if (!(paramMessage.obj instanceof aonl)) {
-              break;
-            }
-            this.a.jdField_a_of_type_JavaUtilArrayList.add((aonl)paramMessage.obj);
-            return;
-            if (!(paramMessage.obj instanceof aonl)) {
-              break;
-            }
-            Face2FaceAddFriendActivity.a(this.a).a((aonl)paramMessage.obj);
-            return;
-            bcpw.a(this.a.app.getApplication(), 2131694609, 0).b(this.a.getTitleBarHeight());
-            return;
-            i = 1;
+            String str1 = this.a.getResources().getString(2131719999);
+            bcql.a(this.a, 1, str1, 0).b(this.a.getTitleBarHeight());
+            break;
           }
         }
+        return;
+        switch (j)
+        {
+        }
       }
+      label671:
+      label672:
+      i -= 1;
     }
   }
 }

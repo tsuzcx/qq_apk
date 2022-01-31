@@ -1,48 +1,23 @@
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class yww
-  implements yxh
+public class yww
+  implements yxe
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
     Object localObject = null;
-    if (paramywn != null) {}
-    for (paramVarArgs = paramywn.a(); (paramywn == null) || (paramVarArgs == null); paramVarArgs = null)
+    wxr localwxr = wxr.a();
+    localwxr.a();
+    localwxr.j(new ywx(this, paramywk, paramString, paramVarArgs, localwxr));
+    if (paramywk != null) {}
+    for (paramString = paramywk.a();; paramString = null)
     {
-      yxs.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      paramVarArgs = localObject;
+      if (paramywk != null) {
+        paramVarArgs = paramywk.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
       return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("carrier", yyv.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramywn.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywn != null) {
-            paramString = paramywn.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          yxs.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          yxs.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
     }
   }
 }

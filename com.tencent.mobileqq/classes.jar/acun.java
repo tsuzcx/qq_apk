@@ -1,18 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract class acun
-  extends acve
+public abstract interface acun
 {
-  public int a;
-  public ambh a;
-  public View a;
-  public BaseChatItemLayout a;
-  public String a;
-  public int b;
-  public View b;
-  public int c;
-  public int d;
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 

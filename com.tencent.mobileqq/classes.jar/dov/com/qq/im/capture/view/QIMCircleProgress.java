@@ -12,11 +12,11 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import bbkx;
-import bjki;
-import bjkj;
-import bjkk;
-import bjkl;
+import bbll;
+import bjkz;
+import bjla;
+import bjlb;
+import bjlc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,8 +159,8 @@ public class QIMCircleProgress
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjki(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bjkj(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjkz(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bjla(this));
     }
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -168,8 +168,8 @@ public class QIMCircleProgress
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjkk(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bjkl(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bjlb(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bjlc(this));
     }
   }
   
@@ -282,8 +282,8 @@ public class QIMCircleProgress
   
   public void setCenterView()
   {
-    this.k = bbkx.a(24.0F);
-    this.l = bbkx.a(54.0F);
+    this.k = bbll.a(24.0F);
+    this.l = bbll.a(54.0F);
   }
   
   public void setProgress(float paramFloat)

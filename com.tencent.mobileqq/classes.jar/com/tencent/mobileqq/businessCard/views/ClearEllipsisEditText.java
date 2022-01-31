@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.views;
 
+import amex;
 import amey;
-import amez;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.TextPaint;
@@ -87,8 +87,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new amey(this));
-    setOnTouchListener(new amez(this));
+    addTextChangedListener(new amex(this));
+    setOnTouchListener(new amey(this));
   }
   
   public String a()

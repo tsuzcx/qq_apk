@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.OrientationEventListener;
-import qjx;
+import qju;
 
 public class OrientationDetector$3
   implements Runnable
 {
-  public OrientationDetector$3(qjx paramqjx, boolean paramBoolean) {}
+  public OrientationDetector$3(qju paramqju, boolean paramBoolean) {}
   
   public void run()
   {
-    synchronized (qjx.a(this.this$0))
+    synchronized (qju.a(this.this$0))
     {
-      if (qjx.a(this.this$0) == null) {
+      if (qju.a(this.this$0) == null) {
         return;
       }
     }
     try
     {
       if (this.a) {
-        if (qjx.a(this.this$0).canDetectOrientation()) {
-          qjx.a(this.this$0).enable();
+        if (qju.a(this.this$0).canDetectOrientation()) {
+          qju.a(this.this$0).enable();
         }
       }
       for (;;)
@@ -29,7 +29,7 @@ public class OrientationDetector$3
         return;
         localObject2 = finally;
         throw localObject2;
-        qjx.a(this.this$0).disable();
+        qju.a(this.this$0).disable();
       }
     }
     catch (Throwable localThrowable)

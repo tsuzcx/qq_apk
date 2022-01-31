@@ -1,14 +1,13 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public abstract class bjno
 {
-  public abstract void a(@NonNull Runnable paramRunnable);
+  @NonNull
+  public abstract bjnq a();
   
-  public abstract boolean a();
+  public abstract void a(@NonNull bjnr parambjnr);
   
-  public abstract void b(@NonNull Runnable paramRunnable);
+  public abstract void b(@NonNull bjnr parambjnr);
 }
 
 

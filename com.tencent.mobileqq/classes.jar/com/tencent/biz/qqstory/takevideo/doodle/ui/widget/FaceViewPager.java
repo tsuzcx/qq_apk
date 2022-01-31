@@ -5,13 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import vpn;
-import vpo;
+import vpk;
+import vpl;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<vpo> a;
+  private List<vpl> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,13 +28,13 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new vpn(this));
+    setOnPageChangeListener(new vpk(this));
   }
   
-  public void a(vpo paramvpo)
+  public void a(vpl paramvpl)
   {
-    if (!this.a.contains(paramvpo)) {
-      this.a.add(paramvpo);
+    if (!this.a.contains(paramvpl)) {
+      this.a.add(paramvpl);
     }
   }
 }

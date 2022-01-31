@@ -1,75 +1,25 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.util.Property;
 
-public class bknx
-  extends BaseAdapter
+class bknx
+  extends Property<bknw, Integer>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<vvg> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private vvg jdField_a_of_type_Vvg;
-  
-  public bknx(Context paramContext)
+  bknx(bknw parambknw, Class paramClass, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramClass, paramString);
   }
   
-  @Nullable
-  public vvg a()
+  public Integer a(bknw parambknw)
   {
-    return this.jdField_a_of_type_Vvg;
-  }
-  
-  public void a(List<vvg> paramList)
-  {
-    if (paramList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
+    if (parambknw != null) {
+      return Integer.valueOf(bknw.a(parambknw));
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    return Integer.valueOf(0);
   }
   
-  public void a(@Nullable vvg paramvvg)
+  public void a(bknw parambknw, Integer paramInteger)
   {
-    this.jdField_a_of_type_Vvg = paramvvg;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561380, null);
-      paramView = new bkny(paramViewGroup);
-      paramViewGroup.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.a((vvg)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Vvg);
-      return paramView.a;
-      paramView = (bkny)paramView.getTag();
+    if (parambknw != null) {
+      bknw.a(parambknw, paramInteger.intValue());
     }
   }
 }

@@ -1,57 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
-
-public class bcgj
+public abstract class bcgj
 {
-  private final bcfj a;
-  public String a;
+  public final int a;
   
-  public bcgj(bcfj parambcfj)
+  public bcgj(int paramInt)
   {
-    this.jdField_a_of_type_Bcfj = parambcfj;
+    this.a = paramInt;
   }
   
-  public void a(int paramInt)
-  {
-    TouchWebView localTouchWebView = this.jdField_a_of_type_Bcfj.a();
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
-    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      localJSONObject1 = new JSONObject();
-      localJSONObject2 = new JSONObject();
-    }
-    try
-    {
-      localJSONObject1.put("code", 0);
-      localJSONObject1.put("message", "ok");
-      localJSONObject2.put("subIndex", paramInt);
-      localJSONObject1.put("data", localJSONObject2);
-      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_JavaLangString = paramString;
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract int a();
 }
 
 

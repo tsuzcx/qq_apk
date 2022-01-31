@@ -4,8 +4,8 @@ import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import bkjn;
-import bkjo;
+import bkke;
+import bkkf;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -18,7 +18,7 @@ public class CodecDecodeRunnable
   MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
   private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-  private bkjn jdField_a_of_type_Bkjn;
+  private bkke jdField_a_of_type_Bkke;
   private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
   private boolean jdField_b_of_type_Boolean;
@@ -28,9 +28,9 @@ public class CodecDecodeRunnable
   private long e;
   private long f = 200000L;
   
-  public CodecDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkjo parambkjo)
+  public CodecDecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkkf parambkkf)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambkjo);
+    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, parambkkf);
     this.jdField_e_of_type_Long = -1L;
   }
   
@@ -214,8 +214,8 @@ public class CodecDecodeRunnable
         try
         {
           this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
-          this.jdField_a_of_type_Bkjn = new bkjn(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, this.jdField_a_of_type_Bkjn.a(), null, 0);
+          this.jdField_a_of_type_Bkke = new bkke(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, this.jdField_a_of_type_Bkke.a(), null, 0);
           return true;
         }
         catch (Throwable localThrowable)
@@ -423,16 +423,16 @@ public class CodecDecodeRunnable
     //   180: iload_1
     //   181: ifle +10 -> 191
     //   184: aload_0
-    //   185: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkjn	Lbkjn;
-    //   188: invokevirtual 337	bkjn:c	()V
+    //   185: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkke	Lbkke;
+    //   188: invokevirtual 337	bkke:c	()V
     //   191: aload_0
-    //   192: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkjn	Lbkjn;
+    //   192: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkke	Lbkke;
     //   195: iconst_0
-    //   196: invokevirtual 340	bkjn:a	(Z)V
+    //   196: invokevirtual 340	bkke:a	(Z)V
     //   199: aload_0
     //   200: aload_0
-    //   201: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkjn	Lbkjn;
-    //   204: invokevirtual 343	bkjn:a	()Landroid/graphics/Bitmap;
+    //   201: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkke	Lbkke;
+    //   204: invokevirtual 343	bkke:a	()Landroid/graphics/Bitmap;
     //   207: invokevirtual 346	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   210: astore 4
     //   212: aload_0
@@ -458,8 +458,8 @@ public class CodecDecodeRunnable
     //   255: getfield 30	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
     //   258: invokevirtual 356	android/media/MediaExtractor:release	()V
     //   261: aload_0
-    //   262: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkjn	Lbkjn;
-    //   265: invokevirtual 358	bkjn:a	()V
+    //   262: getfield 205	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_Bkke	Lbkke;
+    //   265: invokevirtual 358	bkke:a	()V
     //   268: aload_0
     //   269: aconst_null
     //   270: putfield 252	dov/com/tencent/biz/qqstory/takevideo/multivideo/CodecDecodeRunnable:jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo	Landroid/media/MediaCodec$BufferInfo;

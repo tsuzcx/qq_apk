@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aoye;
-import apuw;
+import aoyi;
+import apuy;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class OfflineFileBubbleModel$4
   implements Runnable
 {
-  public OfflineFileBubbleModel$4(aoye paramaoye, FileManagerEntity paramFileManagerEntity) {}
+  public OfflineFileBubbleModel$4(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    apuw.a(this.a);
+    apuy.a(this.a);
   }
 }
 

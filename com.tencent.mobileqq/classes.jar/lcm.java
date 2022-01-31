@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import java.util.HashMap;
 
-public class lcm
+class lcm
 {
-  private static ayry jdField_a_of_type_Ayry;
-  private static bbmh jdField_a_of_type_Bbmh = new lcn();
+  HashMap<Integer, lco> a = new HashMap();
   
-  public static ayry a()
+  public String toString()
   {
-    if (jdField_a_of_type_Ayry == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ayry == null)
-      {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bbmh, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Ayry = new aysz(localHttpCommunicator, true);
-      }
-      return jdField_a_of_type_Ayry;
-    }
-    finally {}
+    return "size[" + this.a.size() + "]";
   }
 }
 

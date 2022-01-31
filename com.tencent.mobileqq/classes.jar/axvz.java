@@ -1,11 +1,15 @@
-import android.widget.TextView;
-import com.tencent.biz.now.NowVideoLayout;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class axvz
+class axvz
+  implements View.OnLongClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-  TextView b;
+  axvz(axvy paramaxvy) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    return true;
+  }
 }
 
 

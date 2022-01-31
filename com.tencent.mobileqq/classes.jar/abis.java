@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class abis
-  implements ants
+  implements SoundPool.OnLoadCompleteListener
 {
-  public abis(GroupManagerActivity paramGroupManagerActivity) {}
+  public abis(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
   
-  public void a(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
     }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
-    {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new bcpw(this.a);
-        ((bcpw)localObject).d(2000);
-        ((bcpw)localObject).c(2131720330);
-        ((bcpw)localObject).a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    GroupManagerActivity.a(this.a, b);
-    axqw.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

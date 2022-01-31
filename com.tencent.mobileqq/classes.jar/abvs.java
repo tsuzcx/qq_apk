@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQMapActivity;
 
-class abvs
-  implements DialogInterface.OnClickListener
+public class abvs
+  implements View.OnClickListener
 {
-  abvs(abvq paramabvq) {}
+  public abvs(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.p();
+    if (this.a.a == null)
+    {
+      this.a.a = ((bfpc)bfpp.a(this.a, null));
+      this.a.a.b(2131698143);
+      this.a.a.b(2131692324);
+      this.a.a.c(2131690596);
+      this.a.a.a(new abvt(this));
+    }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

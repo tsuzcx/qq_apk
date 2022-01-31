@@ -1,17 +1,19 @@
 public class aywg
 {
   public int a;
-  public long a;
-  public aywb a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public aywe a;
+  public boolean a;
+  public boolean b;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUinType:" + this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mIsRaw:" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mIsShareAppPic:" + this.b);
+    localStringBuilder.append(",mShareAppInfo:{" + this.jdField_a_of_type_Aywe + "}");
+    return localStringBuilder.toString();
+  }
 }
 
 

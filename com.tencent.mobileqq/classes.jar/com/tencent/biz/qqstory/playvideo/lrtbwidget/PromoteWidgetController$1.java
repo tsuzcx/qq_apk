@@ -6,34 +6,34 @@ import com.tencent.biz.qqstory.database.PromoteTaskEntry;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import java.util.ArrayList;
-import tda;
-import tdc;
-import uac;
-import veg;
-import vyb;
+import tcx;
+import tcz;
+import tzz;
+import ved;
+import vxy;
 
 public class PromoteWidgetController$1
   implements Runnable
 {
-  public PromoteWidgetController$1(uac paramuac, ArrayList paramArrayList, String paramString, int paramInt) {}
+  public PromoteWidgetController$1(tzz paramtzz, ArrayList paramArrayList, String paramString, int paramInt) {}
   
   public void run()
   {
     long l = NetConnInfoCenter.getServerTime();
-    veg.a("PromoteWidgetController", "checkValidateAsync(%s, %s, %d)", this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int));
+    ved.a("PromoteWidgetController", "checkValidateAsync(%s, %s, %d)", this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int));
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      veg.e("PromoteWidgetController", "checkValidateAsync() should not check validate of the promotetask, promotetype = 0");
+      ved.e("PromoteWidgetController", "checkValidateAsync() should not check validate of the promotetask, promotetype = 0");
       this.this$0.jdField_a_of_type_Long = -1L;
       return;
     }
-    Object localObject = (tda)tdc.a(29);
+    Object localObject = (tcx)tcz.a(29);
     ArrayList localArrayList = new ArrayList();
     if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      localArrayList.addAll(((tda)localObject).a(this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_Int));
+      localArrayList.addAll(((tcx)localObject).a(this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_Int));
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localArrayList.addAll(((tda)localObject).b(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int));
+      localArrayList.addAll(((tcx)localObject).b(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int));
     }
     int i = 0;
     if (i < localArrayList.size())
@@ -45,13 +45,13 @@ public class PromoteWidgetController$1
     {
       if (localObject == null)
       {
-        veg.d("PromoteWidgetController", "checkValidateAsync() didn't find promote task for feedId: %s, unionId: %s, size: %d, now=%s(%d)", new Object[] { this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), vyb.a(l), Long.valueOf(l) });
+        ved.d("PromoteWidgetController", "checkValidateAsync() didn't find promote task for feedId: %s, unionId: %s, size: %d, now=%s(%d)", new Object[] { this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), vxy.a(l), Long.valueOf(l) });
         this.this$0.jdField_a_of_type_Long = -1L;
         return;
         i += 1;
         break;
       }
-      veg.d("PromoteWidgetController", "checkValidateAsync() find the promote task %s", new Object[] { localObject });
+      ved.d("PromoteWidgetController", "checkValidateAsync() find the promote task %s", new Object[] { localObject });
       this.this$0.jdField_a_of_type_Long = ((PromoteTaskEntry)localObject).taskId;
       this.this$0.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
       ThreadManager.getUIHandlerV2().post(new PromoteWidgetController.1.1(this));

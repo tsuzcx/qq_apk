@@ -1,42 +1,39 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 class xkh
-  implements wxw
+  implements bfux
 {
-  xkh(xke paramxke, String paramString) {}
+  xkh(xkb paramxkb, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void a(bfuw parambfuw)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
+    JSONObject localJSONObject = new JSONObject();
+    switch (parambfuw.a)
     {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
+    default: 
+      return;
+    case 0: 
+      try
+      {
+        localJSONObject.put("index", 0);
+        this.jdField_a_of_type_Xkb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception parambfuw)
+      {
+        parambfuw.printStackTrace();
+        return;
+      }
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_Xke.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      localJSONObject.put("index", 1);
+      this.jdField_a_of_type_Xkb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
-    catch (JSONException localJSONException)
+    catch (Exception parambfuw)
     {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
+      parambfuw.printStackTrace();
     }
   }
 }

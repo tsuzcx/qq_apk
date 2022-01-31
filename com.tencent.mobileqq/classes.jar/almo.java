@@ -1,23 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
-class almo
-  implements Animator.AnimatorListener
+public abstract interface almo
 {
-  almo(almn paramalmn) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (almn.a(this.a) != null) {
-      almn.a(this.a).a();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void a();
 }
 
 

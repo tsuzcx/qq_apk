@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class abbu
-  implements DialogInterface.OnClickListener
+  implements aind
 {
   public abbu(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
+    if (ForwardFriendListActivity.a(this.a))
     {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
+      ForwardFriendListActivity.b(this.a, paramView);
+      return;
     }
+    ForwardFriendListActivity.c(this.a, paramView);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
   }
 }
 

@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-class nko
-  implements DialogInterface.OnClickListener
+public class nko
 {
-  nko(nke paramnke, JsResult paramJsResult) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nko(CustomWebView paramCustomWebView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

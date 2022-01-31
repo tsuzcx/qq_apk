@@ -1,22 +1,56 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class aykn
-  implements bfnf<Integer>
+class aykn
+  implements bfph
 {
-  aykn(Context paramContext, String paramString, bfol parambfol) {}
+  aykn(aykk paramaykk, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, bfpc parambfpc) {}
   
-  public void a(Integer paramInteger)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInteger.intValue())
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
-      ayki.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A926", "0X800A926", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      aykk.a("2", "1");
       continue;
-      ayki.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      aebx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A927", "0X800A927", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      continue;
+      if (this.b == 2)
+      {
+        paramView = Intent.createChooser(new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString)), this.jdField_a_of_type_AndroidContentContext.getString(2131694067));
+        paramView.putExtra("big_brother_source_key", aykk.a(this.jdField_a_of_type_Aykk));
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92D", "0X800A92D", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        paramView.putExtra("big_brother_source_key", aykk.a(this.jdField_a_of_type_Aykk));
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92A", "0X800A92A", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        aykk.a("1", "2");
+        continue;
+        aykk.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92B", "0X800A92B", this.jdField_a_of_type_Int, 0, "", "", "", "");
+        aykk.b("0X800A00A", "0X800A00A");
+        continue;
+        bbac.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_JavaLangString);
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92C", "0X800A92C", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      }
     }
   }
 }

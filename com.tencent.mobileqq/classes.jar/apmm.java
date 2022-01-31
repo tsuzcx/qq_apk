@@ -1,21 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
 class apmm
-  implements View.OnClickListener
+  implements aplj
 {
-  apmm(apme paramapme) {}
+  apmm(apmi paramapmi) {}
   
-  public void onClick(View paramView)
+  public void a(apnc paramapnc)
   {
-    if (!CheckPermission.isHasStoragePermission(this.a.a))
+    apkt localapkt = ((aplm)paramapnc).a();
+    if (localapkt != null)
     {
-      CheckPermission.requestSDCardPermission((AppActivity)this.a.a, new apmn(this));
+      if (1 != localapkt.c()) {
+        break label147;
+      }
+      if (!localapkt.a().isZipInnerFile) {
+        break label91;
+      }
+      paramapnc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localapkt.a());
+      if ((paramapnc != null) && (this.a.jdField_a_of_type_Apne != null)) {
+        this.a.jdField_a_of_type_Apne.a(String.valueOf(localapkt.a()), paramapnc);
+      }
+    }
+    label91:
+    while (2 != localapkt.c())
+    {
+      do
+      {
+        return;
+        paramapnc = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localapkt.a(), 7);
+      } while ((paramapnc == null) || (this.a.jdField_a_of_type_Apne == null));
+      this.a.jdField_a_of_type_Apne.a(localapkt.c(), paramapnc);
       return;
     }
-    apue.a(this.a.a, this.a.c());
+    label147:
+    aouu localaouu = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    String str = localapkt.e();
+    if (localapkt.a() == null) {}
+    for (paramapnc = null;; paramapnc = localapkt.a().e)
+    {
+      paramapnc = localaouu.a(str, paramapnc, 7, localapkt);
+      if ((paramapnc == null) || (this.a.jdField_a_of_type_Apne == null)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Apne.a(localapkt.e(), paramapnc);
+      return;
+    }
   }
 }
 

@@ -1,39 +1,24 @@
-public abstract class tjg
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class tjg
+  extends SimpleJob<Object>
 {
-  protected int a;
-  protected tje a;
-  
-  public abstract void a();
-  
-  public void a(tje paramtje)
+  tjg(tjf paramtjf, String paramString)
   {
-    this.jdField_a_of_type_Tje = paramtje;
+    super(paramString);
   }
   
-  public boolean a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Int < 1)
-    {
-      this.jdField_a_of_type_Int += 1;
-      veg.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-      a();
-      return true;
+    if (this.a.jdField_a_of_type_Tji == null) {
+      this.a.jdField_a_of_type_Tji = new tji(this.a, this.a.d);
     }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Tje != null) {
-      this.jdField_a_of_type_Tje.a(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Tje != null) {
-      this.jdField_a_of_type_Tje.b(this);
-    }
+    this.a.jdField_a_of_type_JavaLangString = "";
+    tjf.a(this.a);
+    return null;
   }
 }
 

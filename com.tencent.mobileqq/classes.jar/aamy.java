@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aamy
-  implements DialogInterface.OnClickListener
+  extends bbri
 {
   public aamy(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    ((adhi)this.a.a.a(8)).a(paramBoolean, paramObject);
   }
 }
 

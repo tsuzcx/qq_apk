@@ -1,18 +1,11 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
 
-public class aqyx
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface aqyx
 {
-  public aqyx(HotPicMainPanel paramHotPicMainPanel) {}
+  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

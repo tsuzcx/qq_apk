@@ -1,41 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
 
 public class adbk
-  extends Handler
+  extends VasQuickUpdateManager.CallBacker
 {
-  public adbk(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adbk(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    switch (paramMessage.what)
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
     {
-    default: 
       return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
       }
-      CommonRecordSoundPanel.a(this.a).c();
-      bbbr.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      bbbr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    }
-    this.a.b(1);
-    this.a.b();
-    bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698543), 1).a();
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 

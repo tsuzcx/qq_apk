@@ -1,19 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import org.json.JSONObject;
 
 public class rxz
-  implements axod
+  implements View.OnClickListener
 {
-  public rxz(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
+  public rxz(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.saveImagePermission(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, "saveImage reject Permission");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
   }
 }
 

@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
-import bkro;
-import bkrs;
-import bkrz;
+import bksf;
+import bksj;
+import bksq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,8 +25,8 @@ class VideoFramesRetriever$FrameFetchRunnable
       try
       {
         long l = System.currentTimeMillis();
-        bkrz localbkrz;
-        localObject2 = VideoFramesRetriever.a(this.this$0).getFrameAtTime((localbkrz.jdField_a_of_type_Int + localbkrz.b) / 2 * 1000L);
+        bksq localbksq;
+        localObject2 = VideoFramesRetriever.a(this.this$0).getFrameAtTime((localbksq.jdField_a_of_type_Int + localbksq.b) / 2 * 1000L);
         if (localObject2 == null)
         {
           if (QLog.isColorLevel()) {
@@ -35,7 +35,7 @@ class VideoFramesRetriever$FrameFetchRunnable
           if ((VideoFramesRetriever.a(this.this$0)) || (VideoFramesRetriever.a(this.this$0) == null)) {
             break;
           }
-          localbkrz = (bkrz)VideoFramesRetriever.a(this.this$0).take();
+          localbksq = (bksq)VideoFramesRetriever.a(this.this$0).take();
           if (!VideoFramesRetriever.a(this.this$0)) {
             continue;
           }
@@ -55,13 +55,13 @@ class VideoFramesRetriever$FrameFetchRunnable
           }
           localObject1 = Bitmap.createBitmap((Bitmap)localObject2, (((Bitmap)localObject2).getWidth() - ((Bitmap)localObject2).getHeight()) / 2, 0, ((Bitmap)localObject2).getHeight(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, true);
           ((Bitmap)localObject2).recycle();
-          localObject2 = new bkrs();
-          ((bkrs)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1).copy(Bitmap.Config.RGB_565, true);
-          ((bkrs)localObject2).jdField_a_of_type_Int = (localbkrz.jdField_a_of_type_Int / VideoFramesRetriever.b(this.this$0));
+          localObject2 = new bksj();
+          ((bksj)localObject2).jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1).copy(Bitmap.Config.RGB_565, true);
+          ((bksj)localObject2).jdField_a_of_type_Int = (localbksq.jdField_a_of_type_Int / VideoFramesRetriever.b(this.this$0));
           ((Bitmap)localObject1).recycle();
           QLog.i("VideoFramesRetriever", 1, "end get frame bitmap, cost time=" + (System.currentTimeMillis() - l));
-          VideoFramesRetriever.a(this.this$0).a((bkrs)localObject2);
-          VideoFramesRetriever.a(this.this$0).remove(Integer.valueOf(localbkrz.jdField_a_of_type_Int));
+          VideoFramesRetriever.a(this.this$0).a((bksj)localObject2);
+          VideoFramesRetriever.a(this.this$0).remove(Integer.valueOf(localbksq.jdField_a_of_type_Int));
           continue;
         }
         int i = 0;

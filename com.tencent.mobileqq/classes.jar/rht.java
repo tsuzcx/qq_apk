@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import java.util.List;
 
-public final class rht
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
+public class rht
+  extends RecyclerView.RecycledViewPool
 {
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
-  }
+  public rht(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix) {}
   
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  public RecyclerView.ViewHolder getRecycledView(int paramInt)
   {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
+    Object localObject = this.a.getAdapter();
+    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
+    if ((localViewHolder != null) && ((localObject instanceof bfzx)))
+    {
+      localObject = (bfzx)localObject;
+      if (((bfzx)localObject).d(paramInt))
+      {
+        if (!RecyclerViewWithHeaderFooterFix.a(this.a).contains(localViewHolder.itemView))
+        {
+          putRecycledView(localViewHolder);
+          return null;
+        }
+      }
+      else if ((((bfzx)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooterFix.b(this.a).contains(localViewHolder.itemView)))
+      {
+        putRecycledView(localViewHolder);
+        return null;
+      }
+    }
+    return localViewHolder;
   }
 }
 

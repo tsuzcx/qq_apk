@@ -1,30 +1,37 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahaf
-  extends FragmentPagerAdapter
+  implements agwn
 {
-  public ahaf(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
+  public ahaf(ThemeHbFragment paramThemeHbFragment) {}
+  
+  public void a()
   {
-    super(paramFragmentManager);
+    ThemeHbFragment.a(this.a, null);
   }
   
-  public int getCount()
+  public void a(Object paramObject)
   {
-    return SendHbMainFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return ((ahag)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return ((ahag)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
+      }
+    } while (!(paramObject instanceof Drawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
+    }
+    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

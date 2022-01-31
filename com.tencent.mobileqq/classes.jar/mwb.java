@@ -1,10 +1,16 @@
-public abstract interface mwb
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+
+public class mwb
+  implements TencentMap.OnMapClickListener
 {
-  public abstract void a();
+  public mwb(PoiMapActivity paramPoiMapActivity) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onMapClick(LatLng paramLatLng)
+  {
+    this.a.j();
+  }
 }
 
 

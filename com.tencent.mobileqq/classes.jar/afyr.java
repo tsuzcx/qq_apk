@@ -1,65 +1,16 @@
 import android.view.View;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class afyr
-  implements bftk
+  extends apwz
 {
   public afyr(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void a(View paramView)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.a(l);
-      if (!bbev.g(this.a.getActivity())) {
-        break;
-      }
-      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
-      return true;
-    }
-    ChatHistoryTroopFileFragment.a(this.a, 1);
-    bakj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
-    }
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
-    }
+    axqy.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 

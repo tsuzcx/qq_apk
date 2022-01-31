@@ -1,44 +1,88 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Arrays;
 
 public class usm
+  implements bfph
 {
-  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  public usm(StoryMemoriesFragment paramStoryMemoriesFragment, bfpc parambfpc) {}
   
-  public usm(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
-  }
-  
-  public usm(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
-    try
+    int i = 1;
+    this.jdField_a_of_type_Bfpc.e();
+    paramInt = StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment, this.jdField_a_of_type_Bfpc.a(paramInt));
+    int j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_Int);
+    String str1;
+    label79:
+    String str2;
+    if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      veg.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
-  
-  public CardItem.CardVideoInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
-        return null;
+      paramView = "1";
+      if (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip()) {
+        break label231;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
+      str1 = "1";
+      if ((!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend()) && (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())) {
+        break label238;
+      }
+      str2 = "1";
+      label115:
+      vei.a("memory", "clk_more_one", j, 0, new String[] { paramView, str1, str2, StoryMemoriesFragment.a(paramInt, StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe(), StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe()) });
+      switch (paramInt)
+      {
+      }
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    label231:
+    label238:
+    do
+    {
+      return;
+      paramView = "2";
+      break;
+      str1 = "2";
+      break label79;
+      str2 = "2";
+      break label115;
+      StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      return;
+      if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
+      {
+        paramInt = 1;
+        paramView = (sss)tsr.a().a(98);
+        if (!StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip()) {
+          break label340;
+        }
+      }
+      for (;;)
+      {
+        paramView.a(i, StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_JavaLangString, paramInt, 2);
+        return;
+        paramInt = 0;
+        break;
+        i = 0;
+      }
+      tsr.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.getActivity(), StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, new usn(this));
+      return;
+      if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe())
+      {
+        StoryMemoriesFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
+        return;
+      }
+      StoryMemoriesFragment.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment);
+      return;
+    } while (vzl.b());
+    label340:
+    if (StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment) == null) {
+      StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment, tpb.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment.getActivity()));
+    }
+    StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6 } }));
+    StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).a(2131719508).a(new tqc(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem)).a(new uso(this)).b();
+    vei.a("memory", "clk_share", StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment).jdField_a_of_type_Int), 0, new String[] { "", "", "", "" });
   }
 }
 

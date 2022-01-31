@@ -1,11 +1,18 @@
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMBeautyItem;
 
-public class bjcw
-  extends bjcl
+public final class bjcw
+  implements Parcelable.Creator<QIMBeautyItem>
 {
-  public bjcw(CaptureModeController paramCaptureModeController)
+  public QIMBeautyItem a(Parcel paramParcel)
   {
-    super(paramCaptureModeController);
+    return new QIMBeautyItem(paramParcel);
+  }
+  
+  public QIMBeautyItem[] a(int paramInt)
+  {
+    return new QIMBeautyItem[paramInt];
   }
 }
 

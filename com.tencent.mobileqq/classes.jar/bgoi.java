@@ -1,23 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class bgoi
-  implements Parcelable.Creator<SendMsg>
+class bgoi
+  implements ServiceConnection
 {
-  public SendMsg a(Parcel paramParcel)
+  bgoi(bgoh parambgoh) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return new SendMsg(paramParcel);
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    bgoh.a(this.a, bgni.a(paramIBinder));
+    bgoh.a(this.a, false);
+    bgoh.a(this.a);
   }
   
-  public SendMsg[] a(int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return new SendMsg[paramInt];
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    try
+    {
+      bgoh.a(this.a).getApplication().unbindService(bgoh.a(this.a));
+      bgoh.a(this.a, null);
+      bgoh.a(this.a, false);
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgoi
  * JD-Core Version:    0.7.0.1
  */

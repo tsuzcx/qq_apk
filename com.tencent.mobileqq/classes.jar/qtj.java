@@ -1,36 +1,14 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
+import android.view.animation.Animation;
 
-public class qtj
-  implements View.OnClickListener
+class qtj
+  extends bfmx
 {
-  public qtj(VideoFeedsTopicViewGroup paramVideoFeedsTopicViewGroup, VideoInfo.ChannelInfo paramChannelInfo) {}
+  qtj(qth paramqth) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)))
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c)) {
-        break label152;
-      }
-      onk.a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c);
-    }
-    for (;;)
-    {
-      paramView = new qze("", "", VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).jdField_a_of_type_JavaLangString, VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).g).u(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int).v(qol.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo)).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).N).a().a();
-      if (!VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)) {
-        break;
-      }
-      noo.a(null, "", "0X8009331", "0X8009331", 0, 0, "3", "", "", paramView, false);
-      return;
-      label152:
-      nut.b(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.b, 8, null);
-    }
-    noo.a(null, "", "0X80092F9", "0X80092F9", 0, 0, "3", "", "", paramView, false);
+    this.a.a.s.setVisibility(8);
   }
 }
 

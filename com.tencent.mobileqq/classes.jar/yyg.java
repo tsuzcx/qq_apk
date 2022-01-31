@@ -1,43 +1,24 @@
-import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class yyg
+  extends yyh
 {
-  private long a = -1L;
-  private long b = -1L;
-  private long c = -1L;
+  yyg(yyf paramyyf) {}
   
-  private void c()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if ((this.b >= this.a) && (this.a != -1L) && (this.b != -1L)) {}
-    for (long l = this.b - this.a;; l = -1L)
+    yxp.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
+    yyc.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Long = -2147483648L;
+    if (yyf.a(this.a).equals(paramString2))
     {
-      if (l != -1L)
-      {
-        if (this.c == -1L) {
-          this.c = 0L;
-        }
-        this.c = (l + this.c);
+      axqy.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", yyf.a(this.a), "");
+      if ((paramInt != 1) && (paramInt != 2)) {
+        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
       }
-      this.a = -1L;
-      this.b = -1L;
-      return;
     }
-  }
-  
-  public long a()
-  {
-    return this.c;
-  }
-  
-  public void a()
-  {
-    this.a = SystemClock.elapsedRealtime();
-  }
-  
-  public void b()
-  {
-    this.b = SystemClock.elapsedRealtime();
-    c();
   }
 }
 

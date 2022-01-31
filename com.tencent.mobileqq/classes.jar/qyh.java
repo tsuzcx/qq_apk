@@ -1,13 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class qyh
-  implements qxp<qxs>
+  extends Handler
 {
-  qyh(qyf paramqyf) {}
-  
-  public void a(qxs paramqxs)
+  qyh(qyg paramqyg, Looper paramLooper)
   {
-    qyf.a(this.a).b(paramqxs.a());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qyg.a(this.a));
+      }
+    } while (!qyg.a(this.a));
+    this.a.a(1);
   }
 }
 

@@ -1,6 +1,12 @@
-public abstract interface adef
+public class adef
 {
-  public abstract void a(int paramInt, adeq paramadeq);
+  public int a;
+  public byte[] a;
+  
+  adef(adee paramadee)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 

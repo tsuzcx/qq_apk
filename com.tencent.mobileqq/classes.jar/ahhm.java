@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity.9;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class ahhm
-  implements Animation.AnimationListener
+  implements ValueCallback<String>
 {
-  public ahhm(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  public ahhm(SpringHbTranslucentBrowserActivity.9 param9) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(String paramString)
   {
-    if (SpringHbTranslucentBrowserActivity.a(this.a) != null) {
-      SpringHbTranslucentBrowserActivity.a(this.a).setAlpha(1.0F);
-    }
+    QLog.d("springHb_SpringHbTranslucentBrowserActivity", 2, "evaluateJavascript done");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

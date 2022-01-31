@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aevj;
+import aevh;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,23 +20,23 @@ class StickerBubbleAnimationView$3
     if (((File)localObject).exists()) {
       try
       {
-        aevj localaevj = new aevj((File)localObject, false);
-        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localaevj.a()));
-        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localaevj.b()];
-        localObject = StickerBubbleAnimationView.a(this.this$0, localaevj.a(), 0.7D);
+        aevh localaevh = new aevh((File)localObject, false);
+        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localaevh.a()));
+        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localaevh.b()];
+        localObject = StickerBubbleAnimationView.a(this.this$0, localaevh.a(), 0.7D);
         Resources localResources = this.this$0.getResources();
         if (localObject != null) {}
         for (;;)
         {
           arrayOfBitmapDrawable[0] = new BitmapDrawable(localResources, (Bitmap)localObject);
-          StickerBubbleAnimationView.a(this.this$0, localaevj, arrayOfBitmapDrawable, this.a, localaevj.a());
+          StickerBubbleAnimationView.a(this.this$0, localaevh, arrayOfBitmapDrawable, this.a, localaevh.a());
           StickerBubbleAnimationView.d(this.this$0).put(this.a, arrayOfBitmapDrawable);
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.d("StickerBubbleAnimationView", 2, "decoded first frame of gif: " + this.a);
           return;
-          localObject = localaevj.a();
+          localObject = localaevh.a();
         }
         QLog.e("StickerBubbleAnimationView", 1, "gifFile " + this.a + " is not exist");
       }

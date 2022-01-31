@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report;
 
-import ahfn;
+import ahfl;
+import ahhz;
+import ahia;
 import ahib;
-import ahic;
-import ahid;
-import ahih;
+import ahif;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -22,19 +22,19 @@ public final class SpringHbMonitorReporter$2
     {
       try
       {
-        ahid localahid = ahic.a(BaseApplicationImpl.sApplication.getRuntime());
-        String str1 = localahid.jdField_a_of_type_JavaLangString;
+        ahib localahib = ahia.a(BaseApplicationImpl.sApplication.getRuntime());
+        String str1 = localahib.jdField_a_of_type_JavaLangString;
         if (QLog.isColorLevel()) {
           QLog.i("springHb_report_SpringHbMonitorReporter", 2, "[reportConfigCoverageDaily] bids: " + str1);
         }
-        if (ahfn.a(this.jdField_a_of_type_JavaLangString, str1))
+        if (ahfl.a(this.jdField_a_of_type_JavaLangString, str1))
         {
-          Object localObject = ahic.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_JavaLangString);
+          Object localObject = ahia.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_JavaLangString);
           if (this.jdField_a_of_type_Int != 0) {
             break label342;
           }
           bool = true;
-          String str2 = ahic.a(bool, this.jdField_a_of_type_JavaLangString);
+          String str2 = ahia.a(bool, this.jdField_a_of_type_JavaLangString);
           if (QLog.isColorLevel()) {
             QLog.i("springHb_report_SpringHbMonitorReporter", 2, "[offlinePackageReport] currReportTag == " + str2 + " lastReportTag: " + (String)localObject);
           }
@@ -43,12 +43,12 @@ public final class SpringHbMonitorReporter$2
           }
           localObject = new HashMap();
           ((Map)localObject).put("ext1", "" + this.jdField_a_of_type_JavaLangString);
-          ((Map)localObject).put("ext2", "" + localahid.jdField_a_of_type_Int);
-          ((Map)localObject).put("ext3", "" + localahid.b);
+          ((Map)localObject).put("ext2", "" + localahib.jdField_a_of_type_Int);
+          ((Map)localObject).put("ext3", "" + localahib.b);
           ((Map)localObject).put("ext4", "" + this.b);
-          ahih.a(ahib.c, 2, this.jdField_a_of_type_Int, (Map)localObject, false);
-          ahic.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), str2, this.jdField_a_of_type_JavaLangString);
-          ahic.b(str1, localahid.jdField_a_of_type_Int, localahid.b);
+          ahif.a(ahhz.c, 2, this.jdField_a_of_type_Int, (Map)localObject, false);
+          ahia.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), str2, this.jdField_a_of_type_JavaLangString);
+          ahia.b(str1, localahib.jdField_a_of_type_Int, localahib.b);
           return;
         }
       }

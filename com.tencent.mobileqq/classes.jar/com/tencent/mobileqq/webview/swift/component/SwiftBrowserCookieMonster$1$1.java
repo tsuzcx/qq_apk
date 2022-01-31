@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bceb;
+import bcep;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import nax;
+import nau;
 
 class SwiftBrowserCookieMonster$1$1
   implements Runnable
@@ -29,14 +29,14 @@ class SwiftBrowserCookieMonster$1$1
         localObject2 = ((CopyOnWriteArrayList)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (bceb)((Iterator)localObject2).next();
+          localObject3 = (bcep)((Iterator)localObject2).next();
           if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + nax.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.this$0.jdField_a_of_type_Long);
+            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + nau.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.this$0.jdField_a_of_type_Long);
           }
           if (this.a.this$0.b) {
-            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + nax.b((String)localObject1, new String[0]));
+            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + nau.b((String)localObject1, new String[0]));
           }
-          ((bceb)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
+          ((bcep)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
         }
         break;
       }

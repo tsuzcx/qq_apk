@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
 
 class xiw
-  implements View.OnClickListener
+  implements xgu<CLIENT.StSmartMatchMusicRsp>
 {
-  xiw(xit paramxit) {}
+  xiw(xiq paramxiq) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    xit.b(this.a).setVisibility(8);
+    long l = System.currentTimeMillis() - xiq.a(this.a);
+    xhb.a("edit_smart_music", xhb.a(paramLong, l, "", 0L));
+    this.a.a(ajya.a(2131703910) + l + "ms");
+    xiq.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
   }
 }
 

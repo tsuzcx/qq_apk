@@ -1,42 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
 
 public class aafp
-  extends akav
+  implements View.OnClickListener
 {
   public aafp(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, ayaw paramayaw)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {}
-    ayao localayao;
-    do
-    {
-      for (;;)
-      {
-        return;
-        AccountManageActivity.a(this.a, false);
-        localayao = (ayao)this.a.app.getManager(62);
-        if (paramayaw.a != 1) {
-          break;
-        }
-        if ((this.a.isResume()) && (ayao.a(this.a.app, "sub.uin.all")))
-        {
-          paramString = localayao.a("sub.uin.all");
-          int j = paramString.size();
-          int i = 0;
-          while (i < j)
-          {
-            paramayaw = (Pair)paramString.get(i);
-            localayao.a(this.a.app, this.a, paramayaw, new aafq(this, localayao, paramayaw));
-            i += 1;
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    localayao.a(paramString, 1, true);
+    this.a.i();
   }
 }
 

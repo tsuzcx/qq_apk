@@ -1,33 +1,21 @@
-class anqi
-  extends ajtj
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface anqi
 {
-  anqi(anqf paramanqf) {}
+  boolean a() default false;
   
-  protected void a(int paramInt)
-  {
-    if ((paramInt == 0) && (this.a.a != null)) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void b(int paramInt)
-  {
-    anqf.a(this.a, false);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-  }
+  boolean b() default false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     anqi
  * JD-Core Version:    0.7.0.1
  */

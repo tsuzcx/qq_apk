@@ -1,32 +1,24 @@
-import android.graphics.Point;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface bimg
+class bimg
+  implements Animator.AnimatorListener
 {
-  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
+  bimg(bima parambima) {}
   
-  public abstract int a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract int a(int paramInt1, int paramInt2);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
+  }
   
-  public abstract void a(int paramInt, xfl paramxfl);
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
-  
-  public abstract void a(bijy parambijy, int paramInt, Point paramPoint);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(bilw parambilw);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract int b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract int c(int paramInt1, int paramInt2);
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

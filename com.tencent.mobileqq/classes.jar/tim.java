@@ -1,105 +1,60 @@
 import android.text.TextUtils;
-import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tribe.async.dispatch.Dispatcher;
 
 public class tim
-  extends tiq
+  extends tin
 {
-  public static final String a;
-  public QQUserUIItem a;
-  private boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = sxp.a(2131699675);
-  }
-  
   public tim(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561302);
+    super(paramViewGroup, 2131561301);
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  private void c(tff paramtff)
   {
-    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
-      return null;
+    paramtff.d = false;
+    tfy.a(QQStoryContext.a()).a(paramtff);
+    tgn localtgn = new tgn();
+    localtgn.jdField_b_of_type_JavaLangString = paramtff.jdField_a_of_type_JavaLangString;
+    localtgn.c = paramtff.jdField_a_of_type_Int;
+    localtgn.d = 4;
+    localtgn.jdField_b_of_type_Long = paramtff.e;
+    syo.a().a(localtgn, null);
+  }
+  
+  public void a(tff paramtff)
+  {
+    super.a(paramtff);
+    if (!TextUtils.isEmpty(paramtff.g)) {
+      c(paramtff.g);
     }
-    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
-      return paramQQUserUIItem.nickName;
-    }
-    return paramQQUserUIItem.getDisplayName();
-  }
-  
-  protected void a(String paramString)
-  {
-    b(vzl.b(paramString));
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, tfi paramtfi)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
-  }
-  
-  public void a(tfi paramtfi)
-  {
-    super.a(paramtfi);
-    veg.a("FollowNodeViewHolder", "bindData %s", paramtfi);
-    this.itemView.setTag(paramtfi.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((tdo)tdc.a(2)).a(paramtfi.jdField_a_of_type_JavaLangString, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    Object localObject2;
-    Object localObject1;
-    if (thy.h)
+    if (!TextUtils.isEmpty(paramtff.j))
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramtff.c)) {}
+      for (str = ajya.a(2131706954);; str = paramtff.c)
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
-      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label194;
-      }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = ajyc.a(2131704669);
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject1 = jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramtfi.c)) {
-          localObject1 = paramtfi.c;
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramtff.j);
+        if (paramtff.d) {
+          c(paramtff);
         }
-        veg.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramtfi.jdField_a_of_type_JavaLangString);
-        ste.a().dispatch(new tfh(paramtfi.jdField_a_of_type_JavaLangString));
-        localObject2 = localObject1;
+        return;
       }
-      a((String)localObject2, this.jdField_a_of_type_Boolean, paramtfi);
-      a(paramtfi.g);
-      return;
-      bool = false;
+    }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramtff.c)) {}
+    for (String str = ajya.a(2131706953);; str = paramtff.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
       break;
-      label194:
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
-        }
-      }
     }
+  }
+  
+  protected void b(tff paramtff)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramtff);
   }
 }
 

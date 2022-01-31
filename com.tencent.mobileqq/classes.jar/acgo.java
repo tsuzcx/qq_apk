@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class acgo
-  extends akav
+  implements View.OnClickListener
 {
-  public acgo(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acgo(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.c();
-  }
-  
-  protected void b()
-  {
-    this.a.c();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

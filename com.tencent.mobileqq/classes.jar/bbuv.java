@@ -1,70 +1,91 @@
-import android.os.Environment;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bbuv
+final class bbuv
+  implements BusinessObserver
 {
-  private static volatile boolean a;
-  private static boolean b;
+  bbuv(QQAppInterface paramQQAppInterface) {}
   
-  public static String a(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!a) {}
-    String str3;
-    try
-    {
-      b = "mounted".equals(Environment.getExternalStorageState());
-      a = true;
-      String str1 = paramString;
-      if (!TextUtils.isEmpty(paramString))
+    if (paramBoolean) {
+      try
       {
-        str1 = paramString;
-        if (b)
+        paramBundle = paramBundle.getByteArray("extra_data");
+        if (paramBundle == null)
         {
-          str3 = bbuw.a().a();
-          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
-            break label149;
-          }
-          str1 = paramString;
-          if (str3 != null)
+          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
+          return;
+        }
+        Object localObject1 = new WebSSOAgent.UniSsoServerRsp();
+        ((WebSSOAgent.UniSsoServerRsp)localObject1).mergeFrom(paramBundle);
+        QLog.i("SSOHttpUtils", 1, "requestRedPack report result:" + ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get());
+        paramBundle = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get());
+        if (paramBundle.optInt("code") == 0)
+        {
+          Object localObject2 = new JSONObject(paramBundle.optString("data"));
+          paramInt = ((JSONObject)localObject2).optInt("redpkg_tips");
+          paramBundle = ((JSONObject)localObject2).optString("icon");
+          if (paramInt == 1)
           {
-            str1 = paramString;
-            if (!paramString.startsWith(str3))
+            paramInt = ((JSONObject)localObject2).optInt("actid");
+            int i = ((JSONObject)localObject2).optInt("appid");
+            localObject1 = ((JSONObject)localObject2).optString("title");
+            localObject2 = ((JSONObject)localObject2).optString("link");
+            if (paramInt >= 0)
             {
-              str1 = paramString;
-              if (paramString.startsWith(bbuw.a().b()))
-              {
-                String[] arrayOfString = paramString.split(bbuw.a().b());
-                str1 = paramString;
-                if (arrayOfString.length >= 2) {
-                  str1 = str3 + arrayOfString[1];
+              MqqHandler localMqqHandler = this.a.getHandler(Conversation.class);
+              if (localMqqHandler != null) {
+                try
+                {
+                  Message localMessage = localMqqHandler.obtainMessage(1134043);
+                  JSONObject localJSONObject = new JSONObject();
+                  localJSONObject.put("runningState", 3);
+                  localJSONObject.put("cookieUrl", localObject2);
+                  localJSONObject.put("title", localObject1);
+                  localJSONObject.put("icon", paramBundle);
+                  localJSONObject.put("actid", paramInt);
+                  localJSONObject.put("appid", i);
+                  localMessage.obj = localJSONObject;
+                  localMqqHandler.sendMessage(localMessage);
+                  paramBundle = new Date();
+                  paramBundle = new SimpleDateFormat("yyyy-MM-dd").format(paramBundle);
+                  paramBundle = paramBundle + "-RedPack";
+                  localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences(this.a.getCurrentAccountUin() + ".qqsport", 4).edit();
+                  ((SharedPreferences.Editor)localObject1).putBoolean(paramBundle, false);
+                  ((SharedPreferences.Editor)localObject1).commit();
+                  return;
+                }
+                catch (JSONException paramBundle)
+                {
+                  paramBundle.printStackTrace();
+                  return;
                 }
               }
             }
           }
         }
+        return;
       }
-      return str1;
-    }
-    catch (Exception localException)
-    {
-      label149:
-      do
+      catch (Exception paramBundle)
       {
-        for (;;)
-        {
-          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
-        }
-        String str2 = paramString;
-      } while (str3 == null);
+        paramBundle.printStackTrace();
+      }
     }
-    return str3 + File.separator + paramString;
-  }
-  
-  public static String b(String paramString)
-  {
-    return new File(paramString).getCanonicalPath();
   }
 }
 

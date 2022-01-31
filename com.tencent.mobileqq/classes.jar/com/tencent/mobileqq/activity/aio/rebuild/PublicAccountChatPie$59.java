@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
+import aert;
 
 public class PublicAccountChatPie$59
   implements Runnable
 {
-  public PublicAccountChatPie$59(aerv paramaerv) {}
+  public PublicAccountChatPie$59(aert paramaert) {}
   
   public void run()
   {
     boolean bool = false;
-    aerv localaerv = this.this$0;
+    aert localaert = this.this$0;
     if ((this.this$0.b(true)) || (this.this$0.b(false))) {
       bool = true;
     }
-    localaerv.as = bool;
+    localaert.as = bool;
   }
 }
 

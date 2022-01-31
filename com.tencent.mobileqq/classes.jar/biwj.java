@@ -1,14 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.widget.ImageView;
 
 class biwj
-  implements DialogInterface.OnClickListener
+  implements bjos<biwo>
 {
-  biwj(biwh parambiwh, biqn parambiqn) {}
+  biwj(biwh parambiwh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable biwo parambiwo)
   {
-    biwh.a(this.jdField_a_of_type_Biwh, this.jdField_a_of_type_Biqn);
+    if (parambiwo == null) {
+      return;
+    }
+    biwh localbiwh = this.a;
+    boolean bool;
+    if (parambiwo == biwo.c)
+    {
+      bool = true;
+      biwh.a(localbiwh, bool);
+      biwh.a(this.a).notifyDataSetChanged();
+      parambiwo = biwh.a(this.a);
+      if (!biwh.a(this.a)) {
+        break label69;
+      }
+    }
+    label69:
+    for (int i = 2130837591;; i = 2130837592)
+    {
+      parambiwo.setImageResource(i);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aive;
+import aivc;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -20,7 +20,7 @@ class ApolloSurfaceView$CheckForLongPress
   public void run()
   {
     if (ApolloSurfaceView.access$100(this.this$0) == null) {}
-    aive localaive;
+    aivc localaivc;
     do
     {
       do
@@ -28,16 +28,16 @@ class ApolloSurfaceView$CheckForLongPress
         do
         {
           return;
-          localaive = (aive)ApolloSurfaceView.access$100(this.this$0).get();
-        } while (localaive == null);
+          localaivc = (aivc)ApolloSurfaceView.access$100(this.this$0).get();
+        } while (localaivc == null);
         if (QLog.isColorLevel()) {
           QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
         }
       } while (this.a != ApolloSurfaceView.access$201(this.this$0));
       ApolloSurfaceView.access$302(this.this$0, true);
       ApolloSurfaceView.access$401(this.this$0, 2);
-    } while ((TextUtils.isEmpty(this.this$0.mApolloId)) || (ApolloSurfaceView.access$500(this.this$0) < 0) || (localaive == null));
-    localaive.onNotifyLongTouch(this.this$0.mApolloId);
+    } while ((TextUtils.isEmpty(this.this$0.mApolloId)) || (ApolloSurfaceView.access$500(this.this$0) < 0) || (localaivc == null));
+    localaivc.onNotifyLongTouch(this.this$0.mApolloId);
   }
 }
 

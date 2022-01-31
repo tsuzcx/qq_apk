@@ -1,21 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.actionsheet.ActionSheet.3;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class benj
-  implements Animation.AnimationListener
+class benj
+  implements View.OnClickListener
 {
-  public benj(ActionSheet.3 param3) {}
+  benj(bene parambene, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.this$0.a();
-    benh.a(this.a.this$0, true);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bene, 1);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bene.isShowing()) {
+        this.jdField_a_of_type_Bene.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

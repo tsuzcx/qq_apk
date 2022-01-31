@@ -1,38 +1,10 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-class wnr
-  implements wnk
+public abstract interface wnr
 {
-  wnr(wnl paramwnl, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    wnl.a(this.jdField_a_of_type_Wnl, null);
-    if (wnl.a(this.jdField_a_of_type_Wnl) != null)
-    {
-      wnl.a(this.jdField_a_of_type_Wnl).b(null);
-      if ((wnl.d(this.jdField_a_of_type_Wnl)) && (wnl.b(this.jdField_a_of_type_Wnl) != null)) {
-        wnl.b(this.jdField_a_of_type_Wnl).setText(wnl.a(this.jdField_a_of_type_Wnl).a());
-      }
-      wsy.a().a(wnl.a(this.jdField_a_of_type_Wnl), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, wnl.a(this.jdField_a_of_type_Wnl).a());
-      wnl.a(this.jdField_a_of_type_Wnl).a("");
-    }
-    if ((wnl.e(this.jdField_a_of_type_Wnl)) && (wnl.a(this.jdField_a_of_type_Wnl) != 0L))
-    {
-      wnl.a(this.jdField_a_of_type_Wnl, false);
-      wnl.d(this.jdField_a_of_type_Wnl, false);
-    }
-    if (wnl.a(this.jdField_a_of_type_Wnl) != null) {
-      wnl.a(this.jdField_a_of_type_Wnl).j();
-    }
-    if ((this.jdField_a_of_type_Wnl.b != null) && (this.jdField_a_of_type_Wnl.b.getVisibility() == 8)) {
-      wpw.a().a(new CommentListShowStateEvent(false));
-    }
-  }
+  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
 }
 
 

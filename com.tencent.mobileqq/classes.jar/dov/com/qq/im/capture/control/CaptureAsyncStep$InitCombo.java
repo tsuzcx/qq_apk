@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.control;
 
-import biim;
-import bizu;
-import bjae;
-import bjbk;
-import bksl;
+import bijd;
+import bjal;
+import bjav;
+import bjcb;
+import bktc;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
@@ -13,18 +13,18 @@ public class CaptureAsyncStep$InitCombo
 {
   public int a()
   {
-    bksl.a(bizu.a());
-    bjbk localbjbk = (bjbk)bjae.a(5);
-    localbjbk.i();
-    localbjbk.a(false);
+    bktc.a(bjal.a());
+    bjcb localbjcb = (bjcb)bjav.a(5);
+    localbjcb.i();
+    localbjcb.a(false);
     if ((this.a[0] != null) && ((this.a[0] instanceof QIMEffectCameraCaptureUnit))) {
       ((QIMEffectCameraCaptureUnit)this.a[0]).l(false);
     }
     for (;;)
     {
       return 7;
-      if ((this.a[0] != null) && ((this.a[0] instanceof biim))) {
-        ((biim)this.a[0]).l(false);
+      if ((this.a[0] != null) && ((this.a[0] instanceof bijd))) {
+        ((bijd)this.a[0]).l(false);
       }
     }
   }

@@ -1,10 +1,6 @@
 public abstract interface bfqk
 {
-  public abstract int a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(int paramInt);
+  public abstract void a();
 }
 
 

@@ -5,16 +5,16 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
-import wym;
+import wyj;
 
 public class TroopMemberApiService$IncomingHandler$2
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$2(wym paramwym, int paramInt) {}
+  public TroopMemberApiService$IncomingHandler$2(wyj paramwyj, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Wym.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
+    Object localObject = this.jdField_a_of_type_Wyj.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();

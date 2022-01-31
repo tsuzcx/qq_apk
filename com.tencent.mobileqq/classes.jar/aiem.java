@@ -1,24 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class aiem
-  implements View.OnClickListener
+class aiem
+  implements DialogInterface.OnClickListener
 {
-  public aiem(SelectMemberActivity paramSelectMemberActivity) {}
+  aiem(aiel paramaiel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d == 27)
-    {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
+    if (this.a.a.d == 36) {
+      if (this.a.a.a == 1) {
+        this.a.a.m();
+      }
     }
-    this.a.finish();
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      axqy.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
+      return;
+      this.a.a.a();
+      continue;
+      this.a.a.a();
+    }
   }
 }
 

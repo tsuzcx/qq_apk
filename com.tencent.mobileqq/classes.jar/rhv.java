@@ -1,19 +1,17 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rhv
-  extends bfzg<RecyclerView.Adapter>
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rhv(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
-  {
-    super(paramAdapter);
-  }
+  public rhv(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
   
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onGlobalLayout()
   {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

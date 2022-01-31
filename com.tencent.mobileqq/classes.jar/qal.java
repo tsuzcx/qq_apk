@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public final class qal
-  implements Parcelable.Creator<AdvertisementInfo>
+  implements Parcelable.Creator<ArticleInfo>
 {
-  public AdvertisementInfo a(Parcel paramParcel)
+  public ArticleInfo a(Parcel paramParcel)
   {
-    return new AdvertisementInfo(paramParcel);
+    return new ArticleInfo(paramParcel);
   }
   
-  public AdvertisementInfo[] a(int paramInt)
+  public ArticleInfo[] a(int paramInt)
   {
-    return new AdvertisementInfo[paramInt];
+    return new ArticleInfo[paramInt];
   }
 }
 

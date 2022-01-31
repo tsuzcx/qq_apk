@@ -1,49 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class bkuh
-  implements aysa
+public class bkuh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bkuh(bkue parambkue) {}
+  public bkuh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onResp(aysx paramaysx)
+  public void onGlobalLayout()
   {
-    Object localObject = (FilterDesc)paramaysx.jdField_a_of_type_Aysw.a();
-    if (paramaysx.jdField_a_of_type_Int != 0) {
-      lcl.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramaysx.b + ", errorMsg: " + paramaysx.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
+    this.a.f = this.a.a.getWidth();
+    this.a.g = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
     }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysx.jdField_a_of_type_Aysw.c)))
-      {
-        lcl.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bbdj.d(paramaysx.jdField_a_of_type_Aysw.c);
-        return;
-      }
-      lcl.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = bkue.b;
-        bbdj.a(paramaysx.jdField_a_of_type_Aysw.c, (String)localObject, false);
-        bbdj.d(paramaysx.jdField_a_of_type_Aysw.c);
-        if ((bkue.a(this.a).decrementAndGet() == 0) && (bkue.a(this.a) != null))
-        {
-          bkue.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramaysx)
-      {
-        paramaysx.printStackTrace();
-        lcl.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

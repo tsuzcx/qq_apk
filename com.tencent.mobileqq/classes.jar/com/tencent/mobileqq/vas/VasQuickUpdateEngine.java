@@ -4,16 +4,16 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Proxy;
 import android.os.Build.VERSION;
-import apvk;
-import ayxe;
-import ayxq;
-import ayxr;
+import apvm;
+import ayxg;
 import ayxs;
-import bbpx;
-import bbqb;
+import ayxt;
+import ayxu;
+import bbql;
 import bbqp;
-import bbso;
-import bbsy;
+import bbrd;
+import bbtc;
+import bbtm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,7 +33,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nam;
+import naj;
 
 public class VasQuickUpdateEngine
 {
@@ -47,7 +47,7 @@ public class VasQuickUpdateEngine
   private static VasQuickUpdateEngine mInstance;
   AtomicBoolean engineReady = new AtomicBoolean(false);
   public long mUpdateManagerInstance;
-  public WeakReference<bbqp> mWeakHandler;
+  public WeakReference<bbrd> mWeakHandler;
   ArrayList<VasQuickUpdateEngine.PendingTask> pendingTasks = new ArrayList();
   
   private VasQuickUpdateEngine()
@@ -138,7 +138,7 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "getNetType");
     }
-    int j = nam.a();
+    int j = naj.a();
     int i = j;
     if (j == 5) {
       i = 1;
@@ -152,7 +152,7 @@ public class VasQuickUpdateEngine
     QLog.d("VasQuickUpdateEngine", 1, "initEngine: createManager");
     if (this.mUpdateManagerInstance != 0L)
     {
-      nativeSetLocalInfo(this.mUpdateManagerInstance, "2", "8.2.8.4440", ThemeUtil.getThemeDensity(BaseApplicationImpl.getApplication()));
+      nativeSetLocalInfo(this.mUpdateManagerInstance, "2", "8.3.0.4480", ThemeUtil.getThemeDensity(BaseApplicationImpl.getApplication()));
       this.engineReady.set(true);
       nativeupdateAllItem(this.mUpdateManagerInstance);
       runPendingTasks();
@@ -166,12 +166,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "isFileExists bid = " + paramLong + " scid = " + paramString);
     }
-    bbso localbbso = bbsy.a(paramLong);
+    bbtc localbbtc = bbtm.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "isFileExists: get null app " + paramString);
     }
-    return (localbbso != null) && (localbbso.isFileExists(localQQAppInterface, paramLong, paramString));
+    return (localbbtc != null) && (localbbtc.isFileExists(localQQAppInterface, paramLong, paramString));
   }
   
   private void loadSo()
@@ -187,7 +187,7 @@ public class VasQuickUpdateEngine
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      ((ayxq)((QQAppInterface)localAppRuntime).getManager(193)).a(paramString, paramLong);
+      ((ayxs)((QQAppInterface)localAppRuntime).getManager(193)).a(paramString, paramLong);
       return;
     }
     QLog.e("VasQuickUpdateEngine", 1, "onPreloadDownloadComplete app is not QQAppInterface");
@@ -203,9 +203,9 @@ public class VasQuickUpdateEngine
     if ((localObject instanceof QQAppInterface))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      localObject = (ayxq)localQQAppInterface.getManager(193);
-      paramString4 = new ayxr(localQQAppInterface, paramString1, paramString4, 4000L);
-      ((ayxq)localObject).a(10019, "vas", paramString1, ((Integer)ayxs.c.get(Integer.valueOf(10019))).intValue(), paramString2, paramString3, 2, 0, true, paramString4);
+      localObject = (ayxs)localQQAppInterface.getManager(193);
+      paramString4 = new ayxt(localQQAppInterface, paramString1, paramString4, 4000L);
+      ((ayxs)localObject).a(10019, "vas", paramString1, ((Integer)ayxu.c.get(Integer.valueOf(10019))).intValue(), paramString2, paramString3, 2, 0, true, paramString4);
       return;
     }
     QLog.e("VasQuickUpdateEngine", 1, "onPreloadDownloadStart app is not QQAppInterface");
@@ -296,9 +296,9 @@ public class VasQuickUpdateEngine
         localObject = this.mWeakHandler;
         if (localObject != null)
         {
-          localObject = (bbqp)((WeakReference)localObject).get();
+          localObject = (bbrd)((WeakReference)localObject).get();
           if (localObject != null) {
-            return ((bbqp)localObject).a(paramString, paramArrayOfByte);
+            return ((bbrd)localObject).a(paramString, paramArrayOfByte);
           }
         }
         QLog.e("VasQuickUpdateEngine", 1, "sendPbMsg: error VasExtensionHandler = null");
@@ -1068,12 +1068,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "canUpdate bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
     }
-    bbso localbbso = bbsy.a(paramLong);
+    bbtc localbbtc = bbtm.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "canUpdate: get null app " + paramString1);
     }
-    return (localbbso != null) && (localbbso.canUpdate(localQQAppInterface, paramLong, paramString1, paramString2));
+    return (localbbtc != null) && (localbbtc.canUpdate(localQQAppInterface, paramLong, paramString1, paramString2));
   }
   
   public void cancelDwonloadItem(long paramLong, String paramString)
@@ -1113,12 +1113,12 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "deleteFiles bid = " + paramLong + " scid = " + paramString);
     }
-    bbso localbbso = bbsy.a(paramLong);
+    bbtc localbbtc = bbtm.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "deleteFiles: get null app " + paramString);
     }
-    return (localbbso != null) && (localbbso.deleteFiles(localQQAppInterface, paramLong, paramString));
+    return (localbbtc != null) && (localbbtc.deleteFiles(localQQAppInterface, paramLong, paramString));
   }
   
   public void doLoad()
@@ -1203,12 +1203,12 @@ public class VasQuickUpdateEngine
   
   public ArrayList<String> getDirectConnectIpsByHost(String paramString)
   {
-    boolean bool = apvk.a();
-    Object localObject = ayxe.a();
+    boolean bool = apvm.a();
+    Object localObject = ayxg.a();
     if (bool) {}
     for (int i = 28;; i = 1)
     {
-      localObject = ((ayxe)localObject).a(paramString, 1014, true, i);
+      localObject = ((ayxg)localObject).a(paramString, 1014, true, i);
       if (QLog.isColorLevel()) {
         QLog.d("VasQuickUpdateEngine", 2, "getDirectConnectIpsByHost host = " + paramString + " isIPv6 = " + bool + " ip = " + localObject);
       }
@@ -1221,15 +1221,15 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "getItemInfo bid = " + paramLong + " scid = " + paramString);
     }
-    bbso localbbso = bbsy.a(paramLong);
+    bbtc localbbtc = bbtm.a(paramLong);
     QQAppInterface localQQAppInterface = getApp();
     if (localQQAppInterface == null) {
       QLog.e("VasQuickUpdateEngine", 1, "getItemInfo: get null app " + paramString);
     }
-    if (localbbso == null) {
+    if (localbbtc == null) {
       return null;
     }
-    return localbbso.getItemInfo(localQQAppInterface, paramLong, paramString);
+    return localbbtc.getItemInfo(localQQAppInterface, paramLong, paramString);
   }
   
   public native void nativeCancelDownload(long paramLong1, long paramLong2, String paramString);
@@ -1259,14 +1259,14 @@ public class VasQuickUpdateEngine
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("VasQuickUpdateEngine", 1, "onCompleted bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString3 + " dlFrom = " + paramInt1 + " errorCode = " + paramInt2 + " httpCode = " + paramInt3);
-    bbso localbbso = bbsy.a(paramLong);
-    if (localbbso != null)
+    bbtc localbbtc = bbtm.a(paramLong);
+    if (localbbtc != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onCompleted: get null app " + paramString1);
       }
-      localbbso.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
+      localbbtc.onCompleted(localQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
     }
   }
   
@@ -1282,14 +1282,14 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "onProgress bid = " + paramLong1 + " scid = " + paramString1 + " cfgScid = " + paramString2 + "dwProgress = " + paramLong2 + " dwProgressMax = " + paramLong3);
     }
-    bbso localbbso = bbsy.a(paramLong1);
-    if (localbbso != null)
+    bbtc localbbtc = bbtm.a(paramLong1);
+    if (localbbtc != null)
     {
       QQAppInterface localQQAppInterface = getApp();
       if (localQQAppInterface == null) {
         QLog.e("VasQuickUpdateEngine", 1, "onProgress: get null app " + paramString1);
       }
-      localbbso.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localbbtc.onProgress(localQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.graytip;
 
 import android.os.Handler;
 import android.os.Looper;
-import aquu;
-import ayog;
-import aywk;
+import aquw;
+import ayoi;
+import aywm;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.io.File;
@@ -13,11 +13,11 @@ import java.net.URL;
 public class UniteGrayTipItemBuilder$1
   implements Runnable
 {
-  public UniteGrayTipItemBuilder$1(aquu paramaquu, MessageRecord paramMessageRecord) {}
+  public UniteGrayTipItemBuilder$1(aquw paramaquw, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    File localFile = ayog.a(aywk.a((MessageForPic)this.a, 1, null).toString());
+    File localFile = ayoi.a(aywm.a((MessageForPic)this.a, 1, null).toString());
     if ((localFile == null) || (!localFile.exists())) {
       new Handler(Looper.getMainLooper()).post(new UniteGrayTipItemBuilder.1.1(this));
     }

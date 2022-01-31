@@ -1,24 +1,22 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class txd
-  implements twv
+class txd
+  implements syq<tmq, tmr>
 {
-  private final txc a;
+  txd(txc paramtxc, twr paramtwr) {}
   
-  public txd(txc paramtxc)
+  public void a(@NonNull tmq paramtmq, @Nullable tmr paramtmr, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramtxc;
-  }
-  
-  public void a(tww paramtww)
-  {
-    Stream localStream2 = Stream.of(this.a.a).map(new ThreadOffFunction("Q.qqstory.player.data.MsgTabPlayPageLoader", 2)).map(new tfy("Q.qqstory.player.data.MsgTabPlayPageLoader", this.a.c, this.a.d, this.a));
-    Stream localStream1 = localStream2;
-    if (this.a.a.a == 5) {
-      localStream1 = localStream2.map(new tfv()).map(new tfl(this.a.a));
+    if ((paramErrorMessage.isFail()) || (paramtmr == null))
+    {
+      ved.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Twr.a(paramErrorMessage, null, false);
+      return;
     }
-    localStream1.subscribe(new txe(this, paramtww));
+    this.jdField_a_of_type_Txc.a.a(paramtmr.jdField_a_of_type_JavaUtilList, paramtmr.jdField_a_of_type_JavaLangString, paramtmr.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Twr.a(paramErrorMessage, tvz.b(paramtmr.jdField_a_of_type_JavaUtilList), paramtmr.jdField_a_of_type_Boolean);
   }
 }
 

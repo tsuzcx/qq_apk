@@ -1,9 +1,31 @@
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.view.View;
+import android.view.ViewGroup;
 
-public abstract interface bcsn
+public class bcsn
 {
-  public abstract void a(SimpleMonthView paramSimpleMonthView, CalendarDay paramCalendarDay, Object paramObject);
+  private static long jdField_a_of_type_Long = 400L;
+  private static boolean jdField_a_of_type_Boolean;
+  
+  public static void a()
+  {
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static void a(ViewGroup paramViewGroup)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    jdField_a_of_type_Boolean = true;
+    paramViewGroup.invalidate();
+    View localView = paramViewGroup.getChildAt(0);
+    paramViewGroup = paramViewGroup.getChildAt(1);
+    bcrc localbcrc = new bcrc(paramViewGroup);
+    localbcrc.setDuration(jdField_a_of_type_Long);
+    localbcrc.setFillAfter(true);
+    localbcrc.setAnimationListener(new bcso(localView, paramViewGroup));
+    paramViewGroup.startAnimation(localbcrc);
+  }
 }
 
 

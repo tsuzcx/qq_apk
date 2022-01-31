@@ -1,28 +1,72 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-class uao
-  implements ucj
+public class uao
+  implements ucq
 {
-  private uao(ual paramual) {}
+  public uao(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, int paramInt, Object paramObject)
+  public void a(int paramInt)
   {
-    return false;
+    ved.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
+    int i = this.a.b;
+    this.a.b = paramInt;
+    Object localObject = this.a.a();
+    if (localObject != null)
+    {
+      localObject = (ubb)((uaz)localObject).a(ubb.class);
+      if ((localObject != null) && (((ubb)localObject).b.getVisibility() != 0)) {
+        this.a.a(true, true);
+      }
+    }
+    localObject = (tzo)this.a.b(tzo.class);
+    if (localObject != null) {
+      ((tzo)localObject).a().a(paramInt);
+    }
+    c(paramInt);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
+    }
   }
   
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc, boolean paramBoolean)
+  public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    return this.a.a.a(paramVideoViewVideoHolder, paramudc, paramBoolean);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    }
+    tzo localtzo = (tzo)this.a.b(tzo.class);
+    if (localtzo != null) {
+      localtzo.a().a(paramInt1, paramFloat, paramInt2);
+    }
   }
   
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc) {}
+  public void b(int paramInt)
+  {
+    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
+    {
+      ((tzo)this.a.b(tzo.class)).d();
+      ved.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+    }
+    tzo localtzo = (tzo)this.a.b(tzo.class);
+    if (localtzo != null) {
+      localtzo.a().b(paramInt);
+    }
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
+    }
+  }
   
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, udc paramudc) {}
+  public void c(int paramInt)
+  {
+    ved.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
+    uaz localuaz = this.a.a();
+    if ((localuaz != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Twl.jdField_a_of_type_JavaLangString)) && (!localuaz.c()))
+    {
+      ved.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localuaz);
+      this.a.a(localuaz);
+    }
+  }
 }
 
 

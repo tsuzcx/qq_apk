@@ -1,65 +1,19 @@
-import android.view.View;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class qqv
-  implements qnb
+  extends osm
 {
   private qqv(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void j()
   {
-    boolean bool2 = true;
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
+    if ((this.a.getActivity() instanceof VideoFeedsPlayActivity))
     {
-      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
-      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
-      {
-        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
-        if (paramBoolean) {
-          break label201;
-        }
-        bool1 = true;
-        localVideoFeedsRecyclerView.setScrollable(bool1);
-      }
+      ((VideoFeedsPlayActivity)this.a.getActivity()).d();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    if (paramBoolean)
-    {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      label112:
-      if (!VideoFeedsRecommendFragment.b(this.a))
-      {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label223;
-        }
-      }
-    }
-    label201:
-    label223:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool1);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
-      {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
-      }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
-      return;
-      bool1 = false;
-      break;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break label112;
-    }
-  }
-  
-  public void b()
-  {
-    this.a.b(true);
   }
 }
 

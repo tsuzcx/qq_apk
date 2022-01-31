@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class PhoneNumInfo
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String phoneNum;
   public String uin;
 }

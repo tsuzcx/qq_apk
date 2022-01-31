@@ -1,37 +1,29 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TencentDocData;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class aasj
-  extends aouj
+class aasj
+  implements View.OnClickListener
 {
-  private aasj(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  aasj(aash paramaash) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public void onClick(View paramView)
   {
-    if ((bici.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((bici.a(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatHistoryFIleActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bici.a(paramInt2)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    if ((paramView.getTag() instanceof String)) {}
+    do
+    {
+      return;
+      paramView = (aimb)paramView.getTag();
+      if ((paramView.a instanceof FileManagerEntity))
+      {
+        paramView = (FileManagerEntity)paramView.a;
+        this.a.a(paramView);
+        return;
+      }
+    } while (!(paramView.a instanceof TencentDocData));
+    paramView = (TencentDocData)paramView.a;
+    this.a.a(paramView);
   }
 }
 

@@ -1,121 +1,44 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.av.doodle.DoodleSurfaceView;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 
-public class lmi
+public abstract class lmi
+  extends lly
 {
-  public static boolean a;
+  protected Path a;
+  protected PathMeasure a;
   
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
+  public lmi()
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
   }
   
-  public static int a(int[] paramArrayOfInt, float paramFloat)
+  public abstract void a();
+  
+  public void a(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat <= 0.0F) {
-      return paramArrayOfInt[0];
-    }
-    if (paramFloat >= 1.0F) {
-      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
-    }
-    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
-    int j = (int)paramFloat;
-    paramFloat -= j;
-    int i = paramArrayOfInt[j];
-    j = paramArrayOfInt[(j + 1)];
-    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
+    super.a(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
   
-  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
+  public void b(float paramFloat1, float paramFloat2)
   {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131372240);
-    Object localObject1 = localObject2;
-    View localView;
-    if (localObject2 == null)
-    {
-      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
-      localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131372532);
-      if (localView == null) {
-        break label67;
-      }
-    }
-    label67:
-    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
-    {
-      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
   
-  public static lmd a(int paramInt)
+  public void c(float paramFloat1, float paramFloat2)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      localObject = new lmj();
-    }
-    for (;;)
-    {
-      ((lmd)localObject).a = paramInt;
-      return localObject;
-      localObject = new lmj();
-      continue;
-      localObject = new lmo(2130968654);
-    }
-  }
-  
-  public static void a(ViewGroup paramViewGroup)
-  {
-    View localView = paramViewGroup.findViewById(2131372240);
-    if (localView != null) {
-      paramViewGroup.removeView(localView);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    axqw.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a()
-  {
-    if (a) {
-      return true;
-    }
-    if (!b()) {
-      return false;
-    }
-    a = true;
-    return a;
-  }
-  
-  public static boolean b()
-  {
-    int i = lmb.e();
-    if (i < 4)
-    {
-      lcl.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
-      return false;
-    }
-    long l = lmb.c();
-    if (l < 1400000L)
-    {
-      lcl.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
-      return false;
-    }
-    l = bbct.d();
-    if (l < 1073741824L)
-    {
-      lcl.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
-      return false;
-    }
-    return true;
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
   }
 }
 

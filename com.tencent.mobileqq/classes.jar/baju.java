@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class baju
-  implements FilenameFilter
+final class baju
+  implements DialogInterface.OnClickListener
 {
-  public baju(TroopFileTransferManager.1 param1) {}
+  baju(long paramLong) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {
-      return false;
+    switch (paramInt)
+    {
     }
-    return paramString.startsWith("[Thumb]");
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      TroopFileTransferManager.i();
+      continue;
+      TroopFileTransferManager.a(this.a);
+    }
   }
 }
 

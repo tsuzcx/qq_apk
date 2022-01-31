@@ -1,23 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
 
 public class acpw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public acpw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acpw(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, auww paramauww, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    int i = 1;
+    int j;
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nam.a(), paramDialogInterface, "0");
-      this.a.finish();
+      j = 1;
+      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
+        break label136;
+      }
+      if (!((ataj)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
+        break label131;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Auww, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
       return;
+      j = 0;
+      break;
+      label131:
+      i = 0;
+      continue;
+      label136:
+      i = k;
     }
   }
 }

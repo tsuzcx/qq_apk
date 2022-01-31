@@ -1,38 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
+import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-final class tzf
-  extends AnimatorListenerAdapter
+public class tzf
+  extends tzh
 {
-  tzf(Animator.AnimatorListener paramAnimatorListener, ViewGroup paramViewGroup, ImageView paramImageView) {}
+  private ElasticImageView a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public tzf(@NonNull ViewGroup paramViewGroup)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    super(paramViewGroup);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected View a(ViewGroup paramViewGroup)
   {
-    veg.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation, onAnimationEnd");
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    paramAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    paramAnimator.setStartDelay(400L);
-    paramAnimator.setDuration(400L);
-    paramAnimator.addUpdateListener(new tzg(this));
-    paramAnimator.addListener(new tzh(this));
-    paramAnimator.start();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364274));
+    this.a.setOnClickListener(new tzg(this));
+    return this.a;
   }
 }
 

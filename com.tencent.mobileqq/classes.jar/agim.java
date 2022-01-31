@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class agim
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
   public agim(BaseActivityView paramBaseActivityView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.f();
+    return (paramInt == 4) && (this.a.a.e()) && (bbfj.d(this.a.getContext()));
   }
 }
 

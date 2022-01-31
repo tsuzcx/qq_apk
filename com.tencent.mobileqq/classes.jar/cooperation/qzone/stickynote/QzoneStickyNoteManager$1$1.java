@@ -1,6 +1,6 @@
 package cooperation.qzone.stickynote;
 
-import bhna;
+import bhnr;
 
 class QzoneStickyNoteManager$1$1
   implements Runnable

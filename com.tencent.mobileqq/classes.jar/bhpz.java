@@ -1,118 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bhpz
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
-      return;
-      axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, new HashMap(), null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
-  }
+  static volatile String a = null;
   
-  public static void a(String paramString1, String paramString2, long paramLong)
+  private static Object a(Object paramObject)
   {
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, paramLong, 0L, new HashMap(), null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " duration:" + paramLong);
+    Object localObject1 = (WifiManager)BaseApplication.getContext().getSystemService("wifi");
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return paramObject;
+      try
+      {
+        localObject1 = ((WifiManager)localObject1).getConnectionInfo();
+        if (localObject1 == null) {
+          continue;
+        }
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Object localObject2 = null;
+        }
+      }
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public static String a()
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
+    if (a == null) {}
+    try
     {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
+      if (a == null) {
+        b();
       }
-      localHashMap.put("refer", str);
-      axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", paramString3);
-    localHashMap.put("reserve", paramString4);
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " resultCode:" + paramString3 + " reserve:" + paramString4);
+      if (("N/A".equals(a)) || ("00:00:00:00:00:00".equals(a)) || ("FF:FF:FF:FF:FF:FF".equalsIgnoreCase(a))) {
+        return null;
+      }
     }
+    finally {}
+    return a;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static String b()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString3, paramString4);
-    localHashMap.put("reserve", paramString5);
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " key:" + paramString3 + " value:" + paramString4 + ", reserve:" + paramString5);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(paramHashMap);
-    axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2);
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
+    for (;;)
     {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
+      try
+      {
+        Object localObject1 = a("N/A");
+        if (localObject1 != "N/A")
+        {
+          String str = ((WifiInfo)localObject1).getBSSID();
+          localObject1 = str;
+          if (str == null) {
+            localObject1 = "N/A";
+          }
+          a = (String)localObject1;
+          return localObject1;
+        }
       }
-      localHashMap.put("event_result", str);
-      axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str);
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    String str;
-    do
-    {
-      return;
-      HashMap localHashMap = new HashMap();
-      str = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        str = "unfinedsource";
-      }
-      paramString3 = paramString4;
-      if (TextUtils.isEmpty(paramString4)) {
-        paramString3 = "0";
-      }
-      localHashMap.put("refer", str);
-      localHashMap.put("type", paramString3);
-      axrl.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, localHashMap, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneVideoBeaconReport", 2, "event:" + paramString2 + " refer = " + str + "type =" + paramString3);
+      finally {}
+      Object localObject3 = null;
+    }
   }
 }
 

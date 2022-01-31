@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 
 public final class nph
-  implements Parcelable.Creator<VideoInfo.ClassInfo>
+  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
 {
-  public VideoInfo.ClassInfo a(Parcel paramParcel)
+  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
   {
-    return new VideoInfo.ClassInfo(paramParcel);
+    return new VideoInfo.EntranceDownloadInfo(paramParcel);
   }
   
-  public VideoInfo.ClassInfo[] a(int paramInt)
+  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
   {
-    return new VideoInfo.ClassInfo[paramInt];
+    return new VideoInfo.EntranceDownloadInfo[paramInt];
   }
 }
 

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.os.SystemClock;
-import avbz;
-import avcs;
+import avcb;
 import avcu;
-import aytl;
-import bbis;
+import avcw;
+import aytn;
+import bbjg;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PipedInputStream;
 
 public final class SilkCodecWrapper
-  extends avcu
+  extends avcw
 {
   private static boolean jdField_b_of_type_Boolean;
   long jdField_a_of_type_Long;
@@ -37,7 +37,7 @@ public final class SilkCodecWrapper
   {
     if (!jdField_b_of_type_Boolean)
     {
-      avbz.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
+      avcb.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
       jdField_b_of_type_Boolean = true;
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -79,7 +79,7 @@ public final class SilkCodecWrapper
     return 0;
   }
   
-  public avcs a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public avcu a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     long l = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
@@ -106,11 +106,11 @@ public final class SilkCodecWrapper
       if (this.jdField_a_of_type_Boolean) {}
       for (this.jdField_a_of_type_Long = SilkEncoderNew(paramInt1, paramInt2);; this.jdField_a_of_type_Long = SilkDecoderNew(paramInt1, paramInt2))
       {
-        this.jdField_a_of_type_Int = bbis.a(paramInt1);
+        this.jdField_a_of_type_Int = bbjg.a(paramInt1);
         this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_Avcs = new avcs(this.jdField_c_of_type_ArrayOfByte, 0);
+        this.jdField_a_of_type_Avcu = new avcu(this.jdField_c_of_type_ArrayOfByte, 0);
         return;
       }
     }
@@ -137,7 +137,7 @@ public final class SilkCodecWrapper
         if (!this.jdField_a_of_type_Boolean) {
           break label62;
         }
-        aytl.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 0);
+        aytn.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 0);
       }
     }
     for (;;)
@@ -145,7 +145,7 @@ public final class SilkCodecWrapper
       this.jdField_a_of_type_Long = 0L;
       return;
       label62:
-      aytl.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 1);
+      aytn.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 1);
     }
   }
   
@@ -172,7 +172,7 @@ public final class SilkCodecWrapper
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_c_of_type_Int = encode(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
     }
-    bbis.a(this.jdField_c_of_type_Int, paramArrayOfByte, paramInt1);
+    bbjg.a(this.jdField_c_of_type_Int, paramArrayOfByte, paramInt1);
     System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1 + 2, this.jdField_c_of_type_Int);
     return this.jdField_c_of_type_Int + 2;
   }

@@ -1,25 +1,37 @@
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
+
 public class viy
+  implements aigo
 {
-  @vym(a="tag_type")
-  public int a;
-  @vym(a="tag_id")
-  public long a;
-  @vym(a="tag_name")
-  public String a;
-  @vym(a="join_count")
-  public int b;
-  @vym(a="tag_desc")
-  public String b;
-  @vym(a="music_type")
-  public int c;
-  @vym(a="wording")
-  public String c;
-  @vym(a="music_id")
-  public String d;
-  @vym(a="music_title")
-  public String e;
-  @vym(a="music_download_url")
-  public String f;
+  public viy(EditWebVideoActivity paramEditWebVideoActivity) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    int i = ((viz)this.a.a).a;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
+    {
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      return;
+      paramInt3 = i;
+    }
+  }
 }
 
 

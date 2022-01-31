@@ -1,16 +1,32 @@
 public class lqs
-  implements lqr
 {
-  public void a(lqq paramlqq) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
   
-  public boolean a(lqq paramlqq)
+  public float a()
   {
-    return false;
+    return this.jdField_a_of_type_Float;
   }
   
-  public boolean b(lqq paramlqq)
+  public int a()
   {
-    return true;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat >= 0.0F) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bfmz.a(bool);
+      this.jdField_a_of_type_Float = paramFloat;
+      return;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

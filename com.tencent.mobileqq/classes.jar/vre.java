@@ -1,24 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class vre
-  implements vrd
+  implements DialogInterface.OnClickListener
 {
   public vre(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.c(true);
-  }
-  
-  public void a(vrn paramvrn)
-  {
-    this.a.b(paramvrn);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    this.a.a.g();
+    paramDialogInterface.dismiss();
+    this.a.dismiss();
   }
 }
 

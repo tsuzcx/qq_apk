@@ -1,16 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 class aepa
-  extends ayfl
+  implements View.OnClickListener
 {
-  aepa(aeoo paramaeoo) {}
+  aepa(aeom paramaeom) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onClick(View paramView)
   {
-    ayfv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeoo.e(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    ayfv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeoo.f(this.a), paramBoolean, paramArrayOfObject);
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
+    aekp.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class awul
-  extends awur
+public final class awul
+  implements ThreadFactory
 {
-  public awul(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
-  }
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public awof a(List<awog> paramList, String paramString)
+  public Thread newThread(Runnable paramRunnable)
   {
-    return new awny(paramList, paramString, GroupSearchEngine.a(this.a));
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

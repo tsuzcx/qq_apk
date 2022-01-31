@@ -1,17 +1,19 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class aszs
+class aszs
+  implements View.OnClickListener
 {
-  public int a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public URLImageView b;
-  public URLImageView c;
+  aszs(aszq paramaszq) {}
+  
+  public void onClick(View paramView)
+  {
+    aszu localaszu = (aszu)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.onItemClick(null, paramView, localaszu.a, localaszu.a);
+    }
+  }
 }
 
 

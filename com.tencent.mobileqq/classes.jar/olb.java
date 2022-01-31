@@ -1,20 +1,6 @@
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-
-public class olb
+public abstract interface olb
 {
-  @TargetApi(16)
-  public static void a(View paramView, Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(paramDrawable);
-      return;
-    }
-    paramView.setBackgroundDrawable(paramDrawable);
-  }
+  public abstract void a(String paramString, Object paramObject);
 }
 
 

@@ -1,71 +1,74 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 public class aewt
-  extends aewe
+  extends ampa<aews>
 {
-  private Collection<String> a;
-  
-  public aewt(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    super(paramQQAppInterface);
+    return 410;
   }
   
-  private List<aews> b(String paramString)
+  @NonNull
+  public aews a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (anrz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
-    aexd localaexd = aexd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localObject = ((anrz)localObject).a();
-    if (localObject != null)
+    return new aews();
+  }
+  
+  @Nullable
+  public aews a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
-        if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localaexd.b(localCameraEmotionData.strContext)))) {
-          localArrayList.add(new aews(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCameraEmotionData));
-        }
-      }
-    }
-    if (localArrayList.isEmpty())
-    {
+      aews localaews = aews.a(paramArrayOfamph[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("StickerRecCameraEmoticonHandleListener", 2, "findMatchCameraEmoticons matchList is null or empty,keyWord: " + bbbd.a(paramString));
+        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      return null;
+      return localaews;
     }
-    return localArrayList;
+    return null;
   }
   
-  public List<aews> a(String paramString)
+  public Class<aews> a()
   {
-    return b(paramString);
+    return aews.class;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilCollection = aexd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-  }
+  public void a(int paramInt) {}
   
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public void a(aews paramaews)
   {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
-      a();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      String str = ((QQAppInterface)localObject).c();
+      aexb.a(BaseApplicationImpl.getApplication(), str, paramaews.a());
+      aexb.a((QQAppInterface)localObject, paramaews.a());
     }
-    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

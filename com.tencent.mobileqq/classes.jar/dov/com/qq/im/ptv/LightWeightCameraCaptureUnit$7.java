@@ -1,18 +1,18 @@
 package dov.com.qq.im.ptv;
 
-import ajyc;
-import bcpw;
-import bjoz;
+import ajya;
+import bcql;
+import bjpq;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LightWeightCameraCaptureUnit$7
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$7(bjoz parambjoz) {}
+  public LightWeightCameraCaptureUnit$7(bjpq parambjpq) {}
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131706076), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131706087), 0).a();
     this.this$0.r();
   }
 }

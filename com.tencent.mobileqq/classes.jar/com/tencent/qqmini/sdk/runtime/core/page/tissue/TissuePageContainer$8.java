@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page.tissue;
 
-import bfca;
+import bfcr;
 import io.flutter.plugin.common.BasicMessageChannel;
 import java.util.Map;
 
 public class TissuePageContainer$8
   implements Runnable
 {
-  public TissuePageContainer$8(bfca parambfca, Map paramMap) {}
+  public TissuePageContainer$8(bfcr parambfcr, Map paramMap) {}
   
   public void run()
   {

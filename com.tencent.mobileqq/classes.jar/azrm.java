@@ -1,18 +1,8 @@
-import android.content.Context;
-import android.widget.ScrollView;
-
-class azrm
-  extends ScrollView
+public class azrm
 {
-  azrm(azrl paramazrl, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void setOverScrollMode(int paramInt)
-  {
-    super.setOverScrollMode(2);
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
 }
 
 

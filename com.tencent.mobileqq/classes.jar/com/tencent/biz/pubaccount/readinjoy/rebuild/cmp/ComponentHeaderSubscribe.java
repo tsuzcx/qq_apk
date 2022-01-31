@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import awvy;
-import bbca;
+import awwa;
+import bbco;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import noo;
-import omm;
-import onk;
+import nol;
+import omj;
+import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pax;
-import pvb;
-import pxm;
-import rap;
-import shx;
+import pau;
+import puy;
+import pxj;
+import ram;
+import shu;
 import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
 
 public class ComponentHeaderSubscribe
@@ -50,10 +50,10 @@ public class ComponentHeaderSubscribe
   
   private long a()
   {
-    if (this.jdField_a_of_type_Pvb.a.c() == 3) {
+    if (this.jdField_a_of_type_Puy.a.c() == 3) {
       try
       {
-        long l = Long.parseLong(this.jdField_a_of_type_Pvb.a.a().mSubscribeID);
+        long l = Long.parseLong(this.jdField_a_of_type_Puy.a.a().mSubscribeID);
         return l;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -66,18 +66,18 @@ public class ComponentHeaderSubscribe
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_Pvb.a;
-    if (((pax)localObject).c() == 3)
+    Object localObject = this.jdField_a_of_type_Puy.a;
+    if (((pau)localObject).c() == 3)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (!((pax)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
+      if (!((pau)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
     }
     label193:
     for (;;)
     {
       try
       {
-        localObject = ((pax)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
+        localObject = ((pau)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
         if (((String)localObject).length() <= 4) {
           break label193;
         }
@@ -95,11 +95,11 @@ public class ComponentHeaderSubscribe
       {
         QLog.w("ComponentHeaderSubscribe", 1, "read field error", localException);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajyc.a(2131702261));
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajya.a(2131702272));
         return;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajyc.a(2131702279));
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajya.a(2131702290));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
@@ -108,13 +108,13 @@ public class ComponentHeaderSubscribe
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(onk.d(this.jdField_a_of_type_Pvb.a.a().mSubscribeName));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(onh.d(this.jdField_a_of_type_Puy.a.a().mSubscribeName));
   }
   
   private void f()
   {
-    String str = omm.k + bbca.encodeToString(String.valueOf(a()).getBytes(), 2);
-    onk.a(getContext(), str);
+    String str = omj.k + bbco.encodeToString(String.valueOf(a()).getBytes(), 2);
+    onh.a(getContext(), str);
     g();
   }
   
@@ -122,14 +122,14 @@ public class ComponentHeaderSubscribe
   {
     try
     {
-      JSONObject localJSONObject = onk.a();
-      localJSONObject.put("feeds_source", onk.c(this.jdField_a_of_type_Pvb.a.a()));
-      localJSONObject.put("kandian_mode", onk.e());
-      String str2 = onk.d(this.jdField_a_of_type_Pvb.a.a());
-      if (shx.a(this.jdField_a_of_type_Pvb.a.e())) {}
+      JSONObject localJSONObject = onh.a();
+      localJSONObject.put("feeds_source", onh.c(this.jdField_a_of_type_Puy.a.a()));
+      localJSONObject.put("kandian_mode", onh.e());
+      String str2 = onh.d(this.jdField_a_of_type_Puy.a.a());
+      if (shu.a(this.jdField_a_of_type_Puy.a.e())) {}
       for (String str1 = "0X8009357";; str1 = "0X800744D")
       {
-        noo.a(null, "CliOper", "", "", str1, str1, 0, 0, str2, "", "", localJSONObject.toString(), false);
+        nol.a(null, "CliOper", "", "", str1, str1, 0, 0, str2, "", "", localJSONObject.toString(), false);
         return;
       }
       return;
@@ -148,26 +148,26 @@ public class ComponentHeaderSubscribe
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131374731));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374747));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376692);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131374733));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374749));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376694);
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pax)) {
-      a((pax)paramObject);
+    if ((paramObject instanceof pau)) {
+      a((pau)paramObject);
     }
   }
   
-  public void a(pax parampax)
+  public void a(pau parampau)
   {
-    if ((parampax.a()) && (parampax.c() == 3)) {}
+    if ((parampau.a()) && (parampau.c() == 3)) {}
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((parampax.a()) && (parampax.c() == 3))
+      if ((parampau.a()) && (parampau.c() == 3))
       {
         setImage();
         e();
@@ -188,17 +188,17 @@ public class ComponentHeaderSubscribe
     long l = a();
     if (l != 0L)
     {
-      if (!onk.a()) {
+      if (!onh.a()) {
         break label52;
       }
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(awvy.a(this.jdField_a_of_type_Baxk, String.valueOf(l), 1));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(awwa.a(this.jdField_a_of_type_Baxy, String.valueOf(l), 1));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new pxm(this));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new pxj(this));
       return;
       label52:
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_Rap.a(l));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_Ram.a(l));
     }
   }
 }

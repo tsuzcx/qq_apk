@@ -1,17 +1,25 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ainu
+class ainu
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public andx a;
-  public ThemeImageView a;
+  ainu(aint paramaint) {}
   
-  public ainu(aint paramaint) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

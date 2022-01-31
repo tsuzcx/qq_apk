@@ -1,62 +1,41 @@
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class ahcf
+class ahcf
+  implements EIPClientConnectListener
 {
-  private static volatile ahcf jdField_a_of_type_Ahcf;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  ahcf(ahcd paramahcd, long paramLong) {}
   
-  public static ahcf a()
+  public void connectFailed()
   {
-    if (jdField_a_of_type_Ahcf == null) {}
-    try
+    ahcd.a(this.jdField_a_of_type_Ahcd, false);
+    ahcd.b(this.jdField_a_of_type_Ahcd, false);
+    synchronized (ahcd.a(this.jdField_a_of_type_Ahcd))
     {
-      if (jdField_a_of_type_Ahcf == null) {
-        jdField_a_of_type_Ahcf = new ahcf();
+      ahcd.a(this.jdField_a_of_type_Ahcd).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + ahcd.a(this.jdField_a_of_type_Ahcd));
       }
-      return jdField_a_of_type_Ahcf;
+      return;
     }
-    finally {}
   }
   
-  private void b()
+  public void connectSuccess(EIPCConnection arg1)
   {
-    this.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "begin connect:");
-    }
-    QIPCClientHelper.getInstance().getClient().addListener(new ahcg(this));
     long l = System.currentTimeMillis();
-    QIPCClientHelper.getInstance().getClient().connect(new ahch(this, l));
-  }
-  
-  public void a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
+    if (??? != null) {
+      ahcd.a(this.jdField_a_of_type_Ahcd, ???.procName);
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {}
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject.wait(500L);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
+    ahcd.a(this.jdField_a_of_type_Ahcd, true);
+    ahcd.b(this.jdField_a_of_type_Ahcd, false);
+    synchronized (ahcd.a(this.jdField_a_of_type_Ahcd))
+    {
+      ahcd.a(this.jdField_a_of_type_Ahcd).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + ahcd.a(this.jdField_a_of_type_Ahcd) + "|" + (l - this.jdField_a_of_type_Long));
       }
+      return;
     }
   }
 }

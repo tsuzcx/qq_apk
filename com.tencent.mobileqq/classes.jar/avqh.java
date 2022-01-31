@@ -1,47 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.remind.widget.WheelView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
-final class avqh
-  implements avqq
+public class avqh
+  extends BaseAdapter
 {
-  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
+  private int jdField_a_of_type_Int = 25;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private int c;
+  
+  public avqh(Context paramContext, String[] paramArrayOfString, int paramInt)
   {
-    Object localObject2 = null;
-    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
-      return -1L;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.b = paramContext.getColor(2131166937);
+    this.c = paramContext.getColor(2131166912);
+  }
+  
+  public View a(int paramInt)
+  {
+    return getView(paramInt, null, null);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
     }
-    String str2;
-    if (AppSetting.d)
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = null;
+    if (paramView == null)
     {
-      str2 = avql.a(paramArrayOfInt[0]);
-      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= avql.a.length)) {
-        break label206;
-      }
+      paramViewGroup = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
     }
-    label206:
-    for (String str1 = avql.a[paramArrayOfInt[1]];; str1 = null)
+    for (paramView = (WheelTextView)paramViewGroup;; paramView = (View)localObject)
     {
-      Object localObject1 = localObject2;
-      if (paramArrayOfInt[2] >= 0)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfInt[2] < avql.b.length) {
-          localObject1 = avql.b[paramArrayOfInt[2]];
-        }
+      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      localObject = paramView;
+      if (paramView == null) {
+        localObject = (WheelTextView)paramViewGroup;
       }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-      {
-        str1 = ajyc.a(2131713389) + str2 + str1 + ajyc.a(2131713387) + (String)localObject1 + ajyc.a(2131713388);
-        int j = paramArrayOfWheelView.length;
-        int i = 0;
-        while (i < j)
-        {
-          paramArrayOfWheelView[i].setContentDescription(str1);
-          i += 1;
-        }
-      }
-      return avql.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
+      ((WheelTextView)localObject).setTextSize(20.0F);
+      ((WheelTextView)localObject).setTextColor(this.b);
+      ((WheelTextView)localObject).setGravity(17);
+      ((WheelTextView)localObject).setText(str);
+      ((WheelTextView)localObject).setBackgroundColor(this.c);
+      return paramViewGroup;
+      paramViewGroup = paramView;
     }
   }
 }

@@ -1,11 +1,11 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class uzl
-  extends syv<uzm>
+  extends sys<uzm>
 {
-  public static final String a = sxp.a("StorySvc.get_user_guide");
+  public static final String a = sxm.a("StorySvc.get_user_base_info");
   
   public String a()
   {
@@ -14,25 +14,25 @@ public class uzl
   
   public uzm a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
     try
     {
-      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
-      return new uzm(localRspGetUserGuide);
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new uzm(localRspGetUserSelfInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       for (;;)
       {
         paramArrayOfByte.printStackTrace();
-        veg.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+        ved.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
       }
     }
   }
   
   protected byte[] a()
   {
-    return new qqstory_service.ReqGetUserGuide().toByteArray();
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 

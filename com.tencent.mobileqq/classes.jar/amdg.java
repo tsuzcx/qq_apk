@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import java.lang.ref.WeakReference;
 
-public abstract interface amdg
+public class amdg
 {
-  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
+  public int a;
+  public String a;
+  public WeakReference<amdf> a;
+  public int b = 0;
+  public int c = 0;
+  
+  public amdg()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
 }
 
 

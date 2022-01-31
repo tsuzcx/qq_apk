@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class adzj
-  implements View.OnClickListener
+  implements bcnl
 {
-  adzj(adzh paramadzh) {}
+  adzj(adzf paramadzf, adzp paramadzp) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)localObject;
-      axdw.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Adzp.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
     }
   }
 }

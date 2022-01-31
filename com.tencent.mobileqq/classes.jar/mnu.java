@@ -1,24 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class mnu
-  implements mne
+public abstract interface mnu
 {
-  public void a(int paramInt)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    mns.a(false, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    mns.a(true, 0);
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

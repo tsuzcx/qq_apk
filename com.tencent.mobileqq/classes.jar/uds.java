@@ -1,21 +1,18 @@
+import android.annotation.TargetApi;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
+
 public class uds
+  implements ufp
 {
-  @vym(a="clipNo")
-  int jdField_a_of_type_Int;
-  @vym(a="fileSize")
-  long jdField_a_of_type_Long;
-  @vym(a="errorMsg")
-  String jdField_a_of_type_JavaLangString;
-  @vym(a="speedKBS")
-  int b;
-  @vym(a="offset")
-  int c;
-  @vym(a="callBackType")
-  int d;
-  @vym(a="errorCode")
-  int e;
-  @vym(a="errorDetailCode")
-  int f;
+  public uds(TextureVideoView paramTextureVideoView) {}
+  
+  @TargetApi(15)
+  public void a(ufh paramufh, int paramInt1, int paramInt2)
+  {
+    this.a.getHandler().post(new TextureVideoView.1.1(this, paramufh));
+  }
 }
 
 

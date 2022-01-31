@@ -1,27 +1,40 @@
 import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class xku
-  implements QQPermissionCallback
+  implements amne
 {
-  public xku(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  public xku(NewerGuidePlugin paramNewerGuidePlugin, bfpc parambfpc) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
+      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
     }
-    bbgg.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, ajyc.a(2131707427));
+    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
+      this.jdField_a_of_type_Bfpc.dismiss();
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", 1);
+      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
+      }
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
-    }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
   }
 }
 

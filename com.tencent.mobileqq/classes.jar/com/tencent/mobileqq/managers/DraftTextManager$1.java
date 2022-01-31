@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.managers;
 
-import asei;
-import aukn;
-import auko;
+import asek;
 import aukp;
+import aukq;
+import aukr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 
 public class DraftTextManager$1
   implements Runnable
 {
-  public DraftTextManager$1(asei paramasei, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
+  public DraftTextManager$1(asek paramasek, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
   public void run()
   {
-    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localaukp = localaukn.a();
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localaukr = localaukp.a();
     try
     {
-      localaukp.a();
-      localaukn.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
-      localaukp.c();
+      localaukr.a();
+      localaukp.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+      localaukr.c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         localException.printStackTrace();
-        localaukp.b();
+        localaukr.b();
       }
     }
     finally
     {
-      localaukp.b();
+      localaukr.b();
     }
-    localaukn.a();
+    localaukp.a();
   }
 }
 

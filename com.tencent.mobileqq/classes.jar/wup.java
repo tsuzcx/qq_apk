@@ -1,33 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
-import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter;
+import com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class wup
-  implements aysa
+  implements ViewPager.OnPageChangeListener
 {
-  public wup(AbsSubscribeShareCardView.2 param2) {}
+  public wup(SubscribeBannerView paramSubscribeBannerView) {}
   
-  public void onResp(aysx paramaysx)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
-      AbsSubscribeShareCardView.a(this.a.this$0);
-      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
-        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
-      }
-      return;
+    if ((SubscribeBannerView.a(this.a) != null) && (SubscribeBannerView.a(this.a) != null)) {
+      SubscribeBannerView.a(this.a).setDotsSelected(paramInt % SubscribeBannerView.a(this.a).a().size());
     }
-    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

@@ -18,8 +18,8 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ryv;
-import ryx;
+import rys;
+import ryu;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -27,7 +27,7 @@ public class VVideo
   public static String TAG = "VVideo";
   private String mCurrentVid;
   private String mCurrentVideoUrl;
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new ryv(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new rys(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -117,7 +117,7 @@ public class VVideo
     }
   }
   
-  public ryx getVideoViewControlListener()
+  public ryu getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();

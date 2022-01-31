@@ -1,33 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.2.1;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class bknv
-  extends syu<tng, tot>
+class bknv
+  implements Animator.AnimatorListener
 {
-  bknv(bknt parambknt) {}
+  bknv(bknr parambknr) {}
   
-  public void a(@NonNull tng paramtng, @Nullable tot paramtot, @NonNull ErrorMessage paramErrorMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    veg.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtot != null))
-    {
-      veg.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramtot.toString());
-      bknt.a(this.a).addAll(paramtot.jdField_a_of_type_JavaUtilList);
-      bknt.a(this.a, paramtot.jdField_a_of_type_JavaLangString);
-      bknt.a(this.a, paramtot.b);
-      ThreadManager.executeOnSubThread(new EditVideoTagPresenter.2.1(this));
-    }
-    for (;;)
-    {
-      bknt.a(this.a).b(paramErrorMessage.errorCode, bknt.a(this.a), this.a.a());
+    if (!bknr.a(this.a)) {
       return;
-      veg.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
+    if (!bknr.b(this.a))
+    {
+      bknr.a(this.a, false);
+      if (bknr.b(this.a) == 1)
+      {
+        bknr.a(this.a, 3);
+        return;
+      }
+      bknr.a(this.a, 0);
+      bknr.a(this.a, "");
+      return;
+    }
+    if (bknr.b(this.a) == 1)
+    {
+      bknr.a(this.a, 2);
+      bknr.a(this.a, bknr.b(this.a), 1000);
+      return;
+    }
+    bknr.a(this.a, "");
+    bknr.a(this.a, 0);
+    bknr.a(this.a, false);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (!bknr.a(this.a)) {
+      return;
+    }
+    if (!bknr.b(this.a))
+    {
+      bknr.a(this.a, false);
+      if (bknr.b(this.a) == 1)
+      {
+        bknr.a(this.a, 3);
+        return;
+      }
+      bknr.a(this.a, 0);
+      bknr.a(this.a, "");
+      return;
+    }
+    if (bknr.b(this.a) == 1)
+    {
+      bknr.a(this.a, 2);
+      bknr.a(this.a, bknr.b(this.a), 1000);
+      return;
+    }
+    bknr.a(this.a, "");
+    bknr.a(this.a, 0);
+    bknr.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

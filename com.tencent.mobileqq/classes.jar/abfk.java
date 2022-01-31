@@ -1,50 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class abfk
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public abfk(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  public abfk(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    switch (paramInt)
-    {
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.d("ColorScreenManager", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    for (;;)
+    if (paramLottieComposition == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
-      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+      bbrq.a(this.a.this$0.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bbrp.a("individual_v2_colorscreen_parse_fail", "id:" + this.a.jdField_a_of_type_Int);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
-      try
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
-        aqfb.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, ajyc.a(2131704910));
-        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
-      }
-      catch (Exception paramDialogInterface)
-      {
-        for (;;)
-        {
-          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
-      }
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
+    this.a.this$0.b.postDelayed(this.a, 500L);
   }
 }
 

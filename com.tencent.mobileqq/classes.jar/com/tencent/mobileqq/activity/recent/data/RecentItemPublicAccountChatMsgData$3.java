@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import axqw;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class RecentItemPublicAccountChatMsgData$3
@@ -10,7 +10,7 @@ class RecentItemPublicAccountChatMsgData$3
   
   public void run()
   {
-    axqw.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
+    axqy.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
   }
 }
 

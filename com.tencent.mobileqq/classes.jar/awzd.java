@@ -1,30 +1,10 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
 public class awzd
-  extends xop
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
-  private awza jdField_a_of_type_Awza = new awza();
-  private awzc jdField_a_of_type_Awzc = new awzc();
+  public Object a;
+  public boolean a;
+  public Object b;
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Awza.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Awzc.a(paramToServiceMsg, paramUniPacket);
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
+  public awzd(awzc paramawzc) {}
 }
 
 

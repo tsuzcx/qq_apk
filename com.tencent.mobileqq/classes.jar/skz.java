@@ -1,24 +1,43 @@
 import UserGrowth.stSimpleMetaFeed;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class skz
+  extends sks
 {
-  public static bfyo<stSimpleMetaFeed> a(int paramInt, ViewGroup paramViewGroup, sji paramsji)
+  private TextView a;
+  
+  private skz(ViewGroup paramViewGroup, sjf paramsjf)
   {
-    switch (paramInt)
-    {
-    default: 
-      return slc.a(paramViewGroup, paramsji);
-    case 1: 
-      return slc.a(paramViewGroup, paramsji);
-    case 2: 
-      return sld.a(paramViewGroup, paramsji);
-    case 3: 
-      return sle.a(paramViewGroup, paramsji);
-    case 4: 
-      return slf.a(paramViewGroup, paramsji);
+    super(paramViewGroup, paramsjf, 2131560120);
+  }
+  
+  public static skz a(ViewGroup paramViewGroup, sjf paramsjf)
+  {
+    return new skz(paramViewGroup, paramsjf);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(1).findViewById(2131379109));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
+      return;
     }
-    return slg.a(paramViewGroup, paramsji);
+    this.a.setText(paramstSimpleMetaFeed.feed_desc);
+    a(1, 1, paramstSimpleMetaFeed);
+    a(2, 2, paramstSimpleMetaFeed);
   }
 }
 

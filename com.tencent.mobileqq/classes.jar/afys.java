@@ -1,34 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.widget.XListView;
 
 public class afys
-  extends Handler
+  implements View.OnClickListener
 {
   public afys(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
-    for (;;)
+    switch (paramView.getId())
+    {
+    }
+    do
     {
       return;
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
-      {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.getTag();
-          if ((paramMessage != null) && ((paramMessage instanceof azsu))) {
-            ((azsu)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
-          }
-        }
-        i += 1;
-      }
-    }
+    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
+    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
   }
 }
 

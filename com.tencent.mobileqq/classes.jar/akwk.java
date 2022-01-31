@@ -1,25 +1,6 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.qphone.base.util.QLog;
-
-class akwk
-  implements ayjs
+public abstract interface akwk
 {
-  akwk(akwj paramakwj) {}
-  
-  public void a(int paramInt)
-  {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    akwj.a(this.a, paramString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a.a(false);
-  }
+  public abstract void handleMessage(String paramString1, String paramString2);
 }
 
 

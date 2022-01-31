@@ -1,26 +1,20 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class aspf
-  implements asqh
+  implements View.OnClickListener
 {
   public aspf(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    MultiAIOFragment.a(this.a).a();
-  }
-  
-  public void a(int paramInt)
-  {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-    MultiAIOFragment.a(this.a).setScrollState(2);
-    MultiAIOFragment.a(this.a).fling(-paramInt);
-  }
-  
-  public boolean a()
-  {
-    return MultiAIOFragment.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    }
+    this.a.getActivity().finish();
   }
 }
 

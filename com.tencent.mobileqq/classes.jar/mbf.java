@@ -1,27 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class mbf
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public mbf(AVActivity paramAVActivity, String paramString, long paramLong) {}
+  public mbf(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    mat.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
-    lhz.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      new mcp(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    }
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 

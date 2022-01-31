@@ -1,26 +1,25 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.util.Observable;
+import java.util.Observer;
 
-class beow
-  implements ServiceConnection
+public class beow
+  implements Observer
 {
-  beow(beou parambeou) {}
+  public beow(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    beou.a(this.a, beoz.a(paramIBinder));
-    besl.c("minisdk-start_AppBrandProxy", "onServiceConnected:" + beou.a(this.a));
-    beou.a(this.a, false);
-    beou.a(this.a);
-    beou.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    beou.a(this.a, null);
-    besl.c("minisdk-start_AppBrandProxy", "onServiceDisconnected.");
-    beou.a(this.a, false);
+    if (!(paramObject instanceof String)) {}
+    do
+    {
+      return;
+      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
+      {
+        this.a.g();
+        this.a.c();
+        return;
+      }
+    } while (!"resumePlayer".equals((String)paramObject));
   }
 }
 

@@ -1,6 +1,25 @@
+import com.tencent.mobileqq.richstatus.EditActivity;
+
 public class awcc
+  implements awco
 {
-  public static final String a = ajyc.a(2131714120);
+  public awcc(EditActivity paramEditActivity) {}
+  
+  public void a(bckn parambckn)
+  {
+    if (EditActivity.a(this.a) == parambckn)
+    {
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
+      }
+      EditActivity.a(this.a, null);
+    }
+  }
+  
+  public boolean a(bckn parambckn)
+  {
+    return parambckn != EditActivity.a(this.a);
+  }
 }
 
 

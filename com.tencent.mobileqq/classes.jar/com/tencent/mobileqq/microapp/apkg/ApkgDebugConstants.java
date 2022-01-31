@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import ajyc;
+import ajya;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -53,7 +53,7 @@ public class ApkgDebugConstants
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         FormSimpleItem localFormSimpleItem = new FormSimpleItem(paramLinearLayout.getContext());
-        localFormSimpleItem.setLeftText(ajyc.a(2131700276) + ((ApkgConfig)localEntry.getValue()).app_name);
+        localFormSimpleItem.setLeftText(ajya.a(2131700287) + ((ApkgConfig)localEntry.getValue()).app_name);
         localFormSimpleItem.setOnClickListener(new ApkgDebugConstants.1(paramLinearLayout, localEntry));
         paramLinearLayout.addView(localFormSimpleItem);
       }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ayxe;
+import ayxg;
 
 class QQBrowserActivity$2
   implements Runnable
@@ -9,7 +9,7 @@ class QQBrowserActivity$2
   
   public void run()
   {
-    ayxe.a();
+    ayxg.a();
   }
 }
 

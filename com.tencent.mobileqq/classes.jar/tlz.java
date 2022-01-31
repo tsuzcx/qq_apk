@@ -1,73 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class tlz
-  extends syv
+  extends sys<tnx>
 {
-  public static final String a;
-  public List<uvs> a;
-  public List<String> b = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.homepage_batch_feeds_detail_720");
-  }
+  public String a;
+  public List<teg> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
   public tlz()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return sxm.a("StorySvc.convert_uid_and_union_id");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public tnx a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspStoryFeed localRspStoryFeed = new qqstory_service.RspStoryFeed();
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
     try
     {
-      localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new tma(localRspStoryFeed);
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new tnx(localRspConvertUinAndUnionId);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      uvs localuvs = (uvs)localIterator.next();
-      if (localuvs != null) {
-        if (TextUtils.isEmpty(localuvs.jdField_a_of_type_JavaLangString)) {
-          veg.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "check your param feedId is null");
-        } else {
-          localArrayList.add(localuvs.a());
-        }
+      teg localteg = (teg)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localteg.a());
+    }
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
       }
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    label121:
+    for (int i = j;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
+      break;
     }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.helper;
 
-import ahgl;
+import ahgj;
 
 public class SpringHbHelper$1
   implements Runnable
 {
-  public SpringHbHelper$1(ahgl paramahgl) {}
+  public SpringHbHelper$1(ahgj paramahgj) {}
   
   public void run()
   {

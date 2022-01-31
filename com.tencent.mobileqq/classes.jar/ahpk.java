@@ -1,24 +1,28 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
+@Deprecated
 public class ahpk
-  extends ahoa
+  extends ahnw
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  {
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = View.inflate(paramContext, 2131562528, null);
+    }
+    paramahnr = paramObject.findViewById(2131377741);
+    paramahnr.setTag(-1, Integer.valueOf(paramInt));
+    paramahnr.setOnClickListener(paramOnClickListener);
+    paramahnr = paramObject.findViewById(2131377740);
+    paramahnr.setTag(-1, Integer.valueOf(paramInt));
+    paramahnr.setOnClickListener(paramOnClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
+  }
 }
 
 

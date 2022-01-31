@@ -1,66 +1,95 @@
 import com.rookery.translate.type.Language;
 import com.rookery.translate.type.TranslateError;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
 import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 class lbc
-  extends lao
+  extends lah
 {
-  lbc(lbb paramlbb, lbr paramlbr, Long paramLong) {}
+  lbc(lba paramlba, List paramList, lbm paramlbm, Long paramLong) {}
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
+  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
-  {
-    paramArrayOfHeader = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
+    paramArrayOfHeader = null;
     try
     {
-      paramJSONObject = paramJSONObject.getJSONObject("data");
-      if (paramJSONObject != null)
+      localObject = this.jdField_a_of_type_Lba.a.parse(new InputSource(new StringReader(paramString)));
+      paramArrayOfHeader = (Header[])localObject;
+    }
+    catch (SAXException localSAXException)
+    {
+      for (;;)
       {
-        paramJSONObject = paramJSONObject.getJSONArray("translations");
-        if (paramJSONObject != null)
+        Object localObject;
+        NodeList localNodeList;
+        a(new TranslateError(localSAXException), paramString);
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        a(new TranslateError(localIOException), paramString);
+        continue;
+        if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null)
         {
-          paramInt = 0;
-          while (paramInt < paramJSONObject.length())
-          {
-            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
-            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
-            if ((paramArrayOfHeader != null) && (localArrayList != null))
-            {
-              paramArrayOfHeader.add(Language.fromString(str2));
-              localArrayList.add(str1);
-            }
-            paramInt += 1;
-          }
+          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        }
+        else
+        {
+          paramString.add("");
+          continue;
+          localIOException.add(Language.AUTO_DETECT);
         }
       }
-      return;
+      this.jdField_a_of_type_Lbm.a(localIOException, paramString, this.jdField_a_of_type_JavaLangLong);
     }
-    catch (JSONException paramJSONObject)
+    paramString = new ArrayList();
+    localObject = new ArrayList();
+    if (paramArrayOfHeader != null)
     {
-      paramJSONObject.printStackTrace();
-      this.jdField_a_of_type_Lbr.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
+      localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
+      paramArrayOfHeader = paramArrayOfHeader.getElementsByTagName("From");
+      paramInt = 0;
+      for (;;)
+      {
+        if (paramInt >= localNodeList.getLength()) {
+          break label270;
+        }
+        Node localNode = localNodeList.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break;
+        }
+        paramString.add(localNode.getFirstChild().getNodeValue());
+        localNode = paramArrayOfHeader.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break label256;
+        }
+        ((List)localObject).add(Language.fromString(localNode.getFirstChild().getNodeValue()));
+        paramInt += 1;
+      }
     }
+    label256:
+    label270:
+    return;
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    this.jdField_a_of_type_Lbr.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
     if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
+      QLog.e("Translator", 2, "[Microsoft] onFailure:" + paramThrowable);
     }
+    this.jdField_a_of_type_Lbm.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
   }
 }
 

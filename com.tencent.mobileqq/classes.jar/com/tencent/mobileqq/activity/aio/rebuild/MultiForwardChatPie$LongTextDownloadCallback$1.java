@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acut;
-import aerb;
-import aerj;
+import acup;
+import aeqz;
+import aerh;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -11,16 +11,16 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 public class MultiForwardChatPie$LongTextDownloadCallback$1
   implements Runnable
 {
-  public MultiForwardChatPie$LongTextDownloadCallback$1(aerj paramaerj, aerb paramaerb, CharSequence paramCharSequence) {}
+  public MultiForwardChatPie$LongTextDownloadCallback$1(aerh paramaerh, aeqz paramaeqz, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aerb.a(this.jdField_a_of_type_Aerb).setVisibility(8);
-    aerb.a(this.jdField_a_of_type_Aerb).setVisibility(0);
-    aerb.a(this.jdField_a_of_type_Aerb).setVisibility(0);
-    this.jdField_a_of_type_Aerb.e.setText(this.jdField_a_of_type_Aerb.h);
-    aerb.a(this.jdField_a_of_type_Aerb).a(aerb.a(this.jdField_a_of_type_Aerb), this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Aerb.E();
+    aeqz.a(this.jdField_a_of_type_Aeqz).setVisibility(8);
+    aeqz.a(this.jdField_a_of_type_Aeqz).setVisibility(0);
+    aeqz.a(this.jdField_a_of_type_Aeqz).setVisibility(0);
+    this.jdField_a_of_type_Aeqz.e.setText(this.jdField_a_of_type_Aeqz.h);
+    aeqz.a(this.jdField_a_of_type_Aeqz).a(aeqz.a(this.jdField_a_of_type_Aeqz), this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Aeqz.E();
   }
 }
 

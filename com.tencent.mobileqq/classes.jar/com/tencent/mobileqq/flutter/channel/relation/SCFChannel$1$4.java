@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
 import android.os.Bundle;
-import apzn;
+import apzp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import mqq.os.MqqHandler;
 public class SCFChannel$1$4
   implements Runnable
 {
-  public SCFChannel$1$4(apzn paramapzn, String paramString, MethodChannel.Result paramResult) {}
+  public SCFChannel$1$4(apzp paramapzp, String paramString, MethodChannel.Result paramResult) {}
   
   public void run()
   {

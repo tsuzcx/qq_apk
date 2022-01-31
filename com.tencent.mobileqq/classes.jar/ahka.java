@@ -1,21 +1,34 @@
-import android.os.Message;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
+import java.util.ArrayList;
 
-class ahka
-  extends akwr
+public class ahka
+  implements bfph
 {
-  ahka(ahjz paramahjz) {}
+  public ahka(AppletsFolderManager.2 param2) {}
   
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (paramList != null))
+    if (ahjx.a(this.a.this$0)) {
+      return;
+    }
+    ahjx.a(this.a.this$0, true);
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      ahjz.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
+    }
+    for (;;)
+    {
+      ahjx.a(this.a.this$0).dismiss();
+      return;
+      paramView = new ArrayList();
+      akwy localakwy = new akwy();
+      localakwy.a(Integer.valueOf(this.a.a).intValue());
+      localakwy.a(Integer.valueOf(this.a.b).intValue());
+      localakwy.b(0);
+      paramView.add(localakwy.a());
+      ahjx.a(this.a.this$0).a(paramView);
+      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131700619), 0).a();
     }
   }
 }

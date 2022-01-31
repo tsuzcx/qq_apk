@@ -1,42 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
 
-public abstract class rny
+public class rny
+  implements rut
 {
-  protected abstract void a();
+  public rny(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public abstract void a(ListView paramListView);
-  
-  protected void a(String paramString, JSONObject paramJSONObject)
+  public void a(int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      paramJSONObject.put("folder_status", onk.d);
-      paramJSONObject.put("kandian_mode", onk.e());
-      paramJSONObject = paramJSONObject.toString();
-      noo.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
-      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+    default: 
+      return;
+    case 0: 
+      this.a.h();
       return;
     }
-    catch (JSONException paramString)
-    {
-      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
-      throw new IllegalArgumentException("fail to construct r5 json");
-    }
+    this.a.f();
   }
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    a();
-  }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

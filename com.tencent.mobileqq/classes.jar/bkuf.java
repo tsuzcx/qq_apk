@@ -1,6 +1,19 @@
-class bkuf
+import android.os.Message;
+import android.widget.TextView;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
+
+public class bkuf
+  extends MqqHandler
 {
-  private static final bkue a = new bkue(null);
+  public bkuf(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
+  }
 }
 
 

@@ -18,8 +18,6 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import auim;
-import auin;
 import auio;
 import auip;
 import auiq;
@@ -28,11 +26,13 @@ import auis;
 import auit;
 import auiu;
 import auiv;
+import auiw;
 import auix;
-import avam;
-import bbcv;
-import bbgg;
-import bfmr;
+import auiz;
+import avao;
+import bbdj;
+import bbgu;
+import bfni;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -45,10 +45,10 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class AutoReplyEditActivity
   extends IphoneTitleBarFragment
-  implements avam
+  implements avao
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new auim(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new auio(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -63,23 +63,23 @@ public class AutoReplyEditActivity
   private static EmoticonMainPanel a(@NonNull QQAppInterface paramQQAppInterface, @NonNull BaseActivity paramBaseActivity, @NonNull View paramView, int paramInt, @NonNull EditText paramEditText)
   {
     paramView = (EmoticonMainPanel)paramView.findViewById(paramInt);
-    paramView.setCallBack(new auip(paramEditText, paramQQAppInterface, paramBaseActivity));
+    paramView.setCallBack(new auir(paramEditText, paramQQAppInterface, paramBaseActivity));
     paramView.c = true;
     paramView.f = true;
     paramView.jdField_a_of_type_Boolean = false;
     paramView.jdField_b_of_type_Boolean = true;
     paramView.e = true;
-    paramView.a(paramQQAppInterface, 100002, paramBaseActivity, paramBaseActivity.getTitleBarHeight(), null, null, false, new auiq());
+    paramView.a(paramQQAppInterface, 100002, paramBaseActivity, paramBaseActivity.getTitleBarHeight(), null, null, false, new auis());
     paramView.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizontalListViewEx.setOverScrollMode(2);
     return paramView;
   }
   
   private void a()
   {
-    bbgg localbbgg = bbcv.a(getActivity(), 230).setMessage(getString(2131690317));
-    localbbgg.setPositiveButton(2131694793, new auin(this));
-    localbbgg.setNegativeButton(2131690596, new auio(this));
-    localbbgg.show();
+    bbgu localbbgu = bbdj.a(getActivity(), 230).setMessage(getString(2131690317));
+    localbbgu.setPositiveButton(2131694794, new auip(this));
+    localbbgu.setNegativeButton(2131690596, new auiq(this));
+    localbbgu.show();
   }
   
   public static void a(Activity paramActivity, int paramInt, AutoReplyText paramAutoReplyText)
@@ -97,13 +97,13 @@ public class AutoReplyEditActivity
       localBundle = new Bundle();
     }
     setTitle(getString(2131690301));
-    setLeftButton(2131690596, new auir(this));
-    setRightButton(2131692600, new auis(this));
+    setLeftButton(2131690596, new auit(this));
+    setRightButton(2131692601, new auiu(this));
     ((SoftInputDetectView)this.mContentView.findViewById(2131368201)).setOnImStateChangedListener(this);
     this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText = ((AutoReplyText)localBundle.getParcelable("AutoReplyEditActivity:text"));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.mContentView.findViewById(2131365597));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131362902));
-    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(new auit(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.mContentView.findViewById(2131365596));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131362901));
+    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(new auiv(this));
     if (this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText != null) {
       if (this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId() == 2147483647) {
         this.c = false;
@@ -114,21 +114,21 @@ public class AutoReplyEditActivity
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.mContentView, 2131365598, this.jdField_a_of_type_AndroidWidgetEditText);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.mContentView, 2131365597, this.jdField_a_of_type_AndroidWidgetEditText);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setVisibility(8);
       if (TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText())) {
         this.rightViewText.setEnabled(false);
       }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new auiu(this));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365625));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new auiw(this));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365624));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365627));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365626));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new auiv(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new auix(this));
       if (!ThemeUtil.isDefaultTheme())
       {
         this.mContentView.findViewById(2131377562).setVisibility(8);
-        this.mContentView.findViewById(2131363358).setVisibility(8);
+        this.mContentView.findViewById(2131363357).setVisibility(8);
       }
       return;
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getRawText());
@@ -145,7 +145,7 @@ public class AutoReplyEditActivity
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AutoReplyEditActivity.7(this), 0L);
       return;
     }
-    bfmr.b(this.jdField_a_of_type_AndroidWidgetEditText);
+    bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
   }
   
   private boolean a(String paramString)
@@ -205,9 +205,9 @@ public class AutoReplyEditActivity
     }
     this.jdField_b_of_type_Boolean = false;
     Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848808);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848814);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getActivity().getString(2131690313));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new auix(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new auiz(this));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setVisibility(8);
     ((ViewGroup.LayoutParams)localObject).height = -2;
     this.jdField_a_of_type_AndroidViewViewGroup.setMinimumHeight(0);

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.soload.config;
 
-import axno;
+import axnq;
 
 public class SoLoadConfProcessor$1
   implements Runnable
 {
-  public SoLoadConfProcessor$1(axno paramaxno) {}
+  public SoLoadConfProcessor$1(axnq paramaxnq) {}
   
   public void run()
   {
-    axno.a(this.this$0);
+    axnq.a(this.this$0);
   }
 }
 

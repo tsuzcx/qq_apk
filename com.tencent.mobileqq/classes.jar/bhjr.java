@@ -1,12 +1,14 @@
+import cooperation.qzone.plugin.PluginRecord;
 import java.io.File;
-import java.io.FileFilter;
 
-final class bhjr
-  implements FileFilter
+class bhjr
+  implements bhjv
 {
-  public boolean accept(File paramFile)
+  bhjr(bhjq parambhjq) {}
+  
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    return paramFile.getName().endsWith(".cfg");
+    return bhjq.a(this.a, paramPluginRecord);
   }
 }
 

@@ -1,6 +1,13 @@
-public abstract interface bcxg
+public class bcxg
 {
-  public abstract void a(String paramString);
+  public bcxa a;
+  public String a;
+  
+  public bcxg(String paramString, bcxa parambcxa)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bcxa = parambcxa;
+  }
 }
 
 

@@ -1,23 +1,37 @@
-import android.graphics.Rect;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 class amoh
-  implements Comparator<Rect>
+  implements Comparator<amoi>
 {
-  amoh(amoe paramamoe) {}
+  amoh(amod paramamod, boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public int a(amoi paramamoi1, amoi paramamoi2)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    int i = -1;
+    if (paramamoi1.jdField_a_of_type_Int > paramamoi2.jdField_a_of_type_Int) {}
     do
     {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
       return 1;
+      if (paramamoi1.jdField_a_of_type_Int < paramamoi2.jdField_a_of_type_Int) {
+        return -1;
+      }
+      if ((paramamoi1.jdField_a_of_type_Boolean) && (!paramamoi2.jdField_a_of_type_Boolean))
+      {
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          return i;
+          i = 1;
+        }
+      }
+      if ((paramamoi1.jdField_a_of_type_Boolean) || (!paramamoi2.jdField_a_of_type_Boolean)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return -1;
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramamoi1.jdField_a_of_type_Float - paramamoi2.jdField_a_of_type_Float) > 3.0F)) {
+      return Float.compare(paramamoi1.jdField_a_of_type_Float, paramamoi2.jdField_a_of_type_Float);
     }
     return 0;
   }

@@ -1,16 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
 
 public class acev
-  implements View.OnClickListener
+  extends Handler
 {
-  public acev(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public acev(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    this.a.b(this.a.e());
-    paramView.setEnabled(false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 100: 
+    case 16: 
+    case 18: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaLangCharSequence != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_JavaLangCharSequence);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(bckz.a());
+          return;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_Ho.a(this.a.e));
+          return;
+        } while (!(paramMessage.obj instanceof Drawable));
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+        return;
+      } while (!(paramMessage.obj instanceof Bitmap));
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.obj);
+      return;
+    }
+    this.a.a();
   }
 }
 

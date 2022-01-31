@@ -1,23 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.graphics.Rect;
 
 public class bbpv
-  implements Sizeable
+  extends bbpx
 {
   public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
-  
-  public int getByteSize()
-  {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
-  }
+  public acvd a;
+  public Rect a;
+  public String a;
 }
 
 

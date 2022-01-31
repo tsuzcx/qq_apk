@@ -1,33 +1,42 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
-
 public class axtx
-  extends RecyclablePool.Recyclable
+  extends axtv
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void recycle()
+  public axtx()
   {
-    super.recycle();
+    this.a = "";
+    this.b = "";
+    this.c = "";
+    this.d = "";
+  }
+  
+  public String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.a).append("|");
+    localStringBuilder.append(this.b).append("|");
+    localStringBuilder.append(this.c).append("|");
+    localStringBuilder.append(this.d).append("|");
+    localStringBuilder.append(this.e).append("|");
+    localStringBuilder.append(this.f).append("|");
+    localStringBuilder.append(this.g).append("|");
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("StorageItem info[size=").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",accessTime=").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(",isFile=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",fileCount=").append(this.c);
-    localStringBuilder.append(",dirCount=").append(this.d);
-    localStringBuilder.append(",name=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",path=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.a).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import actn;
-import ahnt;
-import ajyc;
+import actj;
+import ahnr;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,9 +16,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import baxl;
-import bbay;
-import bfvg;
+import baxz;
+import bbbm;
+import bfvx;
 import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
@@ -32,41 +32,41 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.Comparator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import now;
-import nxq;
-import nxr;
+import not;
+import nxn;
+import nxo;
+import nxp;
 import nxs;
-import nxv;
-import nxw;
+import nxt;
 
 public class ReadinjoySubscriptManagerActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, baxl, bfvg
+  implements View.OnClickListener, baxz, bfvx
 {
-  private ahnt jdField_a_of_type_Ahnt;
+  private ahnr jdField_a_of_type_Ahnr;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private Comparator<nxv> jdField_a_of_type_JavaUtilComparator = new nxq(this);
-  private nxs jdField_a_of_type_Nxs;
+  private Comparator<nxs> jdField_a_of_type_JavaUtilComparator = new nxn(this);
+  private nxp jdField_a_of_type_Nxp;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
   private void a(String paramString)
   {
     Context localContext = getApplicationContext();
-    new now(this.app, paramString, localContext, new nxr(this, localContext)).a();
+    new not(this.app, paramString, localContext, new nxo(this, localContext)).a();
   }
   
-  private void a(List<nxv> paramList)
+  private void a(List<nxs> paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_Nxs.a(paramList);
+      this.jdField_a_of_type_Nxp.a(paramList);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.t();
     }
-    if (this.jdField_a_of_type_Nxs.getCount() == 0)
+    if (this.jdField_a_of_type_Nxp.getCount() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -105,27 +105,27 @@ public class ReadinjoySubscriptManagerActivity
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
-    setTitle(ajyc.a(2131712741));
+    setTitle(ajya.a(2131712752));
     setLeftViewName(2131690331);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718437);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365676);
-    ((TextView)findViewById(2131377747)).setText(ajyc.a(2131712813));
-    this.jdField_a_of_type_Nxs = new nxs(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131376665));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718448);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365675);
+    ((TextView)findViewById(2131377747)).setText(ajya.a(2131712824));
+    this.jdField_a_of_type_Nxp = new nxp(this, null);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131376667));
     TextView localTextView = new TextView(this);
-    localTextView.setHeight(actn.a(20.0F, getResources()));
+    localTextView.setHeight(actj.a(20.0F, getResources()));
     localTextView.setBackgroundResource(2131167087);
     localTextView.setClickable(false);
     localTextView.setHintTextColor(getResources().getColor(2131167087));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Nxs);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Nxp);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Nxs);
-    this.jdField_a_of_type_Ahnt = new ahnt(this.app, this, false);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Nxp);
+    this.jdField_a_of_type_Ahnr = new ahnr(this.app, this, false);
     this.b = findViewById(2131370839);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
@@ -149,7 +149,7 @@ public class ReadinjoySubscriptManagerActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label178;
       }
-      if ((bbay.b()) || (bbay.d())) {
+      if ((bbbm.b()) || (bbbm.d())) {
         break label157;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -158,7 +158,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130848492);
+      this.leftView.setBackgroundResource(2130848498);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -172,12 +172,12 @@ public class ReadinjoySubscriptManagerActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label178:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bbay.b()) && (!bbay.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bbay.d())
+      else if (!bbbm.d())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -215,10 +215,10 @@ public class ReadinjoySubscriptManagerActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Ahnt != null)
+    if (this.jdField_a_of_type_Ahnr != null)
     {
-      this.jdField_a_of_type_Ahnt.a();
-      this.jdField_a_of_type_Ahnt = null;
+      this.jdField_a_of_type_Ahnr.a();
+      this.jdField_a_of_type_Ahnr = null;
     }
   }
   
@@ -247,10 +247,10 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
     label84:
-    for (int i = 2131718373;; i = 2131718437)
+    for (int i = 2131718384;; i = 2131718448)
     {
       paramView.setText(i);
-      this.jdField_a_of_type_Nxs.notifyDataSetChanged();
+      this.jdField_a_of_type_Nxp.notifyDataSetChanged();
       return;
       bool = false;
       break;
@@ -268,12 +268,12 @@ public class ReadinjoySubscriptManagerActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1);
-        if ((((View)localObject).getTag() instanceof nxw))
+        if ((((View)localObject).getTag() instanceof nxt))
         {
-          localObject = (nxw)((View)localObject).getTag();
-          if (TextUtils.equals(nxw.a((nxw)localObject), paramString))
+          localObject = (nxt)((View)localObject).getTag();
+          if (TextUtils.equals(nxt.a((nxt)localObject), paramString))
           {
-            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (nxw)localObject, paramBitmap));
+            new Handler(Looper.getMainLooper()).post(new ReadinjoySubscriptManagerActivity.4(this, (nxt)localObject, paramBitmap));
             return;
           }
         }

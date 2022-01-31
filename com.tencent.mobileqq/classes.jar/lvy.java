@@ -1,29 +1,46 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lvy
-  implements bcwh
 {
-  public lvy(RedPacketShareFragment.3.1 param1) {}
+  private static volatile lvy jdField_a_of_type_Lvy;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a(BaseResp paramBaseResp)
+  private lvy()
   {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
+  }
+  
+  public static lvy a()
+  {
+    if (jdField_a_of_type_Lvy == null) {}
+    try
+    {
+      if (jdField_a_of_type_Lvy == null) {
+        jdField_a_of_type_Lvy = new lvy();
+      }
+      return jdField_a_of_type_Lvy;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
       return;
     }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
+    catch (Exception paramString)
     {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 3);
+      paramString.printStackTrace();
     }
   }
 }

@@ -1,18 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import android.content.Context;
 
 final class ytx
-  implements View.OnTouchListener
 {
-  ytx(ytv paramytv) {}
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ytx(Context paramContext, int paramInt1, int paramInt2)
   {
-    ytv localytv = this.a;
-    ytv.a.onTouch(paramView, paramMotionEvent);
-    return false;
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yxp.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
+    }
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 

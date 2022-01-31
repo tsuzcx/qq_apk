@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import arrl;
-import arrq;
-import arrr;
+import arrn;
 import arrs;
 import arrt;
 import arru;
@@ -17,11 +15,13 @@ import arry;
 import arrz;
 import arsa;
 import arsb;
-import arsq;
-import axqw;
-import bbcv;
-import bbgg;
-import bfol;
+import arsc;
+import arsd;
+import arss;
+import axqy;
+import bbdj;
+import bbgu;
+import bfpc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -32,8 +32,8 @@ public class ListenTogetherOverlayFragment
 {
   private int jdField_a_of_type_Int = -1;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  bbgg jdField_a_of_type_Bbgg;
-  private bfol jdField_a_of_type_Bfol;
+  bbgu jdField_a_of_type_Bbgu;
+  private bfpc jdField_a_of_type_Bfpc;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
@@ -41,118 +41,118 @@ public class ListenTogetherOverlayFragment
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bfol != null) {
+    if (this.jdField_a_of_type_Bfpc != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showActionSheet in");
     }
-    arsq localarsq = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-    this.jdField_a_of_type_Bfol = bfol.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    boolean bool = arrl.a();
+    arss localarss = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    this.jdField_a_of_type_Bfpc = bfpc.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    boolean bool = arrn.a();
     if (bool) {
-      this.jdField_a_of_type_Bfol.b(2131693852);
+      this.jdField_a_of_type_Bfpc.b(2131693853);
     }
-    this.jdField_a_of_type_Bfol.b(2131693822);
-    this.jdField_a_of_type_Bfol.c(2131690596);
-    this.jdField_a_of_type_Bfol.a(new arrq(this, localarsq));
-    this.jdField_a_of_type_Bfol.setOnCancelListener(new arru(this, localarsq));
-    this.jdField_a_of_type_Bfol.a(new arrv(this, bool, localarsq));
-    this.jdField_a_of_type_Bfol.show();
-    localarsq.b(true);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A5C1", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_Bfpc.b(2131693823);
+    this.jdField_a_of_type_Bfpc.c(2131690596);
+    this.jdField_a_of_type_Bfpc.a(new arrs(this, localarss));
+    this.jdField_a_of_type_Bfpc.setOnCancelListener(new arrw(this, localarss));
+    this.jdField_a_of_type_Bfpc.a(new arrx(this, bool, localarss));
+    this.jdField_a_of_type_Bfpc.show();
+    localarss.b(true);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A5C1", 1, 0, "", "", "", "");
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bbgg != null) {
+    if (this.jdField_a_of_type_Bbgu != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showPermissionDialog in");
     }
-    this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(2131696160).setNegativeButton(2131690596, new arrx(this)).setPositiveButton(2131696164, new arrw(this));
-    this.jdField_a_of_type_Bbgg.setTitle(2131696162);
-    this.jdField_a_of_type_Bbgg.setCancelable(false);
-    this.jdField_a_of_type_Bbgg.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(2131696161).setNegativeButton(2131690596, new arrz(this)).setPositiveButton(2131696165, new arry(this));
+    this.jdField_a_of_type_Bbgu.setTitle(2131696163);
+    this.jdField_a_of_type_Bbgu.setCancelable(false);
+    this.jdField_a_of_type_Bbgu.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bbgu.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bfol != null) {}
+    if (this.jdField_a_of_type_Bfpc != null) {}
     while (this.jdField_b_of_type_Boolean) {
       return;
     }
     this.jdField_b_of_type_Boolean = false;
     ListenTogetherManager localListenTogetherManager = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Bfol = bfol.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    this.jdField_a_of_type_Bfol.b(2131717267);
-    this.jdField_a_of_type_Bfol.a(2131693869, 3);
-    this.jdField_a_of_type_Bfol.c(2131690596);
-    this.jdField_a_of_type_Bfol.a(new arry(this, localListenTogetherManager));
-    this.jdField_a_of_type_Bfol.setOnDismissListener(new arrz(this));
-    this.jdField_a_of_type_Bfol.show();
+    this.jdField_a_of_type_Bfpc = bfpc.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_Bfpc.b(2131717278);
+    this.jdField_a_of_type_Bfpc.a(2131693870, 3);
+    this.jdField_a_of_type_Bfpc.c(2131690596);
+    this.jdField_a_of_type_Bfpc.a(new arsa(this, localListenTogetherManager));
+    this.jdField_a_of_type_Bfpc.setOnDismissListener(new arsb(this));
+    this.jdField_a_of_type_Bfpc.show();
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bbgg != null) {
+    if (this.jdField_a_of_type_Bbgu != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showExitDialog in");
     }
     ListenTogetherManager localListenTogetherManager = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    arsq localarsq = localListenTogetherManager.a();
-    this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setNegativeButton(2131690596, new arsb(this, localListenTogetherManager, localarsq)).setPositiveButton(2131693868, new arsa(this, localListenTogetherManager, localarsq));
-    this.jdField_a_of_type_Bbgg.setTitle(2131693826);
-    this.jdField_a_of_type_Bbgg.setOnDismissListener(new arrr(this, localListenTogetherManager, localarsq));
-    this.jdField_a_of_type_Bbgg.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bbgg.show();
-    localarsq.b(true);
+    arss localarss = localListenTogetherManager.a();
+    this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setNegativeButton(2131690596, new arsd(this, localListenTogetherManager, localarss)).setPositiveButton(2131693869, new arsc(this, localListenTogetherManager, localarss));
+    this.jdField_a_of_type_Bbgu.setTitle(2131693827);
+    this.jdField_a_of_type_Bbgu.setOnDismissListener(new arrt(this, localListenTogetherManager, localarss));
+    this.jdField_a_of_type_Bbgu.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bbgu.show();
+    localarss.b(true);
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_Bbgg != null) {
+    if (this.jdField_a_of_type_Bbgu != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showExitDialog in");
     }
-    arsq localarsq;
-    bbgg localbbgg;
+    arss localarss;
+    bbgu localbbgu;
     int j;
     if (this.jdField_b_of_type_Int == 1)
     {
       i = 1;
-      localarsq = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-      localbbgg = bbcv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230);
+      localarss = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+      localbbgu = bbdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230);
       if (i == 0) {
         break label146;
       }
-      j = 2131693828;
+      j = 2131693829;
       label62:
-      this.jdField_a_of_type_Bbgg = localbbgg.setMessage(j).setNegativeButton(2131720704, new arrs(this));
-      localbbgg = this.jdField_a_of_type_Bbgg;
+      this.jdField_a_of_type_Bbgu = localbbgu.setMessage(j).setNegativeButton(2131720715, new arru(this));
+      localbbgu = this.jdField_a_of_type_Bbgu;
       if (i == 0) {
         break label152;
       }
     }
     label146:
     label152:
-    for (int i = 2131693830;; i = 2131693829)
+    for (int i = 2131693831;; i = 2131693830)
     {
-      localbbgg.setTitle(i);
-      this.jdField_a_of_type_Bbgg.setOnDismissListener(new arrt(this, localarsq));
-      this.jdField_a_of_type_Bbgg.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bbgg.show();
-      localarsq.b(true);
+      localbbgu.setTitle(i);
+      this.jdField_a_of_type_Bbgu.setOnDismissListener(new arrv(this, localarss));
+      this.jdField_a_of_type_Bbgu.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bbgu.show();
+      localarss.b(true);
       return;
       i = 0;
       break;
-      j = 2131693827;
+      j = 2131693828;
       break label62;
     }
   }

@@ -1,17 +1,36 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import QzoneCombine.ClientOnlineNotfiyReq;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-final class bgxm
-  implements View.OnClickListener
+public class bgxm
+  extends QzoneExternalRequest
 {
-  bgxm(Dialog paramDialog) {}
+  ClientOnlineNotfiyReq a;
   
-  public void onClick(View paramView)
+  public bgxm(long paramLong, byte[] paramArrayOfByte)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    this.needCompress = false;
+    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + uniKey();
+  }
+  
+  public byte[] getEncodedUniParameter()
+  {
+    return bggm.a(this.a);
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "MqqOnlineNtf";
   }
 }
 

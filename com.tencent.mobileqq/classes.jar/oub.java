@@ -1,16 +1,25 @@
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
-public class oub
-  extends osp
+class oub
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public oub(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
+  oub(oua paramoua, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public boolean onPreDraw()
   {
-    if (paramTopBannerInfo.mChannelId == 2000000000) {
-      this.a.a(paramTopBannerInfo);
-    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
+    Object localObject2 = new int[2];
+    ((View)localObject1).getLocationOnScreen((int[])localObject2);
+    localObject2 = this.jdField_a_of_type_Oua.a.a(oua.a(this.jdField_a_of_type_Oua), (int[])localObject2);
+    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
+    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131374762);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131374762, null);
+    return false;
   }
 }
 

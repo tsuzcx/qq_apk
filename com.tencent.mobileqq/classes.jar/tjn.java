@@ -1,122 +1,147 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.1;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tjn
-  implements syt<tmd, tob>
+  extends tjd
+  implements syq
 {
-  public void a(String paramString)
+  public static ConcurrentHashMap<String, Long> a;
+  public List<String> a;
+  public uvx a;
+  private final boolean a;
+  public List<String> b = new ArrayList();
+  
+  static
   {
-    paramString = new tmd(paramString);
-    syr.a().a(paramString, this);
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public void a(@NonNull tmd paramtmd, @Nullable tob paramtob, @NonNull ErrorMessage paramErrorMessage)
+  public tjn(@NonNull List<String> paramList)
   {
-    veg.c("Q.qqstory.player:DeleteStoryVideoHandler", "delete story video return:" + paramErrorMessage);
-    paramtob = (tcz)tdc.a(5);
-    tch localtch = new tch(paramErrorMessage, paramtmd.a, false);
-    StoryVideoItem localStoryVideoItem = paramtob.a(paramtmd.a);
-    if (localStoryVideoItem != null)
-    {
-      localtch.b = localStoryVideoItem.mOwnerUid;
-      localtch.a = localStoryVideoItem.mVideoIndex;
-      if (localtch.a == 0L) {
-        localtch.a = localStoryVideoItem.mCreateTime;
-      }
-    }
-    if (paramErrorMessage.isFail())
-    {
-      ste.a().dispatch(localtch);
-      return;
-    }
-    b(paramtmd.a);
-    paramtob.a(paramtmd.a);
-    ste.a().dispatch(localtch);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Uvx = ((uvx)tcz.a(11));
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected void b(String paramString)
+  public tjn(@NonNull List<String> paramList, boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
-    tjp localtjp = new tjp(0);
-    tcp localtcp = (tcp)tdc.a(19);
-    Object localObject = ((tcz)tdc.a(5)).a(paramString);
-    if (localObject == null) {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Uvx = ((uvx)tcz.a(11));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static void a(@NonNull List<String> paramList)
+  {
+    int j = paramList.size();
+    int k = (int)Math.ceil(j / 5.0D);
+    int i = 0;
+    while (i < k)
+    {
+      new tjn(paramList.subList(i * 5, Math.min((i + 1) * 5, j))).a();
+      i += 1;
+    }
+  }
+  
+  private void b(List<tec> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    localObject = localtcp.a(((StoryVideoItem)localObject).mOwnerUid, null, 2147483647L);
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ste.a().dispatch(localtjp);
-      return;
-    }
-    Collections.sort((List)localObject, new uue());
-    Iterator localIterator = ((List)localObject).iterator();
-    localObject = null;
-    VideoCollectionItem localVideoCollectionItem;
-    for (;;)
-    {
-      if (localIterator.hasNext())
+      tec localtec = (tec)paramList.next();
+      FeedItem localFeedItem = this.jdField_a_of_type_Uvx.a(localtec.a);
+      if (localFeedItem == null)
       {
-        localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
-        if (localVideoCollectionItem.collectionType == 0) {
-          localObject = localVideoCollectionItem;
-        } else {
-          if (!localVideoCollectionItem.videoVidList.contains(paramString)) {
-            break;
-          }
-        }
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        ste.a().dispatch(localtjp);
-        return;
-      }
-      if (localObject != null)
-      {
-        ((VideoCollectionItem)localObject).collectionCount -= 1;
-        if (((VideoCollectionItem)localObject).collectionCount <= 0)
-        {
-          localtcp.a((VideoCollectionItem)localObject);
-          localtjp.a.add(new tjo(1, (VideoCollectionItem)localObject));
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "null feedItem when saving feed feature...feedId=", localtec.a });
         }
       }
       else
       {
-        localVideoCollectionItem.collectionCount -= 1;
-        localVideoCollectionItem.videoVidList.remove(paramString);
-        localVideoCollectionItem.collectionVideoUIItemList.remove(new uuf(paramString, null));
-        if (localVideoCollectionItem.collectionCount > 0) {
-          break label373;
-        }
-        localtcp.a(localVideoCollectionItem);
-        localtjp.a.add(new tjo(1, localVideoCollectionItem));
+        localFeedItem.convertFromFeedFeature(localtec);
+        localArrayList.add(localFeedItem);
       }
-      for (;;)
-      {
-        veg.d("Q.qqstory.player:DeleteStoryVideoHandler", String.format("Spend time = %d , %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localtjp }));
-        ste.a().dispatch(localtjp);
-        return;
-        localtcp.a((VideoCollectionItem)localObject);
-        localtjp.a.add(new tjo(2, (VideoCollectionItem)localObject));
-        break;
-        label373:
-        localtcp.a(localVideoCollectionItem);
-        localtjp.a.add(new tjo(2, localVideoCollectionItem));
-      }
-      break;
-      localVideoCollectionItem = null;
     }
+    this.jdField_a_of_type_Uvx.a(localArrayList);
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new GetFeedFeatureHandler.1(this), 8, null, true);
+  }
+  
+  public void a(@NonNull sys paramsys, @Nullable syn paramsyn, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (((paramsys instanceof tmi)) && ((paramsyn instanceof tof)))
+    {
+      paramsys = (tof)paramsyn;
+      paramsyn = new tjo();
+      paramsyn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      if ((paramErrorMessage.isSuccess()) && (!paramsys.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedFeature: first=", ((tec)paramsys.jdField_a_of_type_JavaUtilList.get(0)).a });
+        }
+        b(paramsys.jdField_a_of_type_JavaUtilList);
+        paramsyn.jdField_a_of_type_JavaUtilList = paramsys.jdField_a_of_type_JavaUtilList;
+        stb.a().dispatch(paramsyn);
+        b();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, "save feedFeature failed.", paramErrorMessage);
+        }
+        stb.a().dispatch(paramsyn);
+        c();
+        return;
+      } while ((!(paramsys instanceof tlw)) || (!(paramsyn instanceof tlx)));
+      paramsys = (tlx)paramsyn;
+      if (paramErrorMessage.isSuccess())
+      {
+        paramsyn = new ArrayList(paramsys.jdField_a_of_type_JavaUtilList.size());
+        paramsys = paramsys.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramsys.hasNext()) {
+          paramsyn.add(((uxm)paramsys.next()).a());
+        }
+        if (!paramsyn.isEmpty())
+        {
+          this.jdField_a_of_type_Uvx.a(paramsyn);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedItem: first=", ((FeedItem)paramsyn.get(0)).feedId, ". request FeedFeature." });
+          }
+          paramsys = new tmi();
+          paramsys.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+          syo.a().a(paramsys, this);
+          return;
+        }
+      }
+    } while (this.b.isEmpty());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request local FeedFeature after FeedItem. first=", this.b.get(0) });
+    }
+    paramsys = new tmi();
+    paramsys.jdField_a_of_type_JavaUtilList = this.b;
+    syo.a().a(paramsys, this);
   }
 }
 

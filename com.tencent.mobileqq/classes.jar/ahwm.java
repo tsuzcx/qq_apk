@@ -1,8 +1,16 @@
-public abstract interface ahwm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+
+public class ahwm
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public ahwm(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    QzoneSlideShowPreparingFragment.a(this.a);
+  }
 }
 
 

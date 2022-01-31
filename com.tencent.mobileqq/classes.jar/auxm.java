@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.XEditTextEx;
 
 public class auxm
-  implements DialogInterface.OnClickListener
+  extends Editable.Factory
 {
-  public auxm(StickyNotePublishFragment paramStickyNotePublishFragment, auxj paramauxj) {}
+  public auxm(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Auxj).sendToTarget();
-    axqw.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
+    if ((paramCharSequence instanceof aykz)) {
+      return (Editable)paramCharSequence;
+    }
+    return new aykz(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
 }
 

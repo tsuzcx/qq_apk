@@ -1,25 +1,71 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.CircleBubbleImageView;
+import java.net.URL;
 
 class adzt
-  implements bfoq
+  extends CircleBubbleImageView
 {
-  adzt(adzs paramadzs, MessageForShortVideo paramMessageForShortVideo, adzy paramadzy, bfol parambfol) {}
+  URLDrawable a;
+  URLDrawable b;
   
-  public void OnClick(View paramView, int paramInt)
+  public adzt(Context paramContext)
   {
-    switch (paramInt)
-    {
+    super(paramContext);
+    a(true);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (this.a != null) {
+      this.a.setURLDrawableListener(null);
     }
-    for (;;)
+    paramURLDrawable.setURLDrawableListener(this);
+    this.a = paramURLDrawable;
+    paramURLDrawable.startDownload();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    setImageDrawable(paramURLDrawable);
+    if (this.b != paramURLDrawable) {
+      this.b = paramURLDrawable;
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable == this.a)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      b(paramURLDrawable);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
-        this.jdField_a_of_type_Adzs.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzy);
-      } else {
-        this.jdField_a_of_type_Adzs.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Adzy);
-      }
+    }
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+  }
+  
+  @TargetApi(11)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == this.a) {
+      b(paramURLDrawable);
+    }
+    super.onLoadSuccessed(paramURLDrawable);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
+    if (this.a != null)
+    {
+      this.a.setURLDrawableListener(null);
+      this.a = null;
     }
   }
 }

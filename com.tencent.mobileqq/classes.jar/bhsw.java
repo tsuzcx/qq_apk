@@ -1,19 +1,14 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bhsw
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  bhsw(bhsv parambhsv, String[] paramArrayOfString, Activity paramActivity) {}
+  bhsw(bhsr parambhsr) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bbcv.b(bhsv.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhsv.a(this.jdField_a_of_type_Bhsv, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

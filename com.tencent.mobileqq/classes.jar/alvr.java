@@ -1,60 +1,43 @@
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Locale;
 import mqq.util.WeakReference;
 
 public class alvr
-  extends agtc
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  alvr(alvq paramalvq) {}
   
-  private alvr(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void onClick(View paramView)
   {
-    super(paramNewPhotoPreviewActivity);
-  }
-  
-  public static agss b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
-  {
-    if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
+    ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(false);
+    if (alvq.a(this.a).a.size() > 0)
     {
-      if ((jdField_a_of_type_Agss == null) || (jdField_a_of_type_Agss.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Agss = new alvr(paramNewPhotoPreviewActivity);
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder(alvq.b(this.a).a.size() * 128);
+        int i = 0;
+        while (i < alvq.c(this.a).a.size())
+        {
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), alvq.d(this.a).a.get(i) }));
+          i += 1;
+        }
+        QLog.d("PhotoPreviewLogicArk", 2, paramView.toString());
       }
-      return jdField_a_of_type_Agss;
+      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
     }
-    finally {}
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Agsr.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      Intent localIntent = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
-      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
-      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-      localIntent.putExtra("enter_from", 3);
+      ((NewPhotoPreviewActivity)this.a.a.get()).finish();
+      return;
+      alvj.a().a("callbackArk", null, null);
     }
-    super.a(paramBoolean);
-  }
-  
-  protected void c()
-  {
-    super.c();
-    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new alvs(this));
   }
 }
 

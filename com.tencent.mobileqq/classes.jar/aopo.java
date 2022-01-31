@@ -1,14 +1,21 @@
 import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class aopo
-  implements bfos
+class aopo
+  implements aptw
 {
-  public aopo(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aopo(aopn paramaopn) {}
   
-  public void onDismiss()
+  public void a()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
   }
 }
 

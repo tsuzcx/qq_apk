@@ -1,22 +1,152 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class akrg
-  implements akoq
+  implements aytj
 {
-  akrg(akqx paramakqx, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  akrg(akqw paramakqw) {}
   
-  public ToServiceMsg a()
+  public void a(aytl paramaytl, aytk paramaytk)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqx.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    if (paramaytl.a.getResultCode() != 1000)
+    {
+      this.a.a(4006, false, null);
+      return;
+    }
+    Object localObject1;
+    int i;
+    for (;;)
+    {
+      structmsg.RspNextSystemMsg localRspNextSystemMsg;
+      Object localObject2;
+      Object localObject3;
+      MessageForSystemMsg localMessageForSystemMsg;
+      try
+      {
+        localObject1 = (ajxl)this.a.a.getManager(51);
+        paramaytk = this.a.a.getAccount();
+        localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
+        localRspNextSystemMsg.mergeFrom((byte[])paramaytl.a.getWupBuffer());
+        new StringBuilder();
+        if ((localRspNextSystemMsg == null) || (localRspNextSystemMsg.head.result.get() != 0)) {
+          this.a.a(4006, false, null);
+        }
+        paramaytl = new ArrayList();
+        localObject2 = localRspNextSystemMsg.msgs.get();
+        j = ((List)localObject2).size();
+        if (!QLog.isColorLevel()) {
+          break label859;
+        }
+        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
+      }
+      catch (Exception paramaytl)
+      {
+        int j;
+        long l3;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", paramaytl);
+        this.a.a(4006, false, null);
+        return;
+      }
+      if (i < j)
+      {
+        localObject3 = axas.a(-2018);
+        ((MessageRecord)localObject3).msgtype = -2018;
+        ((MessageRecord)localObject3).selfuin = paramaytk;
+        ((MessageRecord)localObject3).frienduin = ajsd.M;
+        ((MessageRecord)localObject3).senderuin = (((structmsg.StructMsg)((List)localObject2).get(i)).req_uin.get() + "");
+        ((MessageRecord)localObject3).istroop = 0;
+        ((MessageRecord)localObject3).time = ((structmsg.StructMsg)((List)localObject2).get(i)).msg_time.get();
+        ((MessageRecord)localObject3).isread = true;
+        localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
+        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)((List)localObject2).get(i)).get());
+        ((MessageRecord)localObject3).msgData = localMessageForSystemMsg.structMsg.toByteArray();
+        localMessageForSystemMsg.parse();
+        paramaytl.add(localMessageForSystemMsg);
+        i += 1;
+      }
+      else if (paramaytl.size() > 0)
+      {
+        i = paramaytl.size();
+        long l1 = ((MessageRecord)paramaytl.get(0)).time;
+        long l2 = ((MessageRecord)paramaytl.get(i - 1)).time;
+        l3 = aydc.a().a(this.a.a);
+        localObject2 = this.a.a.a().a(ajsd.M, 0, l3).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (ChatMessage)((Iterator)localObject2).next();
+          if ((((ChatMessage)localObject3).time >= l2) && (((ChatMessage)localObject3).time <= l1))
+          {
+            this.a.a.a().b(ajsd.M, 0, ((ChatMessage)localObject3).uniseq, false);
+            ((Iterator)localObject2).remove();
+          }
+          else if ((localObject3 instanceof MessageForSystemMsg))
+          {
+            localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
+            if (localMessageForSystemMsg.structMsg == null) {
+              localMessageForSystemMsg.parse();
+            }
+            String str = localMessageForSystemMsg.senderuin;
+            if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() == 13) && (((ajxl)localObject1).b(str)))
+            {
+              this.a.a.a().b(ajsd.M, 0, ((ChatMessage)localObject3).uniseq, false);
+              ((Iterator)localObject2).remove();
+            }
+          }
+        }
+        aydc.a().a(this.a.a, l2);
+        if (paramaytl.size() < 20) {
+          aydc.a().a(true, this.a.a);
+        }
+        l2 = localRspNextSystemMsg.following_friend_seq.get();
+        l1 = l2;
+        if (l2 <= 0L) {
+          l1 = this.a.a.a().e("following_friend_seq_47");
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
+        }
+        this.a.a.a().e("following_friend_seq_47", l1);
+        localObject1 = this.a.a.a();
+        paramaytk = String.valueOf(paramaytk);
+        if ((!akas.a(paramaytl)) || (!this.a.a.isBackground_Stop)) {
+          break label864;
+        }
+      }
+    }
+    label859:
+    label864:
+    for (boolean bool = true;; bool = false)
+    {
+      ((QQMessageFacade)localObject1).a(paramaytl, paramaytk, bool);
+      this.a.a("handleGetSystemMsgResp", true, paramaytl.size(), false, false);
+      for (;;)
+      {
+        this.a.a(4005, true, null);
+        return;
+        aydc.a().a(true, this.a.a);
+      }
+      i = 0;
+      break;
+    }
   }
 }
 

@@ -1,27 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
 
 class raw
-  implements bfsl
+  implements PopupWindow.OnDismissListener
 {
-  raw(rap paramrap, BaseArticleInfo paramBaseArticleInfo) {}
+  raw(ram paramram) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
-    }
-    if ((this.jdField_a_of_type_Rap.a instanceof Activity))
+    ram.a(this.a).a(1.0F);
+    if (this.a.b)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      PublicFragmentActivity.a(this.jdField_a_of_type_Rap.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      this.a.a.c();
+      this.a.b = false;
     }
   }
 }

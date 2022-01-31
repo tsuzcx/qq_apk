@@ -1,15 +1,37 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-
-public abstract interface vln
+public class vln
 {
-  public abstract void a();
+  private int jdField_a_of_type_Int;
+  private vlj jdField_a_of_type_Vlj = new vli();
+  private int b;
   
-  public abstract boolean a();
+  public vll a()
+  {
+    return new vll(this, null);
+  }
   
-  public abstract void b(Canvas paramCanvas);
+  public vln a(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    return this;
+  }
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public vln a(vlj paramvlj)
+  {
+    if (paramvlj != null) {
+      this.jdField_a_of_type_Vlj = paramvlj;
+    }
+    return this;
+  }
+  
+  public vln b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.b = paramInt;
+    }
+    return this;
+  }
 }
 
 

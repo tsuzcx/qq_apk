@@ -1,12 +1,6 @@
-import android.view.View;
-import android.widget.TextView;
-
-class rei
+public abstract interface rei
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private rei(ref paramref) {}
+  public abstract void a();
 }
 
 

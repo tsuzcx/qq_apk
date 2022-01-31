@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajyc;
-import bcpw;
-import tum;
+import ajya;
+import bcql;
+import tuj;
 
 public class QQStoryWatcherListActivity$GetWatcherHelper$1
   implements Runnable
 {
-  public QQStoryWatcherListActivity$GetWatcherHelper$1(tum paramtum) {}
+  public QQStoryWatcherListActivity$GetWatcherHelper$1(tuj paramtuj) {}
   
   public void run()
   {
-    bcpw.a(this.this$0.a, 1, ajyc.a(2131711121), 0).a();
+    bcql.a(this.this$0.a, 1, ajya.a(2131711132), 0).a();
     this.this$0.a.a(2);
   }
 }

@@ -1,17 +1,12 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.TYPE})
-public @interface begt
+public abstract interface begt
 {
-  String a();
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begt
  * JD-Core Version:    0.7.0.1
  */

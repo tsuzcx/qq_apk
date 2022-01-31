@@ -1,66 +1,36 @@
+import android.content.res.Resources;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class akyy
+class akyy
+  extends bbkl
 {
-  static akza a;
-  public static String a;
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  static
+  akyy(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "AREngine_ARPromotion";
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
   }
   
-  public static akyr a(AppInterface paramAppInterface)
+  public void innerClean()
   {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      return (akyr)((QQAppInterface)paramAppInterface).getManager(279);
-    }
-    if (AudioHelper.d()) {
-      throw new IllegalArgumentException(ajyc.a(2131708517));
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
   
-  public static akza a(AppInterface paramAppInterface)
+  public boolean runOnSubThread(Resources paramResources)
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (AudioHelper.d())) {
-      throw new IllegalArgumentException(ajyc.a(2131708515));
-    }
-    if (jdField_a_of_type_Akza == null) {}
-    try
-    {
-      if (jdField_a_of_type_Akza == null) {
-        jdField_a_of_type_Akza = new akza(paramAppInterface);
-      }
-      return jdField_a_of_type_Akza;
-    }
-    finally {}
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      a(paramAppInterface).a(paramAppInterface);
-      BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
-      return;
-    }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong < AudioHelper.a();
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    long l = AudioHelper.a();
-    return (paramLong1 < l) && (paramLong2 > l);
+    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bbmd.a(this.jdField_a_of_type_JavaLangString, null);
+    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
+    akyp.c();
+    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    return true;
   }
 }
 

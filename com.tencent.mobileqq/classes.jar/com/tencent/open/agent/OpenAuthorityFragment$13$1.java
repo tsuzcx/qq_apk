@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
-import ajyc;
-import bdbh;
-import bdce;
-import bdch;
+import ajya;
+import bdbw;
+import bdct;
+import bdcw;
 import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.open.model.VirtualInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.util.List;
 public class OpenAuthorityFragment$13$1
   implements Runnable
 {
-  public OpenAuthorityFragment$13$1(bdbh parambdbh, boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
+  public OpenAuthorityFragment$13$1(bdbw parambdbw, boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult) {}
   
   public void run()
   {
@@ -30,33 +30,33 @@ public class OpenAuthorityFragment$13$1
           Object localObject = (VirtualInfo)localIterator.next();
           if ((((VirtualInfo)localObject).b != null) && (((VirtualInfo)localObject).jdField_a_of_type_JavaLangString != null))
           {
-            localObject = new bdch(((VirtualInfo)localObject).jdField_a_of_type_Long, ((VirtualInfo)localObject).jdField_a_of_type_JavaLangString, ((VirtualInfo)localObject).b);
-            if ((((bdch)localObject).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a() == 0L)) {
-              ((bdch)localObject).jdField_a_of_type_Boolean = true;
+            localObject = new bdcw(((VirtualInfo)localObject).jdField_a_of_type_Long, ((VirtualInfo)localObject).jdField_a_of_type_JavaLangString, ((VirtualInfo)localObject).b);
+            if ((((bdcw)localObject).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a() == 0L)) {
+              ((bdcw)localObject).jdField_a_of_type_Boolean = true;
             }
             localArrayList.add(localObject);
           }
         }
       }
-      if ((this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer != null) && (this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a != null))
+      if ((this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer != null) && (this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a != null))
       {
-        this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(localArrayList, this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
-        if (this.jdField_a_of_type_Bdbh.a.j != 0L) {
-          this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(this.jdField_a_of_type_Bdbh.a.j);
+        this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(localArrayList, this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
+        if (this.jdField_a_of_type_Bdbw.a.j != 0L) {
+          this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(this.jdField_a_of_type_Bdbw.a.j);
         }
       }
-      this.jdField_a_of_type_Bdbh.a.j = 0L;
+      this.jdField_a_of_type_Bdbw.a.j = 0L;
     }
     do
     {
       return;
       if (this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult != null)
       {
-        OpenAuthorityFragment.a(this.jdField_a_of_type_Bdbh.a, ajyc.a(2131707848) + this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int, false);
+        OpenAuthorityFragment.a(this.jdField_a_of_type_Bdbw.a, ajya.a(2131707859) + this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int, false);
         QLog.d("OpenAuthorityFragment", 1, new Object[] { "getVirtualList error errorcode ===", Integer.valueOf(this.jdField_a_of_type_ComTencentOpenModelGetVirtualListResult.jdField_a_of_type_Int) });
       }
-    } while ((this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer == null) || (this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a == null) || ((this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount() != null) && (this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount().equals(this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.jdField_a_of_type_JavaLangString))));
-    this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(localArrayList, this.jdField_a_of_type_Bdbh.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
+    } while ((this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer == null) || (this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a == null) || ((this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount() != null) && (this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount().equals(this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.jdField_a_of_type_JavaLangString))));
+    this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a.a(localArrayList, this.jdField_a_of_type_Bdbw.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount());
   }
 }
 

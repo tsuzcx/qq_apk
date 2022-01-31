@@ -1,158 +1,1005 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.widget.ListView;
+import java.util.List;
 
 public class bbgu
   extends Dialog
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new bbgv(this);
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ListView jdField_a_of_type_ComTencentWidgetListView;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  public static final int WHICH_CANCEL = 2;
+  public static final int WHICH_NEGATIVE = 0;
+  public static final int WHICH_POSITIVE = 1;
+  private BaseAdapter adapter = new bbgv(this);
+  protected LinearLayout bodyLayout;
+  CheckBox checkBox;
+  TextView checkTxt;
+  protected TextView countText;
+  protected EditText dialogEdit;
+  TextView dummyFirstPreviewImage;
+  TextView editPicTag;
+  View framePreview;
+  public ImageView framePreviewImage;
+  LayoutInflater inflater;
+  String[] items;
+  protected TextView lBtn;
+  ListView list;
+  private bbhf mBrandColorManager = new bbhf(null);
+  FormSwitchItem mSwitch;
+  private ImageView mVideoIcon;
+  private TextView mVideoSize;
+  private TextView mVideoTime;
+  DialogInterface.OnClickListener onArrayItemClick;
+  ImageView operateImage;
+  TextView previewImage;
+  ProgressBar progressBar;
+  protected TextView rBtn;
+  ViewGroup rootView;
+  Object tag;
+  protected TextView text;
+  protected TextView title;
   
+  @TargetApi(14)
+  public bbgu(Context paramContext)
+  {
+    super(paramContext);
+    super.getWindow().setWindowAnimations(2131755124);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
+    }
+  }
+  
+  @TargetApi(14)
   public bbgu(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-  }
-  
-  private void a()
-  {
-    b();
-  }
-  
-  private void b()
-  {
-    TextView localTextView = null;
-    if (this.d.getVisibility() == 0) {
-      localTextView = this.d;
+    super.getWindow().setWindowAnimations(2131755124);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
     }
-    for (;;)
+  }
+  
+  @TargetApi(14)
+  protected bbgu(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    super(paramContext, paramBoolean, paramOnCancelListener);
+    super.getWindow().setWindowAnimations(2131755124);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
+    }
+  }
+  
+  public static void showPermissionSettingDialog(Activity paramActivity, String paramString)
+  {
+    showPermissionSettingDialog(paramActivity, null, paramString);
+  }
+  
+  public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2)
+  {
+    bbgw localbbgw = new bbgw(paramActivity);
+    showPermissionSettingDialog(paramActivity, paramString1, paramString2, localbbgw, localbbgw, null);
+  }
+  
+  public static void showPermissionSettingDialog(Activity paramActivity, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    bbgu localbbgu = bbdj.a(paramActivity, 230);
+    if (paramString1 != null)
     {
-      if (localTextView != null) {}
+      paramActivity = paramString1;
+      if (!paramString1.equals("")) {}
+    }
+    else
+    {
+      paramActivity = ajya.a(2131710214);
+    }
+    localbbgu.setTitle(paramActivity);
+    if (paramString2 != null)
+    {
+      paramActivity = paramString2;
+      if (!paramString2.equals("")) {}
+    }
+    else
+    {
+      paramActivity = ajya.a(2131710206);
+    }
+    localbbgu.setMessage(paramActivity);
+    localbbgu.setNegativeButton(ajya.a(2131710213), paramOnClickListener1);
+    localbbgu.setPositiveButton(ajya.a(2131710198), paramOnClickListener2);
+    localbbgu.setOnCancelListener(paramOnCancelListener);
+    localbbgu.show();
+  }
+  
+  public bbgu addCenterView(View paramView, LinearLayout.LayoutParams paramLayoutParams)
+  {
+    this.text.setVisibility(8);
+    this.countText.setVisibility(8);
+    this.bodyLayout.addView(paramView, paramLayoutParams);
+    this.bodyLayout.setGravity(17);
+    return this;
+  }
+  
+  public void addPreviewView(View paramView)
+  {
+    if (paramView == null) {}
+    while (this.rootView == null) {
       return;
-      if (this.e.getVisibility() == 0) {
-        localTextView = this.e;
-      } else if (this.c.getVisibility() == 0) {
-        localTextView = this.c;
+    }
+    int i = 0;
+    int j = this.rootView.getChildCount();
+    while (i < j)
+    {
+      View localView = this.rootView.getChildAt(i);
+      if ((localView != null) && (localView.getVisibility() == 0)) {
+        localView.setVisibility(4);
       }
+      i += 1;
+    }
+    this.rootView.addView(paramView);
+    paramView.setTag(Integer.valueOf(1001));
+  }
+  
+  public bbgu addView(View paramView)
+  {
+    this.text.setVisibility(8);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.countText.setVisibility(8);
+    this.bodyLayout.addView(paramView, localLayoutParams);
+    return this;
+  }
+  
+  public bbgu addView(View paramView, LinearLayout.LayoutParams paramLayoutParams)
+  {
+    this.text.setVisibility(8);
+    this.countText.setVisibility(8);
+    this.bodyLayout.addView(paramView, paramLayoutParams);
+    return this;
+  }
+  
+  public void adjustMessageBottomMargin(float paramFloat)
+  {
+    if (this.bodyLayout != null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
+      localLayoutParams.bottomMargin = axlk.a(paramFloat);
+      this.bodyLayout.setLayoutParams(localLayoutParams);
     }
   }
   
-  protected int a(int paramInt)
+  public void adjustMessageLayout(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.text.getLineCount() > 1)
+      {
+        this.text.setGravity(3);
+        return;
+      }
+      this.text.setGravity(17);
+      return;
+    }
+    this.text.setGravity(3);
+  }
+  
+  public void adjustMessageTopBottomMargin(float paramFloat1, float paramFloat2)
+  {
+    if (this.bodyLayout != null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
+      localLayoutParams.bottomMargin = axlk.a(paramFloat2);
+      localLayoutParams.topMargin = axlk.a(paramFloat1);
+      this.bodyLayout.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  public void adjustTitle()
+  {
+    this.title.setGravity(3);
+  }
+  
+  protected int customWhichToCallBack(int paramInt)
   {
     return paramInt;
   }
   
-  public bbgu a(String paramString)
-  {
-    if (paramString != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
-      return this;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    return this;
-  }
-  
-  public bbgu a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.c.setVisibility(8);
-      return this;
-    }
-    this.c.setText(paramString);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bbgw(this, paramOnClickListener));
-    a();
-    return this;
-  }
-  
-  public bbgu b(String paramString)
-  {
-    if (paramString != null)
-    {
-      this.b.setText(paramString);
-      this.b.setVisibility(0);
-      return this;
-    }
-    this.b.setVisibility(8);
-    return this;
-  }
-  
-  public bbgu b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.e.setVisibility(8);
-      return this;
-    }
-    this.e.setText(paramString);
-    this.e.setVisibility(0);
-    this.e.setOnClickListener(new bbgx(this, paramOnClickListener));
-    a();
-    return this;
-  }
-  
-  public bbgu c(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramString);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bbgy(this, paramOnClickListener));
-    a();
-    return this;
-  }
-  
+  /* Error */
   public void dismiss()
   {
-    try
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 265	android/app/Dialog:dismiss	()V
+    //   4: aload_0
+    //   5: invokestatic 270	zzp:a	(Landroid/app/Dialog;)V
+    //   8: return
+    //   9: astore_1
+    //   10: aload_0
+    //   11: invokestatic 270	zzp:a	(Landroid/app/Dialog;)V
+    //   14: return
+    //   15: astore_1
+    //   16: aload_0
+    //   17: invokestatic 270	zzp:a	(Landroid/app/Dialog;)V
+    //   20: aload_1
+    //   21: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	22	0	this	bbgu
+    //   9	1	1	localException	java.lang.Exception
+    //   15	6	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	9	java/lang/Exception
+    //   0	4	15	finally
+  }
+  
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramAccessibilityEvent.getEventType() == 32) {
+      paramAccessibilityEvent.getText().add(getContext().getString(2131691108));
+    }
+    super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(Dialog.class.getName());
+    return false;
+  }
+  
+  public TextView getBtnLeft()
+  {
+    return this.lBtn;
+  }
+  
+  public TextView getBtnight()
+  {
+    return this.rBtn;
+  }
+  
+  public boolean getCheckBoxState()
+  {
+    if ((this.checkBox != null) && (this.checkBox.getVisibility() == 0)) {
+      return this.checkBox.isChecked();
+    }
+    return false;
+  }
+  
+  protected int getDialogListItemLayout()
+  {
+    return 2131558894;
+  }
+  
+  public String getEditString()
+  {
+    Object localObject;
+    if (this.dialogEdit == null) {
+      localObject = null;
+    }
+    String str;
+    do
     {
-      super.dismiss();
+      return localObject;
+      str = this.dialogEdit.getText().toString();
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    return this.dialogEdit.getHint().toString();
+  }
+  
+  public EditText getEditText()
+  {
+    return null;
+  }
+  
+  public String getInputValue()
+  {
+    return null;
+  }
+  
+  public TextView getMessageTextView()
+  {
+    return this.text;
+  }
+  
+  public TextView getMessageTextView_Plain_Text()
+  {
+    return (TextView)findViewById(2131365148);
+  }
+  
+  public int getRootViewHeight()
+  {
+    if (this.rootView == null) {
+      return -1;
+    }
+    return this.rootView.getMeasuredHeight();
+  }
+  
+  public boolean getSwitchState()
+  {
+    if ((this.mSwitch != null) && (this.mSwitch.getVisibility() == 0)) {
+      return this.mSwitch.a();
+    }
+    return false;
+  }
+  
+  public Object getTag()
+  {
+    return this.tag;
+  }
+  
+  public TextView getTitleTextView()
+  {
+    return this.title;
+  }
+  
+  public boolean hasPreViewInDialog()
+  {
+    if (this.rootView == null) {
+      return false;
+    }
+    int i = this.rootView.getChildCount() - 1;
+    if (i < 0) {
+      return false;
+    }
+    View localView = this.rootView.getChildAt(i);
+    if (localView == null) {
+      return false;
+    }
+    return ((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001);
+  }
+  
+  public void hideSoftInputFromWindow()
+  {
+    if (this.dialogEdit != null) {
+      ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.dialogEdit.getWindowToken(), 0);
+    }
+  }
+  
+  public void removePreviewView()
+  {
+    if (this.rootView == null) {
       return;
     }
-    catch (Exception localException) {}
+    int i = this.rootView.getChildCount() - 1;
+    if (i >= 0) {
+      this.rootView.removeViewAt(i);
+    }
+    i -= 1;
+    label34:
+    View localView;
+    if (i >= 0)
+    {
+      localView = this.rootView.getChildAt(i);
+      if (localView != null) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      i -= 1;
+      break label34;
+      break;
+      label58:
+      if (((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == 1001))
+      {
+        localView.setVisibility(0);
+        return;
+      }
+      localView.setVisibility(0);
+    }
+  }
+  
+  public void setBodyLayoutNoMargin()
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
+    localLayoutParams.setMargins(0, localLayoutParams.topMargin, 0, 0);
+    this.bodyLayout.setLayoutParams(localLayoutParams);
+  }
+  
+  public bbgu setCheckBox(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    findViewById(2131368929).setVisibility(0);
+    this.checkTxt.setText(paramString);
+    if (this.checkBox != null) {
+      this.checkBox.setOnCheckedChangeListener(new bbgy(this, paramOnClickListener));
+    }
+    setSeperatorState();
+    return this;
   }
   
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365151));
-    this.b = ((TextView)findViewById(2131365147));
-    this.f = ((TextView)findViewById(2131371907));
-    this.c = ((TextView)findViewById(2131365136));
-    this.e = ((TextView)findViewById(2131365139));
-    this.d = ((TextView)findViewById(2131365142));
-    this.c.setVisibility(8);
-    this.e.setVisibility(8);
-    this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363315));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131369266));
+    this.title = ((TextView)findViewById(2131365150));
+    this.text = ((TextView)findViewById(2131365146));
+    this.dialogEdit = ((EditText)findViewById(2131365131));
+    this.countText = ((TextView)findViewById(2131365124));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131365418));
+    this.previewImage = ((TextView)findViewById(2131371907));
+    this.operateImage = ((ImageView)findViewById(2131371081));
+    this.framePreviewImage = ((ImageView)findViewById(2131366690));
+    this.framePreview = findViewById(2131366689);
+    this.mVideoIcon = ((ImageView)findViewById(2131379007));
+    this.mVideoSize = ((TextView)findViewById(2131369588));
+    this.mVideoTime = ((TextView)findViewById(2131369589));
+    this.lBtn = ((TextView)findViewById(2131365135));
+    this.rBtn = ((TextView)findViewById(2131365141));
+    this.editPicTag = ((TextView)findViewById(2131365132));
+    this.progressBar = ((ProgressBar)findViewById(2131365176));
+    this.lBtn.setVisibility(8);
+    this.rBtn.setVisibility(8);
+    this.bodyLayout = ((LinearLayout)findViewById(2131363314));
+    this.checkBox = ((CheckBox)findViewById(2131377619));
+    this.mSwitch = ((FormSwitchItem)findViewById(2131377621));
+    this.checkTxt = ((TextView)findViewById(2131378457));
+    this.list = ((ListView)findViewById(2131369266));
+    this.rootView = ((ViewGroup)findViewById(2131365142));
+    if ((this.list != null) && (Build.VERSION.SDK_INT >= 9)) {
+      this.list.setOverScrollMode(2);
+    }
+    this.mBrandColorManager.a(findViewById(2131365109));
+  }
+  
+  public void setEditLint(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.dialogEdit.getVisibility() != 0) {
+        this.dialogEdit.setVisibility(0);
+      }
+      this.dialogEdit.setHint(paramString);
+      return;
+    }
+    this.dialogEdit.setVisibility(8);
+  }
+  
+  public bbgu setFirstDummyPreviewImage(Drawable paramDrawable)
+  {
+    this.dummyFirstPreviewImage.setPadding(0, 0, 0, 0);
+    this.dummyFirstPreviewImage.setCompoundDrawablePadding(0);
+    this.dummyFirstPreviewImage.setCompoundDrawables(null, null, null, paramDrawable);
+    if (paramDrawable != null)
+    {
+      this.dummyFirstPreviewImage.setVisibility(0);
+      return this;
+    }
+    this.dummyFirstPreviewImage.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setImageOnClickListener(View.OnClickListener paramOnClickListener)
+  {
+    if ((paramOnClickListener != null) && (this.framePreviewImage != null))
+    {
+      this.framePreviewImage.setOnClickListener(paramOnClickListener);
+      this.countText.setVisibility(8);
+    }
+    return this;
+  }
+  
+  public bbgu setItems(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    Object localObject = null;
+    try
+    {
+      String[] arrayOfString = getContext().getResources().getStringArray(paramInt);
+      localObject = arrayOfString;
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      for (;;)
+      {
+        localNotFoundException.printStackTrace();
+      }
+    }
+    return setItems(localObject, paramOnClickListener);
+  }
+  
+  public bbgu setItems(String[] paramArrayOfString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.items = paramArrayOfString;
+    this.text.setVisibility(8);
+    this.countText.setVisibility(8);
+    this.lBtn.setVisibility(8);
+    this.rBtn.setVisibility(8);
+    this.bodyLayout.setVisibility(8);
+    this.onArrayItemClick = paramOnClickListener;
+    this.list.setVisibility(0);
+    this.list.setAdapter(this.adapter);
+    this.list.setDivider(null);
+    this.list.setDividerHeight(0);
+    return this;
+  }
+  
+  public bbgu setMessage(int paramInt)
+  {
+    this.text.setText(paramInt);
+    this.text.setContentDescription(getContext().getString(paramInt));
+    this.text.setVisibility(0);
+    return this;
+  }
+  
+  public bbgu setMessage(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      this.text.setText(paramCharSequence);
+      this.text.setContentDescription(paramCharSequence);
+      this.text.setVisibility(0);
+      return this;
+    }
+    this.text.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setMessageCount(String paramString)
+  {
+    if (paramString != null)
+    {
+      this.countText.setText(paramString);
+      this.countText.setContentDescription(paramString);
+      this.countText.setVisibility(0);
+      return this;
+    }
+    this.countText.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setMessageMaxLine(int paramInt)
+  {
+    if (this.text != null)
+    {
+      this.text.setMaxLines(paramInt);
+      this.text.setEllipsize(TextUtils.TruncateAt.END);
+    }
+    return this;
+  }
+  
+  public void setMessageTextColor(int paramInt)
+  {
+    ColorStateList localColorStateList = getContext().getResources().getColorStateList(paramInt);
+    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+      this.text.setTextColor(localColorStateList);
+    }
+  }
+  
+  public void setMessageTextSize(float paramFloat)
+  {
+    if ((this.text != null) && (this.text.getVisibility() == 0)) {
+      this.text.setTextSize(paramFloat);
+    }
+  }
+  
+  public bbgu setMessageWithEmo(String paramString, float paramFloat)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.text.setText(new aykk(paramString, 3));
+      this.text.setContentDescription(paramString);
+      this.text.setVisibility(0);
+      return this;
+    }
+    this.text.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setMessageWithUrl(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.text.setAutoLinkMask(1);
+      this.text.setMovementMethod(LinkMovementMethod.getInstance());
+      this.text.setText(paramString);
+      this.text.setContentDescription(paramString);
+      this.text.setLinkTextColor(getContext().getResources().getColor(2131165698));
+      this.text.setVisibility(0);
+      return this;
+    }
+    this.text.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setMessageWithoutAutoLink(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      this.text.setMovementMethod(LinkMovementMethod.getInstance());
+      this.text.setText(paramCharSequence);
+      this.text.setContentDescription(paramCharSequence);
+      this.text.setVisibility(0);
+      return this;
+    }
+    this.text.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setMsgMaxLineWithEnd(String paramString, int paramInt)
+  {
+    if (this.text != null)
+    {
+      this.text.setMaxLines(paramInt);
+      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new bbgx(this, paramInt, paramString));
+    }
+    return this;
+  }
+  
+  public bbgu setNegativeButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.lBtn.setVisibility(8);
+      return this;
+    }
+    this.lBtn.setText(paramInt);
+    this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691105));
+    this.lBtn.setVisibility(0);
+    this.lBtn.setOnClickListener(new bbhd(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public bbgu setNegativeButton(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.lBtn.setVisibility(8);
+      return this;
+    }
+    this.lBtn.setTextColor(paramInt);
+    return setNegativeButton(paramString, paramOnClickListener);
+  }
+  
+  public bbgu setNegativeButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.lBtn.setVisibility(8);
+      return this;
+    }
+    this.lBtn.setText(paramString);
+    this.lBtn.setContentDescription(paramString + getContext().getString(2131691105));
+    this.lBtn.setVisibility(0);
+    this.lBtn.setOnClickListener(new bbha(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public void setNegativeButtonContentDescription(String paramString)
+  {
+    this.lBtn.setContentDescription(paramString);
+  }
+  
+  public bbgu setOperateImage(Drawable paramDrawable)
+  {
+    if (this.operateImage != null)
+    {
+      this.operateImage.setImageDrawable(paramDrawable);
+      if (paramDrawable == null) {
+        break label45;
+      }
+      this.operateImage.setVisibility(0);
+      if (this.operateImage != null) {
+        this.operateImage.setVisibility(8);
+      }
+    }
+    label45:
+    do
+    {
+      return this;
+      this.operateImage.setVisibility(8);
+    } while (this.operateImage == null);
+    this.operateImage.setVisibility(0);
+    return this;
+  }
+  
+  public bbgu setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramInt);
+    this.rBtn.setContentDescription(getContext().getString(paramInt));
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new bbhe(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public bbgu setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramInt);
+    this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691105));
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new bbhc(this, paramOnClickListener, paramBoolean));
+    setSeperatorState();
+    return this;
+  }
+  
+  public bbgu setPositiveButton(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setTextColor(paramInt);
+    return setPositiveButton(paramString, paramOnClickListener);
+  }
+  
+  public bbgu setPositiveButton(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramString);
+    this.rBtn.setContentDescription(paramString + getContext().getString(2131691105));
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new bbhb(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public void setPositiveButtonContentDescription(String paramString)
+  {
+    this.rBtn.setContentDescription(paramString);
+  }
+  
+  public bbgu setPreviewFixDimension(int paramInt1, int paramInt2)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.framePreview.getLayoutParams();
+    localMarginLayoutParams.width = paramInt1;
+    localMarginLayoutParams.height = paramInt2;
+    localMarginLayoutParams.topMargin = actj.a(12.0F, this.framePreview.getResources());
+    this.framePreviewImage.getLayoutParams().width = paramInt1;
+    this.framePreviewImage.getLayoutParams().height = paramInt2;
+    return this;
+  }
+  
+  public bbgu setPreviewImage(Drawable paramDrawable)
+  {
+    return setPreviewImage(paramDrawable, false, 0);
+  }
+  
+  public bbgu setPreviewImage(Drawable paramDrawable, boolean paramBoolean, int paramInt)
+  {
+    return setPreviewImage(paramDrawable, paramBoolean, paramInt, false);
+  }
+  
+  public bbgu setPreviewImage(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    if (paramDrawable == null) {
+      return this;
+    }
+    if (paramBoolean1)
+    {
+      this.framePreview.setVisibility(0);
+      this.previewImage.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams;
+      if (!paramBoolean2)
+      {
+        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        this.framePreviewImage.setLayoutParams(localLayoutParams);
+      }
+      for (;;)
+      {
+        this.framePreviewImage.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
+        }
+        this.framePreview.setBackgroundDrawable(null);
+        return this;
+        localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        this.framePreviewImage.setLayoutParams(localLayoutParams);
+      }
+      if (paramInt == 2)
+      {
+        this.framePreview.setBackgroundResource(2130839628);
+        return this;
+      }
+      this.framePreview.setBackgroundResource(2130839629);
+      return this;
+    }
+    this.framePreview.setVisibility(8);
+    this.previewImage.setVisibility(0);
+    this.previewImage.setCompoundDrawablePadding(0);
+    this.previewImage.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
+    {
+      this.previewImage.setVisibility(0);
+      return this;
+    }
+    this.previewImage.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setPreviewImageScaleType(boolean paramBoolean)
+  {
+    ImageView localImageView = this.framePreviewImage;
+    if (paramBoolean) {}
+    for (ImageView.ScaleType localScaleType = ImageView.ScaleType.CENTER_INSIDE;; localScaleType = ImageView.ScaleType.CENTER_CROP)
+    {
+      localImageView.setScaleType(localScaleType);
+      return this;
+    }
+  }
+  
+  public void setProgress(int paramInt)
+  {
+    if (this.progressBar != null) {
+      this.progressBar.setProgress(paramInt);
+    }
+  }
+  
+  public void setProgressBarVisibility(int paramInt)
+  {
+    if (this.progressBar != null) {
+      this.progressBar.setVisibility(paramInt);
+    }
+  }
+  
+  protected void setSeperatorState() {}
+  
+  public bbgu setSwitch(String paramString, boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (this.mSwitch != null)
+    {
+      this.mSwitch.setVisibility(0);
+      this.mSwitch.setText(paramString);
+      this.mSwitch.setChecked(paramBoolean);
+      if (paramOnClickListener != null) {
+        this.mSwitch.setOnCheckedChangeListener(new bbgz(this, paramOnClickListener));
+      }
+    }
+    return this;
+  }
+  
+  public void setTag(Object paramObject)
+  {
+    this.tag = paramObject;
+  }
+  
+  public bbgu setText(String paramString, int paramInt)
+  {
+    if ((findViewById(paramInt) instanceof TextView))
+    {
+      TextView localTextView = (TextView)findViewById(paramInt);
+      if (localTextView != null)
+      {
+        localTextView.setText(paramString);
+        localTextView.setContentDescription(paramString);
+      }
+    }
+    return this;
+  }
+  
+  public void setTextContentDescription(String paramString)
+  {
+    this.text.setContentDescription(paramString);
+  }
+  
+  public bbgu setTitle(String paramString)
+  {
+    if (paramString != null)
+    {
+      this.title.setText(paramString);
+      this.title.setContentDescription(paramString);
+      this.title.setVisibility(0);
+      if (this.items == null) {}
+      return this;
+    }
+    this.title.setVisibility(8);
+    return this;
   }
   
   public void setTitle(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.title.setText(paramInt);
+    this.title.setVisibility(0);
+  }
+  
+  public void setTitleMutiLine()
+  {
+    this.title.setSingleLine(false);
+  }
+  
+  public bbgu setTitleWithEmo(CharSequence paramCharSequence)
+  {
+    if (paramCharSequence != null)
+    {
+      this.title.setText(paramCharSequence);
+      this.title.setVisibility(0);
+      return this;
+    }
+    this.title.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setVideoFormat(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  {
+    if ((paramBoolean1) && (this.mVideoIcon != null))
+    {
+      this.mVideoIcon.setVisibility(0);
+      if ((!paramBoolean2) || (this.editPicTag == null)) {
+        break label125;
+      }
+      this.editPicTag.setVisibility(0);
+      label38:
+      if ((TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
+        break label148;
+      }
+      this.mVideoSize.setVisibility(0);
+      this.mVideoSize.setText(paramString1);
+      label68:
+      if ((TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null)) {
+        break label174;
+      }
+      this.mVideoTime.setVisibility(0);
+      this.mVideoTime.setText(paramString2);
+    }
+    label125:
+    while ((!TextUtils.isEmpty(paramString2)) || (this.mVideoTime == null))
+    {
+      return this;
+      if ((paramBoolean1) || (this.mVideoIcon == null)) {
+        break;
+      }
+      this.mVideoIcon.setVisibility(8);
+      break;
+      if ((paramBoolean2) || (this.editPicTag == null)) {
+        break label38;
+      }
+      this.editPicTag.setVisibility(8);
+      break label38;
+      if ((!TextUtils.isEmpty(paramString1)) || (this.mVideoSize == null)) {
+        break label68;
+      }
+      this.mVideoSize.setVisibility(8);
+      break label68;
+    }
+    label148:
+    label174:
+    this.mVideoTime.setVisibility(8);
+    return this;
+  }
+  
+  public bbgu setView(View paramView)
+  {
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.bodyLayout.addView(paramView, localLayoutParams);
+    return this;
   }
 }
 

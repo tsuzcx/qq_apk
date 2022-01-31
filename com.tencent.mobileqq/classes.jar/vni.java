@@ -1,8 +1,20 @@
-import android.graphics.PointF;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public abstract interface vni
+public class vni
+  implements vvm
 {
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public vni(DoodleLayout paramDoodleLayout) {}
+  
+  public void a(@NonNull vvt paramvvt)
+  {
+    vej.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
+  }
 }
 
 

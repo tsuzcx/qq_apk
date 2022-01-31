@@ -14,9 +14,9 @@ public class cu
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ajuo localajuo = (ajuo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-    localajuo.b(113);
-    localajuo.a(116);
+    ajum localajum = (ajum)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+    localajum.b(113);
+    localajum.a(116);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -27,7 +27,7 @@ public class cu
       }
       localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
     }
-    localajuo.a(localArrayList);
+    localajum.a(localArrayList);
     this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
     paramDialogInterface.dismiss();
   }

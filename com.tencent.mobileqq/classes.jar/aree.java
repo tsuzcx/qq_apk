@@ -1,34 +1,17 @@
-import com.tencent.shadow.core.common.ILoggerFactory;
-import com.tencent.shadow.core.common.Logger;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class aree
-  implements ILoggerFactory
+class aree
+  implements Callable<Boolean>
 {
-  private static aree jdField_a_of_type_Aree = new aree();
-  private final ConcurrentMap<String, Logger> jdField_a_of_type_JavaUtilConcurrentConcurrentMap = new ConcurrentHashMap();
+  aree(arec paramarec, File paramFile) {}
   
-  public static ILoggerFactory a()
+  public Boolean a()
   {
-    return jdField_a_of_type_Aree;
-  }
-  
-  public Logger getLogger(String paramString)
-  {
-    Logger localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.get(paramString);
-    if (localLogger != null) {
-      paramString = localLogger;
+    if ((arec.a(this.jdField_a_of_type_Arec).exists()) && (this.jdField_a_of_type_JavaIoFile == arec.a(this.jdField_a_of_type_Arec))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
-    aref localaref;
-    do
-    {
-      return paramString;
-      localaref = new aref(this, paramString);
-      localLogger = (Logger)this.jdField_a_of_type_JavaUtilConcurrentConcurrentMap.putIfAbsent(paramString, localaref);
-      paramString = localLogger;
-    } while (localLogger != null);
-    return localaref;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.text.TextUtils;
-import begz;
-import bejy;
-import beka;
-import beki;
-import besl;
+import behq;
+import bekp;
+import bekr;
+import bekz;
+import betc;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -38,34 +38,34 @@ public class NavigationJsPlugin
     ThreadManagerV2.excute(new NavigationJsPlugin.3(this, paramMiniAppInfo), 32, null, true);
   }
   
-  public void exitMiniProgram(beka parambeka)
+  public void exitMiniProgram(bekr parambekr)
   {
-    beki.a(new NavigationJsPlugin.1(this, this.mMiniAppContext.a()));
-    parambeka.a();
+    bekz.a(new NavigationJsPlugin.1(this, this.mMiniAppContext.a()));
+    parambekr.a();
   }
   
-  public void navigateBackMiniProgram(beka parambeka)
+  public void navigateBackMiniProgram(bekr parambekr)
   {
     try
     {
-      String str1 = new JSONObject(parambeka.b).optString("extraData");
+      String str1 = new JSONObject(parambekr.b).optString("extraData");
       String str2 = this.mApkgInfo.d;
       if ((!TextUtils.isEmpty(str2)) && (navigateBackMiniApp(str2, str1)))
       {
-        parambeka.a();
+        parambekr.a();
         return;
       }
-      parambeka.b();
+      parambekr.b();
       return;
     }
-    catch (Throwable parambeka)
+    catch (Throwable parambekr)
     {
-      besl.d("NavigationJsPlugin", "", parambeka);
+      betc.d("NavigationJsPlugin", "", parambekr);
     }
   }
   
   /* Error */
-  public void navigateToMiniProgram(beka parambeka)
+  public void navigateToMiniProgram(bekr parambekr)
   {
     // Byte code:
     //   0: sipush 2001
@@ -73,7 +73,7 @@ public class NavigationJsPlugin
     //   4: new 105	org/json/JSONObject
     //   7: dup
     //   8: aload_1
-    //   9: getfield 108	beka:b	Ljava/lang/String;
+    //   9: getfield 108	bekr:b	Ljava/lang/String;
     //   12: invokespecial 111	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   15: astore 5
     //   17: invokestatic 143	com/tencent/mobileqq/mini/app/MiniAppStateManager:getInstance	()Lcom/tencent/mobileqq/mini/app/MiniAppStateManager;
@@ -89,7 +89,7 @@ public class NavigationJsPlugin
     //   41: invokestatic 157	com/tencent/mobileqq/mini/apkg/MiniAppInfo:createMiniAppInfo	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
     //   44: astore 11
     //   46: aload_0
-    //   47: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   47: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   50: invokeinterface 160 1 0
     //   55: astore 9
     //   57: aload 9
@@ -107,17 +107,17 @@ public class NavigationJsPlugin
     //   85: aload 7
     //   87: astore 6
     //   89: aload 7
-    //   91: invokestatic 184	belh:a	(Ljava/lang/String;)Z
+    //   91: invokestatic 184	bely:a	(Ljava/lang/String;)Z
     //   94: ifeq +7 -> 101
     //   97: ldc 186
     //   99: astore 6
     //   101: aload_0
-    //   102: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   102: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   105: invokeinterface 160 1 0
     //   110: ifnull +190 -> 300
     //   113: aload 6
     //   115: aload_0
-    //   116: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   116: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   119: invokeinterface 160 1 0
     //   124: getfield 189	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:appId	Ljava/lang/String;
     //   127: invokevirtual 195	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -158,13 +158,13 @@ public class NavigationJsPlugin
     //   210: invokestatic 157	com/tencent/mobileqq/mini/apkg/MiniAppInfo:createMiniAppInfo	(Lorg/json/JSONObject;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
     //   213: astore 6
     //   215: aload_0
-    //   216: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   216: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   219: invokeinterface 62 1 0
     //   224: aload 6
     //   226: aload 7
     //   228: invokestatic 218	com/tencent/mobileqq/mini/sdk/MiniAppController:launchMiniAppByAppInfo	(Landroid/app/Activity;Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;Lcom/tencent/mobileqq/mini/sdk/LaunchParam;)V
     //   231: aload_1
-    //   232: invokevirtual 100	beka:a	()Ljava/lang/String;
+    //   232: invokevirtual 100	bekr:a	()Ljava/lang/String;
     //   235: pop
     //   236: ldc 8
     //   238: new 220	java/lang/StringBuilder
@@ -176,7 +176,7 @@ public class NavigationJsPlugin
     //   252: invokevirtual 228	com/tencent/mobileqq/mini/apkg/MiniAppInfo:toString	()Ljava/lang/String;
     //   255: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 232	besl:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   261: invokestatic 232	betc:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   264: aload 11
     //   266: getfield 235	com/tencent/mobileqq/mini/apkg/MiniAppInfo:verType	I
     //   269: iconst_3
@@ -190,7 +190,7 @@ public class NavigationJsPlugin
     //   284: aload 5
     //   286: invokevirtual 240	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   289: aload 5
-    //   291: invokestatic 134	besl:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   291: invokestatic 134	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   294: aconst_null
     //   295: astore 5
     //   297: goto -280 -> 17
@@ -214,7 +214,7 @@ public class NavigationJsPlugin
     //   340: invokestatic 252	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   343: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   346: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   349: invokestatic 254	besl:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   349: invokestatic 254	betc:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   352: aload 5
     //   354: ldc_w 256
     //   357: invokevirtual 260	org/json/JSONObject:optInt	(Ljava/lang/String;)I
@@ -344,9 +344,9 @@ public class NavigationJsPlugin
     //   630: ldc 8
     //   632: ldc_w 316
     //   635: aload 5
-    //   637: invokestatic 134	besl:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   637: invokestatic 134	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   640: aload_0
-    //   641: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   641: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   644: invokeinterface 62 1 0
     //   649: aload 6
     //   651: aload 7
@@ -356,28 +356,28 @@ public class NavigationJsPlugin
     //   660: dup
     //   661: aload_0
     //   662: aload_1
-    //   663: invokespecial 321	com/tencent/qqmini/proxyimpl/NavigationJsPlugin$2:<init>	(Lcom/tencent/qqmini/proxyimpl/NavigationJsPlugin;Lbeka;)V
+    //   663: invokespecial 321	com/tencent/qqmini/proxyimpl/NavigationJsPlugin$2:<init>	(Lcom/tencent/qqmini/proxyimpl/NavigationJsPlugin;Lbekr;)V
     //   666: invokestatic 325	com/tencent/mobileqq/mini/sdk/MiniAppController:startAppByAppid	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/mini/sdk/LaunchParam;Lcom/tencent/mobileqq/mini/sdk/MiniAppLauncher$MiniAppLaunchListener;)V
     //   669: aload_1
-    //   670: invokevirtual 100	beka:a	()Ljava/lang/String;
+    //   670: invokevirtual 100	bekr:a	()Ljava/lang/String;
     //   673: pop
     //   674: return
     //   675: iload_2
     //   676: iconst_1
     //   677: if_icmpne -398 -> 279
     //   680: aload_0
-    //   681: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbegz;
+    //   681: getfield 56	com/tencent/qqmini/proxyimpl/NavigationJsPlugin:mMiniAppContext	Lbehq;
     //   684: invokeinterface 62 1 0
     //   689: aload 6
     //   691: aload 5
     //   693: invokestatic 331	com/tencent/mobileqq/microapp/ext/GameProxy:startGameByMiniApp	(Landroid/app/Activity;Ljava/lang/String;Lorg/json/JSONObject;)Z
     //   696: ifeq +9 -> 705
     //   699: aload_1
-    //   700: invokevirtual 100	beka:a	()Ljava/lang/String;
+    //   700: invokevirtual 100	bekr:a	()Ljava/lang/String;
     //   703: pop
     //   704: return
     //   705: aload_1
-    //   706: invokevirtual 127	beka:b	()Ljava/lang/String;
+    //   706: invokevirtual 127	bekr:b	()Ljava/lang/String;
     //   709: pop
     //   710: return
     //   711: goto -574 -> 137
@@ -387,7 +387,7 @@ public class NavigationJsPlugin
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	721	0	this	NavigationJsPlugin
-    //   0	721	1	parambeka	beka
+    //   0	721	1	parambekr	bekr
     //   136	582	2	i	int
     //   3	521	3	j	int
     //   540	41	4	k	int

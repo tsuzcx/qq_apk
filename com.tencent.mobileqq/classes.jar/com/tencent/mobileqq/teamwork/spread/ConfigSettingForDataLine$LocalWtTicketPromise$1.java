@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ayhf;
-import ayhg;
+import ayhh;
+import ayhi;
 import java.lang.ref.WeakReference;
 
 public class ConfigSettingForDataLine$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$LocalWtTicketPromise$1(ayhg paramayhg) {}
+  public ConfigSettingForDataLine$LocalWtTicketPromise$1(ayhi paramayhi) {}
   
   public void run()
   {
-    ayhf localayhf = (ayhf)ayhg.a(this.this$0).get();
-    if (localayhf != null) {
-      ayhf.a(localayhf, ayhg.a(this.this$0));
+    ayhh localayhh = (ayhh)ayhi.a(this.this$0).get();
+    if (localayhh != null) {
+      ayhh.a(localayhh, ayhi.a(this.this$0));
     }
   }
 }

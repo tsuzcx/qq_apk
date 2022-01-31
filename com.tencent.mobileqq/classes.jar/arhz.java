@@ -1,466 +1,408 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowDataReporter.1;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.FileUploadUtil.1;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
 
 public class arhz
 {
-  public static long a;
-  protected int a;
-  String jdField_a_of_type_JavaLangString;
-  HashMap<Long, JSONObject> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  protected boolean a;
-  protected int b;
-  String b;
-  protected boolean b;
-  protected int c;
-  String c;
-  protected int d;
-  protected String d;
-  protected int e;
-  protected String e;
-  protected int f;
-  protected String f;
-  protected String g = "";
-  protected String h = "";
-  protected String i = "";
-  protected String j = "";
-  protected String k = "";
-  protected String l;
-  protected String m = Build.VERSION.RELEASE;
-  protected String n = Build.MODEL;
-  protected String o;
-  String p;
+  private static String jdField_a_of_type_JavaLangString;
+  private static char[] jdField_a_of_type_ArrayOfChar = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
   
-  public arhz(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = 2;
-    a("now_plugin");
-  }
-  
-  private void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean2)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    JSONObject localJSONObject;
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
-    {
-      localJSONObject = new JSONObject();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
-    }
-    for (;;)
-    {
-      try
-      {
-        if (localJSONObject.optBoolean("noneedadd")) {
-          break label223;
-        }
-        localJSONObject.put("opname", paramString4);
-        localJSONObject.put("roomid", paramString2);
-        localJSONObject.put("roomtype", paramString3);
-        localJSONObject.put("source", paramString1);
-        localJSONObject.put("d1", paramString5);
-        localJSONObject.put("d2", paramString6);
-        localJSONObject.put("d3", paramString7);
-        localJSONObject.put("d4", paramString8);
-        localJSONObject.put("op_in", paramInt1);
-        localJSONObject.put("op_result", paramInt2);
-        localJSONObject.put("noneedadd", paramBoolean1);
-        localJSONObject.put("timelong", paramString9);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
-        if (!paramBoolean2) {
-          break;
-        }
-        a(paramLong);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      continue;
-      label223:
-      QLog.i("NowDataReporter", 1, "本次opname不影响上报");
-    }
-  }
-  
-  private void c()
-  {
-    jdField_a_of_type_Long = 0L;
-    this.jdField_f_of_type_JavaLangString = "";
-    this.g = "";
-    this.h = "";
-    this.i = "";
-    this.j = "";
-    this.k = "";
-    this.jdField_a_of_type_Int = 11;
-    this.jdField_d_of_type_Int = 0;
-    this.l = "";
-    this.jdField_f_of_type_Int = 0;
-  }
-  
-  public arhz a(String paramString)
-  {
-    this.jdField_e_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void a()
-  {
-    for (;;)
-    {
-      try
-      {
-        arhz localarhz = b("show_loading");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        str = "1";
-        localarhz.c(str).b();
-      }
-      catch (Exception localException)
-      {
-        String str;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("NowDataReporter", 2, "reportJumpPlugin Exception");
-        continue;
-      }
-      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "show_loading", false, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", false);
-      return;
-      str = "0";
-    }
-  }
-  
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  private static String a(InputStream paramInputStream, String paramString)
   {
     try
     {
-      b("get_record_res").c(String.valueOf(paramInt1)).d(paramString).e(String.valueOf(paramInt2)).i(String.valueOf(paramLong)).b();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NowDataReporter", 2, "reportRecordCgi Exception");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    JSONObject localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if ((localJSONObject != null) && (localJSONObject.has("opname")))
-    {
-      a("last_op_name", localJSONObject);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_f_of_type_JavaLangString = paramBundle.getString("op_name");
-        bool2 = false;
-        int i2 = 1;
-        bool4 = false;
-        this.jdField_f_of_type_Int = paramBundle.getInt("op_in");
-        this.jdField_d_of_type_Int = paramBundle.getInt("op_result");
-        this.l = paramBundle.getString("timeconsume");
-        String str = paramBundle.getString("sdkversion");
-        if ((!TextUtils.isEmpty(str)) && (!str.equals("0"))) {
-          this.p = paramBundle.getString("sdkversion");
-        }
-        this.h = paramBundle.getString("d1");
-        this.i = paramBundle.getString("d2");
-        this.j = paramBundle.getString("d3");
-        this.k = paramBundle.getString("d4");
-        if (this.jdField_f_of_type_JavaLangString.equals("enter_shadow"))
-        {
-          this.jdField_b_of_type_Int = Integer.parseInt(paramBundle.getString("status1", "0"));
-          this.jdField_a_of_type_Int = paramBundle.getInt("frameVersion");
-        }
-        b();
-        if ((this.jdField_f_of_type_JavaLangString.equals("check_version_complete")) && (this.j.equals("1")))
-        {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Int = 0;
-        }
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(jdField_a_of_type_Long))) {
-          break;
-        }
-        if ((this.jdField_f_of_type_JavaLangString.equals("cancel_run")) || (this.jdField_f_of_type_JavaLangString.equals("cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("download_fail")) || (this.jdField_f_of_type_JavaLangString.equals("boot_fail")) || (this.jdField_f_of_type_JavaLangString.equals("login_fail")) || (this.jdField_f_of_type_JavaLangString.equals("enter_fail")) || (this.jdField_f_of_type_JavaLangString.equals("user_cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("enter_room")) || (this.jdField_f_of_type_JavaLangString.equals("jump_h5")) || (this.jdField_f_of_type_JavaLangString.equals("jump_app"))) {
-          break label705;
-        }
-        boolean bool3 = bool2;
-        boolean bool1 = bool4;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_biz_plugin"))
-        {
-          bool3 = bool2;
-          bool1 = bool4;
-          if (this.h.equals("fail"))
-          {
-            bool3 = true;
-            bool1 = true;
-          }
-        }
-        bool4 = bool3;
-        bool2 = bool1;
-        if (this.jdField_f_of_type_JavaLangString.equals("unzip_biz_plugin"))
-        {
-          bool4 = bool3;
-          bool2 = bool1;
-          if (this.h.equals("fail"))
-          {
-            bool4 = true;
-            bool2 = true;
-          }
-        }
-        int i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_start"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_complete"))
-        {
-          i2 = i1;
-          if (this.h.equals("2")) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_fail"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_start"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_complete"))
-        {
-          i1 = i2;
-          if (this.jdField_f_of_type_Int != 1) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_fail"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        if (i2 == 0) {
-          break;
-        }
-        a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, bool4, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, this.l, bool2);
-        return;
-      }
-      catch (Exception paramBundle) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NowDataReporter", 2, "onReportFromXProxy Exception");
-      return;
-      label705:
-      boolean bool2 = true;
-      boolean bool4 = true;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      h(paramString).b("nowentry_64Bit").b();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NowDataReporter", 2, "report64BitVersionEntry Exception");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      h(paramString1).f(paramString2).b("jump_h5").c(paramString3).d(paramString4).b();
-      a(jdField_a_of_type_Long, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", true);
-      return;
-    }
-    catch (Exception paramString3)
-    {
+      paramString = new BufferedReader(new InputStreamReader(paramInputStream, paramString));
+      StringWriter localStringWriter = new StringWriter();
+      char[] arrayOfChar = new char[256];
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowDataReporter", 2, "reportJumpH5 Exception");
+        int i = paramString.read(arrayOfChar);
+        if (i <= 0) {
+          break;
         }
+        localStringWriter.write(arrayOfChar, 0, i);
+      }
+      paramString = localStringWriter.toString();
+    }
+    finally
+    {
+      if (paramInputStream != null) {
+        paramInputStream.close();
       }
     }
+    if (paramInputStream != null) {
+      paramInputStream.close();
+    }
+    return paramString;
   }
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  private static String a(HttpURLConnection paramHttpURLConnection)
   {
-    String str1 = paramJSONObject.optString("opname");
-    int i1 = paramJSONObject.optInt("op_in");
-    int i2 = paramJSONObject.optInt("op_result");
-    String str2 = paramJSONObject.optString("d1");
-    String str3 = paramJSONObject.optString("d2");
-    String str4 = paramJSONObject.optString("d3");
-    String str5 = paramJSONObject.optString("d4");
-    String str6 = paramJSONObject.optString("source");
-    String str7 = paramJSONObject.optString("roomid");
-    paramJSONObject = paramJSONObject.optString("roomtype");
-    String str8 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    String str9 = String.valueOf(anet.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (nam.a() + "");
-    QLog.i("NowDataReporter", 2, "nowDatareportlastop: source = " + str6 + " roomid = " + str7 + " roomType = " + paramJSONObject + " op_name = " + paramString + " op_in = " + i1 + " d1= " + str2 + " d2=" + str3 + " d3=" + str4 + " d4=" + str5 + " timelong=" + this.l + " op_result = " + i2 + " qq_version = " + str9 + "  optime = " + str8 + " lastOpName = " + str1 + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + " useShadow =" + this.jdField_b_of_type_Boolean);
-    axqw.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, paramString, i1, 1, i2, str2, str3, str4, str5 + "|" + this.l + "|" + str7 + "|" + paramJSONObject + "|" + str6 + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str9 + "|" + str8 + "|" + str1 + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
+    if (paramHttpURLConnection.getResponseCode() != 200) {
+      throw new IOException(ajya.a(2131704584));
+    }
+    return b(paramHttpURLConnection);
   }
   
-  public void a(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private static HttpURLConnection a(String paramString)
   {
-    c();
-    long l1 = System.currentTimeMillis();
-    jdField_a_of_type_Long = l1;
-    this.jdField_b_of_type_Boolean = paramBoolean4;
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Int = 11;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    try
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
+    paramString.setDoInput(true);
+    paramString.setUseCaches(false);
+    paramString.setDoOutput(true);
+    paramString.setRequestMethod("POST");
+    paramString.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + jdField_a_of_type_JavaLangString);
+    paramString.setRequestProperty("User-Agent", "Android Client Agent");
+    return paramString;
+  }
+  
+  /* Error */
+  private static void a(DataOutputStream paramDataOutputStream, java.io.File paramFile)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_1
+    //   6: invokevirtual 133	java/io/File:getName	()Ljava/lang/String;
+    //   9: astore_3
+    //   10: aload_0
+    //   11: new 109	java/lang/StringBuilder
+    //   14: dup
+    //   15: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   18: ldc 135
+    //   20: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getstatic 59	arhz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   26: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   35: aload_0
+    //   36: ldc 142
+    //   38: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: new 109	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 144
+    //   51: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_3
+    //   55: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 146
+    //   60: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   69: aload_0
+    //   70: ldc 142
+    //   72: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   75: aload_0
+    //   76: new 109	java/lang/StringBuilder
+    //   79: dup
+    //   80: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   83: ldc 148
+    //   85: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: aload_3
+    //   89: invokestatic 153	java/net/URLConnection:guessContentTypeFromName	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   101: aload_0
+    //   102: ldc 142
+    //   104: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   107: aload_0
+    //   108: ldc 142
+    //   110: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   113: aconst_null
+    //   114: astore_3
+    //   115: new 155	java/io/FileInputStream
+    //   118: dup
+    //   119: aload_1
+    //   120: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   123: astore_1
+    //   124: sipush 4096
+    //   127: newarray byte
+    //   129: astore_3
+    //   130: aload_1
+    //   131: aload_3
+    //   132: invokevirtual 161	java/io/InputStream:read	([B)I
+    //   135: istore_2
+    //   136: iload_2
+    //   137: iconst_m1
+    //   138: if_icmpeq +25 -> 163
+    //   141: aload_0
+    //   142: aload_3
+    //   143: iconst_0
+    //   144: iload_2
+    //   145: invokevirtual 164	java/io/DataOutputStream:write	([BII)V
+    //   148: goto -18 -> 130
+    //   151: astore_0
+    //   152: aload_1
+    //   153: ifnull -149 -> 4
+    //   156: aload_1
+    //   157: invokevirtual 53	java/io/InputStream:close	()V
+    //   160: return
+    //   161: astore_0
+    //   162: return
+    //   163: aload_1
+    //   164: invokevirtual 53	java/io/InputStream:close	()V
+    //   167: aload_0
+    //   168: ldc 142
+    //   170: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   173: aload_0
+    //   174: invokevirtual 167	java/io/DataOutputStream:flush	()V
+    //   177: aload_1
+    //   178: ifnull -174 -> 4
+    //   181: aload_1
+    //   182: invokevirtual 53	java/io/InputStream:close	()V
+    //   185: return
+    //   186: astore_0
+    //   187: return
+    //   188: astore_0
+    //   189: aload_3
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnull +7 -> 199
+    //   195: aload_1
+    //   196: invokevirtual 53	java/io/InputStream:close	()V
+    //   199: aload_0
+    //   200: athrow
+    //   201: astore_1
+    //   202: goto -3 -> 199
+    //   205: astore_0
+    //   206: goto -15 -> 191
+    //   209: astore_0
+    //   210: aconst_null
+    //   211: astore_1
+    //   212: goto -60 -> 152
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	215	0	paramDataOutputStream	DataOutputStream
+    //   0	215	1	paramFile	java.io.File
+    //   135	10	2	i	int
+    //   9	181	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   124	130	151	java/io/IOException
+    //   130	136	151	java/io/IOException
+    //   141	148	151	java/io/IOException
+    //   163	177	151	java/io/IOException
+    //   156	160	161	java/lang/Exception
+    //   181	185	186	java/lang/Exception
+    //   115	124	188	finally
+    //   195	199	201	java/lang/Exception
+    //   124	130	205	finally
+    //   130	136	205	finally
+    //   141	148	205	finally
+    //   163	177	205	finally
+    //   115	124	209	java/io/IOException
+  }
+  
+  private static void a(DataOutputStream paramDataOutputStream, Map<String, String> paramMap)
+  {
+    if ((paramMap == null) || (paramMap.isEmpty())) {}
+    for (;;)
     {
-      localarhz = h(paramString1).f(paramString2).g(paramString3).b("nowentry");
-      if (!paramBoolean1) {
-        break label175;
-      }
-      str1 = "1";
-      localarhz = localarhz.c(str1);
-      if (!paramBoolean2) {
-        break label209;
-      }
-      str1 = "1";
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        arhz localarhz;
-        String str1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NowDataReporter", 2, "reportNowEntry Exception");
-          continue;
-          String str2 = "0";
-        }
-      }
-    }
-    localarhz = localarhz.d(str1);
-    if (paramBoolean3) {}
-    for (str1 = "1";; str1 = "0")
-    {
-      localarhz.e(str1).b();
-      a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "now_entry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new NowDataReporter.1(this, l1), 90000L);
       return;
-      label175:
-      str1 = "0";
-      break;
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        paramDataOutputStream.writeBytes("--" + jdField_a_of_type_JavaLangString);
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + (String)localEntry.getKey() + "\"");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes("\r\n");
+        paramDataOutputStream.writeBytes(URLEncoder.encode((String)localEntry.getValue(), "UTF-8"));
+        paramDataOutputStream.writeBytes("\r\n");
+      }
     }
   }
   
-  public arhz b(String paramString)
+  public static void a(String paramString1, String paramString2)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
-    return this;
+    if ((paramString1 == null) || (paramString2 == null))
+    {
+      Log.e("HttpUtil", "uin null or file path null");
+      return;
+    }
+    ThreadManagerV2.excute(new FileUploadUtil.1(paramString1, paramString2), 128, null, false);
   }
   
-  public void b()
+  private static String b()
   {
-    String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    String str2 = String.valueOf(anet.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (nam.a() + "");
-    QLog.i("NowDataReporter", 1, "nowDatareport: source = " + this.jdField_a_of_type_JavaLangString + " roomid = " + this.jdField_b_of_type_JavaLangString + " roomType = " + this.jdField_c_of_type_JavaLangString + " op_name = " + this.jdField_f_of_type_JavaLangString + " op_in = " + this.jdField_f_of_type_Int + " d1= " + this.h + " d2=" + this.i + " d3=" + this.j + " d4=" + this.k + " timelong=" + this.l + " op_result = " + this.jdField_d_of_type_Int + " qq_version = " + str2 + "  optime = " + str1 + " lastOpName = " + this.o + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + "useShadow =" + this.jdField_b_of_type_Boolean);
-    axqw.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, this.jdField_f_of_type_Int, 1, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k + "|" + this.l + "|" + this.jdField_b_of_type_JavaLangString + "|" + this.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_JavaLangString + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str2 + "|" + str1 + "|" + this.o + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
+    Random localRandom = new Random();
+    char[] arrayOfChar = new char[localRandom.nextInt(9) + 12];
+    int i = 0;
+    while (i < arrayOfChar.length)
+    {
+      arrayOfChar[i] = jdField_a_of_type_ArrayOfChar[localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length)];
+      i += 1;
+    }
+    return "===AndroidFormBoundary" + new String(arrayOfChar);
   }
   
-  public arhz c(String paramString)
+  private static String b(String paramString)
   {
-    this.h = paramString;
-    return this;
+    String str = "UTF-8";
+    String[] arrayOfString = paramString.split(";");
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      paramString = str;
+      if (i < j)
+      {
+        paramString = arrayOfString[i].trim();
+        if (!paramString.startsWith("charset")) {
+          break label71;
+        }
+        arrayOfString = paramString.split("=", 2);
+        paramString = str;
+        if (arrayOfString.length == 2) {
+          paramString = arrayOfString[1].trim();
+        }
+      }
+      return paramString;
+      label71:
+      i += 1;
+    }
   }
   
-  public arhz d(String paramString)
+  /* Error */
+  private static String b(String paramString, Map<String, String> paramMap, java.io.File paramFile)
   {
-    this.i = paramString;
-    return this;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aload_0
+    //   3: invokestatic 267	arhz:a	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
+    //   6: astore_0
+    //   7: new 137	java/io/DataOutputStream
+    //   10: dup
+    //   11: aload_0
+    //   12: invokevirtual 271	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   15: invokespecial 274	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_1
+    //   21: invokestatic 276	arhz:a	(Ljava/io/DataOutputStream;Ljava/util/Map;)V
+    //   24: aload_3
+    //   25: aload_2
+    //   26: invokestatic 278	arhz:a	(Ljava/io/DataOutputStream;Ljava/io/File;)V
+    //   29: aload_3
+    //   30: ldc 142
+    //   32: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   35: aload_3
+    //   36: new 109	java/lang/StringBuilder
+    //   39: dup
+    //   40: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   43: ldc 135
+    //   45: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: getstatic 59	arhz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   51: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: ldc 135
+    //   56: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   65: aload_3
+    //   66: ldc 142
+    //   68: invokevirtual 140	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   71: aload_3
+    //   72: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   75: aload_0
+    //   76: invokestatic 281	arhz:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   79: astore_1
+    //   80: ldc 215
+    //   82: aload_1
+    //   83: invokestatic 284	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   86: pop
+    //   87: aload_0
+    //   88: ifnull +7 -> 95
+    //   91: aload_0
+    //   92: invokevirtual 287	java/net/HttpURLConnection:disconnect	()V
+    //   95: aload_3
+    //   96: ifnull +7 -> 103
+    //   99: aload_3
+    //   100: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   103: aload_1
+    //   104: areturn
+    //   105: astore_0
+    //   106: aload_0
+    //   107: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   110: aload_1
+    //   111: areturn
+    //   112: astore_0
+    //   113: aconst_null
+    //   114: astore_1
+    //   115: aload_3
+    //   116: astore_2
+    //   117: aload_2
+    //   118: ifnull +7 -> 125
+    //   121: aload_2
+    //   122: invokevirtual 287	java/net/HttpURLConnection:disconnect	()V
+    //   125: aload_1
+    //   126: ifnull +7 -> 133
+    //   129: aload_1
+    //   130: invokevirtual 279	java/io/DataOutputStream:close	()V
+    //   133: aload_0
+    //   134: athrow
+    //   135: astore_1
+    //   136: aload_1
+    //   137: invokevirtual 290	java/lang/Exception:printStackTrace	()V
+    //   140: goto -7 -> 133
+    //   143: astore_3
+    //   144: aconst_null
+    //   145: astore_1
+    //   146: aload_0
+    //   147: astore_2
+    //   148: aload_3
+    //   149: astore_0
+    //   150: goto -33 -> 117
+    //   153: astore_1
+    //   154: aload_0
+    //   155: astore_2
+    //   156: aload_1
+    //   157: astore_0
+    //   158: aload_3
+    //   159: astore_1
+    //   160: goto -43 -> 117
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	163	0	paramString	String
+    //   0	163	1	paramMap	Map<String, String>
+    //   0	163	2	paramFile	java.io.File
+    //   1	115	3	localDataOutputStream	DataOutputStream
+    //   143	16	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   99	103	105	java/lang/Exception
+    //   2	7	112	finally
+    //   129	133	135	java/lang/Exception
+    //   7	19	143	finally
+    //   19	87	153	finally
   }
   
-  public arhz e(String paramString)
+  private static String b(HttpURLConnection paramHttpURLConnection)
   {
-    this.j = paramString;
-    return this;
-  }
-  
-  public arhz f(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public arhz g(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public arhz h(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public arhz i(String paramString)
-  {
-    this.l = paramString;
-    return this;
+    String str = b(paramHttpURLConnection.getContentType());
+    InputStream localInputStream = paramHttpURLConnection.getErrorStream();
+    if (localInputStream == null) {
+      return a(paramHttpURLConnection.getInputStream(), str);
+    }
+    return a(localInputStream, str);
   }
 }
 

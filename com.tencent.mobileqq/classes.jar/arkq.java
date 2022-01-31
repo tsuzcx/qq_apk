@@ -1,15 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 final class arkq
-  implements EIPCResultCallback
+  implements DialogInterface.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  arkq(Context paramContext) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherWatchFloatingUtil", 1, new Object[] { Integer.valueOf(paramEIPCResult.code) });
-    }
+    bcub.c();
+    FloatingScreenPermission.requestPermission(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,28 +1,33 @@
-import android.net.Uri;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
 class bcan
-  extends bcar
+  implements MediaPlayer.OnCompletionListener
 {
-  bcan(bcal parambcal)
-  {
-    super(parambcal, null);
-  }
+  bcan(bcam parambcam) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    if (bcam.a(this.a)) {
+      this.a.a.start();
     }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    for (;;)
+    {
+      if (bcam.a(this.a) != null) {
+        bcam.a(this.a).onCall(7, "");
+      }
+      return;
+      bcam.a(this.a, false);
+      if (bcam.a(this.a) != null) {
+        bcam.a(this.a).onCompletion(this.a.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcan
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class auxq
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public auxq(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    StickyNotePublishFragment.a(this.a, paramBoolean);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a).setVisibility(0);
+    StickyNotePublishFragment.a(this.a).requestFocus();
+    bfni.a(StickyNotePublishFragment.a(this.a));
   }
 }
 

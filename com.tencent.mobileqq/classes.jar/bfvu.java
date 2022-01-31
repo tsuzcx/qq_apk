@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public final class bfvu
-  implements Parcelable.Creator<TCWDatePicker.SavedState>
+public class bfvu
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
-  {
-    return new TCWDatePicker.SavedState(paramParcel, null);
-  }
-  
-  public TCWDatePicker.SavedState[] a(int paramInt)
-  {
-    return new TCWDatePicker.SavedState[paramInt];
-  }
+  public int a;
+  public final Rect a = new Rect();
+  public Drawable a;
+  public boolean a;
+  public int b;
 }
 
 

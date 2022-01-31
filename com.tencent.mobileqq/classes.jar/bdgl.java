@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.open.applist.QZoneAppListActivity.1.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bdgl
-  extends OnPluginInstallListener.Stub
+class bdgl
+  implements INetEventHandler
 {
-  public bdgl(QZoneAppListActivity paramQZoneAppListActivity) {}
+  bdgl(bdgk parambdgk) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.a(paramInt1 / paramInt2 * 100);
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    QZoneAppListActivity.a(this.a);
+    int i = naj.a();
+    Iterator localIterator = bdgk.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bdgn)localIterator.next()).a(i);
+    }
   }
 }
 

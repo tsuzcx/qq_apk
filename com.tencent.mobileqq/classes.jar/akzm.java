@@ -1,21 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
-
 class akzm
-  implements QQPermissionCallback
 {
-  akzm(akzl paramakzl) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbcv.a(akzl.a(this.a), paramArrayOfString, paramArrayOfInt);
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
-  }
+  private static final akzk a = new akzk(null);
 }
 
 

@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class adgo
-  extends akfl
+public class adgo
+  implements View.OnClickListener
 {
-  adgo(adgn paramadgn) {}
+  public adgo(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    adgn.a(this.a).a.b();
-    adjg localadjg = (adjg)adgn.a(this.a).a(29);
-    if (localadjg != null) {
-      localadjg.e();
-    }
+    AIOLongShotHelper.c(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DEC");
   }
 }
 

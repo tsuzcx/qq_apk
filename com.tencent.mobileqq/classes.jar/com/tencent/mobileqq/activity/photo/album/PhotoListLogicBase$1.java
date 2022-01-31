@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agsd;
-import agsj;
+import agsb;
+import agsh;
 import android.os.Handler;
 import android.os.Message;
-import bbbj;
+import bbbx;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.util.Map;
 import mqq.util.WeakReference;
@@ -12,7 +12,7 @@ import mqq.util.WeakReference;
 public class PhotoListLogicBase$1
   implements Runnable
 {
-  public PhotoListLogicBase$1(agsj paramagsj, String paramString) {}
+  public PhotoListLogicBase$1(agsh paramagsh, String paramString) {}
   
   public void run()
   {
@@ -21,8 +21,8 @@ public class PhotoListLogicBase$1
     String str = ((NewPhotoListActivity)this.this$0.a.get()).a(this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    bbbj.a(localLocalMediaInfo, str);
-    agsd.a.put(str, localLocalMediaInfo);
+    bbbx.a(localLocalMediaInfo, str);
+    agsb.a.put(str, localLocalMediaInfo);
     ((NewPhotoListActivity)this.this$0.a.get()).a.sendMessage(localMessage);
   }
 }

@@ -1,12 +1,15 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class baor
+  implements bams
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public baor(RobotPanelLayoutBase paramRobotPanelLayoutBase, baou parambaou) {}
   
-  protected baor(baop parambaop) {}
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

@@ -1,48 +1,48 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import aigl;
-import aigq;
+import aigj;
+import aigo;
 import android.app.Activity;
 import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import vjc;
+import viz;
 
 public class EditWebVideoPartManager$2
   implements Runnable
 {
-  public EditWebVideoPartManager$2(vjc paramvjc, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  public EditWebVideoPartManager$2(viz paramviz, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
   
   public void run()
   {
-    vjc.a(this.this$0, null);
+    viz.a(this.this$0, null);
     this.this$0.jdField_a_of_type_Int = 0;
-    vjc.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
-    vjc.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
+    viz.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
+    viz.b(this.this$0, this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
     boolean bool1;
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      vjc.a(this.this$0);
+      viz.a(this.this$0);
       bool1 = false;
     }
     for (;;)
     {
-      aigl localaigl = new aigl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, vjc.a(this.this$0));
-      localaigl.a(vjc.a(this.this$0));
-      localaigl.execute(new Void[0]);
+      aigj localaigj = new aigj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, viz.a(this.this$0));
+      localaigj.a(viz.a(this.this$0));
+      localaigj.execute(new Void[0]);
       return;
       if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
       {
         boolean bool2 = true;
-        int i = vjc.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
+        int i = viz.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
         bool1 = bool2;
         if (i != 0)
         {
-          vjc.a(this.this$0).a(i);
+          viz.a(this.this$0).a(i);
           bool1 = bool2;
         }
       }
       else
       {
-        vjc.a(this.this$0).a(-13);
+        viz.a(this.this$0).a(-13);
         bool1 = false;
       }
     }

@@ -1,22 +1,108 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class acgw
-  implements DialogInterface.OnClickListener
+public class acgw
+  extends ajsy
 {
-  acgw(acgv paramacgv, bbgg parambbgg) {}
+  public acgw(TroopGagActivity paramTroopGagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(balb parambalb)
   {
-    axqw.b(this.jdField_a_of_type_Acgv.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Acgv.a.a, "", "", "");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Acgv.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
-    paramDialogInterface.putExtra("webStyle", "noBottomBar");
-    this.jdField_a_of_type_Acgv.a.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_Bbgg.cancel();
+    if ((parambalb == null) || (!parambalb.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + parambalb.jdField_a_of_type_Int);
+    }
+    akih localakih;
+    acgy localacgy;
+    if (parambalb.jdField_a_of_type_Int == 3)
+    {
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      if (parambalb.jdField_a_of_type_JavaUtilArrayList != null)
+      {
+        parambalb = parambalb.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (parambalb.hasNext())
+        {
+          localakih = (akih)parambalb.next();
+          localacgy = new acgy();
+          localacgy.jdField_a_of_type_JavaLangString = localakih.jdField_a_of_type_JavaLangString;
+          localacgy.jdField_a_of_type_Long = localakih.jdField_a_of_type_Long;
+          this.a.jdField_a_of_type_JavaUtilList.add(localacgy);
+        }
+      }
+      this.a.jdField_a_of_type_Acgz.notifyDataSetChanged();
+    }
+    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+      if (parambalb.jdField_a_of_type_Int == 1)
+      {
+        parambalb = parambalb.jdField_a_of_type_Balf;
+        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+        if (parambalb.jdField_a_of_type_Long != 0L) {
+          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+          break;
+          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+        }
+      }
+      if (parambalb.jdField_a_of_type_Int == 5)
+      {
+        if (!parambalb.jdField_a_of_type_Balc.jdField_a_of_type_Boolean)
+        {
+          ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_JavaUtilList.clear();
+          if (parambalb.jdField_a_of_type_JavaUtilArrayList != null)
+          {
+            parambalb = parambalb.jdField_a_of_type_JavaUtilArrayList.iterator();
+            while (parambalb.hasNext())
+            {
+              localakih = (akih)parambalb.next();
+              localacgy = new acgy();
+              localacgy.jdField_a_of_type_JavaLangString = localakih.jdField_a_of_type_JavaLangString;
+              localacgy.jdField_a_of_type_Long = localakih.jdField_a_of_type_Long;
+              this.a.jdField_a_of_type_JavaUtilList.add(localacgy);
+            }
+          }
+          this.a.jdField_a_of_type_Acgz.notifyDataSetChanged();
+        }
+      }
+      else if (parambalb.jdField_a_of_type_Int == 4)
+      {
+        parambalb = parambalb.jdField_a_of_type_Bald;
+        if (!parambalb.jdField_a_of_type_Boolean)
+        {
+          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+          if (parambalb.jdField_a_of_type_Long != 0L) {
+            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+          }
+          for (;;)
+          {
+            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+            break;
+            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+          }
+        }
+      }
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
-import aetf;
+import aert;
+import aetd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.webprocess.WebProcessManager;
 public class PublicAccountChatPie$51
   implements Runnable
 {
-  public PublicAccountChatPie$51(aerv paramaerv) {}
+  public PublicAccountChatPie$51(aert paramaert) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class PublicAccountChatPie$51
     {
       localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
       if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new aetf(this));
+        ((WebProcessManager)localObject).a(-1, new aetd(this));
       }
     }
   }

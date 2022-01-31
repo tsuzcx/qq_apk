@@ -1,40 +1,68 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class lpk
+  extends lpj
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  
-  public static lpk a()
+  public lpk(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    lle locallle = lgo.a(BaseApplicationImpl.getContext());
-    if (!locallle.a())
-    {
-      lpk locallpk = new lpk();
-      if (locallpk.a(locallle)) {}
-      return locallpk;
-    }
-    return null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
   }
   
-  public boolean a(lle paramlle)
+  public void a(String paramString)
   {
-    try
+    if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Int = paramlle.a("OpenGLBlowUp/IsOpen", 0);
-      this.b = paramlle.a("OpenGLBlowUp/width", 0);
-      this.c = paramlle.a("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramlle.a("OpenGLBlowUp/versionname", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      paramString = paramString.split(";");
+      int j = paramString.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramString[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          int k = localObject.indexOf('=');
+          if ((k > 0) && (k < localObject.length()))
+          {
+            String str;
+            float f;
+            try
+            {
+              str = localObject.substring(0, k);
+              f = Float.parseFloat(localObject.substring(k + 1));
+              if (!"MemoryLimit".equalsIgnoreCase(str)) {
+                break label118;
+              }
+              this.jdField_b_of_type_Float = f;
+            }
+            catch (Throwable localThrowable)
+            {
+              localThrowable.printStackTrace();
+            }
+            continue;
+            label118:
+            if ("CpuNumLimit".equalsIgnoreCase(str)) {
+              this.jdField_b_of_type_Int = ((int)f);
+            } else if ("CpuFreqLimit".equalsIgnoreCase(str)) {
+              this.jdField_a_of_type_Float = f;
+            } else if ("APILevelLimit".equalsIgnoreCase(str)) {
+              this.jdField_a_of_type_Int = ((int)f);
+            }
+          }
+        }
       }
-      return true;
     }
-    catch (Exception paramlle) {}
-    return false;
+  }
+  
+  public boolean a(@NonNull lpj paramlpj)
+  {
+    return (this.jdField_a_of_type_Int <= paramlpj.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramlpj.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramlpj.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramlpj.jdField_b_of_type_Float);
   }
 }
 

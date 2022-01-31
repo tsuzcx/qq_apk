@@ -2,33 +2,33 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.async.JobContext;
+import upa;
+import upb;
+import upc;
 import upd;
-import upe;
-import upf;
-import upg;
-import ups;
-import veg;
+import upp;
+import ved;
 
 public class DetailFeedAllInfoPullSegment$Observer$1
   implements Runnable
 {
-  public DetailFeedAllInfoPullSegment$Observer$1(upg paramupg, boolean paramBoolean) {}
+  public DetailFeedAllInfoPullSegment$Observer$1(upd paramupd, boolean paramBoolean) {}
   
   public void run()
   {
     int i1 = 0;
-    if (upd.a(this.jdField_a_of_type_Upg.a).isJobCancelled())
+    if (upa.a(this.jdField_a_of_type_Upd.a).isJobCancelled())
     {
-      veg.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Upg.getFunctionResult(0);
+      Object localObject = (Integer)this.jdField_a_of_type_Upd.getFunctionResult(0);
       if (localObject != null) {
-        upd.a(this.jdField_a_of_type_Upg.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        upa.a(this.jdField_a_of_type_Upd.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (upd.a(this.jdField_a_of_type_Upg.a).a()) {}
+      if (upa.a(this.jdField_a_of_type_Upd.a).a()) {}
       int m;
       int n;
       for (int j = 2;; j = 1)
@@ -42,12 +42,12 @@ public class DetailFeedAllInfoPullSegment$Observer$1
           if (k >= j) {
             break;
           }
-          localObject = (upf)this.jdField_a_of_type_Upg.getFunctionResult(i);
+          localObject = (upc)this.jdField_a_of_type_Upd.getFunctionResult(i);
           if (localObject != null)
           {
-            upd.a(this.jdField_a_of_type_Upg.a).b(((upf)localObject).jdField_a_of_type_JavaUtilList, true, ((upf)localObject).jdField_a_of_type_Boolean);
-            upd.a(this.jdField_a_of_type_Upg.a).b(((upf)localObject).jdField_a_of_type_Boolean, ((upf)localObject).jdField_a_of_type_Int);
-            upd.a(this.jdField_a_of_type_Upg.a).a.mHadLike = ((upf)localObject).b;
+            upa.a(this.jdField_a_of_type_Upd.a).b(((upc)localObject).jdField_a_of_type_JavaUtilList, true, ((upc)localObject).jdField_a_of_type_Boolean);
+            upa.a(this.jdField_a_of_type_Upd.a).b(((upc)localObject).jdField_a_of_type_Boolean, ((upc)localObject).jdField_a_of_type_Int);
+            upa.a(this.jdField_a_of_type_Upd.a).a.mHadLike = ((upc)localObject).b;
           }
           k += 1;
           i += 1;
@@ -55,21 +55,21 @@ public class DetailFeedAllInfoPullSegment$Observer$1
       }
       while (n < j)
       {
-        localObject = (upe)this.jdField_a_of_type_Upg.getFunctionResult(m);
+        localObject = (upb)this.jdField_a_of_type_Upd.getFunctionResult(m);
         if (localObject != null)
         {
-          upd.a(this.jdField_a_of_type_Upg.a).a(((upe)localObject).jdField_a_of_type_JavaUtilList, true, ((upe)localObject).jdField_a_of_type_Boolean);
-          upd.a(this.jdField_a_of_type_Upg.a).a(((upe)localObject).jdField_a_of_type_Boolean, ((upe)localObject).jdField_a_of_type_Int);
-          upd.a(this.jdField_a_of_type_Upg.a).a(((upe)localObject).jdField_a_of_type_Boolean, ((upe)localObject).b);
-          upd.a(this.jdField_a_of_type_Upg.a).a(((upe)localObject).jdField_a_of_type_Boolean, ((upe)localObject).jdField_a_of_type_JavaLangString);
+          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_JavaUtilList, true, ((upb)localObject).jdField_a_of_type_Boolean);
+          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).jdField_a_of_type_Int);
+          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).b);
+          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).jdField_a_of_type_JavaLangString);
         }
         n += 1;
         m += 1;
       }
-      upd.a(this.jdField_a_of_type_Upg.a, upd.a(this.jdField_a_of_type_Upg.a));
+      upa.a(this.jdField_a_of_type_Upd.a, upa.a(this.jdField_a_of_type_Upd.a));
       return;
     }
-    upd.a(this.jdField_a_of_type_Upg.a, new ErrorMessage(-1, "get feed interact data error."));
+    upa.a(this.jdField_a_of_type_Upd.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

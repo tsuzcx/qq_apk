@@ -2,7 +2,9 @@ import android.view.View;
 
 public abstract interface amjg
 {
-  public abstract void a(View paramView, int paramInt, boolean paramBoolean);
+  public abstract String a();
+  
+  public abstract void a(View paramView, int paramInt);
 }
 
 

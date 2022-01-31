@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.PointF;
+import java.util.List;
 
-class agwr
-  implements DialogInterface.OnClickListener
+public abstract interface agwr
 {
-  agwr(agwq paramagwq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList);
 }
 
 

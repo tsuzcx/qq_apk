@@ -1,6 +1,6 @@
 public abstract interface anfy
 {
-  public abstract void a(anfv paramanfv);
+  public abstract void a(anga paramanga);
 }
 
 

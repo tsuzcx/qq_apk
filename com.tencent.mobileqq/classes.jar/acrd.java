@@ -1,24 +1,36 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
 
 public class acrd
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public acrd(ActivateFriendActivity paramActivateFriendActivity) {}
+  public acrd(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    paramView = (ActivateFriendGridItem)paramView;
+    if (paramView.jdField_a_of_type_Boolean)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (ActivateFriendActivity.a(this.a) != null) {
-        ActivateFriendActivity.a(this.a).e();
+      ActivateFriendGrid.a(this.a);
+      if (paramView.jdField_a_of_type_Boolean) {
+        break label101;
       }
+    }
+    label101:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
+      }
+      return;
+      ActivateFriendGrid.b(this.a);
+      break;
     }
   }
 }

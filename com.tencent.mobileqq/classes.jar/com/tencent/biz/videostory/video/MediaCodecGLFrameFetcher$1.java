@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import xhl;
+import xhi;
 
 public class MediaCodecGLFrameFetcher$1
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$1(xhl paramxhl) {}
+  public MediaCodecGLFrameFetcher$1(xhi paramxhi) {}
   
   public void run()
   {
-    xhl.a(this.this$0);
+    xhi.a(this.this$0);
   }
 }
 

@@ -1,29 +1,34 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpi
-  implements TextWatcher
+  extends aumg
 {
-  public acpi(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpi(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramEditable.length() >= 4)
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
+    }
+    this.a.a();
+    if (paramBoolean1)
     {
-      VerifyCodeActivity.c(this.a, true);
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
       return;
     }
-    VerifyCodeActivity.d(this.a, false);
+    VerifyPhoneNumActivity.c(this.a);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acpi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,54 @@
-import AccostSvc.ReqGetBlackList;
-import AccostSvc.ReqHeader;
-import AccostSvc.RespGetBlackList;
-import KQQ.ReqItem;
-import KQQ.RespItem;
+import EncounterSvc.UserData;
 import com.qq.jce.wup.UniPacket;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class awzv
-  implements axaw
+  extends xom
 {
-  public static String a;
-  private final QQAppInterface a;
+  static String[] jdField_a_of_type_ArrayOfJavaLangString = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public UserData[] a;
   
-  static
+  public awzv(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "GetBlackListItem";
+    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public awzv(QQAppInterface paramQQAppInterface)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.eServiceID = 116;
-    Object localObject = new ReqHeader();
-    ((ReqHeader)localObject).shVersion = 0;
-    ((ReqHeader)localObject).lMID = axaj.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()));
-    ((ReqHeader)localObject).iAppID = AppSetting.a();
-    localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
-    UniPacket localUniPacket = new UniPacket();
-    localUniPacket.setServantName("AccostObj");
-    localUniPacket.setFuncName("CMD_GET_BlackList");
-    localUniPacket.put("ReqGetBlackList", localObject);
-    localReqItem.vecParam = localUniPacket.encode();
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if ((paramRespItem.eServiceID == 116) && (paramRespItem.cResult == 2))
-    {
-      Object localObject = new UniPacket();
-      ((UniPacket)localObject).setEncodeName("utf-8");
-      ((UniPacket)localObject).decode(paramRespItem.vecUpdate);
-      paramRespItem = (RespGetBlackList)((UniPacket)localObject).getByClass("RespGetBlackList", new RespGetBlackList());
-      localObject = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
-      FromServiceMsg localFromServiceMsg = new FromServiceMsg();
-      localFromServiceMsg.setMsgSuccess();
-      ((MessageHandler)localObject).a(null, localFromServiceMsg, paramRespItem);
+    if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
+      return akbh.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
     }
+    if ("NeighborSvc.ReqGetPoint".equals(paramFromServiceMsg.getServiceCmd())) {
+      return akbh.a(this, paramFromServiceMsg, paramToServiceMsg);
+    }
+    if ("VisitorSvc.ReqFavorite".equals(paramFromServiceMsg.getServiceCmd())) {
+      akbh.a(paramFromServiceMsg, paramToServiceMsg);
+    }
+    return super.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if ("EncounterSvc.ReqGetEncounter".equals(str)) {
+      return akbh.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
+    }
+    if ("NeighborSvc.ReqGetPoint".equals(str)) {
+      return akbh.a(this, paramToServiceMsg, paramUniPacket);
+    }
+    if ("VisitorSvc.ReqFavorite".equals(paramToServiceMsg.getServiceCmd())) {
+      return akbh.a(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

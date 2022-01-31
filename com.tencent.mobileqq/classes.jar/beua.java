@@ -1,41 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import android.content.DialogInterface.OnClickListener;
 
-public final class beua
-  implements Parcelable.Creator<InstalledEngine>
+class beua
 {
-  public InstalledEngine a(Parcel paramParcel)
+  private final int jdField_a_of_type_Int;
+  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  
+  beua(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    boolean bool2 = true;
-    InstalledEngine localInstalledEngine = new InstalledEngine();
-    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
-    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
-      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
-      return localInstalledEngine;
-      bool1 = false;
-      break;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
   
-  public InstalledEngine[] a(int paramInt)
+  int a()
   {
-    return new InstalledEngine[paramInt];
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public DialogInterface.OnClickListener a()
+  {
+    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
   }
 }
 

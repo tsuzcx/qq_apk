@@ -1,44 +1,109 @@
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class awxl
+  implements View.OnClickListener
 {
-  public int a;
-  public Context a;
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public SquareImageView a;
-  public TextView b;
-  public SquareImageView b;
-  public TextView c;
+  awxl(awxk paramawxk) {}
   
-  public awxl(awxk paramawxk, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559625, this.jdField_a_of_type_Awxk.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362960));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371886));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365043));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371647));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376236));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131367872));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368889));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    Object localObject1 = paramView.getTag(2131376882);
+    Object localObject2 = paramView.getTag(2131376883);
+    Context localContext;
+    Object localObject3;
+    if ((localObject1 != null) && ((localObject1 instanceof String)))
+    {
+      localContext = paramView.getContext();
+      localObject1 = (String)localObject1;
+      localObject3 = paramView.getTag(2131376856);
+      if (!(localObject3 instanceof Integer)) {
+        break label500;
+      }
+    }
+    label419:
+    label500:
+    for (int i = ((Integer)localObject3).intValue();; i = 0)
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject1 = awvx.d(i);
+      }
+      for (localObject1 = awvx.a((String)localObject2, 3, (String)localObject1);; localObject1 = awvx.b((String)localObject1, i))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NetSearchTemplateNewEntranceView", 2, "open Browser append suffix url = " + (String)localObject1);
+        }
+        if (localObject1 != null) {
+          break;
+        }
+        QLog.e("NetSearchTemplateNewEntranceView", 2, "NetSearchSubView click jumpurl is null");
+        return;
+      }
+      awsq.a(null, 0, i, "0X8009D5F", 0, 0, null, null);
+      paramView = (awpc)paramView.getTag(2131379213);
+      localObject3 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject3).put("project", awsq.a());
+        ((JSONObject)localObject3).put("event_src", "client");
+        ((JSONObject)localObject3).put("experiment_id", awsq.b);
+        if (paramView != null)
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(paramView.a + "").obj2(paramView.d).ver1(paramView.a()).ver2(awsq.a(i));
+          if (localObject2 == null)
+          {
+            paramView = "";
+            awsq.a(null, localReportModelDC02528.ver4(paramView).ver7(((JSONObject)localObject3).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.a));
+          }
+        }
+        else
+        {
+          if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://"))) {
+            break label419;
+          }
+          paramView = new Intent(localContext, QQBrowserActivity.class);
+          paramView.putExtra("url", (String)localObject1);
+          localContext.startActivity(paramView);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("NetSearchTemplateNewEntranceView", 2, "e = " + localJSONException);
+          continue;
+          paramView = localObject2.toString();
+        }
+        if ((localContext instanceof BaseActivity))
+        {
+          paramView = bbex.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
+          if (paramView != null)
+          {
+            paramView.c();
+            return;
+          }
+          localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
+          return;
+        }
+        localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
+        return;
+      }
+    }
   }
 }
 

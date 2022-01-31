@@ -1,27 +1,25 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
-import com.tencent.qphone.base.util.QLog;
 
 public class azgg
-  implements swm
+  implements TextWatcher
 {
-  public azgg(TroopBarPublishActivity.14 param14) {}
+  public azgg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt != 0)
+    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.J.length()) && (paramInt2 > paramInt3))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.this$0.a(null, this.a.a);
+      this.a.e(false);
       return;
     }
-    this.a.this$0.jdField_a_of_type_Azaj.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.this$0.jdField_a_of_type_Azaj.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.this$0.jdField_a_of_type_Azaj.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.this$0.a(paramString2, this.a.a);
+    TroopBarPublishActivity.b(this.a);
   }
 }
 

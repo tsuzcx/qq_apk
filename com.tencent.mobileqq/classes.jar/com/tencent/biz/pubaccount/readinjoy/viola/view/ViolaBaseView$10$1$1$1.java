@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import baxc;
-import rzr;
-import rzs;
+import baxq;
+import rzo;
+import rzp;
 
 public class ViolaBaseView$10$1$1$1
   implements Runnable
 {
-  public ViolaBaseView$10$1$1$1(rzs paramrzs) {}
+  public ViolaBaseView$10$1$1$1(rzp paramrzp) {}
   
   public void run()
   {
-    baxc.a().b(ViolaBaseView.a(this.a.a.a.a));
+    baxq.a().b(ViolaBaseView.a(this.a.a.a.a));
   }
 }
 

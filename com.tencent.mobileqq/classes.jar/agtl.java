@@ -1,25 +1,27 @@
 import android.content.Intent;
 import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
 import mqq.util.WeakReference;
 
 public class agtl
-  extends agrm
+  extends agrk
 {
+  boolean a;
+  
   protected agtl(AlbumListFragment paramAlbumListFragment)
   {
     super(paramAlbumListFragment);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static agrj b(AlbumListFragment paramAlbumListFragment)
+  public static agrh b(AlbumListFragment paramAlbumListFragment)
   {
-    if ((jdField_a_of_type_Agrj == null) || (jdField_a_of_type_Agrj.a.get() != paramAlbumListFragment)) {}
+    if ((jdField_a_of_type_Agrh == null) || (jdField_a_of_type_Agrh.a.get() != paramAlbumListFragment)) {}
     try
     {
-      if ((jdField_a_of_type_Agrj == null) || (jdField_a_of_type_Agrj.a.get() != paramAlbumListFragment)) {
-        jdField_a_of_type_Agrj = new agtl(paramAlbumListFragment);
+      if ((jdField_a_of_type_Agrh == null) || (jdField_a_of_type_Agrh.a.get() != paramAlbumListFragment)) {
+        jdField_a_of_type_Agrh = new agtl(paramAlbumListFragment);
       }
-      return jdField_a_of_type_Agrj;
+      return jdField_a_of_type_Agrh;
     }
     finally {}
   }
@@ -27,25 +29,13 @@ public class agtl
   protected void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_Agre.a.a(true);
-  }
-  
-  protected void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    int i;
-    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
-      i = 1;
-    }
-    for (;;)
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
+    if (this.jdField_a_of_type_Boolean)
     {
-      axqw.b(null, "CliOper", "", this.jdField_a_of_type_Agsb.a, "0X800A917", "0X800A917", i, 0, "", "", "", "");
-      super.a(paramQQAlbumInfo, paramInt, paramIntent);
-      return;
-      if (paramQQAlbumInfo._id.equals("qzone_album")) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+      this.jdField_a_of_type_Agrc.b = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
+      this.jdField_a_of_type_Agrc.c = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
+      this.jdField_a_of_type_Agrc.d = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
+      this.jdField_a_of_type_Agrc.a = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
     }
   }
 }

@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import android.support.annotation.NonNull;
 
 public class bixb
-  implements View.OnClickListener
 {
-  public bixb(AETemplateInfoFragment paramAETemplateInfoFragment) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  public bixb() {}
+  
+  public bixb(@NonNull bixb parambixb)
   {
-    birg.a(this.a.getActivity(), 1024, birc.w.a(), null);
-    AETemplateInfoFragment.a(this.a);
+    this.a = parambixb.a;
+    this.b = parambixb.b;
+    this.c = parambixb.c;
+    this.d = parambixb.d;
   }
 }
 

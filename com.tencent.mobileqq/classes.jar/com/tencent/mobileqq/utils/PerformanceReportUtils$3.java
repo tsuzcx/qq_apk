@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import aiqz;
+import aiqx;
 
 public final class PerformanceReportUtils$3
   implements Runnable
 {
   public void run()
   {
-    aiqz.a().e();
+    aiqx.a().e();
   }
 }
 

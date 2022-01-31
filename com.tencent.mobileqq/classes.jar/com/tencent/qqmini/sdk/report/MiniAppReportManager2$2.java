@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.report;
 
-import besl;
-import bexz;
-import beya;
+import betc;
+import beyq;
+import beyr;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -18,32 +18,32 @@ public final class MiniAppReportManager2$2
     {
       try
       {
-        bexz.a(false);
+        beyq.a(false);
         long l = System.currentTimeMillis();
-        Iterator localIterator = bexz.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = beyq.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
         if (localIterator.hasNext())
         {
           Object localObject = (Map.Entry)localIterator.next();
           String str = (String)((Map.Entry)localObject).getKey();
-          localObject = (beya)((Map.Entry)localObject).getValue();
-          if ((((beya)localObject).jdField_d_of_type_Int == 0) && (l - ((beya)localObject).jdField_d_of_type_Long > bexz.jdField_a_of_type_Long)) {
-            bexz.a((beya)localObject);
+          localObject = (beyr)((Map.Entry)localObject).getValue();
+          if ((((beyr)localObject).jdField_d_of_type_Int == 0) && (l - ((beyr)localObject).jdField_d_of_type_Long > beyq.jdField_a_of_type_Long)) {
+            beyq.a((beyr)localObject);
           }
-          if (((beya)localObject).jdField_d_of_type_Int == 0) {
+          if (((beyr)localObject).jdField_d_of_type_Int == 0) {
             i = 1;
           }
         }
         else
         {
           if (i != 0) {
-            bexz.b();
+            beyq.b();
           }
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        besl.d("MiniAppReportManager2", "", localThrowable);
+        betc.d("MiniAppReportManager2", "", localThrowable);
         return;
       }
     }

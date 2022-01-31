@@ -10,16 +10,16 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import onk;
-import pbj;
-import rem;
+import onh;
+import pbg;
+import rej;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements pbj
+  implements pbg
 {
   private long jdField_a_of_type_Long;
-  private rem jdField_a_of_type_Rem;
+  private rej jdField_a_of_type_Rej;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -44,11 +44,11 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(onk.d(paramReadInJoyUserInfo.nick));
+        setText(onh.d(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Rem != null)
+      while (this.jdField_a_of_type_Rej != null)
       {
-        this.jdField_a_of_type_Rem.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_Rej.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
@@ -86,7 +86,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = onk.d(str);
+        localObject = onh.d(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -122,9 +122,9 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(rem paramrem)
+  public void setOnSetNickNameListener(rej paramrej)
   {
-    this.jdField_a_of_type_Rem = paramrem;
+    this.jdField_a_of_type_Rej = paramrej;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akqx;
+import akqw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
@@ -15,10 +15,10 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import axqw;
-import aydb;
-import bbev;
-import bcpw;
+import axqy;
+import aydd;
+import bbfj;
+import bcql;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -119,29 +119,29 @@ public class TroopRequestRefuseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562571);
-    setTitle(2131698022);
+    super.setContentView(2131562570);
+    setTitle(2131698032);
     setLeftButton(2131690596, this);
-    setRightHighlightButton(2131719269, this);
+    setRightHighlightButton(2131719280, this);
     enableRightHighlight(true);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365761));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365760));
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(-1);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378419));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378424));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364180));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364179));
     paramBundle = a();
     if (!TextUtils.isEmpty(paramBundle))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(paramBundle);
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.length());
     }
-    long l = aydb.a().b();
-    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = aydb.a().a(Long.valueOf(l));
+    long l = aydd.a().b();
+    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = aydd.a().a(Long.valueOf(l));
     if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) {
       this.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
     }
-    axqw.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    axqy.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
     return true;
   }
   
@@ -160,8 +160,8 @@ public class TroopRequestRefuseActivity
   public void onClick(View paramView)
   {
     if (paramView == this.rightHighLView) {
-      if (!bbev.d(this)) {
-        bcpw.a(this, getString(2131694607), 0).b(getTitleBarHeight());
+      if (!bbfj.d(this)) {
+        bcql.a(this, getString(2131694608), 0).b(getTitleBarHeight());
       }
     }
     label137:
@@ -184,7 +184,7 @@ public class TroopRequestRefuseActivity
       }
       for (String str1 = "0";; str1 = "1")
       {
-        axqw.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str2, paramView, str1, "");
+        axqy.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str2, paramView, str1, "");
         return;
         paramView = "1";
         break;

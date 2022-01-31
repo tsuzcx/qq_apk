@@ -1,26 +1,26 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import bjqu;
-import bkur;
+import bijd;
+import bjrl;
+import bkvi;
 
 public class AEPituCameraUnit$6
   implements Runnable
 {
-  public AEPituCameraUnit$6(biim parambiim) {}
+  public AEPituCameraUnit$6(bijd parambijd) {}
   
   public void run()
   {
-    bkur.a();
-    bkur.a(biim.a(this.this$0).a());
-    if (bkur.c()) {
-      bkur.b(biim.a(this.this$0).a());
+    bkvi.a();
+    bkvi.a(bijd.a(this.this$0).a());
+    if (bkvi.c()) {
+      bkvi.b(bijd.a(this.this$0).a());
     }
     for (;;)
     {
-      biim.e(this.this$0);
+      bijd.e(this.this$0);
       return;
-      bkur.c(biim.a(this.this$0).a());
+      bkvi.c(bijd.a(this.this$0).a());
     }
   }
 }

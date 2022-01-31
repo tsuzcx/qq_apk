@@ -1,40 +1,56 @@
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-class akaz
-  extends bbwf
+public class akaz
+  extends ajtb
 {
-  akaz(akay paramakay) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private alji jdField_a_of_type_Alji;
   
-  public void onDone(bbwg parambbwg)
+  public akaz(AppInterface paramAppInterface)
   {
-    super.onDone(parambbwg);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambbwg.f + ", url: " + parambbwg.a);
-    }
-    int i = parambbwg.a.indexOf("?");
-    String str;
-    if (i == -1)
-    {
-      str = parambbwg.a;
-      if (!akax.a.contains(str)) {
-        break label105;
-      }
-      this.a.a(parambbwg);
-    }
-    label105:
-    do
-    {
-      return;
-      str = parambbwg.a.substring(0, i - 1);
-      break;
-      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
-      {
-        this.a.b(parambbwg);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambbwg.a);
+    super(paramAppInterface);
   }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Alji == null)
+      {
+        this.jdField_a_of_type_Alji = alji.a();
+        this.jdField_a_of_type_Alji.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Alji != null)
+      {
+        this.jdField_a_of_type_Alji.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Alji = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

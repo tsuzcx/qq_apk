@@ -1,6 +1,6 @@
 public abstract interface vtn
 {
-  public abstract void a(vtr paramvtr);
+  public abstract void a(int paramInt);
 }
 
 

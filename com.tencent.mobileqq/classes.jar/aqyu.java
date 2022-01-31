@@ -1,146 +1,89 @@
-import android.os.SystemClock;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.HotPicSendData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class aqyu
-  extends ProtocolDownloader.Adapter
+  extends ampa<aqyt>
 {
-  public static final String a = bbuv.a(ajsf.aW + "hotpic/");
-  
-  public static File a(String paramString)
+  private aqze a()
   {
     try
     {
-      paramString = Utils.Crc64String(paramString);
-      paramString = new File(a + paramString);
-      return paramString;
+      aqze localaqze = aqze.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      return localaqze;
     }
-    catch (Exception paramString)
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public int a()
+  {
+    return 164;
+  }
+  
+  @NonNull
+  public aqyt a(int paramInt)
+  {
+    aqyt localaqyt = new aqyt();
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return localaqyt;
+  }
+  
+  @Nullable
+  public aqyt a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      paramString.printStackTrace();
+      aqyt localaqyt = aqyt.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localaqyt;
     }
     return null;
   }
   
-  public static URL a(String paramString)
+  public Class<aqyt> a()
   {
-    try
-    {
-      paramString = new URL("hot_pic", "", paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    return aqyt.class;
   }
   
-  public static boolean a(String paramString)
+  public void a(int paramInt)
   {
-    return a(paramString).exists();
-  }
-  
-  protected int a(String paramString, File paramFile)
-  {
-    paramString = new bbwg(paramString.replaceFirst("https", "http"), paramFile);
-    paramString.e = 20000;
-    paramString.n = true;
-    paramString.b = 2;
-    return bbwi.a(paramString, null, null);
-  }
-  
-  protected String a(HotPicData paramHotPicData)
-  {
-    return paramHotPicData.url;
-  }
-  
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    try
-    {
-      paramDownloadParams = a((HotPicData)paramDownloadParams.mExtraInfo);
-      return a(paramDownloadParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    catch (Exception paramDownloadParams)
-    {
-      paramDownloadParams.printStackTrace();
+  }
+  
+  public void a(aqyt paramaqyt)
+  {
+    aqze localaqze = a();
+    if (localaqze != null) {
+      localaqze.b(paramaqyt.a);
     }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null) {
+      return aqze.a(localQQAppInterface);
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
     return false;
   }
   
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean c()
   {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    int i = 0;
-    if ((paramDownloadParams instanceof HotPicSendData)) {
-      i = 1;
-    }
-    File localFile1 = a(str);
-    if (localFile1.exists())
-    {
-      if ((i == 0) && (paramURLDrawableHandler != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed:" + paramDownloadParams.picIndex);
-        }
-        paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
-      }
-      return localFile1;
-    }
-    localFile1.getParentFile().mkdirs();
-    if ((bbbd.a()) && (bbbd.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bbbd.b());
-    }
-    File localFile2 = new File(a);
-    if (!localFile2.exists()) {
-      localFile2.mkdir();
-    }
-    SystemClock.uptimeMillis();
-    int j = a(str, localFile1);
-    if (j == 0)
-    {
-      str = aurl.a(localFile1.getAbsolutePath());
-      if (!paramDownloadParams.md5.equalsIgnoreCase(str))
-      {
-        localFile1.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
-        }
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
-        }
-        return null;
-      }
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed download:" + paramDownloadParams.picIndex + localFile1.getAbsolutePath());
-        }
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
-        }
-      }
-      return localFile1;
-    }
-    if (paramURLDrawableHandler != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
-      }
-      paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
-    }
-    return null;
+    return true;
   }
 }
 

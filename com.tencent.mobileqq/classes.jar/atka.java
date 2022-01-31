@@ -1,22 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class atka
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public atka(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
-    }
-    return false;
+    this.a.j();
+    ShortVideoCommentsView.a(this.a).setVisibility(8);
+    ShortVideoCommentsView.a(this.a, 2);
   }
 }
 

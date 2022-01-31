@@ -1,17 +1,40 @@
-class wah
-  extends wad
+import android.text.TextUtils;
+import java.util.ArrayList;
+
+public class wah
 {
-  wah(wae paramwae, wam paramwam) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public waj a;
+  public String[] a;
   
-  public void onFailure(String paramString)
+  public wah() {}
+  
+  public wah(String[] paramArrayOfString, String paramString, waj paramwaj)
   {
-    veg.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_Wam.onFailure(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Waj = paramwaj;
   }
   
-  public void onSuccess(String paramString)
+  public String toString()
   {
-    veg.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    {
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
+      }
+    }
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
+    {
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
+    }
   }
 }
 

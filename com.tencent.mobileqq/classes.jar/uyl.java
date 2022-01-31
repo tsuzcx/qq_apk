@@ -1,10 +1,31 @@
-import android.view.View;
-
-public abstract class uyl
+public class uyl
 {
-  public abstract void a(int paramInt, View paramView, Object paramObject, vas paramvas);
+  public static ThreadLocal<StringBuilder> a = new uym();
   
-  public void b(int paramInt, View paramView, Object paramObject, vas paramvas) {}
+  public static String a(Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (paramVarArgs.length > 0)
+    {
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
+        i += 1;
+      }
+    }
+    return "";
+    paramVarArgs = localStringBuilder.toString();
+    if (localStringBuilder.length() > 512) {
+      a.set(new StringBuilder(512));
+    }
+    localStringBuilder.setLength(0);
+    return paramVarArgs;
+  }
 }
 
 

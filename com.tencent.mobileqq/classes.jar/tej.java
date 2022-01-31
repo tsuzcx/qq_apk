@@ -1,49 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tej
-  implements ssl
 {
-  public String a;
-  public String b;
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  public tej(String paramString1, String paramString2)
+  private tej(JSONObject paramJSONObject)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public qqstory_struct.UserId a()
-  {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
-    }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof tej))
+    int k;
+    try
     {
-      this.a = ((tej)paramObject).a;
-      this.b = ((tej)paramObject).b;
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
     }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
+    }
+  }
+  
+  public static tej a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
+  }
+  
+  public static tej a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = new tej(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      ved.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String toString()
   {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

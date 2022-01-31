@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.IdentificationApiPlugin.1.1;
+import mqq.app.QQPermissionCallback;
 
-class armt
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class armt
+  implements QQPermissionCallback
 {
-  armt(arms paramarms, String paramString) {}
+  public armt(IdentificationApiPlugin.1.1 param1) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
-    }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
-    {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Arms.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Arms.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+    bbdj.a(armr.a(this.a.jdField_a_of_type_Arms.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("FaceRecognition.AppConf", this.a.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
+    armr.a(this.a.jdField_a_of_type_Arms.a, paramArrayOfString);
   }
 }
 

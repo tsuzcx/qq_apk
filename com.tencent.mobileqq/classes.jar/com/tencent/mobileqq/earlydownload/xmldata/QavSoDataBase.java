@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anqd;
+import anqi;
 
 public abstract class QavSoDataBase
   extends XmlData
 {
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String m_TcHevcDec = "";
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String m_TcHevcDec2 = "";
-  @anqd(a=true, b=true)
+  @anqi(a=true, b=true)
   public String m_TcHevcEnc = "";
 }
 

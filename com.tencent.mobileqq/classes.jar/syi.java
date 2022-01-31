@@ -1,23 +1,32 @@
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class syi
 {
-  public static Intent a(Context paramContext, int paramInt, String paramString)
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
+    int[][] arrayOfInt = sxy.a;
+    int j = arrayOfInt.length;
+    int i = 0;
+    if (i < j)
+    {
+      int[] arrayOfInt1 = arrayOfInt[i];
+      int k = arrayOfInt1[0];
+      int m = arrayOfInt1[1];
+      if (k != -1) {
+        paramSparseIntArray.put(sxm.a(k), m);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        paramSparseIntArray.put(m, m);
+      }
+    }
   }
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
-  {
-    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString)
-  {
-    paramContext.startActivity(a(paramContext, paramInt, paramString));
-  }
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean) {}
 }
 
 

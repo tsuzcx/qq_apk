@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import aytl;
+import aytn;
 
 class AudioPanel$1
   implements Runnable
@@ -9,7 +9,7 @@ class AudioPanel$1
   
   public void run()
   {
-    aytl.c(this.a);
+    aytn.c(this.a);
   }
 }
 

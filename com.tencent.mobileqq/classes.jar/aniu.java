@@ -1,9 +1,24 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public abstract interface aniu
+public class aniu
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
+  public aniu(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
+    {
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      altc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
+    }
+  }
 }
 
 

@@ -1,12 +1,41 @@
-import android.support.annotation.NonNull;
-import java.util.concurrent.ThreadFactory;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
-public final class bgkm
-  implements ThreadFactory
+public class bgkm
+  extends OnPluginInstallListener.Stub
 {
-  public Thread newThread(@NonNull Runnable paramRunnable)
+  public bgkm(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
+  
+  public void onInstallBegin(String paramString)
   {
-    return new Thread(paramRunnable, "PluginDex2Oat");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
+    }
+    this.a.b.sendEmptyMessageDelayed(3, 200L);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
+    }
+    this.a.b.sendEmptyMessageDelayed(1, 1000L);
   }
 }
 

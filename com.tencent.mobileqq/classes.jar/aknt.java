@@ -1,8 +1,8 @@
-import android.view.View;
+import java.util.List;
 
 public abstract interface aknt
 {
-  public abstract void a(View paramView);
+  public abstract void a(boolean paramBoolean, List<aewf> paramList);
 }
 
 

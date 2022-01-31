@@ -1,133 +1,229 @@
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr.ICallBackListener;
 import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class axed
-  implements acwf
+  extends axeb
 {
-  public View a;
-  private axeg jdField_a_of_type_Axeg;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+  TVK_IDownloadMgr.ICallBackListener jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr$ICallBackListener = new axee(this);
+  TVK_IDownloadMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr;
+  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+  private ArrayList<axef> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  List<axei> e = Collections.synchronizedList(new LinkedList());
   
-  public axed(axeb paramaxeb, axeg paramaxeg)
+  public axed(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Axeg = paramaxeg;
-    this.jdField_a_of_type_AndroidViewView = new View(BaseApplicationImpl.getApplication());
+    super(paramQQAppInterface);
   }
   
-  private void a()
+  private void b(axei paramaxei)
   {
-    if (!axeb.a(this.jdField_a_of_type_Axeb))
+    if ((paramaxei == null) || (paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)) {}
+    do
     {
-      TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      axeb.a(this.jdField_a_of_type_Axeb, true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreDownloader", 2, "downFullVideo, uniseq = " + paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+        this.jdField_a_of_type_Boolean = true;
+      }
+      if ((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) && (QLog.isColorLevel())) {
+        QLog.d("ShortVideoPreDownloader", 2, "downFullVideo handle short video but sdk not installed");
+      }
+      if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory == null) {
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+      }
+    } while (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory == null);
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr == null)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.getDownloadMgr(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.DownloadInit(BaseApplicationImpl.getApplication().getBaseContext(), 20160518, "");
+      if (QLog.isColorLevel()) {
+        QLog.i("ShortVideoPreDownloader", 2, "downFullVideo, shortVideoReq.uuid = [" + paramaxei.jdField_a_of_type_JavaLangString + "],  initDownloadMgr[" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.hashCode() + "]");
+      }
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setCallBackListener(20160518, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr$ICallBackListener);
     }
+    String str = ShortVideoUtils.a(paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    int i;
+    if ((paramaxei.jdField_a_of_type_ArrayOfJavaLangString != null) && (paramaxei.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    {
+      Object localObject = new StringBuilder();
+      String[] arrayOfString = paramaxei.jdField_a_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        ((StringBuilder)localObject).append(arrayOfString[i]);
+        ((StringBuilder)localObject).append(";");
+        i += 1;
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      i = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.startPreLoadWithSavePath(20160518, (String)localObject, paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5() + paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, 0L, 0, str, 0);
+      if (i <= 0) {
+        break label442;
+      }
+      paramaxei.f = i;
+    }
+    for (;;)
+    {
+      this.e.add(paramaxei);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ShortVideoPreDownloader", 2, " downFullVideo, add req to mSaveRequests, preLoadId = " + i + ", uniseq = " + paramaxei.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ShortVideoPreDownloader", 2, "downFullVideo, mVideoUrls is null");
+      return;
+      label442:
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoPreDownloader", 2, " downFullVideo error preLoadId = " + i);
+      }
+    }
+  }
+  
+  axei a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      axei localaxei1 = a(this.jdField_a_of_type_JavaUtilList);
+      if (localaxei1 != null)
+      {
+        a("getShortVideoRequest", "get a short video request from AIORequests");
+        return localaxei1;
+      }
+      synchronized (this.b)
+      {
+        localaxei1 = a(this.b);
+        if (localaxei1 != null)
+        {
+          a("getShortVideoRequest", "get a short video request from C2CRequests");
+          return localaxei1;
+        }
+      }
+    }
+    synchronized (this.c)
+    {
+      axei localaxei2 = a(this.c);
+      if (localaxei2 != null)
+      {
+        a("getShortVideoRequest", "get a short video request from DiscussionRequests");
+        return localaxei2;
+      }
+    }
+    synchronized (this.d)
+    {
+      axei localaxei3 = a(this.d);
+      if (localaxei3 != null)
+      {
+        a("getShortVideoRequest", "get a short video request from GroupRequests");
+        return localaxei3;
+      }
+    }
+    a("getShortVideoRequest", "cannot get any request");
+    return null;
+  }
+  
+  axei a(List<axei> paramList)
+  {
+    int i = paramList.size();
+    if (i <= 0) {
+      return null;
+    }
+    axei localaxei;
     if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext()))
     {
-      if (axeb.a(this.jdField_a_of_type_Axeb) == null) {
-        axeb.a(this.jdField_a_of_type_Axeb, TVK_SDKMgr.getProxyFactory());
-      }
-      if (axeb.a(this.jdField_a_of_type_Axeb) != null)
-      {
-        if (axeb.a(this.jdField_a_of_type_Axeb) == null) {
-          axeb.a(this.jdField_a_of_type_Axeb, axeb.a(this.jdField_a_of_type_Axeb).getCacheMgr(BaseApplicationImpl.getContext()));
-        }
-        if (axeb.a(this.jdField_a_of_type_Axeb) != null)
-        {
-          TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-          String str = ShortVideoUtils.a(this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-          localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
-          localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20160518));
-          localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(ShortVideoUtils.a()));
-          localTVK_PlayerVideoInfo.setVid(this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.getMd5() + this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-          axeb.a(this.jdField_a_of_type_Axeb).preLoadVideoByUrl(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ArrayOfJavaLangString[0], null, localTVK_PlayerVideoInfo);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPreDownloader", 2, "pre-download handle short video:" + str);
-          }
-          this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.setBitValue(0, (byte)1);
-          this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.serial();
-          this.jdField_a_of_type_Axeb.a.a().a(this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.istroop, this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.msgData);
-          ausd.a(1000, 100);
-        }
+      localaxei = (axei)paramList.get(i - 1);
+      paramList.remove(i - 1);
+      a("getRequestBySDKStatus", "sdk installed");
+      paramList = localaxei;
+      return paramList;
+    }
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      localaxei = (axei)localIterator.next();
+      if (localaxei.jdField_a_of_type_Axdt.jdField_a_of_type_Int != 0) {
+        paramList.remove(localaxei);
       }
     }
-    for (;;)
+    for (paramList = localaxei;; paramList = null)
     {
-      BaseShortVideoOprerator.a(this.jdField_a_of_type_Axeb.a, this.jdField_a_of_type_Axeg);
-      return;
+      a("getRequestBySDKStatus", "get a short video request");
+      break;
+    }
+  }
+  
+  public void a(asur paramasur)
+  {
+    if ((paramasur == null) || (paramasur.a == null))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreDownloader", 2, "pre-download handle short video but sdk not installed");
+        QLog.e("ShortVideoPreDownloader", 2, "downloadLongVideoForSave, null param error.");
+      }
+      return;
+    }
+    c(paramasur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+    Object localObject = paramasur.a.jdField_a_of_type_Axdt.c;
+    long l = paramasur.a.jdField_a_of_type_Axdt.jdField_a_of_type_Long;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, l);
+    if ((localObject != null) && ((localObject instanceof ayow))) {
+      ((ayow)localObject).a();
+    }
+    a(paramasur.a);
+  }
+  
+  protected void a(axei paramaxei)
+  {
+    super.a(paramaxei);
+    if (paramaxei.jdField_a_of_type_Axdt.jdField_a_of_type_Int == 0)
+    {
+      acvz localacvz = acvz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localacvz != null)
+      {
+        paramaxei = new axef(this, paramaxei);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramaxei);
+        localacvz.a(paramaxei.a, paramaxei);
       }
     }
   }
   
-  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
+  public void b(asur paramasur)
   {
-    if (paramayqm.jdField_b_of_type_Long != this.jdField_a_of_type_Axeg.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq) {}
-    while ((paramayqm.jdField_b_of_type_Int != 6) && (paramayqm.jdField_b_of_type_Int != 17) && (paramayqm.jdField_b_of_type_Int != 9) && (paramayqm.jdField_b_of_type_Int != 20)) {
-      return;
-    }
-    switch (paramayqm.d)
-    {
-    default: 
-      return;
-    case 2002: 
+    if ((paramasur == null) || (paramasur.a == null)) {
       if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_PROCESS: get url finished");
+        QLog.e("ShortVideoPreDownloader", 2, "cancelDownVideoForSave, null param error.");
       }
-      if (paramayqm.c != null)
-      {
-        this.jdField_a_of_type_ArrayOfJavaLangString = paramayqm.c;
-        this.jdField_a_of_type_JavaLangString = paramayqm.u;
-        paramInt1 = 0;
-      }
-      break;
-    case 2004: 
-    case 2005: 
-    case 5001: 
-    case 5002: 
-      while (paramInt1 < 1)
-      {
-        if (!bbjw.a(this.jdField_a_of_type_JavaLangString))
-        {
-          paramView = new StringBuilder();
-          paramayqm = this.jdField_a_of_type_ArrayOfJavaLangString;
-          paramayqm[paramInt1] = (paramayqm[paramInt1] + "&txhost=" + this.jdField_a_of_type_JavaLangString);
-        }
-        paramInt1 += 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreDownloader", 2, "STATUS_RECV_FAILED");
-        }
-        if (this.jdField_a_of_type_Axeg.jdField_a_of_type_Axee != null) {
-          this.jdField_a_of_type_Axeg.jdField_a_of_type_Axee.a(paramayqm.d);
-        }
-        axeb.a(this.jdField_a_of_type_Axeb).remove(this);
-        return;
-      }
-      this.jdField_a_of_type_Axeg.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if (this.jdField_a_of_type_Axeg.jdField_a_of_type_Boolean) {
-        axeb.a(this.jdField_a_of_type_Axeb, this.jdField_a_of_type_Axeg);
-      }
-      break;
     }
-    for (;;)
+    do
     {
-      axeb.a(this.jdField_a_of_type_Axeb).remove(this);
       return;
-      a();
-    }
+      c(paramasur.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      bbmw localbbmw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramasur.a.jdField_a_of_type_Axdt.c, paramasur.a.jdField_a_of_type_Axdt.jdField_a_of_type_Long);
+      if ((localbbmw instanceof ayow)) {
+        ((ayow)localbbmw).a();
+      }
+    } while ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr == null) || (paramasur.a.f <= 0));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(paramasur.a.f);
   }
 }
 

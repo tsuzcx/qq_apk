@@ -1,53 +1,15 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import android.widget.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
 
-final class bbyx
-  implements MediaPlayer.OnErrorListener
+public class bbyx
+  implements View.OnClickListener
 {
-  bbyx(int paramInt, bbyz parambbyz, VideoView paramVideoView, boolean paramBoolean) {}
+  public bbyx(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "playing onError what=" + paramInt1 + ", extra=" + paramInt2 + ", funcallid=" + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Bbyz != null) {
-      this.jdField_a_of_type_Bbyz.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
-    }
-    paramMediaPlayer = bbyt.a(null, this.jdField_a_of_type_Int, 7, null);
-    if (TextUtils.isEmpty(paramMediaPlayer)) {}
-    label159:
-    RelativeLayout localRelativeLayout;
-    do
-    {
-      for (;;)
-      {
-        return true;
-        if (new File(paramMediaPlayer).exists())
-        {
-          paramMediaPlayer = bawu.a(paramMediaPlayer);
-          if (paramMediaPlayer != null) {}
-          for (paramMediaPlayer = new BitmapDrawable(paramMediaPlayer); (paramMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetVideoView != null); paramMediaPlayer = null)
-          {
-            if (this.jdField_a_of_type_Boolean != true) {
-              break label159;
-            }
-            this.jdField_a_of_type_AndroidWidgetVideoView.setBackgroundDrawable(paramMediaPlayer);
-            return true;
-          }
-        }
-      }
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
-      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
-    } while (localRelativeLayout == null);
-    localRelativeLayout.setBackgroundDrawable(paramMediaPlayer);
-    return true;
+    LiangHaoBuyFragment.a(this.a);
   }
 }
 

@@ -1,16 +1,37 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.os.Handler;
+import android.os.Message;
 
 class aqqz
-  extends AnimatorListenerAdapter
+  extends Handler
 {
-  aqqz(aqqw paramaqqw) {}
+  aqqz(aqqy paramaqqy) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    super.onAnimationEnd(paramAnimator);
-    aqqw.a(this.a).sendEmptyMessage(2);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    case 3: 
+    case 5: 
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      aqqy.a(this.a);
+      return;
+    case 6: 
+      aqqy.b(this.a);
+      return;
+    case 2: 
+      aqqy.c(this.a);
+      return;
+    case 4: 
+      aqqy.d(this.a);
+      return;
+    }
+    aqqy.e(this.a);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.widget;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import beiw;
+import bejn;
 
 class CanvasView$1
   implements Runnable
@@ -10,7 +10,7 @@ class CanvasView$1
   public void run()
   {
     Bitmap localBitmap = CanvasView.a(this.this$0, this.this$0, true);
-    beiw.a().post(new CanvasView.1.1(this, localBitmap));
+    bejn.a().post(new CanvasView.1.1(this, localBitmap));
   }
 }
 

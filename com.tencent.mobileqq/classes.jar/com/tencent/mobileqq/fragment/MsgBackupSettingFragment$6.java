@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import asks;
-import asmd;
-import asog;
+import asku;
+import asmf;
+import asoi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
@@ -19,7 +19,7 @@ class MsgBackupSettingFragment$6
   
   public void run()
   {
-    asmd localasmd = new asmd();
+    asmf localasmf = new asmf();
     ArrayList localArrayList = new ArrayList(2);
     QLog.d("MsgBackup", 1, "loadSo start");
     this.this$0.a = new MsgBackupJniProxy(this.this$0.getActivity());
@@ -29,15 +29,15 @@ class MsgBackupSettingFragment$6
     MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
     MsgBackupSettingFragment.b(this.this$0, new MsgBackupEndPoint());
     int i = this.this$0.a.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
-    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + asog.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
-    localasmd.c(MsgBackupSettingFragment.a(this.this$0)[1]);
-    localasmd.b(MsgBackupSettingFragment.a(this.this$0)[0]);
-    localasmd.a(asog.a(MsgBackupSettingFragment.b(this.this$0).ipv4));
+    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + asoi.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
+    localasmf.c(MsgBackupSettingFragment.a(this.this$0)[1]);
+    localasmf.b(MsgBackupSettingFragment.a(this.this$0)[0]);
+    localasmf.a(asoi.a(MsgBackupSettingFragment.b(this.this$0).ipv4));
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.b(this.this$0).port));
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.a(this.this$0).port));
-    localasmd.a(localArrayList);
-    localasmd.a(4);
-    MsgBackupSettingFragment.a(this.this$0).a(localasmd.a(), 3, true);
+    localasmf.a(localArrayList);
+    localasmf.a(4);
+    MsgBackupSettingFragment.a(this.this$0).a(localasmf.a(), 3, true);
   }
 }
 

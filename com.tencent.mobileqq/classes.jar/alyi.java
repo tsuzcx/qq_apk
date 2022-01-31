@@ -14,12 +14,12 @@ class alyi
       if (i >= 8192) {
         break;
       }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
       i += 1;
     }
     while (j < 360)
     {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
       j += 90;
     }
   }

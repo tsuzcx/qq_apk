@@ -1,32 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
 public class abps
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public abps(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajtk paramajtk) {}
+  public abps(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((bbev.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
-    {
-      this.jdField_a_of_type_Ajtk.d(paramBoolean);
-      return;
-    }
-    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694971), 0).b(5);
-      return;
-    }
+    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
   }
 }
 

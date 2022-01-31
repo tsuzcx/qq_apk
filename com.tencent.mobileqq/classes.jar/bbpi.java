@@ -1,8 +1,15 @@
-public class bbpi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bbpi
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public String b;
+  bbpi(bbpd parambbpd, long paramLong, int paramInt, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bbpd.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

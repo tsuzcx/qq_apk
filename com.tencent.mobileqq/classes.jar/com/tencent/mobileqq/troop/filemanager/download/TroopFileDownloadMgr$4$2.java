@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import aztl;
-import aztm;
+import aztn;
+import azto;
 
 public class TroopFileDownloadMgr$4$2
   implements Runnable
 {
-  public TroopFileDownloadMgr$4$2(aztm paramaztm) {}
+  public TroopFileDownloadMgr$4$2(azto paramazto) {}
   
   public void run()
   {
-    aztl.a(this.a.jdField_a_of_type_Aztl, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.a.jdField_a_of_type_AndroidOsBundle);
+    aztn.a(this.a.jdField_a_of_type_Aztn, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

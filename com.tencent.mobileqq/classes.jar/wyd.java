@@ -1,31 +1,76 @@
-import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiService;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class wyd
-  extends WtloginListener
+  extends ajsy
 {
-  public wyd(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  public wyd(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  protected void a(Object paramObject)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+    paramObject = (azqv)paramObject;
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("ProgressTotal", paramObject.jdField_c_of_type_Long);
+    localBundle.putLong("ProgressValue", paramObject.jdField_d_of_type_Long);
+    localBundle.putString("FileName", paramObject.g);
+    localBundle.putString("FilePath", paramObject.e);
+    localBundle.putString("LocalFile", paramObject.a);
+    localBundle.putString("ThumbnailFile_Middle", paramObject.jdField_d_of_type_JavaLangString);
+    localBundle.putString("ThumbnailFile_Large", paramObject.jdField_c_of_type_JavaLangString);
+    localBundle.putInt("Status", paramObject.b);
+    if ((paramObject.b == 8) || ((paramObject.b == 11) && (bbdx.a(paramObject.e)))) {
+      this.a.a(57, localBundle);
+    }
+    do
+    {
+      return;
+      if (!TextUtils.isEmpty(paramObject.jdField_c_of_type_JavaLangString))
+      {
+        localBundle.putInt("size", 640);
+        this.a.a(58, localBundle);
+        return;
+      }
+    } while (TextUtils.isEmpty(paramObject.jdField_d_of_type_JavaLangString));
+    localBundle.putInt("size", 383);
+    this.a.a(58, localBundle);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramInt2 == 0)
+    if ((paramObject instanceof Object[]))
     {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("type", 36);
+      localBundle.putBoolean("isSuccess", paramBoolean);
+      localBundle.putSerializable("data", (Object[])paramObject);
+      localBundle.putSerializable("observer_type", Integer.valueOf(4));
+      this.a.a(3, localBundle);
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putSerializable("data", Boolean.valueOf(paramBoolean2));
+    localBundle.putSerializable("observer_type", Integer.valueOf(4));
+    localBundle.putString("processName", "com.tencent.mobileqq:troopmanage");
+    this.a.a(3, localBundle);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Object[]))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("type", 44);
+      localBundle.putBoolean("isSuccess", paramBoolean);
+      localBundle.putSerializable("data", (Object[])paramObject);
+      localBundle.putSerializable("observer_type", Integer.valueOf(4));
+      this.a.a(3, localBundle);
+    }
   }
 }
 

@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.AuthorityControlFragment;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.widget.MaxHeightScrollView;
 
 public class bcyp
-  implements DialogInterface.OnCancelListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bcyp(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bcyp(AuthorityActivity paramAuthorityActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onGlobalLayout()
   {
-    paramDialogInterface = this.a.getActivity();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.doOnBackPressed();
+    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    {
+      i = AuthorityActivity.a(this.a).a();
+      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      AuthorityActivity.a(this.a).setMaxHeight(i - j);
     }
+    int i = ((View)this.a.findViewById(2131375493).getParent()).getTop();
+    if (i > 0) {
+      AuthorityActivity.a(this.a).setMaxHeight(AuthorityActivity.a(this.a).a() - i);
+    }
+    AuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

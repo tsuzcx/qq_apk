@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 
 public class TroopKeyWord
-  extends aukm
+  extends auko
 {
   public boolean enable;
   public int expiredFlag;

@@ -1,28 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class qzh
-  implements View.OnClickListener
+class qzh
+  implements Animator.AnimatorListener
 {
-  long jdField_a_of_type_Long = 0L;
+  qzh(qzg paramqzg, boolean paramBoolean) {}
   
-  public qzh(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
+    qzg.a(this.jdField_a_of_type_Qzg, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    qzg.a(this.jdField_a_of_type_Qzg, this.jdField_a_of_type_Boolean);
+    qzg.a(this.jdField_a_of_type_Qzg);
+    this.jdField_a_of_type_Qzg.b.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

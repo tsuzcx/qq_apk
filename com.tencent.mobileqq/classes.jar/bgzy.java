@@ -1,16 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qzone.QzonePluginProxyActivity.4.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class bgzy
-  implements DialogInterface.OnDismissListener
+class bgzy
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public bgzy(QzonePluginProxyActivity.4.1 param1) {}
+  bgzy(bgzx parambgzx) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    if (this.a.this$0.a != null) {
-      this.a.this$0.a.onDismiss(paramDialogInterface);
+    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramSharedPreferences != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
+      }
+      if ((!bgzx.a(this.a)) && (bgzx.a(this.a) != null))
+      {
+        if (bgzx.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
+          bgzx.a(this.a, bgzx.a(this.a).getInt(paramString, 0));
+        }
+        if (bgzx.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
+          bgzx.c(this.a, bgzx.a(this.a).getString(paramString, null));
+        }
+        if (bgzx.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
+          bgzx.e(this.a, bgzx.a(this.a).getString(paramString, null));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + bgzx.a(this.a) + " personlizedYellowVipUrl = " + bgzx.a(this.a));
+        }
+      }
+      bgzx.a(this.a, false);
     }
   }
 }

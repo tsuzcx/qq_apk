@@ -1,26 +1,25 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
 class aubj
-  implements Camera.PreviewCallback
+  extends OrientationEventListener
 {
-  aubj(aubg paramaubg) {}
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  aubj(aubi paramaubi, Context paramContext)
   {
-    if (paramArrayOfByte == null) {
-      return;
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.a.b = 0;
     }
-    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aubg.a(this.a)))
+    do
     {
-      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      if ((this.a.e != 1) && (System.currentTimeMillis() - aubg.a(this.a) > this.a.c))
-      {
-        aubg.a(this.a, System.currentTimeMillis());
-        aubg.a(this.a, paramArrayOfByte);
-      }
-    }
-    aubg.a(this.a).addCallbackBuffer(paramArrayOfByte);
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 

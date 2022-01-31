@@ -1,16 +1,49 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
-public class aoia
-  implements aokx
+class aoia
+  extends mxi
 {
-  public aoia(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  aoia(aohz paramaohz, boolean paramBoolean) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    boolean bool = true;
+    if (paramInt != 0)
+    {
+      QLog.e("ExtendFriendHandler", 1, "setShowVipIconSwitch error: " + paramInt);
+      ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(null);
+      paramArrayOfByte = ExtendFriendProfileEditFragment.a(this.a.a);
+      if (!this.b) {}
+      for (bool = true;; bool = false)
+      {
+        paramArrayOfByte.setChecked(bool);
+        ExtendFriendProfileEditFragment.a(this.a.a).setOnCheckedChangeListener(ExtendFriendProfileEditFragment.a(this.a.a));
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendHandler", 2, "setShowVipIconSwitch(" + this.b + ") success");
+    }
+    paramArrayOfByte = (aogm)ExtendFriendProfileEditFragment.a(this.a.a).getTag();
+    if (!this.b) {}
+    for (;;)
+    {
+      paramArrayOfByte.mVipHide = bool;
+      VipUtils.a(paramArrayOfByte, ExtendFriendProfileEditFragment.a(this.a.a));
+      paramArrayOfByte = this.a.a.getActivity();
+      if (paramArrayOfByte == null) {
+        break;
+      }
+      paramArrayOfByte.setResult(8193);
+      return;
+      bool = false;
+    }
   }
 }
 

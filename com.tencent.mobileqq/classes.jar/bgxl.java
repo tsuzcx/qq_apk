@@ -1,32 +1,10 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.LeakHelper.2.1;
-
-public final class bgxl
-  implements View.OnClickListener
+public class bgxl
 {
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131705996) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("qzone-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new LeakHelper.2.1(this));
-    }
-  }
+  public static bgxk a = new bgxk(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.minigame.manager.MiniGameAuthorizeManager.3.1;
 
-public final class bewl
-  implements DialogInterface.OnShowListener
+public class bewl
+  implements View.OnClickListener
 {
-  public bewl(TianShuAccess.AdItem paramAdItem, String paramString) {}
+  public bewl(MiniGameAuthorizeManager.3.1 param1) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    bfgv.a().edit().putLong("pref_key_banner_ad_popup_last_show_time_millis", System.currentTimeMillis()).putInt("pref_key_banner_ad_current_show_times", 1).apply();
-    MiniGameAdBannerPopup.a(this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, this.jdField_a_of_type_JavaLangString, 101);
+    if (bewh.a(this.a.a.a) != null)
+    {
+      bewh.a(this.a.a.a).a(true);
+      bewh.a(this.a.a.a).dismiss();
+    }
   }
 }
 

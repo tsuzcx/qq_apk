@@ -1,23 +1,12 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class qrn
-  extends RecyclerView.OnScrollListener
+public abstract interface qrn
 {
-  public qrn(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
+  public abstract void a();
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      VideoFeedsRecyclerView.a(this.a, false);
-      return;
-    }
-    VideoFeedsRecyclerView.a(this.a, true);
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
 }
 
 

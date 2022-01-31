@@ -1,40 +1,13 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ahii
-  implements View.OnClickListener
 {
-  public ahii(ViewPagerTabLayout paramViewPagerTabLayout) {}
+  public static final Set<String> a = new HashSet();
   
-  public void onClick(View paramView)
+  static
   {
-    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
-    if (i != -1)
-    {
-      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
-        break label85;
-      }
-      if (ViewPagerTabLayout.a(this.a)) {
-        break label74;
-      }
-      this.a.setCurrentTab(i, false);
-      if (ViewPagerTabLayout.a(this.a) != null) {
-        ViewPagerTabLayout.a(this.a).a(i);
-      }
-    }
-    label74:
-    label85:
-    while (ViewPagerTabLayout.a(this.a) == null) {
-      for (;;)
-      {
-        return;
-        this.a.setCurrentTab(i);
-      }
-    }
-    ViewPagerTabLayout.a(this.a).b(i);
+    a.add("SoLoadModule");
   }
 }
 

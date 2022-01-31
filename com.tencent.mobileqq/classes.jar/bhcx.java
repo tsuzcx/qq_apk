@@ -1,46 +1,64 @@
-import NS_MOBILE_OPERATION.operation_like_req;
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import cooperation.qzone.contentbox.MsgPhotoView;
+import cooperation.qzone.contentbox.model.MQMsg;
+import cooperation.qzone.contentbox.model.MQUserPersonalData;
+import cooperation.qzone.util.QZLog;
 
 public class bhcx
-  extends bgxt
+  implements View.OnClickListener
 {
-  private int a;
-  public JceStruct a;
+  public bhcx(MsgPhotoView paramMsgPhotoView) {}
   
-  public bhcx(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    operation_like_req localoperation_like_req = new operation_like_req();
-    localoperation_like_req.uin = paramLong.longValue();
-    localoperation_like_req.action = paramInt1;
-    localoperation_like_req.appid = paramInt2;
-    localoperation_like_req.curkey = paramString1;
-    localoperation_like_req.unikey = paramString2;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.like";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return "like";
+    MQUserPersonalData localMQUserPersonalData = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
+    if (localMQUserPersonalData == null)
+    {
+      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
+      return;
+    }
+    Object localObject = "";
+    switch (paramView.getId())
+    {
+    default: 
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      if (QZLog.isColorLevel()) {
+        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + paramView);
+      }
+      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      return;
+      paramView = localMQUserPersonalData.mBVJumpUrl;
+      bhyf.a(12, 2);
+      continue;
+      localObject = localMQUserPersonalData.mYJumpUrl;
+      paramView = paramView.getTag();
+      if ((paramView != null) && ((paramView instanceof Boolean)))
+      {
+        if (((Boolean)paramView).booleanValue()) {}
+        for (int i = 11;; i = 10)
+        {
+          bhyf.a(i, 2);
+          paramView = (View)localObject;
+          break;
+        }
+        paramView = localMQUserPersonalData.mLYJumpUrl;
+        bhyf.a(13, 2);
+      }
+      else
+      {
+        paramView = (View)localObject;
+      }
+    }
   }
 }
 

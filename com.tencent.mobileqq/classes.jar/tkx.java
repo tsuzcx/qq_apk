@@ -1,23 +1,19 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class tkx
-  extends ssk
+  implements syq<tky, tkz>
 {
-  public final int a;
-  public final String a;
-  public final String b;
-  
-  public tkx(tkw paramtkw, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    paramString = new tky(this, paramString);
+    syo.a().a(paramString, this);
   }
   
-  public String toString()
+  public void a(@NonNull tky paramtky, @Nullable tkz paramtkz, @NonNull ErrorMessage paramErrorMessage)
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
+    new tla(paramErrorMessage, paramtky.b);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.gamecenter.appointment;
 
 import android.text.TextUtils;
-import bdoe;
+import bdot;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import yod;
+import yoa;
 
 final class GameCenterCheck$1
   implements Runnable
@@ -13,36 +13,36 @@ final class GameCenterCheck$1
   public void run()
   {
     int j = 0;
-    bdoe.b("GameCenterCheck", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
-    yod.a();
+    bdot.b("GameCenterCheck", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
+    yoa.a();
     String[] arrayOfString;
     int k;
     int i;
     if (!TextUtils.isEmpty(this.a))
     {
       arrayOfString = this.a.split("\\|");
-      if ((yod.a) && (AppNetConnInfo.isWifiConn())) {
-        yod.a(arrayOfString);
+      if ((yoa.a) && (AppNetConnInfo.isWifiConn())) {
+        yoa.a(arrayOfString);
       }
       k = arrayOfString.length;
       i = 0;
       while (i < k)
       {
-        yod.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
+        yoa.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
         i += 1;
       }
     }
     if (!TextUtils.isEmpty(this.b))
     {
       arrayOfString = this.b.split("\\|");
-      if (yod.b) {
-        yod.b(arrayOfString);
+      if (yoa.b) {
+        yoa.b(arrayOfString);
       }
       k = arrayOfString.length;
       i = j;
       while (i < k)
       {
-        yod.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
+        yoa.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
         i += 1;
       }
     }

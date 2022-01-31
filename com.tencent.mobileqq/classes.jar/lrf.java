@@ -1,20 +1,8 @@
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import java.util.List;
+import com.tencent.aekit.openrender.internal.Frame;
 
-public class lrf
+public abstract interface lrf
 {
-  public int a;
-  public List<TTFaceOriginDataModel> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public boolean a()
-  {
-    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
-  }
+  public abstract void a(Frame paramFrame, lrc paramlrc);
 }
 
 

@@ -1,59 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
 
-public class apmq
-  extends ybz
+class apmq
+  implements View.OnClickListener
 {
-  apmq(apmp paramapmp) {}
+  apmq(apmi paramapmi) {}
   
-  public void a(Session paramSession, float paramFloat)
+  public void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkp.a();
-    if (localFileManagerEntity == null) {}
-    while ((this.a.jdField_a_of_type_Apnb == null) || (paramSession.uSessionID != apmp.a(this.a))) {
-      return;
-    }
-    localFileManagerEntity.fProgress = paramFloat;
-    this.a.jdField_a_of_type_Apnb.a(paramFloat);
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkp.a();
-    if (localFileManagerEntity == null) {}
-    do
+    if (!CheckPermission.isHasStoragePermission(this.a.a))
     {
-      return;
-      if ((this.a.jdField_a_of_type_Apna != null) && (paramSession.uSessionID == apmp.b(this.a)) && (paramBoolean))
-      {
-        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
-        this.a.jdField_a_of_type_Apna.a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
-      }
-    } while ((this.a.jdField_a_of_type_Apnb == null) || (paramSession.uSessionID != apmp.a(this.a)));
-    if (paramBoolean)
-    {
-      localFileManagerEntity.fProgress = 1.0F;
-      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
-      this.a.jdField_a_of_type_Apnb.f();
-      if (this.a.e() == 2)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
-        return;
-      }
-      this.a.jdField_a_of_type_Apnb.f();
+      CheckPermission.requestSDCardPermission((AppActivity)this.a.a, new apmr(this));
       return;
     }
-    this.a.jdField_a_of_type_Apnb.g();
-  }
-  
-  public void b(Session paramSession)
-  {
-    if ((this.a.jdField_a_of_type_Apnb != null) && (paramSession.uSessionID == apmp.a(this.a))) {
-      this.a.jdField_a_of_type_Apnb.d();
-    }
+    apug.a(this.a.a, this.a.c());
   }
 }
 

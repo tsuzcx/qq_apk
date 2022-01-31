@@ -1,21 +1,23 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.os.Handler;
+import android.os.Message;
 
-public class aedk
-  extends acun
+class aedk
+  extends Handler
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public aedk(aedg paramaedg) {}
+  aedk(aedj paramaedj) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == aedj.a()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != aedj.b()) {}
+    }
+  }
 }
 
 

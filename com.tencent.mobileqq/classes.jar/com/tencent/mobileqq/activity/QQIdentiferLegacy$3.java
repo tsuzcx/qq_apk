@@ -17,7 +17,7 @@ class QQIdentiferLegacy$3
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("title", this.a.getString(2131693759));
+    localIntent.putExtra("title", this.a.getString(2131693760));
     localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690572));
     if ("setFaceData".equals(QQIdentiferLegacy.a(this.a)))
     {

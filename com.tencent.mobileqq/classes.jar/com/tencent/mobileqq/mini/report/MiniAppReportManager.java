@@ -7,10 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import aukm;
-import aukn;
 import auko;
-import bcxm;
+import aukp;
+import aukq;
+import bcyb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -101,7 +101,7 @@ public class MiniAppReportManager
         localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
         if ((localObject != null) && (paramMiniAppReportEntity != null))
         {
-          ((aukn)localObject).b(paramMiniAppReportEntity);
+          ((aukp)localObject).b(paramMiniAppReportEntity);
           return;
         }
       }
@@ -190,7 +190,7 @@ public class MiniAppReportManager
     }
     try
     {
-      long l = bcxm.a().a();
+      long l = bcyb.a().a();
       localObject1 = localObject3;
       String str2 = paramMiniAppReportEntity.appId;
       localObject2 = str1;
@@ -308,16 +308,16 @@ public class MiniAppReportManager
     //   47: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   50: return
     //   51: aload_1
-    //   52: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lauko;
-    //   55: invokevirtual 232	auko:createEntityManager	()Laukn;
+    //   52: invokevirtual 226	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Laukq;
+    //   55: invokevirtual 232	aukq:createEntityManager	()Laukp;
     //   58: astore_2
     //   59: aload_2
     //   60: ifnull -10 -> 50
     //   63: aload_2
-    //   64: invokevirtual 394	aukn:a	()Laukp;
+    //   64: invokevirtual 394	aukp:a	()Laukr;
     //   67: astore_1
     //   68: aload_1
-    //   69: invokevirtual 398	aukp:a	()V
+    //   69: invokevirtual 398	aukr:a	()V
     //   72: aload_0
     //   73: invokeinterface 402 1 0
     //   78: astore_0
@@ -330,7 +330,7 @@ public class MiniAppReportManager
     //   97: astore_3
     //   98: aload_2
     //   99: aload_3
-    //   100: invokestatic 415	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Laukn;Laukm;)Z
+    //   100: invokestatic 415	com/tencent/mobileqq/mini/report/MiniAppReportManager:updateEntity	(Laukp;Lauko;)Z
     //   103: pop
     //   104: invokestatic 347	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   107: ifeq -28 -> 79
@@ -354,7 +354,7 @@ public class MiniAppReportManager
     //   149: aload_0
     //   150: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   153: aload_1
-    //   154: invokevirtual 422	aukp:b	()V
+    //   154: invokevirtual 422	aukr:b	()V
     //   157: return
     //   158: astore_0
     //   159: ldc 45
@@ -364,20 +364,20 @@ public class MiniAppReportManager
     //   166: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   169: return
     //   170: aload_1
-    //   171: invokevirtual 427	aukp:c	()V
+    //   171: invokevirtual 427	aukr:c	()V
     //   174: aload_1
-    //   175: invokevirtual 422	aukp:b	()V
+    //   175: invokevirtual 422	aukr:b	()V
     //   178: return
     //   179: astore_0
     //   180: aload_1
-    //   181: invokevirtual 422	aukp:b	()V
+    //   181: invokevirtual 422	aukr:b	()V
     //   184: aload_0
     //   185: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	186	0	paramList	List<MiniAppReportEntity>
     //   3	178	1	localObject	Object
-    //   58	41	2	localaukn	aukn
+    //   58	41	2	localaukp	aukp
     //   97	30	3	localMiniAppReportEntity	MiniAppReportEntity
     // Exception table:
     //   from	to	target	type
@@ -468,7 +468,7 @@ public class MiniAppReportManager
           if (localObject1 == null) {
             break label75;
           }
-          localObject1 = ((aukn)localObject1).a(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+          localObject1 = ((aukp)localObject1).a(MiniAppReportEntity.class, MiniAppReportEntity.class.getSimpleName(), false, null, null, null, null, null, null);
         }
       }
       catch (Throwable localThrowable)
@@ -696,31 +696,31 @@ public class MiniAppReportManager
     }
   }
   
-  private static boolean updateEntity(aukn paramaukn, aukm paramaukm)
+  private static boolean updateEntity(aukp paramaukp, auko paramauko)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    if (paramaukn.a()) {
-      if (paramaukm.getStatus() == 1000)
+    if (paramaukp.a()) {
+      if (paramauko.getStatus() == 1000)
       {
-        paramaukn.b(paramaukm);
-        if (paramaukm.getStatus() == 1001) {
+        paramaukp.b(paramauko);
+        if (paramauko.getStatus() == 1001) {
           bool1 = true;
         }
-        paramaukn.a();
+        paramaukp.a();
       }
     }
     do
     {
       return bool1;
-      if ((paramaukm.getStatus() != 1001) && (paramaukm.getStatus() != 1002)) {
+      if ((paramauko.getStatus() != 1001) && (paramauko.getStatus() != 1002)) {
         break;
       }
-      bool1 = paramaukn.a(paramaukm);
+      bool1 = paramaukp.a(paramauko);
       break;
       bool1 = bool2;
     } while (!QLog.isColorLevel());
-    QLog.d("MiniAppReportManager", 2, "updateEntity em closed e=" + paramaukm.getTableName());
+    QLog.d("MiniAppReportManager", 2, "updateEntity em closed e=" + paramauko.getTableName());
     return false;
   }
   

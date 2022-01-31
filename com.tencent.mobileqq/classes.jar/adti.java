@@ -1,22 +1,17 @@
-import android.view.View;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class adti
-  implements bfoq
+  implements bcnl
 {
-  public adti(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, adtl paramadtl, bfol parambfol) {}
+  public adti(LightVideoItemBuilder paramLightVideoItemBuilder, adtj paramadtj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Adtl);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

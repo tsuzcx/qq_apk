@@ -1,7 +1,6 @@
-public abstract class wdh
-  implements wdg
+public abstract interface wdh
 {
-  public void a() {}
+  public abstract void a();
 }
 
 

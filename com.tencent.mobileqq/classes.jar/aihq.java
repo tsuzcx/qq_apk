@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class aihq
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
   public aihq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
     }
-    axdo.a = true;
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    {
+      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
+        this.a.k = true;
+      }
+      this.a.j();
+    }
   }
 }
 

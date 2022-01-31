@@ -1,29 +1,29 @@
 import com.tencent.qphone.base.util.QLog;
 
 class apch
-  extends apbi
+  extends apbm
 {
-  public apch(apbe paramapbe)
+  public apch(apbi paramapbi)
   {
-    super(paramapbe);
+    super(paramapbi);
   }
   
   protected String a()
   {
-    return "StateSenderCancelSendWhenToOffFailed";
+    return "StateSaveToWeiYunByPCWhenPause";
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    apbe.b(this.jdField_a_of_type_Apbe, 11, 8);
-    apbe.c(this.jdField_a_of_type_Apbe, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Apbi = new apcf(this.jdField_a_of_type_Apbe);
+    apbi.b(this.jdField_a_of_type_Apbi, 11, 7);
+    apbi.c(this.jdField_a_of_type_Apbi, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Apbm = new apcg(this.jdField_a_of_type_Apbi);
   }
 }
 

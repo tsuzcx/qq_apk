@@ -1,22 +1,29 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import java.lang.ref.WeakReference;
 
 public class xfm
-  implements xfq
+  extends Handler
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private xfk jdField_a_of_type_Xfk = xfk.a(1);
-  private float jdField_b_of_type_Float = 0.2F;
-  private xfk jdField_b_of_type_Xfk = xfk.b(1);
+  private WeakReference<SquareRoundImageView> a;
   
-  public void a(View paramView, float paramFloat)
+  private xfm(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
   {
-    this.jdField_a_of_type_Xfk.a(paramView);
-    this.jdField_b_of_type_Xfk.a(paramView);
-    paramFloat = Math.abs(paramFloat);
-    float f = this.jdField_a_of_type_Float;
-    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
+    super(paramLooper);
+    this.a = new WeakReference(paramSquareRoundImageView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1)
+    {
+      paramMessage = (SquareRoundImageView)this.a.get();
+      if (paramMessage != null) {
+        SquareRoundImageView.a(paramMessage);
+      }
+    }
   }
 }
 

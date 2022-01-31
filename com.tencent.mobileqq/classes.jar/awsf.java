@@ -6,37 +6,36 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 class awsf
   implements View.OnClickListener
 {
-  awsf(awsa paramawsa, awoz paramawoz, Context paramContext) {}
+  awsf(awsc paramawsc, awpc paramawpc, Context paramContext) {}
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Awoz.m))
+    awsq.a(null, 0, this.jdField_a_of_type_Awpc.c, "0X8009D5D", 0, 0, null, null);
+    awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Awpc.g).ver2(awsq.a(UniteSearchActivity.d)).ver5("1").ver6("1").ver7("{experiment_id:" + awsq.b + "}"));
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Awpc.l))
     {
-      paramView = awvv.a(this.jdField_a_of_type_Awoz.a(), 0, awso.a(this.jdField_a_of_type_Awoz.c));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = awvx.b(this.jdField_a_of_type_Awpc.c);
+      paramView = awvx.a(this.jdField_a_of_type_Awpc.a(), 0, paramView);
+      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      paramView = new StringBuilder();
-      int i = 0;
-      if (i < this.jdField_a_of_type_Awoz.a.size())
-      {
-        if (i != this.jdField_a_of_type_Awoz.a.size() - 1) {
-          paramView.append(((awom)this.jdField_a_of_type_Awoz.a.get(i)).b).append("::");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramView.append(((awom)this.jdField_a_of_type_Awoz.a.get(i)).b);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + paramView);
       }
-      awso.a(null, new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_Awoz.g).ver2(awso.a(UniteSearchActivity.d)).ver4(paramView.toString()).ver5("1").ver6("2").ver7("{experiment_id:" + awso.b + "}"));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return;
     }
+    paramView = awvx.a(awvx.a(this.jdField_a_of_type_Awpc.l, this.jdField_a_of_type_Awpc.a(), 0, awsq.a(this.jdField_a_of_type_Awpc.c)), this.jdField_a_of_type_Awpc.c);
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, "open Browser append suffix url = " + paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
   }
 }
 

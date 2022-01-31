@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agir;
+import agip;
 import java.util.List;
 
 public class BindNumberActivity$10$1
   implements Runnable
 {
-  public BindNumberActivity$10$1(agir paramagir, int paramInt, List paramList) {}
+  public BindNumberActivity$10$1(agip paramagip, int paramInt, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agir.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Agip.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.delegate;
 
 import android.view.ViewGroup;
-import rxb;
+import rwy;
 
 public class ViolaInitDelegate$1
   implements Runnable
 {
-  public ViolaInitDelegate$1(rxb paramrxb) {}
+  public ViolaInitDelegate$1(rwy paramrwy) {}
   
   public void run()
   {
-    rxb.a(this.this$0).addView(rxb.a(this.this$0));
+    rwy.a(this.this$0).addView(rwy.a(this.this$0));
   }
 }
 

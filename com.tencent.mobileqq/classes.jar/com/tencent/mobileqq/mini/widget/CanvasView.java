@@ -33,8 +33,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import bbay;
-import bbjw;
+import bbbm;
+import bbkk;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
@@ -194,13 +194,13 @@ public class CanvasView
         int m;
         int n;
         int i1;
-        if (!bbjw.a((String)localObject4))
+        if (!bbkk.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
             localObject1 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject4);
           }
         }
-        else if (!bbjw.a((String)localObject1))
+        else if (!bbkk.a((String)localObject1))
         {
           f5 = mpx2px(((JSONArray)localObject5).optDouble(1, 0.0D));
           f6 = mpx2px(((JSONArray)localObject5).optDouble(2, 0.0D));
@@ -419,7 +419,7 @@ public class CanvasView
         }
         localObject4 = ((JSONArray)localObject6).optString(1);
         localObject1 = localObject4;
-        if (!bbjw.a((String)localObject4))
+        if (!bbkk.a((String)localObject4))
         {
           if (((String)localObject4).startsWith("wxfile")) {
             localObject1 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject4);
@@ -435,7 +435,7 @@ public class CanvasView
           this.mRepeatX = true;
           this.mRepeatY = true;
           label1509:
-          if (bbjw.a((String)localObject1)) {
+          if (bbkk.a((String)localObject1)) {
             break label1725;
           }
           localObject1 = ImageUtil.getLocalBitmap((String)localObject1);
@@ -1464,7 +1464,7 @@ public class CanvasView
     if ((Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MODEL.toLowerCase().contains("vivo"))) {}
     try
     {
-      Object localObject = bbay.a("ro.vivo.os.version");
+      Object localObject = bbbm.a("ro.vivo.os.version");
       if ((localObject != null) && ("3.1".equals(((String)localObject).trim())))
       {
         localObject = Class.forName("android.util.VivoSmartMultiWindowConfig").getDeclaredField("ENABLE_SPLIT");

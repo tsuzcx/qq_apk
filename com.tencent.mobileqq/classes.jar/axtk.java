@@ -1,65 +1,20 @@
-import java.util.HashMap;
-
-class axtk
-  implements Comparable<axtk>
+public abstract class axtk
 {
-  public int a;
-  public String a;
-  public HashMap<String, axtk> a;
+  public int a = 0;
+  public int b;
+  public long b;
+  public int c = 1;
+  public String i = "";
+  public String j = "";
+  public String k = "";
   
-  public axtk()
+  axtk()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public axtk(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a(axtk paramaxtk)
-  {
-    return paramaxtk.jdField_a_of_type_Int - this.jdField_a_of_type_Int;
-  }
-  
-  public axtk a(String paramString)
-  {
-    return (axtk)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.isEmpty();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    return ((axtk)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
-  }
+  public abstract String a(int paramInt);
 }
 
 

@@ -1,12 +1,39 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.graphics.Rect;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public abstract interface biuu
+class biuu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a();
+  biuu(biur parambiur, View paramView1, View paramView2, View paramView3) {}
   
-  public abstract void a(Frame paramFrame);
-  
-  public abstract void b();
+  public void onGlobalLayout()
+  {
+    Log.d("AEGIFTextEditFragment", "onGlobalLayout");
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    if (this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom > 150)
+    {
+      int[] arrayOfInt = new int[2];
+      this.b.getLocationInWindow(arrayOfInt);
+      int i = arrayOfInt[1];
+      int j = this.b.getHeight();
+      int k = localRect.bottom;
+      if (!biur.b(this.jdField_a_of_type_Biur))
+      {
+        this.b.scrollBy(0, i + j - k);
+        biur.a(this.jdField_a_of_type_Biur, this.c, localRect.bottom / 2);
+      }
+      biur.a(this.jdField_a_of_type_Biur, true);
+      return;
+    }
+    this.b.scrollTo(0, 0);
+    if (biur.b(this.jdField_a_of_type_Biur)) {
+      biur.a(this.jdField_a_of_type_Biur, this.c, localRect.bottom / 2);
+    }
+    biur.a(this.jdField_a_of_type_Biur, false);
+  }
 }
 
 

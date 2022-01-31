@@ -1,22 +1,28 @@
+import com.tencent.mobileqq.fts.entity.FTSEntity;
+import java.util.Arrays;
+
 public class aqkw
 {
+  public int a;
+  public Class<? extends FTSEntity> a;
   public String a;
   public boolean a;
+  public aqky[] a;
   public String b;
-  @Deprecated
-  public boolean b;
   
-  public aqkw(String paramString1, String paramString2, boolean paramBoolean)
+  public aqkw(Class<? extends FTSEntity> paramClass, aqky[] paramArrayOfaqky, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ArrayOfAqky = paramArrayOfaqky;
     this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
   public String toString()
   {
-    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
+    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAqky) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
   }
 }
 

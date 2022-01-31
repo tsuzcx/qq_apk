@@ -1,29 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.widget.TextView;
 
 class afpg
-  implements bfoq
+  extends aimt
 {
-  afpg(afpe paramafpe, boolean paramBoolean, Friends paramFriends, bfol parambfol) {}
+  public int a;
+  public TextView a;
   
-  public void OnClick(View paramView, int paramInt)
+  public afpg(View paramView)
   {
-    if (!bbev.g(afpe.a(this.jdField_a_of_type_Afpe))) {
-      bcpw.a(afpe.a(this.jdField_a_of_type_Afpe), 1, 2131692321, 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      paramView = (FriendListHandler)afpe.a(this.jdField_a_of_type_Afpe).a(1);
-      if (this.jdField_a_of_type_Boolean) {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-      } else {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-      }
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378223));
   }
 }
 

@@ -1,23 +1,17 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class aomg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aomg(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public aomg(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
+    bbac.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

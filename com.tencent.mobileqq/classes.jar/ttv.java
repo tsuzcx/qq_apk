@@ -1,17 +1,25 @@
 import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ttv
-  implements bfob
+  extends ssv
 {
   public ttv(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, ssq paramssq)
   {
-    this.a.b = paramInt1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramssq);
+    }
+    if (paramBoolean)
+    {
+      if (paramssq != null) {
+        this.a.a(paramssq.a);
+      }
+      return;
+    }
+    this.a.e();
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

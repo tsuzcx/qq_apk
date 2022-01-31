@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bcpw;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
 
 class OpenSelectPermissionFragment$2
@@ -15,20 +15,20 @@ class OpenSelectPermissionFragment$2
       QLog.e("OpenSelectPermissionFragment", 1, "showToast activity is null");
       return;
     }
-    bcpw localbcpw = new bcpw(this.this$0.getActivity());
+    bcql localbcql = new bcql(this.this$0.getActivity());
     if (this.jdField_a_of_type_Boolean)
     {
-      localbcpw.a(bcpw.a(2));
-      localbcpw.b(2);
+      localbcql.a(bcql.a(2));
+      localbcql.b(2);
     }
     for (;;)
     {
-      localbcpw.d(2000);
-      localbcpw.a(this.jdField_a_of_type_JavaLangString);
-      localbcpw.a();
+      localbcql.d(2000);
+      localbcql.a(this.jdField_a_of_type_JavaLangString);
+      localbcql.a();
       return;
-      localbcpw.a(bcpw.a(1));
-      localbcpw.b(1);
+      localbcql.a(bcql.a(1));
+      localbcql.b(1);
     }
   }
 }

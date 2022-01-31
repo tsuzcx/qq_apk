@@ -1,19 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.biz.PoiMapActivity;
 
 public class mwn
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public mwn(PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    this.a.a.setText("");
   }
 }
 

@@ -1,95 +1,38 @@
-import android.os.Binder;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract class avrb
-  extends Binder
-  implements avra
+class avrb
+  extends Handler
 {
-  public avrb()
+  public avrb(Looper paramLooper)
   {
-    attachInterface(this, "com.tencent.mobileqq.richmedia.ICallBack");
+    super(paramLooper);
   }
   
-  public static avra a(IBinder paramIBinder)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramIBinder == null) {
-      return null;
+    avrf.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      avrf.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.richmedia.ICallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof avra))) {
-      return (avra)localIInterface;
-    }
-    return new avrc(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a(paramInt1, (Bundle)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-      localObject1 = localObject2;
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (CompressInfo)CompressInfo.CREATOR.createFromParcel(paramParcel1);
-      }
-      a((CompressInfo)localObject1);
-      paramParcel2.writeNoException();
-      if (localObject1 != null)
-      {
-        paramParcel2.writeInt(1);
-        ((CompressInfo)localObject1).writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
-    paramInt1 = paramParcel1.readInt();
-    localObject1 = localObject3;
-    if (paramParcel1.readInt() != 0) {
-      localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-    }
-    a(paramInt1, (Bundle)localObject1);
-    paramParcel2.writeNoException();
-    return true;
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    avrf.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acyf;
-import adwl;
+import acyc;
+import adwj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PokePanel$3$1
   implements Runnable
 {
-  public PokePanel$3$1(acyf paramacyf, QQAppInterface paramQQAppInterface) {}
+  public PokePanel$3$1(acyc paramacyc, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acyf.a.a(adwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_Acyc.a.a(adwj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 

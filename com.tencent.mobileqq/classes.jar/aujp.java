@@ -1,17 +1,15 @@
-public final class aujp
+import android.view.View;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+
+public class aujp
+  implements acwb
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public long d;
+  public aujp(OpenApiManager paramOpenApiManager) {}
+  
+  public void a(View paramView, ayqo paramayqo, int paramInt1, int paramInt2)
+  {
+    this.a.onFileTransStatusChanged(paramayqo, paramInt1, paramInt2);
+  }
 }
 
 

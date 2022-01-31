@@ -1,43 +1,18 @@
-import Wallet.GetRandomHbIdiomRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class agzp
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public agzp(IdiomHbFragment paramIdiomHbFragment, agzq paramagzq) {}
+  public agzp(LingHbFragment paramLingHbFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt == 27)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentIdiomHbFragment.a = false;
-      paramBundle = (GetRandomHbIdiomRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel()) {
-        QLog.d("IdiomHbFragment", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
-      }
-      if ((!paramBoolean) || (paramBundle == null) || (paramBundle.suggestIdioms == null) || (paramBundle.suggestIdioms.size() <= 0)) {
-        break label170;
-      }
-      IdiomHbFragment.a().clear();
-      IdiomHbFragment.a().addAll(paramBundle.suggestIdioms);
-      if (QLog.isColorLevel()) {
-        QLog.d("IdiomHbFragment", 2, "getIdiomListFromSSO idiomListSize:" + IdiomHbFragment.a().size());
-      }
-      if (this.jdField_a_of_type_Agzq != null) {
-        this.jdField_a_of_type_Agzq.a(true, IdiomHbFragment.a());
-      }
-      IdiomHbFragment.a(System.currentTimeMillis());
-    }
-    label170:
-    while (this.jdField_a_of_type_Agzq == null) {
-      return;
-    }
-    this.jdField_a_of_type_Agzq.a(false, null);
+    this.a.c.clearFocus();
+    LingHbFragment.a(this.a).a();
   }
 }
 

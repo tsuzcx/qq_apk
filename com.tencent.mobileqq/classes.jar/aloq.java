@@ -1,35 +1,65 @@
 import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.2;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.3;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.4;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.6;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class aloq
-  extends akup
+  implements INetInfoHandler
 {
-  aloq(alop paramalop, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aloq(aloo paramaloo) {}
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  public void onNetMobile2None()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + aloo.b(this.a));
     }
-    if (paramInt2 < 3) {
-      return;
-    }
-    ArkAppCenter.a().post(alop.a(this.a), new ArkAppEventObserverManager.1.2(this));
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.6(this));
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onNetMobile2Wifi(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
+      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + aloo.b(this.a));
     }
-    ArkAppCenter.a().post(alop.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.5(this));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + aloo.b(this.a));
+    }
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.4(this));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + aloo.b(this.a));
+    }
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.3(this));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + aloo.b(this.a));
+    }
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.2(this));
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + aloo.b(this.a));
+    }
+    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.ArkConnectionHandler.1(this));
   }
 }
 

@@ -1,50 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class afxm
-  implements View.OnClickListener
+  extends aoun
 {
-  public afxm(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
+  public afxm(ChatHistoryC2CMediaFragment paramChatHistoryC2CMediaFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
+    if ((bicz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
-    Object localObject1 = (ChatMessage)((afxk)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Agbf.a(localObject1);
-      this.a.jdField_a_of_type_Afxi.notifyDataSetChanged();
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bicz.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-    {
-      this.a.jdField_a_of_type_Afxi.notifyDataSetChanged();
-      return;
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
-    {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      axvk localaxvk = new axvk(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localaxvk);
-    }
-    for (;;)
-    {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
-      {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
-      }
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bicz.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
   }
 }

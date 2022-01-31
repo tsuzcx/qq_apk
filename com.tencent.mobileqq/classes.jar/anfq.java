@@ -1,62 +1,117 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager.DanmakuComparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class anfq
-  implements Handler.Callback
 {
-  private WeakReference<DanmakuManager> a;
+  private volatile long jdField_a_of_type_Long = -1L;
+  private final anht jdField_a_of_type_Anht;
+  private final anhu<anga> jdField_a_of_type_Anhu;
+  private final List<anga> jdField_a_of_type_JavaUtilList;
+  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
   
-  private anfq(DanmakuManager paramDanmakuManager)
+  public anfq(anht paramanht, DanmakuManager.DanmakuComparator paramDanmakuComparator)
   {
-    this.a = new WeakReference(paramDanmakuManager);
+    this.jdField_a_of_type_Anht = paramanht;
+    this.jdField_a_of_type_Anhu = new anhu(paramDanmakuComparator, new anfr(this));
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  private void a(List<anga> paramList)
   {
-    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
-    if (localDanmakuManager == null) {
-      return false;
-    }
-    switch (paramMessage.what)
+    int i = paramList.size() - 1;
+    while (i >= 0)
     {
-    default: 
-      return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 2: 
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
+      anga localanga = (anga)paramList.get(i);
+      if (localanga.d() <= this.jdField_a_of_type_Long) {
+        localanga.a();
+      }
+      i -= 1;
     }
-    DanmakuManager.i(localDanmakuManager);
+  }
+  
+  private void c()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      anic.b("DanmakuDataSource", "lock is blocked");
+      Thread.yield();
+    }
+  }
+  
+  private void d()
+  {
+    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    {
+      anic.e("DanmakuDataSource", "update end is blocked! this can not happend!");
+      Thread.yield();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Anhu.a();
+  }
+  
+  public anga a()
+  {
+    return (anga)this.jdField_a_of_type_Anhu.a();
+  }
+  
+  public List<anga> a()
+  {
+    c();
+    this.jdField_a_of_type_Anhu.a(this.jdField_a_of_type_Anht.a(), this.jdField_a_of_type_JavaUtilList, 3);
+    a(this.jdField_a_of_type_JavaUtilList);
+    d();
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    anic.a("DanmakuDataSource", "clear danmaku queue");
+    c();
+    this.jdField_a_of_type_Anhu.a();
+    d();
+  }
+  
+  public void a(anga paramanga)
+  {
+    c();
+    anic.c("DanmakuDataSource", "addNow: danmaku = " + paramanga);
+    this.jdField_a_of_type_Anhu.b(paramanga);
+    d();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
+    while ((this.jdField_a_of_type_Anhu != null) && (this.jdField_a_of_type_Anhu.a() > 0)) {
+      return true;
+    }
     return false;
+  }
+  
+  public void b()
+  {
+    c();
+    anga localanga = (anga)this.jdField_a_of_type_Anhu.b();
+    if (localanga == null) {}
+    for (this.jdField_a_of_type_Long = -1L;; this.jdField_a_of_type_Long = localanga.d())
+    {
+      d();
+      return;
+    }
+  }
+  
+  public void b(anga paramanga)
+  {
+    c();
+    anic.c("DanmakuDataSource", "addLast: danmaku = " + paramanga);
+    this.jdField_a_of_type_Anhu.a(paramanga);
+    d();
   }
 }
 

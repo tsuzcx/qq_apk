@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
 import mqq.util.WeakReference;
 
 class aguz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aguz(aguv paramaguv) {}
+  aguz(aguy paramaguy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoPreviewActivity)this.a.a.get()).b != null) {
-      ((NewPhotoPreviewActivity)this.a.a.get()).b.setClickable(true);
-    }
+    AIOLongShotHelper.a((Activity)this.a.a.get(), (String)aguy.a(this.a).a.get(0), new agva(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
 }
 

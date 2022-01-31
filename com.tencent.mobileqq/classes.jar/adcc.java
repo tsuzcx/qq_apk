@@ -1,23 +1,15 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
 public class adcc
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
   public adcc(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      axqw.b(null, "dc00898", "", "", "0X800A89F", "0X800A89F", 0, 0, "", "", "", "");
-      VoiceTextEditPanel.a(this.a);
-      bool = true;
-    }
-    return bool;
+    VoiceTextEditPanel.a(this.a);
   }
 }
 

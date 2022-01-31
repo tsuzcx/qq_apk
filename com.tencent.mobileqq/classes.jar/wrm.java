@@ -1,101 +1,44 @@
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
+import NS_COMM.COMM.StCommonExt;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
-public abstract class wrm
-  extends MSFServlet
+public class wrm
+  extends wro
 {
-  private static String a;
-  protected int a;
+  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
   
-  static
+  public wrm(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    jdField_a_of_type_JavaLangString = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    if (paramStFeed != null) {
+      this.a.feed.set(paramStFeed);
+    }
   }
   
-  public static String a()
+  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
   {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
-  }
-  
-  protected abstract void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte);
-  
-  @CallSuper
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Bundle localBundle = new Bundle();
+    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
     try
     {
-      localBundle.putLong("key_index", paramIntent.getLongExtra("key_index", -1L));
-      if (paramFromServiceMsg != null)
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-          localStQWebRsp.mergeFrom(bblm.b(paramFromServiceMsg.getWupBuffer()));
-          localBundle.putLong("key_index", localStQWebRsp.Seq.get());
-          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-          a(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
-          return;
-        }
-        localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
-        localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
-        notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
-        return;
+      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
       }
     }
-    catch (Throwable paramFromServiceMsg)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramFromServiceMsg + "onReceive error");
-      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
-    }
-    notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+    return null;
   }
   
-  @CallSuper
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public byte[] a()
   {
-    Object localObject = null;
-    if (paramPacket != null) {}
-    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
-    {
-      if (paramPacket != null)
-      {
-        String str = paramPacket.getServiceCmd();
-        paramPacket = localObject;
-        if (paramIntent != null) {
-          paramPacket = paramIntent.getStringExtra("traceid");
-        }
-        QLog.i("certified-account-cmd", 1, "send request cmd=" + str + " traceId=" + paramPacket);
-      }
-      return;
-    }
+    return this.a.toByteArray();
   }
 }
 

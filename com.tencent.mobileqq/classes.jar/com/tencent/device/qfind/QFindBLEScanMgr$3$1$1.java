@@ -1,6 +1,6 @@
 package com.tencent.device.qfind;
 
-import ygk;
+import ygh;
 
 class QFindBLEScanMgr$3$1$1
   implements Runnable

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aawi;
+import aawe;
 import com.tencent.qphone.base.util.QLog;
-import thy;
+import thv;
 
 public class Conversation$27$1
   implements Runnable
 {
-  public Conversation$27$1(aawi paramaawi) {}
+  public Conversation$27$1(aawe paramaawe) {}
   
   public void run()
   {

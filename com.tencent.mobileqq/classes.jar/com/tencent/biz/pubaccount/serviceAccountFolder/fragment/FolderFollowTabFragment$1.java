@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import android.os.Message;
 import mqq.os.MqqHandler;
-import sbc;
+import saz;
 
 public class FolderFollowTabFragment$1
   implements Runnable
 {
-  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, sbc paramsbc) {}
+  FolderFollowTabFragment$1(FolderFollowTabFragment paramFolderFollowTabFragment, saz paramsaz) {}
   
   public void run()
   {

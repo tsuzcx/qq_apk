@@ -1,34 +1,28 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import java.util.HashMap;
 
 public class avxb
+  extends avxc
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  static String jdField_a_of_type_JavaLangString = "DataCollector";
-  Handler jdField_a_of_type_AndroidOsHandler = new avxc(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public int a;
   public boolean a;
   
-  static
+  public avxb()
   {
-    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public avxb(Context paramContext)
+  public HashMap<String, String> a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    if ("RealShortVideo.Record".equals(paramString))
+    {
+      paramString = new HashMap();
+      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
+      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
+      return paramString;
+    }
+    return null;
   }
-  
-  static Looper a()
-  {
-    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
-  }
-  
-  protected void a(Message paramMessage) {}
 }
 
 

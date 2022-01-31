@@ -1,47 +1,34 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wwp
-  extends ClickableSpan
+  extends akdn
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  private wwq jdField_a_of_type_Wwq;
+  public wwp(FollowTextView paramFollowTextView) {}
   
-  public wwp(String paramString, int paramInt, wwq paramwwq)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Wwq = paramwwq;
-  }
-  
-  public wwp(String paramString, ColorStateList paramColorStateList, wwq paramwwq)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Wwq = paramwwq;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Wwq != null)) {
-      this.jdField_a_of_type_Wwq.a(this.jdField_a_of_type_JavaLangString);
+    super.a(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      }
+      this.a.a(1);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        }
+        wpt.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
+    bcql.a(this.a.getContext(), 2131690653, 0).a();
   }
 }
 

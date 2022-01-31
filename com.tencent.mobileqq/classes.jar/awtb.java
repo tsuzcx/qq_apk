@@ -1,8 +1,6 @@
 public abstract interface awtb
 {
-  public abstract void a(awta paramawta);
-  
-  public abstract void a(awta paramawta, String paramString1, String paramString2);
+  public abstract void a(int paramInt);
 }
 
 

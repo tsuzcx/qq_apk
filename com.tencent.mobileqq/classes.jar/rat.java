@@ -1,39 +1,27 @@
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class rat
-  extends qvc
+  implements bftc
 {
-  rat(rap paramrap, BaseArticleInfo paramBaseArticleInfo) {}
+  rat(ram paramram, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void a()
   {
-    if (paramBoolean3)
-    {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Rap.jdField_a_of_type_Qtu.c();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
     }
-    else
+    if ((this.jdField_a_of_type_Ram.a instanceof Activity))
     {
-      if (paramBoolean1) {
-        break label77;
-      }
-      this.jdField_a_of_type_Rap.b = false;
-    }
-    for (;;)
-    {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Rap.jdField_a_of_type_Qup != null)) {
-        this.jdField_a_of_type_Rap.jdField_a_of_type_Qup.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      this.jdField_a_of_type_Rap.jdField_a_of_type_Qtu.b(2);
-      break;
-      label77:
-      if (this.jdField_a_of_type_Rap.b)
-      {
-        this.jdField_a_of_type_Rap.jdField_a_of_type_Qtu.c();
-        this.jdField_a_of_type_Rap.b = false;
-      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      PublicFragmentActivity.a(this.jdField_a_of_type_Ram.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
   }
 }

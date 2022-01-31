@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import akac;
-import aukn;
+import akaa;
+import aukp;
 import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
 
 public class MayknowRecommendManager$10
   implements Runnable
 {
-  public MayknowRecommendManager$10(akac paramakac, String paramString) {}
+  public MayknowRecommendManager$10(akaa paramakaa, String paramString) {}
   
   public void run()
   {
-    akac.a(this.this$0).a(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
+    akaa.a(this.this$0).a(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
   }
 }
 

@@ -1,44 +1,33 @@
-public class bbnn
+class bbnn
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
   
-  public void a(int paramInt)
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public String toString()
-  {
-    return super.toString();
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
+    {
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
+      }
+    }
+    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,21 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.FaceInfo;
 
-public abstract interface bayq
+public final class bayq
+  implements Parcelable.Creator<FaceInfo>
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2, Bitmap paramBitmap);
+  public FaceInfo a(Parcel paramParcel)
+  {
+    FaceInfo localFaceInfo = new FaceInfo();
+    localFaceInfo.a(paramParcel);
+    return localFaceInfo;
+  }
+  
+  public FaceInfo[] a(int paramInt)
+  {
+    return new FaceInfo[paramInt];
+  }
 }
 
 

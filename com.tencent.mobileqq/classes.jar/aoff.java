@@ -1,14 +1,6 @@
-class aoff
-  implements bibb
+public abstract interface aoff
 {
-  aoff(aofe paramaofe) {}
-  
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.e(this.a.getPosition());
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

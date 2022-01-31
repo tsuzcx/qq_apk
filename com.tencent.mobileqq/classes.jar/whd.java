@@ -1,55 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class whd
-  extends ajxl
+  implements xns
 {
-  public whd(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  public whd(ScannerActivity paramScannerActivity) {}
   
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "onKickOutDevFResult isSuccess:", Boolean.valueOf(paramBoolean), " appid:", Long.valueOf(paramLong), " result:", Integer.valueOf(paramInt1), " index:", Integer.valueOf(paramInt2) });
-    }
-    if (!paramBoolean)
-    {
-      if (QRLoginMgrActivity.a(this.a) == null) {
-        QRLoginMgrActivity.a(this.a, new HashSet());
-      }
-      QRLoginMgrActivity.a(this.a).add(Long.valueOf(paramLong));
-    }
-    if (QRLoginMgrActivity.a(this.a) != null) {
-      QRLoginMgrActivity.a(this.a).remove(Long.valueOf(paramLong));
-    }
-    if ((QRLoginMgrActivity.a(this.a) == null) || (QRLoginMgrActivity.a(this.a).size() == 0))
-    {
-      QRLoginMgrActivity.a(this.a);
-      this.a.finish();
-      if ((QRLoginMgrActivity.a(this.a) != null) && (QRLoginMgrActivity.a(this.a).size() > 0)) {
-        bcpw.a(this.a.getApplicationContext(), 1, 2131717203, 0).a();
-      }
-    }
-    while (paramInt2 != 100)
-    {
-      return;
-      bcpw.a(this.a.getApplicationContext(), 2, 2131717204, 0).a();
-      Intent localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
-      localIntent.putExtra("status", "logout");
-      this.a.getApplicationContext().sendBroadcast(localIntent);
+    if (this.a.isFinishing()) {
       return;
     }
-    QRLoginMgrActivity.a(this.a);
-    if (paramBoolean)
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    bbgu localbbgu = bbdj.a(this.a, 230);
+    if (paramInt == 2) {
+      localbbgu.setMessage(2131718907);
+    }
+    for (;;)
     {
-      bcpw.a(this.a.getApplicationContext(), 2, 2131717229, 0).a();
+      whe localwhe = new whe(this);
+      localbbgu.setPositiveButton(2131694794, localwhe);
+      localbbgu.setOnCancelListener(localwhe);
+      localbbgu.show();
+      return;
+      localbbgu.setMessage(2131718916);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.isFinishing()) {
       return;
     }
-    bcpw.a(this.a.getApplicationContext(), 1, 2131717203, 0).a();
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 

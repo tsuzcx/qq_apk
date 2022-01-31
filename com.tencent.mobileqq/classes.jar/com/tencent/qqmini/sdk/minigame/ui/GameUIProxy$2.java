@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import begw;
+import behn;
 
 class GameUIProxy$2
   implements Runnable

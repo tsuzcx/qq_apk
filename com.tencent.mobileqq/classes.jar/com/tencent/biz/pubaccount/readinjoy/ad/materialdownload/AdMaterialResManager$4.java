@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.materialdownload;
 
-import nzp;
-import nzq;
+import nzm;
+import nzn;
 
 public class AdMaterialResManager$4
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Nzp.a(true, nzq.a(this.this$0, this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Nzm.a(true, nzn.a(this.this$0, this.jdField_a_of_type_Int));
   }
 }
 

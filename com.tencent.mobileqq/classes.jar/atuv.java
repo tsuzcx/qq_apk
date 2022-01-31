@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
 class atuv
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  atuv(atur paramatur, atwv paramatwv, atuy paramatuy) {}
+  atuv(atut paramatut, atva paramatva, atwx paramatwx, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!bbev.g(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext))
+    switch (paramInt)
     {
-      bcpw.a(this.jdField_a_of_type_Atur.jdField_a_of_type_AndroidContentContext, 1, ajyc.a(2131701018), 0).a();
+    default: 
       return;
     }
-    ((atvq)this.jdField_a_of_type_Atur.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.jdField_a_of_type_Atwv.c, this.jdField_a_of_type_Atwv.a, this.jdField_a_of_type_Atwv.d, new atuw(this));
+    atix localatix = new atix().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Atut.a(this.jdField_a_of_type_Atva)).b(this.jdField_a_of_type_Atwx.c).c(String.valueOf(this.jdField_a_of_type_Atut.a(this.jdField_a_of_type_Atva)));
+    if (this.jdField_a_of_type_Atut.jdField_a_of_type_Boolean) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      localatix.e(paramView).b(this.jdField_a_of_type_Atut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      atut.a(this.jdField_a_of_type_Atut, this.jdField_a_of_type_Atva);
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+    }
   }
 }
 

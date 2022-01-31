@@ -1,8 +1,16 @@
-public abstract interface wsb
+import com.tencent.biz.subscribe.utils.AnimationDrawableFactory.1;
+import java.io.File;
+import java.util.Comparator;
+
+public class wsb
+  implements Comparator<File>
 {
-  public abstract int a();
+  public wsb(AnimationDrawableFactory.1 param1) {}
   
-  public abstract int[] a(int paramInt1, int paramInt2);
+  public int a(File paramFile1, File paramFile2)
+  {
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
+  }
 }
 
 

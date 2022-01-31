@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PublishEventTag;
+import NS_USER_ACTION_REPORT.UserCommReport;
 
-public final class bhev
-  implements Parcelable.Creator<PublishEventTag>
+class bhev
 {
-  public PublishEventTag a(Parcel paramParcel)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public UserCommReport a()
   {
-    return new PublishEventTag(paramParcel);
+    UserCommReport localUserCommReport = new UserCommReport();
+    localUserCommReport.uin = this.jdField_a_of_type_Long;
+    localUserCommReport.platform = "AND";
+    localUserCommReport.client_type = "SQ";
+    localUserCommReport.network_type = this.jdField_a_of_type_JavaLangString;
+    return localUserCommReport;
   }
   
-  public PublishEventTag[] a(int paramInt)
+  public bhev a(long paramLong)
   {
-    return new PublishEventTag[paramInt];
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public bhev a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

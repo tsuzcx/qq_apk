@@ -1,12 +1,31 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class sov
+final class sov
+  implements bcww
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  sov(String paramString) {}
   
-  sov(sou paramsou) {}
+  public void a(BaseResp paramBaseResp)
+  {
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wij.a(1, 2131719487);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      wij.a(2, 2131719506);
+    }
+  }
 }
 
 

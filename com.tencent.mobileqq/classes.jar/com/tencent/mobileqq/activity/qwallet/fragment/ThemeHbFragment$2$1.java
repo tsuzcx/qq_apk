@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import ahah;
+import ahaf;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -8,15 +8,15 @@ import android.widget.ImageView.ScaleType;
 public class ThemeHbFragment$2$1
   implements Runnable
 {
-  public ThemeHbFragment$2$1(ahah paramahah, Object paramObject) {}
+  public ThemeHbFragment$2$1(ahaf paramahaf, Object paramObject) {}
   
   public void run()
   {
-    if (ThemeHbFragment.a(this.jdField_a_of_type_Ahah.a) != null) {
-      ThemeHbFragment.a(this.jdField_a_of_type_Ahah.a).setBackgroundDrawable(null);
+    if (ThemeHbFragment.a(this.jdField_a_of_type_Ahaf.a) != null) {
+      ThemeHbFragment.a(this.jdField_a_of_type_Ahaf.a).setBackgroundDrawable(null);
     }
-    ThemeHbFragment.a(this.jdField_a_of_type_Ahah.a).setScaleType(ImageView.ScaleType.FIT_XY);
-    ThemeHbFragment.a(this.jdField_a_of_type_Ahah.a).setImageDrawable(ThemeHbFragment.a(this.jdField_a_of_type_Ahah.a, (Drawable)this.jdField_a_of_type_JavaLangObject));
+    ThemeHbFragment.a(this.jdField_a_of_type_Ahaf.a).setScaleType(ImageView.ScaleType.FIT_XY);
+    ThemeHbFragment.a(this.jdField_a_of_type_Ahaf.a).setImageDrawable(ThemeHbFragment.a(this.jdField_a_of_type_Ahaf.a, (Drawable)this.jdField_a_of_type_JavaLangObject));
   }
 }
 

@@ -1,32 +1,39 @@
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 class acwt
-  implements baxl
+  implements bfph
 {
-  acwt(acwp paramacwp) {}
+  acwt(acwl paramacwl, String paramString) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
+    acwl.a(this.jdField_a_of_type_Acwl).dismiss();
+    switch (paramInt)
+    {
+    }
+    do
     {
       return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        acwp.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        acwl.a(this.jdField_a_of_type_Acwl, this.jdField_a_of_type_JavaLangString);
         return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          acwp.a(this.a).setImageBitmap(paramBitmap);
-        }
       }
+      if (acwl.a(this.jdField_a_of_type_Acwl))
+      {
+        acwl.b(this.jdField_a_of_type_Acwl);
+        return;
+      }
+      acwl.c(this.jdField_a_of_type_Acwl);
+      return;
+    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    if (acwl.a(this.jdField_a_of_type_Acwl))
+    {
+      acwl.b(this.jdField_a_of_type_Acwl);
+      return;
     }
+    acwl.c(this.jdField_a_of_type_Acwl);
   }
 }
 

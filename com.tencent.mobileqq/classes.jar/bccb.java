@@ -1,38 +1,77 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.lang.reflect.Method;
 
-class bccb
-  implements RadioGroup.OnCheckedChangeListener
+@Deprecated
+public abstract class bccb
+  extends WebViewPlugin
 {
-  bccb(bcbv parambcbv) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public bccb()
   {
-    if ((this.a.jdField_a_of_type_Bcgj != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Bcgj.a))) {
-      this.a.jdField_a_of_type_Bcgj.a(paramInt);
-    }
-    TouchWebView localTouchWebView;
-    do
+    this.mPluginNameSpace = getNameSpace();
+  }
+  
+  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  {
+    if (!getNameSpace().equals(paramString1)) {}
+    for (;;)
     {
-      do
+      return null;
+      paramString1 = getClass().getDeclaredMethods();
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
       {
-        return;
-        localTouchWebView = this.a.jdField_a_of_type_Bcfj.a();
-      } while (localTouchWebView == null);
-      String str = localTouchWebView.getUrl();
-      paramRadioGroup = str;
-      if (TextUtils.isEmpty(str))
+        Method localMethod = paramString1[i];
+        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
+          return localMethod;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  protected abstract String getNameSpace();
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    paramString2 = getJsMethod(paramString2, paramString3, paramVarArgs.length);
+    if (paramString2 != null) {}
+    try
+    {
+      if (paramVarArgs.length == 0) {}
+      for (paramString1 = paramString2.invoke(this, new Object[0]);; paramString1 = paramString2.invoke(this, paramVarArgs))
       {
-        paramRadioGroup = str;
-        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+        paramString2 = paramString2.getReturnType();
+        if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
+          break label97;
+        }
+        if (paramJsBridgeListener == null) {
+          break label128;
+        }
+        if (!paramJsBridgeListener.a) {
+          break;
+        }
+        callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
+        break label128;
+      }
+      paramJsBridgeListener.a(null);
+      break label128;
+      label97:
+      if (paramJsBridgeListener != null) {
+        if (paramJsBridgeListener.a) {
+          callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
+        } else {
+          paramJsBridgeListener.a(paramString1);
         }
       }
-    } while (TextUtils.isEmpty(paramRadioGroup));
-    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+      label128:
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramJsBridgeListener) {}
+    return false;
   }
 }
 

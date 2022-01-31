@@ -1,47 +1,69 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class aovo
+class aovo
+  implements aout
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  public aovr a;
-  aovs jdField_a_of_type_Aovs;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  String jdField_a_of_type_JavaLangString;
-  int b = 0;
+  aovo(aovn paramaovn, String paramString, aovv paramaovv) {}
   
-  aovo(aouu paramaouu, long paramLong, String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Aovr = new aovp(this, paramaouu, paramMessageRecord, paramString, paramInt);
-  }
-  
-  void a()
-  {
-    if ((this.jdField_a_of_type_Aovs != null) && (this.b == 0))
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.b + "]");
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovn.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
       }
-      this.b = 1;
-      this.jdField_a_of_type_Aovs.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Aovr);
-    }
-    while (!QLog.isColorLevel()) {
+      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovn.jdField_a_of_type_Long, bool2), bool1);
       return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
     }
-    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.b + "]");
   }
   
-  void b()
+  public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_Aovs != null) && ((this.b == 1) || (this.b == 0)))
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aovn.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aovn.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aovn.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aovn.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aovn.f);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Aovn.e))
     {
-      this.jdField_a_of_type_Aovs.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.b = 4;
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aovn.f)) {
+        break label257;
+      }
+    }
+    label257:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aovn.f))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovn.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
+      }
+      aouy.a(aouy.a(this.jdField_a_of_type_Aovn.jdField_a_of_type_Aouy), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aovn.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aovv);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Aovn.e);
+      break;
     }
   }
 }

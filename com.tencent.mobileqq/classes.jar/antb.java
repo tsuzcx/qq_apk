@@ -1,104 +1,152 @@
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class antb
-  extends RecyclerView.LayoutManager
+class antb
+  extends anwl
 {
-  private View.OnClickListener a;
+  antb(ansx paramansx) {}
   
-  public antb(View.OnClickListener paramOnClickListener)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.a = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
-  }
-  
-  public RecyclerView.LayoutParams generateDefaultLayoutParams()
-  {
-    return new RecyclerView.LayoutParams(-2, -2);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    detachAndScrapAttachedViews(paramRecycler);
-    int i = getItemCount();
-    int m;
-    int j;
-    int k;
-    if (i > 3)
+    if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(paramEmoticonPackage.epId)) {}
+    Object localObject1;
+    ArrayList localArrayList;
+    Object localObject2;
+    int i;
+    do
     {
-      i = 3;
-      if (i >= 0)
+      return;
+      localObject1 = (anvx)ansx.l(this.a).getManager(43);
+      if (paramInt != 0) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
+      }
+      paramInt = paramBundle.getInt("jsonType", anvx.c);
+      paramBundle = new File(anzr.r.replace("[epId]", paramEmoticonPackage.epId));
+      localArrayList = new ArrayList();
+      localObject2 = new anwv();
+      if (paramBundle.exists()) {}
+      for (paramBundle = bbdx.a(paramBundle);; paramBundle = null)
       {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i == 3)
-        {
-          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
-          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
-          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
-          paramState.setAlpha(0.8F);
-        }
-        for (;;)
-        {
-          i -= 1;
+        paramBundle = anwm.a(ansx.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, (anwv)localObject2);
+        if (paramBundle == null) {
           break;
-          if (i > 0)
-          {
-            paramState.setScaleX(1.0F - i * 0.1F);
-            paramState.setScaleY(1.0F - i * 0.1F);
-            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-            paramState.setAlpha(0.6F);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
+        }
+        bbrx.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
+        return;
+      }
+      if ((!((anwv)localObject2).jdField_a_of_type_Boolean) && (paramEmoticonPackage.jobType != 4))
+      {
+        paramInt = 0;
+        do
+        {
+          ((anwv)localObject2).jdField_a_of_type_JavaLangString = null;
+          if (QLog.isColorLevel()) {
+            QLog.d("FavroamingManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + paramInt);
           }
-          else if (this.a != null)
-          {
-            paramState.setOnClickListener(this.a);
+          ((anvx)localObject1).a(paramEmoticonPackage.epId, localArrayList, (anwv)localObject2);
+          i = paramInt + 1;
+          if (((anwv)localObject2).jdField_a_of_type_Boolean) {
+            break;
           }
+          paramInt = i;
+        } while (i < 3);
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "addEmoticonsTask| fetchEncryptKeys count=" + i + " encryptKeysSuccess=" + ((anwv)localObject2).jdField_a_of_type_Boolean);
         }
       }
+      localArrayList = (ArrayList)this.a.jdField_a_of_type_JavaUtilMap.get(paramEmoticonPackage.epId);
+    } while (localArrayList == null);
+    if (paramEmoticonPackage.jobType == 0)
+    {
+      paramInt = 0;
+      label388:
+      if (paramInt < localArrayList.size())
+      {
+        localObject2 = (CustomEmotionData)localArrayList.get(paramInt);
+        if (localObject2 != null) {
+          break label420;
+        }
+      }
+      for (;;)
+      {
+        label413:
+        paramInt += 1;
+        break label388;
+        break;
+        label420:
+        paramBundle = new Emoticon();
+        if (ansx.n(this.a) != null) {
+          break label459;
+        }
+        QLog.i("FavroamingManager", 1, "downloadAIOEmoticon|app null");
+        this.a.a((CustomEmotionData)localObject2, false);
+      }
+      label459:
+      askf localaskf = (askf)ansx.o(this.a).getManager(14);
+      if (localaskf == null) {
+        break label911;
+      }
+      paramBundle = localaskf.a(((CustomEmotionData)localObject2).emoPath, ((CustomEmotionData)localObject2).eId);
     }
-    else
+    label911:
+    for (;;)
     {
-      i -= 1;
-      if (i >= 0)
+      if (paramBundle == null)
       {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i > 0)
+        QLog.i("FavroamingManager", 1, "downloadAIOEmoticon|cannot find emoticon: epId:" + paramEmoticonPackage.epId + "，eid=" + ((CustomEmotionData)localObject2).eId);
+        ((CustomEmotionData)localObject2).RomaingType = "needDel";
+        ((answ)ansx.p(this.a).getManager(149)).b((CustomEmotionBase)localObject2);
+        this.a.a((CustomEmotionData)localArrayList.get(paramInt), false);
+        break label413;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "downloadAIOEmoticon|taskvalue:" + 14 + "，epid:" + paramBundle.epId + "，eid=" + paramBundle.eId);
+      }
+      if (((anvx)localObject1).a(paramBundle, 14))
+      {
+        this.a.a((CustomEmotionData)localArrayList.get(paramInt), true);
+        break label413;
+      }
+      this.a.a((CustomEmotionData)localArrayList.get(paramInt), false);
+      break label413;
+      if ((paramEmoticonPackage.jobType != 3) && (paramEmoticonPackage.jobType != 5)) {
+        break;
+      }
+      anvw.a().a(this.a.jdField_a_of_type_Anwk);
+      ((anvx)localObject1).a(paramEmoticonPackage, false);
+      return;
+      paramBundle = (ArrayList)this.a.jdField_a_of_type_JavaUtilMap.get(paramEmoticonPackage.epId);
+      if (paramBundle != null)
+      {
+        i = 0;
+        while (i < paramBundle.size())
         {
-          paramState.setScaleX(1.0F - i * 0.1F);
-          paramState.setScaleY(1.0F - i * 0.1F);
-          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (this.a != null) {
-            paramState.setOnClickListener(this.a);
+          localObject1 = (CustomEmotionData)paramBundle.get(i);
+          if (localObject1 != null) {
+            this.a.a((CustomEmotionData)localObject1, false);
           }
+          i += 1;
         }
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "downloadAIOEmoticon fail epId:" + paramEmoticonPackage.epId);
+      }
+      bbrx.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", bbfj.b(ansx.q(this.a).getApplication()) + "", paramInt + "", "", "", "");
+      return;
     }
   }
 }

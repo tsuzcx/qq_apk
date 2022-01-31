@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
 
-class airw
-  implements INetInfoHandler
+public class airw
+  implements View.OnClickListener
 {
-  public void onNetMobile2None() {}
+  public airw(ApolloGameNormalStartHandler.3 param3) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onClick(View paramView)
   {
-    ajoo.a("onNetMobile2Wifi");
+    airv.a(this.a.this$0).dismiss();
+    airv.a(this.a.this$0, true);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ajoo.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 

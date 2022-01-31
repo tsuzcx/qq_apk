@@ -1,27 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
+import java.util.Comparator;
 
 class ahga
-  implements Handler.Callback
+  implements Comparator<SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo>
 {
-  ahga(ahfz paramahfz) {}
+  ahga(ahfx paramahfx) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public int a(SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo1, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo2)
   {
-    if (paramMessage.what == 1001) {}
-    try
-    {
-      ahfz.a(this.a, paramMessage);
-      return false;
+    if (paramBannerInfo1.bannerTime.beginTime == paramBannerInfo2.bannerTime.beginTime) {
+      return 0;
     }
-    catch (Throwable paramMessage)
-    {
-      for (;;)
-      {
-        QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramMessage));
-      }
+    if (paramBannerInfo1.bannerTime.beginTime > paramBannerInfo2.bannerTime.beginTime) {
+      return 1;
     }
+    return -1;
   }
 }
 

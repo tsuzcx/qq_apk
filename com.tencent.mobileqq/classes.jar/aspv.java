@@ -1,142 +1,90 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aspv
-  implements Manager
 {
-  private aspt jdField_a_of_type_Aspt;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<Integer, aspw> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public String a;
+  public List<String> a;
+  public boolean a;
   
-  public aspv(QQAppInterface paramQQAppInterface)
+  public aspv()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int a(aspw paramaspw)
+  public static aspv a(String paramString)
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramaspw);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "addAioContext() called with: multiAioContext = [" + paramaspw + "], id = [" + i + "]");
-      }
-      return i;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    finally {}
-  }
-  
-  public aspw a(int paramInt)
-  {
     try
     {
-      aspw localaspw = (aspw)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "removeAioContext() called with: id = [" + paramInt + "], multiAioContext = " + localaspw);
-      }
-      return localaspw;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
+      aspv localaspv = new aspv();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("mainswitch", 0) == 1) {}
+      for (;;)
       {
-        aspw localaspw = (aspw)localIterator.next();
-        if (localaspw != null) {
-          localaspw.a();
+        localaspv.jdField_a_of_type_Boolean = bool;
+        localaspv.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
+        paramString = a(paramString.optJSONArray("black"));
+        localaspv.jdField_a_of_type_JavaUtilList.addAll(paramString);
+        return localaspv;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
+    }
+  }
+  
+  private static List<String> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int j = paramJSONArray.length();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            localArrayList.add(paramJSONArray.getString(i).trim());
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
+            }
+          }
         }
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    finally {}
+    return localArrayList;
   }
   
-  public void a(aspt paramaspt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "onConfUpdate : " + paramaspt);
-    }
-    this.jdField_a_of_type_Aspt = paramaspt;
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData isConfigInited = " + this.b);
-    }
-    if (this.b) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    this.b = true;
-    b();
-    if (!this.jdField_a_of_type_Aspt.a())
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_Aspt.a();
-    String str = (Build.MANUFACTURER + Build.MODEL).trim();
-    if ((localObject != null) && (((List)localObject).contains(str)))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    localObject = this.jdField_a_of_type_Aspt.a();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (axjp.b((String)localObject) <= 0))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
-  }
-  
-  public aspw b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "getAioContext() called with: id = [" + paramInt + "]");
-    }
-    try
-    {
-      aspw localaspw = (aspw)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      return localaspw;
-    }
-    finally {}
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Aspt = ((aspt)ampm.a().a(478));
-    if (this.jdField_a_of_type_Aspt == null)
-    {
-      this.jdField_a_of_type_Aspt = new aspt();
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData =null, general new bean");
-      }
-    }
-  }
-  
-  public void onDestroy()
-  {
-    a();
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -6,9 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import aopv;
-import aorl;
-import apxt;
+import aoqa;
+import aorq;
+import apxv;
 import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class QfilePinnedHeaderExpandableListView
@@ -16,7 +16,7 @@ public class QfilePinnedHeaderExpandableListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private apxt jdField_a_of_type_Apxt;
+  private apxv jdField_a_of_type_Apxv;
   private final String jdField_a_of_type_JavaLangString = "QfilePinnedHeaderExpandableListView<FileAssistant>";
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -82,15 +82,15 @@ public class QfilePinnedHeaderExpandableListView
     localObject = ((View)localObject).getTag();
     if (localObject != null)
     {
-      if ((localObject instanceof aopv))
+      if ((localObject instanceof aoqa))
       {
-        localObject = (aopv)localObject;
-        return new int[] { ((aopv)localObject).jdField_b_of_type_Int, ((aopv)localObject).jdField_a_of_type_Int };
+        localObject = (aoqa)localObject;
+        return new int[] { ((aoqa)localObject).jdField_b_of_type_Int, ((aoqa)localObject).jdField_a_of_type_Int };
       }
-      if (aorl.class.isInstance(localObject))
+      if (aorq.class.isInstance(localObject))
       {
-        localObject = (aorl)localObject;
-        return new int[] { ((aorl)localObject).jdField_b_of_type_Int, ((aorl)localObject).jdField_a_of_type_Int };
+        localObject = (aorq)localObject;
+        return new int[] { ((aorq)localObject).jdField_b_of_type_Int, ((aorq)localObject).jdField_a_of_type_Int };
       }
     }
     return null;
@@ -192,8 +192,8 @@ public class QfilePinnedHeaderExpandableListView
               }
               if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1))
               {
-                if (this.jdField_a_of_type_Apxt != null) {
-                  this.jdField_a_of_type_Apxt.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+                if (this.jdField_a_of_type_Apxv != null) {
+                  this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
                 }
                 this.jdField_a_of_type_Boolean = true;
               }
@@ -216,34 +216,34 @@ public class QfilePinnedHeaderExpandableListView
         this.jdField_a_of_type_Int = j;
         this.jdField_d_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Apxt != null) {
-          this.jdField_a_of_type_Apxt.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        if (this.jdField_a_of_type_Apxv != null) {
+          this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         }
         this.jdField_a_of_type_Boolean = true;
         break;
-        if (this.jdField_a_of_type_Apxt == null) {
+        if (this.jdField_a_of_type_Apxv == null) {
           break label130;
         }
-        this.jdField_a_of_type_Apxt.a(true);
+        this.jdField_a_of_type_Apxv.a(true);
         break label130;
       }
       this.jdField_c_of_type_Int = j;
       this.jdField_d_of_type_Int = i;
-      if (this.jdField_a_of_type_Apxt == null) {
+      if (this.jdField_a_of_type_Apxv == null) {
         break;
       }
-      this.jdField_a_of_type_Apxt.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      this.jdField_a_of_type_Apxv.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       break;
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
       break;
       boolean bool = this.jdField_d_of_type_Boolean;
-      if (this.jdField_a_of_type_Apxt != null)
+      if (this.jdField_a_of_type_Apxv != null)
       {
         if (this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_Apxt.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+          this.jdField_a_of_type_Apxv.b(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
         }
-        this.jdField_a_of_type_Apxt.a(false);
+        this.jdField_a_of_type_Apxv.a(false);
       }
       this.jdField_c_of_type_Int = -1;
       this.jdField_a_of_type_Int = -1;
@@ -267,9 +267,9 @@ public class QfilePinnedHeaderExpandableListView
     this.e = paramInt;
   }
   
-  public void setOnIndexChangedListener(apxt paramapxt)
+  public void setOnIndexChangedListener(apxv paramapxv)
   {
-    this.jdField_a_of_type_Apxt = paramapxt;
+    this.jdField_a_of_type_Apxv = paramapxv;
   }
   
   public void setTouchSlop(Context paramContext)

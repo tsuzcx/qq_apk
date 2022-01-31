@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="appId")
 public class TroopAppInfo
-  extends aukm
+  extends auko
 {
   public String AppTipIcon;
   public int AppTipIconTimeStamp;

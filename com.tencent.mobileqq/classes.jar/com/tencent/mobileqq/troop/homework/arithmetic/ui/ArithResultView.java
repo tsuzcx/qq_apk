@@ -12,19 +12,19 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import azvq;
-import azvr;
-import azvz;
-import veg;
-import vzo;
+import azvs;
+import azvt;
+import azwb;
+import ved;
+import vzl;
 
 public class ArithResultView
   extends BaseScaleAndMoveBitmapView
 {
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private azvq jdField_a_of_type_Azvq;
-  private azvz jdField_a_of_type_Azvz;
+  private azvs jdField_a_of_type_Azvs;
+  private azwb jdField_a_of_type_Azwb;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
@@ -45,17 +45,17 @@ public class ArithResultView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(vzo.a(paramContext, 1.0F));
-    this.jdField_b_of_type_Int = vzo.a(paramContext, 1.0F);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(vzl.a(paramContext, 1.0F));
+    this.jdField_b_of_type_Int = vzl.a(paramContext, 1.0F);
     this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int * 5);
     try
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130845320);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130845326);
       return;
     }
     catch (OutOfMemoryError paramContext)
     {
-      veg.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
+      ved.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
     }
   }
   
@@ -70,10 +70,10 @@ public class ArithResultView
     }
   }
   
-  private void a(azvr paramazvr)
+  private void a(azvt paramazvt)
   {
-    if (this.jdField_a_of_type_Azvz != null) {
-      this.jdField_a_of_type_Azvz.a(paramazvr);
+    if (this.jdField_a_of_type_Azwb != null) {
+      this.jdField_a_of_type_Azwb.a(paramazvt);
     }
   }
   
@@ -82,9 +82,9 @@ public class ArithResultView
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = 0;
-    if (i < this.jdField_a_of_type_Azvq.a())
+    if (i < this.jdField_a_of_type_Azvs.a())
     {
-      paramMotionEvent = this.jdField_a_of_type_Azvq.a(i);
+      paramMotionEvent = this.jdField_a_of_type_Azvs.a(i);
       if (paramMotionEvent.a) {}
       float f3;
       float f4;
@@ -112,22 +112,22 @@ public class ArithResultView
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     paramCanvas.save();
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Azvq != null)
+    if (this.jdField_a_of_type_Azvs != null)
     {
       int i = 0;
-      if (i < this.jdField_a_of_type_Azvq.a())
+      if (i < this.jdField_a_of_type_Azvs.a())
       {
-        azvr localazvr = this.jdField_a_of_type_Azvq.a(i);
-        if (localazvr.a) {}
+        azvt localazvt = this.jdField_a_of_type_Azvs.a(i);
+        if (localazvt.a) {}
         for (;;)
         {
           i += 1;
           break;
-          int j = (int)(localazvr.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
-          int k = (int)(localazvr.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
-          int m = localazvr.d;
+          int j = (int)(localazvt.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
+          int k = (int)(localazvt.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
+          int m = localazvt.d;
           int n = this.jdField_b_of_type_Int;
-          int i1 = localazvr.e;
+          int i1 = localazvt.e;
           a(j, k, m + n * 2, this.jdField_b_of_type_Int * 2 + i1, paramCanvas);
         }
       }
@@ -135,15 +135,15 @@ public class ArithResultView
     paramCanvas.restore();
   }
   
-  public void setData(azvq paramazvq)
+  public void setData(azvs paramazvs)
   {
-    this.jdField_a_of_type_Azvq = paramazvq;
+    this.jdField_a_of_type_Azvs = paramazvs;
     invalidate();
   }
   
-  public void setOnItemClickListener(azvz paramazvz)
+  public void setOnItemClickListener(azwb paramazwb)
   {
-    this.jdField_a_of_type_Azvz = paramazvz;
+    this.jdField_a_of_type_Azwb = paramazwb;
   }
 }
 

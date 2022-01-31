@@ -1,71 +1,36 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aome
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public aome(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public aome(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  private int a(String paramString)
+  public void onClick(View paramView)
   {
-    byte[] arrayOfByte = new byte[0];
-    try
+    if (bbfj.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
     {
-      paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
-      }
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
+      long l = System.currentTimeMillis();
+      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b))
       {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
+        if (QLog.isColorLevel()) {
+          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
+        }
+        return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
+      Face2FaceAddFriendActivity.b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
+      axqy.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 1, 0, "", "", "", "");
+      return;
     }
-    return paramString.length / 3 + 1;
+    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692271);
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
-  
-  private String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
-      }
-    }
-    return paramString;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
-    {
-      int i = this.a.a.getSelectionStart();
-      paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
-      if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
-      }
-    }
-    if (this.a.h)
-    {
-      axqw.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
-    }
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

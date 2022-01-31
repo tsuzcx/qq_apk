@@ -1,37 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class scz
-  implements View.OnClickListener
 {
-  scz(scu paramscu) {}
-  
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      scu.a(this.a);
+    String str1;
+    if ((paramString != null) && (paramString.length() < 5)) {
+      str1 = (String)sbl.a.get(paramString);
     }
-    do
+    for (;;)
     {
-      do
+      String str3 = str1;
+      if (str1 == null) {
+        str3 = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
+      }
+      return str3;
+      try
       {
-        return;
-      } while (this.a.jdField_a_of_type_Int != 3);
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
-    paramView.sendEmptyMessage(1006);
+        int i = Integer.parseInt(paramString);
+        str1 = String.valueOf(i);
+      }
+      catch (Exception localException)
+      {
+        String str2 = (String)sbl.a.get(paramString);
+      }
+    }
   }
 }
 

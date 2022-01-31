@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.util.Log;
-import arhx;
-import arhy;
+import arhz;
+import aria;
 import java.io.IOException;
 
 public final class LogUploadUtil$1
@@ -15,9 +15,9 @@ public final class LogUploadUtil$1
     try
     {
       long l = System.currentTimeMillis();
-      arhy.a(arhy.a(), arhy.b());
+      aria.a(aria.a(), aria.b());
       Log.i("FileUtil", "compress time " + (System.currentTimeMillis() - l));
-      arhx.a(this.a, arhy.b());
+      arhz.a(this.a, aria.b());
       return;
     }
     catch (IOException localIOException)

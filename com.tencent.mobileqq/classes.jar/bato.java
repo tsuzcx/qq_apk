@@ -1,12 +1,11 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class bato
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
+  public int a = 1;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

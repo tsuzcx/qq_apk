@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aaod;
+import aanz;
 import android.content.Context;
 import android.content.res.Resources;
-import aocp;
+import aocu;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$63
@@ -13,13 +13,13 @@ class BaseChatPie$63
   
   public void run()
   {
-    aaod.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    aanz.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
     try
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846198);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846199);
+      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846204);
+      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846205);
       this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837718);
-      aocp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      aocu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     catch (Exception localException)

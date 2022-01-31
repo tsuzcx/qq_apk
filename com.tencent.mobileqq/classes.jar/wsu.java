@@ -1,31 +1,35 @@
-import android.view.View;
-import android.view.Window;
+import com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class wsu
 {
-  public static void a(Window paramWindow)
+  private static wsu jdField_a_of_type_Wsu;
+  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  
+  public static wsu a()
   {
-    if (paramWindow == null) {
-      return;
+    if (jdField_a_of_type_Wsu == null) {}
+    try
+    {
+      if (jdField_a_of_type_Wsu == null) {
+        jdField_a_of_type_Wsu = new wsu();
+      }
+      return jdField_a_of_type_Wsu;
     }
-    paramWindow.getDecorView().setSystemUiVisibility(2);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new wsv(paramWindow));
+    finally {}
   }
   
-  public static void b(Window paramWindow)
+  public qq_ad_get.QQAdGet.DeviceInfo a()
   {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.setFlags(8, 8);
+    a();
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
   }
   
-  public static void c(Window paramWindow)
+  public void a()
   {
-    if (paramWindow == null) {
-      return;
-    }
-    paramWindow.clearFlags(8);
+    ThreadManager.getFileThreadHandler().post(new SubscribeAdDeviceInfoHelper.1(this));
   }
 }
 

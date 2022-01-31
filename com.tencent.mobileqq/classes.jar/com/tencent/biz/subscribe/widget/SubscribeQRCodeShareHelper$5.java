@@ -1,31 +1,31 @@
 package com.tencent.biz.subscribe.widget;
 
-import ajsf;
+import ajsd;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
-import bbdj;
+import bbdx;
 import java.io.File;
 import mqq.app.MobileQQ;
-import wuu;
+import wur;
 
 public class SubscribeQRCodeShareHelper$5
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$5(wuu paramwuu) {}
+  public SubscribeQRCodeShareHelper$5(wur paramwur) {}
   
   public void run()
   {
     String str;
-    if ((wuu.a(this.this$0)) && (!wuu.a(this.this$0).isFinishing()))
+    if ((wur.a(this.this$0)) && (!wur.a(this.this$0).isFinishing()))
     {
-      localObject = wuu.a(this.this$0, wuu.a(this.this$0));
-      str = wuu.a(this.this$0, ajsf.bc);
-      if (!bbdj.d((String)localObject, str))
+      localObject = wur.a(this.this$0, wur.a(this.this$0));
+      str = wur.a(this.this$0, ajsd.bc);
+      if (!bbdx.d((String)localObject, str))
       {
-        bbdj.a(str, true);
-        Toast.makeText(wuu.a(this.this$0), "save failed", 0).show();
+        bbdx.a(str, true);
+        Toast.makeText(wur.a(this.this$0), "save failed", 0).show();
       }
     }
     else
@@ -34,9 +34,9 @@ public class SubscribeQRCodeShareHelper$5
     }
     Object localObject = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
     ((Intent)localObject).setData(Uri.fromFile(new File(str)));
-    wuu.a(this.this$0).sendBroadcast((Intent)localObject);
-    MobileQQ.sMobileQQ.onSendBroadcast(wuu.a(this.this$0), (Intent)localObject);
-    Toast.makeText(wuu.a(this.this$0), "save:" + str, 0).show();
+    wur.a(this.this$0).sendBroadcast((Intent)localObject);
+    MobileQQ.sMobileQQ.onSendBroadcast(wur.a(this.this$0), (Intent)localObject);
+    Toast.makeText(wur.a(this.this$0), "save:" + str, 0).show();
   }
 }
 

@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-
-public class bbvm
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+final class bbvm
 {
-  public bbvm(VipVideoPlayActivity paramVipVideoPlayActivity) {}
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
-    }
-    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
-  }
+  static final bbvk a = new bbvk(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbvm
  * JD-Core Version:    0.7.0.1
  */

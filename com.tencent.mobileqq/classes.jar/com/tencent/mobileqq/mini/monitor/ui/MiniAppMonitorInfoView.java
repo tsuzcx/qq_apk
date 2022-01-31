@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.monitor.ui;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import baxc;
+import baxq;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgManager;
 import com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager;
@@ -49,17 +49,17 @@ public class MiniAppMonitorInfoView
   public MiniAppMonitorInfoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    this.mInflateView = LayoutInflater.from(paramContext).inflate(2131561973, this);
-    this.mPageSwitchTv = ((TextView)this.mInflateView.findViewById(2131370379));
-    this.mStartDurationTv = ((TextView)this.mInflateView.findViewById(2131370378));
-    this.mDownloadInfoTv = ((TextView)this.mInflateView.findViewById(2131370367));
-    this.mRenderFirstTv = ((TextView)this.mInflateView.findViewById(2131370376));
-    this.mRenderAgainTv = ((TextView)this.mInflateView.findViewById(2131370375));
-    this.mFpsTv = ((TextView)this.mInflateView.findViewById(2131370369));
-    this.mDrawCallTv = ((TextView)this.mInflateView.findViewById(2131370368));
-    this.mCpuRate = ((TextView)this.mInflateView.findViewById(2131370364));
-    this.mCpuUsage = ((TextView)this.mInflateView.findViewById(2131370365));
-    this.mDbCacheTv = ((TextView)this.mInflateView.findViewById(2131370366));
+    this.mInflateView = LayoutInflater.from(paramContext).inflate(2131561972, this);
+    this.mPageSwitchTv = ((TextView)this.mInflateView.findViewById(2131370378));
+    this.mStartDurationTv = ((TextView)this.mInflateView.findViewById(2131370377));
+    this.mDownloadInfoTv = ((TextView)this.mInflateView.findViewById(2131370366));
+    this.mRenderFirstTv = ((TextView)this.mInflateView.findViewById(2131370375));
+    this.mRenderAgainTv = ((TextView)this.mInflateView.findViewById(2131370374));
+    this.mFpsTv = ((TextView)this.mInflateView.findViewById(2131370368));
+    this.mDrawCallTv = ((TextView)this.mInflateView.findViewById(2131370367));
+    this.mCpuRate = ((TextView)this.mInflateView.findViewById(2131370363));
+    this.mCpuUsage = ((TextView)this.mInflateView.findViewById(2131370364));
+    this.mDbCacheTv = ((TextView)this.mInflateView.findViewById(2131370365));
     setMiniAppType(paramInt);
     initData();
   }
@@ -68,7 +68,7 @@ public class MiniAppMonitorInfoView
   {
     if (this.mStartDurationTv != null)
     {
-      this.mStartDurationTv.setText(ajyc.a(2131706818) + sStartDuration + "ms");
+      this.mStartDurationTv.setText(ajya.a(2131706829) + sStartDuration + "ms");
       this.mStartDurationTv.setVisibility(0);
     }
     if (this.mDownloadInfoTv != null)
@@ -77,7 +77,7 @@ public class MiniAppMonitorInfoView
       if (this.mMiniAppType == 1) {
         l = GpkgManager.downloadDuration;
       }
-      this.mDownloadInfoTv.setText(ajyc.a(2131706811) + l + "ms");
+      this.mDownloadInfoTv.setText(ajya.a(2131706822) + l + "ms");
       this.mDownloadInfoTv.setVisibility(0);
     }
   }
@@ -111,7 +111,7 @@ public class MiniAppMonitorInfoView
         if (this.mFpsListener == null) {
           this.mFpsListener = new MiniAppMonitorInfoView.FpsListener(this, null);
         }
-        baxc.a().a(this.mFpsListener);
+        baxq.a().a(this.mFpsListener);
       }
     }
   }
@@ -125,7 +125,7 @@ public class MiniAppMonitorInfoView
         this.mMainHandler.removeCallbacks(this.mRefreshRunnable);
       }
       if (this.mFpsListener != null) {
-        baxc.a().b(this.mFpsListener);
+        baxq.a().b(this.mFpsListener);
       }
       this.mHasStartMonitor = false;
       return;
@@ -138,7 +138,7 @@ public class MiniAppMonitorInfoView
     String str = "";
     ThreadMsgInfo localThreadMsgInfo = TaskMonitorManager.g().getTaskPerfmSwitchPageInfo();
     if (localThreadMsgInfo != null) {
-      str = "" + ajyc.a(2131706813) + localThreadMsgInfo.realTimeCost + "ms";
+      str = "" + ajya.a(2131706824) + localThreadMsgInfo.realTimeCost + "ms";
     }
     if (this.mPageSwitchTv != null)
     {
@@ -171,14 +171,14 @@ public class MiniAppMonitorInfoView
         this.mCpuUsage.setText(str);
         this.mCpuUsage.setVisibility(0);
       }
-      str = ajyc.a(2131706822) + TaskMonitorManager.g().getMemeryUsage() + "%";
+      str = ajya.a(2131706833) + TaskMonitorManager.g().getMemeryUsage() + "%";
       if (this.mDbCacheTv != null)
       {
         this.mDbCacheTv.setText(str);
         this.mDbCacheTv.setVisibility(0);
       }
       return;
-      this.mPageSwitchTv.setText(ajyc.a(2131706819));
+      this.mPageSwitchTv.setText(ajya.a(2131706830));
       this.mPageSwitchTv.setVisibility(0);
       break;
       label283:
@@ -190,7 +190,7 @@ public class MiniAppMonitorInfoView
   {
     if (this.mFpsTv != null)
     {
-      String str = ajyc.a(2131706820) + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
+      String str = ajya.a(2131706831) + String.format("%.0f", new Object[] { Double.valueOf(paramDouble) }) + "fps";
       this.mFpsTv.setText(str);
       TaskMonitorManager.g().setCurrentFps(paramDouble);
     }

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import apvb;
-import auuz;
-import bawu;
+import apvd;
+import auvb;
+import baxi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -13,23 +13,23 @@ import mqq.os.MqqHandler;
 public class ProfileCardShareHelper$3
   implements Runnable
 {
-  public ProfileCardShareHelper$3(auuz paramauuz, String paramString) {}
+  public ProfileCardShareHelper$3(auvb paramauvb, String paramString) {}
   
   public void run()
   {
     try
     {
       Bitmap localBitmap;
-      if (apvb.a(this.a))
+      if (apvd.a(this.a))
       {
-        auuz.a(this.this$0, BitmapFactory.decodeFile(auuz.b(this.this$0)));
-        localBitmap = auuz.a(this.this$0);
+        auvb.a(this.this$0, BitmapFactory.decodeFile(auvb.b(this.this$0)));
+        localBitmap = auvb.a(this.this$0);
       }
       for (;;)
       {
         ThreadManager.getUIHandler().post(new ProfileCardShareHelper.3.1(this, localBitmap));
         return;
-        localBitmap = bawu.b(BaseApplicationImpl.getApplication().getResources(), 2130839737);
+        localBitmap = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130839737);
         QLog.d("ProfileCardShareHelper", 2, String.format("decodeFace facePath: %s is not exist", new Object[] { this.a }));
       }
       return;

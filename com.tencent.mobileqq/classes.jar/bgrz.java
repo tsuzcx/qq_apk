@@ -1,19 +1,20 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
-class bgrz
-  extends akix
+public class bgrz
+  implements DialogInterface.OnClickListener
 {
-  bgrz(bgry parambgry) {}
+  public bgrz(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgrz
  * JD-Core Version:    0.7.0.1
  */

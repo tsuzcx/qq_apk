@@ -1,28 +1,17 @@
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribeGetRecommendUserListRequest;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import java.util.List;
 
 public class wja
+  implements wjg
 {
-  private long jdField_a_of_type_Long;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private wjc jdField_a_of_type_Wjc;
+  public wja(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public COMM.StCommonExt a()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
-    VSNetworkHelper.a().a(paramString, new wjb(this));
-  }
-  
-  public void a(wjc paramwjc)
-  {
-    this.jdField_a_of_type_Wjc = paramwjc;
+    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+      return;
+    }
+    xhb.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 

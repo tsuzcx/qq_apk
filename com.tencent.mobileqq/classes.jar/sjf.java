@@ -1,173 +1,137 @@
-import NS_KING_PUBLIC.stAuth;
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stWaterFallCardStyle;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter.1;
+import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.List;
 
 public class sjf
+  extends bfzc<stSimpleMetaFeed, bfzf<stSimpleMetaFeed>>
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile sjf jdField_a_of_type_Sjf;
-  private aabp jdField_a_of_type_Aabp;
-  private Map<Long, sjh> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public static int b;
+  public int a;
+  public long a;
+  public RockDownloadListenerWrapper a;
+  private WSRedDotPushMsg jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
+  public RecyclerViewWithHeaderFooter a;
+  private sjg jdField_a_of_type_Sjg;
+  public skm a;
+  public int c;
+  public final int d;
+  public final int e;
+  public final int f;
+  public final int g;
   
-  private sjf()
+  public sjf(Context paramContext, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter)
   {
-    a();
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
+    this.d = axlk.e(paramContext);
+    this.e = axlk.a(3.0F);
+    this.f = axlk.a(18.0F);
+    this.g = axlk.a(14.0F);
   }
   
-  private Activity a()
+  public int a(int paramInt)
   {
-    Activity localActivity = null;
-    if (SplashActivity.a != null) {
-      localActivity = (Activity)SplashActivity.a.get();
-    }
-    Object localObject = localActivity;
-    if (localActivity == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    return localObject;
-  }
-  
-  public static sjf a()
-  {
-    if (jdField_a_of_type_Sjf == null) {}
-    try
+    Object localObject = a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      if (jdField_a_of_type_Sjf == null) {
-        jdField_a_of_type_Sjf = new sjf();
+      localObject = (stSimpleMetaFeed)((List)localObject).get(paramInt);
+      if ((localObject != null) && (((stSimpleMetaFeed)localObject).waterFallCardStyle != null)) {
+        return ((stSimpleMetaFeed)localObject).waterFallCardStyle.cardType;
       }
-      return jdField_a_of_type_Sjf;
     }
-    finally {}
+    return 1;
   }
   
-  private sjh a()
+  public bfzf<stSimpleMetaFeed> a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      return (sjh)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(sni.a()));
-    }
-    return null;
+    return skw.a(paramInt, paramViewGroup, this);
   }
   
-  private void a(JSONObject paramJSONObject)
+  public RockDownloadListenerWrapper a()
   {
-    jdField_a_of_type_Int = 0;
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token");
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramJSONObject))) {
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(sni.a()), new sjh(str, paramJSONObject));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = new WSRecommendAdapter.1(this);
     }
-    str = bfnc.a(str, sni.a());
-    paramJSONObject = bfnc.a(paramJSONObject, sni.a());
-    LocalMultiProcConfig.putString4Uin("key_qq_connect_open_id", str, sni.a());
-    LocalMultiProcConfig.putString4Uin("key_qq_connect_access_token", paramJSONObject, sni.a());
-    LocalMultiProcConfig.putLong4Uin("key_qq_connect_auth_time", System.currentTimeMillis(), sni.a());
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper;
   }
   
-  private boolean a()
+  public WSRedDotPushMsg a()
   {
-    boolean bool = true;
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
+  }
+  
+  public skm a()
+  {
+    if (this.jdField_a_of_type_Skm == null) {
+      this.jdField_a_of_type_Skm = skn.a(100, 2);
+    }
+    return this.jdField_a_of_type_Skm;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 + this.c;
+    if ((i < 0) || (i >= a().size())) {
+      snb.c("weishi-ding", "点赞position越界:" + i);
+    }
+    stSimpleMetaFeed localstSimpleMetaFeed;
+    do
+    {
+      return;
+      localstSimpleMetaFeed = (stSimpleMetaFeed)a(i);
+    } while (localstSimpleMetaFeed == null);
+    paramInt1 = localstSimpleMetaFeed.ding_count;
+    if (paramInt2 == 1) {
+      paramInt1 += 1;
+    }
     for (;;)
     {
-      try
-      {
-        long l1 = sni.a();
-        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l1));
-        if (localObject1 != null) {
-          return bool;
-        }
-        long l2 = System.currentTimeMillis();
-        long l3 = LocalMultiProcConfig.getLong4Uin("key_qq_connect_auth_time", 0L, l1);
-        sne.b("WSQQConnectAuthManager", "now qq connect auth time diff (sec) = " + (l2 - l3) / 1000L);
-        if (l2 - l3 > 1728000000L)
-        {
-          bool = false;
-        }
-        else
-        {
-          localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
-          String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
-          String str2 = bfnc.b((String)localObject1, sni.a());
-          String str3 = bfnc.b(str1, sni.a());
-          sne.b("weishi-828", "use sp openId and accessToken encrypted:" + (String)localObject1 + " , " + str1 + ", decrypt:" + str2 + " , " + str3);
-          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(sni.a()), new sjh(str2, str3));
-          } else {
-            bool = false;
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private void c()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      aabu.a();
-      this.jdField_a_of_type_Aabp = aabu.a(a(), 6, String.valueOf(1101083114));
-      if (this.jdField_a_of_type_Aabp != null) {
-        this.jdField_a_of_type_Aabp.a("loginSilent", null, new sjg(this));
-      }
-    }
-  }
-  
-  private void d()
-  {
-    jdField_a_of_type_Int += 1;
-    sne.b("WSQQConnectAuthManager", "authRetry: " + jdField_a_of_type_Int);
-    if (jdField_a_of_type_Int >= 3)
-    {
-      jdField_a_of_type_Int = 0;
+      localstSimpleMetaFeed.ding_count = paramInt1;
+      localstSimpleMetaFeed.is_ding = paramInt2;
+      notifyItemChanged(i);
+      snb.b("weishi-ding", "第" + i + "个条目的点赞改变了~~~");
       return;
-    }
-    c();
-  }
-  
-  @NotNull
-  public stAuth a(String paramString1, String paramString2)
-  {
-    sjh localsjh = a();
-    if (localsjh != null)
-    {
-      sne.b("weishi-828", "use memory openId and accessToken" + localsjh.a + " , " + localsjh.b);
-      return new stAuth(1, localsjh.a, localsjh.b);
-    }
-    if (a())
-    {
-      localsjh = a();
-      if (localsjh != null)
-      {
-        sne.b("weishi-828", "use memory openId and accessToken" + localsjh.a + " , " + localsjh.b);
-        return new stAuth(1, localsjh.a, localsjh.b);
-      }
-    }
-    sne.b("weishi-828", "未获取到openId和accessToken，使用了兜底方案");
-    c();
-    return new stAuth(2, paramString1, paramString2);
-  }
-  
-  public void a()
-  {
-    if (!a()) {
-      c();
+      paramInt1 -= 1;
     }
   }
   
-  public void b()
+  public void a(bfzf<stSimpleMetaFeed> parambfzf)
   {
-    this.jdField_a_of_type_Boolean = false;
-    c();
+    if (this.jdField_a_of_type_Sjg != null) {
+      this.jdField_a_of_type_Sjg.a(parambfzf);
+    }
+  }
+  
+  public void a(bfzf<stSimpleMetaFeed> parambfzf, int paramInt)
+  {
+    stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)a(paramInt);
+    if (localstSimpleMetaFeed != null) {
+      parambfzf.a(localstSimpleMetaFeed);
+    }
+  }
+  
+  public void a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg = paramWSRedDotPushMsg;
+  }
+  
+  public void a(List<stSimpleMetaFeed> paramList)
+  {
+    List localList = a();
+    if ((localList != null) && (localList.addAll(paramList))) {
+      notifyItemRangeChanged(localList.size() - paramList.size(), paramList.size());
+    }
+  }
+  
+  public void a(sjg paramsjg)
+  {
+    this.jdField_a_of_type_Sjg = paramsjg;
   }
 }
 

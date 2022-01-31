@@ -1,14 +1,20 @@
-public class bdhl
-  extends bdhn
+import android.os.Bundle;
+
+class bdhl
+  implements bdku
 {
-  public static bdhl a()
-  {
-    return new bdhl();
-  }
+  bdhl(bdhk parambdhk) {}
   
-  public String a()
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    return b() + "|" + c();
+    bdii.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("PackageName", paramString1);
+    localBundle.putString("Code", paramString2);
+    localBundle.putInt("VersionCode", paramInt);
+    localBundle.putBoolean("IsSuccess", paramBoolean);
+    localBundle.putAll(paramBundle);
+    bdhk.a(this.a, localBundle);
   }
 }
 

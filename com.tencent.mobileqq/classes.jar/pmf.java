@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pmf
-  extends pmh
+  implements ViewBase.IBuilder
 {
-  public pmf(VafContext paramVafContext)
+  public ViewBase build(VafContext paramVafContext)
   {
-    super(paramVafContext);
-    this.a.setIsCacheIcon(true);
-    this.a.setIsClosedoAlphaAniamation(true);
+    return new pme(paramVafContext);
   }
 }
 

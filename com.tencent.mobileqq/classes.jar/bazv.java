@@ -1,8 +1,37 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bazv
+class bazv
+  extends ajvx
 {
-  public abstract void a(String paramString, boolean paramBoolean, Drawable paramDrawable);
+  bazv(bazu parambazu) {}
+  
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Ajvx != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Ajvx);
+    }
+    if (paramBoolean)
+    {
+      paramFaceInfo = this.a.b();
+      if (paramFaceInfo != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
+        return;
+      }
+      this.a.a();
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
+  }
 }
 
 

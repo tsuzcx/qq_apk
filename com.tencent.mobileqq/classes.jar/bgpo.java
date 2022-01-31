@@ -1,17 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-final class bgpo
-  implements View.OnClickListener
+class bgpo
+  implements DialogInterface.OnDismissListener
 {
-  bgpo(Dialog paramDialog, String paramString) {}
+  bgpo(bgpj parambgpj) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (!this.a.b) {
+      bgpj.a(this.a, 1);
     }
+    this.a.b = false;
+    this.a.a = null;
   }
 }
 

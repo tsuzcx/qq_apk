@@ -1,22 +1,16 @@
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class ajkw
-  implements ajlf
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  ajkw(ajku paramajku) {}
+  ajkw(ajks paramajks) {}
   
-  public void a(int paramInt, String paramString)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (paramInt == 0) {
-      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.b(paramInt, paramString);
-      }
-      return;
-      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
   }
 }

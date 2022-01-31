@@ -1,48 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
 
-public class aqzu
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+class aqzu
+  implements Animation.AnimationListener
 {
-  aray a;
-  public ImageView d;
+  aqzu(aqzt paramaqzt) {}
   
-  public aqzu(HotPicPageView paramHotPicPageView, View paramView, aray paramaray)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    if (paramaray != null)
-    {
-      this.a = paramaray;
-      this.d = ((ImageView)paramView.findViewById(2131367644));
-      this.d.setTag("HotPicControlTag");
-      this.itemView.setOnClickListener(this);
-      this.itemView.setOnLongClickListener(this);
-      this.itemView.setOnTouchListener(paramaray);
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
     }
   }
   
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.a(paramView, getPosition());
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.a != null)
-    {
-      this.a.b(paramView, getPosition());
-      bool = true;
-    }
-    return bool;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

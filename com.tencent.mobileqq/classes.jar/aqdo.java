@@ -1,16 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.forward.ForwardPhotoOption;
 
 public class aqdo
-  implements View.OnTouchListener
+  implements aqbq
 {
-  public aqdo(ForwardPhotoOption.3 param3) {}
+  public aqdo(ForwardPhotoOption paramForwardPhotoOption) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    ForwardPhotoOption.a(this.a).a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    ForwardPhotoOption.a(this.a).a.setVisibility(8);
   }
 }
 

@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.gif;
 
-import biry;
-import birz;
+import bisp;
+import bisq;
 
 public class AEVideoStoryGIFTplViewModel$2$1
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$2$1(birz parambirz) {}
+  public AEVideoStoryGIFTplViewModel$2$1(bisq parambisq) {}
   
   public void run()
   {
-    biry.a(this.a.a);
+    bisp.a(this.a.a);
   }
 }
 

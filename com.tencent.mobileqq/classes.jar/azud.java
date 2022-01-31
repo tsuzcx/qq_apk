@@ -1,127 +1,174 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class azud
-  extends azts
+  extends azut
 {
-  protected boolean c;
-  protected boolean d;
-  protected long g = 2000L;
+  xaz a;
   
-  protected azud(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  protected azud(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
-    this.c = paramBoolean1;
+    super(paramLong, paramItem);
+    this.jdField_a_of_type_Xaz = new azue(this);
   }
   
-  public static azud a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
+  public static azud a(long paramLong, TroopFileTransferManager.Item paramItem)
   {
-    String str = "";
-    if (paramString1 == null) {
-      str = "strSavePath is null";
-    }
-    while (!TextUtils.isEmpty(str))
+    if (paramLong == 0L)
     {
-      azsr.a("TroopFileThumbDownloader", azsr.a, "getFileDownloader " + str);
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. troopuin=0");
       return null;
-      if (paramString1.length() == 0) {
-        str = "strSavePath is empty";
-      } else if (paramList == null) {
-        str = "lstUrl is null";
-      } else if (paramList.size() == 0) {
-        str = "lstUrl is empty";
-      } else if (paramString2 == null) {
-        str = "urlParams is null";
-      } else if (paramString2.length() == 0) {
-        str = "urlParams is empty";
-      }
     }
-    return new azud(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
+    if (paramItem == null)
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. item=null");
+      return null;
+    }
+    if (paramItem.Id == null)
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. item.id=null");
+      return null;
+    }
+    if (paramItem.ForwardTroopuin == 0L)
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. ForwardTroopuin=0");
+      return null;
+    }
+    if ((paramItem.BusId != 102) && (paramItem.BusId != 104))
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. BusId err:" + paramItem.BusId);
+      return null;
+    }
+    if (TextUtils.isEmpty(paramItem.ForwardPath))
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "getTroop2TroopForwarder. ForwardPath=null");
+      return null;
+    }
+    return new azud(paramLong, paramItem);
   }
   
-  public void a(bbmg parambbmg)
+  private final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    int k = 0;
-    if (!this.c) {
-      break label10;
-    }
-    label10:
-    while (this.d) {
-      return;
-    }
-    parambbmg = parambbmg.a("Set-Cookie");
-    i = k;
-    for (;;)
+    paramString2 = azsr.a();
+    azst.c("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult isSuccess:true retCode:" + paramInt1);
+    if (paramInt1 < 0)
     {
-      try
+      paramInt2 = 207;
+      switch (paramInt1)
       {
-        if (!TextUtils.isEmpty(parambbmg))
+      default: 
+        paramString1 = paramString3;
+        paramInt1 = paramInt2;
+      }
+      for (;;)
+      {
+        paramString1 = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardTroopuin, 5, paramInt1, paramString1);
+        azsd.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
+        if (paramString2 == null) {
+          break;
+        }
+        paramString1 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
+        if (paramString1 != null)
         {
-          i = k;
-          if (parambbmg.contains("duration"))
+          long l = paramString1.structMsgSeq;
+          paramString2.a().b("" + this.d, 1, l);
+        }
+        return;
+        paramInt1 = 202;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 600;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 701;
+        paramString1 = paramString3;
+        continue;
+        paramInt1 = 706;
+        paramString1 = ajya.a(2131715354);
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId == 102)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
+          if (paramString2 != null)
           {
-            parambbmg = parambbmg.trim().split(";");
-            i = k;
-            if (parambbmg != null)
-            {
-              i = k;
-              if (parambbmg.length > 0)
-              {
-                j = 0;
-                i = k;
-                if (j < parambbmg.length)
-                {
-                  String[] arrayOfString = parambbmg[j].split("=");
-                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
-                    continue;
-                  }
-                  i = Integer.parseInt(arrayOfString[1]);
-                }
-              }
-            }
+            azst.b("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: space no enough. fowrd temp.");
+            xam.a(paramString2, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Xaz);
+            return;
           }
+          paramInt1 = 204;
+          paramString1 = paramString3;
+        }
+        else
+        {
+          paramInt1 = 204;
+          paramString1 = paramString3;
+          continue;
+          paramInt1 = -139;
+          paramString1 = paramString3;
+          continue;
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) && (new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists()))
+          {
+            azst.b("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: -6101. start local uploadl.");
+            azuw.a().a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
+            return;
+          }
+          paramInt1 = 603;
+          paramString1 = paramString3;
+          continue;
+          paramInt1 = 705;
+          paramString1 = paramString3;
         }
       }
-      catch (Exception parambbmg)
-      {
-        int j;
-        i = 0;
-        continue;
-      }
-      if ((i == 0) || (this.jdField_a_of_type_Aztk == null) || (!(this.jdField_a_of_type_Aztk instanceof azue))) {
-        break;
-      }
-      ((azue)this.jdField_a_of_type_Aztk).a(i);
+      azst.a("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult fail. removeMsgByUniseq fail.");
       return;
-      j += 1;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public long b()
-  {
-    if (this.g <= 6000L)
+    new Handler(Looper.getMainLooper()).post(new TroopFileToTroopForwarder.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramString1;
+    azst.c("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. mItem.FilePath:" + paramString1);
+    paramString3 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.d);
+    if (paramString3 != null) {
+      paramString3.e = paramString1;
+    }
+    if (paramString2 != null)
     {
-      long l = this.g;
-      this.g = (2000L + this.g);
-      return l;
+      paramString2 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
+      if (paramString2 != null) {
+        paramString2.strTroopFilePath = paramString1;
+      }
     }
-    return 2000L;
+    for (;;)
+    {
+      azsd.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 7, 0);
+      j();
+      return;
+      azst.a("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. update entity.strTroopFilePath fail.");
+    }
   }
   
-  public void b(boolean paramBoolean)
+  private int b()
   {
-    this.d = paramBoolean;
+    QQAppInterface localQQAppInterface = azsr.a();
+    if (localQQAppInterface == null)
+    {
+      azst.a("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop app=null");
+      return -1;
+    }
+    azst.c("TroopFileToTroopForwarder", azst.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath + " entrySessionID:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID + " with:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width + " height:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height);
+    xam.a(localQQAppInterface, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Xaz);
+    azsd.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 4, 0);
+    return 0;
   }
   
-  public void i()
+  public int a()
   {
-    this.jdField_a_of_type_Azsm.a();
+    return b();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adps;
+import adpq;
 import android.graphics.drawable.ColorDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;

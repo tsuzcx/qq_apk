@@ -1,13 +1,15 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
 
 class ajbg
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  ajbg(ajbc paramajbc) {}
+  ajbg(ajba paramajba) {}
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramInt == 0) {}
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

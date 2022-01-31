@@ -1,19 +1,11 @@
-import java.util.HashMap;
-
 class tqr
-  extends tps
+  extends tpn
 {
-  tqr(tqk paramtqk, String paramString1, String paramString2, boolean paramBoolean, tro paramtro)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  tqr(tqh paramtqh, trp paramtrp) {}
   
   public boolean b()
   {
-    this.jdField_a_of_type_Tro.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_Tro.a, this.jdField_a_of_type_Tro.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Trp.d);
     return true;
   }
 }

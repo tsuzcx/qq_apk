@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.guide;
 
 import android.os.Bundle;
-import atbx;
+import atbz;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 class NearbyGuideActivity$7
   implements Runnable
 {
-  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, atbx paramatbx, Bundle paramBundle) {}
+  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, atbz paramatbz, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ class NearbyGuideActivity$7
         localArrayList.add(localPicInfo);
       }
     }
-    this.jdField_a_of_type_Atbx.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
+    this.jdField_a_of_type_Atbz.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
   }
 }
 

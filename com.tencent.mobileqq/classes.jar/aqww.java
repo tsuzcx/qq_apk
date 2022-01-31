@@ -1,36 +1,57 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.hiboom.FontBubble;
+import QC.BubbleRecommendRsp;
+import QC.CommonRsp;
+import QC.FontRecommendRsp;
 import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aqww
-  extends RecyclerView.Adapter<FontBubblePanelView<T>.aqwx>
+  extends akfy
 {
   public aqww(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public FontBubblePanelView<T>.aqwx a(ViewGroup paramViewGroup, int paramInt)
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131562600, paramViewGroup, false);
-    return new aqwx(this.a, paramViewGroup);
-  }
-  
-  public void a(FontBubblePanelView<T>.aqwx paramFontBubblePanelView, int paramInt)
-  {
-    if (paramInt < FontBubblePanelView.a(this.a).size()) {
-      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
+    if (FontBubblePanelView.a(this.a) == 4)
+    {
+      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
+      }
     }
+    else {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
+    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
+    {
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
+    }
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
   
-  public int getItemCount()
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
   {
-    return FontBubblePanelView.a(this.a).size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return ((FontBubble)FontBubblePanelView.a(this.a).get(paramInt)).viewType;
+    if (FontBubblePanelView.a(this.a) == 3)
+    {
+      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
+      }
+    }
+    else {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
+    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
+    {
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
+    }
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
 }
 

@@ -1,16 +1,14 @@
-import android.app.Activity;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.7.1;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
 
-public class wlf
-  implements wtn
+class wlf
+  implements wlk
 {
-  wlf(wkx paramwkx) {}
+  wlf(wle paramwle) {}
   
-  public void a(int paramInt)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (wkx.q(this.a) != null) {
-      wkx.r(this.a).runOnUiThread(new DetailBaseAdapter.7.1(this));
-    }
+    this.a.d(paramStFeed);
   }
 }
 

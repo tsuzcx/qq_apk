@@ -1,57 +1,41 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
 
 public class tne
-  extends syv<tos>
+  extends sys
 {
-  public final List<String> a;
-  
-  public tne(List<String> paramList)
-  {
-    this.a = paramList;
-  }
+  public String a;
   
   public String a()
   {
-    return "StorySvc.get_video_tag_778";
+    return sxm.a("StoryGroupSvc.get_dynamic_group_feedid_list");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
     try
     {
-      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
-      return new tos(localRspStoryPlayerTagInfo);
+      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new tnf(localRspGroupStoryFeedIdList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       for (;;)
       {
-        veg.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+        paramArrayOfByte.printStackTrace();
       }
     }
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.2.8"));
-    return localReqStoryPlayerTagInfo.toByteArray();
+    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
+    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGroupStoryFeedIdList.toByteArray();
   }
 }
 

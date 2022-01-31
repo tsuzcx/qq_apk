@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import axqw;
-import axur;
-import axuy;
-import bfmt;
+import axqy;
+import axut;
+import axva;
+import bfnk;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
@@ -41,7 +41,7 @@ public class MessageShareActivity
   
   public MessageShareActivity()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfmt(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(Looper.getMainLooper(), this);
   }
   
   private void a(List<ResultRecord> paramList, Intent paramIntent, AbsStructMsg paramAbsStructMsg)
@@ -124,14 +124,14 @@ public class MessageShareActivity
           localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
           {
-            localObject2 = axur.a((String)localObject3);
+            localObject2 = axut.a((String)localObject3);
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              axqw.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, axur.a(j) + "", "", (String)localObject2, "");
+              axqy.b(null, "CliOper", "", "", "0X8005F53", "0X8005F53", 0, 0, axut.a(j) + "", "", (String)localObject2, "");
             }
           }
         }
         boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_msg_by_server_enable_entry", false);
-        localObject2 = axuy.a(this.jdField_a_of_type_AndroidOsBundle);
+        localObject2 = axva.a(this.jdField_a_of_type_AndroidOsBundle);
         if ((localObject2 != null) && (this.app != null))
         {
           if (!(localObject2 instanceof StructMsgForImageShare)) {
@@ -143,7 +143,7 @@ public class MessageShareActivity
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false)) {
             break label702;
           }
-          paramMessage = actn.a(paramMessage, new int[] { 2 });
+          paramMessage = actj.a(paramMessage, new int[] { 2 });
           this.jdField_a_of_type_AndroidOsBundle.remove("share_from_aio");
         }
         for (;;)
@@ -175,10 +175,10 @@ public class MessageShareActivity
           AbsShareMsg.sendSdkShareMessage(this.app, (AbsShareMsg)localObject2, (String)localObject1, j, (String)localObject3);
           break label475;
           label702:
-          paramMessage = actn.a(paramMessage, null);
+          paramMessage = actj.a(paramMessage, null);
           paramMessage.putExtra("share_from_aio", true);
         }
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(ajyc.a(2131706660));
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(ajya.a(2131706671));
         this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371556).setVisibility(4);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3, 800L);
         continue;
@@ -194,7 +194,7 @@ public class MessageShareActivity
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131755791);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559386);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(2131695125);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371557)).setText(2131695126);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       try

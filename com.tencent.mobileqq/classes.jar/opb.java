@@ -1,55 +1,131 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class opb
   implements AladdinConfigHandler
 {
-  private static long a(String paramString, long paramLong)
+  pay a(String paramString, List<pay> paramList)
   {
-    try
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
+      pay localpay = (pay)paramList.next();
+      if (localpay.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localpay;
+      }
     }
-    catch (NumberFormatException paramString)
-    {
-      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
-    }
-    return paramLong;
+    return null;
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("switch", str1)) {
-        bhvh.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      } else if (TextUtils.equals("preload_interval", str1)) {
-        bhvh.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
-      } else if (TextUtils.equals("last_enter_kandian", str1)) {
-        bhvh.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
-      } else if (TextUtils.equals("preload_time_limit", str1)) {
-        bhvh.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
-      } else if (TextUtils.equals("loading_time", str1)) {
-        bhvh.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    Map localMap = oof.a(paramString);
+    Object localObject4 = localMap.keySet();
+    Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
+    paramString = new JSONArray();
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      try
+      {
+        localObject1 = new JSONArray((String)localObject1);
+        if (localObject1 != null) {}
+        Object localObject5;
+        String[] arrayOfString;
+        Object localObject3;
+        Object localObject2;
+        for (;;) {}
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            QLog.d("KandianDailySettingConfigHandler", 2, "old data: " + localObject1);
+            paramInt1 = 0;
+            if (paramInt1 < ((JSONArray)localObject1).length())
+            {
+              localArrayList.add(pay.a(((JSONArray)localObject1).optJSONObject(paramInt1)));
+              paramInt1 += 1;
+              continue;
+            }
+            paramString = (String)localObject1;
+            localObject4 = ((Set)localObject4).iterator();
+            if (!((Iterator)localObject4).hasNext()) {
+              continue;
+            }
+            localObject5 = (String)((Iterator)localObject4).next();
+            localObject1 = (String)localMap.get(localObject5);
+            QLog.d("KandianDailySettingConfigHandler", 2, "[onReceiveConfig] key=" + (String)localObject5 + ", value=" + (String)localObject1);
+            arrayOfString = ((String)localObject1).split("\\|");
+            if (arrayOfString.length != 3) {
+              continue;
+            }
+            paramInt1 = 1;
+            localObject3 = a((String)localObject5, localArrayList);
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              paramInt1 = 0;
+              localObject1 = new pay();
+            }
+            ((pay)localObject1).jdField_b_of_type_JavaLangString = arrayOfString[0];
+            ((pay)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject5);
+            localObject3 = arrayOfString[1].split(",");
+            localObject5 = arrayOfString[2].split(",");
+            ((pay)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
+            ((pay)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+            ((pay)localObject1).jdField_b_of_type_JavaUtilList.add("");
+            ((pay)localObject1).jdField_a_of_type_JavaUtilList.add("");
+            paramInt2 = 0;
+            if (paramInt2 >= localObject3.length) {
+              continue;
+            }
+            ((pay)localObject1).jdField_a_of_type_JavaUtilList.add(localObject3[paramInt2]);
+            paramInt2 += 1;
+            continue;
+            localJSONException1 = localJSONException1;
+          }
+          catch (JSONException localJSONException2)
+          {
+            paramString = localJSONException1;
+            localObject2 = localJSONException2;
+            continue;
+          }
+          localJSONException1.printStackTrace();
+          continue;
+          paramInt2 = 0;
+          if (paramInt2 < localObject5.length)
+          {
+            localJSONException1.jdField_b_of_type_JavaUtilList.add(localObject5[paramInt2]);
+            paramInt2 += 1;
+          }
+          else if (paramInt1 == 0)
+          {
+            paramString.put(localJSONException1.a());
+          }
+        }
+        QLog.d("KandianDailySettingConfigHandler", 2, "new data: " + paramString.toString());
+        ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", paramString.toString());
+        return true;
       }
     }
-    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bhvh.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
+    QLog.d("KandianDailySettingConfigHandler", 2, "[onWipeConfig]");
+    ReadInJoyMMapKvStorage.getInstance().update("KANDIAN_DAILY_SETTING_CONFIG", "");
   }
 }
 

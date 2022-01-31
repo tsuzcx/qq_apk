@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lvt
-  implements View.OnClickListener
+  implements bcww
 {
-  public lvt(RedPacketGameView paramRedPacketGameView, long paramLong) {}
+  public lvt(RedPacketShareFragment.3.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    paramView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
-    if (paramView != null)
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      paramView.a.i(this.jdField_a_of_type_Long);
-      ((VideoAppInterface)paramView.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
   }
 }

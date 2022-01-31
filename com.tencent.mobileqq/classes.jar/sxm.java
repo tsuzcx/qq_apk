@@ -1,21 +1,73 @@
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class sxm
-  implements sxb
 {
-  public sxm(StoryVideoUploadTask paramStoryVideoUploadTask, ter paramter, swx paramswx) {}
-  
-  public void a(sxa paramsxa)
+  public static int a(int paramInt)
   {
-    paramsxa = this.jdField_a_of_type_Ter;
-    if (this.jdField_a_of_type_Swx.a == 0) {}
-    for (int i = 2;; i = 3)
-    {
-      paramsxa.jdField_b_of_type_Int = i;
-      this.jdField_a_of_type_Ter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Swx.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Ter.c = this.jdField_a_of_type_Swx.c;
-      return;
-    }
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
+  }
+  
+  public static Boolean a(int paramInt)
+  {
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  {
+    return sxz.a(paramClass, paramVarArgs);
+  }
+  
+  public static String a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+  }
+  
+  public static String a(int paramInt, Object... paramVarArgs)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+  }
+  
+  public static String a(String paramString)
+  {
+    return paramString;
+  }
+  
+  public static <T extends Activity> sxv<T> a(Class<? extends sxv<T>> paramClass, Class<sxv<T>> paramClass1, Object... paramVarArgs)
+  {
+    return (sxv)sxz.a(paramClass, paramClass1, paramVarArgs);
+  }
+  
+  public static wco a(Context paramContext, int paramInt)
+  {
+    return syc.a(paramContext, paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    syf.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    syf.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    syd.a(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return sye.a();
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
   }
 }
 

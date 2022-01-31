@@ -1,22 +1,22 @@
 import android.support.annotation.NonNull;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class ths
-  extends QQUIEventReceiver<thk, tfh>
+public class ths
+  extends QQUIEventReceiver<thh, thr>
 {
-  public ths(@NonNull thk paramthk)
+  public ths(@NonNull thh paramthh)
   {
-    super(paramthk);
+    super(paramthh);
   }
   
-  public void a(@NonNull thk paramthk, @NonNull tfh paramtfh)
+  public void a(@NonNull thh paramthh, @NonNull thr paramthr)
   {
-    paramthk.a.a(paramtfh.a);
+    thh.a(paramthh, paramthr.jdField_a_of_type_Twl, paramthr.jdField_a_of_type_JavaLangString);
   }
   
   public Class acceptEventClass()
   {
-    return tfh.class;
+    return thr.class;
   }
 }
 

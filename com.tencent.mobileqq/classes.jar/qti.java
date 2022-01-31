@@ -1,13 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qti
+class qti
+  extends Handler
 {
-  public abstract VideoInfo a(View paramView);
+  qti(qth paramqth, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void g();
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qth.a(this.a));
+      }
+    } while (!qth.a(this.a));
+    this.a.a(1);
+  }
 }
 
 

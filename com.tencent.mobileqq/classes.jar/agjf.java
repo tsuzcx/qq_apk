@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
 public class agjf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public agjf(BindVerifyActivity paramBindVerifyActivity) {}
+  public agjf(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(0);
-    this.a.finish();
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    bgtl.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
   }
 }
 

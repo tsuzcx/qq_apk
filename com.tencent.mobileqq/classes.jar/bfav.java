@@ -1,47 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
+import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
 public class bfav
-  extends bfaz
+  extends bfau
 {
-  private bfaz jdField_a_of_type_Bfaz;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
   
-  public bfav(bfau parambfau, int paramInt)
+  public bfav(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(parambfau, Integer.valueOf(paramInt));
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
+    this.a.appId.set(paramString1);
+    this.a.prepayId.set(paramString2);
+    this.a.starCurrency.set(paramInt1);
+    this.a.sandboxEnv.set(paramInt2);
   }
   
-  public bfav a(bfaz parambfaz)
+  protected String a()
   {
-    this.jdField_a_of_type_Bfaz = parambfaz;
-    return this;
+    return "mini_app_pay";
   }
   
-  public void a()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    super.a();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
+    try
     {
-      this.jdField_a_of_type_Bfau.a(bfau.a);
-      return;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStQueryStarCurrencyRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      betc.a("QueryCurrencyRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.contains("QLogic.js"))) {
-      SpeedUtil.DEFAULT.event("runQLogicJs start " + this.jdField_a_of_type_Bfau);
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
     }
-    this.jdField_a_of_type_Bfau.a(this.jdField_a_of_type_JavaLangString, new bfaw(this), this.b);
+    return null;
   }
   
-  public void a(String paramString)
+  public byte[] a()
   {
-    a(paramString, null);
+    return this.a.toByteArray();
   }
   
-  public void a(String paramString1, String paramString2)
+  protected String b()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    return "QueryStarCurrency";
   }
 }
 

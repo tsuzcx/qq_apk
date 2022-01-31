@@ -1,78 +1,30 @@
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 public class axna
 {
-  long jdField_a_of_type_Long = 0L;
-  List<axnb> jdField_a_of_type_JavaUtilList = new LinkedList();
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  static String a(axna paramaxna)
+  public String a()
   {
-    if ((paramaxna == null) || (paramaxna.jdField_a_of_type_JavaUtilList == null) || (paramaxna.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-      return null;
+    if (axnh.a()) {
+      return this.jdField_b_of_type_JavaLangString;
     }
-    StringBuilder localStringBuilder = new StringBuilder("names=");
-    paramaxna = paramaxna.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 1;
-    if (paramaxna.hasNext())
-    {
-      axnb localaxnb = (axnb)paramaxna.next();
-      if (i != 0) {
-        i = 0;
-      }
-      for (;;)
-      {
-        localStringBuilder.append(localaxnb.jdField_a_of_type_JavaLangString);
-        break;
-        localStringBuilder.append("&");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      axnb localaxnb = (axnb)localIterator.next();
-      if ((localaxnb == null) || (TextUtils.isEmpty(localaxnb.jdField_a_of_type_JavaLangString)) || (localaxnb.jdField_a_of_type_Axmy == null)) {
-        return false;
-      }
-    }
-    return true;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public boolean a(axna paramaxna)
   {
     if (paramaxna == null) {}
-    while (paramaxna.jdField_a_of_type_JavaUtilList.size() != this.jdField_a_of_type_JavaUtilList.size()) {
+    while ((this.jdField_b_of_type_Boolean != paramaxna.jdField_b_of_type_Boolean) || (!ahiw.c(this.jdField_a_of_type_JavaLangString, paramaxna.jdField_a_of_type_JavaLangString)) || (!ahiw.c(this.jdField_b_of_type_JavaLangString, paramaxna.jdField_b_of_type_JavaLangString))) {
       return false;
     }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramaxna.jdField_a_of_type_JavaUtilList.size()) {
-        break label83;
-      }
-      axnb localaxnb = (axnb)paramaxna.jdField_a_of_type_JavaUtilList.get(i);
-      if (!((axnb)this.jdField_a_of_type_JavaUtilList.get(i)).a(localaxnb)) {
-        break;
-      }
-      i += 1;
-    }
-    label83:
     return true;
   }
   
   public String toString()
   {
-    return "LoadParam{mLoadItems=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "LoadOptions{isLoadLastSuccWhenFail=" + this.jdField_b_of_type_Boolean + ", old32Bit='" + this.jdField_a_of_type_JavaLangString + '\'' + ", old64Bit='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

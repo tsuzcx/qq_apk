@@ -1,18 +1,22 @@
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
 public class odr
+  extends ajxj
 {
-  public static int a()
-  {
-    return ((Integer)bhvh.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
-  }
+  public odr(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public static void a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    bhvh.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bhvh.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
-  }
-  
-  public static int b()
-  {
-    return ((Integer)bhvh.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
+    }
   }
 }
 

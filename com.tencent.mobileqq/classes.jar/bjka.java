@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
 public class bjka
-  implements DialogInterface.OnClickListener
+  extends bjch
 {
-  public bjka(MusicProviderView paramMusicProviderView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public bjka(ComboProviderView paramComboProviderView) {}
 }
 
 

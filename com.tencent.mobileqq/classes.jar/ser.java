@@ -1,130 +1,66 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.manager.Manager;
+import mqq.observer.BusinessObserver;
 
-public class ser
-  implements Handler.Callback, Manager
+final class ser
+  implements BusinessObserver
 {
-  private volatile int jdField_a_of_type_Int = -1;
-  private aukn jdField_a_of_type_Aukn;
-  private bfmt jdField_a_of_type_Bfmt;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public ser(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_Bfmt = new bfmt(ThreadManager.getSubThreadLooper(), this);
-  }
-  
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+      QLog.d("PAReport", 2, "reportClickEventForAdver onReceive: " + String.valueOf(paramBoolean));
     }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
-      }
+    long l2;
+    if (paramBoolean) {
+      l2 = -1L;
     }
     do
     {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Bfmt.hasMessages(100001));
-    this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(100001, 3000L);
-    return;
-    this.jdField_a_of_type_Bfmt.sendEmptyMessage(100002);
-  }
-  
-  public void a(PAReportInfo paramPAReportInfo)
-  {
-    this.jdField_a_of_type_Bfmt.post(new PAReportManager.1(this, paramPAReportInfo));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b().a(PAReportInfo.class.getSimpleName());
-    }
-    List localList2 = this.jdField_a_of_type_Aukn.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
-    if (localList2 != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Bfmt.sendEmptyMessage(100002);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_Aukn.b((aukm)localObject1)) {
-        continue;
-      }
-      this.jdField_a_of_type_Int -= 1;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      try
       {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        ??? = new ArrayList();
-        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
-        int j = localObject1.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.ReportPublicAccountResponse localReportPublicAccountResponse = new mobileqq_mp.ReportPublicAccountResponse();
+        localReportPublicAccountResponse.mergeFrom(paramBundle);
+        l1 = l2;
+        if (localReportPublicAccountResponse.ret_info.has())
+        {
+          l1 = l2;
+          if (localReportPublicAccountResponse.ret_info.ret_code.has())
+          {
+            paramInt = localReportPublicAccountResponse.ret_info.ret_code.get();
+            l2 = paramInt;
+            l1 = l2;
+            if (l2 == 0L)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l2));
+              }
+              return;
+            }
+          }
         }
-        ((List)???).add(localObject1[i]);
-        i += 1;
       }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 100001)
-    {
-      b();
-      return true;
-    }
-    if (paramMessage.what == 100002)
-    {
-      c();
-      return true;
-    }
-    return false;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Aukn.a();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = -1;
-      return;
-    }
+      catch (Exception paramBundle)
+      {
+        long l1;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("PAReport", 2, "reportClickEventRuntime exception", paramBundle);
+        return;
+      }
+      finally
+      {
+        if (!QLog.isColorLevel()) {
+          break label288;
+        }
+        QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(-1L));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l1));
   }
 }
 

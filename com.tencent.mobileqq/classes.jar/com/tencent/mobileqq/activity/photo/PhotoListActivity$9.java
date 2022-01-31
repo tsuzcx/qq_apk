@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.photo;
 
 import android.os.Handler;
 import android.os.Message;
-import bbbj;
+import bbbx;
 import java.util.Map;
 
 class PhotoListActivity$9
@@ -17,7 +17,7 @@ class PhotoListActivity$9
     String str = PhotoListActivity.a(this.this$0, this.a);
     localMessage.obj = str;
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    bbbj.a(localLocalMediaInfo, str);
+    bbbx.a(localLocalMediaInfo, str);
     PhotoListActivity.a().put(str, localLocalMediaInfo);
     this.this$0.a.sendMessage(localMessage);
   }

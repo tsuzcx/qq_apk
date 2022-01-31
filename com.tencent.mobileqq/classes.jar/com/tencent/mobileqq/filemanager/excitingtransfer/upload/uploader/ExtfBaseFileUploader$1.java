@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import aphr;
+import aphv;
 
 public class ExtfBaseFileUploader$1
   implements Runnable
 {
-  public ExtfBaseFileUploader$1(aphr paramaphr, long paramLong1, long paramLong2) {}
+  public ExtfBaseFileUploader$1(aphv paramaphv, long paramLong1, long paramLong2) {}
   
   public void run()
   {

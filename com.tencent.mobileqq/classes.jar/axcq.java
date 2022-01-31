@@ -1,93 +1,91 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 import mqq.app.MSFServlet;
-import mqq.app.MobileQQ;
 import mqq.app.Packet;
 
 public class axcq
   extends MSFServlet
 {
+  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
+  {
+    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
+    localtMobileQbossFeedBackInfo.uiUin = paramLong;
+    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
+    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
+    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
+    localtMobileQbossFeedBackInfo.sQua = paramString3;
+    localtMobileQbossFeedBackInfo.sUserID = paramString2;
+    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
+    return localtMobileQbossFeedBackInfo;
+  }
+  
+  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
+  {
+    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
+    paramString2 = new ArrayList(1);
+    paramString2.add(paramString1);
+    return paramString2;
+  }
+  
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     if (paramFromServiceMsg != null) {}
-    for (;;)
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      try
-      {
-        if (paramFromServiceMsg.getResultCode() == 1000)
-        {
-          paramFromServiceMsg = bgxc.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
-          if (paramFromServiceMsg != null)
-          {
-            if ((getAppRuntime() != null) && (getAppRuntime().getApplication() != null))
-            {
-              MobileQQ localMobileQQ = getAppRuntime().getApplication();
-              if ((paramFromServiceMsg.map_ext == null) || (!"1".equals(paramFromServiceMsg.map_ext.get("show_feeds")))) {
-                break label260;
-              }
-              bool = true;
-              if (paramFromServiceMsg.map_ext == null)
-              {
-                paramIntent = null;
-                bhbh.a(localMobileQQ, bool, paramIntent);
-              }
-            }
-            else
-            {
-              paramIntent = new Bundle();
-              paramIntent.putSerializable("data", paramFromServiceMsg);
-              notifyObserver(null, 1004, true, paramIntent, atzo.class);
-              return;
-            }
-            paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
-          }
-          notifyObserver(null, 1004, false, new Bundle(), atzo.class);
-          return;
-        }
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
+      if (i != 1000) {
+        break label152;
       }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("QzonePublicMsgServlet", 1, paramIntent + "onReceive error");
-        notifyObserver(null, 1004, false, new Bundle(), atzo.class);
-        return;
+      paramFromServiceMsg = bhkv.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
-      }
-      notifyObserver(null, 1004, false, new Bundle(), atzo.class);
-      if (paramFromServiceMsg != null) {}
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
+      notifyObserver(null, 1008, true, paramIntent, atzq.class);
       return;
-      label260:
-      boolean bool = false;
     }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
+    }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1008, false, paramIntent, atzq.class);
+    return;
+    label152:
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
+    }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1008, false, paramIntent, atzq.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    long l = paramIntent.getLongExtra("key_uin", 0L);
-    paramIntent = paramIntent.getStringExtra("has_photo");
-    Object localObject = new HashMap();
-    ((Map)localObject).put("has_photo", paramIntent);
-    bgxc localbgxc = new bgxc(l, (Map)localObject);
-    localObject = localbgxc.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
+    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
+    int i = paramIntent.getIntExtra("iOperType", 0);
+    Object localObject2 = paramIntent.getStringExtra("sUserID");
+    long l = paramIntent.getLongExtra("uin", 0L);
+    paramIntent = paramIntent.getStringExtra("qua");
+    QLog.d("QbossReportServlet", 2, "qboss onSend");
+    localObject2 = new bhkv(a((String)localObject1, i, (String)localObject2, l, paramIntent));
+    localObject1 = ((bhkv)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null)
     {
-      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localbgxc.uniKey());
+      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((bhkv)localObject2).uniKey());
       paramIntent = new byte[4];
     }
-    paramPacket.setTimeout(30000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbgxc.uniKey());
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((bhkv)localObject2).uniKey());
     paramPacket.putSendData(paramIntent);
   }
 }

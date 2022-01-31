@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import bhis;
+import bhjj;
 
 public class QZonePluginDownloadPortConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadPortConfig$1(bhis parambhis) {}
+  public QZonePluginDownloadPortConfig$1(bhjj parambhjj) {}
   
   public void run()
   {
-    bhis.a(this.this$0);
+    bhjj.a(this.this$0);
   }
 }
 

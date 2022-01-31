@@ -1,15 +1,6 @@
-import android.widget.FrameLayout.LayoutParams;
-
-public class bcmh
-  extends FrameLayout.LayoutParams
+public abstract interface bcmh
 {
-  public int a;
-  public int b;
-  
-  public bcmh(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.playmode.util;
 
-import tjx;
-import tjy;
-import tsw;
+import tju;
+import tjv;
+import tst;
 
 public class PlayModeUtils$10$1
   implements Runnable
 {
-  public PlayModeUtils$10$1(tsw paramtsw, tjx paramtjx) {}
+  public PlayModeUtils$10$1(tst paramtst, tju paramtju) {}
   
   public void run()
   {

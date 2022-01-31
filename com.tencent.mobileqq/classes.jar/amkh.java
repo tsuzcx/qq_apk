@@ -1,6 +1,6 @@
 public abstract interface amkh
 {
-  public abstract void onServiceSyncSucc(boolean paramBoolean);
+  public abstract void e();
 }
 
 

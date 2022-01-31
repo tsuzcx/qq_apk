@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget.datepicker;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -14,7 +14,7 @@ import android.text.format.Time;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bcsn;
+import bctc;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -24,7 +24,7 @@ import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import vzo;
+import vzl;
 
 public class SimpleMonthView
   extends View
@@ -59,7 +59,7 @@ public class SimpleMonthView
   private int T = 6;
   protected Paint a;
   final Time jdField_a_of_type_AndroidTextFormatTime = new Time(Time.getCurrentTimezone());
-  private bcsn jdField_a_of_type_Bcsn;
+  private bctc jdField_a_of_type_Bctc;
   private CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
   protected Boolean a;
   private String jdField_a_of_type_JavaLangString;
@@ -120,13 +120,13 @@ public class SimpleMonthView
     this.o = paramTypedArray.getColor(5, this.E);
     this.p = paramTypedArray.getColor(6, this.F);
     this.n = paramTypedArray.getColor(7, this.G);
-    this.K = vzo.a(paramContext, 16.0F);
-    this.L = vzo.a(paramContext, 10.0F);
-    this.M = vzo.a(paramContext, 50.0F);
-    this.N = vzo.a(paramContext, 342.0F);
-    this.O = vzo.a(paramContext, 12.5F);
-    this.P = vzo.a(paramContext, 14.0F);
-    this.Q = vzo.a(paramContext, 17.5F);
+    this.K = vzl.a(paramContext, 16.0F);
+    this.L = vzl.a(paramContext, 10.0F);
+    this.M = vzl.a(paramContext, 50.0F);
+    this.N = vzl.a(paramContext, 342.0F);
+    this.O = vzl.a(paramContext, 12.5F);
+    this.P = vzl.a(paramContext, 14.0F);
+    this.Q = vzl.a(paramContext, 17.5F);
     jdField_d_of_type_Int = paramTypedArray.getDimensionPixelSize(15, this.K);
     h = paramTypedArray.getDimensionPixelSize(17, this.K);
     f = paramTypedArray.getDimensionPixelSize(16, this.L);
@@ -158,7 +158,7 @@ public class SimpleMonthView
   {
     int i1;
     MessageRecord localMessageRecord;
-    if ((this.jdField_a_of_type_Bcsn != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
+    if ((this.jdField_a_of_type_Bctc != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_b_of_type_JavaLangBoolean.booleanValue()) || (paramCalendarDay.month != this.jdField_a_of_type_AndroidTextFormatTime.month) || (paramCalendarDay.year != this.jdField_a_of_type_AndroidTextFormatTime.year) || (paramCalendarDay.day >= this.jdField_a_of_type_AndroidTextFormatTime.monthDay)))
     {
       i1 = 0;
       if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
@@ -171,7 +171,7 @@ public class SimpleMonthView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bcsn.a(this, paramCalendarDay, localMessageRecord);
+      this.jdField_a_of_type_Bctc.a(this, paramCalendarDay, localMessageRecord);
       return;
       label129:
       i1 += 1;
@@ -342,7 +342,7 @@ public class SimpleMonthView
         i1 = this.p;
         label504:
         this.jdField_d_of_type_AndroidGraphicsPaint.setColor(i1);
-        paramCanvas.drawText(ajyc.a(2131714162), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(ajya.a(2131714173), i9, jdField_b_of_type_Int + i2 + jdField_d_of_type_Int / 2, this.jdField_d_of_type_AndroidGraphicsPaint);
         label541:
         if (i7 == 0) {
           break label745;
@@ -543,9 +543,9 @@ public class SimpleMonthView
     this.T = a();
   }
   
-  public void setOnDayClickListener(bcsn parambcsn)
+  public void setOnDayClickListener(bctc parambctc)
   {
-    this.jdField_a_of_type_Bcsn = parambcsn;
+    this.jdField_a_of_type_Bctc = parambctc;
   }
   
   public void setStartAndEndDate(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)

@@ -1,12 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
 
 public class bczb
-  extends aimv
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public TroopInfo a;
-  public TextView b;
+  public bczb(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

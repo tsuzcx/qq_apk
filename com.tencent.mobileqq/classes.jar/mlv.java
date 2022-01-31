@@ -1,19 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.SeekBar;
-import com.tencent.av.ui.beauty.BeautySeekView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
 
 public class mlv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  public mlv(BeautySeekView paramBeautySeekView) {}
+  public mlv(BeautyView paramBeautyView) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a) && (BeautySeekView.a(this.a) != null) && (BeautySeekView.a(this.a).getWidth() > 0))
-    {
-      this.a.a = false;
-      BeautySeekView.a(this.a, BeautySeekView.a(this.a).getProgress());
-    }
+    this.a.onClick(this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,44 +1,68 @@
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
 public class bise
-  extends BaseFilter
+  extends biwr
 {
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bijd jdField_a_of_type_Bijd;
+  private bisp jdField_a_of_type_Bisp;
+  private bitt jdField_a_of_type_Bitt;
+  private biwp jdField_a_of_type_Biwp;
+  private biwq jdField_a_of_type_Biwq;
+  private String jdField_a_of_type_JavaLangString;
+  private List<birj> jdField_a_of_type_JavaUtilList;
   
-  public bise()
+  public bise(Activity paramActivity, View paramView, biws parambiws)
   {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+    super(paramActivity, paramView, parambiws);
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.jdField_a_of_type_Bijd = ((bijd)parambiws.a(65537, new Object[0]));
   }
   
-  public Frame a()
+  private void d()
   {
-    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      float f2 = -1.0F + i * f1;
-      float f3 = f2 + f1;
-      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
-      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      i += 1;
+    this.jdField_a_of_type_Biwp = ((biwp)bijo.a(this.jdField_a_of_type_Bijd).a(biwp.class));
+    this.jdField_a_of_type_Biwp.a().a(this.jdField_a_of_type_Bijd, new bisg(this));
+    this.jdField_a_of_type_Biwq = ((biwq)bijo.a(this.jdField_a_of_type_Bijd).a(biwq.class));
+    this.jdField_a_of_type_Biwq.a().a(this.jdField_a_of_type_Bijd, new bish(this));
+    this.jdField_a_of_type_Bisp = ((bisp)bijo.a(this.jdField_a_of_type_Bijd).a(bisp.class));
+    this.jdField_a_of_type_Bisp.a().a(this.jdField_a_of_type_Bijd, new bisi(this));
+    this.jdField_a_of_type_Bisp.b().a(this.jdField_a_of_type_Bijd, new bisj(this));
+    this.jdField_a_of_type_Bisp.a(this.jdField_a_of_type_Bijd);
+  }
+  
+  private void e()
+  {
+    xfc.a(new View[] { this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView }).b(new float[] { 0.0F, 1.0F }).a(300L).a(new bisk(this)).b();
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
     }
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362171));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Bitt = new bitt(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Bitt.a(new bisf(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bitt);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    d();
   }
   
-  public void a(List<Frame> paramList)
+  public void g()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void clearGLSLSelf()
-  {
-    super.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    super.g();
   }
 }
 

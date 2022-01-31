@@ -1,149 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.style.ReplacementSpan;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.manager.Manager;
-import org.json.JSONObject;
 
 public class bbpl
-  implements Manager
+  extends ReplacementSpan
 {
   public int a;
-  QQAppInterface a;
-  public String a;
-  public boolean a;
   public int b;
-  public boolean b;
   
-  public bbpl(QQAppInterface paramQQAppInterface)
+  public bbpl(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  private void b(String paramString)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividuationABTestManager", 2, "parseJson jsonStr empty");
-      }
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = paramString.optInt("personalSwitch");
-        this.jdField_a_of_type_JavaLangString = paramString.optString("enterUrl");
-        if (paramString.has("isShowRed"))
-        {
-          i = paramString.getInt("isShowRed");
-          this.jdField_b_of_type_Int = i;
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("IndividuationABTestManager", 1, "parseJson error e = " + paramString.getMessage());
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_JavaLangString = "";
-        this.jdField_b_of_type_Int = -1;
-        paramString.printStackTrace();
-        return;
-      }
-      int i = -1;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
     if (QLog.isColorLevel()) {
-      QLog.d("IndividuationABTestManager", 2, "handlePostTask version = " + paramInt);
+      QLog.d("ColorSpan", 2, "onDraw");
     }
-    paramString = new File(BaseApplicationImpl.getContext().getFilesDir(), "individuationABTestFile_" + paramString);
-    try
-    {
-      if (paramString.exists()) {
-        paramString.delete();
-      }
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_b_of_type_Int = -1;
-      return;
-    }
-    finally {}
   }
   
-  public void a(String paramString)
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        Object localObject = null;
-        File localFile = new File(BaseApplicationImpl.getContext().getFilesDir(), "individuationABTestFile_" + paramString);
-        this.jdField_b_of_type_Boolean = true;
-        paramString = localObject;
-        try
-        {
-          if (localFile.exists()) {
-            paramString = bbdj.a(localFile);
-          }
-          if (TextUtils.isEmpty(paramString))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("IndividuationABTestManager", 2, "parseJsonFromFile jsont str is empty");
-          }
-        }
-        finally {}
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividuationABTestManager", 2, "parseJsonFromFile fileStr = " + paramString);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    b(paramString);
+    return 0;
   }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividuationABTestManager", 2, "updateJsonInfo jsonStr or uin empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividuationABTestManager", 2, "updateJsonInfo jsonStr = " + paramString1);
-      }
-      this.jdField_a_of_type_Boolean = true;
-      b(paramString1);
-      String str = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "individuationABTestFile_" + paramString2;
-      try
-      {
-        boolean bool = bbdj.a(str, paramString1);
-        if (!bool) {
-          continue;
-        }
-        bbjn.c(BaseApplicationImpl.getContext(), paramInt, paramString2);
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

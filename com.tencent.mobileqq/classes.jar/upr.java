@@ -1,28 +1,37 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
-
 public class upr
-  extends SimpleObserver<ups>
 {
-  public upr(upn paramupn) {}
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void a(ups paramups)
+  public upr(String paramString, boolean paramBoolean)
   {
-    super.onNext(paramups);
-    upn.a(this.a, paramups, false, new ErrorMessage());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onCancel()
+  public upr(String paramString, boolean paramBoolean, int paramInt)
   {
-    super.onCancel();
-    veg.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onError(@NonNull Error paramError)
+  private boolean a()
   {
-    super.onError(paramError);
-    upn.a(this.a, null, false, (ErrorMessage)paramError);
+    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    upu localupu = new upu();
+    localupu.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localupu.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Int != -1) {
+      localupu.c = this.jdField_a_of_type_Int;
+    }
+    syo.a().a(localupu, new ups(this, paramBoolean));
   }
 }
 

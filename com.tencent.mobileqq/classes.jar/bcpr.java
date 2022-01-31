@@ -1,23 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class bcpr
-  implements DialogInterface.OnKeyListener
+public class bcpr
+  implements URLDrawableDownListener
 {
-  bcpr(bcpq parambcpq, boolean paramBoolean) {}
+  final String jdField_a_of_type_JavaLangString;
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  final String b;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public bcpr(View paramView, String paramString1, String paramString2)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null)
+    {
+      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
+      paramView.setVisibility(8);
     }
-    return false;
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null) {
+      paramView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcpr
  * JD-Core Version:    0.7.0.1
  */

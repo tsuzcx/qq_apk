@@ -1,9 +1,10 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
 public abstract interface agst
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public abstract void a_(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void aq_();
 }
 
 

@@ -1,64 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener.1;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bime
-  implements bilz
+class bime
+  implements Animator.AnimatorListener
 {
-  private bime(AEBottomListScrollView paramAEBottomListScrollView) {}
+  bime(bima parambima) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (AEBottomListScrollView.a(this.a) == null) {}
-    int i;
-    RecyclerView.ViewHolder localViewHolder;
-    do
-    {
-      return;
-      i = AEBottomListScrollView.a(this.a).b();
-      localViewHolder = this.a.a(i);
-    } while (localViewHolder == null);
-    AEBottomListScrollView.a(this.a, localViewHolder, i);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
+    }
   }
   
-  public void a(float paramFloat)
-  {
-    if (AEBottomListScrollView.a(this.a) == null) {}
-    int i;
-    int j;
-    do
-    {
-      return;
-      i = this.a.a();
-      j = AEBottomListScrollView.a(this.a).a();
-    } while (i == j);
-    AEBottomListScrollView.a(this.a, paramFloat, i, j, this.a.a(i), this.a.a(j));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b()
-  {
-    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {}
-    int i;
-    RecyclerView.ViewHolder localViewHolder;
-    do
-    {
-      return;
-      i = AEBottomListScrollView.a(this.a).b();
-      localViewHolder = this.a.a(i);
-    } while (localViewHolder == null);
-    AEBottomListScrollView.b(this.a, localViewHolder, i);
-    AEBottomListScrollView.c(this.a, localViewHolder, i);
-  }
-  
-  public void c()
-  {
-    this.a.post(new AEBottomListScrollView.ScrollStateListener.1(this));
-  }
-  
-  public void d()
-  {
-    AEBottomListScrollView.a(this.a);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

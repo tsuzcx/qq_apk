@@ -1,33 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
 
-final class bcvr
-  implements DialogInterface.OnClickListener
+public class bcvr
+  implements View.OnClickListener
 {
-  bcvr(bcvx parambcvx, int paramInt) {}
+  public bcvr(ShareActionSheetV2 paramShareActionSheetV2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bcvx.a(2);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bcvm.a("0X80094F8");
-    }
-    do
+    if (this.a.a.isShowing())
     {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bcvm.a("0X80094F7");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 3);
-    bcvm.a("0X80094F9");
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcvr
  * JD-Core Version:    0.7.0.1
  */

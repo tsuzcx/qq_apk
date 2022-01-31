@@ -1,61 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class aecb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aecb(aebz paramaebz) {}
+  aecb(aebx paramaebx, MessageForText paramMessageForText) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = actn.a(paramView);
-    if (!(paramView instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    MessageForText localMessageForText;
-    do
-    {
-      return;
-      localMessageForText = (MessageForText)paramView;
-      if (localMessageForText.sb == null) {
-        break;
-      }
-      paramView = localMessageForText.sb.toString();
-      aaok localaaok = new aaok();
-      if ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
-      {
-        localObject = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-        if (localObject != null)
-        {
-          localObject = (adiy)((BaseChatPie)localObject).a(27);
-          if (localObject != null) {
-            ((adiy)localObject).a(paramView, localaaok, 0);
-          }
-        }
-      }
-      Object localObject = MessageForText.getTroopMemberInfoFromExtrJson(localMessageForText.getExtInfoFromExtStr(axad.i));
-      aaod.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView, (ArrayList)localObject, localaaok);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1);
-    paramView = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60);
-    if ((paramView != null) && (paramView.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
-    for (paramView = "2";; paramView = "1")
-    {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_msg", "", "grp_msg", "clk_like", 0, 0, localMessageForText.frienduin, "", paramView, "");
-      return;
-      paramView = localMessageForText.msg;
-      break;
-    }
+    aanz.a(this.jdField_a_of_type_Aebx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aebx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebx.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
 }
 

@@ -1,10 +1,22 @@
-public abstract interface rtc
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+
+public class rtc
+  implements rtj
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public rtc(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
   
-  public abstract boolean a(int paramInt);
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rtd(this, paramInt1, paramInt2));
+  }
 }
 
 

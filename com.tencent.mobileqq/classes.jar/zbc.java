@@ -1,10 +1,14 @@
-import com.tencent.image.URLDrawable;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-public abstract interface zbc
+public class zbc
+  implements ywe
 {
-  public abstract void a(URLDrawable paramURLDrawable);
+  public zbc(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public abstract void b(URLDrawable paramURLDrawable);
+  public void a(Object... paramVarArgs)
+  {
+    GdtVideoCommonView.a(this.a);
+  }
 }
 
 

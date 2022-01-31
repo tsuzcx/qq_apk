@@ -1,64 +1,44 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
 
 public class aswq
-  implements BusinessObserver
+  extends asvl
 {
-  public aswq(MusicPlayerActivity paramMusicPlayerActivity, Intent paramIntent) {}
+  public aswq(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (paramBoolean) {}
-    try
+    if (paramSongInfo != null)
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject != null)
-      {
-        paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
-        {
-          GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
-          localObject = xmt.a(paramBundle.iconsURL, 16);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
-          Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-          paramBundle = (Bundle)localObject;
-          if (localObject == null) {
-            paramBundle = "";
-          }
-          localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
-        }
+      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
+      if (!MusicPlayerActivity.b().containsKey(localObject)) {
+        break label64;
       }
+      localObject = (asww)MusicPlayerActivity.b().get(localObject);
+      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((asww)localObject).a);
+      MusicPlayerActivity.a(this.a, (asww)localObject, paramSongInfo);
     }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MusicPlayerActivity", 2, paramBundle.getMessage());
-        }
-      }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
-    }
-    paramBundle = axuy.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-    if (paramBundle == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerActivity", 2, "build struct msg fail");
-      }
+    label64:
+    while (MusicPlayerActivity.a().containsKey(localObject)) {
       return;
     }
+    Object localObject = MusicPlayerActivity.a(this.a);
+    if (localObject != null) {}
+    for (int i = ((asvn)localObject).c();; i = 0)
+    {
+      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
+      MusicPlayerActivity.a(this.a, paramSongInfo.b, paramSongInfo.g, paramSongInfo.d, (String)localObject, false, false);
+      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.b, paramSongInfo.g, paramSongInfo.f, String.valueOf(paramSongInfo.a), paramSongInfo.c, i);
+      return;
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
   }
 }
 

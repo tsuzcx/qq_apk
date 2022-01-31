@@ -1,42 +1,23 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import android.view.View;
 
 public class xfj
-  implements Manager
+  implements xfn
 {
-  protected static BaseApplicationImpl a;
-  public static boolean a;
-  private AppInterface a;
+  private float jdField_a_of_type_Float = 0.8F;
+  private xfh jdField_a_of_type_Xfh = xfh.a(1);
+  private float jdField_b_of_type_Float = 0.2F;
+  private xfh jdField_b_of_type_Xfh = xfh.b(1);
   
-  static
+  public void a(View paramView, float paramFloat)
   {
-    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Xfh.a(paramView);
+    this.jdField_b_of_type_Xfh.a(paramView);
+    paramFloat = Math.abs(paramFloat);
+    float f = this.jdField_a_of_type_Float;
+    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
-  
-  public xfj(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    a();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = false;
-      }
-      xfr.a();
-      QLog.i("Q.videostory.VSManager", 1, "init");
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy() {}
 }
 
 

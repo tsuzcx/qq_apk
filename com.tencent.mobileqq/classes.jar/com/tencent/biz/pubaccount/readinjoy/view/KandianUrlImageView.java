@@ -4,12 +4,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import rai;
+import raf;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
-  private rai jdField_a_of_type_Rai;
+  private raf jdField_a_of_type_Raf;
   private boolean jdField_a_of_type_Boolean;
   
   public KandianUrlImageView(Context paramContext)
@@ -37,8 +37,8 @@ public class KandianUrlImageView
   protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Rai != null) {
-      this.jdField_a_of_type_Rai.a(paramView, paramInt);
+    if (this.jdField_a_of_type_Raf != null) {
+      this.jdField_a_of_type_Raf.a(paramView, paramInt);
     }
   }
   
@@ -47,9 +47,9 @@ public class KandianUrlImageView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setVisibilityChangedListener(rai paramrai)
+  public void setVisibilityChangedListener(raf paramraf)
   {
-    this.jdField_a_of_type_Rai = paramrai;
+    this.jdField_a_of_type_Raf = paramraf;
   }
 }
 

@@ -1,78 +1,110 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amxt
-  implements ampd<String>
+  extends ampa<amxs>
 {
-  public String a;
-  public HashMap<String, amxu> a;
-  
-  public amxt()
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new amxu(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    return 396;
   }
   
-  public void a(String paramString)
+  @NonNull
+  public amxs a(int paramInt)
   {
-    int i;
-    Object localObject2;
-    amxu localamxu;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.length() == 0) {
-        return;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = localJSONObject.names();
-      i = 0;
-      if (i >= paramString.length()) {
-        break label212;
-      }
-      localObject1 = paramString.getString(i).trim().toLowerCase();
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label213;
-      }
-      localObject2 = localJSONObject.optJSONObject((String)localObject1);
-      localamxu = new amxu(this);
-      localamxu.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
-      localamxu.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
-      localamxu.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
-      if (!((String)localObject1).contains(",")) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localamxu);
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    Object localObject1 = ((String)localObject1).split(",");
-    int j = 0;
-    for (;;)
-    {
-      if (j < localObject1.length)
+    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new amxs();
+  }
+  
+  @Nullable
+  public amxs a(amph[] paramArrayOfamph)
+  {
+    QLog.i("QFileCommonConfigProcessor", 1, "onParsed");
+    if (paramArrayOfamph != null) {
+      try
       {
-        localObject2 = localObject1[j].trim().toLowerCase();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localamxu);
+        if (paramArrayOfamph.length > 0)
+        {
+          paramArrayOfamph = (amxs)ampv.a(paramArrayOfamph[0].jdField_a_of_type_JavaLangString, amxs.class);
+          return paramArrayOfamph;
         }
       }
-      else
-      {
-        label212:
-        label213:
-        i += 1;
-        break;
-      }
-      j += 1;
+      catch (QStorageInstantiateException paramArrayOfamph) {}
     }
+    return null;
+  }
+  
+  public Class<amxs> a()
+  {
+    return amxs.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(amxs paramamxs)
+  {
+    QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {}
+    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
+    {
+      if (localObject1 != null)
+      {
+        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_up", paramamxs.jdField_a_of_type_Boolean);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_down", paramamxs.b);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2czip_down", paramamxs.c);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_thumb", paramamxs.d);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_up", paramamxs.e);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_down", paramamxs.f);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disczip_down", paramamxs.g);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_thumb", paramamxs.h);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_up", paramamxs.i);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_down", paramamxs.j);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troopzip_down", paramamxs.k);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_thumb", paramamxs.l);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew", paramamxs.m);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_svip", paramamxs.n);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamxs.o);
+        ((SharedPreferences.Editor)localObject2).apply();
+        QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramamxs.jdField_a_of_type_JavaLangString);
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putBoolean("troop_video_preivew", paramamxs.m);
+        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_svip", paramamxs.n);
+        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamxs.o);
+        paramamxs = (aoww)((QQAppInterface)localObject1).getManager(317);
+        if (paramamxs != null) {
+          paramamxs.a((Bundle)localObject2);
+        }
+      }
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,146 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.module.base.inter.IDownloadConfig;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.plugin.QZonePluginDownloadConfig.1;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import java.util.HashMap;
-import java.util.Properties;
-import mqq.app.AppRuntime;
+import android.os.IInterface;
 
-public class bhip
-  implements IDownloadConfig
+public abstract interface bhip
+  extends IInterface
 {
-  private boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("PhotoDownload", "EnableColor", -1) == 1;
-  }
+  public abstract void a();
   
-  public boolean canRetCodeRetry(int paramInt)
-  {
-    return false;
-  }
+  public abstract void a(float paramFloat);
   
-  public boolean enableDns114()
-  {
-    return true;
-  }
+  public abstract void a(int paramInt);
   
-  public long getConfig(String paramString1, String paramString2, long paramLong)
-  {
-    return QzoneConfig.getInstance().getConfig(paramString1, paramString2, paramLong);
-  }
+  public abstract void b();
   
-  public long getCurrentUin()
-  {
-    try
-    {
-      long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-      return l;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("QzonePluginDownloadConfig", 1, "", localException);
-    }
-    return 0L;
-  }
-  
-  public long getDefaultHttp2LiveTime()
-  {
-    return 0L;
-  }
-  
-  public int getDefaultHttp2ThreadPoolSize()
-  {
-    return 0;
-  }
-  
-  public long getDefaultHttpLiveTime()
-  {
-    return 0L;
-  }
-  
-  public int getDefaultThreadPoolSize()
-  {
-    return 0;
-  }
-  
-  public int getNetworkStackType()
-  {
-    return bhax.a(1);
-  }
-  
-  public int getOperator()
-  {
-    int i = xpb.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
-    }
-    return i;
-  }
-  
-  public String getQUA()
-  {
-    return bgxr.a();
-  }
-  
-  public String getRefer()
-  {
-    return "mqq";
-  }
-  
-  public int getReportPercent()
-  {
-    if (a()) {
-      return 100;
-    }
-    return 5;
-  }
-  
-  public String getTerminal()
-  {
-    return "Android-QZoneInQQ";
-  }
-  
-  public String getUserAgent()
-  {
-    return "qzone";
-  }
-  
-  public String getVersion()
-  {
-    return bgxr.b();
-  }
-  
-  public boolean isFromQzoneAlbum(String paramString)
-  {
-    return false;
-  }
-  
-  public int photoDownloadKeepAliveConfig()
-  {
-    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAlive", 0);
-  }
-  
-  public int photoDownloadKeepAliveProxyConfig()
-  {
-    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAliveProxy", 1);
-  }
-  
-  public void reportToBeacon(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap, long paramLong) {}
-  
-  public void reportToLp(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2) {}
-  
-  public void reportToMta(String paramString, Properties paramProperties)
-  {
-    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new QZonePluginDownloadConfig.1(this, paramString, paramProperties));
-  }
-  
-  public boolean shouldUseHttp2(String paramString)
-  {
-    return false;
-  }
+  public abstract void c();
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bblr;
-import bbls;
-import bblt;
+import bbmf;
+import bbmg;
+import bbmh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 
@@ -31,7 +31,7 @@ public class QQCustomMenuImageLayout
   public static int f = 90;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bblr jdField_a_of_type_Bblr;
+  private bbmf jdField_a_of_type_Bbmf;
   private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   public int b;
   private ImageView b;
@@ -93,7 +93,7 @@ public class QQCustomMenuImageLayout
   {
     ImageView localImageView = new ImageView(getContext());
     localImageView.setImageResource(2130838613);
-    localImageView.setContentDescription(ajyc.a(2131710201));
+    localImageView.setContentDescription(ajya.a(2131710212));
     localImageView.setBackgroundDrawable(null);
     localImageView.setOnClickListener(this);
     localImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -114,35 +114,35 @@ public class QQCustomMenuImageLayout
     return localTextView;
   }
   
-  private TextView a(bblt parambblt)
+  private TextView a(bbmh parambbmh)
   {
-    bbls localbbls = new bbls(this, getContext());
-    localbbls.setText(parambblt.a());
-    localbbls.setTextSize(10.0F);
+    bbmg localbbmg = new bbmg(this, getContext());
+    localbbmg.setText(parambbmh.a());
+    localbbmg.setTextSize(10.0F);
     Resources localResources = getContext().getResources();
-    localbbls.setMinimumWidth(90);
-    localbbls.setMaxLines(1);
+    localbbmg.setMinimumWidth(90);
+    localbbmg.setMaxLines(1);
     try
     {
-      Drawable localDrawable = getContext().getResources().getDrawable(parambblt.b());
-      localbbls.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
-      localbbls.setCompoundDrawablePadding(0);
-      int i = actn.a(9.0F, localResources);
-      localbbls.setPadding(0, i, 0, i);
-      localbbls.setContentDescription(parambblt.a());
-      localbbls.setId(parambblt.a());
-      localbbls.setTextColor(-855638017);
-      localbbls.setBackgroundDrawable(null);
-      localbbls.setIncludeFontPadding(true);
-      localbbls.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localbbls.setGravity(17);
-      return localbbls;
+      Drawable localDrawable = getContext().getResources().getDrawable(parambbmh.b());
+      localbbmg.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      localbbmg.setCompoundDrawablePadding(0);
+      int i = actj.a(9.0F, localResources);
+      localbbmg.setPadding(0, i, 0, i);
+      localbbmg.setContentDescription(parambbmh.a());
+      localbbmg.setId(parambbmh.a());
+      localbbmg.setTextColor(-855638017);
+      localbbmg.setBackgroundDrawable(null);
+      localbbmg.setIncludeFontPadding(true);
+      localbbmg.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localbbmg.setGravity(17);
+      return localbbmg;
     }
     catch (RuntimeException localRuntimeException)
     {
       for (;;)
       {
-        actn.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
+        actj.a("QQCustomMenuImageLayout", "creatTextViewWithTopIcon ERR", localRuntimeException);
         Object localObject = null;
       }
     }
@@ -151,14 +151,14 @@ public class QQCustomMenuImageLayout
   public void a()
   {
     removeAllViews();
-    int m = this.jdField_a_of_type_Bblr.a();
+    int m = this.jdField_a_of_type_Bbmf.a();
     int i = 0;
     Object localObject;
     int k;
     int j;
     if (i < m)
     {
-      localObject = a(this.jdField_a_of_type_Bblr.a(i));
+      localObject = a(this.jdField_a_of_type_Bbmf.a(i));
       k = f;
       if (k < d)
       {
@@ -233,7 +233,7 @@ public class QQCustomMenuImageLayout
       removeAllViews();
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838608);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131710194));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131710205));
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F), (int)(this.h * jdField_a_of_type_Float), (int)(jdField_a_of_type_Float * 10.0F));
@@ -243,9 +243,9 @@ public class QQCustomMenuImageLayout
       addView(this.jdField_a_of_type_AndroidWidgetImageView);
       int k = 0 + i;
       int j = this.g;
-      if (j < this.jdField_a_of_type_Bblr.a())
+      if (j < this.jdField_a_of_type_Bbmf.a())
       {
-        localObject = a(this.jdField_a_of_type_Bblr.a(j));
+        localObject = a(this.jdField_a_of_type_Bbmf.a(j));
         int m = f;
         if (m < d) {
           i = d;
@@ -286,11 +286,11 @@ public class QQCustomMenuImageLayout
     b();
   }
   
-  public void setMenu(bblr parambblr)
+  public void setMenu(bbmf parambbmf)
   {
-    this.jdField_a_of_type_Bblr = parambblr;
+    this.jdField_a_of_type_Bbmf = parambbmf;
     if (QLog.isColorLevel()) {
-      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bblr.toString());
+      QLog.d("QQCustomMenuImageLayout", 4, "MENU:" + this.jdField_a_of_type_Bbmf.toString());
     }
   }
   

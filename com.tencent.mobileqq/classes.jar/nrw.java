@@ -1,52 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.view.EcshopNewPageFragment;
 
 public class nrw
+  implements bctk
 {
-  public static nrt a()
-  {
-    nrt localnrt2 = nrv.a();
-    nrt localnrt1 = localnrt2;
-    if (localnrt2 == null) {
-      localnrt1 = new nrt();
-    }
-    return localnrt1;
-  }
+  public nrw(EcshopNewPageFragment paramEcshopNewPageFragment) {}
   
-  public static nru a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    if ((paramInt == 5) || (paramInt == 4))
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        nru localnru = (nru)((Iterator)localObject).next();
-        if (localnru.jdField_a_of_type_Int == paramInt) {
-          return localnru;
-        }
-      }
+      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+      paramView.putExtra("uin", "3046055438");
+      paramView.putExtra("from_tab", true);
+      this.a.startActivity(paramView);
     }
-    return new nru();
-  }
-  
-  public static boolean a()
-  {
-    nrt localnrt = nrv.a();
-    if (localnrt == null) {}
-    for (String str = "false";; str = localnrt.jdField_a_of_type_Int + "")
-    {
-      QLog.i("EcshopEcshopConfUtil", 2, str);
-      if (localnrt != null) {
-        break;
-      }
-      return false;
+    while (paramInt != 1) {
+      return;
     }
-    if (localnrt.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    this.a.getActivity().finish();
   }
 }
 

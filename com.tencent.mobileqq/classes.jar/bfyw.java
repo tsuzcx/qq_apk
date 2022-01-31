@@ -1,8 +1,15 @@
-public abstract interface bfyw
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+
+class bfyw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(boolean paramBoolean);
+  bfyw(bfyv parambfyv, bfyn parambfyn) {}
   
-  public abstract void c();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_Bfyv.a(paramValueAnimator.getAnimatedFraction());
+  }
 }
 
 

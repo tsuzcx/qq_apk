@@ -1,81 +1,86 @@
-import android.util.Log;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-abstract class behr
-  implements behn
+public class behr
+  implements besz
 {
-  protected Map<String, behj> a = new HashMap();
-  protected Map<String, behk> b = new HashMap();
-  protected Map<String, behk> c = new HashMap();
+  private behq a;
   
-  public Map<String, behk> a()
+  public behr(behq parambehq)
   {
-    return this.b;
+    this.a = parambehq;
   }
   
-  public void a()
+  public Activity a()
   {
-    if (this.c != null) {
-      this.c.clear();
-    }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.a != null) {
-      this.a.clear();
-    }
+    return this.a.a();
   }
   
-  public boolean a(behj parambehj)
+  public besl a()
   {
-    if (parambehj == null) {}
-    while (this.a == null) {
-      return false;
-    }
-    if (this.a.containsKey(parambehj.jdField_a_of_type_JavaLangString))
+    MiniAppInfo localMiniAppInfo = a();
+    if (localMiniAppInfo == null)
     {
-      Log.w("PermissionParser", "Ignore duplicated event entry " + parambehj.jdField_a_of_type_JavaLangString);
-      return false;
+      betc.c("MiniRuntime", "getShareState. Failed to get share state, mini app info is null");
+      return null;
     }
-    this.a.put(parambehj.jdField_a_of_type_JavaLangString, parambehj);
-    return true;
+    besl localbesl = (besl)this.a.a(beki.a());
+    if ((localMiniAppInfo.verType != 3) || (bfhk.b()))
+    {
+      localbesl.b = true;
+      localbesl.c = true;
+    }
+    if (bema.a("MiniApp", "mini_app_share_to_wx_switcher", 1) != 1)
+    {
+      localbesl.f = false;
+      localbesl.g = false;
+    }
+    localbesl.a = this.a.f();
+    return localbesl;
   }
   
-  public boolean a(behk parambehk)
+  public MiniAppInfo a()
   {
-    if (parambehk == null) {
-      return false;
-    }
-    if (parambehk.jdField_a_of_type_Boolean)
+    return this.a.a();
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    switch (paramInt)
     {
-      if (this.c.containsKey(parambehk.jdField_a_of_type_JavaLangString))
-      {
-        Log.w("PermissionParser", "Ignore duplicated system permission entry " + parambehk.jdField_a_of_type_JavaLangString);
-        return false;
+    default: 
+      Bundle localBundle = paramBundle;
+      if (paramBundle == null) {
+        localBundle = new Bundle();
       }
-      this.c.put(parambehk.jdField_a_of_type_JavaLangString, parambehk);
+      localBundle.putInt("id", paramInt);
+      this.a.a(bekm.a(14, localBundle));
+      return;
+    case 1: 
+      this.a.a(bekm.a(2));
+      return;
+    case 2: 
+      this.a.a(bekm.a(6));
+      return;
+    case 3: 
+      this.a.a(bekm.a(7));
+      return;
+    case 4: 
+      this.a.a(bekm.a(8));
+      return;
     }
-    for (;;)
-    {
-      return true;
-      if (this.b.containsKey(parambehk.jdField_a_of_type_JavaLangString))
-      {
-        Log.w("PermissionParser", "Ignore duplicated scope permission entry " + parambehk.jdField_a_of_type_JavaLangString);
-        return false;
-      }
-      this.b.put(parambehk.jdField_a_of_type_JavaLangString, parambehk);
-    }
+    this.a.a(bekm.a(13, paramBundle));
   }
   
-  public Map<String, behk> b()
+  public boolean a()
   {
-    return this.c;
+    return ((Boolean)this.a.a(beko.a(2))).booleanValue();
   }
   
-  public Map<String, behj> c()
+  public boolean b()
   {
-    return this.a;
+    return ((Boolean)this.a.a(beko.a(1))).booleanValue();
   }
 }
 

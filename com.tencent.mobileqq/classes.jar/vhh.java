@@ -1,26 +1,16 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
-class vhh
-  implements View.OnTouchListener
+public class vhh
+  implements DialogInterface.OnDismissListener
 {
-  vhh(vhg paramvhg) {}
+  public vhh(EditVideoMusic paramEditVideoMusic) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
-    }
+    this.a.a.a(0);
+    vej.a("0X80076DD");
   }
 }
 

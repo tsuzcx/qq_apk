@@ -1,32 +1,35 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import java.util.Random;
 
-class bhnb
-  implements InvocationHandler
+public class bhnb
+  extends bhnl
 {
-  bhnb(bhna parambhna) {}
+  protected int a;
+  protected Random a;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public bhnb(int paramInt)
   {
-    paramObject = paramMethod.getName();
-    boolean bool;
-    if ("onLoad".equals(paramObject)) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
-      {
-        int i = ((Integer)paramArrayOfObject[0]).intValue();
-        bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-        bhna.a(this.a, i, bool);
-      }
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_Int = 1;
+    a(paramInt);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 1) {
+      i = 1;
     }
-    for (;;)
-    {
-      return null;
-      if (("onLoadFinish".equals(paramObject)) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
-      {
-        bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
-        bhna.a(this.a, bool);
-      }
-    }
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
   }
 }
 

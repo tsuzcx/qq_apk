@@ -1,23 +1,24 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class ouh
-  implements ViewTreeObserver.OnPreDrawListener
+public class ouh
+  extends BroadcastReceiver
 {
-  ouh(oug paramoug) {}
+  public ouh(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public boolean onPreDraw()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
-    Object localObject = new int[2];
-    localView.getLocationOnScreen((int[])localObject);
-    localObject = this.a.a.a(oug.a(this.a), (int[])localObject);
-    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
-    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oug.a(this.a));
-    return false;
+    if (this.a.getActivity() != null)
+    {
+      if (ReadInJoyDailyFragment.a(this.a) != null) {
+        ReadInJoyDailyFragment.a(this.a).i();
+      }
+      ReadInJoyDailyFragment.a(this.a, true);
+      this.a.getActivity().finish();
+    }
   }
 }
 

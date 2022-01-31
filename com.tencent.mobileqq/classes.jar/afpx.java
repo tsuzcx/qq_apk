@@ -1,40 +1,46 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class afpx
-  implements bfob
+public abstract class afpx
+  implements afqk
 {
-  afpx(afpw paramafpw) {}
+  protected Activity a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public afpx(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.RecommendsAdapter", 2, "onScrollStateChanged firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    if ((paramInt1 >= 1) && (paramInt1 - 1 >= 0) && (paramInt1 - 1 < this.a.getCount()))
-    {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 - 1);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
-      }
-    }
-    if ((paramInt1 + paramInt2 < paramInt3) && (paramInt1 + paramInt2 >= 0) && (paramInt1 + paramInt2 < this.a.getCount()))
-    {
-      paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1 + paramInt2);
-      if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
-      }
-    }
+    this.a = paramActivity;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public Activity a()
   {
-    if (paramInt != 0) {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      FrameHelperActivity.c(paramBoolean);
       return;
     }
-    this.a.e();
   }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

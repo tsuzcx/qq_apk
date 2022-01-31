@@ -1,32 +1,12 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import android.content.Context;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 public class atns
-  extends xpz
+  extends atod
 {
-  public atns(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
-  
-  public xpg a(Activity paramActivity, xpm paramxpm)
+  public atns(Context paramContext, PicInfo paramPicInfo)
   {
-    return new atnu(paramActivity, paramxpm);
-  }
-  
-  public xpi a(Activity paramActivity, xpm paramxpm)
-  {
-    return new atny((PicBrowserActivity)paramActivity, paramxpm);
-  }
-  
-  public xpm a(Activity paramActivity)
-  {
-    paramActivity = new atoe(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public xpn a(Activity paramActivity, xpm paramxpm)
-  {
-    return null;
+    super(paramContext, paramPicInfo);
   }
 }
 

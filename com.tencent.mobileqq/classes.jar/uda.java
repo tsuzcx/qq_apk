@@ -1,21 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-
-public class uda
-  implements Animation.AnimationListener
+public abstract interface uda
 {
-  public uda(ExploreAnimalView paramExploreAnimalView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.startAnimation(this.a.b);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(ucz paramucz);
 }
 
 

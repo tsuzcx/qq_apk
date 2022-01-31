@@ -1,8 +1,6 @@
 public abstract interface amlo
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract long a();
 }
 
 

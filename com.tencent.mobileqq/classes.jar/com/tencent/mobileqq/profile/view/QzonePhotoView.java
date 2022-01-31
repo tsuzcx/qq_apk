@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile.view;
 
 import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import ajtk;
+import ajti;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,16 +25,16 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import ausu;
-import auuw;
-import avad;
-import avae;
+import ausw;
+import auuy;
 import avaf;
+import avag;
 import avah;
-import bazo;
-import bbbd;
-import bbev;
-import bfww;
+import avaj;
+import bbac;
+import bbbr;
+import bbfj;
+import bfxn;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
@@ -55,20 +55,20 @@ import java.util.Map;
 
 public class QzonePhotoView
   extends LinearLayout
-  implements Handler.Callback, bfww
+  implements Handler.Callback, bfxn
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avae(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avag(this);
   View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private auuw jdField_a_of_type_Auuw;
+  private auuy jdField_a_of_type_Auuy;
   public QQAppInterface a;
   CoverCacheData jdField_a_of_type_CooperationQzoneModelCoverCacheData;
   private String jdField_a_of_type_JavaLangString;
-  private List<avah> jdField_a_of_type_JavaUtilList;
+  private List<avaj> jdField_a_of_type_JavaUtilList;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private float jdField_b_of_type_Float;
@@ -92,7 +92,7 @@ public class QzonePhotoView
     super(paramContext, paramAttributeSet);
   }
   
-  private List<avah> a(String paramString, List<Map<Integer, String>> paramList)
+  private List<avaj> a(String paramString, List<Map<Integer, String>> paramList)
   {
     int j = 0;
     LinkedList localLinkedList = new LinkedList();
@@ -117,7 +117,7 @@ public class QzonePhotoView
       paramString = (Map)paramList.get(j);
       if (paramString != null)
       {
-        paramString = new avah(j, 100, paramString);
+        paramString = new avaj(j, 100, paramString);
         paramString.jdField_c_of_type_Int = localLinkedList.size();
         localLinkedList.add(paramString);
       }
@@ -159,7 +159,7 @@ public class QzonePhotoView
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void a(BaseActivity paramBaseActivity, auuw paramauuw)
+  public void a(BaseActivity paramBaseActivity, auuy paramauuy)
   {
     boolean bool = false;
     if (QLog.isColorLevel()) {
@@ -167,25 +167,25 @@ public class QzonePhotoView
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
     this.jdField_a_of_type_AndroidAppActivity = paramBaseActivity;
-    this.jdField_a_of_type_Auuw = paramauuw;
+    this.jdField_a_of_type_Auuy = paramauuy;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     this.d = 0;
-    this.jdField_a_of_type_JavaLangString = paramauuw.a.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131561626, this, true);
+    this.jdField_a_of_type_JavaLangString = paramauuy.a.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131561625, this, true);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
     int i = getResources().getDimensionPixelSize(2131298346);
     this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131298345);
     this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int - i * 2 - this.jdField_c_of_type_Int * 3) / 4);
-    if (paramauuw.a.jdField_a_of_type_Int == 0) {
+    if (paramauuy.a.jdField_a_of_type_Int == 0) {
       bool = true;
     }
     this.jdField_b_of_type_Boolean = bool;
     ThreadManager.post(new QzonePhotoView.1(this), 8, null, true);
-    paramauuw = Message.obtain();
-    paramauuw.what = 100;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramauuw);
+    paramauuy = Message.obtain();
+    paramauuy.what = 100;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramauuy);
     this.e = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(paramBaseActivity));
   }
   
@@ -197,7 +197,7 @@ public class QzonePhotoView
     if (paramCoverCacheData != null) {
       a(a(paramCoverCacheData.b, paramCoverCacheData.jdField_a_of_type_JavaUtilArrayList));
     }
-    if ((this.jdField_a_of_type_CooperationQzoneModelCoverCacheData != null) && (bbbd.a("PhotoWallCover", this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.b)))
+    if ((this.jdField_a_of_type_CooperationQzoneModelCoverCacheData != null) && (bbbr.a("PhotoWallCover", this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.b)))
     {
       if (QLog.isColorLevel()) {
         QLog.i("ProfileCard.QzonePhotoView", 2, "need get req cover info");
@@ -208,7 +208,7 @@ public class QzonePhotoView
     }
   }
   
-  public void a(List<avah> paramList)
+  public void a(List<avaj> paramList)
   {
     for (;;)
     {
@@ -225,34 +225,34 @@ public class QzonePhotoView
         }
         i = paramList.size();
         this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371991));
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373659);
-        this.jdField_b_of_type_AndroidViewView.setTag(new ausu(25, null));
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373661);
+        this.jdField_b_of_type_AndroidViewView.setTag(new ausw(25, null));
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject2 = bazo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1L);
+        localObject2 = bbac.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1L);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localObject1 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bazo.a(getContext(), 188);
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bbac.a(getContext(), 188);
           ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = ((int)Math.ceil(((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight * 1.0D / 376.0D * 640.0D));
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = new ColorDrawable(getResources().getColor(2131165359));
           localObject2 = URLDrawable.getDrawable(new File((String)localObject2, "qvip_profile_photo_black_addimage_tips.png"), (URLDrawable.URLDrawableOptions)localObject1);
           ((Drawable)localObject2).setBounds(0, 0, ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth, ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight);
           this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(new ausu(25, null));
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(new ausw(25, null));
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         localObject1 = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131371492);
         localObject2 = (CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131371225);
         if (i > 0)
         {
-          avaf localavaf = new avaf(this);
-          localavaf.a(paramList);
-          localavaf.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-          paramList = new AdapterViewPagerAdapter(getContext(), localavaf, 8);
-          paramList.a(new avad(this));
+          avah localavah = new avah(this);
+          localavah.a(paramList);
+          localavah.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+          paramList = new AdapterViewPagerAdapter(getContext(), localavah, 8);
+          paramList.a(new avaf(this));
           ViewGroup.LayoutParams localLayoutParams = ((ViewPager)localObject1).getLayoutParams();
           localLayoutParams.width = this.jdField_a_of_type_Int;
-          if (localavaf.getCount() > 4)
+          if (localavah.getCount() > 4)
           {
             i = this.jdField_b_of_type_Int * 2 + this.jdField_c_of_type_Int;
             localLayoutParams.height = i;
@@ -308,7 +308,7 @@ public class QzonePhotoView
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCard.QzonePhotoView", 2, "onGetQZoneCover|isSuc = " + paramBoolean + ",uin=" + paramString + ",mUin=" + this.jdField_a_of_type_JavaLangString);
     }
-    if (!bbbd.a(paramString, this.jdField_a_of_type_JavaLangString)) {}
+    if (!bbbr.a(paramString, this.jdField_a_of_type_JavaLangString)) {}
     label193:
     do
     {
@@ -334,14 +334,14 @@ public class QzonePhotoView
             if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i)) {
               break label287;
             }
-            paramString = (avah)this.jdField_a_of_type_JavaUtilList.get(i);
+            paramString = (avaj)this.jdField_a_of_type_JavaUtilList.get(i);
             if ((localList == null) || (localList.size() <= i)) {
               break label292;
             }
           }
-          for (parammobile_sub_get_photo_wall_rsp = (avah)localList.get(i);; parammobile_sub_get_photo_wall_rsp = null)
+          for (parammobile_sub_get_photo_wall_rsp = (avaj)localList.get(i);; parammobile_sub_get_photo_wall_rsp = null)
           {
-            if (bbbd.a(paramString, parammobile_sub_get_photo_wall_rsp)) {
+            if (bbbr.a(paramString, parammobile_sub_get_photo_wall_rsp)) {
               break label297;
             }
             paramBoolean = true;
@@ -359,7 +359,7 @@ public class QzonePhotoView
           i += 1;
         }
       }
-    } while ((!bbev.a(BaseApplication.getContext())) || (this.d >= 3));
+    } while ((!bbfj.a(BaseApplication.getContext())) || (this.d >= 3));
     label287:
     label292:
     label297:
@@ -505,7 +505,7 @@ public class QzonePhotoView
       if (QLog.isColorLevel()) {
         QLog.i("ProfileCard.QzonePhotoView", 2, "handleMessage() MSG_REQ_ALBUM");
       }
-      paramMessage = (ajtk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
+      paramMessage = (ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
       if (paramMessage != null)
       {
         paramMessage.a(this.jdField_a_of_type_JavaLangString, 2);
@@ -521,7 +521,7 @@ public class QzonePhotoView
       if (QLog.isColorLevel()) {
         QLog.d("ProfileCard.QzonePhotoView", 2, "handleMessage MSG_LOAD_PHOTO_WALL");
       }
-      ((ajtk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_JavaLangString, "");
+      ((ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_JavaLangString, "");
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(201);
     }
   }

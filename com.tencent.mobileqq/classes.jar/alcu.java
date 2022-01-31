@@ -1,93 +1,29 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class alcu
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b;
+  public int a;
+  public long a;
+  public long[] a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  public long f;
   
-  public alcu(int paramInt)
+  public alcu(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
   {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = ((0.9D + paramDouble));
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
   }
   
-  private int a(float paramFloat)
+  public String toString()
   {
-    if ((paramFloat > 1.0F) || (paramFloat <= 0.0F)) {
-      throw new IndexOutOfBoundsException("the percent out of index");
-    }
-    int j = (int)(this.jdField_a_of_type_JavaUtilArrayList.size() * paramFloat - 1.0F);
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public alcv a()
-  {
-    long l1;
-    long l2;
-    long l3;
-    long l4;
-    long l5;
-    double d;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-      {
-        localObject = new alcv(-1L, -1L, -1L, -1L, -1L, -1.0D, null, 0);
-        return localObject;
-      }
-      Object localObject = new long[this.jdField_a_of_type_JavaUtilArrayList.size()];
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        localObject[i] = ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue();
-        i += 1;
-      }
-      Arrays.sort((long[])localObject);
-      l1 = localObject[a(0.9F)];
-      l2 = localObject[a(0.8F)];
-      l3 = localObject[a(0.7F)];
-      l4 = localObject[0];
-      l5 = localObject[(localObject.length - 1)];
-      d = 0.0D;
-      i = 0;
-      if (i < localObject.length)
-      {
-        d += localObject[i];
-        i += 1;
-      }
-    }
-    return new alcv(l1, l2, l3, l4, l5, d / arrayOfLong.length, arrayOfLong, this.b);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b = 0;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      }
-    }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong))) {
-      return false;
-    }
-    this.b += 1;
-    return true;
+    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
   }
 }
 

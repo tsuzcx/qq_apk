@@ -1,139 +1,20 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
 
-class asuk
-  extends axfb
+public class asuk
+  extends astq
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = null;
-  
-  asuk(asuj paramasuj, ArrayList paramArrayList, HashMap paramHashMap, astr paramastr, asue paramasue) {}
-  
-  private void b(int paramInt)
+  public asuk(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
+    super(paramQQAppInterface);
   }
   
-  public void a(int paramInt, ArrayList<axes> paramArrayList)
+  public void a(asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
   {
-    int j = 0;
-    int i = 0;
-    if ((paramInt == 0) && (paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoMultiMsgProcessor", 2, "onMultiForwardVideoUploadResult success[" + paramArrayList.size() + "]");
-      }
-      j = 0;
-      int k = 0;
-      paramInt = i;
-      Object localObject2;
-      while (k < this.b.size())
-      {
-        localObject2 = (MessageRecord)this.b.get(k);
-        if (j >= paramArrayList.size())
-        {
-          QLog.e("VideoMultiMsgProcessor", 1, "MultiForwardVideo: error index!");
-          i = paramInt;
-          paramInt = j;
-          k += 1;
-          j = paramInt;
-          paramInt = i;
-        }
-        else
-        {
-          localObject1 = (axes)paramArrayList.get(j);
-          i = paramInt;
-          if (localObject1 != null)
-          {
-            if ((((axes)localObject1).jdField_a_of_type_Int != 0) || (((axes)localObject1).jdField_a_of_type_JavaLangObject == null) || (!(((axes)localObject1).jdField_a_of_type_JavaLangObject instanceof im_msg_body.RichText))) {
-              break label200;
-            }
-            ((MessageForShortVideo)localObject2).richText = ((im_msg_body.RichText)((axes)localObject1).jdField_a_of_type_JavaLangObject);
-            i = paramInt;
-          }
-          for (;;)
-          {
-            paramInt = j + 1;
-            break;
-            label200:
-            i = paramInt;
-            if (((axes)localObject1).jdField_a_of_type_Int == -1)
-            {
-              i = paramInt;
-              if (((axes)localObject1).jdField_a_of_type_Aunp != null) {
-                if ("cancel".equals(((axes)localObject1).jdField_a_of_type_Aunp.b))
-                {
-                  i = 1;
-                  b(1);
-                }
-                else
-                {
-                  b(((axes)localObject1).jdField_a_of_type_Aunp.jdField_a_of_type_Int);
-                  if (this.jdField_a_of_type_Asuj.a(((axes)localObject1).jdField_a_of_type_Aunp.jdField_a_of_type_Int))
-                  {
-                    i = 1;
-                  }
-                  else
-                  {
-                    localObject2 = this.jdField_a_of_type_Asuj.a.a().a((MessageRecord)localObject2, asuj.a(), true);
-                    bool = this.jdField_a_of_type_Asuj.a.a().a(this.jdField_a_of_type_JavaUtilHashMap, (MessageRecord)localObject2);
-                    QLog.e("VideoMultiMsgProcessor", 1, String.format("MultiForwardVideo errCode:%d, errStr:%s, update:%s, uniseq:%d", new Object[] { Integer.valueOf(((axes)localObject1).jdField_a_of_type_Aunp.jdField_a_of_type_Int), ((axes)localObject1).jdField_a_of_type_Aunp.b, Boolean.valueOf(bool), Long.valueOf(((MessageRecord)localObject2).uniseq) }));
-                    i = paramInt;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      Object localObject1 = new HashMap();
-      ((HashMap)localObject1).put("totalCount", String.valueOf(paramArrayList.size()));
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        ((HashMap)localObject1).put("errCount", String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-        ((HashMap)localObject1).put("errCodeStr", Arrays.asList(new ArrayList[] { this.jdField_a_of_type_JavaUtilArrayList }).toString());
-        ((HashMap)localObject1).put("errCode", String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(0)));
-        localObject2 = axrl.a(BaseApplication.getContext());
-        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-          break label562;
-        }
-      }
-      label562:
-      for (bool = true;; bool = false)
-      {
-        ((axrl)localObject2).a(null, "MultiMsgVideoSendResult", bool, 0L, paramArrayList.size(), (HashMap)localObject1, null);
-        if (paramInt == 0) {
-          break label621;
-        }
-        this.jdField_a_of_type_Astr.a(1, 8, this.jdField_a_of_type_Asue);
-        return;
-        ((HashMap)localObject1).put("errCount", "0");
-        ((HashMap)localObject1).put("errCode", "0");
-        break;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoMultiMsgProcessor", 2, "onMultiForwardVideoUploadResult failed!");
-    }
-    paramArrayList = axrl.a(BaseApplication.getContext());
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramArrayList.a(null, "MultiMsgVideoSendFail", bool, 0L, 0L, null, null);
-      paramInt = j;
-      break;
-    }
-    label621:
-    this.jdField_a_of_type_Astr.a(0, 8, this.jdField_a_of_type_Asue);
+    super.a(paramasug, paramHashMap, paramastt);
+    paramastt.a(0, 4, paramasug);
   }
 }
 

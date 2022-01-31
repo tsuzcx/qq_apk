@@ -1,36 +1,54 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xb6f.Identity;
+import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
+import tencent.im.oidb.oidb_0xb6f.RspBody;
 
-public final class aadz
+class aadz
+  extends mxj
 {
-  private static Map<String, aabn> a;
+  aadz(aady paramaady, String paramString1, String paramString2, int paramInt) {}
   
-  public static Map<String, aabn> a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null)
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.putAll(aady.a());
-        localHashMap.put("config", new aabn("config", 3, 0, aadu.class));
-        localHashMap.put("setShareInfo", new aabn("setShareInfo", 25, 0, aadv.class));
-        localHashMap.put("closeWebview", new aabn("closeWebview", 2, 0, aadv.class));
-        localHashMap.put("refreshTitle", new aabn("refreshTitle", 22, 0, aadv.class));
-        localHashMap.put("setShareListener", new aabn("setShareListener", 26, 0, aadv.class));
-        localHashMap.put("lightappGetSDKVersion", new aabn("lightappGetSDKVersion", 13, 0, alup.class));
-        localHashMap.put("lightappShareCallback", new aabn("lightappShareCallback", 15, 0, alup.class));
-        localHashMap.put("lightappShareMessage", new aabn("lightappShareMessage", 16, 0, alup.class));
-        localHashMap.put("lightappOpenApp", new aabn("lightappOpenApp", 14, 0, alup.class));
-        localHashMap.put("lightappDisableLongPress", new aabn("lightappDisableLongPress", 11, 0, alup.class));
-        localHashMap.put("lightappDisableWebViewLongPress", new aabn("lightappDisableWebViewLongPress", 12, 0, alup.class));
-        a = Collections.unmodifiableMap(localHashMap);
-      }
-      return a;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
     }
-    finally {}
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.report", 2, "req error");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0xb6f.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.report_freq_rsp.has()) {
+            break label146;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
+    return;
+    label146:
+    aady.a(this.jdField_a_of_type_Aady, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
   }
 }
 

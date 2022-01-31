@@ -1,39 +1,85 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdkd
 {
-  public static int a(String paramString, int paramInt, long paramLong)
+  protected static bdkd a;
+  
+  public static bdkd a()
   {
-    return a(paramLong).getInt(paramString, paramInt);
+    try
+    {
+      if (a == null) {
+        a = new bdkd();
+      }
+      bdkd localbdkd = a;
+      return localbdkd;
+    }
+    finally {}
   }
   
-  public static SharedPreferences a()
+  public void a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, Long paramLong, int paramInt2, int paramInt3, String paramString5)
   {
-    int i = Build.VERSION.SDK_INT;
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (i > 10) {}
-    for (i = 4;; i = 0) {
-      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
+    long l = SystemClock.elapsedRealtime() - paramLong.longValue();
+    if ((paramLong.longValue() == 0L) || (l < 0L)) {
+      l = 0L;
+    }
+    for (;;)
+    {
+      paramLong = new StringBuffer("https://c.isdspeed.qq.com/code.cgi");
+      paramLong.append("?domain=mobile.opensdk.com&cgi=opensdk&type=").append(paramInt1).append("&code=").append(paramInt2).append("&time=").append(l).append("&rate=").append(paramInt3).append("&uin=").append(paramString2).append("&data=");
+      paramString1 = bdfb.a(String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(l), String.valueOf(paramInt3), paramString1, paramString2, paramString3, paramString4, paramString5);
+      bdes.a().a(paramLong.toString(), "GET", paramString1, true);
+      return;
     }
   }
   
-  public static SharedPreferences a(long paramLong)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bundle paramBundle, String paramString6, boolean paramBoolean)
   {
-    if (paramLong == 0L) {
-      return a();
+    try
+    {
+      bcyb.a().a(Integer.valueOf(paramString1).intValue());
+      label14:
+      Object localObject = bdke.a();
+      String str = String.valueOf(bcyb.a().a());
+      if (!((String)localObject).equals(str))
+      {
+        bdkg.a().a((String)localObject, new bdkc(), null, true);
+        bdke.a(str);
+      }
+      localObject = new bdkc();
+      ((bdkc)localObject).c = paramString4;
+      ((bdkc)localObject).a = paramString2;
+      ((bdkc)localObject).f = bdid.a(bcyb.a().a());
+      ((bdkc)localObject).e = paramString5;
+      ((bdkc)localObject).d = paramString1;
+      ((bdkc)localObject).b = paramString3;
+      ((bdkc)localObject).g = String.valueOf(System.currentTimeMillis());
+      if (!TextUtils.isEmpty(paramString6)) {
+        ((bdkc)localObject).h = paramString6;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenSdkStatic", 2, "reprotInfo = " + ((bdkc)localObject).toString());
+      }
+      bdkg.a().a((bdkc)localObject, paramBundle, paramBoolean);
+      return;
     }
-    String str = bdhv.b(String.valueOf(paramLong)) + "_" + "preference";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
+    catch (Exception localException)
+    {
+      break label14;
+    }
   }
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = a(paramLong).edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.commit();
+    a(paramString1, paramString2, paramString3, paramString4, bcyb.a().f(), null, paramString5, paramBoolean);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, bcyb.a().f(), null, "", paramBoolean);
   }
 }
 

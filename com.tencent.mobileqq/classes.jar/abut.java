@@ -1,24 +1,22 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSActivity.17.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class abut
-  implements Animation.AnimationListener
+  implements Comparator<ChatMessage>
 {
   public abut(QQLSActivity paramQQLSActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
     }
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aojo;
+import aojt;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 
@@ -9,7 +9,7 @@ public class LimitChatSettingStep
 {
   public int a()
   {
-    aojo.a(this.a.app);
+    aojt.a(this.a.app);
     return super.a();
   }
 }

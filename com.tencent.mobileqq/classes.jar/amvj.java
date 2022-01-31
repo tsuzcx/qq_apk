@@ -1,82 +1,73 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
 
 public class amvj
+  extends ampa<amvi>
 {
-  public int a;
-  public ConcurrentHashMap<String, String> a;
-  public int b;
-  public int c = 1;
-  public int d;
-  public int e;
-  
-  public amvj()
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    return 546;
   }
   
-  public static amvj a(String paramString)
+  @NonNull
+  public amvi a(int paramInt)
   {
-    amvj localamvj = new amvj();
-    if (paramString == null) {
-      return localamvj;
-    }
-    try
+    return new amvi();
+  }
+  
+  @Nullable
+  public amvi a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
     {
-      paramString = new JSONObject(paramString);
-      localamvj.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
-      localamvj.b = paramString.optInt("kDisableChooseSwitch", 0);
-      localamvj.c = paramString.optInt("kShowKickDialog", 1);
-      localamvj.d = paramString.optInt("kFDSwitch", 0);
-      localamvj.e = paramString.optInt("kWtloginPowTest", 0);
-      paramString = paramString.optJSONObject("kSignatureList");
-      if (paramString != null)
-      {
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          String str2 = paramString.optString(str1);
-          if (!TextUtils.isEmpty(str2))
-          {
-            localamvj.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
-            }
-          }
-        }
-      }
-      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localamvj.toString());
-    }
-    catch (Exception paramString)
-    {
+      amvi localamvi = amvi.a(paramArrayOfamph[0].a);
       if (QLog.isColorLevel()) {
-        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      return null;
+      return localamvi;
     }
-    if (localamvj.e == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
-      return localamvj;
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public Class<amvi> a()
+  {
+    return amvi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
   }
   
-  public String toString()
+  public void a(amvi paramamvi)
   {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
-    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-    localStringBuilder.append(" fdSwitch:").append(this.d);
-    localStringBuilder.append(" wtloginPowTest:").append(this.e);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramamvi.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

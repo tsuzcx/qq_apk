@@ -1,24 +1,33 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
-class mwa
-  extends akim
+public class mwa
+  extends Handler
 {
-  mwa(mvy parammvy) {}
+  private WeakReference<JoinGroupTransitActivity> a;
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public mwa(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    if (paramLong != this.a.jdField_a_of_type_Long) {
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
       return;
     }
-    this.a.jdField_a_of_type_Long = 0L;
-    mvy.a(this.a, false);
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      mvy.a(this.a, paramTroopInfo);
+    default: 
+      return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
       return;
     }
-    mvy.a(this.a, 2131719251, 1);
-    this.a.jdField_a_of_type_Mwb.a();
+    localJoinGroupTransitActivity.finish();
   }
 }
 

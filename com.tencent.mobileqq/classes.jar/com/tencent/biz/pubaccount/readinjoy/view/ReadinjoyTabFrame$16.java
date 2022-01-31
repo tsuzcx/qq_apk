@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bbjn;
+import bbkb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class ReadinjoyTabFrame$16
@@ -16,7 +16,7 @@ class ReadinjoyTabFrame$16
     {
       ReadinjoyTabFrame.b(this.this$0).setAnimation(AnimationUtils.loadAnimation(this.this$0.a(), 2130772302));
       ReadinjoyTabFrame.b(this.this$0).setVisibility(8);
-      bbjn.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
+      bbkb.A(this.this$0.a(), this.this$0.a.getCurrentAccountUin());
     }
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.newshare.model;
 
 import java.util.concurrent.ConcurrentHashMap;
-import trj;
-import trl;
+import trg;
+import tri;
 
 public class JobExecutor$1
   implements Runnable
 {
-  public JobExecutor$1(trl paramtrl, trj paramtrj, ConcurrentHashMap paramConcurrentHashMap) {}
+  public JobExecutor$1(tri paramtri, trg paramtrg, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
-    trl.a(this.this$0, this.jdField_a_of_type_Trj, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    tri.a(this.this$0, this.jdField_a_of_type_Trg, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
   }
 }
 

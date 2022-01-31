@@ -1,115 +1,74 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nys
-  implements rkk, rkm
+class nys
+  implements ViewBase.OnClickListener
 {
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private rmt jdField_a_of_type_Rmt = new rmt();
+  nys(nyr paramnyr) {}
   
-  public int a(BaseData paramBaseData)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramBaseData instanceof ProteusInnerData)) {
-      return oal.a((ProteusInnerData)paramBaseData);
-    }
-    return 20;
-  }
-  
-  public rkj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    int k = 8;
+    int n;
+    int m;
+    int j;
+    int i;
+    if ((nyq.a(this.a.jdField_a_of_type_Nyq) instanceof ProteusItemData))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new poo();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    }
-    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
-    paramBaseData = null;
-    try
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
-      paramBaseData = paramViewGroup;
-      olr.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
-      paramBaseData = paramViewGroup;
-      str = localProteusItemData.b.toString();
-      paramBaseData = paramViewGroup;
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
+      n = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+      m = 0;
+      switch (n)
       {
-        boolean bool;
-        String str = "error!! msg=" + paramViewGroup.toString();
+      default: 
+        j = -1;
+        i = m;
       }
     }
-    bool = false;
-    paramViewGroup = paramBaseData;
-    if (paramBaseData == null)
+    for (;;)
     {
-      paramViewGroup = new View(paramContext);
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebFastProteusViewAdBannerBigPicCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
-    }
-    return new nyt(this, paramViewGroup, localProteusItemData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if ((localObject == null) || (!(localObject instanceof Activity)) || (((Activity)localObject).getWindow().getAttributes().softInputMode != 4)) {}
-    do
-    {
+      if ((i != 0) && (n != -1))
+      {
+        nyq.a(this.a.jdField_a_of_type_Nyq, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+        nyp.a(this.a.jdField_a_of_type_Nyq.a);
+        rmq.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nyq.a(this.a.jdField_a_of_type_Nyq), true, j);
+      }
       return;
-      localObject = (InputMethodManager)((Context)localObject).getSystemService("input_method");
-    } while (localObject == null);
-    ((InputMethodManager)localObject).hideSoftInputFromWindow(paramAbsListView.getWindowToken(), 2);
+      i = m;
+      j = k;
+      if (this.a.jdField_a_of_type_AndroidContentContext != null)
+      {
+        rnk.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+        i = m;
+        j = k;
+        continue;
+        j = 5;
+        i = 1;
+        continue;
+        j = 4;
+        i = 1;
+        continue;
+        if (oai.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
+        {
+          oai.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, 8);
+          return;
+        }
+        i = 1;
+        j = k;
+        continue;
+        i = 1;
+        j = 1;
+        continue;
+        j = 3;
+        i = 1;
+        continue;
+        j = 1000;
+        i = 1;
+      }
+    }
   }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 22;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Rmt.a();
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Rmt.b();
-  }
-  
-  public void e() {}
 }
 
 

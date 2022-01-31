@@ -1,13 +1,9 @@
-import android.widget.ImageView;
 import android.widget.TextView;
 
 class azkr
-  extends azkt
 {
-  public ImageView a;
+  public int a;
   public TextView a;
-  public TextView b;
-  public TextView c;
 }
 
 

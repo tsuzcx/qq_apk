@@ -1,18 +1,22 @@
-public abstract interface avxn
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.view.Surface;
+
+@TargetApi(14)
+public class avxn
 {
-  public abstract void a(int paramInt, Throwable paramThrowable);
+  public int a;
+  public SurfaceTexture a;
+  public Surface a;
   
-  public abstract void a(long paramLong);
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
-  
-  public abstract void l();
+  public avxn(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
 }
 
 

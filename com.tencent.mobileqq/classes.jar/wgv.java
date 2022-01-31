@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
 
-public class wgv
-  implements View.OnClickListener
+class wgv
+  implements DialogInterface.OnClickListener
 {
-  public wgv(QRLoginBaseActivity paramQRLoginBaseActivity) {}
+  wgv(wgt paramwgt, CompoundButton paramCompoundButton) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 

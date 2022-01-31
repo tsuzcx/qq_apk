@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bdgv;
 import bdhk;
-import bdht;
+import bdhz;
+import bdii;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
@@ -19,25 +19,25 @@ public class InstallStateReceiver
   
   private void a(String paramString, int paramInt)
   {
-    List localList = bdgv.a().b(paramString, 4);
+    List localList = bdhk.a().b(paramString, 4);
     Object localObject = localList;
     if (localList.size() == 0) {
-      localObject = bdgv.a().a(paramString, 4);
+      localObject = bdhk.a().a(paramString, 4);
     }
-    bdht.c("InstallStateReceiver", ">notifyInstalled " + paramString + ", info:" + localObject);
+    bdii.c("InstallStateReceiver", ">notifyInstalled " + paramString + ", info:" + localObject);
     paramString = ((List)localObject).iterator();
     while (paramString.hasNext())
     {
       localObject = (DownloadInfo)paramString.next();
       if ((localObject != null) && (((DownloadInfo)localObject).a() == 4))
       {
-        bdht.c("InstallStateReceiver", ">notifyInstalled " + localObject);
+        bdii.c("InstallStateReceiver", ">notifyInstalled " + localObject);
         if (1 == paramInt) {
-          bdgv.a().f((DownloadInfo)localObject);
+          bdhk.a().f((DownloadInfo)localObject);
         } else if (2 == paramInt) {
-          bdgv.a().e((DownloadInfo)localObject);
+          bdhk.a().e((DownloadInfo)localObject);
         } else {
-          bdht.e("InstallStateReceiver", ">notifyInstalled bad notifyType:" + paramInt);
+          bdii.e("InstallStateReceiver", ">notifyInstalled bad notifyType:" + paramInt);
         }
       }
     }
@@ -45,10 +45,10 @@ public class InstallStateReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bdht.c("InstallStateReceiver", "[onReceive] action=" + paramIntent.getAction());
+    bdii.c("InstallStateReceiver", "[onReceive] action=" + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      bdht.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
+      bdii.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
     }
     Object localObject;
     String str;
@@ -66,12 +66,12 @@ public class InstallStateReceiver
       }
       else
       {
-        bdht.e("InstallStateReceiver", "[onReceive] packageName == null " + paramIntent.getDataString());
+        bdii.e("InstallStateReceiver", "[onReceive] packageName == null " + paramIntent.getDataString());
         return;
       }
       if (TextUtils.equals(str, "android.intent.action.PACKAGE_REPLACED"))
       {
-        bdhk.a((String)localObject, true);
+        bdhz.a((String)localObject, true);
         ThreadManager.excute(new InstallStateReceiver.2(this, paramContext, (String)localObject), 16, null, true);
         return;
       }

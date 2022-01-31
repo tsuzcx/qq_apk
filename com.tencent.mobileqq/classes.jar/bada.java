@@ -1,19 +1,54 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import java.util.List;
+import org.json.JSONObject;
 
-class bada
-  implements Comparator<badc>
+public class bada
+  extends badf
 {
-  bada(bacz parambacz) {}
+  private TextView a;
+  private TextView b;
   
-  public int a(badc parambadc1, badc parambadc2)
+  protected bada(View paramView)
   {
-    if (parambadc1.b < parambadc2.b) {
-      return -1;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378315));
+    this.b = ((TextView)paramView.findViewById(2131378206));
+  }
+  
+  public void a(View paramView, HWReciteItem paramHWReciteItem, badd parambadd)
+  {
+    paramHWReciteItem = (babi)parambadd.a;
+    switch (paramView.getId())
+    {
     }
-    if (parambadc1.b > parambadc2.b) {
-      return 1;
+    do
+    {
+      return;
+      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
+      paramView = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(paramView instanceof QQAppInterface));
+    bbbp.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
+  }
+  
+  public void a(HWReciteItem paramHWReciteItem, badd parambadd, babi parambabi, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (TextUtils.isEmpty(parambabi.jdField_c_of_type_JavaLangString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(ajya.a(2131705315)).append(parambabi.b);
+      if ((parambabi.a != null) && (!parambabi.a.isEmpty())) {
+        localStringBuilder.append(baam.a(parambabi.a));
+      }
+      parambabi.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     }
-    return 0;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambabi.jdField_c_of_type_JavaLangString);
+    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambadd);
   }
 }
 

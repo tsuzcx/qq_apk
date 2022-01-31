@@ -1,13 +1,16 @@
 import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
 
-public abstract interface bfpd
+class bfpd
+  implements View.OnClickListener
 {
-  public abstract boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  bfpd(bfpc parambfpc) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpd
  * JD-Core Version:    0.7.0.1
  */

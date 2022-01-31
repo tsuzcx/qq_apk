@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.widget.ImageView;
-import osm;
-import pkd;
+import osj;
+import pka;
 
 public class FusionBiuButton$3
   implements Runnable
 {
-  public FusionBiuButton$3(pkd parampkd) {}
+  public FusionBiuButton$3(pka parampka) {}
   
   public void run()
   {
-    pkd.a(this.this$0).setVisibility(8);
-    pkd.b(this.this$0).setVisibility(0);
-    pkd.b(this.this$0).setImageResource(2130841207);
-    osm.a().g();
-    osm.a().b(false);
+    pka.a(this.this$0).setVisibility(8);
+    pka.b(this.this$0).setVisibility(0);
+    pka.b(this.this$0).setImageResource(2130841204);
+    osj.a().g();
+    osj.a().b(false);
   }
 }
 

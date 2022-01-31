@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import aigq;
-import ajyc;
+import aigo;
+import ajya;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,27 +9,27 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
-import avtb;
-import axhp;
-import ayto;
+import avtd;
+import axhr;
 import aytq;
-import bbdj;
-import bbjw;
-import bcpw;
-import bfmt;
-import bjym;
-import bjyn;
+import ayts;
+import bbdx;
+import bbkk;
+import bcql;
+import bfnk;
+import bjzd;
+import bjze;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class EditWebVideoActivity
   extends EditVideoActivity
-  implements Handler.Callback, aytq
+  implements Handler.Callback, ayts
 {
   private int jdField_a_of_type_Int;
-  private aigq jdField_a_of_type_Aigq = new bjym(this);
+  private aigo jdField_a_of_type_Aigo = new bjzd(this);
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private bfmt jdField_a_of_type_Bfmt;
+  private bfnk jdField_a_of_type_Bfnk;
   private String jdField_a_of_type_JavaLangString;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -62,7 +62,7 @@ public class EditWebVideoActivity
       sendBroadcast(localIntent);
       return;
     }
-    bcpw.a(this, ajyc.a(2131703962), 0).a();
+    bcql.a(this, ajya.a(2131703973), 0).a();
     finish();
   }
   
@@ -71,14 +71,14 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.e("EditWebVideoActivity", 2, "onShareClick " + this.jdField_b_of_type_JavaLangString + " mthumbPath" + this.jdField_a_of_type_JavaLangString);
     }
-    if ((bbjw.a(this.jdField_b_of_type_JavaLangString)) || (bbjw.a(this.jdField_a_of_type_JavaLangString)))
+    if ((bbkk.a(this.jdField_b_of_type_JavaLangString)) || (bbkk.a(this.jdField_a_of_type_JavaLangString)))
     {
       finish();
       return;
     }
     if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString == null))
     {
-      bcpw.a(this, 2131692558, 0).a();
+      bcql.a(this, 2131692559, 0).a();
       f();
       return;
     }
@@ -86,23 +86,23 @@ public class EditWebVideoActivity
     File localFile2 = new File(this.jdField_b_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      bcpw.a(this, 2131692558, 0).a();
+      bcql.a(this, 2131692559, 0).a();
       f();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      bcpw.a(this, 2131692560, 0).a();
+      bcql.a(this, 2131692561, 0).a();
       f();
       return;
     }
-    if (new ayto(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
+    if (new aytq(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int).a())
     {
-      this.jdField_a_of_type_Bfmt.sendEmptyMessageDelayed(1003, 60000L);
+      this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(1003, 60000L);
       return;
     }
     f();
-    bcpw.a(this, 1, 2131719477, 0).a();
+    bcql.a(this, 1, 2131719488, 0).a();
   }
   
   public void a(int paramInt, String paramString)
@@ -110,10 +110,10 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadFail!");
     }
-    if (this.jdField_a_of_type_Bfmt.hasMessages(1003)) {
-      this.jdField_a_of_type_Bfmt.removeMessages(1003);
+    if (this.jdField_a_of_type_Bfnk.hasMessages(1003)) {
+      this.jdField_a_of_type_Bfnk.removeMessages(1003);
     }
-    this.jdField_a_of_type_Bfmt.sendEmptyMessage(1003);
+    this.jdField_a_of_type_Bfnk.sendEmptyMessage(1003);
   }
   
   public void a(String paramString)
@@ -122,18 +122,18 @@ public class EditWebVideoActivity
     if (QLog.isColorLevel()) {
       QLog.i("EditWebVideoActivity", 2, "OnUploadVideoListener onUploadSuccess! " + this.d);
     }
-    if (this.jdField_a_of_type_Bfmt.hasMessages(1003)) {
-      this.jdField_a_of_type_Bfmt.removeMessages(1003);
+    if (this.jdField_a_of_type_Bfnk.hasMessages(1003)) {
+      this.jdField_a_of_type_Bfnk.removeMessages(1003);
     }
-    this.jdField_a_of_type_Bfmt.sendEmptyMessage(1001);
+    this.jdField_a_of_type_Bfnk.sendEmptyMessage(1001);
   }
   
   protected void d()
   {
-    if (this.jdField_a_of_type_Bjww == null) {
-      this.jdField_a_of_type_Bjww = new bjyn();
+    if (this.jdField_a_of_type_Bjxn == null) {
+      this.jdField_a_of_type_Bjxn = new bjze();
     }
-    ((bjyn)this.jdField_a_of_type_Bjww).a(this.jdField_a_of_type_Aigq);
+    ((bjze)this.jdField_a_of_type_Bjxn).a(this.jdField_a_of_type_Aigo);
   }
   
   public void d(String paramString)
@@ -150,10 +150,10 @@ public class EditWebVideoActivity
         }
         f();
         localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131371557);
-        if (!bbjw.a(paramString)) {
+        if (!bbkk.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131717187);
+        localTextView.setText(2131717198);
       }
       catch (Throwable paramString)
       {
@@ -181,7 +181,7 @@ public class EditWebVideoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Bfmt = new bfmt(this);
+    this.jdField_a_of_type_Bfnk = new bfnk(this);
     this.f = getIntent().getStringExtra("edit_video_call_back");
     return true;
   }
@@ -190,7 +190,7 @@ public class EditWebVideoActivity
   {
     super.doOnDestroy();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      bbdj.d(this.jdField_b_of_type_JavaLangString);
+      bbdx.d(this.jdField_b_of_type_JavaLangString);
     }
   }
   
@@ -220,16 +220,16 @@ public class EditWebVideoActivity
       return false;
     case 1003: 
       f();
-      bcpw.a(this, 1, 2131719476, 0).a();
+      bcql.a(this, 1, 2131719487, 0).a();
       finish();
       return true;
     case 1001: 
-      avtb.b(axhp.a().jdField_a_of_type_Int, "");
+      avtd.b(axhr.a().jdField_a_of_type_Int, "");
       g();
       return true;
     }
     f();
-    d(ajyc.a(2131703971));
+    d(ajya.a(2131703982));
     a();
     return true;
   }

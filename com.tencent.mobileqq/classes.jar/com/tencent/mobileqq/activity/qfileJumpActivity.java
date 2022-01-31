@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import ajsf;
+import ajsd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bbei;
+import bbew;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -20,16 +20,16 @@ public class qfileJumpActivity
   private int a()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!ajsf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!ajsf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    while ((!ajsd.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!ajsd.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (!ajsf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!ajsd.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
         return -2;
       }
     }
-    else if (!ajsf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!ajsd.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
       return -2;
     }
     return 0;
@@ -103,12 +103,12 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bbei.a(this, true))
+      if (!bbew.a(this, true))
       {
         super.finish();
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = ajsf.z;
+      this.jdField_a_of_type_JavaLangString = ajsd.z;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -119,7 +119,7 @@ public class qfileJumpActivity
         {
           QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = ajsf.z;
+          this.jdField_a_of_type_JavaLangString = ajsd.z;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
           paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
         }
@@ -168,7 +168,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bbei.a(this);
+      boolean bool = bbew.a(this);
       if (bool) {
         return true;
       }

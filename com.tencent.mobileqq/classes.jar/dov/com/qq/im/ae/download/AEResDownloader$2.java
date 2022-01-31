@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import biqz;
+import birq;
 
 public class AEResDownloader$2
   implements Runnable
 {
-  public AEResDownloader$2(biqz parambiqz) {}
+  public AEResDownloader$2(birq parambirq) {}
   
   public void run()
   {
-    biqz.a(this.this$0);
+    birq.a(this.this$0);
   }
 }
 

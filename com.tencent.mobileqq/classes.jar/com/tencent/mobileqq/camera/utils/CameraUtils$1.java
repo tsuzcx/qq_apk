@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.camera.utils;
 
-import amff;
+import amfe;
 
 public final class CameraUtils$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Amff.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Amfe.a(this.jdField_a_of_type_Int);
   }
 }
 

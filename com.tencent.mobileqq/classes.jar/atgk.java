@@ -1,41 +1,19 @@
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
-
 public class atgk
-  implements atki
+  implements ajte
 {
-  public atgk(SmallVideoFragment paramSmallVideoFragment) {}
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  public void a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Object localObject;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
+    switch (paramInt)
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
-        break label168;
-      }
     }
-    label168:
-    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
-      }
-      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
-      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
-        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
-      }
-      this.a.d();
       return;
-      localObject = "0";
-      break;
-    }
+    } while (!paramBoolean);
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 

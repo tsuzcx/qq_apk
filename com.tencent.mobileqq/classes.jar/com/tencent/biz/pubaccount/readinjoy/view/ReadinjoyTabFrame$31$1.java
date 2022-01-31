@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import onk;
-import rhi;
+import onh;
+import rhf;
 
 public class ReadinjoyTabFrame$31$1
   implements Runnable
 {
-  public ReadinjoyTabFrame$31$1(rhi paramrhi) {}
+  public ReadinjoyTabFrame$31$1(rhf paramrhf) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ReadinjoyTabFrame$31$1
     localIntent.putExtra("is_from_kan_dian", true);
     localIntent.putExtra("support_topic", true);
     this.a.a.startActivity(localIntent);
-    onk.a("1", "1");
+    onh.a("1", "1");
   }
 }
 

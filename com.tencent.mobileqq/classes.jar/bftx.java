@@ -1,11 +1,18 @@
-import android.view.View;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import android.text.SpannableString;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bftx
+public class bftx
+  extends bfvw
 {
-  public abstract void a();
+  public int a;
   
-  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
+  public void a(SpannableString paramSpannableString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
+    }
+    paramSpannableString.setSpan(new bftw(this.a), this.b, this.c, 17);
+  }
 }
 
 

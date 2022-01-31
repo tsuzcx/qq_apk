@@ -1,91 +1,35 @@
-import com.tencent.qg.sdk.log.IQLog;
-
 public class bdsj
-  implements IQLog
 {
-  private static String a(String paramString, Object... paramVarArgs)
+  private static bdsk a = new bdsk();
+  
+  public static void a(bdsk parambdsk)
   {
-    return String.format(null, paramString, paramVarArgs);
+    if (parambdsk != null)
+    {
+      a = parambdsk;
+      return;
+    }
+    a = new bdsk();
   }
   
-  public void a(String paramString1, String paramString2)
+  public static void a(String paramString1, String paramString2)
   {
-    veg.c(paramString1, paramString2);
+    a.a(paramString1, paramString2);
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    veg.b(paramString1, paramString2, paramThrowable);
+    a.a(paramString1, paramString2, paramThrowable);
   }
   
-  public void d(String paramString1, String paramString2)
+  public static void b(String paramString1, String paramString2)
   {
-    veg.b(paramString1, paramString2);
+    a.b(paramString1, paramString2);
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void c(String paramString1, String paramString2)
   {
-    veg.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    veg.b(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    veg.e(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    veg.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    veg.c(paramString1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    veg.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    veg.c(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    veg.a(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    veg.a(paramString1, paramString2, new Object[] { paramThrowable });
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    veg.c(paramString1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    veg.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    veg.d(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void w(String paramString, Throwable paramThrowable)
-  {
-    veg.b(paramString, "", paramThrowable);
+    a.c(paramString1, paramString2);
   }
 }
 

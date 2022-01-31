@@ -1,15 +1,16 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class nsg
   implements View.OnClickListener
 {
-  nsg(nsf paramnsf) {}
+  nsg(nsc paramnsc) {}
   
   public void onClick(View paramView)
   {
-    ((Activity)paramView.getContext()).finish();
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
+    nsc.a(this.a, 5);
   }
 }
 

@@ -1,13 +1,9 @@
-import android.content.Intent;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class arvj
-  implements bfoq
+  implements bfph
 {
-  arvj(arvi paramarvi, bfol parambfol) {}
+  arvj(arvi paramarvi, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -16,17 +12,11 @@ class arvj
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.e();
+      this.jdField_a_of_type_Bfpc.e();
       return;
-      arvi.a(this.jdField_a_of_type_Arvi).finish();
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject = arvi.a(this.jdField_a_of_type_Arvi).getIntent();
-      String str = ((Intent)localObject).getStringExtra("uin");
-      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
-      aruq.a(paramView).a.a(3, paramInt, str);
-      localObject = new aruk(paramInt, str);
-      aruq.a(paramView).a((aruk)localObject, false);
-      axqw.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
+      arvi.a(this.jdField_a_of_type_Arvi);
+      continue;
+      arvi.b(this.jdField_a_of_type_Arvi);
     }
   }
 }

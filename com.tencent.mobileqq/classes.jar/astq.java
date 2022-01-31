@@ -1,10 +1,29 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract interface astq
+public class astq
+  implements asts
 {
-  public abstract void a(asue paramasue, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astr paramastr);
+  QQAppInterface a;
+  
+  public astq(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt) {}
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
 }
 
 

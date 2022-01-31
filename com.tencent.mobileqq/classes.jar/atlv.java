@@ -1,18 +1,26 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
 class atlv
-  implements View.OnTouchListener
+  implements atgy
 {
-  atlv(atlu paramatlu) {}
+  atlv(atls paramatls) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    this.a.c();
-    atlu.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (atls.a(this.a) != null)
+    {
+      if (paramInt == 0)
+      {
+        atls.a(this.a).b(paramComment);
+        atls.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696674));
+        axqy.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
+      }
+    }
+    else {
+      return;
+    }
+    atls.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696673));
   }
 }
 

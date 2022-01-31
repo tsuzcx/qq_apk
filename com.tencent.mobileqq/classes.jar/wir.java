@@ -1,22 +1,27 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-final class wir
-  implements xgx<CertifiedAccountRead.StGetMainPageRsp>
+public class wir
+  extends JSONObject
 {
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public wir(wip paramwip, String paramString)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if (paramStGetMainPageRsp != null) {
-        wiq.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
-      }
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
     }
-    else {
-      return;
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
     }
-    QLog.w(wiq.class.getSimpleName(), 1, "getPuinUser empty");
+    return super.getString(paramString);
   }
 }
 

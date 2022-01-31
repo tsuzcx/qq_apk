@@ -1,62 +1,103 @@
-import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.net.URLEncoder;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class beyv
-  extends bfad
 {
-  private INTERFACE.StBatchGetContactReq a = new INTERFACE.StBatchGetContactReq();
+  private static final AtomicBoolean a = new AtomicBoolean(true);
   
-  public beyv(List<String> paramList)
+  public static void a()
   {
-    this.a.appids.set(paramList);
+    a.set(false);
   }
   
-  protected String a()
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (!a.compareAndSet(false, true))
+    {
+      betc.c("MiniGdtReporter", "report: no need report now " + paramInt);
+      return;
     }
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    if (paramMiniAppInfo == null)
+    {
+      betc.c("MiniGdtReporter", "report: null config", new Throwable());
+      return;
+    }
+    LaunchParam localLaunchParam = paramMiniAppInfo.launchParam;
+    if (localLaunchParam == null)
+    {
+      betc.c("MiniGdtReporter", "report: null param " + paramMiniAppInfo, new Throwable());
+      return;
+    }
+    if (localLaunchParam.jdField_a_of_type_Int != 1095)
+    {
+      betc.a("MiniGdtReporter", "report: not form ad " + localLaunchParam.jdField_a_of_type_Int);
+      return;
+    }
+    if (localLaunchParam.jdField_a_of_type_Long == 0L)
+    {
+      betc.c("MiniGdtReporter", "report: no timestamp " + paramMiniAppInfo, new Throwable());
+      return;
+    }
+    String str = null;
+    paramMiniAppInfo = str;
+    if (!TextUtils.isEmpty(localLaunchParam.e)) {}
     try
     {
-      localStGetRobotUinRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetRobotUinRsp != null)
+      paramMiniAppInfo = new JSONObject(localLaunchParam.e).optString("reportUrl");
+      if (TextUtils.isEmpty(paramMiniAppInfo))
       {
-        paramArrayOfByte = bffw.a(localStGetRobotUinRsp);
-        if ((paramArrayOfByte instanceof JSONObject)) {
-          return (JSONObject)JSONObject.class.cast(paramArrayOfByte);
+        betc.c("MiniGdtReporter", "report: empty url " + localLaunchParam, new Throwable());
+        return;
+      }
+    }
+    catch (JSONException paramMiniAppInfo)
+    {
+      for (;;)
+      {
+        betc.c("MiniGdtReporter", "report: failed to read ext data " + localLaunchParam, paramMiniAppInfo);
+        paramMiniAppInfo = str;
+      }
+    }
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      for (;;)
+      {
+        try
+        {
+          str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(51)).replace("__PAGE_TIME__", Long.toString(System.currentTimeMillis() - localLaunchParam.jdField_a_of_type_Long));
+          paramMiniAppInfo = str;
+        }
+        catch (Exception localException1) {}
+        try
+        {
+          str = paramMiniAppInfo.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("1.1.0", "utf-8"));
+          paramMiniAppInfo = str;
+          paramInt = 1;
+          if (paramInt == 0) {
+            break;
+          }
+          betc.b("MiniGdtReporter", "report: get report url " + paramMiniAppInfo + " " + localLaunchParam.jdField_a_of_type_Long);
+          beyo.a(paramMiniAppInfo);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          label409:
+          break label409;
         }
       }
-      else
-      {
-        besl.a("VerifyPluginRequest", "onResponse fail.rsp = null");
-        return null;
-      }
+      str = paramMiniAppInfo.replace("__PAGE_ACTION_ID__", Integer.toString(52)).replace("__LANDING_ERROR_CODE__", Integer.toString(paramInt));
+      paramMiniAppInfo = str;
+      continue;
+      betc.c("MiniGdtReporter", "report: failed to convert report url " + paramMiniAppInfo + " " + paramInt, localException1);
+      paramInt = 0;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      besl.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "BatchGetContact";
   }
 }
 

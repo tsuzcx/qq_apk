@@ -1,17 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.TroopManager;
 
 public class aaix
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aaix(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
+  public aaix(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
-  }
+  public void onClick(View paramView) {}
 }
 
 

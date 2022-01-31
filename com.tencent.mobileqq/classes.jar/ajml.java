@@ -1,185 +1,89 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ajml
-  implements ajme
+  implements Handler.Callback
 {
-  public static int a;
-  private static int jdField_b_of_type_Int = 3;
-  private static int c = 10000;
-  private long jdField_a_of_type_Long;
-  private ajlr jdField_a_of_type_Ajlr;
-  private List<TraceData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private final ajmm jdField_a_of_type_Ajmm;
+  private ajmn jdField_a_of_type_Ajmn;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = System.currentTimeMillis() - 540000L;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int d;
-  private int e;
+  private boolean b;
   
-  static
+  public ajml(ajmm paramajmm)
   {
-    jdField_a_of_type_Int = 30000;
-  }
-  
-  private void a(TraceData paramTraceData)
-  {
-    if ((paramTraceData == null) || (paramTraceData.result == null)) {}
-    do
-    {
-      return;
-      l1 = System.currentTimeMillis();
-      if (l1 - this.jdField_b_of_type_Long < 1000L)
-      {
-        paramTraceData.result.c = this.d;
-        paramTraceData.result.d = this.e;
-        return;
-      }
-    } while ((l1 - this.jdField_b_of_type_Long <= 600000L) && ((!paramTraceData.isSampleFocus) || (l1 - this.jdField_b_of_type_Long <= 300000L)));
-    this.jdField_b_of_type_Long = l1;
-    long l1 = System.currentTimeMillis();
-    this.d = ajlz.b();
-    this.e = ajlz.a();
-    long l2 = System.currentTimeMillis();
-    QLog.i("TraceReport", 1, "samplingCpuAndMemory cpu:" + this.e + ",memory:" + this.d + ",isSampleFocus:" + paramTraceData.isSampleFocus + ",cost:" + (l2 - l1));
-    paramTraceData.result.c = this.d;
-    paramTraceData.result.d = this.e;
-  }
-  
-  private void c(List<TraceData> paramList)
-  {
-    ajmf localajmf = this.jdField_a_of_type_Ajlr.a();
-    if (localajmf != null) {
-      localajmf.b(paramList);
-    }
+    this.jdField_a_of_type_Ajmm = paramajmm;
+    this.jdField_a_of_type_AndroidOsHandler = new bfob(ThreadManager.getSubThreadLooper(), this);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_Ajlr.a();
-    if (localObject != null)
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(int paramInt, ajmn paramajmn)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Ajmn = paramajmn;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
     {
-      localObject = ((ajmf)localObject).a();
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, new Object[] { "onReportStrategyChange reportInterval:", Integer.valueOf(paramInt1), ",reportNum:", Integer.valueOf(paramInt2), ", isFailReport:", Boolean.valueOf(paramBoolean) });
-    }
-    if (paramInt1 > 0) {
-      jdField_a_of_type_Int = paramInt1 * 1000;
-    }
-    if (paramInt2 > 0) {
-      jdField_b_of_type_Int = paramInt2;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(ajlr paramajlr)
-  {
-    this.jdField_a_of_type_Ajlr = paramajlr;
-    paramajlr = this.jdField_a_of_type_Ajlr.a();
-    if (paramajlr != null) {
-      paramajlr.a(this);
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(List<TraceData> paramList)
-  {
-    ajmd localajmd = this.jdField_a_of_type_Ajlr.a();
-    if (localajmd != null)
-    {
-      localajmd.a(paramList);
-      localajmd.b(paramList);
-    }
-  }
-  
-  public boolean a(TraceData paramTraceData)
-  {
-    long l1 = System.currentTimeMillis();
-    a(paramTraceData);
-    this.jdField_a_of_type_JavaUtilList.add(paramTraceData);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      boolean bool2 = bbev.g(null);
-      long l2 = l1 - this.jdField_a_of_type_Long;
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      if ((paramTraceData.result != null) && (paramTraceData.result.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean))
-      {
-        bool1 = true;
-        if (((i < jdField_b_of_type_Int) || (l2 <= c)) && (((l2 <= jdField_a_of_type_Int) && (!bool1)) || (!bool2))) {
-          break label254;
-        }
-        a(this.jdField_a_of_type_JavaUtilList);
-        c(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_JavaUtilList.clear();
-        long l3 = System.currentTimeMillis();
-        this.jdField_a_of_type_Long = l3;
-        if (QLog.isColorLevel()) {
-          QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(i), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool1) });
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Ajmm.a(paramBundle))
+        {
+        case 0: 
+        default: 
+          break;
+        case -1: 
+          if (this.jdField_a_of_type_Ajmn != null)
+          {
+            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
+          }
+          break;
         }
       }
-      for (boolean bool1 = false;; bool1 = true)
-      {
-        if ((!bool2) && (QLog.isColorLevel())) {
-          QLog.d("TraceReport", 2, "handleAddTraceReporting not network and save");
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        label254:
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(paramTraceData);
-        b(localArrayList);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TraceReport", 2, "handleAddTraceReporting not active and save");
-    }
-    b(this.jdField_a_of_type_JavaUtilList);
-    return false;
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
   public void b()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    boolean bool = bbev.g(null);
-    if ((i <= 0) || (!bool) || (!this.jdField_b_of_type_Boolean)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TraceReport", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(i), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+    this.b = true;
+    this.jdField_a_of_type_Ajmn = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.b) {
+        a(paramMessage.getData());
+      }
+      return true;
+      if (this.jdField_a_of_type_Ajmn != null)
+      {
+        this.jdField_a_of_type_Ajmn.b();
+        this.jdField_a_of_type_Ajmn = null;
       }
     }
-    do
-    {
-      return;
-      a(this.jdField_a_of_type_JavaUtilList);
-      c(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.d("TraceReport", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(i) });
-  }
-  
-  public void b(List<TraceData> paramList)
-  {
-    ajmf localajmf = this.jdField_a_of_type_Ajlr.a();
-    if (localajmf != null) {
-      localajmf.a(paramList);
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

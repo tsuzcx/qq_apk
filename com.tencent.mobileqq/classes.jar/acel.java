@@ -1,75 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity.7.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class acel
-  extends akhc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acel(SubLoginActivity paramSubLoginActivity) {}
+  public acel(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void b(boolean paramBoolean, ayaw paramayaw)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel())
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_Bcfx.d.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_Bcfx.d.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
     {
-      QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() isSucc=" + paramBoolean + " isBindFromThis=" + this.a.a);
-      if (paramayaw != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
-      }
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
     }
-    if (!this.a.a) {}
-    label428:
-    for (;;)
+    if (j > i / 3)
     {
-      return;
-      this.a.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount: start");
-      }
-      this.a.c();
-      if (paramBoolean)
-      {
-        this.a.c(this.a.getString(2131719846));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
-        }
-        ayan.b(this.a.app);
-        ayan.a(this.a.app);
-        this.a.finish();
+      if (this.a.c) {
+        this.a.c(false);
       }
       for (;;)
       {
-        if ((paramayaw == null) || (!QLog.isColorLevel())) {
-          break label428;
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         }
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramayaw.jdField_a_of_type_JavaLangString + "...errorType = " + paramayaw.jdField_a_of_type_Int);
+        i = (int)muc.b(BaseApplicationImpl.getApplication(), this.a.b + j);
         return;
-        if (paramayaw == null) {
-          break;
-        }
-        switch (paramayaw.jdField_a_of_type_Int)
-        {
-        default: 
-          this.a.b(this.a.getString(2131719835));
-          break;
-        case 1002: 
-          ayao.a(this.a.app, this.a);
-          break;
-        case 1003: 
-          this.a.b(this.a.getString(2131719836));
-          break;
-        case 1004: 
-          String str2 = paramayaw.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (TextUtils.isEmpty(str2)) {
-            str1 = this.a.getString(2131719837);
-          }
-          this.a.b(str1);
-          this.a.runOnUiThread(new SubLoginActivity.7.1(this));
-          SubLoginActivity.a(this.a, null);
-          ayan.a(this.a.app, 300L);
-        }
+        this.a.c(true);
       }
+    }
+    this.a.c(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2) {
+      i = (int)muc.b(BaseApplicationImpl.getApplication(), this.a.b);
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int != 1) {}
     }
   }
 }

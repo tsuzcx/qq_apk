@@ -1,24 +1,30 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.os.Message;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ajst
-  implements View.OnSystemUiVisibilityChangeListener
+  extends akgf
 {
-  public ajst(BaseActivity paramBaseActivity) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void a()
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
+    Object localObject = BaseActivity.sTopActivity;
+    if (localObject == null) {
+      ScreenShot.a("MyShakeListener - top activity is null");
     }
+    do
+    {
+      return;
+      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
+      {
+        ScreenShot.a("MyShakeListener - shake flag is false");
+        return;
+      }
+    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
+    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
+    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
   }
 }
 

@@ -1,15 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.VideoView;
-
-final class bbyw
-  implements MediaPlayer.OnCompletionListener
+public class bbyw
 {
-  bbyw(VideoView paramVideoView) {}
+  public String a;
+  public String b;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public bbyw(String paramString1, String paramString2)
   {
-    this.a.start();
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "LiangHaoUinData{" + "hide" + ", light='" + this.b + '\'' + '}';
   }
 }
 

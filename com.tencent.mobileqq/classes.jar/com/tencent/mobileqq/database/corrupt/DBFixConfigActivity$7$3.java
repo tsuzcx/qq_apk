@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class DBFixConfigActivity$7$3
   implements Runnable
@@ -10,7 +10,7 @@ class DBFixConfigActivity$7$3
   
   public void run()
   {
-    bcpw.a(this.a.this$0.getApplicationContext(), ajyc.a(2131702857), 1).a();
+    bcql.a(this.a.this$0.getApplicationContext(), ajya.a(2131702868), 1).a();
   }
 }
 

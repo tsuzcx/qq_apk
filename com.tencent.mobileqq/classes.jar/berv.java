@@ -1,23 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.SubPkgInfo;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 
 public final class berv
-  implements Parcelable.Creator<SubPkgInfo>
+  implements Parcelable.Creator<MiniAppBaseInfo>
 {
-  public SubPkgInfo a(Parcel paramParcel)
+  public MiniAppBaseInfo a(Parcel paramParcel)
   {
-    SubPkgInfo localSubPkgInfo = new SubPkgInfo();
-    localSubPkgInfo.subPkgName = paramParcel.readString();
-    localSubPkgInfo.downloadUrl = paramParcel.readString();
-    localSubPkgInfo.independent = paramParcel.readInt();
-    localSubPkgInfo.fileSize = paramParcel.readInt();
-    return localSubPkgInfo;
+    return new MiniAppBaseInfo(paramParcel);
   }
   
-  public SubPkgInfo[] a(int paramInt)
+  public MiniAppBaseInfo[] a(int paramInt)
   {
-    return new SubPkgInfo[paramInt];
+    return new MiniAppBaseInfo[paramInt];
   }
 }
 

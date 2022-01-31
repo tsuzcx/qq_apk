@@ -1,21 +1,33 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class adsi
-  extends ClickableSpan
+  implements bfph
 {
-  adsi(adqy paramadqy, String paramString) {}
+  adsi(adsh paramadsh, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      paramView = (ajsx)this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      axqy.b(this.jdField_a_of_type_Adsh.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Adsh.jdField_a_of_type_Int), "", "");
+      return;
+    }
+    catch (NumberFormatException paramView) {}
   }
 }
 

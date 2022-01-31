@@ -1,18 +1,9 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-final class uyu
-  implements vac
+public class uyu
+  extends ssh
 {
-  uyu(WeakReference paramWeakReference) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
-  {
-    uyv localuyv = (uyv)this.a.get();
-    if (localuyv != null) {
-      localuyv.a(paramErrorMessage);
-    }
-  }
+  public ArrayList<String> a;
 }
 
 

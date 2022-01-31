@@ -1,21 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import java.io.File;
 
 public class axhv
 {
-  public Handler a;
-  public axhw a;
+  public int a;
+  public aiai a;
+  public Rect a;
+  public Camera.Size a;
+  public File a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public axhv(Handler paramHandler, axhw paramaxhw)
-  {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_Axhw = paramaxhw;
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
-  }
+  private axhv(axhr paramaxhr) {}
 }
 
 

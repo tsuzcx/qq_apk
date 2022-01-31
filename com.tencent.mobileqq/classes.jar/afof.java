@@ -1,42 +1,25 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
 public class afof
-  extends RecyclerView.OnScrollListener
+  implements bfph
 {
-  public afof(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  public afof(TroopSuspiciousFragment paramTroopSuspiciousFragment, bfpc parambfpc) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.jdField_a_of_type_Int = paramInt;
-    if (paramInt == 0)
+    switch (paramInt)
     {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
-        TroopSuspiciousFragment.a(this.a);
-      }
     }
-    if (this.a.jdField_a_of_type_Baxk != null)
+    for (;;)
     {
-      if (paramInt == 0) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_Baxk.a();
-      this.a.jdField_a_of_type_Baxk.c();
-    }
-    label94:
-    while (!this.a.jdField_a_of_type_Baxk.a()) {
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
     }
-    this.a.jdField_a_of_type_Baxk.b();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

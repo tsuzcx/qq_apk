@@ -1,43 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView;
 
-public final class bcrq
-  implements ValueAnimator.AnimatorUpdateListener
+public class bcrq
+  implements bfos
 {
-  public float a;
-  private final TabDragAnimationView a;
-  public boolean a;
-  public boolean b = false;
+  public bcrq(SlideDetectListView paramSlideDetectListView) {}
   
-  public bcrq(TabDragAnimationView paramTabDragAnimationView)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
   
-  public void a()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f - this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
-      this.b = false;
-    }
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

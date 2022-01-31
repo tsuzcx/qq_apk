@@ -1,16 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.os.MessageQueue.IdleHandler;
+import java.util.ArrayList;
 
 class bcgh
-  implements View.OnClickListener
+  implements MessageQueue.IdleHandler
 {
   bcgh(bcgg parambcgg) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    Object localObject;
+    int i;
+    if (!bcgg.a().isEmpty())
+    {
+      localObject = (bcgj)bcgg.a().remove(0);
+      i = ((bcgj)localObject).a();
+      if (2 == i) {
+        bcgg.a().add(localObject);
+      }
+    }
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (bcgg.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((bcgg)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
     }
   }
 }

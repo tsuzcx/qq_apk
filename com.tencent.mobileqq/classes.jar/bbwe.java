@@ -1,6 +1,6 @@
 public abstract interface bbwe
 {
-  public abstract void callback(int paramInt);
+  public abstract void a(boolean paramBoolean);
 }
 
 

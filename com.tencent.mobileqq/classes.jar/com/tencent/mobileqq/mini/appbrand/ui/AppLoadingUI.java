@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -121,7 +121,7 @@ public class AppLoadingUI
     {
       if (bool)
       {
-        String str3 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+        String str3 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
         if (QLog.isColorLevel()) {
           QLog.i("miniapp-start", 1, "checkBaseLibVersionMatch 需要升级 sp MaxVersion:" + str3);
         }
@@ -368,7 +368,7 @@ public class AppLoadingUI
       }
       QLog.e("miniapp-start", 1, "LoadingFragment 小程序参数错误！");
       if (getActivity() != null) {
-        Toast.makeText(getActivity(), ajyc.a(2131700609), 1).show();
+        Toast.makeText(getActivity(), ajya.a(2131700620), 1).show();
       }
       callActivityBackPressed();
       return;
@@ -381,7 +381,7 @@ public class AppLoadingUI
         break label330;
       }
       this.mDeveloperInfoContainer.setVisibility(0);
-      this.mDeveloperInfoDesc.setText(ajyc.a(2131700611) + this.appConfig.config.developerDesc + ajyc.a(2131700613));
+      this.mDeveloperInfoDesc.setText(ajya.a(2131700622) + this.appConfig.config.developerDesc + ajya.a(2131700624));
     }
     while ((this.mDeveloperQualifications != null) && (this.appConfig.config.qualifications != null) && (this.appConfig.config.qualifications.size() > 0))
     {
@@ -442,29 +442,29 @@ public class AppLoadingUI
   public void initUI(ViewGroup paramViewGroup)
   {
     this.mRootView = paramViewGroup;
-    this.mStatusBar = paramViewGroup.findViewById(2131376451);
+    this.mStatusBar = paramViewGroup.findViewById(2131376453);
     new ImmersionBar(getActivity(), 0, this.mStatusBar);
     this.uiHandler = new Handler(this);
-    this.rightContainer = ((RelativeLayout)paramViewGroup.findViewById(2131364688));
+    this.rightContainer = ((RelativeLayout)paramViewGroup.findViewById(2131364687));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getActivity(), 80.0F), DisplayUtil.dip2px(getActivity(), 30.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(paramViewGroup.getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(getActivity()));
     ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(paramViewGroup.getContext(), 12.5F);
     this.rightContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.mMoreView = ((ImageView)paramViewGroup.findViewById(2131363586));
-    this.mCloseView = ((ImageView)paramViewGroup.findViewById(2131363501));
+    this.mMoreView = ((ImageView)paramViewGroup.findViewById(2131363585));
+    this.mCloseView = ((ImageView)paramViewGroup.findViewById(2131363500));
     if (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL))
     {
-      localObject = MiniAppUtils.getIcon(getActivity(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30);
+      localObject = MiniAppUtils.getIcon(getActivity(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30);
       this.mCloseView.setImageDrawable((Drawable)localObject);
     }
     this.mProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131368887));
-    this.mContentLayout = ((ViewGroup)paramViewGroup.findViewById(2131364709));
+    this.mContentLayout = ((ViewGroup)paramViewGroup.findViewById(2131364708));
     this.mNameView = ((TextView)paramViewGroup.findViewById(2131366923));
-    this.mLogoView = ((ImageView)paramViewGroup.findViewById(2131369583));
-    this.mDeveloperInfoContainer = paramViewGroup.findViewById(2131365088);
-    this.mDeveloperInfoDesc = ((TextView)paramViewGroup.findViewById(2131365089));
-    this.mDeveloperQualifications = ((TextView)paramViewGroup.findViewById(2131365090));
+    this.mLogoView = ((ImageView)paramViewGroup.findViewById(2131369582));
+    this.mDeveloperInfoContainer = paramViewGroup.findViewById(2131365087);
+    this.mDeveloperInfoDesc = ((TextView)paramViewGroup.findViewById(2131365088));
+    this.mDeveloperQualifications = ((TextView)paramViewGroup.findViewById(2131365089));
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
   }
@@ -476,14 +476,14 @@ public class AppLoadingUI
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363501)
+    if (paramView.getId() == 2131363500)
     {
       MiniReportManager.reportEventType(this.appConfig, 1026, "1");
       MiniProgramLpReportDC04239.reportPageView(this.appConfig, "0", null, "close", "loading_page");
       MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.appConfig);
       callActivityBackPressed();
     }
-    while (paramView.getId() != 2131363586) {
+    while (paramView.getId() != 2131363585) {
       return;
     }
   }

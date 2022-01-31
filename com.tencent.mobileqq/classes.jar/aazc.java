@@ -1,33 +1,34 @@
 import android.app.Dialog;
-import android.graphics.Color;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazc
-  implements bckz
+  implements Animation.AnimationListener
 {
-  public aazc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aazc(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
-    ajfa.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    bcpw.a(this.a, 2, this.a.getString(2131690819), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131377350)).setTextColor(Color.parseColor("#cccccc"));
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    {
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
     }
+    while (paramAnimation != this.b) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,89 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class achk
-  implements View.OnClickListener
+  extends Handler
 {
-  public achk(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
+  public achk(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramMessage.what == 1) {
+      this.a.f();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_Akhq.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
+    do
+    {
+      return;
+      if (paramMessage.what == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_OWNER_NAME");
+        }
+        this.a.a(2, this.a.a.getTroopOwnerName(), this.a.a.isFetchedTroopOwnerUin());
+        return;
+      }
+      if (paramMessage.what == 4)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_INFO");
+        }
+        if ((this.a.a.dwGroupFlagExt & 0x800) != 0L) {
+          this.a.a(7, this.a.a.troopAuthenticateInfo, false);
+        }
+        this.a.a(2, this.a.a.troopOwnerNick, this.a.a.isFetchedTroopOwnerUin());
+        if ((this.a.a.troopOwnerNick == null) && (!TextUtils.isEmpty(this.a.a.troopowneruin))) {
+          TroopInfoActivity.c(this.a);
+        }
+        this.a.k();
+        if (!TextUtils.isEmpty(this.a.a.mRichFingerMemo)) {}
+        for (paramMessage = this.a.a.mRichFingerMemo;; paramMessage = this.a.getResources().getString(2131696463))
+        {
+          this.a.a(6, paramMessage, this.a.a.isOwnerOrAdim());
+          if (this.a.a.troopClass != null) {
+            break;
+          }
+          TroopInfoActivity.d(this.a);
+          return;
+        }
+      }
+      if (paramMessage.what == 5)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_CLASS");
+        }
+        this.a.a(4, this.a.a.troopClass, this.a.a.isOwnerOrAdim());
+        return;
+      }
+      if (paramMessage.what == 6)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_TAGS");
+        }
+        paramMessage = TroopInfoActivity.a(this.a, this.a.a);
+        this.a.a(8, paramMessage, true, 2, true);
+        return;
+      }
+      if (paramMessage.what == 7)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopinfo", 2, "MSG_UPDATE_TROOP_INTEREST");
+        }
+        paramMessage = new ArrayList();
+        if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+          paramMessage.add(this.a.a.tribeName);
+        }
+        this.a.a(9, paramMessage, true, 1, true);
+        TroopInfoActivity.e(this.a);
+        return;
+      }
+    } while (paramMessage.what != 8);
+    TroopInfoActivity.e(this.a);
   }
 }
 

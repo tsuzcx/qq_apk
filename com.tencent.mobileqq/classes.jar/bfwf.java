@@ -1,80 +1,27 @@
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
+import android.view.View;
 
 public class bfwf
 {
-  private TypedArray a;
-  
-  public bfwf(TypedArray paramTypedArray)
-  {
-    this.a = paramTypedArray;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getInt(paramInt1, paramInt2);
-    }
-    return i;
-  }
-  
-  public Drawable a(int paramInt)
-  {
-    if (paramInt >= 0) {
-      return this.a.getDrawable(paramInt);
-    }
-    return null;
-  }
+  public int a;
+  public View a;
+  public int b;
+  public int c;
+  public int d;
   
   public void a()
   {
-    this.a.recycle();
-  }
-  
-  public boolean a(int paramInt, boolean paramBoolean)
-  {
-    boolean bool = paramBoolean;
-    if (paramInt >= 0) {
-      bool = this.a.getBoolean(paramInt, paramBoolean);
-    }
-    return bool;
-  }
-  
-  public CharSequence[] a(int paramInt)
-  {
-    if (paramInt >= 0) {
-      return this.a.getTextArray(paramInt);
-    }
-    return null;
-  }
-  
-  public int b(int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getColor(paramInt1, paramInt2);
-    }
-    return i;
-  }
-  
-  public int c(int paramInt1, int paramInt2)
-  {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = this.a.getDimensionPixelSize(paramInt1, paramInt2);
-    }
-    return i;
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+    this.c = 0;
+    this.d = 0;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
   
   public String toString()
   {
-    return this.a.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append("menuType = ").append(this.jdField_a_of_type_Int).append(",").append("menuId = ").append(this.b).append(",").append("menuWidth = ").append(this.c).append(",").append("menuHeight = ").append(this.d).append(",").append("menuView = ").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuilder.toString();
   }
 }
 

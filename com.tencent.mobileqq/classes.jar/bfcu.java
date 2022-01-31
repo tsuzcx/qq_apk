@@ -1,27 +1,16 @@
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
-import com.tencent.smtt.sdk.WebChromeClient;
+import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
+import io.flutter.plugin.common.BasicMessageChannel.Reply;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 class bfcu
-  extends WebChromeClient
+  implements BasicMessageChannel.MessageHandler<ByteBuffer>
 {
-  bfcu(bfct parambfct) {}
+  bfcu(bfcr parambfcr) {}
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public void a(ByteBuffer paramByteBuffer, BasicMessageChannel.Reply<ByteBuffer> paramReply)
   {
-    if (paramConsoleMessage != null)
-    {
-      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label51;
-      }
-      besl.d("AppBrandService", "consoleMessage.message()  line:" + paramConsoleMessage.lineNumber());
-    }
-    for (;;)
-    {
-      return super.onConsoleMessage(paramConsoleMessage);
-      label51:
-      besl.b("AppBrandService", "consoleMessage.message() " + paramConsoleMessage.message());
-    }
+    betc.c("miniapp-TISSUE", new String(paramByteBuffer.array(), Charset.forName("utf8")));
   }
 }
 

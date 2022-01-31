@@ -1,6 +1,6 @@
 package Wallet;
 
-import bbct;
+import bbdh;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -46,7 +46,7 @@ public final class RedInfoSyncReq
       QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)paramList.next();
       localArrayList.add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
     }
-    return new RedInfoSyncReq(1, bbct.c(), bbct.e(), bbct.i(), localArrayList);
+    return new RedInfoSyncReq(1, bbdh.c(), bbdh.e(), bbdh.i(), localArrayList);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

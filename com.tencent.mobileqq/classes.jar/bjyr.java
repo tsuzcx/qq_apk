@@ -1,44 +1,34 @@
-import android.graphics.Bitmap;
-
 public class bjyr
-  extends bjzj
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  public int a;
+  public long a;
+  public boolean a;
   
-  public bjyr(int paramInt, Bitmap paramBitmap)
+  public boolean equals(Object paramObject)
   {
-    super(paramInt, paramBitmap);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bjyr)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
+      }
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
   }
   
-  public bjyr a(Bitmap paramBitmap)
+  public int hashCode()
   {
-    paramBitmap = new bjyr(this.jdField_c_of_type_Int, paramBitmap);
-    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramBitmap.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramBitmap.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    return paramBitmap;
+    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
   }
   
   public String toString()
   {
-    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_c_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + '}';
+    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

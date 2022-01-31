@@ -1,23 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-public class mfx
-  implements DialogInterface.OnClickListener
+class mfx
+  implements View.OnClickListener
 {
-  public mfx(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  mfx(mfv parammfv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
-    {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().ao = true;
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
     }
-    paramDialogInterface.dismiss();
+    axqy.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
   }
 }
 

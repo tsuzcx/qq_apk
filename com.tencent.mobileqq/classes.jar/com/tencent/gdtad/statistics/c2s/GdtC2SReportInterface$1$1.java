@@ -1,29 +1,29 @@
 package com.tencent.gdtad.statistics.c2s;
 
-import axqw;
-import yyi;
-import yyj;
+import axqy;
+import yyf;
+import yyg;
 
 public class GdtC2SReportInterface$1$1
   implements Runnable
 {
-  public GdtC2SReportInterface$1$1(yyj paramyyj) {}
+  public GdtC2SReportInterface$1$1(yyg paramyyg) {}
   
   public void run()
   {
-    axqw.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", yyi.a(this.a.a), "");
+    axqy.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", yyf.a(this.a.a), "");
     switch (this.a.a.a)
     {
     default: 
       return;
     case 0: 
-      yyi.a(this.a.a, yyi.a(this.a.a));
+      yyf.a(this.a.a, yyf.a(this.a.a));
       return;
     case 1: 
-      yyi.a(this.a.a, yyi.b(this.a.a));
+      yyf.a(this.a.a, yyf.b(this.a.a));
       return;
     }
-    yyi.a(this.a.a, yyi.c(this.a.a));
+    yyf.a(this.a.a, yyf.c(this.a.a));
   }
 }
 

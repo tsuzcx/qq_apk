@@ -1,31 +1,23 @@
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class abzi
-  extends MqqHandler
+  implements Handler.Callback
 {
-  public abzi(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public abzi(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
     }
-    int i = 0;
-    while (i < 6)
+    for (;;)
     {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
+      return true;
+      paramMessage = new abzj(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
     }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

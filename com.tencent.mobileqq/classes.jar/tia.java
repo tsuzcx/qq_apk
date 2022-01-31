@@ -1,15 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class tia
-  implements View.OnClickListener
+  extends ssv
 {
-  tia(thy paramthy) {}
+  tia(thv paramthv) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.dismiss();
-    vel.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    ved.b(thv.b(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      ved.e(thv.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
+    }
+    tfy localtfy = (tfy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(251);
+    if (localtfy.a()) {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_Thh.a("exp_story", 3);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!localtfy.b()) {
+          break;
+        }
+      } while (!this.a.a());
+      this.a.jdField_a_of_type_Thh.a("exp_story", 2);
+      return;
+      if (!this.a.jdField_a_of_type_Tif.a()) {
+        break;
+      }
+    } while (!this.a.a());
+    this.a.jdField_a_of_type_Thh.a("exp_story", 5);
+    return;
+    if (localtfy.c())
+    {
+      this.a.h();
+      localtfy.a();
+      this.a.jdField_a_of_type_Thh.a("exp_hide", 0);
+      return;
+    }
+    this.a.jdField_a_of_type_Thh.a("exp_hide", 0);
   }
 }
 

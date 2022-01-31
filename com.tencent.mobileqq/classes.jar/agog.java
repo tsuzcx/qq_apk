@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agog
-  implements DialogInterface.OnClickListener
+  implements SurfaceHolder.Callback
 {
-  public agog(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
+  public agog(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
+    }
+    if ((!this.a.E) && (this.a.s == 1) && (this.a.r > 0))
+    {
+      this.a.a(this.a.r);
+      this.a.r = 0;
+      this.a.s = 0;
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if ((!this.a.E) && (this.a.a != null)) {
+      this.a.a.c();
+    }
   }
 }
 

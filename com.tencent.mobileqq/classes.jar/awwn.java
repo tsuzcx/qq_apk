@@ -1,9 +1,53 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public abstract interface awwn
-  extends awwq
+public class awwn
+  extends awyh
 {
-  public abstract ImageView b();
+  private TextView a;
+  private TextView b;
+  private TextView c;
+  private TextView d;
+  
+  public awwn(View paramView)
+  {
+    super(paramView);
+  }
+  
+  public awwn(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.a = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375876));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375875));
+    this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375874));
+    this.d = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375766));
+  }
+  
+  public TextView e()
+  {
+    return this.a;
+  }
+  
+  public TextView f()
+  {
+    return this.jdField_b_of_type_AndroidWidgetTextView;
+  }
+  
+  public TextView g()
+  {
+    return this.c;
+  }
+  
+  public TextView h()
+  {
+    return this.d;
+  }
 }
 
 

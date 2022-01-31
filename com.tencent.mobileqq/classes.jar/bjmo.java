@@ -1,69 +1,68 @@
-import android.support.annotation.NonNull;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ProgressBar;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class bjmo
-  implements bjoi
+  extends Handler
 {
-  private static bjmo jdField_a_of_type_Bjmo = new bjmo();
-  private static final String jdField_a_of_type_JavaLangString = bjmo.class.getSimpleName();
-  private HashMap<String, bjof> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashMap<String, AtomicInteger> b = new HashMap();
+  public bjmo(CropVideoActivity paramCropVideoActivity) {}
   
-  public static bjmo a()
+  public void handleMessage(Message paramMessage)
   {
-    return jdField_a_of_type_Bjmo;
-  }
-  
-  @NonNull
-  public <T extends bjof> T a(@NonNull Class<T> paramClass)
-  {
-    if (bjmn.class.isAssignableFrom(paramClass))
+    switch (paramMessage.what)
     {
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass.getName())) {}
-      try
+    default: 
+    case 1: 
+    case 2: 
+      do
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.getName(), paramClass.newInstance());
-        this.b.put(paramClass.getName(), new AtomicInteger(0));
-        AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramClass.getName());
-        if (localAtomicInteger != null)
-        {
-          localAtomicInteger.incrementAndGet();
-          QLog.d(jdField_a_of_type_JavaLangString, 1, paramClass.getName() + " has created and ref = " + localAtomicInteger.get());
+        return;
+        postDelayed(this.a.a, 1000L);
+        CropVideoActivity.a(this.a).setProgress(paramMessage.arg1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CropVideoActivity", 2, "crop video begin");
         }
-        return (bjof)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass.getName());
+        if ((CropVideoActivity.a(this.a) >= CropVideoActivity.b(this.a)) && (CropVideoActivity.b(this.a) >= 0L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("CropVideoActivity", 2, "startCropVideo illegal time!");
+          }
+          bcql.a(this.a.getApplicationContext(), ajya.a(2131702635), 1).a();
+          return;
+        }
+      } while (CropVideoActivity.a(this.a, CropVideoActivity.a(this.a)) != 0);
+      if (Build.VERSION.SDK_INT >= 18) {
+        bjmr.a(CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.e(this.a), CropVideoActivity.f(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), new bjmp(this));
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      for (;;)
       {
-        for (;;)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
+        this.a.a();
+        return;
+        CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
       }
-      catch (InstantiationException localInstantiationException)
-      {
-        for (;;)
-        {
-          localInstantiationException.printStackTrace();
-        }
+    case 3: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video success");
       }
+      this.a.finish();
+      return;
+    case 4: 
+      if (QLog.isColorLevel()) {
+        QLog.d("CropVideoActivity", 2, "crop video fail");
+      }
+      bcql.a(this.a.getApplicationContext(), 1, ajya.a(2131702633), 1).a();
+      this.a.finish();
+      return;
     }
-    throw new RuntimeException("Cannot create non global view model " + paramClass.getName() + " by GlobalViewModelFactory");
-  }
-  
-  public void a(bjof parambjof)
-  {
-    if ((parambjof instanceof bjmn))
-    {
-      AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(parambjof.getClass().getName());
-      if ((localAtomicInteger != null) && (localAtomicInteger.decrementAndGet() == 0))
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(parambjof.getClass().getName());
-        this.b.remove(parambjof.getClass().getName());
-        QLog.d(jdField_a_of_type_JavaLangString, 1, parambjof.getClass().getName() + " has removed");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "crop video with ffmpeg");
     }
+    CropVideoActivity.a(this.a, CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a), CropVideoActivity.c(this.a), CropVideoActivity.d(this.a), CropVideoActivity.a(this.a), CropVideoActivity.b(this.a));
+    this.a.a();
   }
 }
 

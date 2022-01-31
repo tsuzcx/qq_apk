@@ -1,23 +1,16 @@
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class arbr
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public class arbr
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  arbr(arbn paramarbn) {}
+  arbr(arbp paramarbp) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    arbn.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (arbn.a(this.a) == null);
-    arbn.a(this.a).j();
+    arbp.a(this.a).post(new VideoBaseItem.2.1(this));
   }
 }
 

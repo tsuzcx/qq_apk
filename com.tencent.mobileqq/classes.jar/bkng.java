@@ -1,25 +1,25 @@
 import android.util.Property;
 
 class bkng
-  extends Property<bknf, Integer>
+  extends Property<bknf, Float>
 {
   bkng(bknf parambknf, Class paramClass, String paramString)
   {
     super(paramClass, paramString);
   }
   
-  public Integer a(bknf parambknf)
+  public Float a(bknf parambknf)
   {
     if (parambknf != null) {
-      return Integer.valueOf(bknf.a(parambknf));
+      return Float.valueOf(bknf.a(parambknf));
     }
-    return Integer.valueOf(0);
+    return Float.valueOf(0.0F);
   }
   
-  public void a(bknf parambknf, Integer paramInteger)
+  public void a(bknf parambknf, Float paramFloat)
   {
     if (parambknf != null) {
-      bknf.a(parambknf, paramInteger.intValue());
+      bknf.a(parambknf, paramFloat.floatValue());
     }
   }
 }

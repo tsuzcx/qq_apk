@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
 public class adfc
-  implements adfh
+  extends adfm
 {
-  public adfc(ColorPicker paramColorPicker, adff paramadff) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Adff.a);
-  }
+  public ImageView a;
+  public ColorView a;
 }
 
 

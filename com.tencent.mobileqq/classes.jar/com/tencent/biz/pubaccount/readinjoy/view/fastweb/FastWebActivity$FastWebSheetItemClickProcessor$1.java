@@ -2,13 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import java.net.URLEncoder;
-import onk;
-import rjq;
+import onh;
+import rjn;
 
 public class FastWebActivity$FastWebSheetItemClickProcessor$1
   implements Runnable
 {
-  public FastWebActivity$FastWebSheetItemClickProcessor$1(rjq paramrjq) {}
+  public FastWebActivity$FastWebSheetItemClickProcessor$1(rjn paramrjn) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class FastWebActivity$FastWebSheetItemClickProcessor$1
     try
     {
       str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + FastWebActivity.a(this.a.a).mArticleID + "&puin=" + FastWebActivity.a(this.a.a).mSubscribeID + "&url=" + URLEncoder.encode(FastWebActivity.a(this.a.a).mArticleContentUrl, "utf-8") + "&key=" + FastWebActivity.a(this.a.a).innerUniqueID + "&type=7&_wv=3";
-      onk.a(this.a.a, str1);
+      onh.a(this.a.a, str1);
       return;
     }
     catch (Exception localException)

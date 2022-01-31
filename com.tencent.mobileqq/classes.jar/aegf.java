@@ -1,22 +1,24 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aegf
-  implements aptu
+  extends BroadcastReceiver
 {
-  public aegf(AIOFileVideoData paramAIOFileVideoData, Context paramContext, agqx paramagqx) {}
+  public aegf(AIOGalleryActivity paramAIOGalleryActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_Agqx.b();
-      this.jdField_a_of_type_Agqx.f();
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
+      }
+      this.a.finish();
     }
   }
-  
-  public void b() {}
 }
 
 

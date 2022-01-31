@@ -1,10 +1,15 @@
-class bikr
+public class bikr
+  extends bikp
 {
-  public double a;
-  public boolean a;
-  public boolean b;
+  public int a(int paramInt)
+  {
+    return paramInt * -1;
+  }
   
-  bikr(bikq parambikq) {}
+  public boolean a(int paramInt)
+  {
+    return paramInt < 0;
+  }
 }
 
 

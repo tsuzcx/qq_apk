@@ -1,98 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.report.lp.LpReport_Retention_dc03208;
-import cooperation.qzone.util.QZLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bhkv
+  extends QzoneExternalRequest
 {
-  public static final Set<String> a = new HashSet();
+  private JceStruct a;
   
-  public static void a(int paramInt)
+  public bhkv(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
   {
-    a(String.valueOf(paramInt), null);
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
   {
-    if (a(paramString))
-    {
-      i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
-      if ((i == 0) || (i == 2)) {
-        b(paramString, paramHashMap);
-      }
-      if ((i == 0) || (i == 1)) {
-        LpReport_Retention_dc03208.report(paramString, paramHashMap);
-      }
-      if (QZLog.isColorLevel()) {
-        QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", paramString });
-      }
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    while (!QZLog.isColorLevel())
+    MobileQbossReportRsp localMobileQbossReportRsp;
+    do
     {
-      int i;
-      return;
-    }
-    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
   }
   
-  public static boolean a(String paramString)
+  public String getCmdString()
   {
-    if (a.size() == 0)
-    {
-      Object localObject = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report_blacklist", "");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split(",");
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            CharSequence localCharSequence = localObject[i];
-            if (!TextUtils.isEmpty(localCharSequence)) {}
-            try
-            {
-              a.add(localCharSequence);
-              i += 1;
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                QZLog.e("Retention.Report", "meetConditon error", localException);
-              }
-            }
-          }
-        }
-      }
-    }
-    return (a.size() <= 0) || (!a.contains(paramString));
+    return "QzoneNewService.mobileqboss.report";
   }
   
-  public static void b(String paramString, HashMap<String, String> paramHashMap)
+  public JceStruct getReq()
   {
-    Object localObject = paramHashMap;
-    if (paramHashMap == null) {}
-    try
-    {
-      localObject = new HashMap();
-      ((HashMap)localObject).put("function_id", paramString);
-      paramHashMap = new Properties();
-      paramHashMap.putAll((Map)localObject);
-      axql.a(BaseApplicationImpl.getContext()).reportKVEvent("qzone_retention_" + paramString, paramHashMap);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e("Retention.Report", "统计率上报失败", paramString);
-    }
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
   }
 }
 

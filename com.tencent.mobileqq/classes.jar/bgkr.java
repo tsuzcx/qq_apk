@@ -1,23 +1,6 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class bgkr
-  implements bgkx
+public abstract interface bgkr
 {
-  bgkr(bgkw parambgkw) {}
-  
-  public void a(boolean paramBoolean, Context paramContext, bgkz parambgkz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bgkq.d(paramContext, parambgkz);
-    }
-    if (this.a != null) {
-      this.a.a(paramBoolean);
-    }
-  }
+  public abstract void a(bgkq parambgkq);
 }
 
 

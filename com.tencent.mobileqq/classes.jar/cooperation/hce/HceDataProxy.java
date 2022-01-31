@@ -1,6 +1,6 @@
 package cooperation.hce;
 
-import akug;
+import akuf;
 
 public class HceDataProxy
 {
@@ -11,7 +11,7 @@ public class HceDataProxy
     if (paramGetLocationListener == null) {
       return;
     }
-    akug.a(new HceDataProxy.1(paramString, paramGetLocationListener));
+    akuf.a(new HceDataProxy.1(paramString, paramGetLocationListener));
   }
 }
 

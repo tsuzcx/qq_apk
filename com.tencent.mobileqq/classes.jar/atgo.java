@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-class atgo
-  implements View.OnClickListener
+public class atgo
+  extends Handler
 {
-  atgo(atgn paramatgn) {}
+  public atgo(StoryPlayController paramStoryPlayController) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_a_of_type_Athd.a();
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      StoryPlayController.a(this.a, this.a.a);
+    }
   }
 }
 

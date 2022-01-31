@@ -1,42 +1,51 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel.2.2;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class bkgr
-  implements bjgv
+public abstract class bkgr
+  implements bkgq
 {
-  public bkgr(EditTextPanel paramEditTextPanel) {}
+  private List<bkgm> a = new ArrayList();
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public void a()
   {
-    this.a.post(new EditTextPanel.2.1(this, paramString, paramInt));
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bkgm)localIterator.next()).h();
+    }
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt)
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    for (;;)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bkgm)localIterator.next()).b(paramInt);
+    }
+  }
+  
+  public void a(bkgm parambkgm)
+  {
+    if (parambkgm == null) {
+      throw new IllegalArgumentException("the observer is null.");
+    }
+    if (this.a.contains(parambkgm)) {
+      throw new IllegalStateException("Observer " + parambkgm + " is already registered.");
+    }
+    this.a.add(parambkgm);
+  }
+  
+  public void b(bkgm parambkgm)
+  {
+    if (parambkgm == null) {
+      throw new IllegalArgumentException("The observer is null.");
+    }
+    synchronized (this.a)
     {
-      return;
-      int j = this.a.a.a.getChildCount();
-      DynamicTextConfigManager localDynamicTextConfigManager = (DynamicTextConfigManager)bjae.a(7);
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = this.a.a.a.getChildAt(i);
-        localObject = (bkgq)this.a.a.getChildViewHolder((View)localObject);
-        if (((bkgq)localObject).a.isContainsResUrl(paramString)) {
-          ThreadManager.getUIHandler().post(new EditTextPanel.2.2(this, paramBoolean, (bkgq)localObject, localDynamicTextConfigManager));
-        }
-        i += 1;
+      int i = this.a.indexOf(parambkgm);
+      if (i != -1) {
+        this.a.remove(i);
       }
+      return;
     }
   }
 }

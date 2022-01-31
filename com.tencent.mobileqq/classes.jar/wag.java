@@ -1,47 +1,46 @@
-import java.io.File;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class wag
-  extends wad
+  extends BroadcastReceiver
 {
-  wag(wae paramwae, wam paramwam, File paramFile) {}
+  wag(wab paramwab) {}
   
-  public void onFailure(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Wam.onFailure(paramString);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_Wae.b.size())
-    {
-      File localFile = new File((String)this.jdField_a_of_type_Wae.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      if ((this.a.jdField_a_of_type_Wai != null) && (!this.a.jdField_a_of_type_Wai.a()))
+      {
+        this.a.b = true;
+        ved.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
       }
-      i += 1;
     }
-    this.jdField_a_of_type_Wae.b = new ArrayList();
-    this.jdField_a_of_type_Wam.onFinish(paramBoolean);
-  }
-  
-  public void onProgress(String paramString)
-  {
-    this.jdField_a_of_type_Wam.onProgress(paramString);
-  }
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Wam.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    this.jdField_a_of_type_Wam.onSuccess(paramString);
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
+      this.a.b = false;
+    } while ((this.a.jdField_a_of_type_Wah == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Wah.a == null));
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      paramContext = ajya.a(2131704492);
+      this.a.jdField_a_of_type_Wah.a.onSuccess(paramContext);
+      this.a.jdField_a_of_type_Wah.a.onFinish(true);
+      ved.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = -9999;
+      return;
+      paramContext = ajya.a(2131704491);
+      this.a.jdField_a_of_type_Wah.a.onFailure(paramContext);
+      this.a.jdField_a_of_type_Wah.a.onFinish(false);
+      ved.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
   }
 }
 

@@ -1,28 +1,24 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.widget.AdapterView;
 
 public class azdv
-  implements bfoq
+  implements bfpu
 {
-  public azdv(MediaPreviewActivity paramMediaPreviewActivity, bfol parambfol, URLDrawable paramURLDrawable) {}
+  public azdv(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Bant.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Int);
-    String str = this.jdField_a_of_type_Bfol.a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693383).equals(str)) && (paramView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, paramView.a);
-    }
-    for (;;)
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693393).equals(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAdapterView = this.a.a.a(paramInt);
+      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
+        return false;
       }
     }
+    MediaPreviewActivity.a(this.a);
+    return true;
   }
 }
 

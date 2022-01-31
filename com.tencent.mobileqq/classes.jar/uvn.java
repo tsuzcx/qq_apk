@@ -1,25 +1,38 @@
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class uvn
-  extends ssp<uvr>
+class uvn
+  implements uox
 {
-  private Stream<upb> a;
+  uvn(uvm paramuvm, JobContext paramJobContext, uvo paramuvo) {}
   
-  public void a(uvr paramuvr)
+  public void a(uoy paramuoy)
   {
-    this.a = Stream.of(paramuvr).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new uvp(null));
-    this.a.subscribe(new uvo(this));
-  }
-  
-  public void c()
-  {
-    veg.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
-    if (this.a != null)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      this.a.cancel();
-      this.a = null;
+      ved.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_Uvo });
+      return;
     }
+    uvm.a(this.jdField_a_of_type_Uvm);
+    ved.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(uvm.b(this.jdField_a_of_type_Uvm)), paramuoy);
+    if (paramuoy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      uvm.a(this.jdField_a_of_type_Uvm).addAll(paramuoy.jdField_a_of_type_JavaUtilList);
+      if ((!paramuoy.jdField_a_of_type_Boolean) && (uvm.b(this.jdField_a_of_type_Uvm) < 10))
+      {
+        ved.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(uvm.b(this.jdField_a_of_type_Uvm)));
+        uvm.a(this.jdField_a_of_type_Uvm).c();
+        return;
+      }
+      paramuoy.jdField_a_of_type_JavaUtilList = uvm.a(this.jdField_a_of_type_Uvm);
+      ved.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(uvm.a(this.jdField_a_of_type_Uvm).size()));
+      uvm.a(this.jdField_a_of_type_Uvm, paramuoy);
+      return;
+    }
+    paramuoy.jdField_a_of_type_JavaUtilList = uvm.a(this.jdField_a_of_type_Uvm);
+    ved.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(uvm.a(this.jdField_a_of_type_Uvm).size()));
+    uvm.b(this.jdField_a_of_type_Uvm, paramuoy);
   }
 }
 

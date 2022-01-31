@@ -1,19 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
+import android.view.View;
 
-public class appq
-  implements apac
+class appq
+  implements apuv
 {
-  appq(appp paramappp) {}
+  appq(appo paramappo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.n();
-  }
-  
-  public void b()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
   }
 }
 

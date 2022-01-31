@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public abstract interface bchv
-  extends bcci
+  extends bccw
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte);
   
-  public abstract String b();
+  public abstract boolean c();
   
-  public abstract void b();
+  public abstract String d();
   
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract CustomWebView getWebView();
+  public abstract String e();
 }
 
 

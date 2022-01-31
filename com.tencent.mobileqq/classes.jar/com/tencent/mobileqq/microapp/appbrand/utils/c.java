@@ -3,8 +3,8 @@ package com.tencent.mobileqq.microapp.appbrand.utils;
 import android.os.Environment;
 import android.os.Process;
 import android.util.LruCache;
-import bbdj;
-import bbjw;
+import bbdx;
+import bbkk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.commonsdk.pool.RecyclablePool;
@@ -102,7 +102,7 @@ public class c
   
   private static void a(String arg0, String paramString2, int paramInt, String paramString3, Throwable paramThrowable)
   {
-    if ((h == null) || (bbjw.a(???))) {}
+    if ((h == null) || (bbkk.a(???))) {}
     c.a locala;
     do
     {
@@ -293,7 +293,7 @@ public class c
     //   210: invokevirtual 324	java/io/File:exists	()Z
     //   213: ifne +297 -> 510
     //   216: aload 6
-    //   218: invokestatic 329	bbdj:a	(Ljava/lang/String;)Ljava/io/File;
+    //   218: invokestatic 329	bbdx:a	(Ljava/lang/String;)Ljava/io/File;
     //   221: pop
     //   222: new 331	java/io/BufferedWriter
     //   225: dup
@@ -517,7 +517,7 @@ public class c
           break label194;
         }
         locald = (d)q.poll();
-        if ((locald == null) || (bbjw.a(locald.a))) {
+        if ((locald == null) || (bbkk.a(locald.a))) {
           continue;
         }
         str = locald.a;
@@ -525,7 +525,7 @@ public class c
         if (localFile.exists()) {
           continue;
         }
-        bbdj.a(str);
+        bbdx.a(str);
         localBufferedWriter1 = new BufferedWriter(new o(localFile, true), 8192);
       }
       catch (Throwable localThrowable)

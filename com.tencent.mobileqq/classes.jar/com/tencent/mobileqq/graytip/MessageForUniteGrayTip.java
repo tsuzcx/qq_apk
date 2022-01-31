@@ -4,11 +4,11 @@ import android.content.Context;
 import android.graphics.drawable.Drawable.Callback;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import aquq;
-import aqut;
-import aquz;
-import aqva;
-import ayju;
+import aqus;
+import aquv;
+import aqvb;
+import aqvc;
+import ayjw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -36,7 +36,7 @@ public class MessageForUniteGrayTip
   public String appGuideTipsOpKey;
   public String caidanAnimUrl;
   public String caidanAnimUrlMd5;
-  public aqut callback;
+  public aquv callback;
   public String contentDescription;
   public boolean docTipHasReport;
   public String editMsgData;
@@ -47,7 +47,7 @@ public class MessageForUniteGrayTip
   public String masterUin;
   public int subType;
   public String taskId;
-  public aquz tipParam;
+  public aqvb tipParam;
   
   public void doParse()
   {
@@ -105,12 +105,12 @@ public class MessageForUniteGrayTip
             }
           }
         }
-        this.tipParam = new aquz(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
+        this.tipParam = new aqvb(this.frienduin, this.senderuin, str1, this.istroop, this.msgtype, j, this.time);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        QLog.e(aqva.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
+        QLog.e(aqvc.jdField_a_of_type_JavaLangString, 1, "MessageForUniteGrayTip, doParese failed, " + localException.getMessage());
         return;
       }
       this.tipParam.jdField_d_of_type_JavaLangString = str2;
@@ -121,7 +121,7 @@ public class MessageForUniteGrayTip
       if (m == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        ((aquz)localObject1).f = bool;
+        ((aqvb)localObject1).f = bool;
         this.msg = str1;
         localObject1 = (UniteGrayTip.BusinessData)localUniteGrayTipMsg.business_data.get();
         if (localObject1 == null) {
@@ -165,7 +165,7 @@ public class MessageForUniteGrayTip
     if ((this.tipParam == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
       return new SpannableStringBuilder(this.msg);
     }
-    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new aquq(this));
+    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new aqus(this));
     StringBuilder localStringBuilder = new StringBuilder(256);
     localStringBuilder.append("revoke msg GrayTips -> msg=").append(this.msg);
     Object localObject3 = "";
@@ -257,7 +257,7 @@ public class MessageForUniteGrayTip
         this.msg = ((String)localObject1);
         this.tipParam.jdField_c_of_type_JavaLangString = ((String)localObject1);
       }
-      localObject1 = new SpannableStringBuilder(new ayju((CharSequence)localObject1, 16));
+      localObject1 = new SpannableStringBuilder(new ayjw((CharSequence)localObject1, 16));
       localObject2 = this.tipParam.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -322,26 +322,26 @@ public class MessageForUniteGrayTip
     }
   }
   
-  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, aquz paramaquz)
+  public void initGrayTipMsg(QQAppInterface paramQQAppInterface, aqvb paramaqvb)
   {
-    if ((paramaquz == null) || (!paramaquz.a()))
+    if ((paramaqvb == null) || (!paramaqvb.a()))
     {
       if (QLog.isColorLevel()) {
-        if (paramaquz != null) {
+        if (paramaqvb != null) {
           break label53;
         }
       }
       label53:
-      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramaquz.jdField_c_of_type_Int + " id: " + paramaquz.jdField_b_of_type_Int)
+      for (paramQQAppInterface = "null tipParam";; paramQQAppInterface = "msgtype: " + paramaqvb.jdField_c_of_type_Int + " id: " + paramaqvb.jdField_b_of_type_Int)
       {
-        QLog.e(aqva.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
+        QLog.e(aqvc.jdField_a_of_type_JavaLangString, 2, "revoke msg createGrayTipMsg failed, error: " + paramQQAppInterface);
         return;
       }
     }
-    init(paramQQAppInterface.getCurrentAccountUin(), paramaquz.jdField_a_of_type_JavaLangString, paramaquz.jdField_b_of_type_JavaLangString, paramaquz.jdField_c_of_type_JavaLangString, paramaquz.jdField_a_of_type_Long, paramaquz.jdField_c_of_type_Int, paramaquz.jdField_a_of_type_Int, paramaquz.jdField_a_of_type_Long);
+    init(paramQQAppInterface.getCurrentAccountUin(), paramaqvb.jdField_a_of_type_JavaLangString, paramaqvb.jdField_b_of_type_JavaLangString, paramaqvb.jdField_c_of_type_JavaLangString, paramaqvb.jdField_a_of_type_Long, paramaqvb.jdField_c_of_type_Int, paramaqvb.jdField_a_of_type_Int, paramaqvb.jdField_a_of_type_Long);
     this.mIsParsed = true;
     this.isread = true;
-    this.tipParam = paramaquz;
+    this.tipParam = paramaqvb;
     this.msgData = null;
   }
   
@@ -442,7 +442,7 @@ public class MessageForUniteGrayTip
   public void updateUniteGrayTipMsg(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(aqva.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
+      QLog.d(aqvc.jdField_a_of_type_JavaLangString, 2, "updateUniteGrayTipMsg");
     }
     this.msg = paramString;
     if (this.tipParam != null)

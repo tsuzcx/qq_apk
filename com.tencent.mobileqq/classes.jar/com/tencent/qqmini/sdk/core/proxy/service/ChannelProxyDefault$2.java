@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
 import java.util.List;
 import java.util.Map;
@@ -12,14 +12,14 @@ class ChannelProxyDefault$2
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    besl.d("ChannelProxyDefault", "httpReport onRequestFailed code = " + paramInt);
+    betc.d("ChannelProxyDefault", "httpReport onRequestFailed code = " + paramInt);
   }
   
   public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
   public void onRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    besl.a("ChannelProxyDefault", "httpReport onRequestSucceed");
+    betc.a("ChannelProxyDefault", "httpReport onRequestSucceed");
   }
 }
 

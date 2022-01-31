@@ -1,5 +1,5 @@
 public class afla
-  extends afjx
+  extends afjv
 {}
 
 

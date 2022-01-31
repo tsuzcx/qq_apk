@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import akrz;
+import akry;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import ankc;
-import ankd;
-import anke;
-import ankf;
-import ankg;
 import ankh;
+import anki;
+import ankj;
+import ankk;
+import ankl;
+import ankm;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -48,10 +48,10 @@ public class DBFixConfigActivity
     super.setContentView(2131559207);
     paramBundle = getAppRuntime();
     String str = paramBundle.getAccount();
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131364193));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ankc(this, paramBundle, str));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365420));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131364936));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131364192));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new ankh(this, paramBundle, str));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365419));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131364935));
     jdField_a_of_type_Int = paramBundle.getApplication().getSharedPreferences(DBFixManager.b, 0).getInt(str + DBFixManager.c, 2);
     if (jdField_a_of_type_Int == 2)
     {
@@ -60,17 +60,17 @@ public class DBFixConfigActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131379509));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ankd(this));
-      ((Button)super.findViewById(2131364774)).setOnClickListener(new anke(this, str));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131369605));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(akrz.a);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new ankf(this, paramBundle));
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131363812));
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(akrz.b);
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new ankg(this, paramBundle));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131379514));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new anki(this));
+      ((Button)super.findViewById(2131364773)).setOnClickListener(new ankj(this, str));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131369604));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(akry.a);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new ankk(this, paramBundle));
+      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131363811));
+      this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(akry.b);
+      this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new ankl(this, paramBundle));
       this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371929));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ankh(this, paramBundle));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ankm(this, paramBundle));
       return true;
       this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(true);
       this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(false);

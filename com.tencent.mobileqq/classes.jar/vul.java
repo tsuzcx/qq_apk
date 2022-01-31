@@ -1,39 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class vul
-  implements avzk
+public final class vul
+  implements FilenameFilter
 {
-  vul(vuk paramvuk) {}
-  
-  public void a() {}
-  
-  public void a(String paramString)
+  public boolean accept(File paramFile, String paramString)
   {
-    synchronized (vuk.a(this.a))
-    {
-      vuk.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(vuk.a, 2, "onEncodeFinish, filePath= " + paramString);
-      }
-      vuk.a(this.a).notifyAll();
-      return;
-    }
+    return paramString.endsWith(".mp4");
   }
-  
-  public void a_(int paramInt, Throwable arg2)
-  {
-    synchronized (vuk.a(this.a))
-    {
-      vuk.b(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d(vuk.a, 2, "onEncodeError, errorCode= " + paramInt);
-      }
-      vuk.a(this.a).notifyAll();
-      return;
-    }
-  }
-  
-  public void b() {}
 }
 
 

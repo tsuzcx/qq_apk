@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rpl;
+import rpi;
 
 class ReadinjoyTabFrame$13
   implements Runnable
@@ -9,7 +9,7 @@ class ReadinjoyTabFrame$13
   
   public void run()
   {
-    rpl.a().b(this.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    rpi.a().b(this.this$0.a, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

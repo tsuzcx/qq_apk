@@ -1,88 +1,66 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.RspBody;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.SendFlowerRsp;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.ThrowFlowerRsp;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class baku
-  extends mxl
+public class baku
 {
-  baku(bakt parambakt, baks parambaks) {}
+  public int a;
+  public LinkedList<TroopFileTransferManager.Task> a;
+  public AtomicInteger a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public baku(int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Baks == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Baks);
-      }
-      if (this.jdField_a_of_type_Baks != null)
-      {
-        if (paramArrayOfByte != null) {
-          paramBundle = new oidb_0x6b6.RspBody();
-        }
-      }
-      else {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = paramBundle.bytes_error_notify.get().toStringUtf8();
-          this.jdField_a_of_type_Baks.b(paramInt, paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-          }
-          this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
-          return;
-        }
-      }
-      this.jdField_a_of_type_Baks.a(paramInt, "sso request error or callback is null.");
-      return;
-    }
-    oidb_0x6b6.RspBody localRspBody;
-    try
-    {
-      localRspBody = new oidb_0x6b6.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramInt = localRspBody.int32_ret.get();
-      if ((paramInt != 0) || (paramBundle == null)) {
-        break label354;
-      }
-      paramInt = paramBundle.getInt("subCmd");
-      if (localRspBody.msg_send_flower.has())
-      {
-        paramArrayOfByte = (oidb_0x6b6.SendFlowerRsp)localRspBody.msg_send_flower.get();
-        this.jdField_a_of_type_Baks.a(paramArrayOfByte.uint32_product_id.get());
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-      }
-      this.jdField_a_of_type_Baks.a(-1, "InvalidProtocolBufferMicroException");
-      return;
-    }
-    if (localRspBody.msg_throw_flower.has())
-    {
-      paramArrayOfByte = (oidb_0x6b6.ThrowFlowerRsp)localRspBody.msg_throw_flower.get();
-      this.jdField_a_of_type_Baks.b(paramArrayOfByte.uint32_product_id.get());
-      return;
-    }
-    this.jdField_a_of_type_Baks.a(-1, "Invalid RspData. subCmd:" + paramInt);
-    return;
-    label354:
-    paramArrayOfByte = localRspBody.bytes_error_notify.get().toStringUtf8();
-    this.jdField_a_of_type_Baks.b(paramInt, paramArrayOfByte);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  /* Error */
+  public void a(TroopFileTransferManager.Task paramTask)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 24	baku:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: aload_1
+    //   7: invokevirtual 32	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: getfield 19	baku:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   15: invokevirtual 36	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   18: aload_0
+    //   19: getfield 26	baku:jdField_a_of_type_Int	I
+    //   22: if_icmple +14 -> 36
+    //   25: aload_0
+    //   26: getfield 19	baku:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   29: invokevirtual 39	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
+    //   32: pop
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: return
+    //   36: new 41	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 44	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool$1:<init>	(Lbaku;)V
+    //   44: iconst_5
+    //   45: aconst_null
+    //   46: iconst_1
+    //   47: invokestatic 50	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   50: goto -17 -> 33
+    //   53: astore_1
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_1
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	this	baku
+    //   0	58	1	paramTask	TroopFileTransferManager.Task
+    // Exception table:
+    //   from	to	target	type
+    //   2	33	53	finally
+    //   36	50	53	finally
   }
 }
 

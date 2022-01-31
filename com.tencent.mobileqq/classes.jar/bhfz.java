@@ -1,6 +1,19 @@
-public abstract interface bhfz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastAudio;
+
+public final class bhfz
+  implements Parcelable.Creator<BroadcastAudio>
 {
-  public abstract void a();
+  public BroadcastAudio a(Parcel paramParcel)
+  {
+    return new BroadcastAudio(paramParcel);
+  }
+  
+  public BroadcastAudio[] a(int paramInt)
+  {
+    return new BroadcastAudio[paramInt];
+  }
 }
 
 

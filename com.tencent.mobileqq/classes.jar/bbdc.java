@@ -1,15 +1,37 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-final class bbdc
-  implements View.OnClickListener
+public class bbdc
+  extends MqqHandler
 {
-  bbdc(DialogInterface.OnClickListener paramOnClickListener, bbgg parambbgg) {}
+  private final WeakReference<Handler.Callback> a;
   
-  public void onClick(View paramView)
+  public bbdc(Handler.Callback paramCallback)
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgg, 2);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public bbdc(Looper paramLooper, Handler.Callback paramCallback)
+  {
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
+  }
+  
+  public String toString()
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    return super.toString() + " " + localCallback;
   }
 }
 

@@ -4,21 +4,21 @@ import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class rlp
-  implements rkk
+  implements rkh
 {
   public int a(BaseData paramBaseData)
   {
-    return 2;
+    return 5;
   }
   
-  public rkj a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new rlq(LayoutInflater.from(paramContext).inflate(2131559927, null), paramBaseData);
+    return new rlq(LayoutInflater.from(paramContext).inflate(2131559929, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)
   {
-    return paramBaseData.p == 0;
+    return paramBaseData.p == 5;
   }
 }
 

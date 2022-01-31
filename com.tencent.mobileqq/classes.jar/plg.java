@@ -1,26 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class plg
-  implements Animator.AnimatorListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  plg(ple parample) {}
+  plg(plf paramplf) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onGlobalLayout()
   {
-    ple.a(this.a).setSelected(this.a.isSelected());
+    if ((plf.a(this.a).isShown()) && (!plf.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
+      this.a.a();
+      plf.a(this.a, true);
+    }
+    if ((!plf.a(this.a).isShown()) && (plf.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
+      this.a.b();
+      plf.a(this.a, false);
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ple.a(this.a, false);
-    ple.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

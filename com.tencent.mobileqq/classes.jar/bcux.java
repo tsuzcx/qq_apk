@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bcux
-  implements alxk
+  implements MediaPlayer.OnErrorListener
 {
-  public bcux(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bcux(VideoTextureView paramVideoTextureView) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
+    return true;
   }
 }
 

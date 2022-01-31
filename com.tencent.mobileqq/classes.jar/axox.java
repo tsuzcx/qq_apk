@@ -1,30 +1,9 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordConfig;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
-public class axox
-  implements IRecordConfig
+public final class axox
+  extends PluginRecoverReceiver
 {
-  public axox(RecordTracer paramRecordTracer) {}
-  
-  public int getCachedEventSize()
-  {
-    return 0;
-  }
-  
-  public String getTitleBarId()
-  {
-    return "com.tencent.mobileqq:id/ivTitleName";
-  }
-  
-  public boolean isEnableRelease()
-  {
-    return true;
-  }
-  
-  public boolean isFilterUGC()
-  {
-    return false;
-  }
+  public void onRecver(String paramString) {}
 }
 
 

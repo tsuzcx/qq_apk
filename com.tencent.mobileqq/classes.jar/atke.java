@@ -1,18 +1,10 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
-public class atke
-  implements View.OnClickListener
+public abstract interface atke
 {
-  public atke(StuffContainerView paramStuffContainerView) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(0);
-    }
-  }
+  public abstract void a(String paramString, View paramView, int paramInt);
 }
 
 

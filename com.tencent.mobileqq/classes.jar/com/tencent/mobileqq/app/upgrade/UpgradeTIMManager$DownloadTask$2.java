@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
-import mzv;
+import mzs;
 
 class UpgradeTIMManager$DownloadTask$2
   implements Runnable

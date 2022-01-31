@@ -1,36 +1,38 @@
-public abstract class aonk
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+
+public class aonk
+  implements Animation.AnimationListener
 {
-  public int a = 1;
-  public String e;
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public aonk(int paramInt, String paramString)
+  public aonk(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    this.a = paramInt;
-    this.e = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public boolean equals(Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramObject instanceof aonk))
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
     {
-      paramObject = (aonk)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      return;
+      if (this.jdField_a_of_type_Int == 0)
       {
-        return true;
-        return false;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
       }
-      return false;
-    }
-    return false;
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
-  public String toString()
-  {
-    return this.e;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,17 +1,12 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
 public abstract class xbd
-  extends mxm
+  extends mxj
 {
-  public xbd()
-  {
-    super(false);
-  }
-  
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
@@ -19,11 +14,11 @@ public abstract class xbd
       a(false, paramInt, null, paramBundle);
       return;
     }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
     try
     {
       localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DownloadFileRspBody)localRspBody.download_file_rsp.get();
+      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
       if (paramArrayOfByte.int32_ret_code.has())
       {
         a(true, 0, paramArrayOfByte, paramBundle);
@@ -38,7 +33,7 @@ public abstract class xbd
     a(false, -1, null, paramBundle);
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle);
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
 }
 
 

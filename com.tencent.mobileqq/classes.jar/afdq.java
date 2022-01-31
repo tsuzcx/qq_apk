@@ -1,16 +1,22 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
 
 class afdq
-  implements View.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  afdq(afdp paramafdp, int paramInt) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void onClick(View paramView)
+  public afdq(View paramView)
   {
-    if (this.jdField_a_of_type_Afdp.a != null) {
-      this.jdField_a_of_type_Afdp.a.a(paramView, this.jdField_a_of_type_Int);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371845));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371844));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131371843));
   }
 }
 

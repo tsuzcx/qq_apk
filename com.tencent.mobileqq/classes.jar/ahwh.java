@@ -1,6 +1,6 @@
 public abstract interface ahwh
 {
-  public abstract void a(int paramInt);
+  public abstract void c(int paramInt);
 }
 
 

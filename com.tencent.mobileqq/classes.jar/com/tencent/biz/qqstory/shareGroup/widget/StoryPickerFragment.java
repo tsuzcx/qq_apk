@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.shareGroup.widget;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
@@ -29,27 +29,27 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import ssi;
+import ssf;
+import umx;
+import umy;
+import umz;
 import una;
 import unb;
 import unc;
 import und;
 import une;
 import unf;
-import ung;
-import unh;
-import uni;
+import unk;
+import unl;
 import unn;
-import uno;
-import unq;
-import uth;
-import uuf;
-import vel;
-import wde;
+import ute;
+import uuc;
+import vei;
+import wdb;
 
 public class StoryPickerFragment
   extends QQStoryBaseFragment
-  implements View.OnClickListener, unn, uno
+  implements View.OnClickListener, unk, unl
 {
   int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
@@ -57,8 +57,8 @@ public class StoryPickerFragment
   public QQStoryPullToRefreshListView a;
   public String a;
   public LinkedHashSet<String> a;
-  public unq a;
-  public uth a;
+  public unn a;
+  public ute a;
   boolean jdField_a_of_type_Boolean = false;
   String b;
   
@@ -90,52 +90,52 @@ public class StoryPickerFragment
   {
     int i = 0;
     this.leftView.setText(getString(2131690572));
-    super.setTitle(ajyc.a(2131714534) + ssi.jdField_a_of_type_JavaLangString);
-    super.a(String.format(ajyc.a(2131714536), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    super.setTitle(ajya.a(2131714545) + ssf.jdField_a_of_type_JavaLangString);
+    super.a(String.format(ajya.a(2131714547), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {}
     for (;;)
     {
       super.setRightViewTextDisable(i);
-      this.jdField_a_of_type_AndroidViewView = super.a(2131365676);
-      this.jdField_a_of_type_Unq = new unq(getActivity());
-      this.jdField_a_of_type_Unq.a(new una(this));
-      this.jdField_a_of_type_Unq.a(this);
-      this.jdField_a_of_type_Unq.a(this);
+      this.jdField_a_of_type_AndroidViewView = super.a(2131365675);
+      this.jdField_a_of_type_Unn = new unn(getActivity());
+      this.jdField_a_of_type_Unn.a(new umx(this));
+      this.jdField_a_of_type_Unn.a(this);
+      this.jdField_a_of_type_Unn.a(this);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131369306));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_Unq);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new unb(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new unc(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_Unn);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new umy(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new umz(this));
       return;
       i = 1;
     }
   }
   
-  public void a(View paramView, uuf paramuuf)
+  public void a(View paramView, uuc paramuuc)
   {
     boolean bool = true;
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramuuf.b))
+    if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramuuc.b))
     {
-      paramView = bbcv.a(getActivity(), 230);
-      paramView.setMessage(String.format(ajyc.a(2131714538), new Object[] { Integer.valueOf(20), ssi.jdField_a_of_type_JavaLangString }));
-      paramView.setPositiveButton(ajyc.a(2131714537), new und(this));
+      paramView = bbdj.a(getActivity(), 230);
+      paramView.setMessage(String.format(ajya.a(2131714549), new Object[] { Integer.valueOf(20), ssf.jdField_a_of_type_JavaLangString }));
+      paramView.setPositiveButton(ajya.a(2131714548), new una(this));
       paramView.show();
       return;
     }
     int i;
-    if (!paramuuf.jdField_a_of_type_Boolean)
+    if (!paramuuc.jdField_a_of_type_Boolean)
     {
-      paramuuf.jdField_a_of_type_Boolean = bool;
+      paramuuc.jdField_a_of_type_Boolean = bool;
       paramView = (ImageView)paramView;
-      if (!paramuuf.jdField_a_of_type_Boolean) {
+      if (!paramuuc.jdField_a_of_type_Boolean) {
         break label150;
       }
-      i = 2130840205;
+      i = 2130840202;
       label115:
       paramView.setImageResource(i);
-      if (!paramuuf.jdField_a_of_type_Boolean) {
+      if (!paramuuc.jdField_a_of_type_Boolean) {
         break label156;
       }
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramuuf.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramuuc.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
@@ -144,40 +144,40 @@ public class StoryPickerFragment
       bool = false;
       break;
       label150:
-      i = 2130840201;
+      i = 2130840198;
       break label115;
       label156:
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramuuf.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramuuc.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(String paramString, int paramInt, View paramView, uuf paramuuf)
+  public void a(String paramString, int paramInt, View paramView, uuc paramuuc)
   {
-    if (paramuuf.b) {
-      Bosses.get().postJob(new unf(this, "StoryPickerFragment", paramString, paramuuf, paramInt, paramView));
+    if (paramuuc.b) {
+      Bosses.get().postJob(new unc(this, "StoryPickerFragment", paramString, paramuuc, paramInt, paramView));
     }
   }
   
   public void a(@NonNull Map<Subscriber, String> paramMap)
   {
     super.a(paramMap);
-    paramMap.put(new unh(this), "");
-    paramMap.put(new uni(this), "");
-    paramMap.put(new ung(this), "");
+    paramMap.put(new une(this), "");
+    paramMap.put(new unf(this), "");
+    paramMap.put(new und(this), "");
   }
   
   void b()
   {
     this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
-    this.jdField_a_of_type_Uth = new uth(QQStoryContext.a().b(), this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Uth.a();
+    this.jdField_a_of_type_Ute = new ute(QQStoryContext.a().b(), this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ute.a();
     super.startTitleProgress();
-    this.jdField_a_of_type_Uth.c();
+    this.jdField_a_of_type_Ute.c();
   }
   
   public void c()
   {
-    super.a(String.format(ajyc.a(2131714535), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
+    super.a(String.format(ajya.a(2131714546), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     int i;
     List localList;
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1)
@@ -186,7 +186,7 @@ public class StoryPickerFragment
       setRightViewTextDisable(i);
       if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20)
       {
-        localList = this.jdField_a_of_type_Unq.a();
+        localList = this.jdField_a_of_type_Unn.a();
         i = 0;
       }
     }
@@ -203,15 +203,15 @@ public class StoryPickerFragment
           if (!localIterator.hasNext()) {
             break label151;
           }
-          uuf localuuf = (uuf)localIterator.next();
-          if (localuuf.jdField_a_of_type_Boolean)
+          uuc localuuc = (uuc)localIterator.next();
+          if (localuuc.jdField_a_of_type_Boolean)
           {
-            localuuf.b = true;
+            localuuc.b = true;
             continue;
             i = 1;
             break;
           }
-          localuuf.b = false;
+          localuuc.b = false;
         }
         label151:
         i += 1;
@@ -221,21 +221,21 @@ public class StoryPickerFragment
       d();
     }
     label174:
-    this.jdField_a_of_type_Unq.notifyDataSetChanged();
+    this.jdField_a_of_type_Unn.notifyDataSetChanged();
   }
   
   void d()
   {
-    List localList = this.jdField_a_of_type_Unq.a();
+    List localList = this.jdField_a_of_type_Unn.a();
     int i = 0;
     while (i < localList.size())
     {
       Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
       while (localIterator.hasNext())
       {
-        uuf localuuf = (uuf)localIterator.next();
-        if (!localuuf.b) {
-          localuuf.b = true;
+        uuc localuuc = (uuc)localIterator.next();
+        if (!localuuc.b) {
+          localuuc.b = true;
         }
       }
       i += 1;
@@ -251,7 +251,7 @@ public class StoryPickerFragment
   
   public int getContentLayoutId()
   {
-    return 2131561368;
+    return 2131561367;
   }
   
   public void init(Bundle paramBundle)
@@ -277,12 +277,12 @@ public class StoryPickerFragment
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        paramView = new une(this);
-        bbgg localbbgg = bbcv.a(getActivity(), 230);
-        localbbgg.setMessage(getString(2131699695, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
-        localbbgg.setNegativeButton(2131690596, paramView);
-        localbbgg.setPositiveButton(ajyc.a(2131689628), paramView);
-        localbbgg.show();
+        paramView = new unb(this);
+        bbgu localbbgu = bbdj.a(getActivity(), 230);
+        localbbgu.setMessage(getString(2131699706, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
+        localbbgu.setNegativeButton(2131690596, paramView);
+        localbbgu.setPositiveButton(ajya.a(2131689628), paramView);
+        localbbgu.show();
       }
     }
     else {
@@ -297,22 +297,22 @@ public class StoryPickerFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Uth != null) {
-      this.jdField_a_of_type_Uth.b();
+    if (this.jdField_a_of_type_Ute != null) {
+      this.jdField_a_of_type_Ute.b();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    vel.a(18, this.jdField_a_of_type_Long);
+    vei.a(18, this.jdField_a_of_type_Long);
   }
   
   public void onResume()
   {
     super.onResume();
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    vel.a("share_story", "exp_all_story", this.jdField_a_of_type_Int, 0, new String[0]);
+    vei.a("share_story", "exp_all_story", this.jdField_a_of_type_Int, 0, new String[0]);
   }
 }
 

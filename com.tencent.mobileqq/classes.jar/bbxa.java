@@ -1,6 +1,10 @@
-class bbxa
+import android.os.Bundle;
+
+public abstract class bbxa
 {
-  private static final bbwz a = new bbwz();
+  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
+  
+  public void a(Bundle paramBundle) {}
 }
 
 

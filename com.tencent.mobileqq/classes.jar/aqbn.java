@@ -1,14 +1,17 @@
 class aqbn
-  implements aptu
+  implements aqbq
 {
-  aqbn(aqbm paramaqbm) {}
+  aqbn(aqbe paramaqbe) {}
   
   public void a()
   {
-    eo.b(this.a.a.a, 0);
+    this.a.a.setProgressBarVisibility(0);
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.a.setProgressBarVisibility(8);
+  }
 }
 
 

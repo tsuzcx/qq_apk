@@ -1,91 +1,17 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import java.util.Comparator;
 
-public class aiwf
-  extends aiwa<Canvas>
+class aiwf
+  implements Comparator<CmGamePushItem>
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  aiwf(aiwe paramaiwe) {}
   
-  public boolean a(Canvas paramCanvas, float paramFloat)
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    boolean bool = false;
-    if (paramCanvas == null) {
-      return bool;
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
     }
-    label25:
-    aiwd localaiwd;
-    Bitmap localBitmap;
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break label360;
-        }
-        localaiwd = (aiwd)localIterator.next();
-        localaiwd.b();
-        if (!localaiwd.a())
-        {
-          localIterator.remove();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localaiwd);
-          continue;
-        }
-        localBitmap = localaiwd.a();
-      }
-      finally {}
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
-      {
-        paramCanvas.save();
-        if (paramFloat == 1.0F)
-        {
-          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localaiwd.d) {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localaiwd.d);
-          }
-          label165:
-          if (localaiwd.h <= 0.0F) {
-            break label388;
-          }
-        }
-      }
-    }
-    label388:
-    for (float f1 = localaiwd.h;; f1 = 1.0F)
-    {
-      float f2 = localaiwd.jdField_e_of_type_Float;
-      float f3 = localaiwd.jdField_f_of_type_Float;
-      float f4 = localaiwd.jdField_e_of_type_Float;
-      float f5 = localaiwd.jdField_e_of_type_Int;
-      float f6 = localaiwd.jdField_f_of_type_Float;
-      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localaiwd.jdField_f_of_type_Int + f6);
-      paramCanvas.translate(localaiwd.jdField_e_of_type_Float, localaiwd.jdField_f_of_type_Float);
-      if (localaiwd.h != 0.0F) {
-        paramCanvas.scale(localaiwd.h, localaiwd.h);
-      }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      this.b.set(0, 0, localaiwd.jdField_e_of_type_Int, localaiwd.jdField_f_of_type_Int);
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
-      break label25;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
-      break label165;
-      label360:
-      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
-      if (!bool) {}
-      for (bool = true;; bool = false) {
-        break;
-      }
-    }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 

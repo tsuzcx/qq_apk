@@ -1,59 +1,56 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.FixedBounceScrollView;
 
 public class abwx
-  implements aymd
+  extends Handler
 {
-  public abwx(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(Bundle paramBundle)
+  public abwx(QQSettingMe paramQQSettingMe, Looper paramLooper)
   {
-    this.a.n();
+    super(paramLooper);
   }
   
-  public void b(Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.n();
-    }
-    do
+    switch (paramMessage.what)
     {
-      do
+    default: 
+      return;
+    case 0: 
+      paramMessage = new Rect();
+      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.offsetDescendantRectToMyCoords((View)localObject, paramMessage);
+      localObject = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getDrawingRect((Rect)localObject);
+      boolean bool = ((Rect)localObject).contains(paramMessage);
+      if (!bool) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.scrollTo(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView.getScrollX(), paramMessage.top);
+      }
+      if (bool) {}
+      for (long l = 0L;; l = 50L)
       {
+        sendEmptyMessageDelayed(1, l);
         return;
-        if (i == 2)
-        {
-          this.a.n();
-          return;
-        }
-      } while (i != 3);
-      if (!(this.a.jdField_b_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
       }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.f(this.a)) {}
-    for (Drawable localDrawable = this.a.a.getResources().getDrawable(2130845207);; localDrawable = this.a.a.getResources().getDrawable(2130845208))
-    {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
-      }
-      ((Animatable)localDrawable).start();
-      break;
     }
+    paramMessage = new Rect();
+    Object localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[3];
+    ((View)localObject).getHitRect(paramMessage);
+    localObject = ((View)localObject).findViewById(2131368385);
+    paramMessage.offset(((View)localObject).getLeft() + actj.a(34.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), ((View)localObject).getTop() - actj.a(18.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
+    localObject = (FrameLayout.LayoutParams)QQSettingMe.b(this.a).getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).leftMargin = paramMessage.left;
+    ((FrameLayout.LayoutParams)localObject).topMargin = paramMessage.top;
+    QQSettingMe.b(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    QQSettingMe.b(this.a).setPadding(actj.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(4.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(6.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()), actj.a(8.0F, this.a.jdField_a_of_type_AndroidViewViewGroup.getResources()));
+    QQSettingMe.b(this.a).setVisibility(0);
   }
 }
 

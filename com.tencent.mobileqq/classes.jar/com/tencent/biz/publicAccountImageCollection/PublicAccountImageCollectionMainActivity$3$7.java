@@ -1,12 +1,12 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.TextView;
-import son;
+import sok;
 
 public class PublicAccountImageCollectionMainActivity$3$7
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$7(son paramson) {}
+  public PublicAccountImageCollectionMainActivity$3$7(sok paramsok) {}
   
   public void run()
   {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import aulx;
+import auko;
+import aulz;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="cid,bid,source_id")
 public class CouponEntity
-  extends aukm
+  extends auko
 {
   public static final int VERIFY_TYPE_BARCODE = 2;
   public static final int VERIFY_TYPE_DIGITAL_CODE = 1;
@@ -29,9 +29,9 @@ public class CouponEntity
   public long rcv_time;
   public String rebate;
   public String shids;
-  @aulx
+  @aulz
   public CharSequence shopData;
-  @aulx
+  @aulz
   private List<Integer> shopList;
   public int source_id;
   public long stime;

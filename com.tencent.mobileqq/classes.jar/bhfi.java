@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastAudio;
+import cooperation.qzone.model.MapParcelable;
 
 public final class bhfi
-  implements Parcelable.Creator<BroadcastAudio>
+  implements Parcelable.Creator<MapParcelable>
 {
-  public BroadcastAudio a(Parcel paramParcel)
+  public MapParcelable a(Parcel paramParcel)
   {
-    return new BroadcastAudio(paramParcel);
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
   }
   
-  public BroadcastAudio[] a(int paramInt)
+  public MapParcelable[] a(int paramInt)
   {
-    return new BroadcastAudio[paramInt];
+    return null;
   }
 }
 

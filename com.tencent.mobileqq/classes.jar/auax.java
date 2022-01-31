@@ -1,75 +1,28 @@
-import android.graphics.Rect;
-import android.text.Spannable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class auax
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements TextWatcher
 {
-  public auax(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
+  public auax(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public void onGlobalLayout()
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = 0;
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).findViewById(2131366662).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getRootView().getHeight();
-    int k = this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getRootView().getWidth();
-    int m = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.getBottom();
-    if (j - ((Rect)localObject).bottom > j * 0.15D)
+    if (paramEditable.toString().trim().length() == 0)
     {
-      localObject = new RelativeLayout.LayoutParams(k, m);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.getBottom(), 0, this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewViewGroup.getHeight());
-      ((RelativeLayout.LayoutParams)localObject).alignWithParent = true;
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewView.findViewById(2131364722).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewViewGroup.setVisibility(8);
-      j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      try
-      {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-        aykq[] arrayOfaykq = (aykq[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), aykq.class);
-        if ((arrayOfaykq != null) && (arrayOfaykq.length > 0))
-        {
-          k = arrayOfaykq.length;
-          while (i < k)
-          {
-            ((Spannable)localObject).removeSpan(arrayOfaykq[i]);
-            i += 1;
-          }
-        }
-        localLayoutParams = new RelativeLayout.LayoutParams(k, m);
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-        localException.printStackTrace();
-        this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-        if (QLog.isColorLevel()) {
-          QLog.i("OCRResultFragmentNew", 2, "current text index:" + j);
-        }
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(j);
-        return;
-      }
+      this.a.b.setEnabled(false);
+      this.a.a.setEnabled(false);
+      return;
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    localLayoutParams.setMargins(0, this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.getBottom(), 0, this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewViewGroup.getHeight());
-    localLayoutParams.alignWithParent = true;
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewView.findViewById(2131364722).setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewViewGroup.setVisibility(0);
-    allu.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.jdField_c_of_type_AndroidViewViewGroup, false, 0);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-    this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    this.a.b.setEnabled(true);
+    this.a.a.setEnabled(true);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

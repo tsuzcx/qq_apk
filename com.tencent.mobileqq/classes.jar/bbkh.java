@@ -1,17 +1,6 @@
-public class bbkh
+public abstract interface bbkh
 {
-  private static bbki a;
-  
-  public static void a(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    if (a == null) {
-      a = new bbki(3, 10L);
-    }
-    a.execute(paramRunnable);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

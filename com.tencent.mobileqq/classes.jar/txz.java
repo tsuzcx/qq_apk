@@ -1,19 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class txz
-  implements Animation.AnimationListener
+  implements tbc
 {
-  txz(txw paramtxw) {}
+  txz(txy paramtxy, CommentEntry paramCommentEntry, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.a.dismiss();
+    a(-1, ajya.a(2131702180));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    bcql.a(BaseApplication.getContext(), 1, ajya.a(2131702177), 0).a();
+    ved.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!txt.b(this.jdField_a_of_type_Txy.a)) {
+      txt.a(this.jdField_a_of_type_Txy.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

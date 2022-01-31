@@ -1,57 +1,40 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import java.util.ArrayList;
 import java.util.List;
 
-public class txf
-  extends twc<ProfileFeedPlayInfo>
+class txf
+  implements tws
 {
-  public txf(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
+  private int jdField_a_of_type_Int;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  twl jdField_a_of_type_Twl;
+  
+  public txf(txe paramtxe, twl paramtwl)
   {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (uwa)tdc.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
+    this.jdField_a_of_type_Twl = paramtwl;
   }
   
-  public uvs a(String paramString)
+  protected void a(String paramString, twt paramtwt)
   {
-    if (this.a == null) {
-      return null;
+    tmc localtmc = new tmc();
+    localtmc.jdField_c_of_type_JavaLangString = txe.a(this.jdField_a_of_type_Txe).uid;
+    if (txe.a(this.jdField_a_of_type_Txe).collectionKey != null) {
+      localtmc.jdField_d_of_type_Int = VideoCollectionEntry.getCollectionId(txe.a(this.jdField_a_of_type_Txe).collectionKey);
     }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      uvs localuvs = (uvs)localIterator.next();
-      if (localuvs.a.equals(paramString)) {
-        return localuvs;
-      }
-    }
-    return null;
+    localtmc.jdField_d_of_type_JavaLangString = paramString;
+    localtmc.jdField_c_of_type_Int = 20;
+    localtmc.jdField_e_of_type_Int = txe.a(this.jdField_a_of_type_Txe).shareTimeZone;
+    localtmc.jdField_e_of_type_JavaLangString = txe.a(this.jdField_a_of_type_Txe).feedId;
+    localtmc.f = txe.a(this.jdField_a_of_type_Txe).identify;
+    localtmc.g = txe.a(this.jdField_a_of_type_Txe).videoListOrder;
+    syo.a().a(localtmc, new txg(this, paramtwt));
   }
   
-  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
+  public void a(twt paramtwt)
   {
-    if (this.a == null)
-    {
-      paramtwu.a(new ErrorMessage(940001, "null point"), null, true);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramtwu.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      veg.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new tmt();
-    ((tmt)localObject).a = this.a.a();
-    ((tmt)localObject).b = QQStoryContext.a().b();
-    veg.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((tmt)localObject).a);
-    syr.a().a((syv)localObject, new txg(this, paramtwu));
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a(txe.a(this.jdField_a_of_type_Txe), paramtwt);
   }
 }
 

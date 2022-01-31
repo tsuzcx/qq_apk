@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aukn;
+import aukp;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;

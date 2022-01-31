@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rea;
+import rdx;
 
 public class ReadInJoyListViewGroup$44$1
   implements Runnable
 {
-  public ReadInJoyListViewGroup$44$1(rea paramrea) {}
+  public ReadInJoyListViewGroup$44$1(rdx paramrdx) {}
   
   public void run()
   {

@@ -1,17 +1,28 @@
+import android.os.Message;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
 public class ttk
-  extends ssk
+  implements suz
 {
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  public ttk(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public ttk(ErrorMessage paramErrorMessage, String paramString)
+  public void a(String paramString, int paramInt)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 

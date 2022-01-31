@@ -1,76 +1,65 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Calendar;
 
-class uyz
-  implements tjf
+public class uyz
+  implements uzy
 {
-  uyz(uyy paramuyy, ArrayList paramArrayList) {}
+  protected uzb a;
+  protected uzz a;
+  protected vaa a;
   
-  public void a(boolean paramBoolean)
+  public Object a()
   {
-    veg.d("GetMyStoryDesFromVidListStep", "onFinishAll(%b[isEveryTaskSuccess])", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!paramBoolean)
-    {
-      veg.e("GetMyStoryDesFromVidListStep", "Get vid to basic info failed!");
-      if (this.jdField_a_of_type_Uyy.jdField_a_of_type_Vad != null)
-      {
-        this.jdField_a_of_type_Uyy.jdField_a_of_type_Vad.a(this.jdField_a_of_type_Uyy.a());
-        return;
-      }
-      veg.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
-    }
-    Object localObject1 = (tcz)tdc.a(5);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    Object localObject3;
-    while (localIterator.hasNext())
-    {
-      localObject2 = (String)localIterator.next();
-      localObject3 = ((tcz)localObject1).a((String)localObject2);
-      veg.b("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) = %s", localObject2, localObject3);
-      if (localObject3 == null) {
-        veg.e("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) return null", new Object[] { localObject2 });
-      } else {
-        localArrayList.add(localObject3);
-      }
-    }
-    ((tcz)localObject1).a(QQStoryContext.a().b(), 0, localArrayList, true);
-    localIterator = ((tcz)localObject1).a(false).iterator();
-    while (localIterator.hasNext())
-    {
-      localObject2 = (StoryVideoItem)localIterator.next();
-      localObject3 = uwt.b((StoryVideoItem)localObject2, localArrayList);
-      if (localObject3 != null)
-      {
-        ((tcz)localObject1).a(((StoryVideoItem)localObject2).mVid);
-        veg.d("GetMyStoryDesFromVidListStep", "delete local fake item because we get real item from server, local vid=%s, network vid=%s", new Object[] { ((StoryVideoItem)localObject2).mVid, localObject3 });
-      }
-      else
-      {
-        uwt.a((StoryVideoItem)localObject2);
-      }
-    }
-    localObject1 = ((tcz)localObject1).b(QQStoryContext.a().b());
-    uyy.a(this.jdField_a_of_type_Uyy).b();
-    uyy.a(this.jdField_a_of_type_Uyy).a((List)localObject1);
-    uyy.a(this.jdField_a_of_type_Uyy).jdField_a_of_type_Tef = this.jdField_a_of_type_Uyy.jdField_a_of_type_Uze.jdField_a_of_type_Tef;
-    uyy.a(this.jdField_a_of_type_Uyy).b = this.jdField_a_of_type_Uyy.jdField_a_of_type_Uze.jdField_a_of_type_Boolean;
-    Collections.sort(uyy.a(this.jdField_a_of_type_Uyy).a());
-    if (uyy.a(this.jdField_a_of_type_Uyy) != null) {
-      uyy.a(this.jdField_a_of_type_Uyy).a(uyy.a(this.jdField_a_of_type_Uyy));
-    }
-    if (this.jdField_a_of_type_Uyy.jdField_a_of_type_Vad != null)
-    {
-      this.jdField_a_of_type_Uyy.jdField_a_of_type_Vad.a(this.jdField_a_of_type_Uyy.a());
-      return;
-    }
-    veg.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+    return this.jdField_a_of_type_Uzb;
+  }
+  
+  public String a()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public void a()
+  {
+    ved.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
+    d();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(uzz paramuzz)
+  {
+    this.jdField_a_of_type_Uzz = paramuzz;
+  }
+  
+  public void a(vaa paramvaa)
+  {
+    this.jdField_a_of_type_Vaa = paramvaa;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  protected void d()
+  {
+    String str = sxm.a("StorySvc.homepage_my_day_710");
+    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l);
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
+    this.jdField_a_of_type_Uzb = new uzb();
+    syo.a().a(new tly(str, localReqTodayStoryVidList, null), new uza(this, localReqTodayStoryVidList, str));
   }
 }
 

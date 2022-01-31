@@ -1,28 +1,47 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aosk
+class aosk
   implements View.OnClickListener
 {
-  public aosk(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aosk(aosj paramaosj, View paramView) {}
   
   public void onClick(View paramView)
   {
-    paramView = (aosr)paramView.getTag();
-    FileInfo localFileInfo = (FileInfo)paramView.jdField_a_of_type_JavaLangObject;
-    switch (paramView.c)
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof aoqa))
     {
+      localObject = (FileInfo)((aoqa)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if (paramView.getId() != 2131364978) {
+        break label149;
+      }
+      paramView = (bfpc)bfpp.a(this.jdField_a_of_type_Aosj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
+      paramView.a(ajya.a(2131709630));
+      paramView.a(ajya.a(2131709626), 3);
+      paramView.d(ajya.a(2131709627));
+      paramView.a(new aosl(this, (FileInfo)localObject, paramView));
+      paramView.show();
     }
-    for (;;)
+    label149:
+    while (paramView.getId() != 2131366634)
     {
-      this.a.i();
+      do
+      {
+        return;
+        if ((localObject instanceof aosv))
+        {
+          localObject = (FileInfo)((aosv)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
       return;
-      this.a.a.a().ab();
-      this.a.a(localFileInfo, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
     }
+    paramView = apug.a((FileInfo)localObject);
+    apvm.a(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Aosj.a), this.jdField_a_of_type_Aosj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView);
   }
 }
 

@@ -8,13 +8,15 @@ import pb.unify.search.UnifySearchCommon.ResultItem;
 import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awpb
-  extends awop
+  extends awor
 {
   public static final String a;
-  public List<awmh> a;
+  public List<awoo> a;
   public String b;
   public String j;
   public String k;
+  public String l;
+  public String m;
   
   static
   {
@@ -36,36 +38,21 @@ public class awpb
     try
     {
       paramString = new JSONObject(paramString);
-      this.b = paramString.optString("askIcon");
-      this.j = paramString.optString("headLine");
-      this.k = paramString.optString("answerNumText");
-      paramString = paramString.optJSONArray("answers");
+      this.b = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.l = paramString.optString("rightIconUrl");
+      this.m = paramString.optString("jumpUrl");
+      paramString = paramString.optJSONArray("pageInfo");
       if (paramString != null)
       {
         this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
         int i = 0;
         while (i < paramString.length())
         {
-          Object localObject2 = paramString.optJSONObject(i);
-          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
-          String str1 = ((JSONObject)localObject2).optString("userNameText");
-          String str2 = ((JSONObject)localObject2).optString("praiseText");
-          String str3 = ((JSONObject)localObject2).optString("answerText");
-          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
-          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
-          ArrayList localArrayList = new ArrayList();
-          if (localObject2 != null)
-          {
-            int m = 0;
-            while (m < ((JSONArray)localObject2).length())
-            {
-              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
-              localArrayList.add(new awoi(localJSONObject.optString("url"), localJSONObject.optInt("type")));
-              m += 1;
-            }
-          }
-          localObject1 = new awmh((String)localObject1, str1, str2, str3, n, localArrayList);
-          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          Object localObject = paramString.optJSONObject(i);
+          localObject = new awoo(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
           i += 1;
         }
       }

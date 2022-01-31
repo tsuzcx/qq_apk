@@ -2,9 +2,9 @@ package cooperation.wadl.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bdoe;
-import bgkq;
-import bgkz;
+import bdot;
+import bglh;
+import bglq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import mqq.app.AppRuntime;
@@ -14,22 +14,22 @@ public class WadlProxyService
 {
   public static void a(ServiceConnection paramServiceConnection)
   {
-    bdoe.b("WadlProxyService", "bindWadlService proxy WadlRemoteService");
+    bdot.b("WadlProxyService", "bindWadlService proxy WadlRemoteService");
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     Object localObject = localBaseApplicationImpl.getRuntime();
     Intent localIntent = new Intent(localBaseApplicationImpl, WadlProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bgkz localbgkz = new bgkz(0);
-    localbgkz.b = "qqwadl.apk";
-    localbgkz.d = "qqwadl";
+    bglq localbglq = new bglq(0);
+    localbglq.b = "qqwadl.apk";
+    localbglq.d = "qqwadl";
     if (localObject != null) {}
     for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
     {
-      localbgkz.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localbgkz.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
-      localbgkz.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbgkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      bgkq.c(localBaseApplicationImpl, localbgkz);
+      localbglq.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localbglq.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
+      localbglq.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbglq.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      bglh.c(localBaseApplicationImpl, localbglq);
       return;
     }
   }

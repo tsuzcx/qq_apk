@@ -1,55 +1,48 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.widget.ADView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class bciy
-  implements bcsg
+  extends Handler
 {
-  public bciy(ADView paramADView, LinearLayout paramLinearLayout) {}
-  
-  public void a(int paramInt)
+  public bciy()
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    int i = 0;
-    View localView;
-    while (i < j)
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    paramMessage = (String[])paramMessage.obj;
+    Object localObject = paramMessage[0];
+    CharSequence localCharSequence = paramMessage[1];
+    WeakReference localWeakReference = (WeakReference)bciq.a.remove(localObject);
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (localView != null) {
-        localView.setEnabled(false);
+      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
+        break label142;
       }
-      i += 1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
-      if (paramInt == -1) {
-        i = j - 1;
-      }
+      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
     }
     for (;;)
     {
-      if ((i > -1) && (i < j))
+      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
+      try
       {
-        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if (localView != null) {
-          localView.setEnabled(true);
-        }
+        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
+        ((TextView)localWeakReference.get()).setText(localCharSequence);
+        return;
+        label142:
+        paramMessage = null;
       }
-      return;
-      i = paramInt;
-      if (paramInt == j)
+      catch (Exception paramMessage)
       {
-        i = 0;
-        continue;
-        if (paramInt == -1)
+        for (;;)
         {
-          i = 0;
-        }
-        else
-        {
-          i = paramInt;
-          if (paramInt == j) {
-            i = j - 1;
-          }
+          ((TextView)localWeakReference.get()).setText(localCharSequence);
         }
       }
     }
@@ -57,7 +50,7 @@ public class bciy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bciy
  * JD-Core Version:    0.7.0.1
  */

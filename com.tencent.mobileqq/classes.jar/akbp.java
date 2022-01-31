@@ -1,19 +1,17 @@
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 import java.util.Comparator;
 
 class akbp
-  implements Comparator<atyy>
+  implements Comparator<SysSuspiciousMsg>
 {
-  akbp(akbo paramakbo) {}
+  akbp(akbn paramakbn) {}
   
-  public int a(atyy paramatyy1, atyy paramatyy2)
+  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
   {
-    if ((!paramatyy1.a()) && (paramatyy2.a())) {
-      return -1;
+    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
+      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
     }
-    if ((paramatyy1.a()) && (!paramatyy2.a())) {
-      return 1;
-    }
-    return (int)(paramatyy2.a - paramatyy1.a);
+    return 0;
   }
 }
 

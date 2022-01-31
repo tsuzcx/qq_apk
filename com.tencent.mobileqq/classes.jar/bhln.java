@@ -1,27 +1,116 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class bhln
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements BusinessObserver
 {
-  public bhln(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
+  private static bhln jdField_a_of_type_Bhln;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private long b;
   
-  public void onGlobalLayout()
+  public bhln()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
+    axbk localaxbk = new axbk();
+    localaxbk.a();
+    this.b = (localaxbk.d * 1000);
+    this.jdField_a_of_type_Int = localaxbk.c;
+    this.jdField_a_of_type_JavaLangString = localaxbk.jdField_a_of_type_JavaLangString;
+  }
+  
+  public static bhln a()
+  {
+    if (jdField_a_of_type_Bhln == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bhln == null) {
+        jdField_a_of_type_Bhln = new bhln();
+      }
+      return jdField_a_of_type_Bhln;
+    }
+    finally {}
+  }
+  
+  private boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int)) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long > this.b) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      ??? = new bhlo(this.jdField_a_of_type_JavaLangString, (ArrayList)localObject2, null);
+      localObject2 = new QzoneCommonIntent(BaseApplicationImpl.getContext(), anjy.class);
+      ((QzoneCommonIntent)localObject2).setRequest((bgyk)???);
+      ((QzoneCommonIntent)localObject2).setObserver(this);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject2);
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("WMDReportManager", 1, "action is null");
     }
     for (;;)
     {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
       return;
-      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
+      if (QLog.isColorLevel()) {
+        QLog.i("WMDReportManager", 2, "action:" + paramString);
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QLog.e("WMDReportManager", 1, "reportId is null");
+        return;
+      }
+      if (this.jdField_a_of_type_Long == 0L) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        if (!a()) {
+          continue;
+        }
+        a();
+        return;
       }
     }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("key_response_code");
+      String str = paramBundle.getString("key_response_msg");
+      if (QLog.isColorLevel()) {
+        QLog.i("WMDReportManager", 2, String.format("type :%d, success:%b, code:%d, msg:%s, bundle:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(i), str, paramBundle.toString() }));
+      }
+      return;
+    }
+    QLog.e("WMDReportManager", 1, "onReceive bundle is null");
   }
 }
 

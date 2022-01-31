@@ -1,6 +1,8 @@
 public abstract interface aevq
 {
-  public abstract void a(aevp paramaevp);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

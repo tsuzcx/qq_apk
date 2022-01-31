@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
-import bevq;
+import bewh;
 
 public class MiniGameAuthorizeManager$1
   implements Runnable
 {
   public void run()
   {
-    bevq.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bevx);
+    bewh.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Bewo);
   }
 }
 

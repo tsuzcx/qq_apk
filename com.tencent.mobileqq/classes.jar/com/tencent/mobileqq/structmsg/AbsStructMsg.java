@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
-import actn;
-import acxn;
-import ajyc;
+import actj;
+import acxj;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,9 +14,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import axuw;
-import axwe;
-import axwh;
+import axuy;
+import axwg;
+import axwj;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -26,10 +26,10 @@ import java.io.UnsupportedEncodingException;
 import org.json.JSONObject;
 
 public abstract class AbsStructMsg
-  implements axuw, Externalizable
+  implements axuy, Externalizable
 {
-  public static final String DEFAULT_MSG_BRIEF = ajyc.a(2131699714);
-  public static final String PA_DEFAULT_MSG_BRIEF = ajyc.a(2131699713);
+  public static final String DEFAULT_MSG_BRIEF = ajya.a(2131699725);
+  public static final String PA_DEFAULT_MSG_BRIEF = ajya.a(2131699724);
   public static int SOURCE_ACCOUNT_TYPE_PA = 7;
   public String adverKey;
   public int adverSign;
@@ -124,19 +124,19 @@ public abstract class AbsStructMsg
     catch (Exception paramBundle) {}
   }
   
-  AbsStructMsg(axwe paramaxwe)
+  AbsStructMsg(axwg paramaxwg)
   {
-    parseMsgAttrubutes(paramaxwe);
+    parseMsgAttrubutes(paramaxwg);
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle, int paramInt)
+  public static View getExceptionView(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle, int paramInt)
   {
-    return getExceptionView(paramContext, paramView, paramacxn, paramBundle, paramContext.getResources().getString(paramInt));
+    return getExceptionView(paramContext, paramView, paramacxj, paramBundle, paramContext.getResources().getString(paramInt));
   }
   
-  public static View getExceptionView(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle, String paramString)
+  public static View getExceptionView(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle, String paramString)
   {
-    paramacxn = paramContext.getResources();
+    paramacxj = paramContext.getResources();
     if ((paramView != null) && ((paramView instanceof RelativeLayout))) {
       ((RelativeLayout)paramView).removeAllViews();
     }
@@ -148,16 +148,16 @@ public abstract class AbsStructMsg
       paramBundle.setText(paramString);
       paramBundle.setTextSize(2, 14.0F);
       paramBundle.setTextColor(Color.parseColor("#777777"));
-      int i = actn.a(15.0F, paramacxn);
-      int j = actn.a(7.5F, paramacxn);
+      int i = actj.a(15.0F, paramacxj);
+      int j = actj.a(7.5F, paramacxj);
       paramContext = new RelativeLayout(paramContext);
       paramContext.setBackgroundResource(2130838130);
       paramContext.setPadding(i, j, i, j);
       paramContext.addView(paramBundle);
-      paramContext.setId(2131376566);
-      paramacxn = new RelativeLayout.LayoutParams(-2, -2);
-      paramacxn.addRule(13);
-      paramView.addView(paramContext, paramacxn);
+      paramContext.setId(2131376568);
+      paramacxj = new RelativeLayout.LayoutParams(-2, -2);
+      paramacxj.addRule(13);
+      paramView.addView(paramContext, paramacxj);
       return paramView;
       paramView = new RelativeLayout(paramContext);
     }
@@ -185,9 +185,9 @@ public abstract class AbsStructMsg
     }
   }
   
-  public static View getVersionExceptionView(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle)
+  public static View getVersionExceptionView(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramacxn, paramBundle, 2131698555);
+    return getExceptionView(paramContext, paramView, paramacxj, paramBundle, 2131698565);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -211,14 +211,14 @@ public abstract class AbsStructMsg
   
   public abstract View getSourceView(Context paramContext, View paramView);
   
-  public View getView(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, acxj paramacxj, Bundle paramBundle)
   {
-    paramacxn = paramView;
+    paramacxj = paramView;
     if (paramView == null)
     {
-      paramacxn = new LinearLayout(paramContext);
-      paramacxn.setOrientation(1);
-      paramContext = paramacxn.getLayoutParams();
+      paramacxj = new LinearLayout(paramContext);
+      paramacxj.setOrientation(1);
+      paramContext = paramacxj.getLayoutParams();
       if (paramContext != null) {
         break label49;
       }
@@ -226,8 +226,8 @@ public abstract class AbsStructMsg
     }
     for (;;)
     {
-      paramacxn.setLayoutParams(paramContext);
-      return paramacxn;
+      paramacxj.setLayoutParams(paramContext);
+      return paramacxj;
       label49:
       paramContext.width = BaseChatItemLayout.A;
       paramContext.height = -2;
@@ -259,7 +259,7 @@ public abstract class AbsStructMsg
     {
       localObject = localByteArrayOutputStream.toString("UTF-8");
       QLog.d("StructMsg", 4, "Obj[" + System.identityHashCode(this) + "]getXmlBytes xmlStr:" + (String)localObject);
-      localObject = axwh.b(localByteArrayOutputStream.toByteArray());
+      localObject = axwj.b(localByteArrayOutputStream.toByteArray());
       int i = localObject.length;
       arrayOfByte = new byte[i + 1];
       arrayOfByte[0] = 1;
@@ -290,55 +290,55 @@ public abstract class AbsStructMsg
     return this.mTSum > 0;
   }
   
-  protected void parseMsgAttrubutes(axwe paramaxwe)
+  protected void parseMsgAttrubutes(axwg paramaxwg)
   {
-    if (paramaxwe == null) {}
+    if (paramaxwg == null) {}
     for (;;)
     {
       return;
-      String str1 = paramaxwe.a("templateID");
+      String str1 = paramaxwg.a("templateID");
       if (!TextUtils.isEmpty(str1)) {
         this.mMsgTemplateID = Integer.parseInt(str1);
       }
-      this.mMsgUrl = paramaxwe.a("url");
-      this.mMsgAction = paramaxwe.a("action");
-      this.mMsgActionData = paramaxwe.a("actionData");
-      this.mMsg_A_ActionData = paramaxwe.a("a_actionData");
-      this.mMsg_I_ActionData = paramaxwe.a("i_actionData");
-      this.rijAlbumActionData = paramaxwe.a("rijAlbumActionData");
-      str1 = paramaxwe.a("fwflag");
+      this.mMsgUrl = paramaxwg.a("url");
+      this.mMsgAction = paramaxwg.a("action");
+      this.mMsgActionData = paramaxwg.a("actionData");
+      this.mMsg_A_ActionData = paramaxwg.a("a_actionData");
+      this.mMsg_I_ActionData = paramaxwg.a("i_actionData");
+      this.rijAlbumActionData = paramaxwg.a("rijAlbumActionData");
+      str1 = paramaxwg.a("fwflag");
       if (!TextUtils.isEmpty(str1)) {}
       try
       {
         this.fwFlag = Integer.parseInt(str1);
         label117:
-        str1 = paramaxwe.a("flag");
+        str1 = paramaxwg.a("flag");
         if (!TextUtils.isEmpty(str1)) {}
         try
         {
           this.mFlag = Integer.parseInt(str1);
           label140:
-          str1 = paramaxwe.a("serviceID");
+          str1 = paramaxwg.a("serviceID");
           if (!TextUtils.isEmpty(str1)) {
             this.mMsgServiceID = Integer.parseInt(str1);
           }
-          this.mMsgBrief = paramaxwe.a("brief");
-          this.mResid = paramaxwe.a("m_resid");
-          this.mFileName = paramaxwe.a("m_fileName");
-          str1 = paramaxwe.a("tSum");
+          this.mMsgBrief = paramaxwg.a("brief");
+          this.mResid = paramaxwg.a("m_resid");
+          this.mFileName = paramaxwg.a("m_fileName");
+          str1 = paramaxwg.a("tSum");
           if (!TextUtils.isEmpty(str1)) {
             this.mTSum = Integer.parseInt(str1);
           }
-          str1 = paramaxwe.a("m_fileSize");
+          str1 = paramaxwg.a("m_fileSize");
           if (!TextUtils.isEmpty(str1)) {}
           try
           {
             this.mFileSize = Long.parseLong(str1);
             label242:
-            str1 = paramaxwe.a("promotionType");
-            this.mPromotionMsg = paramaxwe.a("promotionMsg");
-            this.mPromotionMenus = paramaxwe.a("promotionMenus");
-            String str2 = paramaxwe.a("promotionMenuDestructiveIndex");
+            str1 = paramaxwg.a("promotionType");
+            this.mPromotionMsg = paramaxwg.a("promotionMsg");
+            this.mPromotionMenus = paramaxwg.a("promotionMenus");
+            String str2 = paramaxwg.a("promotionMenuDestructiveIndex");
             label310:
             label438:
             try
@@ -355,58 +355,58 @@ public abstract class AbsStructMsg
               label381:
               break label310;
             }
-            this.source_puin = paramaxwe.a("sourcePublicUin");
+            this.source_puin = paramaxwg.a("sourcePublicUin");
             if (this.source_puin == null) {
               this.source_puin = "";
             }
-            this.mSourceThirdName = paramaxwe.a("sourceName");
+            this.mSourceThirdName = paramaxwg.a("sourceName");
             if (this.mSourceThirdName == null) {
               this.mSourceThirdName = "";
             }
-            str1 = paramaxwe.a("sourceMsgId");
+            str1 = paramaxwg.a("sourceMsgId");
             try
             {
               if (!TextUtils.isEmpty(str1)) {
                 this.msgId = Long.parseLong(str1);
               }
-              this.mSType = paramaxwe.a("sType");
-              str1 = paramaxwe.a("accostType");
+              this.mSType = paramaxwg.a("sType");
+              str1 = paramaxwg.a("accostType");
               try
               {
                 if (!TextUtils.isEmpty(str1)) {
                   this.sourceAccoutType = Integer.parseInt(str1);
                 }
                 label415:
-                str1 = paramaxwe.a("adverSign");
+                str1 = paramaxwg.a("adverSign");
                 try
                 {
                   if (!TextUtils.isEmpty(str1)) {
                     this.adverSign = Integer.parseInt(str1);
                   }
-                  this.adverKey = paramaxwe.a("adverKey");
-                  this.index = paramaxwe.a("index");
-                  this.index_name = paramaxwe.a("index_name");
-                  this.index_type = paramaxwe.a("index_type");
-                  this.mExtraData = paramaxwe.a("extraData");
-                  this.mCreateTime = paramaxwe.a("createTime");
-                  this.mTagName = paramaxwe.a("tagName");
-                  this.mArticleIds = paramaxwe.a("articleIds");
-                  this.mOrangeWord = paramaxwe.a("orangeWord");
-                  this.mAlgorithmIds = paramaxwe.a("algorithmIds");
-                  this.mStrategyIds = paramaxwe.a("strategyIds");
-                  this.reportEventFolderStatusValue = paramaxwe.a("reportEventFolderStatusValue");
-                  this.mQidianBulkTaskId = paramaxwe.a("qf_task_id");
-                  this.mInnerUniqIds = paramaxwe.a("uuids");
-                  this.mQQStoryExtra = paramaxwe.a("qqstoryExtra");
-                  this.mTribeShortVideoExtra = paramaxwe.a("qqtribeVideoInfoExtra");
-                  this.mNeedRound = paramaxwe.a("needRoundView");
-                  this.mCommonData = paramaxwe.a("msgCommonData");
-                  this.mMergeSeq = paramaxwe.a("mergeSeq");
-                  paramaxwe = paramaxwe.a("sortKey");
+                  this.adverKey = paramaxwg.a("adverKey");
+                  this.index = paramaxwg.a("index");
+                  this.index_name = paramaxwg.a("index_name");
+                  this.index_type = paramaxwg.a("index_type");
+                  this.mExtraData = paramaxwg.a("extraData");
+                  this.mCreateTime = paramaxwg.a("createTime");
+                  this.mTagName = paramaxwg.a("tagName");
+                  this.mArticleIds = paramaxwg.a("articleIds");
+                  this.mOrangeWord = paramaxwg.a("orangeWord");
+                  this.mAlgorithmIds = paramaxwg.a("algorithmIds");
+                  this.mStrategyIds = paramaxwg.a("strategyIds");
+                  this.reportEventFolderStatusValue = paramaxwg.a("reportEventFolderStatusValue");
+                  this.mQidianBulkTaskId = paramaxwg.a("qf_task_id");
+                  this.mInnerUniqIds = paramaxwg.a("uuids");
+                  this.mQQStoryExtra = paramaxwg.a("qqstoryExtra");
+                  this.mTribeShortVideoExtra = paramaxwg.a("qqtribeVideoInfoExtra");
+                  this.mNeedRound = paramaxwg.a("needRoundView");
+                  this.mCommonData = paramaxwg.a("msgCommonData");
+                  this.mMergeSeq = paramaxwg.a("mergeSeq");
+                  paramaxwg = paramaxwg.a("sortKey");
                   try
                   {
-                    if (!TextUtils.isEmpty(paramaxwe)) {
-                      this.mSortKey = Long.parseLong(paramaxwe);
+                    if (!TextUtils.isEmpty(paramaxwg)) {
+                      this.mSortKey = Long.parseLong(paramaxwg);
                     }
                     if (((this.mMsgServiceID != 142) && (this.mMsgServiceID != 500)) || (!TextUtils.isEmpty(this.mExtraData)) || (TextUtils.isEmpty(this.mMsgActionData))) {
                       continue;
@@ -416,17 +416,17 @@ public abstract class AbsStructMsg
                       this.mExtraData = new JSONObject(this.mMsgActionData).getString("push_ext_data");
                       return;
                     }
-                    catch (Exception paramaxwe)
+                    catch (Exception paramaxwg)
                     {
-                      paramaxwe.getStackTrace();
+                      paramaxwg.getStackTrace();
                       return;
                     }
                   }
-                  catch (NumberFormatException paramaxwe)
+                  catch (NumberFormatException paramaxwg)
                   {
                     for (;;)
                     {
-                      paramaxwe.printStackTrace();
+                      paramaxwg.printStackTrace();
                     }
                   }
                 }

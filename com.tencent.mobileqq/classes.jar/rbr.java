@@ -1,9 +1,9 @@
-import android.content.Context;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public abstract interface rbr
 {
-  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(View paramView, ArticleInfo paramArticleInfo, int paramInt);
 }
 
 

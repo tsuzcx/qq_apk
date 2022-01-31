@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import abdy;
-import axqw;
+import abdu;
+import axqy;
 
 public class FriendProfileCardActivity$22$1
   implements Runnable
 {
-  public FriendProfileCardActivity$22$1(abdy paramabdy) {}
+  public FriendProfileCardActivity$22$1(abdu paramabdu) {}
   
   public void run()
   {
-    axqw.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
+    axqy.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
   }
 }
 

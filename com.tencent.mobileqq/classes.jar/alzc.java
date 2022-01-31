@@ -1,20 +1,33 @@
-import mqq.util.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 
-class alzc
-  implements ajvb
+public class alzc
+  extends BroadcastReceiver
 {
-  WeakReference<alyz> a;
+  public alzc(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public alzc(alyz paramalyz)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(paramalyz);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    alyz localalyz = (alyz)this.a.get();
-    if (localalyz != null) {
-      localalyz.a(paramBoolean);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366389);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      this.a.finish();
     }
   }
 }

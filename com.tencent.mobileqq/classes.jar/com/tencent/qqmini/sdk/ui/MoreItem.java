@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.ui;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bffh;
+import bffy;
 
 public class MoreItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MoreItem> CREATOR = new bffh();
+  public static final Parcelable.Creator<MoreItem> CREATOR = new bffy();
   public int a;
   public String a;
   public boolean a;

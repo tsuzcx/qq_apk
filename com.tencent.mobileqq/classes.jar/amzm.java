@@ -1,84 +1,67 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amzm
+  extends amyp<amzl>
 {
-  private String a;
-  public boolean a;
-  private String b;
-  public boolean b;
-  private String c = "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3";
-  private String d = "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3";
-  
-  public amzm()
+  public static amzl c()
   {
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}";
+    amzl localamzl2 = (amzl)ampl.a().a(469);
+    amzl localamzl1 = localamzl2;
+    if (localamzl2 == null) {
+      localamzl1 = new amzl();
+    }
+    return localamzl1;
+  }
+  
+  public int a()
+  {
+    return 469;
   }
   
   @NonNull
-  public static amzm a(String paramString)
+  public amzl a()
   {
-    boolean bool2 = false;
-    amzm localamzm = new amzm();
-    if (TextUtils.isEmpty(paramString)) {
-      return localamzm;
-    }
-    for (;;)
+    return new amzl();
+  }
+  
+  @NonNull
+  public amzl a(amph[] paramArrayOfamph)
+  {
+    boolean bool = true;
+    localamzl = new amzl();
+    paramArrayOfamph = paramArrayOfamph[0].jdField_a_of_type_JavaLangString;
+    try
     {
-      try
+      paramArrayOfamph = new JSONObject(paramArrayOfamph);
+      if (paramArrayOfamph.optInt("is_show_recover_entry", 1) == 1) {}
+      for (;;)
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("showCreateIcon") == 1)
-        {
-          bool1 = true;
-          localamzm.jdField_b_of_type_Boolean = bool1;
-          localamzm.jdField_a_of_type_JavaLangString = paramString.optString("pretty_home", "https://club.vip.qq.com/grouphaoma/home?_wv=131072&_fv=0&_proxy=1&from={from}");
-          localamzm.jdField_b_of_type_JavaLangString = paramString.optString("pretty_mine", "https://club.vip.qq.com/grouphaoma/mine?_wv=131072&_fv=0&_proxy=1&from={from}&groupnum={groupnum}");
-          localamzm.c = paramString.optString("2k", "https://mc.vip.qq.com/group/create2k?_wwv=4&_wv=1027&_wvx=3");
-          localamzm.d = paramString.optString("3k", "https://mc.vip.qq.com/group/create3k?_wwv=4&_wv=1027&_wvx=3");
-          bool1 = bool2;
-          if (paramString.optInt("limit_off", 0) == 1) {
-            bool1 = true;
-          }
-          localamzm.jdField_a_of_type_Boolean = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("vip_pretty.ConfigProcessor", 1, localamzm.toString());
-          return localamzm;
-        }
+        localamzl.jdField_a_of_type_Boolean = bool;
+        localamzl.jdField_a_of_type_JavaLangString = paramArrayOfamph.optString("recover_text", localamzl.jdField_a_of_type_JavaLangString);
+        localamzl.b = paramArrayOfamph.optString("recover_url", localamzl.b);
+        localamzl.c = paramArrayOfamph.optString("recoveryHomePageUrl", localamzl.c);
+        return localamzl;
+        bool = false;
       }
-      catch (JSONException paramString)
-      {
-        QLog.e("vip_pretty.ConfigProcessor", 1, "json parse error:" + paramString);
-        return localamzm;
-      }
-      boolean bool1 = false;
+      return localamzl;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      ved.e("QVipFriendTag2Processor", "QVipFriendTag2Config onParsed exception :" + paramArrayOfamph.getMessage());
     }
   }
   
-  public String a()
+  public Class<amzl> a()
   {
-    return this.c;
+    return amzl.class;
   }
   
-  public String a(String paramString)
+  @NonNull
+  public amzl b()
   {
-    return this.jdField_a_of_type_JavaLangString.replace("{from}", paramString);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    return this.jdField_b_of_type_JavaLangString.replace("{from}", paramString1).replace("{groupnum}", paramString2);
-  }
-  
-  public String b()
-  {
-    return this.d;
+    return new amzl();
   }
 }
 

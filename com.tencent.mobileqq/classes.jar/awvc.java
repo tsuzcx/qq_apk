@@ -3,17 +3,16 @@ import java.util.Comparator;
 import java.util.Set;
 
 public class awvc
-  extends awts
+  extends awtu
 {
-  public final awvd a;
+  private Comparator<awoe> a = new awvd(this);
   
   public awvc(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
     super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new awvd(paramQQAppInterface);
   }
   
-  public Comparator<awoc> a()
+  public Comparator<awoe> a()
   {
     return this.a;
   }

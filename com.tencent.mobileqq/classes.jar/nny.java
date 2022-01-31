@@ -1,15 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.1;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nny
-  implements BusinessObserver
+class nny
+  extends BroadcastReceiver
 {
-  public nny(PublicAccountManager.1 param1) {}
+  nny(nnu paramnnu) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a();
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

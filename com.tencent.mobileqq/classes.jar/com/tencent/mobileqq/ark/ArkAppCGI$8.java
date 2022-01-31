@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import alsc;
-import alsn;
-import ayrv;
-import ayry;
+import alsb;
+import alsm;
+import ayrx;
+import aysa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
-import nar;
+import nao;
 
 public class ArkAppCGI$8
   implements Runnable
 {
-  public ArkAppCGI$8(alsc paramalsc, QQAppInterface paramQQAppInterface, alsn paramalsn, ayrv paramayrv) {}
+  public ArkAppCGI$8(alsb paramalsb, QQAppInterface paramQQAppInterface, alsm paramalsm, ayrx paramayrx) {}
   
   public void run()
   {
-    if ((alsc.a(this.this$0) == null) || (!nar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    if ((alsb.a(this.this$0) == null) || (!nao.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
       ArkAppCenter.c("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      alsc.a(this.this$0, this.jdField_a_of_type_Alsn, false, null);
+      alsb.a(this.this$0, this.jdField_a_of_type_Alsm, false, null);
       return;
     }
-    alsc.a(this.this$0).a(this.jdField_a_of_type_Ayrv);
+    alsb.a(this.this$0).a(this.jdField_a_of_type_Ayrx);
   }
 }
 

@@ -1,23 +1,30 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import mqq.os.MqqHandler;
 
 public class assx
-  extends GestureDetector.SimpleOnGestureListener
+  extends MqqHandler
 {
-  public assx(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public assx(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if ((MultiCardRootLayout.a(this.a)) && (MultiCardRootLayout.a(this.a) != null))
+    switch (paramMessage.what)
     {
-      asta localasta = (asta)MultiCardRootLayout.a(this.a).get();
-      if (localasta != null) {
-        localasta.a(this.a);
-      }
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    do
+    {
+      return;
+      MultiCardRecommendFragment.e(this.a);
+      sendEmptyMessageDelayed(3, 500L);
+      return;
+      MultiCardRecommendFragment.a(this.a, MultiCardRecommendFragment.b(this.a));
+      MultiCardRecommendFragment.e(this.a);
+      return;
+      MultiCardRecommendFragment.d(this.a);
+      return;
+    } while (MultiCardRecommendFragment.a(this.a) == null);
+    MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

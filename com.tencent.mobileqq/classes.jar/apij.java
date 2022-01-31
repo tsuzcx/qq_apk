@@ -1,77 +1,35 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.1;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.2;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.3;
+import mqq.os.MqqHandler;
 
 public class apij
-  implements Observer
+  extends amgq
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private apij(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public apij(QQAppInterface paramQQAppInterface, String paramString)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (paramBundle.getInt("color_note_curd_from_type") == 1) {
+      axqy.b(null, "dc00898", "", "", "0X800A744", "0X800A744", apvm.c(FileBrowserActivity.a(this.a)), 0, "", "", "", "");
     }
+    super.onAddColorNote(paramBundle, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.1(this));
   }
   
-  public void a(View paramView)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.2(this));
   }
   
-  public void b()
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
-        paramObservable = (MessageRecord)paramObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
-    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
-    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+    super.onUpdateColorNoteState(paramInt, paramString, paramBundle);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.3(this));
   }
 }
 

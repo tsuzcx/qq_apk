@@ -1,16 +1,27 @@
-public abstract interface aubl
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+
+class aubl
+  implements Camera.PreviewCallback
 {
-  public abstract void a();
+  aubl(aubi paramaubi) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!aubi.a(this.a)))
+    {
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - aubi.a(this.a) > this.a.c))
+      {
+        aubi.a(this.a, System.currentTimeMillis());
+        aubi.a(this.a, paramArrayOfByte);
+      }
+    }
+    aubi.a(this.a).addCallbackBuffer(paramArrayOfByte);
+  }
 }
 
 

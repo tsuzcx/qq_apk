@@ -1,17 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebVideoItemUtils.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.text.style.LineBackgroundSpan;
 
-public final class rnf
-  implements onq
+public class rnf
+  implements LineBackgroundSpan
 {
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public rnf(int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(paramString1, paramString1))) {
-      ThreadManager.getUIHandler().post(new FastWebVideoItemUtils.1.1(this, paramString2, paramInt1, paramInt2));
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void drawBackground(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, int paramInt8) {}
 }
 
 

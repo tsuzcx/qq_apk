@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class aifn
-  implements View.OnClickListener
+public class aifn
+  extends aimt
 {
-  aifn(aifm paramaifm) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    aifm.a(this.a, (ailx)paramView);
-  }
+  public aifn(aifk paramaifk) {}
 }
 
 

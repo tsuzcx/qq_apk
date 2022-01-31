@@ -1,6 +1,16 @@
-public abstract interface adar
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+
+public class adar
+  implements aybj
 {
-  public abstract void a(boolean paramBoolean);
+  public adar(FriendShipWaveView paramFriendShipWaveView) {}
+  
+  public void a()
+  {
+    aybr localaybr = new aybr(new aybi[] { new aybq(300, 0.1F, 1.1F), new aybq(100, 1.2F, 0.9F), new aybq(100, 0.9F, 1.0F) });
+    this.a.c.a(new aybi[] { localaybr });
+    this.a.b.a(new aybi[] { new aybq(300, 0.0F, 1.0F) });
+  }
 }
 
 

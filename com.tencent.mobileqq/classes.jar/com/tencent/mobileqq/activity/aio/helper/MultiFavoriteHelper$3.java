@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adin;
-import bgpf;
+import adil;
+import bgpw;
 
 public class MultiFavoriteHelper$3
   implements Runnable
 {
-  public MultiFavoriteHelper$3(adin paramadin, String paramString1, boolean paramBoolean, String paramString2) {}
+  public MultiFavoriteHelper$3(adil paramadil, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    bgpf.a(adin.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, false);
+    bgpw.a(adil.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, false);
   }
 }
 

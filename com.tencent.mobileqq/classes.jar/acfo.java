@@ -1,36 +1,26 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class acfo
   extends Handler
 {
-  public acfo(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
+  public acfo(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    paramMessage = this.a.findViewById(2131377230);
-    if (paramMessage != null) {}
-    try
+    switch (paramMessage.what)
     {
-      paramMessage.setBackgroundResource(2130849455);
-      axqw.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
+    default: 
       return;
     }
-    catch (OutOfMemoryError paramMessage)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
-      }
-    }
+    this.a.jdField_a_of_type_Aiqb.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Aiqb.notifyDataSetChanged();
+    this.a.b();
   }
 }
 

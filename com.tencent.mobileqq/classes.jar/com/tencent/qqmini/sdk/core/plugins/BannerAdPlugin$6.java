@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
-import bffp;
+import bekr;
+import betc;
+import bfgg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class BannerAdPlugin$6
   implements Runnable
 {
-  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, beka parambeka) {}
+  BannerAdPlugin$6(BannerAdPlugin paramBannerAdPlugin, int paramInt1, int paramInt2, bekr parambekr) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ class BannerAdPlugin$6
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "resize");
       localJSONObject.put("width", this.val$resizeValue);
-      localJSONObject.put("height", bffp.a(this.val$resizeValue));
+      localJSONObject.put("height", bfgg.a(this.val$resizeValue));
       BannerAdPlugin.access$400(this.this$0, this.val$req, localJSONObject, "onBannerAdStateChange");
-      if (besl.a()) {
-        besl.b("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
+      if (betc.a()) {
+        betc.b("BannerAdPlugin", "updateBannerAd " + bool + ", resizeValue = " + this.val$resizeValue);
       }
       return;
     }
@@ -31,7 +31,7 @@ class BannerAdPlugin$6
     {
       for (;;)
       {
-        besl.d("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
+        betc.d("BannerAdPlugin", "updateBannerAd informJs error", localJSONException);
       }
     }
   }

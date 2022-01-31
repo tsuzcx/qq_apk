@@ -1,8 +1,16 @@
 import android.graphics.Bitmap;
 
-public abstract interface aywx
+public class aywx
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  ayww a;
+  
+  protected Bitmap b(Bitmap paramBitmap)
+  {
+    if (this.a == null) {
+      return paramBitmap;
+    }
+    return this.a.a(paramBitmap);
+  }
 }
 
 

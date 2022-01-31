@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.MainFragment;
 
 public class abne
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public abne(MainFragment paramMainFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    MainFragment.b(true);
+    paramView = (ViewGroup)paramView.getParent();
+    if (!MainFragment.a()) {
+      paramView.callOnClick();
+    }
   }
 }
 

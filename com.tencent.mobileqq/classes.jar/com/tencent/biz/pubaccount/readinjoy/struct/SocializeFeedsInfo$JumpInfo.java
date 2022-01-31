@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qcp;
+import qcm;
 
 public class SocializeFeedsInfo$JumpInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<JumpInfo> CREATOR = new qcp();
+  public static final Parcelable.Creator<JumpInfo> CREATOR = new qcm();
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;
   private final String b;

@@ -1,24 +1,14 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
 
-final class tvo
-  extends SimpleJob<Object>
+public abstract interface tvo
 {
-  tvo(String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(@NonNull tvn paramtvn);
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = tvk.a();
-    if (paramJobContext != null) {
-      tvk.b(paramJobContext);
-    }
-    return null;
-  }
+  public abstract void a(@NonNull tvn paramtvn, @NonNull Throwable paramThrowable);
+  
+  public abstract void b(@NonNull tvn paramtvn);
+  
+  public abstract void c(@NonNull tvn paramtvn);
 }
 
 

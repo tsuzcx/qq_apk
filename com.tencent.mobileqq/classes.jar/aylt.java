@@ -1,15 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.BubblePopupWindow;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aylt
-  implements View.OnClickListener
+public class aylt
 {
-  aylt(ayls paramayls) {}
+  public int a;
+  public String a;
+  private JSONObject a;
   
-  public void onClick(View paramView)
+  public aylt(int paramInt, String paramString)
   {
-    ayls.a(this.a).b();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

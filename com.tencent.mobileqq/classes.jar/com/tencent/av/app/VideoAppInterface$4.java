@@ -2,7 +2,7 @@ package com.tencent.av.app;
 
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.qphone.base.util.QLog;
-import lps;
+import lpn;
 
 class VideoAppInterface$4
   implements Runnable

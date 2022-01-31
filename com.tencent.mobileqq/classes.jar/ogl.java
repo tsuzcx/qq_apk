@@ -1,139 +1,18 @@
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommonCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.math.BigInteger;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class ogl
+class ogl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static String a()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
-    double d = 3.0D;
-    if (localAladdinConfig != null)
-    {
-      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
-    }
-    return "确定" + (int)d + "天内不再展示家族占领入口？";
-  }
+  ogl(ogk paramogk, int paramInt, View paramView) {}
   
-  public static boolean a()
+  public void onGlobalLayout()
   {
-    long l = ((Long)bhvh.a("family_comment_card_hide_timestamp", Long.valueOf(-1L))).longValue();
-    if (l == -1L)
-    {
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false cuz never click hide btn ");
-      return false;
-    }
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
-    double d = 3.0D;
-    if (localAladdinConfig != null)
-    {
-      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
-    }
-    if (System.currentTimeMillis() - l <= d * 24.0D * 60.0D * 60.0D * 1000.0D)
-    {
-      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | true ");
-      return true;
-    }
-    QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false ");
-    return false;
-  }
-  
-  public Bundle a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      Object localObject1 = paramJSONObject.optString("uniqueKey");
-      int i = paramJSONObject.optInt("source", 3);
-      Object localObject2 = paramJSONObject.optString("feedsID", "");
-      int j = paramJSONObject.optInt("feedsType", -1);
-      int k = paramJSONObject.optInt("adTag", -1);
-      String str3 = paramJSONObject.optString("title", "");
-      Object localObject3 = paramJSONObject.optString("sourceName", "");
-      String str4 = paramJSONObject.optString("picUrl", "");
-      long l = paramJSONObject.optLong("duration", -1L);
-      String str5 = paramJSONObject.optString("articleID", "");
-      String str1 = paramJSONObject.optString("commentID");
-      String str2 = paramJSONObject.optString("subCommentID");
-      boolean bool = paramJSONObject.optBoolean("isAwesome");
-      int m = paramJSONObject.optInt("jumpType");
-      int n = paramJSONObject.optInt("serviceType", 5);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData |   uniqueKey = " + (String)localObject1 + "source = " + i + "feedsId = " + (String)localObject2 + " feedsType=" + j + "adTag = " + k + "title = " + str3 + "sourceName = " + (String)localObject3 + "picUrl =" + str4 + "duration = " + l + "articleId =" + str5 + " feedsServiceType = " + n);
-      paramJSONObject = new AnchorData();
-      paramJSONObject.jdField_a_of_type_JavaLangString = str1;
-      paramJSONObject.b = str2;
-      paramJSONObject.jdField_a_of_type_Boolean = bool;
-      localObject2 = new CommonCommentData(str5, j, (String)localObject2, k, str3, (String)localObject3, str4, l);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | commonCommentData " + localObject2 + "\n anchorData " + paramJSONObject);
-      localObject3 = new ArticleInfo();
-      ((ArticleInfo)localObject3).innerUniqueID = ((String)localObject1);
-      ((ArticleInfo)localObject3).mTitle = str3;
-      ((ArticleInfo)localObject3).mSummary = "";
-      ((ArticleInfo)localObject3).mFirstPagePicUrl = str4;
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getArticleId()))) {
-        ((ArticleInfo)localObject3).mArticleID = Long.parseLong(((CommonCommentData)localObject2).getArticleId());
-      }
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getFeedsId()))) {
-        ((ArticleInfo)localObject3).mFeedId = new BigInteger(((CommonCommentData)localObject2).getFeedsId()).longValue();
-      }
-      if ((localObject2 != null) && (((CommonCommentData)localObject2).getFeedsType() != -1)) {
-        ((ArticleInfo)localObject3).mFeedType = ((CommonCommentData)localObject2).getFeedsType();
-      }
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | articleInfo " + localObject3);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putSerializable("commonCommentData", (Serializable)localObject2);
-      ((Bundle)localObject1).putParcelable("anchorData", paramJSONObject);
-      ((Bundle)localObject1).putParcelable("articleInfo", (Parcelable)localObject3);
-      ((Bundle)localObject1).putInt("source", i);
-      ((Bundle)localObject1).putString("commentId", str1);
-      ((Bundle)localObject1).putString("subCommentId", str2);
-      ((Bundle)localObject1).putBoolean("isAwesome", bool);
-      ((Bundle)localObject1).putInt("jumpType", m);
-      ((Bundle)localObject1).putBoolean("fromViola", true);
-      ((Bundle)localObject1).putInt("serviceType", n);
-      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | bundle " + localObject1);
-      return localObject1;
-    }
-    catch (Exception paramJSONObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentHelper", 2, QLog.getStackTraceString(paramJSONObject));
-      }
-    }
-    return new Bundle();
-  }
-  
-  public ReadInJoyCommentListFragment a(String paramString, ogy paramogy, ogp paramogp)
-  {
-    QLog.d("ReadInJoyCommentHelper", 1, "buildCommentFragment | configJsonStr : " + paramString);
-    try
-    {
-      paramString = new JSONObject(paramString);
-      QLog.d("ReadInJoyCommentHelper", 2, "buildCommentFragment | paramJsonStr " + paramString.toString());
-      paramString = a(paramString);
-      ReadInJoyCommentListFragment localReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
-      localReadInJoyCommentListFragment.setArguments(paramString);
-      localReadInJoyCommentListFragment.a(paramogy);
-      localReadInJoyCommentListFragment.a(paramogp);
-      return localReadInJoyCommentListFragment;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    ogk.a(this.jdField_a_of_type_Ogk, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
+    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

@@ -1,62 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvt
+  extends ampa<amvs>
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public String b = "";
-  
-  public amvt()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return 490;
   }
   
-  public static amvt a(String paramString)
+  @NonNull
+  public amvs a(int paramInt)
   {
-    if (paramString == null) {
-      return null;
-    }
-    amvt localamvt;
-    try
+    return new amvs();
+  }
+  
+  @Nullable
+  public amvs a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localamvt = new amvt();
-      localamvt.jdField_a_of_type_JavaLangString = paramString;
-      paramString = new JSONObject(paramString);
-      localamvt.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
-      localamvt.b = paramString.optString("iconUrl");
-      if (!TextUtils.isEmpty(localamvt.b)) {
-        localamvt.b = localamvt.b.trim();
-      }
-      paramString = paramString.optJSONObject("grayTips");
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localamvt.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
-      }
-      QLog.d("ConfBean", 0, "confBean = " + localamvt.toString());
-    }
-    catch (Exception paramString)
-    {
+      amvs localamvs = amvs.a(paramArrayOfamph[0].a);
       if (QLog.isColorLevel()) {
-        QLog.e("ConfBean", 1, "parse e:", paramString);
+        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
       }
-      return null;
+      return localamvs;
     }
-    return localamvt;
+    return new amvs();
   }
   
-  public String toString()
+  public Class<amvs> a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    return amvs.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amvs paramamvs) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

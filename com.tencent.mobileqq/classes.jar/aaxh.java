@@ -1,32 +1,15 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
 public class aaxh
-  extends AccountObserver
+  extends aoez
 {
   public aaxh(Conversation paramConversation) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  protected void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
-      }
-      this.a.a.a.sendEmptyMessage(18);
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
-    }
-    this.a.a.a.sendEmptyMessage(18);
   }
 }
 

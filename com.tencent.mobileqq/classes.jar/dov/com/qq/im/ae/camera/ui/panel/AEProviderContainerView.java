@@ -11,33 +11,33 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
-import biju;
-import biod;
-import bioe;
-import biof;
-import biog;
-import bioh;
-import bivx;
-import biwb;
-import bjae;
-import bjbk;
-import bjiy;
-import bkqo;
+import bikl;
+import biou;
+import biov;
+import biow;
+import biox;
+import bioy;
+import biwo;
+import biws;
+import bjav;
+import bjcb;
+import bjjp;
+import bkrf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vzo;
+import vzl;
 
 public class AEProviderContainerView
   extends FrameLayout
 {
   public int a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new biod(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new biou(this);
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private biju jdField_a_of_type_Biju;
-  private bivx jdField_a_of_type_Bivx = bivx.jdField_a_of_type_Bivx;
-  private biwb jdField_a_of_type_Biwb;
+  private bikl jdField_a_of_type_Bikl;
+  private biwo jdField_a_of_type_Biwo = biwo.jdField_a_of_type_Biwo;
+  private biws jdField_a_of_type_Biws;
   private AEBeautyProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView;
   private AEFilterProviderView jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -52,21 +52,21 @@ public class AEProviderContainerView
   public AEProviderContainerView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = vzo.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = vzo.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
     i();
   }
   
   public AEProviderContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = vzo.a(getContext(), 195.0F);
+    this.jdField_a_of_type_Int = vzl.a(getContext(), 195.0F);
     i();
   }
   
@@ -74,13 +74,13 @@ public class AEProviderContainerView
   {
     View localView = LayoutInflater.from(getContext()).inflate(2131558496, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363138);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363137);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366269);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372055));
     this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131372056);
-    this.d = localView.findViewById(2131363996);
+    this.d = localView.findViewById(2131363995);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_AndroidViewView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.d);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewView);
@@ -115,7 +115,7 @@ public class AEProviderContainerView
     {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView = new AEFilterProviderView(getContext());
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.setNeedTabBar(false);
-      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(vzo.a(getContext(), 162.0F));
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.d(vzl.a(getContext(), 162.0F));
       if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView);
       }
@@ -156,7 +156,7 @@ public class AEProviderContainerView
     {
       if (!this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Biju);
+        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setController(this.jdField_a_of_type_Bikl);
         this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.a(null);
       }
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setAlpha(1.0F);
@@ -171,12 +171,12 @@ public class AEProviderContainerView
     Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, this.jdField_a_of_type_Int });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject);
-    localAnimatorSet.addListener(new biog(this));
+    localAnimatorSet.addListener(new biox(this));
     localAnimatorSet.setDuration(300L).start();
-    localObject = bjiy.a(this, 1.0F, 0.0F);
+    localObject = bjjp.a(this, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new bioh(this));
+    ((Animation)localObject).setAnimationListener(new bioy(this));
     startAnimation((Animation)localObject);
   }
   
@@ -189,7 +189,7 @@ public class AEProviderContainerView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Bivx == bivx.c;
+    return this.jdField_a_of_type_Biwo == biwo.c;
   }
   
   public void b()
@@ -267,8 +267,8 @@ public class AEProviderContainerView
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView.setVisibility(8);
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView = null;
     }
-    if (this.jdField_a_of_type_Biwb != null) {
-      this.jdField_a_of_type_Biwb.a(196613, new Object[0]);
+    if (this.jdField_a_of_type_Biws != null) {
+      this.jdField_a_of_type_Biws.a(196613, new Object[0]);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AEProviderContainerView", 2, "panel closed");
@@ -280,12 +280,12 @@ public class AEProviderContainerView
     this.jdField_a_of_type_Boolean = true;
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(ObjectAnimator.ofFloat(this, "translationY", new float[] { this.jdField_a_of_type_Int, 0.0F }));
-    ((AnimatorSet)localObject).addListener(new bioe(this));
+    ((AnimatorSet)localObject).addListener(new biov(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
-    localObject = bjiy.a(this, 0.0F, 1.0F);
+    localObject = bjjp.a(this, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new biof(this));
+    ((Animation)localObject).setAnimationListener(new biow(this));
     startAnimation((Animation)localObject);
   }
   
@@ -301,9 +301,9 @@ public class AEProviderContainerView
     if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView != null) {
       this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEFilterProviderView.b();
     }
-    bkqo.a().b(null, (Activity)getContext(), 0);
-    bkqo.a().a(null, 0);
-    ((bjbk)bjae.a(5)).a((Activity)getContext());
+    bkrf.a().b(null, (Activity)getContext(), 0);
+    bkrf.a().a(null, 0);
+    ((bjcb)bjav.a(5)).a((Activity)getContext());
   }
   
   public void h()
@@ -328,15 +328,15 @@ public class AEProviderContainerView
     }
   }
   
-  public void setCaptureMode(bivx parambivx)
+  public void setCaptureMode(biwo parambiwo)
   {
-    this.jdField_a_of_type_Bivx = parambivx;
+    this.jdField_a_of_type_Biwo = parambiwo;
   }
   
-  public void setControllerAndManager(biju parambiju, biwb parambiwb)
+  public void setControllerAndManager(bikl parambikl, biws parambiws)
   {
-    this.jdField_a_of_type_Biju = parambiju;
-    this.jdField_a_of_type_Biwb = parambiwb;
+    this.jdField_a_of_type_Bikl = parambikl;
+    this.jdField_a_of_type_Biws = parambiws;
     this.jdField_b_of_type_Boolean = true;
   }
   

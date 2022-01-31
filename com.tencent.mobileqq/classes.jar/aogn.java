@@ -1,53 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aogn
-  extends aoeu
 {
-  public aogn(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  public int a;
+  public String a;
+  public int b;
   
-  protected void a(boolean paramBoolean, aogh paramaogh, int paramInt)
+  public aogn()
   {
-    if (paramInt != ExtendFriendBaseFragment.a(this.a)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (paramaogh == null));
-      localObject = ((ajxn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    } while (localObject == null);
-    ExtendFriendBaseFragment localExtendFriendBaseFragment = this.a;
-    if (!TextUtils.isEmpty(paramaogh.mDeclaration)) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localExtendFriendBaseFragment.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.b = ((Card)localObject).isShowCard;
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBaseFragment", 2, String.format("addMyFeed mProfileComplete=%s mShowCard=%s", new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Boolean.valueOf(this.a.b) }));
-      }
-      if (this.a.jdField_a_of_type_Aoiu == null) {
-        break;
-      }
-      localObject = this.a.jdField_a_of_type_Aoiu.a(0);
-      paramaogh.mIsMyFeed = true;
-      if ((localObject != null) && (TextUtils.equals(((aogh)localObject).mUin, paramaogh.mUin))) {
-        this.a.jdField_a_of_type_Aoiu.b(0);
-      }
-      this.a.jdField_a_of_type_Aoiu.a(0, paramaogh);
-      if (!TextUtils.isEmpty(paramaogh.mDeclaration)) {
-        paramaogh.mDeclaration = paramaogh.mDeclaration.replace('\n', ' ').trim();
-      }
-      if ((!this.a.b) || (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Aoiu.b(0);
-      }
-      this.a.jdField_a_of_type_Aoiu.notifyDataSetChanged();
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public aogn(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  public static String a(ArrayList<aogn> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
+      return "";
     }
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayList.size())
+      {
+        aogn localaogn = (aogn)paramArrayList.get(i);
+        JSONObject localJSONObject;
+        if (localaogn != null) {
+          localJSONObject = new JSONObject();
+        }
+        try
+        {
+          localJSONObject.put("tagId", localaogn.jdField_a_of_type_Int);
+          localJSONObject.put("tagName", localaogn.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("isHotTag", localaogn.b);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("TagInfo CLASS", 2, "convertToJson error" + localException.toString());
+          }
+        }
+      }
+    }
+    return localJSONArray.toString();
+  }
+  
+  public boolean a()
+  {
+    return this.b == 1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{tagId: ").append(this.jdField_a_of_type_Int).append("}");
+    localStringBuilder.append("{tagName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{isHotTag: ").append(this.b).append("}");
+    return localStringBuilder.toString();
   }
 }
 

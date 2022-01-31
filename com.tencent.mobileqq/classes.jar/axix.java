@@ -1,6 +1,13 @@
-public abstract class axix
+final class axix
+  extends axiz
 {
-  public abstract double a(int paramInt1, int paramInt2);
+  public double a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
+    }
+    return paramInt1 / (paramInt1 + paramInt2);
+  }
 }
 
 

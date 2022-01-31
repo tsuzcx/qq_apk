@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class AuthJsPlugin$2
   implements AsyncResult
 {
-  AuthJsPlugin$2(AuthJsPlugin paramAuthJsPlugin, beka parambeka) {}
+  AuthJsPlugin$2(AuthJsPlugin paramAuthJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      besl.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
+      betc.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
       this.val$req.a(paramJSONObject);
       return;
     }
-    besl.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
+    betc.a("AuthJsPlugin", "call API_REFRESH_SESSION success.");
     this.val$req.b();
   }
 }

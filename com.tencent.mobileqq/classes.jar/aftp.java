@@ -1,6 +1,6 @@
 public abstract interface aftp
 {
-  public abstract long a();
+  public abstract void c();
 }
 
 

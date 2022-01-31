@@ -1,39 +1,78 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class axnc
-  implements axmx
 {
-  private axmx jdField_a_of_type_Axmx;
-  private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadLoadExtResult;
+  long jdField_a_of_type_Long = 0L;
+  List<axnd> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  private void a(axna paramaxna, axne paramaxne, int paramInt)
+  static String a(axnc paramaxnc)
   {
-    axna localaxna = new axna();
-    localaxna.jdField_a_of_type_JavaUtilList.add(paramaxna.jdField_a_of_type_JavaUtilList.get(paramInt));
-    localaxna.jdField_a_of_type_Long = paramaxna.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Axmx = new axmu();
-    this.jdField_a_of_type_Axmx.a(localaxna, new axnd(this, paramInt, paramaxna, paramaxne));
-  }
-  
-  public void a(axna paramaxna, axne paramaxne)
-  {
-    a(paramaxna, paramaxne, 0);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Axmx != null) {
-      this.jdField_a_of_type_Axmx.a(paramString);
+    if ((paramaxnc == null) || (paramaxnc.jdField_a_of_type_JavaUtilList == null) || (paramaxnc.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return null;
     }
+    StringBuilder localStringBuilder = new StringBuilder("names=");
+    paramaxnc = paramaxnc.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 1;
+    if (paramaxnc.hasNext())
+    {
+      axnd localaxnd = (axnd)paramaxnc.next();
+      if (i != 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        localStringBuilder.append(localaxnd.jdField_a_of_type_JavaLangString);
+        break;
+        localStringBuilder.append("&");
+      }
+    }
+    return localStringBuilder.toString();
   }
   
-  public boolean a(String paramString)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Axmx != null) {
-      return this.jdField_a_of_type_Axmx.a(paramString);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+      return false;
     }
-    return false;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      axnd localaxnd = (axnd)localIterator.next();
+      if ((localaxnd == null) || (TextUtils.isEmpty(localaxnd.jdField_a_of_type_JavaLangString)) || (localaxnd.jdField_a_of_type_Axna == null)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public boolean a(axnc paramaxnc)
+  {
+    if (paramaxnc == null) {}
+    while (paramaxnc.jdField_a_of_type_JavaUtilList.size() != this.jdField_a_of_type_JavaUtilList.size()) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramaxnc.jdField_a_of_type_JavaUtilList.size()) {
+        break label83;
+      }
+      axnd localaxnd = (axnd)paramaxnc.jdField_a_of_type_JavaUtilList.get(i);
+      if (!((axnd)this.jdField_a_of_type_JavaUtilList.get(i)).a(localaxnd)) {
+        break;
+      }
+      i += 1;
+    }
+    label83:
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "LoadParam{mLoadItems=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

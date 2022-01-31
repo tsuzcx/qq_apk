@@ -1,40 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-class ambo
-  extends AnimatorListenerAdapter
+public class ambo
 {
-  ambo(ambj paramambj, ambq paramambq) {}
+  public int a;
+  public ambp a;
+  public amcr a;
+  public Bitmap a;
+  public Rect a;
+  public Boolean a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b = "";
+  public boolean b;
+  public int c;
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public ambo()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
-    }
-    if ((this.jdField_a_of_type_Ambq != null) && (this.jdField_a_of_type_Ambq.b != null))
-    {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_Ambq.b.istroop != 0) {
-        break label84;
-      }
-      paramAnimator = "1";
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(akfw.a(this.jdField_a_of_type_Ambq.b.vipBubbleID)), "");
-      return;
-      label84:
-      if (this.jdField_a_of_type_Ambq.b.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_Ambq.b.istroop == 3000) {
-        paramAnimator = "3";
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
 }
 

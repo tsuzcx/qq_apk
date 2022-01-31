@@ -1,45 +1,10 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.CircleProgress;
 
-public class avuc
-  extends OrientationEventListener
+public abstract interface avuc
 {
-  public avuc(CameraCaptureView paramCameraCaptureView, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    this.a.v = paramInt;
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
-      }
-      this.a.w = 90;
-    }
-    if ((paramInt > 315) || (paramInt < 45)) {
-      this.a.w = 90;
-    }
-    for (;;)
-    {
-      if (this.a.g) {
-        this.a.u = this.a.w;
-      }
-      avtn.a = this.a.u;
-      return;
-      if ((paramInt > 45) && (paramInt < 135)) {
-        this.a.w = 180;
-      } else if ((paramInt > 135) && (paramInt < 225)) {
-        this.a.w = 270;
-      } else if ((paramInt > 225) && (paramInt < 315)) {
-        this.a.w = 0;
-      }
-    }
-  }
+  public abstract boolean a(@NonNull TextView paramTextView, @NonNull CircleProgress paramCircleProgress, long paramLong, float paramFloat);
 }
 
 

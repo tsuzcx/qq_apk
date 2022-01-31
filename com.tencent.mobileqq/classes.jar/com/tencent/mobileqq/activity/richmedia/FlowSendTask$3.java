@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahug;
+import ahue;
 import android.app.Activity;
 
 public class FlowSendTask$3
   implements Runnable
 {
-  public FlowSendTask$3(ahug paramahug) {}
+  public FlowSendTask$3(ahue paramahue) {}
   
   public void run()
   {

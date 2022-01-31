@@ -1,89 +1,58 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.nio.ByteBuffer;
 
-final class nbe
-  implements BusinessObserver
+public class nbe
+  extends nbg
 {
-  nbe(Context paramContext, QQAppInterface paramQQAppInterface, bcpq parambcpq, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
+  public int a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public byte a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    paramInt = this.c + paramInt;
+    if (a(paramInt, 1)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
     }
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localFollowResponse = new mobileqq_mp.FollowResponse();
-      }
+    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return a(this.c - 4, true);
+  }
+  
+  public String a(int paramInt)
+  {
+    return b(this.c + paramInt * 4);
+  }
+  
+  public nbe a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      return null;
     }
-    for (;;)
-    {
-      try
-      {
-        localFollowResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
-          nbc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-          if (paramBundle != null) {
-            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
-          }
-          nbc.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          aoee.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
-          nbc.a(this.jdField_a_of_type_Bcpq);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        nbc.a(this.jdField_a_of_type_Bcpq);
-        return;
-      }
-      if (paramInt == 58)
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695565);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
-      }
-      else if (paramInt == 65)
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695538);
-      }
-      else if (paramInt == 20)
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695539);
-      }
-      else
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-        continue;
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
+    this.c = (paramInt + 4);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    return this;
+  }
+  
+  public nbe a(int paramInt, nbe paramnbe)
+  {
+    return paramnbe.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  public nbf a(int paramInt)
+  {
+    return a(paramInt, new nbf());
+  }
+  
+  public nbf a(int paramInt, nbf paramnbf)
+  {
+    return paramnbf.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
   }
 }
 

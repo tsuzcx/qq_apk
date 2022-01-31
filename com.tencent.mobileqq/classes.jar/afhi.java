@@ -1,22 +1,13 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
 
 public class afhi
-  extends ViewPager.SimpleOnPageChangeListener
+  implements aftn
 {
   public afhi(TroopView paramTroopView) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public long a()
   {
-    if (paramInt == 1) {
-      TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    TroopView.a(this.a, paramInt);
+    return TroopView.a(this.a);
   }
 }
 

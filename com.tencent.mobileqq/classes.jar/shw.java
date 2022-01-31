@@ -1,9 +1,19 @@
-import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class shw
+final class shw
+  implements Comparator<ArticleInfo>
 {
-  public Rect a;
-  public String a;
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  {
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
+  }
 }
 
 

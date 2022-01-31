@@ -1,26 +1,28 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class soa
-  implements TextWatcher
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public soa(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onGlobalLayout()
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      bcpw.a(this.a, 0, this.a.getString(2131695553), 0).b(this.a.getTitleBarHeight());
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
     }
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
+    }
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
+      return;
+    }
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

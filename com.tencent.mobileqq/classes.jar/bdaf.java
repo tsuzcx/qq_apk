@@ -1,17 +1,19 @@
-import android.widget.CheckBox;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.open.agent.CardContainer;
 
 public class bdaf
-  extends aclh
+  extends AnimatorListenerAdapter
 {
-  public CheckBox a;
-  public ImageView a;
-  public RelativeLayout b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  public bdaf(CardContainer paramCardContainer, ImageView paramImageView) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+  }
 }
 
 

@@ -1,15 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abrl
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
   public abrl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog cancel clicked!");
+    }
+    axqy.b(this.a.app, "dc00898", "", "", "0X800A605", "0X800A605", 0, 0, "", "", "", "");
   }
 }
 

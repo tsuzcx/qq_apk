@@ -1,27 +1,68 @@
-import com.tencent.qg.sdk.invoke.BaseJsModule;
-import com.tencent.qg.sdk.invoke.InvokeCallback;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bhya
-  extends BaseJsModule
+  extends ahpt
+  implements Cloneable
 {
-  public bhya(bhxy parambhxy) {}
-  
-  public String getModuleName()
+  public bhya(Context paramContext)
   {
-    return "VipQGModel";
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697689);
   }
   
-  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  public void a(byte[] paramArrayOfByte)
   {
-    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
-      this.a.a("getDeviceSize", new float[] { bbkx.a(), bbkx.b() });
-      return true;
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.b = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_Azmm == null))
+      {
+        this.jdField_a_of_type_Azmm = new azmm();
+        this.jdField_a_of_type_Azmm.a(this.c);
+      }
+      return;
     }
-    return false;
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.b);
+      if (this.jdField_a_of_type_Azmm != null) {
+        this.c = this.jdField_a_of_type_Azmm.a();
+      }
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

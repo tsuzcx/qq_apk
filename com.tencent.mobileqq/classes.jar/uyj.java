@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.qphone.base.util.QLog;
 
 public class uyj
-  extends QQUIEventReceiver<uyh, tll>
 {
-  public uyj(@NonNull uyh paramuyh)
+  public static void a(String paramString, Object... paramVarArgs)
   {
-    super(paramuyh);
+    ved.e(paramString, uyl.a(paramVarArgs));
   }
   
-  public void a(@NonNull uyh paramuyh, @NonNull tll paramtll)
+  public static void b(String paramString, Object... paramVarArgs)
   {
-    if ((paramtll.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtll.jdField_a_of_type_JavaUtilList == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, uyl.a(paramVarArgs));
     }
-    paramuyh.b(paramtll.jdField_a_of_type_JavaUtilList);
   }
   
-  public Class acceptEventClass()
+  public static void c(String paramString, Object... paramVarArgs)
   {
-    return tll.class;
+    ved.d(paramString, uyl.a(paramVarArgs));
   }
 }
 

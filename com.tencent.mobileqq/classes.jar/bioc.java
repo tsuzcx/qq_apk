@@ -1,17 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 
-public class bioc
-  extends bjdc
+class bioc
 {
-  public bioc(AEMaterialProviderView paramAEMaterialProviderView) {}
-  
-  public void a()
+  static CharSequence a(@NonNull binn parambinn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEMaterialProviderView", 2, "material list updated!");
+    if (parambinn.a) {
+      return parambinn.toString();
     }
-    this.a.a(true);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambinn = parambinn.toString();
+    SpannableString localSpannableString = new SpannableString(parambinn);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambinn.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
+  }
+  
+  static CharSequence a(@NonNull bino parambino)
+  {
+    if ("failed".equals(parambino.c))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      parambino = parambino.toString();
+      SpannableString localSpannableString = new SpannableString(parambino);
+      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambino.length(), 17);
+      localSpannableStringBuilder.append(localSpannableString);
+      return localSpannableStringBuilder;
+    }
+    return parambino.toString();
   }
 }
 

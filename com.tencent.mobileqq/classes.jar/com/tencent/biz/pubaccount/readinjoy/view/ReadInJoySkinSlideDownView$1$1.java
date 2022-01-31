@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import aybc;
-import aycw;
+import aybe;
+import aycy;
 import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import rfi;
+import rff;
 
 public class ReadInJoySkinSlideDownView$1$1
   implements Runnable
 {
-  public ReadInJoySkinSlideDownView$1$1(rfi paramrfi, aybc paramaybc) {}
+  public ReadInJoySkinSlideDownView$1$1(rff paramrff, aybe paramaybe) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rfi.a.a.a((aycw)this.jdField_a_of_type_Aybc);
-    this.jdField_a_of_type_Rfi.a.a.a();
+    this.jdField_a_of_type_Rff.a.a.a((aycy)this.jdField_a_of_type_Aybe);
+    this.jdField_a_of_type_Rff.a.a.a();
   }
 }
 

@@ -1,123 +1,52 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class axgk
-  implements Handler.Callback
+class axgk<K, V>
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public HandlerThread a;
-  private axgl jdField_a_of_type_Axgl;
-  private int b;
-  private int c;
+  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public axgk(int paramInt1, int paramInt2)
+  public axgk(axgj paramaxgj) {}
+  
+  public ArrayList<V> a(K paramK)
   {
-    this.jdField_a_of_type_Int = (1000 / paramInt1);
-    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
-    this.c = 0;
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
   }
   
-  private boolean a(Message paramMessage)
+  public void a(V paramV)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (axin.a)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramMessage = RMVideoStateMgr.a();
-      if (!paramMessage.b) {
-        break label179;
-      }
-      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
-      if (paramMessage.jdField_a_of_type_Double >= axik.c) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ArrayList localArrayList = (ArrayList)localEntry.getValue();
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        bool2 = bool1;
-        if (bool1)
-        {
-          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
-          bool2 = bool1;
+        Object localObject = localArrayList.get(i);
+        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
+          ((ArrayList)localEntry.getValue()).remove(paramV);
+        } else {
+          i += 1;
         }
       }
     }
-    for (;;)
+  }
+  
+  public void a(K paramK, V paramV)
+  {
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
     {
-      if (bool2) {
-        this.c = this.b;
-      }
-      int i = this.c;
-      int j = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Axgl != null) {
-        this.jdField_a_of_type_Axgl.a(this.jdField_a_of_type_Axgl, bool2, i * j, this.c);
-      }
-      this.c += 1;
-      return true;
-      label179:
-      if (this.c >= this.b) {
-        bool2 = true;
-      }
+      localArrayList1 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void a(axgl paramaxgl)
-  {
-    this.jdField_a_of_type_Axgl = paramaxgl;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = (paramInt / this.jdField_a_of_type_Int);
-  }
-  
-  public void c()
-  {
-    this.c = 0;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    if (!localArrayList1.contains(paramV)) {
+      localArrayList1.add(paramV);
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
-    }
-    return a(paramMessage);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adwe;
-import aevl;
+import adwc;
+import aevj;
 
 public class PokeEmoItemBuilder$1
   implements Runnable
 {
-  public PokeEmoItemBuilder$1(adwe paramadwe) {}
+  public PokeEmoItemBuilder$1(adwc paramadwc) {}
   
   public void run() {}
 }

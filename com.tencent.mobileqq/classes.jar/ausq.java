@@ -1,27 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.profile.CustomCoverFragment;
+import mqq.app.QQPermissionCallback;
 
 public class ausq
-  extends RecyclerView.ViewHolder
+  implements QQPermissionCallback
 {
-  int jdField_a_of_type_Int;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ausq(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
   
-  public ausq(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramView);
-    paramView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367799));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377043));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363741));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramCustomCoverFragment.a);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramCustomCoverFragment.a);
+    bbdj.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
 }
 

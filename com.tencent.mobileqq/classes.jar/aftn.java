@@ -1,9 +1,6 @@
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-
-public abstract class aftn
-  implements aftr, afts
+public abstract interface aftn
 {
-  aftn(CommonRefreshLayout paramCommonRefreshLayout) {}
+  public abstract long a();
 }
 
 

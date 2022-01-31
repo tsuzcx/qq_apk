@@ -1,26 +1,68 @@
 import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
 public class tzo
-  extends QQUIEventReceiver<tzm, tkp>
+  extends AbsVideoInfoWidget
 {
-  public tzo(@NonNull tzm paramtzm)
+  private tzq a = new tzq(this);
+  private boolean e;
+  
+  public tzo(ViewGroup paramViewGroup)
   {
-    super(paramtzm);
+    super(paramViewGroup);
   }
   
-  public void a(@NonNull tzm paramtzm, @NonNull tkp paramtkp)
+  public String a()
   {
-    veg.b("InteractWidgetPageHolder", "receive poll info event.");
-    if (paramtzm.d()) {
-      paramtzm.a(paramtzm.jdField_a_of_type_Int, paramtzm.b, paramtzm.jdField_a_of_type_Uav, paramtzm.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
-    }
+    return "LoadingMoreWidget";
   }
   
-  public Class acceptEventClass()
+  public tzq a()
   {
-    return tkp.class;
+    return this.a;
   }
+  
+  public void a(View paramView) {}
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new tzp(this), "");
+  }
+  
+  public void a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public boolean a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return this.e;
+  }
+  
+  public int b()
+  {
+    return 2131561412;
+  }
+  
+  public void d()
+  {
+    this.e = true;
+    i();
+    ved.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
+  }
+  
+  public void e()
+  {
+    this.e = false;
+    k();
+    ved.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
+  }
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

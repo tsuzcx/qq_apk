@@ -1,16 +1,26 @@
-import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqis
-  implements xem
+  extends akuo
 {
-  public aqis(NowLiveFragment paramNowLiveFragment) {}
-  
-  public void a()
+  public aqis(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt != 0)
+    {
+      bcql.a(this.a.a, 1, ajya.a(2131707679), 1).a();
+      this.a.f();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 

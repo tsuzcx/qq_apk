@@ -1,21 +1,49 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-final class bcks
-  implements bcjg
+public class bcks
+  implements View.OnTouchListener
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public bcks(ConfigClearableEditText paramConfigClearableEditText) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    paramView = this.a;
+    int i;
+    if (paramMotionEvent.getX() > ConfigClearableEditText.a(this.a))
+    {
+      i = 1;
+      if (ConfigClearableEditText.a(this.a) != null)
+      {
+        if ((i == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+          break label102;
+        }
+        ConfigClearableEditText.a(this.a).b(true);
+      }
+      label66:
+      if ((paramView.getCompoundDrawables()[2] != null) || ((ConfigClearableEditText.a(this.a)) && (ConfigClearableEditText.a(this.a) != null))) {
+        break label118;
+      }
     }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f = Math.max(paramInt1 / i, paramInt2 / j);
-    localMatrix.setScale(f, f);
-    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-    return localMatrix;
+    label102:
+    label118:
+    do
+    {
+      do
+      {
+        return false;
+        i = 0;
+        break;
+        ConfigClearableEditText.a(this.a).b(false);
+        break label66;
+      } while ((paramMotionEvent.getAction() != 1) || (i == 0));
+      this.a.setText("");
+      this.a.setClearButtonVisible(false);
+    } while (this.a.a == null);
+    this.a.a.a();
+    return false;
   }
 }
 

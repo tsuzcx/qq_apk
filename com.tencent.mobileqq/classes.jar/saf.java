@@ -1,14 +1,42 @@
-public abstract interface saf
+import java.util.ArrayList;
+import java.util.List;
+
+public class saf
 {
-  public abstract void a();
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public abstract void a(int paramInt);
+  public static void a()
+  {
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  public static void a(String paramString1, String paramString2, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
   
-  public abstract void a(String paramString, int paramInt);
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
   
-  public abstract void b(int paramInt);
+  private static boolean a(double paramDouble)
+  {
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  private static void b(String paramString)
+  {
+    nol.a(onh.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
+  }
 }
 
 

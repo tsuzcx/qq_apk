@@ -20,7 +20,7 @@ class OpenAuthorityAccountView$5$1
       return;
       try
       {
-        this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840291));
+        this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView$5.this$0.getResources(), 2130840288));
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError) {}

@@ -1,25 +1,75 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SearchHistory;
 
-class awhm
-  implements Comparator<awne>
+public class awhm
+  extends awii
 {
-  awhm(awhl paramawhl) {}
+  private SearchHistory a;
   
-  public int a(awne paramawne1, awne paramawne2)
+  public awhm(QQAppInterface paramQQAppInterface, SearchHistory paramSearchHistory)
   {
-    int i = paramawne2.a[2] - paramawne1.a[2];
-    if (i != 0) {}
-    int j;
-    do
+    this.a = paramSearchHistory;
+  }
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public SearchHistory a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    return this.a.extralInfo;
+  }
+  
+  public void a(String paramString) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    switch (this.a.type)
     {
-      return i;
-      j = paramawne1.a[0] - paramawne2.a[0];
-      i = j;
-    } while (j != 0);
-    paramawne1 = paramawne1.c.substring(paramawne1.a[0] + paramawne1.a[1]);
-    paramawne2 = paramawne2.c.substring(paramawne2.a[0] + paramawne2.a[1]);
-    return ChnToSpell.a(paramawne1, 2).compareTo(ChnToSpell.a(paramawne2, 2));
+    default: 
+    case 3000: 
+    case 1: 
+    case 1006: 
+    case 56938: 
+    case 1008: 
+      do
+      {
+        return 1;
+        return 101;
+        return 4;
+        return 11;
+      } while (!TextUtils.equals(this.a.uin, ajsd.az));
+      return 110;
+    }
+    return 111;
+  }
+  
+  public String c()
+  {
+    return this.a.displayName;
+  }
+  
+  public String d()
+  {
+    return this.a.uin;
   }
 }
 

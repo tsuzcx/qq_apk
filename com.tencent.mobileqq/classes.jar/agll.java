@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class agll
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public agll(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.a = null;
   }

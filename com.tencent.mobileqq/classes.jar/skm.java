@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
-final class skm
-  implements DialogInterface.OnClickListener
+public class skm
+  implements bdld
 {
-  skm(int paramInt1, int paramInt2) {}
+  public void installSucceed(String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    sms.b(112, 2, 0);
-    smq.a(117, this.a, this.b, null);
-  }
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

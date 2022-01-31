@@ -1,17 +1,129 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
 
-class aobh
-  implements aoaj
+public class aobh
+  extends BaseAdapter
 {
-  aobh(aobg paramaobg) {}
+  private static int jdField_a_of_type_Int = 6;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Object> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
   
-  public void a(List<aoah> paramList)
+  public aobh(Context paramContext, List<Object> paramList, URLDrawable.URLDrawableListener paramURLDrawableListener, Drawable paramDrawable, String paramString1, String paramString2, String paramString3)
   {
-    if (paramList != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = paramURLDrawableListener;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      if (i > jdField_a_of_type_Int) {
+        return jdField_a_of_type_Int + 1;
+      }
+      return i + 1;
     }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramInt < getCount() - 1)
+    {
+      localObject2 = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (paramView == null)
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559023, null, false);
+        paramViewGroup = new aobk(this, null);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362287));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362288));
+        paramViewGroup.b = ((TextView)paramView.findViewById(2131362286));
+        paramView.setTag(paramViewGroup);
+      }
+      for (;;)
+      {
+        if (localObject2 != null)
+        {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bblj.a(((IPSiteModel.Goods)localObject2).cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IPSiteModel.Goods)localObject2).name);
+          localObject1 = "0";
+          if (!TextUtils.isEmpty(((IPSiteModel.Goods)localObject2).saleNum)) {
+            localObject1 = ((IPSiteModel.Goods)localObject2).saleNum;
+          }
+          paramViewGroup.b.setText((String)localObject1 + ajya.a(2131705846));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aobi(this, (IPSiteModel.Goods)localObject2));
+        }
+        return paramView;
+        paramViewGroup = (aobk)paramView.getTag();
+      }
+    }
+    paramView = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setBackgroundColor(Color.parseColor("#fafafa"));
+    Object localObject1 = new AbsListView.LayoutParams(actj.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), actj.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setMinimumWidth(actj.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setMinimumHeight(actj.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    ((TextView)localObject2).setId(2131362296);
+    ((TextView)localObject2).setTextSize(12.0F);
+    ((TextView)localObject2).setTextColor(Color.parseColor("#777777"));
+    ((TextView)localObject2).setText(ajya.a(2131705847));
+    ((TextView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
+    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    localImageView.setImageResource(2130846206);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(1, 2131362296);
+    localLayoutParams.addRule(15);
+    localLayoutParams.leftMargin = actj.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localImageView.setLayoutParams(localLayoutParams);
+    ((RelativeLayout)localObject1).addView((View)localObject2);
+    ((RelativeLayout)localObject1).addView(localImageView);
+    paramViewGroup.addView((View)localObject1);
+    paramViewGroup.setOnClickListener(new aobj(this, paramView));
+    return paramViewGroup;
   }
 }
 

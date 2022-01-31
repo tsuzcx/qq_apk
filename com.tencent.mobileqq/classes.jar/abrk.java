@@ -1,13 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abrk
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public abrk(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog confirm clicked!");
+    }
+    PhoneUnityBindInfoActivity.c(this.a);
+    axqy.b(this.a.app, "dc00898", "", "", "0X800A604", "0X800A604", 0, 0, "", "", "", "");
+  }
 }
 
 

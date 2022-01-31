@@ -1,10 +1,19 @@
-import OnlinePushPack.SvcRespPushMsg;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-public abstract interface nbq
+public class nbq
+  implements wxt
 {
-  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
+  public nbq(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+    }
+  }
 }
 
 

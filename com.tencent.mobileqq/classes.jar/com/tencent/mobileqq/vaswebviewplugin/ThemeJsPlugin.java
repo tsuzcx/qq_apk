@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajyc;
+import ajya;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -15,20 +15,20 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import anql;
-import anqp;
-import axmt;
-import aylf;
-import aylr;
-import ayme;
-import aymh;
-import aymi;
+import anqq;
+import anqu;
+import axmv;
+import aylh;
+import aylt;
+import aymg;
 import aymj;
+import aymk;
 import ayml;
-import aymt;
-import bbgg;
-import bcdb;
-import bcpq;
+import aymn;
+import aymv;
+import bbgu;
+import bcdp;
+import bcqf;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
@@ -65,18 +65,18 @@ public class ThemeJsPlugin
   public Context context;
   private String currDownloadingThemeId;
   long currentTimeMillis = 0L;
-  bbgg dialog;
+  bbgu dialog;
   private ConcurrentHashMap<String, ThemeUtil.ThemeInfo> downloadThemeMap = new ConcurrentHashMap();
   String mCallbackId;
   private String mCurrentMethodName;
   Object mLock = new Object();
-  aymt mThemeDiyImpl = new ThemeJsPlugin.2(this);
+  aymv mThemeDiyImpl = new ThemeJsPlugin.2(this);
   private ThemeDiyModule mThemeDiyModule;
-  aymj mThemeSwitchManager;
+  ayml mThemeSwitchManager;
   ThemeUtil.ThemeInfo mThemeinfo;
   HashMap<Integer, String> reportMap = new HashMap();
   View rootView;
-  public bcpq themeSwitchDialog;
+  public bcqf themeSwitchDialog;
   
   public ThemeJsPlugin()
   {
@@ -161,7 +161,7 @@ public class ThemeJsPlugin
         ((JSONObject)localObject1).put("result", 2);
         ((JSONObject)localObject1).put("message", "user cancel download theme in not wifi network");
         callJs(paramString3, new String[] { ((JSONObject)localObject1).toString() });
-        reportTheme(null, 0, paramString1, 0L, "VipThemeMallDowned", "Cancel", "200", 153, aymi.a, 10, paramString2, "");
+        reportTheme(null, 0, paramString1, 0L, "VipThemeMallDowned", "Cancel", "200", 153, aymk.a, 10, paramString2, "");
         return;
       }
       catch (Exception paramString1)
@@ -196,7 +196,7 @@ public class ThemeJsPlugin
     this.downloadThemeMap.put(paramString1, localObject2);
     this.currDownloadingThemeId = paramString1;
     loadingThemeIdForJsCall = paramString1;
-    reportTheme(null, 0, paramString1, 0L, null, null, "200", 153, aymi.a, 11, paramString2, "");
+    reportTheme(null, 0, paramString1, 0L, null, null, "200", 153, aymk.a, 11, paramString2, "");
     QuickUpdateIPCModule.a(3L, ThemeUtil.getThemeConfigID(paramString1), new ThemeJsPlugin.8(this, paramString3));
   }
   
@@ -226,13 +226,13 @@ public class ThemeJsPlugin
       }
       if ("queryInfo".equals(paramString3))
       {
-        ayme.a(paramJsBridgeListener.optString("id"), new ThemeJsPlugin.9(this, paramJsBridgeListener, paramVarArgs));
+        aymg.a(paramJsBridgeListener.optString("id"), new ThemeJsPlugin.9(this, paramJsBridgeListener, paramVarArgs));
       }
       else if ("queryLocal".equals(paramString3))
       {
         paramJsBridgeListener = new Bundle();
         paramJsBridgeListener.putString("themeId", this.currDownloadingThemeId);
-        sendRemoteReq(anqp.a("themeQueryLocal", paramVarArgs, this.mOnRemoteResp.key, paramJsBridgeListener), false, true);
+        sendRemoteReq(anqu.a("themeQueryLocal", paramVarArgs, this.mOnRemoteResp.key, paramJsBridgeListener), false, true);
       }
     }
     catch (Throwable paramJsBridgeListener)
@@ -261,7 +261,7 @@ public class ThemeJsPlugin
         if ((TextUtils.isEmpty(paramJsBridgeListener)) && (paramJsBridgeListener.equals(this.currDownloadingThemeId))) {
           this.currDownloadingThemeId = "";
         }
-        super.sendRemoteReq(anqp.a("stopdownload", paramVarArgs, this.mOnRemoteResp.key, (Bundle)localObject), false, true);
+        super.sendRemoteReq(anqu.a("stopdownload", paramVarArgs, this.mOnRemoteResp.key, (Bundle)localObject), false, true);
       }
       else if ("openDiyTheme".equals(paramString3))
       {
@@ -292,7 +292,7 @@ public class ThemeJsPlugin
       else if ("queryWeekLoopInfo".equals(paramString3))
       {
         paramJsBridgeListener = new Bundle();
-        sendRemoteReq(anqp.a("weekLoopGetData", paramVarArgs, this.mOnRemoteResp.key, paramJsBridgeListener), false, true);
+        sendRemoteReq(anqu.a("weekLoopGetData", paramVarArgs, this.mOnRemoteResp.key, paramJsBridgeListener), false, true);
       }
       else
       {
@@ -302,7 +302,7 @@ public class ThemeJsPlugin
           i = 1;
           j = 1;
           paramJsBridgeListener = new Bundle();
-          bool = aymj.a(paramJsBridgeListener);
+          bool = ayml.a(paramJsBridgeListener);
           if (bool)
           {
             if ((!paramJsBridgeListener.getBoolean("dynamic_switch", true)) || (!paramJsBridgeListener.getBoolean("dynamic_enable", true))) {
@@ -344,7 +344,7 @@ public class ThemeJsPlugin
         }
         else if ("checkSimpleUISwitch".equals(paramString3))
         {
-          bool = axmt.b();
+          bool = axmv.b();
           if (QLog.isColorLevel()) {
             QLog.i("ThemeJsPlugin", 2, String.format("%s checkSimpleUISwitch bSwitch=%b callback=%s", new Object[] { "SimpleUILog", Boolean.valueOf(bool), paramVarArgs }));
           }
@@ -376,7 +376,7 @@ public class ThemeJsPlugin
     if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
       this.app = ((BrowserAppInterface)this.mRuntime.a());
     }
-    this.mThemeSwitchManager = new aymj(this.app);
+    this.mThemeSwitchManager = new ayml(this.app);
     this.context = this.mRuntime.a().getApplicationContext();
     this.mThemeDiyModule = new ThemeDiyModule(this.context, this.app);
     this.mThemeDiyModule.setThemeDiyImpl(this.mThemeDiyImpl);
@@ -437,7 +437,7 @@ public class ThemeJsPlugin
       }
       if (i != 0)
       {
-        callJs(this.mCallbackId, new String[] { new aylr(-1, "bg image download failed").a() });
+        callJs(this.mCallbackId, new String[] { new aylt(-1, "bg image download failed").a() });
         this.mCallbackId = null;
       }
     }
@@ -547,12 +547,12 @@ public class ThemeJsPlugin
         {
           synchronized (this.mLock)
           {
-            if ((!TextUtils.isEmpty(str2)) && (str2.equals(this.mCallbackId)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (this.mThemeinfo != null) && (((String)localObject3).equals(this.mThemeinfo.themeId)) && (!aylf.a(this.mRuntime.a(), (String)localObject3, new ThemeJsPlugin.10(this, (String)localObject3))))
+            if ((!TextUtils.isEmpty(str2)) && (str2.equals(this.mCallbackId)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (this.mThemeinfo != null) && (((String)localObject3).equals(this.mThemeinfo.themeId)) && (!aylh.a(this.mRuntime.a(), (String)localObject3, new ThemeJsPlugin.10(this, (String)localObject3))))
             {
-              if (!axmt.b())
+              if (!axmv.b())
               {
                 this.mThemeDiyModule.setSpThemeBackground();
-                ayme.a((String)localObject3, new ThemeJsPlugin.ThemeSwitchListener(this, (String)localObject3, true));
+                aymg.a((String)localObject3, new ThemeJsPlugin.ThemeSwitchListener(this, (String)localObject3, true));
               }
             }
             else {
@@ -560,14 +560,14 @@ public class ThemeJsPlugin
             }
           }
           if (!ThemeUtil.isFixTheme((String)localObject3)) {
-            ayml.a(this.app, (String)localObject3, "20000000");
+            aymn.a(this.app, (String)localObject3, "20000000");
           }
           new ThemeJsPlugin.ThemeSwitchListener(this, (String)localObject3, false).postSwitch(0);
         }
       }
       if ("saveDiyTheme".equals(this.mCurrentMethodName))
       {
-        super.callJs(str2, new String[] { new aylr(???.getInt("result_int"), ajyc.a(2131714919)).a() });
+        super.callJs(str2, new String[] { new aylt(???.getInt("result_int"), ajya.a(2131714930)).a() });
         return;
       }
       ??? = new JSONObject();
@@ -580,7 +580,7 @@ public class ThemeJsPlugin
     super.onResponse(???);
   }
   
-  public void queryInfo(JSONObject paramJSONObject, String paramString, aymh paramaymh)
+  public void queryInfo(JSONObject paramJSONObject, String paramString, aymj paramaymj)
   {
     for (;;)
     {
@@ -603,28 +603,28 @@ public class ThemeJsPlugin
           break label620;
         }
         paramJSONObject = ThemeUtil.getThemeInfo(this.context, str);
-        if ((paramaymh != null) && (paramaymh.a())) {
+        if ((paramaymj != null) && (paramaymj.a())) {
           break label610;
         }
-        QLog.e("ThemeJsPlugin", 1, "queryInfo zip is missing: " + paramaymh);
+        QLog.e("ThemeJsPlugin", 1, "queryInfo zip is missing: " + paramaymj);
         ThemeUtil.removeThemeInfo(this.context, str);
         i = 0;
         paramJSONObject = null;
-        paramaymh = new JSONObject();
-        paramaymh.put("result", 0);
-        paramaymh.put("message", "ok");
+        paramaymj = new JSONObject();
+        paramaymj.put("result", 0);
+        paramaymj.put("message", "ok");
         localObject = new JSONObject();
         if ("1000".equals(str))
         {
           ((JSONObject)localObject).put("status", Integer.parseInt("3"));
           ((JSONObject)localObject).put("version", 0);
           ((JSONObject)localObject).put("progress", 100);
-          paramaymh.put("data", localObject);
-          super.callJs(paramString, new String[] { paramaymh.toString() });
+          paramaymj.put("data", localObject);
+          super.callJs(paramString, new String[] { paramaymj.toString() });
           if (!QLog.isColorLevel()) {
             break label619;
           }
-          QLog.i("ThemeJsPlugin", 2, "queryInfo,themeId=" + str + "result=" + paramaymh.toString());
+          QLog.i("ThemeJsPlugin", 2, "queryInfo,themeId=" + str + "result=" + paramaymj.toString());
           return;
         }
         if (paramJSONObject == null)
@@ -642,7 +642,7 @@ public class ThemeJsPlugin
       {
         QLog.e("ThemeJsPlugin", 1, "queryInfo Exception：" + paramJSONObject.getMessage());
         super.callJsOnError(paramString, paramJSONObject.getMessage());
-        reportTheme(null, 0, "", 0L, null, null, "200", 152, aymi.a, -35, "1", "");
+        reportTheme(null, 0, "", 0L, null, null, "200", 152, aymk.a, -35, "1", "");
         return;
       }
       if (i != 0)
@@ -717,7 +717,7 @@ public class ThemeJsPlugin
             paramJSONObject.put("result", 1);
             paramJSONObject.put("message", "seriesID || themeArray data error");
             super.callJs(paramString, new String[] { paramJSONObject.toString() });
-            reportTheme(null, 0, str1, 0L, null, null, (String)localObject1, 155, aymi.a, -8, str2, "");
+            reportTheme(null, 0, str1, 0L, null, null, (String)localObject1, 155, aymk.a, -8, str2, "");
             return;
           }
           paramJSONObject = ThemeUtil.getCurrentThemeId();
@@ -747,7 +747,7 @@ public class ThemeJsPlugin
           QLog.e("ThemeJsPlugin", 1, "setup theme error:" + paramJSONObject.getMessage());
           return;
         }
-        paramJSONObject = aymi.b;
+        paramJSONObject = aymk.b;
       }
       synchronized (this.mLock)
       {
@@ -771,7 +771,7 @@ public class ThemeJsPlugin
         if ("1103".equals(str1))
         {
           this.mThemeDiyModule.setSpThemeBackground();
-          ayme.a(str1, new ThemeJsPlugin.ThemeSwitchListener(this, str1, true));
+          aymg.a(str1, new ThemeJsPlugin.ThemeSwitchListener(this, str1, true));
           if (QLog.isColorLevel()) {
             QLog.i("ThemeJsPlugin", 2, "setup server :id:" + str1);
           }
@@ -784,7 +784,7 @@ public class ThemeJsPlugin
           }
           paramJSONObject.putString("themeId", str1);
           paramJSONObject.putString("seriesID", str3);
-          super.sendRemoteReq(anqp.a("setSVTheme", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+          super.sendRemoteReq(anqu.a("setSVTheme", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
         }
       }
       return;
@@ -795,7 +795,7 @@ public class ThemeJsPlugin
   {
     try
     {
-      ayme.a(paramJSONObject.optString("id"), new ThemeJsPlugin.3(this, paramJSONObject, paramString));
+      aymg.a(paramJSONObject.optString("id"), new ThemeJsPlugin.3(this, paramJSONObject, paramString));
       return;
     }
     finally
@@ -806,7 +806,7 @@ public class ThemeJsPlugin
   }
   
   /* Error */
-  public void startDownload(JSONObject paramJSONObject, String paramString, aymh paramaymh)
+  public void startDownload(JSONObject paramJSONObject, String paramString, aymj paramaymj)
   {
     // Byte code:
     //   0: aload_0
@@ -913,7 +913,7 @@ public class ThemeJsPlugin
     //   224: aconst_null
     //   225: ldc 250
     //   227: sipush 153
-    //   230: getstatic 255	aymi:a	Ljava/lang/String;
+    //   230: getstatic 255	aymk:a	Ljava/lang/String;
     //   233: bipush 248
     //   235: aload 10
     //   237: ldc_w 257
@@ -924,7 +924,7 @@ public class ThemeJsPlugin
     //   250: ldc_w 991
     //   253: aconst_null
     //   254: fconst_0
-    //   255: invokestatic 996	bbrc:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   255: invokestatic 996	bbrq:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
     //   258: new 77	java/util/HashMap
     //   261: dup
     //   262: invokespecial 78	java/util/HashMap:<init>	()V
@@ -935,7 +935,7 @@ public class ThemeJsPlugin
     //   273: invokevirtual 999	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   276: pop
     //   277: invokestatic 1005	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   280: invokestatic 1010	axrl:a	(Landroid/content/Context;)Laxrl;
+    //   280: invokestatic 1010	axrn:a	(Landroid/content/Context;)Laxrn;
     //   283: ldc_w 257
     //   286: ldc_w 987
     //   289: iconst_0
@@ -944,7 +944,7 @@ public class ThemeJsPlugin
     //   294: aload_1
     //   295: ldc_w 257
     //   298: iconst_1
-    //   299: invokevirtual 1015	axrl:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   299: invokevirtual 1015	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   302: aload_0
     //   303: monitorexit
     //   304: return
@@ -956,14 +956,14 @@ public class ThemeJsPlugin
     //   316: aload_3
     //   317: ifnull +326 -> 643
     //   320: aload_3
-    //   321: invokevirtual 1016	aymh:b	()Z
+    //   321: invokevirtual 1016	aymj:b	()Z
     //   324: ifeq +319 -> 643
     //   327: iconst_1
     //   328: istore 6
     //   330: aload_3
     //   331: ifnull +318 -> 649
     //   334: aload_3
-    //   335: invokevirtual 821	aymh:a	()Z
+    //   335: invokevirtual 821	aymj:a	()Z
     //   338: ifeq +311 -> 649
     //   341: iconst_1
     //   342: istore 7
@@ -1069,7 +1069,7 @@ public class ThemeJsPlugin
     //   545: ldc_w 1032
     //   548: ldc 250
     //   550: sipush 153
-    //   553: getstatic 255	aymi:a	Ljava/lang/String;
+    //   553: getstatic 255	aymk:a	Ljava/lang/String;
     //   556: iconst_2
     //   557: aload 10
     //   559: ldc_w 257
@@ -1102,7 +1102,7 @@ public class ThemeJsPlugin
     //   615: aconst_null
     //   616: ldc 250
     //   618: sipush 153
-    //   621: getstatic 255	aymi:a	Ljava/lang/String;
+    //   621: getstatic 255	aymk:a	Ljava/lang/String;
     //   624: bipush 220
     //   626: ldc_w 257
     //   629: ldc_w 257
@@ -1148,12 +1148,12 @@ public class ThemeJsPlugin
     //   711: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   714: invokevirtual 946	java/lang/String:hashCode	()I
     //   717: invokestatic 949	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   720: getstatic 255	aymi:a	Ljava/lang/String;
+    //   720: getstatic 255	aymk:a	Ljava/lang/String;
     //   723: invokevirtual 999	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   726: pop
     //   727: aload_0
     //   728: getfield 279	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
-    //   731: invokestatic 1045	bbev:a	(Landroid/content/Context;)I
+    //   731: invokestatic 1045	bbfj:a	(Landroid/content/Context;)I
     //   734: istore 5
     //   736: iload 4
     //   738: ifeq +272 -> 1010
@@ -1167,8 +1167,8 @@ public class ThemeJsPlugin
     //   756: ldc_w 1047
     //   759: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   762: aload_0
-    //   763: getfield 425	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lbcdb;
-    //   766: invokevirtual 430	bcdb:a	()Landroid/app/Activity;
+    //   763: getfield 425	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lbcdp;
+    //   766: invokevirtual 430	bcdp:a	()Landroid/app/Activity;
     //   769: iconst_2
     //   770: new 1049	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4
     //   773: dup
@@ -1179,43 +1179,43 @@ public class ThemeJsPlugin
     //   781: aload_2
     //   782: invokespecial 1052	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
     //   785: ldc_w 1054
-    //   788: invokestatic 1059	bbwc:a	(Landroid/app/Activity;ILbbwe;Ljava/lang/String;)Z
+    //   788: invokestatic 1059	bbwq:a	(Landroid/app/Activity;ILbbws;Ljava/lang/String;)Z
     //   791: ifeq -489 -> 302
     //   794: aload_0
     //   795: new 1061	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5
     //   798: dup
     //   799: aload_0
     //   800: aload_0
-    //   801: getfield 425	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lbcdb;
-    //   804: invokevirtual 430	bcdb:a	()Landroid/app/Activity;
+    //   801: getfield 425	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lbcdp;
+    //   804: invokevirtual 430	bcdp:a	()Landroid/app/Activity;
     //   807: ldc_w 1062
     //   810: aload 11
     //   812: aload 10
     //   814: iload 6
     //   816: aload_2
     //   817: invokespecial 1065	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   820: putfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   820: putfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   823: aload_0
-    //   824: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   824: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   827: ldc_w 1066
-    //   830: invokevirtual 1069	bbgg:setContentView	(I)V
+    //   830: invokevirtual 1069	bbgu:setContentView	(I)V
     //   833: aload_0
-    //   834: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   834: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   837: ldc_w 1070
-    //   840: invokestatic 808	ajyc:a	(I)Ljava/lang/String;
-    //   843: invokevirtual 1074	bbgg:setTitle	(Ljava/lang/String;)Lbbgg;
+    //   840: invokestatic 808	ajya:a	(I)Ljava/lang/String;
+    //   843: invokevirtual 1074	bbgu:setTitle	(Ljava/lang/String;)Lbbgu;
     //   846: pop
     //   847: aload_0
-    //   848: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   848: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   851: ldc_w 1075
-    //   854: invokevirtual 1079	bbgg:setMessage	(I)Lbbgg;
+    //   854: invokevirtual 1079	bbgu:setMessage	(I)Lbbgu;
     //   857: pop
     //   858: aload_0
-    //   859: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   859: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   862: iconst_0
-    //   863: invokevirtual 1083	bbgg:setCanceledOnTouchOutside	(Z)V
+    //   863: invokevirtual 1083	bbgu:setCanceledOnTouchOutside	(Z)V
     //   866: aload_0
-    //   867: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   867: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   870: ldc_w 1084
     //   873: new 1086	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6
     //   876: dup
@@ -1225,10 +1225,10 @@ public class ThemeJsPlugin
     //   882: iload 6
     //   884: aload_2
     //   885: invokespecial 1087	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   888: invokevirtual 1091	bbgg:setNegativeButton	(ILandroid/content/DialogInterface$OnClickListener;)Lbbgg;
+    //   888: invokevirtual 1091	bbgu:setNegativeButton	(ILandroid/content/DialogInterface$OnClickListener;)Lbbgu;
     //   891: pop
     //   892: aload_0
-    //   893: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
+    //   893: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
     //   896: ldc_w 1092
     //   899: new 1094	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7
     //   902: dup
@@ -1238,11 +1238,11 @@ public class ThemeJsPlugin
     //   908: iload 6
     //   910: aload_2
     //   911: invokespecial 1095	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   914: invokevirtual 1098	bbgg:setPositiveButton	(ILandroid/content/DialogInterface$OnClickListener;)Lbbgg;
+    //   914: invokevirtual 1098	bbgu:setPositiveButton	(ILandroid/content/DialogInterface$OnClickListener;)Lbbgu;
     //   917: pop
     //   918: aload_0
-    //   919: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgg;
-    //   922: invokevirtual 1101	bbgg:show	()V
+    //   919: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lbbgu;
+    //   922: invokevirtual 1101	bbgu:show	()V
     //   925: goto -623 -> 302
     //   928: astore_1
     //   929: aload_0
@@ -1271,7 +1271,7 @@ public class ThemeJsPlugin
     //   975: aconst_null
     //   976: ldc 250
     //   978: sipush 153
-    //   981: getstatic 255	aymi:a	Ljava/lang/String;
+    //   981: getstatic 255	aymk:a	Ljava/lang/String;
     //   984: bipush 221
     //   986: ldc_w 257
     //   989: ldc_w 257
@@ -1301,7 +1301,7 @@ public class ThemeJsPlugin
     //   0	1038	0	this	ThemeJsPlugin
     //   0	1038	1	paramJSONObject	JSONObject
     //   0	1038	2	paramString	String
-    //   0	1038	3	paramaymh	aymh
+    //   0	1038	3	paramaymj	aymj
     //   28	978	4	i	int
     //   38	707	5	j	int
     //   328	698	6	bool1	boolean

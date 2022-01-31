@@ -1,36 +1,32 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class acfy
-  extends ajta
+  implements bfux
 {
   public acfy(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(bfuw parambfuw)
   {
-    if (paramInt2 != 0)
+    boolean bool = false;
+    switch (parambfuw.a)
     {
-      paramString1 = paramString2;
-      if (!this.a.isFinishing())
-      {
-        paramString1 = paramString2;
-        if (this.a.isResume())
-        {
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.getResources().getString(2131694927);
-          }
-          bcpw.a(this.a, 1, paramString1, 0).a();
-        }
+    default: 
+      return;
+    case 0: 
+      parambfuw = this.a;
+      if (!this.a.d) {
+        bool = true;
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
-      }
+      parambfuw.d = bool;
+      asfd.a().b(this.a.app, this.a.d);
       return;
     }
-    this.a.c();
+    parambfuw = new Intent(this.a, TroopAssisSettingActivity.class);
+    parambfuw.setFlags(67108864);
+    this.a.startActivity(parambfuw);
+    axqy.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

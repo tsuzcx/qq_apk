@@ -1,19 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public final class athg
-  implements Parcelable.Creator<Comments.Comment>
+public abstract interface athg
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
+  @Deprecated
+  public abstract void a();
   
-  public Comments.Comment[] a(int paramInt)
-  {
-    return new Comments.Comment[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoData paramVideoData);
 }
 
 

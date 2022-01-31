@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 import java.util.List;
-import rjs;
+import rjp;
 
 class FastWebActivity$29
   implements Runnable

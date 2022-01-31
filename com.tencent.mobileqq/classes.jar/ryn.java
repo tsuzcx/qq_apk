@@ -1,24 +1,12 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-
 class ryn
-  implements bcwh
+  extends rym
 {
-  ryn(rym paramrym) {}
+  String b;
   
-  public void a(BaseResp paramBaseResp)
+  public ryn(String paramString1, int paramInt, boolean paramBoolean, String paramString2)
   {
-    if ((rym.a(this.a) == null) || (!rym.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      wim.a(1, 2131719476);
-      return;
-    }
-    wim.a(2, 2131719495);
+    super(paramString1, paramInt, paramBoolean);
+    this.b = paramString2;
   }
 }
 

@@ -1,24 +1,29 @@
-import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-public abstract interface vnr
+public class vnr
 {
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  public final ArrayList<vlg> a;
+  @NonNull
+  public final vkl a;
+  @NonNull
+  public final vkm a;
+  @NonNull
+  public final vkw a;
+  @NonNull
+  public final vla a;
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(vox paramvox);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void i();
+  public vnr(@NonNull vla paramvla, @NonNull vkw paramvkw, @NonNull vkm paramvkm, @NonNull vkl paramvkl)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Vla = paramvla;
+    this.jdField_a_of_type_Vkw = paramvkw;
+    this.jdField_a_of_type_Vkm = paramvkm;
+    this.jdField_a_of_type_Vkl = paramvkl;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkm);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkw);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramvla);
+  }
 }
 
 

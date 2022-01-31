@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import bcpw;
+import bcql;
 
 class PermissionSettingFragment$2$1
   implements Runnable
@@ -11,10 +11,10 @@ class PermissionSettingFragment$2$1
   {
     if (this.val$finalErrCode == -101510007L)
     {
-      bcpw.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694274), 0).a();
+      bcql.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694275), 0).a();
       return;
     }
-    bcpw.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694280), 0).a();
+    bcql.a(this.this$1.this$0.getActivity(), this.this$1.this$0.getString(2131694281), 0).a();
   }
 }
 

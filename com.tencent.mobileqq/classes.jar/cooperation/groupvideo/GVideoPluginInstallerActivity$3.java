@@ -1,6 +1,6 @@
 package cooperation.groupvideo;
 
-import bgkq;
+import bglh;
 
 class GVideoPluginInstallerActivity$3
   implements Runnable

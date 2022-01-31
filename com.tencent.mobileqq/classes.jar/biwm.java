@@ -4,12 +4,34 @@ import android.view.View.OnClickListener;
 class biwm
   implements View.OnClickListener
 {
-  biwm(biwl parambiwl) {}
+  biwm(biwl parambiwl, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (biwl.a(this.a) != null)) {
-      biwl.a(this.a).a(paramView, this.a.a, biwl.a(this.a));
+    biwh.a(this.jdField_a_of_type_Biwl.a, this.jdField_a_of_type_Int);
+    paramView = biwo.a(biwh.a(this.jdField_a_of_type_Biwl.a));
+    if ((paramView != null) && (paramView.length > this.jdField_a_of_type_Int))
+    {
+      paramView = paramView[this.jdField_a_of_type_Int];
+      if (paramView != biwo.c) {
+        break label89;
+      }
+      bizt.a().p();
+    }
+    for (;;)
+    {
+      bjah.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      return;
+      label89:
+      if (paramView == biwo.a)
+      {
+        bizt.a().o();
+      }
+      else if (paramView == biwo.b)
+      {
+        bizx.a().f("3");
+        bizt.a().w();
+      }
     }
   }
 }

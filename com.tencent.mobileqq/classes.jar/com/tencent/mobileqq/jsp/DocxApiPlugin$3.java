@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import ancl;
-import ancm;
-import armi;
-import ayfe;
+import ancq;
+import ancr;
+import armk;
+import ayfg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -12,21 +12,21 @@ import org.json.JSONObject;
 public class DocxApiPlugin$3
   implements Runnable
 {
-  public DocxApiPlugin$3(armi paramarmi, String paramString1, String paramString2, String paramString3) {}
+  public DocxApiPlugin$3(armk paramarmk, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    Object localObject = ancm.a();
-    if ((((ancl)localObject).a()) && (((ancl)localObject).b()) && (ayfe.a(this.a)))
+    Object localObject = ancr.a();
+    if ((((ancq)localObject).a()) && (((ancq)localObject).b()) && (ayfg.a(this.a)))
     {
-      localObject = ayfe.b(this.a);
+      localObject = ayfg.b(this.a);
       this.this$0.callJs(this.b, new String[] { localObject });
     }
     for (;;)
     {
       localObject = new ArrayList(1);
       ((ArrayList)localObject).add(this.c);
-      armi.a(this.this$0, (ArrayList)localObject);
+      armk.a(this.this$0, (ArrayList)localObject);
       return;
       try
       {

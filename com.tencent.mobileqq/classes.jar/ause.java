@@ -1,82 +1,70 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import eipc.EIPCResult;
 
-public class ause
+class ause
+  extends QIPCModule
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
-  
-  public ause(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, long paramLong1, long paramLong2)
+  ause(ausd paramausd, String paramString)
   {
-    this.jdField_a_of_type_Int = bbev.a(BaseApplication.getContext());
-    this.jdField_a_of_type_Boolean = axdz.a(paramQQAppInterface, paramMessageForShortVideo);
-    if (paramMessageForShortVideo.videoAttr == 1) {}
-    for (;;)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverIPCServer", 2, new Object[] { "onCall, action=" + paramString + ", params=" + paramBundle + ", callbackId=", Integer.valueOf(paramInt) });
+    }
+    if (paramBundle == null) {
+      QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, params is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+    }
+    do
     {
-      this.c = bool;
-      paramQQAppInterface = (ajxn)paramQQAppInterface.getManager(51);
-      if (paramQQAppInterface != null)
+      Object localObject;
+      do
       {
-        paramQQAppInterface = paramQQAppInterface.e(String.valueOf(paramMessageForShortVideo.senderuin));
-        if (paramQQAppInterface != null) {
-          this.jdField_b_of_type_Boolean = paramQQAppInterface.isFriend();
-        }
-      }
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_b_of_type_Long = paramLong2;
-      return;
-      bool = false;
-    }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder("doReport:");
-      ((StringBuilder)localObject).append("mMsgViewedInAIOTime=").append(this.jdField_a_of_type_Long).append("|");
-      ((StringBuilder)localObject).append("mMsgClickedTime=").append(this.jdField_b_of_type_Long).append("|");
-      ((StringBuilder)localObject).append("mViewNetType=").append(this.jdField_a_of_type_Int).append("|");
-      ((StringBuilder)localObject).append("mClickNetType=").append(this.jdField_b_of_type_Int).append("|");
-      ((StringBuilder)localObject).append("mAutoDownload=").append(this.jdField_a_of_type_Boolean).append("|");
-      ((StringBuilder)localObject).append("mIsFriend=").append(this.jdField_b_of_type_Boolean).append("|");
-      ((StringBuilder)localObject).append("mIsHotVideo=").append(this.c).append("|");
-      QLog.i("ShortVideoPredictionEvaluator", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-    ((HashMap)localObject).put("viewed_time", String.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("click_time", String.valueOf(this.jdField_b_of_type_Long));
-    ((HashMap)localObject).put("view_net", String.valueOf(this.jdField_a_of_type_Int));
-    ((HashMap)localObject).put("click_net", String.valueOf(this.jdField_b_of_type_Int));
-    ((HashMap)localObject).put("auto_download", String.valueOf(this.jdField_a_of_type_Boolean));
-    ((HashMap)localObject).put("is_friend", String.valueOf(this.jdField_b_of_type_Boolean));
-    ((HashMap)localObject).put("is_hot", String.valueOf(this.c));
-    if (this.jdField_b_of_type_Long > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      axrl.a(BaseApplication.getContext()).a(null, "actVideoMessageTime", bool, 0L, 0L, (HashMap)localObject, "");
-      return;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_b_of_type_Long == 0L)
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      this.jdField_b_of_type_Int = bbev.a(BaseApplication.getContext());
-    }
+        do
+        {
+          return null;
+          if (ausd.a(this.a) == null)
+          {
+            QLog.d("PrecoverIPCServer", 1, new Object[] { "onCall, mManager is null!!. action=" + paramString + ", callbackId=", Integer.valueOf(paramInt) });
+            return null;
+          }
+          paramBundle.putString("key_action", paramString);
+          if (ausc.a.equals(paramString)) {
+            return ausd.a(this.a, paramBundle, paramInt);
+          }
+          if (ausc.b.equals(paramString))
+          {
+            paramString = ausd.a(this.a, paramBundle, paramInt);
+            if (paramString.isSuccess())
+            {
+              localObject = (PrecoverResource)paramBundle.getParcelable("resource");
+              if (QLog.isColorLevel()) {
+                QLog.d("PrecoverIPCServer", 2, "onCall, params.getParcelable, res=" + localObject);
+              }
+              if (ausd.a(this.a).a().a((PrecoverResource)localObject, new Object[] { "PrecoverIPCServer_MODEL", Integer.valueOf(paramInt) })) {
+                return EIPCResult.createResult(11, paramBundle);
+              }
+              paramBundle.putInt("errCode", -2);
+              paramBundle.putString("errDesc", "args invalid or file already exist!");
+              ausd.a(this.a).callbackResult(paramInt, EIPCResult.createResult(-2, paramBundle));
+            }
+            return paramString;
+          }
+        } while (!ausc.c.equals(paramString));
+        paramString = paramBundle.getString("businessId");
+        localObject = paramBundle.getString("md5");
+      } while ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)));
+      paramString = ausd.a(this.a).a().a((String)localObject);
+    } while (paramString == null);
+    paramBundle.putLong("key_total", paramString.a);
+    paramBundle.putLong("key_loaded", paramString.b);
+    return EIPCResult.createSuccessResult(paramBundle);
   }
 }
 

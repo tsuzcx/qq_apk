@@ -1,16 +1,55 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class nlk
-  implements View.OnClickListener
+class nlk
+  implements INetInfoHandler
 {
-  public nlk(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  nlk(nli paramnli) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
+    }
+    nli.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
+    }
+    nli.b(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    }
+    nli.b(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    }
+    nli.b(this.a);
   }
 }
 

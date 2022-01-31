@@ -5,11 +5,11 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import nmf;
+import nmc;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rpu;
-import sfd;
+import rpr;
+import sfa;
 
 public class RecommendAdData
   extends AdData
@@ -75,7 +75,7 @@ public class RecommendAdData
       }
       if (!TextUtils.isEmpty(this.l))
       {
-        localObject = sfd.a(this.l, 4);
+        localObject = sfa.a(this.l, 4);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("image_url", ((URL)localObject).toString());
         localJSONObject1.put("id_recommend_cover_img", localJSONObject2);
@@ -97,7 +97,7 @@ public class RecommendAdData
         if (!TextUtils.isEmpty(this.p))
         {
           localObject = new JSONObject();
-          if (!nmf.a(BaseApplicationImpl.getContext(), this.p)) {
+          if (!nmc.a(BaseApplicationImpl.getContext(), this.p)) {
             break label353;
           }
           ((JSONObject)localObject).put("text", "打开APP");
@@ -138,10 +138,10 @@ public class RecommendAdData
     this.b = a();
     try
     {
-      rpu localrpu = rpu.a("native_article", true);
+      rpr localrpr = rpr.a("native_article", true);
       localObject1 = localObject3;
-      if (localrpu != null) {
-        localObject1 = localrpu.getTemplateBean(this.b);
+      if (localrpr != null) {
+        localObject1 = localrpr.getTemplateBean(this.b);
       }
     }
     catch (JSONException localJSONException)

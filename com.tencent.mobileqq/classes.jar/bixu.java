@@ -1,49 +1,46 @@
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bixu
-  implements VideoShelfEngine.Callback
+  implements biyy
 {
-  private WeakReference<AEVideoShelfPreviewFragment> a;
+  public bixu(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
   
-  public bixu(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment)
+  public void a(List<biyz> paramList)
   {
-    this.a = new WeakReference(paramAEVideoShelfPreviewFragment);
-  }
-  
-  public void onCancelCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.e((AEVideoShelfPreviewFragment)this.a.get());
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        biyz localbiyz = (biyz)paramList.next();
+        if (localbiyz.jdField_a_of_type_Boolean)
+        {
+          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
+          BitmapUtils.saveBitmap(localbiyz.jdField_a_of_type_AndroidGraphicsBitmap, str);
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
+          BitmapUtils.recycle(localbiyz.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        else
+        {
+          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
     }
-  }
-  
-  public void onCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfPreviewFragment)this.a.get()).onCompletion();
-    }
-  }
-  
-  public void onError(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.a((AEVideoShelfPreviewFragment)this.a.get(), paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void onProgress(int paramInt)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.b((AEVideoShelfPreviewFragment)this.a.get(), paramInt);
-    }
-  }
-  
-  public void onStartGenerate()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      AEVideoShelfPreviewFragment.d((AEVideoShelfPreviewFragment)this.a.get());
+    for (;;)
+    {
+      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
+      return;
+      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
     }
   }
 }

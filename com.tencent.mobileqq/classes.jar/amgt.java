@@ -1,144 +1,78 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class amgt
-  extends QIPCModule
-  implements Handler.Callback
 {
-  private static amgt jdField_a_of_type_Amgt;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  private amgo a;
   
-  private amgt()
+  private static SharedPreferences a()
   {
-    super("ColorNoteIPCServer");
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("mini_msg", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = "color_note_recent_view_switch" + str;
+    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 4);
   }
   
-  public static amgt a()
+  public static void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Amgt == null) {}
-    try
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null)
     {
-      if (jdField_a_of_type_Amgt == null) {
-        jdField_a_of_type_Amgt = new amgt();
+      localSharedPreferences.edit().putBoolean("color_note_recently_viewed_switch", paramBoolean).apply();
+      if (!paramBoolean) {
+        amkf.a(BaseApplicationImpl.getContext(), 5, false);
       }
-      return jdField_a_of_type_Amgt;
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteRecentView", 0, "setRecentColorNoteSwitch: " + paramBoolean);
+      }
     }
-    finally {}
   }
   
-  private EIPCResult a(Bundle paramBundle)
+  public static boolean a()
   {
-    boolean bool = amgs.a(paramBundle.getString("extra_unikey"));
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_is_colornote_exists", bool);
-    return EIPCResult.createResult(0, paramBundle);
+    boolean bool = true;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("color_note_recently_viewed_switch", true);
+    }
+    return bool;
   }
   
-  private EIPCResult b(Bundle paramBundle)
+  public static boolean b()
   {
-    boolean bool = amgs.b(paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_add_colornote_succ", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  private EIPCResult c(Bundle paramBundle)
-  {
-    boolean bool = amgs.a(paramBundle.getString("extra_unikey"), paramBundle.getInt("color_note_extra_type"));
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_delete_colornote_succ", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  private EIPCResult d(Bundle paramBundle)
-  {
-    boolean bool = amgs.b();
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_can_add_colornote", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  private EIPCResult e(Bundle paramBundle)
-  {
-    return EIPCResult.createResult(0, amgs.a(paramBundle.getString("extra_unikey"), paramBundle.getBoolean("extra_update_colornote_state")));
-  }
-  
-  private EIPCResult f(Bundle paramBundle)
-  {
-    boolean bool = amgs.a(paramBundle.getString("extra_unikey"), paramBundle.getString("extra_field_name"), paramBundle.getString("extra_field_value"));
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_update_colornote_succ", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  private EIPCResult g(Bundle paramBundle)
-  {
-    boolean bool = amgs.a((ColorNote)paramBundle.getSerializable("color_note_recently_viewed_comparator"));
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("color_note_clear_succ", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  private EIPCResult h(Bundle paramBundle)
-  {
-    boolean bool = amiv.a(paramBundle.getInt("color_note_service_type"));
-    paramBundle = new Bundle();
-    paramBundle.putBoolean("extra_clear_history_succ", bool);
-    return EIPCResult.createResult(0, paramBundle);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
+    SharedPreferences localSharedPreferences = a();
+    if ((localSharedPreferences != null) && (!localSharedPreferences.getBoolean("color_note_recent_first_visit", false)))
+    {
+      localSharedPreferences.edit().putBoolean("color_note_recent_first_visit", true).apply();
+      return true;
+    }
     return false;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(amgo paramamgo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
+    this.a = paramamgo;
+  }
+  
+  public void a(ColorNote paramColorNote)
+  {
+    Object localObject = amhg.a();
+    if ((localObject != null) && (((amhf)localObject).a())) {}
+    for (int i = 1;; i = 0)
     {
-      if (!paramString.equalsIgnoreCase("cmd_query_isexists")) {
-        break label33;
+      if ((i != 0) && (paramColorNote != null) && (this.a != null) && (amhj.a().a()))
+      {
+        localObject = amhh.a(paramColorNote);
+        this.a.b((ColorNote)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteRecentView", 0, "updateRecentNote: " + paramColorNote.toString());
+        }
       }
-      localObject1 = a(paramBundle);
+      return;
     }
-    label33:
-    do
-    {
-      return localObject1;
-      if (paramString.equalsIgnoreCase("cmd_add_colornote")) {
-        return b(paramBundle);
-      }
-      if (paramString.equalsIgnoreCase("cmd_delete_colornote")) {
-        return c(paramBundle);
-      }
-      if (paramString.equalsIgnoreCase("cmd_can_add_colornote")) {
-        return d(paramBundle);
-      }
-      if (paramString.equalsIgnoreCase("cmd_update_colornote_state")) {
-        return e(paramBundle);
-      }
-      if (paramString.equalsIgnoreCase("cmd_update_colornote")) {
-        return f(paramBundle);
-      }
-      if (paramString.equalsIgnoreCase("cmd_clear_color_note")) {
-        return g(paramBundle);
-      }
-      localObject1 = localObject2;
-    } while (!paramString.equalsIgnoreCase("cmd_clear_history_color_notes"));
-    return h(paramBundle);
   }
 }
 

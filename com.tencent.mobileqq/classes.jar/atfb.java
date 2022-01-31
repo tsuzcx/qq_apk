@@ -1,94 +1,72 @@
-import android.os.Handler;
-import android.text.Editable;
+import android.content.res.Resources;
+import android.graphics.Paint;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class atfb
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public atfb(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
+    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
     {
-      paramEditable = "";
-      str = atbp.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
-      }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
+      paramView = (InterestTagInfo)paramView.getTag();
+      if (paramView != null)
+      {
+        ChooseInterestTagActivity.a(this.a).remove(paramView);
+        ChooseInterestTagActivity.a(this.a, paramView);
+        ChooseInterestTagActivity.b(this.a, paramView);
       }
     }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
-    }
-    label185:
-    if (TextUtils.isEmpty(str))
-    {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
+      for (;;)
+      {
+        return;
+        try
+        {
+          int[] arrayOfInt = new int[2];
+          paramView.getLocationInWindow(arrayOfInt);
+          if (arrayOfInt[0] > 0)
+          {
+            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+            if (localInterestTagInfo != null)
+            {
+              Paint localPaint = new Paint();
+              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
+              localPaint.setColor(this.a.getResources().getColor(2131166912));
+              localPaint.setFakeBoldText(false);
+              localPaint.setAntiAlias(true);
+              Object localObject2 = localInterestTagInfo.tagName;
+              Object localObject1 = localObject2;
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                localObject1 = " ";
+              }
+              localObject2 = localObject1;
+              if (((String)localObject1).length() > 8) {
+                localObject2 = ((String)localObject1).substring(0, 8) + "...";
+              }
+              float f = localPaint.measureText((String)localObject2);
+              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
+              localObject1 = new atfr(this.a, arrayOfInt[0], i);
+              ((atfr)localObject1).a(ChooseInterestTagActivity.a(this.a));
+              ((atfr)localObject1).a(localInterestTagInfo);
+              ((atfr)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+              return;
+            }
+          }
+        }
+        catch (Exception paramView) {}
       }
-      ChooseInterestTagActivity.b(this.a).setText(ajyc.a(2131701805));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-    }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
-    }
-    if (bbev.d(this.a))
-    {
-      ChooseInterestTagActivity.b(this.a).setText(ajyc.a(2131701810));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
-      return;
-    }
-    if (!ChooseInterestTagActivity.c(this.a))
-    {
-      ChooseInterestTagActivity.a(this.a, ajyc.a(2131701785));
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
-    }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ChooseInterestTagActivity.a(this.a, 0);
+    } while (!QLog.isDevelopLevel());
+    QLog.i("choose_interest_tag", 4, paramView.getMessage());
   }
 }
 

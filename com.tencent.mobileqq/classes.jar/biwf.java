@@ -1,6 +1,8 @@
-class biwf
+public abstract interface biwf
 {
-  private static final biwd a = new biwd(null);
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 

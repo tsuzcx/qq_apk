@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class aizo
+class aizo
 {
-  public String a;
-  public List<Integer> a;
-  public String b;
-  public List<ApolloGameData> b = new ArrayList();
-  public List<String> c = new ArrayList();
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
   
-  public aizo(aizk paramaizk)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  aizo(aizn paramaizn) {}
 }
 
 

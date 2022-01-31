@@ -1,20 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.13.1;
 
-class aery
-  implements ValueAnimator.AnimatorUpdateListener
+public class aery
+  implements Animation.AnimationListener
 {
-  aery(aerv paramaerv, View paramView, int paramInt1, int paramInt2) {}
+  aery(aert paramaert) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.a.t = 5;
+    aert.c(this.a).post(new PublicAccountChatPie.13.1(this));
+    this.a.a.sendEmptyMessage(1);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

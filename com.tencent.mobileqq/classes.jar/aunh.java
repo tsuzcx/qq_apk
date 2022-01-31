@@ -1,84 +1,82 @@
-import java.io.File;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public abstract class aunh
-  extends auno
+public class aunh
 {
-  public int a;
-  public long a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  
-  public aunh()
+  public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 5;
-  }
-  
-  public File a()
-  {
-    return ayog.a(b());
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == -1)
+    if ((paramBundle == null) || (paramQQAppInterface == null))
     {
-      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
-      return false;
+      a("picPreSendProcess bundle=null!");
+      return;
     }
-    if (this.jdField_b_of_type_Int == -1)
+    paramBundle.setClassLoader(PhotoSendParams.class.getClassLoader());
+    PhotoSendParams localPhotoSendParams = (PhotoSendParams)paramBundle.getParcelable("PhotoConst.photo_send_qzone_pic_file_params");
+    String str1 = paramBundle.getString("uin");
+    String str2 = paramQQAppInterface.c();
+    paramBundle.getString("troop_uin");
+    int i = paramBundle.getInt("uintype", 1003);
+    if ((localPhotoSendParams == null) || (TextUtils.isEmpty(localPhotoSendParams.rawMd5)) || (TextUtils.isEmpty(localPhotoSendParams.thumbPath)) || (!bbdx.b(localPhotoSendParams.thumbPath)) || (TextUtils.isEmpty(localPhotoSendParams.rawDownloadUrl)) || (TextUtils.isEmpty(str1)))
     {
-      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
-      return false;
+      a("picPreSendProcess sendParams error, friendUin:" + str1);
+      return;
     }
-    if (this.c == null)
+    if (QLog.isColorLevel()) {
+      QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess params friendUin:" + str1 + ", uinType:" + i + ", sendParams:" + localPhotoSendParams.toString());
+    }
+    ayyp localayyp = new ayyp();
+    ayyy localayyy;
+    switch (i)
     {
-      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
-      return false;
+    default: 
+      localayyy = new ayyy();
+      localayyy.jdField_c_of_type_JavaLangString = str2;
+      localayyy.jdField_d_of_type_JavaLangString = str1;
+      localayyy.jdField_e_of_type_JavaLangString = str2;
+      localayyy.jdField_a_of_type_Long = localPhotoSendParams.fileSize;
+      localayyy.jdField_a_of_type_ArrayOfByte = bbea.a(localPhotoSendParams.rawMd5);
+      localayyy.jdField_a_of_type_JavaLangString = (localPhotoSendParams.rawMd5 + ".jpg");
+      localayyy.jdField_c_of_type_Int = localPhotoSendParams.rawWidth;
+      localayyy.jdField_d_of_type_Int = localPhotoSendParams.rawHeight;
+      localayyy.jdField_a_of_type_Int = 1000;
+      localayyy.jdField_e_of_type_Int = 3;
+      localayyy.jdField_b_of_type_JavaLangString = localPhotoSendParams.rawDownloadUrl;
     }
-    return true;
+    for (paramBundle = "c2c_pic_up"; TextUtils.isEmpty(paramBundle); paramBundle = "grp_pic_up")
+    {
+      a("picPreSendProcess protoKey=null!");
+      return;
+      localayyy = new ayyy();
+      localayyy.jdField_c_of_type_JavaLangString = str2;
+      localayyy.jdField_d_of_type_JavaLangString = str1;
+      localayyy.jdField_e_of_type_JavaLangString = str2;
+      localayyy.jdField_a_of_type_Long = localPhotoSendParams.fileSize;
+      localayyy.jdField_a_of_type_ArrayOfByte = bbea.a(localPhotoSendParams.rawMd5);
+      localayyy.jdField_a_of_type_JavaLangString = (localPhotoSendParams.rawMd5 + ".jpg");
+      localayyy.jdField_c_of_type_Int = localPhotoSendParams.rawWidth;
+      localayyy.jdField_d_of_type_Int = localPhotoSendParams.rawHeight;
+      localayyy.jdField_a_of_type_Int = 1000;
+      localayyy.jdField_b_of_type_Int = 1045;
+      localayyy.f = 1;
+      localayyy.jdField_e_of_type_Int = 3;
+      localayyy.jdField_b_of_type_JavaLangString = localPhotoSendParams.rawDownloadUrl;
+    }
+    localayyp.jdField_a_of_type_JavaUtilList.add(localayyy);
+    localayyp.jdField_a_of_type_JavaLangString = paramBundle;
+    localayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = paramQQAppInterface.getProtoReqManager();
+    localayyp.jdField_a_of_type_Ayzw = new auni(str2, str1, localPhotoSendParams);
+    ayzv.a(localayyp);
   }
   
-  abstract String b();
-  
-  public boolean b()
+  private static void a(String paramString)
   {
-    return a() != null;
-  }
-  
-  public String c()
-  {
-    return ayog.d(b());
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nPicBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_Aunp);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.e("PicAioQzonePreSendMgr", 2, paramString);
+    }
   }
 }
 

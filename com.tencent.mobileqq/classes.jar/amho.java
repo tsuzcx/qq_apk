@@ -1,58 +1,39 @@
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class amho
-  implements amhn
+  implements amhm
 {
-  private void a(Context paramContext, String paramString)
+  private void a(Intent paramIntent, ColorNote paramColorNote)
   {
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = 1131;
-    MiniAppController.startAppByAppid(paramContext, paramString, "", "", localLaunchParam, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
+      }
     }
   }
   
   public void a(Context paramContext, ColorNote paramColorNote)
   {
-    int i = 0;
-    if (paramColorNote.getServiceType() != 16842752) {
-      return;
-    }
-    String str = paramColorNote.getSubType();
-    paramColorNote = paramColorNote.getReserve();
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "openColorNoteMiniAppByAppInfo", 0) == 1) {
-      i = 1;
-    }
-    if ((paramColorNote != null) && (paramColorNote.length > 0) && (i != 0))
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
     {
-      paramColorNote = MiniAppUtils.createFromBuffer(paramColorNote);
-      if ((paramColorNote != null) && (!TextUtils.isEmpty(paramColorNote.desc))) {
-        try
-        {
-          MiniAppController.launchMiniAppByAppInfo(null, paramColorNote, 1131);
-          return;
-        }
-        catch (Exception paramColorNote)
-        {
-          QLog.e("MiniAppLauncher_colorNote", 1, "MiniAppLauncher, launch exception: " + Log.getStackTraceString(paramColorNote));
-          a(paramContext, str);
-          return;
-        }
-      }
-      a(paramContext, str);
-      return;
-    }
-    a(paramContext, str);
+      do
+      {
+        return;
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

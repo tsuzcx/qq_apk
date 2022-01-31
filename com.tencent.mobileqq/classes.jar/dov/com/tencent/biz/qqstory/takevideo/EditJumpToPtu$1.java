@@ -1,25 +1,25 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjsj;
-import bjsk;
-import bjsv;
-import veg;
+import bjta;
+import bjtb;
+import bjtm;
+import ved;
 
 public class EditJumpToPtu$1
   implements Runnable
 {
-  public EditJumpToPtu$1(bjsj parambjsj) {}
+  public EditJumpToPtu$1(bjta parambjta) {}
   
   public void run()
   {
-    bjsj.a(this.this$0, bjsv.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.this$0.a(bjsj.a(this.this$0)))
+    bjta.a(this.this$0, bjtm.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
+    if (this.this$0.a(bjta.a(this.this$0)))
     {
       this.this$0.a.sendEmptyMessage(1);
       return;
     }
-    bjsj.a(this.this$0, null);
-    veg.e("EditJumpToPtu", "get rawBitmap error!");
+    bjta.a(this.this$0, null);
+    ved.e("EditJumpToPtu", "get rawBitmap error!");
     this.this$0.a.sendEmptyMessage(3);
   }
 }

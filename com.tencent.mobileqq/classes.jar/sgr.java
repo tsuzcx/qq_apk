@@ -1,115 +1,35 @@
 import android.content.Context;
-import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 final class sgr
-  implements BusinessObserver
+  extends akws
 {
-  sgr(akdo paramakdo, String paramString, boolean paramBoolean, Context paramContext, AppInterface paramAppInterface, int paramInt) {}
+  sgr(akdn paramakdn, String paramString, AppInterface paramAppInterface, Context paramContext) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_Akdo != null) {
-        this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-      }
-    }
-    label366:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!paramBoolean) {
-                  break label404;
-                }
-                try
-                {
-                  paramBundle = paramBundle.getByteArray("data");
-                  if (paramBundle == null) {
-                    break label366;
-                  }
-                  mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-                  localFollowResponse.mergeFrom(paramBundle);
-                  paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-                  if (QLog.isColorLevel()) {
-                    QLog.d("PublicAccountUtil", 2, "followUin, retCode=" + paramInt);
-                  }
-                  if (paramInt != 0) {
-                    break;
-                  }
-                  if (this.jdField_a_of_type_Akdo != null) {
-                    this.jdField_a_of_type_Akdo.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-                  }
-                  sgj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-                  return;
-                }
-                catch (Exception paramBundle)
-                {
-                  if (this.jdField_a_of_type_Akdo != null) {
-                    this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-                  }
-                }
-              } while (!this.jdField_a_of_type_Boolean);
-              sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-              return;
-              if (paramInt != 58) {
-                break;
-              }
-              if (this.jdField_a_of_type_Akdo != null) {
-                this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-              }
-            } while (!this.jdField_a_of_type_Boolean);
-            sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695565);
-            return;
-            if (paramInt != 65) {
-              break;
-            }
-            if (this.jdField_a_of_type_Akdo != null) {
-              this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-            }
-          } while (!this.jdField_a_of_type_Boolean);
-          sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695538);
-          return;
-          if (this.jdField_a_of_type_Akdo != null) {
-            this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-          }
-        } while (!this.jdField_a_of_type_Boolean);
-        sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        return;
-        if (this.jdField_a_of_type_Akdo != null) {
-          this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-      return;
-      if (this.jdField_a_of_type_Akdo != null) {
-        this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    label404:
-    sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akdn != null) {
+      this.jdField_a_of_type_Akdn.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    sgg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akdn != null) {
+      this.jdField_a_of_type_Akdn.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    sgg.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,29 +1,46 @@
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+
 public class aslv
 {
   private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
   private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  private aslv(String paramString, int paramInt)
+  public aslu a()
+  {
+    return new aslu(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+  }
+  
+  public aslv a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aslv a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public aslv a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public int a()
+  public aslv b(String paramString)
   {
-    return this.jdField_a_of_type_Int;
+    this.b = paramString;
+    return this;
   }
   
-  public String a()
+  public aslv c(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
-    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    this.c = paramString;
+    return this;
   }
 }
 

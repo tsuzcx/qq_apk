@@ -1,36 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aacz
+class aacz
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  aacz(aacw paramaacw) {}
   
-  public JSONObject a()
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(aacw.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
+    this.a.jdField_a_of_type_Aabl.d();
+    aaep.a(this.a.jdField_a_of_type_Aabi, 4);
   }
 }
 

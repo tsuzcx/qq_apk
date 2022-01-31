@@ -32,7 +32,7 @@ class PtvTemplateManager$1
     //   43: aload_3
     //   44: astore_2
     //   45: aload_3
-    //   46: invokestatic 56	nax:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   46: invokestatic 56	nau:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   49: astore 5
     //   51: aload 5
     //   53: astore_1

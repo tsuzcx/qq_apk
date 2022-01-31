@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 
-public abstract interface afcb
+public class afcb
+  implements agbu
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  public afcb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    this.a.a.a(paramMotionEvent);
+  }
 }
 
 

@@ -1,80 +1,53 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
 
-public class rcn
-  extends ozi
+class rcn
+  implements ViewBase.OnClickListener
 {
-  public rcn(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  rcn(rcm paramrcm) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.d("ReadInJoyFastWebBottomSocialView", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
-    if ((ReadInJoyFastWebBottomSocialView.a(this.a) == null) || (ReadInJoyFastWebBottomSocialView.a(this.a) == null))
-    {
-      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult but articleInfo is null.");
-      return;
-    }
-    bcpw localbcpw;
-    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString1)))
-    {
-      localbcpw = new bcpw(ReadInJoyFastWebBottomSocialView.a(this.a));
-      localbcpw.d(2000);
-      localbcpw.b(2);
-      localbcpw.a(bcpw.a(2));
-      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialView.d(this.a).isSelected());
-      if (paramInt != 1) {
-        break label319;
-      }
-      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialView.a(this.a).get(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
-      paramString1 = localArrayList;
-      if (localArrayList == null) {
-        paramString1 = new ArrayList();
-      }
-      paramString1.add(paramString2);
-      ReadInJoyFastWebBottomSocialView.a(this.a).put(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID, paramString1);
-      if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected()) {
-        break label308;
-      }
-      localbcpw.a(ReadInJoyFastWebBottomSocialView.a);
-      ReadInJoyFastWebBottomSocialView.b(this.a, true);
-      localbcpw.a();
-    }
     for (;;)
     {
-      ReadInJoyFastWebBottomSocialView.b(this.a, false);
-      return;
-      label308:
-      ReadInJoyFastWebBottomSocialView.c(this.a, false);
-      continue;
-      label319:
-      if (paramInt == 2)
+      FastWebArticleInfo localFastWebArticleInfo;
+      try
       {
-        ReadInJoyFastWebBottomSocialView.a(this.a).remove(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
-        if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected())
+        String str = paramViewBase.getEventAttachedData();
+        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
+        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+        switch (i)
         {
-          localbcpw.a(ReadInJoyFastWebBottomSocialView.b);
-          ReadInJoyFastWebBottomSocialView.b(this.a, false);
-          localbcpw.a();
-        }
-        else
-        {
-          ReadInJoyFastWebBottomSocialView.c(this.a, true);
+        case 1004: 
+          if (TextUtils.isEmpty(str)) {
+            return;
+          }
+          onh.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
+          return;
         }
       }
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
-  {
-    QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
-    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString)))
-    {
-      ReadInJoyFastWebBottomSocialView.a(this.a).put(paramString, paramArrayList);
-      ReadInJoyFastWebBottomSocialView.b(this.a, paramBoolean2);
+      catch (Exception paramViewBase)
+      {
+        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
+        return;
+      }
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
     }
   }
 }

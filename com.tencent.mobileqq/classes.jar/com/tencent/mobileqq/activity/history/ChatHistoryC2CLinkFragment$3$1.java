@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import afxn;
+import afxl;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -11,21 +11,21 @@ import mqq.os.MqqHandler;
 public class ChatHistoryC2CLinkFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CLinkFragment$3$1(afxn paramafxn, List paramList) {}
+  public ChatHistoryC2CLinkFragment$3$1(afxl paramafxl, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Afxn.a.b.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      this.jdField_a_of_type_Afxl.a.b.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     for (;;)
     {
-      Message localMessage = this.jdField_a_of_type_Afxn.a.a.obtainMessage(2);
+      Message localMessage = this.jdField_a_of_type_Afxl.a.a.obtainMessage(2);
       localMessage.obj = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_Afxn.a.a.sendMessage(localMessage);
+      this.jdField_a_of_type_Afxl.a.a.sendMessage(localMessage);
       return;
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_Afxn.a.b.a().a(this.jdField_a_of_type_JavaUtilList, false);
+        this.jdField_a_of_type_Afxl.a.b.a().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
   }

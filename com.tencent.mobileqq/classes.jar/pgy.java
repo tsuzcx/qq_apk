@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 class pgy
-  implements View.OnClickListener
+  implements oxi
 {
-  pgy(pgs parampgs, pax parampax, Container paramContainer, int paramInt) {}
+  pgy(pgw parampgw, ViewBase paramViewBase) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    paramView = this.jdField_a_of_type_Pax.a().mSocialFeedInfo.a;
-    ArrayList localArrayList = paramView.a;
-    if ((localArrayList == null) || (localArrayList.size() == 0)) {
-      return;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getVisibility() == 0) && (paramLong >= 4000L)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.setVisibility(8);
     }
-    paramView = (qcz)paramView.a.get(0);
-    pgs.a(this.jdField_a_of_type_Pgs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pax.a(), (int)paramView.a, this.jdField_a_of_type_Pax.a().innerUniqueID, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Pax.a());
   }
 }
 

@@ -1,12 +1,19 @@
-public class qea
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+
+public final class qea
+  implements Parcelable.Creator<WeishiRedDotInfo>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
+  public WeishiRedDotInfo a(Parcel paramParcel)
+  {
+    return new WeishiRedDotInfo(paramParcel);
+  }
+  
+  public WeishiRedDotInfo[] a(int paramInt)
+  {
+    return new WeishiRedDotInfo[paramInt];
+  }
 }
 
 

@@ -1,47 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.media.MediaPlayer;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
-class ldh
-  extends Handler
+public class ldh
+  extends lds
 {
-  WeakReference<ldf> a;
-  
-  ldh(ldf paramldf)
+  public ldh(VideoController paramVideoController)
   {
-    this.a = new WeakReference(paramldf);
+    super(paramVideoController);
   }
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    sendMessage(obtainMessage(1));
-  }
-  
-  public void b()
-  {
-    sendMessage(obtainMessage(3));
-    removeMessages(1);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    ldf localldf = (ldf)this.a.get();
-    if (localldf != null) {}
-    switch (paramMessage.what)
+    lcg.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().J)
     {
-    case 2: 
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        ldf.a(localldf, paramMessage.what);
-      } while (ldf.a(localldf) == 2);
-      sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
-      return;
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
+      }
+      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().J = false;
+      this.jdField_a_of_type_ComTencentAvVideoController.a().I = false;
     }
-    ldf.a(localldf);
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      return;
+      lcg.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+    }
   }
 }
 

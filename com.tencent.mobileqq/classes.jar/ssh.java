@@ -1,12 +1,24 @@
-public abstract interface ssh
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher.Event;
+
+public class ssh
+  implements Dispatcher.Event
 {
-  public abstract void a(sqb paramsqb);
+  public ErrorMessage a = new ErrorMessage();
   
-  public abstract void a(sqb paramsqb, int paramInt);
+  public String a()
+  {
+    return this.a.getErrorMessage();
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void e();
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
+    if (this.a == null) {}
+    for (String str = "null";; str = "\"" + this.a + "\"") {
+      return str + "}";
+    }
+  }
 }
 
 

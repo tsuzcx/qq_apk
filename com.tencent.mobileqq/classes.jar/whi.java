@@ -1,40 +1,20 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class whi
-  implements whu
+public abstract class whi
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  public whi(ScannerActivity paramScannerActivity) {}
+  public abstract void a();
   
-  public JSONObject a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
-    }
-    return null;
+    a();
   }
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
+    a();
   }
 }
 

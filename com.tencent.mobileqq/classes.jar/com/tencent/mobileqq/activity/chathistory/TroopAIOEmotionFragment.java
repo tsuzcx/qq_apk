@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aarv;
-import aarw;
+import aarr;
+import aars;
+import aegp;
 import aegr;
-import aegt;
-import afck;
-import afcn;
+import afci;
+import afcl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -20,12 +20,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import aodw;
-import aptv;
-import bbev;
-import bcpw;
-import bfol;
-import bfoy;
+import aoeb;
+import aptx;
+import bbfj;
+import bcql;
+import bfpc;
+import bfpp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -39,14 +39,14 @@ import java.util.List;
 
 public class TroopAIOEmotionFragment
   extends IphoneTitleBarFragment
-  implements aarw, aegt, View.OnClickListener
+  implements aars, aegr, View.OnClickListener
 {
-  private aarv jdField_a_of_type_Aarv;
-  private afck jdField_a_of_type_Afck;
+  private aarr jdField_a_of_type_Aarr;
+  private afci jdField_a_of_type_Afci;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private List<aodw> jdField_a_of_type_JavaUtilList;
+  private List<aoeb> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private ImageView b;
   
@@ -55,12 +55,12 @@ public class TroopAIOEmotionFragment
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     setRightButton(2131690000, this);
-    this.jdField_a_of_type_Aarv.e();
+    this.jdField_a_of_type_Aarr.e();
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((aodw)localIterator.next()).jdField_a_of_type_Boolean = false;
+        ((aoeb)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
@@ -70,17 +70,17 @@ public class TroopAIOEmotionFragment
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Aarv != null) {
-      this.jdField_a_of_type_Aarv.a(paramLong);
+    if (this.jdField_a_of_type_Aarr != null) {
+      this.jdField_a_of_type_Aarr.a(paramLong);
     }
   }
   
-  public void a(aodw paramaodw)
+  public void a(aoeb paramaoeb)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramaodw);
+    this.jdField_a_of_type_JavaUtilList.add(paramaoeb);
     if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
@@ -102,7 +102,7 @@ public class TroopAIOEmotionFragment
         if (QLog.isColorLevel()) {
           QLog.d("IphoneTitleBarFragment", 2, "isOverLimit");
         }
-        aptv.a(2131692562);
+        aptx.a(2131692563);
       }
       return bool;
     }
@@ -113,13 +113,13 @@ public class TroopAIOEmotionFragment
     ThreadManager.excute(new TroopAIOEmotionFragment.2(this), 32, null, true);
   }
   
-  public void b(aodw paramaodw)
+  public void b(aoeb paramaoeb)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {}
     do
     {
       return;
-      this.jdField_a_of_type_JavaUtilList.remove(paramaodw);
+      this.jdField_a_of_type_JavaUtilList.remove(paramaoeb);
     } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839109);
     this.b.setImageResource(2130839083);
@@ -130,21 +130,21 @@ public class TroopAIOEmotionFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     setTitle(this.mContentView.getContext().getResources().getString(2131692067));
     setRightButton(2131690000, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131369736));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131369735));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131366634));
-    this.b = ((ImageView)this.mContentView.findViewById(2131364979));
+    this.b = ((ImageView)this.mContentView.findViewById(2131364978));
     this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131367537);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Aarv = new aarv();
-    this.jdField_a_of_type_Aarv.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
-    this.jdField_a_of_type_Aarv.a = this;
+    this.jdField_a_of_type_Aarr = new aarr();
+    this.jdField_a_of_type_Aarr.a(getActivity().getIntent(), paramLayoutInflater, getActivity());
+    this.jdField_a_of_type_Aarr.a = this;
     paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aarv.a(), 0, paramLayoutInflater);
-    this.jdField_a_of_type_Afck = new afck(getActivity(), 1);
-    this.jdField_a_of_type_Afck.a();
-    aegr.a().a(this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aarr.a(), 0, paramLayoutInflater);
+    this.jdField_a_of_type_Afci = new afci(getActivity(), 1);
+    this.jdField_a_of_type_Afci.a();
+    aegp.a().a(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -171,7 +171,7 @@ public class TroopAIOEmotionFragment
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 == -1) && (paramInt1 == 1)) {
-      this.jdField_a_of_type_Afck.a(paramIntent);
+      this.jdField_a_of_type_Afci.a(paramIntent);
     }
   }
   
@@ -189,7 +189,7 @@ public class TroopAIOEmotionFragment
         this.b.setEnabled(false);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
         setRightButton(2131690596, this);
-        this.jdField_a_of_type_Aarv.d();
+        this.jdField_a_of_type_Aarr.d();
         return;
       }
       c();
@@ -197,54 +197,54 @@ public class TroopAIOEmotionFragment
     case 2131366634: 
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        aptv.c(2131692559);
+        aptx.c(2131692560);
         return;
       }
-      if (!bbev.d(BaseApplication.getContext()))
+      if (!bbfj.d(BaseApplication.getContext()))
       {
-        bcpw.a(getActivity(), 2131694672, 1).b(getResources().getDimensionPixelSize(2131298865));
+        bcql.a(getActivity(), 2131694673, 1).b(getResources().getDimensionPixelSize(2131298865));
         return;
       }
       paramView = new ArrayList();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        paramView.add((ChatMessage)((aodw)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        paramView.add((ChatMessage)((aoeb)localIterator.next()).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
       }
-      this.jdField_a_of_type_Afck.a(paramView);
+      this.jdField_a_of_type_Afci.a(paramView);
       c();
       return;
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      aptv.c(2131692559);
+      aptx.c(2131692560);
       return;
     }
-    paramView = (bfol)bfoy.a(getActivity(), null);
-    paramView.a(2131696395);
+    paramView = (bfpc)bfpp.a(getActivity(), null);
+    paramView.a(2131696396);
     paramView.a(getActivity().getString(2131692409), 3);
     paramView.c(2131690596);
-    paramView.a(new afcn(this, paramView));
+    paramView.a(new afcl(this, paramView));
     paramView.show();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Aarv.c();
-    this.jdField_a_of_type_Afck.b();
-    aegr.a().b(this);
+    this.jdField_a_of_type_Aarr.c();
+    this.jdField_a_of_type_Afci.b();
+    aegp.a().b(this);
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Aarv.b();
+    this.jdField_a_of_type_Aarr.b();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Aarv.a();
+    this.jdField_a_of_type_Aarr.a();
   }
 }
 

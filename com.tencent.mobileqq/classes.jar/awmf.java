@@ -1,111 +1,57 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class awmf
-  extends awlu
+class awmf
+  extends ajxt
 {
-  private int a;
-  private String b;
-  private String c;
+  awmf(awmb paramawmb) {}
   
-  public awmf(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    super(paramQQAppInterface, paramString, paramArrayList, paramFTSEntity);
-    paramQQAppInterface = (FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity;
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramQQAppInterface.uin);
-    this.jdField_c_of_type_JavaLangString = paramQQAppInterface.senderuin;
-    this.jdField_a_of_type_Int = paramQQAppInterface.istroop;
-    a();
-  }
-  
-  public CharSequence a()
-  {
-    FTSMessage localFTSMessage;
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
+    super.a(paramBoolean, paramArrayList, paramArrayList1);
+    paramArrayList1 = (String)paramArrayList1.get(0);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() >= 1))
     {
-      localFTSMessage = (FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity;
-      if (localFTSMessage.matchTitle == null) {
-        break label35;
+      paramArrayList = ((ArrayList)paramArrayList.get(0)).iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (String)paramArrayList.next();
+        if (((String)localObject).charAt(0) < '')
+        {
+          localObject = bbmo.b((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              localStringBuilder.append(localObject[i]).append(" ");
+              i += 1;
+            }
+          }
+        }
+        else
+        {
+          localStringBuilder.append((String)localObject).append(" ");
+        }
       }
-      this.jdField_b_of_type_JavaLangCharSequence = localFTSMessage.matchTitle;
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_JavaLangCharSequence;
-      label35:
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localFTSMessage.senderuin);
-      SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      if ("80000000".equals(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangCharSequence = ajyc.a(2131704952);
-      } else {
-        this.jdField_b_of_type_JavaLangCharSequence = bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, bool, localFTSMessage.senderuin);
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
       }
     }
-  }
-  
-  public void a(View paramView)
-  {
-    ahpf.jdField_a_of_type_Boolean = true;
-    FTSMessage localFTSMessage = (FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity;
-    if (localFTSMessage.msgExts != null) {
-      if ((localFTSMessage.istroop != 1) && (localFTSMessage.istroop != 3000)) {
-        break label173;
+    awmb.a(this.a).put(paramArrayList1, localStringBuilder);
+    paramArrayList = awmb.b(this.a).get(paramArrayList1);
+    if (paramArrayList != null) {
+      try
+      {
+        paramArrayList.notify();
+        return;
       }
+      finally {}
     }
-    label173:
-    for (ahpf.jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).shmsgseq;; ahpf.jdField_a_of_type_Long = ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time)
-    {
-      bbmb.d = localFTSMessage.searchStrategy;
-      bbmb.f = 1;
-      bbmb.g = this.jdField_a_of_type_Int;
-      bbmb.h = ((FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity).senderNum;
-      bbmb.i = ((FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity).friendNum;
-      bbmb.j = ((FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity).friendIndex;
-      bbma.a(paramView);
-      ahpf.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int), false);
-      akgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      awvy.a(this.jdField_a_of_type_JavaLangString, 40, paramView, true);
-      return;
-    }
-  }
-  
-  public String b()
-  {
-    return String.valueOf(((FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity).senderuin);
-  }
-  
-  public CharSequence c()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
-    {
-      this.jdField_a_of_type_JavaLangCharSequence = "";
-      FTSMessage localFTSMessage = (FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity;
-      if (localFTSMessage.msgExts != null) {
-        this.jdField_a_of_type_JavaLangCharSequence = bbkb.a(BaseApplicationImpl.sApplication, 3, ((FTSMessageCodec.TextMsgExts)localFTSMessage.msgExts).time * 1000L);
-      }
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public CharSequence e()
-  {
-    if (this.jdField_c_of_type_JavaLangCharSequence == null)
-    {
-      FTSMessage localFTSMessage = (FTSMessage)this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity;
-      if (localFTSMessage.matchSecondTitle != null) {
-        this.jdField_c_of_type_JavaLangCharSequence = localFTSMessage.matchSecondTitle;
-      }
-    }
-    return this.jdField_c_of_type_JavaLangCharSequence;
   }
 }
 

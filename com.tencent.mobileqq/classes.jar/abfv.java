@@ -1,24 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abfv
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public abfv(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public abfv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (paramView.getId() == 2131364978)
+    {
+      paramView = this.a.jdField_a_of_type_Abgg.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
+      {
+        bfpc localbfpc = (bfpc)bfpp.a(this.a, null);
+        localbfpc.a(2131693381, 3);
+        localbfpc.c(2131690596);
+        localbfpc.a(new abfw(this, paramView, localbfpc));
+        localbfpc.show();
+      }
     }
   }
 }

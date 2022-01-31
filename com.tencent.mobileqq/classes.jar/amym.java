@@ -1,83 +1,33 @@
 import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import java.util.Arrays;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
 
-public class amym
+class amym
+  implements amxr
 {
-  private final String jdField_a_of_type_JavaLangString;
-  public final boolean a;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private final String c;
-  private final String d;
+  amym(amyj paramamyj) {}
   
-  public amym()
+  public void a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    this.c = null;
-    this.d = null;
-  }
-  
-  public amym(String paramString1, boolean paramBoolean, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString1;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString2;
-    if ("AIO".equals(paramString1))
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    if (Build.VERSION.SDK_INT >= 9)
     {
-      this.c = "0X800A647";
-      this.d = "0X800A648";
-      return;
+      localIntent.setAction(amyj.a(this.a));
+      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
     }
-    if ("group".equals(paramString1))
+    for (;;)
     {
-      this.c = "0X800A649";
-      this.d = "0X800A64A";
+      paramContext.startActivity(localIntent);
       return;
-    }
-    if ("download".equals(paramString1))
-    {
-      this.c = "0X800A64B";
-      this.d = "0X800A64C";
-      return;
-    }
-    this.c = null;
-    this.d = null;
-  }
-  
-  public SpannableString a(Context paramContext, CharSequence paramCharSequence)
-  {
-    paramCharSequence = paramCharSequence + this.jdField_b_of_type_JavaLangString;
-    SpannableString localSpannableString = new SpannableString(paramCharSequence);
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      String str1 = this.jdField_a_of_type_ArrayOfJavaLangString[i];
-      String str2 = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {}
-      for (;;)
+      if (Build.VERSION.SDK_INT <= 8)
       {
-        i += 1;
-        break;
-        int j = paramCharSequence.indexOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        localSpannableString.setSpan(new amyn(this, str2, paramContext), j, str1.length() + j, 33);
+        localIntent.setAction("android.intent.action.VIEW");
+        localIntent.setClassName("com.android.settings", amyj.a(this.a));
+        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
       }
     }
-    axqw.b(null, "dc00898", "", "", this.c, this.c, 2, 0, "", "", "", "");
-    return localSpannableString;
-  }
-  
-  public String toString()
-  {
-    return "Item{enable=" + this.jdField_a_of_type_Boolean + ", content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", keyWords=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + ", actionUrls=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

@@ -1,45 +1,18 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Arrays;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
-class ulh
-  implements Handler.Callback
+public class ulh
+  extends umw
 {
-  private ulh(ulf paramulf) {}
+  public ulh(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    int k = 0;
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      ulf.a(this.a, new Error((Throwable)paramMessage.obj));
-      return true;
-    }
-    paramMessage = (Bitmap[])paramMessage.obj;
-    int m = paramMessage.length;
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < m)
-      {
-        if (paramMessage[i] == null) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j == 0) {
-          ulf.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
-      }
-      i += 1;
-    }
+    tll localtll = new tll();
+    localtll.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localtll.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    stb.a().dispatch(localtll);
   }
 }
 

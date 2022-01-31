@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import begz;
-import beig;
-import beka;
-import beuc;
+import behq;
+import beix;
+import bekr;
+import beut;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,16 +14,16 @@ import org.json.JSONObject;
 class InternalJSPlugin$1
   implements Runnable
 {
-  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, beka parambeka) {}
+  InternalJSPlugin$1(InternalJSPlugin paramInternalJSPlugin, bekr parambekr) {}
   
   public void run()
   {
-    Object localObject2 = beig.a(this.this$0.mContext, String.valueOf(beuc.a().a()), this.this$0.mMiniAppContext.a().appId);
+    Object localObject2 = beix.a(this.this$0.mContext, String.valueOf(beut.a().a()), this.this$0.mMiniAppContext.a().appId);
     String[] arrayOfString;
     if (localObject2 != null)
     {
-      arrayOfString = ((beig)localObject2).a("");
-      ((beig)localObject2).a();
+      arrayOfString = ((beix)localObject2).a("");
+      ((beix)localObject2).a();
     }
     for (;;)
     {

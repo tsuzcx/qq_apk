@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
-import bekz;
-import besl;
+import belq;
+import betc;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -33,14 +33,14 @@ public class ProxyServiceList
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      besl.a("ProxyServiceList", "ProxyService: " + localEntry);
+      betc.a("ProxyServiceList", "ProxyService: " + localEntry);
     }
     return localHashMap;
   }
   
   private static Map<String, String> getProxyServices(String paramString)
   {
-    paramString = bekz.a(paramString, "PROXY_SERVICES");
+    paramString = belq.a(paramString, "PROXY_SERVICES");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }

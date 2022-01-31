@@ -1,34 +1,25 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class bgoq
+  extends BroadcastReceiver
 {
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  public bgoq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramContext == null)
+    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
-      }
-      Toast.makeText(BaseApplication.getContext(), ajyc.a(2131710695), 0).show();
-      return;
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
-    localIntent.putExtra("componetname", paramString);
-    if (paramBundle != null) {
-      localIntent.putExtra("_param_", paramBundle);
-    }
-    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgoq
  * JD-Core Version:    0.7.0.1
  */

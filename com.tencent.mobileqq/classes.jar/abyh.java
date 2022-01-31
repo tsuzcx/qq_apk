@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class abyh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public abyh(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
+  public abyh(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, ajyc.a(2131713342) + ajyc.a(2131713363) + this.jdField_a_of_type_JavaLangString + ajyc.a(2131713341) + this.b + ajyc.a(2131713334));
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131720659);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

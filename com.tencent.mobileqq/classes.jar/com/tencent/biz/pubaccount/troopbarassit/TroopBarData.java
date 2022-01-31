@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class TroopBarData
-  extends aukm
+  extends auko
 {
   public boolean mIsSticky;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public long mLastStickyTime;
-  @aulx
+  @aulz
   public MessageRecord mLatestMessage;
-  @auma
+  @aumc
   public String mUin;
   
   public String getTableName()

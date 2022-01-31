@@ -1,31 +1,31 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class bjbl
-  implements Handler.Callback
+public class bjbl
+  extends RecyclerView.ItemDecoration
 {
-  bjbl(bjbk parambjbk) {}
+  int a = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
   
-  public boolean handleMessage(Message paramMessage)
+  public bjbl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a())
-      {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-        continue;
-        this.a.a.removeMessages(3);
-        if (this.a.b()) {
-          this.a.a.sendEmptyMessageDelayed(3, 50L);
-        }
-      }
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.left = this.a;
+    paramRect.right = this.b;
+    paramRect.bottom = this.d;
+    paramRect.top = this.c;
   }
 }
 

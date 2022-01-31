@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import aukm;
-import aukn;
 import auko;
+import aukp;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
 
@@ -13,30 +13,30 @@ public final class RecommendTroopManagerImp$4
   
   public void run()
   {
-    aukn localaukn;
+    aukp localaukp;
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
-      localaukn = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
+      localaukp = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
     }
     for (;;)
     {
-      if (localaukn == null) {}
+      if (localaukp == null) {}
       for (;;)
       {
         return;
         if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
           break label89;
         }
-        localaukn = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
+        localaukp = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
         break;
         if (this.jdField_a_of_type_Int == 2) {}
-        for (aukm localaukm = localaukn.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localaukm != null; localaukm = null)
+        for (auko localauko = localaukp.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localauko != null; localauko = null)
         {
-          localaukn.b(localaukm);
+          localaukp.b(localauko);
           return;
         }
       }
       label89:
-      localaukn = null;
+      localaukp = null;
     }
   }
 }

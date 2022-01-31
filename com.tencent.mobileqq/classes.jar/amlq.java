@@ -1,78 +1,127 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.comment.DanmuItemBean;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.widget.RoundImageView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class amlq
+  extends anhk
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  private int jdField_a_of_type_Int;
+  private alxf jdField_a_of_type_Alxf;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+  private ViewGroup.LayoutParams jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, List<amlu>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private int b;
   
-  public amlq(DanmuItemBean paramDanmuItemBean)
+  public amlq(Context paramContext)
   {
-    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
-    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
-    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
-    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
-    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = Color.parseColor("#00CAFC");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    this.b = ChatTextSizeSettingActivity.a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = new ViewGroup.LayoutParams(-2, baxn.a(paramContext, 21.0F));
+    b();
   }
   
-  public String a()
+  private void a(amlp paramamlp, RoundImageView paramRoundImageView, angi paramangi)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
-      return str + " : " + this.jdField_c_of_type_JavaLangString;
+    if (paramamlp.jdField_a_of_type_Boolean)
+    {
+      paramamlp = myb.a(paramamlp.jdField_a_of_type_Int);
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      localObject = URLDrawable.getDrawable(paramamlp, (URLDrawable.URLDrawableOptions)localObject);
+      if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
+      {
+        paramRoundImageView.setImageDrawable((Drawable)localObject);
+        return;
+      }
+      ((URLDrawable)localObject).setURLDrawableListener(new amls(this, paramRoundImageView, paramangi, paramamlp));
+      ((URLDrawable)localObject).startDownload();
+      return;
+    }
+    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramamlp.jdField_a_of_type_JavaLangString);
+    Object localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    ((List)localObject).add(new amlu(this, paramRoundImageView, paramangi));
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramamlp.jdField_a_of_type_JavaLangString, localObject);
+    paramRoundImageView.setImageBitmap(this.jdField_a_of_type_Alxf.a(paramamlp.jdField_a_of_type_JavaLangString, true));
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Alxf = new alxf(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Alxf.a();
+    this.jdField_a_of_type_Alxf.a(new amlr(this));
+  }
+  
+  public anhl a(int paramInt)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558817, null);
+    localView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    return new amlt(this, localView);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Alxf != null) {
+      this.jdField_a_of_type_Alxf.b();
     }
   }
   
-  public boolean equals(Object paramObject)
+  public void a(int paramInt, anhl paramanhl, angi paramangi)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof amlq))
+    amlp localamlp;
+    ETTextView localETTextView;
+    if ((paramangi != null) && ((paramangi.a() instanceof amlp)) && ((paramanhl instanceof amlt)))
     {
-      paramObject = (amlq)paramObject;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
-      {
-        bool1 = bool2;
-        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
-        {
-          bool1 = bool2;
-          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
-          {
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-            {
-              bool1 = bool2;
-              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
-              {
-                bool1 = bool2;
-                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
+      localamlp = (amlp)paramangi.a();
+      paramanhl = (amlt)paramanhl;
+      paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText(new aykk(localamlp.a(), 13, this.b));
+      localETTextView = paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+      if (!a(localamlp.jdField_a_of_type_JavaLangString)) {
+        break label111;
       }
     }
-    return bool1;
-  }
-  
-  public int hashCode()
-  {
-    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
+    label111:
+    for (paramInt = this.jdField_a_of_type_Int;; paramInt = -1)
+    {
+      localETTextView.setTextColor(paramInt);
+      paramanhl.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setAlpha(0.85F);
+      a(localamlp, paramanhl.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView, paramangi);
+      return;
+    }
   }
 }
 

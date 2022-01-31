@@ -1,21 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
+import com.tencent.qqmini.sdk.core.widget.WebViewProgressBar;
 
 public class benw
-  implements VideoPlayerProxy.OnCaptureImageListener
 {
-  public benw(MiniAppVideoPlayer.17 param17) {}
+  private byte jdField_a_of_type_Byte;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  protected WebViewProgressBar a;
+  private int b;
   
-  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
+  public byte a()
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
-    }
+    return this.jdField_a_of_type_Byte;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(WebViewProgressBar paramWebViewProgressBar)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetWebViewProgressBar = paramWebViewProgressBar;
   }
 }
 

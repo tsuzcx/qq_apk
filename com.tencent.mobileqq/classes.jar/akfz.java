@@ -1,106 +1,149 @@
-import GROUP.MessageRemindRsp;
-import MQQ.GetRoamToastRsp;
-import QC.BubbleRecommendRsp;
-import QC.FaceRsp;
-import QC.FontRecommendRsp;
-import QC.SetFontBubbleRsp;
-import android.os.Bundle;
+import android.content.Intent;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AccountSecurityInfo.SecCheckBanner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
+import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 
 public class akfz
-  implements ajtg
+  extends ajtb
 {
-  public void a() {}
+  public static int a;
   
-  public void a(int paramInt) {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
-  
-  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp) {}
-  
-  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
-  
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp) {}
-  
-  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp) {}
-  
-  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void c(boolean paramBoolean, Object paramObject) {}
-  
-  public void d(boolean paramBoolean, Object paramObject) {}
-  
-  public void e(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public akfz(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    super(paramQQAppInterface);
+  }
+  
+  public static void a()
+  {
+    try
     {
-    default: 
-    case 101: 
-      do
-      {
-        return;
-        if ((paramObject instanceof Integer))
-        {
-          a(((Integer)paramObject).intValue());
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
-      return;
-    case 100: 
-      a();
-      return;
-    case 102: 
-      b(paramBoolean, paramObject);
-      return;
-    case 103: 
-      c(paramBoolean, paramObject);
-      return;
-    case 104: 
-      d(paramBoolean, paramObject);
-      return;
-    case 105: 
-      a(paramBoolean, paramObject);
-      return;
-    case 106: 
-      e(paramBoolean, paramObject);
-      return;
-    case 113: 
-      a(paramBoolean, (MessageRemindRsp)paramObject);
-      return;
-    case 107: 
-      a(paramBoolean, (FontRecommendRsp)paramObject);
-      return;
-    case 108: 
-      a(paramBoolean, (BubbleRecommendRsp)paramObject);
-      return;
-    case 109: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 110: 
-      a((Bundle)paramObject);
-      return;
-    case 111: 
-      a(paramBoolean, (GetRoamToastRsp)paramObject);
-      return;
-    case 112: 
-      a(paramBoolean, (FaceRsp)paramObject);
+      a += 1;
       return;
     }
-    paramObject = (Object[])paramObject;
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
+  
+  public static void b()
+  {
+    try
+    {
+      a -= 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    Object localObject = new MsgBody();
+    do
+    {
+      try
+      {
+        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                for (;;)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
+                  }
+                  paramArrayOfByte.printStackTrace();
+                }
+                switch (((MsgBody)localObject).uint32_sec_cmd.get())
+                {
+                case 5: 
+                default: 
+                  return;
+                case 1: 
+                  new xqf(this.app).a();
+                  return;
+                case 2: 
+                  paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
+                  paramArrayOfByte = new bcxp(this.app.getApp().getApplicationContext(), paramArrayOfByte);
+                }
+              } while (paramArrayOfByte == null);
+              paramArrayOfByte = (bcxs)paramArrayOfByte.a("intchk");
+            } while (paramArrayOfByte == null);
+            paramArrayOfByte.a(1, new MSFIntChkStrike(this.app, 1));
+            paramArrayOfByte.a(2, new MSFIntChkStrike(this.app, 2));
+            paramArrayOfByte.a(3, new MSFIntChkStrike(this.app, 3));
+            paramArrayOfByte.b("8.3.0." + AppSetting.g());
+            return;
+            paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
+            paramArrayOfByte = new bcxp(this.app.getApp().getApplicationContext(), paramArrayOfByte);
+          } while (paramArrayOfByte == null);
+          paramArrayOfByte = (bcxr)paramArrayOfByte.a("app_scan");
+        } while (paramArrayOfByte == null);
+        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
+        return;
+        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
+        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
+        try
+        {
+          paramArrayOfByte.mergeFrom((byte[])localObject);
+          localObject = paramArrayOfByte.str_wording.get();
+          int i = paramArrayOfByte.u32_timeToShow.get();
+          paramArrayOfByte = new Intent();
+          paramArrayOfByte.putExtra("wording", (String)localObject);
+          paramArrayOfByte.putExtra("timetowait", i);
+          this.app.a(paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          for (;;)
+          {
+            localInvalidProtocolBufferMicroException.printStackTrace();
+          }
+        }
+        new QPTxVerifyApkTimerTask(this.app, true).a();
+        return;
+      }
+    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
+    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

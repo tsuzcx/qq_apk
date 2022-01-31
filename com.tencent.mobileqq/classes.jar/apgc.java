@@ -1,6 +1,15 @@
-public abstract interface apgc
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class apgc
+  implements View.OnClickListener
 {
-  public abstract void a();
+  apgc(apgb paramapgb, awoi paramawoi) {}
+  
+  public void onClick(View paramView)
+  {
+    ((apga)this.jdField_a_of_type_Awoi).a(paramView);
+  }
 }
 
 

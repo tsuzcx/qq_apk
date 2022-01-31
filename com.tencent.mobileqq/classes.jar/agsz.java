@@ -1,16 +1,18 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
 class agsz
-  implements bfpe
+  implements View.OnClickListener
 {
-  agsz(agsw paramagsw) {}
+  agsz(agsu paramagsu) {}
   
-  public void a(AdapterView<?> paramAdapterView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.a.a(paramAdapterView, paramView, paramInt, paramLong);
+    ((NewPhotoPreviewActivity)this.a.a.get()).finish();
+    bbbx.a((Activity)this.a.a.get(), true, false);
   }
 }
 

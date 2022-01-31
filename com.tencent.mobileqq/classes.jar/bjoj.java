@@ -1,24 +1,19 @@
-import android.support.annotation.NonNull;
-
-public class bjoj
-  implements bjoi
+class bjoj<K, V>
+  extends bjom<K, V>
 {
-  @NonNull
-  public <T extends bjof> T a(@NonNull Class<T> paramClass)
+  bjoj(bjok<K, V> parambjok1, bjok<K, V> parambjok2)
   {
-    try
-    {
-      bjof localbjof = (bjof)paramClass.newInstance();
-      return localbjof;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-    }
+    super(parambjok1, parambjok2);
+  }
+  
+  bjok<K, V> a(bjok<K, V> parambjok)
+  {
+    return parambjok.b;
+  }
+  
+  bjok<K, V> b(bjok<K, V> parambjok)
+  {
+    return parambjok.a;
   }
 }
 

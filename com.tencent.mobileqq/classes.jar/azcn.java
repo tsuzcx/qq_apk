@@ -1,29 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.widget.ListView;
 import java.util.List;
 
-class azcn
-  implements View.OnClickListener
+public class azcn
 {
-  private azco jdField_a_of_type_Azco;
-  private azcp jdField_a_of_type_Azcp;
+  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private azcr jdField_a_of_type_Azcr;
   
-  public azcn(azcp paramazcp)
+  public azcn(Context paramContext, ListView paramListView)
   {
-    this.jdField_a_of_type_Azcp = paramazcp;
+    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
+    this.jdField_a_of_type_Azcr = new azcr(paramContext);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Azcr);
   }
   
-  public void a(azco paramazco)
+  public void a(azcq paramazcq)
   {
-    this.jdField_a_of_type_Azco = paramazco;
+    if (this.jdField_a_of_type_Azcr != null) {
+      this.jdField_a_of_type_Azcr.a(paramazcq);
+    }
   }
   
-  public void onClick(View paramView)
+  public void a(List<azcs> paramList)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    azcp.a(this.jdField_a_of_type_Azcp, i);
-    if (this.jdField_a_of_type_Azco != null) {
-      this.jdField_a_of_type_Azco.a((azcq)azcp.a(this.jdField_a_of_type_Azcp).get(i));
+    if (this.jdField_a_of_type_Azcr != null) {
+      this.jdField_a_of_type_Azcr.a(paramList);
     }
   }
 }

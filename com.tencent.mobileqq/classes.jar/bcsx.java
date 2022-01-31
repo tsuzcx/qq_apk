@@ -1,16 +1,8 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
-
-public class bcsx
-  extends StateListDrawable
+public abstract interface bcsx
 {
-  public bcsx(int paramInt1, int paramInt2)
-  {
-    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
-    addState(new int[] { 16842919 }, localColorDrawable);
-    localColorDrawable = new ColorDrawable(paramInt2);
-    addState(new int[] { 16842921 }, localColorDrawable);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

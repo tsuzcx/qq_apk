@@ -1,26 +1,26 @@
 package cooperation.liveroom;
 
-import bbwf;
-import bbwg;
+import bbwt;
+import bbwu;
 
 class LiveRoomDownloadManager$1
-  extends bbwf
+  extends bbwt
 {
   LiveRoomDownloadManager$1(LiveRoomDownloadManager paramLiveRoomDownloadManager, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onDone(bbwu parambbwu)
   {
-    super.onDone(parambbwg);
+    super.onDone(parambbwu);
     if (this.val$callback != null)
     {
-      if (parambbwg.a() == 3) {
-        this.val$callback.onSuccess(parambbwg.a(), parambbwg.a);
+      if (parambbwu.a() == 3) {
+        this.val$callback.onSuccess(parambbwu.a(), parambbwu.a);
       }
     }
     else {
       return;
     }
-    this.val$callback.onFailure(parambbwg.a(), parambbwg.a);
+    this.val$callback.onFailure(parambbwu.a(), parambbwu.a);
   }
 }
 

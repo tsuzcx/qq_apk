@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import axeh;
+import axej;
 
 class ArtFilterBridgeActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    axeh.a(this.this$0.app);
+    axej.a(this.this$0.app);
   }
 }
 

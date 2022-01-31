@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class MiniAppShowInfoEntity
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String appId;
   public String appName;
   public String desc;

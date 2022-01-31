@@ -1,56 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import com.tencent.common.app.AppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class uop
+  extends SimpleJob<Void>
 {
-  private atzm jdField_a_of_type_Atzm = new uoq(this);
-  public MystoryListView a;
-  protected NewMessageYellowBar a;
-  protected AppInterface a;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public void a()
+  public uop(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Atzm);
-    }
+    super(paramString);
   }
   
-  public void a(AppInterface paramAppInterface, View paramView, MystoryListView paramMystoryListView)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (!(paramView instanceof NewMessageYellowBar)) {
-      throw new IllegalArgumentException("StoryHomePushYellowBarHandler 传入View不对");
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new uor(this));
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Atzm);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.a(0, 0);
-    ((mxx)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(70)).a(21);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Atzm);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Atzm);
-    }
+    ved.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(svl.a()) });
+    return null;
   }
 }
 

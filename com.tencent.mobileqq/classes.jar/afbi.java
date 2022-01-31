@@ -1,27 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
 public class afbi
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   public afbi(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
+    if (!bbfj.g(this.a.getApplicationContext())) {
+      bcql.a(this.a, 2131694972, 1).a();
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
-      }
-      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
-      paramContext.putExtra("broadcastType", 1);
-      this.a.app.getApp().sendBroadcast(paramContext);
-      this.a.finish();
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
     }
   }
 }

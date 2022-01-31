@@ -1,10 +1,22 @@
-class apeo
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class apeo
+  implements Cloneable
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long b;
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  apeo(apen paramapen) {}
+  public apeo(apen paramapen) {}
 }
 
 

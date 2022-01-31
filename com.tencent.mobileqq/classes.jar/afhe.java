@@ -1,32 +1,35 @@
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class afhe
-  implements afqu
+  implements afto
 {
   public afhe(TroopView paramTroopView) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = TroopView.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (bbfj.g(BaseApplication.getContext()))
     {
-      paramObject = paramObject.obtainMessage(14, paramInt, i);
-      TroopView.a(this.a).sendMessage(paramObject);
+      if (this.a.a.size() > 0)
+      {
+        if ((TroopView.a(this.a) != null) && (TroopView.a(this.a) != null)) {
+          TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
+        }
+        return;
+      }
+      TroopView.b(this.a);
       return;
     }
-  }
-  
-  public void am_()
-  {
-    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
-      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
     }
+    Message localMessage = TroopView.a(this.a).obtainMessage(13);
+    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
   }
 }
 

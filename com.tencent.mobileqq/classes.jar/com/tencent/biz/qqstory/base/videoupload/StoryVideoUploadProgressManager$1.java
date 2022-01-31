@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
-import swa;
+import svx;
 
 public class StoryVideoUploadProgressManager$1
   implements Runnable
 {
-  public StoryVideoUploadProgressManager$1(swa paramswa, String paramString, int paramInt) {}
+  public StoryVideoUploadProgressManager$1(svx paramsvx, String paramString, int paramInt) {}
   
   public void run()
   {
-    swa.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    svx.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

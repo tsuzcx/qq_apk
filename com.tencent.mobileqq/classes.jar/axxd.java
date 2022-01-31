@@ -1,96 +1,50 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.now.NowVideoLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class axxd
-  extends axuo
+class axxd
+  implements View.OnTouchListener
 {
-  private QQAppInterface a;
+  axxd(axxb paramaxxb, View paramView) {}
   
-  protected int b()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 18;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemLayout18", 2, "getView.");
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    paramContext.getResources();
-    if ((paramBundle instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    paramBundle = null;
-    if (((Iterator)localObject2).hasNext())
+    switch (paramMotionEvent.getAction())
     {
-      axun localaxun = (axun)((Iterator)localObject2).next();
-      if (!"live".equals(localaxun.a)) {
-        break label255;
-      }
-      paramBundle = (axvw)localaxun;
     }
-    label247:
-    label255:
     for (;;)
     {
-      break;
-      if (paramBundle == null)
+      return false;
+      if (!this.jdField_a_of_type_Axxb.b)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
+        this.jdField_a_of_type_Axxb.b = true;
+        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131373071);
+        paramMotionEvent = localObjectAnimator;
+        if (localObjectAnimator == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          }
+          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+          paramMotionEvent.setDuration(100L);
+          paramView.setTag(2131373071, paramMotionEvent);
         }
-        return null;
+        paramMotionEvent.start();
       }
-      if (paramView != null)
-      {
-        paramContext = (axxe)paramView.getTag();
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = paramContext;
-        paramContext = (Context)localObject2;
-        if (paramView != null) {
-          break label247;
-        }
-        paramView = new axxe();
-        paramView.jdField_a_of_type_Axvw = paramBundle;
-        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
-      }
-      for (;;)
-      {
-        ((View)localObject1).setTag(paramView);
-        paramView = ((View)localObject1).findViewById(2131376581);
-        if (paramView != null) {
-          paramView.setOnClickListener(paramBundle.a);
-        }
-        if (paramContext != null) {
-          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
-        return localObject1;
-        localObject2 = paramBundle.a(paramContext, null, null);
-        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131376581);
-        paramContext.a();
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        break;
-        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
+      return true;
+      this.jdField_a_of_type_Axxb.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Axxb.b = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131373071);
+      if (paramView != null) {
+        paramView.reverse();
       }
     }
-  }
-  
-  public String b()
-  {
-    return "Layout18";
   }
 }
 

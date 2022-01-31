@@ -1,33 +1,35 @@
-import android.os.SystemClock;
+import android.graphics.Matrix;
 
 public class mvq
 {
-  public final int a;
-  public final long a;
-  public final boolean a;
-  public int[] a;
-  public final int b;
-  public final int c;
-  public int d;
-  public int e;
+  public float a;
+  public int a;
+  public final Matrix a;
+  public mvn a;
+  public mvp a;
+  public mvq a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  private mvq(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private mvq()
   {
-    this.b = mvi.a(paramInt1, 20000);
-    this.c = paramInt2;
-    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
-    this.e = paramInt1;
-    paramInt1 = mvi.a(paramInt1, this.c, 20000, true);
-    if (paramInt1 > 10000) {
-      this.d = (20000 - paramInt1);
-    }
-    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
-    {
-      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
-      return;
-      this.d = paramInt1;
-    }
-    this.jdField_a_of_type_Int = paramInt3;
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  public void a(mvq parammvq)
+  {
+    this.jdField_a_of_type_Int = parammvq.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Float = parammvq.jdField_a_of_type_Float;
+    this.b = parammvq.b;
+    this.c = parammvq.c;
+    this.d = parammvq.d;
+    this.e = parammvq.e;
+    this.f = parammvq.d;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(parammvq.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_Mvn = parammvq.jdField_a_of_type_Mvn;
   }
 }
 

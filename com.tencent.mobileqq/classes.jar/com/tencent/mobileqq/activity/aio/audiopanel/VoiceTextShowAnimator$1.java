@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import adco;
-import adcp;
+import adcl;
+import adcm;
 import java.util.TimerTask;
 
 public class VoiceTextShowAnimator$1
   extends TimerTask
 {
-  public VoiceTextShowAnimator$1(adco paramadco) {}
+  public VoiceTextShowAnimator$1(adcl paramadcl) {}
   
   public void run()
   {
-    int i = adco.a(this.this$0) / 3;
-    adco.a(this.this$0, adco.a()[(i % 3)]);
-    if (adco.a(this.this$0) != null) {
-      adco.a(this.this$0).h();
+    int i = adcl.a(this.this$0) / 3;
+    adcl.a(this.this$0, adcl.a()[(i % 3)]);
+    if (adcl.a(this.this$0) != null) {
+      adcl.a(this.this$0).h();
     }
   }
 }

@@ -1,112 +1,96 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public abstract class aiwa<T>
+public class aiwa
 {
-  protected final List<aiwd> a = new ArrayList();
-  
-  public void a(boolean paramBoolean)
+  public static int a(Paint paramPaint)
   {
-    try
-    {
-      this.a.clear();
+    return (int)(1.0F + paramPaint.measureText(ajya.a(2131700304)));
+  }
+  
+  public static void a(int paramInt1, int paramInt2, aiwc paramaiwc, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    a(null, paramInt1, paramInt2, paramaiwc, paramContext, paramString1, paramString2, paramBoolean);
+  }
+  
+  public static void a(aiwc paramaiwc, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (paramaiwc != null) {
+      a(paramaiwc.a(), paramaiwc.b(), paramaiwc, paramContext, paramString1, paramString2, paramBoolean);
+    }
+  }
+  
+  public static void a(String paramString1, int paramInt1, int paramInt2, aiwc paramaiwc, Context paramContext, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if ((paramaiwc == null) || (paramContext == null) || (TextUtils.isEmpty(paramString3))) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (paramString3.length() > 12) {
+      paramString3 = paramString3.substring(0, 11) + "...";
     }
-  }
-  
-  /* Error */
-  public boolean a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 17	aiwa:a	Ljava/util/List;
-    //   6: invokeinterface 28 1 0
-    //   11: istore_1
-    //   12: iload_1
-    //   13: ifne +9 -> 22
-    //   16: iconst_1
-    //   17: istore_1
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload_1
-    //   21: ireturn
-    //   22: iconst_0
-    //   23: istore_1
-    //   24: goto -6 -> 18
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	aiwa
-    //   11	13	1	bool	boolean
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	27	finally
-  }
-  
-  public boolean a(aiwd paramaiwd)
-  {
-    try
+    for (;;)
     {
-      boolean bool = this.a.remove(paramaiwd);
-      return bool;
+      int i = paramInt1;
+      if (paramInt1 == 0) {
+        i = paramaiwc.a();
+      }
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = paramaiwc.b();
+      }
+      long l = System.currentTimeMillis();
+      ArrayList localArrayList = new ArrayList();
+      aiwb localaiwb1 = new aiwb(paramaiwc.a(), bbdh.a(), i, paramInt1, paramString2, paramString3);
+      float f1 = i;
+      localaiwb1.a = f1;
+      localaiwb1.e = f1;
+      localaiwb1.jdField_b_of_type_Float = 0.0F;
+      localaiwb1.f = 0.0F;
+      localaiwb1.c = (-i / 4000.0F);
+      localaiwb1.jdField_d_of_type_Float = 0.0F;
+      localaiwb1.jdField_h_of_type_Float = 1.0F;
+      localaiwb1.g = (17.0F * paramContext.getResources().getDisplayMetrics().scaledDensity);
+      localaiwb1.jdField_b_of_type_Boolean = true;
+      localaiwb1.jdField_b_of_type_JavaLangString = paramString1;
+      Random localRandom = new Random();
+      paramInt2 = 0;
+      while (paramInt2 < 5)
+      {
+        aiwb localaiwb2 = new aiwb(paramaiwc.a(), bbdh.a(), i, paramInt1, paramString2, paramString3);
+        localaiwb2.c = (-i / (3000.0F - paramInt2 * 500));
+        localaiwb2.jdField_d_of_type_Float = 0.0F;
+        int j = localRandom.nextInt(3);
+        localaiwb2.jdField_d_of_type_Int = ((int)(new float[] { 0.6F, 0.8F, 1.0F }[j] * 255.0F));
+        localaiwb2.g = (new int[] { 14, 14, 12, 12, 12 }[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
+        localaiwb2.jdField_h_of_type_Float = aivx.a(localaiwb1, localaiwb2);
+        f1 = i * localRandom.nextFloat() + i / 2;
+        localaiwb2.a = f1;
+        localaiwb2.e = f1;
+        f1 = paramInt1;
+        float f2 = aivx.a(localaiwb2.g);
+        float f3 = localaiwb2.jdField_h_of_type_Int * 2;
+        f1 = (paramInt1 - (f1 * 0.28F + f2 + f3)) * localRandom.nextFloat();
+        localaiwb2.jdField_b_of_type_Float = f1;
+        localaiwb2.f = f1;
+        localaiwb2.jdField_b_of_type_Boolean = true;
+        localaiwb2.jdField_b_of_type_JavaLangString = paramString1;
+        localArrayList.add(localaiwb2);
+        paramInt2 += 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloBarrageUtil", 2, "bulkApolloBarrages use:" + (System.currentTimeMillis() - l));
+      }
+      localArrayList.add(localaiwb1);
+      paramaiwc.a(localArrayList, paramBoolean);
+      return;
     }
-    finally
-    {
-      paramaiwd = finally;
-      throw paramaiwd;
-    }
-  }
-  
-  public abstract boolean a(T paramT, float paramFloat);
-  
-  /* Error */
-  public boolean a(List<aiwd> paramList)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +27 -> 30
-    //   6: aload_1
-    //   7: invokeinterface 28 1 0
-    //   12: ifne +18 -> 30
-    //   15: aload_0
-    //   16: getfield 17	aiwa:a	Ljava/util/List;
-    //   19: aload_1
-    //   20: invokeinterface 39 2 0
-    //   25: istore_2
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_2
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_2
-    //   32: goto -6 -> 26
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	aiwa
-    //   0	40	1	paramList	List<aiwd>
-    //   25	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	35	finally
   }
 }
 

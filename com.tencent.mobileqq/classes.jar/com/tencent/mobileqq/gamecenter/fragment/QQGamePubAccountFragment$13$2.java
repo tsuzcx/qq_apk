@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import aqsg;
+import aqsi;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import java.util.ArrayList;
 
 public class QQGamePubAccountFragment$13$2
   implements Runnable
 {
-  public QQGamePubAccountFragment$13$2(aqsg paramaqsg) {}
+  public QQGamePubAccountFragment$13$2(aqsi paramaqsi) {}
   
   public void run()
   {

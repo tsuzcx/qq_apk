@@ -1,6 +1,6 @@
 public abstract interface wdk
 {
-  public abstract void a();
+  public abstract void a(wdi paramwdi, float paramFloat);
 }
 
 

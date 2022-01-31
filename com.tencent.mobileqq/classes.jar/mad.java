@@ -1,38 +1,19 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
+import java.util.ArrayList;
 
-public class mad
-  extends MagicFaceDataEntity
+class mad
 {
-  public mad(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
-  {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
-  }
+  int jdField_a_of_type_Int;
+  ArrayList<PointF> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  mdz jdField_a_of_type_Mdz;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
-  {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (paramBoolean) {
-      QLog.d("SwitchFaceMagicFaceDataEntity", 2, "WL_DEBUG onReceivePeerFaceFeature uin = " + paramString + ", width = " + paramShort1 + ", height = " + paramShort2 + ", frameWidth = " + paramShort3 + ", frameHeight = " + paramShort4);
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    c(0);
-    c(1);
-    a(true);
-    a(null);
-  }
-  
-  public void d()
-  {
-    super.d();
-    b(0);
-    b(1);
-  }
+  mad(mac parammac) {}
 }
 
 

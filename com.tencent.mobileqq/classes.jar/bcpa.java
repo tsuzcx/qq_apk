@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.Comparator;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
 
 public class bcpa
-  implements View.OnClickListener
+  implements Comparator<oidb_0xd9f.TopicItem>
 {
-  public bcpa(ProfileNameView paramProfileNameView, auuw paramauuw) {}
+  public bcpa(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void onClick(View paramView)
+  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
   {
-    String str = bali.a().a(this.jdField_a_of_type_Auuw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    axqw.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    if (paramTopicItem1 == null) {}
+    do
+    {
+      return 1;
+      if (paramTopicItem2 == null) {
+        return -1;
+      }
+    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
+    return -1;
   }
 }
 

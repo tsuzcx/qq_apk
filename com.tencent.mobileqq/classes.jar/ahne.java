@@ -1,8 +1,14 @@
-public abstract interface ahne
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
+
+public class ahne
+  extends ahny
 {
-  public abstract void l();
-  
-  public abstract void n();
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

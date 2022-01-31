@@ -1,33 +1,17 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-public class awvg
+public final class awvg
+  implements Comparator<awpm>
 {
-  public Bundle a;
-  public String a;
-  public byte[] a;
-  
-  public awvg(String paramString)
+  public int a(awpm paramawpm1, awpm paramawpm2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public awvg(String paramString, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public awvg(String paramString, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public awvg(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    int j = Long.signum(paramawpm2.b() - paramawpm1.b());
+    int i = j;
+    if (j == 0) {
+      i = PublicAccountSearchEngine.a(paramawpm1, paramawpm2);
+    }
+    return i;
   }
 }
 

@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-public final class bhaw
-  implements Parcelable.Creator<QZoneCountUserInfo>
+public class bhaw
+  implements URLDrawable.URLDrawableListener
 {
-  public QZoneCountUserInfo a(Parcel paramParcel)
+  public bhaw(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new QZoneCountUserInfo(paramParcel);
+    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
   }
   
-  public QZoneCountUserInfo[] a(int paramInt)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return new QZoneCountUserInfo[paramInt];
+    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

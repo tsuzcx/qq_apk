@@ -1,36 +1,13 @@
-import com.qq.taf.jce.HexUtil;
 import java.util.ArrayList;
 
 public class ayzq
-  extends ayzp
+  extends ayzr
 {
   public int a;
   public String a;
-  public ArrayList<ayuo> a;
-  public byte[] a;
+  public ArrayList<ayuq> a = new ArrayList();
   public String b;
-  public ArrayList<ayuo> b;
-  public byte[] b;
-  public String c;
-  
-  public ayzq()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mUkey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
-    return localStringBuilder.toString();
-  }
+  public ArrayList<ayuq> b = new ArrayList();
 }
 
 

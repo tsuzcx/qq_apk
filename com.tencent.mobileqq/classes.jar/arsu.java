@@ -1,34 +1,49 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 class arsu
-  implements Animator.AnimatorListener
+  implements arrp
 {
-  arsu(arsq paramarsq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  arsu(arss paramarss) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    int i = this.a.jdField_a_of_type_Arsq.e;
+    String str3 = this.a.jdField_a_of_type_Arsq.b;
+    this.a.b(i, str3);
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
+    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
+      axqy.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
+    }
+    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+      return;
+    }
+    String str2 = "2";
+    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
+    String str1 = str2;
+    if (localTroopInfo != null)
+    {
+      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
+        break label180;
+      }
+      str1 = "0";
+    }
+    for (;;)
+    {
+      axqy.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
+      return;
+      label180:
+      str1 = str2;
+      if (localTroopInfo.isAdmin()) {
+        str1 = "1";
+      }
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Arsq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

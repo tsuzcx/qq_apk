@@ -1,18 +1,17 @@
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abyw
-  implements abmq
+  implements View.OnCreateContextMenuListener
 {
   public abyw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a()
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
-  
-  public void b()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
+    paramContextMenu.clear();
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import oci;
+import ocf;
 
 public class ReadInJoyAdPopSheetDialog$2
   implements Runnable
 {
-  public ReadInJoyAdPopSheetDialog$2(oci paramoci) {}
+  public ReadInJoyAdPopSheetDialog$2(ocf paramocf) {}
   
   public void run()
   {
-    oci.a(this.this$0);
+    ocf.a(this.this$0);
   }
 }
 

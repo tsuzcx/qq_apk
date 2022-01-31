@@ -1,25 +1,25 @@
 package com.tencent.open.appstore.dl;
 
-import bdgv;
-import bdht;
+import bdhk;
+import bdii;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$24
   implements Runnable
 {
-  public DownloadManagerV2$24(bdgv parambdgv, String paramString, long paramLong1, long paramLong2) {}
+  public DownloadManagerV2$24(bdhk parambdhk, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = bdgv.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    DownloadInfo localDownloadInfo = bdhk.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
     if (localDownloadInfo == null) {
-      bdht.d("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info == null");
+      bdii.d("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info == null");
     }
     for (;;)
     {
       this.this$0.a(2, localDownloadInfo);
       return;
-      bdht.a("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      bdii.a("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
     }
   }
 }

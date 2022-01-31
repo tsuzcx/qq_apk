@@ -1,19 +1,53 @@
-import com.tencent.device.datadef.DeviceInfo;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class yaj
-  implements ajtg
+class yaj
+  extends aywb
 {
-  protected void a(ArrayList<DeviceInfo> paramArrayList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  yaj(yah paramyah, Looper paramLooper)
   {
-    switch (paramInt)
-    {
-    default: 
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = (ayqo)paramMessage.obj;
+    if ((localObject == null) || (((ayqo)localObject).jdField_b_of_type_Int != 24)) {}
+    while (((ayqo)localObject).c != 7) {
       return;
     }
-    a((ArrayList)paramObject);
+    switch (paramMessage.what)
+    {
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      paramMessage = new Intent();
+      paramMessage.setAction("onFaceTransferComplete");
+      localBundle = new Bundle();
+      localBundle.putLong("uniseq", ((ayqo)localObject).jdField_b_of_type_Long);
+      localBundle.putString("fileUrl", ((ayqo)localObject).i);
+      localObject = ((ayqo)localObject).i;
+      if (localObject != null)
+      {
+        localObject = ((String)localObject).split("/");
+        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
+      }
+      paramMessage.putExtras(localBundle);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+      return;
+    }
+    paramMessage = new Intent();
+    paramMessage.setAction("onFaceTransferError");
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uniseq", ((ayqo)localObject).jdField_b_of_type_Long);
+    paramMessage.putExtras(localBundle);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
   }
 }
 

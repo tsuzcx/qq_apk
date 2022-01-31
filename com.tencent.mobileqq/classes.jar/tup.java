@@ -1,17 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class tup
-  extends AnimatorListenerAdapter
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public tup(StoryPlayerActivity paramStoryPlayerActivity) {}
+  public tup(StoryPlayerFragment paramStoryPlayerFragment, View paramView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onPreDraw()
   {
-    super.onAnimationEnd(paramAnimator);
-    StoryPlayerActivity.a(this.a);
-    StoryPlayerActivity.a(this.a, 0, 0);
+    tyy.b((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerFragment.a, new tuq(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

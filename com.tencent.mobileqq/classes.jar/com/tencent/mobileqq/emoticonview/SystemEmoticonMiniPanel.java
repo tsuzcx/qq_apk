@@ -3,22 +3,22 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import anyb;
-import aoct;
+import anyg;
+import aocy;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SystemEmoticonMiniPanel
   extends SystemEmoticonPanel
 {
-  protected void a(Context paramContext, anyb paramanyb)
+  protected void a(Context paramContext, anyg paramanyg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131374681));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379147));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131374683));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379152));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(new aoct(paramContext, paramanyb, 0, this.jdField_a_of_type_Boolean));
+    localArrayList.add(new aocy(paramContext, paramanyg, 0, this.jdField_a_of_type_Boolean));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);

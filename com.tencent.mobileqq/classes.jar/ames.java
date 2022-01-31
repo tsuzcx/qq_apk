@@ -1,18 +1,249 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.lang.ref.WeakReference;
+import java.util.WeakHashMap;
 
 public final class ames
-  implements Parcelable.Creator<CardUinInfo>
+  extends Animation
 {
-  public CardUinInfo a(Parcel paramParcel)
+  static final WeakHashMap<View, ames> jdField_a_of_type_JavaUtilWeakHashMap;
+  public static final boolean a;
+  float jdField_a_of_type_Float = 1.0F;
+  final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+  final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  float jdField_b_of_type_Float;
+  final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_b_of_type_Boolean;
+  float c;
+  float d;
+  float e;
+  float f;
+  float g = 1.0F;
+  float h = 1.0F;
+  float i;
+  float j;
+  
+  static
   {
-    return new CardUinInfo(paramParcel);
+    if (Integer.valueOf(Build.VERSION.SDK_INT).intValue() < 11) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+      return;
+    }
   }
   
-  public CardUinInfo[] a(int paramInt)
+  private ames(View paramView)
   {
-    return new CardUinInfo[paramInt];
+    setDuration(0L);
+    setFillAfter(true);
+    paramView.setAnimation(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+  }
+  
+  public static ames a(View paramView)
+  {
+    ames localames2 = (ames)jdField_a_of_type_JavaUtilWeakHashMap.get(paramView);
+    ames localames1;
+    if (localames2 != null)
+    {
+      localames1 = localames2;
+      if (localames2 == paramView.getAnimation()) {}
+    }
+    else
+    {
+      localames1 = new ames(paramView);
+      jdField_a_of_type_JavaUtilWeakHashMap.put(paramView, localames1);
+    }
+    return localames1;
+  }
+  
+  private void a()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, localView);
+    }
+  }
+  
+  private void a(Matrix paramMatrix, View paramView)
+  {
+    float f3 = paramView.getWidth();
+    float f4 = paramView.getHeight();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    float f1;
+    if (bool)
+    {
+      f1 = this.jdField_b_of_type_Float;
+      if (!bool) {
+        break label226;
+      }
+    }
+    label226:
+    for (float f2 = this.c;; f2 = f4 / 2.0F)
+    {
+      float f5 = this.d;
+      float f6 = this.e;
+      float f7 = this.f;
+      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+      {
+        paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+        paramView.save();
+        paramView.rotateX(f5);
+        paramView.rotateY(f6);
+        paramView.rotateZ(-f7);
+        paramView.getMatrix(paramMatrix);
+        paramView.restore();
+        paramMatrix.preTranslate(-f1, -f2);
+        paramMatrix.postTranslate(f1, f2);
+      }
+      f5 = this.g;
+      f6 = this.h;
+      if ((f5 != 1.0F) || (f6 != 1.0F))
+      {
+        paramMatrix.postScale(f5, f6);
+        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+      }
+      paramMatrix.postTranslate(this.i, this.j);
+      return;
+      f1 = f3 / 2.0F;
+      break;
+    }
+  }
+  
+  private void b()
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localView == null) || (localView.getParent() == null)) {
+      return;
+    }
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    a(localRectF, localView);
+    localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Float != paramFloat)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localView != null) {
+        localView.invalidate();
+      }
+    }
+  }
+  
+  public void a(RectF paramRectF, View paramView)
+  {
+    paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
+    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    localMatrix.reset();
+    a(localMatrix, paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF);
+    paramRectF.offset(paramView.getLeft(), paramView.getTop());
+    float f1;
+    if (paramRectF.right < paramRectF.left)
+    {
+      f1 = paramRectF.right;
+      paramRectF.right = paramRectF.left;
+      paramRectF.left = f1;
+    }
+    if (paramRectF.bottom < paramRectF.top)
+    {
+      f1 = paramRectF.top;
+      paramRectF.top = paramRectF.bottom;
+      paramRectF.bottom = f1;
+    }
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null)
+    {
+      paramTransformation.setAlpha(this.jdField_a_of_type_Float);
+      a(paramTransformation.getMatrix(), localView);
+    }
+  }
+  
+  public void b(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_b_of_type_Float = paramFloat;
+      b();
+    }
+  }
+  
+  public void c(float paramFloat)
+  {
+    if ((!this.jdField_b_of_type_Boolean) || (this.c != paramFloat))
+    {
+      a();
+      this.jdField_b_of_type_Boolean = true;
+      this.c = paramFloat;
+      b();
+    }
+  }
+  
+  public void d(float paramFloat)
+  {
+    if (this.g != paramFloat)
+    {
+      a();
+      this.g = paramFloat;
+      b();
+    }
+  }
+  
+  public void e(float paramFloat)
+  {
+    if (this.h != paramFloat)
+    {
+      a();
+      this.h = paramFloat;
+      b();
+    }
+  }
+  
+  public void f(float paramFloat)
+  {
+    if (this.i != paramFloat)
+    {
+      a();
+      this.i = paramFloat;
+      b();
+    }
+  }
+  
+  public void g(float paramFloat)
+  {
+    if (this.j != paramFloat)
+    {
+      a();
+      this.j = paramFloat;
+      b();
+    }
+  }
+  
+  public void h(float paramFloat)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localView != null) {
+      f(paramFloat - localView.getLeft());
+    }
   }
 }
 

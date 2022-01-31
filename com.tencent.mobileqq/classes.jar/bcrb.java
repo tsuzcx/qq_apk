@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class bcrb
-  implements bfob
+class bcrb
+  extends Animation
 {
-  public bcrb(SlideDetectListView paramSlideDetectListView) {}
+  private int jdField_a_of_type_Int;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public bcrb(View paramView)
   {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-    }
+    super.applyTransformation(paramFloat, paramTransformation);
+    this.jdField_a_of_type_AndroidGraphicsCamera.save();
+    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F - 90.0F * paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
+    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

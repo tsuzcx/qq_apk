@@ -1,99 +1,104 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
 import java.util.Map;
 
 public class aqap
+  implements Handler.Callback
 {
-  public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
+  private static aqap jdField_a_of_type_Aqap;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  
+  public static aqap a()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int i = 0;
-    if (paramMap == null) {
-      return localObject2;
+    if (jdField_a_of_type_Aqap == null) {}
+    try
+    {
+      if (jdField_a_of_type_Aqap == null) {
+        jdField_a_of_type_Aqap = new aqap();
+      }
+      return jdField_a_of_type_Aqap;
     }
-    localObject2 = localObject1;
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onCreate");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onPageShow");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    if (paramBoolean) {}
     for (;;)
     {
-      Field localField;
-      try
-      {
-        localObject1 = paramClass.newInstance();
-        localObject2 = localObject1;
-        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
-        localObject2 = localObject1;
-        int j = arrayOfField.length;
-        localObject2 = localObject1;
-        if (i >= j) {
-          break;
-        }
-        localField = arrayOfField[i];
-        localObject2 = localObject1;
-        int k = localField.getModifiers();
-        localObject2 = localObject1;
-        if (Modifier.isStatic(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        if (Modifier.isFinal(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        localField.setAccessible(true);
-        localObject2 = localObject1;
-        if (paramMap.containsKey(localField.getName()))
-        {
-          localObject2 = localObject1;
-          localField.set(localObject1, paramMap.get(localField.getName()));
-        }
-      }
-      catch (Exception paramMap)
-      {
-        paramMap.printStackTrace();
-        return localObject2;
-      }
-      localObject2 = localObject1;
-      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
-      label195:
-      i += 1;
+      localMessage.arg1 = i;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 2000L);
+      return;
+      i = 0;
     }
   }
   
-  public static Map a(Object paramObject)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject;
-    if (paramObject == null) {
-      localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 1, "onDestroy");
     }
-    for (;;)
+    if ((paramBoolean2) && (paramBoolean1)) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onPagePause");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      return localObject;
-      localHashMap = new HashMap();
-      try
-      {
-        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        for (;;)
-        {
-          localObject = localHashMap;
-          if (i >= j) {
-            break;
-          }
-          localObject = arrayOfField[i];
-          ((Field)localObject).setAccessible(true);
-          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
-          i += 1;
-        }
-        return localHashMap;
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-      }
     }
+    do
+    {
+      do
+      {
+        return false;
+        QLog.d("QFlutter.Reporter", 1, "init memory");
+        this.jdField_a_of_type_JavaUtilMap = bbdh.a(BaseApplicationImpl.getContext());
+        return false;
+      } while (this.jdField_a_of_type_JavaUtilMap == null);
+      if (paramMessage.arg1 == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        aqaq.a(bool, true, this.jdField_a_of_type_JavaUtilMap);
+        if (bool) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilMap = null;
+        return false;
+      }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    aqaq.a(true, false, this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_JavaUtilMap = null;
+    return false;
   }
 }
 

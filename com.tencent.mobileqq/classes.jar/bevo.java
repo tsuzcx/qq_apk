@@ -1,33 +1,23 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import org.json.JSONObject;
 
 final class bevo
-  implements AsyncResult
+  implements bevs
 {
-  bevo(MiniAppInfo paramMiniAppInfo, beue parambeue) {}
+  bevo(bevs parambevs) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
+  
+  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
   {
-    besl.a("JsApiUpdateManager", "onCmdListener() called with: isSuc = [" + paramBoolean + "], ret = [" + paramJSONObject + "]");
-    if ((paramJSONObject != null) && (paramBoolean))
-    {
-      bevn.a((MiniAppInfo)paramJSONObject.opt("mini_app_info_data"));
-      if (bevn.a() != null)
-      {
-        if (bekj.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bevn.a()))
-        {
-          bevn.a(this.jdField_a_of_type_Beue, true);
-          bevn.a(this.jdField_a_of_type_Beue, bevn.a());
-          return;
-        }
-        bevn.a(this.jdField_a_of_type_Beue, false);
-        return;
+    if (paramInt == 0) {
+      if (this.a != null) {
+        this.a.onInitGpkgInfo(0, parambevt, null);
       }
-      besl.d("JsApiUpdateManager", "onCmdListener newMiniAppInfo = null");
+    }
+    while (this.a == null) {
       return;
     }
-    besl.d("JsApiUpdateManager", "onCmdListener success = " + paramBoolean + " ret = " + paramJSONObject);
+    this.a.onInitGpkgInfo(paramInt, null, paramString);
   }
 }
 

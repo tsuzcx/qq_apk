@@ -1,59 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.content.res.Resources;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
 import org.json.JSONObject;
 
 public class ped
 {
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
-    localJSONObject1.put("id_large_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
-    localJSONObject1.put("id_large_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
-    if (localObject != null)
+    String str = null;
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2;
+    if ((paramBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
     {
-      localObject = ((URL)localObject).getPath();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("large_video_duration", omu.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_large_video_duration", localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("video_play_icon", "small_video_play_icon");
-      localJSONObject1.put("id_video_play_icon", localObject);
-      localJSONObject1.put("id_video_paly_text", new JSONObject());
-      pen.a(paramBaseArticleInfo, localJSONObject1, true);
-      pen.Y(paramBaseArticleInfo, localJSONObject1);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label288;
-      }
-      pen.a(paramBaseArticleInfo, localJSONObject1);
-      pen.b(paramBaseArticleInfo, localJSONObject1);
+      localObject1 = (qds)paramBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+      localObject2 = BaseApplicationImpl.getApplication().getResources();
+      str = ((qds)localObject1).d;
     }
-    for (;;)
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131718591), new Object[] { bhvy.a(((qds)localObject1).b) });; localObject1 = null)
     {
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.e(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
-      localJSONObject1.put("id_large_video_activity_img", localObject);
-      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      pen.f(paramBaseArticleInfo, localJSONObject1);
-      pen.a(localJSONObject1, paramBaseArticleInfo);
-      pen.ab(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label288:
-      pen.d(paramBaseArticleInfo, localJSONObject1);
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("participant_title_text", localObject1);
+      localJSONObject.put("id_participant_title", localObject2);
+      pek.a(paramBaseArticleInfo, localJSONObject, false);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("participant_pic_url", str);
+      localJSONObject.put("id_participant_imge", localObject1);
+      localJSONObject.put("id_view_cover", new JSONObject());
+      pek.b(paramBaseArticleInfo, localJSONObject);
+      pek.m(paramBaseArticleInfo, localJSONObject);
+      localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
+      pek.a(localJSONObject, paramBaseArticleInfo);
+      return localJSONObject;
     }
   }
 }

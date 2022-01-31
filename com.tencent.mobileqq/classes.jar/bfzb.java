@@ -1,26 +1,57 @@
+import android.graphics.Canvas;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
 
-class bfzb
-  implements View.OnLayoutChangeListener
+public class bfzb
+  extends bfza
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  private bfzb(bfyx parambfyx) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  private float a(RecyclerView paramRecyclerView, View paramView)
   {
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    float f1 = 0.0F;
+    if (i < j)
     {
-      if ((paramInt1 != 0) && (!bfyx.c(this.jdField_a_of_type_Bfyx)) && ((this.jdField_a_of_type_Int != paramView.getHeight()) || (this.b != paramView.getWidth()))) {
-        this.jdField_a_of_type_Bfyx.f(bfyx.b(this.jdField_a_of_type_Bfyx));
+      View localView = paramRecyclerView.getChildAt(i);
+      float f2;
+      if (localView == paramView) {
+        f2 = f1;
       }
-      this.jdField_a_of_type_Int = paramView.getHeight();
-      this.b = paramView.getWidth();
-      return;
+      for (;;)
+      {
+        i += 1;
+        f1 = f2;
+        break;
+        float f3 = ViewCompat.getElevation(localView);
+        f2 = f1;
+        if (f3 > f1) {
+          f2 = f3;
+        }
+      }
     }
+    return f1;
+  }
+  
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramView.getTag(2131368384) == null))
+    {
+      float f = ViewCompat.getElevation(paramView);
+      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
+      paramView.setTag(2131368384, Float.valueOf(f));
+    }
+    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject = paramView.getTag(2131368384);
+    if ((localObject != null) && ((localObject instanceof Float))) {
+      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
+    }
+    paramView.setTag(2131368384, null);
+    super.a(paramView);
   }
 }
 

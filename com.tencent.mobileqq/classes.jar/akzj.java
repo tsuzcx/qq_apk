@@ -1,18 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-
-public class akzj
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface akzj
 {
-  public akzj(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
+  public abstract void a(long paramLong);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
-    ARVideoRecordButtonView.a(this.a);
-  }
+  public abstract void a(akzx paramakzx);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean b();
 }
 
 

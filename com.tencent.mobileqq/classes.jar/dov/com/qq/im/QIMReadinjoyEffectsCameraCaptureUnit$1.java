@@ -1,25 +1,25 @@
 package dov.com.qq.im;
 
-import actn;
+import actj;
 import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bihd;
-import oeg;
+import bihu;
+import oed;
 
 public class QIMReadinjoyEffectsCameraCaptureUnit$1
   implements Runnable
 {
-  public QIMReadinjoyEffectsCameraCaptureUnit$1(bihd parambihd, Activity paramActivity) {}
+  public QIMReadinjoyEffectsCameraCaptureUnit$1(bihu parambihu, Activity paramActivity) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      BitmapDrawable localBitmapDrawable = oeg.a(this.a);
+      BitmapDrawable localBitmapDrawable = oed.a(this.a);
       if (localBitmapDrawable != null)
       {
-        int i = actn.a(36.0F, this.this$0.a.getResources());
+        int i = actj.a(36.0F, this.this$0.a.getResources());
         localBitmapDrawable.setBounds(0, 0, i, i);
         this.a.runOnUiThread(new QIMReadinjoyEffectsCameraCaptureUnit.1.1(this, localBitmapDrawable));
       }

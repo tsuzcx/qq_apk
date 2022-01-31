@@ -1,15 +1,14 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerView;
 
-class wjs
-  implements wsq
+public class wjs
+  implements wjg
 {
-  wjs(wjr paramwjr) {}
+  public wjs(RecommendBannerView paramRecommendBannerView) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {
-      wpw.a().a(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
+      RecommendBannerView.a(this.a, paramInt);
     }
   }
 }

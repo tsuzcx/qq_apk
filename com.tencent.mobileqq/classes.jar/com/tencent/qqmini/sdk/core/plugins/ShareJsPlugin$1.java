@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
+import bekr;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class ShareJsPlugin$1
   implements AsyncResult
 {
-  ShareJsPlugin$1(ShareJsPlugin paramShareJsPlugin, beka parambeka) {}
+  ShareJsPlugin$1(ShareJsPlugin paramShareJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

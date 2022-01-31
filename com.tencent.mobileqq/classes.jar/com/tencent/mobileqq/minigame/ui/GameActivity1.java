@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import amgo;
+import amgn;
+import amkf;
 import amkg;
-import amkh;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,12 +13,12 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bctn;
-import begs;
-import bepk;
-import beqe;
-import besl;
-import bffu;
+import bcuc;
+import behj;
+import beqb;
+import beqv;
+import betc;
+import bfgl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -29,9 +29,9 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 public class GameActivity1
   extends BaseActivity
 {
-  protected amgo mColorNoteController;
-  private amkh mColorNoteServiceListenr;
-  private beqe mUIProxy;
+  protected amgn mColorNoteController;
+  private amkg mColorNoteServiceListenr;
+  private beqv mUIProxy;
   
   private void initUIProxy(Intent paramIntent)
   {
@@ -42,7 +42,7 @@ public class GameActivity1
     if (paramIntent != null) {
       ThreadManagerV2.excute(new GameActivity1.5(this), 16, null, true);
     }
-    this.mUIProxy = bepk.a().a(paramIntent);
+    this.mUIProxy = beqb.a().a(paramIntent);
   }
   
   /* Error */
@@ -173,12 +173,12 @@ public class GameActivity1
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    begs.a(getApplicationContext());
+    behj.a(getApplicationContext());
     try
     {
       super.getIntent().putExtra("fling_action_key", 0);
       this.mNeedStatusTrans = false;
-      bffu.b(this);
+      bfgl.b(this);
       boolean bool = super.doOnCreate(paramBundle);
       RelativeLayout localRelativeLayout = new RelativeLayout(this);
       setContentView(localRelativeLayout);
@@ -188,7 +188,7 @@ public class GameActivity1
       this.mUIProxy.onCreate(this, paramBundle, localFrameLayout);
       MiniSDKClientQIPCModule.registerModule();
       paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-      this.mColorNoteController = new amgo(this, false, true);
+      this.mColorNoteController = new amgn(this, false, true);
       this.mColorNoteController.a(this);
       this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
       this.mColorNoteController.a(new GameActivity1.2(this));
@@ -232,7 +232,7 @@ public class GameActivity1
   
   public void doOnNewIntent(Intent paramIntent)
   {
-    besl.b("qqBaseActivity", "--doOnNewIntent");
+    betc.b("qqBaseActivity", "--doOnNewIntent");
     super.doOnNewIntent(paramIntent);
     initUIProxy(paramIntent);
     this.mUIProxy.onNewIntent(this, paramIntent);
@@ -240,30 +240,30 @@ public class GameActivity1
   
   public void doOnPause()
   {
-    besl.b("qqBaseActivity", "doOnPause ");
+    betc.b("qqBaseActivity", "doOnPause ");
     super.doOnPause();
     this.mUIProxy.onPause(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    amkg.a(this, 2, true);
+    amkf.a(this, 2, true);
   }
   
   public void doOnResume()
   {
     super.doOnResume();
     this.mUIProxy.onResume(this);
-    bctn.a(this);
+    bcuc.a(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    amkg.a(BaseApplicationImpl.getContext(), 2, false);
+    amkf.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    besl.b("qqBaseActivity", "doOnStart game");
+    betc.b("qqBaseActivity", "doOnStart game");
     this.mUIProxy.onStart(this);
   }
   
@@ -280,7 +280,7 @@ public class GameActivity1
     super.doOnWindowFocusChanged(paramBoolean);
   }
   
-  public amgo getColorNoteController()
+  public amgn getColorNoteController()
   {
     return this.mColorNoteController;
   }

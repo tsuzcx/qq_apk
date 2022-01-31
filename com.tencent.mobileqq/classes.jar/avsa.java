@@ -1,13 +1,6 @@
-public class avsa
+class avsa
 {
-  long a;
-  public String a;
-  public boolean a;
-  long b;
-  public String b;
-  public boolean b;
-  public String c;
-  boolean c;
+  private static final avrv a = new avrv(null);
 }
 
 

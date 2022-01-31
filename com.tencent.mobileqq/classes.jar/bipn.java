@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
+import android.support.annotation.Nullable;
 
 class bipn
-  implements DialogInterface.OnClickListener
+  implements bjos<Boolean>
 {
-  bipn(biph parambiph, bipp parambipp, WMElement paramWMElement) {}
+  bipn(bipi parambipi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bipp.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bipp.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
+    if (paramBoolean == null) {
+      return;
+    }
+    bipi localbipi = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bipi.a(localbipi, bool);
+      return;
+    }
   }
 }
 

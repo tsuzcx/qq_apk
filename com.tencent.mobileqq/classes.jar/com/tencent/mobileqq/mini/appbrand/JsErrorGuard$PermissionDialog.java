@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.appbrand;
 
 import android.app.Activity;
 import android.view.View;
-import bbgg;
+import bbgu;
 
 class JsErrorGuard$PermissionDialog
-  extends bbgg
+  extends bbgu
 {
   private Activity mActivity;
   

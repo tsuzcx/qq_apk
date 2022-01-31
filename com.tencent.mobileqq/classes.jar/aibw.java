@@ -1,323 +1,215 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.Nullable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.selectable.CommonMenuWrapper.1;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-public class aibw
-  implements aici
+public final class aibw
+  implements adif, aica
 {
-  private static final int e = bbkx.b(72.0F);
-  private static final int f = bbkx.b(63.0F);
-  public int a;
-  private aicg jdField_a_of_type_Aicg;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  bblr jdField_a_of_type_Bblr;
-  private bfps jdField_a_of_type_Bfps;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public int b;
-  private bblr b;
-  private int jdField_c_of_type_Int;
-  private bblr jdField_c_of_type_Bblr;
-  private int d;
+  private static final int jdField_a_of_type_Int = bbll.b(50.0F);
+  private static int jdField_b_of_type_Int = -1;
+  private long jdField_a_of_type_Long = -1L;
+  private final WeakReference<Fragment> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private boolean jdField_b_of_type_Boolean;
+  private int c;
+  private int d = -1;
+  private int e = -1;
   
-  private void c()
+  public aibw(Fragment paramFragment)
   {
-    if (this.jdField_a_of_type_Aicg == null) {
-      throw new IllegalStateException("Delegate has not bound.");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public aibx a(View paramView, BaseChatPie paramBaseChatPie)
-  {
-    int m = 0;
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationInWindow(arrayOfInt);
-    int n = arrayOfInt[1];
-    int i = arrayOfInt[1];
-    i = paramView.getHeight() + i;
-    paramView = paramBaseChatPie;
-    if (paramBaseChatPie == null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFragment);
+    if (jdField_b_of_type_Int == -1)
     {
-      paramView = paramBaseChatPie;
-      if ((this instanceof aibo)) {
-        paramView = ((aibo)this).a;
-      }
-    }
-    int j;
-    int k;
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
-    {
-      paramView.a.getLocationInWindow(arrayOfInt);
-      j = arrayOfInt[1];
-      if (n + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label344;
-      }
-      if (i + 0 >= e + ImmersiveUtils.jdField_c_of_type_Int) {
-        break label221;
-      }
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.jdField_c_of_type_Int)) {
-        break label171;
-      }
-      i = this.jdField_a_of_type_Int + 0;
-      k = m;
-    }
-    for (;;)
-    {
-      return new aibx(i, k);
-      j = bbkx.b();
-      break;
-      label171:
-      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
-      {
-        i = this.jdField_a_of_type_Int + 0;
-        k = 1;
-      }
-      else
-      {
-        i = e + ImmersiveUtils.jdField_c_of_type_Int;
-        k = m;
-        continue;
-        label221:
-        i += 0;
-        if (f + i > j) {
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.jdField_c_of_type_Int))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 0;
-          }
-        }
-        for (;;)
-        {
-          k = i;
-          i = j;
-          break;
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 1;
-          }
-          else
-          {
-            j = e + ImmersiveUtils.jdField_c_of_type_Int + f + 0;
-            i = 0;
-            continue;
-            k = 1;
-            j = i;
-            i = k;
-          }
-        }
-        label344:
-        i = j;
-        k = m;
-        if (n <= j)
-        {
-          i = n + 0;
-          k = m;
-        }
-      }
-    }
-  }
-  
-  @Nullable
-  public aicg a()
-  {
-    return this.jdField_a_of_type_Aicg;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      int i = ViewConfiguration.get(paramFragment.getActivity()).getScaledTouchSlop();
+      jdField_b_of_type_Int = i * i;
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(@Nullable aicg paramaicg)
-  {
-    this.jdField_a_of_type_Aicg = paramaicg;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    c();
-    bblr localbblr;
-    if (this.jdField_a_of_type_Aicg.c())
+    Object localObject2 = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = null;
+    if ((localObject2 instanceof ChatHistoryC2CAllFragment)) {
+      localObject1 = ((ChatHistoryC2CAllFragment)localObject2).jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistoryTimeLineContainer;
+    }
+    switch (paramInt)
     {
-      int i = this.jdField_a_of_type_Aicg.c();
-      int j = this.jdField_a_of_type_Aicg.b();
-      if (this.jdField_a_of_type_Aicg.a() == i - j) {
-        localbblr = this.b;
+    }
+    do
+    {
+      aibn localaibn;
+      View localView;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              localObject2 = aibn.a();
+              ((aibn)localObject2).a(this);
+              this.jdField_b_of_type_Boolean = true;
+            } while ((((aibn)localObject2).a() == null) || (!((aibn)localObject2).c()) || (((aibn)localObject2).a()));
+            ((aibn)localObject2).a((View)localObject1);
+            return;
+            aibn.a().b(this);
+            this.jdField_b_of_type_Boolean = false;
+            return;
+            localObject1 = aibn.a();
+          } while (!((aice)localObject1).c());
+          ((aice)localObject1).d();
+          return;
+          localaibn = aibn.a();
+        } while ((!localaibn.c()) || (localaibn.a()));
+        localView = localaibn.a();
+      } while (localView == null);
+      localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+      if (this.jdField_a_of_type_ArrayOfInt[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() < jdField_a_of_type_Int + ImmersiveUtils.c)
+      {
+        localaibn.d();
+        return;
       }
+      if (localObject1 != null)
+      {
+        paramInt = this.jdField_a_of_type_ArrayOfInt[1];
+        ((View)localObject1).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+        if (paramInt > this.jdField_a_of_type_ArrayOfInt[1])
+        {
+          localaibn.d();
+          return;
+        }
+        localaibn.a((View)localObject1);
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        localObject1 = new DisplayMetrics();
+        ((Fragment)localObject2).getActivity().getWindowManager().getDefaultDisplay().getRealMetrics((DisplayMetrics)localObject1);
+        localaibn.d(((DisplayMetrics)localObject1).heightPixels);
+        return;
+      }
+      localaibn.a();
+      return;
+      localObject1 = aibn.a();
+    } while ((((aibn)localObject1).a() == null) || (!((aibn)localObject1).c()) || (!((aibn)localObject1).a()));
+    ((aibn)localObject1).b();
+  }
+  
+  public void a(@NonNull aice paramaice)
+  {
+    boolean bool = paramaice.c();
+    paramaice = (Fragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramaice instanceof ChatHistoryC2CAllFragment)) {
+      paramaice = ((ChatHistoryC2CAllFragment)paramaice).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
     }
     for (;;)
     {
-      a(localbblr, paramView, paramInt1, paramInt2, paramInt3);
-      return;
-      if (this.jdField_c_of_type_Bblr != null)
-      {
-        localbblr = this.jdField_c_of_type_Bblr;
+      if (paramaice != null) {
+        paramaice.requestDisallowInterceptTouchEvent(bool);
       }
-      else
-      {
-        if (this.jdField_a_of_type_Bblr == null)
-        {
-          this.jdField_a_of_type_Bblr = new bblr();
-          this.jdField_a_of_type_Bblr.a(2131364825, ajyc.a(2131702229), 2130838597);
-          this.jdField_a_of_type_Bblr.a(2131375789, ajyc.a(2131702227), 2130838615);
-          this.jdField_a_of_type_Bblr.a(2131366632, ajyc.a(2131702231), 2130838606);
-          this.jdField_a_of_type_Bblr.a(2131365928, ajyc.a(2131702228), 2130838605);
-        }
-        localbblr = this.jdField_a_of_type_Bblr;
-        continue;
-        localbblr = this.b;
+      return;
+      if ((paramaice instanceof ChatHistoryTroopAllFragment)) {
+        paramaice = ((ChatHistoryTroopAllFragment)paramaice).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      } else if ((paramaice instanceof ChatHistoryBubbleListForTroopFragment)) {
+        paramaice = ((ChatHistoryBubbleListForTroopFragment)paramaice).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      } else {
+        paramaice = null;
       }
     }
   }
   
-  protected void a(View paramView, int paramInt1, int paramInt2, bblr parambblr, int paramInt3, boolean paramBoolean)
-  {
-    a(paramView, paramInt1, paramInt2, parambblr, paramInt3, paramBoolean, null);
-  }
-  
-  protected void a(View paramView, int paramInt1, int paramInt2, bblr parambblr, int paramInt3, boolean paramBoolean, Activity paramActivity)
+  public void a(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(bbcc.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), parambblr, this.jdField_a_of_type_AndroidViewView$OnClickListener, true));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
-    }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
-    parambblr = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      parambblr.d(paramBoolean);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_Bfps);
-      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
-      this.jdField_c_of_type_Int = paramInt1;
-      this.d = paramInt2;
-      return;
-    }
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bblr parambblr, boolean paramBoolean, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambblr, paramBoolean, paramInt3, null);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, bblr parambblr, boolean paramBoolean, int paramInt3, Activity paramActivity)
-  {
-    this.b = parambblr;
-    this.jdField_c_of_type_Bblr = null;
-    a(paramView, paramInt1, paramInt2, parambblr, paramInt3, paramBoolean, paramActivity);
-  }
-  
-  void a(bblr parambblr, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramView, paramInt1, paramInt2, parambblr, paramInt3, false);
-  }
-  
-  public void a(bblr parambblr, boolean paramBoolean)
-  {
-    this.b = parambblr;
-    this.jdField_c_of_type_Bblr = null;
-    Object localObject;
+    aibn localaibn = aibn.a();
+    if ((!localaibn.c()) || (!this.jdField_b_of_type_Boolean)) {}
     int i;
-    if ((paramBoolean) && (parambblr != null))
+    label102:
+    do
     {
-      localObject = parambblr.a();
-      if ((localObject != null) && (localObject.length > 0))
+      do
       {
-        parambblr = new ArrayList(Arrays.asList((Object[])localObject));
-        i = 0;
-        if (i >= localObject.length) {
-          break label171;
-        }
-        if (localObject[i].a() != 2131364825) {}
+        int j;
+        int k;
+        do
+        {
+          return;
+          i = paramMotionEvent.getAction();
+          j = (int)paramMotionEvent.getRawX();
+          k = (int)paramMotionEvent.getRawY();
+          if (i == 0)
+          {
+            if (!localaibn.a(j, k))
+            {
+              this.jdField_a_of_type_Boolean = bool;
+              this.jdField_a_of_type_Long = localaibn.jdField_a_of_type_Long;
+              if (!this.jdField_a_of_type_Boolean) {
+                break label102;
+              }
+              this.d = j;
+            }
+            for (this.e = k;; this.e = -1)
+            {
+              this.c = 0;
+              return;
+              bool = false;
+              break;
+              this.d = -1;
+            }
+          }
+          if (i != 2) {
+            break;
+          }
+        } while ((!this.jdField_a_of_type_Boolean) || (Math.pow(this.d - j, 2.0D) + Math.pow(this.e - k, 2.0D) <= jdField_b_of_type_Int));
+        this.c = 2;
+      } while (!QLog.isColorLevel());
+      QLog.d("ChatPieSelectableHelper", 0, "detect scrolling.");
+      return;
+    } while (((i != 1) && (i != 3)) || (!this.jdField_a_of_type_Boolean));
+    if (this.c == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatPieSelectableHelper", 0, "detect taping.");
+      }
+      long l = localaibn.jdField_a_of_type_Long;
+      if ((this.jdField_a_of_type_Long == -1L) || (l == -1L)) {
+        break label281;
+      }
+      if (this.jdField_a_of_type_Long == l) {
+        localaibn.d();
       }
     }
     for (;;)
     {
-      localObject = new bblt();
-      ((bblt)localObject).a(2131375789);
-      ((bblt)localObject).a(ajyc.a(2131702230));
-      ((bblt)localObject).b(2130838615);
-      parambblr.add(i + 1, localObject);
-      this.jdField_c_of_type_Bblr = new bblr();
-      parambblr = parambblr.iterator();
-      for (;;)
-      {
-        if (parambblr.hasNext())
-        {
-          localObject = (bblt)parambblr.next();
-          this.jdField_c_of_type_Bblr.a((bblt)localObject);
-          continue;
-          i += 1;
-          break;
-        }
-      }
+      this.c = 1;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Long = -1L;
       return;
-      label171:
-      i = 0;
+      label281:
+      localaibn.d();
     }
   }
   
-  public void a(bfps parambfps)
+  public int[] a()
   {
-    this.jdField_a_of_type_Bfps = parambfps;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.d = paramInt;
+    return new int[] { 4, 8, 10, 14, 12, 13 };
   }
 }
 

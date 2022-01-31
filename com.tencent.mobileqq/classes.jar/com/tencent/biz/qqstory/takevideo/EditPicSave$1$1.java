@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajyc;
-import bcpw;
-import vfo;
-import vfp;
-import vhp;
-import vja;
+import ajya;
+import bcql;
+import vfl;
+import vfm;
+import vhm;
+import vix;
 
 public class EditPicSave$1$1
   implements Runnable
 {
-  public EditPicSave$1$1(vfp paramvfp) {}
+  public EditPicSave$1$1(vfm paramvfm) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Vhp.a(0);
+    this.a.a.jdField_a_of_type_Vhm.a(0);
     this.a.a.jdField_a_of_type_Boolean = true;
     this.a.a.a(100);
     this.a.a.g();
-    bcpw.a(this.a.a.jdField_a_of_type_Vja.a(), 2, ajyc.a(2131703687), 0).a();
+    bcql.a(this.a.a.jdField_a_of_type_Vix.a(), 2, ajya.a(2131703698), 0).a();
   }
 }
 

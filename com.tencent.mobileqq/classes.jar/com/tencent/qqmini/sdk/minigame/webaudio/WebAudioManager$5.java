@@ -2,11 +2,11 @@ package com.tencent.qqmini.sdk.minigame.webaudio;
 
 import android.os.Build.VERSION;
 import android.os.Environment;
-import begy;
-import beka;
-import bekq;
-import bexd;
-import bexf;
+import behp;
+import bekr;
+import belh;
+import bexu;
+import bexw;
 import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,19 +14,19 @@ import org.json.JSONObject;
 public class WebAudioManager$5
   implements Runnable
 {
-  public WebAudioManager$5(bexf parambexf, byte[] paramArrayOfByte, int paramInt, beka parambeka) {}
+  public WebAudioManager$5(bexw parambexw, byte[] paramArrayOfByte, int paramInt, bekr parambekr) {}
   
   public void run()
   {
-    bexd localbexd = new bexd();
+    bexu localbexu = new bexu();
     Object localObject = null;
     int j;
     int k;
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localObject = localbexd.a(this.jdField_a_of_type_ArrayOfByte);
-      j = AudioNativeManager.loadRawData((byte[])localObject, localbexd.a(), localbexd.b(), localbexd.c());
-      k = localbexd.a();
+      localObject = localbexu.a(this.jdField_a_of_type_ArrayOfByte);
+      j = AudioNativeManager.loadRawData((byte[])localObject, localbexu.a(), localbexu.b(), localbexu.c());
+      k = localbexu.a();
       if (localObject == null) {
         break label269;
       }
@@ -34,8 +34,8 @@ public class WebAudioManager$5
     label269:
     for (int i = localObject.length;; i = 0)
     {
-      int m = localbexd.b();
-      int n = localbexd.c() / 8;
+      int m = localbexu.b();
+      int n = localbexu.c() / 8;
       n = i / m / n / k;
       localObject = new JSONObject();
       try
@@ -47,8 +47,8 @@ public class WebAudioManager$5
         ((JSONObject)localObject).put("numberOfChannels", m);
         ((JSONObject)localObject).put("decodeId", this.jdField_a_of_type_Int);
         ((JSONObject)localObject).put("status", "ok");
-        if (this.jdField_a_of_type_Beka != null) {
-          this.jdField_a_of_type_Beka.a.a("onDecodeWebAudioDataDone", ((JSONObject)localObject).toString(), 0);
+        if (this.jdField_a_of_type_Bekr != null) {
+          this.jdField_a_of_type_Bekr.a.a("onDecodeWebAudioDataDone", ((JSONObject)localObject).toString(), 0);
         }
         return;
       }
@@ -61,9 +61,9 @@ public class WebAudioManager$5
         break;
       }
       str = Environment.getExternalStorageDirectory().getPath() + "/minigame/audio_" + System.currentTimeMillis();
-      bekq.a(this.jdField_a_of_type_ArrayOfByte, str);
-      localObject = localbexd.a(str);
-      bekq.a(str);
+      belh.a(this.jdField_a_of_type_ArrayOfByte, str);
+      localObject = localbexu.a(str);
+      belh.a(str);
       break;
     }
   }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.TbsReaderView;
@@ -26,7 +26,7 @@ public class MiniAppFileView
   
   private String getFileType(String paramString)
   {
-    if (bbjw.a(paramString)) {}
+    if (bbkk.a(paramString)) {}
     int i;
     do
     {
@@ -46,7 +46,7 @@ public class MiniAppFileView
   
   public boolean displayFile(File paramFile)
   {
-    if ((paramFile != null) && (!bbjw.a(paramFile.toString())) && (!this.isFileShow))
+    if ((paramFile != null) && (!bbkk.a(paramFile.toString())) && (!this.isFileShow))
     {
       File localFile = new File(MiniAppFileManager.getInstance().getTmpPath(""));
       if (!localFile.exists()) {

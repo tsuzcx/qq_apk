@@ -1,25 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
 
 public class bioe
-  implements Animator.AnimatorListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bioe(AEProviderContainerView paramAEProviderContainerView) {}
+  public bioe(AEBeautyProviderView paramAEBeautyProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEProviderContainerView", 2, "panel opened");
+    if (AEBeautyProviderView.a(this.a) != null)
+    {
+      AEBeautyProviderView.a(this.a).b(paramInt);
+      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    }
+    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
+    bizx.a().e(paramSeekBar.getProgress());
+    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+  }
 }
 
 

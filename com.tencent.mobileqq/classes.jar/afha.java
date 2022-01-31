@@ -1,34 +1,70 @@
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afha
-  implements afsy
+  extends akil
 {
   public afha(TroopView paramTroopView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void d(boolean paramBoolean, ArrayList<afdi> paramArrayList)
   {
-    if (TroopView.a(this.a) != null) {
-      TroopView.a(this.a).a(paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
     }
-    if (paramInt1 >= paramInt2) {
-      if (!TroopView.a(this.a))
+    Object localObject;
+    int i;
+    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
+    {
+      localObject = TroopView.a(this.a);
+      if (paramBoolean)
       {
-        TroopView.a(this.a, true);
-        if (this.a.a != null) {
-          this.a.a.a(TroopView.a(this.a));
-        }
+        i = 1;
+        localObject = ((afhj)localObject).obtainMessage(14, 0, i);
+        TroopView.a(this.a).sendMessage((Message)localObject);
       }
     }
-    do
+    else
     {
-      do
+      if (!paramBoolean) {
+        break label223;
+      }
+      TroopView.a(this.a).sendEmptyMessage(4);
+    }
+    label223:
+    for (;;)
+    {
+      label118:
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
       {
-        return;
-      } while (!TroopView.a(this.a));
-      TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+        this.a.a.clear();
+        this.a.a.addAll(paramArrayList);
+        TroopView.a(this.a).notifyDataSetChanged();
+        localObject = new ArrayList();
+        i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size())
+          {
+            afdi localafdi = (afdi)paramArrayList.get(i);
+            localafdi.c = (i + 100);
+            ((ArrayList)localObject).add(localafdi);
+            i += 1;
+            continue;
+            i = 0;
+            break;
+            TroopView.a(this.a).sendEmptyMessage(5);
+            break label118;
+          }
+        }
+        TroopView.a(this.a).a((ArrayList)localObject);
+        TroopView.a(this.a, 0);
+      }
+    }
   }
 }
 

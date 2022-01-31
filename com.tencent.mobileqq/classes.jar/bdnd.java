@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
 
-public final class bdnd
-  implements Parcelable.Creator<CreateVirtualResult>
+public class bdnd
+  extends bdnm
 {
-  public CreateVirtualResult a(Parcel paramParcel)
-  {
-    return new CreateVirtualResult(paramParcel);
-  }
+  public bdnd(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public CreateVirtualResult[] a(int paramInt)
+  public void a()
   {
-    return new CreateVirtualResult[paramInt];
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
   }
 }
 

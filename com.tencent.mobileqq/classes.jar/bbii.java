@@ -1,35 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class bbii
-  extends Handler
+  implements View.OnClickListener
 {
-  bbii(bbig parambbig, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bbii(bbig parambbig) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      if (bbig.a(this.a) != null) {
-        bbig.a(this.a).a(bbig.a(this.a));
-      }
-      while (!QLog.isDevelopLevel())
-      {
-        super.handleMessage(paramMessage);
-        return;
-      }
-      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
+    if (paramView == this.a.a) {
+      return;
     }
+    if (this.a.a != null) {
+      this.a.a.findViewById(2131369267).setVisibility(8);
+    }
+    TextView localTextView = (TextView)paramView.findViewById(2131369268);
+    this.a.a(localTextView.getText().toString());
+    paramView.findViewById(2131369267).setVisibility(0);
+    this.a.a = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbii
  * JD-Core Version:    0.7.0.1
  */

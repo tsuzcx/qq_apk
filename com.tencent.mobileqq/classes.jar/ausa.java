@@ -1,8 +1,7 @@
 public class ausa
 {
-  public static String a = "precover_ipc_action_get_resource";
-  public static String b = "precover_ipc_action_req_download";
-  public static String c = "precover_ipc_action_query_download_progress";
+  public long a = -1L;
+  public long b = -1L;
 }
 
 

@@ -1,17 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class pru
   implements View.OnClickListener
 {
-  pru(prp paramprp) {}
+  pru(prt paramprt) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.a.jdField_a_of_type_Rap.a();
-    if (paramView != null) {
-      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    if (this.a.jdField_a_of_type_Ram == null) {}
+    int i;
+    rbo localrbo;
+    do
+    {
+      do
+      {
+        return;
+        paramView = ((pau)this.a.jdField_a_of_type_JavaLangObject).a();
+      } while (paramView == null);
+      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_Ram);
+      localrbo = this.a.jdField_a_of_type_Ram.a();
+    } while (localrbo == null);
+    localrbo.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
   }
 }
 

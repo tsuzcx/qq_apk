@@ -1,23 +1,38 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
 
 class bets
-  extends betk
+  implements betp
 {
-  bets(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
+  bets(betq parambetq, EngineChannel paramEngineChannel, BaseLibInfo paramBaseLibInfo) {}
+  
+  public void a()
   {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
   }
   
-  protected betj a()
+  public void a(float paramFloat, String paramString)
   {
-    return new betj(2131694224, new bett(this));
+    Bundle localBundle = new Bundle();
+    localBundle.putFloat("engineInstallerProgress", paramFloat);
+    localBundle.putString("engineInstallerMessage", paramString);
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
   }
   
-  protected betj b()
+  public void b()
   {
-    return new betj(2131694208, new betu(this));
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    betm localbetm = (betm)betq.b(this.jdField_a_of_type_Betq).get(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
+    if (localbetm != null) {
+      localbetm.b(this);
+    }
   }
 }
 

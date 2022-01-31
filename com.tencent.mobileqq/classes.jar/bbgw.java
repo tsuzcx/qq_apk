@@ -1,18 +1,22 @@
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-class bbgw
-  implements View.OnClickListener
+final class bbgw
+  implements DialogInterface.OnClickListener
 {
-  bbgw(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener) {}
+  bbgw(Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgu, 0);
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
     }
-    this.jdField_a_of_type_Bbgu.dismiss();
   }
 }
 

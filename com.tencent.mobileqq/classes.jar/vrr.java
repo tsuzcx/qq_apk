@@ -1,114 +1,141 @@
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Groups;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class vrr
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener, vru
 {
-  @NonNull
-  protected final Groups a;
-  @NonNull
-  private final List<vrq> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  @NonNull
-  private final List<vrq> b = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private List<vrt> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public vrr(@NonNull Groups paramGroups, @NonNull List<vrq> paramList)
+  public vrr(@NonNull List<vrt> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramGroups = paramList.iterator();
-    while (paramGroups.hasNext())
+    if (paramList.isEmpty()) {
+      ved.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    a();
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((vrt)paramList.next()).a(this);
+    }
+  }
+  
+  @NonNull
+  private vrs a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-      paramList = (vrq)paramGroups.next();
-      if (paramList.jdField_a_of_type_Boolean) {
-        this.b.add(paramList);
+      vrt localvrt = (vrt)localIterator.next();
+      j = localvrt.a() + i;
+      if (paramInt <= j - 1) {
+        return new vrs(localvrt, paramInt - i);
       }
     }
+    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
   }
   
-  public int a()
+  private void a()
   {
-    return this.b.size();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((vrt)localIterator.next()).a() + i) {}
+    this.jdField_a_of_type_Int = i;
   }
   
-  @NonNull
-  public List<vrq> a()
+  @Nullable
+  public vrt a()
   {
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public void a(vrq paramvrq)
-  {
-    paramvrq.a();
-    if ((paramvrq.jdField_a_of_type_Boolean) && (!this.b.contains(paramvrq)))
-    {
-      this.b.add(paramvrq);
-      return;
-    }
-    if ((!paramvrq.jdField_a_of_type_Boolean) && (this.b.contains(paramvrq)))
-    {
-      this.b.remove(paramvrq);
-      return;
-    }
-    throw new IllegalStateException("onFriendClick, friend select:" + paramvrq.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(paramvrq));
-  }
-  
-  public boolean a()
-  {
-    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  @NonNull
-  public List<vrq> b()
-  {
-    return Collections.unmodifiableList(this.b);
-  }
-  
-  public void b()
-  {
-    this.b.clear();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      vrq localvrq = (vrq)localIterator.next();
-      localvrq.jdField_a_of_type_Boolean = true;
-      this.b.add(localvrq);
+      vrt localvrt = (vrt)localIterator.next();
+      if (localvrt.a) {
+        return localvrt;
+      }
     }
+    return null;
   }
   
-  public void b(vrq paramvrq)
+  public void a(vrt paramvrt)
   {
-    paramvrq.jdField_a_of_type_Boolean = true;
-    if (!this.b.contains(paramvrq)) {
-      this.b.add(paramvrq);
-    }
+    notifyDataSetChanged();
   }
   
-  public void c()
+  public int getCount()
   {
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((vrq)localIterator.next()).jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    vrs localvrs = a(paramInt);
+    return localvrs.jdField_a_of_type_Vrt.a(localvrs.jdField_a_of_type_Int);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = a(paramInt);
+    vrt localvrt = ((vrs)localObject).jdField_a_of_type_Vrt;
+    paramInt = ((vrs)localObject).jdField_a_of_type_Int;
+    localObject = paramView;
+    if (paramView == null) {
+      localObject = localvrt.a(paramInt, paramViewGroup);
     }
+    localvrt.a(paramInt, (View)localObject);
+    return localObject;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 5;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramView = a(paramInt);
+    paramAdapterView = paramView.jdField_a_of_type_Vrt;
+    paramAdapterView.a(paramView.jdField_a_of_type_Int);
+    if ((paramAdapterView instanceof vrq)) {
+      return;
+    }
+    paramAdapterView.b(true);
+    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramView.hasNext())
+    {
+      vrt localvrt = (vrt)paramView.next();
+      if (localvrt != paramAdapterView)
+      {
+        localvrt.b(false);
+        localvrt.a(false);
+      }
+    }
+    notifyDataSetChanged();
   }
 }
 

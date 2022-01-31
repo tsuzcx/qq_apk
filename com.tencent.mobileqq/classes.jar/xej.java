@@ -1,21 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.ui.RefreshView;
-
-public class xej
-  extends Handler
+public abstract interface xej
 {
-  public xej(RefreshView paramRefreshView) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a();
-  }
+  public abstract void a();
 }
 
 

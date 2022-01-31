@@ -1,34 +1,39 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 final class was
-  extends wad
+  extends waa
 {
-  was(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
+  was(waa paramwaa, String paramString, long paramLong) {}
   
   public void onFailure(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    vei.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    this.jdField_a_of_type_Waa.onFailure(paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    this.jdField_a_of_type_Wad.onFailure(paramString);
-    if ((this.jdField_a_of_type_Wad instanceof swk)) {
-      ((swk)this.jdField_a_of_type_Wad).a(941005);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
+    this.jdField_a_of_type_Waa.onFinish(paramBoolean);
   }
   
   public void onStart()
   {
     super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
+    this.jdField_a_of_type_Waa.onStart();
   }
   
   public void onSuccess(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    vei.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
+    if (bjjc.c) {
+      bjjc.g.a(1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Waa.onSuccess(paramString);
+    ved.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
   }
 }
 

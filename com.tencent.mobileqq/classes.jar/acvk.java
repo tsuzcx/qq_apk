@@ -1,42 +1,36 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class acvk
-  implements acvi
+  implements ahbr
 {
-  public agzf a;
-  public PreloadManager a;
-  private QQAppInterface a;
+  public acvk(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public acvk(QQAppInterface paramQQAppInterface)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Agzf = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Agzf = ((agzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+      paramPathResult = paramPathResult + File.separator;
+      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
     }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new CustomizeStrategyFactory.PanelStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aelu paramaelu)
-  {
-    if ((paramRedPacketInfo != null) && ((paramaelu instanceof aelw)))
+    catch (Throwable paramPathResult)
     {
-      paramaelu = (aelw)paramaelu;
-      paramRedPacketInfo.icon = paramaelu.a;
-      paramRedPacketInfo.resPath = paramaelu.b;
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
   }
 }

@@ -3,65 +3,67 @@ import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
 public class anam
-  extends ampb<anak>
+  extends ampa<anal>
 {
   public int a()
   {
-    return 432;
+    return 460;
   }
   
   @NonNull
-  public anak a(int paramInt)
+  public anal a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    return new anak();
+    return new anal();
   }
   
   @Nullable
-  public anak a(ampi[] paramArrayOfampi)
+  public anal a(amph[] paramArrayOfamph)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
     }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfampi.length);
+        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
       }
-      return anak.a(paramArrayOfampi[0]);
+      return anal.a(paramArrayOfamph[0]);
     }
     return null;
   }
   
-  public Class<anak> a()
+  public Class<anal> a()
   {
-    return anak.class;
+    return anal.class;
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public void a(anak paramanak)
+  public void a(anal paramanal)
   {
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramanak == null) {
-        break label49;
+      if (paramanal == null) {
+        break label58;
       }
     }
-    label49:
-    for (paramanak = paramanak.toString();; paramanak = " empty")
+    label58:
+    for (String str = paramanal.toString();; str = " empty")
     {
-      QLog.d("SearchRichConfProcessor", 2, paramanak);
-      awtk.a().a();
+      QLog.d("TroopRobotConfProcessor", 2, str);
+      if (paramanal != null) {
+        bail.a(paramanal.a(), paramanal.a());
+      }
       return;
     }
   }

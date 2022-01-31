@@ -1,34 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
 
-final class vnc
-  implements Animator.AnimatorListener
+public abstract interface vnc
 {
-  vnc(vnd paramvnd, ValueAnimator paramValueAnimator) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Vnd != null) {
-      this.jdField_a_of_type_Vnd.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Vnd != null) {
-      this.jdField_a_of_type_Vnd.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Vnd != null) {
-      this.jdField_a_of_type_Vnd.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

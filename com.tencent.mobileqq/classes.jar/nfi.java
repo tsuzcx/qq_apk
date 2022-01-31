@@ -1,31 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-final class nfi
-  implements BusinessObserver
+class nfi
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  nfi(QQAppInterface paramQQAppInterface, boolean paramBoolean, akdo paramakdo) {}
+  nfi(nfg paramnfg) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = nfh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
-    {
-      if (this.jdField_a_of_type_Akdo != null) {
-        this.jdField_a_of_type_Akdo.a(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
-    }
-  }
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

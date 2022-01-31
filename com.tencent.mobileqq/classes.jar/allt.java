@@ -1,40 +1,53 @@
 import android.content.Context;
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class allt
+public final class allt
 {
-  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
+  public static int a(String paramString)
   {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString2);
-    GLES20.glCompileShader(paramInt);
-    paramContext = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
-    if (paramContext[0] == 0)
+    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+  }
+  
+  public static void a(Context paramContext, View paramView)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-      GLES20.glDeleteShader(paramInt);
-      paramInt = i;
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {}
-      return paramInt;
+      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
+      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      paramContext.topMargin = i;
+      paramView.setLayoutParams(paramContext);
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
   {
-    for (;;)
+    ViewGroup.MarginLayoutParams localMarginLayoutParams;
+    int i;
+    if (axlk.a(paramContext))
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
+      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      i = paramInt;
+      if (paramBoolean) {
+        i = paramInt + axlk.d(paramContext);
       }
-      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+      if (localMarginLayoutParams.bottomMargin != i) {}
     }
+    else
+    {
+      return;
+    }
+    localMarginLayoutParams.bottomMargin = i;
+    paramView.setLayoutParams(localMarginLayoutParams);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
   }
 }
 

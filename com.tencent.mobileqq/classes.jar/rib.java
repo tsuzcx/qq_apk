@@ -1,20 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import java.net.URL;
 
 public class rib
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rib(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final URL jdField_a_of_type_JavaNetURL;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rib(int paramInt1, int paramInt2, URL paramURL, boolean paramBoolean)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 

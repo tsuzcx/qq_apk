@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 class bkql
+  implements acts
 {
-  public FilterDesc a;
-  public ArrayList<WeakReference<bkqn>> a;
+  bkql(bkqj parambkqj) {}
   
-  bkql(bkqk parambkqk)
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    bkqj.b(this.a);
+    bkqj.a(this.a, bkqj.a(this.a));
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

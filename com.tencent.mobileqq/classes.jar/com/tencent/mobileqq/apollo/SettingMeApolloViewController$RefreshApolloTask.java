@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import aisn;
-import aixk;
-import ajfj;
-import ajkk;
-import ajlq;
-import ajou;
+import airx;
+import aisl;
+import aixi;
+import ajfh;
+import ajki;
+import ajlo;
+import ajos;
 import android.os.Message;
-import bbqp;
-import bfnk;
+import bbrd;
+import bfob;
 import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
@@ -49,35 +49,35 @@ class SettingMeApolloViewController$RefreshApolloTask
         } while (localObject2 == null);
         localObject1 = (SettingMeApolloViewController)this.b.get();
       } while (localObject1 == null);
-      ajou.b("drawer_pre");
-      i = ajfj.b(1);
-      ajlq.a(i);
-      ajlq.a(i, 1);
-      ajlq.a(i, 10);
-      localObject3 = (airz)((QQAppInterface)localObject2).getManager(153);
-      ((airz)localObject3).a();
-      localObject3 = ((airz)localObject3).b(((QQAppInterface)localObject2).getCurrentAccountUin());
+      ajos.b("drawer_pre");
+      i = ajfh.b(1);
+      ajlo.a(i);
+      ajlo.a(i, 1);
+      ajlo.a(i, 10);
+      localObject3 = (airx)((QQAppInterface)localObject2).getManager(153);
+      ((airx)localObject3).a();
+      localObject3 = ((airx)localObject3).b(((QQAppInterface)localObject2).getCurrentAccountUin());
       if ((localObject3 != null) && (((ApolloBaseInfo)localObject3).apolloLocalTS != ((ApolloBaseInfo)localObject3).apolloServerTS)) {
-        ((bbqp)((QQAppInterface)localObject2).a(71)).a("qqSettingMe");
+        ((bbrd)((QQAppInterface)localObject2).a(71)).a("qqSettingMe");
       }
-      localObject3 = aixk.a((QQAppInterface)localObject2, ((QQAppInterface)localObject2).c(), (ApolloBaseInfo)localObject3, 1);
-      if ((localObject3 == null) || (((aisn)localObject3).a))
+      localObject3 = aixi.a((QQAppInterface)localObject2, ((QQAppInterface)localObject2).c(), (ApolloBaseInfo)localObject3, 1);
+      if ((localObject3 == null) || (((aisl)localObject3).a))
       {
         QLog.w("SettingMeApolloViewController", 1, "checkDrawerRoleDressInfo not ready");
         return;
       }
-      if (ajkk.a((QQAppInterface)localObject2, 11)) {
+      if (ajki.a((QQAppInterface)localObject2, 11)) {
         break;
       }
-      ajlq.a(((aisn)localObject3).e, 10, 110, new Object[] { "role 0 not ready" });
+      ajlo.a(((aisl)localObject3).e, 10, 110, new Object[] { "role 0 not ready" });
     } while (!QLog.isColorLevel());
     QLog.w("SettingMeApolloViewController", 2, "checkDrawerBasicApolloAction up and down not ready");
     return;
-    ajlq.a(((aisn)localObject3).e, 10, 0, new Object[] { "switch done" });
-    ajlq.a(i, 11);
+    ajlo.a(((aisl)localObject3).e, 10, 0, new Object[] { "switch done" });
+    ajlo.a(i, 11);
     Object localObject2 = ((SettingMeApolloViewController)localObject1).a.obtainMessage(65536);
     ((Message)localObject2).obj = localObject3;
-    ((SettingMeApolloViewController)localObject1).b = ((aisn)localObject3).c;
+    ((SettingMeApolloViewController)localObject1).b = ((aisl)localObject3).c;
     ((SettingMeApolloViewController)localObject1).a.sendMessageAtFrontOfQueue((Message)localObject2);
   }
 }

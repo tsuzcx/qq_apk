@@ -1,44 +1,56 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.2;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class adgk
-  extends akav
+public class adgk
+  implements adif
 {
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private adgm jdField_a_of_type_Adgm;
+  private akfk jdField_a_of_type_Akfk = new adgl(this);
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  private adgk(adgh paramadgh, BaseActivity paramBaseActivity)
+  adgk(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    super.a(paramBoolean1, paramList, paramBoolean2);
-    if ((adgh.a(this.jdField_a_of_type_Adgh, paramList)) && (paramBoolean1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    Object localObject = null;
+    switch (paramInt)
     {
-      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
-      }
-      if ((paramBoolean2) && (paramList != null))
+    }
+    for (;;)
+    {
+      if (localObject != null) {}
+      try
       {
-        if (!this.jdField_a_of_type_Adgh.a) {
-          break;
-        }
-        paramList.finish();
+        ((Runnable)localObject).run();
+        return;
       }
-      return;
+      catch (Exception localException)
+      {
+        QLog.e("AIOIconChangeByTimeHelper", 1, localException, new Object[0]);
+      }
+      this.jdField_a_of_type_Adgm = new adgm(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, null);
+      adgm.a(this.jdField_a_of_type_Adgm);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.addObserver(this.jdField_a_of_type_Akfk);
+      localObject = new AIOIconChangeByTimeHelper.1(this);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.removeObserver(this.jdField_a_of_type_Akfk);
+      localObject = new AIOIconChangeByTimeHelper.2(this);
     }
-    if (adgh.a() == paramList)
-    {
-      adgh.a(this.jdField_a_of_type_Adgh, paramList);
-      return;
-    }
-    paramList.finish();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 6, 11 };
   }
 }
 

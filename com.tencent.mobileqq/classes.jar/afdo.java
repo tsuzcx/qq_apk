@@ -1,6 +1,17 @@
-public abstract interface afdo
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class afdo
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  afdo(afdn paramafdn, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Afdn.a != null) {
+      this.jdField_a_of_type_Afdn.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

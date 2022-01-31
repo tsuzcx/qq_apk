@@ -1,25 +1,25 @@
 package cooperation.qqreader.view;
 
-import bgvv;
+import bgwm;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class QPhoneShare$2
   implements Runnable
 {
-  public QPhoneShare$2(bgvv parambgvv, int paramInt1, int paramInt2) {}
+  public QPhoneShare$2(bgwm parambgwm, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (bgvv.a(this.this$0).getWidth() < this.a) {
-      bgvv.a(this.this$0).setMove(true);
+    if (bgwm.a(this.this$0).getWidth() < this.a) {
+      bgwm.a(this.this$0).setMove(true);
     }
-    while (bgvv.b(this.this$0).getWidth() < this.b)
+    while (bgwm.b(this.this$0).getWidth() < this.b)
     {
-      bgvv.b(this.this$0).setMove(true);
+      bgwm.b(this.this$0).setMove(true);
       return;
-      bgvv.a(this.this$0).setMove(false);
+      bgwm.a(this.this$0).setMove(false);
     }
-    bgvv.b(this.this$0).setMove(false);
+    bgwm.b(this.this$0).setMove(false);
   }
 }
 

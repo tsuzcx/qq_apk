@@ -1,36 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
 
-class upv
-  implements syt<upx, upy>
+public class upv
+  extends syn
 {
-  upv(upu paramupu, boolean paramBoolean) {}
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
   
-  public void a(@NonNull upx paramupx, @Nullable upy arg2, @NonNull ErrorMessage paramErrorMessage)
+  public upv(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    paramupx = new upw(paramErrorMessage, upu.a(this.jdField_a_of_type_Upu));
-    paramupx.jdField_b_of_type_Boolean = false;
-    paramupx.jdField_a_of_type_Boolean = upu.a(this.jdField_a_of_type_Upu);
-    paramupx.jdField_a_of_type_Int = upu.a(this.jdField_a_of_type_Upu);
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
+  }
+  
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  {
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    tdl localtdl = (tdl)tcz.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
     {
-      ste.a().dispatch(paramupx);
-      return;
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localtdl.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new teg("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
     }
-    paramupx.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramupx.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramupx.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramupx.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((tco)tdc.a(15)).a(paramupx.jdField_a_of_type_JavaUtilList, upu.a(this.jdField_a_of_type_Upu), upu.c(this.jdField_a_of_type_Upu), true);
-    synchronized (this.jdField_a_of_type_Upu)
-    {
-      upu.a(this.jdField_a_of_type_Upu, true);
-      ste.a().dispatch(paramupx);
-      veg.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramupx);
-      return;
+    if (!localArrayList2.isEmpty()) {
+      new tki().a(1, localArrayList2);
     }
+    return localArrayList1;
   }
 }
 

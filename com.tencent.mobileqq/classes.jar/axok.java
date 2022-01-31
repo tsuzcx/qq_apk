@@ -1,31 +1,46 @@
-import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.1;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.2;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class axok
-  implements IDiniFlyQLog
+public class axok
+  implements zzt
 {
-  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
+  public List<String> a(String paramString)
   {
-    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
-    switch (paramInt1)
-    {
-    case 4: 
-    default: 
-      QLog.i(paramString1, paramInt2, paramString2, null);
-      return;
-    case 5: 
-      QLog.w(paramString1, paramInt2, paramString2, null);
-      return;
-    case 6: 
-      QLog.e(paramString1, paramInt2, paramString2, null);
-      return;
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.1(this, paramString));
     }
-    QLog.d(paramString1, paramInt2, paramString2, null);
+    paramString = new ArrayList(4);
+    paramString.add(zzq.b());
+    paramString.add(zzq.a());
+    paramString.addAll(zzq.b());
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.2(this, paramString1, paramBoolean, paramString2));
+    }
+  }
+  
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  {
+    return InitMagnifierSDKData.a(paramInspectUUID);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axok
  * JD-Core Version:    0.7.0.1
  */

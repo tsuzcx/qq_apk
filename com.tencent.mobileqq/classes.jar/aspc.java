@@ -1,20 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class aspc
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
   public aspc(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
-    }
-    this.a.getActivity().finish();
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.d(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.d(this.a);
   }
 }
 

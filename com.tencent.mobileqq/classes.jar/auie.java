@@ -1,15 +1,30 @@
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.data.AutoReplyText;
+import java.util.ArrayList;
 
 class auie
   implements View.OnClickListener
 {
-  auie(auib paramauib, AutoReplyText paramAutoReplyText) {}
+  auie(auid paramauid) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Auib.a(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId());
+    if (auid.a(this.a).size() > 10) {
+      bcql.a(auid.a(this.a), 1, 2131690320, 1).a();
+    }
+    while (auid.a(this.a) == null) {
+      return;
+    }
+    if (auid.a(this.a).size() > 1) {}
+    for (int i = auid.a(this.a).size() - 1;; i = 0)
+    {
+      paramView = new AutoReplyText("", i);
+      paramView.getExtra().putBoolean("addFlag", true);
+      auid.a(this.a).b(paramView, false);
+      return;
+    }
   }
 }
 

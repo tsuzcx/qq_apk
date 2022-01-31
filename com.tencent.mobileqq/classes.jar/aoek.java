@@ -1,142 +1,82 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aoek
+class aoek
+  extends akuo
 {
-  private static aoek jdField_a_of_type_Aoek;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private ajxl jdField_a_of_type_Ajxl = new aoel(this);
-  private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aoem(this);
-  
-  public static aoek a()
+  aoek(aoej paramaoej, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (jdField_a_of_type_Aoek == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Aoek == null) {
-        jdField_a_of_type_Aoek = new aoek();
-      }
-      return jdField_a_of_type_Aoek;
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static void a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
-    if (jdField_a_of_type_Aoek != null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if (paramInt == 0) {
+      paramInt = i;
+    }
+    aoel localaoel;
+    label219:
+    while (paramInt != 0)
+    {
+      ??? = ???.a;
+      double d1 = ???.a;
+      double d2 = ???.b;
+      aoej.a(this.a, d1);
+      aoej.b(this.a, d2);
+      aoej.a(this.a, System.currentTimeMillis());
+      synchronized (aoej.a())
       {
-        if ((jdField_a_of_type_Aoek != null) && (jdField_a_of_type_Aoek.jdField_a_of_type_JavaLangRefWeakReference != null))
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)jdField_a_of_type_Aoek.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localQQAppInterface != null) {
-            localQQAppInterface.removeObserver(jdField_a_of_type_Aoek.jdField_a_of_type_Ajxl);
-          }
-          jdField_a_of_type_Aoek = null;
+        if ((aoej.a(this.a) == null) || (aoej.a(this.a).size() <= 0)) {
+          break label219;
         }
-        return;
+        Iterator localIterator1 = aoej.a(this.a).iterator();
+        do
+        {
+          if (!localIterator1.hasNext()) {
+            break;
+          }
+          localaoel = (aoel)localIterator1.next();
+        } while (localaoel == null);
+        this.a.a(aoej.a(this.a), aoej.a(this.a), localaoel.a, localaoel.b, true, d1, d2);
       }
+      paramInt = 0;
+      continue;
+      aoej.a(this.a).clear();
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putInt("checkDevLockSms_ret", paramInt);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "openEquipmentLock");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidOsMessenger != null) {}
-    try
+    label362:
+    for (;;)
     {
-      Message localMessage = Message.obtain(null, 4);
-      localMessage.setData(paramBundle);
-      this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
-      if (QLog.isColorLevel()) {
-        QLog.i("EquipLockWebImpl", 2, "resp to sever: ");
-      }
+      aoej.a(this.a, null);
+      aoej.a(this.a, null);
       return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("isWaiting", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "setWaitingResponse");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("setMobileResult", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "setMobileResult");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  private void c(boolean paramBoolean)
-  {
-    Bundle localBundle1 = new Bundle();
-    localBundle1.putBoolean("isBack", paramBoolean);
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putString("cmd", "closeWeb");
-    localBundle2.putInt("respkey", -1);
-    localBundle2.putBundle("response", localBundle1);
-    a(localBundle2);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Messenger paramMessenger)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsMessenger = paramMessenger;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localQQAppInterface != null) {
-        break label30;
+      synchronized (aoej.a())
+      {
+        if ((aoej.a(this.a) == null) || (aoej.a(this.a).size() <= 0)) {
+          break label362;
+        }
+        Iterator localIterator2 = aoej.a(this.a).iterator();
+        while (localIterator2.hasNext())
+        {
+          localaoel = (aoel)localIterator2.next();
+          if (localaoel != null) {
+            this.a.a(aoej.a(this.a), aoej.a(this.a), localaoel.a, localaoel.b, false, 0.0D, 0.0D);
+          }
+        }
       }
-    }
-    label30:
-    for (int i = -1;; i = aoen.a().a(localQQAppInterface, localQQAppInterface.getCurrentAccountUin(), null, paramArrayOfByte, this.jdField_a_of_type_MqqObserverWtloginObserver))
-    {
-      a(i);
-      return;
+      aoej.a(this.a).clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aoek
  * JD-Core Version:    0.7.0.1
  */

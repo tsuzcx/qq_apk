@@ -1,14 +1,19 @@
-public abstract interface bfbn
+import android.text.TextUtils;
+import android.webkit.ValueCallback;
+import com.tencent.tissue.v8rt.engine.SpeedUtil;
+
+class bfbn
+  implements ValueCallback
 {
-  public abstract String a(String paramString1, String paramString2, begy parambegy, int paramInt);
+  bfbn(bfbm parambfbm) {}
   
-  public abstract void a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void b(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void c(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void d(String paramString1, String paramString2, int paramInt);
+  public void onReceiveValue(Object paramObject)
+  {
+    if ((!TextUtils.isEmpty(bfbm.a(this.a))) && (bfbm.a(this.a).contains("QLogic.js"))) {
+      SpeedUtil.DEFAULT.event("runQLogicJs finish " + this.a.a);
+    }
+    this.a.a.a(bfbl.a);
+  }
 }
 
 

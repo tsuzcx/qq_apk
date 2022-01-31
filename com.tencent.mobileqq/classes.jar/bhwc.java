@@ -1,23 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class bhwc
-  extends Handler
+public class bhwc
 {
-  bhwc(bhwb parambhwb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_Bhvy = null;
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b = true;
+  public boolean c = true;
 }
 
 

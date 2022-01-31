@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import abtv;
-import ahuc;
-import ahum;
-import ahun;
+import abtr;
+import ahua;
+import ahuk;
+import ahul;
+import ahwl;
+import ahwm;
 import ahwn;
 import ahwo;
 import ahwp;
-import ahwq;
-import ahwr;
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -27,8 +27,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -40,20 +40,20 @@ import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 import dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
 import java.io.File;
 import java.util.ArrayList;
-import vtp;
-import vuc;
+import vtm;
+import vtz;
 
 public class QzoneSlideShowPreparingFragment
   extends PublicBaseFragment
-  implements abtv
+  implements abtr
 {
-  private static final String jdField_a_of_type_JavaLangString = vtp.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = vtm.class.getName();
   private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ahwn(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ahwl(this, Looper.getMainLooper());
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bbgg jdField_a_of_type_Bbgg;
+  private bbgu jdField_a_of_type_Bbgu;
   private Runnable jdField_a_of_type_JavaLangRunnable = new QzoneSlideShowPreparingFragment.2(this);
   private TextView b;
   
@@ -108,7 +108,7 @@ public class QzoneSlideShowPreparingFragment
     }
   }
   
-  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, ahuc paramahuc, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, ahua paramahua, String paramString5, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean1, int paramInt4, int paramInt5, String paramString6, int paramInt6, String paramString7, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     if (TextUtils.isEmpty(paramString2)) {
       return;
@@ -117,53 +117,53 @@ public class QzoneSlideShowPreparingFragment
     if (!TextUtils.isEmpty(paramString4)) {
       PtvFilterUtils.a(str, paramString4);
     }
-    ahun localahun = new ahun();
-    localahun.jdField_a_of_type_AndroidAppActivity = getActivity();
-    localahun.jdField_a_of_type_JavaLangString = str;
-    localahun.jdField_b_of_type_JavaLangString = paramString1;
-    localahun.jdField_a_of_type_Int = paramInt1;
-    localahun.jdField_c_of_type_JavaLangString = paramString2;
-    localahun.jdField_f_of_type_JavaLangString = paramString3;
-    localahun.jdField_c_of_type_Int = 0;
-    localahun.jdField_d_of_type_Int = 0;
-    localahun.jdField_k_of_type_JavaLangString = paramString4;
-    localahun.j = paramInt2;
-    localahun.jdField_a_of_type_Ahuc = paramahuc;
-    localahun.jdField_g_of_type_JavaLangString = paramString5;
-    localahun.jdField_e_of_type_Int = paramInt3;
-    localahun.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    localahun.jdField_a_of_type_Boolean = true;
-    localahun.jdField_b_of_type_Boolean = paramBoolean1;
-    localahun.jdField_f_of_type_Int = paramInt4;
-    localahun.jdField_g_of_type_Int = paramInt5;
-    localahun.jdField_h_of_type_JavaLangString = paramString6;
-    localahun.jdField_h_of_type_Int = paramInt6;
-    localahun.i = paramString7;
-    localahun.jdField_e_of_type_Boolean = paramBoolean2;
-    localahun.jdField_f_of_type_Boolean = paramBoolean3;
-    localahun.jdField_g_of_type_Boolean = paramBoolean4;
-    localahun.jdField_h_of_type_Boolean = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VNeedOriginal", true);
-    localahun.jdField_k_of_type_Int = vtp.a().a();
-    localahun.jdField_d_of_type_JavaLangString = "";
-    localahun.jdField_b_of_type_Int = 0;
-    localahun.jdField_e_of_type_JavaLangString = "";
-    new ahum(localahun).execute(new Void[0]);
+    ahul localahul = new ahul();
+    localahul.jdField_a_of_type_AndroidAppActivity = getActivity();
+    localahul.jdField_a_of_type_JavaLangString = str;
+    localahul.jdField_b_of_type_JavaLangString = paramString1;
+    localahul.jdField_a_of_type_Int = paramInt1;
+    localahul.jdField_c_of_type_JavaLangString = paramString2;
+    localahul.jdField_f_of_type_JavaLangString = paramString3;
+    localahul.jdField_c_of_type_Int = 0;
+    localahul.jdField_d_of_type_Int = 0;
+    localahul.jdField_k_of_type_JavaLangString = paramString4;
+    localahul.j = paramInt2;
+    localahul.jdField_a_of_type_Ahua = paramahua;
+    localahul.jdField_g_of_type_JavaLangString = paramString5;
+    localahul.jdField_e_of_type_Int = paramInt3;
+    localahul.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localahul.jdField_a_of_type_Boolean = true;
+    localahul.jdField_b_of_type_Boolean = paramBoolean1;
+    localahul.jdField_f_of_type_Int = paramInt4;
+    localahul.jdField_g_of_type_Int = paramInt5;
+    localahul.jdField_h_of_type_JavaLangString = paramString6;
+    localahul.jdField_h_of_type_Int = paramInt6;
+    localahul.i = paramString7;
+    localahul.jdField_e_of_type_Boolean = paramBoolean2;
+    localahul.jdField_f_of_type_Boolean = paramBoolean3;
+    localahul.jdField_g_of_type_Boolean = paramBoolean4;
+    localahul.jdField_h_of_type_Boolean = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VNeedOriginal", true);
+    localahul.jdField_k_of_type_Int = vtm.a().a();
+    localahul.jdField_d_of_type_JavaLangString = "";
+    localahul.jdField_b_of_type_Int = 0;
+    localahul.jdField_e_of_type_JavaLangString = "";
+    new ahuk(localahul).execute(new Void[0]);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bbgg == null)
+    if (this.jdField_a_of_type_Bbgu == null)
     {
-      String str = ajyc.a(2131712354);
-      this.jdField_a_of_type_Bbgg = bbcv.a(getActivity(), 230, str, null, ajyc.a(2131712355), ajyc.a(2131712353), new ahwq(this), new ahwr(this));
+      String str = ajya.a(2131712365);
+      this.jdField_a_of_type_Bbgu = bbdj.a(getActivity(), 230, str, null, ajya.a(2131712366), ajya.a(2131712364), new ahwo(this), new ahwp(this));
     }
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bbgu.show();
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    vuc.a().e();
+    vtz.a().e();
     getActivity().finish();
   }
   
@@ -194,19 +194,19 @@ public class QzoneSlideShowPreparingFragment
     int i = 0;
     QLog.d(jdField_a_of_type_JavaLangString, 2, "QzoneSlideShowPreparingFragment onCreateView");
     paramLayoutInflater = paramLayoutInflater.inflate(2131559011, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378191));
-    this.b = ((TextView)paramLayoutInflater.findViewById(2131378079));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378194));
+    this.b = ((TextView)paramLayoutInflater.findViewById(2131378082));
     this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLayoutInflater.findViewById(2131371326));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368648));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131368647));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
-    this.b.setOnClickListener(new ahwo(this));
+    this.b.setOnClickListener(new ahwm(this));
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
     paramBundle = getActivity().getIntent();
     if (paramBundle != null)
     {
-      vuc.a().e();
+      vtz.a().e();
       paramViewGroup = paramBundle.getParcelableArrayListExtra("qzone_slide_show_matters");
       int j = paramBundle.getIntExtra("qqstory_slide_show_scene", 21);
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("entrance_qzone_p2v", -1);
@@ -237,11 +237,11 @@ public class QzoneSlideShowPreparingFragment
           this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
         }
       }
-      vuc.a().b(paramBundle);
-      vuc.a().a(paramBundle);
-      vuc.a().c(j);
-      vuc.a().b(this.jdField_a_of_type_Int);
-      vuc.a().a(getActivity(), new ahwp(this), 2);
+      vtz.a().b(paramBundle);
+      vtz.a().a(paramBundle);
+      vtz.a().c(j);
+      vtz.a().b(this.jdField_a_of_type_Int);
+      vtz.a().a(getActivity(), new ahwn(this), 2);
     }
     for (;;)
     {

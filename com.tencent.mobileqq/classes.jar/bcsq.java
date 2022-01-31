@@ -1,11 +1,23 @@
-public abstract class bcsq
-  implements bcsr
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.VoteViewV2;
+import com.tencent.mobileqq.widget.VoteViewV2.1;
+
+public class bcsq
+  implements View.OnClickListener
 {
-  public void a() {}
+  public bcsq(VoteViewV2.1 param1) {}
   
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean) {}
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(VoteViewV2.a(this.a.this$0), QQBrowserActivity.class);
+    String str = bbqd.a(VoteViewV2.a(this.a.this$0), "praise", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(VoteViewV2.a(this.a.this$0), str, 536870912L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "0", null);
+  }
 }
 
 

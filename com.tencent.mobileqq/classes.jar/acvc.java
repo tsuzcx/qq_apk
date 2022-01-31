@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
 
-public abstract interface acvc
+public class acvc
+  extends QQLruCache<String, aels>
 {
-  public abstract void f(ChatMessage paramChatMessage);
+  public acvc(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, aels paramaels1, aels paramaels2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramaels1, paramaels2);
+  }
 }
 
 

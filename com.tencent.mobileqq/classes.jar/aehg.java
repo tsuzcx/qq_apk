@@ -1,35 +1,18 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.util.Locale;
+import com.tencent.qphone.base.util.QLog;
 
 class aehg
-  implements aegp
+  implements bcpw
 {
-  aehg(aegu paramaegu) {}
+  aehg(aegs paramaegs) {}
   
-  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
+  public void a(bcpu parambcpu)
   {
-    if ((this.a.jdField_a_of_type_Aeie.a() != null) && ((this.a.jdField_a_of_type_Aeie.a().a instanceof AIOImageData)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Aeie.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
-      {
-        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
-          break label127;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aegu.am(this.a).getString(2131695341), new Object[] { apvb.a(localAIOImageData.jdField_h_of_type_Long) }));
-      }
-    }
-    for (;;)
-    {
-      this.a.c(true);
-      return;
-      label127:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695338);
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambcpu);
     }
   }
+  
+  public void a(bcpu parambcpu, int paramInt1, int paramInt2) {}
 }
 
 

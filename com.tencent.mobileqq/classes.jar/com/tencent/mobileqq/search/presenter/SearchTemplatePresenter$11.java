@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.search.presenter;
 
 import android.widget.ImageView;
-import awsa;
+import awsc;
 
 public class SearchTemplatePresenter$11
   implements Runnable
 {
-  public SearchTemplatePresenter$11(awsa paramawsa, ImageView paramImageView, boolean paramBoolean) {}
+  public SearchTemplatePresenter$11(awsc paramawsc, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848579);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848585);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848578);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848584);
   }
 }
 

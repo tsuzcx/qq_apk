@@ -1,29 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
 
 class qsz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  qsz(qsx paramqsx, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
+  qsz(qsu paramqsu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!this.b) {
-        break label63;
-      }
-      qsx.a(this.jdField_a_of_type_Qsx).v.setVisibility(0);
+    super.onAnimationCancel(paramAnimator);
+    if (qsu.a(this.a).t != null) {
+      qsu.a(this.a).t.setTag(2131362550, null);
     }
-    for (;;)
+    if (qsu.a(this.a) != null) {
+      qsu.a(this.a).b(qsu.a(this.a));
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (qsu.a(this.a) != null)
     {
-      qsx.a(this.jdField_a_of_type_Qsx).t.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-      return;
-      label63:
-      qsx.a(this.jdField_a_of_type_Qsx).u.setVisibility(0);
+      paramAnimator = qsu.a(this.a).a();
+      qsu.a(this.a, qsu.a(this.a).g, paramAnimator, qsu.a(this.a), 18, -1);
+    }
+    if (qsu.a(this.a).t != null) {
+      qsu.a(this.a).t.setTag(2131362550, null);
+    }
+    if (qsu.a(this.a) != null) {
+      qsu.a(this.a).c(qsu.a(this.a));
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (qsu.a(this.a) != null) {
+      qsu.a(this.a).a(qsu.a(this.a));
     }
   }
 }

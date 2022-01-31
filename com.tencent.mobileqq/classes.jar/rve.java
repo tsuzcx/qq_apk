@@ -1,143 +1,218 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
-class rve
+public class rve
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final Map<Character, Integer> jdField_a_of_type_JavaUtilMap;
-  private final char[] jdField_a_of_type_ArrayOfChar;
+  final ArrayList<rvd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Set<Character> jdField_a_of_type_JavaUtilSet;
+  private final rvf jdField_a_of_type_Rvf;
+  boolean jdField_a_of_type_Boolean = false;
+  private rvb[] jdField_a_of_type_ArrayOfRvb;
+  boolean b = false;
   
-  rve(String paramString)
+  public rve(rvf paramrvf)
   {
-    if (paramString.contains(Character.toString('\000'))) {
-      throw new IllegalArgumentException("You cannot include TickerUtils.EMPTY_CHAR in the character list.");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = paramString.toCharArray();
-    int k = paramString.length;
-    this.jdField_a_of_type_Int = k;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(k);
+    this.jdField_a_of_type_Rvf = paramrvf;
+  }
+  
+  public float a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    float f = 0.0F;
     int i = 0;
-    while (i < k)
+    while (i < j)
     {
-      this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      f += ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
       i += 1;
     }
-    this.jdField_a_of_type_ArrayOfChar = new char[k * 2 + 1];
-    this.jdField_a_of_type_ArrayOfChar[0] = '\000';
-    i = j;
-    while (i < k)
+    return f;
+  }
+  
+  public void a()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_a_of_type_ArrayOfChar[(i + 1)] = paramString[i];
-      this.jdField_a_of_type_ArrayOfChar[(k + 1 + i)] = paramString[i];
+      ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
       i += 1;
     }
   }
   
-  private int a(char paramChar)
+  public void a(float paramFloat)
   {
-    if (paramChar == 0) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Character.valueOf(paramChar))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar))).intValue() + 1;
-    }
-    return -1;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  Set<Character> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap.keySet();
-  }
-  
-  rvf a(char paramChar1, char paramChar2, int paramInt)
-  {
-    int j = a(paramChar1);
-    int k = a(paramChar2);
-    if ((j < 0) || (k < 0)) {
-      return null;
-    }
-    int i;
-    switch (paramInt)
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-    default: 
-      i = j;
-      paramInt = k;
+      ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramFloat, this.b);
+      i += 1;
     }
-    for (;;)
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      return new rvf(this, i, paramInt);
-      if (paramChar2 == 0)
-      {
-        paramInt = this.jdField_a_of_type_ArrayOfChar.length;
-        i = j;
+      rvd localrvd = (rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localrvd.a(paramCanvas, paramPaint);
+      paramCanvas.translate(localrvd.a(), 0.0F);
+      i += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(char[] paramArrayOfChar)
+  {
+    if (this.jdField_a_of_type_ArrayOfRvb == null) {
+      throw new IllegalStateException("Need to call #setCharacterLists first.");
+    }
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a() > 0.0F) {
+        i += 1;
       }
-      else
+      for (;;)
       {
-        paramInt = k;
-        i = j;
-        if (k < j)
-        {
-          paramInt = k + this.jdField_a_of_type_Int;
-          i = j;
-          continue;
-          paramInt = k;
-          i = j;
-          if (j < k)
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      }
+    }
+    int[] arrayOfInt = rva.a(a(), paramArrayOfChar, this.jdField_a_of_type_JavaUtilSet);
+    int m = 0;
+    int i1 = 1;
+    int i2 = 1;
+    int n = 0;
+    i = 0;
+    if (m < arrayOfInt.length)
+    {
+      int i4;
+      int j;
+      int k;
+      int i3;
+      switch (arrayOfInt[m])
+      {
+      default: 
+        throw new IllegalArgumentException("Unknown action: " + arrayOfInt[m]);
+      case 1: 
+        this.jdField_a_of_type_JavaUtilArrayList.add(i, new rvd(this.jdField_a_of_type_ArrayOfRvb, this.jdField_a_of_type_Rvf));
+      case 0: 
+        rvd localrvd = (rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localrvd.a(i2, paramArrayOfChar[n], this.b);
+        i4 = i + 1;
+        n += 1;
+        j = i1;
+        k = i2;
+        i3 = n;
+        i = i4;
+        if (this.jdField_a_of_type_Boolean) {
+          if (localrvd.a() == localrvd.b())
           {
-            i = j + this.jdField_a_of_type_Int;
-            paramInt = k;
-            continue;
-            paramInt = k;
-            i = j;
-            if (paramChar1 != 0)
-            {
-              paramInt = k;
-              i = j;
-              if (paramChar2 != 0) {
-                if (k < j)
-                {
-                  paramInt = k;
-                  i = j;
-                  if (this.jdField_a_of_type_Int - j + k < j - k)
-                  {
-                    paramInt = k + this.jdField_a_of_type_Int;
-                    i = j;
-                  }
-                }
-                else
-                {
-                  paramInt = k;
-                  i = j;
-                  if (j < k)
-                  {
-                    paramInt = k;
-                    i = j;
-                    if (this.jdField_a_of_type_Int - k + j < k - j)
-                    {
-                      i = j + this.jdField_a_of_type_Int;
-                      paramInt = k;
-                    }
-                  }
-                }
-              }
+            j = i1;
+            k = i2;
+            i3 = n;
+            i = i4;
+            if (i2 <= 1) {
+              break;
             }
           }
+          else
+          {
+            k = i2 + i1;
+            j = i1 + 1;
+            i = i4;
+            i3 = n;
+          }
+        }
+        break;
+      }
+      for (;;)
+      {
+        m += 1;
+        i1 = j;
+        i2 = k;
+        n = i3;
+        break;
+        ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(i2, '\000', this.b);
+        i4 = i + 1;
+        j = i1;
+        k = i2;
+        i3 = n;
+        i = i4;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          k = i2 + i1;
+          j = i1 + 1;
+          i3 = n;
+          i = i4;
         }
       }
     }
   }
   
+  public void a(String... paramVarArgs)
+  {
+    int j = 0;
+    this.jdField_a_of_type_ArrayOfRvb = new rvb[paramVarArgs.length];
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      this.jdField_a_of_type_ArrayOfRvb[i] = new rvb(paramVarArgs[i]);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    i = j;
+    while (i < paramVarArgs.length)
+    {
+      this.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_ArrayOfRvb[i].a());
+      i += 1;
+    }
+  }
+  
   char[] a()
   {
-    return this.jdField_a_of_type_ArrayOfChar;
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    char[] arrayOfChar = new char[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfChar[i] = ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+    return arrayOfChar;
+  }
+  
+  public rvb[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfRvb;
+  }
+  
+  public float b()
+  {
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    float f = 0.0F;
+    int i = 0;
+    while (i < j)
+    {
+      f += ((rvd)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+      i += 1;
+    }
+    return f;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 

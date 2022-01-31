@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aegw
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  aegw(aegu paramaegu) {}
+  aegw(aegs paramaegs) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.h) {
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "6", "", "", "", "", 0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
     }
   }
 }

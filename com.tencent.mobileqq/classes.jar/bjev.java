@@ -1,23 +1,20 @@
-import android.os.Handler;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mobileqq.data.FlowMusic;
 
 class bjev
-  implements bkbs
+  implements bjbu
 {
-  bjev(bjeu parambjeu) {}
+  bjev(bjeu parambjeu, String paramString) {}
   
-  public void a(int paramInt, List<teh> paramList)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    veg.b("PasterDataManager", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = Collections.EMPTY_LIST;
-    }
-    ste.a().dispatch(new bkbq(paramInt, (List)localObject));
+    if (paramObject == null) {}
+    do
+    {
+      return;
+      paramObject = (FlowMusic)paramObject;
+      bjeu.a(this.jdField_a_of_type_Bjeu, bjeu.a(this.jdField_a_of_type_Bjeu, paramObject, this.jdField_a_of_type_JavaLangString));
+    } while (!bjeu.a(this.jdField_a_of_type_Bjeu).equals(bjeu.a(this.jdField_a_of_type_Bjeu).getClass()));
+    this.jdField_a_of_type_Bjeu.d();
   }
 }
 

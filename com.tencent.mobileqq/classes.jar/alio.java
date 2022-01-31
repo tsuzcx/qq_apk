@@ -1,12 +1,29 @@
-public abstract interface alio
+public class alio
 {
-  public abstract void a();
+  public int a;
+  public long a;
+  public ayrx a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  public String d;
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public alio()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
   
-  public abstract void a(boolean paramBoolean, alip paramalip);
-  
-  public abstract void b();
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

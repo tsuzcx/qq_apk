@@ -1,7 +1,4 @@
-public abstract interface adfj
-{
-  public abstract void a(int paramInt);
-}
+public class adfj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

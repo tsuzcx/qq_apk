@@ -1,27 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
 final class ayar
-  implements DialogInterface.OnClickListener
+  extends SubAccountObserver
 {
-  ayar(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  ayar(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    ayan.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayan.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayan.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ayan.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
+    }
+    paramString1 = (ayax)this.a.getManager(61);
+    int j;
+    if ((paramString3 != null) && (paramString3.length() > 0))
+    {
+      j = 1;
+      i = j;
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, false);
+      }
+    }
+    for (int i = j;; i = 0)
+    {
+      if (i == 0) {
+        paramString1.e(paramString2);
+      }
+      return;
+    }
   }
 }
 

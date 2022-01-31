@@ -1,23 +1,23 @@
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class ausr
   extends RecyclerView.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
   public ausr(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
     super(paramView);
     this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366604));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366594));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167134));
+    this.itemView.findViewById(2131361899).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361907).setOnClickListener(paramCustomCoverFragment);
+    this.itemView.findViewById(2131361896).setOnClickListener(paramCustomCoverFragment);
+    CustomCoverFragment.a(paramCustomCoverFragment, this.itemView.findViewById(2131368928));
+    CustomCoverFragment.a(paramCustomCoverFragment).setVisibility(8);
+    CustomCoverFragment.a(paramCustomCoverFragment, (ImageView)this.itemView.findViewById(2131368525));
+    CustomCoverFragment.a(paramCustomCoverFragment).setOnClickListener(paramCustomCoverFragment.a);
+    actj.a(CustomCoverFragment.a(paramCustomCoverFragment), 0, 0, (int)(CustomCoverFragment.a(paramCustomCoverFragment) * 20.0F + 0.5F), (int)(CustomCoverFragment.b(paramCustomCoverFragment) * 20.0F + 0.5F));
   }
 }
 

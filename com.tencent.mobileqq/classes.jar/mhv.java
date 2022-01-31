@@ -1,6 +1,27 @@
-public abstract interface mhv
+import android.graphics.drawable.ClipDrawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.QavPanel;
+
+public class mhv
+  implements View.OnTouchListener
 {
-  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
+  public mhv(QavPanel paramQavPanel) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setAlpha(127);
+      continue;
+      this.a.a.setAlpha(255);
+    }
+  }
 }
 
 

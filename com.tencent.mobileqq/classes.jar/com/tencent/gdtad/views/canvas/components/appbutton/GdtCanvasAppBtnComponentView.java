@@ -11,19 +11,19 @@ import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
 import com.tencent.gdtad.views.xijing.GdtButtonData;
 import com.tencent.gdtad.views.xijing.GdtTextData;
 import java.lang.ref.WeakReference;
-import yxs;
-import yzg;
-import yzl;
-import yzp;
-import zag;
-import zcf;
+import yxp;
+import yzd;
+import yzi;
+import yzm;
+import zad;
+import zcc;
 
 public class GdtCanvasAppBtnComponentView
   extends GdtCanvasComponentView
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new yzp(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new yzm(this);
   private GdtCanvasAppBtnComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData;
-  private yzl jdField_a_of_type_Yzl;
+  private yzi jdField_a_of_type_Yzi;
   
   public GdtCanvasAppBtnComponentView(Context paramContext)
   {
@@ -35,7 +35,7 @@ public class GdtCanvasAppBtnComponentView
     super(paramContext, paramAttributeSet);
   }
   
-  public GdtCanvasAppBtnComponentView(Context paramContext, WeakReference<zag> paramWeakReference, GdtCanvasAppBtnComponentData paramGdtCanvasAppBtnComponentData, boolean paramBoolean)
+  public GdtCanvasAppBtnComponentView(Context paramContext, WeakReference<zad> paramWeakReference, GdtCanvasAppBtnComponentData paramGdtCanvasAppBtnComponentData, boolean paramBoolean)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasAppBtnComponentData, paramBoolean);
@@ -46,12 +46,12 @@ public class GdtCanvasAppBtnComponentView
     g();
     if ((paramGdtCanvasAppBtnComponentData == null) || (!paramGdtCanvasAppBtnComponentData.isValid()))
     {
-      yxs.d("GdtCanvasButtonComponentView", "init error");
+      yxp.d("GdtCanvasButtonComponentView", "init error");
       a(false);
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData = paramGdtCanvasAppBtnComponentData;
-    yxs.b("GdtCanvasButtonComponentView", "init appId " + a().ad.getAppId() + " channel_id " + a().ad.getAppChannelId() + " autodownload " + a().getAutoDownLoad());
+    yxp.b("GdtCanvasButtonComponentView", "init appId " + a().ad.getAppId() + " channel_id " + a().ad.getAppChannelId() + " autodownload " + a().getAutoDownLoad());
     FrameLayout.LayoutParams localLayoutParams;
     if (a().isFixed)
     {
@@ -72,11 +72,11 @@ public class GdtCanvasAppBtnComponentView
       paramGdtCanvasAppBtnComponentData.setText(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData.button.text.text);
       addView(paramGdtCanvasAppBtnComponentData, localLayoutParams);
       paramGdtCanvasAppBtnComponentData.a(paramContext, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData);
-      this.jdField_a_of_type_Yzl = new yzl(paramContext, a().getAutoDownLoad(), a().ad, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData.button.text.text, paramGdtCanvasAppBtnComponentData, paramBoolean, a().sourceId);
+      this.jdField_a_of_type_Yzi = new yzi(paramContext, a().getAutoDownLoad(), a().ad, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData.button.text.text, paramGdtCanvasAppBtnComponentData, paramBoolean, a().sourceId);
       paramGdtCanvasAppBtnComponentData.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_Yzl.a(this.jdField_a_of_type_JavaLangRefWeakReference);
-      this.jdField_a_of_type_Yzl.b();
-      this.jdField_a_of_type_Yzg = new yzg(new WeakReference(paramGdtCanvasAppBtnComponentData), new WeakReference(this));
+      this.jdField_a_of_type_Yzi.a(this.jdField_a_of_type_JavaLangRefWeakReference);
+      this.jdField_a_of_type_Yzi.b();
+      this.jdField_a_of_type_Yzd = new yzd(new WeakReference(paramGdtCanvasAppBtnComponentData), new WeakReference(this));
       a(true);
       return;
       setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
@@ -98,37 +98,37 @@ public class GdtCanvasAppBtnComponentView
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtCanvasAppBtnComponentData;
   }
   
-  public yzg a()
+  public yzd a()
   {
-    return this.jdField_a_of_type_Yzg;
+    return this.jdField_a_of_type_Yzd;
   }
   
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Yzl != null) {
-      this.jdField_a_of_type_Yzl.d();
+    if (this.jdField_a_of_type_Yzi != null) {
+      this.jdField_a_of_type_Yzi.d();
     }
   }
   
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Yzl != null) {
-      this.jdField_a_of_type_Yzl.e();
+    if (this.jdField_a_of_type_Yzi != null) {
+      this.jdField_a_of_type_Yzi.e();
     }
   }
   
   public void h()
   {
     if ((a() != null) && (a().isValid())) {
-      zcf.b(a().ad);
+      zcc.b(a().ad);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Yzl.c();
+      this.jdField_a_of_type_Yzi.c();
       return;
-      yxs.d("GdtCanvasButtonComponentView", "onClick error");
+      yxp.d("GdtCanvasButtonComponentView", "onClick error");
     }
   }
 }

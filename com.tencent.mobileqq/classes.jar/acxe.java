@@ -1,24 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 
 public class acxe
-  implements ValueAnimator.AnimatorUpdateListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public acxe(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public acxe(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f - i);
-      this.a.b.setTranslationX(-i);
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    bbcf.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    }
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(-i);
-    this.a.b.setTranslationX(this.a.f - i);
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
   }
 }
 

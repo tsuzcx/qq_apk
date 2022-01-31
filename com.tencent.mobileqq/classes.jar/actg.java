@@ -1,52 +1,67 @@
-import com.tencent.mobileqq.activity.aio.AIOTimeReporter.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class actg
+  extends QIPCModule
 {
-  private static String c = "HighDeviceFirstOpenAIOBusiness";
-  private static String d = "HighDeviceFirstOpenAIOBase";
-  private static String e = "HighDeviceNotFirstOpenAIOBusiness";
-  private static String f = "HighDeviceNotFirstOpenAIOBase";
-  private static String g = "MidDeviceFirstOpenAIOBusiness";
-  private static String h = "MidDeviceFirstOpenAIOBase";
-  private static String i = "MidDeviceNotFirstOpenAIOBusiness";
-  private static String j = "MidDeviceNotFirstOpenAIOBase";
-  private static String k = "LowDeviceFirstOpenAIOBusiness";
-  private static String l = "LowDeviceFirstOpenAIOBase";
-  private static String m = "LowDeviceNotFirstOpenAIOBusiness";
-  private static String n = "LowDeviceNotFirstOpenAIOBase";
-  private int a;
-  public String a;
-  private String b = "0";
+  private List<actf> a = new ArrayList();
   
-  public actg()
+  private actg(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "Q.aio.AIOTimeReporter";
-    this.jdField_a_of_type_Int = -1;
+    super(paramString);
   }
   
-  private void b()
+  public static actg a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "reSet ");
-    }
-    this.jdField_a_of_type_Int = -1;
-    this.b = "0";
+    return acti.a();
   }
   
-  public void a()
+  public static void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "reportAIOLifeCycleTime ");
-    }
-    if (new Random().nextInt(100) != 1)
+    try
     {
-      b();
+      QIPCClientHelper.getInstance().register(a());
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOUnreadQIPCClient", 2, "register AIOUnreadQIPCClient");
+      }
       return;
     }
-    ThreadManager.post(new AIOTimeReporter.1(this), 1, null, false);
+    catch (Exception localException)
+    {
+      QLog.e("AIOUnreadQIPCClient", 1, "register ipc module error.", localException);
+    }
+  }
+  
+  private void a(int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((actf)localIterator.next()).a(paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOUnreadQIPCClient", 2, "onCall main server action=" + paramString);
+    }
+    if (("action_sync_single_con_unread_count".equals(paramString)) && (paramBundle != null))
+    {
+      paramString = paramBundle.getString("param_proc_uin");
+      paramInt = paramBundle.getInt("param_proc_uin_type");
+      int i = paramBundle.getInt("param_proc_single_con_badge_count");
+      a(paramInt, paramString, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOUnreadQIPCClient", 2, "AIOUnreadQIPCClient, uin = " + paramString + "; type= " + paramInt + "; num= " + i);
+      }
+    }
+    return null;
   }
 }
 

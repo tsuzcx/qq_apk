@@ -1,28 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class almt
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public almt(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
+  public almt(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    this.a.findViewById(2131368630).setAlpha(1.0F);
+    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.a.jdField_a_of_type_AndroidContentContext;
+    String str = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    if (!TextUtils.isEmpty(localScanTorchActivity.a)) {}
+    for (paramView = localScanTorchActivity.a;; paramView = str)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
+      localIntent.putExtra("from", "ScannerActivity");
+      localIntent.putExtra("title", localScanTorchActivity.getString(2131717252));
+      localIntent.putExtra("nick", paramView);
+      localIntent.putExtra("uin", str);
+      localIntent.putExtra("type", 1);
+      localScanTorchActivity.startActivity(localIntent);
+      return;
     }
   }
 }

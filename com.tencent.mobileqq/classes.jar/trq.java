@@ -1,25 +1,16 @@
+import android.graphics.Bitmap;
+
 public class trq
-  extends trp
+  extends trm
 {
+  public Bitmap a;
   public String a;
-  public int b = 0;
-  public int c = 16296448;
+  public boolean a;
+  public boolean b;
   public String c;
-  public int d;
+  public boolean c;
   public String d;
-  public int e = 1;
   public String e;
-  public String f = ssi.a;
-  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
-  public String h;
-  public String i = "";
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  public String n = "";
-  public String o;
-  public String p;
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.bubble;
 
-import ambw;
+import ambv;
 import android.animation.AnimatorSet;
 
 public class BubbleNewAIOAnim$1
   implements Runnable
 {
-  public BubbleNewAIOAnim$1(ambw paramambw) {}
+  public BubbleNewAIOAnim$1(ambv paramambv) {}
   
   public void run()
   {

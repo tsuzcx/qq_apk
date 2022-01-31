@@ -1,25 +1,26 @@
 import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
 import com.tencent.widget.ListView;
-import java.util.List;
 
 public class awlr
-  extends awlq<awlu, awyf>
+  extends awkf<awoi, awwr>
 {
-  public awlr(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, baxk parambaxk, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  public awlr(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, baxy parambaxy)
   {
-    super(paramListView, parambaxk, paramList, paramString, paramFTSEntitySearchDetailActivity);
+    super(paramListView, parambaxy);
   }
   
-  protected awrb a(int paramInt)
+  protected awrd<awoi, awwr> a(int paramInt)
   {
-    return new awqy(FTSEntitySearchDetailFragment.a(this.a));
+    return new awqs(this.jdField_a_of_type_Baxy);
   }
   
-  protected awwq a(int paramInt, ViewGroup paramViewGroup)
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new awwl(paramViewGroup, 2131562385);
+    if (awwa.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
+      return new awwl(paramViewGroup, 2131562379);
+    }
+    return new awwl(paramViewGroup, 2131562380);
   }
 }
 

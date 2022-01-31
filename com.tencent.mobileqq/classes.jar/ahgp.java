@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringBigInsertPage.4.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ahgp
-  implements View.OnClickListener
+public class ahgp
+  implements ahbr
 {
-  ahgp(ahgn paramahgn) {}
+  ahgp(ahgl paramahgl) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.a();
-    ahih.a("sq.cptp", 4, 0, null, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SpringBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
+      ahgl.a(this.a).a().runOnUiThread(new SpringBigInsertPage.4.1(this, paramPathResult));
+    }
   }
 }
 

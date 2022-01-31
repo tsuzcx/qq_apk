@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
 public final class alkr
-  implements Parcelable.Creator<ArLBSActivity>
+  implements Parcelable.Creator<ArModelResource>
 {
-  public ArLBSActivity a(Parcel paramParcel)
+  public ArModelResource a(Parcel paramParcel)
   {
-    return new ArLBSActivity(paramParcel);
+    return new ArModelResource(paramParcel);
   }
   
-  public ArLBSActivity[] a(int paramInt)
+  public ArModelResource[] a(int paramInt)
   {
-    return new ArLBSActivity[paramInt];
+    return new ArModelResource[paramInt];
   }
 }
 

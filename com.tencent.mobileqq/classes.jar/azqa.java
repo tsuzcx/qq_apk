@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 class azqa
-  implements DialogInterface.OnClickListener
+  implements bfph
 {
-  azqa(azpt paramazpt, azpg paramazpg) {}
+  azqa(azpv paramazpv, boolean paramBoolean, azpi paramazpi, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    bajk.a(this.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpt.jdField_a_of_type_Long).c(this.jdField_a_of_type_Azpg);
-    paramDialogInterface.dismiss();
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      TroopFileTransferManager.a(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpv.jdField_a_of_type_Long).a(this.jdField_a_of_type_Azpi.a);
+      axqy.b(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_local", 0, 0, "", this.jdField_a_of_type_Azpv.jdField_a_of_type_Long + "", "", "");
+      continue;
+      if (azpv.a(this.jdField_a_of_type_Azpv) != 0)
+      {
+        bajy.a(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpv.jdField_a_of_type_Long).b(this.jdField_a_of_type_Azpi);
+        axqy.b(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Clk_delete_share", 0, 0, "", this.jdField_a_of_type_Azpv.jdField_a_of_type_Long + "", "", "");
+      }
+    }
   }
 }
 

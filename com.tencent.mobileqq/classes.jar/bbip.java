@@ -1,15 +1,18 @@
-import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-final class bbip
+class bbip
   implements View.OnClickListener
 {
-  bbip(Dialog paramDialog) {}
+  bbip(bbin parambbin, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    this.a.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbin, 1);
+    }
+    this.jdField_a_of_type_Bbin.dismiss();
   }
 }
 

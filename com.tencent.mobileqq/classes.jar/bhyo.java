@@ -1,26 +1,26 @@
 import android.content.Context;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.opengl.GLSurfaceView.Renderer;
+import android.view.ViewGroup;
 
-public class bhyo
-  extends ApolloLottieAnim
+public abstract class bhyo
+  implements GLSurfaceView.Renderer
 {
-  private Downloader a;
+  public Context a;
+  protected ViewGroup a;
   
-  public bhyo(QQAppInterface paramQQAppInterface, Context paramContext)
+  public bhyo(Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Int = 1;
-    paramString3 = new bhyp(this, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
-  }
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

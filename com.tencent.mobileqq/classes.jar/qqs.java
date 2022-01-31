@@ -1,44 +1,65 @@
-import android.content.res.Configuration;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
 
 public class qqs
-  implements View.OnLayoutChangeListener
+  implements qmy
 {
-  private int jdField_a_of_type_Int;
+  private qqs(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public qqs(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, Configuration paramConfiguration) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(boolean paramBoolean)
   {
-    if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getHeight() != this.jdField_a_of_type_Int) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null))
+    boolean bool2 = true;
+    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
+    if (VideoFeedsRecommendFragment.a(this.a) != null)
     {
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment));
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c();
-      VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c();
-      if ((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a()) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null)) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a.d(true);
-      }
-      if (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) != null) {
-        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(this.jdField_a_of_type_AndroidContentResConfiguration);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "onConfigurationChanged onLayoutChange: " + Arrays.toString(qol.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.getActivity())));
+      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
+      if ((!VideoFeedsRecommendFragment.a(this.a).b) && ((VideoFeedsRecommendFragment.a(this.a).itemView.getParent() instanceof VideoFeedsRecyclerView)))
+      {
+        localVideoFeedsRecyclerView = (VideoFeedsRecyclerView)VideoFeedsRecommendFragment.a(this.a).itemView.getParent();
+        if (paramBoolean) {
+          break label201;
+        }
+        bool1 = true;
+        localVideoFeedsRecyclerView.setScrollable(bool1);
       }
     }
-    for (;;)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getHeight();
+      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
+      label112:
+      if (!VideoFeedsRecommendFragment.b(this.a))
+      {
+        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
+        if (paramBoolean) {
+          break label223;
+        }
+      }
+    }
+    label201:
+    label223:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoFeedsRecyclerView.setScrollable(bool1);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      {
+        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.a(this.a, false);
+      }
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+      }
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsRecommendFragment", 2, "onConfigurationChanged onLayoutChange: screen size unchanged " + Arrays.toString(qol.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment.getActivity())));
-      }
+      bool1 = false;
+      break;
+      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
+      break label112;
     }
+  }
+  
+  public void b()
+  {
+    this.a.b(true);
   }
 }
 

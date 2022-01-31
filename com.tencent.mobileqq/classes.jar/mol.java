@@ -1,14 +1,21 @@
-import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
+import android.content.Context;
+import android.view.View;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
 public class mol
+  implements mop
 {
-  public int a;
-  public int b;
+  public mol(GuideHelper paramGuideHelper, long paramLong, Context paramContext, int paramInt) {}
   
-  public mol(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
+  public void a(LottieDrawable paramLottieDrawable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = paramLottieDrawable;
+    if ((paramLottieDrawable != null) && (this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper.a.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramLottieDrawable);
+      GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    }
   }
 }
 

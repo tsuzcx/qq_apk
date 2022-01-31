@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class uuy
-  implements DialogInterface.OnClickListener
+  implements bfqj
 {
-  public uuy(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public uuy(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.f();
-    paramDialogInterface.dismiss();
-    vel.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

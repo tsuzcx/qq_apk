@@ -1,40 +1,34 @@
 import android.content.Context;
-import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class piu
   implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  ram jdField_a_of_type_Ram;
   
-  public piu(Context paramContext, ArticleInfo paramArticleInfo)
+  public piu(ArticleInfo paramArticleInfo, Context paramContext, ram paramram)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ram = paramram;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a == null)) {}
-    do
+    if (ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 4);
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a;
-      } while (onk.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long);
-      QLog.d("OnPivacyClickListener", 2, "privacy type is  " + paramViewBase.jdField_a_of_type_Int + "| feedsid is " + paramViewBase.b);
-    } while (paramViewBase.jdField_a_of_type_Int != 1);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("feeds_id", paramViewBase.b);
-    PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyPrivacyListFragment.class);
+      old.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Ram);
+      pja.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009441", "0X8009444");
+      return;
+      onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 4);
+    }
   }
 }
 

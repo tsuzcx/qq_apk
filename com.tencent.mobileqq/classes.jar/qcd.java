@@ -1,24 +1,65 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
+
 public class qcd
-  implements Cloneable
 {
   public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public qcd()
+  public static qcd a(feeds_info.AccountProfile paramAccountProfile)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    Object localObject;
+    if (paramAccountProfile == null) {
+      localObject = null;
+    }
+    qcd localqcd;
+    do
+    {
+      return localObject;
+      localqcd = new qcd();
+      localqcd.jdField_a_of_type_Long = paramAccountProfile.uint64_uin.get();
+      localqcd.jdField_a_of_type_Int = paramAccountProfile.uint32_account_type.get();
+      if (paramAccountProfile.bytes_desc.has()) {
+        localqcd.c = paramAccountProfile.bytes_desc.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_profile_photo_url.has()) {
+        localqcd.b = paramAccountProfile.bytes_profile_photo_url.get().toStringUtf8();
+      }
+      if (paramAccountProfile.bytes_nick.has()) {
+        localqcd.jdField_a_of_type_JavaLangString = paramAccountProfile.bytes_nick.get().toStringUtf8();
+      }
+      localObject = localqcd;
+    } while (!paramAccountProfile.bytes_home_page_url.has());
+    localqcd.d = paramAccountProfile.bytes_home_page_url.get().toStringUtf8();
+    return localqcd;
   }
   
-  public String toString()
+  public feeds_info.AccountProfile a()
   {
-    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
+    feeds_info.AccountProfile localAccountProfile = new feeds_info.AccountProfile();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localAccountProfile.bytes_nick.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localAccountProfile.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localAccountProfile.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localAccountProfile.bytes_home_page_url.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    localAccountProfile.uint32_account_type.set(this.jdField_a_of_type_Int);
+    localAccountProfile.uint64_uin.set(this.jdField_a_of_type_Long);
+    return localAccountProfile;
   }
 }
 

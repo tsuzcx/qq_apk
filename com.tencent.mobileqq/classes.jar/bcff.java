@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
 
 class bcff
-  implements TbsDownloader.TbsDownloaderCallback
+  implements Animation.AnimationListener
 {
-  bcff(bcfe parambcfe) {}
+  bcff(bcfc parambcfc) {}
   
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs need download");
-      }
-      this.a.a.a.a(false);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
+    }
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

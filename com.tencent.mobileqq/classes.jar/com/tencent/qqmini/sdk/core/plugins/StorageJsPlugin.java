@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import begz;
-import beig;
-import beiw;
-import bejy;
-import beka;
-import beli;
-import besl;
-import beuc;
+import behq;
+import beix;
+import bejn;
+import bekp;
+import bekr;
+import belz;
+import betc;
+import beut;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import org.json.JSONObject;
 
@@ -21,29 +21,29 @@ public class StorageJsPlugin
   private static final String TAG = "StorageJsPlugin";
   private MiniAppProxy mProxy;
   private SharedPreferences mSharedPref;
-  private beig mStorage;
+  private beix mStorage;
   
   public static String execStorageTask(String paramString, StorageJsPlugin.StorageTask paramStorageTask)
   {
     if (paramString.endsWith("Sync")) {
       return paramStorageTask.run();
     }
-    beiw.a(new StorageJsPlugin.8(paramStorageTask), 16, null, true);
+    bejn.a(new StorageJsPlugin.8(paramStorageTask), 16, null, true);
     return "";
   }
   
-  public String handleClearStorage(beka parambeka)
+  public String handleClearStorage(bekr parambekr)
   {
-    return execStorageTask(parambeka.a, new StorageJsPlugin.5(this, parambeka));
+    return execStorageTask(parambekr.a, new StorageJsPlugin.5(this, parambekr));
   }
   
-  public String handleGetGlobalStorage(beka parambeka)
+  public String handleGetGlobalStorage(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
-      localObject = beli.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambeka.a, new StorageJsPlugin.6(this, (String)localObject, parambeka));
+      Object localObject = new JSONObject(parambekr.b);
+      localObject = belz.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambekr.a, new StorageJsPlugin.6(this, (String)localObject, parambekr));
     }
     catch (Throwable localThrowable)
     {
@@ -55,13 +55,13 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleGetStorage(beka parambeka)
+  public String handleGetStorage(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
-      localObject = beli.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambeka.a, new StorageJsPlugin.2(this, (String)localObject, parambeka));
+      Object localObject = new JSONObject(parambekr.b);
+      localObject = belz.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambekr.a, new StorageJsPlugin.2(this, (String)localObject, parambekr));
     }
     catch (Throwable localThrowable)
     {
@@ -73,18 +73,18 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleGetStorageInfo(beka parambeka)
+  public String handleGetStorageInfo(bekr parambekr)
   {
-    return execStorageTask(parambeka.a, new StorageJsPlugin.3(this, parambeka));
+    return execStorageTask(parambekr.a, new StorageJsPlugin.3(this, parambekr));
   }
   
-  public String handleRemoveStorage(beka parambeka)
+  public String handleRemoveStorage(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
-      localObject = beli.a(((JSONObject)localObject).optString("key"));
-      return execStorageTask(parambeka.a, new StorageJsPlugin.4(this, (String)localObject, parambeka));
+      Object localObject = new JSONObject(parambekr.b);
+      localObject = belz.a(((JSONObject)localObject).optString("key"));
+      return execStorageTask(parambekr.a, new StorageJsPlugin.4(this, (String)localObject, parambekr));
     }
     catch (Throwable localThrowable)
     {
@@ -96,14 +96,14 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleSetGlobalStorage(beka parambeka)
+  public String handleSetGlobalStorage(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
-      String str = beli.a(((JSONObject)localObject).optString("key"));
+      Object localObject = new JSONObject(parambekr.b);
+      String str = belz.a(((JSONObject)localObject).optString("key"));
       localObject = ((JSONObject)localObject).optString("data");
-      return execStorageTask(parambeka.a, new StorageJsPlugin.7(this, str, (String)localObject, parambeka));
+      return execStorageTask(parambekr.a, new StorageJsPlugin.7(this, str, (String)localObject, parambekr));
     }
     catch (Throwable localThrowable)
     {
@@ -115,46 +115,46 @@ public class StorageJsPlugin
     }
   }
   
-  public String handleSetStorage(beka parambeka)
+  public String handleSetStorage(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.b);
+      Object localObject = new JSONObject(parambekr.b);
       String str1 = ((JSONObject)localObject).optString("key");
       if (TextUtils.isEmpty(str1)) {
-        return parambeka.a("key is empty");
+        return parambekr.a("key is empty");
       }
-      str1 = beli.a(str1);
+      str1 = belz.a(str1);
       String str2 = ((JSONObject)localObject).optString("data");
       localObject = ((JSONObject)localObject).optString("dataType", "String");
-      if ("setStorage".equals(parambeka.a)) {
-        beiw.a(new StorageJsPlugin.1(this, str1, str2, (String)localObject, parambeka), 16, null, true);
+      if ("setStorage".equals(parambekr.a)) {
+        bejn.a(new StorageJsPlugin.1(this, str1, str2, (String)localObject, parambekr), 16, null, true);
       }
-      if ("setStorageSync".equals(parambeka.a))
+      if ("setStorageSync".equals(parambekr.a))
       {
         if (this.mStorage.a(str1, (String)localObject, str2)) {
-          return parambeka.a();
+          return parambekr.a();
         }
-        parambeka = parambeka.a("size limit reached");
-        return parambeka;
+        parambekr = parambekr.a("size limit reached");
+        return parambekr;
       }
     }
-    catch (Exception parambeka)
+    catch (Exception parambekr)
     {
-      besl.d("StorageJsPlugin", parambeka.getMessage(), parambeka);
+      betc.d("StorageJsPlugin", parambekr.getMessage(), parambekr);
     }
     return "";
   }
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    super.onCreate(parambegz);
+    super.onCreate(parambehq);
     this.mSharedPref = this.mContext.getSharedPreferences("miniapp", 4);
-    if (beuc.a().a() != null) {}
-    for (parambegz = beuc.a().a();; parambegz = "")
+    if (beut.a().a() != null) {}
+    for (parambehq = beut.a().a();; parambehq = "")
     {
       String str = this.mApkgInfo.d;
-      this.mStorage = beig.a(this.mContext, parambegz, str);
+      this.mStorage = beix.a(this.mContext, parambehq, str);
       return;
     }
   }

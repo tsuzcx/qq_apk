@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.triton.sdk.APICallback;
-import com.tencent.qqmini.sdk.core.plugins.QQFriendJsPlugin.IAddFriendCallBack;
-import org.json.JSONObject;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class beuo
-  implements QQFriendJsPlugin.IAddFriendCallBack
+  implements DialogInterface.OnClickListener
 {
-  beuo(beum parambeum, APICallback paramAPICallback) {}
+  beuo(beum parambeum) {}
   
-  public void onAddFriendCallBack(String paramString1, boolean paramBoolean, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback != null) {
-      if (!paramBoolean) {
-        break label32;
-      }
-    }
-    label32:
-    for (paramString1 = bekg.a(paramString1, null);; paramString1 = bekg.a(paramString1, null, paramString2))
+    if (((this.a.a() instanceof Activity)) && (this.a.a() != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPICallback.onCallback(paramBoolean, paramString1.toString());
-      return;
+      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      Activity localActivity = (Activity)this.a.a();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("url", this.a.a().url.get());
+      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
     }
   }
 }

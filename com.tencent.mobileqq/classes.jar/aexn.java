@@ -1,136 +1,121 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.text.SpannableString;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aexn
-  implements aeyv, View.OnClickListener
+  implements aeyt
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private aeyx jdField_a_of_type_Aeyx;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  int jdField_a_of_type_Int = -1;
+  public aeyv a;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  String b = "";
+  String c = "";
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=%s&from=%s";
-  }
-  
-  public aexn(QQAppInterface paramQQAppInterface, Context paramContext, aeyx paramaeyx)
+  public aexn(QQAppInterface paramQQAppInterface, aeyv paramaeyv, Activity paramActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aeyx = paramaeyx;
+    this.jdField_a_of_type_Aeyv = paramaeyv;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
   public int a()
   {
-    return 25;
+    return 35;
   }
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558591, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131362398);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131362408);
-    ((TextView)paramVarArgs.findViewById(2131362409)).setText(this.jdField_a_of_type_AndroidTextSpannableString);
-    if (this.jdField_a_of_type_Int == 0)
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558585, null);
+    localView.setOnClickListener(new aexo(this, localView));
+    TextView localTextView = (TextView)localView.findViewById(2131362385);
+    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
+    int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
+    int i;
+    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
     {
-      localImageView1.setImageResource(2130839202);
-      paramVarArgs.setBackgroundResource(2130839199);
-      localImageView2.setImageResource(2130849076);
+      i = paramVarArgs.heightPixels;
+      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
+      if (this.c.length() > i) {
+        this.c = (this.c.substring(0, i) + "...");
+      }
+      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
+        break label216;
+      }
     }
-    for (;;)
+    label216:
+    for (paramVarArgs = ajya.a(2131702171);; paramVarArgs = ajya.a(2131702172))
     {
-      paramVarArgs.setOnClickListener(this);
-      return paramVarArgs;
-      localImageView1.setImageResource(2130843413);
-      paramVarArgs.setBackgroundResource(2130846232);
-      localImageView2.setImageResource(2130843555);
-      localImageView2.setOnClickListener(this);
+      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
+      localTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return localView;
+      i = paramVarArgs.widthPixels;
+      break;
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString, SpannableString paramSpannableString, int paramInt1, int paramInt2)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if ((paramInt2 == 3) || (paramInt2 == 4)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt != 1000) {}
+    do
     {
-      this.jdField_a_of_type_Boolean = bool;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+            }
+            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
+          return;
+          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
+          if (paramVarArgs != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
+        return;
+        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
+        this.b = paramVarArgs.getString("comicId");
+        this.c = paramVarArgs.getString("comicName");
+        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
+        if (!TextUtils.isEmpty(this.c)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
       return;
-    }
+      this.jdField_a_of_type_Aeyv.a(this, new Object[0]);
+    } while (!QLog.isColorLevel());
+    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
   }
   
   public int[] a()
   {
-    return null;
+    return new int[0];
   }
   
   public int b()
   {
-    return 23;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BigTroopExpiredTipsBar", 2, "click tips, jump");
-      }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        paramView.putExtra("url", String.format(jdField_a_of_type_JavaLangString, new Object[] { this.jdField_b_of_type_JavaLangString, "group_aio_tip" }));
-        paramView.putExtra("hide_operation_bar", true);
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X8009E34", this.jdField_b_of_type_Int, 0, "", "", "", "");
-        this.jdField_a_of_type_Aeyx.a();
-        return;
-      }
-      akih.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, "group_aio_tip");
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_b_of_type_Int == 3) {}
-      for (paramView = "0X800A57A";; paramView = "0X800A57C")
-      {
-        axqw.b(localQQAppInterface, "dc00898", "", "", "qq_vip", paramView, 1, 0, "", "", "", "");
-        break;
-      }
-      paramView = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      int i = paramView.e(this.jdField_b_of_type_JavaLangString);
-      paramView.f(this.jdField_b_of_type_JavaLangString, i + 1);
-      this.jdField_a_of_type_Aeyx.a();
-    } while (!this.jdField_a_of_type_Boolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_b_of_type_Int == 3) {}
-    for (paramView = "0X800A57A";; paramView = "0X800A57C")
-    {
-      axqw.b(localQQAppInterface, "dc00898", "", "", "qq_vip", paramView, 2, 0, "", "", "", "");
-      return;
-    }
+    return 13;
   }
 }
 

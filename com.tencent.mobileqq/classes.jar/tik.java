@@ -1,26 +1,45 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class tik
-  implements View.OnClickListener
+  extends tin
 {
-  public tik(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  public tik(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
-    for (int i = 1;; i = 0)
+    super(paramViewGroup, 2131561301);
+  }
+  
+  public void a(tff paramtff)
+  {
+    ved.a("FriendNodeViewHolder", "bindData %s", paramtff);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((localObject instanceof QQAppInterface))
     {
-      vel.a("msg_tab", "clk_all", 0, i, new String[0]);
-      paramView = bbej.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
-      vxs.a(paramView);
-      if (paramView != null) {
-        paramView.c();
+      localQQAppInterface = (QQAppInterface)localObject;
+      str = String.valueOf(paramtff.b);
+      b(vzi.b(paramtff.g));
+      if (!thv.h) {
+        break label180;
       }
+    }
+    label180:
+    for (localObject = bbcz.m(localQQAppInterface, str);; localObject = str)
+    {
+      this.a.setNodeName((String)localObject, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramtff.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramtff.a) });
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramtff) });
+      }
+      super.a(paramtff);
       return;
     }
   }

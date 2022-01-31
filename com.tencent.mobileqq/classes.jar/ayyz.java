@@ -1,48 +1,32 @@
-import com.qq.taf.jce.HexUtil;
-
 public class ayyz
-  extends ayyy
+  extends ayza
 {
   public int a;
   public String a;
+  public boolean a;
   public byte[] a;
   public int b;
-  public String b;
   public int c;
   public int d;
   public int e;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  
+  public ayyz()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" chatType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" clientType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" seq:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" fileId:");
+    localStringBuilder.append(" name:");
     localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" troopUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" agentType:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" busiType:");
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" voiceLength:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" autoToText:");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(" fileType:");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(" downType:");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(" sceneType:");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(" subBusiType:");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
     return localStringBuilder.toString();
   }
 }

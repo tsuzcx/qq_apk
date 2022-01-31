@@ -1,59 +1,208 @@
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.QZLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+import android.view.Choreographer;
+import android.view.Choreographer.FrameCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.pool.RecyclablePool;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import java.util.Arrays;
+import java.util.HashMap;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class bkph
+@TargetApi(16)
+public class bkph
 {
-  private int jdField_a_of_type_Int;
-  private final Class<? extends bjwu> jdField_a_of_type_JavaLangClass;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int b;
-  private final int c;
+  protected static long a;
+  protected Choreographer.FrameCallback a;
+  protected Choreographer a;
+  protected bkpj a;
+  protected final RecyclablePool a;
+  private AbstractUnifiedMonitor.ThreadMonitorCallback a;
+  protected boolean a;
+  protected long b;
+  protected boolean b;
+  protected long c;
+  protected boolean c;
+  private boolean d;
   
-  private bkph(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjwu> paramClass)
+  public bkph()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(bkpj.class, 4);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new bkpi(this);
   }
   
-  static bkph a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjwu> paramClass)
+  private boolean a()
   {
-    return new bkph(paramInt1, paramInt2, paramInt3, paramClass);
+    return 2 == BaseApplicationImpl.sProcessId;
   }
   
-  Class<? extends bjwu> a()
+  public int a()
   {
-    return this.jdField_a_of_type_JavaLangClass;
+    return UnifiedMonitor.a().getThreshold(9);
   }
   
-  void a()
+  protected final long a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+    return paramLong / 1000000L;
+  }
+  
+  protected void a()
+  {
+    this.d = false;
+    if (this.jdField_a_of_type_Bkpj == null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
-        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
       }
+      this.jdField_c_of_type_Long = 0L;
     }
-    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
-    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
+    this.jdField_c_of_type_Boolean = false;
   }
   
-  void a(Set<Integer> paramSet)
+  /* Error */
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 54	com/tencent/mobileqq/statistics/UnifiedMonitor:a	()Lcom/tencent/mobileqq/statistics/UnifiedMonitor;
+    //   5: bipush 9
+    //   7: invokevirtual 84	com/tencent/mobileqq/statistics/UnifiedMonitor:whetherReportDuringThisStartup	(I)Z
+    //   10: istore_2
+    //   11: iload_2
+    //   12: ifne +6 -> 18
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: return
+    //   18: invokestatic 54	com/tencent/mobileqq/statistics/UnifiedMonitor:a	()Lcom/tencent/mobileqq/statistics/UnifiedMonitor;
+    //   21: bipush 9
+    //   23: invokevirtual 87	com/tencent/mobileqq/statistics/UnifiedMonitor:whetherReportThisTime	(I)Z
+    //   26: ifeq -11 -> 15
+    //   29: aload_0
+    //   30: getfield 89	bkph:jdField_a_of_type_Boolean	Z
+    //   33: ifeq -18 -> 15
+    //   36: aload_0
+    //   37: getfield 65	bkph:jdField_a_of_type_Bkpj	Lbkpj;
+    //   40: ifnull +17 -> 57
+    //   43: aload_0
+    //   44: getfield 65	bkph:jdField_a_of_type_Bkpj	Lbkpj;
+    //   47: getfield 92	bkpj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   50: aload_1
+    //   51: invokevirtual 98	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   54: ifne -39 -> 15
+    //   57: aload_0
+    //   58: aload_0
+    //   59: getfield 31	bkph:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   62: ldc 26
+    //   64: invokevirtual 102	com/tencent/commonsdk/pool/RecyclablePool:obtain	(Ljava/lang/Class;)Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
+    //   67: checkcast 26	bkpj
+    //   70: putfield 65	bkph:jdField_a_of_type_Bkpj	Lbkpj;
+    //   73: aload_0
+    //   74: getfield 65	bkph:jdField_a_of_type_Bkpj	Lbkpj;
+    //   77: aload_1
+    //   78: putfield 92	bkpj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   81: aload_0
+    //   82: getfield 63	bkph:d	Z
+    //   85: ifne +32 -> 117
+    //   88: aload_0
+    //   89: getfield 33	bkph:jdField_b_of_type_Boolean	Z
+    //   92: ifeq +25 -> 117
+    //   95: aload_0
+    //   96: getfield 67	bkph:jdField_a_of_type_AndroidViewChoreographer	Landroid/view/Choreographer;
+    //   99: aload_0
+    //   100: getfield 69	bkph:jdField_a_of_type_AndroidViewChoreographer$FrameCallback	Landroid/view/Choreographer$FrameCallback;
+    //   103: invokevirtual 75	android/view/Choreographer:removeFrameCallback	(Landroid/view/Choreographer$FrameCallback;)V
+    //   106: aload_0
+    //   107: getfield 67	bkph:jdField_a_of_type_AndroidViewChoreographer	Landroid/view/Choreographer;
+    //   110: aload_0
+    //   111: getfield 69	bkph:jdField_a_of_type_AndroidViewChoreographer$FrameCallback	Landroid/view/Choreographer$FrameCallback;
+    //   114: invokevirtual 105	android/view/Choreographer:postFrameCallback	(Landroid/view/Choreographer$FrameCallback;)V
+    //   117: aload_0
+    //   118: iconst_1
+    //   119: putfield 79	bkph:jdField_c_of_type_Boolean	Z
+    //   122: goto -107 -> 15
+    //   125: astore_1
+    //   126: aload_0
+    //   127: monitorexit
+    //   128: aload_1
+    //   129: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	130	0	this	bkph
+    //   0	130	1	paramString	String
+    //   10	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	125	finally
+    //   18	57	125	finally
+    //   57	117	125	finally
+    //   117	122	125	finally
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    label297:
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          return;
+        }
+        if (this.jdField_a_of_type_Bkpj != null)
+        {
+          if (!paramBoolean)
+          {
+            l1 = a(this.jdField_a_of_type_Bkpj.jdField_c_of_type_Long - this.jdField_a_of_type_Bkpj.jdField_b_of_type_Long);
+            if ((this.jdField_a_of_type_Bkpj.jdField_a_of_type_Long > 0L) && (l1 > a()))
+            {
+              long l2 = (this.jdField_a_of_type_Bkpj.jdField_c_of_type_Long - this.jdField_a_of_type_Bkpj.jdField_b_of_type_Long) / this.jdField_b_of_type_Long;
+              long l3 = this.jdField_a_of_type_Bkpj.jdField_a_of_type_Long;
+              if (a()) {}
+              paramString = new HashMap(10);
+              paramString.put("dropCount", String.valueOf(l2 + 1L - l3));
+              paramString.put("totalMs", String.valueOf(l1));
+              paramString.put("scene", this.jdField_a_of_type_Bkpj.jdField_a_of_type_JavaLangString);
+              paramString.put("dropTimes", Arrays.toString(this.jdField_a_of_type_Bkpj.jdField_a_of_type_ArrayOfLong));
+              paramString.put("isFirstLaunch", String.valueOf(BaseApplicationImpl.isFirstLaunchNew));
+              if (jdField_a_of_type_Long <= 0L) {
+                break label297;
+              }
+              l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+              paramString.put("intervalAfterSyncMsg", String.valueOf(l1));
+              UnifiedMonitor.a().addEvent(9, null, 0, 0, paramString);
+              aaai.a().a(paramString);
+            }
+          }
+          this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(this.jdField_a_of_type_Bkpj);
+          this.jdField_a_of_type_Bkpj = null;
+        }
+        else
+        {
+          if (!this.d)
+          {
+            if (this.jdField_b_of_type_Boolean) {
+              this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
+            }
+            this.jdField_c_of_type_Long = 0L;
+          }
+          this.jdField_c_of_type_Boolean = false;
+          continue;
+        }
+        long l1 = -1L;
+      }
+      finally {}
+    }
   }
   
   public String toString()
   {
-    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
+    if (this.jdField_c_of_type_Boolean) {
+      return "y";
+    }
+    return "n";
   }
 }
 

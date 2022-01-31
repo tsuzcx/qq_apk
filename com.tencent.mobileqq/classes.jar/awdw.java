@@ -1,82 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.HistorySignItem;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
 import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.richstatus.StatusServlet;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.NewIntent;
 
 public class awdw
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
+  
   public awdw(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramDialogInterface = new ArrayList();
-    Object localObject = SignatureHistoryFragment.a(this.a).iterator();
-    int i;
-    for (paramInt = 0; ((Iterator)localObject).hasNext(); paramInt = i)
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (aylc.a(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
     {
-      String str = (String)((Iterator)localObject).next();
-      i = paramInt;
-      if (str != null)
-      {
-        i = paramInt;
-        if (SignatureHistoryFragment.b(this.a) != null)
-        {
-          i = paramInt;
-          if (SignatureHistoryFragment.b(this.a).get(0) != null)
-          {
-            i = paramInt;
-            if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus != null)
-            {
-              i = paramInt;
-              if (((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId != null)
-              {
-                if (str.equals(new String(((HistorySignItem)SignatureHistoryFragment.b(this.a).get(0)).richStatus.feedsId))) {
-                  paramInt = 1;
-                }
-                paramDialogInterface.add(str);
-                i = paramInt;
-              }
-            }
-          }
-        }
-      }
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690312, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
-    if (SignatureHistoryFragment.a(this.a) == null) {
-      SignatureHistoryFragment.a(this.a, new bcpq(this.a.getActivity(), this.a.getActivity().getTitleBarHeight()));
-    }
-    SignatureHistoryFragment.a(this.a).a(ajyc.a(2131714123));
-    SignatureHistoryFragment.a(this.a).show();
-    if ((SignatureHistoryFragment.a(this.a)) && (SignatureHistoryFragment.b(this.a).size() == 1))
+    if ((paramEditable == null) || (paramEditable.length() == 0))
     {
-      paramDialogInterface = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
-      paramDialogInterface.putExtra("k_cmd", 8);
-      this.a.getActivity().app.startServlet(paramDialogInterface);
-    }
-    while (paramDialogInterface.isEmpty())
-    {
-      axqw.b(null, "dc00898", "", "", "0X800A98D", "0X800A98D", 1, 0, "0", "0", "", "");
-      VasWebviewUtil.reportCommercialDrainage(this.a.getActivity().app.c(), "signature", "signature_10", "", 1, 0, 0, "", "", "");
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
       return;
     }
-    localObject = new NewIntent(this.a.getActivity().app.getApp(), StatusServlet.class);
-    ((NewIntent)localObject).putExtra("k_cmd", 5);
-    ((NewIntent)localObject).putStringArrayListExtra("k_status_key", paramDialogInterface);
-    if (paramInt != 0) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      ((NewIntent)localObject).putExtra("k_status_flag", paramInt);
-      this.a.getActivity().app.startServlet((NewIntent)localObject);
-      break;
-    }
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

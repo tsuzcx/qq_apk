@@ -1,44 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
 
 public class agko
-  extends aume
+  extends aumg
 {
-  public agko(PhoneLaunchActivity.1 param1) {}
+  public agko(PhoneMatchView.1 param1) {}
   
   protected void a(boolean paramBoolean, int paramInt)
   {
-    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
-    if (this.a.this$0.a != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
-      this.a.this$0.a = null;
-    }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      Object localObject = this.a.this$0;
-      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
-      {
-        this.a.this$0.setResult(-1);
-        this.a.this$0.finish();
-        return;
-      }
-      localObject = new Intent((Context)localObject, SettingActivity2.class);
-      if (PhoneLaunchActivity.c(this.a.this$0)) {
-        ((Intent)localObject).putExtra("kSrouce", 7);
-      }
-      this.a.this$0.startActivityForResult((Intent)localObject, 2);
-      this.a.this$0.setResult(-1);
-      this.a.this$0.finish();
-      return;
-    }
-    this.a.this$0.a(ajyc.a(2131708009));
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
+  }
+  
+  protected void e(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
+  }
+  
+  protected void f(boolean paramBoolean, int paramInt)
+  {
+    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
   }
 }
 

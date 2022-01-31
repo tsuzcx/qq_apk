@@ -1,18 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public final class bjtu
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class bjtu
+  extends SimpleObserver<bkld>
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  bjtu(bjts parambjts) {}
+  
+  public void a(bkld parambkld)
   {
-    return new EditRecordVideoSource(paramParcel);
+    super.onNext(parambkld);
+    this.a.a(40);
+    parambkld = parambkld.a.b;
+    ved.b("EditPicSave", "picPath = " + parambkld);
+    if (this.a.jdField_a_of_type_Bjyv.getActivity() != null)
+    {
+      ThreadManager.excute(new EditPicSave.2.1(this, parambkld), 64, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.c();
+    }
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void onCancel()
   {
-    return new EditRecordVideoSource[paramInt];
+    super.onCancel();
+    ved.d("EditPicSave", "saveVideo cancel !");
+    if (!bjts.a(this.a))
+    {
+      if (this.a.jdField_a_of_type_Bjxn.a.a() == 14) {
+        this.a.jdField_a_of_type_Bjxn.b = false;
+      }
+      this.a.jdField_a_of_type_Bjxn.a(0);
+    }
+    this.a.d();
+    bcql.a(this.a.jdField_a_of_type_Bjyv.a(), ajya.a(2131703693), 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ved.e("EditPicSave", "saveVideo error ：" + paramError);
+    if (!bjts.a(this.a))
+    {
+      if (this.a.jdField_a_of_type_Bjxn.a.a() == 14) {
+        this.a.jdField_a_of_type_Bjxn.b = false;
+      }
+      this.a.jdField_a_of_type_Bjxn.a(0);
+    }
+    bcql.a(this.a.jdField_a_of_type_Bjyv.a(), 1, ajya.a(2131703695) + paramError, 0).a();
+    this.a.d();
   }
 }
 

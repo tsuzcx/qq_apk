@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public final class aqrj
-  implements Comparator<GameNoticeInfo>
+class aqrj
+  extends AnimatorListenerAdapter
 {
-  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
+  aqrj(aqrf paramaqrf) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
-      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
-    }
-    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
-      return -1;
-    }
-    return 1;
+    super.onAnimationEnd(paramAnimator);
+    this.a.d.setVisibility(8);
+    this.a.a.setVisibility(8);
+    this.a.a.setFocusable(false);
+    aqrf.a(this.a).sendEmptyMessage(3);
   }
 }
 

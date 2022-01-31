@@ -1,11 +1,11 @@
 class hp
-  implements askp<Void, Void>
+  implements askr<Void, Void>
 {
-  hp(ho paramho, ajxn paramajxn, String paramString) {}
+  hp(ho paramho, ajxl paramajxl, String paramString) {}
   
   public Void a(Void paramVoid)
   {
-    this.jdField_a_of_type_Ajxn.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ajxl.a(this.jdField_a_of_type_JavaLangString);
     return null;
   }
 }

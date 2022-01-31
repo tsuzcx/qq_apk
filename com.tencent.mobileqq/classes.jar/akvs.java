@@ -1,22 +1,18 @@
 public class akvs
 {
+  public int a;
   public long a;
   public String a;
-  public long b = -1L;
-  public long c = -1L;
+  public boolean a;
+  public int b;
   
-  public akvs(long paramLong)
+  public akvs(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.c = -1L;
-    this.b = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
 }
 

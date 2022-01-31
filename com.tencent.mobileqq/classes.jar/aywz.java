@@ -1,23 +1,8 @@
-public class aywz
+import android.graphics.Bitmap;
+
+public abstract interface aywz
 {
-  int a;
-  int b;
-  
-  public aywz(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
+  public abstract Bitmap a(Bitmap paramBitmap);
 }
 
 

@@ -1,15 +1,15 @@
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
 
-class bkor
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public class bkor
+  implements View.OnClickListener
 {
-  bkor(bkoq parambkoq) {}
+  public bkor(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
   
-  public void onThreadMonitorEnd(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 10) {
-      this.a.a();
-    }
+    this.a.a(this.a.getContext());
   }
 }
 

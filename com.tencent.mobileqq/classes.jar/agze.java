@@ -1,14 +1,39 @@
-import android.text.TextUtils;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public class agze
+class agze
+  implements BusinessObserver
 {
-  public static void a(String paramString1, String paramString2, String paramString3)
+  agze(agzd paramagzd, long paramLong, agzg paramagzg, WeakReference paramWeakReference) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletConfigHandler", 2, "onReceivePreExec|" + paramString1 + "|" + paramString2 + "|" + paramString3);
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      agzd.a(this.jdField_a_of_type_Agzd, -1L);
+      return;
     }
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString3))) {}
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    agzd.a(this.jdField_a_of_type_Agzd).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Agzg, (agzd)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    agzd.a(this.jdField_a_of_type_Agzd, -1L);
   }
 }
 

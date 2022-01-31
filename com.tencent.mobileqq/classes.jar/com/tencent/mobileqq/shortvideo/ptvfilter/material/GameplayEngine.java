@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.content.res.AssetManager;
-import axjj;
-import axjk;
+import axjl;
+import axjm;
 
 public class GameplayEngine
 {
   private long jdField_a_of_type_Long = 0L;
-  private axjj jdField_a_of_type_Axjj = new axjj(new Game3DNativeEvent());
+  private axjl jdField_a_of_type_Axjl = new axjl(new Game3DNativeEvent());
   
   private native int createEngineContext(AssetManager paramAssetManager);
   
@@ -19,9 +19,9 @@ public class GameplayEngine
   
   private native int onSurfaceOperateNative(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public void a(axjk paramaxjk)
+  public void a(axjm paramaxjm)
   {
-    this.jdField_a_of_type_Axjj.a(paramaxjk, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Axjl.a(paramaxjm, this.jdField_a_of_type_Long);
   }
 }
 

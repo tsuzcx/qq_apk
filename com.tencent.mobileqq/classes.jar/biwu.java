@@ -1,49 +1,135 @@
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import dov.com.qq.im.ae.play.PlayViewPagerAdapter;
+import java.util.HashMap;
+import java.util.Map;
 
-class biwu
-  implements bjob<bivx>
+public final class biwu
 {
-  biwu(biwr parambiwr) {}
+  private long jdField_a_of_type_Long;
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  public void a(@Nullable bivx parambivx)
+  private long a(String paramString)
   {
-    if (parambivx == null) {}
-    do
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+    }
+    return 0L;
+  }
+  
+  private long a(String paramString1, String paramString2)
+  {
+    long l2 = 0L;
+    long l3 = a(paramString1);
+    long l4 = a(paramString2);
+    long l1 = l2;
+    if (l4 > 0L)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (parambivx != bivx.a) {
-            break;
-          }
-          if ((biwh.a == null) || (biwh.a != biqk.a())) {
-            bizg.a().g("none");
-          }
-        } while (!this.a.a());
-        biwr.a(this.a).setVisibility(8);
-        return;
-        if (parambivx != bivx.c) {
-          break;
-        }
-      } while (!this.a.a());
-      biwr.a(this.a).setVisibility(8);
-      return;
-    } while (parambivx != bivx.b);
-    biwr.c(this.a);
-    if (biwr.a(this.a) != null)
-    {
-      parambivx = biwr.a(this.a).a();
-      if ((!TextUtils.isEmpty(parambivx)) && (!"-1".equals(parambivx))) {
-        bizg.a().g(parambivx);
+      l1 = l2;
+      if (l3 > l4) {
+        l1 = l3 - l4;
       }
     }
-    biwr.a(this.a).setVisibility(0);
-    biwr.d(this.a);
+    return l1;
+  }
+  
+  public static biwu a()
+  {
+    return biww.a();
+  }
+  
+  private boolean a()
+  {
+    return true;
+  }
+  
+  public void a()
+  {
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Long > 0L) {
+      bjah.b("CameraLaunchPerf", "old AIO launch total cost=" + (l - this.jdField_a_of_type_Long));
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    if (a()) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    }
+    bjah.b("CameraLaunchPerf", paramString);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (a()) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+    }
+    bjah.b("CameraLaunchPerf", paramString + " real happened at " + paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (!a()) {
+      bjah.b("CameraLaunchPerf******", paramString1 + "--" + paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("collect data:{");
+    if (!paramBoolean) {
+      localStringBuilder.append("userClick-startActivity=").append(a("startActivityForResult", "userClick")).append(", userClickDispatch=").append(a("AECameraLauncher---launchAECameraUnit-begin", "userClick")).append(", launchAECameraUnit=").append(a("AECameraLauncher---launchAECameraUnit-end", "AECameraLauncher---launchAECameraUnit-begin"));
+    }
+    for (;;)
+    {
+      localStringBuilder.append("}");
+      bjah.b("CameraLaunchPerf", localStringBuilder.toString());
+      return;
+      paramBoolean = this.b;
+      this.b = false;
+      localStringBuilder.append("isColdLaunch=").append(paramBoolean).append(", startActivity-firstRealFrame=").append(a("onDrawFrameReal-end", "mainProcessLaunch")).append(", startActivity-firstFakeFrame=").append(a("onDrawFrameFake-end1", "mainProcessLaunch")).append(", ipc_cost=").append(a("activityOnCreateBegin", "mainProcessLaunch")).append(", activityOnCreate=").append(a("activityOnCreateEnd", "activityOnCreateBegin")).append(", buildCaptureUnit=").append(a("buildCaptureUnit-end", "buildCaptureUnit-begin")).append(", unitOnCreateView=").append(a("unitOnCreateView-end", "unitOnCreateView-begin")).append(", unitInflateView=").append(a("unitInflateView-end", "unitInflateView-begin")).append(", glSurfaceViewStaticInit=").append(a("glSurfaceViewStaticInit-end", "glSurfaceViewStaticInit-begin")).append(", activityOnStart=").append(a("activityOnStartEnd", "activityOnStartBegin")).append(", activityOnResume=").append(a("activityOnResumeEnd", "activityOnResumeBegin")).append(", activityOnResume-onSurfaceCreated=").append(a("onSurfaceCreated-begin", "activityOnResumeEnd")).append(", onSurfaceCreated=").append(a("onSurfaceCreated-end", "onSurfaceCreated-begin")).append(", startCamPreview-onFrameAvailable=").append(a("onFrameAvailable", "startCameraPreview-end")).append(", onDrawFrame1=").append(a("onDrawFrameFake-end1", "onDrawFrameFake-begin1")).append(", onDrawFrame2=").append(a("onDrawFrameFake-end2", "onDrawFrameFake-begin2")).append(", onDrawFrame3=").append(a("onDrawFrameFake-end3", "onDrawFrameFake-begin3")).append(", onDrawFrameReal=").append(a("onDrawFrameReal-end", "onDrawFrameReal-begin")).append(", filterProcessInitFilters=").append(a("FilterProcessInitFilters-end", "FilterProcessInitFilters-begin")).append(", filterMgrDraw=").append(a("filterMgrDraw-end", "filterMgrDraw-begin")).append(", onDrawFrame1End-onFrameAvailable=").append(a("onFrameAvailable", "onDrawFrameFake-end1"));
+    }
+  }
+  
+  public void b()
+  {
+    if (a()) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    bjah.b("CameraLaunchPerf", "beginSession----");
+  }
+  
+  public void c()
+  {
+    if (a()) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    bjah.b("CameraLaunchPerf", "endSession----");
   }
 }
 

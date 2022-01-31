@@ -1,17 +1,70 @@
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
-class ukx
-  implements uks<Bitmap>
+public class ukx
+  implements ula
 {
-  ukx(ukv paramukv, List paramList, String paramString) {}
+  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<ulb>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  @NonNull
-  public Stream<Bitmap> a(uko paramuko)
+  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
-    return ukv.a(this.jdField_a_of_type_Ukv, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    Object localObject = paramURLDrawable.getCurrDrawable();
+    if ((localObject instanceof RegionDrawable))
+    {
+      localObject = ((RegionDrawable)localObject).getBitmap();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return bbef.a(paramURLDrawable, paramInt1, paramInt2);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, ulb paramulb)
+  {
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+    try
+    {
+      URL localURL = new URL(paramString);
+      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setURLDrawableListener(new uky(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setAutoDownload(true);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        break label177;
+      }
+      ved.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        paramulb.a(paramString, (Bitmap)localObject);
+        return;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      ved.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      paramulb.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      return;
+    }
+    ved.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+    paramulb.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+    return;
+    label177:
+    ved.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramulb);
+    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
+    localMalformedURLException.startDownload();
   }
 }
 

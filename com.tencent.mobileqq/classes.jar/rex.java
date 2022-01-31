@@ -1,9 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import android.view.animation.Interpolator;
 
-public class rex
-  extends osp
+public final class rex
+  implements Interpolator
 {
-  public rex(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 

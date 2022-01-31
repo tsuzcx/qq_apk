@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
-public abstract interface afco
+public class afco
+  implements View.OnTouchListener
 {
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public afco(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+  }
 }
 
 

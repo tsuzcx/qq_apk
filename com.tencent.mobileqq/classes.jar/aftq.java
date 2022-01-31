@@ -1,6 +1,12 @@
 public abstract interface aftq
 {
   public abstract void a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void d();
 }
 
 

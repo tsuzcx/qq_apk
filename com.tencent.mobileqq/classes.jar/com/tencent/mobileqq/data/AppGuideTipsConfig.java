@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
 public class AppGuideTipsConfig
-  extends aukm
+  extends auko
 {
   public static final String SWITCH_KEY_OFF = "0";
   public static final String TAIL_ID = "app_tail_id";
   public static final String TAIL_QIM_ID = "app_qim_tail_id";
   public static final String TIPS_TYPE_TIM = "1";
   public int addCount;
-  @aulx
+  @aulz
   public String aioTypeStr;
-  @aulx
+  @aulz
   public HashSet<Integer> aioTypes = new HashSet();
-  @aulx
+  @aulz
   public boolean allow;
   public long duration;
   public long lastAddTime;
   public int maxCount;
-  @aulx
+  @aulz
   public Map<Integer, Boolean> msgTypeMap = new HashMap();
   public String msgTypeStr;
   public String opkey;
   public String switchKey;
   public String tipsHighLight;
   public String tipsMsg;
-  @auma
+  @aumc
   public String tipsType;
   public String tipsUrl;
 }

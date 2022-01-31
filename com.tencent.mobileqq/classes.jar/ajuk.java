@@ -1,71 +1,87 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Comparator;
 
-final class ajuk
-  implements Comparator<aukm>
+public class ajuk
+  implements Comparator<DiscussionMemberInfo>
 {
-  public int a(aukm paramaukm1, aukm paramaukm2)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ajuk(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    int i = 0;
-    if ((paramaukm1 instanceof Groups))
-    {
-      paramaukm1 = (Groups)paramaukm1;
-      paramaukm2 = (Groups)paramaukm2;
-      return paramaukm1.seqid - paramaukm2.seqid;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Boolean = paramString2.equals(paramString1);
+  }
+  
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
+  {
+    int i = -1;
+    if (paramDiscussionMemberInfo1.memberUin.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!this.jdField_a_of_type_Boolean) {}
     }
-    Object localObject = "-";
-    String str = "-";
-    int j;
-    if ((paramaukm1 instanceof Friends))
+    String str1;
+    String str2;
+    do
     {
-      paramaukm1 = (Friends)paramaukm1;
-      localObject = (Friends)paramaukm2;
-      j = paramaukm1.mComparePartInt;
-      paramaukm2 = paramaukm1.mCompareSpell;
-      i = ((Friends)localObject).mComparePartInt;
-      paramaukm1 = ((Friends)localObject).mCompareSpell;
+      do
+      {
+        return 1;
+        return -1;
+        if (paramDiscussionMemberInfo2.memberUin.equals(this.jdField_a_of_type_JavaLangString))
+        {
+          if (this.jdField_a_of_type_Boolean) {}
+          for (;;)
+          {
+            return i;
+            i = 1;
+          }
+        }
+        paramDiscussionMemberInfo1 = bbcz.a(paramDiscussionMemberInfo1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramDiscussionMemberInfo2 = bbcz.a(paramDiscussionMemberInfo2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if ((paramDiscussionMemberInfo1 == null) || (paramDiscussionMemberInfo1.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "lhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils int compare lhsName is null for check ");
+        }
+        if ((paramDiscussionMemberInfo2 == null) || (paramDiscussionMemberInfo2.length() == 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ContactUtils", 2, "rhsName is null");
+          }
+          throw new NullPointerException("com.tencent.mobileqq.utils.ContactUtils  int compare rhsName is null for check ");
+        }
+        if ((!Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (!Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          break;
+        }
+        if ((Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (Character.isDigit(paramDiscussionMemberInfo2.charAt(0)))) {
+          return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+        }
+      } while (Character.isDigit(paramDiscussionMemberInfo1.charAt(0)));
+      return -1;
+      str1 = ChnToSpell.a(paramDiscussionMemberInfo1, 1);
+      str2 = ChnToSpell.a(paramDiscussionMemberInfo2, 1);
+      if ((str1.length() == 0) || (str2.length() == 0)) {
+        return -str1.compareTo(str2);
+      }
+      if (str1.charAt(0) != str2.charAt(0)) {
+        break;
+      }
+      if ((bbkk.b(paramDiscussionMemberInfo1.charAt(0))) && (bbkk.b(paramDiscussionMemberInfo2.charAt(0)))) {
+        return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
+      }
+    } while (Character.isLetter(paramDiscussionMemberInfo1.charAt(0)));
+    if (Character.isLetter(paramDiscussionMemberInfo2.charAt(0))) {
+      return -1;
     }
-    for (;;)
-    {
-      return ajuj.a(j, paramaukm2, i, paramaukm1);
-      if ((paramaukm1 instanceof TroopInfo))
-      {
-        paramaukm1 = (TroopInfo)paramaukm1;
-        localObject = (TroopInfo)paramaukm2;
-        j = paramaukm1.mComparePartInt;
-        i = ((TroopInfo)localObject).mComparePartInt;
-        paramaukm2 = paramaukm1.mCompareSpell;
-        paramaukm1 = ((TroopInfo)localObject).mCompareSpell;
-      }
-      else if ((paramaukm1 instanceof DiscussionInfo))
-      {
-        paramaukm1 = (DiscussionInfo)paramaukm1;
-        localObject = (DiscussionInfo)paramaukm2;
-        j = paramaukm1.mComparePartInt;
-        i = ((DiscussionInfo)localObject).mComparePartInt;
-        paramaukm2 = paramaukm1.mCompareSpell;
-        paramaukm1 = ((DiscussionInfo)localObject).mCompareSpell;
-      }
-      else if ((paramaukm1 instanceof PublicAccountInfo))
-      {
-        paramaukm1 = (PublicAccountInfo)paramaukm1;
-        localObject = (PublicAccountInfo)paramaukm2;
-        j = paramaukm1.mComparePartInt;
-        i = ((PublicAccountInfo)localObject).mComparePartInt;
-        paramaukm2 = paramaukm1.mCompareSpell;
-        paramaukm1 = ((PublicAccountInfo)localObject).mCompareSpell;
-      }
-      else
-      {
-        j = 0;
-        paramaukm1 = str;
-        paramaukm2 = (aukm)localObject;
-      }
-    }
+    return str1.compareTo(str2);
+    return str1.charAt(0) - str2.charAt(0);
   }
 }
 

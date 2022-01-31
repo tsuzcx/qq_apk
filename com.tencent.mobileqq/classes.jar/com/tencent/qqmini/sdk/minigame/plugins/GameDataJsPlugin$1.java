@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import beka;
+import bekr;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class GameDataJsPlugin$1
   implements AsyncResult
 {
-  GameDataJsPlugin$1(GameDataJsPlugin paramGameDataJsPlugin, beka parambeka) {}
+  GameDataJsPlugin$1(GameDataJsPlugin paramGameDataJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {

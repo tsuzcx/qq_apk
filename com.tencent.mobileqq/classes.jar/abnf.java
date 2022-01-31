@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class abnf
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public abnf(MainFragment paramMainFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    switch (paramMotionEvent.getActionMasked())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      FrameHelperActivity.c(false);
+      return false;
     }
+    FrameHelperActivity.c(true);
+    return false;
   }
 }
 

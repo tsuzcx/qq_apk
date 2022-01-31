@@ -5,8 +5,8 @@ import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import lcx;
-import lcy;
+import lcs;
+import lct;
 import org.json.JSONObject;
 
 public class DownloadInfo
@@ -29,7 +29,7 @@ public class DownloadInfo
   
   public static DownloadInfo get()
   {
-    String str = lcy.b(367).a;
+    String str = lct.b(367).a;
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.tryParse("QavSo", str);
     return localDownloadInfo;

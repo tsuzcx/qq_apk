@@ -1,11 +1,20 @@
-class bgul
-  implements bgtg
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
+
+public class bgul
+  implements EnterCallback
 {
-  bgul(bguk parambguk) {}
+  bgul(bgui parambgui) {}
   
-  public void a()
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
   {
-    bguk.a(this.a);
+    bgui.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
 }
 

@@ -1,52 +1,9 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
-public class auqb
-  extends ampb<auqc>
+public final class auqb
+  extends auph
 {
-  public int a()
+  protected int c()
   {
-    return 495;
-  }
-  
-  @NonNull
-  public auqc a(int paramInt)
-  {
-    return new auqc();
-  }
-  
-  @Nullable
-  public auqc a(ampi[] paramArrayOfampi)
-  {
-    auqc localauqc = new auqc();
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null)) {
-      auqc.a(localauqc, paramArrayOfampi[0].a);
-    }
-    return localauqc;
-  }
-  
-  public Class<auqc> a()
-  {
-    return auqc.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(auqc paramauqc) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return 515;
   }
 }
 

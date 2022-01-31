@@ -1,32 +1,27 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.1.1;
 
 public class aycq
-  implements MediaPlayer.OnPreparedListener
+  implements MediaPlayer.OnCompletionListener
 {
   public aycq(VideoSprite paramVideoSprite) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    try
+    if (this.a.j) {
+      this.a.b.b(new VideoSprite.1.1(this));
+    }
+    do
     {
-      this.a.n = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-      this.a.o = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.g = true;
-      if (this.a.jdField_a_of_type_Ayct != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a, 33L);
-      }
       return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+      this.a.g = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (this.a.jdField_a_of_type_Aycd == null);
+    this.a.jdField_a_of_type_Aycd.a();
   }
 }
 

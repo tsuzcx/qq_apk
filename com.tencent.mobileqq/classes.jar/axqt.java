@@ -1,198 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class axqt
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static axqv jdField_a_of_type_Axqv = new axqv();
-  private static Calendar jdField_a_of_type_JavaUtilCalendar;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong;
-  public static boolean a;
-  private static int b = 2;
-  private static int c;
-  private static int d;
-  private static int e;
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "cartoon";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = String.valueOf(System.currentTimeMillis() / 1000L);
+  public String o = "";
+  public String p = "";
+  public String q = "";
   
-  static
+  public String toString()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
-    jdField_a_of_type_Int = 3;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-  }
-  
-  public static int a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    String str = ((AppRuntime)localObject).getAccount();
-    if (TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "qzone report with empty account");
-      }
-      return -1;
-    }
-    if (!((akdi)((AppRuntime)localObject).getManager(56)).a(Long.valueOf(Long.parseLong("2290230341"))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "haven't yet follow qzone");
-      }
-      return -1;
-    }
-    long l = NetConnInfoCenter.getServerTime();
-    if (jdField_a_of_type_Long == 0L)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime().getPreferences();
-      b = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_max_req", 2);
-      jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong(str + "_" + "qzone_xp_first_req", l);
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_left", b));
-      jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt(str + "_" + "qzone_xp_req_gap", 3);
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_a_of_type_Long * 1000L);
-      d = jdField_a_of_type_JavaUtilCalendar.get(5);
-      e = 0;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
-    if ((e >= 5) || (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "retry: " + e + ", sending: " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-      }
-      return -1;
-    }
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l * 1000L);
-    if (jdField_a_of_type_JavaUtilCalendar.get(5) != d)
-    {
-      jdField_a_of_type_Long = l;
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(b);
-      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(str + "_" + "qzone_xp_req_left", b).putLong(str + "_" + "qzone_xp_first_req", jdField_a_of_type_Long).apply();
-    }
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneReport", 2, "left: 0");
-      }
-      jdField_a_of_type_JavaUtilCalendar.set(5, jdField_a_of_type_JavaUtilCalendar.get(5) + 1);
-      jdField_a_of_type_JavaUtilCalendar.set(11, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(12, 0);
-      jdField_a_of_type_JavaUtilCalendar.set(13, 0);
-      return (int)((jdField_a_of_type_JavaUtilCalendar.getTimeInMillis() - l * 1000L) / 1000L);
-    }
-    return Math.max(0, (int)(c - l));
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Long = 0L;
-  }
-  
-  public static void a(int paramInt)
-  {
-    if ((paramInt == 1) && (jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (paramInt == 1) {
-      jdField_a_of_type_Boolean = true;
-    }
-    LpReportInfo_dc02880 localLpReportInfo_dc02880 = new LpReportInfo_dc02880(6, paramInt);
-    LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc02880, false, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    bhkl.a().a(new axqu(paramQQAppInterface));
-    long l = LocalMultiProcConfig.getLong("SP_LAST_UPDATE_TIME", 0L);
-    QLog.d("[PhotoAlbum]QZoneReport", 1, new Object[] { "getTravelGroup SP_LAST_UPDATE_TIME lastUpdateTime:", Long.valueOf(l) });
-    bhkl.a().a().a(l);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt, String paramString)
-  {
-    int i = paramConfig.version.get();
-    int j = bbjn.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, String.format(Locale.getDefault(), "received qzone xp Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    }
-    if (i != j)
-    {
-      paramConfig = ando.b(paramConfig, j, paramInt);
-      if (!TextUtils.isEmpty(paramConfig)) {
-        if (QLog.isColorLevel()) {
-          QLog.i("QZoneReport", 2, "receiveAllConfigs|type: " + paramInt + ",content: " + paramConfig + ",version: " + i);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        try
-        {
-          paramInt = Math.max(0, b - jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          paramConfig = new JSONObject(paramConfig);
-          b = paramConfig.optInt("maxReq", 2);
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(Math.max(0, b - paramInt));
-          jdField_a_of_type_Int = paramConfig.optInt("reqGap", 3);
-          BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(paramString + "_" + "qzone_xp_max_req", b).putInt(paramString + "_" + "qzone_xp_req_gap", jdField_a_of_type_Int).putInt(paramString + "_" + "qzone_xp_req_left", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()).apply();
-          bbjn.a(paramQQAppInterface.getApp(), "qzone_xp_config_version", paramString, i);
-          return;
-        }
-        catch (JSONException paramConfig)
-        {
-          for (;;)
-          {
-            if (QLog.isDevelopLevel()) {
-              paramConfig.printStackTrace();
-            }
-          }
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QZoneReport", 2, "config is null");
-      return;
-    }
-    QLog.i("QZoneReport", 2, "config version not updated, nothing to do");
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneReport", 2, "sending");
-    }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(NetConnInfoCenter.getServerTime());
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), axcq.class);
-    localNewIntent.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localNewIntent.putExtra("has_photo", str);
-      BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Axqv);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
-      axqw.b(paramQQAppInterface, "CliOper", "", "", "0X800915C", "0X800915C", 0, 0, "", "", "", "");
-      return;
-    }
+    StringBuffer localStringBuffer = new StringBuffer(64);
+    localStringBuffer.append(this.a).append("|");
+    localStringBuffer.append(this.b).append("|");
+    localStringBuffer.append(this.c).append("|");
+    localStringBuffer.append(this.d).append("|");
+    localStringBuffer.append(this.e).append("|");
+    localStringBuffer.append(this.f).append("|");
+    localStringBuffer.append(this.g).append("|");
+    localStringBuffer.append(this.h).append("|");
+    localStringBuffer.append(this.i).append("|");
+    localStringBuffer.append(this.j).append("|");
+    localStringBuffer.append(this.k).append("|");
+    localStringBuffer.append(this.l).append("|");
+    localStringBuffer.append(this.m).append("|");
+    localStringBuffer.append(this.n).append("|");
+    localStringBuffer.append(this.o).append("|");
+    localStringBuffer.append(this.p).append("|");
+    localStringBuffer.append(this.q).append("|");
+    return localStringBuffer.toString();
   }
 }
 

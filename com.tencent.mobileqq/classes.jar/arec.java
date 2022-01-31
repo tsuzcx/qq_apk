@@ -1,17 +1,39 @@
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 import java.io.File;
-import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-class arec
-  implements Callable<Boolean>
+public final class arec
+  implements PluginManagerUpdater
 {
-  arec(area paramarea, File paramFile) {}
+  private final File a;
   
-  public Boolean a()
+  public arec(String paramString)
   {
-    if ((area.a(this.jdField_a_of_type_Area).exists()) && (this.jdField_a_of_type_JavaIoFile == area.a(this.jdField_a_of_type_Area))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
+  }
+  
+  public File getLatest()
+  {
+    if (this.a.exists()) {
+      return this.a;
     }
+    return null;
+  }
+  
+  public Future<Boolean> isAvailable(File paramFile)
+  {
+    return akhk.a(16).submit(new aree(this, paramFile));
+  }
+  
+  public Future<File> update()
+  {
+    return akhk.a(16).submit(new ared(this));
+  }
+  
+  public boolean wasUpdating()
+  {
+    return false;
   }
 }
 

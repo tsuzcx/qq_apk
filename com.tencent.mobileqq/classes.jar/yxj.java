@@ -1,35 +1,47 @@
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class yxj
-  implements ysr
+  implements yxe
 {
-  yxj(yxi paramyxi) {}
-  
-  public void onResponse(ysq paramysq)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    if ((paramysq == null) || (paramysq.a() == null) || (yxi.a(this.a) == null) || (yxi.a(this.a).get() == null)) {
-      return;
+    Object localObject = null;
+    if (paramywk != null) {}
+    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      yxp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    String str = (String)yxi.a(this.a).get(paramysq);
-    yxi.a(this.a).remove(paramysq);
-    Object localObject1 = yxr.a(paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    Object localObject2 = yxr.a(paramysq.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    paramysq = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramysq.put("request", localObject1);
-      paramysq.put("response", localObject2);
-      ((ywn)yxi.a(this.a).get()).callJs(str, new String[] { paramysq.toString() });
-      return;
+      localJSONObject.put("netType", yxr.a(paramVarArgs));
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
+      try
       {
-        localJSONException.printStackTrace();
+        for (;;)
+        {
+          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramywk != null) {
+            paramString = paramywk.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yxp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          yxp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
+        }
       }
     }
   }

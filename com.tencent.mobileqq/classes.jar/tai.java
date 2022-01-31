@@ -1,39 +1,60 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tai
-  extends taz
+  extends tba
 {
-  public static final String a;
-  public static final String b = sxp.a("StorySvc.like_feed");
-  protected tan a;
-  private boolean a;
-  protected String c;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
   
-  static
+  public tai(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = sxp.a("StorySvc.feed_like_list_715");
-  }
-  
-  public tai(tan paramtan, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tan = paramtan;
-    this.c = this.jdField_a_of_type_Tan.a.feedId;
+    this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
+  public String a()
   {
-    tbb.a().a(new tal(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new tam());
+    return taf.b;
   }
   
-  public void a()
+  public tbb a(byte[] paramArrayOfByte)
   {
-    a(this.c, this.jdField_a_of_type_Boolean);
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
+    {
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new taj(localRspLikeFeed);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ved.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected byte[] a()
   {
-    tbb.a().a(new taj(this, paramString, paramBoolean), new tak(this));
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
+    }
   }
 }
 

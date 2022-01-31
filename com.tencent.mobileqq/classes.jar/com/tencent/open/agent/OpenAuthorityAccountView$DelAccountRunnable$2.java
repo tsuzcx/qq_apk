@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bbgg;
+import bbgu;
 
 class OpenAuthorityAccountView$DelAccountRunnable$2
   implements Runnable

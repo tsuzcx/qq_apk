@@ -1,13 +1,14 @@
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+
 public class axhh
 {
-  public float a;
   public int a;
-  public long a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c;
+  public int b = 0;
+  
+  public axhh(SVHwEncoder.HwEncode paramHwEncode)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 

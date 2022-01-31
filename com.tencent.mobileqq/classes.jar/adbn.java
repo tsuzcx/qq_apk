@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
-public class adbn
-  extends VasQuickUpdateManager.CallBacker
+class adbn
+  implements Animator.AnimatorListener
 {
-  public adbn(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  adbn(adbm paramadbm, ViewGroup paramViewGroup) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
-    do
-    {
-      return;
-      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
-        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
-      }
-      if (paramInt1 == 0) {
-        this.a.a(true);
-      }
-    } while (paramVasQuickUpdateManager == null);
-    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
 }
 

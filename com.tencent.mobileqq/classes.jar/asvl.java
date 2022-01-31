@@ -1,66 +1,62 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Binder;
+import android.os.IBinder;
 import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.music.SongInfo;
 
-public abstract interface asvl
-  extends IInterface
+public abstract class asvl
+  extends Binder
+  implements asvk
 {
-  public abstract int a();
+  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
+  static final int TRANSACTION_onPlaySongChanged = 2;
+  static final int TRANSACTION_onPlayStateChanged = 1;
   
-  public abstract Intent a();
+  public asvl()
+  {
+    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
+  }
   
-  public abstract Bundle a();
+  public static asvk asInterface(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof asvk))) {
+      return (asvk)localIInterface;
+    }
+    return new asvm(paramIBinder);
+  }
   
-  public abstract SongInfo a();
+  public IBinder asBinder()
+  {
+    return this;
+  }
   
-  public abstract String a();
-  
-  public abstract String a(int paramInt, String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(asvi paramasvi);
-  
-  public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract SongInfo[] a();
-  
-  public abstract int b();
-  
-  public abstract SongInfo b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(asvi paramasvi);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract int f();
-  
-  public abstract int g();
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+      onPlayStateChanged(paramParcel1.readInt());
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      onPlaySongChanged(paramParcel1);
+      return true;
+    }
+  }
 }
 
 

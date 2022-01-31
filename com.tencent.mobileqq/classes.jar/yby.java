@@ -1,24 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceFileHandler;
-
 public class yby
-  extends Handler
 {
-  public yby(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public long a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
+  public yby(ybw paramybw, String paramString, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.notifyUI(103, true, paramMessage.obj);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

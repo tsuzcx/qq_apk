@@ -1,22 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class qoj
-  extends AnimatorListenerAdapter
+final class qoj
+  extends ClickableSpan
 {
-  private qoj(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  qoj(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationCancel(paramAnimator);
-    VideoFeedsGuideView.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("big_brother_source_key", onh.f(0));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoFeedsGuideView.a(this.a, true);
+    paramTextPaint.setColor(Color.rgb(18, 183, 245));
   }
 }
 

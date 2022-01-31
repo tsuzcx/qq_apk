@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
 import android.text.TextUtils;
-import besl;
-import bfgt;
+import betc;
+import bfhk;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
@@ -19,7 +19,7 @@ class PayJsPlugin$5
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + paramJSONObject);
+    betc.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + paramJSONObject);
     if (paramJSONObject == null) {
       paramJSONObject = new JSONObject();
     }
@@ -36,7 +36,7 @@ class PayJsPlugin$5
       }
       catch (JSONException paramJSONObject)
       {
-        besl.d("PayJsPlugin", "invokeMidasQuery JSONException ", paramJSONObject);
+        betc.d("PayJsPlugin", "invokeMidasQuery JSONException ", paramJSONObject);
         return;
       }
       try
@@ -55,10 +55,10 @@ class PayJsPlugin$5
         paramJSONObject.put("rechargeNum", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).rechargeNum.get());
         paramJSONObject.put("remainder", ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).remainder.get());
         localObject = ((MiniAppMidasPay.StQueryStarCurrencyRsp)localObject).offerid.get();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!bfgt.a())) {
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!bfhk.a())) {
           this.this$0.mRealOfferId = ((String)localObject);
         }
-        besl.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
+        betc.b("PayJsPlugin", "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
         if (this.val$listener != null)
         {
           this.val$listener.onResult(true, paramJSONObject);
@@ -67,7 +67,7 @@ class PayJsPlugin$5
       }
       catch (Throwable paramJSONObject)
       {
-        besl.d("PayJsPlugin", "invokeMidasQuery failed", paramJSONObject);
+        betc.d("PayJsPlugin", "invokeMidasQuery failed", paramJSONObject);
       }
     }
   }

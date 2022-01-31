@@ -1,9 +1,8 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class aaeu
   implements View.OnClickListener
@@ -12,10 +11,11 @@ public class aaeu
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
-    axqw.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    {
+      axqy.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akuz.a(), "");
+      UpgradeDetailActivity.a(this.a, akuz.a().a(), false, false, true);
+    }
   }
 }
 

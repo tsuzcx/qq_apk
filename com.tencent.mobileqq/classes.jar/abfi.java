@@ -1,19 +1,21 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.2;
 
 public class abfi
-  implements bfsy
+  implements bcpo
 {
   public abfi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, String paramString)
   {
-    FriendProfileCardActivity.a(this.a, paramInt1);
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!bbev.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.61.1(this));
+    }
+    while (!"profile_switch_config".equals(paramString)) {
       return;
     }
-    this.a.a.a();
-    this.a.d(true);
+    this.a.runOnUiThread(new FriendProfileCardActivity.61.2(this));
   }
 }
 

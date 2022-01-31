@@ -1,12 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
 class aqpv
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  aqpv(aqpr paramaqpr) {}
+  aqpv(aqpt paramaqpt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aqmd.a().a().a("AIOGalleryVideoView", 4, "showSaveFileTips cancel");
+  }
 }
 
 

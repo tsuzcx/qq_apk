@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils;
 
-import bbjl;
+import bbjz;
 import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class ShareWithPictureActionSheetBuilder$2
   implements Runnable
 {
-  public ShareWithPictureActionSheetBuilder$2(bbjl parambbjl) {}
+  public ShareWithPictureActionSheetBuilder$2(bbjz parambbjz) {}
   
   public void run()
   {

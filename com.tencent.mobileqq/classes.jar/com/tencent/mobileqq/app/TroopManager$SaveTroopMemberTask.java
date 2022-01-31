@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app;
 
 import android.os.Handler;
 import android.os.Looper;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.troop.utils.TroopNameHelper;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -24,13 +24,13 @@ public class TroopManager$SaveTroopMemberTask
   public void run()
   {
     this.b = true;
-    aukn localaukn = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    aukp localaukp = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localaukn.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localaukp.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localaukn.a();
+      localaukp.a();
       new Handler(Looper.getMainLooper()).post(new TroopManager.SaveTroopMemberTask.1(this));
       if (this.jdField_a_of_type_Boolean) {
         TroopNameHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
@@ -39,7 +39,7 @@ public class TroopManager$SaveTroopMemberTask
       this.this$0.b.remove(this);
       this.this$0.c();
       return;
-      localaukn.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localaukp.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

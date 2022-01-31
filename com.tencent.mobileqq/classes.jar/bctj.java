@@ -1,17 +1,37 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.ksong.KSongTextView;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
 
-public final class bctj
-  implements DialogInterface.OnClickListener
+public class bctj
+  implements QwAdapter.IViewHolder<asbe>
 {
-  public bctj(Context paramContext) {}
+  public KSongTextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bctj(KSongView paramKSongView) {}
+  
+  public void a(int paramInt, View paramView, asbe paramasbe)
   {
-    bctm.c();
-    FloatingScreenPermission.requestPermission(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
+    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
+    if (TextUtils.isEmpty(paramasbe.a)) {}
+    for (paramView = "";; paramView = paramasbe.a)
+    {
+      localKSongTextView.setText(paramView);
+      return;
+    }
+  }
+  
+  public QwAdapter.IViewHolder clone()
+  {
+    return (QwAdapter.IViewHolder)super.clone();
+  }
+  
+  public View initView(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131373428));
+    return paramView;
   }
 }
 

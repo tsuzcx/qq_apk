@@ -1,8 +1,15 @@
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
 public class bkdy
+  implements bkox
 {
-  public static boolean a(int paramInt)
+  public bkdy(DoodleLayout paramDoodleLayout) {}
+  
+  public void a(@NonNull bkpe parambkpe)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
+    this.a.a(parambkpe.a, parambkpe.b);
+    vej.b("0X80075CD");
   }
 }
 

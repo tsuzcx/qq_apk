@@ -1,41 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class sbt
-  extends sch
+  implements myy
 {
   public sbt(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
+  public void loaded(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
+      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
     }
-    if (!paramBoolean) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
-      return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+    this.a.app.getApplication();
+    int i = bbfj.a(MobileQQ.getContext());
+    paramString = new HashMap();
+    paramString.put("network", "" + i);
+    paramString.put("status_code", "" + paramInt);
+    axrn.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

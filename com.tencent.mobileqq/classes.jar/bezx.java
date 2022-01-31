@@ -1,30 +1,27 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageReq;
-import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserCloudStorageRsp;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StKVData;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bezx
-  extends bfad
+  extends bfau
 {
-  private CloudStorage.StGetUserInteractiveStorageReq a = new CloudStorage.StGetUserInteractiveStorageReq();
+  private CloudStorage.StGetUserCloudStorageReq a = new CloudStorage.StGetUserCloudStorageReq();
   
-  public bezx(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString)
+  public bezx(String[] paramArrayOfString, String paramString)
   {
-    if (paramStCommonExt != null) {
-      this.a.ext.set(paramStCommonExt);
-    }
     int j = paramArrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      paramStCommonExt = paramArrayOfString[i];
-      this.a.keyList.add(paramStCommonExt);
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
       i += 1;
     }
     this.a.appid.set(paramString);
@@ -40,39 +37,46 @@ public class bezx
     if (paramArrayOfByte == null) {
       return null;
     }
-    CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = new CloudStorage.StGetUserInteractiveStorageRsp();
+    Object localObject1 = new CloudStorage.StGetUserCloudStorageRsp();
     try
     {
-      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetUserInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetUserInteractiveStorageRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStGetUserInteractiveStorageRsp);
-        paramArrayOfByte.put("resultCode", 0);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+      ((CloudStorage.StGetUserCloudStorageRsp)localObject1).mergeFrom(a(paramArrayOfByte));
+      if ((localObject1 == null) || (((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList == null)) {
+        break label174;
       }
-      besl.a("GetUserInteractiveStorageRequest", "onResponse fail.rsp = null");
-      return null;
+      paramArrayOfByte = new JSONObject();
+      Object localObject2 = ((CloudStorage.StGetUserCloudStorageRsp)localObject1).KVDataList.get();
+      localObject1 = new JSONArray();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        CloudStorage.StKVData localStKVData = (CloudStorage.StKVData)((Iterator)localObject2).next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("key", localStKVData.key.get());
+        localJSONObject.put("value", localStKVData.value.get());
+        ((JSONArray)localObject1).put(localJSONObject);
+      }
+      paramArrayOfByte.put("KVDataList", localObject1);
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetUserInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
     }
+    return paramArrayOfByte;
+    label174:
+    betc.a("GetCloudStorageRequest", "onResponse fail.rsp = null");
     return null;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "GetUserInteractiveStorage";
+    return "GetUserCloudStorage";
   }
 }
 

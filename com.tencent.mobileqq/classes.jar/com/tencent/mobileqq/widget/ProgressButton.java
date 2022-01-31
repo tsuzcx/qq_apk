@@ -12,7 +12,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.Button;
-import bbkx;
+import bbll;
 
 public class ProgressButton
   extends Button
@@ -57,7 +57,7 @@ public class ProgressButton
     if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null) {
       return this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
     }
-    float f = bbkx.a(50.0F);
+    float f = bbll.a(50.0F);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
     localShapeDrawable.getPaint().setColor(paramInt);
     return new ClipDrawable(localShapeDrawable, 8388611, 1);

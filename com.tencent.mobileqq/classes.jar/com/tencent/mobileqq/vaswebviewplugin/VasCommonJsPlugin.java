@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajkc;
-import ajkh;
-import ajyc;
+import ajka;
+import ajkf;
+import ajya;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,22 +15,22 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import anql;
-import anqp;
-import anvl;
-import bbct;
-import bbcu;
-import bbcv;
-import bbev;
-import bbgu;
-import bcbo;
-import bcce;
-import bcci;
-import bcdb;
-import bcfa;
-import bchw;
-import bchx;
-import bgwj;
+import anqq;
+import anqu;
+import anvq;
+import bbdh;
+import bbdi;
+import bbdj;
+import bbfj;
+import bbhi;
+import bccc;
+import bccs;
+import bccw;
+import bcdp;
+import bcfo;
+import bcik;
+import bcil;
+import bgxa;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -58,16 +58,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import mze;
-import nke;
+import mzb;
+import nkb;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xle;
+import xlb;
 
 public class VasCommonJsPlugin
   extends VasWebviewJsPlugin
-  implements bcbo
+  implements bccc
 {
   public static final String H5_CALLBACK_GETFRIENDINFO = "getFriendInfo";
   private static final String LOG_TAG_WEB = "WebQlog";
@@ -87,7 +87,7 @@ public class VasCommonJsPlugin
   protected VasCommonJsPlugin.ChooseFriendReceiver mChoFriReceiver;
   protected VasCommonJsPlugin.ChooseH5PTVReceiver mH5PTVReceiver;
   private Bundle mReqBundle = new Bundle();
-  private bcci uiInterface;
+  private bccw uiInterface;
   
   private void H5chooseFriends(String paramString)
   {
@@ -104,7 +104,7 @@ public class VasCommonJsPlugin
     try
     {
       localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", ajyc.a(2131716035));
+      paramString = ((JSONObject)localObject2).optString("title", ajya.a(2131716046));
       i = ((JSONObject)localObject2).optInt("type", 0);
       if (QLog.isColorLevel()) {
         QLog.d("h5ptv", 2, "type=" + i);
@@ -256,7 +256,7 @@ public class VasCommonJsPlugin
       try
       {
         paramString = new JSONObject(paramString);
-        str1 = paramString.optString("title", ajyc.a(2131716036));
+        str1 = paramString.optString("title", ajya.a(2131716047));
         str2 = paramString.optString("dialog_sub_title", "");
         str3 = paramString.optString("dialog_input", "");
         i1 = paramString.optInt("type", 0);
@@ -528,14 +528,14 @@ public class VasCommonJsPlugin
     Object localObject1 = this.mRuntime.a(this.mRuntime.a());
     QLog.i("VasCommonJsPlugin", 2, "baseInterface = " + localObject1);
     Object localObject4;
-    if ((localObject1 == null) && ((this.mRuntime.a() instanceof bgwj)))
+    if ((localObject1 == null) && ((this.mRuntime.a() instanceof bgxa)))
     {
       QLog.i("VasCommonJsPlugin", 2, "start check if plugin has WebviewReportSpeedInterface interface...");
-      localObject4 = (bgwj)this.mRuntime.a();
-      if ((((bgwj)localObject4).a() instanceof bcci))
+      localObject4 = (bgxa)this.mRuntime.a();
+      if ((((bgxa)localObject4).a() instanceof bccw))
       {
         QLog.i("VasCommonJsPlugin", 2, "plugin has interface for getPerformance...");
-        localObject1 = (bcci)((bgwj)localObject4).a();
+        localObject1 = (bccw)((bgxa)localObject4).a();
       }
     }
     for (;;)
@@ -581,16 +581,16 @@ public class VasCommonJsPlugin
         }
         try
         {
-          if ((localObject4 instanceof bchx))
+          if ((localObject4 instanceof bcil))
           {
             bool4 = bool7;
             l2 = l1;
             bool5 = bool3;
-            l1 = ((bchx)localObject4).getmOnCreateMilliTimeStamp();
+            l1 = ((bcil)localObject4).getmOnCreateMilliTimeStamp();
             bool4 = bool7;
             l2 = l1;
             bool5 = bool3;
-            bool1 = ((bchx)localObject4).isMainPageUseLocalFile();
+            bool1 = ((bcil)localObject4).isMainPageUseLocalFile();
           }
         }
         catch (Exception localException1)
@@ -637,7 +637,7 @@ public class VasCommonJsPlugin
                   localObject2 = localObject5;
                   if (localObject6 != null)
                   {
-                    localObject2 = ((ajkc)localObject6).a();
+                    localObject2 = ((ajka)localObject6).a();
                     continue;
                     i = 1;
                     continue;
@@ -656,7 +656,7 @@ public class VasCommonJsPlugin
         }
         try
         {
-          bool2 = ((bchx)localObject4).getmPerfFirstLoadTag();
+          bool2 = ((bcil)localObject4).getmPerfFirstLoadTag();
         }
         catch (Exception localException2)
         {
@@ -686,7 +686,7 @@ public class VasCommonJsPlugin
         }
         try
         {
-          bool3 = ((bchx)localObject4).getisWebViewCache();
+          bool3 = ((bcil)localObject4).getisWebViewCache();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -728,7 +728,7 @@ public class VasCommonJsPlugin
         }
         try
         {
-          l14 = ((bchx)localObject4).getmClickTime();
+          l14 = ((bcil)localObject4).getmClickTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -741,7 +741,7 @@ public class VasCommonJsPlugin
           l4 = l32;
           l2 = l33;
           l3 = l14;
-          l16 = ((bchx)localObject4).getmTimeBeforeLoadUrl();
+          l16 = ((bcil)localObject4).getmTimeBeforeLoadUrl();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -754,7 +754,7 @@ public class VasCommonJsPlugin
           l4 = l32;
           l2 = l16;
           l3 = l14;
-          l17 = ((bchx)localObject4).getonCreateTime();
+          l17 = ((bcil)localObject4).getonCreateTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -767,7 +767,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l18 = ((bchx)localObject4).getviewInflateTime();
+          l18 = ((bcil)localObject4).getviewInflateTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -780,7 +780,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l19 = ((bchx)localObject4).getgetWebViewTime();
+          l19 = ((bcil)localObject4).getgetWebViewTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -793,7 +793,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l20 = ((bchx)localObject4).getinitBrowserTime();
+          l20 = ((bcil)localObject4).getinitBrowserTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -806,7 +806,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l21 = ((bchx)localObject4).getinitTime();
+          l21 = ((bcil)localObject4).getinitTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -819,7 +819,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l22 = ((bchx)localObject4).getinitTBSTime();
+          l22 = ((bcil)localObject4).getinitTBSTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -832,7 +832,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l15 = ((bchx)localObject4).getpluginFinished();
+          l15 = ((bcil)localObject4).getpluginFinished();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -845,7 +845,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l26 = ((bchx)localObject4).getOpenUrlAfterCheckOfflineTime();
+          l26 = ((bcil)localObject4).getOpenUrlAfterCheckOfflineTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -858,7 +858,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l25 = ((bchx)localObject4).getReadIndexFromOfflineTime();
+          l25 = ((bcil)localObject4).getReadIndexFromOfflineTime();
           l11 = l24;
           l13 = l25;
           l12 = l26;
@@ -871,7 +871,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          l23 = ((bchx)localObject4).getDetect302Time();
+          l23 = ((bcil)localObject4).getDetect302Time();
           l11 = l23;
           l13 = l25;
           l12 = l26;
@@ -884,7 +884,7 @@ public class VasCommonJsPlugin
           l4 = l17;
           l2 = l16;
           l3 = l14;
-          bool6 = ((bchx)localObject4).getIsReloadUrl();
+          bool6 = ((bcil)localObject4).getIsReloadUrl();
           l9 = l25;
           l7 = l26;
           l10 = 0L;
@@ -991,28 +991,28 @@ public class VasCommonJsPlugin
             continue;
           }
           localObject5 = new JSONObject();
-          ((JSONObject)localObject5).put("thunderCacheType", ((ajkh)localObject1).jdField_a_of_type_Int);
-          ((JSONObject)localObject5).put("webViewReadyTime", ((ajkh)localObject1).i);
-          ((JSONObject)localObject5).put("sessionStartTime", ((ajkh)localObject1).g);
-          ((JSONObject)localObject5).put("sessionEndTime", ((ajkh)localObject1).h);
-          ((JSONObject)localObject5).put("SSOStartTime", ((ajkh)localObject1).jdField_a_of_type_Long);
-          ((JSONObject)localObject5).put("SSOEndTime", ((ajkh)localObject1).jdField_b_of_type_Long);
-          ((JSONObject)localObject5).put("SSOCallJSTime", ((ajkh)localObject1).d);
-          ((JSONObject)localObject5).put("loadUrlTime", ((ajkh)localObject1).j);
-          ((JSONObject)localObject5).put("SSORequestTime", ((ajkh)localObject1).c);
-          ((JSONObject)localObject5).put("readLocalFileCost", ((ajkh)localObject1).e);
-          ((JSONObject)localObject5).put("verifyLocalFileCost", ((ajkh)localObject1).f);
-          ((JSONObject)localObject5).put("cgiStatistics", ((ajkh)localObject1).jdField_a_of_type_OrgJsonJSONObject);
+          ((JSONObject)localObject5).put("thunderCacheType", ((ajkf)localObject1).jdField_a_of_type_Int);
+          ((JSONObject)localObject5).put("webViewReadyTime", ((ajkf)localObject1).i);
+          ((JSONObject)localObject5).put("sessionStartTime", ((ajkf)localObject1).g);
+          ((JSONObject)localObject5).put("sessionEndTime", ((ajkf)localObject1).h);
+          ((JSONObject)localObject5).put("SSOStartTime", ((ajkf)localObject1).jdField_a_of_type_Long);
+          ((JSONObject)localObject5).put("SSOEndTime", ((ajkf)localObject1).jdField_b_of_type_Long);
+          ((JSONObject)localObject5).put("SSOCallJSTime", ((ajkf)localObject1).d);
+          ((JSONObject)localObject5).put("loadUrlTime", ((ajkf)localObject1).j);
+          ((JSONObject)localObject5).put("SSORequestTime", ((ajkf)localObject1).c);
+          ((JSONObject)localObject5).put("readLocalFileCost", ((ajkf)localObject1).e);
+          ((JSONObject)localObject5).put("verifyLocalFileCost", ((ajkf)localObject1).f);
+          ((JSONObject)localObject5).put("cgiStatistics", ((ajkf)localObject1).jdField_a_of_type_OrgJsonJSONObject);
           if (QLog.isColorLevel()) {
             QLog.d("VasCommonJsPlugin", 2, "apollo_client_apolloWebStatistics:" + ((JSONObject)localObject5).toString());
           }
           localObject1 = localObject5;
           bool6 = false;
-          if (!(localObject4 instanceof bchw)) {
+          if (!(localObject4 instanceof bcik)) {
             continue;
           }
-          i = ((bchw)localObject4).b();
-          bool6 = ((bchw)localObject4).d();
+          i = ((bcik)localObject4).b();
+          bool6 = ((bcik)localObject4).d();
           l6 = l13;
           if (l13 == -1L) {
             l6 = this.onPageStartedTime;
@@ -1022,10 +1022,10 @@ public class VasCommonJsPlugin
           paramJSONObject.put("pageFinish", this.onPageFinishedTime);
           paramJSONObject.put("webviewStart", l15);
           paramJSONObject.put("isUseLocalSrc", bool5);
-          paramJSONObject.put("noLocalSrcType", mze.jdField_a_of_type_Int);
+          paramJSONObject.put("noLocalSrcType", mzb.jdField_a_of_type_Int);
           paramJSONObject.put("isFirstRequest", bool4);
-          paramJSONObject.put("isPreloadWebProcess", bcfa.jdField_s_of_type_Boolean);
-          paramJSONObject.put("isCompletePreloadWebProcess", bcfa.jdField_t_of_type_Boolean);
+          paramJSONObject.put("isPreloadWebProcess", bcfo.jdField_s_of_type_Boolean);
+          paramJSONObject.put("isCompletePreloadWebProcess", bcfo.jdField_t_of_type_Boolean);
           paramJSONObject.put("isWebViewCache", bool3);
           paramJSONObject.put("onCreate", l12);
           paramJSONObject.put("viewInflate", l11);
@@ -1094,13 +1094,13 @@ public class VasCommonJsPlugin
           bool4 = bool7;
           l2 = l1;
           bool5 = bool3;
-          if (!(this.mRuntime.a() instanceof bcce)) {
+          if (!(this.mRuntime.a() instanceof bccs)) {
             continue;
           }
           bool4 = bool7;
           l2 = l1;
           bool5 = bool3;
-          localObject6 = (bcfa)super.getBrowserComponent(-2);
+          localObject6 = (bcfo)super.getBrowserComponent(-2);
           bool4 = bool7;
           l2 = l1;
           bool5 = bool3;
@@ -1117,13 +1117,13 @@ public class VasCommonJsPlugin
           bool4 = bool7;
           l2 = l1;
           bool5 = bool3;
-          if (!(localObject1 instanceof xle)) {
+          if (!(localObject1 instanceof xlb)) {
             continue;
           }
           bool4 = bool7;
           l2 = l1;
           bool5 = bool3;
-          localObject1 = (xle)localObject1;
+          localObject1 = (xlb)localObject1;
           label2230:
           bool4 = bool7;
           l2 = l1;
@@ -1179,20 +1179,20 @@ public class VasCommonJsPlugin
           bool4 = bool1;
           l2 = l1;
           bool5 = bool3;
-          l1 = ((bcfa)localObject6).c;
+          l1 = ((bcfo)localObject6).c;
           if (localObject5 != null)
           {
             bool4 = bool1;
             l2 = l1;
             bool5 = bool3;
-            if (((xle)localObject5).e)
+            if (((xlb)localObject5).e)
             {
               bool2 = true;
               label2475:
               bool4 = bool1;
               l2 = l1;
               bool5 = bool2;
-              bool3 = ((bcfa)localObject6).h;
+              bool3 = ((bcfo)localObject6).h;
             }
           }
           for (;;)
@@ -1202,7 +1202,7 @@ public class VasCommonJsPlugin
               boolean bool8;
               try
               {
-                bool5 = ((bcfa)localObject6).w;
+                bool5 = ((bcfo)localObject6).w;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1248,7 +1248,7 @@ public class VasCommonJsPlugin
               }
               try
               {
-                l4 = ((bcfa)localObject6).jdField_b_of_type_Long;
+                l4 = ((bcfo)localObject6).jdField_b_of_type_Long;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1261,7 +1261,7 @@ public class VasCommonJsPlugin
                 l13 = l32;
                 l11 = l33;
                 l12 = l4;
-                l5 = ((bcfa)localObject6).q;
+                l5 = ((bcfo)localObject6).q;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1274,7 +1274,7 @@ public class VasCommonJsPlugin
                 l13 = l32;
                 l11 = l5;
                 l12 = l4;
-                l6 = ((bcfa)localObject6).r;
+                l6 = ((bcfo)localObject6).r;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1287,7 +1287,7 @@ public class VasCommonJsPlugin
                 l13 = l6;
                 l11 = l5;
                 l12 = l4;
-                l7 = ((bcfa)localObject6).jdField_s_of_type_Long;
+                l7 = ((bcfo)localObject6).jdField_s_of_type_Long;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1300,7 +1300,7 @@ public class VasCommonJsPlugin
                 l13 = l6;
                 l11 = l5;
                 l12 = l4;
-                l8 = ((bcfa)localObject6).m;
+                l8 = ((bcfo)localObject6).m;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1313,7 +1313,7 @@ public class VasCommonJsPlugin
                 l13 = l6;
                 l11 = l5;
                 l12 = l4;
-                l9 = ((bcfa)localObject6).n;
+                l9 = ((bcfo)localObject6).n;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1326,7 +1326,7 @@ public class VasCommonJsPlugin
                 l13 = l6;
                 l11 = l5;
                 l12 = l4;
-                l10 = ((bcfa)localObject6).o;
+                l10 = ((bcfo)localObject6).o;
                 l23 = l24;
                 l22 = l25;
                 l21 = l26;
@@ -1339,7 +1339,7 @@ public class VasCommonJsPlugin
                 l13 = l6;
                 l11 = l5;
                 l12 = l4;
-                l15 = ((bcfa)localObject6).p;
+                l15 = ((bcfo)localObject6).p;
                 l27 = 0L;
                 if (localObject5 != null)
                 {
@@ -1355,7 +1355,7 @@ public class VasCommonJsPlugin
                   l13 = l6;
                   l11 = l5;
                   l12 = l4;
-                  l2 = ((xle)localObject5).jdField_a_of_type_Long;
+                  l2 = ((xlb)localObject5).jdField_a_of_type_Long;
                   if (localObject5 == null) {
                     continue;
                   }
@@ -1371,7 +1371,7 @@ public class VasCommonJsPlugin
                   l13 = l6;
                   l11 = l5;
                   l12 = l4;
-                  l3 = ((xle)localObject5).jdField_b_of_type_Long;
+                  l3 = ((xlb)localObject5).jdField_b_of_type_Long;
                   l23 = l24;
                   l22 = l3;
                   l21 = l2;
@@ -1384,7 +1384,7 @@ public class VasCommonJsPlugin
                   l13 = l6;
                   l11 = l5;
                   l12 = l4;
-                  l24 = ((bcfa)localObject6).jdField_t_of_type_Long;
+                  l24 = ((bcfo)localObject6).jdField_t_of_type_Long;
                   if (localObject5 == null) {
                     continue;
                   }
@@ -1400,7 +1400,7 @@ public class VasCommonJsPlugin
                   l13 = l6;
                   l11 = l5;
                   l12 = l4;
-                  bool4 = ((xle)localObject5).d;
+                  bool4 = ((xlb)localObject5).d;
                   if (!bool4) {
                     continue;
                   }
@@ -1442,13 +1442,13 @@ public class VasCommonJsPlugin
               }
               try
               {
-                l19 = ((bcfa)localObject6).u;
+                l19 = ((bcfo)localObject6).u;
                 l12 = l19;
                 l11 = l34;
-                l20 = ((bcfa)localObject6).e;
+                l20 = ((bcfo)localObject6).e;
                 l12 = l19;
                 l11 = l20;
-                QLog.d("VasCommonJsPlugin", 1, "getPerformance: isWebViewCache = " + bool5 + ", isPreloadWebProcess = " + bcfa.jdField_s_of_type_Boolean);
+                QLog.d("VasCommonJsPlugin", 1, "getPerformance: isWebViewCache = " + bool5 + ", isPreloadWebProcess = " + bcfo.jdField_s_of_type_Boolean);
                 l18 = l3;
                 bool6 = bool1;
                 l21 = 0L;
@@ -1542,9 +1542,9 @@ public class VasCommonJsPlugin
       long l6;
       try
       {
-        if ((localObject instanceof bchx))
+        if ((localObject instanceof bcil))
         {
-          localObject = ((bchx)localObject).getX5Performance();
+          localObject = ((bcil)localObject).getX5Performance();
           if (localObject == null) {
             break;
           }
@@ -1584,14 +1584,14 @@ public class VasCommonJsPlugin
         }
         else
         {
-          if (!(this.mRuntime.a() instanceof bcce)) {
+          if (!(this.mRuntime.a() instanceof bccs)) {
             break label419;
           }
-          localObject = (bcfa)super.getBrowserComponent(-2);
+          localObject = (bcfo)super.getBrowserComponent(-2);
           if (localObject == null) {
             break label419;
           }
-          localObject = ((bcfa)localObject).jdField_a_of_type_OrgJsonJSONObject;
+          localObject = ((bcfo)localObject).jdField_a_of_type_OrgJsonJSONObject;
           continue;
         }
         long l2 = 0L;
@@ -1627,12 +1627,12 @@ public class VasCommonJsPlugin
   private void processWebLog(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    paramString2 = localStringBuilder.append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append("ANDROID").append("|").append("8.2.8.4440").append("|").append(bbct.e()).append("|").append(this.mRuntime.a().getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
-    if (TextUtils.isEmpty(bbct.a(this.mRuntime.a()).c))
+    paramString2 = localStringBuilder.append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append("ANDROID").append("|").append("8.3.0.4480").append("|").append(bbdh.e()).append("|").append(this.mRuntime.a().getCurrentAccountUin()).append("|").append(Build.MODEL).append("|");
+    if (TextUtils.isEmpty(bbdh.a(this.mRuntime.a()).c))
     {
       paramString1 = "未知";
       paramString2 = paramString2.append(paramString1).append("|");
-      if (!TextUtils.isEmpty(bbct.a(this.mRuntime.a()).a)) {
+      if (!TextUtils.isEmpty(bbdh.a(this.mRuntime.a()).a)) {
         break label208;
       }
       paramString1 = "未知";
@@ -1648,9 +1648,9 @@ public class VasCommonJsPlugin
     while (!QLog.isColorLevel())
     {
       return;
-      paramString1 = bbct.a(this.mRuntime.a()).c;
+      paramString1 = bbdh.a(this.mRuntime.a()).c;
       break;
-      paramString1 = bbct.a(this.mRuntime.a()).a;
+      paramString1 = bbdh.a(this.mRuntime.a()).a;
       break label167;
     }
     QLog.w("WebLog", 2, localStringBuilder.toString());
@@ -1758,7 +1758,7 @@ public class VasCommonJsPlugin
   {
     try
     {
-      i = bbev.a(BaseApplicationImpl.getApplication().getApplicationContext());
+      i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
       switch (i)
       {
       default: 
@@ -1944,8 +1944,8 @@ public class VasCommonJsPlugin
       }
       this.mReqBundle.clear();
       this.mReqBundle.putStringArrayList("uins", localArrayList);
-      paramJSONObject = anqp.a("getNickName", paramString, this.mOnRemoteResp.key, this.mReqBundle);
-      anvl.a().a(paramJSONObject);
+      paramJSONObject = anqu.a("getNickName", paramString, this.mOnRemoteResp.key, this.mReqBundle);
+      anvq.a().a(paramJSONObject);
       return;
     }
     catch (Exception paramJSONObject)
@@ -2041,7 +2041,7 @@ public class VasCommonJsPlugin
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
         paramString1 = new JSONObject(paramVarArgs[0]).optString("pageId", "");
-        paramString2 = (bcfa)super.getBrowserComponent(-2);
+        paramString2 = (bcfo)super.getBrowserComponent(-2);
         if (paramString2 != null) {
           paramString2.jdField_b_of_type_JavaLangString = paramString1;
         }
@@ -2062,18 +2062,18 @@ public class VasCommonJsPlugin
     }
     else if ("startIpcService".equals(paramString3))
     {
-      if (!anvl.a().a()) {
-        anvl.a().a().doBindService(this.mRuntime.a().getApplicationContext());
+      if (!anvq.a().a()) {
+        anvq.a().a().doBindService(this.mRuntime.a().getApplicationContext());
       }
     }
     else if ("stopIpcService".equals(paramString3))
     {
-      anvl.a().a().doUnbindService(this.mRuntime.a().getApplicationContext());
+      anvq.a().a().doUnbindService(this.mRuntime.a().getApplicationContext());
     }
     else if ("isIpcStarted".equals(paramString3))
     {
       paramString1 = new JSONObject();
-      paramString1.put("isIpcStarted", anvl.a().a());
+      paramString1.put("isIpcStarted", anvq.a().a());
       paramJsBridgeListener.a(paramString1);
     }
     else if ("getFriendInfo".equals(paramString3))
@@ -2162,9 +2162,9 @@ public class VasCommonJsPlugin
           }
           paramString2 = paramString2.getWebChromeClient();
           paramString3 = new JSONObject();
-          if ((paramString2 instanceof nke))
+          if ((paramString2 instanceof nkb))
           {
-            ((nke)paramString2).a = true;
+            ((nkb)paramString2).a = true;
             paramString3.put("code", 0);
           }
           for (;;)
@@ -2251,9 +2251,9 @@ public class VasCommonJsPlugin
     }
   }
   
-  public void setUiInterface(bcci parambcci)
+  public void setUiInterface(bccw parambccw)
   {
-    this.uiInterface = parambcci;
+    this.uiInterface = parambccw;
   }
   
   public void showMsgBox(JSONObject paramJSONObject, JsBridgeListener paramJsBridgeListener)
@@ -2269,19 +2269,19 @@ public class VasCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bbcv.a(this.mRuntime.a(), 230);
-        ((bbgu)localObject).a(str2);
-        ((bbgu)localObject).b(str1);
-        ((bbgu)localObject).a(paramJSONObject[0], new VasCommonJsPlugin.1(this, paramJsBridgeListener));
+        localObject = bbdj.a(this.mRuntime.a(), 230);
+        ((bbhi)localObject).a(str2);
+        ((bbhi)localObject).b(str1);
+        ((bbhi)localObject).a(paramJSONObject[0], new VasCommonJsPlugin.1(this, paramJsBridgeListener));
         if (paramJSONObject.length >= 2) {
-          ((bbgu)localObject).b(paramJSONObject[1], new VasCommonJsPlugin.2(this, paramJsBridgeListener));
+          ((bbhi)localObject).b(paramJSONObject[1], new VasCommonJsPlugin.2(this, paramJsBridgeListener));
         }
         if (paramJSONObject.length >= 3) {
-          ((bbgu)localObject).c(paramJSONObject[2], new VasCommonJsPlugin.3(this, paramJsBridgeListener));
+          ((bbhi)localObject).c(paramJSONObject[2], new VasCommonJsPlugin.3(this, paramJsBridgeListener));
         }
-        ((bbgu)localObject).setCanceledOnTouchOutside(false);
-        ((bbgu)localObject).setOnKeyListener(new VasCommonJsPlugin.4(this, (bbgu)localObject, paramJsBridgeListener));
-        ((bbgu)localObject).show();
+        ((bbhi)localObject).setCanceledOnTouchOutside(false);
+        ((bbhi)localObject).setOnKeyListener(new VasCommonJsPlugin.4(this, (bbhi)localObject, paramJsBridgeListener));
+        ((bbhi)localObject).show();
         return;
       }
       paramJsBridgeListener.a("not find buttons" + (String)localObject);

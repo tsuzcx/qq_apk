@@ -1,6 +1,6 @@
 public abstract interface angm
 {
-  public abstract void a(anfv paramanfv);
+  public abstract boolean a();
 }
 
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbvo;
-import bbvs;
-import bbvx;
-import bbvy;
+import bbwc;
+import bbwg;
+import bbwl;
+import bbwm;
 
 public class VideoPlayerProxy$3
   implements Runnable
 {
-  public VideoPlayerProxy$3(bbvy parambbvy, int paramInt) {}
+  public VideoPlayerProxy$3(bbwm parambbwm, int paramInt) {}
   
   public void run()
   {
-    if ((bbvy.a(this.this$0) != null) && (bbvy.a(this.this$0).a != null)) {
-      bbvy.a(this.this$0).a.a(this.this$0.a, this.a);
+    if ((bbwm.a(this.this$0) != null) && (bbwm.a(this.this$0).a != null)) {
+      bbwm.a(this.this$0).a.a(this.this$0.a, this.a);
     }
-    if (bbvy.a(this.this$0) != null) {
-      bbvy.a(this.this$0).a(this.a);
+    if (bbwm.a(this.this$0) != null) {
+      bbwm.a(this.this$0).a(this.a);
     }
   }
 }

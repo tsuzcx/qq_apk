@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ankx
-  implements View.OnClickListener
+class ankx
+  implements DialogInterface.OnKeyListener
 {
-  public ankx(DataReportSettingFragment paramDataReportSettingFragment) {}
+  ankx(ankw paramankw) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    bbcv.a(this.a.getActivity(), 0, 2131559420, ajyc.a(2131702769), "", ajyc.a(2131702764), ajyc.a(2131702770), new anky(this), new ankz(this)).show();
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 

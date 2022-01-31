@@ -1,22 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
 import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
 
 public class agpf
-  implements bfpc
 {
-  public agpf(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public agpf(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
   {
-    if (QzonePhotoPreviewActivity.a(this.a))
-    {
-      this.a.getActivity().finish();
-      bbbj.a(this.a.getActivity(), true, false);
-      return;
-    }
-    this.a.a();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.app.Notification;
-import android.os.IInterface;
-
-public abstract interface lot
-  extends IInterface
+public class lot
 {
-  public abstract int a(long paramLong, int paramInt);
+  public int a;
+  public boolean a;
+  public int b = 1280;
+  public int c = 720;
   
-  public abstract void a();
+  public lot()
+  {
+    this.jdField_a_of_type_Int = 8;
+  }
   
-  public abstract void a(lwn paramlwn);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
+  public lot(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = 8;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
 }
 
 

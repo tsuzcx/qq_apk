@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class asok
-  implements asun
+  implements bcww
 {
   asok(asoj paramasoj) {}
   
-  public void a()
+  public void a(BaseResp paramBaseResp)
   {
-    if ((asoh.a(this.a.jdField_a_of_type_Asoh) != null) && (asoh.a(this.a.jdField_a_of_type_Asoh).a != null)) {
-      this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, asoh.a(this.a.jdField_a_of_type_Asoh).a.a);
-    }
-    this.a.jdField_a_of_type_Asuu.a();
-    if (asoh.a(this.a.jdField_a_of_type_Asoh) != null) {
-      asoh.a(this.a.jdField_a_of_type_Asoh).a(false, null, false);
-    }
+    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
+    WXShareHelper.a().b(this);
   }
 }
 

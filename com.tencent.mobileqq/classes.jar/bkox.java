@@ -1,20 +1,8 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
-class bkox
-  implements Handler.Callback
+public abstract interface bkox
 {
-  bkox(bkow parambkow) {}
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
-    }
-    bkow.a(this.a, false, null, paramMessage.what);
-    return false;
-  }
+  public abstract void a(@NonNull bkpe parambkpe);
 }
 
 

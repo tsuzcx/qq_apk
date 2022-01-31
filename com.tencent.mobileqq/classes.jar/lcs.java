@@ -2,12 +2,17 @@ public class lcs
 {
   public int a;
   public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  
+  public lcs()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

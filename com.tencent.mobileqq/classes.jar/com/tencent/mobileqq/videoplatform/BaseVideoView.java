@@ -7,29 +7,29 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bbvn;
-import bbvo;
-import bbvs;
-import bbvy;
+import bbwb;
+import bbwc;
+import bbwg;
+import bbwm;
 import com.tencent.qphone.base.util.QLog;
 
 public class BaseVideoView
   extends FrameLayout
-  implements bbvo
+  implements bbwc
 {
   private long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bbvy jdField_a_of_type_Bbvy;
+  bbwm jdField_a_of_type_Bbwm;
   private boolean jdField_a_of_type_Boolean;
   
-  public BaseVideoView(Context paramContext, long paramLong, bbvs parambbvs)
+  public BaseVideoView(Context paramContext, long paramLong, bbwg parambbwg)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bbvy = new bbvy(paramContext, paramLong, parambbvs, this);
+    this.jdField_a_of_type_Bbwm = new bbwm(paramContext, paramLong, parambbwg, this);
     d();
     e();
   }
@@ -48,14 +48,14 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131373172) != null)
+      if (findViewById(2131373174) != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d(a(), 2, "addVideoView, videoView is exist");
         }
-        removeView(findViewById(2131373172));
+        removeView(findViewById(2131373174));
       }
-      View localView2 = this.jdField_a_of_type_Bbvy.a();
+      View localView2 = this.jdField_a_of_type_Bbwm.a();
       View localView1 = localView2;
       if (localView2 == null)
       {
@@ -65,7 +65,7 @@ public class BaseVideoView
         localView1 = new View(this.jdField_a_of_type_AndroidContentContext);
       }
       localView1.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView1.setId(2131373172);
+      localView1.setId(2131373174);
       addView(localView1, 0);
       if (QLog.isColorLevel()) {
         QLog.d(a(), 2, "addVideoView. ");
@@ -82,12 +82,12 @@ public class BaseVideoView
   {
     try
     {
-      if (findViewById(2131373170) != null)
+      if (findViewById(2131373172) != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d(a(), 2, "addCoverImageView, imageView is exist");
         }
-        removeView(findViewById(2131373170));
+        removeView(findViewById(2131373172));
       }
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
@@ -96,7 +96,7 @@ public class BaseVideoView
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131373170);
+      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131373172);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       addView(this.jdField_a_of_type_AndroidWidgetImageView, 1);
       return;
@@ -137,8 +137,8 @@ public class BaseVideoView
     long l1 = l2;
     try
     {
-      if (this.jdField_a_of_type_Bbvy != null) {
-        l1 = this.jdField_a_of_type_Bbvy.a();
+      if (this.jdField_a_of_type_Bbwm != null) {
+        l1 = this.jdField_a_of_type_Bbwm.a();
       }
       if (QLog.isColorLevel()) {
         QLog.d(a(), 2, "getCurPlayingPos() curPosi = " + l1);
@@ -165,15 +165,15 @@ public class BaseVideoView
       QLog.d(a(), 2, "play");
     }
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bbvy != null) {
-      this.jdField_a_of_type_Bbvy.a();
+    if (this.jdField_a_of_type_Bbwm != null) {
+      this.jdField_a_of_type_Bbwm.a();
     }
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(a(), 2, "onStateChange , state = " + bbvn.a(paramInt));
+      QLog.d(a(), 2, "onStateChange , state = " + bbwb.a(paramInt));
     }
     switch (paramInt)
     {
@@ -211,8 +211,8 @@ public class BaseVideoView
       QLog.d(a(), 2, "releasePlayer");
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bbvy != null) {
-      this.jdField_a_of_type_Bbvy.a(paramBoolean, false);
+    if (this.jdField_a_of_type_Bbwm != null) {
+      this.jdField_a_of_type_Bbwm.a(paramBoolean, false);
     }
   }
   
@@ -230,8 +230,8 @@ public class BaseVideoView
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bbvy != null) {
-      this.jdField_a_of_type_Bbvy.b();
+    if (this.jdField_a_of_type_Bbwm != null) {
+      this.jdField_a_of_type_Bbwm.b();
     }
   }
   
@@ -249,27 +249,27 @@ public class BaseVideoView
     f();
   }
   
-  public void setVideoParam(bbvs parambbvs)
+  public void setVideoParam(bbwg parambbwg)
   {
-    bbvs localbbvs = this.jdField_a_of_type_Bbvy.a();
-    if (localbbvs == null)
+    bbwg localbbwg = this.jdField_a_of_type_Bbwm.a();
+    if (localbbwg == null)
     {
-      this.jdField_a_of_type_Bbvy.a(parambbvs);
+      this.jdField_a_of_type_Bbwm.a(parambbwg);
       return;
     }
-    if (parambbvs.a(localbbvs))
+    if (parambbwg.a(localbbwg))
     {
       if (QLog.isColorLevel()) {
         QLog.d(a(), 2, "setVideoParam, same video, do noting.");
       }
-      parambbvs.c = localbbvs.c;
+      parambbwg.c = localbbwg.c;
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d(a(), 2, "setVideoParam, different video, addVideoView.");
     }
-    this.jdField_a_of_type_Bbvy.a(false, false);
-    this.jdField_a_of_type_Bbvy = new bbvy(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, parambbvs, this);
+    this.jdField_a_of_type_Bbwm.a(false, false);
+    this.jdField_a_of_type_Bbwm = new bbwm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, parambbwg, this);
     d();
   }
 }

@@ -1,13 +1,36 @@
-import java.util.ArrayList;
-
 public class ayzg
-  extends ayzp
+  extends ayzr
 {
   public int a;
+  public long a;
   public String a;
-  public ArrayList<ayuo> a = new ArrayList();
   public boolean a;
   public String b;
+  public boolean b = false;
+  public String c;
+  public String d;
+  
+  public ayzg()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mResid:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" isExist:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" netChg:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
+  }
 }
 
 

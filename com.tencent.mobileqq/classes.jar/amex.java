@@ -1,27 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
-final class amex
-  implements URLDrawableDownListener
+public class amex
+  implements TextWatcher
 {
-  amex(URLImageView paramURLImageView) {}
+  public amex(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.setVisibility(0);
+    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
+      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
+    }
+    ClearEllipsisEditText.a(this.a, false);
   }
 }
 

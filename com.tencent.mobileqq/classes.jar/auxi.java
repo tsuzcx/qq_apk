@@ -1,16 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.widget.RoundedImageView;
 
 public class auxi
+  extends RecyclerView.ViewHolder
 {
-  public long a;
-  public Drawable a;
+  public RoundedImageView a;
   public boolean a;
   
-  public auxi(long paramLong, boolean paramBoolean, Drawable paramDrawable)
+  public auxi(auxg paramauxg, View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131375328));
   }
 }
 

@@ -1,14 +1,35 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class bity
-  implements MediaPlayer.OnPreparedListener
+  implements View.OnClickListener
 {
-  bity(bitt parambitt) {}
+  bity(bitx parambitx, int paramInt, bitz parambitz) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    paramMediaPlayer.start();
+    if (this.jdField_a_of_type_Int != bitx.a(this.jdField_a_of_type_Bitx))
+    {
+      paramView = (bitz)bitx.a(this.jdField_a_of_type_Bitx).findViewHolderForAdapterPosition(bitx.a(this.jdField_a_of_type_Bitx));
+      if (paramView == null) {
+        break label94;
+      }
+      paramView.a(false);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bitz.a(true);
+      this.jdField_a_of_type_Bitx.a(this.jdField_a_of_type_Int);
+      if (bitx.a(this.jdField_a_of_type_Bitx) != null) {
+        bitx.a(this.jdField_a_of_type_Bitx).setTextColor(Color.parseColor(bitx.a(this.jdField_a_of_type_Bitx)));
+      }
+      return;
+      label94:
+      this.jdField_a_of_type_Bitx.notifyDataSetChanged();
+    }
   }
 }
 

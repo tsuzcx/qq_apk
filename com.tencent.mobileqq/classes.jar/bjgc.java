@@ -1,15 +1,11 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
-class bjgc
-  implements bjgx
+public abstract interface bjgc
 {
-  bjgc(bjgb parambjgb) {}
+  public abstract void a(int paramInt, String... paramVarArgs);
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    return bakj.b(paramString);
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI);
 }
 
 

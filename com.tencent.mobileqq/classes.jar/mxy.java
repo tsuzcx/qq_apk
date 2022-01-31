@@ -1,71 +1,91 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
+import tencent.im.troop_search_searchtab.searchtab.RspBody;
+
 public class mxy
+  implements BusinessObserver
 {
-  public static int a()
+  protected int a;
+  protected WeakReference<mxx> a;
+  protected WeakReference<QQAppInterface> b;
+  
+  public mxy(mxx parammxx, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.jdField_a_of_type_Int;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammxx);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static String a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.jdField_a_of_type_JavaLangString;
+    boolean bool2 = false;
+    mxx localmxx = (mxx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (QQAppInterface)this.b.get();
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder().append("InfoReqObserver: type=").append(paramInt).append(", reqType=").append(this.jdField_a_of_type_Int).append(", isSucc=").append(paramBoolean).append(", cbIsNull=");
+      if (localmxx != null) {
+        break label270;
+      }
     }
-    return null;
-  }
-  
-  public static int b()
-  {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.b;
+    label269:
+    label270:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      localObject2 = ((StringBuilder)localObject2).append(bool1).append(", appIsNull=");
+      bool1 = bool2;
+      if (localObject1 == null) {
+        bool1 = true;
+      }
+      QLog.d("AddContactTroopHandler", 2, bool1);
+      if ((localmxx != null) && (localObject1 != null)) {
+        if ((paramBoolean) && (paramBundle != null)) {
+          try
+          {
+            paramBundle = paramBundle.getByteArray("data");
+            if (paramBundle != null)
+            {
+              localObject1 = (mxz)((QQAppInterface)localObject1).getManager(80);
+              if (this.jdField_a_of_type_Int == 1)
+              {
+                localObject2 = new popclassifc.RspBody();
+                ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
+                ((mxz)localObject1).a((popclassifc.RspBody)localObject2);
+                localmxx.a();
+                return;
+              }
+              if (this.jdField_a_of_type_Int != 2) {
+                break label269;
+              }
+              localObject2 = new searchtab.RspBody();
+              ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);
+              ((mxz)localObject1).a((searchtab.RspBody)localObject2);
+              localmxx.a();
+              return;
+            }
+          }
+          catch (Exception paramBundle)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("AddContactTroopHandler", 2, "InfoReqObserver exp:", paramBundle);
+            }
+          }
+        } else {
+          localmxx.b();
+        }
+      }
+      return;
     }
-    return -1;
-  }
-  
-  public static String b()
-  {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.c;
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.d;
-    }
-    return null;
-  }
-  
-  public static String d()
-  {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.e;
-    }
-    return null;
-  }
-  
-  public static String e()
-  {
-    amwz localamwz = (amwz)ampm.a().a(207);
-    if (localamwz != null) {
-      return localamwz.f;
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,15 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class bgzb
-  extends TopGestureLayout.TopGestureDetector
+  extends Handler
 {
-  public bgzb(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
-  {
-    super(paramQZoneTopGestureLayout, paramContext);
-  }
+  public bgzb(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
-    }
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
-    {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
-      {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
-      }
-    }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
-    {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
-    }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    this.a.a(this.a.a, paramMessage);
   }
 }
 

@@ -1,24 +1,33 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ShortVideoUpInfo;
+import mqq.manager.Manager;
+
 public class akgk
-  implements ajtg
+  implements Manager
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  private aukp a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public akgk(QQAppInterface paramQQAppInterface)
   {
-    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
-    for (paramObject = (Object[])paramObject;; paramObject = null)
-    {
-      switch (paramInt)
-      {
-      }
-      do
-      {
-        return;
-      } while (paramObject == null);
-      a(paramBoolean, ((Integer)paramObject[0]).intValue());
-      return;
-    }
+    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
   }
+  
+  public ShortVideoUpInfo a(String paramString)
+  {
+    return (ShortVideoUpInfo)this.a.a(ShortVideoUpInfo.class, paramString);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    paramString = a(paramString);
+    if (paramString != null) {
+      bool = this.a.b(paramString);
+    }
+    return bool;
+  }
+  
+  public void onDestroy() {}
 }
 
 

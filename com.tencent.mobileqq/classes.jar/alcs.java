@@ -1,4 +1,7 @@
-public class alcs {}
+public abstract interface alcs
+{
+  public abstract void a(alcu paramalcu);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar

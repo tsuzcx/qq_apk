@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import agww;
+import agwu;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentB
 public class QWalletFullWindowActivity$QWalletFullWindowFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  BroadcastReceiver a = new agww(this);
+  BroadcastReceiver a = new agwu(this);
   
   public int a(Bundle paramBundle)
   {

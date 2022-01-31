@@ -1,43 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class tmo
-  extends syq
+  extends sys<toi>
 {
-  public List<tmn> a;
+  private static final String a = sxm.a("StorySvc.video_music_get");
   
-  public tmo(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
-    if (paramRspStoryFeedTagInfo != null)
+    return a;
+  }
+  
+  public toi a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
+    try
     {
-      paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.iterator();
-      while (paramRspStoryFeedTagInfo.hasNext())
-      {
-        Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
-        tmn localtmn = new tmn();
-        localtmn.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
-        localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            vvh localvvh = new vvh((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
-            localtmn.jdField_a_of_type_JavaUtilList.add(localvvh);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.add(localtmn);
-      }
+      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
+      return new toi(localRspGetMusicListConfig);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

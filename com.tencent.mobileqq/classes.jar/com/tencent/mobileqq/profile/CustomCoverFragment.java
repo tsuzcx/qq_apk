@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile;
 
 import ProfileLogic.QC.profileItem;
-import akfw;
-import akfz;
+import akfv;
+import akfy;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -24,22 +24,22 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ausl;
-import ausm;
 import ausn;
 import auso;
-import auss;
-import aust;
-import auux;
-import auuy;
-import axqw;
-import bazo;
-import bbbj;
-import bbkx;
-import bbqs;
-import bcpt;
-import bgxy;
-import bgyf;
+import ausp;
+import ausq;
+import ausu;
+import ausv;
+import auuz;
+import auva;
+import axqy;
+import bbac;
+import bbbx;
+import bbll;
+import bbrg;
+import bcqi;
+import bgyp;
+import bgyw;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,8 +56,8 @@ public class CustomCoverFragment
   implements Handler.Callback, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private akfz jdField_a_of_type_Akfz = new ausl(this);
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new ausm(this);
+  private akfy jdField_a_of_type_Akfy = new ausn(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new auso(this);
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Uri jdField_a_of_type_AndroidNetUri;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -65,9 +65,9 @@ public class CustomCoverFragment
   public View.OnClickListener a;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private auss jdField_a_of_type_Auss;
-  private auux jdField_a_of_type_Auux;
-  private bcpt jdField_a_of_type_Bcpt;
+  private ausu jdField_a_of_type_Ausu;
+  private auuz jdField_a_of_type_Auuz;
+  private bcqi jdField_a_of_type_Bcqi;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Vector<Integer> jdField_a_of_type_JavaUtilVector;
   private boolean jdField_a_of_type_Boolean;
@@ -81,7 +81,7 @@ public class CustomCoverFragment
   
   public CustomCoverFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ausn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ausp(this);
   }
   
   private void a()
@@ -89,7 +89,7 @@ public class CustomCoverFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       startTitleProgress();
-      ((akfw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).f(this.f);
+      ((akfv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).f(this.f);
     }
   }
   
@@ -98,8 +98,8 @@ public class CustomCoverFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       this.e = paramInt;
-      ((akfw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g(paramInt);
-      this.jdField_a_of_type_Bcpt.a(0, getString(2131699041), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+      ((akfv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g(paramInt);
+      this.jdField_a_of_type_Bcqi.a(0, getString(2131699051), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(paramInt), "");
     }
   }
@@ -107,19 +107,19 @@ public class CustomCoverFragment
   private void a(FragmentActivity paramFragmentActivity)
   {
     this.jdField_a_of_type_AndroidNetUri = FriendProfileCardActivity.a(paramFragmentActivity, 1021);
-    axqw.b(paramFragmentActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
+    axqy.b(paramFragmentActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
     VasWebviewUtil.reportCommercialDrainage(paramFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_takeaphoto", "", 1, 0, 0, "", "", "");
   }
   
   private void a(List<profileItem> paramList)
   {
-    if ((paramList != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Auux != null))
+    if ((paramList != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Auuz != null))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         profileItem localprofileItem = (profileItem)paramList.next();
-        this.jdField_a_of_type_Auux.a(localprofileItem.itemid, true);
+        this.jdField_a_of_type_Auuz.a(localprofileItem.itemid, true);
         if (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(localprofileItem.itemid))) {
           this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(localprofileItem.itemid));
         }
@@ -133,22 +133,22 @@ public class CustomCoverFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840289);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840286);
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840284);
   }
   
   public String a(int paramInt)
   {
-    auuy localauuy = this.jdField_a_of_type_Auux.a(paramInt, false);
-    if ((localauuy != null) && (!TextUtils.isEmpty(localauuy.c)))
+    auva localauva = this.jdField_a_of_type_Auuz.a(paramInt, false);
+    if ((localauva != null) && (!TextUtils.isEmpty(localauva.c)))
     {
-      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "getItemCoverUrl: " + localauuy.c);
-      return localauuy.c;
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "getItemCoverUrl: " + localauva.c);
+      return localauva.c;
     }
     QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "getItemCoverUrl: null");
     return "";
@@ -157,7 +157,7 @@ public class CustomCoverFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getResources().getString(2131693437));
+    setTitle(getResources().getString(2131693438));
     if (this.mLeftBackText != null) {
       this.mLeftBackText.setText("");
     }
@@ -166,22 +166,22 @@ public class CustomCoverFragment
     }
     this.jdField_c_of_type_Boolean = getActivity().getIntent().getBooleanExtra("is_default_key", true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Auux = ((bbqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).jdField_a_of_type_Auux;
-    int i = bbkx.a(3.0F);
-    this.jdField_a_of_type_Int = ((bbkx.a() - i * 2) / 3);
+    this.jdField_a_of_type_Auuz = ((bbrg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).jdField_a_of_type_Auuz;
+    int i = bbll.a(3.0F);
+    this.jdField_a_of_type_Int = ((bbll.a() - i * 2) / 3);
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int * 0.77F));
     this.jdField_a_of_type_JavaUtilVector = new Vector();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    ((bbqs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).jdField_a_of_type_Auux.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-    this.jdField_a_of_type_Bcpt = new bcpt(getActivity(), 2131561033);
+    ((bbrg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).jdField_a_of_type_Auuz.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.jdField_a_of_type_Bcqi = new bcqi(getActivity(), 2131561032);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getActivity().getResources().getDrawable(2130849621);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131375020));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getActivity().getResources().getDrawable(2130849630);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131375022));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, 1));
-      this.jdField_a_of_type_Auss = new auss(this);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auss);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aust(this, i));
+      this.jdField_a_of_type_Ausu = new ausu(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ausu);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ausv(this, i));
       a();
       if (QLog.isColorLevel()) {
         QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "doOnCreateView: mIsDefaultTypeCard=" + this.jdField_c_of_type_Boolean);
@@ -199,7 +199,7 @@ public class CustomCoverFragment
   
   public int getContentLayoutId()
   {
-    return 2131561607;
+    return 2131561606;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -209,7 +209,7 @@ public class CustomCoverFragment
       if (QLog.isColorLevel()) {
         QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "handleMessage: refresh list");
       }
-      this.jdField_a_of_type_Auss.notifyDataSetChanged();
+      this.jdField_a_of_type_Ausu.notifyDataSetChanged();
     }
     return true;
   }
@@ -255,17 +255,17 @@ public class CustomCoverFragment
     {
     default: 
       return;
-    case 2131361897: 
+    case 2131361896: 
       if (Build.VERSION.SDK_INT < 23) {
         break label507;
       }
       if (localFragmentActivity.checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        localFragmentActivity.requestPermissions(new auso(this, localFragmentActivity), 1, new String[] { "android.permission.CAMERA" });
+        localFragmentActivity.requestPermissions(new ausq(this, localFragmentActivity), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       break;
-    case 2131361900: 
+    case 2131361899: 
       paramView = new Intent(localFragmentActivity, NewPhotoListActivity.class);
       paramView.putExtra("enter_from", 44);
       paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", localFragmentActivity.getClass().getName());
@@ -275,32 +275,32 @@ public class CustomCoverFragment
       paramView.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
       paramView.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
       paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      int i = bazo.c(localFragmentActivity);
-      int j = bazo.d(localFragmentActivity);
+      int i = bbac.c(localFragmentActivity);
+      int j = bbac.d(localFragmentActivity);
       paramView.putExtra("PhotoConst.CLIP_WIDTH", i);
       paramView.putExtra("PhotoConst.CLIP_HEIGHT", j);
       paramView.putExtra("PhotoConst.32_Bit_Config", true);
       paramView.putExtra("PhotoConst.TARGET_WIDTH", i);
       paramView.putExtra("PhotoConst.TARGET_HEIGHT", j);
-      paramView.putExtra("PhotoConst.TARGET_PATH", bazo.a(localFragmentActivity.app));
+      paramView.putExtra("PhotoConst.TARGET_PATH", bbac.a(localFragmentActivity.app));
       paramView.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
       paramView.putExtra("action_cover_pick_gallery", true);
       startActivity(paramView);
-      bbbj.a(localFragmentActivity, false, true);
-      axqw.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
+      bbbx.a(localFragmentActivity, false, true);
+      axqy.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
       VasWebviewUtil.reportCommercialDrainage(localFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_album", "", 1, 0, 0, "", "", "");
       return;
-    case 2131361908: 
+    case 2131361907: 
       paramView = new Bundle();
       paramView.putInt("key_personal_album_enter_model", 2);
       paramView.putInt("_input_max", 1);
       paramView.putBoolean("key_multiple_model_need_download_img", true);
-      bgyf localbgyf = bgyf.a();
-      localbgyf.a = localFragmentActivity.app.getCurrentAccountUin();
+      bgyw localbgyw = bgyw.a();
+      localbgyw.a = localFragmentActivity.app.getCurrentAccountUin();
       paramView.putString("keyAction", "actionSelectPicture");
       paramView.putBoolean("key_need_change_to_jpg", true);
-      bgxy.a(localFragmentActivity, localbgyf, paramView, 1020);
-      axqw.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
+      bgyp.a(localFragmentActivity, localbgyw, paramView, 1020);
+      axqy.b(localFragmentActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
       VasWebviewUtil.reportCommercialDrainage(localFragmentActivity.app.getCurrentAccountUin(), "defaultcard", "photo_qzone", "", 1, 0, 0, "", "", "");
       return;
     }
@@ -313,8 +313,8 @@ public class CustomCoverFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Auux != null)) {
-      this.jdField_a_of_type_Auux.jdField_a_of_type_AndroidOsHandler = null;
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Auuz != null)) {
+      this.jdField_a_of_type_Auuz.jdField_a_of_type_AndroidOsHandler = null;
     }
   }
   
@@ -334,7 +334,7 @@ public class CustomCoverFragment
   {
     super.onPause();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akfz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akfy);
     }
   }
   
@@ -342,7 +342,7 @@ public class CustomCoverFragment
   {
     super.onResume();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akfz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akfy);
     }
   }
 }

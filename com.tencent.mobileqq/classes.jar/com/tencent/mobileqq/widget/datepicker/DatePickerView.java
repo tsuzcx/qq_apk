@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.util.AttributeSet;
-import bcsk;
-import bcsl;
+import bcsz;
+import bcta;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -19,8 +19,8 @@ public class DatePickerView
 {
   protected Context a;
   private TypedArray a;
-  protected bcsk a;
-  protected bcsl a;
+  protected bcsz a;
+  protected bcta a;
   
   public DatePickerView(Context paramContext)
   {
@@ -45,10 +45,10 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bcsl != null)
+    if (this.jdField_a_of_type_Bcta != null)
     {
-      this.jdField_a_of_type_Bcsl.a(paramInt1, paramInt2, paramArrayList);
-      this.jdField_a_of_type_Bcsl.notifyDataSetChanged();
+      this.jdField_a_of_type_Bcta.a(paramInt1, paramInt2, paramArrayList);
+      this.jdField_a_of_type_Bcta.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
@@ -71,15 +71,15 @@ public class DatePickerView
     setFadingEdgeLength(0);
   }
   
-  public void setController(bcsk parambcsk)
+  public void setController(bcsz parambcsz)
   {
-    this.jdField_a_of_type_Bcsk = parambcsk;
-    if (this.jdField_a_of_type_Bcsl == null) {
-      this.jdField_a_of_type_Bcsl = new bcsl(getContext(), parambcsk, this.jdField_a_of_type_AndroidContentResTypedArray);
+    this.jdField_a_of_type_Bcsz = parambcsz;
+    if (this.jdField_a_of_type_Bcta == null) {
+      this.jdField_a_of_type_Bcta = new bcta(getContext(), parambcsz, this.jdField_a_of_type_AndroidContentResTypedArray);
     }
-    this.jdField_a_of_type_Bcsl.notifyDataSetChanged();
-    setAdapter(this.jdField_a_of_type_Bcsl);
-    scrollToPosition(this.jdField_a_of_type_Bcsl.getItemCount() - 1);
+    this.jdField_a_of_type_Bcta.notifyDataSetChanged();
+    setAdapter(this.jdField_a_of_type_Bcta);
+    scrollToPosition(this.jdField_a_of_type_Bcta.getItemCount() - 1);
   }
 }
 

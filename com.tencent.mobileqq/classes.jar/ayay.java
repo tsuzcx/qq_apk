@@ -1,262 +1,258 @@
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
 
-public abstract class ayay
+public class ayay
 {
-  public float a;
   public int a;
-  public ayaz a;
-  public aybc a;
+  public Object a;
   public String a;
-  protected List<aybg> a;
+  public ArrayList<String> a;
   public boolean a;
-  public float b;
   public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public float e;
-  protected int e;
-  public float f;
-  protected int f;
-  public float g;
+  public String b;
+  public ArrayList<String> b;
+  public boolean b;
+  public String c;
+  public ArrayList<String> c;
+  public boolean c;
+  public boolean d;
   
   public ayay()
   {
-    this.jdField_e_of_type_Float = 1.0F;
-    this.jdField_f_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 255;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = -99999;
+    this.jdField_b_of_type_Int = -99999;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public float a()
+  public static ayay a(ayay paramayay)
   {
-    return this.jdField_e_of_type_Float;
+    if (paramayay == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clone() return, backData == null.");
+      }
+      return null;
+    }
+    ayay localayay = new ayay();
+    localayay.jdField_a_of_type_JavaLangString = paramayay.jdField_a_of_type_JavaLangString;
+    localayay.jdField_a_of_type_Int = paramayay.jdField_a_of_type_Int;
+    localayay.jdField_b_of_type_JavaLangString = paramayay.jdField_b_of_type_JavaLangString;
+    localayay.jdField_c_of_type_JavaLangString = paramayay.jdField_c_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList();
+    if (paramayay.jdField_a_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayay.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localayay.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramayay.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayay.jdField_b_of_type_JavaUtilArrayList);
+    }
+    localayay.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    localArrayList = new ArrayList();
+    if (paramayay.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(paramayay.jdField_c_of_type_JavaUtilArrayList);
+    }
+    localayay.jdField_c_of_type_JavaUtilArrayList = localArrayList;
+    localayay.jdField_a_of_type_JavaLangObject = paramayay.jdField_a_of_type_JavaLangObject;
+    localayay.jdField_b_of_type_Int = paramayay.jdField_b_of_type_Int;
+    localayay.jdField_a_of_type_Boolean = paramayay.jdField_a_of_type_Boolean;
+    localayay.jdField_b_of_type_Boolean = paramayay.jdField_b_of_type_Boolean;
+    localayay.jdField_c_of_type_Boolean = paramayay.jdField_c_of_type_Boolean;
+    localayay.d = paramayay.d;
+    return localayay;
   }
   
-  public abstract aybe a();
+  public ArrayList<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void a(ayaz paramayaz)
-  {
-    this.jdField_a_of_type_Ayaz = paramayaz;
-  }
-  
-  public void a(aybf paramaybf)
-  {
-    float f1 = this.jdField_c_of_type_Float;
-    float f3 = this.jdField_d_of_type_Float;
-    float f2;
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      f2 = f3;
-      switch (this.jdField_c_of_type_Int)
-      {
-      default: 
-        f2 = f3;
-      }
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.clearNewUins()");
     }
-    for (;;)
-    {
-      for (ayay localayay = (ayay)this.jdField_a_of_type_Aybc; localayay != null; localayay = (ayay)localayay.jdField_a_of_type_Aybc)
-      {
-        f1 += localayay.jdField_c_of_type_Float;
-        f2 += localayay.jdField_d_of_type_Float;
-      }
-      f1 = this.jdField_e_of_type_Int / this.jdField_f_of_type_Float - f1;
-      break;
-      f1 += this.jdField_e_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
-      break;
-      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float - f3;
-      continue;
-      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float / 2.0F + f3;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null) {
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
     }
-    paramaybf.jdField_a_of_type_Float = f1;
-    paramaybf.jdField_b_of_type_Float = f2;
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      this.jdField_c_of_type_JavaUtilArrayList.clear();
+    }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.addNewUin subUin=" + paramString);
+    }
+    if ((paramString == null) || (paramString.length() < 4)) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      }
+    } while (this.jdField_b_of_type_JavaUtilArrayList.contains(paramString));
+    this.jdField_b_of_type_JavaUtilArrayList.add(paramString);
   }
   
-  public void a(aybg... paramVarArgs)
+  public void a(oidb_0x7a2.RspBody paramRspBody, ArrayList<String> paramArrayList)
   {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    if (paramRspBody == null) {}
+    do
     {
-      aybg localaybg = paramVarArgs[i];
-      localaybg.a();
-      this.jdField_a_of_type_JavaUtilList.add(localaybg);
-      i += 1;
-    }
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      for (;;)
+      {
+        if ((paramRspBody.uint64_bind_uin.has()) && (paramRspBody.uint64_bind_uin.get() > 10000L))
+        {
+          this.jdField_c_of_type_JavaLangString = Long.toString(paramRspBody.uint64_bind_uin.get());
+          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangString);
+        }
+        if (!paramRspBody.uint64_multi_bind_uin.has()) {
+          break;
+        }
+        paramRspBody = paramRspBody.uint64_multi_bind_uin.get();
+        if (paramRspBody == null) {
+          break;
+        }
+        paramRspBody = paramRspBody.iterator();
+        while (paramRspBody.hasNext())
+        {
+          Object localObject = (Long)paramRspBody.next();
+          if (((Long)localObject).longValue() > 10000L)
+          {
+            localObject = Long.toString(((Long)localObject).longValue());
+            if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localObject)) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+            }
+            if (this.jdField_c_of_type_JavaLangString == null) {
+              this.jdField_c_of_type_JavaLangString = ((String)localObject);
+            }
+          }
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramRspBody = paramArrayList.iterator();
+        while (paramRspBody.hasNext())
+        {
+          paramArrayList = (String)paramRspBody.next();
+          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            this.jdField_c_of_type_JavaUtilArrayList.add(paramArrayList);
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.remove(paramArrayList);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "SubAccountBackProtocData.parseUins() figure new subUins. localSubUins is null. new SubUins=" + String.valueOf(this.jdField_b_of_type_JavaUtilArrayList) + " overdue SubUins=" + String.valueOf(this.jdField_c_of_type_JavaUtilArrayList));
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public float b()
-  {
-    float f1 = 1.0F;
-    for (ayay localayay = (ayay)this.jdField_a_of_type_Aybc; localayay != null; localayay = (ayay)localayay.jdField_a_of_type_Aybc) {
-      f1 *= localayay.jdField_e_of_type_Float;
-    }
-    return f1;
-  }
-  
-  public int b()
-  {
-    float f1 = 1.0F;
-    for (ayay localayay = (ayay)this.jdField_a_of_type_Aybc; localayay != null; localayay = (ayay)localayay.jdField_a_of_type_Aybc) {
-      f1 *= localayay.jdField_a_of_type_Int / 255.0F;
-    }
-    return (int)(f1 * 255.0F);
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
     {
-      ((aybg)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
-    }
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_d_of_type_Float = paramFloat;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected boolean b()
-  {
-    int i = 0;
-    boolean bool1 = false;
-    int j;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      aybg localaybg = (aybg)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localaybg.a())
-      {
-        if ((localaybg.jdField_d_of_type_Int & 0x1) != 0)
-        {
-          this.jdField_c_of_type_Float = localaybg.jdField_a_of_type_Float;
-          this.jdField_d_of_type_Float = localaybg.jdField_b_of_type_Float;
-        }
-        if ((localaybg.jdField_d_of_type_Int & 0x2) != 0) {
-          this.jdField_e_of_type_Float = localaybg.jdField_c_of_type_Float;
-        }
-        if ((localaybg.jdField_d_of_type_Int & 0x4) != 0) {
-          this.jdField_a_of_type_Int = localaybg.jdField_a_of_type_Int;
-        }
-        if ((localaybg.jdField_d_of_type_Int & 0x8) != 0) {
-          this.g = localaybg.jdField_b_of_type_Int;
-        }
+      bool1 = bool2;
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
         bool1 = true;
       }
-      j = i;
-      if (localaybg.jdField_b_of_type_Boolean)
-      {
-        if (!localaybg.jdField_a_of_type_Boolean) {
-          break label161;
-        }
-        localaybg.a();
-      }
-      for (j = i;; j = i - 1)
-      {
-        i = j + 1;
-        break;
-        label161:
-        this.jdField_a_of_type_JavaUtilList.remove(i);
-      }
     }
-    boolean bool2 = bool1;
-    if (this.jdField_a_of_type_Ayaz != null)
+    return bool1;
+  }
+  
+  public ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_c_of_type_JavaUtilArrayList != null) {
+      localArrayList.addAll(this.jdField_c_of_type_JavaUtilArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_c_of_type_JavaUtilArrayList != null)
     {
-      bool2 = bool1;
-      if (a() != null)
-      {
-        j = a().c() * this.jdField_a_of_type_Ayaz.jdField_a_of_type_Int / 1000;
-        i = j;
-        if (j > 0) {
-          i = j - 1;
-        }
-        bool2 = bool1;
-        if (i < this.jdField_a_of_type_Ayaz.jdField_a_of_type_ArrayOfAyba.length)
-        {
-          this.jdField_c_of_type_Float = this.jdField_a_of_type_Ayaz.jdField_a_of_type_ArrayOfAyba[i].jdField_a_of_type_Float;
-          this.jdField_d_of_type_Float = this.jdField_a_of_type_Ayaz.jdField_a_of_type_ArrayOfAyba[i].jdField_b_of_type_Float;
-          bool2 = true;
-        }
+      bool1 = bool2;
+      if (this.jdField_c_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
       }
     }
-    return bool2;
+    return bool1;
   }
   
-  public void c()
+  public ArrayList<String> c()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
     {
-      ((aybg)this.jdField_a_of_type_JavaUtilList.get(i)).d();
-      i += 1;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        localArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      }
+      return localArrayList;
+      this.jdField_a_of_type_JavaUtilArrayList = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "getUinsBinded() return null, mSubUin is null");
+      }
     }
   }
   
-  public void c(float paramFloat)
+  public boolean c()
   {
-    this.jdField_e_of_type_Float = paramFloat;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.g = paramFloat;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void e(float paramFloat)
-  {
-    this.jdField_f_of_type_Float = paramFloat;
-  }
-  
-  public int g_()
-  {
-    return this.jdField_d_of_type_Int;
+    boolean bool2 = false;
+    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 4))
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_c_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_c_of_type_JavaLangString);
+      }
+    }
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

@@ -1,8 +1,16 @@
-import cooperation.qzone.statistic.StatisticCollector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bhmd
+  implements View.OnClickListener
 {
-  private static final StatisticCollector a = new StatisticCollector();
+  public bhmd(QZoneShareActivity paramQZoneShareActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    QZoneShareActivity.f(this.a);
+  }
 }
 
 

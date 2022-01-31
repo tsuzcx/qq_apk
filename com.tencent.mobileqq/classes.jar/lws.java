@@ -1,433 +1,590 @@
+import android.graphics.Bitmap;
+import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 
-class lws
-  implements lwq
+public abstract class lws
+  extends Binder
+  implements lwr
 {
-  private IBinder a;
-  
-  lws(IBinder paramIBinder)
+  public lws()
   {
-    this.a = paramIBinder;
+    attachInterface(this, "com.tencent.av.service.IQQServiceForAV");
   }
   
-  public int a(long paramLong, int paramInt)
+  public static lwr a(IBinder paramIBinder)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(7, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      paramInt = localParcel2.readInt();
-      return paramInt;
+    if (paramIBinder == null) {
+      return null;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceForAV");
+    if ((localIInterface != null) && ((localIInterface instanceof lwr))) {
+      return (lwr)localIInterface;
     }
-  }
-  
-  /* Error */
-  public com.tencent.av.service.AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_2
-    //   15: aload_1
-    //   16: invokevirtual 58	android/os/Parcel:writeByteArray	([B)V
-    //   19: aload_0
-    //   20: getfield 15	lws:a	Landroid/os/IBinder;
-    //   23: bipush 9
-    //   25: aload_2
-    //   26: aload_3
-    //   27: iconst_0
-    //   28: invokeinterface 43 5 0
-    //   33: pop
-    //   34: aload_3
-    //   35: invokevirtual 46	android/os/Parcel:readException	()V
-    //   38: aload_3
-    //   39: invokevirtual 50	android/os/Parcel:readInt	()I
-    //   42: ifeq +26 -> 68
-    //   45: getstatic 64	com/tencent/av/service/AVPbInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   48: aload_3
-    //   49: invokeinterface 70 2 0
-    //   54: checkcast 60	com/tencent/av/service/AVPbInfo
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   62: aload_2
-    //   63: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   66: aload_1
-    //   67: areturn
-    //   68: aconst_null
-    //   69: astore_1
-    //   70: goto -12 -> 58
-    //   73: astore_1
-    //   74: aload_3
-    //   75: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   78: aload_2
-    //   79: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   82: aload_1
-    //   83: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	lws
-    //   0	84	1	paramArrayOfByte	byte[]
-    //   3	76	2	localParcel1	Parcel
-    //   7	68	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	58	73	finally
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(12, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      this.a.transact(11, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeLong(paramLong);
-      localParcel1.writeString(paramString);
-      this.a.transact(10, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel.writeString(paramString);
-      this.a.transact(8, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(String paramString, android.graphics.Bitmap paramBitmap)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 74	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +34 -> 50
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 81	android/graphics/Bitmap:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	lws:a	Landroid/os/IBinder;
-    //   34: bipush 6
-    //   36: aload_3
-    //   37: aconst_null
-    //   38: iconst_1
-    //   39: invokeinterface 43 5 0
-    //   44: pop
-    //   45: aload_3
-    //   46: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   49: return
-    //   50: aload_3
-    //   51: iconst_0
-    //   52: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   55: goto -25 -> 30
-    //   58: astore_1
-    //   59: aload_3
-    //   60: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   63: aload_1
-    //   64: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	this	lws
-    //   0	65	1	paramString	String
-    //   0	65	2	paramBitmap	android.graphics.Bitmap
-    //   3	57	3	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	58	finally
-    //   19	30	58	finally
-    //   30	45	58	finally
-    //   50	55	58	finally
-  }
-  
-  public void a(lwn paramlwn)
-  {
-    IBinder localIBinder = null;
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      if (paramlwn != null) {
-        localIBinder = paramlwn.asBinder();
-      }
-      localParcel.writeStrongBinder(localIBinder);
-      this.a.transact(1, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      this.a.transact(14, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean, android.app.Notification paramNotification)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   10: astore 5
-    //   12: aload 4
-    //   14: ldc 25
-    //   16: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   19: iload_1
-    //   20: ifeq +58 -> 78
-    //   23: aload 4
-    //   25: iload_3
-    //   26: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   29: aload_2
-    //   30: ifnull +53 -> 83
-    //   33: aload 4
-    //   35: iconst_1
-    //   36: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   39: aload_2
-    //   40: aload 4
-    //   42: iconst_0
-    //   43: invokevirtual 96	android/app/Notification:writeToParcel	(Landroid/os/Parcel;I)V
-    //   46: aload_0
-    //   47: getfield 15	lws:a	Landroid/os/IBinder;
-    //   50: iconst_5
-    //   51: aload 4
-    //   53: aload 5
-    //   55: iconst_0
-    //   56: invokeinterface 43 5 0
-    //   61: pop
-    //   62: aload 5
-    //   64: invokevirtual 46	android/os/Parcel:readException	()V
-    //   67: aload 5
-    //   69: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   72: aload 4
-    //   74: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   77: return
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: goto -57 -> 23
-    //   83: aload 4
-    //   85: iconst_0
-    //   86: invokevirtual 37	android/os/Parcel:writeInt	(I)V
-    //   89: goto -43 -> 46
-    //   92: astore_2
-    //   93: aload 5
-    //   95: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   98: aload 4
-    //   100: invokevirtual 53	android/os/Parcel:recycle	()V
-    //   103: aload_2
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	lws
-    //   0	105	1	paramBoolean	boolean
-    //   0	105	2	paramNotification	android.app.Notification
-    //   1	79	3	i	int
-    //   5	94	4	localParcel1	Parcel
-    //   10	84	5	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	92	finally
-    //   23	29	92	finally
-    //   33	46	92	finally
-    //   46	67	92	finally
-    //   83	89	92	finally
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel.writeByteArray(paramArrayOfByte);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    return new lwt(paramIBinder);
   }
   
   public IBinder asBinder()
   {
-    return this.a;
+    return this;
   }
   
-  public void b()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    Object localObject2 = null;
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int n = 0;
+    int i1 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    int i4 = 0;
+    int i5 = 0;
+    boolean bool1 = false;
+    int i6 = 0;
+    int i7 = 0;
+    int i8 = 0;
+    int i9 = 0;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    int i10 = 0;
+    boolean bool4 = false;
+    int i11 = 0;
+    int i12 = 0;
+    int i13 = 0;
+    int i = 0;
+    Object localObject1;
+    label813:
+    label819:
+    long l;
+    switch (paramInt1)
     {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(13, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IQQServiceForAV");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      if (bool1) {}
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = paramParcel1.readInt();
+      localObject1 = paramParcel1.readString();
+      localObject2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0)
+      {
+        bool1 = true;
+        if (paramParcel1.readInt() == 0) {
+          break label813;
+        }
+      }
+      for (bool2 = true;; bool2 = false)
+      {
+        paramParcel1 = a(paramInt1, (String)localObject1, (String)localObject2, bool1, bool2);
+        paramParcel2.writeNoException();
+        if (paramParcel1 == null) {
+          break label819;
+        }
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+        bool1 = false;
+        break;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 5: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readInt(), paramParcel1.readString());
+      return true;
+    case 6: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a();
+      return true;
+    case 7: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(lwp.a(paramParcel1.readStrongBinder()), paramParcel1.readString());
+      return true;
+    case 8: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(lwp.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 9: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readInt(), paramParcel1.readString(), paramParcel1.readString());
+      return true;
+    case 10: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      b(paramParcel1.readInt(), paramParcel1.readString());
+      return true;
+    case 11: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readInt(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      paramInt1 = i;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = a(paramParcel1.readInt(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 13: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      l = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeLong(l);
+      return true;
+    case 14: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramInt1 = j;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 15: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a();
+      paramParcel2.writeNoException();
+      paramInt1 = k;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 16: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeLongArray(paramParcel1);
+      return true;
+    case 17: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readLong());
+      return true;
+    case 18: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = m;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 19: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 20: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      l = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeLong(l);
+      return true;
+    case 22: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      paramInt1 = n;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 23: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      paramInt1 = i1;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 24: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = b(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramInt1 = i2;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 25: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      localObject1 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        bool1 = a((String)localObject1, bool1);
+        paramParcel2.writeNoException();
+        paramInt1 = i3;
+        if (bool1) {
+          paramInt1 = 1;
+        }
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
+    case 26: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(lwv.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 27: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      b(lwv.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 28: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(lwg.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 29: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      b(lwg.a(paramParcel1.readStrongBinder()));
+      return true;
+    case 30: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 31: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readInt());
+      return true;
+    case 32: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readString());
+      return true;
+    case 33: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = c(paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      paramInt1 = i4;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 34: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      b(paramParcel1.readString());
+      return true;
+    case 35: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      c(paramParcel1.readString());
+      return true;
+    case 36: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      b();
+      return true;
+    case 37: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      c();
+      return true;
+    case 38: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 39: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString());
+      return true;
+    case 40: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.createLongArray(), paramParcel1.readString());
+      return true;
+    case 41: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readLong(), paramParcel1.readString(), paramParcel1.readInt());
+      return true;
+    case 42: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = a(paramParcel1.readString(), paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = i5;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 43: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeLongArray(paramParcel1);
+      return true;
+    case 44: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeStringArray(paramParcel1);
+      return true;
+    case 45: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = b(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 46: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      if (paramParcel1.readInt() != 0) {
+        bool1 = true;
+      }
+      a(bool1);
+      return true;
+    case 47: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = b();
+      paramParcel2.writeNoException();
+      paramInt1 = i6;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 48: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = c(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 49: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = d(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    case 50: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = b();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 51: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = c();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 52: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeIntArray(paramParcel1);
+      return true;
+    case 53: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = c();
+      paramParcel2.writeNoException();
+      paramInt1 = i7;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 54: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = d();
+      paramParcel2.writeNoException();
+      paramInt1 = i8;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 55: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = e();
+      paramParcel2.writeNoException();
+      paramInt1 = i9;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 56: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = d();
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 57: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = bool2;
+      if (paramParcel1.readInt() != 0) {
+        bool1 = true;
+      }
+      b(bool1);
+      return true;
+    case 58: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readString(), paramParcel1.readLong());
+      return true;
+    case 59: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = bool3;
+      if (paramParcel1.readInt() != 0) {
+        bool1 = true;
+      }
+      c(bool1);
+      return true;
+    case 60: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = c(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramInt1 = i10;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 61: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      d(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 62: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      e(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 63: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 64: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 65: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readString(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 66: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      a(paramParcel1.readLong(), paramParcel1.readString(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 67: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = c(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 68: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      paramInt1 = paramParcel1.readInt();
+      paramInt2 = paramParcel1.readInt();
+      i = paramParcel1.readInt();
+      byte[] arrayOfByte = paramParcel1.createByteArray();
+      if (paramParcel1.readInt() != 0) {}
+      for (localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; localObject1 = null)
+      {
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);
+        }
+        paramParcel1 = a(paramInt1, paramInt2, i, arrayOfByte, (Bundle)localObject1, (ResultReceiver)localObject2);
+        paramParcel2.writeNoException();
+        if (paramParcel1 == null) {
+          break;
+        }
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+        return true;
+      }
+      paramParcel2.writeInt(0);
+      return true;
+    case 69: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      f(paramParcel1.readString());
+      paramParcel2.writeNoException();
+      return true;
+    case 70: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = bool4;
+      if (paramParcel1.readInt() != 0) {
+        bool1 = true;
+      }
+      d(bool1);
+      paramParcel2.writeNoException();
+      return true;
+    case 71: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = f();
+      paramParcel2.writeNoException();
+      paramInt1 = i11;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    case 72: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+      bool1 = g();
+      paramParcel2.writeNoException();
+      paramInt1 = i12;
+      if (bool1) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
+      return true;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceForAV");
+    bool1 = h();
+    paramParcel2.writeNoException();
+    paramInt1 = i13;
+    if (bool1) {
+      paramInt1 = 1;
     }
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      this.a.transact(15, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IAVServiceForQQ");
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    paramParcel2.writeInt(paramInt1);
+    return true;
   }
 }
 

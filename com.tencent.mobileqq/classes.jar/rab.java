@@ -1,12 +1,28 @@
-public abstract interface rab
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+
+public class rab
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public rab(KandianProgressView paramKandianProgressView) {}
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void setIsResume(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_Rac == null) {
+      return;
+    }
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364995: 
+    case 2131365010: 
+      this.a.jdField_a_of_type_Rac.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.a.jdField_a_of_type_Rac.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

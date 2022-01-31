@@ -3,7 +3,7 @@ import com.dataline.activities.LiteActivity;
 import java.util.ArrayList;
 
 public class db
-  implements aptu
+  implements aptw
 {
   public db(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   

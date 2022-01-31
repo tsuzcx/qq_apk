@@ -1,14 +1,20 @@
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class rye
-  implements ryg
+  extends sha
 {
   public rye(BridgeModule paramBridgeModule) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public bbjs a(Integer paramInteger)
   {
-    this.a.invokeCallJS(paramString, paramJSONObject);
+    bbjs localbbjs = super.a(paramInteger);
+    if ((paramInteger.intValue() == 11) && (localbbjs != null))
+    {
+      localbbjs.b = 2130843425;
+      localbbjs.a = BaseApplicationImpl.getApplication().getString(2131693394);
+    }
+    return localbbjs;
   }
 }
 

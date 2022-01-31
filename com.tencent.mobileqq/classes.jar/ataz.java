@@ -1,17 +1,26 @@
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import java.util.HashSet;
 
 class ataz
-  extends atgf
+  implements baxz
 {
-  ataz(atat paramatat, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  ataz(atav paramatav) {}
   
-  protected void a()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      atbp.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    synchronized (this.a.a)
+    {
+      if (this.a.a.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+        }
+        this.a.a.remove(paramString);
+        atav.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
+      }
+      return;
     }
-    atat.a(this.jdField_a_of_type_Atat, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

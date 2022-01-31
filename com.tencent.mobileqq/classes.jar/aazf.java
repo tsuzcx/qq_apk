@@ -1,12 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazf
+  implements View.OnClickListener
 {
-  public int a = 1;
-  public ImageView a;
-  TextView a;
-  public String a;
+  public aazf(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.setText("");
+  }
 }
 
 

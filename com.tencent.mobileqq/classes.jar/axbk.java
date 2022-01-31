@@ -1,52 +1,123 @@
-import CliLogSvc.strupbuff;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class axbk
-  extends xop
 {
-  private static final String[] a = { "CliLogSvc" };
+  int jdField_a_of_type_Int;
+  public String a;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  int b;
+  public int c;
+  public int d;
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void a()
   {
-    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-    paramUniPacket.setFuncName("UploadReq");
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
-    strupbuff localstrupbuff = new strupbuff();
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(arrayOfString[i].getBytes());
-      i += 1;
+    JSONArray localJSONArray;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("reportId", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("switch_qzone", this.jdField_a_of_type_Int);
+        localJSONObject.put("switch_qq", this.b);
+        localJSONObject.put("report_count", this.c);
+        localJSONObject.put("report_time", this.d);
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+        {
+          localJSONArray = new JSONArray();
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (!TextUtils.isEmpty(str))
+            {
+              localJSONArray.put(str);
+              continue;
+              return;
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, localException, new Object[0]);
+      }
     }
-    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
-    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
+    do
     {
-      localHashMap.put(paramToServiceMsg, localArrayList);
-      localstrupbuff.setLogstring(localHashMap);
-      paramUniPacket.put("Data", localstrupbuff);
-      return true;
-    }
+      do
+      {
+        localException.put("blacks", localJSONArray);
+        LocalMultiProcConfig.putString4Uin("qzone_wmd_config", localException.toString(), BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+      } while (!QLog.isColorLevel());
+      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:" + localException.toString());
+      return;
+      LocalMultiProcConfig.putString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "save wmd config:null");
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public boolean a()
   {
-    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
-      return b(paramToServiceMsg, paramUniPacket);
+    boolean bool = false;
+    try
+    {
+      Object localObject = LocalMultiProcConfig.getString4Uin("qzone_wmd_config", "", BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "load wmd config:" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject((String)localObject);
+        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("reportId");
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch_qzone");
+        this.b = ((JSONObject)localObject).optInt("switch_qq");
+        this.c = ((JSONObject)localObject).optInt("report_count");
+        this.d = ((JSONObject)localObject).optInt("report_time");
+        localObject = ((JSONObject)localObject).optJSONArray("blacks");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          int i = 0;
+          while (i < ((JSONArray)localObject).length())
+          {
+            if (!TextUtils.isEmpty(((JSONArray)localObject).optString(i))) {
+              this.jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject).optString(i));
+            }
+            i += 1;
+          }
+        }
+        bool = true;
+      }
+      return bool;
     }
+    catch (Exception localException) {}
     return false;
   }
   
-  public String[] a()
+  public boolean a(String paramString)
   {
-    return a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

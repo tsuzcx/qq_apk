@@ -1,32 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class uoe
-  extends atzm
+public abstract interface uoe
 {
-  public uoe(QQStoryMainController paramQQStoryMainController) {}
+  public abstract View a();
   
-  protected void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    vcp localvcp;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((mxx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + mxx.a(paramObject));
-      }
-      localvcp = (vcp)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localvcp == null);
-    localvcp.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

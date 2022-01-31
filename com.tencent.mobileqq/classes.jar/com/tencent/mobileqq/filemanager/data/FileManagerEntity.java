@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import apvb;
-import aukm;
-import aulx;
-import auma;
-import awzw;
+import apvd;
+import auko;
+import aulz;
+import aumc;
+import awzy;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="nSessionId")
 public class FileManagerEntity
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public long TroopUin;
@@ -24,12 +24,12 @@ public class FileManagerEntity
   public boolean bDelInFM;
   public boolean bOnceSuccess;
   public boolean bSend;
-  @aulx
+  @aulz
   public boolean bSetVerify;
   public byte[] bombData;
   public int busId;
   public int cloudType;
-  @aulx
+  @aulz
   public long datalineEntitySessionId;
   public long dbVer;
   public int errCode;
@@ -42,24 +42,24 @@ public class FileManagerEntity
   public String httpsDomain;
   public int imgHeight;
   public int imgWidth;
-  @aulx
+  @aulz
   public boolean isCheckPrivateDir;
-  @aulx
+  @aulz
   public boolean isFromrMolo;
   public boolean isReaded;
   public boolean isZipInnerFile;
-  @aulx
+  @aulz
   public long lastSuccessTime;
   public long lastTime;
   public long localModifyTime;
-  @aulx
+  @aulz
   public Object mContext;
-  @aulx
+  @aulz
   public String mExcitingSpeed;
-  @aulx
+  @aulz
   public int mThumbRetryCount;
   public long mTroopFileVideoReqInterval;
-  @aulx
+  @aulz
   public String miniAppDownloadId;
   public long msgSeq;
   public long msgTime;
@@ -69,24 +69,24 @@ public class FileManagerEntity
   public int nOlSenderProgress;
   public int nOpType = -1;
   public long nRelatedSessionId;
-  @auma
+  @aumc
   public long nSessionId = 0L;
   public int nWeiYunSrcType;
-  @aulx
+  @aulz
   public long peerDin;
   public String peerNick;
   public int peerType = 0;
   public String peerUin;
-  @aulx
+  @aulz
   public int qlmsgSrc;
-  @aulx
+  @aulz
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = awzw.a() * 1000L;
+  public long srvTime = awzy.a() * 1000L;
   public int status;
   public String str10Md5;
   public String strApkPackageName;
-  @aulx
+  @aulz
   public String strDataLineMPFileID;
   public String strFileMd5;
   public String strFilePath;
@@ -106,11 +106,11 @@ public class FileManagerEntity
   public int thumbInvalidCode;
   public String tmpSessionFromPhone;
   public String tmpSessionRelatedUin;
-  @aulx
+  @aulz
   public byte[] tmpSessionSig;
   public String tmpSessionToPhone;
   public long tmpSessionType;
-  @aulx
+  @aulz
   public int transSpeed;
   public long uniseq = -1L;
   public String zipFileId;
@@ -262,8 +262,8 @@ public class FileManagerEntity
   
   public boolean hasNoThumb()
   {
-    if (apvb.b(this.strLargeThumPath)) {}
-    while ((apvb.b(this.strMiddleThumPath)) || (apvb.b(this.strThumbPath))) {
+    if (apvd.b(this.strLargeThumPath)) {}
+    while ((apvd.b(this.strMiddleThumPath)) || (apvd.b(this.strThumbPath))) {
       return true;
     }
     return false;

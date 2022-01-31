@@ -1,35 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 class aacc
-  extends SimpleObserver<asiu>
+  extends JobSegment<asiw, asiw>
 {
-  aacc(aacb paramaacb, aacl paramaacl) {}
+  aacc(aabx paramaabx, String paramString, int paramInt) {}
   
-  public void a(asiu paramasiu)
+  protected void a(JobContext paramJobContext, asiw paramasiw)
   {
-    aacl localaacl = this.jdField_a_of_type_Aacl;
-    if (paramasiu.c == 1) {}
-    for (int i = 2;; i = 3)
+    if (paramasiw.b())
     {
-      localaacl.a(paramasiu, i);
+      notifyResult(paramasiw);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
+      }
       return;
     }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    if ((paramError instanceof AppInfoError)) {}
-    for (int i = ((AppInfoError)paramError).type;; i = 0)
-    {
-      this.jdField_a_of_type_Aacl.a(null, i);
-      return;
-    }
+    asjb.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new aacd(this, this));
   }
 }
 

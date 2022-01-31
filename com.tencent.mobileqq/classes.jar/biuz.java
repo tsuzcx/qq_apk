@@ -1,9 +1,18 @@
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
+
 public class biuz
+  implements View.OnClickListener
 {
-  public int a;
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  biuz(biur parambiur) {}
+  
+  public void onClick(View paramView)
+  {
+    biur.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
+  }
 }
 
 

@@ -1,9 +1,40 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
+
 public class bjla
+  extends AnimatorListenerAdapter
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public bjla(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    }
+  }
 }
 
 

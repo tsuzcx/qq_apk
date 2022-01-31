@@ -1,27 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class afln
-  implements DialogInterface.OnClickListener
+  extends ajvj
 {
   public afln(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
-      paramDialogInterface.putExtra("kSrouce", 17);
-      this.a.a(paramDialogInterface, 230);
-      axqw.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).b(paramLong);
     }
-    while (paramInt != 0) {
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
+          }
+        }
+      }
       return;
     }
-    axqw.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      long l = Long.parseLong(paramString);
+      SystemMsgListView.a(this.a).b(l);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

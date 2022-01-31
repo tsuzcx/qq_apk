@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class abyq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abyq(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public abyq(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, false);
-    RegisterChooseLoginActivity.a(this.a, false);
-    axqw.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    axqw.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
-    axqw.a(this.a.app, "new_reg", "next_ask", "no_clk", "", 1, "");
+    this.a.onBackEvent();
   }
 }
 

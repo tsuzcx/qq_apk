@@ -1,11 +1,42 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 class alil
-  implements aysa
+  extends ayxq
 {
-  alil(alij paramalij) {}
+  alil(alii paramalii, QQAppInterface paramQQAppInterface, String paramString, ayxr paramayxr, ayrx paramayrx, alio paramalio, alin paramalin)
+  {
+    super(paramQQAppInterface, paramString, paramayxr, paramayrx);
+  }
   
-  public void onResp(aysx paramaysx) {}
+  protected void realCancel()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
+    synchronized (alii.a(this.jdField_a_of_type_Alii))
+    {
+      alin localalin = (alin)alii.a(this.jdField_a_of_type_Alii).get(this.jdField_a_of_type_Alio.b);
+      if (localalin != null) {
+        localalin.b();
+      }
+      super.realCancel();
+      return;
+    }
+  }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  protected void realStart()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (alii.a(this.jdField_a_of_type_Alii))
+    {
+      alin localalin = (alin)alii.a(this.jdField_a_of_type_Alii).get(this.jdField_a_of_type_Alio.b);
+      if (localalin != null) {
+        this.jdField_a_of_type_Alin.a();
+      }
+      super.realStart();
+      return;
+    }
+  }
 }
 
 

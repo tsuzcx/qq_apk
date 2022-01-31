@@ -1,17 +1,68 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class rvl
-  extends AnimatorListenerAdapter
+public class rvl<T>
 {
-  public rvl(TickerView paramTickerView) {}
+  private T jdField_a_of_type_JavaLangObject;
+  private List<rvm<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public rvl(T paramT)
   {
-    TickerView.a(this.a).a();
-    TickerView.a(this.a);
-    this.a.invalidate();
+    this.jdField_a_of_type_JavaLangObject = paramT;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((rvm)localIterator.next()).a(this);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(rvm<T> paramrvm)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramrvm)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramrvm);
+      }
+      return;
+    }
+    finally
+    {
+      paramrvm = finally;
+      throw paramrvm;
+    }
+  }
+  
+  public void b(rvm<T> paramrvm)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramrvm);
+      return;
+    }
+    finally
+    {
+      paramrvm = finally;
+      throw paramrvm;
+    }
   }
 }
 

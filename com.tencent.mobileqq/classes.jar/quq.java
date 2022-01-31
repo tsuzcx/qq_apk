@@ -1,8 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public abstract interface quq
+class quq
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
+  quq(quo paramquo) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

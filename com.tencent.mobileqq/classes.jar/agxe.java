@@ -1,21 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class agxe
-  extends aywl
+  implements View.OnClickListener
 {
-  public agxe(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  public agxe(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-    this.a.b();
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    super.onLoadSuccessed(paramURLDrawable);
-    this.a.d();
+    this.a.b.setVisibility(8);
+    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a);
   }
 }
 

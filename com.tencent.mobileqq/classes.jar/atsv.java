@@ -1,11 +1,33 @@
 class atsv
-  implements bfos
+  implements amnf
 {
-  atsv(atsa paramatsa) {}
+  atsv(atsc paramatsc) {}
   
-  public void onDismiss()
+  public int a()
   {
-    atsa.a(this.a, this.a.c, false);
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return ajya.a(2131707296);
+    }
+    return ajya.a(2131707267);
   }
 }
 

@@ -1,130 +1,133 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class agqx
-  extends agqu
+  extends agqv
 {
-  protected int a;
-  protected agqy a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  private Map<Long, Float> a;
+  private agqw b;
   
   public agqx()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Agme = new aglp();
   }
   
-  public void a()
+  public float a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return ((Float)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).floatValue();
     }
+    return 0.0F;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(agqw paramagqw)
   {
-    if (paramInt == 0) {
-      b(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365743));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
+    this.b = paramagqw;
+    ((aglp)this.jdField_a_of_type_Agme).a(new agqy(this));
   }
   
-  public void a(agqy paramagqy)
+  public boolean b()
   {
-    this.jdField_a_of_type_Agqy = paramagqy;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371919));
-    this.b = ((ImageView)paramView.findViewById(2131371918));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371920));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (this.b == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
-      }
+    if (this.jdField_a_of_type_Agra == null) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay mInfo is null");
     }
     do
     {
       do
       {
         return false;
-        if (this.b.getVisibility() != 0) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
-        }
-      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
+      } while (!super.b());
+      this.jdField_a_of_type_Agra.jdField_c_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay id:" + this.jdField_a_of_type_Agra.jdField_a_of_type_Long + " set played flag");
       }
-      return true;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
+    } while ((this.jdField_a_of_type_Aejb == null) || (!this.jdField_a_of_type_Agra.jdField_a_of_type_Boolean));
+    String str = ajya.a(2131716346) + apvd.a(this.jdField_a_of_type_Agra.jdField_c_of_type_Long) + "/" + apvd.a(this.jdField_a_of_type_Agra.jdField_b_of_type_Long) + ")";
+    float f = (float)this.jdField_a_of_type_Agra.jdField_c_of_type_Long / (float)this.jdField_a_of_type_Agra.jdField_b_of_type_Long;
+    this.b.a(this.jdField_a_of_type_Agra.jdField_a_of_type_Long, f, str);
+    this.jdField_a_of_type_Aejb.a(this.jdField_a_of_type_Agra.jdField_a_of_type_Long, 11, null);
     return false;
   }
   
-  public void b(int paramInt)
+  public long c()
   {
-    if (this.b != null)
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
-        this.b.setVisibility(8);
-      }
+    if (aglp.class.isInstance(this.jdField_a_of_type_Agme)) {
+      return ((aglp)this.jdField_a_of_type_Agme).a();
     }
-    else {
-      return;
-    }
-    this.b.setVisibility(paramInt);
+    return 0L;
   }
   
-  public void e(int paramInt)
+  public void d()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Agra == null) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause mInfo is null");
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PauseDebug", 1, "OnFileVideoPause : " + this.jdField_a_of_type_Agra.jdField_a_of_type_Long);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause user set cancel,igon!");
+      return;
+    } while ((this.jdField_a_of_type_Int != 3) || (!this.jdField_a_of_type_Agra.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Agra.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Aejb == null));
+    this.jdField_a_of_type_Agra.jdField_c_of_type_Boolean = false;
+    Bundle localBundle = new Bundle();
+    localBundle.putFloat("progress", a(this.jdField_a_of_type_Agra.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Aejb.a(this.jdField_a_of_type_Agra.jdField_a_of_type_Long, 10, localBundle);
+    this.jdField_a_of_type_Agme.a();
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Agra == null)
+    {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel mInfo is null");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel id:" + this.jdField_a_of_type_Agra.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Agme.a();
+    this.jdField_a_of_type_Aejb.a(this.jdField_a_of_type_Agra.jdField_a_of_type_Long, 12, null);
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Agra == null) {
+      super.f();
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "VideoPlayControllerForFile onItemClick");
+      }
+      if ((this.jdField_a_of_type_Agra.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Agra.jdField_a_of_type_Boolean) && (c()))
+      {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "file[" + this.jdField_a_of_type_Agra.jdField_a_of_type_Long + "] is downloading return!");
+        return;
+      }
+      super.f();
+    } while ((!this.jdField_a_of_type_Agra.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Agra.d) || (TextUtils.isEmpty(this.jdField_a_of_type_Agra.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Agme.a == null));
+    b();
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Agme != null) {
+      this.jdField_a_of_type_Agme.b();
+    }
   }
 }
 

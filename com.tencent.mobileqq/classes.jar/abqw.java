@@ -1,25 +1,30 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abqw
-  implements awcg
+  implements CompoundButton.OnCheckedChangeListener
 {
   public abqw(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131719375);
+    boolean bool = true;
+    if (!bbfj.g(this.a))
+    {
+      bcql.a(BaseApplication.getContext(), 1, 2131694674, 0).b(this.a.getTitleBarHeight());
+      paramCompoundButton = this.a.j;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramCompoundButton.setChecked(paramBoolean);
+        return;
+      }
     }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    ((ajti)this.a.app.a(2)).g(paramBoolean);
   }
 }
 

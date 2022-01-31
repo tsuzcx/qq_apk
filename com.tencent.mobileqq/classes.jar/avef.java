@@ -1,6 +1,9 @@
-public abstract interface avef
+import android.widget.TextView;
+
+class avef
 {
-  public abstract void a(String paramString);
+  public TextView a;
+  public TextView b;
 }
 
 

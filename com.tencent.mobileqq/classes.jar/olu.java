@@ -1,16 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class olu
   implements ViewBase.OnClickListener
 {
-  olu(ols paramols) {}
+  olu(olt paramolt, ViewBase paramViewBase) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.a != null) {
-      olr.a(this.a.a, paramViewBase);
-    }
+    paramViewBase = new pte(this.jdField_a_of_type_Olt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Olt.jdField_a_of_type_Baxy, this.jdField_a_of_type_Olt.jdField_a_of_type_Ram);
+    paramViewBase.a(this.jdField_a_of_type_Olt.jdField_a_of_type_Pau);
+    paramViewBase.a(this.jdField_a_of_type_Olt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import asee;
+import aseg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -12,9 +12,9 @@ class QQSettingSettingActivity$4
   
   public void run()
   {
-    asee localasee = (asee)this.this$0.app.getManager(221);
-    localasee.a();
-    this.this$0.a = localasee.a(0);
+    aseg localaseg = (aseg)this.this$0.app.getManager(221);
+    localaseg.a();
+    this.this$0.a = localaseg.a(0);
     if (QLog.isColorLevel()) {
       QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "cu_open_card_guide later init entry: %s ", new Object[] { this.this$0.a }));
     }

@@ -1,12 +1,17 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
 
 public class aidi
-  extends aclh
+  implements View.OnClickListener
 {
-  public CheckBox a;
+  public aidi(FriendTabView paramFriendTabView) {}
   
-  private aidi(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.a(1);
+  }
 }
 
 

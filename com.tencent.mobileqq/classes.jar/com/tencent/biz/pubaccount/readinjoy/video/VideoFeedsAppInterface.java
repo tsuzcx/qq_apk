@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajtd;
-import ajtg;
+import ajtb;
+import ajte;
 import android.os.Bundle;
-import auko;
+import aukq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -13,20 +13,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
-import nna;
-import npt;
-import npv;
-import qru;
+import nmx;
+import npq;
+import nps;
+import qrr;
 
 public class VideoFeedsAppInterface
   extends AppInterface
 {
   public static String a;
-  private HashMap<Integer, ajtd> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private List<ajtg> jdField_a_of_type_JavaUtilList = new Vector();
-  private qru jdField_a_of_type_Qru;
-  private List<ajtg> b = new Vector();
-  private List<ajtg> c = new Vector();
+  private HashMap<Integer, ajtb> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private List<ajte> jdField_a_of_type_JavaUtilList = new Vector();
+  private qrr jdField_a_of_type_Qrr;
+  private List<ajte> b = new Vector();
+  private List<ajte> c = new Vector();
   
   static
   {
@@ -38,29 +38,29 @@ public class VideoFeedsAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public ajtd a(int paramInt)
+  public ajtb a(int paramInt)
   {
-    ajtd localajtd = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localajtd == null) {}
+    ajtb localajtb = (ajtb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localajtb == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localajtd = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localajtd == null) {
+        localajtb = (ajtb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localajtb == null) {
           break label113;
         }
-        return localajtd;
-        if (localajtd != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajtd);
+        return localajtb;
+        if (localajtb != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajtb);
         }
-        return localajtd;
+        return localajtb;
       }
-      Object localObject2 = new npv(this);
+      Object localObject2 = new nps(this);
       continue;
-      localObject2 = new npt(this);
+      localObject2 = new npq(this);
       continue;
-      localObject2 = new nna(this);
+      localObject2 = new nmx(this);
       continue;
       return localObject2;
       label113:
@@ -72,32 +72,32 @@ public class VideoFeedsAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Qru.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Qrr.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
-  public void addObserver(ajtg paramajtg)
+  public void addObserver(ajte paramajte)
   {
-    addObserver(paramajtg, false);
+    addObserver(paramajte, false);
   }
   
-  public void addObserver(ajtg paramajtg, boolean paramBoolean)
+  public void addObserver(ajte paramajte, boolean paramBoolean)
   {
-    if (paramajtg == null) {
+    if (paramajte == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramajtg)) {
-          this.b.add(paramajtg);
+        if (!this.b.contains(paramajte)) {
+          this.b.add(paramajte);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajtg)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramajtg);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajte)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramajte);
       }
       return;
     }
@@ -113,7 +113,7 @@ public class VideoFeedsAppInterface
     return AppSetting.a();
   }
   
-  public List<ajtg> getBusinessObserver(int paramInt)
+  public List<ajte> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -132,7 +132,7 @@ public class VideoFeedsAppInterface
     return getAccount();
   }
   
-  public auko getEntityManagerFactory(String paramString)
+  public aukq getEntityManagerFactory(String paramString)
   {
     return null;
   }
@@ -145,33 +145,33 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Qru = new qru(this);
+    this.jdField_a_of_type_Qrr = new qrr(this);
   }
   
-  public void removeObserver(ajtg paramajtg)
+  public void removeObserver(ajte paramajte)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajtg);
+      this.jdField_a_of_type_JavaUtilList.remove(paramajte);
       synchronized (this.b)
       {
-        this.b.remove(paramajtg);
+        this.b.remove(paramajte);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramajtg);
+      this.c.remove(paramajte);
       return;
-      paramajtg = finally;
-      throw paramajtg;
-      paramajtg = finally;
-      throw paramajtg;
+      paramajte = finally;
+      throw paramajte;
+      paramajte = finally;
+      throw paramajte;
     }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Qru.a(paramToServiceMsg);
+    this.jdField_a_of_type_Qrr.a(paramToServiceMsg);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.script.drawerInfo;
 
-import ajfb;
-import ajfm;
-import ajfr;
+import ajez;
+import ajfk;
+import ajfp;
 
 public class SpriteDrawerInfoBridge$2
   implements Runnable
 {
-  public SpriteDrawerInfoBridge$2(ajfr paramajfr, ajfb paramajfb) {}
+  public SpriteDrawerInfoBridge$2(ajfp paramajfp, ajez paramajez) {}
   
   public void run()
   {
-    ajfm localajfm = this.a.a();
-    if (localajfm != null) {
-      localajfm.b();
+    ajfk localajfk = this.a.a();
+    if (localajfk != null) {
+      localajfk.b();
     }
   }
 }

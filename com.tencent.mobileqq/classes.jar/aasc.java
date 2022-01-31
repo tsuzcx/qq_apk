@@ -1,17 +1,32 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aasc
-  implements bfoq
+  implements aptw
 {
-  public aasc(ChatHistoryFileActivity paramChatHistoryFileActivity, bfol parambfol) {}
+  public aasc(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouu paramaouu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bfol.isShowing())) {
-      this.jdField_a_of_type_Bfol.dismiss();
+    aptx.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692830));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        if (bbdx.b(localFileManagerEntity.getFilePath())) {
+          this.jdField_a_of_type_Aouu.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+        } else {
+          this.jdField_a_of_type_Aouu.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+        }
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

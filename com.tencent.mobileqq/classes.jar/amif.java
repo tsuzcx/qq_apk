@@ -1,16 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 class amif
-  implements View.OnTouchListener
+  implements amhz
 {
-  amif(amic paramamic) {}
+  amif(amib paramamib) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    return amic.a(this.a).onTouchEvent(paramMotionEvent);
+    amib.a(this.a, amib.a(this.a).inflate());
+    amib.a(this.a).setOnClickListener(new amig(this));
+    ((TextView)amib.a(this.a).findViewById(2131365169)).setOnClickListener(new amih(this));
+    axqy.b(null, "dc00898", "", "", "0X800A8AD", "0X800A8AD", 0, 0, "", "", "", "");
   }
 }
 

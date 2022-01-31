@@ -1,10 +1,6 @@
 public abstract interface amci
 {
-  public abstract void aH();
-  
-  public abstract void aI();
-  
-  public abstract boolean s();
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

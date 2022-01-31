@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import akzq;
+import akzp;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARVideoRecordViewProxy$1
   implements Runnable
 {
-  public ARVideoRecordViewProxy$1(akzq paramakzq) {}
+  public ARVideoRecordViewProxy$1(akzp paramakzp) {}
   
   public void run()
   {
-    if (akzq.a(this.this$0) == null) {}
+    if (akzp.a(this.this$0) == null) {}
     do
     {
       return;
-      akzq.a(this.this$0).setVisibility(8);
-      akzq.a(this.this$0).clearAnimation();
+      akzp.a(this.this$0).setVisibility(8);
+      akzp.a(this.this$0).clearAnimation();
     } while (!QLog.isColorLevel());
     QLog.i("ARVideoRecordViewProxy", 2, "ARButtonTips resetToInnerTipsStatus stop animation");
   }

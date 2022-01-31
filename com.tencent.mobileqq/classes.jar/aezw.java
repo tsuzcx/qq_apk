@@ -1,38 +1,36 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
 
 public class aezw
-  implements BusinessObserver
+  extends RecyclerView.OnScrollListener
 {
-  private Handler a;
+  public boolean a;
   
-  aezw(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
+  public aezw(ZhituPanelView paramZhituPanelView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramInt = paramBundle.getInt("ErrorCode");
-    String str1 = paramBundle.getString("UniqueKey");
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituObserver", 2, aezn.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
-    }
-    String str2 = aezn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (!str2.equals(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituObserver", 2, aezn.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
+      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
+        ((aezx)paramRecyclerView.getAdapter()).a();
       }
     }
-    while (this.a == null) {
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
       return;
     }
-    paramBundle = this.a.obtainMessage(2, paramBundle);
-    this.a.sendMessage(paramBundle);
   }
 }
 

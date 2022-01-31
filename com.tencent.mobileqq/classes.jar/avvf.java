@@ -1,20 +1,14 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView.1.1;
-
 public class avvf
-  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public avvf(FollowCaptureView paramFollowCaptureView) {}
+  public int a;
+  public boolean a;
+  public boolean b = true;
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void a()
   {
-    FollowCaptureView.a(this.a, paramSurfaceTexture);
-    this.a.queueEvent(new FollowCaptureView.1.1(this, paramSurfaceTexture));
-    if (!FollowCaptureView.a(this.a)) {
-      FollowCaptureView.a(this.a, true);
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

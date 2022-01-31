@@ -1,55 +1,40 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.view.View;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aqil
-  extends akup
+  implements bfph
 {
-  public aqil(NearbyHybridFragment paramNearbyHybridFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString, long paramLong2)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aqil(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
-    StringBuilder localStringBuilder = new StringBuilder().append("onLocationFinish, errCode=").append(paramInt).append(", timeCost=").append(l).append(", info==null?");
-    if (paramSosoLbsInfo == null) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      QLog.d("nearby.NearbyHybridFragment.webloading", 1, bool + ", isTimeOut=" + this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l);
-      if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
-        break label188;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(false, paramInt, l);
-      if (!this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l) {
-        break;
-      }
-      return;
-    }
-    if (bbev.g(BaseApplicationImpl.getContext())) {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 1, ajyc.a(2131707186), 1).a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.d = 1;
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    return;
-    label188:
-    NearbyHybridFragment.jdField_a_of_type_Long = System.currentTimeMillis();
-    NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo = paramSosoLbsInfo;
-    atbg.a(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), paramSosoLbsInfo);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.l) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.e();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(true, paramInt, l);
+      if (this.a.jdField_a_of_type_Bfpc != null) {
+        this.a.jdField_a_of_type_Bfpc.dismiss();
+      }
+      this.a.o();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(paramSosoLbsInfo);
+      this.a.p();
+      continue;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
+      }
+      if ((bbfj.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+      {
+        aqhw.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+      }
+      else
+      {
+        bcql.a(BaseApplication.getContext(), 1, this.a.getString(2131694608), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
+      }
     }
   }
 }

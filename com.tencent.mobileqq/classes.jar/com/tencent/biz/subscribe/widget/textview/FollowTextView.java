@@ -10,10 +10,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bbjw;
-import bcpw;
-import bfol;
-import bhox;
+import bbkk;
+import bcql;
+import bfpc;
+import bhpo;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -25,26 +25,26 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import sgj;
-import wkn;
-import wpw;
-import wpy;
-import wva;
+import sgg;
+import wkk;
+import wpt;
+import wpv;
+import wux;
+import wwp;
+import wwq;
+import wwr;
 import wws;
 import wwt;
-import wwu;
-import wwv;
-import www;
-import xhe;
+import xhb;
 
 public class FollowTextView
   extends TextView
-  implements View.OnClickListener, wpy
+  implements View.OnClickListener, wpv
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private wkn jdField_a_of_type_Wkn;
-  private www jdField_a_of_type_Www;
+  private wkk jdField_a_of_type_Wkk;
+  private wwt jdField_a_of_type_Wwt;
   protected boolean a;
   private volatile boolean b = true;
   private boolean c;
@@ -73,12 +73,12 @@ public class FollowTextView
     String str3;
     if (paramStFeed != null)
     {
-      if (bbjw.a(paramStFeed.id.get())) {
+      if (bbkk.a(paramStFeed.id.get())) {
         break label100;
       }
       str1 = paramStFeed.id.get();
       str2 = paramStFeed.poster.id.get();
-      str3 = "auth_" + wva.a(a());
+      str3 = "auth_" + wux.a(a());
       if (!paramBoolean) {
         break label114;
       }
@@ -87,7 +87,7 @@ public class FollowTextView
     label114:
     for (paramStFeed = "follow";; paramStFeed = "un_follow")
     {
-      xhe.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      xhb.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
       return;
       str1 = paramStFeed.poster.nick.get();
       break;
@@ -96,16 +96,16 @@ public class FollowTextView
   
   private void d()
   {
-    bfol localbfol = bfol.a(getContext());
-    localbfol.a(String.format(getContext().getResources().getString(2131695618), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localbfol.a(2131696741, 3);
-    localbfol.c(2131690596);
-    localbfol.setOnDismissListener(new wwu(this));
-    localbfol.a(new wwv(this, localbfol));
-    if (!localbfol.isShowing())
+    bfpc localbfpc = bfpc.a(getContext());
+    localbfpc.a(String.format(getContext().getResources().getString(2131695619), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localbfpc.a(2131696742, 3);
+    localbfpc.c(2131690596);
+    localbfpc.setOnDismissListener(new wwr(this));
+    localbfpc.a(new wws(this, localbfpc));
+    if (!localbfpc.isShowing())
     {
       this.b = true;
-      localbfol.show();
+      localbfpc.show();
     }
   }
   
@@ -149,7 +149,7 @@ public class FollowTextView
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get().equals(localFollowUpdateEvent.useId))
       {
         a(localFollowUpdateEvent.followStatus);
-        bhox.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
+        bhpo.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
         SubscribeHybirdFragment.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
       }
     }
@@ -172,15 +172,15 @@ public class FollowTextView
     Object localObject = (QQAppInterface)localObject;
     if (paramBoolean)
     {
-      sgj.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new wws(this), false, 0, true);
+      sgg.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new wwp(this), false, 0, true);
       return;
     }
-    sgj.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new wwt(this), true);
+    sgg.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new wwq(this), true);
   }
   
   protected boolean a()
   {
-    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bbjw.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
+    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bbkk.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
   }
   
   protected void b()
@@ -229,7 +229,7 @@ public class FollowTextView
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      wpw.a().a(this);
+      wpt.a().a(this);
     }
   }
   
@@ -241,11 +241,11 @@ public class FollowTextView
       return;
       if (!this.b)
       {
-        bcpw.a(getContext(), "请勿重复操作", 0).a();
+        bcql.a(getContext(), "请勿重复操作", 0).a();
         return;
       }
-      if (this.jdField_a_of_type_Wkn != null) {
-        this.jdField_a_of_type_Wkn.a();
+      if (this.jdField_a_of_type_Wkk != null) {
+        this.jdField_a_of_type_Wkk.a();
       }
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0)
       {
@@ -259,7 +259,7 @@ public class FollowTextView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    wpw.a().b(this);
+    wpt.a().b(this);
   }
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
@@ -276,9 +276,9 @@ public class FollowTextView
     }
   }
   
-  public void setFollowStateChangeListener(www paramwww)
+  public void setFollowStateChangeListener(wwt paramwwt)
   {
-    this.jdField_a_of_type_Www = paramwww;
+    this.jdField_a_of_type_Wwt = paramwwt;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
@@ -286,9 +286,9 @@ public class FollowTextView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(wkn paramwkn)
+  public void setItemPreClickListener(wkk paramwkk)
   {
-    this.jdField_a_of_type_Wkn = paramwkn;
+    this.jdField_a_of_type_Wkk = paramwkk;
   }
   
   public void setNoneReportType(boolean paramBoolean)

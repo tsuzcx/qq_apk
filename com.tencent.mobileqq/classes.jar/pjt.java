@@ -1,52 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pjt
-  implements LogUtil.ProteusLog
+  implements ViewBase.IBuilder
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public ViewBase build(VafContext paramVafContext)
   {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
+    return new pjs(paramVafContext);
   }
 }
 

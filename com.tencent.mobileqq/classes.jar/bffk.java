@@ -1,13 +1,24 @@
-public class bffk
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.task.MainThreadTask.1;
+
+public abstract class bffk
+  extends bffi
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
+  public bffk(Context paramContext, beqm parambeqm)
+  {
+    super(paramContext, 3, parambeqm);
+  }
+  
+  public abstract void a();
+  
+  public void aU_() {}
+  
+  public void d()
+  {
+    aU_();
+    this.a.post(new MainThreadTask.1(this));
+  }
 }
 
 

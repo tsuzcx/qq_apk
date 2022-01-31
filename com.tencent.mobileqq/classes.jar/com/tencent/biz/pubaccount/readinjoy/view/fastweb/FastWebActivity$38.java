@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import onk;
+import onh;
 import org.json.JSONObject;
-import osm;
-import rnr;
+import osj;
+import rno;
 
 class FastWebActivity$38
   implements Runnable
@@ -16,7 +16,7 @@ class FastWebActivity$38
   {
     FastWebActivity.o(this.this$0);
     FastWebActivity.p(this.this$0);
-    osm.a().k();
+    osj.a().k();
     ArticleInfo localArticleInfo1 = FastWebActivity.a(this.this$0);
     FastWebActivity localFastWebActivity = this.this$0;
     ArticleInfo localArticleInfo2 = FastWebActivity.a(this.this$0);
@@ -24,7 +24,7 @@ class FastWebActivity$38
     if (FastWebActivity.a(this.this$0).c()) {}
     for (String str = "2";; str = "1")
     {
-      rnr.a(localArticleInfo1, "0X800A09E", onk.a(localFastWebActivity, localArticleInfo2, i, str).toString());
+      rno.a(localArticleInfo1, "0X800A09E", onh.a(localFastWebActivity, localArticleInfo2, i, str).toString());
       return;
     }
   }

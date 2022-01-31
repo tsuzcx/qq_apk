@@ -3,69 +3,81 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame.2.1;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aidl
   implements View.OnClickListener
 {
-  public aidl(FriendTabView paramFriendTabView) {}
+  public aidl(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
   public void onClick(View paramView)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    aifb localaifb = (aifb)paramView.getTag();
+    QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick");
+    aiez localaiez = (aiez)paramView.getTag();
     String str;
     boolean bool;
-    if ((localaifb != null) && (localaifb.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaifb.jdField_a_of_type_JavaLangObject != null))
+    if ((localaiez != null) && (localaiez.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaiez.jdField_a_of_type_JavaLangObject != null))
     {
       str = "";
-      if (!(localaifb.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label236;
+      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label256;
       }
-      str = ((Friends)localaifb.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localaifb.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      str = ((Friends)localaiez.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
       {
-        if (!localaifb.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label262;
+        if (!localaiez.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label330;
         }
-        bool = this.a.a.a(localaifb.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
+        bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaiez.jdField_a_of_type_JavaLangString, str, 4, "-1");
+        label108:
         if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
+          QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick = " + bool);
         }
-        localaifb.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (localaiez.jdField_a_of_type_Long == 1007L) {
+          this.a.jdField_a_of_type_Azlq.b();
+        }
+        localaiez.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
         if (AppSetting.d)
         {
-          if (!localaifb.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label287;
+          if (!localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label353;
           }
-          paramView.setContentDescription(localaifb.d.getText().toString() + ajyc.a(2131704942));
+          paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704956));
         }
       }
     }
     for (;;)
     {
-      this.a.c();
+      this.a.f();
       if (AppSetting.d) {
-        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
+        paramView.postDelayed(new FriendTeamListInnerFrame.2.1(this, paramView), 2000L);
       }
       return;
-      label236:
-      if (!(localaifb.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+      label256:
+      if ((localaiez.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+      {
+        str = ((PhoneContact)localaiez.jdField_a_of_type_JavaLangObject).name;
         break;
       }
-      str = ((PhoneContact)localaifb.jdField_a_of_type_JavaLangObject).name;
-      break;
-      label262:
-      bool = this.a.a.a(localaifb.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label287:
-      paramView.setContentDescription(localaifb.d.getText().toString() + ajyc.a(2131704943));
+      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
+        break;
+      }
+      paramView = (RelationTroopEntity)localaiez.jdField_a_of_type_JavaLangObject;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f(paramView.troopInfo.troopuin);
+      this.a.jdField_a_of_type_Azlq.d();
+      return;
+      label330:
+      bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaiez.jdField_a_of_type_JavaLangString, str, 0, "-1");
+      break label108;
+      label353:
+      paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704955));
     }
   }
 }

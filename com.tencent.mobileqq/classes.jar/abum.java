@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abum
-  implements QQPermissionCallback
+  extends akat
 {
-  public abum(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public abum(QQLSActivity paramQQLSActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    bbcv.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QQIdentiferLegacy.a(this.a);
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    }
+    QQLSActivity.a(this.a);
   }
 }
 

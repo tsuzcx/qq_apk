@@ -1,32 +1,52 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class xmg
-  extends WebViewPlugin
+class xmg
+  extends Handler
 {
-  public xmg()
+  xmg(xmf paramxmf, Looper paramLooper)
   {
-    this.mPluginNameSpace = "qztodayinhistory";
+    super(paramLooper);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    Object localObject;
+    int i;
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      localObject = paramMessage.getString("url");
+      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(xmf.a(this.a))) && (!TextUtils.isEmpty(xmf.b(this.a))) && (xmf.b(this.a).equals(localObject)))
+      {
+        i = paramMessage.getInt("result_code");
+        localObject = new JSONObject();
+        if (i != 0) {
+          break label158;
+        }
+      }
     }
-    if (!paramString2.equals("qztodayinhistory")) {}
-    while (!paramString3.equals("settihnome")) {
-      return false;
+    try
+    {
+      ((JSONObject)localObject).put("code", 0);
+      for (;;)
+      {
+        label113:
+        this.a.callJs(xmf.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
+        return;
+        label158:
+        ((JSONObject)localObject).put("code", i);
+        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+      }
     }
-    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
+    catch (Exception paramMessage)
+    {
+      break label113;
     }
-    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
-    return true;
   }
 }
 

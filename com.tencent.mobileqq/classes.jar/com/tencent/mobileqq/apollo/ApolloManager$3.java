@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airz;
-import ajhw;
+import airx;
+import ajhu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -31,7 +31,7 @@ public final class ApolloManager$3
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default res cost: " + (l2 - l1) + " ms, unzip: " + bool);
       }
-      if ((bool) && (airz.a()))
+      if ((bool) && (airx.a()))
       {
         localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -41,7 +41,7 @@ public final class ApolloManager$3
           localSharedPreferences.edit().putString("inner_res_md5", (String)localObject2).commit();
         }
       }
-      airz.a().set(false);
+      airx.a().set(false);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "check default ready scene file cost: " + (System.currentTimeMillis() - l2));
       }
@@ -61,7 +61,7 @@ public final class ApolloManager$3
       }
       else
       {
-        localObject2 = ajhw.a(0);
+        localObject2 = ajhu.a(0);
         if ((localObject2 == null) || (localObject2.length == 0))
         {
           StringBuilder localStringBuilder;

@@ -1,19 +1,27 @@
-import android.graphics.Bitmap;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class mbx
-  implements lnw
+public class mbx
 {
-  mbx(mbw parammbw) {}
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
+  public static void a(String paramString)
   {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.a(paramBitmap);
-      bool = true;
+    axqy.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void b(String paramString)
+  {
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
     }
-    return bool;
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
+    {
+      a((String)localObject);
+      lcg.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
+      return;
+    }
   }
 }
 

@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
-
-public class aufy
-  implements View.OnClickListener
+class aufy
 {
-  public aufy(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  public int a;
+  public aufu a;
+  public aufv a;
+  public aufx a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131375603: 
-      this.a.b();
-      return;
-    case 2131375598: 
-      this.a.c();
-      return;
-    case 2131375592: 
-      this.a.d();
-      return;
-    }
-    this.a.doOnBackPressed();
-  }
+  private aufy(aufj paramaufj) {}
 }
 
 

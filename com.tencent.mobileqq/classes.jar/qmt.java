@@ -1,20 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class qmt
-  implements Animation.AnimationListener
+public final class qmt
+  extends BroadcastReceiver
 {
-  public qmt(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(qms.a(), 2, "Intent.ACTION_SCREEN_OFF");
+      }
+      if ((qms.a().get() == 0) && (qms.b().get() < qms.a()))
+      {
+        qms.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
+        qms.a().set(1);
+        qms.a().start();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
+      if (QLog.isColorLevel()) {
+        QLog.d(qms.a(), 2, "Intent.ACTION_SCREEN_ON");
+      }
+    } while (qms.a().get() != 1);
+    if ((qms.a() != null) && (qms.a().isAlive())) {
+      qms.a().interrupt();
+    }
+    qms.a().set(3);
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

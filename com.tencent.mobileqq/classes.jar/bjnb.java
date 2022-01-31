@@ -1,9 +1,30 @@
-import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public abstract interface bjnb
+class bjnb
+  implements EIPClientConnectListener
 {
-  @NonNull
-  public abstract bjmx a();
+  bjnb(bjna parambjna) {}
+  
+  public void connectFailed()
+  {
+    bjna.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "connectFailed!");
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      bjna.a(this.a, paramEIPCConnection.procName);
+    }
+    bjna.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakIpcModuleClient", 2, "connectSuccess:" + bjna.a(this.a));
+    }
+  }
 }
 
 

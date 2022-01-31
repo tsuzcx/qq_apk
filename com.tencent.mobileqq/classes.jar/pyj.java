@@ -1,21 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
 
 public class pyj
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public pyj(ComponentSocialOperation paramComponentSocialOperation) {}
+  public pyj(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.startAnimation(this.a.c);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView) {}
 }
 
 

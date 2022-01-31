@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import actn;
-import ajxl;
-import akgi;
+import actj;
+import ajxj;
+import akgh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqbc;
-import arig;
-import arih;
-import aser;
-import batu;
-import bazo;
-import bbcl;
+import aqbe;
+import arii;
+import arij;
+import aset;
+import baui;
+import bbac;
+import bbcz;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
@@ -23,14 +23,14 @@ import com.tencent.mobileqq.data.MessageForQQStory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ssi;
+import ssf;
 
 public class ShareToQQActivity
   extends BaseActivity
 {
   static boolean jdField_a_of_type_Boolean;
-  ajxl jdField_a_of_type_Ajxl = new arig(this);
-  akgi jdField_a_of_type_Akgi = new arih(this);
+  ajxj jdField_a_of_type_Ajxj = new arii(this);
+  akgh jdField_a_of_type_Akgh = new arij(this);
   public ProfileActivity.AllInOne a;
   public String a;
   String b;
@@ -47,7 +47,7 @@ public class ShareToQQActivity
     Object localObject = null;
     try
     {
-      String str = bbcl.e(this.app, this.b);
+      String str = bbcz.e(this.app, this.b);
       localObject = str;
     }
     catch (Exception localException)
@@ -65,9 +65,9 @@ public class ShareToQQActivity
     String str = getIntent().getStringExtra("sourceFrom");
     if ((TextUtils.equals(this.c, "share_from_troop_member_card")) && (paramInt2 == -1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", getString(2131720023));
+      paramIntent.putExtra("selfSet_leftViewText", getString(2131720034));
       new Intent(this, SplashActivity.class);
-      localObject = actn.a(paramIntent, null);
+      localObject = actj.a(paramIntent, null);
       ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
       paramIntent = ForwardUtils.a((Intent)localObject);
       ForwardUtils.a(this.app, this, paramIntent, (Intent)localObject);
@@ -78,11 +78,11 @@ public class ShareToQQActivity
       finish();
       return;
       if (TextUtils.equals(str, "OD")) {
-        batu.c(this.app, this, paramInt2, paramIntent);
+        baui.c(this.app, this, paramInt2, paramIntent);
       } else if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        batu.a(this.app, this, paramInt2, paramIntent);
+        baui.a(this.app, this, paramInt2, paramIntent);
       } else {
-        batu.b(this.app, this, paramInt2, paramIntent);
+        baui.b(this.app, this, paramInt2, paramIntent);
       }
     }
   }
@@ -104,7 +104,7 @@ public class ShareToQQActivity
     long l;
     if ("shiel_uin".equals(this.c))
     {
-      addObserver(this.jdField_a_of_type_Ajxl);
+      addObserver(this.jdField_a_of_type_Ajxj);
       bool = paramBundle.getBooleanExtra("isCancelShield", false);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
       paramBundle = (FriendListHandler)this.app.a(1);
@@ -130,11 +130,11 @@ public class ShareToQQActivity
     }
     if ("source_from_operate_shiel_uin_list".equals(this.c))
     {
-      addObserver(this.jdField_a_of_type_Akgi);
+      addObserver(this.jdField_a_of_type_Akgh);
       bool = paramBundle.getBooleanExtra("isCancelShield", false);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
       this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)paramBundle.getParcelableExtra("allinone"));
-      localObject = (aser)this.app.getManager(16);
+      localObject = (aset)this.app.getManager(16);
       if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null))
       {
         try
@@ -146,11 +146,11 @@ public class ShareToQQActivity
           l = Long.parseLong(paramBundle);
           paramBundle = new ArrayList();
           paramBundle.add(Long.valueOf(l));
-          int i = bazo.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+          int i = bbac.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
           if (bool) {
-            ((aser)localObject).b(i, paramBundle);
+            ((aset)localObject).b(i, paramBundle);
           } else {
-            ((aser)localObject).a(i, paramBundle);
+            ((aset)localObject).a(i, paramBundle);
           }
         }
         catch (NumberFormatException paramBundle)
@@ -173,12 +173,12 @@ public class ShareToQQActivity
     {
       if ("share_from_troop_member_card".equals(this.c))
       {
-        aqbc.a(this, paramBundle, 21);
+        aqbe.a(this, paramBundle, 21);
         return true;
       }
       if (TextUtils.equals(this.c, "OD"))
       {
-        batu.b(this, paramBundle.getExtras(), 1001);
+        baui.b(this, paramBundle.getExtras(), 1001);
         return true;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -186,19 +186,19 @@ public class ShareToQQActivity
         localObject = new MessageForQQStory();
         ((MessageForQQStory)localObject).coverImgUrl = paramBundle.getStringExtra("imageUrl");
         ((MessageForQQStory)localObject).brief = paramBundle.getStringExtra("summary");
-        ((MessageForQQStory)localObject).srcName = ssi.jdField_a_of_type_JavaLangString;
+        ((MessageForQQStory)localObject).srcName = ssf.jdField_a_of_type_JavaLangString;
         ((MessageForQQStory)localObject).srcAction = "mqqapi://qstory/opendiscovery?src_type=internal&version=1";
         ((MessageForQQStory)localObject).msgAction = String.format("nowmqqapi://now/openroom?src_type=app&version=1&roomid=%s&first=%d&bid=1&contentType=2&unionid=%s", new Object[] { Long.valueOf(paramBundle.getLongExtra("roomid", 0L)), Integer.valueOf(2), paramBundle.getStringExtra("unionid") });
         ((MessageForQQStory)localObject).authorName = paramBundle.getStringExtra("anchorname");
         ((MessageForQQStory)localObject).logoImgUrl = "http://p.qpic.cn/qqstory_pic/hb4ycQ6NORNib7icgbswTvTCmkTyROl41Rcw9UeasFKzLwevbfJVhMRA/";
         ((MessageForQQStory)localObject).briefBgColor = -16395392;
         ((MessageForQQStory)localObject).type = 0;
-        batu.a(this, (MessageForQQStory)localObject, 1001);
+        baui.a(this, (MessageForQQStory)localObject, 1001);
       }
       for (;;)
       {
         return true;
-        batu.a(this, paramBundle.getExtras(), 1001);
+        baui.a(this, paramBundle.getExtras(), 1001);
       }
     }
     label611:
@@ -210,12 +210,12 @@ public class ShareToQQActivity
     super.doOnDestroy();
     jdField_a_of_type_Boolean = false;
     if ("shiel_uin".equals(this.c)) {
-      removeObserver(this.jdField_a_of_type_Ajxl);
+      removeObserver(this.jdField_a_of_type_Ajxj);
     }
     while (!"source_from_operate_shiel_uin_list".equals(this.c)) {
       return;
     }
-    removeObserver(this.jdField_a_of_type_Akgi);
+    removeObserver(this.jdField_a_of_type_Akgh);
   }
 }
 

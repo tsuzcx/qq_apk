@@ -1,67 +1,46 @@
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
+import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amhs
-  implements amhn
+  implements amhm
 {
+  private String a = "ReadInJoyLauncher";
+  
   public void a(Context paramContext, ColorNote paramColorNote)
   {
-    Object localObject1 = paramColorNote.getSubType();
-    if (((String)localObject1).startsWith("qzone_detail")) {}
-    do
-    {
-      try
-      {
-        Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
-        int i = ((JSONObject)localObject2).getInt("appid");
-        paramColorNote = ((JSONObject)localObject2).getString("cellid");
-        localObject1 = ((JSONObject)localObject2).getString("subid");
-        long l = ((JSONObject)localObject2).getLong("uin");
-        ((JSONObject)localObject2).getString("source");
-        boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
-        String str = ((JSONObject)localObject2).getString("mainTitle");
-        localObject2 = ((JSONObject)localObject2).getString("subType");
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("req_from_kuolie", bool);
-        localBundle.putString("mainTitle", str);
-        localBundle.putString("subType", (String)localObject2);
-        bgxy.a(paramContext, bgyf.a(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
-        return;
-      }
-      catch (JSONException paramContext)
-      {
-        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-        return;
-      }
-      if (((String)localObject1).startsWith("qzone_userhome")) {
-        try
-        {
-          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
-          bgxy.a(paramContext, bgyf.a(), paramColorNote, 0, 0, 0, null, null, true);
-          return;
-        }
-        catch (JSONException paramContext)
-        {
-          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-          return;
-        }
-      }
-    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
-    try
-    {
-      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
-      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
-      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
-      bgxy.a(paramContext, bgyf.a(), paramColorNote, 0, 0, null, (String)localObject1, true);
+    paramColorNote = paramColorNote.getReserve();
+    if (paramColorNote == null) {
       return;
     }
-    catch (JSONException paramContext)
+    try
     {
-      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
+      localParcel.setDataPosition(0);
+      paramColorNote = new ArticleInfo(localParcel);
+      if (paramColorNote == null)
+      {
+        QLog.d(this.a, 2, "init color error something is null");
+        return;
+      }
+    }
+    catch (Exception paramColorNote)
+    {
+      for (;;)
+      {
+        QLog.e(this.a, 2, "unmarshall error");
+        paramColorNote.printStackTrace();
+        paramColorNote = null;
+      }
+      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
+      paramColorNote = onq.b(paramContext, paramColorNote);
+      paramColorNote.addFlags(268435456);
+      paramColorNote.putExtra("from_color_note", true);
+      paramContext.startActivity(paramColorNote);
     }
   }
 }

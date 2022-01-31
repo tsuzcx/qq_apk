@@ -1,16 +1,44 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import android.os.Handler;
+import android.os.Looper;
 
-@SuppressLint({"NewApi"})
-public abstract interface bfny
-  extends ActionMode.Callback
+public class bfny
 {
-  public abstract void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean);
+  private static Handler a;
+  
+  public static void a(Runnable paramRunnable)
+  {
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.post(paramRunnable);
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.postDelayed(paramRunnable, paramLong);
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bfny
  * JD-Core Version:    0.7.0.1
  */

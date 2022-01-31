@@ -1,4 +1,7 @@
-class arsi {}
+class arsi
+{
+  private static arsh a = new arsh(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

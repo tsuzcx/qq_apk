@@ -1,35 +1,31 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abyv
-  implements TextWatcher
+  implements ActionMode.Callback
 {
-  public abyv(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public abyv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramEditable == null) {}
-    for (;;)
-    {
-      return;
-      if (TextUtils.isEmpty(paramEditable.toString())) {
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      }
-      while (RegisterPersonalInfoActivity.a(this.a) != null)
-      {
-        RegisterPersonalInfoActivity.a(this.a).b(RegisterPersonalInfoActivity.a(this.a).isEnabled());
-        return;
-        RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
-      }
-    }
+    return false;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.clear();
+    return false;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

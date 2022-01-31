@@ -1,15 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import java.lang.ref.WeakReference;
 
-class bcmo
-  implements ValueAnimator.AnimatorUpdateListener
+public class bcmo
+  extends Handler
 {
-  bcmo(bcmn parambcmn) {}
+  private final WeakReference<GifAnimationDrawable> a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bcmo(GifAnimationDrawable paramGifAnimationDrawable)
   {
-    bcmn.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidateSelf();
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramGifAnimationDrawable);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    GifAnimationDrawable localGifAnimationDrawable;
+    do
+    {
+      return;
+      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
+    } while (localGifAnimationDrawable == null);
+    GifAnimationDrawable.a(localGifAnimationDrawable, (bcmn)paramMessage.obj);
   }
 }
 

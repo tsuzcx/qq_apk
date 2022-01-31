@@ -1,27 +1,28 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class utt
-  extends QQUIEventReceiver<utn, tch>
+  extends QQUIEventReceiver<utr, tcd>
 {
-  public utt(utn paramutn)
+  public utt(@NonNull utr paramutr)
   {
-    super(paramutn);
+    super(paramutr);
   }
   
-  public void a(@NonNull utn paramutn, @NonNull tch paramtch)
+  public void a(@NonNull utr paramutr, @NonNull tcd paramtcd)
   {
-    if (paramtch.a.isSuccess())
+    if (paramtcd.a)
     {
-      veg.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramtch.toString());
-      utn.a(paramutn, true);
+      ved.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramtcd);
+      utr.a(paramutr).a.h();
     }
   }
   
   public Class acceptEventClass()
   {
-    return tch.class;
+    return tcd.class;
   }
 }
 

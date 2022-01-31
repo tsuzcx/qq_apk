@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import android.database.DataSetObserver;
-import rjo;
-import rjs;
+import rjl;
+import rjp;
 
 public class FastWebActivity$9$2
   implements Runnable
 {
-  public FastWebActivity$9$2(rjo paramrjo, DataSetObserver paramDataSetObserver) {}
+  public FastWebActivity$9$2(rjl paramrjl, DataSetObserver paramDataSetObserver) {}
   
   public void run()
   {
-    FastWebActivity.a(this.jdField_a_of_type_Rjo.a).unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+    FastWebActivity.a(this.jdField_a_of_type_Rjl.a).unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
   }
 }
 

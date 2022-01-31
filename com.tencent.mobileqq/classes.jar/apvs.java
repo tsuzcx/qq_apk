@@ -8,8 +8,16 @@ final class apvs
   
   protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    super.a(paramAsyncTask, paramInt);
-    eo.a(this.a, paramAsyncTask, paramInt, new apvt(this));
+    try
+    {
+      eo.a(this.a, paramAsyncTask, paramInt, new apvt(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 

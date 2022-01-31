@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import binu;
+import biol;
 
 public class AEMaterialAdapter$4
   implements Runnable
 {
-  public AEMaterialAdapter$4(binu parambinu, int paramInt) {}
+  public AEMaterialAdapter$4(biol parambiol, int paramInt) {}
   
   public void run()
   {

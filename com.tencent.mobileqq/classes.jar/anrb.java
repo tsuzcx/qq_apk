@@ -1,12 +1,10 @@
-class anrb
-  implements asun
+public class anrb
 {
-  anrb(anra paramanra) {}
-  
-  public void a()
-  {
-    anqx.a(this.a.a).a().a();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

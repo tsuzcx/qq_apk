@@ -1,19 +1,16 @@
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class bkub
-  extends bjww
+  implements DialogInterface.OnClickListener
 {
-  public bkub(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  public bkub(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  protected void c()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.c();
-    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
-    {
-      axtw localaxtw = new axtw();
-      localaxtw.d = "0X800903D";
-      axqs.a(null, localaxtw);
-    }
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
 }
 

@@ -1,37 +1,14 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Messenger;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.List;
-
-public abstract interface besf
+public class besf
 {
-  public abstract void init(Context paramContext);
-  
-  public abstract boolean isMiniProcess(String paramString);
-  
-  public abstract void onAppBackground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppForeground(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStart(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void onAppStop(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo, Bundle paramBundle);
-  
-  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
-  
-  public abstract void preloadMiniApp(Bundle paramBundle);
-  
-  public abstract void registerClientMessenger(String paramString, Messenger paramMessenger);
-  
-  public abstract void registerProcessInfo(List<besg> paramList);
-  
-  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
-  
-  public abstract void stopMiniApp(MiniAppInfo paramMiniAppInfo);
+  public besk a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 

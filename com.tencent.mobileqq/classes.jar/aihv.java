@@ -1,31 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class aihv
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   public aihv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.d();
-    }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
-    }
-    this.a.d();
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 

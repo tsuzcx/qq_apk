@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acvu;
-import acvv;
-import agzf;
+import acvq;
+import acvr;
+import agzd;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class CustomizeStrategyFactory$VoiceResStrategy$1
   implements Runnable
 {
-  public CustomizeStrategyFactory$VoiceResStrategy$1(acvu paramacvu, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public CustomizeStrategyFactory$VoiceResStrategy$1(acvq paramacvq, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
@@ -18,14 +18,14 @@ public class CustomizeStrategyFactory$VoiceResStrategy$1
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "VoiceResStrategy");
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.this$0.jdField_a_of_type_Agzf == null))
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.this$0.jdField_a_of_type_Agzd == null))
       {
         CustomizeStrategyFactory.a().a(this.a);
         return;
       }
-      String str = this.this$0.jdField_a_of_type_Agzf.a("voice_pwd", "http://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
+      String str = this.this$0.jdField_a_of_type_Agzd.a("voice_pwd", "http://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
       str = str + "voice_rate_" + this.a.templateId + ".zip";
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(str, new acvv(this));
+      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(str, new acvr(this));
       return;
     }
     catch (Throwable localThrowable)

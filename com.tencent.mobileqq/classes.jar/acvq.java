@@ -1,20 +1,25 @@
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class acvq
-  implements acvi
+  implements acve
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public agzd a;
+  public PreloadManager a;
+  private QQAppInterface a;
   
   public acvq(QQAppInterface paramQQAppInterface)
   {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+    this.jdField_a_of_type_Agzd = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+      this.jdField_a_of_type_Agzd = ((agzd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
     }
   }
   
@@ -22,16 +27,16 @@ public class acvq
   
   public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (paramRedPacketInfo == null) {
-      return;
-    }
-    ThreadManager.post(new CustomizeStrategyFactory.ThemeAnimStrategy.1(this, paramRedPacketInfo), 5, null, true);
+    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aelu paramaelu)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aels paramaels)
   {
-    if ((paramRedPacketInfo != null) && ((paramaelu instanceof aelz))) {
-      paramRedPacketInfo.animInfo = ((aelz)paramaelu).a;
+    if ((paramRedPacketInfo != null) && ((paramaels instanceof aelz)))
+    {
+      paramaels = (aelz)paramaels;
+      paramRedPacketInfo.icon = paramaels.a;
+      paramRedPacketInfo.resPath = paramaels.b;
     }
   }
 }

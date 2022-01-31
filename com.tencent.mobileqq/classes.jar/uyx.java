@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
-public class uyx
-  extends ssk
+public abstract interface uyx
 {
-  public ArrayList<String> a;
+  public abstract void a(uyc paramuyc);
 }
 
 

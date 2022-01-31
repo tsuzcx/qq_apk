@@ -1,21 +1,27 @@
-final class anhq<T>
+import android.support.v4.util.LruCache;
+
+class anhq
+  extends LruCache<String, T>
 {
-  public anhq<T> a;
-  public final T a;
-  public anhq<T> b;
-  
-  public anhq()
+  anhq(anhp paramanhp, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Anhq = this;
-    this.b = this;
+    super(paramInt);
   }
   
-  public anhq(T paramT, anhq<T> paramanhq1, anhq<T> paramanhq2)
+  protected int a(String paramString, T paramT)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Anhq = paramanhq1;
-    this.b = paramanhq2;
+    int i;
+    if (paramT == null) {
+      i = 0;
+    }
+    int j;
+    do
+    {
+      return i;
+      j = anhp.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 

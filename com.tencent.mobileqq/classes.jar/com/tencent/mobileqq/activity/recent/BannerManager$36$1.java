@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahkf;
-import ahll;
+import ahkd;
+import ahlj;
 
 public class BannerManager$36$1
   implements Runnable
 {
-  public BannerManager$36$1(ahll paramahll) {}
+  public BannerManager$36$1(ahlj paramahlj) {}
   
   public void run()
   {
-    ahkf.a(this.a.a, true);
+    ahkd.a(this.a.a, true);
   }
 }
 

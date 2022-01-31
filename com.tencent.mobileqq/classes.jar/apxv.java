@@ -1,34 +1,12 @@
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-
-public class apxv
+public abstract interface apxv
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = true;
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public apxv(QfileTabBarView paramQfileTabBarView, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

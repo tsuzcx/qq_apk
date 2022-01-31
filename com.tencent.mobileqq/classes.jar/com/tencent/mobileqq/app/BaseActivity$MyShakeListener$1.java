@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import ajsv;
+import ajst;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
-import bbab;
-import bbmo;
-import bbmr;
+import bbap;
+import bbnc;
+import bbnf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseActivity$MyShakeListener$1
   implements Runnable
 {
-  public BaseActivity$MyShakeListener$1(ajsv paramajsv, BaseActivity paramBaseActivity) {}
+  public BaseActivity$MyShakeListener$1(ajst paramajst, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class BaseActivity$MyShakeListener$1
       localObject = this.a.getSharedPreferences("screen_shot", 4).getString("currentactivity", null);
       bool = this.a.getClass().getName().equals(localObject);
     }
-    if ((bool) && (SettingCloneUtil.readValue(this.a, null, this.a.getString(2131695283), "qqsetting_screenshot_key", false)) && (bbab.a(BaseApplicationImpl.sApplication)))
+    if ((bool) && (SettingCloneUtil.readValue(this.a, null, this.a.getString(2131695284), "qqsetting_screenshot_key", false)) && (bbap.a(BaseApplicationImpl.sApplication)))
     {
       if (!this.a.isSupportScreenShot())
       {
@@ -72,8 +72,8 @@ public class BaseActivity$MyShakeListener$1
       QLog.d("qqBaseActivity", 2, "cost:" + (l2 - l1));
       return;
       label299:
-      if ((!bbmr.g) && (Build.VERSION.SDK_INT < 11)) {
-        bbmo.a().a(this.a.getWindow());
+      if ((!bbnf.g) && (Build.VERSION.SDK_INT < 11)) {
+        bbnc.a().a(this.a.getWindow());
       }
     }
   }

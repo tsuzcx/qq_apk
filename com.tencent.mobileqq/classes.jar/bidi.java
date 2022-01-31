@@ -1,63 +1,46 @@
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.utils.Utils;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
 
-final class bidi
+class bidi
+  implements bieg<WeiyunPB.DiskPicBackupRsp>
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  bidi(bidh parambidh, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
   
-  bidi(int paramInt, byte[] paramArrayOfByte)
+  public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
   }
   
-  bidi(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
+  public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
   {
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  private WeiyunPB.MsgHead a(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
-    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
-    localMsgHead.seq.set(a());
-    localMsgHead.type.set(1);
-    localMsgHead.cmd.set(paramInt);
-    localMsgHead.emulator_flag.set(0);
-    localMsgHead.appid.set(31532);
-    localMsgHead.encrypt.set(0);
-    localMsgHead.zip_flag.set(0);
-    localMsgHead.version.set(bifh.c());
-    localMsgHead.fix_version.set(bifh.d());
-    localMsgHead.nettype.set(nar.a(localAppRuntime.getApplication()));
-    localMsgHead.major_version.set(bifh.a());
-    localMsgHead.minor_version.set(bifh.b());
-    return localMsgHead;
-  }
-  
-  public int a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-  }
-  
-  public WeiyunPB.MsgHead a()
-  {
-    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
+    if (paramDiskPicBackupRsp == null)
+    {
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, ajya.a(2131715083));
+      return;
+    }
+    ByteStringMicro localByteStringMicro1 = paramDiskPicBackupRsp.pdir_key.get();
+    ByteStringMicro localByteStringMicro2 = paramDiskPicBackupRsp.ppdir_key.get();
+    if (localByteStringMicro1 != null) {
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = bige.a(localByteStringMicro1);
+    }
+    if (localByteStringMicro2 != null) {
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = bige.a(localByteStringMicro2);
+    }
+    if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
+      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
+    }
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.setServerInfo(paramDiskPicBackupRsp.file_exist.get(), paramDiskPicBackupRsp.file_id.get(), paramDiskPicBackupRsp.server_name.get(), paramDiskPicBackupRsp.inside_upload_ip.get(), paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
+    bifz.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(this.jdField_a_of_type_Bidh.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
   }
 }
 

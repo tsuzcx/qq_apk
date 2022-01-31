@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.widget.ImageView;
-import bjyv;
+import bjzm;
 
 public class LocalVideoSelectActivity$2$1
   implements Runnable
 {
-  public LocalVideoSelectActivity$2$1(bjyv parambjyv) {}
+  public LocalVideoSelectActivity$2$1(bjzm parambjzm) {}
   
   public void run()
   {

@@ -1,21 +1,22 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class uqi
-  implements TextView.OnEditorActionListener
+public abstract interface uqi
 {
-  uqi(uqh paramuqh) {}
+  public abstract void N_();
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.d();
-      return true;
-    }
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(CommentEntry paramCommentEntry);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void f_(int paramInt);
 }
 
 

@@ -1,78 +1,72 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class ndz
   implements BusinessObserver
 {
-  public ndz(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public ndz(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (!paramBoolean) {
-      if (!EqqAccountDetailActivity.a(this.a)) {
-        this.a.d(2131695568);
-      }
+    if (!paramBoolean)
+    {
+      this.a.a(2131695569);
+      return;
     }
     for (;;)
     {
-      EqqAccountDetailActivity.a(this.a);
-      if (EqqAccountDetailActivity.b(this.a) == 0) {
-        EqqAccountDetailActivity.a(this.a);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
-      }
-      return;
-      if (paramBoolean) {}
+      byte[] arrayOfByte;
+      oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          break;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0)
         {
-          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
-              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
-              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
-              {
-                this.a.a(paramBundle, false);
-                continue;
-              }
-              this.a.a(paramBundle, true);
-              continue;
-            }
-            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
-              continue;
-            }
-            this.a.f();
-            continue;
+          paramBundle.mergeFrom(arrayOfByte);
+          paramBoolean = true;
+          if (!paramBoolean) {
+            break;
           }
-          this.a.d(2131695568);
-          continue;
+          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+            break label259;
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
+          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+          PubAccountMoreInfoActivity.a(this.a);
+          return;
         }
-        if (EqqAccountDetailActivity.d(this.a)) {
-          continue;
-        }
-        this.a.d(2131695568);
       }
-      catch (Exception paramBundle) {}
-      if (!EqqAccountDetailActivity.e(this.a)) {
-        this.a.d(2131695568);
+      catch (Exception paramBundle)
+      {
+        this.a.a(2131695569);
+        return;
       }
+      paramBoolean = sgg.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
     }
+    label259:
+    this.a.a(2131695569);
   }
 }
 

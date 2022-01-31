@@ -1,33 +1,99 @@
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
-class agfb
-  implements bfpd
+public class agfb
+  extends BaseAdapter
 {
-  agfb(aget paramaget) {}
+  private static final String jdField_a_of_type_JavaLangString = agfb.class.getSimpleName();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bfnk jdField_a_of_type_Bfnk;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<agef> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public agfb(Context paramContext, bfnk parambfnk, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bfnk = parambfnk;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(aget.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString);
     }
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
-    if (paramAdapterView == this.a.jdField_a_of_type_Ages)
+    if (paramString == null) {
+      return;
+    }
+    String[] arrayOfString = bbeb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (arrayOfString != null)
     {
-      this.a.jdField_a_of_type_Ager = ((ager)this.a.jdField_a_of_type_Ages.getItem(paramInt));
-      paramView.setSelected(true);
-      paramAdapterView = new bblr();
-      paramAdapterView.a(2131364825, ajyc.a(2131706661), 2130838597);
-      paramAdapterView.a(2131366632, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692752), 2130838606);
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bbcc.a(paramView, paramAdapterView, aget.a(this.a), new agfc(this, paramView));
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        if (a(str, paramString)) {
+          this.jdField_a_of_type_JavaUtilList.add(new agef(str));
+        }
+        i += 1;
+      }
     }
-    while (paramAdapterView != this.a.jdField_a_of_type_Agfd) {
-      return true;
+    notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "loadHistory, keyword = " + paramString + ", histories = " + this.jdField_a_of_type_JavaUtilList.toString());
     }
-    return true;
+    this.jdField_a_of_type_Bfnk.sendEmptyMessage(3);
+  }
+  
+  boolean a(String paramString1, String paramString2)
+  {
+    return paramString1.toLowerCase(Locale.US).contains(paramString2.toLowerCase(Locale.US));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    agef localagef = (agef)getItem(paramInt);
+    View localView;
+    if (paramView == null)
+    {
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559213, null);
+      paramView = new agfd(null);
+      paramView.a = ((TextView)localView.findViewById(2131377032));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
+    }
+    for (;;)
+    {
+      paramViewGroup.a.setText(localagef.jdField_a_of_type_JavaLangString);
+      return localView;
+      paramViewGroup = (agfd)paramView.getTag();
+      localView = paramView;
+    }
   }
 }
 

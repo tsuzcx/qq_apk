@@ -1,33 +1,39 @@
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+
 class atst
-  implements amng
+  extends aywb
 {
-  atst(atsa paramatsa) {}
+  atst(atsc paramatsc) {}
   
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
+    ayqo localayqo = (ayqo)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+    case 1004: 
+    default: 
+    case 1003: 
+      do
+      {
+        do
+        {
+          return;
+        } while (localayqo.b != 8);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + aysv.a);
+        }
+      } while (atsc.a(this.a) == null);
+      atsc.a(this.a).a = aysv.a;
+      atsc.d(this.a);
+      return;
     }
-    else
-    {
-      paramInt1 = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
     }
-    if (paramInt1 == 0) {
-      return ajyc.a(2131707285);
-    }
-    return ajyc.a(2131707256);
+    this.a.a.a();
+    this.a.a.b(ajya.a(2131707307));
   }
 }
 

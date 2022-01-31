@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.SurfaceView;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agok
-  implements DialogInterface.OnClickListener
+  implements bbvq
 {
   public agok(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      this.a.a.setVisibility(0);
+      this.a.e();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.a.setVisibility(8);
+      this.a.f();
+    }
+  }
 }
 
 

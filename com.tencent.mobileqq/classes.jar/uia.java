@@ -1,41 +1,15 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class uia
-  implements View.OnLongClickListener
+  implements bfpj
 {
-  uia(uhz paramuhz) {}
+  uia(uhw paramuhw, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public boolean onLongClick(View paramView)
+  public void onDismiss()
   {
-    int i = 0;
-    paramView = (tcv)tdc.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
-    {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-      if (paramView != null)
-      {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      paramView.a(i);
-      return true;
-      bool = false;
-      break;
-      label90:
-      i = 8;
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
   }
 }

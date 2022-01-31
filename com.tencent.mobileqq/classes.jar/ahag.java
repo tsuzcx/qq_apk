@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahag
+  implements agwn
 {
-  public int a;
-  public BaseHbFragment a;
-  public String a;
+  public ahag(ThemeHbFragment paramThemeHbFragment) {}
   
-  public ahag(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    }
   }
 }
 

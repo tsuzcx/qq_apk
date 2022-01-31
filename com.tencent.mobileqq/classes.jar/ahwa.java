@@ -1,11 +1,26 @@
-public class ahwa
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class ahwa
+  implements Handler.Callback
 {
-  public static final String a = bbuv.a(ajsf.aV);
-  public static final String b = ajsf.be;
-  public static final String c = bbuv.a(ajsf.bf);
-  public static final String d = azaa.a(ajsf.aW);
-  public static final String e = ajsf.bj;
-  public static final String f = ajsf.bq;
+  ahwa(ahvz paramahvz) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (ahvz.a(this.a) != null) {
+        ahvz.a(this.a).k();
+      }
+    }
+  }
 }
 
 

@@ -13,30 +13,30 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfvv;
-import bfvw;
-import bfvx;
-import bfvy;
-import bfvz;
+import bfwm;
+import bfwn;
+import bfwo;
+import bfwp;
+import bfwq;
 
 public class TCWNumberPicker
   extends LinearLayout
   implements View.OnClickListener, View.OnFocusChangeListener, View.OnLongClickListener
 {
-  public static final bfvw a;
+  public static final bfwn a;
   private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 300L;
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private final InputFilter jdField_a_of_type_AndroidTextInputFilter;
   private final EditText jdField_a_of_type_AndroidWidgetEditText;
-  private bfvz jdField_a_of_type_Bfvz;
+  private bfwq jdField_a_of_type_Bfwq;
   private TCWNumberPickerButton jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton;
   private final Runnable jdField_a_of_type_JavaLangRunnable = new TCWNumberPicker.AutoIncDecRunnable(this);
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int jdField_b_of_type_Int;
-  private bfvw jdField_b_of_type_Bfvw;
+  private bfwn jdField_b_of_type_Bfwn;
   private TCWNumberPickerButton jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton;
   private boolean jdField_b_of_type_Boolean;
   private int c;
@@ -44,7 +44,7 @@ public class TCWNumberPicker
   
   static
   {
-    jdField_a_of_type_Bfvw = new bfvv();
+    jdField_a_of_type_Bfwn = new bfwm();
   }
   
   public TCWNumberPicker(Context paramContext)
@@ -63,17 +63,17 @@ public class TCWNumberPicker
     setOrientation(1);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559352, this, true);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    paramContext = new bfvx(this, null);
-    this.jdField_a_of_type_AndroidTextInputFilter = new bfvy(this, null);
+    paramContext = new bfwo(this, null);
+    this.jdField_a_of_type_AndroidTextInputFilter = new bfwp(this, null);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131368067));
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setOnLongClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetTCWNumberPickerButton.setNumberPicker(this);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131364962));
+    this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton = ((TCWNumberPickerButton)findViewById(2131364961));
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setOnClickListener(this);
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setOnLongClickListener(this);
     this.jdField_b_of_type_ComTencentWidgetTCWNumberPickerButton.setNumberPicker(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131377299));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131377300));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { paramContext });
     this.jdField_a_of_type_AndroidWidgetEditText.setRawInputType(2);
@@ -118,8 +118,8 @@ public class TCWNumberPicker
   
   private String a(int paramInt)
   {
-    if (this.jdField_b_of_type_Bfvw != null) {
-      return this.jdField_b_of_type_Bfvw.a(paramInt);
+    if (this.jdField_b_of_type_Bfwn != null) {
+      return this.jdField_b_of_type_Bfwn.a(paramInt);
     }
     return String.valueOf(paramInt);
   }
@@ -183,8 +183,8 @@ public class TCWNumberPicker
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bfvz != null) {
-      this.jdField_a_of_type_Bfvz.a(this, this.d, this.c);
+    if (this.jdField_a_of_type_Bfwq != null) {
+      this.jdField_a_of_type_Bfwq.a(this, this.d, this.c);
     }
   }
   
@@ -220,7 +220,7 @@ public class TCWNumberPicker
     if (2131368067 == paramView.getId()) {
       a(this.c + 1);
     }
-    while (2131364962 != paramView.getId()) {
+    while (2131364961 != paramView.getId()) {
       return;
     }
     a(this.c - 1);
@@ -241,7 +241,7 @@ public class TCWNumberPicker
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
     }
-    while (2131364962 != paramView.getId()) {
+    while (2131364961 != paramView.getId()) {
       return true;
     }
     this.jdField_b_of_type_Boolean = true;
@@ -263,14 +263,14 @@ public class TCWNumberPicker
     this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(paramBoolean);
   }
   
-  public void setFormatter(bfvw parambfvw)
+  public void setFormatter(bfwn parambfwn)
   {
-    this.jdField_b_of_type_Bfvw = parambfvw;
+    this.jdField_b_of_type_Bfwn = parambfwn;
   }
   
-  public void setOnChangeListener(bfvz parambfvz)
+  public void setOnChangeListener(bfwq parambfwq)
   {
-    this.jdField_a_of_type_Bfvz = parambfvz;
+    this.jdField_a_of_type_Bfwq = parambfwq;
   }
   
   public void setRange(int paramInt1, int paramInt2)

@@ -1,11 +1,17 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
 class rli
-  extends pak
+  implements ViewBase.OnClickListener
 {
   rli(rlh paramrlh) {}
   
-  public void a(String paramString)
+  public void onClick(ViewBase paramViewBase)
   {
-    osm.a().b();
+    rle.a(true);
+    rno.a(this.a.a.a, "0X800974B");
+    onh.a(rlg.a(this.a.a).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

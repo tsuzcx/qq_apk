@@ -1,52 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.view.animation.Interpolator;
 
-public class aond
-  implements Animation.AnimationListener
+class aond
+  implements Interpolator
 {
-  public aond(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  aond(aomx paramaomx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public float getInterpolation(float paramFloat)
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
-      return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839577);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839578);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839579);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-      }
-    }
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 

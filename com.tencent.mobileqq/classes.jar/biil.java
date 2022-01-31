@@ -1,8 +1,13 @@
-import java.io.File;
+import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
+import com.tencent.ttpic.video.AEDecoder;
 
-public class biil
+final class biil
+  implements AECoderFactory.AEDecoderFactory
 {
-  public static final String a = biia.b + File.separator + "tmp";
+  public AEDecoder createDecoder(String paramString)
+  {
+    return new avxg(paramString);
+  }
 }
 
 

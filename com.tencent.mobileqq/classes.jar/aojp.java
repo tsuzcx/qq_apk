@@ -1,70 +1,45 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aojp
 {
-  private int a;
-  private int b;
+  public int a;
+  protected aojc a;
+  protected aojo a;
   
-  public static aojp a(ampi paramampi)
+  public aojp(aojo paramaojo, aojc paramaojc)
   {
-    aojp localaojp = new aojp();
-    if (paramampi != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        paramampi = paramampi.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramampi))
-        {
-          paramampi = new JSONObject(paramampi);
-          localaojp.a(paramampi.optInt("business_switch", 0));
-          localaojp.b(paramampi.optInt("showInRecentView", 0));
-          return localaojp;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
-          return localaojp;
-        }
-      }
-      catch (JSONException paramampi)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramampi.toString());
-        }
-      }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Aojc = paramaojc;
+    this.jdField_a_of_type_Aojo = paramaojo;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
     }
-    return localaojp;
   }
   
-  void a(int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
+    }
   }
   
-  public boolean a()
+  public boolean a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
+    return false;
   }
   
-  void b(int paramInt)
+  public void b()
   {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 

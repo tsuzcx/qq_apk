@@ -1,47 +1,19 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aawr
-  extends ajuv
+  extends ssv
 {
   public aawr(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void d(boolean paramBoolean)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, ajsf.z, 6000);
-    }
-    while (i != 1) {
+    if (paramBoolean)
+    {
+      ved.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
       return;
     }
-    this.a.a(8, ajsf.A, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, ajsf.z, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, ajsf.A, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, ajsf.z, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, ajsf.A, 6003);
+    Conversation.a(this.a, false);
   }
 }
 

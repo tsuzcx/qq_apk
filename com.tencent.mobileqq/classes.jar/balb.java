@@ -1,38 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
+import java.util.ArrayList;
 
-class balb
-  extends mxl
+public class balb
 {
-  balb(bakt parambakt, baks parambaks) {}
+  public int a;
+  public balc a;
+  public bald a;
+  public bale a;
+  public balf a;
+  public String a;
+  public ArrayList<akih> a;
+  public int b = -1;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public balb(String paramString, balc parambalc)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_Baks != null) {
-        this.jdField_a_of_type_Baks.a(paramInt, "sso request error or callback is null.");
-      }
-    }
-    do
-    {
-      return;
-      paramBundle = new cmd0x9e9.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Baks.a(paramBundle.int64_total_point.get() / 100L);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Balc = parambalc;
+    this.jdField_a_of_type_Int = 5;
+  }
+  
+  public balb(String paramString, bald parambald)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bald = parambald;
+    this.jdField_a_of_type_Int = 4;
+  }
+  
+  public balb(String paramString, bale parambale)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bale = parambale;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public balb(String paramString, balf parambalf)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Balf = parambalf;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public balb(String paramString, ArrayList<akih> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Int = 3;
   }
 }
 

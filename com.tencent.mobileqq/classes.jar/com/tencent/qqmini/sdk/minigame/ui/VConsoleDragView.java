@@ -7,9 +7,9 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bewo;
-import bfgb;
-import bfgx;
+import bexf;
+import bfgs;
+import bfho;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
 
 public class VConsoleDragView
@@ -17,7 +17,7 @@ public class VConsoleDragView
 {
   private int jdField_a_of_type_Int;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  private bewo jdField_a_of_type_Bewo;
+  private bexf jdField_a_of_type_Bexf;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -51,10 +51,10 @@ public class VConsoleDragView
   
   private void b()
   {
-    this.jdField_a_of_type_Int = bfgx.a();
-    int n = bfgx.b();
-    if (bfgb.a()) {}
-    for (int m = bfgb.a(getContext());; m = 0)
+    this.jdField_a_of_type_Int = bfho.a();
+    int n = bfho.b();
+    if (bfgs.a()) {}
+    for (int m = bfgs.a(getContext());; m = 0)
     {
       this.b = (m + n);
       this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
@@ -64,8 +64,8 @@ public class VConsoleDragView
   
   public void a()
   {
-    int m = bfgx.a();
-    int i1 = bfgx.b();
+    int m = bfho.a();
+    int i1 = bfho.b();
     if (m > i1)
     {
       n = m;
@@ -78,8 +78,8 @@ public class VConsoleDragView
       this.jdField_a_of_type_AndroidUtilDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
       return;
     }
-    if (bfgb.a()) {}
-    for (int n = bfgb.a(getContext());; n = 0)
+    if (bfgs.a()) {}
+    for (int n = bfgs.a(getContext());; n = 0)
     {
       n += i1;
       break;
@@ -148,16 +148,16 @@ public class VConsoleDragView
         }
       }
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bewo != null)) {
-      this.jdField_a_of_type_Bewo.d();
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bexf != null)) {
+      this.jdField_a_of_type_Bexf.d();
     }
     this.jdField_a_of_type_Boolean = false;
     return true;
   }
   
-  public void setListener(bewo parambewo)
+  public void setListener(bexf parambexf)
   {
-    this.jdField_a_of_type_Bewo = parambewo;
+    this.jdField_a_of_type_Bexf = parambexf;
   }
 }
 

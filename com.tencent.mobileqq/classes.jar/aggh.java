@@ -1,20 +1,87 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aggh
-  extends GestureDetector.SimpleOnGestureListener
+public class aggh
 {
-  aggh(aggg paramaggg) {}
+  public Map<Integer, Boolean> a;
+  public boolean a;
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public aggh()
   {
-    if (aggg.a(this.a) != null)
-    {
-      aggg.a(this.a).onClick(aggg.a(this.a));
-      return true;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public static aggh a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfamph[0].a);
     }
-    return false;
+    localaggh = new aggh();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
+      int i;
+      label93:
+      int k;
+      if (paramArrayOfamph.optInt("allSwitch") == 1)
+      {
+        bool = true;
+        localaggh.jdField_a_of_type_Boolean = bool;
+        paramArrayOfamph = paramArrayOfamph.optJSONArray("business");
+        int j = paramArrayOfamph.length();
+        i = 0;
+        if (i >= j) {
+          break label174;
+        }
+        JSONObject localJSONObject = (JSONObject)paramArrayOfamph.get(i);
+        k = localJSONObject.optInt("id");
+        if (localJSONObject.optInt("switch") != 1) {
+          break label163;
+        }
+      }
+      label163:
+      for (boolean bool = true;; bool = false)
+      {
+        localaggh.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
+        i += 1;
+        break label93;
+        bool = false;
+        break;
+      }
+      return localaggh;
+    }
+    catch (Exception paramArrayOfamph)
+    {
+      paramArrayOfamph.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("allSwitch = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",businessSwitch: ");
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
+        localStringBuilder.append(localInteger);
+        localStringBuilder.append("=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 

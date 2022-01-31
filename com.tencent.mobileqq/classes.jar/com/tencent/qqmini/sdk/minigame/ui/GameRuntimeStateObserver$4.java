@@ -1,17 +1,17 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
 import android.app.Activity;
-import bewi;
+import bewz;
 
 public class GameRuntimeStateObserver$4
   implements Runnable
 {
-  public GameRuntimeStateObserver$4(bewi parambewi) {}
+  public GameRuntimeStateObserver$4(bewz parambewz) {}
   
   public void run()
   {
-    if (!bewi.a(this.this$0).isFinishing()) {
-      bewi.a(this.this$0).finish();
+    if (!bewz.a(this.this$0).isFinishing()) {
+      bewz.a(this.this$0).finish();
     }
   }
 }

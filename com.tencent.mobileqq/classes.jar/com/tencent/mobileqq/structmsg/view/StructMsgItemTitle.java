@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import axup;
+import axur;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends axup
+  extends axur
 {
   public boolean c;
   public boolean d;
@@ -52,7 +52,7 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131378378;
+    return 2131378383;
   }
   
   public int e()

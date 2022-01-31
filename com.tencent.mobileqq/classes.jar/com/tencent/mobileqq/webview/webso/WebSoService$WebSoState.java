@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
-import bcgo;
+import bchc;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WebSoService$WebSoState
 {
   public int a;
-  public bcgo a;
+  public bchc a;
   public WebSoService.WebSoState.WebSo3 a;
   public String a;
   public WeakReference<Handler> a;

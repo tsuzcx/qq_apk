@@ -1,54 +1,62 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
-import tencent.hiboom.hiboomauth.hiboom_auth.TTipsInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class aqxi
-  implements DialogInterface.OnClickListener
+public class aqxi
 {
-  aqxi(int paramInt1, String paramString, Context paramContext, hiboom_auth.TTipsInfo paramTTipsInfo, int paramInt2) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aqxi()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 1: 
-      for (;;)
-      {
-        paramDialogInterface.dismiss();
-        return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
-        }
-      }
-    }
-    boolean bool1 = false;
-    boolean bool2 = false;
-    String str3 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
-    String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
-    String str4 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
-    String str1 = str3;
-    if (str3.startsWith("!"))
-    {
-      bool1 = true;
-      str1 = str3.substring(1, str3.length());
-    }
-    if (str2.startsWith("!"))
-    {
-      str2 = str2.substring(1, str2.length());
-      bool2 = true;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public int a()
+  {
+    int i = 1;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (!this.jdField_b_of_type_JavaLangString.startsWith("act")) {}
     }
     for (;;)
     {
-      str3 = URLEncoder.encode("jsbridge://font/paySuccess?p={\"id\":" + this.b + "}");
-      bbqw.a(this.jdField_a_of_type_AndroidContentContext, str4, str1, Integer.parseInt(str2), bool2, bool1, null, str3, false, false);
-      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("HiBoomFont.Item", 2, "getTagType id = " + this.jdField_a_of_type_Int + " type = " + i);
+      }
+      return i;
+      if (this.jdField_b_of_type_JavaLangString.startsWith("free"))
+      {
+        String[] arrayOfString = this.jdField_b_of_type_JavaLangString.split("-");
+        if ((arrayOfString.length >= 3) && (!TextUtils.isEmpty(arrayOfString[1])) && (TextUtils.isDigitsOnly(arrayOfString[1])) && (!TextUtils.isEmpty(arrayOfString[2])) && (TextUtils.isDigitsOnly(arrayOfString[2])))
+        {
+          long l1 = Long.parseLong(arrayOfString[1]);
+          long l2 = Long.parseLong(arrayOfString[2]);
+          long l3 = NetConnInfoCenter.getServerTime();
+          if ((l3 > l1) && (l3 < l2))
+          {
+            i = 2;
+            continue;
+          }
+        }
+      }
+      i = 0;
     }
+  }
+  
+  public String toString()
+  {
+    return "HiBoomItem: id = " + this.jdField_a_of_type_Int + " name = " + this.jdField_a_of_type_JavaLangString + " engine = " + this.jdField_b_of_type_Int;
   }
 }
 

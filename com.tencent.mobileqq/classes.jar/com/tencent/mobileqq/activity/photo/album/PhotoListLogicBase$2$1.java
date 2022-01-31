@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agsd;
-import agsj;
-import agsk;
+import agsb;
+import agsh;
+import agsi;
 import android.os.Handler;
 import android.os.Message;
-import bbdj;
+import bbdx;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import cooperation.qzone.util.QZLog;
@@ -16,7 +16,7 @@ import mqq.util.WeakReference;
 public class PhotoListLogicBase$2$1
   implements Runnable
 {
-  public PhotoListLogicBase$2$1(agsk paramagsk) {}
+  public PhotoListLogicBase$2$1(agsi paramagsi) {}
   
   public void run()
   {
@@ -34,9 +34,9 @@ public class PhotoListLogicBase$2$1
       localLocalMediaInfo.mDuration = this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
       localLocalMediaInfo.fileSize = new File(this.a.jdField_a_of_type_JavaLangString).length();
       localLocalMediaInfo.isSystemMeidaStore = false;
-      agsd.a.put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
-      ((NewPhotoListActivity)this.a.jdField_a_of_type_Agsj.a.get()).a.sendMessage(localMessage);
-      bbdj.a(this.a.b);
+      agsb.a.put(this.a.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
+      ((NewPhotoListActivity)this.a.jdField_a_of_type_Agsh.a.get()).a.sendMessage(localMessage);
+      bbdx.a(this.a.b);
       return;
     }
     catch (Exception localException)

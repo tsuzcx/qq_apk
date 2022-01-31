@@ -1,51 +1,64 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.confess.BaseMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.util.Pair;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amni
-  implements Handler.Callback
 {
-  public amni(BaseMsgListFragment paramBaseMsgListFragment) {}
+  public static final Object a;
+  Pair<String, Boolean> jdField_a_of_type_ComTencentUtilPair = new Pair("", Boolean.valueOf(false));
+  ConcurrentHashMap<String, ConfessInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public boolean handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public ConfessInfo a(String arg1, int paramInt1, int paramInt2)
+  {
+    Object localObject1 = amnr.a(???, paramInt1, paramInt2);
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
+      localObject1 = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject1);
+      return localObject1;
     }
-    label196:
-    for (;;)
+  }
+  
+  public ConfessInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, String paramString4, long paramLong)
+  {
+    ConfessInfo localConfessInfo = new ConfessInfo();
+    localConfessInfo.reset();
+    localConfessInfo.topicId = paramInt2;
+    localConfessInfo.confessorSex = paramInt3;
+    localConfessInfo.confessorNick = paramString3;
+    try
     {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
-        break;
+      localConfessInfo.confessorUin = Long.parseLong(paramString2);
+      label44:
+      localConfessInfo.confessorUinStr = paramString2;
+      localConfessInfo.confessTime = paramLong;
+      if (paramString4 != null) {
+        localConfessInfo.topic = paramString4;
       }
-      this.a.jdField_a_of_type_Ahmx.a(this.a.jdField_c_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Ahmx.a(17);
-      this.a.c();
-      if ((this.a.jdField_c_of_type_Boolean) || (this.a.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("BaseMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+      a(paramString1, paramInt1, localConfessInfo);
+      return localConfessInfo;
     }
-    this.a.b = true;
-    return false;
+    catch (Exception paramString3)
+    {
+      break label44;
+    }
+  }
+  
+  public void a(String arg1, int paramInt, ConfessInfo paramConfessInfo)
+  {
+    String str = amnr.a(???, paramInt, paramConfessInfo.topicId);
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      ConfessInfo localConfessInfo = (ConfessInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      if ((localConfessInfo == null) || (!localConfessInfo.equals(paramConfessInfo))) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramConfessInfo);
+      }
+      return;
+    }
   }
 }
 

@@ -1,20 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class aoly
-  implements View.OnClickListener
+class aoly
+  implements DialogInterface.OnClickListener
 {
-  public aoly(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  aoly(aolx paramaolx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    paramView.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(paramView, 100);
-    axqw.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

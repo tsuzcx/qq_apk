@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.app.Activity;
-import axrl;
+import axrn;
 import mqq.util.WeakReference;
 
 class BaseActivity2$LogActivityOnCreateRunnalbe
@@ -18,7 +18,7 @@ class BaseActivity2$LogActivityOnCreateRunnalbe
   {
     Activity localActivity = (Activity)this.a.get();
     if (localActivity != null) {
-      axrl.a(localActivity).a(localActivity);
+      axrn.a(localActivity).a(localActivity);
     }
   }
 }

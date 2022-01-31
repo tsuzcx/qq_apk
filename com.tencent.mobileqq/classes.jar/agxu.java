@@ -1,22 +1,37 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agxu
-  implements OnCompositionLoadedListener
+  extends BroadcastReceiver
 {
-  public agxu(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
+  public agxu(SendHbActivity paramSendHbActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+    if ("com.qwallet.report".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
+      }
+    }
+    label53:
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

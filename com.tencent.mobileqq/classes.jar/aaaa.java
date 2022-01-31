@@ -1,16 +1,18 @@
-public class aaaa
-  extends zzx
+import android.view.Choreographer.FrameCallback;
+
+class aaaa
+  implements Choreographer.FrameCallback
 {
-  public void a()
+  aaaa(zzz paramzzz) {}
+  
+  public void doFrame(long paramLong)
   {
-    a(1, 9223372036854775807L);
-    a(4, 9223372036854775807L);
-    a(2, 9223372036854775807L);
+    this.a.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaaa
  * JD-Core Version:    0.7.0.1
  */

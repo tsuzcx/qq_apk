@@ -1,33 +1,25 @@
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
 
 public class atgr
-  implements atjf
+  implements URLDrawable.URLDrawableListener
 {
-  public atgr(StoryPlayController paramStoryPlayController) {}
+  public atgr(StoryPlayController paramStoryPlayController, ImageView paramImageView, atky paramatky) {}
   
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
-    {
-      paramString1 = this.a.jdField_a_of_type_Atje.a.a;
-      if (this.a.jdField_a_of_type_Atje.c()) {}
-      for (;;)
-      {
-        atiw.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
-      }
-    }
-    atiw.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_Atje.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
-    {
-      atiw.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
-      return;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (this.jdField_a_of_type_Atky != null) {
+      this.jdField_a_of_type_Atky.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
   }
 }

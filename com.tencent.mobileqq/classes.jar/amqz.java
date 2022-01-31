@@ -1,6 +1,32 @@
-abstract class amqz
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedHashMap;
+
+class amqz
+  extends amqy
 {
-  public abstract Object a(Object paramObject);
+  private String a;
+  
+  public amqz(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return null;
+      paramObject = (LinkedHashMap)paramObject;
+      if (!(paramObject instanceof LinkedHashMap))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while (TextUtils.isEmpty(this.a));
+    return paramObject.get(this.a);
+  }
 }
 
 

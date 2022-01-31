@@ -1,15 +1,19 @@
-import android.graphics.Bitmap;
-
 class afmb
-  implements awcd
+  extends ajto
 {
-  afmb(afma paramafma) {}
+  afmb(afly paramafly) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
+    if (paramBoolean)
+    {
+      bcql.a(afly.a(this.a), 2131699212, 3000).a();
+      if (afly.a(this.a) != 23) {
+        this.a.a(true);
+      }
+      return;
     }
+    bcql.a(afly.a(this.a), 2131699211, 0).a();
   }
 }
 

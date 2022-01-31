@@ -1,29 +1,19 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
 
 public class aaho
-  implements asko<bbpv>
+  implements DialogInterface.OnClickListener
 {
-  public aaho(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public aaho(AddFriendVerifyActivity.30 param30) {}
   
-  public void a(bbpv parambbpv)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (parambbpv.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
+    if (paramInt == 1)
     {
-      Object localObject = (Bitmap)parambbpv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378859));
-      AddFriendVerifyActivity.b(this.a).setVisibility(0);
-      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
-      localObject = (Bitmap)parambbpv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131378854));
-      localObject = bbst.a(this.a.getResources(), (Bitmap)localObject);
-      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
-      AddFriendVerifyActivity.b(this.a).setTextColor(parambbpv.b);
-      AddFriendVerifyActivity.a(this.a).setTextColor(parambbpv.b);
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
   }
 }

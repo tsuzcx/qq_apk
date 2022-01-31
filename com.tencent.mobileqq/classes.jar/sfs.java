@@ -1,16 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class sfs
-  implements View.OnClickListener
+  implements wxt
 {
-  sfs(sfn paramsfn, String paramString) {}
+  sfs(sfk paramsfk, String paramString, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Sfn.j();
-    this.jdField_a_of_type_Sfn.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Sfn.a.dismiss();
+    if (paramBundle != null)
+    {
+      if (this.jdField_a_of_type_Sfk.a != null) {
+        this.jdField_a_of_type_Sfk.l();
+      }
+      String str = paramBundle.getString("pic_server_id");
+      this.jdField_a_of_type_Sfk.a(paramBundle);
+      if ("-1".equals(str)) {
+        paramBundle = new JSONObject();
+      }
+    }
+    else
+    {
+      try
+      {
+        paramBundle.put("retCode", -1);
+        paramBundle.put("msg", "fail");
+        this.jdField_a_of_type_Sfk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        if (this.jdField_a_of_type_Boolean)
+        {
+          nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
+        return;
+      }
+    }
+    this.jdField_a_of_type_Sfk.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 

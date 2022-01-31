@@ -6,8 +6,8 @@ import com.tencent.gdtad.views.form.framework.GdtFormTableData;
 import com.tencent.gdtad.views.xijing.GdtButtonData;
 import com.tencent.gdtad.views.xijing.GdtTextData;
 import java.io.Serializable;
-import yxs;
-import zai;
+import yxp;
+import zaf;
 
 public class GdtFormData
   implements Serializable
@@ -42,12 +42,12 @@ public class GdtFormData
     return (this.formId != -2147483648L) && (this.padding >= 0) && ((this.title == null) || ((this.title.isValid()) && (!TextUtils.isEmpty(this.title.text)))) && (this.table != null) && (this.table.isValid()) && (this.button != null) && (this.button.isValid()) && (this.buttonHeight > 0);
   }
   
-  public zai validate()
+  public zaf validate()
   {
     if (!isValid())
     {
-      yxs.d("GdtFormData", "validate error");
-      return new zai(3, -1, null);
+      yxp.d("GdtFormData", "validate error");
+      return new zaf(3, -1, null);
     }
     return this.table.validate();
   }

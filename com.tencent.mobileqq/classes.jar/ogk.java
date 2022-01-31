@@ -1,66 +1,98 @@
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuNicknameSpan;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ogk
+  implements oia
 {
-  public int a;
-  public long a;
-  public CharSequence a;
-  public String a;
-  public CharSequence b;
+  private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
+  private List<oif> jdField_a_of_type_JavaUtilList;
   
-  public ogk(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence)
+  public ogk(ReadInJoyCommentListView paramReadInJoyCommentListView, List<oif> paramList, ohs paramohs)
   {
-    this(paramReadInJoyCommentComponentFragment, paramString, paramLong, paramCharSequence, 0);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = paramReadInJoyCommentListView;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramohs.a(this);
   }
   
-  public ogk(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
+  private ohs a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    paramReadInJoyCommentComponentFragment = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramReadInJoyCommentComponentFragment = "";
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter() instanceof bfsi)))
+    {
+      bfsi localbfsi = (bfsi)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter();
+      if ((localbfsi.getWrappedAdapter() instanceof ohs)) {
+        return (ohs)localbfsi.getWrappedAdapter();
+      }
     }
-    this.b = paramReadInJoyCommentComponentFragment;
-    this.jdField_a_of_type_Int = paramInt;
+    return null;
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  private void a(int paramInt1, int paramInt2)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt1 < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaUtilList.get(paramInt1) != null))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = BiuNicknameSpan.a(bbcl.b(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, true));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
-        break label79;
-      }
-      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
+      ((oif)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).c = paramInt2;
+      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "setHeight | postion " + paramInt1 + " itemHeight " + paramInt2);
     }
-    for (;;)
+  }
+  
+  private int b(int paramInt)
+  {
+    int j = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getWidth();
+    int i = Utils.dp2px(300.0D);
+    j = View.MeasureSpec.makeMeasureSpec(j, -2147483648);
+    if ((Build.VERSION.SDK_INT <= 19) && (paramInt == 0)) {}
+    Object localObject;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "nick name is " + this.jdField_a_of_type_JavaLangCharSequence);
-      }
+      return i;
+      localObject = a();
+    } while (localObject == null);
+    try
+    {
+      localObject = ((ohs)localObject).a(paramInt, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView, true);
+      ((View)localObject).measure(j, 0);
+      j = ((View)localObject).getMeasuredHeight();
+      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "getItemMeasureHeight index : " + paramInt + " height : " + j);
+      return j;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("ReadInJoyCommentItemHeightHelper", 2, localException, new Object[] { " index : " + paramInt });
+    }
+    return i;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((paramInt < 0) || ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() <= paramInt))) {
+      return -1;
+    }
+    oif localoif = (oif)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (localoif.c > 0) {
+      return localoif.c;
+    }
+    localoif.c = b(paramInt);
+    return localoif.c;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (paramView == null) {
+      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "onGetView view is null");
+    }
+    ViewTreeObserver localViewTreeObserver;
+    do
+    {
       return;
-      label79:
-      if ((int)Math.ceil(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.getPaint().measureText(this.jdField_a_of_type_JavaLangCharSequence.toString())) <= 0) {
-        this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangString;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    int i = 0;
-    if (!TextUtils.isEmpty(this.b)) {
-      i = this.b.length();
-    }
-    return "UserBiuInfo {uin=" + this.jdField_a_of_type_JavaLangString + ", nickName=" + this.jdField_a_of_type_JavaLangCharSequence + ", comment=" + this.b + ", length=" + i + ", feedid=" + this.jdField_a_of_type_Long + "}";
+      localViewTreeObserver = paramView.getViewTreeObserver();
+    } while (localViewTreeObserver == null);
+    localViewTreeObserver.addOnGlobalLayoutListener(new ogl(this, paramInt, paramView));
   }
 }
 

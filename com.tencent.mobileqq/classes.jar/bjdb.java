@@ -1,44 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-class bjdb
-  extends bjde
+public class bjdb
+  extends bkbm
 {
-  bjdb(bjda parambjda) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String arg1, int paramInt)
+  public bjdb(DoodleView paramDoodleView)
   {
-    synchronized (this.a)
-    {
-      this.a.a.mProgress = paramInt;
-      return;
-    }
+    super(paramDoodleView);
   }
   
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
-    }
-    paramString = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        this.a.a.mProgress = 100;
-        this.a.b();
-        return;
-      }
-      finally {}
-      this.a.a.mProgress = -1;
-      this.a.a(4);
-    }
+    return "PickLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

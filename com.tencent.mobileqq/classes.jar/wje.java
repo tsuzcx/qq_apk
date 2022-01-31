@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
 public class wje
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
   public wje(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FollowedRecommendBannerView.a(this.a);
+    this.a.clearAnimation();
+    this.a.setVisibility(8);
   }
 }
 

@@ -1,11 +1,18 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
 
 public class biva
+  implements View.OnClickListener
 {
-  public ArrayList<String> a = new ArrayList();
-  public ArrayList<String> b = new ArrayList();
-  public ArrayList<String> c = new ArrayList();
-  public ArrayList<Integer> d = new ArrayList();
+  biva(biur parambiur) {}
+  
+  public void onClick(View paramView)
+  {
+    biur.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+  }
 }
 
 

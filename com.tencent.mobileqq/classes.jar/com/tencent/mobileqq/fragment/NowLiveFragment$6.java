@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import atfx;
+import atfz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,13 +14,13 @@ final class NowLiveFragment$6
     Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
     if ((localObject instanceof NearbyAppInterface))
     {
-      localObject = (atfx)((NearbyAppInterface)localObject).getManager(214);
+      localObject = (atfz)((NearbyAppInterface)localObject).getManager(214);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("NowLiveFragment", 2, "pre login now plugin!");
         }
-        ((atfx)localObject).d();
+        ((atfz)localObject).d();
       }
     }
     while (!QLog.isColorLevel())

@@ -1,76 +1,77 @@
-import java.io.BufferedReader;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class lmv
-  extends lmu
 {
-  private float jdField_a_of_type_Float;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
-  private float jdField_b_of_type_Float;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
-  private boolean c;
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  String b;
+  String c;
+  String d;
   
-  public float a(float paramFloat)
+  public static lmv a()
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    int j = arrayOfFloat1.length;
-    int i = 1;
-    if (i < j) {
-      if (arrayOfFloat1[i] <= paramFloat) {}
+    Object localObject = lct.b(298).jdField_a_of_type_JavaLangString;
+    lmv locallmv = null;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      locallmv = a((String)localObject);
     }
-    for (;;)
+    localObject = locallmv;
+    if (locallmv == null) {
+      localObject = new lmv();
+    }
+    return localObject;
+  }
+  
+  static lmv a(String paramString)
+  {
+    try
     {
-      if (i == -1)
+      JSONObject localJSONObject = new JSONObject(paramString);
+      lmv locallmv = new lmv();
+      boolean bool = AppSetting.b;
+      locallmv.jdField_a_of_type_Boolean = localJSONObject.getBoolean("enable");
+      locallmv.jdField_a_of_type_Int = localJSONObject.getInt("task_id");
+      if (bool)
       {
-        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
-        i += 1;
+        paramString = localJSONObject.getString("url_zip_so_64");
+        locallmv.jdField_a_of_type_JavaLangString = paramString;
+        if (!bool) {
+          break label111;
+        }
+        paramString = localJSONObject.getString("MD5_zip_so_64");
+        label68:
+        locallmv.b = paramString;
+        if (!bool) {
+          break label121;
+        }
+      }
+      label111:
+      label121:
+      for (paramString = localJSONObject.getString("MD5_so_64");; paramString = localJSONObject.getString("MD5_so"))
+      {
+        locallmv.c = paramString;
+        locallmv.d = localJSONObject.getString("so_name");
+        return locallmv;
+        paramString = localJSONObject.getString("url_zip_so");
         break;
+        paramString = localJSONObject.getString("MD5_zip_so");
+        break label68;
       }
-      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-      j = i - 1;
-      float f1 = arrayOfFloat2[j];
-      float f2 = arrayOfFloat1[j];
-      float f3 = arrayOfFloat2[i];
-      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
-      i = -1;
+      return null;
     }
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
+    catch (Exception paramString)
     {
-      return;
-      this.jdField_a_of_type_Float = lmq.a(paramBufferedReader, "highMin");
-      this.jdField_b_of_type_Float = lmq.a(paramBufferedReader, "highMax");
-      this.c = lmq.a(paramBufferedReader, "relative");
-      this.jdField_b_of_type_ArrayOfFloat = new float[lmq.a(paramBufferedReader, "scalingCount")];
-      int i = 0;
-      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_b_of_type_ArrayOfFloat[i] = lmq.a(paramBufferedReader, "scaling" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[lmq.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = lmq.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
+      QLog.d("QavGPDownloadManager", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
     }
   }
   
-  public boolean a()
+  public String toString()
   {
-    return this.c;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * lml.a();
+    return String.format("task_id[%s], enable[%s], url_zip_so[%s], MD5_zip_so[%s], MD5_so[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_JavaLangString, this.b, this.c });
   }
 }
 

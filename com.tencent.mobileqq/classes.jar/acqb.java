@@ -1,45 +1,21 @@
-import android.graphics.Bitmap;
-import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.widget.XListView;
 
 public class acqb
-  implements awcd
+  implements bble<Integer>
 {
   public acqb(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    int i = 0;
-    if ((paramBitmap != null) && (paramInt2 == 200))
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
     {
-      paramBitmap = this.a.a;
-      if (paramBitmap == null) {
-        break label108;
-      }
-      paramInt2 = paramBitmap.getChildCount();
+      this.a.c.setTextSize(36.0F);
+      return;
     }
-    for (;;)
-    {
-      if (i < paramInt2)
-      {
-        Object localObject = paramBitmap.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof acqs)))
-        {
-          localObject = (acqs)localObject;
-          if ((((acqs)localObject).b == paramInt1) && (((acqs)localObject).e != null)) {
-            VisitorsActivity.a(this.a, ((acqs)localObject).e, paramInt1);
-          }
-        }
-        i += 1;
-      }
-      else
-      {
-        return;
-        label108:
-        paramInt2 = 0;
-      }
-    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

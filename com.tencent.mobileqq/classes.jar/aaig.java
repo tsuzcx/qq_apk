@@ -1,71 +1,48 @@
-import android.view.View;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aaig
-  implements bfoq
+  extends ajxj
 {
-  public aaig(AddRequestActivity paramAddRequestActivity, bfol parambfol) {}
+  public aaig(AddRequestActivity paramAddRequestActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    switch (paramInt)
+    if (AddRequestActivity.a(this.a))
     {
-    default: 
-      this.jdField_a_of_type_Bfol.dismiss();
+      if (!paramBoolean) {
+        this.a.a(2130839302, this.a.getString(2131719262));
+      }
+    }
+    else {
       return;
     }
-    if (bbev.d(BaseApplication.getContext()))
-    {
-      long l1 = ayda.a().b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = ayda.a().a(Long.valueOf(l1));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
-        if ((paramView != null) && (1 < paramView.size()))
-        {
-          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131719281, 1000L, false);
-        }
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
     }
-    for (;;)
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
-      break;
-      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
-      if (paramView != null) {}
-      for (paramInt = paramView.size();; paramInt = -1)
-      {
-        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
-        break;
-      }
-      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
-      continue;
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694609, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
     }
   }
 }

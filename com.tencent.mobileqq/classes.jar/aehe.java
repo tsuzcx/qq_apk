@@ -1,16 +1,34 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.util.Locale;
 
 class aehe
-  implements DialogInterface.OnClickListener
+  implements aegn
 {
-  aehe(aehd paramaehd) {}
+  aehe(aegs paramaegs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    aegu.W(this.a.a).setResult(8001);
+    if ((this.a.jdField_a_of_type_Aeic.a() != null) && ((this.a.jdField_a_of_type_Aeic.a().a instanceof AIOImageData)))
+    {
+      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Aeic.a().a;
+      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
+      {
+        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
+          break label127;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, aegs.am(this.a).getString(2131695342), new Object[] { apvd.a(localAIOImageData.jdField_h_of_type_Long) }));
+      }
+    }
+    for (;;)
+    {
+      this.a.c(true);
+      return;
+      label127:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695339);
+    }
   }
 }
 

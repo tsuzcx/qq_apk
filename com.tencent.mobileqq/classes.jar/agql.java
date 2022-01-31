@@ -1,48 +1,42 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.observer.AccountObserver;
 
 class agql
-  implements bfoq
+  extends AccountObserver
 {
-  agql(agqk paramagqk, bfol parambfol) {}
+  agql(agqi paramagqi) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
-    }
-    switch (this.jdField_a_of_type_Agqk.jdField_a_of_type_ArrayOfInt[paramInt])
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramString1 == null)
     {
-    }
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        this.jdField_a_of_type_Bfol.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if (this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
-          ((BaseActivity)this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity).requestPermissions(new agqm(this), 1, new String[] { "android.permission.CAMERA" });
-        } else {
-          agqk.a(this.jdField_a_of_type_Agqk);
+        int j = i - 1;
+        if (i <= 0) {
+          break;
+        }
+        paramString1 = agqi.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
+        if (paramString1 == null)
+        {
+          i = j;
+        }
+        else
+        {
+          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
+          this.a.b(paramString1);
+          i = j;
         }
       }
-      else
-      {
-        agqk.a(this.jdField_a_of_type_Agqk);
-        continue;
-        agqs.b(this.jdField_a_of_type_Agqk.jdField_a_of_type_AndroidAppActivity, agqs.d(this.jdField_a_of_type_Agqk.c));
-      }
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
     }
+    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
 }
 

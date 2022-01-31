@@ -1,5 +1,6 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 
@@ -10,8 +11,11 @@ final class ajby
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    ajae.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    ajac.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
+    }
   }
 }
 

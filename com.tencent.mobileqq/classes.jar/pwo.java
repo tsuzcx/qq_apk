@@ -1,31 +1,24 @@
+import android.os.Looper;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class pwo
-  implements pca
+  extends osm
 {
-  public pwo(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public pwo(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentContentRecommendFollowList", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    }
-    if (paramBoolean)
+    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
-      if (paramInt == 2) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.isFollowed = paramBoolean;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-        ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
-        return;
-      }
+      ThreadManager.getUIHandler().post(local1);
+      return;
     }
-    bcpw.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131718502, 0).a();
+    local1.run();
   }
 }
 

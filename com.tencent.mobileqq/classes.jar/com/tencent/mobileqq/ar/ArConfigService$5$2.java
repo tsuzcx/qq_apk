@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import albr;
+import albq;
 
 public class ArConfigService$5$2
   implements Runnable
 {
-  public ArConfigService$5$2(albr paramalbr) {}
+  public ArConfigService$5$2(albq paramalbq) {}
   
   public void run()
   {

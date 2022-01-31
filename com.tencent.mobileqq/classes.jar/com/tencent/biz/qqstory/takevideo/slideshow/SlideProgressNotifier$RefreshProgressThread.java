@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import bfnd;
+import bfnu;
 import com.tencent.qphone.base.util.QLog;
-import vtq;
+import vtn;
 
 public class SlideProgressNotifier$RefreshProgressThread
   extends Thread
 {
   int jdField_a_of_type_Int;
-  vtq jdField_a_of_type_Vtq;
+  vtn jdField_a_of_type_Vtn;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
   int d;
   
-  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, vtq paramvtq)
+  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, vtn paramvtn)
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
@@ -22,7 +22,7 @@ public class SlideProgressNotifier$RefreshProgressThread
     for (this.c = (paramInt1 / (paramInt2 - paramInt3));; this.c = 100)
     {
       this.d = paramInt3;
-      this.jdField_a_of_type_Vtq = paramvtq;
+      this.jdField_a_of_type_Vtn = paramvtn;
       return;
     }
   }
@@ -30,7 +30,7 @@ public class SlideProgressNotifier$RefreshProgressThread
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bfnd.a(new RuntimeException()));
+      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bfnu.a(new RuntimeException()));
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -45,9 +45,9 @@ public class SlideProgressNotifier$RefreshProgressThread
     while (!this.jdField_a_of_type_Boolean) {
       if (this.d < this.b)
       {
-        if (this.jdField_a_of_type_Vtq != null)
+        if (this.jdField_a_of_type_Vtn != null)
         {
-          this.jdField_a_of_type_Vtq.a(this.d);
+          this.jdField_a_of_type_Vtn.a(this.d);
           this.d += 1;
           try
           {
@@ -62,8 +62,8 @@ public class SlideProgressNotifier$RefreshProgressThread
       else
       {
         this.d = this.b;
-        if (this.jdField_a_of_type_Vtq != null) {
-          this.jdField_a_of_type_Vtq.a(this.d);
+        if (this.jdField_a_of_type_Vtn != null) {
+          this.jdField_a_of_type_Vtn.a(this.d);
         }
         this.jdField_a_of_type_Boolean = true;
       }

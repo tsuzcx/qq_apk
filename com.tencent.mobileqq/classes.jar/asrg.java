@@ -1,9 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-
 public abstract interface asrg
 {
-  public abstract void b(View paramView, MotionEvent paramMotionEvent);
+  public abstract void a(int paramInt);
 }
 
 

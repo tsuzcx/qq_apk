@@ -1,18 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
+import android.text.TextUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-final class qza
-  extends qzb
+public class qza
 {
-  qza(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap)
+  private JSONObject a;
+  
+  public qza(String paramString)
   {
-    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.a = new JSONObject();
+        return;
+      }
+      this.a = new JSONObject(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public qza(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    qyz.a(this, paramJSONObject);
+    this.a = new JSONObject();
+    npu.a(paramString1, paramString2, paramString3, paramString4, this.a);
+  }
+  
+  public qza(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramString1);
+    npu.a(paramString2, paramString3, paramString4, paramString5, this.a);
+  }
+  
+  public String a()
+  {
+    return this.a.toString();
+  }
+  
+  protected void a(String paramString, Object paramObject)
+  {
+    try
+    {
+      this.a.put(paramString, paramObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

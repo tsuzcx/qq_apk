@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class azgo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public azgo(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    bcql.a(this.a.a, ajya.a(2131715234), 0).a();
+  }
 }
 
 

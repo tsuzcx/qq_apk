@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bgxr;
+import bgyi;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +52,7 @@ public class LpReportInfo_dc03701
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    LpReportUtils.safePut(localHashMap, "qua", bgxr.a());
+    LpReportUtils.safePut(localHashMap, "qua", bgyi.a());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {

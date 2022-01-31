@@ -1,6 +1,11 @@
-class afip
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract interface afip
 {
-  private static final afim a = new afim(null);
+  public abstract Activity a();
+  
+  public abstract QQAppInterface a();
 }
 
 

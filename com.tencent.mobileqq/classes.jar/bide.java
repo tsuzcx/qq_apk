@@ -1,83 +1,58 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppException;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgRsp;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDownloadRspItem;
+import cooperation.weiyun.sdk.download.DownloadType;
+import java.util.Iterator;
+import java.util.List;
 
-public class bide
+class bide
+  implements bieg<WeiyunPB.DiskFileBatchDownloadMsgRsp>
 {
-  private static void a(Activity paramActivity, String paramString, int paramInt)
+  bide(bidd parambidd, biei parambiei, bifa parambifa, DownloadType paramDownloadType) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
   {
-    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
+    this.jdField_a_of_type_Bifa.a(this.jdField_a_of_type_Biei, false, paramInt, paramString);
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public void a(WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
   {
-    if (paramQQAppInterface.a().a() == true)
+    Object localObject;
+    if ((paramDiskFileBatchDownloadMsgRsp != null) && (paramDiskFileBatchDownloadMsgRsp.file_list != null))
     {
-      paramQQAppInterface.a().c();
-      return;
-    }
-    if (bbev.d(BaseApplication.getContext()))
-    {
-      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
-      paramQQAppInterface.putExtra("tab_tab_type", 3);
-      paramQQAppInterface.putExtra("from", "FileAssistant");
-      paramActivity.startActivityForResult(paramQQAppInterface, 101);
-      return;
-    }
-    aptv.a(BaseApplication.getContext().getString(2131694607));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
-  {
-    a(paramQQAppInterface, paramActivity, paramInt, 2131691313);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramActivity == null)) {
-      return;
-    }
-    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt2, paramInt1, paramQQAppInterface), 1000L);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
-  {
-    int i = bbjn.aR(paramContext, paramQQAppInterface.getCurrentAccountUin());
-    if (i == 1)
-    {
-      String str = bbjn.t(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      i = bbjn.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      if (!TextUtils.isEmpty(str)) {
-        try
-        {
-          a(paramActivity, str, i);
-          return;
+      localObject = paramDiskFileBatchDownloadMsgRsp.file_list.get().iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-        catch (MiniAppException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
-          }
-          a(paramQQAppInterface, paramActivity);
-          return;
-        }
+        paramDiskFileBatchDownloadMsgRsp = (WeiyunPB.DiskFileDownloadRspItem)((Iterator)localObject).next();
+      } while ((paramDiskFileBatchDownloadMsgRsp == null) || (!TextUtils.equals(paramDiskFileBatchDownloadMsgRsp.file_id.get(), this.jdField_a_of_type_Biei.jdField_a_of_type_JavaLangString)));
+    }
+    for (;;)
+    {
+      if (paramDiskFileBatchDownloadMsgRsp == null)
+      {
+        this.jdField_a_of_type_Bifa.a(this.jdField_a_of_type_Biei, false, 1828004, ajya.a(2131715082));
+        return;
       }
-      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
-      a(paramQQAppInterface, paramActivity);
-      return;
+      localObject = paramDiskFileBatchDownloadMsgRsp.cookie_name.get();
+      String str = paramDiskFileBatchDownloadMsgRsp.cookie_value.get();
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str))) {}
+      for (localObject = "";; localObject = (String)localObject + '=' + str)
+      {
+        this.jdField_a_of_type_Biei.a(paramDiskFileBatchDownloadMsgRsp.server_name.get(), paramDiskFileBatchDownloadMsgRsp.server_port.get(), (String)localObject, paramDiskFileBatchDownloadMsgRsp.download_url.get(), paramDiskFileBatchDownloadMsgRsp.video_url.get(), "0");
+        if (this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadType == DownloadType.FILE_ORDINARY) {
+          this.jdField_a_of_type_Biei.jdField_a_of_type_Biek.c = biel.a(this.jdField_a_of_type_Biei.jdField_a_of_type_Biek.c);
+        }
+        this.jdField_a_of_type_Bifa.a(this.jdField_a_of_type_Biei, true, 0, null);
+        return;
+      }
+      paramDiskFileBatchDownloadMsgRsp = null;
     }
-    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
-    a(paramQQAppInterface, paramActivity);
   }
 }
 

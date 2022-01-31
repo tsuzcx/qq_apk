@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class aale
-  implements View.OnClickListener
+  extends akge
 {
-  public aale(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  public aale(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    paramView = (ImageView)paramView.findViewById(2131367799);
-    if (paramView != null)
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
     {
-      int i = 0;
-      if (paramView.getVisibility() == 0) {
-        i = 4;
-      }
-      paramView.setVisibility(i);
+      bcql.a(this.a, this.a.getString(2131692165), 0).b(this.a.getTitleBarHeight());
+      return;
     }
+    this.a.finish();
   }
 }
 

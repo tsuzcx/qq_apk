@@ -1,26 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-
-class awkz
-  implements View.OnClickListener
+public abstract interface awkz
 {
-  awkz(awky paramawky, String paramString, int paramInt) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    paramView = this.jdField_a_of_type_Awky.a.getActivity();
-    if ((this.jdField_a_of_type_Awky.a.getActivity() instanceof awkx))
-    {
-      ((awkx)paramView).c(this.jdField_a_of_type_JavaLangString);
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      awso.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Awky.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
-    }
-  }
+  public abstract void c(String paramString);
 }
 
 

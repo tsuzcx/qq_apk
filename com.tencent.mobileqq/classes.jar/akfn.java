@@ -1,35 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class akfn
-  extends Handler
+public class akfn
+  implements ajte
 {
-  akfn(akfm paramakfm, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  protected void a(int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(int paramInt1, int paramInt2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     }
     do
     {
-      return;
-      this.a.b();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(akfm.a(this.a)), " ,devStatus:", Integer.valueOf(akfm.b(this.a)), " ,clientType:", Long.valueOf(akfm.a(this.a)), " ,appid:", Long.valueOf(akfm.b(this.a)) });
-      }
-      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(akfm.b(this.a)) });
-    } while (akfm.b(this.a) != 0);
-    if (!this.a.a.hasMessages(101)) {
-      this.a.a.sendEmptyMessageDelayed(101, 3000L);
-    }
-    bazk.a(false);
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObject == null);
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

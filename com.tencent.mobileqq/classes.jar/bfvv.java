@@ -1,18 +1,20 @@
-import java.util.Formatter;
+import android.text.TextUtils;
 
-public final class bfvv
-  implements bfvw
+public class bfvv
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  public float a;
+  public int a;
+  public String a;
+  public boolean a;
   
-  public String a(int paramInt)
+  public bfvv()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public boolean a(bfvv parambfvv)
+  {
+    return (parambfvv != null) && (this.jdField_a_of_type_Int == parambfvv.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parambfvv.jdField_a_of_type_JavaLangString)) && (Math.abs(this.jdField_a_of_type_Float - parambfvv.jdField_a_of_type_Float) < 0.001F);
   }
 }
 

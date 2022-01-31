@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import ajyc;
+import ajya;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +14,7 @@ class ServiceFolderFollowPBHeadView$2
     if (this.a > 0)
     {
       ServiceFolderFollowPBHeadView.a(this.this$0).setVisibility(0);
-      String str = this.a + ajyc.a(2131707890);
+      String str = this.a + ajya.a(2131707901);
       ServiceFolderFollowPBHeadView.a(this.this$0).setText(str);
       return;
     }

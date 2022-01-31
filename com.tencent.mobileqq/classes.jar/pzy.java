@@ -1,8 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
-public abstract interface pzy
+public class pzy
+  extends ayoi
 {
-  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
+    }
+    for (;;)
+    {
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
+    }
+    return null;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new pzz(this, paramFile, false, false, 0, 0, 0.0F);
+  }
 }
 
 

@@ -1,11 +1,26 @@
-import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
 
-public class aqpj
-  extends aqom
+class aqpj
+  implements DialogInterface.OnClickListener
 {
-  public GalleryUrlImageView a;
+  aqpj(aqoz paramaqoz, int paramInt, Object paramObject) {}
   
-  public aqpj(aqox paramaqox) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      aqmd.a().a().a("AIOGalleryPicView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPicData));
+    this.jdField_a_of_type_Aqoz.a.a((AIOPicData)this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Aqoz.j();
+  }
 }
 
 

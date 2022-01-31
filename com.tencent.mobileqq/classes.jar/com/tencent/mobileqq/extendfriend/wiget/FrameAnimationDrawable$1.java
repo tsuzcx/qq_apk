@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aolb;
+import aolg;
 
 public class FrameAnimationDrawable$1
   implements Runnable
 {
-  public FrameAnimationDrawable$1(aolb paramaolb) {}
+  public FrameAnimationDrawable$1(aolg paramaolg) {}
   
   public void run()
   {

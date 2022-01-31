@@ -1,39 +1,63 @@
-import android.app.Activity;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import java.lang.ref.WeakReference;
 
 public class xdp
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  extends ImageSpan
 {
-  public xdp(PluginJumpManager paramPluginJumpManager, xdq paramxdq, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, xdr paramxdr, String paramString4) {}
+  private WeakReference<Drawable> a;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public xdp(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Xdq.b);
-    int i;
-    if (paramPluginManagerClient != null) {
-      if (paramPluginManagerClient.mState == 4)
-      {
-        i = 1;
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Xdq.b, this.jdField_a_of_type_Xdq.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Xdr.b, this.jdField_a_of_type_Xdr.a);
-      }
+    super(paramDrawable);
+  }
+  
+  private Drawable a()
+  {
+    Object localObject = this.a;
+    Drawable localDrawable = null;
+    if (localObject != null) {
+      localDrawable = (Drawable)((WeakReference)localObject).get();
     }
-    for (;;)
+    localObject = localDrawable;
+    if (localDrawable == null)
     {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Xdr.b, null, null);
-      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Xdq.b);
-      i = 0;
-      continue;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Xdr.b, null, null);
-      i = 0;
+      localObject = getDrawable();
+      this.a = new WeakReference(localObject);
     }
+    return localObject;
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCharSequence = a();
+    paramCanvas.save();
+    paramInt1 = paramCharSequence.getIntrinsicHeight();
+    paramInt2 = paramPaint.getFontMetricsInt().ascent;
+    paramInt3 = paramPaint.getFontMetricsInt().descent;
+    paramInt4 = paramCharSequence.getBounds().bottom;
+    paramCanvas.translate(paramFloat, ((paramInt1 - paramInt3 + paramInt2) / 2 + (paramInt5 - paramInt4)) / 5);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = a().getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramFontMetricsInt.ascent = paramPaint.ascent;
+      paramFontMetricsInt.descent = paramPaint.descent;
+      paramFontMetricsInt.top = paramPaint.top;
+      paramFontMetricsInt.bottom = paramPaint.bottom;
+    }
+    return paramCharSequence.right;
   }
 }
 

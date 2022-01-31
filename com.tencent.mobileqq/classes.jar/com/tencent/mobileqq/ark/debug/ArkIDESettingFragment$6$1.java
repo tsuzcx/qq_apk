@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.debug;
 
-import ajyc;
-import alvf;
+import ajya;
+import alve;
 import android.widget.TextView;
 
 public class ArkIDESettingFragment$6$1
   implements Runnable
 {
-  public ArkIDESettingFragment$6$1(alvf paramalvf, int paramInt, TextView paramTextView) {}
+  public ArkIDESettingFragment$6$1(alve paramalve, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
@@ -15,31 +15,31 @@ public class ArkIDESettingFragment$6$1
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      str = "js调试库状态: " + ajyc.a(2131700687);
+      str = "js调试库状态: " + ajya.a(2131700698);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
-      str = "js调试库状态: " + ajyc.a(2131700682);
+      str = "js调试库状态: " + ajya.a(2131700693);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700688);
+      str = "js调试库状态: " + ajya.a(2131700699);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700683);
+      str = "js调试库状态: " + ajya.a(2131700694);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700686);
+      str = "js调试库状态: " + ajya.a(2131700697);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700681);
+      str = "js调试库状态: " + ajya.a(2131700692);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700680);
+      str = "js调试库状态: " + ajya.a(2131700691);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700678);
+      str = "js调试库状态: " + ajya.a(2131700689);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700685);
+      str = "js调试库状态: " + ajya.a(2131700696);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700679);
+      str = "js调试库状态: " + ajya.a(2131700690);
       continue;
-      str = "js调试库状态: " + ajyc.a(2131700677);
+      str = "js调试库状态: " + ajya.a(2131700688);
     }
   }
 }

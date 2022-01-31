@@ -1,11 +1,19 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 class arbw
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  arbw(arbn paramarbn) {}
+  arbw(arbp paramarbp) {}
   
-  public void OnDownloadCallback(String paramString) {}
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    }
+  }
 }
 
 

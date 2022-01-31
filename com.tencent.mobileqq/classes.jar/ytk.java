@@ -1,18 +1,6 @@
-import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
-
-class ytk
-  implements yyc
+public abstract interface ytk
 {
-  ytk(ytg paramytg) {}
-  
-  public void reportImpression(View paramView)
-  {
-    paramView = paramView.getTag(2131379206);
-    if ((paramView != null) && ((paramView instanceof GdtAd))) {
-      yye.a(((GdtAd)paramView).getUrlForImpression());
-    }
-  }
+  public abstract void onDismiss();
 }
 
 

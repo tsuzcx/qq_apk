@@ -9,8 +9,13 @@ public class acot
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UpgradeActivity.a(this.a, true);
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akuz.b(), String.valueOf(0), akva.a(), "");
+    axqy.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      axqy.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
+    }
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "0");
+    akuz.a().a(this.a.app);
+    this.a.finish();
   }
 }
 

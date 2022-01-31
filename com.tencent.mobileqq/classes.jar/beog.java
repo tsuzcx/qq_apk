@@ -1,4 +1,7 @@
-public class beog {}
+public abstract interface beog
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

@@ -1,55 +1,36 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
-class aqda
-  extends mxm
+public class aqda
+  implements auoq
 {
-  aqda(aqcw paramaqcw) {}
+  public aqda(ForwardMultServerShare.2 param2) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    QLog.d(aqcw.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(aqcw.a(this.a)) });
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aqgh.a("KEY_STAGE_2_NORMAL_DC2", bool);
-      if (!aqcw.a(this.a)) {
-        break;
-      }
-      return;
-    }
-    if (paramBundle != null)
-    {
-      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d(aqcw.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(aqcw.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
-      }
-      if ((l == -1L) || (l != aqcw.a(this.a)))
-      {
-        aqcw.a(this.a);
-        return;
-      }
-    }
-    axqw.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
-    paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.e(aqcw.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
-      aqcw.a(this.a);
-      return;
-    }
-    aqcw.a(this.a, paramArrayOfByte);
-    ForwardUtils.a(aqcw.a(this.a), paramArrayOfByte, aqcw.a(this.a), aqcw.a(this.a).getString("share_comment_message_for_server"));
+    return null;
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(auor paramauor)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e(aqcw.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    if (paramauor != null) {
+      QLog.d(aqcy.a(), 1, "requestImageShare updateMsg info =" + paramauor);
     }
-    return super.a(paramInt, paramString, paramBundle);
+  }
+  
+  public void b(auor paramauor)
+  {
+    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramauor);
+    QLog.d(aqcy.a(), 1, new Object[] { "requestImageShare onSend result =", paramauor, ", isTimeOut=", Boolean.valueOf(aqcy.a(this.a.this$0)) });
+    if (this.a.jdField_a_of_type_JavaUtilMap.size() == aqcy.a(this.a.this$0).size())
+    {
+      aqgj.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
+      aqcy.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
+    }
   }
 }
 

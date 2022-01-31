@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import com.tencent.mobileqq.data.PhoneContactAdd;
 
 public class atzj
-  extends atyy
+  extends atza
 {
-  public QIMNotifyAddFriend a;
+  public PhoneContactAdd a;
   
-  public atzj(QIMNotifyAddFriend paramQIMNotifyAddFriend)
+  public atzj(PhoneContactAdd paramPhoneContactAdd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
-    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    return "getMessage";
+    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
+    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
+    return true;
   }
 }
 

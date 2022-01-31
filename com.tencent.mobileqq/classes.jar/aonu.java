@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
 public class aonu
-  extends BroadcastReceiver
+  extends aoun
 {
-  public aonu(FMActivity paramFMActivity) {}
+  public aonu(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 

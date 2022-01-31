@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.richmedia;
 
-import avri;
+import avrk;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class RichmediaService$IncomingHandler$1
   implements Runnable
 {
-  public RichmediaService$IncomingHandler$1(avri paramavri) {}
+  public RichmediaService$IncomingHandler$1(avrk paramavrk) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aetz;
+import aetx;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -8,12 +8,12 @@ import mqq.os.MqqHandler;
 public class TroopChatPie$12$4
   implements Runnable
 {
-  public TroopChatPie$12$4(aetz paramaetz, long paramLong) {}
+  public TroopChatPie$12$4(aetx paramaetx, long paramLong) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Aetz.a.a != null) && (this.jdField_a_of_type_Aetz.a.a.isResume())) {
-      ThreadManager.getSubThreadHandler().postDelayed(TroopChatPie.a(this.jdField_a_of_type_Aetz.a), this.jdField_a_of_type_Long);
+    if ((this.jdField_a_of_type_Aetx.a.a != null) && (this.jdField_a_of_type_Aetx.a.a.isResume())) {
+      ThreadManager.getSubThreadHandler().postDelayed(TroopChatPie.a(this.jdField_a_of_type_Aetx.a), this.jdField_a_of_type_Long);
     }
   }
 }

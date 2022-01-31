@@ -4,9 +4,9 @@ import UserGrowth.stSimpleMetaFeed;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import java.util.HashMap;
 import java.util.List;
-import skt;
-import sne;
-import sni;
+import skq;
+import snb;
+import snf;
 
 class WSRecommendFragment$8
   implements Runnable
@@ -26,12 +26,12 @@ class WSRecommendFragment$8
         if (!WSRecommendFragment.a(this.this$0).containsKey(Integer.valueOf(i)))
         {
           WSRecommendFragment.a(this.this$0).put(Integer.valueOf(i), localstSimpleMetaFeed.id);
-          sne.b("weishi-report", "put:" + i);
+          snb.b("weishi-report", "put:" + i);
           localHashMap1.put(Integer.valueOf(i), localstSimpleMetaFeed);
           localHashMap2.put(Integer.valueOf(i), localstSimpleMetaFeed.id);
         }
         if (this.jdField_a_of_type_Boolean) {
-          skt.a(1, sni.a(localstSimpleMetaFeed, true));
+          skq.a(1, snf.a(localstSimpleMetaFeed, true));
         }
       }
       i += 1;

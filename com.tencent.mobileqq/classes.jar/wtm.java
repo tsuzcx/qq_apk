@@ -1,87 +1,17 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.subscribe.utils.TimeAndCountHelper.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wtm
+class wtm
+  implements View.OnClickListener
 {
-  private static volatile wtm jdField_a_of_type_Wtm;
-  private Map<String, Timer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  wtm(wtl paramwtl, adng paramadng) {}
   
-  private String a(String paramString)
+  public void onClick(View paramView)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return paramString + "_" + str;
-  }
-  
-  public static wtm a()
-  {
-    if (jdField_a_of_type_Wtm == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wtm == null) {
-        jdField_a_of_type_Wtm = new wtm();
-      }
-      return jdField_a_of_type_Wtm;
-    }
-    finally {}
-  }
-  
-  private void a(Context paramContext, String paramString, wtn paramwtn)
-  {
-    paramContext = wtl.a(paramContext);
-    if (paramContext != null)
-    {
-      int i = paramContext.getInt(a(paramString), 0);
-      if (paramwtn != null) {
-        paramwtn.a(i + 1);
-      }
-    }
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return wtl.a(paramContext).getInt(a(paramString), 0);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = wtl.a(paramContext);
-    SharedPreferences.Editor localEditor = paramContext.edit();
-    paramString = a(paramString);
-    localEditor.putInt(paramString, paramContext.getInt(paramString, 0) + paramInt);
-    localEditor.apply();
-  }
-  
-  public void a(Context paramContext, String paramString, int paramInt, wtn paramwtn)
-  {
-    if (paramInt > 0)
-    {
-      a(paramString);
-      Timer localTimer = new Timer();
-      localTimer.schedule(new TimeAndCountHelper.1(this, paramContext, paramString, paramwtn), paramInt);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localTimer);
-      return;
-    }
-    a(paramContext, paramString, paramwtn);
-  }
-  
-  public void a(String paramString)
-  {
-    Timer localTimer = (Timer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localTimer != null)
-    {
-      localTimer.cancel();
-      localTimer.purge();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    }
+    wtl.a(this.jdField_a_of_type_Wtl).removeCallbacks(wtl.a(this.jdField_a_of_type_Wtl));
+    wtl.a(this.jdField_a_of_type_Wtl, true);
+    wtl.a(this.jdField_a_of_type_Wtl, this.jdField_a_of_type_Adng, this.jdField_a_of_type_Adng.b);
   }
 }
 

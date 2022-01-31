@@ -1,34 +1,6 @@
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-
-public class aycu
-  extends aycx
-  implements aybb
+public abstract interface aycu
 {
-  protected String b;
-  
-  public aycu(SpriteNativeView paramSpriteNativeView, String paramString)
-  {
-    super(paramSpriteNativeView);
-    this.b = paramString;
-  }
-  
-  protected ImageView a()
-  {
-    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-  }
+  public abstract void a();
 }
 
 

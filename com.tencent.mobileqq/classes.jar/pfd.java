@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class pfd
-  implements ViewBase.OnClickListener
+  implements View.OnClickListener
 {
-  pfd(pfb parampfb, pax parampax, Container paramContainer) {}
+  pfd(pfb parampfb, Container paramContainer, pau parampau, int paramInt) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase = this.jdField_a_of_type_Pax.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    rap.a(paramViewBase, (int)paramViewBase.mChannelID);
-    shx.a(paramViewBase);
+    pfb.a(this.jdField_a_of_type_Pfb, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pau, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pau.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

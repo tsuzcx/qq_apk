@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import bbcv;
-import bbgg;
-import bkst;
+import bbdj;
+import bbgu;
+import bktk;
 
 public class ShortVideoPlayActivity$12
   implements Runnable
@@ -11,8 +11,8 @@ public class ShortVideoPlayActivity$12
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.this$0, 232, null, this.a, new bkst(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbbgg);
+    bbgu localbbgu = bbdj.a(this.this$0, 232, null, this.a, new bktk(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localbbgu);
   }
 }
 

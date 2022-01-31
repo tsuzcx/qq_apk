@@ -1,17 +1,68 @@
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AccountNotMatchException;
 
-class akep
-  implements Comparator<akeo>
+public class akep
 {
-  public int a(akeo paramakeo1, akeo paramakeo2)
+  private ajzk jdField_a_of_type_Ajzk = new aker(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akeq(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public akep(String paramString)
   {
-    if (paramakeo1.b < paramakeo2.b) {
-      return -1;
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
+      paramString = new IntentFilter();
+      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
+      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
+      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
+      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
+      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
+      }
+      return;
     }
-    if (paramakeo1.b > paramakeo2.b) {
-      return 1;
+    catch (AccountNotMatchException paramString)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
+        }
+      }
     }
-    return 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajzk);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+    }
   }
 }
 

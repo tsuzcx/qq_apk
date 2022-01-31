@@ -1,41 +1,57 @@
+import android.graphics.Color;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.GroupBusinessMsg;
 
 public class bajq
 {
   public int a;
-  public long a;
-  public ByteStringMicro a;
-  public List<azpg> a;
-  public Map<String, azpg> a;
-  public boolean a;
+  public String a;
   public int b;
-  public boolean b;
+  public String b;
   public int c;
-  public int d = 0;
+  public String c;
+  public int d;
+  public String d;
   
-  public bajq(bajk parambajk, long paramLong)
+  public bajq()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    if (paramLong == 0L) {
-      this.c = 0;
-    }
-    for (;;)
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public static bajq a(im_msg_body.GroupBusinessMsg paramGroupBusinessMsg)
+  {
+    bajq localbajq = new bajq();
+    localbajq.jdField_a_of_type_Int = paramGroupBusinessMsg.uint32_flags.get();
+    localbajq.jdField_a_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_url.get().toStringUtf8();
+    localbajq.jdField_b_of_type_JavaLangString = paramGroupBusinessMsg.bytes_head_clk_url.get().toStringUtf8();
+    localbajq.jdField_c_of_type_JavaLangString = paramGroupBusinessMsg.bytes_nick.get().toStringUtf8();
+    localbajq.jdField_d_of_type_JavaLangString = paramGroupBusinessMsg.bytes_rank.get().toStringUtf8();
+    try
     {
-      this.c = i;
-      return;
-      i = 3;
+      localbajq.jdField_b_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_nick_color.get().toStringUtf8());
+      localbajq.jdField_c_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_color.get().toStringUtf8());
+      localbajq.jdField_d_of_type_Int = Color.parseColor(paramGroupBusinessMsg.bytes_rank_bgcolor.get().toStringUtf8());
+      return localbajq;
     }
+    catch (Exception paramGroupBusinessMsg)
+    {
+      QLog.e(bajp.jdField_a_of_type_JavaLangString, 2, "the color string cannot parse to color. " + paramGroupBusinessMsg.getMessage());
+    }
+    return localbajq;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopBusinessMessage");
+    localStringBuilder.append(",").append("nick").append("=").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",").append("flag").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",").append("clk").append("=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",").append("head").append("=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 

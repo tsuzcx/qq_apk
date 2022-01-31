@@ -1,246 +1,86 @@
-import android.content.Intent;
-import android.os.Binder;
-import android.os.Bundle;
 import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
 
-public abstract class asvm
-  extends Binder
-  implements asvl
+class asvm
+  implements asvk
 {
-  public asvm()
-  {
-    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerService");
-  }
+  private IBinder a;
   
-  public static asvl a(IBinder paramIBinder)
+  asvm(IBinder paramIBinder)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerService");
-    if ((localIInterface != null) && ((localIInterface instanceof asvl))) {
-      return (asvl)localIInterface;
-    }
-    return new asvn(paramIBinder);
+    this.a = paramIBinder;
   }
   
   public IBinder asBinder()
   {
-    return this;
+    return this.a;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  /* Error */
+  public void onPlaySongChanged(com.tencent.mobileqq.music.SongInfo paramSongInfo)
   {
-    int j = 0;
-    int i = 0;
-    boolean bool;
-    switch (paramInt1)
+    // Byte code:
+    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 28
+    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 42	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	asvm:a	Landroid/os/IBinder;
+    //   29: iconst_2
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	asvm
+    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
+    //   3	51	2	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerService");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      a(paramParcel1.readString(), (SongInfo[])paramParcel1.createTypedArray(SongInfo.CREATOR), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      d();
-      paramParcel2.writeNoException();
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      e();
-      paramParcel2.writeNoException();
-      return true;
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      bool = a();
-      paramParcel2.writeNoException();
-      paramInt1 = i;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 9: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 10: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = b();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 11: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = c();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 12: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = d();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 13: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 14: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = b();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 15: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = e();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 16: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = f();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 17: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeTypedArray(paramParcel1, 1);
-      return true;
-    case 18: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 19: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 20: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 21: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 22: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      bool = a(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramInt1 = j;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 23: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a(paramParcel1.readInt(), paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeString(paramParcel1);
-      return true;
-    case 24: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      paramParcel2.writeString(paramParcel1);
-      return true;
-    case 25: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      a(asvj.asInterface(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 26: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      b(asvj.asInterface(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 27: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-      paramInt1 = g();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
+      localParcel.writeInt(paramInt);
+      this.a.transact(1, localParcel, null, 1);
+      return;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerService");
-    b(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    finally
+    {
+      localParcel.recycle();
+    }
   }
 }
 

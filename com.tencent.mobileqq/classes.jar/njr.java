@@ -1,16 +1,8 @@
-import android.view.View;
-
 public abstract interface njr
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public abstract boolean a(int paramInt);
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public abstract boolean b(int paramInt);
 }
 
 

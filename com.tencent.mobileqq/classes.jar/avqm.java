@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-
-public class avqm
-  implements View.OnClickListener
+class avqm
+  implements avqt
 {
-  public avqm(IosTimepicker paramIosTimepicker) {}
+  avqm(avql paramavql) {}
   
-  public void onClick(View paramView)
-  {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
-    {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
-    }
-  }
+  public void a(long paramLong) {}
 }
 
 

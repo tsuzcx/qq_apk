@@ -1,22 +1,17 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.List;
 
 public class acaq
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public acaq(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public acaq(SelectedAndSearchBar paramSelectedAndSearchBar, View.OnClickListener paramOnClickListener) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramAdapterView);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    this.a.a(false);
   }
 }
 

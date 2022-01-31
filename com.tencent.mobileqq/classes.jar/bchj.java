@@ -1,18 +1,23 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
-public abstract interface bchj
-  extends bcci
+public class bchj
+  extends LruCache<String, WebSoService.WebSoState>
 {
-  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
+  public bchj(WebSoService paramWebSoService, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract Activity b();
-  
-  public abstract boolean e();
+  protected WebSoService.WebSoState a(String paramString)
+  {
+    return new WebSoService.WebSoState();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bchj
  * JD-Core Version:    0.7.0.1
  */

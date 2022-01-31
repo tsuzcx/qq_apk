@@ -1,12 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class qsv
-  implements View.OnClickListener
+  implements qta
 {
-  qsv(qst paramqst) {}
+  qsv(qsu paramqsu) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    qsu.a(this.a, true, false);
+  }
 }
 
 

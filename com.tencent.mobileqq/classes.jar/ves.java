@@ -1,32 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Canvas;
 
-public class ves
-  implements DialogInterface.OnKeyListener
+public abstract interface ves
+  extends vhl
 {
-  public ves(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public abstract int a(int paramInt);
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.a();
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      return true;
-    }
-    return false;
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
 }
 
 

@@ -1,95 +1,120 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
-import java.util.Map;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import java.io.File;
+import java.util.List;
 
 public class avah
+  extends BaseAdapter
 {
-  public int a;
-  public String a;
-  public Map<Integer, String> a;
-  public int b;
-  public int c;
-  public int d;
+  int jdField_a_of_type_Int;
+  List<avaj> jdField_a_of_type_JavaUtilList;
+  int b;
   
-  public avah(int paramInt1, int paramInt2, Map<Integer, String> paramMap)
+  public avah(QzonePhotoView paramQzonePhotoView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.d = paramInt2;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void a(List<avaj> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i = paramList.size();
+    if (i < 16) {
+      if (QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView)) {
+        this.jdField_a_of_type_JavaUtilList.add(new avaj(paramList.size(), 101, null));
+      }
+    }
+    for (;;)
     {
-      paramMap = new StringBuilder();
-      paramMap.append(paramInt1);
-      paramInt1 = 0;
-      while (paramInt1 <= 4)
-      {
-        String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
-        if (str != null) {
-          paramMap.append(str);
+      notifyDataSetChanged();
+      return;
+      paramList = (avaj)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      paramList.d = 102;
+      this.jdField_a_of_type_JavaUtilList.set(i - 1, paramList);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (avaj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (paramView == null)
+    {
+      paramView = new avai(this);
+      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.getContext()).inflate(2131561626, null);
+      localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int));
+      paramView.a = ((URLImageView)localRelativeLayout.findViewById(2131373664));
+      paramView.a.setTag(new ausw(25, Integer.valueOf(paramInt)));
+      String str2 = bbac.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, -1L);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestHeight = this.b;
+      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+      String str1 = paramViewGroup.a(this.jdField_a_of_type_Int);
+      if (paramViewGroup.d == 100) {
+        if (!TextUtils.isEmpty(str1))
+        {
+          paramView.a.setImageDrawable(URLDrawable.getDrawable(str1, localURLDrawableOptions));
+          paramView.a.setContentDescription(ajya.a(2131712150) + (paramInt + 1));
         }
-        paramInt1 += 1;
       }
-      this.jdField_a_of_type_JavaLangString = paramMap.toString();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = MD5.toMD5(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  private String b(int paramInt)
-  {
-    Object localObject = null;
-    int i = 1;
-    while ((TextUtils.isEmpty((CharSequence)localObject)) && (i < 5))
-    {
-      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf((paramInt + i) % 5));
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  public String a()
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = b(1);
+      for (;;)
+      {
+        paramView.a.setOnClickListener(QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+        localRelativeLayout.setTag(paramView);
+        return localRelativeLayout;
+        if (paramViewGroup.d == 101)
+        {
+          auvf.a(paramView.a, "src", QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a, "photoAddSrc");
+          paramView.a.setContentDescription(ajya.a(2131712144));
+        }
+        else if (paramViewGroup.d == 102)
+        {
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramViewGroup = new File(str2, "qvip_profile_photo_more.png");
+            paramView.a.setImageDrawable(URLDrawable.getDrawable(paramViewGroup, localURLDrawableOptions));
+          }
+          if (!TextUtils.isEmpty(str1)) {
+            paramView.a.setBackgroundDrawable(URLDrawable.getDrawable(str1, localURLDrawableOptions));
+          }
+          paramView.a.setContentDescription(ajya.a(2131712153));
+        }
       }
     }
-    return localObject;
-  }
-  
-  public String a(int paramInt)
-  {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      if (paramInt > 100) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramInt = 3;; paramInt = 2)
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = b(paramInt);
-      }
-      return localObject;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = false;
-    if ((paramObject instanceof avah)) {
-      bool = bbbd.a(((avah)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    return bool;
+    paramViewGroup = (avai)paramView.getTag();
+    return paramView;
   }
 }
 

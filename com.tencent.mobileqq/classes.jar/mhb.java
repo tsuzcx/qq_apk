@@ -1,11 +1,28 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.qphone.base.util.QLog;
+
 class mhb
-  implements mhv
+  extends BroadcastReceiver
 {
-  mhb(mgx parammgx) {}
+  mhb(mha parammha) {}
   
-  public void a(long paramLong, String paramString, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(paramLong, paramString, paramBoolean);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QavDoubleVideoSharpnessMangaer", 2, "onReceive SVIPPayResultReceiver");
+    }
+    if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (mha.a(this.a) != null))
+    {
+      paramContext = mha.a(this.a).a();
+      if ((paramContext != null) && (paramContext.jdField_d_of_type_Int == 2)) {
+        mha.a(this.a).a(Long.valueOf(paramContext.jdField_d_of_type_JavaLangString).longValue(), mha.a(this.a));
+      }
+      this.a.e();
+    }
   }
 }
 

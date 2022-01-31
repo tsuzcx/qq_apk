@@ -1,15 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nvb
-  implements View.OnClickListener
+  implements bfph
 {
-  public nvb(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  public nvb(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.onBackEvent();
+    if (this.a.a) {
+      return;
+    }
+    this.a.a = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      this.a.j();
+      this.a.finish();
+      continue;
+      this.a.k();
+    }
   }
 }
 

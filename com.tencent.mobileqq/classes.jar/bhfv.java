@@ -1,13 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiOperationInfo;
 
-public class bhfv
-  implements bhfz
+public final class bhfv
+  implements Parcelable.Creator<WeishiOperationInfo>
 {
-  public bhfv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public WeishiOperationInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
+    return new WeishiOperationInfo(paramParcel);
+  }
+  
+  public WeishiOperationInfo[] a(int paramInt)
+  {
+    return new WeishiOperationInfo[paramInt];
   }
 }
 

@@ -1,43 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.1;
-import com.tencent.mobileqq.activity.main.MainAssistObserver.5.2;
+import com.tencent.qphone.base.util.QLog;
 
-public class agdd
-  extends akue
+class agdd
+  extends atzn
 {
-  agdd(agch paramagch) {}
+  agdd(agcf paramagcf) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (bhvh.j()) {
-      this.a.a(39, null);
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!bhvh.i()) {}
-    while (this.a.a == null) {
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
       return;
     }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.2(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void c()
-  {
-    if (!bhvh.i()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new MainAssistObserver.5.1(this));
+    this.a.g();
+    this.a.e();
+    this.a.f();
   }
 }
 

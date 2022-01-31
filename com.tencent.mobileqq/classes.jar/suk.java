@@ -1,10 +1,14 @@
-public abstract interface suk
+public class suk
+  implements ssi
 {
-  public abstract void a(sul paramsul);
+  public String a;
   
-  public abstract boolean a();
-  
-  public abstract void b(sul paramsul);
+  public void copy(Object paramObject)
+  {
+    if ((paramObject instanceof suk)) {
+      this.a = ((suk)paramObject).a;
+    }
+  }
 }
 
 

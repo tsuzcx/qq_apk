@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import andx;
+import anec;
 
 class Leba$16
   implements Runnable
 {
-  Leba$16(Leba paramLeba, View paramView, andx paramandx) {}
+  Leba$16(Leba paramLeba, View paramView, anec paramanec) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Andx);
+    this.this$0.b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Anec);
   }
 }
 

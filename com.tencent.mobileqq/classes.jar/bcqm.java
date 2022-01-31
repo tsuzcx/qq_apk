@@ -1,47 +1,35 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.QLog;
 
 class bcqm
-  extends Animation
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  bcqm(bcql parambcql, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
   
-  public bcqm(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    super.applyTransformation(paramFloat, paramTransformation);
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F - 90.0F * paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "start to cancel toast");
+      }
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      bcql.a(this.jdField_a_of_type_Bcql, true);
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      }
+      return bool;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcqm
  * JD-Core Version:    0.7.0.1
  */

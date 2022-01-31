@@ -1,8 +1,11 @@
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class atwr
-  extends atuy
+  extends atva
 {
+  public ImageView e;
+  public ImageView f;
   public TextView g;
   
   public atwr(atwq paramatwq)

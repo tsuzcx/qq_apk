@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.support;
 
-import ljh;
+import ljc;
 
 public class SupportFace$1
   implements Runnable
 {
-  public SupportFace$1(ljh paramljh) {}
+  public SupportFace$1(ljc paramljc) {}
   
   public void run()
   {
-    if (!ljh.a(this.this$0))
+    if (!ljc.a(this.this$0))
     {
       this.this$0.b();
-      ljh.a(this.this$0, true);
+      ljc.a(this.this$0, true);
     }
   }
 }

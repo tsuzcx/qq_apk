@@ -1,14 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class wfv
-  implements bfps
+public class wfv
+  implements DialogInterface.OnClickListener
 {
-  wfv(wfu paramwfu, View paramView) {}
+  public wfv(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

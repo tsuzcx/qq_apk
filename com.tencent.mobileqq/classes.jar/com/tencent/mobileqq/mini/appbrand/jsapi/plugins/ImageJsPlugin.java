@@ -13,7 +13,7 @@ import android.media.ExifInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bbbj;
+import bbbx;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -42,7 +42,7 @@ import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import vyi;
+import vyf;
 
 public class ImageJsPlugin
   extends BaseJsPlugin
@@ -563,7 +563,7 @@ public class ImageJsPlugin
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.original_button", paramBoolean);
     paramActivity.startActivity(localIntent);
-    bbbj.a(paramActivity, false, true);
+    bbbx.a(paramActivity, false, true);
   }
   
   private void openNativeCamera(Activity paramActivity, JsRuntime paramJsRuntime, int paramInt)
@@ -746,7 +746,7 @@ public class ImageJsPlugin
             paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
             localObject1 = new File(paramString2);
             localObject1 = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject1).getName();
-            if (vyi.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
+            if (vyf.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
             }
             for (;;)

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aixs;
-import aiym;
-import ajae;
+import aixq;
+import aiyk;
+import ajac;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,22 +13,22 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
-import axqw;
-import bcbv;
-import bcfa;
-import bcfj;
-import bfxo;
+import axqy;
+import bccj;
+import bcfo;
+import bcfx;
+import bfyf;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import nax;
+import nau;
 
 public class ApolloWebViewFragment
   extends ApolloFragment
 {
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new aiym(this);
+  View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new aiyk(this);
   public Runnable a;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -88,7 +88,7 @@ public class ApolloWebViewFragment
   
   private void i()
   {
-    if (bfxo.a(a()))
+    if (bfyf.a(a()))
     {
       a().findViewById(16908290).addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
       this.jdField_a_of_type_Boolean = true;
@@ -127,7 +127,7 @@ public class ApolloWebViewFragment
         if (!str.equals(((WebGameFakeView.Director)localObject).title))
         {
           ((WebGameFakeView.Director)localObject).title = str;
-          aixs.a().b();
+          aixq.a().b();
         }
       }
     }
@@ -141,7 +141,7 @@ public class ApolloWebViewFragment
   
   public void a(String paramString)
   {
-    nax.a("Web_readyToLoadUrl");
+    nau.a("Web_readyToLoadUrl");
     if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
@@ -151,20 +151,20 @@ public class ApolloWebViewFragment
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bcfa.i) && (this.jdField_a_of_type_Bcfa.k > 0L))
+      if ((this.jdField_a_of_type_Bcfo.i) && (this.jdField_a_of_type_Bcfo.k > 0L))
       {
-        axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Bcfa.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Bcfa.c);
-        this.jdField_a_of_type_Bcfa.k = 0L;
+        axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.jdField_a_of_type_Bcfo.k) / 1000000L), "", "", "", "" + this.jdField_a_of_type_Bcfo.c);
+        this.jdField_a_of_type_Bcfo.k = 0L;
       }
-      this.jdField_a_of_type_Bcfa.q = System.currentTimeMillis();
-      long l = this.jdField_a_of_type_Bcfa.q;
-      l = this.jdField_a_of_type_Bcfa.b;
+      this.jdField_a_of_type_Bcfo.q = System.currentTimeMillis();
+      long l = this.jdField_a_of_type_Bcfo.q;
+      l = this.jdField_a_of_type_Bcfo.b;
       this.h = paramString;
       if (!TextUtils.isEmpty(this.h)) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.h);
       }
-      nax.b("Web_readyToLoadUrl");
-      this.jdField_a_of_type_Bcfa.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.h, 0, 0, 0, 0, 0, null);
+      nau.b("Web_readyToLoadUrl");
+      this.jdField_a_of_type_Bcfo.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.h, 0, 0, 0, 0, 0, null);
       return;
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("about:blank");
     }
@@ -175,16 +175,16 @@ public class ApolloWebViewFragment
     boolean bool = h();
     if (!bool)
     {
-      this.jdField_a_of_type_Bcfj.jdField_a_of_type_Bcfm.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Bcfj.b = false;
-      this.jdField_a_of_type_Bcfj.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bcfx.b = false;
+      this.jdField_a_of_type_Bcfx.jdField_a_of_type_Boolean = false;
     }
     if (!g()) {
-      this.jdField_a_of_type_Bcfm.c = 0L;
+      this.jdField_a_of_type_Bcga.c = 0L;
     }
     super.a();
     if (!bool) {
-      this.jdField_a_of_type_Bcbv.b(false);
+      this.jdField_a_of_type_Bccj.b(false);
     }
     return true;
   }
@@ -200,7 +200,7 @@ public class ApolloWebViewFragment
       paramBundle.getInt("id");
       str1 = paramBundle.getString("url");
       String str2 = b();
-      ajae.a(new Object[] { "[launchWebGame], success load url:", str1 });
+      ajac.a(new Object[] { "[launchWebGame], success load url:", str1 });
       if ((TextUtils.isEmpty(str2)) || (str2.equals(str1))) {
         break label83;
       }
@@ -232,14 +232,14 @@ public class ApolloWebViewFragment
   
   public int f(Bundle paramBundle)
   {
-    nax.a("Web_qqbrowser_state_machine_init_ui_frame");
-    if (this.jdField_a_of_type_Bcfj != null) {
-      this.jdField_a_of_type_Bcfj.d = true;
+    nau.a("Web_qqbrowser_state_machine_init_ui_frame");
+    if (this.jdField_a_of_type_Bcfx != null) {
+      this.jdField_a_of_type_Bcfx.d = true;
     }
     i();
     a();
     this.m = 128;
-    nax.b("Web_qqbrowser_state_machine_init_ui_frame");
+    nau.b("Web_qqbrowser_state_machine_init_ui_frame");
     return 1;
   }
   

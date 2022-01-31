@@ -1,10 +1,13 @@
-public abstract interface afyk
+public class afyk
 {
-  public abstract void a();
+  public int a;
+  public String a;
   
-  public abstract void b();
-  
-  public abstract void c();
+  public afyk(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

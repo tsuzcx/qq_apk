@@ -1,23 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
 class aily
-  implements View.OnClickListener
+  implements Comparator<aiqm>
 {
-  private WeakReference<ailu> a;
-  
-  public aily(ailu paramailu)
+  public int a(aiqm paramaiqm1, aiqm paramaiqm2)
   {
-    this.a = new WeakReference(paramailu);
+    paramaiqm1 = (Friends)paramaiqm1.a;
+    paramaiqm2 = (Friends)paramaiqm2.a;
+    int i = a(paramaiqm1);
+    int j = a(paramaiqm2);
+    if (i == j) {
+      return ajuh.a(paramaiqm1.mComparePartInt, paramaiqm1.mCompareSpell, paramaiqm2.mComparePartInt, paramaiqm2.mCompareSpell);
+    }
+    return i - j;
   }
   
-  public void onClick(View paramView)
+  public int a(Friends paramFriends)
   {
-    ailu localailu = (ailu)this.a.get();
-    if (localailu != null) {
-      localailu.onClick(paramView);
+    int i = 16384;
+    int k = bbcz.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
+    int j;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      label32:
+      if (!axmv.b()) {
+        break label100;
+      }
     }
+    for (;;)
+    {
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        return j | i | (int)paramFriends.getLastLoginType();
+        j = 131072;
+        break label32;
+        label100:
+        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+          i = 4096;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
+          i = 8192;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
+          i = 12288;
+        }
+        break;
+      }
+    }
+    return j | i | 0x1;
+    return j | i | 0x2;
+    return j | i | 0x3;
   }
 }
 

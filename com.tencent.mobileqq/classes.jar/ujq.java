@@ -1,15 +1,20 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
-class ujq
-  implements tsq
+public class ujq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ujq(ujp paramujp) {}
+  public ujq(QGSettingFragment paramQGSettingFragment) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return (!paramStoryVideoItem.isBasicInfoOK()) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    if (paramBoolean)
+    {
+      QGSettingFragment.b(true);
+      return;
+    }
+    QGSettingFragment.b(false);
   }
 }
 

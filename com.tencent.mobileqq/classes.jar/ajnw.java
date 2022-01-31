@@ -1,24 +1,13 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-public final class ajnw
-  implements BusinessObserver
+class ajnw
+  extends ajod
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  ajnw(ajnv paramajnv) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
-    }
-    if (paramBoolean)
-    {
-      this.a.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
-      ThreadManager.post(new ApolloGameUtil.2.1(this, paramBundle), 5, null, true);
-    }
+    QLog.d("ApolloGameUtil", 2, "  onPermission the http retcode = " + paramInt);
   }
 }
 

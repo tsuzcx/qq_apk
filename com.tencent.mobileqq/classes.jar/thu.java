@@ -1,18 +1,31 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+
 public class thu
-  extends ssk
+  extends QQUIEventReceiver<thh, tkk>
 {
-  public String a;
-  public two a;
-  
-  public thu(two paramtwo, String paramString)
+  public thu(@NonNull thh paramthh)
   {
-    this.jdField_a_of_type_Two = paramtwo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramthh);
   }
   
-  public String toString()
+  public void a(@NonNull thh paramthh, @NonNull tkk paramtkk)
   {
-    return "UpdateMsgTabCoverEvent{, groupId=" + this.jdField_a_of_type_Two + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_JavaUtilList != null) && (!paramtkk.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramthh.a.b(paramtkk);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramtkk.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tkk.class;
   }
 }
 

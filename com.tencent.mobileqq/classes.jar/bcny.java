@@ -1,104 +1,12 @@
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 
-public final class bcny
-  extends ExploreByTouchHelper
+public abstract interface bcny
 {
-  private WeakReference<View> a;
+  public abstract void a();
   
-  private bcny(View paramView)
-  {
-    super(paramView);
-    this.a = new WeakReference(paramView);
-  }
+  public abstract void a(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp);
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    View localView = (View)this.a.get();
-    if ((localView instanceof ParticipleView))
-    {
-      int i = ParticipleView.a((ParticipleView)localView, paramFloat1, paramFloat2);
-      if (i >= 0) {
-        return i;
-      }
-    }
-    return -2147483648;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      int i = 0;
-      int j = ((List)localObject).size();
-      while (i < j)
-      {
-        paramList.add(Integer.valueOf(i));
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt2 == 16)
-    {
-      paramBundle = (View)this.a.get();
-      if ((paramBundle instanceof ParticipleView))
-      {
-        paramBundle = ParticipleView.a((ParticipleView)paramBundle);
-        if (paramBundle != null)
-        {
-          paramBundle.invalidateVirtualView(paramInt1);
-          paramBundle.sendEventForVirtualView(paramInt1, 1);
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if (paramInt < ((List)localObject).size()) {
-        paramAccessibilityEvent.setContentDescription(((bcnx)((List)localObject).get(paramInt)).a.a());
-      }
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    Object localObject = (View)this.a.get();
-    if ((localObject instanceof ParticipleView))
-    {
-      localObject = ParticipleView.b((ParticipleView)localObject);
-      if ((paramInt < ((List)localObject).size()) && (paramInt != -2147483648))
-      {
-        localObject = (bcnx)((List)localObject).get(paramInt);
-        if (bcnx.a((bcnx)localObject).size() > 0)
-        {
-          RectF localRectF = (RectF)bcnx.a((bcnx)localObject).get(0);
-          paramAccessibilityNodeInfoCompat.setContentDescription(((bcnx)localObject).a.a());
-          paramAccessibilityNodeInfoCompat.addAction(16);
-          paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-        }
-      }
-    }
-  }
+  public abstract boolean a();
 }
 
 

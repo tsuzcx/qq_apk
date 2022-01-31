@@ -2,10 +2,10 @@ package com.tencent.mobileqq.ocr.view.gesture;
 
 import android.view.MotionEvent;
 import android.view.View;
-import audz;
-import auee;
-import auen;
-import aueo;
+import aueb;
+import aueg;
+import auep;
+import aueq;
 import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 import java.util.List;
 
@@ -17,12 +17,12 @@ public class GestureProxy
     super(paramView);
   }
   
-  public auee a()
+  public aueg a()
   {
-    return this.jdField_a_of_type_Auee;
+    return this.jdField_a_of_type_Aueg;
   }
   
-  public auen a()
+  public auep a()
   {
     return this.c;
   }
@@ -34,11 +34,11 @@ public class GestureProxy
   
   public void a()
   {
-    this.jdField_a_of_type_Aueo.a(this.c);
-    this.jdField_a_of_type_Aueo.a(this.d);
-    this.jdField_a_of_type_Aueo.a(this.jdField_a_of_type_Auen);
-    this.jdField_a_of_type_Aueo.a(this.b);
-    if (this.jdField_a_of_type_Aueo.b(this.c))
+    this.jdField_a_of_type_Aueq.a(this.c);
+    this.jdField_a_of_type_Aueq.a(this.d);
+    this.jdField_a_of_type_Aueq.a(this.jdField_a_of_type_Auep);
+    this.jdField_a_of_type_Aueq.a(this.b);
+    if (this.jdField_a_of_type_Aueq.b(this.c))
     {
       g();
       return;
@@ -46,14 +46,14 @@ public class GestureProxy
     f();
   }
   
-  public void a(audz paramaudz)
+  public void a(aueb paramaueb)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramaudz);
+    this.jdField_a_of_type_JavaUtilList.add(paramaueb);
   }
   
-  public void a(auee paramauee)
+  public void a(aueg paramaueg)
   {
-    this.jdField_a_of_type_Auee = paramauee;
+    this.jdField_a_of_type_Aueg = paramaueg;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -64,7 +64,7 @@ public class GestureProxy
   public void b()
   {
     e();
-    if (this.jdField_a_of_type_Aueo.a(this.c))
+    if (this.jdField_a_of_type_Aueq.a(this.c))
     {
       g();
       return;

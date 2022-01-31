@@ -1,33 +1,9 @@
-import android.content.Intent;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
-public class nbm
-  extends MSFServlet
+class nbm
 {
-  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
+  public int a;
+  public long a;
   
-  public String[] getPreferSSOCommands()
-  {
-    return this.a;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    nbn localnbn = SensorAPIJavaScript.getMsfToWebViewConnector();
-    if (localnbn != null) {
-      localnbn.a(paramIntent, paramFromServiceMsg);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket) {}
+  private nbm(nbk paramnbk) {}
 }
 
 

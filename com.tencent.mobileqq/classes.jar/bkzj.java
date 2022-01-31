@@ -1,59 +1,47 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.13;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import java.io.File;
+import java.io.IOException;
+
 public class bkzj
-  extends bkzf
+  implements aysc
 {
-  public bkzk a;
-  public Object a;
-  public boolean a;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public String h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
-  public String l;
-  public int m;
-  public String m;
-  public int n;
-  public int o;
+  public bkzj(PtvTemplateManager.13 param13) {}
   
-  public String a()
+  public void onResp(aysz paramaysz)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nShortVideoForwardInfo");
-    localStringBuilder.append("\n |-").append("fromChatType:").append(this.c);
-    localStringBuilder.append("\n |-").append("toChatType:").append(this.d);
-    localStringBuilder.append("\n |-").append("fromBusiType:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("toBusiType:").append(this.f);
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_i_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.g);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_i_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_j_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileSource:").append(this.jdField_j_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("fromUin:").append(this.l);
-    localStringBuilder.append("\n |-").append("fromSessionUin:").append(this.m);
-    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramaysz.c);
+    }
+    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.this$0.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
+    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
+    try
+    {
+      nav.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
+      if (paramaysz.jdField_a_of_type_Int == 0)
+      {
+        ayxs localayxs = (ayxs)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
+        if (localayxs.a()) {
+          localayxs.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramaysz.jdField_a_of_type_Long);
+        }
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localIOException.printStackTrace();
+        }
+      }
+    }
   }
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(super.toString());
-    return localStringBuilder.toString();
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

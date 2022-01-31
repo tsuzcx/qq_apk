@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.gdtad.aditem.GdtAd;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
 
-public final class ysp
-  implements Parcelable.Creator<GdtAd>
+public class ysp
 {
-  public GdtAd a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public qq_ad_get.QQAdGet a;
+  public qq_ad_get.QQAdGetRsp a;
+  
+  public ysp()
   {
-    return new GdtAd(paramParcel);
+    this.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_Long = -2147483648L;
   }
   
-  public GdtAd[] a(int paramInt)
+  public boolean a()
   {
-    return new GdtAd[paramInt];
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null;
   }
 }
 

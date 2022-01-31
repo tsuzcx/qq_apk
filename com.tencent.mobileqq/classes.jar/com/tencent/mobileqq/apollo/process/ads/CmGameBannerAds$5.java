@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.ads;
 
-import ajae;
+import ajac;
+import ajaf;
 import ajah;
-import ajaj;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -13,33 +13,33 @@ import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONObject;
-import ytv;
-import yze;
+import yts;
+import yzb;
 
 public class CmGameBannerAds$5
   implements Runnable
 {
-  public CmGameBannerAds$5(ajah paramajah, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public CmGameBannerAds$5(ajaf paramajaf, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
   
   public void run()
   {
     Object localObject1;
     try
     {
-      localObject1 = ajah.a(this.this$0);
+      localObject1 = ajaf.a(this.this$0);
       if (localObject1 == null) {
         return;
       }
-      ajaj localajaj = (ajaj)ajah.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (localajaj == null) {
+      ajah localajah = (ajah)ajaf.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (localajah == null) {
         return;
       }
-      if (localajaj.jdField_a_of_type_AndroidViewView != null)
+      if (localajah.jdField_a_of_type_AndroidViewView != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("cmgame_process.CmGameBannerAds", 2, "banner view exists, show it.");
         }
-        localajaj.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        localajah.jdField_a_of_type_AndroidViewView.setVisibility(0);
         return;
       }
     }
@@ -51,13 +51,13 @@ public class CmGameBannerAds$5
     Object localObject2 = localThrowable1.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
     if ((localObject2 != null) && (((GdtBannerAd)localObject2).isLoaded()) && (!((GdtBannerAd)localObject2).isInvalidated()))
     {
-      int i = yze.a(ajah.a(this.this$0), 1080, 1026);
-      int j = yze.a(ajah.a(this.this$0), 1080, 249);
+      int i = yzb.a(ajaf.a(this.this$0), 1080, 1026);
+      int j = yzb.a(ajaf.a(this.this$0), 1080, 249);
       localObject2 = ((GdtBannerAd)localObject2).render((Context)localObject1, i, j);
-      if ((localObject2 != null) && (((ytv)localObject2).a() != null))
+      if ((localObject2 != null) && (((yts)localObject2).a() != null))
       {
         FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, j);
-        int k = ajah.b(this.this$0);
+        int k = ajaf.b(this.this$0);
         if (QLog.isColorLevel()) {
           QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "screenH:", Integer.valueOf(k) });
         }
@@ -68,11 +68,11 @@ public class CmGameBannerAds$5
         }
         localLayoutParams.topMargin = (k - this.b - j);
         localLayoutParams.leftMargin = this.c;
-        localObject1 = (FrameLayout)((Activity)localObject1).findViewById(2131363038);
+        localObject1 = (FrameLayout)((Activity)localObject1).findViewById(2131363037);
         if (localObject1 != null)
         {
-          ((FrameLayout)localObject1).addView(((ytv)localObject2).a(), localLayoutParams);
-          localThrowable1.jdField_a_of_type_AndroidViewView = ((ytv)localObject2).a();
+          ((FrameLayout)localObject1).addView(((yts)localObject2).a(), localLayoutParams);
+          localThrowable1.jdField_a_of_type_AndroidViewView = ((yts)localObject2).a();
         }
         try
         {
@@ -84,7 +84,7 @@ public class CmGameBannerAds$5
           ((JSONObject)localObject1).put("w", i);
           ((JSONObject)localObject1).put("h", j);
           localJSONObject.put("style", localObject1);
-          ajae.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.game_ad_banner_show.local", localJSONObject.toString());
+          ajac.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.game_ad_banner_show.local", localJSONObject.toString());
           return;
         }
         catch (Throwable localThrowable2)

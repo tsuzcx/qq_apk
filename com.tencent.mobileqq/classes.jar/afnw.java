@@ -1,17 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class afnw
-  implements View.OnClickListener
+  extends MqqHandler
 {
   public afnw(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    bbbb.a("Grp_contacts_news", "notice", "unnormal_clk", 0, 0, new String[0]);
-    TroopSuspiciousFragment.a(this.a.a);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Afmy == null);
+      this.a.jdField_a_of_type_Afmy.a = aydd.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Afmy.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Akfc.c = aydd.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    case 1014: 
+      this.a.j();
+      return;
+    }
+    paramMessage = paramMessage.obj;
+    try
+    {
+      this.a.a((List)paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
+    }
   }
 }
 

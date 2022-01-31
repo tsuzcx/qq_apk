@@ -1,23 +1,31 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aopn
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public aopn(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
+  public aopn(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (bbfj.d(this.a.getActivity()))
+    {
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (apug.a())
+      {
+        aptt.a(this.a.getActivity(), 2131692673, 2131720614, new aopo(this));
+        return;
+      }
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
+    }
+    aptx.a(2131692666);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

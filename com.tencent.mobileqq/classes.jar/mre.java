@@ -1,43 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class mre
 {
-  public static Drawable a(Resources paramResources, int paramInt)
+  public static String a()
   {
-    return a(paramResources, paramInt, 2131165905, true, 2130841491, 2131165908);
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GAudioSoundUtil", 2, "[sound_early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/sound_early/";
   }
   
-  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
+  public static void a(Context paramContext)
   {
-    Drawable localDrawable = paramResources.getDrawable(paramInt1);
-    if (paramBoolean) {}
-    for (Object localObject = mts.a(paramResources, paramInt1, paramInt2);; localObject = localDrawable)
+    if (QLog.isColorLevel()) {
+      QLog.i("GAudioSoundUtil", 2, "[sound_early] trigger early download");
+    }
+    Object localObject2 = a();
+    Object localObject1 = new File((String)localObject2, "qav_gaudio_muted.mp3");
+    File localFile = new File((String)localObject2, "qav_gaudio_cancel_muted.mp3");
+    localObject2 = new File((String)localObject2, "qav_peer_phone_calling.mp3");
+    if ((!((File)localObject1).exists()) || (!localFile.exists()) || (!((File)localObject2).exists()))
     {
-      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      localDrawable = paramResources.getDrawable(paramInt3);
-      paramResources = mts.a(paramResources, paramInt3, paramInt4);
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      return paramResources;
+      localObject1 = new Intent("tencent.video.v2q.downloadGAudioSound");
+      ((Intent)localObject1).setPackage(paramContext.getPackageName());
+      paramContext.sendBroadcast((Intent)localObject1);
     }
   }
   
-  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
+  public static boolean a(String paramString)
   {
-    return a(paramResources, paramInt, 2131165905, paramBoolean, 2130841491, 2131165908);
-  }
-  
-  public static Drawable b(Resources paramResources, int paramInt)
-  {
-    Drawable localDrawable = paramResources.getDrawable(paramInt);
-    paramResources = mts.a(paramResources, paramInt, 2131165905);
-    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    return paramResources;
+    return new File(a(), paramString).exists();
   }
 }
 

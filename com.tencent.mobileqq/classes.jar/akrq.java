@@ -1,6 +1,10 @@
+import java.util.List;
+
 public abstract interface akrq
 {
-  public abstract void a();
+  public abstract void a(String paramString, auko paramauko);
+  
+  public abstract void a(String paramString, List<? extends auko> paramList);
 }
 
 

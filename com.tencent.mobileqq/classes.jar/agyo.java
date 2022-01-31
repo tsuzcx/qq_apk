@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class agyo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public agyo(TransactionActivity paramTransactionActivity) {}
+  public agyo(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.b(this.a), "");
-    this.a.b();
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      ahiw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

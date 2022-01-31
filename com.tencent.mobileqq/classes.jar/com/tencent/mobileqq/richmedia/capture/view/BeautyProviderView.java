@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import avsd;
-import avvt;
+import avsf;
+import avvv;
 
 public class BeautyProviderView
   extends ProviderView
@@ -34,13 +34,13 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845074);
+    paramTextView.setBackgroundResource(2130845075);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845073);
+    paramTextView.setBackgroundResource(2130845074);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
   
@@ -50,10 +50,10 @@ public class BeautyProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561037, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561036, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363116));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363115));
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
@@ -65,13 +65,13 @@ public class BeautyProviderView
       paramBundle.setOnClickListener(this);
       paramBundle.setTag(Integer.valueOf(i));
       localObject = new TextView(getContext());
-      ((TextView)localObject).setBackgroundResource(2130845073);
+      ((TextView)localObject).setBackgroundResource(2130845074);
       ((TextView)localObject).setText(i + "");
       ((TextView)localObject).setTextSize(18.0F);
       ((TextView)localObject).setGravity(17);
       ((TextView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramBundle.addView((View)localObject);
-      paramBundle.setContentDescription(ajyc.a(2131701073) + i);
+      paramBundle.setContentDescription(ajya.a(2131701084) + i);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramBundle);
       i += 1;
     }
@@ -81,13 +81,13 @@ public class BeautyProviderView
   public void aL_()
   {
     super.aL_();
-    avsd.a().b(getContext());
+    avsf.a().b(getContext());
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_Avvt.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_Avvv.a(((Integer)paramView.getTag()).intValue());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.debug;
 
+import aiws;
+import aiwt;
 import aiwu;
 import aiwv;
 import aiww;
 import aiwx;
 import aiwy;
 import aiwz;
-import aixa;
-import aixb;
-import ajae;
+import ajac;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,7 +28,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SimpleAdapter;
-import bawz;
+import baxn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
@@ -46,7 +46,7 @@ public class CmGameDebugView
   implements View.OnClickListener
 {
   public int a;
-  private aiwv jdField_a_of_type_Aiwv = new aixb(this);
+  private aiwt jdField_a_of_type_Aiwt = new aiwz(this);
   private Context jdField_a_of_type_AndroidContentContext;
   FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
   private DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
@@ -66,8 +66,8 @@ public class CmGameDebugView
   public CmGameDebugView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aiww(this);
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new aiwz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aiwu(this);
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new aiwx(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
   }
@@ -75,8 +75,8 @@ public class CmGameDebugView
   public CmGameDebugView(Context paramContext, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
     super(paramContext, paramStartCheckParam);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aiww(this);
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new aiwz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aiwu(this);
+    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new aiwx(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramContext);
   }
@@ -99,17 +99,17 @@ public class CmGameDebugView
       {
         this.jdField_b_of_type_Int = i;
         paramContext = (FrameLayout)LayoutInflater.from(paramContext).inflate(2131558792, null);
-        this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364321);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131364323));
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramContext.findViewById(2131364324));
-        this.c = paramContext.findViewById(2131364322);
+        this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131364320);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131364322));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramContext.findViewById(2131364323));
+        this.c = paramContext.findViewById(2131364321);
         this.c.setOnClickListener(this);
         FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-        localLayoutParams.leftMargin = (this.jdField_a_of_type_Int - bawz.a(this.jdField_a_of_type_AndroidContentContext, 130.0F));
-        localLayoutParams.topMargin = (this.jdField_b_of_type_Int - bawz.a(this.jdField_a_of_type_AndroidContentContext, 46.0F));
+        localLayoutParams.leftMargin = (this.jdField_a_of_type_Int - baxn.a(this.jdField_a_of_type_AndroidContentContext, 130.0F));
+        localLayoutParams.topMargin = (this.jdField_b_of_type_Int - baxn.a(this.jdField_a_of_type_AndroidContentContext, 46.0F));
         this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         addView(paramContext);
-        ((RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131375500)).addView(this, new RelativeLayout.LayoutParams(-2, -2));
+        ((RelativeLayout)((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).findViewById(2131375502)).addView(this, new RelativeLayout.LayoutParams(-2, -2));
         c();
         return;
         i = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels;
@@ -163,9 +163,9 @@ public class CmGameDebugView
   
   private void h()
   {
-    aiwu localaiwu = ajae.a();
-    if (localaiwu != null) {
-      localaiwu.a(this.jdField_a_of_type_Aiwv);
+    aiws localaiws = ajac.a();
+    if (localaiws != null) {
+      localaiws.a(this.jdField_a_of_type_Aiwt);
     }
   }
   
@@ -173,9 +173,9 @@ public class CmGameDebugView
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < aiwu.a.length)
+    while (i < aiws.a.length)
     {
-      String str = aiwu.a[i];
+      String str = aiws.a[i];
       HashMap localHashMap = new HashMap();
       localHashMap.put("title", str);
       localArrayList.add(localHashMap);
@@ -197,12 +197,12 @@ public class CmGameDebugView
     CmGameDebugBaseFragment localCmGameDebugBaseFragment1 = localCmGameDebugBaseFragment2;
     if (localCmGameDebugBaseFragment2 == null)
     {
-      localCmGameDebugBaseFragment1 = aiwu.a(paramInt);
-      localCmGameDebugBaseFragment1.a(new aixa(this));
+      localCmGameDebugBaseFragment1 = aiws.a(paramInt);
+      localCmGameDebugBaseFragment1.a(new aiwy(this));
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localCmGameDebugBaseFragment1);
     }
     if (!localCmGameDebugBaseFragment1.isAdded()) {
-      localFragmentTransaction.add(2131364320, localCmGameDebugBaseFragment1);
+      localFragmentTransaction.add(2131364319, localCmGameDebugBaseFragment1);
     }
     for (;;)
     {
@@ -221,7 +221,7 @@ public class CmGameDebugView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.c.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
-    localTranslateAnimation.setAnimationListener(new aiwx(this));
+    localTranslateAnimation.setAnimationListener(new aiwv(this));
   }
   
   public void b()
@@ -230,12 +230,12 @@ public class CmGameDebugView
     localTranslateAnimation.setDuration(200L);
     localTranslateAnimation.setFillAfter(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
-    localTranslateAnimation.setAnimationListener(new aiwy(this));
+    localTranslateAnimation.setAnimationListener(new aiww(this));
   }
   
   public void c()
   {
-    SimpleAdapter localSimpleAdapter = new SimpleAdapter(this.jdField_a_of_type_AndroidContentContext, a(), 2131558793, new String[] { "title" }, new int[] { 2131364325 });
+    SimpleAdapter localSimpleAdapter = new SimpleAdapter(this.jdField_a_of_type_AndroidContentContext, a(), 2131558793, new String[] { "title" }, new int[] { 2131364324 });
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(localSimpleAdapter);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
     a(0);

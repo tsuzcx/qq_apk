@@ -1,6 +1,7 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afzi
@@ -10,8 +11,16 @@ public class afzi
   
   public void onClick(View paramView)
   {
-    this.a.u();
-    new axra(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.c }).a();
+    this.a.f = false;
+    this.a.u = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Agau != null) {
+      this.a.jdField_a_of_type_Agau.a();
+    }
   }
 }
 

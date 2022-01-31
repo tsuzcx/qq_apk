@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
-public final class sfb
-  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
+class sfb
+  extends FilterOutputStream
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
+  int jdField_a_of_type_Int = 0;
+  
+  public sfb(sfa paramsfa, OutputStream paramOutputStream)
   {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+    super(paramOutputStream);
   }
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public void write(int paramInt)
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

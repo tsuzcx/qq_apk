@@ -1,52 +1,64 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class azpb
-  extends Handler
+public class azpb
+  extends azow
 {
-  azpb(azpa paramazpa, Looper paramLooper)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          azpa.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
-        return;
-        this.a.a = ((List)paramMessage.obj);
-        azpa.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      azpa.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
-      return;
+    int j = 0;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    azpa.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+    localTroopFeedItem.type = 12;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        paramJSONObject = paramJSONObject.getJSONObject("vote");
+        if (paramJSONObject != null)
+        {
+          JSONArray localJSONArray = paramJSONObject.getJSONArray("opts");
+          i = 0;
+          if ((i >= localJSONArray.length()) || (j > 1))
+          {
+            paramJSONObject = paramJSONObject.getJSONArray("title");
+            if (paramJSONObject.length() > 0) {
+              localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
+            }
+          }
+          else
+          {
+            Object localObject = localJSONArray.getJSONArray(i);
+            k = j;
+            if (((JSONArray)localObject).length() <= 0) {
+              break label177;
+            }
+            localObject = ((JSONArray)localObject).getJSONObject(0);
+            if (j == 0) {
+              localTroopFeedItem.content = ((JSONObject)localObject).getString("value");
+            } else {
+              localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
+            }
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      return localTroopFeedItem;
+      int k = j + 1;
+      label177:
+      i += 1;
+      j = k;
+    }
   }
 }
 

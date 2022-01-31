@@ -1,45 +1,75 @@
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aojk
+  extends aoez
 {
-  public int a;
-  protected aoix a;
-  protected aojj a;
+  public aojk(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public aojk(aojj paramaojj, aoix paramaoix)
+  protected void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Aoix = paramaoix;
-    this.jdField_a_of_type_Aojj = paramaojj;
+    asfl.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, ExtendFriendLimitChatMatchFragment.a(this.a).app);
   }
   
-  public void a()
+  protected void a(boolean paramBoolean1, ArrayList<aogn> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
+      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
+    if (paramBoolean1)
+    {
+      if (paramInt <= 0)
+      {
+        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "onlineCount  wrong");
+        if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
+        {
+          if (this.a.jdField_a_of_type_Aolh == null) {
+            break label260;
+          }
+          this.a.jdField_a_of_type_Aolh.a(paramArrayList1);
+        }
+      }
+      for (;;)
+      {
+        if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+          break label294;
+        }
+        paramArrayList1 = new aolw();
+        paramArrayList1.a(paramArrayList);
+        paramInt = 0;
+        while (paramInt < paramArrayList.size())
+        {
+          localObject = (aogn)paramArrayList.get(paramInt);
+          if (!TextUtils.isEmpty(((aogn)localObject).a)) {
+            ExtendFriendLimitChatMatchFragment.a(this.a, ExtendFriendLimitChatMatchFragment.a(this.a) + ((aogn)localObject).a + ";");
+          }
+          paramInt += 1;
+        }
+        Object localObject = paramInt + BaseApplication.getContext().getResources().getString(2131698997);
+        if (ExtendFriendLimitChatMatchFragment.a(this.a) != null)
+        {
+          ExtendFriendLimitChatMatchFragment.a(this.a).setText((CharSequence)localObject);
+          break;
+        }
+        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
+        break;
+        label260:
+        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
+      }
+      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null) {
+        ExtendFriendLimitChatMatchFragment.a(this.a).setAdapter(paramArrayList1);
+      }
     }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
-    }
+    return;
+    label294:
+    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
   }
 }
 

@@ -1,140 +1,270 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.av.video.jce.QQService.strupbuff;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class lcy
-  extends lcz<lcx>
 {
-  public lcy(int paramInt)
-  {
-    super(paramInt);
-  }
+  private static lcy jdField_a_of_type_Lcy;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "UNKNOWN", "WIFI", "CMWAP", "CMNET", "UNIWAP", "UNINET", "CTWAP", "CTNET", "3GWAP", "3GNET" };
+  private int jdField_a_of_type_Int;
+  private UniPacket jdField_a_of_type_ComQqJceWupUniPacket = new UniPacket(true);
+  private strupbuff jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff = new strupbuff(this.jdField_a_of_type_JavaUtilMap);
+  private Map<String, ArrayList<byte[]>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private lcz jdField_a_of_type_Lcz = new lcz(this);
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
   
-  public static int a(int paramInt)
+  private int a()
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return ampm.a().a(paramInt, localAppInterface.getCurrentAccountUin());
-  }
-  
-  public static lcx b(int paramInt)
-  {
-    return (lcx)ampm.a().a(paramInt);
-  }
-  
-  public Class<lcx> a()
-  {
-    return lcx.class;
-  }
-  
-  @NonNull
-  public lcx a(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "migrateOldOrDefaultContent, type[" + paramInt + "]");
+    int i = 0;
+    String str = bbfj.a(BaseApplication.getContext());
+    if ("wifi".equals(str)) {
+      i = 1;
     }
-    return new lcx();
-  }
-  
-  @Nullable
-  protected lcx a(ampi[] paramArrayOfampi)
-  {
-    lcx locallcx = new lcx();
-    paramArrayOfampi = a(this.jdField_a_of_type_JavaLangString, a(), paramArrayOfampi);
-    if (paramArrayOfampi != null) {
-      locallcx.a(paramArrayOfampi.jdField_a_of_type_Int, paramArrayOfampi.jdField_a_of_type_JavaLangString);
-    }
-    return locallcx;
-  }
-  
-  public void a()
-  {
-    super.a();
-    Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      return;
-    }
-    localObject = (QQAppInterface)localObject;
-    switch (a())
+    for (;;)
     {
-    default: 
-      return;
-    case 249: 
-      ((lun)((QQAppInterface)localObject).getManager(254)).b();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SharpReport_OffLine", 2, "getApn: " + i);
+      }
+      return i;
+      if ("cmnet".equals(str)) {
+        i = 3;
+      } else if ("cmwap".equals(str)) {
+        i = 2;
+      } else if ("ctnet".equals(str)) {
+        i = 7;
+      } else if ("ctwap".equals(str)) {
+        i = 6;
+      } else if ("uninet".equals(str)) {
+        i = 5;
+      } else if ("uniwap".equals(str)) {
+        i = 4;
+      } else if ("3gnet".equals(str)) {
+        i = 9;
+      } else if ("3gwap".equals(str)) {
+        i = 8;
+      }
     }
-    BusinessCommonConfig.getInstance((AppRuntime)localObject).handleResp_Config_NoResp((QQAppInterface)localObject, a());
   }
   
-  public void a(int paramInt)
+  private int a(int paramInt)
   {
-    super.a(paramInt);
-    Object localObject = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      return;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfByte == null) {
+      i = -1;
     }
-    localObject = (QQAppInterface)localObject;
-    switch (a())
+    int j;
+    do
     {
-    default: 
-      return;
-    }
-    ((lun)((QQAppInterface)localObject).getManager(254)).b();
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return i;
+                b(this.jdField_a_of_type_Lcz.jdField_a_of_type_JavaLangString.length());
+                j = a(this.jdField_a_of_type_Lcz.jdField_a_of_type_JavaLangString);
+                i = j;
+              } while (j < 0);
+              b(this.jdField_a_of_type_Lcz.jdField_b_of_type_JavaLangString.length());
+              j = a(this.jdField_a_of_type_Lcz.jdField_b_of_type_JavaLangString);
+              i = j;
+            } while (j < 0);
+            b(this.jdField_a_of_type_Lcz.jdField_c_of_type_JavaLangString.length());
+            j = a(this.jdField_a_of_type_Lcz.jdField_c_of_type_JavaLangString);
+            i = j;
+          } while (j < 0);
+          b(this.jdField_a_of_type_Lcz.f.length());
+          j = a(this.jdField_a_of_type_Lcz.f);
+          i = j;
+        } while (j < 0);
+        b(this.jdField_a_of_type_Lcz.d.length());
+        j = a(this.jdField_a_of_type_Lcz.d);
+        i = j;
+      } while (j < 0);
+      b(this.jdField_a_of_type_Lcz.e.length());
+      j = a(this.jdField_a_of_type_Lcz.e);
+      i = j;
+    } while (j < 0);
+    a(this.jdField_a_of_type_Lcz.jdField_c_of_type_Long);
+    a(this.jdField_a_of_type_Lcz.jdField_a_of_type_Long);
+    a(this.jdField_a_of_type_Lcz.jdField_a_of_type_Int);
+    a(this.jdField_a_of_type_Lcz.jdField_b_of_type_Long);
+    a(this.jdField_a_of_type_Lcz.jdField_b_of_type_Int);
+    a(paramInt);
+    return 0;
   }
   
-  public void a(lcx paramlcx)
+  private int a(long paramLong, byte[] paramArrayOfByte)
   {
-    super.a(paramlcx);
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppInterface instanceof QQAppInterface)) {}
-    while (paramlcx == null) {
-      return;
+    if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_ComQqJceWupUniPacket == null) || (this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff == null)) {
+      return 0;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)localAppInterface;
-    switch (a())
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_JavaUtilMap.put("617", new ArrayList());
+    ((ArrayList)this.jdField_a_of_type_JavaUtilMap.get("617")).add(paramArrayOfByte);
+    this.jdField_a_of_type_ComQqJceWupUniPacket.put("Data", this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff);
+    paramArrayOfByte = this.jdField_a_of_type_ComQqJceWupUniPacket.encode();
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), String.valueOf(paramLong), "CliLogSvc.UploadReq");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramArrayOfByte);
+    localToServiceMsg.setNeedRemindSlowNetwork(false);
+    try
     {
-    case 543: 
-    default: 
-      return;
-    case 132: 
-      lhi.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface.getApp(), 1, false);
-      return;
-    case 270: 
-      mtb.a(localQQAppInterface, paramlcx.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
-      return;
-    case 192: 
-      maz.a().a(paramlcx.jdField_a_of_type_JavaLangString);
-      return;
-    case 249: 
-      ((lun)localQQAppInterface.getManager(254)).b(paramlcx.jdField_a_of_type_JavaLangString);
-      ltx.a(true);
-      return;
-    case 276: 
-      bbfn.a(paramlcx.jdField_a_of_type_JavaLangString);
-      return;
-    case 287: 
-      msq.a(paramlcx.jdField_a_of_type_JavaLangString);
-      return;
-    case 367: 
-    case 382: 
-      BusinessCommonConfig.getInstance(localQQAppInterface).decodeConfig(localQQAppInterface, a(), paramlcx.jdField_a_of_type_JavaLangString);
-      return;
+      int i = MsfServiceSdk.get().sendMsg(localToServiceMsg);
+      if (i >= 0) {
+        return 1;
+      }
+      return 0;
     }
-    lnf.a(paramlcx.jdField_a_of_type_JavaLangString);
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return 0;
   }
   
-  public boolean a()
+  private int a(String paramString)
   {
-    switch (a())
+    int k = 0;
+    try
     {
-    default: 
-      return false;
+      paramString = paramString.getBytes("utf-8");
+      int i = 0;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i >= paramString.length) {
+          break;
+        }
+        this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramString[i];
+        this.jdField_a_of_type_Int += 1;
+        i += 1;
+      }
+      return j;
     }
-    return true;
+    catch (UnsupportedEncodingException paramString)
+    {
+      paramString.printStackTrace();
+      j = -1;
+    }
+  }
+  
+  private String a()
+  {
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+  }
+  
+  public static lcy a()
+  {
+    if (jdField_a_of_type_Lcy == null) {
+      jdField_a_of_type_Lcy = new lcy();
+    }
+    return jdField_a_of_type_Lcy;
+  }
+  
+  private void a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  private void a(long paramLong)
+  {
+    int i = (byte)(int)(paramLong >> 56 & 0xFF);
+    int j = (byte)(int)(paramLong >> 48 & 0xFF);
+    int k = (byte)(int)(paramLong >> 40 & 0xFF);
+    int m = (byte)(int)(paramLong >> 32 & 0xFF);
+    int n = (byte)(int)(paramLong >> 24 & 0xFF);
+    int i1 = (byte)(int)(paramLong >> 16 & 0xFF);
+    int i2 = (byte)(int)(paramLong >> 8 & 0xFF);
+    int i3 = (byte)(int)(0xFF & paramLong);
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 1)] = j;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 2)] = k;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 3)] = m;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 4)] = n;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 5)] = i1;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 6)] = i2;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 7)] = i3;
+    this.jdField_a_of_type_Int += 8;
+  }
+  
+  private void b(int paramInt)
+  {
+    int i = (byte)(paramInt >> 8 & 0xFF);
+    int j = (byte)(paramInt & 0xFF);
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
+    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 1)] = j;
+    this.jdField_a_of_type_Int += 2;
+  }
+  
+  public int a(int paramInt1, int paramInt2, long paramLong)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Lcz == null) {
+      paramInt2 = -1;
+    }
+    do
+    {
+      return paramInt2;
+      int j = a();
+      this.jdField_a_of_type_Lcz.e = jdField_a_of_type_ArrayOfJavaLangString[j];
+      this.jdField_a_of_type_Lcz.d = a();
+      this.jdField_a_of_type_Lcz.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Lcz.jdField_b_of_type_Int = paramInt2;
+      if (paramLong != 0L) {
+        this.jdField_a_of_type_Lcz.jdField_b_of_type_Long = paramLong;
+      }
+      this.jdField_a_of_type_Int = 0;
+      if (a(paramInt1) < 0) {
+        return -1;
+      }
+      if (this.jdField_a_of_type_Int <= 0) {
+        break;
+      }
+      byte[] arrayOfByte = new byte[this.jdField_a_of_type_Int];
+      paramInt2 = 0;
+      while (paramInt2 < this.jdField_a_of_type_Int)
+      {
+        arrayOfByte[paramInt2] = this.jdField_a_of_type_ArrayOfByte[paramInt2];
+        paramInt2 += 1;
+      }
+      a(this.jdField_a_of_type_Lcz.jdField_a_of_type_Long, arrayOfByte);
+      this.jdField_a_of_type_Int = 0;
+      paramInt2 = i;
+    } while (!QLog.isColorLevel());
+    QLog.d("SharpReport_Node", 2, "report_node is" + paramInt1);
+    return 0;
+    return -1;
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    if (this.jdField_a_of_type_Lcz == null) {
+      return;
+    }
+    this.jdField_a_of_type_Lcz.jdField_b_of_type_Long = paramLong3;
+    this.jdField_a_of_type_Lcz.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Lcz.jdField_c_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Lcz.jdField_c_of_type_JavaLangString = String.valueOf(AppSetting.a());
+    this.jdField_a_of_type_Lcz.f = AppSetting.d();
   }
 }
 

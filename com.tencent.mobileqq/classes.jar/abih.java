@@ -1,15 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class abih
-  implements View.OnClickListener
+  extends ajxj
 {
   public abih(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

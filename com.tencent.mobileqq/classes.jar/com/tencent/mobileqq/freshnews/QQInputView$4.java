@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.freshnews;
 
-import ajyc;
+import ajya;
 import android.widget.ImageView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
@@ -13,9 +13,9 @@ class QQInputView$4
   public void run()
   {
     QQInputView.a(this.this$0).setVisibility(0);
-    QQInputView.a(this.this$0).setImageResource(2130846983);
+    QQInputView.a(this.this$0).setImageResource(2130846989);
     if (AppSetting.d) {
-      QQInputView.a(this.this$0).setContentDescription(ajyc.a(2131710394));
+      QQInputView.a(this.this$0).setContentDescription(ajya.a(2131710405));
     }
   }
 }

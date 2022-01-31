@@ -1,11 +1,17 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class adky
   implements View.OnClickListener
@@ -14,17 +20,89 @@ public class adky
   
   public void onClick(View paramView)
   {
-    if (airz.a(this.a.a.getApplication()))
+    if ((!this.a.f) || (this.a.a()) || (System.currentTimeMillis() - ApolloItemBuilder.b(this.a) < 600L)) {}
+    adlc localadlc;
+    MessageForApollo localMessageForApollo;
+    do
     {
-      ApolloUtil.a(paramView.getContext(), null, "aio", ajmu.ah, null);
       return;
-    }
-    if (!airz.b(this.a.a.getApplication())) {}
-    for (String str = ajmu.U;; str = ajmu.V + bggu.b)
+      ApolloItemBuilder.b(this.a, System.currentTimeMillis());
+      airx.jdField_a_of_type_JavaUtilArrayList.clear();
+      localadlc = (adlc)actj.a(paramView);
+      localMessageForApollo = (MessageForApollo)localadlc.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      if (localMessageForApollo == null)
+      {
+        QLog.e("ApolloItemBuilder", 1, "errInfo->mr is null.");
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloItemBuilder", 2, "click game msg, roomId:" + localMessageForApollo.roomId);
+      }
+      if ((localMessageForApollo.mApolloMessage == null) || (localMessageForApollo.mApolloMessage.id == 99999))
+      {
+        bcql.a(paramView.getContext(), ajya.a(2131700408), 0).a();
+        return;
+      }
+    } while (!airx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()));
+    int j;
+    if (!ApolloGameUtil.a(localMessageForApollo.msgType))
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      j = localMessageForApollo.mApolloMessage.id;
+      if (!localMessageForApollo.isDoubleAction()) {
+        break label706;
+      }
+    }
+    label706:
+    for (int i = 1;; i = 0)
+    {
+      if (!ApolloUtil.a(j, i))
+      {
+        paramView = (airx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+        if ((paramView != null) && (paramView.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) != 2))
+        {
+          localadlc.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(true, this);
+          if (!airx.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(localadlc.e))) {
+            airx.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(localadlc.e));
+          }
+        }
+        if (!bbfj.g(this.a.jdField_a_of_type_AndroidContentContext)) {
+          break;
+        }
+      }
+      Object localObject = (airx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      paramView = (bbrd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
+      if (paramView != null)
+      {
+        ArrayList localArrayList = new ArrayList(2);
+        if (!localMessageForApollo.isSend())
+        {
+          ApolloBaseInfo localApolloBaseInfo = ((airx)localObject).a(localMessageForApollo.senderuin);
+          if ((localApolloBaseInfo == null) || (NetConnInfoCenter.getServerTime() - localApolloBaseInfo.apolloUpdateTime > 300L)) {
+            localArrayList.add(localMessageForApollo.senderuin);
+          }
+          if ((QLog.isColorLevel()) && (localApolloBaseInfo != null) && (!localApolloBaseInfo.isApolloStatusOpen()))
+          {
+            i = localApolloBaseInfo.apolloStatus;
+            QLog.d("ApolloItemBuilder", 2, "apollo status is not opened uin: " + localMessageForApollo.senderuin + ", status: " + i);
+          }
+        }
+        if ((localMessageForApollo.isDoubleAction()) && (localMessageForApollo.mApolloMessage.peer_uin > 0L) && (localMessageForApollo.mApolloMessage.peer_uin != this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()))
+        {
+          localObject = ((airx)localObject).a(localMessageForApollo.mApolloMessage.peer_uin + "");
+          if ((localObject == null) || (NetConnInfoCenter.getServerTime() - ((ApolloBaseInfo)localObject).apolloUpdateTime > 300L)) {
+            localArrayList.add(localMessageForApollo.mApolloMessage.peer_uin + "");
+          }
+          if ((QLog.isColorLevel()) && (localObject != null) && (!((ApolloBaseInfo)localObject).isApolloStatusOpen()))
+          {
+            i = ((ApolloBaseInfo)localObject).apolloStatus;
+            QLog.d("ApolloItemBuilder", 2, "apollo status is not opened uin: " + localMessageForApollo.mApolloMessage.peer_uin + ", status: " + i);
+          }
+        }
+        if (!localArrayList.isEmpty()) {
+          paramView.a((String[])localArrayList.toArray(new String[0]));
+        }
+      }
+      this.a.a(localadlc, 2);
       return;
     }
   }

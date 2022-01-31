@@ -1,16 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.triton.sdk.FPSCallback;
-import com.tencent.qqmini.sdk.minigame.GameRuntime.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Process;
 
-public class beui
-  implements FPSCallback
+class beui
+  implements DialogInterface.OnClickListener
 {
   beui(beuh parambeuh) {}
   
-  public void onFPSChange(float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    beuh.a(this.a).a(paramFloat);
-    beuh.a(this.a).post(new GameRuntime.1.1(this, paramFloat));
+    paramDialogInterface.dismiss();
+    Process.killProcess(Process.myPid());
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import onk;
+import onh;
 
 class Conversation$20
   implements Runnable
@@ -10,7 +10,7 @@ class Conversation$20
   
   public void run()
   {
-    onk.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
+    onh.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 

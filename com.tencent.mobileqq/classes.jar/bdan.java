@@ -1,84 +1,132 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.List;
+import android.content.Intent;
+import android.widget.Toast;
+import com.tencent.open.agent.ChallengeBragBase;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdan
-  extends bddt
+  implements bdje
 {
-  protected List<Friend> a;
+  public bdan(ChallengeBragBase paramChallengeBragBase) {}
   
-  public bdan(List<Friend> paramList)
+  protected void a(Intent paramIntent)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    int i = paramIntent.getIntExtra("key_error_code", -6);
+    if (i != 0)
+    {
+      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
+      bdii.e("qqBaseActivity", "onSendChallengeComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+    }
+    this.a.setResult(-1, paramIntent);
+    this.a.finish();
   }
   
-  public int getCount()
+  public void a(Exception paramException)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.a.d();
+    bdii.c("qqBaseActivity", "SendChallenge exception." + paramException.getMessage(), paramException);
+    Intent localIntent = new Intent();
+    if ((paramException instanceof ConnectTimeoutException))
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562412, paramViewGroup, false);
-      paramViewGroup = new bdaq();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368584));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378353));
-      paramView.setTag(paramViewGroup);
-    }
-    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      return paramView;
-      paramViewGroup = (bdaq)paramView.getTag();
-    }
-    Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject;
-    if ((localFriend.c == null) || ("".equals(localFriend.c)))
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.b);
-      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = bdec.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
-      }
-      localObject = bddz.a().a(localFriend.d);
-      if (localObject != null) {
-        break label290;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839736);
-      localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      bddz.a().a(localFriend.d, new bdao(this, (ImageView)localObject));
+      localIntent.putExtra("key_error_code", -7);
+      localIntent.putExtra("key_error_msg", bdjm.e);
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
-        break label302;
+      a(localIntent);
+      return;
+      if ((paramException instanceof SocketTimeoutException))
+      {
+        localIntent.putExtra("key_error_code", -8);
+        localIntent.putExtra("key_error_msg", bdjm.f);
       }
-      paramViewGroup.b.setText(2131691845);
-      return paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
-      break;
-      label290:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      else if ((paramException instanceof MalformedURLException))
+      {
+        localIntent.putExtra("key_error_code", -3);
+        localIntent.putExtra("key_error_msg", "访问url有误!");
+      }
+      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+      {
+        localIntent.putExtra("key_error_code", -10);
+        localIntent.putExtra("key_error_msg", "Http返回码异常!");
+      }
+      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+      {
+        localIntent.putExtra("key_error_code", -9);
+        localIntent.putExtra("key_error_msg", bdjm.g);
+      }
+      else if ((paramException instanceof IOException))
+      {
+        localIntent.putExtra("key_error_code", -2);
+        localIntent.putExtra("key_error_msg", bdjm.a);
+      }
+      else
+      {
+        localIntent.putExtra("key_error_code", -6);
+        localIntent.putExtra("key_error_msg", bdjm.d);
+      }
     }
-    label302:
-    paramViewGroup.b.setText("");
-    return paramView;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    int i = 0;
+    try
+    {
+      this.a.d();
+      int j = paramJSONObject.getInt("ret");
+      String str = paramJSONObject.getString("msg");
+      Object localObject;
+      if (j == 0)
+      {
+        localObject = null;
+        if (!"action_brag".equals(this.a.p)) {
+          break label131;
+        }
+        localObject = "ANDROIDQQ.BRAG.ASSISTANT";
+        i = 2131690936;
+      }
+      for (;;)
+      {
+        if (localObject != null)
+        {
+          bdjr.a("400", (String)localObject, this.a.c);
+          Toast.makeText(this.a, i, 0).show();
+        }
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("key_error_code", j);
+        ((Intent)localObject).putExtra("key_error_msg", str);
+        ((Intent)localObject).putExtra("key_response", paramJSONObject.toString());
+        a((Intent)localObject);
+        return;
+        label131:
+        if ("action_challenge".equals(this.a.p))
+        {
+          localObject = "ANDROIDQQ.PK.ASSISTANT";
+          i = 2131690937;
+        }
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      bdii.c("qqBaseActivity", "SendChallenge exception." + paramJSONObject.getMessage(), paramJSONObject);
+      paramJSONObject = new Intent();
+      paramJSONObject.putExtra("key_error_code", -4);
+      paramJSONObject.putExtra("key_error_msg", bdjm.b);
+      a(paramJSONObject);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      a(paramJSONObject);
+    }
   }
 }
 

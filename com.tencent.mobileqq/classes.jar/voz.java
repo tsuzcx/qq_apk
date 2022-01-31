@@ -1,92 +1,53 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.io.File;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.content.Context;
+import android.widget.BaseAdapter;
 
-public class voz
-  extends vot
+public abstract class voz<PACKAGE extends voq>
+  extends BaseAdapter
 {
   public int a;
-  public final List<String> a;
-  public boolean a;
-  public int b;
-  public String e;
-  public String f;
+  protected Context a;
+  protected PACKAGE a;
+  protected vos a;
   
-  public voz(@NonNull String paramString)
+  public voz(Context paramContext)
   {
-    super(paramString);
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public String a()
+  public void a(PACKAGE paramPACKAGE)
   {
-    return "NormalFacePackage";
+    this.jdField_a_of_type_Voq = paramPACKAGE;
   }
   
-  public String a(int paramInt)
+  public void a(vos paramvos)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_Vos = paramvos;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Voq == null) {
+      return 0;
     }
-    return null;
+    int i = this.jdField_a_of_type_Voq.b();
+    int j = this.jdField_a_of_type_Voq.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
   }
   
-  public boolean a()
+  public Object getItem(int paramInt)
   {
-    if (TextUtils.isEmpty(this.f)) {}
-    do
-    {
-      Object localObject1;
-      do
-      {
-        return false;
-        localObject1 = new File(this.f);
-      } while (!((File)localObject1).exists());
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (((File)localObject1).isDirectory())
-      {
-        localObject1 = ((File)localObject1).listFiles(new vpa(this));
-        if (localObject1 != null)
-        {
-          int j = localObject1.length;
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = localObject1[i];
-            this.jdField_a_of_type_JavaUtilList.add(localObject2.toURI().toString());
-            i += 1;
-          }
-          Collections.sort(this.jdField_a_of_type_JavaUtilList);
-        }
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.isEmpty());
-    return true;
+    return Integer.valueOf(paramInt);
   }
   
-  public int b()
+  public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
-    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
-    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
-    localStringBuffer.append(", zipDownloadUrl='").append(this.e).append('\'');
-    localStringBuffer.append(", facePkgPath='").append(this.f).append('\'');
-    localStringBuffer.append(", faceUriList=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", isDownloading=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", maxProgress=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", currentProgress=").append(this.b);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    return paramInt;
   }
 }
 

@@ -1,52 +1,24 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class pon
-  extends RecyclerView.ItemDecoration
+class pon
+  implements Drawable.Callback
 {
-  private int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
-  private int d;
+  pon(pom parampom, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
   
-  public pon(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.c = paramInt4;
+    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramRect.top = this.jdField_a_of_type_Int;
-      paramRect.bottom = this.c;
-      if (i == 0) {
-        paramRect.left = this.b;
-      }
-      if (i == paramState.getItemCount() - 1) {
-        paramRect.right = this.d;
-      }
-    }
-    do
-    {
-      return;
-      paramRect.left = this.b;
-      paramRect.right = this.d;
-      if (i == 0) {
-        paramRect.top = this.jdField_a_of_type_Int;
-      }
-    } while (i != paramState.getItemCount() - 1);
-    paramRect.bottom = this.c;
-  }
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

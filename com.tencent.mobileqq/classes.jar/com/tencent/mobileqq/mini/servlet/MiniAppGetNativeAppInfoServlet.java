@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -69,7 +69,7 @@ public class MiniAppGetNativeAppInfoServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetNAppForJump");
-      paramPacket.putSendData(bblm.a((byte[])localObject1));
+      paramPacket.putSendData(bbma.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

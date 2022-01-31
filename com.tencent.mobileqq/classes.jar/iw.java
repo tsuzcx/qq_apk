@@ -6,22 +6,65 @@ final class iw
   private static final int[][] a;
   private static final int[][] b;
   private static final int[][] c;
-  private static final int[][] d = { { 8, 0 }, { 8, 1 }, { 8, 2 }, { 8, 3 }, { 8, 4 }, { 8, 5 }, { 8, 7 }, { 8, 8 }, { 7, 8 }, { 5, 8 }, { 4, 8 }, { 3, 8 }, { 2, 8 }, { 1, 8 }, { 0, 8 } };
+  private static final int[][] d;
   
   static
   {
     int[] arrayOfInt1 = { 1, 1, 1, 1, 1, 1, 1 };
-    int[] arrayOfInt2 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt3 = { 1, 0, 0, 0, 0, 0, 1 };
-    int[] arrayOfInt4 = { 1, 1, 1, 1, 1, 1, 1 };
-    a = new int[][] { arrayOfInt1, { 1, 0, 0, 0, 0, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt2, arrayOfInt3, arrayOfInt4 };
-    b = new int[][] { { 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
-    arrayOfInt1 = new int[] { 6, 26, 48, 70, -1, -1, -1 };
-    arrayOfInt2 = new int[] { 6, 34, 62, 90, -1, -1, -1 };
-    arrayOfInt3 = new int[] { 6, 26, 50, 74, 98, -1, -1 };
-    arrayOfInt4 = new int[] { 6, 26, 52, 78, 104, 130, -1 };
-    int[] arrayOfInt5 = { 6, 28, 54, 80, 106, 132, 158 };
-    c = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, { 6, 18, -1, -1, -1, -1, -1 }, { 6, 22, -1, -1, -1, -1, -1 }, { 6, 26, -1, -1, -1, -1, -1 }, { 6, 30, -1, -1, -1, -1, -1 }, { 6, 34, -1, -1, -1, -1, -1 }, { 6, 22, 38, -1, -1, -1, -1 }, { 6, 24, 42, -1, -1, -1, -1 }, { 6, 26, 46, -1, -1, -1, -1 }, { 6, 28, 50, -1, -1, -1, -1 }, { 6, 30, 54, -1, -1, -1, -1 }, { 6, 32, 58, -1, -1, -1, -1 }, { 6, 34, 62, -1, -1, -1, -1 }, { 6, 26, 46, 66, -1, -1, -1 }, arrayOfInt1, { 6, 26, 50, 74, -1, -1, -1 }, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, arrayOfInt2, { 6, 28, 50, 72, 94, -1, -1 }, arrayOfInt3, { 6, 30, 54, 78, 102, -1, -1 }, { 6, 28, 54, 80, 106, -1, -1 }, { 6, 32, 58, 84, 110, -1, -1 }, { 6, 30, 58, 86, 114, -1, -1 }, { 6, 34, 62, 90, 118, -1, -1 }, { 6, 26, 50, 74, 98, 122, -1 }, { 6, 30, 54, 78, 102, 126, -1 }, arrayOfInt4, { 6, 30, 56, 82, 108, 134, -1 }, { 6, 34, 60, 86, 112, 138, -1 }, { 6, 30, 58, 86, 114, 142, -1 }, { 6, 34, 62, 90, 118, 146, -1 }, { 6, 30, 54, 78, 102, 126, 150 }, { 6, 24, 50, 76, 102, 128, 154 }, arrayOfInt5, { 6, 32, 58, 84, 110, 136, 162 }, { 6, 26, 54, 82, 110, 138, 166 }, { 6, 30, 58, 86, 114, 142, 170 } };
+    int[] arrayOfInt2 = { 1, 0, 0, 0, 0, 0, 1 };
+    int[] arrayOfInt3 = { 1, 0, 1, 1, 1, 0, 1 };
+    int[] arrayOfInt4 = { 1, 0, 1, 1, 1, 0, 1 };
+    int[] arrayOfInt5 = { 1, 0, 0, 0, 0, 0, 1 };
+    int[] arrayOfInt6 = { 1, 1, 1, 1, 1, 1, 1 };
+    a = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt4, arrayOfInt5, arrayOfInt6 };
+    arrayOfInt1 = new int[] { 1, 1, 1, 1, 1 };
+    arrayOfInt2 = new int[] { 1, 0, 0, 0, 1 };
+    arrayOfInt3 = new int[] { 1, 0, 0, 0, 1 };
+    b = new int[][] { arrayOfInt1, arrayOfInt2, { 1, 0, 1, 0, 1 }, arrayOfInt3, { 1, 1, 1, 1, 1 } };
+    arrayOfInt1 = new int[] { -1, -1, -1, -1, -1, -1, -1 };
+    arrayOfInt2 = new int[] { 6, 18, -1, -1, -1, -1, -1 };
+    arrayOfInt3 = new int[] { 6, 22, -1, -1, -1, -1, -1 };
+    arrayOfInt4 = new int[] { 6, 26, -1, -1, -1, -1, -1 };
+    arrayOfInt5 = new int[] { 6, 30, -1, -1, -1, -1, -1 };
+    arrayOfInt6 = new int[] { 6, 22, 38, -1, -1, -1, -1 };
+    int[] arrayOfInt7 = { 6, 24, 42, -1, -1, -1, -1 };
+    int[] arrayOfInt8 = { 6, 26, 46, -1, -1, -1, -1 };
+    int[] arrayOfInt9 = { 6, 28, 50, -1, -1, -1, -1 };
+    int[] arrayOfInt10 = { 6, 32, 58, -1, -1, -1, -1 };
+    int[] arrayOfInt11 = { 6, 34, 62, -1, -1, -1, -1 };
+    int[] arrayOfInt12 = { 6, 26, 46, 66, -1, -1, -1 };
+    int[] arrayOfInt13 = { 6, 26, 50, 74, -1, -1, -1 };
+    int[] arrayOfInt14 = { 6, 30, 54, 78, -1, -1, -1 };
+    int[] arrayOfInt15 = { 6, 30, 56, 82, -1, -1, -1 };
+    int[] arrayOfInt16 = { 6, 30, 58, 86, -1, -1, -1 };
+    int[] arrayOfInt17 = { 6, 34, 62, 90, -1, -1, -1 };
+    int[] arrayOfInt18 = { 6, 28, 50, 72, 94, -1, -1 };
+    int[] arrayOfInt19 = { 6, 30, 54, 78, 102, -1, -1 };
+    int[] arrayOfInt20 = { 6, 28, 54, 80, 106, -1, -1 };
+    int[] arrayOfInt21 = { 6, 32, 58, 84, 110, -1, -1 };
+    int[] arrayOfInt22 = { 6, 30, 58, 86, 114, -1, -1 };
+    int[] arrayOfInt23 = { 6, 34, 62, 90, 118, -1, -1 };
+    int[] arrayOfInt24 = { 6, 26, 50, 74, 98, 122, -1 };
+    int[] arrayOfInt25 = { 6, 30, 54, 78, 102, 126, -1 };
+    int[] arrayOfInt26 = { 6, 30, 56, 82, 108, 134, -1 };
+    int[] arrayOfInt27 = { 6, 34, 60, 86, 112, 138, -1 };
+    int[] arrayOfInt28 = { 6, 30, 58, 86, 114, 142, -1 };
+    int[] arrayOfInt29 = { 6, 34, 62, 90, 118, 146, -1 };
+    int[] arrayOfInt30 = { 6, 30, 54, 78, 102, 126, 150 };
+    int[] arrayOfInt31 = { 6, 24, 50, 76, 102, 128, 154 };
+    int[] arrayOfInt32 = { 6, 28, 54, 80, 106, 132, 158 };
+    int[] arrayOfInt33 = { 6, 32, 58, 84, 110, 136, 162 };
+    int[] arrayOfInt34 = { 6, 26, 54, 82, 110, 138, 166 };
+    int[] arrayOfInt35 = { 6, 30, 58, 86, 114, 142, 170 };
+    c = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 6, 34, -1, -1, -1, -1, -1 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, { 6, 30, 54, -1, -1, -1, -1 }, arrayOfInt10, arrayOfInt11, arrayOfInt12, { 6, 26, 48, 70, -1, -1, -1 }, arrayOfInt13, arrayOfInt14, arrayOfInt15, arrayOfInt16, arrayOfInt17, arrayOfInt18, { 6, 26, 50, 74, 98, -1, -1 }, arrayOfInt19, arrayOfInt20, arrayOfInt21, arrayOfInt22, arrayOfInt23, arrayOfInt24, arrayOfInt25, { 6, 26, 52, 78, 104, 130, -1 }, arrayOfInt26, arrayOfInt27, arrayOfInt28, arrayOfInt29, arrayOfInt30, arrayOfInt31, arrayOfInt32, arrayOfInt33, arrayOfInt34, arrayOfInt35 };
+    arrayOfInt1 = new int[] { 8, 0 };
+    arrayOfInt2 = new int[] { 8, 2 };
+    arrayOfInt3 = new int[] { 8, 5 };
+    arrayOfInt4 = new int[] { 8, 7 };
+    arrayOfInt5 = new int[] { 4, 8 };
+    arrayOfInt6 = new int[] { 2, 8 };
+    arrayOfInt7 = new int[] { 1, 8 };
+    d = new int[][] { arrayOfInt1, { 8, 1 }, arrayOfInt2, { 8, 3 }, { 8, 4 }, arrayOfInt3, arrayOfInt4, { 8, 8 }, { 7, 8 }, { 5, 8 }, arrayOfInt5, { 3, 8 }, arrayOfInt6, arrayOfInt7, { 0, 8 } };
   }
   
   static int a(int paramInt)

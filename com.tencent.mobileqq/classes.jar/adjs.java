@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class adjs
-  implements baoi
+class adjs
+  implements baos
 {
-  adjs(adjr paramadjr) {}
+  adjs(adjp paramadjp, String paramString) {}
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ((aemd)adjp.a(this.jdField_a_of_type_Adjp)).X = true;
+      this.jdField_a_of_type_Adjp.a(true);
+      return;
+    }
+    ((aemd)adjp.a(this.jdField_a_of_type_Adjp)).X = false;
+    this.jdField_a_of_type_Adjp.a(false);
   }
 }
 

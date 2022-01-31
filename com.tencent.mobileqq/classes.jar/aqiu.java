@@ -1,23 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
 
 public class aqiu
-  implements CompoundButton.OnCheckedChangeListener
+  implements xej
 {
-  public aqiu(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public aqiu(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695321), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 

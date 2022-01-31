@@ -1,56 +1,54 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aclk
-  extends akav
+  implements View.OnClickListener
 {
   public aclk(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    this.a.i();
-    paramString = this.a.getString(2131719993);
-    bcpw.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839315, this.a.getString(2131719532));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    long l2 = aydb.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString1);
-      if (!paramBoolean)
-      {
-        this.a.i();
-        if (aydc.a(aydb.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
-          this.a.finish();
-        }
-        return;
-      }
-      this.a.i();
-      this.a.finish();
-      aydc.a(aydb.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
       return;
     }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        l1 = l2;
-      }
+    TroopRequestActivity.c = l;
+    if (((ajxl)this.a.app.getManager(51)).b(this.a.l)) {
+      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    this.a.a(2130839315, this.a.getString(2131719517));
+    for (;;)
+    {
+      axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, paramView);
+      return;
+      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
+        break;
+      }
+      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
+      paramView.d = 1;
+    }
+    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
+    banb.a(this.a.a, paramView);
+    switch (this.a.b)
+    {
+    }
+    for (;;)
+    {
+      break;
+      paramView.l = 3;
+      break;
+      paramView.l = 1;
+      break;
+      paramView.l = 2;
+    }
   }
 }
 

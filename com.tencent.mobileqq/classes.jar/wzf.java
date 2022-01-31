@@ -1,14 +1,36 @@
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
 class wzf
-  extends wzu
+  implements wzb
 {
-  public wzf(wyw paramwyw, wzv paramwzv, String paramString)
-  {
-    super(paramwyw, paramwzv, paramString);
-  }
+  wzf(wze paramwze, wzd paramwzd) {}
   
-  public void a()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_Wzv.b(this);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      if (this.jdField_a_of_type_Wzd.a)
+      {
+        this.jdField_a_of_type_Wze.jdField_a_of_type_Wzs.b(this.jdField_a_of_type_Wze);
+        return;
+      }
+      if (this.jdField_a_of_type_Wze.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Wze.jdField_a_of_type_Wyt.a(paramString1, this.jdField_a_of_type_Wze.jdField_a_of_type_JavaLangString, new wzg(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Wze.a(localFile, this.jdField_a_of_type_Wze.b, new wzi(this, l));
+      return;
+    }
+    this.jdField_a_of_type_Wze.d = paramString2;
+    this.jdField_a_of_type_Wze.jdField_a_of_type_Wzs.a(this.jdField_a_of_type_Wze);
   }
 }
 

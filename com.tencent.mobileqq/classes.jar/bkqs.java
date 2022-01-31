@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bkqs
-  implements Animation.AnimationListener
+class bkqs
+  implements DialogInterface.OnClickListener
 {
-  public bkqs(VideoFilterViewPager.1 param1) {}
+  bkqs(bkqp parambkqp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(8);
+    bkqp.a(this.a, "an_yuanshipin");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

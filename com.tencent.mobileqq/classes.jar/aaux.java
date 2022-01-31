@@ -1,33 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop.52;
 
 public class aaux
   implements DialogInterface.OnClickListener
 {
-  public aaux(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aaux(ChatSettingForTroop.52 param52) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (paramInt == 1)
     {
-      paramDialogInterface = new Intent(this.a, LoginActivity.class);
-      paramDialogInterface.putExtra("is_change_account", true);
-      paramDialogInterface.putExtra("if_check_account_same", true);
-      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
-      paramDialogInterface.addFlags(268435456);
-      paramDialogInterface.addFlags(67108864);
-      this.a.a.cancel();
-      this.a.startActivity(paramDialogInterface);
-      this.a.finish();
+      this.a.this$0.a.cancel();
+      this.a.this$0.finish();
     }
-    while (paramInt != 0) {
-      return;
-    }
-    this.a.finish();
   }
 }
 

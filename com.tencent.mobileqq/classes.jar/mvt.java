@@ -1,40 +1,73 @@
-import android.graphics.Matrix;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.biz.AuthorizeConfig.2;
+import com.tencent.biz.AuthorizeConfig.2.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
 public class mvt
+  implements BusinessObserver
 {
-  public float a;
-  public int a;
-  public final Matrix a;
-  public mvq a;
-  public mvs a;
-  public mvt a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  public mvt(AuthorizeConfig.2 param2) {}
   
-  private mvt()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  }
-  
-  public void a(mvt parammvt)
-  {
-    this.jdField_a_of_type_Int = parammvt.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Float = parammvt.jdField_a_of_type_Float;
-    this.b = parammvt.b;
-    this.c = parammvt.c;
-    this.d = parammvt.d;
-    this.e = parammvt.e;
-    this.f = parammvt.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(parammvt.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_Mvq = parammvt.jdField_a_of_type_Mvq;
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
+        try
+        {
+          localWebviewWhiteListResponse.mergeFrom(paramBundle);
+          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
+          }
+          if (paramInt == 0)
+          {
+            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
+            axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
+            return;
+          }
+          if (paramInt == 304)
+          {
+            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
+            this.a.this$0.g();
+            this.a.this$0.i();
+            axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
+            return;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
+          }
+        }
+      }
+    }
+    this.a.this$0.g();
+    this.a.this$0.i();
+    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     mvt
  * JD-Core Version:    0.7.0.1
  */

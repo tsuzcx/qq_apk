@@ -1,36 +1,35 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
-public abstract class sxa
-  extends JobSegment<ErrorMessage, ErrorMessage>
+public class sxa
+  extends SimpleObserver<ErrorMessage>
 {
-  protected AtomicInteger a;
-  public sxb a;
+  private sxa(BasePublishTask paramBasePublishTask) {}
   
-  public sxa()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  protected abstract void a();
-  
-  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
-  {
-    a();
-  }
-  
-  public void a(sxb paramsxb)
-  {
-    this.jdField_a_of_type_Sxb = paramsxb;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Sxb != null) {
-      this.jdField_a_of_type_Sxb.a(this);
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
     }
+    this.a.a(paramErrorMessage);
+  }
+  
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
+    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

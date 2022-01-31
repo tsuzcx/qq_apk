@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
 
 public class barp
-  implements aybh
+  implements aybj
 {
-  public barp(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public barp(TroopGiftAnimationController.1 param1) {}
   
   public void a()
   {
-    aybp localaybp = new aybp(new aybg[] { new aybo(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new aybo(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localaybp.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new aybg[] { localaybp });
+    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
   }
 }
 

@@ -1,27 +1,25 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class uhy
-  extends QQUIEventReceiver<uhx, svy>
+class uhy
+  implements bfph
 {
-  public uhy(@NonNull uhx paramuhx)
-  {
-    super(paramuhx);
-  }
+  uhy(uhw paramuhw, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bfpc parambfpc) {}
   
-  public void a(@NonNull uhx paramuhx, @NonNull svy paramsvy)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((uhx.a(paramuhx) == null) || (paramsvy.a == null) || (!TextUtils.equals(uhx.a(paramuhx).a, paramsvy.a.mVid))) {
-      return;
+    switch (paramInt)
+    {
     }
-    paramuhx.a.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svy.class;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      tsr.a(this.jdField_a_of_type_Uhw.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new uhz(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

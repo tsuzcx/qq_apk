@@ -1,35 +1,36 @@
 import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ahqh
-  extends ahpv
+  extends ahpt
 {
   public ahqh(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697672);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699611);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
+    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
     paramArrayOfByte = new String(paramArrayOfByte);
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
       this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
       this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Azmk == null) {
-        this.jdField_a_of_type_Azmk = new azmk();
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Azmm.a(this.c);
       }
-      this.jdField_a_of_type_Azmk.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
     catch (JSONException paramArrayOfByte)
     {
-      paramArrayOfByte.printStackTrace();
+      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
     }
   }
   
@@ -43,20 +44,18 @@ public class ahqh
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
       localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
       localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Azmk != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmk.a());
-      }
+      this.c = this.jdField_a_of_type_Azmm.a();
+      localJSONObject.put("messageNavInfo", this.c);
       return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
       }
     }
   }

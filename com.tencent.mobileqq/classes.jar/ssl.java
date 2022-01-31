@@ -1,7 +1,4 @@
-public abstract interface ssl
-{
-  public abstract void copy(Object paramObject);
-}
+public class ssl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

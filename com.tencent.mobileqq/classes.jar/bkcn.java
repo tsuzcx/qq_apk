@@ -1,14 +1,16 @@
-import android.animation.ValueAnimator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface bkcn
+class bkcn
+  implements View.OnTouchListener
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
+  bkcn(bkcm parambkcm) {}
   
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

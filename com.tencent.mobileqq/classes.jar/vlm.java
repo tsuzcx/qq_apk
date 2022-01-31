@@ -1,10 +1,4 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public abstract interface vlm
-{
-  public abstract void a(List<vlj> paramList, DoodleView paramDoodleView);
-}
+class vlm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

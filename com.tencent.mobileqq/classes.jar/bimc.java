@@ -1,11 +1,24 @@
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bimc<T extends RecyclerView.ViewHolder>
+class bimc
+  implements Animator.AnimatorListener
 {
-  public abstract void a(@Nullable T paramT, int paramInt);
+  bimc(bima parambima) {}
   
-  public abstract void a(@Nullable T paramT, boolean paramBoolean);
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

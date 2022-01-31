@@ -1,20 +1,32 @@
-import org.apache.http.Header;
-import org.json.JSONObject;
-
-class lbi
-  extends lao
+public class lbi
 {
-  lbi(lbf paramlbf, lao paramlao) {}
+  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public lbi(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lao.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
   }
   
-  public void a(Throwable paramThrowable, String paramString)
+  public Boolean a()
   {
-    this.jdField_a_of_type_Lao.a(paramThrowable, paramString);
-    super.a(paramThrowable, paramString);
+    return this.jdField_a_of_type_JavaLangBoolean;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
+      return;
+    }
   }
 }
 

@@ -1,9 +1,6 @@
-import SummaryCard.CondFitUser;
-import java.util.List;
-
-public abstract interface ajue
+public class ajue
 {
-  public abstract void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt);
+  public ajue(ajud paramajud) {}
 }
 
 

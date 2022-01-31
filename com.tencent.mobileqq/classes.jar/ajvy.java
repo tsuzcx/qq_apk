@@ -1,576 +1,760 @@
-import AvatarInfo.QQHeadInfo;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlReq;
-import com.tencent.avatarinfo.MultiHeadUrl.MultiBusidUrlRsp;
-import com.tencent.avatarinfo.MultiHeadUrl.ReqUsrInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspHeadInfo;
-import com.tencent.avatarinfo.MultiHeadUrl.RspUsrHeadInfo;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import mqq.app.MobileQQ;
+import tencent.im.cs.faceroam_sso.faceroam_sso.PlatInfo;
+import tencent.im.cs.faceroam_sso.faceroam_sso.ReqBody;
+import tencent.im.cs.faceroam_sso.faceroam_sso.ReqDeleteItem;
+import tencent.im.cs.faceroam_sso.faceroam_sso.ReqUserInfo;
+import tencent.im.cs.faceroam_sso.faceroam_sso.RspBody;
+import tencent.im.cs.faceroam_sso.faceroam_sso.RspDeleteItem;
+import tencent.im.cs.faceroam_sso.faceroam_sso.RspUserInfo;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.ModifyReq;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.ModifyRsp;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.OcrInfo;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.PicInfo;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.ReqBody;
+import tencent.im.oidb.cmd0xdc4.FavEmotionOcr.RspBody;
+import tencent.im.oidb.cmd0xdcf.EmotionMove.PlatInfo;
+import tencent.im.oidb.cmd0xdcf.EmotionMove.ReqBody;
+import tencent.im.oidb.cmd0xdcf.EmotionMove.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class ajvy
-  extends ajtd
+  extends ajul<CustomEmotionData>
 {
-  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Hashtable<Integer, ArrayList<FaceInfo>> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean;
-  private Hashtable<String, Long> b = new Hashtable();
-  
-  public ajvy(NearbyAppInterface paramNearbyAppInterface)
+  public ajvy(QQAppInterface paramQQAppInterface)
   {
-    super(paramNearbyAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    super(paramQQAppInterface);
   }
   
-  private void a()
+  private void a(List<String> paramList1, List<String> paramList2)
   {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-        Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
-        if (!localEnumeration.hasMoreElements()) {
-          break;
-        }
-        i = ((Integer)localEnumeration.nextElement()).intValue();
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
-        if ((i == 200) || (i == 202))
-        {
-          a(i, localArrayList);
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-      }
-      finally {}
-      QLog.d("Q.qqhead.FaceHandler", 2, "checkWaitingRequests,key =" + i);
-    }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
-  }
-  
-  private void a(int paramInt, ArrayList<FaceInfo> paramArrayList)
-  {
-    int k = 0;
-    Object localObject1;
+    if ((paramList2 == null) || (paramList1 == null)) {}
     Object localObject2;
-    if (QLog.isColorLevel())
+    do
     {
-      localObject1 = new StringBuilder();
-      localObject2 = ((StringBuilder)localObject1).append("realGetStrangerFace").append(", size=");
-      if (paramArrayList != null) {}
-      for (i = paramArrayList.size();; i = 0)
-      {
-        ((StringBuilder)localObject2).append(i);
-        if (paramArrayList == null) {
-          break;
-        }
-        i = 0;
-        while (i < paramArrayList.size())
-        {
-          ((StringBuilder)localObject1).append(',').append(paramArrayList.get(i));
-          i += 1;
-        }
-      }
-      QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject1).toString());
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
-    }
-    if (paramInt == 202) {}
-    for (int i = 1;; i = 0)
-    {
-      localObject1 = new MultiHeadUrl.MultiBusidUrlReq();
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.set(0);
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(1));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(32));
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.set(i);
-      int j = 0;
-      if (j < paramArrayList.size())
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      if (i < paramList2.size())
       {
-        localObject2 = (FaceInfo)paramArrayList.get(j);
-        MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
-        if (i == 0) {}
+        localObject1 = (String)paramList2.get(i);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
         for (;;)
         {
-          try
+          i += 1;
+          break;
+          localObject2 = new ante((String)localObject1);
+          if ((!((ante)localObject2).a()) || (TextUtils.isEmpty(((ante)localObject2).c)) || (TextUtils.isEmpty(((ante)localObject2).d)))
           {
-            localReqUsrInfo.dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-            ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add(localReqUsrInfo);
-            ((FaceInfo)localObject2).a(FaceInfo.l);
+            if (QLog.isColorLevel()) {
+              QLog.d("FavEmoRoamingHandler", 2, "res id is not valid:" + (String)localObject1);
+            }
           }
-          catch (Exception localException)
+          else {
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+      Object localObject1 = new ArrayList();
+      i = 0;
+      ante localante1;
+      if (i < paramList1.size())
+      {
+        localObject2 = (String)paramList1.get(i);
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localante1 = new ante((String)localObject2);
+          if ((!localante1.a()) || (TextUtils.isEmpty(localante1.c)) || (TextUtils.isEmpty(localante1.d)))
           {
-            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d("FavEmoRoamingHandler", 2, "res id is not valid:" + (String)localObject2);
+            }
+          }
+          else {
+            ((List)localObject1).add(localante1);
+          }
+        }
+      }
+      localObject2 = new StringBuilder("");
+      i = 0;
+      while (i < localArrayList.size())
+      {
+        localante1 = (ante)localArrayList.get(i);
+        int j = 0;
+        while (j < ((List)localObject1).size())
+        {
+          ante localante2 = (ante)((List)localObject1).get(j);
+          if ((localante1.c.equals(localante2.c)) && (localante2.c.equals("0")) && (localante2.d.equals(localante1.d)))
+          {
+            paramList1.remove(localante2.a);
+            ((StringBuilder)localObject2).append(localante2.a).append(", ");
           }
           j += 1;
-          break;
-          if (i == 1) {
-            localReqUsrInfo.dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-          }
         }
+        i += 1;
       }
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("QQHead_Stranger request.srcUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.get()).append(";srcUin=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()).append("\n\n").append(";dstUsrType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.get()).append(";dstUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.get()).append("\n\n").append(";uinset={");
-        if (paramArrayList != null)
-        {
-          i = k;
-          while (i < paramArrayList.size())
-          {
-            ((StringBuilder)localObject3).append(paramArrayList.get(i) + ",");
-            i += 1;
-          }
-        }
-        ((StringBuilder)localObject3).append("}");
-        QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject3).toString());
-      }
-      Object localObject3 = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-      ((ToServiceMsg)localObject3).extraData.putParcelableArrayList("list", paramArrayList);
-      ((ToServiceMsg)localObject3).extraData.putLong("startTime", System.currentTimeMillis());
-      ((ToServiceMsg)localObject3).extraData.putInt("idType", paramInt);
-      ((ToServiceMsg)localObject3).putWupBuffer(((MultiHeadUrl.MultiBusidUrlReq)localObject1).toByteArray());
-      sendPbReq((ToServiceMsg)localObject3);
-      return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("FavEmoRoamingHandler", 2, "delList=" + paramList1.size() + ", roamingList=" + paramList2.size() + ", del resIds:" + localObject2);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, int paramInt)
+  private void b(Object paramObject)
   {
-    paramToServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = localStringBuilder.append("handleGetQQHeadError, result=").append(paramInt).append(", listSize=");
-    if (paramToServiceMsg != null) {}
-    for (paramInt = paramToServiceMsg.size();; paramInt = -1)
-    {
-      ((StringBuilder)localObject).append(paramInt);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() != 0)) {
-        break;
-      }
-      QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
-      return;
+    EmotionMove.RspBody localRspBody;
+    if (paramObject != null) {
+      localRspBody = new EmotionMove.RspBody();
     }
-    paramInt = 0;
-    while (paramInt < paramToServiceMsg.size())
-    {
-      localObject = (FaceInfo)paramToServiceMsg.get(paramInt);
-      a(((FaceInfo)localObject).b(), false);
-      localStringBuilder.append("info=").append(localObject);
-      paramInt += 1;
-    }
-    QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
-  }
-  
-  public void a(FaceInfo paramFaceInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo.faceInfo=" + paramFaceInfo);
-    }
-    Object localObject = paramFaceInfo.b();
-    if (a((String)localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo|repeat info=" + paramFaceInfo);
-      }
-      return;
-    }
-    a((String)localObject, true);
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(paramFaceInfo.b));
-    localObject = localArrayList;
-    if (localArrayList == null)
-    {
-      localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashtable.put(Integer.valueOf(paramFaceInfo.b), localObject);
-    }
-    ((ArrayList)localObject).add(paramFaceInfo);
-    a();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (paramFromServiceMsg != null) {
-      localObject1 = localObject3;
-    }
-    int i;
-    Object localObject2;
-    Object localObject4;
-    label786:
-    label804:
-    int k;
     try
     {
-      if (paramFromServiceMsg.getResultCode() == 1000)
-      {
-        localObject1 = localObject3;
-        if (paramObject != null)
-        {
-          localObject1 = new MultiHeadUrl.MultiBusidUrlRsp();
-          ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).mergeFrom((byte[])paramObject);
-        }
+      localRspBody.mergeFrom((byte[])paramObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmoRoamingHandler", 2, "onReceive FAV_REQ_MOVE fail ret = " + localRspBody.ret + " ,errorMsg = " + localRspBody.errmsg);
       }
-      paramObject = localObject1;
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "handleEmotionMove ends, errInfo:" + paramObject.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "handleEmotionMove oom");
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "handleEmotionMove exception : " + paramObject.getMessage());
+    }
+  }
+  
+  public void a()
+  {
+    Object localObject = new faceroam_sso.ReqUserInfo();
+    faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
+    localPlatInfo.implat.set(109L);
+    localPlatInfo.mqqver.set("8.3.0");
+    localPlatInfo.osver.set(Build.VERSION.RELEASE);
+    faceroam_sso.ReqBody localReqBody = new faceroam_sso.ReqBody();
+    localReqBody.uint32_sub_cmd.set(1);
+    localReqBody.uint64_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    localReqBody.reqcmd_0x01.set((MessageMicro)localObject);
+    localReqBody.comm.set(localPlatInfo);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Faceroam.OpReq");
+    ((ToServiceMsg)localObject).extraData.putInt("cmd_fav_subcmd", 1);
+    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+    super.sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, String paramString)
+  {
+    if (paramCustomEmotionData == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmoRoamingHandler", 2, "favEmoModifyOcr data = null");
+      }
+      return;
+    }
+    if ((this.app == null) || (this.app.getApp() == null))
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "favEmoModifyOcr ocr fail, app is null");
+      notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+      return;
+    }
+    if (!bbfj.a())
+    {
+      notifyUI(3, false, this.app.getApp().getString(2131693945));
+      return;
+    }
+    try
+    {
+      Object localObject1 = new FavEmotionOcr.ReqBody();
+      ((FavEmotionOcr.ReqBody)localObject1).uint32_src_term.set(3);
+      ((FavEmotionOcr.ReqBody)localObject1).uint32_cmd_type.set(3);
+      ((FavEmotionOcr.ReqBody)localObject1).string_version.set("8.3.0");
+      FavEmotionOcr.ModifyReq localModifyReq = new FavEmotionOcr.ModifyReq();
+      Object localObject2 = new FavEmotionOcr.PicInfo();
+      ((FavEmotionOcr.PicInfo)localObject2).string_pic_md5.set(paramCustomEmotionData.md5);
+      ((FavEmotionOcr.PicInfo)localObject2).string_pic_fileid.set(paramCustomEmotionData.resid);
+      localModifyReq.pic_info.set((MessageMicro)localObject2);
+      localModifyReq.string_self_desc_new.set(paramString);
+      localObject2 = new ArrayList();
+      ((List)localObject2).add(localModifyReq);
+      ((FavEmotionOcr.ReqBody)localObject1).list_modify_req.set((List)localObject2);
+      localObject1 = makeOIDBPkg("OidbSvc.0xdc4", 3524, 1, ((FavEmotionOcr.ReqBody)localObject1).toByteArray());
+      ((ToServiceMsg)localObject1).extraData.putInt("cmd_fav_subcmd", 5);
+      ((ToServiceMsg)localObject1).extraData.putString("fav_modify_word", paramString);
+      ((ToServiceMsg)localObject1).extraData.putInt("fav_modify_emoid", paramCustomEmotionData.emoId);
+      super.sendPbReq((ToServiceMsg)localObject1);
+      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        paramObject = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.FaceHandler", 2, "handleStrangerFaceResp multiBusidUrlRsp mergeFrom exception..." + localException.getMessage());
-        }
-        localException.printStackTrace();
-        continue;
-        if (paramFromServiceMsg != null) {
-          i = paramFromServiceMsg.getResultCode();
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break label804;
-      }
-      paramFromServiceMsg = new StringBuilder();
-      paramFromServiceMsg.append("start ====================================================================================\n\n");
-      paramFromServiceMsg.append("QQHead_Stranger response.srcUidType=" + paramObject.srcUidType.get()).append(";srcUin=" + paramObject.srcUin.get()).append("\n\n").append(";srcTid=" + paramObject.srcTid.get()).append(";srcOpenid=" + paramObject.srcOpenid.get()).append("\n\n").append(";dstUidType=" + paramObject.dstUidType.get()).append(";result=" + paramObject.result.get()).append("\n\n");
-      localObject2 = paramObject.dstUsrHeadInfos.get();
-      if (localObject2 == null) {
-        break label786;
-      }
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (MultiHeadUrl.RspUsrHeadInfo)((Iterator)localObject2).next();
-        paramFromServiceMsg.append("-------------------------------------------------------------------------------------\n\n");
-        paramFromServiceMsg.append("RspUsrHeadInfo.dstUin=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstUin.get()).append(";dstTid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstTid.get()).append(";dstOpenid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstOpenid.get()).append("\n\n");
-        localObject3 = ((MultiHeadUrl.RspUsrHeadInfo)localObject3).dstHeadInfos.get().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (MultiHeadUrl.RspHeadInfo)((Iterator)localObject3).next();
-          paramFromServiceMsg.append("RspHeadInfo.usrType=" + ((MultiHeadUrl.RspHeadInfo)localObject4).usrType.get()).append("\n\n").append(";faceType=" + ((MultiHeadUrl.RspHeadInfo)localObject4).faceType.get()).append("\n\n").append(";timestamp=" + ((MultiHeadUrl.RspHeadInfo)localObject4).timestamp.get()).append("\n\n").append(";faceFlag=" + ((MultiHeadUrl.RspHeadInfo)localObject4).faceFlag.get()).append("\n\n").append(";url=" + ((MultiHeadUrl.RspHeadInfo)localObject4).url.get()).append("\n\n").append(";sysid=" + ((MultiHeadUrl.RspHeadInfo)localObject4).sysid.get()).append("\n\n");
-        }
-      }
-      paramFromServiceMsg.append("end ====================================================================================\n\n");
-      QLog.i("Q.qqhead.FaceHandler", 2, paramFromServiceMsg.toString());
-      localObject4 = paramObject.dstUsrHeadInfos.get();
-      localObject3 = new ArrayList();
-      paramFromServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
-      localArrayList = new ArrayList();
-      k = paramObject.dstUidType.get();
-      j = paramToServiceMsg.extraData.getInt("idType");
-      localbayd = (bayd)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216);
-      localIterator1 = paramFromServiceMsg.iterator();
-    }
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-    {
-      i = 65535;
-      if (paramObject != null)
-      {
-        i = paramObject.result.get();
-        a(paramToServiceMsg, i);
-        return;
-      }
-    }
-    ArrayList localArrayList;
-    int j;
-    bayd localbayd;
-    Iterator localIterator1;
-    FaceInfo localFaceInfo;
-    if (localIterator1.hasNext())
-    {
-      localFaceInfo = (FaceInfo)localIterator1.next();
-      localFaceInfo.a(FaceInfo.m);
-      Iterator localIterator2 = ((List)localObject4).iterator();
-      label921:
-      if (localIterator2.hasNext())
-      {
-        paramToServiceMsg = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-        if (k == 0)
-        {
-          paramObject = String.valueOf(paramToServiceMsg.dstUin.get());
-          label958:
-          if (!localFaceInfo.jdField_a_of_type_JavaLangString.equals(paramObject)) {
-            break label1065;
-          }
-          localObject2 = paramToServiceMsg.dstHeadInfos.get();
-          paramFromServiceMsg = null;
-          paramToServiceMsg = null;
-          Iterator localIterator3 = ((List)localObject2).iterator();
-          label992:
-          if (!localIterator3.hasNext()) {
-            break label1091;
-          }
-          localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-          i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
-          if (i != 1) {
-            break label1067;
-          }
-          paramFromServiceMsg = (FromServiceMsg)localObject2;
-        }
-      }
-    }
-    label1158:
-    for (;;)
-    {
-      break label992;
-      if (k == 1)
-      {
-        paramObject = String.valueOf(paramToServiceMsg.dstTid.get());
-        break label958;
-      }
-      paramObject = paramToServiceMsg.dstOpenid.get();
-      break label958;
-      label1065:
-      break label921;
-      label1067:
-      if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0))
-      {
-        paramToServiceMsg = (ToServiceMsg)localObject2;
-        continue;
-        label1091:
-        if (paramToServiceMsg != null)
-        {
-          label1095:
-          i = 0;
-          paramFromServiceMsg = localbayd.a("stranger_" + String.valueOf(localFaceInfo.b) + "_" + localFaceInfo.jdField_a_of_type_JavaLangString);
-          if (localbayd.a(localFaceInfo)) {
-            break label1353;
-          }
-          i = 1;
-          if (i == 0) {
-            break label1396;
-          }
-          paramFromServiceMsg = new QQHeadInfo();
-          paramFromServiceMsg.headLevel = localFaceInfo.jdField_a_of_type_Byte;
-          paramFromServiceMsg.idType = j;
-          paramFromServiceMsg.phoneNum = paramObject;
-          paramFromServiceMsg.dwTimestamp = paramToServiceMsg.timestamp.get();
-          paramFromServiceMsg.cHeadType = ((byte)paramToServiceMsg.faceType.get());
-          paramFromServiceMsg.dstUsrType = 32;
-          paramFromServiceMsg.dwFaceFlgas = ((byte)paramToServiceMsg.faceFlag.get());
-          paramFromServiceMsg.downLoadUrl = paramToServiceMsg.url.get();
-          paramFromServiceMsg.systemHeadID = ((short)paramToServiceMsg.sysid.get());
-          paramFromServiceMsg.originUsrType = paramToServiceMsg.usrType.get();
-          if (!paramToServiceMsg.headVerify.has()) {
-            break label1398;
-          }
-        }
-        label1353:
-        label1396:
-        label1398:
-        for (paramToServiceMsg = paramToServiceMsg.headVerify.get();; paramToServiceMsg = "")
-        {
-          paramFromServiceMsg.headVerify = paramToServiceMsg;
-          localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = paramFromServiceMsg;
-          localArrayList.add(localFaceInfo);
-          break label921;
-          if (paramFromServiceMsg != null)
-          {
-            paramToServiceMsg = paramFromServiceMsg;
-            break label1095;
-          }
-          if (!QLog.isColorLevel()) {
-            break label921;
-          }
-          QLog.d("Q.qqhead.FaceHandler", 2, "there is no headinfo uin=" + paramObject);
-          break label921;
-          break;
-          if (paramFromServiceMsg != null)
-          {
-            if (paramFromServiceMsg.headImgTimestamp != paramToServiceMsg.timestamp.get())
-            {
-              i = 1;
-              break label1158;
-            }
-            ((List)localObject3).add(localFaceInfo);
-            break label1158;
-          }
-          i = 1;
-          break label1158;
-          break label921;
-        }
-        i = 0;
-        while (i < localArrayList.size())
-        {
-          localbayd.a((FaceInfo)localArrayList.get(i));
-          i += 1;
-        }
-        if (((List)localObject3).size() <= 0) {
-          break;
-        }
-        try
-        {
-          paramToServiceMsg = new ArrayList();
-          i = 0;
-          while (i < ((List)localObject3).size())
-          {
-            paramFromServiceMsg = (FaceInfo)((List)localObject3).get(i);
-            paramToServiceMsg.add("stranger_" + String.valueOf(j) + "_" + paramFromServiceMsg.jdField_a_of_type_JavaLangString);
-            a(paramFromServiceMsg.b(), false);
-            i += 1;
-          }
-          localbayd.a(paramToServiceMsg, System.currentTimeMillis());
-          return;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          paramToServiceMsg.printStackTrace();
-          return;
-        }
-      }
+      QLog.e("FavEmoRoamingHandler", 1, "favEmoModifyOcr e=" + localException + " modifyWord=" + paramString + " CustomEmotionData=" + paramCustomEmotionData.toString());
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      i = 1;
+      if (i == 0) {}
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {
+    for (;;)
+    {
       try
       {
-        this.b.remove(paramString);
-        return;
-      }
-      finally {}
-    }
-    ArrayList localArrayList;
-    Object localObject2;
-    if (this.b.size() > 30)
-    {
-      long l = System.currentTimeMillis();
-      localArrayList = new ArrayList();
-      localObject2 = this.b.keys();
-      while (((Enumeration)localObject2).hasMoreElements())
-      {
-        String str = (String)((Enumeration)localObject2).nextElement();
-        if (Math.abs(l - ((Long)this.b.get(str)).longValue()) > 60000L) {
-          localArrayList.add(paramString);
+        int j = paramToServiceMsg.extraData.getInt("fav_modify_emoid", -1);
+        paramToServiceMsg = paramToServiceMsg.extraData.getString("fav_modify_word");
+        paramObject = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        if (paramObject.uint32_result.get() != 0) {
+          break label701;
         }
-      }
-    }
-    for (;;)
-    {
-      int i;
-      if (i < localArrayList.size())
-      {
-        localObject2 = (String)localArrayList.get(i);
-        this.b.remove(paramString);
-        i += 1;
-      }
-      else
-      {
-        this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        break;
-        i = 0;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    for (;;)
-    {
-      boolean bool1;
-      boolean bool3;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (!this.b.containsKey(paramString)) {
-          break label212;
+        i = 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 1, "handleOcrModify pkg.uint32_result=" + paramObject.uint32_result.get());
         }
-        long l = ((Long)this.b.get(paramString)).longValue();
-        if (Math.abs(System.currentTimeMillis() - l) > 60000L)
+        Object localObject = new HashMap();
+        if (i == 0) {
+          break label707;
+        }
+        paramFromServiceMsg = "1";
+        ((HashMap)localObject).put("param_succ_flag", paramFromServiceMsg);
+        ((HashMap)localObject).put("param_version", Build.VERSION.SDK_INT + "");
+        ((HashMap)localObject).put("param_resultCode", paramObject.uint32_result.get() + "");
+        axrn.a(BaseApplication.getContext()).a(null, "favEmoModifyOcrsSuc", false, 0L, 0L, (HashMap)localObject, null);
+        if ((i != 0) && (paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
         {
-          this.b.remove(paramString);
-          bool1 = false;
-          bool2 = bool1;
-          if (!bool1)
+          paramFromServiceMsg = new FavEmotionOcr.RspBody();
+          paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+          if (paramFromServiceMsg.int32_result.get() != 0) {
+            continue;
+          }
+          paramFromServiceMsg = paramFromServiceMsg.list_modify_rsp.get();
+          i = 0;
+          if (i < paramFromServiceMsg.size())
           {
-            bool3 = bbay.a();
-            if (((bool3) && (bbay.a() < 2048L)) || ((!bool3) && (bbay.b() < 102400L)))
+            if (QLog.isColorLevel()) {
+              QLog.d("FavEmoRoamingHandler", 1, "handleOcrModify resModify.get(i).uint32_result=" + ((FavEmotionOcr.ModifyRsp)paramFromServiceMsg.get(i)).int32_result.get());
+            }
+            if (((FavEmotionOcr.ModifyRsp)paramFromServiceMsg.get(i)).int32_result.get() == 0)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.FaceHandler", 2, "getQQHead|fail, storage is not enough. key=" + paramString + ", isExistSDCard=" + bool3);
+              paramObject = ((answ)this.app.getManager(149)).a();
+              if (paramObject != null)
+              {
+                paramObject = paramObject.iterator();
+                if (paramObject.hasNext())
+                {
+                  localObject = (CustomEmotionData)paramObject.next();
+                  if (j != ((CustomEmotionData)localObject).emoId) {
+                    continue;
+                  }
+                  ((CustomEmotionData)localObject).modifyWord = paramToServiceMsg;
+                  notifyUI(3, true, localObject);
+                }
               }
-              bool2 = true;
+            }
+            else
+            {
+              notifyUI(3, false, this.mApp.getApplication().getString(2131692065));
+              if (QLog.isColorLevel()) {
+                QLog.d("FavEmoRoamingHandler", 1, "handleOcrModify ret = " + ((FavEmotionOcr.ModifyRsp)paramFromServiceMsg.get(i)).int32_result.get());
+              }
             }
           }
-          else
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+        QLog.e("FavEmoRoamingHandler", 1, "func handleOcrModify ends, errInfo:" + paramFromServiceMsg.getMessage());
+        return;
+        notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("FavEmoRoamingHandler", 1, "handleOcrModify ret = " + paramFromServiceMsg.int32_result.get());
+        return;
+      }
+      catch (OutOfMemoryError paramFromServiceMsg)
+      {
+        notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+        QLog.e("FavEmoRoamingHandler", 1, "handleOcrModify oom");
+        return;
+      }
+      notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+      QLog.e("FavEmoRoamingHandler", 1, "handleOcrModify error");
+      return;
+      i += 1;
+      continue;
+      i = 0;
+      break;
+      label701:
+      i = 0;
+      continue;
+      label707:
+      paramFromServiceMsg = "0";
+    }
+  }
+  
+  public void a(FromServiceMsg paramFromServiceMsg, Object paramObject, int paramInt)
+  {
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      i = 1;
+      if (i == 0) {}
+    }
+    for (;;)
+    {
+      int k;
+      try
+      {
+        paramObject = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        if (paramObject.uint32_result.get() != 0) {
+          break label838;
+        }
+        i = 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 1, "handleOcrUpload pkg.uint32_result=" + paramObject.uint32_result.get());
+        }
+        Object localObject1 = new HashMap();
+        if (i == 0) {
+          break label844;
+        }
+        paramFromServiceMsg = "1";
+        ((HashMap)localObject1).put("param_succ_flag", paramFromServiceMsg);
+        ((HashMap)localObject1).put("param_cmd_type", paramInt + "");
+        ((HashMap)localObject1).put("param_version", Build.VERSION.SDK_INT + "");
+        ((HashMap)localObject1).put("param_resultCode", paramObject.uint32_result.get() + "");
+        axrn.a(BaseApplication.getContext()).a(null, "favEmoGetOcrSuc", false, 0L, 0L, (HashMap)localObject1, null);
+        if ((i != 0) && (paramObject.bytes_bodybuffer.has()) && (paramObject.bytes_bodybuffer.get() != null))
+        {
+          paramFromServiceMsg = new FavEmotionOcr.RspBody();
+          paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+          if (!paramFromServiceMsg.list_ocr_info.has()) {
+            break label850;
+          }
+          paramFromServiceMsg = paramFromServiceMsg.list_ocr_info.get();
+          paramObject = (answ)this.app.getManager(149);
+          localObject1 = paramObject.a();
+          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.size() > 0))
           {
-            return bool2;
+            i = 0;
+            k = 0;
+            if (k < paramFromServiceMsg.size())
+            {
+              int m = 0;
+              FavEmotionOcr.OcrInfo localOcrInfo = (FavEmotionOcr.OcrInfo)paramFromServiceMsg.get(k);
+              Object localObject2 = localOcrInfo.pic_info;
+              String str = ((FavEmotionOcr.PicInfo)localObject2).string_pic_fileid.get();
+              if ((paramInt == 3) && (QLog.isColorLevel())) {
+                QLog.d("FavEmoRoamingHandler", 1, new Object[] { "handleOcrUpload words=", localOcrInfo.string_pic_ocr.get(), " md5=", ((FavEmotionOcr.PicInfo)localObject2).string_pic_md5.get(), " self_decs=", localOcrInfo.string_self_desc.get(), " resid=" + str });
+              }
+              localObject2 = paramObject.a((List)localObject1, str);
+              if (localObject2 == null) {
+                break label823;
+              }
+              int j = m;
+              if (localOcrInfo.string_pic_ocr.get() != null) {
+                if (((CustomEmotionData)localObject2).ocrWord != null)
+                {
+                  j = m;
+                  if (((CustomEmotionData)localObject2).ocrWord.equals(localOcrInfo.string_pic_ocr.get())) {}
+                }
+                else
+                {
+                  m = 1;
+                  ((CustomEmotionData)localObject2).ocrWord = localOcrInfo.string_pic_ocr.get();
+                  j = m;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("FavEmoRoamingHandler", 1, "handleOcrUpload old ocrWord=" + ((CustomEmotionData)localObject2).ocrWord + " new ocrWord=" + localOcrInfo.string_pic_ocr.get());
+                    j = m;
+                  }
+                }
+              }
+              m = j;
+              if (localOcrInfo.string_self_desc.get() != null) {
+                if (((CustomEmotionData)localObject2).modifyWord != null)
+                {
+                  m = j;
+                  if (((CustomEmotionData)localObject2).modifyWord.equals(localOcrInfo.string_self_desc.get())) {}
+                }
+                else
+                {
+                  j = 1;
+                  ((CustomEmotionData)localObject2).modifyWord = localOcrInfo.string_self_desc.get();
+                  m = j;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("FavEmoRoamingHandler", 1, "handleOcrUpload old modifyWord=" + ((CustomEmotionData)localObject2).modifyWord + " new modifyWord=" + localOcrInfo.string_self_desc.get());
+                    m = j;
+                  }
+                }
+              }
+              if (m == 0) {
+                break label823;
+              }
+              paramObject.b((CustomEmotionBase)localObject2);
+              i = 1;
+              break label823;
+            }
+            if (i != 0) {
+              aexb.a(this.app).h();
+            }
           }
         }
-        else
-        {
-          bool1 = true;
-        }
+        return;
       }
-      boolean bool2 = bool1;
-      if (!bool3)
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        bool2 = bool1;
-        if (!this.jdField_a_of_type_Boolean)
+        QLog.e("FavEmoRoamingHandler", 1, "func handleOcrUpload ends, errInfo:" + paramFromServiceMsg.getMessage());
+        return;
+      }
+      catch (OutOfMemoryError paramFromServiceMsg)
+      {
+        QLog.e("FavEmoRoamingHandler", 1, "handleOcrUpload oom");
+        return;
+      }
+      QLog.e("FavEmoRoamingHandler", 1, "handleOcrUpload ");
+      return;
+      label823:
+      k += 1;
+      continue;
+      i = 0;
+      break;
+      label838:
+      i = 0;
+      continue;
+      label844:
+      paramFromServiceMsg = "0";
+      continue;
+      label850:
+      paramFromServiceMsg = null;
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    faceroam_sso.RspBody localRspBody = new faceroam_sso.RspBody();
+    long l;
+    try
+    {
+      localRspBody.mergeFrom((byte[])paramObject);
+      paramObject = (faceroam_sso.RspUserInfo)localRspBody.rspcmd_0x01.get();
+      l = localRspBody.ret.get();
+      if (l != 0L)
+      {
+        QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet ret = " + l);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "func handleUserInfoGet ends, errInfo:" + paramObject.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet oom");
+      return;
+    }
+    ThreadManagerV2.excute(new FavEmoRoamingHandler.1(this, paramObject, l), 32, null, true);
+  }
+  
+  public void a(Object paramObject, boolean paramBoolean)
+  {
+    int j = 0;
+    faceroam_sso.RspBody localRspBody = new faceroam_sso.RspBody();
+    for (;;)
+    {
+      ArrayList localArrayList;
+      int i;
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        Object localObject = (faceroam_sso.RspDeleteItem)localRspBody.rspcmd_0x02.get();
+        paramObject = ((faceroam_sso.RspDeleteItem)localObject).ret.get();
+        localObject = ((faceroam_sso.RspDeleteItem)localObject).filename.get();
+        localArrayList = new ArrayList();
+        String str = localRspBody.errmsg.get();
+        long l = localRspBody.ret.get();
+        int k = localRspBody.sub_cmd.get();
+        i = j;
+        if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_Boolean = true;
-          bbck.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getApp().getApplicationContext(), true);
-          return bool1;
-          label212:
-          bool1 = false;
+          QLog.d("FavEmoRoamingHandler", 2, " handle ResId=" + localObject + "errMsg=" + str + " ret=" + l + "subCmd=" + k);
+          i = j;
         }
+        if (i < ((List)localObject).size()) {
+          if (((Long)paramObject.get(i)).longValue() == 0L)
+          {
+            localArrayList.add(((List)localObject).get(i));
+            if (QLog.isColorLevel()) {
+              QLog.d("FavEmoRoamingHandler", 2, " delSuccess ResId=" + (String)((List)localObject).get(i));
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("FavEmoRoamingHandler", 2, " delFail ResId=" + (String)((List)localObject).get(i) + "error code = " + paramObject.get(i));
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 2, "func handleDelMessage ends, errInfo:" + paramObject.getMessage());
+        }
+        return;
+      }
+      ((answ)this.app.getManager(149)).c(localArrayList);
+      super.notifyUI(0, true, Boolean.valueOf(paramBoolean));
+      askf.d("0", 1);
+      b(localArrayList);
+      return;
+      i += 1;
+    }
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0)) {}
+    try
+    {
+      EmotionMove.PlatInfo localPlatInfo = new EmotionMove.PlatInfo();
+      localPlatInfo.implat.set(109);
+      localPlatInfo.mqqver.set("8.3.0");
+      localPlatInfo.osver.set(Build.VERSION.RELEASE);
+      EmotionMove.ReqBody localReqBody = new EmotionMove.ReqBody();
+      localReqBody.msg_comm_info.set(localPlatInfo);
+      localReqBody.str_req_filename.set(paramList);
+      paramList = makeOIDBPkg("OidbSvc.0xdcf", 3535, 1, localReqBody.toByteArray());
+      paramList.extraData.putInt("cmd_fav_subcmd", 6);
+      super.sendPbReq(paramList);
+      return;
+    }
+    catch (Exception paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FavEmoRoamingHandler", 2, "moveEmotion exception = " + paramList.getMessage());
+    }
+  }
+  
+  public void a(List<CustomEmotionData> paramList, int paramInt)
+  {
+    int j = 0;
+    Object localObject = new ArrayList();
+    FavEmotionOcr.ReqBody localReqBody = new FavEmotionOcr.ReqBody();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      CustomEmotionData localCustomEmotionData = (CustomEmotionData)paramList.get(i);
+      if (!localCustomEmotionData.isMarkFace)
+      {
+        FavEmotionOcr.PicInfo localPicInfo = new FavEmotionOcr.PicInfo();
+        localPicInfo.string_pic_md5.set(localCustomEmotionData.md5);
+        localPicInfo.string_pic_fileid.set(localCustomEmotionData.resid);
+        ((List)localObject).add(localPicInfo);
+      }
+      i += 1;
+    }
+    if (((List)localObject).size() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmoRoamingHandler", 2, "favEmoGetOcrs size=0");
+      }
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localReqBody.uint32_src_term.set(3);
+        localReqBody.list_pic_info.set((List)localObject);
+        localReqBody.uint32_cmd_type.set(paramInt);
+        localReqBody.string_version.set("8.3.0");
+        localObject = makeOIDBPkg("OidbSvc.0xdc4", 3524, 1, localReqBody.toByteArray());
+        if (paramInt != 1) {
+          break label335;
+        }
+        ((ToServiceMsg)localObject).extraData.putInt("cmd_fav_subcmd", 3);
+        super.sendPbReq((ToServiceMsg)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("FavEmoRoamingHandler", 2, "favEmoGetOcrs error =" + localException.toString() + " cmdtype=" + paramInt + " size=" + paramList.size());
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      paramInt = j;
+      while (paramInt < paramList.size())
+      {
+        QLog.d("FavEmoRoamingHandler", 2, "favEmoGetOcrs data i=" + paramInt + " :=" + paramList.get(paramInt));
+        paramInt += 1;
+      }
+      break;
+      label335:
+      if (paramInt == 2) {
+        localException.extraData.putInt("cmd_fav_subcmd", 4);
       }
     }
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public void a(List<String> paramList, boolean paramBoolean)
   {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("MultibusidURLSvr.HeadUrlReq");
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return;
     }
-    return !this.allowCmdSet.contains(paramString);
+    Object localObject = new faceroam_sso.ReqDeleteItem();
+    ((faceroam_sso.ReqDeleteItem)localObject).filename.set(paramList);
+    faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
+    localPlatInfo.implat.set(109L);
+    localPlatInfo.mqqver.set("8.3.0");
+    localPlatInfo.osver.set(Build.VERSION.RELEASE);
+    paramList = new faceroam_sso.ReqBody();
+    paramList.uint32_sub_cmd.set(2);
+    paramList.uint64_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
+    paramList.reqcmd_0x02.set((MessageMicro)localObject);
+    paramList.comm.set(localPlatInfo);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Faceroam.OpReq");
+    ((ToServiceMsg)localObject).extraData.putInt("cmd_fav_subcmd", 2);
+    ((ToServiceMsg)localObject).extraData.putBoolean("needSync", paramBoolean);
+    ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
+    super.sendPbReq((ToServiceMsg)localObject);
   }
   
-  protected Class<? extends ajtg> observerClass()
+  public void b(List<String> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ante localante = new ante((String)paramList.next());
+        if (!TextUtils.isEmpty(localante.d)) {
+          localArrayList.add(localante.d);
+        }
+      }
+      if (localArrayList.size() > 0) {
+        ((anua)this.app.getManager(141)).a(localArrayList);
+      }
+    }
+  }
+  
+  protected Class<? extends ajte> observerClass()
   {
     return ajvz.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+    int i = paramToServiceMsg.extraData.getInt("cmd_fav_subcmd");
+    if ((paramObject == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()))
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "fail to  not send command: " + i + " to server");
+      if (i == 1)
+      {
+        paramToServiceMsg = (ansx)this.mApp.getManager(72);
+        if (paramToServiceMsg != null) {
+          paramToServiceMsg.a();
+        }
+      }
+      else if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isSuccess()))
+      {
+        if (i != 2) {
+          break label123;
+        }
+        askf.d("2006", 1);
       }
     }
-    while (!"MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd())) {
+    label123:
+    do
+    {
+      do
+      {
+        return;
+        QLog.e("FavEmoRoamingHandler", 1, "getRoamingManager return null");
+        break;
+        if (i == 1)
+        {
+          askf.e("2005", 1);
+          return;
+        }
+        if (i == 5)
+        {
+          notifyUI(3, false, this.mApp.getApplication().getString(2131692059));
+          QLog.e("FavEmoRoamingHandler", 1, "modify ocr fail, errInfo:" + paramFromServiceMsg.getBusinessFailMsg());
+          return;
+        }
+      } while (i != 6);
+      if (QLog.isColorLevel()) {
+        QLog.d("FavEmoRoamingHandler", 2, "onReceive FAV_REQ_MOVE fail！");
+      }
+      b(paramObject);
       return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      switch (i)
+      {
+      default: 
+        return;
+      case 1: 
+        a(paramObject);
+        return;
+      case 2: 
+        a(paramObject, paramToServiceMsg.extraData.getBoolean("needSync"));
+        return;
+      case 3: 
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 1, "FAV_REQ_DO_OCR_WHEN_UPLOAD");
+        }
+        a(paramFromServiceMsg, paramObject, 3);
+        return;
+      case 4: 
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 1, "FAV_REQ_GET_OCR");
+        }
+        a(paramFromServiceMsg, paramObject, 4);
+        return;
+      case 5: 
+        a(paramFromServiceMsg, paramToServiceMsg, paramObject);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("FavEmoRoamingHandler", 2, "onReceive FAV_REQ_MOVE success！");
   }
 }
 

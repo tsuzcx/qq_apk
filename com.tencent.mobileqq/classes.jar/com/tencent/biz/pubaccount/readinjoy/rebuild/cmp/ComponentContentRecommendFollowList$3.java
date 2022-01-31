@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import osj;
+import osg;
 
 class ComponentContentRecommendFollowList$3
   implements Runnable
@@ -10,12 +10,12 @@ class ComponentContentRecommendFollowList$3
   
   public void run()
   {
-    osj localosj = osj.a();
+    osg localosg = osg.a();
     long l = this.a.uin;
     if (this.a.isFollowed) {}
     for (int i = 2;; i = 1)
     {
-      localosj.b(l, i);
+      localosg.b(l, i);
       return;
     }
   }

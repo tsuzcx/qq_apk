@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.colornote.settings;
 
+import amje;
 import amjf;
-import amjg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,14 +10,14 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import bawz;
+import baxn;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class HistoryFormItem
   extends FormSimpleItem
 {
   private int jdField_a_of_type_Int;
-  private amjg jdField_a_of_type_Amjg;
+  private amjf jdField_a_of_type_Amjf;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private boolean d;
   private boolean e = true;
@@ -38,7 +38,7 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      setBackgroundResource(2130849236);
+      setBackgroundResource(2130849245);
       return;
     }
     setBgType(2);
@@ -70,7 +70,7 @@ public class HistoryFormItem
     localLayoutParams.addRule(11, 1);
     localLayoutParams.addRule(15, 1);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new amjf(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new amje(this));
   }
   
   public int a()
@@ -92,7 +92,7 @@ public class HistoryFormItem
   public void b()
   {
     super.b();
-    this.o = bawz.a(getContext(), 290.0F);
+    this.o = baxn.a(getContext(), 290.0F);
   }
   
   public void setChecked(boolean paramBoolean)
@@ -128,9 +128,9 @@ public class HistoryFormItem
     }
   }
   
-  public void setOnIconClickListener(amjg paramamjg)
+  public void setOnIconClickListener(amjf paramamjf)
   {
-    this.jdField_a_of_type_Amjg = paramamjg;
+    this.jdField_a_of_type_Amjf = paramamjf;
   }
   
   public void setRightIconResource(int paramInt)

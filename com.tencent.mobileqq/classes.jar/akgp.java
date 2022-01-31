@@ -1,62 +1,60 @@
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class akgp
-  implements ajtg
+  extends MSFServlet
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  protected void e(boolean paramBoolean, Object paramObject) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject) {}
-  
-  protected void h(boolean paramBoolean, Object paramObject) {}
-  
-  protected void i(boolean paramBoolean, Object paramObject) {}
-  
-  protected void j(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      return;
-    case 7: 
-      b(paramBoolean, paramObject);
-      return;
-    case 5: 
-      c(paramBoolean, paramObject);
-      return;
-    case 6: 
-      a(paramBoolean, paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, paramObject);
-      return;
-    case 8: 
-      e(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      g(paramBoolean, paramObject);
-      return;
-    case 11: 
-      h(paramBoolean, paramObject);
-      return;
-    case 12: 
-      i(paramBoolean, paramObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
     }
-    j(paramBoolean, paramObject);
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bbmx.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).a(41);
+      if (localSignatureHandler != null) {
+        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SignatureServlet", 2, "onReceive exit");
+      }
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bbmx.a(paramIntent, 0, arrayOfByte.length + 4);
+      bbmx.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+    }
   }
 }
 

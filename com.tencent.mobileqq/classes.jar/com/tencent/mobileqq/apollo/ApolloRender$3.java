@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import ajou;
+import ajos;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -15,8 +15,8 @@ class ApolloRender$3
   {
     int i = Thread.currentThread().getPriority();
     QLog.i("sava_ApolloRender", 1, "TraceReport CmShowStatUtil preLoadDirector threadPriority:" + i);
-    ajou.b("preLoadEngine");
-    ajou.a("sava_ApolloRender_preLoadTask");
+    ajos.b("preLoadEngine");
+    ajos.a("sava_ApolloRender_preLoadTask");
     long l = Thread.currentThread().getId();
     if ((WeakReference)ApolloRender.sRenderMap.get(Long.valueOf(l)) == null) {
       ApolloRender.sRenderMap.put(Long.valueOf(l), new WeakReference(this.this$0));
@@ -24,13 +24,13 @@ class ApolloRender$3
     if ((WeakReference)ApolloRender.sTickerMap.get(Long.valueOf(l)) == null) {
       ApolloRender.sTickerMap.put(Long.valueOf(l), new WeakReference(this.this$0.mApolloTicker));
     }
-    ajou.a("sava_ApolloRender_preLoadDirector");
+    ajos.a("sava_ApolloRender_preLoadDirector");
     synchronized (ApolloRender.access$200(this.this$0))
     {
       if (!ApolloRender.access$300(this.this$0).b()) {
         ApolloRender.access$300(this.this$0).a(0L, 0, 0, ApolloRender.access$400(this.this$0), 1);
       }
-      ajou.b("sava_ApolloRender_preLoadDirector");
+      ajos.b("sava_ApolloRender_preLoadDirector");
     }
     for (;;)
     {
@@ -46,7 +46,7 @@ class ApolloRender$3
         if (localIApolloRunnableTask.a() == 4) {
           ApolloRender.access$002(this.this$0, true);
         }
-        ajou.a("sava_ApolloRender_preLoadDirector_" + localIApolloRunnableTask.a());
+        ajos.a("sava_ApolloRender_preLoadDirector_" + localIApolloRunnableTask.a());
         if ((localIApolloRunnableTask.b()) && (ApolloRender.access$300(this.this$0).a(localIApolloRunnableTask.a())))
         {
           QLog.i("sava_ApolloRender", 1, "preLoadDirector continue script isLoaded:" + localIApolloRunnableTask.a());
@@ -63,13 +63,13 @@ class ApolloRender$3
           {
             ApolloRender.access$300(this.this$0).a(localIApolloRunnableTask.a());
             localIApolloRunnableTask.run();
-            ajou.b("sava_ApolloRender_preLoadDirector_" + localIApolloRunnableTask.a());
+            ajos.b("sava_ApolloRender_preLoadDirector_" + localIApolloRunnableTask.a());
           }
         }
       }
       ApolloRender.access$300(this.this$0).a(localObject3.a());
       localObject3.run();
-      ajou.b("sava_ApolloRender_preLoadDirector_" + localObject3.a());
+      ajos.b("sava_ApolloRender_preLoadDirector_" + localObject3.a());
       continue;
       label532:
       if ((!ApolloRender.access$000(this.this$0)) && (!ApolloRender.access$600(this.this$0)) && (ApolloRender.access$700(this.this$0).isEmpty())) {
@@ -89,7 +89,7 @@ class ApolloRender$3
     }
     label631:
     QLog.i("sava_ApolloRender", 1, "preLoadDirector mDestroyed:" + ApolloRender.access$000(this.this$0) + " mSurfaceReady:" + ApolloRender.access$600(this.this$0));
-    ajou.b("sava_ApolloRender_preLoadTask");
+    ajos.b("sava_ApolloRender_preLoadTask");
   }
 }
 

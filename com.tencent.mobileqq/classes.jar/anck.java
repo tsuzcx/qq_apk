@@ -1,56 +1,60 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anck
-  extends ampb<ancj>
 {
-  public static ancj a()
-  {
-    return (ancj)ampm.a().a(487);
-  }
+  public String a;
+  public boolean a;
+  public String[] a;
+  public String b;
+  public String c;
   
-  public int a()
+  public anck(JSONObject paramJSONObject)
   {
-    return 487;
-  }
-  
-  @NonNull
-  public ancj a(int paramInt)
-  {
-    return new ancj();
-  }
-  
-  @Nullable
-  public ancj a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancj.a(paramArrayOfampi);
+    try
+    {
+      String str = paramJSONObject.getString("extension");
+      if (str != null) {
+        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
+      }
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
+      this.b = paramJSONObject.getString("tShow");
+      this.c = paramJSONObject.getString("tPress");
+      return;
     }
-    return null;
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+    }
   }
   
-  public Class<ancj> a()
+  public boolean a(String paramString)
   {
-    return ancj.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancj paramancj) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    {
+      bool1 = bool2;
+      if (paramString != null) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
   }
 }
 

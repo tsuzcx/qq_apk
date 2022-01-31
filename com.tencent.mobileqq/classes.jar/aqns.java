@@ -1,6 +1,17 @@
-public abstract interface aqns
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+
+final class aqns
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  aqns(Activity paramActivity, File paramFile1, File paramFile2, aqnu paramaqnu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    aqnq.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Aqnu);
+  }
 }
 
 

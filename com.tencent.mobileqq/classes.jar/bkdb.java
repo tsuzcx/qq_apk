@@ -1,8 +1,23 @@
-public abstract interface bkdb
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+@TargetApi(11)
+public class bkdb
 {
-  public abstract void a();
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bkde parambkde)
+  {
+    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambkde, paramLong);
+  }
   
-  public abstract void a(Runnable paramRunnable);
+  private static ValueAnimator a(ValueAnimator paramValueAnimator, bkde parambkde, long paramLong)
+  {
+    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    paramValueAnimator.addUpdateListener(new bkdc(parambkde));
+    paramValueAnimator.addListener(new bkdd(parambkde, paramValueAnimator));
+    paramValueAnimator.setDuration(paramLong);
+    return paramValueAnimator;
+  }
 }
 
 

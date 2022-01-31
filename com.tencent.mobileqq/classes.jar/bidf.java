@@ -1,24 +1,22 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
-
-public class bidf
-  implements View.OnTouchListener
+final class bidf
+  implements bifc
 {
-  public bidf(WeiyunSaveTipsFactory.1 param1) {}
+  public void a(String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, long paramLong, bien parambien, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramBoolean)
     {
-      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
-      bide.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
-      return true;
+      if (parambien.a != 5) {
+        break label25;
+      }
+      bigh.a(paramString, "actFileWyDown", parambien, false, paramLong);
     }
-    return false;
+    label25:
+    while (parambien.a != 4) {
+      return;
+    }
+    bigh.a(paramString, "actFileWyDown", parambien, true, paramLong);
   }
 }
 

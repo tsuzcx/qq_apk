@@ -1,79 +1,72 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
+import NS_MOBILE_COMM_CONF.MobileCommConf;
+import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
+import NS_MOBILE_COMM_CONF.NewMobileUserConf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class bibt
-  implements ServiceConnection
+public class bibt
 {
-  bibt(bibr parambibr) {}
+  private static bibt jdField_a_of_type_Bibt;
+  private long jdField_a_of_type_Long = -1L;
   
-  public void a()
+  public static bibt a()
   {
-    if ((bibr.a(this.a) != null) && (!bibr.a(this.a).b())) {
-      bibr.a(this.a).b();
+    if (jdField_a_of_type_Bibt == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bibt == null) {
+        jdField_a_of_type_Bibt = new bibt();
+      }
+      return jdField_a_of_type_Bibt;
+    }
+    finally {}
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (paramLong > 0L)
+    {
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
+      localEditor.putLong("lastReportTime", paramLong);
+      localEditor.apply();
     }
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(MobileCommConf paramMobileCommConf)
   {
-    bdoe.b("WadlProxyServiceManager", "onServiceConnected success");
-    this.a.a = false;
-    bibr.a(this.a, bibk.a(paramIBinder));
-    if ((bibr.a(this.a)) || (bibr.a(this.a) == null))
+    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null)) {}
+    long l;
+    do
     {
-      bdoe.b("WadlProxyServiceManager", "onServiceConnected,but can't use it! mDestroy=" + bibr.a(this.a) + ",mWadlService=" + bibr.a(this.a));
-      return;
-    }
+      do
+      {
+        return;
+        l = paramMobileCommConf.new_mobile_global_conf.version;
+      } while (paramMobileCommConf.new_mobile_user_conf.version < l);
+      l = System.currentTimeMillis() / 1000L;
+    } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
+    this.jdField_a_of_type_Long = l;
+    a(this.jdField_a_of_type_Long);
+    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bibv.class);
     try
     {
-      bibr.a(this.a).a(bibr.a(this.a));
-      bibr.a(this.a);
-      a();
-      try
-      {
-        bibr.a(this.a).asBinder().linkToDeath(bibr.a(this.a), 0);
-        return;
-      }
-      catch (RemoteException paramComponentName)
-      {
-        paramComponentName.printStackTrace();
-        return;
-      }
+      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
+      paramMobileCommConf.putExtra("selfuin", l);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
+      return;
     }
-    catch (RemoteException paramComponentName)
+    catch (Exception localException)
     {
       for (;;)
       {
-        paramComponentName.printStackTrace();
+        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
+        l = 0L;
       }
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    bdoe.b("WadlProxyServiceManager", "onServiceDisconnected");
-    try
-    {
-      BaseApplicationImpl.getApplication().unbindService(bibr.a(this.a));
-      if (bibr.a(this.a) != null) {
-        bibr.a(this.a).a();
-      }
-      if (bibr.a(this.a) != null) {
-        bibr.a(this.a).b(bibr.a(this.a));
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-      return;
-    }
-    finally
-    {
-      bibr.a(this.a, null);
-      this.a.a = false;
     }
   }
 }

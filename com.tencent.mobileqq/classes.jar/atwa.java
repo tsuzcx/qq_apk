@@ -1,91 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedReq;
+import com.tencent.pb.now.ilive_feeds_write.DelFeedStuct;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
 
-final class atwa
-  implements athx
+public class atwa
 {
-  atwa(int paramInt, atwg paramatwg) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, atwi paramatwi)
   {
-    boolean bool3 = false;
-    bool2 = false;
-    bool1 = true;
-    paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
-    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
-    if (paramInt == 0) {
-      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
-    }
-    for (;;)
+    ilive_feeds_read.ReadNearUserFeedsReq localReadNearUserFeedsReq = new ilive_feeds_read.ReadNearUserFeedsReq();
+    try
     {
-      try
+      localReadNearUserFeedsReq.uin.set(Long.valueOf(paramString).longValue());
+      localReadNearUserFeedsReq.pos.set(paramInt2);
+      localReadNearUserFeedsReq.num.set(paramInt3);
+      localReadNearUserFeedsReq.nowid.set(paramLong);
+      localReadNearUserFeedsReq.id_type.set(paramInt1);
+      paramString = SosoInterface.b();
+      if ((paramString != null) && (paramString.a != null))
       {
-        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
-        if (!localReadNearUserFeedsRsp.result.has())
-        {
-          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
-          paramInt = i;
-          if (this.jdField_a_of_type_Atwg != null) {
-            this.jdField_a_of_type_Atwg.a(bool2, paramBundle, bool1, paramInt);
-          }
-          return;
-        }
-        if (localReadNearUserFeedsRsp.result.get() == 0) {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
-          }
+        paramString = paramString.a;
+        localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.a)));
+        localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.b)));
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.a + ",req.lng=" + paramString.b);
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = false;
-        bool1 = true;
-      }
-      try
-      {
-        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
-        paramInt = localReadNearUserFeedsRsp.end_flag.get();
-        bool1 = bool3;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          bool2 = true;
-          bool1 = true;
-        }
-      }
-      try
-      {
-        paramInt = localReadNearUserFeedsRsp.pos.get();
-        bool2 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = true;
-        break label281;
-      }
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
-      paramInt = i;
-      continue;
-      label281:
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
-      paramInt = i;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-      paramInt = i;
+      new athx(paramQQAppInterface).a(24624).b(10).a(new atwc(paramInt2, paramatwi)).a(new atwb(paramatwi, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
+      return;
     }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      QLog.i("NearbyMomentProtocol", 1, "getNearbyMomentsList, transfer uin error, uin=" + paramString);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt, atwh paramatwh)
+  {
+    ilive_feeds_write.DelFeedReq localDelFeedReq = new ilive_feeds_write.DelFeedReq();
+    ilive_feeds_write.DelFeedStuct localDelFeedStuct = new ilive_feeds_write.DelFeedStuct();
+    localDelFeedStuct.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
+    localDelFeedStuct.timestamp.set(paramLong);
+    localDelFeedStuct.feed_type.set(paramInt);
+    localDelFeedReq.del_type.set(2);
+    localDelFeedReq.select_all.set(0);
+    localDelFeedReq.del_st.get().add(localDelFeedStuct);
+    localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+    new athx(paramQQAppInterface).a(22528).b(5).a(new atwe(paramatwh, paramString)).a(new atwd(paramatwh, paramString)).a(localDelFeedReq.toByteArray());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, atwj paramatwj)
+  {
+    new atib(paramQQAppInterface).a(paramString, new atwf(paramatwj), null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, atwk paramatwk)
+  {
+    new atib(paramQQAppInterface).b(paramString, new atwg(paramatwk), null);
   }
 }
 

@@ -1,23 +1,22 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import org.json.JSONObject;
 
 class betv
-  extends betk
+  implements AsyncResult
 {
-  betv(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
+  betv(bett parambett, int paramInt, EngineChannel paramEngineChannel) {}
   
-  protected betj a()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return new betj(2131694261, new betx(this));
-  }
-  
-  protected betj b()
-  {
-    return new betj(2131694208, new betw(this));
+    betc.b("EngineManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      paramJSONObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(this.jdField_a_of_type_Int)));
+      betc.b("EngineManager", "[MiniEng] engineLibInfo " + paramJSONObject);
+      betq.c(this.jdField_a_of_type_Bett.a, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel);
+    }
   }
 }
 

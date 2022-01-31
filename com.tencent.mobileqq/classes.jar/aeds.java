@@ -1,49 +1,29 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.util.Observable;
-import java.util.Observer;
 
-public abstract class aeds
-  extends acun
-  implements Observer
+public class aeds
+  extends aedj
 {
-  public ViewGroup a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  private QQAppInterface a;
-  public MessageForTroopGift a;
-  public BubbleImageView a;
-  public ViewGroup b;
-  public Button b;
-  public TextView b;
-  public View c;
-  public ViewGroup c;
-  public Button c;
-  public View d;
-  public Button d;
-  public Button e;
-  
-  public aeds(QQAppInterface paramQQAppInterface)
+  public aeds(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public acuj a()
   {
-    paramObservable = (bahd)paramObject;
-    if ((paramObservable.a.equals(balg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
-      this.d.post(new TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1(this, paramObservable));
-    }
+    return new aedu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public View a(BaseChatItemLayout paramBaseChatItemLayout)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562534, paramBaseChatItemLayout, false);
   }
 }
 

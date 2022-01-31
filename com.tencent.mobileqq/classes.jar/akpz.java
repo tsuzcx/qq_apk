@@ -6,10 +6,7 @@ final class akpz
 {
   public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
-      return 1;
-    }
-    return -1;
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

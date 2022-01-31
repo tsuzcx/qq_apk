@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class FeedEntry
-  extends aukm
+  extends auko
 {
   public String date;
   public byte[] extraInfo;
-  @auma
+  @aumc
   public String feedId;
   public int feedSourceTagType;
   public String ownerId;

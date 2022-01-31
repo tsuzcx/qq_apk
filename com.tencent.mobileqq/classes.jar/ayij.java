@@ -1,30 +1,33 @@
-import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class ayij
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
   public ayij(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    paramView = (ayhx)paramView.getTag();
+    if (paramView.jdField_a_of_type_Int == ayhv.b)
     {
-      ayfv.a(this.a.app, "0X800993D");
-      paramView.clearFocus();
-      if (this.a.jdField_a_of_type_AndroidAppDialog == null) {}
-    }
-    else
-    {
+      ayfx.a(this.a.app, "0X8009938");
+      ayfx.a(this.a.app, this.a, 2, "group_online_doc_more_temp", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      axqy.b(this.a.app, "dc00898", "", "", "0X8009C67", "0X8009C67", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
       return;
     }
-    this.a.jdField_a_of_type_AndroidAppDialog = new ayjf(this.a, GroupTeamWorkListActivity.a(this.a), this.a.app, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_AndroidAppDialog.setTitle(ajyc.a(2131705388));
-    this.a.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-    this.a.jdField_a_of_type_AndroidAppDialog.show();
-    this.a.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ayik(this));
+    String str = apvm.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
+    if (!TextUtils.isEmpty(str))
+    {
+      bcql.a(this.a, str, 0).a();
+      return;
+    }
+    ayfx.a(this.a.app, "0X8009937");
+    ayfx.a(this.a.app, this.a, "group_online_doc_temp", GroupTeamWorkListActivity.a(this.a), paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
+    axqy.b(this.a.app, "dc00898", "", "", "0X8009C66", "0X8009C66", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
   }
 }
 

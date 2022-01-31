@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class ayjm
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  ayjm(ayjf paramayjf) {}
+  ayjm(ayjh paramayjh) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.setText("");
-    this.a.c();
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      bfni.b(this.a.a);
+      this.a.d();
+      return true;
+    }
+    return false;
   }
 }
 

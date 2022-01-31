@@ -4,38 +4,49 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ahqj
-  extends ahpv
+  extends ahpt
+  implements Cloneable
 {
-  public ahqj(Context paramContext)
+  public int c;
+  
+  public ahqj(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699600);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720284);
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131720285);
+    }
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
+    if (QLog.isColorLevel()) {
+      QLog.d(ahqj.class.getSimpleName(), 2, "deSerialize");
+    }
     paramArrayOfByte = new String(paramArrayOfByte);
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("remindText");
       this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Azmk.a(this.c);
+      this.c = paramArrayOfByte.getInt("ctl_flag");
+      if (this.jdField_a_of_type_Azmm == null) {
+        this.jdField_a_of_type_Azmm = new azmm();
       }
+      this.jdField_a_of_type_Azmm.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
     }
     catch (JSONException paramArrayOfByte)
     {
-      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
+      paramArrayOfByte.printStackTrace();
     }
   }
   
   public byte[] a()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d(ahqj.class.getSimpleName(), 2, "serialize");
+    }
     return b();
   }
   
@@ -44,18 +55,19 @@ public class ahqj
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("remindText", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("color", this.jdField_b_of_type_Int);
-      this.c = this.jdField_a_of_type_Azmk.a();
-      localJSONObject.put("messageNavInfo", this.c);
+      localJSONObject.put("ctl_flag", this.c);
+      if (this.jdField_a_of_type_Azmm != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Azmm.a());
+      }
       return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
+        localJSONException.printStackTrace();
       }
     }
   }

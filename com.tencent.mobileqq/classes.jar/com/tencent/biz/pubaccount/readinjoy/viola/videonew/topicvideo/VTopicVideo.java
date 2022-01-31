@@ -15,9 +15,9 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import ryx;
-import ryy;
-import rzj;
+import ryu;
+import ryv;
+import rzg;
 
 public class VTopicVideo
   extends VVideo
@@ -27,7 +27,7 @@ public class VTopicVideo
   private static final int TOPIC_VIDEO_CONTROL_PLAY = 2;
   private static final int TOPIC_VIDEO_CONTROL_REPLAY = 5;
   private static final int TOPIC_VIDEO_CONTROL_STOP = 4;
-  private IObserver mVideoAppearEventObserver = new rzj(this);
+  private IObserver mVideoAppearEventObserver = new rzg(this);
   
   public VTopicVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -42,7 +42,7 @@ public class VTopicVideo
     }
   }
   
-  public ryy getVideoLifeCycleChangeListener()
+  public ryv getVideoLifeCycleChangeListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();

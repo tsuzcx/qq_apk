@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abse;
+import absa;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator<AllInOne> CREATOR = new abse();
+  public static final Parcelable.Creator<AllInOne> CREATOR = new absa();
   public byte a;
   public int a;
   public long a;

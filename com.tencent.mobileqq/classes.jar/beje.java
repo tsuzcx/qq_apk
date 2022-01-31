@@ -1,14 +1,6 @@
-public class beje
+public abstract interface beje
 {
-  @beqn(a="muteMicrophone")
-  public boolean a;
-  @beqn(a="muteEarphone")
-  public boolean b;
-  
-  public String toString()
-  {
-    return "muteConfig{isMuteMicrophone=" + this.a + ", isMuteEarphone=" + this.b + '}';
-  }
+  public abstract boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
 }
 
 

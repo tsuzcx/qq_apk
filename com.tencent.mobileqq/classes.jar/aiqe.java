@@ -1,14 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.Comparator;
 
 public class aiqe
+  implements Comparator<TroopInfo>
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  
-  protected aiqe(aiqd paramaiqd) {}
+  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  {
+    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
+      return -1;
+    }
+    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
+      return 1;
+    }
+    return ajuh.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+  }
 }
 
 

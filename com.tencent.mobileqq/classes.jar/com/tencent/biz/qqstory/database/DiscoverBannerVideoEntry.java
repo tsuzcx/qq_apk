@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class DiscoverBannerVideoEntry
-  extends aukm
+  extends auko
 {
   public static final String TAG = "Q.qqstory.discover.DiscoverBannerVideoEntry";
-  @auma
+  @aumc
   public String bannerId;
-  @aulx
+  @aulz
   public List<DiscoverBannerVideoEntry.BannerInfo> bannerInfoList;
   public byte[] bannerInfoListByte;
   public String nextCookie;

@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import biju;
-import bioi;
-import biwb;
+import bikl;
+import bioz;
+import biws;
 
 public class BeautyAndFilterPanelViewStubHolder$2
   implements Runnable
 {
-  public BeautyAndFilterPanelViewStubHolder$2(bioi parambioi, biju parambiju, biwb parambiwb) {}
+  public BeautyAndFilterPanelViewStubHolder$2(bioz parambioz, bikl parambikl, biws parambiws) {}
   
   public void run()
   {
-    bioi.a(this.this$0).setControllerAndManager(this.jdField_a_of_type_Biju, this.jdField_a_of_type_Biwb);
+    bioz.a(this.this$0).setControllerAndManager(this.jdField_a_of_type_Bikl, this.jdField_a_of_type_Biws);
   }
 }
 

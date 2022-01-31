@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import actn;
+import actj;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,12 +17,12 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import anzj;
-import anzk;
-import anzl;
-import aoba;
-import bbkx;
-import bftl;
+import anzo;
+import anzp;
+import anzq;
+import aobf;
+import bbll;
+import bfuc;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
@@ -52,7 +52,7 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = actn.a(51.0F, paramContext.getResources());
+    this.jdField_b_of_type_Int = actj.a(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
     this.c = paramAttributeSet.widthPixels;
@@ -81,7 +81,7 @@ public class HorizontalListViewEx
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166376));
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.e = bbkx.a(18.0F);
+    this.e = bbll.a(18.0F);
   }
   
   private void d()
@@ -93,9 +93,9 @@ public class HorizontalListViewEx
       View localView = getChildAt(i);
       if (localView.getTag() != null)
       {
-        anzl localanzl = (anzl)localView.getTag();
+        anzq localanzq = (anzq)localView.getTag();
         localView.setSelected(false);
-        localanzl.a.setSelected(false);
+        localanzq.a.setSelected(false);
       }
       i += 1;
     }
@@ -136,7 +136,7 @@ public class HorizontalListViewEx
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
         localValueAnimator.setDuration(200L);
         this.jdField_b_of_type_Boolean = true;
-        localValueAnimator.addUpdateListener(new aoba(this, localView, j));
+        localValueAnimator.addUpdateListener(new aobf(this, localView, j));
         localValueAnimator.start();
         return;
         if (this.d < getFirstVisiblePosition()) {
@@ -178,25 +178,25 @@ public class HorizontalListViewEx
       return;
       j = getChildCount();
     } while (getAdapter() == null);
-    paramCanvas = (anzj)getAdapter();
+    paramCanvas = (anzo)getAdapter();
     int i = 0;
     label149:
     Object localObject2;
-    anzl localanzl;
+    anzq localanzq;
     if (i < j)
     {
       localObject1 = getChildAt(i);
       localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
       if (((View)localObject1).getTag() != null)
       {
-        localanzl = (anzl)((View)localObject1).getTag();
+        localanzq = (anzq)((View)localObject1).getTag();
         if (localObject1 != getSelectedView()) {
           break label240;
         }
         ((View)localObject1).setSelected(true);
-        localanzl.a.setSelected(true);
+        localanzq.a.setSelected(true);
         if (localObject2 != null) {
-          ((View)localObject1).setContentDescription(((anzk)localObject2).b);
+          ((View)localObject1).setContentDescription(((anzp)localObject2).b);
         }
       }
     }
@@ -207,9 +207,9 @@ public class HorizontalListViewEx
       break;
       label240:
       ((View)localObject1).setSelected(false);
-      localanzl.a.setSelected(false);
+      localanzq.a.setSelected(false);
       if (localObject2 != null) {
-        ((View)localObject1).setContentDescription(((anzk)localObject2).b);
+        ((View)localObject1).setContentDescription(((anzp)localObject2).b);
       }
     }
   }

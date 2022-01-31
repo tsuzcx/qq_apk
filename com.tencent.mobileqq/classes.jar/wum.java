@@ -1,24 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class wum
-  implements View.OnClickListener
+  implements aysc
 {
-  public wum(VideoPlayerView paramVideoPlayerView) {}
+  public wum(AbsSubscribeShareCardView.2 param2) {}
   
-  public void onClick(View paramView)
+  public void onResp(aysz paramaysz)
   {
-    if (xeq.a("mLLSkipBackWrapper", 500L))
+    if (paramaysz.jdField_a_of_type_Int == 0)
     {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      AbsSubscribeShareCardView.a(this.a.this$0);
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
+      return;
     }
+    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

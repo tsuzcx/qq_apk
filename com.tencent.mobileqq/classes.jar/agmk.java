@@ -1,8 +1,8 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-
-public abstract interface agmk
+public class agmk
 {
-  public abstract void a(int paramInt, LocalMediaInfo paramLocalMediaInfo);
+  public int a;
+  public long a;
+  public String a;
 }
 
 

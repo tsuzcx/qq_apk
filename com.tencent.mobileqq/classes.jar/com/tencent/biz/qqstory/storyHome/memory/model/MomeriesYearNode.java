@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.database.MemoriesYearNodeEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import ssl;
+import ssi;
 
 public class MomeriesYearNode
   extends BaseUIItem
-  implements ssl
+  implements ssi
 {
   public int videoCount;
   public int year;

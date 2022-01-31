@@ -1,21 +1,6 @@
-import android.graphics.Bitmap;
-
-public class avum
+public abstract interface avum
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public int c;
-  
-  public avum(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt3;
-  }
+  public abstract void a();
 }
 
 

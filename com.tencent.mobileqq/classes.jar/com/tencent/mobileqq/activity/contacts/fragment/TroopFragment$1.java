@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afpo;
+import afpm;
 
 class TroopFragment$1
   implements Runnable

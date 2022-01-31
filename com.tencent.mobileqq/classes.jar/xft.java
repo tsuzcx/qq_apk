@@ -1,71 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class xft
-  extends ampb<xfs>
 {
-  public int a()
-  {
-    return 411;
-  }
+  private String a = "";
+  private String b = "";
+  private String c = "";
   
-  public Class<xfs> a()
+  public static xft a(String paramString)
   {
-    return xfs.class;
-  }
-  
-  @NonNull
-  public xfs a(int paramInt)
-  {
-    return new xfs();
-  }
-  
-  @Nullable
-  public xfs a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      xfs localxfs = xfs.a(paramArrayOfampi[0].a);
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
-      a(localxfs);
-      return localxfs;
+    if (paramString == null) {
+      return null;
     }
-    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    try
+    {
+      xft localxft = new xft();
+      paramString = new JSONObject(paramString);
+      localxft.a = paramString.optString("icon_image_url", "");
+      localxft.b = paramString.optString("md5", "");
+      localxft.c = paramString.optString("widget_id", "");
+      return localxft;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
     return null;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(xfs paramxfs)
+  public String a()
   {
-    if (paramxfs != null)
-    {
-      xfr.a().a("mine_videostory_entrance", paramxfs.a());
-      xfr.a().a("enable_click_take_picture", paramxfs.b());
-      xfr.a().a("mine_videostory_drawer_entrance", paramxfs.c());
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramxfs.toString());
-    }
+    return this.a;
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return this.b;
   }
   
-  public int b()
+  public String c()
   {
-    return 0;
+    return this.c;
   }
   
-  public boolean b()
+  public String toString()
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
   }
 }
 

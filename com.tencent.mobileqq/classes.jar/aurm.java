@@ -1,48 +1,41 @@
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 
 public class aurm
 {
-  public double a;
-  public float a;
   public int a;
-  public long a;
   public Bitmap a;
-  public float[] a;
-  public float b;
+  public String a;
+  public boolean a;
   public int b;
-  public float c;
+  public Bitmap b;
+  public String b;
   public int c;
-  public float d;
+  public Bitmap c;
+  public String c;
   public int d;
-  public float e;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
-  {
-    return paramBitmap;
-  }
+  public aurm() {}
   
-  public static aurm a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, int paramInt, Resources paramResources)
+  public aurm(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
   {
-    aurm localaurm = new aurm();
-    localaurm.jdField_d_of_type_Int = paramInt;
-    float f = paramBitmap.getHeight() / paramBitmap.getWidth();
-    if (paramInt == 0) {}
-    for (localaurm.jdField_a_of_type_Int = actn.a(30.0F, paramResources);; localaurm.jdField_a_of_type_Int = actn.a(22.0F, paramResources))
-    {
-      localaurm.jdField_b_of_type_Int = ((int)(f * localaurm.jdField_a_of_type_Int));
-      localaurm.jdField_a_of_type_ArrayOfFloat = new float[2];
-      localaurm.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-      localaurm.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-      localaurm.jdField_a_of_type_Float = ((float)Math.random() * actn.a(18.0F, paramResources) - actn.a(9.0F, paramResources));
-      localaurm.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 1.308996938995747D);
-      localaurm.jdField_b_of_type_Float = (actn.a(150.0F, paramResources) + (float)Math.random() * actn.a(50.0F, paramResources));
-      localaurm.jdField_c_of_type_Float = ((float)(localaurm.jdField_b_of_type_Float * Math.cos(localaurm.jdField_a_of_type_Double)));
-      localaurm.jdField_d_of_type_Float = ((float)(localaurm.jdField_b_of_type_Float * Math.sin(localaurm.jdField_a_of_type_Double)));
-      localaurm.jdField_c_of_type_Int = 256;
-      localaurm.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      return localaurm;
-    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_e_of_type_JavaLangString = paramString1;
+    this.jdField_f_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_Int = paramInt4;
+    this.jdField_f_of_type_Int = paramInt5;
   }
 }
 

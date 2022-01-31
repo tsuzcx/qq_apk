@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qdg;
+import qdd;
 
 public class SocializeFeedsInfo$UGCVoiceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new qdg();
+  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new qdd();
   public int a;
   public String a;
   public boolean a;

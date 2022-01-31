@@ -1,19 +1,16 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
 class awkp
   implements View.OnClickListener
 {
-  awkp(awko paramawko, String paramString) {}
+  awkp(awkm paramawkm) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_Awko.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Awko.a.startActivity(paramView);
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
   }
 }
 

@@ -1,13 +1,26 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.image.ApngImage;
+import dov.com.qq.im.ae.play.AEPlayShowTabView;
 
-public class bixk
-  implements bcph
+class bixk
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public bixk(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  bixk(bixi parambixi) {}
   
-  public void a(bcpf parambcpf) {}
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      ApngImage.resumeAll();
+      return;
+    }
+    ApngImage.pauseAll();
+  }
   
-  public void a(bcpf parambcpf, int paramInt1, int paramInt2) {}
+  public void onPageSelected(int paramInt)
+  {
+    bixi.a(this.a).a(paramInt);
+  }
 }
 
 

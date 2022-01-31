@@ -1,15 +1,16 @@
-import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-public final class adgu
-  implements bfoq
+public class adgu
+  implements View.OnClickListener
 {
-  public adgu(Activity paramActivity, bfol parambfol, String paramString, adgz paramadgz) {}
+  public adgu(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bfol, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adgz);
+    AIOLongShotHelper.b(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE7");
   }
 }
 

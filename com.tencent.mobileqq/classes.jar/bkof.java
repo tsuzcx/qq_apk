@@ -1,19 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
 public class bkof
-  implements View.OnClickListener
+  extends Property<PickerContainer, Float>
 {
-  public bkof(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onClick(View paramView)
+  public bkof(PickerContainer paramPickerContainer, Class paramClass, String paramString)
   {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
-      return;
+    super(paramClass, paramString);
+  }
+  
+  public Float a(PickerContainer paramPickerContainer)
+  {
+    if (paramPickerContainer != null) {
+      return PickerContainer.a(paramPickerContainer);
     }
-    this.a.a.a();
+    return Float.valueOf(1.0F);
+  }
+  
+  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  {
+    if (paramPickerContainer != null) {
+      PickerContainer.a(paramPickerContainer, paramFloat);
+    }
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import mqq.app.AppRuntime;
-import onk;
-import rya;
+import onh;
+import rxx;
 
 public class BridgeModule$28$2
   implements Runnable
 {
-  public BridgeModule$28$2(rya paramrya) {}
+  public BridgeModule$28$2(rxx paramrxx) {}
   
   public void run()
   {
-    bcpw.a(onk.a().getApplication(), 1, ajyc.a(2131701176), 0).a();
+    bcql.a(onh.a().getApplication(), 1, ajya.a(2131701187), 0).a();
   }
 }
 

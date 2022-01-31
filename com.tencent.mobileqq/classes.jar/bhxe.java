@@ -1,34 +1,68 @@
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import org.json.JSONObject;
 
-class bhxe
-  implements bhxf
+public class bhxe
 {
-  bhxe(bhxd parambhxd) {}
+  private static bhxe jdField_a_of_type_Bhxe;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.homeworkCfg.name();
+  private int jdField_a_of_type_Int = 22;
+  private ajuz jdField_a_of_type_Ajuz = new bhxf(this);
   
-  public void a(boolean paramBoolean, String paramString)
+  private bhxe()
   {
-    if (paramBoolean)
+    DeviceProfileManager.a(this.jdField_a_of_type_Ajuz);
+    a();
+  }
+  
+  public static bhxe a()
+  {
+    if (jdField_a_of_type_Bhxe == null) {}
+    try
     {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bhxb.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      if (jdField_a_of_type_Bhxe == null) {
+        jdField_a_of_type_Bhxe = new bhxe();
+      }
+      return jdField_a_of_type_Bhxe;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+    String[] arrayOfString;
+    if (!TextUtils.isEmpty(str))
+    {
+      arrayOfString = str.split("\\|");
+      if (arrayOfString.length < 1) {}
+    }
+    for (;;)
+    {
       try
       {
-        localJSONObject.put("result", 0);
-        localJSONObject.put("progress", 1.0D);
-        localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bhxb.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.d("HomeworkDpcCfg", 2, String.format("loadConfig, mUseNewApiLevel: %s, dpc=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), str }));
+        }
         return;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
-        return;
+        QLog.d("HomeworkDpcCfg", 1, "loadConfig exception :" + localException.getMessage());
+        this.jdField_a_of_type_Int = 22;
+        continue;
       }
+      this.jdField_a_of_type_Int = 22;
     }
-    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
-    this.a.b(-1);
+  }
+  
+  public boolean a()
+  {
+    QLog.d("HomeworkDpcCfg", 1, String.format("hwUseNewAPI thisVer=%d cfgVer=%d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    return Build.VERSION.SDK_INT <= this.jdField_a_of_type_Int;
   }
 }
 

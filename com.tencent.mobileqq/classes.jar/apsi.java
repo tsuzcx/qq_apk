@@ -1,28 +1,29 @@
-public abstract class apsi
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+
+public class apsi
+  extends apsm
 {
-  private apsh a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static String a(String paramString1, String paramString2, String paramString3)
+  public apsi(FileManagerEntity paramFileManagerEntity)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramString3);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
+    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
+    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
   }
   
-  public apsh a()
+  public String a()
   {
-    return this.a;
-  }
-  
-  public abstract String a();
-  
-  public void a(apsh paramapsh)
-  {
-    this.a = paramapsh;
+    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
+      return "";
+    }
+    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
   }
 }
 

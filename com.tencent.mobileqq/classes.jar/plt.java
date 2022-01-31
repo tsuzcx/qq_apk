@@ -1,26 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class plt
-  implements pca
+  implements Animator.AnimatorListener
 {
-  plt(plp paramplp, RecommendFollowInfo paramRecommendFollowInfo) {}
+  plt(plm paramplm, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
-      plp.a(this.jdField_a_of_type_Plp, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-      plp.a(this.jdField_a_of_type_Plp).notifyDataSetChanged();
-      return;
+      plm.a(this.jdField_a_of_type_Plm).isShowRecommendList = false;
+      plm.a(this.jdField_a_of_type_Plm);
     }
-    bcpw.a(plp.b(this.jdField_a_of_type_Plp).getContext(), 1, 2131718502, 0).a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

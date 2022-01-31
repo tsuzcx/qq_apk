@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import avut;
-import avuu;
 import avuv;
+import avuw;
+import avux;
 
 public class CircleBarView
   extends View
@@ -25,9 +25,9 @@ public class CircleBarView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private avut jdField_a_of_type_Avut;
-  private avuu jdField_a_of_type_Avuu;
   private avuv jdField_a_of_type_Avuv;
+  private avuw jdField_a_of_type_Avuw;
+  private avux jdField_a_of_type_Avux;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -86,25 +86,25 @@ public class CircleBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Avuv = new avuv(this);
+    this.jdField_a_of_type_Avux = new avux(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Avut != null) && (this.jdField_a_of_type_Avut.hasStarted())) {
-      this.jdField_a_of_type_Avut.cancel();
+    if ((this.jdField_a_of_type_Avuv != null) && (this.jdField_a_of_type_Avuv.hasStarted())) {
+      this.jdField_a_of_type_Avuv.cancel();
     }
     clearAnimation();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Avut = new avut(this);
+    this.jdField_a_of_type_Avuv = new avuv(this);
     this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Avut.setDuration(paramInt);
-    this.jdField_a_of_type_Avut.setRepeatCount(-1);
-    this.jdField_a_of_type_Avut.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Avut);
+    this.jdField_a_of_type_Avuv.setDuration(paramInt);
+    this.jdField_a_of_type_Avuv.setRepeatCount(-1);
+    this.jdField_a_of_type_Avuv.setInterpolator(new LinearInterpolator());
+    startAnimation(this.jdField_a_of_type_Avuv);
   }
   
   public boolean a(int paramInt)
@@ -152,9 +152,9 @@ public class CircleBarView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setOnAnimationListener(avuu paramavuu)
+  public void setOnAnimationListener(avuw paramavuw)
   {
-    this.jdField_a_of_type_Avuu = paramavuu;
+    this.jdField_a_of_type_Avuw = paramavuw;
   }
   
   public void setTextView(TextView paramTextView)

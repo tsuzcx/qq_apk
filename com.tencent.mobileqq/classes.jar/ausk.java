@@ -1,46 +1,39 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.support.v4.app.FragmentActivity;
-import com.tencent.TMG.utils.QLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.profile.CoverDetailFragment;
 
 public class ausk
-  extends akfz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public ausk(CoverDetailFragment paramCoverDetailFragment) {}
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public void onGlobalLayout()
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity == null) {}
-    do
+    if (Build.VERSION.SDK_INT >= 16) {
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (!(paramObject instanceof setUserProfileRsp));
-      int i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        paramObject = new Intent();
-        paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
-        localFragmentActivity.setResult(-1, paramObject);
-        localFragmentActivity.finish();
-        return;
-      }
-      CoverDetailFragment.a(this.a, localFragmentActivity);
+      Object localObject = this.a.getActivity().getResources().getDrawable(2130849630);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
+      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
+      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
+      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
+      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard.CoverDetailFragment", 0, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
-      }
-    } while (!"profilelogic.setUserProfile".equals(paramObject));
-    CoverDetailFragment.a(this.a, localFragmentActivity);
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -27,11 +27,11 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import nmf;
-import nyg;
-import oav;
-import onk;
-import qgr;
+import nmc;
+import nyd;
+import oas;
+import onh;
+import qgo;
 
 public class ReadInJoyUninterestComplainFragment
   extends IphoneTitleBarFragment
@@ -47,48 +47,48 @@ public class ReadInJoyUninterestComplainFragment
   private void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(nmf.a, paramString2);
-    localBundle.putString(nmf.b, paramString1);
+    localBundle.putString(nmc.a, paramString2);
+    localBundle.putString(nmc.b, paramString1);
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
       paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      if (onk.a(paramString1)) {}
-      for (int i = nmf.Q;; i = nmf.L)
+      if (onh.a(paramString1)) {}
+      for (int i = nmc.Q;; i = nmc.L)
       {
-        nmf.a(new nyg().a(getActivity()).a(nmf.c).b(i).a(paramString1).a(localBundle).a());
+        nmc.a(new nyd().a(getActivity()).a(nmc.c).b(i).a(paramString1).a(localBundle).a());
         return;
       }
     case 2: 
       paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      nmf.a(new nyg().a(getActivity()).a(nmf.c).b(nmf.P).a(nmf.a(paramString1)).a(paramString1).a(localBundle).a());
+      nmc.a(new nyd().a(getActivity()).a(nmc.c).b(nmc.P).a(nmc.a(paramString1)).a(paramString1).a(localBundle).a());
       return;
     }
     paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
-    nmf.a(new nyg().a(getActivity()).a(nmf.c).b(nmf.K).a(oav.a(paramString1)).a(localBundle).a());
+    nmc.a(new nyd().a(getActivity()).a(nmc.c).b(nmc.K).a(oas.a(paramString1)).a(localBundle).a());
   }
   
   private void b()
   {
     this.vg.a(true);
     if (this.leftView != null) {
-      this.leftView.setText(ajyc.a(2131712797));
+      this.leftView.setText(ajya.a(2131712808));
     }
-    setTitle(ajyc.a(2131712814));
-    if (ThemeUtil.isInNightMode(onk.a())) {
+    setTitle(ajya.a(2131712825));
+    if (ThemeUtil.isInNightMode(onh.a())) {
       View.inflate(getActivity(), 2131559985, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364584));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364583));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364790));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364789));
     this.b = ((EditText)this.mContentView.findViewById(2131371436));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376651));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376653));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -213,7 +213,7 @@ public class ReadInJoyUninterestComplainFragment
   public void onResume()
   {
     super.onResume();
-    qgr.a(this);
+    qgo.a(this);
     ThreadManager.getUIHandler().postDelayed(new ReadInJoyUninterestComplainFragment.1(this), 300L);
   }
   

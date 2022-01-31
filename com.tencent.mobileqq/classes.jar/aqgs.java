@@ -1,23 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class aqgs
-  extends RecyclerView.OnScrollListener
+  extends akil
 {
-  aqgs(aqgp paramaqgp) {}
+  aqgs(aqgr paramaqgr) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  protected void a(String paramString, List<Pair<String, String>> paramList)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      aqgp.a(this.a).c();
-    }
-    while (!aqgp.a(this.a).a()) {
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
+      if ((aqgr.a(this.a).equals(paramString)) && (aqgr.a(this.a) != null))
+      {
+        aqgr.a(this.a);
+        aqgr.a(this.a).a(paramList);
+      }
       return;
     }
-    aqgp.a(this.a).b();
-    aqgp.a(this.a).notifyDataSetChanged();
   }
 }
 

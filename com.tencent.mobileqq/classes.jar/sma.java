@@ -1,45 +1,41 @@
-import UserGrowth.stNotificationRsp;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import mqq.util.WeakReference;
+import android.os.Parcel;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class sma
-  implements slk
+public class sma
 {
-  sma(slz paramslz) {}
+  public String mMsgData;
+  public String mPushId;
   
-  public void a(slv paramslv)
+  protected sma(Parcel paramParcel)
   {
-    sne.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramslv.b + " | resultBean:" + paramslv.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
-    if (slz.a(this.a) == null)
+    this.mPushId = paramParcel.readString();
+    this.mMsgData = paramParcel.readString();
+  }
+  
+  protected sma(String paramString)
+  {
+    this.mMsgData = paramString;
+    try
     {
-      sne.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse mFragmentReference: null");
+      parseJson(new JSONObject(paramString));
       return;
     }
-    WSRecommendFragment localWSRecommendFragment = (WSRecommendFragment)slz.a(this.a).get();
-    if (localWSRecommendFragment == null)
+    catch (JSONException paramString)
     {
-      sne.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse wsRecommendFragment: null");
-      return;
+      snb.b("WSPushMsgActionData parse failed : " + paramString.getLocalizedMessage());
     }
-    if (paramslv.a())
-    {
-      if ((paramslv.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
-      {
-        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramslv.jdField_a_of_type_JavaLangObject;
-        sll localsll = paramslv.jdField_a_of_type_Sll;
-        if (localstNotificationRsp.type > 0)
-        {
-          localWSRecommendFragment.a(localstNotificationRsp, localsll);
-          return;
-        }
-        localWSRecommendFragment.a(paramslv.b, paramslv.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      localWSRecommendFragment.a(paramslv.b, paramslv.jdField_a_of_type_JavaLangString);
-      sne.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramslv.b + " | " + paramslv.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    localWSRecommendFragment.a(paramslv.jdField_a_of_type_Int, paramslv.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject)
+  {
+    this.mPushId = paramJSONObject.optString("pushid");
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeString(this.mPushId);
+    paramParcel.writeString(this.mMsgData);
   }
 }
 

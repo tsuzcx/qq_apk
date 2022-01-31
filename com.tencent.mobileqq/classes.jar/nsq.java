@@ -1,22 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
 import com.tencent.qphone.base.util.QLog;
 
 class nsq
-  implements ViewBase.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   nsq(nsp paramnsp) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
-    }
-    nsf.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    onk.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    nsp.a(this.a).setTranslationY(i - nsp.a(this.a));
+    paramValueAnimator = nsp.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    QLog.d("IconTabController", 1, "showWithAnimation: " + paramValueAnimator.height);
+    nsp.a(this.a).setLayoutParams(paramValueAnimator);
+    nsp.a(this.a).setAlpha(paramValueAnimator.height / nsp.a(this.a));
   }
 }
 

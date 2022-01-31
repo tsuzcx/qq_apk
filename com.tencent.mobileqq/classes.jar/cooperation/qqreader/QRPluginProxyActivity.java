@@ -28,6 +28,9 @@ public class QRPluginProxyActivity
   
   public void onCreate(Bundle paramBundle)
   {
+    if (paramBundle != null) {
+      paramBundle.remove("android:fragments");
+    }
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);

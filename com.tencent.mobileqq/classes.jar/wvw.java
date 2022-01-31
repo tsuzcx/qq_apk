@@ -1,35 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.widget.RadioGroup;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
 public class wvw
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public wvw(RelativeFeedItemView paramRelativeFeedItemView) {}
+  public wvw(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    paramView = (CertifiedAccountMeta.StFeed)this.a.a();
-    wiv.a(this.a.getContext(), paramView, 0, wrt.a(this.a.a, paramView.cover.width.get(), paramView.cover.height.get()));
-    ExtraTypeInfo localExtraTypeInfo = this.a.a();
-    if ((localExtraTypeInfo != null) && (paramView != null))
-    {
-      if (localExtraTypeInfo.pageType != 7003) {
-        break label133;
-      }
-      xhe.a(paramView.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
+    
+    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
+      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
     }
-    label133:
-    while (localExtraTypeInfo.pageType != 7004) {
-      return;
+    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
+      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
     }
-    xhe.a(paramView.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
   }
 }
 

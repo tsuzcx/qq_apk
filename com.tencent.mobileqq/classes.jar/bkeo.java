@@ -1,10 +1,6 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-
 public abstract interface bkeo
 {
-  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
+  public abstract void c(boolean paramBoolean);
 }
 
 

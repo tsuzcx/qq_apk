@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwe
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public abwe(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public abwe(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.x();
+    }
   }
 }
 

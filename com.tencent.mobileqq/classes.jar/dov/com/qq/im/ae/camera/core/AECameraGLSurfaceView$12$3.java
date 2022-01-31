@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bijp;
+import bikg;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 class AECameraGLSurfaceView$12$3
   implements Runnable
 {
-  AECameraGLSurfaceView$12$3(AECameraGLSurfaceView.12 param12, bijp parambijp, VideoMaterial paramVideoMaterial) {}
+  AECameraGLSurfaceView$12$3(AECameraGLSurfaceView.12 param12, bikg parambikg, VideoMaterial paramVideoMaterial) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bijp.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+    this.jdField_a_of_type_Bikg.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
   }
 }
 

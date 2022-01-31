@@ -1,33 +1,29 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
-import com.tencent.qphone.base.util.QLog;
 
 public class mwh
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public mwh(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (PoiMapActivity.a(this.a)) {
-        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-      }
+    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    paramAnimation.bottomMargin = (this.a.p + this.a.q);
+    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
+    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
+      this.a.e.setVisibility(8);
     }
-    else
-    {
-      return;
-    }
-    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
+    PoiMapActivity.d(this.a).clearAnimation();
+    this.a.a = true;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

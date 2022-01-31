@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils.confighandler;
 
-import ajyc;
+import ajya;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bblq;
+import bbme;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.ParameterizedType;
-import lcx;
-import lcy;
+import lcs;
+import lct;
 
 public abstract class ConfigHandler<T extends ConfigInfo>
 {
@@ -83,7 +83,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
     int j = paramInt;
     if (TextUtils.isEmpty(paramString2))
     {
-      paramString4 = bblq.a(paramString1, paramString3, paramString4);
+      paramString4 = bbme.a(paramString1, paramString3, paramString4);
       if (paramString4 == null) {
         break label172;
       }
@@ -120,7 +120,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
         paramString2.setUin(paramString3);
         paramString2.serverVer = j;
         if (!paramString2.tryParse(paramString1, str)) {
-          AudioHelper.c(paramString1 + ajyc.a(2131702416));
+          AudioHelper.c(paramString1 + ajya.a(2131702427));
         }
         return paramString2;
       }
@@ -139,7 +139,7 @@ public abstract class ConfigHandler<T extends ConfigInfo>
   public static <T extends ConfigInfo> T getConfigInfoNew(String paramString1, String paramString2, int paramInt, Class<T> paramClass, String paramString3)
   {
     if (TextUtils.isEmpty(paramString2)) {
-      paramString2 = lcy.b(paramInt).a;
+      paramString2 = lct.b(paramInt).a;
     }
     String str;
     for (;;)
@@ -167,9 +167,9 @@ public abstract class ConfigHandler<T extends ConfigInfo>
       try
       {
         paramClass.setUin(paramString3);
-        paramClass.serverVer = lcy.a(paramInt);
+        paramClass.serverVer = lct.a(paramInt);
         if (!paramClass.tryParse(paramString1, paramString2)) {
-          AudioHelper.c(paramString1 + ajyc.a(2131702417));
+          AudioHelper.c(paramString1 + ajya.a(2131702428));
         }
         return paramClass;
       }

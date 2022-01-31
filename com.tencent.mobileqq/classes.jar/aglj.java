@@ -1,37 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import java.util.ArrayList;
 
 public class aglj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public aglj(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        axqw.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label133;
-      }
-      agqf.d();
-    }
-    for (;;)
-    {
-      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
-        bfmj.a((String)CameraPreviewActivity.a(this.a).get(0), true);
-      }
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      return;
-      label133:
-      agqf.b();
-    }
+    this.a.a = null;
   }
 }
 

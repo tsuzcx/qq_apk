@@ -1,25 +1,25 @@
 package com.tencent.qg.qq;
 
-import bdsw;
+import bdtn;
 
 public class QGameApp$3
   implements Runnable
 {
-  public QGameApp$3(bdsw parambdsw, boolean paramBoolean, String paramString) {}
+  public QGameApp$3(bdtn parambdtn, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (!bdsw.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
+    if (!bdtn.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString))
     {
-      bdsw.a(this.this$0, 1001);
+      bdtn.a(this.this$0, 1001);
       return;
     }
-    if (bdsw.a(this.this$0))
+    if (bdtn.a(this.this$0))
     {
-      bdsw.a(this.this$0);
+      bdtn.a(this.this$0);
       return;
     }
-    bdsw.a(this.this$0, 1003);
+    bdtn.a(this.this$0, 1003);
   }
 }
 

@@ -1,74 +1,19 @@
-import java.util.HashMap;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class bkov
+  implements AdapterView.OnItemSelectedListener
 {
-  public static int a = 0;
+  public bkov(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public static void a(int paramInt, String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    String str1 = paramString2;
-    String str2;
-    String str3;
-    if (paramHashMap != null)
-    {
-      str2 = (String)paramHashMap.get("cameraType");
-      str3 = (String)paramHashMap.get("isTemplateMode");
-      paramHashMap = (String)paramHashMap.get("templateId");
-      if ((!String.valueOf(2).equals(str2)) || ((!String.valueOf(false).equals(str3)) && (paramHashMap != null))) {
-        break label99;
-      }
-      str1 = "0X8007819";
-    }
-    for (;;)
-    {
-      a(paramString1, str1);
-      return;
-      label99:
-      if ((String.valueOf(2).equals(str2)) && (String.valueOf(true).equals(str3)) && (paramHashMap != null))
-      {
-        str1 = "0X800781A";
-      }
-      else if ((String.valueOf(1).equals(str2)) && ((String.valueOf(false).equals(str3)) || (paramHashMap == null)))
-      {
-        str1 = "0X800781B";
-      }
-      else
-      {
-        str1 = paramString2;
-        if (String.valueOf(1).equals(str2))
-        {
-          str1 = paramString2;
-          if (String.valueOf(true).equals(str3))
-          {
-            str1 = paramString2;
-            if (paramHashMap != null) {
-              str1 = "0X800781C";
-            }
-          }
-        }
-      }
-    }
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
   
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3)
-  {
-    axqw.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, "", "", "");
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    axqw.b(null, "dc00898", paramString1, "", paramString2, paramString2, a, 0, paramString3, paramString4, paramString5, paramString6);
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

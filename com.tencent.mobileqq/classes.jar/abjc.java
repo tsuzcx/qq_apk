@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class abjc
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public abjc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public abjc(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (System.currentTimeMillis() - this.a.a < 2000L) {
-      return;
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (HongbaoShowerActivity.a(this.a) == 0) {}
-    for (paramView = "1";; paramView = "2")
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166928));
+    }
+    for (;;)
     {
-      axqw.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, paramView, "", "", "");
+      this.a.a.setText("" + (40 - i));
       return;
+      this.a.a.setTextColor(-65536);
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

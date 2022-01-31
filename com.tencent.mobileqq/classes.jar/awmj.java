@@ -2,13 +2,23 @@ import java.util.List;
 
 public class awmj
 {
-  public List<Long> a;
+  public int a;
+  public String a;
+  public List<awok> a;
+  public String b;
+  public String c;
+  public String d;
   
   public awmj() {}
   
-  public awmj(List<Long> paramList)
+  public awmj(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, List<awok> paramList)
   {
-    this.a = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

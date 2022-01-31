@@ -1,86 +1,141 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FadeIconImageView;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class bgrj
-  extends Dialog
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
+  int jdField_a_of_type_Int = 1;
+  bfpc jdField_a_of_type_Bfpc = null;
+  bgrm jdField_a_of_type_Bgrm = null;
+  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public bgrj(Context paramContext)
+  public bgrj(Activity paramActivity, bgrm parambgrm, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    super(paramContext, 2131755794);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560439, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    ((Window)localObject).setAttributes(localLayoutParams);
-    setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131368429);
-    if (localObject != null)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Bgrm = parambgrm;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(paramActivity, null));
+    if ((this.jdField_a_of_type_Int & 0x10) != 0)
     {
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131690572);
+      this.jdField_a_of_type_Bfpc.a(2131691961, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(16));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368472));
-    try
+    if ((this.jdField_a_of_type_Int & 0x20) != 0)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692370);
+      this.jdField_a_of_type_Bfpc.a(2131698132, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(32));
+    }
+    if ((this.jdField_a_of_type_Int & 0x1) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131692753, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+    }
+    if ((this.jdField_a_of_type_Int & 0x80) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131698095, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(128));
+    }
+    if ((this.jdField_a_of_type_Int & 0x100) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131698119, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(256));
+    }
+    if ((this.jdField_a_of_type_Int & 0x40) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131698145, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131691309, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
+    }
+    if ((this.jdField_a_of_type_Int & 0x4) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131692324, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(4));
+    }
+    if ((this.jdField_a_of_type_Int & 0x8) != 0)
+    {
+      this.jdField_a_of_type_Bfpc.a(2131692874, 5);
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(8));
+    }
+    this.jdField_a_of_type_Bfpc.c(2131690596);
+    this.jdField_a_of_type_Bfpc.setOnDismissListener(new bgrk(this));
+    this.jdField_a_of_type_Bfpc.a(new bgrl(this));
+  }
+  
+  private void b()
+  {
+    bgqi.a(this.jdField_a_of_type_MqqAppAppRuntime, "User_Forward", this.jdField_b_of_type_Int, 0, 0);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bfpc != null)
+    {
+      if (!this.jdField_a_of_type_Bfpc.isShowing()) {
+        break label44;
       }
-      label140:
-      paramContext = (FadeIconImageView)paramContext.findViewById(2131368441);
-      if (paramContext != null)
-      {
-        paramContext.setVisibility(0);
-        paramContext.setImageResource(2130839740);
+      this.jdField_a_of_type_Bfpc.dismiss();
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqfav.FavoriteActionSheet", 4, "dismiss|showing");
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "enter into QfavLoadingDialog");
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc = null;
       return;
-    }
-    catch (Exception localException)
-    {
-      break label140;
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+      label44:
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqfav.FavoriteActionSheet", 4, "dismiss|not showing");
+      }
     }
   }
   
-  public void onWindowFocusChanged(boolean paramBoolean)
+  public void a(String paramString)
   {
-    super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839142));
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+    this.jdField_a_of_type_Bfpc.a(paramString, 5);
+    this.jdField_b_of_type_JavaUtilList.add(paramString);
+  }
+  
+  public boolean a(Integer paramInteger)
+  {
+    return this.jdField_a_of_type_JavaUtilList.contains(paramInteger);
+  }
+  
+  public boolean a(Integer paramInteger1, Integer paramInteger2, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (TextUtils.isEmpty(paramString))) {}
+    int i;
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+      return false;
+      i = this.jdField_a_of_type_JavaUtilList.indexOf(paramInteger1);
+    } while (i == -1);
+    this.jdField_a_of_type_JavaUtilList.set(i, paramInteger2);
+    this.jdField_a_of_type_Bfpc.a(i, paramString);
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_Bfpc != null) && (!this.jdField_a_of_type_Bfpc.isShowing()))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Bfpc.show();
+      this.jdField_a_of_type_Bgrm.e();
     }
   }
 }

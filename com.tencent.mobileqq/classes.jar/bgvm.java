@@ -1,113 +1,78 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.manager.Manager;
 
-public final class bgvm
+public class bgvm
+  implements Manager
 {
-  public static int a(Context paramContext)
+  @Nullable
+  public RedAppInfo a(String paramString)
   {
-    return bgvl.a(paramContext).getInt("GRAY_UPDATE_GRAY_LEVEL", 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("path", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getSingleRedTouchInfo", localBundle);
+    if ((paramString != null) && (paramString.code == 0) && (paramString.data != null))
+    {
+      paramString = paramString.data;
+      paramString.setClassLoader(RedAppInfo.class.getClassLoader());
+      return (RedAppInfo)paramString.getParcelable("redTouchInfo");
+    }
+    return null;
   }
   
-  public static long a(Context paramContext)
+  @Nullable
+  public Map<String, RedAppInfo> a(ArrayList<String> paramArrayList)
   {
-    return bgvl.a(paramContext).getLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", 0L);
+    if (paramArrayList == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArrayList("pathList", paramArrayList);
+        paramArrayList = QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "getRedTouchInfo", (Bundle)localObject);
+      } while ((paramArrayList == null) || (paramArrayList.code != 0) || (paramArrayList.data == null));
+      paramArrayList = paramArrayList.data;
+      paramArrayList.setClassLoader(RedAppInfo.class.getClassLoader());
+      localObject = paramArrayList.getParcelableArrayList("redTouchInfoList");
+    } while (localObject == null);
+    paramArrayList = new HashMap();
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RedAppInfo localRedAppInfo = (RedAppInfo)((Iterator)localObject).next();
+      paramArrayList.put(localRedAppInfo.b(), localRedAppInfo);
+    }
+    return paramArrayList;
   }
   
-  public static void a(Context paramContext, int paramInt)
+  public void a(String paramString)
   {
-    bgvl.a(paramContext).edit().putInt("GRAY_UPDATE_GRAY_LEVEL", paramInt).apply();
+    if (a(paramString))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("path", paramString);
+      QIPCClientHelper.getInstance().getClient().callServer("ReaderIPCModule", "reportRedTouchClick", localBundle);
+    }
   }
   
-  public static void a(Context paramContext, long paramLong)
+  public boolean a(String paramString)
   {
-    bgvl.a(paramContext).edit().putLong("LAST_EXIT_BOOKSTORE_POP_WINDOW_TIME_", paramLong).apply();
+    paramString = a(paramString);
+    return (paramString != null) && (paramString.b() == 1);
   }
   
-  public static void a(Context paramContext, boolean paramBoolean)
-  {
-    bgvl.a(paramContext).edit().putBoolean("is_frist_enter_home_page_from_leba", paramBoolean).apply();
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return bgvl.a(paramContext).getBoolean("is_frist_enter_home_page_from_leba", true);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    return bgvl.a(paramContext).getInt("GRAY_UPDATE_UPDATE_STATUS", 0);
-  }
-  
-  public static void b(Context paramContext, int paramInt)
-  {
-    bgvl.a(paramContext).edit().putInt("GRAY_UPDATE_UPDATE_STATUS", paramInt).apply();
-  }
-  
-  public static void b(Context paramContext, boolean paramBoolean)
-  {
-    bgvl.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", paramBoolean).apply();
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return bgvl.a(paramContext).getBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", false);
-  }
-  
-  public static int c(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getInt("NUM_OF_RED_POINT", 0);
-  }
-  
-  public static void c(Context paramContext, int paramInt)
-  {
-    bgvl.a(paramContext).edit().putInt("GRAY_UPDATING_NEXT_REQ_TIME_INTERVAL", paramInt).apply();
-  }
-  
-  public static void c(Context paramContext, boolean paramBoolean)
-  {
-    bgvl.a(paramContext).edit().putBoolean("HOME_PAGE_NEXT_BOTTOM_ITEM_IS_SHELF", paramBoolean).apply();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    return bgvl.a(paramContext).getBoolean("GRAY_UPDATE_IS_UPDATE_TO_QQ_BOOKSTORE", false);
-  }
-  
-  public static void d(Context paramContext, int paramInt)
-  {
-    bgvl.a(paramContext).edit().putInt("GRAY_UPDATING_REMAIN_MAX_TIME", paramInt).apply();
-  }
-  
-  public static void d(Context paramContext, boolean paramBoolean)
-  {
-    bgvl.a(paramContext).edit().putBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", paramBoolean).apply();
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    return bgvl.a(paramContext).getBoolean("GRAY_UPDATE_IS_HAS_TAB_CONFIG_DATA", false);
-  }
-  
-  public static void e(Context paramContext, boolean paramBoolean)
-  {
-    bgvl.a(paramContext).edit().putBoolean("new_user_in_act", paramBoolean).apply();
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    return bgvl.a(paramContext).getBoolean("new_user_in_act", false);
-  }
-  
-  public static void f(Context paramContext, boolean paramBoolean)
-  {
-    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("is_new_user", paramBoolean).apply();
-  }
-  
-  public static boolean f(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("is_new_user", true);
-  }
+  public void onDestroy() {}
 }
 
 

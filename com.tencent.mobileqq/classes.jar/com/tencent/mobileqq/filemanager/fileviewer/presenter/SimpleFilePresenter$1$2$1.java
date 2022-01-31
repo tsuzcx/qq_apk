@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import appk;
-import appl;
-import apxa;
+import appo;
+import appp;
+import apxc;
 import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
@@ -13,13 +13,13 @@ class SimpleFilePresenter$1$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appl.a.a != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appp.a.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appl.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appl.a.a.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appl.a.a.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.b);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appp.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appp.a.a.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appp.a.a.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.b);
       }
-      appk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appl.a, false, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      appo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_Appp.a, false, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterSimpleFilePresenter$1$2.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
     }
   }
 }

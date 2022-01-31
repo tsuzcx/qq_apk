@@ -1,18 +1,34 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
 
-public class bign
-  implements bkvv
+class bign
+  extends Handler
 {
-  public bign(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a()
+  public bign(Looper paramLooper)
   {
-    QIMEffectCameraCaptureUnit.d(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3000: 
+      bigj.c((Activity)paramMessage.obj, paramMessage.arg1);
+      return;
+    }
+    bigj.a(null);
+    bigj.a(SystemClock.uptimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bign
  * JD-Core Version:    0.7.0.1
  */

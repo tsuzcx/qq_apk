@@ -1,38 +1,14 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
 
-class adqc
-  implements View.OnClickListener
+public class adqc
 {
-  adqc(adqb paramadqb) {}
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = actn.a(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
-    {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      paramView = (adqd)actn.a(paramView);
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = paramView.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != actn.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actn.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-      }
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.a.requestLayout();
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
-    }
-  }
+  public int a;
+  public adqd a;
+  public View a;
+  private Runnable a;
+  public int[] a;
+  public int b;
+  public int c;
 }
 
 

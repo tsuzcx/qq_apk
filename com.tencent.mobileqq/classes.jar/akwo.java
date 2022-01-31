@@ -1,26 +1,9 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.widget.VerticalGallery;
 
-class akwo
-  implements QQPermissionCallback
+public abstract interface akwo
 {
-  akwo(akwn paramakwn, BaseActivity paramBaseActivity, akwl paramakwl) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("sms.content", 2, "checkPermission, deny");
-    }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    akwn.a(this.jdField_a_of_type_Akwn, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Akwl);
-    if (QLog.isColorLevel()) {
-      QLog.d("sms.content", 2, "checkPermission, grant");
-    }
-  }
+  public abstract void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery);
 }
 
 

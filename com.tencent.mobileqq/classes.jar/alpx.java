@@ -1,17 +1,6 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.3.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-public class alpx
-  implements ysr
+public abstract interface alpx
 {
-  public alpx(ArkAppNotifyCenter.GdtNotify.3 param3) {}
-  
-  public void onResponse(ysq paramysq)
-  {
-    ArkAppCenter.a().postToArkThread(new ArkAppNotifyCenter.GdtNotify.3.1.1(this, paramysq));
-  }
+  public abstract boolean a(String paramString1, String paramString2, String paramString3);
 }
 
 

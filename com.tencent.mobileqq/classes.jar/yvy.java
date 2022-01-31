@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
 
 class yvy
-  implements DialogInterface.OnClickListener
+  implements yxz
 {
-  yvy(yvv paramyvv) {}
+  yvy(yvs paramyvs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void reportImpression(View paramView)
   {
-    yxs.b("GdtMvViewController", " DialogInterface onClick onCancel");
-    yvv.a(this.a).a();
+    paramView = paramView.getTag(2131379211);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      yyb.a(((GdtAd)paramView).getUrlForImpression());
+    }
   }
 }
 

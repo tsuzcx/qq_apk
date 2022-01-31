@@ -1,13 +1,41 @@
-class apzu
-  implements ajvb
+import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.Map;
+
+public abstract class apzu
+  implements MethodChannel.MethodCallHandler
 {
-  apzu(apzt paramapzt) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void a(boolean paramBoolean)
+  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if (paramBoolean) {
-      this.a.a();
+    String str = paramMethodCall.method;
+    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
+    if (TextUtils.isEmpty(str))
+    {
+      paramResult.notImplemented();
+      return;
     }
+    if (str.equals("sendRequest"))
+    {
+      paramMethodCall = paramMethodCall.argument("req");
+      if ((paramMethodCall instanceof Map))
+      {
+        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
+        return;
+      }
+      paramResult.notImplemented();
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 

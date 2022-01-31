@@ -1,8 +1,26 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForScribble;
 
-public abstract interface ahfb
+public class ahfb
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  public QQAppInterface a;
+  
+  public boolean a(MessageForScribble paramMessageForScribble, String paramString, auoq paramauoq)
+  {
+    aywc localaywc = new aywc();
+    localaywc.jdField_a_of_type_Boolean = true;
+    localaywc.jdField_b_of_type_Int = 262153;
+    localaywc.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
+    localaywc.c = paramMessageForScribble.frienduin;
+    localaywc.jdField_a_of_type_Int = paramMessageForScribble.istroop;
+    localaywc.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
+    localaywc.jdField_a_of_type_Auoq = paramauoq;
+    localaywc.i = paramString;
+    localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
+    paramMessageForScribble.fileUploadStatus = 3;
+    this.a.a().a(localaywc);
+    return true;
+  }
 }
 
 

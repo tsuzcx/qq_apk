@@ -1,16 +1,14 @@
-import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
+import android.support.annotation.Nullable;
 
-public abstract interface bijg
+class bijg
+  implements bjos<biwo>
 {
-  public abstract void a(int paramInt);
+  bijg(bijd parambijd) {}
   
-  public abstract void a(avum paramavum);
-  
-  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public void a(@Nullable biwo parambiwo)
+  {
+    bijd.a(this.a, parambiwo);
+  }
 }
 
 

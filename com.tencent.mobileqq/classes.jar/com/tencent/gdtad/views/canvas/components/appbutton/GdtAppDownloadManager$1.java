@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
-import yzl;
+import yzi;
 
 public class GdtAppDownloadManager$1
   implements Runnable
 {
-  public GdtAppDownloadManager$1(yzl paramyzl) {}
+  public GdtAppDownloadManager$1(yzi paramyzi) {}
   
   public void run()
   {
-    yzl.a(this.this$0, true);
+    yzi.a(this.this$0, true);
   }
 }
 

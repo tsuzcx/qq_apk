@@ -1,52 +1,78 @@
-import android.os.AsyncTask;
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class afwl
-  extends AsyncTask<MessageRecord, Object, Object>
+public class afwl
+  extends BroadcastReceiver
 {
-  afwl(afwk paramafwk) {}
+  public afwl(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i;
-    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Akay.a())
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {}
+    do
     {
-      i = ((aulz)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
-      if (i > 0) {
-        this.a.a.f = true;
-      }
-    }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        ajfa.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
-      }
-      return null;
-      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Akay.a()))
+      do
       {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
-        continue;
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        return;
+        if (this.a.getActivity() != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.history.C2CAllFragment", 2, "OpenDevLockReceiver get activity is null");
+      return;
+    } while (this.a.jdField_a_of_type_AndroidContentBroadcastReceiver == null);
+    this.a.getActivity().getApplicationContext().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.a.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    boolean bool = paramIntent.getBooleanExtra("auth_dev_open", false);
+    int k = paramIntent.getIntExtra("auth_dev_open_cb_reason", 0);
+    paramIntent = paramIntent.getByteArrayExtra("devlock_roam_sig");
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("openDevLock callback isOpen: ").append(bool).append(", reason: ").append(k).append(", da2 length: ");
+      if (paramIntent == null)
+      {
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
       }
     }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.b.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bcpq != null) && (this.a.a.jdField_a_of_type_Bcpq.isShowing())) {
-      this.a.a.jdField_a_of_type_Bcpq.dismiss();
-    }
-    if ((this.a.a.f) && (this.a.a.e))
+    else
     {
-      this.a.a.e = false;
-      this.a.a.jdField_a_of_type_Akay.d();
+      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      String str = k + "";
+      if (!bool) {
+        break label301;
+      }
+      paramContext = "true";
+      label211:
+      VipUtils.a(localQQAppInterface, "chat_history", "LockSet", "opendev_amount", 1, 0, new String[] { str, "0", paramContext });
+      paramContext = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(29);
+      if (!bool) {
+        break label307;
+      }
+    }
+    label301:
+    label307:
+    for (int i = j;; i = 0)
+    {
+      paramContext.arg1 = i;
+      paramContext.arg2 = k;
+      paramContext.obj = paramIntent;
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramContext, 500L);
+      return;
+      i = paramIntent.length;
+      break;
+      paramContext = "false";
+      break label211;
     }
   }
 }

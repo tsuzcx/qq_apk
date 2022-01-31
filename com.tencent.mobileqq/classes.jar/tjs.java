@@ -1,27 +1,17 @@
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import java.util.ArrayList;
+
 public class tjs
+  extends ssh
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  public ArrayList<HotSortVideoEntry> a;
   public boolean a;
-  private String b;
+  public boolean b;
+  public boolean c;
   
-  public tjs(String paramString)
+  public String toString()
   {
-    this.b = paramString;
-  }
-  
-  public void a()
-  {
-    tjt localtjt = new tjt(this, false);
-    tju localtju = new tju(this, false);
-    tbb.a().a(localtjt, localtju);
-  }
-  
-  public void b()
-  {
-    tjt localtjt = new tjt(this, true);
-    tju localtju = new tju(this, true);
-    tbb.a().a(localtjt, localtju);
+    return " GetVideoByHotSortEvent " + super.toString();
   }
 }
 

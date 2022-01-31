@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class vry
-  implements View.OnClickListener
 {
-  public vry(PermissionSettingActivity paramPermissionSettingActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
-    }
-  }
+  protected ImageView a;
+  protected TextView a;
 }
 
 

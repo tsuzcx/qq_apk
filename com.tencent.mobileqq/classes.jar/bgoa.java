@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bgoa
-  implements DialogInterface.OnDismissListener
+final class bgoa
+  implements View.OnClickListener
 {
-  public bgoa(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  bgoa(Dialog paramDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if (this.a != null) {
+      this.a.dismiss();
+    }
   }
 }
 

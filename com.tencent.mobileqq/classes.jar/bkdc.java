@@ -1,14 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bkdc
-  implements Comparator<bkav>
+final class bkdc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bkdc(DoodleLayout paramDoodleLayout) {}
+  bkdc(bkde parambkde) {}
   
-  public int a(bkav parambkav1, bkav parambkav2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return parambkav2.i_() - parambkav1.i_();
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
+    }
   }
 }
 

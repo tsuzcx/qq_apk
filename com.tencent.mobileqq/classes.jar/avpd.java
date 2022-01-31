@@ -1,20 +1,33 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class avpd
-  extends RecyclerView.ViewHolder
+class avpd
+  extends RecyclerView.OnScrollListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  avpd(avpc paramavpc) {}
   
-  private avpd(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378262));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368584));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    avpc.a(this.a, paramInt);
+    if (avpc.a(this.a) == 0)
+    {
+      if (avpc.a(this.a).a()) {
+        avpc.a(this.a).b();
+      }
+      int i = avpc.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramRecyclerView = avpc.a(this.a).getChildAt(paramInt);
+        paramRecyclerView = (avpf)avpc.a(this.a).getChildViewHolder(paramRecyclerView);
+        avpf.a(paramRecyclerView).setImageBitmap(avpc.a(this.a, avpf.a(paramRecyclerView)));
+        paramInt += 1;
+      }
+    }
+    avpc.a(this.a).a();
+    avpc.a(this.a).c();
   }
 }
 

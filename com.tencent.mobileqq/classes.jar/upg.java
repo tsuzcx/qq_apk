@@ -1,17 +1,27 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.parallel.SimpleParallelObserver;
-import mqq.os.MqqHandler;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class upg
-  extends SimpleParallelObserver
+class upg
+  extends ParallelJobSegment<String, upc>
 {
-  upg(upd paramupd) {}
+  public int a;
   
-  public void onAllFunctionComplete(boolean paramBoolean)
+  public upg(upa paramupa, int paramInt)
   {
-    super.onAllFunctionComplete(paramBoolean);
-    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    upu localupu = new upu();
+    localupu.jdField_a_of_type_JavaLangString = paramString;
+    localupu.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localupu.c = this.jdField_a_of_type_Int;
+    }
+    syo.a().a(localupu, new uph(this, paramJobContext, paramString));
   }
 }
 

@@ -1,48 +1,35 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.Queue;
 
-public class tgq
-  extends syv<tgr>
+class tgq
+  extends SimpleJob<Void>
 {
-  static final String a = sxp.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
-  
-  public String a()
+  tgq(tgp paramtgp, String paramString, Context paramContext, List paramList)
   {
-    return a;
+    super(paramString);
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
-    {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new tgr(localRspMsgTabNodeWatched);
+    if (!tgp.a(this.jdField_a_of_type_Tgp, this.jdField_a_of_type_AndroidContentContext)) {
+      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    do
     {
-      veg.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
-    }
+      return null;
+      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
+      paramJobContext = tgp.a(this.jdField_a_of_type_Tgp, this.jdField_a_of_type_JavaUtilList);
+    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Tgp.a()));
+    tgp.a(this.jdField_a_of_type_Tgp);
+    tgp.a(this.jdField_a_of_type_Tgp, paramJobContext);
+    this.jdField_a_of_type_Tgp.b();
     return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 

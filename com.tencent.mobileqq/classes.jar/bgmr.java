@@ -1,59 +1,57 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
+import mqq.app.AppRuntime;
 
-public abstract class bgmr
-  extends Binder
-  implements bgmq
+public class bgmr
+  extends AbstractPluginCommunicationChannel
 {
-  public bgmr()
+  private QQAppInterface a()
   {
-    attachInterface(this, "cooperation.qlink.IQlinkService");
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
-  public static bgmq a(IBinder paramIBinder)
+  public String getNickName()
   {
-    if (paramIBinder == null) {
-      return null;
+    String str = null;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      str = localQQAppInterface.getCurrentNickname();
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
-    if ((localIInterface != null) && ((localIInterface instanceof bgmq))) {
-      return (bgmq)localIInterface;
-    }
-    return new bgms(paramIBinder);
+    return str;
   }
   
-  public IBinder asBinder()
+  public String getSKey()
   {
-    return this;
+    String str = null;
+    if (a() != null) {
+      str = "getSKey";
+    }
+    return str;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public String getSid()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qlink.IQlinkService");
-      return true;
+    throw new RuntimeException("NotSupported!");
+  }
+  
+  public long getUin()
+  {
+    long l = 0L;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      l = localQQAppInterface.getLongAccountUin();
     }
-    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgmr
  * JD-Core Version:    0.7.0.1
  */

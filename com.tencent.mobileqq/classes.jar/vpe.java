@@ -1,53 +1,88 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import java.lang.ref.WeakReference;
 
-public abstract class vpe
-  implements vpd
+class vpe
+  implements URLDrawableDownListener
 {
-  private List<vpb> a = new ArrayList();
+  private final String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<ProgressBar> b;
   
-  public void a()
+  public vpe(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((vpb)localIterator.next()).a();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    this.b = new WeakReference(paramProgressBar);
   }
   
-  public void a(int paramInt)
+  private boolean a(ImageView paramImageView)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((vpb)localIterator.next()).a(paramInt);
-    }
+    paramImageView = (String)paramImageView.getTag(2131376882);
+    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
   }
   
-  public void a(vpb paramvpb)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramvpb == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(paramvpb)) {
-      throw new IllegalStateException("Observer " + paramvpb + " is already registered.");
-    }
-    this.a.add(paramvpb);
-  }
-  
-  public void b(vpb paramvpb)
-  {
-    if (paramvpb == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    int i;
-    synchronized (this.a)
+    ved.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
     {
-      i = this.a.indexOf(paramvpb);
-      if (i == -1) {
-        throw new IllegalStateException("Observer " + paramvpb + " was not registered.");
-      }
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
+      return;
     }
-    this.a.remove(i);
+    ved.b("LocationFaceAdapter", "onLoadCanceled error.");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    ved.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadFialed error.");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    ved.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(0);
+      paramView.setTag(2131376851, Boolean.valueOf(false));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadProgressed error.");
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ved.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
+    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramURLDrawable = (ProgressBar)this.b.get();
+    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    {
+      paramURLDrawable.setVisibility(4);
+      paramView.setTag(2131376851, Boolean.valueOf(true));
+      return;
+    }
+    ved.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

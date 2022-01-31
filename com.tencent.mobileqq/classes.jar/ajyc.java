@@ -1,22 +1,13 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public class ajyc
+class ajyc
+  implements ajuz
 {
-  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
+  ajyc(ajyb paramajyb) {}
   
-  public static String a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      String str = a.getResources().getString(paramInt);
-      return str;
+    if (paramBoolean) {
+      this.a.a();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
   }
 }
 

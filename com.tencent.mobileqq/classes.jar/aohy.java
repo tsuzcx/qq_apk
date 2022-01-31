@@ -1,26 +1,40 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class aohy
-  extends aoeu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aohy(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aogh> paramList, aofo paramaofo)
+  public aohy(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  
+  public void onGlobalLayout()
   {
-    if (ExtendFriendSearchFragment.a(this.a) != paramLong) {
-      return;
-    }
-    try
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
     {
-      ExtendFriendSearchFragment.a(this.a, 1);
-      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaofo);
-      return;
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
+      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
+      this.jdField_a_of_type_Int = i;
+      return;
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
     }
   }
 }

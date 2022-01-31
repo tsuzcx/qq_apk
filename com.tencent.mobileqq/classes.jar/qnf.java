@@ -1,16 +1,14 @@
+import android.view.View;
+import android.view.animation.Animation;
+
 class qnf
-  extends osp
+  extends bfmx
 {
-  private qnf(qnc paramqnc) {}
+  qnf(qnd paramqnd) {}
   
-  public void f(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(2);
-  }
-  
-  public void h()
-  {
-    qnc.a(this.a, true);
+    this.a.a.setVisibility(8);
   }
 }
 

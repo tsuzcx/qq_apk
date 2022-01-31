@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class able
-  extends akfh
+  extends VasQuickUpdateManager.CallBacker
 {
-  public able(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public able(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
+      this.a.b(this.a.a);
     }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = agca.a().a();
-    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 

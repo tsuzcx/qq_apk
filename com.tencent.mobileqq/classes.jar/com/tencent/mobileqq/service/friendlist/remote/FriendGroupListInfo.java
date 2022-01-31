@@ -3,17 +3,17 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awzf;
-import awzg;
+import awzh;
+import awzi;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendGroupListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FriendGroupListInfo> CREATOR = new awzg();
+  public static final Parcelable.Creator<FriendGroupListInfo> CREATOR = new awzi();
   public int a;
-  public List<awzf> a;
+  public List<awzh> a;
   
   public FriendGroupListInfo()
   {
@@ -34,9 +34,9 @@ public class FriendGroupListInfo
     int i = 0;
     while (i < j)
     {
-      awzf localawzf = new awzf();
-      localawzf.b(paramParcel);
-      this.jdField_a_of_type_JavaUtilList.add(localawzf);
+      awzh localawzh = new awzh();
+      localawzh.b(paramParcel);
+      this.jdField_a_of_type_JavaUtilList.add(localawzh);
       i += 1;
     }
   }
@@ -56,7 +56,7 @@ public class FriendGroupListInfo
     paramInt = 0;
     while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      ((awzf)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramParcel);
+      ((awzh)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramParcel);
       paramInt += 1;
     }
   }

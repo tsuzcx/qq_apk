@@ -1,27 +1,52 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-abstract class arum<T extends ajtd>
+public class arum
 {
-  protected final QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
   
-  public arum(QQAppInterface paramQQAppInterface)
+  public arum(int paramInt, String paramString)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
-    }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
-    }
-    return false;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return (this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_JavaLangString.equals(paramString));
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (!(paramObject instanceof arum)) {}
+    do
+    {
+      return false;
+      paramObject = (arum)paramObject;
+    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

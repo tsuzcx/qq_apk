@@ -1,20 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qqstory.utils.FileUtils.1;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import java.lang.reflect.Field;
 
-public class vyk
-  implements DialogInterface.OnClickListener
+public final class vyk
 {
-  public vyk(FileUtils.1 param1) {}
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vyk(String paramString, int paramInt, Field paramField)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

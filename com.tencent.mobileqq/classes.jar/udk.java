@@ -1,20 +1,10 @@
-class udk
-  implements udf
+public abstract interface udk
 {
-  public udf a;
+  public abstract void a(long paramLong1, long paramLong2, ucz paramucz);
   
-  private udk(udi paramudi) {}
+  public abstract void b(ucz paramucz);
   
-  public boolean a(udc paramudc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    if (udi.a(this.jdField_a_of_type_Udi) != null) {
-      udi.a(this.jdField_a_of_type_Udi).c(udi.a(this.jdField_a_of_type_Udi));
-    }
-    if (this.jdField_a_of_type_Udf != null) {
-      return this.jdField_a_of_type_Udf.a(paramudc, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
-  }
+  public abstract void c(ucz paramucz);
 }
 
 

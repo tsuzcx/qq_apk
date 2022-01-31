@@ -3,11 +3,13 @@ public class akaq
   public int a;
   public long a;
   public String a;
-  public int b;
+  public boolean a;
   public long b;
-  public String b;
+  public boolean b;
   public long c;
-  public String c;
+  public boolean c;
+  public long d;
+  public long e;
 }
 
 

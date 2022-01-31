@@ -1,57 +1,43 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class mgj
-  extends lfg
+  implements DialogInterface.OnClickListener
 {
-  public mgj(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  int jdField_a_of_type_Int;
   
-  protected void a(int paramInt)
+  public mgj(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity, int paramInt)
   {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.c(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(long paramLong, ArrayList<ldw> paramArrayList, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (this.a.b()) {}
-    do
+    switch (this.jdField_a_of_type_Int)
     {
-      do
-      {
-        return;
-      } while (paramLong != this.a.jdField_a_of_type_Long);
-      if (paramBoolean)
-      {
-        this.a.b(paramInt);
-        return;
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 2, "DialogInterfaceOnClickListener-->Wrong type.mode=" + this.jdField_a_of_type_Int);
       }
-    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
-    this.a.a(paramInt);
-  }
-  
-  protected void d()
-  {
-    if (this.a.b()) {}
-    while (this.a.jdField_a_of_type_Boolean) {
+      paramDialogInterface.dismiss();
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
+      paramDialogInterface.dismiss();
+      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.l()) {
+        this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.h(true);
+      }
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().E, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().g, 81);
+      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f);
       return;
     }
-    super.d();
-    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
+    paramDialogInterface.dismiss();
   }
 }
 

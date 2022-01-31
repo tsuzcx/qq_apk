@@ -1,80 +1,38 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import java.lang.ref.WeakReference;
 
 public class ubu
-  extends JobSegment<uav, String>
+  implements DialogInterface.OnDismissListener
 {
-  private ubu(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  protected void a(JobContext paramJobContext, uav paramuav)
+  public ubu(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    veg.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
-    if (this.a.jdField_a_of_type_Uav.a())
-    {
-      veg.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
-      VideoViewVideoHolder.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.jdField_a_of_type_Udc.a(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.a.b.setVisibility(8);
-      notifyError(new ErrorMessage(0, "isLoadingData"));
-      return;
-    }
-    if (this.a.jdField_a_of_type_Uav.b())
-    {
-      veg.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Uav.a());
-      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Uav.a().errorCode);
-      VideoViewVideoHolder.a(this.a, false);
-      veg.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
-      if (VideoViewVideoHolder.a(this.a) == 97000000)
-      {
-        VideoViewVideoHolder.c(this.a, 4);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 9);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
-      return;
-    }
-    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString))
-    {
-      paramJobContext = ((tcz)tdc.a(5)).b(this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString);
-      if (paramJobContext != null)
-      {
-        VideoViewVideoHolder.a(this.a, paramJobContext);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramuav = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-        if (!TextUtils.equals(this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString, paramuav))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString);
-          tsu.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Ttg);
-        }
-        veg.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString });
-        VideoViewVideoHolder.c(this.a, 5);
-        VideoViewVideoHolder.a(this.a, false);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 11);
-      VideoViewVideoHolder.a(this.a, false);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
-      return;
-    }
-    notifyResult(this.a.jdField_a_of_type_Uav.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onCancel()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.onCancel();
-    veg.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
+    {
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
+      }
+      ved.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+    }
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 

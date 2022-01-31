@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acsl
-  implements View.OnClickListener
 {
-  public acsl(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

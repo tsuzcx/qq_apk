@@ -1,32 +1,12 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ajzz
-  implements ajtf
+  implements ajte
 {
-  private List<String> a = new ArrayList();
+  public void a(Object paramObject) {}
   
-  public List<String> a(AppInterface paramAppInterface)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (((paramAppInterface instanceof QQAppInterface)) && (!this.a.isEmpty())) {
-      return this.a;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.a.isEmpty()) {
-      this.a.add("100066");
-    }
-  }
-  
-  public void b()
-  {
-    if (!this.a.isEmpty()) {
-      this.a.remove("100066");
+    if (paramInt == 1) {
+      a(paramObject);
     }
   }
 }

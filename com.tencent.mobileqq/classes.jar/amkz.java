@@ -1,17 +1,11 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.List;
 
-class amkz
-  implements EIPCResultCallback
+public abstract interface amkz
 {
-  amkz(amky paramamky) {}
+  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
-  }
+  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
 }
 
 

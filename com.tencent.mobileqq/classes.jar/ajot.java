@@ -1,22 +1,14 @@
+import com.tencent.mobileqq.data.ApolloActionData;
+
 public class ajot
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
-  public long d;
+  public void a() {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = bbct.i();
-    b = bbct.e();
-    c = bbct.g();
-    jdField_a_of_type_Int = bbct.b();
-    jdField_a_of_type_Long = bbct.a();
-  }
+  public void a(ApolloActionData paramApolloActionData) {}
+  
+  public void a(Boolean paramBoolean) {}
+  
+  public void b(ApolloActionData paramApolloActionData) {}
 }
 
 

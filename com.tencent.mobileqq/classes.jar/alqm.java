@@ -1,15 +1,83 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class alqm
-  implements alqq
+class alqm
+  implements bdld
 {
-  alqm(alql paramalql) {}
+  alqm(alqk paramalqk) {}
   
-  public void a(String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
+    if (alqk.a(this.a) != null) {
+      alqk.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
+    }
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
+      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
+      alqk.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
+      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
+      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList != null) && (alqk.a(this.a) != null))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        localJSONArray.put(this.a.a(localDownloadInfo));
+      }
+      alqk.a(this.a).a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
+      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (alqk.a(this.a) != null) {
+      alqk.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (alqk.a(this.a) != null) {
+      alqk.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    }
   }
 }
 

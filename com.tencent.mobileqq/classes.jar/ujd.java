@@ -1,142 +1,76 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
 
 public class ujd
-  extends AbsVideoInfoWidget
-  implements View.OnClickListener
+  extends ugf
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean e;
+  private String jdField_a_of_type_JavaLangString = "";
+  private teo jdField_a_of_type_Teo;
+  private uas jdField_a_of_type_Uas;
+  private boolean c;
   
-  public ujd(ViewGroup paramViewGroup)
+  private void a(QQUserUIItem paramQQUserUIItem, ugg paramugg)
   {
-    super(paramViewGroup);
+    paramugg.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramugg.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    String str = paramQQUserUIItem.headUrl;
+    paramQQUserUIItem = paramQQUserUIItem.nickName;
+    paramugg.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    paramugg.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Ugc.b().getString(2131699526, new Object[] { paramQQUserUIItem }));
+    paramugg.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
+    paramugg.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    ugc.a(str, paramugg.jdField_a_of_type_AndroidWidgetImageView, paramugg.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramugg.jdField_a_of_type_Int, paramugg.jdField_a_of_type_Int);
+    ved.a("VipForwardVideoInfoController", "updateUI, nickName:%s,  avatarURL:%s", paramQQUserUIItem, str);
   }
   
-  public String a()
+  public boolean a(View paramView)
   {
-    return "UploadStatusVideoInfoWidget";
+    if ((this.jdField_a_of_type_Teo == null) || (this.jdField_a_of_type_Teo.jdField_a_of_type_Int != 5) || (this.jdField_a_of_type_Teo.jdField_a_of_type_Tep == null)) {
+      this.jdField_a_of_type_Ugc.k();
+    }
+    while (!super.a(paramView)) {
+      return false;
+    }
+    tvc.a(this.jdField_a_of_type_Ugc.b(), this.jdField_a_of_type_Teo.jdField_a_of_type_Tep.c, this.jdField_a_of_type_Teo.jdField_a_of_type_Tep.b, 1010);
+    vei.a("play_video", "clk_transmit", 0, 0, new String[0]);
+    return true;
   }
   
-  public void a(View paramView)
+  public void b(ugg paramugg, uas paramuas)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131379115));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379117));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131379116));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379118));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem)
-  {
-    if (paramStoryVideoItem.isUploadFail())
+    ved.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramuas.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Uas = paramuas;
+    Object localObject = paramuas.a().getVideoLinkInfo();
+    if ((localObject == null) || (((teo)localObject).jdField_a_of_type_Int != 5) || (((teo)localObject).jdField_a_of_type_Tep == null))
     {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699704);
-      }
-      while (this.e)
-      {
-        this.e = false;
-        vel.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699706);
-      }
-      vel.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
+      ved.b("VipForwardVideoInfoController", "something error, hide()");
+      this.jdField_a_of_type_Ugc.k();
       return;
     }
-    if (paramStoryVideoItem.isUploading())
-    {
-      j();
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = swa.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715925) + i + "%");
-      }
-      for (;;)
-      {
-        swa.a().a(paramStoryVideoItem.mVid, new uje(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajyc.a(2131715927));
-      }
-    }
-    k();
-  }
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new ujf(this), "");
-  }
-  
-  public void a(@NonNull uav paramuav, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    a(paramStoryVideoItem);
-  }
-  
-  public boolean a(@NonNull uav paramuav, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading());
-  }
-  
-  public int b()
-  {
-    return 2131561427;
-  }
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Uav != null) {}
-    for (StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_Uav.a(); localStoryVideoItem == null; localStoryVideoItem = null)
-    {
-      veg.d(this.b, "video item not found ,click error..");
-      return;
-    }
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    switch (localStoryVideoItem.mUploadStatus)
-    {
-    case 4: 
-    case 5: 
-    default: 
-      return;
-    }
-    if (!tsu.a(localStoryVideoItem, b())) {
-      vel.a("play_video", "retrypub_fail", 0, 0, new String[0]);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramuas.jdField_a_of_type_JavaLangString)) {
+      this.c = false;
     }
     for (;;)
     {
-      vel.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      veg.b(this.b, "on retry click !");
+      this.jdField_a_of_type_Teo = ((teo)localObject);
+      paramuas = (tdl)tcz.a(2);
+      localObject = paramuas.b(this.jdField_a_of_type_Teo.jdField_a_of_type_Tep.jdField_a_of_type_JavaLangString);
+      if ((localObject == null) || (TextUtils.isEmpty(((QQUserUIItem)localObject).nickName))) {
+        break;
+      }
+      this.jdField_a_of_type_Ugc.j();
+      a((QQUserUIItem)localObject, paramugg);
       return;
-      this.e = true;
+      this.c = true;
+      this.jdField_a_of_type_JavaLangString = paramuas.jdField_a_of_type_JavaLangString;
     }
+    this.jdField_a_of_type_Ugc.k();
+    paramuas.a(this.jdField_a_of_type_Teo.jdField_a_of_type_Tep.jdField_a_of_type_JavaLangString, new uje(this, paramugg));
   }
 }
 

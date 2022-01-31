@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pax;
-import pqs;
-import prb;
-import pvb;
-import pyp;
+import pau;
+import pqp;
+import pqy;
+import puy;
+import pym;
 
 public class ComponentDivider
   extends View
-  implements pqs
+  implements pqp
 {
-  pvb a;
+  puy a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      this.a.a((pax)paramObject);
+      this.a.a((pau)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new pvb();
+    this.a = new puy();
     a(paramContext);
     a();
   }
@@ -69,10 +69,10 @@ public class ComponentDivider
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pax))
+    if ((paramObject instanceof pau))
     {
-      this.a.a((pax)paramObject);
-      if ((((pax)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((pau)paramObject);
+      if ((((pau)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
@@ -90,16 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(prb paramprb)
+  public void a(pqy parampqy)
   {
-    this.a.a(paramprb);
+    this.a.a(parampqy);
   }
   
   public void b()
   {
-    pax localpax = this.a.a;
+    pau localpau = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    pyp.a(getContext(), localpax, localLayoutParams);
+    pym.a(getContext(), localpau, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

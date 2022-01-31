@@ -1,151 +1,88 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.media.MediaMetadataRetriever;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.vpng.view.VPNGImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ayda
+  extends aycy
 {
-  private static ayda jdField_a_of_type_Ayda;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private long b = -1L;
+  protected VPNGImageView a;
   
-  public static ayda a()
+  public ayda(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    if (jdField_a_of_type_Ayda == null) {
-      jdField_a_of_type_Ayda = new ayda();
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
+    paramSpriteNativeView = new MediaMetadataRetriever();
+    try
+    {
+      paramSpriteNativeView.setDataSource(paramString);
+      paramString = paramSpriteNativeView.extractMetadata(18);
+      String str = paramSpriteNativeView.extractMetadata(19);
+      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
+      this.b = Integer.parseInt(str);
+      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      return;
     }
-    return jdField_a_of_type_Ayda;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
+    catch (Exception paramString)
+    {
+      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
+      return;
     }
-    return i;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    long l = 0L;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
+    finally
+    {
+      paramSpriteNativeView.release();
     }
-    return l;
-  }
-  
-  public structmsg.StructMsg a(Long paramLong)
-  {
-    structmsg.StructMsg localStructMsg = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
-    }
-    return localStructMsg;
   }
   
   public void a()
   {
-    jdField_a_of_type_Ayda = null;
+    super.a();
   }
   
-  public void a(long paramLong)
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.b = paramLong;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
-    }
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
-    }
-  }
-  
-  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
-    }
-  }
-  
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.a(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
-      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
-    }
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
+    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
   }
   
-  public void b(long paramLong)
+  public void c()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    super.c();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
   }
   
-  public boolean b(QQAppInterface paramQQAppInterface)
+  public boolean c()
   {
-    boolean bool = false;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
-    }
+    boolean bool = super.c();
+    a(this.jdField_a_of_type_Aybh);
+    float f1 = this.jdField_a_of_type_Aybh.jdField_a_of_type_Float;
+    float f2 = b();
+    float f3 = this.jdField_a_of_type_Float / 2.0F;
+    float f4 = this.f;
+    float f5 = this.jdField_a_of_type_Aybh.b;
+    float f6 = b();
+    float f7 = this.b / 2.0F;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
     return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
   }
 }
 

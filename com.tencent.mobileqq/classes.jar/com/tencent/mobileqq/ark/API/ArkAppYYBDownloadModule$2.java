@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark.API;
 
-import alql;
-import bcpw;
+import alqk;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ArkAppYYBDownloadModule$2
   implements Runnable
 {
-  public ArkAppYYBDownloadModule$2(alql paramalql, String paramString) {}
+  public ArkAppYYBDownloadModule$2(alqk paramalqk, String paramString) {}
   
   public void run()
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null) {
-      bcpw.a(localBaseActivity, this.a, 0).a();
+      bcql.a(localBaseActivity, this.a, 0).a();
     }
   }
 }

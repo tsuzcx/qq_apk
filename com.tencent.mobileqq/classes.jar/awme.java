@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import java.util.HashSet;
-import java.util.List;
+import java.util.Comparator;
 
-public class awme
+class awme
+  implements Comparator<awmg>
 {
-  public int a;
-  public long a;
-  public HashSet<Long> a;
-  public List<FTSMessage> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  awme(awmb paramawmb) {}
+  
+  public int a(awmg paramawmg1, awmg paramawmg2)
+  {
+    int j = Long.signum(paramawmg1.jdField_a_of_type_Int - paramawmg2.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0)
+    {
+      j = Long.signum(paramawmg1.b - paramawmg2.b);
+      i = j;
+      if (j == 0)
+      {
+        j = Long.signum(paramawmg1.c - paramawmg2.c);
+        i = j;
+        if (j == 0) {
+          i = Long.signum(-paramawmg1.jdField_a_of_type_Long + paramawmg2.jdField_a_of_type_Long);
+        }
+      }
+    }
+    return i;
+  }
 }
 
 

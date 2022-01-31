@@ -1,79 +1,56 @@
-import java.util.ArrayList;
-
 public class aqmz
 {
   public int a;
+  public long a;
   public String a;
-  public ArrayList<aqna> a;
-  private boolean a;
-  public int b = -1;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
   public int c;
-  public int d;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  private int a(aqna paramaqna1, aqna paramaqna2)
+  public String a()
   {
-    int i = Math.abs(paramaqna2.jdField_a_of_type_Int - paramaqna1.jdField_a_of_type_Int);
-    int j = Math.abs(paramaqna2.b - paramaqna1.b);
-    return (int)Math.ceil(Math.sqrt(i * i + j * j));
+    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
   }
   
-  public int a()
+  public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return 0;
-    }
-    aqna localaqna1 = (aqna)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    aqna localaqna2 = (aqna)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    int i = localaqna2.jdField_a_of_type_Int - localaqna1.jdField_a_of_type_Int;
-    int j = localaqna2.b - localaqna1.b;
-    double d1 = Math.sqrt(i * i + j * j);
-    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
-    if (localaqna2.jdField_a_of_type_Int < localaqna1.jdField_a_of_type_Int) {
-      if (f > 0.0F) {
-        f = 180.0F - f;
-      }
-    }
-    for (;;)
-    {
-      return Math.round(f);
-      f = -(180.0F + f);
-    }
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.f = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.d = "";
+    this.e = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
   }
   
-  public void a(float paramFloat)
+  public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        ((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
-        ((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
-        i += 1;
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public int b()
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqna)this.jdField_a_of_type_JavaUtilArrayList.get(2));
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int c()
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
-    }
-    return a((aqna)this.jdField_a_of_type_JavaUtilArrayList.get(0), (aqna)this.jdField_a_of_type_JavaUtilArrayList.get(3));
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bbdx.b(this.jdField_c_of_type_JavaLangString));
   }
   
-  public String toString()
+  public void b(String paramString)
   {
-    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
 }
 

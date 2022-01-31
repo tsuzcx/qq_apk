@@ -1,6 +1,84 @@
-public abstract interface mps
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.redbag.OtherBtnController.2;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public class mps
+  extends mqg
 {
-  public abstract void a(boolean paramBoolean);
+  int jdField_a_of_type_Int = 2130841490;
+  Runnable jdField_a_of_type_JavaLangRunnable = null;
+  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
+  public mcf a;
+  
+  mps(moz parammoz)
+  {
+    super(parammoz);
+    this.jdField_a_of_type_Mcf = null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    AVActivity localAVActivity = a();
+    QLog.w(this.i, 1, "setBtnsStyle, lightStyle[" + paramBoolean + "], avActivity[" + localAVActivity + "]");
+    if (localAVActivity == null) {}
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localAVActivity == null; localAVActivity = null) {
+      return false;
+    }
+    if (localAVActivity == a()) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
+    boolean bool;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Mcf == null) {
+        this.jdField_a_of_type_Mcf = new mpt(this);
+      }
+      if (this.jdField_a_of_type_JavaLangRunnable != null)
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_JavaLangRunnable = null;
+      }
+      bool = a();
+      QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
+      if (!bool) {
+        this.jdField_a_of_type_Int = 2130841490;
+      }
+      a(false);
+    } while (bool);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(a());
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mcf);
+  }
+  
+  void c()
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new OtherBtnController.2(this);
+    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
+  }
 }
 
 

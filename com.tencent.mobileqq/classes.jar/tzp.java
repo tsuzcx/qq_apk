@@ -1,25 +1,27 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tzp
-  extends QQUIEventReceiver<tzm, tlh>
+  extends QQUIEventReceiver<tzo, tzt>
 {
-  public tzp(@NonNull tzm paramtzm)
+  public tzp(@NonNull tzo paramtzo)
   {
-    super(paramtzm);
+    super(paramtzo);
   }
   
-  public void a(@NonNull tzm paramtzm, @NonNull tlh paramtlh)
+  public void a(@NonNull tzo paramtzo, @NonNull tzt paramtzt)
   {
-    veg.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
-    if (paramtzm.d()) {
-      paramtzm.a(paramtzm.jdField_a_of_type_Int, paramtzm.b, paramtzm.jdField_a_of_type_Uav, paramtzm.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    if (paramtzt.a.isSuccess())
+    {
+      ved.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramtzt.toString());
+      paramtzo.e();
     }
   }
   
   public Class acceptEventClass()
   {
-    return tlh.class;
+    return tzt.class;
   }
 }
 

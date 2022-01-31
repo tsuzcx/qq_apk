@@ -1,30 +1,16 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.view.View.OnClickListener;
 
-public class rgo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class rgo
+  implements View.OnClickListener
 {
-  public rgo(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  rgo(rgn paramrgn) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    rgn.a(true, -1, rgn.a(this.a));
+    if (rgn.a(this.a) != null) {
+      rgn.a(this.a).onClick(paramView);
     }
   }
 }

@@ -1,36 +1,75 @@
-import android.os.CountDownTimer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.22;
 
 public class wgg
   implements View.OnTouchListener
 {
-  public wgg(QRDisplayActivity.22 param22) {}
+  public wgg(QRDisplayActivity paramQRDisplayActivity) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
-      do
+      return false;
+      if (paramMotionEvent.getAction() == 0)
       {
-        return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
+        this.a.b.setImageResource(2130846079);
       }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    bawi.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
-    return true;
+      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.b.setImageResource(2130846078);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!QRDisplayActivity.a(paramView, i, j))
+        {
+          this.a.b.setImageResource(2130846078);
+          continue;
+          if (paramMotionEvent.getAction() == 0)
+          {
+            this.a.c.setImageResource(2130846081);
+          }
+          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+          {
+            this.a.c.setImageResource(2130846080);
+          }
+          else if (paramMotionEvent.getAction() == 2)
+          {
+            i = (int)paramMotionEvent.getRawX();
+            j = (int)paramMotionEvent.getRawY();
+            if (!QRDisplayActivity.a(paramView, i, j))
+            {
+              this.a.c.setImageResource(2130846080);
+              continue;
+              if (paramMotionEvent.getAction() == 0)
+              {
+                this.a.d.setImageResource(2130846102);
+              }
+              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+              {
+                this.a.d.setImageResource(2130846101);
+              }
+              else if (paramMotionEvent.getAction() == 2)
+              {
+                i = (int)paramMotionEvent.getRawX();
+                j = (int)paramMotionEvent.getRawY();
+                if (!QRDisplayActivity.a(paramView, i, j)) {
+                  this.a.d.setImageResource(2130846101);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

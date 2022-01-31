@@ -1,15 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nxd
-  implements View.OnClickListener
+  implements bfph
 {
   public nxd(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    onk.a(paramView.getContext(), "https://kandian.qq.com/mqq/vue/configPush?_wv=3&x5PreFetch=1&_bid=2378", null);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerl;
-import aero;
+import aerj;
+import aerm;
 
 public class NearbyChatPie$12$1
   implements Runnable
 {
-  public NearbyChatPie$12$1(aero paramaero) {}
+  public NearbyChatPie$12$1(aerm paramaerm) {}
   
   public void run()
   {

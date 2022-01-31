@@ -1,6 +1,14 @@
-public abstract interface bhgp
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+
+public class bhgp
+  implements bhgq
 {
-  public abstract void onPanoramaClick();
+  public bhgp(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  
+  public void a()
+  {
+    QzoneWebMusicJsPlugin.access$100(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

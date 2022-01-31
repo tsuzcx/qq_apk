@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begz;
-import bejt;
-import beka;
-import besl;
+import behq;
+import bekk;
+import bekr;
+import betc;
 import org.json.JSONObject;
 
 public class NativeFeatureJsPlugin
@@ -11,17 +11,17 @@ public class NativeFeatureJsPlugin
 {
   private static final String TAG = "NativeFeatureJsPlugin";
   
-  public void invokeNativePlugin(beka parambeka)
+  public void invokeNativePlugin(bekr parambekr)
   {
     try
     {
-      String str = new JSONObject(parambeka.b).optString("api_name", null);
-      this.mMiniAppContext.a(bejt.a("NativePlugin", str, parambeka));
+      String str = new JSONObject(parambekr.b).optString("api_name", null);
+      this.mMiniAppContext.a(bekk.a("NativePlugin", str, parambekr));
       return;
     }
-    catch (Throwable parambeka)
+    catch (Throwable parambekr)
     {
-      besl.d("NativeFeatureJsPlugin", "invokeNativePlugin err", parambeka);
+      betc.d("NativeFeatureJsPlugin", "invokeNativePlugin err", parambekr);
     }
   }
 }

@@ -1,36 +1,19 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class aezy
-  extends RecyclerView.OnScrollListener
+class aezy
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public boolean a;
+  aezy(aezx paramaezx) {}
   
-  public aezy(ZhituPanelView paramZhituPanelView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
+    switch (this.a.getItemViewType(paramInt))
     {
-      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
-        ((aezz)paramRecyclerView.getAdapter()).a();
-      }
+    case 1: 
+    default: 
+      return 1;
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    return 3;
   }
 }
 

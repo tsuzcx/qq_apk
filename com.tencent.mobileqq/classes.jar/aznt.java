@@ -1,28 +1,18 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class aznt
+public final class aznt
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public aznt() {}
-  
-  public aznt(JSONObject paramJSONObject)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    this.a = paramJSONObject.optString("serverip", "");
-    this.b = paramJSONObject.optString("serverport", "");
-    this.c = paramJSONObject.optString("checkkey", "");
-    this.d = paramJSONObject.optString("exists", "");
-    this.e = paramJSONObject.optString("uin", "");
-    this.f = paramJSONObject.optString("vid", "");
-    this.g = paramJSONObject.optString("fid", "");
-    this.h = paramJSONObject.optString("complete", "");
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
   }
 }
 

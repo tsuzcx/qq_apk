@@ -1,22 +1,83 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class apib
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public apib(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
+  private final boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final List<ExcitingTransferHostInfo> b;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public apib(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    do
+    this.jdField_a_of_type_JavaUtilList = paramList1;
+    this.b = paramList2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<ExcitingTransferHostInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
     {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
+      }
       return false;
-      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
+    }
+    return true;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public List<ExcitingTransferHostInfo> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    ExcitingTransferHostInfo localExcitingTransferHostInfo;
+    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+    }
+    localObject = (String)localObject + " -- IPV6:";
+    localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
+      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
+    }
+    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i;
+    }
   }
 }
 

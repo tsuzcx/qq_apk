@@ -1,19 +1,34 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-final class bckt
-  implements bcjg
+public class bckt
+  implements TextWatcher
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public bckt(ConfigClearableEditText paramConfigClearableEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
     }
-    paramInt2 = paramDrawable.getIntrinsicWidth();
-    float f = paramInt1 / paramInt2;
-    localMatrix.setScale(f, f);
-    return localMatrix;
+    else {
+      return;
+    }
+    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 

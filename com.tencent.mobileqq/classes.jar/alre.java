@@ -1,33 +1,78 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.HorizontalListView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import java.util.ArrayList;
 import java.util.List;
 
 class alre
-  implements AdapterView.OnItemClickListener
+  extends BaseAdapter
 {
-  alre(alra paramalra) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<alsa> jdField_a_of_type_JavaUtilList;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public alre(alqz paramalqz, Context paramContext)
   {
-    paramAdapterView = alra.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(false);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public alsa a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return null;
     }
-    alra.a(this.a).setSelection(paramInt);
-    paramAdapterView = alra.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(true);
-    }
-    alra.a(this.a, paramInt);
-    alra.a(this.a, true);
-    if ((alra.a(this.a) != null) && (alra.a(this.a).size() > 0) && (alra.a(this.a).size() > alra.a(this.a)))
+    return (alsa)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<alsa> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramAdapterView = (alsb)alra.a(this.a).get(alra.a(this.a));
-      if (paramAdapterView != null) {
-        altd.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
+      paramViewGroup = new alrg(this);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844081);
+      paramView = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
+      paramView.addRule(13);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, paramView);
+      paramView = paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      alsa localalsa = a(paramInt);
+      if ((localalsa != null) && (!TextUtils.isEmpty(localalsa.d))) {
+        ArkAppCacheMgr.getAppIcon(localalsa.a, new alrf(this, paramViewGroup));
       }
+      return paramView;
+      paramViewGroup = (alrg)paramView.getTag();
     }
   }
 }

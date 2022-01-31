@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
 
 public class amix
-  implements amiu
+  implements View.OnClickListener
 {
-  public amix(ColorNoteSettingBaseSection paramColorNoteSettingBaseSection) {}
+  public amix(ColorNoteSettingFragment paramColorNoteSettingFragment, amjg paramamjg, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.jdField_a_of_type_Amjg.a(paramView, this.jdField_a_of_type_Int);
   }
 }
 

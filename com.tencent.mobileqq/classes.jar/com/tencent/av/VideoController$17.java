@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import lgf;
-import mtt;
+import lga;
+import mtq;
 
 class VideoController$17
   implements Runnable
@@ -10,9 +10,9 @@ class VideoController$17
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Mtt.b(this.a);
-    mtt localmtt = this.this$0.jdField_a_of_type_Mtt;
-    mtt.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.this$0.jdField_a_of_type_Mtq.b(this.a);
+    mtq localmtq = this.this$0.jdField_a_of_type_Mtq;
+    mtq.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     this.this$0.b(this.this$0.a().d, 50);
   }
 }

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class wml
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public wml(CommentBottomBar paramCommentBottomBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (CommentBottomBar.a(this.a) != null)
-    {
-      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
-      CommentBottomBar.a(this.a);
-    }
+    CommentBottomBar.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

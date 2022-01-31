@@ -1,25 +1,25 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.provider.Settings.System;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class accz
-  extends ClickableSpan
+  implements View.OnClickListener
 {
   public accz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
   public void onClick(View paramView)
   {
-    SoundAndVibrateActivity.a(this.a);
-    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131166862));
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
+    {
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(paramView);
+    }
   }
 }
 

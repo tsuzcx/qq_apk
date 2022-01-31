@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -16,23 +16,23 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import bcxm;
-import bdev;
-import bdew;
-import bdey;
-import bdfh;
-import bdfq;
-import bdhk;
-import bdht;
-import bdid;
-import bdiw;
-import bdja;
-import bdjc;
+import bcyb;
+import bdfk;
+import bdfl;
+import bdfn;
+import bdfw;
+import bdgf;
+import bdhz;
+import bdii;
+import bdis;
 import bdjl;
-import bdkm;
-import bdkp;
-import bdlc;
-import bgmm;
+import bdjp;
+import bdjr;
+import bdka;
+import bdlb;
+import bdle;
+import bdlr;
+import bgnd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.open.downloadnew.DownloadInfo;
@@ -57,9 +57,9 @@ public class BaseJsCallBack
   public static final String PLUGIN_NAMESPACE = "qqZoneAppList";
   public static boolean isUpdateAssets;
   protected Activity activity;
-  bdfq lastActionRecord = null;
+  bdgf lastActionRecord = null;
   protected Handler mHandler;
-  private bgmm mRemoteServiceProxy;
+  private bgnd mRemoteServiceProxy;
   public String timePointParams = "";
   protected String urlParams = "";
   
@@ -69,14 +69,14 @@ public class BaseJsCallBack
     for (this.activity = ((PluginBaseActivity)paramActivity).getOutActivity();; this.activity = paramActivity)
     {
       this.mHandler = new Handler(Looper.getMainLooper());
-      this.mRemoteServiceProxy = bgmm.a(String.valueOf(bcxm.a().a()));
+      this.mRemoteServiceProxy = bgnd.a(String.valueOf(bcyb.a().a()));
       return;
     }
   }
   
   public boolean appIsExists(String paramString)
   {
-    return bdiw.a(paramString);
+    return bdjl.a(paramString);
   }
   
   public String appIsExistsBatch(String paramString1, String paramString2)
@@ -96,7 +96,7 @@ public class BaseJsCallBack
       String str = localObject[i];
       if ((str != null) && (str.length() > 0))
       {
-        if (!bdiw.a(str)) {
+        if (!bdjl.a(str)) {
           break label98;
         }
         paramString1.put(str, Integer.valueOf(1));
@@ -117,7 +117,7 @@ public class BaseJsCallBack
     if (((StringBuilder)localObject).length() == 0) {
       return "";
     }
-    bdht.c("BaseJsCallBack", "appIsExistsBatch >>>" + ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1));
+    bdii.c("BaseJsCallBack", "appIsExistsBatch >>>" + ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1));
     return ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1);
   }
   
@@ -132,7 +132,7 @@ public class BaseJsCallBack
     {
       long l = Long.parseLong(paramString2);
       int i = Integer.parseInt(paramString3);
-      bdjl.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, bcxm.a().a(), "1000002", null);
+      bdka.a().a(paramString1, SystemClock.elapsedRealtime() - l, 0L, 0L, i, bcyb.a().a(), "1000002", null);
       return;
     }
     catch (Exception paramString1)
@@ -151,7 +151,7 @@ public class BaseJsCallBack
   
   public void clearJS()
   {
-    bdht.e("BaseJsCallBack", "clearJS");
+    bdii.e("BaseJsCallBack", "clearJS");
     if (this.mRemoteServiceProxy != null)
     {
       SendMsg localSendMsg = new SendMsg("clearJS");
@@ -193,7 +193,7 @@ public class BaseJsCallBack
       catch (Exception localException)
       {
         int j;
-        bdht.c("BaseJsCallBack", "getAPNType EX >>> ", localException);
+        bdii.c("BaseJsCallBack", "getAPNType EX >>> ", localException);
         continue;
         i = -1;
         continue;
@@ -210,7 +210,7 @@ public class BaseJsCallBack
   
   public String getAgentVersion()
   {
-    return bcxm.a().e();
+    return bcyb.a().e();
   }
   
   public String getAppVersionCode(String paramString)
@@ -221,12 +221,12 @@ public class BaseJsCallBack
       paramString = ((JSONObject)localObject).optString("packageName");
       localObject = ((JSONObject)localObject).optString("appid");
       int i = 0;
-      if (bdiw.a(paramString)) {
-        i = bdiw.a(paramString);
+      if (bdjl.a(paramString)) {
+        i = bdjl.a(paramString);
       }
       paramString = new JSONObject();
       paramString.put("installedVersionCode", i);
-      paramString.put("downloadedVersionCode ", bdiw.b(bdkp.a().a((String)localObject)));
+      paramString.put("downloadedVersionCode ", bdjl.b(bdle.a().a((String)localObject)));
       paramString = paramString.toString();
       return paramString;
     }
@@ -255,19 +255,19 @@ public class BaseJsCallBack
           }
           Object localObject1 = ((JSONObject)localObject2).getString("packageName");
           localObject2 = ((JSONObject)localObject2).getString("appid");
-          if (!bdiw.a((String)localObject1)) {
+          if (!bdjl.a((String)localObject1)) {
             break label145;
           }
-          j = bdiw.a((String)localObject1);
+          j = bdjl.a((String)localObject1);
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("installedVersionCode", j);
-          ((JSONObject)localObject1).put("downloadedVersionCode", bdiw.b(bdkp.a().a((String)localObject2)));
+          ((JSONObject)localObject1).put("downloadedVersionCode", bdjl.b(bdle.a().a((String)localObject2)));
           localJSONObject.put((String)localObject2, localObject1);
         }
       }
       catch (Exception paramString)
       {
-        bdht.c("BaseJsCallBack", "getAppVersionCode ", paramString);
+        bdii.c("BaseJsCallBack", "getAppVersionCode ", paramString);
       }
       return localJSONObject.toString();
       label145:
@@ -280,7 +280,7 @@ public class BaseJsCallBack
   
   public String getCurrentVersion()
   {
-    return bcxm.a().c();
+    return bcyb.a().c();
   }
   
   public String getDisplay()
@@ -294,7 +294,7 @@ public class BaseJsCallBack
   
   protected String[] getFileUrl(String paramString)
   {
-    return bdey.a(paramString);
+    return bdfn.a(paramString);
   }
   
   public String getInterfaceName()
@@ -304,7 +304,7 @@ public class BaseJsCallBack
   
   public String getMobileInfo()
   {
-    return bdja.i();
+    return bdjp.i();
   }
   
   public String getPageTimePoint()
@@ -319,7 +319,7 @@ public class BaseJsCallBack
   
   public String getPlatform()
   {
-    return bcxm.a().g();
+    return bcyb.a().g();
   }
   
   public String getSid()
@@ -327,7 +327,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return bcxm.a().a();
+    return bcyb.a().a();
   }
   
   public String getUin()
@@ -335,17 +335,17 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return "baby,you don't have permission";
     }
-    return String.valueOf(bcxm.a().a());
+    return String.valueOf(bcyb.a().a());
   }
   
   public void goOldDetail(String paramString)
   {
-    bdev.a(this.activity, paramString);
+    bdfk.a(this.activity, paramString);
   }
   
   public void goToDetailPage(String paramString1, String paramString2)
   {
-    bdht.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
+    bdii.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
     Object localObject;
     boolean bool1;
     boolean bool2;
@@ -353,28 +353,28 @@ public class BaseJsCallBack
     {
       paramString1 = new JSONObject(paramString1);
       paramString2 = new Bundle();
-      paramString2.putString(bdkm.b, paramString1.optString("appid"));
-      paramString2.putString(bdkm.f, paramString1.optString("packageName"));
-      paramString2.putString(bdkm.i, paramString1.optString("via"));
-      paramString2.putString(bdkm.c, paramString1.optString("myAppId"));
-      paramString2.putString(bdkm.d, paramString1.optString("apkId"));
-      paramString2.putInt(bdkm.e, paramString1.optInt("versionCode"));
+      paramString2.putString(bdlb.b, paramString1.optString("appid"));
+      paramString2.putString(bdlb.f, paramString1.optString("packageName"));
+      paramString2.putString(bdlb.i, paramString1.optString("via"));
+      paramString2.putString(bdlb.c, paramString1.optString("myAppId"));
+      paramString2.putString(bdlb.d, paramString1.optString("apkId"));
+      paramString2.putInt(bdlb.e, paramString1.optInt("versionCode"));
       localObject = paramString1.optString("via");
       String str = paramString1.optString("appid");
       int i = paramString1.optInt("actionCode");
       if (this.lastActionRecord == null) {
-        this.lastActionRecord = new bdfq(str, (String)localObject, i);
+        this.lastActionRecord = new bdgf(str, (String)localObject, i);
       }
       while (!this.lastActionRecord.a(str, (String)localObject, i))
       {
         bool1 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoDownload"));
         bool2 = DownloadInterface.changeIntToBoolean(paramString1.optInt("isAutoInstall"));
-        localObject = bdkp.a().a(paramString1.optString("appid"));
+        localObject = bdle.a().a(paramString1.optString("appid"));
         paramString1.put("titleType", 0);
         if (localObject != null) {
           break label282;
         }
-        if (!bdlc.a().c()) {
+        if (!bdlr.a().c()) {
           break;
         }
         ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.2(this, paramString2, bool1, bool2));
@@ -386,11 +386,11 @@ public class BaseJsCallBack
     }
     catch (JSONException paramString1)
     {
-      bdht.c("BaseJsCallBack", "goToDetailPage>>>", paramString1);
+      bdii.c("BaseJsCallBack", "goToDetailPage>>>", paramString1);
       return;
     }
     label282:
-    if ((((DownloadInfo)localObject).c == 1) && (bdlc.a().b()))
+    if ((((DownloadInfo)localObject).c == 1) && (bdlr.a().b()))
     {
       ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.3(this, paramString2, bool1, bool2));
       return;
@@ -400,18 +400,18 @@ public class BaseJsCallBack
   
   public void goToDownloadTaskList(String paramString)
   {
-    bdht.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
+    bdii.c("TIME-STATISTIC", "JsCallBack--goToDetailPage");
     Bundle localBundle = new Bundle();
     try
     {
       paramString = new JSONObject(paramString);
-      localBundle.putString(bdkm.i, paramString.optString("via"));
+      localBundle.putString(bdlb.i, paramString.optString("via"));
       ThreadManager.getSubThreadHandler().post(new BaseJsCallBack.4(this, localBundle));
       return;
     }
     catch (JSONException paramString)
     {
-      bdht.c("BaseJsCallBack", "goToDetailPage>>>", paramString);
+      bdii.c("BaseJsCallBack", "goToDetailPage>>>", paramString);
     }
   }
   
@@ -420,7 +420,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bdht.c("BaseJsCallBack", paramString);
+    bdii.c("BaseJsCallBack", paramString);
     Object localObject3;
     JSONArray localJSONArray;
     int j;
@@ -432,7 +432,7 @@ public class BaseJsCallBack
       j = paramString.optInt("current");
       if (TextUtils.isEmpty((CharSequence)localObject3))
       {
-        bdht.e("BaseJsCallBack", "gourl strUrl == null");
+        bdii.e("BaseJsCallBack", "gourl strUrl == null");
         return;
       }
     }
@@ -459,7 +459,7 @@ public class BaseJsCallBack
     {
       paramString = (String)localObject1;
       if (((String)localObject1).indexOf("{UIN}") > 0) {
-        paramString = ((String)localObject1).replaceAll("\\{UIN\\}", bcxm.a().a() + "");
+        paramString = ((String)localObject1).replaceAll("\\{UIN\\}", bcyb.a().a() + "");
       }
       localObject1 = new Intent(this.activity, QZoneAppListActivity.class);
       localObject3 = new Bundle();
@@ -488,15 +488,15 @@ public class BaseJsCallBack
     for (boolean bool = true;; bool = false)
     {
       ((Bundle)localObject3).putBoolean("showTitle", bool);
-      bdht.c("BaseJsCallBack", "array = " + paramString.toString() + " | " + paramString.size());
+      bdii.c("BaseJsCallBack", "array = " + paramString.toString() + " | " + paramString.size());
       label462:
       ((Bundle)localObject3).putInt("leftBtnType", k);
       ((Bundle)localObject3).putInt("rightBtnType", m);
       ((Bundle)localObject3).putInt("titleRefreshType", n);
       ((Bundle)localObject3).putInt("titleType", i1);
       ((Bundle)localObject3).putInt("current", j);
-      ((Bundle)localObject3).putString("uin", String.valueOf(bcxm.a().a()));
-      ((Bundle)localObject3).putString("sid", bcxm.a().a());
+      ((Bundle)localObject3).putString("uin", String.valueOf(bcyb.a().a()));
+      ((Bundle)localObject3).putString("sid", bcyb.a().a());
       ((Bundle)localObject3).putInt("goto_type", 2);
       ((Intent)localObject1).putExtras((Bundle)localObject3);
       this.activity.startActivityForResult((Intent)localObject1, 200);
@@ -521,7 +521,7 @@ public class BaseJsCallBack
     }
     catch (Exception paramString)
     {
-      bdht.c("BaseJsCallBack", "gourl(onlyurl) error ", paramString);
+      bdii.c("BaseJsCallBack", "gourl(onlyurl) error ", paramString);
     }
   }
   
@@ -978,7 +978,7 @@ public class BaseJsCallBack
     //   878: iconst_0
     //   879: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   882: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   885: invokestatic 164	bdht:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   885: invokestatic 164	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   888: new 545	android/content/Intent
     //   891: dup
     //   892: aload_0
@@ -1065,7 +1065,7 @@ public class BaseJsCallBack
     //   1071: ldc 8
     //   1073: ldc_w 646
     //   1076: aload 25
-    //   1078: invokestatic 274	bdht:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1078: invokestatic 274	bdii:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1081: aload 31
     //   1083: astore 25
     //   1085: goto -329 -> 756
@@ -1093,7 +1093,7 @@ public class BaseJsCallBack
     //   1128: ldc 8
     //   1130: ldc_w 648
     //   1133: aload 26
-    //   1135: invokestatic 274	bdht:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1135: invokestatic 274	bdii:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   1138: aload 31
     //   1140: astore 25
     //   1142: goto -386 -> 756
@@ -1169,7 +1169,7 @@ public class BaseJsCallBack
   
   public void onJsAlert(String paramString)
   {
-    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new bdfh(this)).setCancelable(false).create().show();
+    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new bdfw(this)).setCancelable(false).create().show();
   }
   
   public void report(String paramString)
@@ -1177,11 +1177,11 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bdht.b("BaseJsCallBack", "[report] json=" + paramString);
+    bdii.b("BaseJsCallBack", "[report] json=" + paramString);
     try
     {
       paramString = new JSONObject(paramString);
-      bdhk.a(paramString.optInt("type"), paramString.optString("data"));
+      bdhz.a(paramString.optInt("type"), paramString.optString("data"));
       return;
     }
     catch (JSONException paramString)
@@ -1195,7 +1195,7 @@ public class BaseJsCallBack
     if (!hasRight()) {
       return;
     }
-    bdht.b("BaseJsCallBack", "[reportBatch] json=" + paramString);
+    bdii.b("BaseJsCallBack", "[reportBatch] json=" + paramString);
     for (;;)
     {
       int i;
@@ -1208,7 +1208,7 @@ public class BaseJsCallBack
         }
         JSONObject localJSONObject = paramString.optJSONObject(i);
         if (localJSONObject != null) {
-          bdhk.a(localJSONObject.optInt("type"), localJSONObject.optString("data"));
+          bdhz.a(localJSONObject.optInt("type"), localJSONObject.optString("data"));
         }
       }
       catch (JSONException paramString)
@@ -1235,8 +1235,8 @@ public class BaseJsCallBack
       localObject = ((JSONObject)localObject).optString("extraData");
       Bundle localBundle = new Bundle();
       localBundle.putString("jsversion", str3);
-      bdjc.a(paramString, str1, str2, (String)localObject, localBundle);
-      bdht.c("BaseJsCallBack", "reportForvia " + paramString + " | " + str1 + " | " + str2);
+      bdjr.a(paramString, str1, str2, (String)localObject, localBundle);
+      bdii.c("BaseJsCallBack", "reportForvia " + paramString + " | " + str1 + " | " + str2);
       return;
     }
     catch (JSONException paramString)
@@ -1270,8 +1270,8 @@ public class BaseJsCallBack
           localObject = ((JSONObject)localObject).optString("extraData");
           Bundle localBundle = new Bundle();
           localBundle.putString("jsversion", str4);
-          bdjc.a(str1, str2, str3, (String)localObject, localBundle);
-          bdht.c("BaseJsCallBack", "reportForvia " + str1 + " | " + str2 + " | " + str3);
+          bdjr.a(str1, str2, str3, (String)localObject, localBundle);
+          bdii.c("BaseJsCallBack", "reportForvia " + str1 + " | " + str2 + " | " + str3);
         }
       }
       catch (JSONException paramString)
@@ -1290,17 +1290,17 @@ public class BaseJsCallBack
       isUpdateAssets = false;
       return;
     }
-    if (bdiw.a(paramString1))
+    if (bdjl.a(paramString1))
     {
-      bdjc.a("100", "ANDROIDQQ.INSTALLED.APPDETAIL", paramString2);
+      bdjr.a("100", "ANDROIDQQ.INSTALLED.APPDETAIL", paramString2);
       return;
     }
-    if (bdkp.a().a(paramString2))
+    if (bdle.a().a(paramString2))
     {
-      bdjc.a("100", "ANDROIDQQ.UNINSTALL.APPDETAIL", paramString2);
+      bdjr.a("100", "ANDROIDQQ.UNINSTALL.APPDETAIL", paramString2);
       return;
     }
-    bdjc.a("100", "ANDROIDQQ.UNDOWNLOAD.APPDETAIL", paramString2);
+    bdjr.a("100", "ANDROIDQQ.UNDOWNLOAD.APPDETAIL", paramString2);
   }
   
   public void setActionButton(String paramString)
@@ -1318,10 +1318,10 @@ public class BaseJsCallBack
       }
       if (i == 0)
       {
-        bdew.a().a(false);
+        bdfl.a().a(false);
         return;
       }
-      bdew.a().a(true);
+      bdfl.a().a(true);
       return;
     }
     catch (NumberFormatException paramString) {}
@@ -1329,16 +1329,16 @@ public class BaseJsCallBack
   
   public boolean setCommonReportData(String paramString)
   {
-    bdht.c("BaseJsCallBack", "JsCallBack--setCommonReportData");
+    bdii.c("BaseJsCallBack", "JsCallBack--setCommonReportData");
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        bcxm.a().c(paramString);
+        bcyb.a().c(paramString);
         return true;
       }
       catch (Exception paramString)
       {
-        bdht.c("BaseJsCallBack", "JsCallBack--setCommonReportData Exception", paramString);
+        bdii.c("BaseJsCallBack", "JsCallBack--setCommonReportData Exception", paramString);
       }
     }
     return false;
@@ -1355,7 +1355,7 @@ public class BaseJsCallBack
     while ((this.activity == null) || (this.activity.isFinishing())) {
       return;
     }
-    bdid.a().a(paramString, 1);
+    bdis.a().a(paramString, 1);
   }
   
   public void startApp(String paramString1, String paramString2)
@@ -1369,13 +1369,13 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          bdiw.a(this.activity, paramString1, paramString2);
+          bdjl.a(this.activity, paramString1, paramString2);
           return;
         }
       }
       catch (Exception paramString2)
       {
-        bdht.e("startApp", "apk not exist packName = " + paramString1);
+        bdii.e("startApp", "apk not exist packName = " + paramString1);
       }
     }
   }
@@ -1395,7 +1395,7 @@ public class BaseJsCallBack
         }
         paramString2.putExtra("platformId", "qzone_m");
         paramString2.putExtra("big_brother_source_key", DownloadInterface.getSourceInfoFromActivity(this.activity));
-        bdht.c("add", ">>has add platformid=qzone_m");
+        bdii.c("add", ">>has add platformid=qzone_m");
       }
       try
       {
@@ -1404,14 +1404,14 @@ public class BaseJsCallBack
       }
       catch (Exception paramString2)
       {
-        bdid.a().a(ajyc.a(2131700996), 0);
+        bdis.a().a(ajya.a(2131701007), 0);
         return;
       }
       return;
     }
     catch (Exception paramString2)
     {
-      bdht.e("startApp", "apk not exist packName = " + paramString1);
+      bdii.e("startApp", "apk not exist packName = " + paramString1);
     }
   }
   
@@ -1426,13 +1426,13 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          bdiw.a(this.activity, paramString1, paramString2);
+          bdjl.a(this.activity, paramString1, paramString2);
           return;
         }
       }
       catch (Exception paramString2)
       {
-        bdht.e("startApp", "apk not exist packName = " + paramString1);
+        bdii.e("startApp", "apk not exist packName = " + paramString1);
       }
     }
   }
@@ -1448,7 +1448,7 @@ public class BaseJsCallBack
         if (appIsExists(paramString1))
         {
           paramString2 = DownloadInterface.getSourceInfoFromActivity(this.activity);
-          bdiw.a(this.activity, paramString1, paramString2);
+          bdjl.a(this.activity, paramString1, paramString2);
           return;
         }
       }
@@ -1477,7 +1477,7 @@ public class BaseJsCallBack
     //   35: aload 4
     //   37: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 692	bdht:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   43: invokestatic 692	bdii:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   46: aload_0
     //   47: aload_1
     //   48: invokevirtual 768	com/tencent/open/appcommon/js/BaseJsCallBack:appIsExists	(Ljava/lang/String;)Z
@@ -1493,7 +1493,7 @@ public class BaseJsCallBack
     //   71: aload_3
     //   72: aload_1
     //   73: aload_2
-    //   74: invokestatic 829	bdiw:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   74: invokestatic 829	bdjl:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   77: return
     //   78: astore_1
     //   79: ldc 8
@@ -1506,7 +1506,7 @@ public class BaseJsCallBack
     //   95: invokevirtual 834	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   98: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokestatic 224	bdht:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   104: invokestatic 224	bdii:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: return
     //   108: astore_2
     //   109: aload 5

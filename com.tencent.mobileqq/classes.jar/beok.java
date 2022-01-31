@@ -1,17 +1,8 @@
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
+import java.io.File;
 
-public class beok
+public abstract interface beok
 {
-  public static Animation a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(paramInt1, paramInt2, 0.0F, 0.0F);
-    localTranslateAnimation.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / bffu.a(paramContext) * 3000.0F));
-    localTranslateAnimation.setInterpolator(new beop());
-    localTranslateAnimation.setFillAfter(true);
-    return localTranslateAnimation;
-  }
+  public abstract void a(File paramFile);
 }
 
 

@@ -1,19 +1,10 @@
-public class aqmb
+import com.tencent.image.URLDrawable;
+
+public abstract interface aqmb
 {
-  private aqme a;
+  public abstract void a(int paramInt, URLDrawable paramURLDrawable);
   
-  public static aqmb a()
-  {
-    return aqmd.a();
-  }
-  
-  public aqme a()
-  {
-    if (this.a == null) {
-      this.a = new aqmf();
-    }
-    return this.a;
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

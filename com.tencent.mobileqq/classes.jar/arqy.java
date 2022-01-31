@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class arqy
-  implements arte
+  implements DialogInterface.OnDismissListener
 {
   public arqy(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
+    this.a.b();
   }
 }
 

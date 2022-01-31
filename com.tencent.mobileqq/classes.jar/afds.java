@@ -1,22 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
 
-class afds
-  extends RecyclerView.ViewHolder
+public class afds
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public TextView a;
-  public BubbleLayout a;
+  float jdField_a_of_type_Float = 0.0F;
   
-  public afds(View paramView)
+  public afds(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371845));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371844));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131371843));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_Float = paramView.getAlpha();
+      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(this.jdField_a_of_type_Float);
+      }
+    }
   }
 }
 

@@ -1,14 +1,36 @@
+import android.support.annotation.NonNull;
+import java.util.List;
+
 public class bjfh
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public bjfh(String paramString1, String paramString2, String paramString3)
+  public static bjbw a(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    return new bjdr(Integer.valueOf(paramString).intValue());
+  }
+  
+  public static bjbw a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    bkfz localbkfz = ((bjfl)bjav.a(4)).a(paramString2);
+    if ((localbkfz instanceof bkgj)) {
+      return new bjfe((bkgj)localbkfz, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    }
+    if ((localbkfz instanceof bkgg)) {
+      return new bjfd((bkgg)localbkfz, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    }
+    if ((localbkfz instanceof bkga)) {
+      return new bjfa((bkga)localbkfz, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    }
+    return null;
+  }
+  
+  public static bjbw a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return new bjhf(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public static bjbw b(String paramString)
+  {
+    return new bjfi(paramString);
   }
 }
 

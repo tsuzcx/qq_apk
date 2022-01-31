@@ -2,17 +2,17 @@ package com.tencent.av.service;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import lxs;
-import mpy;
+import lxn;
+import mpv;
 
 public class QQServiceForAV$QQServiceForAVBinder$3
   implements Runnable
 {
-  public QQServiceForAV$QQServiceForAVBinder$3(lxs paramlxs, Bundle paramBundle) {}
+  public QQServiceForAV$QQServiceForAVBinder$3(lxn paramlxn, Bundle paramBundle) {}
   
   public void run()
   {
-    mpy.a((QQAppInterface)this.jdField_a_of_type_Lxs.a.a(), this.jdField_a_of_type_AndroidOsBundle);
+    mpv.a((QQAppInterface)this.jdField_a_of_type_Lxn.a.a(), this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

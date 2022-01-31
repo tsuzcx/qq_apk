@@ -1,10 +1,13 @@
-public abstract interface avcr
+class avcr
 {
-  public abstract avcs a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  String a;
+  String b;
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public avcr(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

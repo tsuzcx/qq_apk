@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class lny
-  implements DialogInterface.OnClickListener
+  extends lfq
 {
-  public lny(GaInviteActivity paramGaInviteActivity) {}
+  public lny(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong1, long paramLong2, ArrayList<loh> paramArrayList)
   {
-    if (this.a.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
     }
-    ChatActivityUtils.a(this.a, true, new lnz(this));
+    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
   }
 }
 

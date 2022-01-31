@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.util;
 
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import nam;
+import naj;
 
 public final class ProteusReportUtil$2
   implements Runnable
@@ -13,7 +13,7 @@ public final class ProteusReportUtil$2
   {
     try
     {
-      nam.a(BaseActivity.sTopActivity, this.a, "GET", null, null);
+      naj.a(BaseActivity.sTopActivity, this.a, "GET", null, null);
       return;
     }
     catch (Exception localException)

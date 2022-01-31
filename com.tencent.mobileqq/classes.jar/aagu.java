@@ -1,39 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class aagu
-  extends nat
+  implements View.OnTouchListener
 {
-  public aagu(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public aagu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString))
-        {
-          AddFriendLogicActivity.a(this.a, true);
-          this.a.a();
-          return;
-        }
-        AddFriendLogicActivity.a(this.a);
-        return;
-      }
-      AddFriendLogicActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 

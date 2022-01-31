@@ -1,39 +1,21 @@
-import android.content.Context;
-import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.minigame.task.GameEngineLoadTask.1;
 
 public class bewq
+  extends bepv
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private bewr jdField_a_of_type_Bewr;
-  private bews jdField_a_of_type_Bews;
+  public bewq(GameEngineLoadTask.1 param1) {}
   
-  public bewq(Context paramContext)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("action.qq.miniapp.show.monitorview");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bewr != null) {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Bewr, this.jdField_a_of_type_AndroidContentIntentFilter);
-    }
-  }
-  
-  public void a(bews parambews)
-  {
-    this.jdField_a_of_type_Bews = parambews;
-    this.jdField_a_of_type_Bewr = new bewr(this);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bewr != null) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Bewr);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
+      this.a.this$0.a(paramBundle);
+      bexk.a().i("EngineLoadTask", "[MiniEng]reInitOutChannel " + paramBundle);
+      bewp.a(this.a.this$0);
     }
   }
 }

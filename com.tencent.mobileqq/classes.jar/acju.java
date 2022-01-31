@@ -1,23 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acju
-  implements View.OnClickListener
+  extends balg
 {
-  public acju(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
+  public acju(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
-    paramView.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
-    paramView.putExtra("param_from", 15);
-    paramView.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
-    paramView.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(paramView, 4);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
+    }
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
+    }
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 

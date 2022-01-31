@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
-class aiql
-  implements Animation.AnimationListener
+public class aiql
+  extends aiqp
 {
-  aiql(aiqk paramaiqk, yak paramyak, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Yak.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839132);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public LinearLayout a;
+  public URLImageView a;
+  public SimpleTextView a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public StringBuilder a;
+  public boolean a;
+  public ImageView b;
+  public URLImageView b;
+  public boolean b;
+  public ImageView c;
+  public ImageView d;
 }
 
 

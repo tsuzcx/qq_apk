@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akch;
+import akcg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PhoneContactManagerImp$2$2
   implements Runnable
 {
-  public PhoneContactManagerImp$2$2(akch paramakch) {}
+  public PhoneContactManagerImp$2$2(akcg paramakcg) {}
   
   public void run()
   {

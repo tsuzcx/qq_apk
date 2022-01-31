@@ -1,23 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class ssk
-  implements Dispatcher.Event
+class ssk
+  extends LruCache<KEY, VALUE>
 {
-  public ErrorMessage a = new ErrorMessage();
-  
-  public String a()
+  ssk(ssj paramssj, int paramInt)
   {
-    return this.a.getErrorMessage();
+    super(paramInt);
   }
   
-  public String toString()
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
-    }
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 

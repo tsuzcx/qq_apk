@@ -1,43 +1,146 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.ProtocolDownloader.Adapter;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.hotpic.HotPicSendData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aqyw
+  extends ProtocolDownloader.Adapter
 {
-  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static final String a = bbvj.a(ajsd.aW + "hotpic/");
   
-  public int a()
+  public static File a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    try
+    {
+      paramString = Utils.Crc64String(paramString);
+      paramString = new File(a + paramString);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public HotPicTagInfo a(int paramInt)
+  public static URL a(String paramString)
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    try
+    {
+      paramString = new URL("hot_pic", "", paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
-  public List<HotPicTagInfo> a()
+  public static boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return a(paramString).exists();
   }
   
-  public void a()
+  protected int a(String paramString, File paramFile)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    paramString = new bbwu(paramString.replaceFirst("https", "http"), paramFile);
+    paramString.e = 20000;
+    paramString.n = true;
+    paramString.b = 2;
+    return bbww.a(paramString, null, null);
   }
   
-  public void a(HotPicTagInfo paramHotPicTagInfo)
+  protected String a(HotPicData paramHotPicData)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
+    return paramHotPicData.url;
   }
   
-  public HotPicTagInfo b(int paramInt)
+  public boolean hasDiskFile(DownloadParams paramDownloadParams)
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    try
+    {
+      paramDownloadParams = a((HotPicData)paramDownloadParams.mExtraInfo);
+      return a(paramDownloadParams);
+    }
+    catch (Exception paramDownloadParams)
+    {
+      paramDownloadParams.printStackTrace();
+    }
+    return false;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    int i = 0;
+    if ((paramDownloadParams instanceof HotPicSendData)) {
+      i = 1;
+    }
+    File localFile1 = a(str);
+    if (localFile1.exists())
+    {
+      if ((i == 0) && (paramURLDrawableHandler != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed:" + paramDownloadParams.picIndex);
+        }
+        paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
+      }
+      return localFile1;
+    }
+    localFile1.getParentFile().mkdirs();
+    if ((bbbr.a()) && (bbbr.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bbbr.b());
+    }
+    File localFile2 = new File(a);
+    if (!localFile2.exists()) {
+      localFile2.mkdir();
+    }
+    SystemClock.uptimeMillis();
+    int j = a(str, localFile1);
+    if (j == 0)
+    {
+      str = aurn.a(localFile1.getAbsolutePath());
+      if (!paramDownloadParams.md5.equalsIgnoreCase(str))
+      {
+        localFile1.delete();
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
+        }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
+        }
+        return null;
+      }
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadSucceed download:" + paramDownloadParams.picIndex + localFile1.getAbsolutePath());
+        }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
+        }
+      }
+      return localFile1;
+    }
+    if (paramURLDrawableHandler != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicDownLoader", 2, "onFileDownloadFailed:" + paramDownloadParams.picIndex + " " + j);
+      }
+      paramURLDrawableHandler.onFileDownloadFailed(paramDownloadParams.picIndex);
+    }
+    return null;
   }
 }
 

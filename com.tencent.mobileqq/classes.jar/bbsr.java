@@ -1,22 +1,6 @@
-public class bbsr
-  extends bbso
+public abstract interface bbsr
 {
-  public static final bbsr a = new bbsr();
-  
-  public long getBID()
-  {
-    return 39L;
-  }
-  
-  protected String getRootDir()
-  {
-    return "musicPlayer";
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "musicPlayer.";
-  }
+  public abstract void load(bbqs parambbqs);
 }
 
 

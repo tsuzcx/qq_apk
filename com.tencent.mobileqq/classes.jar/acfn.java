@@ -1,22 +1,16 @@
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
-public final class acfn
-  implements agby
+public class acfn
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference<aico> a;
+  public acfn(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
   
-  public acfn(aico paramaico)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramaico);
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    aico localaico = (aico)this.a.get();
-    if (localaico != null) {
-      localaico.a(paramMotionEvent);
-    }
+    this.a.getActivity().finish();
   }
 }
 

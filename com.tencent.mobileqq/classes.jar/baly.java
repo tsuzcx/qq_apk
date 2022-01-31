@@ -1,24 +1,51 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-final class baly
-  extends ClickableSpan
+public class baly
 {
-  baly(String paramString, MessageRecord paramMessageRecord) {}
+  private static final Drawable a = new ColorDrawable(-5658199);
   
-  public void onClick(View paramView)
+  public static String a(String paramString1, String paramString2)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    asou.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    return "https://qun.qq.com/qqweb/m/qun/rank/rank.html?from=31&_wv=1031&_bid=2468&uin=" + paramString1 + "&gc=" + paramString2;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected static void a()
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    int i = 0;
+    while (i < 20)
+    {
+      Object localObject = String.format("http://pub.idqqimg.com/pc/misc/groupgift/global_troop_level_%d.png", new Object[] { Integer.valueOf(i) });
+      URLDrawable.removeMemoryCacheByUrl((String)localObject);
+      localObject = ayoi.a((String)localObject);
+      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isFile())) {
+        ((File)localObject).delete();
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+    String str = new SimpleDateFormat("yyyy年MM月dd日").format(localCalendar.getTime());
+    if ((!TextUtils.isEmpty(str)) && (str.equals(bbax.a(paramContext, "glamour_has_update_today")))) {
+      return false;
+    }
+    if (localCalendar.get(11) >= 4)
+    {
+      a();
+      bbax.a(paramContext, "glamour_has_update_today", str);
+    }
+    return true;
   }
 }
 

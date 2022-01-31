@@ -1,123 +1,145 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import java.util.Arrays;
 import java.util.List;
 
 public class binp
-  extends RecyclerView.Adapter<bins>
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private binr jdField_a_of_type_Binr;
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public binp(Context paramContext, int paramInt)
+  private void a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public bins a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new bins(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558475, paramViewGroup, false));
-  }
-  
-  public void a(binr parambinr)
-  {
-    this.jdField_a_of_type_Binr = parambinr;
-  }
-  
-  public void a(bins parambins, int paramInt)
-  {
-    Object localObject1 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    QIMFilterCategoryItem localQIMFilterCategoryItem;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localObject2 = bkqo.a().c(this.jdField_a_of_type_Int);
-      if (localObject2 == null) {
-        break label269;
-      }
+    double d4 = this.f * 1.0D / this.e;
+    double d5 = this.jdField_b_of_type_Int * 1.0D / this.jdField_a_of_type_Int;
+    double d2 = this.e;
+    double d3 = this.f;
+    double d1;
+    if (d4 > d5) {
+      d1 = d5 * d2;
     }
-    label259:
-    label269:
-    for (boolean bool1 = TextUtils.equals(((QIMFilterCategoryItem)localObject2).a, localQIMFilterCategoryItem.a);; bool1 = false)
+    for (;;)
     {
-      boolean bool2 = bool1;
-      if (!bool1)
+      this.k = ((int)d2);
+      this.l = ((int)d1);
+      return;
+      d1 = d3;
+      if (d4 < d5)
       {
-        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).d())) && (localQIMFilterCategoryItem.d())) {
-          bool2 = true;
-        }
-      }
-      else
-      {
-        if ((!bool2) || (!this.jdField_a_of_type_Boolean)) {
-          break label247;
-        }
-        bins.a(parambins).setVisibility(0);
-        label117:
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843721);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843721);
-        if (paramInt != 0) {
-          break label259;
-        }
-      }
-      for (localObject1 = "https://qd.myapp.com/myapp/qqteam/QIM/fliters-QIM/other/none2.png";; localObject1 = ((QIMFilterCategoryItem)localObject1).d)
-      {
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        if (((URLDrawable)localObject1).getStatus() == 2) {
-          ((URLDrawable)localObject1).restartDownload();
-        }
-        bins.b(parambins).setImageDrawable((Drawable)localObject1);
-        bins.a(parambins).setText(localQIMFilterCategoryItem.b);
-        if (this.jdField_a_of_type_Binr != null) {
-          parambins.itemView.setOnClickListener(new binq(this, parambins));
-        }
-        parambins.itemView.setTag(localQIMFilterCategoryItem);
-        return;
-        bool2 = false;
-        break;
-        label247:
-        bins.a(parambins).setVisibility(8);
-        break label117;
+        d2 = 1.0D / d5 * d3;
+        d1 = d3;
       }
     }
   }
   
-  public void a(List<QIMFilterCategoryItem> paramList)
+  private String h()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (this.jdField_a_of_type_Boolean) {
+      return i();
+    }
+    return e();
   }
   
-  public void a(boolean paramBoolean)
+  private String i()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.j != 0) && (this.i != 0)) {
+      return this.j + "*" + this.i;
+    }
+    return "none";
   }
   
-  public int getItemCount()
+  public String a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Int != 0)) {
+      return this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int;
+    }
+    return "none";
   }
   
-  public long getItemId(int paramInt)
+  public List<String> a()
   {
-    return paramInt;
+    a();
+    return Arrays.asList(new String[] { "取景框大小: " + this.jdField_b_of_type_Int + "*" + this.jdField_a_of_type_Int, "设置的预览分辨率: " + this.d + "*" + this.c, "设置的照片分辨率: " + this.f + "*" + this.e, "普通渲染 & 截帧分辨率: " + this.h + "*" + this.g, "高清渲染 & 截帧分辨率: " + this.j + "*" + this.i, "大图拍照分辨率: " + this.l + "*" + this.k, "视频分辨率: " + this.n + "*" + this.m, "预览帧率: TODO" });
+  }
+  
+  public String b()
+  {
+    if ((this.d != 0) && (this.c != 0)) {
+      return this.d + "*" + this.c;
+    }
+    return "none";
+  }
+  
+  public String c()
+  {
+    if ((this.f != 0) && (this.e != 0)) {
+      return this.f + "*" + this.e;
+    }
+    return "none";
+  }
+  
+  public String d()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return h();
+    }
+    return f();
+  }
+  
+  public String e()
+  {
+    if ((this.h != 0) && (this.g != 0)) {
+      return this.h + "*" + this.g;
+    }
+    return "none";
+  }
+  
+  public String f()
+  {
+    a();
+    if ((this.l != 0) && (this.k != 0)) {
+      return this.l + "*" + this.k;
+    }
+    return "none";
+  }
+  
+  public String g()
+  {
+    if ((this.n != 0) && (this.m != 0)) {
+      return this.n + "*" + this.m;
+    }
+    return "none";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    List localList = a();
+    int i2 = localList.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      localStringBuilder.append((String)localList.get(i1));
+      if (i1 < i2 - 1) {
+        localStringBuilder.append("\n");
+      }
+      i1 += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

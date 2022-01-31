@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.UserAuthScope;
+import java.util.Properties;
 
-public final class bery
-  implements Parcelable.Creator<UserAuthScope>
+public class bery
 {
-  public UserAuthScope a(Parcel paramParcel)
-  {
-    return new UserAuthScope(paramParcel);
-  }
+  public String a;
+  public Properties a;
   
-  public UserAuthScope[] a(int paramInt)
+  public bery(String paramString, Properties paramProperties)
   {
-    return new UserAuthScope[paramInt];
+    this.jdField_a_of_type_JavaUtilProperties = paramProperties;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

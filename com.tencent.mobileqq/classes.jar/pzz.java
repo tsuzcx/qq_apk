@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-public class pzz
+class pzz
+  extends NativeGifImage
 {
-  public String a;
-  
-  public static pzz a(oidb_0x5bd.AdReport paramAdReport)
+  pzz(pzy parampzy, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    pzz localpzz = new pzz();
-    localpzz.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localpzz;
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == 1) {
+      return;
+    }
+    super.executeNewTask();
+  }
+  
+  public void reset()
+  {
+    super.reset();
   }
 }
 

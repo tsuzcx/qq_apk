@@ -1,32 +1,27 @@
-import android.os.Message;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ChatHistory;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aaqx
-  extends akav
+  implements bfph
 {
-  public aaqx(ChatHistory paramChatHistory) {}
+  public aaqx(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bfpc parambfpc) {}
   
-  protected void b(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.r();
-    if (!paramBoolean)
+    switch (paramInt)
     {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
     }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (!paramBoolean)
+    for (;;)
     {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
+      this.jdField_a_of_type_Bfpc.dismiss();
       return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new aaqy(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
     }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
   }
 }
 

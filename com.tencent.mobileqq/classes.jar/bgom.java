@@ -1,32 +1,20 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qqdataline.DatalineLeakHelper.2.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-public final class bgom
-  implements View.OnClickListener
+public class bgom
+  implements DialogInterface.OnClickListener
 {
-  public void onClick(View paramView)
+  public bgom(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131702750) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("dataline-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new DatalineLeakHelper.2.1(this));
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgom
  * JD-Core Version:    0.7.0.1
  */

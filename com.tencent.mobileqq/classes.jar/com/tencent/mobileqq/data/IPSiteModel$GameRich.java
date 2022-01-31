@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anij;
+import anio;
 
 public class IPSiteModel$GameRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameRich> CREATOR = new anij();
+  public static final Parcelable.Creator<GameRich> CREATOR = new anio();
   public String anchorFaceUrl;
   public String anchorId;
   public String anchorName;

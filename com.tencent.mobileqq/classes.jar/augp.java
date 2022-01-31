@@ -1,22 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupMenu;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import mqq.app.QQPermissionCallback;
 
-public class augp
-  implements QQPermissionCallback
+class augp
+  implements View.OnClickListener
 {
-  public augp(ScanTorchActivity paramScanTorchActivity) {}
+  augp(augl paramaugl) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission deny i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
-    bbcv.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("ScanTorchActivity", 1, String.format("checkSelfPermission grant i=%s strings=%s ints=%s", new Object[] { Integer.valueOf(paramInt), Arrays.toString(paramArrayOfString), Arrays.toString(paramArrayOfInt) }));
+    paramView = new PopupMenu(augl.a(this.a), paramView);
+    this.a.a(augl.a(this.a).b, paramView);
+    paramView.show();
   }
 }
 

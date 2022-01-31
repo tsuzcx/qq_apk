@@ -1,9 +1,14 @@
-final class bhmy
-  extends bhmc<bhmx, Void>
+public abstract class bhmy
 {
-  protected bhmx a(Void paramVoid)
+  public static bhmy a = new bhmz();
+  
+  public abstract int a();
+  
+  public abstract String a();
+  
+  public String toString()
   {
-    return new bhmx();
+    return a() + ':' + a();
   }
 }
 

@@ -1,33 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.TMG.utils.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
 
-class aaes
-  implements DialogInterface.OnKeyListener
+public class aaes
+  implements View.OnClickListener
 {
-  aaes(aaeo paramaaeo, DialogInterface.OnCancelListener paramOnCancelListener) {}
+  public aaes(AboutActivity paramAboutActivity, asfc paramasfc) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Asfc.d))
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
-      {
-        QLog.e("SdkAuthDialog", 1, "keyListener is null");
-        return true;
-      }
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
-      this.jdField_a_of_type_Aaeo.a();
-      axqw.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
+      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_Asfc.d);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
     }
-    return true;
+    this.jdField_a_of_type_Asfc.a();
+    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaes
  * JD-Core Version:    0.7.0.1
  */

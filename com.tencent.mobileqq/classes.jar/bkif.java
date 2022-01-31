@@ -1,52 +1,18 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
+import java.util.ArrayList;
 
 public class bkif
-  extends bkhy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final int c;
+  public bkif(SecondDemoView paramSecondDemoView) {}
   
-  public bkif(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  public bkhz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new bkig(this, paramContext, paramViewGroup);
-  }
-  
-  @NonNull
-  public Class<? extends bkhz> a()
-  {
-    return bkig.class;
-  }
-  
-  public String toString()
-  {
-    switch (this.a)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return "";
-    case 0: 
-      return "normal";
-    case 3: 
-      return "slow";
-    case 2: 
-      return "fast";
-    case 9: 
-      return "very slow";
-    case 8: 
-      return "little fast";
-    }
-    return "rewind";
+    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
+    this.a.a = paramValueAnimator;
+    this.a.invalidate();
   }
 }
 

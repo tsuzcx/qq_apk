@@ -1,35 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 class qkm
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  qkm(qkl paramqkl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  qkm(qkl paramqkl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
+    if ((qkl.a(this.a) != null) && (qkl.a(this.a).getStatus() == 1) && ((qkl.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-    default: 
-      super.handleMessage(paramMessage);
+      paramURLDrawable = (RegionDrawable)qkl.a(this.a).getCurrDrawable();
+      qkl.a(this.a, paramURLDrawable.getBitmap());
     }
-    do
-    {
-      return;
-      paramMessage = this.a.a(false);
-    } while (paramMessage == null);
-    qkl.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localAdvertisementInfo != null) {
-      localAdvertisementInfo.isShowingGuide = false;
-    }
-    this.a.a(null, paramMessage);
   }
 }
 

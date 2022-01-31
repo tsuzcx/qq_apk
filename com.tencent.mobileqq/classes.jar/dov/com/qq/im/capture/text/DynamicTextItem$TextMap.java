@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bjgy;
+import bjhp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.json.JSONArray;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator<TextMap> CREATOR = new bjgy();
+  public static final Parcelable.Creator<TextMap> CREATOR = new bjhp();
   private Map<Integer, String> a = new HashMap();
   
   public DynamicTextItem$TextMap() {}

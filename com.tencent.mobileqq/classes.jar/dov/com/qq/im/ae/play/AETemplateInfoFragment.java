@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae.play;
 
-import abtu;
-import abtv;
+import abtq;
+import abtr;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -25,25 +25,25 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcpw;
-import biij;
-import birc;
-import birg;
-import bixa;
-import bixb;
-import bixc;
-import bixd;
-import bixe;
-import bixf;
-import biyg;
-import biys;
+import bcql;
+import bija;
+import birt;
+import birx;
+import bixr;
+import bixs;
+import bixt;
+import bixu;
+import bixv;
+import bixw;
 import biyx;
-import bizc;
 import bizj;
-import bizp;
-import bizq;
-import bizr;
-import bkht;
+import bizo;
+import bizt;
+import bjaa;
+import bjag;
+import bjah;
+import bjai;
+import bkik;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -77,7 +77,7 @@ import java.util.List;
 
 public class AETemplateInfoFragment
   extends IphoneTitleBarFragment
-  implements abtv, View.OnClickListener
+  implements abtr, View.OnClickListener
 {
   public static final String a;
   private int jdField_a_of_type_Int;
@@ -88,7 +88,7 @@ public class AETemplateInfoFragment
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bixe jdField_a_of_type_Bixe;
+  private bixv jdField_a_of_type_Bixv;
   private IVideoShelfPlayer jdField_a_of_type_ComTencentTtpicVideoshelfModelPlayerIVideoShelfPlayer;
   private VideoShelfTemplate jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
@@ -116,7 +116,7 @@ public class AETemplateInfoFragment
   
   static
   {
-    jdField_a_of_type_JavaLangString = biij.jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaLangString = bija.jdField_b_of_type_JavaLangString;
     File localFile = new File(jdField_a_of_type_JavaLangString);
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -126,9 +126,9 @@ public class AETemplateInfoFragment
   public static int a(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {
-      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", birc.a.a());
+      return ((Activity)paramContext).getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", birt.a.a());
     }
-    return birc.a.a();
+    return birt.a.a();
   }
   
   private String a(VideoShelfTemplate paramVideoShelfTemplate)
@@ -172,7 +172,7 @@ public class AETemplateInfoFragment
   private String a(String paramString)
   {
     Object localObject1 = new File(paramString);
-    Object localObject2 = new File(biij.jdField_a_of_type_JavaLangString);
+    Object localObject2 = new File(bija.jdField_a_of_type_JavaLangString);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
@@ -182,7 +182,7 @@ public class AETemplateInfoFragment
     do
     {
       return paramString;
-      localObject2 = biyx.a((Bitmap)localObject1, paramString);
+      localObject2 = bizo.a((Bitmap)localObject1, paramString);
       localObject1 = localObject2;
       if (((Bitmap)localObject2).getWidth() == 1)
       {
@@ -193,14 +193,14 @@ public class AETemplateInfoFragment
       }
       localObject2 = new boolean[1];
       localObject2[0] = 0;
-      biyg.a((Bitmap)localObject1, new bixc(this, (boolean[])localObject2, str), true);
+      biyx.a((Bitmap)localObject1, new bixt(this, (boolean[])localObject2, str), true);
     } while (localObject2[0] == 0);
     return str;
   }
   
   private void a(int paramInt)
   {
-    bizr.a(getActivity(), paramInt);
+    bjai.a(getActivity(), paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent)
@@ -208,7 +208,7 @@ public class AETemplateInfoFragment
     paramIntent.addFlags(67108864);
     paramIntent.addFlags(536870912);
     paramIntent.putExtra("VIDEO_STORY_FROM_TYPE", a(paramContext));
-    abtu.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    abtq.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -219,7 +219,7 @@ public class AETemplateInfoFragment
     localIntent.putExtra("MaterialName", paramString4);
     localIntent.putExtra("loc_play_show_tab_name", paramString1);
     localIntent.putExtra("VIDEO_STORY_FROM_TYPE", a(paramContext));
-    abtu.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
+    abtq.a(paramContext, localIntent, PublicFragmentActivityForPeak.class, AETemplateInfoFragment.class);
   }
   
   private void a(SurfaceTexture paramSurfaceTexture)
@@ -282,12 +282,12 @@ public class AETemplateInfoFragment
       return;
       localBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), paramString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
     } while (localBitmap == null);
-    bizj.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
+    bjaa.a().a("ae_preference_k_qudong_last_crazy_face_photo", paramString, 0);
     b(true);
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_Boolean = false;
     s();
-    biyg.a(localBitmap, this.jdField_b_of_type_JavaUtilList, new bixd(this, paramString, localBitmap, l));
+    biyx.a(localBitmap, this.jdField_b_of_type_JavaUtilList, new bixu(this, paramString, localBitmap, l));
   }
   
   private void a(boolean paramBoolean)
@@ -383,10 +383,10 @@ public class AETemplateInfoFragment
     this.jdField_a_of_type_AndroidViewTextureView = ((TextureView)localView.findViewById(2131371914));
     this.jdField_a_of_type_AndroidViewTextureView.setKeepScreenOn(true);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131371761));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.getViewTreeObserver().addOnGlobalLayoutListener(new bixa(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.getViewTreeObserver().addOnGlobalLayoutListener(new bixr(this));
     this.jdField_a_of_type_AndroidViewTextureView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(new bixf(this));
-    this.jdField_a_of_type_Bixe = new bixe(this);
+    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(new bixw(this));
+    this.jdField_a_of_type_Bixv = new bixv(this);
     if (this.jdField_f_of_type_Boolean)
     {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
@@ -461,8 +461,8 @@ public class AETemplateInfoFragment
   
   private void c()
   {
-    this.jdField_b_of_type_Int = bkht.a(getActivity());
-    this.jdField_c_of_type_Int = bkht.b(getActivity());
+    this.jdField_b_of_type_Int = bkik.a(getActivity());
+    this.jdField_c_of_type_Int = bkik.b(getActivity());
     Intent localIntent = getActivity().getIntent();
     if (localIntent != null)
     {
@@ -487,7 +487,7 @@ public class AETemplateInfoFragment
       this.jdField_f_of_type_Boolean = bool;
       if (this.jdField_f_of_type_Boolean)
       {
-        this.jdField_f_of_type_JavaLangString = bizj.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
+        this.jdField_f_of_type_JavaLangString = bjaa.a().a("ae_preference_k_qudong_last_crazy_face_photo", null, 0);
         if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
         {
           int i = getActivity().getResources().getDimensionPixelSize(2131296268);
@@ -495,7 +495,7 @@ public class AETemplateInfoFragment
           this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapUtils.decodeSampleBitmap(getActivity(), this.jdField_f_of_type_JavaLangString, j, i);
         }
       }
-      OfflineFileUpdater.setHttpClient(new biys());
+      OfflineFileUpdater.setHttpClient(new bizj());
       OfflineFileUpdater.checkOfflineFile();
       return;
     }
@@ -605,16 +605,16 @@ public class AETemplateInfoFragment
   {
     if (!b())
     {
-      bcpw.a(getActivity(), getActivity().getString(2131689796), 0).a();
+      bcql.a(getActivity(), getActivity().getString(2131689796), 0).a();
       return;
     }
-    if (bizj.a().a("key_first_change_face_click_flag", true, 0))
+    if (bjaa.a().a("key_first_change_face_click_flag", true, 0))
     {
-      bizj.a().a("key_first_change_face_click_flag", false, 0);
+      bjaa.a().a("key_first_change_face_click_flag", false, 0);
       i();
       return;
     }
-    birg.a(getActivity(), 1024, birc.w.a(), null);
+    birx.a(getActivity(), 1024, birt.w.a(), null);
   }
   
   private void i()
@@ -638,10 +638,10 @@ public class AETemplateInfoFragment
       ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getActivity().getResources().getDrawable(2131167134);
       localObject = URLDrawable.getDrawable("http://dl.url.cn/myapp/qq_desk/qqrm/videofilter/Pturenwu/tipss.png", (URLDrawable.URLDrawableOptions)localObject);
       URLImageView localURLImageView = (URLImageView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131368416);
-      TextView localTextView = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131378018);
+      TextView localTextView = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131378023);
       localURLImageView.setImageDrawable((Drawable)localObject);
       this.jdField_b_of_type_AndroidAppDialog.show();
-      localTextView.setOnClickListener(new bixb(this));
+      localTextView.setOnClickListener(new bixs(this));
     }
   }
   
@@ -715,7 +715,7 @@ public class AETemplateInfoFragment
       return;
     }
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_d_of_type_JavaLangString);
-    getActivity().findViewById(2131365026).setVisibility(8);
+    getActivity().findViewById(2131365025).setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
     this.jdField_c_of_type_AndroidWidgetTextView.setLines(2);
     localLayoutParams.height = ((int)(32.0F * this.jdField_c_of_type_AndroidWidgetTextView.getContext().getResources().getDisplayMetrics().density));
@@ -734,7 +734,7 @@ public class AETemplateInfoFragment
       return;
     }
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelPlayerIVideoShelfPlayer.reset();
-    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelPlayerIVideoShelfPlayer.setVideoShelfPlayerListener(this.jdField_a_of_type_Bixe);
+    this.jdField_a_of_type_ComTencentTtpicVideoshelfModelPlayerIVideoShelfPlayer.setVideoShelfPlayerListener(this.jdField_a_of_type_Bixv);
     String str2 = this.jdField_a_of_type_ComTencentTtpicVideoshelfModelTemplateVideoShelfTemplate.getPreviewVideoPath();
     String str1 = null;
     if ((this.jdField_a_of_type_ComTencentTtpicVideoshelfModelPlayerIVideoShelfPlayer instanceof PagShelfPlayer))
@@ -860,28 +860,28 @@ public class AETemplateInfoFragment
   
   public void onClick(View paramView)
   {
-    if (bizp.a(paramView)) {
+    if (bjag.a(paramView)) {
       return;
     }
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131363753: 
+    case 2131363752: 
       onBackPressed();
       return;
     case 2131370796: 
       g();
       if (!this.jdField_f_of_type_Boolean)
       {
-        bizc.a().r();
+        bizt.a().r();
         return;
       }
-      bizc.a().s();
+      bizt.a().s();
       return;
     case 2131368978: 
       a(this.jdField_f_of_type_JavaLangString);
-      bizc.a().t();
+      bizt.a().t();
       return;
     }
     d();
@@ -940,8 +940,8 @@ public class AETemplateInfoFragment
     this.vg.setTitle("模板详情");
     if (!FeatureManager.Features.PAG.init())
     {
-      bizq.d("AETemplateInfoFragment", "pag相关so未初始化成功");
-      bcpw.a(getActivity(), "pag相关so未初始化成功", 0).a();
+      bjah.d("AETemplateInfoFragment", "pag相关so未初始化成功");
+      bcql.a(getActivity(), "pag相关so未初始化成功", 0).a();
       return;
     }
     c();

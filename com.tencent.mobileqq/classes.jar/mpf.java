@@ -1,16 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mpf
-  implements mqg
+public class mpf
 {
-  mpf(mpc parammpc) {}
-  
-  public void a()
-  {
-    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
-    this.a.a = null;
-    ltr.a().b(8);
-  }
+  public static ArrayList<ldr> a;
+  public String a = "20000005011710261000100000426100";
+  public boolean a;
+  public String b = "0";
+  public boolean b;
+  public String c = "0";
+  public boolean c;
 }
 
 

@@ -1,21 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 class bits
-  implements EIPCResultCallback
+  extends RecyclerView.ViewHolder
 {
-  bits(bitj parambitj) {}
+  TextView a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bits(View paramView)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
-    if (paramEIPCResult.code == 0)
-    {
-      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
-      return;
-    }
-    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131372848));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.itemView.setSelected(paramBoolean);
   }
 }
 

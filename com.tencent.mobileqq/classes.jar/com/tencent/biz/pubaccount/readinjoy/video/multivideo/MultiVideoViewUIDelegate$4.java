@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import qyj;
+import qyg;
 
 public class MultiVideoViewUIDelegate$4
   implements Runnable
 {
-  public MultiVideoViewUIDelegate$4(qyj paramqyj, int paramInt, String paramString) {}
+  public MultiVideoViewUIDelegate$4(qyg paramqyg, int paramInt, String paramString) {}
   
   public void run()
   {
-    qyj.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    qyg.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

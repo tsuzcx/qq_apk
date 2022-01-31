@@ -1,18 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class avnr
-  extends AnimatorListenerAdapter
+public class avnr
 {
-  avnr(avnq paramavnq) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static avnr a(String paramString)
   {
-    if (avnm.a(this.a.a) != null) {
-      avnm.a(this.a.a).c();
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    avnm.a(this.a.a, 8);
+    avnr localavnr = new avnr();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localavnr.jdField_a_of_type_Int = paramString.optInt("animationType");
+      localavnr.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
+      localavnr.b = paramString.optString("giftZipUrl", null);
+      localavnr.c = paramString.optString("giftParticleUrl", null);
+      localavnr.d = paramString.optString("lottieUrl", null);
+      return localavnr;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
+    }
+    return localavnr;
+  }
+  
+  public String toString()
+  {
+    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
   }
 }
 

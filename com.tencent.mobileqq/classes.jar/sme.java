@@ -1,30 +1,18 @@
 import android.os.Parcel;
-import org.json.JSONObject;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
 
-public class sme
+public final class sme
+  implements Parcelable.Creator<WSPushPreloadModel>
 {
-  public String mAbTest;
-  public int mType;
-  
-  protected sme(Parcel paramParcel)
+  public WSPushPreloadModel a(Parcel paramParcel)
   {
-    this.mType = paramParcel.readInt();
-    this.mAbTest = paramParcel.readString();
+    return new WSPushPreloadModel(paramParcel);
   }
   
-  protected sme(JSONObject paramJSONObject)
+  public WSPushPreloadModel[] a(int paramInt)
   {
-    this.mType = paramJSONObject.optInt("type");
-    this.mAbTest = paramJSONObject.optString("qq_abtest");
-    parseJson(paramJSONObject);
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject) {}
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeInt(this.mType);
-    paramParcel.writeString(this.mAbTest);
+    return new WSPushPreloadModel[paramInt];
   }
 }
 

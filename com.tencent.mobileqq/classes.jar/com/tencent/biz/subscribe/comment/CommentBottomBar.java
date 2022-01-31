@@ -5,7 +5,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import ajyc;
+import ajya;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcpw;
+import bcql;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.CommentReplyEvent;
 import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
@@ -28,24 +28,24 @@ import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import wiw;
+import wit;
+import wmf;
+import wmg;
+import wmh;
 import wmi;
 import wmj;
 import wmk;
 import wml;
-import wmm;
-import wmn;
-import wmo;
-import wnl;
-import wnu;
-import woo;
-import wpw;
-import wpy;
-import xfr;
+import wni;
+import wnr;
+import wol;
+import wpt;
+import wpv;
+import xfo;
 
 public class CommentBottomBar
   extends LinearLayout
-  implements wpy
+  implements wpv
 {
   public static final String a;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
@@ -54,7 +54,7 @@ public class CommentBottomBar
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private wnl jdField_a_of_type_Wnl;
+  private wni jdField_a_of_type_Wni;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -127,7 +127,7 @@ public class CommentBottomBar
       localScaleAnimation.setDuration(1000L);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setRepeatCount(0);
-      localScaleAnimation.setAnimationListener(new wmn(this, paramBoolean));
+      localScaleAnimation.setAnimationListener(new wmk(this, paramBoolean));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
       return;
     }
@@ -162,13 +162,13 @@ public class CommentBottomBar
     setBackgroundColor(-1);
     setGravity(16);
     LayoutInflater.from(getContext()).inflate(2131558705, this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368644));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378043));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368687));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368541));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368540));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368646));
-    this.jdField_b_of_type_Boolean = ((String)xfr.a().a("is_open_sharing", "1")).equals("1");
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368643));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378048));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368686));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368540));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368539));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368645));
+    this.jdField_b_of_type_Boolean = ((String)xfo.a().a("is_open_sharing", "1")).equals("1");
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 0;; i = 8)
@@ -180,29 +180,29 @@ public class CommentBottomBar
   
   private void g()
   {
-    wpw.a().a(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new wmi(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new wmj(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wmk(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wml(this));
+    wpt.a().a(this);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new wmf(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new wmg(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wmh(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wmi(this));
   }
   
   private void h()
   {
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = null;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = null;
-    a(getContext().getString(2131701483));
+    a(getContext().getString(2131701494));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846603);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846609);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.8F, 1.0F, 0.8F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(600L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setRepeatMode(2);
     localScaleAnimation.setRepeatCount(5);
-    localScaleAnimation.setAnimationListener(new wmo(this));
+    localScaleAnimation.setAnimationListener(new wml(this));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
   }
   
@@ -214,15 +214,15 @@ public class CommentBottomBar
     return localArrayList;
   }
   
-  public wnl a()
+  public wni a()
   {
-    return this.jdField_a_of_type_Wnl;
+    return this.jdField_a_of_type_Wni;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wnl != null) {
-      this.jdField_a_of_type_Wnl.h();
+    if (this.jdField_a_of_type_Wni != null) {
+      this.jdField_a_of_type_Wni.h();
     }
   }
   
@@ -234,7 +234,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(woo.a(paramInt));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(wol.a(paramInt));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -244,19 +244,19 @@ public class CommentBottomBar
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Wnl != null) {
-      this.jdField_a_of_type_Wnl.a(paramStFeed);
+    if (this.jdField_a_of_type_Wni != null) {
+      this.jdField_a_of_type_Wni.a(paramStFeed);
     }
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnu paramwnu)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnr paramwnr)
   {
-    a(paramActivity, paramStFeed, paramwnu, null);
+    a(paramActivity, paramStFeed, paramwnr, null);
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnu paramwnu, ExtraTypeInfo paramExtraTypeInfo)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnr paramwnr, ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_Wnl = new wnl(paramActivity, false, paramStFeed, paramwnu, paramExtraTypeInfo);
+    this.jdField_a_of_type_Wni = new wni(paramActivity, false, paramStFeed, paramwnr, paramExtraTypeInfo);
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
@@ -296,12 +296,12 @@ public class CommentBottomBar
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bcpw.a(getContext(), ajyc.a(2131702163), 0).a();
+      bcql.a(getContext(), ajya.a(2131702174), 0).a();
       return;
     }
     this.jdField_a_of_type_Boolean = false;
     DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    VSNetworkHelper.a().a(localDoLikeRequest, new wmm(this));
+    VSNetworkHelper.a().a(localDoLikeRequest, new wmj(this));
   }
   
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
@@ -312,7 +312,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(woo.a(paramInt));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(wol.a(paramInt));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -322,23 +322,23 @@ public class CommentBottomBar
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Wnl != null) {
-      return this.jdField_a_of_type_Wnl.b();
+    if (this.jdField_a_of_type_Wni != null) {
+      return this.jdField_a_of_type_Wni.b();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Wnl != null) {
-      this.jdField_a_of_type_Wnl.f();
+    if (this.jdField_a_of_type_Wni != null) {
+      this.jdField_a_of_type_Wni.f();
     }
-    wpw.a().b(this);
+    wpt.a().b(this);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Wnl != null) && (this.jdField_a_of_type_Wnl.c());
+    return (this.jdField_a_of_type_Wni != null) && (this.jdField_a_of_type_Wni.c());
   }
   
   public void d()
@@ -349,7 +349,7 @@ public class CommentBottomBar
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Wnl != null) && (this.jdField_a_of_type_Wnl.d());
+    return (this.jdField_a_of_type_Wni != null) && (this.jdField_a_of_type_Wni.d());
   }
   
   public void e()
@@ -365,7 +365,7 @@ public class CommentBottomBar
     b(paramStFeed.likeInfo.count.get());
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (wiw.a(paramStFeed.status.get()))) {
+      if ((this.jdField_b_of_type_Boolean) && (wit.a(paramStFeed.status.get()))) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }

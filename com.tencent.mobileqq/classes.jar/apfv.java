@@ -1,13 +1,50 @@
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import android.os.Handler;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
-class apfv
-  implements apgc
+public class apfv
+  extends awke<awoi, awwr>
 {
-  apfv(apfu paramapfu) {}
+  public apfv(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  public void a()
+  protected awrd<awoi, awwr> a(int paramInt)
   {
-    FileSelectorSearchGroupFragment.a(this.a.a).a();
+    apgb localapgb = new apgb();
+    localapgb.a(new apfw(this));
+    return localapgb;
+  }
+  
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new apge(paramViewGroup);
+  }
+  
+  public void a(List<awoi> paramList)
+  {
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
+  }
+  
+  public void a(List<awoi> paramList, boolean paramBoolean)
+  {
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 

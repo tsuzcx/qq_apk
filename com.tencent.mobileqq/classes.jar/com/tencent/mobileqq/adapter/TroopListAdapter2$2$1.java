@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import aipt;
+import aipr;
 import java.util.List;
 
 class TroopListAdapter2$2$1
@@ -12,7 +12,7 @@ class TroopListAdapter2$2$1
   {
     this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    aipt.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0);
+    aipr.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$2.this$0);
   }
 }
 

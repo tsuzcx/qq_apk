@@ -1,27 +1,57 @@
-import android.content.Context;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.ttpic.openapi.model.WMEditItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 class bipj
-  implements View.OnClickListener
+  implements bjos<biwo>
 {
-  bipj(biph parambiph, bipp parambipp, WMEditItem paramWMEditItem) {}
+  bipj(bipi parambipi) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable biwo parambiwo)
   {
-    ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).hideSoftInputFromWindow(biph.a(this.jdField_a_of_type_Biph).getWindowToken(), 0);
-    biph.a(this.jdField_a_of_type_Biph).setTextColor(-1);
-    biph.a(this.jdField_a_of_type_Biph, biph.a(this.jdField_a_of_type_Biph));
-    biph.a(this.jdField_a_of_type_Biph, this.jdField_a_of_type_Bipp.a);
-    biph.a(this.jdField_a_of_type_Biph).setTextColor(-12339461);
-    biph.a(this.jdField_a_of_type_Biph, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem);
-    if (biph.a(this.jdField_a_of_type_Biph) != null) {
-      biph.a(this.jdField_a_of_type_Biph).a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.itemType, this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMEditItem.value, this.jdField_a_of_type_Bipp.a);
-    }
+    if (parambiwo == null) {}
+    do
+    {
+      return;
+      if (biwo.a(parambiwo, biwo.a))
+      {
+        bipi.a(this.a).setImageResource(2130843704);
+        bipi.a(this.a).setVisibility(0);
+        bipi.a(this.a).setBackgroundResource(2130837654);
+        bipi.b(this.a).setVisibility(0);
+        if (parambiwo.a())
+        {
+          bipi.c(this.a).setVisibility(8);
+          bipi.d(this.a).setBackgroundResource(2130837606);
+          bipi.d(this.a).setVisibility(0);
+          bipi.a(this.a, 10);
+        }
+        for (;;)
+        {
+          bipi.e(this.a).setVisibility(8);
+          return;
+          bipi.c(this.a).setBackgroundResource(2130837605);
+          bipi.c(this.a).setVisibility(0);
+          bipi.d(this.a).setVisibility(8);
+        }
+      }
+      if (parambiwo == biwo.c)
+      {
+        bipi.a(this.a).setImageResource(2130843703);
+        bipi.a(this.a).setVisibility(0);
+        bipi.a(this.a).setBackgroundResource(2130837653);
+        bipi.c(this.a).setBackgroundResource(2130837604);
+        bipi.b(this.a).setVisibility(8);
+        bipi.d(this.a).setBackgroundResource(2130837607);
+        bipi.d(this.a).setVisibility(0);
+        bipi.a(this.a, 3);
+        bipi.e(this.a).setVisibility(0);
+        return;
+      }
+    } while (parambiwo != biwo.b);
+    bipi.a(this.a).setImageResource(2130843704);
+    bipi.a(this.a).setVisibility(8);
   }
 }
 

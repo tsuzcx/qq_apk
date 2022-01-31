@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class TroopStatisticsInfo
-  extends aukm
+  extends auko
 {
   public long count;
-  @auma
+  @aumc
   public String troopUin;
 }
 

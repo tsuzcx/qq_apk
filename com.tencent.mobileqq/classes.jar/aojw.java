@@ -1,66 +1,66 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aojw
-  implements aojv
+  extends aojv
 {
-  private final HashSet<LoadingLayoutBase> a = new HashSet();
+  public final String b;
   
-  public void a(LoadingLayoutBase paramLoadingLayoutBase)
+  aojw(aojx paramaojx, int paramInt)
   {
-    if (paramLoadingLayoutBase != null) {
-      this.a.add(paramLoadingLayoutBase);
+    super(paramaojx, paramInt);
+    this.jdField_b_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "requestMatch id" + paramInt);
+    Object localObject = new aofu();
+    ((aofu)localObject).jdField_b_of_type_Int = paramInt;
+    this.a.a(101, (aofu)localObject);
+    localObject = (aoet)this.a.a.a(127);
+    if (localObject != null)
+    {
+      int i = aojc.a(this.a.a);
+      ((aoet)localObject).a(this.a.a.getCurrentAccountUin(), i, paramInt);
     }
   }
   
-  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
-    }
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCancelMatchMsg 取消匹配: " + paramBoolean);
   }
   
-  public void setLoadingDrawable(Drawable paramDrawable)
+  void a(boolean paramBoolean, int paramInt, aofu paramaofu, String paramString)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    if ((paramBoolean) && (paramaofu != null))
+    {
+      QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配 " + paramInt + paramaofu.toString());
+      return;
     }
+    paramaofu = paramString;
+    if (paramString == null) {
+      paramaofu = "";
+    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onCSRequestMsg 请求匹配失败 suc:" + paramBoolean + " ret:" + paramInt + " errMsg : " + paramaofu);
   }
   
-  public void setPullLabel(CharSequence paramCharSequence)
+  void a(boolean paramBoolean, aofu paramaofu)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
+    if (paramaofu == null)
+    {
+      QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg null indo");
+      return;
     }
-  }
-  
-  public void setRefreshResultLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
+    QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
+    if (paramBoolean)
+    {
+      a(paramaofu.jdField_b_of_type_JavaLangString, paramaofu.jdField_a_of_type_JavaLangString, paramaofu.jdField_a_of_type_ArrayOfByte);
+      c(paramaofu);
+      a(paramaofu.jdField_b_of_type_JavaLangString, paramaofu.e);
+      return;
     }
-  }
-  
-  public void setRefreshingLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
-    }
-  }
-  
-  public void setReleaseLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
-    }
+    QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
   }
 }
 

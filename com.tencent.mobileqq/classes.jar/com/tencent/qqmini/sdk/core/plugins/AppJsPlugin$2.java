@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begy;
-import beka;
-import bekg;
+import behp;
+import bekr;
+import bekx;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class AppJsPlugin$2
   implements AsyncResult
 {
-  AppJsPlugin$2(AppJsPlugin paramAppJsPlugin, beka parambeka) {}
+  AppJsPlugin$2(AppJsPlugin paramAppJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     if (paramBoolean)
     {
-      paramJSONObject = bekg.a(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
-      this.val$req.jdField_a_of_type_Begy.a(this.val$req.b, paramJSONObject.toString());
+      paramJSONObject = bekx.a(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
+      this.val$req.jdField_a_of_type_Behp.a(this.val$req.b, paramJSONObject.toString());
       return;
     }
-    paramJSONObject = bekg.b(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
-    this.val$req.jdField_a_of_type_Begy.a(this.val$req.b, paramJSONObject.toString());
+    paramJSONObject = bekx.b(this.val$req.jdField_a_of_type_JavaLangString, paramJSONObject);
+    this.val$req.jdField_a_of_type_Behp.a(this.val$req.b, paramJSONObject.toString());
   }
 }
 

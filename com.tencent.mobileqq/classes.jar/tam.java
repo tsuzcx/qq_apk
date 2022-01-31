@@ -1,24 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
-
 public class tam
-  extends tbe
+  extends ssh
 {
-  qqstory_service.RspLikeFeed a;
-  
-  public tam() {}
-  
-  public tam(qqstory_service.RspLikeFeed paramRspLikeFeed)
-  {
-    super(paramRspLikeFeed.result);
-    this.a = paramRspLikeFeed;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

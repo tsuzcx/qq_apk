@@ -1,18 +1,31 @@
-import com.idlefish.flutterboost.FlutterBoost.BoostPluginsRegister;
-import com.tencent.qflutter.TextPlatformViewPlugin;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import android.content.Context;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-final class aqah
-  implements FlutterBoost.BoostPluginsRegister
+public class aqah
+  implements INativeRouter
 {
-  public void registerPlugins(PluginRegistry paramPluginRegistry)
+  private static aqah a;
+  
+  public static aqah a()
   {
-    GeneratedPluginRegistrant.registerWith(paramPluginRegistry);
-    paramPluginRegistry = paramPluginRegistry.registrarFor("TextPlatformViewPlugin");
-    TextPlatformViewPlugin.register(paramPluginRegistry);
-    apzi.a().a(paramPluginRegistry.messenger());
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aqah();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
+    }
   }
 }
 

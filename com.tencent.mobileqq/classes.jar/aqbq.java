@@ -1,31 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-
-class aqbq
-  implements DialogInterface.OnClickListener
+public abstract interface aqbq
 {
-  aqbq(aqbp paramaqbp, int paramInt, Bundle paramBundle) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aqbp.jdField_a_of_type_AndroidOsResultReceiver != null)
-    {
-      paramDialogInterface = this.jdField_a_of_type_Aqbp.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Aqbp.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
-    }
-    if (this.jdField_a_of_type_Aqbp.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      this.jdField_a_of_type_Aqbp.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_Aqbp.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbq
  * JD-Core Version:    0.7.0.1
  */

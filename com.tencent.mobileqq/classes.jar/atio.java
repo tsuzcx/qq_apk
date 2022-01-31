@@ -3,9 +3,9 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 final class atio
-  implements bcwh
+  implements bcww
 {
-  atio(String paramString, atis paramatis) {}
+  atio(String paramString, atiu paramatiu) {}
   
   public void a(BaseResp paramBaseResp)
   {
@@ -15,15 +15,15 @@ final class atio
       if (paramBaseResp.errCode != 0) {
         break label50;
       }
-      if (this.jdField_a_of_type_Atis != null) {
-        this.jdField_a_of_type_Atis.a(true);
+      if (this.jdField_a_of_type_Atiu != null) {
+        this.jdField_a_of_type_Atiu.a(true);
       }
     }
     label50:
-    while (this.jdField_a_of_type_Atis == null) {
+    while (this.jdField_a_of_type_Atiu == null) {
       return;
     }
-    this.jdField_a_of_type_Atis.a(false);
+    this.jdField_a_of_type_Atiu.a(false);
   }
 }
 

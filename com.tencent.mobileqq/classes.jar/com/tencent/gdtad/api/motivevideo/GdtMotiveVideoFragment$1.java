@@ -2,7 +2,7 @@ package com.tencent.gdtad.api.motivevideo;
 
 import android.app.Activity;
 import android.content.Intent;
-import yuz;
+import yuw;
 
 final class GdtMotiveVideoFragment$1
   implements Runnable
@@ -11,9 +11,9 @@ final class GdtMotiveVideoFragment$1
   
   public void run()
   {
-    yuz localyuz = new yuz(this.jdField_a_of_type_AndroidAppActivity);
-    localyuz.a(this.jdField_a_of_type_AndroidContentIntent);
-    localyuz.show();
+    yuw localyuw = new yuw(this.jdField_a_of_type_AndroidAppActivity);
+    localyuw.a(this.jdField_a_of_type_AndroidContentIntent);
+    localyuw.show();
   }
 }
 

@@ -1,34 +1,21 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aghn
-  extends akav
+public class aghn
+  implements DialogInterface.OnClickListener
 {
-  aghn(aghm paramaghm) {}
+  public aghn(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aghm.a(this.a) != null) {
-      aghm.a(this.a).a(paramString1);
+    if (!this.a.a()) {
+      ((bbrd)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bbod.a, -1);
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akas paramakas)
-  {
-    if (aghm.a(this.a) != null) {
-      aghm.a(this.a).a(paramString);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (aghm.a(this.a) != null) {
-      aghm.a(this.a).a(paramString);
-    }
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
+    axqy.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
   }
 }
 

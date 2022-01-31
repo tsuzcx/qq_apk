@@ -1,20 +1,10 @@
-class wzs
-  extends wzu
+public class wzs
 {
-  public wzs(wyw paramwyw, wzv paramwzv, String paramString)
-  {
-    super(paramwyw, paramwzv, paramString);
-  }
+  public wzs(wyt paramwyt) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Wyw.a.a();
-    wzg localwzg = a();
-    this.jdField_a_of_type_Wyw.a.a(localwzg.e, localwzg.jdField_a_of_type_JavaLangString, localwzg.jdField_a_of_type_Int, new wzt(this));
-    this.jdField_a_of_type_Wzv.b(this);
-    this.jdField_a_of_type_Wzu = new wzf(this.jdField_a_of_type_Wyw, this.jdField_a_of_type_Wzv, this.c);
-    b();
-  }
+  public void a(wzr paramwzr) {}
+  
+  public void b(wzr paramwzr) {}
 }
 
 

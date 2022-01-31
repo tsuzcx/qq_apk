@@ -1,29 +1,11 @@
 class atln
-  implements ufo
+  implements ufj
 {
-  atln(atlk paramatlk, atlb paramatlb) {}
+  atln(atlm paramatlm, atla paramatla) {}
   
-  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
+  public void a(ufh paramufh)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Atlb.a(this.jdField_a_of_type_Atlk, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    this.jdField_a_of_type_Atla.a(this.jdField_a_of_type_Atlm);
   }
 }
 

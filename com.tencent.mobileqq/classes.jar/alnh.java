@@ -1,203 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
 import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class alnh
-  extends alpd
+  implements alni
 {
-  private alni jdField_a_of_type_Alni = new alni(this, null);
-  private alnk jdField_a_of_type_Alnk = new alnk(this, null);
-  private alny jdField_a_of_type_Alny = new alny(this, null);
-  private aloa jdField_a_of_type_Aloa = new aloa(this, null);
-  public alop a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private HashMap<String, alnj> b = new ArkAppDeviceModule.1(this);
+  private alnh(alng paramalng) {}
   
-  public alnh(ark.Application paramApplication, long paramLong)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    super(paramApplication, paramLong);
-    this.jdField_a_of_type_Alop = new alop(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  private void a(long paramLong, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doScanCodeCallback cbId=" + paramLong + ", scanResult=" + paramString1 + ", scanType=" + paramString2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = a(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    int i;
-    ark.VariantWrapper localVariantWrapper2;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      i = 1;
-      localVariantWrapper2 = localVariantWrapper1.Create();
-      if (i == 0) {
-        break label186;
-      }
-      if (!"QR_CODE".equalsIgnoreCase(paramString2)) {
-        break label179;
-      }
-      paramString2 = "QRCode";
-      label104:
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"result\":\"%s\",\"type\":\"%s\",\"charset\":\"%s\"}", new Object[] { paramString1, paramString2, "utf-8" }));
-    }
-    for (;;)
-    {
-      paramString1 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString1);
-      paramString1.Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      return;
-      i = 0;
-      break;
-      label179:
-      paramString2 = "BarCode";
-      break label104;
-      label186:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doPositionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", lat=" + paramDouble1 + ", lng=" + paramDouble2);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"latitude\":%.6f,\"longitude\":%.6f}", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) }));
-    }
-    for (;;)
-    {
-      ark.VariantWrapper localVariantWrapper3 = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, localVariantWrapper3);
-      localVariantWrapper3.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doConnectionCallback cbId=" + paramLong + ", success=" + paramBoolean + ", netType=" + paramString);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    if (paramBoolean) {
-      localVariantWrapper2.SetString(paramString);
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  private void a(long paramLong, boolean paramBoolean, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "doSensorCallback cbId=" + paramLong + ", success=" + paramBoolean + ", sensorEventType=" + paramString + ", argA=" + paramFloat1 + ", argB=" + paramFloat2 + ", argC=" + paramFloat3);
-    }
-    ark.VariantWrapper localVariantWrapper1 = b(paramLong);
-    if (localVariantWrapper1 == null) {
-      return;
-    }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    String str = null;
-    if ("Motion".equals(paramString))
-    {
-      str = "{\"x\":%.6f,\"y\":%.6f,\"z\":%.6f}";
-      if ((!paramBoolean) || (TextUtils.isEmpty(str))) {
-        break label220;
-      }
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, str, new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3) }));
-    }
-    for (;;)
-    {
-      paramString = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, paramString);
-      paramString.Reset();
-      localVariantWrapper2.Reset();
-      return;
-      if (!"Orientation".equals(paramString)) {
-        break;
-      }
-      str = "{\"alpha\":%.6f,\"beta\":%.6f,\"gamma\":%.6f}";
-      break;
-      label220:
-      localVariantWrapper2.SetNull();
-    }
-  }
-  
-  public void Destruct()
-  {
-    if (this.jdField_a_of_type_Alop != null) {
-      this.jdField_a_of_type_Alop.a();
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
-    try
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label31:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      super.Destruct();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label31;
-    }
-  }
-  
-  public String GetTypeName()
-  {
-    return "Device";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    return (this.b != null) && (this.b.containsKey(paramString)) && (this.b.get(paramString) != null);
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppDeviceModule", 2, "invokeFunc=" + paramString);
-    }
-    if (!a(paramString)) {
+    if (!aloy.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
       return false;
     }
-    if (this.b != null)
+    if (!AppNetConnInfo.isNetSupport()) {
+      paramVariantWrapper.SetString("none");
+    }
+    for (;;)
     {
-      alnj localalnj = (alnj)this.b.get(paramString);
-      if (localalnj != null) {
-        return localalnj.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      return true;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        paramVariantWrapper.SetString("wifi");
+      }
+      else if (AppNetConnInfo.isMobileConn())
+      {
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i == 0) {
+          paramVariantWrapper.SetString("none");
+        } else if (-1 == i) {
+          paramVariantWrapper.SetString("other");
+        } else {
+          paramVariantWrapper.SetString("cellular");
+        }
       }
     }
-    return false;
   }
 }
 

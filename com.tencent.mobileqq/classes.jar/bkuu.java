@@ -1,17 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-
 public class bkuu
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bkuu(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String toString()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    return "danceScoreRate : " + this.jdField_a_of_type_JavaLangString + "\ndanceScore : " + this.jdField_a_of_type_Int + "\nptvCategory : " + this.jdField_b_of_type_JavaLangString + "\nptvId : " + this.jdField_c_of_type_JavaLangString + " \nactivityType : " + this.jdField_d_of_type_JavaLangString + "\nactivityId : " + this.e + "\noverPercent : " + this.f + "\nuseSpecialShare : " + this.jdField_a_of_type_Boolean + "\nshareWebUrl : " + this.g + "\nisShookHead : " + this.jdField_b_of_type_Boolean + "\nisRandomFortune : " + this.jdField_c_of_type_Boolean + "\nisFoolsDay : " + this.jdField_d_of_type_Boolean + "\nshookHeadCount : " + this.jdField_b_of_type_Int;
   }
 }
 

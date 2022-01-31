@@ -1,124 +1,170 @@
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.ChirpSoData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
-import mqq.os.MqqHandler;
+import java.lang.reflect.Field;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class anpg
-  extends anpi
+  extends DefaultHandler
 {
-  private LinkedList<anph> a = new LinkedList();
-  private QQAppInterface b;
-  private boolean d;
+  private XmlData jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
+  private Class<? extends XmlData> jdField_a_of_type_JavaLangClass;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   
-  public anpg(QQAppInterface paramQQAppInterface)
+  public anpg(Class<? extends XmlData> paramClass)
   {
-    super("qq.android.system.chirp", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
   
-  public int a()
+  public XmlData a()
   {
-    return 10040;
+    return this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
   }
   
-  public Class<? extends XmlData> a()
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    return ChirpSoData.class;
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramArrayOfChar, paramInt1, paramInt2);
   }
   
-  public String a()
+  public void endDocument()
   {
-    return "actEarlyChirpSo";
+    this.jdField_a_of_type_JavaLangStringBuilder = null;
   }
   
-  public void a(anph paramanph)
+  public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    synchronized (this.a)
-    {
-      if (!this.a.contains(paramanph)) {
-        this.a.add(paramanph);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
-    }
-    paramString = new ChirpSoHandler.1(this, paramString);
-    if (Looper.getMainLooper() == Looper.myLooper()) {
-      ThreadManager.getSubThreadHandler().post(paramString);
-    }
-    for (;;)
-    {
-      BaseApplicationImpl.sUiHandler.post(new ChirpSoHandler.2(this));
-      return;
-      paramString.run();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "restartDownload " + paramBoolean);
-    }
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    if ((a() != null) && (a().loadState == 2))
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "is in downloading");
+        QLog.e("EarlyDown", 2, "endElement() return. data is null.");
       }
+    }
+    label21:
+    label278:
+    do
+    {
+      do
+      {
+        break label21;
+        for (;;)
+        {
+          return;
+          if (!this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2))
+          {
+            paramString1 = anpb.a(this.jdField_a_of_type_JavaLangClass, paramString2);
+            if (paramString1 == null)
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.e("EarlyDown", 2, "endElement() return.can't find 'Field:" + paramString2);
+              return;
+            }
+            if (!paramString1.isAccessible()) {
+              paramString1.setAccessible(true);
+            }
+            paramString2 = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+            try
+            {
+              paramString3 = paramString1.getType();
+              if (paramString3 == String.class)
+              {
+                paramString1.set(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, paramString2);
+                return;
+              }
+            }
+            catch (NumberFormatException paramString1)
+            {
+              if (QLog.isColorLevel())
+              {
+                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+                return;
+                if (paramString3 == Long.TYPE)
+                {
+                  long l = Long.parseLong(paramString2);
+                  paramString1.setLong(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, l);
+                  return;
+                }
+              }
+            }
+            catch (IllegalArgumentException paramString1)
+            {
+              if (QLog.isColorLevel())
+              {
+                QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+                return;
+                if (paramString3 != Double.TYPE) {
+                  break label278;
+                }
+                double d = Double.parseDouble(paramString2);
+                paramString1.setDouble(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, d);
+                return;
+              }
+            }
+            catch (IllegalAccessException paramString1) {}
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("EarlyDown", 2, "endElement() throws exception:" + paramString1.getMessage());
+      return;
+      if (paramString3 == Integer.TYPE)
+      {
+        int i = Integer.parseInt(paramString2);
+        paramString1.setInt(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, i);
+        return;
+      }
+      if (paramString3 == Float.TYPE)
+      {
+        float f = Float.parseFloat(paramString2);
+        paramString1.setFloat(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, f);
+        return;
+      }
+      if (paramString3 == Short.TYPE)
+      {
+        short s = Short.parseShort(paramString2);
+        paramString1.setShort(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, s);
+        return;
+      }
+      if (paramString3 == Byte.TYPE)
+      {
+        byte b = Byte.parseByte(paramString2);
+        paramString1.setByte(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, b);
+        return;
+      }
+      if (paramString3 == Boolean.TYPE)
+      {
+        boolean bool = Boolean.parseBoolean(paramString2);
+        paramString1.setBoolean(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData, bool);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("EarlyDown", 2, "endElement() return. Type:" + paramString3.toString() + " is NOT SUPPORT!");
+  }
+  
+  public void startDocument()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+    if (this.jdField_a_of_type_JavaLangClass.getSimpleName().equals(paramString2)) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData = ((XmlData)this.jdField_a_of_type_JavaLangClass.newInstance());
       return;
     }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void b(anph paramanph)
-  {
-    synchronized (this.a)
+    catch (InstantiationException paramString1)
     {
-      this.a.remove(paramanph);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
       return;
     }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
+    catch (IllegalAccessException paramString1)
     {
-      this.b.E();
-      if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "isNetValid2Download by user " + AppSetting.d);
-      }
-      return AppSetting.d;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("EarlyDown", 2, "startElement() throw exceptin:" + paramString1.getMessage());
     }
-    this.b.E();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "isNetValid2Download by startup " + AppSetting.d);
-    }
-    return (AppSetting.d) && (super.b());
   }
 }
 

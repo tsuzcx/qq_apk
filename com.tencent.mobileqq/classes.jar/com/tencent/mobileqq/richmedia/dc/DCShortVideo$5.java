@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import avws;
-import avwz;
+import avwu;
+import avxb;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$5
   implements Runnable
 {
-  public DCShortVideo$5(avws paramavws, int paramInt, boolean paramBoolean) {}
+  public DCShortVideo$5(avwu paramavwu, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    avwz localavwz = new avwz();
-    localavwz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localavwz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    DataReport.ReportTask localReportTask = new DataReport.ReportTask("RealShortVideo.Record", localavwz.a("RealShortVideo.Record"));
+    avxb localavxb = new avxb();
+    localavxb.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localavxb.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    DataReport.ReportTask localReportTask = new DataReport.ReportTask("RealShortVideo.Record", localavxb.a("RealShortVideo.Record"));
     DataReport.a().a(localReportTask);
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "cameraID=" + localavwz.jdField_a_of_type_Int + ",hasMultiSegments=" + localavwz.jdField_a_of_type_Boolean);
+      QLog.d("DCShortVideo", 4, "cameraID=" + localavxb.jdField_a_of_type_Int + ",hasMultiSegments=" + localavxb.jdField_a_of_type_Boolean);
     }
   }
 }

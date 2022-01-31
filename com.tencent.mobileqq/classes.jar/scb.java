@@ -1,6 +1,12 @@
-class scb
+import android.graphics.drawable.Drawable;
+
+public class scb
 {
-  private scb(sbx paramsbx) {}
+  int jdField_a_of_type_Int;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.report;
 
-import besl;
-import beyu;
+import betc;
+import bezl;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -14,10 +14,10 @@ public final class SDKMiniProgramLpReportDC04239$8
   public void run()
   {
     if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      besl.a("MiniProgramLpReportDC04239", "reportApiInvoke() called with args: " + this.jdField_a_of_type_JavaLangString);
+      betc.a("MiniProgramLpReportDC04239", "reportApiInvoke() called with args: " + this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {
-      beyu.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, beyu.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "inner-app", "from_api", this.jdField_a_of_type_JavaLangString);
+      bezl.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), null, "inner-app", "from_api", this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import axrl;
+import axrn;
 import com.tencent.qphone.base.util.QLog;
 
 class QzoneModuleManager$2
@@ -10,9 +10,9 @@ class QzoneModuleManager$2
   
   public void run()
   {
-    int i = axrl.a();
+    int i = axrn.a();
     QLog.i("QzoneModuleManager", 1, "current versionNum is:" + i);
-    axrl.a(i + 6000);
+    axrn.a(i + 6000);
     QzoneModuleManager.access$102(this.this$0, true);
   }
 }

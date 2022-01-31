@@ -1,30 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 public class rcm
-  implements Animation.AnimationListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  public rcm(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
+  public rcm(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onFound(ViewBase paramViewBase)
   {
-    ImageView localImageView = ReadInJoyFastWebBottomSocialView.c(this.a);
-    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
-    for (int i = 2130842305;; i = 2130842307)
-    {
-      localImageView.setImageResource(i);
-      paramAnimation.setInterpolator(new AnticipateInterpolator());
-      return;
+    if ((paramViewBase instanceof pka)) {
+      ((pka)paramViewBase).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, 2);
     }
+    paramViewBase.setOnClickListener(new rcn(this));
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

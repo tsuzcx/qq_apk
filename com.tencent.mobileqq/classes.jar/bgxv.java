@@ -1,48 +1,29 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-public class bgxv
-  extends QzoneExternalRequest
+public final class bgxv
+  implements Parcelable.Creator<LbsDataV2.CellInfo>
 {
-  public JceStruct a;
-  
-  public bgxv(long paramLong1, long paramLong2, String paramString, Long paramLong)
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
-    PhotoWall localPhotoWall = new PhotoWall();
-    localPhotoWall.photoId = paramString;
-    localPhotoWall.ctime = paramLong.longValue();
-    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
-    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
-    this.a = localmobile_sub_del_photo_wall_req;
-  }
-  
-  public static JceStruct a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
     }
-    return decode(paramArrayOfByte, "delPhotoWall");
+    return localCellInfo;
   }
   
-  public String getCmdString()
+  public LbsDataV2.CellInfo[] a(int paramInt)
   {
-    return "QzoneNewService.delPhotoWall";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "delPhotoWall";
+    return null;
   }
 }
 

@@ -1,22 +1,30 @@
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import java.lang.ref.WeakReference;
 
 public class azvl
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  protected ImageView a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected RedDotAnimateView a;
+  protected WeakReference<BaseActivity> a;
   
-  public String toString()
-  {
-    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.jdField_c_of_type_JavaLangString + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.d + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_c_of_type_Long + '}';
-  }
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 

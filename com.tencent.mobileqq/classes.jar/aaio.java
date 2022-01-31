@@ -1,47 +1,51 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import java.util.Calendar;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaio
-  implements amng
+  implements admt
 {
-  private aaio(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public aaio(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public int a()
+  public void a()
   {
-    return 3;
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return AgeSelectionActivity.a(this.a) - AgeSelectionActivity.b(this.a) + 1;
-    case 1: 
-      return 12;
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, AgeSelectionActivity.c(this.a) + AgeSelectionActivity.b(this.a));
-    localCalendar.set(2, AgeSelectionActivity.d(this.a));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    Object localObject;
+    boolean bool;
+    if (ArkFullScreenAppActivity.a(this.a) != null)
+    {
+      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Adlj;
+      if (localObject != null)
+      {
+        if ((!((adlj)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
+          break label135;
+        }
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        }
+        localObject = this.a.rightViewImg;
+        if (!bool) {
+          break label140;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      return;
+      label135:
+      bool = false;
+      break;
+      label140:
+      i = 4;
+    }
   }
   
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return AgeSelectionActivity.b(this.a) + paramInt2 + ajyc.a(2131700011);
-    case 1: 
-      return paramInt2 + 1 + ajyc.a(2131700008);
-    }
-    return paramInt2 + 1 + ajyc.a(2131700009);
-  }
+  public void b() {}
 }
 
 

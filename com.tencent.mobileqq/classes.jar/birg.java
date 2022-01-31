@@ -1,92 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.ae.data.AEMaterialMgr.1;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class birg
+  implements aysc
 {
-  private static long a;
+  public birg(AEMaterialMgr.1 param1, String paramString) {}
   
-  public static void a(Activity paramActivity, int paramInt1, int paramInt2, armb paramarmb)
+  public void onResp(aysz paramaysz)
   {
-    if (a()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(birf.a(), 2, "onResp url: " + this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.packageUrl + " resultcode: " + paramaysz.c);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VIDEO_STORY_FROM_TYPE", paramInt2);
-    localBundle.putInt("AECAMERA_MODE", 200);
-    localBundle.putInt("ability_flag", 2);
-    localBundle.putInt("edit_video_type", 10023);
-    if (paramarmb != null)
+    if (this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a)) {}
+    try
     {
-      localBundle.putBoolean("key_camera_prefer_id", paramarmb.jdField_a_of_type_Boolean);
-      localBundle.putBoolean("key_has_countdown", paramarmb.b);
-      localBundle.putBoolean("key_disable_face_detect", paramarmb.d);
-      localBundle.putBoolean("key_need_check_sensitive", paramarmb.c);
-      localBundle.putString("key_guide_image", paramarmb.jdField_a_of_type_JavaLangString);
-    }
-    QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt1);
-    paramActivity.overridePendingTransition(2130772217, 2130772038);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt, Bundle paramBundle)
-  {
-    if (a()) {
+      nav.a(new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id), biiu.e + File.separator);
+      birf.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+      birf.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).remove(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id);
       return;
     }
-    biwd.a().a("AECameraLauncher---launchAECameraUnit-begin");
-    vwm localvwm = vwm.a();
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("entrance_type", paramInt);
-    localBundle.putInt("edit_video_type", 10023);
-    localBundle.putInt("capture_intent_mode", 8);
-    if (((!avsx.a()) && (localBundle.getInt("VIDEO_STORY_JUMP_TO_TYPE", 0) != 0)) || ((localBundle.getInt("AECAMERA_MODE") == 202) && (amfw.d()))) {
-      avsx.a(1);
-    }
-    avsx.a();
-    localvwm.a(paramActivity, localBundle, 20000);
-    paramActivity.overridePendingTransition(2130772217, 2130772038);
-    vel.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    biwd.a().a("AECameraLauncher---launchAECameraUnit-end");
-    biwd.a().a(false);
-    biwd.a().c();
-  }
-  
-  public static void a(Context paramContext, Bundle paramBundle)
-  {
-    if (a()) {
-      return;
-    }
-    vwm localvwm = vwm.a();
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("edit_video_type", 10023);
-    localBundle.putInt("capture_intent_mode", 8);
-    if (((!avsx.a()) && (localBundle.getInt("VIDEO_STORY_JUMP_TO_TYPE", 0) != 0)) || ((localBundle.getInt("AECAMERA_MODE") == 202) && (amfw.d()))) {
-      avsx.a(1);
-    }
-    localvwm.a(paramContext, localBundle);
-    vel.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-  }
-  
-  private static boolean a()
-  {
-    long l = System.currentTimeMillis();
-    QLog.d("AECameraLauncher", 2, "pre: " + a + " cur: " + l);
-    if (Math.abs(l - a) < 500L)
+    catch (IOException paramaysz)
     {
-      QLog.d("AECameraLauncher", 2, "isFastClick.");
-      a = l;
-      return true;
+      while (!QLog.isColorLevel()) {}
+      paramaysz.printStackTrace();
     }
-    a = l;
-    return false;
+  }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  {
+    birf.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a, (int)(paramLong1 / paramLong2 * 100L));
+    if (!birf.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).containsKey(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id)) {
+      birf.a(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.this$0).put(this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a.id, this.jdField_a_of_type_DovComQqImAeDataAEMaterialMgr$1.a);
+    }
   }
 }
 

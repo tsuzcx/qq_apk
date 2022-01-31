@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bkoa
-  implements View.OnClickListener
+class bkoa
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bkoa(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  bkoa(bknw parambknw) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a(this.a.getContext());
+    this.a.invalidateSelf();
   }
 }
 

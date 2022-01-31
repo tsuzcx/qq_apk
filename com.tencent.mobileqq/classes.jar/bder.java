@@ -1,48 +1,8 @@
-import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistant.common.ProtocolPackage;
-import com.tencent.tmassistant.common.jce.ReqHead;
-import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistant.common.jce.SdkInfo;
-import com.tencent.tmassistant.common.jce.Ticket;
-import com.tencent.tmassistant.common.jce.TicketWtLogin;
-import com.tencent.tmassistantbase.network.PostHttpRequest;
-
-public abstract class bder
-  extends PostHttpRequest
+public class bder
 {
-  public int a(JceStruct paramJceStruct)
+  public static String a(String paramString1, String paramString2)
   {
-    try
-    {
-      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
-      if (paramJceStruct == null) {
-        return -1;
-      }
-    }
-    catch (Throwable paramJceStruct)
-    {
-      for (;;)
-      {
-        paramJceStruct = null;
-      }
-      Object localObject = new SdkInfo();
-      ((SdkInfo)localObject).versionCode = 1;
-      ((SdkInfo)localObject).versionName = bcxm.a().c();
-      ((SdkInfo)localObject).name = "AppNews";
-      ((SdkInfo)localObject).channel = "";
-      ((SdkInfo)localObject).builderNum = "";
-      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
-      localObject = new TicketWtLogin();
-      ((TicketWtLogin)localObject).uin = bcxm.a().a();
-      ((TicketWtLogin)localObject).A2 = bcxm.a().b().getBytes();
-      Ticket localTicket = new Ticket();
-      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
-      localTicket.type = 1;
-      paramJceStruct.head.ticket = localTicket;
-      int i = paramJceStruct.head.requestId;
-      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
-      return i;
-    }
+    return String.format("http://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
   }
 }
 

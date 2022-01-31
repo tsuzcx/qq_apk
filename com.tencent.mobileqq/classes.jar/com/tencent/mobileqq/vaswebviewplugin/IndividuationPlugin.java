@@ -8,14 +8,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
-import anql;
-import anqp;
-import axqw;
-import aymi;
-import bbbd;
-import bbpp;
-import bcbv;
-import bcdb;
+import anqq;
+import anqu;
+import axqy;
+import aymk;
+import bbbr;
+import bbqd;
+import bccj;
+import bcdp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
@@ -66,7 +66,7 @@ public class IndividuationPlugin
   protected void getFontType(JSONObject paramJSONObject, String paramString)
   {
     paramJSONObject = new Bundle();
-    super.sendRemoteReq(anqp.a("isSupportFont", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
+    super.sendRemoteReq(anqu.a("isSupportFont", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -169,7 +169,7 @@ public class IndividuationPlugin
       paramBundle.putExtra("uin", this.mRuntime.a().getAccount());
       paramBundle.putExtra("isShowAd", false);
       paramBundle.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramBundle.putExtra("url", bbpp.a(this.mActivity, "card", "inside.myIndividuationWeb"));
+      paramBundle.putExtra("url", bbqd.a(this.mActivity, "card", "inside.myIndividuationWeb"));
       this.mActivity.startActivity(paramBundle);
       return;
     }
@@ -197,7 +197,7 @@ public class IndividuationPlugin
         paramBundle.putExtra("hide_left_button", false);
         paramBundle.putExtra("show_right_close_button", false);
         paramBundle.putExtra("startOpenPageTime", System.currentTimeMillis());
-        VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbpp.a(this.mActivity, "font", ""), 4096L, paramBundle, false, -1);
+        VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbqd.a(this.mActivity, "font", ""), 4096L, paramBundle, false, -1);
         return;
       }
       paramBundle = new Intent(this.mActivity, ChatTextSizeSettingActivity.class);
@@ -239,15 +239,15 @@ public class IndividuationPlugin
           if (!BaseApplicationImpl.IS_SUPPORT_THEME) {
             continue;
           }
-          aymi.a(null, "theme_detail", "205", 150, 1, i, ThemeUtil.getUserCurrentThemeId(this.mRuntime.a()), ThemeUtil.getUserCurrentThemeVersion(this.mRuntime.a()), "2", "");
+          aymk.a(null, "theme_detail", "205", 150, 1, i, ThemeUtil.getUserCurrentThemeId(this.mRuntime.a()), ThemeUtil.getUserCurrentThemeVersion(this.mRuntime.a()), "2", "");
           if (!BaseApplicationImpl.IS_SUPPORT_THEME)
           {
-            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131720222), 0).show();
+            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131720233), 0).show();
             return;
           }
-          if (!bbbd.a())
+          if (!bbbr.a())
           {
-            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131719044), 0).show();
+            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131719055), 0).show();
             return;
           }
         }
@@ -261,7 +261,7 @@ public class IndividuationPlugin
           return;
           paramJSONObject = new Intent(this.mActivity, QQBrowserActivity.class);
           paramJSONObject.putExtra("updateFlag", false);
-          VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbpp.a(this.mActivity, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramJSONObject, true, 0);
+          VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbqd.a(this.mActivity, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, paramJSONObject, true, 0);
           return;
           if ("500".equals(localObject))
           {
@@ -270,24 +270,24 @@ public class IndividuationPlugin
             paramJSONObject.putExtra("selfSet_leftViewText", this.mActivity.getString(2131690572));
             paramJSONObject.putExtra("hide_left_button", false);
             paramJSONObject.putExtra("show_right_close_button", false);
-            paramJSONObject.putExtra("url", bbpp.a(this.mActivity, "background", ""));
+            paramJSONObject.putExtra("url", bbqd.a(this.mActivity, "background", ""));
             paramJSONObject.putExtra("startOpenPageTime", System.currentTimeMillis());
             paramJSONObject.putExtra("vasUsePreWebview", true);
-            VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bbpp.a(this.mRuntime.a(), "background", ""), 33554432L, paramJSONObject, true, 1);
-            axqw.b(null, "CliOper", "", "", "0X8004E0D", "0X8004E0D", 0, 0, "", "", "", "");
+            VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bbqd.a(this.mRuntime.a(), "background", ""), 33554432L, paramJSONObject, true, 1);
+            axqy.b(null, "CliOper", "", "", "0X8004E0D", "0X8004E0D", 0, 0, "", "", "", "");
             return;
           }
           if ("200".equals(localObject))
           {
             paramJSONObject = new Intent(this.mActivity, QQBrowserActivity.class);
             paramJSONObject.putExtra("updateFlag", false);
-            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbpp.a(this.mActivity, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramJSONObject, false, -1);
+            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbqd.a(this.mActivity, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramJSONObject, false, -1);
             return;
           }
           if ("100".equals(localObject))
           {
             paramJSONObject = new Bundle();
-            super.sendRemoteReq(anqp.a("openEmojiMall", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
+            super.sendRemoteReq(anqu.a("openEmojiMall", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
             return;
           }
           if ("101".equals(localObject))
@@ -296,39 +296,39 @@ public class IndividuationPlugin
             localObject = new Bundle();
             ((Bundle)localObject).putString("pkgId", paramJSONObject);
             ((Bundle)localObject).putBoolean("isQFace", Boolean.valueOf(false).booleanValue());
-            super.sendRemoteReq(anqp.a("openEmojiDetail", paramString, this.mOnRemoteResp.key, (Bundle)localObject), true, true);
+            super.sendRemoteReq(anqu.a("openEmojiDetail", paramString, this.mOnRemoteResp.key, (Bundle)localObject), true, true);
             return;
           }
           if ("400".equals(localObject))
           {
-            if (!bbbd.a())
+            if (!bbbr.a())
             {
-              Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131719044), 0).show();
+              Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131719055), 0).show();
               return;
             }
             paramJSONObject = new Intent(this.mActivity, QQBrowserActivity.class);
             paramJSONObject.putExtra("startOpenPageTime", System.currentTimeMillis());
             paramJSONObject.putExtra("hide_left_button", false);
             paramJSONObject.putExtra("show_right_close_button", false);
-            paramJSONObject.putExtra("url", bbpp.a(this.mActivity, "pendant", ""));
+            paramJSONObject.putExtra("url", bbqd.a(this.mActivity, "pendant", ""));
             paramJSONObject.putExtra("business", 512L);
             paramJSONObject.putExtra("vasUsePreWebview", true);
             VasWebviewUtil.insertVasWbPluginToIntent(512L, paramJSONObject);
             paramJSONObject.putExtra("isShowAd", false);
             this.mActivity.startActivity(paramJSONObject);
-            axqw.b(null, "CliOper", "", "", "PendantMarket", "WebEntrance", 0, 0, "", "", "", "");
+            axqy.b(null, "CliOper", "", "", "PendantMarket", "WebEntrance", 0, 0, "", "", "", "");
             return;
           }
           if ("300".equals(localObject))
           {
             paramJSONObject = new Bundle();
-            sendRemoteReq(anqp.a("openFontSetting", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
+            sendRemoteReq(anqu.a("openFontSetting", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
             return;
           }
           if ("700".equals(localObject))
           {
             paramJSONObject = new Bundle();
-            super.sendRemoteReq(anqp.a("openProfileCard", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
+            super.sendRemoteReq(anqu.a("openProfileCard", paramString, this.mOnRemoteResp.key, paramJSONObject), true, true);
             return;
           }
           if ("800".equals(localObject))
@@ -337,7 +337,7 @@ public class IndividuationPlugin
             paramJSONObject.putExtra("hide_left_button", false);
             paramJSONObject.putExtra("show_right_close_button", false);
             paramJSONObject.putExtra("startOpenPageTime", System.currentTimeMillis());
-            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbpp.a(this.mActivity, "suit", "mvip.gongneng.android.gxsuit"), 262144L, paramJSONObject, false, -1);
+            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbqd.a(this.mActivity, "suit", "mvip.gongneng.android.gxsuit"), 262144L, paramJSONObject, false, -1);
             return;
           }
           if ("900".equals(localObject))
@@ -346,13 +346,13 @@ public class IndividuationPlugin
             paramJSONObject.putExtra("hide_left_button", false);
             paramJSONObject.putExtra("show_right_close_button", false);
             paramJSONObject.putExtra("startOpenPageTime", System.currentTimeMillis());
-            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbpp.a(this.mActivity, "ring", "mvip.gongneng.anroid.individuation.web"), 4194304L, paramJSONObject, false, -1);
+            VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, bbqd.a(this.mActivity, "ring", "mvip.gongneng.anroid.individuation.web"), 4194304L, paramJSONObject, false, -1);
             return;
           }
           if ("0".equals(localObject))
           {
             paramString = new Intent(this.mActivity, QQBrowserActivity.class);
-            paramJSONObject = URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.getCurrentAccountUin()).replace("{client}", "androidQQ").replace("{version}", "8.2.8.4440").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext()));
+            paramJSONObject = URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.getCurrentAccountUin()).replace("{client}", "androidQQ").replace("{version}", "8.3.0.4480").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext()));
             paramString.putExtra("url", paramJSONObject);
             VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, paramJSONObject, -1L, paramString, false, -1);
             return;
@@ -394,7 +394,7 @@ public class IndividuationPlugin
           {
             paramJSONObject = paramJSONObject.a.c;
             paramJSONObject.setVisibility(0);
-            paramJSONObject.setText(2131695242);
+            paramJSONObject.setText(2131695243);
             paramJSONObject.setOnClickListener(new IndividuationPlugin.1(this));
             return;
           }

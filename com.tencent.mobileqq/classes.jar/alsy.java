@@ -1,6 +1,6 @@
 public abstract interface alsy
 {
-  public abstract Object a(int paramInt, Object paramObject);
+  public abstract void a(int paramInt, String paramString, Object paramObject);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import vva;
-import vvb;
+import vux;
+import vuy;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(vvb paramvvb) {}
+  public EditVideoTagPresenter$1$1(vuy paramvuy) {}
   
   public void run()
   {
-    vva.a(vva.a(this.a.a), vva.a(this.a.a));
+    vux.a(vux.a(this.a.a), vux.a(this.a.a));
   }
 }
 

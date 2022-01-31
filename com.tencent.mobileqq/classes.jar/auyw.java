@@ -1,17 +1,20 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class auyw
-  implements bbkq<Rect>
+  implements Animation.AnimationListener
 {
-  public auyw(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public auyw(BreatheEffectView paramBreatheEffectView, auzb paramauzb) {}
   
-  public void a(bbkk<Rect> parambbkk, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    this.jdField_a_of_type_Auzb.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

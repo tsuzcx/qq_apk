@@ -1,95 +1,38 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
-public abstract class baok
-  extends bfvm
+public class baok
+  implements Animator.AnimatorListener
 {
-  protected final int a;
-  protected final int[] a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public baok(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public baok(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    super(paramInt1, paramInt2);
-    this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.b = paramArrayOfInt3;
-    this.c = paramArrayOfInt4;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((paramObject instanceof Object[]))
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramObject = (Object[])paramObject;
-      if ((paramObject.length != 2) || (!(paramObject[1] instanceof azpg))) {
-        break label229;
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
       }
     }
-    label90:
-    label229:
-    for (azpg localazpg = (azpg)paramObject[1];; localazpg = null)
-    {
-      localObject1 = localObject2;
-      if (parambfvo != null)
-      {
-        localObject1 = localObject2;
-        if (parambfvo.jdField_a_of_type_Int >= 0)
-        {
-          localObject1 = localObject2;
-          if (parambfvo.b >= 0)
-          {
-            if (localazpg != null) {
-              break label90;
-            }
-            localObject1 = localObject2;
-          }
-        }
-      }
-      do
-      {
-        return localObject1;
-        paramObject = localObject3;
-        if ((parambfvo.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-          paramObject = (SimpleTextView)parambfvo.jdField_a_of_type_AndroidViewView;
-        }
-        localObject1 = paramObject;
-      } while (paramObject == null);
-      paramInt = this.b[parambfvo.b];
-      int i = this.c[parambfvo.b];
-      int j = this.jdField_a_of_type_ArrayOfInt[parambfvo.b];
-      paramObject.setVisibility(0);
-      paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
-      paramObject.setBackgroundResource(i);
-      paramObject.setId(j);
-      paramObject.setTag(localazpg);
-      paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
-      paramObject.setOnClickListener(paramOnClickListener);
-      parambfvo.c = this.d[parambfvo.jdField_a_of_type_Int];
-      parambfvo.d = this.jdField_a_of_type_Int;
-      return paramObject;
-    }
   }
   
-  public View a(Context paramContext, int paramInt)
-  {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

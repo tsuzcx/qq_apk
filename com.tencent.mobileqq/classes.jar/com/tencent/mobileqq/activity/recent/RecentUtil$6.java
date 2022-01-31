@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ayao;
+import ayaq;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class RecentUtil$6
@@ -12,8 +12,8 @@ public final class RecentUtil$6
   {
     if (this.a != null)
     {
-      ayao.c(this.a);
-      ayao.a(this.a, true, null);
+      ayaq.c(this.a);
+      ayaq.a(this.a, true, null);
     }
   }
 }

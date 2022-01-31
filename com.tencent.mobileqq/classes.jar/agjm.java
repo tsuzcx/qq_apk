@@ -1,23 +1,26 @@
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class agjm
+  implements Animation.AnimationListener
 {
-  public int a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContact a;
-  public String a;
-  public Button b;
-  public ImageView b;
-  public TextView b;
-  public Button c;
-  public TextView c;
+  public agjm(CountryActivity paramCountryActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Agjt.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import ahir;
+import ahip;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -24,16 +24,16 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import qol;
-import sag;
-import sah;
+import qoi;
+import sad;
+import sae;
 
 public abstract class ViolaLazyFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int = 0;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sag(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sad(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -58,7 +58,7 @@ public abstract class ViolaLazyFragment
   {
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131368429));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131378010));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramNavBarCommon.findViewById(2131378015));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramNavBarCommon.findViewById(2131368742));
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
     {
@@ -107,7 +107,7 @@ public abstract class ViolaLazyFragment
       }
       paramViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131375327);
+      localLayoutParams.addRule(3, 2131375329);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup, localLayoutParams);
       this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
       return;
@@ -147,7 +147,7 @@ public abstract class ViolaLazyFragment
     label37:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      ahir.a(localFragmentActivity, paramBoolean1);
+      ahip.a(localFragmentActivity, paramBoolean1);
       this.jdField_a_of_type_JavaLangBoolean = paramBoolean;
       return;
     }
@@ -256,7 +256,7 @@ public abstract class ViolaLazyFragment
     if (getActivity() == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375327));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329));
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon);
   }
   
@@ -307,14 +307,14 @@ public abstract class ViolaLazyFragment
         break label46;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130848492));
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130848498));
     }
     label46:
     while (!"drawable_white".equals(paramString)) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849538));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849547));
   }
   
   protected void h() {}
@@ -401,7 +401,7 @@ public abstract class ViolaLazyFragment
     {
       if (a() != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)a().findViewById(2131375327));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)a().findViewById(2131375329));
         this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility();
         if (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() == 0) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(8);
@@ -475,7 +475,7 @@ public abstract class ViolaLazyFragment
     if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      ahir.a(localFragmentActivity, bool);
+      ahip.a(localFragmentActivity, bool);
       if (this.jdField_c_of_type_Boolean) {
         f();
       }
@@ -516,7 +516,7 @@ public abstract class ViolaLazyFragment
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375327));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329));
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.getVisibility() != 0) && (this.jdField_a_of_type_Int == 0)) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setVisibility(0);
       }
@@ -546,12 +546,12 @@ public abstract class ViolaLazyFragment
     if (this.jdField_b_of_type_Int < 0) {
       this.jdField_b_of_type_Int = getActivity().getWindow().getDecorView().getSystemUiVisibility();
     }
-    qol.a(getActivity());
+    qoi.a(getActivity());
   }
   
   public void s()
   {
-    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new sah(this));
+    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new sae(this));
     int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
     getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
   }

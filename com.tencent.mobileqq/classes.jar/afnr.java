@@ -1,72 +1,42 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afnr
-  implements bcrn
+  implements bfux
 {
   public afnr(TroopActivity paramTroopActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(bfuw parambfuw)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
-    }
-    if (this.a.b != 2)
-    {
-      switch (paramInt2)
-      {
-      default: 
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        axqw.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      for (;;)
-      {
-        this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Bfmt.sendEmptyMessage(1234);
-        TroopActivity.a(this.a, paramInt2);
-        return;
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        axqw.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        continue;
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
-        axqw.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-      }
-    }
-    switch (paramInt2)
+    switch (parambfuw.a)
     {
     default: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
-        break;
-      }
-    }
-    for (String str = "0";; str = "1")
-    {
-      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-      axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Int = 1;
-      break;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
-      for (str = "0";; str = "1")
+    case 0: 
+      do
       {
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
-      for (str = "0";; str = "1")
-      {
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
-        axqw.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        break;
-      }
+        return;
+        axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
+        axqy.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
+        parambfuw = (azoc)this.a.app.getManager(32);
+      } while (parambfuw == null);
+      parambfuw.a(this.a, 0);
+      return;
+    case 1: 
+      axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
+      axqy.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
+      AddContactsActivity.a(this.a, 1);
+      return;
+    case 2: 
+      axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
+      axqy.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
+      parambfuw = new Intent(this.a, TroopAssisSettingActivity.class);
+      this.a.startActivity(parambfuw);
+      return;
     }
+    TroopActivity.b(this.a);
   }
 }
 

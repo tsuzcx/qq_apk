@@ -1,305 +1,42 @@
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class amtc
-  extends ampb<amtb>
 {
-  public static volatile int a = -1;
-  public static volatile int b = -1;
+  public int a = 1;
   
-  public static int a(int paramInt)
+  public static amtc a(amph[] paramArrayOfamph)
   {
-    paramInt = a("miniapptriggerfullscreenheight", paramInt);
-    QLog.d("MiniAppConfProcessor", 2, "getTriggerFullScreenHeight, height = " + paramInt);
-    return paramInt;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      int i = Integer.parseInt(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str + "_" + paramString, String.valueOf(paramInt)));
-      paramInt = i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", localException);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, secondaryKey: " + paramString + ", Value = " + paramInt);
-    }
-    return paramInt;
-  }
-  
-  public static amtb a()
-  {
-    return (amtb)ampm.a().a(425);
-  }
-  
-  public static String a()
-  {
-    String str = "";
-    amtb localamtb = a();
-    if (localamtb != null) {
-      str = localamtb.a();
-    }
-    return str;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      str = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str + "_" + paramString1, paramString2);
-      paramString2 = str;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, error!", localException);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 1, "getMiniAppHighPriorityConfig, secondaryKey: " + paramString1 + ", Value = " + paramString2);
-    }
-    return paramString2;
-  }
-  
-  public static String b()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
-  }
-  
-  public static int c()
-  {
-    if (b == -1)
-    {
-      b = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
-      QLog.d("MiniAppConfProcessor", 1, "[MiniAppUserAppInfoListManager].maxtopnum = " + b);
-    }
-    return b;
-  }
-  
-  public static String c()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationNickName", "小程序通知");
-  }
-  
-  public static String d()
-  {
-    String str2 = "QQ小程序";
-    String str1 = str2;
-    try
-    {
-      String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      str1 = str2;
-      str2 = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(str3 + "_" + "miniappfullscreentitle", "QQ小程序");
-      str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        str1 = str2;
-        QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. desktopTitleConfig title: " + str2 + "，uin: " + str3);
-      }
-      return str2;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
-    }
-    return str1;
-  }
-  
-  public static boolean e()
-  {
-    boolean bool = true;
-    amtb localamtb = a();
-    if (localamtb != null) {
-      bool = localamtb.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "needShowMiniAppEntry: " + bool);
-    }
-    return bool;
-  }
-  
-  public static boolean f()
-  {
-    boolean bool = false;
-    amtb localamtb = a();
-    if (localamtb != null) {
-      bool = localamtb.h();
-    }
-    return bool;
-  }
-  
-  public static boolean g()
-  {
-    if (a == -1) {}
-    try
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      a = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappshowfullscreen", 1);
-      QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = " + a);
-      if (a == 1) {
-        return true;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        a = 1;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
-      }
-    }
-    return false;
-  }
-  
-  public static boolean h()
-  {
-    return a("miniappshowreddot", 0) == 1;
-  }
-  
-  public static boolean i()
-  {
-    return a("miniappshowmessagereddot", 0) == 1;
-  }
-  
-  public static boolean j()
-  {
-    return a("miniappfullscreenshownotificationbtn", 1) == 1;
-  }
-  
-  public static boolean k()
-  {
-    if (a("miniappfullscreenshownotificationreddot", 1) == 1) {}
-    for (int i = 1; (j()) && (i != 0); i = 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean l()
-  {
-    return !m();
-  }
-  
-  public static boolean m()
-  {
+    amtc localamtc = new amtc();
     for (;;)
     {
+      int i;
       try
       {
-        String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt(str + "_" + "miniappfullscreenshowsetting", 0);
-        j = i;
-        QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. needShowSettingButton Exception.");
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MiniAppConfProcessor", 2, "[DesktopDataManager]. needShowSettingButton settingValue: " + i + "，uin: " + str);
-            j = i;
-          }
-          QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager].needShowSettingButton, settingValue = " + j);
-          if (j != 1) {
-            break;
-          }
-          return true;
-        }
-        catch (Exception localException2)
-        {
-          int i;
-          int j;
-          break label129;
-        }
-        localException1 = localException1;
+        int j = paramArrayOfamph.length;
         i = 0;
+        if (i < j)
+        {
+          JSONObject localJSONObject = new JSONObject(paramArrayOfamph[i].a);
+          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
+            localamtc.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localamtc.a);
+          }
+          return localamtc;
+        }
       }
-      label129:
-      j = i;
-    }
-    return false;
-  }
-  
-  public int a()
-  {
-    return 425;
-  }
-  
-  @NonNull
-  public amtb a(int paramInt)
-  {
-    return new amtb();
-  }
-  
-  @Nullable
-  public amtb a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      new amtb();
-      return amtb.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<amtb> a()
-  {
-    return amtb.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amtb paramamtb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppConfProcessor", 2, "onUpdate " + paramamtb.toString());
-    }
-    paramamtb = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramamtb instanceof QQAppInterface))
-    {
-      paramamtb = (MiniAppEntryHandler)((QQAppInterface)paramamtb).a(149);
-      if (paramamtb != null) {
-        paramamtb.notifyUI(0, true, null);
+      catch (Throwable paramArrayOfamph)
+      {
+        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfamph);
+        return localamtc;
       }
+      i += 1;
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.open.downloadnew;
 
-import bcxm;
-import bdht;
-import bdiw;
-import bdkp;
-import bdme;
+import bcyb;
+import bdii;
+import bdjl;
+import bdle;
+import bdmt;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadManager$2
   implements Runnable
 {
-  public DownloadManager$2(bdkp parambdkp) {}
+  public DownloadManager$2(bdle parambdle) {}
   
   public void run()
   {
-    this.this$0.a = ((ConcurrentHashMap)bdme.a().a());
+    this.this$0.a = ((ConcurrentHashMap)bdmt.a().a());
     try
     {
       DownloadInfo localDownloadInfo = this.this$0.b("com.tencent.mobileqq");
@@ -36,22 +36,22 @@ public class DownloadManager$2
         while (localTMAssistantDownloadTaskInfo1 == null)
         {
           this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bdme.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          bdmt.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           return;
           localTMAssistantDownloadTaskInfo1 = this.this$0.a(localDownloadInfo.i);
           str = localDownloadInfo.l;
         }
-        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (bdiw.c(str) <= bcxm.a().a()))
+        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (bdjl.c(str) <= bcyb.a().a()))
         {
           this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bdme.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          bdmt.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
           return;
         }
       }
     }
     catch (Exception localException)
     {
-      bdht.c("DownloadManager_", "speical clear>>>", localException);
+      bdii.c("DownloadManager_", "speical clear>>>", localException);
     }
   }
 }

@@ -1,20 +1,69 @@
-import android.view.View;
-import android.widget.EditText;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.14.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class abac
-  extends abav
+public class abac
+  extends bbri
 {
-  abac(abab paramabab, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramabab.a, paramInt1, paramInt2);
-  }
+  public abac(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Abab.a.a != null) {
-      this.jdField_a_of_type_Abab.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
+      this.a.c(true);
+      paramString = (akhp)this.a.app.a(20);
+      try
+      {
+        paramString.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        this.a.b(false);
+        return;
+      }
     }
+    this.a.b(false);
+    String str;
+    if (paramInt == 1282)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
+      paramString = ajya.a(2131703644);
+      str = ajya.a(2131703638);
+      try
+      {
+        bbdj.a(this.a, 230, paramString, str, ajya.a(2131703631), ajya.a(2131703635), new abad(this), new abae(this)).show();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("EditInfoActivity", 1, "onSetColorNick", paramString);
+        return;
+      }
+    }
+    if (1283 == paramInt)
+    {
+      bcql.a(this.a, 1, ajya.a(2131703634), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (1793 == paramInt)
+    {
+      EditInfoActivity localEditInfoActivity = this.a;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131693516);
+      }
+      bcql.a(localEditInfoActivity, 1, str, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    bcql.a(this.a, 1, 2131694299, 0).b(this.a.getTitleBarHeight());
+    this.a.a.postDelayed(new EditInfoActivity.14.3(this), 1500L);
   }
 }
 

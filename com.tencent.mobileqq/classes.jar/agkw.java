@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
 
 public class agkw
-  extends aume
+  implements View.OnClickListener
 {
-  public agkw(SettingActivity2.3 param3) {}
+  public agkw(AlbumListActivity paramAlbumListActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.this$0.c != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
+    if (this.a.r) {
+      alvj.a().a("callbackArk", null, null);
     }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      if (this.a.this$0.c != null)
-      {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
-      }
-      this.a.this$0.a();
-      this.a.this$0.setResult(-1);
+    if (this.a.s) {
+      axqy.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
     }
+    this.a.onBackPressed();
   }
 }
 

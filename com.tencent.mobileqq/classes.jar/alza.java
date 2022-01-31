@@ -1,51 +1,120 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.DynamicAvatar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 class alza
-  extends alyy
+  implements alyr
 {
-  alza(alyz paramalyz) {}
+  alza(alyy paramalyy) {}
   
-  protected void a(boolean paramBoolean1, alyt paramalyt, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str4 = alyz.a(paramInt2, paramInt1, String.valueOf(paramLong), paramInt3);
-    if (!paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo not success: " + paramInt1 + " " + paramLong + " " + paramInt2);
-      }
-      alyz.a(this.a, str4, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
+    }
+    if (TextUtils.isEmpty(???)) {
       return;
     }
-    if ((paramalyt != null) && (paramalyt.a != null) && (!paramalyt.a.isEmpty())) {}
-    for (paramalyt = DynamicAvatar.convertFrom((alyu)paramalyt.a.get(0));; paramalyt = null)
+    int i;
+    synchronized (this.a.c)
     {
-      if (paramalyt == null)
+      i = this.a.c.size() - 1;
+      if (i >= 0)
       {
-        alyz.a(this.a, str4, null, null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo: " + paramalyt);
-      }
-      String str2 = alyz.a(paramInt2, paramInt3, paramalyt);
-      String str3 = alyz.a(paramInt2, 640, paramalyt);
-      String str1 = str3;
-      paramLong = str2;
-      if (TextUtils.isEmpty(str2))
-      {
-        str1 = str3;
-        paramLong = str2;
-        if (paramBoolean2)
+        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
+        if ((localWeakReference == null) || (localWeakReference.get() == null))
         {
-          paramLong = alyz.a(17, paramInt3, paramalyt);
-          str1 = alyz.a(17, 640, paramalyt);
+          this.a.c.remove(i);
+        }
+        else if (???.equals(((baxo)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+        {
+          localWeakReference = (WeakReference)this.a.c.remove(i);
+          if (paramBoolean1)
+          {
+            this.a.b.add(localWeakReference);
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
+            }
+          }
         }
       }
-      alyz.a(this.a, str4, paramLong, str1);
-      return;
+    }
+    if (!baxo.jdField_b_of_type_Boolean) {
+      synchronized (this.a.d)
+      {
+        i = this.a.d.size() - 1;
+        label257:
+        if (i >= 0) {
+          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+          {
+            ??? = (WeakReference)this.a.d.get(i);
+            label314:
+            if ((??? != null) && (???.get() != null)) {
+              this.a.a((baxo)???.get(), false, false);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.a.a)
+      {
+        i = this.a.a.size() - 1;
+        if (i >= 0)
+        {
+          if (((WeakReference)this.a.a.get(i)).get() == null) {
+            this.a.a.remove(i);
+          }
+          i -= 1;
+          continue;
+          this.a.d.remove(i);
+          i -= 1;
+          break label257;
+          ??? = finally;
+          throw ???;
+        }
+        i = this.a.b.size() - 1;
+        if (i < 0) {
+          break label695;
+        }
+        ??? = (WeakReference)this.a.b.get(i);
+        if ((??? == null) || (((WeakReference)???).get() == null))
+        {
+          this.a.b.remove(i);
+        }
+        else if (this.a.a.size() < alyy.a(this.a).a)
+        {
+          this.a.b.remove(i);
+          if (this.a.a.contains(???)) {
+            break label712;
+          }
+          paramBoolean1 = this.a.a((baxo)((WeakReference)???).get());
+          if (paramBoolean1) {
+            this.a.a.add(???);
+          }
+          if (!QLog.isColorLevel()) {
+            break label712;
+          }
+          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + alyy.a(this.a).a);
+        break label712;
+        label695:
+        return;
+        ??? = null;
+        break label314;
+        i -= 1;
+        break;
+      }
+      label712:
+      i -= 1;
     }
   }
 }

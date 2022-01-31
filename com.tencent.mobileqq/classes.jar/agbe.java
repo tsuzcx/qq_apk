@@ -1,57 +1,36 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CEmotionFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopEmotionFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopLinkFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agbe
 {
-  public static ChatHistoryBaseFragment a(int paramInt)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
+    if ((paramMessageRecord instanceof MessageForText))
     {
-    default: 
-      return new ChatHistoryC2CAllFragment();
-    case 2131364086: 
-      return new ChatHistoryC2CAllFragment();
-    case 2131364089: 
-      return new ChatHistoryC2CFileFragment();
-    case 2131364091: 
-      return new ChatHistoryC2CMediaFragment();
-    case 2131364088: 
-      return new ChatHistoryC2CEmotionFragment();
-    case 2131364090: 
-      return new ChatHistoryC2CLinkFragment();
-    case 2131364092: 
-      return new ChatHistoryBaseTenDocFragment();
-    case 2131364087: 
-      return new ChatHistoryC2CDateFragment();
-    case 2131364093: 
-      return new ChatHistoryTroopAllFragment();
-    case 2131364098: 
-      return new ChatHistoryTroopMediaFragment();
-    case 2131364095: 
-      return new ChatHistoryTroopEmotionFragment();
-    case 2131364096: 
-      return new ChatHistoryTroopFileFragment();
-    case 2131364097: 
-      return new ChatHistoryTroopLinkFragment();
-    case 2131364100: 
-      return new ChatHistoryBaseTenDocFragment();
-    case 2131364094: 
-      return new ChatHistoryTroopDateFragment();
+      paramMessageRecord = (MessageForText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
     }
-    return new ChatHistoryTroopMemberFragment();
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+    }
+    if ((paramMessageRecord instanceof MessageForReplyText))
+    {
+      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
+      if (paramMessageRecord.sb != null) {
+        return paramMessageRecord.sb.toString();
+      }
+      return paramMessageRecord.msg;
+    }
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
+    }
+    return "";
   }
 }
 

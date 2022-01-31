@@ -17,20 +17,20 @@ import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import aqwz;
-import aqxa;
 import aqxb;
 import aqxc;
 import aqxd;
-import aqxh;
-import aqxr;
-import aqxs;
+import aqxe;
+import aqxf;
+import aqxj;
 import aqxt;
 import aqxu;
 import aqxv;
 import aqxw;
 import aqxx;
-import axli;
+import aqxy;
+import aqxz;
+import axlk;
 import com.etrump.mixlayout.EMCollection;
 import com.etrump.mixlayout.EMEmoticon;
 import com.etrump.mixlayout.ETFont;
@@ -55,17 +55,17 @@ public class HiBoomTextView
 {
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public static Handler a;
-  public static aqxw a;
-  private static QQLruCache<String, EMEmoticon> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new aqxs(2014, 10);
+  public static aqxy a;
+  private static QQLruCache<String, EMEmoticon> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new aqxu(2014, 10);
   public float a;
   public int a;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aqxr(this));
-  public aqxa a;
-  private aqxb jdField_a_of_type_Aqxb;
-  public final aqxu a;
-  public aqxx a;
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aqxt(this));
+  public aqxc a;
+  private aqxd jdField_a_of_type_Aqxd;
+  public final aqxw a;
+  public aqxz a;
   private EMEmoticon jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon;
   private ETFont jdField_a_of_type_ComEtrumpMixlayoutETFont;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
@@ -93,7 +93,7 @@ public class HiBoomTextView
   {
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Aqxu = new aqxu(this, null);
+    this.jdField_a_of_type_Aqxw = new aqxw(this, null);
     this.jdField_a_of_type_Float = 1.0F;
     f();
   }
@@ -102,7 +102,7 @@ public class HiBoomTextView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Aqxu = new aqxu(this, null);
+    this.jdField_a_of_type_Aqxw = new aqxw(this, null);
     this.jdField_a_of_type_Float = 1.0F;
     f();
   }
@@ -111,7 +111,7 @@ public class HiBoomTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Aqxu = new aqxu(this, null);
+    this.jdField_a_of_type_Aqxw = new aqxw(this, null);
     this.jdField_a_of_type_Float = 1.0F;
     f();
   }
@@ -134,12 +134,12 @@ public class HiBoomTextView
   {
     if (jdField_a_of_type_AndroidOsHandler == null)
     {
-      jdField_a_of_type_Aqxw = new aqxw(null);
+      jdField_a_of_type_Aqxy = new aqxy(null);
       if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
       {
         ho localho = (ho)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
         if ((localho != null) && (localho.a != null)) {
-          jdField_a_of_type_AndroidOsHandler = new aqxt(localho.a.getLooper());
+          jdField_a_of_type_AndroidOsHandler = new aqxv(localho.a.getLooper());
         }
       }
     }
@@ -152,8 +152,8 @@ public class HiBoomTextView
       jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(260);
     }
-    if (jdField_a_of_type_Aqxw != null) {
-      jdField_a_of_type_Aqxw.removeCallbacksAndMessages(null);
+    if (jdField_a_of_type_Aqxy != null) {
+      jdField_a_of_type_Aqxy.removeCallbacksAndMessages(null);
     }
     jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
   }
@@ -164,7 +164,7 @@ public class HiBoomTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    setImageResource(2130846243);
+    setImageResource(2130846249);
     setScaleType(ImageView.ScaleType.CENTER);
     d();
   }
@@ -176,24 +176,24 @@ public class HiBoomTextView
   
   public void a()
   {
-    aqxb localaqxb;
+    aqxd localaqxd;
     Object localObject;
     if (a())
     {
-      localaqxb = aqwz.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxa);
-      if ((localaqxb == null) || ((localaqxb.jdField_a_of_type_Int != 3) && (localaqxb.jdField_a_of_type_Int != 1))) {
+      localaqxd = aqxb.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxc);
+      if ((localaqxd == null) || ((localaqxd.jdField_a_of_type_Int != 3) && (localaqxd.jdField_a_of_type_Int != 1))) {
         break label266;
       }
       if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != this.jdField_a_of_type_Int))
       {
         localObject = ".hy3";
-        if (localaqxb.jdField_a_of_type_Int == 1) {
+        if (localaqxd.jdField_a_of_type_Int == 1) {
           localObject = ".hy";
         }
-        localObject = this.jdField_a_of_type_Aqxa.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + (String)localObject;
+        localObject = this.jdField_a_of_type_Aqxc.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + (String)localObject;
         this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject, this.jdField_d_of_type_Int);
       }
-      localObject = new EMCollection(aqwz.a().a);
+      localObject = new EMCollection(aqxb.a().a);
       if ((localObject == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null)) {
         break label258;
       }
@@ -210,7 +210,7 @@ public class HiBoomTextView
       }
     }
     label250:
-    while ((localaqxb == null) || (localaqxb.jdField_a_of_type_Int != 4)) {
+    while ((localaqxd == null) || (localaqxd.jdField_a_of_type_Int != 4)) {
       for (;;)
       {
         boolean bool;
@@ -227,7 +227,7 @@ public class HiBoomTextView
     label266:
     if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != this.jdField_a_of_type_Int))
     {
-      localObject = this.jdField_a_of_type_Aqxa.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + ".fz4";
+      localObject = this.jdField_a_of_type_Aqxc.a() + this.jdField_a_of_type_Int + File.separator + this.jdField_a_of_type_Int + ".fz4";
       this.jdField_a_of_type_ComEtrumpMixlayoutETFont = new ETFont(this.jdField_a_of_type_Int, (String)localObject, this.jdField_d_of_type_Int);
     }
     this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mText = a();
@@ -251,7 +251,7 @@ public class HiBoomTextView
       this.jdField_a_of_type_Boolean = paramBoolean;
       if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
       {
-        jdField_a_of_type_Aqxw.obtainMessage(257, aqxv.a(this)).sendToTarget();
+        jdField_a_of_type_Aqxy.obtainMessage(257, aqxx.a(this)).sendToTarget();
         if ((paramBoolean) && (!this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (c())) {
           this.jdField_b_of_type_Boolean = true;
         }
@@ -262,10 +262,10 @@ public class HiBoomTextView
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_Aqxa == null)) {
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_Aqxc == null)) {
       return false;
     }
-    return aqwz.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxa).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return aqxb.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxc).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
   public void b()
@@ -293,17 +293,17 @@ public class HiBoomTextView
   
   public boolean b()
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_Aqxa == null)) {
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int < 0) || (this.jdField_a_of_type_Aqxc == null)) {
       return false;
     }
-    return aqwz.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxa).c.get();
+    return aqxb.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxc).c.get();
   }
   
   public void c()
   {
     if ((this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null) && (!this.jdField_c_of_type_Boolean))
     {
-      jdField_a_of_type_Aqxw.obtainMessage(259, aqxv.a(this)).sendToTarget();
+      jdField_a_of_type_Aqxy.obtainMessage(259, aqxx.a(this)).sendToTarget();
       if ((c()) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_b_of_type_Boolean = true;
       }
@@ -329,7 +329,7 @@ public class HiBoomTextView
     if (!a())
     {
       if (b()) {
-        setImageResource(2130846242);
+        setImageResource(2130846248);
       }
       setScaleX(this.jdField_a_of_type_Float);
       setScaleY(this.jdField_a_of_type_Float);
@@ -342,30 +342,30 @@ public class HiBoomTextView
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(this.jdField_b_of_type_JavaLangString));
-      paramCanvas.drawRoundRect(new RectF(1.0F, 1.0F, getMeasuredWidth() - 1, getMeasuredHeight() - 1), axli.a(4.0F), axli.a(4.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(new RectF(1.0F, 1.0F, getMeasuredWidth() - 1, getMeasuredHeight() - 1), axlk.a(4.0F), axlk.a(4.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_c_of_type_JavaLangString.startsWith("#")) && (this.jdField_c_of_type_JavaLangString.length() == 9))
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(this.jdField_c_of_type_JavaLangString));
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), axli.a(4.0F), axli.a(4.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), axlk.a(4.0F), axlk.a(4.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    aqxb localaqxb = aqwz.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxa);
+    aqxd localaqxd = aqxb.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxc);
     int j = (getMeasuredWidth() - this.e) / 2;
     int k = (getMeasuredHeight() - this.f) / 2;
     if ((j > 0) || (k > 0)) {
       paramCanvas.translate(j, k);
     }
-    if (localaqxb.jdField_a_of_type_Int == 2) {}
+    if (localaqxd.jdField_a_of_type_Int == 2) {}
     for (;;)
     {
       try
       {
-        if (localaqxb.a(this.jdField_a_of_type_JavaLangString.length()))
+        if (localaqxd.a(this.jdField_a_of_type_JavaLangString.length()))
         {
           j = Math.max(getMeasuredHeight(), getMeasuredWidth());
-          localaqxb.a(this.jdField_a_of_type_JavaLangString, j, paramCanvas);
+          localaqxd.a(this.jdField_a_of_type_JavaLangString, j, paramCanvas);
         }
         if (!this.jdField_d_of_type_Boolean) {
           break;
@@ -373,7 +373,7 @@ public class HiBoomTextView
         if (QLog.isColorLevel()) {
           QLog.e("HiBoomFont.TextView", 2, "hiboom draw failed, fontId = " + this.jdField_a_of_type_Int);
         }
-        setImageResource(2130846242);
+        setImageResource(2130846248);
         setScaleX(this.jdField_a_of_type_Float);
         setScaleY(this.jdField_a_of_type_Float);
         super.onDraw(paramCanvas);
@@ -388,14 +388,14 @@ public class HiBoomTextView
       {
         if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
         {
-          Bitmap localBitmap = this.jdField_a_of_type_Aqxu.a();
+          Bitmap localBitmap = this.jdField_a_of_type_Aqxw.a();
           if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-            synchronized (this.jdField_a_of_type_Aqxu)
+            synchronized (this.jdField_a_of_type_Aqxw)
             {
               paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
             }
           }
-          setImageResource(2130846243);
+          setImageResource(2130846249);
           setScaleX(this.jdField_a_of_type_Float);
           setScaleY(this.jdField_a_of_type_Float);
           super.onDraw(paramCanvas);
@@ -474,28 +474,28 @@ public class HiBoomTextView
         }
         setMeasuredDimension(k, j);
         return;
-        paramInt1 = aqxh.jdField_a_of_type_Int;
+        paramInt1 = aqxj.jdField_a_of_type_Int;
         break;
         label191:
         paramInt2 = paramInt1;
         break label126;
-        Object localObject = aqwz.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxa);
-        if (((aqxb)localObject).jdField_a_of_type_Int == 2)
+        Object localObject = aqxb.a().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Aqxc);
+        if (((aqxd)localObject).jdField_a_of_type_Int == 2)
         {
-          if (((aqxb)localObject).jdField_a_of_type_Aqxc.a == null) {
+          if (((aqxd)localObject).jdField_a_of_type_Aqxe.a == null) {
             continue;
           }
-          localObject = ((aqxb)localObject).jdField_a_of_type_Aqxc.a.iterator();
+          localObject = ((aqxd)localObject).jdField_a_of_type_Aqxe.a.iterator();
           label251:
           if (!((Iterator)localObject).hasNext()) {
             continue;
           }
-          aqxd localaqxd = (aqxd)((Iterator)localObject).next();
-          if (this.jdField_a_of_type_JavaLangString.length() != localaqxd.jdField_a_of_type_Int) {
+          aqxf localaqxf = (aqxf)((Iterator)localObject).next();
+          if (this.jdField_a_of_type_JavaLangString.length() != localaqxf.jdField_a_of_type_Int) {
             break label146;
           }
-          paramInt1 = localaqxd.jdField_a_of_type_ArrayOfInt[0];
-          paramInt2 = localaqxd.jdField_a_of_type_ArrayOfInt[1];
+          paramInt1 = localaqxf.jdField_a_of_type_ArrayOfInt[0];
+          paramInt2 = localaqxf.jdField_a_of_type_ArrayOfInt[1];
           double d1 = paramInt1 / paramInt2;
           if ((i1 == 1073741824) && (n == 1073741824)) {
             if (k / j > d1)
@@ -541,9 +541,9 @@ public class HiBoomTextView
           this.f = this.jdField_d_of_type_Int;
           continue;
         }
-        if ((((aqxb)localObject).jdField_a_of_type_Int == 1) || (((aqxb)localObject).jdField_a_of_type_Int == 3))
+        if ((((aqxd)localObject).jdField_a_of_type_Int == 1) || (((aqxd)localObject).jdField_a_of_type_Int == 3))
         {
-          paramInt1 = aqxh.jdField_a_of_type_Int;
+          paramInt1 = aqxj.jdField_a_of_type_Int;
           if (this.jdField_d_of_type_Int > 0)
           {
             paramInt1 = this.jdField_d_of_type_Int;
@@ -567,7 +567,7 @@ public class HiBoomTextView
             }
             for (;;)
             {
-              paramInt1 = Math.min(paramInt1, aqxh.jdField_a_of_type_Int);
+              paramInt1 = Math.min(paramInt1, aqxj.jdField_a_of_type_Int);
               break;
               if (i1 == 1073741824) {
                 paramInt1 = k;
@@ -592,7 +592,7 @@ public class HiBoomTextView
               this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.deleteDescriptor();
               this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
             }
-            this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = EMEmoticon.createEmoticon(aqwz.a().a, this.jdField_a_of_type_JavaLangString, this.g, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+            this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = EMEmoticon.createEmoticon(aqxb.a().a, this.jdField_a_of_type_JavaLangString, this.g, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
             if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
             {
               this.h = this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon.getWidth();
@@ -603,7 +603,7 @@ public class HiBoomTextView
                 this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon = null;
               }
             }
-            aqxu.a(this.jdField_a_of_type_Aqxu, this.h, this.i);
+            aqxw.a(this.jdField_a_of_type_Aqxw, this.h, this.i);
             b();
           }
           if (this.jdField_a_of_type_ComEtrumpMixlayoutEMEmoticon != null)
@@ -617,7 +617,7 @@ public class HiBoomTextView
             this.e = paramInt1;
           }
         }
-        else if (((aqxb)localObject).jdField_a_of_type_Int == 4)
+        else if (((aqxd)localObject).jdField_a_of_type_Int == 4)
         {
           if (this.jdField_a_of_type_O == null)
           {
@@ -638,7 +638,7 @@ public class HiBoomTextView
               }
               this.f = paramInt1;
               break;
-              paramInt1 = aqxh.jdField_a_of_type_Int;
+              paramInt1 = aqxj.jdField_a_of_type_Int;
               break label932;
             }
           }
@@ -675,12 +675,12 @@ public class HiBoomTextView
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void setHiBoom(int paramInt1, int paramInt2, @Nonnull aqxa paramaqxa)
+  public void setHiBoom(int paramInt1, int paramInt2, @Nonnull aqxc paramaqxc)
   {
     this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Aqxa = paramaqxa;
-    this.jdField_a_of_type_Aqxb = aqwz.a().a(paramInt1, paramInt2, paramaqxa);
-    this.jdField_a_of_type_Aqxb.a(this);
+    this.jdField_a_of_type_Aqxc = paramaqxc;
+    this.jdField_a_of_type_Aqxd = aqxb.a().a(paramInt1, paramInt2, paramaqxc);
+    this.jdField_a_of_type_Aqxd.a(this);
     if (this.jdField_a_of_type_Int != paramInt1)
     {
       this.jdField_a_of_type_Int = paramInt1;
@@ -696,7 +696,7 @@ public class HiBoomTextView
     }
   }
   
-  public void setHiBoom(int paramInt1, int paramInt2, MessageForHiBoom paramMessageForHiBoom, SessionInfo paramSessionInfo, @Nonnull aqxa paramaqxa)
+  public void setHiBoom(int paramInt1, int paramInt2, MessageForHiBoom paramMessageForHiBoom, SessionInfo paramSessionInfo, @Nonnull aqxc paramaqxc)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForHiBoom = paramMessageForHiBoom;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
@@ -705,7 +705,7 @@ public class HiBoomTextView
       this.jdField_b_of_type_Long = paramMessageForHiBoom.uniseq;
       this.jdField_a_of_type_Boolean = true;
     }
-    setHiBoom(paramInt1, paramInt2, paramaqxa);
+    setHiBoom(paramInt1, paramInt2, paramaqxc);
   }
   
   public void setLoadingScale(float paramFloat)

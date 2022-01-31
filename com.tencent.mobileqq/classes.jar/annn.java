@@ -1,6 +1,30 @@
-public abstract interface annn
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+
+public final class annn
 {
-  public abstract void a(annm paramannm);
+  public static anno a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new anno();
+    ancb localancb = ancc.a();
+    paramQQAppInterface.jdField_a_of_type_Boolean = localancb.a();
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = localancb.a();
+    paramQQAppInterface.b = localancb.b();
+    paramQQAppInterface.jdField_a_of_type_Int = localancb.a();
+    paramQQAppInterface.c = localancb.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
+  {
+    paramAppInterface = anbm.a();
+    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
+  }
 }
 
 

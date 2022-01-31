@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-class bjxz
-  implements DialogInterface.OnClickListener
+public abstract interface bjxz
 {
-  bjxz(bjxw parambjxw) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bjxw.a(this.a);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

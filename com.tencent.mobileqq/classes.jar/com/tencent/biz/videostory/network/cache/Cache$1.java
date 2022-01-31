@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.network.cache;
 
-import xgr;
+import xgo;
 
 public class Cache$1
   implements Runnable

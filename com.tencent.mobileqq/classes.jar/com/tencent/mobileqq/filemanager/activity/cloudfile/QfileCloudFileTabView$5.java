@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import apvu;
+import apvw;
 import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -11,7 +11,7 @@ class QfileCloudFileTabView$5
 {
   public void run()
   {
-    Object localObject = apvu.a(this.a.b);
+    Object localObject = apvw.a(this.a.b);
     if (!this.this$0.a.containsKey(localObject)) {
       this.this$0.a.put(localObject, new ArrayList());
     }

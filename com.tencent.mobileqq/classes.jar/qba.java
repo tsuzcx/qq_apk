@@ -1,59 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
 
-public class qba
-  implements Cloneable
+public final class qba
+  implements Parcelable.Creator<FusionBiuInfo>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  
-  public static qba a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
+  public FusionBiuInfo a(Parcel paramParcel)
   {
-    qba localqba = new qba();
-    localqba.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
-    localqba.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
-    localqba.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
-    localqba.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
-    return localqba;
+    return new FusionBiuInfo(paramParcel);
   }
   
-  public qba a()
+  public FusionBiuInfo[] a(int paramInt)
   {
-    try
-    {
-      super.clone();
-      qba localqba = new qba();
-      localqba.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localqba.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localqba.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localqba.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localqba;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public String toString()
-  {
-    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
+    return new FusionBiuInfo[paramInt];
   }
 }
 

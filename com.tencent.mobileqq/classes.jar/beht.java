@@ -1,30 +1,16 @@
-import android.content.Context;
-import java.util.Map;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class beht
-  implements behn
+public abstract interface beht
 {
-  public beht(Context paramContext) {}
+  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
   
-  public Map<String, behk> a()
-  {
-    return null;
-  }
+  public abstract void c();
   
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void d();
   
-  public Map<String, behk> b()
-  {
-    return null;
-  }
+  public abstract void e();
   
-  public Map<String, behj> c()
-  {
-    return null;
-  }
+  public abstract boolean g();
 }
 
 

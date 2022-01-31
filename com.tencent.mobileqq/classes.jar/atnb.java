@@ -1,4 +1,10 @@
-public class atnb {}
+class atnb
+{
+  public String a;
+  public String b;
+  
+  private atnb(atlw paramatlw) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

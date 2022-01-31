@@ -1,94 +1,66 @@
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
 
-class ocm
-  extends zbu
+public class ocm
+  implements ocl
 {
-  ocm(oci paramoci, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public ocm(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(View paramView, int paramInt)
   {
-    super.onPageFinished(paramWebView, paramString);
-    if (QLog.isColorLevel())
+    if ((paramInt == nmc.aw) && (oai.f(ReadInJoyArticleBottomVideoView.a(this.a))))
     {
-      QLog.d(oci.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - oci.b(this.a)));
-      QLog.d(oci.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - oci.c(this.a)));
+      oai.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
+      return;
     }
-    if (oci.a(this.a) != null) {
-      oci.a(this.a).a((byte)2);
-    }
-    if (oci.a(this.a) != null) {
-      oci.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(oci.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(oci.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    nmc.a(new nyd().a(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).a(nmc.a).b(nmc.K).a(ReadInJoyArticleBottomVideoView.a(this.a)).d(paramInt).a());
+    if (paramInt == nmc.ax)
     {
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
+      ReadInJoyArticleBottomVideoView.a(this.a);
+      return;
     }
-    paramString = Uri.parse(paramString);
-    localObject = paramString.getScheme();
-    if (mvv.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
-    {
-      paramWebView = new Intent("android.intent.action.VIEW", paramString);
-      paramWebView.addFlags(268435456);
-    }
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return false;
-    }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      for (;;)
+    Object localObject;
+    boolean bool1;
+    boolean bool2;
+    if (ReadInJoyArticleBottomVideoView.a(this.a) != null) {
+      if (ReadInJoyArticleBottomVideoView.a(this.a).D != null)
       {
-        Log.e("AbsWebView", paramWebView.toString());
+        localObject = ReadInJoyArticleBottomVideoView.a(this.a).D;
+        bool1 = bbfr.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        long l = ReadInJoyArticleBottomVideoView.a(this.a).c;
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          bool2 = nlu.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        }
       }
+    }
+    for (;;)
+    {
+      if ((bool1) || (bool2)) {
+        if (bool1) {
+          break label284;
+        }
+      }
+      label284:
+      for (localObject = new nxz(false);; localObject = null)
+      {
+        shq.c((Activity)paramView.getContext(), oas.a(ReadInJoyArticleBottomVideoView.a(this.a)), null, 2, true, (nxz)localObject);
+        oas.a(ReadInJoyArticleBottomVideoView.a(this.a));
+        return;
+        ReadInJoyArticleBottomVideoView.a(this.a, paramView, true, paramInt);
+        return;
+      }
+      bool2 = false;
+      continue;
+      bool1 = false;
+      localObject = "";
+      break;
+      bool2 = false;
+      bool1 = false;
     }
   }
 }

@@ -1,14 +1,55 @@
-import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
-public abstract interface tvr
+public class tvr
+  extends BaseAdapter
 {
-  public abstract void a(@NonNull tvq paramtvq);
+  private tvr(VideoCoverListBar paramVideoCoverListBar) {}
   
-  public abstract void a(@NonNull tvq paramtvq, @NonNull Throwable paramThrowable);
+  public String a(int paramInt)
+  {
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+  }
   
-  public abstract void b(@NonNull tvq paramtvq);
+  public int getCount()
+  {
+    return VideoCoverListBar.a(this.a).size();
+  }
   
-  public abstract void c(@NonNull tvq paramtvq);
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561329, null);
+      paramViewGroup = new tvs(this, paramView);
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.a(paramInt);
+      return paramView;
+      paramViewGroup = (tvs)paramView.getTag();
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 1;
+  }
 }
 
 

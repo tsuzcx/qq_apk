@@ -1,284 +1,147 @@
-import com.tencent.mobileqq.pb.PBField;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.HbThemeConfigManager.1;
+import com.tencent.mobileqq.util.HbThemeConfigManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import java.io.File;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Deprecated
 public class bazb
 {
-  public static Object a(JSONObject paramJSONObject, Class<?> paramClass)
+  private static bazb jdField_a_of_type_Bazb;
+  private static String jdField_a_of_type_JavaLangString;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  
+  /* Error */
+  public static bazb a()
   {
-    if ((paramJSONObject == null) || (paramClass == null)) {
-      return null;
-    }
-    Object localObject3;
-    for (;;)
-    {
-      Object localObject4;
-      Object localObject5;
-      int j;
-      Object localObject6;
-      try
-      {
-        Object localObject1 = paramClass.newInstance();
-        if (localObject1 == null) {
-          break;
-        }
-        paramClass = paramClass.getDeclaredFields();
-        int k = paramClass.length;
-        int i = 0;
-        if (i >= k) {
-          break label362;
-        }
-        localObject4 = paramClass[i];
-        localObject5 = localObject4.getName();
-        j = localObject4.getModifiers();
-        if ((Modifier.isStatic(j)) && (Modifier.isFinal(j)))
-        {
-          i += 1;
-          continue;
-        }
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        Object localObject2 = null;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          localObject3 = null;
-          continue;
-          localObject6 = localObject4.getType().getSimpleName();
-          try
-          {
-            if (paramJSONObject.has((String)localObject5))
-            {
-              localObject4.setAccessible(true);
-              if (((String)localObject6).equals("int")) {
-                localObject4.set(localObject3, Integer.valueOf(paramJSONObject.getInt((String)localObject5)));
-              }
-            }
-          }
-          catch (JSONException paramJSONObject)
-          {
-            if (!QLog.isDevelopLevel()) {
-              break;
-            }
-            paramJSONObject.printStackTrace();
-            return null;
-            if (!((String)localObject6).equals("boolean")) {
-              break label202;
-            }
-            localObject4.set(localObject3, Boolean.valueOf(paramJSONObject.getBoolean((String)localObject5)));
-          }
-          catch (IllegalAccessException paramJSONObject) {}
-        }
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      paramJSONObject.printStackTrace();
-      return null;
-      label202:
-      if (((String)localObject6).equals("long"))
-      {
-        localObject4.set(localObject3, Long.valueOf(paramJSONObject.getLong((String)localObject5)));
-      }
-      else if (((String)localObject6).equals("double"))
-      {
-        localObject4.set(localObject3, Double.valueOf(paramJSONObject.getDouble((String)localObject5)));
-      }
-      else if (((String)localObject6).equals("String"))
-      {
-        localObject4.set(localObject3, paramJSONObject.getString((String)localObject5));
-      }
-      else if (((String)localObject6).equals("String[]"))
-      {
-        localObject5 = paramJSONObject.getJSONArray((String)localObject5);
-        if (((JSONArray)localObject5).length() > 0)
-        {
-          localObject6 = new String[((JSONArray)localObject5).length()];
-          j = 0;
-          while (j < ((JSONArray)localObject5).length())
-          {
-            localObject6[j] = ((JSONArray)localObject5).getString(j);
-            j += 1;
-          }
-          localObject4.set(localObject3, localObject6);
-        }
-      }
-    }
-    label362:
-    return localObject3;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	bazb:jdField_a_of_type_Bazb	Lbazb;
+    //   6: ifnonnull +27 -> 33
+    //   9: getstatic 13	bazb:jdField_a_of_type_ArrayOfByte	[B
+    //   12: astore_0
+    //   13: aload_0
+    //   14: monitorenter
+    //   15: getstatic 20	bazb:jdField_a_of_type_Bazb	Lbazb;
+    //   18: ifnonnull +13 -> 31
+    //   21: new 2	bazb
+    //   24: dup
+    //   25: invokespecial 21	bazb:<init>	()V
+    //   28: putstatic 20	bazb:jdField_a_of_type_Bazb	Lbazb;
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: getstatic 20	bazb:jdField_a_of_type_Bazb	Lbazb;
+    //   36: astore_0
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: aload_0
+    //   41: areturn
+    //   42: astore_1
+    //   43: aload_0
+    //   44: monitorexit
+    //   45: aload_1
+    //   46: athrow
+    //   47: astore_0
+    //   48: ldc 2
+    //   50: monitorexit
+    //   51: aload_0
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   47	5	0	localObject2	Object
+    //   42	4	1	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   15	31	42	finally
+    //   31	33	42	finally
+    //   43	45	42	finally
+    //   3	15	47	finally
+    //   33	37	47	finally
+    //   45	47	47	finally
   }
   
-  public static JSONObject a(Object paramObject)
+  private String a(AppInterface paramAppInterface)
   {
-    JSONObject localJSONObject = new JSONObject();
-    Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j) {}
-      Object localObject2;
-      Object localObject1;
-      for (;;)
-      {
-        Object localObject3;
-        try
-        {
-          if (!Modifier.isPublic(arrayOfField[i].getModifiers())) {
-            break label277;
-          }
-          arrayOfField[i].setAccessible(true);
-          localObject2 = arrayOfField[i].get(paramObject);
-          localObject1 = localObject2;
-          if ((localObject2 instanceof PBField)) {
-            localObject1 = localObject2.getClass().getDeclaredMethod("get", new Class[0]).invoke(localObject2, new Object[0]);
-          }
-          if (!(localObject1 instanceof List)) {
-            break label232;
-          }
-          localObject2 = new JSONArray();
-          localObject1 = ((List)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject3 = ((Iterator)localObject1).next();
-          if (a(localObject3))
-          {
-            ((JSONArray)localObject2).put(localObject3);
-            continue;
-            return localJSONObject;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("JSONUtils", 2, "convert error:" + paramObject);
-          }
-        }
-        if (localObject3 != null) {
-          ((JSONArray)localObject2).put(a(localObject3));
-        }
-      }
-      localJSONObject.put(arrayOfField[i].getName(), localObject2);
-      break label277;
-      label232:
-      if (a(localObject1)) {
-        localJSONObject.put(arrayOfField[i].getName(), localObject1);
-      } else if (localObject1 != null) {
-        localJSONObject.put(arrayOfField[i].getName(), a(localObject1));
-      }
-      label277:
-      i += 1;
-    }
+    return ahjc.c + paramAppInterface.getCurrentAccountUin() + File.separator;
   }
   
-  static boolean a(Class paramClass)
+  public String a()
   {
-    return (paramClass.isPrimitive()) || (paramClass.equals(Integer.class)) || (paramClass.equals(Long.class)) || (paramClass.equals(String.class)) || (paramClass.equals(Boolean.class)) || (paramClass.equals(Double.class));
+    return jdField_a_of_type_JavaLangString;
   }
   
-  static boolean a(Object paramObject)
+  public JSONObject a(Context paramContext)
   {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
-  }
-  
-  public static <T> T b(JSONObject paramJSONObject, Class<T> paramClass)
-  {
-    if ((paramJSONObject == null) || (paramClass == null)) {
-      return null;
-    }
-    Object localObject;
-    int i;
-    Field localField;
-    Class localClass2;
-    try
+    if (this.jdField_a_of_type_OrgJsonJSONObject == null)
     {
-      localObject = paramClass.newInstance();
-      Field[] arrayOfField = paramClass.getFields();
-      int k = arrayOfField.length;
-      i = 0;
-      if (i >= k) {
-        break label343;
-      }
-      localField = arrayOfField[i];
-      paramClass = localField.getName();
-      if ((localField.isAnnotationPresent(baze.class)) || (Modifier.isStatic(localField.getModifiers()))) {
-        break label346;
-      }
-      if (localField.isAnnotationPresent(bazc.class)) {
-        paramClass = ((bazc)localField.getAnnotation(bazc.class)).a();
-      }
-      if (!paramJSONObject.has(paramClass)) {
-        break label346;
-      }
-      localClass2 = localField.getType();
-      if (a(localClass2)) {
-        localField.set(localObject, paramJSONObject.get(paramClass));
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("JSONUtils", 2, "convert json error\n" + paramJSONObject);
-      }
-      return null;
-    }
-    JSONArray localJSONArray;
-    Class localClass1;
-    int j;
-    if (List.class.isAssignableFrom(localClass2))
-    {
-      localJSONArray = paramJSONObject.getJSONArray(paramClass);
-      if (!localField.isAnnotationPresent(bazd.class)) {
+      paramContext = paramContext.getSharedPreferences("qb_tenpay_share_face", 0).getString("hb_face", "");
+      if (TextUtils.isEmpty(paramContext)) {
         return null;
       }
-      localClass1 = ((bazd)localField.getAnnotation(bazd.class)).a();
-      if (List.class.equals(localClass2)) {}
-      for (paramClass = new ArrayList();; paramClass = (List)localClass2.newInstance())
-      {
-        localField.set(localObject, paramClass);
-        if (!a(localClass1)) {
-          break label353;
-        }
-        j = 0;
-        while (j < localJSONArray.length())
-        {
-          paramClass.add(localJSONArray.get(j));
-          j += 1;
-        }
-      }
     }
-    for (;;)
+    try
     {
-      if (j < localJSONArray.length())
-      {
-        paramClass.add(b(localJSONArray.getJSONObject(j), localClass1));
-        j += 1;
-        continue;
-        localField.set(paramJSONObject.getJSONObject(paramClass), localClass2);
-        break label346;
-        label343:
-        return localObject;
-      }
-      label346:
-      i += 1;
-      break;
-      label353:
-      j = 0;
+      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
+      return this.jdField_a_of_type_OrgJsonJSONObject;
     }
+    catch (JSONException paramContext)
+    {
+      for (;;)
+      {
+        paramContext.printStackTrace();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      jdField_a_of_type_Bazb = null;
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getCurrentAccountUin())))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HbThemeConfigManager", 2, "update hbTheme config, but AppInterface is null or account is empty return. ");
+      }
+      return;
+    }
+    ThreadManager.post(new HbThemeConfigManager.2(this, paramString, paramQQAppInterface), 5, null, false);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HbThemeConfigManager", 2, "updateFaceConfig failed : config = null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HbThemeConfigManager", 2, "updateFaceConfig config = " + paramJSONObject.toString());
+    }
+    paramQQAppInterface = new HbThemeConfigManager.1(this, paramQQAppInterface.getApp(), paramJSONObject, paramQQAppInterface);
+    ThreadManager.getFileThreadHandler().post(paramQQAppInterface);
+  }
+  
+  public void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

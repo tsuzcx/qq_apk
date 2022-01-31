@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface almz
+public class almz
+  implements View.OnTouchListener
 {
-  public abstract allc a();
+  public almz(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public abstract allg a();
-  
-  public abstract augj a();
-  
-  public abstract ARCommonConfigInfo a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
+    }
+    long l = System.currentTimeMillis();
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
+    }
+    do
+    {
+      return false;
+      ScanEntryProviderContainerView.a(this.a, l);
+      switch (paramMotionEvent.getAction())
+      {
+      default: 
+        return false;
+      }
+      paramView = (Integer)paramView.getTag();
+      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new alna(this, paramView));
+    } while (paramView.intValue() != 2);
+    axqy.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    return false;
+  }
 }
 
 

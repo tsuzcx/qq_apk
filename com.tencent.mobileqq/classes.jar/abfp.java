@@ -1,18 +1,15 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abfp
-  implements ImageAssetDelegate
+  implements View.OnClickListener
 {
-  public abfp(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
+  public abfp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(View paramView)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    FriendProfileImageActivity.a(this.a);
   }
 }
 

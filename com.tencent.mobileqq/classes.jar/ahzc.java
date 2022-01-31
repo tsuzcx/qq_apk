@@ -1,14 +1,14 @@
-class ahzc
-  implements ahzf
+import com.tencent.mobileqq.app.QQAppInterface;
+
+final class ahzc
+  implements ahzd
 {
-  ahzc(ahzb paramahzb) {}
+  ahzc(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
   public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
-      return false;
-    }
-    return ahzb.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
+    ahzb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 

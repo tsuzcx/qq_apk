@@ -1,12 +1,48 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class sce
+  implements ajte
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
+  
+  protected void a(boolean paramBoolean, List<scj> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      if (paramObject != null) {
+        try
+        {
+          a(paramBoolean, (ArrayList)paramObject);
+          return;
+        }
+        catch (Exception paramObject)
+        {
+          return;
+        }
+      }
+      a(false, new ArrayList(0));
+      return;
+    }
+    if (paramObject != null) {
+      try
+      {
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        return;
+      }
+    }
+    a(false, new ArrayList(0));
+  }
 }
 
 

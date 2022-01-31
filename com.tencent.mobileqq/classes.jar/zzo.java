@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class zzo
 {
-  private static ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public int c;
   
-  public static String a(String paramString)
+  public zzo(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3)
   {
-    String str2 = (String)a.get(paramString);
-    String str1 = str2;
-    if (str2 == null)
-    {
-      str2 = SecUtil.getFileMd5(paramString);
-      str1 = str2;
-      if (str2 != null)
-      {
-        a.put(paramString, str2);
-        str1 = str2;
-      }
-    }
-    return str1;
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramInt3;
   }
 }
 

@@ -1,70 +1,62 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
-class bewh
-  implements AsyncResult
+public class bewh
 {
-  bewh(bewf parambewf) {}
+  private bemx a;
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  private void a(String paramString1, String paramString2, bewo parambewo)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      long l = paramJSONObject.optLong("retCode");
-      Object localObject = paramJSONObject.optString("errMsg");
-      besl.a("MiniAppInfoLoadTask", "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject);
-      if (l != 0L)
-      {
-        if ((TextUtils.isEmpty((CharSequence)localObject)) && (bffr.a())) {
-          new StringBuilder().append("请求失败").append(", retCode = ").append(l).toString();
-        }
-        this.a.f();
-      }
-      localObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      paramJSONObject = paramJSONObject.optString("shareTicket", "");
-      if ((l == 0L) && (localObject != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).appId)))
-      {
-        ((MiniAppInfo)localObject).launchParam.a(bewf.a(this.a).launchParam);
-        ((MiniAppInfo)localObject).apkgInfo = bewf.a(this.a).apkgInfo;
-        ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaLangString = ((MiniAppInfo)localObject).appId;
-        ((MiniAppInfo)localObject).launchParam.h = paramJSONObject;
-        ((MiniAppInfo)localObject).launchParam.e = ((MiniAppInfo)localObject).extraData;
-        if (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.h)) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_Int = 1044;
-        }
-        if (((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap == null) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        if (((MiniAppInfo)localObject).reportData != null) {
-          ((MiniAppInfo)localObject).launchParam.jdField_a_of_type_JavaUtilMap.putAll(((MiniAppInfo)localObject).reportData);
-        }
-        if (((MiniAppInfo)localObject).verType != 3) {
-          ((MiniAppInfo)localObject).forceReroad = 3;
-        }
-        bewf.a(this.a, (MiniAppInfo)localObject);
-        this.a.c();
-        return;
-      }
-      beyu.a(bewf.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-      bexz.a("2launch_fail", "shotcut_request_fail", null, bewf.a(this.a));
-      if (localObject == null) {
-        besl.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
-      }
-      for (;;)
-      {
-        this.a.f();
-        return;
-        besl.d("MiniAppInfoLoadTask", "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject).appId);
-      }
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      betc.d("MiniGameAuthorizeManager", "showDialog: appid or scopeName is empty,appid= " + paramString1 + "scopeName=" + paramString2);
     }
-    beyu.a(bewf.a(this.a), "1", null, "load_fail", "shortcut_request_fail");
-    bexz.a("2launch_fail", "shotcut_request_fail", null, bewf.a(this.a));
-    this.a.f();
+    bevt localbevt;
+    Object localObject;
+    label233:
+    label239:
+    do
+    {
+      return;
+      if ((this.a != null) && (this.a.isShowing()))
+      {
+        betc.d("MiniGameAuthorizeManager", "showDialog: mAuthorDialog is showing now.just return");
+        return;
+      }
+      localbevt = bevz.a().a();
+      if ((localbevt == null) || (!TextUtils.equals(localbevt.d, paramString1)))
+      {
+        betc.d("MiniGameAuthorizeManager", "showDialog: cann't get gamePkg");
+        return;
+      }
+      localObject = beqy.a().a();
+      paramString1 = new bewi(this, paramString1, paramString2, parambewo);
+      this.a = new bemx((Context)localObject);
+      this.a.setOnDismissListener(paramString1);
+      parambewo = beic.a().a(paramString2);
+      if (parambewo != null)
+      {
+        paramString1 = parambewo.b;
+        if (parambewo == null) {
+          break label233;
+        }
+      }
+      for (parambewo = parambewo.c;; parambewo = "")
+      {
+        localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+        if (!"scope.userInfo".equals(paramString2)) {
+          break label239;
+        }
+        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInfo(localbevt.d, false, "en", new bewj(this, (MiniAppProxy)localObject, localbevt, paramString1, parambewo));
+        return;
+        paramString1 = paramString2;
+        break;
+      }
+    } while (this.a == null);
+    this.a.a(((MiniAppProxy)localObject).getDrawable(MiniAppEnv.g().getContext(), localbevt.e, 0, 0, null), localbevt.c, paramString1, null, null, parambewo, "拒绝", new bewm(this), "允许", new bewn(this));
   }
 }
 

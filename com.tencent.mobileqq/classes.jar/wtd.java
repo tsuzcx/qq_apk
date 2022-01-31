@@ -1,6 +1,16 @@
-public abstract interface wtd
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class wtd
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs);
+  wtd(wth paramwth, String paramString, bfpc parambfpc) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Wth.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bfpc.dismiss();
+  }
 }
 
 

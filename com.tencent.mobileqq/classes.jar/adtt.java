@@ -1,13 +1,11 @@
-import android.widget.ImageView;
 import android.widget.TextView;
 
 class adtt
-  extends acun
+  extends acuj
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  adtt(adtp paramadtp) {}
+  adtt(adts paramadts) {}
 }
 
 

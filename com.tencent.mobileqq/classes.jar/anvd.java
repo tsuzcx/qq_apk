@@ -1,26 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anvd
-  implements aiyw
+class anvd
+  implements URLDrawable.URLDrawableListener
 {
-  public anvd(MessengerService.IncomingHandler.4 param4) {}
+  anvd(anuq paramanuq, String paramString) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 0);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void a(int paramInt)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", paramInt);
-    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

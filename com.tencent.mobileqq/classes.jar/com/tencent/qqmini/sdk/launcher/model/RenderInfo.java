@@ -6,7 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import berp;
+import besg;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -20,7 +20,7 @@ import java.util.Set;
 public class RenderInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RenderInfo> CREATOR = new berp();
+  public static final Parcelable.Creator<RenderInfo> CREATOR = new besg();
   public int a;
   public Map<Integer, String> a;
   

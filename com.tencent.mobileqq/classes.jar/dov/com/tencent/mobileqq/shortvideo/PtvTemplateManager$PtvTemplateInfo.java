@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import axrl;
+import axrn;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -324,7 +324,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    axrl.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    axrn.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public int getDisplayIconByType()
@@ -334,13 +334,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130843766;
-    case 2: 
       return 2130843767;
+    case 2: 
+      return 2130843768;
     case 3: 
-      return 2130843769;
+      return 2130843770;
     }
-    return 2130843768;
+    return 2130843769;
   }
   
   public String getLbsActivityType(int paramInt)

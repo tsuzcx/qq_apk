@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
-import ajyc;
+import ajya;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,19 +17,19 @@ class AppBrandLaunchManager$11
     }
     if (paramInt == 1)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, ajyc.a(2131700587));
+      QLog.w("miniapp-process_AppBrandLaunchManager", 1, ajya.a(2131700598));
       return;
     }
-    String str = ajyc.a(2131700584);
+    String str = ajya.a(2131700595);
     if (paramInt == 1100) {
-      str = ajyc.a(2131700590);
+      str = ajya.a(2131700601);
     }
     for (;;)
     {
       QLog.w("miniapp-process_AppBrandLaunchManager", 1, str);
       return;
       if (paramInt == 1101) {
-        str = ajyc.a(2131700593);
+        str = ajya.a(2131700604);
       }
     }
   }

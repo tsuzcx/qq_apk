@@ -1,14 +1,14 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnBufferingUpdateListener;
+import android.media.MediaPlayer.OnErrorListener;
 
 class ufx
-  implements MediaPlayer.OnBufferingUpdateListener
+  implements MediaPlayer.OnErrorListener
 {
-  ufx(ufu paramufu, ufl paramufl) {}
+  ufx(ufr paramufr, ufk paramufk) {}
   
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Ufl.a(this.jdField_a_of_type_Ufu, paramInt);
+    return this.jdField_a_of_type_Ufk.a(this.jdField_a_of_type_Ufr, paramInt1, paramInt2);
   }
 }
 

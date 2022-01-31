@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import lya;
+import lxv;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new lya();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new lxv();
   static String jdField_a_of_type_JavaLangString = "RecvMsg";
   int jdField_a_of_type_Int;
   public long a;

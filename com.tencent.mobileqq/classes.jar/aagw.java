@@ -1,29 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class aagw
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
   public aagw(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    do
-    {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
+    this.a.a = null;
   }
 }
 

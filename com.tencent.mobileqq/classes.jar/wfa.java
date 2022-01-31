@@ -1,16 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.animation.TypeEvaluator;
 
-class wfa
-  implements ValueAnimator.AnimatorUpdateListener
+final class wfa
+  implements TypeEvaluator<wez>
 {
-  wfa(wez paramwez, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  private wez a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public wez a(float paramFloat, wez paramwez1, wez paramwez2)
   {
-    paramValueAnimator = (wfc)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
+    float f1 = paramwez1.a + (paramwez2.a - paramwez1.a) * paramFloat;
+    float f2 = paramwez1.b + (paramwez2.b - paramwez1.b) * paramFloat;
+    paramFloat = paramwez1.c + (paramwez2.c - paramwez1.c) * paramFloat;
+    if (this.a == null) {
+      this.a = new wez(f1, f2, paramFloat);
+    }
+    for (;;)
+    {
+      return this.a;
+      this.a.a = f1;
+      this.a.b = f2;
+      this.a.c = paramFloat;
+    }
   }
 }
 

@@ -1,37 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.graphics.RectF;
 
-public class bknq
-  implements Animator.AnimatorListener
+public abstract interface bknq
 {
-  public bknq(PickerContainer paramPickerContainer) {}
+  public abstract void a(int paramInt);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
-  }
+  public abstract void a(int paramInt, RectF paramRectF);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void b(int paramInt);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void c(int paramInt);
 }
 
 

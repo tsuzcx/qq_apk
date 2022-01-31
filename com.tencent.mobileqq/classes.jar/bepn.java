@@ -1,16 +1,26 @@
-import java.util.Observable;
-import java.util.Observer;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public abstract class bepn
-  implements Observer
+class bepn
+  implements ServiceConnection
 {
-  public abstract void a(bepm parambepm);
+  bepn(bepl parambepl) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((paramObject instanceof bepm)) {
-      a((bepm)paramObject);
-    }
+    bepl.a(this.a, bepq.a(paramIBinder));
+    betc.c("minisdk-start_AppBrandProxy", "onServiceConnected:" + bepl.a(this.a));
+    bepl.a(this.a, false);
+    bepl.a(this.a);
+    bepl.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    bepl.a(this.a, null);
+    betc.c("minisdk-start_AppBrandProxy", "onServiceDisconnected.");
+    bepl.a(this.a, false);
   }
 }
 

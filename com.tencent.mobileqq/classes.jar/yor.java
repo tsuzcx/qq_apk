@@ -1,242 +1,89 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Handler;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.gamecenter.common.util.ScreenshotManager.1;
-import com.tencent.gamecenter.common.util.ScreenshotManager.2;
-import com.tencent.gamecenter.common.util.ScreenshotManager.3;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.io.File;
-import java.io.FileOutputStream;
-import org.json.JSONObject;
 
 public class yor
 {
-  public static final String a;
-  public static final String b;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean = yod.b("gamecenter_shot_switch");
-  private boolean b;
+  private static AppInterface a;
   
-  static
+  private static void a(String paramString, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = bbuv.a("Tencent/MobileQQ/gamecenter" + File.separator);
-    jdField_b_of_type_JavaLangString = bbuv.a(jdField_a_of_type_JavaLangString + "gamecenter_screenshot");
-  }
-  
-  public static yor a()
-  {
-    return yos.a();
-  }
-  
-  private void a(Context paramContext, String paramString, yot paramyot)
-  {
-    if (apvb.a(jdField_b_of_type_JavaLangString + paramString)) {
-      ThreadManagerV2.executeOnFileThread(new ScreenshotManager.1(this, paramString, paramyot));
+    String[] arrayOfString;
+    if (bbfj.b(BaseApplication.getContext()) == 1)
+    {
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
+    }
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
+      return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
     }
   }
   
-  public void a()
+  public static void a(String paramString, long paramLong, short paramShort)
   {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null)
-      {
-        ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        QLog.i("ScreenshotManager", 1, "forceRemoveMask call");
+    if (paramShort == 0) {
+      a(paramString, paramLong);
+    }
+    while (paramShort != 1) {
+      return;
+    }
+    b(paramString, paramLong);
+  }
+  
+  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  {
+    if ((a == null) || (paramArrayOfString == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
       }
-      return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      QLog.e("ScreenshotManager", 1, "forceRemoveMask e=" + localThrowable.toString());
-    }
-  }
-  
-  public void a(WebView paramWebView)
-  {
-    if (!a(null)) {
       return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new ScreenshotManager.3(this, paramWebView));
-  }
-  
-  public void a(WebView paramWebView, String paramString, yot paramyot)
-  {
-    if (!a(paramyot)) {
-      return;
-    }
-    paramWebView.setDrawingCacheEnabled(true);
-    paramWebView.buildDrawingCache();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramWebView.getDrawingCache());
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ThreadManagerV2.executeOnSubThread(new ScreenshotManager.2(this, paramString, paramyot));
-  }
-  
-  public void a(WebView paramWebView, yot paramyot)
-  {
-    if (!a(paramyot)) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0))
-    {
-      paramyot.a(0, "removeShotMask no visible");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenshotManager", 2, "removeShotMask call");
-    }
-    try
-    {
-      ((ViewGroup)paramWebView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramyot.a(0, "removeShotMask succ");
-      return;
-    }
-    catch (Throwable paramWebView)
-    {
-      paramyot.a(-400, "removeShotMask fail");
-    }
-  }
-  
-  public void a(String paramString, yot paramyot)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("switch", yod.b("gamecenter_shot_switch"));
-      localJSONObject.put("fileExist", apvb.a(jdField_a_of_type_JavaLangString + paramString));
-      paramyot.a(0, localJSONObject.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramyot.a(-700, "queryShotInfo error");
-    }
-  }
-  
-  public void a(yot paramyot)
-  {
-    if (apvb.c(jdField_a_of_type_JavaLangString))
-    {
-      paramyot.a(0, "delShotFile succ");
-      return;
-    }
-    paramyot.a(-500, "delShotFile fail");
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0);
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap != null) {
       try
       {
-        paramString = jdField_b_of_type_JavaLangString + paramString;
-        vyi.a(jdField_a_of_type_JavaLangString);
-        paramString = new FileOutputStream(new File(paramString));
-        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-        paramString.flush();
-        paramString.close();
-        return true;
+        String str = a.getCurrentAccountUin();
+        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
+          return;
+        }
       }
-      catch (Exception paramBitmap)
+      catch (Exception paramString)
       {
-        QLog.e("ScreenshotManager", 1, "screenShot saveBitmap error=" + paramBitmap.toString());
-        return false;
+        paramString.printStackTrace();
       }
     }
-    return false;
   }
   
-  public boolean a(yot paramyot)
+  private static void b(String paramString, long paramLong)
   {
-    if (!yod.b("gamecenter_shot_switch"))
+    String[] arrayOfString;
+    if (bbfj.b(BaseApplication.getContext()) == 1)
     {
-      if (paramyot != null) {
-        paramyot.a(-1, "shot switch is false");
-      }
-      return false;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
+      arrayOfString[1] = "param_WIFIFlow";
+      arrayOfString[2] = "param_Flow";
     }
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-  }
-  
-  public void b(WebView paramWebView, String paramString, yot paramyot)
-  {
-    if (!a(paramyot)) {
+    for (;;)
+    {
+      a(paramString, arrayOfString, paramLong);
       return;
+      arrayOfString = new String[3];
+      arrayOfString[0] = "param_XGGameCenterUploadFlow";
+      arrayOfString[1] = "param_XGFlow";
+      arrayOfString[2] = "param_Flow";
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      paramyot.a(-300, "preloadMask not init");
-      a(paramWebView.getContext(), paramString, paramyot);
-      QLog.e("ScreenshotManager", 1, "preloadMask not init");
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_b_of_type_Boolean = false;
-    try
-    {
-      a();
-      paramString = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      ((ViewGroup)paramWebView.getParent()).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramyot.a(0, "succ");
-      return;
-    }
-    catch (Throwable paramWebView)
-    {
-      QLog.e("ScreenshotManager", 1, "addShot error =" + paramWebView.toString());
-      paramyot.a(-301, "add view error");
-    }
-  }
-  
-  public void b(yot paramyot)
-  {
-    QLog.i("ScreenshotManager", 1, "closeShot");
-    if (yod.a("gamecenter_shot_switch", false))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      paramyot.a(0, "closeShot succ");
-      return;
-    }
-    paramyot.a(-600, "closeShot fail");
-  }
-  
-  public void c(yot paramyot)
-  {
-    QLog.i("ScreenshotManager", 1, "open");
-    if (yod.a("gamecenter_shot_switch", true))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      paramyot.a(0, "openShot succ");
-      return;
-    }
-    paramyot.a(-600, "openShot fail");
   }
 }
 

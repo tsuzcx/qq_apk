@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class abpl
-  extends ajtq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abpl(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public abpl(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean1)
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131718858) + this.a.a, paramBoolean);
+    if (AppSetting.d) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(ajya.a(2131707669));
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      i = 1;
+      if (!paramBoolean) {
+        break label109;
+      }
+    }
+    label109:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      axqy.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
+      return;
+      i = 0;
+      break;
     }
   }
 }

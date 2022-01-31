@@ -1,54 +1,69 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
-class aqdr
-  extends URLDrawableDownListener.Adapter
+public class aqdr
 {
-  aqdr(aqdq paramaqdq) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
-    {
+    if (paramDrawable == null) {
       return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
+    }
+    if (paramBoolean1)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (!paramBoolean2)
       {
-        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bbll.a(140.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bbll.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bbll.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839628);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839629);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

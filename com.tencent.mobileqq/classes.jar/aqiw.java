@@ -1,8 +1,7 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class aqiw
   implements CompoundButton.OnCheckedChangeListener
@@ -11,31 +10,13 @@ public class aqiw
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131695322), "qqsetting_auto_receive_pic_key", paramBoolean);
     paramCompoundButton = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    int i;
-    if (paramBoolean)
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      i = 1;
-      axqw.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
-      ((ajuf)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(4)).c();
-      ajuf.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
-      if (!paramBoolean) {
-        break label134;
-      }
-      if (akva.a().a() != 4) {
-        akva.a().a();
-      }
-      axqw.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      ((MessageHandler)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(0)).f(paramBoolean);
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
       return;
-      i = 0;
-      break;
-      label134:
-      akva.a().b();
-      axqw.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
     }
   }
 }

@@ -1,17 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
 import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
 
 public class aqhy
-  implements Handler.Callback
+  implements TextWatcher
 {
-  public aqhy(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  public aqhy(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a(paramMessage);
-    return false;
+    paramEditable = paramEditable.toString();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

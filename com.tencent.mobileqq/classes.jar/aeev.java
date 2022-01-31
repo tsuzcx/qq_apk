@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class aeev
-  implements View.OnTouchListener
+public class aeev
+  implements adnz
 {
-  aeev(aeet paramaeet, acxn paramacxn) {}
+  public aeev(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onUpdate(int paramInt)
   {
-    this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
-    return false;
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
+    }
   }
 }
 

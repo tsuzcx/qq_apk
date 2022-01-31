@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class vao
-  implements View.OnClickListener
+  implements uzx
 {
-  vao(vaf paramvaf, vdm paramvdm) {}
+  vao(vac paramvac) {}
   
-  public void onClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    vel.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Vdm.dismiss();
+    ved.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
   }
 }
 

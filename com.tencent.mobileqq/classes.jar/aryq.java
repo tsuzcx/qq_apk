@@ -1,33 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class aryq
-  implements Animator.AnimatorListener
+  implements View.OnLayoutChangeListener
 {
   public aryq(PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    PoiSlideBottomPanel.c(this.a, false);
-    if (PoiSlideBottomPanel.e(this.a) != null) {
-      PoiSlideBottomPanel.f(this.a).displayPanelFinish();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.b(this.a, false);
-    if (PoiSlideBottomPanel.c(this.a) != null) {
-      PoiSlideBottomPanel.d(this.a).displayPanelFinish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    PoiSlideBottomPanel.a(this.a, true);
+    paramView.setTop(paramInt6);
+    paramView.setBottom(paramInt8);
+    paramView.setLeft(paramInt5);
+    paramView.setRight(paramInt7);
   }
 }
 

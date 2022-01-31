@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajmw;
+import ajmu;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
@@ -18,9 +18,9 @@ class ApolloPanel$21
     }
     if ((this.this$0.a != null) && (this.this$0.a.a != null))
     {
-      ajmw localajmw = (ajmw)this.this$0.a.a.getManager(155);
-      if (localajmw != null) {
-        localajmw.a(this.a);
+      ajmu localajmu = (ajmu)this.this$0.a.a.getManager(155);
+      if (localajmu != null) {
+        localajmu.a(this.a);
       }
     }
   }

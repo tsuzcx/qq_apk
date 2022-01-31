@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import afna;
-import akfd;
-import bbbb;
+import afmy;
+import akfc;
+import bbbp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +14,23 @@ class TroopNotifyAndRecommendView$12
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Afna != null)
+    if (this.this$0.jdField_a_of_type_Afmy != null)
     {
-      this.this$0.jdField_a_of_type_Afna.b = true;
-      this.this$0.jdField_a_of_type_Afna.notifyDataSetChanged();
+      this.this$0.jdField_a_of_type_Afmy.b = true;
+      this.this$0.jdField_a_of_type_Afmy.notifyDataSetChanged();
     }
     TroopNotifyAndRecommendView.c(this.this$0);
-    Object localObject = (akfd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22);
+    Object localObject = (akfc)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(22);
     if ((this.a != null) && (this.a.size() > 0))
     {
-      if (this.this$0.jdField_a_of_type_Afna != null)
+      if (this.this$0.jdField_a_of_type_Afmy != null)
       {
-        this.this$0.jdField_a_of_type_Afna.b(this.a);
-        this.this$0.jdField_a_of_type_Afna.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Afmy.b(this.a);
+        this.this$0.jdField_a_of_type_Afmy.notifyDataSetChanged();
       }
       if (!this.this$0.d)
       {
-        bbbb.a("Grp_contacts_news", "notice", "enter_recom", 1, 0, new String[0]);
+        bbbp.a("Grp_contacts_news", "notice", "enter_recom", 1, 0, new String[0]);
         this.this$0.d = true;
       }
     }
@@ -43,11 +43,11 @@ class TroopNotifyAndRecommendView$12
         this.this$0.e = true;
       }
       return;
-      if (this.this$0.jdField_a_of_type_Afna != null)
+      if (this.this$0.jdField_a_of_type_Afmy != null)
       {
         localObject = new ArrayList();
-        this.this$0.jdField_a_of_type_Afna.b((List)localObject);
-        this.this$0.jdField_a_of_type_Afna.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Afmy.b((List)localObject);
+        this.this$0.jdField_a_of_type_Afmy.notifyDataSetChanged();
       }
     }
   }

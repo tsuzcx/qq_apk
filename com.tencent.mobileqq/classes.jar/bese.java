@@ -1,22 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.PreCacheInfo;
 
-public abstract interface bese
+public final class bese
+  implements Parcelable.Creator<PreCacheInfo>
 {
-  public abstract void init(Context paramContext);
+  public PreCacheInfo a(Parcel paramParcel)
+  {
+    PreCacheInfo localPreCacheInfo = new PreCacheInfo();
+    localPreCacheInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPreCacheInfo.b = paramParcel.readString();
+    localPreCacheInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    return localPreCacheInfo;
+  }
   
-  public abstract void onAppBackground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void onAppDestroy(Bundle paramBundle);
-  
-  public abstract void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void onAppStart(MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
-  
-  public abstract void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  public PreCacheInfo[] a(int paramInt)
+  {
+    return new PreCacheInfo[paramInt];
+  }
 }
 
 

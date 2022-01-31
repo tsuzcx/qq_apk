@@ -1,253 +1,197 @@
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 public class aewx
-  extends aewm
+  extends aewd
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  public CustomEmotionData a;
+  private Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private int jdField_f_of_type_Int;
-  private String jdField_f_of_type_JavaLangString;
-  private int jdField_g_of_type_Int;
-  private String jdField_g_of_type_JavaLangString;
-  private String h;
-  private String i;
-  private String j;
+  
+  public aewx(QQAppInterface paramQQAppInterface, CustomEmotionData paramCustomEmotionData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
+    this.jdField_a_of_type_JavaLangString = ((answ)paramQQAppInterface.getManager(149)).a(paramCustomEmotionData);
+    if (paramCustomEmotionData.isMarkFace) {
+      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = ((askf)paramQQAppInterface.getManager(14)).a(paramCustomEmotionData.emoPath, paramCustomEmotionData.eId);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("image_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("forward_type", -3);
+    localBundle.putString("pkg_name", "com.tencent.mobileqq");
+    localBundle.putInt("req_type", 5);
+    localBundle.putString("brief_key", "[图片]");
+    localBundle.putString("app_name", "QQ动漫");
+    localBundle.putString("struct_share_key_content_action_DATA", paramString);
+    StructMsgForImageShare.sendAndUploadImageShare(paramQQAppInterface, (StructMsgForImageShare)axva.a(localBundle), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.b, 0);
+    paramSessionInfo = aeht.a(paramString);
+    if ((paramSessionInfo != null) && (paramSessionInfo.length >= 8)) {
+      bghx.a(paramQQAppInterface, "100007", "2", "40051", paramSessionInfo[0], new String[] { paramSessionInfo[2], paramSessionInfo[4], aeht.a(paramString) });
+    }
+  }
   
   public int a()
   {
-    return 0;
+    return this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.exposeNum;
   }
   
-  public long a()
+  public URLDrawable.URLDrawableOptions a()
   {
-    return this.jdField_a_of_type_Long;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null))
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerRecFavoriteData", 2, "getURLDrawableOptions: APNG so loaded use apng image");
+        }
+        localURLDrawableOptions.mUseApngImage = true;
+        localURLDrawableOptions.mPlayGifImage = false;
+        localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
+      }
+      return localURLDrawableOptions;
+    }
+    return super.a();
   }
   
-  public String a()
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null))
+    {
+      paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+      if (paramURL.getStatus() != 1) {
+        paramURL.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      }
+      return paramURL;
+    }
+    return super.a(paramURL, paramURLDrawableOptions);
   }
   
-  public void a(int paramInt)
+  public URL a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) {}
+    URL localURL3;
+    for (;;)
+    {
+      URL localURL2;
+      try
+      {
+        URL localURL1 = new URL("protocol_vas_extension_image", "FAVOROTE_PANEL_DYNAMIC", this.jdField_a_of_type_JavaLangString);
+        if (localURL1 != null) {
+          break;
+        }
+        QLog.e("StickerRecFavoriteData", 1, "StickerRecFavoriteData getURL url = null");
+        return null;
+      }
+      catch (MalformedURLException localMalformedURLException1)
+      {
+        QLog.e("StickerRecFavoriteData", 1, "StickerRecFavoriteData getURL url exception e = " + localMalformedURLException1.getMessage());
+        localURL2 = null;
+        continue;
+      }
+      try
+      {
+        localURL2 = new URL("emotion_pic", "fromAIO", this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + "_" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId);
+      }
+      catch (MalformedURLException localMalformedURLException2)
+      {
+        QLog.e("StickerRecFavoriteData", 1, "StickerLocalRecData getURL url exception e = " + localMalformedURLException2.getMessage());
+        localURL3 = null;
+      }
+    }
+    return localURL3;
   }
   
-  public void a(long paramLong)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    ((ansx)paramQQAppInterface.getManager(103)).b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
   }
   
-  public void a(String paramString)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    boolean bool = false;
+    super.a(paramQQAppInterface, paramContext, paramSessionInfo);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null))
+    {
+      aanz.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isNewSoundEmoticon()) {
+        askf.a(paramQQAppInterface, "0X800A932", paramSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      }
+      ((ansx)paramQQAppInterface.getManager(103)).a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      return;
+    }
+    if (((paramContext instanceof BaseActivity)) && (asyx.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      paramContext = (BaseActivity)paramContext;
+      bcql.a(paramQQAppInterface.getApp(), "热聊暂不支持发送自定义表情", 0).b(paramContext.getTitleBarHeight());
+      return;
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.isMarkFace) {}
+    for (String str = aoaz.a(((anua)paramQQAppInterface.getManager(141)).a(), this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);; str = null)
+    {
+      if (aeht.a(str))
+      {
+        a(paramQQAppInterface, paramSessionInfo, str);
+        break;
+      }
+      str = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId)) {
+        bool = true;
+      }
+      aanz.a(paramQQAppInterface, paramContext, paramSessionInfo, str, true, bool, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId, null);
+      break;
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return true;
   }
   
   public int b()
   {
-    return 0;
+    return this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.clickNum;
   }
   
   public String b()
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_d_of_type_Int = paramInt;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public int e()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_e_of_type_Int = paramInt;
-  }
-  
-  public void e(String paramString)
-  {
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_g_of_type_Int;
-  }
-  
-  public String f()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void f(String paramString)
-  {
-    this.jdField_g_of_type_JavaLangString = paramString;
-  }
-  
-  public int g()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_Int;
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5;
+    if (str != null) {
+      return str.toLowerCase();
     }
-    return this.jdField_c_of_type_Int;
+    return null;
   }
   
-  public String g()
+  public int c()
   {
-    return this.jdField_g_of_type_JavaLangString;
+    return 4;
   }
   
-  public void g(int paramInt)
+  public String c()
   {
-    this.jdField_g_of_type_Int = paramInt;
+    return "c-";
   }
   
-  public void g(String paramString)
+  public boolean d()
   {
-    this.h = paramString;
-  }
-  
-  public int h()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_Int;
-    }
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String h()
-  {
-    return this.h;
-  }
-  
-  public void h(String paramString)
-  {
-    this.i = paramString;
-  }
-  
-  public String i()
-  {
-    return this.j;
-  }
-  
-  public void i(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public String j()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_c_of_type_JavaLangString;
-    }
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public String k()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String l()
-  {
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      this.jdField_e_of_type_JavaLangString = aexd.d(k());
-    }
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_a_of_type_Int + " imgHeight=" + this.jdField_b_of_type_Int + " thumbWidth=" + this.jdField_c_of_type_Int + " thumbHeight=" + this.jdField_d_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
+    return (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString() != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().isEmpty());
   }
 }
 

@@ -1,5 +1,5 @@
 class ex
-  extends ajuv
+  extends ajut
 {
   ex(ew paramew) {}
   

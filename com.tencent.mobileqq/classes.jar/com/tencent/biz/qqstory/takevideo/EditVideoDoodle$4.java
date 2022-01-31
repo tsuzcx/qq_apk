@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import java.util.Collections;
-import vgd;
-import vmi;
+import vga;
+import vmf;
 
 public class EditVideoDoodle$4
   implements Runnable
 {
-  public EditVideoDoodle$4(vgd paramvgd) {}
+  public EditVideoDoodle$4(vga paramvga) {}
   
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Vmi.a(1, Collections.EMPTY_LIST);
+      this.this$0.jdField_a_of_type_Vmf.a(1, Collections.EMPTY_LIST);
     }
   }
 }

@@ -1,19 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class utm
-  extends ssk
+public abstract interface utm
 {
-  public String a;
-  public ArrayList<String> a;
-  public List<String> a;
-  public boolean a;
-  
-  public utm(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,31 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajhq
-  implements View.OnTouchListener
+  implements aiva
 {
   public ajhq(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
     }
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

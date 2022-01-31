@@ -1,14 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class roq
-  implements seg
+  implements View.OnClickListener
 {
-  roq(rom paramrom, ChannelCoverInfo paramChannelCoverInfo) {}
+  roq(rop paramrop, View.OnClickListener paramOnClickListener) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    rom.a(this.jdField_a_of_type_Rom).setImageDrawable(rom.a(this.jdField_a_of_type_Rom, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + rop.a(this.jdField_a_of_type_Rop).mChannelCoverName);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    bhvy.a(rop.a(this.jdField_a_of_type_Rop).mChannelCoverId, true);
+    rop.a(this.jdField_a_of_type_Rop);
   }
 }
 

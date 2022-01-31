@@ -9,14 +9,14 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
-import beil;
-import beru;
-import besi;
+import bejc;
 import besl;
-import beyu;
-import bffj;
-import bffk;
-import bffl;
+import besz;
+import betc;
+import bezl;
+import bfga;
+import bfgb;
+import bfgc;
 import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
@@ -35,13 +35,13 @@ public class MiniAppProxyDefault
 {
   private static final String TAG = "MiniAppProxyDefault";
   
-  private void reportClick(besi parambesi, String paramString)
+  private void reportClick(besz parambesz, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (!parambesi.a().isEngineTypeMiniGame()) {
+    while (!parambesz.a().isEngineTypeMiniGame()) {
       return;
     }
-    beyu.a(parambesi.a(), beyu.a(parambesi.a()), null, "user_click", "more_button", paramString);
+    bezl.a(parambesz.a(), bezl.a(parambesz.a()), null, "user_click", "more_button", paramString);
   }
   
   public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
@@ -119,15 +119,15 @@ public class MiniAppProxyDefault
     return 0;
   }
   
-  public bffl getMoreItemSelectedListener()
+  public bfgc getMoreItemSelectedListener()
   {
     return new DefaultMoreItemSelectedListener();
   }
   
-  public ArrayList<MoreItem> getMoreItems(bffj parambffj)
+  public ArrayList<MoreItem> getMoreItems(bfga parambfga)
   {
-    parambffj.a("QQ", 2130840731).b("QQ空间", 2130840732).c("微信好友", 2130840733).d("微信朋友圈", 2130840734).e("关于", 2130840697).f("举报", 2130840730).g("调试", 2130840697).h("性能", 2130840697);
-    return parambffj.a();
+    parambfga.a("QQ", 2130840728).b("QQ空间", 2130840729).c("微信好友", 2130840730).d("微信朋友圈", 2130840731).e("关于", 2130840694).f("举报", 2130840727).g("调试", 2130840694).h("性能", 2130840694);
+    return parambfga.a();
   }
   
   public String getNickName()
@@ -224,54 +224,54 @@ public class MiniAppProxyDefault
   
   public void notifyMiniAppInfo(MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean onCapsuleButtonCloseClick(besi parambesi)
+  public boolean onCapsuleButtonCloseClick(besz parambesz)
   {
     return false;
   }
   
-  public boolean onCapsuleButtonMoreClick(besi parambesi)
+  public boolean onCapsuleButtonMoreClick(besz parambesz)
   {
-    besl.a("MiniAppProxyDefault", "onCapsuleButtonMoreClick");
-    if (parambesi == null)
+    betc.a("MiniAppProxyDefault", "onCapsuleButtonMoreClick");
+    if (parambesz == null)
     {
-      besl.c("MiniAppProxyDefault", "miniRuntime is null, no need to response more button");
+      betc.c("MiniAppProxyDefault", "miniRuntime is null, no need to response more button");
       return true;
     }
-    Activity localActivity = parambesi.a();
+    Activity localActivity = parambesz.a();
     if ((localActivity == null) || (localActivity.isFinishing()))
     {
-      besl.c("MiniAppProxyDefault", "Activity is not exiting, no need to response more button");
+      betc.c("MiniAppProxyDefault", "Activity is not exiting, no need to response more button");
       return true;
     }
-    MiniAppInfo localMiniAppInfo = parambesi.a();
+    MiniAppInfo localMiniAppInfo = parambesz.a();
     if (localMiniAppInfo == null)
     {
-      besl.c("MiniAppProxyDefault", "MiniAppInfo is null, no need to response more button");
+      betc.c("MiniAppProxyDefault", "MiniAppInfo is null, no need to response more button");
       return true;
     }
-    beru localberu = parambesi.a();
-    if (localberu == null)
+    besl localbesl = parambesz.a();
+    if (localbesl == null)
     {
-      besl.c("MiniAppProxyDefault", "ShareState is null, no need to response more button");
+      betc.c("MiniAppProxyDefault", "ShareState is null, no need to response more button");
       return true;
     }
     Intent localIntent = new Intent();
-    Object localObject = new bffk();
-    ((bffk)localObject).a = localberu.e;
-    ((bffk)localObject).b = localberu.d;
-    ((bffk)localObject).c = localberu.f;
-    ((bffk)localObject).d = localberu.g;
-    ((bffk)localObject).e = localberu.b;
-    ((bffk)localObject).f = localberu.c;
-    ((bffk)localObject).g = true;
-    ((bffk)localObject).h = true;
-    localObject = getMoreItems(new bffj().a((bffk)localObject));
-    localIntent.putExtra("key_orientation_landscape", localberu.a);
+    Object localObject = new bfgb();
+    ((bfgb)localObject).a = localbesl.e;
+    ((bfgb)localObject).b = localbesl.d;
+    ((bfgb)localObject).c = localbesl.f;
+    ((bfgb)localObject).d = localbesl.g;
+    ((bfgb)localObject).e = localbesl.b;
+    ((bfgb)localObject).f = localbesl.c;
+    ((bfgb)localObject).g = true;
+    ((bfgb)localObject).h = true;
+    localObject = getMoreItems(new bfga().a((bfgb)localObject));
+    localIntent.putExtra("key_orientation_landscape", localbesl.a);
     localIntent.putExtra("key_mini_app_info", localMiniAppInfo);
     localIntent.putParcelableArrayListExtra("key_more_item_list", (ArrayList)localObject);
-    beil.a().a(new MiniAppProxyDefault.1(this, parambesi));
+    bejc.a().a(new MiniAppProxyDefault.1(this, parambesz));
     MiniTranslucentFragmentActivity.a(localActivity, localIntent, MoreFragment.class, 9527);
-    reportClick(parambesi, "open");
+    reportClick(parambesz, "open");
     return true;
   }
   

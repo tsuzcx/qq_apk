@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import ajkc;
-import ajkh;
+import ajka;
+import ajkf;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloUrlInterceptor$2
   implements Runnable
 {
-  public ApolloUrlInterceptor$2(ajkc paramajkc) {}
+  public ApolloUrlInterceptor$2(ajka paramajka) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask in AsyncThread start!");
     }
-    ajkh localajkh = ajkc.a(this.this$0);
+    ajkf localajkf = ajka.a(this.this$0);
     long l = System.currentTimeMillis();
-    localajkh.g = l;
-    ajkc.a(this.this$0);
-    ajkc.b(this.this$0);
+    localajkf.g = l;
+    ajka.a(this.this$0);
+    ajka.b(this.this$0);
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask use:" + (System.currentTimeMillis() - l));
     }
-    ajkc.a(this.this$0).h = System.currentTimeMillis();
+    ajka.a(this.this$0).h = System.currentTimeMillis();
   }
 }
 

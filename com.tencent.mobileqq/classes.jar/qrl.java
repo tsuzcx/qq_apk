@@ -1,101 +1,60 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class qrl
-  extends npw
+public class qrl
+  implements View.OnLayoutChangeListener
 {
-  private qrl(qri paramqri) {}
+  public qrl(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    int m = 0;
-    Object localObject1;
-    if (paramBoolean)
+    this.a.removeOnLayoutChangeListener(this);
+    if ((VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a)))
     {
-      localObject1 = paramBundle.getString("VALUE_REQUEST_VIDEO_ARTICLE_ID");
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(qri.a(this.a).g))) {
-        break label42;
+      paramInt1 = 0;
+      if (VideoFeedsRecyclerView.a(this.a) != 0) {
+        break label228;
       }
     }
-    for (;;)
+    label227:
+    label228:
+    label244:
+    do
     {
-      return;
-      label42:
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      if ((paramBundle != null) && (paramBundle.size() != 0))
+      paramInt1 = (int)(this.a.getHeight() * 0.3D);
+      break label227;
+      paramView = VideoFeedsRecyclerView.a(this.a).getLayoutParams();
+      paramView.height = paramInt1;
+      VideoFeedsRecyclerView.a(this.a).setLayoutParams(paramView);
+      if (VideoFeedsRecyclerView.a(this.a) == 0)
       {
-        Object localObject2 = paramBundle.iterator();
-        while (((Iterator)localObject2).hasNext())
+        paramView = this.a.getLayoutManager().findViewByPosition(1);
+        if ((paramView != null) && (paramView.getHeight() > 0) && (VideoFeedsRecyclerView.b(this.a)))
         {
-          localObject3 = (VideoInfo)((Iterator)localObject2).next();
-          ((VideoInfo)localObject3).j = true;
-          ((VideoInfo)localObject3).I = ((String)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "动态插入视频 title = " + ((VideoInfo)localObject3).jdField_c_of_type_JavaLangString + ", rowkey = " + ((VideoInfo)localObject3).g);
+          paramInt1 = paramView.getHeight();
+          paramInt1 = (int)(this.a.getHeight() / 2.0F - paramInt1 / 2.0F);
+          VideoFeedsRecyclerView.a(this.a, paramInt1);
+          if ((!VideoFeedsRecyclerView.a(this.a).a(1)) || (VideoFeedsRecyclerView.a(this.a).b() == 1)) {
+            break label244;
           }
         }
-        localObject2 = new ArrayList();
-        Object localObject3 = new ArrayList();
-        int i = 0;
-        int j = -1;
-        if (i < qri.a(this.a).size())
+        for (paramInt1 = 1;; paramInt1 = 0)
         {
-          int k;
-          if (j == -1) {
-            if (((VideoInfo)qri.a(this.a).get(i)).a() == null) {
-              k = j;
-            }
+          if ((paramInt1 == 0) && (VideoFeedsRecyclerView.a(this.a) != null) && (VideoFeedsRecyclerView.a(this.a).b() != 1)) {
+            this.a.a(this.a.getChildViewHolder(paramView));
           }
-          for (;;)
-          {
-            i += 1;
-            j = k;
+          return;
+          if (VideoFeedsRecyclerView.a(this.a) != 1) {
             break;
-            k = j;
-            if (((VideoInfo)qri.a(this.a).get(i)).a().equals(qri.a(this.a).a()))
-            {
-              k = i;
-              continue;
-              k = j;
-              if (((VideoInfo)qri.a(this.a).get(i)).jdField_c_of_type_Boolean)
-              {
-                ((ArrayList)localObject2).add(Integer.valueOf(i));
-                ((ArrayList)localObject3).add(qri.a(this.a).get(i));
-                k = j;
-              }
-            }
           }
-        }
-        if ((!qri.a(this.a).c()) && (((String)localObject1).equals(qri.a(this.a).g)))
-        {
-          localObject1 = qri.b(this.a).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((qrk)((Iterator)localObject1).next()).c();
-          }
-          i = ((ArrayList)localObject2).size() - 1;
-          while (i >= 0)
-          {
-            qri.a(this.a).remove(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            qri.a(this.a).notifyItemRemoved(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            i -= 1;
-          }
-          qri.a(this.a).addAll(j + 1, paramBundle);
-          qri.a(this.a).notifyItemRangeInserted(j + 1, paramBundle.size());
-          i = m;
-          while (i < ((ArrayList)localObject2).size())
-          {
-            qri.a(this.a).add(((Integer)((ArrayList)localObject2).get(i)).intValue(), ((ArrayList)localObject3).get(i));
-            qri.a(this.a).notifyItemInserted(((Integer)((ArrayList)localObject2).get(i)).intValue());
-            i += 1;
-          }
+          paramInt1 = 0;
+          break;
         }
       }
-    }
+    } while (VideoFeedsRecyclerView.a(this.a) != 1);
+    VideoFeedsRecyclerView.a(this.a, VideoFeedsRecyclerView.b(this.a));
   }
 }
 

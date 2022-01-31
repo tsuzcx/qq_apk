@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import ahjz;
-import amtc;
+import ahjx;
+import amtb;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -13,9 +13,9 @@ class MiniAppDesktopLayout$3
   public void run()
   {
     MiniAppDesktopAdapter localMiniAppDesktopAdapter;
-    if (amtc.l())
+    if (amtb.l())
     {
-      boolean bool = ((ahjz)MiniAppDesktopLayout.access$300(this.this$0).app.getManager(315)).a();
+      boolean bool = ((ahjx)MiniAppDesktopLayout.access$300(this.this$0).app.getManager(315)).a();
       localMiniAppDesktopAdapter = MiniAppDesktopLayout.access$400(this.this$0);
       if (!bool) {
         break label56;

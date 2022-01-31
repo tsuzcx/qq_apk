@@ -1,35 +1,34 @@
-import android.content.res.Resources;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashMap;
 
-final class asxy
-  implements URLDrawable.URLDrawableListener
+public class asxy
 {
-  asxy(Resources paramResources, ImageView paramImageView) {}
+  public static HashMap<String, Integer> a = new HashMap();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  static
   {
-    if (paramURLDrawable != null)
-    {
-      int i = actn.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
-      int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams.height = i;
-      localLayoutParams.width = j;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    }
+    a.put("skin_icon_small_ship_svip", Integer.valueOf(2130849131));
+    a.put("skin_icon_big_ship_svip", Integer.valueOf(2130849090));
+    a.put("skin_icon_small_ship_unionvip", Integer.valueOf(2130849132));
+    a.put("skin_icon_big_ship_unionvip", Integer.valueOf(2130849091));
+    a.put("skin_icon_small_fire_svip", Integer.valueOf(2130849127));
+    a.put("skin_icon_big_fire_svip", Integer.valueOf(2130849086));
+    a.put("skin_icon_small_fire_unionvip", Integer.valueOf(2130849128));
+    a.put("skin_icon_big_fire_unionvip", Integer.valueOf(2130849087));
+    a.put("skin_icon_intimate_lover_vip_1", Integer.valueOf(2130849111));
+    a.put("skin_icon_intimate_lover_vip_2", Integer.valueOf(2130849112));
+    a.put("skin_icon_intimate_lover_vip_3", Integer.valueOf(2130849113));
+    a.put("hot_reactive_gray_intimate_guimi_svip_1_icon", Integer.valueOf(2130839768));
+    a.put("hot_reactive_gray_intimate_guimi_svip_2_icon", Integer.valueOf(2130839769));
+    a.put("hot_reactive_gray_intimate_guimi_svip_3_icon", Integer.valueOf(2130839770));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_1_icon", Integer.valueOf(2130839771));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_2_icon", Integer.valueOf(2130839772));
+    a.put("hot_reactive_gray_intimate_guimi_unionvip_3_icon", Integer.valueOf(2130839773));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_1_icon", Integer.valueOf(2130839774));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_2_icon", Integer.valueOf(2130839775));
+    a.put("hot_reactive_gray_intimate_jiyou_svip_3_icon", Integer.valueOf(2130839776));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_1_icon", Integer.valueOf(2130839777));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_2_icon", Integer.valueOf(2130839778));
+    a.put("hot_reactive_gray_intimate_jiyou_unionvip_3_icon", Integer.valueOf(2130839779));
   }
 }
 

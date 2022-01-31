@@ -1,14 +1,11 @@
-public class vgc
+class vgc
+  implements vne
 {
-  public final int a;
-  public final CharSequence a;
-  public final int b;
+  vgc(vga paramvga) {}
   
-  public vgc(int paramInt1, int paramInt2, CharSequence paramCharSequence)
+  public void a(vpp paramvpp)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a.a.a(6);
   }
 }
 

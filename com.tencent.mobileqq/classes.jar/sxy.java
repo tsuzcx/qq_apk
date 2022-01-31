@@ -1,11 +1,6 @@
-import android.app.Activity;
-import android.os.Bundle;
-
-public abstract interface sxy<T extends Activity>
+public class sxy
 {
-  public abstract void a(T paramT);
-  
-  public abstract void a(T paramT, Bundle paramBundle);
+  public static int[][] a = { { -1, 243 }, { -1, 248 } };
 }
 
 

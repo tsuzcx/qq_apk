@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import arfe;
+import arfg;
 
 public class GroupVideoManager$4
   implements Runnable
 {
-  public GroupVideoManager$4(arfe paramarfe, boolean paramBoolean) {}
+  public GroupVideoManager$4(arfg paramarfg, boolean paramBoolean) {}
   
   public void run()
   {

@@ -1,64 +1,58 @@
-import android.content.Context;
-import android.content.res.AssetManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class rqc
-  implements rqd
+  implements rqa
 {
-  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
+  private File jdField_a_of_type_JavaIoFile;
   private String jdField_a_of_type_JavaLangString;
   
-  public rqc(Context paramContext, String paramString)
+  public rqc(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
+    if (paramString == null) {
+      throw new IllegalArgumentException("" + paramString);
+    }
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = new File(paramString);
   }
   
   public InputStream a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+    if (((File)localObject).exists()) {
+      try
+      {
+        localObject = new FileInputStream((File)localObject);
+        return localObject;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        QLog.e("ReadMergeFile", 2, "getFile:" + paramString, localFileNotFoundException);
+      }
+    }
+    return null;
   }
   
   public List<String> a()
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = this.jdField_a_of_type_JavaIoFile.list();
+    if (arrayOfString != null)
     {
-      localList = rqm.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
-      if (localList == null) {
-        break label28;
-      }
-    }
-    catch (Exception localException)
-    {
-      label28:
-      do
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        List localList;
-        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
-        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
-        localArrayList = new ArrayList();
-        localObject = localArrayList;
-      } while (arrayOfString == null);
-      j = arrayOfString.length;
-      i = 0;
-    }
-    return localList;
-    for (;;)
-    {
-      String[] arrayOfString;
-      ArrayList localArrayList;
-      int j;
-      int i;
-      Object localObject = localArrayList;
-      if (i >= j) {
-        break;
+        localArrayList.add(arrayOfString[i]);
+        i += 1;
       }
-      localArrayList.add(arrayOfString[i]);
-      i += 1;
     }
+    return localArrayList;
   }
 }
 

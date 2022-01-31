@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 import com.tencent.qphone.base.util.QLog;
 
 class MultiVideoEnterPageActivity$TimeoutRunnable
@@ -14,7 +14,7 @@ class MultiVideoEnterPageActivity$TimeoutRunnable
     if (QLog.isColorLevel()) {
       QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "TimeoutRunnable, mHaveMoreRoom[" + this.this$0.jdField_a_of_type_Boolean + "]");
     }
-    bcpw.a(this.this$0, 2131695984, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131298865));
+    bcql.a(this.this$0, 2131695985, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131298865));
     if (!this.this$0.jdField_a_of_type_Boolean)
     {
       this.this$0.b();

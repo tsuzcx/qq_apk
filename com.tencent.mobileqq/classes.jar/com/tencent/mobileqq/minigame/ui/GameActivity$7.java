@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ajyc;
+import ajya;
 import android.widget.Toast;
 
 class GameActivity$7
@@ -10,7 +10,7 @@ class GameActivity$7
   
   public void run()
   {
-    Toast.makeText(this.this$0, ajyc.a(2131705007), 0).show();
+    Toast.makeText(this.this$0, ajya.a(2131705018), 0).show();
   }
 }
 

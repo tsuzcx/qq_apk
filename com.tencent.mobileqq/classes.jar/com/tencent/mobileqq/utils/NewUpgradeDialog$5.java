@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bbew;
+import bbfk;
 
 public class NewUpgradeDialog$5
   implements Runnable
 {
-  public NewUpgradeDialog$5(bbew parambbew) {}
+  public NewUpgradeDialog$5(bbfk parambbfk) {}
   
   public void run()
   {
-    bbew.d(this.this$0);
+    bbfk.d(this.this$0);
   }
 }
 

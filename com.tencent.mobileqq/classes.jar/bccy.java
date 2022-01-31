@@ -1,18 +1,44 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class bccy
+  implements bcgf
 {
-  public static final WebAccelerateHelper.CommonJsPluginFactory a = new bccz();
+  public bccy(WebViewFragment paramWebViewFragment) {}
   
-  public static WebAccelerateHelper.CommonJsPluginFactory a(Intent paramIntent)
+  public int a(Bundle paramBundle)
   {
-    switch (paramIntent.getIntExtra("web_view_module_from", -1))
+    int j = this.a.m;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.m)
     {
-    default: 
-      return null;
     }
-    return a;
+    for (;;)
+    {
+      QLog.i("WebLog_WebViewFragment", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.m + "] cost" + (System.currentTimeMillis() - l) + " ms.");
+      return i;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.g(paramBundle);
+      continue;
+      i = this.a.h(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.i(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.j(paramBundle);
+      continue;
+      i = this.a.a(paramBundle);
+    }
   }
 }
 

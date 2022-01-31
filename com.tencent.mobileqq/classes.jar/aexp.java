@@ -1,121 +1,192 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextPaint;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.List;
 
 public class aexp
-  implements aeyv
+  implements aeyt
 {
-  int jdField_a_of_type_Int = -1;
-  public aeyx a;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String b = "";
-  String c = "";
+  private acup jdField_a_of_type_Acup;
+  private aeyv jdField_a_of_type_Aeyv;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Time jdField_a_of_type_AndroidTextFormatTime;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public aexp(QQAppInterface paramQQAppInterface, aeyx paramaeyx, Activity paramActivity)
+  public aexp(QQAppInterface paramQQAppInterface, aeyv paramaeyv, Activity paramActivity, SessionInfo paramSessionInfo, acup paramacup)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aeyx = paramaeyx;
+    this.jdField_a_of_type_Aeyv = paramaeyv;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Acup = paramacup;
   }
   
   public int a()
   {
-    return 35;
+    return 40;
   }
   
   public View a(Object... paramVarArgs)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558585, null);
-    localView.setOnClickListener(new aexq(this, localView));
-    TextView localTextView = (TextView)localView.findViewById(2131362386);
-    paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
-    int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
-    int i;
-    if (paramVarArgs.widthPixels > paramVarArgs.heightPixels)
-    {
-      i = paramVarArgs.heightPixels;
-      i = (int)((i - paramVarArgs.density * 65.0F) / j) - 8;
-      if (this.c.length() > i) {
-        this.c = (this.c.substring(0, i) + "...");
-      }
-      if ((this.jdField_a_of_type_Int < 100) || (this.jdField_a_of_type_Int > 300)) {
-        break label216;
-      }
-    }
-    label216:
-    for (paramVarArgs = ajyc.a(2131702160);; paramVarArgs = ajyc.a(2131702161))
-    {
-      this.jdField_a_of_type_JavaLangString = String.format(paramVarArgs, new Object[] { this.c });
-      localTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return localView;
-      i = paramVarArgs.widthPixels;
-      break;
-    }
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560631, null);
+    ((TextView)paramVarArgs.findViewById(2131372959)).setText(2131691836);
+    ((ImageView)paramVarArgs.findViewById(2131372957)).setImageResource(2130848787);
+    paramVarArgs.findViewById(2131372956).setOnClickListener(new aexq(this));
+    return paramVarArgs;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramInt != 1000) {}
-    do
+    if (paramInt != 1001) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV =====>");
+    }
+    for (;;)
     {
-      do
+      int i;
+      int j;
+      try
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ComicTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-            }
-            if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.getIntent() != null)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("ComicTipsBar", 2, "onAIOEvent() : intent is null");
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
           return;
-          paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
-          if (paramVarArgs != null) {
+        }
+        if (andn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1)) {
+          return;
+        }
+        paramVarArgs = this.jdField_a_of_type_Acup.a();
+        if (paramVarArgs == null) {
+          return;
+        }
+        if (paramVarArgs.size() < 10)
+        {
+          paramVarArgs = "msgList size < 10, size = " + paramVarArgs.size();
+          if (!QLog.isColorLevel()) {
             break;
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("ComicTipsBar", 2, "onAIOEvent() : data == null");
-        return;
-        this.jdField_a_of_type_Boolean = paramVarArgs.getBoolean("fromMessage", false);
-        this.b = paramVarArgs.getString("comicId");
-        this.c = paramVarArgs.getString("comicName");
-        this.jdField_a_of_type_Int = paramVarArgs.getInt("type", -1);
-        if (!TextUtils.isEmpty(this.c)) {
-          break;
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
+          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("ComicTipsBar", 2, "onAIOEvent() : comicName is null");
-      return;
-      this.jdField_a_of_type_Aeyx.a(this, new Object[0]);
-    } while (!QLog.isColorLevel());
-    QLog.d("ComicTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + this.c);
+        long l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+        paramInt = muc.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt, l1)) {
+          return;
+        }
+        Object localObject2 = "voice_disc_chat_freq_bar_show_count" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        Object localObject1 = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+        paramInt = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
+        if (paramInt >= 3) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DiscActiveTipsBar", 2, "discChatFreqBarShowCount : " + paramInt);
+        }
+        l1 = awzy.a() * 1000L;
+        if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
+          this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+        }
+        this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
+        paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
+        i = this.jdField_a_of_type_AndroidTextFormatTime.month;
+        j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, j, i, paramInt);
+        long l2 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, j, i, paramInt);
+        long l3 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+        if ((l1 < l2) || (l1 > l3))
+        {
+          paramVarArgs = "current time not in " + 20 + "-" + 23;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
+          return;
+        }
+        localObject2 = ((SharedPreferences)localObject1).getString("voice_disc_chat_freq_bar_show_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+        if (QLog.isColorLevel())
+        {
+          String str = paramInt + "-" + i + "-" + j;
+          QLog.d("DiscActiveTipsBar", 2, "currDate is:" + str + ",curr hour is:" + this.jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject2);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject2));
+          int k = this.jdField_a_of_type_AndroidTextFormatTime.year;
+          int m = this.jdField_a_of_type_AndroidTextFormatTime.month;
+          int n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+          if ((paramInt == k) && (i == m) && (j == n)) {
+            return;
+          }
+        }
+        localObject1 = ((SharedPreferences)localObject1).getString("start_group_audio_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L)) {
+          return;
+        }
+        l1 = (l1 - 600000L) / 1000L;
+        i = paramVarArgs.size();
+        paramInt = 0;
+        localObject1 = new HashSet();
+        j = i - 1;
+        if (j >= 0)
+        {
+          localObject2 = (ChatMessage)paramVarArgs.get(j);
+          i = paramInt;
+          if (((ChatMessage)localObject2).time >= l1)
+          {
+            i = paramInt;
+            if (akpx.o(((ChatMessage)localObject2).msgtype))
+            {
+              i = paramInt;
+              if (((ChatMessage)localObject2).extraflag == 0)
+              {
+                i = paramInt + 1;
+                ((HashSet)localObject1).add(((ChatMessage)localObject2).senderuin);
+              }
+            }
+          }
+        }
+        else
+        {
+          i = ((HashSet)localObject1).size();
+          if (QLog.isColorLevel()) {
+            QLog.d("DiscActiveTipsBar", 2, "basicMsgNum : " + paramInt + ", msgUinNum : " + i);
+          }
+          return;
+        }
+      }
+      finally
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "");
+        }
+      }
+      j -= 1;
+      paramInt = i;
+    }
   }
   
   public int[] a()
   {
-    return new int[0];
+    return new int[] { 2000 };
   }
   
   public int b()
   {
-    return 13;
+    return 4;
   }
 }
 

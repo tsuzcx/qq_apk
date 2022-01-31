@@ -1,6 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+
 public class aavx
+  implements DialogInterface.OnClickListener
 {
-  public boolean a;
+  public aavx(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.c);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+  }
 }
 
 

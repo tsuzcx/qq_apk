@@ -1,10 +1,10 @@
 package com.tencent.open.downloadnew;
 
-import bdgv;
-import bdht;
-import bdkp;
-import bdlc;
-import bdlo;
+import bdhk;
+import bdii;
+import bdle;
+import bdlr;
+import bdmd;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
 import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
 import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
@@ -12,51 +12,51 @@ import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
 public class MyAppApi$QQDownloadListener$1
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$1(bdlo parambdlo, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString) {}
+  public MyAppApi$QQDownloadListener$1(bdmd parambdmd, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     Object localObject = null;
     int i;
-    bdkp localbdkp;
+    bdle localbdle;
     DownloadInfo localDownloadInfo;
     if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
     {
-      bdht.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-      i = bdkp.a(this.jdField_a_of_type_Int);
-      bdht.c("State_Log", "onDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
-      localbdkp = bdkp.a();
-      localDownloadInfo = localbdkp.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
+      bdii.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
+      i = bdle.a(this.jdField_a_of_type_Int);
+      bdii.c("State_Log", "onDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
+      localbdle = bdle.a();
+      localDownloadInfo = localbdle.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
       if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
         break label413;
       }
-      localDownloadInfo = this.jdField_a_of_type_Bdlo.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, null);
-      localbdkp.e(localDownloadInfo);
-      localbdkp.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
+      localDownloadInfo = this.jdField_a_of_type_Bdmd.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, null);
+      localbdle.e(localDownloadInfo);
+      localbdle.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
       localObject = null;
     }
     for (;;)
     {
       if (localDownloadInfo != null)
       {
-        bdht.c("State_Log", "onDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
-        localbdkp.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
+        bdii.c("State_Log", "onDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
+        localbdle.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
       }
       for (;;)
       {
         for (;;)
         {
-          bdgv.a().a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Int, (TMAssistantCallYYBTaskInfo)localObject, this.b, this.jdField_a_of_type_JavaLangString);
+          bdhk.a().a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Int, (TMAssistantCallYYBTaskInfo)localObject, this.b, this.jdField_a_of_type_JavaLangString);
           return;
-          bdht.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
+          bdii.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
           return;
           label413:
-          if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || (!this.jdField_a_of_type_Bdlo.a.e())) {
+          if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || (!this.jdField_a_of_type_Bdmd.a.e())) {
             break label571;
           }
           try
           {
-            TMAssistantCallYYBTaskInfo localTMAssistantCallYYBTaskInfo = this.jdField_a_of_type_Bdlo.a.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct);
+            TMAssistantCallYYBTaskInfo localTMAssistantCallYYBTaskInfo = this.jdField_a_of_type_Bdmd.a.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct);
             if (localTMAssistantCallYYBTaskInfo != null)
             {
               localObject = localTMAssistantCallYYBTaskInfo;
@@ -68,17 +68,17 @@ public class MyAppApi$QQDownloadListener$1
               localObject = localTMAssistantCallYYBTaskInfo;
               localDownloadInfo.f = j;
               localObject = localTMAssistantCallYYBTaskInfo;
-              bdht.a("MyAppApi", "onDownloadTaskStateChanged info progress = " + j);
+              bdii.a("MyAppApi", "onDownloadTaskStateChanged info progress = " + j);
             }
             localObject = localTMAssistantCallYYBTaskInfo;
           }
           catch (Exception localException)
           {
-            bdht.c("MyAppApi", "getDownloadTaskState>>>", localException);
+            bdii.c("MyAppApi", "getDownloadTaskState>>>", localException);
           }
         }
         break;
-        bdht.c("MyAppApi", "onDownloadTaskStateChanged notifyListener error dlInfo == null");
+        bdii.c("MyAppApi", "onDownloadTaskStateChanged notifyListener error dlInfo == null");
       }
       label571:
       localObject = null;

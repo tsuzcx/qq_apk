@@ -1,32 +1,35 @@
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
 public class vpy
-  extends vpu
+  extends vpr
 {
-  @NonNull
-  public final tdx a;
-  @NonNull
-  public final String c;
+  protected EditVideoParams a;
+  public String c;
   
-  public vpy(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull tdx paramtdx)
+  public vpy(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramtdx;
+    super(paramInt1, paramString, paramInt2);
+  }
+  
+  public vpy(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
+  {
+    super(paramInt1, paramString, paramInt2);
+    this.a = paramEditVideoParams;
   }
   
   @NonNull
-  public Class<? extends vpv> a()
+  public Class<? extends vps> a()
   {
     return vqa.class;
   }
   
   @NonNull
-  public vpv a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new vqa(paramContext, paramViewGroup, null);
+    return new vqa(this, paramContext, paramViewGroup, null);
   }
   
   public boolean a()

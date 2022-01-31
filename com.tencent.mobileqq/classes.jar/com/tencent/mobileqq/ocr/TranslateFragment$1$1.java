@@ -2,26 +2,26 @@ package com.tencent.mobileqq.ocr;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import aubr;
-import bcpw;
+import aubt;
+import bcql;
 import com.tencent.mobileqq.ocr.data.TranslateResult;
 
 public class TranslateFragment$1$1
   implements Runnable
 {
-  public TranslateFragment$1$1(aubr paramaubr, boolean paramBoolean, TranslateResult paramTranslateResult) {}
+  public TranslateFragment$1$1(aubt paramaubt, boolean paramBoolean, TranslateResult paramTranslateResult) {}
   
   public void run()
   {
-    TranslateFragment.a(this.jdField_a_of_type_Aubr.a, false);
-    TranslateFragment.a(this.jdField_a_of_type_Aubr.a);
+    TranslateFragment.a(this.jdField_a_of_type_Aubt.a, false);
+    TranslateFragment.a(this.jdField_a_of_type_Aubt.a);
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.b()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()))
     {
-      TranslateFragment.a(this.jdField_a_of_type_Aubr.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
-      TranslateFragment.a(this.jdField_a_of_type_Aubr.a, 2, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      TranslateFragment.a(this.jdField_a_of_type_Aubt.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
+      TranslateFragment.a(this.jdField_a_of_type_Aubt.a, 2, this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
       return;
     }
-    String str2 = this.jdField_a_of_type_Aubr.a.getResources().getString(2131699256);
+    String str2 = this.jdField_a_of_type_Aubt.a.getResources().getString(2131699266);
     String str1 = str2;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult != null)
     {
@@ -32,12 +32,12 @@ public class TranslateFragment$1$1
     }
     for (;;)
     {
-      bcpw.a(TranslateFragment.a(this.jdField_a_of_type_Aubr.a), 1, str1, 0).a();
+      bcql.a(TranslateFragment.a(this.jdField_a_of_type_Aubt.a), 1, str1, 0).a();
       return;
       label154:
       str1 = str2;
       if (this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a()) {
-        str1 = this.jdField_a_of_type_Aubr.a.getResources().getString(2131699235);
+        str1 = this.jdField_a_of_type_Aubt.a.getResources().getString(2131699245);
       }
     }
   }

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.richmedia;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import bftl;
+import bfuc;
 import com.tencent.widget.HorizontalListView;
 
 public class TemplateHorizontalListView

@@ -1,34 +1,12 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
-
-public class bkoc
-  extends RecyclerView.ViewHolder
+public abstract interface bkoc
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RoundCornerImageView a;
-  public boolean a;
-  public RelativeLayout b;
-  public TextView b;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
-  public bkoc(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376279));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131376275));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363085));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376276));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376278));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376277));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void f(int paramInt);
 }
 
 

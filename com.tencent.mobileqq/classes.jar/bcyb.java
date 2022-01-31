@@ -1,143 +1,377 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RecentTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.provider.Settings.Secure;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.smtt.sdk.WebView;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcyb
-  implements BusinessObserver
 {
-  public bcyb(AuthorityActivity paramAuthorityActivity) {}
+  protected static bcyb a;
+  protected static String a;
+  protected int a;
+  protected long a;
+  protected Context a;
+  protected long b;
+  protected String b;
+  protected String c = "";
+  protected String d = "";
+  protected String e = "";
+  protected String f = "";
+  protected String g = "";
+  protected String h = "";
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    AuthorityActivity.b(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.b(this.a).jdField_a_of_type_Long);
-    String str = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString.equals(str)) {
-      return;
-    }
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    if (!this.a.b) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    }
-    paramInt = paramBundle.getInt("code");
-    if (!this.a.i) {}
-    for (str = "g_a_a_l_emp";; str = "g_a_a_l")
+    jdField_a_of_type_JavaLangString = "androidqq";
+  }
+  
+  protected bcyb()
+  {
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+  }
+  
+  public static bcyb a()
+  {
+    try
     {
-      if (paramBoolean)
+      if (jdField_a_of_type_Bcyb == null) {
+        jdField_a_of_type_Bcyb = new bcyb();
+      }
+      bcyb localbcyb = jdField_a_of_type_Bcyb;
+      return localbcyb;
+    }
+    finally {}
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int != -1) {
+      return this.jdField_a_of_type_Int;
+    }
+    a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Long = Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()).longValue();
+      bdii.b("CommonDataAdapter", "get uin from app runtim succ:" + this.jdField_a_of_type_Long);
+      label46:
+      return this.jdField_a_of_type_Long;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label46;
+    }
+  }
+  
+  public Context a()
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      return BaseApplication.getContext();
+    }
+    return this.jdField_a_of_type_AndroidContentContext;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt, Context paramContext)
+  {
+    Object localObject1 = (ActivityManager)paramContext.getSystemService("activity");
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    int j = paramInt;
+    if (paramInt <= 0) {
+      j = 5;
+    }
+    localObject1 = ((ActivityManager)localObject1).getRecentTasks(64, 1);
+    ArrayList localArrayList = new ArrayList();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    int n;
+    int k;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      n = ((List)localObject1).size();
+      k = 0;
+      paramInt = 0;
+      if ((k < n) && (paramInt < j))
       {
-        this.a.c = 0;
-        SdkAuthorize.GetAuthApiListResponse localGetAuthApiListResponse = new SdkAuthorize.GetAuthApiListResponse();
+        localObject2 = (ActivityManager.RecentTaskInfo)((List)localObject1).get(k);
+        paramContext = ((ActivityManager.RecentTaskInfo)localObject2).baseIntent;
+        localObject2 = ((ActivityManager.RecentTaskInfo)localObject2).origActivity;
+        if (localObject2 != null) {
+          paramContext = ((ComponentName)localObject2).getPackageName();
+        }
+      }
+    }
+    for (;;)
+    {
+      label133:
+      int i = paramInt;
+      if (paramContext != null)
+      {
+        if (localArrayList.contains(paramContext)) {}
         for (;;)
         {
+          k += 1;
+          break;
+          if (paramContext == null) {
+            break label388;
+          }
+          paramContext = paramContext.getComponent().getPackageName();
+          break label133;
+          localArrayList.add(paramContext);
+          i = -1;
           try
           {
-            Object localObject2 = paramBundle.getByteArray("data");
-            localObject1 = localObject2;
-            if (!this.a.i) {
-              localObject1 = bdnz.b((byte[])localObject2, this.a.jdField_a_of_type_Bdna);
-            }
-            if (localObject1 != null)
-            {
-              l1 = localObject1.length;
-              localObject1 = (SdkAuthorize.GetAuthApiListResponse)localGetAuthApiListResponse.mergeFrom((byte[])localObject1);
-              if (localObject1 != null)
-              {
-                localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-                ((Message)localObject2).what = 0;
-                ((Message)localObject2).obj = localObject1;
-                this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-                i = ((SdkAuthorize.GetAuthApiListResponse)localObject1).toByteArray().length;
-                l2 = i;
-              }
+            localObject2 = localPackageManager.getPackageInfo(paramContext, 0);
+            if (localObject2 != null) {
+              break label206;
             }
           }
-          catch (Exception paramBundle)
+          catch (PackageManager.NameNotFoundException paramContext)
           {
-            long l1;
-            int i;
-            long l2;
-            Object localObject1 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-            ((Message)localObject1).what = 6;
-            ((Message)localObject1).arg1 = 3001;
-            ((Message)localObject1).obj = this.a.getResources().getString(2131694896);
-            this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject1);
-            localObject1 = (String)((Message)localObject1).obj;
-            QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bdem.a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt, paramBundle);
-            AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, false);
-            continue;
-          }
-          try
-          {
-            i = ((SdkAuthorize.GetAuthApiListResponse)localObject1).ret.get();
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("report_type", "103");
-            ((Bundle)localObject1).putString("act_type", "11");
-            if (!paramBundle.getBoolean("isShort", false)) {
-              continue;
-            }
-            paramBundle = "2";
-            ((Bundle)localObject1).putString("intext_3", paramBundle);
-            ((Bundle)localObject1).putString("stringext_1", AuthorityActivity.b(this.a).jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject1).putString("intext_2", "" + i);
-            ((Bundle)localObject1).putString("intext_5", "" + AuthorityActivity.b(this.a).jdField_a_of_type_Long);
-            bded.a().a((Bundle)localObject1, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-            paramBundle = new Bundle();
-            paramBundle.putString("report_type", "103");
-            paramBundle.putString("act_type", "14");
-            paramBundle.putString("intext_5", "" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-            bded.a().a(paramBundle, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-            bdjl.a().a("agent_query_authority", this.a.f, l1, l2, 0, Long.parseLong(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString), "1000069", "ret: " + i);
-            bdjo.a().a(0, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
-            bded.a().a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "0", false);
-            AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, true);
-          }
-          catch (Exception paramBundle)
-          {
-            bdht.c("AuthorityActivity", "-->report exception cmd: agent_query_authority", paramBundle);
+            paramContext.printStackTrace();
           }
         }
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bdem.a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt);
+        label206:
+        if (localObject2 != null)
+        {
+          i = ((PackageInfo)localObject2).versionCode;
+          String str = ((PackageInfo)localObject2).versionName;
+        }
+        if ((((PackageInfo)localObject2).applicationInfo.flags & 0x1) == 0) {
+          break label382;
+        }
       }
-      for (;;)
+      label382:
+      for (int m = 1;; m = 0)
       {
-        this.a.g = SystemClock.elapsedRealtime();
-        bdht.c("Authority_TimeCost", "<TimeStamp> query authority cost : " + (this.a.g - this.a.f));
-        return;
-        paramBundle = "1";
+        paramInt += 1;
+        localStringBuilder.append("\"");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append("\"");
+        localStringBuilder.append(":");
+        localStringBuilder.append("\"");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",");
+        localStringBuilder.append(m);
+        localStringBuilder.append("\"");
+        i = paramInt;
+        if (k < n - 1)
+        {
+          localStringBuilder.append(",");
+          i = paramInt;
+        }
+        paramInt = i;
         break;
-        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + bdem.a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString) + " | ret : failed | code : " + paramInt);
-        this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-        if ((paramInt == 1002) && (this.a.c < 2))
-        {
-          paramBundle = this.a;
-          paramBundle.c += 1;
-          this.a.i();
-          return;
+        paramInt = localStringBuilder.length();
+        if (localStringBuilder.charAt(paramInt - 1) == ',') {
+          localStringBuilder.deleteCharAt(paramInt - 1);
         }
-        paramBundle = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-        paramBundle.what = 6;
-        paramBundle.arg1 = 3001;
-        paramBundle.obj = this.a.getResources().getString(2131694896);
-        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramBundle);
-        AuthorityActivity.a(this.a, "KEY_GET_AUTH_API_LIST_REQUEST", this.a.c, false);
-        paramBundle = this.a.getResources().getString(2131694896);
-        try
-        {
-          bdjl.a().a("agent_query_authority", this.a.f, 0L, 0L, paramInt, Long.parseLong(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString), "1000069", paramBundle);
-          bdjo.a().a(1, "LOGIN_GETAUTHLIST_AGENT", this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt, 1, paramBundle);
-          bded.a().a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "" + paramInt, false);
-          bded.a().a(this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "6", "" + paramInt, false);
-        }
-        catch (Exception paramBundle) {}
+        localStringBuilder.append("}");
+        return localStringBuilder.toString();
       }
+      label388:
+      paramContext = null;
     }
+  }
+  
+  protected void a()
+  {
+    Object localObject = a().a().getApplicationContext();
+    try
+    {
+      localObject = ((Context)localObject).getPackageManager().getPackageInfo(((Context)localObject).getPackageName(), 0);
+      this.d = ((PackageInfo)localObject).versionName;
+      this.e = (this.d + "." + ((PackageInfo)localObject).versionCode);
+      this.f = this.d.substring(this.d.lastIndexOf('.') + 1, this.d.length());
+      this.jdField_a_of_type_Int = ((PackageInfo)localObject).versionCode;
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      bdii.e("AppUpdate", "getPackageInfo NameNotFoundException : " + localNameNotFoundException.toString());
+      return;
+    }
+    catch (Exception localException)
+    {
+      bdii.e("AppUpdate", "getPackageInfo exception : " + localException.toString());
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, Context paramContext, WebView paramWebView)
+  {
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject(paramString);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("imei", bdjp.c());
+      localJSONObject2.put("imsi", bdjp.d());
+      localJSONObject2.put("mac_addr", bdjp.a());
+      localJSONObject2.put("model_info", Build.MODEL);
+      localJSONObject2.put("network_type", bdid.a(a().a()));
+      localJSONObject2.put("network_operater", "");
+      localJSONObject2.put("location", bdjp.f());
+      localJSONObject2.put("android_id", Settings.Secure.getString(a().a().getContentResolver(), "android_id"));
+      localJSONObject2.put("os_api_level", Build.VERSION.SDK_INT);
+      JSONObject localJSONObject3 = localJSONObject1.optJSONObject("params");
+      if ((localJSONObject3 != null) && (localJSONObject3.length() > 0))
+      {
+        Iterator localIterator = localJSONObject3.keys();
+        while (localIterator.hasNext())
+        {
+          String str2 = localIterator.next().toString();
+          Object localObject = localJSONObject3.get(str2);
+          if (!TextUtils.isEmpty(str2)) {
+            localJSONObject2.put(str2, localObject);
+          }
+        }
+      }
+      String str1;
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      bdii.e("AppUpdate", "getUpdateApp parse H5 params error : " + localJSONException.toString());
+      if (!paramContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false))
+      {
+        bdii.c("AppUpdate", "getUpdateApp will do full report");
+        bdjs.a(paramContext, paramString, paramWebView, String.valueOf(a().a()), false);
+        return;
+        if (localJSONObject3 != null) {
+          localJSONObject2.put("latest_used", a(localJSONObject3.optInt("latest_num", 10), paramContext));
+        }
+        for (;;)
+        {
+          localJSONException.put("params", localJSONObject2);
+          str1 = localJSONException.toString();
+          paramString = str1;
+          break;
+          localJSONObject2.put("latest_used", a(10, paramContext));
+        }
+      }
+      if (new File(paramContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists())
+      {
+        bdii.c("AppUpdate", "getUpdateApp will do incremental report");
+        bdjs.a(paramContext, null, 0, paramString, paramWebView, String.valueOf(a().a()));
+        return;
+      }
+      bdii.c("AppUpdate", "getUpdateApp will get update app directly");
+      bdjv.a(paramContext, paramWebView, paramString, true, String.valueOf(a().a()));
+    }
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String c()
+  {
+    if (!TextUtils.isEmpty(this.e)) {
+      return this.e;
+    }
+    a();
+    return this.e;
+  }
+  
+  public void c(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public String d()
+  {
+    if (!TextUtils.isEmpty(this.d)) {
+      return this.d;
+    }
+    a();
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return "12";
+  }
+  
+  public String f()
+  {
+    if (!TextUtils.isEmpty(this.g)) {
+      return this.g;
+    }
+    this.g = ("V1_AND_SQ_" + c());
+    return this.g;
+  }
+  
+  public String g()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public String h()
+  {
+    return this.h;
   }
 }
 

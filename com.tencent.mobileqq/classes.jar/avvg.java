@@ -1,34 +1,26 @@
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class avvg
-  implements HWDecodeListener
+public final class avvg
+  extends BroadcastReceiver
 {
-  public avvg(FollowCaptureView paramFollowCaptureView) {}
+  private avvg(FilterProviderView paramFilterProviderView) {}
   
-  public void onDecodeCancel() {}
-  
-  public void onDecodeError(int paramInt, Throwable paramThrowable) {}
-  
-  public void onDecodeFinish() {}
-  
-  public void onDecodeFrame(long paramLong1, long paramLong2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    FollowCaptureView.a(this.a, paramLong1);
-  }
-  
-  public void onDecodeRepeat()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FollowCaptureView", 2, "onDecodeRepeat");
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      avsf.a().b();
+      FilterProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
+      }
     }
-    FollowCaptureView.a(this.a);
   }
-  
-  public void onDecodeSeekTo(long paramLong) {}
-  
-  public void onDecodeStart() {}
 }
 
 

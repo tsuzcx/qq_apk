@@ -1,28 +1,8 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-
-public class wdd
-  extends AccessibilityDelegateCompat
+public abstract interface wdd
 {
-  public wdd(LeftTabBarView paramLeftTabBarView) {}
+  public abstract void a();
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
-  }
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

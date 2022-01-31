@@ -1,6 +1,6 @@
 public abstract interface aola
 {
-  public abstract void a();
+  public abstract void a(String paramString, int paramInt);
 }
 
 

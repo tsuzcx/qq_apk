@@ -1,14 +1,60 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
 
 public class agaz
-  implements Comparator<agau>
+  extends aimt
 {
-  public agaz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public TroopMemberListSlideItem a;
+  public boolean a;
+  public View b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
   
-  public int a(agau paramagau1, agau paramagau2)
+  public agaz(View paramView, boolean paramBoolean)
   {
-    return paramagau1.f.compareToIgnoreCase(paramagau2.f);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378176));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378223));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTroopMemberListSlideItem = ((TroopMemberListSlideItem)paramView.findViewById(2131377843));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376270);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364982);
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131364983);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368583));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378259));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378260));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
+    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131378332);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368621));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378049));
+    this.g = ((TextView)paramView.findViewById(2131363571));
+    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131375300);
+    this.h = ((TextView)paramView.findViewById(2131378648));
+    this.i = ((TextView)paramView.findViewById(2131362791));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364190));
+    this.j = ((TextView)paramView.findViewById(2131378202));
+    this.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131362092);
+    if (paramBoolean) {
+      this.k = ((TextView)paramView.findViewById(2131375103));
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

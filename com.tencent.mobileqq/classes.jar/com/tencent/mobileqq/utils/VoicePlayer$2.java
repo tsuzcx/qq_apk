@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bblk;
+import bbly;
 
 public class VoicePlayer$2
   implements Runnable
 {
-  public VoicePlayer$2(bblk parambblk) {}
+  public VoicePlayer$2(bbly parambbly) {}
   
   public void run()
   {
-    bblk.a(this.this$0, false);
+    bbly.a(this.this$0, false);
   }
 }
 

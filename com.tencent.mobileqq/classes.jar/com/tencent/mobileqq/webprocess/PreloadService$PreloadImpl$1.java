@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import bcaf;
+import bcat;
 import com.tencent.common.app.AppInterface;
 
 public class PreloadService$PreloadImpl$1
   implements Runnable
 {
-  public PreloadService$PreloadImpl$1(bcaf parambcaf, AppInterface paramAppInterface) {}
+  public PreloadService$PreloadImpl$1(bcat parambcat, AppInterface paramAppInterface) {}
   
   public void run()
   {

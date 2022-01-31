@@ -1,49 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class nzd
-  implements ViewBase.OnClickListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  nzd(nzc paramnzc) {}
+  nzd(nzc paramnzc, BaseData paramBaseData, Context paramContext) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onFound(ViewBase paramViewBase)
   {
-    int i;
-    boolean bool;
-    if ((nzb.a(this.a.jdField_a_of_type_Nzb) instanceof ProteusItemData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-        bool = true;
-      }
-    }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (oal.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      oal.b(nza.a(this.a.jdField_a_of_type_Nzb.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      rnn.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool = true;
-      i = 4;
-      continue;
-      bool = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool = false;
-      continue;
-      bool = true;
-      i = 8;
-      continue;
-      bool = true;
-      i = 1000;
-    }
-    nzb.a(this.a.jdField_a_of_type_Nzb, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-    rmt.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nzb.a(this.a.jdField_a_of_type_Nzb), bool, i);
+    paramViewBase.setOnClickListener(new nze(this));
   }
 }
 

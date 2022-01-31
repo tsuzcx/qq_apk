@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbvy;
+import bbwm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 
 public class VideoPlayerProxy$2
   implements Runnable
 {
-  public VideoPlayerProxy$2(bbvy parambbvy) {}
+  public VideoPlayerProxy$2(bbwm parambbwm) {}
   
   public void run()
   {
     try
     {
-      if ((bbvy.a(this.this$0) != null) && (bbvy.a(this.this$0).isPlaying()))
+      if ((bbwm.a(this.this$0) != null) && (bbwm.a(this.this$0).isPlaying()))
       {
         if (QLog.isColorLevel()) {
           QLog.d(this.this$0.a(), 2, "mMediaPlayer.pause()");
         }
-        bbvy.a(this.this$0).pause();
+        bbwm.a(this.this$0).pause();
       }
       return;
     }

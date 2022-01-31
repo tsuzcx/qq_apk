@@ -1,6 +1,10 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class ahro
   implements View.OnClickListener
@@ -9,8 +13,14 @@ public class ahro
   
   public void onClick(View paramView)
   {
-    axqw.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
-    LoginView.a(this.a).dismiss();
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    LoginView.c(this.a);
+    libsafeedit.clearPassBuffer();
+    LoginView.d(this.a);
   }
 }
 

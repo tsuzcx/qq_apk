@@ -1,26 +1,30 @@
-import android.view.View;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class whp
-  extends whl
+  extends BroadcastReceiver
 {
   whp(who paramwho) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_Whu.a();
-      return;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), who.a(this.a))))
     {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
+      if (who.a(this.a) != null) {
+        who.a(this.a).removeMessages(108);
+      }
+      if (who.a(this.a) != null) {
+        who.a(this.a).a();
+      }
     }
-    this.a.jdField_a_of_type_Whu.b();
   }
 }
 

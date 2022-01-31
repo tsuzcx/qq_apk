@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import axqw;
+import axqy;
 
 class SelectMemberActivity$20
   implements Runnable
@@ -12,7 +12,7 @@ class SelectMemberActivity$20
     if (this.jdField_a_of_type_Boolean) {}
     for (String str = "multiMode_exp";; str = "singleMode_exp")
     {
-      axqw.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", str, 0, 0, this.jdField_a_of_type_JavaLangString, "0", "", "");
+      axqy.b(this.this$0.app, "dc00899", "Grp_addFrd", "", "frd_select", str, 0, 0, this.jdField_a_of_type_JavaLangString, "0", "", "");
       return;
     }
   }

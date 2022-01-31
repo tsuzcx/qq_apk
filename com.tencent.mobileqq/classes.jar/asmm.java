@@ -1,44 +1,25 @@
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
 public class asmm
-  implements RadioGroup.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public asmm(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      asog.a("0X800A237");
+    }
+    for (;;)
     {
-    }
-    while (MsgBackupDateFragment.a(this.a)) {
-      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a)))
-      {
-        this.a.setRightButtonEnable(true);
-        return;
-        MsgBackupDateFragment.a(this.a, false);
-        MsgBackupDateFragment.a(this.a, 0L);
-        MsgBackupDateFragment.b(this.a, 0L);
-        MsgBackupDateFragment.a(this.a).setVisibility(8);
-        continue;
-        MsgBackupDateFragment.a(this.a, true);
-        MsgBackupDateFragment.a(this.a).setVisibility(0);
-      }
-      else
-      {
-        if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
-        {
-          this.a.setRightButtonEnable(true);
-          return;
-        }
-        this.a.setRightButtonEnable(false);
-        return;
+      this.a.a();
+      return;
+      if (aslg.c) {
+        asog.a("0X800A25C");
       }
     }
-    this.a.setRightButtonEnable(true);
   }
 }
 

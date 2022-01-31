@@ -1,75 +1,51 @@
-import android.os.SystemClock;
-import android.util.Printer;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class ajzy
-  implements Printer
+public class ajzy
+  extends ajtb
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private long c;
-  
-  ajzy(int paramInt)
+  public ajzy(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    super(paramQQAppInterface);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    ajzw.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void println(String paramString)
-  {
-    if (paramString.startsWith(">>"))
+    if (this.app != null)
     {
-      this.c = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
-        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_b_of_type_Int);
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("love_state_for_current_uin" + this.app.c(), paramInt).apply();
       }
     }
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.c == 0L) || (!paramString.startsWith("<<")));
-      this.jdField_a_of_type_Long += 1L;
-      l = SystemClock.uptimeMillis() - this.c;
-      this.c = 0L;
-      this.jdField_b_of_type_Long += l;
-      if (l <= ajzw.jdField_a_of_type_Int) {
-        break;
-      }
-      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_b_of_type_Int))
-      {
-        this.jdField_a_of_type_Int = 0;
-        return;
-      }
-      paramString = this.jdField_a_of_type_JavaLangString;
-      HashMap localHashMap = UnifiedMonitor.a();
-      UnifiedMonitor.a().addEvent(this.jdField_b_of_type_Int, paramString, (int)l, this.jdField_a_of_type_Int, localHashMap);
-      this.jdField_a_of_type_Int = 0;
-    } while (!QLog.isColorLevel());
-    QLog.d("AutoMonitor", 2, "MainLooper, cost=" + l + ", " + paramString);
-    return;
-    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
-      UnifiedMonitor.a().notifyNotTimeout(this.jdField_b_of_type_Int);
-    }
-    this.jdField_a_of_type_Int += 1;
+    notifyUI(1, true, Integer.valueOf(paramInt));
   }
   
-  public String toString()
+  public void a(boolean paramBoolean, sweet_pair_check_rsp paramsweet_pair_check_rsp)
   {
-    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
+    if ((paramBoolean) && (paramsweet_pair_check_rsp != null)) {
+      if (paramsweet_pair_check_rsp.host_state != 3) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 1;; i = 0)
+    {
+      a(i);
+      return;
+    }
   }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return ajzz.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

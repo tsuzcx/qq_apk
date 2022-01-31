@@ -1,30 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
-class ahby
-  implements EIPCResultCallback
+public class ahby
+  implements myy
 {
-  ahby(ahbw paramahbw, ahbt paramahbt, DownloadParam paramDownloadParam) {}
+  public ahby(PreloadModule paramPreloadModule) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_Ahbt != null) {
-        this.jdField_a_of_type_Ahbt.onResult(i, paramEIPCResult);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
     }
-    while (this.jdField_a_of_type_Ahbt == null)
-    {
-      int i;
-      return;
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
     }
-    this.jdField_a_of_type_Ahbt.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url));
   }
 }
 

@@ -1,42 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class acvv
-  implements ahbt
 {
-  public acvv(CustomizeStrategyFactory.VoiceResStrategy.1 param1) {}
+  public long a;
+  public String a;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public boolean a()
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      Object localObject = paramPathResult + File.separator;
-      localObject = (String)localObject + "aio.png";
-      localObject = SafeBitmapFactory.decodeFile((String)localObject, bbdr.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
-      if (localObject != null) {
-        this.a.a.icon = ((Bitmap)localObject);
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
-      }
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

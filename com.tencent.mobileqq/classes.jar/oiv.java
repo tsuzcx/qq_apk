@@ -1,16 +1,16 @@
 import java.util.List;
 
 class oiv
-  extends ojq
+  extends ojn
 {
-  oiv(oio paramoio, List paramList)
+  oiv(oil paramoil, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    super(paramoio, null);
+    super(paramoil, null);
   }
   
-  void a(ojt paramojt)
+  void a(ojq paramojq)
   {
-    paramojt.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, oio.a(this.jdField_a_of_type_Oio), 3, 3);
+    paramojq.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
   }
 }
 

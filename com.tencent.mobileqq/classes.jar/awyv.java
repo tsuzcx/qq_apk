@@ -1,64 +1,40 @@
-import VIP.AIOKeyWordReq;
-import VIP.AIOSendReq;
-import VIP.AIOSendRes;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
 public class awyv
-  extends xop
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  private Long jdField_a_of_type_JavaLangLong;
+  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Long b;
+  
+  public awyv(Long paramLong1, Long paramLong2)
   {
-    if ((akjd.a.equals(paramToServiceMsg.getServiceCmd())) || (akjd.b.equals(paramToServiceMsg.getServiceCmd())))
-    {
-      if (paramFromServiceMsg == null) {
-        return null;
-      }
-      paramToServiceMsg = new UniPacket(true);
-      try
-      {
-        paramToServiceMsg.setEncodeName("utf-8");
-        paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-        paramToServiceMsg = (AIOSendRes)paramToServiceMsg.getByClass("response", new AIOSendRes());
-        return paramToServiceMsg;
-      }
-      catch (RuntimeException paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        return null;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        return null;
-      }
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangLong = paramLong1;
+    this.b = paramLong2;
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public String a()
   {
-    paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
-    if (akjd.a.equals(paramToServiceMsg.getServiceCmd()))
-    {
-      paramUniPacket.setFuncName("CheckPopGrayStips");
-      paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
+    String str = new String();
+    if (!a()) {
+      return str;
     }
-    for (;;)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilHashMap.size())
     {
-      return true;
-      if (akjd.b.equals(paramToServiceMsg.getServiceCmd()))
-      {
-        paramUniPacket.setFuncName("getUserKeyWordStips");
-        paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
-      }
+      str = str + (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+      i += 1;
     }
+    return str;
   }
   
-  public String[] a()
+  public void a(int paramInt, String paramString)
   {
-    return new String[] { "AIOSendSvc" };
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.size() == this.jdField_a_of_type_JavaLangLong.longValue();
   }
 }
 

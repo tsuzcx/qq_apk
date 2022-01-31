@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-
-public class rew
-  extends oyg
+class rew
+  extends oyd
 {
-  public rew(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup, String paramString)
+  rew(rev paramrev, String paramString)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a(ReadInJoyProteusFamilyListViewGroup.a(this.a), this.a.a);
+    paramoxx.g();
   }
 }
 

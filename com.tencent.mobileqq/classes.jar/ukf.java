@@ -1,120 +1,81 @@
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 public class ukf
-  extends BaseAdapter
 {
-  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final QQAppInterface a;
   
-  public ukf(List<QQStoryUserInfo> paramList)
+  public ukf(QQAppInterface paramQQAppInterface)
   {
-    Collection localCollection;
-    if (localCollection != null)
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("appInterface is null");
+    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
+  {
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    if ((paramInt1 != 2) && (paramInt1 != 1)) {
+      throw new IllegalArgumentException("shareGroupType is error, type=" + paramInt1);
+    }
+    bfpc localbfpc = bfpc.a(paramContext);
+    localbfpc.a(ajya.a(2131699884), 5);
+    localbfpc.a(ajya.a(2131699882) + ssf.a + ajya.a(2131699883), 5);
+    localbfpc.c(2131690596);
+    localbfpc.a(new ukg(this, localbfpc, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
+    if (!localbfpc.isShowing()) {
+      localbfpc.show();
+    }
+  }
+  
+  public void a(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
+  {
+    ved.d("AddVideoController", "addVideoByRecord %s %s %s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    if (paramContext == null) {
+      throw new NullPointerException("context is null");
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      throw new IllegalArgumentException("please indicate the share group id");
+    }
+    vwj localvwj = vwj.a();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("entrance_type", 102);
+    localBundle.putInt("shareGroupType", paramInt1);
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    if (paramInt1 == 1) {
+      localBundle.putLong("groupUin", paramLong);
+    }
+    localBundle.putBoolean("ignorePersonalPublish", paramBoolean);
+    if ((paramContext instanceof Activity))
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+      paramContext = (Activity)paramContext;
+      localvwj.a(paramContext, localBundle, paramInt2);
+      paramContext.overridePendingTransition(2130772217, 2130772038);
+      return;
     }
+    localvwj.a(paramContext, localBundle);
   }
   
-  public void a(List<QQStoryUserInfo> paramList)
+  public void b(Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561364, null);
-      paramViewGroup = new ukg(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365824));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - actn.a(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365002));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      paramView.setTag(paramViewGroup);
-      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
-        break label258;
-      }
-      if (paramInt != 0) {
-        break label225;
-      }
-      paramView.setBackgroundResource(2130839185);
-    }
-    label258:
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.a(((QQStoryUserInfo)localObject).uin, true);
-      if (localObject == null) {
-        break label315;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      return paramView;
-      paramViewGroup = (ukg)paramView.getTag();
-      break;
-      label225:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        paramView.setBackgroundResource(2130839176);
-      }
-      else
-      {
-        paramView.setBackgroundResource(2130839179);
-        continue;
-        if (this.jdField_a_of_type_JavaUtilList.size() == 2)
-        {
-          if (paramInt == 0) {
-            paramView.setBackgroundResource(2130839185);
-          } else {
-            paramView.setBackgroundResource(2130839176);
-          }
-        }
-        else if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-          paramView.setBackgroundResource(2130839176);
-        }
-      }
-    }
-    label315:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bbdr.a());
-    return paramView;
+    ved.d("AddVideoController", "addVideoByExist %s %s", new Object[] { paramString1, paramString2 });
+    Bundle localBundle = new Bundle();
+    localBundle.putString("shareGroupId", paramString1);
+    localBundle.putString("shareGroupName", paramString2);
+    localBundle.putInt("add_video_source", paramInt3);
+    StoryTransitionActivity.a(paramContext, ukh.class.getName(), localBundle, paramInt2);
   }
 }
 

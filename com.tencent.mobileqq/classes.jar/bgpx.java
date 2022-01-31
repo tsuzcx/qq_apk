@@ -1,16 +1,13 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bgpx
+final class bgpx
+  implements DialogInterface.OnClickListener
 {
-  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
-  
-  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
-  
-  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
-  
-  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

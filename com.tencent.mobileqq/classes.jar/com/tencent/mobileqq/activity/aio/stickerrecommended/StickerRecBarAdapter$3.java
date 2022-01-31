@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aewn;
-import aexd;
+import aewl;
+import aexb;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import java.util.List;
 
 public class StickerRecBarAdapter$3
   implements Runnable
 {
-  public StickerRecBarAdapter$3(aewn paramaewn, List paramList1, List paramList2) {}
+  public StickerRecBarAdapter$3(aewl paramaewl, List paramList1, List paramList2) {}
   
   public void run()
   {
-    aexd localaexd = aexd.a(aewn.a(this.this$0));
-    if (aewn.a(this.this$0) == null) {
-      localaexd.a(this.a, false, 0, null);
+    aexb localaexb = aexb.a(aewl.a(this.this$0));
+    if (aewl.a(this.this$0) == null) {
+      localaexb.a(this.a, false, 0, null);
     }
     for (;;)
     {
-      localaexd.b(this.a);
-      aewn.a(this.this$0).a(this.b);
+      localaexb.b(this.a);
+      aewl.a(this.this$0).a(this.b);
       return;
-      localaexd.a(this.a, true, aewn.a(this.this$0).jdField_a_of_type_Int, aewn.a(this.this$0).jdField_a_of_type_JavaLangString);
+      localaexb.a(this.a, true, aewl.a(this.this$0).jdField_a_of_type_Int, aewl.a(this.this$0).jdField_a_of_type_JavaLangString);
     }
   }
 }

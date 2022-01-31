@@ -1,36 +1,74 @@
-import android.content.res.Resources;
+import android.content.IntentFilter;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class akyz
-  extends bbjx
+public class akyz
+  extends akyq
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  akyz(String paramString1, String paramString2, AppInterface paramAppInterface)
+  public akyz(AppInterface paramAppInterface)
   {
-    super(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
   }
   
-  public void innerClean()
+  public void a(AppInterface paramAppInterface, akys paramakys)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    if (a("snycGetConfig", paramAppInterface, paramakys)) {
+      return;
+    }
+    paramakys.a(a());
   }
   
-  public boolean runOnSubThread(Resources paramResources)
+  public void a(AppInterface paramAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bblp.a(this.jdField_a_of_type_JavaLangString, null);
-    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
-    akyq.c();
-    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    return true;
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
+  }
+  
+  boolean a(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new akza(this), localIntentFilter) != null;
+  }
+  
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
+  {
+    try
+    {
+      paramString = bbmd.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
 }
 

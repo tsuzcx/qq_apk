@@ -1,42 +1,34 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.2;
+import com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.3;
 
-class alfl
-  implements SensorEventListener
+public class alfl
+  extends Handler
 {
-  alfl(alfk paramalfk) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public alfl(alfj paramalfj, Looper paramLooper)
   {
-    double d1 = 1.0D;
-    if (1 != paramSensorEvent.sensor.getType()) {
-      return;
-    }
-    paramSensorEvent = paramSensorEvent.values;
-    float f1 = paramSensorEvent[0];
-    float f2 = paramSensorEvent[1];
-    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
-    d2 = f2 / d2;
-    if (d2 > 1.0D) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      d2 = Math.acos(d1);
-      d1 = d2;
-      if (f1 < 0.0F) {
-        d1 = 6.283185307179586D - d2;
-      }
-      int i = (int)(d1 * 57.295779513082323D);
-      alfk.a(this.a, (i + 45) / 90 * 90);
+    default: 
       return;
-      if (d2 < -1.0D) {
-        d1 = -1.0D;
-      } else {
-        d1 = d2;
-      }
+    case 100: 
+      alku.a().a(new ARCamera.ARCameraHandler.1(this));
+      removeMessages(100);
+      sendEmptyMessageDelayed(100, 3000L);
+      return;
+    case 101: 
+      alku.a().a(new ARCamera.ARCameraHandler.2(this));
+      return;
     }
+    alku.a().a(new ARCamera.ARCameraHandler.3(this));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import scu;
-import sgj;
+import scr;
+import sgg;
 
 class SubscriptFeedsActivity$5
   implements Runnable
@@ -10,8 +10,8 @@ class SubscriptFeedsActivity$5
   
   public void run()
   {
-    SubscriptFeedsActivity.a(this.this$0, scu.b(this.this$0.app));
-    if (sgj.a(this.this$0.app)) {
+    SubscriptFeedsActivity.a(this.this$0, scr.b(this.this$0.app));
+    if (sgg.a(this.this$0.app)) {
       SubscriptFeedsActivity.a(this.this$0, true);
     }
   }

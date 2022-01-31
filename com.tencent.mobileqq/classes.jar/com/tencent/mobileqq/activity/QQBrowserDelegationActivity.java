@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axqw;
-import ayfv;
+import axqy;
+import ayfx;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import nqq;
+import nqn;
 
 public class QQBrowserDelegationActivity
   extends BaseActivity
@@ -31,20 +31,20 @@ public class QQBrowserDelegationActivity
     do
     {
       int i;
-      nqq localnqq;
+      nqn localnqn;
       do
       {
         return;
         i = 0;
-        localnqq = (nqq)paramQQAppInterface.getManager(88);
-        if ("3046055438".equals(localnqq.i)) {
+        localnqn = (nqn)paramQQAppInterface.getManager(88);
+        if ("3046055438".equals(localnqn.i)) {
           i = 1;
         }
-        localnqq.i = null;
+        localnqn.i = null;
       } while (i == 0);
       paramIntent.setClass(this, BusinessBrowser.class);
       paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.a().a(localnqq.i, 1008);
+      paramQQAppInterface = paramQQAppInterface.a().a(localnqn.i, 1008);
     } while (paramQQAppInterface == null);
     paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
   }
@@ -72,7 +72,7 @@ public class QQBrowserDelegationActivity
       default: 
         localIntent.setClass(this, QQBrowserActivity.class);
         str = localIntent.getStringExtra("url");
-        if (!ayfv.b(str)) {
+        if (!ayfx.b(str)) {
           break label244;
         }
         paramBundle = null;
@@ -84,10 +84,10 @@ public class QQBrowserDelegationActivity
       }
       for (;;)
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!ayfv.a(this, str, ayfv.a(this.app, paramBundle, i)))) {
+        if ((TextUtils.isEmpty(paramBundle)) || (!ayfx.a(this, str, ayfx.a(this.app, paramBundle, i)))) {
           break label244;
         }
-        axqw.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        axqy.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
         localIntent.setClass(this, QQH5BrowserActivity.class);
@@ -100,7 +100,7 @@ public class QQBrowserDelegationActivity
         }
       }
       paramBundle = localIntent;
-      if (!ayfv.a(str)) {
+      if (!ayfx.a(str)) {
         break label309;
       }
       if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {

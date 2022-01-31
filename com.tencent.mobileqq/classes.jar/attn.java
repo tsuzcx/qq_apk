@@ -6,12 +6,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 class attn
   implements DialogInterface.OnClickListener
 {
-  attn(attk paramattk, bbgg parambbgg) {}
+  attn(attm paramattm, bbgu parambbgu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    this.jdField_a_of_type_Attk.a.e();
+    this.jdField_a_of_type_Bbgu.dismiss();
+    this.jdField_a_of_type_Attm.a.e();
     paramDialogInterface = new Intent("tribe_profile_edit_finish");
     BaseApplicationImpl.getApplication().sendBroadcast(paramDialogInterface);
   }

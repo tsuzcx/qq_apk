@@ -1,8 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface rts
+class rts
+  implements View.OnClickListener
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  rts(rtq paramrtq) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 

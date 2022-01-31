@@ -1,15 +1,16 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class aona
+class aona
   implements Animation.AnimationListener
 {
-  public aona(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  aona(aomx paramaomx, int paramInt, boolean paramBoolean) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.b();
+    this.jdField_a_of_type_Aomx.jdField_a_of_type_Float = this.jdField_a_of_type_Aomx.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aomx.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

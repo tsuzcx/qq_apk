@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qol;
+import qoi;
 
 class VideoFollowManager$CheckAccountFollowedRunnable
   implements Runnable
@@ -28,7 +28,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = qol.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = qoi.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFollowManager.a(this.this$0) == null) {
         return;
       }

@@ -1,157 +1,124 @@
-import java.nio.ByteBuffer;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wfj
+  extends MSFServlet
 {
-  public int a;
-  public ArrayList<wfk> a;
-  public int b;
-  public int c;
-  public int d;
+  private static String a = "QRCodeServlet";
   
-  public wfj()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public wfj(String paramString)
-  {
-    a(paramString);
-  }
-  
-  public static wfj a(int paramInt, String paramString)
-  {
-    long l;
-    byte[] arrayOfByte;
-    Object localObject;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3)) {
-      if (paramString != null)
-      {
-        l = Long.parseLong(paramString);
-        paramString = new wfj();
-        paramString.jdField_a_of_type_Int = 1;
-        paramString.b = 1;
-        paramString.c = paramInt;
-        paramString.d = 0;
-        paramString.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        arrayOfByte = wim.a(l);
-        localObject = ByteBuffer.allocate(4);
-        ((ByteBuffer)localObject).put(arrayOfByte, 4, 4);
-        ((ByteBuffer)localObject).flip();
-        arrayOfByte = new byte[((ByteBuffer)localObject).limit()];
-        ((ByteBuffer)localObject).get(arrayOfByte);
-        if (paramInt != 2) {
-          break label145;
-        }
-        paramInt = 2;
+    if (paramFromServiceMsg != null) {
+      QLog.d(a, 2, paramFromServiceMsg.toString());
+    }
+    Object localObject = null;
+    boolean bool;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      bool = true;
+      if (!bool) {
+        break label120;
       }
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if (paramFromServiceMsg != null) {
+        break label75;
+      }
+      bool = false;
+      paramFromServiceMsg = (FromServiceMsg)localObject;
     }
     for (;;)
     {
-      localObject = new wfk(paramInt, (short)4, arrayOfByte);
-      paramString.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      return paramString;
-      l = 0L;
+      notifyObserver(paramIntent, 0, bool, paramFromServiceMsg, BusinessObserver.class);
+      return;
+      bool = false;
       break;
-      label145:
-      if (paramInt == 3)
-      {
-        paramInt = 7;
-        continue;
-        return null;
-      }
-      else
-      {
-        paramInt = 1;
-      }
+      label75:
+      localObject = bbma.b(paramFromServiceMsg);
+      paramFromServiceMsg = new Bundle();
+      localObject = new String((byte[])localObject);
+      paramFromServiceMsg.putString("result", (String)localObject);
+      QLog.d(a, 2, (String)localObject);
+      continue;
+      label120:
+      QLog.e(a, 2, " MSF response is null");
+      paramFromServiceMsg = null;
     }
   }
   
-  public int a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramIntent == null) {
+      return;
     }
-    return 0;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject1 = new JSONObject();
+    for (;;)
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      for (int i = 4;; i = ((wfk)((Iterator)localObject1).next()).a() + i)
+      int i;
+      try
       {
-        j = i;
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
+        paramIntent = paramIntent.getExtras();
+        String[] arrayOfString = new String[14];
+        arrayOfString[0] = "skey";
+        arrayOfString[1] = "d";
+        arrayOfString[2] = "appid";
+        arrayOfString[3] = "ul";
+        arrayOfString[4] = "bqq";
+        arrayOfString[5] = "md5";
+        arrayOfString[6] = "fromuin";
+        arrayOfString[7] = "touin";
+        arrayOfString[8] = "imei";
+        arrayOfString[9] = "ip";
+        arrayOfString[10] = "url";
+        arrayOfString[11] = "guid";
+        arrayOfString[12] = "uuid";
+        arrayOfString[13] = "type";
+        int j = arrayOfString.length;
+        i = 0;
+        if (i < j)
+        {
+          String str = arrayOfString[i];
+          if (!paramIntent.containsKey(str)) {
+            break label279;
+          }
+          Object localObject2 = paramIntent.get(str);
+          if ((localObject2 instanceof ArrayList)) {
+            ((JSONObject)localObject1).put(str, new JSONArray((ArrayList)localObject2));
+          } else {
+            ((JSONObject)localObject1).put(str, localObject2);
+          }
         }
       }
-    }
-    int j = 4;
-    Object localObject1 = ByteBuffer.allocate(j);
-    ((ByteBuffer)localObject1).put((byte)this.jdField_a_of_type_Int);
-    ((ByteBuffer)localObject1).put((byte)this.b);
-    ((ByteBuffer)localObject1).put((byte)this.c);
-    ((ByteBuffer)localObject1).put((byte)this.d);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      ((ByteBuffer)localObject1).put((byte)this.jdField_a_of_type_JavaUtilArrayList.size());
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
+      catch (JSONException paramIntent)
       {
-        wfk localwfk = (wfk)((Iterator)localObject2).next();
-        ((ByteBuffer)localObject1).put((byte)localwfk.jdField_a_of_type_Int);
-        ((ByteBuffer)localObject1).putShort(localwfk.jdField_a_of_type_Short);
-        ((ByteBuffer)localObject1).put(localwfk.jdField_a_of_type_ArrayOfByte);
+        QLog.d(a, 2, "json error");
+        return;
       }
-    }
-    ((ByteBuffer)localObject1).flip();
-    Object localObject2 = new byte[((ByteBuffer)localObject1).limit()];
-    ((ByteBuffer)localObject1).get((byte[])localObject2);
-    return bbdm.a((byte[])localObject2);
-  }
-  
-  public wfk a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return (wfk)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    }
-    return null;
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = bbdm.a(paramString);
-    paramString = ByteBuffer.allocate(localObject.length);
-    paramString.put((byte[])localObject);
-    paramString.flip();
-    this.jdField_a_of_type_Int = paramString.get();
-    this.b = paramString.get();
-    this.c = paramString.get();
-    this.d = paramString.get();
-    int j = paramString.get();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-    int i = 0;
-    while (i < j)
-    {
-      localObject = new wfk();
-      ((wfk)localObject).jdField_a_of_type_Int = paramString.get();
-      byte[] arrayOfByte = new byte[2];
-      paramString.get(arrayOfByte);
-      ((wfk)localObject).jdField_a_of_type_Short = wim.a(arrayOfByte);
-      arrayOfByte = new byte[((wfk)localObject).jdField_a_of_type_Short];
-      paramString.get(arrayOfByte);
-      ((wfk)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      localObject1 = ((JSONObject)localObject1).toString();
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand(paramIntent.getString("cmd"));
+      paramPacket.putSendData(bbma.a(((String)localObject1).getBytes()));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i(a, 2, "onSend result: " + (String)localObject1);
+      return;
+      label279:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wfj
  * JD-Core Version:    0.7.0.1
  */

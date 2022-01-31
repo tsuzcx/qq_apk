@@ -1,24 +1,38 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class rxf
-  implements rxg
+  implements bfph
 {
-  rxf(rxe paramrxe) {}
+  rxf(rxe paramrxe, String paramString) {}
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  public void OnClick(View paramView, int paramInt)
   {
-    rxe.a(this.a).b(paramString, paramOnClickListener);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    rxe.a(this.a).c(paramBoolean);
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    rxe.a(this.a).a(paramString, paramOnClickListener);
+    paramView = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        paramView.put("index", paramInt);
+        if ((!this.jdField_a_of_type_Rxe.a) || (paramInt != 0)) {
+          continue;
+        }
+        paramView.put("type", 2);
+        if (rxe.a(this.jdField_a_of_type_Rxe) != null) {
+          ((BridgeModule)rxe.a(this.jdField_a_of_type_Rxe).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
+        }
+      }
+      catch (JSONException paramView)
+      {
+        continue;
+      }
+      rxe.a(this.jdField_a_of_type_Rxe).dismiss();
+      return;
+      paramView.put("type", 0);
+    }
   }
 }
 

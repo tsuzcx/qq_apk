@@ -1,30 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
 
 class aepv
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  aepv(aepg paramaepg) {}
+  aepv(aepe paramaepe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
-      return;
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bcjg.a();
+    if (i == 0)
+    {
+      this.a.m.setText(ajya.a(2131705146));
+      this.a.m.setTextColor(this.a.r);
+      this.a.jdField_a_of_type_Atch.b();
+      if (paramView != null) {
+        paramView.a(true);
+      }
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
     }
-    this.a.jdField_a_of_type_Atcf.c();
-    this.a.l.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBind enter room setSoundDisable");
+    while ((i != 3) && (i != 1)) {
+      return bool;
     }
-    this.a.jdField_a_of_type_Atcf.a(false);
+    this.a.m.setText(ajya.a(2131705085));
+    this.a.m.setTextColor(this.a.q);
+    this.a.jdField_a_of_type_Atch.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 

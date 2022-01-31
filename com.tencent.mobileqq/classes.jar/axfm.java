@@ -1,9 +1,12 @@
-public class axfm
+import com.tencent.mobileqq.data.MessageForShortVideo;
+
+public abstract interface axfm
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
 }
 
 

@@ -1,47 +1,31 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.IEventReceiver;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
 
 public class ulq
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tkd>
+  extends QQUIEventReceiver<IEventReceiver, tku>
 {
-  public ulq(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public ulq(@NonNull IEventReceiver paramIEventReceiver)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    super(paramIEventReceiver);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tkd paramtkd)
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull tku paramtku)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramtkd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramtkd.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if (paramtku.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      paramtkd = paramtkd.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramtkd.hasNext())
-      {
-        umx localumx = (umx)paramtkd.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localumx.a))
-        {
-          paramQQStoryShareGroupProfileActivity.b = localumx.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
-        }
-      }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
+      bcql.a(tsr.a(), 2, ajya.a(2131711043), 0).a();
+      vei.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramtku.jdField_a_of_type_Int), "5" });
       return;
     }
+    bcql.a(tsr.a(), 1, ajya.a(2131711038), 0).a();
+    vei.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
   }
   
   public Class acceptEventClass()
   {
-    return tkd.class;
+    return tku.class;
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import besz;
+import betq;
 import com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -136,11 +136,11 @@ public class MiniAppCmdServlet
         QLog.i("MiniAppCmdServlet", 1, "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
       } while ((i != 0) && (i != 1));
       paramBundle = new Bundle();
-      Object localObject = besz.a();
+      Object localObject = betq.a();
       if (i == 1) {}
       for (i = j;; i = 3)
       {
-        paramBundle.putParcelable("engineChannel", ((besz)localObject).a(i));
+        paramBundle.putParcelable("engineChannel", ((betq)localObject).a(i));
         if (paramCmdCallback == null) {
           break;
         }

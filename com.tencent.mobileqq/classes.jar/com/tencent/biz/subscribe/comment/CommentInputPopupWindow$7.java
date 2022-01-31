@@ -2,16 +2,16 @@ package com.tencent.biz.subscribe.comment;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import wne;
+import wnb;
 
 public class CommentInputPopupWindow$7
   implements Runnable
 {
-  public CommentInputPopupWindow$7(wne paramwne, View paramView) {}
+  public CommentInputPopupWindow$7(wnb paramwnb, View paramView) {}
   
   public void run()
   {
-    wne.a(this.this$0).showSoftInput(this.a, 1);
+    wnb.a(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

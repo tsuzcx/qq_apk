@@ -1,6 +1,8 @@
 public abstract interface asdn
 {
-  public abstract void a();
+  public abstract void a(ascr paramascr);
+  
+  public abstract void b(ascr paramascr);
 }
 
 

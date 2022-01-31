@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import scu;
-import scz;
+import scr;
+import scw;
 
 public class SubscriptRecommendController$6$1
   implements Runnable
 {
-  public SubscriptRecommendController$6$1(scz paramscz) {}
+  public SubscriptRecommendController$6$1(scw paramscw) {}
   
   public void run()
   {
-    scu.a(this.a.a.a, false);
+    scr.a(this.a.a.a, false);
   }
 }
 

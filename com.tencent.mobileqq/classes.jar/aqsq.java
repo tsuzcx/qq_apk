@@ -1,30 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import java.io.File;
-
-class aqsq
-  implements ahbt
+public abstract interface aqsq
 {
-  aqsq(aqsp paramaqsp, FullPopData paramFullPopData) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      paramPathResult = new File(paramPathResult.folderPath);
-      if (paramPathResult.exists())
-      {
-        aqsp.a(this.jdField_a_of_type_Aqsp, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData);
-        aqsp.a(this.jdField_a_of_type_Aqsp).resPath = paramPathResult.getPath();
-        this.jdField_a_of_type_Aqsp.a = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("FullPopBussiness", 1, "full pop res is ready");
-        }
-      }
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(boolean paramBoolean, int paramInt);
 }
 
 

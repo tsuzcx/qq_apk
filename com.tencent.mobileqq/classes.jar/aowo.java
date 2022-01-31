@@ -1,9 +1,6 @@
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadRspV3;
-
-public abstract class aowo
-  extends aowl
+public abstract interface aowo
 {
-  protected abstract void a(boolean paramBoolean, int paramInt, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3);
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1;
-
-public class bcyl
-  implements DialogInterface.OnClickListener
+public abstract interface bcyl
 {
-  public bcyl(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = new AuthorityControlAppDetailsFragment.2.1(this);
-    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface);
-  }
+  public abstract void a();
 }
 
 

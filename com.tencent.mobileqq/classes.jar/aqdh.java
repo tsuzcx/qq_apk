@@ -1,23 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
 class aqdh
-  implements TextWatcher
+  implements anze
 {
-  aqdh(aqdb paramaqdb, int paramInt) {}
+  aqdh(aqdd paramaqdd) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if ((aqdb.a(this.jdField_a_of_type_Aqdb).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (aqdd.a(this.a)))
     {
-      aqdb.a(this.jdField_a_of_type_Aqdb).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      aqdb.a(this.jdField_a_of_type_Aqdb).setSelection(this.jdField_a_of_type_Int - 1);
+      aqdd.a(this.a).removeView(aqdd.a(this.a));
+      aqdd.a(this.a, false);
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      aqdd.a(this.a);
+      return true;
     }
+    return false;
   }
 }
 

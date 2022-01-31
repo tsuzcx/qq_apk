@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import ozy;
+import ozv;
 
 class ReadInJoyChannelPanelFragment$1
   implements Runnable
 {
-  ReadInJoyChannelPanelFragment$1(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ozy paramozy) {}
+  ReadInJoyChannelPanelFragment$1(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ozv paramozv) {}
   
   public void run()
   {

@@ -1,21 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class njt
-  extends Handler
+public class njt
+  implements View.OnClickListener
 {
-  njt(njs paramnjs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public njt(VideoCoverView paramVideoCoverView, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

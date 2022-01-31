@@ -1,18 +1,16 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
 public class bgvx
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public int b;
-  public Drawable b;
+  public bgvx(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    ForceUserUpdateActivity.a(this.a);
+  }
 }
 
 

@@ -1,68 +1,49 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ExpiredPushBanner;
-import com.tencent.mobileqq.persistence.NoColumnError;
-
-public class aukq
-  extends auky
+public abstract class aukq
 {
-  public aukq()
+  private static final String CLOSE_EXCEPTION_MSG = "The EntityManagerFactory has been already closed";
+  private boolean closed;
+  private final akfu dbHelper = build(paramString);
+  private String mName;
+  
+  public aukq(String paramString)
   {
-    this.a = 3;
+    this.mName = paramString;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public abstract akfu build(String paramString);
+  
+  public void close()
   {
-    paramaukm = (ExpiredPushBanner)paramaukm;
-    if (paramaukx == null)
-    {
-      paramaukm.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
-      paramaukm.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
-      paramaukm.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
-      return paramaukm;
+    if (this.closed) {
+      throw new IllegalStateException("The EntityManagerFactory has been already closed");
     }
-    int i = paramCursor.getColumnIndex("cid");
-    if (i == -1)
-    {
-      paramaukx.a(new NoColumnError("cid", Long.TYPE));
-      i = paramCursor.getColumnIndex("md5");
-      if (i != -1) {
-        break label187;
-      }
-      paramaukx.a(new NoColumnError("md5", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("endtime");
-      if (i != -1) {
-        break label202;
-      }
-      paramaukx.a(new NoColumnError("endtime", Long.TYPE));
-      return paramaukm;
-      paramaukm.cid = paramCursor.getLong(i);
-      break;
-      label187:
-      paramaukm.md5 = paramCursor.getString(i);
-    }
-    label202:
-    paramaukm.endtime = paramCursor.getLong(i);
-    return paramaukm;
+    this.closed = true;
+    this.dbHelper.a();
   }
   
-  public String a(String paramString)
+  public aukp createEntityManager()
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
-    return localStringBuilder.toString();
+    if (this.closed) {
+      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    }
+    aulc localaulc = new aulc(this.dbHelper, this.mName);
+    this.closed = false;
+    return localaulc;
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public aukp createMessageRecordEntityManager()
   {
-    paramaukm = (ExpiredPushBanner)paramaukm;
-    paramContentValues.put("cid", Long.valueOf(paramaukm.cid));
-    paramContentValues.put("md5", paramaukm.md5);
-    paramContentValues.put("endtime", Long.valueOf(paramaukm.endtime));
+    if (this.closed) {
+      throw new IllegalStateException("The EntityManagerFactory has been already closed");
+    }
+    aukx localaukx = new aukx(this.dbHelper, this.mName);
+    this.closed = false;
+    return localaukx;
+  }
+  
+  public boolean isOpen()
+  {
+    return !this.closed;
   }
 }
 

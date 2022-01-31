@@ -1,19 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
-public class bktf
-  implements DialogInterface.OnClickListener
+public abstract interface bktf
 {
-  public bktf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.a != null) {
-      this.a.a.pauseDownload();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

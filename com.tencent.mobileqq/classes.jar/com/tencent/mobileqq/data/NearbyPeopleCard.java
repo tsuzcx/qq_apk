@@ -3,17 +3,17 @@ package com.tencent.mobileqq.data;
 import GameCenter.RespLastGameInfo;
 import SummaryCard.TPraiseInfo;
 import SummaryCard.TVideoHeadInfo;
-import alyq;
+import alyp;
 import android.os.Parcel;
 import android.text.TextUtils;
 import appoint.define.appoint_define.InterestTag;
-import atbw;
-import atfk;
-import aukm;
-import aulx;
-import auut;
-import bbdj;
-import bbjw;
+import atby;
+import atfm;
+import auko;
+import aulz;
+import auuv;
+import bbdx;
+import bbkk;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -43,7 +43,7 @@ import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
 
 public class NearbyPeopleCard
-  extends aukm
+  extends auko
 {
   public String addPicBtnDownloadAppTips = "";
   public int age;
@@ -59,7 +59,7 @@ public class NearbyPeopleCard
   public String college;
   public long collegeId;
   public String commonLabelString;
-  @aulx
+  @aulz
   public List<String> commonLabels;
   public String company;
   public byte constellation;
@@ -94,11 +94,11 @@ public class NearbyPeopleCard
   public String hometownCountry;
   public String hometownDistrict;
   public String hometownProvice;
-  @aulx
+  @aulz
   public HotChatInfo hotInfo;
   public int iIsGodFlag;
-  @aulx
-  public List<atfk> interestTags;
+  @aulz
+  public List<atfm> interestTags;
   public boolean isForbidSendGiftMsg;
   public boolean isForbidSendGiftMsgForTribar;
   public boolean isForbidSendMsg;
@@ -117,7 +117,7 @@ public class NearbyPeopleCard
   public int maskMsgFlag;
   public int nLastGameFlag;
   public byte[] nearbyInfo;
-  @aulx
+  @aulz
   public cmd0xac5.NearbyNowData nearbyNowData;
   public byte[] nearbyNowDataBytes;
   public int nextThreshold;
@@ -126,13 +126,13 @@ public class NearbyPeopleCard
   public int nowUserType;
   public int oldPhotoCount;
   public String picInfo;
-  @aulx
+  @aulz
   public List<PicInfo> picList;
-  @aulx
+  @aulz
   public List<TPraiseInfo> praiseList;
   public int profPercent;
-  @aulx
-  public List<auut> profileBusiEntry;
+  @aulz
+  public List<auuv> profileBusiEntry;
   public String qzoneFeed;
   public String qzoneName;
   public String qzonePicUrl_1;
@@ -173,13 +173,13 @@ public class NearbyPeopleCard
   public PicInfo videoInfo;
   public byte[] xuanYan;
   
-  public void addOrUpdateBuisEntry(auut paramauut)
+  public void addOrUpdateBuisEntry(auuv paramauuv)
   {
     int k = 0;
-    if (paramauut == null) {
+    if (paramauuv == null) {
       return;
     }
-    int m = paramauut.jdField_a_of_type_Int;
+    int m = paramauuv.jdField_a_of_type_Int;
     if (this.profileBusiEntry == null) {
       getBusiEntrys();
     }
@@ -189,11 +189,11 @@ public class NearbyPeopleCard
       int j = k;
       if (i < this.profileBusiEntry.size())
       {
-        if (((auut)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == m)
+        if (((auuv)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == m)
         {
           j = 1;
           this.profileBusiEntry.remove(i);
-          this.profileBusiEntry.add(paramauut);
+          this.profileBusiEntry.add(paramauuv);
         }
       }
       else
@@ -201,7 +201,7 @@ public class NearbyPeopleCard
         if (j != 0) {
           break;
         }
-        this.profileBusiEntry.add(paramauut);
+        this.profileBusiEntry.add(paramauuv);
         return;
       }
       i += 1;
@@ -235,7 +235,7 @@ public class NearbyPeopleCard
     this.mQQStoryData = null;
   }
   
-  public List<auut> getBusiEntrys()
+  public List<auuv> getBusiEntrys()
   {
     if (this.profileBusiEntry == null)
     {
@@ -255,16 +255,16 @@ public class NearbyPeopleCard
           if (localJSONObject == null) {
             break label178;
           }
-          auut localauut = new auut();
-          localauut.jdField_a_of_type_Int = localJSONObject.getInt("nBusiEntryType");
-          localauut.jdField_a_of_type_JavaLangString = localJSONObject.getString("strLogoUrl");
-          localauut.b = localJSONObject.getString("strTitle");
-          localauut.c = localJSONObject.getString("strContent");
-          localauut.d = localJSONObject.getString("strJumpUrl");
-          if (localauut.a()) {
+          auuv localauuv = new auuv();
+          localauuv.jdField_a_of_type_Int = localJSONObject.getInt("nBusiEntryType");
+          localauuv.jdField_a_of_type_JavaLangString = localJSONObject.getString("strLogoUrl");
+          localauuv.b = localJSONObject.getString("strTitle");
+          localauuv.c = localJSONObject.getString("strContent");
+          localauuv.d = localJSONObject.getString("strJumpUrl");
+          if (localauuv.a()) {
             break label178;
           }
-          this.profileBusiEntry.add(localauut);
+          this.profileBusiEntry.add(localauuv);
         }
       }
       catch (JSONException localJSONException)
@@ -279,12 +279,12 @@ public class NearbyPeopleCard
     }
   }
   
-  public atfk getCommonTagInfos()
+  public atfm getCommonTagInfos()
   {
     if (this.commonLabels == null) {
       return null;
     }
-    atfk localatfk = new atfk(8);
+    atfm localatfm = new atfm(8);
     Iterator localIterator = this.commonLabels.iterator();
     while (localIterator.hasNext())
     {
@@ -296,10 +296,10 @@ public class NearbyPeopleCard
         localInterestTagInfo.tagTextColor = "#4b83d3";
         localInterestTagInfo.tagIconUrl = "";
         localInterestTagInfo.tagName = str;
-        localatfk.jdField_a_of_type_JavaUtilArrayList.add(localInterestTagInfo);
+        localatfm.jdField_a_of_type_JavaUtilArrayList.add(localInterestTagInfo);
       }
     }
-    return localatfk;
+    return localatfm;
   }
   
   public List<String> getQQStoryList()
@@ -365,7 +365,7 @@ public class NearbyPeopleCard
     return localArrayList;
   }
   
-  public atfk getTagInfos(int paramInt)
+  public atfm getTagInfos(int paramInt)
   {
     if ((paramInt < 1) || (paramInt > 11) || (this.interestTags == null) || (this.interestTags.size() == 0)) {
       return null;
@@ -373,27 +373,27 @@ public class NearbyPeopleCard
     Iterator localIterator = this.interestTags.iterator();
     while (localIterator.hasNext())
     {
-      atfk localatfk = (atfk)localIterator.next();
-      if ((localatfk != null) && (localatfk.jdField_a_of_type_Int == paramInt)) {
-        return localatfk;
+      atfm localatfm = (atfm)localIterator.next();
+      if ((localatfm != null) && (localatfm.jdField_a_of_type_Int == paramInt)) {
+        return localatfm;
       }
     }
     return null;
   }
   
-  public void getTagInfos(atfk[] paramArrayOfatfk)
+  public void getTagInfos(atfm[] paramArrayOfatfm)
   {
-    if ((paramArrayOfatfk == null) || (paramArrayOfatfk.length <= 0)) {
+    if ((paramArrayOfatfm == null) || (paramArrayOfatfm.length <= 0)) {
       return;
     }
-    int j = paramArrayOfatfk.length;
+    int j = paramArrayOfatfm.length;
     int i = 0;
     label15:
-    atfk localatfk1;
+    atfm localatfm1;
     if (i < j)
     {
-      localatfk1 = paramArrayOfatfk[i];
-      if (localatfk1 != null) {
+      localatfm1 = paramArrayOfatfm[i];
+      if (localatfm1 != null) {
         break label37;
       }
     }
@@ -403,10 +403,10 @@ public class NearbyPeopleCard
       break label15;
       break;
       label37:
-      atfk localatfk2 = getTagInfos(localatfk1.jdField_a_of_type_Int);
-      localatfk1.jdField_a_of_type_JavaUtilArrayList.clear();
-      if ((localatfk2 != null) && (localatfk2.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        localatfk1.jdField_a_of_type_JavaUtilArrayList.addAll(localatfk2.jdField_a_of_type_JavaUtilArrayList);
+      atfm localatfm2 = getTagInfos(localatfm1.jdField_a_of_type_Int);
+      localatfm1.jdField_a_of_type_JavaUtilArrayList.clear();
+      if ((localatfm2 != null) && (localatfm2.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        localatfm1.jdField_a_of_type_JavaUtilArrayList.addAll(localatfm2.jdField_a_of_type_JavaUtilArrayList);
       }
     }
   }
@@ -419,8 +419,8 @@ public class NearbyPeopleCard
     Iterator localIterator = this.interestTags.iterator();
     while (localIterator.hasNext())
     {
-      atfk localatfk = (atfk)localIterator.next();
-      if ((localatfk.jdField_a_of_type_JavaUtilArrayList != null) && (!localatfk.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      atfm localatfm = (atfm)localIterator.next();
+      if ((localatfm.jdField_a_of_type_JavaUtilArrayList != null) && (!localatfm.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
         return true;
       }
     }
@@ -432,7 +432,7 @@ public class NearbyPeopleCard
     Object localObject = getTagInfos(paramInt);
     if (localObject != null)
     {
-      localObject = ((atfk)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = ((atfm)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject).hasNext()) {
         if (((InterestTagInfo)((Iterator)localObject).next()).tagId == paramLong) {
           return true;
@@ -444,7 +444,7 @@ public class NearbyPeopleCard
   
   public boolean hasQzonePhotoUrl()
   {
-    return (!bbjw.a(this.qzonePicUrl_1)) || (!bbjw.a(this.qzonePicUrl_2)) || (!bbjw.a(this.qzonePicUrl_3));
+    return (!bbkk.a(this.qzonePicUrl_1)) || (!bbkk.a(this.qzonePicUrl_2)) || (!bbkk.a(this.qzonePicUrl_3));
   }
   
   public boolean isAddPicBtnDownloadAppOpen()
@@ -544,7 +544,7 @@ public class NearbyPeopleCard
               if (localObject == null) {
                 break label649;
               }
-              localObject = atfk.a((JSONObject)localObject);
+              localObject = atfm.a((JSONObject)localObject);
               if (localObject == null) {
                 break label649;
               }
@@ -647,20 +647,20 @@ public class NearbyPeopleCard
     super.prewrite();
   }
   
-  public void removeBuisEntry(auut paramauut)
+  public void removeBuisEntry(auuv paramauuv)
   {
-    if (paramauut == null) {}
+    if (paramauuv == null) {}
     for (;;)
     {
       return;
-      int j = paramauut.jdField_a_of_type_Int;
+      int j = paramauuv.jdField_a_of_type_Int;
       if (this.profileBusiEntry == null) {
         getBusiEntrys();
       }
       int i = 0;
       while (i < this.profileBusiEntry.size())
       {
-        if (((auut)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == j)
+        if (((auuv)this.profileBusiEntry.get(i)).jdField_a_of_type_Int == j)
         {
           this.profileBusiEntry.remove(i);
           return;
@@ -670,7 +670,7 @@ public class NearbyPeopleCard
     }
   }
   
-  public void saveBusiEntrys(List<auut> paramList)
+  public void saveBusiEntrys(List<auuv> paramList)
   {
     JSONStringer localJSONStringer = new JSONStringer();
     int i;
@@ -689,9 +689,9 @@ public class NearbyPeopleCard
         int j = 0;
         if (j < i)
         {
-          auut localauut = (auut)paramList.get(j);
-          if ((localauut != null) && (!localauut.a())) {
-            localJSONStringer.object().key("nBusiEntryType").value(localauut.jdField_a_of_type_Int).key("strLogoUrl").value(localauut.jdField_a_of_type_JavaLangString).key("strTitle").value(localauut.b).key("strContent").value(localauut.c).key("strJumpUrl").value(localauut.d).endObject();
+          auuv localauuv = (auuv)paramList.get(j);
+          if ((localauuv != null) && (!localauuv.a())) {
+            localJSONStringer.object().key("nBusiEntryType").value(localauuv.jdField_a_of_type_Int).key("strLogoUrl").value(localauuv.jdField_a_of_type_JavaLangString).key("strTitle").value(localauuv.b).key("strContent").value(localauuv.c).key("strJumpUrl").value(localauuv.d).endObject();
           }
           j += 1;
           continue;
@@ -901,7 +901,7 @@ public class NearbyPeopleCard
               }
               j = localHeadInfo.uint32_video_size.get();
               if (!TextUtils.isEmpty(localPicInfo.d)) {
-                localPicInfo.e = alyq.b(localPicInfo.d);
+                localPicInfo.e = alyp.b(localPicInfo.d);
               }
               if (QLog.isColorLevel()) {
                 QLog.d("Q.nearby_people_card.", 2, "updateDisplayPicInfos, videoUrlSize:" + j);
@@ -1000,7 +1000,7 @@ public class NearbyPeopleCard
                 break;
               }
               localPicInfo.d = localHeadInfo.str_video_url.get();
-              localPicInfo.e = alyq.b(localPicInfo.d);
+              localPicInfo.e = alyp.b(localPicInfo.d);
               localPicInfo.f = localHeadInfo.str_video_id.get();
               if ((paramPicInfo == null) || (paramPicInfo.jdField_a_of_type_Int != localPicInfo.jdField_a_of_type_Int) || (TextUtils.isEmpty(localPicInfo.d))) {
                 break label631;
@@ -1011,7 +1011,7 @@ public class NearbyPeopleCard
               }
               try
               {
-                bbdj.d(paramPicInfo.e, localPicInfo.e);
+                bbdx.d(paramPicInfo.e, localPicInfo.e);
                 i = 1;
                 this.picList.add(localPicInfo);
                 paramArrayOfByte = localPicInfo.a();
@@ -1055,7 +1055,7 @@ public class NearbyPeopleCard
       {
         for (;;)
         {
-          if ((atbw.a) && (QLog.isColorLevel())) {
+          if ((atby.a) && (QLog.isColorLevel())) {
             QLog.d("Q.nearby_people_card.", 2, "rsp_5ea" + paramArrayOfByte.toString());
           }
           this.picInfo = "";
@@ -1183,7 +1183,7 @@ public class NearbyPeopleCard
               if (!((Iterator)localObject1).hasNext()) {
                 break label357;
               }
-              paramList.append(((atfk)((Iterator)localObject1).next()).toString()).append(",");
+              paramList.append(((atfm)((Iterator)localObject1).next()).toString()).append(",");
               continue;
               if (this.interestTags == null) {
                 this.interestTags = new ArrayList(paramList.size());
@@ -1193,7 +1193,7 @@ public class NearbyPeopleCard
                 paramList = paramList.iterator();
                 while (paramList.hasNext())
                 {
-                  localObject1 = atfk.a((appoint_define.InterestTag)paramList.next());
+                  localObject1 = atfm.a((appoint_define.InterestTag)paramList.next());
                   if (localObject1 != null) {
                     this.interestTags.add(localObject1);
                   }
@@ -1208,10 +1208,10 @@ public class NearbyPeopleCard
                 localObject1 = this.interestTags.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
-                  Object localObject2 = (atfk)((Iterator)localObject1).next();
-                  if ((localObject2 != null) && (((atfk)localObject2).jdField_a_of_type_JavaUtilArrayList.size() != 0))
+                  Object localObject2 = (atfm)((Iterator)localObject1).next();
+                  if ((localObject2 != null) && (((atfm)localObject2).jdField_a_of_type_JavaUtilArrayList.size() != 0))
                   {
-                    localObject2 = ((atfk)localObject2).a();
+                    localObject2 = ((atfm)localObject2).a();
                     if (localObject2 != null) {
                       paramList.put(localObject2);
                     }

@@ -1,18 +1,6 @@
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import java.util.ArrayList;
-
-public class tjv
-  extends ssk
+public abstract interface tjv
 {
-  public ArrayList<HotSortVideoEntry> a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  
-  public String toString()
-  {
-    return " GetVideoByHotSortEvent " + super.toString();
-  }
+  public abstract void a(tju paramtju);
 }
 
 

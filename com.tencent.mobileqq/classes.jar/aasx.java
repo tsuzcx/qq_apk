@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aasx
+public class aasx
+  implements aatn
 {
-  public abstract void a();
+  public aasx(ChatSettingActivity paramChatSettingActivity) {}
   
-  public abstract void a(aeja paramaeja);
+  public void a(Activity paramActivity)
+  {
+    bcql.a(this.a, 2, 2131691511, 0).b(this.a.getTitleBarHeight());
+  }
   
-  public abstract void a(ChatMessage paramChatMessage);
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
+  }
   
-  public abstract boolean a();
-  
-  public abstract boolean a(aeja paramaeja);
-  
-  public abstract void b(ChatMessage paramChatMessage);
+  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramInt == 0) {
+      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
+  }
 }
 
 

@@ -1,31 +1,106 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class blcl
-  extends BroadcastReceiver
+public class blcl
 {
-  blcl(blck paramblck) {}
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public static boolean a;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static byte a(String paramString)
   {
-    if (paramIntent.getAction() == null) {}
+    byte b = 0;
+    if (paramString == null) {
+      b = -1;
+    }
     do
     {
-      do
+      for (;;)
       {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.b();
-      } while ((this.a.jdField_a_of_type_Blcm == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.a();
-        this.a.jdField_a_of_type_Blcm.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
+        return b;
+        paramString = a() + "/lib" + paramString + ".so";
+        if (QLog.isColorLevel()) {
+          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
+        }
+        File localFile = new File(paramString);
+        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
+          try
+          {
+            System.load(paramString);
+            if (QLog.isColorLevel())
+            {
+              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
+              return 0;
+            }
+          }
+          catch (UnsatisfiedLinkError paramString)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
+            }
+            return -3;
+          }
+        }
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Blcm.a(1, this.a.jdField_a_of_type_JavaLangString);
+      b = -2;
+    } while (!QLog.isColorLevel());
+    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
+    return -2;
+  }
+  
+  public static String a()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/tk";
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String str1 = a() + "/lib" + paramString + ".so";
+    ??? = new File(str1);
+    if (QLog.isColorLevel()) {
+      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
+    }
+    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
+      for (;;)
+      {
+        synchronized (jdField_a_of_type_ArrayOfByte)
+        {
+          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
+          if (str2 != null) {
+            if (str2.equalsIgnoreCase(aurn.a(str1)))
+            {
+              break label221;
+              return bool1;
+            }
+            else
+            {
+              bool1 = bool2;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
+              bool1 = bool2;
+            }
+          }
+        }
+        label221:
+        boolean bool1 = true;
+      }
+    }
+    return false;
   }
 }
 

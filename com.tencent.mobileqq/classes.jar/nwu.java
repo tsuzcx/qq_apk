@@ -1,24 +1,19 @@
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
 
 public class nwu
-  implements bfos
+  implements bfph
 {
   public nwu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onDismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    ReadInJoySettingActivity.a(this.a, true);
-    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
-    if (!ReadInJoySettingActivity.a(this.a)) {}
-    for (;;)
-    {
-      localSwitch.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      bool = false;
-    }
+    ReadInJoySettingActivity.c(this.a).d(paramInt);
+    ((TextView)this.a.findViewById(2131371651)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
+    onh.a(Integer.toString(paramInt));
+    nol.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

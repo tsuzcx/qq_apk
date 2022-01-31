@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
+import aeyt;
 import aeyv;
-import aeyx;
-import aezg;
-import aezh;
-import ajvk;
-import ajxn;
+import aeze;
+import aezf;
+import ajvi;
+import ajxl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,16 +22,16 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import axqw;
-import bamn;
-import baxt;
-import bbcl;
-import bbcv;
-import bbev;
-import bbfn;
-import bbfs;
+import axqy;
+import banb;
+import bayh;
+import bbcz;
+import bbdj;
+import bbfj;
+import bbgb;
 import bbgg;
-import bcpw;
+import bbgu;
+import bcql;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.ui.MultiVideoEnterPageActivity;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
@@ -46,18 +46,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
-import lnq;
-import lnr;
-import lzj;
+import lnl;
+import lnm;
+import lze;
 import mqq.os.MqqHandler;
-import mqz;
-import muf;
+import mqw;
+import muc;
 
 public class VideoStatusTipsBar
-  implements aeyv, View.OnClickListener
+  implements aeyt, View.OnClickListener
 {
   protected float a;
-  private aeyx jdField_a_of_type_Aeyx;
+  private aeyv jdField_a_of_type_Aeyv;
   Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -70,12 +70,12 @@ public class VideoStatusTipsBar
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   private ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
   
-  public VideoStatusTipsBar(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aeyx paramaeyx, Context paramContext, MqqHandler paramMqqHandler)
+  public VideoStatusTipsBar(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aeyv paramaeyv, Context paramContext, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaLangString = ("VideoStatusTipsBar." + paramSessionInfo.jdField_a_of_type_Int + "." + paramSessionInfo.jdField_a_of_type_JavaLangString + "_" + AudioHelper.b());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Aeyx = paramaeyx;
+    this.jdField_a_of_type_Aeyv = paramaeyv;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -101,8 +101,8 @@ public class VideoStatusTipsBar
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    if (!bbev.d(paramContext.getApplicationContext())) {
-      bcpw.a(paramContext, 2131694543, 0).b(paramContext.getApplicationContext().getResources().getDimensionPixelSize(2131298865));
+    if (!bbfj.d(paramContext.getApplicationContext())) {
+      bcql.a(paramContext, 2131694544, 0).b(paramContext.getApplicationContext().getResources().getDimensionPixelSize(2131298865));
     }
     boolean bool2;
     Object localObject;
@@ -130,7 +130,7 @@ public class VideoStatusTipsBar
           if (paramInt1 != 3000) {
             break label269;
           }
-          ArrayList localArrayList = ((ajvk)paramQQAppInterface.getManager(53)).a(paramString);
+          ArrayList localArrayList = ((ajvi)paramQQAppInterface.getManager(53)).a(paramString);
           if (localArrayList == null) {
             break label370;
           }
@@ -161,7 +161,7 @@ public class VideoStatusTipsBar
       localIntent.putExtra("MultiAVType", paramInt2);
       localIntent.putExtra("flag", bool2);
       if (1 == paramInt1) {
-        localIntent.putExtra("groupInfo", bbfn.a(paramQQAppInterface, paramString));
+        localIntent.putExtra("groupInfo", bbgb.a(paramQQAppInterface, paramString));
       }
       paramContext.startActivity(localIntent);
       return;
@@ -179,13 +179,13 @@ public class VideoStatusTipsBar
       bool1 = bool2;
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
       {
-        mqz.e(false, true);
+        mqw.e(false, true);
         if (QLog.isColorLevel()) {
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "startGroupAudio phone is calling!");
         }
-        String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696014);
-        String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695994);
-        bbcv.a(this.jdField_a_of_type_AndroidContentContext, 230, str2, str1, 2131690596, 2131694793, new aezg(this), null).show();
+        String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131696015);
+        String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131695995);
+        bbdj.a(this.jdField_a_of_type_AndroidContentContext, 230, str2, str1, 2131690596, 2131694794, new aeze(this), null).show();
         bool1 = true;
       }
     }
@@ -196,9 +196,9 @@ public class VideoStatusTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      bbfs.a();
+      bbgg.a();
       this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131558563, null);
-      this.jdField_a_of_type_AndroidViewView.setId(2131370509);
+      this.jdField_a_of_type_AndroidViewView.setId(2131370508);
       this.jdField_a_of_type_AndroidViewView.setPadding(0, (int)(this.jdField_a_of_type_Float * 2.0F), 0, (int)(this.jdField_a_of_type_Float * 2.0F));
       this.jdField_a_of_type_AndroidViewView.setClickable(true);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -209,14 +209,14 @@ public class VideoStatusTipsBar
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362964));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362941));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362943));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362945));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362981));
-      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362978));
-      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362979));
-      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362980));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362963));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362940));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362942));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362944));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362980));
+      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362977));
+      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362978));
+      this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131362979));
       return;
       label252:
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#1f1f1f"));
@@ -228,15 +228,15 @@ public class VideoStatusTipsBar
     return 61;
   }
   
-  public aezh a(int paramInt1, long paramLong1, int paramInt2, boolean paramBoolean, long paramLong2, TextView paramTextView)
+  public aezf a(int paramInt1, long paramLong1, int paramInt2, boolean paramBoolean, long paramLong2, TextView paramTextView)
   {
     Object localObject2 = null;
     String str = null;
     Object localObject1 = null;
     Object localObject4 = null;
     Object localObject3 = null;
-    lnq locallnq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt1, paramLong1);
-    if (locallnq == null)
+    lnl locallnl = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt1, paramLong1);
+    if (locallnl == null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
       {
@@ -263,9 +263,9 @@ public class VideoStatusTipsBar
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
           break label773;
         }
-        muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695850));
+        muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695851));
         label167:
-        paramTextView = new aezh();
+        paramTextView = new aezf();
         paramTextView.b = ((String)localObject2);
         paramTextView.jdField_a_of_type_JavaLangString = ((String)localObject1);
         return paramTextView;
@@ -284,9 +284,9 @@ public class VideoStatusTipsBar
         localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689954);
       }
     }
-    if (locallnq.jdField_a_of_type_Boolean)
+    if (locallnl.jdField_a_of_type_Boolean)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(locallnq.jdField_a_of_type_Long);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(locallnl.jdField_a_of_type_Long);
       if (localObject1 == null) {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
         {
@@ -335,13 +335,13 @@ public class VideoStatusTipsBar
             localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131689918);
           }
         }
-        localObject2 = Long.toString(locallnq.jdField_a_of_type_Long);
+        localObject2 = Long.toString(locallnl.jdField_a_of_type_Long);
         localObject3 = Long.toString(paramLong1);
         paramInt1 = 2;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {
           paramInt1 = 1;
         }
-        localObject3 = bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, (String)localObject3, paramInt1, 0);
+        localObject3 = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2, (String)localObject3, paramInt1, 0);
         if (paramLong2 == 1L)
         {
           localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689964);
@@ -386,7 +386,7 @@ public class VideoStatusTipsBar
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
           break label167;
         }
-        muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695883), paramInt2);
+        muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695884), paramInt2);
         break label167;
         label806:
         continue;
@@ -396,7 +396,7 @@ public class VideoStatusTipsBar
     }
   }
   
-  public aezh a(long paramLong1, long paramLong2, int paramInt1, boolean paramBoolean, int paramInt2, long paramLong3, TextView paramTextView, ImageView paramImageView)
+  public aezf a(long paramLong1, long paramLong2, int paramInt1, boolean paramBoolean, int paramInt2, long paramLong3, TextView paramTextView, ImageView paramImageView)
   {
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     Object localObject1 = Long.toString(paramLong1);
@@ -407,7 +407,7 @@ public class VideoStatusTipsBar
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {
         i = 1;
       }
-      localObject2 = bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, (String)localObject2, i, 0);
+      localObject2 = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, (String)localObject2, i, 0);
       if (paramInt2 == 1) {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
           localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689966);
@@ -422,10 +422,10 @@ public class VideoStatusTipsBar
       {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
         {
-          muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131692969));
+          muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131692970));
           label150:
           paramImageView.setVisibility(0);
-          paramImageView = new aezh();
+          paramImageView = new aezf();
           paramImageView.b = paramTextView;
           paramImageView.jdField_a_of_type_JavaLangString = ((String)localObject1);
           return paramImageView;
@@ -491,7 +491,7 @@ public class VideoStatusTipsBar
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
             break label150;
           }
-          muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131692970), paramInt1);
+          muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131692971), paramInt1);
           break label150;
         }
         localObject1 = null;
@@ -503,7 +503,7 @@ public class VideoStatusTipsBar
   
   protected Drawable a(String paramString)
   {
-    return baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (byte)4);
+    return bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, (byte)4);
   }
   
   public View a(Object... paramVarArgs)
@@ -578,14 +578,14 @@ public class VideoStatusTipsBar
         if (this.jdField_a_of_type_AndroidViewView == null)
         {
           this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131558563, null);
-          this.jdField_a_of_type_AndroidViewView.setId(2131370509);
+          this.jdField_a_of_type_AndroidViewView.setId(2131370508);
           this.jdField_a_of_type_AndroidViewView.setPadding(0, (int)(2.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float));
           this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839199);
           this.jdField_a_of_type_AndroidViewView.setClickable(true);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362964));
-          this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362981));
+          this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362963));
+          this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362980));
           localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367708);
-          localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377133);
+          localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377135);
           label440:
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
           this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -599,19 +599,19 @@ public class VideoStatusTipsBar
         String str;
         if (bool1)
         {
-          muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695672));
+          muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131695673));
           str = "";
           if (!bool1) {
             break label842;
           }
           paramString2 = str;
           if (i == 1) {
-            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695672);
+            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695673);
           }
           if (i != 2) {
             break label990;
           }
-          paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696225);
+          paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696226);
           label560:
           a(null, paramString2, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166862), paramString1, 0);
           QLog.i(this.jdField_a_of_type_JavaLangString, 1, "refreshVideoStatus info=" + paramString2 + ", peerUin=" + paramString1);
@@ -648,17 +648,17 @@ public class VideoStatusTipsBar
           i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e();
           break;
           localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367708);
-          localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377133);
+          localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377135);
           break label440;
           if (!bool2) {
             break label507;
           }
           if (paramInt == 1)
           {
-            muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131690271), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b()));
+            muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131690271), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b()));
             break label507;
           }
-          muf.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131690271));
+          muc.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getString(2131690271));
           break label507;
           paramString2 = str;
           if (!bool2) {
@@ -666,19 +666,19 @@ public class VideoStatusTipsBar
           }
           if (bool3)
           {
-            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696266);
+            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696267);
             break label560;
           }
           if (i == 1)
           {
-            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695681);
+            paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695682);
             break label560;
           }
           paramString2 = str;
           if (i != 2) {
             break label990;
           }
-          paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696240);
+          paramString2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696241);
           break label560;
           this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-14737633);
           localImageView.setImageResource(2130839190);
@@ -689,12 +689,12 @@ public class VideoStatusTipsBar
           break label694;
           localTextView.setVisibility(8);
           return;
-        } while (b() != this.jdField_a_of_type_Aeyx.a());
+        } while (b() != this.jdField_a_of_type_Aeyv.a());
         label921:
         label942:
         label948:
         label956:
-        this.jdField_a_of_type_Aeyx.a();
+        this.jdField_a_of_type_Aeyv.a();
         return;
       }
       catch (Exception paramString2)
@@ -730,7 +730,7 @@ public class VideoStatusTipsBar
       else {
         for (;;)
         {
-          if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (!((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+          if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (!((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
             break label559;
           }
           paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
@@ -738,10 +738,10 @@ public class VideoStatusTipsBar
           {
             i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs);
             if (i == 1) {
-              axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800478C", "0X800478C", 0, 0, "", "", "", "");
+              axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800478C", "0X800478C", 0, 0, "", "", "", "");
             }
             if (i == 2) {
-              axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004788", "0X8004788", 0, 0, "", "", "", "");
+              axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004788", "0X8004788", 0, 0, "", "", "", "");
             }
           }
           a(0, paramVarArgs, "");
@@ -802,14 +802,14 @@ public class VideoStatusTipsBar
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1)) {}
     for (;;)
     {
-      if (b() == this.jdField_a_of_type_Aeyx.a()) {
-        this.jdField_a_of_type_Aeyx.a();
+      if (b() == this.jdField_a_of_type_Aeyv.a()) {
+        this.jdField_a_of_type_Aeyv.a();
       }
       return;
       try
       {
         l3 = Long.parseLong(paramString2);
-        k = muf.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        k = muc.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(k, l3);
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l3);
         i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l3);
@@ -905,7 +905,7 @@ public class VideoStatusTipsBar
         {
           for (;;)
           {
-            ajxn localajxn;
+            ajxl localajxl;
             float f;
             l2 = l1;
             continue;
@@ -921,7 +921,7 @@ public class VideoStatusTipsBar
           QLog.w(this.jdField_a_of_type_JavaLangString, 1, "refreshMultiVideoStatus, 显示跑马灯, memberNum[" + l1 + "], avtype[" + paramInt2 + "], isChating[" + bool3 + "], step[" + i + "]");
         }
         f();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377133);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377135);
         localImageView1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367708);
         localImageView2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367707);
         if (bool3)
@@ -939,7 +939,7 @@ public class VideoStatusTipsBar
             break label1337;
           }
           localImageView2.setImageDrawable(null);
-          axqw.b(null, "dc00899", "Grp_video", "", "notice", "exp_aio", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "" + bamn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), "", "");
+          axqy.b(null, "dc00899", "Grp_video", "", "notice", "exp_aio", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "" + banb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), "", "");
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
           if ((localObject != null) && (((Vector)localObject).size() != 0)) {
             break label1045;
@@ -994,7 +994,7 @@ public class VideoStatusTipsBar
             this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setVisibility(0);
             this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setVisibility(8);
             this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setVisibility(8);
-            this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnq)((Vector)localObject).get(0)).jdField_a_of_type_Long)));
+            this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnl)((Vector)localObject).get(0)).jdField_a_of_type_Long)));
             if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
               break label2324;
             }
@@ -1024,15 +1024,15 @@ public class VideoStatusTipsBar
               this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setVisibility(0);
               this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setVisibility(0);
               this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setVisibility(8);
-              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnq)((Vector)localObject).get(0)).jdField_a_of_type_Long)));
-              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setImageDrawable(a(String.valueOf(((lnq)((Vector)localObject).get(1)).jdField_a_of_type_Long)));
+              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnl)((Vector)localObject).get(0)).jdField_a_of_type_Long)));
+              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setImageDrawable(a(String.valueOf(((lnl)((Vector)localObject).get(1)).jdField_a_of_type_Long)));
               break;
             }
             paramInt1 = 0;
             while (paramInt1 < this.jdField_a_of_type_ArrayOfAndroidWidgetImageView.length)
             {
               this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setVisibility(0);
-              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setImageDrawable(a(String.valueOf(((lnq)((Vector)localObject).get(paramInt1)).jdField_a_of_type_Long)));
+              this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setImageDrawable(a(String.valueOf(((lnl)((Vector)localObject).get(paramInt1)).jdField_a_of_type_Long)));
               paramInt1 += 1;
             }
             break;
@@ -1043,7 +1043,7 @@ public class VideoStatusTipsBar
                 break label2349;
               }
               paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(k, l3);
-              if ((paramString1 != null) && (paramString1.size() == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equalsIgnoreCase(String.valueOf(((lnq)paramString1.get(0)).jdField_a_of_type_Long))))
+              if ((paramString1 != null) && (paramString1.size() == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equalsIgnoreCase(String.valueOf(((lnl)paramString1.get(0)).jdField_a_of_type_Long))))
               {
                 bool1 = true;
                 if ((paramString1 != null) && (paramString1.size() != 0) && (!bool1)) {
@@ -1053,12 +1053,12 @@ public class VideoStatusTipsBar
                   break label1557;
                 }
               }
-              for (paramInt1 = 2130848782;; paramInt1 = 2130848781)
+              for (paramInt1 = 2130848788;; paramInt1 = 2130848787)
               {
                 localImageView2.setImageResource(paramInt1);
                 if (bool1)
                 {
-                  paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372188);
+                  paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372190);
                   if (paramString1 != null) {
                     paramString1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131689961));
                   }
@@ -1073,26 +1073,26 @@ public class VideoStatusTipsBar
               localImageView2.setImageBitmap(null);
               this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
               this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-              localajxn = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+              localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
               localObject = new ArrayList(3);
               paramInt1 = 0;
               label1613:
               if (paramInt1 < paramString1.size())
               {
-                if (localajxn.b(String.valueOf(((lnq)paramString1.get(paramInt1)).jdField_a_of_type_Long))) {
+                if (localajxl.b(String.valueOf(((lnl)paramString1.get(paramInt1)).jdField_a_of_type_Long))) {
                   ((ArrayList)localObject).add(paramString1.get(paramInt1));
                 }
                 if (((ArrayList)localObject).size() != 3) {}
               }
               else
               {
-                localajxn = (ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+                localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
                 if (((ArrayList)localObject).size() != 0) {
                   break label1948;
                 }
-                paramLong = ((lnq)paramString1.get(0)).jdField_a_of_type_Long;
+                paramLong = ((lnl)paramString1.get(0)).jdField_a_of_type_Long;
                 paramString1 = String.valueOf(paramLong);
-                if (!localajxn.b(paramString1)) {
+                if (!localajxl.b(paramString1)) {
                   break label2178;
                 }
                 if (((ArrayList)localObject).size() != 1) {
@@ -1101,7 +1101,7 @@ public class VideoStatusTipsBar
                 this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setVisibility(0);
                 this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1].setVisibility(8);
                 this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[2].setVisibility(8);
-                this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnq)((ArrayList)localObject).get(0)).jdField_a_of_type_Long)));
+                this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnl)((ArrayList)localObject).get(0)).jdField_a_of_type_Long)));
               }
               for (;;)
               {
@@ -1109,22 +1109,22 @@ public class VideoStatusTipsBar
                 if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {
                   paramInt1 = 1;
                 }
-                paramString2 = bbcl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramInt1, 0);
+                paramString2 = bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramInt1, 0);
                 paramString1 = null;
                 if (l1 != 1L) {
                   break label2212;
                 }
                 paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689965);
-                localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372188);
+                localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372190);
                 if (localObject != null)
                 {
                   f = this.jdField_a_of_type_AndroidViewView.getResources().getDimensionPixelSize(2131297012);
-                  ((TextView)localObject).setText(new StringBuilder(muf.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramString2.toString(), (TextView)localObject, f)).append(paramString1));
+                  ((TextView)localObject).setText(new StringBuilder(muc.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramString2.toString(), (TextView)localObject, f)).append(paramString1));
                 }
                 if (localTextView.getVisibility() == 0) {
                   localTextView.setVisibility(8);
                 }
-                paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370515);
+                paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370514);
                 if (paramString1 == null) {
                   break;
                 }
@@ -1132,15 +1132,15 @@ public class VideoStatusTipsBar
                 break;
                 paramInt1 += 1;
                 break label1613;
-                paramLong = ((lnq)((ArrayList)localObject).get(0)).jdField_a_of_type_Long;
+                paramLong = ((lnl)((ArrayList)localObject).get(0)).jdField_a_of_type_Long;
                 break label1698;
                 if (((ArrayList)localObject).size() == 2)
                 {
                   this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setVisibility(0);
                   this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1].setVisibility(0);
                   this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[2].setVisibility(8);
-                  this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnq)((ArrayList)localObject).get(0)).jdField_a_of_type_Long)));
-                  this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1].setImageDrawable(a(String.valueOf(((lnq)((ArrayList)localObject).get(1)).jdField_a_of_type_Long)));
+                  this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[0].setImageDrawable(a(String.valueOf(((lnl)((ArrayList)localObject).get(0)).jdField_a_of_type_Long)));
+                  this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[1].setImageDrawable(a(String.valueOf(((lnl)((ArrayList)localObject).get(1)).jdField_a_of_type_Long)));
                 }
                 else if (((ArrayList)localObject).size() == 3)
                 {
@@ -1148,7 +1148,7 @@ public class VideoStatusTipsBar
                   while (paramInt1 < this.jdField_b_of_type_ArrayOfAndroidWidgetImageView.length)
                   {
                     this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setVisibility(0);
-                    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setImageDrawable(a(String.valueOf(((lnq)((ArrayList)localObject).get(paramInt1)).jdField_a_of_type_Long)));
+                    this.jdField_b_of_type_ArrayOfAndroidWidgetImageView[paramInt1].setImageDrawable(a(String.valueOf(((lnl)((ArrayList)localObject).get(paramInt1)).jdField_a_of_type_Long)));
                     paramInt1 += 1;
                   }
                 }
@@ -1161,7 +1161,7 @@ public class VideoStatusTipsBar
                 }
               }
               if (bool2) {}
-              for (paramInt1 = 2130848782;; paramInt1 = 2130848781)
+              for (paramInt1 = 2130848788;; paramInt1 = 2130848787)
               {
                 localImageView2.setImageResource(paramInt1);
                 this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -1183,7 +1183,7 @@ public class VideoStatusTipsBar
             label1965:
             if (bool2) {}
             label2212:
-            for (paramInt1 = 2130848782;; paramInt1 = 2130848781)
+            for (paramInt1 = 2130848788;; paramInt1 = 2130848787)
             {
               localImageView2.setImageResource(paramInt1);
               this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -1209,12 +1209,12 @@ public class VideoStatusTipsBar
   
   public void a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
   {
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377132);
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377134);
     localLinearLayout.removeAllViews();
     if (paramString1 != null)
     {
       localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-      localTextView.setId(2131370515);
+      localTextView.setId(2131370514);
       float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297234);
       paramString1 = a(this.jdField_a_of_type_AndroidContentContext, paramString1, localTextView, f);
       localTextView.setTextSize(14.0F);
@@ -1247,13 +1247,13 @@ public class VideoStatusTipsBar
           break label372;
         }
         if (paramInt2 > 99) {
-          paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695918);
+          paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695919);
         }
       }
       else
       {
         localTextView.setText(paramString1);
-        localTextView.setId(2131372188);
+        localTextView.setId(2131372190);
         if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
           localTextView.setTextColor(Color.parseColor("#A8A8A8"));
         }
@@ -1268,13 +1268,13 @@ public class VideoStatusTipsBar
         int i;
         paramInt1 = 0;
         continue;
-        paramString1 = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695917), new Object[] { Integer.valueOf(paramInt2) });
+        paramString1 = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131695918), new Object[] { Integer.valueOf(paramInt2) });
         continue;
         label372:
         paramString1 = paramString2;
         if (paramInt1 == 2)
         {
-          paramString1 = paramString2.replace(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720358), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720359));
+          paramString1 = paramString2.replace(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720369), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720370));
           continue;
           label413:
           paramInt2 = 0;
@@ -1289,10 +1289,10 @@ public class VideoStatusTipsBar
     if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))) {}
     for (boolean bool = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).isResume();; bool = false)
     {
-      if ((paramBoolean) && (this.jdField_a_of_type_Aeyx != null)) {
-        this.jdField_a_of_type_Aeyx.a(this, new Object[0]);
+      if ((paramBoolean) && (this.jdField_a_of_type_Aeyv != null)) {
+        this.jdField_a_of_type_Aeyv.a(this, new Object[0]);
       }
-      lzj.a(this.jdField_a_of_type_AndroidViewView, paramBoolean, bool);
+      lze.a(this.jdField_a_of_type_AndroidViewView, paramBoolean, bool);
       return;
     }
   }
@@ -1320,16 +1320,16 @@ public class VideoStatusTipsBar
   
   void d()
   {
-    int j = muf.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    int j = muc.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     Object localObject = new HashMap();
-    lnr locallnr = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
+    lnm locallnm = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l);
     int i;
     boolean bool;
-    if (locallnr != null)
+    if (locallnm != null)
     {
-      i = locallnr.b;
-      if ((i == 2) && (locallnr.jdField_c_of_type_Int == 2) && (locallnr.d == 4))
+      i = locallnm.b;
+      if ((i == 2) && (locallnm.jdField_c_of_type_Int == 2) && (locallnm.d == 4))
       {
         bool = true;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(9, l, i);
@@ -1338,7 +1338,7 @@ public class VideoStatusTipsBar
         {
           ((Map)localObject).put("Fromwhere", "SmallScreen");
           if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-            axqw.b(null, "dc00899", "Grp_video", "", "notice", "Clk_video", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "" + bamn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), "2", "");
+            axqy.b(null, "dc00899", "Grp_video", "", "notice", "Clk_video", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "" + banb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), "2", "");
           }
         }
         if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(j, l)) {
@@ -1360,7 +1360,7 @@ public class VideoStatusTipsBar
     label542:
     for (localObject = "Cover_back";; localObject = "Clk_discuss_floating")
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", (String)localObject, 0, 0, "", "", "", "");
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", (String)localObject, 0, 0, "", "", "", "");
       return;
       bool = false;
       break;
@@ -1377,10 +1377,10 @@ public class VideoStatusTipsBar
       }
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l) == 10)
       {
-        axqw.b(null, "CliOper", "", "", "0X8005933", "0X8005933", 0, 0, "", "", "", "");
+        axqy.b(null, "CliOper", "", "", "0X8005933", "0X8005933", 0, 0, "", "", "", "");
         break label288;
       }
-      axqw.b(null, "CliOper", "", "", "0X80046DA", "0X80046DA", 0, 0, "", "", "", "");
+      axqy.b(null, "CliOper", "", "", "0X80046DA", "0X80046DA", 0, 0, "", "", "", "");
       break label288;
     }
   }
@@ -1394,16 +1394,16 @@ public class VideoStatusTipsBar
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == 1)
       {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800478D", "0X800478D", 0, 0, "", "", "", "");
+        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800478D", "0X800478D", 0, 0, "", "", "", "");
         bool = true;
       }
     }
     for (;;)
     {
       ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, bool, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, false, true, null, "from_internal");
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_full", 0, 0, "2", "", "", "");
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_full", 0, 0, "2", "", "", "");
       return;
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004789", "0X8004789", 0, 0, "", "", "", "");
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004789", "0X8004789", 0, 0, "", "", "", "");
       bool = false;
     }
   }

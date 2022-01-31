@@ -1,26 +1,23 @@
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
 public class ayaa
+  extends Handler
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private WeakReference<axzs> a;
   
-  public ayaa(axzz paramaxzz, axwe paramaxwe)
+  public ayaa(axzs paramaxzs)
   {
-    if (paramaxwe == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramaxwe.a("c");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = paramaxwe.a("r");
-    }
-    this.b = axas.a(axuy.a(paramaxwe), false);
+    this.a = new WeakReference(paramaxzs);
   }
   
-  public ayaa(axzz paramaxzz, String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    if ((axzs)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130844582);
+    }
   }
 }
 

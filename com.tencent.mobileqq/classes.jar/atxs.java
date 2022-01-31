@@ -1,16 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.AbsListView;
 
-public class atxs
-  implements ValueAnimator.AnimatorUpdateListener
+class atxs
+  implements bfos
 {
-  public atxs(AutoScrollImageView paramAutoScrollImageView) {}
+  private atxs(atxp paramatxp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    bfos localbfos = this.a.jdField_a_of_type_Atxo.a();
+    if (localbfos != null) {
+      localbfos.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    int j = 0;
+    int i;
+    Object localObject;
+    if ((this.a.jdField_a_of_type_Int == 2) && (paramInt != 2))
+    {
+      i = 1;
+      if (i == 0) {
+        break label136;
+      }
+      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      if (!this.a.b) {
+        break label129;
+      }
+      i = j;
+      label66:
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
+      this.a.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = paramInt;
+      localObject = this.a.jdField_a_of_type_Atxo.a();
+      if (localObject != null) {
+        ((bfos)localObject).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      i = 0;
+      break;
+      label129:
+      i = 550;
+      break label66;
+      label136:
+      if (paramInt == 2)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+    }
   }
 }
 

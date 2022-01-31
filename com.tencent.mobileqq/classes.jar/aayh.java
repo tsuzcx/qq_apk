@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aayh
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
   public aayh(DialogActivity paramDialogActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    ayfx.a(this.a.app, this.a);
     this.a.finish();
+    axqy.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
   }
 }
 

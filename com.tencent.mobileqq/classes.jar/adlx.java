@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class adlx
-  implements DialogInterface.OnClickListener
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  adlx(adlu paramadlu) {}
+  adlx(adlw paramadlw1, adlw paramadlw2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
 }
 
 

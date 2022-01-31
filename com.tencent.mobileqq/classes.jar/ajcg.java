@@ -1,11 +1,39 @@
-public class ajcg
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+
+class ajcg
+  extends BroadcastReceiver
 {
-  public static String a(boolean paramBoolean)
+  ajcg(ajcf paramajcf) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean) {
-      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
-    }
-    return "ltgame_redpkg_plankinfo.check_game";
+    if (ajcf.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+        {
+          if (ajcf.a(this.a))
+          {
+            ajcf.a(this.a).runRenderTask(ajcf.a(this.a));
+            return;
+          }
+          ajcf.a(this.a);
+          return;
+        }
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!ajcf.a(this.a)) {
+        break;
+      }
+    } while (ajcf.a(this.a) == null);
+    ajcf.a(this.a).runRenderTask(ajcf.b(this.a));
+    return;
+    ajcf.b(this.a);
   }
 }
 

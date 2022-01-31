@@ -4,12 +4,12 @@ import android.view.View.OnClickListener;
 class vdx
   implements View.OnClickListener
 {
-  vdx(vdu paramvdu) {}
+  vdx(vdw paramvdw, vdv paramvdv, vve paramvve) {}
   
   public void onClick(View paramView)
   {
-    if (vdu.a(this.a) != null) {
-      vdu.a(this.a).h();
+    if (this.jdField_a_of_type_Vdv != null) {
+      this.jdField_a_of_type_Vdv.a(this.jdField_a_of_type_Vve);
     }
   }
 }

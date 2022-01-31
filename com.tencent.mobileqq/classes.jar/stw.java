@@ -1,14 +1,8 @@
-public class stw
+public abstract interface stw
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c;
+  public abstract int a(String paramString1, String paramString2, long paramLong);
   
-  public void a() {}
+  public abstract void a(stk paramstk);
 }
 
 

@@ -1,8 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class atmy
+  implements View.OnClickListener
 {
-  public int a;
+  atmy(atlw paramatlw) {}
   
-  private atmy(atlu paramatlu) {}
+  public void onClick(View paramView)
+  {
+    this.a.i(paramView);
+  }
 }
 
 

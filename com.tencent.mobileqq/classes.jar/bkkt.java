@@ -1,54 +1,142 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bkkt
-  extends bklc<bkkm, bkkm>
+  extends BaseAdapter
+  implements bfpt, bkkw
 {
-  private int a;
-  public WeakReference<Activity> a;
+  private int jdField_a_of_type_Int;
+  private List<bkkv> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public bkkt(@NonNull Activity paramActivity, int paramInt)
+  public bkkt(@NonNull List<bkkv> paramList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramList.isEmpty()) {
+      ved.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
+    }
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    a();
+    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((bkkv)paramList.next()).a(this);
+    }
   }
   
-  protected void a(JobContext paramJobContext, bkkm parambkkm)
+  @NonNull
+  private bkku a(int paramInt)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int j;
+    for (int i = 0; localIterator.hasNext(); i = j)
     {
-      veg.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
-      return;
-    }
-    Object localObject = parambkkm.jdField_a_of_type_Bkks.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!parambkkm.jdField_a_of_type_Bkks.c)
-    {
-      paramJobContext = (JobContext)localObject;
-      if (parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_Boolean) {
-        paramJobContext = parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_JavaLangString;
+      bkkv localbkkv = (bkkv)localIterator.next();
+      j = localbkkv.a() + i;
+      if (paramInt <= j - 1) {
+        return new bkku(localbkkv, paramInt - i);
       }
     }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
+    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((bkkv)localIterator.next()).a() + i) {}
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  @Nullable
+  public bkkv a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      parambkkm.jdField_a_of_type_Bkku = new bkku(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      parambkkm.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(parambkkm);
-      return;
+      bkkv localbkkv = (bkkv)localIterator.next();
+      if (localbkkv.a) {
+        return localbkkv;
+      }
     }
+    return null;
+  }
+  
+  public void a(bkkv parambkkv)
+  {
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    bkku localbkku = a(paramInt);
+    return localbkku.jdField_a_of_type_Bkkv.a(localbkku.jdField_a_of_type_Int);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = a(paramInt);
+    bkkv localbkkv = ((bkku)localObject).jdField_a_of_type_Bkkv;
+    paramInt = ((bkku)localObject).jdField_a_of_type_Int;
+    localObject = paramView;
+    if (paramView == null) {
+      localObject = localbkkv.a(paramInt, paramViewGroup);
+    }
+    localbkkv.a(paramInt, (View)localObject);
+    return localObject;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 5;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    a();
+    super.notifyDataSetChanged();
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramView = a(paramInt);
+    paramAdapterView = paramView.jdField_a_of_type_Bkkv;
+    if (!paramAdapterView.c) {}
+    do
+    {
+      return;
+      paramAdapterView.a(paramView.jdField_a_of_type_Int);
+    } while ((paramAdapterView instanceof bkks));
+    paramAdapterView.b(true);
+    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramView.hasNext())
+    {
+      bkkv localbkkv = (bkkv)paramView.next();
+      if (localbkkv != paramAdapterView)
+      {
+        localbkkv.b(false);
+        localbkkv.a(false);
+      }
+    }
+    notifyDataSetChanged();
   }
 }
 

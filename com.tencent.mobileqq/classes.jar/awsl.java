@@ -1,58 +1,44 @@
-import android.text.TextUtils;
+import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import java.util.Set;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awsl
-  extends awqq
+class awsl
+  implements View.OnClickListener
 {
-  public awsl(baxk parambaxk, awqu paramawqu, Set<String> paramSet)
-  {
-    super(parambaxk, paramawqu, paramSet);
-  }
+  awsl(awsc paramawsc, Context paramContext, awph paramawph) {}
   
-  public void b(awog paramawog, awwp paramawwp)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    super.b(paramawog, paramawwp);
-    if (paramawwp.c() != null)
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    awwa.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awph.a.jdField_a_of_type_JavaLangString);
+    awix localawix;
+    JSONObject localJSONObject;
+    if (awiw.b.containsKey(this.jdField_a_of_type_Awph))
     {
-      paramawog = (awnc)paramawog;
-      if ((this.a == null) || (!this.a.contains(paramawog.b()))) {
-        break label144;
-      }
+      localawix = (awix)awiw.b.get(this.jdField_a_of_type_Awph);
+      localJSONObject = new JSONObject();
     }
-    label138:
-    label144:
-    for (int i = 1;; i = 0)
+    try
     {
-      if (!TextUtils.isEmpty(paramawog.c()))
-      {
-        paramawwp.c().setText(paramawog.c());
-        i = 1;
-      }
-      paramawog = paramawwp.c();
-      int j;
-      if (i != 0)
-      {
-        j = 0;
-        paramawog.setVisibility(j);
-        paramawog = paramawwp.a();
-        if (i != 0) {
-          break label138;
-        }
-      }
+      localJSONObject.put("project", awsq.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localawix.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawix.jdField_a_of_type_Long + "").obj2(localawix.b).ver1(localawix.jdField_a_of_type_JavaLangString).ver2(awsq.a(this.jdField_a_of_type_Awph.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        paramawog.setClickable(bool);
-        if (paramawwp.a() != null) {
-          paramawwp.a().setVisibility(8);
-        }
-        return;
-        j = 8;
-        break;
-        bool = false;
+        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
       }
     }
   }

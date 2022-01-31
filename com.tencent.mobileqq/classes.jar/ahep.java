@@ -1,28 +1,19 @@
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class ahep
-  implements OnCompositionLoadedListener
+  implements View.OnLongClickListener
 {
   public ahep(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public boolean onLongClick(View paramView)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
-    {
-      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
-      agxc.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).show();
     }
+    return true;
   }
 }
 

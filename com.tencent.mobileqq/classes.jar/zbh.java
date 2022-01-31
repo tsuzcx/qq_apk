@@ -1,52 +1,50 @@
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class zbh
-  implements INetInfoHandler
+  extends BroadcastReceiver
 {
-  public zbh(GdtVideoCommonView paramGdtVideoCommonView) {}
+  private zbh(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void onNetMobile2None()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2None()");
-    GdtVideoCommonView.a(this.a, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
-    GdtVideoCommonView.a(this.a, 2);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    GdtVideoCommonView.a(this.a, 1);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    GdtVideoCommonView.a(this.a, 2);
-    if ((this.a.a) && (this.a.a()))
+    boolean bool = true;
+    if (GdtVideoCommonView.d(this.a))
     {
-      GdtVideoCommonView.d(this.a);
-      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
+      GdtVideoCommonView.c(this.a, false);
+      yxp.a("GdtVideoCommonView", "SilentModeReceiver first auto called! so skip!");
     }
-  }
-  
-  public void onNetWifi2None()
-  {
-    yxs.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2None()");
-    GdtVideoCommonView.b(this.a, true);
-    GdtVideoCommonView.a(this.a, 0);
+    while ((GdtVideoCommonView.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
+      return;
+    }
+    int i = GdtVideoCommonView.a(this.a).getRingerMode();
+    int j = GdtVideoCommonView.a(this.a).getStreamVolume(3);
+    yxp.a("GdtVideoCommonView", "system context mode: " + i);
+    switch (i)
+    {
+    default: 
+      this.a.b = true;
+      GdtVideoCommonView.d(this.a, false);
+      GdtVideoCommonView.a(this.a).setOutputMute(true);
+      GdtVideoCommonView.a(this.a, j, this.a.a, false);
+      return;
+    }
+    this.a.b = false;
+    if (j > 0) {
+      GdtVideoCommonView.d(this.a, true);
+    }
+    paramContext = GdtVideoCommonView.a(this.a);
+    if (!GdtVideoCommonView.e(this.a)) {}
+    for (;;)
+    {
+      paramContext.setOutputMute(bool);
+      break;
+      bool = false;
+    }
   }
 }
 

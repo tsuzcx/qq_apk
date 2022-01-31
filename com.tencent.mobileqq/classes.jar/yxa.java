@@ -1,36 +1,30 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import java.lang.ref.WeakReference;
 
-class yxa
-  implements wxw
+public class yxa
+  implements View.OnClickListener
 {
-  yxa(ywz paramywz, ywn paramywn, String paramString, String[] paramArrayOfString, wxu paramwxu) {}
+  public yxa(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    String str1 = paramBundle.getString("phone");
-    String str2 = paramBundle.getString("name");
-    String str3 = paramBundle.getString("city");
-    String str4 = paramBundle.getString("area");
-    paramBundle = new JSONObject();
-    try
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      paramBundle.put("phone", str1);
-      paramBundle.put("name", str2);
-      paramBundle.put("city", str3);
-      paramBundle.put("area", str4);
-      paramBundle = paramBundle.toString();
-      yxs.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Ywn + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
-      this.jdField_a_of_type_Ywn.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      this.jdField_a_of_type_Wxu.b();
-      return;
+      paramView = "loading ad data";
+      ysp localysp = new ysp();
+      localysp.a = GdtInterstitialFragmentForJS.a(this.a);
+      GdtInterstitialFragmentForJS.a(this.a, new ysn(localysp, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
+      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        yxs.d("GdtGetUserInfoHandler", localException.toString());
-      }
+      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      return;
+      paramView = "load ad data error";
     }
   }
 }

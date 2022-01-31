@@ -1,8 +1,17 @@
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class agff
+  implements View.OnTouchListener
 {
-  public TextView a;
+  agff(agfe paramagfe) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    agfe.a(this.a, paramView);
+    return false;
+  }
 }
 
 

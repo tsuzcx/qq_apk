@@ -4,20 +4,20 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URLEncoder;
-import onk;
-import ryi;
+import onh;
+import ryf;
 
 public class BridgeModule$sheetItemClickProcessor$1
   implements Runnable
 {
-  public BridgeModule$sheetItemClickProcessor$1(ryi paramryi, String paramString) {}
+  public BridgeModule$sheetItemClickProcessor$1(ryf paramryf, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      localObject = (QQAppInterface)onk.a();
+      localObject = (QQAppInterface)onh.a();
       if (localObject == null) {
         break label87;
       }
@@ -34,7 +34,7 @@ public class BridgeModule$sheetItemClickProcessor$1
       }
     }
     if (BaseActivity.sTopActivity != null) {
-      onk.a(BaseActivity.sTopActivity, (String)localObject);
+      onh.a(BaseActivity.sTopActivity, (String)localObject);
     }
   }
 }

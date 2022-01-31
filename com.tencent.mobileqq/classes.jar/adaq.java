@@ -1,21 +1,19 @@
-import android.support.annotation.IntRange;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public abstract interface adaq
+class adaq
+  implements aybj
 {
-  @IntRange(from=0L, to=3L)
-  public abstract int a();
+  adaq(adap paramadap) {}
   
-  public abstract void a();
-  
-  public abstract void a(adar paramadar);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a()
+  {
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - baxn.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Aycm.b / 2.0F);
+    int k = (int)(this.a.a.b - baxn.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Aycm.b / 2.0F);
+    aybr localaybr = new aybr(new aybi[] { new aybm(450, i, j, i, k), new aybm(450, i, k, i, j) });
+    localaybr.a = true;
+    this.a.a.jdField_a_of_type_Aycm.a(new aybi[] { localaybr });
+  }
 }
 
 

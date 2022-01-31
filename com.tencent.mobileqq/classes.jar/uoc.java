@@ -1,43 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.view.View;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 public class uoc
-  extends SimpleJob<Void>
+  implements bctk
 {
-  public uoc(QQStoryMainController paramQQStoryMainController, String paramString)
-  {
-    super(paramString);
-  }
+  public uoc(QQStoryMainController paramQQStoryMainController) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(View paramView, int paramInt)
   {
-    vyi.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    ((suw)tdc.a(6)).c();
-    uee.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
-    ((sti)tdc.a(4)).c();
-    ayvn.g();
-    ((tcv)tdc.a(10)).c();
-    veg.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(svo.a()) });
-    tsg.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
-    veg.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    veg.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
-    veg.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = axlc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-    veg.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
-    veg.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    veg.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
-    return null;
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_Uoe.a();
+    }
+    while (paramInt != 7) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
   }
 }
 

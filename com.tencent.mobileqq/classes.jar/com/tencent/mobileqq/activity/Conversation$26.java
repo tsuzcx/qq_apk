@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akac;
+import akaa;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,20 +13,20 @@ class Conversation$26
   
   public void run()
   {
-    akac localakac = (akac)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
-    this.this$0.p = localakac.b("sp_mayknow_entry_list_msg");
+    akaa localakaa = (akaa)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159);
+    this.this$0.p = localakaa.b("sp_mayknow_entry_list_msg");
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent", 2, " shouldShowConversationMayknow = " + this.this$0.p);
     }
-    ArrayList localArrayList = localakac.c();
+    ArrayList localArrayList = localakaa.c();
     if ((this.this$0.p) && (localArrayList != null) && (localArrayList.size() > 0)) {
-      localakac.d();
+      localakaa.d();
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1009);
       return;
-      localakac.e();
+      localakaa.e();
       this.this$0.p = false;
     }
   }

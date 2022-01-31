@@ -1,174 +1,456 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.net.URL;
+import org.xmlpull.v1.XmlSerializer;
 
 public class axwv
-  extends axuo
+  extends axup
 {
-  private void a(Context paramContext, View paramView, axww paramaxww, Bundle paramBundle)
+  public String S;
+  public String T;
+  public String U;
+  public MessageForPic a;
+  public StructMsgForImageShare a;
+  public URL a;
+  public long c;
+  public long d;
+  public long e;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  
+  public axwv()
   {
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
-    {
-      paramContext = paramContext.getResources();
-      if (paramaxww.a != null)
+    this.jdField_a_of_type_Int = 14;
+    this.jdField_a_of_type_JavaLangString = "image";
+  }
+  
+  public axwv(String paramString)
+  {
+    this();
+    this.S = paramString;
+  }
+  
+  private void a(View paramView)
+  {
+    int i6 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.width;
+    int i7 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.height;
+    int i2 = actj.a(this.k, paramView.getResources());
+    int i3 = actj.a(this.l, paramView.getResources());
+    int i4 = actj.a(this.m, paramView.getResources());
+    int i5 = actj.a(this.n, paramView.getResources());
+    int j;
+    int i;
+    int i1;
+    if ((i6 < i2) || (i7 < i3)) {
+      if (i6 < i7)
       {
-        paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-        paramaxww.a.setId(2131362850);
-        paramBundle.addRule(9, -1);
-        ((RelativeLayout)paramView).addView(paramaxww.a);
-      }
-      if (paramaxww.b != null)
-      {
-        paramBundle = new RelativeLayout.LayoutParams(-1, -2);
-        paramBundle.addRule(9);
-        if (ajwe.a() <= 16.0F) {
-          break label146;
+        j = (int)(i2 / i6 * i7 + 0.5F);
+        i = j;
+        if (j > i5) {
+          i = i5;
         }
+        j = i2;
+        i1 = j;
+        j = i;
+        i = i1;
+        label143:
+        i1 = j;
+        if (j > i5) {
+          i1 = i5;
+        }
+        if (i1 >= i3) {
+          break label530;
+        }
+        i1 = i3;
       }
     }
-    label146:
-    for (int i = actn.a(5.0F, paramContext);; i = actn.a(10.0F, paramContext))
-    {
-      paramBundle.setMargins(actn.a(20.0F, paramContext), 0, actn.a(20.0F, paramContext), i);
-      paramBundle.addRule(12);
-      ((RelativeLayout)paramView).addView(paramaxww.b, paramBundle);
-      return;
-    }
-  }
-  
-  protected int b()
-  {
-    return 10;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    axww localaxww;
-    Object localObject1;
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof axww)))
-    {
-      localaxww = (axww)paramView.getTag();
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    }
+    label519:
+    label530:
     for (;;)
     {
-      axun localaxun;
-      Object localObject2;
-      String str;
-      int j;
-      int i;
-      if (((Iterator)localObject1).hasNext())
+      j = i;
+      if (i > i4) {
+        j = i4;
+      }
+      i = j;
+      if (j < i2) {
+        i = i2;
+      }
+      ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
+      if (localLayoutParams2 == null) {
+        localLayoutParams1 = new ViewGroup.LayoutParams(i, i1);
+      }
+      localLayoutParams1.width = i;
+      localLayoutParams1.height = i1;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, new Object[] { "wClip=", Integer.valueOf(i6), ", hClip=", Integer.valueOf(i7), ", dstW=", Integer.valueOf(i), " dstH=", Integer.valueOf(i1), ", thumbMaxHeightPx=", Integer.valueOf(i5), ", thumbMinHeightPx=", Integer.valueOf(i3), "，thumbMaxWidthPx=", Integer.valueOf(i4), ", thumbMinWidthPx=", Integer.valueOf(i2) });
+      }
+      paramView.setLayoutParams(localLayoutParams1);
+      return;
+      j = (int)(i3 / i7 * i6 + 0.5F);
+      i = j;
+      if (j > i4) {
+        i = i4;
+      }
+      j = i;
+      i = i3;
+      break;
+      if ((i6 < i4) && (i7 < i5))
       {
-        localaxun = (axun)((Iterator)localObject1).next();
-        localaxun.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject2 = localaxun.jdField_a_of_type_JavaLangString;
-        if ("title".equals(localObject2))
-        {
-          localObject2 = (StructMsgItemTitle)localaxun;
-          str = ((StructMsgItemTitle)localObject2).c();
-          j = ((StructMsgItemTitle)localObject2).f();
-          i = j;
-          if (TextUtils.isEmpty(str)) {}
+        j = i7;
+        i = i6;
+        break label143;
+      }
+      float f1;
+      if (i6 > i7)
+      {
+        f1 = i4 / i6;
+        label462:
+        if (i6 <= i7) {
+          break label519;
         }
+      }
+      for (float f2 = i3 / i7;; f2 = i2 / i6)
+      {
+        f1 = Math.max(f1, f2);
+        i = (int)(i6 * f1 + 0.5F);
+        j = (int)(f1 * i7 + 0.5F);
+        break;
+        f1 = i5 / i7;
+        break label462;
+      }
+    }
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+    {
+      paramBundle = aywm.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 65537);
+      if ((this.jdField_a_of_type_JavaNetURL != null) && (this.jdField_a_of_type_JavaNetURL.equals(paramBundle))) {}
+    }
+    for (paramBundle = advs.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);; paramBundle = null)
+    {
+      Object localObject = paramBundle;
+      if (paramBundle == null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, "StructMsgItemImage.createView.mImageShareMsg == null nudnik trick");
+          }
+          paramView = new View(paramContext);
+          return paramView;
+        }
+        localObject = new MessageForPic();
+        ((MessageForPic)localObject).path = this.S;
+        ((MessageForPic)localObject).uuid = this.T;
+        ((MessageForPic)localObject).md5 = this.U;
+        ((MessageForPic)localObject).istroop = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uinType;
+        ((MessageForPic)localObject).msgtype = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgType;
+        ((MessageForPic)localObject).versionCode = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.messageVersion;
+        ((MessageForPic)localObject).uniseq = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mUniseq;
+        ((MessageForPic)localObject).issend = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend;
+        ((MessageForPic)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;
+        ((MessageForPic)localObject).frienduin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin;
+        ((MessageForPic)localObject).groupFileID = this.c;
+        ((MessageForPic)localObject).busiType = 1030;
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend != 1) {
+          break label476;
+        }
+      }
+      label476:
+      for (paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;; paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin)
+      {
+        ((MessageForPic)localObject).senderuin = paramBundle;
+        ((MessageForPic)localObject).size = this.d;
+        ((MessageForPic)localObject).time = this.e;
+        ((MessageForPic)localObject).subVersion = 5;
+        ((MessageForPic)localObject).fileSizeFlag = 0;
+        ((MessageForPic)localObject).thumbHeight = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbHeight;
+        ((MessageForPic)localObject).thumbWidth = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbWidth;
+        ((MessageForPic)localObject).rawMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.rawUrl;
+        ((MessageForPic)localObject).bigMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.bigUrl;
+        ((MessageForPic)localObject).thumbMsgUrl = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbUrl;
+        if (a()) {
+          ((MessageForPic)localObject).thumbWidthHeightDP = new ThumbWidthHeightDP(this.k, this.l, this.m, this.n);
+        }
+        paramBundle = ayoi.a(aywm.a((auoc)localObject, 1, null).toString());
+        if ((paramBundle != null) && (GifDrawable.isGifFile(paramBundle))) {
+          ((MessageForPic)localObject).imageType = 2000;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((MessageForPic)localObject);
+        localObject = advs.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        this.jdField_a_of_type_JavaNetURL = ((URLDrawable)localObject).getURL();
+        if ((paramView == null) || (!(paramView instanceof BubbleImageView))) {
+          break label487;
+        }
+        paramContext = (BubbleImageView)paramView;
+        paramContext.d(false);
+        paramContext.setShowEdge(true);
+        paramContext.setImageDrawable((Drawable)localObject);
+        paramView = paramContext;
+        if (!a()) {
+          break;
+        }
+        a(paramContext);
+        return paramContext;
+      }
+      label487:
+      paramView = new BubbleImageView(paramContext);
+      paramView.setId(2131367976);
+      paramView.setAdjustViewBounds(true);
+      if (this.m != 0)
+      {
+        i = actj.a(this.m, paramContext.getResources());
+        label529:
+        paramView.setMaxWidth(i);
+        if (this.n == 0) {
+          break label641;
+        }
+      }
+      label641:
+      for (int i = actj.a(this.n, paramContext.getResources());; i = aywm.a(false))
+      {
+        paramView.setMaxHeight(i);
+        if (this.k != 0) {
+          paramView.setMinimumWidth(actj.a(this.k, paramContext.getResources()));
+        }
+        if (this.l != 0) {
+          paramView.setMinimumHeight(actj.a(this.l, paramContext.getResources()));
+        }
+        paramView.setAdjustViewBounds(true);
+        paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        paramView.setRadius(12.0F);
+        paramContext = paramView;
+        break;
+        i = aywm.a(false);
+        break label529;
+      }
+    }
+  }
+  
+  public MessageForPic a()
+  {
+    MessageForPic localMessageForPic = new MessageForPic();
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, "StructMsgItemImage.generateMessageForPic.mImageShareMsg == null nudnik trick");
+      }
+      return localMessageForPic;
+    }
+    localMessageForPic.path = this.S;
+    localMessageForPic.uuid = this.T;
+    localMessageForPic.md5 = this.U;
+    localMessageForPic.istroop = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uinType;
+    localMessageForPic.msgtype = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mMsgType;
+    localMessageForPic.versionCode = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.messageVersion;
+    localMessageForPic.uniseq = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mUniseq;
+    localMessageForPic.issend = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend;
+    localMessageForPic.selfuin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;
+    localMessageForPic.frienduin = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin;
+    localMessageForPic.groupFileID = this.c;
+    localMessageForPic.busiType = 1030;
+    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.mIsSend == 1) {}
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.currentAccountUin;; str = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.uin)
+    {
+      localMessageForPic.senderuin = str;
+      localMessageForPic.size = this.d;
+      localMessageForPic.time = this.e;
+      localMessageForPic.subVersion = 5;
+      localMessageForPic.fileSizeFlag = 0;
+      localMessageForPic.thumbHeight = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbHeight;
+      localMessageForPic.thumbWidth = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.thumbWidth;
+      return localMessageForPic;
+    }
+  }
+  
+  public String a()
+  {
+    return "Image";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.S = paramObjectInput.readUTF();
+    this.T = paramObjectInput.readUTF();
+    this.U = paramObjectInput.readUTF();
+    this.c = paramObjectInput.readLong();
+    this.d = paramObjectInput.readLong();
+    this.e = paramObjectInput.readLong();
+    if (this.jdField_a_of_type_Int > 13)
+    {
+      this.k = paramObjectInput.readInt();
+      this.l = paramObjectInput.readInt();
+      this.m = paramObjectInput.readInt();
+      this.n = paramObjectInput.readInt();
+    }
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.S == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.T != null) {
+        break label147;
+      }
+      str = "";
+      label34:
+      paramObjectOutput.writeUTF(str);
+      if (this.U != null) {
+        break label155;
+      }
+    }
+    label147:
+    label155:
+    for (String str = "";; str = this.U)
+    {
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeLong(this.c);
+      paramObjectOutput.writeLong(this.d);
+      paramObjectOutput.writeLong(this.e);
+      if (this.jdField_a_of_type_Int > 13)
+      {
+        paramObjectOutput.writeInt(this.k);
+        paramObjectOutput.writeInt(this.l);
+        paramObjectOutput.writeInt(this.m);
+        paramObjectOutput.writeInt(this.n);
+      }
+      return;
+      str = this.S;
+      break;
+      str = this.T;
+      break label34;
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "image");
+    if (this.T == null)
+    {
+      str = "";
+      paramXmlSerializer.attribute(null, "uuid", str);
+      if (this.U != null) {
+        break label206;
+      }
+      str = "";
+      label44:
+      paramXmlSerializer.attribute(null, "md5", str);
+      paramXmlSerializer.attribute(null, "GroupFiledid", String.valueOf(this.c));
+      paramXmlSerializer.attribute(null, "filesize", String.valueOf(this.d));
+      if (this.S != null) {
+        break label214;
+      }
+    }
+    label206:
+    label214:
+    for (String str = "";; str = this.S)
+    {
+      paramXmlSerializer.attribute(null, "local_path", str);
+      paramXmlSerializer.attribute(null, "minWidth", Integer.toString(this.k));
+      paramXmlSerializer.attribute(null, "minHeight", Integer.toString(this.l));
+      paramXmlSerializer.attribute(null, "maxWidth", Integer.toString(this.m));
+      paramXmlSerializer.attribute(null, "maxHeight", Integer.toString(this.n));
+      paramXmlSerializer.endTag(null, "image");
+      return;
+      str = this.T;
+      break;
+      str = this.U;
+      break label44;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.k != 0) && (this.l != 0) && (this.m != 0) && (this.n != 0);
+  }
+  
+  public boolean a(axwg paramaxwg)
+  {
+    if (paramaxwg == null) {}
+    for (;;)
+    {
+      return true;
+      String str4 = paramaxwg.a("uuid");
+      String str3 = paramaxwg.a("md5");
+      String str6 = paramaxwg.a("md5");
+      String str5 = paramaxwg.a("filesize");
+      String str2 = paramaxwg.a("local_path");
+      String str1 = str4;
+      if (str4 == null) {
+        str1 = "";
+      }
+      this.T = str1;
+      if (str3 == null)
+      {
+        str1 = "";
+        label76:
+        this.U = str1;
+        if (str2 != null) {
+          break label193;
+        }
+        str1 = "";
+        this.S = str1;
+        this.k = actj.a(paramaxwg, "minWidth");
+        this.l = actj.a(paramaxwg, "minHeight");
+        this.m = actj.a(paramaxwg, "maxWidth");
+        this.n = actj.a(paramaxwg, "maxHeight");
+        if (str6 == null) {}
       }
       try
       {
-        i = Integer.parseInt(str);
-        f = ajwe.a() / 16.0F;
-        if (i * f > 36.0F) {
-          ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
-        }
-        for (;;)
-        {
-          localaxww.b = localaxun.a(paramContext, localaxww.b, paramBundle);
-          break;
-          ((StructMsgItemTitle)localObject2).c(str);
-        }
-        if (!"paaudio".equals(localObject2)) {
+        this.c = Long.parseLong(str6);
+        if (str5 == null) {
           continue;
         }
-        localaxww.a = localaxun.a(paramContext, localaxww.a, paramBundle);
-        continue;
-        paramContext = localaxww;
-        if (paramContext.b != null) {
-          ((TextView)paramContext.b).setMaxLines(1);
-        }
-        paramView.setTag(paramContext);
-        return paramView;
-        localObject1 = paramContext.getResources();
-        localaxww = new axww();
-        paramView = new RelativeLayout(paramContext);
-        i = actn.a(15.0F, (Resources)localObject1);
-        paramView.setPadding(i, i, i, i);
-        i = (int)((BaseChatItemLayout.a - actn.a(46.0F, (Resources)localObject1)) * 26.0F / 63.0F);
-        paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, actn.a(30.0F, (Resources)localObject1) + i));
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          localaxun = (axun)((Iterator)localObject1).next();
-          localaxun.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-          localObject2 = localaxun.jdField_a_of_type_JavaLangString;
-          if ("title".equals(localObject2))
-          {
-            localObject2 = (StructMsgItemTitle)localaxun;
-            str = ((StructMsgItemTitle)localObject2).c();
-            j = ((StructMsgItemTitle)localObject2).f();
-            i = j;
-            if (TextUtils.isEmpty(str)) {}
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
         try
         {
-          for (;;)
-          {
-            i = Integer.parseInt(str);
-            float f = ajwe.a() / 16.0F;
-            if (i * f > 36.0F) {
-              ((StructMsgItemTitle)localObject2).c("" + (int)(36.0F / f));
-            }
-            for (;;)
-            {
-              localaxww.b = localaxun.a(paramContext, localaxww.b, paramBundle);
-              break;
-              ((StructMsgItemTitle)localObject2).c(str);
-            }
-            if ("paaudio".equals(localObject2))
-            {
-              localaxww.a = localaxun.a(paramContext, localaxww.a, paramBundle);
-              continue;
-              a(paramContext, paramView, localaxww, paramBundle);
-              paramContext = localaxww;
-            }
-          }
-          localException1 = localException1;
-          i = j;
+          this.d = Long.parseLong(str5);
+          return true;
         }
-        catch (Exception localException2)
+        catch (NumberFormatException paramaxwg) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StructMsg", 2, paramaxwg.getMessage());
+        return true;
+        str1 = str3;
+        break label76;
+        label193:
+        str1 = str2;
+      }
+      catch (NumberFormatException paramaxwg)
+      {
+        for (;;)
         {
-          for (;;)
-          {
-            i = j;
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, paramaxwg.getMessage());
           }
         }
       }
     }
-  }
-  
-  public String b()
-  {
-    return "Layout10";
   }
 }
 

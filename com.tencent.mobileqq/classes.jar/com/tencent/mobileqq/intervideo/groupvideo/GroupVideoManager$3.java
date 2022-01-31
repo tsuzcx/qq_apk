@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
 import android.os.Bundle;
-import arfe;
+import arfg;
 import java.util.concurrent.Future;
 
 public class GroupVideoManager$3
   implements Runnable
 {
-  public GroupVideoManager$3(arfe paramarfe, Future paramFuture, long paramLong, Bundle paramBundle) {}
+  public GroupVideoManager$3(arfg paramarfg, Future paramFuture, long paramLong, Bundle paramBundle) {}
   
   /* Error */
   public void run()
@@ -18,28 +18,28 @@ public class GroupVideoManager$3
     //   4: ldc2_w 30
     //   7: getstatic 37	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
     //   10: invokeinterface 43 4 0
-    //   15: checkcast 45	areh
+    //   15: checkcast 45	arej
     //   18: astore_1
     //   19: aload_1
     //   20: ifnull +45 -> 65
     //   23: aload_1
     //   24: aload_0
-    //   25: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfe;
-    //   28: invokestatic 50	arfe:a	(Larfe;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   25: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfg;
+    //   28: invokestatic 50	arfg:a	(Larfg;)Lcom/tencent/mobileqq/app/QQAppInterface;
     //   31: invokevirtual 56	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   34: aload_0
     //   35: getfield 20	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:jdField_a_of_type_Long	J
     //   38: aload_0
     //   39: getfield 22	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   42: new 58	arfh
+    //   42: new 58	arfj
     //   45: dup
     //   46: aload_0
-    //   47: invokespecial 61	arfh:<init>	(Lcom/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3;)V
+    //   47: invokespecial 61	arfj:<init>	(Lcom/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3;)V
     //   50: invokeinterface 64 6 0
     //   55: aload_0
-    //   56: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfe;
+    //   56: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfg;
     //   59: iconst_0
-    //   60: invokestatic 67	arfe:a	(Larfe;Z)Z
+    //   60: invokestatic 67	arfg:a	(Larfg;Z)Z
     //   63: pop
     //   64: return
     //   65: ldc 69
@@ -56,23 +56,23 @@ public class GroupVideoManager$3
     //   88: aload_1
     //   89: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   92: aload_0
-    //   93: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfe;
+    //   93: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfg;
     //   96: iconst_0
-    //   97: invokestatic 67	arfe:a	(Larfe;Z)Z
+    //   97: invokestatic 67	arfg:a	(Larfg;Z)Z
     //   100: pop
     //   101: return
     //   102: astore_1
     //   103: aload_0
-    //   104: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfe;
+    //   104: getfield 16	com/tencent/mobileqq/intervideo/groupvideo/GroupVideoManager$3:this$0	Larfg;
     //   107: iconst_0
-    //   108: invokestatic 67	arfe:a	(Larfe;Z)Z
+    //   108: invokestatic 67	arfg:a	(Larfg;Z)Z
     //   111: pop
     //   112: aload_1
     //   113: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	114	0	this	3
-    //   18	6	1	localareh	areh
+    //   18	6	1	localarej	arej
     //   76	13	1	localException	java.lang.Exception
     //   102	11	1	localObject	Object
     // Exception table:

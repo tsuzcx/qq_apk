@@ -1,23 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
 
 public class batq
-  implements Animator.AnimatorListener
+  implements View.OnTouchListener
 {
-  public batq(PhantomPicView.1 param1) {}
+  public batq(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.this$0.c();
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 1) || (i == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

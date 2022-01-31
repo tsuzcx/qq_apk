@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aozc;
-import apbe;
+import aozg;
 import apbi;
+import apbm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,11 +11,11 @@ import java.util.TimerTask;
 public class OnlineFileSessionWorker$2
   extends TimerTask
 {
-  public OnlineFileSessionWorker$2(apbe paramapbe) {}
+  public OnlineFileSessionWorker$2(apbi paramapbi) {}
   
   public void run()
   {
-    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + apbe.a(this.this$0).a() + " WaitAskUpProgressResultTimer time out!!!!!!!");
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + apbi.a(this.this$0).a() + " WaitAskUpProgressResultTimer time out!!!!!!!");
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 43, new Object[] { Long.valueOf(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
     this.this$0.c();
   }

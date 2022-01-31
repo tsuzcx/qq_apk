@@ -1,6 +1,18 @@
-public abstract interface akxx
+import java.io.File;
+
+public final class akxx
 {
-  public abstract void a(boolean paramBoolean);
+  public static String a = "_model.zip";
+  
+  public static String a()
+  {
+    return alir.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+  }
+  
+  public static String b()
+  {
+    return alir.a() + "ar_cloud_transfer/";
+  }
 }
 
 

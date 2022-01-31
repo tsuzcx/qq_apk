@@ -1,15 +1,15 @@
 package com.tencent.av.app;
 
-import lfv;
+import lfq;
 
 public class InviteMemberObserverWithoutCache$1
   implements Runnable
 {
-  public InviteMemberObserverWithoutCache$1(lfv paramlfv, Object paramObject) {}
+  public InviteMemberObserverWithoutCache$1(lfq paramlfq, Object paramObject) {}
   
   public void run()
   {
-    lfv.a(this.this$0, this.a);
+    lfq.a(this.this$0, this.a);
   }
 }
 

@@ -1,15 +1,9 @@
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import java.util.List;
 
-final class rmw
-  implements rmz
+public abstract interface rmw
 {
-  rmw(rmx paramrmx) {}
-  
-  public void a(boolean paramBoolean, List<BaseData> paramList)
-  {
-    this.a.a(paramList);
-  }
+  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
 }
 
 

@@ -1,9 +1,8 @@
-import android.view.View;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public abstract interface agsg
 {
-  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
+  public abstract void a(boolean paramBoolean, LocalMediaInfo paramLocalMediaInfo);
 }
 
 

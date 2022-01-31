@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class azys
-  implements DialogInterface.OnClickListener
 {
-  public azys(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.a(false);
-    this.a.c();
-  }
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 

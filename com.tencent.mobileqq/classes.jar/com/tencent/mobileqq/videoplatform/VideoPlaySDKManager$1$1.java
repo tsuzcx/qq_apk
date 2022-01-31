@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbvt;
-import bbvu;
+import bbwh;
+import bbwi;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 public class VideoPlaySDKManager$1$1
   implements Runnable
 {
-  public VideoPlaySDKManager$1$1(bbvu parambbvu) {}
+  public VideoPlaySDKManager$1$1(bbwi parambbwi) {}
   
   public void run()
   {
-    bbvt.a(this.a.jdField_a_of_type_Bbvt, this.a.jdField_a_of_type_AndroidAppActivity);
+    bbwh.a(this.a.jdField_a_of_type_Bbwh, this.a.jdField_a_of_type_AndroidAppActivity);
     ThreadManager.getUIHandler().post(new VideoPlaySDKManager.1.1.1(this));
   }
 }

@@ -1,8 +1,11 @@
-public abstract interface ayry
+public class ayry
 {
-  public abstract void a(aysw paramaysw);
+  public byte[] a = new byte[16];
   
-  public abstract void b(aysw paramaysw);
+  ayry(byte[] paramArrayOfByte)
+  {
+    this.a = paramArrayOfByte;
+  }
 }
 
 

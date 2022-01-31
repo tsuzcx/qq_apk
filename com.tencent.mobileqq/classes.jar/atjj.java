@@ -1,36 +1,76 @@
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
+import java.util.List;
 
 public class atjj
-  implements AdapterView.OnItemLongClickListener
+  implements AbsListView.OnScrollListener
 {
   public atjj(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {
-      return true;
-    }
-    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
+    if (paramInt1 == 0)
     {
-      this.a.c(paramAdapterView);
-      return true;
+      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
+      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        return;
+      }
+      ShortVideoCommentsView.a(this.a, false);
+      return;
     }
-    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
-      this.a.e(paramAdapterView);
+    ShortVideoCommentsView.a(this.a, false);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
+        ShortVideoCommentsView.c(this.a);
+      }
+      if (ShortVideoCommentsView.a(this.a) == null) {
+        break label269;
+      }
+      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
+      if (ShortVideoCommentsView.a(this.a) != null) {
+        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
+      }
+      paramInt = ShortVideoCommentsView.a(this.a);
+      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < muc.a(this.a.getContext(), 40.0F))) {
+        break label272;
+      }
+      if (!ShortVideoCommentsView.d(this.a))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+      }
+      this.a.f();
     }
     for (;;)
     {
-      return false;
-      this.a.d(paramAdapterView);
+      ShortVideoCommentsView.a(this.a, paramInt);
+      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
+      {
+        ShortVideoCommentsView.b(this.a, true);
+        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
+      }
+      return;
+      label269:
+      break;
+      label272:
+      if (!ShortVideoCommentsView.e(this.a))
+      {
+        this.a.j();
+        ShortVideoCommentsView.a(this.a, 2);
+      }
     }
   }
 }

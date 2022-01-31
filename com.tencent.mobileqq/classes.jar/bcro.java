@@ -1,43 +1,20 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class bcro
-  extends GestureDetector.SimpleOnGestureListener
+  implements Animation.AnimationListener
 {
-  public bcro(TabDragAnimationView paramTabDragAnimationView) {}
+  public bcro(ShaderAnimLayout paramShaderAnimLayout) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TabDragAnimationView.a(this.a) != null) {
-      return TabDragAnimationView.a(this.a).onDoubleTap(paramMotionEvent);
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    this.a.setVisibility(8);
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onLongClick(this.a);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onSingleTapConfirmed(paramMotionEvent);
-    }
-    ViewParent localViewParent = this.a.getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

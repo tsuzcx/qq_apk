@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -74,7 +74,7 @@ public class PrepareView
     int k;
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        k = 2130844469;
+        k = 2130844470;
       }
     }
     while (k != 0)
@@ -86,7 +86,7 @@ public class PrepareView
         k = m;
         if (paramInt == 1)
         {
-          k = 2130844470;
+          k = 2130844471;
           continue;
           if (this.jdField_a_of_type_Int != 2)
           {
@@ -97,13 +97,13 @@ public class PrepareView
           }
           else if (paramInt == 0)
           {
-            k = 2130844429;
+            k = 2130844430;
           }
           else
           {
             k = m;
             if (paramInt == 1) {
-              k = 2130844430;
+              k = 2130844431;
             }
           }
         }
@@ -192,21 +192,21 @@ public class PrepareView
     removeAllViews();
     if (paramInt == 1)
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560789, this, true);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369574));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560788, this, true);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369573));
       this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370649));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377278));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377274));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377275));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377277));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365422));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377264));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377265));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377266));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377267));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377279));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377275));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377276));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377278));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365421));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377265));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377266));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377267));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377268));
       this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368235));
       this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368236));
       this.j = ((TextView)findViewById(2131369231));
@@ -222,27 +222,27 @@ public class PrepareView
       this.jdField_i_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
       this.j.setTypeface((Typeface)localObject);
       this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369094));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375250));
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379495));
-      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363142));
-      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375514));
-      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375513));
-      this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364791));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375252));
+      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379500));
+      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363141));
+      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375516));
+      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375515));
+      this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364790));
       localObject = (RelativeLayout.LayoutParams)this.jdField_i_of_type_AndroidWidgetImageView.getLayoutParams();
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)localObject).topMargin = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
         this.jdField_i_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      localObject = new RelativeLayout.LayoutParams(actn.a(475.0F, getResources()), actn.a(300.0F, getResources()));
+      localObject = new RelativeLayout.LayoutParams(actj.a(475.0F, getResources()), actj.a(300.0F, getResources()));
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       addView(this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView, 0, (ViewGroup.LayoutParams)localObject);
       return true;
       if ((paramInt != 2) && (paramInt != 3)) {
         break;
       }
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560788, this, true);
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131369574));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560787, this, true);
+      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131369573));
       this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131370649));
     }
     return false;
@@ -352,7 +352,7 @@ public class PrepareView
       catch (Throwable paramBitmap1)
       {
         continue;
-        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844448);
+        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844449);
       }
       if (paramBitmap5 == null) {
         break label215;

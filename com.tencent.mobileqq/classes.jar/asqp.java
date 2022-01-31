@@ -1,24 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import android.view.View;
 
-public final class asqp
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public abstract interface asqp
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
-  {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
-  }
+  public abstract void a(View paramView, float paramFloat);
 }
 
 

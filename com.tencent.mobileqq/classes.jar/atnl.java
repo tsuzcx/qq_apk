@@ -1,49 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-import java.util.List;
+import android.view.View.OnTouchListener;
 
-public class atnl
-  extends BaseAdapter
+class atnl
+  implements View.OnTouchListener
 {
-  public atnl(TopicLabelListView paramTopicLabelListView) {}
+  atnl(atnk paramatnk) {}
   
-  public int getCount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return TopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    switch (paramMotionEvent.getAction())
     {
-      paramViewGroup = new atnm(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (atnm)paramView.getTag();
+      return true;
+      this.a.dismiss();
     }
   }
 }

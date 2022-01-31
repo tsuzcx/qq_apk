@@ -1,28 +1,33 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
 
-class mpq
-  implements View.OnTouchListener
+public class mpq
+  extends mqg
 {
-  mpq(mpn parammpn) {}
+  public int a;
+  public lgm a;
+  public boolean a;
+  public boolean b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  mpq(moz parammoz)
   {
-    try
+    super(parammoz);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Lgm = new mpr(this);
+    parammoz = lgl.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (parammoz != null)
     {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
+      parammoz.a(11, this.jdField_a_of_type_Lgm);
+      return;
     }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
     }
   }
 }

@@ -1,33 +1,57 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.TreeMap;
 
-class akyn
-  implements ServiceConnection
+public class akyn
 {
-  akyn(akyl paramakyl) {}
+  public long a;
+  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  public String a;
+  public HashMap<Integer, String> a;
+  private final TreeMap<Integer, akyo> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  public boolean a;
+  public long b;
+  public String b;
+  public long c = 0L;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public akyn()
   {
-    QLog.w(akyy.a, 1, "onServiceConnected, name[" + paramComponentName + "]");
-    try
-    {
-      this.a.a = aled.a(paramIBinder);
-      this.a.a.a(akyl.a(this.a));
-      this.a.a.c();
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      QLog.w(akyy.a, 1, "onServiceConnected, Exception", paramComponentName);
-    }
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public ArCloudConfigInfo a()
   {
-    QLog.w(akyy.a, 1, "onServiceDisconnected, name[" + paramComponentName + "]");
-    this.a.a();
+    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+  }
+  
+  public String a(int paramInt)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+  }
+  
+  public TreeMap<Integer, akyo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilTreeMap;
+  }
+  
+  public String toString()
+  {
+    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
+    Object localObject = str;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        akyo localakyo = (akyo)((Iterator)localObject).next();
+        str = str + "\n" + localakyo;
+      }
+      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
+    }
+    return localObject;
   }
 }
 

@@ -1,14 +1,14 @@
 public class ayjx
 {
   public int a;
-  public String a;
   public int b;
+  public int c;
   
-  ayjx(String paramString, int paramInt1, int paramInt2)
+  public ayjx(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

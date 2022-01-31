@@ -2,35 +2,27 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class wzi
-  implements wze
+  implements wzb
 {
-  wzi(wzh paramwzh, wzg paramwzg) {}
+  wzi(wzf paramwzf, long paramLong) {}
   
   public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
     File localFile = new File(paramString1);
     if ((paramBoolean) && (localFile.exists()))
     {
-      if (this.jdField_a_of_type_Wzg.a)
-      {
-        this.jdField_a_of_type_Wzh.jdField_a_of_type_Wzv.b(this.jdField_a_of_type_Wzh);
-        return;
-      }
-      if (this.jdField_a_of_type_Wzh.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Wzh.jdField_a_of_type_Wyw.a(paramString1, this.jdField_a_of_type_Wzh.jdField_a_of_type_JavaLangString, new wzj(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Wzh.a(localFile, this.jdField_a_of_type_Wzh.b, new wzl(this, l));
+      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wzd.e = paramString1;
+      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.a.b(this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze);
+      this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.b();
       return;
     }
-    this.jdField_a_of_type_Wzh.d = paramString2;
-    this.jdField_a_of_type_Wzh.jdField_a_of_type_Wzv.a(this.jdField_a_of_type_Wzh);
+    this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.d = paramString2;
+    this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze.a.a(this.jdField_a_of_type_Wzf.jdField_a_of_type_Wze);
   }
 }
 

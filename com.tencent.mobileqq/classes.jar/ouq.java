@@ -1,18 +1,15 @@
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
 public class ouq
-  extends StaggeredGridLayoutManager
+  implements View.OnClickListener
 {
-  public ouq(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  public ouq(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public boolean canScrollVertically()
+  public void onClick(View paramView)
   {
-    return (this.a.a.e) && (super.canScrollVertically());
+    this.a.onBackEvent();
   }
 }
 

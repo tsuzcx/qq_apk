@@ -1,25 +1,19 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public final class aapm
-  implements aaqd
+  implements bckm
 {
-  public aapm(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public aapm(Context paramContext) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    AudioHelper.b("发起音视频_获取会议id_rsp");
-    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
-    }
-    localBundle1.putInt("ConfAppID", paramInt1);
-    localBundle1.putInt("MeetingConfID", paramInt2);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

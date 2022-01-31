@@ -1,6 +1,18 @@
 public abstract interface rux
 {
-  public abstract void c();
+  public abstract void a(String paramString);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
+  
+  public abstract String e();
 }
 
 

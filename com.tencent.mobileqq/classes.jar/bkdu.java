@@ -1,24 +1,49 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class bkdu
-  implements Animation.AnimationListener
+public class bkdu
+  implements bkbj
 {
-  bkdu(bkdt parambkdt) {}
+  public bkdu(DoodleLayout paramDoodleLayout) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bkdn != null) {
-      this.a.a.jdField_a_of_type_Bkdn.a(null);
+    ved.b("DoodleLayout", "deleteVote.");
+    if (DoodleLayout.a(this.a) != null)
+    {
+      bjzc localbjzc = (bjzc)DoodleLayout.a(this.a).a(bjzc.class);
+      if (localbjzc != null) {
+        localbjzc.d();
+      }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  {
+    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a(bkbk parambkbk)
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.setVisibility(0);
+      DoodleLayout.b(this.a);
+      this.a.a.a.a(parambkbk);
+      parambkbk.k = true;
+      parambkbk = parambkbk.a;
+      if (!this.a.a.a()) {}
+      for (boolean bool = true;; bool = false)
+      {
+        parambkbk.lockData(bool);
+        this.a.a.requestLayout();
+        vei.a("video_shoot_new", "qa_edit", 1, 0, new String[0]);
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 

@@ -1,15 +1,12 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.view.View;
 
-public abstract class bach<VH extends RecyclerView.ViewHolder, D extends baas>
-  extends babo<VH, D>
+public class bach
+  extends bacf<babp>
 {
-  public bach(XMediaEditor paramXMediaEditor)
+  public bach(View paramView)
   {
-    super(paramXMediaEditor);
+    super(paramView);
   }
-  
-  public abstract void a(D paramD);
 }
 
 

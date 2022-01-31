@@ -1,6 +1,5 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class asfu
@@ -10,22 +9,16 @@ public class asfu
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    MedalGuideView.a(this.a, f);
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bfnk.sendEmptyMessage(3);
+      this.a.a.a(f);
+      if (f <= 0.05F) {
+        this.a.a.b();
+      }
     }
-    if (f >= 1.0F) {
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
       paramValueAnimator.removeAllUpdateListeners();
     }
   }

@@ -1,56 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.mode.CaptureModeController;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.CaptureTemplateManager.2;
 
 public class bjcl
-  implements View.OnClickListener
+  implements aysc
 {
-  protected int a;
-  protected View a;
-  protected bify a;
-  protected CaptureModeController a;
-  protected boolean a;
+  public bjcl(CaptureTemplateManager.2 param2) {}
   
-  public bjcl(CaptureModeController paramCaptureModeController)
+  public void onResp(aysz paramaysz)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
-    this.jdField_a_of_type_Bify = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bify;
+    if (QLog.isColorLevel()) {
+      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " resultcode: " + paramaysz.c);
+    }
+    boolean bool = false;
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      bool = bjck.a(this.a.this$0, this.a.a, this.a.b);
+      if (bool)
+      {
+        ayxs localayxs = (ayxs)this.a.this$0.a().getManager(193);
+        if (localayxs.a()) {
+          localayxs.a(this.a.c, paramaysz.jdField_a_of_type_Long);
+        }
+      }
+    }
+    if (!bool) {
+      bjck.a(this.a.this$0, this.a.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " downloadSuccess " + bool);
+    }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void onClick(View paramView) {}
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process;
 
-import aizw;
+import aizu;
 import android.os.Bundle;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class CmGameServerQIPCModule$2
   implements Runnable
 {
-  public CmGameServerQIPCModule$2(aizw paramaizw, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public CmGameServerQIPCModule$2(aizu paramaizu, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {

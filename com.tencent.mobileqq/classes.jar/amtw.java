@@ -1,98 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amtw
-  extends ampb<amtu>
 {
-  public static amtu b(int paramInt)
-  {
-    amtu localamtu = (amtu)ampm.a().a(paramInt);
-    if (localamtu != null) {
-      return localamtu;
-    }
-    return new amtu();
-  }
+  public int a = -1;
   
-  public int a()
+  public static amtw a(amph[] paramArrayOfamph)
   {
-    return 467;
-  }
-  
-  @NonNull
-  public amtu a(int paramInt)
-  {
-    return new amtu();
-  }
-  
-  @Nullable
-  public amtu a(ampi[] paramArrayOfampi)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfampi != null)
+    amtw localamtw = new amtw();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfampi.length > 0)
+      int j = paramArrayOfamph.length;
+      int i = 0;
+      if (i < j)
       {
-        localObject1 = paramArrayOfampi[0].a;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label125;
+        Object localObject = paramArrayOfamph[i];
+        if (localObject == null) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = ((amph)localObject).a;
+          try
+          {
+            a(new JSONObject((String)localObject), localamtw);
+            if (QLog.isColorLevel()) {
+              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localamtw);
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
         }
-        QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] type=" + a() + ", content = " + (String)localObject1);
       }
     }
-    try
-    {
-      paramArrayOfampi = (amtv)ampw.a(localObject1, amtv.class);
-      localObject1 = new amtu((String)localObject1, paramArrayOfampi);
-      return localObject1;
+    return localamtw;
+  }
+  
+  private static void a(JSONObject paramJSONObject, amtw paramamtw)
+  {
+    if (paramJSONObject.has("showMode")) {
+      paramamtw.a = paramJSONObject.optInt("showMode");
     }
-    catch (QStorageInstantiateException paramArrayOfampi)
-    {
-      for (;;)
-      {
-        QLog.i("OpenSdkSwitchProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfampi);
-        paramArrayOfampi = null;
-      }
-    }
-    label125:
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + a());
-    return null;
   }
   
-  public Class<amtu> a()
+  public String toString()
   {
-    return amtu.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amtu paramamtu)
-  {
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onUpdate] type=" + a() + ", content = " + paramamtu.a());
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "PhotoListPanelBean{showMode=" + this.a + '}';
   }
 }
 

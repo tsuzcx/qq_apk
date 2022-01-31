@@ -1,179 +1,40 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper.1;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class aibt
 {
-  private static final int b = Color.rgb(123, 113, 30);
-  private static final int c = Color.rgb(38, 87, 178);
-  private static final int d = Color.argb(64, 125, 113, 30);
-  private static final int e = Color.argb(64, 6, 59, 156);
-  private static final int f = Color.rgb(162, 116, 4);
-  private static final int g = Color.argb(64, 213, 185, 118);
-  private static final int h = Color.argb(102, 213, 185, 118);
-  public int a;
-  private final acut a;
-  public QQAppInterface a;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ChatSelCurPageForLSSHelper.1(this);
+  private boolean jdField_a_of_type_Boolean;
   
-  public aibt(acut paramacut, QQAppInterface paramQQAppInterface)
+  public aibt(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Acut = paramacut;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  private aice a(View paramView)
+  public void a()
   {
-    if (paramView == null) {}
-    do
-    {
-      return null;
-      if ((paramView.getParent() instanceof aice)) {
-        return (aice)paramView.getParent();
-      }
-    } while (!(paramView instanceof aice));
-    return (aice)paramView;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(View paramView, aibw paramaibw)
+  public void b()
   {
-    aice localaice = a(paramView);
-    if (localaice == null) {}
-    aicg localaicg;
-    ChatMessage localChatMessage;
+    if (!this.jdField_a_of_type_Boolean) {}
     do
     {
       return;
-      localaicg = localaice.delegate();
-      localChatMessage = actn.a(paramView);
-    } while ((localaicg == null) || (!localaicg.b()) || (localaice.hasSelected()) || (localChatMessage == null));
-    if (this.jdField_a_of_type_Int == 2) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-      {
-        localaicg.c(f);
-        localaicg.b(g);
-      }
-    }
-    for (;;)
-    {
-      localaicg.a(paramaibw);
-      localaice.doSelecting(localChatMessage);
-      return;
-      localaicg.c(f);
-      localaicg.b(h);
-      continue;
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin))
-      {
-        localaicg.c(b);
-        localaicg.b(d);
-      }
-      else
-      {
-        localaicg.c(c);
-        localaicg.b(e);
-      }
-    }
-    paramView = paramView.getResources();
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localChatMessage.selfuin)) {
-      j = paramView.getColorStateList(2131166831).getDefaultColor();
-    }
-    for (int i = paramView.getColorStateList(2131166833).getDefaultColor();; i = paramView.getColorStateList(2131166832).getDefaultColor())
-    {
-      localaicg.c(j);
-      localaicg.b(i);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ChatAdapterSelectableHelper", 0, "Load Select color, cursor=" + j + ", component=" + i);
-      break;
-      j = paramView.getColorStateList(2131166830).getDefaultColor();
-    }
+      this.jdField_a_of_type_Boolean = false;
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acup == null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public boolean a(View paramView)
+  public void c()
   {
-    boolean bool2 = false;
-    ChatMessage localChatMessage = actn.a(paramView);
-    boolean bool1;
-    if (AppSetting.d)
-    {
-      bool1 = false;
-      if (!bool1) {
-        break label173;
-      }
-      paramView = a(paramView);
-      if (paramView == null) {
-        break label154;
-      }
-      if (paramView.contentLength() <= 0) {
-        break label135;
-      }
-      bool1 = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
-    label135:
-    label154:
-    label173:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          if ((localChatMessage instanceof MessageForText))
-          {
-            if ((!(localChatMessage instanceof MessageForWantGiftMsg)) && (!(localChatMessage instanceof MessageForFoldMsg)))
-            {
-              bool1 = true;
-              break;
-            }
-            bool1 = false;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForMixedMsg))
-          {
-            bool1 = ((MessageForMixedMsg)localChatMessage).canSelectable();
-            break;
-          }
-          if ((localChatMessage instanceof MessageForReplyText))
-          {
-            bool1 = true;
-            break;
-          }
-          if ((localChatMessage instanceof MessageForLongMsg))
-          {
-            bool1 = ((MessageForLongMsg)localChatMessage).canSelectable();
-            break;
-          }
-          bool1 = false;
-          break;
-          bool1 = bool2;
-        } while (!aibp.a().c());
-        aibp.a().d();
-        return false;
-        bool1 = bool2;
-      } while (!aibp.a().c());
-      aibp.a().d();
-      return false;
-      bool1 = bool2;
-    } while (!aibp.a().c());
-    aibp.a().d();
-    return false;
   }
 }
 

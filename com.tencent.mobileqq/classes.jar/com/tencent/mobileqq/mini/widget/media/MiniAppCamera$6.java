@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import wae;
+import wab;
 
 class MiniAppCamera$6
   implements Runnable

@@ -1,13 +1,23 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
 
-final class besx
-  implements FilenameFilter
+public class besx
 {
-  public boolean accept(File paramFile, String paramString)
+  public ProcessType a;
+  public Class<?> a;
+  public String a;
+  public Class<?> b;
+  
+  public besx(ProcessType paramProcessType, String paramString, Class paramClass1, Class paramClass2)
   {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".so")) || (paramString.endsWith(".jar")));
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangClass = paramClass1;
+    this.b = paramClass2;
+  }
+  
+  public String toString()
+  {
+    return "pName:" + this.jdField_a_of_type_JavaLangString + " pType:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType + " UI:" + this.jdField_a_of_type_JavaLangClass + " receiver:" + this.b;
   }
 }
 

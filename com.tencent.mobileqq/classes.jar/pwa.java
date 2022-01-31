@@ -1,120 +1,32 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class pwa
-  extends BaseAdapter
+  implements pbx
 {
-  public pwa(ComponentContentRecommend paramComponentContentRecommend) {}
+  public pwa(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public boolean areAllItemsEnabled()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return false;
-  }
-  
-  public int getCount()
-  {
-    return ComponentContentRecommend.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return ComponentContentRecommend.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)ComponentContentRecommend.a(this.a).get(paramInt);
-    ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131562307, null, false);
-      paramViewGroup = new pwh(this.a);
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131367407));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)paramView.findViewById(2131374704));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367463));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131377442));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365041));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363545));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365269);
-      paramView.setTag(paramViewGroup);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      if (paramViewGroup != null) {}
-      try
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.a(new URL(localRecommendFollowInfo.headUrl));
-        pwb localpwb = new pwb(this, localRecommendFollowInfo);
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(localpwb);
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(localpwb);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localpwb);
-        if (localRecommendFollowInfo.isStar)
-        {
-          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.a();
-          if (!localRecommendFollowInfo.isVip) {
-            break label431;
-          }
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localRecommendFollowInfo.nickName);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
-          if (!localRecommendFollowInfo.isFollowed) {
-            break label443;
-          }
-          paramViewGroup.b.setText(ajyc.a(2131702339));
-          paramViewGroup.b.setTextColor(Color.parseColor("#777777"));
-          paramViewGroup.b.setBackgroundResource(2130848437);
-          paramViewGroup.b.setOnClickListener(new pwc(this, localRecommendFollowInfo));
-          paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          return paramView;
-          paramViewGroup = (pwh)paramView.getTag();
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.e(ComponentContentRecommend.a, 2, "getView, followItem.headUrl = " + localRecommendFollowInfo.headUrl + ", e = " + QLog.getStackTraceString(localMalformedURLException));
-          localMalformedURLException.printStackTrace();
-          continue;
-          paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView.b();
-          continue;
-          label431:
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          continue;
-          label443:
-          paramViewGroup.b.setText(ajyc.a(2131702290));
-          paramViewGroup.b.setTextColor(-1);
-          paramViewGroup.b.setBackgroundResource(2130848406);
-          paramViewGroup.b.setCompoundDrawablePadding(actn.a(3.0F, this.a.getResources()));
-        }
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+        return;
       }
     }
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return false;
+    bcql.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718513, 0).a();
   }
 }
 

@@ -1,16 +1,6 @@
-public class bbvr
+public abstract interface bbvr
 {
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "UNKNOW";
-    case 100: 
-      return "AIO_SHORT_BUBBLE";
-    }
-    return "AIO_LONG_BUBBLE";
-  }
+  public abstract void a(bbvo parambbvo);
 }
 
 

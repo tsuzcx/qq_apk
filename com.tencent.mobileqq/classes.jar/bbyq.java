@@ -1,25 +1,23 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView;
-
-public class bbyq
-  implements bbdg
+class bbyq
+  implements bbzd
 {
-  private Dialog a;
+  bbyq(bbyp parambbyp) {}
   
-  public Dialog a(Context paramContext, bbyi parambbyi, View.OnClickListener paramOnClickListener)
+  public void a(int paramInt, String paramString)
   {
-    this.a = bbcv.a(paramContext, 2131693768, this, parambbyi, 2131690596, 2131693766, new bbyr(this), paramOnClickListener, false, false);
-    return this.a;
+    if (bbyp.a(this.a) != null) {
+      bbyp.a(this.a).a(false);
+    }
   }
   
-  public View a(Context paramContext, Object paramObject)
+  public void a(bbyu parambbyu)
   {
-    paramContext = new LiangHaoDialogView(paramContext);
-    paramContext.a((bbyi)paramObject);
-    return paramContext;
+    bbyp.a(this.a, parambbyu);
+    if (bbyp.a(this.a) != null)
+    {
+      bbyp.a(this.a);
+      bbyp.a(this.a).a(parambbyu.a);
+    }
   }
 }
 

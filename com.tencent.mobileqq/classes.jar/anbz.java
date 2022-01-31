@@ -1,63 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class anbz
-  extends ampb<anby>
 {
-  public static anby a()
-  {
-    return (anby)ampm.a().a(483);
-  }
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
   
-  public int a()
+  public anbz(JSONObject paramJSONObject)
   {
-    return 483;
-  }
-  
-  @NonNull
-  public anby a(int paramInt)
-  {
-    return new anby();
-  }
-  
-  @Nullable
-  public anby a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anby.a(paramArrayOfampi);
+    String str = paramJSONObject.optString("words");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\/");
     }
-    return null;
-  }
-  
-  public Class<anby> a()
-  {
-    return anby.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anby paramanby)
-  {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    str = paramJSONObject.optString("overlay");
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_b_of_type_ArrayOfJavaLangString = str.split("\\/");
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("optString");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("aioTips");
   }
 }
 

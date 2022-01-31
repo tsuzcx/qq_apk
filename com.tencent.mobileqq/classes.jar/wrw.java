@@ -1,32 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.FrameLayout;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-class wrw
-  implements Animator.AnimatorListener
+final class wrw
+  implements TypeEvaluator<Matrix>
 {
-  wrw(wrt paramwrt) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    wrt.a(this.a, null);
+    return null;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (wrt.a(this.a) != null) {
-      wrt.a(this.a).a(3);
-    }
-    if (wrt.a(this.a) != null)
-    {
-      wrt.a(this.a).setAlpha(0.0F);
-      wrt.a(this.a, null);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

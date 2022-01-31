@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
+import amnx;
 import amny;
-import amnz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -17,7 +17,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bfni;
+import bfnz;
 
 public class ConfessNewsBgView
   extends View
@@ -28,7 +28,7 @@ public class ConfessNewsBgView
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = { 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F };
-  amnz[] jdField_a_of_type_ArrayOfAmnz = null;
+  amny[] jdField_a_of_type_ArrayOfAmny = null;
   int b = 0;
   private int c;
   
@@ -55,7 +55,7 @@ public class ConfessNewsBgView
     Object localObject1;
     if (this.c == 2)
     {
-      this.jdField_a_of_type_ArrayOfAmnz = amny.a(this.c, this.b);
+      this.jdField_a_of_type_ArrayOfAmny = amnx.a(this.c, this.b);
       localObject1 = getResources();
       int k = ((Resources)localObject1).getDisplayMetrics().widthPixels;
       int j = ((Resources)localObject1).getDisplayMetrics().heightPixels;
@@ -63,7 +63,7 @@ public class ConfessNewsBgView
       Object localObject2;
       if ((k != 0) && (Math.abs(k - 1080) > 200))
       {
-        localObject1 = this.jdField_a_of_type_ArrayOfAmnz;
+        localObject1 = this.jdField_a_of_type_ArrayOfAmny;
         int m = localObject1.length;
         i = 0;
         while (i < m)
@@ -77,7 +77,7 @@ public class ConfessNewsBgView
       }
       if ((j != 0) && (Math.abs(j * 0.8D - 1800) > 200.0D))
       {
-        localObject1 = this.jdField_a_of_type_ArrayOfAmnz;
+        localObject1 = this.jdField_a_of_type_ArrayOfAmny;
         k = localObject1.length;
         i = 0;
         while (i < k)
@@ -90,12 +90,12 @@ public class ConfessNewsBgView
     }
     else
     {
-      localObject1 = amny.a[0];
-      if ((this.b < 0) || (this.b >= amny.a.length)) {
+      localObject1 = amnx.a[0];
+      if ((this.b < 0) || (this.b >= amnx.a.length)) {
         break label309;
       }
-      localObject1 = amny.a[this.b];
-      this.jdField_a_of_type_ArrayOfAmnz = amny.a(0, this.b);
+      localObject1 = amnx.a[this.b];
+      this.jdField_a_of_type_ArrayOfAmny = amnx.a(0, this.b);
     }
     try
     {
@@ -104,12 +104,12 @@ public class ConfessNewsBgView
         this.jdField_a_of_type_Int = Color.parseColor((String)localObject1);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-        if (!bfni.i()) {
+        if (!bfnz.i()) {
           setLayerType(1, null);
         }
         return;
         label309:
-        this.jdField_a_of_type_ArrayOfAmnz = amny.a(0, 0);
+        this.jdField_a_of_type_ArrayOfAmny = amnx.a(0, 0);
       }
     }
     catch (Exception localException)
@@ -154,9 +154,9 @@ public class ConfessNewsBgView
       ((Path)localObject1).addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       paramCanvas.clipPath((Path)localObject1);
       paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((this.jdField_a_of_type_ArrayOfAmnz != null) && (this.jdField_a_of_type_ArrayOfAmnz.length > 0))
+      if ((this.jdField_a_of_type_ArrayOfAmny != null) && (this.jdField_a_of_type_ArrayOfAmny.length > 0))
       {
-        localObject1 = this.jdField_a_of_type_ArrayOfAmnz;
+        localObject1 = this.jdField_a_of_type_ArrayOfAmny;
         int m = localObject1.length;
         i = 0;
         if (i < m)
@@ -167,7 +167,7 @@ public class ConfessNewsBgView
             try
             {
               Drawable localDrawable = getResources().getDrawable(localObject2.jdField_a_of_type_Int);
-              if (localObject2.jdField_a_of_type_Int == 2130844179) {
+              if (localObject2.jdField_a_of_type_Int == 2130844180) {
                 break;
               }
               int i2 = localDrawable.getIntrinsicWidth();

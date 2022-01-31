@@ -1,23 +1,11 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class ahzu
-  implements MediaPlayer.OnCompletionListener
+public abstract interface ahzu
 {
-  public ahzu(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
-  }
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 

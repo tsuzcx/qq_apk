@@ -1,31 +1,33 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import mqq.app.QQPermissionCallback;
 
-class azdd
-  implements QQPermissionCallback
+public class azdd
+  extends BroadcastReceiver
 {
-  azdd(azdc paramazdc) {}
+  public azdd(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bbcv.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new Intent();
-    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
-    if (this.a.a.q != null)
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
     {
-      paramArrayOfString.putExtra("from", "publish");
-      paramArrayOfString.putExtra("bid", this.a.a.q);
-      paramArrayOfString.putExtra("fromflag", this.a.a.b);
-      bair.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
     }
-    abtu.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
+    do
+    {
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bajf.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
+      }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bajf.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 

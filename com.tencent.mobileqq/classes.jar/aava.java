@@ -1,35 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.ChatSettingForTroop.51;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aava
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aava(ChatSettingForTroop.51 param51) {}
+  public aava(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      aqfb.a(this.a.this$0, true, "action_game_join_group", Long.valueOf(this.a.this$0.d).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    ChatSettingForTroop.e(this.a);
+    bbbp.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, bbbp.a(this.a.a) });
   }
 }
 

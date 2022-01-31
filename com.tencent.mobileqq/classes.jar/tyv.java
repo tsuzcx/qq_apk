@@ -1,123 +1,110 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class tyv
-  extends wcr
-  implements View.OnClickListener
+  implements tyl
 {
-  public static final String KEY = "PlayerDoubleTabSegment";
-  private int jdField_a_of_type_Int = 1;
-  private tyf jdField_a_of_type_Tyf;
-  private ups jdField_a_of_type_Ups;
-  private vas jdField_a_of_type_Vas;
+  private tyv(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public tyv(Context paramContext)
+  public void a()
   {
-    super(paramContext);
+    this.a.p();
   }
   
-  private void a(TextView paramTextView, boolean paramBoolean)
+  public void a(@NonNull upp paramupp, ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
+    Object localObject;
+    if (paramErrorMessage.isSuccess())
+    {
+      localObject = "suc";
+      ved.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramupp);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (tyo)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((tyo)localObject).a(paramupp);
+      }
+      localObject = (tys)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((tys)localObject).a(paramupp);
+      }
+      localObject = (tyn)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
+      {
+        ((tyn)localObject).a(paramupp);
+        if (!paramBoolean) {
+          break label183;
+        }
+        ((tyn)localObject).a(true);
+      }
+      label118:
+      localObject = this.a;
+      if (paramupp.a(bool)) {
+        break label192;
+      }
+    }
+    label183:
+    label192:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+      this.a.p();
+      if (StoryPlayerCommentListView.a(this.a) != null) {
+        StoryPlayerCommentListView.a(this.a).a(paramupp, paramErrorMessage);
+      }
+      return;
+      localObject = "fail";
+      break;
+      ((tyn)localObject).a(false);
+      break label118;
+    }
+  }
+  
+  public void a(@NonNull upp paramupp, boolean paramBoolean)
+  {
+    Object localObject;
     if (paramBoolean)
     {
-      if (QQStoryContext.a()) {
-        paramTextView.setBackgroundResource(2130845562);
+      localObject = "suc";
+      ved.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramupp);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (tyo)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((tyo)localObject).a(paramupp);
       }
-      for (;;)
+      localObject = (tys)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((tys)localObject).a(paramupp);
+      }
+      localObject = (tyn)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
       {
-        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166338));
-        return;
-        paramTextView.setBackgroundResource(2130845561);
+        ((tyn)localObject).a(paramupp);
+        ((tyn)localObject).a(false);
       }
-    }
-    paramTextView.setBackgroundResource(0);
-    if (QQStoryContext.a())
-    {
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166351));
-      return;
-    }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166339));
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ups != null) && (this.jdField_a_of_type_Ups.b())) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramvas.a(2131376523);
-    TextView localTextView = (TextView)paramvas.a(2131376522);
-    if (QQStoryContext.a())
-    {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
-      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166349));
-      paramvas.a(2131373234).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166351));
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      a(paramViewGroup, true);
-      a(localTextView, false);
+      if (!paramBoolean) {
+        break label159;
+      }
+      localObject = this.a;
+      if (paramupp.a(bool)) {
+        break label154;
+      }
+      paramBoolean = true;
+      label130:
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
     }
     for (;;)
     {
-      return paramvas.a();
-      a(paramViewGroup, false);
-      a(localTextView, true);
-    }
-  }
-  
-  public String a()
-  {
-    return "PlayerDoubleTabSegment";
-  }
-  
-  public vas a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Vas = new vas(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561214, paramViewGroup, false));
-    paramViewGroup = (TextView)this.jdField_a_of_type_Vas.a(2131376523);
-    TextView localTextView = (TextView)this.jdField_a_of_type_Vas.a(2131376522);
-    paramViewGroup.setOnClickListener(this);
-    localTextView.setOnClickListener(this);
-    return this.jdField_a_of_type_Vas;
-  }
-  
-  public void a(tyf paramtyf)
-  {
-    this.jdField_a_of_type_Tyf = paramtyf;
-  }
-  
-  public void a(ups paramups)
-  {
-    this.jdField_a_of_type_Ups = paramups;
-    if (this.jdField_a_of_type_Ups.a()) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Tyf.a();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
+      this.a.p();
       return;
-    case 2131376523: 
-      this.jdField_a_of_type_Tyf.a(1);
-      vel.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", vel.a(4444), this.jdField_a_of_type_Ups.a.feedId });
-      return;
+      localObject = "fail";
+      break;
+      label154:
+      paramBoolean = false;
+      break label130;
+      label159:
+      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
     }
-    this.jdField_a_of_type_Tyf.a(2);
-    vel.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", vel.a(4444), this.jdField_a_of_type_Ups.a.feedId });
   }
 }
 

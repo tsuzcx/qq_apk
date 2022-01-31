@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface mvd
 {
-  public abstract void a(Object paramObject, int paramInt);
+  public abstract void a(View paramView);
 }
 
 

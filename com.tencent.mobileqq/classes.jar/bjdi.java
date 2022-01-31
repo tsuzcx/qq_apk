@@ -1,26 +1,20 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
-import NS_QQ_STORY_META.META.StMusic;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-public class bjdi
-  implements xgx<CLIENT.StBatchGetMusicInfoRsp>
+class bjdi
+  implements DialogInterface.OnClickListener
 {
-  public bjdi(QIMMusicConfigManager paramQIMMusicConfigManager, bjbd parambjbd) {}
+  bjdi(bjdg parambjdg) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (paramStBatchGetMusicInfoRsp.vecMusic.size() == 0)) {
-      this.jdField_a_of_type_Bjbd.a(false, new FlowMusic());
-    }
-    while (this.jdField_a_of_type_Bjbd == null) {
-      return;
-    }
-    paramString = new FlowMusic((META.StMusic)paramStBatchGetMusicInfoRsp.vecMusic.get(0));
-    QLog.i("QIMMusicConfigManager", 1, "getSingleFullMusicInfo from story success flow info:" + paramString.toString());
-    this.jdField_a_of_type_Bjbd.a(true, paramString);
+    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
+    this.a.jdField_a_of_type_Bigp.d(false);
+    this.a.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().onBackPressed();
+    avtp.e();
+    avtd.f();
   }
 }
 

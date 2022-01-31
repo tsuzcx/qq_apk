@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ocr;
 
+import algr;
 import algs;
-import algt;
-import aubn;
 import aubp;
-import bbdj;
+import aubr;
+import bbdx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class OcrControl$5$2
   implements Runnable
 {
-  public OcrControl$5$2(aubn paramaubn, algt paramalgt) {}
+  public OcrControl$5$2(aubp paramaubp, algs paramalgs) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_Algt.a.a;
+    String str1 = this.jdField_a_of_type_Algs.a.a;
     String str2 = new File(str1).getParent();
-    if (aubp.a.equals(str2))
+    if (aubr.a.equals(str2))
     {
-      bbdj.d(str1);
+      bbdx.d(str1);
       if (QLog.isColorLevel()) {
         QLog.d("Q.ocr.control", 2, "delete pic path:" + str1);
       }

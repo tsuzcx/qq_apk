@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aidx;
-import aidy;
-import ajxn;
-import ajyc;
-import aktg;
+import aidv;
+import aidw;
+import ajxl;
+import ajya;
+import aktf;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -32,8 +32,8 @@ public class RecentMemberInnerFrame
   extends SelectMemberInnerFrame
   implements View.OnClickListener
 {
-  private aidx jdField_a_of_type_Aidx;
-  private ajxn jdField_a_of_type_Ajxn;
+  private aidv jdField_a_of_type_Aidv;
+  private ajxl jdField_a_of_type_Ajxl;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List<RecentUser> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -59,7 +59,7 @@ public class RecentMemberInnerFrame
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
     if (localObject1 != null)
     {
-      Object localObject2 = ((aktg)localObject1).a(true);
+      Object localObject2 = ((aktf)localObject1).a(true);
       if (localObject2 != null)
       {
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -72,7 +72,7 @@ public class RecentMemberInnerFrame
             {
               if ((localRecentUser.getType() == 0) && (Long.parseLong(localRecentUser.uin) >= 10000L) && (!localRecentUser.uin.equals(localObject1)) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localRecentUser.uin)))
               {
-                Friends localFriends = this.jdField_a_of_type_Ajxn.b(localRecentUser.uin);
+                Friends localFriends = this.jdField_a_of_type_Ajxl.b(localRecentUser.uin);
                 if ((localFriends != null) && (localFriends.isFriend())) {
                   this.jdField_a_of_type_JavaUtilList.add(localRecentUser);
                 }
@@ -98,59 +98,59 @@ public class RecentMemberInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2131562418);
-    this.jdField_a_of_type_Ajxn = ((ajxn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379542));
+    setContentView(2131562417);
+    this.jdField_a_of_type_Ajxl = ((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131379547));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131167087);
-    paramBundle = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562361, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131365764));
-    ((Button)paramBundle.findViewById(2131363480)).setVisibility(8);
+    paramBundle = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562360, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131365763));
+    ((Button)paramBundle.findViewById(2131363479)).setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     g();
-    this.jdField_a_of_type_Aidx = new aidx(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aidx);
+    this.jdField_a_of_type_Aidv = new aidv(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aidv);
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719221), ajyc.a(2131713196));
-    if (this.jdField_a_of_type_Aidx != null) {
-      this.jdField_a_of_type_Aidx.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131719232), ajya.a(2131713207));
+    if (this.jdField_a_of_type_Aidv != null) {
+      this.jdField_a_of_type_Aidv.notifyDataSetChanged();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Aidx != null) {
-      this.jdField_a_of_type_Aidx.c();
+    if (this.jdField_a_of_type_Aidv != null) {
+      this.jdField_a_of_type_Aidv.c();
     }
     super.d();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Aidx.notifyDataSetChanged();
+    this.jdField_a_of_type_Aidv.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    aidy localaidy = (aidy)paramView.getTag();
-    if ((localaidy != null) && (localaidy.jdField_a_of_type_JavaLangString != null) && (localaidy.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaidy.jdField_a_of_type_AndroidWidgetTextView != null) && (localaidy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
+    aidw localaidw = (aidw)paramView.getTag();
+    if ((localaidw != null) && (localaidw.jdField_a_of_type_JavaLangString != null) && (localaidw.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaidw.jdField_a_of_type_AndroidWidgetTextView != null) && (localaidw.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaidy.jdField_a_of_type_JavaLangString, localaidy.jdField_a_of_type_AndroidWidgetTextView.getText().toString(), 0, "-1");
-      localaidy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaidw.jdField_a_of_type_JavaLangString, localaidw.jdField_a_of_type_AndroidWidgetTextView.getText().toString(), 0, "-1");
+      localaidw.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
       if (AppSetting.d)
       {
-        if (!localaidy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        if (!localaidw.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
           break label133;
         }
-        paramView.setContentDescription(localaidy.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajyc.a(2131713194));
+        paramView.setContentDescription(localaidw.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajya.a(2131713205));
       }
     }
     return;
     label133:
-    paramView.setContentDescription(localaidy.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajyc.a(2131713197));
+    paramView.setContentDescription(localaidw.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajya.a(2131713208));
   }
 }
 

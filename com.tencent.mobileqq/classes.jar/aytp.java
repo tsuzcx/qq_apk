@@ -1,119 +1,81 @@
 import android.os.SystemClock;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.TransReport;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import tencent.im.cs.smartptt.Smartptt.PttTransRsp;
+import tencent.im.cs.smartptt.Smartptt.RspBody;
 
 class aytp
   implements ITransactionCallback
 {
-  aytp(ayto paramayto, String paramString) {}
+  aytp(ayto paramayto, long paramLong) {}
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     long l = SystemClock.uptimeMillis();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    String str5 = (String)paramHashMap.get("param_conf_connNum");
-    String str6 = (String)paramHashMap.get("param_fin_lost");
     if (QLog.isColorLevel()) {
-      QLog.d("PtvGuideUploader", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - ayto.a(this.jdField_a_of_type_Ayto)) + "ms");
+      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms retCode=" + paramInt);
     }
-    ayto.a(this.jdField_a_of_type_Ayto).put("serverip", paramHashMap.get("ip"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_bdhSrv", paramHashMap.get("ip"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_bdhPort", paramHashMap.get("port"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("X-piccachetime", paramArrayOfByte);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_BdhTrans", str1);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_segspercnt", str2);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_segSize", str3);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_segNum", str4);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_connNum", str5);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_fin_lost", str6);
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_retry_code", paramHashMap.get("param_retry_code"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_ip_index", paramHashMap.get("param_ip_index"));
-    ayto.a(this.jdField_a_of_type_Ayto).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-    if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
-      ayto.a(this.jdField_a_of_type_Ayto, true);
+    if ((ayto.a(this.jdField_a_of_type_Ayto) != null) && (ayto.a(this.jdField_a_of_type_Ayto).jdField_b_of_type_JavaLangString != null)) {
+      new File(ayto.a(this.jdField_a_of_type_Ayto).jdField_b_of_type_JavaLangString).delete();
     }
-    ayto.a(this.jdField_a_of_type_Ayto, paramInt);
-    ayto.c(this.jdField_a_of_type_Ayto, "sessionKey or sigSession is null");
-    ayto.a(this.jdField_a_of_type_Ayto).a(paramInt, ayto.b(this.jdField_a_of_type_Ayto));
-    ayto.a(this.jdField_a_of_type_Ayto, false);
+    this.jdField_a_of_type_Ayto.d(2005);
+    this.jdField_a_of_type_Ayto.jdField_a_of_type_Ayqo.a = paramArrayOfByte;
+    this.jdField_a_of_type_Ayto.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayto.b);
+    this.jdField_a_of_type_Ayto.d();
   }
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
+    boolean bool2 = true;
     long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "onSuccess SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
+    }
+    if ((ayto.a(this.jdField_a_of_type_Ayto) != null) && (ayto.a(this.jdField_a_of_type_Ayto).jdField_b_of_type_JavaLangString != null)) {
+      new File(ayto.a(this.jdField_a_of_type_Ayto).jdField_b_of_type_JavaLangString).delete();
+    }
+    paramHashMap = new Smartptt.RspBody();
     try
     {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has())
-      {
-        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
-        if (paramArrayOfByte.length() > 0)
-        {
-          ayto.a(this.jdField_a_of_type_Ayto, paramArrayOfByte);
-          ayto.a(this.jdField_a_of_type_Ayto).a(paramArrayOfByte);
-          if (QLog.isColorLevel()) {
-            QLog.d("PtvGuideUploader", 2, "set uuid from BDH ");
-          }
+      paramHashMap.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttSliceUploadProcessor", 2, "onSuccess  text =" + paramHashMap.msg_ptttrans_rsp.str_text.get() + " id=" + paramHashMap.msg_ptttrans_rsp.str_voice_id.get() + " pos=" + this.jdField_a_of_type_Ayto.jdField_a_of_type_Aywc.p + " uint32_is_final=" + paramHashMap.msg_ptttrans_rsp.uint32_is_final.get());
+      }
+      this.jdField_a_of_type_Ayto.jdField_a_of_type_Ayqo.b = 327696;
+      this.jdField_a_of_type_Ayto.jdField_a_of_type_Ayqo.A = (ayto.a(this.jdField_a_of_type_Ayto) + paramHashMap.msg_ptttrans_rsp.str_text.get());
+      this.jdField_a_of_type_Ayto.jdField_a_of_type_Ayqo.c = 68;
+      this.jdField_a_of_type_Ayto.jdField_a_of_type_Ayqo.i = this.jdField_a_of_type_Ayto.jdField_a_of_type_Aywc.p;
+      paramArrayOfByte = this.jdField_a_of_type_Ayto;
+      boolean bool1 = bool2;
+      if (paramHashMap.msg_ptttrans_rsp.uint32_is_final.get() != 1) {
+        if (!ayto.a(this.jdField_a_of_type_Ayto).jdField_b_of_type_Boolean) {
+          break label355;
         }
       }
-      ayto.b(this.jdField_a_of_type_Ayto, (String)paramHashMap.get("rep_bdhTrans"));
-      paramArrayOfByte = (String)paramHashMap.get("segspercnt");
-      String str1 = (String)paramHashMap.get("param_conf_segSize");
-      String str2 = (String)paramHashMap.get("param_conf_segNum");
-      String str3 = (String)paramHashMap.get("param_conf_connNum");
-      String str4 = (String)paramHashMap.get("param_fin_lost");
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvGuideUploader", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - ayto.a(this.jdField_a_of_type_Ayto)) + "ms transInfo:" + ayto.a(this.jdField_a_of_type_Ayto));
+      label355:
+      for (bool1 = bool2;; bool1 = false)
+      {
+        ayto.a(paramArrayOfByte, bool1, true);
+        this.jdField_a_of_type_Ayto.b.b();
+        this.jdField_a_of_type_Ayto.b.a = 1;
+        return;
       }
-      ayto.a(this.jdField_a_of_type_Ayto).put("serverip", paramHashMap.get("ip"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_bdhSrv", paramHashMap.get("ip"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_bdhPort", paramHashMap.get("port"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("X-piccachetime", String.valueOf(ayto.a(this.jdField_a_of_type_Ayto).mTransReport.timeCost_Cache));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_BdhTrans", ayto.a(this.jdField_a_of_type_Ayto));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_segspercnt", paramArrayOfByte);
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_segSize", str1);
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_segNum", str2);
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_conf_connNum", str3);
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_fin_lost", str4);
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_retry_code", paramHashMap.get("param_retry_code"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_ip_index", paramHashMap.get("param_ip_index"));
-      ayto.a(this.jdField_a_of_type_Ayto).put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-      if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
-        ayto.a(this.jdField_a_of_type_Ayto, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvGuideUploader", 2, "<BDH_LOG> Transaction Success,delete combined file");
-      }
-      bbdj.d(this.jdField_a_of_type_JavaLangString);
-      ayto.a(this.jdField_a_of_type_Ayto, true);
       return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("PtvGuideUploader", 2, "get uuid from BDH error", paramArrayOfByte);
-        }
-      }
+      paramArrayOfByte.printStackTrace();
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
   
@@ -122,11 +84,17 @@ class aytp
   public void onTransStart()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PtvGuideUploader", 2, "<BDH_LOG> onTransStart()");
+      QLog.d("PttSliceUploadProcessor", 2, "<BDH_LOG> onTransStart()");
     }
+    this.jdField_a_of_type_Ayto.b.a();
   }
   
-  public void onUpdateProgress(int paramInt) {}
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttSliceUploadProcessor", 2, "onUpdateProgress transferedSize:" + paramInt);
+    }
+  }
 }
 
 

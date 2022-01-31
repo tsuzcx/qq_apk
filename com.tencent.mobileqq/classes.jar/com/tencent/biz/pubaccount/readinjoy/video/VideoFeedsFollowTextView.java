@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qjq;
-import qrr;
+import qjn;
+import qro;
 
 public class VideoFeedsFollowTextView
   extends TextView
-  implements qjq
+  implements qjn
 {
   public VideoFeedsFollowTextView(Context paramContext)
   {
@@ -44,19 +44,19 @@ public class VideoFeedsFollowTextView
     if (paramBoolean)
     {
       if (paramVideoInfo.e()) {}
-      for (paramVideoInfo = ajyc.a(2131716218);; paramVideoInfo = ajyc.a(2131716205))
+      for (paramVideoInfo = ajya.a(2131716229);; paramVideoInfo = ajya.a(2131716216))
       {
         setText(paramVideoInfo);
-        setBackgroundDrawable(qrr.a(getContext(), 2130842556));
+        setBackgroundDrawable(qro.a(getContext(), 2130842557));
         setCompoundDrawables(null, null, null, null);
         return;
       }
     }
     if (paramVideoInfo.e()) {}
-    for (paramVideoInfo = ajyc.a(2131716240);; paramVideoInfo = ajyc.a(2131716227))
+    for (paramVideoInfo = ajya.a(2131716251);; paramVideoInfo = ajya.a(2131716238))
     {
       setText(paramVideoInfo);
-      setBackgroundDrawable(qrr.a(getContext(), 2130842418));
+      setBackgroundDrawable(qro.a(getContext(), 2130842419));
       return;
     }
   }

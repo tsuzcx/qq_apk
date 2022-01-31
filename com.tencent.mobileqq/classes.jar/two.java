@@ -1,48 +1,33 @@
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class two
 {
+  @Nullable
   public String a;
+  public twl a;
+  @Nullable
+  public twm a;
+  @Nullable
   public String b;
   
-  public two(@NonNull String paramString)
+  public two(@Nullable twl paramtwl, @Nullable String paramString1, @Nullable String paramString2)
   {
-    this.a = paramString;
-    vxs.a(paramString);
+    this.jdField_a_of_type_Twl = paramtwl;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public boolean equals(Object paramObject)
+  public two(two paramtwo)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (two)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
+    this.jdField_a_of_type_Twl = paramtwo.jdField_a_of_type_Twl;
+    this.jdField_a_of_type_JavaLangString = paramtwo.jdField_a_of_type_JavaLangString;
+    this.b = paramtwo.b;
+    this.jdField_a_of_type_Twm = paramtwo.jdField_a_of_type_Twm;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.b == null) {}
-    for (String str = "";; str = this.b) {
-      return str + this.a;
-    }
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Twl + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
 }
 

@@ -1,143 +1,170 @@
-import android.content.res.Resources;
+import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.FontMetricsInt;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.JobQueue;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.text.QQText.SmallEmojiSpan.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.style.ReplacementSpan;
+import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aykr
-  extends aykp
+  extends ReplacementSpan
 {
-  boolean b;
-  int d;
-  public int e;
-  public int f;
+  public float a;
+  public int a;
+  private WeakReference<Drawable> a;
+  protected volatile boolean a;
+  public float b;
+  int b;
+  public float c;
+  public int c;
+  public float d;
   
-  public aykr(char[] paramArrayOfChar, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public aykr(int paramInt1, int paramInt2, int paramInt3)
   {
-    super(-1, paramInt, 2);
-    this.d = paramInt;
-    this.b = paramBoolean1;
-    this.a = paramBoolean2;
-    paramArrayOfChar = anqu.a(paramArrayOfChar);
-    if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 2))
-    {
-      this.e = paramArrayOfChar[0];
-      this.f = paramArrayOfChar[1];
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQText", 2, "mEpId:" + this.e + ",mEId:" + this.f);
-    }
-  }
-  
-  private void a()
-  {
-    QQText.SmallEmojiSpan.1 local1 = new QQText.SmallEmojiSpan.1(this);
-    try
-    {
-      anvs localanvs = (anvs)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(ayki.d())).getManager(43);
-      if (localanvs != null) {
-        localanvs.a.execute(local1, 128, true);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
   }
   
   public int a()
   {
-    return this.e;
+    return 0x7FFFFFFF & this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable a()
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject1 != null) {}
+    for (localObject1 = (Drawable)((WeakReference)localObject1).get();; localObject1 = null)
+    {
+      Object localObject2;
+      if ((localObject1 instanceof URLDrawable))
+      {
+        localObject2 = (URLDrawable)localObject1;
+        if ((this.jdField_a_of_type_Boolean) && (!((URLDrawable)localObject2).mUseApngImage))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQText", 2, "getDrawable: change to apng");
+          }
+          localObject1 = null;
+        }
+      }
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = b();
+          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject2);
+        }
+        return localObject2;
+      }
+    }
   }
   
   public String a()
   {
-    String str = ayki.c;
-    Emoticon localEmoticon = null;
-    askd localaskd = anzm.a();
-    if (localaskd != null) {
-      localEmoticon = localaskd.a(Integer.toString(this.e), Integer.toString(this.f));
-    }
-    if (localEmoticon != null) {
-      str = localEmoticon.character;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQText", 2, "descp:" + str);
-    }
-    return str;
+    return "";
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("tag.vasFont.enlarge", 2, "SmallEmojiSpan setSize size: " + paramInt);
-    }
-    this.d = paramInt;
-    this.b = paramInt;
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage)
-  {
-    if ((!this.a) && (paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2))
-    {
-      this.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQText", 2, "updateApngFlag mIsAPNG = true");
-      }
+    this.jdField_b_of_type_Int = paramInt;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setBounds(0, 0, paramInt, paramInt);
     }
   }
   
   protected Drawable b()
   {
-    Object localObject = new aocb(ayki.d());
-    Emoticon localEmoticon = new Emoticon();
-    localEmoticon.eId = String.valueOf(this.f);
-    localEmoticon.epId = String.valueOf(this.e);
-    if (!this.b)
+    Drawable localDrawable2;
+    Drawable localDrawable1;
+    if (this.jdField_c_of_type_Int == 0)
     {
-      localEmoticon.jobType = 3;
-      ((aocb)localObject).a = localEmoticon;
-      localObject = ((aocb)localObject).a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
+      localDrawable2 = aylc.a(this.jdField_a_of_type_Int);
+      localDrawable1 = localDrawable2;
+      if (localDrawable2 != null)
+      {
+        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+        localDrawable1 = localDrawable2;
+      }
     }
-    for (;;)
+    do
     {
-      if (localObject != null) {
-        ((Drawable)localObject).setBounds(0, 0, this.d, this.d);
+      int i;
+      do
+      {
+        do
+        {
+          return localDrawable1;
+          if ((0x80000000 & this.jdField_a_of_type_Int) != 0) {
+            break;
+          }
+          localDrawable2 = aylc.a(this.jdField_a_of_type_Int, false);
+          localDrawable1 = localDrawable2;
+        } while (localDrawable2 == null);
+        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+        return localDrawable2;
+        i = 0x7FFFFFFF & this.jdField_a_of_type_Int;
+        if ((i < 0) || (i >= ayjy.b.length)) {
+          break label169;
+        }
+        if (ayjy.b[i] != ayjy.a[i]) {
+          break;
+        }
+        localDrawable2 = aylc.a(i, false);
+        localDrawable1 = localDrawable2;
+      } while (localDrawable2 == null);
+      localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+      return localDrawable2;
+      localDrawable2 = aylc.a(i, true);
+      localDrawable1 = localDrawable2;
+    } while (localDrawable2 == null);
+    localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+    return localDrawable2;
+    label169:
+    return new ColorDrawable();
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = a();
+    paramCanvas.save();
+    float f2 = paramInt4 - this.jdField_b_of_type_Int;
+    float f1 = f2;
+    if (paramInt5 > paramInt4)
+    {
+      f1 = f2;
+      if (paramPaint != null) {
+        f1 = f2 + paramPaint.getFontMetrics().descent;
       }
-      return localObject;
-      localEmoticon.jobType = 3;
-      ((aocb)localObject).a = localEmoticon;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQText", 2, "SmallEmojiSpan doGetDrawable: epid = " + this.e + " eid = " + this.f + " isAPNG = " + this.a);
-      }
-      ((aocb)localObject).b = this.a;
-      localObject = ((aocb)localObject).b(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
-      a();
     }
+    paramCanvas.translate(paramFloat, f1);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence.draw(paramCanvas);
+      this.jdField_a_of_type_Float = paramFloat;
+      this.jdField_b_of_type_Float = paramInt3;
+      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Int);
+      this.d = paramInt5;
+    }
+    paramCanvas.restore();
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     if (paramFontMetricsInt != null)
     {
-      paramFontMetricsInt.ascent = (-this.d);
+      paramFontMetricsInt.ascent = (-this.jdField_b_of_type_Int);
       paramFontMetricsInt.descent = 0;
       paramFontMetricsInt.top = paramFontMetricsInt.ascent;
       paramFontMetricsInt.bottom = 0;
     }
-    return this.d;
+    return this.jdField_b_of_type_Int;
   }
 }
 

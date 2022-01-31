@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-
-class tbm
-  implements View.OnLongClickListener
+public class tbm
 {
-  tbm(tbk paramtbk, tbj paramtbj) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean onLongClick(View paramView)
+  public tbm(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    int i = this.jdField_a_of_type_Tbj.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Tbk.a.b(this.jdField_a_of_type_Tbj.itemView, i);
-    }
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

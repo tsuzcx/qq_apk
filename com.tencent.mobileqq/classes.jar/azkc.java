@@ -1,15 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class azkc
-  implements bfoq
+  implements DialogInterface.OnDismissListener
 {
-  azkc(azjy paramazjy) {}
+  azkc(azka paramazka) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    azjy.a(this.a);
-    if (paramInt == 0) {
-      azjy.a(this.a, "");
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

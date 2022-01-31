@@ -1,40 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.PublishBoxStatusEvent;
-import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.feed.CertifiedFakeFeed;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import cooperation.qzone.QZoneTopGestureLayout;
 
-class bgzs
-  implements EIPCResultCallback
+public class bgzs
+  extends TopGestureLayout.TopGestureDetector
 {
-  bgzs(bgzq parambgzq) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bgzs(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
   {
-    ArrayList localArrayList;
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    super(paramQZoneTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return false;
+    }
+    if (!QZoneTopGestureLayout.b()) {
+      QZoneTopGestureLayout.b(this.a, -1);
+    }
+    if (QZoneTopGestureLayout.a(this.a)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
+    if (QZoneTopGestureLayout.a(this.a, 1))
     {
-      paramEIPCResult = paramEIPCResult.data;
-      paramEIPCResult.setClassLoader(CertifiedFakeFeed.class.getClassLoader());
-      localArrayList = paramEIPCResult.getParcelableArrayList("KEY_CERTIFIED_FAKE_FEED_LIST");
-      if (localArrayList != null) {
-        wpw.a().a(new SubscribeFeedsEvent(localArrayList));
-      }
-      wpw.a().a(new PublishBoxStatusEvent(paramEIPCResult));
-      if (localArrayList != null) {
-        break label93;
+      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
+      {
+        QZoneTopGestureLayout.c(this.a, -1);
+        this.a.mOnFlingGesture.flingLToR();
+        return true;
       }
     }
-    label93:
-    for (int i = 0;; i = localArrayList.size())
+    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
     {
-      QLog.d("QzoneIPCModule", 4, String.format("Get certifed account task list %b", new Object[] { Integer.valueOf(i) }));
-      return;
+      QZoneTopGestureLayout.d(this.a, -1);
+      this.a.mOnFlingGesture.flingRToL();
+      return true;
     }
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (!QZoneTopGestureLayout.b()) {
+      QZoneTopGestureLayout.a(this.a, -1);
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
 }
 

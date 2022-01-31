@@ -1,28 +1,37 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class alcg
+  extends ayxp
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ayrv jdField_a_of_type_Ayrv;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  String c;
+  alcd jdField_a_of_type_Alcd;
+  alcf jdField_a_of_type_Alcf;
+  
+  public alcg(QQAppInterface paramQQAppInterface, alcf paramalcf, alcd paramalcd)
+  {
+    super(paramQQAppInterface, paramalcf.b);
+    this.jdField_a_of_type_Alcf = paramalcf;
+    this.jdField_a_of_type_Alcd = paramalcd;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
+    }
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    }
+    alcd.a(this.jdField_a_of_type_Alcd, this.jdField_a_of_type_Alcf);
+  }
   
   public String toString()
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", md5='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append(", fileSize=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", downloadSize=").append(this.jdField_b_of_type_Long);
-    localStringBuffer.append(", req=").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Alcf + ", mDownloader=" + this.jdField_a_of_type_Alcd;
   }
 }
 

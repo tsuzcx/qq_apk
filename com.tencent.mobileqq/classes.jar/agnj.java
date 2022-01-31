@@ -1,24 +1,27 @@
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.AbsListView;
 
 public class agnj
-  implements bfob
+  implements bhqd
 {
-  public agnj(PhotoListActivity paramPhotoListActivity) {}
+  public agnj(PhotoListActivity paramPhotoListActivity, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if ((PhotoListActivity.b(this.a)) && (paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Agnv != null) && (this.a.c != null)) {
-      PhotoListActivity.a(this.a);
-    }
-    if (paramInt == 0)
+    if (paramBoolean)
     {
-      aaad.a().a("list_photo", false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      {
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
+      }
+    }
+    else {
       return;
     }
-    aaad.a().a("list_photo");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
   }
 }
 

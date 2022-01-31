@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
-
 public class axos
-  implements Comparator<File>
 {
-  public axos(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public long a;
+  public boolean a;
   
-  public int a(File paramFile1, File paramFile2)
+  public axos()
   {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

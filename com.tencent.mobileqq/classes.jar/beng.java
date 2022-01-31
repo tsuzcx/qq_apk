@@ -1,6 +1,26 @@
-public class beng
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class beng
+  implements View.OnClickListener
 {
-  public int a;
+  beng(bene parambene, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bene, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bene.isShowing()) {
+        this.jdField_a_of_type_Bene.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 

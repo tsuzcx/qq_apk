@@ -2,17 +2,17 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import begy;
-import bejy;
-import beka;
-import bekg;
-import beks;
-import beku;
-import bequ;
-import berj;
-import besl;
-import beyr;
-import bffv;
+import behp;
+import bekp;
+import bekr;
+import bekx;
+import belj;
+import bell;
+import berl;
+import besa;
+import betc;
+import bezi;
+import bfgm;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
@@ -42,24 +42,24 @@ public class RequestJsPlugin
   private boolean socketClosedCallbacked;
   private ConcurrentHashMap<Integer, RequestJsPlugin.WebsocketRequestTask> wsrequestMap = new ConcurrentHashMap();
   
-  private void callback(beka parambeka, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  private void callback(bekr parambekr, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
   {
-    if (parambeka != null)
+    if (parambekr != null)
     {
       if (paramString3 != null)
       {
-        paramJSONObject = beks.a(paramJSONObject, "errMsg", paramString3).toString();
-        parambeka.a(paramJSONObject);
+        paramJSONObject = belj.a(paramJSONObject, "errMsg", paramString3).toString();
+        parambekr.a(paramJSONObject);
         if (!"fail".equals(paramString1)) {
           break label137;
         }
-        besl.d("[mini] http.RequestJsPlugin", "[callbackFail] " + paramJSONObject);
+        betc.d("[mini] http.RequestJsPlugin", "[callbackFail] " + paramJSONObject);
       }
     }
     else {
       return;
     }
-    paramString3 = new StringBuilder().append(parambeka.jdField_a_of_type_JavaLangString).append(":").append(paramString1);
+    paramString3 = new StringBuilder().append(parambekr.jdField_a_of_type_JavaLangString).append(":").append(paramString1);
     if (TextUtils.isEmpty(paramString2)) {}
     for (paramString2 = "";; paramString2 = " " + paramString2)
     {
@@ -67,37 +67,37 @@ public class RequestJsPlugin
       break;
     }
     label137:
-    besl.b("[mini] http.RequestJsPlugin", "[callback] " + paramJSONObject);
+    betc.b("[mini] http.RequestJsPlugin", "[callback] " + paramJSONObject);
   }
   
-  private void callbackComplete(beka parambeka, JSONObject paramJSONObject)
+  private void callbackComplete(bekr parambekr, JSONObject paramJSONObject)
   {
-    callback(parambeka, paramJSONObject, "complete", null, null);
+    callback(parambekr, paramJSONObject, "complete", null, null);
   }
   
-  private void callbackFail(beka parambeka, JSONObject paramJSONObject)
+  private void callbackFail(bekr parambekr, JSONObject paramJSONObject)
   {
-    callback(parambeka, paramJSONObject, "fail", null, null);
+    callback(parambekr, paramJSONObject, "fail", null, null);
   }
   
-  private void callbackFail(beka parambeka, JSONObject paramJSONObject, String paramString)
+  private void callbackFail(bekr parambekr, JSONObject paramJSONObject, String paramString)
   {
-    callback(parambeka, paramJSONObject, "fail", paramString, null);
+    callback(parambekr, paramJSONObject, "fail", paramString, null);
   }
   
-  private void callbackFail(beka parambeka, JSONObject paramJSONObject, String paramString1, String paramString2)
+  private void callbackFail(bekr parambekr, JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    callback(parambeka, paramJSONObject, "fail", paramString1, null);
+    callback(parambekr, paramJSONObject, "fail", paramString1, null);
   }
   
-  private void callbackOK(beka parambeka, JSONObject paramJSONObject)
+  private void callbackOK(bekr parambekr, JSONObject paramJSONObject)
   {
-    callback(parambeka, paramJSONObject, "ok", null, null);
+    callback(parambekr, paramJSONObject, "ok", null, null);
   }
   
-  private void callbackOK(beka parambeka, JSONObject paramJSONObject, String paramString)
+  private void callbackOK(bekr parambekr, JSONObject paramJSONObject, String paramString)
   {
-    callback(parambeka, paramJSONObject, "ok", null, paramString);
+    callback(parambekr, paramJSONObject, "ok", null, paramString);
   }
   
   private String getRequestReferer()
@@ -150,7 +150,7 @@ public class RequestJsPlugin
     return null;
   }
   
-  private void onCloseCallback(beka parambeka, int paramInt1, String paramString, int paramInt2)
+  private void onCloseCallback(bekr parambekr, int paramInt1, String paramString, int paramInt2)
   {
     try
     {
@@ -159,25 +159,25 @@ public class RequestJsPlugin
       ((JSONObject)localObject).put("state", "close");
       ((JSONObject)localObject).put("code", paramInt1);
       ((JSONObject)localObject).put("reason", paramString);
-      parambeka.jdField_a_of_type_Begy.a("onSocketTaskStateChange", ((JSONObject)localObject).toString(), 0);
-      parambeka = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt2));
+      parambekr.jdField_a_of_type_Behp.a("onSocketTaskStateChange", ((JSONObject)localObject).toString(), 0);
+      parambekr = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(paramInt2));
       paramString = this.mMiniAppInfo;
-      localObject = beyr.a(this.mMiniAppInfo);
-      if (parambeka != null) {}
-      for (parambeka = parambeka.mUrl;; parambeka = null)
+      localObject = bezi.a(this.mMiniAppInfo);
+      if (parambekr != null) {}
+      for (parambekr = parambekr.mUrl;; parambekr = null)
       {
-        beyr.a(paramString, 633, null, null, null, 0, (String)localObject, 0L, getSecondLevelDomain(parambeka));
+        bezi.a(paramString, 633, null, null, null, 0, (String)localObject, 0L, getSecondLevelDomain(parambekr));
         return;
       }
       return;
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
-      besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onClose exception:", parambeka);
+      betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onClose exception:", parambekr);
     }
   }
   
-  public String createRequestTask(beka parambeka)
+  public String createRequestTask(bekr parambekr)
   {
     boolean bool;
     String str2;
@@ -185,25 +185,25 @@ public class RequestJsPlugin
     {
       try
       {
-        Object localObject1 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+        Object localObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
         bool = ((JSONObject)localObject1).optBoolean("__skipDomainCheck__", false);
         localObject1 = new RequestJsPlugin.RequestTask(this, (JSONObject)localObject1);
         str2 = ((RequestJsPlugin.RequestTask)localObject1).mUrl;
         if ((((RequestJsPlugin.RequestTask)localObject1).mMethod != null) && (!supportMethod.contains(((RequestJsPlugin.RequestTask)localObject1).mMethod.toUpperCase())))
         {
           if (!this.mIsMiniGame) {
-            callbackFail(parambeka, null, "request protocol error");
+            callbackFail(parambekr, null, "request protocol error");
           }
-          localObject1 = bekg.a("createRequest", null, "request protocol error").toString();
+          localObject1 = bekx.a("createRequest", null, "request protocol error").toString();
           return localObject1;
         }
         if ((!TextUtils.isEmpty(str2)) && ((str2.startsWith("https://")) || (str2.startsWith("http://")))) {
           break label207;
         }
         if (!this.mIsMiniGame) {
-          callbackFail(parambeka, null, "url is invalid");
+          callbackFail(parambekr, null, "url is invalid");
         }
-        localObject1 = bekg.a("createRequest", null, "url is invalid").toString();
+        localObject1 = bekx.a("createRequest", null, "url is invalid").toString();
         return localObject1;
       }
       finally {}
@@ -211,63 +211,63 @@ public class RequestJsPlugin
     }
     catch (Throwable localThrowable1)
     {
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " exception:", localThrowable1);
-      callbackFail(parambeka, null, "createRequest");
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " exception:", localThrowable1);
+      callbackFail(parambekr, null, "createRequest");
     }
     for (;;)
     {
       label207:
       String str1;
-      if (!bffv.a(this.mMiniAppInfo, bool, str2, 0))
+      if (!bfgm.a(this.mMiniAppInfo, bool, str2, 0))
       {
-        besl.c("[mini] http.RequestJsPlugin", "check request DomainValid fail, callbackFail, event:" + parambeka.jdField_a_of_type_JavaLangString + ", callbackId:" + parambeka.jdField_b_of_type_Int + ", url:" + str2);
+        betc.c("[mini] http.RequestJsPlugin", "check request DomainValid fail, callbackFail, event:" + parambekr.jdField_a_of_type_JavaLangString + ", callbackId:" + parambekr.jdField_b_of_type_Int + ", url:" + str2);
         if (!this.mIsMiniGame) {
-          callbackFail(parambeka, null, "url not in domain list, 请求域名不合法");
+          callbackFail(parambekr, null, "url not in domain list, 请求域名不合法");
         }
-        str1 = bekg.a("createRequest", null, "url not in domain list, 请求域名不合法").toString();
+        str1 = bekx.a("createRequest", null, "url not in domain list, 请求域名不合法").toString();
         return str1;
       }
       this.requestMap.put(Integer.valueOf(str1.mTaskId), str1);
       try
       {
-        JSONObject localJSONObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+        JSONObject localJSONObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
         localJSONObject.put("requestTaskId", str1.mTaskId);
         if (this.requestMap.size() > 200)
         {
-          besl.a("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
+          betc.a("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
           if (!this.mIsMiniGame) {
-            callbackFail(parambeka, localJSONObject);
+            callbackFail(parambekr, localJSONObject);
           }
-          str1 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
         RequestProxy localRequestProxy = (RequestProxy)ProxyManager.get(RequestProxy.class);
         if (localRequestProxy == null)
         {
-          besl.a("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
+          betc.a("[mini] http.RequestJsPlugin", "[httpRequest] too much request");
           if (!this.mIsMiniGame) {
-            callbackFail(parambeka, localJSONObject);
+            callbackFail(parambekr, localJSONObject);
           }
-          str1 = bekg.b(parambeka.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
-        if (localRequestProxy.request(str1.mUrl, str1.mBody, str1.mHeaders, str1.mMethod, 60, new RequestJsPlugin.1(this, str2, str1, parambeka)))
+        if (localRequestProxy.request(str1.mUrl, str1.mBody, str1.mHeaders, str1.mMethod, 60, new RequestJsPlugin.1(this, str2, str1, parambekr)))
         {
           if (!this.mIsMiniGame) {
-            callbackOK(parambeka, localJSONObject);
+            callbackOK(parambekr, localJSONObject);
           }
-          str1 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, localJSONObject).toString();
+          str1 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, localJSONObject).toString();
           return str1;
         }
       }
       catch (Throwable localThrowable2)
       {
-        besl.d("[mini] http.RequestJsPlugin", "", localThrowable2);
+        betc.d("[mini] http.RequestJsPlugin", "", localThrowable2);
       }
     }
   }
   
-  public String createSocketTask(beka parambeka)
+  public String createSocketTask(bekr parambekr)
   {
     try
     {
@@ -278,59 +278,59 @@ public class RequestJsPlugin
         WebSocketProxy localWebSocketProxy = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
         if (localWebSocketProxy == null)
         {
-          besl.c("[mini] http.RequestJsPlugin", "not support web socket right now");
-          callbackFail(parambeka, null, "not support web socket right now");
+          betc.c("[mini] http.RequestJsPlugin", "not support web socket right now");
+          callbackFail(parambekr, null, "not support web socket right now");
           return "";
         }
-        localObject3 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+        localObject3 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
         boolean bool = ((JSONObject)localObject3).optBoolean("__skipDomainCheck__", false);
         j = this.mApkgInfo.a().a.jdField_b_of_type_Int;
         localObject3 = new RequestJsPlugin.WebsocketRequestTask(this, (JSONObject)localObject3);
-        if (!bffv.a(this.mMiniAppInfo, bool, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, 1))
+        if (!bfgm.a(this.mMiniAppInfo, bool, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, 1))
         {
-          besl.c("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + parambeka.jdField_a_of_type_JavaLangString + ", callbackId:" + parambeka.jdField_b_of_type_Int + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl);
-          callbackFail(parambeka, null, "请求域名不合法");
+          betc.c("[mini] http.RequestJsPlugin", "check socket DomainValid fail, callbackFail, event:" + parambekr.jdField_a_of_type_JavaLangString + ", callbackId:" + parambekr.jdField_b_of_type_Int + ", url:" + ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl);
+          callbackFail(parambekr, null, "请求域名不合法");
           return "";
         }
       }
       try
       {
-        parambeka = new RequestJsPlugin.WebsocketRequestTask(this, new JSONObject(parambeka.jdField_b_of_type_JavaLangString)).mUrl;
-        beyr.a(this.mMiniAppInfo, 632, null, null, null, 1, beyr.a(this.mMiniAppInfo), 0L, getSecondLevelDomain(parambeka));
+        parambekr = new RequestJsPlugin.WebsocketRequestTask(this, new JSONObject(parambekr.jdField_b_of_type_JavaLangString)).mUrl;
+        bezi.a(this.mMiniAppInfo, 632, null, null, null, 1, bezi.a(this.mMiniAppInfo), 0L, getSecondLevelDomain(parambekr));
         return "";
         int i = j;
         if (((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout > j) {
           i = ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTimeout;
         }
-        localObject1.connectSocket(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mHeaders, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mMethod, i, new RequestJsPlugin.2(this, parambeka, (RequestJsPlugin.WebsocketRequestTask)localObject3));
+        localObject1.connectSocket(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mUrl, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mHeaders, ((RequestJsPlugin.WebsocketRequestTask)localObject3).mMethod, i, new RequestJsPlugin.2(this, parambekr, (RequestJsPlugin.WebsocketRequestTask)localObject3));
         this.wsrequestMap.put(Integer.valueOf(((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId), localObject3);
-        Object localObject2 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+        Object localObject2 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
         ((JSONObject)localObject2).put("socketTaskId", ((RequestJsPlugin.WebsocketRequestTask)localObject3).mTaskId);
-        ((JSONObject)localObject2).put("errMsg", parambeka.jdField_a_of_type_JavaLangString + ":ok");
-        callbackOK(parambeka, (JSONObject)localObject2);
+        ((JSONObject)localObject2).put("errMsg", parambekr.jdField_a_of_type_JavaLangString + ":ok");
+        callbackOK(parambekr, (JSONObject)localObject2);
         localObject2 = ((JSONObject)localObject2).toString();
         return localObject2;
       }
-      catch (JSONException parambeka)
+      catch (JSONException parambekr)
       {
         for (;;)
         {
-          besl.d("[mini] http.RequestJsPlugin", "handleNativeRequest ", parambeka);
+          betc.d("[mini] http.RequestJsPlugin", "handleNativeRequest ", parambekr);
         }
       }
     }
     catch (Throwable localThrowable)
     {
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
-      callbackFail(parambeka, null);
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      callbackFail(parambekr, null);
     }
   }
   
-  public String operateRequestTask(beka parambeka)
+  public String operateRequestTask(bekr parambekr)
   {
     try
     {
-      Object localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      Object localObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
       int i = ((JSONObject)localObject).optInt("requestTaskId");
       localObject = ((JSONObject)localObject).optString("operationType");
       if (this.requestMap.containsKey(Integer.valueOf(i)))
@@ -340,28 +340,28 @@ public class RequestJsPlugin
         {
           ((RequestProxy)ProxyManager.get(RequestProxy.class)).abort(localRequestTask.mUrl);
           if (!this.mIsMiniGame) {
-            callbackOK(parambeka, null);
+            callbackOK(parambekr, null);
           }
         }
       }
     }
-    catch (Exception parambeka)
+    catch (Exception parambekr)
     {
       for (;;)
       {
-        besl.d("[mini] http.RequestJsPlugin", "OPERATE_REQUEST_TASK : " + parambeka);
+        betc.d("[mini] http.RequestJsPlugin", "OPERATE_REQUEST_TASK : " + parambekr);
       }
     }
     return "";
   }
   
-  public String operateSocketTask(beka parambeka)
+  public String operateSocketTask(bekr parambekr)
   {
     int i;
     WebSocketProxy localWebSocketProxy;
     try
     {
-      Object localObject3 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      Object localObject3 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
       ??? = ((JSONObject)localObject3).optString("operationType");
       i = ((JSONObject)localObject3).optInt("socketTaskId");
       if ("close".equals(???)) {
@@ -378,15 +378,15 @@ public class RequestJsPlugin
               localWebSocketProxy.closeSocket(i, j, (String)localObject3);
             }
             if (this.mIsMiniGame) {
-              callbackOK(parambeka, null, "closeSocket");
+              callbackOK(parambekr, null, "closeSocket");
             }
-            localObject3 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+            localObject3 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null).toString();
             return localObject3;
           }
           if (this.mIsMiniGame) {
-            callbackFail(parambeka, null, "do not have this socket ", "closeSocket");
+            callbackFail(parambekr, null, "do not have this socket ", "closeSocket");
           }
-          localObject3 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+          localObject3 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
           return localObject3;
         }
       }
@@ -396,8 +396,8 @@ public class RequestJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
-      return bekg.b(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      return bekx.b(parambekr.jdField_a_of_type_JavaLangString, null).toString();
     }
     Object localObject8 = localObject4.optString("data", null);
     Object localObject7;
@@ -414,61 +414,61 @@ public class RequestJsPlugin
         {
           localWebSocketProxy.send(i, (String)localObject8);
           if (this.mIsMiniGame) {
-            callbackOK(parambeka, null, "sendSocketMessage");
+            callbackOK(parambekr, null, "sendSocketMessage");
           }
-          localObject5 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+          localObject5 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null).toString();
           return localObject5;
         }
       }
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " error, send msg:" + (String)localObject8 + " on null socket instance");
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " error, send msg:" + (String)localObject8 + " on null socket instance");
       if (this.mIsMiniGame) {
-        callbackFail(parambeka, null, "socket is null ", "sendSocketMessage");
+        callbackFail(parambekr, null, "socket is null ", "sendSocketMessage");
       }
-      localObject7 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
+      localObject7 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
       return localObject7;
       label499:
       if (this.mIsMiniGame) {
-        callbackFail(parambeka, null, "do not have this socket ", "closeSocket");
+        callbackFail(parambekr, null, "do not have this socket ", "closeSocket");
       }
-      localObject7 = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+      localObject7 = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
       return localObject7;
     }
-    if (beku.a((JSONObject)localObject7))
+    if (bell.a((JSONObject)localObject7))
     {
-      ??? = beku.a(this.mMiniAppContext, (JSONObject)localObject7, "data");
-      if ((??? != null) && (((beku)???).a != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
+      ??? = bell.a(this.mMiniAppContext, (JSONObject)localObject7, "data");
+      if ((??? != null) && (((bell)???).a != null) && (this.wsrequestMap != null) && (this.wsrequestMap.size() != 0))
       {
         localObject7 = (RequestJsPlugin.WebsocketRequestTask)this.wsrequestMap.get(Integer.valueOf(i));
         localObject8 = (WebSocketProxy)ProxyManager.get(WebSocketProxy.class);
         if ((localObject7 != null) && (localObject8 != null))
         {
-          ((WebSocketProxy)localObject8).send(i, ((beku)???).a);
+          ((WebSocketProxy)localObject8).send(i, ((bell)???).a);
           if (this.mIsMiniGame) {
-            callbackOK(parambeka, null);
+            callbackOK(parambekr, null);
           }
-          return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+          return bekx.a(parambekr.jdField_a_of_type_JavaLangString, null).toString();
         }
-        besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " error, send NativeBuffer on null socket instance");
+        betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " error, send NativeBuffer on null socket instance");
         if (this.mIsMiniGame) {
-          callbackFail(parambeka, null, "socket is null ", "sendSocketMessage");
+          callbackFail(parambekr, null, "socket is null ", "sendSocketMessage");
         }
-        return bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
+        return bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "socket is null ").toString();
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambeka, null, "do not have this socket ", "closeSocket");
+        callbackFail(parambekr, null, "do not have this socket ", "closeSocket");
       }
-      ??? = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
+      ??? = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "do not have this socket ").toString();
       return ???;
     }
     label766:
     return "";
   }
   
-  public String wnsCgiRequest(beka parambeka)
+  public String wnsCgiRequest(bekr parambekr)
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject2 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
       JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
       Object localObject = localJSONObject1;
       if (localJSONObject1 == null) {
@@ -478,27 +478,27 @@ public class RequestJsPlugin
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localObject != null)
       {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.4(this, parambeka));
+        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.4(this, parambekr));
         return "";
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambeka, null, "do not support wnsCgiRequest");
+        callbackFail(parambekr, null, "do not support wnsCgiRequest");
       }
-      localObject = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "do not support wnsCgiRequest").toString();
+      localObject = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "do not support wnsCgiRequest").toString();
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
     }
-    return bekg.b(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+    return bekx.b(parambekr.jdField_a_of_type_JavaLangString, null).toString();
   }
   
-  public String wnsRequest(beka parambeka)
+  public String wnsRequest(bekr parambekr)
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject2 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
       JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
       Object localObject = localJSONObject1;
       if (localJSONObject1 == null) {
@@ -508,20 +508,20 @@ public class RequestJsPlugin
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localObject != null)
       {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3(this, parambeka));
+        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3(this, parambekr));
         return "";
       }
       if (this.mIsMiniGame) {
-        callbackFail(parambeka, null, "do not support wnsRequest");
+        callbackFail(parambekr, null, "do not support wnsRequest");
       }
-      localObject = bekg.a(parambeka.jdField_a_of_type_JavaLangString, null, "do not support wnsRequest").toString();
+      localObject = bekx.a(parambekr.jdField_a_of_type_JavaLangString, null, "do not support wnsRequest").toString();
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      besl.d("[mini] http.RequestJsPlugin", parambeka.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
+      betc.d("[mini] http.RequestJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " exception:", localThrowable);
     }
-    return bekg.b(parambeka.jdField_a_of_type_JavaLangString, null).toString();
+    return bekx.b(parambekr.jdField_a_of_type_JavaLangString, null).toString();
   }
 }
 

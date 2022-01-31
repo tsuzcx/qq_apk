@@ -1,23 +1,23 @@
 import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
+import android.text.TextWatcher;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class acej
-  implements View.OnFocusChangeListener
+  implements TextWatcher
 {
   public acej(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
         SubLoginActivity.a(this.a).setVisibility(0);
       }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
     while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;

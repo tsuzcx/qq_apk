@@ -1,15 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
 
 class atrs
-  implements View.OnClickListener
+  implements bdld
 {
-  atrs(atqu paramatqu) {}
+  atrs(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    atqu.c(this.a);
+    this.a.jdField_a_of_type_Int = 4;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    if (atqw.a(this.a) != null) {
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, atqw.a(this.a).uin, "", "yes", "android");
+    }
   }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_Atum != null) {
+      this.a.jdField_a_of_type_Atum.a(5);
+    }
+    if (atqw.a(this.a) != null) {
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, atqw.a(this.a).uin, "", "yes", "android");
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Int = 1;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = (DownloadInfo)paramList.get(0);
+      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      localMessage.arg1 = paramList.f;
+      localMessage.sendToTarget();
+      if ((paramList.f == 0) && (atqw.a(this.a) != null)) {
+        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, atqw.a(this.a).uin, "", "yes", "android");
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

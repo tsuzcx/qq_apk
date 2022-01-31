@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwq;
-import amtc;
+import akwp;
+import amtb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -32,18 +32,18 @@ class MiniAppUtils$10$1
           return;
           paramJSONObject = BaseApplicationImpl.getApplication().getRuntime();
         } while (!(paramJSONObject instanceof QQAppInterface));
-        paramBoolean = amtc.i();
+        paramBoolean = amtb.i();
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppUtils", 2, "updatePullDownEntryListData, check needClearPublicAccountRedDot: " + paramBoolean);
         }
         if (paramBoolean)
         {
-          akwq localakwq = (akwq)((QQAppInterface)paramJSONObject).a(148);
-          if (localakwq != null) {
-            localakwq.a(this.this$0.val$appConfig.config.appId);
+          akwp localakwp = (akwp)((QQAppInterface)paramJSONObject).a(148);
+          if (localakwp != null) {
+            localakwp.a(this.this$0.val$appConfig.config.appId);
           }
         }
-        if (!amtc.g()) {
+        if (!amtb.g()) {
           break;
         }
         paramJSONObject = (DesktopDataManager)paramJSONObject.getManager(336);

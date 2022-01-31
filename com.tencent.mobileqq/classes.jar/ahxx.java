@@ -1,8 +1,23 @@
-import android.graphics.Bitmap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface ahxx
+public class ahxx
 {
-  public abstract Bitmap a(int paramInt1, int paramInt2);
+  public int a;
+  ahxy jdField_a_of_type_Ahxy = new ahxy(this.jdField_a_of_type_Ahxw);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
+  
+  public ahxx(ahxw paramahxw)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  }
 }
 
 

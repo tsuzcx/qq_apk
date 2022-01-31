@@ -1,31 +1,79 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bjgp
-  implements bjgv
+public class bjgp
 {
-  bjgp(bjgo parambjgo) {}
+  public int a;
+  public ArrayList<bjgq> a;
+  public ArrayList<bjgq> b = new ArrayList();
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public bjgp()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    bjgo.a(this.a, paramFloat);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public static bjgp a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
+    if (TextUtils.isEmpty(paramString)) {
+      return new bjgp();
     }
-    if (paramBoolean)
+    localbjgp = new bjgp();
+    try
     {
-      bjgo.a(this.a, 3);
-      this.a.b();
-      return;
+      paramString = new JSONObject(paramString);
+      localbjgp.jdField_a_of_type_Int = paramString.getInt("levelLimit");
+      paramString = paramString.getJSONArray("levelCfg");
+      int j = 0;
+      int i = 0;
+      while (j < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(j);
+        int i1 = localJSONObject.getInt("level");
+        int k = 0;
+        while (k < bjgo.a.length)
+        {
+          JSONArray localJSONArray = localJSONObject.optJSONArray(bjgo.a[k]);
+          int n = i;
+          if (localJSONArray != null)
+          {
+            int m = 0;
+            for (;;)
+            {
+              n = i;
+              if (m >= localJSONArray.length()) {
+                break;
+              }
+              String str = localJSONArray.getString(m);
+              bjgq localbjgq = new bjgq();
+              localbjgq.jdField_a_of_type_JavaLangString = str;
+              localbjgq.c = k;
+              localbjgq.b = i1;
+              n = i;
+              if (localbjgp.jdField_a_of_type_Int >= i1)
+              {
+                localbjgq.jdField_a_of_type_Int = i;
+                localbjgp.jdField_a_of_type_JavaUtilArrayList.add(localbjgq);
+                n = i + 1;
+              }
+              localbjgp.b.add(localbjgq);
+              m += 1;
+              i = n;
+            }
+          }
+          k += 1;
+          i = n;
+        }
+        j += 1;
+      }
+      return localbjgp;
     }
-    bjgo.a(this.a, 2);
-    this.a.a(4);
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface biya
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+
+public class biya
+  implements bizm
 {
-  public abstract void a(String paramString);
+  public biya(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  
+  public void a(int paramInt)
+  {
+    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
+    AEVideoShelfEditFragment.c(this.a, paramInt);
+    AEVideoShelfEditFragment.a(this.a, paramInt);
+    AEVideoShelfEditFragment.d(this.a, paramInt);
+  }
 }
 
 

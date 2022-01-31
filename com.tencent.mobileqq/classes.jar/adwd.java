@@ -1,24 +1,29 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.os.SystemClock;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
-public class adwd
-  extends RecyclerView.ViewHolder
+class adwd
+  implements bfph
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public ImageView b;
+  adwd(adwc paramadwc, MessageForPokeEmo paramMessageForPokeEmo, bfpc parambfpc) {}
   
-  public adwd(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371793));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371792));
-    this.b = ((ImageView)paramView.findViewById(2131371790));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131371794));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Adwc.c < 500L);
+      this.jdField_a_of_type_Adwc.c = l;
+      aanz.b(this.jdField_a_of_type_Adwc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adwc.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adwc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
   }
 }
 

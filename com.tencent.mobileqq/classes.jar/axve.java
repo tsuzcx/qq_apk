@@ -6,11 +6,11 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 public class axve
   implements View.OnTouchListener
 {
-  public axve(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxn paramacxn) {}
+  public axve(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxj paramacxj) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
+    return this.jdField_a_of_type_Acxj.onTouch(paramView, paramMotionEvent);
   }
 }
 

@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import npk;
-import rva;
+import nph;
+import rux;
 
 public class VideoInfo$EntranceDownloadInfo
-  implements Parcelable, rva
+  implements Parcelable, rux
 {
-  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new npk();
+  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new nph();
   public UrlJumpInfo a;
   public String a;
   public boolean a;

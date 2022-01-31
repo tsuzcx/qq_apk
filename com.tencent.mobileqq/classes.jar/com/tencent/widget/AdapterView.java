@@ -20,11 +20,11 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Adapter;
-import bfni;
-import bfpc;
-import bfpd;
-import bfpe;
-import bfwd;
+import bfnz;
+import bfpt;
+import bfpu;
+import bfpv;
+import bfwu;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -59,9 +59,9 @@ public abstract class AdapterView<T extends Adapter>
   public int mOldItemCount;
   protected int mOldSelectedPosition = -1;
   long mOldSelectedRowId = -9223372036854775808L;
-  bfpc mOnItemClickListener;
-  bfpd mOnItemLongClickListener;
-  bfpe mOnItemSelectedListener;
+  bfpt mOnItemClickListener;
+  bfpu mOnItemLongClickListener;
+  bfpv mOnItemSelectedListener;
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
@@ -152,7 +152,7 @@ public abstract class AdapterView<T extends Adapter>
   
   public static void traceBegin(String paramString)
   {
-    bfwd.a(paramString);
+    bfwu.a(paramString);
   }
   
   public static void traceEnd() {}
@@ -403,17 +403,17 @@ public abstract class AdapterView<T extends Adapter>
     return this.mFirstPosition + getChildCount() - 1;
   }
   
-  public final bfpc getOnItemClickListener()
+  public final bfpt getOnItemClickListener()
   {
     return this.mOnItemClickListener;
   }
   
-  public final bfpd getOnItemLongClickListener()
+  public final bfpu getOnItemLongClickListener()
   {
     return this.mOnItemLongClickListener;
   }
   
-  public final bfpe getOnItemSelectedListener()
+  public final bfpv getOnItemSelectedListener()
   {
     return this.mOnItemSelectedListener;
   }
@@ -574,7 +574,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(11)
   protected void invalidateParentIfNeeded()
   {
-    if ((bfni.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
+    if ((bfnz.e()) && (isHardwareAccelerated()) && ((getParent() instanceof View))) {
       ((View)getParent()).invalidate();
     }
   }
@@ -587,7 +587,7 @@ public abstract class AdapterView<T extends Adapter>
   @TargetApi(14)
   public boolean isInScrollingContainer()
   {
-    if (bfni.d()) {
+    if (bfnz.d()) {
       for (ViewParent localViewParent = getParent(); (localViewParent != null) && ((localViewParent instanceof ViewGroup)); localViewParent = localViewParent.getParent()) {
         if (((ViewGroup)localViewParent).shouldDelayChildPressedState()) {
           return true;
@@ -853,22 +853,22 @@ public abstract class AdapterView<T extends Adapter>
     throw new RuntimeException("Don't call setOnClickListener for an AdapterView. You probably want setOnItemClickListener instead");
   }
   
-  public void setOnItemClickListener(bfpc parambfpc)
+  public void setOnItemClickListener(bfpt parambfpt)
   {
-    this.mOnItemClickListener = parambfpc;
+    this.mOnItemClickListener = parambfpt;
   }
   
-  public void setOnItemLongClickListener(bfpd parambfpd)
+  public void setOnItemLongClickListener(bfpu parambfpu)
   {
     if (!isLongClickable()) {
       setLongClickable(true);
     }
-    this.mOnItemLongClickListener = parambfpd;
+    this.mOnItemLongClickListener = parambfpu;
   }
   
-  public void setOnItemSelectedListener(bfpe parambfpe)
+  public void setOnItemSelectedListener(bfpv parambfpv)
   {
-    this.mOnItemSelectedListener = parambfpe;
+    this.mOnItemSelectedListener = parambfpv;
   }
   
   public void setSelectedPositionInt(int paramInt)

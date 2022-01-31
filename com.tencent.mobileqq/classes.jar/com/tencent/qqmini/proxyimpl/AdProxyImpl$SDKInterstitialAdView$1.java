@@ -10,7 +10,7 @@ import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yuk;
+import yuh;
 
 class AdProxyImpl$SDKInterstitialAdView$1
   implements AdProxy.ICmdListener
@@ -65,7 +65,7 @@ class AdProxyImpl$SDKInterstitialAdView$1
     {
       localGdtInterstitialParams.jdField_a_of_type_Int = i;
       localGdtInterstitialParams.jdField_a_of_type_Boolean = true;
-      this.this$1.mInterstitialAdView = new yuk(this.val$activity, localGdtInterstitialParams);
+      this.this$1.mInterstitialAdView = new yuh(this.val$activity, localGdtInterstitialParams);
       if (this.this$1.mInterstitialAdView != null)
       {
         if (this.this$1.mInterstitialAdListener != null) {

@@ -1,17 +1,12 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class biom
-  implements bjob<bivx>
+  implements DialogInterface.OnClickListener
 {
   biom(biol parambiol) {}
   
-  public void a(@Nullable bivx parambivx)
-  {
-    if (parambivx == null) {
-      return;
-    }
-    biol.a(this.a, parambivx);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

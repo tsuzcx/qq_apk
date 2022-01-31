@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import adll;
+import adlj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +24,10 @@ final class ArkAppCenter$ProxyChangeNotifier
   {
     if (AppNetConnInfo.isWifiConn())
     {
-      adll.setArkHttpProxy();
+      adlj.setArkHttpProxy();
       return;
     }
-    adll.clearArkHttpProxy();
+    adlj.clearArkHttpProxy();
   }
 }
 

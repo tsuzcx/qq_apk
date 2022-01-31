@@ -1,60 +1,77 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class tln
-  extends tjg
-  implements syt<tnb, tor>
+  implements syq<tnr, tpa>
 {
-  protected String a;
-  protected List<String> a;
+  public Set<String> a = new HashSet();
   
-  public tln(String paramString, List<String> paramList)
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public void a()
-  {
-    tnb localtnb = new tnb();
-    localtnb.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    syr.a().a(localtnb, this);
-  }
-  
-  public void a(@NonNull tnb paramtnb, @Nullable tor paramtor, @NonNull ErrorMessage paramErrorMessage)
-  {
-    paramtnb = new tlo();
-    if ((paramtor == null) || (paramErrorMessage.isFail()))
-    {
-      c();
-      ste.a().dispatch(paramtnb);
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    b();
-    paramtor.jdField_a_of_type_JavaUtilList = ((tcz)tdc.a(5)).a(paramtor.jdField_a_of_type_JavaUtilList);
-    paramtnb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramtor = paramtor.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtor.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramtor.next();
-      paramErrorMessage = new uuf(paramErrorMessage.mVid, paramErrorMessage);
-      paramtnb.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
-    }
-    ste.a().dispatch(paramtnb);
+    tnr localtnr = new tnr();
+    localtnr.jdField_b_of_type_JavaLangString = paramString1;
+    localtnr.jdField_c_of_type_JavaLangString = paramString2;
+    localtnr.jdField_a_of_type_Boolean = paramBoolean;
+    localtnr.jdField_c_of_type_Int = paramInt;
+    localtnr.jdField_b_of_type_Long = paramLong;
+    syo.a().a(localtnr, this);
   }
   
-  public String toString()
+  public void a(@NonNull tnr paramtnr, @Nullable tpa paramtpa, @NonNull ErrorMessage paramErrorMessage)
   {
-    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+    tlo localtlo = new tlo();
+    localtlo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localtlo.jdField_a_of_type_JavaLangString = paramtnr.jdField_b_of_type_JavaLangString;
+    if (vwp.a(localtlo.jdField_a_of_type_JavaLangString)) {
+      paramtnr.jdField_c_of_type_JavaLangString = "4_10000";
+    }
+    localtlo.jdField_b_of_type_JavaLangString = paramtnr.jdField_c_of_type_JavaLangString;
+    localtlo.jdField_a_of_type_Boolean = paramtnr.jdField_a_of_type_Boolean;
+    tcw localtcw = (tcw)tcz.a(5);
+    if ((paramtnr.jdField_c_of_type_Int == 3) || (paramtnr.jdField_c_of_type_Int == 4) || (paramtnr.jdField_c_of_type_Int == 31) || (paramtnr.jdField_c_of_type_Int == 62))
+    {
+      localtlo.jdField_a_of_type_Int = localtcw.a("Q.qqstory.player.WatchVideoHandler", paramtnr.jdField_c_of_type_JavaLangString, paramtnr.jdField_b_of_type_JavaLangString);
+      StoryItem localStoryItem = localtcw.a(paramtnr.jdField_c_of_type_JavaLangString, 1);
+      if (localStoryItem != null)
+      {
+        if (localStoryItem.unReadCount == 0) {
+          break label281;
+        }
+        localStoryItem.unReadCount = localtlo.jdField_a_of_type_Int;
+        localtcw.a(paramtnr.jdField_c_of_type_JavaLangString, 1, localStoryItem);
+        ved.d("Q.qqstory.player.WatchVideoHandler", String.format("read video %s ,update %s unread count , count = %d", new Object[] { paramtnr.jdField_b_of_type_JavaLangString, localStoryItem.key, Integer.valueOf(localStoryItem.unReadCount) }));
+      }
+      label210:
+      if ((paramtpa == null) || (!paramErrorMessage.isSuccess())) {
+        break label294;
+      }
+      this.a.add(paramtnr.jdField_b_of_type_JavaLangString);
+      stb.a().dispatch(localtlo);
+    }
+    label281:
+    label294:
+    do
+    {
+      return;
+      localtlo.jdField_a_of_type_Int = localtcw.a(paramtnr.jdField_c_of_type_JavaLangString);
+      ved.a("Q.qqstory.player.WatchVideoHandler", "read video %s , source = %d , not effect recent story", paramtnr.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtnr.jdField_c_of_type_Int));
+      break;
+      localtcw.a(paramtnr.jdField_c_of_type_JavaLangString, 1);
+      break label210;
+      stb.a().dispatch(localtlo);
+      paramtpa = localtcw.a(paramtnr.jdField_b_of_type_JavaLangString);
+    } while (paramtpa == null);
+    ((tcp)tcz.a(13)).a(paramtnr.jdField_b_of_type_JavaLangString, paramtnr.jdField_c_of_type_JavaLangString, paramtnr.jdField_a_of_type_Boolean, paramtpa.mCreateTime, paramtnr.jdField_c_of_type_Int, paramtnr.d, true);
   }
 }
 

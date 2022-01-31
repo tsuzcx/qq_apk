@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
-
-public abstract interface ajmf
+public class ajmf
 {
-  public abstract List<TraceData> a();
+  public long a;
+  public String a;
+  public long b;
   
-  public abstract boolean a(List<TraceData> paramList);
+  public ajmf(String paramString, long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
   
-  public abstract boolean b(List<TraceData> paramList);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
+  }
 }
 
 

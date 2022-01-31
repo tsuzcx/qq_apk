@@ -1,33 +1,20 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+
 public class bkvu
+  implements Animation.AnimationListener
 {
-  public static final int a;
-  public static final int b = blbz.a(2.0F);
-  public static final int c = blbz.a(4.0F);
-  public static final int d = blbz.a(8.0F);
-  public float a;
-  public boolean a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
+  public bkvu(BeautyBar paramBeautyBar) {}
   
-  static
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    jdField_a_of_type_Int = blbz.a(20.0F);
+    bkpm.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
   }
   
-  public bkvu()
-  {
-    this.jdField_a_of_type_Float = jdField_a_of_type_Int;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

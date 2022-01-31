@@ -1,35 +1,26 @@
-import android.media.MediaPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 
 public class ldm
-  extends ldx
+  implements DialogInterface.OnClickListener
 {
-  public ldm(VideoController paramVideoController)
-  {
-    super(paramVideoController);
-  }
+  public ldm(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    lcl.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().J)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (paramMediaPlayer != null) {
-        paramMediaPlayer.release();
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
-      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
-      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().J = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().I = false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      return;
-      lcl.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mtq.d();
     }
+    axqy.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class agkt
-  implements DialogInterface.OnClickListener
+  extends aumg
 {
   agkt(agks paramagks) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void c(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+    }
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
+      return;
+    }
+    this.a.a.a.a(1, ajya.a(2131713868));
   }
 }
 

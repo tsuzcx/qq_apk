@@ -1,30 +1,24 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import java.io.File;
+import java.net.URI;
 
 public class szb
-  extends SimpleJob<Void>
 {
-  public szb(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, Bundle paramBundle, byte[] paramArrayOfByte)
-  {
-    super(paramString);
-  }
+  private boolean a;
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private void a(Context paramContext, String paramString1, String paramString2)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
-    paramJobContext = (syv)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
-    if (paramJobContext == null)
-    {
-      veg.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
-      return null;
+    paramString1 = new File(paramString1);
+    if (!paramString1.exists()) {
+      return;
     }
-    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
-    return null;
+    paramString1 = Uri.parse(paramString1.toURI().toString());
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setDataAndType(paramString1, paramString2);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

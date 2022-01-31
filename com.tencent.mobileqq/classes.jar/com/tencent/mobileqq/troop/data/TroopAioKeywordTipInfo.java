@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import java.io.Serializable;
 
 public class TroopAioKeywordTipInfo
-  extends aukm
+  extends auko
   implements Serializable
 {
   public String icon;
-  @auma
+  @aumc
   public int ruleId;
   public String summary;
   public String title;

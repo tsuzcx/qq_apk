@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.control;
 
-import bizu;
-import bjae;
-import bjeu;
-import bksl;
+import bjal;
+import bjav;
+import bjfl;
+import bktc;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$InitPaster
@@ -11,10 +11,10 @@ public class CaptureAsyncStep$InitPaster
 {
   public int a()
   {
-    bksl.a(bizu.a());
-    bjeu localbjeu = (bjeu)bjae.a().c(4);
-    localbjeu.i();
-    localbjeu.d();
+    bktc.a(bjal.a());
+    bjfl localbjfl = (bjfl)bjav.a().c(4);
+    localbjfl.i();
+    localbjfl.d();
     return 7;
   }
 }

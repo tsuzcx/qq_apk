@@ -1,63 +1,23 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
 
-class anww
-  extends ajvq
+public class anww
 {
-  final WeakReference<anws> a;
-  
-  public anww(anws paramanws)
+  public static Bundle a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.a = new WeakReference(paramanws);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
+    int i = ((akfv)paramQQAppInterface.a(13)).g();
     if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
+      QLog.i("EmoticonContentProvider", 2, "call, vipType = " + i);
     }
-    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
-    do
-    {
-      anws localanws;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localanws = (anws)this.a.get();
-            if (localanws == null)
-            {
-              QLog.d("SogouEmoji", 2, "WeakReference error");
-              return;
-            }
-            paramObject = (EmoticonResp)paramObject;
-          } while (paramObject.data == null);
-          paramObject = (ArrayList)paramObject.data;
-        } while (paramObject.size() == 0);
-        paramBoolean = localanws.a.a(localanws.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
-        }
-        if (paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
-      return;
-      localanws.a((Emoticon)paramObject.get(0));
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putInt(paramString, i);
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anww
  * JD-Core Version:    0.7.0.1
  */

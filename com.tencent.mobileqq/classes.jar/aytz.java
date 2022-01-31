@@ -1,96 +1,89 @@
-import android.app.Application;
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.net.MalformedURLException;
+import java.io.OutputStream;
 import java.net.URL;
 
 public class aytz
-  extends ProtocolDownloader.Adapter
+  extends ayoi
 {
-  public aytz(Application paramApplication) {}
-  
-  public static URL a(String paramString, int paramInt1, int paramInt2)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return a(paramString, paramInt1, paramInt2, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonecover.", 2, "downloadImage|config.urlStr = " + paramDownloadParams.urlStr);
+    }
+    paramOutputStream = paramDownloadParams.url.getFile();
+    paramDownloadParams = paramDownloadParams.url.getHost();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonecover.", 2, "downloadImage|host = " + paramDownloadParams + ", url = " + paramOutputStream);
+    }
+    paramOutputStream = a(paramOutputStream);
+    if (TextUtils.isEmpty(paramOutputStream)) {
+      throw new RuntimeException("downloadImage|url is null");
+    }
+    paramDownloadParams = bhcg.a(BaseApplication.getContext(), paramOutputStream);
+    if (QLog.isColorLevel())
+    {
+      QLog.i("Q.qzonecover.", 2, "downloadImage|path = " + paramDownloadParams);
+      if (!bbdx.b(paramDownloadParams)) {
+        break label198;
+      }
+      QLog.i("Q.qzonecover.", 2, "downloadImage|file exist and not empty");
+    }
+    while (paramDownloadParams == null)
+    {
+      throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
+      label198:
+      QLog.i("Q.qzonecover.", 2, "downloadImage|file not exist or empty!!");
+    }
+    paramURLDrawableHandler = new File(paramDownloadParams);
+    if ((paramURLDrawableHandler.exists()) || ((paramOutputStream.startsWith("http://")) && (bbww.a(new bbwu(paramOutputStream, paramURLDrawableHandler), null) == 0) && (paramURLDrawableHandler.exists()))) {
+      return paramURLDrawableHandler;
+    }
+    throw new RuntimeException("downloadImage|file not exist, path = " + paramDownloadParams);
   }
   
-  public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  protected String a(String paramString)
   {
-    if (paramString == null) {
-      return null;
-    }
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.path = paramString;
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      localLocalMediaInfo.modifiedDate = paramString.lastModified();
-    }
-    localLocalMediaInfo.thumbWidth = paramInt1;
-    localLocalMediaInfo.thumbHeight = paramInt2;
-    localLocalMediaInfo.isRegionThumbUseNewDecoder = paramBoolean;
-    try
+    int i;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = new URL("regionalthumb", null, LocalMediaInfo.getUrl(localLocalMediaInfo));
-      return paramString;
+      i = paramString.indexOf("http", 0);
+      if ((i <= 0) || (i >= paramString.length())) {}
     }
-    catch (MalformedURLException paramString)
+    for (String str = paramString.substring(i);; str = paramString)
     {
-      for (;;)
-      {
-        paramString = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qzonecover.", 2, "dealUrl|in: " + paramString + ", out: " + str);
       }
+      return str;
     }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramFile = null;
-    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramURLDrawableHandler != null) {
-      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
-        break label58;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonecover.", 2, "decodeFile() url = " + paramDownloadParams.url + ", path = " + paramFile.getAbsolutePath());
     }
-    label58:
-    for (paramFile = new agmp();; paramFile = new agpl())
+    try
     {
-      paramFile = paramFile.a(paramDownloadParams.url);
-      paramDownloadParams.outWidth = paramFile.getWidth();
-      paramDownloadParams.outHeight = paramFile.getHeight();
+      paramFile = super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
       return paramFile;
     }
-  }
-  
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    boolean bool2 = false;
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    boolean bool1 = bool2;
-    if (paramDownloadParams != null)
+    catch (Exception paramFile)
     {
-      bool1 = bool2;
-      if (new File(paramDownloadParams.path).exists()) {
-        bool1 = true;
-      }
+      QLog.i("Q.qzonecover.", 2, "decodeFile() exception: " + paramFile.toString());
+      paramFile.printStackTrace();
+      throw paramFile;
     }
-    return bool1;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramDownloadParams != null)
-    {
-      paramDownloadParams = new File(paramDownloadParams.path);
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-    }
-    return null;
   }
 }
 

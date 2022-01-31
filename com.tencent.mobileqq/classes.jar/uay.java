@@ -1,23 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class uay
-  implements tvt
+public class uay
+  extends uaz
+  implements View.OnClickListener
 {
-  uay(uax paramuax) {}
+  private long a;
   
-  public void a(String paramString)
+  public uay(@NonNull ViewGroup paramViewGroup)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      if (TextUtils.equals(paramString, ((uav)this.a.a.get(i)).a)) {
-        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
-      }
-      i += 1;
+    super(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Uas == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return;
     }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramView = this.jdField_a_of_type_Uas.a().getVideoLinkInfo();
+    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
+    {
+      tvc.a(a(), paramView.a.c, paramView.a.b, 1010);
+      vei.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Uas.a });
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

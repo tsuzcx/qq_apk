@@ -1,6 +1,6 @@
 public abstract interface alex
 {
-  public abstract void a(int paramInt, String paramString, algo paramalgo);
+  public abstract void a(alfv paramalfv);
 }
 
 

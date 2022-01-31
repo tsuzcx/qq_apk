@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Pair;
-import java.util.List;
-
-class bfjd
-  implements bfit
+public class bfjd
 {
-  bfjd(bfjc parambfjc) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void a(List<Pair<Integer, Byte>> paramList)
+  public String toString()
   {
-    Message localMessage = bfjc.a(this.a).obtainMessage(2);
-    localMessage.obj = paramList;
-    bfjc.a(this.a).sendMessage(localMessage);
+    return "[type:" + this.jdField_a_of_type_Int + ",cate:" + this.b + ",subcate:" + this.c + ",expire:" + this.jdField_a_of_type_Long + ",act:" + this.d + ",iscache:" + this.jdField_a_of_type_Boolean + "]";
   }
 }
 

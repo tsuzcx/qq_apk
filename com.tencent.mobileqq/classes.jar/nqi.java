@@ -1,119 +1,81 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.AppRuntime;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class nqi
-  implements ampd<String>
+  extends ampa<nqh>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<sfi> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static nqi a(String paramString)
+  public int a()
   {
-    try
+    return 81;
+  }
+  
+  public Class<nqh> a()
+  {
+    return nqh.class;
+  }
+  
+  @NonNull
+  public nqh a(int paramInt)
+  {
+    if (paramInt == 0)
     {
-      nqi localnqi = (nqi)ampw.a(paramString, nqi.class);
-      return localnqi;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        sfe.a((QQAppInterface)localAppRuntime);
+        return nqh.a();
+      }
     }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    return new nqh();
+  }
+  
+  @Nullable
+  public nqh a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return nqh.a(paramArrayOfamph);
     }
     return null;
   }
   
-  public static nqi a(ampi[] paramArrayOfampi)
+  public void a(int paramInt) {}
+  
+  public void a(nqh paramnqh)
   {
-    nqi localnqi = null;
-    int i = 0;
-    while (i < paramArrayOfampi.length)
-    {
-      localnqi = a(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localnqi;
+    paramnqh.b();
+    paramnqh.a();
+    paramnqh.c();
   }
   
-  public void a()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        bbjn.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      AppRuntime localAppRuntime;
-      return;
-    }
-    QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
+    return true;
   }
   
-  public void a(String paramString)
+  public int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfProcessor", 2, "parseConfigXml xml: " + paramString);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return sfe.a((QQAppInterface)localAppRuntime);
     }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
-        int j = paramString.getLength();
-        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject1 instanceof QQAppInterface))
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          localObject1 = ((AppRuntime)localObject1).getApplication();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = (Element)paramString.item(i);
-            localObject2 = new sfi(localQQAppInterface, (Context)localObject1, Integer.parseInt(((Element)localObject2).getElementsByTagName("id").item(0).getFirstChild().getNodeValue()), ((Element)localObject2).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject2).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            i += 1;
-          }
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml xml is empty");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml error", paramString);
-      }
-      paramString.printStackTrace();
-    }
+    return 0;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      sfh.a(this.jdField_a_of_type_JavaUtilArrayList);
-    }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afpe;
+import afpc;
 import android.content.Context;
 import android.util.AttributeSet;
-import bcod;
+import bcos;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 
 public class AlphabetPinnedHeaderListView
@@ -28,9 +28,9 @@ public class AlphabetPinnedHeaderListView
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    bcod localbcod = a();
-    if ((localbcod instanceof afpe)) {
-      ((afpe)localbcod).a(paramBoolean);
+    bcos localbcos = a();
+    if ((localbcos instanceof afpc)) {
+      ((afpc)localbcos).a(paramBoolean);
     }
     this.a = paramBoolean;
   }

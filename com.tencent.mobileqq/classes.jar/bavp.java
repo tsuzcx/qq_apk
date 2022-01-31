@@ -1,35 +1,44 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-final class bavp
-  implements DownloadParams.DecodeHandler
+class bavp
+  implements BusinessObserver
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  bavp(bavo parambavo) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = bbct.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle == null) {}
     }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    return bbdr.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
+        localRemoteLogRsp.mergeFrom(paramBundle);
+        if (localRemoteLogRsp.i32_ret.has())
+        {
+          paramInt = localRemoteLogRsp.i32_ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
+          }
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
+        return;
+      }
+    }
+    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 

@@ -1,41 +1,9 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
 public class baio
 {
-  public static baio[] a;
+  public RollangleImageView a;
   public String a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfBaio = new baio[] { new baio("BulkChatMessageConfig") };
-  }
-  
-  public baio(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  final JSONObject a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return a(paramString);
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = new JSONObject();
-      }
-    }
-  }
-  
-  JSONObject a(JSONObject paramJSONObject)
-  {
-    return paramJSONObject;
-  }
 }
 
 

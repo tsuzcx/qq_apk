@@ -7,26 +7,26 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import biho;
-import bijo;
-import bijp;
-import binp;
-import binr;
-import bizg;
-import bizj;
-import bjae;
-import bjbk;
-import bjbn;
-import bjbo;
-import bjbz;
-import bjcc;
-import bjcj;
-import bjdm;
-import bjfx;
-import bjkh;
-import bkqo;
-import bkqp;
-import bkqq;
+import biif;
+import bikf;
+import bikg;
+import biog;
+import bioi;
+import bizx;
+import bjaa;
+import bjav;
+import bjcb;
+import bjce;
+import bjcf;
+import bjcq;
+import bjct;
+import bjda;
+import bjed;
+import bjgo;
+import bjky;
+import bkrf;
+import bkrg;
+import bkrh;
 import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.data.FilterCategory;
@@ -38,13 +38,13 @@ import java.util.List;
 
 public class AEFilterProviderView
   extends ProviderView
-  implements binr, bjbn
+  implements bioi, bjce
 {
   public int a;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private binp jdField_a_of_type_Binp;
-  private bjbk jdField_a_of_type_Bjbk;
-  public bkqq a;
+  private biog jdField_a_of_type_Biog;
+  private bjcb jdField_a_of_type_Bjcb;
+  public bkrh a;
   private AEProviderContainerView jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView;
   public ArrayList<FilterCategory> a;
   
@@ -55,7 +55,7 @@ public class AEFilterProviderView
   
   public static String a()
   {
-    String str = bizj.a().a("ae_filter_id", "", 0);
+    String str = bjaa.a().a("ae_filter_id", "", 0);
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "getFilterId(ae_filter_id, " + str + ")");
     }
@@ -64,7 +64,7 @@ public class AEFilterProviderView
   
   public static void a(String paramString)
   {
-    bizj.a().a("ae_filter_id", paramString, 0);
+    bjaa.a().a("ae_filter_id", paramString, 0);
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "saveFilterPref(ae_filter_id, " + paramString + ")");
     }
@@ -78,8 +78,8 @@ public class AEFilterProviderView
     }
     if (localBundle != null)
     {
-      if (bkqo.a().a[this.g] != null) {
-        bkqo.a().a[this.g].c = 1;
+      if (bkrf.a().a[this.g] != null) {
+        bkrf.a().a[this.g].c = 1;
       }
       paramBundle = (QIMFilterCategoryItem)localBundle.getParcelable("selected_filter_item");
       if (paramBundle != null)
@@ -94,13 +94,13 @@ public class AEFilterProviderView
   
   public int a()
   {
-    return 2131560561;
+    return 2131560560;
   }
   
   public Bundle a()
   {
     Bundle localBundle = new Bundle();
-    QIMFilterCategoryItem localQIMFilterCategoryItem1 = bkqo.a().b(this.g);
+    QIMFilterCategoryItem localQIMFilterCategoryItem1 = bkrf.a().b(this.g);
     if (localQIMFilterCategoryItem1 != null)
     {
       if (QLog.isColorLevel()) {
@@ -133,10 +133,10 @@ public class AEFilterProviderView
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Bjbk != null)
+    if (this.jdField_a_of_type_Bjcb != null)
     {
-      this.jdField_a_of_type_Bjbk.jdField_a_of_type_ArrayOfBjbo[this.g].a();
-      this.jdField_a_of_type_Bjbk.b(this);
+      this.jdField_a_of_type_Bjcb.jdField_a_of_type_ArrayOfBjcf[this.g].a();
+      this.jdField_a_of_type_Bjcb.b(this);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "onDestroy");
@@ -163,17 +163,17 @@ public class AEFilterProviderView
       if (paramString1 != null)
       {
         postDelayed(new AEFilterProviderView.1(this, paramInt), 200L);
-        if (this.jdField_a_of_type_Bjbk != null)
+        if (this.jdField_a_of_type_Bjcb != null)
         {
           paramString2 = new Bundle();
           paramString2.putInt("apply_source", 1);
           paramString2.putInt("capture_scene", this.g);
-          this.jdField_a_of_type_Bjbk.a(paramString1, (Activity)getContext(), paramString2);
+          this.jdField_a_of_type_Bjcb.a(paramString1, (Activity)getContext(), paramString2);
         }
         if (!this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.a()) {
           a(paramString1.a);
         }
-        this.jdField_a_of_type_Binp.notifyDataSetChanged();
+        this.jdField_a_of_type_Biog.notifyDataSetChanged();
       }
       return;
       paramInt += 1;
@@ -186,27 +186,27 @@ public class AEFilterProviderView
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = ((AEProviderContainerView)((Activity)getContext()).findViewById(2131363123));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = ((AEProviderContainerView)((Activity)getContext()).findViewById(2131363122));
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558478, this, true);
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366263));
     paramBundle = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramBundle);
-    this.jdField_a_of_type_Binp = new binp(this.jdField_a_of_type_AndroidContentContext, this.g);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Binp);
-    this.jdField_a_of_type_Binp.a(this);
-    if (bjae.a().a(5))
+    this.jdField_a_of_type_Biog = new biog(this.jdField_a_of_type_AndroidContentContext, this.g);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Biog);
+    this.jdField_a_of_type_Biog.a(this);
+    if (bjav.a().a(5))
     {
-      this.jdField_a_of_type_Bjbk = ((bjbk)bjae.a(5));
-      if (this.jdField_a_of_type_Bjbk != null) {
-        this.jdField_a_of_type_Bjbk.a(this);
+      this.jdField_a_of_type_Bjcb = ((bjcb)bjav.a(5));
+      if (this.jdField_a_of_type_Bjcb != null) {
+        this.jdField_a_of_type_Bjcb.a(this);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d("QCombo", 2, "FilterProviderView onCreate");
     }
-    paramBundle = this.jdField_a_of_type_Bjbk.jdField_a_of_type_Bkqp;
+    paramBundle = this.jdField_a_of_type_Bjcb.jdField_a_of_type_Bkrg;
     if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
@@ -235,7 +235,7 @@ public class AEFilterProviderView
         if (paramInt != 0) {
           break label265;
         }
-        bizg.a().h("none");
+        bizx.a().h("none");
         label46:
         if (QLog.isColorLevel())
         {
@@ -250,72 +250,72 @@ public class AEFilterProviderView
       for (localObject = "none";; localObject = "" + paramView.a)
       {
         QLog.d("AEFilterProviderView", 2, (String)localObject + ")");
-        if (this.jdField_a_of_type_Bjkh != null) {
-          this.jdField_a_of_type_Bjkh.a(-1, paramView);
+        if (this.jdField_a_of_type_Bjky != null) {
+          this.jdField_a_of_type_Bjky.a(-1, paramView);
         }
-        if (this.jdField_a_of_type_Bjbk != null)
+        if (this.jdField_a_of_type_Bjcb != null)
         {
           localObject = new Bundle();
           ((Bundle)localObject).putInt("apply_source", 1);
           ((Bundle)localObject).putInt("capture_scene", this.g);
-          if ((bijo.a() != null) && (bijo.a().a() != null) && (bijo.a().a().isExcludeOuterEffectFilterMaterial())) {
+          if ((bikf.a() != null) && (bikf.a().a() != null) && (bikf.a().a().isExcludeOuterEffectFilterMaterial())) {
             ((Bundle)localObject).putBoolean("capture_force_enable", true);
           }
-          this.jdField_a_of_type_Bjbk.a(paramView, (Activity)getContext(), (Bundle)localObject);
+          this.jdField_a_of_type_Bjcb.a(paramView, (Activity)getContext(), (Bundle)localObject);
         }
         if (!this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.a()) {
           a(paramView.a);
         }
-        ((bjfx)bjae.a(14)).a(paramView.b, 1);
-        if (this.jdField_a_of_type_Bjbk == null) {
+        ((bjgo)bjav.a(14)).a(paramView.b, 1);
+        if (this.jdField_a_of_type_Bjcb == null) {
           break;
         }
-        this.jdField_a_of_type_Bjbk.a(this.g, (Activity)this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_a_of_type_Bjcb.a(this.g, (Activity)this.jdField_a_of_type_AndroidContentContext);
         return;
-        bizg.a().h(paramView.a);
+        bizx.a().h(paramView.a);
         break label46;
       }
     }
   }
   
-  public void a(bjbz parambjbz) {}
+  public void a(bjcq parambjcq) {}
   
-  public void a(bjbz parambjbz, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(bjcq parambjcq, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QCombo", 2, "fp onComboApply combo " + parambjbz.a + " filter ");
+      QLog.i("QCombo", 2, "fp onComboApply combo " + parambjcq.a + " filter ");
     }
-    this.jdField_a_of_type_Binp.notifyDataSetChanged();
+    this.jdField_a_of_type_Biog.notifyDataSetChanged();
   }
   
-  public void a(bjcc parambjcc, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  public void a(bjct parambjct, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Binp.notifyDataSetChanged();
+    this.jdField_a_of_type_Biog.notifyDataSetChanged();
     if (paramBoolean)
     {
-      parambjcc = (bjdm)bjae.a().c(8);
+      parambjct = (bjed)bjav.a().c(8);
       if (this.g != 0) {
         break label44;
       }
     }
     label44:
-    for (paramInt = biho.b;; paramInt = biho.c)
+    for (paramInt = biif.b;; paramInt = biif.c)
     {
-      parambjcc.d(paramInt);
-      parambjcc.f();
+      parambjct.d(paramInt);
+      parambjct.f();
       return;
     }
   }
   
-  public void a(bjcj parambjcj, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  public void a(bjda parambjda, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public void a(bkqp parambkqp)
+  public void a(bkrg parambkrg)
   {
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("onComboFilterDataUpdated data:");
-      if (parambkqp != null) {
+      if (parambkrg != null) {
         break label57;
       }
     }
@@ -323,44 +323,44 @@ public class AEFilterProviderView
     for (boolean bool = true;; bool = false)
     {
       QLog.d("AEFilterProviderView", 2, bool);
-      if (parambkqp != null) {
-        a(parambkqp.a(this.g));
+      if (parambkrg != null) {
+        a(parambkrg.a(this.g));
       }
       return;
     }
   }
   
-  public void a(bkqq parambkqq)
+  public void a(bkrh parambkrh)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "filters setup()");
     }
-    this.jdField_a_of_type_Bkqq = parambkqq;
-    this.jdField_a_of_type_JavaUtilArrayList = parambkqq.jdField_b_of_type_JavaUtilArrayList;
+    this.jdField_a_of_type_Bkrh = parambkrh;
+    this.jdField_a_of_type_JavaUtilArrayList = parambkrh.jdField_b_of_type_JavaUtilArrayList;
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_Binp.a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_Biog.a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a);
     }
-    this.jdField_a_of_type_Binp.notifyDataSetChanged();
+    this.jdField_a_of_type_Biog.notifyDataSetChanged();
   }
   
   public void b()
   {
     super.b();
     Object localObject;
-    if ((this.jdField_a_of_type_Bkqq == null) && (this.jdField_a_of_type_Bjbk != null))
+    if ((this.jdField_a_of_type_Bkrh == null) && (this.jdField_a_of_type_Bjcb != null))
     {
-      localObject = this.jdField_a_of_type_Bjbk.jdField_a_of_type_Bkqp;
+      localObject = this.jdField_a_of_type_Bjcb.jdField_a_of_type_Bkrg;
       if (localObject != null) {
-        this.jdField_a_of_type_Bkqq = ((bkqp)localObject).a(this.g);
+        this.jdField_a_of_type_Bkrh = ((bkrg)localObject).a(this.g);
       }
     }
-    if ((this.jdField_a_of_type_Bkqq != null) && (this.jdField_a_of_type_Bkqq.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null))
+    if ((this.jdField_a_of_type_Bkrh != null) && (this.jdField_a_of_type_Bkrh.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null))
     {
       localObject = (Activity)getContext();
-      this.jdField_a_of_type_Bjbk.a(this.jdField_a_of_type_Bkqq.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem).a((Activity)localObject, this.g);
-      bkqo.a().b(this.jdField_a_of_type_Bkqq.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)getContext(), this.g);
-      bkqo.a().a(this.jdField_a_of_type_Bkqq.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, this.g);
-      this.jdField_a_of_type_Binp.notifyDataSetChanged();
+      this.jdField_a_of_type_Bjcb.a(this.jdField_a_of_type_Bkrh.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem).a((Activity)localObject, this.g);
+      bkrf.a().b(this.jdField_a_of_type_Bkrh.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)getContext(), this.g);
+      bkrf.a().a(this.jdField_a_of_type_Bkrh.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, this.g);
+      this.jdField_a_of_type_Biog.notifyDataSetChanged();
       a(null, 0);
     }
   }
@@ -374,40 +374,40 @@ public class AEFilterProviderView
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_Bjkh != null) {
-      this.jdField_a_of_type_Bjkh.i();
+    if (this.jdField_a_of_type_Bjky != null) {
+      this.jdField_a_of_type_Bjky.i();
     }
-    this.jdField_a_of_type_Binp.notifyDataSetChanged();
+    this.jdField_a_of_type_Biog.notifyDataSetChanged();
   }
   
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_Bjkh != null) {
-      this.jdField_a_of_type_Bjkh.b(false);
+    if (this.jdField_a_of_type_Bjky != null) {
+      this.jdField_a_of_type_Bjky.b(false);
     }
   }
   
   public void e()
   {
     super.e();
-    if (this.jdField_a_of_type_Bjbk != null) {
-      this.jdField_a_of_type_Bjbk.a(this);
+    if (this.jdField_a_of_type_Bjcb != null) {
+      this.jdField_a_of_type_Bjcb.a(this);
     }
   }
   
   public void f()
   {
     super.f();
-    if (this.jdField_a_of_type_Bjbk != null) {
-      this.jdField_a_of_type_Bjbk.b(this);
+    if (this.jdField_a_of_type_Bjcb != null) {
+      this.jdField_a_of_type_Bjcb.b(this);
     }
   }
   
   public void setFilterItemBorderMode(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Binp != null) {
-      this.jdField_a_of_type_Binp.a(paramBoolean);
+    if (this.jdField_a_of_type_Biog != null) {
+      this.jdField_a_of_type_Biog.a(paramBoolean);
     }
   }
 }

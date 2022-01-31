@@ -1,107 +1,59 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
 public class amsy
-  extends ampb<amsx>
 {
-  public static amsx a()
-  {
-    amsx localamsx2 = (amsx)ampm.a().a(581);
-    amsx localamsx1 = localamsx2;
-    if (localamsx2 == null) {
-      localamsx1 = new amsx();
-    }
-    return localamsx1;
-  }
+  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
   
-  public int a()
+  public static amsy a(amph[] paramArrayOfamph)
   {
-    return 581;
-  }
-  
-  @NonNull
-  public amsx a(int paramInt)
-  {
-    return new amsx();
-  }
-  
-  @Nullable
-  public amsx a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    amsy localamsy = new amsy();
+    int i = 0;
+    Object localObject;
+    for (;;)
     {
-      amsx localamsx = amsx.a(paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("Perf", 2, "onParsed " + paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
+      localObject = localamsy;
+      try
+      {
+        if (i < paramArrayOfamph.length)
+        {
+          localamsy.a.clear();
+          localObject = paramArrayOfamph[i].a;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONArray((String)localObject);
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localamsy.a.add(((JSONArray)localObject).getString(j));
+              j += 1;
+            }
+          }
+          i += 1;
+        }
       }
-      return localamsx;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Perf", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public Class<amsx> a()
-  {
-    return amsx.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Perf", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amsx paramamsx)
-  {
-    if (paramamsx == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Perf", 2, "onUpdate but newConf==null");
+      catch (Throwable paramArrayOfamph)
+      {
+        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfamph);
+        localObject = null;
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Perf", 2, "onUpdate " + paramamsx.toString());
-    }
-    SharedPreferences.Editor localEditor = axnv.a().edit();
-    localEditor.putBoolean("disablepreloadproc_new", paramamsx.jdField_a_of_type_Boolean);
-    localEditor.putBoolean("disablegettrooplist_new", paramamsx.jdField_c_of_type_Boolean);
-    localEditor.putBoolean("disablepredownload_new", paramamsx.jdField_b_of_type_Boolean);
-    localEditor.putBoolean("enableautoperf_new", paramamsx.d);
-    localEditor.putString("userratio_new", paramamsx.jdField_a_of_type_JavaLangString);
-    localEditor.putString("extralsteps_new", paramamsx.jdField_b_of_type_JavaLangString);
-    localEditor.putString("predownloadwhitelist_new", paramamsx.jdField_c_of_type_JavaLangString);
-    localEditor.putBoolean("enable_thread_suspend", paramamsx.f);
-    localEditor.commit();
+    return localObject;
   }
   
-  public boolean a()
+  public List<String> a()
   {
-    return false;
+    return this.a;
   }
   
-  public int b()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Perf", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    return super.toString();
   }
 }
 

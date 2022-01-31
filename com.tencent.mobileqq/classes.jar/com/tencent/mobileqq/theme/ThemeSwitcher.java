@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,21 +12,21 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anqu;
-import axmp;
-import axmt;
-import ayla;
-import aymh;
-import aymi;
-import ayml;
-import aymm;
-import bbct;
-import bbdj;
-import bbev;
-import bbpw;
-import bbrb;
-import bbrc;
-import bbsw;
+import anqz;
+import axmr;
+import axmv;
+import aylc;
+import aymj;
+import aymk;
+import aymn;
+import aymo;
+import bbdh;
+import bbdx;
+import bbfj;
+import bbqk;
+import bbrp;
+import bbrq;
+import bbtk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -45,11 +45,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lmb;
+import llw;
 import mqq.app.AppRuntime;
 
 public class ThemeSwitcher
-  implements Handler.Callback, bbpw
+  implements Handler.Callback, bbqk
 {
   private static ThemeSwitcher jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher;
   public static final HashSet<String> a;
@@ -57,8 +57,8 @@ public class ThemeSwitcher
   private static ThemeSwitcher jdField_b_of_type_ComTencentMobileqqThemeThemeSwitcher;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private aymh jdField_a_of_type_Aymh = new aymh();
-  private aymm jdField_a_of_type_Aymm;
+  private aymj jdField_a_of_type_Aymj = new aymj();
+  private aymo jdField_a_of_type_Aymo;
   private ThemeSwitcher.DownloadListenser jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher$DownloadListenser;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
@@ -76,12 +76,12 @@ public class ThemeSwitcher
     jdField_a_of_type_JavaUtilHashSet = localHashSet;
   }
   
-  private ThemeSwitcher(QQAppInterface paramQQAppInterface, aymm paramaymm, String paramString1, String paramString2)
+  private ThemeSwitcher(QQAppInterface paramQQAppInterface, aymo paramaymo, String paramString1, String paramString2)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Aymm = paramaymm;
+    this.jdField_a_of_type_Aymo = paramaymo;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Aymh.a(paramString1);
+    this.jdField_a_of_type_Aymj.a(paramString1);
     this.jdField_a_of_type_JavaLangString = new SimpleDateFormat("MM-dd HH:mm:ss").format(new Date());
   }
   
@@ -94,27 +94,27 @@ public class ThemeSwitcher
       return null;
     }
     String str1 = ThemeUtil.getIDFromSCID(paramString);
-    Object localObject = new aymh().a(str1).a(localBaseApplication, paramString, "");
-    if (!((aymh)localObject).a())
+    Object localObject = new aymj().a(str1).a(localBaseApplication, paramString, "");
+    if (!((aymj)localObject).a())
     {
       QLog.e("ThemeSwitcher", 1, "unzipTheme: zip file missing");
       return null;
     }
-    String str2 = ((aymh)localObject).c();
-    String str3 = bbdj.b(str2, "MD5");
+    String str2 = ((aymj)localObject).c();
+    String str3 = bbdx.b(str2, "MD5");
     if (TextUtils.isEmpty(str3))
     {
       QLog.e("ThemeSwitcher", 1, "unzipTheme: fail to get md5");
       return null;
     }
-    ((aymh)localObject).a(localBaseApplication, paramString, str3);
-    String str4 = ((aymh)localObject).d();
+    ((aymj)localObject).a(localBaseApplication, paramString, str3);
+    String str4 = ((aymj)localObject).d();
     QLog.e("ThemeSwitcher", 1, "unzipTheme to " + str4);
     File localFile = new File(str4);
     boolean bool;
     if ((!paramBoolean) && (localFile.exists()))
     {
-      if (a(localBaseApplication, (aymh)localObject))
+      if (a(localBaseApplication, (aymj)localObject))
       {
         QLog.e("ThemeSwitcher", 1, "unzipTheme unzipDir exists");
         return str3;
@@ -136,12 +136,12 @@ public class ThemeSwitcher
       label329:
       for (localObject = "1";; localObject = "0")
       {
-        bbrc.a(null, "individual_v2_theme_setup_err", "need_move", paramString, (String)localObject, Build.MODEL, Build.VERSION.RELEASE, 0.0F, 0.0F);
-        bbrb.a("individual_v2_theme_setup_err", "need_move");
+        bbrq.a(null, "individual_v2_theme_setup_err", "need_move", paramString, (String)localObject, Build.MODEL, Build.VERSION.RELEASE, 0.0F, 0.0F);
+        bbrp.a("individual_v2_theme_setup_err", "need_move");
         i = 0;
         try
         {
-          bbdj.a(str2, str4, false);
+          bbdx.a(str2, str4, false);
           if (localFile.exists()) {
             i = ThemeUtil.getFileNumInFile(localFile);
           }
@@ -200,9 +200,9 @@ public class ThemeSwitcher
   
   private void a(int paramInt)
   {
-    String str = this.jdField_a_of_type_Aymh.a();
-    int i = axmt.a(str);
-    if ((paramInt != 0) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!axmt.a(i))) {
+    String str = this.jdField_a_of_type_Aymj.a();
+    int i = axmv.a(str);
+    if ((paramInt != 0) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!axmv.a(i))) {
       if (QLog.isColorLevel()) {
         QLog.d("SimpleUILog.SimpleUIHandler", 2, "NightModeLogic.postSwitch error, mBPref = " + i + "; themeId = " + str + "; code = " + paramInt);
       }
@@ -211,9 +211,9 @@ public class ThemeSwitcher
     do
     {
       return;
-      axmp localaxmp = (axmp)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(154);
-      bool = axmt.b();
-      localaxmp.a(localaxmp.a(bool, i, false));
+      axmr localaxmr = (axmr)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(154);
+      bool = axmv.b();
+      localaxmr.a(localaxmr.a(bool, i, false));
     } while (!QLog.isColorLevel());
     QLog.d("SimpleUILog.SimpleUIHandler", 2, "NightModeLogic.postSwitch, bSwitch = " + bool + "; bPref = " + i + "; themeId = " + str);
   }
@@ -235,8 +235,8 @@ public class ThemeSwitcher
       if (!paramBoolean)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_Aymm != null) {
-          bool1 = this.jdField_a_of_type_Aymm.a(paramInt);
+        if (this.jdField_a_of_type_Aymo != null) {
+          bool1 = this.jdField_a_of_type_Aymo.a(paramInt);
         }
       }
       if (("206" != this.jdField_b_of_type_JavaLangString) && (!bool1)) {
@@ -249,8 +249,8 @@ public class ThemeSwitcher
   private void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    String str1 = this.jdField_a_of_type_Aymh.a();
-    String str2 = ayla.a(paramQQAppInterface.getAccount(), 2);
+    String str1 = this.jdField_a_of_type_Aymj.a();
+    String str2 = aylc.a(paramQQAppInterface.getAccount(), 2);
     QLog.e("ThemeSwitcher", 1, str2 + " startSwitch: " + str1 + ", " + this.jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
     if ("1000".equals(str1))
@@ -265,7 +265,7 @@ public class ThemeSwitcher
     }
     if ("900".equals(str1))
     {
-      this.jdField_a_of_type_Aymh.b();
+      this.jdField_a_of_type_Aymj.b();
       b();
       return;
     }
@@ -275,8 +275,8 @@ public class ThemeSwitcher
   private void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher$DownloadListenser = new ThemeSwitcher.DownloadListenser(this, paramBoolean);
-    bbsw.a.download(paramQQAppInterface, this.jdField_a_of_type_Aymh.b());
-    aymi.a(paramQQAppInterface, "theme_detail", this.jdField_b_of_type_JavaLangString, 153, -1, 7, this.jdField_a_of_type_Aymh.a(), "20000000", aymi.jdField_a_of_type_JavaLangString, "");
+    bbtk.a.download(paramQQAppInterface, this.jdField_a_of_type_Aymj.b());
+    aymk.a(paramQQAppInterface, "theme_detail", this.jdField_b_of_type_JavaLangString, 153, -1, 7, this.jdField_a_of_type_Aymj.a(), "20000000", aymk.jdField_a_of_type_JavaLangString, "");
   }
   
   public static void a(String paramString, int paramInt)
@@ -288,8 +288,8 @@ public class ThemeSwitcher
       str = a(paramString, false);
       if (TextUtils.isEmpty(str))
       {
-        bbrc.a(null, "individual_v2_theme_setup_err", "unzip_fail", paramString, Build.MODEL, Build.VERSION.RELEASE, "", 0.0F, 0.0F);
-        bbrb.a("individual_v2_theme_setup_err", "unzip_fail");
+        bbrq.a(null, "individual_v2_theme_setup_err", "unzip_fail", paramString, Build.MODEL, Build.VERSION.RELEASE, "", 0.0F, 0.0F);
+        bbrp.a("individual_v2_theme_setup_err", "unzip_fail");
       }
     }
     for (;;)
@@ -316,7 +316,7 @@ public class ThemeSwitcher
       if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(str))) {
         a(paramString, "208", null);
       }
-      aymi.a(null, "theme_detail", "208", 153, 1, 35, paramString, "20000000", aymi.jdField_a_of_type_JavaLangString, "");
+      aymk.a(null, "theme_detail", "208", 153, 1, 35, paramString, "20000000", aymk.jdField_a_of_type_JavaLangString, "");
       return;
       str = null;
     }
@@ -342,10 +342,10 @@ public class ThemeSwitcher
     return bool;
   }
   
-  private static boolean a(Context paramContext, aymh paramaymh)
+  private static boolean a(Context paramContext, aymj paramaymj)
   {
-    File localFile = new File(paramaymh.d());
-    paramContext = ThemeUtil.getThemeInfo(paramContext, paramaymh.a());
+    File localFile = new File(paramaymj.d());
+    paramContext = ThemeUtil.getThemeInfo(paramContext, paramaymj.a());
     return (paramContext != null) && (paramContext.fileNum > 0) && (localFile.exists()) && (paramContext.fileNum == ThemeUtil.getFileNumInFile(localFile));
   }
   
@@ -380,48 +380,48 @@ public class ThemeSwitcher
       if (ThemeUtil.isFixTheme(paramString2)) {
         break label238;
       }
-      ayml.a(paramQQAppInterface, paramString2, "20000000");
+      aymn.a(paramQQAppInterface, paramString2, "20000000");
     }
     for (;;)
     {
       if (!ThemeUtil.isFixTheme(paramString2)) {
         ThemeCleaner.a(paramString1);
       }
-      if (this.jdField_a_of_type_Aymm == null) {
+      if (this.jdField_a_of_type_Aymo == null) {
         break;
       }
-      return this.jdField_a_of_type_Aymm.a(this.jdField_a_of_type_Aymh);
+      return this.jdField_a_of_type_Aymo.a(this.jdField_a_of_type_Aymj);
       label238:
       if ((!ThemeUtil.isFixTheme(paramString1)) && (!"206".equals(this.jdField_b_of_type_JavaLangString))) {
-        ayml.a(paramQQAppInterface, paramString1, "20000000");
+        aymn.a(paramQQAppInterface, paramString1, "20000000");
       }
     }
     return false;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String arg1, String paramString2, aymm paramaymm)
+  public static boolean a(QQAppInterface paramQQAppInterface, String arg1, String paramString2, aymo paramaymo)
   {
-    if ((TextUtils.isEmpty(???)) || (!anqu.a(???)))
+    if ((TextUtils.isEmpty(???)) || (!anqz.a(???)))
     {
       QLog.e("ThemeSwitcher", 1, "error themeId: " + ???);
-      if (paramaymm != null) {
-        paramaymm.a(1);
+      if (paramaymo != null) {
+        paramaymo.a(1);
       }
-      bbrc.a(null, "individual_v2_theme_setup_err", "wrong_id", ???, ???, 0.0F);
-      bbrb.a("individual_v2_theme_setup_err", "wrong_id");
+      bbrq.a(null, "individual_v2_theme_setup_err", "wrong_id", ???, ???, 0.0F);
+      bbrp.a("individual_v2_theme_setup_err", "wrong_id");
       return false;
     }
     if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
       QLog.e("ThemeSwitcher", 1, "set " + ??? + " when NOT_FINISH " + jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher);
     }
     jdField_b_of_type_ComTencentMobileqqThemeThemeSwitcher = null;
-    paramString2 = new ThemeSwitcher(paramQQAppInterface, paramaymm, ???, paramString2);
+    paramString2 = new ThemeSwitcher(paramQQAppInterface, paramaymo, ???, paramString2);
     synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
     {
-      paramaymm = jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher;
+      paramaymo = jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher;
       jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher = paramString2;
-      if (paramaymm != null) {
-        paramaymm.a(2, false);
+      if (paramaymo != null) {
+        paramaymo.a(2, false);
       }
       paramString2.a(paramQQAppInterface);
       return true;
@@ -431,21 +431,21 @@ public class ThemeSwitcher
   public static boolean a(String paramString)
   {
     ThemeSwitcher localThemeSwitcher = jdField_a_of_type_ComTencentMobileqqThemeThemeSwitcher;
-    return (localThemeSwitcher != null) && (localThemeSwitcher.jdField_a_of_type_Aymh.a().equals(paramString));
+    return (localThemeSwitcher != null) && (localThemeSwitcher.jdField_a_of_type_Aymj.a().equals(paramString));
   }
   
-  public static boolean a(String paramString1, String paramString2, aymm paramaymm)
+  public static boolean a(String paramString1, String paramString2, aymo paramaymo)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return a((QQAppInterface)localAppRuntime, paramString1, paramString2, paramaymm);
+      return a((QQAppInterface)localAppRuntime, paramString1, paramString2, paramaymo);
     }
     QLog.e("ThemeSwitcher", 1, "wrong app: " + localAppRuntime);
-    if (paramaymm != null) {
-      paramaymm.a(1);
+    if (paramaymo != null) {
+      paramaymo.a(1);
     }
-    bbrc.a(null, "individual_v2_theme_setup_err", "wrong_app", String.valueOf(localAppRuntime), paramString1, 0.0F);
-    bbrb.a("individual_v2_theme_setup_err", "wrong_app");
+    bbrq.a(null, "individual_v2_theme_setup_err", "wrong_app", String.valueOf(localAppRuntime), paramString1, 0.0F);
+    bbrp.a("individual_v2_theme_setup_err", "wrong_app");
     return false;
   }
   
@@ -464,7 +464,7 @@ public class ThemeSwitcher
   
   private void b(QQAppInterface paramQQAppInterface)
   {
-    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).queryItemVersion(3, this.jdField_a_of_type_Aymh.b(), true, true, 0L, this);
+    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).queryItemVersion(3, this.jdField_a_of_type_Aymj.b(), true, true, 0L, this);
   }
   
   private boolean b()
@@ -472,7 +472,7 @@ public class ThemeSwitcher
     if (jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString))
     {
       String str1 = SkinEngine.getInstances().getSkinRootPath();
-      String str2 = this.jdField_a_of_type_Aymh.d();
+      String str2 = this.jdField_a_of_type_Aymj.d();
       if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str1)))
       {
         QLog.e("ThemeSwitcher", 1, "needSwitch: normal not changed");
@@ -480,7 +480,7 @@ public class ThemeSwitcher
       }
       if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1)))
       {
-        QLog.e("ThemeSwitcher", 1, "needSwitch: " + this.jdField_a_of_type_Aymh.a() + " not changed");
+        QLog.e("ThemeSwitcher", 1, "needSwitch: " + this.jdField_a_of_type_Aymj.a() + " not changed");
         return false;
       }
     }
@@ -513,12 +513,12 @@ public class ThemeSwitcher
     if (paramInt == 2)
     {
       a(2, false);
-      paramString1 = actn.a().append("os.arch: " + System.getProperty("os.arch")).append(" DeviceInfoUtil#getCpuType: " + bbct.g()).append(" Build.CPU_ABI: " + Build.CPU_ABI).append(" Build.CPU_ABI2: " + Build.CPU_ABI2).append(" chip:" + lmb.f());
+      paramString1 = actj.a().append("os.arch: " + System.getProperty("os.arch")).append(" DeviceInfoUtil#getCpuType: " + bbdh.g()).append(" Build.CPU_ABI: " + Build.CPU_ABI).append(" Build.CPU_ABI2: " + Build.CPU_ABI2).append(" chip:" + llw.f());
       if (Build.VERSION.SDK_INT >= 21) {
         paramString1.append(" Build.SUPPORTED_ABIS: " + Arrays.toString(Build.SUPPORTED_ABIS));
       }
-      bbrc.a(null, "individual_v2_theme_setup_err", "query_timeout", paramString1.toString(), toString(), 0.0F);
-      bbrb.a("individual_v2_theme_setup_err", "query_timeout");
+      bbrq.a(null, "individual_v2_theme_setup_err", "query_timeout", paramString1.toString(), toString(), 0.0F);
+      bbrp.a("individual_v2_theme_setup_err", "query_timeout");
       return;
     }
     if (paramInt == 1)
@@ -526,11 +526,11 @@ public class ThemeSwitcher
       a(localQQAppInterface, false);
       return;
     }
-    this.jdField_a_of_type_Aymh.a(localQQAppInterface.getApp(), paramString1, paramString2);
-    if (a(localQQAppInterface.getApp(), this.jdField_a_of_type_Aymh))
+    this.jdField_a_of_type_Aymj.a(localQQAppInterface.getApp(), paramString1, paramString2);
+    if (a(localQQAppInterface.getApp(), this.jdField_a_of_type_Aymj))
     {
       paramString1 = ThemeUtil.getCurrentThemeId();
-      if ((!jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_Aymh.a().equals(paramString1)))
+      if ((!jdField_a_of_type_JavaUtilHashSet.contains(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_Aymj.a().equals(paramString1)))
       {
         a(localQQAppInterface, true);
         return;
@@ -539,7 +539,7 @@ public class ThemeSwitcher
       return;
     }
     QLog.e("ThemeSwitcher", 1, "unZip dir not exist, download again");
-    this.jdField_a_of_type_Aymh.c();
+    this.jdField_a_of_type_Aymj.c();
     a(localQQAppInterface, false);
   }
   
@@ -556,8 +556,8 @@ public class ThemeSwitcher
       if (paramMessage.what != 1000) {
         break;
       }
-    } while (this.jdField_a_of_type_Aymm == null);
-    this.jdField_a_of_type_Aymm.a();
+    } while (this.jdField_a_of_type_Aymo == null);
+    this.jdField_a_of_type_Aymo.a();
     return true;
     String str1;
     String str2;
@@ -566,8 +566,8 @@ public class ThemeSwitcher
     if (paramMessage.what == 1001)
     {
       paramMessage = ThemeUtil.getCurrentThemeId();
-      str1 = this.jdField_a_of_type_Aymh.a();
-      str2 = this.jdField_a_of_type_Aymh.d();
+      str1 = this.jdField_a_of_type_Aymj.a();
+      str2 = this.jdField_a_of_type_Aymj.d();
       ThemeBackground.needUpdateThemeForBg = false;
       if (!a((QQAppInterface)localObject, paramMessage, str1))
       {
@@ -585,13 +585,13 @@ public class ThemeSwitcher
     {
       label139:
       QLog.e("ThemeSwitcher", 1, "needRetry: " + bool1 + " switchSuccess: " + bool2);
-      ThemeUtil.setCurrentThemeIdVersion((AppRuntime)localObject, this.jdField_a_of_type_Aymh.a(), "20000000");
+      ThemeUtil.setCurrentThemeIdVersion((AppRuntime)localObject, this.jdField_a_of_type_Aymj.a(), "20000000");
       if (bool2) {
         a(0, false);
       }
       for (;;)
       {
-        aymi.a(null, "theme_detail", this.jdField_b_of_type_JavaLangString, 155, bbev.a(null), 23, str1, "20000000", paramMessage, "");
+        aymk.a(null, "theme_detail", this.jdField_b_of_type_JavaLangString, 155, bbfj.a(null), 23, str1, "20000000", paramMessage, "");
         QLog.e("ThemeSwitcher", 1, "needRetry: " + bool1 + " sIsSwitching: " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
         if (!bool1) {
           break;
@@ -600,7 +600,7 @@ public class ThemeSwitcher
         this.jdField_b_of_type_Long = (SystemClock.uptimeMillis() + 60000L);
         jdField_b_of_type_ComTencentMobileqqThemeThemeSwitcher = this;
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1003), 2000L);
-        this.jdField_a_of_type_Aymm = null;
+        this.jdField_a_of_type_Aymo = null;
         return true;
         QLog.e("ThemeSwitcher", 1, "setSkinRoot: " + str2);
         bool2 = SkinEngine.getInstances().setSkinRootPath(((QQAppInterface)localObject).getApp(), str2);
@@ -618,7 +618,7 @@ public class ThemeSwitcher
         i = paramMessage.arg1;
         if (i < 10)
         {
-          paramMessage = this.jdField_a_of_type_Aymh.d();
+          paramMessage = this.jdField_a_of_type_Aymj.d();
           if (!SkinEngine.getInstances().setSkinRootPath(((QQAppInterface)localObject).getApp(), paramMessage))
           {
             paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002, i + 1, 0);
@@ -642,8 +642,8 @@ public class ThemeSwitcher
       if (SystemClock.uptimeMillis() > this.jdField_b_of_type_Long)
       {
         QLog.e("ThemeSwitcher", 1, "meet deadLine, stop retry " + this);
-        bbrc.a(null, "individual_v2_theme_setup_err", "engine_timeout", toString(), this.jdField_a_of_type_Aymh.a(), 0.0F);
-        bbrb.a("individual_v2_theme_setup_err", "engine_timeout");
+        bbrq.a(null, "individual_v2_theme_setup_err", "engine_timeout", toString(), this.jdField_a_of_type_Aymj.a(), 0.0F);
+        bbrp.a("individual_v2_theme_setup_err", "engine_timeout");
         i = 1;
       }
       if (i != 0)
@@ -658,7 +658,7 @@ public class ThemeSwitcher
       }
       QLog.e("ThemeSwitcher", 1, "engine ready, retry: " + this);
       jdField_b_of_type_ComTencentMobileqqThemeThemeSwitcher = null;
-      a((QQAppInterface)localObject, this.jdField_a_of_type_Aymh.a(), this.jdField_b_of_type_JavaLangString, null);
+      a((QQAppInterface)localObject, this.jdField_a_of_type_Aymj.a(), this.jdField_b_of_type_JavaLangString, null);
       return true;
       label780:
       bool2 = true;
@@ -668,7 +668,7 @@ public class ThemeSwitcher
   
   public String toString()
   {
-    return this.jdField_a_of_type_Aymh.a() + " start " + this.jdField_a_of_type_JavaLangString + " ," + this.jdField_b_of_type_JavaLangString;
+    return this.jdField_a_of_type_Aymj.a() + " start " + this.jdField_a_of_type_JavaLangString + " ," + this.jdField_b_of_type_JavaLangString;
   }
 }
 

@@ -1,24 +1,81 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import android.os.Bundle;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ndf
-  implements Animation.AnimationListener
+class ndf
+  implements baic
 {
-  public ndf(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
+  ndf(nde paramnde) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    nde.a(this.a);
+    String str = "";
+    long l = 0L;
+    Object localObject1 = "";
+    if (paramBundle != null)
+    {
+      l = paramBundle.getLong("time", 0L);
+      str = paramBundle.getString("room_id");
+      localObject1 = paramBundle.getString("friendUin");
+    }
+    localObject1 = this.a.a((String)localObject1, l);
+    if (paramJSONObject == null)
+    {
+      nde.b(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
+          return;
+          Object localObject2 = paramJSONObject.optJSONObject("result");
+          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
+          {
+            paramJSONObject = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
+            if (localObject2 != null)
+            {
+              int i = 0;
+              for (;;)
+              {
+                if (i < ((JSONArray)localObject2).length()) {
+                  try
+                  {
+                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
+                    i += 1;
+                  }
+                  catch (JSONException localJSONException)
+                  {
+                    for (;;)
+                    {
+                      localJSONException.printStackTrace();
+                    }
+                  }
+                }
+              }
+              ((ndg)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
+              ((ndg)localObject1).b = str;
+            }
+            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+          }
+        }
+      } while (paramJSONObject.optInt("retcode") != 0);
+      paramJSONObject = paramJSONObject.optJSONObject("result");
+    } while (paramJSONObject == null);
+    ((ndg)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

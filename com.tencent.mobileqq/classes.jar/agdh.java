@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 
-class agdh
-  implements akbu
+public class agdh
 {
-  agdh(agch paramagch) {}
-  
-  public void ag_() {}
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    ((akbo)this.a.a.app.getManager(34)).d();
-  }
-  
-  public void i_(int paramInt)
-  {
-    this.a.f();
-  }
+  public ImageView a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 

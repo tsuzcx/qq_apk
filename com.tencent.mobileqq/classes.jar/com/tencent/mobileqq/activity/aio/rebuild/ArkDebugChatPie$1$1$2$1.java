@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aemd;
-import aeme;
-import ajyc;
-import bcpw;
+import aemb;
+import aemc;
+import ajya;
+import bcql;
 import com.tencent.ark.ArkDebugger;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
@@ -15,7 +15,7 @@ class ArkDebugChatPie$1$1$2$1
   public void run()
   {
     ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.c());
-    bcpw.a(this.a.a.a.this$0.a, ajyc.a(2131700659), 0).a();
+    bcql.a(this.a.a.a.this$0.a, ajya.a(2131700670), 0).a();
   }
 }
 

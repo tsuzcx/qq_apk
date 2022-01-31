@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import bcpw;
+import bcql;
 
 class DBFixConfigActivity$7$2
   implements Runnable
@@ -9,7 +9,7 @@ class DBFixConfigActivity$7$2
   
   public void run()
   {
-    bcpw.a(this.a.this$0.getApplicationContext(), "未检测到db文件", 1).a();
+    bcql.a(this.a.this$0.getApplicationContext(), "未检测到db文件", 1).a();
   }
 }
 

@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class awjz
-  extends Handler
+  implements View.OnClickListener
 {
   public awjz(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      UniteSearchActivity.a(this.a, 3);
-      this.a.f();
-    }
+    this.a.e();
   }
 }
 

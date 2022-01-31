@@ -1,21 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-
-class arzu
-  extends BroadcastReceiver
+public abstract class arzu
 {
-  arzu(arzt paramarzt) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (arzt.a(this.a) == null)) {
-      return;
-    }
-    arzt.a(this.a).a();
-  }
+  public abstract void a(arum paramarum);
 }
 
 

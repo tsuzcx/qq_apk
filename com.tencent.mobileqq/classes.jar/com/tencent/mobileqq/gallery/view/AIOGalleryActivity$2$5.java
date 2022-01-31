@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.gallery.view;
 
-import aqmb;
-import aqme;
-import aqnd;
-import aqob;
+import aqmd;
+import aqmg;
+import aqnf;
+import aqod;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class AIOGalleryActivity$2$5
   implements Runnable
 {
-  public AIOGalleryActivity$2$5(aqob paramaqob, long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
+  public AIOGalleryActivity$2$5(aqod paramaqod, long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_Aqob.a) != null)
+    if (AIOGalleryActivity.a(this.jdField_a_of_type_Aqod.a) != null)
     {
-      aqmb.a().a().a("IAIOImageProviderCallBack", 4, "IAIOImageProviderCallBack.notifyVideoUrl");
-      AIOGalleryActivity.a(this.jdField_a_of_type_Aqob.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c);
+      aqmd.a().a().a("IAIOImageProviderCallBack", 4, "IAIOImageProviderCallBack.notifyVideoUrl");
+      AIOGalleryActivity.a(this.jdField_a_of_type_Aqod.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c);
     }
   }
 }

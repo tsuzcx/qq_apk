@@ -1,40 +1,46 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class owl
-  implements URLDrawable.URLDrawableListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public owl(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
+  public owl(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
+    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
+      {
+        ReadInjoyIMAXAdFragment.a(this.a, true);
+        ReadInjoyIMAXAdFragment.a(this.a);
+        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, nmc.q);
+      }
+      return true;
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    if (ReadInjoyIMAXAdFragment.a(this.a)) {
+      return true;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    ReadInjoyIMAXAdFragment.a(this.a, true);
+    ReadInjoyIMAXAdFragment.a(this.a);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
     }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) {
-      return;
+    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), nmc.s);
+    ReadInjoyIMAXAdFragment.b(this.a, 2);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
     }
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
+    ReadInjoyIMAXAdFragment.d(this.a, 0);
+    return true;
   }
 }
 

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bgug;
+import bgux;
 import java.util.Arrays;
 
 public class JsCallParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<JsCallParams> CREATOR = new bgug();
+  public static final Parcelable.Creator<JsCallParams> CREATOR = new bgux();
   private String jdField_a_of_type_JavaLangString;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private String b;

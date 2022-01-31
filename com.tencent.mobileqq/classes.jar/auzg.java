@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
+import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 
 public class auzg
-  implements View.OnClickListener
 {
-  public auzg(ProfileHeaderView paramProfileHeaderView, auuw paramauuw) {}
+  public ProfileCardScrollImageView a;
   
-  public void onClick(View paramView)
-  {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Auuw);
-  }
+  public auzg(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
 }
 
 

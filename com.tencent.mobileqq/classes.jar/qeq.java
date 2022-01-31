@@ -1,24 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class qeq
-  implements DialogInterface.OnDismissListener
+  implements rte
 {
   public qeq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    if (ReadInJoyDeliverUGCActivity.c(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
     {
-      ReadInJoyDeliverUGCActivity.c(this.a, false);
-      ReadInJoyDeliverUGCActivity.e(this.a);
-      if (!ReadInJoyDeliverUGCActivity.g(this.a)) {
-        ReadInJoyDeliverUGCActivity.g(this.a, 1, this.a.getString(2131718413));
-      }
-      if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-        ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
+      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
+      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
+      nol.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", onh.e(), false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
       }
     }
   }

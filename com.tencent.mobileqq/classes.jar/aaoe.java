@@ -1,44 +1,51 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import java.lang.ref.WeakReference;
 
-final class aaoe
-  implements auoo
+public class aaoe
+  extends atzq
 {
-  aaoe(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a(auop paramauop) {}
-  
-  public void b(auop paramauop)
-  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
+      }
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
+    return;
+    if (paramBoolean) {}
     try
     {
-      if (paramauop.jdField_a_of_type_Int == 0)
+      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
+      if (paramBundle != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramauop.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
+        paramBundle = xgw.a(bbma.b(paramBundle.getWupBuffer()));
+        if (paramBundle != null) {
+          aanz.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramauop.b + ",result.errStr=" + paramauop.jdField_a_of_type_JavaLangString);
-      }
-      asts.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
       return;
     }
-    catch (Exception paramauop)
+    catch (Exception paramBundle)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramauop);
-      }
-      asts.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
     }
   }
 }

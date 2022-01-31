@@ -1,260 +1,68 @@
 import android.content.Context;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amhr
-  implements amhn
+  implements amhm
 {
-  private QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  private void a(Context paramContext, int paramInt)
-  {
-    String str = "";
-    if (paramInt == 1) {
-      str = paramContext.getString(2131692525);
-    }
-    bcpw.a(paramContext, 0, str, 0).a();
-  }
-  
-  private void b(Context paramContext, ColorNote paramColorNote)
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      return;
-    }
-    paramColorNote = new String(paramColorNote.getReserve());
-    try
-    {
-      paramColorNote = new JSONObject(paramColorNote);
-      long l1 = paramColorNote.getLong("file_color_note_uniSeq");
-      long l2 = paramColorNote.getLong("file_color_note_sessionId");
-      int i = paramColorNote.getInt("file_color_note_peerType");
-      paramColorNote = paramColorNote.getString("file_color_note_peerUin");
-      paramColorNote = ((QQAppInterface)localObject).a().a(l1, paramColorNote, i, l2);
-      if (paramColorNote == null)
-      {
-        a(paramContext, 1);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    paramColorNote = new apoe((QQAppInterface)localObject, paramContext, paramColorNote, 10001);
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("from_qlink_enter_recent", false);
-    paramColorNote.a((Bundle)localObject);
-    paramContext = new apog(paramContext, paramColorNote);
-    paramContext.a(14);
-    paramContext.b(268435456);
-    paramContext.a();
-  }
-  
-  private void c(Context paramContext, ColorNote paramColorNote)
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    paramColorNote = new String(paramColorNote.getReserve());
-    long l;
-    try
-    {
-      paramColorNote = new JSONObject(paramColorNote);
-      paramColorNote.getInt("file_color_note_peerType");
-      l = paramColorNote.getLong("file_color_note_peerUin");
-      paramColorNote = bakj.a(localQQAppInterface, l, paramColorNote.getString("file_color_note_file_uuid"), paramColorNote.getString("file_color_note_file_url"), paramColorNote.getString("file_color_note_fileName"), paramColorNote.getLong("file_color_note_fileSize"), paramColorNote.getInt("file_color_note_busId"));
-      if (paramColorNote == null)
-      {
-        a(paramContext, 1);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    if (paramColorNote.b == 12)
-    {
-      a(paramContext, 1);
-      return;
-    }
-    paramContext = new apog(paramContext, new apok(localQQAppInterface, paramContext, l, paramColorNote, -1));
-    paramContext.a(14);
-    paramContext.a(TroopFileDetailBrowserActivity.class);
-    paramContext.a(true);
-    paramContext.b(268435456);
-    paramContext.a();
-  }
-  
-  private void d(Context paramContext, ColorNote paramColorNote)
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      return;
-    }
-    String str = new String(paramColorNote.getReserve());
-    try
-    {
-      str = new JSONObject(str).getString("file_color_note_local_path");
-      if (!bbdj.b(str))
-      {
-        a(paramContext, 1);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    int i = apvk.a(paramColorNote.getSubType());
-    paramColorNote = new apoe((QQAppInterface)localObject, paramContext, apue.a(FileInfo.a(str)), 10000);
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("file_color_note_subType", i);
-    paramColorNote.a((Bundle)localObject);
-    paramContext = new apog(paramContext, paramColorNote);
-    paramContext.a(14);
-    paramContext.b(268435456);
-    paramContext.a();
-  }
-  
-  private void e(Context paramContext, ColorNote paramColorNote)
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    paramColorNote = new String(paramColorNote.getReserve());
-    try
-    {
-      long l = new JSONObject(paramColorNote).getLong("file_color_note_uniSeq");
-      int i = DataLineMsgRecord.getDevTypeBySeId(l);
-      paramColorNote = localQQAppInterface.a().a(i).a(l);
-      if (paramColorNote != null)
-      {
-        paramContext = new apog(paramContext, new apof(paramContext, apue.a(paramColorNote)));
-        paramContext.a(14);
-        paramContext.b(268435456);
-        paramContext.a();
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    a(paramContext, 1);
-  }
-  
-  private void f(Context paramContext, ColorNote paramColorNote)
-  {
-    Object localObject = a();
-    if (localObject == null) {
-      return;
-    }
-    paramColorNote = new String(paramColorNote.getReserve());
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramColorNote);
-      long l = localJSONObject.getLong("file_color_note_sessionId");
-      paramColorNote = ((QQAppInterface)localObject).a().a(l);
-      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-      localWeiYunFileInfo.jdField_b_of_type_Long = localJSONObject.getLong("file_color_note_cloud_lastTime");
-      localWeiYunFileInfo.jdField_a_of_type_Long = localJSONObject.getLong("file_color_note_fileSize");
-      localWeiYunFileInfo.jdField_a_of_type_Int = localJSONObject.getInt("file_color_note_cloud_srcType");
-      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_fileId");
-      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("file_color_note_cloud_dirKey");
-      localWeiYunFileInfo.c = localJSONObject.getString("file_color_note_fileName");
-      if (localJSONObject.has("file_color_note_cloud_encodeUrl")) {
-        localWeiYunFileInfo.e = localJSONObject.getString("file_color_note_cloud_encodeUrl");
-      }
-      if (localJSONObject.has("file_color_note_cloud_")) {
-        localWeiYunFileInfo.i = localJSONObject.getString("file_color_note_cloud_");
-      }
-      if (localJSONObject.has("file_color_note_cloud_")) {
-        localWeiYunFileInfo.j = localJSONObject.getString("file_color_note_cloud_");
-      }
-      localObject = new apol((QQAppInterface)localObject, paramContext, localWeiYunFileInfo);
-      ((apol)localObject).a(paramColorNote);
-      paramContext = new apog(paramContext, (apoj)localObject);
-      paramContext.a(14);
-      paramContext.b(268435456);
-      paramContext.a();
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
   public void a(Context paramContext, ColorNote paramColorNote)
   {
-    if (paramColorNote.getServiceType() != 17039360) {}
-    int i;
+    Object localObject1 = paramColorNote.getSubType();
+    if (((String)localObject1).startsWith("qzone_detail")) {}
     do
     {
-      return;
-      if (TextUtils.isEmpty(paramColorNote.getSubType()))
+      try
       {
-        QLog.i("QFileColorNoteLauncher", 1, "launch: subType is null.");
+        Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
+        int i = ((JSONObject)localObject2).getInt("appid");
+        paramColorNote = ((JSONObject)localObject2).getString("cellid");
+        localObject1 = ((JSONObject)localObject2).getString("subid");
+        long l = ((JSONObject)localObject2).getLong("uin");
+        ((JSONObject)localObject2).getString("source");
+        boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
+        String str = ((JSONObject)localObject2).getString("mainTitle");
+        localObject2 = ((JSONObject)localObject2).getString("subType");
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("req_from_kuolie", bool);
+        localBundle.putString("mainTitle", str);
+        localBundle.putString("subType", (String)localObject2);
+        bgyp.a(paramContext, bgyw.a(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("QFileColorNoteLauncher", 2, "launch: subKey[" + paramColorNote.getSubType() + "]");
-      }
-      i = apvk.a(paramColorNote.getSubType());
-      if (i == -1)
+      catch (JSONException paramContext)
       {
-        QLog.i("QFileColorNoteLauncher", 1, "launch: subType is unknown.");
+        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
         return;
       }
-    } while (paramColorNote.getReserve() == null);
-    switch (i)
+      if (((String)localObject1).startsWith("qzone_userhome")) {
+        try
+        {
+          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
+          bgyp.a(paramContext, bgyw.a(), paramColorNote, 0, 0, 0, null, null, true);
+          return;
+        }
+        catch (JSONException paramContext)
+        {
+          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+          return;
+        }
+      }
+    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
+    try
     {
-    default: 
-      return;
-    case 1: 
-      b(paramContext, paramColorNote);
-      return;
-    case 2: 
-      c(paramContext, paramColorNote);
-      return;
-    case 5: 
-      d(paramContext, paramColorNote);
-      return;
-    case 4: 
-      d(paramContext, paramColorNote);
-      return;
-    case 6: 
-      e(paramContext, paramColorNote);
+      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
+      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
+      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
+      bgyp.a(paramContext, bgyw.a(), paramColorNote, 0, 0, null, (String)localObject1, true);
       return;
     }
-    f(paramContext, paramColorNote);
+    catch (JSONException paramContext)
+    {
+      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+    }
   }
 }
 

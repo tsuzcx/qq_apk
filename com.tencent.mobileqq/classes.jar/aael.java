@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
 
-public class aael
-  extends aaen
+class aael
+  implements View.OnClickListener
 {
-  public aael(TestAppFragment paramTestAppFragment) {}
+  aael(aaek paramaaek, View.OnClickListener paramOnClickListener) {}
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    super.onSuccess(paramJSONObject);
-    paramJSONObject.optString("openid", "");
-    this.a.a.a("getAppFriends", null, new aaem(this));
+    if (!bbfj.d(aaek.a(this.jdField_a_of_type_Aaek)))
+    {
+      bcql.a(aaek.a(this.jdField_a_of_type_Aaek), aaek.a(this.jdField_a_of_type_Aaek).getString(2131694608), 0).a();
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "positiveListener is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    axqy.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "0", "", "", "");
   }
 }
 

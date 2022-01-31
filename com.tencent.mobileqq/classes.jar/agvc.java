@@ -1,22 +1,45 @@
 import android.content.Intent;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import java.util.ArrayList;
 import mqq.util.WeakReference;
 
 class agvc
-  implements adgz
+  extends agta
 {
-  agvc(agvb paramagvb) {}
-  
-  public void a()
+  protected agvc(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void b()
+  public static agsq b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
-    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+    if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
+    try
+    {
+      if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
+        jdField_a_of_type_Agsq = new agvc(paramNewPhotoPreviewActivity);
+      }
+      return jdField_a_of_type_Agsq;
+    }
+    finally {}
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_Agsp.b = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131695149);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Agrz.a != null) && (!this.jdField_a_of_type_Agrz.a.isEmpty());
+  }
+  
+  protected void c()
+  {
+    super.c();
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new agvd(this));
   }
 }
 

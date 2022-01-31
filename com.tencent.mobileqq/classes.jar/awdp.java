@@ -1,17 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awdp
-  implements View.OnClickListener
+public final class awdp
+  implements anyg
 {
-  public awdp(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public awdp(EditText paramEditText, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void a(anyh paramanyh)
   {
-    axqw.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
-    SignatureHistoryFragment.d(this.a, true);
+    if (paramanyh != null) {}
+    try
+    {
+      paramanyh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      return;
+    }
+    catch (Throwable paramanyh) {}
   }
+  
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    aylc.a(this.jdField_a_of_type_AndroidWidgetEditText);
+  }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

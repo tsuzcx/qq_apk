@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class ste
+public abstract class ste<T extends IEventReceiver, EVENT extends ssh>
+  extends QQUIEventReceiver<T, EVENT>
 {
-  public static Dispatcher a()
+  public ste(T paramT)
   {
-    return Dispatchers.get(ThreadManager.getSubThreadLooper());
+    super(paramT);
   }
+  
+  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  {
+    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
+    {
+      c(paramT, paramEVENT);
+      return;
+    }
+    b(paramT, paramEVENT);
+  }
+  
+  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
+  
+  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

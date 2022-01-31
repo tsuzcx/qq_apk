@@ -1,18 +1,22 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class afua
-  extends bfmg
+  implements URLDrawable.URLDrawableListener
 {
   public afua(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 

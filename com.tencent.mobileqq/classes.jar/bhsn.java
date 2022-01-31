@@ -1,9 +1,23 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-abstract interface bhsn
+class bhsn
+  implements bhea
 {
-  public abstract void a(JSONObject paramJSONObject, Bundle paramBundle);
+  bhsn(bhsm parambhsm) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      bhsm.a(this.a, paramString2, -2, "font download failed.");
+      return;
+    }
+    bhsm.a(this.a, paramString2, 0, "success");
+  }
 }
 
 

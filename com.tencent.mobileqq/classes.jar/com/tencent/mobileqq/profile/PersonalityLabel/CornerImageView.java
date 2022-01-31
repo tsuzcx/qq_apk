@@ -10,7 +10,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bfni;
+import bfnz;
 import com.tencent.image.URLImageView;
 
 public class CornerImageView
@@ -44,7 +44,7 @@ public class CornerImageView
   
   public void a()
   {
-    if (!bfni.j()) {
+    if (!bfnz.j()) {
       setLayerType(1, null);
     }
   }

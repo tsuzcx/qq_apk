@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aajo;
-import afsa;
+import aajk;
+import afry;
 
 public class AssistantSettingActivity$34$1
   implements Runnable
 {
-  public AssistantSettingActivity$34$1(aajo paramaajo) {}
+  public AssistantSettingActivity$34$1(aajk paramaajk) {}
   
   public void run()
   {

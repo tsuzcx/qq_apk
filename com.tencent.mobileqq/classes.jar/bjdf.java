@@ -1,6 +1,12 @@
-public abstract interface bjdf
+import dov.com.qq.im.capture.mode.CaptureModeController;
+
+public class bjdf
+  extends bjdc
 {
-  public abstract void a(boolean paramBoolean);
+  public bjdf(CaptureModeController paramCaptureModeController)
+  {
+    super(paramCaptureModeController);
+  }
 }
 
 

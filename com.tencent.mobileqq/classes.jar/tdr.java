@@ -1,17 +1,25 @@
-class tdr
-  implements tey
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+public class tdr
+  extends ssh
 {
-  tdr(tdq paramtdq) {}
+  public long a;
+  public String a;
+  public String b;
   
-  public void a(boolean paramBoolean, teu paramteu)
+  public tdr(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    veg.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramteu != null))
-    {
-      this.a.a(paramteu.b, paramteu.a);
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
     }
-    this.a.a(false, null);
+  }
+  
+  public String toString()
+  {
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
   }
 }
 

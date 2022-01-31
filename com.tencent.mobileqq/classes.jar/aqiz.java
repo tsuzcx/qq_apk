@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.1.1;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import mqq.app.AppRuntime;
 
 public class aqiz
-  implements bckz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aqiz(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  public aqiz(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    axqw.b(QQSettingChatOperationFragment.a(this.a), "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "0", "0", "", "");
-    axqw.b(null, "dc00898", "", "", "0X800A0C4", "0X800A0C4", 0, 0, "", "", "", "");
-    if (!this.a.getActivity().isFinishing()) {
-      QQSettingChatOperationFragment.a(this.a, true);
+    int i = 1;
+    bfna.a(true, paramBoolean);
+    paramCompoundButton = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      axqy.b(null, "CliOper", "", paramCompoundButton, "0X800A6E3", "0X800A6E3", 0, i, "", "", "", "");
+      return;
+      i = 0;
     }
-    ThreadManagerV2.excute(new QQSettingChatOperationFragment.1.1(this), 64, null, true);
   }
 }
 

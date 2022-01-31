@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aghw
-  implements DialogInterface.OnClickListener
+  extends akfy
 {
-  public aghw(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  public aghw(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
+    if (paramFaceRsp != null)
+    {
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 

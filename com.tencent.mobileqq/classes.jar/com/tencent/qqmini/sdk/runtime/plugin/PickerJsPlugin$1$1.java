@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import beka;
-import besl;
-import bfej;
+import bekr;
+import betc;
+import bffa;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$1$1
-  implements bfej
+  implements bffa
 {
   PickerJsPlugin$1$1(PickerJsPlugin.1 param1) {}
   
@@ -21,7 +21,7 @@ class PickerJsPlugin$1$1
     }
     catch (Exception localException)
     {
-      besl.d("PickerJsPlugin", "showPickerView error.", localException);
+      betc.d("PickerJsPlugin", "showPickerView error.", localException);
     }
   }
   
@@ -36,7 +36,7 @@ class PickerJsPlugin$1$1
     }
     catch (JSONException localJSONException)
     {
-      besl.d("PickerJsPlugin", "showPickerView error.", localJSONException);
+      betc.d("PickerJsPlugin", "showPickerView error.", localJSONException);
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
-import pgk;
+import pgh;
 
 public class NoteCardProteusItem$5
   implements Runnable
 {
-  public NoteCardProteusItem$5(pgk parampgk) {}
+  public NoteCardProteusItem$5(pgh parampgh) {}
   
   public void run()
   {
-    pgk.b(this.this$0);
+    pgh.b(this.this$0);
   }
 }
 

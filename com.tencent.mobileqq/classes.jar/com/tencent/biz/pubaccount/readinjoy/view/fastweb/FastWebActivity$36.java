@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import rjs;
+import rjp;
 
 class FastWebActivity$36
   implements Runnable

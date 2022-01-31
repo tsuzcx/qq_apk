@@ -1,18 +1,30 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-
 public class xbk
 {
-  public View a;
-  public TextView a;
-  public apqg a;
-  public AsyncImageView a;
-  public TextView b;
+  public static int a;
+  public static int b;
+  String a;
+  public boolean a;
+  String b;
+  public int c;
+  String c;
+  public int d;
+  
+  static
+  {
+    jdField_b_of_type_Int = 1;
+  }
+  
+  public xbk(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xbk
  * JD-Core Version:    0.7.0.1
  */

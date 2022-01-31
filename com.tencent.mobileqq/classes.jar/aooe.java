@@ -1,25 +1,37 @@
-import android.widget.ImageView;
 import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
 
 public class aooe
-  implements apvy
+  implements apxf
 {
   public aooe(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(int paramInt)
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      FilePreviewActivity.a(this.a, ayec.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720133), false));
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
       return;
     }
-    ayec.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+    if (this.a.jdField_a_of_type_Apet != null)
+    {
+      this.a.jdField_a_of_type_Apet.l = "3";
+      this.a.jdField_a_of_type_Apet.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
   }
   
-  public void a(ImageView paramImageView) {}
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

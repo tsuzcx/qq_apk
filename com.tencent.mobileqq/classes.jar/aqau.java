@@ -1,74 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-public class aqau
-  extends aqbc
+public abstract interface aqau
 {
-  public aqau(Intent paramIntent)
-  {
-    super(paramIntent);
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bbbd.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1))) {
-        localArrayList.add(localRecentUser);
-      }
-    }
-    return localArrayList;
-  }
-  
-  protected void a()
-  {
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramBundle.getString("uin"));
-    this.jdField_a_of_type_AndroidOsBundle.putInt("uintype", paramBundle.getInt("uintype"));
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("apollo_forward_key", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
-    this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-    this.jdField_a_of_type_AndroidContentIntent = actn.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
-    this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    return true;
-  }
-  
-  public void c()
-  {
-    super.c();
-  }
+  public static final Integer a = Integer.valueOf(0);
+  public static final Integer b = Integer.valueOf(1);
+  public static final Integer c = Integer.valueOf(2);
+  public static final Integer d = Integer.valueOf(3);
+  public static final Integer e = Integer.valueOf(4);
+  public static final Integer f = Integer.valueOf(5);
+  public static final Integer g = Integer.valueOf(6);
+  public static final Integer h = Integer.valueOf(8);
+  public static final Integer i = Integer.valueOf(9);
+  public static final Integer j = Integer.valueOf(10);
+  public static final Integer k = Integer.valueOf(11);
+  public static final Integer l = Integer.valueOf(12);
+  public static final Integer m = Integer.valueOf(13);
+  public static final Integer n = Integer.valueOf(14);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,28 @@
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.11.2;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class abdi
-  extends akim
+  implements DialogInterface.OnClickListener
 {
-  public abdi(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public abdi(FriendProfileCardActivity.11.2 param2) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a();
-      }
-    }
-    do
+    if (bbfj.g(this.a.jdField_a_of_type_Abdh.a))
     {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.a();
+      this.a.jdField_a_of_type_Ajti.c(this.a.jdField_a_of_type_JavaLangString);
+      if (this.a.jdField_a_of_type_Abdh.a.jdField_a_of_type_Abgw != null) {
+        this.a.jdField_a_of_type_Abdh.a.jdField_a_of_type_Abgw.b();
+      }
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.a();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
+    this.a.jdField_a_of_type_Ajti.h();
+    this.a.jdField_a_of_type_Ajti.a(this.a.jdField_a_of_type_Abdh.a.jdField_a_of_type_Auuy.a.jdField_a_of_type_JavaLangString, "");
+    this.a.jdField_a_of_type_Abdh.a.a(ajya.a(2131704928), 0);
+    this.a.jdField_a_of_type_Abdh.a.B();
   }
 }
 

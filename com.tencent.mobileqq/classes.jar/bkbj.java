@@ -1,15 +1,10 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-class bkbj
-  implements FilenameFilter
+public abstract interface bkbj
 {
-  bkbj(bkbh parambkbh) {}
+  public abstract void a();
   
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
+  
+  public abstract boolean a(bkbk parambkbk);
 }
 
 

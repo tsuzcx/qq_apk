@@ -1,39 +1,20 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.3;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
 public class nxj
-  implements baho
+  extends quz
 {
-  public nxj(ReadInJoyUploadAvatarActivity.3 param3) {}
+  public nxj(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyUploadAvatarActivity.a, 2, "uploadImage->onResult");
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
     }
-    if (paramJSONObject != null)
-    {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramJSONObject.optJSONObject("result") != null) {}
-      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
-      {
-        paramBundle = new Message();
-        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
-        {
-          paramBundle.what = 1003;
-          paramBundle.obj = paramJSONObject;
-        }
-        this.a.a.sendMessage(paramBundle);
-        return;
-      }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
     }
-    this.a.a.sendMessage(new Message());
+    ReadInJoyVideoSubChannelActivity.a(this.a).c();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

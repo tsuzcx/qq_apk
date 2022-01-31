@@ -1,38 +1,22 @@
-import android.os.Binder;
-import android.os.IBinder;
+import android.os.Bundle;
 import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 
-public abstract class lwo
-  extends Binder
-  implements lwn
+public abstract interface lwo
+  extends IInterface
 {
-  public static lwn a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwn))) {
-      return (lwn)localIInterface;
-    }
-    return new lwp(paramIBinder);
-  }
+  public abstract Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
-    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-    return true;
-  }
+  public abstract void a(RecvMsg paramRecvMsg);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo);
 }
 
 

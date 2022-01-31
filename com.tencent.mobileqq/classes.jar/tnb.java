@@ -1,55 +1,57 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Iterator;
 import java.util.List;
 
 public class tnb
-  extends syv
+  extends sys<top>
 {
-  public List<String> a = new ArrayList();
+  public final List<String> a;
+  
+  public tnb(List<String> paramList)
+  {
+    this.a = paramList;
+  }
   
   public String a()
   {
-    return sxp.a("StorySvc.get_date_video_list");
+    return "StorySvc.get_video_tag_778";
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
     try
     {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new tor(localRspSimpleInfoList);
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new top(localRspStoryPlayerTagInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      veg.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
+      for (;;)
+      {
+        ved.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
-      }
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.3.0"));
+    return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 

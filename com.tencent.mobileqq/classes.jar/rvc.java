@@ -1,20 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
-
-public class rvc
-  extends AnimatorListenerAdapter
+class rvc
 {
-  public rvc(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  final int jdField_a_of_type_Int;
+  final int b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public rvc(rvb paramrvb, int paramInt1, int paramInt2)
   {
-    this.a.setClickable(true);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

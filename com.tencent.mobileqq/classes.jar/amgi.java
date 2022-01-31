@@ -1,16 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class amgi
-  implements View.OnClickListener
+public class amgi
+  extends ajxj
 {
-  amgi(amgg paramamgg, BaseActivity paramBaseActivity) {}
+  public amgi(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public void onClick(View paramView)
+  protected void onSetMessageNotification(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    amgg.a(this.jdField_a_of_type_Amgg, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    axqw.a(this.jdField_a_of_type_Amgg.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onSetMessageNotification: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " data: " + paramArrayOfObject });
+    }
+    boolean[] arrayOfBoolean;
+    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
+    {
+      localObject = (String[])paramArrayOfObject[0];
+      arrayOfBoolean = (boolean[])paramArrayOfObject[1];
+      if ((localObject != null) && (localObject.length >= 1) && (arrayOfBoolean != null) && (arrayOfBoolean.length >= 1)) {}
+    }
+    else
+    {
+      return;
+    }
+    Object localObject = localObject[0];
+    paramBoolean = arrayOfBoolean[0];
+    ((Integer)paramArrayOfObject[2]).intValue();
   }
 }
 

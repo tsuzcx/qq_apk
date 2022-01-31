@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import miq;
+import min;
 
 public class QavVideoRecordUICtrl$3
   implements Runnable
 {
-  public QavVideoRecordUICtrl$3(miq parammiq) {}
+  public QavVideoRecordUICtrl$3(min parammin) {}
   
   public void run()
   {

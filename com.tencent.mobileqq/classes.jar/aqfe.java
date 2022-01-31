@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aqfe
-  implements DialogInterface.OnClickListener
+  implements aqby
 {
-  aqfe(aqfb paramaqfb) {}
+  aqfe(aqfd paramaqfd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.c) {
-      bded.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
-    }
-    aqeq.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
+    ((aqfo)this.a.a.getManager(350)).a().a(null);
+    this.a.x();
+    this.a.a();
   }
 }
 

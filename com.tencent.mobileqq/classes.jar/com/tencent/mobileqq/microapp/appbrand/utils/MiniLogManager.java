@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.microapp.appbrand.utils;
 
 import Wallet.GetMiniAppReq;
-import agwv;
+import agwt;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -46,7 +46,7 @@ public class MiniLogManager
   
   public static void compressAndUploadLog(String paramString, int paramInt)
   {
-    if (bbjw.a(paramString)) {
+    if (bbkk.a(paramString)) {
       return;
     }
     ThreadManagerV2.executeOnFileThread(new k(c.c(paramString), paramString, paramInt));
@@ -54,7 +54,7 @@ public class MiniLogManager
   
   private static void doUploadFile(String paramString1, String paramString2)
   {
-    if ((bbjw.a(paramString1)) || (bbjw.a(paramString2))) {
+    if ((bbkk.a(paramString1)) || (bbkk.a(paramString2))) {
       return;
     }
     ThreadManager.excute(new m(paramString1, paramString2), 128, null, false);
@@ -106,10 +106,10 @@ public class MiniLogManager
   
   public static void upload(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((bbjw.a(paramString1)) || (bbjw.a(paramString2)) || (!new File(paramString2).exists())) {
+    if ((bbkk.a(paramString1)) || (bbkk.a(paramString2)) || (!new File(paramString2).exists())) {
       return;
     }
-    agwv.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new l(paramString2, paramInt1));
+    agwt.a(new GetMiniAppReq(paramString1, paramInt2, paramInt1, ""), new l(paramString2, paramInt1));
   }
   
   /* Error */

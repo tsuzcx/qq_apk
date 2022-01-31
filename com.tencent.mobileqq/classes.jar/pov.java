@@ -1,49 +1,35 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
 
 public class pov
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public String a;
+  public boolean a;
+  
+  public pov()
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      sej.a(paramFromServiceMsg);
-      if (getAppRuntime() != null) {
-        pou.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public oidb_cmd0x68b.PkgInstallInfo a()
   {
-    if (paramIntent != null)
+    int i = 1;
+    oidb_cmd0x68b.PkgInstallInfo localPkgInstallInfo = new oidb_cmd0x68b.PkgInstallInfo();
+    localPkgInstallInfo.uint32_platform_type.set(1);
+    PBUInt32Field localPBUInt32Field = localPkgInstallInfo.uint32_is_installed;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      sej.a(localToServiceMsg);
-      if (localToServiceMsg != null)
-      {
-        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
-        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
-        paramPacket.setTimeout(localToServiceMsg.getTimeout());
-        paramPacket.setAttributes(localToServiceMsg.getAttributes());
-        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
-        if (!localToServiceMsg.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      localPBUInt32Field.set(i);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localPkgInstallInfo.bytes_pkg_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
       }
+      return localPkgInstallInfo;
+      i = 0;
     }
   }
 }

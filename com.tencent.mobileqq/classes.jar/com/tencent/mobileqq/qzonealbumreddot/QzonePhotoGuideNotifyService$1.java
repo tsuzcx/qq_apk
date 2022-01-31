@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import avfa;
-import avfd;
+import avfc;
+import avff;
 import com.tencent.qphone.base.util.QLog;
 
 public class QzonePhotoGuideNotifyService$1
   implements Runnable
 {
-  public QzonePhotoGuideNotifyService$1(avfd paramavfd) {}
+  public QzonePhotoGuideNotifyService$1(avff paramavff) {}
   
   public void run()
   {

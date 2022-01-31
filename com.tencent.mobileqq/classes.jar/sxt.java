@@ -1,11 +1,11 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class sxt
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  public static Drawable a(List<String> paramList)
   {
-    return sym.a(paramQQStoryAutoPlayView, paramMotionEvent);
+    return sxu.a(paramList);
   }
 }
 

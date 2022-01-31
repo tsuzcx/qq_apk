@@ -1,11 +1,28 @@
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
-
-class beqd
+public class beqd
 {
-  public ProcessType a;
-  public Class a;
-  public String a;
-  public Class b;
+  public int a;
+  public beqm a;
+  public Object a;
+  
+  public beqd(int paramInt, beqm parambeqm)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Beqm = parambeqm;
+  }
+  
+  public static beqd a(int paramInt, beqm parambeqm)
+  {
+    return new beqd(paramInt, parambeqm);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader@");
+    if (this.jdField_a_of_type_Beqm != null) {}
+    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_Beqm.hashCode());; localObject = "=") {
+      return localObject + this.jdField_a_of_type_Beqm + " what=" + this.jdField_a_of_type_Int + "}";
+    }
+  }
 }
 
 

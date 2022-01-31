@@ -1,12 +1,30 @@
-import org.json.JSONArray;
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 
-public abstract interface bejb
+class bejb
+  extends ByteArrayOutputStream
 {
-  public abstract void onInterrupt(int paramInt, String paramString);
+  bejb(beja parambeja, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void onRoomMemberChange(JSONArray paramJSONArray);
-  
-  public abstract void onRoomMemberSpeaking(JSONArray paramJSONArray);
+  public String toString()
+  {
+    if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
+    for (int i = this.count - 1;; i = this.count) {
+      try
+      {
+        String str = new String(this.buf, 0, i, beja.a(this.a).name());
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        throw new AssertionError(localUnsupportedEncodingException);
+      }
+    }
+  }
 }
 
 

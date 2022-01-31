@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import asnx;
+import asnz;
 
 public class MsgBackupTransportProcessor$5
   implements Runnable
 {
-  public MsgBackupTransportProcessor$5(asnx paramasnx) {}
+  public MsgBackupTransportProcessor$5(asnz paramasnz) {}
   
   public void run()
   {
-    asnx.a(this.this$0);
+    asnz.a(this.this$0);
   }
 }
 

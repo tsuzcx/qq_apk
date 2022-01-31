@@ -4,10 +4,11 @@ import android.view.View.OnClickListener;
 class wbv
   implements View.OnClickListener
 {
-  wbv(wbu paramwbu) {}
+  wbv(wbr paramwbr) {}
   
   public void onClick(View paramView)
   {
+    vei.a("home_page", "guide_close", 0, 0, new String[0]);
     this.a.dismiss();
   }
 }

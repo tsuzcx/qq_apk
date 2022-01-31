@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import apox;
-import apqp;
+import appb;
+import apqt;
 
 public class MusicFilePresenter$3
   implements Runnable
 {
-  public MusicFilePresenter$3(apox paramapox, String paramString, int paramInt) {}
+  public MusicFilePresenter$3(appb paramappb, String paramString, int paramInt) {}
   
   public void run()
   {

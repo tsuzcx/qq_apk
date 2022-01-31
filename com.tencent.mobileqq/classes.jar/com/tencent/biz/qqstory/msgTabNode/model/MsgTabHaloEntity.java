@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import aukm;
-import auma;
-import tfi;
+import auko;
+import aumc;
+import tff;
 
 public class MsgTabHaloEntity
-  extends aukm
+  extends auko
 {
   public String headUrl;
   public String jumpUrl;
@@ -17,9 +17,9 @@ public class MsgTabHaloEntity
   public long recommendId;
   public long reqTimeStamp;
   public String title;
-  @auma
+  @aumc
   public long uid;
-  @auma
+  @aumc
   public String unionId;
   public String videoCover;
   public String videoInfoList;
@@ -29,9 +29,9 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(tfi paramtfi)
+  public static String[] getSelectionArgs(tff paramtff)
   {
-    return new String[] { String.valueOf(paramtfi.b) };
+    return new String[] { String.valueOf(paramtff.b) };
   }
   
   public String toString()

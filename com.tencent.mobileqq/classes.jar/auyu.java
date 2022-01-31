@@ -5,11 +5,11 @@ import com.tencent.mobileqq.profile.view.BreatheEffectView;
 public class auyu
   implements Animation.AnimationListener
 {
-  public auyu(BreatheEffectView paramBreatheEffectView, auyz paramauyz) {}
+  public auyu(BreatheEffectView paramBreatheEffectView) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Auyz.a();
+    this.a.a();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

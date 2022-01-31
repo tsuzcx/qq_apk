@@ -1,14 +1,26 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 class anoa
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+  anoa(annz paramannz) {}
+  
+  @QQPermissionDenied(1818)
+  public void denied()
+  {
+    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
+    annz.a(this.a);
+    this.a.onGetError(1830001);
+  }
+  
+  @QQPermissionGrant(1818)
+  public void grant()
+  {
+    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
+    annz.a(this.a);
+    annz.b(this.a);
+  }
 }
 
 

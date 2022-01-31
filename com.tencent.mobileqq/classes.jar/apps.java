@@ -1,32 +1,44 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class apps
-  implements AudioManager.OnAudioFocusChangeListener
+  implements apjm
 {
-  apps(appp paramappp) {}
+  apps(appo paramappo) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (paramInt == -2) {
-      if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-        appp.a(this.a);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Apkr != null)) {
+      this.a.jdField_a_of_type_Apkr.a();
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Apnb.c(), this);
+      appo.d(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      appo.a(this.a);
+      return;
+    }
+    if (appo.d(this.a))
+    {
+      appo.d(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      }
+      appo.e(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Apkq != null) {
+        this.a.jdField_a_of_type_Apkq.a();
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()) || (this.a.jdField_a_of_type_AndroidAppActivity == null) || (!(this.a.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || (!((FileBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).isResume()));
-      appp.b(this.a);
-      return;
-    } while ((paramInt != -1) || (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
-    appp.a(this.a);
+    apjd.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c(), appo.a(this.a), true);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    appo.c(this.a, paramBoolean2);
+    appo.a(this.a, paramBoolean1);
   }
 }
 

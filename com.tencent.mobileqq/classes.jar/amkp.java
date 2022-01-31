@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
-
-public class amkp
-  implements DialogInterface.OnClickListener
+public abstract interface amkp
 {
-  public amkp(SwipePostTableLayout paramSwipePostTableLayout) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (SwipePostTableLayout.a(this.a).isShowing()) {
-      SwipePostTableLayout.a(this.a).dismiss();
-    }
-    amkg.a(this.a.a, true);
-  }
+  public abstract void b();
 }
 
 

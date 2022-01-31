@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.main;
 
-import agch;
-import agdd;
+import agcf;
+import agdb;
 
 public class MainAssistObserver$5$1
   implements Runnable
 {
-  public MainAssistObserver$5$1(agdd paramagdd) {}
+  public MainAssistObserver$5$1(agdb paramagdb) {}
   
   public void run()
   {

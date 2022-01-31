@@ -1,28 +1,39 @@
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
 
-class mov
-  extends lkg
+public class mov
+  extends mqg
 {
-  mov(mou parammou) {}
+  public lwf a;
+  public moy a;
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  mov(moz parammoz)
   {
-    c();
+    super(parammoz);
+    this.jdField_a_of_type_Lwf = new mow(this);
   }
   
-  protected void b(long paramLong, boolean paramBoolean)
+  void a()
   {
-    c();
+    mox localmox = new mox(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmox);
   }
   
-  void c()
+  public void a(moy parammoy)
   {
-    mpc localmpc = this.a.a();
-    if ((localmpc != null) && (localmpc.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
+    moz localmoz = a();
+    if (localmoz == null) {
+      return;
     }
+    localmoz.a(parammoy);
+  }
+  
+  public void b(moy parammoy)
+  {
+    moz localmoz = a();
+    if (localmoz == null) {
+      return;
+    }
+    localmoz.b(parammoy);
   }
 }
 

@@ -1,15 +1,37 @@
+import android.text.TextUtils;
+
 public class avdh
 {
-  public static avdg a(String paramString)
+  private static String a(int paramInt1, int paramInt2)
   {
-    if (bbjw.a(paramString)) {
-      return new avdg();
-    }
-    if ((paramString.equalsIgnoreCase("qinterest")) || (paramString.equalsIgnoreCase("bodong")) || (paramString.equalsIgnoreCase("qqgame"))) {}
-    for (Object localObject = new avdj();; localObject = new avdg())
+    switch (paramInt1)
     {
-      ((avdg)localObject).f = paramString;
-      return localObject;
+    }
+    for (;;)
+    {
+      return null;
+      switch (paramInt2)
+      {
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
+      }
+    }
+    return "0X8009E09";
+    return "0X8009E06";
+    return "0X8009E07";
+    return "0X8009E08";
+    return "0X8009E0A";
+    return "0X8009E0B";
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    String str = a(paramInt1, paramInt2);
+    if (!TextUtils.isEmpty(str)) {
+      axqy.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
   }
 }

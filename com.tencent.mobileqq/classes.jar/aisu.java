@@ -1,25 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
-
-class aisu
-  implements aisv
+public abstract interface aisu
 {
-  aisu(aist paramaist) {}
-  
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
-  {
-    if ((aist.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((aist.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == aist.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(aist.a(this.a).jdField_a_of_type_JavaLangString)) && (aist.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
-  }
+  public abstract void a(int paramInt, Object paramObject);
 }
 
 

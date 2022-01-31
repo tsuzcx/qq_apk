@@ -1,30 +1,28 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+
 public class bjqb
+  extends AnimatorListenerAdapter
 {
-  public static final int a = blbz.a(8.0F);
-  public static final int b = blbz.a(15.0F);
-  public static final int c = blbz.a(23.0F);
-  public float a;
-  public long a;
-  public boolean a;
-  public float b;
-  public long b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public int d = 0;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public boolean e;
-  public float f;
-  public int f = 0;
-  public boolean f;
-  public float g;
-  public boolean g;
-  public float h;
-  public boolean h;
-  public boolean i;
+  public bjqb(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView 100ms back end");
+    }
+    this.a.j();
+    arqn.b();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "startDeleteLoosenAnim mProgressView begin");
+    }
+  }
 }
 
 

@@ -1,155 +1,172 @@
-import com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager.1;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.mobileqq.data.MessageForStructing;
+import UserGrowth.stSimpleGetFeedListRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.5;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.qzone.LocalMultiProcConfig;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class sjv
 {
-  private long jdField_a_of_type_Long = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_dot_msg_uin", 0L);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  private long a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  private stSimpleGetFeedListRsp a(int paramInt)
   {
-    paramWSRedDotPushMsg = a(paramWSRedDotPushMsg);
-    if (paramWSRedDotPushMsg != null) {
-      return paramWSRedDotPushMsg.jdField_a_of_type_Long;
+    Object localObject = "";
+    if (paramInt == 1) {
+      localObject = a();
     }
-    return 7200000L;
+    while (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      return null;
+      if (paramInt == 2) {
+        localObject = b();
+      }
+    }
+    localObject = bbdx.a((String)localObject);
+    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), (byte[])localObject);
   }
   
-  private WSPushPreloadModel a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  private String a()
   {
-    if (paramWSRedDotPushMsg == null) {}
-    while (!(paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo)) {
-      return null;
-    }
-    return ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushPreloadModel;
+    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_data";
   }
   
   public static sjv a()
   {
-    return sjx.a();
+    return sjw.a();
   }
   
-  private void a(long paramLong)
+  private boolean a(List<stSimpleMetaFeed> paramList, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-    LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_dot_msg_uin", this.jdField_a_of_type_Long);
-  }
-  
-  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong)
-  {
-    if (paramWSRedDotPushMsg == null)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList.size() > 0)
     {
-      sne.d("WSRedDotPreloadManager", "sendRequest wsPushMsgData: null");
-      return;
-    }
-    sne.d("WSRedDotPreloadManager", "=====realPreloadRedData redDotUinSeq=" + paramLong + ", wsPushMsgData.mMsgData=" + paramWSRedDotPushMsg.mMsgData);
-    smy localsmy = new smy(null, (byte)0, (byte)1, null, 8, null, null, null, paramWSRedDotPushMsg.mMsgData);
-    localsmy.b = String.valueOf(paramLong);
-    paramWSRedDotPushMsg = new slv(localsmy, null, new sjw(this, paramWSRedDotPushMsg), 1001);
-    this.jdField_a_of_type_Boolean = true;
-    slo.a().a(paramWSRedDotPushMsg);
-  }
-  
-  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong, int paramInt)
-  {
-    sne.b("WSRedDotPreloadManager", "checkSendRequest checkCount: " + paramInt);
-    if (paramInt == 0) {
-      return;
-    }
-    boolean bool = sni.a();
-    sne.b("WSRedDotPreloadManager", "checkSendRequest inRealActionLoginB: " + bool);
-    if (!bool)
-    {
-      a(paramWSRedDotPushMsg, paramLong);
-      sne.b("WSRedDotPreloadManager", "checkSendRequest sendRequest!");
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRunnable = new WSRedDotPreloadManager.1(this, paramWSRedDotPushMsg, paramLong, paramInt);
-    slo.a().a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-    sne.b("WSRedDotPreloadManager", "checkSendRequest postDelayed start!");
-  }
-  
-  private void a(MessageForStructing paramMessageForStructing, WSRedDotPushMsg paramWSRedDotPushMsg)
-  {
-    WSPushPreloadModel localWSPushPreloadModel = a(paramWSRedDotPushMsg);
-    if ((localWSPushPreloadModel == null) || (!localWSPushPreloadModel.jdField_a_of_type_Boolean))
-    {
-      sne.d("WSRedDotPreloadManager", "preloadData wsPushPreloadModel:" + localWSPushPreloadModel + ", mHadCleanPreCache:" + this.b);
-      if (!this.b) {
-        sjy.a().a();
+      Object localObject = new stSimpleGetFeedListRsp();
+      ((stSimpleGetFeedListRsp)localObject).feeds = new ArrayList(paramList);
+      localObject = a((JceStruct)localObject);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (localObject.length > 0)
+        {
+          bool1 = bbdx.a((byte[])localObject, paramString, false);
+          snb.d("WeiShiCacheManager", "cacheRecommendData writeSuccess = " + bool1 + ", cache list size = " + paramList.size() + ", bytes length = " + localObject.length);
+        }
       }
-      this.b = true;
     }
-    do
-    {
-      return;
-      sne.b("WSRedDotPreloadManager", "preloadData mCurrentUniSeq=structMsg.uniSeq: " + paramMessageForStructing.uniseq);
-      if (this.jdField_a_of_type_Long != paramMessageForStructing.uniseq) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    if (sjy.a().a())
-    {
-      sne.d("WSRedDotPreloadManager", "preloadData isRedCacheInValidDuration: true");
-      return;
+    return bool1;
+  }
+  
+  private int b()
+  {
+    return sjy.a().f();
+  }
+  
+  private String b()
+  {
+    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_reddot_data";
+  }
+  
+  public int a()
+  {
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
+  }
+  
+  public <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    sne.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: " + localWSPushPreloadModel.b);
-    if (!localWSPushPreloadModel.b)
+    try
     {
-      sne.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: false");
-      return;
-      a(paramMessageForStructing.uniseq);
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramT.readFrom(paramArrayOfByte);
+      return paramT;
     }
-    sne.d("WSRedDotPreloadManager", "preloadData mCurrentUniSeq: " + this.jdField_a_of_type_Long + ", mIsSendingRequest: " + this.jdField_a_of_type_Boolean);
-    b();
-    a(paramWSRedDotPushMsg, this.jdField_a_of_type_Long, 3);
+    catch (Exception paramT)
+    {
+      paramT.printStackTrace();
+    }
+    return null;
   }
   
   public void a()
   {
-    for (;;)
-    {
-      try
-      {
-        sne.b("WSRedDotPreloadManager", "===startPreloadRedData===");
-        Object localObject = sni.a();
-        if (localObject == null)
-        {
-          sne.d("WSRedDotPreloadManager", "preloadData weishiMgr: null");
-          return;
-        }
-        localObject = ((otp)localObject).a();
-        if (localObject == null) {
-          continue;
-        }
-        WSRedDotPushMsg localWSRedDotPushMsg = sni.a((MessageForStructing)localObject);
-        if (localWSRedDotPushMsg == null)
-        {
-          sne.d("WSRedDotPreloadManager", "preloadData wsPushMsgData: null");
-          continue;
-        }
-        a(localMessageForStructing, localWSRedDotPushMsg);
-      }
-      finally {}
-      sjf.a().a();
-    }
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.6(this));
   }
   
-  public void b()
+  public void a(List<stSimpleMetaFeed> paramList, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      slo.a().b(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
-      sne.b("WSRedDotPreloadManager", "===== cancelPostDelayRunnable ! =====");
+    if (b() == 0) {
+      ThreadManager.executeOnFileThread(new WeiShiCacheManager.2(this));
     }
+    while ((paramList == null) || (paramList.size() <= 0)) {
+      return;
+    }
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.3(this, new ArrayList(paramList), paramInt));
+  }
+  
+  public void a(List<stSimpleMetaFeed> paramList, long paramLong)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManager.executeOnFileThread(new WeiShiCacheManager.5(this, new ArrayList(paramList), paramLong, paramList));
+      return;
+    }
+    a();
+  }
+  
+  public void a(sjr paramsjr)
+  {
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.1(this, paramsjr));
+  }
+  
+  public boolean a()
+  {
+    long l1 = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_msg_valid_timestamp", 0L);
+    long l2 = System.currentTimeMillis();
+    long l3 = l1 - l2;
+    snb.d("WeiShiCacheManager", "validTimestamp-currentTimestamp = " + l1 + "-" + l2 + " = " + l3);
+    return l3 > 0L;
+  }
+  
+  public byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct != null) {
+      try
+      {
+        JceOutputStream localJceOutputStream = new JceOutputStream();
+        localJceOutputStream.setServerEncoding("utf8");
+        paramJceStruct.writeTo(localJceOutputStream);
+        paramJceStruct = localJceOutputStream.toByteArray();
+        return paramJceStruct;
+      }
+      catch (Exception paramJceStruct)
+      {
+        paramJceStruct.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  public boolean b()
+  {
+    String str1 = snf.c();
+    String str2 = LocalMultiProcConfig.getString("weishi_usergrowth", "key_ws_cache_v", "");
+    snb.b("CacheResponseLog", "getCachedTrendsWSData versionName = " + str1 + ", cachedVersionName = " + str2);
+    return (!TextUtils.isEmpty(str1)) && (TextUtils.equals(str1, str2));
   }
 }
 

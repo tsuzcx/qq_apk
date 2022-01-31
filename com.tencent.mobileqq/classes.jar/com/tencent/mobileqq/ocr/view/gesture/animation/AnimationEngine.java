@@ -2,21 +2,21 @@ package com.tencent.mobileqq.ocr.view.gesture.animation;
 
 import android.os.Build.VERSION;
 import android.view.View;
-import aueb;
+import aued;
 
 public abstract class AnimationEngine
   implements Runnable
 {
   private final View jdField_a_of_type_AndroidViewView;
-  private final aueb jdField_a_of_type_Aueb;
+  private final aued jdField_a_of_type_Aued;
   
   public AnimationEngine(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    if (aueb.a()) {}
-    for (paramView = new aueb();; paramView = null)
+    if (aued.a()) {}
+    for (paramView = new aued();; paramView = null)
     {
-      this.jdField_a_of_type_Aueb = paramView;
+      this.jdField_a_of_type_Aued = paramView;
       return;
     }
   }
@@ -34,8 +34,8 @@ public abstract class AnimationEngine
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aueb != null) {
-      this.jdField_a_of_type_Aueb.a(paramInt);
+    if (this.jdField_a_of_type_Aued != null) {
+      this.jdField_a_of_type_Aued.a(paramInt);
     }
     a();
   }
@@ -45,11 +45,11 @@ public abstract class AnimationEngine
   public final void run()
   {
     boolean bool = a();
-    if (this.jdField_a_of_type_Aueb != null)
+    if (this.jdField_a_of_type_Aued != null)
     {
-      this.jdField_a_of_type_Aueb.b();
+      this.jdField_a_of_type_Aued.b();
       if (!bool) {
-        this.jdField_a_of_type_Aueb.a();
+        this.jdField_a_of_type_Aued.a();
       }
     }
     if (bool) {

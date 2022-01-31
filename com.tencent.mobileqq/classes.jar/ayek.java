@@ -1,34 +1,62 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class ayek
-  implements WtTicketPromise
+public class ayek
 {
-  ayek(ayej paramayej, Runnable paramRunnable) {}
-  
-  public void Done(Ticket paramTicket)
+  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.fileName = paramForwardFileInfo.d();
+    localFileManagerEntity.nFileType = apug.a(localFileManagerEntity.fileName);
+    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
+    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
+    return localFileManagerEntity;
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public static String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    String str = ajya.a(2131714803);
+    if (paramInt == 3) {
+      str = "word";
     }
+    do
+    {
+      return str;
+      if (paramInt == 6) {
+        return "excel";
+      }
+      if (paramInt == 7) {
+        return "ppt";
+      }
+    } while (paramInt != 9);
+    return "pdf";
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public static void a(Activity paramActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    a(paramActivity, paramString, false);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    Object localObject = new FileManagerEntity();
+    ((FileManagerEntity)localObject).nSessionId = apug.a().longValue();
+    ((FileManagerEntity)localObject).fileName = paramString;
+    paramString = new ForwardFileInfo();
+    paramString.d(9);
+    paramString.b(10001);
+    paramString.d(((FileManagerEntity)localObject).fileName);
+    paramString.b(((FileManagerEntity)localObject).nSessionId);
+    localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isMiniProgram", paramBoolean);
+    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
+    localIntent.putExtra("fileinfo", paramString);
+    localIntent.putExtra("file_browser_extra_params", (Bundle)localObject);
+    paramActivity.startActivityForResult(localIntent, 102);
   }
 }
 

@@ -1,30 +1,8 @@
-import android.view.View;
-
 public abstract interface atkx
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract View a();
-  
   public abstract void a();
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(atky paramatky);
-  
-  public abstract void a(atkz paramatkz);
-  
-  public abstract void a(atla paramatla);
-  
-  public abstract void a(atlb paramatlb);
-  
-  public abstract void a(atlc paramatlc);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
-  
-  public abstract boolean a();
+  public abstract void a(int paramInt);
   
   public abstract void b();
   

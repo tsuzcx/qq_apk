@@ -1,17 +1,19 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aiwz
-  implements AdapterView.OnItemClickListener
+  implements aiwt
 {
   public aiwz(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
+    if (CmGameDebugView.a(this.a).getVisibility() != 0)
+    {
+      CmGameDebugView.b(this.a, true);
+      return;
+    }
+    CmGameDebugView.b(this.a, paramInt);
   }
 }
 

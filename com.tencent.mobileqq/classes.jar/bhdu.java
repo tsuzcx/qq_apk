@@ -1,23 +1,23 @@
-public class bhdu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.feed.CertifiedFakeFeed;
+
+public final class bhdu
+  implements Parcelable.Creator<CertifiedFakeFeed>
 {
-  private static String a;
-  
-  public static String a()
+  public CertifiedFakeFeed a(Parcel paramParcel)
   {
-    if (a != null) {
-      return a;
-    }
-    return "";
+    return new CertifiedFakeFeed(paramParcel);
   }
   
-  public static void a(String paramString)
+  public CertifiedFakeFeed[] a(int paramInt)
   {
-    a = paramString;
+    return new CertifiedFakeFeed[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhdu
  * JD-Core Version:    0.7.0.1
  */

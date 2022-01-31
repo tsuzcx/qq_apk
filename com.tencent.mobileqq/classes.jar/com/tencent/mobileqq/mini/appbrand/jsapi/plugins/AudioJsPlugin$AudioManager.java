@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.Log;
-import bbbr;
-import bbct;
+import bbcf;
+import bbdh;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -376,13 +376,13 @@ class AudioJsPlugin$AudioManager
     {
       if (i != 0)
       {
-        localObject = bbct.b();
+        localObject = bbdh.b();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           if (AudioHelper.b(1))
           {
             if (this.this$0.isColorLevel()) {
-              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131698463));
+              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131698473));
             }
             AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
             return;
@@ -398,17 +398,17 @@ class AudioJsPlugin$AudioManager
           }
           paramBridgeInfo = this.recorder.getRecordFilPath();
           QLog.i("QQRecorder", 2, "path: " + paramBridgeInfo);
-          bbbr.a(this.context, true);
+          bbcf.a(this.context, true);
           this.recorder.recordStart();
           setFateOfRecorder(0);
           return;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131719049));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131719060));
         AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
         return;
       }
     }
-    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694693));
+    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694694));
     AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
   }
   

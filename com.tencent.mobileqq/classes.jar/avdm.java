@@ -1,33 +1,94 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
-class avdm
-  extends ayxn
+public class avdm
+  implements Manager
 {
-  avdm(avdl paramavdl, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  List<avdi> jdField_a_of_type_JavaUtilList = null;
+  List<String> b = null;
+  
+  public avdm(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
   }
   
-  protected void realCancel()
+  public avdi a(String paramString)
   {
-    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
+    if (bbkk.a(paramString)) {}
+    while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    avdi localavdi;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localavdi = (avdi)localIterator.next();
+    } while ((localavdi.f == null) || (!localavdi.f.equalsIgnoreCase(paramString)));
+    for (paramString = localavdi;; paramString = null) {
+      return paramString;
+    }
   }
   
-  protected void realStart()
+  public void a()
   {
-    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
-    avdl.a("Qboss_PreDownload_Start", (HashMap)localObject);
-    localObject = new ayrv();
-    ((ayrv)localObject).jdField_a_of_type_Aysa = new avdn(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
-    ((ayrv)localObject).jdField_a_of_type_JavaLangString = this.c;
-    ((ayrv)localObject).jdField_a_of_type_Int = 0;
-    ((ayrv)localObject).c = this.b;
-    ((aysz)this.app.getNetEngine(0)).a((aysw)localObject);
+    String str = avdk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    QLog.i("QAssistantManager", 2, "loadConfigFromLoacl config is " + str);
+    a(str);
   }
+  
+  public void a(String paramString)
+  {
+    if (bbkk.a(paramString)) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      label26:
+      if (this.b != null) {
+        break label81;
+      }
+      this.b = new ArrayList();
+    }
+    for (;;)
+    {
+      paramString = avdk.a(paramString, this.b);
+      if (paramString == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilList.addAll(paramString);
+      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      break label26;
+      label81:
+      this.b.clear();
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((bbkk.a(paramString)) || (this.b == null)) {
+      return false;
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (((String)localIterator.next()).equalsIgnoreCase(paramString)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onDestroy() {}
 }
 
 

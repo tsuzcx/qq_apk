@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.album.view;
 
-import srv;
+import srs;
 
 public class AlbumGalleryCapturePart$8
   implements Runnable
 {
-  public AlbumGalleryCapturePart$8(srv paramsrv) {}
+  public AlbumGalleryCapturePart$8(srs paramsrs) {}
   
   public void run()
   {

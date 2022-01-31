@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqw;
+import axqy;
 
 class QQSettingSettingActivity$8
   implements Runnable
@@ -9,7 +9,7 @@ class QQSettingSettingActivity$8
   
   public void run()
   {
-    axqw.b(this.this$0.app, "dc00898", "", "", "0X8008123", "0X8008123", 0, 0, "", "", "", "");
+    axqy.b(this.this$0.app, "dc00898", "", "", "0X8008123", "0X8008123", 0, 0, "", "", "", "");
   }
 }
 

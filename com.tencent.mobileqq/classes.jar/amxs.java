@@ -1,110 +1,155 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amxs
-  extends ampb<amxr>
+  implements ampc<String>
 {
-  public int a()
+  public String a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  
+  public amxs()
   {
-    return 396;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  @NonNull
-  public amxr a(int paramInt)
+  private void a(JSONObject paramJSONObject)
   {
-    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new amxr();
-  }
-  
-  @Nullable
-  public amxr a(ampi[] paramArrayOfampi)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onParsed");
-    if (paramArrayOfampi != null) {
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no troop");
+    }
+    do
+    {
+      return;
       try
       {
-        if (paramArrayOfampi.length > 0)
+        paramJSONObject = paramJSONObject.getJSONObject("videopreview");
+        if (paramJSONObject == null)
         {
-          paramArrayOfampi = (amxr)ampw.a(paramArrayOfampi[0].jdField_a_of_type_JavaLangString, amxr.class);
-          return paramArrayOfampi;
+          QLog.e("QFileCommonConfigBean", 1, "parse Troop Json |type: 396no videoPreview");
+          return;
         }
       }
-      catch (QStorageInstantiateException paramArrayOfampi) {}
-    }
-    return null;
-  }
-  
-  public Class<amxr> a()
-  {
-    return amxr.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(amxr paramamxr)
-  {
-    QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
-    {
-      if (localObject1 != null)
+      catch (JSONException paramJSONObject)
       {
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_up", paramamxr.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_down", paramamxr.b);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2czip_down", paramamxr.c);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_thumb", paramamxr.d);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_up", paramamxr.e);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_down", paramamxr.f);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disczip_down", paramamxr.g);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_thumb", paramamxr.h);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_up", paramamxr.i);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_down", paramamxr.j);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troopzip_down", paramamxr.k);
-        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_thumb", paramamxr.l);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew", paramamxr.m);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_svip", paramamxr.n);
-        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamxr.o);
-        ((SharedPreferences.Editor)localObject2).apply();
-        QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramamxr.jdField_a_of_type_JavaLangString);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("troop_video_preivew", paramamxr.m);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_svip", paramamxr.n);
-        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamxr.o);
-        paramamxr = (aows)((QQAppInterface)localObject1).getManager(317);
-        if (paramamxr != null) {
-          paramamxr.a((Bundle)localObject2);
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+        return;
+      }
+      this.m = paramJSONObject.getBoolean("switch");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview = " + this.m);
+      }
+      this.n = paramJSONObject.getBoolean("svip");
+      if (QLog.isColorLevel()) {
+        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for SVIP = " + this.n);
+      }
+      this.o = paramJSONObject.getBoolean("yearsvip");
+    } while (!QLog.isColorLevel());
+    QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for YearSVIP = " + this.n);
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no httpsJson");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_up = " + this.jdField_a_of_type_Boolean);
+        }
+        this.b = paramJSONObject.getBoolean("c2c_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_down = " + this.b);
+        }
+        this.c = paramJSONObject.getBoolean("c2czip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2czip_down = " + this.c);
+        }
+        this.d = paramJSONObject.getBoolean("c2c_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_c2c_thumb = " + this.d);
+        }
+        this.e = paramJSONObject.getBoolean("disc_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_up = " + this.e);
+        }
+        this.f = paramJSONObject.getBoolean("disc_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_down = " + this.f);
+        }
+        this.g = paramJSONObject.getBoolean("disczip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disczip_down = " + this.g);
+        }
+        this.h = paramJSONObject.getBoolean("disc_thumb");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_disc_thumb = " + this.h);
+        }
+        this.i = paramJSONObject.getBoolean("troop_up");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_up = " + this.i);
+        }
+        this.j = paramJSONObject.getBoolean("troop_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_down = " + this.j);
+        }
+        this.k = paramJSONObject.getBoolean("troopzip_down");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFileCommonConfigBean", 2, "https_troopzip_down = " + this.k);
+        }
+        this.l = paramJSONObject.getBoolean("troop_thumb");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QFileCommonConfigBean", 2, "https_troop_thumb = " + this.l);
+          return;
         }
       }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396configContent is empty");
       return;
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      b(paramString.getJSONObject("https"));
+      a(paramString.getJSONObject("troop"));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramString, new Object[0]);
+    }
   }
 }
 

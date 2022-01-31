@@ -1,32 +1,17 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import android.content.Context;
 
-class bhnk
-  implements ModuleDownloadListener
+public class bhnk
 {
-  bhnk(bhni parambhni) {}
+  public static Context a;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public static Context a()
   {
-    if (!paramString.equals("pictureMarkerSo.zip")) {}
-    do
-    {
-      return;
-      localObject = bhni.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    } while (!paramString.exists());
-    Object localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    bhnq.b(paramString, (File)localObject);
+    return a;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    a = paramContext;
   }
 }
 

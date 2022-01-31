@@ -1,61 +1,35 @@
-import com.tencent.mobileqq.confess.ConfessInfo;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
 public class amnt
-  implements ajtg
+  implements View.OnTouchListener
 {
-  public void a(amnk paramamnk) {}
+  public amnt(ConfessPlugin paramConfessPlugin) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    switch (paramMotionEvent.getAction())
     {
     }
-    do
+    for (;;)
     {
-      do
+      return false;
+      if ((paramView instanceof TextView))
       {
-        do
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
+        continue;
+        if ((paramView instanceof TextView))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  a(paramBoolean, paramObject);
-                  return;
-                  b(paramBoolean, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-                paramObject = (Object[])paramObject;
-              } while ((paramObject == null) || (paramObject.length != 6));
-              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
-              return;
-            } while ((paramObject == null) || (!(paramObject instanceof amnk)));
-            a((amnk)paramObject);
-            return;
-          } while (!(paramObject instanceof Object[]));
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length < 7);
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 3);
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+        }
+      }
+    }
   }
 }
 

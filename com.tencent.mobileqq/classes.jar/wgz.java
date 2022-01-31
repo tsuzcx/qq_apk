@@ -1,18 +1,15 @@
 import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
 public class wgz
-  implements axod
+  implements wig
 {
-  public wgz(QRLoginMgrActivity paramQRLoginMgrActivity, wig paramwig) {}
+  public wgz(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a()
+  public void a(ArrayList<wid> paramArrayList)
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Wig);
-  }
-  
-  public void b()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Wig);
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
   }
 }
 

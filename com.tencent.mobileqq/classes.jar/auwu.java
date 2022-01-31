@@ -1,105 +1,179 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import SummaryCard.TPraiseInfo;
 import android.text.TextUtils;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class auwu
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public Bitmap c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public static int a;
+  public static Vector<String> a;
+  private static AtomicBoolean a;
+  public static int b;
+  public static Vector<auwv> b;
+  public static int c;
   
-  public auwu(int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    jdField_a_of_type_Int = 10;
+    jdField_b_of_type_Int = 2000;
   }
   
-  public static auwu a(int paramInt, String paramString)
+  public static List<TPraiseInfo> a(List<TPraiseInfo> paramList)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    Object localObject = paramList;
+    if (c == 0)
     {
-      return null;
-      try
+      localObject = paramList;
+      if (paramList != null)
       {
-        paramString = a(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseInfo", 2, "content:" + paramString);
-        }
-        paramString = new JSONObject(paramString);
-        auwu localauwu = new auwu(paramInt);
-        localauwu.jdField_a_of_type_JavaLangString = paramString.optString("name");
-        localauwu.jdField_b_of_type_JavaLangString = paramString.optString("text");
-        if (paramString.has("color"))
+        localObject = paramList;
+        if (!paramList.isEmpty())
         {
-          String str = paramString.optString("color").trim();
-          paramString = str;
-          if (str.startsWith("0x")) {
-            paramString = str.substring(2);
-          }
-        }
-        try
-        {
-          localauwu.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
-          return localauwu;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
+          localObject = new ArrayList();
+          ArrayList localArrayList = new ArrayList();
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("PraiseInfo", 2, "color invalid");
+            TPraiseInfo localTPraiseInfo = (TPraiseInfo)paramList.next();
+            if (localTPraiseInfo.uCustomId > 0L) {
+              ((List)localObject).add(localTPraiseInfo);
+            } else {
+              localArrayList.add(localTPraiseInfo);
             }
           }
+          ((List)localObject).addAll(localArrayList);
         }
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
       }
     }
+    return localObject;
   }
   
-  private static String a(String paramString)
+  public static void a(AppRuntime paramAppRuntime)
   {
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      QLog.e("PraiseInfo", 1, paramString + " not exist!");
-    }
-    do
+    if (paramAppRuntime == null) {}
+    JSONObject localJSONObject;
+    Object localObject2;
+    label86:
+    int i;
+    Object localObject1;
+    for (;;)
     {
-      return null;
       try
       {
-        paramString = bbdj.b(localFile);
-        return paramString;
+        QLog.e("PraiseConfigHelper", 1, "parseJson, app null");
+        return;
       }
-      catch (OutOfMemoryError paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PraiseInfo", 2, paramString.getMessage());
-    return null;
+      finally {}
+      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      {
+        localJSONObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "praise.config.json", true, null);
+        if (localJSONObject == null) {
+          break label415;
+        }
+        localObject2 = localJSONObject.optJSONArray("colorEntries");
+        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
+          if (jdField_a_of_type_JavaUtilVector == null)
+          {
+            jdField_a_of_type_JavaUtilVector = new Vector();
+            break label425;
+            if (i < ((JSONArray)localObject2).length())
+            {
+              localObject1 = ((JSONArray)localObject2).optString(i);
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                break label430;
+              }
+              paramAppRuntime = (AppRuntime)localObject1;
+              if (!((String)localObject1).startsWith("http:")) {
+                paramAppRuntime = "http:" + (String)localObject1;
+              }
+              jdField_a_of_type_JavaUtilVector.add(paramAppRuntime);
+              break label430;
+            }
+          }
+          else
+          {
+            jdField_a_of_type_JavaUtilVector.clear();
+            break label425;
+          }
+        }
+      }
+    }
+    paramAppRuntime = localJSONObject.optJSONArray("newEntries");
+    if ((paramAppRuntime != null) && (paramAppRuntime.length() > 0)) {
+      if (jdField_b_of_type_JavaUtilVector == null)
+      {
+        jdField_b_of_type_JavaUtilVector = new Vector();
+        break label437;
+      }
+    }
+    for (;;)
+    {
+      label204:
+      int j;
+      if (i < paramAppRuntime.length())
+      {
+        localObject2 = paramAppRuntime.optJSONObject(i);
+        if (localObject2 == null) {
+          break label449;
+        }
+        localObject1 = new auwv();
+        ((auwv)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title");
+        ((auwv)localObject1).b = ((JSONObject)localObject2).optString("subtitle");
+        ((auwv)localObject1).c = ((JSONObject)localObject2).optString("bannerLink");
+        ((auwv)localObject1).d = ((JSONObject)localObject2).optString("reportName");
+        ((auwv)localObject1).jdField_a_of_type_JavaUtilVector = new Vector();
+        localObject2 = ((JSONObject)localObject2).optJSONArray("entrys");
+        if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
+          j = 0;
+        }
+      }
+      for (;;)
+      {
+        if (j < ((JSONArray)localObject2).length())
+        {
+          String str = ((JSONArray)localObject2).optJSONObject(j).optString("icon");
+          if (TextUtils.isEmpty(str)) {
+            break label442;
+          }
+          ((auwv)localObject1).jdField_a_of_type_JavaUtilVector.add(str);
+          break label442;
+          jdField_b_of_type_JavaUtilVector.clear();
+        }
+        else
+        {
+          jdField_b_of_type_JavaUtilVector.add(localObject1);
+          break label449;
+          jdField_a_of_type_Int = localJSONObject.optInt("playNum", 10);
+          jdField_b_of_type_Int = (int)(localJSONObject.optDouble("downloadTimeLimit", 2.0D) * 1000.0D);
+          c = localJSONObject.optInt("praiseFlyOrder", 0);
+          label415:
+          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          break;
+          label425:
+          i = 0;
+          break label86;
+          label430:
+          i += 1;
+          break label86;
+        }
+        label437:
+        i = 0;
+        break label204;
+        label442:
+        j += 1;
+      }
+      label449:
+      i += 1;
+    }
   }
 }
 

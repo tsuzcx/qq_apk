@@ -5,15 +5,15 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import asdu;
-import asdx;
+import asdw;
+import asdz;
 
 public class MagicfaceView
   extends SurfaceView
-  implements SurfaceHolder.Callback, asdu
+  implements SurfaceHolder.Callback, asdw
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private asdx jdField_a_of_type_Asdx;
+  private asdz jdField_a_of_type_Asdz;
   public volatile boolean a;
   private volatile boolean b;
   
@@ -280,9 +280,9 @@ public class MagicfaceView
     this.b = paramBoolean;
   }
   
-  public void setSurfaceCreatelistener(asdx paramasdx)
+  public void setSurfaceCreatelistener(asdz paramasdz)
   {
-    this.jdField_a_of_type_Asdx = paramasdx;
+    this.jdField_a_of_type_Asdz = paramasdz;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
@@ -290,8 +290,8 @@ public class MagicfaceView
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Asdx != null) {
-      this.jdField_a_of_type_Asdx.a();
+    if (this.jdField_a_of_type_Asdz != null) {
+      this.jdField_a_of_type_Asdz.a();
     }
   }
   

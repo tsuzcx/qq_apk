@@ -1,130 +1,136 @@
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class lji
-  extends ljf
+public abstract class lji
+  implements mnv
 {
-  private static int jdField_c_of_type_Int = -1;
-  static long d = 30000L;
-  long jdField_c_of_type_Long = 0L;
+  protected int a;
+  protected Bitmap a;
+  protected Canvas a;
+  protected Paint a;
+  protected lhc a;
+  protected mnw a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
   
-  public lji(VideoAppInterface paramVideoAppInterface)
+  public lji(lhc paramlhc, boolean paramBoolean)
   {
-    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Int = 32;
+    this.jdField_b_of_type_Int = 255;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Lhc = paramlhc;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
-  {
-    return ((lje)paramVideoAppInterface.a(5)).a(2, "ptu_so");
-  }
+  public abstract int a();
   
-  public static boolean b()
-  {
-    return jdField_c_of_type_Int == 1;
-  }
-  
-  private boolean c()
-  {
-    if (d()) {}
-    do
-    {
-      return true;
-      if (this.jdField_a_of_type_Int < 17)
-      {
-        lcl.c("SupportPendant", "isUserEffectFace error  OSversion:" + this.jdField_a_of_type_Int);
-        return false;
-      }
-      if (this.jdField_b_of_type_Int < 4)
-      {
-        lcl.c("SupportPendant", "isUserEffectFace error cpucount:" + this.jdField_b_of_type_Int);
-        return false;
-      }
-      if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Long < 1400000L))
-      {
-        lcl.c("SupportPendant", "isUserEffectFace error cpuFrequency:" + this.jdField_a_of_type_Long);
-        return false;
-      }
-    } while (this.jdField_b_of_type_Long >= 1073741824L);
-    lcl.c("SupportPendant", "isUserEffectFace error  memory:" + this.jdField_b_of_type_Long);
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    String str = Build.MODEL;
-    if (TextUtils.isEmpty(str)) {
-      return false;
-    }
-    return str.equals("MI 5");
-  }
-  
-  public int a(String paramString)
+  public int a(long paramLong)
   {
     return 0;
   }
   
+  Bitmap a()
+  {
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Lhc.a))
+    {
+      lcg.c("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
+      localObject3 = localObject1;
+    }
+    do
+    {
+      for (;;)
+      {
+        return localObject3;
+        lcg.c("ARZimuItemTask", "build:" + toString());
+        localObject1 = localObject3;
+        Object localObject2 = localObject4;
+        try
+        {
+          int i = a();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          int j = b();
+          localObject1 = localObject3;
+          localObject2 = localObject4;
+          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
+          localObject1 = localObject3;
+          localObject2 = localObject3;
+          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject3 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
+            return localObject1;
+          }
+        }
+        catch (Exception localException)
+        {
+          localObject3 = localOutOfMemoryError;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ARZimuItemTask", 2, localException.getMessage());
+    return localOutOfMemoryError;
+  }
+  
+  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
+  
+  public void a(Typeface paramTypeface, int paramInt, mnw parammnw)
+  {
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+    }
+    this.jdField_a_of_type_Mnw = parammnw;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+  }
+  
+  public void a(lhc paramlhc)
+  {
+    this.jdField_a_of_type_Lhc = paramlhc;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
   public boolean a()
   {
-    if (jdField_c_of_type_Int != 1)
-    {
-      if (axlc.a(BaseApplicationImpl.getContext())) {
-        break label138;
-      }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= this.jdField_c_of_type_Long) {
-        break label121;
-      }
-      long l2 = AudioHelper.c();
-      if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g()) {
-        break label114;
-      }
-      jdField_c_of_type_Int = 1;
-      long l3 = AudioHelper.c();
-      QLog.w("SupportPendant", 1, "isDownloadedPTUSO, isFilterSoDownLoadSuc[" + jdField_c_of_type_Int + "], cost[" + (l3 - l2) + "]");
-      this.jdField_c_of_type_Long = (l1 + d);
-    }
-    label138:
-    for (;;)
-    {
-      if (jdField_c_of_type_Int != 1) {
-        break label145;
-      }
-      return true;
-      label114:
-      jdField_c_of_type_Int = 0;
-      break;
-      label121:
-      if (QLog.isDevelopLevel())
-      {
-        QLog.w("SupportPendant", 1, "isDownloadedPTUSO, 频繁调用");
-        continue;
-        jdField_c_of_type_Int = 1;
-      }
-    }
-    label145:
     return false;
   }
   
-  public boolean a(int paramInt, String paramString)
-  {
-    return false;
-  }
+  public abstract int b();
   
-  public boolean a(String paramString)
+  public Bitmap b()
   {
-    if ("ptu_so".equalsIgnoreCase(paramString)) {
-      return a();
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
     }
-    return c();
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public void b() {}
-  
-  public void c() {}
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
 }
 
 

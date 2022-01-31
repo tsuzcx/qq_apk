@@ -1,43 +1,22 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 public class axcd
-  extends MSFServlet
+  implements HostnameVerifier
 {
-  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), axcd.class);
-    localNewIntent.putExtra("userCommReport", paramUserCommReport);
-    localNewIntent.putExtra("reportInfos", paramArrayList);
-    paramAppRuntime.startServlet(localNewIntent);
-  }
+  public axcd(LoginVerifyServlet.3 param3, URL paramURL) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
-      }
-      return;
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = new bhef((UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
-    paramPacket.setTimeout(10000L);
-    paramPacket.setSSOCommand(paramIntent.getCmdString());
-    paramPacket.putSendData(paramIntent.encode());
+    return bool;
   }
 }
 

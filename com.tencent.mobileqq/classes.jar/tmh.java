@@ -1,44 +1,34 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmh
-  extends syv<tof>
+  extends sym
 {
-  public static final String a = sxp.a("StorySvc.square_720_banner_vid_list");
-  public String b;
+  public List<CommentEntry> a = new ArrayList();
+  public int b;
   public String c;
   
-  public String a()
+  public tmh(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
   {
-    return a;
-  }
-  
-  public syq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
-    try
+    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
+    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
+    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
+    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
+    while (paramRspFeedCommentList.hasNext())
     {
-      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
-      return new tof(localRspBannerVideoList);
+      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
+      localCommentEntry.feedId = this.c;
+      this.a.add(localCommentEntry);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
-    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
-    return localReqBannerVideoList.toByteArray();
   }
 }
 

@@ -1,36 +1,20 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.tribe.view.TEditText;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
 
 public class azgu
-  extends ClickableSpan
+  extends AnimatorListenerAdapter
 {
-  public azgu(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public azgu(TroopBarPublishActivity.6 param6) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
+    if (this.a.a) {
+      this.a.this$0.s();
     }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      axqw.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    this.a.this$0.b.requestFocus();
   }
 }
 

@@ -1,28 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-
-public class begr
-  extends BroadcastReceiver
+public abstract class begr
 {
-  public begr(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("OpenSDKAppInterface", 2, "onReceive: invoked.  intent: " + paramIntent + " action: " + paramContext);
-    }
-    if ((paramContext != null) && (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED"))) {
-      OpenSDKAppInterface.a(this.a);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(String[] paramArrayOfString);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(boolean paramBoolean, int paramInt);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     begr
  * JD-Core Version:    0.7.0.1
  */

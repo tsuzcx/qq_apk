@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class abbf
-  extends anwf
+  implements View.OnClickListener
 {
-  public abbf(EmosmActivity paramEmosmActivity) {}
+  public abbf(FontSettingActivity paramFontSettingActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+    FontSettingActivity.a(this.a).dismiss();
   }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

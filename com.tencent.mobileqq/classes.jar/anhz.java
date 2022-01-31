@@ -1,29 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
-
 public class anhz
-  implements admn
+  implements Thread.UncaughtExceptionHandler
 {
-  public anhz(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
-  
-  public void a()
+  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        localObject = (altg)((QQAppInterface)localObject).a(95);
-      }
-    }
+    anic.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anhz
  * JD-Core Version:    0.7.0.1
  */

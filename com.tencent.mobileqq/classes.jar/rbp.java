@@ -1,15 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-class rbp
-  implements View.OnClickListener
+public abstract interface rbp
 {
-  rbp(rap paramrap, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    noo.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, View paramView, int paramInt, long paramLong);
 }
 
 

@@ -1,8 +1,8 @@
 public abstract interface bhuv
 {
-  public abstract void onAnimationFinished();
+  public abstract void a();
   
-  public abstract void onDrawableLoaded();
+  public abstract void a(int paramInt, String paramString1, String paramString2);
 }
 
 

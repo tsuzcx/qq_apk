@@ -1,31 +1,43 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 
-final class wat
-  extends wad
+public class wat
+  implements waj
 {
-  wat(wad paramwad, PublishVideoEntry paramPublishVideoEntry) {}
+  public long a;
+  public waj a;
+  
+  public wat(waj paramwaj)
+  {
+    this.jdField_a_of_type_Waj = paramwaj;
+  }
   
   public void onFailure(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    if (this.jdField_a_of_type_Waj != null) {
+      this.jdField_a_of_type_Waj.onFailure(paramString);
     }
-    this.jdField_a_of_type_Wad.onFailure(paramString);
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original failed " + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video hflip video Error:" + paramString);
+    }
   }
+  
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString) {}
   
   public void onStart()
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original start");
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
   }
   
   public void onSuccess(String paramString)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 2, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " combine mix music and original：" + String.valueOf(l1 - l2));
+    paramString = String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    vei.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
+    }
   }
 }
 

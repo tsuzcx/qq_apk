@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
+import alcs;
 import alct;
 import alcu;
-import alcv;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,8 +31,8 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      alcv localalcv = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localalcv);
+      alcu localalcu = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localalcu);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }

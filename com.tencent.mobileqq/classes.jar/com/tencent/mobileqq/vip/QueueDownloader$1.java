@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vip;
 
-import bbwg;
-import bbwi;
+import bbwu;
 import bbww;
+import bbxk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
@@ -13,14 +13,14 @@ import mqq.app.AppRuntime;
 public class QueueDownloader$1
   implements Runnable
 {
-  public QueueDownloader$1(bbww parambbww, bbwg parambbwg) {}
+  public QueueDownloader$1(bbxk parambbxk, bbwu parambbwu) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.this$0.a.get() + ",task=" + this.a);
     }
-    if ((this.a.c) && (bbwi.a(this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.c) && (bbww.a(this.a.jdField_a_of_type_JavaLangString)))
     {
       this.a.jdField_a_of_type_Int = -101;
       this.a.a(-1);
@@ -34,7 +34,7 @@ public class QueueDownloader$1
       return;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = bbwi.a(this.a, localAppRuntime);
+    int i = bbww.a(this.a, localAppRuntime);
     if (QLog.isColorLevel()) {
       QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.a);
     }
@@ -53,12 +53,12 @@ public class QueueDownloader$1
       {
         localObject = this.a.jdField_a_of_type_JavaLangString;
         localObject = localStringBuilder.append("QueueDownloader").append(" current task:").append((String)localObject).append(",downloadQueue size:");
-        if (bbww.a(this.this$0) != null) {
+        if (bbxk.a(this.this$0) != null) {
           break label105;
         }
       }
       label105:
-      for (int i = 0;; i = bbww.a(this.this$0).size())
+      for (int i = 0;; i = bbxk.a(this.this$0).size())
       {
         ((StringBuilder)localObject).append(i);
         return localStringBuilder.toString();

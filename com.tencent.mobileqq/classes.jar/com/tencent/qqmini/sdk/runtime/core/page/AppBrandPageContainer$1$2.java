@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import besl;
-import bfas;
-import bfbb;
+import betc;
+import bfbj;
+import bfbs;
 import org.json.JSONObject;
 
 public class AppBrandPageContainer$1$2
   implements Runnable
 {
-  public AppBrandPageContainer$1$2(bfbb parambfbb) {}
+  public AppBrandPageContainer$1$2(bfbs parambfbs) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class AppBrandPageContainer$1$2
     {
       for (;;)
       {
-        besl.d("AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
+        betc.d("AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
       }
     }
   }

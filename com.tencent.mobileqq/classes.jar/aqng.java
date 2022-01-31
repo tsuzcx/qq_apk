@@ -1,26 +1,87 @@
-import android.app.Activity;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.view.View;
 import com.tencent.image.URLDrawable;
 
-class aqng
-  implements aqlz
+public class aqng
 {
-  aqng(aqnf paramaqnf, URLDrawable paramURLDrawable, aqmg paramaqmg) {}
+  public aqml a;
+  public aqon a;
   
-  public void a(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public static void a(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Aqnf.a.b.setVisibility(8);
-    if (paramBoolean)
+    boolean bool = true;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Aqnf.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
-      this.jdField_a_of_type_Aqmg.a = paramInt;
-      aqne.a(this.jdField_a_of_type_Aqnf.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
-      return;
+    case 4: 
+    case 5: 
+    case 7: 
+    default: 
+      paramInt = 0;
+      if (paramURLDrawable.isAnim()) {
+        break;
+      }
     }
-    bcpw.a(this.jdField_a_of_type_Aqnf.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnf.a.jdField_a_of_type_AndroidAppActivity.getString(2131695340), 0).a();
+    for (;;)
+    {
+      paramView.setTag(2131296390, Boolean.valueOf(bool));
+      if (bool) {
+        paramView.setTag(2131296389, Integer.valueOf(paramInt));
+      }
+      return;
+      paramInt = 1;
+      break;
+      paramInt = 2;
+      break;
+      paramInt = 3;
+      break;
+      bool = false;
+    }
+  }
+  
+  public void a(Intent paramIntent) {}
+  
+  public void a(aqml paramaqml)
+  {
+    this.jdField_a_of_type_Aqml = paramaqml;
+  }
+  
+  public void a(aqng paramaqng) {}
+  
+  public void a(aqon paramaqon)
+  {
+    this.jdField_a_of_type_Aqon = paramaqon;
+  }
+  
+  public void aI_()
+  {
+    if (this.jdField_a_of_type_Aqon != null) {
+      this.jdField_a_of_type_Aqon.p();
+    }
+  }
+  
+  public void aJ_()
+  {
+    if (this.jdField_a_of_type_Aqon != null) {
+      this.jdField_a_of_type_Aqon.q();
+    }
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void i()
+  {
+    if (this.jdField_a_of_type_Aqon != null) {
+      this.jdField_a_of_type_Aqon.r();
+    }
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Aqon != null) {
+      this.jdField_a_of_type_Aqon.d();
+    }
   }
 }
 

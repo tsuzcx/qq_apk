@@ -1,36 +1,81 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class bfll
-  implements ArtFilterResource
+  implements bflv
 {
-  public String getCommonPrefix()
-  {
-    return ahwy.c;
-  }
+  public bfll(AudioDeviceInterface paramAudioDeviceInterface) {}
   
-  public String getFilterResPath()
+  public void a(int paramInt)
   {
-    if (bflj.a) {
-      return bkue.b;
+    try
+    {
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      }
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
     }
-    return avsd.b;
+    catch (Exception localException) {}
   }
   
-  public String getModelPath()
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    return "";
+    if (paramInt == 0) {
+      AudioDeviceInterface.access$400(this.a, paramString);
+    }
   }
   
-  public String getReshapePath()
+  public void a(int paramInt, String paramString, boolean paramBoolean) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
+  
+  public void a(long paramLong, int paramInt) {}
+  
+  public void a(long paramLong, int paramInt, String paramString) {}
+  
+  public void a(long paramLong, boolean paramBoolean)
   {
-    return "";
+    if (!paramBoolean) {}
+    try
+    {
+      AudioDeviceInterface.access$000(this.a).lock();
+      AudioDeviceInterface.access$102(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+      }
+      AudioDeviceInterface.access$200(this.a).signalAll();
+      AudioDeviceInterface.access$000(this.a).unlock();
+      return;
+    }
+    catch (Exception localException) {}
   }
   
-  public String getSoPathDir()
+  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
   {
-    return axlc.d(BaseApplicationImpl.getContext());
+    if (AudioDeviceInterface.access$300(this.a)) {
+      AudioDeviceInterface.access$400(this.a, paramString1);
+    }
   }
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, long paramLong) {}
+  
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(int paramInt, String paramString) {}
 }
 
 

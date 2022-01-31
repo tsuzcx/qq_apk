@@ -1,12 +1,46 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-public class xao
-  extends aimv
+public abstract class xao
+  extends mxj
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null);
+      return;
+    }
+    paramBundle = new oidb_0x6d7.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label104;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, new azpi((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label104:
+    a(false, -1, null);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, azpi paramazpi);
 }
 
 

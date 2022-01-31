@@ -24,8 +24,8 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bbjw;
-import bbkx;
+import bbkk;
+import bbll;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -117,7 +117,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bbjw.a(paramString)) {
+    if (bbkk.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -442,7 +442,7 @@ public class WebviewContainer
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!bbjw.a(paramJSONObject.optString("color")))
+          if (!bbkk.a(paramJSONObject.optString("color")))
           {
             localObject1 = getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -459,7 +459,7 @@ public class WebviewContainer
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!bbjw.a((String)localObject1)) {
+          if (!bbkk.a((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -895,7 +895,7 @@ public class WebviewContainer
             paramInt2 = paramInt4;
             if (this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().getNavbarStyle().equals("custom"))
             {
-              paramInt2 = paramInt4 - (bbkx.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+              paramInt2 = paramInt4 - (bbll.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
               this.appBrandRuntime.pageContainer.getCurrentPage().updateViewStyle("default");
               this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().setBarStyle("default");
             }
@@ -996,7 +996,7 @@ public class WebviewContainer
           ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
         }
         ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-        if ((bbjw.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+        if ((bbkk.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
         {
           try
           {
@@ -1041,7 +1041,7 @@ public class WebviewContainer
           i = j;
           continue;
           paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-          if (!bbjw.a(paramJSONObject1)) {
+          if (!bbkk.a(paramJSONObject1)) {
             try
             {
               paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -1243,6 +1243,7 @@ public class WebviewContainer
   
   public void insertTextArea(int paramInt, JSONObject paramJSONObject)
   {
+    QLog.d("miniapp-textarea", 1, "insertTextArea textAreaId : " + paramInt + "; dataJson : " + paramJSONObject);
     Object localObject2 = (MiniAppTextArea1)this.appTextAreaSparseArray.get(paramInt);
     int i = paramJSONObject.optInt("parentId");
     boolean bool = paramJSONObject.optBoolean("fixed", false);
@@ -1253,7 +1254,7 @@ public class WebviewContainer
       ((MiniAppTextArea1)localObject1).setFixed(bool);
       this.appTextAreaSparseArray.put(paramInt, localObject1);
       if (i == 0) {
-        break label115;
+        break label152;
       }
       localObject2 = (FrameLayout)this.mCoverViewSparseArray.get(i);
       if (localObject2 != null)
@@ -1266,7 +1267,7 @@ public class WebviewContainer
     {
       ((MiniAppTextArea1)localObject1).setAttributes(paramJSONObject, false);
       return;
-      label115:
+      label152:
       if (bool) {
         addView((View)localObject1);
       } else {
@@ -2123,7 +2124,7 @@ public class WebviewContainer
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if ((!bbjw.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
+      if ((!bbkk.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
         break label405;
       }
     }
@@ -2157,7 +2158,7 @@ public class WebviewContainer
       return;
       label405:
       paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-      if (!bbjw.a(paramJSONObject1)) {
+      if (!bbkk.a(paramJSONObject1)) {
         try
         {
           paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2244,6 +2245,7 @@ public class WebviewContainer
   
   public void updateTextArea(JSONObject paramJSONObject)
   {
+    QLog.d("miniapp-textarea", 1, "updateTextArea : " + paramJSONObject);
     try
     {
       int i = paramJSONObject.optInt("inputId");
@@ -2275,7 +2277,7 @@ public class WebviewContainer
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bbjw.a(paramJSONObject)) {
+      if (!bbkk.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }

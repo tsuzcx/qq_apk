@@ -1,26 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class bdrw
-  extends bdrv
+public final class bdrw
 {
-  public void a(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
+  public long a;
+  public String a;
+  public boolean a;
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public String toString()
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
+    return "MultiUserInfo{mUin=" + this.jdField_a_of_type_Long + ", mOpenId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMicOn=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

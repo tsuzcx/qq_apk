@@ -1,29 +1,63 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
 
 public class atok
-  implements alys
+  extends atoj
 {
-  public atok(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  protected View a;
   
-  public void a(String paramString, int paramInt)
+  protected int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    return 2131560847;
+  }
+  
+  protected LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2)
+  {
+    paramatfm = (ImageView)paramView.findViewById(2131378556);
+    if (paramInt1 == 7) {
+      paramatfm.setVisibility(8);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      {
+        paramatfm = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+        paramatfm.topMargin = vpm.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
+        paramView.setLayoutParams(paramatfm);
+      }
+      paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramInt2 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      paramView = (LabelContainer)paramView.findViewById(2131368874);
+      paramView.setSpace(paramInt1, paramInt2);
+      return paramView;
+      paramatfm.setImageResource(b[paramInt1]);
     }
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    super.a(paramContext, paramLinearLayout);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public boolean a(atfm[] paramArrayOfatfm)
+  {
+    if (super.a(paramArrayOfatfm))
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
-      return;
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 

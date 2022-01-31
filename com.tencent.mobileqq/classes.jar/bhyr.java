@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.vip.pb.vac_adv_get.DropList;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bhyr
+  extends BaseJsModule
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public bhyr(bhyp parambhyp) {}
   
-  public static bhyr a(vac_adv_get.DropList paramDropList)
+  public String getModuleName()
   {
-    if (paramDropList == null) {
-      return null;
+    return "VipQGModel";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
+    {
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { bbll.a(), bbll.b() });
+      return true;
     }
-    bhyr localbhyr = new bhyr();
-    localbhyr.jdField_a_of_type_Int = paramDropList.action_type.get();
-    localbhyr.b = paramDropList.optext.get();
-    localbhyr.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
-    localbhyr.c = paramDropList.jumpurl.get();
-    return localbhyr;
+    return false;
   }
 }
 

@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-
-class bjtk
-  implements bjxi
+public abstract interface bjtk
+  extends bjxm
 {
-  bjtk(bjtg parambjtg) {}
+  public abstract void a(long paramLong);
   
-  public void a() {}
+  public abstract void a(bjyr parambjyr);
   
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    bjtg.a(this.a).setLocation(paramTroopBarPOI);
-  }
+  public abstract void ab_();
+  
+  public abstract void b();
+  
+  public abstract void d();
 }
 
 

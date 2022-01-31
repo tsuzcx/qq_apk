@@ -1,15 +1,19 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastMusicInfo;
 
-public class bhga
-  implements ModuleDownloadListener
+public final class bhga
+  implements Parcelable.Creator<BroadcastMusicInfo>
 {
-  public void onDownloadCanceled(String paramString) {}
+  public BroadcastMusicInfo a(Parcel paramParcel)
+  {
+    return new BroadcastMusicInfo(paramParcel);
+  }
   
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString) {}
+  public BroadcastMusicInfo[] a(int paramInt)
+  {
+    return new BroadcastMusicInfo[paramInt];
+  }
 }
 
 

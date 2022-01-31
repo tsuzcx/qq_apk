@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import azaw;
+import azay;
 
 public class TribeVideoListPlayerFragment$21$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$21$1(azaw paramazaw) {}
+  public TribeVideoListPlayerFragment$21$1(azay paramazay) {}
   
   public void run()
   {

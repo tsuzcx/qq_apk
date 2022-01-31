@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaia
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public aaia(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (bbev.d(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
-      this.a.showDialog(2);
-      this.a.jdField_a_of_type_Ajtk.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
-      return;
+    paramView = this.a.getIntent();
+    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    aflf.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
+    if (AddRequestActivity.a(this.a) != null) {
+      axqy.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
-    bcpw.a(this.a, 2131694609, 0).b(this.a.getTitleBarHeight());
+    axqy.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
   }
 }
 

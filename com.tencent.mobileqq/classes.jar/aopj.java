@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aopj
-  implements aptu
+public class aopj
+  implements View.OnClickListener
 {
-  aopj(aopi paramaopi) {}
+  public aopj(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    UniformDownloadActivity.a(this.a.a);
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 0);
+    paramView = new Intent();
+    paramView.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
+    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
   }
 }
 

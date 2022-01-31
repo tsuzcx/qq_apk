@@ -1,21 +1,28 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class ayob
-  implements ayoc
+  implements View.OnClickListener
 {
-  ayob(ayoa paramayoa, ayod paramayod) {}
+  ayob(aynz paramaynz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ayod.a.d();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Ayod.a.c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Ayod.a.f();
+    switch (((aynk)paramView.getTag()).b)
+    {
+    default: 
+      return;
+    case 1001: 
+      this.a.d();
+      return;
+    case 1002: 
+      this.a.e();
+      return;
+    case 1003: 
+      this.a.f();
+      return;
+    }
+    this.a.g();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcy;
-import apdf;
-import apdg;
+import apdc;
+import apdj;
+import apdk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -16,17 +16,17 @@ class UniformDownloadPkgInstallReceiver$1
   {
     if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.a)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.a)))
     {
-      Object localObject = apcy.a().a(this.b, true);
+      Object localObject = apdc.a().a(this.b, true);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          apdf localapdf = (apdf)((Iterator)localObject).next();
-          if (localapdf != null)
+          apdj localapdj = (apdj)((Iterator)localObject).next();
+          if (localapdj != null)
           {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localapdf.a);
-            apdg.a().c(localapdf.a, null);
+            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localapdj.a);
+            apdk.a().c(localapdj.a, null);
           }
         }
       }

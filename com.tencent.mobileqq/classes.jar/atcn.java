@@ -1,23 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
 class atcn
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  atcn(atci paramatci) {}
+  atcn(atck paramatck, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
-    }
-    while ((i != 2) && (i != 0)) {
+    if (this.jdField_a_of_type_Atck.b)
+    {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Atck.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       return;
     }
-    this.a.a.setVisibility(0);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

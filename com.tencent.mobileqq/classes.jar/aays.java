@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-class aays
-  implements DialogInterface.OnClickListener
+public class aays
+  implements bfph
 {
-  aays(aayq paramaayq, String paramString) {}
+  public aays(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Aayq.a).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aayq.a.app.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Aayq.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Aayq.a.finish();
+    this.jdField_a_of_type_Bfpc.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.f();
   }
 }
 

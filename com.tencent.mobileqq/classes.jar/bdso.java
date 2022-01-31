@@ -1,13 +1,22 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-final class bdso
-  implements FilenameFilter
+class bdso
+  implements ServiceConnection
 {
-  public boolean accept(File paramFile, String paramString)
+  bdso(bdsm parambdsm) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.endsWith(".cfg"));
+    bdsj.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
+    bdsm.a(this.a, lws.a(paramIBinder));
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    bdsj.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
+    bdsm.a(this.a, null);
   }
 }
 

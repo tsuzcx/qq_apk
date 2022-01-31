@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.image.URLDrawable;
 
 public class acci
-  implements View.OnClickListener
 {
-  public acci(SigCommentListActivity paramSigCommentListActivity) {}
+  int jdField_a_of_type_Int;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public acci(accg paramaccg, String paramString1, String paramString2, int paramInt)
   {
-    this.a.a(true, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

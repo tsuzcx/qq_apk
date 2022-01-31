@@ -1,40 +1,33 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-
 class attt
   implements amnf
 {
-  attt(atte paramatte, IphonePickerView paramIphonePickerView, bfol parambfol) {}
+  attt(attg paramattg) {}
   
-  public void a()
+  public int a()
   {
-    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
-    {
-      atte.a(this.jdField_a_of_type_Atte, this.jdField_a_of_type_Atte.c, false);
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
+    return 1;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a(int paramInt)
   {
-    switch (paramInt1)
+    return 2;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
     {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Atte.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
-      return;
-      this.jdField_a_of_type_Atte.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atte.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Atte.g = paramInt2;
+      paramInt1 = 0;
     }
+    if (paramInt1 == 0) {
+      return ajya.a(2131707275);
+    }
+    return ajya.a(2131707376);
   }
 }
 

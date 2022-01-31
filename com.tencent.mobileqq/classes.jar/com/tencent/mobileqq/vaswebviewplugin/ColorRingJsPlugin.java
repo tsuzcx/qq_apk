@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import bcdb;
-import bceg;
+import bcdp;
+import bceu;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -34,13 +34,13 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "changeTab");
     }
-    bceg localbceg = (bceg)super.getBrowserComponent(32);
-    if (localbceg != null)
+    bceu localbceu = (bceu)super.getBrowserComponent(32);
+    if (localbceu != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localbceg.a.obtainMessage(5, localBundle);
-      localbceg.a.dispatchMessage(paramString);
+      paramString = localbceu.a.obtainMessage(5, localBundle);
+      localbceu.a.dispatchMessage(paramString);
     }
   }
   
@@ -126,15 +126,15 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "play, id=" + paramLong);
     }
-    bceg localbceg = (bceg)super.getBrowserComponent(32);
-    if (localbceg != null)
+    bceu localbceu = (bceu)super.getBrowserComponent(32);
+    if (localbceu != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = localbceg.a.obtainMessage(3, localBundle);
-      localbceg.a.dispatchMessage(paramString1);
+      paramString1 = localbceu.a.obtainMessage(3, localBundle);
+      localbceu.a.dispatchMessage(paramString1);
     }
   }
   
@@ -143,16 +143,16 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "setup, id=" + paramLong);
     }
-    bceg localbceg = (bceg)super.getBrowserComponent(32);
-    if (localbceg != null)
+    bceu localbceu = (bceu)super.getBrowserComponent(32);
+    if (localbceu != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = localbceg.a.obtainMessage(4, localBundle);
-      localbceg.a.dispatchMessage(paramString1);
+      paramString1 = localbceu.a.obtainMessage(4, localBundle);
+      localbceu.a.dispatchMessage(paramString1);
     }
   }
 }

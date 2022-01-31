@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczn;
+import aczk;
 
 public class SigTlpAnimation$1
   implements Runnable
 {
-  public SigTlpAnimation$1(aczn paramaczn) {}
+  public SigTlpAnimation$1(aczk paramaczk) {}
   
   public void run()
   {

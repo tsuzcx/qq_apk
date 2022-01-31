@@ -1,14 +1,14 @@
+import java.util.List;
+
 public class aqxf
 {
   public int a;
   public String a;
+  public List<aqxg> a;
   public int[] a;
-  public int b;
   public String b;
-  public int[] b;
-  public int c;
+  public List<aqxh> b;
   public String c;
-  public int[] c;
   public String d;
 }
 

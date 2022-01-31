@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-final class ahoy
-  implements Animation.AnimationListener
+class ahoy
+  extends ahnp
 {
-  ahoy(View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

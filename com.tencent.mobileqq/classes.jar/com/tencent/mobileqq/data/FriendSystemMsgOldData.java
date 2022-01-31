@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class FriendSystemMsgOldData
-  extends aukm
+  extends auko
 {
   public long msgtime;
-  @auma
+  @aumc
   public long uin;
 }
 

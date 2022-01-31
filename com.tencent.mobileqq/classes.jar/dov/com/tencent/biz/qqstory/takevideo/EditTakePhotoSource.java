@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bjty;
+import bjup;
 import java.io.File;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bjty();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bjup();
   public final double a;
   public final int a;
   @NonNull

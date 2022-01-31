@@ -1,21 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class soo
-  implements Animation.AnimationListener
+  extends nmy
 {
-  public soo(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public soo(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, sow paramsow, byte[] paramArrayOfByte, String paramString)
   {
-    this.a.a.startAnimation(PublicAccountImageCollectionMainActivity.a(this.a));
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramsow != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramsow.a);
+        }
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramsow, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramsow);
+      }
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

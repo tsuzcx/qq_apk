@@ -1,29 +1,13 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class apyv
-  implements acxn
+  implements admt
 {
   public apyv(FlashChatPanel paramFlashChatPanel) {}
   
-  public boolean onLongClick(View paramView)
-  {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
+  public void a() {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-    }
-    return true;
-  }
+  public void b() {}
 }
 
 

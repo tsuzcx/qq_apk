@@ -1,12 +1,38 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.graphics.drawable.Drawable;
 
-public abstract interface uqr
+class uqr
+  implements anyg
 {
-  public abstract boolean a();
+  uqr(uqp paramuqp) {}
   
-  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public void a(anyh paramanyh)
+  {
+    if (((paramanyh instanceof aocu)) && (uqp.a(this.a) != null)) {
+      ((aocu)paramanyh).a(uqp.a(), uqp.a(this.a), uqp.a(this.a), null);
+    }
+  }
   
-  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public void a(anyh paramanyh1, anyh paramanyh2, Drawable paramDrawable) {}
+  
+  public boolean a(anyh paramanyh)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (uqp.a(this.a) != null) {
+      aylc.a(uqp.a(this.a));
+    }
+  }
+  
+  public void b(anyh paramanyh) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

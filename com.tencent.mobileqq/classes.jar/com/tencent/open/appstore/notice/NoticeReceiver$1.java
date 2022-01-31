@@ -1,11 +1,11 @@
 package com.tencent.open.appstore.notice;
 
 import android.content.Context;
-import bdgv;
 import bdhk;
-import bdht;
-import bdiw;
-import bdmf;
+import bdhz;
+import bdii;
+import bdjl;
+import bdmu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 
@@ -16,33 +16,33 @@ class NoticeReceiver$1
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = bdgv.a().b(this.jdField_a_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = bdhk.a().b(this.jdField_a_of_type_JavaLangString);
     if (localDownloadInfo == null) {
-      bdht.b("NoticeReceiver", "downloadInfo is null.");
+      bdii.b("NoticeReceiver", "downloadInfo is null.");
     }
     do
     {
       return;
-      if ((bdmf.b + "." + this.b).equals(this.c))
+      if ((bdmu.b + "." + this.b).equals(this.c))
       {
-        bdgv.a().a(this.jdField_a_of_type_JavaLangString);
+        bdhk.a().a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      if ((bdmf.jdField_a_of_type_JavaLangString + "." + this.b).equals(this.c))
+      if ((bdmu.jdField_a_of_type_JavaLangString + "." + this.b).equals(this.c))
       {
-        bdgv.a().b(localDownloadInfo);
+        bdhk.a().b(localDownloadInfo);
         return;
       }
-      if ((bdmf.c + "." + this.b).equals(this.c))
+      if ((bdmu.c + "." + this.b).equals(this.c))
       {
-        bdgv.a().b(localDownloadInfo);
+        bdhk.a().b(localDownloadInfo);
         return;
       }
-    } while (!(bdmf.d + "." + this.b).equals(this.c));
-    bdiw.a(this.jdField_a_of_type_AndroidContentContext, bdgv.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"));
+    } while (!(bdmu.d + "." + this.b).equals(this.c));
+    bdjl.a(this.jdField_a_of_type_AndroidContentContext, bdhk.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"));
     localDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-    bdgv.a().a(localDownloadInfo, true);
-    bdhk.c(localDownloadInfo);
+    bdhk.a().a(localDownloadInfo, true);
+    bdhz.c(localDownloadInfo);
   }
 }
 

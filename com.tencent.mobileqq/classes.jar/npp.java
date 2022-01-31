@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
-
-public final class npp
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+public class npp
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
-  {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
-  }
-  
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
-  {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
-  }
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

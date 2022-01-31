@@ -1,49 +1,53 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class amhw
-  implements amhn
+  extends RecyclerView.Adapter<amia>
 {
-  private Bundle a;
+  private amhz jdField_a_of_type_Amhz;
+  private amim jdField_a_of_type_Amim;
+  private List<ColorNote> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
   
-  public amhw() {}
-  
-  public amhw(Bundle paramBundle)
+  public amia a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = paramBundle;
+    return new amia(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558806, paramViewGroup, false));
   }
   
-  public void a(Context paramContext, ColorNote paramColorNote)
+  public void a(amhz paramamhz)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
-    localIntent.putExtra("url", paramColorNote.getSubType());
-    if (paramColorNote.getReserve() != null) {}
-    try
-    {
-      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
-      localIntent.putExtra("subType", paramColorNote.mSubType);
-      localIntent.addFlags(268435456);
-      if (this.a != null) {
-        localIntent.putExtra("isFromFavourite", this.a.getBoolean("isFromFavourite", false));
-      }
-      paramContext.startActivity(localIntent);
-      rnr.b(paramColorNote);
-      return;
+    this.jdField_a_of_type_Amhz = paramamhz;
+  }
+  
+  public void a(amia paramamia, int paramInt)
+  {
+    amgn.a((ColorNote)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramamia, paramInt, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(amim paramamim)
+  {
+    this.jdField_a_of_type_Amim = paramamim;
+  }
+  
+  void a(List<ColorNote> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
-      }
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

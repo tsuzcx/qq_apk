@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import ayox;
+import ayoz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.transaction.Transaction;
@@ -42,7 +42,7 @@ class ShortVideoUploadProcessor$8
     if (!this.jdField_a_of_type_Boolean)
     {
       this.this$0.s();
-      this.this$0.jdField_a_of_type_Ayox.a(this.this$0.a());
+      this.this$0.jdField_a_of_type_Ayoz.a(this.this$0.a());
     }
   }
 }

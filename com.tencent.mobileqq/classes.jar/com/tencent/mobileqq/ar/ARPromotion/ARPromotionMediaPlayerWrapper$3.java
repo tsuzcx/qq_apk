@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
+import akxy;
 import akxz;
-import akya;
-import allj;
+import alli;
 import android.text.TextUtils;
-import bdhv;
+import bdik;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -15,15 +15,15 @@ import java.util.Map;
 public class ARPromotionMediaPlayerWrapper$3
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$3(akxz paramakxz, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public ARPromotionMediaPlayerWrapper$3(akxy paramakxy, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
   public void run()
   {
-    if (akxz.b(this.this$0)) {
-      akxz.c(this.this$0);
+    if (akxy.b(this.this$0)) {
+      akxy.c(this.this$0);
     }
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + akxz.b(this.this$0) + " mCurrentPlayTimes=" + akxz.d(this.this$0) + "|" + akxz.e(this.this$0));
-    if ((akxz.d(this.this$0) < akxz.e(this.this$0)) && (akxz.a(this.this$0) != null) && (!akxz.a(this.this$0))) {}
+    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onCompletion, mNeedAddPlayCount=" + akxy.b(this.this$0) + " mCurrentPlayTimes=" + akxy.d(this.this$0) + "|" + akxy.e(this.this$0));
+    if ((akxy.d(this.this$0) < akxy.e(this.this$0)) && (akxy.a(this.this$0) != null) && (!akxy.a(this.this$0))) {}
     do
     {
       TVK_PlayerVideoInfo localTVK_PlayerVideoInfo;
@@ -31,21 +31,21 @@ public class ARPromotionMediaPlayerWrapper$3
       {
         this.a.stop();
         localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-        if ((!TextUtils.isEmpty(akxz.a(this.this$0))) && (!akxz.a(this.this$0).startsWith("http")) && (!akxz.a(this.this$0).startsWith("https")))
+        if ((!TextUtils.isEmpty(akxy.a(this.this$0))) && (!akxy.a(this.this$0).startsWith("http")) && (!akxy.a(this.this$0).startsWith("https")))
         {
           localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-          if (akxz.c(this.this$0))
+          if (akxy.c(this.this$0))
           {
             String str = "true";
             localTVK_PlayerVideoInfo.setConfigMap("software_play", str);
             localTVK_PlayerVideoInfo.setPlayType(4);
-            akxz.a(this.this$0).setOutputMute(akxz.d(this.this$0));
-            akxz.a(this.this$0).openMediaPlayerByUrl(BaseApplicationImpl.getContext(), akxz.a(this.this$0), 0L, 0L, localTVK_PlayerVideoInfo);
-            akxz.a(this.this$0, false);
-            if ((akxz.e(this.this$0)) && (akxz.a(this.this$0) != null) && (akxz.a(this.this$0) != null)) {
-              akxz.a(this.this$0).a(akxz.b(this.this$0), 1, akxz.e(this.this$0) - akxz.d(this.this$0));
+            akxy.a(this.this$0).setOutputMute(akxy.d(this.this$0));
+            akxy.a(this.this$0).openMediaPlayerByUrl(BaseApplicationImpl.getContext(), akxy.a(this.this$0), 0L, 0L, localTVK_PlayerVideoInfo);
+            akxy.a(this.this$0, false);
+            if ((akxy.e(this.this$0)) && (akxy.a(this.this$0) != null) && (akxy.a(this.this$0) != null)) {
+              akxy.a(this.this$0).a(akxy.b(this.this$0), 1, akxy.e(this.this$0) - akxy.d(this.this$0));
             }
-            QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (akxz.e(this.this$0) - akxz.d(this.this$0)) + "video resources:" + akxz.a(this.this$0));
+            QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer. restart remian times:" + (akxy.e(this.this$0) - akxy.d(this.this$0)) + "video resources:" + akxy.a(this.this$0));
             return;
           }
         }
@@ -61,26 +61,26 @@ public class ARPromotionMediaPlayerWrapper$3
           continue;
           localObject = "false";
         }
-        localTVK_PlayerVideoInfo.setConfigMap("file_dir", allj.a(akxz.a(this.this$0)));
-        if (!akxz.c(this.this$0)) {}
+        localTVK_PlayerVideoInfo.setConfigMap("file_dir", alli.a(akxy.a(this.this$0)));
+        if (!akxy.c(this.this$0)) {}
       }
       for (Object localObject = "true";; localObject = "false")
       {
         localTVK_PlayerVideoInfo.setConfigMap("software_play", (String)localObject);
         localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
         localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
-        localTVK_PlayerVideoInfo.setVid(bdhv.d(akxz.a(this.this$0)));
+        localTVK_PlayerVideoInfo.setVid(bdik.d(akxy.a(this.this$0)));
         localObject = new HashMap();
         ((HashMap)localObject).put("shouq_bus_type", "shouq_ar_online_video");
         localTVK_PlayerVideoInfo.setReportInfoMap((Map)localObject);
         break;
       }
-      akxz.a(this.this$0, 0);
-      akxz.b(this.this$0, 1);
-      akxz.a(this.this$0, true);
+      akxy.a(this.this$0, 0);
+      akxy.b(this.this$0, 1);
+      akxy.a(this.this$0, true);
       QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onCompletion");
-    } while ((akxz.a(this.this$0) == null) || (akxz.a(this.this$0) == null));
-    akxz.a(this.this$0).a(akxz.b(this.this$0), 1, 0);
+    } while ((akxy.a(this.this$0) == null) || (akxy.a(this.this$0) == null));
+    akxy.a(this.this$0).a(akxy.b(this.this$0), 1, 0);
   }
 }
 

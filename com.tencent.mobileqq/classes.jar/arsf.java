@@ -1,235 +1,163 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.3;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.QzoneMusicHelper;
-import eipc.EIPCResult;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class arsf
-  extends QIPCModule
+  extends arrh
 {
-  private arsf()
-  {
-    super("ListenTogetherIPCModuleMainServer");
-  }
+  public arsf(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
-  public static arsf a()
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    return arsg.a();
-  }
-  
-  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
-    for (;;)
-    {
-      return null;
-      paramBundle = paramBundle.getString("data");
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-        {
-          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (QLog.isColorLevel()) {
-            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
-          }
-          if ((localQQAppInterface == null) || (paramBundle == null)) {
-            continue;
-          }
-          ((ListenTogetherManager)localQQAppInterface.getManager(331)).a(paramBundle);
-          paramString = new EIPCResult();
-          paramString.code = 0;
-          return paramString;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-          continue;
-          QQAppInterface localQQAppInterface = null;
-        }
-      }
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString1)) {
+      return;
     }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
     if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onListenTogetherJoinedCountChange msg=%s", new Object[] { paramString2 }));
     }
-    if (bool)
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString = paramString2;
+    if (paramInt == 1)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
+      this.a.jdField_a_of_type_Arqv.a(paramString1);
+      return;
     }
+    ListenTogetherPlayFragment.a(this.a, ListenTogetherPlayFragment.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  protected void a(ListenTogetherSession paramListenTogetherSession)
   {
-    boolean bool2 = false;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onUIModuleNeedRefresh session=%s", new Object[] { paramListenTogetherSession }));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = paramListenTogetherSession;
+    MusicInfo localMusicInfo = paramListenTogetherSession.a();
+    if ((paramListenTogetherSession.h != 2) || (paramListenTogetherSession.g == 3) || (paramListenTogetherSession.g == 4) || (localMusicInfo == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ListenTogetherPlayFragment", 2, "onExit");
+      }
+      bcql.a(localFragmentActivity, 2131693838, 1).a();
+      this.a.getActivity().finish();
+      return;
+    }
+    a(localMusicInfo);
+    ListenTogetherPlayFragment.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a(), paramListenTogetherSession.g, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void a(ISong paramISong)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.equals(paramISong)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPlayMusicChange %s", new Object[] { paramISong }));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
+    this.a.jdField_a_of_type_JavaLangString = null;
+    ListenTogetherPlayFragment.a(this.a, paramISong);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
     int i = 0;
-    boolean bool1 = false;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a().equals(paramString1)) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
+      if (paramString2 != null) {
+        break label120;
+      }
     }
     for (;;)
     {
-      return null;
-      if ("action_status_changed".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
-      }
-      if ("isOpener".equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putBoolean("result", ayls.a().a());
-        paramString = EIPCResult.createResult(0, paramString);
-        if (paramInt > 0)
-        {
-          callbackResult(paramInt, paramString);
-          return null;
-        }
-      }
-      else if ("isShowAtmosphere".equals(paramString))
-      {
-        try
-        {
-          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
-          paramBundle = new Bundle();
-          if ((ayls.a().a()) || (ayls.a().a(paramString))) {
-            break label609;
-          }
-          label220:
-          paramBundle.putBoolean("result", bool1);
-          paramString = EIPCResult.createResult(0, paramBundle);
-          if (paramInt > 0)
-          {
-            callbackResult(paramInt, paramString);
-            return null;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
-          return null;
-        }
-      }
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetLyric %s %d", new Object[] { paramString1, Integer.valueOf(i) }));
+      this.a.jdField_a_of_type_JavaLangString = paramString2;
+      ListenTogetherPlayFragment.a(this.a, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.g, paramString2);
+      return;
+      label120:
+      i = paramString2.length();
     }
-    if ("setPlayerId".equals(paramString)) {
-      try
-      {
-        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
-        aylv.a().a(paramInt);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
-        return null;
-      }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString)) {
+      return;
     }
-    if ("setThemeEnabled".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramInt = paramBundle.optInt("id");
-        paramBundle = ayls.a();
-        bool1 = bool2;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-        paramBundle.a(paramString, bool1);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
-        return null;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetGroupJoinedUsers uin=%s num=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
     }
-    if ("showFloatView".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramBundle = paramBundle.optString("coverUrl");
-        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
+    ListenTogetherPlayFragment.a(this.a, paramList, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
     }
-    if ("pauseFloatView".equals(paramString))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPauseListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
     }
-    if ("changeMusicList".equals(paramString)) {}
-    for (;;)
-    {
-      SongInfo localSongInfo;
-      try
-      {
-        paramString = new JSONObject(paramBundle.getString("data"));
-        int j = paramString.optInt("playType");
-        int k = paramString.optInt("index");
-        paramString = paramString.getJSONArray("songList");
-        paramBundle = new SongInfo[paramString.length()];
-        paramInt = i;
-        if (paramInt < paramString.length())
-        {
-          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
-          if (localSongInfo.a != 0L) {
-            break label615;
-          }
-          localSongInfo.a = paramInt;
-          break label615;
-        }
-        QQPlayerService.a(paramBundle, j, k);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      if (!"stopMusicBox".equals(paramString)) {
-        break;
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
-      return null;
-      label609:
-      bool1 = true;
-      break label220;
-      label615:
-      paramBundle[paramInt] = localSongInfo;
-      paramInt += 1;
+    bcql.a(localFragmentActivity, 2131693847, 1).a();
+  }
+  
+  protected void d(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onResumeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    bcql.a(localFragmentActivity, 2131693851, 1).a();
+  }
+  
+  protected void e(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onCutListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    bcql.a(localFragmentActivity, 2131693824, 1).a();
+  }
+  
+  protected void f(int paramInt, String paramString)
+  {
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ListenTogetherPlayFragment", 2, String.format("onChangePlayModeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    bcql.a(localFragmentActivity, 2131693848, 1).a();
   }
 }
 

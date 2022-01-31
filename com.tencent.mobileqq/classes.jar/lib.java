@@ -1,22 +1,9 @@
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.pendant.PendantItem;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-public class lib
-  implements lhp<PendantItem>
+public abstract interface lib
 {
-  public lib(MagicFaceDataEntity paramMagicFaceDataEntity) {}
-  
-  public void a(long paramLong, PendantItem paramPendantItem) {}
-  
-  public void a(long paramLong, PendantItem paramPendantItem, boolean paramBoolean)
-  {
-    lcl.c("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
-    if (paramBoolean) {
-      MagicFaceDataEntity.a(this.a, paramLong, paramPendantItem);
-    }
-  }
-  
-  public void a(PendantItem paramPendantItem, int paramInt) {}
+  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
 }
 
 

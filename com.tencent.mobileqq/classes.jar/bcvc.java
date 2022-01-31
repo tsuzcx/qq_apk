@@ -1,19 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
 
 public class bcvc
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public bcvc(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bcvc(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
     }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

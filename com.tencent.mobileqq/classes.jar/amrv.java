@@ -1,80 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v4.util.ArraySet;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amrv
-  extends ampb<amrw>
 {
-  public int a()
-  {
-    return 567;
-  }
+  public ArraySet<String> a = new ArraySet();
   
-  @NonNull
-  public amrw a(int paramInt)
+  public static amrv a(String paramString)
   {
-    return new amrw();
-  }
-  
-  @Nullable
-  public amrw a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    localamrv = new amrv();
+    try
     {
-      paramArrayOfampi = paramArrayOfampi[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfampi);
-      }
-      amrw localamrw = amrw.a(paramArrayOfampi);
-      if (!TextUtils.isEmpty(paramArrayOfampi))
+      paramString = new JSONObject(paramString).getJSONArray("white_list");
+      int i = 0;
+      while (i < paramString.length())
       {
-        BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfampi).apply();
-        MobileQQ.addBroadcastWhitList(localamrw.a);
+        localamrv.a.add(paramString.optString(i, ""));
+        i += 1;
+      }
+      return localamrv;
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
       }
     }
-    return new amrw();
-  }
-  
-  public Class<amrw> a()
-  {
-    return amrw.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amrw paramamrw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BroadcastConfProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

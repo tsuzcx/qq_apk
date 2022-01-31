@@ -1,18 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopActiveLayout;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.mobileqq.widget.FolderTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class afdb
-  implements View.OnClickListener
+public class afdb
 {
-  afdb(afda paramafda) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    bamn.a(afda.a(this.a), paramView, this.a.a());
-    this.a.b(paramView);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+  TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
 }
 
 

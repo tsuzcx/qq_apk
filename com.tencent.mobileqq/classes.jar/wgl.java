@@ -1,53 +1,43 @@
-import android.view.View;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class wgl
-  implements bfoq
+  implements wfi
 {
-  public wgl(QRDisplayActivity paramQRDisplayActivity) {}
+  public int a;
+  public String a;
+  public WeakReference<QRDisplayActivity> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.f) {
-      return;
-    }
-    this.a.f = true;
-    switch (paramInt)
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    QRDisplayActivity localQRDisplayActivity;
+    do
     {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      if (!this.a.jdField_a_of_type_Boolean)
+      do
       {
-        this.a.e();
-        if ((this.a.g & 0x1) != 0)
-        {
-          axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
-          continue;
-          if (!this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.f();
-            if ((this.a.g & 0x1) != 0)
-            {
-              axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
-              continue;
-              if (!this.a.jdField_a_of_type_Boolean)
-              {
-                this.a.d();
-                if ((this.a.g & 0x1) != 0) {
-                  axqw.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
-                }
-                if (this.a.jdField_c_of_type_Int == 2) {
-                  axqw.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
-                }
-              }
-            }
-          }
-        }
+        return;
+        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQRDisplayActivity == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
       }
+    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
+    if (!paramBoolean)
+    {
+      localQRDisplayActivity.g();
+      return;
     }
+    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+    paramString = wij.a(paramString, -1);
+    if (paramString != null)
+    {
+      localQRDisplayActivity.a = paramString;
+      localQRDisplayActivity.f();
+      return;
+    }
+    localQRDisplayActivity.g();
   }
 }
 

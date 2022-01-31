@@ -1,33 +1,10 @@
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
-public class ukn
+abstract interface ukn
 {
-  @NonNull
-  private final Bitmap a;
+  public abstract void a(@NonNull ukl paramukl);
   
-  public ukn(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      throw new NullPointerException("bitmap should not be null");
-    }
-    this.a = paramBitmap;
-  }
-  
-  public int a()
-  {
-    return this.a.getWidth();
-  }
-  
-  public Bitmap a()
-  {
-    return Bitmap.createBitmap(this.a);
-  }
-  
-  public int b()
-  {
-    return this.a.getHeight();
-  }
+  public abstract void b(@NonNull ukl paramukl);
 }
 
 

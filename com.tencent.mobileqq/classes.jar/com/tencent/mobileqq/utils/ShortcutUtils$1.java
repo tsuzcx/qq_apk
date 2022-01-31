@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;
 import android.content.res.Resources;
-import bbjp;
+import bbkd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -14,13 +14,13 @@ public final class ShortcutUtils$1
 {
   public void run()
   {
-    boolean bool = bbjp.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_AndroidContentContext.getString(2131690145) });
+    boolean bool = bbkd.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_AndroidContentContext.getString(2131690145) });
     if (QLog.isColorLevel()) {
-      QLog.d(bbjp.a(), 2, "createShortcut " + bool + ", " + bbjp.a());
+      QLog.d(bbkd.a(), 2, "createShortcut " + bool + ", " + bbkd.a());
     }
     if (bool)
     {
-      if (bbjp.b() < 3) {
+      if (bbkd.b() < 3) {
         ThreadManager.getSubThreadHandler().postDelayed(this, 1000L);
       }
       return;
@@ -33,7 +33,7 @@ public final class ShortcutUtils$1
     Intent localIntent2 = new Intent();
     localIntent2.putExtra("android.intent.extra.shortcut.INTENT", localIntent1);
     localIntent2.putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690145));
-    localIntent2.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130840058));
+    localIntent2.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130840055));
     localIntent2.putExtra("duplicate", false);
     localIntent2.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
     this.jdField_a_of_type_AndroidContentContext.sendOrderedBroadcast(localIntent2, null);

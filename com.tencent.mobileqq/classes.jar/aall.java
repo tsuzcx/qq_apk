@@ -1,26 +1,59 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class aall
-  extends Handler
+  extends atzp
 {
-  public aall(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  private WeakReference<atzp> a;
   
-  public void handleMessage(Message paramMessage)
+  public aall(atzp paramatzp)
   {
-    switch (paramMessage.what)
+    this.a = new WeakReference(paramatzp);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    atzp localatzp = (atzp)this.a.get();
+    if (localatzp != null)
     {
-    default: 
+      localatzp.a(paramString1, paramInt, paramString2);
       return;
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131720648);
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    atzp localatzp = (atzp)this.a.get();
+    if (localatzp != null)
+    {
+      localatzp.a(paramString1, paramString2);
+      return;
     }
-    this.a.a(paramMessage, 1);
+    super.a(paramString1, paramString2);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    atzp localatzp = (atzp)this.a.get();
+    if (localatzp != null)
+    {
+      localatzp.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
+  
+  public void a(oidb_0x87c.RspBody paramRspBody)
+  {
+    atzp localatzp = (atzp)this.a.get();
+    if (localatzp != null)
+    {
+      localatzp.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
   }
 }
 

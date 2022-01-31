@@ -1,59 +1,52 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import java.lang.ref.WeakReference;
 
 public class baqr
-  extends baqs
+  extends banv
 {
-  public baqr(baqp parambaqp, int paramInt)
+  private WeakReference<QQAppInterface> a;
+  private String d;
+  
+  public baqr(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    super(parambaqp, paramInt);
+    super(paramString2, paramString3, paramString4);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.d = paramString1;
   }
   
-  public void a()
+  public UsingTimeReportManager a()
   {
-    if (a(this.jdField_a_of_type_Baqp.a)) {
-      return;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    e();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return null;
     }
+    return (UsingTimeReportManager)localQQAppInterface.getManager(241);
   }
   
-  public void c()
+  public void a(long paramLong)
   {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    do
     {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
-    }
-    for (;;)
-    {
-      baqq.a().a(bool, this.jdField_a_of_type_Int, localBundle);
       return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject == null);
+    axrc localaxrc = new axrc((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
+    if (this.d != null) {}
+    for (Object localObject = this.d;; localObject = "")
+    {
+      localaxrc.a(new String[] { localObject, String.valueOf(paramLong) }).a();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     baqr
  * JD-Core Version:    0.7.0.1
  */

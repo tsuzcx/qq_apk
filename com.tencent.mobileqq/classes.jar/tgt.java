@@ -1,35 +1,53 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 class tgt
-  extends SimpleJob<Void>
+  extends sux
 {
-  tgt(tgs paramtgs, String paramString, Context paramContext, List paramList)
+  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  
+  public tgt(tgp paramtgp)
   {
-    super(paramString);
+    super("MsgTabStoryVideoPreloader");
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sui paramsui)
   {
-    if (!tgs.a(this.jdField_a_of_type_Tgs, this.jdField_a_of_type_AndroidContentContext)) {
-      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
-    }
-    do
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsui);
+    if (paramInt2 == 2)
     {
-      return null;
-      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
-      paramJobContext = tgs.a(this.jdField_a_of_type_Tgs, this.jdField_a_of_type_JavaUtilList);
-    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Tgs.a()));
-    tgs.a(this.jdField_a_of_type_Tgs);
-    tgs.a(this.jdField_a_of_type_Tgs, paramJobContext);
-    this.jdField_a_of_type_Tgs.b();
-    return null;
+      if (QLog.isColorLevel()) {
+        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      }
+      this.jdField_a_of_type_Tgp.a(paramsui.c, true);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, sui paramsui)
+  {
+    super.a(paramString, paramInt1, paramFile, paramInt2, paramsui);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Tgp.a(paramsui.c, true);
+    }
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sui paramsui)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramsui);
+    if (paramInt2 == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
+      }
+      this.jdField_a_of_type_Tgp.a(paramsui.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    }
   }
 }
 

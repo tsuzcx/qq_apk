@@ -1,55 +1,41 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.IBinder;
 import android.os.Message;
-import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
-import java.lang.ref.WeakReference;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
 class avrh
-  extends Handler
+  implements ServiceConnection
 {
-  final WeakReference<avre> a;
+  avrh(avrg paramavrg) {}
   
-  public avrh(Looper paramLooper, avre paramavre)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramavre);
+    avrf.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Avrc.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
+    {
+      this.a.b.send(paramComponentName);
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      avrf.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    avrd.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    avre localavre = (avre)this.a.get();
-    if (localavre == null) {}
-    do
-    {
-      return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
-      {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1000: 
-        avrd.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      case 1002: 
-        avrd.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-        paramMessage = paramMessage.getData();
-      }
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localavre.a().a(paramMessage);
-    return;
-    AIOLongCaptureCtrl.a(paramMessage.getData());
-    return;
-    AIOLongCaptureCtrl.b(paramMessage.getData());
-    return;
-    paramMessage = paramMessage.getData();
-    aegr.a().a(paramMessage);
+    this.a.b = null;
   }
 }
 

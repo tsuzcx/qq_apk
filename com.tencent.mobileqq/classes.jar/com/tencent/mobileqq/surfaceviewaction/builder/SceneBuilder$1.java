@@ -2,18 +2,18 @@ package com.tencent.mobileqq.surfaceviewaction.builder;
 
 import android.os.Handler;
 import android.os.Looper;
-import aybe;
-import aybq;
-import aybz;
+import aybg;
+import aybs;
+import aycb;
 
 public class SceneBuilder$1
   implements Runnable
 {
-  public SceneBuilder$1(aybq paramaybq, aybe paramaybe, aybz paramaybz) {}
+  public SceneBuilder$1(aybs paramaybs, aybg paramaybg, aycb paramaycb) {}
   
   public void run()
   {
-    String str = aybq.a(aybq.a(this.this$0) + "/scene.json");
+    String str = aybs.a(aybs.a(this.this$0) + "/scene.json");
     new Handler(Looper.getMainLooper()).post(new SceneBuilder.1.1(this, str));
   }
 }

@@ -1,330 +1,148 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.SystemClock;
-import android.util.StateSet;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class axwh
+  extends DefaultHandler
+  implements axuy
 {
-  public static int a(String paramString)
+  axwg jdField_a_of_type_Axwg;
+  private String jdField_a_of_type_JavaLangString;
+  Stack<axwg> jdField_a_of_type_JavaUtilStack = new Stack();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public AbsStructMsg a()
   {
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_Axwg == null) {}
+    label161:
+    for (;;)
+    {
+      return localObject1;
+      if (this.jdField_a_of_type_Axwg.a() > 0) {}
+      for (Object localObject2 = this.jdField_a_of_type_Axwg.a(0);; localObject2 = null)
+      {
+        if (localObject2 == null) {
+          break label161;
+        }
+        int i = Integer.parseInt(this.jdField_a_of_type_Axwg.a("serviceID"));
+        if (i == 2) {
+          return new StructMsgForAudioShare(this.jdField_a_of_type_Axwg);
+        }
+        if ((i == 3) || (i == 82) || (i == 120)) {
+          return new StructMsgForHypertext(this.jdField_a_of_type_Axwg, i);
+        }
+        if ((i == 5) || (i == 137)) {
+          return new StructMsgForImageShare(this.jdField_a_of_type_Axwg);
+        }
+        if (i == 150)
+        {
+          localObject2 = new StructMsgSubImageVideo(this.jdField_a_of_type_Axwg);
+          localObject1 = localObject2;
+          if (((StructMsgSubImageVideo)localObject2).isValid()) {
+            break;
+          }
+        }
+        return new StructMsgForGeneralShare(this.jdField_a_of_type_Axwg);
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    super.characters(paramArrayOfChar, paramInt1, paramInt2);
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    axwg localaxwg;
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      localaxwg = (axwg)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (localaxwg != null) {
+        if (localaxwg.jdField_a_of_type_JavaLangString != null) {
+          break label81;
+        }
+      }
+    }
+    for (;;)
+    {
+      localaxwg.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      localaxwg.jdField_a_of_type_JavaLangString = ayjy.b(localaxwg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+      label81:
+      paramArrayOfChar = localaxwg.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
+    }
+  }
+  
+  public void endDocument()
+  {
+    super.endDocument();
+    this.jdField_a_of_type_JavaUtilStack.clear();
+    this.jdField_a_of_type_JavaUtilStack = null;
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    super.endElement(paramString1, paramString2, paramString3);
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    {
+      paramString1 = (axwg)this.jdField_a_of_type_JavaUtilStack.pop();
+      if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+        this.jdField_a_of_type_Axwg = paramString1;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if ((paramString1 != null) && (!"".equals(paramString1.jdField_a_of_type_JavaLangString))) {
+          paramString1.jdField_a_of_type_Int = 3;
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    super.startElement(paramString1, paramString2, paramString3, paramAttributes);
+    HashMap localHashMap = new HashMap();
     int i = 0;
-    if (paramString != null) {
-      paramString.trim();
-    }
-    try
+    while (i < paramAttributes.getLength())
     {
-      i = Integer.parseInt(paramString);
-      return i;
+      localHashMap.put(paramAttributes.getLocalName(i), ayjy.b(paramAttributes.getValue(i), this.jdField_a_of_type_JavaLangString, this.b));
+      i += 1;
     }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public static long a(String paramString)
-  {
-    long l = 0L;
-    if (paramString != null) {
-      paramString.trim();
+    if (QLog.isColorLevel()) {
+      QLog.e("StructMsg", 2, "StructMsgParserHandler startElement uri = " + paramString1 + ", localName = " + paramString2 + ", qName = " + paramString3 + ", map = " + localHashMap);
     }
-    try
+    paramString1 = new axwg(paramString2, localHashMap);
+    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
     {
-      l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (Exception paramString) {}
-    return 0L;
-  }
-  
-  public static StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
-  {
-    GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
-    int k = Color.red(paramInt);
-    int i = Color.green(paramInt);
-    int j = Color.blue(paramInt);
-    paramInt = k;
-    k = 0;
-    if (k < arrayOfGradientDrawable.length)
-    {
-      arrayOfGradientDrawable[k] = new GradientDrawable();
-      arrayOfGradientDrawable[k].setShape(0);
-      int m = paramInt - (k << 5);
-      paramInt = m;
-      if (m < 0) {
-        paramInt = 0;
-      }
-      m = i - (k << 5);
-      i = m;
-      if (m < 0) {
-        i = 0;
-      }
-      m = j - (k << 5);
-      j = m;
-      if (m < 0) {
-        j = 0;
-      }
-      arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
-      if (paramArrayOfFloat != null) {
-        arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
-      }
-      for (;;)
+      paramString2 = (axwg)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (paramString2 != null)
       {
-        k += 1;
-        break;
-        arrayOfGradientDrawable[k].setCornerRadius(actn.a(4.0F, paramResources));
+        paramString1.jdField_a_of_type_Axwg = paramString2;
+        paramString2.a(paramString1);
       }
     }
-    paramResources = new StateListDrawable();
-    paramArrayOfFloat = arrayOfGradientDrawable[1];
-    paramResources.addState(new int[] { 16842919, 16842910 }, paramArrayOfFloat);
-    paramResources.addState(StateSet.WILD_CARD, arrayOfGradientDrawable[0]);
-    return paramResources;
-  }
-  
-  private static boolean a(Inflater paramInflater)
-  {
-    return (paramInflater.finished()) || (paramInflater.getRemaining() <= 0);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    Inflater localInflater = new Inflater();
-    localInflater.reset();
-    localInflater.setInput(paramArrayOfByte);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte1 = new byte[1024];
-        long l = SystemClock.uptimeMillis();
-        if (!a(localInflater))
-        {
-          localByteArrayOutputStream.write(arrayOfByte1, 0, localInflater.inflate(arrayOfByte1));
-          if (SystemClock.uptimeMillis() - l <= 15000L) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.w("StructMsg", 2, "decompress struct msg time out");
-          }
-          axqw.b(null, "dc00898", "", "", "0X8009845", "0X8009845", 0, 1, "", "", "", "");
-          try
-          {
-            localByteArrayOutputStream.close();
-            return paramArrayOfByte;
-          }
-          catch (IOException localIOException1)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("StructMsg", 2, localIOException1.getMessage());
-            return paramArrayOfByte;
-          }
-        }
-        arrayOfByte2 = localByteArrayOutputStream.toByteArray();
-        paramArrayOfByte = arrayOfByte2;
-      }
-      catch (Exception localException)
-      {
-        byte[] arrayOfByte2;
-        localException = localException;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StructMsg", 2, localException.getMessage());
-        try
-        {
-          localIOException3.close();
-          arrayOfByte3 = paramArrayOfByte;
-        }
-        catch (IOException localIOException4)
-        {
-          arrayOfByte3 = paramArrayOfByte;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StructMsg", 2, localIOException4.getMessage());
-        byte[] arrayOfByte3 = paramArrayOfByte;
-        continue;
-      }
-      finally {}
-      try
-      {
-        localByteArrayOutputStream.close();
-        arrayOfByte2 = paramArrayOfByte;
-      }
-      catch (IOException localIOException3)
-      {
-        arrayOfByte2 = paramArrayOfByte;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("StructMsg", 2, localIOException3.getMessage());
-        arrayOfByte2 = paramArrayOfByte;
-      }
-    }
-    localInflater.end();
-    return arrayOfByte2;
-    try
-    {
-      localIOException4.close();
-      throw paramArrayOfByte;
-    }
-    catch (IOException localIOException2)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, localIOException2.getMessage());
-        }
-      }
-    }
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = paramArrayOfByte.length;
-    Object localObject;
-    if (paramInt == -1)
-    {
-      paramInt = paramArrayOfByte[0];
-      localObject = new byte[i - 1];
-      if (paramInt == 1)
-      {
-        System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
-        paramArrayOfByte = a((byte[])localObject);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = new String(paramArrayOfByte, 0, paramArrayOfByte.length);
-        QLog.d("StructMsg", 2, "getStructMsgFromXmlBuff xmlStr:" + (String)localObject);
-      }
-      return paramArrayOfByte;
-      System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
-      paramArrayOfByte = (byte[])localObject;
-      continue;
-      localObject = new byte[i];
-      if (paramInt == 1)
-      {
-        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
-        paramArrayOfByte = a((byte[])localObject);
-      }
-      else
-      {
-        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
-        paramArrayOfByte = (byte[])localObject;
-      }
-    }
-  }
-  
-  public static final byte[] b(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    byte[] arrayOfByte1 = new byte[0];
-    Deflater localDeflater = new Deflater();
-    localDeflater.reset();
-    localDeflater.setInput(paramArrayOfByte);
-    localDeflater.finish();
-    localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-    try
-    {
-      byte[] arrayOfByte3 = new byte[1024];
-      while (!localDeflater.finished()) {
-        localByteArrayOutputStream.write(arrayOfByte3, 0, localDeflater.deflate(arrayOfByte3));
-      }
-      try
-      {
-        byte[] arrayOfByte2;
-        localByteArrayOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (IOException localIOException1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, localIOException1.getMessage());
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, localException.getMessage());
-      }
-      for (;;)
-      {
-        try
-        {
-          localByteArrayOutputStream.close();
-          arrayOfByte2 = paramArrayOfByte;
-        }
-        catch (IOException localIOException3)
-        {
-          arrayOfByte2 = paramArrayOfByte;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("StructMsg", 2, localIOException3.getMessage());
-          arrayOfByte2 = paramArrayOfByte;
-          continue;
-        }
-        localDeflater.end();
-        return arrayOfByte2;
-        arrayOfByte3 = localByteArrayOutputStream.toByteArray();
-        paramArrayOfByte = arrayOfByte3;
-        try
-        {
-          localByteArrayOutputStream.close();
-          arrayOfByte2 = paramArrayOfByte;
-        }
-        catch (IOException localIOException2)
-        {
-          arrayOfByte2 = paramArrayOfByte;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("StructMsg", 2, localIOException2.getMessage());
-          arrayOfByte2 = paramArrayOfByte;
-        }
-      }
-    }
-    catch (OutOfMemoryError paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte = paramArrayOfByte;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
-        }
-        try
-        {
-          localByteArrayOutputStream.close();
-        }
-        catch (IOException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
-          }
-        }
-      }
-    }
-    finally {}
+    this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

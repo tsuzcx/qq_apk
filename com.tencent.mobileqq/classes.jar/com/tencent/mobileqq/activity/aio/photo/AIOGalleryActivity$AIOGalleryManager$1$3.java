@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegi;
-import aegj;
-import aegu;
-import aeie;
-import xpn;
+import aegg;
+import aegh;
+import aegs;
+import aeic;
+import xpk;
 
 public class AIOGalleryActivity$AIOGalleryManager$1$3
   implements Runnable
 {
-  public AIOGalleryActivity$AIOGalleryManager$1$3(aegj paramaegj, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public AIOGalleryActivity$AIOGalleryManager$1$3(aegh paramaegh, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
   public void run()
   {
-    aeie localaeie;
+    aeic localaeic;
     if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
     {
-      localaeie = (aeie)aegi.a(this.jdField_a_of_type_Aegj.a);
-      if (!localaeie.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
+      localaeic = (aeic)aegg.a(this.jdField_a_of_type_Aegh.a);
+      if (!localaeic.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
         break label92;
       }
-      if (aegi.e(this.jdField_a_of_type_Aegj.a) != null) {
-        ((aegu)aegi.f(this.jdField_a_of_type_Aegj.a)).z();
+      if (aegg.e(this.jdField_a_of_type_Aegh.a) != null) {
+        ((aegs)aegg.f(this.jdField_a_of_type_Aegh.a)).z();
       }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Aegj.a.a != null) {
-        this.jdField_a_of_type_Aegj.a.a.h();
+      if (this.jdField_a_of_type_Aegh.a.a != null) {
+        this.jdField_a_of_type_Aegh.a.a.h();
       }
       return;
       label92:
-      if ((this.jdField_a_of_type_Aegj.a.a != null) && (this.jdField_a_of_type_Aegj.a.a() == this.jdField_a_of_type_Aegj.a.a))
+      if ((this.jdField_a_of_type_Aegh.a.a != null) && (this.jdField_a_of_type_Aegh.a.a() == this.jdField_a_of_type_Aegh.a.a))
       {
-        localaeie.a();
-        if (aegi.g(this.jdField_a_of_type_Aegj.a) != null) {
-          ((aegu)aegi.h(this.jdField_a_of_type_Aegj.a)).z();
+        localaeic.a();
+        if (aegg.g(this.jdField_a_of_type_Aegh.a) != null) {
+          ((aegs)aegg.h(this.jdField_a_of_type_Aegh.a)).z();
         }
       }
     }

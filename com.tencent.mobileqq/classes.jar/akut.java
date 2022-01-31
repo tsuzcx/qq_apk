@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
 
 public final class akut
-  implements Parcelable.Creator<SosoInterface.SosoLocation>
+  implements Parcelable.Creator<SosoInterface.SosoWifi>
 {
-  public SosoInterface.SosoLocation a(Parcel paramParcel)
+  public SosoInterface.SosoWifi a(Parcel paramParcel)
   {
-    return new SosoInterface.SosoLocation(paramParcel);
+    return new SosoInterface.SosoWifi(paramParcel);
   }
   
-  public SosoInterface.SosoLocation[] a(int paramInt)
+  public SosoInterface.SosoWifi[] a(int paramInt)
   {
-    return new SosoInterface.SosoLocation[paramInt];
+    return new SosoInterface.SosoWifi[paramInt];
   }
 }
 

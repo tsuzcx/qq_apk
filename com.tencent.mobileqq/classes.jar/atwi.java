@@ -1,6 +1,9 @@
+import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
+import java.util.List;
+
 public abstract interface atwi
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

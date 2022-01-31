@@ -1,14 +1,14 @@
 package com.tencent.open.filedownload;
 
 import android.widget.TextView;
-import bdmo;
+import bdnd;
 import com.tencent.open.filedownload.ui.NormalDownloadButton;
 import com.tencent.open.filedownload.ui.SafeDownloadButton;
 
 public class ApkFileDownloadFragment$3$1
   implements Runnable
 {
-  public ApkFileDownloadFragment$3$1(bdmo parambdmo) {}
+  public ApkFileDownloadFragment$3$1(bdnd parambdnd) {}
   
   public void run()
   {

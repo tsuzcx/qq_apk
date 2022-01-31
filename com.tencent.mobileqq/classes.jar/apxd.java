@@ -1,20 +1,16 @@
-public abstract interface apxd
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+class apxd
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  apxd(apxc paramapxc) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.setVisibility(8);
+  }
 }
 
 

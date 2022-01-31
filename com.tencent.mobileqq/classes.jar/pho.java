@@ -1,45 +1,103 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class pho
-  implements View.OnAttachStateChangeListener
+  extends sgy
 {
-  pho(pgz parampgz, pax parampax, VideoView paramVideoView, phq paramphq, BroadcastReceiver paramBroadcastReceiver) {}
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onViewAttachedToWindow(View paramView)
+  pho(ArticleInfo paramArticleInfo, WeakReference<Activity> paramWeakReference)
   {
-    rap localrap = this.jdField_a_of_type_Pax.a();
-    php localphp = new php(this);
-    localrap.b(localphp);
-    paramView.setTag(2131374807, localphp);
-    paramView = new IntentFilter();
-    paramView.addAction("android.media.VOLUME_CHANGED_ACTION");
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramWeakReference;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangRefWeakReference = localObject;
   }
   
-  public void onViewDetachedFromWindow(View paramView)
+  protected boolean a(Integer paramInteger)
   {
-    this.jdField_a_of_type_Phq.a(false);
-    rap localrap = this.jdField_a_of_type_Pax.a();
-    paramView = (rad)paramView.getTag(2131374807);
-    if (paramView != null) {
-      localrap.c(paramView);
-    }
-    try
+    Object localObject1 = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
+    for (;;)
     {
-      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
+      try
+      {
+        if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+          continue;
+        }
+        localObject2 = ((qcw)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
+        localObject1 = localObject2;
+      }
+      catch (NullPointerException localNullPointerException2)
+      {
+        Object localObject2;
+        JSONObject localJSONObject;
+        QLog.e("PgcShortContentProteusItem", 1, localNullPointerException2.toString());
+        continue;
+        String str = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
+        continue;
+      }
+      try
+      {
+        localObject2 = new JSONArray();
+        localJSONObject = new JSONObject();
+        localJSONObject.put("name", "qq_friend");
+        localJSONObject.put("webHandle", 0);
+        ((JSONArray)localObject2).put(localJSONObject);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("name", "qzone");
+        localJSONObject.put("webHandle", 0);
+        ((JSONArray)localObject2).put(localJSONObject);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("name", "we_chat");
+        localJSONObject.put("webHandle", 0);
+        ((JSONArray)localObject2).put(localJSONObject);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("name", "we_chat_circle");
+        localJSONObject.put("webHandle", 0);
+        ((JSONArray)localObject2).put(localJSONObject);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("upline", localObject2);
+        localJSONObject.put("belowline", new JSONArray());
+        localJSONObject.put("shareCallBack", "");
+        localJSONObject.put("title", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("back", true);
+        localJSONObject.put("sourceName", ajya.a(2131702719));
+        localJSONObject.put("WXShareFromQQKandian", 1);
+        localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
+        localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
+        localJSONObject.put("src_action", "plugin");
+        localJSONObject.put("src_webActionUrl", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
+        localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
+        localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131718576));
+        localJSONObject.put("menu_title", ajya.a(2131713590));
+        localJSONObject.put("share_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getShareUrl());
+        localJSONObject.put("keepShareUrl", 1);
+        localJSONObject.put("image_url", localObject1);
+        localJSONObject.put("weibo_title", ajya.a(2131713036));
+        localJSONObject.put("uin", "");
+        localJSONObject.put("puin", 0);
+        if (pgw.a(this.jdField_a_of_type_Pgw) == null) {
+          pgw.a(this.jdField_a_of_type_Pgw, new ryj());
+        }
+        pgw.a(this.jdField_a_of_type_Pgw).a(localJSONObject, paramInteger.intValue(), (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      catch (NullPointerException localNullPointerException1)
+      {
+        QLog.e("PgcShortContentProteusItem", 1, localNullPointerException1.toString());
+      }
     }
-    catch (Exception paramView)
-    {
-      QLog.e("PgcShortContentProteusItem", 2, QLog.getStackTraceString(paramView));
-    }
+    return super.a(paramInteger);
   }
 }
 

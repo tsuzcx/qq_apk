@@ -1,15 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class bagn
-  implements View.OnClickListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public bagn(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public bagn(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void onClick(View paramView)
+  public void onPageSelected(int paramInt)
   {
-    BulkSendMessageFragment.a(this.a);
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
+    {
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
+      }
+    }
+    label85:
+    label91:
+    for (String str2 = bbbp.a(this.a.a);; str2 = "1")
+    {
+      bbbp.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
+    }
   }
 }
 

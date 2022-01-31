@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ahop;
+import ahon;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,7 +11,7 @@ class Conversation$3
   
   public void run()
   {
-    ahop.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    ahon.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 

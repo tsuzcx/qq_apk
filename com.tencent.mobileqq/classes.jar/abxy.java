@@ -1,34 +1,30 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abxy
-  implements aioe
+  extends MqqHandler
 {
-  public abxy(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public abxy(RegisterActivity paramRegisterActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
-  
-  public void a(String paramString)
-  {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterActivity.b(this.a, paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
   }
 }
 

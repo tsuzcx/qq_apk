@@ -2,8 +2,8 @@ package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import axqw;
-import bcpw;
+import axqy;
+import bcql;
 
 class UiApiPlugin$22$1
   implements Runnable
@@ -16,16 +16,16 @@ class UiApiPlugin$22$1
     if (this.jdField_a_of_type_Boolean)
     {
       str = UiApiPlugin.a("0", null, null, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.d);
-      axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, 0, "", "", "", "");
+      axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, 0, "", "", "", "");
     }
-    for (int i = 2131698075;; i = 2131698074)
+    for (int i = 2131698085;; i = 2131698084)
     {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.a, i, 0).b(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.a.getResources().getDimensionPixelSize(2131298865));
-      axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_dialog_click", 0, 1, 0, "", "", "", "");
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.a, i, 0).b(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.a.getResources().getDimensionPixelSize(2131298865));
+      axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_dialog_click", 0, 1, 0, "", "", "", "");
       this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.this$0.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.e, new String[] { str });
       return;
       str = UiApiPlugin.a("-3", null, "createShortcut failed, iconUrl is invalide: " + this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.c, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$22.d);
-      axqw.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, -1, "", "", "", "");
+      axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, -1, "", "", "", "");
     }
   }
 }

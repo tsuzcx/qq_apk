@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-public class whe
-  implements DialogInterface.OnClickListener
+class whe
+  extends whi
 {
-  public whe(QRLoginMgrActivity paramQRLoginMgrActivity, wig paramwig) {}
+  whe(whd paramwhd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Wig.a);
-    axqw.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Wig.c, 0, "", "", "", "");
+    ScannerActivity.a(this.a.a).b();
   }
 }
 

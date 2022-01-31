@@ -1,20 +1,9 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 
 public class ltq
-  extends ltl
+  extends ExpressionItem
 {
-  String b;
-  
-  public ltq(RandomWebProtocol paramRandomWebProtocol) {}
-  
-  void a(String paramString)
-  {
-    super.a(paramString);
-    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
-      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
-    }
-  }
+  public int[] a;
 }
 
 

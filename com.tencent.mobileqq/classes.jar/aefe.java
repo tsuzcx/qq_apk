@@ -1,10 +1,35 @@
-public class aefe
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForVIPDonate;
+import com.tencent.mobileqq.data.VIPDonateMsg;
+import com.tencent.qphone.base.util.QLog;
+
+class aefe
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  aefe(aefd paramaefd) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a()) {
+      return;
+    }
+    paramView = (MessageForVIPDonate)((aeff)actj.a(paramView)).a;
+    Object localObject = paramView.donateMsg;
+    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
+    {
+      paramView = paramView.donateMsg.jumpUrl;
+      localObject = new Intent(aefd.a(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      aefd.a(this.a).startActivity((Intent)localObject);
+      return;
+    }
+    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
+  }
 }
 
 

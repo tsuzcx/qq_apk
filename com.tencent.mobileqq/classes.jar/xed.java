@@ -1,31 +1,19 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.PopupMenu.1.1;
 
-public abstract interface xed
+public class xed
+  implements View.OnClickListener
 {
-  public abstract long a();
+  xed(xec paramxec, String paramString, int paramInt) {}
   
-  public abstract View a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void ao_();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c(long paramLong);
-  
-  public abstract void setHeaderBgColor(int paramInt);
-  
-  public abstract void setHeaderBgDrawable(Drawable paramDrawable);
-  
-  public abstract void setHeaderBgRes(int paramInt);
-  
-  public abstract void setTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xec.a != null) {
+      this.jdField_a_of_type_Xec.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    }
+    paramView.post(new PopupMenu.1.1(this));
+  }
 }
 
 

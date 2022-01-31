@@ -1,51 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.os.Build.VERSION;
+import android.os.HandlerThread;
 
 public class sna
 {
-  public static Intent a(String paramString1, String paramString2)
+  private HandlerThread a;
+  
+  public HandlerThread a()
   {
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1.setPackage(paramString2);
+    if (this.a == null) {
+      this.a = new HandlerThread("WeishiHandlerThread");
     }
-    paramString1.setFlags(536870912);
-    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
-    return paramString1;
+    return this.a;
   }
   
-  public static boolean a(Activity paramActivity)
+  public void a()
   {
-    if (paramActivity == null) {
-      sne.d("AppMarketUtils", "tryGoAppMarket:activity = null");
-    }
-    String str1;
-    String str2;
-    do
+    if (this.a != null)
     {
-      return false;
-      str1 = skb.a().b();
-      str2 = skb.a().a();
-      sne.b("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str2 + "\nappStoreVendorId =" + skb.a().d() + "\nappStoreScheme =" + str1);
-    } while ((TextUtils.isEmpty(str1)) || (str1.startsWith("http")));
-    return a(paramActivity, str1, str2);
-  }
-  
-  private static boolean a(Activity paramActivity, String paramString1, String paramString2)
-  {
-    sne.b("AppMarketUtils", "goAppMarket :\npackageName = " + paramString2 + "\nurl = " + paramString1);
-    try
-    {
-      paramActivity.startActivity(a(paramString1, paramString2));
-      return true;
+      if (Build.VERSION.SDK_INT < 18) {
+        break label29;
+      }
+      this.a.quitSafely();
     }
-    catch (Exception paramActivity)
+    for (;;)
     {
-      sne.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
+      this.a = null;
+      return;
+      label29:
+      this.a.quit();
     }
-    return false;
   }
 }
 

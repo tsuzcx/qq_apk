@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.database.Cursor;
 
-final class bdkk
-  implements DialogInterface.OnClickListener
+public abstract interface bdkk<T extends bdkj>
 {
-  bdkk(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdki.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-  }
+  public abstract T a(Cursor paramCursor);
+  
+  public abstract String a();
+  
+  public abstract bdkl[] a();
 }
 
 

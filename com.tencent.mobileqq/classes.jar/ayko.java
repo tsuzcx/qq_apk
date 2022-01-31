@@ -1,13 +1,13 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class ayko
-  implements bfoq
+class ayko
+  implements bfpj
 {
-  ayko(bfne parambfne) {}
+  ayko(aykk paramaykk, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    this.a.a(Integer.valueOf(paramInt));
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
 }
 

@@ -1,18 +1,18 @@
 package cooperation.vip.manager;
 
-import bhzc;
-import bhzf;
+import bhzt;
+import bhzw;
 import cooperation.qzone.util.QZLog;
 
 public class GdtGeneralManager$3
   implements Runnable
 {
-  public GdtGeneralManager$3(bhzc parambhzc, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  public GdtGeneralManager$3(bhzt parambhzt, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    bhzc.a(this.this$0, this.this$0.a());
-    bhzf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, 1, this.c, bhzc.a(this.this$0));
+    bhzt.a(this.this$0, this.this$0.a());
+    bhzw.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, 1, this.c, bhzt.a(this.this$0));
     QZLog.i("GdtGeneralManager", " @getGdtInfo gdtDeviceInfo == null  sendAdvInfoExposeOrClickReport");
   }
 }

@@ -1,24 +1,14 @@
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.1;
-import dov.com.qq.im.ae.gif.giftext.viewmodel.AEGIFMaterialViewModel.3.2;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class biuq
-  implements biqq
+class biuq
+  implements View.OnClickListener
 {
-  biuq(biuo parambiuo) {}
+  biuq(biuk parambiuk) {}
   
-  public void a(MetaMaterial paramMetaMaterial)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.1(this, paramMetaMaterial));
-  }
-  
-  public void a(MetaMaterial paramMetaMaterial, int paramInt) {}
-  
-  public void b(MetaMaterial paramMetaMaterial)
-  {
-    ThreadManager.getUIHandler().post(new AEGIFMaterialViewModel.3.2(this, paramMetaMaterial));
+    biuk.e(this.a);
   }
 }
 

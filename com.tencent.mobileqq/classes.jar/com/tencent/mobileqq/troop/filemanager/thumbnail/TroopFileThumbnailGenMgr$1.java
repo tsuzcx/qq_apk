@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import azuj;
+import azul;
 
 public class TroopFileThumbnailGenMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailGenMgr$1(azuj paramazuj, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
+  public TroopFileThumbnailGenMgr$1(azul paramazul, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
   
   public void run()
   {

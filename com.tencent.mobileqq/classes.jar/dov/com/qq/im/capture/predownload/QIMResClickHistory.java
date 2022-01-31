@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.predownload;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="resId, resType")
 public class QIMResClickHistory
-  extends aukm
+  extends auko
 {
   public String resId;
   public String resType;

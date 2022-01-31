@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajex;
+import ajev;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 
 public class SpriteBackgroundManager$3
   implements Runnable
 {
-  public SpriteBackgroundManager$3(ajex paramajex, ApolloTextureView paramApolloTextureView, int paramInt) {}
+  public SpriteBackgroundManager$3(ajev paramajev, ApolloTextureView paramApolloTextureView, int paramInt) {}
   
   public void run()
   {

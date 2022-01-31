@@ -1,68 +1,73 @@
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class adex
 {
-  public adew a = new adew();
-  public adew b = new adew();
-  public adew c = new adew();
-  public adew d = new adew();
+  int jdField_a_of_type_Int = 2;
+  public List<adeu> a;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public adex()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public List<adeu> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    adeu localadeu = new adeu();
+    localadeu.a((adeu)localArrayList.get(localArrayList.size() - 1));
+    this.jdField_a_of_type_JavaUtilList.add(localadeu);
+    this.jdField_a_of_type_Boolean = true;
+    return localArrayList;
+  }
   
   public void a()
   {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      return;
+    }
+    adeu localadeu = (adeu)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+    localadeu.a.a(localadeu.b);
+    localadeu.c.a(localadeu.d);
+    localadeu.b.a(localadeu.d);
+    this.jdField_a_of_type_JavaUtilList.add(localadeu);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    adeu localadeu = new adeu();
+    localadeu.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.jdField_a_of_type_JavaUtilList.add(localadeu);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    adeu localadeu1 = new adeu();
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
+      a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      return false;
     }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(adex paramadex)
-  {
-    this.a.a(paramadex.a);
-    this.b.a(paramadex.b);
-    this.c.a(paramadex.c);
-    this.d.a(paramadex.d);
-  }
-  
-  public void b(adex paramadex)
-  {
-    if (paramadex.d == this.c)
+    adeu localadeu2 = (adeu)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+    localadeu1.a.a(localadeu2.b);
+    localadeu1.c.a(localadeu2.d);
+    localadeu1.b.a((localadeu1.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (localadeu1.c.b + paramFloat2) / 2.0F, (localadeu1.c.c + paramFloat3) / 2.0F, (localadeu1.c.jdField_a_of_type_Long + paramLong) / 2L);
+    localadeu1.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.jdField_a_of_type_JavaUtilList.add(localadeu1);
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a = paramadex.a;
-      this.c = paramadex.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilList.remove(0);
     }
-    do
-    {
-      return;
-      if (this.d == paramadex.c)
-      {
-        this.d.a(paramadex.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    return this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int;
   }
 }
 

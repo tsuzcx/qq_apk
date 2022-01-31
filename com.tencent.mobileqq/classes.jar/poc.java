@@ -1,35 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class poc
-  implements ViewFactory.FoundClickableViewListener
+class poc
+  implements ViewBase.OnClickListener
 {
-  poc(pob parampob, int paramInt, TemplateBean paramTemplateBean) {}
+  poc(pnz parampnz) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (pob.a(this.jdField_a_of_type_Pob) != null)
+    olo.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((pny.a(this.a.jdField_a_of_type_Pny) != null) && (this.a.jdField_a_of_type_Int < pny.a(this.a.jdField_a_of_type_Pny).size()))
     {
-      paramViewBase.setOnClickListener(new pod(this));
+      onh.a(pny.a(this.a.jdField_a_of_type_Pny).getContext(), (BaseArticleInfo)pny.a(this.a.jdField_a_of_type_Pny).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
       return;
     }
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      return;
-    case 1038: 
-      paramViewBase.setOnClickListener(new pog(this));
-      return;
-    case 1116: 
-      paramViewBase.setOnClickListener(new poe(this));
-      return;
-    case 1040: 
-      paramViewBase.setOnClickListener(new pof(this));
-      return;
-    }
-    paramViewBase.setOnClickListener(new poh(this));
+    onh.a(pny.a(this.a.jdField_a_of_type_Pny).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

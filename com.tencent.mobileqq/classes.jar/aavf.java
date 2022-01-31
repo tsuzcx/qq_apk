@@ -1,41 +1,31 @@
-import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 
 public class aavf
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aavf(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aavf(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
+    switch (paramView.getId())
     {
-      i = 1;
-      if ((!this.a.a.isMember) && (i != 0)) {
-        break label66;
-      }
+    case 2131377171: 
+    default: 
+      this.a.a = 0;
     }
-    label66:
-    do
+    for (;;)
     {
-      return false;
-      i = 0;
-      break;
-      if (paramMotionEvent.getAction() == 0) {
-        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
-      }
-    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131296940) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
-    return false;
+      this.a.a(this.a.a);
+      axqy.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+      return;
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
+    }
   }
 }
 

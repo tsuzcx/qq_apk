@@ -1,11 +1,24 @@
+import android.app.Activity;
+import android.view.View;
+
 class naf
-  implements bfos
+  implements bfph
 {
-  naf(nae paramnae) {}
+  naf(nab paramnab, Activity paramActivity, String paramString, bfpc parambfpc) {}
   
-  public void onDismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    nae.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      nab.b(this.jdField_a_of_type_Nab, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      nab.a(this.jdField_a_of_type_Nab, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

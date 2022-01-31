@@ -1,93 +1,62 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qhuanji.QHuanjiPluginProxyActivity;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
 
-public class bgmp
+class bgmp
+  implements OnPluginInstallListener
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  bgmp(bgmo parambgmo) {}
+  
+  public IBinder asBinder()
   {
-    QLog.d("QHuanji", 1, "start create HuanjiAppInterface. processName=" + paramString);
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if ("qqreaderplugin.apk".equals(paramString))
     {
-      paramString = Class.forName("com.tencent.huanji.QHuanjiAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("QHuanji", 1, "*createQHuanjiAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramString = QHuanjiPluginProxyActivity.a(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = paramString.loadClass("com.tencent.huanji.QHuanjiAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "PluginPreInstaller onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
       }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+      axqy.b(bgmo.a(this.a), "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 0, paramInt, "", "", "", "");
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PluginPreInstaller", 2, "PluginReinstallInWiFi finish,plugin:" + paramString);
+    }
+    Object localObject;
+    if ("qqreaderplugin.apk".equals(paramString))
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("PluginPreInstaller", 2, "PluginPreInstaller onInstallFinish, pluginId = " + paramString);
+      }
+      axqy.b(bgmo.a(this.a), "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 0, 0, "", "", "", "");
+      localObject = (bgty)bgmo.a(this.a).getManager(129);
+      if (localObject != null) {
+        ((bgty)localObject).a();
       }
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
+    for (;;)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
+      localObject = new Intent("com.tencent.mobileqq.cooperation.plugin." + paramString);
+      ((Intent)localObject).putExtra("plugin", paramString);
+      bgmo.a(this.a).sendBroadcast((Intent)localObject);
+      return;
+      if ("comic_plugin.apk".equals(paramString)) {
+        bgja.a(bgmo.a(this.a));
       }
     }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
   }
 }
 

@@ -5,11 +5,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListAdapter;
-import bcma;
-import bcmb;
-import bcmd;
-import bcme;
-import bfpc;
+import bcmp;
+import bcmq;
+import bcms;
+import bcmt;
+import bfpt;
 import com.tencent.widget.XListView;
 
 @Deprecated
@@ -19,9 +19,9 @@ public class GridListView
   public int a;
   public View.OnClickListener a;
   public View a;
-  public bcmd a;
-  public bcme a;
-  public bfpc a;
+  public bcms a;
+  public bcmt a;
+  public bfpt a;
   public int b = 4;
   public int c = 0;
   public int d;
@@ -36,7 +36,7 @@ public class GridListView
     super(paramContext);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Bcme = new bcme(this);
+    this.jdField_a_of_type_Bcmt = new bcmt(this);
   }
   
   public GridListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -44,7 +44,7 @@ public class GridListView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Bcme = new bcme(this);
+    this.jdField_a_of_type_Bcmt = new bcmt(this);
   }
   
   public GridListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -52,7 +52,7 @@ public class GridListView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Bcme = new bcme(this);
+    this.jdField_a_of_type_Bcmt = new bcmt(this);
   }
   
   private void a(int paramInt)
@@ -76,19 +76,19 @@ public class GridListView
     if (paramListAdapter == null) {
       return;
     }
-    this.jdField_a_of_type_Bcmd = ((bcmd)paramListAdapter);
-    this.jdField_a_of_type_Bcmd.registerDataSetObserver(new bcma(this));
-    this.jdField_a_of_type_Bcmd.a(this.jdField_a_of_type_Int);
-    this.i = this.jdField_a_of_type_Bcmd.a();
-    a(this.jdField_a_of_type_Bcmd.getCount());
-    super.setAdapter(this.jdField_a_of_type_Bcme);
+    this.jdField_a_of_type_Bcms = ((bcms)paramListAdapter);
+    this.jdField_a_of_type_Bcms.registerDataSetObserver(new bcmp(this));
+    this.jdField_a_of_type_Bcms.a(this.jdField_a_of_type_Int);
+    this.i = this.jdField_a_of_type_Bcms.a();
+    a(this.jdField_a_of_type_Bcms.getCount());
+    super.setAdapter(this.jdField_a_of_type_Bcmt);
   }
   
   public void setEmptyView(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (this.d == 0) {
-      this.jdField_a_of_type_Bcme.notifyDataSetChanged();
+      this.jdField_a_of_type_Bcmt.notifyDataSetChanged();
     }
   }
   
@@ -103,7 +103,7 @@ public class GridListView
     {
       this.g = paramInt1;
       this.h = paramInt2;
-      this.jdField_a_of_type_Bcme.notifyDataSetChanged();
+      this.jdField_a_of_type_Bcmt.notifyDataSetChanged();
     }
   }
   
@@ -116,7 +116,7 @@ public class GridListView
       if (this.jdField_a_of_type_Int == 1) {
         setPadding(0, 0, 0, this.f);
       }
-      this.jdField_a_of_type_Bcme.notifyDataSetChanged();
+      this.jdField_a_of_type_Bcmt.notifyDataSetChanged();
     }
   }
   
@@ -125,10 +125,10 @@ public class GridListView
     if (this.jdField_a_of_type_Int != paramInt)
     {
       this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Bcmd != null)
+      if (this.jdField_a_of_type_Bcms != null)
       {
-        this.jdField_a_of_type_Bcmd.a(this.jdField_a_of_type_Int);
-        b(this.jdField_a_of_type_Bcmd.getCount());
+        this.jdField_a_of_type_Bcms.a(this.jdField_a_of_type_Int);
+        b(this.jdField_a_of_type_Bcms.getCount());
       }
       if (this.jdField_a_of_type_Int != 1) {
         break label71;
@@ -138,7 +138,7 @@ public class GridListView
     for (paramInt = this.f;; paramInt = 0)
     {
       setPadding(0, 0, 0, paramInt);
-      this.jdField_a_of_type_Bcme.notifyDataSetChanged();
+      this.jdField_a_of_type_Bcmt.notifyDataSetChanged();
       return;
     }
   }
@@ -148,17 +148,17 @@ public class GridListView
     if (paramInt != this.b)
     {
       this.b = paramInt;
-      if (this.jdField_a_of_type_Bcmd != null) {
-        a(this.jdField_a_of_type_Bcmd.getCount());
+      if (this.jdField_a_of_type_Bcms != null) {
+        a(this.jdField_a_of_type_Bcms.getCount());
       }
     }
   }
   
-  public void setOnItemClickListener(bfpc parambfpc)
+  public void setOnItemClickListener(bfpt parambfpt)
   {
-    this.jdField_a_of_type_Bfpc = parambfpc;
+    this.jdField_a_of_type_Bfpt = parambfpt;
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new bcmb(this);
+      this.jdField_a_of_type_AndroidViewView$OnClickListener = new bcmq(this);
     }
   }
 }

@@ -1,8 +1,12 @@
-public class tsk
+class tsk
+  implements tjc
 {
-  public static boolean a(int paramInt)
+  tsk(tsi paramtsi, tjb paramtjb) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return paramInt > 1000;
+    this.jdField_a_of_type_Tjb.a();
+    this.jdField_a_of_type_Tsi.c();
   }
 }
 

@@ -1,44 +1,33 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqa
-  implements Handler.Callback
+  implements View.OnClickListener
 {
   public abqa(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    for (;;)
+    paramView = new Intent(this.a, SpecailCareListActivity.class);
+    this.a.startActivity(paramView);
+    axqy.b(this.a.app, "CliOper", "", "", "0X80050E3", "0X80050E3", 0, 0, "1", "", "", "");
+    axqy.b(this.a.app, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
+    if (this.a.app != null)
     {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          bool = false;
-          return bool;
-        }
-      }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      break label163;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
-      break label163;
-      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
-      label163:
-      bool = true;
+      this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0).edit().putBoolean("spcial_care_qq_setting", false).commit();
+      NotifyPushSettingActivity.b(this.a).setRightIcon(null);
+      return;
     }
+    QLog.d("IphoneTitleBarActivity", 1, "App is null, can't display 'new' flag for SpecialCare(onClick)");
   }
 }
 

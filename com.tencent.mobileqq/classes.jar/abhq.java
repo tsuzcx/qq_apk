@@ -2,7 +2,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupWelcomeFragment;
 
 public class abhq
   implements View.OnClickListener
@@ -11,7 +11,8 @@ public class abhq
   
   public void onClick(View paramView)
   {
-    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
+    asog.a("0X800A22D");
+    PublicFragmentActivity.a(this.a.getActivity(), MsgBackupWelcomeFragment.class);
   }
 }
 

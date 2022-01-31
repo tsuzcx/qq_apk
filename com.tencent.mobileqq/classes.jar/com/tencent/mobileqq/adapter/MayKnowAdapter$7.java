@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import ainv;
+import aint;
 import com.tencent.qphone.base.util.QLog;
 
 public class MayKnowAdapter$7
   implements Runnable
 {
-  public MayKnowAdapter$7(ainv paramainv) {}
+  public MayKnowAdapter$7(aint paramaint) {}
   
   public void run()
   {

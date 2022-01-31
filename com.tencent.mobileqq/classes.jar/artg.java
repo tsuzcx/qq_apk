@@ -1,10 +1,6 @@
 public abstract interface artg
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

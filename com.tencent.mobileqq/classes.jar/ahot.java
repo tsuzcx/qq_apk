@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
 class ahot
-  implements DialogInterface.OnDismissListener
 {
-  ahot(ahoq paramahoq) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ahot(String paramString1, String paramString2, long paramLong)
   {
-    ahoq.a(this.a, false);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

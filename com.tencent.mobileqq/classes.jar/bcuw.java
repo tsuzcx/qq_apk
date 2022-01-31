@@ -1,38 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
 public class bcuw
-  implements AdapterView.OnItemClickListener
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public bcuw(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bcuw(VideoTextureView paramVideoTextureView) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof bbjh)) {
-      return;
-    }
-    paramView = ((bbjh)paramView).a;
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).a(paramView, this.a);
-    }
-    ShareActionSheetV2 localShareActionSheetV2 = this.a;
-    if (paramAdapterView == this.a.a) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      ShareActionSheetV2.a(localShareActionSheetV2, paramView, paramInt);
-      return;
-      if (paramAdapterView == this.a.b) {
-        paramInt = 1;
-      } else if (paramAdapterView == this.a.c) {
-        paramInt = 2;
-      } else {
-        paramInt = -1;
-      }
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
     }
   }
 }

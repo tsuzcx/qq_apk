@@ -1,14 +1,16 @@
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
 class ajar
   implements MediaPlayer.OnCompletionListener
 {
-  ajar(ajao paramajao) {}
+  ajar(ajam paramajam, ajbm paramajbm, JSONObject paramJSONObject) {}
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.a(10);
+    this.jdField_a_of_type_Ajbm.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Ajam.a(10);
   }
 }
 

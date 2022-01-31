@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import mqq.os.MqqHandler;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class wpx
-  extends QIPCModule
+  implements wvb
 {
-  wpx(wpw paramwpw, String paramString)
-  {
-    super(paramString);
-  }
+  public wpx(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
-    return null;
+    if (paramInt == 12) {
+      this.a.a = true;
+    }
   }
 }
 

@@ -1,41 +1,21 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public abstract class atpg
+public class atpg
+  implements View.OnClickListener
 {
-  protected Context a;
-  protected View a;
+  public atpg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public atpg(Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  protected abstract int a();
-  
-  public View a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView;
-    }
-    int i = a();
-    if (i > 0)
+    if ((this.a.b != null) && (!this.a.isFinishing()))
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.a.b.dismiss();
+      this.a.b = null;
     }
   }
-  
-  protected void a(View paramView) {}
-  
-  public abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
 }
 
 

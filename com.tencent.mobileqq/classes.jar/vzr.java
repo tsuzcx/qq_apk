@@ -1,16 +1,28 @@
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class vzr
 {
-  bcpq a;
-  
-  vzr(bcpq parambcpq)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
   {
-    this.a = parambcpq;
-  }
-  
-  public void a()
-  {
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
+    boolean bool1 = false;
+    paramQQAppInterface = bbex.a(paramQQAppInterface, paramContext, paramString);
+    if (paramQQAppInterface != null) {
+      bool1 = paramQQAppInterface.c();
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if ((!bool2) && (paramBoolean))
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("selfSet_leftViewText", ajya.a(2131715941));
+        paramContext.startActivity(localIntent);
+      }
+      ved.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      return bool2;
     }
   }
 }

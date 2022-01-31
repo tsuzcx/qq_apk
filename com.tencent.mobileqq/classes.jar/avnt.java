@@ -1,37 +1,19 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
-public class avnt
-  implements QzoneZipCacheHelperCallBack
+class avnt
+  extends AnimatorListenerAdapter
 {
-  public avnt(QzoneGiftUtil.1 param1) {}
+  avnt(avns paramavns) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramBoolean)
-    {
-      QzoneGiftUtil.1.a(this.a);
-      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
-      if (this.a.jdField_a_of_type_Avnv != null)
-      {
-        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
-          break label109;
-        }
-        this.a.jdField_a_of_type_Avnv.a();
-      }
+    if (avno.a(this.a.a) != null) {
+      avno.a(this.a.a).c();
     }
-    label109:
-    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
-    {
-      return;
-      QzoneGiftUtil.1.b(this.a);
-      break;
-    }
-    this.a.jdField_a_of_type_Avnv.b();
+    avno.a(this.a.a, 8);
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

@@ -1,16 +1,37 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class acsu
-  implements BusinessObserver
+public class acsu
 {
-  acsu(acsr paramacsr, acsw paramacsw) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static BaseChatPie a()
   {
-    if ((paramInt == 2003) && (this.jdField_a_of_type_Acsw != null)) {
-      this.jdField_a_of_type_Acsw.a(paramBoolean, paramBundle);
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = ((FragmentActivity)localObject).getChatFragment();
+      if (localObject != null) {
+        return ((ChatFragment)localObject).a();
+      }
     }
+    return null;
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null) {
+      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return a();
   }
 }
 

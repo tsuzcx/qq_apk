@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import acut;
-import aerb;
+import acup;
+import aeqz;
 
 public class MultiForwardChatPie$5
   implements Runnable
 {
-  public MultiForwardChatPie$5(aerb paramaerb) {}
+  public MultiForwardChatPie$5(aeqz paramaeqz) {}
   
   public void run()
   {
-    aerb.a(this.this$0).notifyDataSetChanged();
+    aeqz.a(this.this$0).notifyDataSetChanged();
   }
 }
 

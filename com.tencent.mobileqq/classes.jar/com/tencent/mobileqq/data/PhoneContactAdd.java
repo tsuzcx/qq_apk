@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class PhoneContactAdd
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String mobileNo;
   public String name;
   public String remindInfo;

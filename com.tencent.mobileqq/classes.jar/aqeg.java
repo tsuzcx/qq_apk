@@ -1,15 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class aqeg
-  extends RecyclerView.ViewHolder
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public int a = aqdz.b;
+  aqeg(aqef paramaqef) {}
   
-  public aqeg(View paramView)
+  public int getSpanSize(int paramInt)
   {
-    super(paramView);
-    paramView.setTag(this);
+    if (this.a.getItemViewType(paramInt) == aqeb.b) {
+      return 5;
+    }
+    return 1;
   }
 }
 

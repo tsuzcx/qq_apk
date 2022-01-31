@@ -4,12 +4,9 @@ import android.content.DialogInterface.OnClickListener;
 class aenh
   implements DialogInterface.OnClickListener
 {
-  aenh(aena paramaena) {}
+  aenh(aemy paramaemy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    muf.a(this.a.a());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

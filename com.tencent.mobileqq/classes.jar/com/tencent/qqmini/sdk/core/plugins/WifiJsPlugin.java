@@ -13,9 +13,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import begy;
-import begz;
-import beka;
+import behp;
+import behq;
+import bekr;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
@@ -180,7 +180,7 @@ public class WifiJsPlugin
     if (this.mActivity == null) {}
   }
   
-  public String connectWifi(beka parambeka)
+  public String connectWifi(bekr parambekr)
   {
     if (this.wifiManager != null) {
       if (!this.wifiManager.isWifiEnabled()) {}
@@ -189,7 +189,7 @@ public class WifiJsPlugin
     {
       try
       {
-        Object localObject1 = new JSONObject(parambeka.b);
+        Object localObject1 = new JSONObject(parambekr.b);
         if (localObject1 != null)
         {
           String str = ((JSONObject)localObject1).optString("SSID");
@@ -211,7 +211,7 @@ public class WifiJsPlugin
             if (i != -1) {
               this.wifiManager.enableNetwork(i, true);
             }
-            parambeka.a();
+            parambekr.a();
             return "";
           }
         }
@@ -221,14 +221,14 @@ public class WifiJsPlugin
         localThrowable.printStackTrace();
         Object localObject2 = null;
         continue;
-        parambeka.a(":invalid network id");
+        parambekr.a(":invalid network id");
         continue;
-        parambeka.a(":invalid data");
+        parambekr.a(":invalid data");
         continue;
       }
-      parambeka.a(":wifi is disable");
+      parambekr.a(":wifi is disable");
       continue;
-      parambeka.a(":not invoke startWifi");
+      parambekr.a(":not invoke startWifi");
       continue;
       label210:
       int i = 0;
@@ -295,7 +295,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String getConnectedWifi(beka parambeka)
+  public String getConnectedWifi(bekr parambekr)
   {
     JSONObject localJSONObject;
     if (this.wifiManager != null) {
@@ -308,7 +308,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambeka.a(localJSONObject);
+        parambekr.a(localJSONObject);
         return "";
       }
       catch (JSONException localJSONException1)
@@ -320,7 +320,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12005);
-        parambeka.a(localJSONObject, ":wifi is disable");
+        parambekr.a(localJSONObject, ":wifi is disable");
       }
       catch (JSONException localJSONException2)
       {
@@ -333,7 +333,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12000);
-        parambeka.a(localJSONObject, ":not invoke startWifi");
+        parambekr.a(localJSONObject, ":not invoke startWifi");
       }
       catch (JSONException localJSONException3)
       {
@@ -360,7 +360,7 @@ public class WifiJsPlugin
     return 0;
   }
   
-  public String getWifiList(beka parambeka)
+  public String getWifiList(bekr parambekr)
   {
     JSONArray localJSONArray;
     JSONObject localJSONObject1;
@@ -379,8 +379,8 @@ public class WifiJsPlugin
       {
         localJSONObject1.put("wifiList", localJSONArray);
         localJSONObject2.put("errCode", 0);
-        parambeka.a(localJSONObject2);
-        parambeka.a.a("onGetWifiList", localJSONObject1.toString(), 0);
+        parambekr.a(localJSONObject2);
+        parambekr.a.a("onGetWifiList", localJSONObject1.toString(), 0);
         return "";
       }
       catch (JSONException localJSONException3)
@@ -392,7 +392,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12005);
-        parambeka.a(localJSONObject1, ":wifi is disable");
+        parambekr.a(localJSONObject1, ":wifi is disable");
       }
       catch (JSONException localJSONException1)
       {
@@ -405,7 +405,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12000);
-        parambeka.a(localJSONObject1, ":not invoke startWifi");
+        parambekr.a(localJSONObject1, ":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {
@@ -422,10 +422,10 @@ public class WifiJsPlugin
     return getSecurityMode(paramScanResult) > 1;
   }
   
-  public void onCreate(begz parambegz)
+  public void onCreate(behq parambehq)
   {
-    super.onCreate(parambegz);
-    this.mActivity = parambegz.a();
+    super.onCreate(parambehq);
+    this.mActivity = parambehq.a();
   }
   
   public void onDestroy()
@@ -434,7 +434,7 @@ public class WifiJsPlugin
     this.wifiReceiver = null;
   }
   
-  public String startWifi(beka parambeka)
+  public String startWifi(bekr parambekr)
   {
     JSONObject localJSONObject;
     if (Build.VERSION.SDK_INT >= 23) {
@@ -449,7 +449,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambeka.a(localJSONObject);
+        parambekr.a(localJSONObject);
         registerWifiReceiver();
         return "";
       }
@@ -458,14 +458,14 @@ public class WifiJsPlugin
         localJSONException1.printStackTrace();
         continue;
       }
-      checkPermission(new WifiJsPlugin.2(this, parambeka));
+      checkPermission(new WifiJsPlugin.2(this, parambekr));
       continue;
       this.wifiManager = ((WifiManager)this.mContext.getApplicationContext().getSystemService("wifi"));
       localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("errCode", 0);
-        parambeka.a(localJSONObject);
+        parambekr.a(localJSONObject);
         registerWifiReceiver();
       }
       catch (JSONException localJSONException2)
@@ -478,7 +478,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String stopWifi(beka parambeka)
+  public String stopWifi(bekr parambekr)
   {
     JSONObject localJSONObject1;
     if (this.wifiManager != null)
@@ -491,7 +491,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 0);
-        parambeka.a();
+        parambekr.a();
         unregisterWifiReceiver();
         return "";
       }
@@ -504,7 +504,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject2.put("errCode", 12000);
-        parambeka.a(":not invoke startWifi");
+        parambekr.a(":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {

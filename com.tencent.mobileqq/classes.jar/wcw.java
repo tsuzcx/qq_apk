@@ -1,18 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-public class wcw
-  implements View.OnClickListener
+public abstract interface wcw
 {
-  public wcw(InnerListView paramInnerListView, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

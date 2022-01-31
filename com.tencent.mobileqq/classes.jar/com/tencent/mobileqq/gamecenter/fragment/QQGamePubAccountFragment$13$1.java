@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import ajae;
-import aqsg;
-import yod;
+import ajac;
+import aqsi;
+import yoa;
 
 public class QQGamePubAccountFragment$13$1
   implements Runnable
 {
-  public QQGamePubAccountFragment$13$1(aqsg paramaqsg) {}
+  public QQGamePubAccountFragment$13$1(aqsi paramaqsi) {}
   
   public void run()
   {
     this.a.a.a(this.a.a.getActivity());
-    yod.a(ajae.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
+    yoa.a(ajac.a(), "769", "205036", "", "76901", "1", "160", new String[] { "", "", "20" });
   }
 }
 

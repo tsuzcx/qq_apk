@@ -1,19 +1,38 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class arww
   implements View.OnClickListener
 {
-  public arww(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  public arww(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-    axqw.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
+    int i = 2;
+    if (!bbfj.a())
+    {
+      bcql.a(this.jdField_a_of_type_AndroidAppActivity, 2131694011, 0).a();
+      return;
+    }
+    paramView = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + paramView);
+    }
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
+    for (;;)
+    {
+      axqy.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_picked_location", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+      i = 1;
+    }
   }
 }
 

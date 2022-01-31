@@ -1,24 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bilp
-  implements Animator.AnimatorListener
+  extends Handler
 {
-  bilp(bilj parambilj) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  bilp(bill parambill, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      xhb.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
+      return;
+    }
+    xhb.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.d();
+  }
 }
 
 

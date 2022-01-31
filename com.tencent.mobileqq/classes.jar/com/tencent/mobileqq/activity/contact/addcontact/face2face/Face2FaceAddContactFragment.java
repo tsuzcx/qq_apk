@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import actn;
-import afhp;
+import actj;
+import afhn;
+import afhr;
+import afhs;
 import afht;
 import afhu;
-import afhv;
-import afhw;
-import afhz;
+import afhx;
+import afic;
+import afid;
 import afie;
-import afif;
-import afig;
-import ajxn;
+import ajxl;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -40,8 +40,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import bbev;
-import bcpw;
+import bbfj;
+import bcql;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -55,19 +55,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import muf;
+import muc;
 
 public class Face2FaceAddContactFragment
   extends IphoneTitleBarFragment
-  implements afig, View.OnClickListener
+  implements afie, View.OnClickListener
 {
   private long jdField_a_of_type_Long;
-  private afhp jdField_a_of_type_Afhp;
-  private afhz jdField_a_of_type_Afhz;
+  private afhn jdField_a_of_type_Afhn;
+  private afhx jdField_a_of_type_Afhx;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler = new afht(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new afhr(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afhu(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afhs(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -111,16 +111,16 @@ public class Face2FaceAddContactFragment
     {
     default: 
       return;
-    case 2131365550: 
+    case 2131365549: 
     case 2131366308: 
     case 2131366660: 
     case 2131370845: 
     case 2131371035: 
-    case 2131375991: 
-    case 2131376246: 
-    case 2131377238: 
-    case 2131378423: 
-    case 2131379587: 
+    case 2131375993: 
+    case 2131376248: 
+    case 2131377240: 
+    case 2131378428: 
+    case 2131379592: 
       this.jdField_a_of_type_JavaLangStringBuffer.append(((TextView)paramView).getText());
       return;
     }
@@ -177,9 +177,9 @@ public class Face2FaceAddContactFragment
     if (paramInt == 4)
     {
       a(false);
-      if (!bbev.d(getActivity()))
+      if (!bbfj.d(getActivity()))
       {
-        bcpw.a(getActivity(), 2131694672, 0).a();
+        bcql.a(getActivity(), 2131694673, 0).a();
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(500, 500L);
       }
     }
@@ -189,15 +189,15 @@ public class Face2FaceAddContactFragment
     }
     if (a(this.jdField_a_of_type_JavaLangStringBuffer.toString()))
     {
-      bcpw.a(getActivity(), getString(2131720337), 0).a();
-      afie.a("0X800AB5F", "", "", this.jdField_a_of_type_JavaLangStringBuffer.toString());
+      bcql.a(getActivity(), getString(2131720348), 0).a();
+      afic.a("0X800AB5F", "", "", this.jdField_a_of_type_JavaLangStringBuffer.toString());
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(500, 500L);
       return;
     }
     this.r.setVisibility(0);
     this.r.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-    this.jdField_a_of_type_Afhz.a(getActivity(), this.jdField_a_of_type_JavaLangStringBuffer.toString(), null);
+    this.jdField_a_of_type_Afhx.a(getActivity(), this.jdField_a_of_type_JavaLangStringBuffer.toString(), null);
   }
   
   private void d(int paramInt)
@@ -237,10 +237,10 @@ public class Face2FaceAddContactFragment
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       this.f.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(actn.a(8.0F, getResources()));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(actn.a(8.0F, getResources()));
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(actn.a(8.0F, getResources()));
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(actn.a(8.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(actj.a(8.0F, getResources()));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(actj.a(8.0F, getResources()));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(actj.a(8.0F, getResources()));
+      this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(actj.a(8.0F, getResources()));
     }
     if (paramInt > 0)
     {
@@ -262,7 +262,7 @@ public class Face2FaceAddContactFragment
   
   private void k()
   {
-    this.jdField_a_of_type_Afhz = new afhz(this);
+    this.jdField_a_of_type_Afhx = new afhx(this);
     this.jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839144);
   }
@@ -280,63 +280,63 @@ public class Face2FaceAddContactFragment
     this.centerView.setTextColor(-1);
     setTitle(getString(2131692286), getString(2131692286));
     this.rightViewText.setTextColor(-1);
-    setRightButtonText(getString(2131720046), this);
-    this.rightViewText.setContentDescription(getString(2131720046));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131364702));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368566));
+    setRightButtonText(getString(2131720057), this);
+    this.rightViewText.setContentDescription(getString(2131720057));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131364701));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368565));
     this.r = ((TextView)this.mContentView.findViewById(2131372030));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368554));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368556));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368555));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368553));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378133));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378135));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378134));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378132));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377219));
-    this.f = ((TextView)this.mContentView.findViewById(2131377221));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368553));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368555));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368554));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131368552));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378136));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378138));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378137));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378135));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377221));
+    this.f = ((TextView)this.mContentView.findViewById(2131377223));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131367171));
-    this.jdField_a_of_type_Afhp = new afhp(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Afhn = new afhn(getActivity(), getActivity().app, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Afhp);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Afhn);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369351));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369411));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363539));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131369410));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363538));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)this.mContentView.findViewById(2131365188));
+    this.jdField_a_of_type_AndroidWidgetTableLayout = ((TableLayout)this.mContentView.findViewById(2131365187));
     this.g = ((TextView)this.mContentView.findViewById(2131371035));
-    this.h = ((TextView)this.mContentView.findViewById(2131378423));
-    this.i = ((TextView)this.mContentView.findViewById(2131377238));
+    this.h = ((TextView)this.mContentView.findViewById(2131378428));
+    this.i = ((TextView)this.mContentView.findViewById(2131377240));
     this.j = ((TextView)this.mContentView.findViewById(2131366660));
     this.k = ((TextView)this.mContentView.findViewById(2131366308));
-    this.l = ((TextView)this.mContentView.findViewById(2131376246));
-    this.m = ((TextView)this.mContentView.findViewById(2131375991));
-    this.n = ((TextView)this.mContentView.findViewById(2131365550));
+    this.l = ((TextView)this.mContentView.findViewById(2131376248));
+    this.m = ((TextView)this.mContentView.findViewById(2131375993));
+    this.n = ((TextView)this.mContentView.findViewById(2131365549));
     this.o = ((TextView)this.mContentView.findViewById(2131370845));
-    this.p = ((TextView)this.mContentView.findViewById(2131379587));
-    this.q = ((TextView)this.mContentView.findViewById(2131364996));
+    this.p = ((TextView)this.mContentView.findViewById(2131379592));
+    this.q = ((TextView)this.mContentView.findViewById(2131364995));
     this.g.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.g.setOnTouchListener(muf.a);
+    this.g.setOnTouchListener(muc.a);
     this.h.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.h.setOnTouchListener(muf.a);
+    this.h.setOnTouchListener(muc.a);
     this.i.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.i.setOnTouchListener(muf.a);
+    this.i.setOnTouchListener(muc.a);
     this.j.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.j.setOnTouchListener(muf.a);
+    this.j.setOnTouchListener(muc.a);
     this.k.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.k.setOnTouchListener(muf.a);
+    this.k.setOnTouchListener(muc.a);
     this.l.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.l.setOnTouchListener(muf.a);
+    this.l.setOnTouchListener(muc.a);
     this.m.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.m.setOnTouchListener(muf.a);
+    this.m.setOnTouchListener(muc.a);
     this.n.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.n.setOnTouchListener(muf.a);
+    this.n.setOnTouchListener(muc.a);
     this.o.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.o.setOnTouchListener(muf.a);
+    this.o.setOnTouchListener(muc.a);
     this.p.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.p.setOnTouchListener(muf.a);
+    this.p.setOnTouchListener(muc.a);
     this.q.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.q.setOnTouchListener(muf.a);
+    this.q.setOnTouchListener(muc.a);
   }
   
   private void m()
@@ -347,7 +347,7 @@ public class Face2FaceAddContactFragment
     if (getActivity().isResume())
     {
       p();
-      bcpw.a(getActivity(), getString(2131692297), 0).a();
+      bcql.a(getActivity(), getString(2131692297), 0).a();
       return;
     }
     this.jdField_a_of_type_Boolean = true;
@@ -370,7 +370,7 @@ public class Face2FaceAddContactFragment
     this.r.setBackgroundDrawable(null);
     e(0);
     this.jdField_a_of_type_AndroidWidgetTableLayout.setVisibility(8);
-    this.jdField_a_of_type_Afhp.notifyDataSetChanged();
+    this.jdField_a_of_type_Afhn.notifyDataSetChanged();
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
   }
   
@@ -383,7 +383,7 @@ public class Face2FaceAddContactFragment
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.r.setVisibility(8);
       this.r.setBackgroundDrawable(null);
-      this.jdField_a_of_type_Afhp.a();
+      this.jdField_a_of_type_Afhn.a();
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.f.setVisibility(8);
@@ -419,24 +419,24 @@ public class Face2FaceAddContactFragment
   
   private void s()
   {
-    if ((this.jdField_a_of_type_Afhz != null) && (this.jdField_a_of_type_Afhp != null) && (getActivity() != null) && (!getActivity().isFinishing()))
+    if ((this.jdField_a_of_type_Afhx != null) && (this.jdField_a_of_type_Afhn != null) && (getActivity() != null) && (!getActivity().isFinishing()))
     {
       if (QLog.isDebugVersion()) {
-        QLog.d("Face2FaceAddContactFragment", 2, "sendFace2FaceHeartBeat isNetworkAvailable:" + bbev.a());
+        QLog.d("Face2FaceAddContactFragment", 2, "sendFace2FaceHeartBeat isNetworkAvailable:" + bbfj.a());
       }
-      if (bbev.a())
+      if (bbfj.a())
       {
-        Object localObject = this.jdField_a_of_type_Afhp.a();
+        Object localObject = this.jdField_a_of_type_Afhn.a();
         ArrayList localArrayList = new ArrayList();
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          afif localafif = (afif)((Iterator)localObject).next();
-          if (localafif != null) {
-            localArrayList.add(localafif.jdField_a_of_type_JavaLangString);
+          afid localafid = (afid)((Iterator)localObject).next();
+          if (localafid != null) {
+            localArrayList.add(localafid.jdField_a_of_type_JavaLangString);
           }
         }
-        this.jdField_a_of_type_Afhz.a(localArrayList);
+        this.jdField_a_of_type_Afhx.a(localArrayList);
       }
     }
     else
@@ -483,8 +483,8 @@ public class Face2FaceAddContactFragment
     }
     int i1 = 0;
     label57:
-    if (i1 < this.jdField_a_of_type_Afhp.a().size()) {
-      if (!paramString.equals(((afif)this.jdField_a_of_type_Afhp.a().get(i1)).jdField_a_of_type_JavaLangString)) {}
+    if (i1 < this.jdField_a_of_type_Afhn.a().size()) {
+      if (!paramString.equals(((afid)this.jdField_a_of_type_Afhn.a().get(i1)).jdField_a_of_type_JavaLangString)) {}
     }
     for (;;)
     {
@@ -494,9 +494,9 @@ public class Face2FaceAddContactFragment
       if (i1 == -1) {
         break;
       }
-      this.jdField_a_of_type_Afhp.a().remove(i1);
-      this.jdField_a_of_type_Afhp.notifyItemRemoved(i1);
-      e(this.jdField_a_of_type_Afhp.a().size());
+      this.jdField_a_of_type_Afhn.a().remove(i1);
+      this.jdField_a_of_type_Afhn.notifyItemRemoved(i1);
+      e(this.jdField_a_of_type_Afhn.a().size());
       return;
       i1 += 1;
       break label57;
@@ -504,9 +504,9 @@ public class Face2FaceAddContactFragment
     }
   }
   
-  public void a(String paramString, List<afif> paramList)
+  public void a(String paramString, List<afid> paramList)
   {
-    if ((isDetached()) || (getActivity() == null) || (paramList == null) || (paramList.size() <= 0) || (this.jdField_a_of_type_Afhp.a() == null)) {
+    if ((isDetached()) || (getActivity() == null) || (paramList == null) || (paramList.size() <= 0) || (this.jdField_a_of_type_Afhn.a() == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -517,18 +517,18 @@ public class Face2FaceAddContactFragment
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    int i1 = this.jdField_a_of_type_Afhp.a().size();
+    int i1 = this.jdField_a_of_type_Afhn.a().size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
-      paramList = (afif)paramString.next();
-      if (!this.jdField_a_of_type_Afhp.a().contains(paramList)) {
-        this.jdField_a_of_type_Afhp.a().add(i1, paramList);
+      paramList = (afid)paramString.next();
+      if (!this.jdField_a_of_type_Afhn.a().contains(paramList)) {
+        this.jdField_a_of_type_Afhn.a().add(i1, paramList);
       }
     }
-    int i2 = this.jdField_a_of_type_Afhp.a().size();
+    int i2 = this.jdField_a_of_type_Afhn.a().size();
     if (i1 != i2) {
-      this.jdField_a_of_type_Afhp.notifyItemRangeInserted(i1, i2 - i1);
+      this.jdField_a_of_type_Afhn.notifyItemRangeInserted(i1, i2 - i1);
     }
     e(i2);
   }
@@ -539,7 +539,7 @@ public class Face2FaceAddContactFragment
     ArrayList localArrayList;
     do
     {
-      ajxn localajxn;
+      ajxl localajxl;
       do
       {
         do
@@ -549,23 +549,23 @@ public class Face2FaceAddContactFragment
             QLog.d("Face2FaceAddContactFragment", 2, " onFace2FaceAddContactHeartBeat() missingList.size() = " + paramList.size());
           }
         } while (paramList.size() <= 0);
-        localajxn = (ajxn)getActivity().app.getManager(51);
-      } while (localajxn == null);
+        localajxl = (ajxl)getActivity().app.getManager(51);
+      } while (localajxl == null);
       localArrayList = new ArrayList();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         Object localObject = (String)paramList.next();
-        afif localafif = new afif();
-        localafif.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localafif.jdField_a_of_type_Int = 1;
-        if (!this.jdField_a_of_type_Afhp.a().contains(localafif))
+        afid localafid = new afid();
+        localafid.jdField_a_of_type_JavaLangString = ((String)localObject);
+        localafid.jdField_a_of_type_Int = 1;
+        if (!this.jdField_a_of_type_Afhn.a().contains(localafid))
         {
-          localObject = localajxn.a((String)localObject);
+          localObject = localajxl.a((String)localObject);
           if ((localObject != null) && (((Friends)localObject).isFriend()))
           {
-            localafif.b = ((Friends)localObject).getFriendNick();
-            localArrayList.add(localafif);
+            localafid.b = ((Friends)localObject).getFriendNick();
+            localArrayList.add(localafid);
           }
         }
       }
@@ -603,7 +603,7 @@ public class Face2FaceAddContactFragment
     try
     {
       getActivity().startActivityForResult(localIntent, 1001);
-      afie.a("0X800AB65", "", "", "");
+      afic.a("0X800AB65", "", "", "");
       return;
     }
     catch (SecurityException paramString) {}
@@ -624,7 +624,7 @@ public class Face2FaceAddContactFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     k();
     l();
-    this.jdField_a_of_type_Afhz.a(getActivity());
+    this.jdField_a_of_type_Afhx.a(getActivity());
     j();
   }
   
@@ -634,7 +634,7 @@ public class Face2FaceAddContactFragment
       return;
     }
     p();
-    bcpw.a(getActivity(), getString(2131719671), 0).a();
+    bcql.a(getActivity(), getString(2131719682), 0).a();
   }
   
   public void f()
@@ -643,8 +643,8 @@ public class Face2FaceAddContactFragment
       return;
     }
     p();
-    bcpw.a(getActivity(), getString(2131692298), 0).a();
-    afie.a("0X800AB64", "", "", "");
+    bcql.a(getActivity(), getString(2131692298), 0).a();
+    afic.a("0X800AB64", "", "", "");
   }
   
   public void g()
@@ -654,9 +654,9 @@ public class Face2FaceAddContactFragment
     {
       return;
       p();
-      bcpw.a(getActivity(), getString(2131720337), 0).a();
+      bcql.a(getActivity(), getString(2131720348), 0).a();
     } while (this.jdField_a_of_type_JavaLangStringBuffer == null);
-    afie.a("0X800AB5F", "", "", this.jdField_a_of_type_JavaLangStringBuffer.toString());
+    afic.a("0X800AB5F", "", "", this.jdField_a_of_type_JavaLangStringBuffer.toString());
   }
   
   public int getContentLayoutId()
@@ -678,7 +678,7 @@ public class Face2FaceAddContactFragment
     this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTableLayout.setVisibility(8);
-    afie.a("0X800AB60", "", "", "");
+    afic.a("0X800AB60", "", "", "");
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -694,22 +694,22 @@ public class Face2FaceAddContactFragment
   
   public void j()
   {
-    if (!afie.b(getActivity().app)) {
+    if (!afic.b(getActivity().app)) {
       return;
     }
-    afie.b(getActivity().app);
+    afic.b(getActivity().app);
     Dialog localDialog = new Dialog(getActivity(), 2131755791);
     localDialog.setContentView(2131558461);
-    Button localButton1 = (Button)localDialog.findViewById(2131365111);
-    Button localButton2 = (Button)localDialog.findViewById(2131365115);
+    Button localButton1 = (Button)localDialog.findViewById(2131365110);
+    Button localButton2 = (Button)localDialog.findViewById(2131365114);
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130837707);
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = actn.a(170.0F, getResources());
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = actj.a(170.0F, getResources());
     localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200114/bd76e3d896aa49cd91e73aa332b1ff22.png", (URLDrawable.URLDrawableOptions)localObject);
-    localDialog.findViewById(2131365176).setBackgroundDrawable((Drawable)localObject);
-    localButton1.setOnClickListener(new afhv(this, localDialog));
-    localButton2.setOnClickListener(new afhw(this, localDialog));
+    localDialog.findViewById(2131365175).setBackgroundDrawable((Drawable)localObject);
+    localButton1.setOnClickListener(new afht(this, localDialog));
+    localButton2.setOnClickListener(new afhu(this, localDialog));
     localDialog.show();
   }
   
@@ -730,17 +730,17 @@ public class Face2FaceAddContactFragment
         {
           paramIntent = paramIntent.getStringExtra("ticket");
           if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangStringBuffer.toString())) && (this.jdField_a_of_type_JavaLangStringBuffer.length() == 4)) {
-            this.jdField_a_of_type_Afhz.a(getActivity(), this.jdField_a_of_type_JavaLangStringBuffer.toString(), paramIntent);
+            this.jdField_a_of_type_Afhx.a(getActivity(), this.jdField_a_of_type_JavaLangStringBuffer.toString(), paramIntent);
           }
           if (QLog.isDebugVersion()) {
             QLog.d("Face2FaceAddContactFragment", 2, "onActivityResult VERIFY_REQUEST_CODE, verifySig:" + paramIntent);
           }
-          afie.a("0X800AB66", "", "", "");
+          afic.a("0X800AB66", "", "", "");
           return;
         }
       } while (paramInt2 != 0);
       p();
-      bcpw.a(getActivity(), getString(2131692300), 0).a();
+      bcql.a(getActivity(), getString(2131692300), 0).a();
       return;
     } while (getActivity().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0);
     r();
@@ -748,8 +748,8 @@ public class Face2FaceAddContactFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Afhz != null) {
-      this.jdField_a_of_type_Afhz.b();
+    if (this.jdField_a_of_type_Afhx != null) {
+      this.jdField_a_of_type_Afhx.b();
     }
     return super.onBackEvent();
   }
@@ -764,8 +764,8 @@ public class Face2FaceAddContactFragment
       {
         return;
         onBackEvent();
-      } while (this.jdField_a_of_type_Afhp == null);
-      afie.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Afhp.a());
+      } while (this.jdField_a_of_type_Afhn == null);
+      afic.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Afhn.a());
       return;
     }
     n();
@@ -774,11 +774,11 @@ public class Face2FaceAddContactFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Afhz != null) {
-      this.jdField_a_of_type_Afhz.a();
+    if (this.jdField_a_of_type_Afhx != null) {
+      this.jdField_a_of_type_Afhx.a();
     }
-    if (this.jdField_a_of_type_Afhp != null) {
-      this.jdField_a_of_type_Afhp.b();
+    if (this.jdField_a_of_type_Afhn != null) {
+      this.jdField_a_of_type_Afhn.b();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -804,7 +804,7 @@ public class Face2FaceAddContactFragment
     {
       this.jdField_a_of_type_Boolean = false;
       p();
-      bcpw.a(getActivity(), getString(2131692297), 0).a();
+      bcql.a(getActivity(), getString(2131692297), 0).a();
     }
   }
 }

@@ -1,11 +1,13 @@
 import java.util.HashMap;
 
 public class avww
-  extends avwv
+  extends avwx
 {
+  public int a = -1;
+  
   public HashMap<String, String> a(String paramString)
   {
-    if ("ShortVideo.Save".equals(paramString))
+    if ("ShortVideo.Preview".equals(paramString))
     {
       paramString = new HashMap();
       paramString.put("param_uinType", this.b + "");
@@ -15,6 +17,7 @@ public class avww
       paramString.put("param_shortVideoType", this.f + "");
       paramString.put("param_reportHour", this.g + "");
       paramString.put("param_netType", this.h + "");
+      paramString.put("param_playAction", this.a + "");
       return paramString;
     }
     return null;

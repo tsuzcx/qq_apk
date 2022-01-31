@@ -1,16 +1,17 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 
 public class rhl
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
   public rhl(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    ReadinjoyTabFrame.a(this.a);
-    return true;
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import android.text.TextUtils;
-import apgw;
-import bbay;
+import apha;
+import bbbm;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -13,15 +13,15 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return apgw.a().e();
+    return apha.a().e();
   }
   
   public static long getFreeSpaceForFile(String paramString)
   {
-    if (bbay.a()) {
-      return bbay.a() * 1024L;
+    if (bbbm.a()) {
+      return bbbm.a() * 1024L;
     }
-    return bbay.b() * 1024L;
+    return bbbm.b() * 1024L;
   }
   
   public static long getLastModifyTime(String paramString)
@@ -31,7 +31,7 @@ public class ExcitingTransferNativeCallMe
   
   public static ExcitingTransferDownloadConfig getMuiltDownloadConfig()
   {
-    return apgw.a().a();
+    return apha.a().a();
   }
   
   public static short getProxyType()
@@ -51,7 +51,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return apgw.a().e();
+    return apha.a().e();
   }
   
   public static String getVersion()

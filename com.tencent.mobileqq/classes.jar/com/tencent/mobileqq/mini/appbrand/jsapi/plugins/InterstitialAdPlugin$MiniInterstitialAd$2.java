@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yuk;
+import yuh;
 
 class InterstitialAdPlugin$MiniInterstitialAd$2
   implements MiniAppCmdInterface
@@ -85,7 +85,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
     {
       ((GdtInterstitialParams)localObject).jdField_a_of_type_Int = i;
       ((GdtInterstitialParams)localObject).jdField_a_of_type_Boolean = true;
-      InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new yuk(this.val$activity, (GdtInterstitialParams)localObject));
+      InterstitialAdPlugin.MiniInterstitialAd.access$102(this.this$0, new yuh(this.val$activity, (GdtInterstitialParams)localObject));
       InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, true, "operateInterstitialAd", this.val$compId, j, this.val$callbackId);
       InterstitialAdPlugin.MiniInterstitialAd.access$800(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
       return;

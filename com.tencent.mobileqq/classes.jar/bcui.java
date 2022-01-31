@@ -1,15 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.view.View;
 
-public class bcui
-  implements MediaPlayer.OnErrorListener
+class bcui
+  implements bcuf
 {
-  public bcui(VideoTextureView paramVideoTextureView) {}
+  bcui(bcuh parambcuh) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    return true;
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 

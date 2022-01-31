@@ -1,62 +1,42 @@
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import java.util.HashMap;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class bhwu
-  implements ITMAssistantDownloadClientListener
+  implements ServiceConnection
 {
-  bhwu(bhwt parambhwt) {}
+  bhwu(bhws parambhws) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramTMAssistantDownloadClient = (bhwv)bhwt.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
+    bhws.a(this.a).removeMessages(1);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Bhwp = bhwq.a(paramIBinder);
+    this.a.b();
+    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
+    ymt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    int i = 4;
-    paramTMAssistantDownloadClient = "";
-    if (paramInt1 == 4)
+    try
     {
-      paramTMAssistantDownloadClient = (String)bhwt.b(this.a).get(paramString1);
-      localObject = paramTMAssistantDownloadClient.substring(paramTMAssistantDownloadClient.lastIndexOf("/") + 1);
-      localObject = new File(bhwt.a(this.a) + (String)localObject);
-      if (((File)localObject).exists()) {
-        ((File)localObject).renameTo(new File(paramTMAssistantDownloadClient));
-      }
-      bhwt.b(this.a).remove(paramString1);
-    }
-    Object localObject = (bhwv)bhwt.a(this.a).get(paramString1);
-    if (localObject != null) {
-      switch (paramInt1)
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      ((bhwv)localObject).a(paramString1, i, paramInt2, paramString2, paramTMAssistantDownloadClient);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+      label20:
+      this.a.jdField_a_of_type_Bhwp = null;
+      this.a.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
       return;
-      i = 2;
-      continue;
-      i = 6;
-      continue;
-      i = 3;
-      bhwt.a(this.a).remove(paramString1);
-      continue;
-      i = 1;
-      continue;
-      i = 5;
-      bhwt.a(this.a).remove(paramString1);
+    }
+    catch (Exception paramComponentName)
+    {
+      break label20;
     }
   }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

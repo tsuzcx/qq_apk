@@ -1,16 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class aedp
-  implements View.OnTouchListener
+  implements TextWatcher
 {
-  aedp(aedl paramaedl, acxn paramacxn) {}
+  aedp(aedo paramaedo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Acxn.onTouch(paramView, paramMotionEvent);
-    return false;
+    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131372751, null);
   }
 }
 

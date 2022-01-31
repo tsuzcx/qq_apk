@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.gallery.view.pic;
 
 import android.net.Uri;
-import aqox;
-import aqwd;
+import aqoz;
+import aqwf;
 import java.io.File;
 import java.util.ArrayList;
 
 public class AIOGalleryPicView$3
   implements Runnable
 {
-  public AIOGalleryPicView$3(aqox paramaqox, File paramFile, ArrayList paramArrayList) {}
+  public AIOGalleryPicView$3(aqoz paramaqoz, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (aqwd.a().b()) {}
+    if (aqwf.a().b()) {}
     while ((this.this$0.b == null) || (!this.this$0.b.equals(this.jdField_a_of_type_JavaIoFile.getPath()))) {
       return;
     }
     Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    aqox.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+    aqoz.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

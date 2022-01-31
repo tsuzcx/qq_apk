@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ajce
-  implements View.OnClickListener
+public class ajce
 {
-  ajce(ajcd paramajcd) {}
-  
-  public void onClick(View paramView)
+  public static String a(boolean paramBoolean)
   {
-    ajcd.a(this.a, true);
-    this.a.a();
-    ajcd.a(this.a, -1, -1);
+    if (paramBoolean) {
+      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
+    }
+    return "ltgame_redpkg_plankinfo.check_game";
   }
 }
 

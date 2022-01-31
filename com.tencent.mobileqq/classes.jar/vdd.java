@@ -1,18 +1,45 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.view.View;
+import java.util.ArrayList;
 
 class vdd
-  implements uzx<uze>
+  extends uyi
 {
-  vdd(vdc paramvdc, String paramString) {}
+  vdd(vcp paramvcp) {}
   
-  public void a(uze paramuze)
+  public void a(int paramInt, View paramView, Object paramObject, vap paramvap)
   {
-    if ((paramuze.a != null) && (TextUtils.equals(paramuze.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    boolean bool;
+    switch (paramView.getId())
     {
-      vcs.a(this.jdField_a_of_type_Vdc.a).a = paramuze.a;
-      vcs.a(this.jdField_a_of_type_Vdc.a).sendMessage(vcs.a(this.jdField_a_of_type_Vdc.a).obtainMessage(0, vcs.a(this.jdField_a_of_type_Vdc.a)));
+    default: 
+      if (vcp.a(this.a).a().size() <= 0) {
+        break label149;
+      }
+      paramView = this.a;
+      if (!vcp.a(this.a))
+      {
+        bool = true;
+        vcp.a(paramView, bool);
+        vcp.a(this.a);
+        if (!vcp.a(this.a)) {
+          break label143;
+        }
+      }
+      break;
     }
+    label143:
+    for (paramView = "1";; paramView = "2")
+    {
+      vei.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
+      vei.a("home_page", "exp_share_day", 0, 0, new String[0]);
+      return;
+      vcp.a(this.a, vcp.a(this.a), paramView);
+      return;
+      bool = false;
+      break;
+    }
+    label149:
+    vcp.a(this.a, vcp.a(this.a), paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import ajyc;
-import bbah;
+import ajya;
+import bbav;
 
 class ScreenShotUtil$2$3
   implements Runnable
@@ -10,7 +10,7 @@ class ScreenShotUtil$2$3
   
   public void run()
   {
-    this.this$0.a.a(new IllegalStateException(ajyc.a(2131719038)));
+    this.this$0.a.a(new IllegalStateException(ajya.a(2131719049)));
   }
 }
 

@@ -1,122 +1,62 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import eipc.EIPCClient;
 
 public class ahcd
-  extends ahce
 {
-  public ahcd(PreloadResource paramPreloadResource, bbwf parambbwf)
+  private static volatile ahcd jdField_a_of_type_Ahcd;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public static ahcd a()
   {
-    super(parambbwf);
+    if (jdField_a_of_type_Ahcd == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ahcd == null) {
+        jdField_a_of_type_Ahcd = new ahcd();
+      }
+      return jdField_a_of_type_Ahcd;
+    }
+    finally {}
   }
   
-  private int a(String paramString, boolean paramBoolean)
+  private void b()
   {
-    int i = ahcv.a(paramString, 0, this.a.getFilePos());
-    if (i == 0)
-    {
-      if (paramBoolean) {
-        ahcv.a(paramString, 1, this.a.getFilePos());
-      }
-      return 1;
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
     }
-    if (i == 1) {
-      return 7;
-    }
-    if (paramBoolean) {
-      ahcv.a(paramString, 1, this.a.getFilePos());
-    }
-    return i;
+    QIPCClientHelper.getInstance().getClient().addListener(new ahce(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new ahcf(this, l));
   }
   
-  public void onDoneFile(bbwg parambbwg)
+  public void a()
   {
-    boolean bool = true;
-    Object localObject1;
-    PreloadModule localPreloadModule;
-    Object localObject2;
-    File localFile;
-    String str;
-    int i;
-    if ((parambbwg != null) && (parambbwg.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambbwg.jdField_a_of_type_JavaLangString)))
-    {
-      localObject1 = parambbwg.a();
-      localPreloadModule = (PreloadModule)((Bundle)localObject1).getSerializable("module");
-      localObject2 = (PreloadResource)((Bundle)localObject1).getSerializable("resource");
-      localFile = (File)parambbwg.jdField_a_of_type_JavaUtilMap.get(parambbwg.jdField_a_of_type_JavaLangString);
-      if (localFile != null) {
-        break label430;
-      }
-      localObject1 = "";
-      if ((parambbwg.jdField_a_of_type_Int != 0) || (localObject2 == null)) {
-        break label507;
-      }
-      str = MD5Coding.encodeFile2HexStr((String)localObject1);
-      if ((localFile == null) || (!localFile.exists()) || (TextUtils.isEmpty(str))) {
-        break label502;
-      }
-      if ((TextUtils.isEmpty(((PreloadResource)localObject2).md5)) || (str.equalsIgnoreCase(((PreloadResource)localObject2).md5))) {
-        break label440;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, "preload onDoneFile md5 not match|" + ((PreloadResource)localObject2).mResId + "|" + str + "|" + ((PreloadResource)localObject2).md5);
-      }
-      ahiy.a((String)localObject1);
-      ahcv.a(parambbwg.jdField_a_of_type_JavaLangString, 5, this.a.getFilePos());
-      parambbwg.jdField_a_of_type_Int = -1;
-      ahic.a(localPreloadModule, 2, parambbwg.c, parambbwg.jdField_a_of_type_Int);
-      i = 1;
-      if (parambbwg.jdField_a_of_type_Int == -118) {
-        i = 1;
-      }
-      if ((i != 0) && (localPreloadModule != null)) {
-        localPreloadModule.removeResource((PreloadResource)localObject2);
-      }
-      localObject2 = parambbwg.jdField_a_of_type_JavaLangString;
-      if (parambbwg.jdField_a_of_type_Int != 0) {
-        break label524;
-      }
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
     }
-    for (;;)
-    {
-      i = a((String)localObject2, bool);
-      parambbwg.a().putInt("scene", i);
-      if ((i == 7) && (parambbwg.jdField_a_of_type_Int == 0)) {
-        ahcw.a(parambbwg.jdField_a_of_type_JavaLangString, this.a.getFilePos());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, "preload onDoneFile|" + parambbwg.jdField_a_of_type_Int + "|" + parambbwg.jdField_a_of_type_JavaLangString + "|" + (String)localObject1 + "|" + i);
-      }
-      super.onDoneFile(parambbwg);
-      if (this.a.isNeedReport(parambbwg.jdField_a_of_type_JavaLangString)) {
-        this.a.reportDownload(parambbwg.jdField_a_of_type_JavaLangString, parambbwg.jdField_a_of_type_Int, localPreloadModule);
-      }
-      return;
-      label430:
-      localObject1 = localFile.getAbsolutePath();
-      break;
-      label440:
-      ahcw.a(parambbwg.jdField_a_of_type_JavaLangString, str, NetConnInfoCenter.getServerTimeMillis(), this.a.getFilePos());
-      if (PreloadResource.access$000(this.a, (String)localObject1, parambbwg.jdField_a_of_type_JavaLangString)) {
-        this.a.unzip((String)localObject1, parambbwg.jdField_a_of_type_JavaLangString);
-      }
-      ahic.a(localPreloadModule, 0, parambbwg.c, parambbwg.jdField_a_of_type_Int);
-      for (;;)
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        label502:
-        i = 0;
-        break;
-        label507:
-        ahic.a(localPreloadModule, 1, parambbwg.c, parambbwg.jdField_a_of_type_Int);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
       }
-      label524:
-      bool = false;
     }
   }
 }

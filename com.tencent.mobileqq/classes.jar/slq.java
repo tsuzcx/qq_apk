@@ -1,41 +1,6 @@
-import cooperation.qzone.util.QZLog;
-
-public class slq
+public abstract interface slq<T extends slf>
 {
-  public static int a;
-  public static String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "1522415138827987";
-    int j = a();
-    if (j == -1) {}
-    for (int i = 760;; i = j)
-    {
-      jdField_a_of_type_Int = i;
-      QZLog.d("WeishiHeaderConst", 4, "appversion:" + j);
-      jdField_a_of_type_Int = 760;
-      return;
-    }
-  }
-  
-  static int a()
-  {
-    String str = bgxr.a();
-    int i = str.indexOf(".");
-    int j = str.lastIndexOf(".");
-    if ((j <= i) || (j - i != 2)) {}
-    while (i <= 1) {
-      return -1;
-    }
-    try
-    {
-      i = Integer.parseInt(str.substring(i - 1, j + 2).replace(".", ""));
-      return i;
-    }
-    catch (Throwable localThrowable) {}
-    return -1;
-  }
+  public abstract void a(T paramT);
 }
 
 

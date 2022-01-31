@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class anlk
-  implements View.OnClickListener
+public class anlk
 {
-  anlk(anlh paramanlh, WindowManager paramWindowManager) {}
+  anlh jdField_a_of_type_Anlh;
+  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Anlh.a.a);
-  }
+  protected anlk(DataReportSettingFragment paramDataReportSettingFragment) {}
 }
 
 

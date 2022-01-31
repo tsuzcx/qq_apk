@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aeqy
-  extends ajxl
+  implements View.OnClickListener
 {
-  aeqy(aequ paramaequ) {}
+  aeqy(aeqs paramaeqs) {}
   
-  protected void onAddFriend(String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      aequ.a(this.a);
+    if (!this.a.N) {
+      aeqs.b(this.a);
     }
   }
 }

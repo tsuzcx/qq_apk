@@ -1,35 +1,50 @@
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONObject;
 
 class aqqi
   implements View.OnClickListener
 {
-  aqqi(aqqh paramaqqh) {}
+  aqqi(aqqc paramaqqc, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    if ((aqqh.a(this.a) == null) || (TextUtils.isEmpty(aqqh.a(this.a).jumpUrl))) {
-      return;
-    }
-    paramView = new Intent(aqqa.a(aqqh.a(this.a)), QQBrowserActivity.class);
-    paramView.putExtra("url", aqqh.a(this.a).jumpUrl);
-    aqqa.a(aqqh.a(this.a)).startActivity(paramView);
     paramView = new HashMap();
-    yod.a(paramView, aqqh.a(this.a).msgId);
-    paramView.put(Integer.valueOf(2), aqqh.a(this.a).msgId);
-    paramView.put(Integer.valueOf(6), aqqh.a(this.a).feedId);
-    paramView.put(Integer.valueOf(4), "20");
-    paramView.put(Integer.valueOf(43), aqqh.a(this.a).algorithmId);
-    paramView.put(Integer.valueOf(44), aqqh.a(this.a).type + "");
-    yod.a(ajae.a(), "769", "205022", aqqh.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
+    yoa.a(paramView, this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
+    paramView.put(Integer.valueOf(10), "2");
+    yoa.a(ajac.a(), "769", "205711", this.jdField_a_of_type_Aqqc.a().gameAppId, "76905", "1", "160", paramView);
+    paramView = new Intent();
+    paramView.setClass(aqqc.a(this.jdField_a_of_type_Aqqc), ForwardRecentActivity.class);
+    paramView.putExtra("forward_type", 27);
+    String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("desc", "");
+    String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("ver", "");
+    String str3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("view");
+    String str4 = this.jdField_a_of_type_OrgJsonJSONObject.optString("config");
+    String str5 = this.jdField_a_of_type_OrgJsonJSONObject.optString("meta");
+    String str6 = this.jdField_a_of_type_OrgJsonJSONObject.optString("prompt");
+    paramView.putExtra("forward_ark_app_name", this.b);
+    paramView.putExtra("forward_ark_app_view", str3);
+    paramView.putExtra("forward_ark_app_desc", str1);
+    paramView.putExtra("forward_ark_app_ver", str2);
+    paramView.putExtra("forward_ark_app_prompt", str6);
+    paramView.putExtra("forward_ark_app_meta", str5);
+    paramView.putExtra("forward_ark_app_config", str4);
+    paramView.putExtra("is_ark_display_share", true);
+    paramView.putExtra("appName", this.b);
+    paramView.putExtra("appView", str3);
+    paramView.putExtra("appMinVersion", str2);
+    paramView.putExtra("metaData", str5);
+    paramView.putExtra("scale", aqqc.a(this.jdField_a_of_type_Aqqc).getResources().getDisplayMetrics().scaledDensity);
+    aqqc.a(this.jdField_a_of_type_Aqqc).startActivity(paramView);
   }
 }
 

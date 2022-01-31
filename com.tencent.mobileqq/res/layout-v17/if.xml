@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/hxt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="44.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/ge_" android:layout_width="fill_parent" android:layout_height="336.0dip" android:layout_marginBottom="110.0dip">
-        <RelativeLayout android:id="@id/hy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-            <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/hy2" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/cp6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="19.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true">
-            <ImageView android:id="@id/cld" android:background="@drawable/ot" android:focusable="true" android:visibility="visible" android:clickable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/b8j" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cgb" android:layout_marginStart="16.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/jbf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxEms="15" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" android:layout_marginStart="8.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff4899df" android:id="@id/jil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:maxLength="4" android:layout_marginStart="8.0dip" />
+    <ImageView android:id="@id/cp6" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/cip" android:contentDescription="@string/close" android:layout_marginEnd="16.0dip" />
 </LinearLayout>

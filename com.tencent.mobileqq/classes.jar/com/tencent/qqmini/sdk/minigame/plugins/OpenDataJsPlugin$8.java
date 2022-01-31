@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
-import beka;
-import besl;
-import bewt;
+import bekr;
+import betc;
+import bexk;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
@@ -11,15 +11,15 @@ import org.json.JSONObject;
 class OpenDataJsPlugin$8
   implements AsyncResult
 {
-  OpenDataJsPlugin$8(OpenDataJsPlugin paramOpenDataJsPlugin, beka parambeka) {}
+  OpenDataJsPlugin$8(OpenDataJsPlugin paramOpenDataJsPlugin, bekr parambekr) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    besl.a("OpenDataJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    betc.a("OpenDataJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
     if (paramJSONObject == null)
     {
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
-      bewt.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
+      bexk.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.b();
       return;
     }
@@ -45,20 +45,20 @@ class OpenDataJsPlugin$8
       }
       catch (Exception paramJSONObject)
       {
-        bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
-        bewt.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
+        bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ", paramJSONObject);
+        bexk.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error " + paramJSONObject.getMessage());
         this.val$req.b();
         return;
       }
       localJSONObject.put("errMsg", paramJSONObject);
       localJSONObject.put("errCode", i);
-      bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE ret != null");
-      bewt.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ret != null");
+      bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE ret != null");
+      bexk.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error ret != null");
       this.val$req.b();
       return;
     }
-    bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
-    bewt.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
+    bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
+    bexk.a("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
   }
 }
 

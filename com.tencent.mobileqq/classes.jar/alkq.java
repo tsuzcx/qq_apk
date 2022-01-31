@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
 public final class alkq
-  implements Parcelable.Creator<ArFeatureInfo>
+  implements Parcelable.Creator<ArLBSActivity>
 {
-  public ArFeatureInfo a(Parcel paramParcel)
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    return new ArFeatureInfo(paramParcel);
+    return new ArLBSActivity(paramParcel);
   }
   
-  public ArFeatureInfo[] a(int paramInt)
+  public ArLBSActivity[] a(int paramInt)
   {
-    return new ArFeatureInfo[paramInt];
+    return new ArLBSActivity[paramInt];
   }
 }
 

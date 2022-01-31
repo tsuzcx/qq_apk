@@ -1,33 +1,57 @@
 import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 
 final class sgq
-  extends akwt
+  extends akws
 {
-  sgq(akdo paramakdo, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  sgq(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, akdn paramakdn, boolean paramBoolean, Context paramContext) {}
   
   public int a()
   {
-    return 4;
+    return 5;
   }
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_Akdo != null) {
-      this.jdField_a_of_type_Akdo.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+      if (paramObject != null) {
+        paramObject.a(this.jdField_a_of_type_JavaLangObject);
+      }
     }
-    sgj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Akdn != null) {
+        this.jdField_a_of_type_Akdn.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      paramObject = (akdh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
+      paramObject.b(this.jdField_a_of_type_JavaLangString);
+      paramObject.a(this.jdField_a_of_type_JavaLangString);
+      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
+      sdc.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
+      saz.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      paramObject = (nqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
+      if (paramObject != null) {
+        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
+      }
+    }
   }
   
   public void a(boolean paramBoolean, Object paramObject) {}
   
   public void b(Object paramObject)
   {
-    if (this.jdField_a_of_type_Akdo != null) {
-      this.jdField_a_of_type_Akdo.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Akdn != null) {
+      this.jdField_a_of_type_Akdn.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_Boolean) {
-      sgj.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
+      sgg.a(this.jdField_a_of_type_AndroidContentContext, 2131695569);
     }
   }
   

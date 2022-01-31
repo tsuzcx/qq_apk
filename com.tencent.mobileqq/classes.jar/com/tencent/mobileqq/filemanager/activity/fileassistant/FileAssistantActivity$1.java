@@ -2,6 +2,7 @@ package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import aoww;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FileAssistantActivity$1
@@ -12,10 +13,17 @@ class FileAssistantActivity$1
   public void run()
   {
     SharedPreferences localSharedPreferences = this.this$0.app.getPreferences();
-    if (!localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false))
+    boolean bool = localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false);
+    aoww localaoww = (aoww)this.this$0.app.getManager(317);
+    if (localaoww != null)
+    {
+      this.this$0.a = localaoww.a();
+      this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
+    }
+    if (!bool)
     {
       localSharedPreferences.edit().putBoolean("_file_assistant_guid_tips_", true).apply();
-      this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
+      this.this$0.runOnUiThread(new FileAssistantActivity.1.2(this));
     }
   }
 }

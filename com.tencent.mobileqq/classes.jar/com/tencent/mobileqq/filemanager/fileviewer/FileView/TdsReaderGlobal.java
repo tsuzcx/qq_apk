@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import akhl;
+import akhk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import apjp;
-import apjq;
-import apjr;
-import apjs;
 import apjt;
 import apju;
 import apjv;
 import apjw;
-import axqw;
-import ayrv;
-import ayry;
-import ayrz;
-import aysz;
-import ayug;
-import bbev;
+import apjx;
+import apjy;
+import apjz;
+import apka;
+import axqy;
+import ayrx;
+import aysa;
+import aysb;
+import aytb;
+import ayui;
+import bbfj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kwstudio.office.base.IGlobal;
 import com.tencent.kwstudio.office.base.ILog;
@@ -46,25 +46,25 @@ import mqq.os.MqqHandler;
 public final class TdsReaderGlobal
   implements IHostInterface
 {
-  private static final ayug jdField_a_of_type_Ayug = new ayug();
+  private static final ayui jdField_a_of_type_Ayui = new ayui();
   private static final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static volatile boolean jdField_a_of_type_Boolean;
   private static volatile boolean jdField_b_of_type_Boolean;
   private static volatile boolean c;
-  private volatile ayry jdField_a_of_type_Ayry;
-  private volatile ayrz jdField_a_of_type_Ayrz;
+  private volatile aysa jdField_a_of_type_Aysa;
+  private volatile aysb jdField_a_of_type_Aysb;
   private final BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   private volatile Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
   private volatile Executor jdField_b_of_type_JavaUtilConcurrentExecutor;
   
   static
   {
-    ayug localayug = jdField_a_of_type_Ayug;
-    localayug.d /= 2;
-    localayug = jdField_a_of_type_Ayug;
-    localayug.e /= 2;
-    localayug = jdField_a_of_type_Ayug;
-    localayug.f /= 2;
+    ayui localayui = jdField_a_of_type_Ayui;
+    localayui.d /= 2;
+    localayui = jdField_a_of_type_Ayui;
+    localayui.e /= 2;
+    localayui = jdField_a_of_type_Ayui;
+    localayui.f /= 2;
   }
   
   private TdsReaderGlobal(BaseApplicationImpl paramBaseApplicationImpl)
@@ -72,31 +72,31 @@ public final class TdsReaderGlobal
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
   }
   
-  private ayry a()
+  private aysa a()
   {
     try
     {
-      if (this.jdField_a_of_type_Ayry == null)
+      if (this.jdField_a_of_type_Aysa == null)
       {
-        localObject1 = new HttpCommunicator(new apjr(null), 128);
+        localObject1 = new HttpCommunicator(new apjv(null), 128);
         ((HttpCommunicator)localObject1).a();
-        this.jdField_a_of_type_Ayry = new aysz((HttpCommunicator)localObject1, true);
+        this.jdField_a_of_type_Aysa = new aytb((HttpCommunicator)localObject1, true);
       }
-      Object localObject1 = this.jdField_a_of_type_Ayry;
+      Object localObject1 = this.jdField_a_of_type_Aysa;
       return localObject1;
     }
     finally {}
   }
   
-  private ayrz a()
+  private aysb a()
   {
     try
     {
-      if (this.jdField_a_of_type_Ayrz == null) {
-        this.jdField_a_of_type_Ayrz = new apjp(null);
+      if (this.jdField_a_of_type_Aysb == null) {
+        this.jdField_a_of_type_Aysb = new apjt(null);
       }
-      ayrz localayrz = this.jdField_a_of_type_Ayrz;
-      return localayrz;
+      aysb localaysb = this.jdField_a_of_type_Aysb;
+      return localaysb;
     }
     finally {}
   }
@@ -111,7 +111,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = akhl.a(64);
+        this.jdField_a_of_type_JavaUtilConcurrentExecutor = akhk.a(64);
       }
       Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -213,7 +213,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_b_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor = akhl.a(128);
+        this.jdField_b_of_type_JavaUtilConcurrentExecutor = akhk.a(128);
       }
       Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -250,13 +250,13 @@ public final class TdsReaderGlobal
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
       str2 = (String)paramArrayOfObject[2];
       localObject = (IHostInterface.IHttpListener)paramArrayOfObject[3];
-      if (bbev.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (bbfj.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (localObject == null);
     ((IHostInterface.IHttpListener)localObject).onResponse(9004, null);
     return;
-    paramArrayOfObject = new ayrv();
+    paramArrayOfObject = new ayrx();
     paramArrayOfObject.jdField_a_of_type_JavaLangString = str1;
     if (bool) {
       i = 1;
@@ -265,7 +265,7 @@ public final class TdsReaderGlobal
     paramArrayOfObject.e = 1;
     paramArrayOfObject.o = true;
     paramArrayOfObject.jdField_c_of_type_Long = 5000L;
-    paramArrayOfObject.jdField_a_of_type_Aysa = new apju(str1, (IHostInterface.IHttpListener)localObject, null);
+    paramArrayOfObject.jdField_a_of_type_Aysc = new apjy(str1, (IHostInterface.IHttpListener)localObject, null);
     Object localObject = getUserId();
     String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
     localObject = "uin=" + (String)localObject + ";skey=" + str3;
@@ -291,22 +291,22 @@ public final class TdsReaderGlobal
       str2 = (String)paramArrayOfObject[1];
       str3 = (String)paramArrayOfObject[2];
       paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (bbev.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (bbfj.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (paramArrayOfObject == null);
     paramArrayOfObject.onDownloadFinished(str1, false, 9004);
     return;
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_JavaLangString = str2;
-    localayrv.jdField_c_of_type_JavaLangString = str3;
-    localayrv.jdField_a_of_type_Int = 0;
-    localayrv.e = 1;
-    localayrv.o = true;
-    localayrv.jdField_a_of_type_Ayug = jdField_a_of_type_Ayug.a();
-    localayrv.jdField_a_of_type_Ayrz = a();
-    localayrv.jdField_a_of_type_Aysa = new apjt(str1, paramArrayOfObject, null);
-    a().a(localayrv);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_JavaLangString = str2;
+    localayrx.jdField_c_of_type_JavaLangString = str3;
+    localayrx.jdField_a_of_type_Int = 0;
+    localayrx.e = 1;
+    localayrx.o = true;
+    localayrx.jdField_a_of_type_Ayui = jdField_a_of_type_Ayui.a();
+    localayrx.jdField_a_of_type_Aysb = a();
+    localayrx.jdField_a_of_type_Aysc = new apjx(str1, paramArrayOfObject, null);
+    a().a(localayrx);
   }
   
   public void commitPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -321,12 +321,12 @@ public final class TdsReaderGlobal
   
   public IGlobal createGlobal()
   {
-    return new apjq(this, null);
+    return new apju(this, null);
   }
   
   public ILog createLog()
   {
-    return new apjs(null);
+    return new apjw(null);
   }
   
   public Object createRecyclerView(Context paramContext)
@@ -342,12 +342,12 @@ public final class TdsReaderGlobal
       ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
       if (paramIWebClient != null)
       {
-        localProtectedWebView.setWebChromeClient(new apjv(paramIWebClient, null));
+        localProtectedWebView.setWebChromeClient(new apjz(paramIWebClient, null));
         localObject = paramContext;
         if (paramContext == null) {
           localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
         }
-        localProtectedWebView.setWebViewClient(new apjw((Context)localObject, paramIWebClient, null));
+        localProtectedWebView.setWebViewClient(new apka((Context)localObject, paramIWebClient, null));
       }
       paramContext = localProtectedWebView.getX5WebViewExtension();
       if (paramContext != null)
@@ -404,7 +404,7 @@ public final class TdsReaderGlobal
     }
     for (;;)
     {
-      axqw.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
+      axqy.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
       return;
     }
   }

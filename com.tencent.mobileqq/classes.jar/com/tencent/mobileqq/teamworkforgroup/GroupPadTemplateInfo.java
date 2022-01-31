@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import aukm;
+import auko;
 
 public class GroupPadTemplateInfo
-  extends aukm
+  extends auko
 {
   public static final int TEMPLATE_TYPE_COLLECT = 3;
   public static final int TEMPLATE_TYPE_DOC = 1;

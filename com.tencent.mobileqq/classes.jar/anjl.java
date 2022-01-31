@@ -1,58 +1,103 @@
-import com.tencent.mobileqq.data.MessageForTroopFee;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-public class anjl
-  extends DefaultHandler
+public final class anjl
+  implements Parcelable.Creator<MessageForPic>
 {
-  MessageForTroopFee a;
-  public String a;
-  
-  public anjl()
+  public MessageForPic a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public MessageForTroopFee a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
-    }
-    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString3.equals("msg"))
+    boolean bool2 = true;
+    MessageForPic localMessageForPic = new MessageForPic();
+    localMessageForPic.path = paramParcel.readString();
+    localMessageForPic.size = paramParcel.readLong();
+    localMessageForPic.type = paramParcel.readInt();
+    if (paramParcel.readInt() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+      bool1 = true;
+      localMessageForPic.isRead = bool1;
+      localMessageForPic.uuid = paramParcel.readString();
+      localMessageForPic.groupFileID = paramParcel.readLong();
+      localMessageForPic.md5 = paramParcel.readString();
+      localMessageForPic.serverStoreSource = paramParcel.readString();
+      localMessageForPic.thumbMsgUrl = paramParcel.readString();
+      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
+      localMessageForPic.thumbWidth = paramParcel.readInt();
+      localMessageForPic.thumbHeight = paramParcel.readInt();
+      localMessageForPic.bigMsgUrl = paramParcel.readString();
+      localMessageForPic.rawMsgUrl = paramParcel.readString();
+      localMessageForPic.fileSizeFlag = paramParcel.readInt();
+      localMessageForPic.picExtraFlag = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label466;
+      }
+      bool1 = true;
+      label172:
+      localMessageForPic.isMixed = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label471;
+      }
+      bool1 = true;
+      label188:
+      localMessageForPic.isShareAppActionMsg = bool1;
+      localMessageForPic.action = paramParcel.readString();
+      localMessageForPic.shareAppID = paramParcel.readLong();
+      localMessageForPic.actMsgContentValue = paramParcel.readString();
+      localMessageForPic.localUUID = paramParcel.readString();
+      localMessageForPic.subMsgId = paramParcel.readInt();
+      localMessageForPic.isReport = paramParcel.readInt();
+      localMessageForPic.subVersion = paramParcel.readInt();
+      localMessageForPic.busiType = paramParcel.readInt();
+      localMessageForPic.width = paramParcel.readLong();
+      localMessageForPic.height = paramParcel.readLong();
+      localMessageForPic.imageType = paramParcel.readInt();
+      localMessageForPic.frienduin = paramParcel.readString();
+      localMessageForPic.selfuin = paramParcel.readString();
+      localMessageForPic.senderuin = paramParcel.readString();
+      localMessageForPic.istroop = paramParcel.readInt();
+      localMessageForPic.versionCode = paramParcel.readInt();
+      localMessageForPic.uniseq = paramParcel.readLong();
+      localMessageForPic.issend = paramParcel.readInt();
+      localMessageForPic.time = paramParcel.readLong();
+      localMessageForPic.msgtype = paramParcel.readInt();
+      localMessageForPic.preDownState = paramParcel.readInt();
+      localMessageForPic.preDownNetworkType = paramParcel.readInt();
+      localMessageForPic.previewed = paramParcel.readInt();
+      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
+      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
+      if (paramParcel.readByte() == 0) {
+        break label476;
+      }
+      bool1 = true;
+      label436:
+      localMessageForPic.sync2Story = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label481;
+      }
     }
-    do
+    label466:
+    label471:
+    label476:
+    label481:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      return;
-      if (paramString3.equals("title"))
-      {
-        this.jdField_a_of_type_JavaLangString = "title";
-        return;
-      }
-      if (paramString3.equals("summary"))
-      {
-        this.jdField_a_of_type_JavaLangString = "summary";
-        return;
-      }
-    } while (!paramString3.equals("source"));
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
+      localMessageForPic.isQzonePic = bool1;
+      return localMessageForPic;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label172;
+      bool1 = false;
+      break label188;
+      bool1 = false;
+      break label436;
+    }
+  }
+  
+  public MessageForPic[] a(int paramInt)
+  {
+    return new MessageForPic[paramInt];
   }
 }
 

@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bknt;
-import bknu;
+import bkok;
+import bkol;
 import java.util.ArrayList;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(bknu parambknu, ArrayList paramArrayList) {}
+  public EditVideoTagPresenter$1$1(bkol parambkol, ArrayList paramArrayList) {}
   
   public void run()
   {
-    bknt.a(bknt.a(this.jdField_a_of_type_Bknu.a), this.jdField_a_of_type_JavaUtilArrayList);
+    bkok.a(bkok.a(this.jdField_a_of_type_Bkol.a), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

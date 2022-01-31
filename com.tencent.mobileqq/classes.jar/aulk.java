@@ -1,79 +1,123 @@
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.ShieldListInfo;
+import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aulk
-  extends auky
+  extends aula
 {
   public aulk()
   {
-    this.a = 4;
+    this.a = 8;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    paramaukm = (ShieldListInfo)paramaukm;
-    if (paramaukx == null)
+    paramauko = (SearchHistory)paramauko;
+    if (paramaukz == null)
     {
-      paramaukm.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramaukm.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
-      paramaukm.source_id = paramCursor.getInt(paramCursor.getColumnIndex("source_id"));
-      paramaukm.source_sub_id = paramCursor.getInt(paramCursor.getColumnIndex("source_sub_id"));
-      return paramaukm;
+      paramauko.key = paramCursor.getString(paramCursor.getColumnIndex("key"));
+      paramauko.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
+      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+      paramauko.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramauko.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
+      paramauko.extralInfo = paramCursor.getString(paramCursor.getColumnIndex("extralInfo"));
+      paramauko.count = paramCursor.getInt(paramCursor.getColumnIndex("count"));
+      paramauko.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
+      return paramauko;
     }
-    int i = paramCursor.getColumnIndex("uin");
+    int i = paramCursor.getColumnIndex("key");
     if (i == -1)
     {
-      paramaukx.a(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("flags");
+      paramaukz.a(new NoColumnError("key", String.class));
+      i = paramCursor.getColumnIndex("type");
       if (i != -1) {
-        break label240;
+        break label448;
       }
-      paramaukx.a(new NoColumnError("flags", Integer.TYPE));
-      label153:
-      i = paramCursor.getColumnIndex("source_id");
+      paramaukz.a(new NoColumnError("type", Integer.TYPE));
+      label225:
+      i = paramCursor.getColumnIndex("uin");
       if (i != -1) {
-        break label255;
+        break label463;
       }
-      paramaukx.a(new NoColumnError("source_id", Integer.TYPE));
+      paramaukz.a(new NoColumnError("uin", String.class));
+      label259:
+      i = paramCursor.getColumnIndex("troopUin");
+      if (i != -1) {
+        break label478;
+      }
+      paramaukz.a(new NoColumnError("troopUin", String.class));
+      label293:
+      i = paramCursor.getColumnIndex("displayName");
+      if (i != -1) {
+        break label493;
+      }
+      paramaukz.a(new NoColumnError("displayName", String.class));
+      label327:
+      i = paramCursor.getColumnIndex("extralInfo");
+      if (i != -1) {
+        break label508;
+      }
+      paramaukz.a(new NoColumnError("extralInfo", String.class));
+      label361:
+      i = paramCursor.getColumnIndex("count");
+      if (i != -1) {
+        break label523;
+      }
+      paramaukz.a(new NoColumnError("count", Integer.TYPE));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("source_sub_id");
+      i = paramCursor.getColumnIndex("time");
       if (i != -1) {
-        break label270;
+        break label538;
       }
-      paramaukx.a(new NoColumnError("source_sub_id", Integer.TYPE));
-      return paramaukm;
-      paramaukm.uin = paramCursor.getString(i);
+      paramaukz.a(new NoColumnError("time", Long.TYPE));
+      return paramauko;
+      paramauko.key = paramCursor.getString(i);
       break;
-      label240:
-      paramaukm.flags = paramCursor.getInt(i);
-      break label153;
-      label255:
-      paramaukm.source_id = paramCursor.getInt(i);
+      label448:
+      paramauko.type = paramCursor.getInt(i);
+      break label225;
+      label463:
+      paramauko.uin = paramCursor.getString(i);
+      break label259;
+      label478:
+      paramauko.troopUin = paramCursor.getString(i);
+      break label293;
+      label493:
+      paramauko.displayName = paramCursor.getString(i);
+      break label327;
+      label508:
+      paramauko.extralInfo = paramCursor.getString(i);
+      break label361;
+      label523:
+      paramauko.count = paramCursor.getInt(i);
     }
-    label270:
-    paramaukm.source_sub_id = paramCursor.getInt(i);
-    return paramaukm;
+    label538:
+    paramauko.time = paramCursor.getLong(i);
+    return paramauko;
   }
   
   public String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,flags INTEGER ,source_id INTEGER ,source_sub_id INTEGER,UNIQUE(uin) ON CONFLICT REPLACE)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,key TEXT UNIQUE ,type INTEGER ,uin TEXT ,troopUin TEXT ,displayName TEXT ,extralInfo TEXT ,count INTEGER ,time INTEGER)");
     return localStringBuilder.toString();
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    paramaukm = (ShieldListInfo)paramaukm;
-    paramContentValues.put("uin", paramaukm.uin);
-    paramContentValues.put("flags", Integer.valueOf(paramaukm.flags));
-    paramContentValues.put("source_id", Integer.valueOf(paramaukm.source_id));
-    paramContentValues.put("source_sub_id", Integer.valueOf(paramaukm.source_sub_id));
+    paramauko = (SearchHistory)paramauko;
+    paramContentValues.put("key", paramauko.key);
+    paramContentValues.put("type", Integer.valueOf(paramauko.type));
+    paramContentValues.put("uin", paramauko.uin);
+    paramContentValues.put("troopUin", paramauko.troopUin);
+    paramContentValues.put("displayName", paramauko.displayName);
+    paramContentValues.put("extralInfo", paramauko.extralInfo);
+    paramContentValues.put("count", Integer.valueOf(paramauko.count));
+    paramContentValues.put("time", Long.valueOf(paramauko.time));
   }
 }
 

@@ -1,50 +1,49 @@
+import android.os.Build.VERSION;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class yxk
-  implements yxh
+  implements yxe
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
     Object localObject = null;
-    if (paramywn != null) {}
-    for (;;)
+    if (paramywk != null) {}
+    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      yxp.d("GdtOSVersionJsCall", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("osVersion", Build.VERSION.RELEASE);
+    }
+    catch (JSONException localJSONException)
     {
       try
       {
-        paramVarArgs = paramywn.a();
-        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
-        localJSONObject = new JSONObject();
-        if (paramVarArgs == null) {
-          continue;
+        for (;;)
+        {
+          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramywk != null) {
+            paramString = paramywk.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getOSVersion", paramString);
+          return true;
+          localJSONException = localJSONException;
+          localJSONException.printStackTrace();
         }
-        localJSONObject.put("lat", paramVarArgs[0]);
-        localJSONObject.put("lon", paramVarArgs[1]);
-        paramywn.callJs(paramString, new String[] { localJSONObject.toString() });
       }
-      catch (Exception paramString)
+      catch (Throwable paramString)
       {
-        JSONObject localJSONObject;
-        paramString.printStackTrace();
-        continue;
-        paramString = null;
-        continue;
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
       }
-      if (paramywn == null) {
-        continue;
-      }
-      paramString = paramywn.a();
-      paramVarArgs = localObject;
-      if (paramywn != null) {
-        paramVarArgs = paramywn.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
-      return true;
-      paramVarArgs = null;
-      continue;
-      localJSONObject.put("lat", JSONObject.NULL);
-      localJSONObject.put("lon", JSONObject.NULL);
     }
   }
 }

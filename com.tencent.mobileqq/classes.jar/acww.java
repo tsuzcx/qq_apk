@@ -1,63 +1,93 @@
-import android.graphics.Color;
-import android.text.TextPaint;
+import android.content.res.Resources;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.data.IntimateInfo.DNAInfo;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo;
+import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class acww
-  extends ClickableSpan
+public class acww
+  extends BaseAdapter
 {
-  acww(acwp paramacwp, IntimateInfo.DNAInfo paramDNAInfo) {}
+  private int jdField_a_of_type_Int;
+  private List<IntimateInfo.MutualMarkInfo> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  private acww(acwl paramacwl) {}
+  
+  public IntimateInfo.MutualMarkInfo a(int paramInt)
   {
-    axqw.b(null, "dc00898", "", "", "0X800A20A ", "0X800A20A ", 0, 0, "", "", "", "");
-    QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A20A");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl))
-    {
-      QLog.e("intimate_relationship", 2, "linkUrl is empty");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("click scheme: %s, scheme: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkWording, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl }));
-    }
-    paramView = bbej.a(this.jdField_a_of_type_Acwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-    if (paramView != null)
-    {
-      paramView.c();
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl.toLowerCase().startsWith("mqzone://"))
-    {
-      bgxy.c(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
-      return;
-    }
-    adka.a(this.jdField_a_of_type_Acwp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkUrl);
+    return (IntimateInfo.MutualMarkInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(List<IntimateInfo.MutualMarkInfo> paramList)
   {
-    paramTextPaint.setUnderlineText(false);
-    try
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      int j = Color.parseColor("#4D94FF");
-      paramTextPaint.setColor(j);
-      int i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo != null)
+      this.jdField_a_of_type_Int = ((bbll.a() - bbll.a(40.0F) - 80) / bbll.a(50.0F));
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "friend mark max count: " + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Int = 6;
+      }
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_Acwl.jdField_a_of_type_AndroidContentContext).inflate(2131559152, null);; paramViewGroup = paramView)
+    {
+      ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131366798);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramViewGroup;
+      paramView = a(paramInt);
+      if ((paramView instanceof IntimateInfo.PrefetchMutualMarkInfo))
       {
-        i = j;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor)) {
-          i = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$DNAInfo.linkColor);
+        paramView = (IntimateInfo.PrefetchMutualMarkInfo)paramView;
+        acwl.a(this.jdField_a_of_type_Acwl, paramView);
+        return paramViewGroup;
+      }
+      if (!TextUtils.isEmpty(paramView.icon_static_url)) {
+        paramView = new asxj(this.jdField_a_of_type_Acwl.jdField_a_of_type_AndroidContentContext, paramView.icon_static_url);
+      }
+      for (;;)
+      {
+        localImageView.setImageDrawable(paramView);
+        localRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Acwl.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130840136));
+        return paramViewGroup;
+        paramInt = asxb.a(this.jdField_a_of_type_Acwl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acwl.jdField_a_of_type_JavaLangString, paramView.type, paramView.level);
+        if (paramInt != 0) {
+          paramView = new asxj(this.jdField_a_of_type_Acwl.jdField_a_of_type_AndroidContentContext, paramInt);
+        } else {
+          paramView = null;
         }
       }
-      paramTextPaint.setColor(i);
-      return;
-    }
-    catch (IllegalArgumentException paramTextPaint)
-    {
-      QLog.e("intimate_relationship", 2, " color parse err");
     }
   }
 }

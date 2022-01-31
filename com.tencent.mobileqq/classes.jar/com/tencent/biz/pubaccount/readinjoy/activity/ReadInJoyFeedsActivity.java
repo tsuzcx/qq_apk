@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -17,12 +17,12 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import axrl;
-import bbct;
-import bbev;
-import bfuc;
-import bfuf;
-import bhvh;
+import axrn;
+import bbdh;
+import bbfj;
+import bfut;
+import bfuw;
+import bhvy;
 import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailTopGestureLayout;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.LeftRedDotRadioButton;
@@ -45,25 +45,25 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import noo;
-import ntb;
-import ntg;
-import nur;
-import nwa;
-import nwb;
-import nwc;
-import onk;
+import nol;
+import nsy;
+import ntd;
+import nuo;
+import nvx;
+import nvy;
+import nvz;
+import onh;
 import org.json.JSONObject;
+import osg;
 import osj;
+import osl;
 import osm;
-import oso;
-import osp;
-import qke;
-import qvn;
-import sdf;
-import sfh;
-import sgx;
-import shx;
+import qkb;
+import qvk;
+import sdc;
+import sfe;
+import sgu;
+import shu;
 
 public class ReadInJoyFeedsActivity
   extends ReadInJoyBaseActivity
@@ -72,10 +72,10 @@ public class ReadInJoyFeedsActivity
   private long jdField_a_of_type_Long;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected AccountDetailTopGestureLayout a;
-  public Map<Integer, ntg> a;
+  public Map<Integer, ntd> a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler();
-  private nwc jdField_a_of_type_Nwc;
-  protected osp a;
+  private nvz jdField_a_of_type_Nvz;
+  protected osm a;
   public boolean a;
   int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -93,7 +93,7 @@ public class ReadInJoyFeedsActivity
   public ReadInJoyFeedsActivity()
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Osp = new nwb(this);
+    this.jdField_a_of_type_Osm = new nvy(this);
   }
   
   private void a(boolean paramBoolean)
@@ -104,54 +104,54 @@ public class ReadInJoyFeedsActivity
     ArrayList localArrayList;
     if (((KandianMergeManager)localObject2).d())
     {
-      localObject1 = getString(2131720565);
+      localObject1 = getString(2131720576);
       i = 2130841968;
-      localObject3 = getString(2131695049);
+      localObject3 = getString(2131695050);
       localArrayList = new ArrayList();
-      bfuf localbfuf = new bfuf();
-      localbfuf.jdField_a_of_type_Int = 0;
-      localbfuf.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localbfuf.c = localbfuf.jdField_a_of_type_JavaLangString;
-      localbfuf.jdField_b_of_type_Int = i;
-      localArrayList.add(localbfuf);
-      localObject1 = new bfuf();
-      ((bfuf)localObject1).jdField_a_of_type_Int = 1;
-      ((bfuf)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-      ((bfuf)localObject1).c = ((bfuf)localObject1).jdField_a_of_type_JavaLangString;
-      ((bfuf)localObject1).jdField_b_of_type_Int = 2130841966;
+      bfuw localbfuw = new bfuw();
+      localbfuw.jdField_a_of_type_Int = 0;
+      localbfuw.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localbfuw.c = localbfuw.jdField_a_of_type_JavaLangString;
+      localbfuw.jdField_b_of_type_Int = i;
+      localArrayList.add(localbfuw);
+      localObject1 = new bfuw();
+      ((bfuw)localObject1).jdField_a_of_type_Int = 1;
+      ((bfuw)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+      ((bfuw)localObject1).c = ((bfuw)localObject1).jdField_a_of_type_JavaLangString;
+      ((bfuw)localObject1).jdField_b_of_type_Int = 2130841966;
       localArrayList.add(localObject1);
       if (paramBoolean)
       {
-        localObject3 = new bfuf();
-        ((bfuf)localObject3).jdField_a_of_type_Int = 2;
-        if (!bhvh.d(getAppRuntime())) {
+        localObject3 = new bfuw();
+        ((bfuw)localObject3).jdField_a_of_type_Int = 2;
+        if (!bhvy.d(getAppRuntime())) {
           break label364;
         }
       }
     }
     label364:
-    for (Object localObject1 = ajyc.a(2131712793);; localObject1 = ajyc.a(2131713008))
+    for (Object localObject1 = ajya.a(2131712804);; localObject1 = ajya.a(2131713019))
     {
-      ((bfuf)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-      ((bfuf)localObject3).jdField_b_of_type_Int = 2130848340;
-      ((bfuf)localObject3).c = ((bfuf)localObject3).jdField_a_of_type_JavaLangString;
+      ((bfuw)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((bfuw)localObject3).jdField_b_of_type_Int = 2130848346;
+      ((bfuw)localObject3).c = ((bfuw)localObject3).jdField_a_of_type_JavaLangString;
       localArrayList.add(localObject3);
-      localObject1 = new bfuf();
-      ((bfuf)localObject1).jdField_a_of_type_Int = 7;
-      ((bfuf)localObject1).jdField_a_of_type_JavaLangString = ajyc.a(2131712998);
-      ((bfuf)localObject1).jdField_b_of_type_Int = 2130841970;
+      localObject1 = new bfuw();
+      ((bfuw)localObject1).jdField_a_of_type_Int = 7;
+      ((bfuw)localObject1).jdField_a_of_type_JavaLangString = ajya.a(2131713009);
+      ((bfuw)localObject1).jdField_b_of_type_Int = 2130841970;
       localArrayList.add(localObject1);
-      localObject1 = new bfuf();
-      ((bfuf)localObject1).jdField_a_of_type_Int = 8;
-      ((bfuf)localObject1).jdField_a_of_type_JavaLangString = ajyc.a(2131712890);
-      ((bfuf)localObject1).jdField_b_of_type_Int = 2130841967;
+      localObject1 = new bfuw();
+      ((bfuw)localObject1).jdField_a_of_type_Int = 8;
+      ((bfuw)localObject1).jdField_a_of_type_JavaLangString = ajya.a(2131712901);
+      ((bfuw)localObject1).jdField_b_of_type_Int = 2130841967;
       localArrayList.add(localObject1);
       if (paramBoolean) {}
-      localObject1 = bfuc.a(this, localArrayList, new nwa(this, (KandianMergeManager)localObject2));
+      localObject1 = bfut.a(this, localArrayList, new nvx(this, (KandianMergeManager)localObject2));
       localObject2 = this.jdField_b_of_type_AndroidViewViewGroup;
-      ((bfuc)localObject1).showAsDropDown((View)localObject2, ((View)localObject2).getWidth() - getResources().getDimensionPixelSize(2131298619) - getResources().getDimensionPixelSize(2131298615), getResources().getDimensionPixelSize(2131297957));
+      ((bfut)localObject1).showAsDropDown((View)localObject2, ((View)localObject2).getWidth() - getResources().getDimensionPixelSize(2131298619) - getResources().getDimensionPixelSize(2131298615), getResources().getDimensionPixelSize(2131297957));
       return;
-      localObject1 = getString(2131699655);
+      localObject1 = getString(2131699666);
       i = 2130841969;
       break;
     }
@@ -159,8 +159,8 @@ public class ReadInJoyFeedsActivity
   
   private void b()
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375329));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131374831));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375331));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131374833));
     int i = getIntent().getIntExtra("readinjoy_show_tab", -1);
     int j = getIntent().getIntExtra("tab_tab_index", 0);
     if (i >= 0)
@@ -175,7 +175,7 @@ public class ReadInJoyFeedsActivity
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839753);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131713044));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131713055));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_c_of_type_Int != 5)) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690572));
@@ -189,32 +189,32 @@ public class ReadInJoyFeedsActivity
   
   private void c()
   {
-    ntb localntb = new ntb(this);
-    localntb.a(this.jdField_c_of_type_AndroidViewViewGroup);
-    localntb.a();
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_e_of_type_Int), localntb);
+    nsy localnsy = new nsy(this);
+    localnsy.a(this.jdField_c_of_type_AndroidViewViewGroup);
+    localnsy.a();
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_e_of_type_Int), localnsy);
   }
   
   private void c(int paramInt)
   {
     this.jdField_c_of_type_AndroidViewViewGroup.removeAllViews();
-    ntg localntg;
+    ntd localntd;
     if (paramInt == 0)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setSelected(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setSelected(false);
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setChecked(false);
       d(0);
-      osj.a().g();
-      localObject = (ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      osg.a().g();
+      localObject = (ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
       if (localObject == null)
       {
-        localObject = new ntb(this);
-        ((ntg)localObject).a(this.jdField_c_of_type_AndroidViewViewGroup);
-        ((ntg)localObject).a();
-        localntg = (ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
-        if (localntg != null) {
-          localntg.c();
+        localObject = new nsy(this);
+        ((ntd)localObject).a(this.jdField_c_of_type_AndroidViewViewGroup);
+        ((ntd)localObject).a();
+        localntd = (ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+        if (localntd != null) {
+          localntd.c();
         }
         this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
       }
@@ -223,30 +223,30 @@ public class ReadInJoyFeedsActivity
       for (;;)
       {
         return;
-        ((ntg)localObject).b();
+        ((ntd)localObject).b();
       }
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setSelected(false);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setChecked(false);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setSelected(true);
     e(0);
-    osj.a().f();
-    Object localObject = (ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    osg.a().f();
+    Object localObject = (ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
     if (localObject == null)
     {
-      localObject = new nur(this);
-      ((ntg)localObject).a(this.jdField_c_of_type_AndroidViewViewGroup);
-      ((ntg)localObject).a();
+      localObject = new nuo(this);
+      ((ntd)localObject).a(this.jdField_c_of_type_AndroidViewViewGroup);
+      ((ntd)localObject).a();
     }
     for (;;)
     {
-      localntg = (ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(0));
-      if (localntg != null) {
-        localntg.c();
+      localntd = (ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(0));
+      if (localntd != null) {
+        localntd.c();
       }
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
       return;
-      ((ntg)localObject).b();
+      ((ntd)localObject).b();
     }
   }
   
@@ -313,16 +313,16 @@ public class ReadInJoyFeedsActivity
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyBaseActivity", 2, "back from article detail");
       }
-      if (onk.f())
+      if (onh.f())
       {
         i = j;
-        if (TextUtils.isEmpty(sfh.h)) {}
+        if (TextUtils.isEmpty(sfe.h)) {}
       }
     }
     try
     {
-      i = new JSONObject(sfh.h).optInt("releaseServiceMinMem", 80);
-      long l = bbct.e();
+      i = new JSONObject(sfe.h).optInt("releaseServiceMinMem", 80);
+      long l = bbdh.e();
       if (l >>> 20 <= i)
       {
         if (QLog.isColorLevel()) {
@@ -334,15 +334,15 @@ public class ReadInJoyFeedsActivity
       {
         localObject = new HashMap();
         ((HashMap)localObject).put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        ((HashMap)localObject).put("param_totalMem", String.valueOf(bbct.d()));
+        ((HashMap)localObject).put("param_totalMem", String.valueOf(bbdh.d()));
         ((HashMap)localObject).put("param_availableMem", String.valueOf(l));
-        ((HashMap)localObject).put("param_cpuNum", String.valueOf(bbct.b()));
-        ((HashMap)localObject).put("param_cpuFreq", String.valueOf(bbct.a()));
+        ((HashMap)localObject).put("param_cpuNum", String.valueOf(bbdh.b()));
+        ((HashMap)localObject).put("param_cpuFreq", String.valueOf(bbdh.a()));
         ((HashMap)localObject).put("param_releaseType", String.valueOf(0));
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyBaseActivity", 2, "releaseWebCoreServiceReport:" + ((HashMap)localObject).toString());
         }
-        axrl.a(this).a(this.app.getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, (HashMap)localObject, "");
+        axrn.a(this).a(this.app.getCurrentAccountUin(), "actReadInJoyReleaseWebService", true, 0L, 0L, (HashMap)localObject, "");
       }
       catch (Exception localException1)
       {
@@ -354,7 +354,7 @@ public class ReadInJoyFeedsActivity
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2, paramIntent);
+        ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).a(paramInt1, paramInt2, paramIntent);
       }
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       return;
@@ -370,10 +370,10 @@ public class ReadInJoyFeedsActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    qvn.a().a(this);
+    qvk.a().a(this);
     super.doOnCreate(paramBundle);
-    bhvh.c(this.app);
-    bhvh.d(this.app);
+    bhvy.c(this.app);
+    bhvy.d(this.app);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     paramBundle = getIntent();
     Bundle localBundle = paramBundle.getExtras();
@@ -383,11 +383,11 @@ public class ReadInJoyFeedsActivity
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("from_search", false);
     this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("from_javascript", false);
     this.jdField_c_of_type_Int = paramBundle.getIntExtra("launch_from", 5);
-    osm.a().a();
+    osj.a().a();
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    int i = bbev.a(getApplication());
+    int i = bbfj.a(getApplication());
     if ((i == 4) || (i == 1)) {
       ThreadManager.post(new ReadInJoyFeedsActivity.1(this), 5, null, true);
     }
@@ -399,58 +399,58 @@ public class ReadInJoyFeedsActivity
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailTopGestureLayout = new AccountDetailTopGestureLayout(this);
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailTopGestureLayout);
     }
-    paramBundle = (oso)this.app.getManager(163);
-    osj.a().h();
-    osj.a().d();
-    setTitle(sfh.b(this.app, this.app.getApp()));
+    paramBundle = (osl)this.app.getManager(163);
+    osg.a().h();
+    osg.a().d();
+    setTitle(sfe.b(this.app, this.app.getApp()));
     b();
     this.jdField_b_of_type_AndroidViewViewGroup.setOnTouchListener(this);
-    this.jdField_a_of_type_Nwc = new nwc((ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int)));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, this.jdField_a_of_type_Nwc);
+    this.jdField_a_of_type_Nvz = new nvz((ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int)));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, this.jdField_a_of_type_Nvz);
     if (this.app.a() != null) {
       this.app.a().addObserver(this);
     }
-    if (bhvh.a(this.app)) {
-      sdf.a().c(this.app);
+    if (bhvy.a(this.app)) {
+      sdc.a().c(this.app);
     }
-    osm.a().a(this.jdField_a_of_type_Osp);
-    bhvh.a(this.app);
-    this.jdField_b_of_type_Int = onk.jdField_d_of_type_Int;
-    shx.a(1, true, 0L, this.jdField_b_of_type_Int, 0);
-    onk.g(this.app);
+    osj.a().a(this.jdField_a_of_type_Osm);
+    bhvy.a(this.app);
+    this.jdField_b_of_type_Int = onh.jdField_d_of_type_Int;
+    shu.a(1, true, 0L, this.jdField_b_of_type_Int, 0);
+    onh.g(this.app);
     return true;
   }
   
   public void doOnDestroy()
   {
-    osm.a().b(this.jdField_a_of_type_Osp);
+    osj.a().b(this.jdField_a_of_type_Osm);
     super.doOnDestroy();
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
     if (l > 0L) {
-      noo.a(null, "CliOper", "", "", "0X80066F7", "0X80066F7", 0, 0, Long.toString(l / 1000L), "", "", onk.d(), false);
+      nol.a(null, "CliOper", "", "", "0X80066F7", "0X80066F7", 0, 0, Long.toString(l / 1000L), "", "", onh.d(), false);
     }
     Object localObject = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Integer localInteger = (Integer)((Iterator)localObject).next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).d();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).d();
     }
     if (this.app.a() != null) {
       this.app.a().deleteObserver(this);
     }
-    localObject = (oso)this.app.getManager(163);
-    osj.a().i();
-    qvn.a().b(this);
+    localObject = (osl)this.app.getManager(163);
+    osg.a().i();
+    qvk.a().b(this);
     PreloadManager.a().b();
     PreloadManager.a().e();
-    shx.a(1, false, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
+    shu.a(1, false, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
     PublicAccountImageCollectionPreloadManager.a().d();
     PublicAccountImageCollectionPreloadManager.a().c();
     WebProcessManager.g();
     WebProcessManager.h();
-    qke.a();
-    qke.a().b();
+    qkb.a();
+    qkb.a().b();
   }
   
   public void doOnNewIntent(Intent paramIntent)
@@ -475,7 +475,7 @@ public class ReadInJoyFeedsActivity
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).g();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).g();
     }
   }
   
@@ -485,13 +485,13 @@ public class ReadInJoyFeedsActivity
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      sgx.a("KANDIAN_FEEDS_STAGE_1_COST", null);
+      sgu.a("KANDIAN_FEEDS_STAGE_1_COST", null);
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).h();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).h();
     }
   }
   
@@ -499,12 +499,12 @@ public class ReadInJoyFeedsActivity
   {
     super.doOnStart();
     this.jdField_c_of_type_Long = System.currentTimeMillis();
-    osj.a().j();
+    osg.a().j();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).e();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).e();
     }
   }
   
@@ -513,12 +513,12 @@ public class ReadInJoyFeedsActivity
     super.doOnStop();
     this.jdField_d_of_type_Long = System.currentTimeMillis();
     this.jdField_e_of_type_Long += this.jdField_d_of_type_Long - this.jdField_c_of_type_Long;
-    osj.a().k();
+    osg.a().k();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).f();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).f();
     }
   }
   
@@ -529,7 +529,7 @@ public class ReadInJoyFeedsActivity
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).o();
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).o();
     }
   }
   
@@ -542,33 +542,33 @@ public class ReadInJoyFeedsActivity
       do
       {
         return;
-      } while (!bhvh.a(this.app));
+      } while (!bhvy.a(this.app));
       a(false);
       return;
     case 2131368476: 
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.a()) {
-        noo.a(null, "CliOper", "", "", "0X80067D0", "0X80067D0", 0, 0, "", "", "", onk.c(), false);
+        nol.a(null, "CliOper", "", "", "0X80067D0", "0X80067D0", 0, 0, "", "", "", onh.c(), false);
       }
       while (this.jdField_e_of_type_Int == 0)
       {
-        ((ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int))).a(true);
+        ((ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int))).a(true);
         return;
-        noo.a(null, "CliOper", "", "", "0X80067CF", "0X80067CF", 0, 0, "", "", "", onk.c(), false);
+        nol.a(null, "CliOper", "", "", "0X80067CF", "0X80067CF", 0, 0, "", "", "", onh.c(), false);
       }
       this.jdField_e_of_type_Int = 0;
       c(this.jdField_e_of_type_Int);
       ((KandianMergeManager)this.app.getManager(162)).b(0);
       return;
     }
-    sgx.a(null, "KANDIAN_TO_SUBSCRIPT_COST");
+    sgu.a(null, "KANDIAN_TO_SUBSCRIPT_COST");
     if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a()) {
-      noo.a(null, "CliOper", "", "", "0X80067D2", "0X80067D2", 0, 0, "", "", "", onk.c(), false);
+      nol.a(null, "CliOper", "", "", "0X80067D2", "0X80067D2", 0, 0, "", "", "", onh.c(), false);
     }
     while (this.jdField_e_of_type_Int == 1)
     {
-      ((ntg)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int))).a(true);
+      ((ntd)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_e_of_type_Int))).a(true);
       return;
-      noo.a(null, "CliOper", "", "", "0X80067D1", "0X80067D1", 0, 0, "", "", "", onk.c(), false);
+      nol.a(null, "CliOper", "", "", "0X80067D1", "0X80067D1", 0, 0, "", "", "", onh.c(), false);
     }
     this.jdField_e_of_type_Int = 1;
     c(this.jdField_e_of_type_Int);

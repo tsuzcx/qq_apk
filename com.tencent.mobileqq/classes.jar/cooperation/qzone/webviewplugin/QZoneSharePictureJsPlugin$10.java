@@ -1,22 +1,22 @@
 package cooperation.qzone.webviewplugin;
 
-import bcdb;
-import bcpw;
-import bhqv;
+import bcdp;
+import bcql;
+import bhrm;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import cooperation.qzone.util.QZLog;
 
 public class QZoneSharePictureJsPlugin$10
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$10(bhqv parambhqv, int paramInt, String paramString) {}
+  public QZoneSharePictureJsPlugin$10(bhrm parambhrm, int paramInt, String paramString) {}
   
   public void run()
   {
     try
     {
       if ((this.this$0.a != null) && (this.this$0.a.mRuntime != null)) {
-        bcpw.a(this.this$0.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
+        bcql.a(this.this$0.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
       }
       return;
     }

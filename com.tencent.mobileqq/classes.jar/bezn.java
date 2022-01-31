@@ -1,31 +1,41 @@
-import NS_MINI_INTERFACE.INTERFACE.StBaseLibInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetNewBaseLibReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetNewBaseLibRsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import NS_MINI_INTERFACE.INTERFACE.StAddressInfo;
+import NS_MINI_INTERFACE.INTERFACE.StApiUserInfo;
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoReq;
+import NS_MINI_INTERFACE.INTERFACE.StBatchGetUserInfoRsp;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class bezn
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetNewBaseLibReq a = new INTERFACE.StGetNewBaseLibReq();
+  private INTERFACE.StBatchGetUserInfoReq a = new INTERFACE.StBatchGetUserInfoReq();
   
-  public bezn(String paramString, int paramInt)
+  public bezn(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    this.a.curVersion.set(paramString);
-    this.a.type.set(paramInt);
+    this.a.appid.set(paramString1);
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.a.lang.set(paramString2);
+    }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString1 = paramArrayOfString[i];
+      this.a.openIds.add(paramString1);
+      i += 1;
+    }
   }
   
   protected String a()
   {
-    return "mini_app_info";
+    return "mini_user_info";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -33,46 +43,41 @@ public class bezn
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetNewBaseLibRsp localStGetNewBaseLibRsp = new INTERFACE.StGetNewBaseLibRsp();
+    Object localObject = new INTERFACE.StBatchGetUserInfoRsp();
     try
     {
-      localStGetNewBaseLibRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetNewBaseLibRsp == null) {
-        break label338;
+      ((INTERFACE.StBatchGetUserInfoRsp)localObject).mergeFrom(a(paramArrayOfByte));
+      if ((localObject == null) || (((INTERFACE.StBatchGetUserInfoRsp)localObject).user == null)) {
+        break label270;
       }
-      paramArrayOfByte = new JSONObject();
-      int i = localStGetNewBaseLibRsp.interval.get();
-      besl.b("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib interval:" + i);
-      long l1 = i * 1000;
-      long l2 = System.currentTimeMillis();
-      bfgv.a().edit().putLong("baselib_min_update_time", l1 + l2).apply();
-      Iterator localIterator = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
-      while (localIterator.hasNext())
+      localObject = ((INTERFACE.StBatchGetUserInfoRsp)localObject).user.get();
+      paramArrayOfByte = new JSONArray();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        INTERFACE.StBaseLibInfo localStBaseLibInfo = (INTERFACE.StBaseLibInfo)localIterator.next();
-        BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-        localBaseLibInfo.baseLibUrl = localStBaseLibInfo.downloadUrl.get();
-        localBaseLibInfo.baseLibVersion = localStBaseLibInfo.version.get();
-        localBaseLibInfo.baseLibKey = null;
-        localBaseLibInfo.baseLibDesc = localStBaseLibInfo.extInfo.get();
-        if (TextUtils.isEmpty(localBaseLibInfo.baseLibDesc)) {
-          localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
-        }
-        localBaseLibInfo.baseLibType = localStBaseLibInfo.libType.get();
-        paramArrayOfByte.put(localBaseLibInfo.getKey(), localBaseLibInfo.toJSONObject());
-        besl.b("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib " + localBaseLibInfo);
+        INTERFACE.StApiUserInfo localStApiUserInfo = (INTERFACE.StApiUserInfo)((Iterator)localObject).next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("nickName", localStApiUserInfo.nick.get());
+        localJSONObject.put("avatarUrl", localStApiUserInfo.avatar.get());
+        localJSONObject.put("gender", localStApiUserInfo.gender.get());
+        localJSONObject.put("language", localStApiUserInfo.language.get());
+        localJSONObject.put("country", localStApiUserInfo.address.country.get());
+        localJSONObject.put("province", localStApiUserInfo.address.province.get());
+        localJSONObject.put("city", localStApiUserInfo.address.city.get());
+        localJSONObject.put("openId", localStApiUserInfo.openid.get());
+        paramArrayOfByte.put(localJSONObject);
       }
-      paramArrayOfByte.put("version", localStGetNewBaseLibRsp.libInfo.version.get());
+      localObject = new JSONObject();
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("BatchGetUserInfoRequest", "onResponse fail." + paramArrayOfByte);
       return null;
     }
-    paramArrayOfByte.put("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
-    return paramArrayOfByte;
-    label338:
-    besl.a("GetNewBaseLibRequest", "onResponse fail.rsp = null");
+    ((JSONObject)localObject).put("data", paramArrayOfByte);
+    return localObject;
+    label270:
+    betc.a("BatchGetUserInfoRequest", "onResponse fail.rsp = null");
     return null;
   }
   
@@ -83,7 +88,7 @@ public class bezn
   
   protected String b()
   {
-    return "GetNewBaseLib";
+    return "BatchGetUserInfo";
   }
 }
 

@@ -1,38 +1,35 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qidian.proto.mobileqq_qidian.CompanyShowCaseInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bduz
+  implements View.OnClickListener
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  public bduz(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public bduz() {}
-  
-  public bduz(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
+  public void onClick(View paramView)
   {
-    a(paramCompanyShowCaseInfo);
-  }
-  
-  public mobileqq_qidian.CompanyShowCaseInfo a()
-  {
-    mobileqq_qidian.CompanyShowCaseInfo localCompanyShowCaseInfo = new mobileqq_qidian.CompanyShowCaseInfo();
-    localCompanyShowCaseInfo.string_show_case_title.set(this.a);
-    localCompanyShowCaseInfo.string_show_case_link.set(this.b);
-    localCompanyShowCaseInfo.string_show_case_image.set(this.c);
-    return localCompanyShowCaseInfo;
-  }
-  
-  public void a(mobileqq_qidian.CompanyShowCaseInfo paramCompanyShowCaseInfo)
-  {
-    if (paramCompanyShowCaseInfo.string_show_case_title.has()) {
-      this.a = paramCompanyShowCaseInfo.string_show_case_title.get();
+    boolean bool = true;
+    paramView = QidianProfileCardActivity.a(this.a);
+    int i;
+    if (QidianProfileCardActivity.a(this.a))
+    {
+      i = 1;
+      paramView.setMaxLines(i);
+      paramView = this.a;
+      if (QidianProfileCardActivity.a(this.a)) {
+        break label54;
+      }
     }
-    if (paramCompanyShowCaseInfo.string_show_case_link.has()) {
-      this.b = paramCompanyShowCaseInfo.string_show_case_link.get();
-    }
-    if (paramCompanyShowCaseInfo.string_show_case_image.has()) {
-      this.c = paramCompanyShowCaseInfo.string_show_case_image.get();
+    for (;;)
+    {
+      QidianProfileCardActivity.a(paramView, bool);
+      return;
+      i = 3;
+      break;
+      label54:
+      bool = false;
     }
   }
 }

@@ -1,6 +1,6 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class agon
@@ -10,12 +10,12 @@ public class agon
   
   public void onClick(View paramView)
   {
-    if (this.a.y)
+    if (PhotoPreviewActivity.a(this.a) == null)
     {
-      PhotoPreviewActivity.a(this.a);
-      return;
+      PhotoPreviewActivity.a(this.a, bbdj.a(this.a, 0, this.a.getString(2131718415), null, this.a.getString(2131718413), this.a.getString(2131718414), new agoo(this), new agop(this)));
+      PhotoPreviewActivity.a(this.a).setCanceledOnTouchOutside(false);
     }
-    this.a.a.toggle();
+    PhotoPreviewActivity.a(this.a).show();
   }
 }
 

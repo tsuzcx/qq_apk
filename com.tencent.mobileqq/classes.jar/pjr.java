@@ -1,10 +1,27 @@
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class pjr
 {
-  public static void a(String paramString1, String paramString2)
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    QLog.d("FluencyLogUtil", 1, "Class : " + paramString1 + " Scene : " + paramString2);
+    a(paramContext, paramArticleInfo, false);
+  }
+  
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    if (paramArticleInfo == null)
+    {
+      QLog.d("PGCShortContentUtils", 1, "articleInfo is null");
+      return;
+    }
+    if (paramArticleInfo.isCardJumpUrlAvailable == 1)
+    {
+      onh.e(paramContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    onh.a(paramContext, paramArticleInfo, paramBoolean);
   }
 }
 

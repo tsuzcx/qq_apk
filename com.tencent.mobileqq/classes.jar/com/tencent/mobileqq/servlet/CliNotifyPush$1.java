@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.servlet;
 
-import axbr;
+import axbt;
 
 public class CliNotifyPush$1
   implements Runnable
 {
-  public CliNotifyPush$1(axbr paramaxbr) {}
+  public CliNotifyPush$1(axbt paramaxbt) {}
   
   public void run()
   {
-    axbr.a(this.this$0);
+    axbt.a(this.this$0);
   }
 }
 

@@ -1,51 +1,35 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_req;
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class bgxw
-  extends QzoneExternalRequest
+public final class bgxw
+  implements Parcelable.Creator<LbsDataV2.GeoInfo>
 {
-  public JceStruct a;
-  
-  public bgxw(long paramLong, String paramString)
+  public LbsDataV2.GeoInfo a(Parcel paramParcel)
   {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    paramString = new get_albumlist_num_req();
-    paramString.uin = paramLong;
-    this.a = paramString;
-  }
-  
-  public static get_albumlist_num_rsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    get_albumlist_num_rsp localget_albumlist_num_rsp;
-    do
+    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
+    if (paramParcel != null)
     {
-      return paramArrayOfByte;
-      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
-      paramArrayOfByte = localget_albumlist_num_rsp;
-    } while (localget_albumlist_num_rsp != null);
+      localGeoInfo.address = paramParcel.readString();
+      localGeoInfo.iDistrictCode = paramParcel.readInt();
+      localGeoInfo.iRange = paramParcel.readInt();
+      localGeoInfo.strCountry = paramParcel.readString();
+      localGeoInfo.strProvince = paramParcel.readString();
+      localGeoInfo.strCity = paramParcel.readString();
+      localGeoInfo.strDistrict = paramParcel.readString();
+      localGeoInfo.strTown = paramParcel.readString();
+      localGeoInfo.strVillage = paramParcel.readString();
+      localGeoInfo.strRoad = paramParcel.readString();
+      localGeoInfo.strDefaultName = paramParcel.readString();
+      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+    }
+    return localGeoInfo;
+  }
+  
+  public LbsDataV2.GeoInfo[] a(int paramInt)
+  {
     return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getAlbumListNum";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAlbumListNum";
   }
 }
 

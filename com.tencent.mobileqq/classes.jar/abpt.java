@@ -1,32 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class abpt
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public abpt(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajtk paramajtk) {}
+  public abpt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((bbev.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
-    {
-      this.jdField_a_of_type_Ajtk.e(paramBoolean);
-      return;
-    }
-    NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131694971), 0).b(5);
-      return;
-    }
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

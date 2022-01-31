@@ -1,12 +1,16 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface aqri
+class aqri
+  implements View.OnClickListener
 {
-  public abstract void a(View... paramVarArgs);
+  aqri(aqrf paramaqrf) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    aqrf.e(this.a);
+    this.a.a(true);
+  }
 }
 
 

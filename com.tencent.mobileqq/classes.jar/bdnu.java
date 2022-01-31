@@ -1,43 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.VirtualInfo;
 
-class bdnu
-  extends SSOAccountObserver
+public final class bdnu
+  implements Parcelable.Creator<VirtualInfo>
 {
-  bdnu(bdno parambdno, OpenSDKAppInterface paramOpenSDKAppInterface, bdnw parambdnw) {}
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public VirtualInfo a(Parcel paramParcel)
   {
-    if (paramBundle == null) {}
-    for (paramString = "null";; paramString = Integer.valueOf(paramBundle.getInt("code")))
-    {
-      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", paramString });
-      this.jdField_a_of_type_Bdnw.a();
-      return;
-    }
+    return new VirtualInfo(paramParcel);
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public VirtualInfo[] a(int paramInt)
   {
-    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      bdke.a(paramString, System.currentTimeMillis());
-    }
-    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
-    bdna localbdna = new bdna();
-    localbdna.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
-    localbdna.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
-    localbdna.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    localbdna.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
-    this.jdField_a_of_type_Bdnw.a(localbdna);
+    return new VirtualInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bdnu
  * JD-Core Version:    0.7.0.1
  */

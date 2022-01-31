@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public final class aapp
-  implements View.OnClickListener
+  implements bbws
 {
-  public aapp(Toast paramToast) {}
+  public aapp(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onClick(View paramView)
+  public void callback(int paramInt)
   {
-    this.a.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 

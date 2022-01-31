@@ -1,13 +1,20 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class tkk
-  extends ssk
+  extends ssh
 {
-  public HashMap<String, String[]> a;
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
   public String toString()
   {
-    return "InteractionInfoChangeEvent{iconMap=" + this.a + '}';
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
+    }
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 

@@ -1,14 +1,24 @@
-import java.util.ArrayDeque;
-import java.util.LinkedHashMap;
-
 public class ozx
 {
-  private ArrayDeque<String> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private LinkedHashMap<String, Object> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  public int a;
+  public long a;
+  public boolean a;
+  
+  public ozx(long paramLong, int paramInt)
+  {
+    this(paramLong, paramInt, false);
+  }
+  
+  public ozx(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
   public String toString()
   {
-    return "AtlasStackInfo{stackGalleryMap=" + this.jdField_a_of_type_JavaUtilLinkedHashMap + "mScanStack=" + this.jdField_a_of_type_JavaUtilArrayDeque.toString() + '}';
+    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

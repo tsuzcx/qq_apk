@@ -1,9 +1,7 @@
 public class bahr
 {
-  public int a;
-  public long a;
   public String a;
-  public long b;
+  public boolean a;
 }
 
 

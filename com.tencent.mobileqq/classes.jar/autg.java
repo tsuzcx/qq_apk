@@ -1,6 +1,19 @@
-public abstract interface autg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+
+public final class autg
+  implements Parcelable.Creator<PersonalityLabel>
 {
-  public abstract void e(int paramInt);
+  public PersonalityLabel a(Parcel paramParcel)
+  {
+    return new PersonalityLabel(paramParcel);
+  }
+  
+  public PersonalityLabel[] a(int paramInt)
+  {
+    return new PersonalityLabel[paramInt];
+  }
 }
 
 

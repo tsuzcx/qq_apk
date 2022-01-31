@@ -1,8 +1,8 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import bgxy;
-import bhjq;
+import bgyp;
+import bhkh;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -28,13 +28,13 @@ public class QzoneLiveMainRuntime
     if (QLog.isColorLevel()) {
       QLog.i(a, 2, "QzoneLiveMainRuntime.onGetSubRuntime() moduleId " + paramString);
     }
-    if (paramString.equals(bhjq.a())) {
-      localAppRuntime = bgxy.b(BaseApplicationImpl.getApplication());
+    if (paramString.equals(bhkh.a())) {
+      localAppRuntime = bgyp.b(BaseApplicationImpl.getApplication());
     }
     while (!paramString.equals("qzone_weishi_feeds_plugin.apk")) {
       return localAppRuntime;
     }
-    return bgxy.d(BaseApplicationImpl.getApplication());
+    return bgyp.d(BaseApplicationImpl.getApplication());
   }
 }
 

@@ -1,8 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface besu
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public abstract void a(int paramInt, String paramString, best parambest);
 }
 
 

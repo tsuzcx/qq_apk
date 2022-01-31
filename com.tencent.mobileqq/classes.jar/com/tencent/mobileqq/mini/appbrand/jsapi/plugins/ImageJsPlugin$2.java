@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
-import bbcv;
-import bbgg;
+import ajya;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class ImageJsPlugin$2
@@ -12,9 +12,9 @@ class ImageJsPlugin$2
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajyc.a(2131705728), ajyc.a(2131705727), ajyc.a(2131705729), ajyc.a(2131705726), new ImageJsPlugin.2.1(this), new ImageJsPlugin.2.2(this));
-    localbbgg.setCanceledOnTouchOutside(false);
-    localbbgg.show();
+    bbgu localbbgu = bbdj.a(this.this$0.jsPluginEngine.getActivityContext(), 230, ajya.a(2131705739), ajya.a(2131705738), ajya.a(2131705740), ajya.a(2131705737), new ImageJsPlugin.2.1(this), new ImageJsPlugin.2.2(this));
+    localbbgu.setCanceledOnTouchOutside(false);
+    localbbgu.show();
   }
 }
 

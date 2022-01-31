@@ -1,15 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
-public class arvv
+final class arvv
   implements DialogInterface.OnClickListener
 {
-  public arvv(LocationDialogUtil.4 param4) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(null, "CliOper", "", "", "0X800A968", "0X800A968", 0, 0, "0", "0", "0", "");
+    axqy.b(null, "CliOper", "", "", "0X800A971", "0X800A971", 0, 0, "0", "0", "0", "");
   }
 }
 

@@ -1,73 +1,73 @@
-import OnlinePushPack.SvcRespPushMsg;
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.game.SensorAPIJavaScript.9.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nca
-  implements nbq
+class nca
+  implements BusinessObserver
 {
-  public nca(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  nca(nbz paramnbz, boolean paramBoolean) {}
   
-  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      AppInterface localAppInterface = this.a.mRuntime.a();
-      if (localAppInterface != null)
-      {
-        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
-        localToServiceMsg.setNeedCallback(false);
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        int i = awyl.a;
-        awyl.a = i + 1;
-        localUniPacket.setRequestId(i);
-        localUniPacket.setServantName("OnlinePush");
-        localUniPacket.setFuncName("SvcRespPushMsg");
-        localUniPacket.setRequestId(paramInt);
-        localUniPacket.put("resp", paramSvcRespPushMsg);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), amly.class);
-        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-        localAppInterface.startServlet(paramSvcRespPushMsg);
-        if (QLog.isColorLevel()) {
-          QLog.d("SensorApi", 2, "reply push");
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    String str = SensorAPIJavaScript.jdField_a_of_type_Nbn.a(String.valueOf(paramInt));
-    if (!TextUtils.isEmpty(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
-    }
-    while (!QLog.isColorLevel()) {
+    if (this.jdField_a_of_type_Nbz.jdField_a_of_type_Boolean) {
       return;
     }
-    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nbz.a(this.jdField_a_of_type_Nbz);
+      return;
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+      {
+        nbz.a(this.jdField_a_of_type_Nbz);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
+      }
+      nbz.a(this.jdField_a_of_type_Nbz);
+      return;
+    }
+    localObject = nbz.a(this.jdField_a_of_type_Nbz, (oidb_sso.OIDBSSOPkg)localObject);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        nbz.a(this.jdField_a_of_type_Nbz, (List)localObject);
+        return;
+      }
+      paramBundle = new ArrayList();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        new TroopAppInfo().appId = localLong.longValue();
+      }
+      nbz.a(this.jdField_a_of_type_Nbz, paramBundle);
+      return;
+    }
+    nbz.a(this.jdField_a_of_type_Nbz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nca
  * JD-Core Version:    0.7.0.1
  */

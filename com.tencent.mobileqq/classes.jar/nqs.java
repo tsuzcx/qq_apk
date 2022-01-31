@@ -1,183 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.os.MqqHandler;
-
-class nqs
-  extends BroadcastReceiver
+public class nqs
+  implements ajte
 {
-  nqs(nqq paramnqq) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    for (;;)
+    switch (paramInt)
     {
+    default: 
       return;
-      ??? = paramIntent.getAction();
-      Object localObject;
-      if ("action_get_PA_head".equals(???))
-      {
-        ??? = paramIntent.getStringExtra("uin");
-        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_Baxk == null)) {
-          continue;
-        }
-        paramIntent = this.a.jdField_a_of_type_Baxk.a(1, ???);
-        if (paramIntent != null)
-        {
-          localObject = new Intent("action_decode_finish");
-          ((Intent)localObject).putExtra("bitmap", paramIntent);
-          ((Intent)localObject).putExtra("uin", ???);
-          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
-          return;
-        }
-        this.a.jdField_a_of_type_Baxk.a(???, 1, true);
-        return;
-      }
-      int i;
-      boolean bool;
-      long l;
-      if ("action_shop_set_read".equals(???))
-      {
-        localObject = paramIntent.getStringExtra("uin");
-        i = paramIntent.getIntExtra("unReadNum", 0);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
-        }
-        bool = paramIntent.getBooleanExtra("needDelete", false);
-        synchronized (nqq.a(this.a))
-        {
-          paramIntent = (EcShopData)nqq.a(this.a).get(localObject);
-          if (paramIntent == null) {
-            continue;
-          }
-          ??? = null;
-          paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-          if (paramIntent != null) {
-            ??? = paramIntent.a((String)localObject, 1008);
-          }
-          if (??? != null)
-          {
-            ahpf.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
-            paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-            if (paramIntent != null) {
-              paramIntent.a(???.frienduin, ???.istroop, true);
-            }
-          }
-          if (!bool) {
-            continue;
-          }
-          this.a.b((String)localObject);
-          if (((String)localObject).equals(nqq.g))
-          {
-            l = nqq.a().getLong("ad_id", 0L);
-            ((nri)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a(134246438, null, null, null, null, l, false);
-            ??? = nqq.a().edit();
-            ???.remove("ad_id");
-            ???.putBoolean("is_ad_added", false);
-            ???.commit();
-            nqq.g = "";
-            return;
-          }
-        }
-        axqw.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
-        return;
-      }
-      if ("action_folder_set_read".equals(???))
-      {
-        ??? = paramIntent.getStringExtra("uin");
-        if (!TextUtils.isEmpty(???))
-        {
-          ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(???, 1008);
-          if (??? != null) {
-            this.a.a(???.time);
-          }
-        }
-        ??? = nqq.a();
-        this.a.e = false;
-        if (???.getBoolean("folder_reddot", false)) {
-          ???.edit().putBoolean("folder_reddot", false).commit();
-        }
-        ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        if (??? == null) {
-          continue;
-        }
-        ???.sendEmptyMessage(1009);
-        return;
-      }
-      if ("action_folder_destroy".equals(???))
-      {
-        if (paramIntent.getLongExtra("stay_time", 0L) >= this.a.jdField_a_of_type_Long) {
-          nqq.a().edit().putLong("last_stay_folder", System.currentTimeMillis());
-        }
-        this.a.f = false;
-        return;
-      }
-      if ("action_folder_msg_change".equals(???))
-      {
-        ??? = paramIntent.getStringExtra("msg");
-        i = paramIntent.getIntExtra("type", -1);
-        paramIntent = this.a.a();
-        if ((TextUtils.isEmpty(???)) || (paramIntent == null)) {
-          continue;
-        }
-        paramIntent = nqq.a().edit();
-        paramIntent.putString("str_ecshop_diy", ???);
-        paramIntent.putInt("last_show_time1", (int)(System.currentTimeMillis() / 1000L));
-        paramIntent.putInt("FOLDER_MSG_TYPE", i);
-        paramIntent.putString("PUSH_JUMP_URL", "");
-        paramIntent.commit();
-        return;
-      }
-      if ("action_set_folder_tab_red".equals(???))
-      {
-        nqq.a().edit().putBoolean("folder_tab_red", true).commit();
-        return;
-      }
-      if (!"action_follow_status".equals(???)) {
-        continue;
-      }
-      ??? = paramIntent.getStringExtra("puin");
-      if (TextUtils.isEmpty(???)) {
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(???);
-        if (l == -1L) {
-          continue;
-        }
-        bool = ((akdi)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
-        paramIntent = new Intent("action_follow_status_finish");
-        paramIntent.putExtra("isFollow", bool);
-        paramIntent.putExtra("uin", String.valueOf(l));
-        BaseApplicationImpl.getContext().sendBroadcast(paramIntent);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("EcShopAssistantManager", 2, "follow_status uin:" + ??? + ",isfollow:" + bool);
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        for (;;)
-        {
-          l = -1L;
-        }
-      }
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 5: 
+      f(paramBoolean, paramObject);
+      return;
     }
+    g(paramBoolean, paramObject);
   }
 }
 

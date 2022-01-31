@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajyc;
-import akwb;
+import ajya;
+import akwa;
 import android.text.TextUtils;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -43,7 +43,7 @@ public class MessageForMarketFace
   {
     try
     {
-      this.mMarkFaceMessage = ((MarkFaceMessage)akwb.a(this.msgData));
+      this.mMarkFaceMessage = ((MarkFaceMessage)akwa.a(this.msgData));
       if ((EmojiStickerManager.e) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
@@ -86,7 +86,7 @@ public class MessageForMarketFace
       localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
       return localStringBuilder.toString();
     }
-    return ajyc.a(2131706589);
+    return ajya.a(2131706600);
   }
   
   public boolean isNewSoundType()
@@ -114,7 +114,7 @@ public class MessageForMarketFace
     if (this.mMarkFaceMessage != null) {}
     try
     {
-      this.msgData = akwb.a(this.mMarkFaceMessage);
+      this.msgData = akwa.a(this.mMarkFaceMessage);
       return;
     }
     catch (Exception localException)

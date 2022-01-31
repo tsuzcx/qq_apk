@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
+import java.util.Comparator;
 
 public final class aqrl
-  implements Parcelable.Creator<PadFaceAd>
+  implements Comparator<GameNoticeInfo>
 {
-  public PadFaceAd a(Parcel paramParcel)
+  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
   {
-    return new PadFaceAd(paramParcel);
-  }
-  
-  public PadFaceAd[] a(int paramInt)
-  {
-    return new PadFaceAd[paramInt];
+    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
+      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
+    }
+    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
+      return -1;
+    }
+    return 1;
   }
 }
 

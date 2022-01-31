@@ -1,8 +1,15 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-public abstract interface oco
+public class oco
+  implements ViewBase.IBuilder
 {
-  public abstract void a(View paramView, int paramInt);
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new ReadInJoyArticleBottomVideoView(paramVafContext);
+  }
 }
 
 

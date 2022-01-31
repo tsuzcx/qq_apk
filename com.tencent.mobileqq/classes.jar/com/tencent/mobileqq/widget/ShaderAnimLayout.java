@@ -10,17 +10,17 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bbab;
-import bcqy;
-import bcqz;
+import bbap;
+import bcrn;
+import bcro;
 
 public class ShaderAnimLayout
   extends RelativeLayout
 {
   public float a;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bcqz(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new bcqy(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bcro(this);
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new bcrn(this);
   public boolean a;
   private boolean b;
   
@@ -111,7 +111,7 @@ public class ShaderAnimLayout
     {
       for (;;)
       {
-        bbab.a(this, 1, null);
+        bbap.a(this, 1, null);
       }
     }
   }

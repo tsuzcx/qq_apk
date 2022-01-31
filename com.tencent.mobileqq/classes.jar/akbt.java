@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
-
-class akbt
-  implements Comparator<Object>
+public abstract interface akbt
 {
-  akbt(akbo paramakbo) {}
+  public abstract void ag_();
   
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    if (((paramObject1 instanceof atyy)) && ((paramObject2 instanceof atyy))) {
-      return (int)(((atyy)paramObject2).a - ((atyy)paramObject1).a);
-    }
-    if (((paramObject1 instanceof atyy)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((atyy)paramObject1).a * 1000L);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof PhoneContact))) {
-      return (int)(((PhoneContact)paramObject2).lastScanTime - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    if (((paramObject1 instanceof PhoneContact)) && ((paramObject2 instanceof atyy))) {
-      return (int)(((atyy)paramObject2).a * 1000L - ((PhoneContact)paramObject1).lastScanTime);
-    }
-    return 0;
-  }
+  public abstract void b();
+  
+  public abstract void i_(int paramInt);
 }
 
 

@@ -1,16 +1,20 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.media.MediaPlayer.OnPreparedListener;
 import org.json.JSONObject;
 
 class ajaq
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnPreparedListener
 {
-  ajaq(ajao paramajao, JSONObject paramJSONObject, ajbo paramajbo) {}
+  ajaq(ajam paramajam, JSONObject paramJSONObject, ajbm paramajbm) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
+    this.jdField_a_of_type_Ajam.a(3);
+    if (ajam.a(this.jdField_a_of_type_Ajam)) {
+      this.jdField_a_of_type_Ajam.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Ajbm);
+    }
     if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      ajao.a(this.jdField_a_of_type_Ajao, this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_OrgJsonJSONObject);
+      ajam.a(this.jdField_a_of_type_Ajam, this.jdField_a_of_type_Ajbm, this.jdField_a_of_type_OrgJsonJSONObject);
     }
   }
 }

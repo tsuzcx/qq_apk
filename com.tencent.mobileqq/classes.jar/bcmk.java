@@ -1,6 +1,18 @@
-public abstract interface bcmk
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.FormEditItem;
+
+public class bcmk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(int paramInt);
+  public bcmk(FormEditItem paramFormEditItem) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem.a(this.a);
+  }
 }
 
 

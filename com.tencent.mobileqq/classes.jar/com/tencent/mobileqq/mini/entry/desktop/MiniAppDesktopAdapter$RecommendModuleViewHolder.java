@@ -36,16 +36,16 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
   public MiniAppDesktopAdapter$RecommendModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131370241));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131370246));
-    this.mTitle = ((TextView)paramView.findViewById(2131370245));
-    this.mRecommendNumber = ((TextView)paramView.findViewById(2131370244));
-    this.mRecommendDesc = ((TextView)paramView.findViewById(2131370242));
+    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131370240));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131370245));
+    this.mTitle = ((TextView)paramView.findViewById(2131370244));
+    this.mRecommendNumber = ((TextView)paramView.findViewById(2131370243));
+    this.mRecommendDesc = ((TextView)paramView.findViewById(2131370241));
+    this.mApps.add(paramView.findViewById(2131370234));
     this.mApps.add(paramView.findViewById(2131370235));
     this.mApps.add(paramView.findViewById(2131370236));
     this.mApps.add(paramView.findViewById(2131370237));
     this.mApps.add(paramView.findViewById(2131370238));
-    this.mApps.add(paramView.findViewById(2131370239));
   }
   
   public void bindView(Activity paramActivity, DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
@@ -54,7 +54,7 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130847451);
+      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130847457);
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), localURLDrawableOptions));

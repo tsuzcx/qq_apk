@@ -1,33 +1,45 @@
-public final class aaah
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class aaah
+  extends SQLiteOpenHelper
 {
-  public int a;
-  public long a;
-  public long[] a;
-  public long b;
+  private static aaah a;
   
-  public aaah()
+  private aaah(Context paramContext)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
+    super(paramContext, "sdk_db", null, 3);
   }
   
-  public aaah(long paramLong1, long paramLong2, long[] paramArrayOfLong)
+  public static aaah a(Context paramContext)
   {
-    this.jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L, 0L };
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfLong.length)
+    if (a == null) {}
+    try
     {
-      this.jdField_a_of_type_ArrayOfLong[i] = 0L;
-      i += 1;
+      if (a == null) {
+        a = new aaah(paramContext);
+      }
+      return a;
     }
+    finally {}
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL("CREATE TABLE result_objects (_id INTEGER PRIMARY KEY AUTOINCREMENT,params TEXT,is_real_time TINYINT,uin BIGINT,status TINYINT,occur_time BIGINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE upload_errors (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,plugin SMALLINT,uploadtime BIGINT,error_code SMALLINT,error_msg TEXT,http_get TEXT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE drop_frame (_id INTEGER PRIMARY KEY AUTOINCREMENT,uin BIGINT,scene TEXT,state TINYINT,drop_duration LONG,drop_count LONG,range_0 INT,range_1 INT,range_2_4 INT,range_4_8 INT,range_8_15 INT,range_over_15 INT,status TINYINT);");
+    paramSQLiteDatabase.execSQL("CREATE TABLE configs (_id INTEGER PRIMARY KEY AUTOINCREMENT,plugin SMALLINT,user_sample_ratio INT,threshold FLOAT,max_report_num INT,event_sample_ratio FLOAT,stack_depth INT);");
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("Drop table if exists result_objects");
+    paramSQLiteDatabase.execSQL("Drop table if exists upload_errors");
+    paramSQLiteDatabase.execSQL("Drop table if exists drop_frame");
+    paramSQLiteDatabase.execSQL("Drop table if exists configs");
+    onCreate(paramSQLiteDatabase);
   }
 }
 

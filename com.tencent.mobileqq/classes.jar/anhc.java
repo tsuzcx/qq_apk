@@ -1,10 +1,19 @@
-public abstract interface anhc
+import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.View;
+
+public class anhc
 {
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public static anhg a(View paramView)
+  {
+    if ((paramView instanceof SurfaceView)) {
+      return new anhi((SurfaceView)paramView);
+    }
+    if ((paramView instanceof TextureView)) {
+      return new anhj((TextureView)paramView);
+    }
+    return null;
+  }
 }
 
 

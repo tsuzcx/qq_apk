@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abmb;
-import abmc;
-import bcpw;
+import ablx;
+import ably;
+import bcql;
 
 public class LoginInfoActivity$7$1$1
   implements Runnable
 {
-  public LoginInfoActivity$7$1$1(abmc paramabmc) {}
+  public LoginInfoActivity$7$1$1(ably paramably) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131694489), 0).b(this.a.a.a.getTitleBarHeight());
+    bcql.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131694490), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

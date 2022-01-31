@@ -2,32 +2,32 @@ package com.tencent.biz.subscribe.utils;
 
 import android.text.TextUtils;
 import com.tencent.util.Pair;
-import wsz;
-import wtd;
+import wsw;
+import wta;
 
 public class SubscribeDraftManager$5
   implements Runnable
 {
-  public SubscribeDraftManager$5(wsz paramwsz, String paramString1, String paramString2, wtd paramwtd) {}
+  public SubscribeDraftManager$5(wsw paramwsw, String paramString1, String paramString2, wta paramwta) {}
   
   public void run()
   {
-    Object localObject = wsz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = wsw.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localObject != null)
     {
-      localObject = wsz.a(this.this$0, (String)((Pair)localObject).first);
+      localObject = wsw.a(this.this$0, (String)((Pair)localObject).first);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label74;
       }
-      if (this.jdField_a_of_type_Wtd != null) {
-        this.jdField_a_of_type_Wtd.a(6, true, this.b, new Object[] { localObject });
+      if (this.jdField_a_of_type_Wta != null) {
+        this.jdField_a_of_type_Wta.a(6, true, this.b, new Object[] { localObject });
       }
     }
     label74:
-    while (this.jdField_a_of_type_Wtd == null) {
+    while (this.jdField_a_of_type_Wta == null) {
       return;
     }
-    this.jdField_a_of_type_Wtd.a(6, false, this.b, null);
+    this.jdField_a_of_type_Wta.a(6, false, this.b, null);
   }
 }
 

@@ -1,87 +1,15 @@
-import android.content.Context;
-import android.text.SpannableStringBuilder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public class usc
-  extends wcr<ups>
+class usc
+  implements bcnl
 {
-  public static final String KEY = "DetailLikeListSegment";
-  private upc jdField_a_of_type_Upc;
-  private ups jdField_a_of_type_Ups;
-  private urs jdField_a_of_type_Urs = new urs(2);
-  private urt jdField_a_of_type_Urt = new urt();
-  private boolean b;
+  usc(usb paramusb, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public usc(Context paramContext)
+  public void a(String paramString)
   {
-    super(paramContext);
-  }
-  
-  public void R_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ups != null) && (this.jdField_a_of_type_Ups.b(this.b).size() > 0)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View a(int paramInt, vas paramvas, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (TextView)paramvas.a(2131369189);
-    SpannableStringBuilder localSpannableStringBuilder = upz.a(this.jdField_a_of_type_Ups.a, this.jdField_a_of_type_Ups.b(this.b), this.jdField_a_of_type_Urs);
-    if (localSpannableStringBuilder.length() == 0)
-    {
-      paramViewGroup.setVisibility(8);
-      return paramvas.a();
-    }
-    if ((this.jdField_a_of_type_Ups.b(this.b) >= 30) && (this.jdField_a_of_type_Ups.b(this.b) > this.jdField_a_of_type_Ups.b(this.b).size())) {
-      localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { vzo.a(this.jdField_a_of_type_Ups.b(this.b)) }));
-    }
-    for (;;)
-    {
-      paramViewGroup.setVisibility(0);
-      paramViewGroup.setText(localSpannableStringBuilder);
-      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_Urt);
-      break;
-      localSpannableStringBuilder.append("赞了");
-    }
-  }
-  
-  public String a()
-  {
-    return "DetailLikeListSegment";
-  }
-  
-  public vas a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new vas(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561220, paramViewGroup, false));
-  }
-  
-  public void a(upc paramupc)
-  {
-    this.jdField_a_of_type_Upc = paramupc;
-    this.jdField_a_of_type_Urs.a(paramupc);
-  }
-  
-  public void a(ups paramups, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Ups = paramups;
-    this.b = paramBoolean;
+    ved.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    svx.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 

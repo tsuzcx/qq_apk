@@ -1,12 +1,17 @@
-import java.util.concurrent.Executor;
-
-final class bjnk
-  implements Executor
+abstract interface bjnk
+  extends bjnr
 {
-  public void execute(Runnable paramRunnable)
-  {
-    bjnj.a().b(paramRunnable);
-  }
+  public abstract void a(bjns parambjns);
+  
+  public abstract void b(bjns parambjns);
+  
+  public abstract void c(bjns parambjns);
+  
+  public abstract void d(bjns parambjns);
+  
+  public abstract void e(bjns parambjns);
+  
+  public abstract void f(bjns parambjns);
 }
 
 

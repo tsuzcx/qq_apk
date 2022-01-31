@@ -1,13 +1,13 @@
 package com.tencent.biz.subscribe.component.base;
 
 import java.util.ArrayList;
+import woz;
 import wpc;
-import wpf;
 
 public class ComponentMergeAdapter$1
   implements Runnable
 {
-  public ComponentMergeAdapter$1(wpf paramwpf, wpc paramwpc) {}
+  public ComponentMergeAdapter$1(wpc paramwpc, woz paramwoz) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ComponentMergeAdapter$1
       this.a.onDetachedFromRecyclerView(this.this$0.a().a());
       this.this$0.b(this.a);
       this.this$0.a.remove(this.a);
-      wpf.a(this.this$0, this.a, 2);
+      wpc.a(this.this$0, this.a, 2);
       this.this$0.notifyDataSetChanged();
       return;
     }

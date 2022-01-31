@@ -1,179 +1,78 @@
 import android.opengl.GLES20;
-import android.os.Build;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
 
 public class alka
 {
-  int jdField_a_of_type_Int = 0;
-  FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  FloatBuffer b;
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private int[] jdField_b_of_type_ArrayOfInt;
   
-  public alka(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void b(int paramInt1, int paramInt2)
   {
-    a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException("width & height should > 0!");
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
+    if (this.jdField_b_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
+    }
+    this.jdField_a_of_type_ArrayOfInt = new int[1];
+    this.jdField_b_of_type_ArrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
+    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
+    GLES20.glBindTexture(3553, 0);
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public int a()
   {
-    float f1 = (float)(paramFloat2 / (paramFloat4 * 3.141592653589793D) * 360.0D);
-    float f2 = paramFloat1 * (paramFloat4 / 2.0F);
-    float f3 = paramFloat1 * paramFloat3;
-    int i1 = (int)(f1 / 1.0F);
-    float f4 = f1 / 1.0F;
-    this.jdField_a_of_type_Int = (i1 * 3 * 4);
-    Object localObject = new float[this.jdField_a_of_type_Int * 4];
-    float[] arrayOfFloat = new float[this.jdField_a_of_type_Int * 4];
-    QLog.i("AREngine_CylinderSide", 1, "initVertexData. w = " + paramFloat2 + ", h = " + f3 + ", d = " + paramFloat4 + ", angleLen = " + f1 + ", angdegSpan = " + 1.0F + ", ni = " + i1 + ", nf = " + f4);
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 1;
     int i = 0;
-    if ((Build.MODEL.equalsIgnoreCase("MI-ONE Plus")) || (Build.MODEL.equalsIgnoreCase("M040")))
-    {
-      j = 0;
-      i = 1;
+    if (this.jdField_b_of_type_ArrayOfInt != null) {
+      i = this.jdField_b_of_type_ArrayOfInt[0];
     }
-    for (paramFloat1 = 0.0F; Math.ceil(paramFloat1) < f1; paramFloat1 += 1.0F)
+    return i;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_b_of_type_ArrayOfInt != null)
     {
-      double d3 = Math.toRadians(paramFloat1);
-      double d2 = Math.toRadians(paramFloat1 + 1.0F);
-      paramFloat3 = k + 1;
-      paramFloat2 = paramFloat3;
-      double d1 = d2;
-      if (f1 - i1 * 1.0F > 0.01D)
-      {
-        paramFloat2 = paramFloat3;
-        d1 = d2;
-        if (k == i1)
-        {
-          d1 = Math.toRadians(f1 - i1 * 1.0F + paramFloat1);
-          paramFloat2 = k + (f1 - i1 * 1.0F) / 1.0F;
-          QLog.i("AREngine_CylinderSide", 1, "initVertexData. angrad = " + 180.0D * d3 / 3.141592653589793D + ", angradNext = " + 180.0D * d1 / 3.141592653589793D + ", k = " + k + ", kNext = " + paramFloat2);
-        }
-      }
-      int i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d3)));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d3)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d3) * d2));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (k / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      localObject[i2] = ((float)(f2 * Math.sin(d1)));
-      i2 = n + 1;
-      localObject[n] = 0.0F;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = i;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      i2 = n + 1;
-      localObject[n] = ((float)(f2 * Math.cos(d1)));
-      n = i2 + 1;
-      d2 = f2;
-      localObject[i2] = ((float)(Math.sin(d1) * d2));
-      i2 = n + 1;
-      localObject[n] = f3;
-      n = i2 + 1;
-      localObject[i2] = 0.0F;
-      i2 = m + 1;
-      arrayOfFloat[m] = (paramFloat2 / f4);
-      m = i2 + 1;
-      arrayOfFloat[i2] = j;
-      i2 = m + 1;
-      arrayOfFloat[m] = 0.0F;
-      m = i2 + 1;
-      arrayOfFloat[i2] = 1.0F;
-      k += 1;
+      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
+      this.jdField_b_of_type_ArrayOfInt = null;
     }
-    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(localObject.length * 4);
-    localByteBuffer.order(ByteOrder.nativeOrder());
-    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put((float[])localObject);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    localObject = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.b = ((ByteBuffer)localObject).asFloatBuffer();
-    this.b.put(arrayOfFloat);
-    this.b.position(0);
+    if (this.jdField_a_of_type_ArrayOfInt != null)
+    {
+      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+      this.jdField_a_of_type_ArrayOfInt = null;
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 16, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 16, this.b);
-    GLES20.glEnableVertexAttribArray(paramInt1);
-    GLES20.glEnableVertexAttribArray(paramInt2);
-    GLES20.glDrawArrays(4, 0, this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
+    {
+      long l = System.currentTimeMillis();
+      b(paramInt1, paramInt2);
+      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
+    }
+    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
   }
 }
 

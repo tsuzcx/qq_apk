@@ -1,50 +1,8 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class ampb<T>
+public abstract interface ampb<RESULT, PARAM>
 {
-  public abstract int a();
-  
-  public abstract Class<T> a();
-  
-  @NonNull
-  public abstract T a(int paramInt);
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("IQConfigProcessor", 2, "onReqNoReceive: type=" + a());
-    }
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(T paramT);
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public abstract int b();
-  
-  public int b(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  @Nullable
-  public abstract T b(ampi[] paramArrayOfampi);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public boolean d()
-  {
-    return false;
-  }
+  public abstract RESULT a(File paramFile, PARAM paramPARAM);
 }
 
 

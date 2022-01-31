@@ -1,33 +1,44 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import java.util.Iterator;
+import java.util.List;
 
 public class rui
-  extends bbgg
+  implements ViewPager.OnPageChangeListener
 {
-  AnimationTextView a;
+  private rui(ViewPagerCompat paramViewPagerCompat) {}
   
-  public rui(Context paramContext, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramContext, paramInt);
-    a();
-  }
-  
-  private void a()
-  {
-    this.a = ((AnimationTextView)findViewById(2131375757));
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a != null) {
-      this.a.setText(paramString);
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
     }
   }
   
-  public void setContentView(int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    super.setContentView(paramInt);
-    a();
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 

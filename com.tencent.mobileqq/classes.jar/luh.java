@@ -1,14 +1,6 @@
-class luh
-  implements lum
+public abstract interface luh
 {
-  luh(lug paramlug) {}
-  
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a();
 }
 
 

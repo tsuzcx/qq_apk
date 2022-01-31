@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.util.Log;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,10 +15,10 @@ class InternalJSPlugin$5
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.val$activity, 230, ajyc.a(2131705804), String.format(ajyc.a(2131705802), new Object[] { this.val$appName }), ajyc.a(2131705799), ajyc.a(2131705797), new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this));
+    bbgu localbbgu = bbdj.a(this.val$activity, 230, ajya.a(2131705815), String.format(ajya.a(2131705813), new Object[] { this.val$appName }), ajya.a(2131705810), ajya.a(2131705808), new InternalJSPlugin.5.1(this), new InternalJSPlugin.5.2(this));
     try
     {
-      localbbgg.show();
+      localbbgu.show();
       return;
     }
     catch (Exception localException)

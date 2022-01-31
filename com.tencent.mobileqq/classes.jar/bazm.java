@@ -1,44 +1,14 @@
-import android.app.Activity;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.WindowManager;
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
 
-public class bazm
+class bazm
+  extends BitmapDrawable
 {
-  public static void a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
-    switch (paramActivity.getResources().getConfiguration().orientation)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      paramActivity.setRequestedOrientation(i);
-      return;
-      if ((i == 0) || (i == 1) || (!bfni.c())) {
-        break;
-      }
-      i = 8;
-      continue;
-      if ((i != 0) && (i != 3) && (bfni.c())) {
-        i = 9;
-      } else {
-        i = 1;
-      }
-    }
-  }
+  private final WeakReference<bazn> a;
   
-  public static void b(Activity paramActivity)
+  public bazn a()
   {
-    if (paramActivity != null) {
-      paramActivity.setRequestedOrientation(-1);
-    }
+    return (bazn)this.a.get();
   }
 }
 

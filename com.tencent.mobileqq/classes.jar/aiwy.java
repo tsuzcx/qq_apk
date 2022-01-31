@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aiwy
-  implements Animation.AnimationListener
+  implements aixe
 {
   public aiwy(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    this.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

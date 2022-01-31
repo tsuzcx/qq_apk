@@ -1,29 +1,24 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class vnu
+class vnu
+  implements Animation.AnimationListener
 {
-  public final ArrayList<vlj> a;
-  @NonNull
-  public final vko a;
-  @NonNull
-  public final vkp a;
-  @NonNull
-  public final vkz a;
-  @NonNull
-  public final vld a;
+  vnu(vns paramvns) {}
   
-  public vnu(@NonNull vld paramvld, @NonNull vkz paramvkz, @NonNull vkp paramvkp, @NonNull vko paramvko)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Vld = paramvld;
-    this.jdField_a_of_type_Vkz = paramvkz;
-    this.jdField_a_of_type_Vkp = paramvkp;
-    this.jdField_a_of_type_Vko = paramvko;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkp);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramvkz);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramvld);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Vnn != null) {
+      this.a.a.jdField_a_of_type_Vnn.a(null);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,39 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-public class ntf
-  extends Handler
+class ntf
+  implements reb
 {
-  private WeakReference<ntb> a;
+  ntf(nte paramnte) {}
   
-  public ntf(ntb paramntb)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramntb);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ntb localntb = (ntb)this.a.get();
-    if (localntb == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          ntb.a(localntb);
-          return;
-        }
-      } while (ntb.a(localntb) == null);
-      ntb.a(localntb).a(ntb.a(localntb));
-      return;
-    } while (ntb.a(localntb) == null);
-    ntb.a(localntb).b();
+    if (this.a.jdField_a_of_type_Rhm != null) {
+      this.a.jdField_a_of_type_Rhm.a(paramInt, this.a.jdField_a_of_type_Int);
+    }
   }
 }
 

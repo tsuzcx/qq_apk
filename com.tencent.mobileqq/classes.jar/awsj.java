@@ -12,26 +12,26 @@ import org.json.JSONObject;
 class awsj
   implements View.OnClickListener
 {
-  awsj(awsa paramawsa, Context paramContext, awpf paramawpf) {}
+  awsj(awsc paramawsc, Context paramContext, awph paramawph) {}
   
   public void onClick(View paramView)
   {
     paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    awvy.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awpf.a.jdField_a_of_type_JavaLangString);
-    awiv localawiv;
+    awwa.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awph.a.jdField_a_of_type_JavaLangString);
+    awix localawix;
     JSONObject localJSONObject;
-    if (awiu.b.containsKey(this.jdField_a_of_type_Awpf))
+    if (awiw.b.containsKey(this.jdField_a_of_type_Awph))
     {
-      localawiv = (awiv)awiu.b.get(this.jdField_a_of_type_Awpf);
+      localawix = (awix)awiw.b.get(this.jdField_a_of_type_Awph);
       localJSONObject = new JSONObject();
     }
     try
     {
-      localJSONObject.put("project", awso.a());
+      localJSONObject.put("project", awsq.a());
       localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localawiv.jdField_a_of_type_Int);
+      localJSONObject.put("obj_lct", localawix.jdField_a_of_type_Int);
       localJSONObject.put("get_src", "web");
-      awso.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawiv.jdField_a_of_type_Long + "").obj2(localawiv.b).ver1(localawiv.jdField_a_of_type_JavaLangString).ver2(awso.a(this.jdField_a_of_type_Awpf.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
+      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawix.jdField_a_of_type_Long + "").obj2(localawix.b).ver1(localawix.jdField_a_of_type_JavaLangString).ver2(awsq.a(this.jdField_a_of_type_Awph.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
       return;
     }
     catch (JSONException localJSONException)

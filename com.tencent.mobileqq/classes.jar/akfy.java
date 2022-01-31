@@ -1,48 +1,105 @@
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.mobileqq.app.SVIPHandler.2;
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastRsp;
+import QC.BubbleRecommendRsp;
+import QC.FaceRsp;
+import QC.FontRecommendRsp;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class akfy
-  implements ajtg
+  implements ajte
 {
-  public akfy(SVIPHandler.2 param2, aiqz paramaiqz) {}
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp) {}
+  
+  public void a(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp) {}
+  
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp) {}
+  
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp) {}
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void d(boolean paramBoolean, Object paramObject) {}
+  
+  public void e(boolean paramBoolean, Object paramObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
+    switch (paramInt)
     {
-      if ((paramObject instanceof List))
+    default: 
+    case 101: 
+      do
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        return;
+        if ((paramObject instanceof Integer))
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
-            while (localIterator.hasNext())
-            {
-              Object localObject = (DiyPendantSticker)localIterator.next();
-              localObject = this.jdField_a_of_type_Aiqz.a((DiyPendantSticker)localObject);
-              this.jdField_a_of_type_Aiqz.b.add(localObject);
-            }
-          }
+          a(((Integer)paramObject).intValue());
+          return;
         }
-      }
+      } while (!QLog.isColorLevel());
+      QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
+      return;
+    case 100: 
+      a();
+      return;
+    case 102: 
+      b(paramBoolean, paramObject);
+      return;
+    case 103: 
+      c(paramBoolean, paramObject);
+      return;
+    case 104: 
+      d(paramBoolean, paramObject);
+      return;
+    case 105: 
+      a(paramBoolean, paramObject);
+      return;
+    case 106: 
+      e(paramBoolean, paramObject);
+      return;
+    case 113: 
+      a(paramBoolean, (MessageRemindRsp)paramObject);
+      return;
+    case 107: 
+      a(paramBoolean, (FontRecommendRsp)paramObject);
+      return;
+    case 108: 
+      a(paramBoolean, (BubbleRecommendRsp)paramObject);
+      return;
+    case 109: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 110: 
+      a((Bundle)paramObject);
+      return;
+    case 111: 
+      a(paramBoolean, (GetRoamToastRsp)paramObject);
+      return;
+    case 112: 
+      a(paramBoolean, (FaceRsp)paramObject);
       return;
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
-    }
-    this.jdField_a_of_type_Aiqz.b();
+    paramObject = (Object[])paramObject;
+    a((String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
 }
 

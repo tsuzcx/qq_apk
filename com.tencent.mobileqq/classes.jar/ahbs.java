@@ -1,37 +1,9 @@
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import java.util.HashMap;
-import java.util.List;
 
-class ahbs
-  implements ahbt
+public abstract interface ahbs
 {
-  ahbs(ahbr paramahbr) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    int i = 1;
-    ahbr localahbr = this.a;
-    localahbr.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Ahbu != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Ahbu;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
-    }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
-  }
+  public abstract void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap);
 }
 
 

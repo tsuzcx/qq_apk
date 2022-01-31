@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import bhxl;
+import bhyc;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
@@ -27,12 +27,12 @@ public class TroopHWRecordBaseActivity
   
   public TroopHWRecordBaseActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bhxl(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bhyc(this);
   }
   
   private void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130849167);
+    paramResources = paramResources.getDrawable(2130849176);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -56,7 +56,7 @@ public class TroopHWRecordBaseActivity
     this.jdField_a_of_type_AndroidViewView = findViewById(2131377646);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1291845632);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374987));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374989));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     a();
   }
@@ -75,7 +75,7 @@ public class TroopHWRecordBaseActivity
   public void finish()
   {
     super.finish();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130849552);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130849561);
   }
   
   public boolean onBackEvent()

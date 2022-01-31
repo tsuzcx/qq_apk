@@ -1,24 +1,17 @@
 final class agma
-  extends aglx
+  extends aglv
 {
-  public boolean a(String paramString)
-  {
-    if (!super.a(paramString)) {}
-    do
-    {
-      return false;
-      paramString = agmo.a(paramString);
-    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmo.a(paramString[1])));
-    return true;
-  }
-  
-  public boolean b()
+  public boolean a()
   {
     return false;
   }
   
-  public boolean d()
+  public boolean a(String paramString)
   {
+    if (!super.a(paramString)) {}
+    while (agmm.b(paramString)) {
+      return false;
+    }
     return true;
   }
 }

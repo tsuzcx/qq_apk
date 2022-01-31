@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.report;
 
-import akde;
+import akdd;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
 import android.os.SystemClock;
@@ -42,7 +42,7 @@ public class MiniGamePerformanceStatics
         reset();
         return;
       }
-      f3 = (float)(akde.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
+      f3 = (float)(akdd.a("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
       f4 = this.mAverageMemory.calculate();
       f5 = this.mMaxMemory.calculate() - this.mStartMemory;
       if (!this.miniAppConfig.isReportTypeMiniGame()) {
@@ -94,7 +94,7 @@ public class MiniGamePerformanceStatics
     this.mAverageMemory.reset();
     this.mAverageFps.reset();
     this.mFpsVariance.reset();
-    this.mStartCpuTime = akde.a("-1");
+    this.mStartCpuTime = akdd.a("-1");
     this.mStartTimeMillis = SystemClock.uptimeMillis();
   }
   

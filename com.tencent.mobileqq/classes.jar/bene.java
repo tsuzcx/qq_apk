@@ -1,178 +1,267 @@
-import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.LinearInterpolator;
+import android.view.Window;
+import android.view.accessibility.AccessibilityEvent;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.qqmini.sdk.core.widget.ToastView.1;
+import java.util.List;
 
 public class bene
+  extends Dialog
 {
-  private int jdField_a_of_type_Int = 1500;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ToastView.1(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new benf(this);
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  protected EditText a;
+  public ImageView a;
+  protected LinearLayout a;
+  ListView jdField_a_of_type_AndroidWidgetListView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  protected TextView a;
+  private benk jdField_a_of_type_Benk = new benk(null);
+  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private ImageView b;
+  protected TextView b;
+  protected TextView c;
+  protected TextView d;
+  protected TextView e;
+  TextView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  private TextView j;
+  private TextView k;
   
-  public bene(Context paramContext, ViewGroup paramViewGroup)
+  @TargetApi(14)
+  public bene(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    super(paramContext, paramInt);
+    super.getWindow().setWindowAnimations(2131755749);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
+    }
   }
   
-  public static int a(String paramString)
+  protected int a()
   {
-    if ("success".equals(paramString)) {
-      return 2130840727;
-    }
-    if ("warn".equals(paramString)) {
-      return 2130840725;
-    }
-    if ("loading".equals(paramString)) {
-      return 2130840806;
-    }
-    return 2130840726;
+    return 2131559294;
   }
   
-  private void a(int paramInt)
+  protected int a(int paramInt)
   {
-    if (paramInt != 0) {
-      a(this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramInt));
-    }
+    return paramInt;
   }
   
-  private void a(int paramInt, boolean paramBoolean)
+  public TextView a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559302, null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(paramBoolean);
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377522);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377519);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(2000L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatMode(1);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
-    ((TextView)localObject).setEms(7);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    return this.e;
+  }
+  
+  public bene a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
     {
-      localImageView.setVisibility(0);
-      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((TextView)localObject).setMaxLines(1);
+      this.d.setVisibility(8);
+      return this;
     }
-    while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
-    {
-      ((TextView)localObject).setVisibility(8);
-      localObject = localImageView.getLayoutParams();
-      if (localObject != null)
-      {
-        localObject = (LinearLayout.LayoutParams)localObject;
-        ((LinearLayout.LayoutParams)localObject).gravity = 17;
-        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      return;
-      localImageView.setVisibility(8);
-      ((TextView)localObject).setGravity(17);
-      if (paramInt == 1)
-      {
-        ((TextView)localObject).setMaxLines(1);
-      }
-      else if (paramInt == 0)
-      {
-        ((TextView)localObject).setEms(18);
-        ((TextView)localObject).setMaxLines(2);
-      }
-    }
-    ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
-  }
-  
-  private void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  private void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  private void b()
-  {
-    besl.a("ToastView", "show mParentView=" + this.jdField_a_of_type_AndroidViewViewGroup + ",toastLayout=" + this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
-      if (this.jdField_a_of_type_Int > -1) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
-      }
-    }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    besl.a("ToastView", "hide mParentView=" + this.jdField_a_of_type_AndroidViewViewGroup + ",toastLayout=" + this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  }
-  
-  public void a(int paramInt1, String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
-  {
-    besl.a("ToastView", "show iconType=" + paramString1 + ",localIconPath=" + paramString2 + ",msg=" + paramCharSequence + ",duration=" + paramInt2 + ",mask=" + paramBoolean);
+    this.d.setText(paramInt);
+    this.d.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131694210));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new beni(this, paramOnClickListener));
     a();
-    if (!TextUtils.isEmpty(paramString2)) {
-      a(new BitmapDrawable(paramString2));
-    }
-    for (;;)
-    {
-      a(paramCharSequence);
-      b(paramInt2);
-      a(paramInt1, paramBoolean);
-      b();
-      return;
-      a(a(paramString1));
-    }
+    return this;
   }
   
-  public boolean a()
+  public bene a(View paramView, LinearLayout.LayoutParams paramLayoutParams)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    while (this.jdField_a_of_type_AndroidViewView.getParent() == null) {
-      return false;
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramLayoutParams);
+    return this;
+  }
+  
+  public bene a(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      return this;
     }
-    return true;
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
+  }
+  
+  public bene a(String paramString)
+  {
+    if (paramString != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
+      return this;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    return this;
+  }
+  
+  public bene a(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setTextColor(paramInt);
+    return a(paramString, paramOnClickListener);
+  }
+  
+  public bene a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.d.setVisibility(8);
+      return this;
+    }
+    this.d.setText(paramString);
+    this.d.setContentDescription(paramString + getContext().getString(2131694210));
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(new beng(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  protected void a() {}
+  
+  public bene b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.e.setVisibility(8);
+      return this;
+    }
+    this.e.setText(paramInt);
+    this.e.setContentDescription(getContext().getString(paramInt));
+    this.e.setVisibility(0);
+    this.e.setOnClickListener(new benj(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  public bene b(String paramString, int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.e.setVisibility(8);
+      return this;
+    }
+    this.e.setTextColor(paramInt);
+    return b(paramString, paramOnClickListener);
+  }
+  
+  public bene b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.e.setVisibility(8);
+      return this;
+    }
+    this.e.setText(paramString);
+    this.e.setContentDescription(paramString + getContext().getString(2131694210));
+    this.e.setVisibility(0);
+    this.e.setOnClickListener(new benh(this, paramOnClickListener));
+    a();
+    return this;
+  }
+  
+  /* Error */
+  public void dismiss()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 181	android/app/Dialog:dismiss	()V
+    //   4: return
+    //   5: astore_1
+    //   6: aload_1
+    //   7: athrow
+    //   8: astore_1
+    //   9: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	10	0	this	bene
+    //   5	2	1	localObject	java.lang.Object
+    //   8	1	1	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	4	5	finally
+    //   0	4	8	java/lang/Exception
+  }
+  
+  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramAccessibilityEvent.getEventType() == 32) {
+      paramAccessibilityEvent.getText().add(getContext().getString(2131694211));
+    }
+    super.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(Dialog.class.getName());
+    return false;
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365150));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365146));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365131));
+    this.c = ((TextView)findViewById(2131365124));
+    this.g = ((TextView)findViewById(2131365418));
+    this.f = ((TextView)findViewById(2131371907));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366690));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366689);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379007));
+    this.j = ((TextView)findViewById(2131369588));
+    this.k = ((TextView)findViewById(2131369589));
+    this.d = ((TextView)findViewById(2131365135));
+    this.e = ((TextView)findViewById(2131365141));
+    this.h = ((TextView)findViewById(2131365132));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131365176));
+    this.d.setVisibility(8);
+    this.e.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363314));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131377619));
+    this.i = ((TextView)findViewById(2131378457));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369266));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365142));
+    if ((this.jdField_a_of_type_AndroidWidgetListView != null) && (Build.VERSION.SDK_INT >= 9)) {
+      this.jdField_a_of_type_AndroidWidgetListView.setOverScrollMode(2);
+    }
+    this.jdField_a_of_type_Benk.a(findViewById(2131365109));
+  }
+  
+  public void setTitle(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getContext().getString(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
   }
 }
 

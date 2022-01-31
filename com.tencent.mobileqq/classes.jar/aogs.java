@@ -1,17 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aogs
-  implements DialogInterface.OnClickListener
+  extends aoez
 {
-  public aogs(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public aogs(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, aogm paramaogm, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    if (paramInt != ExtendFriendBaseFragment.a(this.a)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (paramaogm == null));
+      localObject = ((ajxl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    } while (localObject == null);
+    ExtendFriendBaseFragment localExtendFriendBaseFragment = this.a;
+    if (!TextUtils.isEmpty(paramaogm.mDeclaration)) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localExtendFriendBaseFragment.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.b = ((Card)localObject).isShowCard;
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBaseFragment", 2, String.format("addMyFeed mProfileComplete=%s mShowCard=%s", new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Boolean.valueOf(this.a.b) }));
+      }
+      if (this.a.jdField_a_of_type_Aoiz == null) {
+        break;
+      }
+      localObject = this.a.jdField_a_of_type_Aoiz.a(0);
+      paramaogm.mIsMyFeed = true;
+      if ((localObject != null) && (TextUtils.equals(((aogm)localObject).mUin, paramaogm.mUin))) {
+        this.a.jdField_a_of_type_Aoiz.b(0);
+      }
+      this.a.jdField_a_of_type_Aoiz.a(0, paramaogm);
+      if (!TextUtils.isEmpty(paramaogm.mDeclaration)) {
+        paramaogm.mDeclaration = paramaogm.mDeclaration.replace('\n', ' ').trim();
+      }
+      if ((!this.a.b) || (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Aoiz.b(0);
+      }
+      this.a.jdField_a_of_type_Aoiz.notifyDataSetChanged();
+      return;
+    }
   }
 }
 

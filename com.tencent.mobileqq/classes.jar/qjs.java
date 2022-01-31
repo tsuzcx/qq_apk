@@ -1,16 +1,36 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
-
 public abstract interface qjs
 {
-  public abstract View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup);
+  public abstract void a(qql paramqql);
   
-  public abstract void a(VideoInfo paramVideoInfo);
+  public abstract void a(qql paramqql, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(DragFrameLayout paramDragFrameLayout);
+  public abstract void a(qql paramqql, int paramInt, boolean paramBoolean);
+  
+  public abstract void a(qql paramqql, long paramLong1, long paramLong2);
+  
+  public abstract void a(qql paramqql, boolean paramBoolean);
+  
+  public abstract boolean a(qql paramqql);
+  
+  public abstract void b(qql paramqql);
+  
+  public abstract void b(qql paramqql, boolean paramBoolean);
+  
+  public abstract void c(qql paramqql);
+  
+  public abstract void d(qql paramqql);
+  
+  public abstract void e(qql paramqql);
+  
+  public abstract void f(qql paramqql);
+  
+  public abstract void g(qql paramqql);
+  
+  public abstract void h(qql paramqql);
+  
+  public abstract void i(qql paramqql);
+  
+  public abstract void j(qql paramqql);
 }
 
 

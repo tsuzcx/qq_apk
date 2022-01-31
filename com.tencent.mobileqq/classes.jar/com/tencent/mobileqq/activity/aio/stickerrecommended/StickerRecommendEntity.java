@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aukm;
+import auko;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="usrMessage")
 public class StickerRecommendEntity
-  extends aukm
+  extends auko
 {
   public long cachedTime;
   public String recList;

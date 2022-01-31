@@ -1,12 +1,8 @@
-import android.graphics.drawable.Drawable;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
-public abstract class bial
+public abstract interface bial
 {
-  public volatile int mCount;
-  
-  public abstract void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable);
-  
-  public abstract void onFailed(String paramString1, int paramInt, String paramString2);
+  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
 }
 
 

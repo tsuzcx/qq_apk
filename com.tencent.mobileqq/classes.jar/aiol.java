@@ -1,96 +1,78 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.FriendListHandler.AddBatchPhoneFriendResult;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aiol
-  extends ajxl
+  extends ajvj
 {
-  aiol(aiof paramaiof) {}
+  aiol(aiod paramaiod) {}
   
-  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<FriendListHandler.AddBatchPhoneFriendResult> paramArrayList)
+  public void a(long paramLong)
   {
-    if (paramBoolean) {
-      aiof.c(this.a);
-    }
-  }
-  
-  protected void onAddFriend(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    ArrayList localArrayList;
+    if (paramLong == 0L) {}
+    String str1;
+    String str2;
     do
     {
-      return;
-      localArrayList = (ArrayList)aiof.a(this.a).clone();
-    } while (localArrayList.isEmpty());
-    Iterator localIterator = localArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (atyy)localIterator.next();
-      if ((localObject instanceof atyt))
+      do
       {
-        localObject = (atyt)localObject;
-        int i = ((atyt)localObject).a.structMsg.msg.sub_type.get();
-        localObject = ((atyt)localObject).a.senderuin;
-        if ((i == 13) && (paramString.equals(localObject))) {
-          localIterator.remove();
+        return;
+      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
+      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      str2 = bbcz.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
+        aiod.a(this.a, false);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      a(paramLong);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            a(((Long)localObject).longValue());
+          }
         }
       }
-    }
-    aiof.a(this.a, localArrayList);
-    this.a.notifyDataSetChanged();
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
-    }
-  }
-  
-  public void onSuspiciousGetUnreadNum(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSuspiciousGetUnreadNum " + paramBoolean + " " + paramInt1 + " " + paramInt2);
-    }
-    if ((aiof.a(this.a) != null) && (aiof.a(this.a).getVisibility() == 0))
-    {
-      if ((paramBoolean) && (paramInt2 > 0)) {
-        aiof.a(this.a).setText(paramInt2 + "");
-      }
-    }
-    else {
       return;
     }
-    aiof.a(this.a).setText("");
   }
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean1) && (bldc.a(paramBundle.getInt("source_id")))) {
-      aiof.c(this.a);
+    if (paramBoolean) {}
+    try
+    {
+      a(Long.parseLong(paramString));
+      return;
     }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.notifyDataSetChanged();
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

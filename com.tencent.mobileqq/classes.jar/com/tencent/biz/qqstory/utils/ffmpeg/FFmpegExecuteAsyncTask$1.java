@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import com.tencent.qphone.base.util.QLog;
-import wal;
-import wam;
+import wai;
+import waj;
 
 public class FFmpegExecuteAsyncTask$1
   implements Runnable
 {
-  public FFmpegExecuteAsyncTask$1(wal paramwal) {}
+  public FFmpegExecuteAsyncTask$1(wai paramwai) {}
   
   public void run()
   {

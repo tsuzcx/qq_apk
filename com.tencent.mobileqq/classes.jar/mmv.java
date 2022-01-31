@@ -1,19 +1,33 @@
-import android.database.DataSetObserver;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
-class mmv
-  extends DataSetObserver
+public class mmv
+  extends Handler
 {
-  mmv(mmu parammmu, EffectCycleViewPager paramEffectCycleViewPager) {}
+  WeakReference<EffectFilterTextPager> a;
   
-  public void onChanged()
+  public mmv(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    this.jdField_a_of_type_Mmu.notifyDataSetChanged();
+    this.a = new WeakReference(paramEffectFilterTextPager);
   }
   
-  public void onInvalidated()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Mmu.notifyDataSetChanged();
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
+    }
   }
 }
 

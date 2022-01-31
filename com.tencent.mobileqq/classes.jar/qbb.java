@@ -1,10 +1,11 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 public class qbb
-  extends qbc
 {
-  public qbb(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
-  {
-    super(paramLong, paramInteger, paramString1, paramString2);
-  }
+  public String a;
+  public List<RecommendFollowInfo> a = new ArrayList();
 }
 
 

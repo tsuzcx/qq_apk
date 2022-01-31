@@ -3,7 +3,7 @@ package com.tencent.mobileqq.service.qzone;
 import NS_UNDEAL_COUNT.entrance_cfg;
 import NS_UNDEAL_COUNT.mobile_count_rsp_new;
 import NS_UNDEAL_COUNT.st_report_info;
-import ajyc;
+import ajya;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
-import nam;
+import naj;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +60,7 @@ public class QZoneTitleTabManager
           localObject1 = localTabInfo.jdField_a_of_type_JavaLangString;
           paramArrayList = (ArrayList<QZoneTitleTabManager.TabInfo>)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramArrayList = ajyc.a(2131720020);
+            paramArrayList = ajya.a(2131720031);
           }
           ((ArrayList)localObject2).add(new QZoneTitleTabManager.TabInfo(localTabInfo.jdField_a_of_type_Int, paramArrayList));
         }
@@ -73,7 +73,7 @@ public class QZoneTitleTabManager
     if (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_Int == 50) {
       if (!TextUtils.isEmpty(((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString)) {}
     }
-    for (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = ajyc.a(2131712379);; ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = ajyc.a(2131712380))
+    for (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = ajya.a(2131712390);; ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = ajya.a(2131712391))
     {
       ((ArrayList)localObject1).add(localObject2);
       if (!a(paramArrayList)) {
@@ -242,7 +242,7 @@ public class QZoneTitleTabManager
       do
       {
         return false;
-        if ((nam.a(paramTabInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramTabInfo.jdField_a_of_type_JavaLangString))) {
+        if ((naj.a(paramTabInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramTabInfo.jdField_a_of_type_JavaLangString))) {
           return true;
         }
         if (paramTabInfo.jdField_a_of_type_Int != 51) {
@@ -252,7 +252,7 @@ public class QZoneTitleTabManager
       return true;
       if (paramTabInfo.jdField_a_of_type_Int == 15)
       {
-        if (!nam.a(paramTabInfo.jdField_b_of_type_JavaLangString)) {
+        if (!naj.a(paramTabInfo.jdField_b_of_type_JavaLangString)) {
           paramTabInfo.jdField_b_of_type_JavaLangString = "https://h5.qzone.qq.com/secret/list/{uin}/secret?_proxy=1&_wv=3&source=tab";
         }
         return true;

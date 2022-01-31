@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class SquareFeedListEntry
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public String feedId;
   public int type;
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahxo;
-import aiam;
-import aiar;
+import ahxm;
+import aiak;
+import aiap;
 import android.content.Context;
 import android.content.res.Resources;
 import android.opengl.GLSurfaceView;
@@ -10,8 +10,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import axil;
-import axja;
+import axin;
+import axjc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
@@ -54,7 +54,7 @@ public class FSurfaceViewLayout
   public int a()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Aiar.a;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Aiap.a;
     }
     return 0;
   }
@@ -76,7 +76,7 @@ public class FSurfaceViewLayout
   public void a(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axja.a(paramBoolean, paramFloat1);
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.a(paramBoolean, paramFloat1);
     }
   }
   
@@ -124,7 +124,7 @@ public class FSurfaceViewLayout
     return false;
   }
   
-  public boolean a(Context paramContext, aiam paramaiam, PreviewContext paramPreviewContext)
+  public boolean a(Context paramContext, aiak paramaiak, PreviewContext paramPreviewContext)
   {
     if (!this.d)
     {
@@ -160,7 +160,7 @@ public class FSurfaceViewLayout
         this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setId(2131366419);
       }
       paramContext = (CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
-      paramContext.setFilterListener(paramaiam);
+      paramContext.setFilterListener(paramaiak);
       paramContext.setVideoContext(paramPreviewContext);
       paramContext.b();
       this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setLayoutParams(localLayoutParams);
@@ -192,7 +192,7 @@ public class FSurfaceViewLayout
   public int b()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axil.c();
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axin.c();
     }
     return 0;
   }
@@ -207,7 +207,7 @@ public class FSurfaceViewLayout
   public boolean b()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null) && ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraFilterGLView))) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axja.d;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.d;
     }
     return true;
   }
@@ -222,7 +222,7 @@ public class FSurfaceViewLayout
   public boolean c()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null) && ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraFilterGLView))) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axja.e;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.e;
     }
     return true;
   }
@@ -239,7 +239,7 @@ public class FSurfaceViewLayout
   public void e()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axil.b();
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axin.b();
     }
   }
   
@@ -285,17 +285,17 @@ public class FSurfaceViewLayout
     }
   }
   
-  public void setPreviewSize(int paramInt1, int paramInt2, ahxo paramahxo)
+  public void setPreviewSize(int paramInt1, int paramInt2, ahxm paramahxm)
   {
     if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView == null) {
       return;
     }
     if (this.c)
     {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxo);
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxm);
       return;
     }
-    ((CameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxo);
+    ((CameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxm);
   }
   
   public void setVideoFilter(String paramString)

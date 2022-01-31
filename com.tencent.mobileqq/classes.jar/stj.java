@@ -1,46 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class stj
-  extends SimpleJob<Object>
+public class stj
 {
-  stj(sti paramsti, String paramString)
+  public long a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  
+  public stj()
   {
-    super(paramString);
+    this.jdField_a_of_type_ArrayOfByte = new byte[1];
   }
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public void a()
   {
-    Object localObject = (String)((tcv)tdc.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
-    synchronized (this.a.b)
+    try
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        long l = this.a.a.jdField_a_of_type_Long;
-        if (l != 0L) {}
-      }
-      try
-      {
-        paramVarArgs = new stm();
-        localObject = new JSONObject((String)localObject);
-        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-        paramVarArgs.jdField_a_of_type_ArrayOfByte = bbdm.a(((JSONObject)localObject).getString("ak"));
-        this.a.a = paramVarArgs;
-        veg.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          veg.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
-        }
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.jdField_a_of_type_Long);
+      localJSONObject.put("ak", bbea.a(this.jdField_a_of_type_ArrayOfByte));
+      ((tcs)tcz.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      ved.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
+      return;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
+    {
+      ved.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
+      return true;
+    }
+    ved.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+  }
+  
+  public String toString()
+  {
+    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
   }
 }
 

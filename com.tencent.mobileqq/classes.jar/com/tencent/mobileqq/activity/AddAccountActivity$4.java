@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ahnn;
+import ahnl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,7 +11,7 @@ final class AddAccountActivity$4
   
   public void run()
   {
-    ahnn.a().a(this.a, BaseApplicationImpl.sApplication, false, true);
+    ahnl.a().a(this.a, BaseApplicationImpl.sApplication, false, true);
   }
 }
 

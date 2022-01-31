@@ -1,16 +1,15 @@
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class aovk
-  implements aoup
+  implements aout
 {
-  aovk(aovj paramaovj, String paramString, aovr paramaovr) {}
+  aovk(aovj paramaovj, String paramString, aovv paramaovv) {}
   
   public void a(int paramInt, String paramString)
   {
     boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
     boolean bool1;
     if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
       bool1 = true;
@@ -18,9 +17,9 @@ class aovk
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovj.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovj.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
       }
-      this.jdField_a_of_type_Aovr.a(aouu.a(this.jdField_a_of_type_Aovj.jdField_a_of_type_Long, bool2), bool1);
+      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovj.jdField_a_of_type_Long, bool2), bool1);
       return;
       if ((paramInt == -6101) || (paramInt == -7003))
       {
@@ -37,7 +36,7 @@ class aovk
   public void a(String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardFileType", "1");
     localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aovj.jdField_a_of_type_JavaLangString);
     localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aovj.jdField_a_of_type_Long + "");
@@ -46,25 +45,10 @@ class aovk
     localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aovj.e);
     localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aovj.f);
     localBundle.putString("_m_ForwardUuid", paramString);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Aovj.e))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aovj.f)) {
-        break label257;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovj.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
     }
-    label257:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aovj.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovj.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
-      }
-      aouu.a(aouu.a(this.jdField_a_of_type_Aovj.jdField_a_of_type_Aouu), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aovj.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aovr);
-      return;
-      i = Integer.parseInt(this.jdField_a_of_type_Aovj.e);
-      break;
-    }
+    this.jdField_a_of_type_Aovv.a(paramString, localBundle);
   }
 }
 

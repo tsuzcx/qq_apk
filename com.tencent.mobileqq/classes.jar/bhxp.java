@@ -1,8 +1,21 @@
-public abstract interface bhxp
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
+
+public class bhxp
+  implements QQPermissionCallback
 {
-  public abstract void a(String paramString);
+  public bhxp(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, Activity paramActivity) {}
   
-  public abstract void b(String paramString);
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bbdj.b(this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b(this.jdField_a_of_type_Int);
+  }
 }
 
 

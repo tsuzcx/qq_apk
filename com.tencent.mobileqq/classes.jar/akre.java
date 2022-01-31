@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
 class akre
-  implements ayth
+  implements akop
 {
-  akre(akqx paramakqx, long paramLong1, long paramLong2, long paramLong3) {}
+  akre(akqw paramakqw, long paramLong, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void a(aytj paramaytj, ayti paramayti)
+  public ToServiceMsg a()
   {
-    try
-    {
-      paramaytj = paramaytj.a.getWupBuffer();
-      paramayti = new structmsg.RspSystemMsgRead();
-      paramayti.mergeFrom(paramaytj);
-      int i = paramayti.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
-      }
-      return;
-    }
-    catch (Exception paramaytj)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramaytj);
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqw.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("type", 1L);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 

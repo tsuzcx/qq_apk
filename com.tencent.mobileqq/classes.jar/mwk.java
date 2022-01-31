@@ -1,29 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View.OnTouchListener;
 import com.tencent.biz.PoiMapActivity;
 
 public class mwk
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
   public mwk(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramAnimation = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
-    paramAnimation.bottomMargin = (this.a.p + this.a.q);
-    PoiMapActivity.c(this.a).setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 8)) {
-      this.a.e.setVisibility(8);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = true;
+    return true;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

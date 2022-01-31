@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
 
 public class yzs
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public yzs(GdtCanvasButtonComponentView paramGdtCanvasButtonComponentView, String paramString1, boolean paramBoolean, String paramString2, String paramString3) {}
+  public yzs(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    GdtCanvasButtonComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.c);
+    GdtCanvasFormComponentView.a(this.a);
   }
 }
 

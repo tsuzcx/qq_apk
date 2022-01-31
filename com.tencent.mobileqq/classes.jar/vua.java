@@ -1,7 +1,24 @@
-public class vua
+import com.tencent.qphone.base.util.QLog;
+
+class vua
+  extends bjdv
 {
-  public int a;
-  public int b;
+  vua(vtz paramvtz) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
+    }
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.Doraemon;
 
-import aabp;
+import aabl;
 
 public class DoraemonAPIManager$1
   implements Runnable
 {
-  public DoraemonAPIManager$1(aabp paramaabp) {}
+  public DoraemonAPIManager$1(aabl paramaabl) {}
   
   public void run()
   {
-    aabp.a(this.this$0);
+    aabl.a(this.this$0);
   }
 }
 

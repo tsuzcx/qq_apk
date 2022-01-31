@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public final class vww
-  implements Parcelable.Creator<TroopStoryItemInfo>
+public class vww
+  implements View.OnLongClickListener
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
-  {
-    return new TroopStoryItemInfo(paramParcel);
-  }
+  public vww(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    return new TroopStoryItemInfo[paramInt];
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    return true;
   }
 }
 

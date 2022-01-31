@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.out;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bblm;
+import bbma;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import mqq.app.MSFServlet;
@@ -28,7 +28,7 @@ public class CommonServlet
       localBundle = new Bundle();
       localBundle.putParcelable("req", localToServiceMsg);
       if ((bool) && (((Boolean)localToServiceMsg.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue())) {
-        paramFromServiceMsg.putWupBuffer(bblm.b(paramFromServiceMsg.getWupBuffer()));
+        paramFromServiceMsg.putWupBuffer(bbma.b(paramFromServiceMsg.getWupBuffer()));
       }
       localBundle.putParcelable("rsp", paramFromServiceMsg);
       if (!"LbsShareSvr.location".equals(str)) {
@@ -57,7 +57,7 @@ public class CommonServlet
         if (!((Boolean)paramIntent.getAttribute("is_pb_packet", Boolean.FALSE)).booleanValue()) {
           break label88;
         }
-        paramPacket.putSendData(bblm.a(paramIntent.getWupBuffer()));
+        paramPacket.putSendData(bbma.a(paramIntent.getWupBuffer()));
       }
     }
     for (;;)

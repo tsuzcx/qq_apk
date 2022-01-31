@@ -12,32 +12,32 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bbbi;
-import bjye;
-import bknz;
-import bkoa;
-import bkob;
+import bbbw;
+import bjyv;
+import bkoq;
+import bkor;
+import bkos;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.util.List;
-import vel;
-import vuc;
-import vui;
+import vei;
+import vtz;
+import vuf;
 
 public class HorizontalAlumbListLayout
   extends RelativeLayout
-  implements View.OnClickListener, vui
+  implements View.OnClickListener, vuf
 {
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bjye a;
-  private bkob jdField_a_of_type_Bkob;
+  public bjyv a;
+  private bkos jdField_a_of_type_Bkos;
   
   public HorizontalAlumbListLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -54,14 +54,14 @@ public class HorizontalAlumbListLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561323, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373355));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561322, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373357));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Bkob = new bkob(this, getContext(), this, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bkob);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bknz(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373354));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bkoa(this));
+    this.jdField_a_of_type_Bkos = new bkos(this, getContext(), this, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bkos);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bkoq(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373356));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bkor(this));
   }
   
   public void a() {}
@@ -77,15 +77,15 @@ public class HorizontalAlumbListLayout
         if (QLog.isColorLevel()) {
           QLog.d("HorizontalAlumbListLayout", 2, "intent to SlideShow");
         }
-        if ((this.jdField_a_of_type_Bjye != null) && (this.jdField_a_of_type_Bjye.getActivity() != null)) {
-          vel.a("video_edit_new", "clk_albumbar", this.jdField_a_of_type_Bjye.getActivity().getIntent(), new String[0]);
+        if ((this.jdField_a_of_type_Bjyv != null) && (this.jdField_a_of_type_Bjyv.getActivity() != null)) {
+          vei.a("video_edit_new", "clk_albumbar", this.jdField_a_of_type_Bjyv.getActivity().getIntent(), new String[0]);
         }
         setTipsGone();
-        vuc.a().b();
+        vtz.a().b();
         Intent localIntent = new Intent(paramContext, PhotoListActivity.class);
-        if (vuc.a().a() != 13)
+        if (vtz.a().a() != 13)
         {
-          localIntent.putExtra("ALBUM_NAME", bbbi.l);
+          localIntent.putExtra("ALBUM_NAME", bbbw.l);
           localIntent.putExtra("ALBUM_ID", "$RecentAlbumId");
           if (localIntent != null)
           {
@@ -102,18 +102,18 @@ public class HorizontalAlumbListLayout
               localIntent.putExtra("report_first_exposure", true);
               localIntent.putExtra("PhotoConst.IS_SUPPORT_VIDEO_CHECKBOX", true);
               localIntent.putExtra("PhotoConst.IS_FROM_EDIT", true);
-              if (this.jdField_a_of_type_Bjye == null) {
+              if (this.jdField_a_of_type_Bjyv == null) {
                 break;
               }
-              this.jdField_a_of_type_Bjye.getActivity().startActivityForResult(localIntent, 10018);
-              this.jdField_a_of_type_Bjye.getActivity().overridePendingTransition(2130771992, 2130771993);
+              this.jdField_a_of_type_Bjyv.getActivity().startActivityForResult(localIntent, 10018);
+              this.jdField_a_of_type_Bjyv.getActivity().overridePendingTransition(2130771992, 2130771993);
             }
           }
         }
         else
         {
           localIntent.putExtra("from_qqstory_custom_data", true);
-          List localList = vuc.a().b();
+          List localList = vtz.a().b();
           if (localList.size() > 0) {
             localIntent.putExtra("ALBUM_NAME", ((LocalMediaInfo)localList.get(0)).mAlbumName);
           }
@@ -138,8 +138,8 @@ public class HorizontalAlumbListLayout
     if (QLog.isColorLevel()) {
       QLog.d("HorizontalAlumbListLayout", 2, "updateData size=" + paramList.size());
     }
-    if ((this.jdField_a_of_type_Bkob != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_Bkob.a(paramList);
+    if ((this.jdField_a_of_type_Bkos != null) && (paramList.size() > 0)) {
+      this.jdField_a_of_type_Bkos.a(paramList);
     }
   }
   
@@ -148,17 +148,17 @@ public class HorizontalAlumbListLayout
     a(paramView.getContext());
   }
   
-  public void setEditVideoUI(bjye parambjye)
+  public void setEditVideoUI(bjyv parambjyv)
   {
-    this.jdField_a_of_type_Bjye = parambjye;
+    this.jdField_a_of_type_Bjyv = parambjyv;
   }
   
   public void setTipsContent(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    if (vuc.a().a() == 13)
+    if (vtz.a().a() == 13)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691962), new Object[] { vuc.a().a().size() + "" }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(getContext().getString(2131691962), new Object[] { vtz.a().a().size() + "" }));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }

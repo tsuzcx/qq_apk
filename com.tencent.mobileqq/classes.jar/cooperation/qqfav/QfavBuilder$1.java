@@ -1,18 +1,18 @@
 package cooperation.qqfav;
 
 import android.app.Activity;
-import bgpd;
-import bgpf;
+import bgpu;
+import bgpw;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QfavBuilder$1
   implements Runnable
 {
-  public QfavBuilder$1(bgpd parambgpd, Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
+  public QfavBuilder$1(bgpu parambgpu, Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    bgpf.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    bgpw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

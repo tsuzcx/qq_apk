@@ -1,24 +1,22 @@
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import java.util.List;
 
-public abstract interface awus<T extends awoe>
+public class awus
+  extends awut
 {
-  public abstract List<T> a(awvg paramawvg);
+  public awus(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(awvg paramawvg, awut<T> paramawut);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  protected awoh a(List<awoi> paramList, String paramString)
+  {
+    return new awnw(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awus
  * JD-Core Version:    0.7.0.1
  */

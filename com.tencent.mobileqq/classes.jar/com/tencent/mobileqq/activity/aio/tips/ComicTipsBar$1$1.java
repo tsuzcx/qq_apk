@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aexp;
-import aexq;
-import aeyx;
+import aexn;
+import aexo;
+import aeyv;
 
 public class ComicTipsBar$1$1
   implements Runnable
 {
-  public ComicTipsBar$1$1(aexq paramaexq) {}
+  public ComicTipsBar$1$1(aexo paramaexo) {}
   
   public void run()
   {

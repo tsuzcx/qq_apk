@@ -1,25 +1,12 @@
-import android.os.IInterface;
-
 public abstract interface auna
-  extends IInterface
 {
-  public abstract int a();
+  public abstract void a(int paramInt, boolean paramBoolean);
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int[] a();
-  
-  public abstract boolean[] a();
+  public abstract void a(aunb paramaunb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     auna
  * JD-Core Version:    0.7.0.1
  */

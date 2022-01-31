@@ -1,11 +1,12 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import java.util.ArrayList;
 
 public class ayzk
-  extends ayzp
+  extends ayzr
 {
-  public mobileqq_mp.RetInfo a;
   public String a;
+  public ArrayList<ayuq> a = new ArrayList();
   public String b;
+  public ArrayList<ayuq> b = new ArrayList();
 }
 
 

@@ -1,19 +1,23 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class abdf
-  implements View.OnClickListener
+  extends auuf
 {
-  public abdf(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public abdf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    if (!this.a.getActivity().isFinishing()) {
-      ForwardTroopListFragment.a(this.a).dismiss();
+    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
+    while (paramInt != 0) {
+      return;
     }
+    this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+    this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Auuy, true, new String[] { "map_key_personality_label_board" });
   }
 }
 

@@ -1,32 +1,41 @@
-import android.graphics.drawable.Drawable;
-import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
-import cooperation.vip.vipcomponent.util.VipResourcesListener;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public class bhzy
+class bhzy
+  extends QzoneExternalRequest
 {
-  public static bhzy a;
+  bhzy(bhzx parambhzx, Intent paramIntent) {}
   
-  public static bhzy a()
+  public String getCmdString()
   {
-    if (a == null) {}
-    try
+    return "SweetQzoneService.sweet_pair_byebye";
+  }
+  
+  public JceStruct getReq()
+  {
+    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      if (a == null) {
-        a = new bhzy();
-      }
-      return a;
+      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l1;
+      localsweet_req_comm.uin = l1;
+      localsweet_req_comm.loveuin = l2;
+      localsweet_req_comm.qua = bgyi.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
     }
-    finally {}
+    return localsweet_pair_byebye_req;
   }
   
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
+  public String uniKey()
   {
-    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
-  }
-  
-  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
-  {
-    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
+    return "sweet_pair_byebye";
   }
 }
 

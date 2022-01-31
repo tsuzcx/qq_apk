@@ -9,12 +9,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anow;
-import axrl;
-import baym;
-import bdhu;
-import bdhv;
-import bfjx;
+import anpb;
+import axrn;
+import baza;
+import bdij;
+import bdik;
+import bfko;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import lmb;
-import muf;
+import llw;
+import muc;
 
 public class UpdateAvSo
   extends Step
@@ -61,7 +61,7 @@ public class UpdateAvSo
     File localFile = new File(paramString);
     try
     {
-      String str1 = bfjx.a(localFile);
+      String str1 = bfko.a(localFile);
       paramString = "[" + paramString + "], exists[" + localFile.exists();
       return paramString + "], md5[" + str1 + "]";
     }
@@ -79,7 +79,7 @@ public class UpdateAvSo
     if (!BaseApplicationImpl.isCurrentVersionFirstLaunch) {
       return;
     }
-    if (lmb.f() <= 2) {}
+    if (llw.f() <= 2) {}
     for (int i = 1;; i = 0)
     {
       String str = a();
@@ -258,7 +258,7 @@ public class UpdateAvSo
         bool3 = localFile.exists();
         localObject5 = str4;
         bool1 = bool3;
-        localObject6 = bdhu.a(localFile);
+        localObject6 = bdij.a(localFile);
         localObject5 = localObject6;
         bool1 = bool3;
         long l2 = localFile.length();
@@ -286,8 +286,8 @@ public class UpdateAvSo
       ((HashMap)localObject6).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
       ((HashMap)localObject6).put("man", b(Build.MANUFACTURER));
       ((HashMap)localObject6).put("mod", b(Build.MODEL));
-      ((HashMap)localObject6).put("qq_ver", String.valueOf(muf.b()));
-      axrl.a(paramContext).a("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
+      ((HashMap)localObject6).put("qq_ver", String.valueOf(muc.b()));
+      axrn.a(paramContext).a("", "AV_LOAD_SO_FAILED", false, 0L, 0L, (HashMap)localObject6, "");
       QLog.w("AVModuleExtract", 1, "LoadExtractedSo end , result[" + paramBoolean + "], libName[" + paramString + "], seq[" + paramLong + "]");
       return paramBoolean;
     }
@@ -295,7 +295,7 @@ public class UpdateAvSo
   
   public static boolean a(Context paramContext, Boolean paramBoolean)
   {
-    if (lmb.f() <= 2) {
+    if (llw.f() <= 2) {
       if ((!a(paramContext, "traeimp-armeabi")) || (!a(paramContext, "TcVpxDec-armeabi")) || (!a(paramContext, "TcVpxEnc-armeabi"))) {}
     }
     do
@@ -351,7 +351,7 @@ public class UpdateAvSo
       QLog.e("AVModuleExtract", 1, paramString1 + " with empty md5. need check predownload config again!!");
       return false;
     }
-    str = bdhv.a(str);
+    str = bdik.a(str);
     if (QLog.isColorLevel()) {
       QLog.d("AVModuleExtract", 2, "check video so md5: " + paramString1 + " md5Str:" + str + ", xmlMd5: " + paramString2);
     }
@@ -367,7 +367,7 @@ public class UpdateAvSo
   
   public static boolean a(boolean paramBoolean)
   {
-    QavSoData localQavSoData = (QavSoData)anow.a(QavSoData.class);
+    QavSoData localQavSoData = (QavSoData)anpb.a(QavSoData.class);
     boolean bool = true;
     if (!a("libTcHevcEnc.so", localQavSoData.m_TcHevcEnc, paramBoolean)) {
       bool = false;
@@ -416,7 +416,7 @@ public class UpdateAvSo
     QLog.w("AVModuleExtract", 1, "printSO, " + a(new StringBuilder().append(str).append("libVideoCtrl.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + a(new StringBuilder().append(str).append("libxplatform.so").toString()));
     QLog.w("AVModuleExtract", 1, "printSO, " + a(new StringBuilder().append(str).append("libc++_shared.so").toString()));
-    str = baym.a(BaseApplicationImpl.sApplication);
+    str = baza.a(BaseApplicationImpl.sApplication);
     QLog.w("AVModuleExtract", 1, "printSO, " + a(new StringBuilder().append(str).append("libc++_shared.so").toString()));
   }
   

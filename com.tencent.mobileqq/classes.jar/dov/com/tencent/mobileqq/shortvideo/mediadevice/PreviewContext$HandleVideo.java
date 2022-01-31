@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 
-import axhx;
-import axid;
+import axhz;
+import axif;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;

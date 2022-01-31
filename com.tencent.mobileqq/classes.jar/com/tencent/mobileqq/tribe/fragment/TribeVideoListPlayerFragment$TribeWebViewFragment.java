@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import axqw;
-import azbz;
+import axqy;
+import azcb;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -51,15 +51,15 @@ public class TribeVideoListPlayerFragment$TribeWebViewFragment
       QLog.d("TribeVideoListPlayerFragment", 2, "onReceivedError: errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + paramString2);
     }
     this.c = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof azbz)) {
-      if (((azbz)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0) instanceof azcb)) {
+      if (((azcb)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h == 0) {
         break label161;
       }
     }
     label161:
-    for (paramWebView = "" + ((azbz)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
+    for (paramWebView = "" + ((azcb)this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a.get(0)).h;; paramWebView = "")
     {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
+      axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "webview_fail", 0, 0, "", "", paramWebView, "");
       return;
     }
   }

@@ -1,40 +1,64 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.List;
 
 public class rcd
-  implements raf
+  implements rek
 {
-  public rcd(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  public rcd(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, str);
-    qeh.b(paramBundle);
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).a(paramInt, paramView, paramListView);
+    }
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
   {
-    paramString = this.a.a();
-    Intent localIntent;
-    if ((paramBundle != null) && (paramString != null))
+    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+  }
+  
+  public void a(View paramView, ListView paramListView, int paramInt)
+  {
+    this.a.a(paramView, paramListView, paramInt);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      localIntent = new Intent();
-      localIntent.putExtras(paramBundle);
-      localIntent.setClass(paramString, KandianVideoUploadService.class);
+      if (!((bfub)localIterator.next()).a(paramInt, paramView, paramListView)) {
+        break label57;
+      }
+      bool = true;
     }
-    try
+    label57:
+    for (;;)
     {
-      paramString.startService(localIntent);
-      return;
+      break;
+      return bool;
     }
-    catch (Throwable paramString)
-    {
-      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((bfub)localIterator.next()).c(paramInt, paramView, paramListView);
     }
   }
 }

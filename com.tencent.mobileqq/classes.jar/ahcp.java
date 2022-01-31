@@ -1,16 +1,22 @@
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
 class ahcp
-  implements agzj
+  implements ahbr
 {
-  ahcp(ahci paramahci, ResultReceiver paramResultReceiver) {}
+  ahcp(ahcg paramahcg, ResultReceiver paramResultReceiver) {}
   
-  public void a(String paramString1, String paramString2, agzd paramagzd)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

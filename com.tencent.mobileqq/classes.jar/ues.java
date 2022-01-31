@@ -1,29 +1,13 @@
-class ues
-  implements ufo
+import java.nio.ByteBuffer;
+
+public class ues
 {
-  ues(uep paramuep, udg paramudg) {}
+  public long a;
+  public ByteBuffer a;
   
-  public boolean a_(ufk paramufk, int paramInt1, int paramInt2)
+  ues(int paramInt)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Udg.a(this.jdField_a_of_type_Uep, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

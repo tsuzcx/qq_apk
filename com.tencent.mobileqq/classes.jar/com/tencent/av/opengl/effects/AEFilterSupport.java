@@ -3,16 +3,16 @@ package com.tencent.av.opengl.effects;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import avtc;
-import axle;
-import bbct;
+import avte;
+import axlg;
+import bbdh;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import lmb;
-import lpo;
-import lpp;
-import lpz;
-import msq;
+import llw;
+import lpj;
+import lpk;
+import lpu;
+import msn;
 
 public class AEFilterSupport
 {
@@ -20,12 +20,12 @@ public class AEFilterSupport
   private static long jdField_a_of_type_Long;
   private static final Object jdField_a_of_type_JavaLangObject;
   private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static lpo jdField_a_of_type_Lpo;
-  private static final lpp jdField_a_of_type_Lpp = new lpp(21, 4, 1.1F, 3.0F);
+  private static lpj jdField_a_of_type_Lpj;
+  private static final lpk jdField_a_of_type_Lpk = new lpk(21, 4, 1.1F, 3.0F);
   private static int jdField_b_of_type_Int = 0;
-  private static final lpp jdField_b_of_type_Lpp = new lpp(21, 4, 1.4F, 2.7F);
+  private static final lpk jdField_b_of_type_Lpk = new lpk(21, 4, 1.4F, 2.7F);
   private static int jdField_c_of_type_Int;
-  private static final lpp jdField_c_of_type_Lpp = new lpp(27, 8, 1.8F, 5.0F);
+  private static final lpk jdField_c_of_type_Lpk = new lpk(27, 8, 1.8F, 5.0F);
   
   static
   {
@@ -37,21 +37,21 @@ public class AEFilterSupport
     if (jdField_c_of_type_Int != 0) {
       return jdField_c_of_type_Int;
     }
-    String str1 = msq.a("machineMiddleLine");
-    String str2 = msq.a("machineHighLine");
-    jdField_b_of_type_Lpp.a(str1);
-    jdField_c_of_type_Lpp.a(str2);
-    lpo locallpo = a();
-    if (jdField_c_of_type_Lpp.a(locallpo)) {
+    String str1 = msn.a("machineMiddleLine");
+    String str2 = msn.a("machineHighLine");
+    jdField_b_of_type_Lpk.a(str1);
+    jdField_c_of_type_Lpk.a(str2);
+    lpj locallpj = a();
+    if (jdField_c_of_type_Lpk.a(locallpj)) {
       jdField_c_of_type_Int = 7;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_c_of_type_Int), jdField_b_of_type_Lpp, jdField_c_of_type_Lpp, locallpo, str1, str2 }));
+        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_c_of_type_Int), jdField_b_of_type_Lpk, jdField_c_of_type_Lpk, locallpj, str1, str2 }));
       }
       return jdField_c_of_type_Int;
-      if (jdField_b_of_type_Lpp.a(locallpo)) {
+      if (jdField_b_of_type_Lpk.a(locallpj)) {
         jdField_c_of_type_Int = 4;
       } else {
         jdField_c_of_type_Int = 3;
@@ -60,24 +60,24 @@ public class AEFilterSupport
   }
   
   @NonNull
-  public static lpo a()
+  public static lpj a()
   {
-    if (jdField_a_of_type_Lpo == null)
+    if (jdField_a_of_type_Lpj == null)
     {
-      lpo locallpo = new lpo();
-      locallpo.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      locallpo.jdField_b_of_type_Float = ((float)bbct.d() / 1.073742E+009F);
-      locallpo.jdField_b_of_type_Int = bbct.b();
-      locallpo.jdField_a_of_type_Float = ((float)lmb.c() / 1048576.0F);
-      jdField_a_of_type_Lpo = locallpo;
+      lpj locallpj = new lpj();
+      locallpj.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+      locallpj.jdField_b_of_type_Float = ((float)bbdh.d() / 1.073742E+009F);
+      locallpj.jdField_b_of_type_Int = bbdh.b();
+      locallpj.jdField_a_of_type_Float = ((float)llw.c() / 1048576.0F);
+      jdField_a_of_type_Lpj = locallpj;
     }
-    return jdField_a_of_type_Lpo;
+    return jdField_a_of_type_Lpj;
   }
   
   public static boolean a()
   {
     boolean bool = true;
-    if (!lpz.a())
+    if (!lpu.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isSupportPtuNew, not support AEKit.");
@@ -86,15 +86,15 @@ public class AEFilterSupport
     }
     if (jdField_b_of_type_Int == 0)
     {
-      String str = msq.a("ptuNewRenderLimit");
-      jdField_a_of_type_Lpp.a(str);
-      lpo locallpo = a();
-      if (!jdField_a_of_type_Lpp.a(locallpo)) {
+      String str = msn.a("ptuNewRenderLimit");
+      jdField_a_of_type_Lpk.a(str);
+      lpj locallpj = a();
+      if (!jdField_a_of_type_Lpk.a(locallpj)) {
         break label114;
       }
       jdField_b_of_type_Int = 1;
       if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("isSupportPtuNew, flag: %s, line: %s, cur: %s, config[%s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lpp, locallpo, str }));
+        QLog.i("AEFilterSupport", 2, String.format("isSupportPtuNew, flag: %s, line: %s, cur: %s, config[%s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lpk, locallpj, str }));
       }
     }
     if (jdField_b_of_type_Int == 1) {}
@@ -111,7 +111,7 @@ public class AEFilterSupport
   public static boolean a(int paramInt)
   {
     boolean bool = true;
-    if (!lpz.a())
+    if (!lpu.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
@@ -123,7 +123,7 @@ public class AEFilterSupport
       return bool;
       if (jdField_a_of_type_Int != 1)
       {
-        if (axle.a())
+        if (axlg.a())
         {
           jdField_a_of_type_Int = 1;
           return true;
@@ -150,7 +150,7 @@ public class AEFilterSupport
   
   private static void b()
   {
-    if (!lpz.a())
+    if (!lpu.a())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -161,9 +161,9 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = axle.a();
+    boolean bool = axlg.a();
     if (!bool) {
-      bool = avtc.a(false);
+      bool = avte.a(false);
     }
     for (;;)
     {

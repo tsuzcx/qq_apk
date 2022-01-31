@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
-import atlu;
-import atmf;
+import atlw;
+import atmh;
 
 public class PlayOperationViewModel$20$1
   implements Runnable
 {
-  public PlayOperationViewModel$20$1(atmf paramatmf) {}
+  public PlayOperationViewModel$20$1(atmh paramatmh) {}
   
   public void run()
   {
-    atlu.a(this.a.a);
+    atlw.a(this.a.a);
   }
 }
 

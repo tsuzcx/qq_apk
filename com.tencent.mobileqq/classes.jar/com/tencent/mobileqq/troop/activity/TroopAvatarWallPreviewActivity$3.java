@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.os.Bundle;
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
@@ -16,9 +16,9 @@ public class TroopAvatarWallPreviewActivity$3
     if (this.this$0.app == null) {
       return;
     }
-    aukn localaukn = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localaukn.a(Setting.class, "troop_" + this.this$0.a);
-    localaukn.a();
+    aukp localaukp = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Setting localSetting = (Setting)localaukp.a(Setting.class, "troop_" + this.this$0.a);
+    localaukp.a();
     this.this$0.runOnUiThread(new TroopAvatarWallPreviewActivity.3.1(this, localSetting));
   }
 }

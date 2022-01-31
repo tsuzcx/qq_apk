@@ -1,127 +1,49 @@
-import android.os.Handler;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.11.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aclj
-  extends akim
+  implements View.OnClickListener
 {
   public aclj(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-    if (paramInt1 == 8) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((paramInt1 == 4) || (paramInt1 == 5) || (paramInt1 == 6) || (paramInt1 == 7))
-    {
-      if (paramInt2 != 0) {
-        break label68;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      this.a.finish();
-    }
-    for (;;)
-    {
-      if (paramInt1 == 8)
-      {
-        if (paramInt2 != 0) {
-          break;
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      }
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
       return;
-      label68:
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    do
+    TroopRequestActivity.c = l;
+    Bundle localBundle = TroopInfoActivity.a(this.a.jdField_a_of_type_JavaLangString, 4);
+    localBundle.putInt("t_s_f", 1001);
+    int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((i == 2) || (i == 10) || (i == 12))
     {
-      for (;;)
-      {
-        return;
-        this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          if (paramLong != l) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel())
-            {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_1_Ret=>NumberFormatException");
-              continue;
-              bcpw.a(this.a.app.getApplication(), 2131720495, 0).b(this.a.getTitleBarHeight());
-            }
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        }
+      i = 1;
+      localQQAppInterface = this.a.app;
+      str = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+      if (i == 0) {
+        break label182;
       }
-      this.a.i();
-      if (!paramBoolean) {
-        break label215;
-      }
-      if ((paramTroopInfo.cGroupOption == 4) || (paramTroopInfo.cGroupOption == 5))
-      {
-        this.a.o = paramTroopInfo.joinTroopQuestion;
-        this.a.p = paramTroopInfo.joinTroopAnswer;
-      }
-      this.a.jdField_a_of_type_Short = paramTroopInfo.cGroupOption;
-      if (this.a.jdField_a_of_type_Short == 3) {
-        break;
-      }
-      TroopRequestActivity.a(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.systemmsg.TroopRequestActivity", 2, "troop.cGroupOption = " + paramTroopInfo.cGroupOption);
-    return;
-    label215:
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_JavaLangString == null) {}
-    do
+    }
+    label182:
+    for (paramView = "0";; paramView = "1")
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString.trim();
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          if (paramLong != l) {}
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.systemmsg.TroopRequestActivity", 2, "onOIDB0X88D_10_Ret=>NumberFormatException");
-            }
-          }
-        }
-      }
-      this.a.i();
-    } while ((!paramBoolean) || (paramTroopInfo == null));
-    ThreadManager.post(new TroopRequestActivity.11.1(this, paramTroopInfo), 8, null, true);
+      axqy.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
+      banb.a(this.a, localBundle, 2);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

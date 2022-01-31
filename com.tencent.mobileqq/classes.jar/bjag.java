@@ -1,6 +1,14 @@
-class bjag
+import android.view.View;
+
+public final class bjag
 {
-  public static final bjae a = new bjae(null);
+  public static boolean a(View paramView)
+  {
+    Object localObject = paramView.getTag(2131362185);
+    long l = System.currentTimeMillis();
+    paramView.setTag(2131362185, Long.valueOf(l));
+    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
+  }
 }
 
 

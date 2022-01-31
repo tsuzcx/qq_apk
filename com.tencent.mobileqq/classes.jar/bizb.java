@@ -1,6 +1,10 @@
-class bizb
+import android.graphics.Bitmap;
+
+public abstract interface bizb
 {
-  public static biza a = new biza();
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

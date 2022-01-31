@@ -1,11 +1,10 @@
-import android.widget.ImageView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class vvs
+public abstract interface vvs
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
-  vvs(vvr paramvvr) {}
+  public abstract void a(@NonNull ArrayList<vvt> paramArrayList, @NonNull Context paramContext);
 }
 
 

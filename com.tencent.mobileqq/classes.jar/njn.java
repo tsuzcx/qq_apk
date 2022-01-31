@@ -1,37 +1,23 @@
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
-class njn
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class njn
+  extends AnimatorListenerAdapter
 {
-  private njn(nji paramnji) {}
+  public njn(AdControlView paramAdControlView) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    for (;;)
-    {
-      synchronized (nji.a(this.a))
-      {
-        nji.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(nji.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(nji.a(paramString1)));
-        }
-        axqw.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nji.a(this.a).mVideoVid, String.valueOf(nji.a(this.a).mSource));
-        paramString2 = (QQAppInterface)nji.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          njf.b(paramString2, paramString1);
-          nji.a(this.a, nji.a(this.a));
-          return;
-        }
-      }
-      paramString2 = "";
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 

@@ -1,39 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class agbk
+class agbk
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  agbk(agbj paramagbj, TroopLinkElement paramTroopLinkElement, agbl paramagbl) {}
   
-  public agbk(String paramString)
+  public void onClick(View paramView)
   {
-    try
+    if (!agbj.a(this.jdField_a_of_type_Agbj))
     {
-      paramString = amor.a(paramString, "troop_member_list_config");
-      if (paramString != null)
-      {
-        Object localObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
-        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
-        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
-        {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
-          i += 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
-      }
+      paramView = new Intent(agbj.a(this.jdField_a_of_type_Agbj), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
+      agbj.a(this.jdField_a_of_type_Agbj).startActivity(paramView);
       return;
     }
-    catch (Throwable paramString)
+    boolean bool = agbl.a(this.jdField_a_of_type_Agbl).isChecked();
+    if (bool)
     {
-      paramString.printStackTrace();
+      agbj.a(this.jdField_a_of_type_Agbj).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      paramView = agbl.a(this.jdField_a_of_type_Agbl);
+      if (bool) {
+        break label125;
+      }
+    }
+    label125:
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
+      agbj.a(this.jdField_a_of_type_Agbj).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+      break;
     }
   }
 }

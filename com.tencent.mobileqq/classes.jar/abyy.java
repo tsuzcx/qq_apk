@@ -1,25 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class abyy
-  implements View.OnTouchListener
+  extends WtloginObserver
 {
-  public abyy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public abyy(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    switch (paramMotionEvent.getAction())
+    if (QLog.isColorLevel())
     {
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.7F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if (paramInt2 == 0) {
+      return;
     }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
+    this.a.finish();
   }
 }
 

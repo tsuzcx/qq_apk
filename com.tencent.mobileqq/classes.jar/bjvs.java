@@ -1,13 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public abstract interface bjvs
+  extends bjxm
 {
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
-  
-  public abstract void onClick(View paramView);
+  public abstract void a(DoodleLayout paramDoodleLayout);
 }
 
 

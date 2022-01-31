@@ -1,9 +1,8 @@
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 public class afku
 {
-  public LinearLayout a;
-  public LinearLayout b;
+  public Button a;
 }
 
 

@@ -1,40 +1,33 @@
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
 
 public class wpr
-  extends StaggeredGridLayoutManager
+  extends wox
 {
-  public wpr(int paramInt1, int paramInt2)
+  public wpr(ComponentRvInnerView paramComponentRvInnerView) {}
+  
+  public wpq a(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramInt1, paramInt2);
+    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
+      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewGroup, paramInt);
+    }
+    return null;
   }
   
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public int getItemCount()
   {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
-      return;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
-    }
-  }
-  
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
-    }
-    catch (Exception paramRecycler)
-    {
-      paramRecycler.printStackTrace();
+    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
+      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).b();
     }
     return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((!bfmy.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null)) {
+      ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewHolder, paramInt);
+    }
   }
 }
 

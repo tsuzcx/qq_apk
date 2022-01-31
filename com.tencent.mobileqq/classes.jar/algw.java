@@ -1,81 +1,42 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class algw
-  extends algp
 {
+  public float a;
   public int a;
   public String a;
-  public algx[] a;
-  public int b = -1;
+  public byte[] a;
+  public int b;
   public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  public int c = -1;
   
   public algw()
   {
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAlgx = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-  }
-  
-  public static boolean a(algw paramalgw)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramalgw != null)
-    {
-      bool1 = bool2;
-      if (paramalgw.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramalgw.b == 0)
-        {
-          bool1 = bool2;
-          if (paramalgw.jdField_a_of_type_ArrayOfAlgx != null)
-          {
-            bool1 = bool2;
-            if (paramalgw.jdField_a_of_type_ArrayOfAlgx[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramalgw.jdField_a_of_type_ArrayOfAlgx[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAlgx[0].a;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_ArrayOfAlgx != null)
+    try
     {
-      String str1 = "ImageTags{";
-      int i = 0;
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAlgx.length) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudSceneRecogResult", 2, "toString error, msg:" + localException.getMessage());
         }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAlgx[i];
-        i += 1;
+        String str2 = "";
       }
     }
-    String str2 = "null";
-    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

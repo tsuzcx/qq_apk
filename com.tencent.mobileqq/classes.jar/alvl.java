@@ -1,19 +1,20 @@
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 
 class alvl
-  implements ajtg
+  extends bbwt
 {
-  alvl(alvk paramalvk, int paramInt) {}
+  alvl(alvj paramalvj, String paramString, int paramInt) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onDone(bbwu parambbwu)
   {
+    super.onDone(parambbwu);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambbwu.jdField_a_of_type_Int) }));
     Bundle localBundle = new Bundle();
-    localBundle.putInt("type", paramInt);
-    localBundle.putBoolean("sucess", paramBoolean);
-    localBundle.putString("data", (String)paramObject);
-    paramObject = EIPCResult.createResult(0, localBundle);
-    this.jdField_a_of_type_Alvk.callbackResult(this.jdField_a_of_type_Int, paramObject);
+    localBundle.putInt("code", parambbwu.jdField_a_of_type_Int);
+    parambbwu = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_Alvj.callbackResult(this.jdField_a_of_type_Int, parambbwu);
   }
 }
 

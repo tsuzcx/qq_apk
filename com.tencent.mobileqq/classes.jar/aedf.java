@@ -1,13 +1,26 @@
-import android.widget.RelativeLayout;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 class aedf
-  extends acun
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  aedf(aede paramaede, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  private aedf(aedd paramaedd) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_Aede.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    new azpv(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aede.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+  }
 }
 
 

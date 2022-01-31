@@ -1,8 +1,6 @@
 public abstract interface mrx
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
+  public abstract void a(String paramString, mry parammry);
 }
 
 

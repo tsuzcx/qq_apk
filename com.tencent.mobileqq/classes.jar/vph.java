@@ -1,88 +1,98 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 class vph
-  implements URLDrawableDownListener
+  extends LinearLayout
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int b;
+  private int c;
+  private int d;
   
-  public vph(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public vph(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    paramInt1 /= this.b;
+    this.c = ((int)(paramInt1 * paramFloat));
+    this.d = (paramInt1 - this.c * 2);
+    a();
   }
   
-  private boolean a(ImageView paramImageView)
+  private void a()
   {
-    paramImageView = (String)paramImageView.getTag(2131376880);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    veg.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    int i = 0;
+    setOrientation(0);
+    setGravity(17);
+    int j = this.jdField_a_of_type_Int / this.b;
+    while (i < this.b)
     {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
+      ImageView localImageView = new ImageView(getContext());
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j, j);
+      if (i == 0) {
+        localLayoutParams.leftMargin = vpm.b(getContext(), 7.0F);
+      }
+      if (i == this.b - 1) {
+        localLayoutParams.rightMargin = vpm.b(getContext(), 7.0F);
+      }
+      localImageView.setLayoutParams(localLayoutParams);
+      localImageView.setPadding(this.c, this.c, this.c, this.c);
+      addView(localImageView);
+      i += 1;
     }
-    veg.b("LocationFaceAdapter", "onLoadCanceled error.");
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private void a(int paramInt)
   {
-    veg.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    int i = 0;
+    int j;
+    for (;;)
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
+      j = paramInt;
+      if (i >= paramInt) {
+        break;
+      }
+      j = paramInt;
+      if (i >= getChildCount()) {
+        break;
+      }
+      getChildAt(i).setVisibility(0);
+      i += 1;
     }
-    veg.b("LocationFaceAdapter", "onLoadFialed error.");
+    while ((j < this.b) && (j < getChildCount()))
+    {
+      getChildAt(j).setVisibility(4);
+      j += 1;
+    }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void a(vow paramvow, int paramInt1, int paramInt2)
   {
-    veg.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
+    int i = paramInt1 * this.b;
+    if (paramInt1 == paramInt2 - 1) {}
+    for (paramInt1 = paramvow.b();; paramInt1 = this.b + i)
     {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131376849, Boolean.valueOf(false));
-      return;
+      a(paramInt1 - i);
+      paramInt2 = i;
+      while (paramInt2 < paramInt1)
+      {
+        ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
+        localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        String str = paramvow.a(paramInt2);
+        localImageView.setTag(2131376882, str);
+        localImageView.setTag(2131376873, Integer.valueOf(paramInt2));
+        localImageView.setContentDescription(ajya.a(2131707608) + paramInt2);
+        vlq.a().a(getContext(), localImageView, str, this.d, this.d, null);
+        paramInt2 += 1;
+      }
     }
-    veg.b("LocationFaceAdapter", "onLoadProgressed error.");
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    veg.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131376849, Boolean.valueOf(true));
-      return;
-    }
-    veg.b("LocationFaceAdapter", "onLoadSuccessed error.");
   }
 }
 

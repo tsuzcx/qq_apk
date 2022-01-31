@@ -1,16 +1,11 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.app.Activity;
 
-class aaci
-  extends JobSegment<asiu, asiu>
+public class aaci
+  extends aabs
 {
-  protected void a(JobContext paramJobContext, asiu paramasiu)
+  public aaci(Activity paramActivity, int paramInt, String paramString)
   {
-    paramJobContext = aacb.a();
-    if (!paramJobContext.a) {
-      paramJobContext.a();
-    }
-    notifyResult(paramasiu);
+    super(paramActivity, paramInt, paramString);
   }
 }
 

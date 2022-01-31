@@ -1,11 +1,13 @@
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+
 class atlo
-  implements ufp
+  implements ufk
 {
-  atlo(atlk paramatlk, atlc paramatlc) {}
+  atlo(atlm paramatlm, atlc paramatlc, Object paramObject) {}
   
-  public void a_(ufk paramufk)
+  public boolean a(ufh paramufh, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Atlc.a(this.jdField_a_of_type_Atlk);
+    return this.jdField_a_of_type_Atlc.a(this.jdField_a_of_type_Atlm, 0, paramInt1, this.jdField_a_of_type_Atlm.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

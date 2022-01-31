@@ -1,27 +1,30 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class txn
-  extends Subscriber.SingleEventSubscriberNoRefect<tch>
+  extends tvz<SingleFeedPlayInfo>
 {
-  txk a;
-  
-  public txn(@NonNull txk paramtxk)
+  public txn(SingleFeedPlayInfo paramSingleFeedPlayInfo)
   {
-    this.a = paramtxk;
+    super(paramSingleFeedPlayInfo);
   }
   
-  protected void a(@NonNull tch paramtch)
+  public uvp a(String paramString)
   {
-    if (paramtch.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramtch.jdField_a_of_type_JavaLangString);
-    }
+    paramString = new uvp(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    return paramString;
   }
   
-  public Class acceptEventClass()
+  public void a(boolean paramBoolean, int paramInt, twr paramtwr)
   {
-    return tch.class;
+    ArrayList localArrayList = new ArrayList();
+    twa localtwa = new twa(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uvp(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localtwa.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    localArrayList.add(localtwa);
+    paramtwr.a(new ErrorMessage(), localArrayList, true);
   }
 }
 

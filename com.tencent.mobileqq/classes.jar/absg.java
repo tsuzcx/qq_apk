@@ -1,39 +1,60 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class absg
-  extends aqkl
+  implements bfph
 {
-  public absg(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public absg(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, bfpc parambfpc) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
+    switch (paramInt)
+    {
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
       return;
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+      if (bbfj.d(BaseApplication.getContext()))
+      {
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
+        if (bbbr.b(this.jdField_a_of_type_JavaLangString)) {
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131691488, 1);
+        continue;
+        if (bbbr.b(this.jdField_a_of_type_JavaLangString)) {
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
+      }
     }
-    ProfileCardMoreActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean1) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
   }
 }
 

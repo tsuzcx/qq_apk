@@ -1,22 +1,9 @@
 public class aiao
 {
   public int a;
-  public String a;
-  public String b = "";
-  public String c = "";
-  
-  private aiao()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
-  }
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

@@ -1,9 +1,14 @@
+import android.content.DialogInterface;
+
 class ahom
-  implements bfuh
+  extends bbdt
 {
-  ahom(ahok paramahok) {}
+  ahom(ahoi paramahoi) {}
   
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

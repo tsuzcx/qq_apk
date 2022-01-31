@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
 import android.view.View;
-import bgie;
-import bgir;
+import bgiv;
+import bgji;
 import com.tencent.mobileqq.redtouch.RedAppInfo;
 import com.tencent.mobileqq.redtouch.RedTouchUI;
 import com.tencent.qphone.base.util.QLog;
@@ -24,9 +24,9 @@ class QQComicTabBarView$7$1
     if ((i >= 0) && (i < QQComicTabBarView.a(this.jdField_a_of_type_CooperationComicUiQQComicTabBarView$7.this$0)))
     {
       localObject = QQComicTabBarView.a(this.jdField_a_of_type_CooperationComicUiQQComicTabBarView$7.this$0, i).getTag(-3);
-      if (!(localObject instanceof bgie)) {}
+      if (!(localObject instanceof bgiv)) {}
     }
-    for (Object localObject = ((bgie)localObject).a;; localObject = null)
+    for (Object localObject = ((bgiv)localObject).a;; localObject = null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())

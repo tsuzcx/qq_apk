@@ -1,15 +1,6 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
-
-public class agzl
-  extends ahac
+public abstract interface agzl
 {
-  public agzl(BaseHbUIFragment paramBaseHbUIFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    this.a.a();
-  }
+  public abstract void a();
 }
 
 

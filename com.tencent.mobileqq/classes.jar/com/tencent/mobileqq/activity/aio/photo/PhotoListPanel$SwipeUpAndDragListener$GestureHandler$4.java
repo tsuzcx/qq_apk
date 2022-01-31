@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aekj;
-import aeko;
-import aune;
+import aekh;
+import aekm;
+import aung;
 
 public class PhotoListPanel$SwipeUpAndDragListener$GestureHandler$4
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$GestureHandler$4(aeko paramaeko, aekj paramaekj) {}
+  public PhotoListPanel$SwipeUpAndDragListener$GestureHandler$4(aekm paramaekm, aekh paramaekh) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aeko.b.a.a = false;
-    aune.a("PhotoListPanel", "enableGuestrue", "mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_Aeko.b.a.a);
+    this.jdField_a_of_type_Aekm.b.a.a = false;
+    aung.a("PhotoListPanel", "enableGuestrue", "mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_Aekm.b.a.a);
   }
 }
 

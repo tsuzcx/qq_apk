@@ -1,37 +1,57 @@
-import android.app.Activity;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aatb
-  implements aatr
+  extends akat
 {
   public aatb(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a(Activity paramActivity)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    bcpw.a(this.a, 2, 2131691511, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 1, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
+    if (!ChatSettingActivity.c(this.a)) {
       return;
     }
-    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 1, 0, "", "", "", "");
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 1, 0, "", "", "", "");
+    ChatSettingActivity.c(this.a, false);
+    ChatSettingActivity.g(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
     }
-    while (paramInt != 1) {
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
       return;
     }
-    axqw.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 1, 0, "", "", "", "");
+    ChatSettingActivity.a(this.a, 2131719531, 1);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (!ChatSettingActivity.c(this.a)) {
+      return;
+    }
+    ChatSettingActivity.c(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+    }
+    ChatSettingActivity.g(this.a);
+    if (paramBoolean)
+    {
+      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
+        ChatSettingActivity.a(this.a, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      }
+      ChatSettingActivity.b(this.a);
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131719531, 1);
   }
 }
 

@@ -1,12 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import org.json.JSONObject;
 
 public class nxv
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  private nxv(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
+      this.b = paramJSONObject.optString("pkg_name");
+      this.c = paramJSONObject.optString("appid");
+      this.d = paramJSONObject.optString("appname");
+      this.e = paramJSONObject.optString("pkgurl");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
+    }
+  }
 }
 
 

@@ -1,44 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bjeh
-  implements GifDecoder
+final class bjeh
+  implements waj
 {
-  private int jdField_a_of_type_Int;
-  private bkhg jdField_a_of_type_Bkhg;
-  private String jdField_a_of_type_JavaLangString;
+  bjeh(String paramString, bjeu parambjeu) {}
   
-  public bjeh(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Bitmap getNextGifFrame(long paramLong)
+  public void onFailure(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestamp:" + paramLong);
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
     }
-    paramLong = paramLong / 1000L / 1000L;
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Bjeu != null) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Bjeu.a(localFile);
+      this.jdField_a_of_type_Bjeu.c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestampMs:" + paramLong);
+      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
     }
-    if (this.jdField_a_of_type_Bkhg != null) {
-      return this.jdField_a_of_type_Bkhg.a(paramLong);
-    }
-    return null;
   }
   
-  public void init()
+  public void onSuccess(String paramString)
   {
-    this.jdField_a_of_type_Bkhg = bkfn.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void release()
-  {
-    this.jdField_a_of_type_Bkhg = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
+    }
   }
 }
 

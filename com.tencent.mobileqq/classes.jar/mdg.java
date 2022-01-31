@@ -1,18 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
 
-class mdg
-  implements View.OnClickListener
+public class mdg
+  implements View.OnTouchListener
 {
-  mdg(mde parammde) {}
+  public mdg(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.a().a().at = true;
-    muf.a(this.a.a);
-    mde.b(this.a);
+    EffectSettingUi.a(this.a.a, -1008L);
+    QLog.w("EffectSettingUi", 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
+    return false;
   }
 }
 

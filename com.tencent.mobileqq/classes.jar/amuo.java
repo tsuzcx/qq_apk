@@ -1,56 +1,90 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class amuo
-  extends ampb<amun>
 {
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  
+  public static amuo a(String paramString)
+  {
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      amuo localamuo = new amuo();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("enable", 0) == 1) {}
+      for (;;)
+      {
+        localamuo.jdField_a_of_type_Boolean = bool;
+        localamuo.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
+        localamuo.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
+        localamuo.b = paramString.optString("c2cHighlightContent", "");
+        localamuo.c = paramString.optString("groupTipsContent", "");
+        localamuo.d = paramString.optString("groupHighlightContent", "");
+        return localamuo;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
   public int a()
   {
-    return 419;
+    return this.jdField_a_of_type_Int;
   }
   
-  @NonNull
-  public amun a(int paramInt)
+  public String a()
   {
-    return new amun();
-  }
-  
-  @Nullable
-  public amun a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return amun.a(paramArrayOfampi[0].a);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
     }
-    return null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public Class<amun> a()
+  public void a(boolean paramBoolean)
   {
-    return amun.class;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amun paramamun) {}
   
   public boolean a()
   {
-    return false;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public int b()
+  public String b()
   {
-    return 0;
+    if (TextUtils.isEmpty(this.b)) {
+      return "打开消息推送";
+    }
+    return this.b;
   }
   
-  public boolean b()
+  public String c()
   {
-    return false;
+    if (TextUtils.isEmpty(this.c)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.c;
   }
   
-  public boolean c()
+  public String d()
   {
-    return true;
+    if (TextUtils.isEmpty(this.d)) {
+      return "打开消息推送";
+    }
+    return this.d;
   }
 }
 

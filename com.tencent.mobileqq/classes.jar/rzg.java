@@ -1,24 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
 public class rzg
-  implements qoe
+  implements IObserver
 {
-  public rzg(ViolaVideoView paramViolaVideoView) {}
+  public rzg(VTopicVideo paramVTopicVideo) {}
   
-  public long a()
+  public String getRef()
   {
-    return ViolaVideoView.a(this.a).a();
+    return this.a.getRef();
   }
   
-  public void a(int paramInt)
+  public void onReceive(IEvent paramIEvent)
   {
-    ViolaVideoView.a(this.a).d(paramInt);
-  }
-  
-  public long b()
-  {
-    return ViolaVideoView.a(this.a).b();
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
+    {
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
+      }
+      this.a.getVideoLifeCycleChangeListener().c();
+    }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().a();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().b();
   }
 }
 

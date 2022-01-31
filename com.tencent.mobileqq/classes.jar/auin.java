@@ -1,19 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class auin
-  implements DialogInterface.OnClickListener
+class auin
 {
-  public auin(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.a.getActivity().isFinishing()) {
-      this.a.getActivity().finish();
-    }
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
+  View c;
+  View d;
 }
 
 

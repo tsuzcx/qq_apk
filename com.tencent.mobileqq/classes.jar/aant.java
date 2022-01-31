@@ -1,9 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aant
-  implements aekh
+class aant
+  implements DialogInterface.OnClickListener
 {
-  public aant(BaseChatPie paramBaseChatPie) {}
+  aant(aans paramaans) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

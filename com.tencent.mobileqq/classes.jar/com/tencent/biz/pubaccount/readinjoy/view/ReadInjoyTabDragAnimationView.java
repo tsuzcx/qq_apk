@@ -11,9 +11,9 @@ import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import rfz;
-import rga;
-import rgb;
+import rfw;
+import rfx;
+import rfy;
 
 public class ReadInjoyTabDragAnimationView
   extends TabDragAnimationView
@@ -41,9 +41,9 @@ public class ReadInjoyTabDragAnimationView
     a();
   }
   
-  private rgb a()
+  private rfy a()
   {
-    rgb localrgb = new rgb(null);
+    rfy localrfy = new rfy(null);
     int n = getPaddingLeft();
     int m = getRight() - getLeft() - getPaddingRight();
     int k = getPaddingTop();
@@ -60,11 +60,11 @@ public class ReadInjoyTabDragAnimationView
     }
     for (;;)
     {
-      localrgb.jdField_a_of_type_Int = n;
-      localrgb.c = k;
-      localrgb.jdField_b_of_type_Int = m;
-      localrgb.d = j;
-      return localrgb;
+      localrfy.jdField_a_of_type_Int = n;
+      localrfy.c = k;
+      localrfy.jdField_b_of_type_Int = m;
+      localrfy.d = j;
+      return localrfy;
       j = (n + m) / 2;
       n = j - this.jdField_b_of_type_Int / 2;
       m = this.jdField_b_of_type_Int / 2 + j;
@@ -99,7 +99,7 @@ public class ReadInjoyTabDragAnimationView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130848438);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130848444);
   }
   
   public void a(int paramInt)
@@ -111,7 +111,7 @@ public class ReadInjoyTabDragAnimationView
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     }
-    onk.g = this.g;
+    onh.g = this.g;
     invalidate();
   }
   
@@ -134,7 +134,7 @@ public class ReadInjoyTabDragAnimationView
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator2).before(localObjectAnimator3);
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator3).with(localObjectAnimator4);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new rfz(this));
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new rfw(this));
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
       return;
     }
@@ -145,31 +145,31 @@ public class ReadInjoyTabDragAnimationView
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "rotation", new float[] { -30.0F, 0.0F }).setDuration(500L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator2).with(localObjectAnimator1);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new rga(this));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new rfx(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    rgb localrgb;
+    rfy localrfy;
     if ((a()) && (this.d) && (this.g == 1))
     {
-      localrgb = a();
+      localrfy = a();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        this.h = ((localrgb.jdField_a_of_type_Int + localrgb.jdField_b_of_type_Int) / 2);
-        this.i = ((localrgb.c + localrgb.d) / 2);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localrgb.jdField_a_of_type_Int, localrgb.c, localrgb.jdField_b_of_type_Int, localrgb.d);
+        this.h = ((localrfy.jdField_a_of_type_Int + localrfy.jdField_b_of_type_Int) / 2);
+        this.i = ((localrfy.c + localrfy.d) / 2);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localrfy.jdField_a_of_type_Int, localrfy.c, localrfy.jdField_b_of_type_Int, localrfy.d);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
       return;
     }
     if (this.h == 0)
     {
-      localrgb = a();
-      this.h = ((localrgb.jdField_a_of_type_Int + localrgb.jdField_b_of_type_Int) / 2);
-      int j = localrgb.c;
-      this.i = ((localrgb.d + j) / 2);
+      localrfy = a();
+      this.h = ((localrfy.jdField_a_of_type_Int + localrfy.jdField_b_of_type_Int) / 2);
+      int j = localrfy.c;
+      this.i = ((localrfy.d + j) / 2);
     }
     super.onDraw(paramCanvas);
   }

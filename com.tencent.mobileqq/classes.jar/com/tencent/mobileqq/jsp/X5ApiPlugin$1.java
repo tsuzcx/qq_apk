@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.jsp;
 
-import arpd;
-import arpe;
-import bcfe;
-import bcfx;
-import bcfy;
+import arpf;
+import arpg;
+import bcfs;
+import bcgl;
+import bcgm;
 import com.tencent.smtt.sdk.WebView;
 
 public class X5ApiPlugin$1
   implements Runnable
 {
-  public X5ApiPlugin$1(arpd paramarpd, arpe paramarpe, WebView paramWebView) {}
+  public X5ApiPlugin$1(arpf paramarpf, arpg paramarpg, WebView paramWebView) {}
   
   public void run()
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (bcfx.a(this.jdField_a_of_type_Arpe.a))
+    if (bcgl.a(this.jdField_a_of_type_Arpg.a))
     {
-      bcfy localbcfy = bcfx.a(this.jdField_a_of_type_Arpe.a);
+      bcgm localbcgm = bcgl.a(this.jdField_a_of_type_Arpg.a);
       localObject1 = localObject2;
-      if (localbcfy != null) {
-        localObject1 = localbcfy.b;
+      if (localbcgm != null) {
+        localObject1 = localbcgm.b;
       }
     }
-    bcfe.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Arpe.a, (String)localObject1);
+    bcfs.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Arpg.a, (String)localObject1);
   }
 }
 

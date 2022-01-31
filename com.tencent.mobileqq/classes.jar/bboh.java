@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import java.util.Vector;
-
-class bboh
-  extends VasQuickUpdateManager.CallBacker
+public class bboh
+  extends aoam
 {
-  bboh(bboe parambboe) {}
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if (paramLong == 27L)
-    {
-      paramInt2 = Integer.parseInt(paramString1.substring("groupnickitem.".length(), paramString1.length()));
-      bboe.a(this.a).removeElement(Integer.valueOf(paramInt2));
-      if (paramInt1 == 0) {
-        this.a.a(paramInt2);
-      }
-    }
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
+  public static int e = 5;
+  public static int f = 6;
+  public static int g = 7;
+  public static int h = 8;
+  public static int i;
+  public static int j = 1;
+  public static int k = 6;
+  public static int l = 1;
+  public static int m = 2;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s;
 }
 
 

@@ -1,9 +1,7 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 class lfd
   extends BroadcastReceiver
@@ -12,17 +10,11 @@ class lfd
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((lfc.a(this.a) != null) && (lfc.a(this.a).a != null))
     {
-      long l = mtm.a(paramIntent);
-      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
-      paramContext = lfc.a(this.a).a();
-      if (paramContext != null)
-      {
-        paramContext.a(false, 202, new int[] { paramContext.a().C });
-        paramContext.b(202);
-        paramContext.d(1011);
-      }
+      ((liw)lfc.a(this.a).a(4)).a(i);
+      liu.a(18, i);
     }
   }
 }

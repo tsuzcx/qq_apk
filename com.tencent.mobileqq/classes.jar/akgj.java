@@ -1,24 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
-
-public final class akgj
-  implements Parcelable.Creator<ShieldOperationItem>
+public class akgj
+  implements ajte
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public ShieldOperationItem[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return null;
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
+    {
+      switch (paramInt)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramObject == null);
+      a(paramBoolean, ((Integer)paramObject[0]).intValue());
+      return;
+    }
   }
 }
 

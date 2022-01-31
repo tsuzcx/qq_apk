@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
+import aadx;
 import aaeb;
-import aaef;
 
 public class DoraemonAPIReporterProxy$1$1
   implements Runnable
 {
-  public DoraemonAPIReporterProxy$1$1(aaef paramaaef, aaeb paramaaeb, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2) {}
+  public DoraemonAPIReporterProxy$1$1(aaeb paramaaeb, aadx paramaadx, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aaeb.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Aadx.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import astl;
-import aukn;
-import auko;
+import astn;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.multicard.RecommendPerson;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class TroopMemberRecommendHandler$1
   implements Runnable
 {
-  public TroopMemberRecommendHandler$1(astl paramastl, long paramLong, ArrayList paramArrayList) {}
+  public TroopMemberRecommendHandler$1(astn paramastn, long paramLong, ArrayList paramArrayList) {}
   
   public void run()
   {
-    aukn localaukn = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    int i = localaukn.a(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+    aukp localaukp = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    int i = localaukp.a(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
     if (QLog.isColorLevel()) {
       QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards,delete count =" + i);
     }
@@ -25,7 +25,7 @@ public class TroopMemberRecommendHandler$1
     while (localIterator.hasNext())
     {
       RecommendPerson localRecommendPerson = (RecommendPerson)localIterator.next();
-      this.this$0.a(localaukn, localRecommendPerson);
+      this.this$0.a(localaukp, localRecommendPerson);
     }
   }
 }

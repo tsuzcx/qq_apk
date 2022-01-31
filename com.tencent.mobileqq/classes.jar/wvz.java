@@ -1,28 +1,48 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import java.util.List;
 
 public class wvz
-  implements ViewPager.OnPageChangeListener
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public wvz(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public wvz(List<CertifiedAccountMeta.StQQGroup> paramList)
   {
-    
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
+    {
+      paramViewHolder = (wwa)paramViewHolder;
+      if (paramViewHolder != null) {
+        paramViewHolder.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      }
     }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558683, paramViewGroup, false);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    }
+    return new wwa(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
   }
 }
 

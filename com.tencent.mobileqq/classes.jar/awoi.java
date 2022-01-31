@@ -1,15 +1,27 @@
-public class awoi
+import android.view.View;
+
+public abstract interface awoi
+  extends awof
 {
-  public int a;
-  public String a;
+  public abstract int a();
   
-  public awoi() {}
+  public abstract CharSequence a();
   
-  public awoi(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract CharSequence b();
+  
+  public abstract CharSequence c();
+  
+  public abstract CharSequence d();
 }
 
 

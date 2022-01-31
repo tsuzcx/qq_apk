@@ -1,14 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class bhvx
-  implements DialogInterface.OnShowListener
+public class bhvx
 {
-  bhvx(bhvv parambhvv, bcpq parambcpq) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Bcpq.hide();
+    return paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).getInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).edit();
+    paramQQAppInterface.putInt("hot_shortvideo_multi_video_support_799", paramInt);
+    paramQQAppInterface.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = false;
+    if (paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 4).getInt("hot_shortvideo_multi_video_support_799", 0) != 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION", 4).edit().putInt("HOT_SHORTVIDEO_MULTI_VIDEO_SUPPORT_799_VERSION" + paramQQAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

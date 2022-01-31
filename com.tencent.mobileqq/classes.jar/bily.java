@@ -1,6 +1,6 @@
 public abstract interface bily
 {
-  public abstract int a();
+  public abstract void a();
 }
 
 

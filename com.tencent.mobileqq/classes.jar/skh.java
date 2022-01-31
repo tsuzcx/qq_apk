@@ -1,36 +1,12 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class skh
-  extends ska
+final class skh
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public boolean a;
-  
-  public skh(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramJSONObject);
-  }
-  
-  public static skh a(JSONObject paramJSONObject)
-  {
-    return new skh(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 3600L;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
+    paramDialogInterface.dismiss();
   }
 }
 

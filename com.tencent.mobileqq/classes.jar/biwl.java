@@ -1,167 +1,77 @@
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener2;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.play.AEPlayShowGridViewHolder.1;
-import dov.com.qq.im.ae.play.AEPlayShowGridViewHolder.3;
-import dov.com.qq.im.ae.play.AEPlayShowGridViewHolder.4;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
 
-public class biwl
-  extends RecyclerView.ViewHolder
-  implements biyn, URLDrawable.URLDrawableListener2
+class biwl
+  extends PagerAdapter
 {
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = b().getResources().getDrawable(2130837599);
-  private static final Map<String, WeakReference<URLDrawable>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static final String jdField_b_of_type_JavaLangString;
-  private int jdField_a_of_type_Int = -1;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  biqn jdField_a_of_type_Biqn;
-  private biwn jdField_a_of_type_Biwn;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private final String jdField_a_of_type_JavaLangString = "AEPlayShowGridViewHolder";
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private String c = "";
-  private String d = "";
-  private String e = "";
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SparseArray<biwn> jdField_a_of_type_AndroidUtilSparseArray;
   
-  static
+  biwl(biwh parambiwh, Context paramContext)
   {
-    File localFile = new File(biij.jdField_a_of_type_JavaLangString, "play_show_apng");
-    jdField_b_of_type_JavaLangString = localFile.getPath();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public biwl(View paramView, biwk parambiwk, biwn parambiwn, int paramInt)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    super(paramView);
-    this.jdField_b_of_type_Int = paramInt;
-    if (paramInt == 1) {
-      paramView.post(new AEPlayShowGridViewHolder.1(this, paramView));
-    }
-    this.jdField_a_of_type_Biwn = parambiwn;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362181));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362182);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362185));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131362184));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131362183);
-    parambiwn = paramView.getLayoutParams();
-    parambiwn.width = parambiwk.jdField_a_of_type_Int;
-    parambiwn.height = parambiwk.jdField_b_of_type_Int;
-    paramView.setLayoutParams(parambiwn);
-    paramView.setOnClickListener(new biwm(this));
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  private URLDrawable a(@NonNull String paramString1, @NonNull String paramString2)
+  public int getCount()
   {
-    return bbql.a(paramString1, paramString2, jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, "-GY-PLAY-SHOW-", null);
+    return biwo.a(biwh.a(this.jdField_a_of_type_Biwh)).length;
   }
   
-  private void a(@NonNull biqn parambiqn)
+  public int getItemPosition(Object paramObject)
   {
-    this.c = parambiqn.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(parambiqn.k)) {}
-    for (String str = "";; str = parambiqn.k)
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject2 = (biwn)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      this.d = str;
-      this.e = parambiqn.j;
-      parambiqn = jdField_b_of_type_JavaLangString + File.separator + this.e.hashCode() + "_" + this.c.hashCode() + ".png";
-      c();
-      this.jdField_a_of_type_ComTencentImageURLDrawable = a(parambiqn, this.e);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      localObject2 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558476, null);
+      localObject1 = new biwn(this);
+      ((biwn)localObject1).jdField_a_of_type_AndroidViewView = ((View)localObject2);
+      ((biwn)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131370351));
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+    }
+    localObject2 = ((biwn)localObject1).jdField_a_of_type_AndroidWidgetTextView;
+    ((TextView)localObject2).setText(biwo.a(biwh.a(this.jdField_a_of_type_Biwh))[paramInt].b);
+    if (biwh.a(this.jdField_a_of_type_Biwh))
+    {
+      ((TextView)localObject2).setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165275));
+      if (biwh.a(this.jdField_a_of_type_Biwh) != paramInt) {
+        break label216;
       }
-      return;
+      ((TextView)localObject2).setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      ((TextView)localObject2).setOnClickListener(new biwm(this, paramInt));
+      paramViewGroup.addView(((biwn)localObject1).jdField_a_of_type_AndroidViewView);
+      return ((biwn)localObject1).jdField_a_of_type_AndroidViewView;
+      ((TextView)localObject2).setShadowLayer(4.0F, 0.0F, 2.0F, ((TextView)localObject2).getResources().getColor(2131165284));
+      ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167134));
+      break;
+      label216:
+      ((TextView)localObject2).setAlpha(0.6F);
     }
   }
   
-  private static Context b()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return BaseApplicationImpl.getApplication();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_b_of_type_Int != 1) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-  }
-  
-  public void a(@NonNull biqn parambiqn, int paramInt)
-  {
-    this.jdField_a_of_type_Biqn = parambiqn;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
-    }
-    a(parambiqn);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((paramString == null) || (!paramString.equals(this.jdField_a_of_type_Biqn.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new AEPlayShowGridViewHolder.3(this, paramInt));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if ((paramString == null) || (!paramString.equals(this.jdField_a_of_type_Biqn.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    bizq.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish id:" + paramString);
-    bizq.b("AEPlayShowGridViewHolder", "【Play Item】onDownloadFinish isSuccess:" + paramBoolean);
-    ThreadManager.getUIHandler().post(new AEPlayShowGridViewHolder.4(this, paramBoolean));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-  }
-  
-  public void onFileDownloaded(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    c();
+    return paramView == paramObject;
   }
 }
 

@@ -1,15 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class adpa
-  implements bcvx
+  implements aptw
 {
-  adpa(adoz paramadoz, MessageForFile paramMessageForFile, Context paramContext) {}
+  adpa(adox paramadox, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    apue.a(this.jdField_a_of_type_Adoz.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Adox.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+    }
+    this.jdField_a_of_type_Adox.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

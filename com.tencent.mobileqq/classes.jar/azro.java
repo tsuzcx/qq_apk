@@ -1,18 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+import android.content.Context;
+import android.widget.ScrollView;
 
-public class azro
-  implements aybz
+class azro
+  extends ScrollView
 {
-  public azro(TroopEnterEffectController.3 param3) {}
-  
-  public void a(aybc paramaybc)
+  azro(azrn paramazrn, Context paramContext)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, paramaybc));
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

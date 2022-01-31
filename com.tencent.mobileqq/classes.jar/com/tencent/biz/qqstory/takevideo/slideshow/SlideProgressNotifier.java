@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import bcpq;
-import bcpt;
+import bcqf;
+import bcqi;
 import com.tencent.qphone.base.util.QLog;
+import vtn;
 import vtq;
-import vtt;
-import vuc;
+import vtz;
 
 public class SlideProgressNotifier
-  extends bcpt
-  implements DialogInterface.OnKeyListener, vtq
+  extends bcqi
+  implements DialogInterface.OnKeyListener, vtn
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private vtt jdField_a_of_type_Vtt;
+  private vtq jdField_a_of_type_Vtq;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699535) + "0%", 0);
-    if (this.jdField_a_of_type_Bcpq != null) {
-      this.jdField_a_of_type_Bcpq.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131699546) + "0%", 0);
+    if (this.jdField_a_of_type_Bcqf != null) {
+      this.jdField_a_of_type_Bcqf.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -76,18 +76,18 @@ public class SlideProgressNotifier
     }
   }
   
-  public void a(vtt paramvtt)
+  public void a(vtq paramvtq)
   {
-    this.jdField_a_of_type_Vtt = paramvtt;
+    this.jdField_a_of_type_Vtq = paramvtq;
   }
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      vuc.a().f();
-      if (this.jdField_a_of_type_Vtt != null) {
-        this.jdField_a_of_type_Vtt.a();
+      vtz.a().f();
+      if (this.jdField_a_of_type_Vtq != null) {
+        this.jdField_a_of_type_Vtq.a();
       }
     }
     return false;

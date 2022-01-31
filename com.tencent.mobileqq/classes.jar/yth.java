@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
 
 class yth
-  implements DialogInterface.OnDismissListener
+  implements yxz
 {
-  yth(ytg paramytg) {}
+  yth(ytd paramytd) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void reportImpression(View paramView)
   {
-    this.a.jdField_a_of_type_Ytp.d();
-    this.a.jdField_a_of_type_Yte.c();
+    paramView = paramView.getTag(2131379211);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      yyb.a(((GdtAd)paramView).getUrlForImpression());
+    }
   }
 }
 

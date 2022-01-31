@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import astm;
+import asto;
 
 public class TroopMemberRecommendManager$1
   implements Runnable
 {
-  public TroopMemberRecommendManager$1(astm paramastm) {}
+  public TroopMemberRecommendManager$1(asto paramasto) {}
   
   public void run()
   {
-    astm.a(this.this$0);
+    asto.a(this.this$0);
   }
 }
 

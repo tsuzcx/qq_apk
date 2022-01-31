@@ -1,15 +1,15 @@
 package com.tencent.av.ui;
 
-import mdo;
+import mdj;
 
 public class FaceToolbar$1$1
   implements Runnable
 {
-  public FaceToolbar$1$1(mdo parammdo, int paramInt) {}
+  public FaceToolbar$1$1(mdj parammdj, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mdo.a.fixDimmed(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mdj.a.fixDimmed(this.jdField_a_of_type_Int);
   }
 }
 

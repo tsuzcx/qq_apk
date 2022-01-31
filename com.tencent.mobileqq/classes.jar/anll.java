@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class anll
-  implements ValueAnimator.AnimatorUpdateListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public anll(DataReportViewer paramDataReportViewer) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.a.a = paramBoolean;
+    if (this.a.a) {
+      this.a.a();
+    }
   }
 }
 

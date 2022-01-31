@@ -1,16 +1,30 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
 public class atzl
-  implements BusinessObserver
+  extends atza
 {
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public QIMNotifyAddFriend a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public atzl(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    if (paramInt == 10000) {
-      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+  }
+  
+  public String a()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 

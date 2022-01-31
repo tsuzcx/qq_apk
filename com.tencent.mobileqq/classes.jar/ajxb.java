@@ -1,6 +1,26 @@
-public abstract interface ajxb
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
+
+public class ajxb
+  implements Handler.Callback
 {
-  public abstract void g(boolean paramBoolean);
+  private WeakReference<FrameHelperActivity> a;
+  
+  public ajxb(FrameHelperActivity paramFrameHelperActivity)
+  {
+    this.a = new WeakReference(paramFrameHelperActivity);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
+    }
+    return false;
+  }
 }
 
 

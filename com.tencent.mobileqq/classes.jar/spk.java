@@ -1,18 +1,18 @@
-public class spk
-  extends spl
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+
+class spk
+  extends SimpleJob<Void>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  spk(spj paramspj) {}
   
-  public spk(int paramInt)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super(paramInt);
-    this.g = 6;
+    spj.a(this.a);
+    spj.a(this.a, false);
+    return null;
   }
 }
 

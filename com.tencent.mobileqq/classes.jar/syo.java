@@ -1,20 +1,36 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
 
 public class syo
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
+  public static volatile syo a;
+  
+  public static syo a()
   {
-    return false;
+    Object localObject = a;
+    if (localObject == null) {
+      try
+      {
+        syo localsyo2 = a;
+        localObject = localsyo2;
+        if (localsyo2 == null)
+        {
+          localObject = new syo();
+          a = (syo)localObject;
+        }
+        return localObject;
+      }
+      finally {}
+    }
+    return localsyo1;
   }
   
-  public static boolean a(String paramString)
+  public <Request extends sys, Respond extends syn> void a(Request paramRequest, syq<Request, Respond> paramsyq)
   {
-    return false;
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return false;
+    paramRequest = new syp(paramRequest);
+    paramRequest.jdField_a_of_type_Syq = paramsyq;
+    paramRequest.jdField_a_of_type_Sys.a(paramRequest);
+    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Sys);
   }
 }
 

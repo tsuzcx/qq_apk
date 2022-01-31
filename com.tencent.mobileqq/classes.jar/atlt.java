@@ -1,26 +1,29 @@
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.Comments;
 
 class atlt
-  implements atgw
+  implements atgz
 {
-  atlt(atlq paramatlq) {}
+  atlt(atls paramatls) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void a()
   {
-    if (atlq.a(this.a) != null)
+    if (atls.a(this.a) != null)
     {
-      if (paramInt == 0)
-      {
-        atlq.a(this.a).b(paramComment);
-        atlq.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696673));
-        axqw.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
+      atls.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696677));
+      atls.a(this.a).b();
+      atls.a(this.a).c();
     }
-    else {
-      return;
+  }
+  
+  public void a(Comments paramComments)
+  {
+    if (atls.a(this.a) != null)
+    {
+      atls.a(this.a);
+      atls.a(this.a).a(paramComments);
+      atls.a(this.a).b();
     }
-    atlq.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696672));
   }
 }
 

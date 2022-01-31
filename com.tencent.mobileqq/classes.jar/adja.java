@@ -1,28 +1,85 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.2.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class adja
-  implements View.OnClickListener
+  implements adif
 {
-  adja(adiy paramadiy) {}
+  private BaseChatPie a;
   
-  public void onClick(View paramView)
+  public adja(BaseChatPie paramBaseChatPie)
   {
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 7)
+    {
+      if ((this.a.a() != null) && (this.a.a().getIntent() != null)) {
+        break label44;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReplyOnlyHelper", 2, "params is error");
+      }
+    }
+    return;
+    label44:
+    Intent localIntent = this.a.a().getIntent();
+    long l = localIntent.getLongExtra("key_reply_only_uniseq", 0L);
+    ChatMessage localChatMessage;
+    Object localObject2;
+    Object localObject1;
+    if (l > 0L)
+    {
+      localChatMessage = ((avqu)this.a.a.getManager(340)).a(l);
+      localObject2 = localIntent.getStringExtra("troop_code");
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = "0";
+      }
+    }
     try
     {
-      axqw.b(adiy.a(this.a), "P_CliOper", "Vip_pay_mywallet", "", "500", "idiom.tips.click", 0, 0, "", "", "", "");
-      adiy.a(this.a).a().postDelayed(new QWalletAIOLifeCycleHelper.2.1(this), 200L);
-      this.a.a();
-      return;
+      l = Long.parseLong((String)localObject1);
+      localObject1 = null;
+      if (l > 0L)
+      {
+        localObject2 = (TroopManager)this.a.a.getManager(52);
+        localObject1 = l + "";
+        localObject2 = ((TroopManager)localObject2).b((String)localObject1);
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((TroopInfo)localObject2).getTroopName()))) {
+          localObject1 = ((TroopInfo)localObject2).getTroopName();
+        }
+      }
+      else
+      {
+        this.a.a(localChatMessage, 0, l, (String)localObject1);
+        localIntent.removeExtra("key_reply_only_uniseq");
+        return;
+      }
     }
-    catch (Throwable paramView)
+    catch (Exception localException)
     {
-      QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  IdiomRedBagTips throw an exception: " + paramView);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReplyOnlyHelper", 2, "replyMessageAtInput", localException);
+        }
+        l = 0L;
+      }
     }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 7 };
   }
 }
 

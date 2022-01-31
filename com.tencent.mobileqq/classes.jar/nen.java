@@ -1,44 +1,26 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class nen
-  implements nhe
+public class nen
 {
-  nen(ned paramned) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public ImageView a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ImageView b;
+  TextView b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  ImageView e;
   
-  public void a(int paramInt)
-  {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
-    }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
-    {
-      this.a.d(paramInt);
-      return;
-    }
-    this.a.e();
-  }
+  public nen(nea paramnea) {}
 }
 
 

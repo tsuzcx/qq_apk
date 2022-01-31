@@ -1,53 +1,109 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class uah
-  extends ubc
-  implements View.OnClickListener
+  extends uag
 {
-  public uah(@NonNull ViewGroup paramViewGroup)
+  private uag a;
+  
+  public Activity a()
   {
-    super(paramViewGroup);
-    this.a.findViewById(2131367874).setOnClickListener(this);
-    this.a.findViewById(2131377192).setOnClickListener(this);
+    return this.a.a();
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public OpenPlayerBuilder.Data a()
   {
-    return paramViewGroup;
+    return this.a.a();
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull uav paramuav, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public XViewPager a()
   {
-    super.a(paramInt1, paramInt2, paramuav, paramStoryPlayerGroupHolder);
-    if (bkur.a)
-    {
-      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131367874).getLayoutParams();
-      paramStoryPlayerGroupHolder.topMargin = (vzo.a(this.a.getContext(), 5.0F) + 114);
-      this.a.findViewById(2131367874).setLayoutParams(paramStoryPlayerGroupHolder);
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public twl a()
+  {
+    return this.a.a();
+  }
+  
+  public two a()
+  {
+    return this.a.a();
+  }
+  
+  public tzy a()
+  {
+    return this.a.a();
+  }
+  
+  public uag a()
+  {
+    return this.a;
+  }
+  
+  public uar a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(ssv paramssv)
+  {
+    this.a.a(paramssv);
+  }
+  
+  public void a(tyw paramtyw)
+  {
+    this.a.a(paramtyw);
+  }
+  
+  public void a(uag paramuag)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
     }
-    a().a(this, paramInt1, paramInt2, paramuav);
+    this.a = paramuag;
   }
   
-  public void a(boolean paramBoolean)
+  public void a(uaz paramuaz)
   {
-    super.a(paramBoolean);
-    a().a(this, paramBoolean);
+    this.a.a(paramuaz);
   }
   
-  protected void b()
+  public boolean a()
   {
-    super.b();
-    a().a(this);
+    return this.a.a();
   }
   
-  public void onClick(View paramView)
+  public void b(ssv paramssv)
   {
-    a().a(this, paramView);
+    this.a.b(paramssv);
+  }
+  
+  public void b(tyw paramtyw)
+  {
+    this.a.b(paramtyw);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 

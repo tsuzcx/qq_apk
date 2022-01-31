@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import akno;
-import aknv;
-import akny;
+import aknn;
+import aknu;
+import aknx;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOIceBreakShow$2
   implements Runnable
 {
-  public AIOIceBreakShow$2(akno paramakno, int paramInt, String paramString) {}
+  public AIOIceBreakShow$2(aknn paramaknn, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      akno.a(this.this$0).d(this.jdField_a_of_type_JavaLangString);
-      akno.a(this.this$0).c();
+      aknn.a(this.this$0).d(this.jdField_a_of_type_JavaLangString);
+      aknn.a(this.this$0).c();
     }
     for (;;)
     {
       QLog.d("AIOIceBreakShow", 1, String.format("markEnteredFlag, type = %s, uin = %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      if (akny.d(this.jdField_a_of_type_Int))
+      if (aknx.d(this.jdField_a_of_type_Int))
       {
-        akno.a(this.this$0).b(this.jdField_a_of_type_JavaLangString);
-        akno.a(this.this$0).d();
+        aknn.a(this.this$0).b(this.jdField_a_of_type_JavaLangString);
+        aknn.a(this.this$0).d();
       }
       else
       {
-        akno.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
-        akno.a(this.this$0).b();
+        aknn.a(this.this$0).c(this.jdField_a_of_type_JavaLangString);
+        aknn.a(this.this$0).b();
       }
     }
   }

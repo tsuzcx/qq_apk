@@ -1,66 +1,67 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amrx
+  extends ampa<amrw>
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  
-  public amrx()
+  public static amrw a()
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
+    return (amrw)ampl.a().a(452);
   }
   
-  public static amrx a(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    return 452;
+  }
+  
+  @NonNull
+  public amrw a(int paramInt)
+  {
+    return new amrw().b("0");
+  }
+  
+  @Nullable
+  public amrw a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      amrx localamrx = new amrx();
-      localamrx.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("loverAIOPush");
-      return localamrx;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("C2CLovePushGrayConfBean", 2, "C2CLovePushGrayConfBean onParsed erro " + paramString.toString());
+      amrw localamrw = amrw.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CLovePushGrayProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamrw;
     }
     return null;
   }
   
-  public amrx b(String paramString)
+  public Class<amrw> a()
   {
-    amrx localamrx = new amrx();
-    try
-    {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
-      {
-        paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject(paramString);
-        if (paramString != null)
-        {
-          localamrx.jdField_a_of_type_Int = paramString.optInt("linkType", 1);
-          localamrx.jdField_a_of_type_JavaLangString = paramString.optString("linkURL", "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1");
-          return localamrx;
-        }
-        localamrx.jdField_a_of_type_Int = 1;
-        localamrx.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-        return localamrx;
-      }
+    return amrw.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CLovePushGrayProcessor", 2, "onReqFailed " + paramInt);
     }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("C2CLovePushGrayProcessor", 2, "getC2CLovePushGrayConfBean Exception :", paramString);
-      }
-      localamrx.jdField_a_of_type_Int = 1;
-      localamrx.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/mood/lover?_wv=16777219&from=common&qzUseTransparentNavBar=1&_proxy=1";
-    }
-    return localamrx;
+  }
+  
+  public void a(amrw paramamrw) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
-class agkv
-  extends aume
+public class agkv
+  implements MessageQueue.IdleHandler
 {
-  agkv(agku paramagku) {}
+  public agkv(AlbumListActivity paramAlbumListActivity, int paramInt1, int paramInt2) {}
   
-  protected void c(boolean paramBoolean)
+  public boolean queueIdle()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
+      QLog.d("AlbumListActivity", 2, "load Scroll Position,index:" + this.jdField_a_of_type_Int + " top:" + this.b);
     }
-    this.a.a.a.b();
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.a.a();
-      this.a.a.a.setResult(-1);
-      return;
-    }
-    this.a.a.a.a(1, ajyc.a(2131713857));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListActivity.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    return false;
   }
 }
 

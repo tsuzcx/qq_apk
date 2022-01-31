@@ -1,13 +1,25 @@
-import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 
-public abstract interface ywd
+class ywd
+  extends BroadcastReceiver
 {
-  public abstract Activity a();
+  private ywd(ywb paramywb) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Intent paramIntent);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
+    if (i == 3) {}
+    for (boolean bool = true;; bool = false)
+    {
+      yxp.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
+      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (ywb.a(this.a) != null)) {
+        ywb.a(this.a).a(new Object[0]);
+      }
+      return;
+    }
+  }
 }
 
 

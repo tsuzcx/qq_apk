@@ -1,63 +1,111 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.text.TextUtils;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONArray;
 
-public class beiw
+public final class beiw
 {
-  private static volatile Handler jdField_a_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static volatile Handler jdField_b_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
-  private static volatile Handler c;
+  static final Charset a = Charset.forName("US-ASCII");
+  static final Charset b = Charset.forName("UTF-8");
   
-  public static Handler a()
+  static String a(Reader paramReader)
   {
-    if (jdField_b_of_type_AndroidOsHandler == null) {}
     try
     {
-      if (jdField_b_of_type_AndroidOsHandler == null)
+      StringWriter localStringWriter = new StringWriter();
+      char[] arrayOfChar = new char[1024];
+      for (;;)
       {
-        jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_SUB", 0);
-        jdField_a_of_type_AndroidOsHandlerThread.start();
-        jdField_b_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        int i = paramReader.read(arrayOfChar);
+        if (i == -1) {
+          break;
+        }
+        localStringWriter.write(arrayOfChar, 0, i);
       }
-      return jdField_b_of_type_AndroidOsHandler;
+      str = localObject.toString();
     }
-    finally {}
+    finally
+    {
+      paramReader.close();
+    }
+    String str;
+    paramReader.close();
+    return str;
   }
   
-  public static void a(Runnable paramRunnable, int paramInt, beix parambeix, boolean paramBoolean)
+  public static String a(String paramString1, String paramString2)
   {
-    new Thread(paramRunnable).start();
+    if (!TextUtils.isEmpty(paramString2)) {
+      return paramString1 + ":" + paramString2;
+    }
+    return null;
   }
   
-  public static Handler b()
+  public static JSONArray a(Set paramSet)
   {
-    if (c == null) {}
+    JSONArray localJSONArray = new JSONArray();
+    if (paramSet != null)
+    {
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext()) {
+        localJSONArray.put(paramSet.next());
+      }
+    }
+    return localJSONArray;
+  }
+  
+  static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
     try
     {
-      if (c == null)
-      {
-        jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("MINIAPP_FILE", 0);
-        jdField_b_of_type_AndroidOsHandlerThread.start();
-        c = new Handler(jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-      }
-      return c;
+      paramCloseable.close();
+      return;
     }
-    finally {}
+    catch (RuntimeException paramCloseable)
+    {
+      throw paramCloseable;
+    }
+    catch (Exception paramCloseable) {}
   }
   
-  public static Handler c()
+  static void a(File paramFile)
   {
-    if (jdField_a_of_type_AndroidOsHandler == null) {}
-    try
-    {
-      if (jdField_a_of_type_AndroidOsHandler == null) {
-        jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      return jdField_a_of_type_AndroidOsHandler;
+    File[] arrayOfFile = paramFile.listFiles();
+    if (arrayOfFile == null) {
+      throw new IOException("not a readable directory: " + paramFile);
     }
-    finally {}
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramFile = arrayOfFile[i];
+      if (paramFile.isDirectory()) {
+        a(paramFile);
+      }
+      if (!paramFile.delete()) {
+        throw new IOException("failed to delete file: " + paramFile);
+      }
+      i += 1;
+    }
+  }
+  
+  public static String[] a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = paramString.lastIndexOf(":");
+      if ((i != -1) && (paramString.length() > i + 1)) {
+        return new String[] { paramString.substring(0, i), paramString.substring(i + 1) };
+      }
+    }
+    return null;
   }
 }
 

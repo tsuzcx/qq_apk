@@ -6,15 +6,15 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import com.tencent.widget.HorizontalListView;
-import vkn;
-import vot;
-import vpi;
-import vpo;
+import vkk;
+import voq;
+import vpf;
+import vpl;
 
 @TargetApi(14)
 public class LogoIconListView
   extends HorizontalListView
-  implements vpo
+  implements vpl
 {
   private int a;
   
@@ -28,13 +28,13 @@ public class LogoIconListView
   
   public void b(int paramInt)
   {
-    vpi localvpi = (vpi)super.getAdapter();
-    if ((paramInt < 0) || (paramInt >= localvpi.getCount())) {
+    vpf localvpf = (vpf)super.getAdapter();
+    if ((paramInt < 0) || (paramInt >= localvpf.getCount())) {
       return;
     }
-    Object localObject = (vot)localvpi.getItem(paramInt);
+    Object localObject = (voq)localvpf.getItem(paramInt);
     int i;
-    if ((localObject != null) && ("LocationFacePackage".equals(((vot)localObject).a())))
+    if ((localObject != null) && ("LocationFacePackage".equals(((voq)localObject).a())))
     {
       if (DoodleLayout.a)
       {
@@ -44,13 +44,13 @@ public class LogoIconListView
     }
     else
     {
-      localvpi.a(paramInt);
-      i = localvpi.a();
+      localvpf.a(paramInt);
+      i = localvpf.a();
       if ((this.a >= super.getFirstVisiblePosition()) && (this.a <= super.getLastVisiblePosition())) {
-        vkn.a(super.getChild(this.a), 0.5F);
+        vkk.a(super.getChild(this.a), 0.5F);
       }
       if ((paramInt >= super.getFirstVisiblePosition()) && (paramInt <= super.getLastVisiblePosition())) {
-        vkn.a(super.getChild(paramInt), 1.0F);
+        vkk.a(super.getChild(paramInt), 1.0F);
       }
       if (paramInt > super.getFirstVisiblePosition()) {
         break label179;

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import ajxn;
+import ajxl;
 
 public class FriendsManager$3
   implements Runnable
 {
-  public FriendsManager$3(ajxn paramajxn) {}
+  public FriendsManager$3(ajxl paramajxl) {}
   
   public void run()
   {
-    ajxn.a(this.this$0);
-    ajxn.a(this.this$0, "buildGroupList2");
-    ((FriendListHandler)ajxn.a(this.this$0).a(1)).notifyUI(103, true, null);
+    ajxl.a(this.this$0);
+    ajxl.a(this.this$0, "buildGroupList2");
+    ((FriendListHandler)ajxl.a(this.this$0).a(1)).notifyUI(103, true, null);
   }
 }
 

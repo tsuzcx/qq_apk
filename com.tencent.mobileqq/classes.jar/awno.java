@@ -1,78 +1,71 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class awno
-  extends awpo
+  extends awoj
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "xiaoweiba";
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
   
-  public awno(String paramString1, String paramString2, long paramLong)
+  public awno(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
-  public void a(boolean paramBoolean)
+  public CharSequence a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
-  public void b(View paramView)
+  public String a()
   {
-    QQAppInterface localQQAppInterface;
-    Object localObject;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = bbej.a(localQQAppInterface, paramView.getContext(), this.b);
-      if (localObject == null) {
-        break label173;
-      }
-      ((bbds)localObject).c();
-    }
-    for (;;)
-    {
-      paramView = new JSONObject();
-      try
-      {
-        paramView.put("project", awso.a());
-        paramView.put("event_src", "client");
-        paramView.put("get_src", "web");
-        awso.a(null, new ReportModelDC02528().module("all_result").action("clk_tail").obj1(this.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(awso.a(UniteSearchActivity.d)).ver7(paramView.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiu.jdField_a_of_type_Long));
-        return;
-        label173:
-        if ((!this.b.startsWith("http://")) && (!this.b.startsWith("https://"))) {
-          continue;
-        }
-        paramView = paramView.getContext();
-        localObject = new Intent(paramView, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", this.b);
-        paramView.startActivity((Intent)localObject);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("Q.uniteSearch.SearchResultGroupModelImpl", 2, "e = " + localJSONException);
-        }
-      }
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
+    localBundle.putInt("exposureSource", 3);
+    banb.a((Activity)paramView.getContext(), localBundle, 2);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
+  }
+  
+  public int c()
+  {
+    return 4;
+  }
+  
+  public CharSequence c()
+  {
+    return ajya.a(2131705351);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 

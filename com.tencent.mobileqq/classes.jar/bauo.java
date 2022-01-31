@@ -1,66 +1,70 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bauo
-  extends bcal
+class bauo
+  extends bdvm
 {
-  public bauo(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.preInitPluginEngine();
-    this.mWebview = new TouchWebView(this.mContext);
-    buildBaseWebView(paramAppInterface);
-  }
+  bauo(baui parambaui) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    super.doOnResume();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.doOnCreate(paramIntent);
-  }
-  
-  public void a(String paramString)
-  {
-    if (bcgf.jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopShareUtility", 2, "onQidianGroupInfo start");
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null)) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      }
+    }
+    while ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()) || (this.a.jdField_a_of_type_Int == -1) || (this.a.b == -1)) {
+      return;
+    }
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      bcgc.a(this.mWebview, bcgf.jdField_a_of_type_JavaLangString);
-      bcgf.jdField_a_of_type_Boolean = false;
+      String str = (String)paramHashMap.get("uin");
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin.equals(str))
+      {
+        this.a.b();
+        return;
+      }
+      paramHashMap = (String)paramHashMap.get("url");
+      this.a.jdField_a_of_type_JavaLangString = paramHashMap;
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      default: 
+        return;
+      case 0: 
+        this.a.c = bahv.a("", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 0);
+        this.a.b();
+        baui.d(this.a);
+        return;
+      case 3: 
+        this.a.b();
+        baui.b(this.a);
+        return;
+      case 2: 
+        this.a.b();
+        baui.c(this.a);
+        return;
+      case 1: 
+        this.a.b();
+        baui.e(this.a);
+        return;
+      }
+      this.a.b();
+      baui.f(this.a);
+      return;
     }
-    this.mUrl = paramString;
-    this.mWebview.loadUrl(this.mUrl);
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new bchy());
+    if (this.a.jdField_a_of_type_Baur != null) {
+      this.a.jdField_a_of_type_Baur.a(this.a.jdField_a_of_type_Int, false);
     }
-  }
-  
-  public void c()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    paramWebView.loadUrl("javascript:" + SnapshotService.jdField_a_of_type_JavaLangString);
+    this.a.b();
+    bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693033), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
   }
 }
 

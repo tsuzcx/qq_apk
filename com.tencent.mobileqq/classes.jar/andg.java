@@ -1,41 +1,73 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class andg
+  extends ampa<String>
 {
-  private int a;
-  
-  public static andg a(ampi paramampi)
+  public int a()
   {
-    localandg = new andg();
-    if (paramampi != null)
+    return 462;
+  }
+  
+  public Class<String> a()
+  {
+    return String.class;
+  }
+  
+  @NonNull
+  public String a(int paramInt)
+  {
+    return "";
+  }
+  
+  @Nullable
+  public String a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      paramArrayOfamph = null;
+    }
+    String str;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        if (paramampi.jdField_a_of_type_JavaLangString == null) {}
-        for (paramampi = "";; paramampi = paramampi.jdField_a_of_type_JavaLangString)
-        {
-          localandg.jdField_a_of_type_Int = new JSONObject(paramampi).optInt("suspiciousSwitch", 0);
-          return localandg;
-        }
-        return localandg;
-      }
-      catch (JSONException paramampi)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramampi.toString());
-        }
-      }
+      return paramArrayOfamph;
+      str = paramArrayOfamph[0].a;
+      paramArrayOfamph = str;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
+    return str;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
     }
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_Int == 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

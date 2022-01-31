@@ -1,52 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.MessageQueue.IdleHandler;
-import android.view.View;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahva
-  implements MessageQueue.IdleHandler
+  extends akuo
 {
-  public ahva(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
-  
-  public boolean queueIdle()
+  public ahva(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (axho.d(axho.b))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
       if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      }
+      if (NewFlowCameraActivity.a(this.a) != null) {
+        NewFlowCameraActivity.d(this.a);
       }
     }
-    View localView = BaseActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366389);
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.G();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
-    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-    }
-    for (;;)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
-      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      return false;
-      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      } else {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
-      }
-    }
+      return;
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

@@ -1,18 +1,15 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.sveffects.Reporter;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bflt
-  implements Reporter
+  extends Handler
 {
-  public void reportToBeacon(String paramString, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
-  {
-    axrl.a(BaseApplication.getContext()).a(null, paramString, paramBoolean, paramLong1, paramLong2, paramHashMap, "");
-  }
+  public bflt(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void reportToCompass(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
+  public void handleMessage(Message paramMessage)
   {
-    axqw.b(null, paramString1, paramString2, "", paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    this.a.a(paramMessage);
   }
 }
 

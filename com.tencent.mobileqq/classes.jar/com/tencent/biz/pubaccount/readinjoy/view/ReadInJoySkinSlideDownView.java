@@ -9,12 +9,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
-import ayay;
-import aybb;
-import aybc;
-import aybq;
-import bbjn;
-import bhvh;
+import ayba;
+import aybd;
+import aybe;
+import aybs;
+import bbkb;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,18 +24,18 @@ import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import noo;
-import onr;
+import nol;
+import ono;
 import org.json.JSONException;
-import pzc;
-import rfi;
-import rfj;
-import rfk;
+import pyz;
+import rff;
+import rfg;
+import rfh;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import yxy;
+import yxv;
 
 public class ReadInJoySkinSlideDownView
   extends RelativeLayout
@@ -46,7 +46,7 @@ public class ReadInJoySkinSlideDownView
   public MediaPlayer a;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ViewTreeObserver jdField_a_of_type_AndroidViewViewTreeObserver;
-  private aybc jdField_a_of_type_Aybc;
+  private aybe jdField_a_of_type_Aybe;
   public SpriteNativeView a;
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
@@ -65,8 +65,8 @@ public class ReadInJoySkinSlideDownView
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
     this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener3;
-    LayoutInflater.from(getContext()).inflate(2131562311, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131376251));
+    LayoutInflater.from(getContext()).inflate(2131562310, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131376253));
     setClickable(true);
     this.jdField_a_of_type_AndroidViewViewTreeObserver = getViewTreeObserver();
     this.jdField_a_of_type_AndroidViewViewTreeObserver.addOnGlobalLayoutListener(this);
@@ -74,7 +74,7 @@ public class ReadInJoySkinSlideDownView
   
   private void a(int paramInt, Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    new aybq().a(paramString2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth()).a(new rfk(this, paramOnClickListener1, paramString1, paramInt, paramString2, paramContext, paramOnClickListener2)).a(new rfj(this)).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView, new rfi(this));
+    new aybs().a(paramString2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth()).a(new rfh(this, paramOnClickListener1, paramString1, paramInt, paramString2, paramContext, paramOnClickListener2)).a(new rfg(this)).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView, new rff(this));
   }
   
   private void a(int paramInt1, String paramString, int paramInt2)
@@ -84,34 +84,34 @@ public class ReadInJoySkinSlideDownView
     Object localObject3;
     if ((localObject1 instanceof BaseActivity))
     {
-      bbjn.u((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
+      bbkb.u((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
       localObject2 = (BaseActivity)localObject1;
-      localObject3 = (pzc)((BaseActivity)localObject2).app.getManager(270);
-      localObject1 = ((pzc)localObject3).a();
-      localObject2 = ((pzc)localObject3).a((Context)localObject2, 0);
-      localObject3 = new onr();
+      localObject3 = (pyz)((BaseActivity)localObject2).app.getManager(270);
+      localObject1 = ((pyz)localObject3).a();
+      localObject2 = ((pyz)localObject3).a((Context)localObject2, 0);
+      localObject3 = new ono();
     }
     for (;;)
     {
       try
       {
-        ((onr)localObject3).b().c().a(paramInt1).e().f().g().h().d(0).e(2).a();
+        ((ono)localObject3).b().c().a(paramInt1).e().f().g().h().d(0).e(2).a();
         if (TextUtils.isEmpty(paramString)) {}
-        ((onr)localObject3).a("jump_url", paramString);
-        ((onr)localObject3).a("guide_id", (String)localObject1);
-        ((onr)localObject3).a("jump_url_type", paramInt2);
+        ((ono)localObject3).a("jump_url", paramString);
+        ((ono)localObject3).a("guide_id", (String)localObject1);
+        ((ono)localObject3).a("jump_url_type", paramInt2);
         if ((localObject2 == null) || (!((RefreshData)localObject2).isAD)) {
           continue;
         }
         paramInt1 = 1;
-        ((onr)localObject3).a("ad_page", paramInt1);
+        ((ono)localObject3).a("ad_page", paramInt1);
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
         continue;
       }
-      noo.a(null, "CliOper", "", "", "0X800969C", "0X800969C", 0, 0, bhvh.a("default_feeds_proteus_offline_bid"), "", "", ((onr)localObject3).a(), false);
+      nol.a(null, "CliOper", "", "", "0X800969C", "0X800969C", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", ((ono)localObject3).a(), false);
       if ((localObject2 != null) && (((RefreshData)localObject2).isAD) && (((RefreshData)localObject2).adClickReports != null) && (((RefreshData)localObject2).adClickReports.size() > 0)) {}
       try
       {
@@ -119,7 +119,7 @@ public class ReadInJoySkinSlideDownView
         long l = ((RefreshData)localObject2).adId.longValue();
         paramString.report_info.trace_info.aid.set(l);
         paramString.report_info.thirdparty_monitor_urls.api_click_monitor_url.set(((RefreshData)localObject2).getUrls(((RefreshData)localObject2).adClickReports));
-        yxy.a(1, 1, paramString);
+        yxv.a(1, 1, paramString);
         return;
       }
       catch (NumberFormatException paramString)
@@ -132,13 +132,13 @@ public class ReadInJoySkinSlideDownView
   
   public String a()
   {
-    Iterator localIterator = this.jdField_a_of_type_Aybc.a().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Aybe.a().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (ayay)localIterator.next();
-      if ((localObject instanceof aybb))
+      Object localObject = (ayba)localIterator.next();
+      if ((localObject instanceof aybd))
       {
-        localObject = ((aybb)localObject).a();
+        localObject = ((aybd)localObject).a();
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals("close")) && (!((String)localObject).equals("open_sound")) && (!((String)localObject).equals("use_skin"))) {
           return localObject;
         }

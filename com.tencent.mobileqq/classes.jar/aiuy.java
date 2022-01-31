@@ -1,8 +1,9 @@
-import javax.microedition.khronos.opengles.GL;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
-public abstract interface aiuy
+public class aiuy
+  extends aiuo
 {
-  public abstract GL a(GL paramGL);
+  public aiuy(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

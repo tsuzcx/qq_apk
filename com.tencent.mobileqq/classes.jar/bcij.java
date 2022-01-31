@@ -1,6 +1,19 @@
-public abstract interface bcij<T>
+import com.tencent.biz.pubaccount.CustomWebView;
+
+public abstract interface bcij
+  extends bccw
 {
-  public abstract void a(int paramInt, T paramT);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract CustomWebView getWebView();
 }
 
 

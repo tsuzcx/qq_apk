@@ -1,21 +1,17 @@
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
 
 public class aiqt
-  extends aiqr
+  extends aiqp
 {
-  public Button a;
   public TextView a;
-  public StringBuilder a;
+  public boolean a;
+  public int b;
   public ImageView b;
-  public SingleLineTextView c;
-  
-  aiqt()
-  {
-    this.a = 11;
-  }
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
 }
 
 

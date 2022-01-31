@@ -1,160 +1,53 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class bigf
-  implements bjnb, bjol, bjqv
 {
-  private bjoc jdField_a_of_type_Bjoc = new bjoc(this);
-  private bjok jdField_a_of_type_Bjok;
+  private static String a;
+  private static String b;
   
-  public View a()
+  public static String a()
   {
-    return null;
-  }
-  
-  public bjmx a()
-  {
-    return this.jdField_a_of_type_Bjoc;
-  }
-  
-  @NonNull
-  public bjok a()
-  {
-    if (BaseApplicationImpl.getApplication() == null) {
-      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+    if (a != null) {
+      return a;
     }
-    if (this.jdField_a_of_type_Bjok == null) {
-      this.jdField_a_of_type_Bjok = new bjok();
-    }
-    return this.jdField_a_of_type_Bjok;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  @CallSuper
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Bjoc = new bjoc(this);
-    try
+    Object localObject1 = BaseApplicationImpl.sApplication.getExternalFilesDir(null);
+    if (localObject1 == null) {}
+    for (localObject1 = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath();; localObject1 = ((File)localObject1).getAbsolutePath())
     {
-      this.jdField_a_of_type_Bjoc.a(bjmy.a);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b_(int paramInt1, int paramInt2) {}
-  
-  @CallSuper
-  public void d()
-  {
-    try
-    {
-      this.jdField_a_of_type_Bjoc.a(bjmy.d);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  @CallSuper
-  public void e()
-  {
-    try
-    {
-      this.jdField_a_of_type_Bjoc.a(bjmy.f);
-      if (this.jdField_a_of_type_Bjok != null) {
-        this.jdField_a_of_type_Bjok.a();
+      Object localObject2 = localObject1;
+      if (!((String)localObject1).endsWith("/")) {
+        localObject2 = (String)localObject1 + "/";
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-      }
+      a = (String)localObject2;
+      return localObject2;
     }
   }
   
-  @CallSuper
-  public void f()
+  public static String a(long paramLong)
   {
-    try
-    {
-      this.jdField_a_of_type_Bjoc.a(bjmy.c);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
+    return b(paramLong) + "disk_file_cache" + "/";
   }
   
-  @CallSuper
-  public void p()
+  public static String b()
   {
-    try
-    {
-      this.jdField_a_of_type_Bjoc.a(bjmy.b);
-      return;
+    if (b != null) {
+      return b;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
+    String str = a();
+    str = str + "Tencent" + "/" + "weiyun" + "/";
+    b = str;
+    return str;
   }
   
-  public void s() {}
-  
-  @CallSuper
-  public void t()
+  private static String b(long paramLong)
   {
-    try
-    {
-      this.jdField_a_of_type_Bjoc.a(bjmy.e);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
+    return b() + paramLong + "/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigf
  * JD-Core Version:    0.7.0.1
  */

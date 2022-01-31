@@ -1,5 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class agix
@@ -9,9 +10,9 @@ public class agix
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a("dc00898", "0X8009F15", 0);
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
+    if (this.a.a != null) {
+      this.a.a.setText("");
+    }
   }
 }
 

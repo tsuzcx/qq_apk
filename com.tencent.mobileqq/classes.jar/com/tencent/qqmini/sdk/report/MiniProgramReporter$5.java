@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_REPORT.REPORT.SingleDcData;
-import beyo;
+import bezf;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class MiniProgramReporter$5
   implements Runnable
 {
-  public MiniProgramReporter$5(beyo parambeyo, Collection paramCollection) {}
+  public MiniProgramReporter$5(bezf parambezf, Collection paramCollection) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class MiniProgramReporter$5
         this.this$0.a(localSingleDcData);
       }
     }
-    beyo.a(this.this$0);
+    bezf.a(this.this$0);
   }
 }
 

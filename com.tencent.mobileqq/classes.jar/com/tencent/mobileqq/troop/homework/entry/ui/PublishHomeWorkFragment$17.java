@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.view.ViewGroup;
+import android.widget.EditText;
+import bfni;
+import com.tencent.qphone.base.util.QLog;
 
 class PublishHomeWorkFragment$17
   implements Runnable
@@ -9,7 +11,13 @@ class PublishHomeWorkFragment$17
   
   public void run()
   {
-    this.this$0.d.setVisibility(0);
+    EditText localEditText = this.this$0.a(this.this$0.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
+    }
+    if (localEditText != null) {
+      bfni.a(localEditText);
+    }
   }
 }
 

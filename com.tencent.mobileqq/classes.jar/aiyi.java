@@ -1,16 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
-class aiyi
-  implements ValueCallback<String>
+public class aiyi
+  implements DialogInterface.OnClickListener
 {
-  aiyi(aiyh paramaiyh) {}
+  public aiyi(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
-    }
+    ApolloWebGameActivity.a(this.a).dismiss();
+    ApolloWebGameActivity.b(this.a);
   }
 }
 

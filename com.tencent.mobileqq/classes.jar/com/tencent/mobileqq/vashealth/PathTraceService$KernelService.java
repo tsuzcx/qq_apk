@@ -14,7 +14,7 @@ public class PathTraceService$KernelService
   private Notification a()
   {
     Notification localNotification = new Notification();
-    localNotification.icon = 2130840058;
+    localNotification.icon = 2130840055;
     localNotification.contentView = new RemoteViews(PathTraceService.a.getApplication().getPackageName(), 2131559466);
     startForeground(1, localNotification);
     return localNotification;

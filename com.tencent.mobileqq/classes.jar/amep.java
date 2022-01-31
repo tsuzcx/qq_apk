@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
 
 public final class amep
-  implements Parcelable.Creator<BusinessCard>
+  implements Parcelable.Creator<CardMobileInfo>
 {
-  public BusinessCard a(Parcel paramParcel)
+  public CardMobileInfo a(Parcel paramParcel)
   {
-    return new BusinessCard(paramParcel);
+    return new CardMobileInfo(paramParcel);
   }
   
-  public BusinessCard[] a(int paramInt)
+  public CardMobileInfo[] a(int paramInt)
   {
-    return new BusinessCard[paramInt];
+    return new CardMobileInfo[paramInt];
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aclg;
+import aclc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class TroopMemberListActivity$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopAdmin> CREATOR = new aclg();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new aclc();
   public String a;
   public short a;
   public String b;

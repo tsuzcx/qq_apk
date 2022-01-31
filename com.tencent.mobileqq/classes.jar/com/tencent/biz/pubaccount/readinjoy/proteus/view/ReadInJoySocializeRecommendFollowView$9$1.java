@@ -2,25 +2,25 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.widget.LinearLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import noo;
-import onk;
-import plp;
-import plx;
-import qca;
+import nol;
+import onh;
+import plm;
+import plu;
+import qbx;
 
 public class ReadInJoySocializeRecommendFollowView$9$1
   implements Runnable
 {
-  public ReadInJoySocializeRecommendFollowView$9$1(plx paramplx) {}
+  public ReadInJoySocializeRecommendFollowView$9$1(plu paramplu) {}
   
   public void run()
   {
-    plp.a(this.a.a).requestLayout();
-    plp.a(this.a.a, true);
-    if (!plp.a(this.a.a).mRecommendFollowInfos.b)
+    plm.a(this.a.a).requestLayout();
+    plm.a(this.a.a, true);
+    if (!plm.a(this.a.a).mRecommendFollowInfos.b)
     {
-      plp.a(this.a.a).mRecommendFollowInfos.b = true;
-      noo.a(null, onk.a() + "", "0X8009847", "0X8009847", 0, 0, "1", "", "", "", false);
+      plm.a(this.a.a).mRecommendFollowInfos.b = true;
+      nol.a(null, onh.a() + "", "0X8009847", "0X8009847", 0, 0, "1", "", "", "", false);
     }
   }
 }

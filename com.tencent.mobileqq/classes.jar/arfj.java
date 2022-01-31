@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class arfj
-  implements INetEventHandler
+public class arfj
+  implements EnterCallback
 {
-  arfj(arfe paramarfe) {}
+  public arfj(GroupVideoManager.3 param3) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    if (arfe.a(this.a) == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + arfe.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
-  }
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView) {}
 }
 
 

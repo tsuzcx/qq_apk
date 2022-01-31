@@ -1,43 +1,32 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-class avqz
-  extends Handler
+public final class avqz
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  public avqz(Looper paramLooper)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.e = paramParcel.readInt();
+    return localRevokeMsgInfo;
   }
   
-  public void handleMessage(Message paramMessage)
+  public RevokeMsgInfo[] a(int paramInt)
   {
-    avrd.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      avrd.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    avrd.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    return new RevokeMsgInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     avqz
  * JD-Core Version:    0.7.0.1
  */

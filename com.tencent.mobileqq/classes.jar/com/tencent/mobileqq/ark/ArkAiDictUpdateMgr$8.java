@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.ark;
 
-import alrm;
-import alrv;
-import alrx;
-import alrz;
-import alsc;
+import alrl;
+import alru;
+import alrw;
+import alry;
+import alsb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
 
 public class ArkAiDictUpdateMgr$8
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$8(alrm paramalrm, String paramString, alrz paramalrz, alrx paramalrx) {}
+  public ArkAiDictUpdateMgr$8(alrl paramalrl, String paramString, alry paramalry, alrw paramalrw) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)alrm.a(this.this$0).get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)alrl.a(this.this$0).get();
     if (localQQAppInterface == null)
     {
       ArkAppCenter.c("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
       return;
     }
-    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new alrv(this));
+    ((ArkAppCenter)localQQAppInterface.getManager(121)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new alru(this));
   }
 }
 

@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class accq
-  implements View.OnClickListener
+public class accq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  accq(accn paramaccn, int paramInt) {}
+  public accq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = axmo.b[this.jdField_a_of_type_Accn.a(this.jdField_a_of_type_Int).jdField_a_of_type_Int];
-    if (!aylf.a(acck.a(this.jdField_a_of_type_Accn.a), paramView, new accr(this))) {
-      accn.a(this.jdField_a_of_type_Accn, this.jdField_a_of_type_Int);
+    int i = 1;
+    if (paramBoolean)
+    {
+      this.a.app.d(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
+      }
+    }
+    for (;;)
+    {
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      return;
+      this.a.app.d(0);
+      break;
+      label68:
+      i = 0;
     }
   }
 }

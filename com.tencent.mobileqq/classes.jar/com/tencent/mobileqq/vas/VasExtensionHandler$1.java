@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vas;
 
-import aiyg;
-import bbqp;
+import aiye;
+import bbrd;
 import org.json.JSONArray;
 
 public class VasExtensionHandler$1
   implements Runnable
 {
-  public VasExtensionHandler$1(bbqp parambbqp, String paramString, JSONArray paramJSONArray) {}
+  public VasExtensionHandler$1(bbrd parambbrd, String paramString, JSONArray paramJSONArray) {}
   
   public void run()
   {
-    aiyg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
+    aiye.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

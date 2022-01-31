@@ -1,15 +1,21 @@
-import android.graphics.Rect;
 import android.hardware.camera2.CameraCharacteristics;
-import java.io.File;
+import android.text.TextUtils;
 
 public class axfz
 {
-  public int a;
-  public aiak a;
-  public Rect a;
   public CameraCharacteristics a;
-  public File a;
-  public boolean a;
+  public String a;
+  
+  public axfz(String paramString, CameraCharacteristics paramCameraCharacteristics)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
+  }
 }
 
 

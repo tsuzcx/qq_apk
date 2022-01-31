@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajsf;
+import ajsd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import otp;
+import otm;
 
 public class WeishiManager$2
   implements Runnable
 {
-  public WeishiManager$2(otp paramotp, QQMessageFacade paramQQMessageFacade, String paramString, long paramLong) {}
+  public WeishiManager$2(otm paramotm, QQMessageFacade paramQQMessageFacade, String paramString, long paramLong) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsf.aP, 1008);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsd.aP, 1008);
     if (localMessageRecord != null) {}
-    for (localMessageRecord = otp.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
+    for (localMessageRecord = otm.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
     {
       if (localMessageRecord != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, otp.a(this.this$0).c());
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, otm.a(this.this$0).c());
       }
       return;
     }

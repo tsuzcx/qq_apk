@@ -1,8 +1,6 @@
-public abstract interface acti
+class acti
 {
-  public abstract void a(aeyv paramaeyv);
-  
-  public abstract void b(aeyv paramaeyv);
+  private static actg a = new actg("aio_client_module", null);
 }
 
 

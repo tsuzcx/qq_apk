@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agru;
-import agug;
+import agrs;
+import ague;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import mqq.util.WeakReference;
 
@@ -14,9 +14,9 @@ class PhotoListLogicQzone$2$1
   {
     if (this.a.this$0.a.get() != null)
     {
-      agru localagru = ((NewPhotoListActivity)this.a.this$0.a.get()).a;
-      if (localagru != null) {
-        localagru.notifyDataSetChanged();
+      agrs localagrs = ((NewPhotoListActivity)this.a.this$0.a.get()).a;
+      if (localagrs != null) {
+        localagrs.notifyDataSetChanged();
       }
     }
   }

@@ -1,23 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class aakl
-  implements View.OnClickListener
+  implements bfph
 {
+  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
+  
   public aakl(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = (View)paramView.getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b.dismiss();
+    }
+    switch (paramInt)
     {
+    default: 
       return;
-      axqw.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SubAccountInfo));
-    this.a.a((SubAccountInfo)paramView.getTag());
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+  }
+  
+  public void a(SimpleAccount paramSimpleAccount)
+  {
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
   }
 }
 

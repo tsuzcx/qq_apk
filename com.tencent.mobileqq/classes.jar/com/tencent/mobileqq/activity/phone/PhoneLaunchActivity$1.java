@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agko;
+import agkm;
 import android.widget.Button;
-import bbev;
+import bbfj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class PhoneLaunchActivity$1
@@ -12,19 +12,19 @@ public class PhoneLaunchActivity$1
   
   public void run()
   {
-    if (!bbev.d(this.this$0))
+    if (!bbfj.d(this.this$0))
     {
-      this.this$0.b(2131694672);
+      this.this$0.b(2131694673);
       PhoneLaunchActivity.a(this.this$0).setEnabled(true);
       return;
     }
     if (this.this$0.a == null)
     {
-      this.this$0.a = new agko(this);
+      this.this$0.a = new agkm(this);
       this.this$0.app.registObserver(this.this$0.a);
     }
     this.this$0.app.a(new PhoneLaunchActivity.1.2(this));
-    this.this$0.a(2131719281, 1000L, true);
+    this.this$0.a(2131719292, 1000L, true);
   }
 }
 

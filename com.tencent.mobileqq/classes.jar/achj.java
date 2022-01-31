@@ -1,20 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class achj
-  implements nck
+  implements DialogInterface.OnClickListener
 {
-  public achj(TroopInfoActivity paramTroopInfoActivity) {}
+  public achj(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    if (this.jdField_a_of_type_Boolean) {
+      axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
   }
 }
 

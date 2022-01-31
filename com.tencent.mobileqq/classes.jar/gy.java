@@ -27,9 +27,9 @@ public class gy
   public gy(CharacterStyle paramCharacterStyle, int paramInt)
   {
     this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-    if ((paramCharacterStyle instanceof aykp))
+    if ((paramCharacterStyle instanceof aykr))
     {
-      paramCharacterStyle = ((aykp)paramCharacterStyle).a().getBounds();
+      paramCharacterStyle = ((aykr)paramCharacterStyle).a().getBounds();
       this.b = paramCharacterStyle.width();
       this.c = paramCharacterStyle.height();
     }
@@ -38,9 +38,9 @@ public class gy
       this.jdField_a_of_type_Int = paramInt;
       this.e = 2;
       return;
-      if ((paramCharacterStyle instanceof awcz))
+      if ((paramCharacterStyle instanceof awdb))
       {
-        paramCharacterStyle = (awcz)paramCharacterStyle;
+        paramCharacterStyle = (awdb)paramCharacterStyle;
         this.b = paramCharacterStyle.a();
         this.c = paramCharacterStyle.b();
       }
@@ -56,20 +56,20 @@ public class gy
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykp))
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykr))
     {
-      localObject = (aykp)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      paramInt2 += ((aykp)localObject).a().getBounds().height();
-      ((aykp)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
+      localObject = (aykr)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+      paramInt2 += ((aykr)localObject).a().getBounds().height();
+      ((aykr)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
     }
-    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof awcz)) {
+    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof awdb)) {
       return;
     }
     paramPaint.setTextSize(a());
-    Object localObject = (awcz)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-    int i = ((awcz)localObject).b();
-    ((awcz)localObject).a = false;
-    ((awcz)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
+    Object localObject = (awdb)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    int i = ((awdb)localObject).b();
+    ((awdb)localObject).a = false;
+    ((awdb)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2)
@@ -144,10 +144,10 @@ public class gy
     return this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
   }
   
-  public aykp a()
+  public aykr a()
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykp)) {
-      return (aykp)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykr)) {
+      return (aykr)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
     }
     return null;
   }

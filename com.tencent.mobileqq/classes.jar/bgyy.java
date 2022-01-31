@@ -1,9 +1,14 @@
-final class bgyy
-  extends asbp<bgyx, Void>
+public abstract class bgyy
 {
-  protected bgyx a(Void paramVoid)
+  public static bgyy a = new bgyz();
+  
+  public abstract int a();
+  
+  public abstract String a();
+  
+  public String toString()
   {
-    return new bgyx(null);
+    return a() + ':' + a();
   }
 }
 

@@ -1,76 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
 
-public class apkc
-  extends apka
+final class apkc
+  extends mxj
 {
-  public azqt a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final String jdField_a_of_type_JavaLangString = "TroopFileViewerAdapter";
+  apkc(apkd paramapkd) {}
   
-  public apkc(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = apue.a(paramQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
-    if ((paramFileManagerEntity.isZipInnerFile) && (apue.a(paramQQAppInterface, this))) {
-      this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0) {
+      paramBundle = new oidb_0x6e7.RspBody();
     }
-    this.jdField_a_of_type_Azqt = bakj.a(paramQQAppInterface, paramFileManagerEntity);
-    if ((this.jdField_a_of_type_Azqt.b == 2) || (this.jdField_a_of_type_Azqt.b == 3))
+    do
     {
-      boolean bool3 = apue.a(this);
-      if (c() == 3)
+      try
       {
-        boolean bool1 = bool2;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          bool1 = bool2;
-          if (bool3) {
-            bool1 = true;
-          }
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
         }
-        this.jdField_a_of_type_Boolean = bool1;
+        if (this.a != null) {
+          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
+        }
+        return;
       }
-    }
-  }
-  
-  public int c()
-  {
-    if (apvb.b(super.g())) {
-      return 3;
-    }
-    return super.c();
-  }
-  
-  public int d()
-  {
-    if ((c() == 6) && (e() == 31)) {
-      return super.d();
-    }
-    if (this.jdField_a_of_type_Azqt != null) {
-      return this.jdField_a_of_type_Azqt.b;
-    }
-    return 0;
-  }
-  
-  public String i()
-  {
-    String str2 = apvb.a(super.b());
-    String str1 = str2;
-    if (104 == super.a().busId)
-    {
-      str1 = str2;
-      if (super.a().lastTime > 0L)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        str1 = str2 + BaseApplicationImpl.getContext().getString(2131692475);
-        str1 = str1 + bakj.a(BaseApplicationImpl.getContext(), super.a().lastTime);
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
       }
-    }
-    return str1;
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
+      }
+    } while (this.a == null);
+    this.a.a(0, -1);
   }
 }
 

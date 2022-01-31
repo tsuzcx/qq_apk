@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import java.util.Comparator;
 
 public class amiy
-  implements View.OnClickListener
+  implements Comparator<ColorNote>
 {
-  public amiy(ColorNoteSettingFragment paramColorNoteSettingFragment, amjh paramamjh, int paramInt) {}
+  public amiy(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
   
-  public void onClick(View paramView)
+  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    this.jdField_a_of_type_Amjh.a(paramView, this.jdField_a_of_type_Int);
+    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
   }
 }
 

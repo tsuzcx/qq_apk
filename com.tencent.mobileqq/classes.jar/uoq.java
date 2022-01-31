@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
 
-class uoq
-  extends atzm
+public class uoq
+  implements RadioGroup.OnCheckedChangeListener
 {
-  uoq(uop paramuop) {}
+  public uoq(VideoEncodeActivity paramVideoEncodeActivity) {}
   
-  protected void a(Object paramObject)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
-    {
-      paramObject = (oidb_0x791.RedDotInfo)paramObject;
-      if (paramObject.uint32_appid.get() == 21)
-      {
-        int i = paramObject.uint32_number.get();
-        int j = paramObject.uint32_last_time.get();
-        this.a.a.a(i, j);
-      }
-    }
+    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
+    ved.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
   }
 }
 

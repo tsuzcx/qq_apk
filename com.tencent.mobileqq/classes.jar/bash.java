@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-class bash
-  implements aycb
+public class bash
+  implements aycd
 {
-  bash(basg parambasg) {}
+  public bash(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, aycd paramaycd) {}
   
   public void a()
   {
-    this.a.a.a.this$0.a();
-    if (this.a.a.a.jdField_a_of_type_Aycb != null) {
-      this.a.a.a.jdField_a_of_type_Aycb.a();
-    }
-    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new basi(this));
   }
 }
 

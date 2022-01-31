@@ -1,6 +1,10 @@
-public abstract interface slj
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
+
+public class slj
+  extends UniAttribute
 {
-  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, sll paramsll);
+  JceInputStream a = new JceInputStream();
 }
 
 

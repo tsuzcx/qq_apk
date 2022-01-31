@@ -2,7 +2,13 @@ public abstract interface sac
 {
   public abstract void a();
   
-  public abstract void a(String paramString);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

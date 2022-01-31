@@ -1,17 +1,22 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 class ahkv
   implements View.OnClickListener
 {
-  ahkv(ahkf paramahkf) {}
+  ahkv(ahkd paramahkd) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.c();
+    paramView = new Intent(ahkd.a(this.a), TroopAssisSettingActivity.class);
+    ahkd.a(this.a).startActivityForResult(paramView, 9001);
+    ahkd.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    axqy.b(ahkd.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
   }
 }
 

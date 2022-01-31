@@ -1,15 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aazh
-  extends ajxl
+  implements View.OnClickListener
 {
-  public aazh(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aazh(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

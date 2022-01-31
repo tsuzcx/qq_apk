@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
 public class aorn
-  implements Comparator<Long>
+  implements View.OnClickListener
 {
-  public aorn(QfileLocalFileDelMediaTabView.1 param1) {}
+  public aorn(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  public void onClick(View paramView)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    QfileCloudFileTabView.a(this.a, paramView, false);
   }
 }
 

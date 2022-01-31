@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.utils;
 
-import bfgi;
-import bfgl;
+import bfgz;
+import bfhc;
 
 public class MiniLog$WriteHandler$1
   implements Runnable
 {
-  public MiniLog$WriteHandler$1(bfgl parambfgl) {}
+  public MiniLog$WriteHandler$1(bfhc parambfhc) {}
   
   public void run() {}
 }

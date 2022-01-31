@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
+import auko;
 
 public class StoryVideoListEntry
-  extends aukm
+  extends auko
 {
   public static final int LIST_TYPE_COLLECTION = 5;
   public static final int LIST_TYPE_EXPIRE_USER = 6;

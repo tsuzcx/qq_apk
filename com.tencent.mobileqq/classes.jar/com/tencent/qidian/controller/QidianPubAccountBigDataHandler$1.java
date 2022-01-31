@@ -1,15 +1,15 @@
 package com.tencent.qidian.controller;
 
-import bduy;
+import bdvp;
 
 public class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bduy parambduy) {}
+  public QidianPubAccountBigDataHandler$1(bdvp parambdvp) {}
   
   public void run()
   {
-    bduy.a(this.this$0);
+    bdvp.a(this.this$0);
   }
 }
 

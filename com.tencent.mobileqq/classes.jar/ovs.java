@@ -1,18 +1,16 @@
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ScrollView;
 
 public class ovs
-  extends osp
+  implements bfvo
 {
   public ovs(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
-    }
-    if (paramInt1 == 0) {
-      this.a.a(paramInt2, paramInt3, paramBoolean);
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
     }
   }
 }

@@ -1,87 +1,16 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.gif.video.GIFCreator.1;
-import dov.com.qq.im.video.GifEncoder;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class biuw
+class biuw
+  implements bivd
 {
-  private static String jdField_a_of_type_JavaLangString = biuw.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private biuy jdField_a_of_type_Biuy;
-  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private String b = biig.b;
-  private String c;
-  private String d;
-  private String e;
+  biuw(biur parambiur) {}
   
-  public biuw(String paramString)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.e = paramString;
-    this.jdField_a_of_type_JavaUtilList = a(paramString);
-    this.c = (this.b + System.currentTimeMillis() + ".gif");
-    this.d = (this.b + System.currentTimeMillis() + "_compressed.gif");
-    try
+    if (biur.a(this.a))
     {
-      paramString = new File(this.b);
-      if (!paramString.isDirectory())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, this.b + " is not a directory");
-        boolean bool = paramString.mkdirs();
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "mkdirs return " + bool);
-      }
-      paramString = new HandlerThread("GIFCreatorHT" + System.currentTimeMillis());
-      paramString.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+      biur.a(this.a, paramBoolean1, paramBoolean2);
       return;
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "check dir exception, msg = " + paramString.getMessage());
-      }
-    }
-  }
-  
-  private List<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new File(paramString);
-    if (((File)localObject).isDirectory())
-    {
-      localObject = ((File)localObject).list(new biux(this));
-      if (localObject != null)
-      {
-        Arrays.sort((Object[])localObject);
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = localObject[i];
-          localArrayList.add(paramString + File.separator + str);
-          i += 1;
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    bbdj.a(this.e);
-  }
-  
-  public void a(biuy parambiuy)
-  {
-    this.jdField_a_of_type_Biuy = parambiuy;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "start create gif, gif path = ", this.c });
-    this.jdField_a_of_type_AndroidOsHandler.post(new GIFCreator.1(this, parambiuy));
+    biur.b(this.a, paramBoolean1, paramBoolean2);
   }
 }
 

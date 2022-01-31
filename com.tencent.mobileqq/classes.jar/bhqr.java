@@ -1,19 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import cooperation.qzone.video.QzoneWeishiFeedsGpuProxyActivity;
 
-class bhqr
-  extends BroadcastReceiver
+public class bhqr
 {
-  bhqr(bhqq parambhqq) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static Class<? extends PluginProxyActivity> a(String paramString)
   {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncSecretShuoshuoMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.syncSecretShuoshuoMsgType", 0);
-      bhqq.a(this.a, i);
-    }
+    return QzoneWeishiFeedsGpuProxyActivity.class;
   }
 }
 

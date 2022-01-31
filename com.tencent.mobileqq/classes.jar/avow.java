@@ -1,45 +1,59 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
+import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
 public class avow
-  extends FragmentPagerAdapter
+  extends avpi<ReceiptMessageReadMemberListContainerFragment>
 {
-  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilArrayList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> b;
-  
-  private avow(FragmentManager paramFragmentManager)
+  public avow(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    super(paramFragmentManager);
+    super(paramReceiptMessageReadMemberListContainerFragment);
   }
   
-  public void a(@Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList1, @Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList2, @Nonnull String[] paramArrayOfString)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.b = paramArrayList2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-    case 0: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "mGetMemberList request error on code: " + paramInt);
+      }
     }
-    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    do
+    {
+      return;
+      try
+      {
+        paramBundle = new oidb_0x985.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.uint32_code.get();
+        if (paramInt == 0)
+        {
+          paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
+          paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
+          paramBundle = paramBundle.rpt_msg_unread_list.get();
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte));
+          ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a, paramBundle));
+          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
+        return;
+      }
+      QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mGetMemberList fail on code: " + paramInt);
+      if (paramInt == 5)
+      {
+        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+        return;
+      }
+    } while (paramInt != 20);
+    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 

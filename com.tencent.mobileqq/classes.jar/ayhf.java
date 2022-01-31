@@ -1,13 +1,13 @@
-import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.1;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.2;
-import com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.3;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.1;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.2;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.3;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ayhf
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private anbm jdField_a_of_type_Anbm;
+  private ancy jdField_a_of_type_Ancy;
   public QQAppInterface a;
   
   public ayhf(QQAppInterface paramQQAppInterface)
@@ -29,33 +29,33 @@ public class ayhf
     a();
   }
   
-  private anbm a()
+  private ancy a()
   {
-    if (this.jdField_a_of_type_Anbm == null) {
-      this.jdField_a_of_type_Anbm = anbp.a();
+    if (this.jdField_a_of_type_Ancy == null) {
+      this.jdField_a_of_type_Ancy = andb.a();
     }
-    return this.jdField_a_of_type_Anbm;
+    return this.jdField_a_of_type_Ancy;
   }
   
   private void a()
   {
-    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.2(this));
+    ThreadManager.executeOnSubThread(new ConfigSetting.1(this));
   }
   
-  private void b(anbm paramanbm)
+  private void b(ancy paramancy)
   {
-    if (paramanbm == null) {
+    if (paramancy == null) {
       return;
     }
     try
     {
-      paramanbm.a(((ayfe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(122)).a());
+      paramancy.a(((ayfg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(122)).a());
       return;
     }
-    catch (Exception paramanbm)
+    catch (Exception paramancy)
     {
-      QLog.e("ConfigSettingForDataLine", 2, " getTemplateListFromCgi failed :" + paramanbm.toString());
-      paramanbm.printStackTrace();
+      QLog.e("ConfigSetting", 2, " getTemplateListFromCgi failed :" + paramancy.toString());
+      paramancy.printStackTrace();
     }
   }
   
@@ -64,64 +64,90 @@ public class ayhf
     return this.jdField_a_of_type_Int;
   }
   
+  public anda a(String paramString)
+  {
+    Iterator localIterator = a().a().iterator();
+    while (localIterator.hasNext())
+    {
+      anda localanda = (anda)localIterator.next();
+      if (localanda.jdField_a_of_type_JavaLangString.contains(paramString)) {
+        return localanda;
+      }
+    }
+    return null;
+  }
+  
   public String a(aygz paramaygz)
   {
-    if ((paramaygz instanceof ayhc))
+    Object localObject1;
+    Object localObject2;
+    if (((paramaygz instanceof ayhd)) || ((paramaygz instanceof ayhl)))
     {
-      Map localMap = a().a();
-      paramaygz = apvb.a(paramaygz.a());
-      Iterator localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = a().a();
+      paramaygz = apvd.a(paramaygz.a());
+      localObject2 = ((Map)localObject1).keySet().iterator();
+    }
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = (ancz)((Map)localObject1).get((String)((Iterator)localObject2).next());
+      String[] arrayOfString = ((ancz)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        anbn localanbn = (anbn)localMap.get((String)localIterator.next());
-        String[] arrayOfString = localanbn.jdField_b_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
+          return ((ancz)localObject3).jdField_a_of_type_JavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      if ((paramaygz instanceof ayhk))
+      {
+        localObject2 = a().a();
+        localObject1 = a().a();
+        paramaygz = paramaygz.a();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
-            return localanbn.jdField_a_of_type_JavaLangString;
+          localObject3 = (anda)((Iterator)localObject2).next();
+          if ((paramaygz.contains(((anda)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((anda)localObject3).b) != null)) {
+            return ((ancz)((SparseArray)localObject1).valueAt(((anda)localObject3).b)).jdField_a_of_type_JavaLangString;
           }
-          i += 1;
         }
       }
     }
     return "";
   }
   
-  public void a(anbm paramanbm)
+  public void a(ancy paramancy)
   {
-    if (paramanbm == null) {
+    if (paramancy == null) {
       return;
     }
-    this.jdField_a_of_type_Anbm = paramanbm;
+    this.jdField_a_of_type_Ancy = paramancy;
     TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
     if (TextUtils.isEmpty(localTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "docs.qq.com")))
     {
       String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      paramanbm = new ayhg(this, paramanbm);
-      localTicketManager.GetPskey(str, 16L, new String[] { "docs.qq.com" }, paramanbm);
+      paramancy = new ayhg(this, paramancy);
+      localTicketManager.GetPskey(str, 16L, new String[] { "docs.qq.com" }, paramancy);
       return;
     }
-    ThreadManager.excute(new ConfigSettingForDataLine.1(this, paramanbm), 128, null, false);
+    ThreadManager.excute(new ConfigSetting.2(this, paramancy), 128, null, false);
   }
   
-  public void a(DataLineMsgRecord paramDataLineMsgRecord)
+  public void a(ChatMessage paramChatMessage)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (!(paramChatMessage instanceof MessageForText)) {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
     this.jdField_a_of_type_Int += 1;
-    ThreadManager.executeOnSubThread(new ConfigSettingForDataLine.3(this));
+    ThreadManager.executeOnSubThread(new ConfigSetting.3(this));
   }
   
   public boolean a()
   {
-    boolean bool = false;
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_m_str_teamwork_dataline_tips_sp", 0).getLong("file_str_lstat_show_time_local", 0L);
-    if (l - this.jdField_a_of_type_Long > a().b() * 1000) {
-      bool = true;
-    }
-    return bool;
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > a().b() * 1000;
   }
   
   public String[] a(aygz paramaygz)
@@ -129,54 +155,72 @@ public class ayhf
     int i = 0;
     Map localMap = a().a();
     Object localObject = a().a();
-    if ((paramaygz instanceof ayhc))
+    if (((paramaygz instanceof ayhd)) || ((paramaygz instanceof ayhl)))
     {
-      paramaygz = apvb.a(paramaygz.a());
+      paramaygz = apvd.a(paramaygz.a());
       localObject = localMap.keySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        anbn localanbn = (anbn)localMap.get((String)((Iterator)localObject).next());
-        String[] arrayOfString = localanbn.jdField_b_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
-            return localanbn.jdField_a_of_type_ArrayOfJavaLangString;
-          }
-          i += 1;
-        }
-      }
     }
-    paramaygz = new String[((List)localObject).size()];
-    while (i < ((List)localObject).size())
+    while (((Iterator)localObject).hasNext())
     {
-      paramaygz[i] = ((anbo)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
-      i += 1;
+      ancz localancz = (ancz)localMap.get((String)((Iterator)localObject).next());
+      String[] arrayOfString = localancz.jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
+          return localancz.jdField_a_of_type_ArrayOfJavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      paramaygz = new String[((List)localObject).size()];
+      while (i < ((List)localObject).size())
+      {
+        paramaygz[i] = ((anda)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+        i += 1;
+      }
+      return paramaygz;
     }
-    return paramaygz;
     return new String[0];
   }
   
   public String b(aygz paramaygz)
   {
-    if ((paramaygz instanceof ayhc))
+    Object localObject1;
+    Object localObject2;
+    if (((paramaygz instanceof ayhd)) || ((paramaygz instanceof ayhl)))
     {
-      Map localMap = a().a();
-      paramaygz = apvb.a(paramaygz.a());
-      Iterator localIterator = localMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = a().a();
+      paramaygz = apvd.a(paramaygz.a());
+      localObject2 = ((Map)localObject1).keySet().iterator();
+    }
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = (ancz)((Map)localObject1).get((String)((Iterator)localObject2).next());
+      String[] arrayOfString = ((ancz)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        anbn localanbn = (anbn)localMap.get((String)localIterator.next());
-        String[] arrayOfString = localanbn.jdField_b_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
+          return ((ancz)localObject3).jdField_b_of_type_JavaLangString;
+        }
+        i += 1;
+      }
+      continue;
+      if ((paramaygz instanceof ayhk))
+      {
+        localObject2 = a().a();
+        localObject1 = a().a();
+        paramaygz = paramaygz.a();
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          if (arrayOfString[i].equalsIgnoreCase(paramaygz)) {
-            return localanbn.jdField_b_of_type_JavaLangString;
+          localObject3 = (anda)((Iterator)localObject2).next();
+          if ((paramaygz.contains(((anda)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((anda)localObject3).b) != null)) {
+            return ((ancz)((SparseArray)localObject1).valueAt(((anda)localObject3).b)).jdField_b_of_type_JavaLangString;
           }
-          i += 1;
         }
       }
     }

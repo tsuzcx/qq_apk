@@ -1,32 +1,62 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-class bicb
-  implements EIPCOnGetConnectionListener
+public abstract class bicb
+  extends Binder
+  implements bica
 {
-  bicb(bica parambica) {}
-  
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public bicb()
   {
-    if (paramEIPCConnection != null) {
-      bica.a(this.a, paramEIPCConnection.procName);
-    }
-    bica.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectBind");
-    }
+    attachInterface(this, "cooperation.wadl.ipc.IWadlService");
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public static bica a(IBinder paramIBinder)
   {
-    if (paramEIPCConnection != null) {
-      bica.a(this.a, paramEIPCConnection.procName);
+    if (paramIBinder == null) {
+      return null;
     }
-    bica.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlQIPCConnector", 2, "onConnectUnbind");
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.wadl.ipc.IWadlService");
+    if ((localIInterface != null) && ((localIInterface instanceof bica))) {
+      return (bica)localIInterface;
     }
+    return new bicc(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.wadl.ipc.IWadlService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
+      paramParcel2 = paramParcel1.readString();
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(paramParcel2, paramParcel1);
+        return true;
+      }
+    case 2: 
+      paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
+      a(bice.a(paramParcel1.readStrongBinder()));
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.wadl.ipc.IWadlService");
+    b(bice.a(paramParcel1.readStrongBinder()));
+    return true;
   }
 }
 

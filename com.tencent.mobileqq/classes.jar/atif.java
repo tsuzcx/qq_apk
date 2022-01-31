@@ -1,14 +1,18 @@
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class atif
-  extends mxl
+  extends mxi
 {
-  atif(athz paramathz, atig paramatig) {}
+  atif(atib paramatib, String paramString, atii paramatii) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Atig != null) {
-      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=" + paramInt + ", data=" + paramArrayOfByte + ", mQueryString=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Atii != null) {
+      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

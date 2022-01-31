@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
 public class aebu
-  implements Animation.AnimationListener
+  extends acuj
 {
-  public aebu(StructingMsgItemBuilder paramStructingMsgItemBuilder, aebw paramaebw) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Aebw.a.setVisibility(0);
-  }
+  public RelativeLayout a;
+  public SessionInfo a;
+  public MessageProgressTextView a;
+  public boolean a;
+  public RelativeLayout b;
+  public RelativeLayout c;
 }
 
 

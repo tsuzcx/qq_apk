@@ -1,41 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class atou
-  implements URLDrawable.URLDrawableListener
+public class atou
+  extends ajyr
 {
-  atou(atot paramatot, ImageView paramImageView) {}
+  public atou(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
+    {
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
-    }
-    this.jdField_a_of_type_Atot.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 

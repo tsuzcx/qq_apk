@@ -1,29 +1,14 @@
-import android.content.Context;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class afyl
+  implements agbv
 {
-  public ArrayList<afym> a;
-  public int[] a;
-  public String[] a;
+  public afyl(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public afyl()
+  public void a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
-  {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new afym(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    this.a.a.a(paramMotionEvent);
   }
 }
 

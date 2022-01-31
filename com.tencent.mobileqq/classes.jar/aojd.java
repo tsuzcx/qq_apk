@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-
-public class aojd
-  implements DialogInterface.OnClickListener
+class aojd
+  extends aoez
 {
-  public aojd(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  aojd(aojc paramaojc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, aofu paramaofu, String paramString)
   {
-    ExtendFriendLimitChatMatchFragment.a(this.a);
+    this.a.a().a(paramBoolean, paramInt, paramaofu, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, aofu paramaofu)
+  {
+    this.a.a().a(paramBoolean, paramaofu);
+  }
+  
+  protected void e(boolean paramBoolean)
+  {
+    this.a.a().a(paramBoolean);
   }
 }
 

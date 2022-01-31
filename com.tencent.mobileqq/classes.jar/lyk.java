@@ -1,47 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.ReqGroupVideo.ReqCreateShareUrl;
+import com.tencent.av.ReqGroupVideo.RspCreateShareUrl;
+import com.tencent.av.common.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
 
-public class lyk
-  extends akim
+class lyk
+  extends lhb<ReqGroupVideo.ReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl>
 {
-  public String a;
+  lyk(lyi paramlyi) {}
   
-  private lyk(AVSchema paramAVSchema) {}
-  
-  protected void a(boolean paramBoolean)
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqCreateShareUrl paramReqCreateShareUrl, ReqGroupVideo.RspCreateShareUrl paramRspCreateShareUrl, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
+    this.a.jdField_a_of_type_Boolean = false;
+    paramReqCreateShareUrl = paramRspCreateShareUrl.share_url_with_no_sig.get().toStringUtf8();
+    paramObject = paramRspCreateShareUrl.share_url.get().toStringUtf8();
+    paramRspCreateShareUrl = (common.ErrorInfo)paramRspCreateShareUrl.result.get();
+    int i = lgy.a(paramRspCreateShareUrl);
+    QLog.w("ShareChat", 1, "requestGetUrlFromServer.callback, result[" + i + "], bytes_errmsg[" + paramRspCreateShareUrl.bytes_errmsg.get().toStringUtf8() + "], share_url_with_no_sig[" + paramReqCreateShareUrl + "], share_url[" + paramObject + "], seq[" + paramLong + "]");
+    if (i == 0)
+    {
+      this.a.c = paramObject;
+      this.a.b = paramReqCreateShareUrl;
+      bbgb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, this.a.c);
     }
-  }
-  
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
-  {
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramTroopInfo == null);
-        paramString = paramTroopInfo.troopuin;
-      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.a + "], seq[" + l + "]");
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.b = paramTroopInfo.troopname;
-    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyi.a != 0);
-    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyl(this, l)))
-    {
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
       return;
+      if (i != 11001) {}
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
   }
 }
 

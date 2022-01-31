@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class assu
-  extends akim
+  implements baxz
 {
   public assu(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
-    }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
+    if (MultiCardRecommendFragment.a(this.a) != null) {
+      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
     }
   }
 }

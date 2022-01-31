@@ -1,14 +1,27 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class nuf
-  extends bfmg
+  implements ree
 {
-  nuf(nue paramnue) {}
+  private WeakReference<nua> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  nuf(nua paramnua)
   {
-    nud.a(this.a.a.this$0, true);
+    this.a = new WeakReference(paramnua);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    nua localnua = (nua)this.a.get();
+    if (((localnua == null) || (nua.a(localnua).a())) && (QLog.isColorLevel()))
+    {
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      return;
+    }
+    localnua.a(paramChannelCoverInfo);
   }
 }
 

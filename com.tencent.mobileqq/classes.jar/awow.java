@@ -1,5 +1,5 @@
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -9,11 +9,18 @@ import pb.unify.search.UnifySearchCommon.ResultItem;
 import pb.unite.search.DynamicSearch.ResultItem;
 
 public class awow
-  extends awop
+  extends awor
 {
   public static final String a;
-  public ArrayList<awov> a;
+  public int a;
+  public CharSequence a;
+  public ArrayList<awox> a;
+  public int b;
   protected final String b;
+  protected final String j = "showType";
+  protected final String k = "moreText";
+  protected final String l = "moreUrl";
+  public String m;
   
   static
   {
@@ -41,69 +48,63 @@ public class awow
   
   public void a(String paramString)
   {
-    JSONArray localJSONArray;
-    try
-    {
-      localJSONArray = new JSONObject(paramString).getJSONArray("itemList");
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      } else {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-    }
-    catch (JSONException paramString)
-    {
-      if (!QLog.isColorLevel()) {
-        break label281;
-      }
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 2, "parseLayoutExtensions, e = " + paramString);
-    return;
-    int i = 0;
     for (;;)
     {
+      int i;
       JSONObject localJSONObject;
-      int j;
+      int n;
       try
       {
-        if ((i >= localJSONArray.length()) || (i >= 5)) {
-          break label281;
-        }
-        localJSONObject = localJSONArray.getJSONObject(i);
-        paramString = null;
-        j = localJSONObject.optInt("type");
-        switch (j)
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("showType");
+        this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("moreText");
+        this.m = paramString.optString("moreUrl");
+        JSONArray localJSONArray = paramString.optJSONArray("itemList");
+        if (this.jdField_a_of_type_JavaUtilArrayList == null)
         {
-        case 1: 
-          if (paramString == null) {
-            break label285;
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          break label273;
+          if (i < localJSONArray.length())
+          {
+            localJSONObject = localJSONArray.optJSONObject(i);
+            paramString = null;
+            n = localJSONObject.optInt("type");
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        }
+        else
+        {
+          switch (n)
+          {
+          case 1: 
+            if (paramString == null) {
+              break label281;
+            }
+            this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+            break label281;
+            this.jdField_a_of_type_JavaUtilArrayList.clear();
+          }
         }
       }
       catch (JSONException paramString)
       {
-        if (!QLog.isColorLevel()) {
-          break label281;
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 0, "layout 13 parse layout error :" + paramString.toString());
         }
       }
+      return;
       if ((a() instanceof DynamicSearch.ResultItem))
       {
-        paramString = new awox(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, j, (DynamicSearch.ResultItem)a());
-        continue;
-        QLog.e(jdField_a_of_type_JavaLangString, 2, "parseLayoutExtensions, e = " + paramString);
+        paramString = new awoz(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (DynamicSearch.ResultItem)a());
       }
       else if ((a() instanceof UnifySearchCommon.ResultItem))
       {
-        paramString = new awox(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, j, (UnifySearchCommon.ResultItem)a());
+        paramString = new awoz(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, n, (UnifySearchCommon.ResultItem)a());
         continue;
-        if (localJSONArray != null) {
-          break;
-        }
+        label273:
+        i = 0;
+        continue;
+        continue;
         label281:
-        return;
-        continue;
-        label285:
         i += 1;
       }
     }

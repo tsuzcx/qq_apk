@@ -1,56 +1,86 @@
-public class aqmx
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+
+class aqmx
+  extends aywb
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public String a()
+  aqmx(aqmw paramaqmw, Looper paramLooper)
   {
-    return "OCRReqContext{chatType=" + this.jdField_a_of_type_Int + ", imagePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", compressPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", oriMd5='" + this.d + '\'' + ", comMd5='" + this.e + '\'' + ", hasCrop=" + this.jdField_a_of_type_Boolean + '\'' + ", comWidth=" + this.jdField_b_of_type_Int + '\'' + ", comHeiht=" + this.jdField_c_of_type_Int + '\'' + ", serverUrl=" + this.f + '\'' + ", seqNumber=" + this.jdField_b_of_type_Long + '\'' + '}';
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.f = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.d = "";
-    this.e = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0) && (bbdj.b(this.jdField_c_of_type_JavaLangString));
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    ayqo localayqo = (ayqo)paramMessage.obj;
+    if ((localayqo == null) || (localayqo.c != 76)) {}
+    do
+    {
+      String str;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                switch (paramMessage.what)
+                {
+                case 1002: 
+                case 1006: 
+                case 1007: 
+                default: 
+                  return;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.i("PicOcrManager", 2, "handleMessage start!");
+              return;
+            } while (!QLog.isColorLevel());
+            QLog.d("PicOcrManager", 2, "handleMessage success resId:" + localayqo.g);
+            return;
+            Bdh_extinfo.CommFileExtRsp localCommFileExtRsp = new Bdh_extinfo.CommFileExtRsp();
+            str = "";
+            paramMessage = str;
+            if (localayqo.a != null) {}
+            try
+            {
+              localCommFileExtRsp.mergeFrom(localayqo.a);
+              paramMessage = str;
+              if (localCommFileExtRsp.bytes_download_url.has()) {
+                paramMessage = localCommFileExtRsp.bytes_download_url.get().toStringUtf8();
+              }
+            }
+            catch (Exception paramMessage)
+            {
+              for (;;)
+              {
+                QLog.i("PicOcrManager", 2, "extRsp.mergeFrom(file.bdhExtendInfo) failed!");
+                paramMessage = str;
+              }
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("PicOcrManager", 2, "handleMessage finished resId:" + localayqo.g + ", url:" + paramMessage);
+            }
+          } while (TextUtils.isEmpty(paramMessage));
+          aqmw.a(this.a).f = paramMessage;
+          paramMessage = (aqmv)aqmw.a(this.a).a(170);
+        } while (paramMessage == null);
+        paramMessage.a(aqmw.a(this.a).f, aqmw.a(this.a).jdField_b_of_type_Long, aqmw.a(this.a).d, aqmw.a(this.a).e, aqmw.a(this.a).jdField_a_of_type_Int, (int)aqmw.a(this.a).jdField_a_of_type_Long, aqmw.a(this.a).jdField_b_of_type_Int, aqmw.a(this.a).c, aqmw.a(this.a).jdField_a_of_type_Boolean, aqmw.a(this.a).jdField_a_of_type_JavaLangString);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("PicOcrManager", 2, "handleMessage upload error:" + localayqo.g);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("PicOcrManager", 2, "handleMessage upload cancel:" + localayqo.g);
   }
 }
 

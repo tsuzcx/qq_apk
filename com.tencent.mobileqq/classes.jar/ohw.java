@@ -1,20 +1,14 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 class ohw
-  implements bfob
+  extends ohl
 {
   ohw(ohv paramohv) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null)
-    {
-      paramInt1 = ohv.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
-    }
+    this.a.jdField_a_of_type_Ohs.a().a(this.a.jdField_a_of_type_Oif.a.commentId, paramString, paramInt1);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

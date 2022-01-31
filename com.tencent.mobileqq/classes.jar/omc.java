@@ -1,5 +1,4 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
@@ -7,11 +6,18 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 class omc
   implements ViewBase.OnClickListener
 {
-  omc(olw paramolw) {}
+  omc(olt paramolt) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    sht.a((Activity)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_Pax.a(), this.a.jdField_a_of_type_Pax.e(), false);
+    paramViewBase = osg.a().a();
+    if ((paramViewBase != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null))
+    {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.isShowFreeNetFlow = false;
+      onh.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), paramViewBase.a());
+      omr.a(false, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), null);
+      par.a("0X8009661");
+    }
   }
 }
 

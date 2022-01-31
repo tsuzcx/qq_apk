@@ -1,27 +1,21 @@
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class rxs
-  implements rwi
+  implements myy
 {
   public rxs(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a()
+  public void loaded(String paramString, int paramInt)
   {
-    try
+    if (paramInt == 0)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

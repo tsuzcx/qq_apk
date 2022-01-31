@@ -9,27 +9,27 @@ import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import uoo;
-import upc;
-import urq;
-import urr;
+import uol;
+import uoz;
+import urn;
+import uro;
+import urs;
+import urt;
+import uru;
 import urv;
-import urw;
-import urx;
-import ury;
-import usc;
-import usd;
-import ush;
-import usj;
-import wcr;
+import urz;
+import usa;
+import use;
+import usg;
+import wco;
 
 public class StoryDetailListView
   extends SegmentList
 {
   public int a;
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<wcr> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uoo jdField_a_of_type_Uoo;
+  private List<wco> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private uol jdField_a_of_type_Uol;
   public int b;
   
   public StoryDetailListView(Context paramContext)
@@ -51,12 +51,12 @@ public class StoryDetailListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    wcr localwcr;
+    wco localwco;
     if (localIterator.hasNext())
     {
-      localwcr = (wcr)localIterator.next();
-      if ((localwcr instanceof urr)) {
-        i = localwcr.a() + i;
+      localwco = (wco)localIterator.next();
+      if ((localwco instanceof uro)) {
+        i = localwco.a() + i;
       }
     }
     for (;;)
@@ -64,7 +64,7 @@ public class StoryDetailListView
       if (i == 0)
       {
         return 0;
-        i = localwcr.a() + i;
+        i = localwco.a() + i;
         break;
       }
       return i;
@@ -74,24 +74,24 @@ public class StoryDetailListView
   public void a()
   {
     super.setActTAG("list_qqstory_detail");
-    this.jdField_a_of_type_JavaUtilList.add(new ush(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new usj(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new urq(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new ury(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new usd(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new use(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
+    this.jdField_a_of_type_JavaUtilList.add(new usg(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
+    this.jdField_a_of_type_JavaUtilList.add(new urn(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_JavaUtilList.add(new urv(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new usc(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new urr(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new urw(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new urx(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new usa(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new urs(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new urz(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new uro(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new urt(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new uru(this.jdField_a_of_type_AndroidAppActivity));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      a((wcr)localIterator.next());
+      a((wco)localIterator.next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
-    super.setBackgroundResource(2130849312);
+    super.setBackgroundResource(2130849321);
   }
   
   public void a(Activity paramActivity)
@@ -114,11 +114,11 @@ public class StoryDetailListView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      wcr localwcr = (wcr)localIterator.next();
-      if ((localwcr instanceof ury)) {
+      wco localwco = (wco)localIterator.next();
+      if ((localwco instanceof urv)) {
         return false;
       }
-      if (localwcr.a() > 0) {
+      if (localwco.a() > 0) {
         return true;
       }
     }
@@ -128,8 +128,8 @@ public class StoryDetailListView
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     super.a(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_Uoo != null) {
-      this.jdField_a_of_type_Uoo.a();
+    if (this.jdField_a_of_type_Uol != null) {
+      this.jdField_a_of_type_Uol.a();
     }
     return true;
   }
@@ -137,12 +137,12 @@ public class StoryDetailListView
   public int b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    wcr localwcr;
-    for (int i = 0;; i = localwcr.a() + i) {
+    wco localwco;
+    for (int i = 0;; i = localwco.a() + i) {
       if (localIterator.hasNext())
       {
-        localwcr = (wcr)localIterator.next();
-        if (!(localwcr instanceof urr)) {}
+        localwco = (wco)localIterator.next();
+        if (!(localwco instanceof uro)) {}
       }
       else
       {
@@ -151,22 +151,22 @@ public class StoryDetailListView
     }
   }
   
-  public void setCallback(upc paramupc)
+  public void setCallback(uoz paramuoz)
   {
-    ush localush = (ush)a("GeneralFeedProfileSegment");
-    usj localusj = (usj)a("ShareGroupFeedProfileSegment");
-    urq localurq = (urq)a("BannerProfileSegment");
-    ury localury = (ury)a("DetailInteractSegment");
-    urv localurv = (urv)a("DetailDoubleTabSegment");
-    usc localusc = (usc)a("DetailLikeListSegment");
-    urr localurr = (urr)a("DetailCommentSegment");
-    localush.a(paramupc);
-    localusj.a(paramupc);
-    localurq.a(paramupc);
-    localury.a(paramupc);
-    localurv.a(paramupc);
-    localusc.a(paramupc);
-    localurr.a(paramupc);
+    use localuse = (use)a("GeneralFeedProfileSegment");
+    usg localusg = (usg)a("ShareGroupFeedProfileSegment");
+    urn localurn = (urn)a("BannerProfileSegment");
+    urv localurv = (urv)a("DetailInteractSegment");
+    urs localurs = (urs)a("DetailDoubleTabSegment");
+    urz localurz = (urz)a("DetailLikeListSegment");
+    uro localuro = (uro)a("DetailCommentSegment");
+    localuse.a(paramuoz);
+    localusg.a(paramuoz);
+    localurn.a(paramuoz);
+    localurv.a(paramuoz);
+    localurs.a(paramuoz);
+    localurz.a(paramuoz);
+    localuro.a(paramuoz);
   }
   
   public void setProfileSegmentDisplay(boolean paramBoolean)
@@ -174,23 +174,23 @@ public class StoryDetailListView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     for (;;)
     {
-      wcr localwcr;
+      wco localwco;
       if (localIterator.hasNext())
       {
-        localwcr = (wcr)localIterator.next();
-        if (!(localwcr instanceof ury)) {}
+        localwco = (wco)localIterator.next();
+        if (!(localwco instanceof urv)) {}
       }
       else
       {
         return;
       }
-      localwcr.e_(paramBoolean);
+      localwco.e_(paramBoolean);
     }
   }
   
-  public void setRequestDataListener(uoo paramuoo)
+  public void setRequestDataListener(uol paramuol)
   {
-    this.jdField_a_of_type_Uoo = paramuoo;
+    this.jdField_a_of_type_Uol = paramuol;
   }
 }
 

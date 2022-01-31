@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.location.ui;
 
-import arxe;
-import arxf;
 import arxg;
+import arxh;
+import arxi;
 
 public class LocationPoiDataHelper$1$1
   implements Runnable
 {
-  public LocationPoiDataHelper$1$1(arxf paramarxf) {}
+  public LocationPoiDataHelper$1$1(arxh paramarxh) {}
   
   public void run()
   {
-    arxe.a(this.a.a).a(arxe.a(this.a.a));
+    arxg.a(this.a.a).a(arxg.a(this.a.a));
   }
 }
 

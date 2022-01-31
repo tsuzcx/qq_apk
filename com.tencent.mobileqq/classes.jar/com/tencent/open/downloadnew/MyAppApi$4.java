@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bdid;
-import bdlc;
+import bdis;
+import bdlr;
 
 public class MyAppApi$4
   implements Runnable
 {
-  public MyAppApi$4(bdlc parambdlc) {}
+  public MyAppApi$4(bdlr parambdlr) {}
   
   public void run()
   {
-    bdid.a().a(this.this$0.a);
+    bdis.a().a(this.this$0.a);
   }
 }
 

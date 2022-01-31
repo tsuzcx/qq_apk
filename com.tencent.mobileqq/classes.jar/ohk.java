@@ -1,8 +1,8 @@
+import android.view.View;
+
 public abstract interface ohk
 {
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
-  
-  public abstract void b(int paramInt);
+  public abstract void a(View paramView);
 }
 
 

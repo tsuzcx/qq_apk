@@ -1,36 +1,16 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.plugin.PluginRecord;
 
-class bhjo
-  implements bhie
+public abstract interface bhjo
 {
-  bhjo(bhjn parambhjn) {}
+  public abstract void a(PluginRecord paramPluginRecord);
   
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = bhho.a(paramFromServiceMsg.getWupBuffer());
-      bhjn.a(this.a, paramIntent);
-      bhjn.a(this.a, paramIntent, null);
-      bhgc.a().a(paramIntent);
-      if (this.a.a != null)
-      {
-        paramFromServiceMsg = this.a.a;
-        if (paramIntent != null) {
-          bool = true;
-        }
-        paramFromServiceMsg.a(bool);
-      }
-    }
-    do
-    {
-      return;
-      bhjn.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
-  }
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
 }
 
 

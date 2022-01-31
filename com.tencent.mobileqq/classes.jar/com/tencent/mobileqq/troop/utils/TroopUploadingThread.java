@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import agqs;
+import agqq;
 import android.text.TextUtils;
-import bamm;
-import bamr;
-import bamt;
-import bcvi;
+import bana;
+import banf;
+import banh;
+import bcvx;
 import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -25,8 +25,8 @@ import java.util.Set;
 public class TroopUploadingThread
   extends Thread
 {
-  protected bamt a;
-  protected ArrayList<bamr> a;
+  protected banh a;
+  protected ArrayList<banf> a;
   protected boolean a;
   protected volatile boolean b;
   
@@ -35,7 +35,7 @@ public class TroopUploadingThread
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public int a(HttpURLConnection paramHttpURLConnection, bamm parambamm, bamr parambamr)
+  public int a(HttpURLConnection paramHttpURLConnection, bana parambana, banf parambanf)
   {
     int k = -1;
     Object localObject1 = Integer.valueOf(-1);
@@ -88,7 +88,7 @@ public class TroopUploadingThread
         }
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String))) {
-          parambamm.c = Integer.parseInt((String)((List)localObject2).get(0));
+          parambana.c = Integer.parseInt((String)((List)localObject2).get(0));
         }
       }
       if (!localObject4.equals("FileName")) {
@@ -107,7 +107,7 @@ public class TroopUploadingThread
       {
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String))) {
-          parambamm.jdField_a_of_type_JavaLangString = new String(bcvi.a((String)((List)localObject2).get(0), 0));
+          parambana.jdField_a_of_type_JavaLangString = new String(bcvx.a((String)((List)localObject2).get(0), 0));
         }
         break;
       }
@@ -116,8 +116,8 @@ public class TroopUploadingThread
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String)))
         {
-          parambamm.e = Integer.parseInt((String)((List)localObject2).get(0));
-          localObject1 = Integer.valueOf(parambamm.e);
+          parambana.e = Integer.parseInt((String)((List)localObject2).get(0));
+          localObject1 = Integer.valueOf(parambana.e);
           break;
           label440:
           int i = localObject4.intValue();
@@ -141,16 +141,16 @@ public class TroopUploadingThread
           {
             try
             {
-              parambamm.jdField_b_of_type_Int = Integer.parseInt(localObject1[1]);
+              parambana.jdField_b_of_type_Int = Integer.parseInt(localObject1[1]);
               j = i;
-              if (!parambamr.jdField_a_of_type_Boolean) {
+              if (!parambanf.jdField_a_of_type_Boolean) {
                 break;
               }
               return 104;
             }
-            catch (NumberFormatException parambamm)
+            catch (NumberFormatException parambana)
             {
-              parambamm.printStackTrace();
+              parambana.printStackTrace();
               i = -1;
               continue;
             }
@@ -167,7 +167,7 @@ public class TroopUploadingThread
   }
   
   /* Error */
-  public int a(byte[] paramArrayOfByte, HttpURLConnection paramHttpURLConnection, bamr parambamr, int paramInt)
+  public int a(byte[] paramArrayOfByte, HttpURLConnection paramHttpURLConnection, banf parambanf, int paramInt)
   {
     // Byte code:
     //   0: aload_2
@@ -197,7 +197,7 @@ public class TroopUploadingThread
     //   45: iload 8
     //   47: if_icmpge +253 -> 300
     //   50: aload_3
-    //   51: getfield 158	bamr:jdField_a_of_type_Boolean	Z
+    //   51: getfield 158	banf:jdField_a_of_type_Boolean	Z
     //   54: ifeq +77 -> 131
     //   57: aload_0
     //   58: getfield 181	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -264,29 +264,29 @@ public class TroopUploadingThread
     //   175: ifle +58 -> 233
     //   178: aload_3
     //   179: iload 6
-    //   181: putfield 205	bamr:jdField_a_of_type_Int	I
-    //   184: new 95	bamm
+    //   181: putfield 205	banf:jdField_a_of_type_Int	I
+    //   184: new 95	bana
     //   187: dup
-    //   188: invokespecial 206	bamm:<init>	()V
+    //   188: invokespecial 206	bana:<init>	()V
     //   191: astore 10
     //   193: aload 10
     //   195: iconst_0
-    //   196: putfield 207	bamm:jdField_a_of_type_Int	I
+    //   196: putfield 207	bana:jdField_a_of_type_Int	I
     //   199: aload 10
     //   201: iload 6
-    //   203: putfield 155	bamm:jdField_b_of_type_Int	I
+    //   203: putfield 155	bana:jdField_b_of_type_Int	I
     //   206: aload 10
     //   208: aload_3
-    //   209: getfield 210	bamr:jdField_a_of_type_Long	J
-    //   212: putfield 211	bamm:jdField_a_of_type_Long	J
+    //   209: getfield 210	banf:jdField_a_of_type_Long	J
+    //   212: putfield 211	bana:jdField_a_of_type_Long	J
     //   215: aload 10
     //   217: aload_3
-    //   218: getfield 212	bamr:jdField_b_of_type_Int	I
-    //   221: putfield 214	bamm:d	I
+    //   218: getfield 212	banf:jdField_b_of_type_Int	I
+    //   221: putfield 214	bana:d	I
     //   224: aload_0
-    //   225: getfield 216	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_Bamt	Lbamt;
+    //   225: getfield 216	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_Banh	Lbanh;
     //   228: aload 10
-    //   230: invokevirtual 222	bamt:notifyObservers	(Ljava/lang/Object;)V
+    //   230: invokevirtual 222	banh:notifyObservers	(Ljava/lang/Object;)V
     //   233: iload 5
     //   235: bipush 100
     //   237: imul
@@ -340,14 +340,14 @@ public class TroopUploadingThread
     //   0	319	0	this	TroopUploadingThread
     //   0	319	1	paramArrayOfByte	byte[]
     //   0	319	2	paramHttpURLConnection	HttpURLConnection
-    //   0	319	3	parambamr	bamr
+    //   0	319	3	parambanf	banf
     //   0	319	4	paramInt	int
     //   38	213	5	i	int
     //   41	201	6	j	int
     //   145	107	7	k	int
     //   35	216	8	m	int
     //   31	275	9	localDataOutputStream	java.io.DataOutputStream
-    //   191	38	10	localbamm	bamm
+    //   191	38	10	localbana	bana
     // Exception table:
     //   from	to	target	type
     //   20	33	74	java/io/IOException
@@ -382,25 +382,25 @@ public class TroopUploadingThread
     //   27: aload_2
     //   28: sipush 1024
     //   31: sipush 1024
-    //   34: invokestatic 256	agqs:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   34: invokestatic 256	agqq:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   37: putfield 259	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   40: aload_2
     //   41: iconst_0
     //   42: putfield 245	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   45: aload_1
     //   46: aload_2
-    //   47: invokestatic 263	bbdr:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   47: invokestatic 263	bbef:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   50: astore_2
     //   51: aload_2
     //   52: ifnonnull +5 -> 57
     //   55: aconst_null
     //   56: areturn
-    //   57: new 265	aywy
+    //   57: new 265	ayxa
     //   60: dup
     //   61: aload_1
-    //   62: invokespecial 268	aywy:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 268	ayxa:<init>	(Ljava/lang/String;)V
     //   65: aload_2
-    //   66: invokevirtual 271	aywy:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   66: invokevirtual 271	ayxa:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   69: astore_2
     //   70: aload_2
     //   71: ifnull +143 -> 214
@@ -637,7 +637,7 @@ public class TroopUploadingThread
     //   71	82	192	java/lang/Exception
   }
   
-  public ArrayList<bamr> a()
+  public ArrayList<banf> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -663,10 +663,10 @@ public class TroopUploadingThread
         }
       }
       Object localObject = paramList;
-      paramList = (String)localObject + "&subcmd=" + agqs.b(paramTroopClipPic.type);
+      paramList = (String)localObject + "&subcmd=" + agqq.b(paramTroopClipPic.type);
       paramList = paramList + "&subver=101";
       if (!TextUtils.isEmpty(paramTroopClipPic.clipInfo)) {}
-      for (paramList = paramList + "&clip=" + paramTroopClipPic.clipInfo;; paramList = paramList + "&clip=" + agqs.a(0, 0, 0, 0))
+      for (paramList = paramList + "&clip=" + paramTroopClipPic.clipInfo;; paramList = paramList + "&clip=" + agqq.a(0, 0, 0, 0))
       {
         localArrayList.add(paramList);
         break;
@@ -678,13 +678,13 @@ public class TroopUploadingThread
     return localArrayList;
   }
   
-  public void a(bamr parambamr)
+  public void a(banf parambanf)
   {
-    Object localObject1 = a(parambamr.jdField_a_of_type_JavaLangString);
+    Object localObject1 = a(parambanf.jdField_a_of_type_JavaLangString);
     int m;
     byte[] arrayOfByte;
     int n;
-    bamm localbamm;
+    bana localbana;
     int j;
     int i;
     label58:
@@ -694,9 +694,9 @@ public class TroopUploadingThread
       m = -1;
       arrayOfByte = null;
       n = 1;
-      localbamm = new bamm();
-      localbamm.jdField_a_of_type_Long = parambamr.jdField_a_of_type_Long;
-      localbamm.d = parambamr.jdField_b_of_type_Int;
+      localbana = new bana();
+      localbana.jdField_a_of_type_Long = parambanf.jdField_a_of_type_Long;
+      localbana.d = parambanf.jdField_b_of_type_Int;
       localObject1 = null;
       j = 0;
       i = -1;
@@ -713,14 +713,14 @@ public class TroopUploadingThread
       if (k != 0) {
         break label337;
       }
-      localbamm.jdField_a_of_type_Int = 1;
+      localbana.jdField_a_of_type_Int = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambamr);
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambanf);
       this.b = true;
       if (k != 104) {
-        this.jdField_a_of_type_Bamt.notifyObservers(localbamm);
+        this.jdField_a_of_type_Banh.notifyObservers(localbana);
       }
       return;
       arrayOfByte = ((ByteArrayOutputStream)localObject1).toByteArray();
@@ -732,7 +732,7 @@ public class TroopUploadingThread
       Object localObject3 = localObject1;
       try
       {
-        localObject4 = new URL(parambamr.a(j - 1) + "&filesize=" + arrayOfByte);
+        localObject4 = new URL(parambanf.a(j - 1) + "&filesize=" + arrayOfByte);
         localObject1 = localObject4;
       }
       catch (MalformedURLException localMalformedURLException)
@@ -764,7 +764,7 @@ public class TroopUploadingThread
       }
       k = i;
       localObject3 = localObject2;
-      i = a(arrayOfByte, localMalformedURLException, parambamr, j);
+      i = a(arrayOfByte, localMalformedURLException, parambanf, j);
       if (i == -4) {
         break label58;
       }
@@ -778,33 +778,33 @@ public class TroopUploadingThread
       }
       k = i;
       localObject3 = localObject2;
-      i = a(localMalformedURLException, localbamm, parambamr);
+      i = a(localMalformedURLException, localbana, parambanf);
       k = i;
       break label79;
       label337:
-      localbamm.jdField_a_of_type_Int = 2;
-      localbamm.jdField_b_of_type_Int = k;
+      localbana.jdField_a_of_type_Int = 2;
+      localbana.jdField_b_of_type_Int = k;
     }
   }
   
-  public void a(ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, bamt parambamt)
+  public void a(ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, banh parambanh)
   {
-    this.jdField_a_of_type_Bamt = parambamt;
+    this.jdField_a_of_type_Banh = parambanh;
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      parambamt = (TroopClipPic)paramArrayList.next();
-      new File(parambamt.id);
-      bamr localbamr = new bamr();
-      localbamr.jdField_a_of_type_JavaUtilList = a(paramHashMap, paramList, parambamt);
-      localbamr.jdField_a_of_type_JavaLangString = parambamt.id;
-      localbamr.jdField_b_of_type_Int = parambamt.type;
-      localbamr.jdField_a_of_type_Long = parambamt.ts;
-      localbamr.jdField_b_of_type_JavaLangString = parambamt.clipInfo;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localbamr);
+      parambanh = (TroopClipPic)paramArrayList.next();
+      new File(parambanh.id);
+      banf localbanf = new banf();
+      localbanf.jdField_a_of_type_JavaUtilList = a(paramHashMap, paramList, parambanh);
+      localbanf.jdField_a_of_type_JavaLangString = parambanh.id;
+      localbanf.jdField_b_of_type_Int = parambanh.type;
+      localbanf.jdField_a_of_type_Long = parambanh.ts;
+      localbanf.jdField_b_of_type_JavaLangString = parambanh.clipInfo;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localbanf);
     }
   }
   
@@ -816,9 +816,9 @@ public class TroopUploadingThread
   public void run()
   {
     while ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      a((bamr)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      a((banf)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
-    this.jdField_a_of_type_Bamt = null;
+    this.jdField_a_of_type_Banh = null;
   }
 }
 

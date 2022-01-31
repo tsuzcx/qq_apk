@@ -1,89 +1,22 @@
-import android.os.Build;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QzoneHardwareRestriction;
+import java.util.Calendar;
 
 public class bhof
 {
-  private static final int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuCpuLevel", 1);
-  private static bhof jdField_a_of_type_Bhof;
-  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuBlackList", "");
-  private static final int jdField_b_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "PictureViewerPhotoDanmakuMemoryLevel", 1);
-  private long jdField_a_of_type_Long = -1L;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile String jdField_b_of_type_JavaLangString;
+  public static final String a = ajya.a(2131702850);
+  public static final String b = ajya.a(2131702821);
+  public static final String c = ajya.a(2131702802);
+  public static final String d = ajya.a(2131702842);
+  public static final String e = ajya.a(2131702812);
+  public static final String f = ajya.a(2131702806);
+  public static final String g = ajya.a(2131702845);
   
-  public bhof()
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Long == -1L) {
-      this.jdField_a_of_type_Long = (QzoneHardwareRestriction.getTotalMem() / 1024L);
-    }
-  }
-  
-  public static bhof a()
-  {
-    if (jdField_a_of_type_Bhof == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhof == null) {
-        jdField_a_of_type_Bhof = new bhof();
-      }
-      return jdField_a_of_type_Bhof;
-    }
-    finally {}
-  }
-  
-  private boolean a(String paramString)
-  {
-    try
-    {
-      String str = Build.MODEL;
-      if ((str == null) || (str.length() == 0))
-      {
-        QZLog.i("PhotoDanmakuUtil", 1, "buildModel is empty, hide PhotoDanmaku .命中禁止大图浮层策略");
-        return true;
-      }
-      if (QZLog.isColorLevel()) {
-        QZLog.d("PhotoDanmakuUtil", 2, "buildModel is '" + str + "'");
-      }
-      if ((paramString == null) || (paramString.length() == 0)) {
-        break label150;
-      }
-      str = "," + str + ",";
-      if (("," + paramString + ",").contains(str))
-      {
-        QZLog.i("PhotoDanmakuUtil", 1, "命中禁止大图浮层策略");
-        return true;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-      return false;
-    }
-    return false;
-    label150:
-    return false;
-  }
-  
-  public boolean a()
-  {
-    if ((jdField_a_of_type_JavaLangString != null) && (!jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
-      if (a(jdField_a_of_type_JavaLangString)) {
-        break label64;
-      }
-    }
-    label64:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-      if ((!this.jdField_a_of_type_Boolean) || (!QzoneHardwareRestriction.meetHardwareRestriction(jdField_b_of_type_Int, jdField_a_of_type_Int))) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(paramLong1);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.setTimeInMillis(paramLong2);
+    return (localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6));
   }
 }
 

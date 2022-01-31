@@ -1,114 +1,110 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.LbsShareChangePushInfo;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.NotifyMsgBody;
-import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import tencent.im.oidb.location.RoomOperate.ReqRoomOperation;
+import tencent.im.oidb.location.RoomOperate.RspRoomOperation;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
 public class arve
+  extends aruo<arus>
 {
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, TroopTips0x857.NotifyMsgBody paramNotifyMsgBody)
+  private arus a;
+  
+  arve(QQAppInterface paramQQAppInterface, arus paramarus)
   {
-    paramNotifyMsgBody = (TroopTips0x857.LbsShareChangePushInfo)paramNotifyMsgBody.opt_lbs_share_change_plus_info.get();
-    aruq localaruq = aruq.a(paramQQAppInterface);
-    long l = paramNotifyMsgBody.uint64_group_id.get();
-    int i = paramNotifyMsgBody.uint32_msg_type.get();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Arus = paramarus;
+  }
+  
+  private void a(int paramInt1, int paramInt2, long paramLong)
+  {
+    Object localObject = this.jdField_a_of_type_Arus.a();
     if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "processPacket: invoked. ", "msgSeq = [" + paramInt + "], msgTime = [" + paramLong + "], ", " pushType: ", Integer.valueOf(i), " sessionUin: ", Long.valueOf(l) });
+      QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoom: invoked. ", "operateType = [" + paramInt1 + "]  R_OPT_CREATE = 1; //创建房间 R_OPT_JOIN = 2; //加入 R_OPT_QUIT = 3; //退出\n", ", uinType = [" + paramInt2 + "], sessionUin = [" + paramLong + "], location = [" + localObject + "]" });
     }
-    if (i == 4)
-    {
-      aryw.b(paramQQAppInterface, String.valueOf(l));
-      localaruq.notifyUI(5, true, new Object[] { Integer.valueOf(1), String.valueOf(l) });
-      aryx.a(paramQQAppInterface);
-    }
-    for (;;)
-    {
-      localaruq.notifyUI(3, true, new Object[] { paramNotifyMsgBody });
+    if (localObject == null) {
       return;
-      if ((i == 1) || (i == 2))
+    }
+    RoomOperate.ReqRoomOperation localReqRoomOperation = new RoomOperate.ReqRoomOperation();
+    qq_lbs_share.RoomKey localRoomKey = aryz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt2, paramLong);
+    localReqRoomOperation.room_key.set(localRoomKey);
+    localReqRoomOperation.room_key.setHasFlag(true);
+    localReqRoomOperation.room_operation.set(paramInt1);
+    localReqRoomOperation.lat.set(((LatLng)localObject).latitude);
+    localReqRoomOperation.lon.set(((LatLng)localObject).longitude);
+    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "QQLBSShareSvc.room_operation");
+    ((ToServiceMsg)localObject).extraData.putInt("OPT_ROOM_TYPE", paramInt1);
+    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
+    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
+    ((ToServiceMsg)localObject).putWupBuffer(localReqRoomOperation.toByteArray());
+    a().sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    aryz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
+    aryy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString, false);
+    a().notifyUI(1, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString });
+  }
+  
+  protected arus a()
+  {
+    return arus.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      a(paramInt1, paramInt2, l);
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("RoomOperateHandler", 1, "requestOperateRoom: failed. ", paramString);
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
+      try
       {
-        aryx.a(paramQQAppInterface, 1, String.valueOf(l), true);
-      }
-      else
-      {
-        if (i == 5)
+        i = paramToServiceMsg.extraData.getInt("OPT_ROOM_TYPE");
+        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
+        paramToServiceMsg = paramToServiceMsg.extraData.getString("uin");
+        paramFromServiceMsg = (qq_lbs_share.ResultInfo)((RoomOperate.RspRoomOperation)new RoomOperate.RspRoomOperation().mergeFrom((byte[])paramObject)).msg_result.get();
+        if (aryz.a(paramFromServiceMsg))
         {
-          paramInt = 4;
-          try
-          {
-            byte[] arrayOfByte = paramNotifyMsgBody.bytes_ext_info.get().toByteArray();
-            qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
-            localPushExtInfo.mergeFrom(arrayOfByte);
-            i = localPushExtInfo.client_type.get();
-            paramInt = i;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-          {
-            for (;;)
-            {
-              localInvalidProtocolBufferMicroException.printStackTrace();
-            }
-          }
-          aryw.b(paramQQAppInterface, String.valueOf(l));
-          localaruq.notifyUI(6, true, new Object[] { Integer.valueOf(1), String.valueOf(l), Integer.valueOf(paramInt) });
-          aryx.a(paramQQAppInterface);
-          continue;
+          a().notifyUI(1, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramToServiceMsg });
+          return;
         }
-        if (i == 3) {
-          a(paramQQAppInterface, paramNotifyMsgBody.uint64_oper_uin.get(), l);
-        }
+        a(j, paramToServiceMsg, paramFromServiceMsg.uint32_result.get(), i);
+        return;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("RoomOperateHandler", 1, "requestOperateRoomResp: failed. ", paramToServiceMsg);
+        return;
       }
     }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onDecodeTroopLbsUserQuitRoom: invoked. ", " operateUin: ", Long.valueOf(paramLong1), " sessionUin: ", Long.valueOf(paramLong2) });
-    }
-    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
-      aruq.a(paramQQAppInterface).a(new aruk(1, String.valueOf(paramLong2)), false);
-    }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo)
-  {
-    paramQQAppInterface = aruq.a(paramQQAppInterface);
-    long l = paramLbsShareChangePushInfo.uint64_group_id.get();
-    paramQQAppInterface.a.a(1, String.valueOf(l));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onPushRoomMemberChanged: invoked. ", " troopUin: ", Long.valueOf(l) });
-    }
-  }
-  
-  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo, int paramInt)
-  {
-    paramQQAppInterface = aruq.a(paramQQAppInterface);
-    long l1 = paramLbsShareChangePushInfo.uint64_group_id.get();
-    long l2 = paramLbsShareChangePushInfo.uint64_oper_uin.get();
-    paramLbsShareChangePushInfo = new aruk(1, String.valueOf(l1));
-    paramQQAppInterface.a.a(1, String.valueOf(l1));
-    switch (paramInt)
+    if (paramFromServiceMsg != null)
     {
-    }
-    for (;;)
-    {
+      i = paramFromServiceMsg.getResultCode();
       if (QLog.isColorLevel()) {
-        QLog.d("TroopLocationPushDecoder", 2, new Object[] { "[venue] troop onPushRoomVenueChanged: invoked. roomKey: ", paramLbsShareChangePushInfo + " opt: " + paramInt + " optUin: " + l2 });
+        QLog.d("RoomOperateHandler", 2, new Object[] { "requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
       }
-      return;
-      paramQQAppInterface.a(paramLbsShareChangePushInfo, String.valueOf(l2));
-      continue;
-      paramQQAppInterface.a(paramLbsShareChangePushInfo);
-      continue;
-      paramQQAppInterface.b(paramLbsShareChangePushInfo);
     }
+    a(-2, "", -10001, -1);
   }
 }
 

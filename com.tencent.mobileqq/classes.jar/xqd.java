@@ -1,129 +1,141 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.content.Context;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import java.io.File;
+import java.net.URL;
 
+@Deprecated
 public class xqd
-  implements xpu
+  extends AbstractImageAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  bcnz jdField_a_of_type_Bcnz;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  
-  private void a(Activity paramActivity)
+  public View a(URL paramURL, ViewGroup paramViewGroup)
   {
-    Object localObject1 = null;
-    try
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
     {
-      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130847638);
-      localObject1 = localObject2;
+      URLImageView localURLImageView = (URLImageView)paramViewGroup.getChildAt(i);
+      Object localObject = localURLImageView.getDrawable();
+      if ((localObject != null) && ((localObject instanceof URLDrawable)))
+      {
+        localObject = (URLDrawable)localObject;
+        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().equals(paramURL))) {
+          return localURLImageView;
+        }
+      }
+      i += 1;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      Object localObject2;
-      label14:
-      break label14;
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
-    }
-    this.jdField_a_of_type_Bcnz = new bcnz((Bitmap)localObject2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
-    this.jdField_a_of_type_Bcnz.setLevel(0);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    return null;
   }
   
-  public void a()
+  public URLDrawable a(URL paramURL, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.b) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 4))
-    {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-        this.jdField_a_of_type_Bcnz.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bcnz);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramURL == null) {
+      return null;
     }
+    paramURL = paramURL.toString();
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
+    {
+      Object localObject = ((URLImageView)paramViewGroup.getChildAt(i)).getDrawable();
+      if ((localObject != null) && ((localObject instanceof URLDrawable)))
+      {
+        localObject = (URLDrawable)localObject;
+        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().toString().equals(paramURL)))
+        {
+          localObject = ((URLDrawable)localObject).getConstantState();
+          if (localObject != null) {
+            return (URLDrawable)((Drawable.ConstantState)localObject).newDrawable(paramViewGroup.getContext().getResources());
+          }
+        }
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  public void a(int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = true;
-    if (this.jdField_a_of_type_Boolean)
+    paramView = (URLImageView)paramView;
+    URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
+    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) || (this.jdField_a_of_type_AndroidGraphicsRect.height() == 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-        this.jdField_a_of_type_Bcnz.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bcnz);
+      int i = localURLDrawable.getProgress();
+      if (i == 0) {
+        return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
-    if ((paramInt >= 0) && (paramInt < 100))
-    {
-      this.jdField_a_of_type_Bcnz.setLevel(paramInt * 100);
-      this.jdField_a_of_type_Bcnz.invalidateSelf();
+      a(paramInt, i / 100);
+      paramView.setMinimumHeight(10);
+      paramView.setMinimumWidth(10);
       return;
     }
-    this.jdField_a_of_type_Bcnz.a();
-  }
-  
-  public void a(Activity paramActivity, ImageView paramImageView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    a(paramActivity);
-  }
-  
-  public void a(Activity paramActivity, xpi paramxpi)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramxpi.a()).findViewById(2131372034));
-    a(paramActivity);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= 100))
+    if (localURLDrawable.getStatus() == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Bcnz.setLevel(paramInt * 100);
-      this.jdField_a_of_type_Bcnz.invalidateSelf();
+      a(paramInt, bool);
+      break;
     }
   }
   
-  public boolean b()
+  protected void a(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.b;
+    if (!paramURLDrawable.isAnim()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setTag(2131296390, Boolean.valueOf(bool));
+      String str = paramURLDrawable.getURL().toString();
+      if ((paramURLDrawable.getStatus() == 1) && (ayoi.b(str)))
+      {
+        paramURLDrawable = ayoi.a(str);
+        if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
+          paramView.setTag(2131296389, Integer.valueOf(bbef.d(paramURLDrawable.getAbsolutePath())));
+        }
+      }
+      return;
+    }
   }
   
-  public void c()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = false;
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    if (paramView != null) {}
+    URLImageView localURLImageView;
+    xqc localxqc;
+    do
+    {
+      return paramView;
+      localURLImageView = new URLImageView(paramViewGroup.getContext());
+      localURLImageView.setAdjustViewBounds(true);
+      localxqc = (xqc)getItem(paramInt);
+      paramView = localURLImageView;
+    } while (localxqc == null);
+    URLDrawable localURLDrawable = a(localxqc.a(), paramViewGroup);
+    if (localURLDrawable == null) {
+      localURLDrawable = (URLDrawable)localxqc.b();
+    }
+    for (;;)
+    {
+      localURLImageView.setImageDrawable(localURLDrawable);
+      if ((localURLDrawable != null) && (localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 4) && (localURLDrawable.getStatus() != 2))
+      {
+        int i = localURLDrawable.getProgress();
+        localURLImageView.setURLDrawableDownListener(new xqe(this, paramInt, paramViewGroup));
+        a(paramInt, i / 100);
+        return localURLImageView;
+      }
+      paramView = localURLImageView;
+      if (localURLDrawable == null) {
+        break;
+      }
+      if (localURLDrawable.getStatus() == 1) {}
+      for (boolean bool = true;; bool = false)
+      {
+        a(paramInt, bool);
+        a(localURLImageView, localURLDrawable);
+        return localURLImageView;
+      }
     }
   }
 }

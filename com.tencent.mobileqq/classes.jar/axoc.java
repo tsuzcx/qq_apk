@@ -1,20 +1,21 @@
-import android.app.Activity;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
 import mqq.app.QQPermissionCallback;
 
 public final class axoc
   implements QQPermissionCallback
 {
-  public axoc(axod paramaxod, Activity paramActivity) {}
+  public axoc(axof paramaxof, AppActivity paramAppActivity) {}
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bbcv.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Axod);
+    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Axof);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Axod != null) {
-      this.jdField_a_of_type_Axod.a();
+    if (this.jdField_a_of_type_Axof != null) {
+      this.jdField_a_of_type_Axof.a();
     }
   }
 }

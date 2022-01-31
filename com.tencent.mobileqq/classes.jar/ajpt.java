@@ -1,23 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class ajpt
-  implements Animation.AnimationListener
+public final class ajpt
 {
-  public ajpt(ApolloGameViewBinder.GameListAdapter.2 param2) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
+  ImageView[] b = new ImageView[3];
 }
 
 

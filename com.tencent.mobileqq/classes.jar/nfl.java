@@ -1,12 +1,23 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class nfl
-  implements TVK_IMediaPlayer.OnCompletionListener
+  extends BroadcastReceiver
 {
-  nfl(nfj paramnfj) {}
+  nfl(nfg paramnfg) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
+    }
+  }
 }
 
 

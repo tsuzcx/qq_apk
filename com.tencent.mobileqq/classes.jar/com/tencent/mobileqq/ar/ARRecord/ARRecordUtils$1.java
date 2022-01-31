@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import ajyc;
-import akzi;
-import akzl;
-import bbcv;
-import bbgg;
+import ajya;
+import akzh;
+import akzk;
+import bbdj;
+import bbgu;
 
 public final class ARRecordUtils$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class ARRecordUtils$1
   {
     try
     {
-      bbcv.a(akzl.a().a(), 230, this.a, this.b, "", ajyc.a(2131700727), new akzi(this), null).show();
+      bbdj.a(akzk.a().a(), 230, this.a, this.b, "", ajya.a(2131700738), new akzh(this), null).show();
       return;
     }
     catch (Exception localException)

@@ -1,7 +1,7 @@
 class akcx
-  extends akav
+  extends akfn
 {
-  akcx(akcw paramakcw) {}
+  akcx(akcv paramakcv) {}
   
   protected void a(int paramInt1, int paramInt2)
   {

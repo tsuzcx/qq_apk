@@ -1,70 +1,50 @@
 import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
 
 public class aegi
-  extends xpz
+  extends BroadcastReceiver
 {
-  aejg jdField_a_of_type_Aejg = new aegj(this);
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public aegi(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public xpi a(Activity paramActivity, xpm paramxpm)
+  public aegi(Activity paramActivity)
   {
-    return new aehv(paramActivity, paramxpm, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public xpm a(Activity paramActivity)
+  public boolean a(Context paramContext)
   {
-    return new aeie(true);
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
   }
   
-  public xpn a(Activity paramActivity, xpm paramxpm)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aeie localaeie = (aeie)paramxpm;
-    localaeie.e = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
-    if (localaeie.e) {
-      axqw.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
+      }
     }
-    localaeie.d(4);
-    localaeie.a();
-    return new aeif(paramActivity, paramxpm, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd == null)
+    for (;;)
     {
-      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localBinderWarpper == null) {
-        break label160;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd = aeje.a(localBinderWarpper.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd.a(this.jdField_a_of_type_Aejg);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_Aejd);
-      }
-    }
-    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
-    super.a(paramActivity);
-    if (bool)
-    {
-      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
-      super.a();
-      if ((this.jdField_a_of_type_Xpn != null) && ((this.jdField_a_of_type_Xpn instanceof aeif))) {
-        ((aeif)this.jdField_a_of_type_Xpn).n();
+      return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
       }
     }
-    return;
-    label160:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
 }
 

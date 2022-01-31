@@ -1,27 +1,27 @@
 package dov.com.tencent.mobileqq.shortvideo.musicwavesupport;
 
 import android.os.SystemClock;
-import blay;
-import blba;
+import blbp;
+import blbr;
 import com.tencent.qphone.base.util.QLog;
 
 public class MusicWaveformManager$2
   implements Runnable
 {
-  public MusicWaveformManager$2(blba paramblba) {}
+  public MusicWaveformManager$2(blbr paramblbr) {}
   
   public void run()
   {
     try
     {
       long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = blba.a(this.this$0).a(blba.a(this.this$0), blba.a(this.this$0), blba.a(this.this$0));
+      boolean bool = blbr.a(this.this$0).a(blbr.a(this.this$0), blbr.a(this.this$0), blbr.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("MusicWaveformManager", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
       }
       if (!bool)
       {
-        blba.a(this.this$0, false);
+        blbr.a(this.this$0, false);
         if (QLog.isColorLevel()) {
           QLog.e("MusicWaveformManager", 2, "create musicSoundFile fail");
         }
@@ -32,7 +32,7 @@ public class MusicWaveformManager$2
     {
       do
       {
-        blba.a(this.this$0, false);
+        blbr.a(this.this$0, false);
         localException.printStackTrace();
       } while (!QLog.isColorLevel());
       QLog.e("MusicWaveformManager", 2, localException.toString());

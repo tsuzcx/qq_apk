@@ -1,19 +1,8 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.ArrayList;
 
-final class azce
-  implements QQPermissionCallback
+public abstract interface azce
 {
-  azce(AppActivity paramAppActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (!this.a.isFinishing()) {
-      bbcv.b(this.a);
-    }
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  public abstract void a(int paramInt, String paramString, ArrayList<azcb> paramArrayList);
 }
 
 

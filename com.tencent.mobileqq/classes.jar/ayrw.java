@@ -1,11 +1,28 @@
-public class ayrw
+import com.tencent.TMG.utils.QLog;
+
+class ayrw
+  implements aysc
 {
-  public byte[] a = new byte[16];
+  private ayrw(ayru paramayru) {}
   
-  ayrw(byte[] paramArrayOfByte)
+  public void onResp(aysz paramaysz)
   {
-    this.a = paramArrayOfByte;
+    synchronized (ayru.a(this.a))
+    {
+      ayru.a(this.a, paramaysz.jdField_a_of_type_Int);
+      ayru.b(this.a, paramaysz.b);
+      this.a.jdField_a_of_type_JavaLangString = paramaysz.jdField_a_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Int = paramaysz.c;
+      ayru.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("HttpInterfaceForTVKImp", 0, "onResp, result = " + ayru.a(this.a) + " , errorCode = " + ayru.b(this.a) + " , mErrDesc = " + this.a.jdField_a_of_type_JavaLangString + " , mHttpCode = " + this.a.jdField_a_of_type_Int);
+      }
+      ayru.a(this.a).notify();
+      return;
+    }
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

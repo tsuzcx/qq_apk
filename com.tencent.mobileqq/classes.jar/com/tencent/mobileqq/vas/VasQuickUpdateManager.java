@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vas;
 
-import ajsf;
+import ajsd;
 import android.text.TextUtils;
-import bbdj;
-import bbpw;
-import bbqp;
-import bbqu;
-import bbso;
-import bbsy;
-import bbuv;
+import bbdx;
+import bbqk;
+import bbrd;
+import bbri;
+import bbtc;
+import bbtm;
+import bbvj;
 import com.google.gson.stream.JsonReader;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -129,10 +129,10 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private bbso defaultCallback = new VasQuickUpdateManager.2(this);
+  private bbtc defaultCallback = new VasQuickUpdateManager.2(this);
   VasQuickUpdateEngine mEngine;
   AtomicInteger mKey = new AtomicInteger(0);
-  bbqu mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
+  bbri mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
   
   static
   {
@@ -169,7 +169,7 @@ public class VasQuickUpdateManager
     for (String str = "libqgplayer_765_64";; str = "libqgplayer_765")
     {
       SCID_COMIC_PLAYER_SO = str;
-      QUICKUPDATE_TEST_DIR = bbuv.a(ajsf.aW + ".vas_quickupdate_test/");
+      QUICKUPDATE_TEST_DIR = bbvj.a(ajsd.aW + ".vas_quickupdate_test/");
       return;
       str = "libFlatBuffersParser";
       break;
@@ -204,7 +204,7 @@ public class VasQuickUpdateManager
     //   16: aload_0
     //   17: invokestatic 411	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 414	bbsy:a	(Landroid/content/Context;)V
+    //   21: invokestatic 414	bbtm:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
@@ -316,7 +316,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(bbdj.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(bbdx.a((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -393,8 +393,8 @@ public class VasQuickUpdateManager
       return;
       QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
       this.mEngine = VasQuickUpdateEngine.getInstance();
-      bbsy.a(this.defaultCallback);
-      this.mEngine.mWeakHandler = new WeakReference((bbqp)this.app.a(71));
+      bbtm.a(this.defaultCallback);
+      this.mEngine.mWeakHandler = new WeakReference((bbrd)this.app.a(71));
     } while ((this.mEngine.mUpdateManagerInstance == 0L) || (!this.mEngine.engineReady.get()));
     this.mEngine.nativeupdateAllItem(this.mEngine.mUpdateManagerInstance);
   }
@@ -475,7 +475,7 @@ public class VasQuickUpdateManager
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
     if (this.mEngine != null) {
-      bbsy.b(this.defaultCallback);
+      bbtm.b(this.defaultCallback);
     }
     this.callBackers.clear();
   }
@@ -495,18 +495,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bbpw parambbpw)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bbqk parambbqk)
   {
     if (this.mEngine != null)
     {
-      parambbpw = new VasQuickUpdateManager.TimeoutWrapper(parambbpw, paramBoolean2, null);
+      parambbqk = new VasQuickUpdateManager.TimeoutWrapper(parambbqk, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambbpw, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambbqk, paramLong);
       }
-      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambbpw);
+      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambbqk);
       return;
     }
-    parambbpw.a(2, "", "");
+    parambbqk.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)

@@ -1,101 +1,185 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class amcm
+public final class amcm
+  extends amcl
 {
-  static int b;
-  public int a;
-  public String a;
-  public int[] a;
-  public String b;
-  
-  static
-  {
-    jdField_b_of_type_Int = -1;
-  }
+  public boolean a;
+  public int c;
+  public String c = "";
   
   public amcm()
   {
-    this.jdField_b_of_type_JavaLangString = "diy_chartlet";
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static HashMap<String, amcm> a(int paramInt, JSONObject paramJSONObject)
+  public static amcl a(JSONObject paramJSONObject)
   {
-    Object localObject1 = null;
-    Iterator localIterator = null;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    if (paramJSONObject.has("chartlet_animation"))
+    Object localObject = paramJSONObject.optString("type");
+    if (("diy_chartlet".equalsIgnoreCase((String)localObject)) || ("static".equalsIgnoreCase((String)localObject)))
     {
-      localObject2 = paramJSONObject.optJSONObject("chartlet_animation");
-      if (((JSONObject)localObject2).has("animation_set"))
+      amcm localamcm = new amcm();
+      localamcm.jdField_b_of_type_JavaLangString = ((String)localObject);
+      localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+      localamcm.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
+      if (paramJSONObject.has("rect"))
       {
-        localObject2 = ((JSONObject)localObject2).optJSONArray("animation_set");
+        JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
+        localamcm.jdField_a_of_type_ArrayOfInt = new int[4];
         int i = 0;
-        while (i < ((JSONArray)localObject2).length())
+        while (i < localJSONArray.length())
         {
-          localArrayList.add(((JSONArray)localObject2).optString(i));
+          localamcm.jdField_a_of_type_ArrayOfInt[i] = baxn.a((Context)localObject, localJSONArray.optInt(i) / 2);
           i += 1;
         }
       }
-    }
-    if (paramJSONObject.has("diy_animation")) {
-      localArrayList.add(paramJSONObject.optJSONObject("diy_animation").optString("diy"));
-    }
-    if (paramJSONObject.has("animation_sets"))
-    {
-      localObject2 = paramJSONObject.optJSONObject("animation_sets");
-      paramJSONObject = localIterator;
-      if (0 == 0) {
-        paramJSONObject = new HashMap(4);
+      localamcm.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubblePasterConfig json->" + paramJSONObject);
       }
-      localIterator = localArrayList.iterator();
-      label226:
+      return localamcm;
+    }
+    QLog.e("DiyBubbleConfig", 1, "error! paster type: " + (String)localObject);
+    return null;
+  }
+  
+  @TargetApi(11)
+  public Rect a(amcy paramamcy, Canvas paramCanvas)
+  {
+    int i1 = 0;
+    paramCanvas = paramamcy.getBounds();
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    if (jdField_b_of_type_Int == -1) {
+      jdField_b_of_type_Int = actj.a(48.0F, localResources);
+    }
+    int j = this.jdField_a_of_type_ArrayOfInt[3];
+    int i = this.jdField_a_of_type_ArrayOfInt[2];
+    int m;
+    int n;
+    int k;
+    if (paramCanvas.height() >= jdField_b_of_type_Int)
+    {
+      actj.a(10.0F, localResources);
+      actj.a(9.0F, localResources);
+      m = 0;
+      n = 0;
+      k = j;
+      j = n;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
+        n = m + this.jdField_a_of_type_ArrayOfInt[1];
+      }
       for (;;)
       {
-        localObject1 = paramJSONObject;
-        if (!localIterator.hasNext()) {
-          break;
+        label111:
+        if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
+          m = this.jdField_a_of_type_ArrayOfInt[0] + j;
         }
-        localObject1 = ((JSONObject)localObject2).optJSONObject((String)localIterator.next());
-        if (localObject1 != null)
+        for (;;)
         {
-          if (((JSONObject)localObject1).has("text_size")) {}
-          for (localObject1 = amco.a((JSONObject)localObject1);; localObject1 = amcn.a((JSONObject)localObject1))
+          j = m;
+          if (paramamcy.b)
           {
-            if (localObject1 == null) {
-              break label226;
+            j = m;
+            if (!this.jdField_a_of_type_Boolean) {
+              j = paramCanvas.width() - m - i;
             }
-            ((amcm)localObject1).jdField_a_of_type_Int = paramInt;
-            paramJSONObject.put(((amcm)localObject1).jdField_a_of_type_JavaLangString, localObject1);
+          }
+          return new Rect(j, n, i + j, k + n);
+          n = actj.a(10.0F, localResources);
+          m = actj.a(7.0F, localResources);
+          if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
+          {
+            m = -actj.a(2.0F, localResources);
+            k = j;
+            j = 0;
             break;
           }
+          k = j;
+          if (j <= m * 2) {
+            break label407;
+          }
+          m *= 2;
+          j = this.jdField_a_of_type_ArrayOfInt[2] * m / this.jdField_a_of_type_ArrayOfInt[3];
+          i = j;
+          k = m;
+          if (j >= n * 2) {
+            break label407;
+          }
+          int i2 = j / 2;
+          k = m;
+          i = j;
+          j = n - i2;
+          m = 0;
+          break;
+          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
+            break label401;
+          }
+          n = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - k - m;
+          break label111;
+          m = i1;
+          if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+            m = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramCanvas.width() - i - j;
+          }
         }
+        label401:
+        n = 0;
+      }
+      label407:
+      m = 0;
+      j = 0;
+    }
+  }
+  
+  public void a(amcy paramamcy, Canvas paramCanvas)
+  {
+    if ((paramCanvas == null) || (paramamcy == null)) {}
+    for (;;)
+    {
+      return;
+      Bitmap localBitmap;
+      if ("diy_chartlet".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+        localBitmap = ambe.a().b(paramamcy, this);
+      }
+      while (localBitmap != null)
+      {
+        int i = paramCanvas.save();
+        if ((paramamcy.b) && (this.jdField_a_of_type_Boolean)) {
+          paramCanvas.scale(-1.0F, 1.0F, paramamcy.getBounds().centerX(), paramamcy.getBounds().centerY());
+        }
+        Paint localPaint = new Paint();
+        paramamcy = a(paramamcy, paramCanvas);
+        if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
+          paramCanvas.drawBitmap(localBitmap, null, paramamcy, localPaint);
+        }
+        for (;;)
+        {
+          paramCanvas.restoreToCount(i);
+          return;
+          if (!"static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+            break label166;
+          }
+          localBitmap = ambe.a().a(paramamcy, this);
+          break;
+          paramCanvas.drawBitmap(localBitmap, paramamcy.left, paramamcy.top, localPaint);
+        }
+        label166:
+        localBitmap = null;
       }
     }
-    if ((localObject1 != null) && (((HashMap)localObject1).size() > 0)) {
-      ambf.a().a.put(Integer.valueOf(paramInt), localObject1);
-    }
-    return localObject1;
   }
-  
-  private static float b(Paint paramPaint, String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramPaint == null)) {
-      return 0.0F;
-    }
-    return paramPaint.measureText(paramString);
-  }
-  
-  public void a(amcz paramamcz, Canvas paramCanvas) {}
 }
 
 

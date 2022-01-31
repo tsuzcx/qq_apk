@@ -1,68 +1,58 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qphone.base.util.QLog;
 
 class atqm
-  implements ViewPager.OnPageChangeListener
+  implements atvq
 {
-  atqm(atpi paramatpi) {}
+  atqm(atpk paramatpk, int paramInt) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      atbp.a("onPageSelected", new Object[] { Integer.valueOf(paramInt) });
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
-    Object localObject = (NearbyBaseFragment)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("android:switcher:2131379339:" + paramInt);
-    if (localObject != null) {
-      ((NearbyBaseFragment)localObject).aT_();
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
+    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null))
     {
-      if (paramInt == 0) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, false);
       }
     }
     else
     {
-      if (paramInt != 0) {
-        break label289;
-      }
-      localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
-        break label283;
-      }
-    }
-    label283:
-    for (localObject = "1";; localObject = "2")
-    {
-      localaxra.a(new String[] { localObject }).a();
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("exp_pub").e(atpi.a(this.a).uin);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
-      for (localObject = "1";; localObject = "2")
+      this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.a(null);
+      if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null)
       {
-        localaxra.a(new String[] { localObject }).a();
-        break;
+        if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a() != 0) {
+          break label160;
+        }
+        localObject = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
+        if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
+          break label154;
+        }
       }
     }
-    label289:
-    axra localaxra = new axra(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp").e(atpi.a(this.a).uin);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
-    for (localObject = "1";; localObject = "2")
+    label154:
+    for (String str = "1";; str = "2")
     {
-      localaxra.a(new String[] { localObject }).a();
+      ((axrc)localObject).a(new String[] { str }).a();
       return;
+      this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
+      break;
+    }
+    label160:
+    axrc localaxrc = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp");
+    if (this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2)
+    {
+      str = "1";
+      if (paramInt != 0) {
+        break label250;
+      }
+    }
+    label250:
+    for (Object localObject = "1";; localObject = "2")
+    {
+      localaxrc.a(new String[] { str, localObject }).a();
+      return;
+      str = "2";
+      break;
     }
   }
 }

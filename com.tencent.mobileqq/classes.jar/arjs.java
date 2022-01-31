@@ -1,17 +1,83 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import java.util.concurrent.Callable;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqinterface.CommonCallback;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class arjs
-  implements Callable<areh>
+  extends ajtb
 {
-  public arjs(ODLoadingActivity paramODLoadingActivity, String paramString) {}
+  private Map<Integer, CommonCallback> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   
-  public areh a()
+  public arjs(AppInterface paramAppInterface)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return areq.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
+    super(paramAppInterface);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = 0;
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NowChannerHandler", 2, "handleLiveFeedNearbyAnchor req == null || res == null");
+      }
+      return;
+    }
+    CommonCallback localCommonCallback = (CommonCallback)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("BUFFER", (byte[])paramObject);
+    localBundle.putInt("BIZCODE", 0);
+    localBundle.putString("ERRMSG", paramFromServiceMsg.getBusinessFailMsg());
+    if (paramFromServiceMsg.getResultCode() == 1000) {}
+    for (;;)
+    {
+      localBundle.putInt("CHANNELCODE", i);
+      localBundle.putString("serviceCmd", (String)paramToServiceMsg.getAttribute("serviceCmd"));
+      if (localCommonCallback == null) {
+        break;
+      }
+      localCommonCallback.onResult(localBundle);
+      return;
+      i = -1;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, byte[] paramArrayOfByte, CommonCallback<Bundle> paramCommonCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("NowChannerHandler", 2, "send serviceName = " + paramString1 + " to SSO Service");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("serviceCmd", paramString2);
+    ajtu.a();
+    ajtu.a(paramString2, new int[] { 145 });
+    paramString1 = new ToServiceMsg(paramString1, getCurrentAccountUin(), paramString2);
+    paramString1.putWupBuffer(paramArrayOfByte);
+    paramString1.setAttributes(localHashMap);
+    paramString1.setTimeout(15000L);
+    sendPbReq(paramString1);
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramString1.setRequestSsoSeq(i);
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCommonCallback);
+  }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return arjr.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("NowChannerHandler", 2, "onReceive-----serviceName = " + paramToServiceMsg.getServiceName() + ", serviceCmd = " + paramToServiceMsg.getServiceCmd());
+    }
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

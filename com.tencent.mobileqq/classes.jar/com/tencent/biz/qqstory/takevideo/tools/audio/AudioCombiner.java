@@ -1,15 +1,15 @@
 package com.tencent.biz.qqstory.takevideo.tools.audio;
 
 import java.util.List;
-import vvi;
-import vvj;
+import vvf;
+import vvg;
 
 public class AudioCombiner
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private List<vvi> jdField_a_of_type_JavaUtilList;
-  private vvj jdField_a_of_type_Vvj;
+  private List<vvf> jdField_a_of_type_JavaUtilList;
+  private vvg jdField_a_of_type_Vvg;
   private int b;
 }
 

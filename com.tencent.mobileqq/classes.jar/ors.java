@@ -1,15 +1,17 @@
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ors
-  extends atzl
+  extends ajxj
 {
   public ors(KandianMergeManager paramKandianMergeManager) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    KandianMergeManager.a(this.a);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, ajsd.aA))) {
+      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { ajsd.aA });
+    }
   }
 }
 

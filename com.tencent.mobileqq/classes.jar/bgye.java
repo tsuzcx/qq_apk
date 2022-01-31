@@ -1,6 +1,19 @@
-public abstract interface bgye
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+final class bgye
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  bgye(Dialog paramDialog, Context paramContext, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+  }
 }
 
 

@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
-class abui
-  implements DialogInterface.OnClickListener
+public class abui
+  implements QQPermissionCallback
 {
-  abui(abuh paramabuh) {}
+  public abui(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
-    QQIdentiferActivity.a(this.a.a, 205, ajyc.a(2131710360));
-    this.a.a.finish();
+    bbdj.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 

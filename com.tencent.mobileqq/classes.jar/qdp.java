@@ -1,30 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 
-public class qdp
+public final class qdp
 {
-  public String a;
-  public String b;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public static qdp a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  public TopicInfo a()
   {
-    qdp localqdp = new qdp();
-    localqdp.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
-    localqdp.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
-    return localqdp;
+    return new TopicInfo(this, null);
   }
   
-  public oidb_cmd0xbc9.MoreChannelItem a()
+  public qdp a(long paramLong)
   {
-    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
-    if (!TextUtils.isEmpty(this.a))
-    {
-      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
-      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    return localMoreChannelItem;
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public qdp a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qdp a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public qdp b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public qdp b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public qdp c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public qdp d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

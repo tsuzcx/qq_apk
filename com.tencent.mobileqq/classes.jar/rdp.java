@@ -1,16 +1,17 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 public class rdp
-  extends oyg
+  extends oyd
 {
-  public rdp(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  public rdp(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.f();
+    paramoxx.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

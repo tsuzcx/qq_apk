@@ -1,41 +1,23 @@
-import android.os.SystemClock;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 class ucd
-  implements udg
+  implements uda
 {
-  ucd(ucc paramucc) {}
+  ucd(ubz paramubz, StoryVideoItem paramStoryVideoItem) {}
   
-  public boolean a(udc paramudc, int paramInt, Object paramObject)
+  public void a(ucz paramucz)
   {
-    if (this.a.isCanceled()) {
-      return false;
-    }
-    veg.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramudc)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
+    if (this.jdField_a_of_type_Ubz.isCanceled()) {}
+    do
     {
-    }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramudc, paramInt, paramObject);
-      return false;
-      veg.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      veg.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      veg.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    }
+      return;
+      ved.a(this.jdField_a_of_type_Ubz.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Ubz.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Ubz.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ubz.a, 12);
+    this.jdField_a_of_type_Ubz.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Ubz.a).a(this.jdField_a_of_type_Ubz.a, paramucz, VideoViewVideoHolder.b(this.jdField_a_of_type_Ubz.a));
+    vei.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

@@ -1,7 +1,10 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aexx
   implements View.OnClickListener
@@ -10,21 +13,10 @@ class aexx
   
   public void onClick(View paramView)
   {
-    axqw.b(aexw.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    aexw.c(aexw.a(this.a), aexw.a(this.a).jdField_a_of_type_JavaLangString);
-    aexw.a(this.a).a();
-    paramView = null;
-    String str = null;
-    if (aexw.a(this.a).jdField_a_of_type_Int == 1006) {
-      str = aexw.a(this.a).jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(aexw.a(this.a), aexw.a(this.a), aexw.a(this.a).jdField_a_of_type_Int, paramView, aexw.a(this.a).d, str, true, aexw.a(this.a).b, true, true, null, "from_internal");
-      axqw.b(aexw.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      return;
-      paramView = aexw.a(this.a).jdField_a_of_type_JavaLangString;
-    }
+    paramView = new Intent(aexw.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { aexw.a(this.a).getAccount(), aexw.a(this.a), Integer.valueOf(aqui.a(aexw.a(this.a).jdField_a_of_type_Int)), aexw.a(this.a).jdField_a_of_type_JavaLangString }));
+    aexw.a(this.a).startActivity(paramView);
+    bdes.a().a(aexw.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
   }
 }
 

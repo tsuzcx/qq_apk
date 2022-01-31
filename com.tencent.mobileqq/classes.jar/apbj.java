@@ -1,30 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
 class apbj
-  extends apbi
+  extends apbu
 {
-  public apbj(apbe paramapbe)
+  public apbj(apbi paramapbi)
   {
-    super(paramapbe);
+    super(paramapbi);
   }
   
   protected String a()
   {
-    return "StateCancelUploadWhenChangeToOff";
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Apbe.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    apbe.b(this.jdField_a_of_type_Apbe, 11, 9);
-    apbe.c(this.jdField_a_of_type_Apbe, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbe.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbi.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Apbi = new apbl(this.jdField_a_of_type_Apbe);
-    return true;
+    return "StateAcceptByPC";
   }
 }
 

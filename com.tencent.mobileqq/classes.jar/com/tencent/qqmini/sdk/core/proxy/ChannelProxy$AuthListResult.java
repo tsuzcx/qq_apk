@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
-import beho;
-import behq;
+import beif;
+import beih;
 import java.util.List;
 
 public abstract interface ChannelProxy$AuthListResult
 {
-  public abstract void onReceiveResult(boolean paramBoolean, List<beho> paramList, List<behq> paramList1);
+  public abstract void onReceiveResult(boolean paramBoolean, List<beif> paramList, List<beih> paramList1);
 }
 
 

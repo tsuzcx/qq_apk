@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
-class aopy
-  implements wfh
+public class aopy
+  extends aoun
 {
-  aopy(aopw paramaopw, int paramInt) {}
+  public aopy(VerifyPwdView paramVerifyPwdView) {}
   
-  public void a()
+  protected void a(int paramInt, String paramString)
   {
-    String str = (String)this.jdField_a_of_type_Aopw.getGroup(this.jdField_a_of_type_Int);
-    if (aopw.a(this.jdField_a_of_type_Aopw).c(this.jdField_a_of_type_Int))
-    {
-      QQAppInterface.f(str + ajyc.a(2131709625));
-      return;
-    }
-    QQAppInterface.f(str + ajyc.a(2131709605));
+    aptx.a(paramString);
   }
   
-  public void b()
+  protected void a(boolean paramBoolean)
   {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    aptx.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 

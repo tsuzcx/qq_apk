@@ -1,59 +1,78 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.json.JSONArray;
 
 public class amsz
+  extends ampa<amsy>
 {
-  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
-  
-  public static amsz a(ampi[] paramArrayOfampi)
+  public static amsy a()
   {
-    amsz localamsz = new amsz();
-    int i = 0;
-    Object localObject;
-    for (;;)
+    return (amsy)ampl.a().a(446);
+  }
+  
+  public int a()
+  {
+    return 446;
+  }
+  
+  @NonNull
+  public amsy a(int paramInt)
+  {
+    return new amsy();
+  }
+  
+  @Nullable
+  public amsy a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amsy.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<amsy> a()
+  {
+    return amsy.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amsy paramamsy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramamsy.toString());
+    }
+    paramamsy = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramamsy instanceof QQAppInterface))
     {
-      localObject = localamsz;
-      try
-      {
-        if (i < paramArrayOfampi.length)
-        {
-          localamsz.a.clear();
-          localObject = paramArrayOfampi[i].a;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            localObject = new JSONArray((String)localObject);
-            int j = 0;
-            while (j < ((JSONArray)localObject).length())
-            {
-              localamsz.a.add(((JSONArray)localObject).getString(j));
-              j += 1;
-            }
-          }
-          i += 1;
-        }
-      }
-      catch (Throwable paramArrayOfampi)
-      {
-        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfampi);
-        localObject = null;
+      paramamsy = (MiniAppEntryHandler)((QQAppInterface)paramamsy).a(149);
+      if (paramamsy != null) {
+        paramamsy.notifyUI(0, true, null);
       }
     }
-    return localObject;
   }
   
-  public List<String> a()
+  public boolean a()
   {
-    return this.a;
+    return true;
   }
   
-  public String toString()
+  public int b()
   {
-    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
-    return super.toString();
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

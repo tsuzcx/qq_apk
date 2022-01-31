@@ -1,24 +1,11 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.RadioViewPager;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.widget.TextView;
 
 public class xca
-  implements View.OnClickListener
 {
-  public xca(RadioViewPager paramRadioViewPager, Context paramContext, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("selfSet_leftViewText", ajyc.a(2131712697));
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
 }
 
 

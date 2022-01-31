@@ -1,6 +1,25 @@
-public abstract interface awsz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.search.rich.ArkAppView;
+
+class awsz
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  awsz(awsy paramawsy) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = null;
+    if (awsy.a(this.a) != null) {
+      paramView = awsy.a(this.a).mViewImpl.getViewModel();
+    }
+    if (paramView == null) {
+      return;
+    }
+    paramView.reinitArkContainer();
+  }
 }
 
 

@@ -1,53 +1,57 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.widget.ImageView.ScaleType;
 
 public class aqry
-  extends aqru
 {
-  private ImageView b;
-  private TextView d;
-  private TextView e;
-  
-  public aqry(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public static View a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramView, paramViewGroup);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559085, paramViewGroup, false);
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 5: 
+    case 7: 
+      return LayoutInflater.from(paramContext).inflate(2131559082, paramViewGroup, false);
     }
-    this.b = ((ImageView)paramContext.findViewById(2131367992));
-    this.d = ((TextView)paramContext.findViewById(2131378361));
-    this.e = ((TextView)paramContext.findViewById(2131378259));
+    return a(paramContext, paramViewGroup);
   }
   
-  public void a(FeedsItemData paramFeedsItemData)
+  public static View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    super.a(paramFeedsItemData);
-    this.e.setText(paramFeedsItemData.title + "");
-    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
-      this.d.setVisibility(8);
+    int i = paramViewGroup.getWidth();
+    ImageView localImageView = new ImageView(paramContext);
+    paramViewGroup = localImageView.getLayoutParams();
+    paramContext = paramViewGroup;
+    if (paramViewGroup == null) {
+      paramContext = new ViewGroup.LayoutParams(-2, -2);
     }
-    for (;;)
+    localImageView.setPadding(0, 20, 0, 20);
+    paramContext.width = (i - localImageView.getPaddingLeft() - localImageView.getPaddingRight() - localImageView.getPaddingLeft());
+    paramContext.height = (i * 200 / 718);
+    localImageView.setLayoutParams(paramContext);
+    localImageView.setId(2131363042);
+    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    return localImageView;
+  }
+  
+  public static aqrt a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
+  {
+    View localView = a(paramContext, paramInt, paramViewGroup);
+    switch (paramInt)
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846164);
-      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846164);
-      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
-      this.b.setImageDrawable(paramFeedsItemData);
-      return;
-      this.d.setVisibility(0);
-      this.d.setText(paramFeedsItemData.subTitle + "");
+    default: 
+      return null;
+    case 5: 
+      return new aqsa(paramContext, localView, paramViewGroup);
+    case 7: 
+      return new aqrz(paramContext, localView, paramViewGroup);
     }
+    return new aqru(paramContext, localView, paramViewGroup);
   }
 }
 

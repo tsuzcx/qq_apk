@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.app.Activity;
-import axwt;
-import ayog;
-import aywk;
-import bgpd;
-import bgpr;
+import axwv;
+import ayoi;
+import aywm;
+import bgpu;
+import bgqi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import java.net.URL;
@@ -13,18 +13,18 @@ import java.net.URL;
 class StructingMsgItemBuilder$3
   implements Runnable
 {
-  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, axwt paramaxwt, int paramInt, ChatMessage paramChatMessage) {}
+  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, axwv paramaxwv, int paramInt, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    Object localObject = aywk.a(this.jdField_a_of_type_Axwt.a, 1);
+    Object localObject = aywm.a(this.jdField_a_of_type_Axwv.a, 1);
     if (localObject == null) {}
     for (localObject = null;; localObject = ((URL)localObject).toString())
     {
-      localObject = ayog.d((String)localObject);
-      bgpd.a(this.jdField_a_of_type_Axwt.U, this.jdField_a_of_type_Int, this.jdField_a_of_type_Axwt.T, this.jdField_a_of_type_Axwt.c, (String)localObject, this.jdField_a_of_type_Axwt.d).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage).a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      bgpr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 3);
-      bgpr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0, this.jdField_a_of_type_Int);
+      localObject = ayoi.d((String)localObject);
+      bgpu.a(this.jdField_a_of_type_Axwv.U, this.jdField_a_of_type_Int, this.jdField_a_of_type_Axwv.T, this.jdField_a_of_type_Axwv.c, (String)localObject, this.jdField_a_of_type_Axwv.d).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage).a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      bgqi.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 3);
+      bgqi.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0, this.jdField_a_of_type_Int);
       return;
     }
   }

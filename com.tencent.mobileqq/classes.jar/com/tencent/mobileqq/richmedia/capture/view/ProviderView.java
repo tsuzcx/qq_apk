@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import avvt;
+import avvv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import vzo;
+import vzl;
 
 public abstract class ProviderView
   extends FrameLayout
@@ -19,7 +19,7 @@ public abstract class ProviderView
   protected Handler a;
   protected View a;
   protected ViewGroup a;
-  protected avvt a;
+  protected avvv a;
   protected AppInterface a;
   protected QQSlidingTabView a;
   protected View b;
@@ -42,14 +42,14 @@ public abstract class ProviderView
   {
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131560665, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560664, this, false);
       addView(paramBundle);
       this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372052));
       this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372047));
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131372049));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramBundle.height = vzo.a(getContext(), this.d);
+    paramBundle.height = vzl.a(getContext(), this.d);
     this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
     if (this.jdField_b_of_type_Boolean)
     {
@@ -108,9 +108,9 @@ public abstract class ProviderView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(avvt paramavvt)
+  public void setProviderViewListener(avvv paramavvv)
   {
-    this.jdField_a_of_type_Avvt = paramavvt;
+    this.jdField_a_of_type_Avvv = paramavvv;
   }
   
   public void setTabBarPosition(int paramInt)

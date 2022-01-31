@@ -1,131 +1,140 @@
-import android.text.TextUtils;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.avatar.IdleGetDynamic;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.vas.avatar.VasAvatarLoader.1;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+import mqq.os.MqqHandler;
 
 public class bbsw
-  extends bbso
+  implements bbrm<String>
 {
-  public static final bbsw a = new bbsw();
+  private static IdleGetDynamic a;
+  private static final Drawable b;
+  public int a;
+  public long a;
+  public Drawable a;
+  public String a;
+  public WeakReference<VasAvatar> a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  protected void _onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  static
   {
-    if (!ThemeUtil.isIOSTheme(paramString1))
+    jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic = new IdleGetDynamic();
+    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(16777215);
+  }
+  
+  public bbsw(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public bbsw(String paramString1, int paramInt, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(VasAvatar paramVasAvatar)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
+    if (this.jdField_b_of_type_Int == -1)
     {
-      ThemeSwitcher.a(paramString1, paramInt1);
-      if (paramInt1 != 0)
-      {
-        paramQQAppInterface = ThemeUtil.getIDFromSCID(paramString1);
-        bbrc.a(null, "individual_v2_theme_download_fail", String.valueOf(paramInt1), "from" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2, paramQQAppInterface, String.valueOf(paramInt2), null, 0.0F, 0.0F);
-        paramQQAppInterface = new HashMap();
-        paramQQAppInterface.put("reportKey", "errorCode:" + paramInt1);
-        axrl.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, paramQQAppInterface, "", true);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
       }
+      jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
       return;
     }
-    QLog.e("ThemeUpdateCallback", 1, "onCompleted ignore ios theme:" + paramString1);
+    a(false);
   }
   
-  protected void _onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  public void a(String paramString, Object paramObject)
   {
-    if (!ThemeUtil.isIOSTheme(paramString1)) {
-      ThemeSwitcher.a(paramString1, paramLong2, paramLong3);
+    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
+      a(true);
     }
-  }
-  
-  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    if (paramQQAppInterface != null) {
-      if (!ThemeUtil.isIOSTheme(paramString))
-      {
-        Object localObject = ThemeUtil.getIDFromSCID(paramString);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = new aymh().a((String)localObject);
-          if (paramString.startsWith("theme.android.")) {}
-          for (paramQQAppInterface = ((aymh)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();; paramQQAppInterface = ((aymh)localObject).b(paramQQAppInterface.getApp()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ThemeUpdateCallback", 2, "deleteFiles: " + paramQQAppInterface);
-            }
-            return new File(paramQQAppInterface).delete();
-          }
-        }
-      }
-      else
-      {
-        QLog.e("ThemeUpdateCallback", 1, "deleteFiles ignore ios theme:" + paramString);
-      }
-    }
-    return false;
-  }
-  
-  public long getBID()
-  {
-    return 3L;
-  }
-  
-  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    if (paramQQAppInterface != null)
+    Object localObject;
+    do
     {
-      VasQuickUpdateEngine.TagItemInfo localTagItemInfo;
-      if ("theme_mapping_config_android".equals(paramString))
+      do
       {
-        localTagItemInfo = new VasQuickUpdateEngine.TagItemInfo();
-        localTagItemInfo.bPreConfig = false;
-        localTagItemInfo.bSaveInDir = false;
-        localTagItemInfo.strSavePath = getSavePath(paramQQAppInterface.getApp(), paramString);
-        return localTagItemInfo;
-      }
-      if (!ThemeUtil.isIOSTheme(paramString))
-      {
-        Object localObject = ThemeUtil.getIDFromSCID(paramString);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        return;
+        if (paramString == null)
         {
-          localTagItemInfo = new VasQuickUpdateEngine.TagItemInfo();
-          localObject = new aymh().a((String)localObject);
-          if (paramString.startsWith("theme.android."))
-          {
-            localTagItemInfo.bPreConfig = false;
-            localTagItemInfo.bSaveInDir = false;
-            localTagItemInfo.strSavePath = ((aymh)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();
-            return localTagItemInfo;
-          }
-          localTagItemInfo.bPreConfig = true;
-          localTagItemInfo.bSaveInDir = false;
-          localTagItemInfo.strSavePath = ((aymh)localObject).b(paramQQAppInterface.getApp());
-          return localTagItemInfo;
+          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
+          return;
         }
-      }
-      else
-      {
-        QLog.e("ThemeUpdateCallback", 1, "getItemInfo ignore ios theme:" + paramString);
-      }
+      } while ((this.jdField_b_of_type_Int == -1) && (bblj.a()));
+      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_Bbsw != this));
+    try
+    {
+      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mUseApngImage = true;
+      localURLDrawableOptions.mUseMemoryCache = true;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
+      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
+      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
+      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
+      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+      return;
     }
-    return null;
+    catch (Exception paramObject)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+    }
   }
   
-  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  public void a(boolean paramBoolean)
   {
-    if ((paramQQAppInterface != null) && (!ThemeUtil.isIOSTheme(paramString)))
+    Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_Bbsw != this)) {}
+    Object localObject2;
+    do
     {
-      Object localObject = ThemeUtil.getIDFromSCID(paramString);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      do
       {
-        localObject = new aymh().a((String)localObject);
-        if (paramString.startsWith("theme.android.")) {}
-        for (paramQQAppInterface = ((aymh)localObject).a(paramQQAppInterface.getApp(), paramString, "").c();; paramQQAppInterface = ((aymh)localObject).b(paramQQAppInterface.getApp())) {
-          return new File(paramQQAppInterface).exists();
-        }
+        return;
+        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      } while (!(localObject1 instanceof QQAppInterface));
+      localObject2 = (QQAppInterface)localObject1;
+      localObject1 = ((bbrg)((QQAppInterface)localObject2).getManager(235)).a;
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
+        return;
       }
-    }
-    return false;
+      localObject2 = ((QQAppInterface)localObject2).a(this.jdField_a_of_type_JavaLangString, paramBoolean);
+      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
+      {
+        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+        return;
+      }
+    } while (((ExtensionInfo)localObject2).faceId <= 0);
+    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
   }
 }
 

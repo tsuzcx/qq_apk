@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.view;
 
-import bkue;
-import bkvq;
+import bkuv;
+import bkwh;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 import java.util.List;
@@ -14,7 +14,7 @@ public class CaptureVideoFilterViewPager$1
   public void run()
   {
     this.this$0.setVisibility(0);
-    List localList = bkue.a().a();
+    List localList = bkuv.a().a();
     this.this$0.a.clear();
     int i = 0;
     if (i < localList.size())
@@ -34,7 +34,7 @@ public class CaptureVideoFilterViewPager$1
       }
     }
     CaptureVideoFilterViewPager.a(this.this$0).a();
-    if (bkue.a().a() == null) {
+    if (bkuv.a().a() == null) {
       this.this$0.setCurrentItem(CaptureVideoFilterViewPager.a(this.this$0).a() * 50, false);
     }
     if (QLog.isColorLevel()) {

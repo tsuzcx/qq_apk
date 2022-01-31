@@ -1,15 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class awrq
-  implements View.OnClickListener
+public abstract interface awrq
 {
-  awrq(awrp paramawrp, awno paramawno) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Awno.b(paramView);
-  }
+  public abstract void a(View paramView);
 }
 
 

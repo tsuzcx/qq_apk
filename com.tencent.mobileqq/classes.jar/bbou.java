@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class bbou
-  implements DialogInterface.OnClickListener
+  extends anwl
 {
-  bbou(bbop parambbop, long paramLong, int paramInt, String paramString) {}
+  bbou(bbos parambbos) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bbop.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNick", 2, "emotion onJsonComplete id = " + paramEmoticonPackage.epId + " resultCode = " + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(257);
+    }
   }
 }
 

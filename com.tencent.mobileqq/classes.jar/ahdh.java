@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class ahdh
-  implements acvj
+  implements BusinessObserver
 {
-  public ahdh(RedPacketManager paramRedPacketManager, RedPacketInfoBase paramRedPacketInfoBase, WeakReference paramWeakReference) {}
+  public ahdh(RedPacketManager paramRedPacketManager) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.isCache;
-    IRedPacket.OnGetSkinListener localOnGetSkinListener = (IRedPacket.OnGetSkinListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localOnGetSkinListener != null) {
-      localOnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

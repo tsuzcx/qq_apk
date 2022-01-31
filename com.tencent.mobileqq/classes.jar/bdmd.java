@@ -1,121 +1,60 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.RemoteViews;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.1;
+import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2;
+import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import mqq.os.MqqHandler;
 
 public class bdmd
+  implements ITMAssistantCallBackListener
 {
-  protected float a;
-  protected DisplayMetrics a;
-  protected Integer a;
-  protected final String a;
-  protected float b;
-  protected Integer b;
-  protected final String b;
+  protected bdmd(bdlr parambdlr) {}
   
-  bdmd(bdmb parambdmb, Context paramContext)
+  public void onDownloadTaskProgressChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Float = 14.0F;
-    this.jdField_b_of_type_Float = 16.0F;
-    this.jdField_a_of_type_JavaLangString = "SearchForText";
-    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    a(paramContext);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  protected void a(Context paramContext)
-  {
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
-      return;
+    bdlr.a(this.a, true);
+    bdii.b("MyAppApi", "onDownloadTaskProgressChanged  receiveDataLen:" + paramLong1 + ",totalDataLen:" + paramLong2);
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    bdle localbdle = bdle.a();
+    DownloadInfo localDownloadInfo2 = localbdle.a(paramTMAssistantCallYYBParamStruct.SNGAppId);
+    DownloadInfo localDownloadInfo1 = localDownloadInfo2;
+    if (localDownloadInfo2 == null)
+    {
+      localDownloadInfo1 = this.a.a(paramTMAssistantCallYYBParamStruct, null);
+      localbdle.e(localDownloadInfo1);
     }
+    localDownloadInfo1.f = i;
+    localDownloadInfo1.a(2);
+    localbdle.a(2, localDownloadInfo1);
+    bdhk.a().a(paramTMAssistantCallYYBParamStruct, i);
+    bdii.a("MyAppApi", "onDownloadTaskProgressChanged info state=" + localDownloadInfo1.a() + " progress=" + localDownloadInfo1.f);
+  }
+  
+  public void onDownloadTaskStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
+  {
+    this.a.b = true;
+    bdlr.a(this.a, true);
+    bdii.b("MyAppApi", "onDownloadTaskStateChanged");
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.1(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
+  }
+  
+  public void onQQDownloaderInvalid()
+  {
+    bdii.b("MyAppApi", ajya.a(2131707053));
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.QQDownloadListener.2(this));
+  }
+  
+  public void onServiceFree()
+  {
+    bdii.b("MyAppApi", "OnServiceFree");
     try
     {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
-      a(paramContext);
-      b(paramContext);
+      ((TMAssistantCallYYB_V2)this.a.a).releaseIPCConnected();
       return;
     }
-    catch (Exception paramContext) {}
-  }
-  
-  protected boolean a(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
-  }
-  
-  protected boolean b(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
+    catch (Exception localException) {}
   }
 }
 

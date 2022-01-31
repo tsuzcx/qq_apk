@@ -1,13 +1,8 @@
-import android.media.MediaFormat;
-
-public class avzj
+public abstract interface avzj
 {
-  public int a = -1;
-  public MediaFormat a;
-  public String a;
-  public int b = -1;
-  public MediaFormat b;
-  public String b;
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

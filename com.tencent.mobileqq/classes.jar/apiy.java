@@ -1,29 +1,23 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.QLog;
 
 final class apiy
   implements View.OnClickListener
 {
-  apiy(apkm paramapkm, FileManagerEntity paramFileManagerEntity) {}
+  apiy(FileManagerEntity paramFileManagerEntity, apkq paramapkq) {}
   
   public void onClick(View paramView)
   {
     try
     {
-      paramView = bakj.a(this.jdField_a_of_type_Apkm.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (paramView.e == null) {
-        return;
-      }
-      if (bbev.a(this.jdField_a_of_type_Apkm.getActivity()) == 0)
+      if (bgtr.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
       {
-        bajf.a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_Apkm.getActivity().getString(2131697853));
+        bgtr.a().a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, false);
         return;
       }
-      bajf.a(this.jdField_a_of_type_Apkm.getActivity(), this.jdField_a_of_type_Apkm.getActivity().getString(2131692829), 0);
-      TroopFileTransferManager.a(this.jdField_a_of_type_Apkm.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.e, paramView.g, paramView.c, paramView.h);
+      QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
       return;
     }
     catch (Exception paramView) {}

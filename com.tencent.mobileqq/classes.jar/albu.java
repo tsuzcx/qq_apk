@@ -1,54 +1,428 @@
 import android.os.Handler;
+import android.os.RemoteCallbackList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.8.1;
-import com.tencent.mobileqq.ar.ArConfigService.8.2;
-import com.tencent.mobileqq.ar.ArConfigService.8.3;
+import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.1;
+import com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.2;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class albu
-  implements alio
+  extends alec
 {
-  public albu(ArConfigService paramArConfigService) {}
+  WeakReference<ArConfigService> a;
+  
+  public albu(ArConfigService paramArConfigService)
+  {
+    QLog.d("ArConfig_ArConfigService", 1, "ArConfigManagerStub constructor");
+    this.a = new WeakReference(paramArConfigService);
+  }
+  
+  public ARCommonConfigInfo a()
+  {
+    if (this.a != null) {}
+    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "getARCommonConfigInfo error arConfigService is null");
+        return null;
+      }
+      if (((ArConfigService)localObject).jdField_a_of_type_Akxf != null) {}
+      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Akxf.a();; localObject = null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject }));
+        }
+        return localObject;
+      }
+    }
+  }
+  
+  public ArConfigInfo a()
+  {
+    if (this.a != null) {}
+    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "getArConfigInfo error arConfigService is null");
+        return null;
+      }
+      if (((ArConfigService)localObject).jdField_a_of_type_Alch != null) {}
+      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Alch.a();; localObject = null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "getArConfigInfo | mConfigInfo = " + localObject);
+        }
+        return localObject;
+      }
+    }
+  }
+  
+  public ArEffectConfig a()
+  {
+    if (this.a != null) {}
+    for (Object localObject = (ArConfigService)this.a.get();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService is null");
+        return null;
+      }
+      if (((ArConfigService)localObject).jdField_a_of_type_Alch != null) {}
+      for (localObject = ((ArConfigService)localObject).jdField_a_of_type_Alch.a();; localObject = null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "getArEffectConfig|mEffectConfig=" + localObject);
+        }
+        return localObject;
+      }
+    }
+  }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "mARFeatureDownloadCallBack");
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.e(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.8.1(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, alip paramalip)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("mARFeatureDownloadCallBack  result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    if (this.a != null) {}
+    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
     {
-      ArConfigService.f(this.a, true);
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.8.2(this));
+      if (localArConfigService == null) {
+        QLog.d("ArConfig_ArConfigService", 1, "downloadResource error arConfigService is null");
       }
-    }
-    while (ArConfigService.e(this.a)) {
+      while (localArConfigService.jdField_a_of_type_Alch == null) {
+        return;
+      }
+      localArConfigService.jdField_a_of_type_Alch.a(false, false);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("click_download", "1");
+      axrn.a(BaseApplicationImpl.getContext()).a(localArConfigService.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ar_client_download_times", true, 0L, 0L, localHashMap, null);
       return;
     }
-    ArConfigService.a(this.a).post(new ArConfigService.8.3(this));
-    ArConfigService.a(this.a, true);
   }
   
-  public void b() {}
+  public void a(int paramInt)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource error arConfigService is null");
+    }
+    while (!(ArConfigService.a(localArConfigService) instanceof QQAppInterface)) {
+      return;
+    }
+    alcl.a(paramInt, (QQAppInterface)ArConfigService.b(localArConfigService));
+  }
+  
+  public void a(alee paramalee)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "registerFaceCallback error arConfigService is null");
+    }
+    while ((paramalee == null) || (ArConfigService.b(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.b(localArConfigService).register(paramalee);
+  }
+  
+  public void a(alek paramalek)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "registerMiniCallback error arConfigService is null");
+    }
+    while ((paramalek == null) || (ArConfigService.c(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.c(localArConfigService).register(paramalek);
+  }
+  
+  public void a(alen paramalen)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "registerArCallback error arConfigService is null");
+    }
+    while ((paramalen == null) || (ArConfigService.a(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.a(localArConfigService).register(paramalen);
+  }
+  
+  public void a(aleq paramaleq)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "registerArSoCallback error arConfigService is null");
+    }
+    while (paramaleq == null) {
+      return;
+    }
+    ArConfigService.d(localArConfigService).register(paramaleq);
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "handleNewConfig error arConfigService is null");
+    }
+    while (localArConfigService.jdField_a_of_type_Alch == null) {
+      return;
+    }
+    localArConfigService.jdField_a_of_type_Alch.a(paramArConfigInfo);
+  }
+  
+  public boolean a()
+  {
+    if (this.a != null) {}
+    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
+    {
+      if (localArConfigService == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "isFaceResConfigReady error arConfigService is null");
+        return false;
+      }
+      if ((ArConfigService.c(localArConfigService) instanceof QQAppInterface))
+      {
+        boolean bool = alcl.a((QQAppInterface)ArConfigService.d(localArConfigService));
+        if (!bool) {
+          alcl.a((QQAppInterface)ArConfigService.e(localArConfigService));
+        }
+        return bool;
+      }
+      return false;
+    }
+  }
+  
+  public void b()
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "cancelDownload error arConfigService is null");
+    }
+    while (localArConfigService.jdField_a_of_type_Alch == null) {
+      return;
+    }
+    localArConfigService.jdField_a_of_type_Alch.a.a();
+  }
+  
+  public void b(int paramInt)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadMiniResource error arConfigService is null");
+    }
+    while (!(ArConfigService.f(localArConfigService) instanceof QQAppInterface)) {
+      return;
+    }
+    aljp.a(paramInt, (QQAppInterface)ArConfigService.g(localArConfigService));
+  }
+  
+  public void b(alee paramalee)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "unregisterFaceCallback error arConfigService is null");
+    }
+    while ((paramalee == null) || (ArConfigService.b(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.b(localArConfigService).unregister(paramalee);
+  }
+  
+  public void b(alek paramalek)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "unregisterMiniCallback error arConfigService is null");
+    }
+    while ((paramalek == null) || (ArConfigService.c(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.c(localArConfigService).unregister(paramalek);
+  }
+  
+  public void b(alen paramalen)
+  {
+    QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback");
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback error arConfigService is null");
+    }
+    while ((paramalen == null) || (ArConfigService.a(localArConfigService) == null)) {
+      return;
+    }
+    ArConfigService.a(localArConfigService).unregister(paramalen);
+  }
+  
+  public void b(aleq paramaleq)
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "unregisterArSoCallback error arConfigService is null");
+    }
+    while (paramaleq == null) {
+      return;
+    }
+    ArConfigService.d(localArConfigService).unregister(paramaleq);
+  }
+  
+  public boolean b()
+  {
+    if (this.a != null) {}
+    for (ArConfigService localArConfigService = (ArConfigService)this.a.get();; localArConfigService = null)
+    {
+      if (localArConfigService == null)
+      {
+        QLog.d("ArConfig_ArConfigService", 1, "isMiniResConfigReady error arConfigService is null");
+        return false;
+      }
+      if ((ArConfigService.h(localArConfigService) instanceof QQAppInterface))
+      {
+        boolean bool = aljp.a(true, (QQAppInterface)ArConfigService.i(localArConfigService));
+        if (!bool) {
+          aljp.a(true, (QQAppInterface)ArConfigService.j(localArConfigService));
+        }
+        if (!aljp.a(false, (QQAppInterface)ArConfigService.k(localArConfigService))) {
+          aljp.a(false, (QQAppInterface)ArConfigService.l(localArConfigService));
+        }
+        return bool;
+      }
+      return false;
+    }
+  }
+  
+  public void c()
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadArSo error arConfigService is null");
+    }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        ArConfigService.a(localArConfigService, false);
+        ArConfigService.a(localArConfigService);
+        ArConfigService.b(localArConfigService);
+        ArConfigService.c(localArConfigService);
+        ArConfigService.d(localArConfigService);
+        ArConfigService.e(localArConfigService);
+      } while (ArConfigService.e(localArConfigService));
+      i = (ArConfigService.a(localArConfigService) + ArConfigService.b(localArConfigService) + ArConfigService.c(localArConfigService) + ArConfigService.d(localArConfigService) + ArConfigService.e(localArConfigService)) / 5;
+      ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.1(this, localArConfigService, i));
+    } while (i != 100);
+    ArConfigService.a(localArConfigService).post(new ArConfigService.ArConfigManagerStub.2(this, localArConfigService));
+  }
+  
+  public void c(int paramInt)
+  {
+    Object localObject = null;
+    if (this.a != null) {
+      localObject = (ArConfigService)this.a.get();
+    }
+    if (localObject == null) {
+      QLog.d("ArConfig_ArConfigService", 1, "onToolScannerActivityStateChanged error arConfigService is null");
+    }
+    do
+    {
+      return;
+      localObject = (wht)ArConfigService.m((ArConfigService)localObject).getManager(243);
+    } while (localObject == null);
+    ((wht)localObject).a(paramInt);
+  }
+  
+  public boolean c()
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "isArSoReady error arConfigService is null");
+      return false;
+    }
+    if ((ArConfigService.a()) && (ArConfigService.a(localArConfigService)) && (ArConfigService.b(localArConfigService)) && (ArConfigService.c(localArConfigService)) && (ArConfigService.d(localArConfigService))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public void d()
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadArCoreSo error arConfigService is null");
+      return;
+    }
+    ArConfigService.d(localArConfigService);
+  }
+  
+  public boolean d()
+  {
+    ArConfigService localArConfigService = null;
+    if (this.a != null) {
+      localArConfigService = (ArConfigService)this.a.get();
+    }
+    if (localArConfigService == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "isArCoreSoReady error arConfigService is null");
+      return false;
+    }
+    return ArConfigService.c(localArConfigService);
+  }
 }
 
 

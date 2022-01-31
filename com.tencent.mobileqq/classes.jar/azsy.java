@@ -1,13 +1,14 @@
 import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class azsy
-  implements aput
+  implements View.OnLongClickListener
 {
-  azsy(azsu paramazsu) {}
+  azsy(azsw paramazsw) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.c(paramView);
+    return this.a.a(paramView);
   }
 }
 

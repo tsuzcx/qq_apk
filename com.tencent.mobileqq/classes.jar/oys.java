@@ -1,49 +1,71 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import java.net.URL;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
 
-public abstract class oys
-  implements qvj
+public class oys
+  extends oxx
 {
-  public int a;
-  protected Context a;
-  protected View.OnClickListener a;
-  public osp a;
-  protected oyh a;
-  public View f;
-  
-  public oys(Context paramContext, oyh paramoyh)
+  private void i()
   {
-    this.jdField_a_of_type_Osp = new oyt(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Oyh = paramoyh;
+    Object localObject = a();
+    if (localObject == null) {
+      return;
+    }
+    int i = ((AbsListView)localObject).getFirstVisiblePosition();
+    int k = ((AbsListView)localObject).getLastVisiblePosition();
+    label24:
+    BaseArticleInfo localBaseArticleInfo;
+    StringBuilder localStringBuilder;
+    if (i <= k)
+    {
+      localObject = a(i);
+      if (localObject != null)
+      {
+        localBaseArticleInfo = (BaseArticleInfo)localObject;
+        str = onh.a(localBaseArticleInfo);
+        int j = 0;
+        localObject = str;
+        if (TextUtils.isEmpty(str))
+        {
+          localObject = onh.b(localBaseArticleInfo);
+          j = 1;
+        }
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("1".equals(Uri.parse((String)localObject).getQueryParameter("v_feeds_preload"))))
+        {
+          qkb.a().b((String)localObject);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder().append("preloadFrom: ");
+            if (j != 0) {
+              break label186;
+            }
+          }
+        }
+      }
+    }
+    label186:
+    for (String str = "Gallery";; str = "ShortContent")
+    {
+      QLog.d("ViolaHandler", 2, str + " and invoke webpreload data ,openUrl = " + (String)localObject + ";articleInfo = " + localBaseArticleInfo.toString());
+      i += 1;
+      break label24;
+      break;
+    }
   }
   
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public void a(View.OnClickListener paramOnClickListener)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return 4;
   }
   
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    a(paramKandianUrlImageView, paramURL, false);
+    if (paramInt == 0) {
+      i();
+    }
   }
-  
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean)
-  {
-    omu.a(paramKandianUrlImageView, paramURL, this.jdField_a_of_type_AndroidContentContext, paramBoolean);
-  }
-  
-  public void a(qty paramqty, int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, String paramString) {}
 }
 
 

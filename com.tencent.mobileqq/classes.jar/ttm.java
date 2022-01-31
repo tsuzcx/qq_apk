@@ -1,21 +1,14 @@
+import android.content.DialogInterface;
 import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
 
 public class ttm
-  implements bkzd
+  extends bbdt
 {
-  public ttm(FollowCaptureLauncher.1 param1) {}
+  public ttm(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void b()
-  {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+    paramDialogInterface.dismiss();
   }
 }
 

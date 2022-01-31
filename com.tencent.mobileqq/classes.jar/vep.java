@@ -1,22 +1,31 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class vep
-  implements View.OnSystemUiVisibilityChangeListener
+  implements DialogInterface.OnKeyListener
 {
-  public vep(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  public vep(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
+    if (paramInt == 84) {
+      return true;
     }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      return true;
+    }
+    return false;
   }
 }
 

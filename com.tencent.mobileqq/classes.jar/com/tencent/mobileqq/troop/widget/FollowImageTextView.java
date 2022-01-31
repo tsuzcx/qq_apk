@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bano;
-import banq;
-import banr;
+import baoc;
+import baoe;
+import baof;
 
 public class FollowImageTextView
   extends LinearLayout
@@ -25,9 +25,9 @@ public class FollowImageTextView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bano jdField_a_of_type_Bano;
-  private banq jdField_a_of_type_Banq;
-  private banr jdField_a_of_type_Banr;
+  private baoc jdField_a_of_type_Baoc;
+  private baoe jdField_a_of_type_Baoe;
+  private baof jdField_a_of_type_Baof;
   private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int = 10;
@@ -58,12 +58,12 @@ public class FollowImageTextView
     a(paramContext);
   }
   
-  private banr a()
+  private baof a()
   {
-    if (this.jdField_a_of_type_Banr == null) {
-      this.jdField_a_of_type_Banr = new banr(this);
+    if (this.jdField_a_of_type_Baof == null) {
+      this.jdField_a_of_type_Baof = new baof(this);
     }
-    return this.jdField_a_of_type_Banr;
+    return this.jdField_a_of_type_Baof;
   }
   
   private void a()
@@ -77,21 +77,21 @@ public class FollowImageTextView
       if (!this.jdField_a_of_type_Boolean) {
         break label95;
       }
-      this.jdField_a_of_type_Bano.setMaxLines(1);
-      this.jdField_a_of_type_Bano.setEllipsize(TextUtils.TruncateAt.END);
+      this.jdField_a_of_type_Baoc.setMaxLines(1);
+      this.jdField_a_of_type_Baoc.setEllipsize(TextUtils.TruncateAt.END);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bano.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      if (((this.jdField_a_of_type_Boolean ^ bool2)) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Banq != null)) {
-        this.jdField_a_of_type_Banq.a(1);
+      this.jdField_a_of_type_Baoc.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      if (((this.jdField_a_of_type_Boolean ^ bool2)) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Baoe != null)) {
+        this.jdField_a_of_type_Baoe.a(1);
       }
       return;
       bool1 = false;
       break;
       label95:
-      this.jdField_a_of_type_Bano.setMaxLines(this.jdField_a_of_type_Int - 1);
-      this.jdField_a_of_type_Bano.setEllipsize(null);
+      this.jdField_a_of_type_Baoc.setMaxLines(this.jdField_a_of_type_Int - 1);
+      this.jdField_a_of_type_Baoc.setEllipsize(null);
     }
   }
   
@@ -102,17 +102,17 @@ public class FollowImageTextView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_Bano = new bano(this, paramContext);
-    this.jdField_a_of_type_Bano.setId(2131372728);
-    this.jdField_a_of_type_Bano.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Bano);
+    this.jdField_a_of_type_Baoc = new baoc(this, paramContext);
+    this.jdField_a_of_type_Baoc.setId(2131372730);
+    this.jdField_a_of_type_Baoc.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Baoc);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131372729);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131372731);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -147,28 +147,28 @@ public class FollowImageTextView
   
   public void setAllChildOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Bano.setOnClickListener(paramOnClickListener);
+    this.jdField_a_of_type_Baoc.setOnClickListener(paramOnClickListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
   }
   
   public void setAllChildOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.jdField_a_of_type_Bano.setOnTouchListener(paramOnTouchListener);
+    this.jdField_a_of_type_Baoc.setOnTouchListener(paramOnTouchListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(paramOnTouchListener);
   }
   
   public void setAllChildTag(Object paramObject)
   {
-    this.jdField_a_of_type_Bano.setTag(paramObject);
+    this.jdField_a_of_type_Baoc.setTag(paramObject);
     this.jdField_a_of_type_AndroidWidgetTextView.setTag(paramObject);
     this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramObject);
   }
   
   public void setContentDescription(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Bano.setContentDescription(paramCharSequence);
+    this.jdField_a_of_type_Baoc.setContentDescription(paramCharSequence);
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
   }
   
@@ -198,13 +198,13 @@ public class FollowImageTextView
   
   public void setMaxWidth(int paramInt)
   {
-    this.jdField_a_of_type_Bano.setMaxWidth(paramInt);
+    this.jdField_a_of_type_Baoc.setMaxWidth(paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(paramInt);
   }
   
-  public void setOnTextLineChangeListener(banq parambanq)
+  public void setOnTextLineChangeListener(baoe parambaoe)
   {
-    this.jdField_a_of_type_Banq = parambanq;
+    this.jdField_a_of_type_Baoe = parambaoe;
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -218,19 +218,19 @@ public class FollowImageTextView
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Bano.setTextColor(paramInt);
+    this.jdField_a_of_type_Baoc.setTextColor(paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
   }
   
   public void setTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_Bano.setTextSize(paramFloat);
+    this.jdField_a_of_type_Baoc.setTextSize(paramFloat);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramFloat);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_Bano.setTextSize(paramInt, paramFloat);
+    this.jdField_a_of_type_Baoc.setTextSize(paramInt, paramFloat);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramInt, paramFloat);
   }
 }

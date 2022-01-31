@@ -1,13 +1,9 @@
-class tsn
-  implements tjf
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+public abstract interface tsn
 {
-  tsn(tsl paramtsl, tje paramtje) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tje.a();
-    this.jdField_a_of_type_Tsl.c();
-  }
+  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
 }
 
 

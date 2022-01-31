@@ -10,7 +10,7 @@ public class eu
   {
     if ((paramList != null) && (paramList.size() > 0) && (paramString != null))
     {
-      ((ajuo)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
+      ((ajum)paramQQAppInterface.a(8)).a((ArrayList)paramList, "printer", paramString.getBytes(), Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
       return true;
     }
     return false;

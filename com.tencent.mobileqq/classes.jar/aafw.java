@@ -1,14 +1,12 @@
-import android.content.res.Resources;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AccountManageActivity.4.1;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aafw
   implements View.OnClickListener
@@ -17,70 +15,38 @@ public class aafw
   
   public void onClick(View paramView)
   {
-    if (!this.a.b) {
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131376643: 
+      do
+      {
+        return;
+        localObject = null;
+        if ((paramView.getTag() instanceof String)) {
+          localObject = String.valueOf(paramView.getTag());
+        }
+        if ("0X8004001".equals(localObject))
+        {
+          axqy.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, SubAccountUgActivity.class);
+          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+          this.a.startActivity(paramView);
+          return;
+        }
+      } while (!"0X8004456".equals(localObject));
+      axqy.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+      paramView = new Intent(this.a, SubAccountBindActivity.class);
+      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+      this.a.startActivity(paramView);
+      bbdd.a().a(this.a.app.getCurrentAccountUin(), true);
       return;
     }
-    paramView = this.a;
-    boolean bool;
-    label102:
-    int i;
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label214;
-      }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131692600);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131166933));
-      if (AccountManageActivity.a(this.a) != null)
-      {
-        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((paramView instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)paramView).f();
-        }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
-      }
-      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      i = 0;
-      label173:
-      if (i >= j) {
-        break label321;
-      }
-      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((paramView != null) && (paramView.getTag() != null)) {
-        break label274;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label173;
-      bool = false;
-      break;
-      label214:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131691961);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166862));
-      break label102;
-      label274:
-      paramView = paramView.findViewById(2131370650);
-      if (paramView != null)
-      {
-        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
-        paramView.setLayoutParams(localLayoutParams);
-      }
-    }
-    label321:
-    this.a.b();
-    this.a.a(this.a.jdField_a_of_type_Boolean);
-    this.a.b = false;
-    AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.4.1(this), 400L);
+    Object localObject = new Intent();
+    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    paramView.getContext().startActivity((Intent)localObject);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
   }
 }
 

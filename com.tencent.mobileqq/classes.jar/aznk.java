@@ -1,16 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
+import java.util.Comparator;
 
 class aznk
-  extends Handler
+  implements Comparator<Long>
 {
-  aznk(aznj paramaznj) {}
+  aznk(azni paramazni) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if ((paramMessage.what == aznj.j) && (aznj.e == this.a.k)) {
-      aznj.a(this.a);
+    int i = 0;
+    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
+      i = 1;
     }
+    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
+      return i;
+    }
+    return -1;
   }
 }
 

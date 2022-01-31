@@ -1,36 +1,92 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Looper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoon
-  implements bfpc
+  implements aooq
 {
-  public aoon(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public aoon(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.c()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
-    }
-    while (!this.a.f()) {
-      return;
-    }
-    if (apeh.a(paramAdapterView)) {
-      apeh.b(paramAdapterView);
-    }
-    for (;;)
+    if (this.a.c) {}
+    do
     {
-      this.a.l();
-      LocalFileBrowserActivity.a(this.a);
       return;
-      if (this.a.f) {
-        apeh.b();
+      if (this.a.jdField_a_of_type_Apet != null) {
+        this.a.jdField_a_of_type_Apet.jdField_f_of_type_Long = System.currentTimeMillis();
       }
-      apeh.a(paramAdapterView);
-    }
+      this.a.c = true;
+      if (!paramBoolean)
+      {
+        if ((paramString3 != null) && (paramString3.length() > 0)) {
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+        }
+        for (;;)
+        {
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.a.jdField_f_of_type_Boolean = true;
+          this.a.stopTitleProgress();
+          if (this.a.jdField_a_of_type_Apet != null)
+          {
+            this.a.jdField_a_of_type_Apet.jdField_a_of_type_Boolean = false;
+            this.a.jdField_a_of_type_Apet.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Apet.jdField_f_of_type_Long - this.a.jdField_a_of_type_Apet.jdField_e_of_type_Long);
+            this.a.jdField_a_of_type_Apet.jdField_e_of_type_JavaLangString = String.valueOf(paramLong);
+            this.a.jdField_a_of_type_Apet.i = paramString3;
+            this.a.jdField_a_of_type_Apet.jdField_d_of_type_JavaLangString = paramString6;
+            this.a.jdField_a_of_type_Apet.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Apet.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_Apet.a();
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "OnCSReplay[false],retMsg[" + paramString3 + "]");
+          return;
+          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131704575));
+        }
+      }
+      this.a.h = paramString1;
+      this.a.i = paramString2;
+      this.a.jdField_f_of_type_JavaLangString = paramString4;
+      this.a.g = paramString5;
+      this.a.jdField_b_of_type_JavaLangString = ("http://" + paramString1 + ":" + paramString2 + "/ftn_doc_previewer/" + this.a.j);
+      this.a.k = paramString6;
+      if (this.a.jdField_a_of_type_Apet != null)
+      {
+        this.a.jdField_a_of_type_Apet.jdField_a_of_type_Boolean = true;
+        this.a.jdField_a_of_type_Apet.g = paramString4;
+        this.a.jdField_a_of_type_Apet.i = "";
+        this.a.jdField_a_of_type_Apet.jdField_f_of_type_Long = System.currentTimeMillis();
+        this.a.jdField_a_of_type_Apet.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Apet.jdField_f_of_type_Long - this.a.jdField_a_of_type_Apet.jdField_e_of_type_Long);
+        this.a.jdField_a_of_type_Apet.jdField_c_of_type_JavaLangString = paramString1;
+        this.a.jdField_a_of_type_Apet.jdField_f_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
+        this.a.jdField_a_of_type_Apet.jdField_d_of_type_JavaLangString = paramString6;
+        this.a.jdField_a_of_type_Apet.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Apet.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Apet.a();
+      }
+      if (this.a.jdField_b_of_type_JavaLangString == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("<FileAssistant>FilePreviewActivity", 2, "mPreviewUrl is null ,threadid[" + Thread.currentThread().getId() + "], mainId[" + Looper.getMainLooper().getThread().getId() + "]");
+        }
+        this.a.finish();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(this.a.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.i("<FileAssistant>FilePreviewActivity", 2, "time[" + System.currentTimeMillis() + "]OnCSReplay mWebView.loadUrl(" + this.a.jdField_b_of_type_JavaLangString + ")");
+      }
+    } while (this.a.jdField_a_of_type_Apet == null);
+    this.a.jdField_a_of_type_Apet.jdField_e_of_type_Long = System.currentTimeMillis();
+    this.a.jdField_a_of_type_Apet.l = "2";
   }
 }
 

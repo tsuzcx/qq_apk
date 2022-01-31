@@ -1,118 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build.VERSION;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.confess.CircleGuideView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
 
 class aenq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Animator.AnimatorListener
 {
-  aenq(aeno paramaeno, View paramView1, View paramView2) {}
+  aenq(aenp paramaenp) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int j;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    amnk localamnk;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_a_of_type_Aeno.jdField_a_of_type_JavaLangString, 2, "show holmes guide!");
-      }
-      j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidContentContext);
-      if (this.jdField_a_of_type_Aeno.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1034) {
-        break label488;
-      }
-      localObject1 = (CircleGuideView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364212);
-      float f1 = this.b.getX();
-      float f2 = this.b.getWidth() / 2;
-      float f3 = j;
-      float f4 = this.b.getY();
-      float f5 = this.b.getHeight() / 2;
-      i = 24;
-      if (Build.VERSION.SDK_INT <= 18) {
-        i = 20;
-      }
-      ((CircleGuideView)localObject1).setCircle(f2 + f1, f5 + (f3 + f4), actn.a(i, aeno.a(this.jdField_a_of_type_Aeno).getResources()));
-      localObject1 = this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691034);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131367551).setPadding(0, j, 0, 0);
-      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367554);
-      localamnk = ((amno)this.jdField_a_of_type_Aeno.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269)).b();
-      if (localamnk != null) {
-        break label585;
-      }
-      j = 5;
-      switch (j)
-      {
-      default: 
-        label247:
-        i = 2130844168;
-      }
+    if (aenm.a(this.a.a.this$0) != null) {
+      aenm.a(this.a.a.this$0).setVisibility(0);
     }
-    for (;;)
-    {
-      ((ImageView)localObject2).setImageResource(i);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367553)).setContentDescription(String.format((String)localObject1, new Object[] { Integer.valueOf(j) }));
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.setClippingEnabled(false);
-      this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
-      if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_Aeno.d.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      return;
-      label488:
-      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131371998);
-      localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
-      ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = (this.b.getLeft() + aeno.a(this.jdField_a_of_type_Aeno).getLeft());
-      ((ViewGroup.MarginLayoutParams)localObject2).topMargin = (this.b.getTop() + j + aeno.a(this.jdField_a_of_type_Aeno).getTop());
-      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject1 = this.jdField_a_of_type_Aeno.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691033);
-      break;
-      label585:
-      j = localamnk.k;
-      break label247;
-      i = 2130844162;
-      continue;
-      i = 2130844163;
-      continue;
-      i = 2130844165;
-      continue;
-      i = 2130844166;
-      continue;
-      i = 2130844167;
-      continue;
-      i = 2130844168;
-      continue;
-      i = 2130844169;
-      continue;
-      i = 2130844170;
-      continue;
-      i = 2130844171;
-      continue;
-      i = 2130844172;
-      continue;
-      i = 2130844164;
+    if (aenm.a(this.a.a.this$0) != null) {
+      aenm.a(this.a.a.this$0).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

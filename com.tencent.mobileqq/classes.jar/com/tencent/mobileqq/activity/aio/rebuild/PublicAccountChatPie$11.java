@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aerv;
+import aert;
 import android.widget.RelativeLayout;
 
 public class PublicAccountChatPie$11
   implements Runnable
 {
-  public PublicAccountChatPie$11(aerv paramaerv) {}
+  public PublicAccountChatPie$11(aert paramaert) {}
   
   public void run()
   {
-    aerv.a(this.this$0).removeView(this.this$0.o);
+    aert.a(this.this$0).removeView(this.this$0.o);
   }
 }
 

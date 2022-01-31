@@ -1,21 +1,56 @@
-class afiy
-  implements afiz<T>
+import android.support.v4.util.SparseArrayCompat;
+
+public class afiy<T>
 {
-  afiy(afix paramafix, int paramInt) {}
+  SparseArrayCompat<afix<T>> a = new SparseArrayCompat();
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a.size();
   }
   
-  public void a(afjh paramafjh, T paramT, int paramInt)
+  public int a(T paramT, int paramInt)
   {
-    this.jdField_a_of_type_Afix.a(paramafjh, paramT, paramInt);
+    int i = this.a.size() - 1;
+    while (i >= 0)
+    {
+      if (((afix)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
   }
   
-  public boolean a(T paramT, int paramInt)
+  public afix a(int paramInt)
   {
-    return true;
+    return (afix)this.a.get(paramInt);
+  }
+  
+  public afiy<T> a(afix<T> paramafix)
+  {
+    int i = this.a.size();
+    if (paramafix != null) {
+      this.a.put(i, paramafix);
+    }
+    return this;
+  }
+  
+  public void a(afjf paramafjf, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      afix localafix = (afix)this.a.valueAt(i);
+      if (localafix.a(paramT, paramInt))
+      {
+        localafix.a(paramafjf, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 

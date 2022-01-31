@@ -43,7 +43,7 @@ class SecClientInfoTaskEx$1
         localObject3 = new ClientInfoB.EnvParamPacket();
         ((ClientInfoB.EnvParamPacket)localObject3).u32_platform.set(1);
         ((ClientInfoB.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoB.EnvParamPacket)localObject3).str_qqversion.set("8.2.8.4440");
+        ((ClientInfoB.EnvParamPacket)localObject3).str_qqversion.set("8.3.0.4480");
         ((ClientInfoB.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a());
         ((ClientInfoB.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
         ((ClientInfoB.EnvParamPacket)localObject3).str_uin.set(str);

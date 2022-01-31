@@ -1,29 +1,51 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter.1;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxd
-  implements aowk
+  extends aoxv
 {
-  aoxd(aoxc paramaoxc, ByteStringMicro paramByteStringMicro, String paramString) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
   
-  public void a(boolean paramBoolean)
+  aoxd(aowx paramaowx, MessageRecord paramMessageRecord)
   {
-    aowt.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_Aowt).a().a(aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb));
-    if (paramBoolean)
+    super(paramaowx);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aoxt paramaoxt)
+  {
+    if ("1".equals(this.f))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " sendLocalFileToBuddyBySHA uploadFile success");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      this.jdField_a_of_type_Aoxc.jdField_a_of_type_Aowp.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray(), 5000, 3, null);
-      aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxp.a(this.jdField_a_of_type_JavaLangString, aoxb.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb));
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_JavaLangString + " BuddyUploadTaskExcuter faild");
-    this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aoxc.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$BuddyUploadTaskExcuter$1.jdField_a_of_type_Aoxb.jdField_a_of_type_Long, false), true);
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter faild uuid is null");
+      }
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aowx.a(this.jdField_a_of_type_Aowx).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 102, new aoxe(this, paramString, paramaoxt));
   }
 }
 

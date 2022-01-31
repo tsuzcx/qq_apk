@@ -1,28 +1,22 @@
-import android.os.Handler;
 import android.view.View;
-import com.tencent.image.Utils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
 
 public class aarb
-  implements bfoq
+  implements Animation.AnimationListener
 {
-  public aarb(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, bfol parambfol) {}
+  public aarb(ChatHistory paramChatHistory, View paramView, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new aarc(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-    }
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterBaseActivity.2;
 
 public class abyi
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public abyi(RegisterActivity paramRegisterActivity) {}
+  public abyi(RegisterBaseActivity.2 param2) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

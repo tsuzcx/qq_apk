@@ -1,47 +1,24 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
 import com.tencent.qphone.base.util.QLog;
 
-class aoax
-  implements URLDrawableDownListener
+public class aoax
+  implements Animation.AnimationListener
 {
-  aoax(aoav paramaoav, anyc paramanyc, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
+  public aoax(FastImagePreviewLayout paramFastImagePreviewLayout) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyc.toString());
-    aoav.a(this.jdField_a_of_type_Aoav, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyc.toString());
-    aoav.a(this.jdField_a_of_type_Aoav, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anyc.toString());
-    aoav.a(this.jdField_a_of_type_Aoav, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_Anyc.toString());
+      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
     }
-    aoav.a(this.jdField_a_of_type_Aoav, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    this.a.removeAllViews();
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccess: " + this.jdField_a_of_type_Anyc.toString());
-    }
-    aoav.a(this.jdField_a_of_type_Aoav, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

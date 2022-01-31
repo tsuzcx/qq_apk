@@ -1,50 +1,65 @@
+import android.os.Build;
+import com.tencent.qphone.base.util.QLog;
+
 public class axki
 {
-  public static long a()
+  public static String[] a = { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X", "SM-W2015", "Redmi Note 3", "R7Plus", "vivo X6Plus A" };
+  
+  public static boolean a()
   {
-    return b(1) - c(1);
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    String[] arrayOfString = a;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfString[i].contains(str)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceDanceEntryUtil", 2, "isPhoneInBlackList ： phone = " + str + ", result=" + bool1);
+        }
+        return bool1;
+      }
+      i += 1;
+    }
   }
   
-  public static long a(int paramInt)
+  public static boolean b()
   {
-    long l = Runtime.getRuntime().maxMemory() - a() * 1024L;
-    switch (paramInt)
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (axkt.g())
     {
-    case 0: 
-    default: 
-      return l;
-    case 1: 
-      return l / 1024L;
+      bool1 = bool3;
+      if (!a())
+      {
+        if (!lpu.a(8, 1400000L))
+        {
+          bool1 = bool2;
+          if (!lpu.a(4, 2150000L)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        QLog.d("FaceDanceEntryUtil", 2, "FaceDanceEntryUtil check condition 2 +cpuNumber is" + bool1);
+      }
     }
-    return l / 1048576L;
+    return bool1;
   }
   
-  private static long b(int paramInt)
+  public static boolean c()
   {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().totalMemory();
-    case 0: 
-      return Runtime.getRuntime().totalMemory();
-    case 1: 
-      return Runtime.getRuntime().totalMemory() / 1024L;
-    }
-    return Runtime.getRuntime().totalMemory() / 1024L / 1024L;
-  }
-  
-  private static long c(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return Runtime.getRuntime().freeMemory();
-    case 0: 
-      return Runtime.getRuntime().freeMemory();
-    case 1: 
-      return Runtime.getRuntime().freeMemory() / 1024L;
-    }
-    return Runtime.getRuntime().freeMemory() / 1024L / 1024L;
+    return (b()) && (axgr.a().e());
   }
 }
 

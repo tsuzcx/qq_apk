@@ -1,34 +1,45 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bgic
-  implements bghp
+class bgic
+  implements auoq
 {
-  public bgic(QQComicTabBarView paramQQComicTabBarView) {}
+  bgic(bgib parambgib) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    paramInt1 = this.a.a();
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
-    RedTouchUI localRedTouchUI;
-    RedAppInfo localRedAppInfo;
-    do
-    {
+    return null;
+  }
+  
+  public void a(auor paramauor) {}
+  
+  public void b(auor paramauor)
+  {
+    if ((paramauor == null) || (this.a.a == null)) {
       return;
-      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
-      if ((paramBoolean) && (paramInt1 != paramInt2))
-      {
-        this.a.a(paramInt2);
-        return;
+    }
+    if (paramauor.jdField_a_of_type_Int == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramauor.c);
       }
-      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Bgir.get("1113.100801");
-      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    } while ((localRedTouchUI == null) || (!localRedTouchUI.a()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
-    this.a.a(paramInt2, true);
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramauor.c);
+      this.a.a.onInvokeFinish(localBundle);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramauor.b);
+    localBundle.putString("errMsg", paramauor.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
   }
 }
 

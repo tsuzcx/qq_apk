@@ -1,6 +1,13 @@
-public abstract interface bhgz
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.METHOD})
+public @interface bhgz
 {
-  public abstract void a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+  String a();
 }
 
 

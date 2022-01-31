@@ -9,9 +9,9 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Environment;
 import android.text.TextUtils;
-import bgyg;
-import bhbz;
-import bhnq;
+import bgyx;
+import bhcq;
+import bhoh;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.DataUtils;
 import java.io.File;
@@ -160,7 +160,7 @@ public class Native
     boolean bool;
     if (a())
     {
-      localObject = new File(bhbz.o);
+      localObject = new File(bhcq.o);
       localFile = new File((File)localObject, "wns_network_lib.zip");
       if (localFile.exists()) {
         localFile.delete();
@@ -169,7 +169,7 @@ public class Native
         ((File)localObject).mkdirs();
       }
       QLog.w("LibraryLoader", 1, "Prepare to Download Native Libs From Network ... Url = http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip");
-      bool = bgyg.a(bgyg.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
+      bool = bgyx.a(bgyx.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
       QLog.w("LibraryLoader", 1, "Download Native Libs => " + bool);
       if (bool) {
         break label113;
@@ -187,7 +187,7 @@ public class Native
       if (!TextUtils.isEmpty(paramString)) {
         ((Set)localObject).add(paramString);
       }
-      localObject = bhnq.a(localFile, a(), (Set)localObject);
+      localObject = bhoh.a(localFile, a(), (Set)localObject);
       QLog.w("LibraryLoader", 1, "Install Native Libs => " + bool);
       paramString = (String)localObject;
     } while (!localFile.exists());
@@ -552,21 +552,21 @@ public class Native
     //   98: athrow
     //   99: iconst_0
     //   100: ireturn
-    //   101: astore_0
+    //   101: astore_1
     //   102: iconst_0
     //   103: ifeq +11 -> 114
     //   106: new 415	java/lang/NullPointerException
     //   109: dup
     //   110: invokespecial 416	java/lang/NullPointerException:<init>	()V
     //   113: athrow
-    //   114: aload_0
+    //   114: aload_1
     //   115: athrow
     //   116: astore_0
     //   117: iload_2
     //   118: ireturn
     //   119: astore_0
     //   120: goto -21 -> 99
-    //   123: astore_1
+    //   123: astore_0
     //   124: goto -10 -> 114
     // Local variable table:
     //   start	length	slot	name	signature

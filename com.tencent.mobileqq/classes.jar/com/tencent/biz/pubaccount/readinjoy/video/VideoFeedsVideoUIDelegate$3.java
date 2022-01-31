@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
-import qmi;
-import qol;
-import qqo;
-import qtk;
+import qmf;
+import qoi;
+import qql;
+import qth;
 
 public class VideoFeedsVideoUIDelegate$3
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$3(qtk paramqtk, qqo paramqqo, boolean paramBoolean) {}
+  public VideoFeedsVideoUIDelegate$3(qth paramqth, qql paramqql, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Qqo != null) && (this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Qqo.a.c))
+    if ((this.jdField_a_of_type_Qql != null) && (this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Qql.a.c))
     {
-      qtk.b(this.this$0, true);
-      qol.a(this.this$0.a.b, 8, 0);
+      qth.b(this.this$0, true);
+      qoi.a(this.this$0.a.b, 8, 0);
     }
   }
 }

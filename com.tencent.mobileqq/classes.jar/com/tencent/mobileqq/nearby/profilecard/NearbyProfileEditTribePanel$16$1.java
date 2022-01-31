@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atte;
+import attg;
 
 class NearbyProfileEditTribePanel$16$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditTribePanel$16$1
   
   public void run()
   {
-    atte.a(this.a.this$0);
+    attg.a(this.a.this$0);
   }
 }
 

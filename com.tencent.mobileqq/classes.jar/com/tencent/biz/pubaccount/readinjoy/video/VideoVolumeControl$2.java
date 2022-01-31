@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import qvn;
-import qvo;
+import qvk;
+import qvl;
 
 public class VideoVolumeControl$2
   implements Runnable
 {
-  public VideoVolumeControl$2(qvn paramqvn) {}
+  public VideoVolumeControl$2(qvk paramqvk) {}
   
   public void run()
   {
-    qvo localqvo = qvn.a(this.this$0);
-    if (localqvo != null) {
-      ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(localqvo, 32);
+    qvl localqvl = qvk.a(this.this$0);
+    if (localqvl != null) {
+      ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(localqvl, 32);
     }
   }
 }

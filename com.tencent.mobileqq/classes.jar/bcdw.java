@@ -1,6 +1,20 @@
-public abstract interface bcdw
+import android.net.Uri;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+
+class bcdw
+  extends bcdz
 {
-  public abstract bcdq b();
+  bcdw(bcdu parambcdu)
+  {
+    super(parambcdu);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.isForMainFrame());
+  }
 }
 
 

@@ -1,52 +1,60 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 class tgw
-  extends sva
+  extends SimpleObserver<List<tso>>
 {
-  private final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  tgw(tgv paramtgv, tgz paramtgz, tff paramtff) {}
   
-  public tgw(tgs paramtgs)
+  public void a(List<tso> paramList)
   {
-    super("MsgTabStoryVideoPreloader");
-  }
-  
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sul paramsul)
-  {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramsul);
-    if (paramInt2 == 2)
+    super.onNext(paramList);
+    ArrayList localArrayList;
+    int i;
+    tso localtso;
+    if (this.jdField_a_of_type_Tgz != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      localArrayList = new ArrayList();
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        Collections.sort(paramList, new tgx(this));
+        paramList = paramList.iterator();
+        i = 0;
+        if (paramList.hasNext())
+        {
+          localtso = (tso)paramList.next();
+          if (i < tgv.a(this.jdField_a_of_type_Tgv)) {
+            break label100;
+          }
+        }
       }
-      this.jdField_a_of_type_Tgs.a(paramsul.c, true);
+      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, localArrayList);
+    }
+    else
+    {
+      return;
+    }
+    label100:
+    if ((localtso != null) && (!localtso.jdField_a_of_type_Boolean) && (localtso.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+    {
+      localArrayList.add(localtso.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      i += 1;
+    }
+    for (;;)
+    {
+      break;
     }
   }
   
-  public void a(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
+  public void onError(@NonNull Error paramError)
   {
-    super.a(paramString, paramInt1, paramFile, paramInt2, paramsul);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
-      }
-      this.jdField_a_of_type_Tgs.a(paramsul.c, true);
-    }
-  }
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, sul paramsul)
-  {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramsul);
-    if (paramInt2 == 2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
-      }
-      this.jdField_a_of_type_Tgs.a(paramsul.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Tgz != null) {
+      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, paramError);
     }
   }
 }

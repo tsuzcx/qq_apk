@@ -1,285 +1,146 @@
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.view.MotionEvent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.graphics.NinePatch;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bkaf
-  extends bkav
+  extends bkin
 {
-  public static String a;
   public int a;
-  public bkef a;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  RectF jdField_a_of_type_AndroidGraphicsRectF;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
+  public String a;
+  int jdField_b_of_type_Int;
+  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
   
-  static
+  public bkaf(bkae parambkae, @NonNull String paramString1, @NonNull Drawable paramDrawable, @NonNull String paramString2, @NonNull String paramString3, @NonNull bkah parambkah)
   {
-    jdField_a_of_type_JavaLangString = "LineLayer";
-  }
-  
-  public bkaf(DoodleView paramDoodleView)
-  {
-    super(paramDoodleView);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Bkef = new bkef();
-  }
-  
-  private void b(int paramInt)
-  {
-    switch (paramInt)
+    super(parambkah.jdField_a_of_type_AndroidGraphicsPointF, parambkah.jdField_a_of_type_Float, parambkah.jdField_b_of_type_Float, parambkah.jdField_c_of_type_Float, parambkah.jdField_d_of_type_Float, parambkah.jdField_a_of_type_Int, parambkah.jdField_b_of_type_Int, false);
+    this.jdField_a_of_type_Int = parambkah.jdField_c_of_type_Int;
+    try
     {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambkae.jdField_a_of_type_AndroidContentContext.getResources(), 2130845497);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(parambkae.jdField_a_of_type_AndroidContentContext.getResources(), 2130845498);
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)this.u, (int)this.v);
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramDrawable.getBounds());
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      this.jdField_c_of_type_JavaLangString = paramString3;
+      this.jdField_b_of_type_Int = parambkah.e;
+      this.jdField_c_of_type_Int = parambkah.jdField_d_of_type_Int;
+      return;
     }
-    bkex localbkex;
-    do
+    catch (OutOfMemoryError parambkae)
     {
-      do
+      for (;;)
       {
-        return;
-        this.jdField_a_of_type_Int = 1;
-        return;
-        this.jdField_a_of_type_Int = 2;
-        return;
-        this.jdField_a_of_type_Int = 3;
-        return;
-        this.jdField_a_of_type_Int = 4;
-        localbkex = (bkex)this.jdField_a_of_type_Bkef.a(103);
-      } while (localbkex == null);
-      localbkex.a(104);
-      localbkex.b();
-      return;
-      this.jdField_a_of_type_Int = 6;
-      localbkex = (bkex)this.jdField_a_of_type_Bkef.a(103);
-    } while (localbkex == null);
-    localbkex.a(105);
-    localbkex.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.c, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.d);
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_Bkef.d(101);
-    }
-    while ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int != 4)) {
-      return;
-    }
-    this.jdField_a_of_type_Bkef.d(104);
-  }
-  
-  public Bitmap a()
-  {
-    return ((bkex)this.jdField_a_of_type_Bkef.a(103)).b;
-  }
-  
-  public bkeh a(int paramInt)
-  {
-    return this.jdField_a_of_type_Bkef.a(paramInt);
-  }
-  
-  public String a()
-  {
-    return "LineLayer";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bkef.i();
-    veg.b("LineLayer", "clear over.");
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    bkex localbkex = (bkex)this.jdField_a_of_type_Bkef.a(103);
-    if (localbkex != null) {
-      localbkex.c(paramInt1, paramInt2);
-    }
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_Bkef.a(paramCanvas, this.jdField_a_of_type_Float);
-    h();
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    this.jdField_a_of_type_Bkef.b(paramCanvas, paramFloat);
-    if (this.jdField_a_of_type_Bkef.a())
-    {
-      Bitmap localBitmap = this.jdField_a_of_type_Bkef.a;
-      if (localBitmap == null) {
-        break label94;
+        ved.c(bkae.jdField_a_of_type_JavaLangString, "BitmapFactory.decodeResource outOfMemoryError : %s.", parambkae);
       }
-      PorterDuffXfermode localPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
-      Paint localPaint = new Paint(1);
-      localPaint.setXfermode(localPorterDuffXfermode);
-      paramCanvas.save();
-      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, localPaint);
-      paramCanvas.restore();
-      this.jdField_a_of_type_Bkef.j();
     }
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
-      this.jdField_a_of_type_Bkef.c();
-      return;
-      label94:
-      if (QLog.isColorLevel()) {
-        QLog.d("LineLayer", 2, "imgDoodle is null");
+      try
+      {
+        localJSONObject.put("u", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("n", this.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("o", this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Int != 0) {
+          continue;
+        }
+        i = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.x + this.s - this.u / 2.0F) / this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidGraphicsRect.width() * 1000.0F);
+        int j = (int)((this.jdField_b_of_type_AndroidGraphicsPointF.y + this.t) / this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidGraphicsRect.height() * 1000.0F);
+        localJSONObject.put("x", i);
+        localJSONObject.put("y", j);
+      }
+      catch (JSONException localJSONException)
+      {
+        int i;
+        float f1;
+        float f2;
+        float f3;
+        localJSONException.printStackTrace();
+        continue;
+      }
+      ved.c(bkae.jdField_a_of_type_JavaLangString, "AtItem toJsonObject:" + localJSONObject.toString());
+      return localJSONObject;
+      f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x;
+      f2 = this.s;
+      f3 = this.u / 2.0F;
+      i = this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidGraphicsRect.width();
+      i = (int)((f1 + f2 + f3) / i * 1000.0F);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, boolean paramBoolean)
+  {
+    ved.c(bkae.jdField_a_of_type_JavaLangString, "AtItem draw start.");
+    paramCanvas.save();
+    paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+    NinePatch localNinePatch;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      localNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
+      localNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect);
+      paramCanvas.restore();
+      paramCanvas.save();
+      float f2 = (this.v - this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F;
+      if (this.jdField_a_of_type_Int != 0) {
+        break label344;
+      }
+      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+      f1 = actj.a(10.0F, this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidContentContext.getResources());
+      label136:
+      paramCanvas.translate(f1, f2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+      paramCanvas.save();
+      paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
+      if (this.jdField_a_of_type_Int != 0) {
+        break label383;
       }
     }
-  }
-  
-  public void a(bkag parambkag)
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b();
-    bkex localbkex = (bkex)this.jdField_a_of_type_Bkef.a(103);
-    if (localbkex != null) {
-      localbkex.a(parambkag, this.jdField_a_of_type_Float, localBitmap, this.jdField_a_of_type_AndroidGraphicsRect);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, int paramInt1, int paramInt2)
-  {
-    veg.b("LineLayer", "switchImageMode.");
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bkef.a(paramAppInterface, paramInt2);
-  }
-  
-  public void a(DoodleTextureView paramDoodleTextureView)
-  {
-    if (paramDoodleTextureView.getVisibility() == 0) {
-      paramDoodleTextureView.setOpController(this.jdField_a_of_type_Bkef);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bkef.d();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
+    label344:
+    label383:
+    for (float f1 = actj.a(36.0F, this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidContentContext.getResources());; f1 = actj.a(8.0F, this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidContentContext.getResources()))
     {
-    }
-    while (this.jdField_a_of_type_Int == 5)
-    {
-      return this.jdField_a_of_type_Bkef.a(102, paramMotionEvent);
-      vem.a("0X80076BE");
-      vem.b("0X80075CB");
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      return this.jdField_a_of_type_Bkef.a(101, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 3) {
-      return this.jdField_a_of_type_Bkef.a(103, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 4) {
-      return this.jdField_a_of_type_Bkef.a(104, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_Int == 6) {
-      return this.jdField_a_of_type_Bkef.a(105, paramMotionEvent);
-    }
-    return false;
-  }
-  
-  public boolean a(JSONObject paramJSONObject)
-  {
-    return this.jdField_a_of_type_Bkef.a(paramJSONObject);
-  }
-  
-  public byte[] a()
-  {
-    return ((bkex)this.jdField_a_of_type_Bkef.a(103)).a;
-  }
-  
-  public int b()
-  {
-    int[] arrayOfInt = this.jdField_a_of_type_Bkef.a();
-    int i = arrayOfInt[0];
-    return arrayOfInt[1] + i;
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_Bkef != null) {
-      this.jdField_a_of_type_Bkef.b();
-    }
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    a(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void c()
-  {
-    ((bkex)this.jdField_a_of_type_Bkef.a(103)).c();
-  }
-  
-  public void c(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_Bkef.c(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 6);
-  }
-  
-  public void d()
-  {
-    bkex localbkex = (bkex)this.jdField_a_of_type_Bkef.a(103);
-    if (localbkex != null) {
-      localbkex.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout);
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bkef.c()) {
-      super.k();
-    }
-  }
-  
-  public void f()
-  {
-    veg.b("LineLayer", "switchMosaicMode.");
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a())
-    {
-      b(4);
+      this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
+      int i = (int)this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+      paramCanvas.translate(f1, (this.v - this.jdField_a_of_type_AndroidTextStaticLayout.getHeight()) / 2.0F);
+      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+      paramCanvas.restore();
+      ved.c(bkae.jdField_a_of_type_JavaLangString, "AtItem draw end.");
       return;
+      localNinePatch = new NinePatch(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap.getNinePatchChunk(), null);
+      break;
+      paramCanvas.translate(this.u / 2.0F, -this.v / 2.0F);
+      f1 = -actj.a(30.0F, this.jdField_a_of_type_Bkae.jdField_a_of_type_AndroidContentContext.getResources());
+      break label136;
     }
-    b(6);
-  }
-  
-  public void g()
-  {
-    veg.b("LineLayer", "switchNormalMode.");
-    b(1);
   }
 }
 

@@ -1,12 +1,10 @@
 public class axff
 {
+  public float a;
   public int a;
   public long a;
   public int b;
   public long b;
-  public int c;
-  public int d;
-  public int e;
 }
 
 

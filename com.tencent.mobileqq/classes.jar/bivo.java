@@ -1,8 +1,15 @@
-public abstract interface bivo
+import java.io.File;
+import java.io.FilenameFilter;
+
+class bivo
+  implements FilenameFilter
 {
-  public abstract void a();
+  bivo(bivn parambivn) {}
   
-  public abstract void a(String paramString);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return paramString.startsWith("frame");
+  }
 }
 
 

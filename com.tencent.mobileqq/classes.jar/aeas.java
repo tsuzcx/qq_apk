@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class aeas
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
   public aeas(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.a.b();
   }
 }
 

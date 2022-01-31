@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aggy;
+import aggw;
 
 public class MiniPie$8
   implements Runnable
 {
-  public MiniPie$8(aggy paramaggy) {}
+  public MiniPie$8(aggw paramaggw) {}
   
   public void run()
   {

@@ -1,19 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class abua
-  implements View.OnClickListener
+public class abua
+  implements amkp
 {
-  abua(abtx paramabtx, SharedPreferences paramSharedPreferences, String paramString) {}
+  public abua(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Abtx.a.a.sendEmptyMessageDelayed(1010, 1000L);
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeClose");
+  }
+  
+  public void b()
+  {
+    QLog.d("WebLog_QQBrowserActivity", 1, "onPageSwipeNotClose");
   }
 }
 

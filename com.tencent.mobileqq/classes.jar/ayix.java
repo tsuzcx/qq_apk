@@ -1,8 +1,17 @@
-public abstract interface ayix
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ayix
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  ayix(ayiv paramayiv) {}
   
-  public abstract void a(int paramInt);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (ayiv.a(this.a) != null) {
+      ayiv.a(this.a).a();
+    }
+  }
 }
 
 

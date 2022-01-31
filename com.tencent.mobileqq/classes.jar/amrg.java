@@ -1,18 +1,14 @@
-import java.util.ArrayList;
-
 public class amrg
 {
-  public int a;
   public String a;
-  public ArrayList<amrq> a;
-  public int b;
+  public String b;
+  public String c;
   
-  public amrg(int paramInt1, int paramInt2, String paramString, ArrayList<amrq> paramArrayList)
+  public amrg(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 

@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yye;
+import yyb;
 
 public class MiniGdtReporter
 {
@@ -92,14 +92,14 @@ public class MiniGdtReporter
         catch (Exception localException1) {}
         try
         {
-          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.2.8", "utf-8"));
+          str = paramMiniAppConfig.replace("__OS_TYPE__", Integer.toString(2)).replace("__VERSION__", URLEncoder.encode("8.3.0", "utf-8"));
           paramMiniAppConfig = str;
           paramInt = 1;
           if (paramInt == 0) {
             break;
           }
           QLog.i("MiniGdtReporter", 2, "report: get report url " + paramMiniAppConfig + " " + localLaunchParam.timestamp);
-          yye.a(paramMiniAppConfig);
+          yyb.a(paramMiniAppConfig);
           return;
         }
         catch (Exception localException2)

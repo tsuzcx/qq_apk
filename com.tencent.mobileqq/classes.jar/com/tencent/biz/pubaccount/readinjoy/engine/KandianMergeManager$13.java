@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajsf;
+import ajsd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import onk;
+import onh;
 
 class KandianMergeManager$13
   implements Runnable
@@ -13,13 +13,13 @@ class KandianMergeManager$13
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsf.aA, 7220);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(ajsd.aA, 7220);
     if (localMessageRecord != null) {}
     for (localMessageRecord = KandianMergeManager.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
     {
       if (localMessageRecord != null)
       {
-        onk.a(localMessageRecord);
+        onh.a(localMessageRecord);
         this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.this$0).c());
       }
       return;

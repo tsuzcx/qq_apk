@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import alzl;
+import alzk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class NearbyVideoUtils$2
@@ -10,7 +10,7 @@ public final class NearbyVideoUtils$2
   
   public void run()
   {
-    alzl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
+    alzk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
   }
 }
 

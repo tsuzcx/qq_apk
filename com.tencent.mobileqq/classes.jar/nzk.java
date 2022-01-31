@@ -1,45 +1,59 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
+import tencent.im.oidb.cmd0x885.oidb_0x885.AdReqInfo;
 
 public class nzk
+  extends ajtb
 {
-  public static HashSet<String> a = new HashSet();
+  public static long a = 1800L;
   
-  public static void a()
+  public nzk(QQAppInterface paramQQAppInterface)
   {
-    a.clear();
+    super(paramQQAppInterface);
   }
   
-  public static void a(int paramInt, qtu paramqtu)
+  public void a()
   {
-    if (paramqtu == null) {}
-    qty localqty;
-    AdvertisementInfo localAdvertisementInfo;
-    do
-    {
-      do
-      {
-        return;
-        localqty = paramqtu.a();
-        paramqtu = paramqtu.a();
-      } while ((paramqtu == null) || (localqty == null) || (!(localqty.a instanceof AdvertisementInfo)));
-      localAdvertisementInfo = (AdvertisementInfo)localqty.a;
-    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
-    a(paramqtu, localAdvertisementInfo, localqty);
-  }
-  
-  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, qty paramqty)
-  {
-    if ((paramqty == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
-    while ((!(paramqty.a instanceof AdvertisementInfo)) || (!paramqty.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
-      return false;
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
+    oidb_0x885.AdReqInfo localAdReqInfo = new oidb_0x885.AdReqInfo();
+    if ((this.app != null) && (this.app.getLongAccountUin() != 0L)) {
+      localReqBody.uint64_uin.set(this.app.getLongAccountUin());
     }
-    nmf.a(new nyg().a(paramActivity).a(nmf.E).b(nmf.L).a(paramAdvertisementInfo).a());
-    a.add(paramAdvertisementInfo.mAdTraceId);
-    return true;
+    try
+    {
+      localAdReqInfo.int32_req_type.set(3);
+      localReqAdvertisePara.msg_ad_req_info.set(localAdReqInfo);
+      localReqAdvertisePara.msg_phone_info.set(oaf.a());
+      localReqBody.req_advertise_para.set(localReqAdvertisePara);
+      mxf.a(this.app, new nzl(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(localException));
+        }
+      }
+    }
   }
+  
+  protected Class<? extends ajte> observerClass()
+  {
+    return nzm.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

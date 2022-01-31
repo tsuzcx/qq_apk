@@ -2,7 +2,7 @@ package com.tencent.gdtad.views.videoimax;
 
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import yxs;
+import yxp;
 
 class GdtVideoImaxFragment$2
   implements Runnable
@@ -11,7 +11,7 @@ class GdtVideoImaxFragment$2
   
   public void run()
   {
-    yxs.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
+    yxp.a("GdtVideoImaxFragment", "run() mTimeoutRunnable");
     if (GdtVideoImaxFragment.a(this.this$0))
     {
       GdtVideoImaxFragment.a(this.this$0).setBackgroundColor(-16777216);

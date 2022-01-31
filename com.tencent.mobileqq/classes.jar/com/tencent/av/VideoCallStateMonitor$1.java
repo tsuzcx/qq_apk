@@ -1,19 +1,19 @@
 package com.tencent.av;
 
-import axrl;
+import axrn;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import ldf;
+import lda;
 
 public class VideoCallStateMonitor$1
   implements Runnable
 {
-  public VideoCallStateMonitor$1(ldf paramldf, HashMap paramHashMap) {}
+  public VideoCallStateMonitor$1(lda paramlda, HashMap paramHashMap) {}
   
   public void run()
   {
-    axrl.a(BaseApplication.getContext()).a(ldf.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
+    axrn.a(BaseApplication.getContext()).a(lda.a(this.this$0).getCurrentAccountUin(), "av_memory_details", true, 0L, 0L, this.a, "");
   }
 }
 

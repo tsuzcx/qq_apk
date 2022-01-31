@@ -1,21 +1,27 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abif
-  extends ajxl
+  extends Handler
 {
-  public abif(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public abif(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
+    }
+    GroupManagerActivity.b(this.a, true);
+    if (GroupManagerActivity.b(this.a))
+    {
+      this.a.a(true);
       return;
     }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
+    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

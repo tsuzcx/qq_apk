@@ -1,34 +1,8 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
 
-public class awws
-  extends awyf
+public abstract interface awws
 {
-  protected TextView a;
-  protected URLImageView a;
-  
-  public awws(View paramView)
-  {
-    super(paramView);
-  }
-  
-  public URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  protected void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376244));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.b.findViewById(2131377420));
-  }
-  
-  public TextView e()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
+  public abstract View a();
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config;
 
-import ahfn;
-import bbjw;
+import ahfl;
+import bbkk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -28,7 +28,7 @@ public class SpringFestivalRedpakcetPreviewConfBean
     if (QLog.isColorLevel()) {
       QLog.i("springHb_SpringFestivalRedpakcetPreviewConfBean", 2, "SpringFestivalRedpakcetPreviewConfBean parse: " + paramString);
     }
-    if (bbjw.a(paramString)) {
+    if (bbkk.a(paramString)) {
       return null;
     }
     SpringFestivalRedpakcetPreviewConfBean localSpringFestivalRedpakcetPreviewConfBean = new SpringFestivalRedpakcetPreviewConfBean();
@@ -70,8 +70,8 @@ public class SpringFestivalRedpakcetPreviewConfBean
       {
         SpringFestivalRedpakcetPreviewConfBean.PreviewInfo localPreviewInfo = new SpringFestivalRedpakcetPreviewConfBean.PreviewInfo();
         SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-        localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-        localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+        localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+        localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
         localPreviewInfo.prewTimeInfo = localTimeInfo;
         localPreviewInfo.activityId = localJSONObject.optString("activity_id");
         localPreviewInfo.resourceUrl = localJSONObject.optString("resource_url");
@@ -101,8 +101,8 @@ public class SpringFestivalRedpakcetPreviewConfBean
       if (localJSONObject != null)
       {
         SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-        localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-        localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+        localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+        localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
         localArrayList.add(localTimeInfo);
       }
       i += 1;
@@ -128,8 +128,8 @@ public class SpringFestivalRedpakcetPreviewConfBean
       {
         SpringFestivalRedpakcetPreviewConfBean.BreathLight localBreathLight = new SpringFestivalRedpakcetPreviewConfBean.BreathLight();
         SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-        localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-        localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+        localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+        localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
         localBreathLight.breathTimeInfo = localTimeInfo;
         localBreathLight.type = localJSONObject.optInt("type");
         localArrayList.add(localBreathLight);

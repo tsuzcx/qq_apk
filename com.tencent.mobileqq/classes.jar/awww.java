@@ -1,67 +1,40 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.SquareImageView;
 
 public class awww
-  extends awyf
+  extends awwy
 {
-  public RelativeLayout b;
-  public SquareImageView b;
-  public ImageView c;
-  public SquareImageView c;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public int b;
+  public LinearLayout b;
+  public LinearLayout c;
+  public LinearLayout d;
   
   public awww(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    paramViewGroup.getResources();
-    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout.setBackgroundResource(2130849133);
-    localLinearLayout.setClickable(true);
-    localLinearLayout.setFocusable(true);
-    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
-    a();
+    super(paramViewGroup, paramInt);
   }
   
   protected void a()
   {
-    super.a();
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375393));
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367856));
-    }
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368607));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368544));
-    this.e = ((TextView)paramView.findViewById(2131378368));
-    this.f = ((TextView)paramView.findViewById(2131378326));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131375264));
-    this.g = ((TextView)paramView.findViewById(2131375265));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      this.f.setTextColor(this.f.getContext().getResources().getColor(2131166792));
-      this.g.setTextColor(this.g.getContext().getResources().getColor(2131166792));
-      return;
-    }
-    this.f.setTextColor(this.f.getContext().getResources().getColor(2131167134));
-    this.g.setTextColor(this.g.getContext().getResources().getColor(2131167134));
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377350));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131376236));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131367867));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369116));
+    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131367870));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371645));
+    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131371646));
   }
 }
 

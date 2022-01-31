@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import beiu;
-import beka;
-import bfgi;
+import bejl;
+import bekr;
+import bfgz;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.io.IOException;
 
 class FileJsPlugin$5
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, beka parambeka, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, bekr parambekr, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
   public String run()
   {
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (beiu.a().a(this.val$filePath) != 2) {
+    if (bejl.a().a(this.val$filePath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
-    String str = beiu.a().c(this.val$filePath);
+    String str = bejl.a().c(this.val$filePath);
     if (!TextUtils.isEmpty(str))
     {
       if (str.contains("miniprogramLog"))
       {
-        bfgi.a(this.this$0.mMiniAppInfo.appId, this.val$data);
+        bfgz.a(this.this$0.mMiniAppInfo.appId, this.val$data);
         return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }
       try

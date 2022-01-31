@@ -1,27 +1,29 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.widget.ScrollView;
+import com.tencent.image.URLDrawable;
 import java.lang.ref.WeakReference;
 
-class bbya
-  implements View.OnLayoutChangeListener
+public class bbya
+  extends aywn
 {
-  final int jdField_a_of_type_Int;
-  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<View> a;
   
-  private bbya(ScrollView paramScrollView, int paramInt)
+  public bbya(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramView);
   }
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static void a(URLDrawable paramURLDrawable, View paramView)
   {
-    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
-    {
-      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
-      paramView.removeOnLayoutChangeListener(this);
+    if (paramURLDrawable.getStatus() != 1) {
+      paramURLDrawable.setURLDrawableListener(new bbya(paramView));
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (View)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.invalidate();
     }
   }
 }

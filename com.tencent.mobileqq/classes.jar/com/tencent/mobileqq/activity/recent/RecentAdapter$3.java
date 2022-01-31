@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import afaz;
-import ahmx;
+import afax;
+import ahmv;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$3
   implements Runnable
 {
-  public RecentAdapter$3(ahmx paramahmx) {}
+  public RecentAdapter$3(ahmv paramahmv) {}
   
   public void run()
   {
-    ((afaz)this.this$0.a.getManager(138)).b(true);
+    ((afax)this.this$0.a.getManager(138)).b(true);
   }
 }
 

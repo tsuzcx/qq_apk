@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.annotation.SuppressLint;
-import apxg;
-import apxl;
+import apxi;
+import apxn;
 
 public class QFileSendBarManager$5
   implements Runnable
 {
-  public QFileSendBarManager$5(apxg paramapxg) {}
+  public QFileSendBarManager$5(apxi paramapxi) {}
   
   @SuppressLint({"StaticFieldLeak"})
   public void run()
   {
-    new apxl(this).execute(new Void[0]);
+    new apxn(this).execute(new Void[0]);
   }
 }
 

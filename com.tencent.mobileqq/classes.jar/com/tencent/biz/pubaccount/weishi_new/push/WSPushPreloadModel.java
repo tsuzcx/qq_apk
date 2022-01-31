@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import smh;
+import sme;
 
 public class WSPushPreloadModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushPreloadModel> CREATOR = new smh();
+  public static final Parcelable.Creator<WSPushPreloadModel> CREATOR = new sme();
   public long a;
   public boolean a;
   public boolean b;

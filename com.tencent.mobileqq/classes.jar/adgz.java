@@ -1,8 +1,17 @@
-public abstract interface adgz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class adgz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  adgz(adgx paramadgx, ChatMessage paramChatMessage) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Adgx.d(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

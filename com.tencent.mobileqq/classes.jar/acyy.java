@@ -1,27 +1,19 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class acyy
+class acyy
+  extends AnimatorListenerAdapter
 {
-  public float a;
-  public int a;
-  public long a;
-  public acyx a;
-  public View a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b;
-  public float c = 0.0F;
-  public float d = 1.0F;
-  public float e = 1.0F;
-  public float f = 1.0F;
+  acyy(acyx paramacyx) {}
   
-  public acyy()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 

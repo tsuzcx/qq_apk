@@ -1,56 +1,93 @@
-import android.content.Context;
-import android.view.View;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class yvo
-  extends yvu
+  implements bdld
 {
-  protected yvo(Context paramContext)
+  private WeakReference<GdtMvDownloadBtnManager> a;
+  
+  public yvo(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
   {
-    super(paramContext);
+    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
   }
   
-  public void a(int paramInt)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    super.a(paramInt);
-    yxs.b("GdtMotiveVideoAd", "185V doAnimation " + this.jdField_a_of_type_Yvm + " targetMode " + paramInt);
-    yvk localyvk;
-    if (this.jdField_a_of_type_Yvm != null)
-    {
-      localyvk = (yvk)this.jdField_a_of_type_Yvm;
-      a();
-      if (paramInt == 1)
-      {
-        a(localyvk.jdField_a_of_type_AndroidViewView, localyvk.jdField_a_of_type_Int, 0);
-        a(localyvk.f, localyvk.j, localyvk.k);
-      }
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    a(localyvk.jdField_a_of_type_AndroidViewView, -localyvk.jdField_a_of_type_Int, 0);
-    a(localyvk.f, -localyvk.j, -localyvk.k);
   }
   
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    yvk localyvk = new yvk();
-    localyvk.jdField_a_of_type_AndroidViewView = paramView1;
-    localyvk.f = paramView2;
-    localyvk.g = paramView3;
-    localyvk.jdField_a_of_type_Int = yze.a(-306, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvk.j = yze.a(-406, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    localyvk.k = yze.a(125, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = yze.a(400, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
-    {
-      localyvk.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / yze.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localyvk.b = localyvk.jdField_a_of_type_Float;
+    yxp.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
     }
-    localyvk.l = yze.a(50, 750, yze.f(this.jdField_a_of_type_AndroidContentContext));
-    localyvk.m = yze.a(-100, 1334, yze.e(this.jdField_a_of_type_AndroidContentContext));
-    a(localyvk, paramView4);
-    this.jdField_a_of_type_Yvm = localyvk;
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    yxp.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    yxp.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    yxp.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    yxp.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
+    }
   }
 }
 

@@ -1,10 +1,18 @@
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 
 public final class aapr
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aapr(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
+    }
+  }
 }
 
 

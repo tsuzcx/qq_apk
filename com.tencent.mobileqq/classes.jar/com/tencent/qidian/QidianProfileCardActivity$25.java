@@ -1,9 +1,9 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import auuw;
-import bgxy;
-import bgyf;
+import auuy;
+import bgyp;
+import bgyw;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -19,10 +19,10 @@ class QidianProfileCardActivity$25
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = this.this$0.app.getCurrentNickname();
     }
-    localObject2 = bgyf.a();
-    ((bgyf)localObject2).a = this.this$0.app.getCurrentAccountUin();
-    ((bgyf)localObject2).b = ((String)localObject1);
-    bgxy.a(this.this$0, (bgyf)localObject2, this.this$0.jdField_a_of_type_Auuw.a.a, this.this$0.jdField_a_of_type_Auuw.a.g, -1, 5, this.this$0.jdField_a_of_type_Aqyb, this.a, false);
+    localObject2 = bgyw.a();
+    ((bgyw)localObject2).a = this.this$0.app.getCurrentAccountUin();
+    ((bgyw)localObject2).b = ((String)localObject1);
+    bgyp.a(this.this$0, (bgyw)localObject2, this.this$0.jdField_a_of_type_Auuy.a.a, this.this$0.jdField_a_of_type_Auuy.a.g, -1, 5, this.this$0.jdField_a_of_type_Aqyd, this.a, false);
     QidianProfileCardActivity.b(this.this$0, false);
   }
 }

@@ -1,19 +1,19 @@
 package com.tencent.gdtad.api.interstitial;
 
 import com.tencent.ark.open.ArkAppMgr;
-import yuf;
-import yug;
-import yxs;
+import yuc;
+import yud;
+import yxp;
 
 public class GdtArkPreDownloadTask$5
   implements Runnable
 {
-  public GdtArkPreDownloadTask$5(yug paramyug) {}
+  public GdtArkPreDownloadTask$5(yud paramyud) {}
   
   public void run()
   {
-    yxs.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { yug.a(this.this$0).a, yug.a(this.this$0).b, yug.a(this.this$0).c }));
-    ArkAppMgr.getInstance().getAppPathByName(yug.a(this.this$0).a, "", yug.a(this.this$0).c, null, yug.a(this.this$0));
+    yxp.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { yud.a(this.this$0).a, yud.a(this.this$0).b, yud.a(this.this$0).c }));
+    ArkAppMgr.getInstance().getAppPathByName(yud.a(this.this$0).a, "", yud.a(this.this$0).c, null, yud.a(this.this$0));
   }
 }
 

@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.startup.step.Step;
+import android.widget.ImageView;
 
-public abstract interface axpk
+public final class axpk
+  implements axnv
 {
-  public abstract Step a(int paramInt, axnv paramaxnv, int[] paramArrayOfInt);
+  public axpk(ImageView paramImageView1, ImageView paramImageView2) {}
+  
+  public void a()
+  {
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
+  }
 }
 
 

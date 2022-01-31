@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class azyo
-  implements View.OnClickListener
+public abstract interface azyo
 {
-  public azyo(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.m();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

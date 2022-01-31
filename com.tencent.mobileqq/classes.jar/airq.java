@@ -1,23 +1,14 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.utils.QLog;
 
-public class airq
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+class airq
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  airq(airp paramairp) {}
+  airq(airn paramairn) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    Object localObject = ajae.a(airo.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((ajch)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
   }
 }
 

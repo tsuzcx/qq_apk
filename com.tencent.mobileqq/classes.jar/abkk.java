@@ -1,21 +1,13 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
 import com.tencent.mobileqq.activity.Leba;
 
 public class abkk
-  implements ViewSwitcher.ViewFactory
+  extends atzo
 {
   public abkk(Leba paramLeba) {}
   
-  public View makeView()
+  protected void a(Object paramObject)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    Leba.c(this.a);
   }
 }
 

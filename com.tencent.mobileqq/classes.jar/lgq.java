@@ -1,292 +1,78 @@
-import android.content.Context;
-import android.util.SparseArray;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.annotation.SuppressLint;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 
 public class lgq
-  extends ajtd
 {
-  lgs jdField_a_of_type_Lgs = null;
-  lgu jdField_a_of_type_Lgu = null;
-  private lgr[] jdField_a_of_type_ArrayOfLgr;
-  private lgt[] jdField_a_of_type_ArrayOfLgt;
+  private static lgq a = new lgq();
   
-  public lgq(VideoAppInterface paramVideoAppInterface)
+  private static int a(byte[] paramArrayOfByte)
   {
-    super(paramVideoAppInterface);
+    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
   }
   
-  private int a(int paramInt, boolean paramBoolean)
+  @SuppressLint({"DefaultLocale"})
+  public static String a(int paramInt)
   {
-    int i;
-    if (this.jdField_a_of_type_Lgu != null)
-    {
-      i = 0;
-      int j = -1;
-      while (i < this.jdField_a_of_type_Lgu.a.length)
-      {
-        if (this.jdField_a_of_type_Lgu.a[i] == paramInt) {
-          j = i;
-        }
-        i += 1;
-      }
-      i = j;
-      if (paramBoolean)
-      {
-        i = j;
-        if (j == -1)
-        {
-          String str = ajyc.a(2131700877) + paramInt + "]，需要在FrameDataHandlerArray中添加";
-          QLog.d("AVDataSender", 1, str);
-          throw new IllegalArgumentException(str);
-        }
-      }
-    }
-    else
-    {
-      i = -1;
-    }
-    return i;
+    return String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24 & 0xFF), Integer.valueOf(paramInt >> 16 & 0xFF), Integer.valueOf(paramInt >> 8 & 0xFF), Integer.valueOf(paramInt & 0xFF) });
   }
   
-  public static lgq a(VideoAppInterface paramVideoAppInterface)
+  public static String a(byte[] paramArrayOfByte)
   {
-    if (paramVideoAppInterface == null) {
+    if (paramArrayOfByte == null) {
       return null;
     }
-    return (lgq)paramVideoAppInterface.a(3);
-  }
-  
-  private lgr[] a()
-  {
-    if (this.jdField_a_of_type_ArrayOfLgr == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ArrayOfLgr == null)
-      {
-        this.jdField_a_of_type_Lgs = new lgs();
-        this.jdField_a_of_type_ArrayOfLgr = new lgr[this.jdField_a_of_type_Lgs.a.length];
-      }
-      return this.jdField_a_of_type_ArrayOfLgr;
-    }
-    finally {}
-  }
-  
-  private lgt[] a()
-  {
-    if (this.jdField_a_of_type_ArrayOfLgt == null) {}
-    try
-    {
-      if (this.jdField_a_of_type_ArrayOfLgt == null)
-      {
-        this.jdField_a_of_type_Lgu = new lgu();
-        this.jdField_a_of_type_ArrayOfLgt = new lgt[this.jdField_a_of_type_Lgu.a.length];
-      }
-      return this.jdField_a_of_type_ArrayOfLgt;
-    }
-    finally {}
-  }
-  
-  private int b(int paramInt, boolean paramBoolean)
-  {
-    int i;
-    if (this.jdField_a_of_type_Lgs != null)
-    {
-      i = 0;
-      int j = -1;
-      while (i < this.jdField_a_of_type_Lgs.a.length)
-      {
-        if (this.jdField_a_of_type_Lgs.a[i] == paramInt) {
-          j = i;
-        }
-        i += 1;
-      }
-      i = j;
-      if (paramBoolean)
-      {
-        i = j;
-        if (j == -1)
-        {
-          String str = ajyc.a(2131700879) + paramInt + "]，需要在C2CDataHandlerArray中添加";
-          QLog.d("AVDataSender", 1, str);
-          throw new IllegalArgumentException(str);
-        }
-      }
-    }
-    else
-    {
-      i = -1;
-    }
-    return i;
-  }
-  
-  public int a(ArrayList<lpf> paramArrayList)
-  {
+    char[] arrayOfChar1 = "0123456789ABCDEF".toCharArray();
+    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
     int i = 0;
-    lgt[] arrayOflgt = this.jdField_a_of_type_ArrayOfLgt;
-    if (arrayOflgt == null) {
-      return 0;
-    }
-    int k;
-    for (int j = 0; i < arrayOflgt.length; j = k)
+    while (i < paramArrayOfByte.length)
     {
-      Object localObject = arrayOflgt[i];
-      k = j;
-      if (localObject != null)
-      {
-        localObject = ((lgt)localObject).a();
-        k = j;
-        if (localObject != null)
-        {
-          paramArrayList.add(localObject);
-          k = j + ((lpf)localObject).a();
-        }
-      }
+      int j = paramArrayOfByte[i] & 0xFF;
+      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4)];
+      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
       i += 1;
     }
-    return j;
+    return new String(arrayOfChar2);
   }
   
-  public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public static lgq a()
   {
-    if (paramArrayOfByte == null) {}
-    for (int i = 0;; i = paramArrayOfByte.length)
-    {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(paramInt2);
-      if (i > 0) {
-        localByteBuffer.put(paramArrayOfByte);
-      }
-      VideoController.a().a(paramInt1, localByteBuffer.array());
-      return;
-    }
+    return a;
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte)
+  public static lgr a(byte[] paramArrayOfByte)
   {
-    lgt[] arrayOflgt;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-    {
-      arrayOflgt = this.jdField_a_of_type_ArrayOfLgt;
-      if (arrayOflgt != null) {}
-    }
-    else
-    {
-      return;
-    }
-    paramArrayOfByte = lpg.a(paramArrayOfByte);
-    int i = 0;
-    label28:
-    int j;
-    if (i < paramArrayOfByte.size())
-    {
-      j = paramArrayOfByte.keyAt(i);
-      int k = a(j, false);
-      if (k < 0) {
-        break label92;
-      }
-      lgt locallgt = arrayOflgt[k];
-      if (locallgt != null) {
-        locallgt.a(paramString, (lpf)paramArrayOfByte.valueAt(i));
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label28;
-      break;
-      label92:
-      if (AudioHelper.d()) {
-        QLog.d("AVDataSender", 1, "notifyFrameDataCome, msgType[" + j + "], i[" + i + "]");
-      }
-    }
+    int i = paramArrayOfByte.length;
+    int j = paramArrayOfByte[0];
+    j = paramArrayOfByte[(i - 1)];
+    Object localObject = new byte[4];
+    byte[] arrayOfByte = new byte[4];
+    QLog.d("AudioTrans runhw", 2, "rspBodyBytes = " + a(paramArrayOfByte));
+    System.arraycopy(paramArrayOfByte, 1, localObject, 0, 4);
+    System.arraycopy(paramArrayOfByte, 5, arrayOfByte, 0, 4);
+    j = a((byte[])localObject);
+    int k = a(arrayOfByte);
+    QLog.d("AudioTrans runhw", 2, "rspBytesLen = " + i + ", lengthOfHead = " + j + ", lengthOfBody = " + k);
+    localObject = new lgr(j, k);
+    System.arraycopy(paramArrayOfByte, 9, ((lgr)localObject).a, 0, j);
+    System.arraycopy(paramArrayOfByte, j + 9, ((lgr)localObject).b, 0, k);
+    return localObject;
   }
   
-  public boolean a(int paramInt, lgr paramlgr)
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    lgr[] arrayOflgr = a();
-    paramInt = b(paramInt, true);
-    if (arrayOflgr[paramInt] == null)
-    {
-      arrayOflgr[paramInt] = paramlgr;
-      return true;
-    }
-    lzj.a("registerC2CDataHandler重复注册");
-    return false;
-  }
-  
-  public boolean a(int paramInt, lgt paramlgt)
-  {
-    Object localObject = BaseApplicationImpl.getContext();
-    localObject = VideoController.a().a((Context)localObject);
-    if (localObject == null)
-    {
-      lzj.a("registerFrameDataHandler, EffectController为空");
-      return false;
-    }
-    ((lpy)localObject).a(4);
-    localObject = a();
-    paramInt = a(paramInt, true);
-    if (localObject[paramInt] == null)
-    {
-      localObject[paramInt] = paramlgt;
-      return true;
-    }
-    lzj.a("registerFrameDataHandler重复注册");
-    return false;
-  }
-  
-  public boolean a(int paramInt, byte[] paramArrayOfByte)
-  {
-    Object localObject = this.jdField_a_of_type_ArrayOfLgr;
-    if (localObject == null) {}
-    do
-    {
-      int i;
-      do
-      {
-        return false;
-        i = b(paramInt, false);
-      } while (i < 0);
-      localObject = localObject[i];
-    } while (localObject == null);
-    return ((lgr)localObject).a(paramInt, ByteBuffer.wrap(paramArrayOfByte).getInt(), lpg.a(paramArrayOfByte, 4, paramArrayOfByte.length - 4));
-  }
-  
-  public boolean b(int paramInt, lgt paramlgt)
-  {
-    paramInt = a(paramInt, true);
-    lgt[] arrayOflgt = this.jdField_a_of_type_ArrayOfLgt;
-    if ((arrayOflgt != null) && (arrayOflgt[paramInt] != null) && (paramlgt.equals(arrayOflgt[paramInt])))
-    {
-      arrayOflgt[paramInt] = null;
-      return true;
-    }
-    lzj.a("unregisterFrameDataHandler取消注册失败");
-    return false;
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    long l = 0L;
-    if (paramToServiceMsg != null) {
-      l = mtm.a(paramToServiceMsg);
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("AVDataSender", 1, "onReceive, serviceCmd[" + "null" + "], seq[" + l + "]");
-    }
+    int i = paramArrayOfByte1.length;
+    int j = paramArrayOfByte2.length;
+    byte[] arrayOfByte1 = ByteBuffer.allocate(4).putInt(i).array();
+    byte[] arrayOfByte2 = ByteBuffer.allocate(4).putInt(j).array();
+    byte[] arrayOfByte3 = new byte[i + 9 + j + 1];
+    arrayOfByte3[0] = 40;
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 1, 4);
+    System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 5, 4);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 9, i);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, i + 9, j);
+    arrayOfByte3[(arrayOfByte3.length - 1)] = 41;
+    return arrayOfByte3;
   }
 }
 

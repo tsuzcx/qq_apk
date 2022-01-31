@@ -4,20 +4,20 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import biku;
+import bill;
 
 public class VideoStoryAIScenePart$19
   implements Runnable
 {
-  public VideoStoryAIScenePart$19(biku parambiku) {}
+  public VideoStoryAIScenePart$19(bill parambill) {}
   
   public void run()
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(biku.a(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(biku.b(this.this$0), "translationY", new float[] { 0.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(biku.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bill.a(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bill.b(this.this$0), "translationY", new float[] { 0.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(bill.b(this.this$0), "translationY", new float[] { 0.0F });
     Object localObject = new int[2];
-    biku.a(this.this$0).getLocationInWindow((int[])localObject);
+    bill.a(this.this$0).getLocationInWindow((int[])localObject);
     localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
     ((AnimatorSet)localObject).setDuration(300L).start();

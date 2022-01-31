@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -16,16 +16,16 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import awew;
-import awex;
+import awey;
 import awez;
-import awfa;
 import awfb;
 import awfc;
 import awfd;
 import awfe;
 import awff;
-import ayki;
+import awfg;
+import awfh;
+import aykk;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import com.tencent.qphone.base.util.QLog;
@@ -38,10 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private awez<View> jdField_a_of_type_Awez;
-  private awfd jdField_a_of_type_Awfd;
-  private awfe jdField_a_of_type_Awfe;
+  private awfb<View> jdField_a_of_type_Awfb;
   private awff jdField_a_of_type_Awff;
+  private awfg jdField_a_of_type_Awfg;
+  private awfh jdField_a_of_type_Awfh;
   private String jdField_a_of_type_JavaLangString = "CommentsView";
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
@@ -70,20 +70,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new awfc(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new awfe(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Awez.a();
+    View localView2 = (View)this.jdField_a_of_type_Awfb.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561643, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561642, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -92,7 +92,7 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    awex localawex = new awex(this.b, this.b);
+    awez localawez = new awez(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     String str = localCommentItem.user.b;
     paramView = "";
@@ -104,22 +104,22 @@ public class CommentsView
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131718717));
+      localSpannableStringBuilder.append(getContext().getString(2131718728));
       localSpannableStringBuilder.append(" ");
       localSpannableStringBuilder.append(a(paramView, localCommentItem.toReplyUser.jdField_a_of_type_JavaLangString));
     }
     localSpannableStringBuilder.append(": ");
     localSpannableStringBuilder.append(localCommentItem.content);
-    localTextView.setText(new ayki(localSpannableStringBuilder, 3, 16));
+    localTextView.setText(new aykk(localSpannableStringBuilder, 3, 16));
     localTextView.setTextColor(this.c);
-    localTextView.setMovementMethod(localawex);
-    localTextView.setOnClickListener(new awfa(this, localawex, paramInt));
-    localTextView.setOnLongClickListener(new awfb(this, localawex, paramInt));
+    localTextView.setMovementMethod(localawez);
+    localTextView.setOnClickListener(new awfc(this, localawez, paramInt));
+    localTextView.setOnLongClickListener(new awfd(this, localawez, paramInt));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Awez = new awez();
+    this.jdField_a_of_type_Awfb = new awfb();
     setOnHierarchyChangeListener(this);
     this.c = getResources().getColor(2131167034);
   }
@@ -135,7 +135,7 @@ public class CommentsView
       return;
       setVisibility(0);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = actn.a(2.0F, getResources());
+      localLayoutParams.topMargin = actj.a(2.0F, getResources());
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         if (getChildCount() > i) {
@@ -187,7 +187,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Awez.a(paramView2);
+    this.jdField_a_of_type_Awfb.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -200,19 +200,19 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(awfd paramawfd)
-  {
-    this.jdField_a_of_type_Awfd = paramawfd;
-  }
-  
-  public void setOnItemLongClickListener(awfe paramawfe)
-  {
-    this.jdField_a_of_type_Awfe = paramawfe;
-  }
-  
-  public void setOnSpanItemClick(awff paramawff)
+  public void setOnItemClickListener(awff paramawff)
   {
     this.jdField_a_of_type_Awff = paramawff;
+  }
+  
+  public void setOnItemLongClickListener(awfg paramawfg)
+  {
+    this.jdField_a_of_type_Awfg = paramawfg;
+  }
+  
+  public void setOnSpanItemClick(awfh paramawfh)
+  {
+    this.jdField_a_of_type_Awfh = paramawfh;
   }
 }
 

@@ -1,29 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
-public class qpf
+class qpf
+  implements oef
 {
-  private static qpf jdField_a_of_type_Qpf;
-  private acwf jdField_a_of_type_Acwf;
-  private ajxl jdField_a_of_type_Ajxl;
-  private View jdField_a_of_type_AndroidViewView;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new qpg(this, "Module_VideoFeedsIPCServer");
-  private oeh jdField_a_of_type_Oeh;
+  qpf(qpd paramqpd) {}
   
-  public static qpf a()
+  public void a(int paramInt)
   {
-    if (jdField_a_of_type_Qpf == null) {}
-    try
-    {
-      jdField_a_of_type_Qpf = new qpf();
-      return jdField_a_of_type_Qpf;
-    }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
+    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
   }
 }
 

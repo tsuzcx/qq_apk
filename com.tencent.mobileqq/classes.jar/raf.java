@@ -1,10 +1,9 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.View;
 
 public abstract interface raf
 {
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahjx;
-import ahjy;
+import ahjv;
+import ahjw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -61,7 +61,7 @@ public class AnonymousEntranceView
     ((Animation)localObject).setDuration(300L);
     ((Animation)localObject).setStartOffset(1200L);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ahjx(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ahjv(this));
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
     localObject = new AlphaAnimation(0.0F, 1.0F);
     ((Animation)localObject).setDuration(400L);
@@ -70,7 +70,7 @@ public class AnonymousEntranceView
     ((Animation)localObject).setDuration(400L);
     ((Animation)localObject).setStartOffset(400L);
     this.jdField_b_of_type_AndroidViewAnimationAnimationSet.addAnimation((Animation)localObject);
-    this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ahjy(this));
+    this.jdField_b_of_type_AndroidViewAnimationAnimationSet.setAnimationListener(new ahjw(this));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(14, -1);

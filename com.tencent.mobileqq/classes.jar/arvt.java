@@ -1,12 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
 final class arvt
   implements DialogInterface.OnClickListener
 {
+  arvt(BaseActivity paramBaseActivity) {}
+  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axqw.b(null, "CliOper", "", "", "0X800A971", "0X800A971", 0, 0, "0", "0", "0", "");
+    bcub.c();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 

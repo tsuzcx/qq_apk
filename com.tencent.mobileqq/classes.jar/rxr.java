@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class rxr
-  implements DialogInterface.OnDismissListener
+  implements rwe
 {
-  public rxr(BridgeModule paramBridgeModule) {}
+  public rxr(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (!BridgeModule.access$300(this.a)) {}
-    BridgeModule.access$302(this.a, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

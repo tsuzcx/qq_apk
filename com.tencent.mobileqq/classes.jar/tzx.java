@@ -1,39 +1,15 @@
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import android.view.View.OnTouchListener;
 
-public class tzx
-  extends tzk
+class tzx
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  private tzz jdField_a_of_type_Tzz;
-  private vxu jdField_a_of_type_Vxu;
+  private tzx(tzu paramtzu) {}
   
-  public tzx(@NonNull ViewGroup paramViewGroup)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramViewGroup);
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt)
-  {
-    veg.b(this.jdField_a_of_type_JavaLangString, "setVisibility ignore");
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379041));
-    ((StoryPlayerGroupHolder)a()).a.setOnTouchListener(new uaa(this, null));
-    this.jdField_a_of_type_Tzz = new tzz(this, null);
-    this.jdField_a_of_type_Vxu = new vxu(a(), this.jdField_a_of_type_Tzz);
-    this.jdField_a_of_type_Vxu.a(50);
+    return tzu.a(this.a).a(paramMotionEvent);
   }
 }
 

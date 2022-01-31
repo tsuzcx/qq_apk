@@ -1,11 +1,16 @@
-class afum
-  implements afup
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+
+public class afum
+  extends RecyclerView.ViewHolder
 {
-  afum(afuj paramafuj) {}
+  TextView a;
   
-  public void a(int paramInt1, int paramInt2)
+  afum(View paramView)
   {
-    afuj.a(this.a, paramInt1, paramInt2);
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378468));
   }
 }
 

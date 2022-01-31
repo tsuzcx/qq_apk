@@ -1,99 +1,60 @@
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.util.WeakReference;
 
 public class myl
 {
-  wxu a;
+  HashMap<Integer, WeakReference<mym>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  wxr jdField_a_of_type_Wxr;
   
-  public myl(wxu paramwxu)
+  public myl(wxr paramwxr)
   {
-    this.a = paramwxu;
+    this.jdField_a_of_type_Wxr = paramwxr;
   }
   
   public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 2);
-    this.a.a(8, localBundle);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
   public void a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 5);
-    localBundle.putInt("mode", paramInt);
-    this.a.a(8, localBundle);
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+  }
+  
+  public void a(int paramInt, mym parammym)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new WeakReference(parammym));
   }
   
   public void a(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    wxw localwxw;
+    if (paramBundle == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebPushClient", 2, "data is null");
+      }
+    }
+    WeakReference localWeakReference;
     do
     {
       int i;
       do
       {
         return;
-        i = paramBundle.getInt("seq", -1);
-      } while (i == -1);
-      localwxw = this.a.a(i);
-    } while (localwxw == null);
-    localwxw.a(paramBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 1);
-    localBundle.putString("music", paramString);
-    this.a.a(8, localBundle);
-  }
-  
-  public void a(wxw paramwxw)
-  {
-    if (paramwxw == null) {
+        i = paramBundle.getInt("msgType", -1);
+        if (i != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("WebPushClient", 2, "type is 0");
       return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 4);
-    localBundle.putInt("seq", this.a.a(paramwxw));
-    this.a.a(8, localBundle);
-  }
-  
-  public void b()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 3);
-    this.a.a(8, localBundle);
-  }
-  
-  public void b(wxw paramwxw)
-  {
-    if (paramwxw == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 6);
-    localBundle.putInt("seq", this.a.a(paramwxw));
-    this.a.a(8, localBundle);
-  }
-  
-  public void c()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 8);
-    this.a.a(8, localBundle);
-  }
-  
-  public void c(wxw paramwxw)
-  {
-    if (paramwxw == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(mym.a, 7);
-    localBundle.putInt("seq", this.a.a(paramwxw));
-    this.a.a(8, localBundle);
+      localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    } while ((localWeakReference == null) || (localWeakReference.get() == null));
+    ((mym)localWeakReference.get()).a(paramBundle);
   }
 }
 

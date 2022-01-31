@@ -1,12 +1,19 @@
-import android.text.SpannableString;
+import com.tencent.widget.RangeButtonView;
 
-public abstract class bfvf
+public class bfvf
 {
-  public String a;
+  public float a;
+  public int a;
+  public float b;
   public int b;
+  public float c;
   public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
   
-  public abstract void a(SpannableString paramSpannableString);
+  public bfvf(RangeButtonView paramRangeButtonView) {}
 }
 
 

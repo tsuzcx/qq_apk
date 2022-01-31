@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import sws;
-import swu;
+import swp;
+import swr;
 
 public class VideoSaveToAlbumHelper$1
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$1(sws paramsws, swu paramswu, String paramString)
+  public VideoSaveToAlbumHelper$1(swp paramswp, swr paramswr, String paramString)
   {
     add(this.val$taskInfo.b);
     add(this.val$hflipPath);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.matchchat;
 
-import asfj;
+import asfl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -14,7 +14,7 @@ public final class MatchChatMsgUtil$1
   
   public void run()
   {
-    int i = asfj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("MatchChatMsgUtil", 2, "updateExtendFriendRedTouch() : " + i);
     }

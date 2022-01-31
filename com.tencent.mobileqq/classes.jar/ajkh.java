@@ -1,19 +1,8 @@
-import org.json.JSONObject;
+import java.io.ByteArrayOutputStream;
 
-public class ajkh
+public abstract interface ajkh
 {
-  public int a;
-  public long a;
-  public JSONObject a = new JSONObject();
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 

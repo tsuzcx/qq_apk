@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajsf;
+import ajsd;
 import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -14,7 +14,7 @@ class DataJsPlugin$32
   
   public void onPostRun()
   {
-    String str = ajsf.bc + this.val$fileName;
+    String str = ajsd.bc + this.val$fileName;
     if (new File(str).exists())
     {
       DataJsPlugin.access$900(this.this$0, this.val$title, str, this.val$shareType);

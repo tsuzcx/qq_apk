@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aooh;
-import apuc;
-import apud;
-import apvb;
+import aoom;
+import apue;
+import apuf;
+import apvd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FilePreviewActivity$6$1
   implements Runnable
 {
-  public FilePreviewActivity$6$1(aooh paramaooh) {}
+  public FilePreviewActivity$6$1(aoom paramaoom) {}
   
   public void run()
   {
@@ -30,11 +30,11 @@ public class FilePreviewActivity$6$1
     for (;;)
     {
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str1 + ")");
-      apud localapud = new apud();
-      localapud.b = "sf_preview_again";
-      localapud.jdField_c_of_type_JavaLangString = apvb.a(this.a.a.jdField_c_of_type_JavaLangString);
-      localapud.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
-      apuc.a(this.a.a.app.getCurrentAccountUin(), localapud);
+      apuf localapuf = new apuf();
+      localapuf.b = "sf_preview_again";
+      localapuf.jdField_c_of_type_JavaLangString = apvd.a(this.a.a.jdField_c_of_type_JavaLangString);
+      localapuf.jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
+      apue.a(this.a.a.app.getCurrentAccountUin(), localapuf);
       try
       {
         this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str1);

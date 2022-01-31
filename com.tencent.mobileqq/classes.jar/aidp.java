@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
 
 public class aidp
-  extends ajxl
+  implements View.OnClickListener
 {
-  public aidp(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public aidp(PhoneContactTabView paramPhoneContactTabView) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    }
+    PhoneContactTabView.a(this.a);
   }
 }
 

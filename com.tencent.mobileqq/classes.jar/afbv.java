@@ -1,7 +1,4 @@
-public abstract interface afbv
-{
-  public abstract void a();
-}
+public abstract interface afbv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

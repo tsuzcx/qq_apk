@@ -2,9 +2,7 @@ import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
 public abstract interface atgy
 {
-  public abstract void a(Comments.Comment paramComment);
-  
-  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
+  public abstract void a(Comments.Comment paramComment, int paramInt);
 }
 
 

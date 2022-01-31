@@ -2,17 +2,17 @@ package com.tencent.mobileqq.dating;
 
 import EncounterSvc.RespEncounterInfo;
 import android.view.View;
-import anmm;
-import atyo;
+import anmr;
+import atyq;
 
 public class MsgBoxListActivity$1$2
   implements Runnable
 {
-  public MsgBoxListActivity$1$2(anmm paramanmm, View paramView, RespEncounterInfo paramRespEncounterInfo) {}
+  public MsgBoxListActivity$1$2(anmr paramanmr, View paramView, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anmm.a.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_EncounterSvcRespEncounterInfo);
+    this.jdField_a_of_type_Anmr.a.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_EncounterSvcRespEncounterInfo);
   }
 }
 

@@ -16,7 +16,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 class mxs
   implements BusinessObserver
 {
-  mxs(mxq parammxq) {}
+  mxs(mxn parammxn) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
@@ -45,7 +45,7 @@ class mxs
             }
             if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
             {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "reportRedTouchHasClick failed result is:" + paramBundle);
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
               return;
             }
           }

@@ -1,58 +1,69 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agzz
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public agzz(QzoneHbFragment paramQzoneHbFragment, Activity paramActivity) {}
+  private SendHbActivity a;
   
-  public void onGlobalLayout()
+  public agzz(SendHbActivity paramSendHbActivity)
   {
-    Button localButton;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() <= 480)
-    {
-      localButton = QzoneHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
-      Object localObject = new Rect();
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      int k = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getRootView().getHeight();
-      j = k - ((Rect)localObject).bottom;
-      i = j;
-      if (j - this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a(this.jdField_a_of_type_AndroidAppActivity) == 0) {
-        i = 0;
-      }
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().getScrollY();
-      if ((localButton == null) || (i == 0)) {
-        break label204;
-      }
-      localObject = new int[2];
-      localButton.getLocationOnScreen((int[])localObject);
-      m = localObject[1];
-      i = localButton.getMeasuredHeight() + m + i - k - j;
-      if (i > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().scrollBy(0, i + 5);
-      }
-      QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, true);
-    }
-    label204:
-    while (i != 0)
-    {
-      int m;
+    this.a = paramSendHbActivity;
+  }
+  
+  public void a()
+  {
+    Map localMap = this.a.a();
+    localMap.put("channel", this.a.jdField_a_of_type_Int + "");
+    localMap.put("bus_type", "1");
+    localMap.put("type", "1");
+    a(localMap);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      localButton = QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment);
-      break;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.mActivity.getWindow().getDecorView().scrollBy(0, -j);
-    QzoneHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment, false);
+    try
+    {
+      localJSONObject.put("userId", paramString2);
+      localJSONObject.put("viewTag", "qrcodeHb");
+      localJSONObject.put("comeForm", 1);
+      paramString2 = new JSONObject();
+      if (!TextUtils.isEmpty(paramString1)) {
+        paramString2.putOpt("qrToken", paramString1);
+      }
+      paramString2.putOpt("comeFrom", Integer.valueOf(1));
+      localJSONObject.put("extra_data", paramString2.toString());
+      paramString1 = new Bundle();
+      paramString1.putString("json", localJSONObject.toString());
+      paramString1.putString("callbackSn", "0");
+      paramString1.putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+      PayBridgeActivity.a(this.a, 5, paramString1);
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    Object localObject = new JSONObject(paramMap);
+    paramMap = this.a.b();
+    paramMap.put("extra_data", ((JSONObject)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("json", new JSONObject(paramMap).toString());
+    ((Bundle)localObject).putString("callbackSn", "0");
+    ((Bundle)localObject).putLong("vacreport_key_seq", this.a.jdField_a_of_type_Long);
+    PayBridgeActivity.a(this.a, 5, (Bundle)localObject);
   }
 }
 

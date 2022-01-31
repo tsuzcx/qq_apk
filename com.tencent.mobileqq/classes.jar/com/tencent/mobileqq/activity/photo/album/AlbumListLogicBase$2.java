@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agrl;
-import agro;
-import bben;
+import agrj;
+import agrm;
+import bbfb;
 
 public class AlbumListLogicBase$2
   implements Runnable
 {
-  public AlbumListLogicBase$2(agrl paramagrl, agro paramagro) {}
+  public AlbumListLogicBase$2(agrj paramagrj, agrm paramagrm) {}
   
   public void run()
   {
-    bben.a();
+    bbfb.a();
     this.a.b();
-    bben.a("PEAK", "queryAllAlbumList");
+    bbfb.a("PEAK", "queryAllAlbumList");
   }
 }
 

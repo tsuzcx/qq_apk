@@ -1,20 +1,23 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
 public class bcrt
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcrt(TipsBar paramTipsBar) {}
+  public bcrt(SlideDownFrameLayout paramSlideDownFrameLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.removeAllViews();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    SlideDownFrameLayout.a(this.a).a().setY(f);
+    SlideDownFrameLayout.a(this.a).a(f, SlideDownFrameLayout.a(this.a).a().getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcrt
  * JD-Core Version:    0.7.0.1
  */

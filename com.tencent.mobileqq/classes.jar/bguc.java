@@ -1,31 +1,16 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class bguc
-  extends bgut
+  extends akdn
 {
-  bguc(bgua parambgua) {}
+  bguc(bgub parambgub, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void a(bgus parambgus)
+  public void a(boolean paramBoolean, String paramString)
   {
-    parambgus = parambgus.a();
-    if (parambgus == null) {
-      bgvo.a("ReaderTabConfigDataHelper", "Response json is null");
-    }
-    do
-    {
-      return;
-      if (parambgus.length() == 0)
-      {
-        bgvo.a("ReaderTabConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!bgua.a(this.a, parambgus, false));
-    bgua.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), parambgus.toString()).apply();
+    paramString = new Bundle();
+    paramString.putBoolean("isSuccess", paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
   }
 }
 

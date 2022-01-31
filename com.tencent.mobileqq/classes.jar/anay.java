@@ -1,64 +1,83 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class anay
+  extends ampa<anaw>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static anay a(ampi[] paramArrayOfampi)
+  public int a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      paramArrayOfampi = null;
+    return 456;
+  }
+  
+  @NonNull
+  public anaw a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    anay localanay;
-    for (;;)
+    return new anaw();
+  }
+  
+  @Nullable
+  public anaw a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      return paramArrayOfampi;
-      localanay = new anay();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfampi[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
-        {
-          localanay.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localanay.jdField_a_of_type_JavaLangString);
-          }
-        }
-        paramArrayOfampi = localanay;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localanay.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfampi = localanay;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localanay.jdField_a_of_type_Boolean);
-            return localanay;
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
       }
-      catch (JSONException paramArrayOfampi)
-      {
-        paramArrayOfampi.printStackTrace();
-      }
+      return anaw.a(paramArrayOfamph[0]);
     }
-    return localanay;
+    return null;
   }
   
-  public String a()
+  public Class a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    return anaw.class;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(anaw paramanaw)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramanaw == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramanaw = paramanaw.toString();; paramanaw = " empty")
+    {
+      QLog.d("VerticalSearchConfProcessor", 2, paramanaw);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

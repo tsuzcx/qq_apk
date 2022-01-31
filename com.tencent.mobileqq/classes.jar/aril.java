@@ -1,14 +1,14 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
+import com.tencent.qphone.base.util.QLog;
 
 class aril
-  implements CustomizedShareForQQ
+  implements arjc
 {
-  aril(arii paramarii) {}
+  aril(arik paramarik, arkh paramarkh) {}
   
-  public void shareToQQ(Bundle paramBundle)
+  public void a(int paramInt, String paramString)
   {
-    arjh.a().b(paramBundle);
+    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
+    this.jdField_a_of_type_Arkh.a(paramInt, paramString);
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import beka;
+import bekr;
 
 class StorageJsPlugin$7
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, beka parambeka) {}
+  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, bekr parambekr) {}
   
   public String run()
   {

@@ -1,27 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class lof
-  extends lfg
+  implements DialogInterface.OnClickListener
 {
   public lof(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  protected void a(long paramLong, ArrayList<ldw> paramArrayList, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
+    mqw.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
-      return;
-    }
-    GaInviteLockActivity.a(this.a, paramInt);
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.delegate;
 
 import android.view.View;
-import rxe;
+import rxb;
 
 public class ViolaUiDelegate$2
   implements Runnable
 {
-  public ViolaUiDelegate$2(rxe paramrxe) {}
+  public ViolaUiDelegate$2(rxb paramrxb) {}
   
   public void run()
   {
-    if (rxe.a(this.this$0) != null)
+    if (rxb.a(this.this$0) != null)
     {
-      rxe.a(this.this$0).setVisibility(0);
-      rxe.a(this.this$0, false);
+      rxb.a(this.this$0).setVisibility(0);
+      rxb.a(this.this$0, false);
     }
   }
 }

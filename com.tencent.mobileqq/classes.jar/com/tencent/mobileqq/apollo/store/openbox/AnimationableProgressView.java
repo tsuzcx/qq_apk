@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -68,7 +68,7 @@ public class AnimationableProgressView
     if (this.jdField_b_of_type_Long > 0L) {
       if (this.jdField_a_of_type_Long > 0L)
       {
-        this.jdField_a_of_type_JavaLangString = (ajyc.a(2131700256) + this.d + ajyc.a(2131700258));
+        this.jdField_a_of_type_JavaLangString = (ajya.a(2131700267) + this.d + ajya.a(2131700269));
         this.i = -34816;
       }
     }
@@ -76,7 +76,7 @@ public class AnimationableProgressView
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * getResources().getDisplayMetrics().density);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + ajyc.a(2131700257));
+        this.jdField_a_of_type_JavaLangString = (this.d + "/" + this.c + ajya.a(2131700268));
       }
       float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_Float = ((this.jdField_a_of_type_Int - f1) / 2.0F);
@@ -84,10 +84,10 @@ public class AnimationableProgressView
       this.jdField_b_of_type_Float = ((this.jdField_b_of_type_Int - localFontMetrics.bottom - localFontMetrics.top) / 2.0F);
       super.invalidate();
       return;
-      this.jdField_a_of_type_JavaLangString = (ajyc.a(2131700253) + this.d + "/" + this.c);
+      this.jdField_a_of_type_JavaLangString = (ajya.a(2131700264) + this.d + "/" + this.c);
       break;
       this.i = -16777216;
-      this.jdField_a_of_type_JavaLangString = (ajyc.a(2131700255) + this.d + "/" + this.c + ajyc.a(2131700254));
+      this.jdField_a_of_type_JavaLangString = (ajya.a(2131700266) + this.d + "/" + this.c + ajya.a(2131700265));
     } while (this.d <= 0);
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();

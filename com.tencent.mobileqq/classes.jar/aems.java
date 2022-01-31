@@ -1,44 +1,67 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
-public class aems
+class aems
   implements BusinessObserver
 {
-  aems(aemj paramaemj) {}
+  aems(aemh paramaemh) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
+    if (!paramBoolean) {
+      this.a.A(2131695569);
     }
-    try
+    for (;;)
     {
-      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-      {
-        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
-      }
+      ChatActivityUtils.b();
       return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            ((FriendListHandler)this.a.a.a(1)).a(true, false);
+            paramBundle = (ajvp)this.a.a.a(21);
+            if (paramBundle != null) {
+              paramBundle.a(SystemClock.uptimeMillis());
+            }
+          }
+          else if (paramInt == 58)
+          {
+            this.a.A(2131695566);
+          }
+          else if (paramInt == 65)
+          {
+            this.a.A(2131695539);
+          }
+          else if (paramInt == 20)
+          {
+            this.a.A(2131695540);
+          }
+          else
+          {
+            this.a.A(2131695569);
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
     }
-    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 

@@ -1,6 +1,8 @@
-public abstract interface xfb
+import android.view.View;
+
+public abstract interface xfb<V extends View>
 {
-  public abstract void a();
+  public abstract void a(V paramV, float paramFloat);
 }
 
 

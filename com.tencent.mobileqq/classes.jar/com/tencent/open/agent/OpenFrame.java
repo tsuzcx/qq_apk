@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import bddv;
+import bdek;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +16,7 @@ public abstract class OpenFrame
   extends InnerFrame
 {
   public LayoutInflater a;
-  public bddv a;
+  public bdek a;
   public InnerFrameManager a;
   protected QQAppInterface a;
   public FriendChooser a;
@@ -30,9 +30,9 @@ public abstract class OpenFrame
   {
     ArrayList localArrayList = new ArrayList(50);
     int i = 0;
-    while (i < this.jdField_a_of_type_Bddv.b())
+    while (i < this.jdField_a_of_type_Bdek.b())
     {
-      localArrayList.addAll(this.jdField_a_of_type_Bddv.a(i));
+      localArrayList.addAll(this.jdField_a_of_type_Bdek.a(i));
       i += 1;
     }
     return localArrayList;
@@ -45,7 +45,7 @@ public abstract class OpenFrame
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = super.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = super.a();
     this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater();
-    this.jdField_a_of_type_Bddv = bddv.a();
+    this.jdField_a_of_type_Bdek = bdek.a();
   }
   
   public abstract void g();

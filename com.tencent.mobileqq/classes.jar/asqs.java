@@ -1,19 +1,11 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-
 public class asqs
-  extends GestureDetector.SimpleOnGestureListener
+  implements asqo
 {
-  public asqs(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public void a(int paramInt) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      this.a.performClick();
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
-  }
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt) {}
 }
 
 

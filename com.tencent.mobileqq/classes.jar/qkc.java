@@ -1,27 +1,51 @@
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qkc
-  extends shd
+  implements baic
 {
-  public bbje a(Integer paramInteger)
-  {
-    if (122 == paramInteger.intValue())
-    {
-      she localshe = new she();
-      localshe.a = "播放反馈";
-      localshe.jdField_b_of_type_Int = 2130841342;
-      localshe.jdField_b_of_type_Boolean = true;
-      localshe.c = a(paramInteger.intValue());
-      localshe.jdField_b_of_type_JavaLangString = "";
-      return localshe;
-    }
-    return super.a(paramInteger);
-  }
+  public qkc(ReadInJoyWebDataManager.5 param5) {}
   
-  protected void a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.put(Integer.valueOf(122), Integer.valueOf(122));
-    super.a();
+    if (paramJSONObject != null)
+    {
+      this.a.this$0.a(this.a.b, Integer.toString(qkb.b));
+      try
+      {
+        if ((this.a.jdField_a_of_type_Qkg != null) && ((this.a.jdField_a_of_type_Qkg instanceof qkg))) {
+          this.a.jdField_a_of_type_Qkg.a(paramJSONObject);
+        }
+        paramBundle = paramJSONObject.toString();
+        qkb.a(this.a.this$0, this.a.b, paramBundle);
+        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
+        {
+          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
+          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
+      }
+    }
+    do
+    {
+      return;
+      this.a.this$0.a(this.a.b, Integer.toString(qkb.a));
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
   }
 }
 

@@ -1,25 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mdw
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
   public mdw(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.b();
   }
 }
 

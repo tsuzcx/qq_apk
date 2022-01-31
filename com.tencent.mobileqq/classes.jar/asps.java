@@ -1,16 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
-final class asps
-  implements aspz
+public class asps
+  implements View.OnLayoutChangeListener
 {
-  asps(Context paramContext) {}
+  public asps(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
   
-  public void a(Intent paramIntent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((this.a instanceof ChatActivity)) {
-      ((ChatActivity)this.a).a(paramIntent);
+    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
+    {
+      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
+      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
     }
   }
 }

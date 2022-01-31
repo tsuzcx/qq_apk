@@ -1,10 +1,10 @@
+import android.os.Bundle;
+
 public abstract interface rac
 {
-  public abstract void a();
+  public abstract void a(Bundle paramBundle);
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

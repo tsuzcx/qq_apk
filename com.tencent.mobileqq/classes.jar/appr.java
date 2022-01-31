@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.11;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class appr
-  implements DialogInterface.OnClickListener
+class appr
+  implements apjj
 {
-  public appr(VideoFilePresenter.11 param11) {}
+  appr(appo paramappo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
   {
-    this.a.this$0.aC_();
+    appo.a(this.a, paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Apkr != null)) {
+      this.a.jdField_a_of_type_Apkr.a();
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Apnb.c(), this);
+      appo.b(this.a, true);
+      appo.a(this.a);
+      this.a.d = false;
+    }
   }
 }
 

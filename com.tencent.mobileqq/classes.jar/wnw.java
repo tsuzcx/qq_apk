@@ -1,4 +1,4 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -9,15 +9,15 @@ import com.tencent.mobileqq.pb.PBStringField;
 class wnw
   implements View.OnClickListener
 {
-  wnw(wnv paramwnv, CertifiedAccountMeta.StComment paramStComment) {}
+  wnw(wns paramwns, CertifiedAccountMeta.StReply paramStReply) {}
   
   public void onClick(View paramView)
   {
-    paramView = (ClipboardManager)wnl.c(this.jdField_a_of_type_Wnv.a).getSystemService("clipboard");
+    paramView = (ClipboardManager)wni.i(this.jdField_a_of_type_Wns.a).getSystemService("clipboard");
     if (paramView != null)
     {
-      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
-      wnl.a(this.jdField_a_of_type_Wnv.a).dismiss();
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
+      wni.a(this.jdField_a_of_type_Wns.a).dismiss();
     }
   }
 }

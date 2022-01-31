@@ -1,17 +1,41 @@
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class tfq
-  implements syt<tgm, tgn>
+  extends Handler
 {
-  tfq(tfn paramtfn) {}
-  
-  public void a(@NonNull tgm paramtgm, @Nullable tgn paramtgn, @NonNull ErrorMessage paramErrorMessage)
+  public tfq(tfk paramtfk, Looper paramLooper)
   {
-    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramtgm, paramtgn, paramErrorMessage));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        removeMessages(1);
+        ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!tfk.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
+      return;
+      ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 

@@ -1,85 +1,87 @@
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.KingShareReadInjoyModule.1;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.ReqBody;
-import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.RspBody;
-import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoReqInfo;
-import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoRspInfo;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ExtraInfo;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.IconInfo;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqBody;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.ReqParam;
+import tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.RspBody;
 
 public class paz
-  extends pbh
+  extends pbe
 {
-  public paz(AppInterface paramAppInterface, aukn paramaukn, ExecutorService paramExecutorService, pou parampou, Handler paramHandler)
+  public paz(AppInterface paramAppInterface, aukp paramaukp, ExecutorService paramExecutorService, por parampor, Handler paramHandler)
   {
-    super(paramAppInterface, paramaukn, paramExecutorService, parampou, paramHandler);
-    if (QLog.isColorLevel()) {
-      QLog.d("KingShareReadInjoyModule", 2, "construct!");
-    }
+    super(paramAppInterface, paramaukp, paramExecutorService, parampor, paramHandler);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xa70")) {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xdcb")) {
       b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("KingShareReadInjoyModule", 2, "get king moment ,url =" + paramString1);
-    }
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(paramString2);
-      l1 = l2;
-    }
-    catch (Exception paramString2)
-    {
-      label42:
-      oidb_cmd0xa70.VideoReqInfo localVideoReqInfo;
-      break label42;
-    }
-    paramString2 = new oidb_cmd0xa70.ReqBody();
-    paramString2.uint64_uin.set(l1);
-    localVideoReqInfo = new oidb_cmd0xa70.VideoReqInfo();
-    localVideoReqInfo.bytes_wangzhe_share_url.set(ByteStringMicro.copyFromUtf8(paramString1));
-    paramString2.msg_video_req_info.set(localVideoReqInfo);
-    a(pow.a("OidbSvc.0xa70", 2672, 0, paramString2.toByteArray()));
+    QLog.d("ReadInJoyDianDianEntranceModule", 1, "requestIconRefreshInfo | reqFeedType " + paramInt);
+    Object localObject = new oidb_cmd0xdcb.ReqBody();
+    oidb_cmd0xdcb.ReqParam localReqParam = new oidb_cmd0xdcb.ReqParam();
+    localReqParam.uint32_req_type.set(paramInt);
+    ((oidb_cmd0xdcb.ReqBody)localObject).msg_req_param.set(localReqParam);
+    localObject = pot.a("OidbSvc.0xdcb", 3531, 0, ((oidb_cmd0xdcb.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).getAttributes().put("req_feed_type", Integer.valueOf(paramInt));
+    a((ToServiceMsg)localObject);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("KingShareReadInjoyModule", 2, "handle 0xa70 get king moment info");
+    oidb_cmd0xdcb.RspBody localRspBody = new oidb_cmd0xdcb.RspBody();
+    int i = ((Integer)paramToServiceMsg.getAttributes().get("req_feed_type")).intValue();
+    int j = pot.a(paramFromServiceMsg, paramObject, localRspBody);
+    QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | retCode " + j + " ; reqFeedsType " + i);
+    paramToServiceMsg = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
+    paramToServiceMsg.jdField_a_of_type_Int = i;
+    paramFromServiceMsg = new RecommendFeedsDiandianEntranceManager.ExtraInfo();
+    if ((j == 0) && (localRspBody.msg_icon_info.has()))
+    {
+      paramObject = (oidb_cmd0xdcb.IconInfo)localRspBody.msg_icon_info.get();
+      if (paramObject.feeds_msg_icon_url.has()) {
+        paramToServiceMsg.jdField_a_of_type_JavaLangString = paramObject.feeds_msg_icon_url.get();
+      }
+      if (paramObject.feeds_default_icon_url.has()) {
+        paramToServiceMsg.b = paramObject.feeds_default_icon_url.get();
+      }
+      if (paramObject.uint32_is_use_gif.has()) {
+        if (paramObject.uint32_is_use_gif.get() == 0) {
+          break label292;
+        }
+      }
     }
-    paramToServiceMsg = new oidb_cmd0xa70.RspBody();
-    int i = pow.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    paramFromServiceMsg = new qbm();
-    paramFromServiceMsg.jdField_a_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_business_id.get();
-    paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name.get().toStringUtf8();
-    paramFromServiceMsg.jdField_b_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_url.get().toStringUtf8();
-    paramFromServiceMsg.jdField_c_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_business_name_prefix.get().toStringUtf8();
-    paramFromServiceMsg.jdField_d_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_title.get().toStringUtf8();
-    paramFromServiceMsg.jdField_e_of_type_JavaLangString = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_desc.get().toStringUtf8();
-    paramFromServiceMsg.f = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_uuid.get().toStringUtf8();
-    paramFromServiceMsg.g = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_video_url.get().toStringUtf8();
-    paramFromServiceMsg.h = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).bytes_pic_url.get().toStringUtf8();
-    paramFromServiceMsg.jdField_c_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_width.get();
-    paramFromServiceMsg.jdField_b_of_type_Int = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint32_pic_height.get();
-    paramFromServiceMsg.jdField_e_of_type_Int = paramFromServiceMsg.jdField_c_of_type_Int;
-    paramFromServiceMsg.jdField_d_of_type_Int = paramFromServiceMsg.jdField_b_of_type_Int;
-    paramFromServiceMsg.jdField_a_of_type_Long = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint64_duration.get();
-    this.a.post(new KingShareReadInjoyModule.1(this, i, paramFromServiceMsg));
+    label292:
+    for (boolean bool = true;; bool = false)
+    {
+      paramToServiceMsg.jdField_a_of_type_Boolean = bool;
+      if (paramObject.str_jump_schema.has()) {
+        paramToServiceMsg.c = paramObject.str_jump_schema.get();
+      }
+      paramToServiceMsg.jdField_a_of_type_Int = i;
+      if ((localRspBody.msg_extra_info.has()) && (localRspBody.msg_extra_info.str_report_json.has())) {
+        paramFromServiceMsg.jdField_a_of_type_JavaLangString = localRspBody.msg_extra_info.str_report_json.get();
+      }
+      QLog.d("ReadInJoyDianDianEntranceModule", 1, "handleIconRefreshInfoRsp | EntranceIconInfo " + paramToServiceMsg);
+      RecommendFeedsDiandianEntranceManager.a().a(paramToServiceMsg);
+      return;
+    }
   }
 }
 

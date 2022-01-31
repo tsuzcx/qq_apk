@@ -1,11 +1,44 @@
-import android.os.Environment;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 
-public final class sih
+public class sih
 {
-  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
-  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + ajyc.a(2131713582) + File.separator;
+  private ajut jdField_a_of_type_Ajut;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public sih(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Ajut = new sii(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajut);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ajut);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    ajum localajum;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
+      localajum = (ajum)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
+    } while (localajum == null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    localajum.a(paramString, 0);
+  }
 }
 
 

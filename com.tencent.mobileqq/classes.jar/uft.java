@@ -1,8 +1,15 @@
-import android.graphics.SurfaceTexture;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public abstract interface uft
+class uft
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  uft(ufr paramufr, ufj paramufj) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_Ufj.a(this.jdField_a_of_type_Ufr);
+  }
 }
 
 

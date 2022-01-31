@@ -1,17 +1,6 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
-
-public class aqzg
-  implements StaggeredGridLayoutManager.ExceptionListener
+public abstract interface aqzg
 {
-  public aqzg(HotPicPageView paramHotPicPageView) {}
-  
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
-  {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
-  }
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

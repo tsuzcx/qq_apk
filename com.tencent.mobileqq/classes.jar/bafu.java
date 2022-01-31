@@ -1,21 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class bafu
-  implements DialogInterface.OnClickListener
+  implements ajte
 {
-  public bafu(VisitorTroopCardFragment.17 param17) {}
+  protected QQAppInterface a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bafu(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 1)
+    this.a = paramQQAppInterface;
+  }
+  
+  protected void a(long paramLong) {}
+  
+  protected void a(long paramLong, boolean paramBoolean) {}
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
+  
+  protected void a(long paramLong1, boolean paramBoolean, long paramLong2, int paramInt) {}
+  
+  protected void b(long paramLong, boolean paramBoolean) {}
+  
+  protected void c(long paramLong, boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
     {
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
+    default: 
+      return;
+    case 2: 
+      b(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 1: 
+      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
+      return;
+    case 5: 
+      c(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
+      return;
     }
+    a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
   }
 }
 

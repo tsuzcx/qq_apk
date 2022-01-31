@@ -1,15 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pvw
   implements View.OnClickListener
 {
-  public pvw(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  public pvw(ComponentContentRecommend paramComponentContentRecommend) {}
   
   public void onClick(View paramView)
   {
-    ComponentContentNoteCard.a(this.a);
+    this.a.a(ComponentContentRecommend.a(this.a));
+    osg.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
+    ComponentContentRecommend.a(this.a);
   }
 }
 

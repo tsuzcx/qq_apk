@@ -2,8 +2,8 @@ package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import bbdr;
-import bhnr;
+import bbef;
+import bhoi;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.pfc.opencv.QzoneVision;
@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch;
 public class GifAntishakeModule$1
   implements Runnable
 {
-  public GifAntishakeModule$1(bhnr parambhnr, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
+  public GifAntishakeModule$1(bhoi parambhoi, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
   
   public void run()
   {
@@ -32,8 +32,8 @@ public class GifAntishakeModule$1
         if (QLog.isColorLevel()) {
           QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endAntishake and startSave at " + System.currentTimeMillis());
         }
-        String str = PhotoUtils.a(bhnr.a(this.this$0), ".IMG" + this.jdField_a_of_type_Int, ".jpg");
-        bbdr.a(localBitmap2, new File(str));
+        String str = PhotoUtils.a(bhoi.a(this.this$0), ".IMG" + this.jdField_a_of_type_Int, ".jpg");
+        bbef.a(localBitmap2, new File(str));
         if (!localBitmap1.isRecycled()) {
           localBitmap1.recycle();
         }
@@ -41,8 +41,8 @@ public class GifAntishakeModule$1
           localBitmap2.recycle();
         }
         this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] = str;
-        bhnr.b();
-        bhnr.a(this.this$0, bhnr.c());
+        bhoi.b();
+        bhoi.a(this.this$0, bhoi.c());
         if (QLog.isColorLevel()) {
           QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endSave at " + System.currentTimeMillis());
         }

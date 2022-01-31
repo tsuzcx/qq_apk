@@ -1,27 +1,11 @@
 public class anhn
 {
-  private long a;
-  private long b;
+  public int a = -1;
+  public boolean a;
   
-  public anhn(long paramLong)
+  public anhn(int paramInt)
   {
-    this.b = paramLong;
-    this.a = this.b;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public anhn a()
-  {
-    return new anhn(this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = (((float)this.b * paramFloat));
+    this.a = paramInt;
   }
 }
 

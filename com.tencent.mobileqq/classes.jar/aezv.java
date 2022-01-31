@@ -1,6 +1,14 @@
-public abstract interface aezv
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+
+public class aezv
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(afae paramafae);
+  public aezv(ZhituPanelView paramZhituPanelView, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

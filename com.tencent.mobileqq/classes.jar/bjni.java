@@ -1,20 +1,34 @@
-import android.support.annotation.RestrictTo;
+import java.lang.reflect.Method;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bjni
-  implements bjmw
+class bjni
 {
-  private final bjmv a;
+  final int jdField_a_of_type_Int;
+  final Method jdField_a_of_type_JavaLangReflectMethod;
   
-  bjni(bjmv parambjmv)
+  bjni(int paramInt, Method paramMethod)
   {
-    this.a = parambjmv;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
+    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
   }
   
-  public void a(bjnb parambjnb, bjmy parambjmy)
+  public boolean equals(Object paramObject)
   {
-    this.a.a(parambjnb, parambjmy, false, null);
-    this.a.a(parambjnb, parambjmy, true, null);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bjni)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
   }
 }
 

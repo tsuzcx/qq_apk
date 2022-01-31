@@ -1,54 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class rcc
-  implements qel
+  implements rbs
 {
-  public rcc(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
+  public rcc(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void a(Bundle paramBundle, float paramFloat)
+  public void a()
   {
-    String str = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
-    }
-  }
-  
-  public void a(Bundle paramBundle, int paramInt, float paramFloat)
-  {
-    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
-    switch (paramInt)
+    if (ReadInJoyDailyXListView.a(this.a))
     {
-    default: 
-      return;
-    case 200: 
-      this.a.jdField_a_of_type_Qel.a(paramBundle, (int)paramFloat);
-      return;
-    case 202: 
-      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDailyXListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", this.a.c + " mNoMoreData : " + this.a.b });
+      }
+      if ((this.a.c == 0) && ((!shu.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyDailyXListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
     }
-    qeh.b(paramBundle);
-  }
-  
-  public void a(Bundle paramBundle, String paramString)
-  {
-    paramString = paramBundle.getString("mTaskID");
-    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
-    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
-      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a();
-    osj.a().b(true);
-    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 

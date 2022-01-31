@@ -5,8 +5,8 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcgp;
-import bche;
+import bchd;
+import bchs;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
@@ -21,15 +21,15 @@ final class WebSoService$11
     String str1 = "";
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      bche.a(this.jdField_a_of_type_JavaLangString.getBytes(), bche.b(this.jdField_a_of_type_AndroidNetUri));
-      str1 = bcgp.a(this.jdField_a_of_type_JavaLangString);
+      bchs.a(this.jdField_a_of_type_JavaLangString.getBytes(), bchs.b(this.jdField_a_of_type_AndroidNetUri));
+      str1 = bchd.a(this.jdField_a_of_type_JavaLangString);
     }
     SharedPreferences.Editor localEditor;
     if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
       localEditor = WebSoService.a().edit();
       String str2 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-      String str3 = bche.a(this.jdField_a_of_type_AndroidNetUri);
+      String str3 = bchs.a(this.jdField_a_of_type_AndroidNetUri);
       localEditor.putString("eTag_" + str2 + str3, this.b);
       localEditor.putString("pageVersion_" + str2 + str3, this.c);
       localEditor.putString("htmlSha1_" + str2 + str3, str1);

@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class pdh
   implements View.OnClickListener
 {
-  pdh(pdb parampdb, String paramString1, String paramString2) {}
+  pdh(pdg parampdg, pau parampau, rfk paramrfk) {}
   
   public void onClick(View paramView)
   {
-    pdb.a(2, this.jdField_a_of_type_JavaLangString);
-    onk.a(pdb.a(this.jdField_a_of_type_Pdb), this.b);
+    if (pdg.a(this.jdField_a_of_type_Pdg) == null) {
+      pdg.a(this.jdField_a_of_type_Pdg, new bfst(pdg.a(this.jdField_a_of_type_Pdg)));
+    }
+    pdg.a(this.jdField_a_of_type_Pdg).a((pbf)this.jdField_a_of_type_Pau, this.jdField_a_of_type_Pau.a().mDislikeInfos);
+    pdg.a(this.jdField_a_of_type_Pdg).a(paramView, new pdi(this));
   }
 }
 

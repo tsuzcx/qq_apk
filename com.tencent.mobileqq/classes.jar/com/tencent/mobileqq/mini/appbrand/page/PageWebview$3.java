@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
-import bbac;
+import bbaq;
 import com.tencent.qphone.base.util.QLog;
 
 class PageWebview$3
@@ -19,7 +19,7 @@ class PageWebview$3
       Object localObject = this.this$0.getContext().getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);
-      localObject = bbac.a(this.this$0, i, j);
+      localObject = bbaq.a(this.this$0, i, j);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
         if (this.val$callback != null) {

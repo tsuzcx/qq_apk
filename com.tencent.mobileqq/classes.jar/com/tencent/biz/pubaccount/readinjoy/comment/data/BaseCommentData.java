@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import nuc;
-import oih;
+import ntz;
+import oie;
 
 public abstract class BaseCommentData
   implements Serializable
@@ -40,8 +40,8 @@ public abstract class BaseCommentData
   public int level;
   public int like;
   public int likeCnt;
-  public nuc medalInfo;
-  public List<oih> mediaDataList;
+  public ntz medalInfo;
+  public List<oie> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
@@ -66,9 +66,9 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      oih localoih = (oih)this.mediaDataList.get(0);
-      if (localoih != null) {
-        return localoih.e;
+      oie localoie = (oie)this.mediaDataList.get(0);
+      if (localoie != null) {
+        return localoie.e;
       }
     }
     return 0;

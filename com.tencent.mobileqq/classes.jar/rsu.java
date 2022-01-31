@@ -1,20 +1,22 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class rsu
-  implements TypeEvaluator<Rect>
+  extends AnimatorListenerAdapter
 {
   public rsu(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
 }
 

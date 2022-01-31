@@ -1,344 +1,53 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.graphics.Bitmap.CompressFormat;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tribe.async.async.JobContext;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.io.File;
-import java.util.TimeZone;
+import java.lang.ref.WeakReference;
 
 public class bklh
-  extends bklc<bkkm, bkkm>
+  extends bklt<bkld, bkld>
 {
-  private final EditVideoParams a;
+  public WeakReference<bjsy> a;
   
-  public bklh(@NonNull EditVideoParams paramEditVideoParams)
+  public bklh(bjsy parambjsy)
   {
-    this.a = paramEditVideoParams;
+    this.a = new WeakReference(parambjsy);
   }
   
-  public static long a(int paramInt, long paramLong)
+  protected void a(JobContext paramJobContext, bkld parambkld)
   {
-    long l;
-    if (paramInt == 1) {
-      l = paramLong / 2L;
-    }
-    do
+    paramJobContext = (bjsy)this.a.get();
+    if (paramJobContext == null)
     {
-      return l;
-      if (paramInt == 2) {
-        return paramLong * 2L;
-      }
-      if (paramInt == 4) {
-        return paramLong * 4L;
-      }
-      l = paramLong;
-    } while (paramInt != 3);
-    return ((float)paramLong / 1.5F);
-  }
-  
-  protected void a(JobContext paramJobContext, bkkm parambkkm)
-  {
-    veg.c("Q.qqstory.publish.edit.PublishVideoSegment", "PublishVideoSegment.");
-    PublishVideoEntry localPublishVideoEntry = parambkkm.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-    localPublishVideoEntry.publishFrom = this.a.c();
-    localPublishVideoEntry.businessId = this.a.jdField_a_of_type_Int;
-    localPublishVideoEntry.fakeVid = StoryVideoItem.makeFakeVid();
-    localPublishVideoEntry.mLocalDate = uwa.a();
-    localPublishVideoEntry.timeZoneOffset = TimeZone.getDefault().getRawOffset();
-    if (localPublishVideoEntry.createTime == 0L) {
-      localPublishVideoEntry.createTime = NetConnInfoCenter.getServerTimeMillis();
+      ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "EditInteractExport is null, return directly.");
+      notifyResult(parambkld);
+      return;
     }
-    veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish date:%s and time:%d,", new Object[] { localPublishVideoEntry.mLocalDate, Long.valueOf(localPublishVideoEntry.createTime) });
-    localPublishVideoEntry.publishState = 1;
-    localPublishVideoEntry.videoUploadTempDir = parambkkm.jdField_b_of_type_JavaLangString;
-    localPublishVideoEntry.putExtra("extra_capture_mode", Integer.valueOf(this.a.jdField_b_of_type_Int));
-    localPublishVideoEntry.redBagType = this.a.a("video_redbag_get", 0);
-    if (localPublishVideoEntry.redBagType == LocalMediaInfo.REDBAG_TYPE_GET) {
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "VideoRedbag, publishVideoEntry take redbag flag");
-    }
-    localPublishVideoEntry.specialVideoType = this.a.a("special_video_type", 0);
-    int i;
-    label896:
-    Object localObject2;
-    Object localObject1;
-    if ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+    paramJobContext = paramJobContext.a();
+    if (paramJobContext == null)
     {
-      localPublishVideoEntry.hwEncodeRecordVideo = true;
-      localPublishVideoEntry.isPicture = false;
-      localPublishVideoEntry.isLocalPublish = false;
-      paramJobContext = (EditTakeVideoSource)parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-      localPublishVideoEntry.mLocalRawVideoDir = paramJobContext.a();
-      localPublishVideoEntry.recordTime = paramJobContext.a.mDuration;
-      localPublishVideoEntry.recordFrames = ((int)paramJobContext.a.mDuration * 30);
-      localPublishVideoEntry.mAudioFilePath = paramJobContext.jdField_b_of_type_JavaLangString;
-      localPublishVideoEntry.mbgmAudioFilePath = paramJobContext.c;
-      if (this.a.jdField_b_of_type_Int == 5) {
-        localPublishVideoEntry.putExtra("video_type", Integer.valueOf(3));
-      }
-      if (vzx.b(paramJobContext.a()) % 180 > 0) {
-        localPublishVideoEntry.videoWidth = paramJobContext.b();
-      }
-      for (localPublishVideoEntry.videoHeight = paramJobContext.a();; localPublishVideoEntry.videoHeight = paramJobContext.b())
+      ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "interact bitmap is null, return directly.");
+      notifyResult(parambkld);
+      return;
+    }
+    String str = bklw.a(parambkld.jdField_a_of_type_Int, parambkld.b, ".png");
+    try
+    {
+      if (vxv.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str))
       {
-        localPublishVideoEntry.videoDuration = a(localPublishVideoEntry.saveMode, paramJobContext.a.mDuration);
-        if ((localPublishVideoEntry.saveMode != 5) || (vyi.c(localPublishVideoEntry.mIFrameVideoPath))) {
-          break;
-        }
-        super.notifyError(new ErrorMessage(-1, "back mode but iframe file is empty"));
+        parambkld.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("il_pic", str);
+        notifyResult(parambkld);
         return;
-        localPublishVideoEntry.videoWidth = paramJobContext.a();
-      }
-      localPublishVideoEntry.videoCreateTime = paramJobContext.a.addedDate;
-      i = 1;
-      if (i != 0) {
-        bkqo.a().a(localPublishVideoEntry);
-      }
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : edit source = %s", new Object[] { parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : fake vid = %s", new Object[] { localPublishVideoEntry.fakeVid });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : mLocalRawVideoDir = %s", new Object[] { localPublishVideoEntry.mLocalRawVideoDir });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : width = %d, height = %d", new Object[] { Integer.valueOf(localPublishVideoEntry.videoWidth), Integer.valueOf(localPublishVideoEntry.videoHeight) });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : duration = %d, recordTime = %d", new Object[] { Integer.valueOf((int)localPublishVideoEntry.videoDuration), Integer.valueOf((int)localPublishVideoEntry.recordTime) });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : businessId = %d", new Object[] { Integer.valueOf(localPublishVideoEntry.businessId) });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : thumbPath = %s", new Object[] { localPublishVideoEntry.thumbPath });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : doodleImagePath = %s", new Object[] { localPublishVideoEntry.doodlePath });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : doodleRawImagePath = %s", new Object[] { localPublishVideoEntry.doodleRawPath });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : atDoodleImagePath = %s", new Object[] { localPublishVideoEntry.atDoodlePath });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : fragmentGroupId = %s", new Object[] { localPublishVideoEntry.multiFragmentGroupId });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : isLocalPublish = %s", new Object[] { Boolean.valueOf(localPublishVideoEntry.isLocalPublish) });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : hasFragments = %s", new Object[] { Boolean.valueOf(localPublishVideoEntry.hasFragments) });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : fragments = %s", new Object[] { localPublishVideoEntry.fragments });
-      veg.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : publishFrom = %d", new Object[] { Integer.valueOf(localPublishVideoEntry.publishFrom) });
-      localPublishVideoEntry.putExtra("composite_key_merge_thumb_cost", Long.valueOf(System.currentTimeMillis() - parambkkm.jdField_a_of_type_Long));
-      if (this.a.a() == 14) {
-        localPublishVideoEntry.putExtra("VIDEO_STORY_JUMP_TO_TYPE", Integer.valueOf(this.a.a("VIDEO_STORY_JUMP_TO_TYPE", 0)));
-      }
-      if (TextUtils.isEmpty(localPublishVideoEntry.mLocalRawVideoDir)) {
-        super.notifyError(new ErrorMessage(-1, "mLocalRawVideoDir is empty"));
       }
     }
-    else if ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+    catch (Exception paramJobContext)
     {
-      localPublishVideoEntry.isPicture = false;
-      if (this.a.a("extra_is_slide_show_video", false))
-      {
-        i = 2;
-        localPublishVideoEntry.putExtra("video_type", Integer.valueOf(i));
-        localPublishVideoEntry.isLocalPublish = true;
-        localObject2 = (EditLocalVideoSource)parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-        paramJobContext = ((EditLocalVideoSource)localObject2).a();
-        if ((this.a.a() == 1) || (this.a.a() == 11) || (this.a.a() == 12)) {
-          break label2231;
-        }
-        localObject1 = new File(paramJobContext);
-        localObject1 = ahwa.c + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
-        if (!bbdj.d(paramJobContext, (String)localObject1)) {
-          break label2231;
-        }
-        paramJobContext = (JobContext)localObject1;
-      }
+      ved.c("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile Exception :", paramJobContext);
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+      return;
     }
-    label2089:
-    label2219:
-    label2228:
-    label2231:
-    for (;;)
-    {
-      localPublishVideoEntry.mLocalRawVideoDir = paramJobContext;
-      localPublishVideoEntry.recordTime = ((EditLocalVideoSource)localObject2).a.mDuration;
-      localPublishVideoEntry.recordFrames = ((int)((EditLocalVideoSource)localObject2).a.mDuration * 30);
-      if (vzx.b(((EditLocalVideoSource)localObject2).a()) % 180 > 0) {
-        localPublishVideoEntry.videoWidth = ((EditLocalVideoSource)localObject2).b();
-      }
-      for (localPublishVideoEntry.videoHeight = ((EditLocalVideoSource)localObject2).a();; localPublishVideoEntry.videoHeight = ((EditLocalVideoSource)localObject2).b())
-      {
-        localPublishVideoEntry.videoDuration = a(localPublishVideoEntry.saveMode, ((EditLocalVideoSource)localObject2).a.mDuration);
-        localPublishVideoEntry.videoCreateTime = ((EditLocalVideoSource)localObject2).a.addedDate;
-        i = 1;
-        break;
-        i = 0;
-        break label896;
-        localPublishVideoEntry.videoWidth = ((EditLocalVideoSource)localObject2).a();
-      }
-      if ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
-      {
-        localPublishVideoEntry.isPicture = false;
-        localPublishVideoEntry.isLocalPublish = false;
-        paramJobContext = (EditRecordVideoSource)parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-        localPublishVideoEntry.mLocalRawVideoDir = paramJobContext.a();
-        localPublishVideoEntry.recordTime = paramJobContext.jdField_a_of_type_Long;
-        localPublishVideoEntry.recordFrames = paramJobContext.jdField_a_of_type_Int;
-        localPublishVideoEntry.videoWidth = paramJobContext.a();
-        localPublishVideoEntry.videoHeight = paramJobContext.b();
-        localPublishVideoEntry.videoDuration = a(localPublishVideoEntry.saveMode, paramJobContext.jdField_a_of_type_Long);
-        i = 1;
-        break;
-      }
-      if (((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) || ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)))
-      {
-        localPublishVideoEntry.isPicture = true;
-        paramJobContext = parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a();
-        if ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource))
-        {
-          localObject1 = (EditLocalPhotoSource)parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-          localPublishVideoEntry.isLocalPublish = true;
-          localPublishVideoEntry.videoCreateTime = ((EditLocalPhotoSource)localObject1).a.addedDate;
-        }
-        for (;;)
-        {
-          if (this.a.jdField_b_of_type_Int == 5) {
-            localPublishVideoEntry.putExtra("video_type", Integer.valueOf(3));
-          }
-          if (localPublishVideoEntry.thumbPath == null) {
-            break label1479;
-          }
-          localPublishVideoEntry.mLocalRawVideoDir = localPublishVideoEntry.thumbPath;
-          if ((parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) {
-            localPublishVideoEntry.mLocalRawPicPath = parambkkm.jdField_a_of_type_Bkks.a;
-          }
-          localPublishVideoEntry.recordTime = 5000.0D;
-          localPublishVideoEntry.recordFrames = 150000;
-          paramJobContext = new BitmapFactory.Options();
-          paramJobContext.inJustDecodeBounds = true;
-          BitmapFactory.decodeFile(localPublishVideoEntry.mLocalRawVideoDir, paramJobContext);
-          localPublishVideoEntry.videoWidth = paramJobContext.outWidth;
-          localPublishVideoEntry.videoHeight = paramJobContext.outHeight;
-          localPublishVideoEntry.videoDuration = 5000L;
-          i = 0;
-          break;
-          localPublishVideoEntry.isLocalPublish = false;
-        }
-        label1479:
-        if ((parambkkm.jdField_a_of_type_Bkks.c) || (!parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_Boolean)) {
-          break label2228;
-        }
-        paramJobContext = parambkkm.jdField_a_of_type_Bkks.jdField_b_of_type_JavaLangString;
-      }
-      for (;;)
-      {
-        localPublishVideoEntry.mLocalRawVideoDir = paramJobContext;
-        break;
-        super.notifyError(new ErrorMessage(-1, "illegal argument " + parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource));
-        return;
-        if (localPublishVideoEntry.thumbPath != null)
-        {
-          paramJobContext = new File(localPublishVideoEntry.thumbPath);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
-          {
-            super.notifyError(new ErrorMessage(-1, "thumbFile is invalid : " + paramJobContext));
-            return;
-          }
-        }
-        if (localPublishVideoEntry.doodlePath != null)
-        {
-          paramJobContext = new File(localPublishVideoEntry.doodlePath);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
-          {
-            super.notifyError(new ErrorMessage(-1, "doodleFile is invalid : " + paramJobContext));
-            return;
-          }
-        }
-        if (localPublishVideoEntry.mosaicPath != null)
-        {
-          paramJobContext = new File(localPublishVideoEntry.mosaicPath);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
-          {
-            super.notifyError(new ErrorMessage(-1, "mosaicfile is invalid : " + paramJobContext));
-            return;
-          }
-        }
-        if (localPublishVideoEntry.doodleRawPath != null)
-        {
-          paramJobContext = new File(localPublishVideoEntry.doodleRawPath);
-          if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
-          {
-            super.notifyError(new ErrorMessage(-1, "doodleRawFile is invalid : " + paramJobContext));
-            return;
-          }
-        }
-        QQStoryContext.a().a().createEntityManager().b(localPublishVideoEntry);
-        veg.c("Q.qqstory.publish.edit.PublishVideoSegment", "after persist or replace.");
-        i = 0;
-        if (parambkkm.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode != 0) {
-          i = 1;
-        }
-        if (parambkkm.jdField_b_of_type_Boolean) {
-          i = 1;
-        }
-        if (localPublishVideoEntry.isMuteRecordVoice) {
-          i = 1;
-        }
-        if (localPublishVideoEntry.backgroundMusicPath != null) {
-          i = 1;
-        }
-        if (localPublishVideoEntry.doodlePath != null) {
-          i = 1;
-        }
-        if (localPublishVideoEntry.doodleRawPath != null) {
-          i = 1;
-        }
-        if (parambkkm.c) {
-          i = 1;
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            vem.a("0X80076BD");
-          }
-          paramJobContext = localPublishVideoEntry.fakeVid;
-          localObject1 = localPublishVideoEntry.thumbPath;
-          localObject2 = localPublishVideoEntry.doodlePath;
-          String str1 = localPublishVideoEntry.videoLabel;
-          String str2 = localPublishVideoEntry.videoDoodleDescription;
-          String str3 = localPublishVideoEntry.videoAddress;
-          int n = localPublishVideoEntry.videoWidth;
-          int i1 = localPublishVideoEntry.videoHeight;
-          long l = localPublishVideoEntry.videoDuration;
-          int i2 = localPublishVideoEntry.videoMaxrate;
-          int i3 = localPublishVideoEntry.videoMinrate;
-          int i4 = localPublishVideoEntry.saveMode;
-          int i5 = localPublishVideoEntry.recordFrames;
-          String str4 = localPublishVideoEntry.atDoodlePath;
-          String str5 = localPublishVideoEntry.atJsonData;
-          int j;
-          int k;
-          if (localPublishVideoEntry.isPicture)
-          {
-            j = 1;
-            if (!parambkkm.d) {
-              break label2213;
-            }
-            k = 1;
-            if (!localPublishVideoEntry.hwEncodeRecordVideo) {
-              break label2219;
-            }
-          }
-          for (int m = 1;; m = 0)
-          {
-            parambkkm.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam = new PublishParam(paramJobContext, (String)localObject1, (String)localObject2, str1, str2, str3, n, i1, l, i2, i3, i, i4, i5, str4, str5, j, k, m, localPublishVideoEntry.mLocalRawVideoDir, localPublishVideoEntry.mAudioFilePath, localPublishVideoEntry.mIFrameVideoPath, localPublishVideoEntry.mosaicPath, parambkkm.jdField_b_of_type_Int, localPublishVideoEntry.isLocalPublish, localPublishVideoEntry.videoLocationDescription, localPublishVideoEntry.videoLongitude, localPublishVideoEntry.videoLatitude, localPublishVideoEntry.redBagType, localPublishVideoEntry.specialVideoType);
-            super.notifyResult(parambkkm);
-            return;
-            j = 0;
-            break;
-            k = 0;
-            break label2089;
-          }
-        }
-      }
-    }
+    ved.e("Q.qqstory.publish.editGenerateInteractPasterImageSegment", "compressToFile failed.");
+    super.notifyError(new ErrorMessage(-1, "compress interact bitmap failed !"));
   }
 }
 

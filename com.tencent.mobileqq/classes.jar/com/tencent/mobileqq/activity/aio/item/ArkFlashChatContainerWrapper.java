@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adll;
-import admy;
+import adlj;
+import admw;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import apyr;
+import apyt;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModelBase.AppInfo;
@@ -25,11 +25,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class ArkFlashChatContainerWrapper
-  extends adll
+  extends adlj
 {
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static final List<WeakReference<ArkFlashChatContainerWrapper>> jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private apyr jdField_a_of_type_Apyr = new admy(this);
+  private apyt jdField_a_of_type_Apyt = new admw(this);
   public WeakReference<QQAppInterface> a;
   public boolean a;
   private WeakReference<MessageForArkFlashChat> jdField_b_of_type_JavaLangRefWeakReference;
@@ -219,7 +219,7 @@ public class ArkFlashChatContainerWrapper
     if (QLog.isColorLevel()) {
       QLog.i("ArkApp", 2, String.format("request from url", new Object[] { this }));
     }
-    paramAppInfo.registObserver(this.jdField_a_of_type_Apyr);
+    paramAppInfo.registObserver(this.jdField_a_of_type_Apyt);
     localFlashChatManager.a(this.c);
     return false;
   }

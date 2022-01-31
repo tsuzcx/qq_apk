@@ -1,4 +1,7 @@
-public class apfq {}
+public abstract interface apfq
+{
+  public abstract String b();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

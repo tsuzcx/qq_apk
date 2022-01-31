@@ -1,37 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class abqh
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public abqh(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public abqh(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label113;
-      }
-    }
-    label113:
-    for (int i = 1;; i = 0)
-    {
-      axqw.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
-      }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
-    }
+    this.a.finish();
   }
 }
 

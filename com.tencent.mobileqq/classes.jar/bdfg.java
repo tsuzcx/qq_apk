@@ -1,21 +1,48 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.tmassistant.common.ProtocolPackage;
+import com.tencent.tmassistant.common.jce.ReqHead;
+import com.tencent.tmassistant.common.jce.Request;
+import com.tencent.tmassistant.common.jce.SdkInfo;
+import com.tencent.tmassistant.common.jce.Ticket;
+import com.tencent.tmassistant.common.jce.TicketWtLogin;
+import com.tencent.tmassistantbase.network.PostHttpRequest;
 
-public class bdfg
+public abstract class bdfg
+  extends PostHttpRequest
 {
-  public static ArrayList<String> a;
-  public static HashMap<String, Class<?>> a;
-  
-  static
+  public int a(JceStruct paramJceStruct)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
-    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
-    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
-    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
-    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
-    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
+    try
+    {
+      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
+      if (paramJceStruct == null) {
+        return -1;
+      }
+    }
+    catch (Throwable paramJceStruct)
+    {
+      for (;;)
+      {
+        paramJceStruct = null;
+      }
+      Object localObject = new SdkInfo();
+      ((SdkInfo)localObject).versionCode = 1;
+      ((SdkInfo)localObject).versionName = bcyb.a().c();
+      ((SdkInfo)localObject).name = "AppNews";
+      ((SdkInfo)localObject).channel = "";
+      ((SdkInfo)localObject).builderNum = "";
+      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
+      localObject = new TicketWtLogin();
+      ((TicketWtLogin)localObject).uin = bcyb.a().a();
+      ((TicketWtLogin)localObject).A2 = bcyb.a().b().getBytes();
+      Ticket localTicket = new Ticket();
+      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
+      localTicket.type = 1;
+      paramJceStruct.head.ticket = localTicket;
+      int i = paramJceStruct.head.requestId;
+      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
+      return i;
+    }
   }
 }
 

@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-class alim
-  extends ayxo
+final class alim
+  implements aysb
 {
-  alim(alij paramalij, QQAppInterface paramQQAppInterface, String paramString, ayxp paramayxp, ayrv paramayrv, alip paramalip, alio paramalio)
+  public void a(aysy paramaysy, aysz paramaysz)
   {
-    super(paramQQAppInterface, paramString, paramayxp, paramayrv);
-  }
-  
-  protected void realCancel()
-  {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
-    synchronized (alij.a(this.jdField_a_of_type_Alij))
-    {
-      alio localalio = (alio)alij.a(this.jdField_a_of_type_Alij).get(this.jdField_a_of_type_Alip.b);
-      if (localalio != null) {
-        localalio.b();
-      }
-      super.realCancel();
+    if ((paramaysy == null) || (paramaysz == null)) {}
+    while (!(paramaysy instanceof ayrx)) {
       return;
     }
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
-    synchronized (alij.a(this.jdField_a_of_type_Alij))
+    ayrx localayrx = (ayrx)paramaysy;
+    localayrx.jdField_a_of_type_Long += paramaysz.c;
+    paramaysz.c = 0L;
+    paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
+    localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
+    paramaysz = localayrx.jdField_a_of_type_JavaLangString;
+    if (paramaysz.contains("range="))
     {
-      alio localalio = (alio)alij.a(this.jdField_a_of_type_Alij).get(this.jdField_a_of_type_Alip.b);
-      if (localalio != null) {
-        this.jdField_a_of_type_Alio.a();
-      }
-      super.realStart();
-      return;
+      paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
+      localayrx.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + localayrx.jdField_a_of_type_Long);
     }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((ayrx)paramaysy).jdField_a_of_type_JavaLangString + ", offset=" + localayrx.jdField_a_of_type_Long);
   }
 }
 

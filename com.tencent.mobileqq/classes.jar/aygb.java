@@ -1,61 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.TenDocWebPreLoadHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aygb
+class aygb
+  implements WtTicketPromise
 {
-  public static volatile String a = "";
+  aygb(ayga paramayga, Runnable paramRunnable) {}
   
-  public static TouchWebView a(Context paramContext)
+  public void Done(Ticket paramTicket)
   {
-    aygc localaygc = aygc.a();
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseApplicationImpl.sApplication;
+    if (QLog.isColorLevel()) {
+      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
     }
-    return localaygc.a((Context)localObject);
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public static void a(String paramString)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preCreateWebViewNoWebProcess ");
-    aygc.a().a(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
   }
   
-  public static boolean a(Activity paramActivity, String paramString)
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    if (!ancm.a().a()) {}
-    while ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || ((!(paramActivity instanceof TeamWorkDocEditBrowserActivity)) && (!ayfv.c(paramString))) || (!aygc.a().a()) || ((!paramString.contains(a)) && (a != null))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
     }
-    return true;
-  }
-  
-  public static void b(String paramString)
-  {
-    QLog.d("TenDocWebPreLoadHelper", 1, "tendocpreload preloadTenDocUrl ");
-    if (!TextUtils.isEmpty(paramString))
-    {
-      a = paramString;
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label61;
-      }
-      if ((ayfv.c(paramString)) && (!aygc.a().a(paramString)))
-      {
-        aygc.a().a(paramString);
-        aygc.a().a(paramString);
-      }
-    }
-    return;
-    label61:
-    new Handler(Looper.getMainLooper()).post(new TenDocWebPreLoadHelper.1(paramString));
   }
 }
 

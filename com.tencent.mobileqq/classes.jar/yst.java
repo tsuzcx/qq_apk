@@ -1,8 +1,14 @@
-public class yst
+import android.text.TextUtils;
+
+public final class yst
 {
-  public static String a(long paramLong1, long paramLong2, int paramInt)
+  public int a;
+  public String a;
+  public int b;
+  
+  public boolean a()
   {
-    return bdhv.d(String.format("%s_%d_%d_%d", new Object[] { "!@#$%qboi!@#^&*m13=4aa22", Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) })).toLowerCase();
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0) && (this.b >= 0);
   }
 }
 

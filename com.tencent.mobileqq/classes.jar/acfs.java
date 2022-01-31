@@ -1,26 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
 import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.widget.ExpandableListView;
 
 public class acfs
-  extends Handler
+  implements bfrt
 {
-  public acfs(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public acfs(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (((aiqb)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
     }
-    this.a.jdField_a_of_type_Aiqd.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_Aiqd.notifyDataSetChanged();
-    this.a.b();
+    axrw.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 

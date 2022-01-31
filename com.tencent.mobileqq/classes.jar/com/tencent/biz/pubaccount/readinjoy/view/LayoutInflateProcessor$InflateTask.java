@@ -6,43 +6,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import raj;
-import rak;
+import rag;
+import rah;
 
 class LayoutInflateProcessor$InflateTask
   implements Runnable
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private raj[] jdField_a_of_type_ArrayOfRaj;
+  private rag[] jdField_a_of_type_ArrayOfRag;
   
-  public LayoutInflateProcessor$InflateTask(raj[] paramArrayOfraj, LayoutInflater paramLayoutInflater)
+  public LayoutInflateProcessor$InflateTask(rag[] paramArrayOfrag, LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ArrayOfRaj = paramArrayOfraj;
+    this.jdField_a_of_type_ArrayOfRag = paramArrayOfrag;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
   }
   
-  private boolean a(raj paramraj)
+  private boolean a(rag paramrag)
   {
-    if ((paramraj.a == null) || (paramraj.a.size() >= 9)) {}
+    if ((paramrag.a == null) || (paramrag.a.size() >= 9)) {}
     for (;;)
     {
       return false;
       if (QLog.isColorLevel()) {
-        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(raj.a(paramraj)));
+        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(rag.a(paramrag)));
       }
       try
       {
-        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(raj.a(paramraj), raj.a(paramraj), false);
+        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(rag.a(paramrag), rag.a(paramrag), false);
         if (localView == null) {
           continue;
         }
-        if (raj.a(paramraj) != null) {
-          raj.a(paramraj).a(localView);
+        if (rag.a(paramrag) != null) {
+          rag.a(paramrag).a(localView);
         }
-        if ((paramraj.a == null) || (paramraj.a.size() >= 9)) {
+        if ((paramrag.a == null) || (paramrag.a.size() >= 9)) {
           continue;
         }
-        paramraj.a.add(localView);
+        paramrag.a.add(localView);
         return true;
       }
       catch (RuntimeException localRuntimeException)
@@ -60,19 +60,19 @@ class LayoutInflateProcessor$InflateTask
   
   public void run()
   {
-    raj[] arrayOfraj = this.jdField_a_of_type_ArrayOfRaj;
-    int k = arrayOfraj.length;
+    rag[] arrayOfrag = this.jdField_a_of_type_ArrayOfRag;
+    int k = arrayOfrag.length;
     int i = 0;
     if (i < k)
     {
-      raj localraj = arrayOfraj[i];
-      if (localraj == null) {}
+      rag localrag = arrayOfrag[i];
+      if (localrag == null) {}
       for (;;)
       {
         i += 1;
         break;
         int j = 0;
-        while ((j < raj.b(localraj)) && (a(localraj))) {
+        while ((j < rag.b(localrag)) && (a(localrag))) {
           j += 1;
         }
       }

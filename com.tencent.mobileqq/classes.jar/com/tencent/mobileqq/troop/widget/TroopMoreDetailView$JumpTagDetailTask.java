@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import basm;
-import basn;
+import bata;
+import batb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
@@ -40,7 +40,7 @@ class TroopMoreDetailView$JumpTagDetailTask
       localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
     } while (localQQAppInterface == null);
     Object localObject1 = Long.toString(localTroopMoreDetailView.a.dwGroupClassExt);
-    basm localbasm = basn.a(localActivity).a(localActivity, (String)localObject1);
+    bata localbata = batb.a(localActivity).a(localActivity, (String)localObject1);
     List localList = localTroopMoreDetailView.a.troopTags;
     Intent localIntent = new Intent(localActivity, TroopTagViewActivity.class);
     localIntent.putExtra("troopuin", localTroopMoreDetailView.a.troopUin);
@@ -67,17 +67,17 @@ class TroopMoreDetailView$JumpTagDetailTask
       }
       localObject1 = localObject2;
       i = j;
-      if (localbasm != null)
+      if (localbata != null)
       {
         localObject1 = localObject2;
         i = j;
-        if (!TextUtils.isEmpty(localbasm.a))
+        if (!TextUtils.isEmpty(localbata.a))
         {
           localObject1 = localObject2;
           i = j;
-          if (!ajyc.a(2131715660).equals(localbasm.a))
+          if (!ajya.a(2131715671).equals(localbata.a))
           {
-            localObject1 = localbasm.a;
+            localObject1 = localbata.a;
             i = 1;
           }
         }

@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-class rod
-  implements View.OnClickListener
+public abstract class rod
 {
-  rod(roc paramroc) {}
+  public rod(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void onClick(View paramView)
-  {
-    onk.a(paramView.getContext(), this.a.a.a);
-    noo.a(null, "", "0X8009BA1", "0X8009BA1", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
-  }
+  public void a(boolean paramBoolean, int paramInt, oidb_0xc90.RspBody paramRspBody) {}
 }
 
 

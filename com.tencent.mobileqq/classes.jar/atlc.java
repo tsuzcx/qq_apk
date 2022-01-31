@@ -1,6 +1,6 @@
 public abstract interface atlc
 {
-  public abstract void a(atkx paramatkx);
+  public abstract boolean a(atkz paramatkz, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

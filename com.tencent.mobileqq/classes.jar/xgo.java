@@ -1,20 +1,64 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.io.InputStream;
+import java.util.ArrayList;
 
-class xgo
-  implements Downloader.DownloadListener
+public abstract class xgo
 {
-  xgo(xgm paramxgm, xfw paramxfw, String paramString) {}
+  protected static int a;
+  protected static ArrayList<String[]> a;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  static
   {
-    xgm.a(this.jdField_a_of_type_Xgm, this.jdField_a_of_type_Xfw, xgj.a().b(this.jdField_a_of_type_JavaLangString));
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String a(String paramString)
+  {
+    return sdp.b(paramString);
+  }
+  
+  public abstract xgp a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, InputStream paramInputStream);
+  
+  public abstract boolean a(String paramString1, String paramString2);
+  
+  public void b()
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = jdField_a_of_type_Int;
+        if (i >= 1) {
+          return;
+        }
+        jdField_a_of_type_Int += 1;
+        if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          String[] arrayOfString = (String[])jdField_a_of_type_JavaUtilArrayList.remove(0);
+          a(arrayOfString[0], arrayOfString[1]);
+          try
+          {
+            Thread.sleep(100L);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+        else
+        {
+          jdField_a_of_type_Int -= 1;
+        }
+      }
+      finally {}
+    }
   }
 }
 

@@ -1,21 +1,24 @@
 public class alfw
 {
   public int a;
-  public alfx a;
   public String a;
+  public int b;
+  public String b;
+  public int c = 0;
   
   public alfw()
   {
-    this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Alfx = null;
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
   public String toString()
   {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_Alfx + '}';
+    return "POIInfo{latitude = " + this.jdField_a_of_type_Int + ", longitude = " + this.jdField_b_of_type_Int + ", name = " + this.jdField_a_of_type_JavaLangString + ", addr = " + this.jdField_b_of_type_JavaLangString + ", dist = " + this.c + '}';
   }
 }
 

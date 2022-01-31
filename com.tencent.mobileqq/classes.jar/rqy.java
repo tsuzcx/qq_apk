@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class rqy
-  extends Handler
+class rqy
+  implements OnCompositionLoadedListener
 {
-  private WeakReference<ReadInJoySkinAnimManager> a;
+  rqy(rqx paramrqx, Runnable paramRunnable) {}
   
-  public rqy(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
+    RefreshAnimView.a(this.jdField_a_of_type_Rqx.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
-    }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 

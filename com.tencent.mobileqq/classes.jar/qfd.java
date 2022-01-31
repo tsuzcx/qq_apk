@@ -1,17 +1,28 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class qfd
+class qfd
   implements View.OnClickListener
 {
-  public qfd(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  qfd(qfc paramqfc, ReadInJoyDraftboxItem paramReadInJoyDraftboxItem) {}
   
   public void onClick(View paramView)
   {
-    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
-    ReadInJoyDeliverVideoActivity.b(this.a);
+    paramView = new Intent(qfc.a(this.jdField_a_of_type_Qfc), ReadInJoyDeliverUGCActivity.class);
+    paramView.putExtra("readinjoy_draftbox_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
+    paramView.putExtra("is_from_kan_dian", true);
+    paramView.putExtra("support_topic", true);
+    if ((qfc.a(this.jdField_a_of_type_Qfc) instanceof BaseActivity))
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.type == 0) {
+        ((BaseActivity)qfc.a(this.jdField_a_of_type_Qfc)).startActivityForResult(paramView, 1000);
+      }
+      nol.a(null, "", "0X80096DF", "0X80096DF", 0, 0, qfc.a(this.jdField_a_of_type_Qfc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
+    }
   }
 }
 

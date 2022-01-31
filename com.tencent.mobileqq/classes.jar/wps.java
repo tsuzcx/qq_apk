@@ -1,14 +1,16 @@
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.RecycledViewPool;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
-import java.util.ArrayList;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
 
 public abstract class wps
-  extends wpc
+  extends woz
 {
-  private ComponentRvInnerView a;
+  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+  private BaseWidgetView jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
+  private boolean c = true;
   
   public wps(Bundle paramBundle)
   {
@@ -20,51 +22,40 @@ public abstract class wps
     return 3;
   }
   
-  public abstract wpt a(ViewGroup paramViewGroup, int paramInt);
+  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, woz paramwoz);
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract void a(ComponentRvInnerView paramComponentRvInnerView);
-  
-  public void a(ArrayList paramArrayList)
+  public void a(boolean paramBoolean)
   {
-    b().clear();
-    b().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
-    }
-  }
-  
-  public abstract int b();
-  
-  protected boolean c()
-  {
-    return false;
+    this.c = paramBoolean;
+    a().notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    if ((!c()) || (b().size() > 0)) {
+    if (this.c) {
       return 1;
     }
     return 0;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public int getItemViewType(int paramInt)
   {
-    if ((paramViewHolder.itemView instanceof ComponentRvInnerView)) {
-      this.a.setData(b());
-    }
+    return 1;
   }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = new ComponentRvInnerView(paramViewGroup.getContext(), this);
-    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup = new wpb(this, this.a);
-    paramViewGroup.setIsRecyclable(false);
-    a(this.a);
-    return paramViewGroup;
+    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)
+    {
+      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
+      paramViewGroup = new woy(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
+      paramViewGroup.setIsRecyclable(false);
+      a().getRecycledViewPool().setMaxRecycledViews(d(paramInt), 0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewGroup;
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
   }
 }
 

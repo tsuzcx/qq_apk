@@ -1,8 +1,13 @@
-import android.graphics.Bitmap;
-
-public abstract interface bijh
+class bijh
+  implements bijz
 {
-  public abstract void a(Bitmap paramBitmap);
+  bijh(bijd parambijd) {}
+  
+  public void a()
+  {
+    biwu.a().a("onFirstFrameDone");
+    bijd.c(this.a);
+  }
 }
 
 

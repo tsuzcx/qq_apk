@@ -1,20 +1,8 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.ui.MainPageFragment;
-import org.json.JSONObject;
-
-public class bffa
-  implements AsyncResult
+public abstract interface bffa
 {
-  public bffa(MainPageFragment paramMainPageFragment) {}
+  public abstract void onValCancel();
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = paramJSONObject.optString("token");
-      MainPageFragment.a(this.a, paramJSONObject);
-    }
-  }
+  public abstract void onValConfirm(int paramInt);
 }
 
 

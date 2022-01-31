@@ -1,77 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 
-public abstract class wkl<T>
-  extends wkk<T>
+public class wkl
 {
-  protected int c = -1;
+  public int a;
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
   
-  public wkl(Context paramContext, boolean paramBoolean)
+  public wkl(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    super(paramContext, paramBoolean);
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = 2;
   }
   
-  protected abstract View a();
-  
-  protected View a(int paramInt)
+  public wkl(CertifiedAccountMeta.StUser paramStUser)
   {
-    if (this.a != null) {
-      return this.a.findViewById(paramInt);
-    }
-    return null;
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.jdField_a_of_type_Int = 1;
   }
-  
-  protected void a()
-  {
-    this.a = a();
-    g();
-  }
-  
-  public void a(View paramView)
-  {
-    if ((paramView != null) && (a())) {
-      ((ViewGroup)this.a).addView(paramView);
-    }
-  }
-  
-  public void a(ViewStub paramViewStub)
-  {
-    if (paramViewStub == null) {
-      return;
-    }
-    if (this.c != -1)
-    {
-      a(paramViewStub, this.c);
-      return;
-    }
-    paramViewStub.setLayoutResource(b());
-    this.a = paramViewStub.inflate();
-    if (b() == 2131562067) {
-      a(a());
-    }
-    g();
-  }
-  
-  public void a(ViewStub paramViewStub, int paramInt)
-  {
-    if (paramViewStub != null)
-    {
-      paramViewStub.setLayoutResource(paramInt);
-      this.a = paramViewStub.inflate();
-      g();
-    }
-  }
-  
-  protected boolean a()
-  {
-    return (this.a != null) && ((this.a instanceof ViewGroup));
-  }
-  
-  protected abstract int b();
-  
-  protected abstract void g();
 }
 
 

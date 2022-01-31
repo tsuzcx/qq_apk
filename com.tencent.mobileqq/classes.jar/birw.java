@@ -1,25 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
 class birw
-  implements Animation.AnimationListener
 {
-  birw(biru parambiru, Runnable paramRunnable) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    biru.a(this.jdField_a_of_type_Biru).setVisibility(0);
-  }
+  private static biru a = new biru(null);
 }
 
 

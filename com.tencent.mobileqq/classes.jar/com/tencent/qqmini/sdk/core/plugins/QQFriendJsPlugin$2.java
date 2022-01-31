@@ -2,9 +2,9 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.os.Bundle;
-import bemw;
-import besl;
-import bfgt;
+import benn;
+import betc;
+import bfhk;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import org.json.JSONObject;
@@ -34,10 +34,10 @@ final class QQFriendJsPlugin$2
           paramJSONObject.putString("appId", this.val$appId);
           if (!this.val$miniAppProxy.startAddFriendActivity(this.val$context, this.val$appId, this.val$openId))
           {
-            bemw.a(this.val$context, 0, "暂不支持在" + bfgt.a(this.val$context) + "中添加好友", 1);
+            benn.a(this.val$context, 0, "暂不支持在" + bfhk.a(this.val$context) + "中添加好友", 1);
             if (this.val$addFriendCallBack != null)
             {
-              besl.d("QQFriendJsPlugin", "app not implement");
+              betc.d("QQFriendJsPlugin", "app not implement");
               this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "app not implement");
             }
           }
@@ -50,15 +50,15 @@ final class QQFriendJsPlugin$2
         {
           for (;;)
           {
-            besl.a("QQFriendJsPlugin", " doAddFriend() exception e = " + paramJSONObject);
+            betc.a("QQFriendJsPlugin", " doAddFriend() exception e = " + paramJSONObject);
           }
         }
       } while (this.val$addFriendCallBack == null);
-      besl.d("QQFriendJsPlugin", "getSettingByOpenId failed");
+      betc.d("QQFriendJsPlugin", "getSettingByOpenId failed");
       this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "auth deny");
       return;
     }
-    besl.d("QQFriendJsPlugin", "getUserSetting failed");
+    betc.d("QQFriendJsPlugin", "getUserSetting failed");
     this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "network err");
   }
 }

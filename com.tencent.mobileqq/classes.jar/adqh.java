@@ -1,23 +1,35 @@
-import android.util.LruCache;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
 class adqh
-  extends LruCache<Long, MessageForPoke>
+  implements aefb
 {
-  adqh(adqg paramadqg, int paramInt)
-  {
-    super(paramInt);
-  }
+  adqh(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void a()
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
+    }
+    adwf.a().a(20);
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
+    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqe.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Adqq.c.setVisibility(0);
+    }
+    for (;;)
     {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      return;
+      this.jdField_a_of_type_Adqq.c.setVisibility(8);
     }
   }
 }

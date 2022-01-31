@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bcpw;
-import bgxy;
-import bhjf;
+import bcql;
+import bgyp;
+import bhjw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
@@ -19,7 +19,7 @@ import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
 import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
-import nam;
+import naj;
 
 public class QZoneLiveVideoDownloadActivity
   extends QZoneLiveVideoBaseDownLoadActivty
@@ -83,8 +83,8 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717915);
-      bcpw.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717926);
+      bcql.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient = paramPluginManagerClient;
@@ -98,8 +98,8 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717915);
-      bcpw.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131717926);
+      bcql.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
     if (QZLog.isColorLevel()) {
@@ -113,12 +113,12 @@ public class QZoneLiveVideoDownloadActivity
     }
     QLog.d("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] plugin not downloaded");
     LpReportInfo_dc01500.reportLaunch(a(), "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.c + "");
-    if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (nam.a(this.jdField_a_of_type_JavaLangString)))
+    if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (naj.a(this.jdField_a_of_type_JavaLangString)))
     {
       paramPluginManagerClient = this.jdField_a_of_type_JavaLangString + "&stayin=1";
       QLog.d("QZoneLiveVideoDownloadActivity", 1, "watch mode, jump to H5, " + paramPluginManagerClient);
-      bgxy.a(this, paramPluginManagerClient, -1, null, null);
-      if (bhjf.b()) {
+      bgyp.a(this, paramPluginManagerClient, -1, null, null);
+      if (bhjw.b()) {
         c();
       }
       a();

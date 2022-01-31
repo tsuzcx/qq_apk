@@ -1,14 +1,20 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class acwo
-  implements bcwh
+  extends ajxj
 {
-  acwo(acwm paramacwm) {}
+  acwo(acwl paramacwl) {}
   
-  public void a(BaseResp paramBaseResp)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramBaseResp.errCode != 0) {
-      acwm.a(this.a, 1, 2131693650);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    {
+      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
+      if ((paramString != null) && (acwl.a(this.a) != null)) {
+        acwl.a(this.a).setImageBitmap(paramString);
+      }
     }
   }
 }

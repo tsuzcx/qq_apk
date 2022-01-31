@@ -1,12 +1,14 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.12;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
 
-public class ajbe
-  implements AVCallback
+class ajbe
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public ajbe(CmGameAvHandler.12 param12) {}
+  ajbe(ajba paramajba) {}
   
-  public void onComplete(int paramInt, String paramString) {}
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

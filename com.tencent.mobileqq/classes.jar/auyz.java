@@ -1,6 +1,16 @@
-public abstract interface auyz
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+
+public class auyz
+  implements bble<Integer>
 {
-  public abstract void a();
+  public auyz(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+  }
 }
 
 

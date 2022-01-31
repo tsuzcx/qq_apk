@@ -1,6 +1,19 @@
-public abstract interface asqu
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+
+public class asqu
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(boolean paramBoolean);
+  public asqu(MultiAIOViewPager paramMultiAIOViewPager) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (MultiAIOViewPager.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

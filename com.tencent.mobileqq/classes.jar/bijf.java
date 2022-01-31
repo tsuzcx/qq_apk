@@ -1,10 +1,17 @@
-public abstract interface bijf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import dov.com.qq.im.ae.AEPituCameraUnit.10;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+
+public class bijf
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public bijf(AEPituCameraUnit.10 param10) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    bijd.a(this.a.this$0).setCameraPermissionResult(false);
+  }
 }
 
 

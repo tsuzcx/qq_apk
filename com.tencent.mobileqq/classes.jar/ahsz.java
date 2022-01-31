@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahsz
-  implements DialogInterface.OnShowListener
+  implements bfpj
 {
   public ahsz(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if (EditLocalVideoActivity.a(this.a) != null) {
-      EditLocalVideoActivity.a(this.a).setVisibility(8);
-    }
-    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
-      EditLocalVideoActivity.a(this.a, true);
-    }
+    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajya.a(2131703652);
+    bhbe.a().c(str);
   }
 }
 

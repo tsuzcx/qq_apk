@@ -1,111 +1,72 @@
-import android.support.annotation.NonNull;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.opengl.GLES20;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class awac
-  extends GPUBaseFilter
+  extends avzy
 {
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230753);
   private int jdField_a_of_type_Int = -1;
-  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private List<RenderBuffer> b;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private int b;
   
-  private void a()
+  public awac()
   {
-    if (this.b != null)
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mFilterType = 5;
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_Int != -1) {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext()) {
-        ((RenderBuffer)localIterator.next()).destroy();
-      }
-      this.b = null;
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      ved.b("Q.qqstory.publish.edit GPULordKelvinFilter", "mosaic bitmap recycle");
     }
   }
   
-  public RenderBuffer a()
+  public void onDrawTexture()
   {
-    if ((this.b != null) && (this.b.size() > 0)) {
-      return (RenderBuffer)this.b.get(this.b.size() - 1);
-    }
-    throw new RuntimeException("please check your state");
-  }
-  
-  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
-  }
-  
-  public void destroy()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((GPUBaseFilter)localIterator.next()).destroy();
-    }
-    a();
-  }
-  
-  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    super.onDrawTexture();
+    GLES20.glActiveTexture(33985);
+    if (this.jdField_a_of_type_Int == -1)
     {
-      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
       {
-        ((RenderBuffer)this.b.get(paramInt)).bind();
-        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
-        ((RenderBuffer)this.b.get(paramInt)).unbind();
-        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+        QLog.w("Q.qqstory.publish.edit GPULordKelvinFilter", 1, "bitmap error");
+        return;
       }
+      this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
+    GLES20.glUniform1i(this.b, 1);
+  }
+  
+  public void onInitialized()
+  {
+    super.onInitialized();
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130845265));
+      this.b = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
       for (;;)
       {
-        paramInt += 1;
-        break;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
-        }
-        else
-        {
-          ((RenderBuffer)this.b.get(paramInt)).bind();
-          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
-          ((RenderBuffer)this.b.get(paramInt)).unbind();
-          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
-        }
+        ved.e("Q.qqstory.publish.edit GPULordKelvinFilter", "OutOfMemoryError:%s", new Object[] { localOutOfMemoryError.getMessage() });
       }
-    }
-  }
-  
-  public void init()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((GPUBaseFilter)localIterator.next()).init();
-    }
-  }
-  
-  public void onOutputSizeChanged(int paramInt1, int paramInt2)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    a();
-    this.b = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = j;
-    if (this.jdField_a_of_type_Boolean) {
-      i = j - 1;
-    }
-    j = 0;
-    while (j < i)
-    {
-      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
-      this.b.add(localObject);
-      j += 1;
     }
   }
 }

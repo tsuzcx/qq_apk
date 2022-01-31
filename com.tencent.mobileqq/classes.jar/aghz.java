@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.1;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.22.2;
+import com.tencent.mobileqq.app.QQHeadDownloadHandler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aghz
-  implements DialogInterface.OnClickListener
+  extends ajxj
 {
-  public aghz(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  public aghz(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+    }
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    String str2 = QQHeadDownloadHandler.a(paramSetting.url, paramSetting.bFaceFlags);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2)) {
+      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
+    }
+    this.a.d = paramSetting.headImgTimestamp;
+    ThreadManager.getUIHandler().post(new AvatarPendantActivity.22.2(this, str1));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    AvatarPendantActivity.c(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    if (paramBoolean) {
+      ThreadManager.excute(new AvatarPendantActivity.22.1(this), 32, null, false);
+    }
   }
 }
 

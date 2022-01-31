@@ -1,22 +1,18 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeUtil.2.1;
+import mqq.os.MqqHandler;
 
-class aymq
-  implements bbqb
+public final class aymq
+  extends aymo
 {
-  aymq(aymp paramaymp) {}
+  public aymq(QQAppInterface paramQQAppInterface) {}
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public boolean a(int paramInt)
   {
-    QLog.e("TintManager", 1, "tint config download onCompleted");
-    this.a.loadConfig(BaseApplicationImpl.getApplication().getResources(), aymp.a(this.a));
-    paramQQAppInterface = new Intent("com.tencent.qplus.THEME_UPDATE");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface, "com.tencent.msg.permission.pushnotify");
+    ThreadManager.getSubThreadHandler().postDelayed(new ThemeUtil.2.1(this), 1000L);
+    return super.a(paramInt);
   }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

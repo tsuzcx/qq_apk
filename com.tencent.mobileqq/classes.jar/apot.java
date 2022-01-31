@@ -1,14 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 
 class apot
-  implements View.OnClickListener
+  implements apuv
 {
   apot(apos paramapos) {}
   
   public void onClick(View paramView)
   {
-    this.a.m();
+    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
   }
 }
 

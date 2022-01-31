@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.structmsg;
 
-import ampm;
-import amqe;
-import axui;
+import ampl;
+import amqd;
+import axuk;
 
 public class AIOVideoPlayController$1
   implements Runnable
 {
-  public AIOVideoPlayController$1(axui paramaxui) {}
+  public AIOVideoPlayController$1(axuk paramaxuk) {}
   
   public void run()
   {
-    axui.a(this.this$0, (amqe)ampm.a().a(537));
+    axuk.a(this.this$0, (amqd)ampl.a().a(537));
   }
 }
 

@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
-import java.util.ArrayList;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class aktw
-  implements View.OnClickListener
 {
-  aktw(aktv paramaktv, ArrayList paramArrayList, String paramString) {}
+  long jdField_a_of_type_Long;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onClick(View paramView)
-  {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
-    paramView.a();
-    tvf.a(this.jdField_a_of_type_Aktv.a.a, paramView.a(), null);
-  }
+  aktw(aktr paramaktr) {}
 }
 
 

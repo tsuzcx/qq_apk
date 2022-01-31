@@ -1,15 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 class ryk
-  extends BroadcastReceiver
+  implements bcww
 {
   ryk(ryj paramryj) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.a(paramContext, paramIntent);
+    if ((ryj.a(this.a) == null) || (!ryj.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      wij.a(1, 2131719487);
+      return;
+    }
+    wij.a(2, 2131719506);
   }
 }
 

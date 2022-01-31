@@ -4,11 +4,11 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Messenger;
-import begs;
-import beox;
-import bepk;
-import besf;
-import besl;
+import behj;
+import bepo;
+import beqb;
+import besw;
+import betc;
 
 public class AppMainService
   extends Service
@@ -17,33 +17,33 @@ public class AppMainService
   {
     String str = paramIntent.getStringExtra("mini_process_name");
     paramIntent = (Messenger)paramIntent.getParcelableExtra("mini_process_messenger");
-    besl.c("minisdk-start_AppMainService", "AppBrandMainService Service Binded. pName=" + str + " messenger:" + paramIntent);
-    bepk.a().a().registerClientMessenger(str, paramIntent);
-    return new beox(this, str);
+    betc.c("minisdk-start_AppMainService", "AppBrandMainService Service Binded. pName=" + str + " messenger:" + paramIntent);
+    beqb.a().a().registerClientMessenger(str, paramIntent);
+    return new bepo(this, str);
   }
   
   public void onCreate()
   {
-    besl.c("minisdk-start_AppMainService", "AppMainService Service onCreate~~~");
-    begs.a(getApplicationContext());
+    betc.c("minisdk-start_AppMainService", "AppMainService Service onCreate~~~");
+    behj.a(getApplicationContext());
     super.onCreate();
   }
   
   public void onDestroy()
   {
-    besl.c("minisdk-start_AppMainService", "AppMainService Service onDestroy~~~");
+    betc.c("minisdk-start_AppMainService", "AppMainService Service onDestroy~~~");
     super.onDestroy();
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    besl.c("minisdk-start_AppMainService", "AppMainService Service onStart~~~");
+    betc.c("minisdk-start_AppMainService", "AppMainService Service onStart~~~");
     super.onStart(paramIntent, paramInt);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    besl.c("minisdk-start_AppMainService", "AppMainService Service onUnbind~~~");
+    betc.c("minisdk-start_AppMainService", "AppMainService Service onUnbind~~~");
     return super.onUnbind(paramIntent);
   }
 }

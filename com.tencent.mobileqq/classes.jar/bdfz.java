@@ -1,238 +1,76 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl.1;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.appcommon.js.DownloadInterface;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bdfz
-  implements bdfy
+  implements bdml
 {
-  protected static bdfz a;
-  protected Handler a;
+  protected String a;
   
-  protected bdfz()
+  public bdfz(DownloadInterface paramDownloadInterface, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static bdfz a()
+  public void a(String paramString)
   {
-    if (jdField_a_of_type_Bdfz == null) {
-      jdField_a_of_type_Bdfz = new bdfz();
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
     }
-    return jdField_a_of_type_Bdfz;
+    bdii.e("DownloadInterface", "JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
   }
   
-  protected String a(int paramInt)
+  public void a(ArrayList<ApkUpdateDetail> paramArrayList)
   {
-    JSONObject localJSONObject = new JSONObject();
+    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+      return;
+    }
+    bdii.a("DownloadInterface", "JsCheckUpdateCallback onResult >>> " + paramArrayList.size());
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
     try
     {
-      localJSONObject.put("nettype", paramInt);
-      return localJSONObject.toString();
+      while (i < paramArrayList.size())
+      {
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
     }
-    catch (JSONException localJSONException)
+    catch (JSONException paramArrayList)
     {
       for (;;)
       {
-        bdht.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", localJSONException);
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
       }
     }
+    bdii.b("DownloadInterface", ">>checkUpdate jsUrl:" + paramArrayList);
+    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
   }
   
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
+  public void b(String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bdht.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
-  }
-  
-  protected String a(String paramString1, int paramInt, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        bdht.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
-      }
-    }
-  }
-  
-  public JSONObject a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("appid", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("state", paramDownloadInfo.a());
-      localJSONObject.put("pro", paramDownloadInfo.f);
-      localJSONObject.put("packagename", paramDownloadInfo.e);
-      localJSONObject.put("ismyapp", paramDownloadInfo.jdField_c_of_type_Int);
-      localJSONObject.put("download_from", paramDownloadInfo.jdField_h_of_type_Int);
-      localJSONObject.put("realDownloadType", paramDownloadInfo.jdField_d_of_type_Int);
-      localJSONObject.put("via", paramDownloadInfo.jdField_h_of_type_JavaLangString);
-      localJSONObject.put("writecodestate", paramDownloadInfo.j);
-      localJSONObject.put("extraInfo", paramDownloadInfo.o);
-      localJSONObject.put("isAutoInstallBySDK", paramDownloadInfo.jdField_d_of_type_Boolean);
-      localJSONObject.put("queryResult", paramInt);
-      return localJSONObject;
-    }
-    catch (JSONException paramDownloadInfo)
-    {
-      bdht.c("DownloadCallbackWebImpl", "onNetworkConnect " + paramDownloadInfo.getMessage(), paramDownloadInfo);
-    }
-    return localJSONObject;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(a(paramInt));
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, paramInt).toString());
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    bdgd localbdgd = bdgd.a();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = localbdgd.a().size();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = (bdiy)localbdgd.a().get(i);
-          WebView localWebView = ((bdiy)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((bdiy)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bdht.a("DownloadCallbackWebImpl", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new DownloadCallbackWebImpl.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((bdiy)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        bdht.c("DownloadCallbackWebImpl", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(List<DownloadInfo> paramList) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 6, paramString2));
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(a((DownloadInfo)paramList.next(), -1));
-      }
-      a(localJSONArray.toString());
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 13, paramString2));
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 9, paramString2));
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

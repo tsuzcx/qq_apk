@@ -1,6 +1,12 @@
-public abstract interface alhq
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+
+public class alhq
 {
-  public abstract void a(alhs paramalhs);
+  public ArCloudConfigInfo a;
+  public String a = "";
+  public boolean a;
+  public String b = "";
+  public boolean b;
 }
 
 

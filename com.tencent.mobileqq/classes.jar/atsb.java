@@ -1,26 +1,34 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-class atsb
-  implements amnf
+public abstract class atsb
+  extends atpi
 {
-  atsb(atsa paramatsa, IphonePickerView paramIphonePickerView, bfol parambfol) {}
+  public boolean a;
   
-  public void a()
+  public atsb(Context paramContext)
   {
-    if ((this.jdField_a_of_type_Bfol != null) && (this.jdField_a_of_type_Bfol.isShowing()))
-    {
-      atsa.a(this.jdField_a_of_type_Atsa, this.jdField_a_of_type_Atsa.b, false);
-      this.jdField_a_of_type_Bfol.dismiss();
-    }
+    super(paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Atsa.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_Atsa.b.setText(atsa.a(this.jdField_a_of_type_Atsa).a(0, paramInt1));
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(PicInfo paramPicInfo);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

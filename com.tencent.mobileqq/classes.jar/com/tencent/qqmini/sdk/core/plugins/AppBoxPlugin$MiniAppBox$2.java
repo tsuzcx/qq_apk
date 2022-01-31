@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import begy;
-import besl;
+import behp;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBoxADLisener;
 import org.json.JSONObject;
 
@@ -12,7 +12,7 @@ class AppBoxPlugin$MiniAppBox$2
   
   public void onDismiss()
   {
-    besl.b("SDK_MiniAppBox", "gdtBox onDismiss");
+    betc.b("SDK_MiniAppBox", "gdtBox onDismiss");
     if (AppBoxPlugin.MiniAppBox.access$300(this.this$1) != null)
     {
       JSONObject localJSONObject = AppBoxPlugin.MiniAppBox.access$400(this.this$1, this.val$compId, -1);
@@ -22,21 +22,21 @@ class AppBoxPlugin$MiniAppBox$2
   
   public void onError(int paramInt, String paramString)
   {
-    besl.b("SDK_MiniAppBox", "gdtBox onError, errCode = " + paramInt + ", errMsg = " + paramString);
+    betc.b("SDK_MiniAppBox", "gdtBox onError, errCode = " + paramInt + ", errMsg = " + paramString);
     AppBoxPlugin.MiniAppBox.access$100(this.this$1, true, "operateAppBox", this.val$compId, paramInt, this.val$callbackId);
     AppBoxPlugin.MiniAppBox.access$202(this.this$1, false);
   }
   
   public void onLoad()
   {
-    besl.b("SDK_MiniAppBox", "gdtBox onLoad");
+    betc.b("SDK_MiniAppBox", "gdtBox onLoad");
     AppBoxPlugin.MiniAppBox.access$100(this.this$1, true, "operateAppBox", this.val$compId, 0, this.val$callbackId);
     AppBoxPlugin.MiniAppBox.access$202(this.this$1, false);
   }
   
   public void onShow()
   {
-    besl.b("SDK_MiniAppBox", "gdtBox onShow");
+    betc.b("SDK_MiniAppBox", "gdtBox onShow");
   }
 }
 

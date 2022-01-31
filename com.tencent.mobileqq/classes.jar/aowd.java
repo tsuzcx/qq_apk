@@ -1,103 +1,19 @@
-class aowd
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+final class aowd
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private aowe jdField_a_of_type_Aowe;
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private byte[] c;
-  
-  aowd(aovy paramaovy)
+  aowd(Looper paramLooper)
   {
-    a(false, 0L, null, null, 0);
+    super(paramLooper);
   }
   
-  aowd(aovy paramaovy, long paramLong, aowe paramaowe)
+  public void handleMessage(Message paramMessage)
   {
-    a(false, paramLong, null, paramaowe, 0);
-  }
-  
-  aowd(aovy paramaovy, aowe paramaowe)
-  {
-    a(false, 0L, null, paramaowe, 0);
-  }
-  
-  aowd(aovy paramaovy, String paramString)
-  {
-    a(false, 0L, paramString, null, 0);
-  }
-  
-  aowd(aovy paramaovy, boolean paramBoolean, long paramLong)
-  {
-    a(paramBoolean, paramLong, null, null, 0);
-  }
-  
-  aowd(aovy paramaovy, boolean paramBoolean, long paramLong, aowe paramaowe, int paramInt)
-  {
-    a(paramBoolean, paramLong, null, paramaowe, paramInt);
-  }
-  
-  aowd(aovy paramaovy, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, aowe paramaowe)
-  {
-    a(false, 0L, null, paramaowe, 0);
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.c = paramArrayOfByte3;
-  }
-  
-  private void a(boolean paramBoolean, long paramLong, String paramString, aowe paramaowe, int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aowe = paramaowe;
-    this.jdField_a_of_type_JavaLangObject = null;
-  }
-  
-  int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  aowe a()
-  {
-    return this.jdField_a_of_type_Aowe;
-  }
-  
-  Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Int += 1;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  int b()
-  {
-    return this.jdField_a_of_type_Int;
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((aowi)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 

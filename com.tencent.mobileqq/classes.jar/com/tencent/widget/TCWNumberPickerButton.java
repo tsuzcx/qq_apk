@@ -31,7 +31,7 @@ public class TCWNumberPickerButton
     if (2131368067 == getId()) {
       this.a.a();
     }
-    while (2131364962 != getId()) {
+    while (2131364961 != getId()) {
       return;
     }
     this.a.b();

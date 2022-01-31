@@ -1,14 +1,23 @@
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
 
 public class bcvb
-  implements bfos
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bcvb(ShareActionSheetV2 paramShareActionSheetV2) {}
+  public bcvb(QUSHalfScreenFloatView paramQUSHalfScreenFloatView, View paramView, int paramInt) {}
   
-  public void onDismiss()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ShareActionSheetV2.b(this.a).onDismiss(this.a.a);
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
+    {
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import besl;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy.PayResponse;
 import org.json.JSONException;
@@ -90,12 +90,12 @@ class PayJsPlugin$9$1
       {
         for (;;)
         {
-          besl.d("PayJsPlugin", "", localJSONException2);
+          betc.d("PayJsPlugin", "", localJSONException2);
           m = i3;
           continue;
           n = 3;
           continue;
-          besl.b("PayJsPlugin", "handleRechargeGame onPayCallBack, , consumeAppid = " + str2 + ", consumePrepayId = " + str1 + ", consumeStarCurrency = " + i + ", consumeTopupAmount = " + k + ", consumeBalanceAmount = " + j + ", payChannel = " + n);
+          betc.b("PayJsPlugin", "handleRechargeGame onPayCallBack, , consumeAppid = " + str2 + ", consumePrepayId = " + str1 + ", consumeStarCurrency = " + i + ", consumeTopupAmount = " + k + ", consumeBalanceAmount = " + j + ", payChannel = " + n);
           continue;
           PayJsPlugin.access$300(this.this$1.this$0, this.this$1.val$req, localJSONObject1);
           continue;
@@ -123,7 +123,7 @@ class PayJsPlugin$9$1
           break label468;
         }
         this.this$1.this$0.invokeMidasConsume(this.this$1.val$req, str2, str1, i, j, k, n, m);
-        besl.b("PayJsPlugin", "handleRechargeGame onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
+        betc.b("PayJsPlugin", "handleRechargeGame onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
       }
     }
     catch (JSONException localJSONException1)
@@ -143,7 +143,7 @@ class PayJsPlugin$9$1
   
   public void payNeedLogin()
   {
-    besl.d("PayJsPlugin", "handleRechargeGame payNeedLogin");
+    betc.d("PayJsPlugin", "handleRechargeGame payNeedLogin");
     PayJsPlugin.access$200(this.this$1.this$0, this.this$1.val$req, null, "payNeedLogin");
   }
 }

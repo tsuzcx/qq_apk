@@ -1,48 +1,31 @@
-import android.util.SparseArray;
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class awzu
-  extends axat
 {
-  public int a;
-  public long a;
-  private SparseArray<Object> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g = true;
-  public boolean h;
-  
-  public awzu(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
-  }
-  
-  public Object a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    HashSet localHashSet = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    paramList1 = paramList1.iterator();
+    paramList2 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      CardProfile localCardProfile = (CardProfile)paramList1.next();
+      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
+      localArrayList.add(localCardProfile);
     }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    while (paramList2.hasNext())
+    {
+      paramList1 = (CardProfile)paramList2.next();
+      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
+        localArrayList.add(paramList1);
+      }
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+    return localArrayList;
   }
 }
 

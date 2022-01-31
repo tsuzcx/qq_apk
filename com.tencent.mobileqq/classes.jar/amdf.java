@@ -1,18 +1,8 @@
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
 
-public class amdf
+public abstract interface amdf
 {
-  public Set<Integer> a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
-  
-  public amdf()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
+  public abstract void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem);
 }
 
 

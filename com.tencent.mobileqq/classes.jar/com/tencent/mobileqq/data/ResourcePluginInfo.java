@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import aukn;
-import aulx;
-import auma;
+import auko;
+import aukp;
+import aulz;
+import aumc;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends aukm
+  extends auko
 {
-  @aulx
+  @aulz
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @auma
+  @aumc
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,40 +39,40 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(aukn paramaukn, String paramString)
+  public static ResourcePluginInfo find(aukp paramaukp, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramaukn != null)
+    if (paramaukp != null)
     {
       localObject1 = localObject2;
       if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramaukn.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
+        localObject1 = (ResourcePluginInfo)paramaukp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
       }
     }
     return localObject1;
   }
   
-  public static List<ResourcePluginInfo> getAll(aukn paramaukn, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(aukp paramaukp, int paramInt, boolean paramBoolean)
   {
     List localList = null;
-    if (paramaukn != null)
+    if (paramaukp != null)
     {
       if (paramBoolean) {
-        localList = paramaukn.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        localList = paramaukp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
     }
     else {
       return localList;
     }
-    return paramaukn.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return paramaukp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  public static void persistOrReplace(aukn paramaukn, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(aukp paramaukp, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramaukn != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramaukp != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramaukn.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramaukp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
       if (localResourcePluginInfo != null)
       {
         localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
@@ -96,23 +96,23 @@ public class ResourcePluginInfo
         localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
         localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
         localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramaukn.a(localResourcePluginInfo);
+        paramaukp.a(localResourcePluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramaukn.a(paramResourcePluginInfo);
+    paramaukp.a(paramResourcePluginInfo);
   }
   
-  public static void remove(aukn paramaukn, String paramString)
+  public static void remove(aukp paramaukp, String paramString)
   {
-    if ((paramaukn != null) && (paramString != null))
+    if ((paramaukp != null) && (paramString != null))
     {
-      paramString = find(paramaukn, paramString);
+      paramString = find(paramaukp, paramString);
       if (paramString != null) {
-        paramaukn.b(paramString);
+        paramaukp.b(paramString);
       }
     }
   }

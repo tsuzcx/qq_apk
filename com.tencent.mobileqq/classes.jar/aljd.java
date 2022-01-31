@@ -1,11 +1,15 @@
-public abstract interface aljd
-  extends alji
+public class aljd
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat);
+  public String toString()
+  {
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
+  }
 }
 
 

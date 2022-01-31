@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-class basc
-  implements aycb
+public class basc
+  implements aybj
 {
-  basc(basb parambasb) {}
+  public basc(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
   public void a()
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.a != null) {
-      this.a.a.a.a.a.a();
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
+    }
+    for (;;)
+    {
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
+      }
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
     }
   }
 }

@@ -1,53 +1,57 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-class txe
-  extends SimpleObserver<List<tsr>>
+public class txe
+  extends twq
 {
-  txe(txd paramtxd, tww paramtww) {}
+  private ShareFromMemoryPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo;
+  private String jdField_a_of_type_JavaLangString = "";
+  private twl jdField_a_of_type_Twl;
   
-  public void a(List<tsr> paramList)
+  public txe(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo)
   {
-    ArrayList localArrayList = new ArrayList();
-    twp localtwp = new twp(txd.a(this.jdField_a_of_type_Txd));
-    localtwp.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      tsr localtsr = (tsr)localIterator.next();
-      String str = localtsr.jdField_a_of_type_JavaLangString;
-      localtwp.jdField_a_of_type_JavaUtilMap.put(localtsr.b, str);
-      localtwp.jdField_a_of_type_JavaUtilList.add(localtsr.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo = paramShareFromMemoryPlayInfo;
+    this.jdField_a_of_type_Twl = new twl(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+  }
+  
+  public List<tws> a(List<twl> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new txf(this, (twl)paramList.next()));
     }
-    paramList = txb.a(paramList);
-    if ((paramList != null) && (!txd.a(this.jdField_a_of_type_Txd).a())) {
-      localtwp.jdField_a_of_type_JavaLangString = paramList.b;
-    }
-    localArrayList.add(localtwp);
-    paramList = this.jdField_a_of_type_Tww;
-    if (!txd.a(this.jdField_a_of_type_Txd).a()) {}
-    for (boolean bool = true;; bool = false)
+    return localArrayList;
+  }
+  
+  public two a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.videoListOrder == 0)
     {
-      paramList.a(localArrayList, bool);
-      return;
+      localObject = ((uwd)tcz.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId, 1);
+      if ((localObject == null) || (((FeedVideoInfo)localObject).mVideoItemList.size() <= 0)) {}
+    }
+    for (Object localObject = ((StoryVideoItem)((FeedVideoInfo)localObject).mVideoItemList.get(0)).mVid;; localObject = null)
+    {
+      ved.d("Q.qqstory.player.data.ShareFromMemoryPlayPageLoader", "getStartInfo GroupId=" + this.jdField_a_of_type_Twl + ",vid=" + (String)localObject + ",feedId=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
+      return new two(this.jdField_a_of_type_Twl, (String)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo.feedId);
     }
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a() {}
+  
+  public void a(int paramInt, twr paramtwr)
   {
-    int i = 0;
-    if ((paramError instanceof ErrorMessage)) {
-      i = ((ErrorMessage)paramError).errorCode;
-    }
-    paramError = new ArrayList();
-    paramError.add(txd.a(this.jdField_a_of_type_Txd));
-    this.jdField_a_of_type_Tww.a(new ErrorMessage(i, "fail"), paramError);
+    paramtwr.a(new ErrorMessage(), Collections.singletonList(this.jdField_a_of_type_Twl), true);
   }
+  
+  public void b() {}
 }
 
 

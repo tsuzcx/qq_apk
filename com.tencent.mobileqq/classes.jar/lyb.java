@@ -1,10 +1,13 @@
-import android.os.Binder;
-import com.tencent.av.service.UtilsServiceForAV;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lyb
-  extends Binder
+  implements DialogInterface.OnClickListener
 {
-  public lyb(UtilsServiceForAV paramUtilsServiceForAV) {}
+  public lyb(AVSchema paramAVSchema) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

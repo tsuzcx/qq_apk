@@ -1,40 +1,45 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import com.tencent.qflutter.utils.FLog.Log;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqak
-  extends QIPCModule
+  implements FLog.Log
 {
-  private static volatile aqak a;
-  
-  private aqak(String paramString)
+  public void d(String paramString1, String paramString2)
   {
-    super(paramString);
+    if (QLog.isDebugVersion()) {
+      QLog.d(paramString1, 4, paramString2);
+    }
   }
   
-  public static aqak a()
+  public void e(String paramString1, String paramString2)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new aqak("FlutterMainQIPCModule");
-      }
-      return a;
-    }
-    finally {}
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ("ACTION_INSTALL_ENGINE".equals(paramString))
-    {
-      aqaa.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), new aqal(this));
-      return EIPCResult.createSuccessResult(null);
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
     }
-    return null;
+  }
+  
+  public void v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

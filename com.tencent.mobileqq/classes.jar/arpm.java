@@ -1,186 +1,82 @@
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.ContactsMiniAppEntryManager;
-import com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.graphics.PointF;
+import android.view.animation.Interpolator;
 
 public class arpm
-  extends afpz
-  implements afqu, aftq
+  implements Interpolator
 {
-  private int jdField_a_of_type_Int;
-  private CommonRefreshLayout jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout;
-  private ContactRefreshHeader jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader;
-  protected QQAppInterface a;
-  private ContactsMiniAppEntryManager jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new arpn(this));
-  private boolean jdField_a_of_type_Boolean;
+  protected PointF a;
+  protected PointF b;
+  protected PointF c = new PointF();
+  protected PointF d = new PointF();
+  protected PointF e = new PointF();
   
-  public arpm(Activity paramActivity)
+  public arpm(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    super(paramActivity);
-    if ((paramActivity instanceof SplashActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
+    this((float)paramDouble1, (float)paramDouble2, (float)paramDouble3, (float)paramDouble4);
+  }
+  
+  public arpm(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this(new PointF(paramFloat1, paramFloat2), new PointF(paramFloat3, paramFloat4));
+  }
+  
+  public arpm(PointF paramPointF1, PointF paramPointF2)
+  {
+    if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F)) {
+      throw new IllegalArgumentException("startX value must be in the range [0, 1]");
     }
-  }
-  
-  private long a()
-  {
-    return a().getSharedPreferences("last_leba_mini_app_refresh_time", 0).getLong("last_leba_mini_app_refresh_time", 0L);
-  }
-  
-  public static boolean a()
-  {
-    amtb localamtb = amtc.a();
-    return (localamtb != null) && (localamtb.f());
-  }
-  
-  private void g()
-  {
-    long l = System.currentTimeMillis();
-    a().getSharedPreferences("last_leba_mini_app_refresh_time", 0).edit().putLong("last_leba_mini_app_refresh_time", l).commit();
-  }
-  
-  private void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaViewController", 2, "initMicroAppEntryLayout.");
+    if ((paramPointF2.x < 0.0F) || (paramPointF2.x > 1.0F)) {
+      throw new IllegalArgumentException("endX value must be in the range [0, 1]");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    this.a = paramPointF1;
+    this.b = paramPointF2;
+  }
+  
+  private float c(float paramFloat)
+  {
+    return this.e.x + (2.0F * this.d.x + 3.0F * this.c.x * paramFloat) * paramFloat;
+  }
+  
+  private float d(float paramFloat)
+  {
+    this.e.x = (this.a.x * 3.0F);
+    this.d.x = ((this.b.x - this.a.x) * 3.0F - this.e.x);
+    this.c.x = (1.0F - this.e.x - this.d.x);
+    return (this.e.x + (this.d.x + this.c.x * paramFloat) * paramFloat) * paramFloat;
+  }
+  
+  protected float a(float paramFloat)
+  {
+    this.e.y = (this.a.y * 3.0F);
+    this.d.y = ((this.b.y - this.a.y) * 3.0F - this.e.y);
+    this.c.y = (1.0F - this.e.y - this.d.y);
+    return (this.e.y + (this.d.y + this.c.y * paramFloat) * paramFloat) * paramFloat;
+  }
+  
+  protected float b(float paramFloat)
+  {
+    int i = 1;
+    float f1 = paramFloat;
+    for (;;)
     {
-      QLog.e("LebaViewController", 1, "initMicroAppEntryLayout, mApp = null.");
-      return;
-    }
-    MiniAppUserAppInfoListManager localMiniAppUserAppInfoListManager = (MiniAppUserAppInfoListManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(309);
-    if (localMiniAppUserAppInfoListManager != null) {
-      localMiniAppUserAppInfoListManager.sendUserAppListRequest(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), 20L);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager = new ContactsMiniAppEntryManager(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader, 2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setMiniAppScrollListener(this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager.showMicroAppPanel(MainFragment.e);
-  }
-  
-  public void a()
-  {
-    if (bbev.g(BaseApplication.getContext()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader != null)
+      float f2;
+      if (i < 14)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader.a(0);
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(5, 800L);
+        f2 = d(f1) - paramFloat;
+        if (Math.abs(f2) >= 0.001D) {}
       }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaViewController", 2, "refresh falied. network unavailable");
-    }
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(3);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 1000L);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaViewController", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
-    }
-    paramObject = this.jdField_a_of_type_MqqOsMqqHandler;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramObject = paramObject.obtainMessage(4, paramInt, i);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramObject);
-      return;
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout = ((CommonRefreshLayout)paramView.findViewById(2131376742));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setRefreshCompleteDelayDuration(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader = ((ContactRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.findViewById(2131376740));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader.setRefreshHeaderUpdateListener(new arpo(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setOnRefreshListener(this);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131369090));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setTargetListView(this.jdField_a_of_type_ComTencentWidgetListView);
-    if (a())
-    {
-      h();
-      this.jdField_a_of_type_ComTencentWidgetListView.setNeedCheckSpringback(false);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOverscrollHeader(null);
-      this.jdField_a_of_type_ComTencentWidgetListView.disableOverScrollTop(true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setRefreshEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetListView.disableOverScrollTop(false);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void am_() {}
-  
-  public void b()
-  {
-    super.b();
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager.onAccountChanged(paramQQAppInterface);
-    }
-    if ((!a()) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager.shutdownMiniAppPullDownEntry(this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout, MainFragment.e);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setRefreshEnabled(false);
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-        this.jdField_a_of_type_ComTencentWidgetListView.disableOverScrollTop(false);
+      else
+      {
+        return f1;
       }
+      f1 -= f2 / c(f1);
+      i += 1;
     }
   }
   
-  public void c()
+  public float getInterpolation(float paramFloat)
   {
-    super.c();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void d()
-  {
-    super.d();
-  }
-  
-  public void e()
-  {
-    super.e();
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniEntryContactsMiniAppEntryManager.onPostThemeChanged();
-    }
+    return a(b(paramFloat));
   }
 }
 

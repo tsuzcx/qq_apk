@@ -1,29 +1,16 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
-import com.tencent.biz.subscribe.network.DoTipOffRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
 
 final class wsl
-  implements bfoq
+  implements bfph
 {
-  wsl(CertifiedAccountMeta.StUser paramStUser, CertifiedAccountMeta.StFeed paramStFeed, wsq paramwsq, wsp paramwsp, bfol parambfol) {}
+  wsl(wsn paramwsn, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (this.jdField_a_of_type_Wsn != null) {
+      this.jdField_a_of_type_Wsn.a(true);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      paramView = new DoTipOffRequest(0, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 2);
-      VSNetworkHelper.a().a(paramView, new wsm(this));
-      if (this.jdField_a_of_type_Wsp != null) {
-        this.jdField_a_of_type_Wsp.a(false);
-      }
-    }
+    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 

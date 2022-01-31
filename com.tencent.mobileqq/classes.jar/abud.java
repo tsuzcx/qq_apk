@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class abud
-  implements amkj
+  implements avuk
 {
-  public abud(QQBrowserActivity paramQQBrowserActivity) {}
+  public abud(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onColorNoteAnimFinish()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(avuo paramavuo) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    QQBrowserActivity.a(this.a);
+    if (!paramBoolean)
+    {
+      bbdj.a(this.a, 230, this.a.getString(2131698463), ajya.a(2131710362), new abue(this), null).show();
+      return;
+    }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

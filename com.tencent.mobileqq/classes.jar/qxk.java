@@ -1,35 +1,14 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
 class qxk
-  extends npu
+  implements qxm<RecyclerView.ViewHolder>
 {
-  private qxk(qxj paramqxj) {}
+  qxk(qxj paramqxj, int paramInt) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    for (;;)
-    {
-      return;
-      String str = paramBundle.getString("VALUE_VIDEO_VID");
-      int i = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-      if (!TextUtils.isEmpty(str))
-      {
-        paramBundle = qxj.a(this.a).a().iterator();
-        while (paramBundle.hasNext())
-        {
-          VideoInfo localVideoInfo = (VideoInfo)paramBundle.next();
-          if ((str.equals(localVideoInfo.a)) && (i > 0) && (localVideoInfo.s == 0))
-          {
-            localVideoInfo.s = i;
-            qxj.a(this.a).b(localVideoInfo);
-          }
-        }
-      }
+    if ((paramViewHolder instanceof qxp)) {
+      ((qxp)paramViewHolder).a(this.jdField_a_of_type_Int);
     }
   }
 }

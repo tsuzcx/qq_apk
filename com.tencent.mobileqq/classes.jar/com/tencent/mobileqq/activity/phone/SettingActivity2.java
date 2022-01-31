@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.phone;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import agjw;
-import agks;
-import ajyc;
+import agju;
+import agkq;
+import ajya;
+import amtg;
 import amth;
 import amti;
-import amtj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,12 +15,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anec;
-import aume;
-import axqw;
-import bbev;
-import bfol;
-import bfoy;
+import aneh;
+import aumg;
+import axqy;
+import bbfj;
+import bfpc;
+import bfpp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
@@ -35,13 +35,13 @@ public class SettingActivity2
   public int a;
   public Button a;
   public TextView a;
-  public aume a;
+  public aumg a;
   public Boolean a;
   public int b;
   public Button b;
   public TextView b;
-  public aume b;
-  public aume c;
+  public aumg b;
+  public aumg c;
   
   public SettingActivity2()
   {
@@ -78,12 +78,12 @@ public class SettingActivity2
     }
     this.jdField_b_of_type_Int = i;
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-    setTitle(ajyc.a(2131713861));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364636));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364635));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369823));
+    setTitle(ajya.a(2131713872));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364635));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364634));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369822));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131379159));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131379164));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if ((i == 7) || (i == 6))
     {
@@ -91,12 +91,12 @@ public class SettingActivity2
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject2 = amtj.a();
+      localObject2 = amti.a();
       if (bool)
       {
-        localObject1 = ((amth)localObject2).b.a;
-        str = ((amth)localObject2).b.b;
-        localObject2 = ((amth)localObject2).b.c;
+        localObject1 = ((amtg)localObject2).b.a;
+        str = ((amtg)localObject2).b.b;
+        localObject2 = ((amtg)localObject2).b.c;
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
         this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
@@ -111,14 +111,14 @@ public class SettingActivity2
     for (;;)
     {
       if (AppSetting.d) {
-        ((ImageView)localObject1).setContentDescription(getString(2131695019));
+        ((ImageView)localObject1).setContentDescription(getString(2131695020));
       }
       ((ImageView)localObject1).setBackgroundResource(2130839753);
       ((ImageView)localObject1).setOnClickListener(this);
       return;
-      localObject1 = ((amth)localObject2).a.a;
-      str = ((amth)localObject2).a.b;
-      localObject2 = ((amth)localObject2).a.c;
+      localObject1 = ((amtg)localObject2).a.a;
+      str = ((amtg)localObject2).a.b;
+      localObject2 = ((amtg)localObject2).a.c;
       break;
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
@@ -132,30 +132,30 @@ public class SettingActivity2
   
   public void a(String paramString, int paramInt)
   {
-    axqw.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    axqy.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   public void b()
   {
-    bfol localbfol = (bfol)bfoy.a(this, null);
-    localbfol.setCanceledOnTouchOutside(true);
-    localbfol.a(ajyc.a(2131713862), 3);
-    localbfol.c(2131690596);
-    localbfol.a(new agks(this, localbfol));
-    localbfol.c(2131690596);
-    localbfol.show();
+    bfpc localbfpc = (bfpc)bfpp.a(this, null);
+    localbfpc.setCanceledOnTouchOutside(true);
+    localbfpc.a(ajya.a(2131713873), 3);
+    localbfpc.c(2131690596);
+    localbfpc.a(new agkq(this, localbfpc));
+    localbfpc.c(2131690596);
+    localbfpc.show();
   }
   
   public void c()
   {
-    if (!bbev.d(this))
+    if (!bbfj.d(this))
     {
-      b(2131694672);
+      b(2131694673);
       return;
     }
     SettingActivity2.3 local3 = new SettingActivity2.3(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agjw(this.app));
-    anec.a(this, this.app, local3, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agju(this.app));
+    aneh.a(this, this.app, local3, localDenyRunnable);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -188,22 +188,22 @@ public class SettingActivity2
     }
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("kSrouce", -1);
     super.setContentView(2131559378);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364634));
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364633));
     a();
     return true;
   }
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Aume != null)
+    if (this.jdField_a_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Aume);
-      this.jdField_a_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aumg);
+      this.jdField_a_of_type_Aumg = null;
     }
-    if (this.jdField_b_of_type_Aume != null)
+    if (this.jdField_b_of_type_Aumg != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Aume);
-      this.jdField_b_of_type_Aume = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Aumg);
+      this.jdField_b_of_type_Aumg = null;
     }
     this.app.removeHandler(SettingActivity2.class);
     super.doOnDestroy();
@@ -226,14 +226,14 @@ public class SettingActivity2
     case 2131368441: 
       b();
       return;
-    case 2131369823: 
+    case 2131369822: 
       a("0X8005B89", 0);
       c();
       return;
     }
     paramView = new SettingActivity2.4(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agjw(this.app));
-    anec.a(this, this.app, paramView, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new agju(this.app));
+    aneh.a(this, this.app, paramView, localDenyRunnable);
   }
 }
 

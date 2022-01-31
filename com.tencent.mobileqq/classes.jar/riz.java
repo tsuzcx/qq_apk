@@ -1,23 +1,20 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 
 public class riz
-  implements InvocationHandler
+  implements rmg
 {
-  public riz(FastWebActivity.25.2 param2) {}
+  public riz(FastWebActivity paramFastWebActivity) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void a(rmh paramrmh)
   {
-    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.a.a).setVisibility(8);
-    QLog.d(FastWebActivity.a(this.a.a.a), 1, "open web page, set activity transparent");
-    return null;
+    ArticleInfo localArticleInfo = paramrmh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    int i = FastWebActivity.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i(FastWebActivity.a(this.a), 2, "articleInfo" + localArticleInfo);
+    }
+    rno.a(localArticleInfo, FastWebActivity.d(this.a), i, paramrmh.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.e(this.a));
   }
 }
 

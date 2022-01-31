@@ -1,100 +1,42 @@
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-import org.json.JSONArray;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class tem
 {
-  public final int a;
-  private final String a;
-  public final String[] a;
-  public final int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public final int i;
+  @vyj(a="gametype")
+  public int a;
+  @vyj(a="gameid")
+  public String a;
+  @vyj(a="name")
+  public String b;
+  @vyj(a="result")
+  public String c;
   
-  private tem(JSONObject paramJSONObject)
+  public static tem a(String paramString)
   {
-    int k;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
-      this.b = paramJSONObject.getInt("id");
-      this.i = paramJSONObject.getJSONObject("a").getInt("r");
-      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      this.c = localJSONArray.getInt(0);
-      this.d = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
-      this.e = localJSONArray.getInt(0);
-      this.f = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
-      this.g = localJSONArray.getInt(0);
-      this.h = localJSONArray.getInt(1);
-      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
-      k = paramJSONObject.length();
-      if (k < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
-    while (j < k)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
-      j += 1;
-    }
-  }
-  
-  public static tem a(@Nullable String paramString)
-  {
-    try
-    {
-      paramString = a(new JSONObject(paramString));
+      paramString = (tem)JsonORM.a(new JSONObject(paramString), tem.class);
       return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
     }
     catch (JSONException paramString)
     {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-      return null;
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
     }
-    catch (NullPointerException paramString)
-    {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-    }
-    return null;
-  }
-  
-  public static tem a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = new tem(paramJSONObject);
-      return paramJSONObject;
-    }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      veg.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import avws;
 import avwu;
-import avwv;
+import avww;
+import avwx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$2
   implements Runnable
 {
-  public DCShortVideo$2(avws paramavws, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
+  public DCShortVideo$2(avwu paramavwu, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
   public void run()
   {
-    Object localObject = new avwu();
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (avwv)localObject);
-    ((avwu)localObject).jdField_a_of_type_Int = this.c;
+    Object localObject = new avww();
+    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (avwx)localObject);
+    ((avww)localObject).jdField_a_of_type_Int = this.c;
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((avwu)localObject).f + ",uinType = " + ((avwu)localObject).b + ",groupMemCount = " + ((avwu)localObject).c + ",age = " + ((avwu)localObject).d + ",gender = " + ((avwu)localObject).e + ",reprotHour = " + ((avwu)localObject).g + ",netType = " + ((avwu)localObject).h + ",playAction = " + ((avwu)localObject).jdField_a_of_type_Int);
+      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((avww)localObject).f + ",uinType = " + ((avww)localObject).b + ",groupMemCount = " + ((avww)localObject).c + ",age = " + ((avww)localObject).d + ",gender = " + ((avww)localObject).e + ",reprotHour = " + ((avww)localObject).g + ",netType = " + ((avww)localObject).h + ",playAction = " + ((avww)localObject).jdField_a_of_type_Int);
     }
-    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((avwu)localObject).a("ShortVideo.Preview"));
+    localObject = new DataReport.ReportTask("ShortVideo.Preview", ((avww)localObject).a("ShortVideo.Preview"));
     DataReport.a().a((DataReport.ReportTask)localObject);
   }
 }

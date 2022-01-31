@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager.pendant;
 
 import android.text.TextUtils;
-import liu;
-import mat;
+import lip;
+import mao;
 
 public class EffectPendantTips$1
   implements Runnable
 {
-  public EffectPendantTips$1(liu paramliu, String paramString) {}
+  public EffectPendantTips$1(lip paramlip, String paramString) {}
   
   public void run()
   {
     try
     {
       if (!TextUtils.isEmpty(this.a)) {
-        mat.a(liu.a(this.this$0), 1016, this.a);
+        mao.a(lip.a(this.this$0), 1016, this.a);
       }
       return;
     }

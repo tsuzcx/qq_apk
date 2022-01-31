@@ -3,44 +3,44 @@ package com.tencent.biz.qqstory.network.handler;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import syr;
-import syv;
-import tlk;
-import tnj;
-import veg;
+import syo;
+import sys;
+import tlh;
+import tng;
+import ved;
 
 public class VidToBasicInfoHandler$1
   implements Runnable
 {
-  public VidToBasicInfoHandler$1(tlk paramtlk) {}
+  public VidToBasicInfoHandler$1(tlh paramtlh) {}
   
   public void run()
   {
     Object localObject;
-    if (tlk.a(this.this$0))
+    if (tlh.a(this.this$0))
     {
       localObject = this.this$0.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        Long localLong = (Long)tlk.a().get(str);
+        Long localLong = (Long)tlh.a().get(str);
         if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 300000L))
         {
           ((Iterator)localObject).remove();
-          veg.a("Q.qqstory.net:VidToBasicInfoHandler", "remove same request for vid info:%s", str);
+          ved.a("Q.qqstory.net:VidToBasicInfoHandler", "remove same request for vid info:%s", str);
         }
         else
         {
-          tlk.a().put(str, Long.valueOf(System.currentTimeMillis()));
+          tlh.a().put(str, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
     if (this.this$0.a.size() > 0)
     {
-      veg.a("Q.qqstory.net:VidToBasicInfoHandler", "request for vid info:%s", this.this$0.a);
-      localObject = new tnj();
-      ((tnj)localObject).a = this.this$0.a;
-      syr.a().a((syv)localObject, this.this$0);
+      ved.a("Q.qqstory.net:VidToBasicInfoHandler", "request for vid info:%s", this.this$0.a);
+      localObject = new tng();
+      ((tng)localObject).a = this.this$0.a;
+      syo.a().a((sys)localObject, this.this$0);
     }
   }
 }

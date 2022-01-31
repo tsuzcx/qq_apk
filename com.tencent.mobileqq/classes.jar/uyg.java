@@ -1,30 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uyg
-  implements URLDrawable.URLDrawableListener
+  extends QQUIEventReceiver<uye, tli>
 {
-  public uyg(AutoPlayImageView paramAutoPlayImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public uyg(@NonNull uye paramuye)
   {
-    if (AutoPlayImageView.a(this.a) == 2) {
-      if ((paramURLDrawable != null) && ((paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
-        ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).pause();
-      }
-    }
-    while ((AutoPlayImageView.a(this.a) != 3) || (paramURLDrawable == null) || (!(paramURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))) {
+    super(paramuye);
+  }
+  
+  public void a(@NonNull uye paramuye, @NonNull tli paramtli)
+  {
+    if ((paramtli.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtli.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    ((QQLiveDrawable)paramURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
+    paramuye.b(paramtli.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tli.class;
   }
 }
 

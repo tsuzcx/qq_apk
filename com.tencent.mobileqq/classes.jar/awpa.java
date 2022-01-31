@@ -1,74 +1,46 @@
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class awpa
-  extends awop
+  extends awor
 {
-  public static final String a;
-  public List<awpl> a;
-  public String b;
+  public awon a;
   public boolean b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = awoz.class.getSimpleName();
-  }
   
   public awpa(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  private List<awpl> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
-    {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        localObject = new awpl(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
-        if (((awpl)localObject).a()) {
-          localArrayList.add(localObject);
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
+    this.f = false;
   }
   
   public void a(String paramString)
   {
-    this.f = false;
     try
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
-      this.l = paramString.optString("jumpUrl");
-      this.m = paramString.optString("subItemLeftIconUrl");
-      paramString = paramString.optJSONArray("itemList");
-      if (paramString != null) {
-        this.jdField_a_of_type_JavaUtilList = a(paramString);
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("appname");
+      String str1 = ((JSONObject)localObject).optString("desc");
+      String str2 = ((JSONObject)localObject).optString("appIcon");
+      localObject = new MiniAppLocalSearchEntity(((JSONObject)localObject).optString("appid"), paramString, str2, str1, ((JSONObject)localObject).optInt("showMask", 0));
+      this.a = new awon((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.c, (MiniAppLocalSearchEntity)localObject, this.g);
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.g)) && (paramString.equalsIgnoreCase(this.g)))
+      {
+        this.b = true;
+        return;
       }
+      this.b = false;
       return;
     }
     catch (JSONException paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
     }
   }
 }

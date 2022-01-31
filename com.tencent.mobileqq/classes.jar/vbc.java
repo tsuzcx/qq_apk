@@ -1,10 +1,39 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public abstract interface vbc
+class vbc
+  implements INetInfoHandler
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
+  vbc(vba paramvba) {}
+  
+  public void onNetMobile2None()
+  {
+    vba.b(this.a, vba.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    vba.b(this.a, vba.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    vba.b(this.a, vba.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    vba.b(this.a, vba.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    vba.b(this.a, vba.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    vba.b(this.a, vba.a(3));
+  }
 }
 
 

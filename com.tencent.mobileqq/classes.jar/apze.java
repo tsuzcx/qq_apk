@@ -1,16 +1,12 @@
-public class apze
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+public abstract interface apze
+  extends View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b = 1000L;
-  public String b;
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
   
-  public apze()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 1000L;
-  }
+  public abstract void b(View paramView, int paramInt1, int paramInt2);
 }
 
 

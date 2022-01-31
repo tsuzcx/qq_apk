@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.item;
 
-import osm;
-import rlu;
+import osj;
+import rlr;
 
 public class WebFastVideoViewCreator$VideoViewHolder$1$1
   implements Runnable
 {
-  public WebFastVideoViewCreator$VideoViewHolder$1$1(rlu paramrlu) {}
+  public WebFastVideoViewCreator$VideoViewHolder$1$1(rlr paramrlr) {}
   
   public void run()
   {
-    osm.a().b();
+    osj.a().b();
   }
 }
 

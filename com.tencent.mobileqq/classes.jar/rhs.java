@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
-public final class rhs
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+public class rhs
+  extends bfzx<RecyclerView.Adapter>
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
+  public rhs(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
   {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
+    super(paramAdapter);
   }
   
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

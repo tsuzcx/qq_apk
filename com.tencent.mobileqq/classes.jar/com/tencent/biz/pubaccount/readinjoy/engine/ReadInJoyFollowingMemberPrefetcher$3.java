@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.List;
-import osi;
+import osf;
 
 public class ReadInJoyFollowingMemberPrefetcher$3
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$3(osi paramosi, List paramList) {}
+  public ReadInJoyFollowingMemberPrefetcher$3(osf paramosf, List paramList) {}
   
   public void run()
   {
-    osi.a(this.this$0, this.a, 2);
+    osf.a(this.this$0, this.a, 2);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qtk;
+import qth;
 
 public class VideoFeedsVideoUIDelegate$6
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$6(qtk paramqtk, int paramInt, String paramString) {}
+  public VideoFeedsVideoUIDelegate$6(qth paramqth, int paramInt, String paramString) {}
   
   public void run()
   {
-    qtk.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    qth.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

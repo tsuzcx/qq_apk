@@ -1,37 +1,45 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class que
-  implements Handler.Callback
+  implements TVK_SDKMgr.OnLogListener
 {
-  que(qud paramqud) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public int d(String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          qud.a(this.a, false);
-          qud.a(this.a).removeMessages(0);
-        } while (qud.a(this.a) == null);
-        qud.a(this.a).c(true);
-        return true;
-        qud.a(this.a, false);
-        qud.a(this.a).removeMessages(1);
-      } while (qud.a(this.a) == null);
-      qud.a(this.a).c(false);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    qud.a(this.a, true);
-    return true;
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

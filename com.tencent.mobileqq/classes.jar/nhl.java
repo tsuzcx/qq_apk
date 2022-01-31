@@ -2,7 +2,7 @@ import android.view.View;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class nhl
-  implements bfoq
+  implements bfph
 {
   public nhl(AccountDetailActivity paramAccountDetailActivity) {}
   

@@ -1,22 +1,15 @@
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
 import android.view.View;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
 
 class bcbz
-  implements bbkq<Integer>
+  implements View.OnClickListener
 {
-  bcbz(bcbv parambcbv, View paramView, int paramInt) {}
+  bcbz(bcby parambcby) {}
   
-  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Bcbv.a.v) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bcbv.a.d = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bcbv.a.d != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bcbv.a.v = false;
+    this.a.mInActivity.finish();
   }
 }
 

@@ -1,22 +1,27 @@
-import android.os.MessageQueue.IdleHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.AVActivity.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class mba
-  implements MessageQueue.IdleHandler
+  implements View.OnClickListener
 {
-  public mba(AVActivity paramAVActivity) {}
+  public mba(AVActivity paramAVActivity, String paramString, long paramLong) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
+    mao.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1044);
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(2, false);
+    lhu.e(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvVideoController.a().d) + "");
+    if (AudioHelper.e()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "qav_double_screen_notify, click[" + this.jdField_a_of_type_JavaLangString + "], seq[" + this.jdField_a_of_type_Long + "]");
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
-    return false;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      new mck(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, false, 4).a(this.jdField_a_of_type_ComTencentAvUiAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    }
   }
 }
 

@@ -1,25 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class aogx
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aogx(ExtendFriendFragment paramExtendFriendFragment) {}
+  public aogx(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 

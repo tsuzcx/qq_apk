@@ -9,6 +9,8 @@ public class acoj
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    bdii.b("qqBaseActivity", bdfj.a(10010, 1, 2, 200));
+    bdfh.a().a(17, bdfj.a(10010, 1, 2, 200));
     this.a.finish();
   }
 }

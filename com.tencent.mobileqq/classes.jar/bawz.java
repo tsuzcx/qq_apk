@@ -1,27 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class bawz
+final class bawz
+  extends View.AccessibilityDelegate
 {
-  public static int a(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-  }
+  bawz(baxb parambaxb) {}
   
-  public static int b(Context paramContext, float paramFloat)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static int c(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if ((paramInt == 1) && (this.a != null)) {
+      this.a.onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bawz
  * JD-Core Version:    0.7.0.1
  */

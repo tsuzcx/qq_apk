@@ -1,23 +1,4 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
-
-public class abzg
-  extends MqqHandler
-{
-  public abzg(RegisterSendUpSms paramRegisterSendUpSms) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzg

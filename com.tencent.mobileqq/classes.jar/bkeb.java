@@ -1,54 +1,25 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.graphics.Bitmap;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class bkeb
-  implements bkak
+  implements bkax
 {
-  private bkeb(DoodleLayout paramDoodleLayout) {}
+  public bkeb(DoodleLayout paramDoodleLayout) {}
   
-  public void a(float paramFloat)
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (paramFloat >= 0.95F)
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onAnimate:" + paramFloat);
-      }
-      if ((this.a.jdField_a_of_type_Bkbv != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_Bkbv.a(this.a.a().a(), this.a.a().a().b());
-      }
+      ved.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
     }
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem)
-  {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
-      }
-    }
-    long l;
-    do
-    {
-      return;
-      l = SystemClock.uptimeMillis();
-    } while (l - this.a.jdField_a_of_type_Long <= 500L);
-    this.a.jdField_a_of_type_Long = l;
-    this.a.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1, true);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
-  {
-    this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
-  }
-  
-  public boolean a(bkam parambkam)
-  {
-    if ((DoodleLayout.b(this.a)) && (!DoodleLayout.c(this.a))) {
-      return false;
-    }
-    return this.a.a(parambkam, true);
   }
 }
 

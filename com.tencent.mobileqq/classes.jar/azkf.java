@@ -1,64 +1,85 @@
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azkf
+  extends VasWebviewJsPlugin
 {
-  int jdField_a_of_type_Int;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new azkg(this);
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  azlz jdField_a_of_type_Azlz;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View c;
+  public static String a;
+  protected Context a;
+  protected AppInterface a;
   
-  public azkf(View paramView, int paramInt)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378551));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378553));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378550));
-    this.c = paramView.findViewById(2131378552);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378554);
+    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
   }
   
-  public void a(Context paramContext, azlz paramazlz, View.OnClickListener paramOnClickListener)
+  public azkf()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    this.jdField_b_of_type_AndroidViewView.setTranslationY(0.0F);
-    this.c.setRotation(0.0F);
-    this.jdField_a_of_type_AndroidViewView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramazlz.b);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramazlz.b);
-    this.jdField_a_of_type_Azlz = paramazlz;
-    if (paramazlz.jdField_a_of_type_Int != 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramazlz.jdField_a_of_type_Int);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!paramazlz.jdField_a_of_type_Boolean) {
-        break label142;
-      }
-      this.c.setVisibility(0);
+    this.mPluginNameSpace = "Troop";
+  }
+  
+  public long getPluginBusiness()
+  {
+    return 2147614720L;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    for (;;)
+    if ("Troop".equals(paramString2)) {}
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-      return;
-      if (paramazlz.jdField_a_of_type_Int == 0) {
-        break;
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      if (paramJsBridgeListener == null) {
+        return false;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramazlz.jdField_a_of_type_Int);
-      break;
-      label142:
-      this.c.setVisibility(8);
     }
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        paramJsBridgeListener.printStackTrace();
+        paramJsBridgeListener = null;
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      int i;
+      do
+      {
+        for (;;)
+        {
+          paramJsBridgeListener.printStackTrace();
+          paramJsBridgeListener = null;
+        }
+        if (!"updateMaxMemberNum".equals(paramString3)) {
+          break;
+        }
+        paramString1 = paramJsBridgeListener.optString("groupId", "");
+        i = paramJsBridgeListener.optInt("type", 0);
+      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
+      paramJsBridgeListener = new Bundle();
+      paramJsBridgeListener.putString("groupId", paramString1);
+      paramJsBridgeListener.putInt("type", i);
+      sendRemoteReq(anqu.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
+    }
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
   }
 }
 

@@ -1,15 +1,17 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public abstract interface aorj
+class aorj
+  implements View.OnClickListener
 {
-  public abstract View.OnClickListener a(TextView paramTextView);
+  aorj(aori paramaori) {}
   
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onClick(View paramView)
+  {
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
+  }
 }
 
 

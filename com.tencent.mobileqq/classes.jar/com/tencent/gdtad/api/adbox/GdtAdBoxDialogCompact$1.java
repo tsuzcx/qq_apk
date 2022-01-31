@@ -1,11 +1,11 @@
 package com.tencent.gdtad.api.adbox;
 
-import ytm;
+import ytj;
 
 public class GdtAdBoxDialogCompact$1
   implements Runnable
 {
-  public GdtAdBoxDialogCompact$1(ytm paramytm) {}
+  public GdtAdBoxDialogCompact$1(ytj paramytj) {}
   
   public void run()
   {

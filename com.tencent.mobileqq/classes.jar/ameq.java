@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
 public final class ameq
-  implements Parcelable.Creator<CardMobileInfo>
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public CardMobileInfo a(Parcel paramParcel)
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    return new CardMobileInfo(paramParcel);
+    return new CardOCRInfo(paramParcel);
   }
   
-  public CardMobileInfo[] a(int paramInt)
+  public CardOCRInfo[] a(int paramInt)
   {
-    return new CardMobileInfo[paramInt];
+    return new CardOCRInfo[paramInt];
   }
 }
 

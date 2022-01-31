@@ -1,12 +1,33 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import java.lang.ref.WeakReference;
 
 class scy
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  scy(scu paramscu) {}
+  scy(scr paramscr) {}
   
-  public void onClick(View paramView) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.b > 0) && (this.a.c > 0)) {
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131372102)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    }
+  }
 }
 
 

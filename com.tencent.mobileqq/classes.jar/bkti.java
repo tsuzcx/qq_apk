@@ -1,23 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bkti
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public bkti(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bkti(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
+    this.a.s();
   }
 }
 

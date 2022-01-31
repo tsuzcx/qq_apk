@@ -1,30 +1,97 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.net.Uri;
 import java.nio.ByteBuffer;
+import java.util.Map;
 
 public class uez
 {
-  int jdField_a_of_type_Int;
-  public long a;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  public boolean a;
-  public boolean b;
+  private MediaExtractor a;
   
   public uez()
   {
     a();
   }
   
-  public void a()
+  public final int a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    return this.a.getTrackCount();
   }
   
-  public String toString()
+  public int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    return this.a.readSampleData(paramByteBuffer, paramInt);
+  }
+  
+  public long a()
+  {
+    return this.a.getSampleTime();
+  }
+  
+  @TargetApi(16)
+  public MediaFormat a(int paramInt)
+  {
+    MediaFormat localMediaFormat = this.a.getTrackFormat(paramInt);
+    if (localMediaFormat.getString("mime").startsWith("video/")) {
+      localMediaFormat.setFloat("mpx-dar", localMediaFormat.getInteger("width") / localMediaFormat.getInteger("height"));
+    }
+    return localMediaFormat;
+  }
+  
+  @TargetApi(16)
+  protected void a()
+  {
+    if (this.a != null) {
+      this.a.release();
+    }
+    this.a = new MediaExtractor();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.selectTrack(paramInt);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    this.a.seekTo(paramLong, paramInt);
+  }
+  
+  public final void a(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  {
+    this.a.setDataSource(paramContext, paramUri, paramMap);
+  }
+  
+  public boolean a()
+  {
+    return this.a.advance();
+  }
+  
+  public int b()
+  {
+    return this.a.getSampleTrackIndex();
+  }
+  
+  public long b()
+  {
+    return this.a.getCachedDuration();
+  }
+  
+  public void b()
+  {
+    this.a.release();
+  }
+  
+  public boolean b()
+  {
+    return this.a.hasCacheReachedEndOfStream();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

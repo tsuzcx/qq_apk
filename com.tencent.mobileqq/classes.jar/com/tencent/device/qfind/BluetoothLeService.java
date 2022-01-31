@@ -17,9 +17,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-import ygc;
-import ygd;
-import ygh;
+import yfz;
+import yga;
+import yge;
 
 @TargetApi(18)
 public class BluetoothLeService
@@ -34,10 +34,10 @@ public class BluetoothLeService
   public static String f;
   public static String g;
   private BluetoothAdapter jdField_a_of_type_AndroidBluetoothBluetoothAdapter;
-  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new ygc(this);
+  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new yfz(this);
   private BluetoothManager jdField_a_of_type_AndroidBluetoothBluetoothManager;
-  private List<ygh> jdField_a_of_type_JavaUtilList = new ArrayList();
-  ygd jdField_a_of_type_Ygd = new ygd(this);
+  private List<yge> jdField_a_of_type_JavaUtilList = new ArrayList();
+  yga jdField_a_of_type_Yga = new yga(this);
   
   static
   {
@@ -51,27 +51,27 @@ public class BluetoothLeService
     jdField_a_of_type_JavaUtilUUID = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
   }
   
-  private ygh a(int paramInt)
+  private yge a(int paramInt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      ygh localygh = (ygh)localIterator.next();
-      if (localygh.jdField_a_of_type_Int == paramInt) {
-        return localygh;
+      yge localyge = (yge)localIterator.next();
+      if (localyge.jdField_a_of_type_Int == paramInt) {
+        return localyge;
       }
     }
     return null;
   }
   
-  private ygh a(BluetoothGatt paramBluetoothGatt)
+  private yge a(BluetoothGatt paramBluetoothGatt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      ygh localygh = (ygh)localIterator.next();
-      if (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt == paramBluetoothGatt) {
-        return localygh;
+      yge localyge = (yge)localIterator.next();
+      if (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt == paramBluetoothGatt) {
+        return localyge;
       }
     }
     return null;
@@ -101,10 +101,10 @@ public class BluetoothLeService
     super.sendBroadcast(paramString);
   }
   
-  private void a(ygh paramygh)
+  private void a(yge paramyge)
   {
     int i = 20;
-    int j = paramygh.jdField_a_of_type_ArrayOfByte.length - paramygh.c;
+    int j = paramyge.jdField_a_of_type_ArrayOfByte.length - paramyge.c;
     if (j > 0) {
       if (j <= 20) {
         break label173;
@@ -112,18 +112,18 @@ public class BluetoothLeService
     }
     for (;;)
     {
-      paramygh.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setWriteType(2);
-      byte[] arrayOfByte = Arrays.copyOfRange(paramygh.jdField_a_of_type_ArrayOfByte, paramygh.c, paramygh.c + i);
-      paramygh.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setValue(arrayOfByte);
-      boolean bool = paramygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt.writeCharacteristic(paramygh.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic);
+      paramyge.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setWriteType(2);
+      byte[] arrayOfByte = Arrays.copyOfRange(paramyge.jdField_a_of_type_ArrayOfByte, paramyge.c, paramyge.c + i);
+      paramyge.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.setValue(arrayOfByte);
+      boolean bool = paramyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt.writeCharacteristic(paramyge.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic);
       if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "writeCharacteristic result=" + bool + ", len=" + i + ",sent=" + paramygh.c + ", toSend=" + paramygh.jdField_a_of_type_ArrayOfByte.length);
+        QLog.i("DeviceBLE_EX", 2, "writeCharacteristic result=" + bool + ", len=" + i + ",sent=" + paramyge.c + ", toSend=" + paramyge.jdField_a_of_type_ArrayOfByte.length);
       }
-      paramygh.c = (i + paramygh.c);
-      if (paramygh.c >= paramygh.jdField_a_of_type_ArrayOfByte.length)
+      paramyge.c = (i + paramyge.c);
+      if (paramyge.c >= paramyge.jdField_a_of_type_ArrayOfByte.length)
       {
-        paramygh.jdField_a_of_type_ArrayOfByte = null;
-        paramygh.c = 0;
+        paramyge.jdField_a_of_type_ArrayOfByte = null;
+        paramyge.c = 0;
       }
       return;
       label173:
@@ -133,8 +133,8 @@ public class BluetoothLeService
   
   public void a(int paramInt)
   {
-    ygh localygh = a(paramInt);
-    if (localygh == null) {
+    yge localyge = a(paramInt);
+    if (localyge == null) {
       if (QLog.isColorLevel()) {
         QLog.e("DeviceBLE_EX", 2, "gattInfo is null for bleid=" + paramInt);
       }
@@ -142,16 +142,16 @@ public class BluetoothLeService
     do
     {
       return;
-      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null) && (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)) {
+      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null) && (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)) {
         break;
       }
     } while (!QLog.isColorLevel());
     QLog.w("DeviceBLE_EX", 2, "BluetoothAdapter not initialized");
     return;
     if (QLog.isColorLevel()) {
-      QLog.e("DeviceBLE_EX", 2, "disconnect " + localygh.jdField_a_of_type_JavaLangString + ", bleId=" + paramInt);
+      QLog.e("DeviceBLE_EX", 2, "disconnect " + localyge.jdField_a_of_type_JavaLangString + ", bleId=" + paramInt);
     }
-    localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt.disconnect();
+    localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt.disconnect();
   }
   
   public void a(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, boolean paramBoolean)
@@ -210,29 +210,29 @@ public class BluetoothLeService
     do
     {
       return bool;
-      ygh localygh = a(paramInt);
-      if ((localygh != null) && (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null))
+      yge localyge = a(paramInt);
+      if ((localyge != null) && (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("DeviceBLE_EX", 2, "Trying to use an existing mBluetoothGatt for connection.");
         }
-        if (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt.connect())
+        if (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt.connect())
         {
-          localygh.jdField_b_of_type_Int = 1;
+          localyge.jdField_b_of_type_Int = 1;
           return true;
         }
         return false;
       }
-      localygh = new ygh();
-      localygh.jdField_a_of_type_Int = paramInt;
-      localygh.jdField_a_of_type_JavaLangString = paramString;
+      localyge = new yge();
+      localyge.jdField_a_of_type_Int = paramInt;
+      localyge.jdField_a_of_type_JavaLangString = paramString;
       paramString = this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.getRemoteDevice(paramString);
-      localygh.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_JavaUtilList.add(localygh);
-      localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt = paramString.connectGatt(this, false, this.jdField_a_of_type_AndroidBluetoothBluetoothGattCallback);
-      if (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt == null)
+      localyge.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_JavaUtilList.add(localyge);
+      localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt = paramString.connectGatt(this, false, this.jdField_a_of_type_AndroidBluetoothBluetoothGattCallback);
+      if (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt == null)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(localygh);
+        this.jdField_a_of_type_JavaUtilList.remove(localyge);
         if (QLog.isColorLevel()) {
           QLog.d("DeviceBLE_EX", 2, "connectGatt failed");
         }
@@ -245,13 +245,13 @@ public class BluetoothLeService
   
   public boolean a(int paramInt, byte[] paramArrayOfByte)
   {
-    ygh localygh = a(paramInt);
-    if (localygh != null)
+    yge localyge = a(paramInt);
+    if (localyge != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "blewrite(" + localygh.jdField_a_of_type_JavaLangString + ")=" + paramArrayOfByte);
+        QLog.i("DeviceBLE_EX", 2, "blewrite(" + localyge.jdField_a_of_type_JavaLangString + ")=" + paramArrayOfByte);
       }
-      if (localygh.jdField_a_of_type_ArrayOfByte == null) {
+      if (localyge.jdField_a_of_type_ArrayOfByte == null) {
         break label79;
       }
       if (QLog.isColorLevel()) {
@@ -260,22 +260,22 @@ public class BluetoothLeService
     }
     return false;
     label79:
-    localygh.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    a(localygh);
+    localyge.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    a(localyge);
     return true;
   }
   
   public void b(int paramInt)
   {
-    ygh localygh = a(paramInt);
-    if (localygh != null)
+    yge localyge = a(paramInt);
+    if (localyge != null)
     {
-      if (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
+      if (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
       {
-        localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
-        localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
+        localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
+        localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
       }
-      this.jdField_a_of_type_JavaUtilList.remove(localygh);
+      this.jdField_a_of_type_JavaUtilList.remove(localyge);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -285,7 +285,7 @@ public class BluetoothLeService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.jdField_a_of_type_Ygd;
+    return this.jdField_a_of_type_Yga;
   }
   
   public boolean onUnbind(Intent paramIntent)
@@ -293,11 +293,11 @@ public class BluetoothLeService
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      ygh localygh = (ygh)localIterator.next();
-      if (localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
+      yge localyge = (yge)localIterator.next();
+      if (localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt != null)
       {
-        localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
-        localygh.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
+        localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt.close();
+        localyge.jdField_a_of_type_AndroidBluetoothBluetoothGatt = null;
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();

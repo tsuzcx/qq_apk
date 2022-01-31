@@ -1,35 +1,48 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 class bjsg
-  implements SeekBar.OnSeekBarChangeListener
+  implements AdapterView.OnItemClickListener
 {
-  bjsg(bjsf parambjsf) {}
+  bjsg(bjry parambjry) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
-    {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_Bjww.a.a != null) {
-        this.a.jdField_a_of_type_Bjww.a.a.a(NativeGifImage.QZONE_DELAY);
+    if (bjry.a(this.a) != null) {
+      bdts.a(bjry.a(this.a).hashCode());
+    }
+    paramAdapterView = bjry.a(this.a).a(paramInt);
+    if (bjry.a(this.a).a() == paramInt) {
+      if (paramAdapterView.c) {
+        bjry.a(this.a, true);
       }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+    }
+    for (;;)
+    {
+      vei.a("textEdit_patten", "clk_patten", bjry.b(this.a), 0, new String[] { "", paramAdapterView.a });
+      return;
+      if (paramAdapterView.d)
+      {
+        if (bbfj.d(paramView.getContext()))
+        {
+          bcql.a(bjry.a(this.a).getContext(), ajya.a(2131714426), 0).a();
+          bjry.a(this.a, paramAdapterView);
+        }
+        else
+        {
+          bjry.b(this.a);
+        }
+      }
+      else
+      {
+        bcql.a(bjry.a(this.a).getContext(), ajya.a(2131714424), 0).a();
+        continue;
+        bjry.a(this.a).a(paramInt);
+        bjry.a(this.a, paramAdapterView);
       }
     }
   }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

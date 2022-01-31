@@ -1,23 +1,18 @@
-import android.annotation.TargetApi;
 import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
+import android.hardware.Camera.PictureCallback;
 import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
 
-@TargetApi(14)
 public class amfp
-  implements Camera.FaceDetectionListener
+  implements Camera.PictureCallback
 {
-  private final amfe jdField_a_of_type_Amfe;
-  private final amfi jdField_a_of_type_Amfi;
+  private final amff jdField_a_of_type_Amff;
+  private final amfh jdField_a_of_type_Amfh;
   private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
   }
 }
 

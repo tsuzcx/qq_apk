@@ -1,24 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
-
-public class apxe
-  implements View.OnClickListener
+public abstract interface apxe
 {
-  public apxe(NoFileRelativeLayout paramNoFileRelativeLayout) {}
+  public abstract void loadFinish(int paramInt1, int paramInt2, String paramString);
   
-  public void onClick(View paramView)
-  {
-    ayfv.a((Activity)this.a.getContext(), "s_qq_myfile_yindao", -1);
-    if ((this.a.getContext() instanceof FMActivity)) {}
-    while (!(this.a.getContext() instanceof FileAssistantActivity)) {
-      return;
-    }
-    axqw.b(((FileAssistantActivity)this.a.getContext()).app, "dc00898", "", "", "0X800A226", "0X800A226", 0, 0, "", "", "", "");
-  }
+  public abstract void loadFinish(int paramInt1, boolean paramBoolean, int paramInt2, String paramString);
+  
+  public abstract void openFile(String paramString1, String paramString2, long paramLong, boolean paramBoolean);
+  
+  public abstract void updatePage(int paramInt1, int paramInt2);
+  
+  public abstract void webLog(String paramString);
 }
 
 

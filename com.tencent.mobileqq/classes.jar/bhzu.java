@@ -1,8 +1,10 @@
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-
-public abstract interface bhzu
+final class bhzu
+  extends bhmt<bhzt, Void>
 {
-  public abstract void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp);
+  protected bhzt a(Void paramVoid)
+  {
+    return new bhzt();
+  }
 }
 
 

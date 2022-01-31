@@ -1,57 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 
 public class abwc
-  extends BroadcastReceiver
+  extends Handler
 {
-  public abwc(QQMapActivity.MapRuntime paramMapRuntime) {}
+  public abwc(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
+    switch (paramMessage.what)
+    {
+    }
+    do
     {
       return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
+      if (!this.a.isFinishing())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
-        }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bawx.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
+        this.a.a.a(this.a.getString(2131690809));
+        this.a.a.d(2130848623);
+        this.a.a.b(false);
       }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
-        return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
-        {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
-          }
-        }
-      }
-    }
+      sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.a == null) || (!this.a.a.isShowing()));
+    this.a.a.cancel();
+    this.a.a.a(this.a.getString(2131690811));
+    this.a.a.c(true);
+    this.a.a.a(false);
+    this.a.a.b(true);
   }
 }
 

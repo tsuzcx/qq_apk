@@ -1,15 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class wom
-  implements View.OnClickListener
+public abstract interface wom
 {
-  wom(wol paramwol, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Wol.a.a(this.jdField_a_of_type_Int, wol.a(this.jdField_a_of_type_Wol));
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

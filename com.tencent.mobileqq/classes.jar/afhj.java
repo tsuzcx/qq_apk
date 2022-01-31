@@ -1,37 +1,81 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
+import java.lang.ref.WeakReference;
 
 public class afhj
-  implements aftd
+  extends Handler
 {
-  public afhj(TroopView paramTroopView) {}
+  public WeakReference<TroopView> a;
   
-  public void a(int paramInt)
+  public afhj(TroopView paramTroopView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onRepeatClick. position:" + paramInt);
-    }
-    if (paramInt != -1)
+    this.a = new WeakReference(paramTroopView);
+  }
+  
+  private void a()
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {}
+    do
     {
-      TroopView.a(this.a).setCurrentPosition(-1, false);
-      int i = TroopView.a(this.a).getCurrentItem();
-      if (QLog.isColorLevel()) {
-        QLog.i("addContacts.TroopView", 2, "onCurrentTabClick. position:" + paramInt + " currentClassifyPos:" + i);
+      return;
+      if (TroopView.a(localTroopView) != null) {
+        TroopView.a(localTroopView).setRefreshing(false);
       }
-      Object localObject = TroopView.a(this.a).a(i, false);
-      if (localObject != null)
-      {
-        localObject = (AddContactViewPagerTroopFragment)localObject;
-        afdk localafdk = (afdk)this.a.a.get(i);
-        localafdk.b = -1;
-        ((AddContactViewPagerTroopFragment)localObject).a(localafdk.d, "");
-      }
+    } while (TroopView.a(localTroopView) == null);
+    TroopView.a(localTroopView).setRefresh(false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {
+      return;
     }
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      TroopView.c(localTroopView);
+      TroopView.a(localTroopView, 1, 2131694610);
+      return;
+    case 4: 
+      TroopView.a(localTroopView, true);
+      return;
+    case 5: 
+      TroopView.a(localTroopView, false);
+      return;
+    case 13: 
+      TroopView.a(localTroopView, 1, 2131694610);
+      a();
+      return;
+    case 14: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label178;
+        }
+        TroopView.d(localTroopView);
+        if (TroopView.a(localTroopView) == null) {
+          break;
+        }
+        TroopView.a(localTroopView).a(0);
+        TroopView.a(localTroopView).sendEmptyMessageDelayed(15, 800L);
+        return;
+      }
+      label178:
+      a();
+      TroopView.a(localTroopView, 1, 2131719799);
+      return;
+    }
+    a();
   }
 }
 

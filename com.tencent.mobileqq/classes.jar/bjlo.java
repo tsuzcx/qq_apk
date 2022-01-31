@@ -1,16 +1,16 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
-public abstract interface bjlo
+public class bjlo
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bjlo(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(List<Long> paramList);
-  
-  public abstract void b(long paramLong);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
+  }
 }
 
 

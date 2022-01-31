@@ -1,18 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ARRelationShip;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public final class alkm
-  implements Parcelable.Creator<ARRelationShip>
+public abstract class alkm
+  implements alkx
 {
-  public ARRelationShip a(Parcel paramParcel)
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
+  
+  public alkm()
   {
-    return new ARRelationShip(paramParcel);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public ARRelationShip[] a(int paramInt)
+  public int a()
   {
-    return new ARRelationShip[paramInt];
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 

@@ -1,8 +1,12 @@
-import java.util.List;
-
-public abstract interface aoaj
+class aoaj
+  extends anwn
 {
-  public abstract void a(List<aoah> paramList);
+  aoaj(aoai paramaoai) {}
+  
+  public void a(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
 }
 
 

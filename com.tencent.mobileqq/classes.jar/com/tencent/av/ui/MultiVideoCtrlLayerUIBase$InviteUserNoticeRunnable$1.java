@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.BaseApplication;
-import mat;
+import mao;
 
 class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable$1
   implements Runnable
@@ -11,9 +11,9 @@ class MultiVideoCtrlLayerUIBase$InviteUserNoticeRunnable$1
   public void run()
   {
     if (this.a.jdField_a_of_type_Int == 1) {}
-    for (String str = String.format(BaseApplication.getContext().getString(2131695805), new Object[] { this.a.jdField_a_of_type_JavaLangString });; str = String.format(BaseApplication.getContext().getString(2131695806), new Object[] { this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int + "" }))
+    for (String str = String.format(BaseApplication.getContext().getString(2131695806), new Object[] { this.a.jdField_a_of_type_JavaLangString });; str = String.format(BaseApplication.getContext().getString(2131695807), new Object[] { this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int + "" }))
     {
-      mat.a(this.a.this$0.a, 3010, str);
+      mao.a(this.a.this$0.a, 3010, str);
       return;
     }
   }

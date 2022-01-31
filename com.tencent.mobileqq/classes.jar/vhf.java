@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vhf
-  implements Animation.AnimationListener
+class vhf
+  implements View.OnClickListener
 {
-  public vhf(EditVideoGuide paramEditVideoGuide) {}
+  vhf(vhd paramvhd) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.g();
     this.a.a.a(0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

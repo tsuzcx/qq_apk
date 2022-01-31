@@ -1,30 +1,16 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class abfx
-  implements Animation.AnimationListener
+  implements bfpt
 {
   public abfx(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    while (this.a.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

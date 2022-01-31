@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
-import java.util.List;
+import android.text.TextUtils;
 
 public class ansu
-  extends ajwb
 {
-  ansu(anss paramanss) {}
+  public static int a = 300;
+  public static int b = 300;
   
-  public void a(List<CustomEmotionData> paramList)
+  public static String a(String paramString)
   {
-    if (anss.f(this.a) == null) {
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    anss.g(this.a).removeObserver(anss.a(this.a));
-    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
+    return ajsd.bh + akvt.a(paramString);
   }
   
-  public void a(boolean paramBoolean)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    if (anss.e(this.a) == null) {}
-    while (!paramBoolean) {
-      return;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
     }
-    this.a.b();
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 

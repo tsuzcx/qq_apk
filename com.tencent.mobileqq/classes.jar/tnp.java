@@ -1,60 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCollectionViewCount;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCollectionViewCount;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tnp
-  extends syv<tpa>
+  extends sys<toy>
 {
-  public static final String a = sxp.a("StorySvc.video_report_evil");
-  public long b;
+  public static final String a;
+  public List<tlg> a;
   public String b;
-  public final int c;
-  public String c;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.get_colleciton_view_count");
+  }
+  
+  public tnp()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
   public String a()
   {
-    return a;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public tpa a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
+    qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
     try
     {
-      localRspReportEvil.mergeFrom(paramArrayOfByte);
-      return new tpa(localRspReportEvil);
+      localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
+      return new toy(this.b, localRspCollectionViewCount);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      paramArrayOfByte.printStackTrace();
+      for (;;)
+      {
+        ved.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
+      }
     }
-    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      tlg localtlg = (tlg)localIterator.next();
+      localReqCollectionViewCount.collection_id.add(localtlg.a());
     }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
-    return localReqReportEvil.toByteArray();
+    return localReqCollectionViewCount.toByteArray();
   }
   
   public String toString()
   {
-    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

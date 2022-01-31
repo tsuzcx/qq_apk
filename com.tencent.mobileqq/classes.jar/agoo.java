@@ -1,28 +1,21 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
-public class agoo
-  implements View.OnClickListener
+class agoo
+  implements DialogInterface.OnClickListener
 {
-  public agoo(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agoo(agon paramagon) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_b_of_type_AndroidWidgetCheckBox.isChecked())
-    {
-      if (bbbj.a(this.a.jdField_b_of_type_JavaUtilArrayList, PhotoPreviewActivity.a, PhotoListActivity.a, this.a.E, this.a.g) > 0)
-      {
-        bcpw.a(this.a, this.a.getResources().getString(2131695112), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
-        return;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.t);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
+    PhotoPreviewActivity.a(this.a.a).dismiss();
   }
 }
 

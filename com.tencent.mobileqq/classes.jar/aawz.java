@@ -1,26 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.45.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class aawz
-  extends BroadcastReceiver
+class aawz
+  implements DialogInterface.OnClickListener
 {
-  public aawz(Conversation paramConversation) {}
+  aawz(aawy paramaawy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.jdField_a_of_type_Ahkf.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_Ahkf.jdField_a_of_type_JavaLangString = paramContext;
-    this.a.jdField_a_of_type_Ahkf.a(19, 2);
-    this.a.jdField_a_of_type_Ahkf.a(-1, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.45.1(this), i);
-    axqw.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    if (this.a.a.a() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

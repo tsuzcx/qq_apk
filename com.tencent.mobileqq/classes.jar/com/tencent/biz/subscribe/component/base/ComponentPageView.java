@@ -14,15 +14,15 @@ import android.widget.ImageView;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.widget.StatusView;
+import woz;
 import wpc;
 import wpf;
+import wpg;
+import wph;
 import wpi;
 import wpj;
-import wpk;
-import wpl;
-import wpm;
-import wpq;
-import wpr;
+import wpn;
+import wpo;
 
 public class ComponentPageView
   extends FrameLayout
@@ -34,7 +34,7 @@ public class ComponentPageView
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
   protected NestScrollRecyclerView a;
   private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  public wpf a;
+  public wpc a;
   private boolean jdField_a_of_type_Boolean;
   
   public ComponentPageView(Context paramContext)
@@ -55,21 +55,21 @@ public class ComponentPageView
   
   private void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364010));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView = ((NestScrollRecyclerView)paramFrameLayout.findViewById(2131364009));
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setHasFixedSize(true);
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setNestedScrollingEnabled(false);
-    this.jdField_a_of_type_Wpf = new wpf(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Wpf);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addItemDecoration(new wpm(this, this.jdField_a_of_type_Wpf));
+    this.jdField_a_of_type_Wpc = new wpc(this);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(this.jdField_a_of_type_Wpc);
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addItemDecoration(new wpj(this, this.jdField_a_of_type_Wpc));
     setLayoutManagerType(1, 1);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addOnScrollListener(new wpk(this));
+    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.addOnScrollListener(new wph(this));
     this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)paramFrameLayout.findViewById(2131364589));
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout = ((SubScribeSwipeRefreshLayout)findViewById(2131376412));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)paramFrameLayout.findViewById(2131364588));
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout = ((SubScribeSwipeRefreshLayout)findViewById(2131376414));
     if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout != null)
     {
       this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setEnabled(false);
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setOnRefreshListener(new wpl(this));
+      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerSubScribeSwipeRefreshLayout.setOnRefreshListener(new wpi(this));
     }
   }
   
@@ -108,24 +108,24 @@ public class ComponentPageView
     a(this);
   }
   
-  public void a(wpc paramwpc)
+  public void a(woz paramwoz)
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.a(paramwpc);
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.a(paramwoz);
     }
   }
   
-  public void a(wpj paramwpj)
+  public void a(wpg paramwpg)
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.a(paramwpj);
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.a(paramwpg);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      return this.jdField_a_of_type_Wpf.a();
+    if (this.jdField_a_of_type_Wpc != null) {
+      return this.jdField_a_of_type_Wpc.a();
     }
     return false;
   }
@@ -133,8 +133,8 @@ public class ComponentPageView
   public void b()
   {
     if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager)) {
-      if ((((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() >= this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 1) && (this.jdField_a_of_type_Wpf != null)) {
-        this.jdField_a_of_type_Wpf.c();
+      if ((((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() >= this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 1) && (this.jdField_a_of_type_Wpc != null)) {
+        this.jdField_a_of_type_Wpc.c();
       }
     }
     label147:
@@ -160,10 +160,10 @@ public class ComponentPageView
         }
         for (int j = 0;; j = localStaggeredGridLayoutManager.getItemCount() - 1)
         {
-          if ((i < j) || (this.jdField_a_of_type_Wpf == null)) {
+          if ((i < j) || (this.jdField_a_of_type_Wpc == null)) {
             break label155;
           }
-          this.jdField_a_of_type_Wpf.c();
+          this.jdField_a_of_type_Wpc.c();
           return;
           i = arrayOfInt[0];
           break;
@@ -172,10 +172,10 @@ public class ComponentPageView
     }
   }
   
-  public void b(wpc paramwpc)
+  public void b(woz paramwoz)
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.b(paramwpc);
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.b(paramwoz);
     }
   }
   
@@ -193,8 +193,8 @@ public class ComponentPageView
       }
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.d();
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.d();
     }
     if ((a() != null) && (a().a() != null)) {
       a().a().setImageDrawable(null);
@@ -204,8 +204,8 @@ public class ComponentPageView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.e();
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.e();
     }
   }
   
@@ -245,14 +245,14 @@ public class ComponentPageView
     {
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager);
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new wpq(getContext(), 1, false);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new wpn(getContext(), 1, false);
       continue;
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new GridLayoutManager(getContext(), paramInt2);
-      ((GridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Wpf.a());
+      ((GridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setSpanSizeLookup(this.jdField_a_of_type_Wpc.a());
       continue;
       this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseNestScrollRecyclerView.setHasFixedSize(false);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new wpr(paramInt2, 1);
-      ((wpr)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = new wpo(paramInt2, 1);
+      ((wpo)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).setGapStrategy(0);
     }
   }
   
@@ -274,10 +274,10 @@ public class ComponentPageView
     }
   }
   
-  public void setShareData(String paramString, wpi paramwpi)
+  public void setShareData(String paramString, wpf paramwpf)
   {
-    if (this.jdField_a_of_type_Wpf != null) {
-      this.jdField_a_of_type_Wpf.a(paramString, paramwpi);
+    if (this.jdField_a_of_type_Wpc != null) {
+      this.jdField_a_of_type_Wpc.a(paramString, paramwpf);
     }
   }
 }

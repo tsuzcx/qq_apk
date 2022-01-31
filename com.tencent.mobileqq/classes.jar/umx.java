@@ -1,17 +1,15 @@
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+
 public class umx
+  implements unm
 {
-  public String a;
-  public String b;
+  public umx(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public umx(String paramString1, String paramString2)
+  public void a(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
   }
 }
 

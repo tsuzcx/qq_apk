@@ -1,29 +1,19 @@
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.filter.BaseFilter;
+import android.support.annotation.Nullable;
+import java.util.List;
 
-public class bisi
-  extends BaseFilter
+class bisi
+  implements bjos<List<birj>>
 {
-  public bisi()
-  {
-    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform int isAlpha;\nvoid main() \n{\n  highp vec4 color = texture2D(inputImageTexture,textureCoordinate);\n  if(isAlpha == 1) {\n    gl_FragColor = vec4(1.0-color.a,1.0-color.a,1.0-color.a,1.0);\n  } else {\n    gl_FragColor = color;\n  }\n}");
-    addParam(new UniformParam.IntParam("isAlpha", 0));
-  }
+  bisi(bise parambise) {}
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a(@Nullable List<birj> paramList)
   {
-    setPositions(new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 });
-  }
-  
-  public void a(Frame paramFrame1, Frame paramFrame2)
-  {
-    a(-1.0F, 0.0F, 1.0F, -1.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 1));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
-    a(-1.0F, 1.0F, 1.0F, 0.0F);
-    addParam(new UniformParam.IntParam("isAlpha", 0));
-    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
+    if (paramList == null) {
+      return;
+    }
+    bise.a(this.a).clear();
+    bise.a(this.a).addAll(paramList);
+    bise.a(this.a).notifyDataSetChanged();
   }
 }
 

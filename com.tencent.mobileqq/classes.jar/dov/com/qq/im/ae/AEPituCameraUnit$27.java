@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import bikb;
-import bivx;
+import bijd;
+import biks;
+import biwo;
 
 public class AEPituCameraUnit$27
   implements Runnable
 {
-  public AEPituCameraUnit$27(biim parambiim) {}
+  public AEPituCameraUnit$27(bijd parambijd) {}
   
   public void run()
   {
-    bikb localbikb = biim.a(this.this$0);
-    if (biim.a(this.this$0) == bivx.a) {}
+    biks localbiks = bijd.a(this.this$0);
+    if (bijd.a(this.this$0) == biwo.a) {}
     for (boolean bool = true;; bool = false)
     {
-      localbikb.c(bool);
+      localbiks.c(bool);
       return;
     }
   }

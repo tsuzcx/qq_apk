@@ -1,46 +1,80 @@
-import com.tencent.feedback.eup.CrashReport;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.BinaryMessenger;
 import java.util.HashMap;
 
-class apzk
-  extends apzl
+public class apzk
 {
-  apzk(apzj paramapzj) {}
+  private static apzk jdField_a_of_type_Apzk;
+  private BinaryMessenger jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger;
+  private HashMap<String, apzi> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  protected void a(String paramString, MethodChannel.Result paramResult)
+  public static apzk a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
+    if (jdField_a_of_type_Apzk == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apzk == null) {
+        jdField_a_of_type_Apzk = new apzk();
+      }
+      return jdField_a_of_type_Apzk;
     }
-    aqao.b(paramString);
-    paramResult.success(null);
+    finally {}
   }
   
-  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
-    }
-    aqao.a(paramString, paramInteger.intValue());
-    paramResult.success(null);
+    a(new apzs("sso_channel", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new apzl("com.tencent.qflutter/apm", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
+    a(new apzo("com.tencent.qflutter/scfsetting", this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger));
   }
   
-  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
+  private void a(apzi paramapzi)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
+    if (TextUtils.isEmpty(paramapzi.a())) {
+      QLog.d("QFlutter.ChannelManager", 1, "add channel channel name is emptyS");
     }
-    aqao.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
-    paramResult.success(null);
+    do
+    {
+      return;
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramapzi.a()))
+      {
+        apzi localapzi = (apzi)this.jdField_a_of_type_JavaUtilHashMap.remove(paramapzi.a());
+        if (localapzi != null) {
+          localapzi.a();
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramapzi.a(), paramapzi);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.ChannelManager", 2, String.format("addChannel, channelName: %s", new Object[] { paramapzi.a() }));
   }
   
-  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
+  private void b() {}
+  
+  private void c() {}
+  
+  public <T extends apzi> T a(String paramString)
   {
-    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
-    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
-    aqao.a(paramString1);
-    paramResult.success(null);
+    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+      return (apzi)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a(BinaryMessenger paramBinaryMessenger)
+  {
+    if (paramBinaryMessenger == this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger)
+    {
+      QLog.d("QFlutter.ChannelManager", 1, "already registered channels");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.ChannelManager", 2, "registerChannels");
+    }
+    this.jdField_a_of_type_IoFlutterPluginCommonBinaryMessenger = paramBinaryMessenger;
+    a();
+    b();
+    c();
   }
 }
 

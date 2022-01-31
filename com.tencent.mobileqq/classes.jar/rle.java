@@ -1,65 +1,78 @@
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView;
 
-class rle
-  extends rkj
+public class rle
+  implements rkh, rkj
 {
-  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private static boolean jdField_a_of_type_Boolean;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private pah jdField_a_of_type_Pah = new rlf(this);
   
-  public rle(rld paramrld, View paramView, BaseData paramBaseData)
+  public int a(BaseData paramBaseData)
   {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    return 16;
+  }
+  
+  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramBaseData.b;
+    }
+    paramViewGroup = (ProteusBookData)paramBaseData;
+    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup.a);
+    paramViewGroup = localContainer;
+    if (localContainer == null) {
+      paramViewGroup = new View(paramContext);
+    }
+    return new rlg(paramViewGroup, paramBaseData);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.p == 18;
+  }
+  
+  public void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = false;
+      paf localpaf = osg.a().a();
+      if (localpaf != null) {
+        localpaf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Pah, false);
+      }
     }
   }
   
-  private void a(Context paramContext, JSONObject paramJSONObject)
+  public void c() {}
+  
+  public void d()
   {
-    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new rlf(this, paramContext));
+    paf localpaf = osg.a().a();
+    if (localpaf != null) {
+      localpaf.a(this.jdField_a_of_type_Pah);
+    }
   }
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
-    TemplateBean localTemplateBean;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramBaseData2 instanceof ProteusItemData));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
-      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
-    } while (localTemplateBean == null);
-    rld.a(this.jdField_a_of_type_Rld, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    if ((paramBaseData2 instanceof RecommendAdData)) {
-      rld.a(this.jdField_a_of_type_Rld, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, (RecommendAdData)paramBaseData2);
-    }
-    if (paramBaseData1 != paramBaseData2) {}
-    try
-    {
-      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
-      olr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
-      label127:
-      a(rld.a(this.jdField_a_of_type_Rld), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
-      return;
-    }
-    catch (Exception paramBaseData1)
-    {
-      break label127;
-    }
-  }
+  public void e() {}
 }
 
 

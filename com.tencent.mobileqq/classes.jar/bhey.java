@@ -1,22 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoUrl;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
-public final class bhey
-  implements Parcelable.Creator<VideoUrl>
+public class bhey
 {
-  public VideoUrl a(Parcel paramParcel)
+  public static String a(int paramInt)
   {
-    VideoUrl localVideoUrl = new VideoUrl();
-    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoUrl.b = paramParcel.readInt();
-    return localVideoUrl;
-  }
-  
-  public VideoUrl[] a(int paramInt)
-  {
-    return new VideoUrl[paramInt];
+    return BusinessAlbumInfo.a(paramInt);
   }
 }
 

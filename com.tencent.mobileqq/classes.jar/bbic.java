@@ -1,23 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
 class bbic
   implements View.OnClickListener
 {
-  bbic(bbhz parambbhz, DialogInterface.OnClickListener paramOnClickListener) {}
+  bbic(bbhz parambbhz, Activity paramActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbhz, 0);
-    }
-    this.jdField_a_of_type_Bbhz.dismiss();
+    paramView = (ResultRecord)paramView.getTag();
+    this.jdField_a_of_type_Bbhz.hideSoftInputFromWindow();
+    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramView.a(), paramView.a, paramView.b, 0.86F, this.jdField_a_of_type_Bbhz.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbic
  * JD-Core Version:    0.7.0.1
  */

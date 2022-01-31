@@ -1,37 +1,56 @@
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
 public class bcgx
-  implements bchc
 {
-  public bcgx(WebSoService paramWebSoService, long paramLong, WebSoService.WebSoState paramWebSoState, Handler paramHandler, String paramString) {}
+  private final bcfx a;
+  public String a;
   
-  public void a(String paramString)
+  public bcgx(bcfx parambcfx)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSoService", 2, "verifyHtmlData cost=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2))
+    this.jdField_a_of_type_Bcfx = parambcfx;
+  }
+  
+  public void a(int paramInt)
+  {
+    TouchWebView localTouchWebView = this.jdField_a_of_type_Bcfx.a();
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bcgo.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = true;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
-      bche.a("load from cache");
-      WebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+      localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
     }
-    if (!TextUtils.isEmpty(paramString))
+    try
     {
-      VipUtils.a(null, "webview_report", "0X8006566", "0X8006566", 0, 1, new String[] { this.jdField_a_of_type_JavaLangString });
+      localJSONObject1.put("code", 0);
+      localJSONObject1.put("message", "ok");
+      localJSONObject2.put("subIndex", paramInt);
+      localJSONObject1.put("data", localJSONObject2);
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
       return;
     }
-    VipUtils.a(null, "webview_report", "0X8006566", "0X8006566", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString });
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

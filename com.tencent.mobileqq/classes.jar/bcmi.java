@@ -1,16 +1,6 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
-
-class bcmi
+public abstract interface bcmi
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<Pair<View, bcmh>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  int[] jdField_a_of_type_ArrayOfInt;
-  
-  private bcmi(bcmf parambcmf) {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

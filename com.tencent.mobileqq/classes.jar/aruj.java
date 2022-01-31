@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aruj
+class aruj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  aruj(aruh paramaruh, bbgu parambbgu) {}
   
-  public abstract void a(LocationRoom.Venue paramVenue);
-  
-  public abstract void a(String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Bbgu.dismiss();
+  }
 }
 
 

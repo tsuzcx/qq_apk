@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class ablr
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
   public ablr(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramDialogInterface == LoginInfoActivity.a(this.a)) {
-      LoginInfoActivity.a(this.a, null);
-    }
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

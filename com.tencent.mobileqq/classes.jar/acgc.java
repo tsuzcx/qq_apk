@@ -1,32 +1,53 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.view.View;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class acgc
-  implements bfug
+  implements bfph
 {
-  public acgc(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acgc(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bfpc parambfpc) {}
   
-  public void a(bfuf parambfuf)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = false;
-    switch (parambfuf.a)
+    if (!bbfj.d(BaseApplication.getContext()))
     {
-    default: 
-      return;
-    case 0: 
-      parambfuf = this.a;
-      if (!this.a.d) {
-        bool = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new bcqi(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
       }
-      parambfuf.d = bool;
-      asfb.a().b(this.a.app, this.a.d);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694610, 1500);
     }
-    parambfuf = new Intent(this.a, TroopAssisSettingActivity.class);
-    parambfuf.setFlags(67108864);
-    this.a.startActivity(parambfuf);
-    axqw.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
+    try
+    {
+      if (this.jdField_a_of_type_Bfpc != null) {
+        this.jdField_a_of_type_Bfpc.dismiss();
+      }
+      return;
+      int i = -1;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+      }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("TroopAssistantActivity", 2, paramView.toString());
+    }
   }
 }
 

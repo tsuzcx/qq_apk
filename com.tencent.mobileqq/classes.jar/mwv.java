@@ -1,17 +1,22 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.PoiMapActivity;
 
 public class mwv
-  extends mxf
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
   
-  public mwv(PoiMapActivity paramPoiMapActivity)
-  {
-    super(paramPoiMapActivity);
-  }
+  public mwv(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

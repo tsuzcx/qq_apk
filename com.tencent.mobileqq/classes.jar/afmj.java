@@ -3,20 +3,42 @@ import android.support.annotation.NonNull;
 public class afmj
 {
   public int a;
-  public int b;
-  public int c;
+  public boolean a;
+  public int b = 0;
   
-  public afmj(int paramInt1, int paramInt2, int paramInt3)
+  public afmj()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.jdField_a_of_type_Int = 23;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 23;
+    this.b = 0;
   }
   
   @NonNull
   public String toString()
   {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
+    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
   }
 }
 

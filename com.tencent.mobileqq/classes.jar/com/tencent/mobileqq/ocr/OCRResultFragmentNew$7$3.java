@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ocr;
 
-import ajyc;
-import auba;
-import audu;
-import bcpw;
+import ajya;
+import aubc;
+import audw;
+import bcql;
 
 public class OCRResultFragmentNew$7$3
   implements Runnable
 {
-  public OCRResultFragmentNew$7$3(auba paramauba) {}
+  public OCRResultFragmentNew$7$3(aubc paramaubc) {}
   
   public void run()
   {
     OCRResultFragmentNew.a(this.a.a, false);
     OCRResultFragmentNew.a(this.a.a).dismiss();
     OCRResultFragmentNew.a(this.a.a).a(0);
-    bcpw.a(OCRResultFragmentNew.a(this.a.a), 1, ajyc.a(2131707818), 0).a();
+    bcql.a(OCRResultFragmentNew.a(this.a.a), 1, ajya.a(2131707829), 0).a();
   }
 }
 

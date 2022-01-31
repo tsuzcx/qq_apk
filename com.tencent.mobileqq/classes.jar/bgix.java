@@ -1,17 +1,17 @@
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
-import cooperation.comic.webbundle.WebBundleWebView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bgix
-  extends WebViewClient
+class bgix
+  implements View.OnClickListener
 {
-  public bgix(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
+  bgix(bgiw parambgiw) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
+    }
   }
 }
 

@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ackr
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public ackr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.finish();
   }
 }
 

@@ -1,23 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class asoy
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public asoy(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
+  public asoy(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
+    paramView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131378412);
+    asqa.a += 1;
+    paramView.setText(ajya.a(2131707000) + asqa.a);
+    MultiAIOFragment.c(this.a);
   }
 }
 

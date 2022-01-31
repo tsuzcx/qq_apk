@@ -2,17 +2,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
 import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend.VideoInfo;
+import java.util.ArrayList;
 
 class aktt
   implements View.OnClickListener
 {
-  aktt(akts paramakts, String paramString) {}
+  aktt(aktr paramaktr, ArrayList paramArrayList, QIMNotifyAddFriend.VideoInfo paramVideoInfo) {}
   
   public void onClick(View paramView)
   {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend$VideoInfo.videoVid), 120);
     paramView.a();
-    tvf.a(this.jdField_a_of_type_Akts.a, paramView.a(), null);
+    tvc.a(this.jdField_a_of_type_Aktr.a, paramView.a(), null);
   }
 }
 

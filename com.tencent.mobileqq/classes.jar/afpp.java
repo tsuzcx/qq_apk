@@ -1,27 +1,27 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.SimpleTextView;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class afpp
-  extends bfvp
+  implements View.OnTouchListener
 {
-  afpp(afpo paramafpo, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  afpp(afpm paramafpm, TextView paramTextView) {}
   
-  public View a(int paramInt, Object paramObject, bfvo parambfvo, View.OnClickListener paramOnClickListener)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    parambfvo = super.a(paramInt, paramObject, parambfvo, paramOnClickListener);
-    if ((parambfvo instanceof SimpleTextView)) {
-      parambfvo.setTag(paramObject);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return parambfvo;
-  }
-  
-  public void a(int paramInt, Object paramObject, bfvo[] paramArrayOfbfvo)
-  {
-    this.a.a(paramInt, paramArrayOfbfvo, paramObject);
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    }
   }
 }
 

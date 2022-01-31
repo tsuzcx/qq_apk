@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class abec
-  implements View.OnClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
   public abec(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    this.a.G();
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
-      this.a.app.a(this.a);
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
+    {
+      paramString1 = this.a.a.obtainMessage();
+      paramString1.what = 7;
+      if (paramInt1 != 0) {
+        break label82;
+      }
+      paramString1.arg1 = 1;
+    }
+    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
+    {
+      if (this.a.a != null) {
+        this.a.a.sendMessage(paramString1);
+      }
+      return;
+      label82:
+      paramString1.arg1 = 0;
     }
   }
 }

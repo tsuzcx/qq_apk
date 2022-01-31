@@ -1,14 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.widget.Switch;
 
 class ngc
-  implements DialogInterface.OnDismissListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ngc(nfu paramnfu) {}
+  ngc(nfr paramnfr, nms paramnms, Switch paramSwitch) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.f = false;
+    if (!this.jdField_a_of_type_Nfr.c)
+    {
+      this.jdField_a_of_type_Nfr.c = true;
+      return;
+    }
+    if (this.jdField_a_of_type_Nms.f == 1) {
+      this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, paramBoolean);
+    }
+    for (;;)
+    {
+      nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.a);
+      return;
+      if (this.jdField_a_of_type_Nms.f == 2)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, paramBoolean);
+        }
+      }
+      else if (this.jdField_a_of_type_Nms.f == 3)
+      {
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, paramBoolean);
+        }
+      }
+      else {
+        this.jdField_a_of_type_Nfr.a(this.jdField_a_of_type_Nms, paramBoolean);
+      }
+    }
   }
 }
 

@@ -1,91 +1,37 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aoyd
-  extends aoym
 {
-  public aoyd(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public static boolean a;
+  public Activity a;
+  
+  static
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
+    jdField_a_of_type_Boolean = true;
   }
   
-  public int a()
+  private aoyd(Activity paramActivity)
   {
-    return 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public long a()
+  public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
   {
-    return 0L;
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
+    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
+    {
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
+      return false;
+    }
+    new aoyd(paramActivity).a(paramString, paramBundle);
+    return true;
   }
   
-  public aoub a()
+  public void a(String paramString, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public aoue a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<Integer> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView) {}
-  
-  protected void a(ChatMessage paramChatMessage) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public List<Integer> b(int paramInt)
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public int e()
-  {
-    return 0;
+    apwe.a(paramString, new aoye(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 

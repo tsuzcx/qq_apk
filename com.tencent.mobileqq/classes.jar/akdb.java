@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-final class akdb
-  implements DialogInterface.OnClickListener
+class akdb
+  extends ClickableSpan
 {
-  akdb(DialogInterface.OnClickListener paramOnClickListener) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akdb(Context paramContext, String paramString1, String paramString2)
   {
-    akcz.a("1");
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString1;
+  }
+  
+  public void onClick(View paramView)
+  {
+    try
+    {
+      paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
     }
-    if (this.a != null) {
-      this.a.onClick(paramDialogInterface, paramInt);
+    catch (Exception paramView)
+    {
+      QLog.d("PrivacyPolicyHelper", 1, "no system browser exp=", paramView);
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

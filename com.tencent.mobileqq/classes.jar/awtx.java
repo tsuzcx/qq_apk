@@ -1,15 +1,12 @@
-import java.util.List;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-class awtx
+final class awtx
+  implements Comparator<RecentUser>
 {
-  String jdField_a_of_type_JavaLangString;
-  List<awoc> jdField_a_of_type_JavaUtilList;
-  
-  public awtx(String paramString, List<awoc> paramList)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    return Long.signum(paramRecentUser2.lastmsgtime - paramRecentUser1.lastmsgtime);
   }
 }
 

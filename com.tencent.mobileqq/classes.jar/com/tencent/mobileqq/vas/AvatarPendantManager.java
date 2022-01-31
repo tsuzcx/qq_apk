@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas;
 
-import ajsf;
+import ajsd;
 import android.content.Context;
-import bbnn;
-import bbnp;
+import bbob;
+import bbod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -23,9 +23,9 @@ public class AvatarPendantManager
   public long a;
   protected AppInterface a;
   protected AvatarPendantManager.PendantInfoLruCache a;
-  List<bbnp> a;
+  List<bbod> a;
   public boolean a;
-  List<bbnn> b;
+  List<bbob> b;
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
@@ -66,7 +66,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bbnp> a()
+  public List<bbod> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -83,7 +83,7 @@ public class AvatarPendantManager
     }
   }
   
-  public void a(List<bbnn> paramList)
+  public void a(List<bbob> paramList)
   {
     this.b = paramList;
   }
@@ -95,14 +95,14 @@ public class AvatarPendantManager
   
   public File b()
   {
-    File localFile = new File(ajsf.bP);
+    File localFile = new File(ajsd.bP);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
     return localFile;
   }
   
-  public List<bbnn> b()
+  public List<bbob> b()
   {
     return this.b;
   }

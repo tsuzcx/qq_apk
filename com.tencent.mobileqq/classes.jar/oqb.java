@@ -1,87 +1,133 @@
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.3;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.File;
+import mqq.util.WeakReference;
 
 public class oqb
-  implements ITMAssistantDownloadClientListener
+  extends LottieDrawable
 {
-  private List<oqa> a = new LinkedList();
+  private static LruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(5242880);
+  private static final String jdField_a_of_type_JavaLangString = bbvj.a(ajsd.aW + ".readInjoy/resource/lottie_background_res");
+  private static LruCache<String, LottieComposition> b = new LruCache(1048576);
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   
-  private static String a(int paramInt)
+  private static long a(String paramString)
   {
-    switch (paramInt)
+    long l = 0L;
+    int i = 0;
+    while (i < paramString.length())
     {
-    default: 
-      return "UNKNOWN";
-    case 1: 
-      return "DownloadSDKTaskState_WAITING";
-    case 2: 
-      return "DownloadSDKTaskState_DOWNLOADING";
-    case 4: 
-      return "DownloadSDKTaskState_SUCCEED";
-    case 3: 
-      return "DownloadSDKTaskState_PAUSED";
-    case 6: 
-      return "DownloadSDKTaskState_DELETE";
+      l = (l + paramString.charAt(i)) * 131L % 53497342331L;
+      i += 1;
     }
-    return "DownloadSDKTaskState_FAILED";
+    return l;
   }
   
-  public void a(oqa paramoqa)
+  @Nullable
+  private File a(File[] paramArrayOfFile, String paramString)
   {
-    if (!this.a.contains(paramoqa)) {
-      this.a.add(paramoqa);
-    }
-  }
-  
-  public void b(oqa paramoqa)
-  {
-    this.a.remove(paramoqa);
-  }
-  
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
-  {
-    try
+    int j = paramArrayOfFile.length;
+    int i = 0;
+    while (i < j)
     {
-      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
+      File localFile = paramArrayOfFile[i];
+      if (localFile.getName().equals(paramString)) {
+        return localFile;
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public static oqb a(String paramString)
+  {
+    oqb localoqb = new oqb();
+    long l = a(paramString);
+    String str = jdField_a_of_type_JavaLangString + File.separator + l;
+    File localFile1 = new File(str);
+    if (a(localFile1)) {
+      localoqb.a(localFile1);
+    }
+    for (;;)
+    {
+      return localoqb;
+      bbwz localbbwz = ((bbww)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
+      File localFile2 = new File(jdField_a_of_type_JavaLangString);
+      if (!localFile2.exists()) {}
+      for (boolean bool = localFile2.mkdirs(); bool; bool = true)
+      {
+        str = str + ".zip";
+        localFile2 = new File(str);
+        paramString = new bbwu(paramString, localFile2);
+        paramString.b = 3;
+        paramString.d = 60L;
+        Bundle localBundle = new Bundle();
+        localBundle.putLong("bgLottieResId", l);
+        localBundle.putString("bgLottieResPath", str);
+        localbbwz.a(paramString, new oqg(l, str, localFile2, localFile1, new WeakReference(localoqb)), localBundle);
+        return localoqb;
+      }
+    }
+  }
+  
+  private void a(File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyLottieDrawable", 2, "loadLottieAnimation " + paramFile.getName());
+    }
+    File[] arrayOfFile = paramFile.listFiles(new oqc(this));
+    Object localObject = paramFile.listFiles(new oqd(this));
+    if ((arrayOfFile == null) || (localObject == null)) {}
+    do
+    {
+      return;
+      localObject = new ReadInJoyLottieDrawable.3(this, paramFile, (File[])localObject);
+    } while (arrayOfFile.length <= 0);
+    if ((LottieComposition)b.get(paramFile.getAbsolutePath()) == null)
+    {
+      ThreadManager.excute(new ReadInJoyLottieDrawable.4(this, arrayOfFile, paramFile, (Runnable)localObject), 64, null, true);
       return;
     }
-    catch (Throwable paramTMAssistantDownloadClient)
+    ((Runnable)localObject).run();
+  }
+  
+  private static boolean a(File paramFile)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramFile.exists())
     {
-      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (paramTMAssistantDownloadClient != null) {
-      try
+      paramFile = paramFile.listFiles(new oqh());
+      bool1 = bool2;
+      if (paramFile != null)
       {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
-          Iterator localIterator = this.a.iterator();
-          while (localIterator.hasNext()) {
-            ((oqa)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
-          }
+        bool1 = bool2;
+        if (paramFile.length > 0) {
+          bool1 = true;
         }
-        return;
-      }
-      catch (Throwable paramTMAssistantDownloadClient)
-      {
-        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
       }
     }
+    return bool1;
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
+    if (!paramBoolean1) {
+      cancelAnimation();
+    }
+    return super.setVisible(paramBoolean1, paramBoolean2);
   }
 }
 

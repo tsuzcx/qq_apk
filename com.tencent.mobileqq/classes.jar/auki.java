@@ -1,112 +1,243 @@
-import android.content.ContentValues;
+import android.annotation.TargetApi;
+import android.content.ContentResolver;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
 import android.database.Cursor;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.database.DataSetObserver;
+import android.net.Uri;
+import android.os.Bundle;
+import java.util.HashMap;
 
 public class auki
-  extends auky
+  implements Cursor
 {
-  public auki()
+  private Cursor jdField_a_of_type_AndroidDatabaseCursor;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  
+  public auki(Cursor paramCursor)
   {
-    this.a = 7;
+    this.jdField_a_of_type_AndroidDatabaseCursor = paramCursor;
   }
   
-  public aukm a(aukm paramaukm, Cursor paramCursor, boolean paramBoolean, aukx paramaukx)
+  public void close()
   {
-    paramaukm = (DiscussionMemberInfo)paramaukm;
-    if (paramaukx == null)
-    {
-      paramaukm.discussionUin = paramCursor.getString(paramCursor.getColumnIndex("discussionUin"));
-      paramaukm.memberUin = paramCursor.getString(paramCursor.getColumnIndex("memberUin"));
-      paramaukm.memberName = paramCursor.getString(paramCursor.getColumnIndex("memberName"));
-      paramaukm.flag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("flag")));
-      paramaukm.dataTime = paramCursor.getLong(paramCursor.getColumnIndex("dataTime"));
-      paramaukm.inteRemark = paramCursor.getString(paramCursor.getColumnIndex("inteRemark"));
-      paramaukm.inteRemarkSource = paramCursor.getLong(paramCursor.getColumnIndex("inteRemarkSource"));
-      return paramaukm;
-    }
-    int i = paramCursor.getColumnIndex("discussionUin");
-    if (i == -1)
-    {
-      paramaukx.a(new NoColumnError("discussionUin", String.class));
-      i = paramCursor.getColumnIndex("memberUin");
-      if (i != -1) {
-        break label397;
-      }
-      paramaukx.a(new NoColumnError("memberUin", String.class));
-      label207:
-      i = paramCursor.getColumnIndex("memberName");
-      if (i != -1) {
-        break label412;
-      }
-      paramaukx.a(new NoColumnError("memberName", String.class));
-      label241:
-      i = paramCursor.getColumnIndex("flag");
-      if (i != -1) {
-        break label427;
-      }
-      paramaukx.a(new NoColumnError("flag", Byte.TYPE));
-      label276:
-      i = paramCursor.getColumnIndex("dataTime");
-      if (i != -1) {
-        break label443;
-      }
-      paramaukx.a(new NoColumnError("dataTime", Long.TYPE));
-      label311:
-      i = paramCursor.getColumnIndex("inteRemark");
-      if (i != -1) {
-        break label458;
-      }
-      paramaukx.a(new NoColumnError("inteRemark", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("inteRemarkSource");
-      if (i != -1) {
-        break label473;
-      }
-      paramaukx.a(new NoColumnError("inteRemarkSource", Long.TYPE));
-      return paramaukm;
-      paramaukm.discussionUin = paramCursor.getString(i);
-      break;
-      label397:
-      paramaukm.memberUin = paramCursor.getString(i);
-      break label207;
-      label412:
-      paramaukm.memberName = paramCursor.getString(i);
-      break label241;
-      label427:
-      paramaukm.flag = ((byte)paramCursor.getShort(i));
-      break label276;
-      label443:
-      paramaukm.dataTime = paramCursor.getLong(i);
-      break label311;
-      label458:
-      paramaukm.inteRemark = paramCursor.getString(i);
-    }
-    label473:
-    paramaukm.inteRemarkSource = paramCursor.getLong(i);
-    return paramaukm;
+    this.jdField_a_of_type_AndroidDatabaseCursor.close();
   }
   
-  public String a(String paramString)
+  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,discussionUin TEXT ,memberUin TEXT ,memberName TEXT ,flag INTEGER ,dataTime INTEGER ,inteRemark TEXT ,inteRemarkSource INTEGER,UNIQUE(discussionUin,memberUin) ON CONFLICT IGNORE)");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_AndroidDatabaseCursor.copyStringToBuffer(paramInt, paramCharArrayBuffer);
   }
   
-  public void a(aukm paramaukm, ContentValues paramContentValues)
+  public void deactivate()
   {
-    paramaukm = (DiscussionMemberInfo)paramaukm;
-    paramContentValues.put("discussionUin", paramaukm.discussionUin);
-    paramContentValues.put("memberUin", paramaukm.memberUin);
-    paramContentValues.put("memberName", paramaukm.memberName);
-    paramContentValues.put("flag", Byte.valueOf(paramaukm.flag));
-    paramContentValues.put("dataTime", Long.valueOf(paramaukm.dataTime));
-    paramContentValues.put("inteRemark", paramaukm.inteRemark);
-    paramContentValues.put("inteRemarkSource", Long.valueOf(paramaukm.inteRemarkSource));
+    this.jdField_a_of_type_AndroidDatabaseCursor.deactivate();
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getBlob(paramInt);
+  }
+  
+  public int getColumnCount()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnCount();
+  }
+  
+  public int getColumnIndex(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      String[] arrayOfString = getColumnNames();
+      HashMap localHashMap = new HashMap(arrayOfString.length);
+      int i = 0;
+      int j = arrayOfString.length;
+      while (i < j)
+      {
+        localHashMap.put(arrayOfString[i], Integer.valueOf(i));
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+    }
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.intValue();
+    }
+    return -1;
+  }
+  
+  public int getColumnIndexOrThrow(String paramString)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnIndexOrThrow(paramString);
+  }
+  
+  public String getColumnName(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnName(paramInt);
+  }
+  
+  public String[] getColumnNames()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnNames();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
+  }
+  
+  public double getDouble(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getDouble(paramInt);
+  }
+  
+  public Bundle getExtras()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getExtras();
+  }
+  
+  public float getFloat(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getFloat(paramInt);
+  }
+  
+  public int getInt(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getInt(paramInt);
+  }
+  
+  public long getLong(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getLong(paramInt);
+  }
+  
+  public Uri getNotificationUri()
+  {
+    return null;
+  }
+  
+  public int getPosition()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getPosition();
+  }
+  
+  public short getShort(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getShort(paramInt);
+  }
+  
+  public String getString(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getString(paramInt);
+  }
+  
+  @TargetApi(11)
+  public int getType(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getType(paramInt);
+  }
+  
+  public boolean getWantsAllOnMoveCalls()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getWantsAllOnMoveCalls();
+  }
+  
+  public boolean isAfterLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isAfterLast();
+  }
+  
+  public boolean isBeforeFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isBeforeFirst();
+  }
+  
+  public boolean isClosed()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isClosed();
+  }
+  
+  public boolean isFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isFirst();
+  }
+  
+  public boolean isLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isLast();
+  }
+  
+  public boolean isNull(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isNull(paramInt);
+  }
+  
+  public boolean move(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.move(paramInt);
+  }
+  
+  public boolean moveToFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToFirst();
+  }
+  
+  public boolean moveToLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToLast();
+  }
+  
+  public boolean moveToNext()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToNext();
+  }
+  
+  public boolean moveToPosition(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPosition(paramInt);
+  }
+  
+  public boolean moveToPrevious()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPrevious();
+  }
+  
+  public void registerContentObserver(ContentObserver paramContentObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.registerContentObserver(paramContentObserver);
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.registerDataSetObserver(paramDataSetObserver);
+  }
+  
+  @Deprecated
+  public boolean requery()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.requery();
+  }
+  
+  public Bundle respond(Bundle paramBundle)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.respond(paramBundle);
+  }
+  
+  public void setExtras(Bundle paramBundle) {}
+  
+  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.setNotificationUri(paramContentResolver, paramUri);
+  }
+  
+  public void unregisterContentObserver(ContentObserver paramContentObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterContentObserver(paramContentObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterDataSetObserver(paramDataSetObserver);
   }
 }
 

@@ -1,11 +1,24 @@
-import com.tencent.oskplayer.util.Singleton;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
 public class xia
-  extends Singleton<xhz>
+  implements xhy
 {
-  protected xhz a()
+  public xia(SingleLyricView paramSingleLyricView) {}
+  
+  public void a()
   {
-    return new xhz();
+    SingleLyricView.a(this.a).b();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.post(new SingleLyricView.1.1(this, paramLong));
+  }
+  
+  public void b()
+  {
+    SingleLyricView.a(this.a).c();
   }
 }
 

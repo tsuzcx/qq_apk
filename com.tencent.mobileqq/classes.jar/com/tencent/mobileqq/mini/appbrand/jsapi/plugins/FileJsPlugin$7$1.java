@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import apcy;
-import apue;
+import apdc;
+import apug;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
@@ -18,10 +18,10 @@ class FileJsPlugin$7$1
     QLog.d("[mini] FileJsPlugin", 1, "openFileReader callback  : " + paramString);
     if ((paramString != null) && (paramString.startsWith("http")))
     {
-      if (apcy.a().a() == null)
+      if (apdc.a().a() == null)
       {
         paramString = new Bundle();
-        paramString.putString("_filename_from_dlg", this.this$1.this$0.jsPluginEngine.getActivityContext().getString(2131694785));
+        paramString.putString("_filename_from_dlg", this.this$1.this$0.jsPluginEngine.getActivityContext().getString(2131694786));
         paramString.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_jc_file");
         Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
         localIntent.putExtra("param", paramString);
@@ -32,7 +32,7 @@ class FileJsPlugin$7$1
     else {
       return;
     }
-    apue.c(this.this$1.this$0.jsPluginEngine.getActivityContext(), "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
+    apug.c(this.this$1.this$0.jsPluginEngine.getActivityContext(), "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386");
   }
 }
 

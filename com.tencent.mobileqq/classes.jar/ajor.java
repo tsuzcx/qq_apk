@@ -1,19 +1,21 @@
-import java.io.File;
-import java.util.Comparator;
-
-public final class ajor
-  implements Comparator<File>
+public class ajor
 {
-  public int a(File paramFile1, File paramFile2)
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  public long d;
+  
+  static
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    jdField_a_of_type_JavaLangString = bbdh.i();
+    b = bbdh.e();
+    c = bbdh.g();
+    jdField_a_of_type_Int = bbdh.b();
+    jdField_a_of_type_Long = bbdh.a();
   }
 }
 

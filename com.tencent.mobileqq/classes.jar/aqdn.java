@@ -1,16 +1,56 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aqdn
-  implements View.OnTouchListener
 {
-  public aqdn(ForwardPhotoOption paramForwardPhotoOption) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a(int paramInt, double paramDouble)
   {
-    return true;
+    float f = 1.0F;
+    if (paramInt > 150) {
+      f = paramInt / 100;
+    }
+    if (paramDouble <= 1.5D) {
+      return (int)(f * 9.0F);
+    }
+    if (paramDouble <= 2.0D) {
+      return (int)(f * 9.0F);
+    }
+    return (int)(f * 4.0F);
+  }
+  
+  public static Drawable a(Bitmap paramBitmap)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bbef.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Bitmap paramBitmap, double paramDouble)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bbef.a(paramBitmap, a(0, paramDouble));
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Drawable paramDrawable, double paramDouble)
+  {
+    return a(bbay.a(paramDrawable), paramDouble);
+  }
+  
+  public static final boolean a(Intent paramIntent)
+  {
+    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
   }
 }
 

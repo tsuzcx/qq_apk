@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
-import qqj;
+import qqg;
 
 class VideoFeedsLazyLoadDelegate$2
   implements Runnable
@@ -11,7 +11,7 @@ class VideoFeedsLazyLoadDelegate$2
   public void run()
   {
     if (this.a != null) {
-      this.a.a(200, new qqj());
+      this.a.a(200, new qqg());
     }
   }
 }

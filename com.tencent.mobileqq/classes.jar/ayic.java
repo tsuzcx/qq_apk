@@ -9,7 +9,7 @@ public class ayic
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    ((bbgu)paramDialogInterface).getCheckBoxState();
   }
 }
 

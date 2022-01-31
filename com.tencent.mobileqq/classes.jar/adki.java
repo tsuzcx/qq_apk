@@ -1,21 +1,75 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class adki
-  extends ajxl
+  extends aqkn
 {
-  adki(adkg paramadkg) {}
+  adki(adke paramadke) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
-    {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (adkg.a(this.a) != null)) {
-        adkg.a(this.a).setImageBitmap(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
+    }
+    if ((this.a.jdField_a_of_type_Asrs != null) && (this.a.jdField_a_of_type_Asrs.a() == 1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
       }
     }
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Asrs != null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + adke.a(this.a));
+      }
+    } while (adke.a(this.a));
+    paramObject = null;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
+        l1 = l2;
+      }
+      catch (NumberFormatException paramObject)
+      {
+        for (;;)
+        {
+          QLog.e("intimate_relationship", 2, "valueOf string err ");
+        }
+      }
+    }
+    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
+    {
+      if (paramHashMap == null) {
+        break label272;
+      }
+      paramObject = adke.a(this.a).obtainMessage();
+      paramObject.what = 0;
+      paramObject.obj = paramHashMap;
+      adke.a(this.a).removeMessages(0);
+      adke.a(this.a).sendMessage(paramObject);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Asrs.a());
+      break;
+      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+    }
+    label272:
+    paramHashMap = adke.a(this.a).obtainMessage();
+    paramHashMap.what = 1;
+    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693622);
+    adke.a(this.a).sendMessage(paramHashMap);
   }
 }
 

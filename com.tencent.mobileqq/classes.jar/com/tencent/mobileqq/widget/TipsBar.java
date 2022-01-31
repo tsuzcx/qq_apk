@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -23,7 +23,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcrt;
+import bcsi;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -293,9 +293,9 @@ public class TipsBar
     localObject = d((Resources)localObject, this.jdField_a_of_type_Int);
     localImageView.setPadding(15, 15, 15, 15);
     localImageView.setImageDrawable((Drawable)localObject);
-    localImageView.setOnClickListener(new bcrt(this));
+    localImageView.setOnClickListener(new bcsi(this));
     if (AppSetting.d) {
-      localImageView.setContentDescription(ajyc.a(2131714986));
+      localImageView.setContentDescription(ajya.a(2131714997));
     }
     return localImageView;
   }
@@ -382,7 +382,7 @@ public class TipsBar
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130849076);; paramResources = paramResources.getDrawable(2130839192)) {
+    for (paramResources = paramResources.getDrawable(2130849082);; paramResources = paramResources.getDrawable(2130839192)) {
       return a(paramResources);
     }
   }

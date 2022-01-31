@@ -1,32 +1,46 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.net.ssl.SSLSocket;
 
-public class aydv
-  extends ayki
+class aydv
+  extends aydu
 {
-  public aydv(CharSequence paramCharSequence, int paramInt)
+  private aydv(ayds paramayds, SSLSocket paramSSLSocket)
   {
-    super(paramCharSequence, paramInt);
+    super(paramayds, paramSSLSocket);
   }
   
-  protected void a(View paramView, String paramString)
+  public void setEnabledProtocols(String[] paramArrayOfString)
   {
-    paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
-    try
+    String[] arrayOfString = paramArrayOfString;
+    if (paramArrayOfString != null)
     {
-      paramView.startActivity(paramString);
-      return;
+      arrayOfString = paramArrayOfString;
+      if (paramArrayOfString.length == 1)
+      {
+        arrayOfString = paramArrayOfString;
+        if ("SSLv3".equals(paramArrayOfString[0]))
+        {
+          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
+          if (paramArrayOfString.size() <= 1) {
+            break label101;
+          }
+          paramArrayOfString.remove("SSLv3");
+          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
+        }
+      }
     }
-    catch (ActivityNotFoundException paramView)
+    for (;;)
     {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
+      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
+      if (arrayOfString != null) {
+        super.setEnabledProtocols(arrayOfString);
+      }
+      return;
+      label101:
+      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
     }
   }
 }

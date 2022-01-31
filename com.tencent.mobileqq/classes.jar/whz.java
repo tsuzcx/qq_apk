@@ -1,20 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.VoiceScan.1;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class whz
-  implements bcjx
+class whz
+  implements View.OnClickListener
 {
-  public whz(VoiceScan.1 param1) {}
+  whz(whx paramwhx, wid paramwid) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onClick(View paramView)
   {
-    paramClickableColorSpanTextView = new Intent(why.a(this.a.this$0), QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    why.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
+    if (whx.a(this.jdField_a_of_type_Whx) != null) {
+      whx.a(this.jdField_a_of_type_Whx).b(this.jdField_a_of_type_Wid);
+    }
   }
 }
 

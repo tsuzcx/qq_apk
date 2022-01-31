@@ -1,26 +1,53 @@
+import android.content.res.Resources;
 import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
 
 public class acrb
-  implements Comparator<MessageRecord>
+  extends ajto
 {
   public acrb(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      akju.a(this.a.app, false, true, false, true);
+      this.a.a();
     }
-    if (l1 > 0L) {
-      return -1;
+    ActivateFriendActivity.a(this.a, paramBoolean2);
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      akju.a(this.a.app, false, true, false, true);
+      this.a.a();
     }
-    if (l1 < 0L) {
-      return 1;
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
     }
-    return 0;
+    label148:
+    for (String str = this.a.getString(2131689603);; str = this.a.getString(2131689604))
+    {
+      str = this.a.getString(2131689606, new Object[] { str });
+      bcql.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
+      return;
+    }
+    label161:
+    bcql.a(this.a, 1, this.a.getResources().getString(2131719386), 0).b(this.a.getTitleBarHeight());
   }
 }
 

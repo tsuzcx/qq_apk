@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aiye;
+import aiyc;
 import android.os.Process;
-import bbct;
+import bbdh;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ApolloGameStateMachine$1
@@ -12,14 +12,14 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    aiye localaiye2 = ApolloGameStateMachine.jdField_a_of_type_Aiye;
-    aiye localaiye1 = localaiye2;
-    if (localaiye2 == null) {
-      localaiye1 = new aiye();
+    aiyc localaiyc2 = ApolloGameStateMachine.jdField_a_of_type_Aiyc;
+    aiyc localaiyc1 = localaiyc2;
+    if (localaiyc2 == null) {
+      localaiyc1 = new aiyc();
     }
-    localaiye1.b = bbct.a(Process.myPid());
-    localaiye1.c = bbct.f();
-    ApolloGameStateMachine.jdField_a_of_type_Aiye = localaiye1;
+    localaiyc1.b = bbdh.a(Process.myPid());
+    localaiyc1.c = bbdh.f();
+    ApolloGameStateMachine.jdField_a_of_type_Aiyc = localaiyc1;
     ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }

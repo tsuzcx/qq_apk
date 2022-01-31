@@ -1,22 +1,31 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import mqq.app.QQPermissionCallback;
 
-public class azdf
-  implements InputFilter
+class azdf
+  implements QQPermissionCallback
 {
-  public azdf(AbsPublishActivity paramAbsPublishActivity) {}
+  azdf(azde paramazde) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramCharSequence != null)
+    bbdj.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
+    if (this.a.a.q != null)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+      paramArrayOfString.putExtra("from", "publish");
+      paramArrayOfString.putExtra("bid", this.a.a.q);
+      paramArrayOfString.putExtra("fromflag", this.a.a.b);
+      bajf.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
     }
-    return null;
+    abtq.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
   }
 }
 

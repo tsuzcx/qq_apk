@@ -6,13 +6,13 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aqyw;
-import aqzc;
-import aqzo;
+import aqyy;
+import aqze;
 import aqzq;
-import aqzv;
-import aqzw;
-import arax;
+import aqzs;
+import aqzx;
+import aqzy;
+import araz;
 import com.tencent.widget.OneViewPagerAdapter;
 import java.util.List;
 
@@ -21,9 +21,9 @@ public class HotPicPanelViewPagerAdapter
 {
   Context jdField_a_of_type_AndroidContentContext;
   SparseArray<HotPicPageView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  aqyw jdField_a_of_type_Aqyw;
-  protected aqzv a;
-  protected aqzw a;
+  aqyy jdField_a_of_type_Aqyy;
+  protected aqzx a;
+  protected aqzy a;
   HotPicMainPanel jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel;
   
   public HotPicPanelViewPagerAdapter(HotPicMainPanel paramHotPicMainPanel, ViewPager paramViewPager)
@@ -31,15 +31,15 @@ public class HotPicPanelViewPagerAdapter
     super(paramViewPager);
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel = paramHotPicMainPanel;
     this.jdField_a_of_type_AndroidContentContext = paramHotPicMainPanel.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Aqyw = paramHotPicMainPanel.jdField_a_of_type_Aqyw;
-    this.jdField_a_of_type_Aqzw = paramHotPicMainPanel;
+    this.jdField_a_of_type_Aqyy = paramHotPicMainPanel.jdField_a_of_type_Aqyy;
+    this.jdField_a_of_type_Aqzy = paramHotPicMainPanel;
   }
   
   public View a(int paramInt)
   {
-    HotPicTagInfo localHotPicTagInfo = this.jdField_a_of_type_Aqyw.b(paramInt);
+    HotPicTagInfo localHotPicTagInfo = this.jdField_a_of_type_Aqyy.b(paramInt);
     HotPicPageView localHotPicPageView = (HotPicPageView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558555, null);
-    localHotPicPageView.setOnHotPicItemClickListener(this.jdField_a_of_type_Aqzv);
+    localHotPicPageView.setOnHotPicItemClickListener(this.jdField_a_of_type_Aqzx);
     if (localHotPicTagInfo != null)
     {
       localHotPicPageView.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel, localHotPicTagInfo);
@@ -60,7 +60,7 @@ public class HotPicPanelViewPagerAdapter
     if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
       localHotPicPageView = (HotPicPageView)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if (localHotPicPageView.jdField_a_of_type_Arax != null) {}
+      if (localHotPicPageView.jdField_a_of_type_Araz != null) {}
     }
     else
     {
@@ -68,24 +68,24 @@ public class HotPicPanelViewPagerAdapter
     }
     if (localHotPicPageView.b == paramInt)
     {
-      localHotPicPageView.jdField_a_of_type_Arax.b(true);
+      localHotPicPageView.jdField_a_of_type_Araz.b(true);
       localHotPicPageView.o();
     }
     for (;;)
     {
       i += 1;
       break;
-      localHotPicPageView.jdField_a_of_type_Arax.b(false);
+      localHotPicPageView.jdField_a_of_type_Araz.b(false);
       localHotPicPageView.j();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject2 = aqzc.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject2 = aqze.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     HotPicPageView localHotPicPageView = (HotPicPageView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     if ((localHotPicPageView != null) && (localHotPicPageView.c)) {
-      localHotPicPageView.jdField_a_of_type_Aqzq.a(false);
+      localHotPicPageView.jdField_a_of_type_Aqzs.a(false);
     }
     switch (paramInt2)
     {
@@ -101,37 +101,37 @@ public class HotPicPanelViewPagerAdapter
       try
       {
         localHotPicPageView.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.mClearSpanOnItemsChanged = false;
-        paramInt2 = localHotPicPageView.jdField_a_of_type_Aqzo.a.size();
-        localObject2 = ((aqzc)localObject2).a(paramInt1);
-        localHotPicPageView.jdField_a_of_type_Aqzo.a((List)localObject2);
+        paramInt2 = localHotPicPageView.jdField_a_of_type_Aqzq.a.size();
+        localObject2 = ((aqze)localObject2).a(paramInt1);
+        localHotPicPageView.jdField_a_of_type_Aqzq.a((List)localObject2);
         int i = ((List)localObject2).size();
         paramInt1 = paramInt2;
         while (paramInt1 < i - paramInt2)
         {
-          localHotPicPageView.jdField_a_of_type_Aqzo.notifyItemInserted(paramInt1);
+          localHotPicPageView.jdField_a_of_type_Aqzq.notifyItemInserted(paramInt1);
           paramInt1 += 1;
         }
-        localHotPicPageView.jdField_a_of_type_Aqzo.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
+        localHotPicPageView.jdField_a_of_type_Aqzq.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
         localHotPicPageView.m();
         return;
       }
       finally {}
     case 6: 
-      if (((aqzc)localObject2).c(paramInt1)) {}
+      if (((aqze)localObject2).c(paramInt1)) {}
       for (paramInt1 = 2;; paramInt1 = 1)
       {
-        localObject1.jdField_a_of_type_Aqzq.a(paramInt1);
-        localObject1.jdField_a_of_type_Aqzq.a(false);
-        localObject1.jdField_a_of_type_Aqzo.notifyItemChanged(localObject1.jdField_a_of_type_Aqzo.getItemCount());
+        localObject1.jdField_a_of_type_Aqzs.a(paramInt1);
+        localObject1.jdField_a_of_type_Aqzs.a(false);
+        localObject1.jdField_a_of_type_Aqzq.notifyItemChanged(localObject1.jdField_a_of_type_Aqzq.getItemCount());
         return;
       }
     }
     localObject1.k();
   }
   
-  public void a(aqzv paramaqzv)
+  public void a(aqzx paramaqzx)
   {
-    this.jdField_a_of_type_Aqzv = paramaqzv;
+    this.jdField_a_of_type_Aqzx = paramaqzx;
   }
   
   public void a(Object paramObject, int paramInt)
@@ -167,14 +167,14 @@ public class HotPicPanelViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Aqyw.a();
+    return this.jdField_a_of_type_Aqyy.a();
   }
   
   public void onPageSelected(int paramInt)
   {
     super.onPageSelected(paramInt);
-    if (this.jdField_a_of_type_Aqzw != null) {
-      this.jdField_a_of_type_Aqzw.a(paramInt);
+    if (this.jdField_a_of_type_Aqzy != null) {
+      this.jdField_a_of_type_Aqzy.a(paramInt);
     }
   }
 }

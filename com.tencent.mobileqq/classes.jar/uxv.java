@@ -1,80 +1,102 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import java.util.Map;
 
-public abstract class uxv
+public class uxv
   implements uxw
 {
-  protected Activity a;
+  private float jdField_a_of_type_Float = 1.0F;
+  protected final int a;
+  public Bitmap a;
+  private String jdField_a_of_type_JavaLangString;
+  public Map<String, Bitmap> a;
+  protected final int b;
   
-  public Activity a()
+  public uxv(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
   {
-    return this.a;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_JavaLangString = uyl.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
   }
   
-  public View a(int paramInt)
+  public Bitmap a(Bitmap paramBitmap)
   {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    veg.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
+    for (;;)
     {
-      localActivity.setContentView(paramInt);
-      return;
+      try
+      {
+        float f1 = paramBitmap.getWidth();
+        float f2 = paramBitmap.getHeight();
+        float f3 = f2 / f1;
+        int m = (int)f2;
+        int k = (int)f1;
+        int j;
+        int i;
+        if (f3 > this.jdField_a_of_type_Float)
+        {
+          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
+          j = (paramBitmap.getHeight() - m) / 2;
+          i = 0;
+          if (this.jdField_a_of_type_JavaUtilMap == null) {
+            break label422;
+          }
+          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
+          if ((localBitmap == null) || (localBitmap.isRecycled()))
+          {
+            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
+            localBitmap = paramBitmap;
+            if (this.jdField_a_of_type_JavaUtilMap != null)
+            {
+              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
+              localBitmap = paramBitmap;
+            }
+            Paint localPaint = new Paint();
+            localPaint.setAntiAlias(true);
+            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+              break label414;
+            }
+            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            paramBitmap.eraseColor(0);
+            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
+            return paramBitmap;
+          }
+        }
+        else
+        {
+          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
+          i = (paramBitmap.getWidth() - k) / 2;
+          j = 0;
+          continue;
+        }
+        localBitmap.eraseColor(0);
+        uyk.a(paramBitmap, localBitmap, i, j, k, m, null, false);
+        continue;
+        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      }
+      catch (Exception paramBitmap)
+      {
+        ved.e("RoundedTransformation", "occur error:" + paramBitmap);
+        return null;
+      }
+      label414:
+      continue;
+      label422:
+      Bitmap localBitmap = null;
     }
-    veg.e(getClass().getSimpleName(), "setContentView can not access after detach");
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
+  public String a()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setResult(paramInt, paramIntent);
-      return;
-    }
-    veg.e(getClass().getSimpleName(), "finish can not access after detach");
-  }
-  
-  public void a(@NonNull Activity paramActivity)
-  {
-    this.a = paramActivity;
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.a = null;
-  }
-  
-  public void e()
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    veg.e(getClass().getSimpleName(), "finish can not access after detach");
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

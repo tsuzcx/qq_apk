@@ -1,20 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
 
 public class bkvd
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public bkvd(BeautyBar paramBeautyBar) {}
+  public bkvd(CaptureQmcfSoDownloadFragment.7 param7) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bkov.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    paramDialogInterface = this.a.this$0.getActivity();
+    if (paramInt == 1)
+    {
+      CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
+      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      localIntent.setData(Uri.fromParts("package", paramDialogInterface.getPackageName(), null));
+      paramDialogInterface.startActivity(localIntent);
+      return;
+    }
+    paramDialogInterface.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

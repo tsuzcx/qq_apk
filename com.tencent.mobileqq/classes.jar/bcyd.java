@@ -1,85 +1,57 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.open.agent.AgentActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
 
-public class bcyd
-  implements BusinessObserver
+class bcyd
+  implements bdon
 {
-  public bcyd(AuthorityActivity paramAuthorityActivity) {}
+  bcyd(bcyc parambcyc) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityActivity", 2, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
-    }
-    aqgh.a("KEY_GET_APP_INFO_REQUEST", this.a.jdField_a_of_type_Bdna, paramBoolean);
-    AuthorityActivity.c(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.a).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_Bdna.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
-    }
-    do
+    QLog.d("AgentActivity", 1, "preAuthWithRetry onSuccess");
+    AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, true);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.d("AgentActivity", 1, new Object[] { "preAuthWithRetry onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
+    if ((paramInt == 110530) || (paramInt == 1002))
     {
+      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b, false);
       return;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    } while (!paramBoolean);
-    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+    }
+    if (paramInt == 110509)
+    {
+      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle, this.a.b);
+      return;
+    }
+    if (paramInt == 110513)
+    {
+      AgentActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, 0, "");
+      return;
+    }
+    String str;
+    if (paramInt == -1) {
+      str = this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694906);
+    }
     for (;;)
     {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        localObject = arrayOfByte;
-        if (!this.a.i) {
-          localObject = bdnz.b(arrayOfByte, this.a.jdField_a_of_type_Bdna);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localGetAppinfoResponse.mergeFrom((byte[])localObject);
-        if (!localGetAppinfoResponse.has()) {
-          break;
-        }
-        paramInt = localGetAppinfoResponse.ret.get();
-        if (paramInt == 0)
-        {
-          localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-          ((Message)localObject).what = 3;
-          ((Message)localObject).obj = localGetAppinfoResponse;
-          this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "12");
-        if (paramBundle.getBoolean("isShort", false))
-        {
-          paramBundle = "2";
-          ((Bundle)localObject).putString("intext_3", paramBundle);
-          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.a).jdField_a_of_type_JavaLangString);
-          ((Bundle)localObject).putString("intext_2", "" + paramInt);
-          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.a).jdField_a_of_type_Long);
-          bded.a().a((Bundle)localObject, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-          return;
-        }
+      ForwardUtils.a(str, this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity, new bcye(this, paramInt, paramString));
+      return;
+      if (TextUtils.isEmpty(paramString)) {
+        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131694894), new Object[] { Integer.valueOf(paramInt) });
+      } else {
+        str = String.format(this.a.jdField_a_of_type_ComTencentOpenAgentAgentActivity.getResources().getString(2131696782), new Object[] { paramString, Integer.valueOf(paramInt) });
       }
-      catch (Exception paramBundle)
-      {
-        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramBundle = "1";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcyd
  * JD-Core Version:    0.7.0.1
  */

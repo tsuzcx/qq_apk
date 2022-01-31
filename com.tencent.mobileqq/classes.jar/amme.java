@@ -1,30 +1,30 @@
-import SummaryCard.CondFitUser;
 import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class amme
-  implements ajue
+  implements ajua
 {
   public amme(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(boolean paramBoolean1, List<CondFitUser> paramList, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((this.a.j == 1) || (this.a.j == 2))
+    {
+      if (paramBoolean) {
+        break label110;
+      }
+      this.a.a();
+      bcql.a(this.a, 2131691028, 0).b(this.a.getTitleBarHeight());
+    }
+    label110:
+    while (paramInt != 2) {
+      return;
+    }
     this.a.a();
-    if (paramInt != 1) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      bcpw.a(this.a, 2131691016, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      bcpw.a(this.a, 2131691019, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Ajty.b(), this.a.jdField_a_of_type_Ajty.c(), this.a.e, this.a.d, paramList, paramBoolean2);
+    this.a.a(this.a.j);
   }
 }
 

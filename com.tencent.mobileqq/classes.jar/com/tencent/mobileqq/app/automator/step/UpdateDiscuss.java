@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajvg;
 import ajvi;
-import ajvk;
-import ajvl;
-import akmp;
+import ajvj;
+import akmo;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,41 +13,41 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class UpdateDiscuss
   extends AsyncStep
 {
-  private ajvl a;
+  private ajvj a;
   
   private void b()
   {
-    if (this.jdField_a_of_type_Ajvl == null)
+    if (this.jdField_a_of_type_Ajvj == null)
     {
-      this.jdField_a_of_type_Ajvl = new akmp(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajvl);
+      this.jdField_a_of_type_Ajvj = new akmo(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajvj);
     }
-    ((ajvi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(6)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin()).longValue());
+    ((ajvg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(6)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin()).longValue());
   }
   
   public int a()
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBoolean("isDiscussionlistok", false);
-    ajvk localajvk = (ajvk)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(53);
+    ajvi localajvi = (ajvi)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(53);
     if (bool)
     {
       FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1);
-      localajvk.a();
+      localajvi.a();
       localFriendListHandler.notifyUI(1000, true, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(3));
       return 7;
     }
-    localajvk.a();
+    localajvi.a();
     b();
     return 2;
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ajvl != null)
+    if (this.jdField_a_of_type_Ajvj != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajvl);
-      this.jdField_a_of_type_Ajvl = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajvj);
+      this.jdField_a_of_type_Ajvj = null;
     }
   }
 }

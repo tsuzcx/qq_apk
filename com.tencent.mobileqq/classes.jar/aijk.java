@@ -1,16 +1,22 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijk
   implements Animation.AnimationListener
 {
-  public aijk(SpecailCareListActivity paramSpecailCareListActivity, aijz paramaijz) {}
+  public aijk(SpecailCareListActivity paramSpecailCareListActivity, aijx paramaijx, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aijz.c.setVisibility(4);
+    this.jdField_a_of_type_Aijx.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(1, 2131367679);
+    paramAnimation.addRule(10);
+    paramAnimation.setMargins(0, (int)(10.0F * SpecailCareListActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), this.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_Aijx.a.setLayoutParams(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

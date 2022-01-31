@@ -1,20 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.Comparator;
-
-class orn
-  implements Comparator<DynamicChannelDataModel>
+public class orn
 {
-  orn(ork paramork) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public int a(DynamicChannelDataModel paramDynamicChannelDataModel1, DynamicChannelDataModel paramDynamicChannelDataModel2)
+  public String toString()
   {
-    if (paramDynamicChannelDataModel1.recommendSeq == paramDynamicChannelDataModel2.recommendSeq) {
-      return 0;
-    }
-    if (paramDynamicChannelDataModel1.recommendSeq < paramDynamicChannelDataModel2.recommendSeq) {
-      return -1;
-    }
-    return 1;
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
   }
 }
 

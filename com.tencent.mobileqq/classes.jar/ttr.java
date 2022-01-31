@@ -1,142 +1,38 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import android.view.ViewGroup;
 import java.util.List;
 
-public class ttr
-  extends Dialog
-  implements View.OnClickListener
+class ttr
+  extends PagerAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  MyVideoVisiblePersonPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView;
-  MyVideoVisibleTroopPageView jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView;
-  LeftTabBarView jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  String jdField_a_of_type_JavaLangString;
-  tet jdField_a_of_type_Tet;
-  boolean jdField_a_of_type_Boolean;
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public ttr(@NonNull Context paramContext, String paramString, int paramInt, tet paramtet, boolean paramBoolean)
+  public ttr(List<View> paramList)
   {
-    super(paramContext, 16973841);
-    super.requestWindowFeature(1);
-    super.setContentView(LayoutInflater.from(paramContext).inflate(2131561437, null));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = tsu.a();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Tet = paramtet;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)tsu.a().getManager(52));
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  void a()
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    ((ElasticImageView)findViewById(2131364275)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131379177));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131376791));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setUnselectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectColor(-1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setBackgroundDrawable(null);
-    ArrayList localArrayList1 = new ArrayList();
-    int i;
-    if ((this.jdField_a_of_type_Tet != null) && (this.jdField_a_of_type_Boolean))
-    {
-      if ((this.jdField_a_of_type_Tet.a != null) && (!this.jdField_a_of_type_Tet.a.isEmpty()))
-      {
-        ArrayList localArrayList2 = new ArrayList(this.jdField_a_of_type_Tet.a.size());
-        Iterator localIterator = this.jdField_a_of_type_Tet.a.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (String)localIterator.next();
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((String)localObject);
-          if (localObject != null) {
-            localArrayList2.add(localObject);
-          }
-        }
-        Collections.sort(localArrayList2, ajuj.a);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView = new MyVideoVisibleTroopPageView(this, this.jdField_a_of_type_AndroidContentContext, localArrayList2, this.jdField_a_of_type_ComTencentMobileqqAppTroopManager);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView);
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView.a());
-        localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(0, false);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new tts(this));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new ttu(this, localArrayList1));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ttt(this));
-      if (this.jdField_a_of_type_Int != 2) {
-        break label438;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      vel.a("pub_control", "exp_list", 0, 0, new String[] { String.valueOf(i), "", "", this.jdField_a_of_type_JavaLangString });
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView = new MyVideoVisiblePersonPageView(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      label438:
-      if (this.jdField_a_of_type_Int == 3) {
-        i = 2;
-      } else if (this.jdField_a_of_type_Int == 1) {
-        i = 3;
-      } else {
-        i = 0;
-      }
-    }
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
-  public void dismiss()
+  public int getCount()
   {
-    super.dismiss();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisiblePersonPageView.b();
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void onClick(View paramView)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    dismiss();
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    super.onCreate(paramBundle);
-    paramBundle = super.getWindow();
-    paramBundle.setGravity(80);
-    paramBundle.setWindowAnimations(2131755162);
-    a();
+    return paramView == paramObject;
   }
 }
 

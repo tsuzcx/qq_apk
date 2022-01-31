@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.3.1;
 
-class ahfk
-  implements aycb
+public class ahfk
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public ahfk(SpecifyRedPacketAnimMsg.3.1 param1) {}
   
-  ahfk(ahfj paramahfj, aycb paramaycb) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
-    }
-    if ((this.jdField_a_of_type_Boolean) || (ahfj.a(this.jdField_a_of_type_Ahfj))) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (ahfj.a(this.jdField_a_of_type_Ahfj) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(ahfj.a(this.jdField_a_of_type_Ahfj));
-      }
-    } while (this.jdField_a_of_type_Aycb == null);
-    this.jdField_a_of_type_Aycb.a();
+    this.a.a.a.a();
   }
 }
 

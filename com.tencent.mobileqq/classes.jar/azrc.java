@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
-class azrc
-  implements Comparator<MessageRecord>
+public class azrc
 {
-  azrc(azrb paramazrb) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  public static int a = -1;
+  public static int b = 1;
+  public static int c = 2;
+  public azmr a;
+  public int d = a;
 }
 
 

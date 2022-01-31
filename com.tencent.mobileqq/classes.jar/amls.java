@@ -1,31 +1,36 @@
-import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 class amls
-  implements alxk
+  implements URLDrawable.URLDrawableListener
 {
-  amls(amlr paramamlr) {}
+  amls(amlq paramamlq, RoundImageView paramRoundImageView, angi paramangi, String paramString) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    paramString2 = (List)amlr.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
-    {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
-      {
-        amlv localamlv = (amlv)paramString2.next();
-        if ((localamlv != null) && (localamlv.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localamlv.jdField_a_of_type_Angd != null))
-        {
-          localamlv.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localamlv.jdField_a_of_type_Angd.c(true);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
     }
-    amlr.a(this.a).remove(paramString1);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Angi.c(true);
+    }
   }
 }
 

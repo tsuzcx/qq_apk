@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
-class bkwt
-  implements View.OnClickListener
+public class bkwt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bkwt(bkws parambkws) {}
+  public bkwt(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.setCenterScaleValue(f);
   }
 }
 

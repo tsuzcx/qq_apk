@@ -1,6 +1,8 @@
+import android.view.MotionEvent;
+
 public abstract interface bfsb
 {
-  public abstract void a(long paramLong);
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

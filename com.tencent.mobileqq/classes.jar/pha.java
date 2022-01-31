@@ -1,22 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcShortContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
 class pha
-  extends ComponentContentPgcShortContentGridImage
+  implements View.OnAttachStateChangeListener
 {
-  pha(pgz parampgz, Context paramContext, ArticleInfo paramArticleInfo)
-  {
-    super(paramContext);
-  }
+  pha(pgw parampgw) {}
   
-  public int d()
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
-      return 11;
+    if (pgw.a(this.a) != null)
+    {
+      pgw.a(this.a).b();
+      pgw.a(this.a, null);
     }
-    return super.d();
+    if (pgw.a(this.a) != null)
+    {
+      pgw.a(this.a).a();
+      pgw.a(this.a, null);
+    }
   }
 }
 

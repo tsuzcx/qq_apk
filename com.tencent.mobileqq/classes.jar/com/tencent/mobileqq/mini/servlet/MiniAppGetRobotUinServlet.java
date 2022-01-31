@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -53,7 +53,7 @@ public class MiniAppGetRobotUinServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetRobotUin");
-      paramPacket.putSendData(bblm.a((byte[])localObject));
+      paramPacket.putSendData(bbma.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

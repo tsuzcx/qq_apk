@@ -1,7 +1,7 @@
 package com.dataline.mpfile;
 
-import ajsf;
-import aukm;
+import ajsd;
+import auko;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -23,7 +23,7 @@ public class MpfileTaskRecord
   
   public MpfileTaskRecord()
   {
-    this.selfuin = String.valueOf(ajsf.z);
+    this.selfuin = String.valueOf(ajsd.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -54,7 +54,7 @@ public class MpfileTaskRecord
     prewrite();
   }
   
-  public Class<? extends aukm> getClassForTable()
+  public Class<? extends auko> getClassForTable()
   {
     return MpfileTaskRecord.class;
   }

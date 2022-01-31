@@ -1,39 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import java.lang.ref.WeakReference;
 
 public class aicj
-  implements bcns
+  implements DialogInterface.OnCancelListener
 {
-  public aicj(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
+  private final WeakReference<Activity> a;
   
-  public void a()
+  public aicj(Activity paramActivity)
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
+    this.a = new WeakReference(paramActivity);
   }
   
-  public void a(String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    aylc.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    aylc.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    aylc.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    Activity localActivity = (Activity)this.a.get();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

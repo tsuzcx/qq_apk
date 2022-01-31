@@ -1,35 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class ajya
-  extends BroadcastReceiver
 {
-  public ajya(GuardManager paramGuardManager) {}
+  public static BaseApplicationImpl a = BaseApplicationImpl.sApplication;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    try
     {
-      if (this.a.jdField_a_of_type_Long > 0L) {
-        this.a.a(false);
-      }
-      altu.b();
+      String str = a.getResources().getString(paramInt);
+      return str;
     }
-    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
-      return;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
-      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    }
-    altu.a();
+    return "";
   }
 }
 

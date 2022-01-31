@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anjg;
-import asty;
-import aunl;
-import aunt;
-import auoa;
-import auob;
-import axad;
-import ayog;
-import ayte;
-import ayvu;
-import aywk;
-import bbbg;
-import bbdm;
-import bbet;
+import anjl;
+import asua;
+import aunn;
+import aunv;
+import auoc;
+import auod;
+import axaf;
+import ayoi;
+import aytg;
+import ayvw;
+import aywm;
+import bbbu;
+import bbea;
+import bbfh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -57,10 +57,10 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class MessageForPic
   extends MessageForRichText
-  implements Parcelable, auoa
+  implements Parcelable, auoc
 {
   public static final String CHECK_IMAGE_TYPE = "check_image_type";
-  public static final Parcelable.Creator<MessageForPic> CREATOR = new anjg();
+  public static final Parcelable.Creator<MessageForPic> CREATOR = new anjl();
   private static final String TAG = "MessageForPic";
   public static int defaultSuMsgId = -1;
   public long DSKey;
@@ -73,7 +73,7 @@ public class MessageForPic
   public String bigThumbMsgUrl;
   public int busiType;
   public int fileSizeFlag;
-  public Map<aunt, Integer> forwardId = new HashMap();
+  public Map<aunv, Integer> forwardId = new HashMap();
   public long groupFileID;
   public long height;
   public int imageType;
@@ -126,12 +126,12 @@ public class MessageForPic
     if (isSendFromLocal())
     {
       localObject = getPicUploadInfo();
-      ((auob)localObject).jdField_e_of_type_JavaLangString = paramString;
-      return ((auob)localObject).b();
+      ((auod)localObject).jdField_e_of_type_JavaLangString = paramString;
+      return ((auod)localObject).b();
     }
     Object localObject = getPicDownloadInfo();
-    ((aunl)localObject).jdField_e_of_type_JavaLangString = paramString;
-    return ((aunl)localObject).b();
+    ((aunn)localObject).jdField_e_of_type_JavaLangString = paramString;
+    return ((aunn)localObject).b();
   }
   
   public boolean checkGif()
@@ -143,7 +143,7 @@ public class MessageForPic
   {
     if ((this.imageType == 0) && (!isSendFromLocal()) && (TextUtils.isEmpty(getExtInfoFromExtStr("check_image_type"))))
     {
-      File localFile = ayog.a(aywk.a(this, 1, null).toString());
+      File localFile = ayoi.a(aywm.a(this, 1, null).toString());
       if (localFile != null)
       {
         if (GifDrawable.isGifFile(localFile))
@@ -178,7 +178,7 @@ public class MessageForPic
         {
           int i;
           Object localObject3;
-          ayte localayte;
+          aytg localaytg;
           if (this.istroop == 0)
           {
             localObject3 = new NotOnlineImageExtPb.ResvAttr();
@@ -206,11 +206,11 @@ public class MessageForPic
                 System.currentTimeMillis();
               }
             }
-            if (!"1".equals(getExtInfoFromExtStr(axad.m))) {
+            if (!"1".equals(getExtInfoFromExtStr(axaf.m))) {
               break label1093;
             }
             this.sync2Story = true;
-            this.isQzonePic = "1".equals(getExtInfoFromExtStr(axad.r));
+            this.isQzonePic = "1".equals(getExtInfoFromExtStr(axaf.r));
             return;
             localException2 = localException2;
             localException2.printStackTrace();
@@ -233,33 +233,33 @@ public class MessageForPic
           if (this.versionCode > 0) {
             this.msg = new String(this.msgData, "UTF-8");
           }
-          this.isShareAppActionMsg = bbbg.a(this.msgtype);
+          this.isShareAppActionMsg = bbbu.a(this.msgtype);
           if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032))
           {
             bool = true;
             this.isMixed = bool;
-            ayvu localayvu = new ayvu();
+            ayvw localayvw = new ayvw();
             if (!this.isMixed) {
               break label1032;
             }
-            localObject4 = bbbg.a(this.msg);
+            localObject4 = bbbu.a(this.msg);
             this.action = ((MsgBody)localObject4).action;
             this.shareAppID = ((MsgBody)localObject4).shareAppID;
-            localayvu.a(((MsgBody)localObject4).msg);
+            localayvw.a(((MsgBody)localObject4).msg);
             this.actMsgContentValue = ((MsgBody)localObject4).actMsgContentValue;
-            this.path = localayvu.jdField_a_of_type_JavaLangString;
-            this.size = localayvu.jdField_a_of_type_Long;
-            this.type = localayvu.jdField_a_of_type_Int;
-            this.isRead = localayvu.jdField_a_of_type_Boolean;
-            this.uuid = localayvu.jdField_b_of_type_JavaLangString;
-            this.md5 = localayvu.jdField_c_of_type_JavaLangString;
-            this.serverStoreSource = localayvu.jdField_d_of_type_JavaLangString;
-            this.thumbMsgUrl = localayvu.jdField_e_of_type_JavaLangString;
-            this.bigThumbMsgUrl = localayvu.h;
-            this.bigMsgUrl = localayvu.f;
-            this.rawMsgUrl = localayvu.jdField_g_of_type_JavaLangString;
-            this.picExtraFlag = localayvu.jdField_c_of_type_Int;
-            this.picExtraObject = localayvu.jdField_a_of_type_JavaLangObject;
+            this.path = localayvw.jdField_a_of_type_JavaLangString;
+            this.size = localayvw.jdField_a_of_type_Long;
+            this.type = localayvw.jdField_a_of_type_Int;
+            this.isRead = localayvw.jdField_a_of_type_Boolean;
+            this.uuid = localayvw.jdField_b_of_type_JavaLangString;
+            this.md5 = localayvw.jdField_c_of_type_JavaLangString;
+            this.serverStoreSource = localayvw.jdField_d_of_type_JavaLangString;
+            this.thumbMsgUrl = localayvw.jdField_e_of_type_JavaLangString;
+            this.bigThumbMsgUrl = localayvw.h;
+            this.bigMsgUrl = localayvw.f;
+            this.rawMsgUrl = localayvw.jdField_g_of_type_JavaLangString;
+            this.picExtraFlag = localayvw.jdField_c_of_type_Int;
+            this.picExtraObject = localayvw.jdField_a_of_type_JavaLangObject;
             this.subVersion = 0;
           }
         }
@@ -333,14 +333,14 @@ public class MessageForPic
         localObject3 = (RichMsg.ForwardExtra)((RichMsg.PicRec)localObject1).fowardInfo.get();
         if (localObject3 != null)
         {
-          localayte = new ayte();
-          localayte.jdField_a_of_type_Long = ((RichMsg.ForwardExtra)localObject3).foward_orgId.get();
-          localayte.jdField_a_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_orgUin.get();
-          localayte.jdField_a_of_type_Int = ((RichMsg.ForwardExtra)localObject3).foward_orgUinType.get();
-          localayte.jdField_b_of_type_Int = ((RichMsg.ForwardExtra)localObject3).foward_orgFileSizeType.get();
-          localayte.jdField_b_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_orgUrl.get();
-          localayte.jdField_c_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_thumbPath.get();
-          this.picExtraObject = localayte;
+          localaytg = new aytg();
+          localaytg.jdField_a_of_type_Long = ((RichMsg.ForwardExtra)localObject3).foward_orgId.get();
+          localaytg.jdField_a_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_orgUin.get();
+          localaytg.jdField_a_of_type_Int = ((RichMsg.ForwardExtra)localObject3).foward_orgUinType.get();
+          localaytg.jdField_b_of_type_Int = ((RichMsg.ForwardExtra)localObject3).foward_orgFileSizeType.get();
+          localaytg.jdField_b_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_orgUrl.get();
+          localaytg.jdField_c_of_type_JavaLangString = ((RichMsg.ForwardExtra)localObject3).foward_thumbPath.get();
+          this.picExtraObject = localaytg;
         }
       }
       if ((((RichMsg.PicRec)localObject1).bytes_pb_reserved.has()) && (this.picExtraData == null)) {
@@ -370,84 +370,84 @@ public class MessageForPic
     if (isSendFromLocal())
     {
       localObject = getPicUploadInfo();
-      ((auob)localObject).jdField_e_of_type_JavaLangString = paramString;
-      return ((auob)localObject).c();
+      ((auod)localObject).jdField_e_of_type_JavaLangString = paramString;
+      return ((auod)localObject).c();
     }
     Object localObject = getPicDownloadInfo();
-    ((aunl)localObject).jdField_e_of_type_JavaLangString = paramString;
-    return ((aunl)localObject).c();
+    ((aunn)localObject).jdField_e_of_type_JavaLangString = paramString;
+    return ((aunn)localObject).c();
   }
   
-  public aunl getPicDownloadInfo()
+  public aunn getPicDownloadInfo()
   {
-    aunl localaunl = new aunl();
-    localaunl.jdField_a_of_type_Int = this.busiType;
-    localaunl.jdField_a_of_type_Long = this.uniseq;
-    SessionInfo localSessionInfo = asty.a().a();
-    boolean bool = bbet.a(asty.a().b());
+    aunn localaunn = new aunn();
+    localaunn.jdField_a_of_type_Int = this.busiType;
+    localaunn.jdField_a_of_type_Long = this.uniseq;
+    SessionInfo localSessionInfo = asua.a().a();
+    boolean bool = bbfh.a(asua.a().b());
     if ((this.isMultiMsg) && (!bool)) {
       if (localSessionInfo != null) {
-        localaunl.jdField_b_of_type_Int = asty.a().a().jdField_a_of_type_Int;
+        localaunn.jdField_b_of_type_Int = asua.a().a().jdField_a_of_type_Int;
       }
     }
     for (;;)
     {
-      localaunl.jdField_b_of_type_JavaLangString = this.selfuin;
+      localaunn.jdField_b_of_type_JavaLangString = this.selfuin;
       if (this.isMultiMsg) {}
       try
       {
         AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
         if ((localAppRuntime instanceof QQAppInterface)) {
-          localaunl.jdField_b_of_type_JavaLangString = localAppRuntime.getAccount();
+          localaunn.jdField_b_of_type_JavaLangString = localAppRuntime.getAccount();
         }
         label110:
         if ((this.isMultiMsg) && (!bool)) {
           if (localSessionInfo != null) {
-            localaunl.jdField_c_of_type_JavaLangString = asty.a().a().jdField_a_of_type_JavaLangString;
+            localaunn.jdField_c_of_type_JavaLangString = asua.a().a().jdField_a_of_type_JavaLangString;
           }
         }
         for (;;)
         {
-          localaunl.jdField_c_of_type_Long = this.time;
-          localaunl.jdField_g_of_type_JavaLangString = this.uuid;
-          localaunl.f = this.md5;
-          localaunl.jdField_b_of_type_Long = this.groupFileID;
-          localaunl.h = this.thumbMsgUrl;
-          localaunl.k = this.bigThumbMsgUrl;
-          localaunl.i = this.bigMsgUrl;
-          localaunl.j = this.rawMsgUrl;
-          localaunl.jdField_g_of_type_Int = this.subMsgId;
-          localaunl.jdField_b_of_type_Boolean = this.isMixed;
-          if (localaunl.jdField_b_of_type_Boolean)
+          localaunn.jdField_c_of_type_Long = this.time;
+          localaunn.jdField_g_of_type_JavaLangString = this.uuid;
+          localaunn.f = this.md5;
+          localaunn.jdField_b_of_type_Long = this.groupFileID;
+          localaunn.h = this.thumbMsgUrl;
+          localaunn.k = this.bigThumbMsgUrl;
+          localaunn.i = this.bigMsgUrl;
+          localaunn.j = this.rawMsgUrl;
+          localaunn.jdField_g_of_type_Int = this.subMsgId;
+          localaunn.jdField_b_of_type_Boolean = this.isMixed;
+          if (localaunn.jdField_b_of_type_Boolean)
           {
-            localaunl.l = this.action;
-            localaunl.m = this.actMsgContentValue;
-            localaunl.jdField_e_of_type_Long = this.shareAppID;
+            localaunn.l = this.action;
+            localaunn.m = this.actMsgContentValue;
+            localaunn.jdField_e_of_type_Long = this.shareAppID;
           }
-          localaunl.jdField_e_of_type_Int = this.fileSizeFlag;
-          localaunl.jdField_c_of_type_Int = this.extraflag;
-          localaunl.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-          localaunl.jdField_d_of_type_Int = this.subVersion;
-          localaunl.jdField_a_of_type_JavaLangString = this.localUUID;
-          localaunl.jdField_d_of_type_Long = this.size;
-          localaunl.jdField_d_of_type_Boolean = this.bEnableEnc;
+          localaunn.jdField_e_of_type_Int = this.fileSizeFlag;
+          localaunn.jdField_c_of_type_Int = this.extraflag;
+          localaunn.jdField_a_of_type_JavaLangObject = this.picExtraObject;
+          localaunn.jdField_d_of_type_Int = this.subVersion;
+          localaunn.jdField_a_of_type_JavaLangString = this.localUUID;
+          localaunn.jdField_d_of_type_Long = this.size;
+          localaunn.jdField_d_of_type_Boolean = this.bEnableEnc;
           if (this.reportInfo == null) {
             this.reportInfo = new ReportInfo();
           }
-          localaunl.jdField_a_of_type_ComTencentMobileqqPicReportInfo = this.reportInfo;
-          return localaunl;
+          localaunn.jdField_a_of_type_ComTencentMobileqqPicReportInfo = this.reportInfo;
+          return localaunn;
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
           break;
-          localaunl.jdField_b_of_type_Int = this.istroop;
+          localaunn.jdField_b_of_type_Int = this.istroop;
           break;
           if (QLog.isColorLevel())
           {
             QLog.e("MessageForPic", 2, "currentSessionInfo is null while isMultiMsg is true");
             continue;
-            localaunl.jdField_c_of_type_JavaLangString = this.frienduin;
+            localaunn.jdField_c_of_type_JavaLangString = this.frienduin;
           }
         }
       }
@@ -458,27 +458,27 @@ public class MessageForPic
     }
   }
   
-  public auob getPicUploadInfo()
+  public auod getPicUploadInfo()
   {
-    auob localauob = new auob();
-    localauob.jdField_a_of_type_Int = this.busiType;
-    localauob.jdField_a_of_type_Long = this.uniseq;
-    localauob.jdField_b_of_type_Int = this.istroop;
-    localauob.jdField_c_of_type_JavaLangString = this.frienduin;
-    localauob.jdField_b_of_type_JavaLangString = this.selfuin;
-    localauob.jdField_d_of_type_JavaLangString = this.senderuin;
-    localauob.f = this.md5;
-    localauob.jdField_g_of_type_JavaLangString = this.path;
-    localauob.h = this.thumbMsgUrl;
-    localauob.jdField_c_of_type_Int = this.picExtraFlag;
-    localauob.jdField_a_of_type_JavaLangObject = this.picExtraObject;
-    localauob.jdField_a_of_type_JavaLangString = this.localUUID;
-    localauob.jdField_d_of_type_Int = this.subVersion;
-    localauob.j = ((int)this.width);
-    localauob.k = ((int)this.height);
-    localauob.jdField_c_of_type_Long = ((int)this.size);
-    localauob.m = this.imageType;
-    return localauob;
+    auod localauod = new auod();
+    localauod.jdField_a_of_type_Int = this.busiType;
+    localauod.jdField_a_of_type_Long = this.uniseq;
+    localauod.jdField_b_of_type_Int = this.istroop;
+    localauod.jdField_c_of_type_JavaLangString = this.frienduin;
+    localauod.jdField_b_of_type_JavaLangString = this.selfuin;
+    localauod.jdField_d_of_type_JavaLangString = this.senderuin;
+    localauod.f = this.md5;
+    localauod.jdField_g_of_type_JavaLangString = this.path;
+    localauod.h = this.thumbMsgUrl;
+    localauod.jdField_c_of_type_Int = this.picExtraFlag;
+    localauod.jdField_a_of_type_JavaLangObject = this.picExtraObject;
+    localauod.jdField_a_of_type_JavaLangString = this.localUUID;
+    localauod.jdField_d_of_type_Int = this.subVersion;
+    localauod.j = ((int)this.width);
+    localauod.k = ((int)this.height);
+    localauod.jdField_c_of_type_Long = ((int)this.size);
+    localauod.m = this.imageType;
+    return localauod;
   }
   
   public ReportInfo getReportInfo()
@@ -512,7 +512,7 @@ public class MessageForPic
         ((im_msg_body.CustomFace)localObject1).uint32_file_id.set((int)this.groupFileID);
         ((im_msg_body.CustomFace)localObject1).uint32_size.set((int)this.size);
         ((im_msg_body.CustomFace)localObject1).image_type.set(this.imageType);
-        ((im_msg_body.CustomFace)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(bbdm.a(this.md5)));
+        ((im_msg_body.CustomFace)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(bbea.a(this.md5)));
         ((im_msg_body.CustomFace)localObject1).uint32_width.set((int)this.width);
         ((im_msg_body.CustomFace)localObject1).uint32_height.set((int)this.height);
         ((im_msg_body.CustomFace)localObject1).uint32_origin.set(this.fileSizeFlag);
@@ -545,7 +545,7 @@ public class MessageForPic
       ((im_msg_body.NotOnlineImage)localObject1).uint32_show_len.set(this.mShowLength);
       ((im_msg_body.NotOnlineImage)localObject1).uint32_download_len.set(this.mDownloadLength);
       ((im_msg_body.NotOnlineImage)localObject1).original.set(this.fileSizeFlag);
-      ((im_msg_body.NotOnlineImage)localObject1).pic_md5.set(ByteStringMicro.copyFrom(bbdm.a(this.md5)));
+      ((im_msg_body.NotOnlineImage)localObject1).pic_md5.set(ByteStringMicro.copyFrom(bbea.a(this.md5)));
       if (TextUtils.isEmpty(this.uuid)) {
         this.uuid = this.md5;
       }
@@ -646,32 +646,32 @@ public class MessageForPic
       localPicRec.uint32_download_len.set(this.mDownloadLength);
       localPicRec.uint32_current_len.set(this.mCurrlength);
       localPicRec.notPredownloadReason.set(this.mNotPredownloadReason);
-      if ((this.picExtraObject != null) && ((this.picExtraObject instanceof ayte)))
+      if ((this.picExtraObject != null) && ((this.picExtraObject instanceof aytg)))
       {
-        localObject2 = (ayte)this.picExtraObject;
+        localObject2 = (aytg)this.picExtraObject;
         Object localObject3 = (RichMsg.ForwardExtra)localPicRec.fowardInfo.get();
-        ((RichMsg.ForwardExtra)localObject3).foward_orgId.set(((ayte)localObject2).jdField_a_of_type_Long);
+        ((RichMsg.ForwardExtra)localObject3).foward_orgId.set(((aytg)localObject2).jdField_a_of_type_Long);
         PBStringField localPBStringField = ((RichMsg.ForwardExtra)localObject3).foward_orgUin;
-        if (((ayte)localObject2).jdField_a_of_type_JavaLangString == null) {
+        if (((aytg)localObject2).jdField_a_of_type_JavaLangString == null) {
           break label719;
         }
-        localObject1 = ((ayte)localObject2).jdField_a_of_type_JavaLangString;
+        localObject1 = ((aytg)localObject2).jdField_a_of_type_JavaLangString;
         label512:
         localPBStringField.set((String)localObject1);
-        ((RichMsg.ForwardExtra)localObject3).foward_orgUinType.set(((ayte)localObject2).jdField_a_of_type_Int);
-        ((RichMsg.ForwardExtra)localObject3).foward_orgFileSizeType.set(((ayte)localObject2).jdField_b_of_type_Int);
+        ((RichMsg.ForwardExtra)localObject3).foward_orgUinType.set(((aytg)localObject2).jdField_a_of_type_Int);
+        ((RichMsg.ForwardExtra)localObject3).foward_orgFileSizeType.set(((aytg)localObject2).jdField_b_of_type_Int);
         localPBStringField = ((RichMsg.ForwardExtra)localObject3).foward_orgUrl;
-        if (((ayte)localObject2).jdField_b_of_type_JavaLangString == null) {
+        if (((aytg)localObject2).jdField_b_of_type_JavaLangString == null) {
           break label726;
         }
-        localObject1 = ((ayte)localObject2).jdField_b_of_type_JavaLangString;
+        localObject1 = ((aytg)localObject2).jdField_b_of_type_JavaLangString;
         label561:
         localPBStringField.set((String)localObject1);
         localObject3 = ((RichMsg.ForwardExtra)localObject3).foward_thumbPath;
-        if (((ayte)localObject2).jdField_c_of_type_JavaLangString == null) {
+        if (((aytg)localObject2).jdField_c_of_type_JavaLangString == null) {
           break label733;
         }
-        localObject1 = ((ayte)localObject2).jdField_c_of_type_JavaLangString;
+        localObject1 = ((aytg)localObject2).jdField_c_of_type_JavaLangString;
         label586:
         ((PBStringField)localObject3).set((String)localObject1);
         localPicRec.fowardInfo.setHasFlag(true);
@@ -732,11 +732,11 @@ public class MessageForPic
   
   public String getSummaryMsg()
   {
-    String str = bbet.a(this);
+    String str = bbfh.a(this);
     if (str != null) {
       return str;
     }
-    return ajyc.a(2131706606);
+    return ajya.a(2131706617);
   }
   
   public ThumbWidthHeightDP getThumbWidthHeightDP(boolean paramBoolean)
@@ -779,7 +779,7 @@ public class MessageForPic
   
   public void serial()
   {
-    this.isShareAppActionMsg = bbbg.a(this.msgtype);
+    this.isShareAppActionMsg = bbbu.a(this.msgtype);
     if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032)) {}
     for (boolean bool = true;; bool = false)
     {

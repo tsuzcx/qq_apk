@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.extendfriend;
 
-import aoet;
-import aoev;
-import aoez;
-import ayrv;
-import ayry;
+import aoey;
+import aofa;
+import aofe;
+import ayrx;
+import aysa;
 import com.tencent.qphone.base.util.QLog;
-import lcm;
+import lch;
 
 public class ExtendFriendResourceDownloader$4
   implements Runnable
 {
-  public ExtendFriendResourceDownloader$4(aoev paramaoev, aoet paramaoet) {}
+  public ExtendFriendResourceDownloader$4(aofa paramaofa, aoey paramaoey) {}
   
   public void run()
   {
-    ayrv localayrv = new ayrv();
-    localayrv.jdField_a_of_type_JavaLangString = this.a.b;
-    localayrv.jdField_a_of_type_Int = 0;
-    String str = aoev.a(this.this$0, this.a.c);
-    aoev.a(this.this$0, str);
-    localayrv.c = str;
-    localayrv.a(this.a);
-    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localayrv.c);
-    localayrv.jdField_a_of_type_Aysa = new aoez(this);
-    lcm.a().a(localayrv);
+    ayrx localayrx = new ayrx();
+    localayrx.jdField_a_of_type_JavaLangString = this.a.b;
+    localayrx.jdField_a_of_type_Int = 0;
+    String str = aofa.a(this.this$0, this.a.c);
+    aofa.a(this.this$0, str);
+    localayrx.c = str;
+    localayrx.a(this.a);
+    QLog.d("ExtendFriendResourceDownloader", 2, "Limitchatres start download : " + this.a.jdField_a_of_type_JavaLangString + " url: " + this.a.b + " w:" + localayrx.c);
+    localayrx.jdField_a_of_type_Aysc = new aofe(this);
+    lch.a().a(localayrx);
   }
 }
 

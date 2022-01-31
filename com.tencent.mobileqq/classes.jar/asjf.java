@@ -1,6 +1,19 @@
-public abstract interface asjf
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+
+public final class asjf
+  implements Parcelable.Creator<MiniAppOptions>
 {
-  public abstract void onEngineLoad(boolean paramBoolean, String paramString);
+  public MiniAppOptions a(Parcel paramParcel)
+  {
+    return new MiniAppOptions(paramParcel);
+  }
+  
+  public MiniAppOptions[] a(int paramInt)
+  {
+    return new MiniAppOptions[paramInt];
+  }
 }
 
 

@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class bjrk
-  implements Animation.AnimationListener
+public abstract interface bjrk
 {
-  bjrk(bjrh parambjrh) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    bjrh.b(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(int paramInt);
 }
 
 

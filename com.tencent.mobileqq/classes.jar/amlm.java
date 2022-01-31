@@ -1,48 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class amlm
+class amlm
   implements angt
 {
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(amll.a(), 2, paramString2);
-    }
-  }
+  amlm(amlk paramamlk) {}
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public long a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(amll.a(), 2, paramString2, paramThrowable);
+    if (amlk.a(this.a) != null) {
+      return amlk.a(this.a).a();
     }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(amll.a(), 2, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(amll.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(amll.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(amll.a(), 2, paramString2);
-    }
+    return 0L;
   }
 }
 

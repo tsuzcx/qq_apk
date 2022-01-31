@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bkwr;
-import blbz;
+import bkxi;
+import blcq;
 import com.tencent.mobileqq.R.styleable;
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class QQSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private bkwr jdField_a_of_type_Bkwr;
+  private bkxi jdField_a_of_type_Bkxi;
   private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
@@ -115,7 +115,7 @@ public class QQSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.o = blbz.a(this.n);
+    this.o = blcq.a(this.n);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -148,9 +148,9 @@ public class QQSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(bkwr parambkwr)
+  public void setTabCheckListener(bkxi parambkxi)
   {
-    this.jdField_a_of_type_Bkwr = parambkwr;
+    this.jdField_a_of_type_Bkxi = parambkxi;
   }
 }
 

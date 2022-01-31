@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import axne;
+import axng;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.soload.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ytcommon.util.YTCommonInterface;
 
 class QWalletFaceTracker$1$1
-  implements axne
+  implements axng
 {
   QWalletFaceTracker$1$1(QWalletFaceTracker.1 param1, PreloadManager.PathResult paramPathResult) {}
   

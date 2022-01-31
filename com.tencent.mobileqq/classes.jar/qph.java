@@ -1,26 +1,30 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class qph
-  implements acwf
+  implements rwf
 {
-  qph(qpg paramqpg, MessageForShortVideo paramMessageForShortVideo) {}
+  qph(qpd paramqpd, String paramString) {}
   
-  public void a(View paramView, ayqm paramayqm, int paramInt1, int paramInt2)
+  public void a()
   {
-    if ((paramayqm == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (paramayqm.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
-    while ((paramayqm.jdField_b_of_type_Int != 6) && (paramayqm.jdField_b_of_type_Int != 17) && (paramayqm.jdField_b_of_type_Int != 9) && (paramayqm.jdField_b_of_type_Int != 20)) {
+    QLog.w("Q.pubaccount.video.feeds.VideoFeedsIPCServer", 1, "loadViolaPageFailed");
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if ((SplashActivity.a == null) || (SplashActivity.a.get() == null)) {
+        break label53;
+      }
+    }
+    label53:
+    for (Object localObject = (ContextWrapper)SplashActivity.a.get();; localObject = BaseApplicationImpl.getContext())
+    {
+      onh.a((Context)localObject, this.jdField_a_of_type_JavaLangString, null);
       return;
     }
-    paramView = new Bundle();
-    paramView.putInt("VALUE_SHORTVIDEO_RESP_FILE_STATUS", paramayqm.d);
-    paramView.putString("VALUE_SHORTVIDEO_RESP_FILE_DOMAIN", paramayqm.u);
-    paramView.putStringArray("VALUE_SHORTVIDEO_RESP_FILE_URLS", paramayqm.c);
-    paramView.putLong("VALUE_SHORTVIDEO_RESP_FILE_UNISEQ", paramayqm.jdField_b_of_type_Long);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD", paramView, null);
   }
 }
 

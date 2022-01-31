@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aamz;
-import aexu;
+import aamv;
+import aexs;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class BaseChatPie$75$2
   implements Runnable
 {
-  public BaseChatPie$75$2(aamz paramaamz, long paramLong) {}
+  public BaseChatPie$75$2(aamv paramaamv, long paramLong) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Aamz.a.jdField_a_of_type_Aexu != null) && (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-      this.jdField_a_of_type_Aamz.a.jdField_a_of_type_Aexu.a();
+    if ((this.jdField_a_of_type_Aamv.a.jdField_a_of_type_Aexs != null) && (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Aamv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      this.jdField_a_of_type_Aamv.a.jdField_a_of_type_Aexs.a();
     }
   }
 }

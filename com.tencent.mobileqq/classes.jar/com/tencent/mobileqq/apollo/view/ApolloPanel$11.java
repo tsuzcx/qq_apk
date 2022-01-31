@@ -17,7 +17,7 @@ class ApolloPanel$11
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
-      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Ajpn);
+      this.this$0.jdField_a_of_type_JavaUtilList.add(this.this$0.jdField_a_of_type_Ajpl);
       ApolloPanel.a(this.this$0);
       this.this$0.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.this$0.jdField_a_of_type_JavaUtilList);
     }

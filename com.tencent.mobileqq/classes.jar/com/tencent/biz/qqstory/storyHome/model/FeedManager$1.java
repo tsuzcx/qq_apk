@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
 import java.util.ArrayList;
-import tbz;
-import tco;
-import tdc;
-import uwa;
-import veg;
+import tbw;
+import tcl;
+import tcz;
+import uvx;
+import ved;
 
 public final class FeedManager$1
   implements Runnable
@@ -14,20 +14,20 @@ public final class FeedManager$1
   
   public void run()
   {
-    Object localObject = (tco)tdc.a(15);
-    ((tco)localObject).a(new ArrayList(0), this.a, false, true);
-    ((tco)localObject).a(new ArrayList(0), this.a, true, true);
-    localObject = (tbz)tdc.a(17);
-    ((tbz)localObject).a(new ArrayList(0), this.a, false, true);
-    ((tbz)localObject).a(new ArrayList(0), this.a, true, true);
-    localObject = (uwa)tdc.a(11);
-    FeedItem localFeedItem = ((uwa)localObject).a(this.a);
+    Object localObject = (tcl)tcz.a(15);
+    ((tcl)localObject).a(new ArrayList(0), this.a, false, true);
+    ((tcl)localObject).a(new ArrayList(0), this.a, true, true);
+    localObject = (tbw)tcz.a(17);
+    ((tbw)localObject).a(new ArrayList(0), this.a, false, true);
+    ((tbw)localObject).a(new ArrayList(0), this.a, true, true);
+    localObject = (uvx)tcz.a(11);
+    FeedItem localFeedItem = ((uvx)localObject).a(this.a);
     if (localFeedItem != null)
     {
       localFeedItem.reset();
-      ((uwa)localObject).a(localFeedItem);
+      ((uvx)localObject).a(localFeedItem);
     }
-    veg.a("Q.qqstory.home.data.FeedManager", "clear all feed interactive data %s", this.a);
+    ved.a("Q.qqstory.home.data.FeedManager", "clear all feed interactive data %s", this.a);
   }
 }
 

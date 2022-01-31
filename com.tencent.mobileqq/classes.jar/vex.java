@@ -1,193 +1,50 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import java.util.ArrayList;
 
 public class vex
-  extends vhn
-  implements View.OnClickListener
+  extends Handler
 {
-  protected double a;
-  protected final int a;
-  protected LinearLayout a;
-  protected SeekBar a;
-  protected TextView a;
-  protected boolean a;
-  protected int b;
-  protected TextView b;
-  protected int c;
-  protected int d = 50;
-  protected int e = -1;
-  protected int f;
-  protected int g;
+  public vex(vew paramvew) {}
   
-  public vex(@NonNull vhp paramvhp)
+  public void dispatchMessage(Message paramMessage)
   {
-    super(paramvhp);
-    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
-  }
-  
-  private void f()
-  {
-    this.f = bhpn.f;
-    this.g = (this.c * bhpn.g);
-    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
-    }
-  }
-  
-  public void a()
-  {
-    super.a();
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
-    NativeGifImage.QZONE_DELAY = -1;
-    this.jdField_b_of_type_Int = 50;
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
-    }
-    f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131375786));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131375781));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375782));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367064));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new vey(this));
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    super.dispatchMessage(paramMessage);
+    switch (paramMessage.what)
     {
     default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
-    }
-    if (this.e == -1)
-    {
-      if (!this.jdField_a_of_type_Vhp.a.jdField_a_of_type_Boolean) {
-        break label193;
-      }
-      paramInt = (int)this.jdField_a_of_type_Vhp.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
-    {
-      f();
-      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
-      this.d = paramInt;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
-      }
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
-      this.c = this.e;
-      this.jdField_b_of_type_Int = this.d;
-      return;
-      label193:
-      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-  }
-  
-  public void a(@NonNull vsd paramvsd)
-  {
-    if (this.e == -1) {
-      if (this.jdField_a_of_type_Vhp.a.jdField_a_of_type_Boolean)
+    case 1: 
+      if (vew.a(this.a) != null)
       {
-        paramvsd.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Vhp.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a());
-        paramvsd.a.c = this.jdField_a_of_type_Boolean;
-        if (QLog.isColorLevel()) {
-          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
+        vej.b("0X80080E3", vej.a);
+        paramMessage = new ArrayList();
+        paramMessage.add(Uri.parse(vew.a(this.a)));
+        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
+        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
+        if ((this.a.jdField_a_of_type_Vix != null) && (this.a.jdField_a_of_type_Vix.getActivity() != null)) {
+          this.a.jdField_a_of_type_Vix.getActivity().startActivityForResult(paramMessage, 100);
         }
       }
-    }
-    do
-    {
+      this.a.e();
       return;
-      vsh localvsh = paramvsd.a;
-      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
-      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = bhpn.d)
+    case 2: 
+      paramMessage = (Bitmap)paramMessage.obj;
+      this.a.jdField_a_of_type_Vhm.a(paramMessage, false);
+      if (this.a.jdField_a_of_type_Vhm.a != null)
       {
-        localvsh.jdField_b_of_type_Int = i;
-        break;
+        this.a.jdField_a_of_type_Vhm.a.g();
+        this.a.jdField_a_of_type_Vhm.u();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
-      }
-      paramvsd.a.jdField_b_of_type_Int = this.e;
-      paramvsd.a.c = this.jdField_a_of_type_Boolean;
-      if (this.e < this.c)
-      {
-        LpReportInfo_pf00064.allReport(628, 5, 3);
-        return;
-      }
-    } while (this.e <= this.c);
-    LpReportInfo_pf00064.allReport(628, 5, 2);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Vhp.jdField_b_of_type_Int == 21)
-    {
-      NativeGifImage.QZONE_DELAY = this.c;
-      if (this.jdField_a_of_type_Vhp.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-        this.jdField_a_of_type_Vhp.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.e = this.c;
-      this.d = this.jdField_b_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
-      }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_Vhp.a(0);
-      bool = true;
-      LpReportInfo_pf00064.allReport(628, 5, 4);
-    }
-    return bool;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
-    }
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
-    NativeGifImage.QZONE_DELAY = -1;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131375782: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      } while (this.jdField_a_of_type_Vhp.jdField_b_of_type_Int != 21);
-      this.jdField_a_of_type_Vhp.a(0);
+      this.a.jdField_a_of_type_Boolean = true;
       return;
     }
-    a();
+    this.a.e();
   }
 }
 

@@ -1,77 +1,31 @@
-import android.text.TextUtils;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import java.util.Iterator;
-import java.util.List;
 
-public class tiu
-  extends tim
+class tiu
+  extends tin
 {
   public tiu(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup);
+    super(paramViewGroup, 2131561301);
   }
   
-  protected String a(QQUserUIItem paramQQUserUIItem)
+  public void a(String paramString)
   {
-    String str = super.a(paramQQUserUIItem);
-    paramQQUserUIItem = str;
-    if (str == null) {
-      paramQQUserUIItem = ajyc.a(2131713253);
-    }
-    return paramQQUserUIItem;
+    b(paramString);
   }
   
-  public void a()
+  public void a(tff paramtff)
   {
-    this.a.setTag(2131373348, null);
+    super.a(paramtff);
+    ved.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramtff);
+    a(vzi.b(paramtff.g));
+    this.a.setNodeName(paramtff.c, 2130845750);
   }
   
-  protected void a(String paramString)
+  protected void b(tff paramtff)
   {
-    c(paramString);
-  }
-  
-  protected void a(String paramString, boolean paramBoolean, tfi paramtfi)
-  {
-    if ((!TextUtils.isEmpty(paramtfi.j)) && (!paramBoolean))
-    {
-      this.a.setNodeName(paramString, paramtfi.j);
-      return;
-    }
-    super.a(paramString, paramBoolean, paramtfi);
-  }
-  
-  public void a(tfi paramtfi)
-  {
-    super.a(paramtfi);
-    this.a.setDisplayState(2);
-    String str;
-    if (!TextUtils.equals((String)this.a.getTag(2131373348), paramtfi.jdField_a_of_type_JavaLangString))
-    {
-      if ((paramtfi.jdField_a_of_type_JavaUtilList == null) || (paramtfi.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label168;
-      }
-      str = ((tga)paramtfi.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-      Iterator localIterator = paramtfi.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        tga localtga = (tga)localIterator.next();
-        if (!localtga.jdField_a_of_type_Boolean) {
-          str = localtga.jdField_a_of_type_JavaLangString;
-        }
-      }
-    }
-    for (;;)
-    {
-      vel.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramtfi.jdField_a_of_type_JavaLangString, "1", "", str });
-      this.a.setTag(2131373348, paramtfi.jdField_a_of_type_JavaLangString);
-      return;
-      continue;
-      label168:
-      str = "";
-    }
+    this.a.setDisplayState(6);
+    this.a.a(paramtff);
   }
 }
 

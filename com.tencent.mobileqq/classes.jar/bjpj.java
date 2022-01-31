@@ -1,17 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bjpj
-  extends AnimatorListenerAdapter
+public abstract interface bjpj
 {
-  public bjpj(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public abstract Activity a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.setTranslationX(0.0F);
-  }
+  public abstract SessionInfo a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract boolean a();
 }
 
 

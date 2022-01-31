@@ -1,30 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.3;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class afib
-  extends akup
+class afib
+  extends ajxj
 {
-  public afib(Face2FaceAddContactPresenter.3 param3, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  afib(afhx paramafhx) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactPresenter", 2, "onLocationFinish errCode = " + paramInt + " info = " + paramSosoLbsInfo);
+    if ((paramBoolean) && (afhx.a(this.a) != null)) {
+      afhx.a(this.a).a(String.valueOf(paramObject));
     }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
-      if (afhz.a(this.a.this$0) != null) {
-        afhz.a(this.a.this$0).b();
-      }
-    }
-    while ((TextUtils.isEmpty(this.a.a)) || (this.a.a.length() != 4)) {
-      return;
-    }
-    afhz.a(this.a.this$0, paramSosoLbsInfo, this.a.a, this.a.b);
   }
 }
 

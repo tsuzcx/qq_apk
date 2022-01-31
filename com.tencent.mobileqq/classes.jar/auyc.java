@@ -1,17 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import QC.UniBusiSimpleItemDetail;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class auyc
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  auyc(auxz paramauxz, Context paramContext, String paramString1, String paramString2, String paramString3) {}
+  auyc(auyb paramauyb, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bbqw.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "&g_ch=suixintie&actId=460973&isAskFriendPay=0", this.b, this.c, 0);
-    paramDialogInterface.dismiss();
+    if ((auyb.a(this.jdField_a_of_type_Auyb) == 5) && (auyb.a(this.jdField_a_of_type_Auyb) != null) && (!((StickyNotePublishFragment)auyb.a(this.jdField_a_of_type_Auyb)).a()))
+    {
+      bcql.a(auyb.a(this.jdField_a_of_type_Auyb), ajya.a(2131715141), 0).a();
+      return;
+    }
+    auyb.a(this.jdField_a_of_type_Auyb, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
+    if (9 == auyb.a(this.jdField_a_of_type_Auyb)) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", paramView);
+      this.jdField_a_of_type_Auyb.notifyDataSetChanged();
+      auyb.a(this.jdField_a_of_type_Auyb, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
+      auyb.a(this.jdField_a_of_type_Auyb, true);
+      this.jdField_a_of_type_Auyb.a(auyb.a(this.jdField_a_of_type_Auyb), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Auyb.a);
+      return;
+    }
   }
 }
 

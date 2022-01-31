@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acxv;
+import acxs;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import aoas;
+import aoax;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -42,7 +42,7 @@ public class FastImagePreviewLayout
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + acxv.b);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + acxs.b);
     }
     removeAllViews();
     Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2131558544, null);
@@ -69,7 +69,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new aoas(this));
+      localAlphaAnimation.setAnimationListener(new aoax(this));
       return;
     }
     removeAllViews();

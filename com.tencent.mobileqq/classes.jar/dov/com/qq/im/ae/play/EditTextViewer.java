@@ -14,16 +14,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import bbdj;
-import bcpw;
-import biqf;
-import bixv;
-import biyb;
-import biyc;
-import biyd;
-import biye;
-import biyf;
-import bizc;
+import bbdx;
+import bcql;
+import biqw;
+import biym;
+import biys;
+import biyt;
+import biyu;
+import biyv;
+import biyw;
+import bizt;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.biz.qqstory.app.QQStoryContext;
@@ -46,9 +46,9 @@ public class EditTextViewer
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  private bixv jdField_a_of_type_Bixv;
-  private biye jdField_a_of_type_Biye;
-  private biyf jdField_a_of_type_Biyf;
+  private biym jdField_a_of_type_Biym;
+  private biyv jdField_a_of_type_Biyv;
+  private biyw jdField_a_of_type_Biyw;
   private TextWMElement jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement = new TextWMElement();
   private NodeItem jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem = new NodeItem();
   private boolean jdField_a_of_type_Boolean;
@@ -76,7 +76,7 @@ public class EditTextViewer
       return "";
     }
     paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "temp.ttf";
-    bbdj.a(paramArrayOfByte, paramContext);
+    bbdx.a(paramArrayOfByte, paramContext);
     return paramContext;
   }
   
@@ -160,12 +160,12 @@ public class EditTextViewer
   {
     if (this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement != null)
     {
-      this.jdField_a_of_type_Bixv = new bixv(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Bixv.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextMaxCount);
-      this.jdField_a_of_type_Bixv.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement, this.jdField_c_of_type_Boolean);
-      this.jdField_a_of_type_Bixv.a(new biyb(this));
-      this.jdField_a_of_type_Bixv.show();
-      this.jdField_a_of_type_Bixv.setOnDismissListener(new biyc(this));
+      this.jdField_a_of_type_Biym = new biym(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Biym.a(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextMaxCount);
+      this.jdField_a_of_type_Biym.a(this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement, this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_Biym.a(new biys(this));
+      this.jdField_a_of_type_Biym.show();
+      this.jdField_a_of_type_Biym.setOnDismissListener(new biyt(this));
     }
   }
   
@@ -174,8 +174,8 @@ public class EditTextViewer
     String str1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.fontName;
     String str2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.userValue;
     AppInterface localAppInterface = QQStoryContext.a();
-    localAppInterface.addObserver(new biyd(this, localAppInterface, str2));
-    ((biqf)localAppInterface.getBusinessHandler(3)).a(str1, str2);
+    localAppInterface.addObserver(new biyu(this, localAppInterface, str2));
+    ((biqw)localAppInterface.getBusinessHandler(3)).a(str1, str2);
   }
   
   private void f()
@@ -192,8 +192,8 @@ public class EditTextViewer
     if (this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap != null) {
       setImageBitmap(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.bitmap);
     }
-    if (this.jdField_a_of_type_Biyf != null) {
-      this.jdField_a_of_type_Biyf.b(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+    if (this.jdField_a_of_type_Biyw != null) {
+      this.jdField_a_of_type_Biyw.b(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
     }
     setTextSelected(true);
     this.jdField_c_of_type_Boolean = false;
@@ -201,15 +201,15 @@ public class EditTextViewer
   
   private void h()
   {
-    if (this.jdField_a_of_type_Biye != null) {
-      this.jdField_a_of_type_Biye.a();
+    if (this.jdField_a_of_type_Biyv != null) {
+      this.jdField_a_of_type_Biyv.a();
     }
   }
   
   private void i()
   {
-    if (this.jdField_a_of_type_Biye != null) {
-      this.jdField_a_of_type_Biye.b();
+    if (this.jdField_a_of_type_Biyv != null) {
+      this.jdField_a_of_type_Biyv.b();
     }
   }
   
@@ -356,7 +356,7 @@ public class EditTextViewer
   public void a(String paramString)
   {
     if (!DeviceUtils.isNetworkAvailable(AEModule.getContext())) {
-      bcpw.a(getContext(), 2131689810, 1).a();
+      bcql.a(getContext(), 2131689810, 1).a();
     }
     label131:
     for (;;)
@@ -377,10 +377,10 @@ public class EditTextViewer
         this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentTtpicOpenapiModelTextWMElement.userValue;
         f();
         g();
-        if (this.jdField_a_of_type_Biyf == null) {
+        if (this.jdField_a_of_type_Biyw == null) {
           break;
         }
-        this.jdField_a_of_type_Biyf.c(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
+        this.jdField_a_of_type_Biyw.c(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem);
         return;
       }
     }
@@ -416,7 +416,7 @@ public class EditTextViewer
     }
     d();
     setTextSelected(false);
-    bizc.a().f();
+    bizt.a().f();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -501,14 +501,14 @@ public class EditTextViewer
     this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.nodeTextGroup.copyFrom(paramNodeItem.nodeTextGroup);
   }
   
-  public void setOnDownloadDialogListener(biye parambiye)
+  public void setOnDownloadDialogListener(biyv parambiyv)
   {
-    this.jdField_a_of_type_Biye = parambiye;
+    this.jdField_a_of_type_Biyv = parambiyv;
   }
   
-  public void setOnSaveTextInfoListener(biyf parambiyf)
+  public void setOnSaveTextInfoListener(biyw parambiyw)
   {
-    this.jdField_a_of_type_Biyf = parambiyf;
+    this.jdField_a_of_type_Biyw = parambiyw;
   }
   
   public void setTemplateID(String paramString)

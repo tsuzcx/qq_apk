@@ -1,13 +1,13 @@
-class biiq
-  implements biji
+import java.io.File;
+
+public class biiq
 {
-  biiq(biim parambiim) {}
-  
-  public void a()
-  {
-    biwd.a().a("onFirstFrameDone");
-    biim.c(this.a);
-  }
+  public static final String a = biir.a + File.separator + "aiscene";
+  public static final String b = a + File.separator + "res";
+  public static final String c = a + File.separator + "res_zip_download";
+  public static final String d = b + File.separator + "AISceneGuide";
+  public static final String e = b + File.separator + "AISceneLoading";
+  public static final String f = b + File.separator + "AutoAISceneAni";
 }
 
 

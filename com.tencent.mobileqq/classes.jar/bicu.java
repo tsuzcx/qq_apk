@@ -1,33 +1,72 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
-final class bicu
-  implements aptu
+public class bicu
+  extends QIPCModule
 {
-  bicu(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
+  public static bicu a;
   
-  public void a()
+  private bicu()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
-      apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
-    }
-    if (bict.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int)) {
-      bcpw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692829, 0).b(this.jdField_a_of_type_Int);
-    }
+    super("WadlQIPCModule");
   }
   
-  public void b() {}
+  public static bicu a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bicu();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
+    }
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(paramBundle instanceof QQAppInterface)) {
+      return null;
+    }
+    paramBundle = (QQAppInterface)paramBundle;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if ("action.getSkey".equals(paramString))
+    {
+      paramString = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
+      paramBundle = new Bundle();
+      if (paramString != null) {}
+      for (;;)
+      {
+        paramBundle.putString("skey", paramString);
+        return EIPCResult.createSuccessResult(paramBundle);
+        paramString = "";
+      }
+    }
+    if ("action.getUin".equals(paramString))
+    {
+      paramString = new Bundle();
+      paramString.putLong("uin", paramBundle.getLongAccountUin());
+      return EIPCResult.createSuccessResult(paramString);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicu
  * JD-Core Version:    0.7.0.1
  */

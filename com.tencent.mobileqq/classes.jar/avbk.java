@@ -1,13 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
 import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class avbk
-  implements View.OnClickListener
+  extends avbi
 {
   public avbk(LSRecordPanel paramLSRecordPanel) {}
   
-  public void onClick(View paramView) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
+    }
+    this.a.c = null;
+  }
 }
 
 

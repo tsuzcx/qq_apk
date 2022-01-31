@@ -1,13 +1,18 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
-class aluk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aluk
+  implements bcfn
 {
-  aluk(aluj paramaluj) {}
+  public aluk(ArkBrowserFragment paramArkBrowserFragment) {}
   
-  public void onGlobalLayout()
+  public void a(String paramString)
   {
-    aluj.a(this.a);
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
+    }
   }
 }
 

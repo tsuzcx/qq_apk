@@ -1,21 +1,18 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 class bine
-  implements CompoundButton.OnCheckedChangeListener
+  implements bjos<Boolean>
 {
-  bine(bimz parambimz) {}
+  bine(bina parambina) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    paramCompoundButton = bimz.d(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
+    if (paramBoolean == null) {}
+    while (bina.a(this.a) == null) {
       return;
     }
+    bina.a(this.a).a(paramBoolean.booleanValue());
   }
 }
 

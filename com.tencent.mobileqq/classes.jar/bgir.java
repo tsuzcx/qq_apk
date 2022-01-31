@@ -1,109 +1,43 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.comic.ui.QQComicTabBarView;
 
-public class bgir<K, V>
-  implements Map<K, V>
+public class bgir
+  extends Handler
 {
-  private final HashMap<K, V> a = new HashMap();
-  private final HashMap<V, K> b = new HashMap();
-  
-  public K a(Object paramObject)
+  public bgir(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
   {
-    return this.b.get(paramObject);
+    super(paramLooper);
   }
   
-  public K b(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    paramObject = this.b.remove(paramObject);
-    if (paramObject != null) {
-      this.a.remove(paramObject);
-    }
-    return paramObject;
-  }
-  
-  public void clear()
-  {
-    this.a.clear();
-    this.b.clear();
-  }
-  
-  public boolean containsKey(Object paramObject)
-  {
-    return this.a.containsKey(paramObject);
-  }
-  
-  public boolean containsValue(Object paramObject)
-  {
-    return this.b.containsKey(paramObject);
-  }
-  
-  public Set<Map.Entry<K, V>> entrySet()
-  {
-    return this.a.entrySet();
-  }
-  
-  public V get(Object paramObject)
-  {
-    return this.a.get(paramObject);
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.a.isEmpty();
-  }
-  
-  public Set<K> keySet()
-  {
-    return this.a.keySet();
-  }
-  
-  public V put(K paramK, V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      return null;
-    }
-    Object localObject = remove(paramK);
-    b(paramV);
-    this.a.put(paramK, paramV);
-    this.b.put(paramV, paramK);
-    return localObject;
-  }
-  
-  public void putAll(Map<? extends K, ? extends V> paramMap)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    switch (paramMessage.what)
     {
-      Object localObject2 = (Map.Entry)paramMap.next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      if ((localObject1 != null) && (localObject2 != null)) {
-        put(localObject1, localObject2);
+    default: 
+      return;
+    case 0: 
+      this.a.b = 0.0F;
+      QQComicTabBarView.a(this.a);
+      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+      return;
+    case 1: 
+      if (this.a.b < 1.0F)
+      {
+        paramMessage = this.a;
+        paramMessage.b += 0.05F;
+        QQComicTabBarView.b(this.a);
+        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+        return;
       }
+      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
+      return;
     }
-  }
-  
-  public V remove(Object paramObject)
-  {
-    paramObject = this.a.remove(paramObject);
-    if (paramObject != null) {
-      this.b.remove(paramObject);
-    }
-    return paramObject;
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Collection<V> values()
-  {
-    return this.a.values();
+    this.a.b = 1.0F;
+    this.a.a(this.a.i, this.a.h);
+    this.a.i = this.a.h;
+    QQComicTabBarView.c(this.a);
   }
 }
 

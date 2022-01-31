@@ -1,39 +1,52 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 import java.util.List;
 
-class afne
-  implements View.OnClickListener
+public class afne
+  extends akil
 {
-  afne(afna paramafna) {}
+  public afne(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    if ((paramView == null) || (TextUtils.isEmpty(paramView.uin)))
+    this.a.b = false;
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0) || (paramInt != 0))
     {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
+      this.a.jdField_a_of_type_Int = 0;
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        ShowExternalTroopListActivity.a(this.a);
+      }
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        paramList = new ArrayList();
+        this.a.jdField_a_of_type_Aipd.a(paramList);
+        paramInt = this.a.getTitleBarHeight();
+        bcql.a(this.a, 1, this.a.getString(2131696475), 0).b(paramInt);
+        return;
+      }
+      this.a.a();
       return;
     }
-    akfd.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramView.uin, new afnf(this));
-    this.a.b.remove(paramView);
-    this.a.notifyDataSetChanged();
-    if ((this.a.b != null) && (this.a.b.size() == 0)) {
-      this.a.jdField_a_of_type_Afmm.a().sendEmptyMessage(100);
-    }
-    if (afna.a(this.a) != null)
+    if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
     {
-      akfd localakfd = (akfd)afna.a(this.a).getManager(22);
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        localakfd.a(1);
-      }
-      localakfd.a(paramView.uin);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      ShowExternalTroopListActivity.a(this.a);
     }
-    axqw.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, paramView.uin, "", "", "");
+    this.a.c.setVisibility(0);
+    if (this.a.jdField_a_of_type_Aipd != null)
+    {
+      this.a.jdField_a_of_type_Int = paramList.size();
+      this.a.jdField_a_of_type_Aipd.a(paramList);
+    }
+    this.a.a(paramList1, true);
   }
 }
 

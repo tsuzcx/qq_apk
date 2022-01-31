@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import alrj;
+import alri;
 
 public final class ArkAiDictMgr$1
   implements Runnable

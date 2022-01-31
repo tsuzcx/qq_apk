@@ -1,22 +1,12 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.profile.CoverDetailFragment;
-
 public class ausj
-  implements URLDrawable.URLDrawableListener
 {
-  public ausj(CoverDetailFragment paramCoverDetailFragment) {}
+  public final String a;
+  public final String b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private ausj(String paramString1, String paramString2)
   {
-    CoverDetailFragment.b(this.a).setImageDrawable(this.a.a(paramURLDrawable));
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

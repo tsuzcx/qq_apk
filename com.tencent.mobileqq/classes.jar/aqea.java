@@ -1,25 +1,44 @@
-import android.util.Pair;
+import android.os.Build.VERSION;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.widget.MaxHeightRelativelayout;
 
 class aqea
-  extends akim
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   aqea(aqdz paramaqdz) {}
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
+  public void onGlobalLayout()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
+    if (aqdz.a(this.a) != null)
     {
-      QLog.i("Forward.Preview.Dialog", 2, i);
-      if ((aqdz.a(this.a).equals(paramString)) && (aqdz.a(this.a) != null))
+      if (Build.VERSION.SDK_INT >= 16) {
+        aqdz.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      if ((aqdz.a(this.a) != null) && (this.a.a != null))
       {
-        this.a.e();
-        aqdz.a(this.a).a(paramList);
+        if (aqdz.a(this.a).getLineCount() <= 1) {
+          break label144;
+        }
+        aqdz.a(this.a).setGravity(19);
+      }
+    }
+    for (;;)
+    {
+      if (aqdz.a(this.a).getHeight() >= bbll.a(aqdz.a(this.a) + 2))
+      {
+        this.a.a.setMaxHeight(bbll.a(450.0F));
+        this.a.a.requestLayout();
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardPreviewTextController", 2, " reset height ");
+        }
       }
       return;
+      label144:
+      aqdz.a(this.a).setGravity(17);
     }
   }
 }

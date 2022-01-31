@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae;
 
-import biim;
-import bikb;
+import bijd;
+import biks;
 
 public class AEPituCameraUnit$8
   implements Runnable
 {
-  public AEPituCameraUnit$8(biim parambiim) {}
+  public AEPituCameraUnit$8(bijd parambijd) {}
   
   public void run()
   {
-    biim.a(this.this$0).a(true);
+    bijd.a(this.this$0).a(true);
   }
 }
 

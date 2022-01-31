@@ -1,18 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class vnl
-  implements vvp
+  implements vod
 {
   public vnl(DoodleLayout paramDoodleLayout) {}
   
-  public void a(@NonNull vvw paramvvw)
+  public void a()
   {
-    vem.b("0X80075CD");
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 2);
+    if (this.a.a != null) {
+      this.a.a.f();
     }
   }
 }

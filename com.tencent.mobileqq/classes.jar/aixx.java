@@ -1,23 +1,48 @@
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
-public class aixx
+class aixx
   implements EIPCResultCallback
 {
-  public aixx(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  aixx(aixw paramaixw) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1) {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+    }
+    JSONObject localJSONObject;
+    while (i != 2) {
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("nickname", 1);
+        localJSONObject.put("data", paramEIPCResult);
+        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+        return;
+      }
+      catch (Throwable paramEIPCResult)
+      {
+        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+        return;
+      }
+    }
+    paramEIPCResult = aiye.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
-      }
-      paramEIPCResult = paramEIPCResult.data.getString("respData");
-      ApolloGameInterfaceProxy.a(this.a, "cs.on_get_open_key.local", paramEIPCResult);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("avatar", 1);
+      localJSONObject.put("data", paramEIPCResult);
+      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
       return;
     }
     catch (Throwable paramEIPCResult)

@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acoh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public aukm a;
-  public String a;
+  public acoh(UpgradeActivity paramUpgradeActivity) {}
   
-  public acoh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, aukm paramaukm)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aukm = paramaukm;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.finish();
   }
 }
 

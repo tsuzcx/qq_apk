@@ -1,23 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
 
-class azeb
-  extends BroadcastReceiver
+public final class azeb
+  implements Parcelable.Creator<MediaPreviewInfo>
 {
-  azeb(azea paramazea) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public MediaPreviewInfo a(Parcel paramParcel)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
-    {
-      this.a.a = true;
-      this.a.dismiss();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
-      }
-    }
+    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
+    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMediaPreviewInfo.b = paramParcel.readString();
+    localMediaPreviewInfo.c = paramParcel.readString();
+    return localMediaPreviewInfo;
+  }
+  
+  public MediaPreviewInfo[] a(int paramInt)
+  {
+    return new MediaPreviewInfo[paramInt];
   }
 }
 

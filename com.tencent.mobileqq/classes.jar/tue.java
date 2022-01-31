@@ -1,72 +1,21 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class tue
-  extends BaseAdapter
+class tue
+  extends Handler
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public tue(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
+  tue(tud paramtud, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramLooper);
   }
   
-  public void a(List<TroopInfo> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+    if (this.a.a) {
+      return;
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (paramView == null)
-    {
-      paramViewGroup = new tuf(this);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561438, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367427));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370832));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopName());
-      localObject = tsu.a().a(((TroopInfo)localObject).troopuin);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return paramView;
-      paramViewGroup = (tuf)paramView.getTag();
-    }
+    tud.a(this.a, this.a.c);
   }
 }
 

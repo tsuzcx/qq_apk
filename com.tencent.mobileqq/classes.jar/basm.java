@@ -1,50 +1,29 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
 public class basm
+  implements View.OnClickListener
 {
-  public int a;
-  public basm a;
-  public String a;
-  public ArrayList<basm> a;
-  public String b;
+  public basm(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  private basm() {}
-  
-  public basm(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public String a()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    basm localbasm = this;
-    while (localbasm.jdField_a_of_type_Basm != null)
+    this.a.a.this$0.b();
+    paramView = this.a.a.this$0;
+    paramView.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
-      localbasm = localbasm.jdField_a_of_type_Basm;
-      str = localbasm.jdField_a_of_type_JavaLangString + "-" + str;
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    return str;
-  }
-  
-  public void a(basm parambasm)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambasm);
-  }
-  
-  public boolean a(basm parambasm)
-  {
-    if ((parambasm != null) && (parambasm.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_Basm = parambasm;
-      return true;
-    }
-    return false;
+    axqy.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
   }
 }
 

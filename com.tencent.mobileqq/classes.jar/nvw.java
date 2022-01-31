@@ -2,14 +2,14 @@ import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class nvw
-  implements mzb
+  implements myy
 {
   public nvw(ReadInJoyFeedsActivity.1 param1) {}
   
   public void loaded(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
+      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
     }
   }
   

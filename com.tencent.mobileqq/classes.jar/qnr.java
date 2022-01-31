@@ -1,66 +1,31 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class qnr
-  implements Application.ActivityLifecycleCallbacks
+  extends osm
 {
-  private qnr(qno paramqno) {}
+  private qnr(qnl paramqnl) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public void f(boolean paramBoolean)
   {
-    if ((!qno.b(this.a)) && ((paramActivity instanceof VideoFeedsPlayActivity))) {
-      this.a.f();
-    }
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    if (((paramActivity instanceof SplashActivity)) || ((paramActivity instanceof ReadInJoyNewFeedsActivity)))
-    {
-      this.a.f();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onDestroyFloatingWindow");
-      }
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityResumed: ");
-    }
-    if (((qno.a(this.a, paramActivity)) && (qno.c(this.a))) || (qno.b(this.a, paramActivity)) || (qno.c(this.a, paramActivity)))
-    {
+    qnl.b(this.a, paramBoolean);
+    if (paramBoolean) {
       this.a.d();
+    }
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onShowFloatingWindow");
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
       }
+      return;
+      this.a.e();
     }
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity)
+  public void i()
   {
+    this.a.f();
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onActivityStopped: ");
-    }
-    if ((qno.a(this.a, paramActivity)) || (qno.b(this.a, paramActivity)) || ((!BaseActivity.mAppForground) && (qno.c(this.a))))
-    {
-      this.a.e();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onHideFloatingWindow");
-      }
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
     }
   }
 }

@@ -1,24 +1,14 @@
-import android.content.Context;
-import android.util.Size;
-import java.nio.FloatBuffer;
+import java.util.List;
 
 public abstract interface alfe
 {
-  public abstract Size a();
+  public abstract String a();
   
-  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
+  public abstract List<String> a();
   
-  public abstract void a();
+  public abstract String b();
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract String c();
 }
 
 

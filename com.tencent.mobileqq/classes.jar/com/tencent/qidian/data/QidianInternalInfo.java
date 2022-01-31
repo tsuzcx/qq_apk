@@ -1,18 +1,18 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qidian.proto.mobileqq_qidian.InternalInfo;
 
 public class QidianInternalInfo
-  extends aukm
+  extends auko
 {
   public byte[] infoByte;
   public String mobile = "";
-  @auma
+  @aumc
   public String uin = "";
   
   public void from(mobileqq_qidian.InternalInfo paramInternalInfo)

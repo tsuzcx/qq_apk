@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -21,9 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import asje;
-import asjf;
-import bcpq;
+import asjg;
+import asjh;
+import bcqf;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
@@ -76,7 +76,7 @@ public class LoadingFragment
   private EngineChannel mEngineChannel;
   boolean mIsBaseLibVersionMatch = false;
   private ImageView mLogoView;
-  private asjf mMiniLibLoadListener = new LoadingFragment.2(this);
+  private asjh mMiniLibLoadListener = new LoadingFragment.2(this);
   private ImageView mMoreView;
   private TextView mNameView;
   private View mRootView = BrandPagePool.g().getLoadingRootView();
@@ -85,7 +85,7 @@ public class LoadingFragment
   private RelativeLayout rightContainer;
   private RelativeLayout root;
   Handler uiHandler;
-  private bcpq x5LoadingDialog;
+  private bcqf x5LoadingDialog;
   
   public LoadingFragment()
   {
@@ -123,7 +123,7 @@ public class LoadingFragment
     {
       if (bool)
       {
-        String str3 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+        String str3 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
         if (QLog.isColorLevel()) {
           QLog.i("miniapp-start", 1, "checkBaseLibVersionMatch 需要升级 sp MaxVersion:" + str3);
         }
@@ -169,19 +169,19 @@ public class LoadingFragment
   
   private void initUI(View paramView)
   {
-    this.root = ((RelativeLayout)paramView.findViewById(2131369508));
-    this.rightContainer = ((RelativeLayout)paramView.findViewById(2131364688));
+    this.root = ((RelativeLayout)paramView.findViewById(2131369507));
+    this.rightContainer = ((RelativeLayout)paramView.findViewById(2131364687));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(paramView.getContext(), 80.0F), DisplayUtil.dip2px(paramView.getContext(), 30.0F));
     localLayoutParams.addRule(11, -1);
     localLayoutParams.topMargin = (DisplayUtil.dip2px(paramView.getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(paramView.getContext()));
     localLayoutParams.rightMargin = DisplayUtil.dip2px(paramView.getContext(), 12.5F);
     this.rightContainer.setLayoutParams(localLayoutParams);
-    this.mMoreView = ((ImageView)paramView.findViewById(2131363586));
-    this.mCloseView = ((ImageView)paramView.findViewById(2131363501));
+    this.mMoreView = ((ImageView)paramView.findViewById(2131363585));
+    this.mCloseView = ((ImageView)paramView.findViewById(2131363500));
     this.mNameView = ((TextView)paramView.findViewById(2131366923));
-    this.mLogoView = ((ImageView)paramView.findViewById(2131369583));
-    this.mDeveloperInfoContainer = paramView.findViewById(2131365088);
-    this.mDeveloperInfoDesc = ((TextView)paramView.findViewById(2131365089));
+    this.mLogoView = ((ImageView)paramView.findViewById(2131369582));
+    this.mDeveloperInfoContainer = paramView.findViewById(2131365087);
+    this.mDeveloperInfoDesc = ((TextView)paramView.findViewById(2131365088));
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
   }
@@ -293,14 +293,14 @@ public class LoadingFragment
         } while (this.apkgInited);
         initApkgByConfig();
         return false;
-        Toast.makeText(getActivity().getApplicationContext(), ajyc.a(2131706236), 0).show();
+        Toast.makeText(getActivity().getApplicationContext(), ajya.a(2131706247), 0).show();
         this.uiHandler.postDelayed(new LoadingFragment.8(this), 1500L);
         return false;
-        Toast.makeText(getActivity().getApplicationContext(), ajyc.a(2131706238), 0).show();
+        Toast.makeText(getActivity().getApplicationContext(), ajya.a(2131706249), 0).show();
         this.uiHandler.postDelayed(new LoadingFragment.9(this), 1500L);
         return false;
       } while (this.x5LoadingDialog == null);
-      this.x5LoadingDialog.a(ajyc.a(2131706239) + paramMessage.arg1 + "%");
+      this.x5LoadingDialog.a(ajya.a(2131706250) + paramMessage.arg1 + "%");
       return false;
     case 311: 
       initApkgByConfig();
@@ -319,14 +319,14 @@ public class LoadingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363501)
+    if (paramView.getId() == 2131363500)
     {
       MiniReportManager.reportEventType(this.appConfig, 1026, "1");
       MiniProgramLpReportDC04239.reportPageView(this.appConfig, "0", null, "close", "loading_page");
       MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.appConfig);
       callActivityBackPressed();
     }
-    while (paramView.getId() != 2131363586) {
+    while (paramView.getId() != 2131363585) {
       return;
     }
   }
@@ -352,7 +352,7 @@ public class LoadingFragment
   {
     super.onDestroy();
     QLog.d("miniapp-start", 1, "LoadingFragment onDestroy...");
-    asje.a().a(this.mMiniLibLoadListener);
+    asjg.a().a(this.mMiniLibLoadListener);
     AppLoaderFactory.getAppLoaderManager().removeListner(this.uiHandler);
   }
   
@@ -382,7 +382,7 @@ public class LoadingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     QLog.i("miniapp-start", 1, "LoadingFragment onViewCreated");
-    this.mStatusBar = paramView.findViewById(2131376451);
+    this.mStatusBar = paramView.findViewById(2131376453);
     new ImmersionBar(getActivity(), 0, this.mStatusBar);
     this.uiHandler = new Handler(this);
     paramView = getArgumentBundle();
@@ -404,7 +404,7 @@ public class LoadingFragment
       }
       QLog.e("miniapp-start", 1, "LoadingFragment 小程序参数错误！");
       if (getActivity() != null) {
-        Toast.makeText(getActivity(), ajyc.a(2131706240), 1).show();
+        Toast.makeText(getActivity(), ajya.a(2131706251), 1).show();
       }
       callActivityBackPressed();
       return;
@@ -421,7 +421,7 @@ public class LoadingFragment
       if ((this.mDeveloperInfoDesc != null) && (!TextUtils.isEmpty(this.appConfig.config.developerDesc)))
       {
         this.mDeveloperInfoContainer.setVisibility(0);
-        this.mDeveloperInfoDesc.setText(ajyc.a(2131706234) + this.appConfig.config.developerDesc + ajyc.a(2131706237));
+        this.mDeveloperInfoDesc.setText(ajya.a(2131706245) + this.appConfig.config.developerDesc + ajya.a(2131706248));
       }
     }
     else

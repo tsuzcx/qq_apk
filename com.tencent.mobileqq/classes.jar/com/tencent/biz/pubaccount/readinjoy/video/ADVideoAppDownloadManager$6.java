@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
-import bdgv;
+import bdhk;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import qjf;
-import qjh;
+import qjc;
+import qje;
 
 class ADVideoAppDownloadManager$6
   implements Runnable
 {
-  ADVideoAppDownloadManager$6(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjf paramqjf, int paramInt) {}
+  ADVideoAppDownloadManager$6(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjc paramqjc, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Qjf.c;
+    Object localObject = this.jdField_a_of_type_Qjc.c;
     int i;
     int j;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bdgv.a().a((String)localObject);
+      localObject = bdhk.a().a((String)localObject);
       if (localObject == null) {
         break label543;
       }
@@ -31,15 +31,15 @@ class ADVideoAppDownloadManager$6
       if ((j != 2) && (j != 1)) {
         break label164;
       }
-      this.jdField_a_of_type_Qjf.jdField_a_of_type_Int = 3;
+      this.jdField_a_of_type_Qjc.jdField_a_of_type_Int = 3;
       localObject = new DownloadInfo();
-      ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+      ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
       ((DownloadInfo)localObject).f = i;
-      ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
+      ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
       ADVideoAppDownloadManager.a(this.this$0).a = true;
       ADVideoAppDownloadManager.a(this.this$0).a();
       ADVideoAppDownloadManager.a(this.this$0).b = i;
-      this.this$0.a((DownloadInfo)localObject, this.jdField_a_of_type_Qjf.jdField_a_of_type_Int);
+      this.this$0.a((DownloadInfo)localObject, this.jdField_a_of_type_Qjc.jdField_a_of_type_Int);
     }
     label164:
     label207:
@@ -50,33 +50,33 @@ class ADVideoAppDownloadManager$6
         return;
         if (j == 3)
         {
-          this.jdField_a_of_type_Qjf.jdField_a_of_type_Int = 4;
+          this.jdField_a_of_type_Qjc.jdField_a_of_type_Int = 4;
           break;
         }
         if (j == 4)
         {
-          this.jdField_a_of_type_Qjf.jdField_a_of_type_Int = 5;
+          this.jdField_a_of_type_Qjc.jdField_a_of_type_Int = 5;
           break;
         }
-        this.jdField_a_of_type_Qjf.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Qjc.jdField_a_of_type_Int = 0;
         break;
       } while ((this.jdField_a_of_type_Int != 4) && (this.jdField_a_of_type_Int != 3));
       j = ((TMAssistantDownloadTaskInfo)localObject).mState;
       if ((this.jdField_a_of_type_Int == 3) && (j == 3))
       {
-        this.this$0.c(this.jdField_a_of_type_Qjf);
+        this.this$0.c(this.jdField_a_of_type_Qjc);
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
         ((DownloadInfo)localObject).f = i;
-        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
+        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
         this.this$0.a((DownloadInfo)localObject, 4);
         return;
       }
       if ((this.jdField_a_of_type_Int == 4) && (j == 2))
       {
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
         ((DownloadInfo)localObject).f = i;
         this.this$0.a((DownloadInfo)localObject, 3);
         return;
@@ -84,25 +84,25 @@ class ADVideoAppDownloadManager$6
       if ((this.jdField_a_of_type_Int == 4) && (j == 3))
       {
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
         ((DownloadInfo)localObject).f = i;
-        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
+        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
         this.this$0.a((DownloadInfo)localObject, 4);
         return;
       }
       if ((this.jdField_a_of_type_Int == 4) && (j == 1))
       {
         localObject = new DownloadInfo();
-        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
-        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+        ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
+        ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
         ((DownloadInfo)localObject).f = i;
         this.this$0.a((DownloadInfo)localObject, 3);
         return;
       }
     } while (j != 4);
     localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjf.jdField_a_of_type_JavaLangString;
-    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjf.d;
+    ((DownloadInfo)localObject).c = this.jdField_a_of_type_Qjc.jdField_a_of_type_JavaLangString;
+    ((DownloadInfo)localObject).e = this.jdField_a_of_type_Qjc.d;
     ((DownloadInfo)localObject).f = 100;
     ADVideoAppDownloadManager.a(this.this$0).a = true;
     ADVideoAppDownloadManager.a(this.this$0).a();

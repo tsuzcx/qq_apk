@@ -1,18 +1,13 @@
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 
-public class vgp
-  implements View.OnTouchListener
+public abstract interface vgp
 {
-  public vgp(EditVideoFilter paramEditVideoFilter) {}
+  public abstract void a(MotionEvent paramMotionEvent);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a.a(paramMotionEvent);
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
+  
+  public abstract void onClick(View paramView);
 }
 
 

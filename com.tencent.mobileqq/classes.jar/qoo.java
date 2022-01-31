@@ -1,31 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup.MarginLayoutParams;
 
 final class qoo
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qoo(String paramString, Context paramContext, View.OnClickListener paramOnClickListener) {}
+  qoo(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("big_brother_source_key", onk.f(0));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
+    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
   }
 }
 

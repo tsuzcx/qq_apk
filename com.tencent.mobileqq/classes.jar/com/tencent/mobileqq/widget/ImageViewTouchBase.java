@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcmp;
-import bcql;
+import bcne;
+import bcra;
 
 public abstract class ImageViewTouchBase
   extends ImageView
@@ -22,14 +22,14 @@ public abstract class ImageViewTouchBase
   static final float SCALE_RATE = 1.15F;
   private boolean bShadow;
   protected Matrix mBaseMatrix = new Matrix();
-  protected final bcql mBitmapDisplayed = new bcql(null);
+  protected final bcra mBitmapDisplayed = new bcra(null);
   private final Matrix mDisplayMatrix = new Matrix();
   protected Handler mHandler = new Handler();
   private final float[] mMatrixValues = new float[9];
   float mMaxZoom = 3.0F;
   float mMinZoom = 0.5F;
   private Runnable mOnLayoutRunnable;
-  private bcmp mRecycler;
+  private bcne mRecycler;
   protected Matrix mSuppMatrix = new Matrix();
   int mThisHeight = -1;
   int mThisWidth = -1;
@@ -47,15 +47,15 @@ public abstract class ImageViewTouchBase
     init();
   }
   
-  private void getProperBaseMatrix(bcql parambcql, Matrix paramMatrix)
+  private void getProperBaseMatrix(bcra parambcra, Matrix paramMatrix)
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = parambcql.c();
-    float f4 = parambcql.b();
+    float f3 = parambcra.c();
+    float f4 = parambcra.b();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(parambcql.a());
+    paramMatrix.postConcat(parambcra.a());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -186,7 +186,7 @@ public abstract class ImageViewTouchBase
     return this.mMaxZoom;
   }
   
-  public bcql getRotateBitmap()
+  public bcra getRotateBitmap()
   {
     return this.mBitmapDisplayed;
   }
@@ -326,20 +326,20 @@ public abstract class ImageViewTouchBase
   
   public void setImageBitmapResetBase(Bitmap paramBitmap, boolean paramBoolean)
   {
-    setImageRotateBitmapResetBase(new bcql(paramBitmap), paramBoolean);
+    setImageRotateBitmapResetBase(new bcra(paramBitmap), paramBoolean);
   }
   
-  public void setImageRotateBitmapResetBase(bcql parambcql, boolean paramBoolean)
+  public void setImageRotateBitmapResetBase(bcra parambcra, boolean paramBoolean)
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambcql, paramBoolean);
+      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambcra, paramBoolean);
       return;
     }
-    if (parambcql.a() != null)
+    if (parambcra.a() != null)
     {
-      getProperBaseMatrix(parambcql, this.mBaseMatrix);
-      setImageBitmap(parambcql.a(), parambcql.a());
+      getProperBaseMatrix(parambcra, this.mBaseMatrix);
+      setImageBitmap(parambcra.a(), parambcra.a());
     }
     for (;;)
     {
@@ -354,9 +354,9 @@ public abstract class ImageViewTouchBase
     }
   }
   
-  public void setRecycler(bcmp parambcmp)
+  public void setRecycler(bcne parambcne)
   {
-    this.mRecycler = parambcmp;
+    this.mRecycler = parambcne;
   }
   
   public void setShadow(boolean paramBoolean)

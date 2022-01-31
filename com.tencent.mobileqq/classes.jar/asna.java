@@ -1,37 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
 
 public class asna
-  implements DialogInterface.OnClickListener
+  implements bctk
 {
-  public asna(MsgBackupPcBaseFragment paramMsgBackupPcBaseFragment) {}
+  public asna(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt)
   {
-    asog.a("MsgBackup_MsgBackupPcBaseFragment", "showDisConnDialog mextra is not null! %b, isFromPcHandle = %b", new Object[] { Boolean.valueOf(TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)), Boolean.valueOf(this.a.e) });
-    asle.a().a().c();
-    asle.a().d();
-    if (this.a.jdField_a_of_type_Boolean) {
-      if ((!this.a.e) && (this.a.b == 1)) {
-        this.a.a(this.a.getActivity());
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      asoi.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(aslg.c) });
+      asnz.a().c();
+      if (!TextUtils.isEmpty(this.a.a)) {
+        break label93;
       }
+      this.a.a(this.a.getActivity());
+      if (this.a.b != 2) {
+        break label104;
+      }
+      asog.a("0X800A282");
     }
-    do
+    label93:
+    label104:
+    while (!aslg.c)
     {
       return;
-      this.a.m();
-      return;
-      if (!this.a.e) {
-        break;
-      }
-    } while (this.a.getActivity() == null);
-    this.a.getActivity().setResult(1001);
-    this.a.getActivity().finish();
-    return;
-    this.a.a(this.a.getActivity());
+      this.a.onBackEvent();
+      break;
+    }
+    asog.a("0X800A266", 4);
   }
 }
 

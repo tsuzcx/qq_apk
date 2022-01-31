@@ -1,20 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-import com.tencent.widget.AdapterView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class azzm
-  implements bfpc
+  implements DialogInterface.OnClickListener
 {
-  public azzm(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public azzm(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt < this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.getCount())
-    {
-      paramAdapterView = this.a.jdField_a_of_type_Azzt.a(paramInt);
-      this.a.a(paramInt, paramAdapterView);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

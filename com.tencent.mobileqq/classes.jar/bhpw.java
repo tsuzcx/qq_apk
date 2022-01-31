@@ -1,16 +1,34 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhpw
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public static int a(String paramString)
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      return i;
     }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      a("toInt convert error:" + paramString);
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      a("toInt convert error:" + paramString.getMessage());
+    }
+    return 0;
+  }
+  
+  private static final void a(String paramString)
+  {
+    try
+    {
+      QLog.e("SafeUtil", 1, paramString);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 

@@ -1,10 +1,10 @@
 import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wqc
-  implements amkj
+  implements amki
 {
-  public wqc(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  public wqc(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
   public void onColorNoteAnimFinish()
   {

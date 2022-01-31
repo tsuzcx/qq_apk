@@ -1,59 +1,44 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.2.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class arfb
-  implements arfp
+class arfb
+  extends BroadcastReceiver
 {
-  public arfb(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  arfb(arez paramarez) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    do
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    int k;
+    int i;
+    if (paramContext.equals(arfy.a("com.tencent.od")))
     {
-      return;
-      GroupVideoLoadingFragment.a(this.a, paramInt);
-      switch (paramInt)
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
+      }
+      paramContext = arfp.a;
+      k = paramContext.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      if ((i >= k) || ((j == paramContext[i]) && (arez.a(this.a).isShowing()))) {}
+      try
       {
-      case 4: 
-      case 8: 
-      default: 
+        arez.a(this.a).dismiss();
+        label105:
+        i += 1;
+        continue;
         return;
       }
-    } while (!GroupVideoLoadingFragment.a(this.a));
-    long l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705391), ajyc.a(2131705406));
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705402) + arev.a(l) + ")", new arfd(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705404), ajyc.a(2131705405));
-    paramInt = paramBundle.getInt("key_progress", 0);
-    l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a(paramInt, l);
-    GroupVideoLoadingFragment.a(this.a).b();
-    return;
-    GroupVideoLoadingFragment.a(this.a).a();
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705403), ajyc.a(2131705397));
-    paramBundle = Message.obtain();
-    paramBundle.arg1 = 10;
-    GroupVideoLoadingFragment.a(this.a).sendMessage(paramBundle);
-    return;
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705400), ajyc.a(2131705396));
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705401), new arfd(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).b();
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705392), "");
-    GroupVideoLoadingFragment.a(this.a).a(ajyc.a(2131705393), new arfd(this.a, null));
-    return;
-    GroupVideoLoadingFragment.b(this.a, 90);
-    GroupVideoLoadingFragment.a(this.a).a(90, 0L);
-    return;
-    GroupVideoLoadingFragment.b(this.a, 100);
-    GroupVideoLoadingFragment.a(this.a).a(100, 0L);
-    GroupVideoLoadingFragment.a(this.a).postDelayed(new GroupVideoLoadingFragment.2.1(this), 1500L);
+      catch (Throwable paramIntent)
+      {
+        break label105;
+      }
+    }
   }
 }
 

@@ -1,94 +1,44 @@
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.util.Pair;
+import android.graphics.Rect;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class amob
 {
-  public static int a;
-  private static Paint a;
-  public static Random a;
+  public int a;
+  public amoi a;
+  public Rect a;
+  public ArrayList<amoc> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 1;
   
-  static
+  public amob(amoi paramamoi, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    jdField_a_of_type_Int = 12;
-    jdField_a_of_type_JavaUtilRandom = new Random();
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  }
-  
-  public static float a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = 24;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Amoi = paramamoi;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.e = paramInt3;
+    if (paramamoi.jdField_a_of_type_Int > 0) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      jdField_a_of_type_AndroidGraphicsPaint.setTextSize(36.0F);
-      return jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) / 36.0F;
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      paramamoi.jdField_a_of_type_Int += 1;
+      return;
     }
-    return 1.0F;
   }
   
-  private static boolean a(int paramInt)
+  public String toString()
   {
-    return ((paramInt >= 19968) && (paramInt <= 40959)) || (paramInt == 65292) || (paramInt == 12290) || (paramInt == 65281) || (paramInt == 8220) || (paramInt == 8221) || (paramInt == 65288) || (paramInt == 65289) || (paramInt == 126) || (paramInt == 65311);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramString.length()) {
-        break label37;
-      }
-      if (!a(paramString.codePointAt(i))) {
-        break;
-      }
-      i += 1;
-    }
-    label37:
-    return true;
-  }
-  
-  private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
-  {
-    paramString = paramString.trim();
-    int j = -1;
-    boolean bool = true;
-    int i = 0;
-    if (i < paramString.length())
-    {
-      String str;
-      if (a(paramString.codePointAt(i)))
-      {
-        str = paramString.substring(i, i + 1);
-        paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        int k = j;
-        if (j == -1) {
-          k = i;
-        }
-        if (i + 1 < paramString.length())
-        {
-          j = k;
-          if (!a(paramString.codePointAt(i + 1))) {}
-        }
-        else
-        {
-          str = paramString.substring(k, i + 1);
-          paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
-          j = -1;
-        }
-        bool = false;
-      }
-    }
-    return bool;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Amoi.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

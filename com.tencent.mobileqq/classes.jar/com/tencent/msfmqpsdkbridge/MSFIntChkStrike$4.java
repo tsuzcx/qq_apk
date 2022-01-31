@@ -2,8 +2,8 @@ package com.tencent.msfmqpsdkbridge;
 
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class MSFIntChkStrike$4
@@ -15,15 +15,15 @@ class MSFIntChkStrike$4
   {
     try
     {
-      bbgg localbbgg = bbcv.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
-      if (localbbgg == null) {
+      bbgu localbbgu = bbdj.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
+      if (localbbgu == null) {
         return;
       }
-      localbbgg.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
-      localbbgg.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
-      localbbgg.setOnDismissListener(this.val$fonDismissListener);
-      localbbgg.setCancelable(false);
-      localbbgg.show();
+      localbbgu.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
+      localbbgu.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
+      localbbgu.setOnDismissListener(this.val$fonDismissListener);
+      localbbgu.setCancelable(false);
+      localbbgu.show();
     }
     catch (Exception localException)
     {

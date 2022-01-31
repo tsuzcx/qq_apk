@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import alci;
+import alch;
 
 public class ArResourceManager$1
   implements Runnable
 {
-  public ArResourceManager$1(alci paramalci) {}
+  public ArResourceManager$1(alch paramalch) {}
   
   public void run()
   {

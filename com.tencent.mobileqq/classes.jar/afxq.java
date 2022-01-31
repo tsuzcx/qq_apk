@@ -1,24 +1,21 @@
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public class afxq
-  extends afxr
+class afxq
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public static final int[] a = { 2131690730, 2131690735, 2131690732, 2131690733, 2131690737, 2131690734, 2131690731 };
-  public static final int[] b = { 2131364086, 2131364091, 2131364088, 2131364089, 2131364092, 2131364090, 2131364087 };
+  afxq(afxp paramafxp) {}
   
-  public afxq(FragmentActivity paramFragmentActivity)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramFragmentActivity);
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
+    }
   }
   
-  protected int[] a()
+  public void onPageSelected(int paramInt)
   {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    afxp.a(this.a, paramInt);
   }
 }
 

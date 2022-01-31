@@ -14,7 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import apzw;
+import apzy;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate;
@@ -196,7 +196,7 @@ public class QFlutterFragment
     if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen != null) {
       return this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
     }
-    return new apzw(null);
+    return new apzy(null);
   }
   
   public boolean shouldAttachEngineToActivity()

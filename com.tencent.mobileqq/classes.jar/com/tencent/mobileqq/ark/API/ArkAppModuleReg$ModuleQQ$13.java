@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark.API;
 
-import adll;
-import alpf;
-import aluc;
+import adlj;
+import alpe;
+import alub;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import java.lang.ref.WeakReference;
@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$13
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$13(alpf paramalpf, long paramLong) {}
+  public ArkAppModuleReg$ModuleQQ$13(alpe paramalpe, long paramLong) {}
   
   public void run()
   {
@@ -19,9 +19,9 @@ public class ArkAppModuleReg$ModuleQQ$13
     do
     {
       return;
-      localObject = adll.a((ark.Container)localObject);
-    } while ((localObject == null) || ((adll)((WeakReference)localObject).get() == null));
-    aluc.a().b();
+      localObject = adlj.a((ark.Container)localObject);
+    } while ((localObject == null) || ((adlj)((WeakReference)localObject).get() == null));
+    alub.a().b();
   }
 }
 

@@ -1,40 +1,45 @@
-import java.io.File;
-import java.io.IOException;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class ayqd
+class ayqd
+  implements aywy
 {
-  File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
+  ayqd(ayqb paramayqb) {}
   
-  ayqd(ayqc paramayqc, String paramString)
+  public Bitmap a(URL paramURL)
   {
-    if (!paramayqc.jdField_a_of_type_JavaIoFile.exists()) {
-      paramayqc.jdField_a_of_type_JavaIoFile.mkdirs();
+    paramURL = this.a.a(paramURL);
+    if (paramURL == null) {
+      paramURL = null;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaIoFile = new File(paramayqc.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
-  }
-  
-  File a()
-  {
-    File localFile = this.jdField_a_of_type_Ayqc.a(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      return localFile;
-    }
-    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
+    for (;;)
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      throw new IOException("write 0 length file or null File");
+      return paramURL;
+      String str = paramURL.path;
+      if (TextUtils.isEmpty(str)) {
+        return null;
+      }
+      try
+      {
+        Bitmap localBitmap = this.a.a(str);
+        paramURL = localBitmap;
+        if (localBitmap == null)
+        {
+          paramURL = this.a.b(str);
+          return paramURL;
+        }
+      }
+      catch (Throwable paramURL)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+        }
+      }
     }
-    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
-    return localFile;
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
+    return null;
   }
 }
 

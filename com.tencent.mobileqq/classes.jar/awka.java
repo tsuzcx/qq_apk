@@ -1,21 +1,15 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class awka
-  extends ClickableSpan
+  implements View.OnClickListener
 {
   public awka(UniteSearchActivity paramUniteSearchActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.openContextMenu(this.a.a);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    this.a.finish();
   }
 }
 

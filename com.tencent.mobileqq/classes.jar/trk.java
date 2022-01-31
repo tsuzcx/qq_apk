@@ -1,8 +1,35 @@
-public abstract interface trk
+public class trk
+  implements trj
 {
-  public abstract void a(boolean paramBoolean);
+  private tqh jdField_a_of_type_Tqh;
+  private trm jdField_a_of_type_Trm;
   
-  public abstract void b(boolean paramBoolean);
+  public trk(tqh paramtqh, trm paramtrm)
+  {
+    this.jdField_a_of_type_Tqh = paramtqh;
+    this.jdField_a_of_type_Trm = paramtrm;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Tqh != null) {
+      this.jdField_a_of_type_Tqh.c(this.jdField_a_of_type_Trm);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tqh != null) {
+      this.jdField_a_of_type_Tqh.d(this.jdField_a_of_type_Trm);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Tqh != null) {
+      this.jdField_a_of_type_Tqh.e(this.jdField_a_of_type_Trm);
+    }
+  }
 }
 
 

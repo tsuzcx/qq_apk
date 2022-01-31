@@ -1,19 +1,30 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aelu
+  extends aels
 {
-  public String a;
+  public Bitmap a;
+  public String b;
   
   public aelu(String paramString)
   {
-    this.a = paramString;
+    super(paramString);
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
   
   public boolean a()
   {
-    return false;
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

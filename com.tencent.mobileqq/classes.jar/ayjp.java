@@ -1,36 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayjp
-  extends Handler
+class ayjp
+  implements View.OnClickListener
 {
-  public ayjp(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ayjp(ayjh paramayjh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
+    this.a.dismiss();
   }
 }
 

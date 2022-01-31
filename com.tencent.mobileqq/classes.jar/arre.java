@@ -1,26 +1,23 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class arre
-  implements artc
+  extends BroadcastReceiver
 {
-  public Object a;
+  public arre(ListenTogetherManager paramListenTogetherManager) {}
   
-  private arre(ListenTogetherManager paramListenTogetherManager)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (paramInt == 0) {
+    if (paramIntent == null) {}
+    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+    ListenTogetherManager.c(this.a);
   }
 }
 

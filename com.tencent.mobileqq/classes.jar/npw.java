@@ -1,33 +1,38 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class npw
-  implements ajtg
+final class npw
+  implements bcww
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  npw(String paramString, shc paramshc) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(BaseResp paramBaseResp)
   {
-    if (paramObject != null)
-    {
-      paramObject = (Bundle)paramObject;
-      if (paramObject.getInt("VALUE_OBSERVER_TAG") == hashCode()) {}
-    }
-    while (!QLog.isColorLevel())
-    {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
       return;
-      try
-      {
-        a(paramBoolean, paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
     }
-    QLog.e("VideoPlayRecommendObserver", 2, "onUpdate: error, data null");
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      wij.b(1, 2131719487);
+      bool = false;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      if (this.jdField_a_of_type_Shc == null) {
+        break;
+      }
+      this.jdField_a_of_type_Shc.a(bool);
+      return;
+      wij.b(2, 2131719506);
+      continue;
+      bool = false;
+    }
   }
 }
 

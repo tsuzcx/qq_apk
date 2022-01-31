@@ -1,22 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class uym
+final class uym
+  extends ThreadLocal<StringBuilder>
 {
-  public static void a(String paramString, Object... paramVarArgs)
+  protected StringBuilder a()
   {
-    veg.e(paramString, uyo.a(paramVarArgs));
-  }
-  
-  public static void b(String paramString, Object... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString, 2, uyo.a(paramVarArgs));
-    }
-  }
-  
-  public static void c(String paramString, Object... paramVarArgs)
-  {
-    veg.d(paramString, uyo.a(paramVarArgs));
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 

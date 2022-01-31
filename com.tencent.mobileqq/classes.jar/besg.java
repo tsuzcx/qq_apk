@@ -1,23 +1,18 @@
-import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
 
-public class besg
+public final class besg
+  implements Parcelable.Creator<RenderInfo>
 {
-  public ProcessType a;
-  public Class<?> a;
-  public String a;
-  public Class<?> b;
-  
-  public besg(ProcessType paramProcessType, String paramString, Class paramClass1, Class paramClass2)
+  public RenderInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType = paramProcessType;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangClass = paramClass1;
-    this.b = paramClass2;
+    return new RenderInfo(paramParcel);
   }
   
-  public String toString()
+  public RenderInfo[] a(int paramInt)
   {
-    return "pName:" + this.jdField_a_of_type_JavaLangString + " pType:" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellProcessType + " UI:" + this.jdField_a_of_type_JavaLangClass + " receiver:" + this.b;
+    return new RenderInfo[paramInt];
   }
 }
 

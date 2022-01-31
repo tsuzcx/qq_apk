@@ -1,6 +1,18 @@
-public abstract interface beor
+import android.widget.ImageView;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.io.File;
+
+public class beor
+  implements beok
 {
-  public abstract void a();
+  public beor(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  
+  public void a(File paramFile)
+  {
+    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
+      MiniAppVideoPlayer.c(this.a).setImageBitmap(beli.a(paramFile.getAbsolutePath()));
+    }
+  }
 }
 
 

@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class atpz
   implements DialogInterface.OnClickListener
 {
-  atpz(atpi paramatpi) {}
+  atpz(atpk paramatpk) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

@@ -1,942 +1,918 @@
+import android.content.BroadcastReceiver;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TransFileInfo;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.2;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.3;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 public class aoze
 {
-  private aouj jdField_a_of_type_Aouj = new aozf(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private LinkedHashMap<Long, apgs> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private aozw jdField_a_of_type_Aozw;
+  public QQAppInterface a;
   
   public aoze(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aouj);
   }
   
-  /* Error */
-  public int a(long paramLong1, String paramString, int paramInt, long paramLong2)
+  private TransFileInfo a(MessageRecord paramMessageRecord)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   6: lload 5
-    //   8: invokestatic 47	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   11: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 53	apgs
-    //   17: astore 7
-    //   19: aload 7
-    //   21: ifnull +17 -> 38
-    //   24: aload 7
-    //   26: invokeinterface 57 1 0
-    //   31: istore 4
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: iload 4
-    //   37: ireturn
-    //   38: aload_0
-    //   39: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   42: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   45: lload_1
-    //   46: aload_3
-    //   47: iload 4
-    //   49: lload 5
-    //   51: invokevirtual 65	aoza:a	(JLjava/lang/String;IJ)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   54: astore_3
-    //   55: aload_3
-    //   56: ifnonnull +9 -> 65
-    //   59: iconst_m1
-    //   60: istore 4
-    //   62: goto -29 -> 33
-    //   65: aload_0
-    //   66: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   69: aload_3
-    //   70: getfield 71	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   73: invokestatic 47	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   76: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   79: checkcast 53	apgs
-    //   82: ifnull +12 -> 94
-    //   85: aload_3
-    //   86: getfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   89: istore 4
-    //   91: goto -58 -> 33
-    //   94: iconst_m1
-    //   95: istore 4
-    //   97: goto -64 -> 33
-    //   100: astore_3
-    //   101: aload_0
-    //   102: monitorexit
-    //   103: aload_3
-    //   104: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	105	0	this	aoze
-    //   0	105	1	paramLong1	long
-    //   0	105	3	paramString	String
-    //   0	105	4	paramInt	int
-    //   0	105	5	paramLong2	long
-    //   17	8	7	localapgs	apgs
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	100	finally
-    //   24	33	100	finally
-    //   38	55	100	finally
-    //   65	91	100	finally
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessageRecord != null)
+    {
+      localObject1 = localObject2;
+      if (localaukp != null) {
+        localObject1 = (TransFileInfo)localaukp.a(TransFileInfo.class, new String[] { String.valueOf(paramMessageRecord.time), String.valueOf(paramMessageRecord.msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin });
+      }
+    }
+    if ((localObject1 == null) && (paramMessageRecord != null) && (QLog.isColorLevel())) {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 2, "get TransferInfo null, time[" + String.valueOf(paramMessageRecord.time) + "],msgseq[" + String.valueOf(paramMessageRecord.msgseq) + "],uin[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "], frienduin[" + paramMessageRecord.frienduin + "]");
+    }
+    return localObject1;
   }
   
-  /* Error */
-  public long a(String paramString, long paramLong1, long paramLong2, int paramInt)
+  private void a(Bundle paramBundle)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   9: lload 4
-    //   11: aload_1
-    //   12: iload 6
-    //   14: invokevirtual 79	aoza:a	(JLjava/lang/String;I)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   17: astore 7
-    //   19: aload 7
-    //   21: ifnull +45 -> 66
-    //   24: aload_0
-    //   25: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   28: aload 7
-    //   30: getfield 71	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   33: invokestatic 47	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   36: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: checkcast 53	apgs
-    //   42: astore 7
-    //   44: aload 7
-    //   46: ifnull +20 -> 66
-    //   49: aload 7
-    //   51: invokeinterface 82 1 0
-    //   56: istore 6
-    //   58: iload 6
-    //   60: i2l
-    //   61: lstore_2
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: lload_2
-    //   65: lreturn
-    //   66: aload_0
-    //   67: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   70: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   73: aload_1
-    //   74: lload_2
-    //   75: lload 4
-    //   77: iload 6
-    //   79: invokevirtual 84	aoza:a	(Ljava/lang/String;JJI)J
-    //   82: lstore_2
-    //   83: goto -21 -> 62
-    //   86: astore_1
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_1
-    //   90: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	91	0	this	aoze
-    //   0	91	1	paramString	String
-    //   0	91	2	paramLong1	long
-    //   0	91	4	paramLong2	long
-    //   0	91	6	paramInt	int
-    //   17	33	7	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	86	finally
-    //   24	44	86	finally
-    //   49	58	86	finally
-    //   66	83	86	finally
+    ThreadManager.executeOnSubThread(new FileManagerDataCenter.2(this, paramBundle));
   }
   
-  /* Error */
-  public FileManagerEntity a(String paramString)
+  public int a(String paramString1, int paramInt1, String paramString2, long paramLong, int paramInt2, String paramString3, Bundle paramBundle)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   6: invokevirtual 88	java/util/LinkedHashMap:size	()I
-    //   9: istore_2
-    //   10: iload_2
-    //   11: iconst_1
-    //   12: if_icmpge +9 -> 21
-    //   15: aconst_null
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: aload_0
-    //   22: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   25: invokevirtual 92	java/util/LinkedHashMap:keySet	()Ljava/util/Set;
-    //   28: invokeinterface 98 1 0
-    //   33: astore_3
-    //   34: aload_3
-    //   35: invokeinterface 104 1 0
-    //   40: ifeq +53 -> 93
-    //   43: aload_3
-    //   44: invokeinterface 108 1 0
-    //   49: checkcast 43	java/lang/Long
-    //   52: astore 4
-    //   54: aload_0
-    //   55: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   58: aload 4
-    //   60: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   63: checkcast 53	apgs
-    //   66: astore 4
-    //   68: aload_1
-    //   69: aload 4
-    //   71: invokeinterface 111 1 0
-    //   76: invokevirtual 117	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   79: ifeq -45 -> 34
-    //   82: aload 4
-    //   84: invokeinterface 120 1 0
-    //   89: astore_1
-    //   90: goto -73 -> 17
-    //   93: aconst_null
-    //   94: astore_1
-    //   95: goto -78 -> 17
-    //   98: astore_1
-    //   99: aload_0
-    //   100: monitorexit
-    //   101: aload_1
-    //   102: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	103	0	this	aoze
-    //   0	103	1	paramString	String
-    //   9	4	2	i	int
-    //   33	11	3	localIterator	Iterator
-    //   52	31	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	98	finally
-    //   21	34	98	finally
-    //   34	90	98	finally
-  }
-  
-  public FileManagerEntity a(String paramString1, String paramString2)
-  {
+    if (paramString2 == null) {}
     for (;;)
     {
       try
       {
-        int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-        if (i < 1)
-        {
-          paramString1 = null;
-          return paramString1;
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. sourceId:" + paramInt2);
         }
-        if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+        paramInt1 = -1;
+        return paramInt1;
+      }
+      finally {}
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. filePath:" + paramString2 + " size:" + paramLong + " sourceId:" + paramInt2);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but app = null");
+        }
+      }
+      else
+      {
+        long l = axas.a(-1000).uniseq;
+        paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(l, ajsd.v, 0);
+        if (paramString1 == null)
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-          if (localIterator.hasNext())
+          if (!QLog.isColorLevel()) {
+            break label443;
+          }
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, " insertExternalFileToFM. but entry = null");
+          break label443;
+        }
+        paramString1.setCloudType(3);
+        paramString1.fileName = apug.a(paramString2);
+        if (0L == paramLong)
+        {
+          paramString1.fileSize = apug.a(paramString2);
+          paramString1.setFilePath(paramString2);
+          paramString1.nOpType = paramInt2;
+          paramString1.peerNick = null;
+          paramString1.peerType = 0;
+          paramString1.peerUin = ajsd.v;
+          paramString1.srvTime = (awzy.a() * 1000L);
+          paramString1.status = 1;
+          paramString1.Uuid = null;
+          paramString1.isReaded = true;
+          paramString1.bSend = false;
+          if (paramBundle != null)
           {
-            Object localObject = (Long)localIterator.next();
-            localObject = (apgs)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-            FileManagerEntity localFileManagerEntity = ((apgs)localObject).a();
-            if ((paramString1.equalsIgnoreCase((String)localFileManagerEntity.mContext)) && (paramString2.equals(localFileManagerEntity.zipInnerPath))) {
-              paramString1 = ((apgs)localObject).a();
+            if (paramBundle.getBoolean("FILE_TMP_IS_ZIPINNER_FILE"))
+            {
+              paramString3 = paramBundle.getString("FILE_TMP_SERVER_PATH");
+              String str = paramBundle.getString("FILE_TMP_DIR_PATH");
+              paramLong = paramBundle.getLong("FILE_TMP_RELATED_ID");
+              paramBundle = paramBundle.getString("FILE_TMP_ZIP_FILEID");
+              paramString1.isZipInnerFile = true;
+              paramString1.nRelatedSessionId = paramLong;
+              paramString1.zipInnerPath = str;
+              paramString1.strServerPath = paramString3;
+              paramString1.zipFileId = paramBundle;
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g(paramString1);
             }
           }
           else
           {
-            paramString1 = null;
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1);
+            apug.c(paramString2);
+            paramInt1 = 0;
           }
         }
         else
         {
-          paramString1 = null;
+          paramString1.fileSize = paramLong;
+          continue;
+        }
+        paramString3 = paramBundle.getString("FILE_TMP_SERVER_PATH");
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramString1.status = 1;
+          paramString1.strServerPath = paramString3;
+          paramString1.bDelInAio = true;
+        }
+        paramInt1 = paramBundle.getInt("FILE_FROM", -1);
+        if (paramInt1 == -1) {
+          continue;
+        }
+        paramString1.nOpType = paramInt1;
+        continue;
+      }
+      paramInt1 = -2;
+      continue;
+      label443:
+      paramInt1 = -3;
+    }
+  }
+  
+  public long a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt, paramLong1, paramLong2, paramLong3, paramLong4);
+  }
+  
+  public long a(String paramString, long paramLong1, long paramLong2, int paramInt)
+  {
+    if (paramLong1 <= 0L) {
+      return 0L;
+    }
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "strUin[" + apug.e(paramString) + "], peeryType[" + String.valueOf(paramInt) + "], uniseq[" + String.valueOf(paramLong2) + "]");
+    }
+    MessageRecord localMessageRecord = null;
+    if (paramLong2 > 0L) {
+      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, paramLong2);
+    }
+    if ((localMessageRecord != null) && (localaukp != null))
+    {
+      paramString = (TransFileInfo)localaukp.a(TransFileInfo.class, new String[] { String.valueOf(localMessageRecord.time), String.valueOf(localMessageRecord.msgseq), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      if (paramString == null) {}
+    }
+    for (paramLong1 = paramString.transferedSize * 100L / paramLong1;; paramLong1 = 0L)
+    {
+      localaukp.a();
+      return paramLong1;
+    }
+  }
+  
+  public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  {
+    return a(paramString1, paramString2, paramInt1, paramInt2, null, paramString3, -1L, -1L, -1L);
+  }
+  
+  public long a(String paramString1, String paramString2, int paramInt1, int paramInt2, Map<String, String> paramMap, String paramString3, long paramLong1, long paramLong2, long paramLong3)
+  {
+    MessageRecord localMessageRecord = axas.a(paramInt2);
+    localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localMessageRecord.frienduin = paramString1;
+    localMessageRecord.senderuin = paramString2;
+    localMessageRecord.msg = paramString3;
+    localMessageRecord.msgtype = paramInt2;
+    localMessageRecord.isread = true;
+    long l;
+    if (paramString2.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()))
+    {
+      paramInt2 = 1;
+      localMessageRecord.issend = paramInt2;
+      localMessageRecord.istroop = paramInt1;
+      if (paramLong2 <= 0L) {
+        break label214;
+      }
+      l = paramLong2;
+      label92:
+      localMessageRecord.msgseq = l;
+      if (paramLong2 <= 0L) {
+        break label231;
+      }
+      label106:
+      localMessageRecord.shmsgseq = paramLong2;
+      if (paramLong1 <= 0L) {
+        break label250;
+      }
+      label120:
+      localMessageRecord.msgUid = paramLong1;
+      if (paramLong3 <= 0L) {
+        break label258;
+      }
+    }
+    for (;;)
+    {
+      localMessageRecord.time = paramLong3;
+      if ((paramMap == null) || (paramMap.size() <= 0)) {
+        break label266;
+      }
+      paramString1 = paramMap.keySet().iterator();
+      while (paramString1.hasNext())
+      {
+        paramString2 = (String)paramString1.next();
+        localMessageRecord.saveExtInfoToExtStr(paramString2, (String)paramMap.get(paramString2));
+      }
+      paramInt2 = 0;
+      break;
+      label214:
+      paramInt1 = awyn.a;
+      awyn.a = paramInt1 + 1;
+      l = paramInt1;
+      break label92;
+      label231:
+      paramLong2 = Math.abs(new Random().nextInt());
+      break label106;
+      label250:
+      paramLong1 = apug.b();
+      break label120;
+      label258:
+      paramLong3 = awzy.a();
+    }
+    label266:
+    localMessageRecord.extraflag |= 0xFFFF7FFF;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], selfuin[" + apug.e(localMessageRecord.selfuin) + "], frienduin[" + apug.e(localMessageRecord.frienduin) + "], senderuin[" + apug.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], istroop[" + String.valueOf(localMessageRecord.istroop) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "], msgtype[" + String.valueOf(paramString3) + "]");
+    return localMessageRecord.uniseq;
+  }
+  
+  public long a(String paramString1, String paramString2, boolean paramBoolean1, String paramString3, long paramLong1, boolean paramBoolean2, int paramInt1, String paramString4, long paramLong2, long paramLong3, String paramString5, int paramInt2, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    return a(paramString1, paramString2, paramBoolean1, paramString3, paramLong1, paramBoolean2, paramInt1, paramString4, paramLong2, paramLong3, paramString5, paramInt2, paramLong4, paramLong5, paramLong6, paramLong7, -1);
+  }
+  
+  public long a(String paramString1, String paramString2, boolean paramBoolean1, String paramString3, long paramLong1, boolean paramBoolean2, int paramInt1, String paramString4, long paramLong2, long paramLong3, String paramString5, int paramInt2, long paramLong4, long paramLong5, long paramLong6, long paramLong7, int paramInt3)
+  {
+    MessageRecord localMessageRecord = axas.a(-2005);
+    localMessageRecord.uniseq = paramLong4;
+    localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localMessageRecord.frienduin = paramString1;
+    localMessageRecord.senderuin = paramString2;
+    if (paramString4 != null)
+    {
+      paramString5 = paramString4;
+      if (paramString4.length() >= 1) {}
+    }
+    else
+    {
+      paramString5 = aywk.a(paramString3, paramLong1, 0, paramBoolean2);
+    }
+    localMessageRecord.msg = paramString5;
+    localMessageRecord.msgtype = -2005;
+    localMessageRecord.isread = paramBoolean2;
+    if (paramBoolean1)
+    {
+      paramInt2 = 1;
+      localMessageRecord.issend = paramInt2;
+      localMessageRecord.istroop = paramInt1;
+      localMessageRecord.msgseq = paramLong2;
+      localMessageRecord.shmsgseq = axau.a(paramLong2, paramInt1);
+      paramLong1 = paramLong5;
+      if (paramLong5 == 0L) {
+        paramLong1 = axau.a(axau.a());
+      }
+      localMessageRecord.msgUid = paramLong1;
+      localMessageRecord.time = paramLong7;
+      if (paramInt1 == 3000) {
+        localMessageRecord.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramInt1).shmsgseq;
+      }
+      if (!localMessageRecord.isSend()) {
+        break label495;
+      }
+      ((akfv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageRecord);
+    }
+    for (;;)
+    {
+      localMessageRecord.vipBubbleDiyTextId = paramInt3;
+      if (TextUtils.isEmpty(((MessageForFile)localMessageRecord).fileName)) {
+        ((MessageForFile)localMessageRecord).fileName = apug.a(paramString3);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, paramInt1);
+      QLog.i("FileManagerDataCenter<FileAssistant>", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], selfuin[" + apug.e(localMessageRecord.selfuin) + "], frienduin[" + apug.e(localMessageRecord.frienduin) + "], senderuin[" + apug.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], istroop[" + String.valueOf(localMessageRecord.istroop) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "], vipBubbleID[" + String.valueOf(paramLong6) + "], vipBubbleDiyTextID[" + String.valueOf(paramInt3) + "]");
+      return localMessageRecord.uniseq;
+      paramInt2 = 0;
+      break;
+      label495:
+      if (paramLong6 != -1L) {
+        localMessageRecord.vipBubbleID = paramLong6;
+      } else {
+        localMessageRecord.vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1);
+      }
+    }
+  }
+  
+  public aozw a()
+  {
+    if (this.jdField_a_of_type_Aozw == null) {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "getTmpController mTmpController is null");
+    }
+    for (;;)
+    {
+      aozw localaozw = this.jdField_a_of_type_Aozw;
+      this.jdField_a_of_type_Aozw = null;
+      return localaozw;
+      QLog.d("FileManagerDataCenter<FileAssistant>", 1, "getTmpController " + this.jdField_a_of_type_Aozw.getClass().getName());
+    }
+  }
+  
+  public FileManagerEntity a(long paramLong)
+  {
+    if (paramLong == -1L)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId nSessionId[" + paramLong + "] is error");
+      return null;
+    }
+    aper localaper = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localaper == null)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId get FileManagerProxy null! nSessionId[" + paramLong + "]");
+      return null;
+    }
+    FileManagerEntity localFileManagerEntity = localaper.a(paramLong);
+    if (localFileManagerEntity != null)
+    {
+      localaper.a(localFileManagerEntity);
+      apty.a(localFileManagerEntity);
+      return localFileManagerEntity;
+    }
+    localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(FileManagerEntity.class, String.valueOf(paramLong));
+    if (localFileManagerEntity != null)
+    {
+      localaper.a(localFileManagerEntity);
+      apty.a(localFileManagerEntity);
+      return localFileManagerEntity;
+    }
+    QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityBySessionId get entry null! nSessionId[" + paramLong + "]");
+    return null;
+  }
+  
+  public FileManagerEntity a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    FileManagerEntity localFileManagerEntity = a(paramLong1);
+    if (localFileManagerEntity != null)
+    {
+      QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityBySessionid for queryall, FileManagerEntity exist, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(localFileManagerEntity.uniseq) + "], strUin[" + apug.e(localFileManagerEntity.peerUin) + "], peerType[" + String.valueOf(localFileManagerEntity.peerType) + "]");
+      return localFileManagerEntity;
+    }
+    localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.nSessionId = paramLong1;
+    localFileManagerEntity.uniseq = paramLong2;
+    localFileManagerEntity.peerUin = paramString;
+    localFileManagerEntity.peerType = paramInt;
+    localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    localFileManagerEntity.isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
+    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityBySessionid, new a FileManagerEntity, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(paramLong2) + "], strUin[" + apug.e(paramString) + "], peerType[" + String.valueOf(paramInt) + "]");
+    return localFileManagerEntity;
+  }
+  
+  public FileManagerEntity a(long paramLong, String paramString, int paramInt)
+  {
+    if (paramString == null)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByuniseq  strUin is null, uniseq[" + paramLong + "], peerType[" + paramInt + "]");
+      return null;
+    }
+    if (paramLong <= 0L)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByuniseq uniseq[" + paramLong + "] is error, strUin[" + apug.e(paramString) + "], peerType[" + paramInt + "]");
+      return null;
+    }
+    aper localaper = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localaper == null)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByuniseq get FileManagerProxy null! strUin[" + apug.e(paramString) + "], uniseq[" + paramLong + "], peerType[" + paramInt + "]");
+      return null;
+    }
+    FileManagerEntity localFileManagerEntity = localaper.a(paramLong, paramString, paramInt);
+    if (localFileManagerEntity != null)
+    {
+      apty.a(localFileManagerEntity);
+      return localFileManagerEntity;
+    }
+    return localaper.b(paramLong, paramString, paramInt);
+  }
+  
+  public FileManagerEntity a(long paramLong1, String paramString, int paramInt, long paramLong2)
+  {
+    if (-1L != paramLong2) {}
+    for (FileManagerEntity localFileManagerEntity1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);; localFileManagerEntity1 = null)
+    {
+      FileManagerEntity localFileManagerEntity2 = localFileManagerEntity1;
+      if (localFileManagerEntity1 == null)
+      {
+        localFileManagerEntity2 = localFileManagerEntity1;
+        if (paramLong1 > 0L) {
+          localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong1, paramString, paramInt);
         }
       }
-      finally {}
+      if (localFileManagerEntity2 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "why sessionId[" + String.valueOf(paramLong2) + "] and uniseq[" + String.valueOf(paramLong1) + "] is wrong");
+        }
+        return null;
+      }
+      return localFileManagerEntity2;
     }
+  }
+  
+  public FileManagerEntity a(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString);
+  }
+  
+  public FileManagerEntity a(String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramLong <= 0L)) {
+      return null;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localObject == null)
+    {
+      QLog.e("FileManagerDataCenter<FileAssistant>", 1, "QueryFileEntityByOLfileSessionId get FileManagerProxy null! nOLfileSessionId[" + paramLong + "]");
+      return null;
+    }
+    FileManagerEntity localFileManagerEntity1 = ((aper)localObject).a(paramString, paramLong);
+    if (localFileManagerEntity1 != null) {
+      return localFileManagerEntity1;
+    }
+    localObject = "select * from " + FileManagerEntity.tableName() + " where (nOLfileSessionId = " + paramLong + " or (nSessionId = " + paramLong + " and nOLfileSessionId = 0)) order by srvTime desc";
+    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localObject = localaukp.a(FileManagerEntity.class, (String)localObject, null);
+    FileManagerEntity localFileManagerEntity2;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      Iterator localIterator = ((List)localObject).iterator();
+      do
+      {
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localFileManagerEntity2 = (FileManagerEntity)localIterator.next();
+        } while (!paramString.equalsIgnoreCase(localFileManagerEntity2.peerUin));
+        localObject = localFileManagerEntity2;
+        if (paramLong == localFileManagerEntity2.nOLfileSessionId) {
+          break;
+        }
+      } while ((paramLong != localFileManagerEntity2.nSessionId) || (0L != localFileManagerEntity2.nOLfileSessionId));
+    }
+    for (localObject = localFileManagerEntity2;; localObject = localFileManagerEntity1)
+    {
+      if ((localObject != null) && (0L == ((FileManagerEntity)localObject).nOLfileSessionId))
+      {
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "QueryOLfileSessionEntity find a old ver data. nOLfileSessionId[" + paramLong + "]");
+        ((FileManagerEntity)localObject).nOLfileSessionId = paramLong;
+        c((FileManagerEntity)localObject);
+      }
+      localaukp.a();
+      return localObject;
+    }
+  }
+  
+  public List<FileManagerEntity> a(String paramString, long paramLong)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong);
+  }
+  
+  public List<FileManagerEntity> a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramString2, paramBoolean);
+  }
+  
+  public List<FileManagerEntity> a(List<Integer> paramList, String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramList, paramString);
+  }
+  
+  public Map<String, List<FileManagerEntity>> a(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString);
   }
   
   public void a()
   {
-    label56:
-    Long localLong;
-    int j;
-    try
-    {
-      i = bgap.a(BaseApplication.getContext());
-      if (i == 1) {
-        break label596;
-      }
-      if (i != 2) {
-        break label591;
-      }
-    }
-    finally {}
-    int[] arrayOfInt = new int[3];
-    long[] arrayOfLong = new long[4];
-    int i = 0;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    String str2 = "";
-    String str1 = "";
-    apgs localapgs;
-    label157:
-    int k;
-    label229:
-    int n;
-    while (localIterator.hasNext())
-    {
-      localLong = (Long)localIterator.next();
-      localapgs = (apgs)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localLong);
-      if (localapgs == null)
-      {
-        str1 = str1 + "!!!!runRSWorker error, get worker null!!! sessionID[" + localLong + "]\n";
-      }
-      else
-      {
-        if (localapgs.a() == 0) {
-          break label601;
-        }
-        if (localapgs.a() == 6) {
-          break label601;
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FileManagerRSCenter<FileAssistant>", 1, "run worker[" + localLong + "],direction Type : " + j);
-          }
-          if (!localapgs.a()) {
-            break label626;
-          }
-          if (arrayOfInt[j] >= k) {
-            break label588;
-          }
-          if (j == 1) {
-            break label606;
-          }
-          if (j != 2) {
-            break label499;
-          }
-          break label606;
-          int m = n;
-          if (j < arrayOfLong.length)
-          {
-            if (arrayOfLong[j] != localapgs.a()) {
-              break label619;
-            }
-            m = 1;
-          }
-          if (m == 0) {
-            break label426;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("FileManagerRSCenter<FileAssistant>", 1, "run worker[" + localLong + "],file is uploadding continue ");
-          break;
-          if ((localapgs.a() == 1) || (localapgs.a() == 8) || (localapgs.a() == 5) || (localapgs.a() == 50)) {
-            break label614;
-          }
-          if (localapgs.a() != 41) {
-            break label376;
-          }
-          j = 2;
-        }
-        label376:
-        str2 = str2 + "type[" + localapgs.a() + "] is not processed, maxtype is " + 8 + "\n";
-        continue;
-        label426:
-        QLog.i("FileManagerRSCenter<FileAssistant>", 1, "!!!run worker[" + localLong + "]!!!");
-        localapgs.aw_();
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(localCharSequence)) {
-        QLog.e("FileManagerRSCenter<FileAssistant>", 1, localCharSequence);
-      }
-      if (!TextUtils.isEmpty(str2)) {
-        QLog.i("FileManagerRSCenter<FileAssistant>", 1, str2);
-      }
-      return;
-      label499:
-      localapgs.aw_();
-    }
-    label509:
-    long l = localapgs.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSCenter<FileAssistant>", 1, "work[" + localLong + "] is running, setIndex[" + i + "] fileSize:" + l);
-    }
-    for (;;)
-    {
-      label572:
-      arrayOfInt[j] += 1;
-      label582:
-      break label56;
-      label588:
-      label591:
-      label596:
-      label601:
-      label606:
-      label614:
-      label619:
-      label626:
-      do
-      {
-        break label572;
-        break label582;
-        k = 2;
-        break;
-        k = 1;
-        break;
-        j = 1;
-        break label157;
-        n = 0;
-        j = 0;
-        break label229;
-        j = 0;
-        break label157;
-        j += 1;
-        break label229;
-        if (j == 1) {
-          break label509;
-        }
-      } while (j != 2);
-      break label509;
-      arrayOfLong[i] = l;
-      i += 1;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 0, null);
   }
   
   public void a(long paramLong)
   {
     try
     {
-      apgs localapgs = (apgs)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-      if (localapgs != null) {
-        localapgs.b();
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = a(paramLong);
+    if (localFileManagerEntity == null)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("FileManagerRSCenter<FileAssistant>", 2, "remove worker, sessionId[" + String.valueOf(paramLong) + "]");
+        QLog.w("FileManagerDataCenter<FileAssistant>", 2, "sessionnid[" + String.valueOf(paramLong) + "] item is not exist!may be is deleted!");
       }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-      a();
       return;
     }
-    finally {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, paramString);
   }
   
-  public void a(long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
+  public void a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong1);
-    FileManagerEntity localFileManagerEntity1 = localFileManagerEntity2;
-    if (localFileManagerEntity2 == null) {
-      localFileManagerEntity1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2, paramString, paramInt1);
-    }
-    if (localFileManagerEntity1 == null)
+    FileManagerEntity localFileManagerEntity = a(paramLong1, paramString, paramInt, -1L);
+    if (localFileManagerEntity == null)
     {
-      QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity is null ,why you can choose!!!");
-      return;
-    }
-    if ((localFileManagerEntity1.cloudType != 2) && (localFileManagerEntity1.cloudType != 0))
-    {
-      if (apvb.b(localFileManagerEntity1.getFilePath()))
-      {
-        localFileManagerEntity1.status = 1;
-        localFileManagerEntity1.cloudType = 3;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-        QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + localFileManagerEntity1.nSessionId + "] local existed so notify Success");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "updateFileManagerTime error, entity is null,uinseq[" + String.valueOf(paramLong1) + "], frienduin[" + String.valueOf(paramString) + "], istroop[" + String.valueOf(paramInt) + "], time[" + String.valueOf(paramLong2) + "]");
       }
-      if ((TextUtils.isEmpty(localFileManagerEntity1.Uuid)) && (!localFileManagerEntity1.isZipInnerFile))
-      {
-        apue.a(BaseApplicationImpl.getContext().getString(2131692856));
-        localFileManagerEntity1.status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-        QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + localFileManagerEntity1.nSessionId + "] uuid null, but not Zipfile, set invalid!");
-        return;
-      }
-    }
-    if ((localFileManagerEntity1.nFileType == 2) && (!localFileManagerEntity1.isZipInnerFile) && (localFileManagerEntity1.cloudType != 2) && ((localFileManagerEntity1.peerType == 3000) || (localFileManagerEntity1.peerType == 0)))
-    {
-      localFileManagerEntity1.nOpType = 8;
-      QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + localFileManagerEntity1.nSessionId + "] is video, start init video sdk");
-      aozx.a(BaseActivity.sTopActivity, new aozh(this, localFileManagerEntity1));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
       return;
     }
-    localFileManagerEntity1.nOpType = paramInt2;
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Long.valueOf(paramLong1)) == true)
-    {
-      QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + paramLong1 + "] is processing");
-      return;
-    }
-    b(localFileManagerEntity1);
+    localFileManagerEntity.srvTime = (1000L * paramLong2);
+    c(localFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
   }
   
-  public void a(long paramLong, apgs paramapgs)
+  public void a(aozw paramaozw)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramLong), paramapgs);
-      QLog.i("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + paramLong + "] is add to download list");
-      a();
-      return;
-    }
-    finally {}
+    QLog.d("FileManagerDataCenter<FileAssistant>", 1, "regTmpController" + paramaozw.getClass().getName());
+    this.jdField_a_of_type_Aozw = paramaozw;
   }
   
+  /* Error */
   public void a(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramFileManagerEntity.bDelInFM == true)
-    {
-      paramFileManagerEntity.bDelInFM = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-    }
-    int i;
-    Object localObject;
-    if (!bbdj.b(paramFileManagerEntity.getFilePath()))
-    {
-      QLog.e("FileManagerRSCenter<FileAssistant>", 1, "nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "]file is not exist or empty,path[" + paramFileManagerEntity.getFilePath() + "], please check file!");
-      i = 0;
-      String str = apue.a();
-      if ((paramFileManagerEntity.getFilePath() == null) || (paramFileManagerEntity.getFilePath().length() == 0))
-      {
-        i = 9005;
-        localObject = "filePathNull:" + str;
-        switch (paramFileManagerEntity.nOpType)
-        {
-        }
-      }
-      for (;;)
-      {
-        paramFileManagerEntity.status = 16;
-        paramFileManagerEntity.fProgress = 1.0F;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramFileManagerEntity);
-        return;
-        if (!apue.b(paramFileManagerEntity.getFilePath()))
-        {
-          i = 9042;
-          localObject = "fileNotExists:" + str;
-          break;
-        }
-        localObject = str;
-        if (apue.a(paramFileManagerEntity.getFilePath()) != 0L) {
-          break;
-        }
-        i = 9071;
-        localObject = "fileExistsEmpty:" + str;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 15, null, 1, null);
-        paramFileManagerEntity.status = 0;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramFileManagerEntity);
-        apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileUp", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, i, "", 0L, 0L, paramFileManagerEntity.fileSize, "", "", 0, (String)localObject, null);
-        apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileUpDetail", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, i, "", 0L, 0L, paramFileManagerEntity.fileSize, "", "", 0, (String)localObject, null);
-        continue;
-        paramFileManagerEntity.status = 0;
-        paramFileManagerEntity.isReaded = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramFileManagerEntity);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 38, null, 1, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileWyUp", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, i, "", 0L, 0L, paramFileManagerEntity.fileSize, "", "", 0, (String)localObject, null);
-      }
-    }
-    if (paramFileManagerEntity.peerType == 3000) {
-      localObject = new apgm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("FileManagerRSCenter<FileAssistant>", 2, "Add a New Send Work!, sessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "]");
-        }
-        a();
-        return;
-      }
-      finally {}
-      localObject = (aser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(16);
-      if ((localObject != null) && (((aser)localObject).a(paramFileManagerEntity.peerUin)))
-      {
-        paramFileManagerEntity.isReaded = false;
-        if (paramFileManagerEntity.status != 16) {}
-        for (i = 0;; i = 16)
-        {
-          paramFileManagerEntity.status = i;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramFileManagerEntity);
-          QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= ! Id[" + paramFileManagerEntity.nSessionId + "] frend in blacklist!");
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 15, null, -1, ajyc.a(2131704530));
-          return;
-        }
-      }
-      if (paramFileManagerEntity.nOpType == 0)
-      {
-        if ((apgw.a().a()) && (paramFileManagerEntity.fileSize > apgw.a().a())) {
-          localObject = new aphn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
-        } else {
-          localObject = new apat(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
-        }
-      }
-      else {
-        localObject = new aozi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    int i = 0;
-    Object localObject2;
-    try
-    {
-      int j = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-      if (j < 1) {
-        return;
-      }
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        localArrayList.add(0, (apgs)((Iterator)localObject2).next());
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    }
-    finally {}
-    Iterator localIterator = localObject1.iterator();
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localObject2 = (apgs)localIterator.next();
-        ((apgs)localObject2).c();
-        if (!paramBoolean)
-        {
-          ((apgs)localObject2).e();
-        }
-        else
-        {
-          ((apgs)localObject2).a(null, 0);
-          i = 1;
-        }
-      }
-      else
-      {
-        if ((paramBoolean) && (i == 0)) {
-          apue.a(BaseApplicationImpl.getContext().getString(2131692884));
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-        break;
-      }
-    }
-  }
-  
-  /* Error */
-  public boolean a(long paramLong)
-  {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   6: lload_1
-    //   7: invokestatic 47	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   10: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 53	apgs
-    //   16: astore 4
-    //   18: aload 4
-    //   20: ifnull +26 -> 46
-    //   23: aload 4
-    //   25: invokeinterface 461 1 0
-    //   30: aload_0
-    //   31: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   34: lload_1
-    //   35: invokestatic 47	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   38: invokevirtual 237	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   41: pop
-    //   42: aload_0
-    //   43: invokevirtual 239	aoze:a	()V
-    //   46: aload_0
-    //   47: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   50: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   53: lload_1
-    //   54: invokevirtual 243	aoza:a	(J)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   57: astore 4
-    //   59: aload 4
-    //   61: ifnull +87 -> 148
-    //   64: aload 4
-    //   66: getfield 290	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nFileType	I
-    //   69: iconst_2
-    //   70: if_icmpne +78 -> 148
-    //   73: new 154	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   80: ldc 152
-    //   82: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload 4
-    //   87: getfield 71	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   90: invokevirtual 221	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 462	aozx:a	(Ljava/lang/String;)V
-    //   99: aload 4
-    //   101: getfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   104: iconst_2
-    //   105: if_icmpeq +12 -> 117
-    //   108: aload 4
-    //   110: getfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   113: iconst_m1
-    //   114: if_icmpne +9 -> 123
-    //   117: aload 4
-    //   119: iconst_3
-    //   120: putfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   123: aload_0
-    //   124: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   127: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   130: aload 4
-    //   132: invokevirtual 258	aoza:c	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
-    //   135: aload_0
-    //   136: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   139: invokevirtual 33	com/tencent/mobileqq/app/QQAppInterface:a	()Laozc;
-    //   142: iconst_1
-    //   143: iconst_0
-    //   144: aconst_null
-    //   145: invokevirtual 261	aozc:a	(ZILjava/lang/Object;)V
-    //   148: aload 4
-    //   150: ifnull +36 -> 186
-    //   153: aload 4
-    //   155: getfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   158: iconst_2
-    //   159: if_icmpne +27 -> 186
-    //   162: aload 4
-    //   164: iconst_3
-    //   165: putfield 75	com/tencent/mobileqq/filemanager/data/FileManagerEntity:status	I
-    //   168: aload_0
-    //   169: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   172: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   175: aload 4
-    //   177: invokevirtual 258	aoza:c	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
-    //   180: iconst_1
-    //   181: istore_3
-    //   182: aload_0
-    //   183: monitorexit
-    //   184: iload_3
-    //   185: ireturn
-    //   186: iconst_0
-    //   187: istore_3
-    //   188: goto -6 -> 182
-    //   191: astore 4
-    //   193: aload_0
-    //   194: monitorexit
-    //   195: aload 4
-    //   197: athrow
+    //   3: getfield 15	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6: invokevirtual 251	com/tencent/mobileqq/app/QQAppInterface:a	()Laper;
+    //   9: astore_2
+    //   10: aload_2
+    //   11: ifnonnull +69 -> 80
+    //   14: ldc 71
+    //   16: iconst_1
+    //   17: new 73	java/lang/StringBuilder
+    //   20: dup
+    //   21: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   24: ldc_w 643
+    //   27: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: aload_1
+    //   31: getfield 529	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   34: invokevirtual 122	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   37: ldc_w 293
+    //   40: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: aload_1
+    //   44: getfield 530	com/tencent/mobileqq/filemanager/data/FileManagerEntity:uniseq	J
+    //   47: invokevirtual 122	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   50: ldc_w 645
+    //   53: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: aload_1
+    //   57: getfield 188	com/tencent/mobileqq/filemanager/data/FileManagerEntity:peerUin	Ljava/lang/String;
+    //   60: invokestatic 286	apug:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   63: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc 88
+    //   68: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: aload_0
+    //   78: monitorexit
+    //   79: return
+    //   80: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   83: ifeq +32 -> 115
+    //   86: ldc 71
+    //   88: iconst_2
+    //   89: new 73	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 74	java/lang/StringBuilder:<init>	()V
+    //   96: ldc_w 647
+    //   99: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: aload_1
+    //   103: invokestatic 650	apug:a	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)Ljava/lang/String;
+    //   106: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 127	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: aload_2
+    //   116: aload_1
+    //   117: invokevirtual 652	aper:b	(Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;)V
+    //   120: aload_0
+    //   121: getfield 15	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   124: invokevirtual 614	com/tencent/mobileqq/app/QQAppInterface:a	()Laozg;
+    //   127: iconst_1
+    //   128: iconst_3
+    //   129: aconst_null
+    //   130: invokevirtual 619	aozg:a	(ZILjava/lang/Object;)V
+    //   133: goto -56 -> 77
+    //   136: astore_1
+    //   137: aload_0
+    //   138: monitorexit
+    //   139: aload_1
+    //   140: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	this	aoze
-    //   0	198	1	paramLong	long
-    //   181	7	3	bool	boolean
-    //   16	160	4	localObject1	Object
-    //   191	5	4	localObject2	Object
+    //   0	141	0	this	aoze
+    //   0	141	1	paramFileManagerEntity	FileManagerEntity
+    //   9	107	2	localaper	aper
     // Exception table:
     //   from	to	target	type
-    //   2	18	191	finally
-    //   23	46	191	finally
-    //   46	59	191	finally
-    //   64	117	191	finally
-    //   117	123	191	finally
-    //   123	148	191	finally
-    //   153	180	191	finally
+    //   2	10	136	finally
+    //   14	77	136	finally
+    //   80	115	136	finally
+    //   115	133	136	finally
   }
   
-  /* Error */
-  public boolean a(String paramString)
+  public void a(String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   6: invokevirtual 88	java/util/LinkedHashMap:size	()I
-    //   9: istore_2
-    //   10: iload_2
-    //   11: iconst_1
-    //   12: if_icmpge +9 -> 21
-    //   15: iconst_0
-    //   16: istore_3
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_3
-    //   20: ireturn
-    //   21: aload_0
-    //   22: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   25: invokevirtual 92	java/util/LinkedHashMap:keySet	()Ljava/util/Set;
-    //   28: invokeinterface 98 1 0
-    //   33: astore 4
-    //   35: aload 4
-    //   37: invokeinterface 104 1 0
-    //   42: ifeq +61 -> 103
-    //   45: aload 4
-    //   47: invokeinterface 108 1 0
-    //   52: checkcast 43	java/lang/Long
-    //   55: astore 5
-    //   57: aload_0
-    //   58: getfield 26	aoze:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   61: aload 5
-    //   63: invokevirtual 51	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   66: checkcast 53	apgs
-    //   69: invokeinterface 120 1 0
-    //   74: astore 5
-    //   76: aload 5
-    //   78: getfield 465	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFilePath	Ljava/lang/String;
-    //   81: ifnull -46 -> 35
-    //   84: aload 5
-    //   86: getfield 465	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strFilePath	Ljava/lang/String;
-    //   89: aload_1
-    //   90: invokevirtual 117	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   93: istore_3
-    //   94: iload_3
-    //   95: ifeq -60 -> 35
-    //   98: iconst_1
-    //   99: istore_3
-    //   100: goto -83 -> 17
-    //   103: iconst_0
-    //   104: istore_3
-    //   105: goto -88 -> 17
-    //   108: astore_1
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: aload_1
-    //   112: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	113	0	this	aoze
-    //   0	113	1	paramString	String
-    //   9	4	2	i	int
-    //   16	89	3	bool	boolean
-    //   33	13	4	localIterator	Iterator
-    //   55	30	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	108	finally
-    //   21	35	108	finally
-    //   35	94	108	finally
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt);
   }
   
-  /* Error */
-  public boolean a(String paramString, long paramLong, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 28	aoze:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: invokevirtual 60	com/tencent/mobileqq/app/QQAppInterface:a	()Laoza;
-    //   9: lload_2
-    //   10: aload_1
-    //   11: iload 4
-    //   13: ldc2_w 467
-    //   16: invokevirtual 65	aoza:a	(JLjava/lang/String;IJ)Lcom/tencent/mobileqq/filemanager/data/FileManagerEntity;
-    //   19: astore_1
-    //   20: aload_1
-    //   21: ifnonnull +11 -> 32
-    //   24: iconst_0
-    //   25: istore 5
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: iload 5
-    //   31: ireturn
-    //   32: aload_0
-    //   33: aload_1
-    //   34: getfield 71	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   37: invokevirtual 470	aoze:a	(J)Z
-    //   40: istore 5
-    //   42: goto -15 -> 27
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	this	aoze
-    //   0	50	1	paramString	String
-    //   0	50	2	paramLong	long
-    //   0	50	4	paramInt	int
-    //   25	16	5	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	45	finally
-    //   32	42	45	finally
-  }
-  
-  public void b(FileManagerEntity paramFileManagerEntity)
-  {
-    if (paramFileManagerEntity.bDelInFM == true)
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+    if (localFileManagerEntity == null)
     {
-      paramFileManagerEntity.bDelInFM = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-    }
-    if ((paramFileManagerEntity.nFileType == 2) && (!paramFileManagerEntity.isZipInnerFile) && (paramFileManagerEntity.cloudType != 2))
-    {
-      aozx.a(BaseActivity.sTopActivity, new aozg(this, paramFileManagerEntity));
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "Save of2of [" + String.valueOf(paramBoolean) + "],query FileManagerEntity renturn null, SessionId[" + String.valueOf(paramLong) + "], ");
+      }
       return;
     }
-    if ((paramFileManagerEntity.peerType == 0) && (paramFileManagerEntity.nOpType != 5) && (paramFileManagerEntity.nOpType != 50) && (apgw.a().b()) && (paramFileManagerEntity.fileSize > apgw.a().b()) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid))) {}
-    for (Object localObject = new aphh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);; localObject = new aozi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity)) {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), localObject);
-        QLog.i("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + paramFileManagerEntity.nSessionId + "] is add to download list");
-        a();
-        return;
-      }
-      finally {}
+    if (paramBoolean)
+    {
+      localFileManagerEntity.lastTime = (awzy.a() * 1000L + 604800000L);
+      localFileManagerEntity.isReaded = false;
+      localFileManagerEntity.bSend = true;
+      localFileManagerEntity.status = 1;
+      localFileManagerEntity.fProgress = 0.0F;
+      localFileManagerEntity.Uuid = paramString2;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+      localFileManagerEntity.status = 2;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      apug.b(localFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 6, "");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.peerUin, localFileManagerEntity, null);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 15, null, paramInt, paramString1);
+    localFileManagerEntity.isReaded = false;
+    localFileManagerEntity.status = 0;
+    if ((paramInt == -6101) || (paramInt == -7003))
+    {
+      localFileManagerEntity.status = 16;
+      if ((localFileManagerEntity.mContext != null) && ((localFileManagerEntity.mContext instanceof FileManagerEntity)))
+      {
+        paramString2 = (FileManagerEntity)localFileManagerEntity.mContext;
+        paramString2.status = 16;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramString2);
+        localFileManagerEntity.mContext = null;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.nSessionId, "actFileOf2Of", 0L, "", "", localFileManagerEntity.peerUin, localFileManagerEntity.Uuid, paramInt, paramString1, 0L, 0L, 0L, "", "", 0, paramString1, null);
   }
   
-  public void c(FileManagerEntity paramFileManagerEntity)
+  public boolean a(long paramLong)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+  }
+  
+  public boolean a(long paramLong, int paramInt)
+  {
+    Object localObject2 = a(paramLong);
+    if (localObject2 == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "strUin[" + apug.e(((FileManagerEntity)localObject2).peerUin) + "], peeryType[" + String.valueOf(((FileManagerEntity)localObject2).peerType) + "], uniseq[" + String.valueOf(((FileManagerEntity)localObject2).uniseq) + "]");
+    }
+    Object localObject1 = null;
+    if (-1L != ((FileManagerEntity)localObject2).uniseq) {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((FileManagerEntity)localObject2).peerUin, ((FileManagerEntity)localObject2).peerType, ((FileManagerEntity)localObject2).uniseq);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localObject1 = a((MessageRecord)localObject1);
+    if ((localObject2 != null) && (localObject2 != null) && (localObject1 != null))
+    {
+      ((TransFileInfo)localObject1).status = paramInt;
+      ((aukp)localObject2).a((auko)localObject1);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(FileManagerEntity paramFileManagerEntity)
   {
     if (paramFileManagerEntity == null) {}
     for (;;)
     {
       try
       {
-        QLog.e("FileManagerRSCenter<FileAssistant>", 1, "entry is null, retry ge mao!");
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setFMDelete FileManagerEntity is null!!!");
+        }
+        bool = false;
+        return bool;
       }
       finally {}
-      apgs localapgs = (apgs)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramFileManagerEntity.nSessionId));
-      if ((localapgs == null) || (localapgs.a())) {
-        break;
-      }
-      QLog.i("FileManagerRSCenter<FileAssistant>", 1, "uniseq[ " + String.valueOf(paramFileManagerEntity.uniseq) + " ],sessionid[ " + String.valueOf(paramFileManagerEntity.nSessionId) + " ] work,is procressing!");
+      paramFileManagerEntity.bDelInFM = true;
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity, true);
     }
-    switch (paramFileManagerEntity.nOpType)
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerDataCenter<FileAssistant>", 2, "SetRead: strUin[" + apug.e(paramString) + "], peeryType[" + paramInt + "], uniseq[" + paramLong + "]");
+    }
+    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, paramLong);
+    if (paramString != null)
     {
+      paramString.isread = true;
+      return true;
     }
+    return false;
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong);
+  }
+  
+  public FileManagerEntity b(long paramLong)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+  }
+  
+  public FileManagerEntity b(long paramLong, String paramString, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localObject == null) {
+      return null;
+    }
+    if (paramLong > 0L)
+    {
+      FileManagerEntity localFileManagerEntity = ((aper)localObject).a(paramLong, paramString, paramInt);
+      if (localFileManagerEntity != null)
+      {
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByuniseq for memory, FileManagerEntity exist, sessionId[" + String.valueOf(localFileManagerEntity.nSessionId) + "], uniseq[" + String.valueOf(localFileManagerEntity.uniseq) + "], strUin[" + apug.e(localFileManagerEntity.peerUin) + "], peerType[" + String.valueOf(localFileManagerEntity.peerType) + "]");
+        return localFileManagerEntity;
+      }
+      localObject = ((aper)localObject).b(paramLong, paramString, paramInt);
+      if (localObject != null)
+      {
+        QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByuniseq for db, FileManagerEntity exist, sessionId[" + String.valueOf(((FileManagerEntity)localObject).nSessionId) + "], uniseq[" + String.valueOf(((FileManagerEntity)localObject).uniseq) + "], strUin[" + apug.e(((FileManagerEntity)localObject).peerUin) + "], peerType[" + String.valueOf(((FileManagerEntity)localObject).peerType) + "]");
+        return localObject;
+      }
+    }
+    localObject = new FileManagerEntity();
+    ((FileManagerEntity)localObject).nSessionId = apug.a().longValue();
+    ((FileManagerEntity)localObject).uniseq = paramLong;
+    ((FileManagerEntity)localObject).peerUin = paramString;
+    ((FileManagerEntity)localObject).peerType = paramInt;
+    ((FileManagerEntity)localObject).selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    ((FileManagerEntity)localObject).isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((FileManagerEntity)localObject);
+    QLog.i("FileManagerDataCenter<FileAssistant>", 1, "getFileEntityByuniseq, new a FileManagerEntity, sessionId[" + String.valueOf(((FileManagerEntity)localObject).nSessionId) + "], uniseq[" + String.valueOf(paramLong) + "], strUin[" + apug.e(paramString) + "], peerType[" + String.valueOf(paramInt) + "]");
+    return localObject;
+  }
+  
+  public FileManagerEntity b(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramString);
+  }
+  
+  public List<FileManagerEntity> b(List<Integer> paramList, String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramList, paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d();
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong, paramString);
+  }
+  
+  public void b(FileManagerEntity paramFileManagerEntity)
+  {
     for (;;)
     {
-      QLog.e("FileManagerRSCenter<FileAssistant>", 1, "Unknow actionType!");
-      break;
-      a(paramFileManagerEntity);
-      break;
-      b(paramFileManagerEntity);
-      break;
+      aper localaper;
+      try
+      {
+        localaper = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        if (localaper == null)
+        {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 1, "insertToFMListAddOrReplaceDB get FileManagerProxy null! nSessionId[" + paramFileManagerEntity.nSessionId + "], uniseq[" + paramFileManagerEntity.uniseq + "], peerUin[" + apug.e(paramFileManagerEntity.peerUin) + "]");
+          return;
+        }
+        if ((FileManagerEntity)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(FileManagerEntity.class, String.valueOf(paramFileManagerEntity.nSessionId)) == null)
+        {
+          localaper.b(paramFileManagerEntity);
+          continue;
+        }
+        localaper.c(paramFileManagerEntity);
+      }
+      finally {}
+      localaper.e(paramFileManagerEntity);
     }
+  }
+  
+  public boolean b(FileManagerEntity paramFileManagerEntity)
+  {
+    if (paramFileManagerEntity == null) {}
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FileManagerDataCenter<FileAssistant>", 2, "setAioDelete FileManagerEntity is null!!!");
+        }
+        bool = false;
+        return bool;
+      }
+      finally {}
+      paramFileManagerEntity.bDelInAio = true;
+      paramFileManagerEntity.uniseq = -1L;
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity, true);
+    }
+  }
+  
+  public FileManagerEntity c(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f(paramString);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+  }
+  
+  public void c(FileManagerEntity paramFileManagerEntity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramFileManagerEntity);
+  }
+  
+  public FileManagerEntity d(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramString);
+  }
+  
+  public void d()
+  {
+    ThreadManager.executeOnSubThread(new FileManagerDataCenter.1(this));
+  }
+  
+  public void d(FileManagerEntity paramFileManagerEntity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity);
+  }
+  
+  public FileManagerEntity e(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g(paramString);
+  }
+  
+  public void e()
+  {
+    ThreadManager.executeOnSubThread(new FileManagerDataCenter.3(this));
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g();
   }
 }
 

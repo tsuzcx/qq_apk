@@ -3,7 +3,7 @@ package com.tencent.qqmini.proxyimpl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bffm;
+import bfgd;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
@@ -25,17 +25,17 @@ import java.lang.ref.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import ytu;
-import ytv;
-import ytw;
-import yxr;
+import ytr;
+import yts;
+import ytt;
+import yxo;
 
 public class AdProxyImpl
   extends AdProxy
 {
   private final String TAG = "AdProxyImpl";
   
-  private ytv createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
+  private yts createGdtBannerView(Activity paramActivity, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo, int paramInt1, int paramInt2)
   {
     QLog.i("AdProxyImpl", 1, "createBannerAdView width = " + paramInt1 + ", height = " + paramInt2);
     if (paramAdInfo == null) {
@@ -44,14 +44,14 @@ public class AdProxyImpl
     try
     {
       QLog.i("AdProxyImpl", 1, "createBannerAd");
-      ytu localytu = new ytu();
-      localytu.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
-      localytu.jdField_a_of_type_Int = 0;
-      localytu.b = paramInt1;
-      localytu.c = paramInt2;
-      paramActivity = ytw.a(localytu);
+      ytr localytr = new ytr();
+      localytr.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = getBannerClickParams(paramActivity, paramAdInfo);
+      localytr.jdField_a_of_type_Int = 0;
+      localytr.b = paramInt1;
+      localytr.c = paramInt2;
+      paramActivity = ytt.a(localytr);
       if (paramActivity != null) {
-        localytu.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
+        localytr.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick = new GdtDwellTimeStatisticsAfterClick(new GdtAd(paramAdInfo), new WeakReference(paramActivity.a()));
       } else {
         QLog.e("AdProxyImpl", 1, "build Ad error");
       }
@@ -109,7 +109,7 @@ public class AdProxyImpl
   {
     try
     {
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString)));
       return localAdInfo;
     }
     catch (Exception localException)
@@ -130,7 +130,7 @@ public class AdProxyImpl
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return;
         }
-        bffm.a(paramInt, (String)localObject);
+        bfgd.a(paramInt, (String)localObject);
         QLog.i("AdProxyImpl", 1, "parseAndSaveCookie save key success, adType = " + paramInt + ", value = " + (String)localObject);
         return;
       }

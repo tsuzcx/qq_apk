@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azwp;
-import azwq;
+import azwt;
+import azwu;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -29,7 +29,7 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private azwq jdField_a_of_type_Azwq;
+  private azwu jdField_a_of_type_Azwu;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -53,8 +53,8 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Azwq = new azwq(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Azwq);
+      this.jdField_a_of_type_Azwu = new azwu(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Azwu);
     }
   }
   
@@ -75,8 +75,8 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    setRightButton(2131697698, new azwp(this));
-    setTitle(ajyc.a(2131705503));
+    setRightButton(2131697703, new azwt(this));
+    setTitle(ajya.a(2131705514));
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
     {

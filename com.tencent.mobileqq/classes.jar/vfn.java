@@ -1,104 +1,45 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.reactive.SimpleObserver;
 
-class vfn
-  extends SimpleObserver<vsd>
+public class vfn
+  extends SimpleObserver<vsa>
 {
-  vfn(vfm paramvfm, vsd paramvsd) {}
+  vfn(vfl paramvfl) {}
   
-  public void a(vsd paramvsd)
+  public void a(vsa paramvsa)
   {
-    int i = 1;
-    super.onNext(paramvsd);
-    this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.b();
-    if ((!this.jdField_a_of_type_Vsd.a.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vsd.a.a)) {
-      this.jdField_a_of_type_Vfm.jdField_a_of_type_JavaLangString = paramvsd.a.jdField_b_of_type_JavaLangString;
-    }
-    paramvsd = this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.getActivity();
-    Object localObject1;
-    Object localObject2;
-    boolean bool2;
-    if ((paramvsd != null) && (!paramvsd.isFinishing()))
+    super.onNext(paramvsa);
+    this.a.a(40);
+    paramvsa = paramvsa.a.b;
+    ved.b("EditPicSave", "picPath = " + paramvsa);
+    if (this.a.jdField_a_of_type_Vix.getActivity() != null)
     {
-      veg.b("EditPicActivity.EditPicPartManager", "picDestPath = " + this.jdField_a_of_type_Vsd.a.jdField_b_of_type_JavaLangString);
-      localObject1 = this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.a(this.jdField_a_of_type_Vsd);
-      ((Intent)localObject1).putExtra("PUBLISH_STORY", true);
-      this.jdField_a_of_type_Vfm.b();
-      localObject2 = ((Intent)localObject1).getStringExtra("PhotoConst.PLUGIN_APK");
-      boolean bool1 = ((Intent)localObject1).getBooleanExtra("DirectBackToQzone", false);
-      bool2 = ((Intent)localObject1).getBooleanExtra("go_publish_activity", false);
-      boolean bool3 = ((Intent)localObject1).getBooleanExtra("extra_directly_back", false);
-      if ((!"qzone_plugin.apk".equals(localObject2)) || (!bool1)) {
-        break label378;
-      }
-      if (bool3)
-      {
-        ((Intent)localObject1).setClass(paramvsd, PhotoListActivity.class);
-        ((Intent)localObject1).addFlags(536870912);
-        paramvsd.startActivity((Intent)localObject1);
-        paramvsd.setResult(-1);
-        paramvsd.finish();
-      }
-    }
-    else
-    {
-      localObject2 = this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.getActivity().getIntent();
-      int j = ((Intent)localObject2).getIntExtra("uintype", -1000);
-      localObject1 = "";
-      paramvsd = (vsd)localObject1;
-      if (j != -1)
-      {
-        paramvsd = (vsd)localObject1;
-        if (j != 1)
-        {
-          paramvsd = (vsd)localObject1;
-          if (j != 3000) {
-            paramvsd = ((Intent)localObject2).getStringExtra("uin");
-          }
-        }
-      }
-      if (axhp.a().a != 1) {
-        break label401;
-      }
-    }
-    for (;;)
-    {
-      avtb.a(i, paramvsd);
-      return;
-      if (!bool2)
-      {
-        bgxy.a(paramvsd, "", (Intent)localObject1, -1);
-        this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.a(-1, null, 2130772028, 0);
-        break;
-      }
-      this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.a(-1, (Intent)localObject1, 2130772028, 0);
-      break;
-      label378:
-      this.jdField_a_of_type_Vfm.a(paramvsd, this.jdField_a_of_type_Vfm.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a(), (Intent)localObject1);
-      break;
-      label401:
-      i = 2;
+      ThreadManager.post(new EditPicSave.2.1(this, paramvsa), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.f();
     }
   }
   
   public void onCancel()
   {
     super.onCancel();
-    veg.d("EditPicActivity.EditPicPartManager", "PIC PUBLISH cancel !");
-    this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.b();
-    bcpw.a(this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.a(), ajyc.a(2131703677), 0).a();
+    ved.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_Vhm.a(0);
+    this.a.g();
+    bcql.a(this.a.jdField_a_of_type_Vix.a(), ajya.a(2131703699), 0).a();
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    veg.e("EditPicActivity.EditPicPartManager", "PIC PUBLISH error ：" + paramError);
-    this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.b();
-    bcpw.a(this.jdField_a_of_type_Vfm.jdField_a_of_type_Vja.a(), ajyc.a(2131703674) + paramError, 0).a();
+    ved.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_Vhm.a(0);
+    bcql.a(this.a.jdField_a_of_type_Vix.a(), 1, ajya.a(2131703700) + paramError, 0).a();
+    this.a.g();
   }
 }
 

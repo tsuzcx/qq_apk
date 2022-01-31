@@ -1,12 +1,19 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-public abstract interface arkg
+public final class arkg
+  implements Parcelable.Creator<NewTogetherRoomMessageData>
 {
-  public abstract void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public NewTogetherRoomMessageData a(Parcel paramParcel)
+  {
+    return new NewTogetherRoomMessageData(paramParcel);
+  }
   
-  public abstract void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
-  
-  public abstract void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData);
+  public NewTogetherRoomMessageData[] a(int paramInt)
+  {
+    return new NewTogetherRoomMessageData[paramInt];
+  }
 }
 
 

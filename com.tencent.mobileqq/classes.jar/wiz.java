@@ -1,6 +1,8 @@
-public abstract interface wiz<T extends wiy>
+import java.util.List;
+
+public abstract interface wiz
 {
-  public abstract void setPresenter(T paramT);
+  public abstract void a(List<wkl> paramList, boolean paramBoolean);
 }
 
 

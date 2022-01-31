@@ -1,52 +1,65 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
 
-public class arkx
-  implements asgp
+class arkx
+  implements bcue
 {
-  private WeakReference<IVideoOuterStatusListener> a;
+  private long jdField_a_of_type_Long;
   
-  public arkx(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
-  }
+  arkx(arkv paramarkv, Context paramContext) {}
   
-  private void a(boolean paramBoolean)
+  public boolean a()
   {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, "onCloseClick");
     }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
+    if (arkv.a(this.jdField_a_of_type_Arkv) == null) {
+      return true;
+    }
+    if (arkv.a(this.jdField_a_of_type_Arkv).isIsAdm())
     {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
+      arkp.a(this.jdField_a_of_type_AndroidContentContext, 5, arkv.a(this.jdField_a_of_type_Arkv).getCurUin());
+      return true;
     }
-    localIVideoOuterStatusListener.onVideoStart(-1);
+    axqy.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_quit_member", 0, 0, arkv.a(this.jdField_a_of_type_Arkv).getCurUin(), "", "", "");
+    this.jdField_a_of_type_Arkv.b();
+    return true;
   }
   
-  public void a(int paramInt)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    if ((arkv.a(this.jdField_a_of_type_Arkv) == null) || (arkv.a(this.jdField_a_of_type_Arkv) == null)) {
+      return false;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L)
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      arkt.a().a(false);
-      a(false);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "click button too frequently pastTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      }
+      return true;
     }
-    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    arkt.a().a(true);
-    a(true);
-  }
-  
-  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramInt1 = arkv.a(this.jdField_a_of_type_Arkv).a();
+    if (paramInt1 == 1)
+    {
+      aynp.a(this.jdField_a_of_type_AndroidContentContext, 1, arkv.a(this.jdField_a_of_type_Arkv).getBigUrl(), null, new Bundle(), arkv.a(this.jdField_a_of_type_Arkv).getCurType());
+      this.jdField_a_of_type_Arkv.a(arkv.a(this.jdField_a_of_type_Arkv).getCurUin(), arkv.a(this.jdField_a_of_type_Arkv).getCurType(), false);
+    }
+    for (;;)
+    {
+      return true;
+      if (paramInt1 == 2)
+      {
+        arkv.a(this.jdField_a_of_type_Arkv).a(arkv.a(this.jdField_a_of_type_Arkv).getSmallUrl());
+        axqy.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh", 0, 0, arkv.a(this.jdField_a_of_type_Arkv).getCurUin(), "", "", "");
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ahiy;
+import ahiw;
 
 class ApkgConfigHolder$1
   implements Runnable
@@ -11,7 +11,7 @@ class ApkgConfigHolder$1
   {
     synchronized (ApkgConfigHolder.access$000(this.this$0))
     {
-      ahiy.a(this.this$0, ApkgConfigHolder.access$100(this.this$0));
+      ahiw.a(this.this$0, ApkgConfigHolder.access$100(this.this$0));
       return;
     }
   }

@@ -1,76 +1,35 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bksf
-  implements InputFilter
 {
-  private int jdField_a_of_type_Int;
+  private bksg jdField_a_of_type_Bksg;
+  private ConcurrentHashMap<Integer, bksj> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public bksf(ExtendEditText paramExtendEditText, int paramInt)
+  public bksj a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return (bksj)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
   }
   
-  private void a()
+  public void a(bksj parambksj)
   {
-    if (ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
-      ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("FrameAdapter", 2, "addFrame, index=" + parambksj.a);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(parambksj.a), parambksj);
+    if (this.jdField_a_of_type_Bksg != null) {
+      this.jdField_a_of_type_Bksg.a();
     }
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean a()
   {
-    aiaw localaiaw = ExtendEditText.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText);
-    if (localaiaw == null)
-    {
-      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localaiaw != null) {
-        break label95;
-      }
-      paramInt2 -= paramInt1;
-    }
-    for (;;)
-    {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
-      }
-      a();
-      return "";
-      paramInt3 = localaiaw.a(paramSpanned, 0, paramInt3) + localaiaw.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
-      paramInt2 = localaiaw.a(paramCharSequence, paramInt1, paramInt2);
-    }
-    label109:
-    if (paramInt3 >= paramInt2) {
-      return null;
-    }
-    a();
-    if (localaiaw != null)
-    {
-      paramInt3 = localaiaw.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
-      paramInt2 = paramInt3;
-      if (paramInt3 <= 0) {
-        return "";
-      }
-    }
-    else
-    {
-      paramInt2 = paramInt3;
-    }
-    paramInt3 = paramInt2 + paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1) {
-        return "";
-      }
-    }
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
   }
 }
 

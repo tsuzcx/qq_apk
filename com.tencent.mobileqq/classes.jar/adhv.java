@@ -1,13 +1,13 @@
-class adhv
-  implements ajpy
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+
+public class adhv
+  implements adif
 {
-  adhv(adhu paramadhu) {}
+  public void a(int paramInt) {}
   
-  public void a(boolean paramBoolean, ajco paramajco)
+  public int[] a()
   {
-    if ((paramBoolean) && (paramajco != null)) {
-      paramajco.f();
-    }
+    return new int[6];
   }
 }
 

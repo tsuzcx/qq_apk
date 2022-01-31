@@ -1,39 +1,16 @@
-import android.content.Intent;
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 import java.util.ArrayList;
 
 public class abds
-  extends bbkw
+  implements bfph
 {
-  public abds(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
-  {
-    super(paramInt);
-  }
+  public abds(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, bfpc parambfpc) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(this.a, CardPicGalleryActivity.class);
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b)) {
-      localIntent.putExtra("extra_default", 2130844896);
-    }
-    localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b);
-    localIntent.putExtra("extra_mode", 2);
-    localIntent.putExtra("is_from_mine_profile", true);
-    localIntent.putStringArrayListExtra("business_card_pics", localArrayList);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (int i = this.a.jdField_a_of_type_Auuw.a.defaultCardId;; i = 0)
-    {
-      localIntent.putExtra("default_card_id", i);
-      this.a.startActivity(localIntent);
-      this.a.overridePendingTransition(2130772287, 0);
-      this.a.b(1);
-      return;
-    }
+    ((bblk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bfpc.e();
   }
 }
 

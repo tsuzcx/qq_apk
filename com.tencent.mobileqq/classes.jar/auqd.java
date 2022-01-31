@@ -1,17 +1,52 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 public class auqd
+  extends ampa<auqe>
 {
-  int jdField_a_of_type_Int;
-  int[] jdField_a_of_type_ArrayOfInt;
-  
-  private auqd(int[] paramArrayOfInt, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Int = paramInt;
+    return 495;
   }
   
-  static auqd a(int[] paramArrayOfInt, int paramInt)
+  @NonNull
+  public auqe a(int paramInt)
   {
-    return new auqd(paramArrayOfInt, paramInt);
+    return new auqe();
+  }
+  
+  @Nullable
+  public auqe a(amph[] paramArrayOfamph)
+  {
+    auqe localauqe = new auqe();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
+      auqe.a(localauqe, paramArrayOfamph[0].a);
+    }
+    return localauqe;
+  }
+  
+  public Class<auqe> a()
+  {
+    return auqe.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(auqe paramauqe) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

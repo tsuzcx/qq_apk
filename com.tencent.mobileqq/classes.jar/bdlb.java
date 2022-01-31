@@ -1,42 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
-
-class bdlb
-  extends ajuh
+public class bdlb
 {
-  private bdlb(bdkz parambdkz) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
-    if (paramString2 == null) {
-      return;
-    }
-    Bundle localBundle = (Bundle)bdkz.a(this.a).get(paramString2);
-    if (localBundle == null)
-    {
-      bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
-      return;
-    }
-    int i = localBundle.getInt("CallbackId");
-    paramString2 = new Bundle();
-    paramString2.putString("PackageName", localBundle.getString("PackageName"));
-    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
-    if (paramBoolean)
-    {
-      paramString2.putBoolean("IsSuccess", true);
-      paramString2.putString("Code", paramString1);
-    }
-    for (;;)
-    {
-      bdht.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
-      bdkz.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
-      return;
-      paramString2.putBoolean("IsSuccess", false);
-    }
-  }
+  public static String A = "actionFlag";
+  public static String B = "channel";
+  public static String C = "from";
+  public static String D = "iconUrl";
+  public static String E = "downloadType";
+  public static String F = "downloadStyle";
+  public static String G = "downloadSize";
+  public static String H = "sdkShowNotification";
+  public static String I = "extraData";
+  public static String J = "isAutoInstallBySdk";
+  public static final String K = z;
+  public static String a = "ticket";
+  public static String b = "appId";
+  public static String c = "taskAppId";
+  public static String d = "taskApkId";
+  public static String e = "versionCode";
+  public static String f = "packageName";
+  public static String g = "autoDownload";
+  public static String h = "autoInstall";
+  public static String i = "via";
+  public static String j = "url";
+  public static String k = "actionCode";
+  public static String l = "appName";
+  public static String m = "notifyKey";
+  public static String n = "topagetype";
+  public static String o = "ispatchupdate";
+  public static String p = "wording";
+  public static String q = "com.tencent.android.qqdownloader";
+  public static String r = "showNetworkDialog";
+  public static String s = "downloadSource";
+  public static String t = "patchSize";
+  public static String u = "newApkSize";
+  public static String v = "uin";
+  public static String w = "uinType";
+  public static String x = "bolckNotify";
+  public static String y = "isApk";
+  public static String z = "channelId";
 }
 
 

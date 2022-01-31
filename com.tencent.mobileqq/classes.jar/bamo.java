@@ -1,40 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-final class bamo
-  implements baud
+class bamo
+  implements bams
 {
-  bamo(TroopInfoData paramTroopInfoData) {}
+  bamo(bamk parambamk, String paramString) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    String str1;
-    if (this.a.isMember)
-    {
-      str1 = "";
-      switch (paramInt)
-      {
-      }
-    }
-    while (TextUtils.isEmpty(str1))
-    {
-      return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
-    }
-    String str3 = this.a.troopUin;
-    String str4 = bbbb.a(this.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      bbbb.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
-      return;
-    }
+    if (paramInt == 0) {}
   }
 }
 

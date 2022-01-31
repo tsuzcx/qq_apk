@@ -1,19 +1,17 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class afxf
-  extends apwx
+class afxf
+  implements apsb
 {
-  public afxf(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  afxf(afxe paramafxe) {}
   
-  public void a(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
+    if ((paramInt1 == 3) && (paramInt2 == 0))
+    {
+      axqy.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
     }
-    paramView = (FileManagerEntity)((aimd)paramView.getTag()).a;
-    this.a.a(paramView);
   }
 }
 

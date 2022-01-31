@@ -1,10 +1,6 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
-
-public class bksk
+public abstract interface bksk
 {
-  public int a;
-  
-  private bksk(GLVideoClipUtil paramGLVideoClipUtil) {}
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

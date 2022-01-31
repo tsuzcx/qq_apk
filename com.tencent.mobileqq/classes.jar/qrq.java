@@ -1,12 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface qrq
+class qrq
+  implements rah
 {
-  public abstract void a();
+  qrq(qro paramqro) {}
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
+  public void a(View paramView)
+  {
+    paramView.setTag(qmo.a(paramView));
+  }
 }
 
 

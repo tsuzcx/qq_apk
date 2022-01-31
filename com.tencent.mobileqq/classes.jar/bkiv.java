@@ -1,23 +1,79 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class bkiv
-  implements TextView.OnEditorActionListener
+  extends bkiq<bkit>
 {
-  bkiv(bkiu parambkiu) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367657);
+  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367658);
+  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370334);
+  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370335);
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  private bkiv(bkit parambkit, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (paramInt == 6)
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561383, paramViewGroup, false);
+  }
+  
+  void a(ImageView paramImageView, char paramChar)
+  {
+    switch (paramChar)
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+    default: 
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130845783);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130845784);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130845785);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130845786);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130845787);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130845788);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130845789);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130845790);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130845791);
+      return;
     }
-    return false;
+    paramImageView.setImageResource(2130845792);
+  }
+  
+  public void a(bkit parambkit, int paramInt)
+  {
+    super.a(parambkit, paramInt);
+    parambkit = new SimpleDateFormat("HH:mm");
+    ((bkit)this.jdField_a_of_type_Bkip).c = parambkit.format(new Date());
+    ved.b("TimeFilterData", "TimeFilterData time:" + ((bkit)this.jdField_a_of_type_Bkip).c);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, ((bkit)this.jdField_a_of_type_Bkip).c.charAt(0));
+    a(this.b, ((bkit)this.jdField_a_of_type_Bkip).c.charAt(1));
+    a(this.c, ((bkit)this.jdField_a_of_type_Bkip).c.charAt(3));
+    a(this.d, ((bkit)this.jdField_a_of_type_Bkip).c.charAt(4));
+    paramInt = vzl.d(this.jdField_a_of_type_AndroidViewView.getContext());
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt / 3 * 2, 0, 0);
   }
 }
 

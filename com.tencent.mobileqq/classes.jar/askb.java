@@ -1,46 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.theme.diy.ResData;
 
 public class askb
-  extends Handler
+  implements aymw
 {
-  public askb() {}
+  public askb(ChatBackgroundManager paramChatBackgroundManager) {}
   
-  public askb(Looper paramLooper)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
-    {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, axrl.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
-      }
+    if (paramInt2 == 4) {
+      BaseApplicationImpl.sImageCache.evictAll();
     }
-    else {
-      return;
-    }
-    ChatBackgroundManager.c = 0;
+    return 0;
   }
 }
 

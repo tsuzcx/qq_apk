@@ -1,25 +1,22 @@
-import android.util.Property;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
-class bkmt
-  extends Property<bkmo, Integer>
+public class bkmt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bkmt(bkmo parambkmo, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bkmt(SlideBottomPanel paramSlideBottomPanel, View paramView, int paramInt) {}
   
-  public Integer a(bkmo parambkmo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (parambkmo != null) {
-      return Integer.valueOf(bkmo.c(parambkmo));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bkmo parambkmo, Integer paramInteger)
-  {
-    if (parambkmo != null) {
-      bkmo.c(parambkmo, paramInteger.intValue());
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
+    {
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      }
     }
   }
 }

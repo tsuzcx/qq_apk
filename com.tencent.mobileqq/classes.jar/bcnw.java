@@ -1,6 +1,10 @@
 public abstract interface bcnw
 {
-  public abstract void a();
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,16 @@
-public abstract interface ankt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
+class ankt
+  implements DialogInterface.OnKeyListener
 {
-  public abstract void a(int paramInt);
+  ankt(ankn paramankn) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    return (paramInt == 84) || (paramInt == 4);
+  }
 }
 
 

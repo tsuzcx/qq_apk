@@ -2,25 +2,25 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import bkgf;
+import bkgw;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 import java.lang.ref.WeakReference;
 
 public class InformationFaceAdapter$InformationItemLayout$1$2
   implements Runnable
 {
-  public InformationFaceAdapter$InformationItemLayout$1$2(bkgf parambkgf, int paramInt) {}
+  public InformationFaceAdapter$InformationItemLayout$1$2(bkgw parambkgw, int paramInt) {}
   
   public void run()
   {
-    if (((QIMCommonLoadingView)this.jdField_a_of_type_Bkgf.a.get()).getVisibility() == 8)
+    if (((QIMCommonLoadingView)this.jdField_a_of_type_Bkgw.a.get()).getVisibility() == 8)
     {
-      ((ProgressBar)this.jdField_a_of_type_Bkgf.c.get()).setVisibility(8);
-      ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgf.a.get()).setProgress(0L);
-      ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgf.a.get()).setVisibility(0);
-      ((ImageView)this.jdField_a_of_type_Bkgf.b.get()).setVisibility(8);
+      ((ProgressBar)this.jdField_a_of_type_Bkgw.c.get()).setVisibility(8);
+      ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgw.a.get()).setProgress(0L);
+      ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgw.a.get()).setVisibility(0);
+      ((ImageView)this.jdField_a_of_type_Bkgw.b.get()).setVisibility(8);
     }
-    ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgf.a.get()).setProgress(this.jdField_a_of_type_Int);
+    ((QIMCommonLoadingView)this.jdField_a_of_type_Bkgw.a.get()).setProgress(this.jdField_a_of_type_Int);
   }
 }
 

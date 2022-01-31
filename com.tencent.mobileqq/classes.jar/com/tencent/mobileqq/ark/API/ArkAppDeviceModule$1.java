@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import alnh;
-import alnj;
+import alng;
+import alni;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap<String, alnj>
+  extends HashMap<String, alni>
 {
-  public ArkAppDeviceModule$1(alnh paramalnh)
+  public ArkAppDeviceModule$1(alng paramalng)
   {
-    put("GetModelName", alnh.a(this.this$0));
-    put("GetScreenWidth", alnh.a(this.this$0));
-    put("GetScreenHeight", alnh.a(this.this$0));
-    put("GetPixelRatio", alnh.a(this.this$0));
-    put("GetConnectionType", alnh.a(this.this$0));
-    put("AttachEvent", alnh.a(this.this$0));
-    put("DetachEvent", alnh.a(this.this$0));
-    put("ScanCode", alnh.a(this.this$0));
-    put("GetIdentifier", alnh.a(this.this$0));
-    put("GetCurrentPosition", alnh.a(this.this$0));
+    put("GetModelName", alng.a(this.this$0));
+    put("GetScreenWidth", alng.a(this.this$0));
+    put("GetScreenHeight", alng.a(this.this$0));
+    put("GetPixelRatio", alng.a(this.this$0));
+    put("GetConnectionType", alng.a(this.this$0));
+    put("AttachEvent", alng.a(this.this$0));
+    put("DetachEvent", alng.a(this.this$0));
+    put("ScanCode", alng.a(this.this$0));
+    put("GetIdentifier", alng.a(this.this$0));
+    put("GetCurrentPosition", alng.a(this.this$0));
   }
 }
 

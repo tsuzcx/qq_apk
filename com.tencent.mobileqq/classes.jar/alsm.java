@@ -1,11 +1,25 @@
-import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
 
 public class alsm
 {
-  public int a;
-  public ArkAppInfo.AppDownloadInfo a;
+  public long a;
+  public alsj a;
+  public ByteArrayOutputStream a;
+  public File a;
   public String a;
-  public int b;
+  public final ArrayList<Object> a;
+  public byte[] a;
+  public String b;
+  public final ArrayList<alsi> b = new ArrayList();
+  public String c;
+  
+  private alsm()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

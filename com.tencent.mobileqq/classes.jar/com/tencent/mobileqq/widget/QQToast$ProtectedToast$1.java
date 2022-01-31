@@ -2,13 +2,13 @@ package com.tencent.mobileqq.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bcpz;
+import bcqo;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class QQToast$ProtectedToast$1
   implements Runnable
 {
-  public QQToast$ProtectedToast$1(bcpz parambcpz) {}
+  public QQToast$ProtectedToast$1(bcqo parambcqo) {}
   
   public void run()
   {

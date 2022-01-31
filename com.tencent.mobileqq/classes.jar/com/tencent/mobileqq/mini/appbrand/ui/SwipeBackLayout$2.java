@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amks;
+import amkr;
 import android.content.Context;
 
 class SwipeBackLayout$2
@@ -10,7 +10,7 @@ class SwipeBackLayout$2
   
   public void run()
   {
-    SwipeBackLayout.access$1102(this.this$0, new amks(this.val$context));
+    SwipeBackLayout.access$1102(this.this$0, new amkr(this.val$context));
     SwipeBackLayout.access$1800(this.this$0);
   }
 }

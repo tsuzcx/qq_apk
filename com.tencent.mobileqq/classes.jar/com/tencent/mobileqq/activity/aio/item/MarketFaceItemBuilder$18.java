@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.content.res.Resources;
-import bcpw;
+import bcql;
 
 public final class MarketFaceItemBuilder$18
   implements Runnable
@@ -11,7 +11,7 @@ public final class MarketFaceItemBuilder$18
   
   public void run()
   {
-    bcpw.a(this.a.getApplicationContext(), 1, this.a.getString(2131689687), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131689687), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
   }
 }
 

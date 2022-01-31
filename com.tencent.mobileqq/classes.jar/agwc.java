@@ -1,29 +1,33 @@
-import Wallet.GetBroadCastHbIdiomReq;
+import Wallet.IdiomRedPackMatchReq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class agwc
-  implements ahjt
+  implements ahjr
 {
-  agwc(agvz paramagvz, ArrayList paramArrayList, SessionInfo paramSessionInfo) {}
+  agwc(agvx paramagvx, agvw paramagvw, String paramString, SessionInfo paramSessionInfo, long paramLong, int paramInt) {}
   
   public void a(String paramString)
   {
     int i = 1;
-    GetBroadCastHbIdiomReq localGetBroadCastHbIdiomReq = new GetBroadCastHbIdiomReq();
-    localGetBroadCastHbIdiomReq.billnos = this.jdField_a_of_type_JavaUtilArrayList;
-    localGetBroadCastHbIdiomReq.sKey = paramString;
-    localGetBroadCastHbIdiomReq.appid = AppSetting.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) {}
+    IdiomRedPackMatchReq localIdiomRedPackMatchReq = new IdiomRedPackMatchReq();
+    localIdiomRedPackMatchReq.grabUin = agvx.a(this.jdField_a_of_type_Agvx).getLongAccountUin();
+    localIdiomRedPackMatchReq.billno = this.jdField_a_of_type_Agvw.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.inputIdiom = this.jdField_a_of_type_JavaLangString;
+    localIdiomRedPackMatchReq.hbIdiom = agvx.a(this.jdField_a_of_type_Agvx, this.jdField_a_of_type_Agvw);
+    localIdiomRedPackMatchReq.makeUin = Long.parseLong(this.jdField_a_of_type_Agvw.c);
+    localIdiomRedPackMatchReq.sKey = paramString;
+    localIdiomRedPackMatchReq.appid = AppSetting.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
     for (;;)
     {
-      localGetBroadCastHbIdiomReq.fromType = i;
-      localGetBroadCastHbIdiomReq.platform = 0;
-      localGetBroadCastHbIdiomReq.qqVersion = "8.2.8";
-      agwv.a(localGetBroadCastHbIdiomReq, new agwd(this));
+      localIdiomRedPackMatchReq.fromType = i;
+      localIdiomRedPackMatchReq.platform = 0;
+      localIdiomRedPackMatchReq.qqVersion = "8.3.0";
+      agwt.a(localIdiomRedPackMatchReq, new agwd(this));
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 3000) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {
         i = 2;
       } else {
         i = 0;

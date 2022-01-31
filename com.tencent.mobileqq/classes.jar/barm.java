@@ -1,48 +1,21 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
 
 class barm
-  implements aycb
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  barm(bark parambark, ImageView paramImageView) {}
   
-  barm(bara parambara)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Bark.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public void a()
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
-      }
-      return;
-      this.jdField_a_of_type_Bara.a(0L);
-      continue;
-      this.jdField_a_of_type_Bara.a(3000L);
-      continue;
-      long l = this.c - this.b;
-      if (l >= 2000L)
-      {
-        this.jdField_a_of_type_Bara.a(0L);
-      }
-      else
-      {
-        this.jdField_a_of_type_Bara.a(2000L - l);
-        continue;
-        this.jdField_a_of_type_Bara.a(3000L);
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

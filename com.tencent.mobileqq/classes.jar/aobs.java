@@ -1,14 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
-public class aobs
+class aobs
+  implements asef
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  aobs(aobr paramaobr, String paramString) {}
   
-  public aobs(aobr paramaobr) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a.magicValue);
+    }
+    this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a.magicValue = this.jdField_a_of_type_JavaLangString;
+    aanz.a(this.jdField_a_of_type_Aobr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aobr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aobr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Aobr.jdField_a_of_type_Aobp.a);
+  }
 }
 
 

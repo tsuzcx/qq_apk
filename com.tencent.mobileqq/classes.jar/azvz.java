@@ -1,6 +1,7 @@
-public abstract interface azvz
+public class azvz
 {
-  public abstract void a(azvr paramazvr);
+  public String a;
+  public String b;
 }
 
 

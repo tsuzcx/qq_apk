@@ -1,25 +1,27 @@
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeRelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class rlx
-  implements ViewFactory.FoundClickableViewListener
+  implements View.OnClickListener
 {
-  rlx(rlw paramrlw, ProteusItemData paramProteusItemData, Context paramContext) {}
+  rlx(rlw paramrlw) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    if (("id_interaction_ui_view".equals(paramViewBase.getName())) && ((paramViewBase instanceof NativeRelativeLayout)))
+    try
     {
-      ViewBase localViewBase = (ViewBase)((NativeRelativeLayout)paramViewBase).getSubViews().get(0);
-      if ((localViewBase instanceof pkd)) {
-        ((pkd)localViewBase).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, 1);
-      }
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.b.getString("id_attribute_text"));
+      return;
     }
-    paramViewBase.setOnClickListener(new rly(this, paramViewBase));
+    catch (Exception paramView)
+    {
+      QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + paramView.toString());
+    }
   }
 }
 

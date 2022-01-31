@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget.navbar;
 
-import actn;
-import ajyc;
+import actj;
+import ajya;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bawi;
-import bbkx;
-import bcsv;
+import baww;
+import bbll;
+import bctk;
 import com.tencent.common.config.AppSetting;
 
 public class NavBarCommon
@@ -28,7 +28,7 @@ public class NavBarCommon
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcsv jdField_a_of_type_Bcsv;
+  private bctk jdField_a_of_type_Bctk;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -61,9 +61,9 @@ public class NavBarCommon
   private void a(Context paramContext)
   {
     View.inflate(paramContext, 2131558878, this);
-    setBackgroundResource(2130849026);
+    setBackgroundResource(2130849032);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
-    this.e = ((TextView)findViewById(2131378010));
+    this.e = ((TextView)findViewById(2131378015));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368431));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
@@ -76,12 +76,12 @@ public class NavBarCommon
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368441));
     if (AppSetting.d)
     {
-      bawi.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
+      baww.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
       if (this.e != null) {
-        bawi.b(this.e, Button.class.getName());
+        baww.b(this.e, Button.class.getName());
       }
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        bawi.b(this.jdField_b_of_type_AndroidWidgetImageView, Button.class.getName());
+        baww.b(this.jdField_b_of_type_AndroidWidgetImageView, Button.class.getName());
       }
     }
   }
@@ -118,7 +118,7 @@ public class NavBarCommon
       }
     }
     label96:
-    for (int i = 2130839748;; i = 2130849538)
+    for (int i = 2130839748;; i = 2130849547)
     {
       localTextView.setBackgroundResource(i);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
@@ -127,19 +127,19 @@ public class NavBarCommon
       this.d.setTextColor(localColorStateList);
       this.f.setTextColor(localColorStateList);
       return;
-      i = 2130849026;
+      i = 2130849032;
       break;
     }
   }
   
   public void b()
   {
-    bbkx.b(this.jdField_b_of_type_AndroidWidgetTextView, 8);
+    bbll.b(this.jdField_b_of_type_AndroidWidgetTextView, 8);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bcsv == null) {}
+    if (this.jdField_a_of_type_Bctk == null) {}
     for (;;)
     {
       return;
@@ -149,7 +149,7 @@ public class NavBarCommon
       }
       while (i != 0)
       {
-        this.jdField_a_of_type_Bcsv.a(paramView, i);
+        this.jdField_a_of_type_Bctk.a(paramView, i);
         return;
         i = 1;
         continue;
@@ -170,11 +170,11 @@ public class NavBarCommon
   
   public void setCustomView(View paramView)
   {
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, actn.a(29.0F, getResources()));
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, actj.a(29.0F, getResources()));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     localLayoutParams1.addRule(13, -1);
     RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    int i = actn.a(24.0F, getResources());
+    int i = actj.a(24.0F, getResources());
     localLayoutParams2.leftMargin = i;
     localLayoutParams2.rightMargin = i;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams2);
@@ -184,7 +184,7 @@ public class NavBarCommon
   
   public void setLeftBackVisible(int paramInt)
   {
-    bbkx.b(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
+    bbll.b(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
   }
   
   public void setLeftButton(int paramInt)
@@ -265,7 +265,7 @@ public class NavBarCommon
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               paramBundle = (Bundle)localObject;
-              if (((String)localObject).contains(ajyc.a(2131707079))) {
+              if (((String)localObject).contains(ajya.a(2131707090))) {
                 paramBundle = getContext().getString(2131690572);
               }
             }
@@ -298,9 +298,9 @@ public class NavBarCommon
     }
   }
   
-  public void setOnItemSelectListener(bcsv parambcsv)
+  public void setOnItemSelectListener(bctk parambctk)
   {
-    this.jdField_a_of_type_Bcsv = parambcsv;
+    this.jdField_a_of_type_Bctk = parambctk;
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     if (this.e != null) {
       this.e.setOnClickListener(this);
@@ -326,7 +326,7 @@ public class NavBarCommon
     this.d.setText(paramInt);
     this.d.setEnabled(true);
     if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajyc.a(2131707080));
+      this.d.setContentDescription(this.d.getText() + ajya.a(2131707091));
     }
   }
   
@@ -337,7 +337,7 @@ public class NavBarCommon
     this.d.setText(paramString);
     this.d.setEnabled(true);
     if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajyc.a(2131707078));
+      this.d.setContentDescription(this.d.getText() + ajya.a(2131707089));
     }
   }
   
@@ -348,7 +348,7 @@ public class NavBarCommon
     this.f.setText(paramInt);
     this.f.setEnabled(true);
     if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajyc.a(2131707081));
+      this.d.setContentDescription(this.d.getText() + ajya.a(2131707092));
     }
   }
   
@@ -378,7 +378,7 @@ public class NavBarCommon
   
   public void setRightViewTextVisible(int paramInt)
   {
-    bbkx.b(this.d, paramInt);
+    bbll.b(this.d, paramInt);
   }
   
   public void setTitle(CharSequence paramCharSequence)

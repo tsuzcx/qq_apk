@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import onk;
+import onh;
 
 class ReadInJoyNewFeedsActivity$11
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyNewFeedsActivity$11
   public void run()
   {
     if (!this.this$0.isFinishing()) {
-      onk.a(this.this$0, 5, true, this.a);
+      onh.a(this.this$0, 5, true, this.a);
     }
   }
 }

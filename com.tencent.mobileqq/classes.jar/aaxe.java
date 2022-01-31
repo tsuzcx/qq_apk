@@ -1,14 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aaxe
-  implements DialogInterface.OnClickListener
+public class aaxe
+  implements bfph
 {
-  aaxe(aaxc paramaaxc) {}
+  public aaxe(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bfpc.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
+      }
+      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).f();
+    }
   }
 }
 

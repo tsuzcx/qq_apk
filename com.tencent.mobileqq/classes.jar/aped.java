@@ -1,78 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class aped
-  extends BaseAdapter
+class aped
+  extends aoun
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bcnd jdField_a_of_type_Bcnd;
-  private Object jdField_a_of_type_JavaLangObject;
+  aped(apec paramapec) {}
   
-  public aped(Context paramContext, View.OnClickListener paramOnClickListener)
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(bcnd parambcnd)
-  {
-    this.jdField_a_of_type_Bcnd = parambcnd;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + apei.a + "]");
+    }
+    if (apei.a)
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      paramString4 = "183.61.37.13";
+      paramString5 = "443";
+      if (this.a.jdField_a_of_type_Aooq != null) {}
+    }
+    else
+    {
+      if ((paramString4 != null) && (paramString4.length() > 0)) {}
+      for (;;)
       {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Bcnd != null) {
-          this.jdField_a_of_type_Bcnd.setMotionView(paramView, paramInt);
-        }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
+        paramString5 = String.valueOf(paramInt2);
+        break;
+        paramString4 = paramString5;
       }
     }
-    else {
-      return bool;
-    }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
-  }
-  
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return null;
+    this.a.jdField_a_of_type_Aooq.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
   }
 }
 

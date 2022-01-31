@@ -1,44 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 import com.tencent.qphone.base.util.QLog;
 
-public abstract class avbp
+public class avbp
+  extends avbi
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public avbp(LSRecordPanel paramLSRecordPanel) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("UserGuide", true).commit();
     if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "markUserGuideFlag");
+      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
     }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (!BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("UserGuide", false)) {
-      bool = true;
+    if (LSRecordPanel.a(this.a))
+    {
+      if (paramAnimation == this.a.b) {
+        LSRecordPanel.a(this.a);
+      }
+      this.a.a = null;
+      this.a.b = null;
+      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
+      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
+      paramAnimation.height -= i;
+      paramAnimation.width -= i;
+      int j = paramAnimation.rightMargin;
+      paramAnimation.rightMargin = (i / 2 + j);
+      LSRecordPanel.a(this.a, false);
+      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
     }
-    return bool;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    long l = System.currentTimeMillis();
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("UserTips", l);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "markUserTipsFlag:" + l);
-    }
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (Math.abs(System.currentTimeMillis() - BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("UserTips", 0L)) >= 3600000L) {
-      bool = true;
-    }
-    return bool;
   }
 }
 

@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class vea
-  implements View.OnClickListener
+public class vea
 {
-  vea(vdz paramvdz, vdy paramvdy, vvh paramvvh) {}
-  
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    if (this.jdField_a_of_type_Vdy != null) {
-      this.jdField_a_of_type_Vdy.a(this.jdField_a_of_type_Vvh);
+    if (paramString != null) {
+      return "file://" + paramString;
     }
+    return null;
   }
 }
 

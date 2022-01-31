@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.fts.entity;
 
 import android.text.TextUtils;
-import aqkz;
-import aqla;
-import aqll;
-import aqlm;
+import aqlb;
+import aqlc;
+import aqln;
+import aqlo;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,9 +16,9 @@ public abstract class FTSEntity
   public String ext1;
   public String ext2;
   public String ext3;
-  @aqla
+  @aqlc
   public byte[] exts;
-  @aqkz
+  @aqlb
   public Map<String, String> indexContentMap = new HashMap();
   
   protected void doDeserialize() {}
@@ -46,7 +46,7 @@ public abstract class FTSEntity
   {
     try
     {
-      Iterator localIterator = aqll.a(getClass()).iterator();
+      Iterator localIterator = aqln.a(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -55,7 +55,7 @@ public abstract class FTSEntity
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = aqlm.a(str);
+            str = aqlo.a(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }

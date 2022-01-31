@@ -1,43 +1,84 @@
-import android.os.Handler;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class bhpq
-  implements bhpp
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ConcurrentHashMap<String, bhpq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private int jdField_a_of_type_Int = -1;
-  private bhpp jdField_a_of_type_Bhpp;
-  private String jdField_a_of_type_JavaLangString;
-  
-  private bhpq(String paramString)
+  private static String a(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bhpp = bhpv.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public static bhpq a(String paramString)
-  {
-    Object localObject1 = (bhpq)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localObject1 == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        bhpq localbhpq = (bhpq)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject1 = localbhpq;
-        if (localbhpq == null)
-        {
-          localObject1 = new bhpq(paramString);
-          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        }
-        return localObject1;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localStringBuilder.append((String)paramList.next());
+      localStringBuilder.append(";");
     }
-    return localObject1;
+    return localStringBuilder.toString();
   }
   
-  public void a(Handler paramHandler)
+  public static List<String> a(String paramString)
   {
-    this.jdField_a_of_type_Bhpp.a(paramHandler);
+    return a(paramString, 500);
+  }
+  
+  public static List<String> a(String paramString, int paramInt)
+  {
+    int i = 0;
+    paramString = LocalMultiProcConfig.getString(paramString, "").split(";");
+    LinkedList localLinkedList = new LinkedList();
+    if ((paramString.length == 0) || (paramInt <= 0)) {
+      return localLinkedList;
+    }
+    int k;
+    for (int j = 0;; j = k)
+    {
+      if (i < paramString.length)
+      {
+        CharSequence localCharSequence = paramString[i];
+        k = j;
+        if (!TextUtils.isEmpty(localCharSequence))
+        {
+          localLinkedList.add(localCharSequence);
+          k = j + 1;
+        }
+        if (k != paramInt) {}
+      }
+      else
+      {
+        return localLinkedList;
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {}
+    List localList;
+    do
+    {
+      return;
+      localList = a(paramString1, 500);
+    } while (localList.contains(paramString2));
+    localList.add(0, paramString2);
+    if (localList.size() > 500) {
+      localList.remove(500);
+    }
+    LocalMultiProcConfig.putString(paramString1, a(localList));
+  }
+  
+  public static void a(String paramString, List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    List localList = a(paramString, 500 - paramList.size());
+    localLinkedList.addAll(paramList);
+    localLinkedList.addAll(localList);
+    LocalMultiProcConfig.putString(paramString, a(localLinkedList));
   }
 }
 

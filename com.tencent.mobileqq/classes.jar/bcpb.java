@@ -1,48 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class bcpb
   implements View.OnClickListener
 {
-  final WeakReference<QQAppInterface> a;
-  final WeakReference<auuw> b;
-  
-  public bcpb(QQAppInterface paramQQAppInterface, auuw paramauuw)
-  {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramauuw);
-  }
+  public bcpb(ProfileCardMoreInfoView paramProfileCardMoreInfoView, String paramString, int paramInt, View paramView) {}
   
   public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    auuw localauuw = (auuw)this.b.get();
-    if ((localQQAppInterface == null) || (localauuw == null) || (localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
-      return;
-    }
-    if (((bacv)localQQAppInterface.getManager(346)).b(localauuw.jdField_a_of_type_JavaLangString)) {}
-    for (String str = bali.a().a(localauuw.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; str = bali.a().a(localauuw.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, auvw.a(localQQAppInterface, localauuw.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
+    if ((awga.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      paramView.getContext().startActivity(localIntent);
-      if (azrd.a().a(localauuw.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
-      {
-        paramView = paramView.findViewById(2131375028);
-        if (paramView != null) {
-          paramView.setVisibility(8);
-        }
-        azrd.a().a(localauuw.jdField_a_of_type_JavaLangString, localauuw.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
+      paramView = new Bundle();
+      paramView.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
+      paramView.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
+      paramView.putInt("from_type", 2);
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, paramView, -1);
       }
-      azrd.a("grp_data", "clk_medal");
-      new axra(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localauuw.jdField_a_of_type_JavaLangString }).a();
-      return;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      auvs.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      axqy.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
     }
   }
 }

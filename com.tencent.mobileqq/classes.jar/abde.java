@@ -1,43 +1,80 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class abde
-  implements awqu
+  extends akil
 {
   public abde(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void a(View paramView)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    int i = 1;
-    awoc localawoc = (awoc)paramView.getTag(2131379208);
-    if (localawoc == null) {}
-    for (;;)
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
+      }
+    }
+    do
     {
-      return;
-      String str1 = localawoc.b();
-      String str2 = localawoc.a().toString();
-      paramView = "-1";
-      if ((localawoc instanceof awmq))
+      do
       {
-        paramView = ((awmq)localawoc).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardTroopListFragment.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        this.a.a.notifyDataSetChanged();
         return;
-        if ((localawoc instanceof awmw)) {
-          paramView = ((awmw)localawoc).a;
-        } else if ((localawoc instanceof awnb)) {
-          paramView = ((awnb)localawoc).a().troopuin;
-        } else if ((localawoc instanceof awmr)) {
-          i = 0;
-        } else {
-          i = -1;
+        if (paramInt1 != 2) {
+          break;
         }
-      }
+      } while (paramInt2 != 0);
+      this.a.a();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }

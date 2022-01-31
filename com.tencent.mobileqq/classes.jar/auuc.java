@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-public final class auuc
-  implements Parcelable.Creator<PersonalityLabelInfo>
+public class auuc
+  extends RecyclerView.ViewHolder
 {
-  public PersonalityLabelInfo a(Parcel paramParcel)
-  {
-    return new PersonalityLabelInfo(paramParcel);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public RelativeLayout a;
+  public MessageProgressView a;
+  public ImageView b;
   
-  public PersonalityLabelInfo[] a(int paramInt)
+  public auuc(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
   {
-    return new PersonalityLabelInfo[paramInt];
+    super(paramView);
+    float f = 2.0F * PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131371519));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371460));
+    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
+    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
+    this.b = ((ImageView)paramView.findViewById(2131365890));
+    ((CornerImageView)this.b).setRadius(f);
   }
 }
 

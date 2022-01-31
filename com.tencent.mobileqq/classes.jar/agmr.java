@@ -1,19 +1,18 @@
+import android.os.Handler;
 import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
-class agmr
-  implements bfoq
+public class agmr
+  implements View.OnLayoutChangeListener
 {
-  agmr(agmq paramagmq, bfol parambfol) {}
+  public agmr(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramInt != this.jdField_a_of_type_Agmq.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_Agmq.a(paramInt);
-      this.jdField_a_of_type_Agmq.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
+    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(1001);
     }
-    this.jdField_a_of_type_Bfol.dismiss();
   }
 }
 

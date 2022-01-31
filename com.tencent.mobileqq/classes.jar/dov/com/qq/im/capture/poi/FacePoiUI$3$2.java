@@ -1,16 +1,16 @@
 package dov.com.qq.im.capture.poi;
 
-import bjfr;
-import bjft;
+import bjgi;
+import bjgk;
 
 public class FacePoiUI$3$2
   implements Runnable
 {
-  public FacePoiUI$3$2(bjft parambjft) {}
+  public FacePoiUI$3$2(bjgk parambjgk) {}
   
   public void run()
   {
-    bjfr.a(this.a.a, 1);
+    bjgi.a(this.a.a, 1);
   }
 }
 

@@ -1,30 +1,319 @@
-public abstract interface qyt
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.1;
+import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.3;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.ArrayList;
+import org.json.JSONObject;
+
+public class qyt
+  extends qyl
 {
-  public abstract void a();
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private VideoPreDownloadMgr jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr;
+  public qbu a;
+  private qyu jdField_a_of_type_Qyu;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public qyt(int paramInt, qyu paramqyu)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Qbu = new qbu();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Qyu = paramqyu;
+  }
   
-  public abstract void a(long paramLong);
+  private void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr != null)
+    {
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString2, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyPlayerReporter", 2, "视频预下载: url:" + paramString1 + " ;isPreDownloadHit: " + this.jdField_b_of_type_Boolean);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString1, this.jdField_b_of_type_Boolean);
+    }
+  }
   
-  public abstract void b();
+  private void a(qbu paramqbu)
+  {
+    this.jdField_c_of_type_Boolean = true;
+    ThreadManager.excute(new ReadinjoyPlayerReporter.1(this, paramqbu), 16, null, true);
+  }
   
-  public abstract void b(int paramInt);
+  private void b(String paramString)
+  {
+    this.jdField_a_of_type_Qbu = new qbu();
+    this.jdField_a_of_type_Qbu.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Qbu.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Qbu.n = 0;
+    this.jdField_a_of_type_Qbu.jdField_o_of_type_Int = 0;
+    this.jdField_a_of_type_Qbu.jdField_p_of_type_Int = 0;
+    this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = false;
+    this.jdField_a_of_type_Qbu.jdField_h_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Qyu != null) {
+      this.jdField_a_of_type_Qyu.a(this.jdField_a_of_type_Qbu);
+    }
+  }
   
-  public abstract void c();
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Qbu.jdField_b_of_type_Boolean = true;
+  }
   
-  public abstract void d();
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.jdField_a_of_type_Qbu.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Qbu.jdField_c_of_type_JavaLangString = (paramInt1 + ":" + paramInt2);
+    this.jdField_a_of_type_Qbu.jdField_d_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void e();
+  public void a(int paramInt, Object paramObject)
+  {
+    int i = 0;
+    switch (paramInt)
+    {
+    }
+    label183:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              this.jdField_a_of_type_Qbu.jdField_d_of_type_Long = SystemClock.uptimeMillis();
+              return;
+              paramObject = this.jdField_a_of_type_Qbu;
+              paramObject.jdField_e_of_type_Long += SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_d_of_type_Long;
+              paramObject = this.jdField_a_of_type_Qbu;
+              paramObject.jdField_b_of_type_Int += 1;
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
+              }
+              paramObject = this.jdField_a_of_type_Qbu;
+              paramObject.n += 1;
+              return;
+              try
+              {
+                paramObject = new JSONObject((String)paramObject);
+                paramInt = paramObject.optInt("decoderMode", 0);
+              }
+              catch (Exception paramObject)
+              {
+                for (;;)
+                {
+                  int j;
+                  paramInt = 0;
+                }
+              }
+              try
+              {
+                j = paramObject.optInt("skipFrameCount", 1);
+                i = j;
+              }
+              catch (Exception paramObject)
+              {
+                break label183;
+              }
+              if (i > 0)
+              {
+                paramObject = this.jdField_a_of_type_Qbu;
+                paramObject.jdField_o_of_type_Int += i;
+              }
+              paramObject = this.jdField_a_of_type_Qbu;
+              paramObject.jdField_p_of_type_Int += i;
+            } while (!QLog.isColorLevel());
+            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_SKIP_ONE_FRAME decoderMode = " + paramInt + ", skipFrameCount = " + i + ", totalSkipCount = " + this.jdField_a_of_type_Qbu.jdField_o_of_type_Int + ", finalSkipCount = " + this.jdField_a_of_type_Qbu.jdField_p_of_type_Int);
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
+            }
+            this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = true;
+          } while (!(paramObject instanceof String));
+          this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = ((String)paramObject);
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_CHANGE_HW_BACKUP_URL");
+          }
+          this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = true;
+          return;
+        } while (paramObject == null);
+        paramObject = ((String)paramObject).split(":", 2);
+      } while ((paramObject == null) || (paramObject.length != 2));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyPlayerReporter", 2, "PERFORMANCE_REPORT method:" + paramObject[0] + "\ntimeJson:" + paramObject[1]);
+      }
+    } while (!"prepare".equals(paramObject[0]));
+    this.jdField_a_of_type_Qbu.jdField_m_of_type_JavaLangString = paramObject[1];
+  }
   
-  public abstract void f();
+  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
+  }
   
-  public abstract void h();
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Qbu.jdField_h_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void i();
+  public void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    b(paramString1);
+    this.jdField_a_of_type_Qbu.jdField_m_of_type_Int = 0;
+    if (!paramBoolean1) {
+      this.jdField_a_of_type_Qbu.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    }
+    if (this.jdField_a_of_type_Qbu != null)
+    {
+      this.jdField_a_of_type_Qbu.n = 0;
+      this.jdField_a_of_type_Qbu.jdField_o_of_type_Int = 0;
+      this.jdField_a_of_type_Qbu.jdField_p_of_type_Int = 0;
+      this.jdField_a_of_type_Qbu.jdField_g_of_type_Boolean = false;
+      this.jdField_a_of_type_Qbu.jdField_h_of_type_Boolean = false;
+      this.jdField_a_of_type_Qbu.jdField_i_of_type_Boolean = paramBoolean2;
+    }
+    a(paramString1, paramString2);
+  }
   
-  public abstract void j();
+  public void a(ooa paramooa)
+  {
+    int i = 0;
+    this.jdField_a_of_type_Qbu.jdField_i_of_type_Long = onu.a().a.longValue();
+    this.jdField_a_of_type_Qbu.jdField_d_of_type_Int = paramooa.jdField_d_of_type_Int;
+    this.jdField_a_of_type_Qbu.jdField_d_of_type_Boolean = paramooa.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Qbu.jdField_e_of_type_JavaLangString = paramooa.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_Qbu.jdField_e_of_type_Boolean = paramooa.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Qbu.jdField_f_of_type_Boolean = false;
+    this.jdField_a_of_type_Qbu.jdField_g_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Qbu.jdField_k_of_type_JavaLangString = paramooa.jdField_d_of_type_JavaLangString;
+    this.jdField_a_of_type_Qbu.jdField_l_of_type_JavaLangString = paramooa.jdField_e_of_type_JavaLangString;
+    Object localObject = this.jdField_a_of_type_Qbu;
+    boolean bool;
+    if (!TextUtils.isEmpty(paramooa.jdField_f_of_type_JavaLangString)) {
+      bool = true;
+    }
+    for (;;)
+    {
+      ((qbu)localObject).jdField_h_of_type_Boolean = bool;
+      try
+      {
+        localObject = new URL(paramooa.jdField_a_of_type_JavaLangString).getHost();
+        paramooa = ayxg.a().a((String)localObject, 1006);
+        qbu localqbu = this.jdField_a_of_type_Qbu;
+        if (paramooa == null)
+        {
+          localqbu.jdField_q_of_type_Int = i;
+          localqbu = this.jdField_a_of_type_Qbu;
+          if (paramooa != null) {
+            break label206;
+          }
+        }
+        label206:
+        for (paramooa = "";; paramooa = paramooa.toString())
+        {
+          localqbu.j = paramooa;
+          this.jdField_a_of_type_Qbu.jdField_i_of_type_JavaLangString = ((String)localObject);
+          return;
+          i = paramooa.size();
+          break;
+        }
+        bool = false;
+      }
+      catch (Exception paramooa)
+      {
+        return;
+      }
+    }
+  }
   
-  public abstract void k();
+  public void a(qty paramqty)
+  {
+    this.jdField_a_of_type_Qbu.jdField_l_of_type_Int = paramqty.b();
+    this.jdField_a_of_type_Qbu.jdField_k_of_type_Int = paramqty.a();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Qbu.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    qbu localqbu = this.jdField_a_of_type_Qbu;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      localqbu.jdField_m_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public void b(qty paramqty)
+  {
+    this.jdField_a_of_type_Qbu.jdField_a_of_type_Long = paramqty.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Qbu.jdField_e_of_type_Int = paramqty.c();
+    this.jdField_a_of_type_Qbu.jdField_m_of_type_Long = paramqty.c();
+    this.jdField_a_of_type_Qbu.jdField_f_of_type_Int = paramqty.d();
+    this.jdField_a_of_type_Qbu.jdField_c_of_type_Boolean = paramqty.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Qbu.jdField_p_of_type_Long = paramqty.jdField_b_of_type_Long;
+    this.jdField_a_of_type_Qbu.jdField_o_of_type_Long = paramqty.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Qbu.jdField_q_of_type_Long = paramqty.f();
+    this.jdField_a_of_type_Qbu.r = paramqty.i();
+    this.jdField_a_of_type_Qbu.jdField_f_of_type_JavaLangString = paramqty.a();
+    this.jdField_a_of_type_Qbu.t = paramqty.h();
+    this.jdField_a_of_type_Qbu.u = paramqty.g();
+    if ((this.jdField_a_of_type_Qbu.jdField_a_of_type_Long == 0L) && (this.jdField_a_of_type_Qbu.jdField_c_of_type_Long == 0L))
+    {
+      this.jdField_a_of_type_Qbu.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_b_of_type_Long);
+      this.jdField_a_of_type_Qbu.jdField_e_of_type_Long = this.jdField_a_of_type_Qbu.jdField_c_of_type_Long;
+    }
+    this.jdField_a_of_type_Qbu.v = qwc.a().a();
+    paramqty = qwc.a().a();
+    this.jdField_a_of_type_Qbu.z = paramqty[0];
+    this.jdField_a_of_type_Qbu.A = paramqty[1];
+    this.jdField_a_of_type_Qbu.x = paramqty[2];
+    this.jdField_a_of_type_Qbu.y = paramqty[3];
+    this.jdField_a_of_type_Qbu.w = paramqty[4];
+    a(this.jdField_a_of_type_Qbu);
+  }
+  
+  public void c(qty paramqty)
+  {
+    if (this.jdField_a_of_type_Qbu.jdField_c_of_type_Long != 0L) {
+      return;
+    }
+    this.jdField_a_of_type_Qbu.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbu.jdField_b_of_type_Long);
+    Object localObject = this.jdField_a_of_type_Qbu;
+    ((qbu)localObject).jdField_e_of_type_Long += this.jdField_a_of_type_Qbu.jdField_c_of_type_Long;
+    localObject = this.jdField_a_of_type_Qbu;
+    ((qbu)localObject).jdField_b_of_type_Int += 1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doReportOnVideoPrepared: vid=").append(this.jdField_a_of_type_Qbu.jdField_b_of_type_JavaLangString).append(", 预加载状态：").append(this.jdField_a_of_type_Qbu.jdField_m_of_type_Int).append(", 预下载命中：").append(this.jdField_b_of_type_Boolean).append(", 首帧耗时：").append(this.jdField_a_of_type_Qbu.jdField_c_of_type_Long);
+      QLog.d("ReadinjoyPlayerReporter", 2, ((StringBuilder)localObject).toString());
+    }
+    ThreadManager.excute(new ReadinjoyPlayerReporter.3(this, paramqty), 16, null, true);
+  }
 }
 
 

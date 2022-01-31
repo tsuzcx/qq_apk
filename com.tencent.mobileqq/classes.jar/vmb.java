@@ -1,31 +1,22 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
 
-class vmb
-  implements syt<tms, tom>
+public class vmb
+  extends ssh
 {
-  vmb(vlv paramvlv, WeakReference paramWeakReference) {}
+  public final int a;
+  public final long a;
+  @NonNull
+  public final vlr a;
+  public final boolean a;
+  public final long b;
   
-  public void a(@NonNull tms paramtms, @Nullable tom paramtom, @NonNull ErrorMessage paramErrorMessage)
+  public vmb(@NonNull vlr paramvlr, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if (paramtom == null)
-    {
-      paramtms = (vmi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramtms != null) {
-        paramtms.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
-      }
-      return;
-    }
-    paramtms = (vmi)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramtms != null)
-    {
-      paramtms.a(0, paramtom.a);
-      return;
-    }
-    veg.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+    this.jdField_a_of_type_Vlr = paramvlr;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

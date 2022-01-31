@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
+import amsy;
 import amsz;
-import amta;
 import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
 import common.config.service.QzoneConfig;
 import java.util.List;
@@ -11,9 +11,9 @@ public class WnsConfigProxyImpl
 {
   public List<String> getApiReportConfig()
   {
-    amsz localamsz = amta.a();
-    if (localamsz != null) {
-      return localamsz.a();
+    amsy localamsy = amsz.a();
+    if (localamsy != null) {
+      return localamsy.a();
     }
     return null;
   }

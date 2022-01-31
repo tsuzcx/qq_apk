@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.setting;
 
-import actn;
-import alwk;
+import actj;
+import alwj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,7 +25,7 @@ public class ArkAppListActivity
     paramBundle.setBackgroundResource(2130838515);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, actn.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, actj.a(20.0F, getResources()), 0, 0);
     this.a = paramBundle;
     paramBundle = getIntent().getStringArrayExtra("intent_extra_authority_app_list");
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -39,7 +39,7 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new alwk(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new alwj(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;

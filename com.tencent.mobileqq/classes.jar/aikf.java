@@ -1,38 +1,28 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class aikf
-  implements aije
+  implements MediaPlayer.OnCompletionListener
 {
-  aikf(aikd paramaikd, String paramString) {}
+  aikf(aikb paramaikb, int paramInt, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramBoolean) {}
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
     try
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikd.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      paramMediaPlayer = new JSONObject();
+      paramMediaPlayer.put("code", 1);
+      this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
       return;
     }
-    catch (Exception localException1)
+    catch (JSONException paramMediaPlayer)
     {
-      localException1.printStackTrace();
-      try
-      {
-        aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
     }
-    aikd.a(this.jdField_a_of_type_Aikd, this.jdField_a_of_type_JavaLangString, null);
-    return;
   }
 }
 

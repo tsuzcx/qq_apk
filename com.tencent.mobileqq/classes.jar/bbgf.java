@@ -1,54 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class bbgf
-  extends bbgg
 {
-  private int jdField_a_of_type_Int = 2131558894;
-  bblr jdField_a_of_type_Bblr;
+  public String a;
+  public boolean a;
   
-  public bbgf(Context paramContext, int paramInt)
+  public static bbgf a(Bundle paramBundle)
   {
-    super(paramContext, paramInt);
+    bbgf localbbgf = new bbgf();
+    localbbgf.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
+    localbbgf.jdField_a_of_type_Boolean = paramBundle.getBoolean("enableInvite");
+    return localbbgf;
   }
   
-  public void a(int paramInt)
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bblr parambblr, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (parambblr == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bblr = parambblr;
-      String[] arrayOfString = new String[parambblr.a()];
-      int i = 0;
-      while (i < parambblr.a())
-      {
-        arrayOfString[i] = parambblr.a(i).a();
-        i += 1;
-      }
-      setItems(arrayOfString, paramOnClickListener);
-      parambblr = parambblr.a();
-    } while (parambblr == null);
-    setTitle(parambblr);
-  }
-  
-  protected int customWhichToCallBack(int paramInt)
-  {
-    bblt localbblt = this.jdField_a_of_type_Bblr.a(paramInt);
-    if (localbblt != null) {
-      return localbblt.a();
-    }
-    return -1;
-  }
-  
-  protected int getDialogListItemLayout()
-  {
-    return this.jdField_a_of_type_Int;
+    boolean bool = bbgb.a(paramString1, paramQQAppInterface, paramString2);
+    paramString1 = new Intent();
+    paramString1.setAction("tencent.video.q2v.GroupInfoChanged");
+    paramString1.putExtra("uin", paramString2);
+    paramString1.putExtra("enableInvite", bool);
+    paramString1.setPackage(paramQQAppInterface.getApplication().getPackageName());
+    paramQQAppInterface.getApp().sendBroadcast(paramString1);
   }
 }
 

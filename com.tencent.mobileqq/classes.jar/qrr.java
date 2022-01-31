@@ -1,118 +1,42 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsResourceLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class qrr
+  extends awyp
 {
-  private static int jdField_a_of_type_Int;
-  private static LayoutInflateProcessor jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public qrr(Context paramContext)
+  public qrr(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    jdField_a_of_type_Int += 1;
-    a(paramContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public static Drawable a(Context paramContext, int paramInt)
+  public AppInterface a()
   {
-    if (jdField_a_of_type_JavaUtilHashMap == null) {}
-    do
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      return null;
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      }
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(paramInt);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
-        return paramContext;
-      }
-      catch (OutOfMemoryError paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoFeedsResourceLoader", 2, "innerGetDrawableFromCache() OutOfMemoryError e=" + paramContext.getMessage());
-    return null;
-  }
-  
-  public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    View localView = null;
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      localView = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(paramInt, paramBoolean, paramLayoutParams);
-    }
-    while (!paramBoolean) {
-      return localView;
-    }
-    localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(paramInt, null, false);
-    localView.setLayoutParams(paramLayoutParams);
-    return localView;
-  }
-  
-  public static LayoutInflateProcessor a()
-  {
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  }
-  
-  private raj a()
-  {
-    return new raj(2131560060, null, new qrs(this));
-  }
-  
-  private raj a(int paramInt)
-  {
-    return new raj(2131560064, paramInt, null, new qrt(this));
-  }
-  
-  private void a(Context paramContext)
-  {
-    ThreadManager.excute(new VideoFeedsResourceLoader.1(this, paramContext), 16, null, true);
-  }
-  
-  public void a()
-  {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a();
-    }
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_Int -= 1;
-    if (jdField_a_of_type_Int <= 0)
-    {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = null;
-      jdField_a_of_type_JavaUtilHashMap = null;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (raj localraj1 = new raj(2131560086, null, null);; localraj1 = null)
-    {
-      raj localraj2 = new raj(2131559843, null, null);
-      raj localraj3 = new raj(2131560004, null, null);
-      raj localraj4 = a(1);
-      raj localraj5 = a();
-      raj localraj6 = a(2);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(new raj[] { localraj1, localraj2, localraj3, localraj4, localraj5, localraj6 });
+      super.a();
       return;
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, qrs.class);
   }
 }
 

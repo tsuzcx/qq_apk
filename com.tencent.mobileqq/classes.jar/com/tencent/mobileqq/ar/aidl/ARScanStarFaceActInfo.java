@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aldw;
+import aldv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARScanStarFaceActInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aldw();
+  public static final Parcelable.Creator<ARScanStarFaceActInfo> CREATOR = new aldv();
   public long a;
   public String a;
   public long b;

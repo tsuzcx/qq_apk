@@ -1,42 +1,20 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abnv
-  extends tez
+  implements DialogInterface.OnClickListener
 {
-  public abnv(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public abnv(NotificationActivity paramNotificationActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      if ((!this.a.isFinishing()) && (!this.a.c))
-      {
-        this.a.c = false;
-        this.a.a.a(1, paramSosoLbsInfo);
-      }
-      return;
-    }
+    NotificationActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abnv
  * JD-Core Version:    0.7.0.1
  */

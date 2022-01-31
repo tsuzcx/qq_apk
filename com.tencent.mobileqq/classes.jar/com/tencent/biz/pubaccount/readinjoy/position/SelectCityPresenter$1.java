@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.position;
 
 import java.util.List;
-import pcr;
+import pco;
 
 public class SelectCityPresenter$1
   implements Runnable
 {
-  public SelectCityPresenter$1(pcr parampcr, List paramList) {}
+  public SelectCityPresenter$1(pco parampco, List paramList) {}
   
   public void run()
   {
-    pcr.a(this.this$0, this.a);
+    pco.a(this.this$0, this.a);
   }
 }
 

@@ -1,84 +1,28 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ajcu
-  implements INetInfoHandler
+final class ajcu
+  implements EIPCResultCallback
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  ajcu(String paramString, long paramLong) {}
   
-  public ajcu(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
-    for (;;)
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
     {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
-      }
-      try
-      {
-        ApolloCmdChannel localApolloCmdChannel = ajae.a();
-        if (localApolloCmdChannel != null)
-        {
-          Object localObject = ajae.a(this.jdField_a_of_type_Int);
-          if (localObject != null)
-          {
-            localObject = ((ajch)localObject).a();
-            if (localObject != null)
-            {
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("type", paramInt);
-              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
-      }
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      ajac.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
     }
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    ajac.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

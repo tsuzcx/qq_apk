@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.ChatMessage;
-
-public abstract class acvd
-  implements acvf
+public class acvd
 {
-  public static final boolean e = AppSetting.d;
+  public int a;
+  public String a;
   public int b;
-  
-  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acxn paramacxn);
-  
-  public abstract void a();
-  
-  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
 }
 
 

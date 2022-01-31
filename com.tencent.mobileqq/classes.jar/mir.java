@@ -1,31 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.av.ui.RedbagToolbar;
 
-class mir
-  implements ValueAnimator.AnimatorUpdateListener
+public class mir
+  implements mpp
 {
-  mir(miq parammiq) {}
+  public mir(RedbagToolbar paramRedbagToolbar, moz parammoz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean)
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
     {
-      f = i / 220.0F;
-      miq.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      miq.a(this.a).setAlpha(f);
-    }
-    if (miq.a(this.a) != null) {
-      miq.a(this.a).requestLayout();
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Moz.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
     }
   }
 }

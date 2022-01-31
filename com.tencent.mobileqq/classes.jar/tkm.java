@@ -1,6 +1,13 @@
-public abstract interface tkm
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
+import java.util.ArrayList;
+import java.util.List;
+
+public final class tkm
+  extends ssh
 {
-  public abstract void a(tkn paramtkn);
+  public List<qqstory_struct.VidPollInfo> a = new ArrayList();
+  public List<qqstory_struct.VidRateInfo> b = new ArrayList();
 }
 
 

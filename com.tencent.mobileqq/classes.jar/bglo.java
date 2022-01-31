@@ -1,6 +1,8 @@
+import android.content.Context;
+
 public abstract interface bglo
 {
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public abstract void a(boolean paramBoolean, Context paramContext, bglq parambglq);
 }
 
 

@@ -1,30 +1,30 @@
 package dov.com.qq.im.ae.camera.core;
 
-import axhx;
-import bijj;
-import bizq;
+import axhz;
+import bika;
+import bjah;
 
 public class AECameraManager$5
   implements Runnable
 {
-  public AECameraManager$5(bijj parambijj) {}
+  public AECameraManager$5(bika parambika) {}
   
   public void run()
   {
-    if ((bijj.a(this.this$0) != null) && (bijj.a(this.this$0)))
+    if ((bika.a(this.this$0) != null) && (bika.a(this.this$0)))
     {
-      if (!bijj.c(this.this$0)) {
-        bijj.a(this.this$0);
+      if (!bika.c(this.this$0)) {
+        bika.a(this.this$0);
       }
-      while ((bijj.b(this.this$0) == this.this$0.a) && (bijj.c(this.this$0) == this.this$0.b)) {
+      while ((bika.b(this.this$0) == this.this$0.a) && (bika.c(this.this$0) == this.this$0.b)) {
         return;
       }
-      bijj.a().a(true);
-      bijj.a(this.this$0, false);
-      bijj.a(this.this$0);
+      bika.a().a(true);
+      bika.a(this.this$0, false);
+      bika.a(this.this$0);
       return;
     }
-    bizq.b("AECameraManager", "### startCameraPreview failed: mSurfaceTexture = " + bijj.a(this.this$0) + ", cameraCreated = " + bijj.a(this.this$0));
+    bjah.b("AECameraManager", "### startCameraPreview failed: mSurfaceTexture = " + bika.a(this.this$0) + ", cameraCreated = " + bika.a(this.this$0));
   }
 }
 

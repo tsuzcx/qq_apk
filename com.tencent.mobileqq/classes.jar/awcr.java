@@ -1,21 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class awcr
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public awcr(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new RichStatus(null);
-    paramDialogInterface.copyFrom(this.a.a);
-    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
+    if ((bbfj.d(this.a.getActivity())) && (SignTextEditFragment.a(this.a) != null))
+    {
+      if (AppSetting.d) {
+        this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(ajya.a(2131707928));
+      }
+      SignTextEditFragment.a(this.a).a(paramBoolean);
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
+      return;
+    }
+    paramCompoundButton = this.a.getActivity();
+    int i;
+    label108:
+    CheckBox localCheckBox;
+    if (SignTextEditFragment.a(this.a) != null)
+    {
+      i = 2131694671;
+      bcql.a(paramCompoundButton, i, 1).a();
+      paramCompoundButton = this.a;
+      localCheckBox = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (paramBoolean) {
+        break label154;
+      }
+    }
+    label154:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      SignTextEditFragment.a(paramCompoundButton, localCheckBox, paramBoolean);
+      break;
+      i = 2131719386;
+      break label108;
+    }
   }
 }
 

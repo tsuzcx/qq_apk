@@ -1,15 +1,16 @@
 import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-class afxu
-  implements asun
+public class afxu
+  implements aasg
 {
-  afxu(afxt paramafxt) {}
+  public afxu(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public void a()
+  public boolean a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Asuu.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Asuu.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+    if (paramBoolean) {
+      bidk.a(this.a.getActivity());
+    }
+    return false;
   }
 }
 

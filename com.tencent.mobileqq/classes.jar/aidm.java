@@ -1,42 +1,45 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
 import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class aidm
-  implements bfts
+  implements azls
 {
   public aidm(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void a()
+  public ArrayList<ResultRecord> a()
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
   }
   
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  public void a()
   {
-    if (!this.a.a)
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
     {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
       {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Azlq.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Azlq.c();
         }
       }
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
-      return;
-    }
-    paramPinnedFooterExpandableListView.a(paramInt);
+  }
+  
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
   }
 }
 

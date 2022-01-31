@@ -1,138 +1,158 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils.1;
+import com.tencent.mobileqq.highway.config.HwServlet;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
+import com.tencent.mobileqq.scribble.ScribbleDownloader.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
 
 public class awgw
+  implements Handler.Callback, Manager
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 1;
-  public static int e = 2;
-  public static int f = 3;
-  public static int g = 4;
-  public static int h = 5;
-  public static int i = 6;
-  public static int j = 7;
+  protected Handler a;
+  public awgx a;
+  public QQAppInterface a;
+  public String a;
+  AtomicBoolean a;
   
-  public static int a(MessageForScribble paramMessageForScribble)
+  public awgw(QQAppInterface paramQQAppInterface)
   {
-    boolean bool1 = paramMessageForScribble.mExistInfo.mDataFileExist;
-    if (!paramMessageForScribble.mExistInfo.mInit) {
-      bool1 = apvb.a(b(paramMessageForScribble));
-    }
-    boolean bool2 = paramMessageForScribble.mExistInfo.mCombineFileExist;
-    if (!paramMessageForScribble.mExistInfo.mInit) {
-      bool2 = apvb.a(a(paramMessageForScribble));
-    }
-    if ((bool1) && (bool2)) {
-      return c;
-    }
-    if ((!bool1) && (bool2)) {
-      return b;
-    }
-    return a;
+    this.jdField_a_of_type_JavaLangString = "ScribbleDownloader";
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+    this.jdField_a_of_type_Awgx = new awgx(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public static String a()
+  private void a(awgv paramawgv)
   {
-    return ajsf.cl + "ScribbleCache/";
+    int i = this.jdField_a_of_type_Awgx.a(paramawgv);
+    a("addDownload", "result is " + i);
+    d();
   }
   
-  public static String a(MessageForScribble paramMessageForScribble)
+  private void a(String paramString1, String paramString2)
   {
-    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
-      return c(paramMessageForScribble.combineFileMd5);
-    }
-    return "";
-  }
-  
-  private static void a()
-  {
-    File localFile = new File(a());
-    if (((localFile.exists()) && (!localFile.isDirectory())) || (!localFile.exists())) {
-      localFile.mkdirs();
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, awgx paramawgx)
-  {
-    a();
-    new awgy(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramawgx).execute(new Void[0]);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
-  {
-    if (paramMessageForScribble == null) {}
-    awgs localawgs;
-    MessageForScribble localMessageForScribble;
-    do
+    if (QLog.isColorLevel())
     {
-      return false;
-      if (paramMessageForScribble.isSendFromLocal()) {
-        paramQQAppInterface.a().a(paramQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq));
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "";
       }
-      localawgs = new awgs(paramQQAppInterface);
-      localMessageForScribble = localawgs.a(paramMessageForScribble);
-    } while (localMessageForScribble == null);
-    ThreadManager.post(new ScribbleMsgUtils.1(paramQQAppInterface, paramMessageForScribble), 5, null, false);
-    localawgs.a(localMessageForScribble);
+      paramString1 = new StringBuilder().append(paramString1).append("(): ").append(str);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1.toString());
+    }
+  }
+  
+  private boolean a()
+  {
+    int i = auns.a();
+    if (i != 0)
+    {
+      a("isNeedPreDownload", "Not Wifi, networkType=" + i + ", no need to predownload");
+      return false;
+    }
     return true;
   }
   
-  public static int b(MessageForScribble paramMessageForScribble)
+  private void b(awgv paramawgv)
   {
-    if ((paramMessageForScribble == null) || (paramMessageForScribble.combineFileMd5 == null)) {
-      return j;
-    }
-    String str1 = a(paramMessageForScribble);
-    if (!apvb.a(str1)) {
-      return i;
-    }
-    long l = apvb.a(str1);
-    if ((paramMessageForScribble.offSet <= 0) || (paramMessageForScribble.offSet >= (int)l))
+    ThreadManager.post(new ScribbleDownloader.1(this, paramawgv), 5, null, false);
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Awgx.a() < 2)
     {
-      QLog.e("ScribbleMsgUtils", 2, " offSet = " + paramMessageForScribble.offSet + " FileSize : " + l);
-      return j;
+      awgv localawgv = this.jdField_a_of_type_Awgx.a();
+      if (localawgv == null)
+      {
+        a("consumeDownload", "removeOneFromWaitToDowning is null");
+        return;
+      }
+      b(localawgv);
+      return;
     }
-    String str2 = b(paramMessageForScribble);
-    if (apvb.a(str2)) {
-      apvb.c(str2);
-    }
-    if (awhf.a(str1, paramMessageForScribble.offSet, str2)) {
-      return d;
-    }
-    return e;
+    a("consumeDownload", "donwloading is max threads");
   }
   
-  public static String b(MessageForScribble paramMessageForScribble)
+  public int a(MessageForScribble paramMessageForScribble)
   {
-    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
-      return d(paramMessageForScribble.combineFileMd5);
-    }
-    return "";
+    int i = this.jdField_a_of_type_Awgx.a(paramMessageForScribble);
+    a("removeDownloadedMsg", " result is " + i);
+    d();
+    return i;
   }
   
-  private static String c(String paramString)
+  public void a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      return a() + paramString;
+    int i = 0;
+    try
+    {
+      if (SessionInfo.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()).getHttpconn_sig_session() != null) {
+        i = SessionInfo.getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()).getHttpconn_sig_session().length;
+      }
+      if (i == 0) {
+        HwServlet.getConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      }
+      return;
     }
-    return "";
+    finally {}
   }
   
-  private static String d(String paramString)
+  public void a(MessageForScribble paramMessageForScribble)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      return a() + paramString + "_data";
+    a("PreDownloadFromMsg", "uniseq=" + paramMessageForScribble.uniseq);
+    if (a())
+    {
+      a(new awgv(paramMessageForScribble, 200));
+      return;
     }
-    return "";
+    a("PreDownloadFromMsg", "no NeedPreDownload uniseq=" + paramMessageForScribble.uniseq);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    a("off", "mIsPreDownloaderOpen=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(111, 60000L);
+  }
+  
+  public void b(MessageForScribble paramMessageForScribble)
+  {
+    a("DownloadFromAio", "uniseq=" + paramMessageForScribble.uniseq);
+    a(new awgv(paramMessageForScribble, 201));
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    a("on", " mIsPreDownloaderOpen=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    d();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 111)
+    {
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        a("handleMessage", "MSG_OPEN_PRE_DOWNLOADING, mIsPreDownloaderOpen=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    a("onDestroy", null);
   }
 }
 

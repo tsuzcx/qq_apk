@@ -1,6 +1,14 @@
+import java.util.List;
+
 public abstract interface anfw
 {
-  public abstract void a(anfv paramanfv);
+  public abstract void a(anga paramanga, anhx paramanhx, anhn paramanhn);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(List<anga> paramList);
+  
+  public abstract void f();
 }
 
 

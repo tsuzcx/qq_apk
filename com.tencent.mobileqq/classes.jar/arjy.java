@@ -1,19 +1,14 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class arjy
-  implements BusinessObserver
+class arjy
+  extends arka
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2) {}
+  arjy(arjx paramarjx) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
+    if (paramBoolean) {
+      this.a.a(paramInt, paramLong, paramString1);
     }
-    a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
   }
 }
 

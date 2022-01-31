@@ -1,15 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ahsw
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   public ahsw(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, false);
+    }
   }
 }
 

@@ -9,13 +9,13 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import axqw;
+import axqy;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import org.json.JSONObject;
-import xfr;
+import xfo;
 
 public class StickyNotePublishEntranceView
   extends RelativeLayout
@@ -55,7 +55,7 @@ public class StickyNotePublishEntranceView
         if (localCard.shGender != 0) {
           break label52;
         }
-        localObject = ((Resources)localObject).getString(2131693262);
+        localObject = ((Resources)localObject).getString(2131693263);
       }
     }
     for (;;)
@@ -64,16 +64,16 @@ public class StickyNotePublishEntranceView
       return localObject;
       label52:
       if (localCard.shGender == 1) {
-        localObject = ((Resources)localObject).getString(2131719516);
+        localObject = ((Resources)localObject).getString(2131719527);
       } else {
-        localObject = ((Resources)localObject).getString(2131720014);
+        localObject = ((Resources)localObject).getString(2131720025);
       }
     }
   }
   
   public void a()
   {
-    Object localObject = (String)xfr.a().a("sticky_note_publish_entrance_config", "");
+    Object localObject = (String)xfo.a().a("sticky_note_publish_entrance_config", "");
     int i;
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -85,7 +85,7 @@ public class StickyNotePublishEntranceView
       this.jdField_a_of_type_Int = i;
       if (this.jdField_a_of_type_Boolean)
       {
-        axqw.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
         return;
       }
       for (;;)
@@ -172,7 +172,7 @@ public class StickyNotePublishEntranceView
           i = 1;
         }
         break;
-        axqw.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
         return;
         label421:
         i = 1;
@@ -183,10 +183,10 @@ public class StickyNotePublishEntranceView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131561024, this);
+    inflate(paramContext, 2131561023, this);
     this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369095));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363000));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376711));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131362999));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376713));
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166310));
     this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691183);
@@ -249,7 +249,7 @@ public class StickyNotePublishEntranceView
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845016);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845017);
     if (this.jdField_a_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
     {
@@ -271,11 +271,11 @@ public class StickyNotePublishEntranceView
       setAlpha(1.0F);
       if (this.jdField_a_of_type_Boolean)
       {
-        axqw.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
       }
       else
       {
-        axqw.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        axqy.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
         continue;
         setAlpha(1.0F);
       }

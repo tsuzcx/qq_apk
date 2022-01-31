@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.redtouch;
 
-import avpq;
+import avps;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 
 public class RedTouchManager$2
   implements Runnable
 {
-  public RedTouchManager$2(avpq paramavpq, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
+  public RedTouchManager$2(avps paramavps, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
   public void run()
   {

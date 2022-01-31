@@ -1,17 +1,25 @@
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.contact.SimpleTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class ailx
+class ailx
+  implements View.OnLongClickListener
 {
-  public int a;
-  public CheckBox a;
-  public ProgressBar a;
-  public SimpleTextView a;
-  public SingleLineTextView a;
-  public StringBuilder a;
-  public SingleLineTextView b;
+  private WeakReference<ails> a;
+  
+  public ailx(ails paramails)
+  {
+    this.a = new WeakReference(paramails);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ails localails = (ails)this.a.get();
+    if (localails != null) {
+      return localails.onLongClick(paramView);
+    }
+    return false;
+  }
 }
 
 

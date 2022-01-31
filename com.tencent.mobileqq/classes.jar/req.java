@@ -1,32 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.widget.AbsListView;
 
 class req
-  extends oyg
+  extends oyd
 {
-  req(reo paramreo, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, ViewGroup paramViewGroup)
+  req(reo paramreo, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    bfwd.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Reo.a(this.jdField_a_of_type_Int)) {
-      if ((olr.a(this.jdField_a_of_type_Reo.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Reo.c != 56))
-      {
-        if ((paramoya instanceof oyc)) {}
-      }
-      else {
-        while ((paramoya instanceof oyc)) {
-          return;
-        }
-      }
-    }
-    if (paramoya.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = paramoya.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    bfwd.a();
+    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

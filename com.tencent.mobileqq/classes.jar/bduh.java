@@ -1,13 +1,6 @@
-import com.tencent.qidian.QidianProfileCardActivity;
-
-public class bduh
-  implements bcjn
+public abstract interface bduh
 {
-  public bduh(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

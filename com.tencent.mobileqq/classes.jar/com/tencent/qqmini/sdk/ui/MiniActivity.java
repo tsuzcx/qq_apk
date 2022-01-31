@@ -9,17 +9,17 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import begs;
-import bepk;
-import beqe;
-import besh;
+import behj;
+import beqb;
+import beqv;
+import besy;
 import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class MiniActivity
   extends Activity
 {
-  private beqe a;
+  private beqv a;
   
   public static void a(Activity paramActivity)
   {
@@ -39,10 +39,10 @@ public class MiniActivity
     {
       return;
       MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO");
-      this.a = bepk.a().a(localMiniAppInfo);
+      this.a = beqb.a().a(localMiniAppInfo);
       paramIntent = (LoginInfo)paramIntent.getParcelableExtra("KEY_LOGININFO");
     } while (paramIntent == null);
-    bepk.a().a().setLoginInfo(paramIntent);
+    beqb.a().a().setLoginInfo(paramIntent);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -61,7 +61,7 @@ public class MiniActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    begs.a(getApplicationContext());
+    behj.a(getApplicationContext());
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
     setContentView(localRelativeLayout);
     FrameLayout localFrameLayout = new FrameLayout(this);

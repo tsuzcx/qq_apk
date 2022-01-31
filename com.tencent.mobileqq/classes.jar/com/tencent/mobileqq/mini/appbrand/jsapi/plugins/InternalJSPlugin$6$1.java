@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class InternalJSPlugin$6$1
@@ -10,7 +10,7 @@ class InternalJSPlugin$6$1
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
+    bcql.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
   }
 }
 

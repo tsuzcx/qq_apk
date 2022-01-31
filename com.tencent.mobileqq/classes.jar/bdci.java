@@ -1,18 +1,17 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.open.agent.OpenCardContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-public class bdci
-  extends bfvn
+class bdci
+  implements DialogInterface.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  bdci(bdcf parambdcf) {}
   
-  private bdci(OpenCardContainer paramOpenCardContainer) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
+  }
 }
 
 

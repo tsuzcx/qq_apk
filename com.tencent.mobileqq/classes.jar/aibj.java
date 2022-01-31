@@ -1,15 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
 
 public class aibj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements SensorEventListener
 {
-  public aibj(RotationSeekBar paramRotationSeekBar) {}
+  public aibj(SensorFrameImageView paramSensorFrameImageView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    switch (paramSensorEvent.sensor.getType())
+    {
+    }
+    for (;;)
+    {
+      SensorFrameImageView.a(this.a);
+      SensorFrameImageView.b(this.a);
+      return;
+      SensorFrameImageView.a(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.b(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+    }
   }
 }
 

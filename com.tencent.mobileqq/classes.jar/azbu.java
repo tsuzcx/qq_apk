@@ -1,26 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import mqq.app.AppActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class azbu
-  implements View.OnClickListener
+class azbu
+  implements BusinessObserver
 {
-  public azbu(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  azbu(azbs paramazbs, azcb paramazcb) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity();
-    if (paramView.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
-      return;
-      paramView.requestPermissions(new azbv(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+      this.jdField_a_of_type_Azcb.k = 1;
+      this.jdField_a_of_type_Azbs.a.a(1, 1);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
   }
 }
 

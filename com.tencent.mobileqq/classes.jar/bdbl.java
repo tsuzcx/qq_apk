@@ -1,28 +1,20 @@
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
 
-public class bdbl
+class bdbl
   implements View.OnClickListener
 {
-  public bdbl(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  bdbl(bdbk parambdbk, int paramInt, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - OpenAuthorityFragment.a(this.a) > 1000L)
-    {
-      this.a.a.a.setClickable(false);
-      paramView = new Intent();
-      paramView.putExtra("appid", OpenAuthorityFragment.a(this.a));
-      paramView.putExtra("public_fragment_window_feature", 1);
-      abtu.a(this.a.getActivity(), paramView, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
-      this.a.a.a.setClickable(true);
-    }
-    OpenAuthorityFragment.a(this.a, System.currentTimeMillis());
+    paramView = new Bundle();
+    paramView.putInt("group_index", this.jdField_a_of_type_Int);
+    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bdbk.a.a.a(1, paramView);
   }
 }
 

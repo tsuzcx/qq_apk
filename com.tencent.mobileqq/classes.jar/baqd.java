@@ -1,47 +1,75 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop.activity.troopactivity.ActSSORsp;
+import tencent.im.troop.activity.troopactivity.GroupInfoCardResp;
 
 public class baqd
-  extends banh
+  implements BusinessObserver
 {
-  private WeakReference<QQAppInterface> a;
-  private String d;
+  private final WeakReference<TroopMoreDetailView> a;
   
-  public baqd(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public baqd(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    super(paramString2, paramString3, paramString4);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.d = paramString1;
+    this.a = new WeakReference(paramTroopMoreDetailView);
   }
   
-  public UsingTimeReportManager a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)localQQAppInterface.getManager(241);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    label99:
     do
     {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (!paramBoolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: !isSuccess || mTroopInfoData == null");
+            }
+          }
+          else {
+            try
+            {
+              paramBundle = paramBundle.getByteArray("data");
+              if (paramBundle != null) {
+                break label99;
+              }
+              if (QLog.isColorLevel())
+              {
+                QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: data == null");
+                return;
+              }
+            }
+            catch (InvalidProtocolBufferMicroException paramBundle) {}
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: InvalidProtocolBufferMicroException:" + paramBundle.getMessage());
       return;
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    axra localaxra = new axra((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
-    if (this.d != null) {}
-    for (Object localObject = this.d;; localObject = "")
-    {
-      localaxra.a(new String[] { localObject, String.valueOf(paramLong) }).a();
-      return;
-    }
+      localObject = new troopactivity.ActSSORsp();
+      ((troopactivity.ActSSORsp)localObject).mergeFrom(paramBundle);
+      if (((troopactivity.ActSSORsp)localObject).err_code.get() == 10000) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: errorcode:" + ((troopactivity.ActSSORsp)localObject).err_code.get() + ", msg:" + ((troopactivity.ActSSORsp)localObject).err_msg.get());
+    return;
+    paramBundle = ((troopactivity.ActSSORsp)localObject).body.get().toByteArray();
+    Object localObject = new troopactivity.GroupInfoCardResp();
+    ((troopactivity.GroupInfoCardResp)localObject).mergeFrom(paramBundle);
+    TroopMoreDetailView.a(localTroopMoreDetailView, (troopactivity.GroupInfoCardResp)localObject);
   }
 }
 

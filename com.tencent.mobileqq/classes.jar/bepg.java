@@ -1,15 +1,11 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
-import org.json.JSONObject;
+import android.view.animation.Interpolator;
 
 public class bepg
-  implements AsyncResult
+  implements Interpolator
 {
-  public bepg(AppBrandLaunchManager paramAppBrandLaunchManager) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public float getInterpolation(float paramFloat)
   {
-    besl.b("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
+    return (float)Math.tan((paramFloat * 2.0F - 1.0F) / 4.0F * 3.141592653589793D) / 2.0F + 0.5F;
   }
 }
 

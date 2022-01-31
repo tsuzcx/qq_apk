@@ -1,32 +1,68 @@
-import com.tencent.component.network.downloader.strategy.ConfigKeepAliveStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class bhiq
-  extends ConfigKeepAliveStrategy
-  implements bgft
+public abstract class bhiq
+  extends Binder
+  implements bhip
 {
   public bhiq()
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
+    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
   }
   
-  private void a()
+  public static bhip a(IBinder paramIBinder)
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
+    if (paramIBinder == null) {
+      return null;
     }
-    setConfig(str);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    if ((localIInterface != null) && ((localIInterface instanceof bhip))) {
+      return (bhip)localIInterface;
+    }
+    return new bhir(paramIBinder);
   }
   
-  public void onConfigChange()
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "KeepAlive receive change");
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      a(paramParcel1.readFloat());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      c();
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+      b();
+      paramParcel2.writeNoException();
+      return true;
     }
-    a();
+    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

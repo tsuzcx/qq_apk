@@ -8,8 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import lcl;
-import mhe;
+import lcg;
+import mgz;
 
 public class QQLogo
   extends ImageView
@@ -42,7 +42,7 @@ public class QQLogo
     if (localLayoutParams.bottomMargin != i) {
       bool = true;
     }
-    lcl.c("QQLogo", bool + "|" + localLayoutParams.bottomMargin + "|" + i);
+    lcg.c("QQLogo", bool + "|" + localLayoutParams.bottomMargin + "|" + i);
     if (localLayoutParams.bottomMargin != i)
     {
       setVisibility(8);
@@ -53,7 +53,7 @@ public class QQLogo
   
   private void a(boolean paramBoolean)
   {
-    lcl.c("QQLogo", "QQLogo:" + this.a + "|" + paramBoolean + "|" + getVisibility());
+    lcg.c("QQLogo", "QQLogo:" + this.a + "|" + paramBoolean + "|" + getVisibility());
     if ((getVisibility() == 8) && (!this.a) && (paramBoolean)) {
       b();
     }
@@ -66,13 +66,13 @@ public class QQLogo
   private void b()
   {
     this.a = true;
-    lcl.c("QQLogo", "showLogo_internal:");
+    lcg.c("QQLogo", "showLogo_internal:");
     c();
   }
   
   private void c()
   {
-    lcl.c("QQLogo", "showLogo:");
+    lcg.c("QQLogo", "showLogo:");
     Object localObject = new Transformation();
     ((Transformation)localObject).setAlpha(0.0F);
     AlphaAnimation localAlphaAnimation = (AlphaAnimation)getAnimation();
@@ -91,10 +91,10 @@ public class QQLogo
   
   private void d()
   {
-    lcl.c("QQLogo", "dispearLogo:");
+    lcg.c("QQLogo", "dispearLogo:");
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(new mhe(this));
+    localAlphaAnimation.setAnimationListener(new mgz(this));
     clearAnimation();
     startAnimation(localAlphaAnimation);
   }
@@ -111,7 +111,7 @@ public class QQLogo
         return;
       }
     } while (getVisibility() != 0);
-    lcl.c("QQLogo", "setOffset audio hide qq logo");
+    lcg.c("QQLogo", "setOffset audio hide qq logo");
     setVisibility(8);
   }
 }

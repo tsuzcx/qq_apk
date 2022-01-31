@@ -2,7 +2,7 @@ package com.tencent.mobileqq.startup.step;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import axow;
+import axoy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,11 +13,11 @@ public final class ProcessInfoUtil$1
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = axow.a();
+    SharedPreferences localSharedPreferences = axoy.a();
     int i;
     if (localSharedPreferences != null)
     {
-      i = axow.a(BaseApplicationImpl.getContext(), this.a);
+      i = axoy.a(BaseApplicationImpl.getContext(), this.a);
       if (i != -1) {
         break label27;
       }

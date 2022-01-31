@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 
 class QZoneVideoDownloadActivity$2
   implements Runnable
@@ -10,7 +10,7 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    bcpw.a(this.this$0.getApplicationContext(), ajyc.a(2131712524), 1).a();
+    bcql.a(this.this$0.getApplicationContext(), ajya.a(2131712535), 1).a();
   }
 }
 

@@ -1,24 +1,26 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vbt
-  extends QQUIEventReceiver<vbd, tcg>
+  extends QQUIEventReceiver<vba, tli>
 {
-  public vbt(@NonNull vbd paramvbd)
+  public vbt(@NonNull vba paramvba)
   {
-    super(paramvbd);
+    super(paramvba);
   }
   
-  public void a(@NonNull vbd paramvbd, @NonNull tcg paramtcg)
+  public void a(@NonNull vba paramvba, @NonNull tli paramtli)
   {
-    if (paramtcg.a) {
-      vbd.d(paramvbd);
+    if ((paramtli.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtli.jdField_a_of_type_JavaUtilList == null)) {
+      return;
     }
+    paramvba.a(paramtli);
   }
   
   public Class acceptEventClass()
   {
-    return tcg.class;
+    return tli.class;
   }
 }
 

@@ -1,65 +1,20 @@
-import android.annotation.TargetApi;
-import android.support.annotation.NonNull;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-@TargetApi(14)
-public class svm
-  extends sve
+final class svm
+  implements DialogInterface.OnClickListener
 {
-  public svm(@NonNull String[] paramArrayOfString)
-  {
-    super(paramArrayOfString);
-  }
+  svm(List paramList) {}
   
-  protected void a(String[] paramArrayOfString, svf paramsvf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int n = paramArrayOfString.length;
-    int i = 0;
-    if (i < n)
-    {
-      File localFile1 = new File(paramArrayOfString[i]);
-      double d = a(localFile1);
-      File[] arrayOfFile = localFile1.listFiles();
-      if (arrayOfFile == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = System.currentTimeMillis();
-        int i1 = arrayOfFile.length;
-        int k = 0;
-        int j = 0;
-        for (;;)
-        {
-          if (j < i1)
-          {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile2 = arrayOfFile[j];
-              int m = k;
-              if (l - localFile2.lastModified() > 86400000L)
-              {
-                a(localFile2);
-                m = k + 1;
-              }
-              j += 1;
-              k = m;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                veg.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
-              }
-            }
-          }
-        }
-        paramsvf.jdField_b_of_type_Double = (d - a(localFile1) + paramsvf.jdField_b_of_type_Double);
-        paramsvf.jdField_b_of_type_Int = (k + paramsvf.jdField_b_of_type_Int);
-      }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      svl.a((String)localIterator.next());
     }
+    paramDialogInterface.dismiss();
   }
 }
 

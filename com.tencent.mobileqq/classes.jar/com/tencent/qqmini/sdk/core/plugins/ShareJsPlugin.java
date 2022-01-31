@@ -2,21 +2,21 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import begz;
-import beha;
-import beiu;
-import bejp;
-import bejr;
-import bejy;
-import beka;
+import behq;
+import behr;
+import bejl;
+import bekg;
 import beki;
-import belh;
-import bequ;
-import bers;
-import beru;
+import bekp;
+import bekr;
+import bekz;
+import bely;
+import berl;
+import besj;
 import besl;
-import bfgt;
-import bfgy;
+import betc;
+import bfhk;
+import bfhp;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.ShareProxy;
@@ -55,7 +55,7 @@ public class ShareJsPlugin
   private MiniAppProxy mMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
   private ShareProxy mShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
   
-  public void hideShareMenu(beka parambeka)
+  public void hideShareMenu(bekr parambekr)
   {
     int i = -1;
     int m = 0;
@@ -66,34 +66,34 @@ public class ShareJsPlugin
       int n;
       try
       {
-        localObject = (JSONArray)new JSONObject(parambeka.jdField_b_of_type_JavaLangString).opt("hideShareItems");
+        localObject = (JSONArray)new JSONObject(parambekr.jdField_b_of_type_JavaLangString).opt("hideShareItems");
         if (localObject != null) {
           break label192;
         }
         j = -1;
         k = 0;
-        localObject = (beru)this.mMiniAppContext.a(bejr.a());
+        localObject = (besl)this.mMiniAppContext.a(beki.a());
         if (m == 0) {
-          ((beru)localObject).e = false;
+          ((besl)localObject).e = false;
         }
         if (k == 0) {
-          ((beru)localObject).d = false;
+          ((besl)localObject).d = false;
         }
         if (j == 0) {
-          ((beru)localObject).f = false;
+          ((besl)localObject).f = false;
         }
         if (i == 0) {
-          ((beru)localObject).g = false;
+          ((besl)localObject).g = false;
         }
-        parambeka.a();
+        parambekr.a();
         return;
       }
-      catch (JSONException parambeka)
+      catch (JSONException parambekr)
       {
         Object localObject;
         String str;
         boolean bool;
-        parambeka.printStackTrace();
+        parambekr.printStackTrace();
         return;
       }
       if (n < ((JSONArray)localObject).length())
@@ -126,11 +126,11 @@ public class ShareJsPlugin
     }
   }
   
-  public void shareAppMessage(beka parambeka)
+  public void shareAppMessage(bekr parambekr)
   {
     int k;
     int j;
-    beru localberu;
+    besl localbesl;
     Object localObject2;
     int i;
     label69:
@@ -139,20 +139,20 @@ public class ShareJsPlugin
     label136:
     String str5;
     label235:
-    bers localbers;
+    besj localbesj;
     for (;;)
     {
       Object localObject3;
       try
       {
-        if (!"shareAppMessageDirectly".equals(parambeka.jdField_a_of_type_JavaLangString)) {
+        if (!"shareAppMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString)) {
           break label1127;
         }
         k = 1;
-        localObject3 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+        localObject3 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
         j = ((JSONObject)localObject3).optInt("shareTarget", -1);
         localObject1 = null;
-        localberu = (beru)this.mMiniAppContext.a(bejr.a());
+        localbesl = (besl)this.mMiniAppContext.a(beki.a());
         if (j != 0) {
           break label1134;
         }
@@ -161,7 +161,7 @@ public class ShareJsPlugin
         i = 0;
         String str3 = ((JSONObject)localObject3).optString("shareTemplateId");
         String str4 = ((JSONObject)localObject3).optString("shareTemplateData");
-        if (!"shareAppMessageDirectly".equals(parambeka.jdField_a_of_type_JavaLangString)) {
+        if (!"shareAppMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString)) {
           break label1111;
         }
         if (i != -1) {
@@ -172,9 +172,9 @@ public class ShareJsPlugin
           break label1174;
         }
         j = 6;
-        localberu.jdField_b_of_type_Int = j;
-        localberu.jdField_a_of_type_JavaLangString = parambeka.jdField_a_of_type_JavaLangString;
-        localberu.c = parambeka.jdField_b_of_type_Int;
+        localbesl.jdField_b_of_type_Int = j;
+        localbesl.jdField_a_of_type_JavaLangString = parambekr.jdField_a_of_type_JavaLangString;
+        localbesl.c = parambekr.jdField_b_of_type_Int;
         String str2 = ((JSONObject)localObject3).optString("path");
         str1 = str2;
         if (TextUtils.isEmpty(str2)) {
@@ -190,40 +190,40 @@ public class ShareJsPlugin
           break label659;
         }
         str1 = "miniGamePath";
-        parambeka = new ShareJsPlugin.1(this, parambeka);
-        localbers = new bers();
-        localbers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppContext.a();
+        parambekr = new ShareJsPlugin.1(this, parambekr);
+        localbesj = new besj();
+        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppContext.a();
         if (k == 0) {
           break label1181;
         }
         j = 11;
         label276:
-        localbers.jdField_a_of_type_Int = j;
-        localbers.jdField_b_of_type_Int = i;
-        localbers.jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
-        localbers.jdField_a_of_type_JavaLangString = str2;
-        localbers.c = str1;
-        localbers.d = ((String)localObject3);
-        localbers.e = str3;
-        localbers.f = str4;
-        localbers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel = ((EntryModel)localObject2);
-        localbers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel = ((ShareChatModel)localObject1);
-        localbers.jdField_b_of_type_Boolean = localberu.h;
-        if (localberu.jdField_b_of_type_Int != 1) {
+        localbesj.jdField_a_of_type_Int = j;
+        localbesj.jdField_b_of_type_Int = i;
+        localbesj.jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
+        localbesj.jdField_a_of_type_JavaLangString = str2;
+        localbesj.c = str1;
+        localbesj.d = ((String)localObject3);
+        localbesj.e = str3;
+        localbesj.f = str4;
+        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel = ((EntryModel)localObject2);
+        localbesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel = ((ShareChatModel)localObject1);
+        localbesj.jdField_b_of_type_Boolean = localbesl.h;
+        if (localbesl.jdField_b_of_type_Int != 1) {
           break label737;
         }
         if ((!str5.startsWith("http")) && (!str5.startsWith("https"))) {
           break;
         }
-        localbers.jdField_b_of_type_JavaLangString = str5;
-        this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+        localbesj.jdField_b_of_type_JavaLangString = str5;
+        this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
         return;
       }
-      catch (JSONException parambeka)
+      catch (JSONException parambekr)
       {
         label410:
-        besl.d("ShareJsPlugin", parambeka.getMessage(), parambeka);
-        parambeka.printStackTrace();
+        betc.d("ShareJsPlugin", parambekr.getMessage(), parambekr);
+        parambekr.printStackTrace();
         return;
       }
       if (j == 2)
@@ -235,7 +235,7 @@ public class ShareJsPlugin
           localObject1 = ((MiniAppInfo)localObject2).launchParam.jdField_a_of_type_ComTencentQqminiSdkLauncherModelEntryModel;
           break label1150;
         }
-        besl.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + str1);
+        betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + str1);
         break label1150;
       }
       if (j == 3)
@@ -255,15 +255,15 @@ public class ShareJsPlugin
         if (j == 5)
         {
           localObject2 = ((JSONObject)localObject3).optString("chatDataHash");
-          localObject1 = localberu.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel;
+          localObject1 = localbesl.jdField_a_of_type_ComTencentQqminiSdkLauncherModelShareChatModel;
           if ((localObject1 != null) && (((ShareChatModel)localObject1).a().equals(localObject2))) {
             break label1166;
           }
-          besl.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + null);
+          betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, entryDataHash is no match:" + null);
           localObject1 = null;
           break label1166;
         }
-        if ((j != 6) || (!"shareAppMessageDirectlyToFriendList".equals(parambeka.jdField_a_of_type_JavaLangString))) {
+        if ((j != 6) || (!"shareAppMessageDirectlyToFriendList".equals(parambekr.jdField_a_of_type_JavaLangString))) {
           break label1116;
         }
         localObject1 = null;
@@ -274,26 +274,26 @@ public class ShareJsPlugin
         str1 = this.mApkgInfo.a().jdField_a_of_type_JavaLangString;
       }
     }
-    Object localObject1 = beiu.a().a(str5);
-    if (!belh.a((String)localObject1))
+    Object localObject1 = bejl.a().a(str5);
+    if (!bely.a((String)localObject1))
     {
-      localbers.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+      localbesj.jdField_b_of_type_JavaLangString = ((String)localObject1);
+      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
       return;
     }
-    this.mMiniAppContext.a(bejp.a(new ShareJsPlugin.2(this, localbers, parambeka)));
+    this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.2(this, localbesj, parambekr)));
     return;
     label737:
-    if (localberu.jdField_b_of_type_Int == 3)
+    if (localbesl.jdField_b_of_type_Int == 3)
     {
-      localbers.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-      this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+      localbesj.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
+      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
       return;
     }
-    if (localberu.jdField_b_of_type_Int == 4)
+    if (localbesl.jdField_b_of_type_Int == 4)
     {
-      localbers.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-      this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+      localbesj.jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
+      this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
       return;
     }
     if (!URLUtil.isHttpUrl(str5))
@@ -303,7 +303,7 @@ public class ShareJsPlugin
       }
       break label1187;
       label824:
-      if ((TextUtils.isEmpty(str5)) || (!new File(beiu.a().a(str5)).exists())) {
+      if ((TextUtils.isEmpty(str5)) || (!new File(bejl.a().a(str5)).exists())) {
         break label1199;
       }
     }
@@ -315,35 +315,35 @@ public class ShareJsPlugin
     label1199:
     for (boolean bool2 = true;; bool2 = false)
     {
-      if ((belh.a(str5)) || ((!bool1) && (!bool2)))
+      if ((bely.a(str5)) || ((!bool1) && (!bool2)))
       {
         if (this.mMiniAppContext.e())
         {
-          localbers.jdField_b_of_type_JavaLangString = bfgy.a();
-          this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
-          besl.d("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + str5 + "], use default share image");
+          localbesj.jdField_b_of_type_JavaLangString = bfhp.a();
+          this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
+          betc.d("ShareJsPlugin", "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool1 + "] [isLocalResourceExists=" + bool2 + "] [imageUrl=" + str5 + "], use default share image");
           return;
         }
-        if (this.mMiniAppContext.a(bejr.a()) != null)
+        if (this.mMiniAppContext.a(beki.a()) != null)
         {
-          if (((beru)this.mMiniAppContext.a(bejr.a())).i)
+          if (((besl)this.mMiniAppContext.a(beki.a())).i)
           {
-            besl.d("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
+            betc.d("ShareJsPlugin", "getScreenshot isGettingScreenShot now, return directly !");
             return;
           }
-          this.mMiniAppContext.a(bejp.a(new ShareJsPlugin.3(this, localbers, parambeka)));
+          this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.3(this, localbesj, parambekr)));
         }
       }
       else
       {
         if ((str5.startsWith("http")) || (str5.startsWith("https")))
         {
-          localbers.jdField_b_of_type_JavaLangString = str5;
-          this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+          localbesj.jdField_b_of_type_JavaLangString = str5;
+          this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
           return;
         }
-        localbers.jdField_b_of_type_JavaLangString = beiu.a().a(str5);
-        this.mShareProxy.onJsShareAppMessage(localbers, parambeka);
+        localbesj.jdField_b_of_type_JavaLangString = bejl.a().a(str5);
+        this.mShareProxy.onJsShareAppMessage(localbesj, parambekr);
         return;
         label1097:
         break label235;
@@ -394,17 +394,17 @@ public class ShareJsPlugin
     }
   }
   
-  public void shareAppMessageDirectly(beka parambeka)
+  public void shareAppMessageDirectly(bekr parambekr)
   {
-    if (bfgt.a())
+    if (bfhk.a())
     {
-      shareAppMessage(parambeka);
+      shareAppMessage(parambekr);
       return;
     }
-    this.mMiniAppProxy.onCapsuleButtonMoreClick(new beha(this.mMiniAppContext));
+    this.mMiniAppProxy.onCapsuleButtonMoreClick(new behr(this.mMiniAppContext));
   }
   
-  public void shareAppPictureMessage(beka parambeka)
+  public void shareAppPictureMessage(bekr parambekr)
   {
     int i = 3;
     Object localObject1;
@@ -412,15 +412,15 @@ public class ShareJsPlugin
     int j;
     try
     {
-      localObject1 = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+      localObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
       k = ((JSONObject)localObject1).optInt("shareTarget", -1);
       if (k != 0) {
         break label507;
       }
       i = 0;
-      localObject2 = (beru)this.mMiniAppContext.a(bejr.a());
+      localObject2 = (besl)this.mMiniAppContext.a(beki.a());
       j = k;
-      if ("shareAppPictureMessageDirectly".equals(parambeka.jdField_a_of_type_JavaLangString))
+      if ("shareAppPictureMessageDirectly".equals(parambekr.jdField_a_of_type_JavaLangString))
       {
         j = k;
         k = i;
@@ -433,12 +433,12 @@ public class ShareJsPlugin
           k = 6;
         }
         label103:
-        ((beru)localObject2).jdField_b_of_type_Int = k;
+        ((besl)localObject2).jdField_b_of_type_Int = k;
       }
-      i = ((beru)localObject2).jdField_b_of_type_Int;
-      ((beru)localObject2).jdField_a_of_type_JavaLangString = parambeka.jdField_a_of_type_JavaLangString;
-      ((beru)localObject2).c = parambeka.jdField_b_of_type_Int;
-      parambeka = new ShareJsPlugin.4(this, parambeka);
+      i = ((besl)localObject2).jdField_b_of_type_Int;
+      ((besl)localObject2).jdField_a_of_type_JavaLangString = parambekr.jdField_a_of_type_JavaLangString;
+      ((besl)localObject2).c = parambekr.jdField_b_of_type_Int;
+      parambekr = new ShareJsPlugin.4(this, parambekr);
       this.mMiniAppContext.a();
       localObject2 = this.mApkgInfo;
       localObject2 = ((JSONObject)localObject1).optString("title");
@@ -450,60 +450,60 @@ public class ShareJsPlugin
         break label554;
       }
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
       String str1;
       label197:
-      parambeka.printStackTrace();
+      parambekr.printStackTrace();
       return;
     }
-    String str2 = beiu.a().a(str1);
+    String str2 = bejl.a().a(str1);
     if ((!TextUtils.isEmpty(str1)) && (new File(str2).exists())) {}
     for (int k = 1;; k = 0)
     {
-      localObject1 = new bers();
-      ((bers)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppInfo;
-      ((bers)localObject1).jdField_a_of_type_Int = 11;
-      ((bers)localObject1).jdField_b_of_type_Int = j;
-      ((bers)localObject1).jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
-      ((bers)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
+      localObject1 = new besj();
+      ((besj)localObject1).jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = this.mMiniAppInfo;
+      ((besj)localObject1).jdField_a_of_type_Int = 11;
+      ((besj)localObject1).jdField_b_of_type_Int = j;
+      ((besj)localObject1).jdField_a_of_type_AndroidAppActivity = this.mMiniAppContext.a();
+      ((besj)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
       if (i != 0)
       {
-        ((bers)localObject1).jdField_b_of_type_JavaLangString = str1;
-        ((bers)localObject1).jdField_a_of_type_Boolean = false;
-        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambeka);
+        ((besj)localObject1).jdField_b_of_type_JavaLangString = str1;
+        ((besj)localObject1).jdField_a_of_type_Boolean = false;
+        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
         return;
       }
-      if ((belh.a(str1)) || ((i == 0) && (k == 0)))
+      if ((bely.a(str1)) || ((i == 0) && (k == 0)))
       {
         if (this.mMiniAppContext.e())
         {
           if (this.mMiniAppInfo != null)
           {
-            ((bers)localObject1).jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
-            ((bers)localObject1).jdField_a_of_type_Boolean = false;
-            this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambeka);
+            ((besj)localObject1).jdField_b_of_type_JavaLangString = this.mMiniAppInfo.iconUrl;
+            ((besj)localObject1).jdField_a_of_type_Boolean = false;
+            this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
             return;
           }
-          besl.d("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
+          betc.d("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
           return;
         }
-        localObject2 = (beru)this.mMiniAppContext.a(bejr.a());
+        localObject2 = (besl)this.mMiniAppContext.a(beki.a());
         if (localObject2 != null)
         {
-          if (((beru)localObject2).i)
+          if (((besl)localObject2).i)
           {
-            besl.d("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
+            betc.d("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
             return;
           }
-          this.mMiniAppContext.a(bejp.a(new ShareJsPlugin.5(this, (bers)localObject1, parambeka)));
+          this.mMiniAppContext.a(bekg.a(new ShareJsPlugin.5(this, (besj)localObject1, parambekr)));
         }
       }
       else if ((i == 0) && (k != 0))
       {
-        ((bers)localObject1).jdField_b_of_type_JavaLangString = str2;
-        ((bers)localObject1).jdField_a_of_type_Boolean = true;
-        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambeka);
+        ((besj)localObject1).jdField_b_of_type_JavaLangString = str2;
+        ((besj)localObject1).jdField_a_of_type_Boolean = true;
+        this.mShareProxy.onJsShareAppPictureMessage(localObject1, parambekr);
         return;
       }
       label501:
@@ -541,52 +541,52 @@ public class ShareJsPlugin
     }
   }
   
-  public void shareAppPictureMessageDirectly(beka parambeka)
+  public void shareAppPictureMessageDirectly(bekr parambekr)
   {
-    if (bfgt.a())
+    if (bfhk.a())
     {
-      shareAppPictureMessage(parambeka);
+      shareAppPictureMessage(parambekr);
       return;
     }
-    this.mMiniAppProxy.onCapsuleButtonMoreClick(new beha(this.mMiniAppContext));
+    this.mMiniAppProxy.onCapsuleButtonMoreClick(new behr(this.mMiniAppContext));
   }
   
-  public void showActionSheet(beka parambeka)
+  public void showActionSheet(bekr parambekr)
   {
-    beki.a(new ShareJsPlugin.6(this, parambeka));
+    bekz.a(new ShareJsPlugin.6(this, parambekr));
   }
   
-  public void showShareMenu(beka parambeka)
+  public void showShareMenu(bekr parambekr)
   {
     boolean bool3 = true;
     boolean bool1;
     Object localObject;
-    if ((parambeka.jdField_b_of_type_JavaLangString == null) || ("null".equals(parambeka.jdField_b_of_type_JavaLangString)) || ("{}".equals(parambeka.jdField_b_of_type_JavaLangString)))
+    if ((parambekr.jdField_b_of_type_JavaLangString == null) || ("null".equals(parambekr.jdField_b_of_type_JavaLangString)) || ("{}".equals(parambekr.jdField_b_of_type_JavaLangString)))
     {
       i = 1;
       j = 1;
       k = 1;
       m = 1;
       bool1 = false;
-      localObject = (beru)this.mMiniAppContext.a(bejr.a());
+      localObject = (besl)this.mMiniAppContext.a(beki.a());
       if (m != 1) {
         break label434;
       }
       bool2 = true;
       label75:
-      ((beru)localObject).e = bool2;
+      ((besl)localObject).e = bool2;
       if (k != 1) {
         break label440;
       }
       bool2 = true;
       label91:
-      ((beru)localObject).d = bool2;
+      ((besl)localObject).d = bool2;
       if (j != 1) {
         break label446;
       }
       bool2 = true;
       label106:
-      ((beru)localObject).f = bool2;
+      ((besl)localObject).f = bool2;
       if (i != 1) {
         break label452;
       }
@@ -599,9 +599,9 @@ public class ShareJsPlugin
     label452:
     for (boolean bool2 = bool3;; bool2 = false)
     {
-      ((beru)localObject).g = bool2;
-      ((beru)localObject).h = bool1;
-      parambeka.a();
+      ((besl)localObject).g = bool2;
+      ((besl)localObject).h = bool1;
+      parambekr.a();
       return;
       for (;;)
       {
@@ -610,7 +610,7 @@ public class ShareJsPlugin
           int n;
           try
           {
-            localObject = new JSONObject(parambeka.jdField_b_of_type_JavaLangString);
+            localObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
             bool1 = ((JSONObject)localObject).optBoolean("withShareTicket", false);
           }
           catch (JSONException localJSONException1)
@@ -740,8 +740,8 @@ public class ShareJsPlugin
         }
       }
       localJSONException1.printStackTrace();
-      besl.d("ShareJsPlugin", localJSONException1.getMessage(), localJSONException1);
-      parambeka.b();
+      betc.d("ShareJsPlugin", localJSONException1.getMessage(), localJSONException1);
+      parambekr.b();
       n = j;
       j = i;
       i = m;
@@ -756,19 +756,19 @@ public class ShareJsPlugin
     }
   }
   
-  public void updateShareMenuShareTicket(beka parambeka)
+  public void updateShareMenuShareTicket(bekr parambekr)
   {
     try
     {
-      boolean bool = new JSONObject(parambeka.jdField_b_of_type_JavaLangString).optBoolean("withShareTicket", false);
-      ((beru)this.mMiniAppContext.a(bejr.a())).h = bool;
-      parambeka.a();
+      boolean bool = new JSONObject(parambekr.jdField_b_of_type_JavaLangString).optBoolean("withShareTicket", false);
+      ((besl)this.mMiniAppContext.a(beki.a())).h = bool;
+      parambekr.a();
       return;
     }
-    catch (JSONException parambeka)
+    catch (JSONException parambekr)
     {
-      besl.d("ShareJsPlugin", parambeka.getMessage(), parambeka);
-      parambeka.printStackTrace();
+      betc.d("ShareJsPlugin", parambekr.getMessage(), parambekr);
+      parambekr.printStackTrace();
     }
   }
 }

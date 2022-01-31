@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import onk;
+import onh;
 
 class MainFragment$18
   implements Runnable
@@ -11,7 +11,7 @@ class MainFragment$18
   {
     try
     {
-      onk.d();
+      onh.d();
       return;
     }
     catch (Exception localException)

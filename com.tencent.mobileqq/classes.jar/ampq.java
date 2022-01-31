@@ -1,4 +1,7 @@
-class ampq {}
+final class ampq
+{
+  public static final ampo a = new ampo(null);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

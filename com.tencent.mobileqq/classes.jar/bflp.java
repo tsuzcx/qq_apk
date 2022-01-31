@@ -1,51 +1,122 @@
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
 
-public class bflp
-  implements GestureResource
+public abstract class bflp
 {
-  public static String a;
-  public static boolean a;
-  public static String b = "200";
-  public static String c = "20";
+  bflp(TraeAudioManager paramTraeAudioManager) {}
   
-  static
+  public abstract String a();
+  
+  String a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "5";
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "STATE_OFF";
+      continue;
+      str = "STATE_TURNING_ON";
+      continue;
+      str = "STATE_ON";
+      continue;
+      str = "STATE_TURNING_OFF";
+    }
   }
   
-  public String getGestureGapFrame()
+  public abstract void a();
+  
+  abstract void a(Context paramContext, Intent paramIntent);
+  
+  public void a(Context paramContext, Intent paramIntent, bflq parambflq)
   {
-    return jdField_a_of_type_JavaLangString;
+    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
+      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
+      }
+      if (i == 10)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("TraeAudioManager", 2, "    BT off");
+        }
+        parambflq.a("DEVICE_BLUETOOTHHEADSET", false);
+      }
+      while ((i != 12) || (!QLog.isColorLevel())) {
+        return;
+      }
+      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
+      return;
+    }
+    a(paramContext, paramIntent);
   }
   
-  public String getGestureGapTime()
+  abstract void a(IntentFilter paramIntentFilter);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Context paramContext, bflq parambflq);
+  
+  String b(int paramInt)
   {
-    return b;
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "SCO_AUDIO_STATE_DISCONNECTED";
+      continue;
+      str = "SCO_AUDIO_STATE_CONNECTED";
+      continue;
+      str = "SCO_AUDIO_STATE_CONNECTING";
+      continue;
+      str = "SCO_AUDIO_STATE_ERROR";
+    }
   }
   
-  public boolean getGestureShouldUpload()
+  public void b(IntentFilter paramIntentFilter)
   {
-    return jdField_a_of_type_Boolean;
+    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
+    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
+    a(paramIntentFilter);
   }
   
-  public String getGestureThreadColdTime()
+  String c(int paramInt)
   {
-    return c;
-  }
-  
-  public String getModelPath()
-  {
-    return axgw.a();
-  }
-  
-  public String getSoPathDir()
-  {
-    return axgw.b();
-  }
-  
-  public boolean isGestureEnable()
-  {
-    return axgp.a().d();
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "unknow";
+    }
+    for (;;)
+    {
+      return str + ":" + paramInt;
+      str = "STATE_DISCONNECTED";
+      continue;
+      str = "STATE_CONNECTING";
+      continue;
+      str = "STATE_CONNECTED";
+      continue;
+      str = "STATE_DISCONNECTING";
+    }
   }
 }
 

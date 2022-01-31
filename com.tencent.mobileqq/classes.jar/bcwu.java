@@ -1,72 +1,166 @@
-import android.os.Bundle;
-import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class bcwu
-  implements bcwl
 {
-  private void a(Document paramDocument, Bundle paramBundle)
+  private static void a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    NodeList localNodeList = paramDocument.getElementsByTagName("ModifyPwdUrls");
-    paramDocument = new Bundle();
-    if ((localNodeList != null) && (localNodeList.getLength() >= 1))
+    int j = 0;
+    int k = paramArrayOfByte.length;
+    int i = 0;
+    while (i < k >> 2)
     {
-      localNodeList = localNodeList.item(0).getChildNodes();
-      int i = 0;
-      while (i < localNodeList.getLength())
+      int m = j + 1;
+      paramArrayOfByte[j] &= 0xFF;
+      int n = paramArrayOfInt[i];
+      j = m + 1;
+      paramArrayOfInt[i] = (n | (paramArrayOfByte[m] & 0xFF) << 8);
+      n = paramArrayOfInt[i];
+      m = j + 1;
+      paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
+      n = paramArrayOfInt[i];
+      j = m + 1;
+      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 24 | n);
+      i += 1;
+    }
+    if (j < paramArrayOfByte.length)
+    {
+      k = j + 1;
+      paramArrayOfByte[j] &= 0xFF;
+      j = 8;
+      while (k < paramArrayOfByte.length)
       {
-        Object localObject = localNodeList.item(i);
-        if ((localObject instanceof Element))
-        {
-          String str = ((Element)localObject).getAttribute("Name");
-          localObject = ((Element)localObject).getAttribute("Url");
-          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
-            paramDocument.putString(str, (String)localObject);
-          }
-        }
-        i += 1;
+        paramArrayOfInt[i] |= (paramArrayOfByte[k] & 0xFF) << j;
+        k += 1;
+        j += 8;
       }
-      paramBundle.putBundle("ModifyPwdUrls", paramDocument);
     }
   }
   
-  public bcws a(String paramString)
+  private static void a(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
   {
-    paramString = new File(paramString);
-    Object localObject1 = DocumentBuilderFactory.newInstance();
+    int i = paramArrayOfByte.length >> 2;
+    int j = i;
+    if (i > paramInt) {
+      j = paramInt;
+    }
+    int k = 0;
+    i = 0;
+    while (i < j)
+    {
+      int m = k + 1;
+      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
+      k = m + 1;
+      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 8 & 0xFF));
+      m = k + 1;
+      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] >>> 16 & 0xFF));
+      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 24 & 0xFF));
+      i += 1;
+      k = m + 1;
+    }
+    if ((paramInt > j) && (k < paramArrayOfByte.length))
+    {
+      paramInt = k + 1;
+      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
+      j = 8;
+      while ((j <= 24) && (paramInt < paramArrayOfByte.length))
+      {
+        paramArrayOfByte[paramInt] = ((byte)(paramArrayOfInt[i] >>> j & 0xFF));
+        j += 8;
+        paramInt += 1;
+      }
+    }
+  }
+  
+  public static byte[] a()
+  {
     try
     {
-      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(paramString);
-      Object localObject2 = paramString.getDocumentElement();
-      localObject1 = new Bundle();
-      localObject2 = ((Element)localObject2).getAttribute("Version");
-      int i = -1;
-      try
-      {
-        int j = Integer.parseInt((String)localObject2);
-        i = j;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-      }
-      ((Bundle)localObject1).putInt("version", i);
-      a(paramString, (Bundle)localObject1);
-      return new bcwt((Bundle)localObject1);
+      byte[] arrayOfByte = "DFG#$%^#%$RGHR(&*M<><".getBytes("UTF-8");
+      return arrayOfByte;
     }
-    catch (Exception paramString)
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      paramString.printStackTrace();
+      localUnsupportedEncodingException.printStackTrace();
     }
     return null;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte != null)
+    {
+      localObject = paramArrayOfByte;
+      if (paramArrayOfByte.length <= 16) {}
+    }
+    try
+    {
+      localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramArrayOfByte);
+      localObject = ((MessageDigest)localObject).digest();
+      return localObject;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = a(paramArrayOfByte2);
+    if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0)) {
+      return paramArrayOfByte1;
+    }
+    if ((paramArrayOfByte1.length % 4 != 0) || (paramArrayOfByte1.length < 8)) {
+      return null;
+    }
+    paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
+    a(paramArrayOfByte1, paramArrayOfByte2);
+    if (arrayOfByte.length % 4 == 0) {}
+    for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
+    {
+      j = i;
+      if (i < 4) {
+        j = 4;
+      }
+      paramArrayOfByte1 = new int[j];
+      i = 0;
+      while (i < j)
+      {
+        paramArrayOfByte1[i] = 0;
+        i += 1;
+      }
+    }
+    a(arrayOfByte, paramArrayOfByte1);
+    int m = paramArrayOfByte2.length - 1;
+    i = paramArrayOfByte2[m];
+    i = paramArrayOfByte2[0];
+    int j = (52 / (m + 1) + 6) * -1640531527;
+    while (j != 0)
+    {
+      int n = j >>> 2 & 0x3;
+      int k = i;
+      i = m;
+      while (i > 0)
+      {
+        i1 = paramArrayOfByte2[(i - 1)];
+        k = paramArrayOfByte2[i] - ((k ^ j) + (i1 ^ paramArrayOfByte1[(i & 0x3 ^ n)]) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
+        paramArrayOfByte2[i] = k;
+        i -= 1;
+      }
+      int i1 = paramArrayOfByte2[m];
+      i = paramArrayOfByte2[0] - ((paramArrayOfByte1[(i & 0x3 ^ n)] ^ i1) + (k ^ j) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
+      paramArrayOfByte2[0] = i;
+      j += 1640531527;
+    }
+    i = paramArrayOfByte2[(paramArrayOfByte2.length - 1)];
+    if ((i < 0) || (i > paramArrayOfByte2.length - 1 << 2)) {
+      return null;
+    }
+    paramArrayOfByte1 = new byte[i];
+    a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
+    return paramArrayOfByte1;
   }
 }
 

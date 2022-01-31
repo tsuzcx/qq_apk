@@ -1,10 +1,6 @@
 public abstract interface owu
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void a(boolean paramBoolean);
 }
 
 

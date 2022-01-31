@@ -2,12 +2,12 @@ package com.tencent.biz.webviewplugin;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import xle;
+import xlb;
 
 public class OfflinePlugin$5
   implements Runnable
 {
-  public OfflinePlugin$5(xle paramxle) {}
+  public OfflinePlugin$5(xlb paramxlb) {}
   
   public void run()
   {

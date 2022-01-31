@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
+import akaa;
 import akac;
-import akae;
 
 public class MayknowRecommendManager$3$1
   implements Runnable
 {
-  public MayknowRecommendManager$3$1(akae paramakae, String paramString) {}
+  public MayknowRecommendManager$3$1(akac paramakac, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akae.a.a(this.jdField_a_of_type_JavaLangString, true);
-    ((FriendListHandler)akac.a(this.jdField_a_of_type_Akae.a).a(1)).notifyUI(108, true, null);
+    this.jdField_a_of_type_Akac.a.a(this.jdField_a_of_type_JavaLangString, true);
+    ((FriendListHandler)akaa.a(this.jdField_a_of_type_Akac.a).a(1)).notifyUI(108, true, null);
   }
 }
 

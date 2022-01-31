@@ -1,14 +1,17 @@
-class rqk
+import java.util.HashMap;
+
+public class rqk
 {
-  String a;
-  String b;
-  String c;
+  public int a;
+  public final HashMap<String, String> a;
+  public oqj a;
+  public boolean a;
   
-  public rqk(String paramString1, String paramString2, String paramString3)
+  public rqk()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.jdField_a_of_type_Int = 1002;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Oqj = new oqj();
   }
 }
 

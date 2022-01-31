@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -97,7 +97,7 @@ public class FormMultiLineItem
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(ajyc.a(2131704721));
+      localMultiImageTextView.setText(ajya.a(2131704732));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(1, 2131366617);
       localLayoutParams.bottomMargin = j;
@@ -115,7 +115,7 @@ public class FormMultiLineItem
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(ajyc.a(2131704723));
+      localMultiImageTextView.setText(ajya.a(2131704734));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = this.i;
       localLayoutParams.addRule(1, 2131366617);
@@ -336,7 +336,7 @@ public class FormMultiLineItem
           localMultiImageTextView.setSingleLine(true);
           localMultiImageTextView.setDuplicateParentStateEnabled(true);
           localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-          localMultiImageTextView.setText(ajyc.a(2131704722));
+          localMultiImageTextView.setText(ajya.a(2131704733));
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.leftMargin = this.i;
           localLayoutParams.addRule(1, 2131366617);

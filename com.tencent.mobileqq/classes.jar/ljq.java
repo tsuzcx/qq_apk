@@ -1,108 +1,87 @@
-import android.graphics.PointF;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ljq
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  static long jdField_a_of_type_Long;
+  static String jdField_a_of_type_JavaLangString;
+  static boolean jdField_a_of_type_Boolean;
   
-  public PointF a(PointF paramPointF)
+  static long a(String paramString)
   {
-    if ((!a()) || (paramPointF == null)) {
-      return null;
-    }
-    float f1 = paramPointF.x * this.d;
-    float f2 = paramPointF.y * this.c;
-    float f4 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    f4 = (f4 + f1) / this.f;
-    f3 = (f3 + f2) / this.e;
-    ljo.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
-    return new PointF(f4, f3);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    int i;
-    int j;
-    if (this.jdField_b_of_type_JavaLangString != null)
+    long l1 = 0L;
+    long l2 = l1;
+    if (!lsq.a(paramString, jdField_a_of_type_JavaLangString))
     {
-      i = 1;
-      if ((this.e <= 0) || (this.f <= 0)) {
-        break label60;
+      long l3 = System.currentTimeMillis();
+      lcg.c("EffectZimuManager", "DataReport calTime zimu:" + paramString + "|" + jdField_a_of_type_JavaLangString + "|" + jdField_a_of_type_Long);
+      l2 = l1;
+      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      {
+        if (jdField_a_of_type_Long != 0L)
+        {
+          l1 = l3 - jdField_a_of_type_Long;
+          lcg.c("EffectZimuManager", "DataReport zimu:" + l1);
+          jdField_a_of_type_Boolean = true;
+          l1 /= 1000L;
+          a(jdField_a_of_type_JavaLangString, l1);
+          axqy.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          if (ljo.a(jdField_a_of_type_JavaLangString)) {
+            axqy.b(null, "CliOper", "", "", "0X8009193", "0X8009193", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          }
+        }
+        lcg.c("EffectZimuManager", "DataReport zimu 33:" + l1);
+        l2 = l1;
       }
-      j = 1;
-      label25:
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label65;
-      }
+      jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_Long = l3;
     }
-    label60:
-    label65:
-    for (int k = 1;; k = 0)
+    return l2;
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface.a(0))
     {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label70;
+      paramVideoAppInterface = (ZimuItem)((ljp)paramVideoAppInterface.a(0)).a();
+      if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
+        a(null);
       }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label25;
     }
-    label70:
-    return false;
   }
   
-  public String b()
+  public static void a(String paramString, long paramLong)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    lcg.c("EffectZimuManager", "DataReport zimu:" + paramString + "|" + paramLong);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("zimuName", paramString);
+    localHashMap.put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatZimu", true, -1L, -1L, localHashMap, true);
+    try
+    {
+      UserAction.flushObjectsToDB(true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      lcg.e("EffectZimuManager", paramString.getMessage());
+    }
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public static void a(String paramString1, String paramString2)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
+    lcg.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2);
+    axqy.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
   
-  public void c(int paramInt1, int paramInt2)
+  public static void a(String paramString1, String paramString2, String paramString3)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    lcg.c("EffectZimuManager", "DataReport onUsedZimu reportClickEvent:" + paramString1 + "|" + paramString2 + "|" + paramString3);
+    axqy.b(null, "CliOper", "", "", paramString1, paramString1, 0, 0, "", "", paramString2, paramString3);
   }
 }
 

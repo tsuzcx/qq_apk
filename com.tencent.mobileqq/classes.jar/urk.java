@@ -1,30 +1,78 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class urk
-  extends QQUIEventReceiver<uqy, tkn>
+  extends ste<uqv, svv>
 {
-  public urk(@NonNull uqy paramuqy)
+  public urk(uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull tkn paramtkn)
+  private void c(@NonNull uqv paramuqv, @NonNull svv paramsvv)
   {
-    if (uqy.a(paramuqy) == null)
+    if ((uqv.a(paramuqv) == null) || (!uqv.a(paramuqv).a.date.equals(paramsvv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
     {
-      veg.b(this.TAG, "ignore this user info event. %s.", paramtkn.toString());
+      ved.b(this.TAG, "ignore this upload status event. %s.", paramsvv.toString());
       return;
     }
-    veg.a(this.TAG, "receive user info event. %s.", paramtkn.toString());
-    uqy.a(paramuqy).c();
+    ved.a(this.TAG, "receive upload status change event. %s.", paramsvv.toString());
+    int i = 0;
+    for (;;)
+    {
+      StoryVideoItem localStoryVideoItem;
+      if (i < uqv.a(paramuqv).a().size())
+      {
+        localStoryVideoItem = (StoryVideoItem)uqv.a(paramuqv).a().get(i);
+        if (!localStoryVideoItem.equals(paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
+          break label159;
+        }
+        if (paramsvv.b != null) {
+          break label135;
+        }
+        localStoryVideoItem.copy(paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      }
+      for (;;)
+      {
+        paramuqv.a();
+        ved.d(this.TAG, "can't find the video whose state has been changed.");
+        return;
+        label135:
+        uqv.a(paramuqv).a(localStoryVideoItem);
+        uqv.a(paramuqv).a(paramsvv.b, i);
+      }
+      label159:
+      i += 1;
+    }
+  }
+  
+  public void a(@NonNull uqv paramuqv, @NonNull svv paramsvv)
+  {
+    if (paramsvv.a()) {
+      ved.b(this.TAG, "ignore this upload status event, because it's a troop video.");
+    }
+    do
+    {
+      return;
+      if (paramsvv.c())
+      {
+        ved.a(this.TAG, "receive share group video upload status change event. %s.", paramsvv.toString());
+        return;
+      }
+    } while (!paramsvv.b());
+    ved.a(this.TAG, "receive personal video upload status change event. %s.", paramsvv.toString());
+    c(paramuqv, paramsvv);
   }
   
   public Class acceptEventClass()
   {
-    return tkn.class;
+    return svv.class;
   }
+  
+  public void b(@NonNull uqv paramuqv, @NonNull svv paramsvv) {}
 }
 
 

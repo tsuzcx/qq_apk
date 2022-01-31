@@ -14,7 +14,7 @@ class FlowCameraActivity2$1
     if ((this.this$0.b != null) && (!this.this$0.b.isEnabled()))
     {
       this.this$0.b.setEnabled(true);
-      this.this$0.b.setText(2131692636);
+      this.this$0.b.setText(2131692637);
       this.this$0.b.setTextColor(-15550475);
     }
     int i = 0;

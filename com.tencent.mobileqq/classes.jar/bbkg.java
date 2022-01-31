@@ -1,20 +1,45 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class bbkg
+class bbkg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static void a(Activity paramActivity, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
-    }
-    aqfb.a(paramActivity, false, "shareToTroopBar", paramLong);
-  }
+  bbkg(bbkf parambbkf) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public void onGlobalLayout()
   {
-    axqw.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
+    if (!bbkf.a(this.a)) {}
+    for (;;)
+    {
+      return;
+      Object localObject = new Rect();
+      bbkf.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+      int j = bbkf.a(this.a) - ((Rect)localObject).height();
+      bbkf.a(this.a, ((Rect)localObject).height());
+      if (j > bbkf.b(this.a) / 3) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        bbkf.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        }
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
+        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
+          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
+        }
+        if (bbkf.a(this.a) != null) {
+          bbkf.a(this.a).a(j, false);
+        }
+        this.a.a();
+        return;
+      }
+    }
   }
 }
 

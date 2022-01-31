@@ -1,7 +1,15 @@
-public abstract interface bjxd
-  extends bjwv
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class bjxd
+  implements View.OnClickListener
 {
-  public abstract int a();
+  bjxd(bjxb parambjxb) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.a(0);
+  }
 }
 
 

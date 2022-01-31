@@ -1,28 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-
 public class qui
-  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public qui(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public qui(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

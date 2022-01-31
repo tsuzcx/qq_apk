@@ -1,40 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-class bist
-  implements View.OnClickListener
+public class bist
 {
-  bist(biss parambiss, bisj parambisj, int paramInt, bisy parambisy) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b = 6;
   
-  public void onClick(View paramView)
+  public bist()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Bisj.jdField_a_of_type_Int == 13)
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public bist(List<String> paramList, String paramString, JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramJSONObject != null)
     {
-      if (this.jdField_a_of_type_Bisj.a()) {
-        break label73;
-      }
-      bool = true;
-      if (!bool) {
-        break label78;
-      }
-      biss.a(this.jdField_a_of_type_Biss).add(Integer.valueOf(this.jdField_a_of_type_Int));
-      biss.a(this.jdField_a_of_type_Biss, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bisj.a(bool);
-      this.jdField_a_of_type_Bisy.a(bool);
+      a(paramJSONObject);
       return;
-      label73:
-      bool = false;
-      break;
-      label78:
-      biss.a(this.jdField_a_of_type_Biss).remove(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (biss.a(this.jdField_a_of_type_Biss).size() < 1) {
-        biss.a(this.jdField_a_of_type_Biss, false);
+    }
+    this.jdField_a_of_type_Int = 3;
+    this.b = 6;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangString != null) {}
+      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
+      {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
+        this.b = paramJSONObject.getInt("pendantNum");
+        return;
       }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
 }

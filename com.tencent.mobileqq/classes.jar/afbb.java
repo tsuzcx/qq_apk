@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class afbb
+class afbb
+  implements DialogInterface.OnClickListener
 {
-  public static void a(String paramString, Properties paramProperties)
-  {
-    axql.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
-  }
+  afbb(afba paramafba) {}
   
-  public static void a(String paramString, Properties paramProperties, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    axql.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
+    if (this.a.a.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

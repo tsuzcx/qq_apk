@@ -1,82 +1,53 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.OrientationEventListener;
-import android.view.WindowManager;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
 
-public abstract class mbv
-  extends OrientationEventListener
+public class mbv
+  implements SeekBar.OnSeekBarChangeListener
 {
-  int jdField_a_of_type_Int = -25;
-  protected Context a;
-  Configuration jdField_a_of_type_AndroidContentResConfiguration;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  public mbv(BeautyToolbar paramBeautyToolbar) {}
   
-  public mbv(Context paramContext, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_Boolean = msi.f(paramContext);
+    if (this.a.mBeautyValue != paramInt)
+    {
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label125;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
+      EffectSettingUi.a(this.a.mApp, -1003L);
+      return;
+      label125:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
+      }
+    }
   }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public void onOrientationChanged(int paramInt)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if (paramInt == -1) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
-      }
-    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt -= 90;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = paramInt + 360;
-      }
-    }
-    if (this.b) {}
-    for (paramInt = llq.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = llq.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-    {
-      int j = paramInt;
-      if (paramInt > 360) {
-        j = paramInt % 360;
-      }
-      i -= j;
-      paramInt = i;
-      if (i < 0) {
-        paramInt = i + 360;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt <= 314) && (paramInt >= 45)) {
-        break;
-      }
-      a(0, this.b);
-      return;
-    }
-    if ((paramInt > 44) && (paramInt < 135))
-    {
-      a(90, this.b);
-      return;
-    }
-    if ((paramInt > 134) && (paramInt < 225))
-    {
-      a(180, this.b);
-      return;
-    }
-    a(270, this.b);
+    EffectSettingUi.a(this.a.mApp, -1004L);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
+    EffectSettingUi.a(this.a.mApp, -1005L);
   }
 }
 

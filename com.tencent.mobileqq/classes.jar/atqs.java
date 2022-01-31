@@ -1,48 +1,44 @@
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import java.util.Collection;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class atqs
-  extends AvatarWallPagerAdapter<PicInfo>
+  extends BaseAdapter
 {
-  protected LinearLayout.LayoutParams a;
+  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public View a(int paramInt, PicInfo paramPicInfo)
+  public atqs(List<PicInfo> paramList, int paramInt)
   {
-    return this.jdField_a_of_type_Atpi.a(paramInt, paramPicInfo);
-  }
-  
-  public View a(boolean paramBoolean, int paramInt)
-  {
-    View localView = new View(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    int j = i * 6;
+    int i = j;
+    while ((i < paramInt.size()) && (i < j + 6))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 11.0F), vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 1.0F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = vzo.a(this.jdField_a_of_type_Atpi.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
+      i += 1;
     }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    if (paramBoolean)
-    {
-      localView.setBackgroundColor(-1);
-      return localView;
-    }
-    localView.setBackgroundColor(1728053247);
-    return localView;
   }
   
-  public void a(int paramInt, View paramView)
+  public int getCount()
   {
-    this.jdField_a_of_type_Atpi.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
+  public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_Atpi.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(paramPicInfo1, paramPicInfo2);
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.jdField_a_of_type_Atpk.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
 }
 

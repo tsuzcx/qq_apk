@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.api;
 
-import ajyc;
+import ajya;
 import android.content.Context;
-import bbcv;
-import bbgg;
+import bbdj;
+import bbgu;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
@@ -16,9 +16,9 @@ class QQEnvImp$2
   
   public void run()
   {
-    bbgg localbbgg = bbcv.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), ajyc.a(2131710219), ajyc.a(2131710220), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
-    localbbgg.setCanceledOnTouchOutside(false);
-    localbbgg.show();
+    bbgu localbbgu = bbdj.a(this.val$context, 230, null, GameWnsUtils.getGameErrorDialogContent(), ajya.a(2131710230), ajya.a(2131710231), new QQEnvImp.2.1(this), new QQEnvImp.2.2(this));
+    localbbgu.setCanceledOnTouchOutside(false);
+    localbbgu.show();
     MiniReportManager.reportEventType(GameInfoManager.g().getMiniAppConfig(), 1024, "1");
   }
 }

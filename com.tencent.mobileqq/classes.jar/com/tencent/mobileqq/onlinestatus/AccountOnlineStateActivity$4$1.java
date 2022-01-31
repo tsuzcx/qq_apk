@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import auhf;
-import auib;
-import bcpw;
+import auhh;
+import auid;
+import bcql;
 import java.util.List;
 
 public class AccountOnlineStateActivity$4$1
   implements Runnable
 {
-  public AccountOnlineStateActivity$4$1(auhf paramauhf, boolean paramBoolean, List paramList) {}
+  public AccountOnlineStateActivity$4$1(auhh paramauhh, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a) != null) {
-        AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhh.a) != null) {
+        AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhh.a).a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a) == null) {
+    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhh.a) == null) {
       return;
     }
-    bcpw.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhf.a), 1, 2131690307, 1).a();
+    bcql.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Auhh.a), 1, 2131690307, 1).a();
   }
 }
 

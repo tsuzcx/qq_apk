@@ -1,6 +1,17 @@
-public abstract interface ahdu
+import java.util.Comparator;
+
+class ahdu
+  implements Comparator<ahdv>
 {
-  public abstract void a(int paramInt);
+  ahdu(ahdt paramahdt) {}
+  
+  public int a(ahdv paramahdv1, ahdv paramahdv2)
+  {
+    if (paramahdv2.a - paramahdv1.a > 0.0F) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

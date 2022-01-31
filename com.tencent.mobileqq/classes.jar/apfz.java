@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
 
 class apfz
-  implements View.OnClickListener
+  implements apgg
 {
-  apfz(apfx paramapfx, awog paramawog) {}
+  apfz(apfy paramapfy) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    apfw localapfw = (apfw)this.jdField_a_of_type_Awog;
-    localapfw.a(paramView);
-    paramView = (CheckBox)paramView.findViewById(2131366225);
-    if (paramView.getVisibility() == 0) {
-      paramView.setChecked(localapfw.b());
-    }
-    if (apfx.a(this.jdField_a_of_type_Apfx) != null) {
-      apfx.a(this.jdField_a_of_type_Apfx).a();
-    }
+    FileSelectorSearchGroupFragment.a(this.a.a).a();
   }
 }
 

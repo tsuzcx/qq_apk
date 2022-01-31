@@ -1,350 +1,945 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.os.Message;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.JNICallCenter.DataPoint;
-import com.tencent.device.file.DeviceFileHandler;
-import com.tencent.device.msg.data.MessageForDevPtt;
-import com.tencent.litetransfersdk.Session;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.datadef.MsgPack;
+import com.tencent.device.datadef.ProductInfo;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.util.Pair;
+import cooperation.smartdevice.SmartDevicePluginDownloadActivity;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class yet
-  extends ybz
+class yet
+  extends BroadcastReceiver
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<yca> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<Long, ycb> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-  private ConcurrentHashMap<Long, Long> b = new ConcurrentHashMap(10);
+  yet(yer paramyer) {}
   
-  public yet(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private long a(MessageForDeviceFile paramMessageForDeviceFile, View paramView, anis paramanis)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
     long l1;
-    if ((paramMessageForDeviceFile == null) || (TextUtils.isEmpty(paramMessageForDeviceFile.strMediaKey)))
+    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceUnBindRst"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceGroupChatMsgProcessor", 2, "mr is null or strCoverKey is empty in downloadCoverFile!");
-      }
-      l1 = 0L;
-      return l1;
-    }
-    if (!bbev.d(BaseApplication.getContext())) {
-      return 0L;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      yca localyca = (yca)localIterator.next();
-      if (localyca.a() == paramView) {
-        localyca.b = new WeakReference(paramanis);
+      paramContext = paramIntent.getExtras();
+      l1 = paramContext.getLong("deviceopdin", 0L);
+      if (paramContext.getInt("deviceoprstcode", 0) == 0) {
+        this.a.app.a().a(Long.valueOf(l1).toString(), 9501);
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new yca(this, paramView, paramanis));
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceFile.uSessionID))) {
-        return paramMessageForDeviceFile.uSessionID;
-      }
-      if (this.b.containsKey(Long.valueOf(paramMessageForDeviceFile.uniseq)))
-      {
-        l1 = ((Long)this.b.get(Long.valueOf(paramMessageForDeviceFile.uniseq))).longValue();
-        if (awzw.a() - l1 < 3600L) {
-          return paramMessageForDeviceFile.uSessionID;
-        }
-      }
-      long l2 = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForDeviceFile.strMediaKey, paramMessageForDeviceFile.strFileKey2, 3, 2154);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
-      if ((paramView instanceof MessageForDeviceFile)) {
-        ((MessageForDeviceFile)paramView).uSessionID = l2;
-      }
-      paramMessageForDeviceFile.uSessionID = l2;
-      l1 = l2;
-      if (l2 == 0L) {
-        break;
-      }
-      a(l2, paramMessageForDeviceFile.frienduin, paramMessageForDeviceFile.istroop, paramMessageForDeviceFile.uniseq);
-      return l2;
-    }
-  }
-  
-  private MessageRecord a(long paramLong1, long paramLong2, JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.optInt("duration", 0);
-    String str = paramJSONObject.optString("file_key", "");
-    paramJSONObject = paramJSONObject.optString("fkey2", "");
-    MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)axaq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramLong2), null, 9501);
-    localMessageForDevPtt.url = "";
-    localMessageForDevPtt.urlAtServer = str;
-    localMessageForDevPtt.strFileKey2 = paramJSONObject;
-    localMessageForDevPtt.channeltype = 3;
-    localMessageForDevPtt.itemType = 2;
-    localMessageForDevPtt.sttAbility = 0;
-    localMessageForDevPtt.longPttVipFlag = 0;
-    localMessageForDevPtt.c2cViaOffline = true;
-    localMessageForDevPtt.msgtype = -4501;
-    localMessageForDevPtt.istroop = 9501;
-    localMessageForDevPtt.issend = 0;
-    localMessageForDevPtt.isread = false;
-    localMessageForDevPtt.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageForDevPtt.senderuin = Long.toString(paramLong1);
-    localMessageForDevPtt.frienduin = Long.toString(paramLong2);
-    localMessageForDevPtt.time = awzw.a();
-    localMessageForDevPtt.msg = (bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDevPtt.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691298));
-    localMessageForDevPtt.voiceLength = i;
-    localMessageForDevPtt.extStr = "device_groupchat";
-    localMessageForDevPtt.serial();
-    return localMessageForDevPtt;
-  }
-  
-  private void a(long paramLong1, String paramString, int paramInt, long paramLong2)
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
-    {
-      paramString = new ycb(this, paramString, paramInt, paramLong2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramString);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("DeviceGroupChatMsgProcessor", 2, "found resume");
-  }
-  
-  private MessageRecord b(long paramLong1, long paramLong2, JSONObject paramJSONObject)
-  {
-    String str1 = paramJSONObject.optString("media_key", "");
-    String str2 = paramJSONObject.optString("cover_key", "");
-    String str3 = paramJSONObject.optString("fkey2", "");
-    paramJSONObject = paramJSONObject.optString("ckey2", "");
-    MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)axaq.a(-4500);
-    localMessageForDeviceFile.strServiceName = yeu.d;
-    localMessageForDeviceFile.msgtype = -4500;
-    localMessageForDeviceFile.istroop = 9501;
-    localMessageForDeviceFile.filePath = "";
-    localMessageForDeviceFile.issend = 0;
-    localMessageForDeviceFile.isread = false;
-    localMessageForDeviceFile.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localMessageForDeviceFile.senderuin = Long.toString(paramLong1);
-    localMessageForDeviceFile.frienduin = Long.toString(paramLong2);
-    localMessageForDeviceFile.msgStatus = 3;
-    localMessageForDeviceFile.nFileStatus = 1;
-    localMessageForDeviceFile.time = awzw.a();
-    localMessageForDeviceFile.msg = (bbcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691595));
-    localMessageForDeviceFile.nFileMsgType = 2;
-    localMessageForDeviceFile.extStr = "device_groupchat";
-    localMessageForDeviceFile.strCoverKey = str2;
-    localMessageForDeviceFile.strMediaKey = str1;
-    localMessageForDeviceFile.strFileKey2 = str3;
-    localMessageForDeviceFile.strCoverKey2 = paramJSONObject;
-    localMessageForDeviceFile.serial();
-    return localMessageForDeviceFile;
-  }
-  
-  private void b(MessageRecord paramMessageRecord)
-  {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Object localObject = (yca)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((yca)localObject).a();
-      localObject = ((yca)localObject).a();
-      if ((localView != null) && (localObject != null))
-      {
-        j = i;
-        if ((paramMessageRecord instanceof MessageForDeviceFile)) {
-          ((anis)localObject).a(localView, (MessageForDeviceFile)paramMessageRecord);
-        }
-      }
-      for (int j = i;; j = i - 1)
-      {
-        i = j + 1;
-        break;
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-  }
-  
-  public long a(MessageRecord paramMessageRecord, View paramView, anis paramanis)
-  {
-    if ((paramMessageRecord instanceof MessageForDeviceFile)) {
-      return a((MessageForDeviceFile)paramMessageRecord, paramView, paramanis);
-    }
-    return 0L;
-  }
-  
-  protected MessageRecord a(long paramLong)
-  {
-    Object localObject1 = (ycb)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    if (localObject1 == null) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    do
-    {
-      return localObject1;
-      localObject2 = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject2 instanceof QQAppInterface)) {
-        break;
-      }
-      localObject2 = ((QQAppInterface)localObject2).a().a(((ycb)localObject1).jdField_a_of_type_JavaLangString, ((ycb)localObject1).jdField_a_of_type_Int, ((ycb)localObject1).jdField_a_of_type_Long);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceGroupChatMsgProcessor", 2, "device file msg null");
-    }
-    return null;
-    return null;
-  }
-  
-  public void a(DataPoint paramDataPoint)
-  {
-    try
-    {
-      localJSONObject = new JSONObject(paramDataPoint.mValue);
-      l2 = localJSONObject.optLong("from_uin");
-      l1 = l2;
-      if (0L == l2) {
-        l1 = paramDataPoint.mDin;
-      }
-      long l3 = localJSONObject.optLong("to_din");
-      l2 = l3;
-      if (0L == l3) {
-        l2 = paramDataPoint.mDin;
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (String.valueOf(l1).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        return;
-      }
-      localMessageRecord = null;
-      if (10011 != paramDataPoint.mProperityId) {
-        break label177;
-      }
-      localMessageRecord = a(l1, l2, localJSONObject);
-    }
-    catch (JSONException paramDataPoint)
-    {
-      JSONObject localJSONObject;
-      long l2;
-      long l1;
-      MessageRecord localMessageRecord;
-      while (QLog.isColorLevel())
-      {
-        QLog.d("DeviceGroupChatMsgProcessor", 2, "getString from json error:" + paramDataPoint.getMessage());
-        return;
-        label177:
-        if (10010 == paramDataPoint.mProperityId) {
-          localMessageRecord = b(l1, l2, localJSONObject);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return;
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    MessageRecord localMessageRecord;
-    if (!paramSession.bSend)
-    {
-      localMessageRecord = a(paramSession.uSessionID);
-      if (localMessageRecord != null) {
-        break label21;
-      }
-    }
-    label21:
-    label156:
-    do
-    {
-      return;
-      MessageForDeviceFile localMessageForDeviceFile;
-      if ((localMessageRecord instanceof MessageForDeviceFile))
-      {
-        localMessageForDeviceFile = (MessageForDeviceFile)localMessageRecord;
-        if (localMessageForDeviceFile.uSessionID != paramSession.uSessionID) {
-          continue;
-        }
-        localMessageForDeviceFile.filePath = paramSession.strFilePathSrc;
-        localMessageForDeviceFile.progress = 1.0F;
-        if (!paramBoolean) {
-          break label156;
-        }
-        localMessageForDeviceFile.nFileStatus = 5;
-        this.b.remove(Long.valueOf(localMessageRecord.uniseq));
-      }
-      for (;;)
-      {
-        localMessageForDeviceFile.serial();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.frienduin, 9501, localMessageRecord.uniseq, localMessageRecord.msgData);
-        if ((localMessageForDeviceFile.uSessionID == paramSession.uSessionID) && (paramBoolean)) {
-          b(localMessageForDeviceFile);
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramSession.uSessionID));
-        return;
-        localMessageForDeviceFile.nFileStatus = 6;
-        this.b.put(Long.valueOf(localMessageRecord.uniseq), Long.valueOf(awzw.a()));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceGroupChatMsgProcessor", 2, "error:can not find session id in message record");
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    Object localObject = (DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(50);
-    long l;
-    if ((paramMessageRecord instanceof MessageForDeviceFile))
-    {
-      MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)paramMessageRecord;
-      l = ((DeviceFileHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.strMediaKey, localMessageForDeviceFile.strFileKey2, 3, 2154);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-      if ((localObject instanceof MessageForDeviceFile)) {
-        ((MessageForDeviceFile)localObject).uSessionID = l;
-      }
-      localMessageForDeviceFile.uSessionID = l;
-    }
-    for (;;)
-    {
-      if (l != 0L) {
-        a(l, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq);
-      }
-      return;
-      l = 0L;
-    }
-  }
-  
-  public void b(Session paramSession)
-  {
-    Object localObject;
-    if (!paramSession.bSend)
-    {
-      localObject = a(paramSession.uSessionID);
-      if (localObject != null) {
-        break label21;
-      }
-    }
-    label21:
+    label1141:
     do
     {
       do
       {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  for (;;)
+                  {
+                    return;
+                    if (paramIntent.getAction().equalsIgnoreCase("tencent.av.v2q.StartVideoChat"))
+                    {
+                      if (paramIntent.getStringExtra("peerUin") != null) {}
+                      for (l1 = Long.parseLong(paramIntent.getStringExtra("peerUin"));; l1 = 0L)
+                      {
+                        paramContext = Long.valueOf(l1);
+                        if (paramContext.longValue() == 0L) {
+                          break;
+                        }
+                        yer.a(this.a).add(paramContext);
+                        return;
+                      }
+                    }
+                    int i;
+                    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceAdminUnbind"))
+                    {
+                      paramContext = Long.valueOf(paramIntent.getExtras().getLong("deviceopdin", 0L));
+                      if (yer.a(this.a).contains(paramContext) != true)
+                      {
+                        this.a.app.a().a(paramContext.toString(), 9501);
+                        return;
+                      }
+                      if (paramContext.longValue() != 0L) {
+                        yer.b(this.a).add(paramContext);
+                      }
+                    }
+                    else if (paramIntent.getAction().equalsIgnoreCase("tencent.av.v2q.StopVideoChat"))
+                    {
+                      i = paramIntent.getIntExtra("stopReason", 0);
+                      paramContext = paramIntent.getStringExtra("selfUin");
+                      if (paramIntent.getStringExtra("peerUin") != null) {}
+                      for (l1 = Long.parseLong(paramIntent.getStringExtra("peerUin"));; l1 = 0L)
+                      {
+                        paramIntent = Long.valueOf(l1);
+                        if ((i != 0) || (paramContext != null) || (paramIntent.longValue() == 0L) || (!yer.b(this.a).contains(paramIntent))) {
+                          break;
+                        }
+                        this.a.app.a().a(paramIntent.toString(), 9501);
+                        yer.b(this.a).remove(paramIntent);
+                        return;
+                      }
+                      if (paramIntent.longValue() != 0L) {
+                        yer.a(this.a).remove(paramIntent);
+                      }
+                    }
+                    else if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_receiveDPMsg"))
+                    {
+                      localObject1 = (DataPoint)paramIntent.getExtras().getParcelable("dataPoint");
+                      if (localObject1 == null)
+                      {
+                        if (!QLog.isColorLevel()) {
+                          continue;
+                        }
+                        QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "dp is null in DeviceMsgHandler::onreceive");
+                        return;
+                      }
+                      paramIntent = ((yah)this.a.app.a(51)).a(((DataPoint)localObject1).mDin);
+                      i = 0;
+                      if (paramIntent != null) {
+                        i = paramIntent.productId;
+                      }
+                      if ((11015 == ((DataPoint)localObject1).mProperityId) || (((DataPoint)localObject1).mProperityId == 11008) || (((DataPoint)localObject1).mProperityId == 11012)) {
+                        if (QLog.isColorLevel()) {
+                          QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "device info pid is 0; dp.mDin = " + ((DataPoint)localObject1).mDin);
+                        }
+                      }
+                      for (;;)
+                      {
+                        if (10004 == ((DataPoint)localObject1).mProperityId)
+                        {
+                          this.a.jdField_a_of_type_Yel.a((DataPoint)localObject1);
+                          if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                            break;
+                          }
+                          yer.a(this.a);
+                          return;
+                          if ((i == 0) && (((DataPoint)localObject1).mDin > 4294967295L))
+                          {
+                            if (!QLog.isColorLevel()) {
+                              break;
+                            }
+                            QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "device info pid is 0; dp.mDin = " + ((DataPoint)localObject1).mDin);
+                            return;
+                          }
+                        }
+                      }
+                      if ((10012 == ((DataPoint)localObject1).mProperityId) || (11015 == ((DataPoint)localObject1).mProperityId))
+                      {
+                        this.a.jdField_a_of_type_Yel.a((DataPoint)localObject1);
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      if (11016 == ((DataPoint)localObject1).mProperityId) {
+                        for (;;)
+                        {
+                          try
+                          {
+                            paramContext = new JSONObject(((DataPoint)localObject1).mValue);
+                            l1 = paramContext.optLong("din");
+                            if (paramContext.optInt("flag") == 0)
+                            {
+                              paramContext = this.a.app.getHandler(Conversation.class);
+                              if (paramContext != null)
+                              {
+                                paramIntent = paramContext.obtainMessage(1134060);
+                                paramIntent.obj = Long.valueOf(l1);
+                                paramContext.sendMessage(paramIntent);
+                              }
+                              QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "PID_MSG_PROXY JSON :" + ((DataPoint)localObject1).mValue);
+                              return;
+                            }
+                          }
+                          catch (Exception paramContext)
+                          {
+                            paramContext.printStackTrace();
+                            return;
+                          }
+                          paramContext = paramContext.optString("remark", " ");
+                          paramIntent = this.a.app.getHandler(Conversation.class);
+                          if (paramIntent != null)
+                          {
+                            localObject2 = paramIntent.obtainMessage(1134059);
+                            ((Message)localObject2).obj = new Pair(Long.valueOf(l1), paramContext);
+                            paramIntent.sendMessage((Message)localObject2);
+                          }
+                        }
+                      }
+                      if ((10003 == ((DataPoint)localObject1).mProperityId) || (10013 == ((DataPoint)localObject1).mProperityId))
+                      {
+                        this.a.jdField_a_of_type_Ybp.a((DataPoint)localObject1);
+                        ymt.a(this.a.app, ((DataPoint)localObject1).mDin, "Usr_AIO_ReceiveMsg", 2, 0, i);
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      if (10007 == ((DataPoint)localObject1).mProperityId)
+                      {
+                        for (;;)
+                        {
+                          try
+                          {
+                            paramContext = new JSONObject(((DataPoint)localObject1).mValue);
+                            paramIntent = paramContext.optString("ext_cmd", " ");
+                            paramContext = paramContext.optString("gray_flag", "");
+                          }
+                          catch (Exception paramIntent)
+                          {
+                            try
+                            {
+                              if (("OPT_DEV_AUTH_CONFIRM".equals(paramIntent)) || ("OPT_DEV_AUTH_REQ".equals(paramIntent))) {
+                                break;
+                              }
+                              bool = "TEXT_OF_11012".equals(paramIntent);
+                              if (bool) {
+                                break;
+                              }
+                              if ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals("1"))) {
+                                break label1141;
+                              }
+                              try
+                              {
+                                paramContext = new JSONObject(((DataPoint)localObject1).mValue);
+                                paramContext.optLong("msg_time", awzy.a());
+                                paramContext = paramContext.optString("text", " ");
+                                this.a.a(String.valueOf(((DataPoint)localObject1).mDin), paramContext, awzy.a(), true, false, true);
+                                return;
+                              }
+                              catch (Exception paramContext) {}
+                              if (!QLog.isColorLevel()) {
+                                break;
+                              }
+                              QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "onRecvRawTextMsg parse from json error:" + paramContext.getMessage());
+                              return;
+                            }
+                            catch (Exception paramIntent)
+                            {
+                              for (;;)
+                              {
+                                boolean bool;
+                                Object localObject4;
+                                Object localObject3;
+                                int j;
+                                long l2;
+                                String str1;
+                                String str2;
+                                Object localObject5;
+                                String str3;
+                                int k;
+                                long l3;
+                                continue;
+                                paramContext = "";
+                                continue;
+                                paramContext = "";
+                              }
+                            }
+                            paramIntent = paramIntent;
+                            paramContext = "";
+                          }
+                          paramIntent.printStackTrace();
+                        }
+                        this.a.a((DataPoint)localObject1);
+                        ymt.a(this.a.app, ((DataPoint)localObject1).mDin, "Usr_AIO_ReceiveMsg", 1, 0, i);
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      if ((10011 == ((DataPoint)localObject1).mProperityId) || (10010 == ((DataPoint)localObject1).mProperityId))
+                      {
+                        this.a.jdField_a_of_type_Yeq.a((DataPoint)localObject1);
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      if (10009 == ((DataPoint)localObject1).mProperityId)
+                      {
+                        try
+                        {
+                          localObject4 = new JSONObject(((DataPoint)localObject1).mValue);
+                          l1 = ((JSONObject)localObject4).getLong("from_uin");
+                          if ((!TextUtils.isEmpty(this.a.app.getCurrentAccountUin())) && (String.valueOf(l1).equals(this.a.app.getCurrentAccountUin()))) {
+                            continue;
+                          }
+                          paramContext = ((JSONObject)localObject4).optString("media_key", "");
+                          paramIntent = ((JSONObject)localObject4).optString("cover_key", "");
+                          localObject2 = ((JSONObject)localObject4).optString("fkey2", "");
+                          localObject3 = ((JSONObject)localObject4).optString("ckey2", "");
+                          i = ((JSONObject)localObject4).optInt("duration", 0);
+                          j = ((JSONObject)localObject4).optInt("csz_file_size", 0);
+                          l2 = ((JSONObject)localObject4).getLong("to_din");
+                          localObject4 = (MessageForDevLittleVideo)axas.a(-4509);
+                          ((MessageForDevLittleVideo)localObject4).msgtype = -4509;
+                          ((MessageForDevLittleVideo)localObject4).istroop = 9501;
+                          ((MessageForDevLittleVideo)localObject4).issend = 0;
+                          ((MessageForDevLittleVideo)localObject4).isread = false;
+                          ((MessageForDevLittleVideo)localObject4).selfuin = this.a.app.getCurrentAccountUin();
+                          ((MessageForDevLittleVideo)localObject4).senderuin = Long.toString(l1);
+                          ((MessageForDevLittleVideo)localObject4).frienduin = Long.toString(l2);
+                          ((MessageForDevLittleVideo)localObject4).videoFileStatus = 2001;
+                          ((MessageForDevLittleVideo)localObject4).time = awzy.a();
+                          ((MessageForDevLittleVideo)localObject4).msg = (bbcz.b(this.a.app, ((MessageForDevLittleVideo)localObject4).senderuin, true) + ajya.a(2131703187));
+                          ((MessageForDevLittleVideo)localObject4).extStr = "device_groupchat";
+                          ((MessageForDevLittleVideo)localObject4).thumbFileKey = paramIntent;
+                          ((MessageForDevLittleVideo)localObject4).videoFileKey = paramContext;
+                          ((MessageForDevLittleVideo)localObject4).fileKey2 = ((String)localObject2);
+                          ((MessageForDevLittleVideo)localObject4).coverkey2 = ((String)localObject3);
+                          ((MessageForDevLittleVideo)localObject4).videoFileTime = i;
+                          ((MessageForDevLittleVideo)localObject4).videoFileSize = j;
+                          ((MessageForDevLittleVideo)localObject4).videoFileFormat = 2;
+                          ((MessageForDevLittleVideo)localObject4).videoFileProgress = 0;
+                          ((MessageForDevLittleVideo)localObject4).serial();
+                          this.a.app.a().a((MessageRecord)localObject4, this.a.app.getCurrentAccountUin());
+                          if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                            continue;
+                          }
+                          yer.a(this.a);
+                          return;
+                        }
+                        catch (JSONException paramContext) {}
+                        if (!QLog.isColorLevel()) {
+                          continue;
+                        }
+                        QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "getString from json error:" + paramContext.getMessage());
+                        return;
+                      }
+                      if (((DataPoint)localObject1).mProperityId == 10008)
+                      {
+                        try
+                        {
+                          if ((!TextUtils.isEmpty(this.a.app.getCurrentAccountUin())) && (String.valueOf(((DataPoint)localObject1).mDin).equals(this.a.app.getCurrentAccountUin()))) {
+                            continue;
+                          }
+                          paramIntent = new JSONObject(((DataPoint)localObject1).mValue);
+                          paramContext = paramIntent.optString("senderDin", " ");
+                          l1 = paramIntent.optLong("msg_time", awzy.a());
+                          paramIntent = paramIntent.optString("text", " ");
+                          l2 = ((DataPoint)localObject1).mDin;
+                          yer.a(this.a, l2, paramContext, paramIntent, l1, true);
+                          if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                            continue;
+                          }
+                          yer.a(this.a);
+                          return;
+                        }
+                        catch (Exception paramContext) {}
+                        if (!QLog.isColorLevel()) {
+                          continue;
+                        }
+                        QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "onRecvRawTextMsg parse from json error:" + paramContext.getMessage());
+                        return;
+                      }
+                      if (((DataPoint)localObject1).mProperityId != 10014) {}
+                    }
+                    try
+                    {
+                      if (!DeviceTipActivity.a)
+                      {
+                        localObject2 = new JSONObject(((DataPoint)localObject1).mValue);
+                        paramContext = String.valueOf(((DataPoint)localObject1).mDin);
+                        paramIntent = ((JSONObject)localObject2).optString("digest", "");
+                        l2 = ((JSONObject)localObject2).optLong("appear_time", awzy.a());
+                        localObject2 = SettingCloneUtil.readValue(this.a.app.getApp(), this.a.app.getCurrentAccountUin(), null, "account_login_success_time", "");
+                        l1 = 0L;
+                        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+                          l1 = Long.valueOf((String)localObject2).longValue();
+                        }
+                        if (QLog.isColorLevel())
+                        {
+                          QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "ReceiveDoorTip appear_time= " + l2 + " : serverTime = " + awzy.a() + " loginTimeStr= " + (String)localObject2);
+                          i = (int)(awzy.a() - l2);
+                          bcql.a(this.a.app.getApp(), ajya.a(2131703184) + i + ajya.a(2131703186), 1).a();
+                        }
+                        if (l1 - l2 > 1L)
+                        {
+                          if (QLog.isColorLevel()) {
+                            bcql.a(this.a.app.getApp(), "该消息是手Q登录前" + (l1 - l2) + ajya.a(2131703195), 1).a();
+                          }
+                          this.a.a(paramContext, ajya.a(2131703189), l2, "");
+                          return;
+                        }
+                        if (awzy.a() - l2 <= 30L)
+                        {
+                          localObject2 = new Intent(this.a.app.getApp(), DeviceTipActivity.class);
+                          ((Intent)localObject2).setFlags(268435456);
+                          ((Intent)localObject2).putExtra("uin", paramContext);
+                          ((Intent)localObject2).putExtra("digest", paramIntent);
+                          this.a.app.getApp().startActivity((Intent)localObject2);
+                        }
+                      }
+                      if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                        continue;
+                      }
+                      yer.a(this.a);
+                      return;
+                    }
+                    catch (Exception paramContext) {}
+                    if (((DataPoint)localObject1).mProperityId == 1600006)
+                    {
+                      try
+                      {
+                        paramContext = new JSONObject(((DataPoint)localObject1).mValue);
+                        paramIntent = paramContext.optString("digest", "");
+                        l1 = paramContext.optLong("msg_time", awzy.a());
+                        if ((paramIntent != null) && (!TextUtils.isEmpty(paramIntent.trim()))) {
+                          this.a.a(Long.toString(((DataPoint)localObject1).mDin), paramIntent, l1, null);
+                        }
+                      }
+                      catch (Exception paramContext)
+                      {
+                        for (;;)
+                        {
+                          if (QLog.isColorLevel()) {
+                            QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "onRecvRawTextMsg parse from json error:" + paramContext.getMessage());
+                          }
+                        }
+                      }
+                      if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                        continue;
+                      }
+                      yer.a(this.a);
+                      return;
+                    }
+                    if (((DataPoint)localObject1).mProperityId == 10004)
+                    {
+                      try
+                      {
+                        paramIntent = new JSONObject(((DataPoint)localObject1).mValue);
+                        paramIntent.optLong("msgSeq", 0L);
+                        localObject2 = paramIntent.optString("latitude");
+                        localObject3 = paramIntent.optString("longitude");
+                        localObject4 = paramIntent.optString("title");
+                        str1 = paramIntent.optString("summary");
+                        str2 = paramIntent.optString("dianpingId");
+                        l1 = paramIntent.optLong("msg_time", awzy.a());
+                        yer.a(this.a, paramContext, Long.toString(((DataPoint)localObject1).mDin), (String)localObject2, (String)localObject3, (String)localObject4, str1, str2, l1);
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      catch (Exception paramContext) {}
+                      if (QLog.isColorLevel()) {
+                        QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "onRecvRawTextMsg parse from json error:" + paramContext.getMessage());
+                      }
+                    }
+                    else if (((DataPoint)localObject1).mProperityId == 11010)
+                    {
+                      try
+                      {
+                        localObject5 = new JSONObject(((DataPoint)localObject1).mValue);
+                        paramContext = ((JSONObject)localObject5).optString("prompt", "");
+                        paramIntent = ((JSONObject)localObject5).getString("app");
+                        localObject2 = ((JSONObject)localObject5).getString("view");
+                        localObject3 = ((JSONObject)localObject5).optString("desc", "");
+                        localObject4 = ((JSONObject)localObject5).optString("ver", "");
+                        str1 = ((JSONObject)localObject5).optString("meta", "");
+                        str2 = ((JSONObject)localObject5).optString("config", "");
+                        str3 = ((JSONObject)localObject5).optString("compatibleText", "");
+                        localObject5 = new SessionInfo();
+                        ((SessionInfo)localObject5).jdField_a_of_type_JavaLangString = Long.toString(((DataPoint)localObject1).mDin);
+                        ((SessionInfo)localObject5).b = "";
+                        ((SessionInfo)localObject5).jdField_a_of_type_Int = 9501;
+                        paramContext = new ArkAppMessage(paramContext, paramIntent, (String)localObject3, (String)localObject2, (String)localObject4, str1, str2, str3);
+                        paramContext = axas.a(this.a.app, ((SessionInfo)localObject5).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject5).b, ((SessionInfo)localObject5).jdField_a_of_type_Int, paramContext);
+                        paramContext.istroop = 9501;
+                        paramContext.issend = 0;
+                        paramContext.isread = false;
+                        paramContext.selfuin = this.a.app.getCurrentAccountUin();
+                        paramContext.senderuin = Long.toString(((DataPoint)localObject1).mDin);
+                        paramContext.frienduin = Long.toString(((DataPoint)localObject1).mDin);
+                        this.a.app.a().a(paramContext, this.a.app.getCurrentAccountUin());
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      catch (Exception paramContext)
+                      {
+                        return;
+                      }
+                    }
+                    else if ((((DataPoint)localObject1).mProperityId == 11008) || (((DataPoint)localObject1).mProperityId == 11012))
+                    {
+                      try
+                      {
+                        paramContext = new JSONObject(((DataPoint)localObject1).mValue);
+                        ymu.a(this.a.app, paramContext, String.valueOf(((DataPoint)localObject1).mDin));
+                        if (yer.a(this.a, ((DataPoint)localObject1).mValue)) {
+                          continue;
+                        }
+                        yer.a(this.a);
+                        return;
+                      }
+                      catch (Exception paramContext)
+                      {
+                        paramContext.printStackTrace();
+                      }
+                      if (QLog.isColorLevel()) {
+                        QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "auth_request_structmsg:" + paramContext.getMessage());
+                      }
+                    }
+                    else if (((DataPoint)localObject1).mProperityId == 700154)
+                    {
+                      try
+                      {
+                        paramIntent = new JSONObject(new JSONObject(((DataPoint)localObject1).mValue).optString("text"));
+                        i = paramIntent.optInt("roomId");
+                        paramContext = paramIntent.optString("sessionId");
+                        j = paramIntent.optInt("cTime");
+                        k = paramIntent.optInt("cmd");
+                        if (QLog.isColorLevel()) {
+                          QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "openav roomId:" + i + ",sessionId:" + paramContext + ", cTime: " + j + ", cmd:" + k);
+                        }
+                        if (k != 1) {
+                          continue;
+                        }
+                        paramIntent = new Intent(this.a.app.getApp(), SmartDevicePluginDownloadActivity.class);
+                        paramIntent.addFlags(268435456);
+                        paramIntent.putExtra("KEY_OPENAV_ROOM_ID", i);
+                        paramIntent.putExtra("device_id", String.valueOf(((DataPoint)localObject1).mDin));
+                        paramIntent.putExtra("KEY_OPENAV_RECEIVE", true);
+                        paramIntent.putExtra("KEY_OPENAV_SESSION_ID", paramContext);
+                        paramIntent.putExtra("KEY_OPENAV_CTIME", j);
+                        this.a.app.getApp().startActivity(paramIntent);
+                        return;
+                      }
+                      catch (Exception paramContext)
+                      {
+                        paramContext.printStackTrace();
+                        return;
+                      }
+                      if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_sendCCDataPointMsgResult"))
+                      {
+                        paramContext = (MsgPack)paramIntent.getExtras().get("msgpack");
+                        l1 = paramContext.uRecvUin;
+                        bool = paramContext.bSendResult;
+                        i = paramContext.dwMsgSequence;
+                        if (bool)
+                        {
+                          yer.a(this.a, String.valueOf(l1), i);
+                          return;
+                        }
+                        yer.b(this.a, String.valueOf(l1), i);
+                        return;
+                      }
+                      if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnMiniFileTransferProgress"))
+                      {
+                        paramContext = paramIntent.getExtras();
+                        l1 = paramContext.getLong("cookie", 0L);
+                        l2 = paramContext.getLong("progress", 0L);
+                        l3 = paramContext.getLong("total", 0L);
+                        i = 0;
+                        if ((l1 != 0L) && (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l1)))) {
+                          paramContext = (MessageRecord)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l1));
+                        }
+                        for (;;)
+                        {
+                          if ((!(paramContext instanceof MessageForDevLittleVideo)) || (i == 0)) {
+                            break label3604;
+                          }
+                          paramContext = (MessageForDevLittleVideo)paramContext;
+                          paramContext.videoFileStatus = 2002;
+                          paramContext.videoFileProgress = ((int)((float)l2 * 1.0D / (float)l3) * 100);
+                          paramContext.serial();
+                          this.a.app.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
+                          this.a.a().b(paramContext, (float)((float)l2 * 1.0D / (float)l3));
+                          return;
+                          if ((l1 == 0L) || (!this.a.b.containsKey(Long.valueOf(l1)))) {
+                            break;
+                          }
+                          paramContext = (MessageRecord)this.a.b.get(Long.valueOf(l1));
+                          i = 1;
+                        }
+                      }
+                      else
+                      {
+                        if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_OnMiniFileTransferComplete"))
+                        {
+                          paramIntent = paramIntent.getExtras();
+                          j = paramIntent.getInt("err_code", -1);
+                          l1 = paramIntent.getLong("cookie", 0L);
+                          i = 0;
+                          if ((l1 != 0L) && (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l1))))
+                          {
+                            paramContext = (MessageRecord)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l1));
+                            if (j != 0) {
+                              break label4145;
+                            }
+                            localObject1 = paramIntent.getString("filepath");
+                            paramIntent = new File((String)localObject1);
+                            paramIntent = ajsd.aW + "/smart_device/" + paramIntent.getName();
+                            bbdx.b((String)localObject1, paramIntent);
+                            if (!(paramContext instanceof MessageForDeviceFile)) {
+                              break label3971;
+                            }
+                            paramContext = (MessageForDeviceFile)paramContext;
+                            paramContext.filePath = paramIntent;
+                            paramContext.srcFileName = apug.a(paramIntent);
+                            paramContext.fileSize = apug.a(paramIntent);
+                            paramContext.msg = (bbcz.b(this.a.app, paramContext.senderuin, true) + ": " + this.a.app.getApp().getString(2131691595));
+                            paramContext.serial();
+                            this.a.app.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
+                            this.a.a().a(paramContext, Boolean.valueOf(true));
+                          }
+                          for (;;)
+                          {
+                            this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l1));
+                            this.a.b.remove(Long.valueOf(l1));
+                            return;
+                            if ((l1 == 0L) || (!this.a.b.containsKey(Long.valueOf(l1)))) {
+                              break;
+                            }
+                            paramContext = (MessageRecord)this.a.b.get(Long.valueOf(l1));
+                            i = 1;
+                            break label3690;
+                            if ((paramContext instanceof MessageForDevLittleVideo))
+                            {
+                              paramContext = (MessageForDevLittleVideo)paramContext;
+                              if (i != 0)
+                              {
+                                paramContext.videoFileName = paramIntent;
+                                paramContext.videoFileStatus = 2003;
+                                paramContext.serial();
+                                this.a.app.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
+                                this.a.a().b(paramContext, Boolean.valueOf(true));
+                              }
+                              else
+                              {
+                                paramContext.mThumbFilePath = paramIntent;
+                                try
+                                {
+                                  localObject1 = new BitmapFactory.Options();
+                                  ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
+                                  BitmapFactory.decodeFile(paramIntent, (BitmapFactory.Options)localObject1);
+                                  ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
+                                  paramContext.thumbWidth = ((BitmapFactory.Options)localObject1).outWidth;
+                                  paramContext.thumbHeight = ((BitmapFactory.Options)localObject1).outHeight;
+                                  paramContext.serial();
+                                  this.a.app.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
+                                }
+                                catch (OutOfMemoryError paramIntent)
+                                {
+                                  for (;;)
+                                  {
+                                    paramIntent.printStackTrace();
+                                  }
+                                }
+                                if ((paramContext instanceof MessageForDeviceFile))
+                                {
+                                  paramContext = (MessageForDeviceFile)paramContext;
+                                  this.a.a().a(paramContext, Boolean.valueOf(false));
+                                }
+                                else if (((paramContext instanceof MessageForDevLittleVideo)) && (i != 0))
+                                {
+                                  paramContext = (MessageForDevLittleVideo)paramContext;
+                                  paramContext.videoFileProgress = 0;
+                                  paramContext.videoFileStatus = 2005;
+                                  paramContext.serial();
+                                  this.a.app.a().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
+                                  this.a.a().b(paramContext, Boolean.valueOf(false));
+                                }
+                              }
+                            }
+                          }
+                        }
+                        if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceVasFlagChange"))
+                        {
+                          paramIntent = paramIntent.getExtras();
+                          if (paramIntent != null)
+                          {
+                            i = paramIntent.getInt("Flag", 0);
+                            l1 = paramIntent.getLong("Din", 0L);
+                            localObject1 = (yah)this.a.app.a(51);
+                            localObject2 = ((yah)localObject1).a(l1);
+                            paramIntent = "";
+                            if (localObject2 != null) {
+                              paramIntent = ((DeviceInfo)localObject2).serialNum;
+                            }
+                            paramIntent = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramIntent, "");
+                            if (!bbkk.a(paramIntent))
+                            {
+                              paramContext = paramIntent;
+                              if (!paramIntent.equals("0")) {}
+                            }
+                            else
+                            {
+                              paramIntent = this.a.app.getApp().getString(2131694921).split(":")[0];
+                              paramContext = paramIntent;
+                              if (((DeviceInfo)localObject2).isAdmin != 1)
+                              {
+                                ((yah)localObject1).a(((DeviceInfo)localObject2).productId, ((DeviceInfo)localObject2).serialNum);
+                                paramContext = paramIntent;
+                              }
+                            }
+                            if ((i == 1) && (((DeviceInfo)localObject2).isAdmin != 1))
+                            {
+                              aent.X = true;
+                              paramContext = paramContext + this.a.app.getApp().getString(2131691567);
+                              this.a.a(l1 + "", paramContext, awzy.a(), true, false, 1);
+                              return;
+                            }
+                            if ((i == 0) && (((DeviceInfo)localObject2).isAdmin != 1))
+                            {
+                              aent.X = false;
+                              paramContext = paramContext + this.a.app.getApp().getString(2131691566);
+                              this.a.a(l1 + "", paramContext, awzy.a(), true, false, true);
+                            }
+                          }
+                        }
+                        else if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_QueryIsDeviceBinded"))
+                        {
+                          paramIntent = paramIntent.getExtras();
+                          if (paramIntent != null)
+                          {
+                            l1 = paramIntent.getLong("AdminBinderUin", 0L);
+                            paramIntent = paramIntent.getString("DeviceSerialNum");
+                            localObject1 = bbcz.b(this.a.app, l1 + "", true);
+                            PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString(paramIntent, (String)localObject1).commit();
+                          }
+                        }
+                        else
+                        {
+                          if (!paramIntent.getAction().equalsIgnoreCase("DeviceSomebodyJoin")) {
+                            break;
+                          }
+                          paramContext = paramIntent.getExtras();
+                          localObject2 = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
+                          localObject3 = Long.valueOf(paramContext.getLong("deviceopuin", 0L));
+                          paramContext = (yah)this.a.app.a(51);
+                          paramIntent = paramContext.a(((Long)localObject2).longValue());
+                          if (paramIntent != null)
+                          {
+                            localObject1 = paramContext.a(paramIntent.productId);
+                            if (localObject1 != null)
+                            {
+                              if (paramContext.a(((Long)localObject2).longValue()).booleanValue()) {}
+                              for (paramContext = ajya.a(2131703197); !TextUtils.isEmpty(paramContext); paramContext = ajya.a(2131703194) + ((ProductInfo)localObject1).deviceName)
+                              {
+                                localObject1 = bbcz.b(this.a.app, Long.toString(((Long)localObject3).longValue()), true);
+                                paramIntent = (Intent)localObject1;
+                                if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                                  paramIntent = String.valueOf(localObject3);
+                                }
+                                paramContext = paramIntent + paramContext;
+                                this.a.a(localObject2 + "", paramContext, awzy.a(), true, false, true);
+                                return;
+                                if (paramIntent.isAdmin != 1) {
+                                  break label6255;
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  if ((!paramIntent.getAction().equalsIgnoreCase("DeviceSomebodyQuit")) && (!paramIntent.getAction().equalsIgnoreCase("DeviceSomebodyReject"))) {
+                    break label5163;
+                  }
+                  paramContext = paramIntent.getExtras();
+                  localObject2 = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
+                  localObject3 = Long.valueOf(paramContext.getLong("deviceopuin", 0L));
+                  paramContext = (yah)this.a.app.a(51);
+                  paramIntent = paramContext.a(((Long)localObject2).longValue());
+                } while ((paramIntent == null) || (paramContext.a(paramIntent.productId) == null));
+                if (!paramContext.a(((Long)localObject2).longValue()).booleanValue()) {
+                  break label6248;
+                }
+                paramContext = ajya.a(2131703185);
+              } while (TextUtils.isEmpty(paramContext));
+              localObject1 = bbcz.b(this.a.app, Long.toString(((Long)localObject3).longValue()), true);
+              paramIntent = (Intent)localObject1;
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                paramIntent = String.valueOf(localObject3);
+              }
+              paramContext = paramIntent + paramContext;
+              this.a.a(localObject2 + "", paramContext, awzy.a(), true, false, true);
+              return;
+              if (!"SmartDevice_DeviceBindRst".equals(paramIntent.getAction())) {
+                break;
+              }
+            } while (paramIntent.getExtras().getInt("deviceoprstcode") != 0);
+            localObject1 = (yah)this.a.app.a(51);
+            l1 = paramIntent.getExtras().getLong("deviceopdin", 0L);
+          } while ((localObject1 != null) && (((yah)localObject1).a(l1, 13)));
+          if (aoes.a().a(this.a.app, paramContext) != 0) {
+            this.a.a(l1 + "", "【重要！设备安全提醒】\n\n为防止QQ号被盗/丢失手机，导致设备被人恶意控制\n请点这里开启QQ设备锁\n\n\n查看QQ设备锁介绍", awzy.a(), "device_lock_msg");
+          }
+          localObject2 = ((yah)localObject1).a(l1);
+          paramIntent = "";
+          if (localObject2 != null) {
+            paramIntent = ((DeviceInfo)localObject2).serialNum;
+          }
+          paramIntent = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramIntent, "");
+          if (!bbkk.a(paramIntent))
+          {
+            paramContext = paramIntent;
+            if (!paramIntent.equals("0")) {}
+          }
+          else
+          {
+            paramIntent = this.a.app.getApp().getString(2131694921).split(":")[0];
+            paramContext = paramIntent;
+            if (localObject2 != null)
+            {
+              paramContext = paramIntent;
+              if (((DeviceInfo)localObject2).isAdmin != 1)
+              {
+                ((yah)localObject1).a(((DeviceInfo)localObject2).productId, ((DeviceInfo)localObject2).serialNum);
+                paramContext = paramIntent;
+              }
+            }
+          }
+        } while ((localObject2 == null) || (((DeviceInfo)localObject2).isAdmin == 1) || (!((yah)localObject1).a(l1).booleanValue()));
+        paramContext = paramContext + this.a.app.getApp().getString(2131691567);
+        this.a.a(l1 + "", paramContext, awzy.a(), true, false, 1);
         return;
-      } while (!(localObject instanceof MessageForDeviceFile));
-      localObject = (MessageForDeviceFile)localObject;
-    } while (((MessageForDeviceFile)localObject).uSessionID != paramSession.uSessionID);
-    ((MessageForDeviceFile)localObject).nFileStatus = 2;
+        if (!"On_OccupyMicrophoneNotify_Push".equals(paramIntent.getAction())) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(yer.jdField_a_of_type_JavaLangString, 2, "DeviceMsghandle intent.getExtras() : " + paramIntent.getExtras());
+        }
+        paramContext = paramIntent.getExtras();
+        paramIntent = Long.valueOf(paramContext.getLong("din", 0L));
+        paramContext = paramContext.getString("uin");
+      } while ((paramIntent.longValue() == 0L) || (TextUtils.isEmpty(paramContext)));
+      localObject1 = bbcz.b(this.a.app, paramContext, true);
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (paramContext.equals(localObject1))) {}
+      for (paramContext = ajya.a(2131703204);; paramContext = (String)localObject1 + ajya.a(2131703193))
+      {
+        this.a.a(String.valueOf(paramIntent), paramContext, awzy.a(), "");
+        yer.a(this.a);
+        return;
+      }
+      if ("SmartDevice_sendToAIO_Capture".equals(paramIntent.getAction()))
+      {
+        paramIntent = paramIntent.getExtras();
+        paramContext = paramIntent.getString("uin");
+        localObject1 = paramIntent.getString("path");
+        try
+        {
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("msg_time", awzy.a());
+          ((JSONObject)localObject2).put("guidewords", ajya.a(2131703191));
+          ((JSONObject)localObject2).put("appear_time", awzy.a());
+          ((JSONObject)localObject2).put("digest", ajya.a(2131703200));
+          ((JSONObject)localObject2).put("title", ajya.a(2131703203));
+          paramIntent = (MessageForDeviceSingleStruct)axas.a(-4502);
+          paramIntent.msgtype = -4502;
+          paramIntent.istroop = 9501;
+          paramIntent.issend = 0;
+          paramIntent.isread = false;
+          paramIntent.selfuin = this.a.app.getCurrentAccountUin();
+          paramIntent.senderuin = paramContext;
+          paramIntent.frienduin = paramContext;
+          paramIntent.strCoverPath = ((String)localObject1);
+          paramIntent.strMediaPath = ((String)localObject1);
+          paramIntent.strMediaFileName = apug.a((String)localObject1);
+          paramIntent.parseFromJson(((JSONObject)localObject2).toString());
+          paramIntent.msg = paramIntent.strDigest;
+          paramIntent.nMediaFileStatus = 5;
+          paramIntent.nDataType = 1;
+          paramContext = new ArrayList();
+          paramContext.add(paramIntent);
+          yer.a(this.a, paramContext);
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          return;
+        }
+      }
+    } while (!"SmartDevice_sendToAIO_Mp4".equals(paramIntent.getAction()));
+    label3604:
+    label3690:
+    localObject3 = paramIntent.getExtras();
+    label3971:
+    label4145:
+    paramContext = ((Bundle)localObject3).getString("uin");
+    label5163:
+    paramIntent = ((Bundle)localObject3).getString("path");
+    Object localObject1 = ((Bundle)localObject3).getString("imagepath");
+    Object localObject2 = ((Bundle)localObject3).getString("digest");
+    localObject4 = ((Bundle)localObject3).getString("title");
+    try
+    {
+      localObject3 = new JSONObject();
+      ((JSONObject)localObject3).put("msg_time", awzy.a());
+      ((JSONObject)localObject3).put("guidewords", ajya.a(2131703202));
+      ((JSONObject)localObject3).put("appear_time", awzy.a());
+      ((JSONObject)localObject3).put("digest", localObject2);
+      ((JSONObject)localObject3).put("title", localObject4);
+      ((JSONObject)localObject3).put("data_type", "VIDEO");
+      ((JSONObject)localObject3).put("cover_url", localObject1);
+      localObject2 = (MessageForDeviceSingleStruct)axas.a(-4502);
+      ((MessageForDeviceSingleStruct)localObject2).msgtype = -4502;
+      ((MessageForDeviceSingleStruct)localObject2).istroop = 9501;
+      ((MessageForDeviceSingleStruct)localObject2).issend = 0;
+      ((MessageForDeviceSingleStruct)localObject2).isread = false;
+      ((MessageForDeviceSingleStruct)localObject2).selfuin = this.a.app.getCurrentAccountUin();
+      ((MessageForDeviceSingleStruct)localObject2).senderuin = paramContext;
+      ((MessageForDeviceSingleStruct)localObject2).frienduin = paramContext;
+      ((MessageForDeviceSingleStruct)localObject2).strCoverPath = ((String)localObject1);
+      ((MessageForDeviceSingleStruct)localObject2).strMediaPath = paramIntent;
+      ((MessageForDeviceSingleStruct)localObject2).nDataType = 2;
+      ((MessageForDeviceSingleStruct)localObject2).strMediaFileName = apug.a(paramIntent);
+      ((MessageForDeviceSingleStruct)localObject2).nMediaFileSize = bbdx.a(paramIntent);
+      ((MessageForDeviceSingleStruct)localObject2).nMediaFileStatus = 5;
+      ((MessageForDeviceSingleStruct)localObject2).parseFromJson(((JSONObject)localObject3).toString());
+      ((MessageForDeviceSingleStruct)localObject2).msg = ((MessageForDeviceSingleStruct)localObject2).strDigest;
+      paramContext = new ArrayList();
+      paramContext.add(localObject2);
+      yer.a(this.a, paramContext);
+      return;
+    }
+    catch (Exception paramContext) {}
+    label6248:
+    label6255:
+    return;
   }
 }
 

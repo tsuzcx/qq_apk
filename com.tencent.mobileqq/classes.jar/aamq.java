@@ -1,25 +1,55 @@
+import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
 
 public class aamq
-  implements anzy
+  implements aeka
 {
   public aamq(BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt)
+  public void a(Intent paramIntent)
   {
-    switch (paramInt)
+    ((adis)this.a.jdField_a_of_type_Adia.a(7)).a(this.a.hashCode(), paramIntent);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    Object localObject = ((adis)this.a.jdField_a_of_type_Adia.a(7)).a(this.a.hashCode());
+    int i = paramInt;
+    if (localObject != null)
     {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-      return;
+      i = paramInt;
+      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
+      {
+        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+        i = paramInt;
+        if (localObject != null) {
+          i = ((ArrayList)localObject).size();
+        }
+      }
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
+    PanelIconLinearLayout localPanelIconLinearLayout;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.K))
+    {
+      boolean bool = myb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 4)) {}
+      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      if (!bool) {
+        break label179;
+      }
+    }
+    label179:
+    for (localObject = aeft.m;; localObject = aeft.l)
+    {
+      localPanelIconLinearLayout.a((int[])localObject, i);
+      if ((i > 0) && (!this.a.B())) {
+        this.a.a(true);
+      }
+      return false;
+    }
   }
 }
 

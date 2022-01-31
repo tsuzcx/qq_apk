@@ -1,40 +1,51 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
 
 public class azia
-  extends akim
+  implements View.OnClickListener
 {
-  public azia(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  int jdField_a_of_type_Int = 0;
+  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
+  String jdField_a_of_type_JavaLangString;
   
-  protected void a(long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3)
+  public azia(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
   {
-    this.a.app.removeObserver(this.a.a);
-    if (paramInt1 == 0)
-    {
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
-      localObject = null;
-      if (localTroopManager != null) {
-        localObject = localTroopManager.b(Long.toString(paramLong));
-      }
-      if (localObject != null)
-      {
-        ((TroopInfo)localObject).troopLat = paramInt2;
-        ((TroopInfo)localObject).troopLon = paramInt3;
-        localTroopManager.b((TroopInfo)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (this.jdField_a_of_type_Int == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
       }
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troopUin", paramLong);
-    ((Intent)localObject).putExtra("errCode", paramInt1);
-    ((Intent)localObject).putExtra("isClear", paramBoolean);
-    ((Intent)localObject).putExtra("location", paramString);
-    ((Intent)localObject).putExtra("lat", paramInt2);
-    ((Intent)localObject).putExtra("lon", paramInt3);
-    this.a.setResult(-1, (Intent)localObject);
-    this.a.finish();
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+        continue;
+        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
+        if (paramView != null) {
+          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+        }
+      }
+    }
   }
 }
 

@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-class qzs
-  implements View.OnClickListener
+public class qzs
+  implements Interpolator
 {
-  qzs(qzr paramqzr, ntu paramntu) {}
+  public qzs(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
   
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_Ntu.j();
-    this.jdField_a_of_type_Qzr.b();
+    if (paramFloat < 0.2F) {
+      return 0.0F;
+    }
+    if (paramFloat < 0.5F) {
+      return (paramFloat - 0.2F) / 0.3F;
+    }
+    return 1.0F;
   }
 }
 

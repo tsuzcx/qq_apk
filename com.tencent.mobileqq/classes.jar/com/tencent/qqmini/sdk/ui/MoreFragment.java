@@ -18,9 +18,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import besl;
-import bffg;
-import bffu;
+import betc;
+import bffx;
+import bfgl;
 import java.util.Iterator;
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class MoreFragment
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(200L);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bffg(this, paramInt, paramBundle));
+    localAnimationSet.setAnimationListener(new bffx(this, paramInt, paramBundle));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
   }
   
@@ -106,32 +106,32 @@ public class MoreFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getActivity().getResources().getDisplayMetrics().heightPixels;
-    this.b = bffu.d(getActivity());
+    this.b = bfgl.d(getActivity());
     paramLayoutInflater = paramLayoutInflater.inflate(2131559305, paramViewGroup, false);
     if (paramLayoutInflater == null)
     {
       getActivity().finish();
       return null;
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362189);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370302));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362188);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370301));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramLayoutInflater.setOnClickListener(this);
     paramViewGroup = a();
     if (paramViewGroup == null)
     {
-      besl.c("MoreFragment", "Failed to create MoreFragment, intent is null");
+      betc.c("MoreFragment", "Failed to create MoreFragment, intent is null");
       getActivity().finish();
       return null;
     }
     if (paramViewGroup.getBooleanExtra("key_orientation_landscape", false)) {
-      getActivity().findViewById(16908290).setBackgroundResource(2130840813);
+      getActivity().findViewById(16908290).setBackgroundResource(2130840810);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370420));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370419));
     this.jdField_a_of_type_JavaUtilList = paramViewGroup.getParcelableArrayListExtra("key_more_item_list");
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      besl.d("MoreFragment", "Failed to create MoreFragmentView. no items");
+      betc.d("MoreFragment", "Failed to create MoreFragmentView. no items");
       getActivity().finish();
     }
     for (;;)

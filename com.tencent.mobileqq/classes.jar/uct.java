@@ -1,10 +1,20 @@
-public abstract interface uct
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+
+public class uct
+  extends DataSetObserver
 {
-  public abstract void a(int paramInt);
+  private uct(XViewPager paramXViewPager) {}
   
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  public void onChanged()
+  {
+    this.a.b();
+  }
   
-  public abstract void b(int paramInt);
+  public void onInvalidated()
+  {
+    this.a.b();
+  }
 }
 
 

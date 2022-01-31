@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.ad.manager;
 
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import nam;
-import nzi;
+import naj;
+import nzf;
 import org.json.JSONObject;
 
 public final class GiftPackageManager$1
@@ -16,10 +16,10 @@ public final class GiftPackageManager$1
     try
     {
       Object localObject = new Bundle();
-      JSONObject localJSONObject = nzi.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d);
-      nam.a(new Bundle());
+      JSONObject localJSONObject = nzf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d);
+      naj.a(new Bundle());
       ((Bundle)localObject).putString("data", localJSONObject.toString());
-      localObject = nam.a(BaseApplicationImpl.getContext(), "http://ag.qq.com/api/actionReport", "GET", (Bundle)localObject, null);
+      localObject = naj.a(BaseApplicationImpl.getContext(), "http://ag.qq.com/api/actionReport", "GET", (Bundle)localObject, null);
       if (localObject != null) {
         new JSONObject(new String((byte[])localObject));
       }

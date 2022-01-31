@@ -1,14 +1,49 @@
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aamw
-  implements addu
+  extends ajuf
 {
   public aamw(BaseChatPie paramBaseChatPie) {}
   
-  public void a(Bitmap paramBitmap, addc paramaddc, int paramInt)
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    this.a.ap();
+    if (this.a.A()) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+      return;
+    } while (this.a.jdField_a_of_type_Aeyo == null);
+    this.a.jdField_a_of_type_Aeyo.a(paramArrayList);
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Acup != null)) {
+      this.a.jdField_a_of_type_Acup.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,61 +1,37 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class anlw
-  extends anku
 {
-  public ArrayList<anlv> a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  TextView j;
   
-  public static anlw a(JSONObject paramJSONObject)
+  anlw(DataReportViewer paramDataReportViewer, View paramView)
   {
-    anlw localanlw = new anlw();
-    localanlw.jdField_a_of_type_JavaLangString = paramJSONObject.optString("group");
-    paramJSONObject = paramJSONObject.optJSONArray("configs");
-    localanlw.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramJSONObject.length());
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      anlv localanlv = anlv.a(paramJSONObject.optJSONObject(i));
-      localanlv.a = localanlw;
-      localanlw.jdField_a_of_type_JavaUtilArrayList.add(localanlv);
-      i += 1;
-    }
-    return localanlw;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("group", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((anlv)localIterator.next()).a());
-      }
-      localJSONObject.put("configs", localJSONException);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376832));
+    this.b = ((TextView)paramView.findViewById(2131369738));
+    this.c = ((TextView)paramView.findViewById(2131376626));
+    this.d = ((TextView)paramView.findViewById(2131361903));
+    this.e = ((TextView)paramView.findViewById(2131371057));
+    this.f = ((TextView)paramView.findViewById(2131375197));
+    this.g = ((TextView)paramView.findViewById(2131374678));
+    this.h = ((TextView)paramView.findViewById(2131374679));
+    this.i = ((TextView)paramView.findViewById(2131374680));
+    this.j = ((TextView)paramView.findViewById(2131374681));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anlw
  * JD-Core Version:    0.7.0.1
  */

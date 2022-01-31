@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.support.annotation.Nullable;
 
-class bgwg
-  implements View.OnClickListener
+public class bgwg
 {
-  bgwg(bgwe parambgwe) {}
-  
-  public void onClick(View paramView)
+  @Nullable
+  public static Activity a(Context paramContext)
   {
-    if (bgwe.a(this.a))
+    if ((paramContext instanceof Activity)) {
+      return (Activity)paramContext;
+    }
+    if ((paramContext instanceof ContextWrapper))
     {
-      if (bgwe.b(this.a)) {
-        this.a.dismiss();
-      }
-      if (bgwe.b(this.a) != null) {
-        bgwe.b(this.a).onClick(paramView);
+      paramContext = (ContextWrapper)paramContext;
+      if ((paramContext.getBaseContext() instanceof Activity)) {
+        return (Activity)paramContext.getBaseContext();
       }
     }
+    return null;
   }
 }
 

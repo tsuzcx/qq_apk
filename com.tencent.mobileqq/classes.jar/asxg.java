@@ -1,43 +1,253 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class asxg
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  
-  public asxg()
+  public static int a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.contains("icon");
+    if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
+      return asxm.a(paramLong1, paramLong2);
     }
-    return false;
+    return 0;
   }
   
-  @NonNull
-  public String toString()
+  public static int a(acvt paramacvt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("GrayTipHighlightItemInfo{");
-    localStringBuilder.append("old_key:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("old_start:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("id:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("start:").append(this.jdField_c_of_type_Int).append(", ");
-    localStringBuilder.append("end:").append(this.jdField_d_of_type_Int).append(", ");
-    localStringBuilder.append("key:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    long l1 = paramacvt.a();
+    long l2 = paramacvt.b();
+    if (l1 == 17L)
+    {
+      if (paramacvt.a()) {
+        return 999;
+      }
+      return 0;
+    }
+    return a(l1, l2);
+  }
+  
+  public static ArrayList<asxi> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
+  {
+    Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
+    ArrayList localArrayList = new ArrayList();
+    asxi localasxi;
+    int i;
+    if (((Matcher)localObject).find())
+    {
+      localasxi = new asxi();
+      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
+      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
+      localasxi.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
+      if (localasxi.a()) {}
+      for (i = 2;; i = 1)
+      {
+        localasxi.jdField_a_of_type_Int = i;
+        localArrayList.add(localasxi);
+        break;
+      }
+    }
+    localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
+    while (((Matcher)localObject).find())
+    {
+      localasxi = new asxi();
+      localasxi.jdField_a_of_type_Int = 3;
+      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
+      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
+      localasxi.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
+      localasxi.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(2);
+      localArrayList.add(localasxi);
+    }
+    localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
+    while (((Matcher)localObject).find())
+    {
+      localasxi = new asxi();
+      localasxi.jdField_a_of_type_Int = 4;
+      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
+      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
+      localasxi.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(1);
+      localasxi.jdField_c_of_type_JavaLangString = localasxi.jdField_a_of_type_JavaLangString;
+      localArrayList.add(localasxi);
+    }
+    Collections.sort(localArrayList, new asxh());
+    localObject = localArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localasxi = (asxi)((Iterator)localObject).next();
+      if (!TextUtils.isEmpty(localasxi.jdField_a_of_type_JavaLangString))
+      {
+        i = paramStringBuilder.indexOf(localasxi.jdField_a_of_type_JavaLangString);
+        int j = localasxi.jdField_a_of_type_JavaLangString.length() + i;
+        if ((i >= 0) && (j <= paramStringBuilder.length()))
+        {
+          switch (localasxi.jdField_a_of_type_Int)
+          {
+          }
+          for (;;)
+          {
+            if (localasxi.jdField_c_of_type_JavaLangString == null) {
+              localasxi.jdField_c_of_type_JavaLangString = localasxi.jdField_a_of_type_JavaLangString;
+            }
+            localasxi.jdField_c_of_type_Int = i;
+            localasxi.jdField_d_of_type_Int = (localasxi.jdField_c_of_type_JavaLangString.length() + i);
+            paramStringBuilder.replace(i, j, localasxi.jdField_c_of_type_JavaLangString);
+            break;
+            localasxi.jdField_c_of_type_JavaLangString = asxb.a(paramQQAppInterface, localasxi.jdField_b_of_type_JavaLangString);
+            continue;
+            localasxi.jdField_c_of_type_JavaLangString = asxb.a(paramQQAppInterface, paramString, localasxi.jdField_b_of_type_JavaLangString);
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acvt paramacvt, akqm paramakqm)
+  {
+    int i = 2097153;
+    acvv localacvv = paramacvt.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localacvv + " onlinePush:" + paramakqm.a);
+    }
+    int j;
+    if ((localacvv != null) && (localacvv.a()))
+    {
+      j = 0;
+      paramakqm = paramacvt.jdField_b_of_type_JavaLangString + "_" + paramacvt.jdField_a_of_type_Int + "_" + paramakqm.b + "_" + localacvv.jdField_a_of_type_Long;
+      switch (paramacvt.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 2097155;
+      }
+    }
+    for (;;)
+    {
+      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, localacvv.jdField_a_of_type_JavaLangString, -5040, i, j, paramakqm);
+      return;
+      j = a(paramacvt);
+      continue;
+      i = 2097154;
+      continue;
+      if ((paramacvt.jdField_a_of_type_Acvw == null) || (paramacvt.jdField_b_of_type_Acvw == null)) {
+        break;
+      }
+      if (paramacvt.jdField_a_of_type_Acvw.a() > paramacvt.jdField_b_of_type_Acvw.a())
+      {
+        i = 2097154;
+      }
+      else
+      {
+        if (paramacvt.jdField_a_of_type_Acvw.a() >= paramacvt.jdField_b_of_type_Acvw.a()) {
+          break;
+        }
+        j = a(paramacvt);
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acvt paramacvt, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramacvt.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    Object localObject = paramString1;
+    if (paramString1.contains("#nick")) {
+      localObject = paramString1.replaceAll("#nick", bbcz.m(paramQQAppInterface, paramacvt.jdField_b_of_type_JavaLangString));
+    }
+    localObject = new StringBuilder((String)localObject);
+    asxx.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, (StringBuilder)localObject);
+    paramString1 = a(paramQQAppInterface, paramacvt.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
+    localObject = ((StringBuilder)localObject).toString();
+    aqvb localaqvb = new aqvb(paramacvt.jdField_b_of_type_JavaLangString, paramacvt.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, awzy.a());
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    localMessageForUniteGrayTip.hasRead = 0;
+    localMessageForUniteGrayTip.subType = paramInt3;
+    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localaqvb);
+    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
+    if (paramInt3 == 998) {
+      localMessageForUniteGrayTip.caidanAnimUrl = paramacvt.a();
+    }
+    for (;;)
+    {
+      a(paramQQAppInterface, (String)localObject, localaqvb, paramString1);
+      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", asxm.a(paramacvt.a(), paramacvt.b()));
+      asxx.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, (String)localObject, localaqvb, paramString1);
+      aqvc.a(paramQQAppInterface, localMessageForUniteGrayTip);
+      asxa.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
+      return;
+      if (paramInt3 == 999)
+      {
+        localMessageForUniteGrayTip.caidanAnimUrl = paramacvt.b();
+        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramacvt.c();
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, aqvb paramaqvb, ArrayList<asxi> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramQQAppInterface = paramArrayList.iterator();
+      while (paramQQAppInterface.hasNext())
+      {
+        paramString = (asxi)paramQQAppInterface.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
+        }
+        switch (paramString.jdField_a_of_type_Int)
+        {
+        default: 
+          break;
+        case 1: 
+          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
+          {
+            paramArrayList = new Bundle();
+            paramArrayList.putInt("key_action", 11);
+            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
+            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          }
+          break;
+        case 2: 
+          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
+          {
+            paramArrayList = new Bundle();
+            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
+            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          }
+          break;
+        case 3: 
+          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
+          {
+            paramArrayList = new Bundle();
+            paramArrayList.putInt("key_action", 1);
+            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
+            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          }
+          break;
+        case 4: 
+          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
+          {
+            paramArrayList = new Bundle();
+            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
+            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
+          }
+          break;
+        }
+      }
+    }
   }
 }
 

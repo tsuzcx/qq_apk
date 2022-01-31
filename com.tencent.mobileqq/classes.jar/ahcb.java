@@ -1,126 +1,123 @@
-import Wallet.DownloadReportReq;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.lang.ref.WeakReference;
 import java.util.Map;
 
 public class ahcb
-  extends bbwf
+  extends ahcc
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  public ahcb(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bbwf parambbwf, long paramLong) {}
-  
-  public void onDoneFile(bbwg parambbwg)
+  public ahcb(PreloadResource paramPreloadResource, bbwt parambbwt)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
-    }
-    if (this.jdField_a_of_type_Bbwf != null) {
-      this.jdField_a_of_type_Bbwf.onDoneFile(parambbwg);
-    }
-    localObject = new DownloadReportReq();
-    int i;
-    File localFile;
-    long l;
-    if (parambbwg.jdField_a_of_type_Int == 0)
+    super(parambbwt);
+  }
+  
+  private int a(String paramString, boolean paramBoolean)
+  {
+    int i = ahct.a(paramString, 0, this.a.getFilePos());
+    if (i == 0)
     {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambbwg.jdField_a_of_type_JavaUtilMap != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(parambbwg.jdField_a_of_type_JavaLangString))
-        {
-          localFile = (File)parambbwg.jdField_a_of_type_JavaUtilMap.get(parambbwg.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
-          }
-          l = -2L;
-          label113:
-          i = (int)l;
-        }
+      if (paramBoolean) {
+        ahct.a(paramString, 1, this.a.getFilePos());
+      }
+      return 1;
+    }
+    if (i == 1) {
+      return 7;
+    }
+    if (paramBoolean) {
+      ahct.a(paramString, 1, this.a.getFilePos());
+    }
+    return i;
+  }
+  
+  public void onDoneFile(bbwu parambbwu)
+  {
+    boolean bool = true;
+    Object localObject1;
+    PreloadModule localPreloadModule;
+    Object localObject2;
+    File localFile;
+    String str;
+    int i;
+    if ((parambbwu != null) && (parambbwu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambbwu.jdField_a_of_type_JavaLangString)))
+    {
+      localObject1 = parambbwu.a();
+      localPreloadModule = (PreloadModule)((Bundle)localObject1).getSerializable("module");
+      localObject2 = (PreloadResource)((Bundle)localObject1).getSerializable("resource");
+      localFile = (File)parambbwu.jdField_a_of_type_JavaUtilMap.get(parambbwu.jdField_a_of_type_JavaLangString);
+      if (localFile != null) {
+        break label430;
+      }
+      localObject1 = "";
+      if ((parambbwu.jdField_a_of_type_Int != 0) || (localObject2 == null)) {
+        break label507;
+      }
+      str = MD5Coding.encodeFile2HexStr((String)localObject1);
+      if ((localFile == null) || (!localFile.exists()) || (TextUtils.isEmpty(str))) {
+        break label502;
+      }
+      if ((TextUtils.isEmpty(((PreloadResource)localObject2).md5)) || (str.equalsIgnoreCase(((PreloadResource)localObject2).md5))) {
+        break label440;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadResource", 2, "preload onDoneFile md5 not match|" + ((PreloadResource)localObject2).mResId + "|" + str + "|" + ((PreloadResource)localObject2).md5);
+      }
+      ahiw.a((String)localObject1);
+      ahct.a(parambbwu.jdField_a_of_type_JavaLangString, 5, this.a.getFilePos());
+      parambbwu.jdField_a_of_type_Int = -1;
+      ahia.a(localPreloadModule, 2, parambbwu.c, parambbwu.jdField_a_of_type_Int);
+      i = 1;
+      if (parambbwu.jdField_a_of_type_Int == -118) {
+        i = 1;
+      }
+      if ((i != 0) && (localPreloadModule != null)) {
+        localPreloadModule.removeResource((PreloadResource)localObject2);
+      }
+      localObject2 = parambbwu.jdField_a_of_type_JavaLangString;
+      if (parambbwu.jdField_a_of_type_Int != 0) {
+        break label524;
       }
     }
     for (;;)
     {
+      i = a((String)localObject2, bool);
+      parambbwu.a().putInt("scene", i);
+      if ((i == 7) && (parambbwu.jdField_a_of_type_Int == 0)) {
+        ahcu.a(parambbwu.jdField_a_of_type_JavaLangString, this.a.getFilePos());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadResource", 2, "preload onDoneFile|" + parambbwu.jdField_a_of_type_Int + "|" + parambbwu.jdField_a_of_type_JavaLangString + "|" + (String)localObject1 + "|" + i);
+      }
+      super.onDoneFile(parambbwu);
+      if (this.a.isNeedReport(parambbwu.jdField_a_of_type_JavaLangString)) {
+        this.a.reportDownload(parambbwu.jdField_a_of_type_JavaLangString, parambbwu.jdField_a_of_type_Int, localPreloadModule);
+      }
+      return;
+      label430:
+      localObject1 = localFile.getAbsolutePath();
+      break;
+      label440:
+      ahcu.a(parambbwu.jdField_a_of_type_JavaLangString, str, NetConnInfoCenter.getServerTimeMillis(), this.a.getFilePos());
+      if (PreloadResource.access$000(this.a, (String)localObject1, parambbwu.jdField_a_of_type_JavaLangString)) {
+        this.a.unzip((String)localObject1, parambbwu.jdField_a_of_type_JavaLangString);
+      }
+      ahia.a(localPreloadModule, 0, parambbwu.c, parambbwu.jdField_a_of_type_Int);
       for (;;)
       {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = bbct.i();
-        ((DownloadReportReq)localObject).sOsVersion = bbct.e();
-        ((DownloadReportReq)localObject).sQQVersion = bbct.c();
-        ((DownloadReportReq)localObject).iScene = parambbwg.a().getInt("scene");
-        agwv.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambbwg.jdField_a_of_type_Int + localObject);
-        }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
+        label502:
+        i = 0;
         break;
-        try
-        {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
-          }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
-        }
+        label507:
+        ahia.a(localPreloadModule, 1, parambbwu.c, parambbwu.jdField_a_of_type_Int);
       }
+      label524:
+      bool = false;
     }
-  }
-  
-  public void onProgress(bbwg parambbwg)
-  {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambbwg.g;
-      d = parambbwg.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
-      }
-    }
-    label43:
-    do
-    {
-      return;
-      parambbwg = new DownloadReportReq();
-      parambbwg.sSpeed = (d + "");
-      parambbwg.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
-      parambbwg.iType = 0;
-      parambbwg.iUin = this.jdField_a_of_type_Long;
-      agwv.a(parambbwg, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    int i = 3;
-    parambbwg.f = 1048576L;
-    if (this.jdField_a_of_type_Int > 3) {
-      i = this.jdField_a_of_type_Int;
-    }
-    parambbwg.b = i;
-    return super.onStart(parambbwg);
   }
 }
 

@@ -1,26 +1,64 @@
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.Friends;
 
 public class aaif
-  implements bfoq
+  implements View.OnClickListener
 {
-  public aaif(AddRequestActivity paramAddRequestActivity, bfol parambfol) {}
+  public aaif(AddRequestActivity paramAddRequestActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    int j = 0;
+    axqy.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
+    paramView = this.a;
+    int i;
+    if (AddRequestActivity.a(this.a) == 3999)
     {
+      i = 3041;
+      AddRequestActivity.a(paramView, i);
+      Object localObject = (ajxl)this.a.app.getManager(51);
+      boolean bool = ((ajxl)localObject).b(this.a.a);
+      paramView = actj.a(new Intent(this.a, SplashActivity.class), null);
+      paramView.putExtra("uin", this.a.a);
+      paramView.putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
+      if (!bool) {
+        break label220;
+      }
+      localObject = ((ajxl)localObject).e(this.a.a);
+      if (localObject != null)
+      {
+        paramView.putExtra("cSpecialFlag", ((Friends)localObject).cSpecialFlag);
+        paramView.putExtra("uinname", bbcz.a((Friends)localObject));
+      }
+      label185:
+      if (!bool) {
+        break label251;
+      }
+      i = j;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.dismiss();
+      paramView.putExtra("uintype", i);
+      this.a.startActivity(paramView);
       return;
-      if (bbev.d(BaseApplication.getContext())) {
-        xkq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      i = AddRequestActivity.a(this.a);
+      break;
+      label220:
+      paramView.putExtra("uinname", this.a.b);
+      paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+      break label185;
+      label251:
+      if ((AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 4007)) {
+        i = 1001;
+      } else if ((AddRequestActivity.a(this.a) == 2019) || (AddRequestActivity.a(this.a) == 3019)) {
+        i = 1010;
       } else {
-        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694609, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+        i = 1022;
       }
     }
   }

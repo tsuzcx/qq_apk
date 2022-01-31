@@ -1,14 +1,14 @@
 package com.tencent.mqp.app.sec;
 
-import bcwm;
-import bcwn;
+import bcxb;
+import bcxc;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class MQPSensitiveMsgUtil$1$1
   implements Runnable
 {
-  public MQPSensitiveMsgUtil$1$1(bcwn parambcwn) {}
+  public MQPSensitiveMsgUtil$1$1(bcxc parambcxc) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MQPSensitiveMsgUtil$1$1
     if (localMessageRecord == null) {
       return;
     }
-    bcwm.a(localMessageRecord);
+    bcxb.a(localMessageRecord);
     try
     {
       localMessageRecord.saveExtInfoToExtStr("sens_msg_confirmed", "1");

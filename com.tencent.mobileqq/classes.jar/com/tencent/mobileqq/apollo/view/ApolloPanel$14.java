@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 class ApolloPanel$14
@@ -11,7 +11,7 @@ class ApolloPanel$14
   public void run()
   {
     if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
-      bcpw.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
+      bcql.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
     }
   }
 }

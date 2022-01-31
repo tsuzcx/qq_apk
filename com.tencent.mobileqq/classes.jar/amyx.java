@@ -1,82 +1,68 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amyx
-  extends amyi<QVipBigTroopExpiredConfig>
+  extends amyp<amyw>
 {
-  public static QVipBigTroopExpiredConfig c()
-  {
-    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig2 = (QVipBigTroopExpiredConfig)ampm.a().a(428);
-    QVipBigTroopExpiredConfig localQVipBigTroopExpiredConfig1 = localQVipBigTroopExpiredConfig2;
-    if (localQVipBigTroopExpiredConfig2 == null) {
-      localQVipBigTroopExpiredConfig1 = new QVipBigTroopExpiredConfig();
-    }
-    return localQVipBigTroopExpiredConfig1;
-  }
-  
   public int a()
   {
-    return 428;
+    return 95;
   }
   
   @NonNull
-  public QVipBigTroopExpiredConfig a()
+  public amyw a()
   {
-    return new QVipBigTroopExpiredConfig();
+    return new amyw();
   }
   
   @NonNull
-  public QVipBigTroopExpiredConfig a(ampi[] paramArrayOfampi)
+  public amyw a(amph[] paramArrayOfamph)
   {
-    boolean bool = true;
-    localQVipBigTroopExpiredConfig = new QVipBigTroopExpiredConfig();
-    paramArrayOfampi = paramArrayOfampi[0].a;
-    try
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    int j = paramArrayOfamph.length;
+    int i = 0;
+    for (;;)
     {
-      if (!TextUtils.isEmpty(paramArrayOfampi))
+      if (i < j)
       {
-        paramArrayOfampi = new JSONObject(paramArrayOfampi);
-        if (paramArrayOfampi.optInt("enable", 1) != 1) {
-          break label164;
+        String str = paramArrayOfamph[i].a;
+        if (QLog.isColorLevel()) {
+          QLog.i("PushOpenNotify", 2, "config :" + str);
+        }
+        if (!TextUtils.isEmpty(str))
+        {
+          akse.a(localQQAppInterface, str, false);
+          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
         }
       }
-      for (;;)
+      else
       {
-        localQVipBigTroopExpiredConfig.mIsEnable = bool;
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxDay = paramArrayOfampi.optInt("NotifyTipsMaxDay", 15);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMinDay = paramArrayOfampi.optInt("NotifyTipsMinDay", 7);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCount = paramArrayOfampi.optInt("NotifyTipsMaxCount", 2);
-        localQVipBigTroopExpiredConfig.mNotifyTipsPerDay = paramArrayOfampi.optInt("NotifyTipsPerDay", 1);
-        localQVipBigTroopExpiredConfig.mNotifyTipsMaxCloseCount = paramArrayOfampi.optInt("NotifyTipsMaxCloseCount", 3);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMaxDay = paramArrayOfampi.optInt("NotifyDialogMaxDay", 7);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMinDay = paramArrayOfampi.optInt("NotifyDialogMinDay", 0);
-        localQVipBigTroopExpiredConfig.mNotifyDialogMaxCount = paramArrayOfampi.optInt("NotifyDialogMaxCount", 2);
-        localQVipBigTroopExpiredConfig.mNotifyDialogPerDay = paramArrayOfampi.optInt("NotifyDialogPerDay", 1);
-        localQVipBigTroopExpiredConfig.mNotifyDialogExpiredIntervalDay = paramArrayOfampi.optInt("NotifyDialogExpiredIntervalDay", 5);
-        return localQVipBigTroopExpiredConfig;
-        label164:
-        bool = false;
+        return new amyw();
       }
-      return localQVipBigTroopExpiredConfig;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      veg.e("QVipBigTroopExpiredProcessor", "QVipBigTroopExpiredConfig onParsed exception :" + paramArrayOfampi.getMessage());
+      i += 1;
     }
   }
   
-  public Class<QVipBigTroopExpiredConfig> a()
+  public Class<amyw> a()
   {
-    return QVipBigTroopExpiredConfig.class;
+    return amyw.class;
   }
   
   @NonNull
-  public QVipBigTroopExpiredConfig b()
+  public amyw b()
   {
-    return new QVipBigTroopExpiredConfig();
+    return new amyw();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

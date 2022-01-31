@@ -1,21 +1,19 @@
-class anfm
-  implements anhr<anfv>
+import android.content.res.Resources;
+import android.os.Handler;
+
+public abstract interface anfm
 {
-  anfm(anfl paramanfl) {}
+  public abstract Resources a();
   
-  public int a(anfv paramanfv, long paramLong)
-  {
-    if (paramanfv == null) {}
-    do
-    {
-      return -1;
-      paramLong = paramanfv.d() - paramLong;
-      if (paramLong == 0L) {
-        return 0;
-      }
-    } while (paramLong <= 0L);
-    return 1;
-  }
+  public abstract Handler a();
+  
+  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

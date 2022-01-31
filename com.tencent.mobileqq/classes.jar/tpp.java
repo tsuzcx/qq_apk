@@ -1,58 +1,55 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class tpp
-  implements ule
+public class tpp
+  extends trg
 {
-  tpp(tpo paramtpo, tem paramtem) {}
+  private String a;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public tpp(String paramString1, String paramString2, boolean paramBoolean)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tem, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tem, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (vxy.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_Tpo.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
-    {
-      ((Bitmap)localObject).recycle();
-      tpo.a(this.jdField_a_of_type_Tpo, true);
-      return;
-      this.jdField_a_of_type_Tpo.a("result", this.jdField_a_of_type_Tpo.a.mVideoThumbnailUrl);
-    }
+    a(false, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public void a()
   {
-    this.jdField_a_of_type_Tpo.a("result", this.jdField_a_of_type_Tpo.a.mVideoThumbnailUrl);
-    tpo.b(this.jdField_a_of_type_Tpo, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt url:", this.jdField_a_of_type_JavaLangString });
+    }
+    tnn localtnn = new tnn();
+    localtnn.jdField_c_of_type_Int = 1;
+    String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("\\?");
+    if (arrayOfString.length != 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("EncryptUrlJob", 2, new Object[] { "Illegal url:", this.jdField_a_of_type_JavaLangString });
+      }
+      a("EncryptUrlJob_encryptedUrl", this.jdField_a_of_type_JavaLangString);
+      b(true);
+      return;
+    }
+    localtnn.b = arrayOfString[1];
+    localtnn.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    syo.a().a(localtnn, new tpq(this, arrayOfString));
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
+    {
+      if (paramMap.containsKey("EncryptUrlJob_shareUrl")) {
+        this.jdField_a_of_type_JavaLangString = ((String)a("EncryptUrlJob_shareUrl"));
+      }
+      if (paramMap.containsKey("EncryptUrlJob_feedId")) {
+        this.jdField_c_of_type_JavaLangString = ((String)a("EncryptUrlJob_feedId"));
+      }
+    }
   }
 }
 

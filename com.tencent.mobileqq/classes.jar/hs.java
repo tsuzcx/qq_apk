@@ -61,7 +61,7 @@ public class hs
       str1 = str4;
     case 2: 
     case 3: 
-      switch (bbkv.a(bbkv.a(), str2))
+      switch (bblj.a(bblj.a(), str2))
       {
       }
       break;

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import begz;
-import bejy;
-import beka;
-import besl;
+import behq;
+import bekp;
+import bekr;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -23,24 +23,24 @@ public class QQFriendJsPlugin
   {
     if (paramContext == null)
     {
-      besl.d("QQFriendJsPlugin", "doAddFriend context is null ?!!");
+      betc.d("QQFriendJsPlugin", "doAddFriend context is null ?!!");
       return;
     }
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserSetting(paramString1, paramString2, "setting.addFriend", new QQFriendJsPlugin.2(paramString2, paramString1, (MiniAppProxy)ProxyManager.get(MiniAppProxy.class), paramContext, paramIAddFriendCallBack));
   }
   
-  public void addFriend(beka parambeka)
+  public void addFriend(bekr parambekr)
   {
     try
     {
-      String str = new JSONObject(parambeka.b).optString("openid", "");
-      QQFriendJsPlugin.1 local1 = new QQFriendJsPlugin.1(this, parambeka);
+      String str = new JSONObject(parambekr.b).optString("openid", "");
+      QQFriendJsPlugin.1 local1 = new QQFriendJsPlugin.1(this, parambekr);
       doAddFriend(this.mMiniAppContext.a(), this.mApkgInfo.d, str, local1);
       return;
     }
     catch (Exception localException)
     {
-      parambeka.b();
+      parambekr.b();
     }
   }
 }

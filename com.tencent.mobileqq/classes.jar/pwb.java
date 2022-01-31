@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
 import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class pwb
-  implements View.OnClickListener
+public class pwb
+  implements pbx
 {
-  pwb(pwa parampwa, RecommendFollowInfo paramRecommendFollowInfo) {}
+  public pwb(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ComponentContentRecommend.a(this.jdField_a_of_type_Pwa.a, "0X80094DA", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
-    this.jdField_a_of_type_Pwa.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+      return;
+    }
+    bcql.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718513, 0).a();
   }
 }
 

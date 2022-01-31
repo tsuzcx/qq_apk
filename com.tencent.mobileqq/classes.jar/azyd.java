@@ -1,128 +1,111 @@
-import java.io.ByteArrayOutputStream;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONObject;
 
-public final class azyd
+public class azyd
+  extends Handler
 {
-  private static int jdField_a_of_type_Int = 4000;
-  private static final Map<String, azye> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
+  WeakReference<SubmitHomeWorkFragment> a;
   
-  private static void a(azye paramazye, boolean paramBoolean)
+  public azyd(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, Looper paramLooper)
   {
-    if ((paramazye != null) && (paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
+    super(paramLooper);
+    this.a = new WeakReference(paramSubmitHomeWorkFragment);
+  }
+  
+  void a(SubmitHomeWorkFragment paramSubmitHomeWorkFragment)
+  {
+    if ((paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList == null) || (paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor == null)) {}
+    do
     {
-      if (paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      do
       {
-        if (paramazye.jdField_a_of_type_JavaIoFile == null)
-        {
-          File localFile = new File(paramazye.jdField_a_of_type_JavaLangString);
-          if (!localFile.exists()) {
-            localFile.createNewFile();
-          }
-          paramazye.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile, true);
-          paramazye.jdField_a_of_type_JavaIoFile = localFile;
-        }
-        paramazye.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramazye.jdField_a_of_type_JavaIoFileOutputStream);
-      }
-      if (paramBoolean)
-      {
-        if (paramazye.jdField_a_of_type_JavaIoFileOutputStream != null)
-        {
-          paramazye.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramazye.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramazye.jdField_a_of_type_JavaIoFileOutputStream = null;
-        }
-        paramazye.jdField_a_of_type_JavaIoFile = null;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    b(paramString);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if ((azye)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
-    {
-      azye localazye = new azye();
-      localazye.jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_JavaUtilMap.put(paramString, localazye);
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    paramString = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null)
-    {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
-      }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
-    }
-    try
-    {
-      a(paramString, false);
-      label66:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      return true;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label66;
-    }
-  }
-  
-  private static void b(String paramString)
-  {
-    azye localazye = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazye == null) || (localazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      localazye.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      label31:
-      if (localazye.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-      try
-      {
-        localazye.jdField_a_of_type_JavaIoFileOutputStream.close();
-        label45:
-        localazye.jdField_a_of_type_JavaIoFileOutputStream = null;
-        jdField_a_of_type_JavaUtilMap.remove(paramString);
         return;
-      }
-      catch (Exception localException1)
+        if (paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+        {
+          paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setVisibility(8);
+          paramSubmitHomeWorkFragment.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
+          paramSubmitHomeWorkFragment.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setHint(paramSubmitHomeWorkFragment.getActivity().getString(2131697743));
+          paramSubmitHomeWorkFragment.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyDataSetChanged();
+          return;
+        }
+      } while (paramSubmitHomeWorkFragment.jdField_b_of_type_Boolean);
+      paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
+      Iterator localIterator = paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      while (localIterator.hasNext())
       {
-        break label45;
+        JSONObject localJSONObject = (JSONObject)localIterator.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("SubmitHomeWorkFragment", 2, "insert special item: " + localJSONObject.optString("type"));
+        }
+        paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(babh.a(localJSONObject));
       }
-    }
-    catch (Exception localException2)
-    {
-      break label31;
-    }
+      paramSubmitHomeWorkFragment.jdField_b_of_type_Boolean = true;
+    } while (paramSubmitHomeWorkFragment.c != null);
+    paramSubmitHomeWorkFragment.c = paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
   }
   
-  public static boolean b(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    azye localazye = (azye)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localazye != null) && (localazye.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
-    try
-    {
-      a(localazye, true);
-      label29:
-      localazye.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
-      b(paramString);
-      return true;
+    super.handleMessage(paramMessage);
+    SubmitHomeWorkFragment localSubmitHomeWorkFragment = (SubmitHomeWorkFragment)this.a.get();
+    if ((localSubmitHomeWorkFragment == null) || (!localSubmitHomeWorkFragment.isAdded())) {
+      return;
     }
-    catch (IOException localIOException)
+    switch (paramMessage.what)
     {
-      break label29;
+    default: 
+      return;
+    case 3: 
+      localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = true;
+      localSubmitHomeWorkFragment.jdField_a_of_type_Bfpc.c(false);
+      return;
+    case 513: 
+      a(localSubmitHomeWorkFragment);
+      return;
+    case 101: 
+      localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
+      localSubmitHomeWorkFragment.j();
+      return;
+    }
+    int i = (int)localSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
+    if (i < 1000)
+    {
+      bcql.a(localSubmitHomeWorkFragment.getActivity(), ajya.a(2131714641), 0).a();
+      localSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
+      return;
+    }
+    if (!bbfj.d(localSubmitHomeWorkFragment.getActivity()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "no network toast");
+      }
+      bcql.a(localSubmitHomeWorkFragment.getActivity(), 2131697484, 0).a();
+      localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
+      localSubmitHomeWorkFragment.j();
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      paramMessage = new babf(paramMessage, null, i / 1000, (int)l, localSubmitHomeWorkFragment.d);
+      localSubmitHomeWorkFragment.jdField_b_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(paramMessage);
+      localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
+      localSubmitHomeWorkFragment.j();
+      return;
     }
   }
 }

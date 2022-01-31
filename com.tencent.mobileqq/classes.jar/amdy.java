@@ -9,7 +9,7 @@ public class amdy
   
   public void onClick(View paramView)
   {
-    paramView = (ameb)paramView.getTag();
+    paramView = (amea)paramView.getTag();
     this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }

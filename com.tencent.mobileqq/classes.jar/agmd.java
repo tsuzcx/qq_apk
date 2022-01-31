@@ -1,5 +1,5 @@
 final class agmd
-  extends aglx
+  extends aglv
 {
   public boolean a()
   {
@@ -9,16 +9,20 @@ final class agmd
   public boolean a(String paramString)
   {
     if (!super.a(paramString)) {}
-    String[] arrayOfString;
     do
     {
       return false;
-      arrayOfString = agmo.a(paramString);
-    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmo.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) || (agmo.b(paramString))));
+      paramString = agmm.a(paramString);
+    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmm.a(paramString[1])) && (!paramString[1].equals("gif")));
     return true;
   }
   
   public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean d()
   {
     return true;
   }

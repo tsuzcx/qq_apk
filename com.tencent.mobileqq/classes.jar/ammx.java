@@ -1,20 +1,10 @@
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
 
 public class ammx
 {
-  public int a;
-  public ImageView a;
+  public ProgressBar a;
   public TextView a;
-  public RichStatus a;
-  public InterestLabelTextView a;
-  public String a;
-  public TextView b;
-  public InterestLabelTextView b;
-  public InterestLabelTextView c;
-  public InterestLabelTextView d;
 }
 
 

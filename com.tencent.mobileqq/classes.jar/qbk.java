@@ -1,33 +1,33 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.LocalInfo;
 
 public class qbk
 {
-  public int a;
-  public long a;
-  public long b = -1L;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public qbk()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-  }
+  public qbk() {}
   
-  public static qbk a()
+  public qbk(articlesummary.LocalInfo paramLocalInfo)
   {
-    qbk localqbk = new qbk();
-    SharedPreferences localSharedPreferences = bhvh.a(onk.a(), true, false);
-    localqbk.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
-    localqbk.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
-    localqbk.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
-    return localqbk;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.post(new KandianOx210MsgInfo.Biu0x210Msg.1(this, paramQQAppInterface), 8, null, false);
+    if (paramLocalInfo == null) {
+      return;
+    }
+    this.a = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.b = paramLocalInfo.bytes_store_url.get().toStringUtf8();
+    this.c = paramLocalInfo.bytes_store_address.get().toStringUtf8();
+    this.d = paramLocalInfo.bytes_store_longitude.get().toStringUtf8();
+    this.e = paramLocalInfo.bytes_store_latitude.get().toStringUtf8();
+    this.f = paramLocalInfo.bytes_distance_description.get().toStringUtf8();
+    this.g = paramLocalInfo.bytes_corporate_image_name.get().toStringUtf8();
+    this.h = paramLocalInfo.bytes_distance_limit.get().toStringUtf8();
   }
 }
 

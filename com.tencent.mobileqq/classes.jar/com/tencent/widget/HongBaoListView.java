@@ -12,13 +12,13 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import auqi;
-import auqw;
-import aurn;
-import bfrs;
-import bfrt;
-import bfsw;
-import bftk;
+import auqk;
+import auqy;
+import aurp;
+import bfsj;
+import bfsk;
+import bftn;
+import bfub;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -33,10 +33,10 @@ public class HongBaoListView
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
-  public auqi a;
-  public auqw a;
-  public bfrt a;
-  bftk jdField_a_of_type_Bftk;
+  public auqk a;
+  public auqy a;
+  public bfsk a;
+  bfub jdField_a_of_type_Bfub;
   public float[] a;
   public boolean[] a;
   public int b;
@@ -59,7 +59,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bfrs(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bfsj(this));
   }
   
   public HongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -69,7 +69,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bfrs(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new bfsj(this));
   }
   
   public int a()
@@ -104,9 +104,9 @@ public class HongBaoListView
       if (i2 < 0) {
         n = 0;
       }
-      this.jdField_a_of_type_Auqw.k = (-n);
+      this.jdField_a_of_type_Auqy.k = (-n);
       n = i1;
-      if (this.jdField_a_of_type_Auqw.a(paramCanvas)) {
+      if (this.jdField_a_of_type_Auqy.a(paramCanvas)) {
         n = 1;
       }
       if (n != 0) {
@@ -125,14 +125,14 @@ public class HongBaoListView
     if (i2 >= this.mHeaderViewInfos.size())
     {
       Iterator localIterator = this.mHeaderViewInfos.iterator();
-      for (n = 0; localIterator.hasNext(); n = ((bfsw)localIterator.next()).jdField_a_of_type_AndroidViewView.getHeight() + n) {}
+      for (n = 0; localIterator.hasNext(); n = ((bftn)localIterator.next()).jdField_a_of_type_AndroidViewView.getHeight() + n) {}
       return -localView.getTop() + (i2 - this.mHeaderViewInfos.size()) * localView.getHeight() + n;
     }
     int n = 0;
     int i1 = 0;
     while (n < i2)
     {
-      i1 += ((bfsw)this.mHeaderViewInfos.get(n)).jdField_a_of_type_AndroidViewView.getHeight();
+      i1 += ((bftn)this.mHeaderViewInfos.get(n)).jdField_a_of_type_AndroidViewView.getHeight();
       n += 1;
     }
     return -localView.getTop() + i1;
@@ -156,7 +156,7 @@ public class HongBaoListView
   
   public void k()
   {
-    super.setOverScrollListener(this.jdField_a_of_type_Bftk);
+    super.setOverScrollListener(this.jdField_a_of_type_Bfub);
     l();
     setComboListener(null);
     super.setOverscrollHeader(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
@@ -177,13 +177,13 @@ public class HongBaoListView
     {
       if (this.m)
       {
-        bftl.jdField_a_of_type_Int = 300;
+        bfuc.jdField_a_of_type_Int = 300;
         return;
       }
-      bftl.jdField_a_of_type_Int = 600;
+      bfuc.jdField_a_of_type_Int = 600;
       return;
     }
-    bftl.jdField_a_of_type_Int = 400;
+    bfuc.jdField_a_of_type_Int = 400;
   }
   
   public void m()
@@ -199,16 +199,16 @@ public class HongBaoListView
   public void n()
   {
     o();
-    this.jdField_a_of_type_Auqw.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Auqw.d();
+    this.jdField_a_of_type_Auqy.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Auqy.d();
     invalidate();
   }
   
   public void o()
   {
-    this.jdField_a_of_type_Auqw.c();
-    if (this.jdField_a_of_type_Auqw.a != null) {
-      this.jdField_a_of_type_Auqw.a.c();
+    this.jdField_a_of_type_Auqy.c();
+    if (this.jdField_a_of_type_Auqy.a != null) {
+      this.jdField_a_of_type_Auqy.a.c();
     }
   }
   
@@ -218,7 +218,7 @@ public class HongBaoListView
     if ((!this.g) || (this.h)) {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
     }
-    while (!this.jdField_a_of_type_Auqi.d) {
+    while (!this.jdField_a_of_type_Auqk.d) {
       return bool;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -229,10 +229,10 @@ public class HongBaoListView
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent.getY();
       this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-      if (this.jdField_a_of_type_Bfrt != null) {
-        this.jdField_a_of_type_Bfrt.a(this);
+      if (this.jdField_a_of_type_Bfsk != null) {
+        this.jdField_a_of_type_Bfsk.a(this);
       }
-      if ((this.k) && (this.jdField_a_of_type_Auqw != null) && (this.jdField_a_of_type_Auqw.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())))
+      if ((this.k) && (this.jdField_a_of_type_Auqy != null) && (this.jdField_a_of_type_Auqy.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())))
       {
         if (getScrollY() == 0) {
           this.j = true;
@@ -262,15 +262,15 @@ public class HongBaoListView
         {
           localException.printStackTrace();
         }
-      } while (this.jdField_a_of_type_Bfrt == null);
-      this.jdField_a_of_type_Bfrt.a(paramInt1, paramInt2);
+      } while (this.jdField_a_of_type_Bfsk == null);
+      this.jdField_a_of_type_Bfsk.a(paramInt1, paramInt2);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Auqw != null) && (this.jdField_a_of_type_Auqw.a != null)) {
-      this.jdField_a_of_type_Auqw.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.jdField_a_of_type_Auqy != null) && (this.jdField_a_of_type_Auqy.a != null)) {
+      this.jdField_a_of_type_Auqy.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -280,7 +280,7 @@ public class HongBaoListView
     if ((!this.g) || (this.h)) {
       bool = super.onTouchEvent(paramMotionEvent);
     }
-    while (!this.jdField_a_of_type_Auqi.d) {
+    while (!this.jdField_a_of_type_Auqk.d) {
       return bool;
     }
     bool = super.onTouchEvent(paramMotionEvent);
@@ -290,8 +290,8 @@ public class HongBaoListView
     for (;;)
     {
       return bool;
-      if (this.jdField_a_of_type_Bfrt != null) {
-        this.jdField_a_of_type_Bfrt.b(this);
+      if (this.jdField_a_of_type_Bfsk != null) {
+        this.jdField_a_of_type_Bfsk.b(this);
       }
       if (paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int) == -1) {}
       switch (this.mTouchMode)
@@ -301,7 +301,7 @@ public class HongBaoListView
         break;
       case 3: 
       case 5: 
-        if (this.jdField_a_of_type_Bfrt != null)
+        if (this.jdField_a_of_type_Bfsk != null)
         {
           int n = paramMotionEvent.getPointerCount();
           if (n > this.jdField_b_of_type_Int) {
@@ -328,7 +328,7 @@ public class HongBaoListView
             if (f1 > this.e / 2)
             {
               setSpringbackOffset(-this.e);
-              this.jdField_a_of_type_Bfrt.c();
+              this.jdField_a_of_type_Bfsk.c();
               n = 0;
               while (n < this.jdField_b_of_type_Int)
               {
@@ -336,22 +336,22 @@ public class HongBaoListView
                 n += 1;
               }
             }
-            this.jdField_a_of_type_Bfrt.a();
+            this.jdField_a_of_type_Bfsk.a();
             continue;
             if (this.j)
             {
               long l1 = System.currentTimeMillis();
-              if ((this.jdField_a_of_type_Auqw != null) && (l1 - this.jdField_a_of_type_Long > 800L) && (getScrollY() == 0))
+              if ((this.jdField_a_of_type_Auqy != null) && (l1 - this.jdField_a_of_type_Long > 800L) && (getScrollY() == 0))
               {
                 this.jdField_a_of_type_Long = l1;
-                if (this.jdField_a_of_type_Auqw.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-                  this.jdField_a_of_type_Bfrt.b();
+                if (this.jdField_a_of_type_Auqy.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+                  this.jdField_a_of_type_Bfsk.b();
                 }
               }
             }
             this.j = false;
-            if (this.jdField_a_of_type_Bfrt != null) {
-              this.jdField_a_of_type_Bfrt.c(this);
+            if (this.jdField_a_of_type_Bfsk != null) {
+              this.jdField_a_of_type_Bfsk.c(this);
             }
             this.jdField_a_of_type_Int = -1;
             continue;
@@ -400,12 +400,12 @@ public class HongBaoListView
     }
     o();
     this.k = true;
-    this.jdField_a_of_type_Auqw.j = 255;
+    this.jdField_a_of_type_Auqy.j = 255;
   }
   
-  public void setComboListener(bfrt parambfrt)
+  public void setComboListener(bfsk parambfsk)
   {
-    this.jdField_a_of_type_Bfrt = parambfrt;
+    this.jdField_a_of_type_Bfsk = parambfsk;
   }
   
   public void setContentBackground(Drawable paramDrawable)
@@ -431,8 +431,8 @@ public class HongBaoListView
   
   public void setLogo(Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Auqw != null) {
-      this.jdField_a_of_type_Auqw.a(paramBoolean, paramBitmap);
+    if (this.jdField_a_of_type_Auqy != null) {
+      this.jdField_a_of_type_Auqy.a(paramBoolean, paramBitmap);
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     invalidate();
@@ -454,17 +454,17 @@ public class HongBaoListView
     super.setOverScrollHeader(paramView);
   }
   
-  public void setOverScrollListener(bftk parambftk)
+  public void setOverScrollListener(bfub parambfub)
   {
-    if (parambftk != null) {
-      this.jdField_a_of_type_Bftk = parambftk;
+    if (parambfub != null) {
+      this.jdField_a_of_type_Bfub = parambfub;
     }
     if (this.mForHongBao)
     {
       super.setOverScrollListener(null);
       return;
     }
-    super.setOverScrollListener(parambftk);
+    super.setOverScrollListener(parambfub);
   }
   
   public void setOverscrollHeader(Drawable paramDrawable)
@@ -484,7 +484,7 @@ public class HongBaoListView
   {
     if (paramBoolean)
     {
-      this.mOverScrollHeaderShadow = getResources().getDrawable(2130840239);
+      this.mOverScrollHeaderShadow = getResources().getDrawable(2130840236);
       return;
     }
     this.mOverScrollHeaderShadow = null;

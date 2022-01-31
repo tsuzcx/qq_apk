@@ -1,19 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
+import android.content.Context;
 
-public final class smh
-  implements Parcelable.Creator<WSPushPreloadModel>
+public abstract class smh<MSG extends sma, INFO extends smb>
 {
-  public WSPushPreloadModel a(Parcel paramParcel)
+  MSG a;
+  
+  public smh(MSG paramMSG)
   {
-    return new WSPushPreloadModel(paramParcel);
+    this.a = paramMSG;
   }
   
-  public WSPushPreloadModel[] a(int paramInt)
-  {
-    return new WSPushPreloadModel[paramInt];
-  }
+  public abstract boolean a(Context paramContext, INFO paramINFO);
 }
 
 

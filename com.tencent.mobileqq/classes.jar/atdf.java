@@ -1,29 +1,36 @@
-import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
 public class atdf
-  implements bcij<oidb_0x8e4.RspBody>
+  implements atek
 {
   public atdf(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(View paramView)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.a = this.a.b;
+    this.a.f();
+    axqy.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
+  }
+  
+  public void a(View paramView, aten paramaten)
+  {
+    if (paramaten.jdField_a_of_type_Boolean) {
+      bcql.a(this.a, 1, ajya.a(2131705117), 1).a();
     }
-    for (;;)
+    do
     {
-      this.a.a(true);
       return;
-      paramRspBody = this.a;
-      GameRoomInviteActivity.a = null;
-      paramRspBody.b = null;
-    }
+      GameRoomInviteActivity.a(this.a, paramaten.jdField_a_of_type_JavaLangString, paramaten.jdField_a_of_type_Int);
+      paramaten.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramaten.jdField_a_of_type_Boolean);
+      if (paramaten.jdField_a_of_type_Int == 1)
+      {
+        axqy.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+        return;
+      }
+    } while (paramaten.jdField_a_of_type_Int != 0);
+    axqy.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 

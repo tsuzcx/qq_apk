@@ -1,39 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout;
+import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
 
-public class biyw
-  extends RecyclerView.ViewHolder
+public abstract interface biyw
 {
-  public FrameLayout a;
-  public ImageView a;
-  public TextView a;
-  public RoundCorneredFrameLayout a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  public abstract void b(NodeItem paramNodeItem);
   
-  public biyw(biyt parambiyt, View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131379018));
-    this.jdField_a_of_type_ComTencentMobileqqArmapMapRoundCorneredFrameLayout = ((RoundCorneredFrameLayout)paramView.findViewById(2131368324));
-    this.c = ((ImageView)paramView.findViewById(2131368337));
-    this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367662));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368340));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367663));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368341));
-  }
-  
-  public void a()
-  {
-    this.itemView.performClick();
-  }
+  public abstract void c(NodeItem paramNodeItem);
 }
 
 

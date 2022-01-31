@@ -1,17 +1,9 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
-
-public class veq
-  implements View.OnClickListener
+public abstract interface veq
+  extends vhl
 {
-  public veq(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-  }
+  public abstract void b(int paramInt);
 }
 
 

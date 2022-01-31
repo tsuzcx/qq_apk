@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
 class wlz
-  implements View.OnClickListener
+  implements RecyclerView.OnItemTouchListener
 {
-  wlz(wlx paramwlx) {}
+  wlz(wlu paramwlu) {}
   
-  public void onClick(View paramView)
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    if (!wkx.c())
-    {
-      paramView = wlx.a(this.a);
-      if (paramView != null)
-      {
-        this.a.d(paramView);
-        if (this.a.a() != null) {
-          this.a.a().c(paramView);
-        }
-      }
+    return wlu.a(this.a, paramMotionEvent);
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    if (wlu.a(this.a) != null) {
+      wlu.a(this.a).a(paramMotionEvent);
     }
   }
 }

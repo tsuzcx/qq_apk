@@ -1,16 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class wic
-  implements View.OnClickListener
+public class wic
 {
-  wic(wia paramwia, wig paramwig) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView c;
   
-  public void onClick(View paramView)
+  public wic(View paramView)
   {
-    if (wia.a(this.jdField_a_of_type_Wia) != null) {
-      wia.a(this.jdField_a_of_type_Wia).b(this.jdField_a_of_type_Wig);
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365101));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366211));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131706337));
+    this.c = ((ImageView)paramView.findViewById(2131364262));
+    this.c.setContentDescription(ajya.a(2131706336));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369737));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371866));
   }
 }
 

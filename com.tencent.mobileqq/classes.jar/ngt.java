@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 import java.lang.ref.WeakReference;
 
 class ngt
   implements View.OnClickListener
 {
-  ngt(nfu paramnfu, nmv paramnmv) {}
+  ngt(nfr paramnfr, nms paramnms) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent((Context)this.jdField_a_of_type_Nfu.a.get(), ScannerActivity.class);
-    paramView.putExtra("from", this.jdField_a_of_type_Nfu.a.getClass().getName());
-    paramView.putExtra("finishAfterSucc", true);
-    ((BaseActivity)this.jdField_a_of_type_Nfu.a.get()).startActivity(paramView);
-    nfu.a(this.jdField_a_of_type_Nfu, this.jdField_a_of_type_Nmv.a);
+    xbi.a((BaseActivity)this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.jdField_a_of_type_Nfr));
+    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,28 +1,60 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
-final class rnp
-  implements bfsp
+class rnp
 {
-  rnp(Context paramContext, AdData paramAdData) {}
+  public long a;
+  public List<Pair<Long, Long>> a;
+  private boolean a;
+  public long b;
+  public List<Pair<Long, Long>> b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void a()
+  public rnp(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpAdUtils", 2, "onPopupWindowForAdComplain");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    if (this.jdField_a_of_type_Long <= 0L) {
+      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+  }
+  
+  public void a(long paramLong, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
+      return;
+    }
+    this.d = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = this.d;
+    }
+    this.e = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
+    do
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 3);
-      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData);
-      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      return;
+      l3 = (this.c - this.d) / 100L;
+    } while (l3 == 0L);
+    long l1 = paramLong - this.e;
+    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
+    long l3 = Utils.px2dp((float)(l1 / l3));
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
+    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
+      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
     }
+    this.e = paramLong;
   }
 }
 

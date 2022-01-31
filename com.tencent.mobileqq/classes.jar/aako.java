@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class aako
-  extends akhc
+  extends Handler
 {
-  public aako(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  protected void a(boolean paramBoolean, ayaw paramayaw)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, ayaw paramayaw)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void c(boolean paramBoolean, ayaw paramayaw)
-  {
-    this.a.c();
-    AssociatedAccountManageActivity.b(this.a);
-  }
+  public aako(AuthDevActivity paramAuthDevActivity) {}
 }
 
 

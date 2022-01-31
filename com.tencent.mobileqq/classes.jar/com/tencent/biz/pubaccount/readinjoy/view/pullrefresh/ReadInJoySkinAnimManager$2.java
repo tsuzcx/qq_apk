@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
 import java.util.ArrayList;
-import rqx;
+import rqu;
 
 class ReadInJoySkinAnimManager$2
   implements Runnable
@@ -21,7 +21,7 @@ class ReadInJoySkinAnimManager$2
       ArrayList localArrayList = ReadInJoySkinAnimManager.a(this.this$0);
       int i = this.a;
       this.a = (i + 1);
-      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, ((rqx)localArrayList.get(i)).a);
+      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, ((rqu)localArrayList.get(i)).a);
       ((SkinPullRefreshHeader)this.this$0.a).requestLayout();
       ((SkinPullRefreshHeader)this.this$0.a).postDelayed(this, 50L);
     }

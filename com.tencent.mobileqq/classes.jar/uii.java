@@ -1,53 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uii
-  implements DialogInterface.OnClickListener
+public class uii
+  extends QQUIEventReceiver<uhw, tta>
 {
-  uii(uhz paramuhz, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, uwg paramuwg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uii(@NonNull uhw paramuhw)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    super(paramuhw);
+  }
+  
+  public void a(@NonNull uhw paramuhw, @NonNull tta paramtta)
+  {
+    if (TextUtils.equals(String.valueOf(paramuhw.hashCode()), paramtta.jdField_a_of_type_JavaLangString)) {
+      b(paramuhw, paramtta);
     }
-    switch (paramInt)
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tta.class;
+  }
+  
+  public void b(uhw paramuhw, tta paramtta)
+  {
+    paramuhw = ((StoryPlayerGroupHolder)paramuhw.a()).a();
+    if (paramuhw != null) {
+      paramuhw.c(false);
+    }
+    if (paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = tsr.a(paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramtta.jdField_a_of_type_Int)
     {
     case 0: 
     default: 
       return;
-    }
-    this.jdField_a_of_type_Uhz.a("");
-    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
-    {
-      ((svo)tdc.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      paramDialogInterface = new tch(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramDialogInterface.a == 0L) {
-        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
-      ste.a().dispatch(paramDialogInterface);
-    }
-    for (;;)
-    {
-      vel.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    case 1: 
+      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706890), 0).a();
       return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+    case 2: 
+      if (bool) {}
+      for (paramuhw = "2";; paramuhw = "1")
       {
-        ((vwq)tsu.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new uij(this));
+        vei.a("play_video", "down_suc", 0, 0, new String[] { paramuhw, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        bcql.a(BaseApplicationImpl.getContext(), 2, sxm.a(2131699719), 0).a();
+        return;
       }
-      else
-      {
-        this.jdField_a_of_type_Uwg.a(this.jdField_a_of_type_Uhz.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.jdField_a_of_type_Uwg.a(this.jdField_a_of_type_Uhz.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        new tjn().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      }
+    }
+    if (bool) {}
+    for (paramuhw = "2";; paramuhw = "1")
+    {
+      vei.a("play_video", "down_fail", 0, 0, new String[] { paramuhw, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706894), 0).a();
+      return;
     }
   }
 }

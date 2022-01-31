@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahrh
-  implements OnCompositionLoadedListener
+  implements View.OnTouchListener
 {
-  public ahrh(LoginAnimBtnView.2 param2) {}
+  public ahrh(LoginView paramLoginView) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramLottieComposition == null) || (LoginAnimBtnView.a(this.a.this$0))) {
-      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
     }
-    do
-    {
-      return;
-      int i = actn.a(70.0F, this.a.this$0.getResources());
-      int j = actn.a(70.0F, this.a.this$0.getResources());
-      Object localObject = paramLottieComposition.getBounds();
-      float f1 = i / ((Rect)localObject).width();
-      float f2 = j / ((Rect)localObject).height();
-      if (QLog.isColorLevel()) {
-        QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject).width() + ", rh:" + ((Rect)localObject).height());
-      }
-      localObject = new LottieDrawable();
-      ((LottieDrawable)localObject).setImageAssetDelegate(new ahri(this.a.this$0.getContext().getApplicationContext()));
-      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-      ((LottieDrawable)localObject).setScale(f1, f2);
-      ((LottieDrawable)localObject).loop(true);
-      paramLottieComposition = ((LottieDrawable)localObject).getBounds();
-      if (QLog.isColorLevel()) {
-        QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + paramLottieComposition.width() + ", rh:" + paramLottieComposition.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
-      }
-      LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject);
-      if (LoginAnimBtnView.a(this.a.this$0))
-      {
-        ((LottieDrawable)localObject).cancelAnimation();
-        ((LottieDrawable)localObject).recycleBitmaps();
-        ((LottieDrawable)localObject).clearComposition();
-        ((LottieDrawable)localObject).setImageAssetDelegate(null);
-        LoginAnimBtnView.a(this.a.this$0, null);
-        return;
-      }
-    } while (!this.a.this$0.isEnabled());
-    this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
-    this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    return true;
   }
 }
 

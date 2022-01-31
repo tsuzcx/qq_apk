@@ -1,101 +1,46 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
-
-class axwr
-  extends URLDrawableDownListener.Adapter
+public class axwr
+  extends axur
 {
-  axwr(axwq paramaxwq) {}
+  public boolean c;
+  public int k;
+  public int l = 3;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public axwr()
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
-    }
+    this(null);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public axwr(String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
-    {
-      paramThrowable = paramURLDrawable.getURL().toString();
-      if (paramThrowable.startsWith("http://url.cn"))
-      {
-        paramThrowable = paramThrowable.replace("http://", "https://");
-        try
-        {
-          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
-          paramThrowable.setAutoDownload(true);
-          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
-          return;
-        }
-        catch (Exception paramThrowable)
-        {
-          paramThrowable.printStackTrace();
-        }
-      }
-    }
-    try
-    {
-      paramThrowable = new HashMap();
-      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
-      axrl.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
-      label152:
-      this.a.a(paramView, 0, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label152;
-    }
+    super(paramString, "content");
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public String a()
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
-    }
+    return "Content";
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public int b()
   {
-    if (paramView == null) {
-      return;
+    return this.l;
+  }
+  
+  public int c()
+  {
+    return 2131378112;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.k != 0)) {
+      return -1;
     }
-    paramView.setBackgroundDrawable(null);
-    if ((paramView instanceof ImageView)) {
-      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
-      axrl.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
-      label66:
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
-      }
-      this.a.a(paramView, 1, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label66;
-    }
+    return -8355712;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 

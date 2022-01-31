@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqw;
+import axqy;
 
 class Conversation$51
   implements Runnable
@@ -15,7 +15,7 @@ class Conversation$51
       try
       {
         i = Integer.parseInt((String)this.a);
-        axqw.b(this.this$0.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
+        axqy.b(this.this$0.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
         return;
       }
       catch (Throwable localThrowable)

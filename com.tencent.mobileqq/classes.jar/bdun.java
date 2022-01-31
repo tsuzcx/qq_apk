@@ -1,41 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import android.view.View;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bdun
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
+public class bdun
+  implements bfph
 {
-  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
+  public bdun(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label103;
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
       }
     }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.d = paramParcel.readString();
-      localQidianCompoundProfileItem.e = paramParcel.readString();
-      return localQidianCompoundProfileItem;
-      bool1 = false;
-      break;
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
-  }
-  
-  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
-  {
-    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 

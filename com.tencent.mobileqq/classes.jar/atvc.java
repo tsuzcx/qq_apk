@@ -1,17 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class atvc
-  implements View.OnClickListener
+public class atvc
+  extends atva
 {
-  atvc(atvb paramatvb, ViewGroup paramViewGroup) {}
+  public View e;
+  public ImageView e;
+  public View f;
+  public ImageView f;
+  public TextView g;
   
-  public void onClick(View paramView)
+  public atvc(atvb paramatvb)
   {
-    if (atvb.a(this.jdField_a_of_type_Atvb) != null) {
-      atvb.a(this.jdField_a_of_type_Atvb).a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
+    super(paramatvb);
   }
 }
 

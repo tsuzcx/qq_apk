@@ -1,19 +1,13 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
 
 public class aiih
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
   public aiih(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onGlobalLayout()
-  {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zyx;
+import zyu;
 
 public class FromService
   implements Parcelable
 {
-  public static final Parcelable.Creator<FromService> CREATOR = new zyx();
+  public static final Parcelable.Creator<FromService> CREATOR = new zyu();
   public int a;
   public Bundle a;
   public int b;

@@ -1,24 +1,30 @@
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbiw
+class bbiw
+  extends Handler
 {
-  public static bbje a(int paramInt, ArrayList<bbje> paramArrayList)
+  bbiw(bbiu parambbiu, Looper paramLooper)
   {
-    bbje localbbje = bbje.a(paramInt);
-    paramArrayList.add(localbbje);
-    return localbbje;
+    super(paramLooper);
   }
   
-  public static bbje a(int paramInt1, ArrayList<bbje> paramArrayList, String paramString, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    bbje localbbje = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
+    synchronized (this.a)
+    {
+      if (bbiu.a(this.a) != null) {
+        bbiu.a(this.a).a(bbiu.a(this.a));
+      }
+      while (!QLog.isDevelopLevel())
+      {
+        super.handleMessage(paramMessage);
+        return;
+      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
     }
-    localbbje.b = paramArrayList;
-    localbbje.e = paramInt2;
-    return localbbje;
   }
 }
 

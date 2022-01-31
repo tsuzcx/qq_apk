@@ -1,36 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 class vml
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  vml(vmg paramvmg) {}
   
-  vml(vmj paramvmj) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
+    this.a.jdField_a_of_type_Vlp.a = this.a.d;
+    this.a.jdField_a_of_type_Vlp.d = this.a.e;
+    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 3);
     }
-    return this.jdField_a_of_type_Boolean;
+    vej.a("0X80076C5");
+    vej.b("0X80075D9");
   }
 }
 

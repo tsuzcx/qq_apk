@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
 
-public class agbg
+class agbg
+  extends ajxj
 {
-  public static String a(MessageRecord paramMessageRecord)
+  agbg(agbf paramagbf) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if ((paramMessageRecord instanceof MessageForText))
-    {
-      paramMessageRecord = (MessageForText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
     }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return String.valueOf(MessageForMixedMsg.getTextFromMixedMsg((MessageForMixedMsg)paramMessageRecord));
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
     }
-    if ((paramMessageRecord instanceof MessageForReplyText))
-    {
-      paramMessageRecord = (MessageForReplyText)paramMessageRecord;
-      if (paramMessageRecord.sb != null) {
-        return paramMessageRecord.sb.toString();
-      }
-      return paramMessageRecord.msg;
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
     }
-    if ((paramMessageRecord instanceof MessageForArkApp)) {
-      return ((MessageForArkApp)paramMessageRecord).getJumpUrl();
-    }
-    return "";
   }
 }
 

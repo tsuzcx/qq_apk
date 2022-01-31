@@ -1,76 +1,22 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import mqq.util.WeakReference;
-import org.jetbrains.annotations.NotNull;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class wio
+final class wio
+  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841191);
-    if (paramURLImageView.getLayoutParams() != null)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
-  }
-  
-  public static void a()
-  {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      BaseApplicationImpl.sImageCache.evict(0);
-      return;
-    }
-    BaseApplicationImpl.sImageCache.evictAll();
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView)
-  {
-    a(paramString, paramURLImageView, null, false);
-  }
-  
-  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
-  {
-    WeakReference localWeakReference = new WeakReference(paramURLImageView);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
-    if (paramURLDrawableOptions == null) {}
-    try
-    {
-      localURLDrawableOptions = b(paramURLImageView);
-      if (paramBoolean) {}
-      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
-      {
-        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
-        return;
+      if (paramStGetMainPageRsp != null) {
+        win.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
       }
+    }
+    else {
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  @NotNull
-  private static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130845704);
-    if (paramURLImageView.getLayoutParams() != null)
-    {
-      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
-    }
-    return localURLDrawableOptions;
+    QLog.w(win.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 

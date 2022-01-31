@@ -19,17 +19,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lmb;
+import llw;
+import lor;
+import los;
+import lou;
+import lov;
 import low;
-import lox;
-import loz;
-import lpa;
-import lpb;
-import mqs;
+import mqp;
 
 @TargetApi(16)
 public class NativeCodec
-  implements lpa
+  implements lov
 {
   public static String AVCPPS = "csd-1";
   public static String AVCSPS;
@@ -40,15 +40,15 @@ public class NativeCodec
   public static String SLICEHEIGHT = "slice-height";
   public static String STRIDE;
   public static String TOP = "crop-top";
-  static lpb gAVCDecoderCaps;
-  static lpb gAVCEncoderCaps;
-  static lpb gHEVCDecoderCaps;
-  static lpb gHEVCEncoderCaps;
+  static low gAVCDecoderCaps;
+  static low gAVCEncoderCaps;
+  static low gHEVCDecoderCaps;
+  static low gHEVCEncoderCaps;
   public static boolean mUseAsyncAPI;
   public static boolean printLog;
   public final String TAG;
   int mBitRate;
-  low mCodec;
+  lor mCodec;
   AtomicBoolean mCodersExit = new AtomicBoolean(false);
   int mColorFormat;
   boolean mDebugDelay = false;
@@ -62,7 +62,7 @@ public class NativeCodec
   long mLastEncFrameTime = 0L;
   String mMime;
   private long mNativeContext;
-  List<loz> mPendingInputBuffers = new ArrayList();
+  List<lou> mPendingInputBuffers = new ArrayList();
   long mTimeStamp = 0L;
   int mTotalDecInFrameNum = 0;
   int mTotalDecOutFrameNum = 0;
@@ -122,7 +122,7 @@ public class NativeCodec
         int i = this.mWidth;
         int j = this.mHeight;
         this.mFormat = MediaFormat.createVideoFormat(paramString, i, j);
-        if (paramString.contains(low.a))
+        if (paramString.contains(lor.a))
         {
           this.mFormat.setInteger("max-input-size", i * j);
           this.mFormat.setInteger("color-format", 21);
@@ -132,7 +132,7 @@ public class NativeCodec
           this.mFormat.setByteBuffer(AVCSPS, (ByteBuffer)localObject1);
           this.mFormat.setByteBuffer(AVCPPS, (ByteBuffer)localObject2);
         }
-        if (paramString.contains(low.b))
+        if (paramString.contains(lor.b))
         {
           this.mFormat.setInteger("max-input-size", i * j);
           this.mFormat.setInteger("color-format", 21);
@@ -181,11 +181,11 @@ public class NativeCodec
   
   private void createDecCodec()
   {
-    this.mCodec = new low(this.TAG);
+    this.mCodec = new lor(this.TAG);
     List localList;
     if (this.misdecoder)
     {
-      localList = low.a(this.mMime);
+      localList = lor.a(this.mMime);
       if (localList.size() != 0) {
         break label59;
       }
@@ -207,13 +207,13 @@ public class NativeCodec
         if (i >= localList.size()) {
           break label152;
         }
-        localObject = low.a((MediaCodecInfo)localList.get(i), this.mMime);
+        localObject = lor.a((MediaCodecInfo)localList.get(i), this.mMime);
         if (localObject != null) {
           break;
         }
         i += 1;
       }
-      if (mqs.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19))
+      if (mqp.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19))
       {
         localObject = (MediaCodecInfo)localList.get(i);
         this.mFormat.setInteger("color-format", 19);
@@ -225,7 +225,7 @@ public class NativeCodec
         }
         this.mCodec = null;
         return;
-        if (!mqs.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 21)) {
+        if (!mqp.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 21)) {
           break;
         }
         localObject = (MediaCodecInfo)localList.get(i);
@@ -253,36 +253,36 @@ public class NativeCodec
     {
       try
       {
-        lox locallox = this.mCodec.a();
+        los locallos = this.mCodec.a();
         int i = 0;
-        Object localObject = locallox;
+        Object localObject = locallos;
         int j;
-        if (locallox == null)
+        if (locallos == null)
         {
           j = i + 1;
           if (this.misdecoder) {
             dequeueOutFrameMore(3000000L);
           }
-          locallox = this.mCodec.a();
-          if (locallox != null) {
-            localObject = locallox;
+          locallos = this.mCodec.a();
+          if (locallos != null) {
+            localObject = locallos;
           }
         }
         else
         {
-          ((lox)localObject).jdField_a_of_type_JavaNioByteBuffer = null;
-          this.mCodec.a(((lox)localObject).jdField_a_of_type_Int, 0, 0L, 4);
+          ((los)localObject).jdField_a_of_type_JavaNioByteBuffer = null;
+          this.mCodec.a(((los)localObject).jdField_a_of_type_Int, 0, 0L, 4);
           i = 0;
           j = 0;
           if (i >= 10) {
             break label531;
           }
           i += 1;
-          locallox = this.mCodec.b();
-          if ((locallox == null) || (locallox.jdField_a_of_type_Int < 0)) {
+          locallos = this.mCodec.b();
+          if ((locallos == null) || (locallos.jdField_a_of_type_Int < 0)) {
             break label514;
           }
-          if (locallox.jdField_a_of_type_Boolean) {
+          if (locallos.jdField_a_of_type_Boolean) {
             continue;
           }
           if (!AudioHelper.e()) {
@@ -300,27 +300,27 @@ public class NativeCodec
         }
         QLog.e(this.TAG, 2, "dequeueLastFrame not available, try count=" + j);
         break label517;
-        if ((locallox.jdField_a_of_type_AndroidMediaMediaFormat == null) || (locallox.jdField_a_of_type_JavaNioByteBuffer == null))
+        if ((locallos.jdField_a_of_type_AndroidMediaMediaFormat == null) || (locallos.jdField_a_of_type_JavaNioByteBuffer == null))
         {
           if (AudioHelper.e())
           {
             localObject = this.TAG;
             StringBuilder localStringBuilder = new StringBuilder().append("dequeueLastFrame err! output.format == null: ");
-            if (locallox.jdField_a_of_type_AndroidMediaMediaFormat != null) {
+            if (locallos.jdField_a_of_type_AndroidMediaMediaFormat != null) {
               break label519;
             }
             bool = true;
             localStringBuilder = localStringBuilder.append(bool).append(", output.buffer == null: ");
-            if (locallox.jdField_a_of_type_JavaNioByteBuffer != null) {
+            if (locallos.jdField_a_of_type_JavaNioByteBuffer != null) {
               break label525;
             }
             bool = true;
             QLog.e((String)localObject, 1, bool);
           }
-          this.mCodec.a(locallox.jdField_a_of_type_Int);
+          this.mCodec.a(locallos.jdField_a_of_type_Int);
           continue;
         }
-        if ((locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
+        if ((locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
         {
           if (!AudioHelper.e()) {
             break label531;
@@ -330,13 +330,13 @@ public class NativeCodec
         }
         if (this.misdecoder)
         {
-          setFrame(locallox.jdField_a_of_type_JavaNioByteBuffer, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallox.jdField_a_of_type_AndroidMediaMediaFormat);
-          this.mCodec.a(locallox.jdField_a_of_type_Int);
+          setFrame(locallos.jdField_a_of_type_JavaNioByteBuffer, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallos.jdField_a_of_type_AndroidMediaMediaFormat);
+          this.mCodec.a(locallos.jdField_a_of_type_Int);
           j += 1;
         }
         else
         {
-          readOutputStream(locallox.jdField_a_of_type_JavaNioByteBuffer, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
+          readOutputStream(locallos.jdField_a_of_type_JavaNioByteBuffer, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
           continue;
         }
       }
@@ -364,17 +364,17 @@ public class NativeCodec
     while (l1 < paramLong)
     {
       long l2 = System.nanoTime();
-      lox locallox = this.mCodec.a(3000L);
+      los locallos = this.mCodec.a(3000L);
       l2 = l1 + (System.nanoTime() - l2);
       l1 = l2;
-      if (locallox != null)
+      if (locallos != null)
       {
         l1 = l2;
-        if (locallox.jdField_a_of_type_Int != -1)
+        if (locallos.jdField_a_of_type_Int != -1)
         {
           l1 = l2;
-          if (locallox.jdField_a_of_type_Int >= 0) {
-            if (!locallox.jdField_a_of_type_Boolean)
+          if (locallos.jdField_a_of_type_Int >= 0) {
+            if (!locallos.jdField_a_of_type_Boolean)
             {
               l1 = l2;
               if (AudioHelper.e())
@@ -383,18 +383,18 @@ public class NativeCodec
                 l1 = l2;
               }
             }
-            else if ((locallox.jdField_a_of_type_AndroidMediaMediaFormat == null) || (locallox.jdField_a_of_type_JavaNioByteBuffer == null))
+            else if ((locallos.jdField_a_of_type_AndroidMediaMediaFormat == null) || (locallos.jdField_a_of_type_JavaNioByteBuffer == null))
             {
               if (AudioHelper.e()) {
                 QLog.e(this.TAG, 1, "dequeueOutFrameMore get output buffer error");
               }
-              this.mCodec.a(locallox.jdField_a_of_type_Int);
+              this.mCodec.a(locallos.jdField_a_of_type_Int);
               l1 = l2;
             }
             else
             {
-              setFrame(locallox.jdField_a_of_type_JavaNioByteBuffer, locallox.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallox.jdField_a_of_type_AndroidMediaMediaFormat);
-              this.mCodec.a(locallox.jdField_a_of_type_Int);
+              setFrame(locallos.jdField_a_of_type_JavaNioByteBuffer, locallos.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, locallos.jdField_a_of_type_AndroidMediaMediaFormat);
+              this.mCodec.a(locallos.jdField_a_of_type_Int);
               return true;
             }
           }
@@ -443,7 +443,7 @@ public class NativeCodec
                         }
                       } while (!mUseAsyncAPI);
                       return 1;
-                      if (!paramString2.equalsIgnoreCase(low.a)) {
+                      if (!paramString2.equalsIgnoreCase(lor.a)) {
                         break label172;
                       }
                       if (!paramBoolean) {
@@ -473,7 +473,7 @@ public class NativeCodec
                 }
               } while (!paramString3.equalsIgnoreCase("profile"));
               return gAVCEncoderCaps.c;
-            } while (!paramString2.equalsIgnoreCase(low.b));
+            } while (!paramString2.equalsIgnoreCase(lor.b));
             if (!paramBoolean) {
               break;
             }
@@ -510,7 +510,7 @@ public class NativeCodec
     if (QLog.isColorLevel()) {
       QLog.d(paramString, 2, "initAVCDecoderCaps");
     }
-    Object localObject = low.a(low.a);
+    Object localObject = lor.a(lor.a);
     if (((List)localObject).size() == 0) {
       if (QLog.isColorLevel()) {
         QLog.w(paramString, 1, "initAVCDecoderCaps fail, list.size为0");
@@ -522,9 +522,9 @@ public class NativeCodec
       do
       {
         return;
-        localObject = low.a((MediaCodecInfo)((List)localObject).get(0), low.a);
+        localObject = lor.a((MediaCodecInfo)((List)localObject).get(0), lor.a);
       } while ((localObject == null) || (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels == null));
-      gAVCDecoderCaps = new lpb();
+      gAVCDecoderCaps = new low();
       i = 0;
     } while (i >= ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length);
     switch (localObject.profileLevels[i].profile)
@@ -697,7 +697,7 @@ public class NativeCodec
   private static void initAVCEncoderCaps(String paramString)
   {
     boolean bool = false;
-    Object localObject1 = low.a(low.a);
+    Object localObject1 = lor.a(lor.a);
     if (((List)localObject1).size() == 0) {
       if (QLog.isColorLevel()) {
         QLog.w(paramString, 1, "initAVCEncoderCaps fail, lists.size为0");
@@ -711,9 +711,9 @@ public class NativeCodec
         do
         {
           return;
-          localObject1 = low.a((MediaCodecInfo)((List)localObject1).get(0), low.a);
+          localObject1 = lor.a((MediaCodecInfo)((List)localObject1).get(0), lor.a);
         } while ((localObject1 == null) || (((MediaCodecInfo.CodecCapabilities)localObject1).profileLevels == null));
-        gAVCEncoderCaps = new lpb();
+        gAVCEncoderCaps = new low();
         if (((MediaCodecInfo.CodecCapabilities)localObject1).profileLevels.length <= 0) {
           break;
         }
@@ -744,14 +744,14 @@ public class NativeCodec
   
   private static void initHevcDecoderCaps(String paramString)
   {
-    Object localObject = low.a(low.b);
+    Object localObject = lor.a(lor.b);
     if (((List)localObject).size() == 0) {}
     do
     {
       return;
-      localObject = low.a((MediaCodecInfo)((List)localObject).get(0), low.b);
+      localObject = lor.a((MediaCodecInfo)((List)localObject).get(0), lor.b);
     } while ((localObject == null) || (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels == null));
-    gHEVCDecoderCaps = new lpb();
+    gHEVCDecoderCaps = new low();
     if (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length == 0) {}
     int i = 0;
     label65:
@@ -897,7 +897,7 @@ public class NativeCodec
   
   private static void initHevcEncoderCaps()
   {
-    Object localObject = low.a(low.b);
+    Object localObject = lor.a(lor.b);
     if (((List)localObject).size() == 0) {
       if (QLog.isColorLevel()) {
         QLog.w("NativieCodec", 1, "initHevcEncoderCaps fail, lists.size为0");
@@ -909,9 +909,9 @@ public class NativeCodec
       do
       {
         return;
-        localObject = low.a((MediaCodecInfo)((List)localObject).get(0), low.b);
+        localObject = lor.a((MediaCodecInfo)((List)localObject).get(0), lor.b);
       } while ((localObject == null) || (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels == null));
-      gHEVCEncoderCaps = new lpb();
+      gHEVCEncoderCaps = new low();
       i = 0;
     } while (i >= ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length);
     switch (localObject.profileLevels[i].profile)
@@ -988,8 +988,8 @@ public class NativeCodec
           localNativeCodec.mDebugDelayMap2.clear();
           localNativeCodec.mDebugIndexMap.clear();
         }
-        low locallow = localNativeCodec.mCodec;
-        if (locallow == null) {}
+        lor locallor = localNativeCodec.mCodec;
+        if (locallor == null) {}
       }
     }
     try
@@ -1064,7 +1064,7 @@ public class NativeCodec
             if (!this.misdecoder) {
               break label410;
             }
-            paramInt1 = writeInputData(((lox)localObject4).jdField_a_of_type_JavaNioByteBuffer, false);
+            paramInt1 = writeInputData(((los)localObject4).jdField_a_of_type_JavaNioByteBuffer, false);
             if (paramInt1 >= 0) {
               break;
             }
@@ -1103,7 +1103,7 @@ public class NativeCodec
           Object localObject2 = localObject5;
         }
         continue;
-        paramInt1 = writeInputData2(((lox)localObject4).jdField_a_of_type_JavaNioByteBuffer, this.mColorFormat, false);
+        paramInt1 = writeInputData2(((los)localObject4).jdField_a_of_type_JavaNioByteBuffer, this.mColorFormat, false);
       }
       catch (Exception localException)
       {
@@ -1119,7 +1119,7 @@ public class NativeCodec
       this.mDebugDelayMap.put(Long.valueOf(this.mLastEncFrameTime), Long.valueOf(System.currentTimeMillis()));
       this.mDebugIndexMap.put(Long.valueOf(this.mLastEncFrameTime), Integer.valueOf(paramInt2));
     }
-    this.mCodec.a(((lox)localObject4).jdField_a_of_type_Int, paramInt1, this.mLastEncFrameTime, 0);
+    this.mCodec.a(((los)localObject4).jdField_a_of_type_Int, paramInt1, this.mLastEncFrameTime, 0);
     this.mTotalDecInFrameNum += 1;
     long l2 = System.nanoTime();
     long l1 = 33000000L;
@@ -1134,7 +1134,7 @@ public class NativeCodec
     for (;;)
     {
       if (localObject3 != null) {
-        if (((lox)localObject3).jdField_a_of_type_Int == -1)
+        if (((los)localObject3).jdField_a_of_type_Int == -1)
         {
           this.mTryAgainLaterCount += 1;
           if (QLog.isColorLevel()) {
@@ -1155,7 +1155,7 @@ public class NativeCodec
         else
         {
           this.mTryAgainLaterCount = 0;
-          if (!((lox)localObject3).jdField_a_of_type_Boolean)
+          if (!((los)localObject3).jdField_a_of_type_Boolean)
           {
             if (!QLog.isColorLevel()) {
               break label1333;
@@ -1163,20 +1163,20 @@ public class NativeCodec
             QLog.e(this.TAG, 2, "onDoCodec err!");
             break label1333;
           }
-          if ((((lox)localObject3).jdField_a_of_type_AndroidMediaMediaFormat == null) || (((lox)localObject3).jdField_a_of_type_JavaNioByteBuffer == null))
+          if ((((los)localObject3).jdField_a_of_type_AndroidMediaMediaFormat == null) || (((los)localObject3).jdField_a_of_type_JavaNioByteBuffer == null))
           {
-            this.mCodec.a(((lox)localObject3).jdField_a_of_type_Int);
+            this.mCodec.a(((los)localObject3).jdField_a_of_type_Int);
             if (!QLog.isColorLevel()) {
               break label1335;
             }
             localObject4 = this.TAG;
             localObject5 = new StringBuilder().append("onDoCodec err! output.format == null: ");
-            if (((lox)localObject3).jdField_a_of_type_AndroidMediaMediaFormat != null) {
+            if (((los)localObject3).jdField_a_of_type_AndroidMediaMediaFormat != null) {
               break label1337;
             }
             bool = true;
             localObject5 = ((StringBuilder)localObject5).append(bool).append(", output.buffer == null: ");
-            if (((lox)localObject3).jdField_a_of_type_JavaNioByteBuffer != null) {
+            if (((los)localObject3).jdField_a_of_type_JavaNioByteBuffer != null) {
               break label1343;
             }
             bool = true;
@@ -1186,26 +1186,26 @@ public class NativeCodec
           }
           if (this.misdecoder)
           {
-            calcDelay(true, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-            setFrame(((lox)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaFormat);
-            this.mCodec.a(((lox)localObject3).jdField_a_of_type_Int);
+            calcDelay(true, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+            setFrame(((los)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaFormat);
+            this.mCodec.a(((los)localObject3).jdField_a_of_type_Int);
             if ((!this.misdecoder) || (this.mTotalDecInFrameNum - this.mTotalDecOutFrameNum <= 0) || (!dequeueOutFrameMore(l1 - (System.nanoTime() - l2))) || (!QLog.isColorLevel())) {
               break label1349;
             }
             QLog.d(this.TAG, 2, "dequeue one store Frame success");
             break label1349;
           }
-          if (((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags == 1) {
+          if (((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags == 1) {
             QLog.e(this.TAG, 2, "onDoCodec err flags!");
           }
-          if (((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags == 2)
+          if (((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags == 2)
           {
-            this.mCodec.a(((lox)localObject3).jdField_a_of_type_Int);
-            readOutputStream(((lox)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
+            this.mCodec.a(((los)localObject3).jdField_a_of_type_Int);
+            readOutputStream(((los)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
             localObject4 = this.mCodec.b();
             if (localObject4 != null)
             {
-              if (((lox)localObject4).jdField_a_of_type_Int == -1)
+              if (((los)localObject4).jdField_a_of_type_Int == -1)
               {
                 this.mTryAgainLaterCount2 += 1;
                 if (QLog.isColorLevel()) {
@@ -1217,7 +1217,7 @@ public class NativeCodec
                 return false;
               }
               this.mTryAgainLaterCount2 = 0;
-              if (!((lox)localObject4).jdField_a_of_type_Boolean)
+              if (!((los)localObject4).jdField_a_of_type_Boolean)
               {
                 if (!QLog.isColorLevel()) {
                   break label1353;
@@ -1225,21 +1225,21 @@ public class NativeCodec
                 QLog.e(this.TAG, 2, "onDoCodec, re-dequeue onDoCodec err!");
                 break label1353;
               }
-              if ((((lox)localObject4).jdField_a_of_type_AndroidMediaMediaFormat == null) || (((lox)localObject4).jdField_a_of_type_JavaNioByteBuffer == null))
+              if ((((los)localObject4).jdField_a_of_type_AndroidMediaMediaFormat == null) || (((los)localObject4).jdField_a_of_type_JavaNioByteBuffer == null))
               {
-                this.mCodec.a(((lox)localObject4).jdField_a_of_type_Int);
+                this.mCodec.a(((los)localObject4).jdField_a_of_type_Int);
                 if (!QLog.isColorLevel()) {
                   break label1355;
                 }
                 localObject3 = this.TAG;
                 localObject5 = new StringBuilder().append("onDoCodec err! output.format == null: ");
-                if (((lox)localObject4).jdField_a_of_type_AndroidMediaMediaFormat != null) {
+                if (((los)localObject4).jdField_a_of_type_AndroidMediaMediaFormat != null) {
                   break label1357;
                 }
                 bool = true;
                 label1203:
                 localObject5 = ((StringBuilder)localObject5).append(bool).append(", output.buffer == null: ");
-                if (((lox)localObject4).jdField_a_of_type_JavaNioByteBuffer != null) {
+                if (((los)localObject4).jdField_a_of_type_JavaNioByteBuffer != null) {
                   break label1363;
                 }
               }
@@ -1270,8 +1270,8 @@ public class NativeCodec
       }
       for (;;)
       {
-        calcDelay(true, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-        readOutputStream(((lox)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((lox)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
+        calcDelay(true, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+        readOutputStream(((los)localObject3).jdField_a_of_type_JavaNioByteBuffer, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size, ((los)localObject3).jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags);
         break;
       }
       return true;
@@ -1315,18 +1315,18 @@ public class NativeCodec
           if (canLog()) {
             QLog.e(this.TAG, 2, "InputData pendingInputBuffers exist, size:" + this.mPendingInputBuffers.size());
           }
-          loz localloz = (loz)this.mPendingInputBuffers.get(0);
-          if (localloz == null) {
+          lou locallou = (lou)this.mPendingInputBuffers.get(0);
+          if (locallou == null) {
             return 2;
           }
-          if (localloz.jdField_a_of_type_JavaNioByteBuffer == null)
+          if (locallou.jdField_a_of_type_JavaNioByteBuffer == null)
           {
             if (QLog.isColorLevel()) {
               QLog.e(this.TAG, 2, "inputbuffer null, return");
             }
             return -1;
           }
-          if (localloz.jdField_a_of_type_Boolean)
+          if (locallou.jdField_a_of_type_Boolean)
           {
             if (QLog.isColorLevel()) {
               QLog.e(this.TAG, 2, "curr buffer is being processed by other thread, return");
@@ -1335,7 +1335,7 @@ public class NativeCodec
           }
           if (this.misdecoder)
           {
-            paramInt1 = writeInputData(localloz.jdField_a_of_type_JavaNioByteBuffer, false);
+            paramInt1 = writeInputData(locallou.jdField_a_of_type_JavaNioByteBuffer, false);
             if (canLog()) {
               QLog.w(this.TAG, 1, "onDoCodecAsync, sampleSize[" + paramInt1 + "]");
             }
@@ -1348,13 +1348,13 @@ public class NativeCodec
                 this.mDebugDelayMap.put(Long.valueOf(this.mLastEncFrameTime), Long.valueOf(System.currentTimeMillis()));
                 this.mDebugIndexMap.put(Long.valueOf(this.mLastEncFrameTime), Integer.valueOf(paramInt2));
               }
-              this.mCodec.a(localloz.jdField_a_of_type_Int, paramInt1, this.mLastEncFrameTime, 0);
+              this.mCodec.a(locallou.jdField_a_of_type_Int, paramInt1, this.mLastEncFrameTime, 0);
               return 1;
             }
           }
           else
           {
-            paramInt1 = writeInputData2(localloz.jdField_a_of_type_JavaNioByteBuffer, this.mColorFormat, false);
+            paramInt1 = writeInputData2(locallou.jdField_a_of_type_JavaNioByteBuffer, this.mColorFormat, false);
             continue;
             return 0;
             return -1;
@@ -1378,7 +1378,7 @@ public class NativeCodec
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
+    //   1: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
     //   4: ifnull +82 -> 86
     //   7: aload_0
     //   8: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
@@ -1405,14 +1405,14 @@ public class NativeCodec
     //   57: getfield 147	com/tencent/av/mediacodec/NativeCodec:mDebugIndexMap	Ljava/util/Map;
     //   60: invokeinterface 609 1 0
     //   65: aload_0
-    //   66: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
-    //   69: invokevirtual 611	low:c	()V
+    //   66: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
+    //   69: invokevirtual 611	lor:c	()V
     //   72: aload_0
-    //   73: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
-    //   76: invokevirtual 613	low:d	()V
+    //   73: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
+    //   76: invokevirtual 613	lor:d	()V
     //   79: aload_0
     //   80: aconst_null
-    //   81: putfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
+    //   81: putfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
     //   84: aload_1
     //   85: monitorexit
     //   86: aload_0
@@ -1427,8 +1427,8 @@ public class NativeCodec
     //   103: lconst_0
     //   104: putfield 108	com/tencent/av/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   107: aload_0
-    //   108: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
-    //   111: invokevirtual 575	low:a	()Z
+    //   108: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
+    //   111: invokevirtual 575	lor:a	()Z
     //   114: pop
     //   115: aload_0
     //   116: getfield 139	com/tencent/av/mediacodec/NativeCodec:mCodersExit	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -1450,7 +1450,7 @@ public class NativeCodec
     //   146: astore_1
     //   147: aload_0
     //   148: aconst_null
-    //   149: putfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
+    //   149: putfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
     //   152: goto -66 -> 86
     //   155: aload_0
     //   156: invokevirtual 297	com/tencent/av/mediacodec/NativeCodec:createEncCodec	()V
@@ -1555,13 +1555,13 @@ public class NativeCodec
     }
   }
   
-  private static void setHevcLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, lpb paramlpb)
+  private static void setHevcLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, low paramlow)
   {
     if (paramCodecProfileLevel.level == 1) {
-      if ((paramlpb.jdField_a_of_type_Int < 192) || (paramlpb.b < 144))
+      if ((paramlow.jdField_a_of_type_Int < 192) || (paramlow.b < 144))
       {
-        paramlpb.jdField_a_of_type_Int = 192;
-        paramlpb.b = 144;
+        paramlow.jdField_a_of_type_Int = 192;
+        paramlow.b = 144;
       }
     }
     do
@@ -1592,91 +1592,91 @@ public class NativeCodec
                             if (paramCodecProfileLevel.level != 4) {
                               break;
                             }
-                          } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                          paramlpb.jdField_a_of_type_Int = 352;
-                          paramlpb.b = 288;
+                          } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                          paramlow.jdField_a_of_type_Int = 352;
+                          paramlow.b = 288;
                           return;
                           if (paramCodecProfileLevel.level != 16) {
                             break;
                           }
-                        } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 576));
-                        paramlpb.jdField_a_of_type_Int = 352;
-                        paramlpb.b = 576;
+                        } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 576));
+                        paramlow.jdField_a_of_type_Int = 352;
+                        paramlow.b = 576;
                         return;
                         if (paramCodecProfileLevel.level != 64) {
                           break;
                         }
-                      } while ((paramlpb.jdField_a_of_type_Int >= 720) && (paramlpb.b >= 576));
-                      paramlpb.jdField_a_of_type_Int = 720;
-                      paramlpb.b = 576;
+                      } while ((paramlow.jdField_a_of_type_Int >= 720) && (paramlow.b >= 576));
+                      paramlow.jdField_a_of_type_Int = 720;
+                      paramlow.b = 576;
                       return;
                       if (paramCodecProfileLevel.level != 256) {
                         break;
                       }
-                    } while ((paramlpb.jdField_a_of_type_Int >= 1280) && (paramlpb.b >= 720));
-                    paramlpb.jdField_a_of_type_Int = 1280;
-                    paramlpb.b = 720;
+                    } while ((paramlow.jdField_a_of_type_Int >= 1280) && (paramlow.b >= 720));
+                    paramlow.jdField_a_of_type_Int = 1280;
+                    paramlow.b = 720;
                     return;
                     if (paramCodecProfileLevel.level != 1024) {
                       break;
                     }
-                  } while ((paramlpb.jdField_a_of_type_Int >= 1920) && (paramlpb.b >= 1080));
-                  paramlpb.jdField_a_of_type_Int = 1920;
-                  paramlpb.b = 1080;
+                  } while ((paramlow.jdField_a_of_type_Int >= 1920) && (paramlow.b >= 1080));
+                  paramlow.jdField_a_of_type_Int = 1920;
+                  paramlow.b = 1080;
                   return;
                   if (paramCodecProfileLevel.level != 4096) {
                     break;
                   }
-                } while ((paramlpb.jdField_a_of_type_Int >= 1920) && (paramlpb.b >= 1080));
-                paramlpb.jdField_a_of_type_Int = 1920;
-                paramlpb.b = 1080;
+                } while ((paramlow.jdField_a_of_type_Int >= 1920) && (paramlow.b >= 1080));
+                paramlow.jdField_a_of_type_Int = 1920;
+                paramlow.b = 1080;
                 return;
                 if (paramCodecProfileLevel.level != 16384) {
                   break;
                 }
-              } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 2048));
-              paramlpb.jdField_a_of_type_Int = 4096;
-              paramlpb.b = 2048;
+              } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 2048));
+              paramlow.jdField_a_of_type_Int = 4096;
+              paramlow.b = 2048;
               return;
               if (paramCodecProfileLevel.level != 65536) {
                 break;
               }
-            } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 2048));
-            paramlpb.jdField_a_of_type_Int = 4096;
-            paramlpb.b = 2048;
+            } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 2048));
+            paramlow.jdField_a_of_type_Int = 4096;
+            paramlow.b = 2048;
             return;
             if (paramCodecProfileLevel.level != 262144) {
               break;
             }
-          } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 2048));
-          paramlpb.jdField_a_of_type_Int = 4096;
-          paramlpb.b = 2048;
+          } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 2048));
+          paramlow.jdField_a_of_type_Int = 4096;
+          paramlow.b = 2048;
           return;
           if (paramCodecProfileLevel.level != 1048576) {
             break;
           }
-        } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 4096));
-        paramlpb.jdField_a_of_type_Int = 4096;
-        paramlpb.b = 4096;
+        } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 4096));
+        paramlow.jdField_a_of_type_Int = 4096;
+        paramlow.b = 4096;
         return;
         if (paramCodecProfileLevel.level != 4194304) {
           break;
         }
-      } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 4096));
-      paramlpb.jdField_a_of_type_Int = 4096;
-      paramlpb.b = 4096;
+      } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 4096));
+      paramlow.jdField_a_of_type_Int = 4096;
+      paramlow.b = 4096;
       return;
       if (paramCodecProfileLevel.level != 16777216) {
         break;
       }
-    } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 4096));
-    paramlpb.jdField_a_of_type_Int = 4096;
-    paramlpb.b = 4096;
+    } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 4096));
+    paramlow.jdField_a_of_type_Int = 4096;
+    paramlow.b = 4096;
     return;
     QLog.e("NativeCodec", 2, "setHevcLevel level.level = " + paramCodecProfileLevel.level);
   }
   
-  private static void setLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, lpb paramlpb)
+  private static void setLevel(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, low paramlow)
   {
     switch (paramCodecProfileLevel.level)
     {
@@ -1714,69 +1714,69 @@ public class NativeCodec
                                   do
                                   {
                                     return;
-                                  } while ((paramlpb.jdField_a_of_type_Int >= 176) && (paramlpb.b >= 144));
-                                  paramlpb.jdField_a_of_type_Int = 176;
-                                  paramlpb.b = 144;
+                                  } while ((paramlow.jdField_a_of_type_Int >= 176) && (paramlow.b >= 144));
+                                  paramlow.jdField_a_of_type_Int = 176;
+                                  paramlow.b = 144;
                                   return;
-                                } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                                paramlpb.jdField_a_of_type_Int = 352;
-                                paramlpb.b = 288;
+                                } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                                paramlow.jdField_a_of_type_Int = 352;
+                                paramlow.b = 288;
                                 return;
-                              } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                              paramlpb.jdField_a_of_type_Int = 352;
-                              paramlpb.b = 288;
+                              } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                              paramlow.jdField_a_of_type_Int = 352;
+                              paramlow.b = 288;
                               return;
-                            } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                            paramlpb.jdField_a_of_type_Int = 352;
-                            paramlpb.b = 288;
+                            } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                            paramlow.jdField_a_of_type_Int = 352;
+                            paramlow.b = 288;
                             return;
-                          } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                          paramlpb.jdField_a_of_type_Int = 352;
-                          paramlpb.b = 288;
+                          } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                          paramlow.jdField_a_of_type_Int = 352;
+                          paramlow.b = 288;
                           return;
-                        } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 288));
-                        paramlpb.jdField_a_of_type_Int = 352;
-                        paramlpb.b = 288;
+                        } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 288));
+                        paramlow.jdField_a_of_type_Int = 352;
+                        paramlow.b = 288;
                         return;
-                      } while ((paramlpb.jdField_a_of_type_Int >= 352) && (paramlpb.b >= 576));
-                      paramlpb.jdField_a_of_type_Int = 352;
-                      paramlpb.b = 576;
+                      } while ((paramlow.jdField_a_of_type_Int >= 352) && (paramlow.b >= 576));
+                      paramlow.jdField_a_of_type_Int = 352;
+                      paramlow.b = 576;
                       return;
-                    } while ((paramlpb.jdField_a_of_type_Int >= 720) && (paramlpb.b >= 576));
-                    paramlpb.jdField_a_of_type_Int = 720;
-                    paramlpb.b = 576;
+                    } while ((paramlow.jdField_a_of_type_Int >= 720) && (paramlow.b >= 576));
+                    paramlow.jdField_a_of_type_Int = 720;
+                    paramlow.b = 576;
                     return;
-                  } while ((paramlpb.jdField_a_of_type_Int >= 720) && (paramlpb.b >= 576));
-                  paramlpb.jdField_a_of_type_Int = 720;
-                  paramlpb.b = 576;
+                  } while ((paramlow.jdField_a_of_type_Int >= 720) && (paramlow.b >= 576));
+                  paramlow.jdField_a_of_type_Int = 720;
+                  paramlow.b = 576;
                   return;
-                } while ((paramlpb.jdField_a_of_type_Int >= 1280) && (paramlpb.b >= 720));
-                paramlpb.jdField_a_of_type_Int = 1280;
-                paramlpb.b = 720;
+                } while ((paramlow.jdField_a_of_type_Int >= 1280) && (paramlow.b >= 720));
+                paramlow.jdField_a_of_type_Int = 1280;
+                paramlow.b = 720;
                 return;
-              } while ((paramlpb.jdField_a_of_type_Int >= 1280) && (paramlpb.b >= 1024));
-              paramlpb.jdField_a_of_type_Int = 1280;
-              paramlpb.b = 1024;
+              } while ((paramlow.jdField_a_of_type_Int >= 1280) && (paramlow.b >= 1024));
+              paramlow.jdField_a_of_type_Int = 1280;
+              paramlow.b = 1024;
               return;
-            } while ((paramlpb.jdField_a_of_type_Int >= 2048) && (paramlpb.b >= 1024));
-            paramlpb.jdField_a_of_type_Int = 2048;
-            paramlpb.b = 1024;
+            } while ((paramlow.jdField_a_of_type_Int >= 2048) && (paramlow.b >= 1024));
+            paramlow.jdField_a_of_type_Int = 2048;
+            paramlow.b = 1024;
             return;
-          } while ((paramlpb.jdField_a_of_type_Int >= 2048) && (paramlpb.b >= 1024));
-          paramlpb.jdField_a_of_type_Int = 2048;
-          paramlpb.b = 1024;
+          } while ((paramlow.jdField_a_of_type_Int >= 2048) && (paramlow.b >= 1024));
+          paramlow.jdField_a_of_type_Int = 2048;
+          paramlow.b = 1024;
           return;
-        } while ((paramlpb.jdField_a_of_type_Int >= 2048) && (paramlpb.b >= 1088));
-        paramlpb.jdField_a_of_type_Int = 2048;
-        paramlpb.b = 1088;
+        } while ((paramlow.jdField_a_of_type_Int >= 2048) && (paramlow.b >= 1088));
+        paramlow.jdField_a_of_type_Int = 2048;
+        paramlow.b = 1088;
         return;
-      } while ((paramlpb.jdField_a_of_type_Int >= 3680) && (paramlpb.b >= 1536));
-      paramlpb.jdField_a_of_type_Int = 3680;
-      paramlpb.b = 1536;
+      } while ((paramlow.jdField_a_of_type_Int >= 3680) && (paramlow.b >= 1536));
+      paramlow.jdField_a_of_type_Int = 3680;
+      paramlow.b = 1536;
       return;
-    } while ((paramlpb.jdField_a_of_type_Int >= 4096) && (paramlpb.b >= 2304));
-    paramlpb.jdField_a_of_type_Int = 4096;
-    paramlpb.b = 2304;
+    } while ((paramlow.jdField_a_of_type_Int >= 4096) && (paramlow.b >= 2304));
+    paramlow.jdField_a_of_type_Int = 4096;
+    paramlow.b = 2304;
   }
   
   private void setParameters(String paramString, int paramInt)
@@ -1859,17 +1859,17 @@ public class NativeCodec
     if (this.mCodec == null) {
       try
       {
-        List localList = low.b(this.mMime);
+        List localList = lor.b(this.mMime);
         this.mColorFormat = 21;
         i = 0;
         if (i >= localList.size()) {
           break label671;
         }
-        localObject = low.a((MediaCodecInfo)localList.get(i), this.mMime);
+        localObject = lor.a((MediaCodecInfo)localList.get(i), this.mMime);
         if (localObject == null) {
           break label676;
         }
-        if (mqs.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 21)) {}
+        if (mqp.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 21)) {}
         for (this.mColorFormat = 21;; this.mColorFormat = 19)
         {
           localObject = MediaFormat.createVideoFormat(this.mMime, this.mWidth, this.mHeight);
@@ -1882,11 +1882,11 @@ public class NativeCodec
           }
           QLog.e(this.TAG, 2, "KEY_I_FRAME_INTERVAL =" + j + ", mFrameRate = " + this.mFrameRate);
           ((MediaFormat)localObject).setInteger("i-frame-interval", j);
-          localCodecCapabilities = low.a((MediaCodecInfo)localList.get(i), this.mMime);
+          localCodecCapabilities = lor.a((MediaCodecInfo)localList.get(i), this.mMime);
           if (localCodecCapabilities == null) {
             break;
           }
-          if (!this.mMime.contains(low.a)) {
+          if (!this.mMime.contains(lor.a)) {
             break label390;
           }
           j = 0;
@@ -1896,7 +1896,7 @@ public class NativeCodec
           switch (localCodecCapabilities.profileLevels[j].profile)
           {
           case 1: 
-            if (!mqs.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19)) {
+            if (!mqp.a(((MediaCodecInfo.CodecCapabilities)localObject).colorFormats, 19)) {
               break label676;
             }
           }
@@ -1918,7 +1918,7 @@ public class NativeCodec
       return;
     }
     label390:
-    if (this.mMime.contains(low.b)) {
+    if (this.mMime.contains(lor.b)) {
       j = m;
     }
     for (;;)
@@ -1932,7 +1932,7 @@ public class NativeCodec
         if (16384 < localCodecCapabilities.profileLevels[j].level) {
           k = localCodecCapabilities.profileLevels[j].level;
         }
-        String str = lmb.a();
+        String str = llw.a();
         if ((str != null) && ((str.equalsIgnoreCase("QualcommTechnologies,IncMSM8953")) || (str.equalsIgnoreCase("QualcommTechnologies,Inc625"))))
         {
           ((MediaFormat)localObject).setInteger("level", 16384);
@@ -1945,7 +1945,7 @@ public class NativeCodec
           if (this.mFrameRate > 0) {}
           for (this.mFrameInverval = (1000000 / this.mFrameRate);; this.mFrameInverval = 40000)
           {
-            this.mCodec = new low(this.TAG);
+            this.mCodec = new lor(this.TAG);
             QLog.d(this.TAG, 2, "createEncCodec format: " + localObject + ", codec name: " + ((MediaCodecInfo)localException.get(i)).getName());
             this.mCodec.a(this.mFormat, ((MediaCodecInfo)localException.get(i)).getName(), this);
             return;
@@ -1990,9 +1990,9 @@ public class NativeCodec
     //   3: iconst_0
     //   4: istore 4
     //   6: aload_0
-    //   7: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
+    //   7: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
     //   10: iload_2
-    //   11: invokevirtual 844	low:a	(I)Ljava/nio/ByteBuffer;
+    //   11: invokevirtual 844	lor:a	(I)Ljava/nio/ByteBuffer;
     //   14: astore 6
     //   16: aload 6
     //   18: ifnonnull +38 -> 56
@@ -2042,9 +2042,9 @@ public class NativeCodec
     //   106: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   109: iconst_0
     //   110: invokeinterface 330 2 0
-    //   115: checkcast 703	loz
+    //   115: checkcast 703	lou
     //   118: iconst_0
-    //   119: putfield 707	loz:jdField_a_of_type_Boolean	Z
+    //   119: putfield 707	lou:jdField_a_of_type_Boolean	Z
     //   122: aload_1
     //   123: monitorexit
     //   124: return
@@ -2064,20 +2064,20 @@ public class NativeCodec
     //   151: goto -29 -> 122
     //   154: aload_0
     //   155: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
-    //   158: new 703	loz
+    //   158: new 703	lou
     //   161: dup
     //   162: aload 6
     //   164: iload_2
-    //   165: invokespecial 853	loz:<init>	(Ljava/nio/ByteBuffer;I)V
+    //   165: invokespecial 853	lou:<init>	(Ljava/nio/ByteBuffer;I)V
     //   168: invokeinterface 856 2 0
     //   173: pop
     //   174: aload_0
     //   175: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   178: iconst_0
     //   179: invokeinterface 330 2 0
-    //   184: checkcast 703	loz
+    //   184: checkcast 703	lou
     //   187: iconst_1
-    //   188: putfield 707	loz:jdField_a_of_type_Boolean	Z
+    //   188: putfield 707	lou:jdField_a_of_type_Boolean	Z
     //   191: aload_1
     //   192: monitorexit
     //   193: iload 5
@@ -2113,8 +2113,8 @@ public class NativeCodec
     //   256: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   259: iconst_0
     //   260: invokeinterface 330 2 0
-    //   265: checkcast 703	loz
-    //   268: getfield 704	loz:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   265: checkcast 703	lou
+    //   268: getfield 704	lou:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
     //   271: iconst_1
     //   272: invokevirtual 652	com/tencent/av/mediacodec/NativeCodec:writeInputData	(Ljava/nio/ByteBuffer;Z)I
     //   275: istore_2
@@ -2167,18 +2167,18 @@ public class NativeCodec
     //   368: iload_2
     //   369: istore_3
     //   370: aload_0
-    //   371: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llow;
+    //   371: getfield 290	com/tencent/av/mediacodec/NativeCodec:mCodec	Llor;
     //   374: aload_0
     //   375: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   378: iconst_0
     //   379: invokeinterface 330 2 0
-    //   384: checkcast 703	loz
-    //   387: getfield 715	loz:jdField_a_of_type_Int	I
+    //   384: checkcast 703	lou
+    //   387: getfield 715	lou:jdField_a_of_type_Int	I
     //   390: iload_2
     //   391: aload_0
     //   392: getfield 108	com/tencent/av/mediacodec/NativeCodec:mLastEncFrameTime	J
     //   395: iconst_0
-    //   396: invokevirtual 377	low:a	(IIJI)V
+    //   396: invokevirtual 377	lor:a	(IIJI)V
     //   399: aload_0
     //   400: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   403: astore_1
@@ -2188,9 +2188,9 @@ public class NativeCodec
     //   407: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   410: iconst_0
     //   411: invokeinterface 330 2 0
-    //   416: checkcast 703	loz
+    //   416: checkcast 703	lou
     //   419: iconst_0
-    //   420: putfield 707	loz:jdField_a_of_type_Boolean	Z
+    //   420: putfield 707	lou:jdField_a_of_type_Boolean	Z
     //   423: iload_2
     //   424: ifle +14 -> 438
     //   427: aload_0
@@ -2223,9 +2223,9 @@ public class NativeCodec
     //   468: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   471: iconst_0
     //   472: invokeinterface 330 2 0
-    //   477: checkcast 703	loz
+    //   477: checkcast 703	lou
     //   480: iconst_0
-    //   481: putfield 707	loz:jdField_a_of_type_Boolean	Z
+    //   481: putfield 707	lou:jdField_a_of_type_Boolean	Z
     //   484: iload_3
     //   485: ifle +14 -> 499
     //   488: aload_0
@@ -2244,8 +2244,8 @@ public class NativeCodec
     //   509: getfield 132	com/tencent/av/mediacodec/NativeCodec:mPendingInputBuffers	Ljava/util/List;
     //   512: iconst_0
     //   513: invokeinterface 330 2 0
-    //   518: checkcast 703	loz
-    //   521: getfield 704	loz:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   518: checkcast 703	lou
+    //   521: getfield 704	lou:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
     //   524: aload_0
     //   525: getfield 663	com/tencent/av/mediacodec/NativeCodec:mColorFormat	I
     //   528: iconst_1
@@ -2438,7 +2438,7 @@ public class NativeCodec
     if (this.setIFramePending)
     {
       localBundle = new Bundle();
-      localBundle.putInt(low.c, 1);
+      localBundle.putInt(lor.c, 1);
       this.setIFramePending = false;
       if (this.setBitRatePending > 0) {
         localBundle.putInt("bitrate", this.setBitRatePending);
@@ -2451,7 +2451,7 @@ public class NativeCodec
       localBundle = new Bundle();
       localBundle.putInt("bitrate", this.setBitRatePending);
       if (this.setIFramePending == true) {
-        localBundle.putInt(low.c, 1);
+        localBundle.putInt(lor.c, 1);
       }
       this.mCodec.a(localBundle);
       this.setBitRatePending = 0;

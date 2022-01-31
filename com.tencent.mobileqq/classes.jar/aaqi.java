@@ -1,27 +1,95 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaqi
+  implements TextWatcher
 {
-  public aaqi(ChatFragment paramChatFragment) {}
+  public aaqi(ChatHistory paramChatHistory) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
+    for (;;)
     {
-      bbjv.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().c();
-      bbjv.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      try
       {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bbfc.a("pubAcc_aio_open", null, str);
-        bbfc.a("pubAcc_structMsg_display", null, str);
+        paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+        if ((paramCharSequence.length() <= 1) || (paramCharSequence.charAt(0) != '0')) {
+          break label421;
+        }
+        paramCharSequence = String.valueOf(paramInt1);
+        paramInt2 = 1;
+        if ((paramInt1 < 1) || (paramInt1 > this.a.c)) {
+          paramCharSequence = paramCharSequence.subSequence(0, paramCharSequence.length() - 1).toString();
+        }
       }
-      ChatFragment.a(false);
+      catch (Exception localException1)
+      {
+        try
+        {
+          paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+          paramInt2 = 1;
+          continue;
+          localException1 = localException1;
+          paramInt1 = this.a.c;
+        }
+        catch (Exception paramCharSequence)
+        {
+          paramInt1 = this.a.c;
+          paramCharSequence = String.valueOf(paramInt1);
+          continue;
+        }
+      }
+      if (paramInt2 != 0) {}
+      try
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(Math.max(0, paramCharSequence.length() - 1));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString());
+        paramCharSequence = this.a;
+        if (paramInt1 < this.a.c)
+        {
+          paramCharSequence.d = paramInt1;
+          if (this.a.d < this.a.c) {
+            break label369;
+          }
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848549);
+          if (this.a.d > 1) {
+            break label395;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840184);
+          this.a.e = ((this.a.d - 1) * 8);
+          this.a.jdField_a_of_type_Aarf.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          QLog.e("ChatHistory", 1, "current s:" + paramCharSequence);
+          continue;
+          paramInt1 = this.a.c;
+          continue;
+          label369:
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838767);
+          continue;
+          label395:
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838766);
+        }
+      }
+      label421:
+      paramInt2 = 0;
     }
   }
 }

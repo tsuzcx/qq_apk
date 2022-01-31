@@ -1,39 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class aigg
-  implements DialogInterface.OnClickListener
+  implements Comparator<TroopMemberInfo>
 {
-  public aigg(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  private aigg(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    switch (paramInt)
-    {
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
     }
-    boolean bool;
-    do
-    {
-      return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
-      }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      ahiy.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
-    }
+    return 0;
   }
 }
 

@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
 
 class aedw
-  extends aeds
+  extends actn
 {
-  public aedw(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  
+  aedw(aedv paramaedv) {}
 }
 
 

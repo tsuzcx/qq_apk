@@ -9,7 +9,7 @@ public class BaseFileViewerActivity
 {
   public void setContentViewForImage(int paramInt)
   {
-    super.setContentViewNoTitle(2131560475);
+    super.setContentViewNoTitle(2131560474);
     ((RelativeLayout)findViewById(2131367786)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     init(getIntent());
   }

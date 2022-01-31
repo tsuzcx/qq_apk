@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.6.1;
 
 public class binf
-  implements EIPCResultCallback
+  implements binj
 {
-  binf(bimz parambimz) {}
+  binf(bina parambina) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
+    bina.a(this.a).setOnSurfaceChangedListener(null);
+    bina.a(this.a).setOnFrameDraw(new VideoStoryCapturePart.6.1(this));
   }
 }
 

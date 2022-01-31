@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount;
 
-import akpy;
-import axzq;
+import akpx;
+import axzs;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import noo;
+import nol;
 import org.json.JSONObject;
-import sew;
+import set;
 
 public final class VideoReporter$3
   implements Runnable
@@ -21,8 +21,8 @@ public final class VideoReporter$3
     if ((this.a.msgtype == -2011) && (!this.a.isSend()))
     {
       l1 = System.currentTimeMillis();
-      localaxzq = sew.a(this.a);
-      if (localaxzq != null) {
+      localaxzs = set.a(this.a);
+      if (localaxzs != null) {
         localObject1 = "";
       }
     }
@@ -31,9 +31,9 @@ public final class VideoReporter$3
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localaxzq.U);
+        ((JSONObject)localObject2).put("vid", localaxzs.U);
         ((JSONObject)localObject2).put("os", "1");
-        if (!akpy.c(this.a.istroop)) {
+        if (!akpx.c(this.a.istroop)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -46,14 +46,14 @@ public final class VideoReporter$3
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localaxzq.Z;
+        String str = localaxzs.Z;
         continue;
       }
-      if (localaxzq.Z != null) {
+      if (localaxzs.Z != null) {
         continue;
       }
       localObject2 = "0";
-      noo.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
+      nol.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("VideoReporter", 2, "reportVideoStructMsgRecv cost = " + (l2 - l1) + "ms");

@@ -1,33 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
 public class ayib
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ayib(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, PadInfo paramPadInfo) {}
+  public ayib(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bbev.g(BaseApplicationImpl.getContext())) {
-      bcpw.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131692321), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298865));
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Ayhy == null) {
-      return;
-    }
-    paramDialogInterface = ayfv.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
-    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Ayhy.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Ayhy.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
-    }
+    ayfx.a(this.a.app, "0X800993E", String.valueOf(this.a.a));
+    paramView = (PadInfo)((ayht)paramView.getTag()).a;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", mzb.a(paramView.pad_url, "_bid=2517"));
+    localBundle.putInt("key_team_work_edit_type", paramView.type);
+    localBundle.putString("key_team_work_title", paramView.title);
+    localBundle.putString("key_team_work_rul", paramView.pad_url);
+    localBundle.putInt("key_team_work_pad_list_type", paramView.type_list);
+    localBundle.putString("tdsourcetag", "s_qq_grpfile");
+    TeamWorkDocEditBrowserActivity.a(this.a, localBundle, true);
   }
 }
 

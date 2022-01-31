@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
 
-class ptj
-  implements View.OnClickListener
+public class ptj
+  extends ptk
 {
-  ptj(pti parampti) {}
-  
-  public void onClick(View paramView)
+  public ptj(Context paramContext, baxy parambaxy, ram paramram)
   {
-    paramView = this.a.jdField_a_of_type_Rap.a();
-    if (paramView != null) {
-      paramView.a(null, ((pax)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    super(paramContext, parambaxy, paramram);
+  }
+  
+  public pqq g()
+  {
+    this.jdField_a_of_type_Pqp = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

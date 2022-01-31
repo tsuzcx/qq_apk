@@ -1,28 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public abqc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (NotifyPushSettingActivity.a(this.a) == null)
-    {
-      NotifyPushSettingActivity.a(this.a, new abqi(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
-      abqi.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    if (NotifyPushSettingActivity.a(this.a))
+    if (!NotifyPushSettingActivity.a(this.a).b())
     {
-      int i = (int)NetConnInfoCenter.getServerTime();
-      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
-      NotifyPushSettingActivity.a(this.a).a(j - i);
+      NotifyPushSettingActivity.a(this.a).a(this.a);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramCompoundButton = NotifyPushSettingActivity.a(this.a);
+      paramBoolean = bool;
+      if (!NotifyPushSettingActivity.a(this.a).a()) {
+        paramBoolean = true;
+      }
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
     }
-    NotifyPushSettingActivity.a(this.a).show();
+    do
+    {
+      return;
+      mqo.a(this.a.app.getCurrentAccountUin(), paramBoolean);
+      if (!paramBoolean) {
+        axqy.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
   }
 }
 

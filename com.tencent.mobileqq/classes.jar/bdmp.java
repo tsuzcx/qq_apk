@@ -1,15 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
 public class bdmp
-  implements View.OnClickListener
+  extends AsyncTask<Void, Long, Boolean>
 {
-  public bdmp(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public bdmp(Activity paramActivity)
   {
-    ApkFileDownloadFragment.a(this.a, true);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public bdmp(Activity paramActivity, String paramString)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(false);
+  }
+  
+  protected void a()
+  {
+    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    a();
+    if (paramBoolean.booleanValue())
+    {
+      if ((bdmo.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        bdjr.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
+      }
+      return;
+    }
+    bdis.a().a(ajya.a(2131717044), 1);
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+    a();
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
+    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+      this.jdField_a_of_type_AndroidAppProgressDialog.show();
+    }
   }
 }
 

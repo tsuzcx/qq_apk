@@ -1,49 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public final class bduo
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
+public class bduo
+  implements bfph
 {
-  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label109;
-      }
-      bool1 = true;
-      label80:
-      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label109:
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-      return localQidianSimpleProfileItem;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-    }
-  }
+  public bduo(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Bduf.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.a.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        } else {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else if (paramInt == 2)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        } else if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 

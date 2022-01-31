@@ -3,11 +3,11 @@ package com.tencent.open.base.http;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import apvb;
-import bdif;
-import bdig;
-import bdiq;
-import bdir;
+import apvd;
+import bdiu;
+import bdiv;
+import bdjf;
+import bdjg;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class AvatarUpdateService$1
   implements Runnable
 {
-  public AvatarUpdateService$1(bdif parambdif, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bdir parambdir) {}
+  public AvatarUpdateService$1(bdiu parambdiu, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, bdjg parambdjg) {}
   
   public void run()
   {
@@ -73,7 +73,7 @@ public class AvatarUpdateService$1
         else
         {
           ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
-          if ((!apvb.a(this.d)) || (!str.equals(???)))
+          if ((!apvd.a(this.d)) || (!str.equals(???)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("AvatarUpdateService", 2, "-->updateAvatar--avatar not exist or need update, will download new avatar");
@@ -82,8 +82,8 @@ public class AvatarUpdateService$1
             {
               if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
               {
-                this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bdig(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bdir));
-                new bdiq(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
+                this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new bdiv(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, str, this.jdField_a_of_type_Bdjg));
+                new bdjf(this.c, str, null, "GET", this.this$0).execute(new Void[0]);
               }
               return;
             }

@@ -1,17 +1,17 @@
 package com.tencent.sharp.jni;
 
-import bflh;
-import bfli;
+import bfly;
+import bflz;
 
 public class TraeMediaPlayer$1
   implements Runnable
 {
-  public TraeMediaPlayer$1(bflh parambflh, long paramLong) {}
+  public TraeMediaPlayer$1(bfly parambfly, long paramLong) {}
   
   public void run()
   {
-    if (bflh.a(this.this$0) != null) {
-      bflh.a(this.this$0).a(this.a);
+    if (bfly.a(this.this$0) != null) {
+      bfly.a(this.this$0).a(this.a);
     }
   }
 }

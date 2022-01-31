@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aukn;
-import bail;
+import aukp;
+import baiz;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class TroopAppMgr$5
   implements Runnable
 {
-  public TroopAppMgr$5(bail parambail, ArrayList paramArrayList, aukn paramaukn) {}
+  public TroopAppMgr$5(baiz parambaiz, ArrayList paramArrayList, aukp paramaukp) {}
   
   public void run()
   {
@@ -17,9 +17,9 @@ public class TroopAppMgr$5
     while (localIterator.hasNext())
     {
       TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localIterator.next();
-      this.this$0.a(this.jdField_a_of_type_Aukn, localTroopAIOAppInfo);
+      this.this$0.a(this.jdField_a_of_type_Aukp, localTroopAIOAppInfo);
     }
-    this.jdField_a_of_type_Aukn.a();
+    this.jdField_a_of_type_Aukp.a();
   }
 }
 

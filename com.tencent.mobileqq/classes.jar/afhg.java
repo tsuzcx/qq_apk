@@ -1,35 +1,22 @@
-import android.os.Message;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class afhg
-  implements aftq
+  extends ViewPager.SimpleOnPageChangeListener
 {
   public afhg(TroopView paramTroopView) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (bbev.g(BaseApplication.getContext()))
-    {
-      if (this.a.a.size() > 0)
-      {
-        if ((TroopView.a(this.a) != null) && (TroopView.a(this.a) != null)) {
-          TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
-        }
-        return;
-      }
-      TroopView.b(this.a);
-      return;
+    if (paramInt == 1) {
+      TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
-    }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    TroopView.a(this.a, paramInt);
   }
 }
 

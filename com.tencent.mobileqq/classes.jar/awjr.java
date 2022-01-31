@@ -1,16 +1,25 @@
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
 public class awjr
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public awjr(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public awjr(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(1);
-    this.a.f();
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    {
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
+    }
+    return false;
   }
 }
 

@@ -1,20 +1,13 @@
-import android.os.Bundle;
-
-public abstract class aabt
-  implements wxw
+class aabt
+  implements aach
 {
-  public void a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getBundle("key_result");
-    if (paramBundle != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, paramBundle);
-      return;
-    }
-  }
+  aabt(aabs paramaabs) {}
   
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public void a(asiw paramasiw, int paramInt)
+  {
+    this.a.a = paramasiw;
+    aabs.a(this.a, paramInt);
+  }
 }
 
 

@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-final class siv
-  implements DialogInterface.OnClickListener
+public class siv
+  implements ajte
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    bdkp.a().a(siu.a());
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

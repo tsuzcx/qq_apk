@@ -1,34 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 class arbt
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  arbt(arbn paramarbn) {}
+  arbt(arbp paramarbp) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    switch (paramInt)
-    {
-    }
+    this.a.jdField_a_of_type_Boolean = false;
+    arbp.a(this.a, true);
+    if (this.a.c == 3) {}
     do
     {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (arbn.a(this.a) != null) {
-        arbn.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (arbn.a(this.a) == null);
-    arbn.a(this.a).a(this.a.b, 1);
-    return false;
+      return;
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (arbp.a(this.a) == null);
+    arbp.a(this.a).j();
   }
 }
 

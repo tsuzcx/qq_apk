@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
 import android.os.Bundle;
-import aztl;
+import aztn;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileDownloadMgr$5
   implements Runnable
 {
-  public TroopFileDownloadMgr$5(aztl paramaztl, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
+  public TroopFileDownloadMgr$5(aztn paramaztn, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
   public void run()
   {
-    aztl.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
+    aztn.b(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

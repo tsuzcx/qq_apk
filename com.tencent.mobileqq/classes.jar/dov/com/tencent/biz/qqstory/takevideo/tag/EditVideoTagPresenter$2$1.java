@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
-import bknt;
-import bknv;
+import bkok;
+import bkom;
 
 public class EditVideoTagPresenter$2$1
   implements Runnable
 {
-  public EditVideoTagPresenter$2$1(bknv parambknv) {}
+  public EditVideoTagPresenter$2$1(bkom parambkom) {}
   
   public void run()
   {
-    bknt.a(bknt.a(this.a.a), bknt.a(this.a.a));
+    bkok.a(bkok.a(this.a.a), bkok.a(this.a.a));
   }
 }
 

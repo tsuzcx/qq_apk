@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import begz;
-import bejs;
-import beka;
+import behq;
+import bekj;
+import bekr;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class TabBarJsPlugin
@@ -18,9 +18,9 @@ public class TabBarJsPlugin
   public static final String API_SHOW_TABBAR = "showTabBar";
   public static final String TAG = "TabBarJsPlugin";
   
-  public void doInterceptJsEvent(beka parambeka)
+  public void doInterceptJsEvent(bekr parambekr)
   {
-    this.mMiniAppContext.a(bejs.a(parambeka, 0));
+    this.mMiniAppContext.a(bekj.a(parambekr, 0));
   }
 }
 

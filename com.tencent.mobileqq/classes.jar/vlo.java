@@ -1,19 +1,22 @@
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+
 public class vlo
 {
-  public int a;
-  public vlm a;
-  public int b;
+  public final Drawable a;
+  public final String a;
+  public final String b;
   
-  private vlo(vlq paramvlq)
+  public vlo(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Vlm = vlq.a(paramvlq);
-    this.jdField_a_of_type_Int = vlq.a(paramvlq);
-    this.b = vlq.b(paramvlq);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
   public String toString()
   {
-    return "DoodleConfig{doodleStrategy=" + this.jdField_a_of_type_Vlm + ", maxBitmapWidth=" + this.jdField_a_of_type_Int + ", maxBitmapHeight=" + this.b + '}';
+    return "SelectedItem{category='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + '}';
   }
 }
 

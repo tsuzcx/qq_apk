@@ -1,15 +1,17 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
 
 class sfy
-  implements wxw
+  implements DialogInterface.OnClickListener
 {
-  sfy(sfn paramsfn) {}
+  sfy(sfx paramsfx) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.k();
-    }
+    ajwc.a();
+    this.a.a.this$0.a.finish();
   }
 }
 

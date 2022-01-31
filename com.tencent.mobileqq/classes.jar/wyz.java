@@ -1,17 +1,24 @@
-import com.tencent.biz.troop.VideoCombineHelper.4;
 import com.tencent.qphone.base.util.QLog;
 
-public class wyz
-  extends wzv
+class wyz
+  extends wzo
 {
-  public wyz(VideoCombineHelper.4 param4)
+  wyz(wyt paramwyt, wzb paramwzb, String paramString)
   {
-    super(param4.this$0);
+    super(paramwyt);
   }
   
-  public void b(wzu paramwzu)
+  public void a(boolean paramBoolean)
   {
-    QLog.d(".troop.VideoCombineHelper", 2, "");
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wyt.a));
+      this.jdField_a_of_type_Wyt.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
+    }
   }
 }
 

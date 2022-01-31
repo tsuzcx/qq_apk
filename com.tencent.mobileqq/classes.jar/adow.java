@@ -1,20 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
 class adow
-  implements bcjb
+  extends actn
 {
-  adow(ador paramador) {}
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  List<ImageView> jdField_a_of_type_JavaUtilList;
+  TextView b;
   
-  public void a(View paramView)
-  {
-    actn.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  adow(adov paramadov) {}
 }
 
 

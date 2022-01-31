@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -108,7 +108,7 @@ public class RollNumberView
       init(0);
     }
     localTextView.setText(".");
-    localTextView.setContentDescription(ajyc.a(2131713492));
+    localTextView.setContentDescription(ajya.a(2131713503));
     addView(localTextView, 0);
     i = init(i);
     if (i > this.max) {}

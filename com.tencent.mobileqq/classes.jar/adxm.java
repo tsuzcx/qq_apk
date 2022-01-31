@@ -1,35 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
-class adxm
-  implements View.OnTouchListener
+public class adxm
+  implements View.OnClickListener
 {
-  adxm(adxl paramadxl) {}
+  public adxm(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return true;
-    case 0: 
-      adxl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      adxl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
-      return true;
-    case 3: 
-      adxl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      adxl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-      return true;
+    adxs localadxs = (adxs)actj.a(paramView);
+    if (paramView == localadxs.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localadxs);
     }
-    adxl.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    adxl.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-    paramView.performClick();
-    adxl.a(this.a, paramView);
-    return true;
+    for (;;)
+    {
+      axqy.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      return;
+      if (paramView == localadxs.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localadxs);
+      }
+    }
   }
 }
 

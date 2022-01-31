@@ -1,29 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class srw
-  implements CompoundButton.OnCheckedChangeListener
+public class srw
+  implements vub
 {
-  srw(srv paramsrv) {}
+  public srw(AlbumGalleryCapturePart.12.1 param1) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      srv.a(this.a);
-      if (srv.a(this.a)) {
-        vel.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
-      }
-    }
-    for (;;)
-    {
-      srv.a(this.a, paramBoolean);
-      return;
-      srv.b(this.a);
-      if (srv.a(this.a)) {
-        vel.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
-      }
-    }
+    srs.a(this.a.a.a, -1L);
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
   }
 }
 

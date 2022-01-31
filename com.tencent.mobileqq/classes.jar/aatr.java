@@ -1,13 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public abstract interface aatr
+class aatr
+  implements MessageQueue.IdleHandler
 {
-  public abstract void a(Activity paramActivity);
+  aatr(aatq paramaatq) {}
   
-  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
-  
-  public abstract void b(QQAppInterface paramQQAppInterface, int paramInt);
+  public boolean queueIdle()
+  {
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
+  }
 }
 
 

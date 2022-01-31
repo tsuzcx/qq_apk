@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import arsf;
-import auwz;
+import arsh;
+import auxb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -9,13 +9,13 @@ import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 public class ListenTogetherIPCModuleMainServer$3
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$3(arsf paramarsf) {}
+  public ListenTogetherIPCModuleMainServer$3(arsh paramarsh) {}
   
   public void run()
   {
-    auwz localauwz = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localauwz != null) {
-      localauwz.l();
+    auxb localauxb = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (localauxb != null) {
+      localauxb.l();
     }
   }
 }

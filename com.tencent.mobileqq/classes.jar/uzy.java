@@ -1,9 +1,22 @@
-public abstract class uzy
-  extends uzu
-  implements vac, vad
+public abstract interface uzy
 {
-  public uzz a;
-  protected vaa a;
+  public abstract Object a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(uzz paramuzz);
+  
+  public abstract void a(vaa paramvaa);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

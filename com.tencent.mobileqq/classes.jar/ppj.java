@@ -1,180 +1,123 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.2;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.pts.core.itemview.PTSItemView;
-import com.tencent.pts.core.itemview.PTSItemViewManager;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.2;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.4;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class ppj
 {
-  private PTSItemViewManager a;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile ppj jdField_a_of_type_Ppj;
+  public final boolean a;
+  private final String jdField_b_of_type_JavaLangString = "3980";
+  private volatile boolean jdField_b_of_type_Boolean;
+  private final String c = "readinjoy_pts_engine";
+  private final String d = "libpts.so";
+  private final String e = "pts_config.json";
+  private final String f = mzh.a("3980") + "3980";
+  private final String g = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_engine";
   
-  public ppj(Activity paramActivity)
+  private ppj()
   {
-    this.a = new PTSItemViewManager(paramActivity);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  private PTSItemData a(ArticleInfo paramArticleInfo)
+  public static ppj a()
   {
-    if (paramArticleInfo == null) {
-      return null;
-    }
-    Object localObject = new JSONObject();
-    for (;;)
+    if (jdField_a_of_type_Ppj == null) {}
+    try
     {
-      try
-      {
-        ((JSONObject)localObject).put("articleID", paramArticleInfo.mArticleID);
-        ((JSONObject)localObject).put("rowKey", paramArticleInfo.innerUniqueID);
-        ((JSONObject)localObject).put("title", paramArticleInfo.mTitle);
-        ((JSONObject)localObject).put("coverImageUrl", paramArticleInfo.mFirstPagePicUrl);
-        ((JSONObject)localObject).put("jsonImageUrl", paramArticleInfo.mJsonPictureList);
-        ((JSONObject)localObject).put("articleContentUrl", paramArticleInfo.mArticleContentUrl);
-        ((JSONObject)localObject).put("subscribeName", paramArticleInfo.mSubscribeName);
-        ((JSONObject)localObject).put("channelID", paramArticleInfo.mChannelID);
-        ((JSONObject)localObject).put("recommendSeq", paramArticleInfo.mRecommendSeq);
-        ((JSONObject)localObject).put("algorithmID", paramArticleInfo.mAlgorithmID);
-        ((JSONObject)localObject).put("strategyID", paramArticleInfo.mStrategyId);
-        ((JSONObject)localObject).put("feedsType", paramArticleInfo.mFeedType);
-        ((JSONObject)localObject).put("proteusItemData", paramArticleInfo.proteusItemsData);
+      if (jdField_a_of_type_Ppj == null) {
+        jdField_a_of_type_Ppj = new ppj();
       }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        String str;
-        QLog.e("PTSItemViewBuilder", 1, "[getItemData], articleInfo = " + paramArticleInfo);
-        continue;
-      }
-      try
-      {
-        if (!osj.a().a(paramArticleInfo.mArticleID)) {
-          continue;
-        }
-        i = 1;
-        ((JSONObject)localObject).put("hasRead", i);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PTSItemViewBuilder", 1, "[getItemData], e = " + localException);
-        continue;
-      }
-      localObject = ((JSONObject)localObject).toString();
-      str = ppk.a().a("3978");
-      ppm.a().getClass();
-      return new PTSItemData.Builder().withItemID(paramArticleInfo.innerUniqueID).withAppName(a(paramArticleInfo)).withAppPath(str).withJsonData((String)localObject).build();
-      i = 0;
+      return jdField_a_of_type_Ppj;
     }
+    finally {}
   }
   
-  private static String a(ArticleInfo paramArticleInfo)
+  private boolean b()
   {
-    if (paramArticleInfo == null) {
-      return "";
-    }
-    if (rap.c(paramArticleInfo) == 3) {
-      return "triple_img_card";
-    }
-    return "";
+    Object localObject = this.g + "/" + "libpts.so";
+    String str = this.g + "/" + "pts_config.json";
+    boolean bool1 = bbdx.a((String)localObject);
+    boolean bool2 = ppn.a(str);
+    jdField_a_of_type_JavaLangString = ppn.b(str);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[checkInnerPTSEngineIsValid]").append("\n").append(", ptsEngineVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
+    QLog.i("PTSEngineLoader", 1, ((StringBuilder)localObject).toString());
+    return (bool1) && (bool2);
   }
   
-  private void a(PTSItemData paramPTSItemData)
+  private void c()
   {
-    if (paramPTSItemData == null)
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+    ThreadManager.excute(new PTSEngineLoader.3(this), 128, null, true);
+  }
+  
+  private boolean c()
+  {
+    return false;
+  }
+  
+  private void d()
+  {
+    ThreadManager.excute(new PTSEngineLoader.4(this), 64, null, false);
+  }
+  
+  private void e()
+  {
+    if (c()) {
       return;
     }
-    bdse.a(new PTSItemViewBuilder.1(this, paramPTSItemData));
-  }
-  
-  private void a(PTSItemData paramPTSItemData, long paramLong)
-  {
-    if (paramPTSItemData == null)
+    if (a())
     {
-      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts engine is ready, do not load again.");
       return;
     }
-    bdse.a(new PTSItemViewBuilder.2(this, paramPTSItemData, paramLong));
+    if (b())
+    {
+      PTSEngineLoader.5 local5 = new PTSEngineLoader.5(this);
+      ppl.a().a(local5);
+      return;
+    }
+    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], inner dir is not valid, load pts engine failed.");
+    d();
   }
   
-  public static boolean a(long paramLong)
+  public String a()
   {
-    return paramLong == 1L;
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null)
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, articleInfo is null.");
-      return false;
-    }
-    if (!pqj.a.c())
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isViewEnabled = false.");
-      return false;
-    }
-    if (!b(paramArticleInfo))
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isArticleAvailable = false.");
-      return false;
-    }
-    paramArticleInfo = a(paramArticleInfo);
-    if (!ppk.a().a(paramArticleInfo))
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, appName = " + paramArticleInfo + ", isAppExists = false");
-      return false;
-    }
-    QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = true");
-    return true;
-  }
-  
-  private static boolean b(ArticleInfo paramArticleInfo)
-  {
-    boolean bool2 = true;
-    if (paramArticleInfo == null) {
-      return false;
-    }
-    boolean bool3 = a(paramArticleInfo.mChannelID);
-    if (rap.c(paramArticleInfo) == 3)
-    {
-      bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("PTSItemViewBuilder", 1, "[isArticleAvailable], isChannelIDValid = " + bool3 + ", isViewTypeValid = " + bool1);
-      }
-      if ((!bool3) || (!bool1)) {
-        break label83;
-      }
-    }
-    label83:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return bool1;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public PTSItemView a(View paramView, ArticleInfo paramArticleInfo)
-  {
-    long l1 = System.currentTimeMillis();
-    paramArticleInfo = a(paramArticleInfo);
-    paramView = this.a.getView(paramView, paramArticleInfo);
-    long l2 = System.currentTimeMillis();
-    a(paramArticleInfo);
-    a(paramArticleInfo, l2 - l1);
-    return paramView;
+    return jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
-    this.a.destroy();
+    PTSEngineLoader.1 local1 = new PTSEngineLoader.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_b_of_type_Boolean = false;
+      PTSEngineLoader.2 local2 = new PTSEngineLoader.2(this);
+      ThreadManager.getFileThreadHandler().post(local2);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

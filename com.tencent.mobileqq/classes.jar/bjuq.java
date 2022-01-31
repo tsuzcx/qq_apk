@@ -1,14 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-class bjuq
-  implements View.OnClickListener
+public final class bjuq
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  bjuq(bjun parambjun) {}
-  
-  public void onClick(View paramView)
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    this.a.a.a(22);
+    return new EditTakeVideoSource(paramParcel);
+  }
+  
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

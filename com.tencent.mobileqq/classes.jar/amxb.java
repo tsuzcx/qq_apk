@@ -1,53 +1,56 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 public class amxb
+  extends ampa<amxe>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public static amxe a()
+  {
+    return (amxe)ampl.a().a(497);
+  }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 497;
   }
   
-  public String a()
+  @NonNull
+  public amxe a(int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return new amxe();
   }
   
-  public void a(int paramInt)
+  @Nullable
+  public amxe a(amph[] paramArrayOfamph)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return amxe.a(paramArrayOfamph);
+    }
+    return null;
   }
   
-  public void a(String paramString)
+  public Class<amxe> a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return amxe.class;
   }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amxe paramamxe) {}
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return 0;
   }
   
-  public String b()
+  public boolean b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return false;
   }
   
-  public void b(int paramInt)
+  public boolean c()
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    return true;
   }
 }
 

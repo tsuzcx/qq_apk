@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
-import axrl;
+import axrn;
 import com.google.gson.Gson;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
-import sne;
+import snb;
 
 public class WSStatisticsReporter
 {
@@ -26,8 +26,8 @@ public class WSStatisticsReporter
   
   public void report()
   {
-    axrl.a(BaseApplication.getContext()).a(null, this.mEventName, true, 0L, 0L, this.mReportParams, "", this.mFlush);
-    sne.b("WSStatisticsReporter", "event report: " + this.mEventName + " params:" + this.mReportParams.toString() + " isFlush: " + this.mFlush);
+    axrn.a(BaseApplication.getContext()).a(null, this.mEventName, true, 0L, 0L, this.mReportParams, "", this.mFlush);
+    snb.b("WSStatisticsReporter", "event report: " + this.mEventName + " params:" + this.mReportParams.toString() + " isFlush: " + this.mFlush);
   }
 }
 

@@ -1,21 +1,65 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class rri
-  extends ReplacementSpan
+  extends pmp
 {
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  private final long jdField_a_of_type_Long;
+  private final ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public final String a;
+  private final String b;
+  
+  public rri(long paramLong, String paramString, ArticleInfo paramArticleInfo)
   {
-    paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4, paramPaint);
+    super(-12084769, 13421772, 860716207);
+    this.jdField_a_of_type_JavaLangString = "UserSpan";
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.b = paramString;
   }
   
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  private void a(long paramLong, Context paramContext)
   {
-    return (int)paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null)) {}
+    ArticleInfo localArticleInfo;
+    String str;
+    do
+    {
+      return;
+      QLog.d("UserSpan", 1, new Object[] { "openPersonUrl, uin = ", Long.valueOf(paramLong) });
+      onh.a(paramContext, omj.g + bbco.encodeToString(String.valueOf(paramLong).getBytes(), 2));
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      onh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
+      str = onh.a(this.b, localArticleInfo, paramLong);
+      if (shu.a(localArticleInfo.mChannelID)) {}
+      for (paramContext = "0X800935C"; TextUtils.equals(this.b, "3"); paramContext = "0X8007BA3")
+      {
+        nol.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+        ram.a(localArticleInfo, (int)localArticleInfo.mChannelID);
+        return;
+      }
+      if (TextUtils.equals(this.b, "5"))
+      {
+        if (puy.a(localArticleInfo))
+        {
+          nol.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qda.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+          ram.a(localArticleInfo, (int)localArticleInfo.mChannelID);
+          return;
+        }
+        nol.a(null, localArticleInfo.mSubscribeID, paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), "" + localArticleInfo.mStrategyId, str, false);
+        return;
+      }
+    } while (!TextUtils.equals(this.b, "2"));
+    nol.a(null, String.valueOf(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(localArticleInfo.mFeedId), "0", "" + localArticleInfo.mStrategyId, str, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a(this.jdField_a_of_type_Long, paramView.getContext());
   }
 }
 

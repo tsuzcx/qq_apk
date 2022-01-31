@@ -1,65 +1,52 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import android.text.TextUtils;
 
 public class bfgx
 {
-  public static float a;
-  public static int a;
-  private static float jdField_b_of_type_Float;
-  private static int jdField_b_of_type_Int = -1;
-  private static float jdField_c_of_type_Float;
-  private static int jdField_c_of_type_Int = -1;
-  private static int d = -1;
-  
-  static
+  public static boolean a(String paramString)
   {
-    DisplayMetrics localDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
-    jdField_a_of_type_Float = localDisplayMetrics.density;
-    jdField_a_of_type_Int = localDisplayMetrics.densityDpi;
-    jdField_b_of_type_Float = -1.0F;
-    jdField_c_of_type_Float = -1.0F;
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!b(paramString)) && (!c(paramString))) {
+      return false;
+    }
+    return true;
   }
   
-  public static float a()
+  public static boolean b(String paramString)
   {
-    if (jdField_b_of_type_Float < 0.0F) {
-      jdField_b_of_type_Float = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().density;
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("http://m.q.qq.com/a/"))) {
+      return false;
     }
-    return jdField_b_of_type_Float;
+    return true;
   }
   
-  public static int a()
+  public static boolean c(String paramString)
   {
-    if (jdField_c_of_type_Int < 0) {
-      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
-      }
-    }
-    label47:
-    for (jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels) {
-      return jdField_c_of_type_Int;
-    }
+    return (e(paramString)) || (d(paramString)) || (f(paramString));
   }
   
-  public static int a(float paramFloat)
+  public static boolean d(String paramString)
   {
-    return Math.round(a() * paramFloat);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return paramString.startsWith("mqqapi://miniapp/open?");
   }
   
-  public static int b()
+  private static boolean e(String paramString)
   {
-    if (d < 0) {
-      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    label47:
-    for (d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels;; d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels) {
-      return d;
+    return paramString.startsWith("mqqapi://microapp/open?");
+  }
+  
+  private static boolean f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
+    return paramString.startsWith("mqqapi://miniapp/adopen");
   }
 }
 

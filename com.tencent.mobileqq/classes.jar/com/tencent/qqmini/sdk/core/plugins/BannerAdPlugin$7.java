@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beka;
-import besl;
+import bekr;
+import betc;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class BannerAdPlugin$7
   implements Runnable
 {
-  BannerAdPlugin$7(BannerAdPlugin paramBannerAdPlugin, String paramString, int paramInt, beka parambeka) {}
+  BannerAdPlugin$7(BannerAdPlugin paramBannerAdPlugin, String paramString, int paramInt, bekr parambekr) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class BannerAdPlugin$7
     }
     catch (JSONException localJSONException)
     {
-      besl.d("BannerAdPlugin", "bannerErrorStateCallback error", localJSONException);
+      betc.d("BannerAdPlugin", "bannerErrorStateCallback error", localJSONException);
     }
   }
 }

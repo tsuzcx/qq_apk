@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public abstract interface aeit
+public class aeit
 {
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public aeit(aeis paramaeis) {}
 }
 
 

@@ -1,36 +1,53 @@
+import android.view.View;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class wgi
-  extends bduv
+  implements bfph
 {
   public wgi(QRDisplayActivity paramQRDisplayActivity) {}
   
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.isFinishing())) {
+    if (this.a.f) {
       return;
     }
-    if (!paramBoolean)
+    this.a.f = true;
+    switch (paramInt)
     {
-      this.a.g();
-      return;
     }
-    String str = (String)paramHashMap.get("uin");
-    paramHashMap = (String)paramHashMap.get("url");
-    this.a.a(str, 2, paramHashMap);
-    paramHashMap = wim.a(paramHashMap, -1);
-    if (paramHashMap != null)
+    for (;;)
     {
-      this.a.a = paramHashMap;
-      this.a.f();
+      this.a.b.dismiss();
       return;
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.e();
+        if ((this.a.g & 0x1) != 0)
+        {
+          axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.f();
+            if ((this.a.g & 0x1) != 0)
+            {
+              axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.d();
+                if ((this.a.g & 0x1) != 0) {
+                  axqy.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  axqy.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    this.a.g();
   }
 }
 

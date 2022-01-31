@@ -1,10 +1,10 @@
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.jce.JceInputStream;
-
-public class slm
-  extends UniAttribute
+final class slm
+  extends bhmt<sll, Void>
 {
-  JceInputStream a = new JceInputStream();
+  protected sll a(Void paramVoid)
+  {
+    return new sll();
+  }
 }
 
 

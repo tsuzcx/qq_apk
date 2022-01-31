@@ -1,88 +1,42 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class atfv
-  extends Binder
-  implements atfu
+public class atfv
+  extends atfx
 {
-  public atfv()
-  {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-  }
+  public atfv(ConnectNearbyProcService paramConnectNearbyProcService) {}
   
-  public static atfu a(IBinder paramIBinder)
+  public Message a(Message paramMessage)
   {
-    if (paramIBinder == null) {
+    if (paramMessage == null) {
       return null;
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof atfu))) {
-      return (atfu)localIInterface;
-    }
-    return new atfw(paramIBinder);
+    return ConnectNearbyProcService.a(this.a, paramMessage);
   }
   
-  public IBinder asBinder()
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
       }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      localObject1 = localObject2;
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((Message)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+  }
+  
+  public void a(atge paramatge)
+  {
+    ConnectNearbyProcService.a(paramatge);
+    if (ConnectNearbyProcService.a(this.a) != null) {
+      ConnectNearbyProcService.a(this.a).a();
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-    a(atgd.a(paramParcel1.readStrongBinder()));
-    paramParcel2.writeNoException();
-    return true;
   }
 }
 

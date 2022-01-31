@@ -1,29 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijo
-  implements Animation.AnimationListener
+  extends aijw
 {
-  public aijo(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aijo(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    this.a.leftView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
-    this.a.rightViewText.setContentDescription(ajyc.a(2131714260));
-    this.a.c = false;
+    super(paramSpecailCareListActivity, null);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if (this.a.d != 0) {
+      this.a.b = true;
+    }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
+  }
 }
 
 

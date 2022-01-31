@@ -1,9 +1,18 @@
-public class leq
+import com.tencent.av.app.DeviceCapabilityExamination;
+
+class leq
+  implements mur
 {
-  @Deprecated
-  public static boolean a(int paramInt1, int paramInt2)
+  leq(lep paramlep, leu paramleu, int paramInt1, String paramString, int paramInt2, int paramInt3) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
+    this.jdField_a_of_type_Leu.j = paramInt;
+    this.jdField_a_of_type_Leu.i = paramString2;
+    DeviceCapabilityExamination.a(this.jdField_a_of_type_Leu, this.jdField_a_of_type_Lep.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Lep.jdField_a_of_type_Len != null) {
+      this.jdField_a_of_type_Lep.jdField_a_of_type_Len.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(paramInt));
+    }
   }
 }
 

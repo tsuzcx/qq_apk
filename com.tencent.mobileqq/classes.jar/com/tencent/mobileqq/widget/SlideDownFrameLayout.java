@@ -10,11 +10,11 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.FrameLayout;
-import bawz;
-import bcrd;
-import bcre;
-import bcrf;
-import bcrg;
+import baxn;
+import bcrs;
+import bcrt;
+import bcru;
+import bcrv;
 
 public class SlideDownFrameLayout
   extends FrameLayout
@@ -22,7 +22,7 @@ public class SlideDownFrameLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private bcrg jdField_a_of_type_Bcrg;
+  private bcrv jdField_a_of_type_Bcrv;
   private float b;
   
   public SlideDownFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -32,30 +32,30 @@ public class SlideDownFrameLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bcrg == null) {
+    if (this.jdField_a_of_type_Bcrv == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bcrg.a().getY(), 0.0F });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bcrv.a().getY(), 0.0F });
     localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bcrd(this));
+    localValueAnimator.addUpdateListener(new bcrs(this));
     localValueAnimator.start();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bcrg == null) {
+    if (this.jdField_a_of_type_Bcrv == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bcrg.a().getY(), this.jdField_a_of_type_Bcrg.a().getHeight() });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bcrv.a().getY(), this.jdField_a_of_type_Bcrv.a().getHeight() });
     localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bcre(this));
-    localValueAnimator.addListener(new bcrf(this));
+    localValueAnimator.addUpdateListener(new bcrt(this));
+    localValueAnimator.addListener(new bcru(this));
     localValueAnimator.start();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bcrg == null) {
+    if (this.jdField_a_of_type_Bcrv == null) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     if (paramMotionEvent.getPointerCount() > 1) {
@@ -71,7 +71,7 @@ public class SlideDownFrameLayout
     if (i == 2)
     {
       float f = Math.abs(this.b - this.jdField_a_of_type_Float);
-      if ((this.jdField_a_of_type_Int == 0) && (f < bawz.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Int == 0) && (f < baxn.a(getContext(), 5.0F))) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
       f = this.b - this.jdField_a_of_type_Float;
@@ -79,7 +79,7 @@ public class SlideDownFrameLayout
       {
         if ((this.jdField_a_of_type_Int == 0) && (f > 0.0F))
         {
-          if (this.jdField_a_of_type_Bcrg.a())
+          if (this.jdField_a_of_type_Bcrv.a())
           {
             this.jdField_a_of_type_Float = this.b;
             this.jdField_a_of_type_Int = 1;
@@ -120,10 +120,10 @@ public class SlideDownFrameLayout
           break;
         }
       } while (this.jdField_a_of_type_Int != 1);
-      if (this.jdField_a_of_type_Bcrg != null)
+      if (this.jdField_a_of_type_Bcrv != null)
       {
-        this.jdField_a_of_type_Bcrg.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
-        this.jdField_a_of_type_Bcrg.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_Bcrg.a().getHeight());
+        this.jdField_a_of_type_Bcrv.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
+        this.jdField_a_of_type_Bcrv.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_Bcrv.a().getHeight());
       }
       if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
         this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
@@ -131,11 +131,11 @@ public class SlideDownFrameLayout
       this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
       return true;
     } while ((i != 1) && (i != 3));
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Bcrg != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Bcrv != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
     {
-      float f = this.jdField_a_of_type_Bcrg.a().getY();
+      float f = this.jdField_a_of_type_Bcrv.a().getY();
       this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      if ((f <= bawz.a(getContext(), 100.0F)) && ((f <= bawz.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
+      if ((f <= baxn.a(getContext(), 100.0F)) && ((f <= baxn.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
         break label262;
       }
       b();
@@ -154,9 +154,9 @@ public class SlideDownFrameLayout
     }
   }
   
-  public void setOnSlideListener(bcrg parambcrg)
+  public void setOnSlideListener(bcrv parambcrv)
   {
-    this.jdField_a_of_type_Bcrg = parambcrg;
+    this.jdField_a_of_type_Bcrv = parambcrv;
   }
 }
 

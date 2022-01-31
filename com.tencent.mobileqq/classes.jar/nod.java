@@ -1,71 +1,40 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.PublicAccountManager.4;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-class nod
-  implements BusinessObserver
+public class nod
+  extends akuo
 {
-  nod(nnx paramnnx, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public nod(PublicAccountManager.4 param4, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    try
+    {
+      if (paramSosoLbsInfo.a != null)
+      {
+        double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+        double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        String str1 = "";
+        if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null) {
+          str1 = "" + paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+        }
+        String str2 = str1;
+        if (paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString != null) {
+          str2 = str1 + paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      }
       return;
     }
-    for (;;)
+    catch (Exception paramSosoLbsInfo)
     {
-      try
-      {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
-      }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
-            {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
-              {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Nnx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
-                }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
-              }
-            }
-          }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
-      }
-      label187:
-      localObject1 = paramBundle;
+      paramSosoLbsInfo.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$4.this$0.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
   }
 }

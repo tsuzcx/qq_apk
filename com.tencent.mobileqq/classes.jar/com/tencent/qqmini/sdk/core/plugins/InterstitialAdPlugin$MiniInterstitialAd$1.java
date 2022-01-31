@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import begv;
-import beil;
-import besl;
+import behm;
+import bejc;
+import betc;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import java.lang.ref.WeakReference;
 
@@ -24,18 +24,18 @@ class InterstitialAdPlugin$MiniInterstitialAd$1
           if ((localActivity != null) && (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$1).show(localActivity)))
           {
             InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
-            beil.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
-            begv.b(true);
+            bejc.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
+            behm.b(true);
             return;
           }
-          besl.d("SDK_MiniInterstitialAd", "activity is null");
+          betc.d("SDK_MiniInterstitialAd", "activity is null");
           InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        besl.d("SDK_MiniInterstitialAd", "adInterstitial show Exception:", localThrowable);
+        betc.d("SDK_MiniInterstitialAd", "adInterstitial show Exception:", localThrowable);
         InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
         return;
       }

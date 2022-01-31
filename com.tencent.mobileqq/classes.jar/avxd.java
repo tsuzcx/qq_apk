@@ -1,30 +1,34 @@
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+
 public class avxd
 {
-  public static int a(long paramLong1, long paramLong2)
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  static String jdField_a_of_type_JavaLangString = "DataCollector";
+  Handler jdField_a_of_type_AndroidOsHandler = new avxe(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  public boolean a;
+  
+  static
   {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
-      return -1;
-    }
-    long l = Math.max(paramLong1, paramLong2);
-    if ((l > 500L) && (l <= 960L)) {
-      return 3;
-    }
-    if ((l > 200L) && (l <= 500L)) {
-      return 2;
-    }
-    if (l <= 200L) {
-      return 1;
-    }
-    if (a(paramLong1, paramLong2)) {
-      return 0;
-    }
-    return 4;
+    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
+    jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
-  public static boolean a(long paramLong1, long paramLong2)
+  public avxd(Context paramContext)
   {
-    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
+    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
   }
+  
+  static Looper a()
+  {
+    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+  }
+  
+  protected void a(Message paramMessage) {}
 }
 
 

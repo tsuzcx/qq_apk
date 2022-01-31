@@ -1,25 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class nst
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  nst(nss paramnss) {}
+  nst(nsp paramnsp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    nss.a(this.a).setTranslationY(i - nss.a(this.a));
-    paramValueAnimator = nss.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    QLog.d("IconTabController", 1, "showWithAnimation: " + paramValueAnimator.height);
-    nss.a(this.a).setLayoutParams(paramValueAnimator);
-    nss.a(this.a).setAlpha(paramValueAnimator.height / nss.a(this.a));
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

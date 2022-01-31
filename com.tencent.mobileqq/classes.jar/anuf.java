@@ -1,61 +1,56 @@
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Messenger;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class anuf
-  extends bbza
+  extends anwk
 {
   public anuf(MessengerService paramMessengerService) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    for (;;)
+    int i = 2;
+    if (this.a.a != null) {}
+    try
     {
-      try
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject == null)
-        {
-          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
-          return;
-        }
-        int i = paramObject.getInt("result", -1);
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
+      Message localMessage = Message.obtain(null, 5);
+      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
+      if (paramInt == 0) {
+        i = 0;
       }
-      catch (Exception paramObject)
+      for (;;)
       {
-        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
+        paramEmoticonPackage = new Bundle();
+        paramEmoticonPackage.putInt("packetid", j);
+        paramEmoticonPackage.putInt("peoriodtype", 1);
+        paramEmoticonPackage.putInt("resultcode", i);
+        localMessage.setData(paramEmoticonPackage);
+        this.a.a.send(localMessage);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
+        }
         return;
-      }
-      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
-      if (paramObject != null)
-      {
-        Object localObject = (bbze)paramObject.a(46);
-        paramObject.removeObserver(this);
-        return;
-        if (this.a.a != null)
-        {
-          localObject = Message.obtain(null, 5);
-          ((Message)localObject).setData(paramObject);
-          this.a.a.send((Message)localObject);
+        if (paramInt != 11007) {
+          if (paramInt == 11001) {
+            i = 1;
+          } else if (paramInt == 11000) {
+            i = 6;
+          } else {
+            i = -1;
+          }
         }
       }
-      else
-      {
-        return;
-        label206:
-        switch (paramInt)
-        {
-        }
-      }
+      return;
     }
+    catch (Exception paramEmoticonPackage)
+    {
+      return;
+    }
+    catch (RemoteException paramEmoticonPackage) {}
   }
 }
 

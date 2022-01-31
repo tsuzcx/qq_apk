@@ -1,33 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import org.json.JSONObject;
 
-class baso
-  extends bbwf
+public class baso
+  implements aycd
 {
-  baso(basn parambasn, File paramFile, basp parambasp) {}
+  public baso(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject1, int paramInt3, JSONObject paramJSONObject2) {}
   
-  public void onDone(bbwg parambbwg)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
+    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a != null) {}
     }
-    if ((parambbwg.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Basn.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Basn.b(BaseApplicationImpl.getContext())))
+    do
     {
-      this.jdField_a_of_type_Basn.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
-      if (this.jdField_a_of_type_Basp != null) {
-        this.jdField_a_of_type_Basp.a(true);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (this.jdField_a_of_type_Basp != null))
-      {
-        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
-        this.jdField_a_of_type_Basp.a(false);
-      }
       return;
-    }
+      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new basp(this));
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
+    } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
   }
 }
 

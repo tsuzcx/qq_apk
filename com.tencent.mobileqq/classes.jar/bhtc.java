@@ -1,6 +1,15 @@
-public abstract interface bhtc
+import android.os.Bundle;
+import org.json.JSONObject;
+
+class bhtc
+  implements bhte
 {
-  public abstract boolean a();
+  bhtc(bhta parambhta) {}
+  
+  public void a(JSONObject paramJSONObject, Bundle paramBundle)
+  {
+    paramJSONObject.put("status", paramBundle.getInt("status", 1));
+  }
 }
 
 

@@ -1,37 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class asad
-  extends atcb
+  extends akui
 {
-  public asad(LoginWelcomeManager paramLoginWelcomeManager) {}
+  public int a;
+  public boolean a;
+  public int b;
   
-  protected void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2)
+  public asad(String paramString)
   {
-    if ((paramBoolean1) && (paramNearbyPeopleCard != null))
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      byte[] arrayOfByte = paramNearbyPeopleCard.vTempChatSig;
-      String str = paramNearbyPeopleCard.nickname;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload " + paramNearbyPeopleCard.uin + " " + str);
-      }
-      Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-      localBundle.putString("uin", paramNearbyPeopleCard.uin);
-      localBundle.putByteArray("sig", arrayOfByte);
-      localBundle.putString("nick", str);
-      localBundle.putString("tinyId", String.valueOf(paramNearbyPeopleCard.tinyId));
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
     }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload err" + paramBoolean1 + " " + paramNearbyPeopleCard);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
     }
   }
 }

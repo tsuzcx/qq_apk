@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import apxa;
-import ayfe;
+import apxc;
+import ayfg;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class DocCooperationBanner$2
   implements Runnable
 {
-  public DocCooperationBanner$2(apxa paramapxa, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
+  public DocCooperationBanner$2(apxc paramapxc, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class DocCooperationBanner$2
     label89:
     for (int i = 2;; i = 1)
     {
-      localObject = ayfe.a(str2, str3, i, (String)localObject, str1, this.b);
+      localObject = ayfg.a(str2, str3, i, (String)localObject, str1, this.b);
       if (localObject != null) {
         QLog.i("DocCooperationBanner", 2, ((JSONObject)localObject).toString());
       }

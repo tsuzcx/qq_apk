@@ -1,17 +1,18 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class azzn
-  implements wdg
+  implements DialogInterface.OnClickListener
 {
-  public azzn(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public azzn(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(this.a.a.getText().toString());
-    return true;
+    this.a.a(this.a.a);
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).f();
+    }
   }
 }
 

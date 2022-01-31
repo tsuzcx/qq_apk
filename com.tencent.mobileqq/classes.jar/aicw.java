@@ -1,29 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aicw
-  implements Animation.AnimationListener
+  implements QQPermissionCallback
 {
-  public aicw(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public aicw(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-    paramAnimation = (FrameLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
+    paramArrayOfString.arg1 = 1;
+    paramArrayOfString.arg2 = 2131699077;
+    paramArrayOfString.sendToTarget();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
+  }
 }
 
 

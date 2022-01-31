@@ -1,20 +1,9 @@
-import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.io.File;
 
-class biit
-  implements CosFunHelper.CountDownListener
+public class biit
 {
-  biit(biim parambiim) {}
-  
-  public void onCountDownEnd()
-  {
-    biim.d(this.a);
-  }
-  
-  public void onCountDownStart(VideoMaterial paramVideoMaterial)
-  {
-    biim.a(this.a, paramVideoMaterial.getTipsDrawable());
-  }
+  public static final String a = biir.b + File.separator + "camera";
+  public static final String b = a + File.separator + "photo_compress";
 }
 
 

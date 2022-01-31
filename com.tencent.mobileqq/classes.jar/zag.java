@@ -1,22 +1,18 @@
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.form.GdtFormView;
 
-public abstract interface zag
+public class zag
+  implements View.OnClickListener
 {
-  public abstract GdtCanvasData a();
+  public zag(GdtFormView paramGdtFormView) {}
   
-  public abstract GdtCanvasPageView a();
-  
-  public abstract void a(GdtCanvasComponentData paramGdtCanvasComponentData, long paramLong, boolean paramBoolean);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3);
-  
-  public abstract void e();
-  
-  public abstract void setPageViewTopMargin(int paramInt);
+  public void onClick(View paramView)
+  {
+    if (GdtFormView.a(this.a)) {
+      GdtFormView.a(this.a);
+    }
+  }
 }
 
 

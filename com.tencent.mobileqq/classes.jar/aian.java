@@ -1,9 +1,15 @@
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class aian
 {
-  public int a;
+  public AtomicBoolean a;
   public boolean a;
-  public boolean b;
-  public boolean c;
+  
+  private aian(CameraFilterGLView paramCameraFilterGLView)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
 }
 
 

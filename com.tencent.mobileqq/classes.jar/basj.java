@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
 public class basj
-  extends baks
+  implements aycd
 {
-  public basj(TroopInteractGiftAnimationController.1.1 param1) {}
+  public basj(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, aycd paramaycd) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bask(this));
   }
 }
 

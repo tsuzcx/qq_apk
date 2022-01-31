@@ -1,29 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bhse
-  implements DialogInterface.OnClickListener
+class bhse
+  extends Handler
 {
-  public bhse(QzoneQunFeedJsPlugin.2.1 param1) {}
+  bhse(bhsc parambhsc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.a.a.a.mRuntime.a().getAccount();
-    Intent localIntent = new Intent();
-    String str = this.a.a.a.a.mRuntime.a().getResources().getString(2131717766);
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
-    localIntent.putExtra("aid", "jhan_plxz");
-    localIntent.putExtra("success_tips", str);
-    localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.a(this.a.a.a.a.mRuntime.a(), paramDialogInterface, localIntent, 4);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = (String[])paramMessage.obj;
+    localArrayList.add(bhsc.a(this.a, arrayOfString));
+    this.a.a(localArrayList, paramMessage.arg1);
   }
 }
 

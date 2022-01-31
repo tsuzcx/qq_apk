@@ -1,81 +1,114 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.texture.YUVTexture;
+import java.util.List;
 
 public class lsa
-  extends lsc
+  extends YUVTexture
 {
-  protected final Context a;
-  protected final int k;
+  private static String jdField_a_of_type_JavaLangString;
+  private static String b;
+  private static boolean e;
+  private static boolean f;
+  public static int n = 480;
+  private static int o = 1;
+  private lru jdField_a_of_type_Lru;
+  private mdz jdField_a_of_type_Mdz;
   
-  public lsa(Context paramContext, int paramInt)
+  public lsa(Context paramContext, mdz parammdz, String paramString, long paramLong)
   {
-    bfmi.a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.k = paramInt;
-    a(false);
+    super(paramContext, paramString, paramLong);
+    this.jdField_a_of_type_Mdz = parammdz;
   }
   
-  protected Bitmap a()
+  private static void a(Context paramContext)
   {
-    Object localObject = null;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
-    localOptions.inScaled = false;
-    int i = muf.a(this.jdField_a_of_type_AndroidContentContext);
-    localOptions.inSampleSize = 1;
-    if (i <= 480) {
-      localOptions.inSampleSize = 2;
-    }
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    try
+    int i = 0;
+    if (e) {}
+    for (;;)
     {
-      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-      localObject = localBitmap2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError3)
-    {
-      do
-      {
-        localOptions.inSampleSize *= 2;
-      } while (localResources == null);
+      return;
+      e = true;
+      if (jdField_a_of_type_JavaLangString == null) {
+        jdField_a_of_type_JavaLangString = bbdh.c();
+      }
+      paramContext = lpf.a();
+      f = false;
+      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
+        continue;
+      }
+      n = paramContext.b;
+      o = paramContext.c;
+      jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
       try
       {
-        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
-        return localObject;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        localOptions.inSampleSize *= 2;
-        i = this.k;
-        try
-        {
-          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
-          return localBitmap1;
+        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
+          continue;
         }
-        catch (OutOfMemoryError localOutOfMemoryError2) {}
+        paramContext = jdField_b_of_type_JavaLangString.split("\\.");
+        String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
+        while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
+        {
+          if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = true;
+            return;
+          }
+          if (Integer.valueOf(arrayOfString[i]).intValue() < Integer.valueOf(paramContext[i]).intValue())
+          {
+            f = false;
+            return;
+          }
+          if (i == 2) {
+            f = true;
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception paramContext) {}
+    }
+  }
+  
+  public lrp[] a(lqo paramlqo)
+  {
+    if (a() > b())
+    {
+      i = a();
+      a(this.jdField_a_of_type_AndroidContentContext);
+      if ((!f) || (getImgWidth() > n) || (i <= ((lqp)paramlqo).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_Mdz.a().size() != 0) || (VideoController.a().a().d != 2)) {
+        break label211;
       }
     }
-    return localObject;
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (!d()) {
-      paramBitmap.recycle();
+    label211:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        if (this.jdField_a_of_type_Lru == null) {
+          this.jdField_a_of_type_Lru = lru.a();
+        }
+        super.a(paramlqo);
+        if (super.a() != null) {
+          this.jdField_a_of_type_Lru.a(paramlqo, getImgWidth(), getImgHeight(), ((lqp)paramlqo).c(), ((lqp)paramlqo).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, o);
+        }
+        return lrn.a(0).a();
+        i = b();
+        break;
+      }
+      return super.a(paramlqo);
     }
   }
   
-  public int[] a(lqt paramlqt)
+  public void b()
   {
-    if (!c()) {
-      b(paramlqt);
+    super.b();
+    if (this.jdField_a_of_type_Lru != null) {
+      this.jdField_a_of_type_Lru.a();
     }
-    return this.jdField_a_of_type_ArrayOfInt;
+    e = false;
   }
 }
 

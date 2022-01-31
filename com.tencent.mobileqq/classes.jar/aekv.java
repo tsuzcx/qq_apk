@@ -1,4 +1,4 @@
-import android.widget.RelativeLayout;
+import android.graphics.Color;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
@@ -6,20 +6,20 @@ import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class aekv
-  extends aekt
+  extends aekr
 {
-  agvz a;
+  agvx a;
   
-  public aekv(QQAppInterface paramQQAppInterface, aell paramaell, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvj paramacvj)
+  public aekv(QQAppInterface paramQQAppInterface, aelj paramaelj, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvf paramacvf)
   {
-    super(paramQQAppInterface, paramaell, paramQQWalletTransferMsgElem, paramInt, paramacvj);
-    this.jdField_a_of_type_Agvz = ((agvz)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Agvz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
-    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
+    super(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    this.jdField_a_of_type_Agvx = ((agvx)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Agvx.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
     {
-      this.j = 2130846314;
+      this.i = 0;
       return;
     }
+    this.i = paramQQWalletTransferMsgElem.effectsId;
   }
   
   public boolean b()
@@ -28,9 +28,9 @@ public class aekv
     if (bool) {
       return bool;
     }
-    this.jdField_a_of_type_Aell.b.setVisibility(0);
-    this.jdField_a_of_type_Aell.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Aell.b.setText(aeky.a);
+    this.jdField_a_of_type_Aelj.b.setVisibility(0);
+    this.jdField_a_of_type_Aelj.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aelj.b.setText(aekw.d);
     return true;
   }
   
@@ -39,31 +39,14 @@ public class aekv
     super.f();
     try
     {
-      this.jdField_a_of_type_Aell.a.setText(ahiy.a(this.jdField_a_of_type_Aell.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Aell.a.getPaint()));
+      this.jdField_a_of_type_Aelj.a.setTextColor(Color.parseColor("#604121"));
+      this.jdField_a_of_type_Aelj.a.setText(ahiw.a(this.jdField_a_of_type_Aelj.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Aelj.a.getPaint()));
       return;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-  }
-  
-  public void i()
-  {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    agvy localagvy2 = this.jdField_a_of_type_Agvz.a(localQQWalletRedPacketMsg.redPacketId);
-    agvy localagvy1 = localagvy2;
-    if (localagvy2 == null)
-    {
-      localagvy1 = new agvy(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 2);
-      this.jdField_a_of_type_Agvz.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Agvz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 2);
-    }
-    if (!super.a(localagvy1))
-    {
-      this.jdField_a_of_type_Aell.d.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_Aell.d.setVisibility(0);
   }
 }
 

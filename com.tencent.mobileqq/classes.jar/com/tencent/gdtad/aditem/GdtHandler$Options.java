@@ -6,13 +6,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import ysv;
-import yxs;
+import yss;
+import yxp;
 
 public class GdtHandler$Options
   implements Parcelable
 {
-  public static final Parcelable.Creator<Options> CREATOR = new ysv();
+  public static final Parcelable.Creator<Options> CREATOR = new yss();
   public int a;
   public long a;
   public Rect a;
@@ -42,7 +42,7 @@ public class GdtHandler$Options
     this.jdField_b_of_type_Int = -2147483648;
     if (paramParcel == null)
     {
-      yxs.d("GdtHandler", "Options(Parcel in) error");
+      yxp.d("GdtHandler", "Options(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)paramParcel.readParcelable(GdtAd.class.getClassLoader()));
@@ -130,7 +130,7 @@ public class GdtHandler$Options
     int j = 1;
     if (paramParcel == null)
     {
-      yxs.d("GdtHandler", "writeToParcel error");
+      yxp.d("GdtHandler", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramInt);

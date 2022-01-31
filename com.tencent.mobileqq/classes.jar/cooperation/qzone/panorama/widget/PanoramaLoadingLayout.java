@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbkx;
+import bbll;
 
 public class PanoramaLoadingLayout
   extends RelativeLayout
@@ -25,8 +25,8 @@ public class PanoramaLoadingLayout
   
   static
   {
-    jdField_a_of_type_Int = bbkx.b(55.0F);
-    jdField_b_of_type_Int = bbkx.b(55.0F);
+    jdField_a_of_type_Int = bbll.b(55.0F);
+    jdField_b_of_type_Int = bbll.b(55.0F);
   }
   
   public PanoramaLoadingLayout(@NonNull Context paramContext)
@@ -76,14 +76,14 @@ public class PanoramaLoadingLayout
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717997));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718008));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(14);
       localLayoutParams.addRule(3, this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground.getId());
-      localLayoutParams.topMargin = (bbkx.a(10.0F) + jdField_a_of_type_Int / 5);
+      localLayoutParams.topMargin = (bbll.a(10.0F) + jdField_a_of_type_Int / 5);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     }
     if (paramBoolean1) {

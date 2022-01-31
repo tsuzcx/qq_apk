@@ -9,9 +9,9 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bfwd;
-import veb;
-import veg;
+import bfwu;
+import vdy;
+import ved;
 
 public class TagFlowLayout
   extends RelativeLayout
@@ -42,7 +42,7 @@ public class TagFlowLayout
     {
       int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(i);
       View localView = getChildAt(i);
-      if ((k == ((Integer)localView.getTag(2131373379)).intValue()) && (k == 0)) {
+      if ((k == ((Integer)localView.getTag(2131373381)).intValue()) && (k == 0)) {
         this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
       }
       for (;;)
@@ -73,18 +73,18 @@ public class TagFlowLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    veg.b("attach", "attach");
+    ved.b("attach", "attach");
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    veg.b("detach", "detach");
+    ved.b("detach", "detach");
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    bfwd.a("TagFlowLayout.onLayout");
+    bfwu.a("TagFlowLayout.onLayout");
     int j = getWidth();
     paramInt3 = 0;
     paramInt2 = 0;
@@ -118,12 +118,12 @@ public class TagFlowLayout
         paramInt3 = i + (localMarginLayoutParams.rightMargin + (paramInt2 + m));
       }
     }
-    bfwd.a();
+    bfwu.a();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bfwd.a("TagFlowLayout.onMeasure");
+    bfwu.a("TagFlowLayout.onMeasure");
     super.onMeasure(paramInt1, paramInt2);
     int i6 = View.MeasureSpec.getSize(paramInt1);
     int i5 = View.MeasureSpec.getSize(paramInt2);
@@ -192,7 +192,7 @@ public class TagFlowLayout
       i = i5;
     }
     setMeasuredDimension(j, i);
-    bfwd.a();
+    bfwu.a();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
@@ -204,7 +204,7 @@ public class TagFlowLayout
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
     if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new veb(this);
+      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new vdy(this);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
     }

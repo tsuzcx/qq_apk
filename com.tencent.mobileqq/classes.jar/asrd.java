@@ -1,6 +1,14 @@
-public abstract interface asrd
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+
+public class asrd
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public ImageView a;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public String a;
 }
 
 

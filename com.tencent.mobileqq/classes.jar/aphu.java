@@ -1,138 +1,80 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
 
-public class aphu
+public abstract class aphu
+  extends apgy
 {
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private final String jdField_b_of_type_JavaLangString;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private byte[] c;
-  private byte[] d;
+  protected int a;
+  final String b = "ExcitingTransfer.UploadDataRP<FileAssistant>";
+  protected String c;
+  protected long d;
+  protected String d;
+  protected long e;
+  protected long f;
+  protected long g;
   
-  public aphu(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
+  public aphu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label84;
-      }
-    }
-    label84:
-    for (this.jdField_a_of_type_Long = new File(this.jdField_a_of_type_JavaLangString).length();; this.jdField_a_of_type_Long = 0L)
-    {
-      this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-      this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-      this.c = paramArrayOfByte3;
-      this.d = paramArrayOfByte4;
-      return;
-      this.jdField_b_of_type_JavaLangString = apue.a(paramString1);
-      break;
-    }
+    super(paramQQAppInterface);
   }
   
-  public long a()
+  protected abstract int a();
+  
+  protected HashMap<String, String> a()
   {
-    return this.jdField_a_of_type_Long;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_ReportVer", String.valueOf(1));
+    localHashMap.put("param_TransferType", String.valueOf(a()));
+    localHashMap.put("param_Platform", String.valueOf(2));
+    localHashMap.put("param_AppType", String.valueOf(0));
+    localHashMap.put("param_Result", String.valueOf(this.a));
+    localHashMap.put("param_FileName", String.valueOf(this.c));
+    localHashMap.put("param_Suffix", String.valueOf(this.jdField_d_of_type_JavaLangString));
+    localHashMap.put("param_TargetUin", String.valueOf(this.e));
+    localHashMap.put("param_GroupCode", String.valueOf(this.f));
+    localHashMap.put("param_FileSize", String.valueOf(this.g));
+    return localHashMap;
   }
   
-  public String a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportNetError no implement. please check call");
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(int paramInt)
   {
-    this.d = paramArrayOfByte;
+    this.a = paramInt;
   }
   
-  public boolean a()
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mFilePath is null");
-      }
-    }
-    do
-    {
-      return false;
-      if (0L != this.jdField_a_of_type_Long) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mFileSize is 0");
+    this.e = paramLong1;
+    this.f = paramLong2;
+    this.c = paramString1;
+    this.jdField_d_of_type_JavaLangString = paramString2;
+    this.g = paramLong3;
+  }
+  
+  protected boolean a()
+  {
     return false;
-    return true;
   }
   
-  public byte[] a()
+  protected HashMap<String, String> b()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] getOldReportData no implement. please check call");
+    return null;
   }
   
-  public String b()
+  public void b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    QLog.e("ExcitingTransfer.UploadDataRP<FileAssistant>", 1, "Id[" + this.jdField_d_of_type_Long + "] reportUserCancel no implement. please check call");
   }
   
-  public byte[] b()
+  public void c(long paramLong)
   {
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public byte[] c()
-  {
-    return this.c;
-  }
-  
-  public byte[] d()
-  {
-    return this.d;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("mFilePath:").append(this.jdField_a_of_type_JavaLangString).append(" mFileName:").append(this.jdField_b_of_type_JavaLangString).append(" mFileSize:").append(this.jdField_a_of_type_Long).append(" mBufSha3:");
-    if (this.c != null)
-    {
-      str = HexUtil.bytes2HexStr(this.c);
-      localStringBuilder = localStringBuilder.append(str).append(" mBufSha:");
-      if (this.d == null) {
-        break label157;
-      }
-      str = HexUtil.bytes2HexStr(this.d);
-      label90:
-      localStringBuilder = localStringBuilder.append(str).append(" mBuf10MMdd5:");
-      if (this.jdField_b_of_type_ArrayOfByte == null) {
-        break label163;
-      }
-      str = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
-      label116:
-      localStringBuilder = localStringBuilder.append(str).append(" mBufMdd5:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label169;
-      }
-    }
-    label157:
-    label163:
-    label169:
-    for (String str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);; str = "")
-    {
-      return str;
-      str = "";
-      break;
-      str = "";
-      break label90;
-      str = "";
-      break label116;
-    }
+    this.jdField_d_of_type_Long = paramLong;
   }
 }
 

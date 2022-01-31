@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class bkqa
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  bkqa(bkpy parambkpy) {}
+  bkqa(bkpz parambkpz) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    vel.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!bkpy.a(this.a).q)
-    {
-      bkpy.b(this.a);
-      return;
-    }
-    bkpy.a(this.a).q = false;
-    bkpy.b(this.a).setSelected(false);
-    bkpy.a(this.a).d(3003);
+    bkpz.a(this.a).f = paramBoolean;
   }
 }
 

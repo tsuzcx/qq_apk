@@ -1,14 +1,47 @@
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afcg
-  implements bfps
+  extends BaseAdapter
 {
-  public afcg(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  public Handler a;
+  public QQAppInterface a;
+  public String[] a;
   
-  public void a()
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    return this.a[paramInt];
+  }
+  
+  public int getCount()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.length;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    if (paramView == null) {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559213, paramViewGroup, false);
+    }
+    for (paramViewGroup = new afch(paramView);; paramViewGroup = (afch)paramView.getTag())
+    {
+      paramViewGroup.a.setText(str);
+      return paramView;
+    }
   }
 }
 

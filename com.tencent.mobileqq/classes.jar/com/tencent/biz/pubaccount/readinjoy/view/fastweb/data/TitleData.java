@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import org.json.JSONObject;
-import rpu;
+import rpr;
 
 public class TitleData
   extends ProteusItemData
@@ -37,7 +37,7 @@ public class TitleData
             String str = (String)localIterator.next();
             localJSONObject.put(str, ((JSONObject)localObject1).opt(str));
           }
-          localObject2 = rpu.a("native_article", true);
+          localObject2 = rpr.a("native_article", true);
         }
         catch (Exception localException1)
         {
@@ -50,7 +50,7 @@ public class TitleData
       }
       label131:
       label162:
-      for (Object localObject2 = ((rpu)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
+      for (Object localObject2 = ((rpr)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
       {
         if (localObject2 != null)
         {

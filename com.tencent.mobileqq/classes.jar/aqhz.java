@@ -1,80 +1,16 @@
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
-import com.tencent.qphone.base.util.QLog;
 
 public class aqhz
-  extends asku
+  implements Handler.Callback
 {
   public aqhz(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  public void a(boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! is success");
-    }
-    for (;;)
-    {
-      super.a(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmTokenRepsponse called! confirm token is failed!");
-    }
-  }
-  
-  public void a(boolean paramBoolean, asly paramasly)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, paramasly);
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! qrStateResponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramasly);
-      return;
-      QLog.d("MsgBackup", 1, "onQueryStateResponse called! query qr state is failed!");
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof asls)))
-    {
-      MsgBackupSettingFragment.a = (asls)paramObject;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! qrResponse = " + MsgBackupSettingFragment.a);
-    }
-    for (;;)
-    {
-      super.a(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onGetQrResponse called! request qrCode is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! is success");
-    }
-    for (;;)
-    {
-      super.b(paramBoolean);
-      return;
-      QLog.d("MsgBackup", 1, "onRejectQRResponse called! reject qr is failed!");
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      MsgBackupSettingFragment.a(this.a, (aslo)paramObject);
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! qrConfirmReponse = " + MsgBackupSettingFragment.a(this.a));
-    }
-    for (;;)
-    {
-      super.b(paramBoolean, paramObject);
-      return;
-      QLog.d("MsgBackup", 1, "onConfirmQrResponse called! confirm qrCode is failed!");
-    }
+    MsgBackupSettingFragment.a(this.a, paramMessage);
+    return false;
   }
 }
 

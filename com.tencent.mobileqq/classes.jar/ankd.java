@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-public class ankd
-  implements View.OnClickListener
+public final class ankd
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  public ankd(DBFixConfigActivity paramDBFixConfigActivity) {}
-  
-  public void onClick(View paramView)
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    ThreadManager.post(this.a.a, 8, null, true);
+    return new SpecialCareInfo(paramParcel);
+  }
+  
+  public SpecialCareInfo[] a(int paramInt)
+  {
+    return new SpecialCareInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankd
  * JD-Core Version:    0.7.0.1
  */

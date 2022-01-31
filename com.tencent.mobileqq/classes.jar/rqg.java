@@ -1,142 +1,96 @@
-import android.text.TextUtils;
+import android.support.v4.util.ArrayMap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class rqg
+  extends rpr
 {
-  private static Map<String, rqh> a = new ConcurrentHashMap();
+  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
+  private Map<String, rqh> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  static
+  public rqg()
   {
-    a();
+    this.nameTemplateMap = new ConcurrentHashMap();
   }
   
-  public static String a(String paramString)
+  public static rqg a(String paramString, boolean paramBoolean)
   {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject;
-    try
-    {
-      localObject = (rqh)a.get(paramString);
-      localJSONObject.put("app", "QQ");
-      localJSONObject.put("appVersion", "8.2.8");
-      localJSONObject.put("businessID", ((rqh)localObject).b);
-      localJSONObject.put("os", "android");
-      localObject = new JSONObject();
-      paramString = rqj.a(paramString, false);
-      if (paramString != null)
-      {
-        paramString = paramString.a().entrySet().iterator();
-        while (paramString.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)paramString.next();
-          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
-          continue;
-          return localJSONObject.toString();
-        }
-      }
+    if (paramBoolean) {
+      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
     }
-    catch (Exception paramString)
-    {
-      QLog.d("RealTimeController", 1, "", paramString);
-    }
-    for (;;)
-    {
-      localJSONObject.put("styles", localObject);
-      QLog.d("RealTimeController", 1, "styles: " + localJSONObject);
-    }
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
   }
   
-  public static rqj a(String paramString)
+  public static void b()
   {
-    if (a.containsKey(paramString))
+    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
+  }
+  
+  public Map<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
     {
-      paramString = (rqh)a.get(paramString);
-      if ((paramString != null) && (paramString.jdField_a_of_type_Rqi != null)) {
-        return paramString.jdField_a_of_type_Rqi.a();
-      }
+      rqh localrqh = (rqh)localIterator.next();
+      localHashMap.put(localrqh.a, localrqh.b);
     }
-    return null;
+    return localHashMap;
   }
   
-  private static void a()
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    a(new rqh("default_feeds", "1"));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    QLog.d("RealTimeController", 1, "serviceKey:" + paramString1 + " styles:" + paramString2);
-    if (TextUtils.isEmpty(paramString2)) {}
-    rqh localrqh;
-    do
-    {
-      return;
-      localrqh = (rqh)a.get(paramString1);
-    } while (localrqh == null);
-    paramString1 = rqj.a(paramString1, true);
-    if (paramString1 == null)
-    {
-      QLog.d("RealTimeController", 1, "realTimeTemplateFactory == null styles:" + paramString2);
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
       return;
     }
-    for (;;)
+    paramString2 = new rqh(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  public boolean a(TemplateBean paramTemplateBean)
+  {
+    if (paramTemplateBean == null) {}
+    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void c(String paramString)
+  {
+    paramString = (rqh)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
     {
-      try
-      {
-        paramString1.a(rqa.a());
-        localObject = new JSONObject(paramString2);
-        paramString2 = ((JSONObject)localObject).getString("businessID");
-        QLog.d("RealTimeController", 1, "realTimeBusinessID: " + paramString2);
-        paramString2 = ((JSONObject)localObject).getJSONArray("styleList");
-        if (!((JSONObject)localObject).has("deleteList")) {
-          break label282;
-        }
-        localObject = ((JSONObject)localObject).getJSONArray("deleteList");
-        ArrayList localArrayList = new ArrayList();
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
-        {
-          String str = ((JSONArray)localObject).getString(i);
-          localArrayList.add(str);
-          paramString1.c(str);
-          i += 1;
-          continue;
-        }
-        localrqh.jdField_a_of_type_Rqi.a(localArrayList);
-      }
-      catch (Exception paramString1)
-      {
-        Object localObject;
-        QLog.d("RealTimeController", 1, "", paramString1);
-        return;
-      }
-      if (i >= paramString2.length()) {
-        break;
-      }
-      localObject = (JSONObject)paramString2.get(i);
-      localrqh.jdField_a_of_type_Rqi.a(paramString1, (JSONObject)localObject, true);
-      i += 1;
-      continue;
-      label282:
-      int i = 0;
+      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
+      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
     }
   }
   
-  public static void a(rqh paramrqh)
+  public Map<String, TemplateBean> getNameTemplateMap()
   {
-    if ((paramrqh.jdField_a_of_type_JavaLangString == null) || (paramrqh.b == null)) {
-      return;
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.putAll(this.nameTemplateMap);
+    return localArrayMap;
+  }
+  
+  public TemplateBean getTemplate(String paramString)
+  {
+    if (paramString == null) {
+      return null;
     }
-    a.put(paramrqh.jdField_a_of_type_JavaLangString, paramrqh);
+    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.clone()) {
+      return paramString;
+    }
   }
 }
 

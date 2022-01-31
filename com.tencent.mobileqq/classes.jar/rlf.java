@@ -1,15 +1,11 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
 class rlf
-  implements ViewFactory.FoundClickableViewListener
+  extends pah
 {
-  rlf(rle paramrle, Context paramContext) {}
+  rlf(rle paramrle) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void a(String paramString)
   {
-    paramViewBase.setOnClickListener(new rlg(this));
+    osj.a().b();
   }
 }
 

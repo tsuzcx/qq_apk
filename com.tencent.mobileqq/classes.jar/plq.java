@@ -1,16 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
 class plq
-  implements ViewBase.OnClickListener
+  implements pbx
 {
-  plq(plp paramplp) {}
+  plq(plm paramplm, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    plp.a(this.a, false);
-    plp.a(this.a);
-    noo.a(null, onk.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      plm.a(this.jdField_a_of_type_Plm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      plm.a(this.jdField_a_of_type_Plm).notifyDataSetChanged();
+      return;
+    }
+    bcql.a(plm.b(this.jdField_a_of_type_Plm).getContext(), 1, 2131718513, 0).a();
   }
 }
 

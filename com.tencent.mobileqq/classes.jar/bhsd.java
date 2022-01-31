@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class bhsd
-  implements DialogInterface.OnClickListener
+class bhsd
+  extends BroadcastReceiver
 {
-  public bhsd(QzoneQunFeedJsPlugin.2.1 param1) {}
+  bhsd(bhsc parambhsc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneDynamicAlbumPlugin", 2, paramContext);
+    }
+    paramIntent = paramIntent.getStringExtra("runningProcessName");
+    if ((("com.tencent.process.stopping".equals(paramContext)) && (!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("com.tencent.mobileqq:tool"))) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    {
+      bhsc.a(this.a, true);
+      this.a.b();
+    }
+    while (((!"com.tencent.process.starting".equals(paramContext)) || (TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("com.tencent.mobileqq:tool")) || (!bhsc.a(this.a))) && (!"tencent.av.v2q.StopVideoChat".equals(paramContext))) {
+      return;
+    }
+    bhsc.a(this.a, false);
+    this.a.c();
   }
 }
 

@@ -1,6 +1,6 @@
 public abstract interface osd
 {
-  public abstract void a();
+  public abstract void A_();
 }
 
 

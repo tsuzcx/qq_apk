@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ahkm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ahkm(ahkk paramahkk) {}
+  ahkm(ahkd paramahkd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    ahkd.a(this.a).app.a().a("0X800474F", 1);
+    bgnk.a(ahkd.a(this.a), 4, null);
+    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+  }
 }
 
 

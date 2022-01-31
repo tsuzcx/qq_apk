@@ -1,29 +1,29 @@
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class qpk
-  implements rwi
+  implements View.OnClickListener
 {
-  qpk(qpg paramqpg, String paramString) {}
+  qpk(qpi paramqpi) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.w("Q.pubaccount.video.feeds.VideoFeedsIPCServer", 1, "loadViolaPageFailed");
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if ((SplashActivity.a == null) || (SplashActivity.a.get() == null)) {
-        break label53;
-      }
-    }
-    label53:
-    for (Object localObject = (ContextWrapper)SplashActivity.a.get();; localObject = BaseApplicationImpl.getContext())
+    qoi.a(qpi.a(this.a), qpi.a(this.a).a);
+    paramView = new JSONObject();
+    try
     {
-      onk.a((Context)localObject, this.jdField_a_of_type_JavaLangString, null);
+      paramView.put("uin", qpi.a(this.a).getCurrentAccountUin());
+      label45:
+      nol.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", npu.a(null, null, qpi.a(this.a).a.a.a, qpi.a(this.a).a.a.g, paramView), false);
       return;
+    }
+    catch (Exception localException)
+    {
+      break label45;
     }
   }
 }

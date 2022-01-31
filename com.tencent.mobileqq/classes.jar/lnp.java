@@ -1,21 +1,19 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
 public class lnp
 {
+  public int a;
+  public long a;
   public String a;
-  public String b;
-  public String c;
+  public int b;
+  public int c = 2;
   
-  public lnp(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnp
  * JD-Core Version:    0.7.0.1
  */

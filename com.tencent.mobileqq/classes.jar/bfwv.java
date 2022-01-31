@@ -1,6 +1,9 @@
+import android.text.method.TransformationMethod;
+
 public abstract interface bfwv
+  extends TransformationMethod
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean);
 }
 
 

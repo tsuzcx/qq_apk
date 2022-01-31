@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.profile.view;
 
 import android.widget.ImageView;
-import auuw;
-import axqw;
-import bbby;
+import auuy;
+import axqy;
+import bbcm;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
@@ -22,16 +22,16 @@ class ProfileQVipV5View$1$1
       ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0).setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId;
       AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
-      if (bbby.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long)) {
-        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long).a(ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0), 2, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.jdField_a_of_type_Auuw.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+      if (bbcm.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long)) {
+        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long).a(ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0), 2, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.jdField_a_of_type_Auuy.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
       }
       for (;;)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.jdField_a_of_type_Boolean) {
-          axqw.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
+          axqy.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
         }
         return;
-        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long).a(ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0), 1, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.jdField_a_of_type_Auuw.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+        localAvatarPendantManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0.jdField_a_of_type_Long).a(ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0), 1, PendantInfo.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.jdField_a_of_type_Auuy.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
       }
     }
     ProfileQVipV5View.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileQVipV5View$1.this$0).setVisibility(8);

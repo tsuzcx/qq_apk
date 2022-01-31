@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aplo
-  extends apll
+  extends aplm
 {
-  private final String a;
-  
-  public aplo(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public aplo(apkt paramapkt)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_a_of_type_JavaLangString = "VideoForDisc<QFile>";
+    super(paramapkt);
   }
   
-  public void a(apab paramapab)
+  public boolean a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, new aplp(this, paramapab));
+    FileManagerEntity localFileManagerEntity = this.a.a();
+    if (localFileManagerEntity == null) {}
+    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+      return false;
+    }
+    return true;
   }
 }
 

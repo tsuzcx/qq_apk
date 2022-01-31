@@ -1,37 +1,17 @@
-import android.hardware.SensorManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class aaqz
-  implements actw
+  implements View.OnClickListener
 {
   public aaqz(ChatHistory paramChatHistory) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onClick(View paramView)
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Aaru != null) {
-      this.a.jdField_a_of_type_Aaru.d();
-    }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.b(2131695204);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

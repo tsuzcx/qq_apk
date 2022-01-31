@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
-
-class ahxb
-  implements aysa
+public class ahxb
 {
-  ahxb(ahwy paramahwy) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onResp(aysx paramaysx)
+  public ahxb(int paramInt, String paramString1, String paramString2)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaysx.jdField_a_of_type_Aysw.a();
-    if (paramaysx.jdField_a_of_type_Int != 0)
-    {
-      lcl.c("VideoFilterTools", "download IconFile failed. errorCode: " + paramaysx.b + ", errorMsg: " + paramaysx.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((ahwy.a(this.a).decrementAndGet() == 0) && (ahwy.a(this.a) != null)) {
-      ahwy.a(this.a).a(true);
-    }
-    lcl.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
 }
 
 

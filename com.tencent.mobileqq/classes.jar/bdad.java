@@ -1,27 +1,53 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdad
-  extends Handler
+  extends URLDrawableDownListener.Adapter
 {
-  public bdad(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  public bdad(CardContainer paramCardContainer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
     }
-    this.a.jdField_a_of_type_Bdae.notifyDataSetChanged();
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
+    }
+    CardContainer.a(this.a);
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
   }
 }
 

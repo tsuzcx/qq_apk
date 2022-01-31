@@ -1,25 +1,25 @@
 package com.tencent.biz.qqstory.album.view;
 
-import bjjn;
+import bjke;
 import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
-import srv;
-import veg;
+import srs;
+import ved;
 
 public class AlbumGalleryCapturePart$11
   implements Runnable
 {
-  public AlbumGalleryCapturePart$11(srv paramsrv) {}
+  public AlbumGalleryCapturePart$11(srs paramsrs) {}
   
   public void run()
   {
-    if (srv.b(this.this$0))
+    if (srs.b(this.this$0))
     {
-      veg.b("FredguoFix", "play animation");
-      srv.a(this.this$0).a(null);
-      boolean bool1 = srv.a(this.this$0).post(srv.a(this.this$0));
-      boolean bool2 = srv.a(this.this$0).postDelayed(srv.b(this.this$0), 800L);
+      ved.b("FredguoFix", "play animation");
+      srs.a(this.this$0).a(null);
+      boolean bool1 = srs.a(this.this$0).post(srs.a(this.this$0));
+      boolean bool2 = srs.a(this.this$0).postDelayed(srs.b(this.this$0), 800L);
       if ((!bool1) || (!bool2)) {
-        srv.a(this.this$0).a(srv.a(this.this$0));
+        srs.a(this.this$0).a(srs.a(this.this$0));
       }
     }
   }

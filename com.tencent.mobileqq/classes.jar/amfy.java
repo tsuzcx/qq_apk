@@ -1,328 +1,345 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amfy
-  extends QIPCModule
+  extends WebViewPlugin
 {
-  private static amfy a;
-  
-  private amfy(String paramString)
+  public amfy()
   {
-    super(paramString);
+    this.mPluginNameSpace = "campus_circle";
   }
   
-  public static amfy a()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (a == null) {}
+    paramString2 = (bcfx)super.getBrowserComponent(2);
+    int i1;
+    int k;
+    int i;
+    int j;
+    int m;
+    if (paramString2 != null)
+    {
+      paramString3 = paramString2.d.getContext().getResources();
+      i1 = (int)(30.0F * paramString3.getDisplayMetrics().density);
+      int i2 = 0;
+      k = 0;
+      paramString1 = "";
+      int n = 10;
+      i = n;
+      paramJsBridgeListener = paramString1;
+      j = k;
+      if (paramVarArgs != null)
+      {
+        i = n;
+        paramJsBridgeListener = paramString1;
+        j = k;
+        if (paramVarArgs.length > 0)
+        {
+          k = n;
+          m = i2;
+        }
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        k = n;
+        m = i2;
+        j = paramJsBridgeListener.optInt("iconIndex");
+        k = n;
+        m = j;
+        i = paramJsBridgeListener.optInt("iconPad");
+        k = i;
+        m = j;
+        paramJsBridgeListener = paramJsBridgeListener.optString("iconRes");
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          i = k;
+          paramJsBridgeListener = paramString1;
+          j = m;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramVarArgs);
+            i = k;
+            paramJsBridgeListener = paramString1;
+            j = m;
+            continue;
+            if ("arrow_down".equals(paramJsBridgeListener))
+            {
+              paramJsBridgeListener = paramString3.getDrawable(2130844131);
+            }
+            else if ("none".equals(paramJsBridgeListener))
+            {
+              paramJsBridgeListener = null;
+            }
+            else
+            {
+              paramJsBridgeListener = null;
+              continue;
+              k = j;
+              if (j < 0)
+              {
+                k = 0;
+                continue;
+                j = i;
+                if (i > i1) {
+                  j = i1;
+                }
+              }
+            }
+          }
+        }
+      }
+      if ("arrow_up".equals(paramJsBridgeListener))
+      {
+        paramJsBridgeListener = paramString3.getDrawable(2130844132);
+        if (j <= 3) {
+          break label278;
+        }
+        k = 3;
+        if (i >= 0) {
+          break label293;
+        }
+        j = 0;
+        paramString2.a.a(k, paramJsBridgeListener, j);
+        return true;
+      }
+    }
+    label278:
+    label293:
+    return false;
+  }
+  
+  public boolean b(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    paramString1 = "";
+    paramJsBridgeListener = paramString1;
+    if (paramVarArgs != null)
+    {
+      paramJsBridgeListener = paramString1;
+      if (paramVarArgs.length <= 0) {}
+    }
     try
     {
-      if (a == null) {
-        a = new amfy("CampusCircleIpcServer_Model");
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint callback=" + paramJsBridgeListener);
       }
-      return a;
+      if (TextUtils.isEmpty(paramJsBridgeListener)) {
+        return true;
+      }
     }
-    finally {}
-  }
-  
-  private EIPCResult a(String paramString, Bundle paramBundle)
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    catch (Exception paramString2)
     {
-      if (paramString == null)
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CampusCircleIpcServer", 2, "isInTroopAIO, app is null");
+        paramJsBridgeListener = paramString1;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramString2);
+          paramJsBridgeListener = paramString1;
         }
-        return null;
       }
-      boolean bool = amon.a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("MedalWallMng", 2, "isInTroopAIO, isInAIO " + bool);
+      paramString1 = new JSONObject();
+      paramString2 = amfw.a().a();
+      bool = false;
+      j = 1;
+      i = 0;
+      l = 0L;
+      if (paramString2 == null) {
+        break label277;
       }
-      paramString = new EIPCResult();
-      paramString.data = new Bundle();
-      paramString.data.putBoolean("isInTroopAIO", bool);
-      return paramString;
     }
-  }
-  
-  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject = null;
-    if ((!"action_get_red_point".equals(paramString)) || (paramBundle == null)) {
-      return null;
-    }
-    paramBundle = new Bundle();
-    EIPCResult localEIPCResult = new EIPCResult();
-    localEIPCResult.data = paramBundle;
-    paramString = localObject;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (paramString == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcServer", 2, "getRedPoint, app is null");
-      }
-      paramBundle.putBoolean("hasRedTouch", false);
-      paramBundle.putInt("type", -1);
-      paramBundle.putInt("count", 0);
-      paramBundle.putLong("seq", -1L);
-      paramBundle.putInt("code", -1);
-      localEIPCResult.code = -1;
-    }
+    boolean bool = paramString2.getBoolean("hasRedTouch", false);
+    int j = paramString2.getInt("type", 1);
+    int i = paramString2.getInt("count", 0);
+    long l = paramString2.getLong("seq", 0L);
+    int k = paramString2.getInt("code");
     for (;;)
     {
-      return localEIPCResult;
-      paramString = ((atxb)paramString.getManager(160)).a(103421);
-      if (paramString != null)
+      try
       {
-        paramBundle.putBoolean("hasRedTouch", paramString.unReadFlag);
-        paramBundle.putInt("type", paramString.redtouchType);
-        paramBundle.putInt("count", paramString.count);
-        paramBundle.putLong("seq", paramString.curSeq);
-        paramBundle.putInt("code", 0);
-        localEIPCResult.code = 0;
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CampusCircleIpcServer", 2, "getRedPoint, unreadMsg is null");
+        paramString1.put("code", k);
+        if (!bool) {
+          continue;
         }
-        paramBundle.putBoolean("hasRedTouch", false);
-        paramBundle.putInt("type", -1);
-        paramBundle.putInt("count", 0);
-        paramBundle.putLong("seq", -1L);
-        paramBundle.putInt("code", -1);
-        localEIPCResult.code = -1;
+        k = 1;
+        paramString1.put("hasRedTouch", k);
+        paramString1.put("type", j);
+        paramString1.put("count", i);
+        paramString1.put("seq", l);
       }
-    }
-  }
-  
-  private EIPCResult b(String paramString, Bundle paramBundle)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "updateConfessSwitch action: %s", new Object[] { paramString }));
-    }
-    if (!"action_confess_update_switch".equals(paramString))
-    {
-      paramString = null;
-      return paramString;
-    }
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
-    {
-      if (paramString == null)
+      catch (JSONException paramString2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, app is null");
-        }
-        return null;
-      }
-      int i = paramBundle.getInt("nSwitchValue");
-      paramString = (afsa)paramString.getManager(295);
-      paramBundle = paramString.a(1);
-      paramString.a(paramBundle, (short)i);
-      paramString.a(paramBundle);
-      paramBundle = new EIPCResult();
-      paramBundle.data = new Bundle();
-      paramBundle.data.putInt("ret", 0);
-      paramString = paramBundle;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CampusCircleIpcServer", 2, "updateConfessSwitch, nSwitchValue: " + i);
-      return paramBundle;
-    }
-  }
-  
-  private EIPCResult b(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ((!"action_report_red_point".equals(paramString)) || (paramBundle == null)) {
-      return null;
-    }
-    long l1 = paramBundle.getLong("seq", -1L);
-    if (l1 < 0L) {
-      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, webSeq < 0:" + l1);
-    }
-    paramString = null;
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    if (paramString == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, app is null");
-      }
-      return null;
-    }
-    atxb localatxb = (atxb)paramString.getManager(160);
-    RedTouchItem localRedTouchItem = localatxb.a(103421);
-    if (localRedTouchItem == null)
-    {
-      QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, unReadMsg is null, return");
-      paramString = new EIPCResult();
-      paramString.data = null;
-      paramString.code = -1;
-      super.callbackResult(paramInt, paramString);
-      return null;
-    }
-    long l2 = localRedTouchItem.curSeq;
-    if (l1 >= l2) {
-      localatxb.a(103421);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcServer", 2, "reportRedPoint, localSeq=" + l2 + ", webSeq=" + l1 + ", unreadMsg=" + localRedTouchItem);
-      }
-      akfi.a(paramString);
-      paramString = new EIPCResult();
-      paramString.data = paramBundle;
-      paramString.code = 0;
-      super.callbackResult(paramInt, paramString);
-      return null;
-      localRedTouchItem.count = ((int)Math.abs(l2 - l1));
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcServer", 2, "unreadmsg.coung set to " + localRedTouchItem.count);
-      }
-      localatxb.a(103421, true, l1, true, true);
-    }
-  }
-  
-  private EIPCResult c(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "reportMedalRedPoint action: %s", new Object[] { paramString }));
-    }
-    if (!"action_report_medal_red_point".equals(paramString)) {
-      return null;
-    }
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
-    {
-      if (paramString == null)
-      {
+        label277:
         if (!QLog.isColorLevel()) {
-          break;
+          continue;
         }
-        QLog.d("MedalWallMng", 2, "reportMedalRedPoint, app is null");
-        return null;
+        QLog.e("CampusCirclePlugin", 2, paramString2, new Object[] { "getRedPoint, exception" });
+        continue;
       }
-      ((MedalWallMng)paramString.getManager(250)).a(2, null);
-      paramString = new EIPCResult();
-      paramString.data = paramBundle;
-      paramString.code = 0;
-      super.callbackResult(paramInt, paramString);
-      return null;
+      paramString1 = paramString1.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint, json=" + paramString1);
+      }
+      callJs(paramJsBridgeListener, new String[] { paramString1 });
+      return true;
+      k = -1;
+      continue;
+      k = 0;
     }
   }
   
-  private EIPCResult d(String paramString, Bundle paramBundle, int paramInt)
+  public boolean c(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "reportConfessRedPoint action: %s", new Object[] { paramString }));
-    }
-    if (!"action_confess_clear_red_point".equals(paramString)) {
-      return null;
-    }
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    long l2 = -1L;
+    long l1 = l2;
+    if (paramVarArgs != null)
     {
-      if (paramString == null)
+      l1 = l2;
+      if (paramVarArgs.length <= 0) {}
+    }
+    try
+    {
+      l1 = new JSONObject(paramVarArgs[0]).optLong("seq", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint seq=" + l1);
+      }
+      if (l1 < 0L) {
+        return true;
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      for (;;)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramJsBridgeListener);
+          l1 = l2;
         }
-        QLog.d("MedalWallMng", 2, "reportRedPoint_confess, app is null");
-        return null;
       }
-      if ("frd_rec_confess".equals(paramBundle.getString("tag"))) {
-        amns.b(paramString, false);
-      }
-      paramString = new EIPCResult();
-      paramString.data = paramBundle;
-      paramString.code = 0;
-      super.callbackResult(paramInt, paramString);
-      return null;
+      amfw.a().a(l1);
     }
+    return true;
   }
   
-  private EIPCResult e(String paramString, Bundle paramBundle, int paramInt)
+  public boolean d(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircleIpcServer", 4, String.format(Locale.getDefault(), "getTroopMembers action: %s", new Object[] { paramString }));
-    }
-    paramBundle = amon.a(paramBundle.getString("troopUin"));
-    paramString = new EIPCResult();
-    paramString.data = new Bundle();
-    if ((paramBundle != null) && (paramBundle.length == 3))
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+    try
     {
-      paramString.code = 0;
-      boolean bool1 = ((Boolean)paramBundle[0]).booleanValue();
-      boolean bool2 = ((Boolean)paramBundle[1]).booleanValue();
-      paramBundle = (ArrayList)paramBundle[2];
-      if (paramBundle != null) {
-        paramString.data.putSerializable("troopUin", paramBundle);
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      long l = paramJsBridgeListener.getLong("schoolId");
+      paramJsBridgeListener = paramJsBridgeListener.getString("schoolName");
+      paramString1 = this.mRuntime.a();
+      if (paramString1 != null)
+      {
+        paramString2 = new Intent();
+        paramString2.putExtra("campus_school_id", l);
+        paramString2.putExtra("campus_school", paramJsBridgeListener);
+        paramString1.setResult(-1, paramString2);
+        paramString1.finish();
       }
-      paramString.data.putBoolean("isAdmin", bool1);
-      paramString.data.putBoolean("enableMemInvite", bool2);
-      return paramString;
+      if (QLog.isColorLevel()) {
+        QLog.i("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "onSearchSchoolResult schoolId: %d schoolName: %s activity: %s", new Object[] { Long.valueOf(l), paramJsBridgeListener, paramString1 }));
+      }
     }
-    paramString.code = -1;
-    return paramString;
+    catch (Exception paramJsBridgeListener)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("CampusCirclePlugin", 2, "onSearchSchoolResult exception", paramJsBridgeListener);
+    }
+    return false;
+    return false;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    boolean bool2 = super.handleEvent(paramString, paramLong, paramMap);
+    boolean bool3;
+    if (paramLong == 8589934598L)
+    {
+      if (this.mRuntime.a().getIntent().getIntExtra("uintype", -1) == 1030) {
+        bool3 = false;
+      }
+      try
+      {
+        paramString = Uri.parse(this.mRuntime.a().getIntent().getStringExtra("url"));
+        bool1 = bool3;
+        if (paramString != null)
+        {
+          bool1 = bool3;
+          if (paramString.isHierarchical()) {
+            bool1 = "1".equals(paramString.getQueryParameter("__iscomic"));
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          bool1 = bool3;
+        }
+      }
+      if (bool1) {
+        return bool2;
+      }
+      paramString = new Intent(this.mRuntime.a(), SplashActivity.class);
+      paramString.putExtra("fragment_id", 1);
+      paramString.putExtra("main_tab_id", 4);
+      paramString.setFlags(603979776);
+      paramString.putExtra("from", "campus_notice");
+      this.mRuntime.a().startActivity(paramString);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("CampusNoticeManager", 4, "EVENT_BEFORE_ACTIVITY_FINISH");
+      }
+    }
+    for (boolean bool1 = true;; bool1 = bool2) {
+      return bool1;
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CampusCircleIpcServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+      QLog.d("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    if (paramBundle == null) {
-      QLog.d("CampusCircleIpcServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    do
+    if ("campus_circle".equals(paramString2))
     {
-      return null;
-      if ("action_get_red_point".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
+      if ("getRedPoint".equals(paramString3)) {
+        return b(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
       }
-      if ("action_report_red_point".equals(paramString)) {
-        return b(paramString, paramBundle, paramInt);
+      if ("reportRedPoint".equals(paramString3)) {
+        return c(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
       }
-      if ("action_report_medal_red_point".equals(paramString)) {
-        return c(paramString, paramBundle, paramInt);
+      if ("setTitleIcon".equals(paramString3)) {
+        return a(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
       }
-      if ("action_allpeoplevote_getredpoint".equals(paramString)) {
-        return bciu.b(paramString, paramBundle, paramInt);
+      if ("onSearchSchoolResult".equals(paramString3)) {
+        return d(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
       }
-      if ("action_allpeoplevote_clearredpoint".equals(paramString)) {
-        return bciu.a(paramString, paramBundle, paramInt);
-      }
-      if ("action_confess_clear_red_point".equals(paramString)) {
-        return d(paramString, paramBundle, paramInt);
-      }
-      if ("action_confess_get_troop_members".equals(paramString)) {
-        return e(paramString, paramBundle, paramInt);
-      }
-      if ("action_confess_is_in_troop_aio".equals(paramString)) {
-        return a(paramString, paramBundle);
-      }
-      if ("action_confess_update_switch".equals(paramString)) {
-        return b(paramString, paramBundle);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CampusCircleIpcServer", 1, "onCall, invalid action:" + paramString);
-    return null;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

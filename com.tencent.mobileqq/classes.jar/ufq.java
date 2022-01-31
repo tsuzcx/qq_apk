@@ -1,6 +1,8 @@
+import android.graphics.SurfaceTexture;
+
 public abstract interface ufq
 {
-  public abstract void a(ufk paramufk);
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
 }
 
 

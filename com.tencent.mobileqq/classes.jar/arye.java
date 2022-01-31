@@ -1,45 +1,15 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arye
-  implements TencentMap.OnMapLoadedCallback
+class arye
+  implements DialogInterface.OnDismissListener
 {
-  public arye(MapWidget paramMapWidget) {}
+  arye(aryd paramaryd) {}
   
-  public void onMapLoaded()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    arui localarui = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localarui.a() });
-    }
-    if ((localarui.a() != null) && (!aryd.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localarui.a())))
-    {
-      this.a.a(false);
-      this.a.setTag(-2147483648, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localarui.a() });
-      }
-    }
-    for (;;)
-    {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new aryf(this));
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localarui.a() });
-      }
-    }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    this.a.a.finish();
   }
 }
 

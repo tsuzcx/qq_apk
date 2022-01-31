@@ -1,53 +1,63 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import java.util.ArrayList;
 
 public class bfrp
-  implements bfob
 {
-  public bfrp(GestureSelectGridView paramGestureSelectGridView) {}
+  private static ArrayList<bfrp> a;
+  public int a;
+  public bfrq a;
+  public ExpandableListConnector.GroupMetadata a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  }
+  
+  private static bfrp a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_Bfrq.a(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
+      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        if (this.a.jdField_a_of_type_Bfob != null) {
-          this.a.jdField_a_of_type_Bfob.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
+        localbfrp = (bfrp)jdField_a_of_type_JavaUtilArrayList.remove(0);
+        localbfrp.b();
+        return localbfrp;
       }
-    }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_Bfrq.a(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
+      bfrp localbfrp = new bfrp();
+      return localbfrp;
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static bfrp a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
-    if (this.a.jdField_a_of_type_Bfob != null) {
-      this.a.jdField_a_of_type_Bfob.onScrollStateChanged(paramAbsListView, paramInt);
+    bfrp localbfrp = a();
+    localbfrp.jdField_a_of_type_Bfrq = bfrq.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localbfrp.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
+    localbfrp.jdField_a_of_type_Int = paramInt5;
+    return localbfrp;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Bfrq = null;
+    this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+        jdField_a_of_type_JavaUtilArrayList.add(this);
+      }
+      return;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata != null;
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface ufs
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+
+class ufs
+  implements MediaPlayer.OnPreparedListener
 {
-  public abstract void a(ufk paramufk, int paramInt1, int paramInt2);
+  ufs(ufr paramufr, ufm paramufm) {}
+  
+  public void onPrepared(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_Ufm.a_(this.jdField_a_of_type_Ufr);
+  }
 }
 
 

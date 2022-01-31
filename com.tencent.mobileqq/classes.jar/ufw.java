@@ -1,14 +1,14 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
 
 class ufw
-  implements MediaPlayer.OnCompletionListener
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  ufw(ufu paramufu, ufm paramufm) {}
+  ufw(ufr paramufr, ufp paramufp) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Ufm.a(this.jdField_a_of_type_Ufu);
+    this.jdField_a_of_type_Ufp.a(this.jdField_a_of_type_Ufr, paramInt1, paramInt2);
   }
 }
 

@@ -1,203 +1,587 @@
 import android.app.Activity;
-import android.os.Handler;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameLifeCycle.1;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import java.util.Set;
+import java.util.TreeSet;
+import mqq.manager.WtloginManager;
+import org.json.JSONObject;
 
 public class ajcm
+  implements ajdl
 {
-  public static String a;
-  public int a;
-  private ajbn jdField_a_of_type_Ajbn;
-  private ajcb jdField_a_of_type_Ajcb;
-  private CmGameStartChecker.StartCheckParam jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
+  ajcn jdField_a_of_type_Ajcn = new ajcn(this);
+  private ajdw jdField_a_of_type_Ajdw;
+  public ajrd a;
+  private bfob jdField_a_of_type_Bfob;
+  public CmGameStartChecker.StartCheckParam a;
+  public CmGameInitParams a;
+  public WeakReference<Context> a;
+  public Set<String> a;
+  public boolean a;
+  private WeakReference<BaseChatPie> b;
   
-  static
+  public ajcm(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameLifeCycle";
-  }
-  
-  public ajcm(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  private Activity a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null)
+    {
+      String str = localBaseChatPie.a().jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaUtilSet.add(str);
+      this.b = new WeakReference(localBaseChatPie);
     }
-    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Ajrd = new ajrd();
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
+    paramActivity = new ajdw(paramActivity, paramStartCheckParam);
+    paramActivity.a(this);
+    this.jdField_a_of_type_Ajdw = paramActivity;
+    this.jdField_a_of_type_Bfob = new bfob(Looper.getMainLooper(), this.jdField_a_of_type_Ajdw);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private QQAppInterface a()
+  public static ajcm a()
   {
-    AppInterface localAppInterface = ajae.a();
-    if ((localAppInterface instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppInterface;
+    return ajac.a();
+  }
+  
+  public static ajcm a(String paramString)
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = a();
+    }
+    ajcm localajcm;
+    do
+    {
+      return localObject;
+      localajcm = a();
+      if ((localajcm == null) || (localajcm.jdField_a_of_type_JavaUtilSet == null)) {
+        break;
+      }
+      localObject = localajcm;
+    } while (localajcm.jdField_a_of_type_JavaUtilSet.contains(paramString));
+    return null;
+  }
+  
+  private BaseChatPie a()
+  {
+    Object localObject = ajac.a();
+    if (localObject != null)
+    {
+      localObject = (airx)((AppInterface)localObject).getManager(153);
+      if (localObject != null)
+      {
+        localObject = ((airx)localObject).a();
+        if (localObject != null) {
+          return (BaseChatPie)((WeakReference)localObject).get();
+        }
+      }
     }
     return null;
   }
   
-  public int a()
+  public static void a(String paramString)
   {
-    return this.b;
+    ajcm localajcm = a();
+    if ((localajcm != null) && (localajcm.jdField_a_of_type_JavaUtilSet != null)) {
+      localajcm.jdField_a_of_type_JavaUtilSet.add(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameMainManager", 2, "onShare2Aio currentApolloGame:" + localajcm + ",aioUin:" + paramString);
+    }
   }
   
-  public ajco a()
+  public static void i()
   {
-    if (this.jdField_a_of_type_Ajbn == null) {
+    ajcm localajcm = a();
+    if ((localajcm != null) && (localajcm.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
+      VipUtils.a(null, "cmshow", "Apollo", "clk_game_banner", 3, 0, new String[] { localajcm.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + "" });
+    }
+  }
+  
+  public QQAppInterface a()
+  {
+    AppInterface localAppInterface = ajac.a();
+    if (!(localAppInterface instanceof QQAppInterface)) {
       return null;
     }
-    return this.jdField_a_of_type_Ajbn.a();
+    return (QQAppInterface)localAppInterface;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ajbn != null) {
-      this.jdField_a_of_type_Ajbn.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[handleActLifeCycle], gameId:" + paramInt1 + ",status:" + paramInt2);
-    Object localObject1 = a();
-    if (localObject1 == null) {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "app is null.");
-    }
+    if (this.b == null) {}
+    BaseChatPie localBaseChatPie;
     do
     {
-      do
+      return;
+      localBaseChatPie = (BaseChatPie)this.b.get();
+    } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.a() != null));
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.a(paramActivity);
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        Object localObject2;
-        do
+        Object localObject = new JSONObject(paramString);
+        paramString = new JSONObject();
+        localObject = ((JSONObject)localObject).getString("puin");
+        AppInterface localAppInterface = ajac.a();
+        if (localAppInterface == null) {
+          break;
+        }
+        if (((akdh)localAppInterface.getManager(56)).a(Long.valueOf(Long.parseLong((String)localObject))))
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if ((2 == paramInt2) && (this.jdField_a_of_type_Ajbn != null))
-                {
-                  localObject2 = this.jdField_a_of_type_Ajbn.a();
-                  if (localObject2 != null) {
-                    ((ajco)localObject2).d();
-                  }
-                }
-                if (4 != paramInt2) {
-                  break;
-                }
-              } while (this.jdField_a_of_type_Ajbn == null);
-              localObject1 = this.jdField_a_of_type_Ajbn.a();
-            } while (localObject1 == null);
-            ((ajco)localObject1).e();
-            return;
-            if (1 != paramInt2) {
-              break;
-            }
-            localObject2 = a();
-            if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (localObject2 == null))
-            {
-              QLog.w(jdField_a_of_type_JavaLangString, 1, "null error.");
-              return;
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId != paramInt1)
-            {
-              QLog.w(jdField_a_of_type_JavaLangString, 1, "not the same game.");
-              return;
-            }
-            if (this.jdField_a_of_type_Ajbn != null) {
-              CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Ajbn);
-            }
-            if (this.jdField_a_of_type_Ajcb != null) {
-              CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Ajcb);
-            }
-            this.jdField_a_of_type_Ajcb = new ajcb((Activity)localObject2, (QQAppInterface)localObject1, this.b);
-            CmGameCmdChannel.a((QQAppInterface)localObject1).a(this.jdField_a_of_type_Ajcb);
-            if ((!ajae.a(this.b)) && (!ajae.b(this.b)))
-            {
-              ajco localajco = new ajco((Activity)localObject2, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-              this.jdField_a_of_type_Ajbn = new ajbn((Activity)localObject2, localajco, this.b);
-              CmGameCmdChannel.a((QQAppInterface)localObject1).a(this.jdField_a_of_type_Ajbn);
-              localajco.a((Activity)localObject2);
-              localajco.f();
-              localajco.g();
-              return;
-            }
-          } while (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null);
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "land or game box game data not exit");
-          ApolloGameUtil.a((QQAppInterface)localObject1, 0L);
+          i = 1;
+          paramString.put("is_follow", i);
+          CmGameCmdChannel.a((QQAppInterface)localAppInterface).a(0, "cs.check_pubAccount_state.local", paramString.toString(), paramInt);
           return;
-        } while (5 != paramInt2);
-        if (this.jdField_a_of_type_Ajbn != null)
-        {
-          localObject2 = this.jdField_a_of_type_Ajbn.a();
-          if (localObject2 != null) {
-            ((ajco)localObject2).j();
-          }
-          this.jdField_a_of_type_Ajbn.a();
-          CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Ajbn);
-          this.jdField_a_of_type_Ajbn = null;
         }
-        if (this.jdField_a_of_type_Ajcb != null)
-        {
-          this.jdField_a_of_type_Ajcb.a();
-          CmGameCmdChannel.a((QQAppInterface)localObject1).b(this.jdField_a_of_type_Ajcb);
-          this.jdField_a_of_type_Ajcb = null;
-        }
-      } while ((ajae.a(this.b)) || (ajae.b(this.b)) || (a() == null));
-      localObject1 = (airz)a().getManager(153);
-    } while ((localObject1 == null) || (!((airz)localObject1).j()) || (ajae.a(null)) || (((airz)localObject1).k) || (((airz)localObject1).h()) || (((airz)localObject1).i()) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
-    ((airz)localObject1).h = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src != 319) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src != 318)) {
-      ajae.a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("cmgame_process.CmGameMainManager", 1, "CHECK_FOLLOW_STATE error:", paramString);
+        return;
+      }
+      int i = 0;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "plus status first play goBackToPlus");
   }
   
-  public void a(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameMainManager", 2, "showCurrentGameView");
+    }
+    if (this.jdField_a_of_type_Bfob != null)
+    {
+      this.jdField_a_of_type_Bfob.sendEmptyMessage(18);
+      return true;
+    }
+    return false;
   }
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public boolean a(Activity paramActivity)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game = paramStartCheckParam.game;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (paramActivity != null) && (paramActivity.getClass() != ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass()))
+    {
+      Intent localIntent = new Intent(paramActivity, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass());
+      localIntent.addFlags(131072);
+      paramActivity.startActivity(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[resumeGameContext] from ", paramActivity, this.jdField_a_of_type_JavaLangRefWeakReference.get() });
+      }
+      return true;
     }
+    return false;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ajbn != null)
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bfob.obtainMessage(21).sendToTarget();
+  }
+  
+  public void b(String paramString)
+  {
+    Object localObject1;
+    Object localObject2;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    for (;;)
     {
-      ajco localajco = this.jdField_a_of_type_Ajbn.a();
-      if ((localajco != null) && (localajco.a)) {
-        ThreadManagerV2.getUIHandlerV2().post(new CmGameLifeCycle.1(this, localajco));
+      try
+      {
+        localObject1 = ajac.a();
+        if (!(localObject1 instanceof QQAppInterface)) {
+          return;
+        }
+        localObject2 = new SessionInfo();
+        localObject3 = a();
+        if (localObject3 != null)
+        {
+          localObject2 = ((BaseChatPie)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+          localQQAppInterface = (QQAppInterface)localObject1;
+          if (QLog.isColorLevel()) {
+            QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[onJoinRoom],", paramString });
+          }
+          localJSONObject = new JSONObject(paramString);
+          i = localJSONObject.optInt("retcode");
+          if (i == 0) {
+            break;
+          }
+          QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], retCode is 0, fail to joinroom, return. retCode:" + i);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], json error ", paramString);
+        return;
+      }
+      ((SessionInfo)localObject2).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.aioType;
+      ((SessionInfo)localObject2).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin;
+      QLog.w("cmgame_process.CmGameMainManager", 1, "basechatpie is null.");
+    }
+    int i = localJSONObject.optInt("gameId");
+    Object localObject3 = localJSONObject.optString("uin");
+    if (TextUtils.isEmpty((CharSequence)localObject3))
+    {
+      QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], uin is null");
+      return;
+    }
+    this.jdField_a_of_type_Ajrd.b();
+    if (!((String)localObject3).equals(localQQAppInterface.getCurrentAccountUin()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameMainManager", 2, "[onJoinRoom], uin:" + (String)localObject3 + "jionroom, show JionRoom Tips");
+      }
+      localObject1 = null;
+      paramString = (String)localObject1;
+      if (localQQAppInterface != null)
+      {
+        paramString = (String)localObject1;
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) {
+          if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionType != 1) {
+            break label803;
+          }
+        }
+      }
+    }
+    label794:
+    label803:
+    for (paramString = bbcz.e(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin, (String)localObject3);; paramString = null)
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        localObject1 = ((ajxl)localQQAppInterface.getManager(51)).b((String)localObject3);
+        if (localObject1 == null) {}
+      }
+      for (localObject1 = ((Friends)localObject1).getFriendNick();; localObject1 = paramString)
+      {
+        paramString = (String)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramString = bbcz.c(localQQAppInterface, (String)localObject3, true);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameMainManager", 2, "handleMessage MSG_CODE_JION_ROOM, nickName:" + paramString);
+        }
+        localObject1 = paramString;
+        if (TextUtils.isEmpty(paramString)) {
+          localObject1 = localObject3;
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          paramString = this.jdField_a_of_type_Bfob.obtainMessage(26);
+          paramString.obj = localObject1;
+          paramString.sendToTarget();
+        }
+        long l = localJSONObject.optLong("roomId");
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (0L != l)) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = l;
+        }
+        int j = localJSONObject.optInt("gameMode");
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "join_game", ApolloUtil.a((SessionInfo)localObject2, localQQAppInterface), 0, new String[] { "" + i, "", "", "" + l });
+        this.jdField_a_of_type_Ajrd.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Ajrd.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Ajrd.jdField_c_of_type_Int = j;
+        localObject2 = (ajmu)localQQAppInterface.getManager(155);
+        localObject1 = ((ajmu)localObject2).a(i);
+        paramString = ajya.a(2131702107);
+        if ((localObject1 != null) && (!TextUtils.isEmpty(((ApolloGameData)localObject1).name)))
+        {
+          localObject2 = ((ajmu)localObject2).a(((ApolloGameData)localObject1).actionId);
+          if (localObject2 == null) {
+            break label794;
+          }
+          paramString = ((ApolloActionData)localObject2).actionName;
+        }
+        for (;;)
+        {
+          i = ((ApolloGameData)localObject1).actionId;
+          this.jdField_a_of_type_Ajrd.jdField_b_of_type_JavaLangString = ((ApolloGameData)localObject1).name;
+          for (;;)
+          {
+            this.jdField_a_of_type_Ajrd.jdField_a_of_type_JavaLangString = paramString;
+            this.jdField_a_of_type_Ajrd.jdField_b_of_type_Int = i;
+            paramString = localJSONObject.optString("extendInfo");
+            localObject1 = new JSONObject();
+            if (TextUtils.isEmpty(paramString)) {
+              return;
+            }
+            ((JSONObject)localObject1).put("extendInfo", paramString);
+            if (paramString.length() < 100) {
+              break;
+            }
+            QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom],extendInfo is too long, extendInfo:" + paramString);
+            return;
+            this.jdField_a_of_type_Ajrd.jdField_b_of_type_JavaLangString = ajya.a(2131702108);
+            i = 0;
+          }
+          this.jdField_a_of_type_Ajrd.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+          return;
+        }
       }
     }
   }
   
+  public void b(String paramString, int paramInt)
+  {
+    Object localObject2 = new JSONObject();
+    Object localObject1 = a();
+    if (localObject1 == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (TextUtils.isEmpty(paramString));
+        try
+        {
+          int i = new JSONObject(paramString).getInt("gameId");
+          paramString = ((ajmu)((QQAppInterface)localObject1).getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+          if ((i != this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId) || ((paramString != null) && (paramString.needOpenKey != 1)))
+          {
+            CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("cmgame_process.CmGameMainManager", 1, "ON_GET_OPEN_KEY error:", paramString);
+          return;
+        }
+        if ((paramString == null) || (System.currentTimeMillis() - paramString.lastRequestOpenKey <= 3600000L)) {
+          break;
+        }
+        localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+        localObject1 = (WtloginManager)((QQAppInterface)localObject1).getManager(1);
+        this.jdField_a_of_type_Ajcn.jdField_a_of_type_Int = paramString.gameId;
+        this.jdField_a_of_type_Ajcn.jdField_b_of_type_Int = paramInt;
+        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Ajcn);
+        paramString.lastRequestOpenKey = System.currentTimeMillis();
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.CmGameMainManager", 2, "do get open key.");
+      return;
+    } while (paramString == null);
+    ((JSONObject)localObject2).put("appId", paramString.appId);
+    ((JSONObject)localObject2).put("gameId", paramString.gameId);
+    ((JSONObject)localObject2).put("openKey", paramString.openKey);
+    CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
+  }
+  
   public void c()
   {
-    if (this.jdField_a_of_type_Ajbn != null)
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bfob.obtainMessage(22).sendToTarget();
+  }
+  
+  public void c(String paramString)
+  {
+    try
     {
-      ajco localajco = this.jdField_a_of_type_Ajbn.a();
-      if ((localajco != null) && (localajco.a)) {
-        localajco.h();
+      paramString = new JSONObject(paramString).optJSONObject("resp");
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramString = paramString.optJSONObject("data");
+        if (paramString != null)
+        {
+          paramString = paramString.optJSONObject("userInfo");
+          if (paramString != null)
+          {
+            int i = paramString.optInt("remainPlays");
+            if (this.b == null) {
+              return;
+            }
+            paramString = (BaseChatPie)this.b.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("cmgame_process.CmGameMainManager", 2, "onStartGame, game coin count=" + i);
+            }
+            if (paramString != null) {
+              ApolloGameUtil.a(paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
+            }
+            if ((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel != null))
+            {
+              paramString.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.p();
+              return;
+            }
+          }
+        }
       }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameMainManager", 2, "onStartGame error " + paramString.toString());
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.e();
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    if (this.b == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        paramString = (BaseChatPie)this.b.get();
+      } while (((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.a() == null)) || (paramString == null) || (paramString.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
+      localQQAppInterface = paramString.a();
+    } while (localQQAppInterface == null);
+    ApolloGameUtil.a(localQQAppInterface, paramString.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.f();
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bfob.obtainMessage(28);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.d();
+    }
+  }
+  
+  public void f(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId == 0L)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = ApolloUtil.a(paramString, "roomId");
+    }
+    Message localMessage = this.jdField_a_of_type_Bfob.obtainMessage(23);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.c();
+    }
+  }
+  
+  public void g(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bfob.removeMessages(19);
+    this.jdField_a_of_type_Bfob.removeMessages(20);
+    Message localMessage = this.jdField_a_of_type_Bfob.obtainMessage(19);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+    b(paramString);
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Ajdw != null) {
+      this.jdField_a_of_type_Ajdw.b();
+    }
+  }
+  
+  public void h(String paramString)
+  {
+    this.jdField_a_of_type_Ajdw.a(true);
+    c(paramString);
+    paramString = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
+    if ((paramString != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null))
+    {
+      AppInterface localAppInterface = ajac.a();
+      if (localAppInterface != null) {
+        paramString.edit().putBoolean("is_ever_play_cmgame" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + localAppInterface.getCurrentAccountUin(), true).commit();
+      }
+    }
+  }
+  
+  public void i(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfob == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bfob.obtainMessage(17);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = null;
+    this.jdField_a_of_type_Ajrd = null;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
+    if (this.jdField_a_of_type_JavaUtilSet != null) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+    this.jdField_a_of_type_JavaUtilSet = null;
+    if (this.jdField_a_of_type_Ajdw != null)
+    {
+      this.jdField_a_of_type_Ajdw.b();
+      this.jdField_a_of_type_Ajdw.a();
     }
   }
 }

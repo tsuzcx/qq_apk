@@ -1,6 +1,36 @@
-public abstract interface twv
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+class twv
+  extends QQUIEventReceiver<twu, tjj>
 {
-  public abstract void a(tww paramtww);
+  public twv(@NonNull twu paramtwu)
+  {
+    super(paramtwu);
+  }
+  
+  public void a(@NonNull twu paramtwu, @NonNull tjj paramtjj)
+  {
+    if ((!TextUtils.equals(twu.a(paramtwu).mContext, paramtjj.jdField_a_of_type_JavaLangString)) || (twu.a(paramtwu) == null)) {
+      return;
+    }
+    if (paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      ved.a(this.TAG, "pull feedId list fail %s", paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      twu.a(paramtwu).a(new ErrorMessage(paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+      return;
+    }
+    twu.a(paramtwu).mIsEnd = paramtjj.jdField_a_of_type_Boolean;
+    twu.a(paramtwu).b(new ErrorMessage(), twu.b(paramtjj.jdField_a_of_type_JavaUtilList), paramtjj.jdField_a_of_type_Boolean);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tjj.class;
+  }
 }
 
 

@@ -1,34 +1,49 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class auvp
+  extends VasWebviewJsPlugin
 {
-  public String a;
-  public String b;
-  
-  public String a()
+  public auvp()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    this.mPluginNameSpace = "usersummary";
   }
   
-  public void a(String paramString)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("usersummary"))) {
+      return false;
     }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
+    if ((this.mRuntime.a() instanceof FriendProfileCardActivity))
     {
-      this.b = paramString[0];
-      this.a = paramString[1];
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle FriendProfileCardActivity");
+      }
+      paramJsBridgeListener = (FriendProfileCardActivity)this.mRuntime.a();
+      paramJsBridgeListener.a(paramJsBridgeListener.a.a, false);
     }
-    this.b = "";
-    this.a = "";
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin handle none");
+      }
+    }
   }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileThirdWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
+    }
+    if (paramInt != -1) {}
+  }
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

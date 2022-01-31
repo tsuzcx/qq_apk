@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public final class rjy
-  implements Parcelable.Creator<AdData>
+  implements Parcelable.Creator<BaseData>
 {
-  public AdData a(Parcel paramParcel)
+  public BaseData a(Parcel paramParcel)
   {
-    return new AdData(paramParcel);
+    return new BaseData(paramParcel);
   }
   
-  public AdData[] a(int paramInt)
+  public BaseData[] a(int paramInt)
   {
-    return new AdData[paramInt];
+    return new BaseData[paramInt];
   }
 }
 

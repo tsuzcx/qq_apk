@@ -1,17 +1,26 @@
 import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aasa
-  implements aask
+  implements aptw
 {
-  public aasa(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public aasa(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aouu paramaouu) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean) {
-      bict.a(this.a);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aouu.b(localFileManagerEntity);
+      }
     }
-    return false;
   }
+  
+  public void b() {}
 }
 
 

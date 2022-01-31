@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.gif;
 
-import biqv;
-import biry;
-import bisa;
-import bjoa;
+import birm;
+import bisp;
+import bisr;
+import bjor;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
 public class AEVideoStoryGIFTplViewModel$3$2
   implements Runnable
 {
-  public AEVideoStoryGIFTplViewModel$3$2(bisa parambisa, MetaMaterial paramMetaMaterial) {}
+  public AEVideoStoryGIFTplViewModel$3$2(bisr parambisr, MetaMaterial paramMetaMaterial) {}
   
   public void run()
   {
-    biry.a(this.jdField_a_of_type_Bisa.a).b(new biqv(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
+    bisp.a(this.jdField_a_of_type_Bisr.a).b(new birm(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, 0, 0));
   }
 }
 

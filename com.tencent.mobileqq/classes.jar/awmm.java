@@ -1,12 +1,15 @@
 public class awmm
 {
-  public int a;
   public String a;
-  public long[] a;
-  public int b;
   public String b;
-  public int c;
-  public String c;
+  
+  public awmm() {}
+  
+  public awmm(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

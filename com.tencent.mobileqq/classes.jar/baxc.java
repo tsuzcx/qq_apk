@@ -1,159 +1,159 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import com.tencent.mobileqq.util.FPSCalculator.2;
-import com.tencent.mobileqq.util.FPSCalculator.3;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
-@TargetApi(16)
-public class baxc
+public abstract class baxc
+  extends Drawable
 {
-  private static volatile baxc jdField_a_of_type_Baxc;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
-  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FPSCalculator.2(this);
-  private Vector<baxe> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new FPSCalculator.3(this);
+  protected int a;
+  protected ColorFilter a;
+  protected Drawable a;
+  protected boolean a;
+  protected int b;
+  protected Drawable b;
+  protected Drawable c;
   
-  private static long a(long paramLong)
+  protected baxc(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    return TimeUnit.NANOSECONDS.toMillis(paramLong);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
+    this.c = paramDrawable2;
   }
   
-  public static baxc a()
+  public Bitmap a()
   {
-    if (jdField_a_of_type_Baxc == null) {}
-    try
-    {
-      if (jdField_a_of_type_Baxc == null) {
-        jdField_a_of_type_Baxc = new baxc();
-      }
-      return jdField_a_of_type_Baxc;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))) {
+      return ((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
     }
-    finally {}
+    return null;
   }
   
-  private void a()
+  public Drawable a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    switch (this.jdField_a_of_type_Int)
     {
-      QLog.d("FPSCalculator", 2, "FPSCalculator is enable");
-      return;
+    default: 
+      return null;
+    case 0: 
+      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    case 1: 
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     }
+    return this.c;
+  }
+  
+  public void a()
+  {
     this.jdField_a_of_type_Boolean = true;
-    QLog.d("FPSCalculator", 2, "FPSCalculator set enable = true");
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (Build.VERSION.SDK_INT > 16)
-    {
-      if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
-        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new baxd(this);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FPSCalculator", 2, "build version is not support ");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.b, 500L);
   }
   
-  private void a(long paramLong)
+  public void draw(Canvas paramCanvas)
   {
-    paramLong = a(paramLong);
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-      return;
-      long l = paramLong - this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Int += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.jdField_a_of_type_Int * 1000 / l;
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      int i = 0;
-      try
-      {
-        while (i < this.jdField_a_of_type_JavaUtilVector.size())
-        {
-          ((baxe)this.jdField_a_of_type_JavaUtilVector.get(i)).onInfo(this.jdField_a_of_type_Long, d);
-          i += 1;
-        }
-      }
-      finally {}
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.draw(paramCanvas);
     }
   }
   
-  private void b()
+  public int getIntrinsicHeight()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label82;
-      }
-      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
-      {
-        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-        if (QLog.isColorLevel()) {
-          QLog.d("FPSCalculator", 2, "removeFrameCallback ");
-        }
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicHeight();
     }
-    for (;;)
+    return i;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicWidth();
+    }
+    return i;
+  }
+  
+  public int getMinimumHeight()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumHeight();
+    }
+    return i;
+  }
+  
+  public int getMinimumWidth()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumWidth();
+    }
+    return i;
+  }
+  
+  public int getOpacity()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getOpacity();
+    }
+    return i;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      QLog.d("FPSCalculator", 2, "FPSCalculator set enable = false");
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bbay.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+      if (this.jdField_b_of_type_Int != -1) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
+      }
+      invalidateSelf();
+    }
+    Drawable localDrawable;
+    do
+    {
       return;
-      label82:
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
+      localDrawable = a();
+    } while (localDrawable == null);
+    localDrawable.setBounds(paramRect);
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setAlpha(paramInt);
     }
   }
   
-  public void a(baxe parambaxe)
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambaxe)) {
-        this.jdField_a_of_type_JavaUtilVector.add(parambaxe);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0) {
-        a();
-      }
-      return;
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void b(baxe parambaxe)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilVector.contains(parambaxe)) {
-        this.jdField_a_of_type_JavaUtilVector.remove(parambaxe);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() <= 0) {
-        b();
-      }
-      return;
+    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setColorFilter(paramColorFilter);
     }
   }
 }

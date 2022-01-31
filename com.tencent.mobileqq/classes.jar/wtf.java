@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import java.lang.ref.WeakReference;
 
-final class wtf
-  implements DialogInterface.OnDismissListener
+class wtf
+  extends akdn
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
+  WeakReference<wth> a;
+  
+  public wtf(wth paramwth)
   {
-    wte.a(false);
+    this.a = new WeakReference(paramwth);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    wth localwth = (wth)this.a.get();
+    if (localwth != null) {
+      localwth.a(paramBoolean, paramString, false);
+    }
   }
 }
 

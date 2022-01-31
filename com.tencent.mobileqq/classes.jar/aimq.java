@@ -1,22 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-class aimq
-  implements View.OnClickListener
+public abstract interface aimq
 {
-  aimq(aimo paramaimo) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof aimt)) {}
-    do
-    {
-      return;
-      paramView = (aimt)paramView;
-    } while ((paramView.a == null) || (this.a.a == null));
-    this.a.a.a(paramView.a);
-  }
+  public abstract void a(DiscussionInfo paramDiscussionInfo);
 }
 
 

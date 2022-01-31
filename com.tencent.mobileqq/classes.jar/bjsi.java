@@ -1,11 +1,22 @@
-import dov.com.qq.im.capture.paster.InteractPasterParcelData;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.story.mode.StoryEffectTextMode.6.1;
+import mqq.os.MqqHandler;
 
-public abstract interface bjsi
-  extends bjwv
+public class bjsi
+  implements myy
 {
-  public abstract void a(InteractPasterParcelData paramInteractPasterParcelData);
+  bjsi(bjry parambjry) {}
   
-  public abstract boolean b();
+  public void loaded(String paramString, int paramInt)
+  {
+    if ((paramInt == 0) && (paramString == null) && (bjry.a(this.a, bjry.a(this.a).d))) {
+      ThreadManager.getUIHandler().post(new StoryEffectTextMode.6.1(this));
+    }
+    QLog.i("StoryEffectTextModeQ.qqstory.text_filter", 2, "HtmlOffline.checkUpByBusinessId QG_SO_BID, loaded:code =" + paramInt);
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

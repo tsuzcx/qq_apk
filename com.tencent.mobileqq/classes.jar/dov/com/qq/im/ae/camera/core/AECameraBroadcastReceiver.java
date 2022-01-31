@@ -5,16 +5,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import biim;
+import bijd;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private biim a;
+  private bijd a;
   
-  public AECameraBroadcastReceiver(biim parambiim)
+  public AECameraBroadcastReceiver(bijd parambijd)
   {
-    this.a = parambiim;
+    this.a = parambijd;
   }
   
   private IntentFilter a()
@@ -43,7 +43,7 @@ public class AECameraBroadcastReceiver
     while (!"new_qq_android_native_ptu_res_".equals(paramIntent.getAction())) {
       return;
     }
-    axef.a = true;
+    axeh.a = true;
     this.a.r();
   }
 }

@@ -1,31 +1,44 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class amra
-  extends amqz
 {
-  private String a;
+  private static volatile amra a;
   
-  public amra(String paramString)
+  public static amra a()
   {
-    this.a = paramString;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new amra();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public Object a(Object paramObject)
+  public String a(String paramString)
   {
-    if (paramObject == null) {}
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
       return null;
-      paramObject = (LinkedHashMap)paramObject;
-      if (!(paramObject instanceof LinkedHashMap))
-      {
-        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
-        return null;
-      }
-    } while (TextUtils.isEmpty(this.a));
-    return paramObject.get(this.a);
+      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(1);
+  }
+  
+  public String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
+    } while (!paramString.find());
+    return paramString.group(2);
   }
 }
 

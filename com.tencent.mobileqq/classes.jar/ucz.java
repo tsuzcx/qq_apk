@@ -1,23 +1,46 @@
 import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
-import java.util.Comparator;
 
-public class ucz
-  implements Comparator<View>
+public abstract interface ucz
 {
-  public int a(View paramView1, View paramView2)
-  {
-    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
-  }
+  public abstract int a();
+  
+  public abstract long a();
+  
+  public abstract View a();
+  
+  public abstract udm a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(uda paramuda);
+  
+  public abstract void a(udb paramudb);
+  
+  public abstract void a(udc paramudc);
+  
+  public abstract void a(udd paramudd);
+  
+  public abstract void a(ude paramude);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

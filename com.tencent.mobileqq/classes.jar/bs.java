@@ -29,7 +29,7 @@ public class bs
     } while ((((DLFileInfo)localObject2).a != 0) && (((DLFileInfo)localObject2).a != 3));
     for (int i = 1;; i = 0)
     {
-      ajuo localajuo = (ajuo)this.a.app.a(8);
+      ajum localajum = (ajum)this.a.app.a(8);
       if (i != 0)
       {
         if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
@@ -40,7 +40,7 @@ public class bs
         DLFilesViewerActivity.a(this.a).setPaused(true);
         if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
         {
-          localajuo.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
+          localajum.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
           DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
         }
       }
@@ -54,22 +54,22 @@ public class bs
           localObject1 = (DataLineMsgRecord)paramView.next();
           localObject2 = fd.a((DataLineMsgRecord)localObject1);
           if ((((DLFileInfo)localObject2).a == 0) || (((DLFileInfo)localObject2).a == 3)) {
-            localajuo.a(((DataLineMsgRecord)localObject1).groupId, ((DataLineMsgRecord)localObject1).sessionid, false);
+            localajum.a(((DataLineMsgRecord)localObject1).groupId, ((DataLineMsgRecord)localObject1).sessionid, false);
           }
         }
         break;
-        if (bbev.d(this.a))
+        if (bbfj.d(this.a))
         {
-          if ((apue.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+          if ((apug.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
           {
             paramView = DLFilesViewerActivity.a(this.a).getFirstItem();
-            apue.a(paramView.isSendFromLocal(), this.a, new bt(this, paramView, localajuo));
+            apug.a(paramView.isSendFromLocal(), this.a, new bt(this, paramView, localajum));
           }
           else
           {
             paramView = DLFilesViewerActivity.a(this.a).getFirstItem();
             if ((paramView != null) && (!paramView.isSendFromLocal()) && (paramView.strMoloKey != null)) {
-              localajuo.b(112);
+              localajum.b(112);
             }
             DLFilesViewerActivity.a(this.a).setPaused(false);
             Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
@@ -113,16 +113,16 @@ public class bs
               }
             }
             if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-              localajuo.a((ArrayList)localObject1, true);
+              localajum.a((ArrayList)localObject1, true);
             }
             if ((paramView != null) && (paramView.size() > 0)) {
-              localajuo.a(paramView);
+              localajum.a(paramView);
             }
             DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
           }
         }
         else {
-          aptv.a(2131694672);
+          aptx.a(2131694673);
         }
       }
     }

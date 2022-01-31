@@ -1,4 +1,3 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
@@ -6,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 import org.json.JSONObject;
 
 public class pep
-  implements phs
+  implements php
 {
   public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
@@ -15,29 +14,12 @@ public class pep
   
   public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return pds.a(paramBaseArticleInfo);
+    return pdr.a(paramBaseArticleInfo);
   }
   
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView();
-    if ((parampax != null) && (parampax.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampax.a())))
-    {
-      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
-      if ((localObject != null) && ((localObject instanceof oce)))
-      {
-        localObject = (oce)localObject;
-        ((oce)localObject).a(paramInt1);
-        ((oce)localObject).a(parampax, true);
-      }
-      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
-      if ((paramContainer != null) && ((paramContainer instanceof ocz))) {
-        ((ocz)paramContainer).a(parampax);
-      }
-    }
-  }
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2) {}
   
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
   {
     return false;
   }

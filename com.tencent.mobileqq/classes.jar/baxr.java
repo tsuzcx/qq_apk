@@ -1,36 +1,18 @@
+import android.view.Choreographer.FrameCallback;
+
 class baxr
-  extends ajxl
+  implements Choreographer.FrameCallback
 {
-  private baxr(baxo parambaxo) {}
+  baxr(baxq parambaxq) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void doFrame(long paramLong)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    baxq.a(this.a, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     baxr
  * JD-Core Version:    0.7.0.1
  */

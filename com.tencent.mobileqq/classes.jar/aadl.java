@@ -1,48 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import java.util.Map;
 
 public class aadl
-  extends aabq
+  extends aabs
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabm paramaabm)
+  public boolean b;
+  protected String c;
+  public String d;
+  public String e;
+  
+  public aadl(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    paramJSONObject = (TicketManager)paramString.getManager(2);
-    paramString = paramString.getAccount();
-    paramJSONObject = paramJSONObject.getSkey(paramString);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uin", paramString);
-      localJSONObject.put("skey", paramJSONObject);
-      aaet.a(paramaabm, localJSONObject);
-      return true;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramJSONObject = paramString.getMessage();
-        if (QLog.isColorLevel()) {
-          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
-        }
-        paramString = paramJSONObject;
-        if (paramJSONObject == null) {
-          paramString = "";
-        }
-        aaet.a(paramaabm, -1, paramString);
-      }
-    }
+    super(paramActivity, paramInt, paramString1);
+    this.c = paramString2;
+  }
+  
+  protected Map<String, aabj> a()
+  {
+    return aadv.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  protected void c()
+  {
+    aabx.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new aadm(this));
   }
 }
 

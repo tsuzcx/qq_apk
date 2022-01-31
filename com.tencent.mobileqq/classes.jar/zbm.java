@@ -1,17 +1,18 @@
 import android.view.View;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
 
-public abstract interface zbm
+public class zbm
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView);
+  public zbm(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
-  
-  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
+  public void onClick(View paramView)
+  {
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
+  }
 }
 
 

@@ -1,98 +1,35 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.1;
+import com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class atyc
-  extends Dialog
+  implements URLDrawable.DownloadListener
 {
-  protected View.OnClickListener a;
-  protected ImageView a;
-  protected LinearLayout a;
-  protected RelativeLayout a;
-  protected TextView a;
-  protected TextView b;
+  atyc(atyb paramatyb) {}
   
-  public atyc(Context paramContext)
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(paramContext, 2131755791);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atyd(this);
-    a();
-  }
-  
-  private void a()
-  {
-    setContentView(2131558900);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367408));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377350));
-    this.b = ((TextView)findViewById(2131369754));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363369));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367938));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajyc.a(2131707121));
-  }
-  
-  public atyc a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView, paramLayoutParams);
-    return this;
-  }
-  
-  public atyc a(atxx paramatxx)
-  {
-    Button localButton = new Button(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = vzo.a(getContext(), 10.0F);
-    Object localObject;
-    if (paramatxx.jdField_a_of_type_JavaLangString != null)
-    {
-      localObject = paramatxx.jdField_a_of_type_JavaLangString;
-      localButton.setText((CharSequence)localObject);
-      localButton.setTextSize(20.0F);
-      if (paramatxx.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label134;
-      }
-      localObject = paramatxx.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      label76:
-      localButton.setBackgroundDrawable((Drawable)localObject);
-      if (paramatxx.jdField_a_of_type_Int == -1) {
-        break label150;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
     }
-    label134:
-    label150:
-    for (int i = paramatxx.jdField_a_of_type_Int;; i = -1)
-    {
-      localButton.setTextColor(i);
-      localButton.setOnClickListener(new atye(this, paramatxx));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, localLayoutParams);
-      return this;
-      localObject = "";
-      break;
-      localObject = getContext().getResources().getDrawable(2130839026);
-      break label76;
+    this.a.a.post(new NearbyActivityDialog.2.2(this));
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadStarted");
     }
   }
   
-  public atyc a(CharSequence paramCharSequence)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    return this;
-  }
-  
-  public atyc b(CharSequence paramCharSequence)
-  {
-    this.b.setText(paramCharSequence);
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
+    }
+    this.a.a.post(new NearbyActivityDialog.2.1(this));
   }
 }
 

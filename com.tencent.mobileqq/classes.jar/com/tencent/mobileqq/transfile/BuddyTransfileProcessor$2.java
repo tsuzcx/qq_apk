@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
-import axue;
-import aypf;
-import ayqm;
-import bbev;
+import axug;
+import ayph;
+import ayqo;
+import bbfj;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class BuddyTransfileProcessor$2
   implements Runnable
 {
-  public BuddyTransfileProcessor$2(aypf paramaypf, String paramString, short paramShort, long paramLong, Bundle paramBundle, boolean paramBoolean) {}
+  public BuddyTransfileProcessor$2(ayph paramayph, String paramString, short paramShort, long paramLong, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    ayqm localayqm;
-    if ((axue.b(this.this$0.jdField_a_of_type_Ayqm.c) != 0) && (!this.this$0.e))
+    ayqo localayqo;
+    if ((axug.b(this.this$0.jdField_a_of_type_Ayqo.c) != 0) && (!this.this$0.e))
     {
-      localayqm = this.this$0.jdField_a_of_type_Ayqm;
-      aypf localaypf = this.this$0;
+      localayqo = this.this$0.jdField_a_of_type_Ayqo;
+      ayph localayph = this.this$0;
       long l = System.nanoTime();
-      localaypf.k = l;
-      localayqm.g = l;
+      localayph.k = l;
+      localayqo.g = l;
       this.this$0.e = true;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, aypf.a(this.this$0), this.this$0.jdField_a_of_type_Ayqm.c, this.jdField_a_of_type_Short, aypf.a(this.this$0), aypf.a(this.this$0), this.this$0.r, this.this$0.s, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, bbev.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()), 2, 0, axue.a(this.this$0.jdField_a_of_type_Ayqm.c, this.jdField_a_of_type_Short));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, ayph.a(this.this$0), this.this$0.jdField_a_of_type_Ayqo.c, this.jdField_a_of_type_Short, ayph.a(this.this$0), ayph.a(this.this$0), this.this$0.r, this.this$0.s, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, bbfj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()), 2, 0, axug.a(this.this$0.jdField_a_of_type_Ayqo.c, this.jdField_a_of_type_Short));
     if (!this.jdField_a_of_type_Boolean)
     {
-      localayqm = this.this$0.jdField_a_of_type_Ayqm;
-      localayqm.e += axue.a(this.this$0.jdField_a_of_type_Ayqm.c, this.jdField_a_of_type_Short);
+      localayqo = this.this$0.jdField_a_of_type_Ayqo;
+      localayqo.e += axug.a(this.this$0.jdField_a_of_type_Ayqo.c, this.jdField_a_of_type_Short);
     }
   }
 }

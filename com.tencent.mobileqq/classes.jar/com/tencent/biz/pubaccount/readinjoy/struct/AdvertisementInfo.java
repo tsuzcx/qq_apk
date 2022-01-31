@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aulx;
-import bhvh;
+import aulz;
+import bhvy;
 import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -21,13 +21,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nyh;
-import nyi;
-import oat;
+import nye;
+import nyf;
+import oaq;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qal;
-import qbn;
+import qai;
+import qbk;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
 import tencent.im.oidb.articlesummary.articlesummary.NegFeedback;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
@@ -43,35 +43,35 @@ public class AdvertisementInfo
   public static final int AD_STYLE_3 = 3;
   public static final int APP_STATE_DOWNLOAD = 0;
   public static final int APP_STATE_OPEN = 1;
-  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new qal();
+  public static final Parcelable.Creator<AdvertisementInfo> CREATOR = new qai();
   public static final int IMAX_IMG_TYPE = 1002;
   public static final int IMAX_VIDEO_TYPE = 1001;
   public static final int PRODUCT_TYPE_APP = 12;
   public static final String TABLE_NAME = AdvertisementInfo.class.getSimpleName();
-  @aulx
+  @aulz
   public int adStrategyType;
-  @aulx
+  @aulz
   public int adbt;
-  @aulx
+  @aulz
   public int adpa;
-  @aulx
+  @aulz
   public int adpb;
   public int clickPos = -1;
   public int clickType;
-  @aulx
+  @aulz
   public int downloadState = 0;
-  @aulx
+  @aulz
   public VideoInfo.GameAdComData gameAdComData;
-  @aulx
+  @aulz
   public boolean hasAddExposure;
   public boolean isClickFromPkFragment;
-  @aulx
+  @aulz
   public boolean isHideForAnimate;
-  @aulx
+  @aulz
   public boolean isIMaxAndNewStyle;
   public boolean isMultiyVideo;
   public boolean isShowBrandAnimate;
-  @aulx
+  @aulz
   public boolean isShowingGuide;
   public long mADVideoAutoPlay;
   public long mAdAdvertiseId;
@@ -89,7 +89,7 @@ public class AdvertisementInfo
   public String mAdCustomizedInvokeUrl;
   public String mAdDesc;
   public int mAdDestType;
-  @aulx
+  @aulz
   public ArrayList<AdDislikeInfo> mAdDislikeInfos;
   public String mAdDownloadApiUrl;
   public String mAdEffectUrl;
@@ -106,7 +106,7 @@ public class AdvertisementInfo
   public String mAdLandingPage;
   public String mAdLandingPageReportUrl;
   public int mAdLayout;
-  @aulx
+  @aulz
   public int mAdLocalSource = 1;
   public int mAdMaterialHeight;
   public int mAdMaterialId;
@@ -127,45 +127,45 @@ public class AdvertisementInfo
   public long mAdVideoFileSize;
   public String mAdVideoUrl;
   public String mAdViewId;
-  @aulx
-  public nyh mAdvertisementExtInfo;
-  @aulx
-  public nyi mAdvertisementSoftInfo;
-  @aulx
+  @aulz
+  public nye mAdvertisementExtInfo;
+  @aulz
+  public nyf mAdvertisementSoftInfo;
+  @aulz
   public ArrayList<String> mC2SClickUrl;
-  @aulx
+  @aulz
   public ArrayList<String> mC2SExposureUrl;
   public int mC2SReportTriggerTime;
-  @aulx
+  @aulz
   public int mC2SSwitch;
-  @aulx
+  @aulz
   public ArrayList<String> mC2SVideoPlayUrl;
-  @aulx
+  @aulz
   public String mImaxImg;
-  @aulx
+  @aulz
   public int mImaxImgDisplayMs = 5000;
-  @aulx
+  @aulz
   public int mImaxJumpLandingPage = 1;
-  @aulx
+  @aulz
   public int mImaxShowAdType;
-  @aulx
+  @aulz
   public int mImaxShowSlipAllowMs = 3000;
-  @aulx
+  @aulz
   public String mImaxStyle = "0";
-  @aulx
+  @aulz
   public String mImaxVideoUrl;
   public int mInteractEffectType;
   public String mInteractImageList = "";
   public int mInteractType;
-  public qbn mLocalInfo;
-  @aulx
+  public qbk mLocalInfo;
+  @aulz
   public int mOrigin;
   public int mPhoneComponetId;
   public String mPopFormH5Url;
-  @aulx
+  @aulz
   public boolean mProgressFromFeeds;
   public int mRevisionVideoType = 1;
-  @aulx
+  @aulz
   public String mRowKey;
   public boolean mShowAdButton = true;
   public String mSoftAdData;
@@ -173,9 +173,9 @@ public class AdvertisementInfo
   public String mSubordinateProductId;
   public int materialGroup;
   public int miniProgramType;
-  @aulx
+  @aulz
   public int progress;
-  @aulx
+  @aulz
   public int replay;
   
   public AdvertisementInfo() {}
@@ -240,7 +240,7 @@ public class AdvertisementInfo
     this.mSoftAdType = paramParcel.readInt();
     this.mSoftAdData = paramParcel.readString();
     this.mRevisionVideoType = paramParcel.readInt();
-    this.mAdvertisementExtInfo = new nyh(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new nye(this.mAdExtInfo);
     processAdExtraDataInfo(this.mAdExtInfo);
   }
   
@@ -322,20 +322,20 @@ public class AdvertisementInfo
     }
     this.mAdVideoFileSize = paramAdInfo.uint64_video_file_size.get();
     processAdExtraDataInfo(this.mAdExtInfo);
-    this.mLocalInfo = new qbn(paramAdInfo.local_info);
+    this.mLocalInfo = new qbk(paramAdInfo.local_info);
     this.mInteractEffectType = paramAdInfo.uint32_interact_effect_type.get();
     if (paramAdInfo.string_interact_image_list.has()) {
       this.mInteractImageList = paramAdInfo.string_interact_image_list.get();
     }
     this.mInteractType = paramAdInfo.uint32_interact_type.get();
-    this.mAdvertisementExtInfo = new nyh(this.mAdExtInfo);
+    this.mAdvertisementExtInfo = new nye(this.mAdExtInfo);
     processAdExt(this.mAdExt);
   }
   
   public static int getAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAdvertisementInfo(paramAdvertisementInfo)) {
-      return oat.b(paramAdvertisementInfo);
+      return oaq.b(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -343,7 +343,7 @@ public class AdvertisementInfo
   public static int getBigAppAdStyle(AdvertisementInfo paramAdvertisementInfo)
   {
     if (isAppAdvertisementInfo(paramAdvertisementInfo)) {
-      return oat.b(paramAdvertisementInfo);
+      return oaq.b(paramAdvertisementInfo);
     }
     return 0;
   }
@@ -591,7 +591,7 @@ public class AdvertisementInfo
           if (paramString.has("imaxShowSlipAllowMs")) {
             this.mImaxShowSlipAllowMs = paramString.optInt("imaxShowSlipAllowMs", 3000);
           }
-          this.mImaxStyle = bhvh.a("sp_key_ad_imax_style");
+          this.mImaxStyle = bhvy.a("sp_key_ad_imax_style");
           if ((this.mImaxShowAdType != 1001) || (!"1".equals(this.mImaxStyle))) {
             break;
           }
@@ -610,7 +610,7 @@ public class AdvertisementInfo
   
   public void processSoftDataInfo(String paramString)
   {
-    this.mAdvertisementSoftInfo = new nyi(paramString);
+    this.mAdvertisementSoftInfo = new nyf(paramString);
   }
   
   public void resetClickPos()

@@ -1,13 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class wfy
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
   public wfy(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    QRDisplayActivity.a(this.a).b();
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131720917;
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        bcql.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_c_of_type_Int == 2) {
+          if (paramLong != 2L) {
+            break label165;
+          }
+        }
+        label165:
+        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
+        {
+          bbbp.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+          this.a.h = -1;
+          return;
+          if (WXShareHelper.a().b()) {
+            break label230;
+          }
+          i = 2131720918;
+          break;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      this.a.h = ((int)paramLong);
+      QRDisplayActivity.a(this.a);
+      return;
+      label230:
+      i = -1;
+    }
+  }
 }
 
 

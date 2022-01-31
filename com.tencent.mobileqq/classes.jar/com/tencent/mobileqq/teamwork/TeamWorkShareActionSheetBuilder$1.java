@@ -5,39 +5,39 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ayfr;
+import ayft;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class TeamWorkShareActionSheetBuilder$1
   implements Runnable
 {
-  public TeamWorkShareActionSheetBuilder$1(ayfr paramayfr, String paramString1, String paramString2) {}
+  public TeamWorkShareActionSheetBuilder$1(ayft paramayft, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = (RelativeLayout.LayoutParams)ayfr.a(this.this$0).getLayoutParams();
-    int j = ayfr.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - ayfr.a(this.this$0).getWidth() - ayfr.b(this.this$0).getWidth();
-    if (ayfr.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
+    Object localObject = (RelativeLayout.LayoutParams)ayft.a(this.this$0).getLayoutParams();
+    int j = ayft.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - ayft.a(this.this$0).getWidth() - ayft.b(this.this$0).getWidth();
+    if (ayft.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
     {
       int i = 0;
       for (;;)
       {
-        if ((i >= this.a.length()) || (ayfr.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + ayfr.a(this.this$0).getString(2131690280) + this.b) > j))
+        if ((i >= this.a.length()) || (ayft.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + ayft.a(this.this$0).getString(2131690280) + this.b) > j))
         {
           if (i == 0) {
             break;
           }
           localObject = this.a.substring(0, i - 1);
-          ayfr.c(this.this$0).setText(this.b + (String)localObject + ayfr.a(this.this$0).getString(2131690280));
+          ayft.c(this.this$0).setText(this.b + (String)localObject + ayft.a(this.this$0).getString(2131690280));
           return;
         }
         i += 1;
       }
-      ayfr.c(this.this$0).setText(this.b + this.a.substring(0) + ayfr.a(this.this$0).getString(2131690280));
+      ayft.c(this.this$0).setText(this.b + this.a.substring(0) + ayft.a(this.this$0).getString(2131690280));
       return;
     }
     localObject = this.b + this.a;
-    ayfr.c(this.this$0).setText((CharSequence)localObject);
+    ayft.c(this.this$0).setText((CharSequence)localObject);
   }
 }
 

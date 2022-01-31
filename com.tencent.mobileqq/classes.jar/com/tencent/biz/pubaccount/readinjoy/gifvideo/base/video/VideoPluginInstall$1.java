@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import ows;
 import owv;
-import owy;
 
 public final class VideoPluginInstall$1
   implements Runnable
@@ -14,12 +14,12 @@ public final class VideoPluginInstall$1
     if (QLog.isColorLevel()) {
       QLog.d("gifvideo.VideoPluginInstall", 2, "start install video sdk in subThread");
     }
-    if (!owv.b()) {
-      owv.b();
+    if (!ows.b()) {
+      ows.b();
     }
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new owy(owv.a()));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new owv(ows.a()));
       return;
     }
     catch (Exception localException)

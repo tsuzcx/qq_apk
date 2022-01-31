@@ -1,279 +1,89 @@
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PointF;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ZimuItem;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.text.TextPaint;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Observable;
+import java.util.Random;
 
-public abstract class ljo
+public class ljo
 {
-  private static ljq a;
-  protected Typeface a;
-  protected VideoAppInterface a;
-  protected final List<ljn> a;
-  protected ljp a;
-  protected ljr a;
-  protected lju a;
+  private static int jdField_a_of_type_Int = Color.parseColor("#FFFFFF");
+  private static volatile boolean jdField_a_of_type_Boolean = true;
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 36, 64, 38, 35, 37, 165 };
+  private static int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#FFCC00"), Color.parseColor("#FB4D97"), Color.parseColor("#0096FF"), Color.parseColor("#1ACEA6"), Color.parseColor("#4752E7"), Color.parseColor("#22CE53"), Color.parseColor("#B53BF5"), Color.parseColor("#1ACEA6") };
+  private static int[] b = { Color.parseColor("#80690B"), Color.parseColor("#6E3F78"), Color.parseColor("#096AAD"), Color.parseColor("#13A685"), Color.parseColor("#343FD8"), Color.parseColor("#1F9944"), Color.parseColor("#6E3F78"), Color.parseColor("#2E5556") };
   
-  public ljo(long paramLong, VideoAppInterface paramVideoAppInterface)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lju = ((lju)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
-    paramVideoAppInterface = d();
-    this.jdField_a_of_type_Lju.a(paramLong, paramVideoAppInterface);
-  }
-  
-  public static PointF a(PointF paramPointF)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    a("static getSmallPointInBigScreen: " + paramPointF.x + "|" + paramPointF.y);
-    return jdField_a_of_type_Ljq.a(paramPointF);
-  }
-  
-  public static String a()
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    return jdField_a_of_type_Ljq.a();
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    a("getSmallScreenPositionType: " + paramInt);
-    jdField_a_of_type_Ljq.a(paramInt);
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    a("UpdateSmallScreenPosition: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Ljq.a(paramInt1, paramInt2);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null) {}
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ARZimuTask", 2, paramString);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    jdField_a_of_type_Ljq.a(paramString1, paramString2);
-  }
-  
-  private void a(lhh paramlhh, boolean paramBoolean)
-  {
-    Object localObject1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    Object localObject3;
-    while (localIterator.hasNext())
+    String str = "";
+    if (paramString.length() > 10)
     {
-      localObject3 = (ljn)localIterator.next();
-      localObject2 = localObject1;
-      int j = i;
-      if (!((ljn)localObject3).a.a())
-      {
-        localObject2 = localObject1;
-        j = i;
-        if (((ljn)localObject3).a.jdField_a_of_type_JavaLangString.equals(paramlhh.jdField_a_of_type_JavaLangString))
-        {
-          j = 1;
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = localObject3;
-          }
-          ((ljn)localObject3).a(paramlhh);
-          lcl.c("ARZimuTask", "updateTextInner " + paramlhh.jdField_a_of_type_JavaLangString + " onTextChanged info:" + paramlhh.jdField_a_of_type_JavaLangCharSequence);
-        }
-      }
-      i = j;
-      localObject1 = localObject2;
+      str = "";
+      return str;
     }
-    Object localObject2 = localObject1;
-    if (i == 0)
+    int k = paramString.length();
+    int j = k / 2;
+    int i = j;
+    if (k + j > 13) {
+      i = 13 - k;
+    }
+    Random localRandom = new Random();
+    char c;
+    for (paramString = str;; paramString = paramString + c)
     {
-      localObject3 = a(paramlhh, paramBoolean);
-      localObject2 = localObject1;
-      if (localObject3 != null)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = localObject1;
-          if (((List)localObject3).size() > 0) {
-            localObject2 = (ljn)((List)localObject3).get(0);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
-        lcl.c("ARZimuTask", "updateTextInner " + paramlhh.jdField_a_of_type_JavaLangString + " addinfo:" + paramlhh.jdField_a_of_type_JavaLangCharSequence);
+      str = paramString;
+      if (paramString.length() >= i) {
+        break;
       }
+      j = localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length);
+      c = jdField_a_of_type_ArrayOfChar[j];
     }
-    a((ljn)localObject2);
+  }
+  
+  public static void a(Paint paramPaint, TextPaint paramTextPaint)
+  {
+    int i = new Random().nextInt(jdField_a_of_type_ArrayOfInt.length);
+    if (paramPaint != null) {
+      paramPaint.setColor(jdField_a_of_type_ArrayOfInt[i]);
+    }
+    if (paramTextPaint != null)
+    {
+      paramTextPaint.setColor(jdField_a_of_type_Int);
+      paramTextPaint.setShadowLayer(0.1F, 1.3F, 2.0F, b[i]);
+    }
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    jdField_a_of_type_Ljq.a(paramBoolean);
-  }
-  
-  public static String b()
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    return jdField_a_of_type_Ljq.b();
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    a("setSmallScreenSize: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Ljq.b(paramInt1, paramInt2);
-  }
-  
-  private void b(Observable paramObservable, Object paramObject)
-  {
-    ((Integer)((Object[])(Object[])paramObject)[0]).intValue();
-    a(paramObservable, paramObject);
-  }
-  
-  public static void c(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Ljq == null) {
-      jdField_a_of_type_Ljq = new ljq();
-    }
-    a("setBigScreenSize: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Ljq.c(paramInt1, paramInt2);
-  }
-  
-  public abstract int a();
-  
-  protected abstract List<ljn> a(lhh paramlhh, boolean paramBoolean);
-  
-  public ljr a()
-  {
-    return this.jdField_a_of_type_Ljr;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Ljp = new ljp(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Ljp);
-  }
-  
-  protected void a(Observable paramObservable, Object paramObject) {}
-  
-  public void a(lhh paramlhh)
-  {
-    if ((paramlhh == null) || (TextUtils.isEmpty(paramlhh.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramlhh.jdField_a_of_type_JavaLangString)))
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("updateText error:");
-      if (paramlhh == null) {}
-      for (paramlhh = null;; paramlhh = paramlhh.toString())
-      {
-        lcl.e("ARZimuTask", paramlhh);
-        return;
-      }
-    }
-    lcl.c("ARZimuTask", "updateText :" + paramlhh.toString());
-    if (!this.jdField_a_of_type_Lju.a()) {
-      this.jdField_a_of_type_Lju.b("updateText1", true);
-    }
-    a(paramlhh, false);
-  }
-  
-  abstract void a(ljn paramljn);
-  
-  public void a(ljr paramljr)
-  {
-    this.jdField_a_of_type_Ljr = paramljr;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Ljp != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Ljp);
+    jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "setIsEnableARZimu, isEnable[" + paramBoolean + "]", new Throwable("setIsEnableARZimu"));
     }
   }
   
-  public String c()
+  public static boolean a()
   {
-    Object localObject = d();
-    localObject = (ZimuItem)this.jdField_a_of_type_Lju.a((String)localObject);
-    if (localObject != null) {}
-    for (localObject = this.jdField_a_of_type_Lju.b((lhq)localObject);; localObject = "")
-    {
-      lcl.c("ARZimuTask", "getGamePlayResoucePath path = " + (String)localObject);
-      return localObject;
+    boolean bool = lmu.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "getIsEnableARZimu, isSoEnable[" + bool + "], isEnableARZimu[" + jdField_a_of_type_Boolean + "]");
     }
+    return (jdField_a_of_type_Boolean) && (bool);
   }
   
-  protected void c()
+  public static boolean a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
-    String str;
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Lju != null))
-    {
-      str = d();
-      localObject = (ZimuItem)this.jdField_a_of_type_Lju.a(str);
-      if (localObject != null)
-      {
-        localObject = this.jdField_a_of_type_Lju.b((lhq)localObject);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = new File((String)localObject + "font.ttf");
-          if (!((File)localObject).exists()) {
-            break label136;
-          }
-        }
-      }
-    }
-    label136:
-    while (!AudioHelper.e()) {
-      try
-      {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile((File)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!AudioHelper.e()) {}
-        QLog.w("ARZimuTask", 1, "createTypeface, Exception, id[" + str + "]", localException);
-        return;
-      }
-    }
-    QLog.w("ARZimuTask", 1, "createTypeface, 不存在, file[" + localException.getAbsolutePath() + "], id[" + str + "]");
+    float f = (float)Math.sqrt(Math.pow(paramPointF2.x - paramPointF1.x, 2.0D) + Math.pow(paramPointF2.y - paramPointF1.y, 2.0D));
+    return (float)Math.sqrt(Math.pow(paramPointF4.x - paramPointF3.x, 2.0D) + Math.pow(paramPointF4.y - paramPointF3.y, 2.0D)) >= f * 0.112F;
   }
   
-  public abstract String d();
+  public static boolean a(String paramString)
+  {
+    if ((paramString == null) || (paramString.isEmpty())) {}
+    while (!paramString.equals("spit")) {
+      return false;
+    }
+    return true;
+  }
 }
 
 

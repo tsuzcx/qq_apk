@@ -1,16 +1,15 @@
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
-final class mrk
+class mrk
   implements DialogInterface.OnClickListener
 {
-  mrk(Context paramContext) {}
+  mrk(mri parammri) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mri.a(this.a);
     paramDialogInterface.dismiss();
+    mri.a(this.a, this.a.a);
   }
 }
 

@@ -1,44 +1,30 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.EditActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.ArrayList;
 
 class adrz
   extends ClickableSpan
 {
-  adrz(adqy paramadqy) {}
+  adrz(adqw paramadqw) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if (bbfj.d(this.a.jdField_a_of_type_AndroidContentContext))
     {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
-      paramView = ((ajvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = paramView.discussionName;; paramView = "")
-    {
-      localIntent.putExtra("title", 2131691879);
-      localIntent.putExtra("action", 102);
-      localIntent.putExtra("limit", 48);
-      localIntent.putExtra("current", paramView);
-      localIntent.putExtra("canPostNull", false);
-      localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690331));
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
+      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      paramView.a((short)1, localArrayList, false);
       return;
     }
+    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692321), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
   }
   
   public void updateDrawState(TextPaint paramTextPaint)

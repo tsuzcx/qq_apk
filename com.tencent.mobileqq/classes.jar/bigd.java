@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bigd
-  implements DialogInterface.OnClickListener
+public abstract interface bigd
 {
-  bigd(bify parambify) {}
+  public abstract void a(long paramLong, float paramFloat);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a(2);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bigd
  * JD-Core Version:    0.7.0.1
  */

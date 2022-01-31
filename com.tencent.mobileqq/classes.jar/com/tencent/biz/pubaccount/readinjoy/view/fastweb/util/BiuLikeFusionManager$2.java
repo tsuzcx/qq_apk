@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
-import rmc;
+import rlz;
 
 public class BiuLikeFusionManager$2
   implements Runnable
 {
-  public BiuLikeFusionManager$2(rmc paramrmc) {}
+  public BiuLikeFusionManager$2(rlz paramrlz) {}
   
   public void run()
   {
-    rmc.a(this.this$0);
+    rlz.a(this.this$0);
   }
 }
 

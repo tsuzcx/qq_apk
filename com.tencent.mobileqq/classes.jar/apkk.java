@@ -1,62 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class apkk
-  implements apii
+  extends BroadcastReceiver
 {
-  apkk(apkj paramapkj, BaseActivity paramBaseActivity) {}
+  apkk(apki paramapki) {}
   
-  public apmx a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Apkj.a())
-    {
-    default: 
-      localObject1 = null;
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
     }
-    int j;
-    int k;
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject2 = (apkp)((List)localObject1).get(i);
-          j = ((apkp)localObject2).c();
-          k = ((apkp)localObject2).b();
-          if (j != 7) {
-            break;
-          }
-          localObject2 = new apnd(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-        }
-      }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Apkj.a();
-      i = this.jdField_a_of_type_Apkj.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Apkj.a();
-      i = this.jdField_a_of_type_Apkj.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Apkj.a());
-    }
-    if (j == 9) {
-      return new apmu(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
-    {
-    default: 
-      return new apls(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new aply(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    return new apmp(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 

@@ -1,21 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.util.Comparator;
 
 public class szc
-  extends SimpleJob<Void>
+  implements Comparator<sza>
 {
-  public szc(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, syv paramsyv)
-  {
-    super(paramString);
-  }
+  private szc(szb paramszb) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public int a(sza paramsza1, sza paramsza2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Syv);
-    return null;
+    return paramsza2.a - paramsza1.a;
   }
 }
 

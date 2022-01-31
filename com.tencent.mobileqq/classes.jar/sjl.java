@@ -1,19 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class sjl
-  implements View.OnClickListener
+  implements bgag
 {
   public sjl(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    sne.b("weishi-beacon", "返回按钮");
-    WSRecommendFragment.a(this.a);
-    WSRecommendFragment.b(this.a);
-    this.a.getActivity().finish();
+    snb.b("WSRecommendFragment", "endOfRefresh");
+    WSRecommendFragment.a(this.a).d();
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    snb.b("WSRecommendFragment", "startLoadMore");
+    WSRecommendFragment.a(this.a).a(false, false, "");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    snb.b("WSRecommendFragment", "startTopRefresh");
+    if (WSRecommendFragment.a(this.a)) {
+      WSRecommendFragment.a(this.a, false);
+    }
+    do
+    {
+      return;
+      if (!WSRecommendFragment.b(this.a)) {
+        WSRecommendFragment.b(this.a, true);
+      }
+      WSRecommendFragment.a(this.a, System.currentTimeMillis());
+      WSRecommendFragment.a(this.a).a(true, false, "");
+    } while (WSRecommendFragment.c(this.a));
+    WSRecommendFragment.a(this.a).a("");
   }
 }
 

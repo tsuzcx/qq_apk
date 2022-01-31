@@ -1,32 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class oku
-  implements View.OnClickListener
+class oku
+  implements PopupWindow.OnDismissListener
 {
-  public oku(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
+  oku(okt paramokt) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (onk.j()) {}
-    while (ReadInJoyCommentLikeView.a(this.a) == null) {
-      return;
-    }
-    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
-      }
-    }
-    for (;;)
-    {
-      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
-      ReadInJoyCommentLikeView.a(this.a);
-      return;
-      if (ReadInJoyCommentLikeView.a(this.a) != null) {
-        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
-      }
+    okt.a(this.a);
+    if (okt.a(this.a) != null) {
+      okt.a(this.a).c();
     }
   }
 }

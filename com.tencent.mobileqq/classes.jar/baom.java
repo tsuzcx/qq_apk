@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class baom
-  implements bame
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public baom(TroopAIORobotLayout paramTroopAIORobotLayout, baog parambaog) {}
+  public baom(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, ajyc.a(2131715169) + "", 0).a();
+    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
+    this.a.invalidate();
   }
 }
 

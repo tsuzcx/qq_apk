@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import batp;
+import baud;
 
 public class NormalPicView
   extends ImageView
-  implements batp
+  implements baud
 {
   public NormalPicView(Context paramContext)
   {

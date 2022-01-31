@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import java.util.List;
 
-public class atdp
-  implements QQPermissionCallback
+class atdp
+  implements View.OnClickListener
 {
-  public atdp(GameRoomTransActivity paramGameRoomTransActivity) {}
+  atdp(atdo paramatdo, int paramInt, bciq parambciq) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bcpw.a(this.a, ajyc.a(2131705060), 0).a();
-    this.a.finish();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a();
+    try
+    {
+      long l = Long.parseLong(((atdn)this.jdField_a_of_type_Atdo.a.a.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_Bciq.a(this.jdField_a_of_type_Atdo.a.b, l, null);
+      this.jdField_a_of_type_Atdo.a.a("invite_page", "kick_out");
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

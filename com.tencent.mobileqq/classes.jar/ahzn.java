@@ -1,18 +1,65 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.content.Context;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public final class ahzn
-  implements Parcelable.Creator<WordingItem>
+public class ahzn
 {
-  public WordingItem a(Parcel paramParcel)
+  public static long a;
+  public static Context a;
+  public static String a;
+  
+  static
   {
-    return new WordingItem(paramParcel);
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
   }
   
-  public WordingItem[] a(int paramInt)
+  public static void a()
   {
-    return new WordingItem[paramInt];
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = ahzo.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

@@ -1,57 +1,68 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
-class ayuq
-  implements ITransactionCallback
+public class ayuq
 {
-  ayuq(ayup paramayup, long paramLong) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public ayuq()
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_Ayup.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Ayup.b);
-    this.jdField_a_of_type_Ayup.d();
+    this.jdField_a_of_type_Int = 80;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public String a(String paramString)
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long));
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    if (paramString != null)
+    {
+      if (!this.b) {
+        break label109;
+      }
+      if (!paramString.startsWith("http://")) {
+        break label72;
+      }
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_Ayup.b.b();
-    this.jdField_a_of_type_Ayup.b.a = 1;
-    this.jdField_a_of_type_Ayup.s = this.jdField_a_of_type_Ayup.q;
-    this.jdField_a_of_type_Ayup.a.a = paramArrayOfByte;
-    this.jdField_a_of_type_Ayup.e();
-    this.jdField_a_of_type_Ayup.a.a();
+    for (;;)
+    {
+      localObject1 = (String)localObject1 + "/";
+      return localObject1;
+      label72:
+      localObject1 = localObject2;
+      if (paramString.startsWith("https://")) {
+        localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
+    label109:
+    if (paramString.startsWith("http://")) {
+      if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+        localObject1 = "http://[" + this.jdField_a_of_type_JavaLangString + "]";
+      }
+    }
+    while (this.jdField_a_of_type_Int != 80)
+    {
+      return (String)localObject1 + ":" + this.jdField_a_of_type_Int + "/";
+      localObject1 = "http://" + this.jdField_a_of_type_JavaLangString;
+      continue;
+      localObject1 = localObject3;
+      if (paramString.startsWith("https://")) {
+        if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaLangString.startsWith("["))) {
+          localObject1 = "https://[" + this.jdField_a_of_type_JavaLangString + "]";
+        } else {
+          localObject1 = "https://" + this.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
+    return (String)localObject1 + "/";
   }
   
-  public void onSwitch2BackupChannel() {}
+  public void a() {}
   
-  public void onTransStart()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> onTransStart()");
-    }
-    this.jdField_a_of_type_Ayup.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    ayup localayup = this.jdField_a_of_type_Ayup;
-    ayqm localayqm = this.jdField_a_of_type_Ayup.a;
-    long l = paramInt;
-    localayqm.e = l;
-    localayup.s = l;
-    if ((paramInt < this.jdField_a_of_type_Ayup.q) && (!this.jdField_a_of_type_Ayup.o) && (!this.jdField_a_of_type_Ayup.k)) {
-      this.jdField_a_of_type_Ayup.i();
-    }
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int;
   }
 }
 

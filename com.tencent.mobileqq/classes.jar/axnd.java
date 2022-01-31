@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
-import java.util.List;
-
-class axnd
-  implements axne
+public class axnd
 {
-  axnd(axnc paramaxnc, int paramInt, axna paramaxna, axne paramaxne) {}
+  axna jdField_a_of_type_Axna;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public axnd(String paramString, axna paramaxna)
   {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, axnc.a(this.jdField_a_of_type_Axnc));
-    axnc.a(this.jdField_a_of_type_Axnc, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Axna.a.size() - 1) {
-        if (this.jdField_a_of_type_Axne != null) {
-          this.jdField_a_of_type_Axne.onLoadResult(paramInt, paramLoadExtResult);
-        }
-      }
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = ("lib" + paramString + ".so");
+    if (paramaxna != null)
     {
+      this.jdField_a_of_type_Axna = paramaxna;
       return;
-      axnc.a(this.jdField_a_of_type_Axnc, this.jdField_a_of_type_Axna, this.jdField_a_of_type_Axne, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Axne == null);
-    this.jdField_a_of_type_Axne.onLoadResult(paramInt, paramLoadExtResult);
+    }
+    this.jdField_a_of_type_Axna = new axnb().a();
+  }
+  
+  public boolean a(axnd paramaxnd)
+  {
+    if (!ahiw.c(paramaxnd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+      return false;
+    }
+    return this.jdField_a_of_type_Axna.a(paramaxnd.jdField_a_of_type_Axna);
+  }
+  
+  public String toString()
+  {
+    return "LoadItem{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", lops=" + this.jdField_a_of_type_Axna + '}';
   }
 }
 

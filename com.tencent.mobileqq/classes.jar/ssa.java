@@ -1,12 +1,30 @@
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+
 class ssa
-  implements vtt
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  ssa(srv paramsrv) {}
+  ssa(srs paramsrs) {}
   
-  public void a()
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    srv.c(this.a, false);
-    srv.a(this.a, -1L);
+    paramView = (srk)srs.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == srs.a(this.a)))
+    {
+      paramView.b();
+      ved.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
+    }
+  }
+  
+  public void onChildViewDetachedFromWindow(View paramView)
+  {
+    paramView = (srk)srs.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == srs.a(this.a)))
+    {
+      paramView.c();
+      ved.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+    }
   }
 }
 

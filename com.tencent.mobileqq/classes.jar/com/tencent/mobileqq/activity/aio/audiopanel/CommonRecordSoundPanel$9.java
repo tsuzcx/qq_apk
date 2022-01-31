@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import bcpw;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class CommonRecordSoundPanel$9
@@ -11,7 +11,7 @@ class CommonRecordSoundPanel$9
   public void run()
   {
     this.this$0.b();
-    bcpw.a(this.this$0.a, this.this$0.a.getString(2131698541), 0).a();
+    bcql.a(this.this$0.a, this.this$0.a.getString(2131698551), 0).a();
   }
 }
 

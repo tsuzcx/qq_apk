@@ -1,19 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.database.ContentObserver;
+import android.os.Handler;
 import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amdq
-  implements View.OnClickListener
+  extends ContentObserver
 {
-  public amdq(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public amdq(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
+    }
+    if (BusinessCardEditActivity.a(this.a))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.a(2131698644, 2);
+      BusinessCardEditActivity.a(this.a, false);
     }
   }
 }

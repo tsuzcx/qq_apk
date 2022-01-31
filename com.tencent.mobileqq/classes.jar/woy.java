@@ -1,6 +1,13 @@
-public abstract interface woy
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+public class woy
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt);
+  public woy(wox paramwox, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

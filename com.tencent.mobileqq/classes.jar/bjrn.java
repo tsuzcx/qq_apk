@@ -1,15 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.setting.QIMSelectEffectParams;
 
-class bjrn
-  extends AnimatorListenerAdapter
+public final class bjrn
+  implements Parcelable.Creator<QIMSelectEffectParams>
 {
-  bjrn(bjrh parambjrh) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public QIMSelectEffectParams a(Parcel paramParcel)
   {
-    bjrh.a(this.a).setVisibility(8);
+    return new QIMSelectEffectParams(paramParcel);
+  }
+  
+  public QIMSelectEffectParams[] a(int paramInt)
+  {
+    return new QIMSelectEffectParams[paramInt];
   }
 }
 

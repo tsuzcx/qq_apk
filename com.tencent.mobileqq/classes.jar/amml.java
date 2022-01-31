@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
+import mqq.app.QQPermissionCallback;
 
 public class amml
-  implements View.OnClickListener
+  implements QQPermissionCallback
 {
-  public amml(LocationSelectActivity paramLocationSelectActivity) {}
+  public amml(LocationSelectActivity.2 param2) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.onBackEvent();
+    bbdj.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    LocationSelectActivity.a(this.a.this$0);
   }
 }
 

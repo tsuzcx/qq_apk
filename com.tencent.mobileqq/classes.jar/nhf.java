@@ -1,8 +1,29 @@
-import com.tencent.widget.ListView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
 
-public abstract interface nhf
+public class nhf
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(ListView paramListView);
+  public nhf(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
+      aqfd.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
+    paramDialogInterface.dismiss();
+  }
 }
 
 

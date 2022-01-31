@@ -12,8 +12,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bfni;
-import bhvh;
+import bfnz;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -31,25 +31,25 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import noo;
-import omu;
+import nol;
+import omr;
+import owr;
+import ows;
 import owu;
-import owv;
-import owx;
+import owy;
+import owz;
 import oxb;
 import oxc;
+import oxd;
 import oxe;
 import oxf;
 import oxg;
 import oxh;
 import oxi;
-import oxj;
-import oxk;
 import oxl;
+import oxm;
 import oxo;
-import oxp;
-import oxr;
-import qua;
+import qtx;
 
 public class VideoView
   extends FrameLayout
@@ -71,11 +71,11 @@ public class VideoView
   private String jdField_a_of_type_JavaLangString;
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private owu jdField_a_of_type_Owu;
-  private owx jdField_a_of_type_Owx = new oxb(this);
-  private oxk jdField_a_of_type_Oxk;
+  private owr jdField_a_of_type_Owr;
+  private owu jdField_a_of_type_Owu = new owy(this);
+  private oxh jdField_a_of_type_Oxh;
+  private oxi jdField_a_of_type_Oxi;
   private oxl jdField_a_of_type_Oxl;
-  private oxo jdField_a_of_type_Oxo;
   public boolean a;
   public int[] a;
   private long jdField_b_of_type_Long;
@@ -128,7 +128,7 @@ public class VideoView
   
   private IVideoViewBase a()
   {
-    if (bfni.d()) {
+    if (bfnz.d()) {
       return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.jdField_a_of_type_AndroidContentContext);
     }
     return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(this.jdField_a_of_type_AndroidContentContext);
@@ -144,12 +144,12 @@ public class VideoView
   {
     if (paramTVK_PlayerVideoInfo != null)
     {
-      paramTVK_PlayerVideoInfo.setConfigMap("ff_probesize", String.valueOf(bhvh.b()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_ff_probelist_switch", String.valueOf(bhvh.q()));
-      paramTVK_PlayerVideoInfo.setConfigMap("is_download_async_io", String.valueOf(bhvh.r()));
-      paramTVK_PlayerVideoInfo.setConfigMap("httpbuffertime_for_playpreload", String.valueOf(bhvh.f()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_switch", String.valueOf(bhvh.g()));
-      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_config_json", String.valueOf(bhvh.b()));
+      paramTVK_PlayerVideoInfo.setConfigMap("ff_probesize", String.valueOf(bhvy.b()));
+      paramTVK_PlayerVideoInfo.setConfigMap("is_ff_probelist_switch", String.valueOf(bhvy.q()));
+      paramTVK_PlayerVideoInfo.setConfigMap("is_download_async_io", String.valueOf(bhvy.r()));
+      paramTVK_PlayerVideoInfo.setConfigMap("httpbuffertime_for_playpreload", String.valueOf(bhvy.f()));
+      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_switch", String.valueOf(bhvy.g()));
+      paramTVK_PlayerVideoInfo.setConfigMap("dynamic_buffer_config_json", String.valueOf(bhvy.b()));
     }
   }
   
@@ -188,14 +188,14 @@ public class VideoView
   
   private void i()
   {
-    if (!owv.a())
+    if (!ows.a())
     {
       QLog.d("gifvideo.VideoView", 1, "not installed, now install");
       a(1);
-      if (!owv.a(this.jdField_a_of_type_Owx)) {
-        owv.a(this.jdField_a_of_type_Owx);
+      if (!ows.a(this.jdField_a_of_type_Owu)) {
+        ows.a(this.jdField_a_of_type_Owu);
       }
-      owv.a();
+      ows.a();
       return;
     }
     a(2);
@@ -222,7 +222,7 @@ public class VideoView
         {
           if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
           {
-            if (!owv.a()) {
+            if (!ows.a()) {
               break label72;
             }
             a(3);
@@ -285,12 +285,12 @@ public class VideoView
   {
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new oxe(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new oxf(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new oxg(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new oxh(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new oxb(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new oxc(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new oxd(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new oxe(this));
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new oxi(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new oxf(this));
   }
   
   private void o()
@@ -325,7 +325,7 @@ public class VideoView
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {}
     try
     {
-      omu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext);
+      omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_c_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext);
       return;
     }
     catch (Exception localException)
@@ -339,7 +339,7 @@ public class VideoView
     if ((this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView != null) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))) {}
     try
     {
-      omu.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_d_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext);
+      omr.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, new URL(this.jdField_d_of_type_JavaLangString), this.jdField_a_of_type_AndroidContentContext);
       return;
     }
     catch (Exception localException)
@@ -362,8 +362,8 @@ public class VideoView
         t();
         a(7);
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-        if (this.jdField_a_of_type_Owu != null) {
-          this.jdField_a_of_type_Owu.a();
+        if (this.jdField_a_of_type_Owr != null) {
+          this.jdField_a_of_type_Owr.a();
         }
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getVisibility() == 0) {
           f();
@@ -381,7 +381,7 @@ public class VideoView
     {
       long l1 = System.currentTimeMillis();
       long l2 = this.jdField_a_of_type_Long;
-      noo.a(null, "", "0X800A587", "0X800A587", 0, 0, this.jdField_b_of_type_Long + "", "", l1 - l2 + "", "", false);
+      nol.a(null, "", "0X800A587", "0X800A587", 0, 0, this.jdField_b_of_type_Long + "", "", l1 - l2 + "", "", false);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangString);
       }
@@ -397,7 +397,7 @@ public class VideoView
       {
         this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, "alpha", new float[] { 1.0F, 0.0F });
         this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(300L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new oxj(this));
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new oxg(this));
       }
       if (this.jdField_b_of_type_AndroidAnimationObjectAnimator == null)
       {
@@ -415,8 +415,8 @@ public class VideoView
     {
       if (a() != 9)
       {
-        if (this.jdField_a_of_type_Owu != null) {
-          this.jdField_a_of_type_Owu.b();
+        if (this.jdField_a_of_type_Owr != null) {
+          this.jdField_a_of_type_Owr.b();
         }
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
         w();
@@ -447,13 +447,13 @@ public class VideoView
     this.jdField_e_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Owu = null;
+    this.jdField_a_of_type_Owr = null;
   }
   
   private void y()
   {
     if ((this.jdField_f_of_type_Int == 2) || (this.jdField_f_of_type_Int == 6)) {
-      a(oxr.a(), new oxc(this));
+      a(oxo.a(), new owz(this));
     }
     while (!this.jdField_e_of_type_Boolean) {
       return;
@@ -488,7 +488,7 @@ public class VideoView
     TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, paramString, "");
     localTVK_PlayerVideoInfo.setPreLoad(false);
     localTVK_PlayerVideoInfo.setPlayMode("cache_video");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qua.jdField_a_of_type_JavaLangString);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qtx.jdField_a_of_type_JavaLangString);
     localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
     HashMap localHashMap = new HashMap();
     localHashMap.put("shouq_bus_type", "bus_type_kandian_feeds");
@@ -503,11 +503,11 @@ public class VideoView
     QLog.d("gifvideo.VideoView", 2, "video player is null");
   }
   
-  public void a(oxo paramoxo, oxp paramoxp)
+  public void a(oxl paramoxl, oxm paramoxm)
   {
-    this.jdField_a_of_type_Oxo = paramoxo;
-    if (this.jdField_a_of_type_Oxo != null) {
-      this.jdField_a_of_type_Oxo.a(this.jdField_b_of_type_JavaLangString, paramoxp);
+    this.jdField_a_of_type_Oxl = paramoxl;
+    if (this.jdField_a_of_type_Oxl != null) {
+      this.jdField_a_of_type_Oxl.a(this.jdField_b_of_type_JavaLangString, paramoxm);
     }
   }
   
@@ -548,7 +548,7 @@ public class VideoView
   {
     TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
     localTVK_PlayerVideoInfo.setPlayMode("cache_video");
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qua.jdField_a_of_type_JavaLangString);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qtx.jdField_a_of_type_JavaLangString);
     localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
     localTVK_PlayerVideoInfo.setPlayType(2);
     HashMap localHashMap = new HashMap();
@@ -614,8 +614,8 @@ public class VideoView
   
   public boolean isShown()
   {
-    if (this.jdField_a_of_type_Oxk != null) {
-      return (super.isShown()) && (this.jdField_a_of_type_Oxk.a());
+    if (this.jdField_a_of_type_Oxh != null) {
+      return (super.isShown()) && (this.jdField_a_of_type_Oxh.a());
     }
     return super.isShown();
   }
@@ -630,7 +630,7 @@ public class VideoView
   public void run()
   {
     long l2;
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_Oxl != null))
+    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_Oxi != null))
     {
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 500L);
       l2 = 0L;
@@ -638,7 +638,7 @@ public class VideoView
     try
     {
       l1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      this.jdField_a_of_type_Oxl.a(l1);
+      this.jdField_a_of_type_Oxi.a(l1);
       return;
     }
     catch (Exception localException)
@@ -682,14 +682,14 @@ public class VideoView
     }
   }
   
-  public void setOnCheckShownListener(oxk paramoxk)
+  public void setOnCheckShownListener(oxh paramoxh)
   {
-    this.jdField_a_of_type_Oxk = paramoxk;
+    this.jdField_a_of_type_Oxh = paramoxh;
   }
   
-  public void setOnProgressChangedListener(oxl paramoxl)
+  public void setOnProgressChangedListener(oxi paramoxi)
   {
-    this.jdField_a_of_type_Oxl = paramoxl;
+    this.jdField_a_of_type_Oxi = paramoxi;
   }
   
   public void setPlayIconSize(int paramInt1, int paramInt2)
@@ -762,9 +762,9 @@ public class VideoView
     this.jdField_f_of_type_Int = paramInt;
   }
   
-  public void setVideoPlayListener(owu paramowu)
+  public void setVideoPlayListener(owr paramowr)
   {
-    this.jdField_a_of_type_Owu = paramowu;
+    this.jdField_a_of_type_Owr = paramowr;
   }
   
   public void setVideoUrl(String paramString)

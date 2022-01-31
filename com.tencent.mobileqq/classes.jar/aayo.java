@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class aayo
-  implements View.OnClickListener
+class aayo
+  implements DialogInterface.OnClickListener
 {
-  public aayo(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  aayo(aaym paramaaym, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DiscussionInfoCardActivity.a(this.a);
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Aaym.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Aaym.a.app.a().a();
+    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Aaym.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Aaym.a.finish();
   }
 }
 

@@ -1,17 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class agwx
-  implements ahjd
+  implements DialogInterface.OnClickListener
 {
   public agwx(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.a.startActivity(localIntent);
+    this.a.getActivity().finish();
   }
 }
 

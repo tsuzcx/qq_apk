@@ -1,11 +1,9 @@
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.SuperPlayerMgr.ILogListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class bbvw
-  implements SuperPlayerMgr.ILogListener
+final class bbvw
+  implements TVK_SDKMgr.OnLogListener
 {
-  bbvw(bbvt parambbvt) {}
-  
   public int d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
@@ -17,7 +15,7 @@ class bbvw
   public int e(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
+      QLog.d(paramString1, 2, paramString2);
     }
     return 0;
   }
@@ -25,7 +23,7 @@ class bbvw
   public int i(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+      QLog.d(paramString1, 2, paramString2);
     }
     return 0;
   }
@@ -41,7 +39,7 @@ class bbvw
   public int w(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
+      QLog.d(paramString1, 2, paramString2);
     }
     return 0;
   }

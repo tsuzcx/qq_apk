@@ -1,30 +1,48 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.ui.MoreFragment;
-
 public class bffg
-  implements Animation.AnimationListener
 {
-  public bffg(MoreFragment paramMoreFragment, int paramInt, Bundle paramBundle) {}
+  private int jdField_a_of_type_Int;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bffg(int paramInt)
   {
-    paramAnimation = MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment);
-    paramAnimation.putExtra("miniAppID", MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment));
-    paramAnimation.putExtra("more_item_id", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      paramAnimation.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().setResult(-1, paramAnimation);
-    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().finish();
+    this.jdField_a_of_type_ArrayOfFloat = new float[paramInt];
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public float a()
+  {
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfFloat.length) {}
+    for (int i = this.jdField_a_of_type_Int; i == 0; i = this.jdField_a_of_type_ArrayOfFloat.length) {
+      return 0.0F;
+    }
+    int j = 0;
+    float f1 = 0.0F;
+    while (j < i)
+    {
+      f1 += this.jdField_a_of_type_ArrayOfFloat[j];
+      j += 1;
+    }
+    float f2 = f1 / i;
+    f1 = 0.0F;
+    j = 0;
+    while (j < i)
+    {
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[j] - f2;
+      f1 += f3 * f3;
+      j += 1;
+    }
+    return f1 / i;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_ArrayOfFloat[(this.jdField_a_of_type_Int % this.jdField_a_of_type_ArrayOfFloat.length)] = paramFloat;
+    this.jdField_a_of_type_Int += 1;
+  }
 }
 
 

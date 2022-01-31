@@ -1,490 +1,852 @@
+import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PrecoverConfig;
 import com.tencent.mobileqq.data.PrecoverResource;
+import com.tencent.mobileqq.data.PrecoverResourceBusiness;
+import com.tencent.mobileqq.data.PrecoverRetryInfo;
+import com.tencent.mobileqq.precover.PrecoverManager.1;
+import com.tencent.mobileqq.precover.PrecoverManager.2;
+import com.tencent.mobileqq.precover.PrecoverManager.4;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Collections;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import mqq.manager.Manager;
 
 public class aurv
-  implements aysa
+  implements auru, Manager
 {
-  public static ayrz a;
+  private static Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private aukp jdField_a_of_type_Aukp;
   private aurt jdField_a_of_type_Aurt;
-  private ayry jdField_a_of_type_Ayry;
+  private aurw jdField_a_of_type_Aurw;
+  private aurx jdField_a_of_type_Aurx;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<aurs> jdField_a_of_type_JavaUtilList = new Vector();
-  private Map<String, ayrv> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
-  private ConcurrentHashMap<String, aury> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public boolean a;
+  private final HashMap<String, List<PrecoverResource>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashSet<PrecoverResource> jdField_a_of_type_JavaUtilHashSet;
+  private boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private aurr[] jdField_a_of_type_ArrayOfAurr = new aurr[jdField_a_of_type_JavaUtilSet.size()];
+  private final HashMap<String, PrecoverResource> b = new HashMap();
   
   static
   {
-    jdField_a_of_type_Ayrz = new aurw();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(0));
   }
   
-  public aurv(QQAppInterface paramQQAppInterface, aurt paramaurt)
+  public aurv(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aurt = paramaurt;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Aurx = new aurx(paramQQAppInterface, this);
+    this.jdField_a_of_type_Aurt = aurt.a();
+    this.jdField_a_of_type_Aurw = new aurw(this);
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      ThreadManager.post(new PrecoverManager.1(this), 10, null, false);
+      return;
+    }
+    b();
   }
   
-  private boolean a(PrecoverResource paramPrecoverResource)
+  private PrecoverRetryInfo a(PrecoverResource paramPrecoverResource)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverManager", 2, "getRetryInfo, res=" + paramPrecoverResource);
+    }
+    if (paramPrecoverResource == null) {
+      return null;
+    }
+    try
     {
-      if (paramPrecoverResource == null)
+      paramPrecoverResource = this.jdField_a_of_type_Aukp.a(PrecoverRetryInfo.class, false, "pk = ?", new String[] { paramPrecoverResource.businessId + "_" + paramPrecoverResource.md5 }, null, null, null, null);
+      if ((paramPrecoverResource != null) && (paramPrecoverResource.size() > 0))
       {
-        localObject = "null";
-        QLog.d("PrecoverResDownloader", 2, new Object[] { "isNeedDownload, resource=", localObject });
+        paramPrecoverResource = (PrecoverRetryInfo)paramPrecoverResource.get(0);
+        return paramPrecoverResource;
       }
     }
-    else
+    catch (Exception paramPrecoverResource)
     {
-      if (paramPrecoverResource != null) {
-        break label57;
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("PrecoverManager", 2, new Object[] { "getRetryInfo, exception=", paramPrecoverResource.getMessage() });
+          paramPrecoverResource.printStackTrace();
+        }
+        paramPrecoverResource = null;
+        continue;
+        paramPrecoverResource = null;
       }
+    }
+  }
+  
+  private <T extends PrecoverResource> List<T> a(String paramString, Class<T> paramClass)
+  {
+    return a("businessId = ?", new String[] { paramString }, paramClass);
+  }
+  
+  private void a(auko paramauko)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramauko != null) {
+        break label37;
+      }
+    }
+    label37:
+    for (Object localObject = "null";; localObject = paramauko)
+    {
+      QLog.d("PrecoverManager", 2, new Object[] { "insertEntity, entity=", localObject });
+      if (paramauko != null) {
+        break;
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverManager", 2, new Object[] { "insertEntity, entity.Name=", paramauko.getClass().getSimpleName() });
+    }
+    localObject = this.jdField_a_of_type_Aukp.a();
+    try
+    {
+      ((aukr)localObject).a();
+      this.jdField_a_of_type_Aukp.b(paramauko);
+      ((aukr)localObject).c();
+      return;
+    }
+    catch (Exception paramauko)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PrecoverManager", 2, new Object[] { "insertEntity, exception=", paramauko.getMessage() });
+        paramauko.printStackTrace();
+      }
+      return;
+    }
+    finally
+    {
+      ((aukr)localObject).b();
+    }
+  }
+  
+  private void a(PrecoverRetryInfo paramPrecoverRetryInfo)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramPrecoverRetryInfo != null) {
+        break label38;
+      }
+    }
+    label38:
+    for (Object localObject = "null";; localObject = paramPrecoverRetryInfo)
+    {
+      QLog.d("PrecoverManager", 2, new Object[] { "updateRetryInfo, retryInfo=", localObject });
+      if (paramPrecoverRetryInfo != null) {
+        break;
+      }
+      return;
+    }
+    a(paramPrecoverRetryInfo);
+  }
+  
+  private boolean a(Class<? extends auko> paramClass)
+  {
+    return a("delete_all", paramClass);
+  }
+  
+  /* Error */
+  private boolean a(String paramString, Class<? extends auko> paramClass)
+  {
+    // Byte code:
+    //   0: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +43 -> 46
+    //   6: aload_1
+    //   7: ifnonnull +74 -> 81
+    //   10: ldc 225
+    //   12: astore_3
+    //   13: ldc 143
+    //   15: iconst_2
+    //   16: iconst_4
+    //   17: anewarray 4	java/lang/Object
+    //   20: dup
+    //   21: iconst_0
+    //   22: ldc_w 272
+    //   25: aastore
+    //   26: dup
+    //   27: iconst_1
+    //   28: aload_3
+    //   29: aastore
+    //   30: dup
+    //   31: iconst_2
+    //   32: ldc_w 274
+    //   35: aastore
+    //   36: dup
+    //   37: iconst_3
+    //   38: aload_2
+    //   39: invokevirtual 238	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   42: aastore
+    //   43: invokestatic 200	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   46: aload_1
+    //   47: invokestatic 280	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   50: ifne +29 -> 79
+    //   53: aload_2
+    //   54: ldc 171
+    //   56: if_acmpeq +30 -> 86
+    //   59: aload_2
+    //   60: ldc_w 282
+    //   63: if_acmpeq +23 -> 86
+    //   66: aload_2
+    //   67: ldc 165
+    //   69: if_acmpeq +17 -> 86
+    //   72: aload_2
+    //   73: ldc_w 284
+    //   76: if_acmpeq +10 -> 86
+    //   79: iconst_0
+    //   80: ireturn
+    //   81: aload_1
+    //   82: astore_3
+    //   83: goto -70 -> 13
+    //   86: aload_0
+    //   87: getfield 82	aurv:jdField_a_of_type_Aukp	Laukp;
+    //   90: invokevirtual 241	aukp:a	()Laukr;
+    //   93: astore_3
+    //   94: aload_3
+    //   95: invokevirtual 245	aukr:a	()V
+    //   98: aload_2
+    //   99: invokevirtual 238	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   102: astore_2
+    //   103: aload_1
+    //   104: ldc_w 269
+    //   107: invokevirtual 287	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   110: ifeq +63 -> 173
+    //   113: ldc_w 289
+    //   116: iconst_1
+    //   117: anewarray 4	java/lang/Object
+    //   120: dup
+    //   121: iconst_0
+    //   122: aload_2
+    //   123: aastore
+    //   124: invokestatic 293	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   127: astore_1
+    //   128: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   131: ifeq +23 -> 154
+    //   134: ldc 143
+    //   136: iconst_2
+    //   137: iconst_2
+    //   138: anewarray 4	java/lang/Object
+    //   141: dup
+    //   142: iconst_0
+    //   143: ldc_w 295
+    //   146: aastore
+    //   147: dup
+    //   148: iconst_1
+    //   149: aload_1
+    //   150: aastore
+    //   151: invokestatic 200	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   154: aload_0
+    //   155: getfield 82	aurv:jdField_a_of_type_Aukp	Laukp;
+    //   158: aload_1
+    //   159: invokevirtual 298	aukp:b	(Ljava/lang/String;)Z
+    //   162: pop
+    //   163: aload_3
+    //   164: invokevirtual 250	aukr:c	()V
+    //   167: aload_3
+    //   168: invokevirtual 251	aukr:b	()V
+    //   171: iconst_1
+    //   172: ireturn
+    //   173: ldc_w 300
+    //   176: iconst_2
+    //   177: anewarray 4	java/lang/Object
+    //   180: dup
+    //   181: iconst_0
+    //   182: aload_2
+    //   183: aastore
+    //   184: dup
+    //   185: iconst_1
+    //   186: aload_1
+    //   187: aastore
+    //   188: invokestatic 293	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   191: astore_1
+    //   192: goto -64 -> 128
+    //   195: astore_1
+    //   196: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   199: ifeq +30 -> 229
+    //   202: ldc 143
+    //   204: iconst_2
+    //   205: iconst_2
+    //   206: anewarray 4	java/lang/Object
+    //   209: dup
+    //   210: iconst_0
+    //   211: ldc_w 302
+    //   214: aastore
+    //   215: dup
+    //   216: iconst_1
+    //   217: aload_1
+    //   218: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   221: aastore
+    //   222: invokestatic 200	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   225: aload_1
+    //   226: invokevirtual 203	java/lang/Exception:printStackTrace	()V
+    //   229: aload_3
+    //   230: invokevirtual 251	aukr:b	()V
+    //   233: iconst_0
+    //   234: ireturn
+    //   235: astore_1
+    //   236: aload_3
+    //   237: invokevirtual 251	aukr:b	()V
+    //   240: aload_1
+    //   241: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	242	0	this	aurv
+    //   0	242	1	paramString	String
+    //   0	242	2	paramClass	Class<? extends auko>
+    //   12	225	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   94	128	195	java/lang/Exception
+    //   128	154	195	java/lang/Exception
+    //   154	167	195	java/lang/Exception
+    //   173	192	195	java/lang/Exception
+    //   94	128	235	finally
+    //   128	154	235	finally
+    //   154	167	235	finally
+    //   173	192	235	finally
+    //   196	229	235	finally
+  }
+  
+  private static String b(PrecoverResource paramPrecoverResource)
+  {
+    return paramPrecoverResource.businessId + "_" + paramPrecoverResource.md5;
+  }
+  
+  private void b()
+  {
+    Object localObject5;
+    Object localObject6;
+    List localList;
+    try
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("PrecoverResDownloader", 2, "isNeedDownload, resource == null");
+        QLog.d("PrecoverManager", 2, "initCache");
+      }
+      Object localObject1 = a(null, null, PrecoverResource.class);
+      localObject5 = a(null, null, PrecoverResourceBusiness.class);
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+        this.b.clear();
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
+        {
+          localObject6 = ((List)localObject1).iterator();
+          while (((Iterator)localObject6).hasNext())
+          {
+            PrecoverResource localPrecoverResource = (PrecoverResource)((Iterator)localObject6).next();
+            if (localPrecoverResource.isValid())
+            {
+              localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(localPrecoverResource.businessId);
+              localObject1 = localList;
+              if (localList == null) {
+                localObject1 = new ArrayList();
+              }
+              ((List)localObject1).add(localPrecoverResource);
+              this.jdField_a_of_type_JavaUtilHashMap.put(localPrecoverResource.businessId, localObject1);
+              this.b.put(b(localPrecoverResource), localPrecoverResource);
+            }
+          }
+        }
+      }
+      if (localObject5 == null) {
+        break label315;
+      }
+    }
+    finally {}
+    if (((List)localObject5).size() > 0)
+    {
+      localObject5 = ((List)localObject5).iterator();
+      while (((Iterator)localObject5).hasNext())
+      {
+        localObject6 = (PrecoverResource)((Iterator)localObject5).next();
+        if (((PrecoverResource)localObject6).isValid())
+        {
+          localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(((PrecoverResource)localObject6).businessId);
+          Object localObject4 = localList;
+          if (localList == null) {
+            localObject4 = new ArrayList();
+          }
+          ((List)localObject4).add(localObject6);
+          this.jdField_a_of_type_JavaUtilHashMap.put(((PrecoverResource)localObject6).businessId, localObject4);
+          this.b.put(b((PrecoverResource)localObject6), localObject6);
+        }
+      }
+    }
+    label315:
+  }
+  
+  private boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverManager", 2, "isNetworkCanDown");
+    }
+    int i = this.jdField_a_of_type_Aurt.a;
+    if (i == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, "isNetworkCanDown, return true, param == 2");
+      }
+      return true;
+    }
+    int j = bbfj.a(BaseApplicationImpl.getContext());
+    boolean bool;
+    if (i == 0) {
+      if (j == 1) {
+        bool = true;
       }
     }
     for (;;)
     {
-      return false;
-      localObject = paramPrecoverResource;
-      break;
-      label57:
-      if (TextUtils.isEmpty(paramPrecoverResource.businessId))
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, new Object[] { "isNetworkCanDown, param=", Integer.valueOf(i), ", netType=", Integer.valueOf(j), ", result=", Boolean.valueOf(bool) });
+      }
+      return bool;
+      bool = false;
+      continue;
+      if (i == 1)
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, businessId is empty");
-          return false;
+        if ((j == 1) || (j == 4) || (j == 3)) {
+          bool = true;
+        } else {
+          bool = false;
         }
       }
-      else if (TextUtils.isEmpty(paramPrecoverResource.md5))
+      else if (i == 3)
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, md5 is empty");
-          return false;
-        }
-      }
-      else if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramPrecoverResource.md5))
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PrecoverResDownloader", 2, "isNeedDownload, md5 is in set");
-          return false;
+        if ((j == 1) || (j == 4)) {
+          bool = true;
+        } else {
+          bool = false;
         }
       }
       else {
-        try
-        {
-          boolean bool = aurz.a(paramPrecoverResource.businessId, paramPrecoverResource.md5);
-          QLog.i("PrecoverResDownloader", 1, "isNeedDownload. file exist=" + bool + ", md5=" + paramPrecoverResource.md5 + ", businessid=" + paramPrecoverResource.businessId + ", resId=" + paramPrecoverResource.resId);
-          if (!bool) {}
-          for (bool = true;; bool = false) {
-            return bool;
-          }
-          if (!QLog.isColorLevel()) {}
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.i("PrecoverResDownloader", 1, "isNeedDownload.exception happen.e=" + localThrowable.getMessage() + ", md5=" + paramPrecoverResource.md5 + ", businessid=" + paramPrecoverResource.businessId + ", resId=" + paramPrecoverResource.resId);
-        }
+        bool = false;
       }
     }
-    localThrowable.printStackTrace();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Aurt != null) {
+      return this.jdField_a_of_type_Aurt.a;
+    }
+    return 0;
+  }
+  
+  public aurt a()
+  {
+    return this.jdField_a_of_type_Aurt;
+  }
+  
+  public aurw a()
+  {
+    return this.jdField_a_of_type_Aurw;
+  }
+  
+  public aurx a()
+  {
+    return this.jdField_a_of_type_Aurx;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public PrecoverResource a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return null;
+    }
+    return (PrecoverResource)this.b.get(paramString1 + "_" + paramString2);
+  }
+  
+  protected HashMap<String, List<PrecoverResource>> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  protected <T extends auko> List<T> a(String paramString, String[] paramArrayOfString, Class<T> paramClass)
+  {
+    String str;
+    if (QLog.isColorLevel())
+    {
+      if (paramString != null) {
+        break label111;
+      }
+      str = "null";
+      if (paramArrayOfString != null) {
+        break label117;
+      }
+    }
+    label111:
+    label117:
+    for (Object localObject = "null";; localObject = paramArrayOfString)
+    {
+      QLog.d("PrecoverManager", 2, new Object[] { "queryAll, selction=", str, ", selectionArgs=", localObject, ", clz=", paramClass.getSimpleName() });
+      if ((paramClass == PrecoverResource.class) || (paramClass == PrecoverResourceBusiness.class) || (paramClass == PrecoverRetryInfo.class) || (paramClass == PrecoverConfig.class)) {
+        break label123;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, "queryAll, clz not valid");
+      }
+      return null;
+      str = paramString;
+      break;
+    }
+    try
+    {
+      label123:
+      paramString = this.jdField_a_of_type_Aukp.a(paramClass, false, paramString, paramArrayOfString, null, null, null, null);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PrecoverManager", 2, new Object[] { "queryAll, exception=", paramString.getMessage() });
+        paramString.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      a(null);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject)
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilHashSet == null)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, new Object[] { "onDownloadFinish, needReport, mReportSet.size=", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashSet.size()), ", res=", paramPrecoverResource });
+      }
+      this.jdField_a_of_type_JavaUtilHashSet.remove(paramPrecoverResource);
+    } while (this.jdField_a_of_type_JavaUtilHashSet.size() != 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverManager", 2, "onDownloadFinish, download finish, doing report");
+    }
+    this.jdField_a_of_type_Aurx.b(this);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilHashSet = null;
+    ThreadManager.post(new PrecoverManager.4(this), 5, null, false);
+  }
+  
+  protected void a(PrecoverResource paramPrecoverResource)
+  {
+    if (paramPrecoverResource == null) {}
+    PrecoverRetryInfo localPrecoverRetryInfo;
+    do
+    {
+      return;
+      localPrecoverRetryInfo = a(paramPrecoverResource);
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, "deleteRertyInfo, info=" + localPrecoverRetryInfo);
+      }
+    } while (localPrecoverRetryInfo == null);
+    paramPrecoverResource = this.jdField_a_of_type_Aukp.a();
+    try
+    {
+      paramPrecoverResource.a();
+      this.jdField_a_of_type_Aukp.b(localPrecoverRetryInfo);
+      paramPrecoverResource.c();
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PrecoverManager", 2, new Object[] { "deleteRertyInfo, exception=", localException.getMessage() });
+        localException.printStackTrace();
+      }
+      return;
+    }
+    finally
+    {
+      paramPrecoverResource.b();
+    }
+  }
+  
+  public void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2) {}
+  
+  protected void a(String paramString)
+  {
+    if (paramString == null) {}
+    for (String str = "null";; str = paramString)
+    {
+      QLog.d("PrecoverManager", 1, new Object[] { "startDownload, businessId=", str });
+      ThreadManager.post(new PrecoverManager.2(this, paramString), 5, null, false);
+      return;
+    }
+  }
+  
+  public void a(List<Pair<Integer, String>> arg1)
+  {
+    Object localObject1;
+    if (??? == null) {
+      localObject1 = "null";
+    }
+    for (;;)
+    {
+      Object localObject3;
+      Object localObject5;
+      try
+      {
+        QLog.d("PrecoverManager", 1, new Object[] { "onHandleConfigs, configList.size=", localObject1 });
+        if ((??? == null) || (???.size() == 0))
+        {
+          a(PrecoverConfig.class);
+          a(PrecoverResource.class);
+          return;
+          localObject1 = Integer.valueOf(???.size());
+          continue;
+        }
+        a(PrecoverConfig.class);
+        localObject3 = new HashMap();
+        localObject1 = new HashMap();
+        ??? = ???.iterator();
+        Object localObject4;
+        if (???.hasNext())
+        {
+          localObject4 = (Pair)???.next();
+          if ((localObject4 == null) || (TextUtils.isEmpty((CharSequence)((Pair)localObject4).second))) {
+            continue;
+          }
+          int i = ((Integer)((Pair)localObject4).first).intValue();
+          localObject5 = ausb.a((String)((Pair)localObject4).second);
+          if ((localObject5 == null) || (((Pair)localObject5).first == null) || (((Pair)localObject5).second == null)) {
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PrecoverManager", 2, new Object[] { "onHandleConfigs, businessid=", ((aurs)((Pair)localObject5).first).a, ", name=", ((aurs)((Pair)localObject5).first).b, ", list.size=", Integer.valueOf(((List)((Pair)localObject5).second).size()) });
+          }
+          if (TextUtils.isEmpty(((aurs)((Pair)localObject5).first).a)) {
+            continue;
+          }
+          String str = ((aurs)((Pair)localObject5).first).a;
+          if ((((HashMap)localObject3).containsKey(str)) && (((Integer)((HashMap)localObject3).get(str)).intValue() >= i)) {
+            continue;
+          }
+          ((HashMap)localObject3).put(str, Integer.valueOf(i));
+          ((HashMap)localObject1).put(str, ((Pair)localObject5).second);
+          a(new PrecoverConfig(str, (String)((Pair)localObject4).second, i));
+          continue;
+        }
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          a(PrecoverResource.class);
+          localObject3 = ((HashMap)localObject1).keySet().iterator();
+          do
+          {
+            while (!((Iterator)localObject4).hasNext())
+            {
+              do
+              {
+                if (!((Iterator)localObject3).hasNext()) {
+                  break;
+                }
+                localObject4 = (List)((HashMap)localObject1).get((String)((Iterator)localObject3).next());
+              } while ((localObject4 == null) || (((List)localObject4).size() <= 0));
+              localObject4 = ((List)localObject4).iterator();
+            }
+            localObject5 = (PrecoverResource)((Iterator)localObject4).next();
+            if (!((PrecoverResource)localObject5).isValid()) {
+              break;
+            }
+            a((auko)localObject5);
+          } while (!QLog.isColorLevel());
+          QLog.d("PrecoverManager", 2, "onHandleConfigs, insert res:" + localObject5);
+        }
+      }
+      finally {}
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PrecoverManager", 2, "onHandleConfigs, res invalid:" + localObject5);
+        }
+      }
+      ??? = new StringBuilder();
+      if (localObject2.size() > 0)
+      {
+        ???.append(" WHERE businessId NOT IN (");
+        Iterator localIterator = localObject2.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          localObject3 = (String)localIterator.next();
+          ???.append("'").append((String)localObject3).append("',");
+        }
+        ???.setCharAt(???.length() - 1, ')');
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PrecoverManager", 2, "onHandleConfigs, selection of sql=" + ???.toString());
+      }
+      a("DELETE FROM " + PrecoverResourceBusiness.class.getSimpleName() + ???.toString());
+      a("DELETE FROM " + PrecoverRetryInfo.class.getSimpleName() + ???.toString());
+      b();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    boolean bool = ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_config_cover");
+    if (QLog.isColorLevel()) {
+      QLog.d("PrecoverManager", 2, new Object[] { "checkReportConfigCover, succ=", Boolean.valueOf(paramBoolean), ", need=", Boolean.valueOf(bool) });
+    }
+    if (bool)
+    {
+      ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_config_cover");
+      this.jdField_a_of_type_Aurw.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "get_config_time");
+    int j = ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "get_config_count", 0);
+    if (bool)
+    {
+      ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "get_config_time");
+      ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "get_config_count", 1);
+      return true;
+    }
+    if (a() != null) {}
+    for (int i = a().f; j >= i; i = 5) {
+      return false;
+    }
+    ausb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "get_config_count", j + 1);
+    return true;
+  }
+  
+  protected boolean a(PrecoverResource paramPrecoverResource)
+  {
+    if ((paramPrecoverResource == null) || (!paramPrecoverResource.isValid())) {}
+    do
+    {
+      PrecoverRetryInfo localPrecoverRetryInfo;
+      long l;
+      do
+      {
+        do
+        {
+          return false;
+          if (b()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("PrecoverManager", 2, "canDownload, networkRight, return false");
+        return false;
+        localPrecoverRetryInfo = a(paramPrecoverResource);
+        l = System.currentTimeMillis();
+        if (localPrecoverRetryInfo == null)
+        {
+          localPrecoverRetryInfo = new PrecoverRetryInfo();
+          localPrecoverRetryInfo.businessId = paramPrecoverResource.businessId;
+          localPrecoverRetryInfo.md5 = paramPrecoverResource.md5;
+          localPrecoverRetryInfo.itemRetryCount = 1;
+          localPrecoverRetryInfo.totalRetryCount = 1;
+          localPrecoverRetryInfo.retryUpdateTime = l;
+          a(localPrecoverRetryInfo);
+          if (QLog.isColorLevel()) {
+            QLog.d("PrecoverManager", 2, "canDownload, info == null, return true");
+          }
+          return true;
+        }
+        if (localPrecoverRetryInfo.totalRetryCount <= this.jdField_a_of_type_Aurt.c) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PrecoverManager", 2, "canDownload, info.totalRetryCount > mControl.totalRetry, return false");
+      return false;
+      if (Math.abs(l - localPrecoverRetryInfo.retryUpdateTime) > 86400000L)
+      {
+        localPrecoverRetryInfo.itemRetryCount = 1;
+        localPrecoverRetryInfo.totalRetryCount += 1;
+        localPrecoverRetryInfo.retryUpdateTime = l;
+        a(localPrecoverRetryInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("PrecoverManager", 2, "canDownload, daily count expire, return true");
+        }
+        return true;
+      }
+      if (localPrecoverRetryInfo.itemRetryCount < this.jdField_a_of_type_Aurt.b)
+      {
+        localPrecoverRetryInfo.itemRetryCount += 1;
+        localPrecoverRetryInfo.totalRetryCount += 1;
+        localPrecoverRetryInfo.retryUpdateTime = l;
+        a(localPrecoverRetryInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d("PrecoverManager", 2, "canDownload, info.itemRetryCount < mControl.itemRetry, return true");
+        }
+        return true;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PrecoverManager", 2, "canDownload, return false");
     return false;
   }
   
-  private boolean b(PrecoverResource paramPrecoverResource)
-  {
-    return (this.jdField_a_of_type_Aurt != null) && (this.jdField_a_of_type_Aurt.a(paramPrecoverResource));
-  }
-  
-  public aury a(String paramString)
-  {
-    return (aury)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public void a(aurs paramaurs)
-  {
-    if (paramaurs == null) {}
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramaurs)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramaurs);
-  }
-  
-  public void a(aurx paramaurx)
+  protected boolean a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PrecoverResDownloader", 2, "sendReqToNetEngine, task=" + paramaurx + ", mNetEngine=" + this.jdField_a_of_type_Ayry);
-    }
-    if ((paramaurx == null) || (paramaurx.a == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_Ayry == null) {
-      this.jdField_a_of_type_Ayry = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    }
-    this.jdField_a_of_type_Ayry.a(paramaurx.a);
-  }
-  
-  public void a(String paramString)
-  {
-    ayrv localayrv = (ayrv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localayrv != null)
-    {
-      this.jdField_a_of_type_Ayry.b(localayrv);
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    }
-  }
-  
-  public boolean a(PrecoverResource paramPrecoverResource, Object paramObject)
-  {
-    return a(paramPrecoverResource, paramObject, false, false);
-  }
-  
-  public boolean a(PrecoverResource paramPrecoverResource, Object paramObject, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel())
-    {
-      if (paramPrecoverResource != null) {
-        break label79;
-      }
-      localObject1 = "null";
-      if (paramObject != null) {
-        break label85;
+      if (paramString != null) {
+        break label64;
       }
     }
-    label79:
-    label85:
-    for (Object localObject2 = "null";; localObject2 = paramObject)
+    for (localObject = "null";; localObject = paramString)
     {
-      QLog.d("PrecoverResDownloader", 2, new Object[] { "resource=", localObject1, ", userData=", localObject2, ", checkControl=", Boolean.valueOf(paramBoolean1) });
-      if (paramPrecoverResource != null) {
-        break label91;
+      QLog.d("PrecoverManager", 2, new Object[] { "execSql, businessId=", localObject });
+      localObject = this.jdField_a_of_type_Aukp.a();
+      try
+      {
+        ((aukr)localObject).a();
+        this.jdField_a_of_type_Aukp.b(paramString);
+        ((aukr)localObject).c();
+        return true;
       }
-      QLog.d("PrecoverResDownloader", 1, "download, resource is null");
-      return false;
-      localObject1 = paramPrecoverResource;
-      break;
-    }
-    label91:
-    if (!paramPrecoverResource.isValid())
-    {
-      QLog.d("PrecoverResDownloader", 1, "download, resource.isValid() return false");
-      return false;
-    }
-    if (!a(paramPrecoverResource))
-    {
-      QLog.d("PrecoverResDownloader", 1, "download, isNeedDownload() return false");
-      return false;
-    }
-    if ((paramBoolean1) && (!b(paramPrecoverResource)))
-    {
-      QLog.d("PrecoverResDownloader", 1, "download, canDownload() return false");
-      return false;
-    }
-    if (this.jdField_a_of_type_Ayry == null) {
-      this.jdField_a_of_type_Ayry = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramPrecoverResource.md5, new aury());
-    Object localObject1 = new ayrv();
-    ((ayrv)localObject1).jdField_a_of_type_Aysa = this;
-    ((ayrv)localObject1).jdField_a_of_type_JavaLangString = paramPrecoverResource.url;
-    ((ayrv)localObject1).jdField_a_of_type_Int = 0;
-    if ((paramBoolean2) && (!TextUtils.isEmpty(paramPrecoverResource.thirdPartDownloadPath))) {}
-    for (((ayrv)localObject1).c = paramPrecoverResource.thirdPartDownloadPath;; ((ayrv)localObject1).c = aurz.a(paramPrecoverResource.businessId, paramPrecoverResource.md5))
-    {
-      ((ayrv)localObject1).e = 2;
-      ((ayrv)localObject1).a(new Object[] { paramPrecoverResource, paramObject, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      ((ayrv)localObject1).jdField_a_of_type_Ayrz = jdField_a_of_type_Ayrz;
-      this.jdField_a_of_type_JavaUtilMap.put(paramPrecoverResource.md5, localObject1);
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+      catch (Exception paramString)
+      {
+        label64:
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("PrecoverManager", 2, new Object[] { "execSql, exception=", paramString.getMessage() });
+        paramString.printStackTrace();
+        return false;
       }
-      this.jdField_a_of_type_Ayry.a((aysw)localObject1);
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PrecoverResDownloader", 2, "innerDownload, mUsePreDownScheduler==true");
-    }
-    int i;
-    switch (this.jdField_a_of_type_Aurt.a())
-    {
-    default: 
-      i = 1;
-    }
-    for (;;)
-    {
-      paramObject = new aurx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPrecoverResource, (ayrv)localObject1);
-      paramBoolean1 = ((ayxq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193)).a(10064, "prd", paramPrecoverResource.md5, 0, paramPrecoverResource.url, ((ayrv)localObject1).c, i, 0, true, paramObject);
-      if (!QLog.isColorLevel()) {
-        break;
+      finally
+      {
+        ((aukr)localObject).b();
       }
-      QLog.d("PrecoverResDownloader", 2, "innerDownload, PreDownloadController.ret=" + paramBoolean1);
-      break;
-      i = 3;
-      continue;
-      i = 2;
-      continue;
-      i = 4;
     }
   }
   
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
-  public void b(aurs paramaurs)
-  {
-    if (paramaurs == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(paramaurs);
-  }
-  
-  public void onResp(aysx paramaysx)
-  {
-    int i;
-    ayrv localayrv;
-    Object localObject1;
-    int j;
-    Object localObject4;
-    String str1;
-    label56:
-    Object localObject3;
-    Object localObject2;
-    boolean bool;
-    int k;
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      i = 1;
-      localayrv = (ayrv)paramaysx.jdField_a_of_type_Aysw;
-      localObject1 = localayrv.a();
-      j = paramaysx.b;
-      localObject4 = new File(localayrv.c);
-      if (paramaysx.jdField_a_of_type_JavaLangString != null) {
-        break label535;
-      }
-      str1 = "0";
-      if ((localObject1 == null) || (!(localObject1 instanceof Object[])) || (((Object[])localObject1).length < 4)) {
-        break label569;
-      }
-      localObject3 = (Object[])localObject1;
-      localObject1 = (PrecoverResource)localObject3[0];
-      localObject2 = localObject3[1];
-      bool = ((Boolean)localObject3[3]).booleanValue();
-      if (i == 0) {
-        break label544;
-      }
-      localObject3 = aurl.a(((File)localObject4).getAbsolutePath());
-      if (((PrecoverResource)localObject1).md5.equalsIgnoreCase((String)localObject3)) {
-        break label842;
-      }
-      k = -6103066;
-      ((File)localObject4).delete();
-      i = 0;
-      QLog.i("PrecoverResDownloader", 1, "onResp.md5 verify fail.md5=" + ((PrecoverResource)localObject1).md5 + ",calMD5=" + (String)localObject3);
-    }
-    for (;;)
-    {
-      j = k;
-      int m = i;
-      if (i != 0)
-      {
-        j = k;
-        m = i;
-        if (!bool)
-        {
-          j = k;
-          m = i;
-          if (this.jdField_a_of_type_Aurt != null)
-          {
-            this.jdField_a_of_type_Aurt.a((PrecoverResource)localObject1);
-            m = i;
-            j = k;
-          }
-        }
-      }
-      label249:
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(((PrecoverResource)localObject1).md5)) {
-        this.jdField_a_of_type_JavaUtilMap.remove(((PrecoverResource)localObject1).md5);
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((PrecoverResource)localObject1).md5)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((PrecoverResource)localObject1).md5);
-      }
-      i = j;
-      j = m;
-      label314:
-      label342:
-      long l1;
-      if (QLog.isColorLevel())
-      {
-        String str2 = localayrv.jdField_a_of_type_JavaLangString;
-        k = paramaysx.jdField_a_of_type_Int;
-        if (localObject1 == null)
-        {
-          localObject3 = "null";
-          QLog.d("PrecoverResDownloader", 2, new Object[] { "onResp.url=", str2, ", result=", Integer.valueOf(k), ", errCode=", Integer.valueOf(i), ", resource=", localObject3 });
-        }
-      }
-      else
-      {
-        if ((j == 0) || (!((File)localObject4).exists())) {
-          break label624;
-        }
-        l1 = ((File)localObject4).length();
-        label423:
-        if (this.jdField_a_of_type_Boolean)
-        {
-          localObject3 = (ayxq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193);
-          localObject4 = localayrv.jdField_a_of_type_JavaLangString;
-          if (j == 0) {
-            break label630;
-          }
-        }
-      }
-      label535:
-      label544:
-      label569:
-      label624:
-      label630:
-      for (long l2 = l1;; l2 = -1L)
-      {
-        ((ayxq)localObject3).a((String)localObject4, l2);
-        k = 0;
-        while (k < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          localObject3 = (aurs)this.jdField_a_of_type_JavaUtilList.get(k);
-          if (localObject3 != null) {
-            ((aurs)localObject3).a(i, str1, (PrecoverResource)localObject1, localObject2);
-          }
-          k += 1;
-        }
-        i = 0;
-        break;
-        str1 = paramaysx.jdField_a_of_type_JavaLangString;
-        break label56;
-        if ((localObject4 != null) && (((File)localObject4).exists())) {
-          ((File)localObject4).delete();
-        }
-        m = i;
-        break label249;
-        if ((localObject4 != null) && (((File)localObject4).exists())) {
-          ((File)localObject4).delete();
-        }
-        QLog.i("PrecoverResDownloader", 1, "onResp objects == null || objects not instanceof Object[] || ((Object[]) objects).length < 3");
-        localObject1 = null;
-        k = i;
-        i = j;
-        localObject2 = null;
-        bool = false;
-        j = k;
-        break label314;
-        localObject3 = localObject1;
-        break label342;
-        l1 = 0L;
-        break label423;
-      }
-      if (j == 0)
-      {
-        localObject3 = new StringBuilder().append("onResp.url=").append(localayrv.jdField_a_of_type_JavaLangString).append(", result=").append(paramaysx.jdField_a_of_type_Int).append(", errCode=").append(i).append(",md5 = ");
-        if (localObject1 == null)
-        {
-          localObject2 = "null";
-          QLog.i("PrecoverResDownloader", 1, (String)localObject2 + ", errDesc=" + str1);
-        }
-      }
-      else if (!bool)
-      {
-        if (this.jdField_a_of_type_Aurt != null) {
-          break label813;
-        }
-        localObject2 = null;
-        label745:
-        if ((localObject2 == null) || (localObject1 == null)) {
-          break label832;
-        }
-        if ((paramaysx.jdField_a_of_type_JavaUtilHashMap == null) || (!paramaysx.jdField_a_of_type_JavaUtilHashMap.containsKey("netresp_param_reason"))) {
-          break label825;
-        }
-      }
-      label813:
-      label825:
-      for (paramaysx = (String)paramaysx.jdField_a_of_type_JavaUtilHashMap.get("netresp_param_reason");; paramaysx = "0")
-      {
-        ((auru)localObject2).a((PrecoverResource)localObject1, i, str1, paramaysx, l1);
-        return;
-        localObject2 = ((PrecoverResource)localObject1).md5;
-        break;
-        localObject2 = this.jdField_a_of_type_Aurt.a();
-        break label745;
-      }
-      label832:
-      QLog.i("PrecoverResDownloader", 1, "onResp，reporter or resource is null");
-      return;
-      label842:
-      k = j;
-    }
-  }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
-  {
-    Object localObject1 = null;
-    if (paramaysw == null)
-    {
-      QLog.d("PrecoverResDownloader", 1, "onUpdateProgeress, req is null");
-      return;
-    }
-    paramaysw = paramaysw.a();
-    if ((paramaysw != null) && ((paramaysw instanceof Object[])) && (((Object[])paramaysw).length >= 2))
-    {
-      localObject1 = (Object[])paramaysw;
-      paramaysw = (PrecoverResource)localObject1[0];
-      localObject1 = localObject1[1];
-    }
-    for (;;)
-    {
-      if (paramaysw == null)
-      {
-        QLog.d("PrecoverResDownloader", 1, "onUpdateProgeress, resource is null");
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverResDownloader", 2, new Object[] { "onUpdateProgeress, resource=", paramaysw, ", userData=", localObject1, ", currOffSet=", Long.valueOf(paramLong1), ", totalLen=", Long.valueOf(paramLong2) });
-      }
-      aury localaury = (aury)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramaysw.md5);
-      Object localObject2 = localaury;
-      if (localaury == null) {
-        localObject2 = new aury();
-      }
-      ((aury)localObject2).a = paramLong2;
-      ((aury)localObject2).b = paramLong1;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramaysw.md5, localObject2);
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject2 = (aurs)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localObject2 != null) {
-          ((aurs)localObject2).a(paramaysw, localObject1, paramLong1, paramLong2);
-        }
-        i += 1;
-      }
-      break;
-      paramaysw = null;
-    }
-  }
+  public void onDestroy() {}
 }
 
 

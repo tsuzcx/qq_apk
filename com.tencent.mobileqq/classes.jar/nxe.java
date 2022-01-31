@@ -1,33 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.1;
 
 public class nxe
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnCancelListener
 {
-  public nxe(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public nxe(ReadInJoyUploadAvatarActivity.1 param1) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramCompoundButton = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ReadInJoySettingActivity.a(paramCompoundButton, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label75;
-      }
-      if (paramBoolean) {
-        break;
-      }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-      return;
-    }
-    ReadInJoySettingActivity.a(this.a).show();
-    return;
-    label75:
-    this.a.c = false;
+    paramDialogInterface = this.a.this$0.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", ajya.a(2131713098));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.this$0.setResult(-1, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

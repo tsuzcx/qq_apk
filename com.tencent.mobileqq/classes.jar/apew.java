@@ -1,19 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-public final class apew
-  implements Parcelable.Creator<WeiYunFileInfo>
+public class apew
+  implements Cloneable
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  public int a;
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public FileInfo a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public WeiYunFileInfo[] a(int paramInt)
-  {
-    return new WeiYunFileInfo[paramInt];
-  }
+  public apew(apev paramapev) {}
 }
 
 

@@ -1,22 +1,24 @@
-public class afph
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
+
+class afph
+  implements View.OnLongClickListener
 {
-  public aiqm a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  private WeakReference<afpc> a;
   
-  public afph(aiqm paramaiqm)
+  public afph(afpc paramafpc)
   {
-    this.a = paramaiqm;
+    this.a = new WeakReference(paramafpc);
   }
   
-  public String toString()
+  public boolean onLongClick(View paramView)
   {
-    return this.b;
+    afpc localafpc = (afpc)this.a.get();
+    if (localafpc != null) {
+      return localafpc.onLongClick(paramView);
+    }
+    return false;
   }
 }
 

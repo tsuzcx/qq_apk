@@ -1,12 +1,21 @@
-public abstract interface anro
+import java.util.ArrayList;
+import java.util.List;
+
+class anro
+  implements anqs
 {
-  public abstract void a();
+  anro(anrm paramanrm) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(anqw paramanqw);
-  
-  public abstract void b();
+  public void a(List<anyh> paramList)
+  {
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if (this.a.a != null) {
+      this.a.a.a((List)localObject);
+    }
+  }
 }
 
 

@@ -1,78 +1,57 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
+
 class aowa
-  implements ayth
+  implements azva
 {
-  aowa(aovy paramaovy) {}
+  aowa(aovz paramaovz) {}
   
-  public void a(aytj paramaytj, ayti paramayti)
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, azuz paramazuz)
   {
-    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD-500".equals(paramayti.a)) {
-      aovy.a(this.a, paramayti, paramaytj);
-    }
-    do
+    if (aovz.a(this.a))
     {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone but has been stopped WorkerId[" + aovz.a(this.a) + "] filename " + aovz.a(this.a));
       return;
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(paramayti.a))
-      {
-        aovy.b(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200".equals(paramayti.a))
-      {
-        aovy.c(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DOWNLOAD_SUCC-1000".equals(paramayti.a))
-      {
-        aovy.d(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(paramayti.a))
-      {
-        aovy.e(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(paramayti.a))
-      {
-        aovy.f(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD_ABS-1100".equals(paramayti.a))
-      {
-        aovy.g(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DELETE_FILE-900".equals(paramayti.a))
-      {
-        aovy.h(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramayti.a))
-      {
-        aovy.i(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600".equals(paramayti.a))
-      {
-        aovy.j(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(paramayti.a))
-      {
-        aovy.k(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800".equals(paramayti.a))
-      {
-        aovy.l(this.a, paramayti, paramaytj);
-        return;
-      }
-      if ("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ".equals(paramayti.a))
-      {
-        aovy.m(this.a, paramayti, paramaytj);
-        return;
-      }
-    } while (!"OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECALL-400".equals(paramayti.a));
-    aovy.n(this.a, paramayti, paramaytj);
+    }
+    if (!paramBoolean)
+    {
+      paramBoolean = paramazuz.d();
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone failed canResume[" + paramBoolean + "] errCode[" + paramInt + "] WorkerId[" + aovz.a(this.a) + "] filename " + aovz.a(this.a));
+      aovz.a(this.a).a(aouy.a(aovz.a(this.a), false), paramBoolean);
+      return;
+    }
+    paramUUID = paramazuz.c();
+    String str1 = paramazuz.d();
+    paramInt = paramazuz.a();
+    String str2 = paramazuz.a();
+    aovz.a(this.a, paramazuz.b());
+    int i = paramazuz.b();
+    int j = paramazuz.c();
+    int k = paramazuz.d();
+    aovz.a(this.a).putString("_m_ForwardMd5", paramUUID);
+    aovz.a(this.a).putString("_m_ForwardSha", str1);
+    aovz.a(this.a).putString("_m_ForwardBusType", String.valueOf(paramInt));
+    aovz.a(this.a).putString("_m_ForwardUuid", str2);
+    aovz.a(this.a).putString("_m_ForwardSize", String.valueOf(aovz.a(this.a)));
+    if (i != 0) {
+      aovz.a(this.a).putString("_m_ForwardImgWidth", String.valueOf(i));
+    }
+    if (j != 0) {
+      aovz.a(this.a).putString("_m_ForwardImgHeight", String.valueOf(j));
+    }
+    if (k != 0) {
+      aovz.a(this.a).putString("_m_ForwardDuration", String.valueOf(k));
+    }
+    aovz.a(this.a).putString("_m_ForwardFileType", String.valueOf(3));
+    if (aouy.a(this.a.a) == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone mApp is null WorkerId[" + aovz.a(this.a) + "] filename " + aovz.a(this.a));
+      aovz.a(this.a).a(aouy.a(aovz.a(this.a), false), false);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter onWorkDone woll call sendFeeds WorkerId[" + aovz.a(this.a) + "] filename " + aovz.a(this.a));
+    aouy.a(aouy.a(this.a.a), aovz.b(this.a), paramInt, str2, aovz.a(this.a), 0, i, j, k, false, aovz.a(this.a), aovz.a(this.a));
   }
 }
 

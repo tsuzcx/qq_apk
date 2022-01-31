@@ -1,68 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.DrawerPushItem;
+import java.util.Comparator;
 
 class aisb
-  implements ajie
+  implements Comparator<DrawerPushItem>
 {
-  aisb(airz paramairz) {}
+  aisb(airx paramairx) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
   {
-    if (paramBoolean) {
-      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
-        }
-      }
+    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
+      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
     }
-    label96:
-    do
-    {
-      bbqp localbbqp;
-      do
-      {
-        return;
-        if (paramArrayOfInt != null)
-        {
-          paramInt1 = 0;
-          for (;;)
-          {
-            if (paramInt1 >= paramArrayOfInt.length) {
-              break label96;
-            }
-            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
-              return;
-            }
-            paramInt1 += 1;
-          }
-        }
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localbbqp = (bbqp)this.a.a.a(71);
-        localbbqp.notifyUI(2, true, paramArrayOfInt);
-        aizw.a().a(paramArrayOfInt);
-        localbbqp.a(paramString, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
-      return;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        localbbqp = (bbqp)this.a.a.a(71);
-        localbbqp.notifyUI(2, false, paramArrayOfInt);
-        localbbqp.a(paramString, null);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
+    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
 }
 

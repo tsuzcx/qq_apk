@@ -1,53 +1,10 @@
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class aymf
-  extends aymm
+public abstract interface aymf
 {
-  aymf(ayme paramayme, aylo paramaylo) {}
+  public abstract void a(Bundle paramBundle);
   
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Aylo.beginSwitch();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_Aylo.postSwitch(paramInt);
-      return super.a(paramInt);
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
-      }
-    }
-  }
-  
-  public boolean a(aymh paramaymh)
-  {
-    try
-    {
-      this.jdField_a_of_type_Aylo.doSwitch(paramaymh.a(), paramaymh.d());
-      return true;
-    }
-    catch (RemoteException paramaymh)
-    {
-      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", paramaymh);
-    }
-    return true;
-  }
+  public abstract void b(Bundle paramBundle);
 }
 
 

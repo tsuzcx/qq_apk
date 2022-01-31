@@ -1,14 +1,15 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acqe
-  extends atzl
+  extends bfmx
 {
   public acqe(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.f();
+    this.a.e.setVisibility(0);
   }
 }
 

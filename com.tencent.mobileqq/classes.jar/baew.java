@@ -1,63 +1,59 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class baew
-  extends afda
+class baew
+  implements Comparator<agas>
 {
-  public baew(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  private final TroopInfo a;
+  
+  baew(TroopInfo paramTroopInfo)
   {
-    super(paramContext, paramQQAppInterface, paramBoolean);
+    this.a = paramTroopInfo;
   }
   
-  protected int a()
+  public int a(agas paramagas1, agas paramagas2)
   {
-    return 10100;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      axqw.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+    int j = 5;
+    int i;
+    if (baes.b(paramagas1.jdField_a_of_type_JavaLangString, this.a)) {
+      i = 5;
     }
-  }
-  
-  protected int b()
-  {
-    return 39;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = String.valueOf(paramRecommendTroopItem.uin);
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
+    for (;;)
     {
-      axqw.b(null, "dc00899", "Grp_recom", "", "set_page", "clk_add", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
-    }
-  }
-  
-  protected int c()
-  {
-    return 10101;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    String str1 = paramRecommendTroopItem.uin;
-    String str2 = paramRecommendTroopItem.recomAlgol;
-    if (paramRecommendTroopItem.isJoined()) {}
-    for (paramRecommendTroopItem = "1";; paramRecommendTroopItem = "2")
-    {
-      axqw.b(null, "dc00899", "Grp_recom", "", "set_page", "exp_grp", 0, 0, str1, str2, paramRecommendTroopItem, "");
-      return;
+      if (baes.b(paramagas2.jdField_a_of_type_JavaLangString, this.a)) {}
+      for (;;)
+      {
+        if (i != j)
+        {
+          return j - i;
+          if (baes.a(paramagas1.jdField_a_of_type_JavaLangString, this.a))
+          {
+            i = 3;
+            break;
+          }
+          if (!paramagas1.jdField_a_of_type_Boolean) {
+            break label134;
+          }
+          i = 1;
+          break;
+          if (baes.a(paramagas2.jdField_a_of_type_JavaLangString, this.a))
+          {
+            j = 3;
+            continue;
+          }
+          if (!paramagas2.jdField_a_of_type_Boolean) {
+            break label128;
+          }
+          j = 1;
+          continue;
+        }
+        return ChnToSpell.a(baes.c(paramagas1), 1).compareToIgnoreCase(ChnToSpell.a(baes.c(paramagas2), 1));
+        label128:
+        j = 0;
+      }
+      label134:
+      i = 0;
     }
   }
 }

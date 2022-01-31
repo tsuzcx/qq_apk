@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.transfile.chatpic;
 
-import ajwd;
-import ajyk;
+import ajwb;
+import ajyi;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import aunu;
-import aywa;
-import aywh;
-import aywk;
-import aywz;
+import aunw;
+import aywc;
+import aywj;
+import aywm;
+import ayxb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.CustomError;
 import com.tencent.image.URLDrawable;
@@ -26,14 +26,14 @@ public class PicDownloadExplicitError
   public static final String GROUP_PIC_REQUEST_EXPIRED_DESC = "T_203";
   public static final String GROUP_PIC_REQUEST_QUERY_INDEX_TIMEOUT_DESC = "T_206";
   public static final String TAG = "PicDownloadExplicitError";
-  private static final Map<Integer, aywz> a = new HashMap();
+  private static final Map<Integer, ayxb> a = new HashMap();
   private int mErrCode;
   
   static
   {
-    a.put(Integer.valueOf(1), new aywz(2130837910, 2131689976));
-    a.put(Integer.valueOf(2), new aywz(-1, 2131689977));
-    a.put(Integer.valueOf(3), new aywz(-1, 2131689978));
+    a.put(Integer.valueOf(1), new ayxb(2130837910, 2131689976));
+    a.put(Integer.valueOf(2), new ayxb(-1, 2131689977));
+    a.put(Integer.valueOf(3), new ayxb(-1, 2131689978));
   }
   
   private PicDownloadExplicitError(int paramInt)
@@ -41,26 +41,26 @@ public class PicDownloadExplicitError
     this.mErrCode = paramInt;
   }
   
-  private static PicDownloadExplicitError a(aunu paramaunu)
+  private static PicDownloadExplicitError a(aunw paramaunw)
   {
     return null;
   }
   
-  private static PicDownloadExplicitError a(aywh paramaywh)
+  private static PicDownloadExplicitError a(aywj paramaywj)
   {
-    Object localObject = paramaywh.jdField_a_of_type_Aywa;
+    Object localObject = paramaywj.jdField_a_of_type_Aywc;
     long l;
     String str;
     if (localObject != null)
     {
-      l = paramaywh.jdField_a_of_type_Long;
-      str = paramaywh.jdField_a_of_type_JavaLangString;
-      int i = ((aywa)localObject).jdField_a_of_type_Int;
-      localObject = ((aywa)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      l = paramaywj.jdField_a_of_type_Long;
+      str = paramaywj.jdField_a_of_type_JavaLangString;
+      int i = ((aywc)localObject).jdField_a_of_type_Int;
+      localObject = ((aywc)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       if ((localObject instanceof MessageForPic))
       {
         localObject = (MessageForPic)localObject;
-        if ((ajyk.a((MessageRecord)localObject)) || (ajwd.a((MessageRecord)localObject))) {
+        if ((ajyi.a((MessageRecord)localObject)) || (ajwb.a((MessageRecord)localObject))) {
           return null;
         }
       }
@@ -73,55 +73,55 @@ public class PicDownloadExplicitError
           if ((!"H_404_-6101".equals(str)) && (!"T_203".equals(str)) && (!"T_206".equals(str))) {
             break label311;
           }
-          paramaywh = new PicDownloadExplicitError(1);
+          paramaywj = new PicDownloadExplicitError(1);
         }
       }
     }
     for (;;)
     {
-      return paramaywh;
-      if (paramaywh.jdField_a_of_type_Long == 9302L)
+      return paramaywj;
+      if (paramaywj.jdField_a_of_type_Long == 9302L)
       {
-        paramaywh = new PicDownloadExplicitError(2);
+        paramaywj = new PicDownloadExplicitError(2);
       }
       else
       {
         if ((l == 9039L) || (l == 9040L))
         {
-          paramaywh = new PicDownloadExplicitError(3);
+          paramaywj = new PicDownloadExplicitError(3);
           continue;
           if (l == -9527L)
           {
             if ("T_208".equals(str)) {
-              paramaywh = new PicDownloadExplicitError(1);
+              paramaywj = new PicDownloadExplicitError(1);
             }
           }
           else
           {
-            if (paramaywh.jdField_a_of_type_Long == 9302L)
+            if (paramaywj.jdField_a_of_type_Long == 9302L)
             {
-              paramaywh = new PicDownloadExplicitError(2);
+              paramaywj = new PicDownloadExplicitError(2);
               continue;
             }
             if ((l == 9039L) || (l == 9040L))
             {
-              paramaywh = new PicDownloadExplicitError(3);
+              paramaywj = new PicDownloadExplicitError(3);
               continue;
             }
           }
         }
         label311:
-        paramaywh = null;
+        paramaywj = null;
       }
     }
   }
   
   private String a()
   {
-    aywz localaywz = (aywz)a.get(Integer.valueOf(this.mErrCode));
-    if (localaywz != null)
+    ayxb localayxb = (ayxb)a.get(Integer.valueOf(this.mErrCode));
+    if (localayxb != null)
     {
-      int i = localaywz.b();
+      int i = localayxb.b();
       if (i > 0) {
         return BaseApplicationImpl.getApplication().getResources().getString(i);
       }
@@ -139,26 +139,26 @@ public class PicDownloadExplicitError
   
   public static PicDownloadExplicitError getPicError(Object paramObject)
   {
-    if ((paramObject instanceof aywh)) {
-      return a((aywh)paramObject);
+    if ((paramObject instanceof aywj)) {
+      return a((aywj)paramObject);
     }
-    if ((paramObject instanceof aunu)) {
-      return a((aunu)paramObject);
+    if ((paramObject instanceof aunw)) {
+      return a((aunw)paramObject);
     }
     return null;
   }
   
   public Drawable getFailedDrawable()
   {
-    aywz localaywz = (aywz)a.get(Integer.valueOf(this.mErrCode));
-    if (localaywz != null)
+    ayxb localayxb = (ayxb)a.get(Integer.valueOf(this.mErrCode));
+    if (localayxb != null)
     {
-      int i = localaywz.a();
+      int i = localayxb.a();
       if (i > 0) {
-        return aywk.a(i);
+        return aywm.a(i);
       }
     }
-    return aywk.a();
+    return aywm.a();
   }
 }
 

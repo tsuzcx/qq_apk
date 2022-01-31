@@ -1,12 +1,25 @@
-import android.widget.TextView;
-import com.tencent.widget.HorizontalListView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ahog
-  extends ahoa
+class ahog
+  implements View.OnTouchListener
 {
-  public TextView a;
-  public HorizontalListView a;
-  public String a;
+  ahog(ahof paramahof) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
+  }
 }
 
 

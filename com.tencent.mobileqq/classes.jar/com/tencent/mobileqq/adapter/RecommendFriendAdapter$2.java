@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.adapter;
 
-import aiop;
+import aion;
 
 public class RecommendFriendAdapter$2
   implements Runnable
 {
-  public RecommendFriendAdapter$2(aiop paramaiop) {}
+  public RecommendFriendAdapter$2(aion paramaion) {}
   
   public void run()
   {
-    aiop.a(this.this$0);
+    aion.a(this.this$0);
   }
 }
 

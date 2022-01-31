@@ -1,18 +1,12 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class altl
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class altl
 {
-  altl(altk paramaltk, String paramString) {}
+  public int a;
+  public String a;
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public altl()
   {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
-      alti.a(this.jdField_a_of_type_Altk.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, alti.a(this.jdField_a_of_type_Altk.a), 2);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

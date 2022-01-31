@@ -1,21 +1,54 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.widget.RelativeLayout;
 
-public class bcum
-  implements ValueAnimator.AnimatorUpdateListener
+class bcum
+  implements Animator.AnimatorListener
 {
-  public bcum(QUSHalfScreenFloatView paramQUSHalfScreenFloatView, View paramView, int paramInt) {}
+  bcum(bcuj parambcuj, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator instanceof Float))
+    if (this.jdField_a_of_type_Bcuj.a != null)
     {
-      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQusQUSHalfScreenFloatView.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
+      }
+      this.jdField_a_of_type_Bcuj.a.setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      bcuj.b(this.jdField_a_of_type_Bcuj, this.jdField_a_of_type_Int);
+      return;
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Bcuj.a.setAlpha(0.0F);
+      }
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bcuj.b(this.jdField_a_of_type_Bcuj, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      bcuj.a(this.jdField_a_of_type_Bcuj, false);
+      this.jdField_a_of_type_Bcuj.a(false, new View[] { bcuj.a(this.jdField_a_of_type_Bcuj) });
+    }
+    bcuj.a(this.jdField_a_of_type_Bcuj);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bcuj.b(this.jdField_a_of_type_Bcuj, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      bcuj.a(this.jdField_a_of_type_Bcuj, true);
+      if (bcuj.a(this.jdField_a_of_type_Bcuj) == 1) {
+        this.jdField_a_of_type_Bcuj.a(true, new View[] { bcuj.a(this.jdField_a_of_type_Bcuj) });
       }
     }
   }

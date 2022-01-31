@@ -1,43 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class sik
+final class sik
+  implements bcww
 {
-  private ajuv jdField_a_of_type_Ajuv;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public sik(AppInterface paramAppInterface)
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Ajuv = new sil(this);
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajuv);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ajuv);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    ajuo localajuo;
-    do
+    switch (paramBaseResp.errCode)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-      localajuo = (ajuo)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
-    } while (localajuo == null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    localajuo.a(paramString, 0);
+    case -1: 
+    default: 
+      bcql.a(BaseApplicationImpl.getContext(), 2, 2131719487, 1).a();
+    case -2: 
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 2, 2131719506, 1).a();
   }
 }
 

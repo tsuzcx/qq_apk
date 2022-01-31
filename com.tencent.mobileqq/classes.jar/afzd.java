@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afzd
-  implements baji
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  public afzd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public afzd(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a.g = true;
+    this.a.d.setVisibility(8);
+    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131368431));
+    this.a.d.setVisibility(0);
+    this.a.d.setText(ajya.a(2131701661));
+    this.a.d.setOnClickListener(new afze(this));
+    ChatHistoryTroopMemberFragment.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

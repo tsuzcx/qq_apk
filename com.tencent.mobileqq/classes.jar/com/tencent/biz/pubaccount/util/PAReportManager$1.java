@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.util;
 
-import aukn;
+import aukp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ser;
+import seo;
 
 public class PAReportManager$1
   implements Runnable
 {
-  public PAReportManager$1(ser paramser, PAReportInfo paramPAReportInfo) {}
+  public PAReportManager$1(seo paramseo, PAReportInfo paramPAReportInfo) {}
   
   public void run()
   {
@@ -19,28 +19,28 @@ public class PAReportManager$1
     do
     {
       return;
-      if (ser.a(this.this$0) == -1) {
-        ser.a(this.this$0, ser.a(this.this$0).b().a(PAReportInfo.class.getSimpleName()));
+      if (seo.a(this.this$0) == -1) {
+        seo.a(this.this$0, seo.a(this.this$0).b().a(PAReportInfo.class.getSimpleName()));
       }
       if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "before insert into db mCount = " + ser.a(this.this$0));
+        QLog.d("PAReport", 2, "before insert into db mCount = " + seo.a(this.this$0));
       }
-      if (ser.a(this.this$0) < 80) {
+      if (seo.a(this.this$0) < 80) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("PAReport", 2, "databases message records is out of 80 delete the first _id ");
       }
       ??? = String.format("delete from %s where _id = (select min(_id) from %s)", new Object[] { this.a.getTableName(), this.a.getTableName() });
-      localSQLiteDatabase = ser.a(this.this$0).a();
+      localSQLiteDatabase = seo.a(this.this$0).a();
     } while (localSQLiteDatabase == null);
     if (localSQLiteDatabase.a((String)???)) {}
-    synchronized (ser.a(this.this$0))
+    synchronized (seo.a(this.this$0))
     {
-      ser.a(this.this$0).clear();
-      ser.b(this.this$0);
-      ser.c(this.this$0);
-      ser.a(this.this$0).a(this.a);
+      seo.a(this.this$0).clear();
+      seo.b(this.this$0);
+      seo.c(this.this$0);
+      seo.a(this.this$0).a(this.a);
       return;
     }
   }

@@ -1,38 +1,67 @@
-class avys
-  implements avxn
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class avys
 {
-  avys(avyr paramavyr) {}
+  public final int a;
+  public final long a;
+  private List<avxs> a;
+  private int b;
+  public final long b;
+  private int c;
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public avys(int paramInt, long paramLong1, long paramLong2)
   {
-    veg.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
+  private void a()
   {
-    veg.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((avxs)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void f()
+  private void b()
   {
-    veg.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((avxs)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  public void g()
+  public int a(float paramFloat)
   {
-    veg.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i >= 6)
+    {
+      avxs localavxs1 = (avxs)this.jdField_a_of_type_JavaUtilList.get(0);
+      avxs localavxs2 = (avxs)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      float f = (float)(localavxs2.b() - localavxs1.b()) * 1000.0F / (i - 1);
+      paramFloat = (float)(Math.abs(localavxs2.a()) - Math.abs(localavxs1.a())) / ((i - 1) * paramFloat);
+      f = 1.1F * f;
+      if (f < paramFloat) {
+        return 1;
+      }
+      i = (int)Math.floor(f / (f - paramFloat));
+      ved.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
+      return Math.min(8, i);
+    }
+    return 1;
   }
   
-  public void i()
+  public String toString()
   {
-    veg.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
-  }
-  
-  public void l()
-  {
-    veg.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
+    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

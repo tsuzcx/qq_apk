@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpo;
+import afpm;
 
 class ContactsTroopAdapter$4$1
   implements Runnable

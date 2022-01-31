@@ -1,25 +1,10 @@
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class uys
+public abstract interface uys<T>
 {
-  private static final String jdField_a_of_type_JavaLangString = ajsf.aV + "/Tencent/com/tencent/mobileqq/";
-  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
+  public abstract void a(ErrorMessage paramErrorMessage);
   
-  public static void a(uyv<Integer> paramuyv)
-  {
-    paramuyv = new WeakReference(paramuyv);
-    uzn localuzn = new uzn(null);
-    localuzn.a(new uyt(paramuyv));
-    localuzn.a(new uyu(paramuyv));
-    localuzn.a();
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Boolean) {}
-    return false;
-  }
+  public abstract void a(T paramT);
 }
 
 

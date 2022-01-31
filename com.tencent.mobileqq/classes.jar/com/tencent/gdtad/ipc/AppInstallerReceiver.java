@@ -7,9 +7,9 @@ import android.content.IntentFilter;
 import com.tencent.gdtad.aditem.GdtBaseAdItem;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import ywj;
-import yxs;
-import yyq;
+import ywg;
+import yxp;
+import yyn;
 
 public class AppInstallerReceiver
   extends BroadcastReceiver
@@ -19,7 +19,7 @@ public class AppInstallerReceiver
   
   public static AppInstallerReceiver a()
   {
-    return ywj.a;
+    return ywg.a;
   }
   
   public void a(Context paramContext)
@@ -31,7 +31,7 @@ public class AppInstallerReceiver
       localIntentFilter.addDataScheme("package");
       paramContext.registerReceiver(this, localIntentFilter);
       this.jdField_a_of_type_Boolean = true;
-      yxs.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
+      yxp.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
     }
   }
   
@@ -50,10 +50,10 @@ public class AppInstallerReceiver
     }
     for (;;)
     {
-      yxs.a("GdtAppOpenUtil", "package added " + paramIntent);
+      yxp.a("GdtAppOpenUtil", "package added " + paramIntent);
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramIntent))
       {
-        yyq.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
+        yyn.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
         this.jdField_a_of_type_JavaUtilMap.remove(paramIntent);
       }
       return;

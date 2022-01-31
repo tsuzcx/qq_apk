@@ -1,33 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
-class bbzj
-  implements mzb
+final class bbzj
+  implements MediaPlayer.OnPreparedListener
 {
-  bbzj(bbzg parambbzg, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
+  bbzj(bbzn parambbzn) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_Bbzg.a("http://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-    }
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
-      if (this.jdField_a_of_type_Bbzg.a(2L, this.jdField_b_of_type_Long)) {
-        this.jdField_a_of_type_Bbzg.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
-      }
-    }
-    while ((!this.jdField_a_of_type_Bbzg.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bbzg.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
-  }
-  
-  public void progress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
+    paramMediaPlayer.start();
+    paramMediaPlayer.setLooping(true);
+    if (this.a != null) {
+      this.a.a();
     }
   }
 }

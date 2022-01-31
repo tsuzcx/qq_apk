@@ -1,46 +1,27 @@
-import android.support.v4.app.FragmentActivity;
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class aety
-  extends ajxl
+  extends akfy
 {
   public aety(TroopChatPie paramTroopChatPie) {}
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    int i;
-    if (QLog.isColorLevel())
-    {
-      String str = this.a.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
-      if (paramMap == null)
-      {
-        i = 0;
-        QLog.d(str, 2, i);
-      }
-    }
-    else
-    {
-      if ((paramMap != null) && (paramMap.size() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
-    {
-      return;
-      i = paramMap.size();
-      break;
-    }
     if (paramBoolean)
     {
-      bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131720539), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext, this.a, TroopChatPie.b(this.a));
       return;
     }
-    bcpw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131720538), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString }));
   }
 }
 

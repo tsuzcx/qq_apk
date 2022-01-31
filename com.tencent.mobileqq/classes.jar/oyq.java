@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-
 class oyq
-  implements Animation.AnimationListener
+  extends osm
 {
-  oyq(oyp paramoyp, ImageView paramImageView, boolean paramBoolean) {}
+  oyq(oyp paramoyp) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(oyp.a(this.jdField_a_of_type_Oyp, this.jdField_a_of_type_Boolean));
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    this.a.a(paramBoolean, paramInt, paramString);
   }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    this.a.a(paramBoolean, paramLong, paramInt, paramString);
+  }
 }
 
 

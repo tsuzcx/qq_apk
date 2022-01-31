@@ -1,31 +1,27 @@
-import Wallet.GetPasswordReq;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
 
 public class agwu
+  extends BroadcastReceiver
 {
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (PatternLockUtils.getSyncPatternLockState(paramQQAppInterface.getApp(), paramQQAppInterface.c()))
-    {
-      GetPasswordReq localGetPasswordReq = new GetPasswordReq();
-      localGetPasswordReq.MQOS = "Android";
-      ((akeu)paramQQAppInterface.a(42)).a(localGetPasswordReq);
-    }
-  }
+  public agwu(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong < 1L)) {
+    if (paramIntent == null) {}
+    do
+    {
       return;
-    }
-    Intent localIntent = new Intent("com.tencent.qwallet.payer.notify");
-    localIntent.putExtra("sendUin", paramLong);
-    localIntent.putExtra("tokenId", paramString);
-    paramQQAppInterface.getApp().sendBroadcast(localIntent);
+      if ("action_close_camera".equals(paramIntent.getAction()))
+      {
+        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
+        return;
+      }
+    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
+    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
   }
 }
 

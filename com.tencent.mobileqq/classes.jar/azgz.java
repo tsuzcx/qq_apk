@@ -1,21 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 public class azgz
-  extends Handler
+  implements bfos
 {
+  int jdField_a_of_type_Int = 0;
+  
   public azgz(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
     {
-    default: 
-      return;
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
     }
-    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

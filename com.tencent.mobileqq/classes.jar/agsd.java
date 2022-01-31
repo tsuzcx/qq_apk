@@ -1,33 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import java.util.HashMap;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class agsd
-  extends agsc
+public abstract interface agsd
 {
-  public SessionInfo a;
-  public vug a;
-  public HashMap<String, PhotoSendParams> b;
-  public long c = -1L;
-  public String c;
-  public HashMap<String, byte[]> c;
-  public String d;
-  public String e;
-  public String f;
-  public int h;
-  public boolean l;
-  public boolean m;
-  public boolean n;
-  public boolean o = true;
-  public boolean p;
-  public boolean q;
-  public boolean r;
-  public boolean s;
-  public boolean t;
-  public boolean u;
-  public boolean v;
-  public boolean w;
-  public boolean x;
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup, agrt paramagrt, agrq paramagrq);
+  
+  public abstract View b(int paramInt, View paramView, ViewGroup paramViewGroup, agrt paramagrt, agrq paramagrq);
 }
 
 

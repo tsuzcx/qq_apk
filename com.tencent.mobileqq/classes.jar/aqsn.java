@@ -1,46 +1,17 @@
-import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
 
 public class aqsn
+  implements View.OnTouchListener
 {
-  private static aqsn jdField_a_of_type_Aqsn;
-  private GameCenterVideoViewController jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+  public aqsn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public static aqsn a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (jdField_a_of_type_Aqsn == null) {
-        jdField_a_of_type_Aqsn = new aqsn();
-      }
-      aqsn localaqsn = jdField_a_of_type_Aqsn;
-      return localaqsn;
-    }
-    finally {}
-  }
-  
-  public GameCenterVideoViewController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
-    }
-  }
-  
-  public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.i();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.l();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

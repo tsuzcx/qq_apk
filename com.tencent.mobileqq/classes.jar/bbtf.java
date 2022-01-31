@@ -1,32 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-
 public class bbtf
-  implements View.OnClickListener
+  extends bbtc
 {
-  public bbtf(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
+  public static final bbtf a = new bbtf();
   
-  public void onClick(View paramView)
+  public long getBID()
   {
-    if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getOutputMute())
-    {
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
-      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845462));
-      return;
-    }
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
-    ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845461));
+    return 39L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "musicPlayer";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "musicPlayer.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bbtf
  * JD-Core Version:    0.7.0.1
  */

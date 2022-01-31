@@ -1,31 +1,37 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class ywr
-  implements View.OnClickListener
+public class ywr
+  implements yxe
 {
-  ywr(ywq paramywq) {}
-  
-  public void onClick(View paramView)
+  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
   {
-    boolean bool;
-    if (this.a.a() != null)
+    Object localObject = null;
+    try
     {
-      bool = this.a.a().load(this.a.getActivity());
-      if (!bool) {
-        break label59;
+      paramString = new JSONObject(paramVarArgs[0]);
+      yxp.a("GdtC2SJsCallHandler", paramString.toString());
+      int i = paramString.optInt("operationType");
+      int j = paramString.optInt("businessType");
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramString.getJSONObject("adInfo")));
+      yxv.a(i, j, localAdInfo);
+      if (paramywk != null) {}
+      for (paramString = paramywk.a();; paramString = null)
+      {
+        paramVarArgs = localObject;
+        if (paramywk != null) {
+          paramVarArgs = paramywk.a();
+        }
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
+        return true;
       }
+      return true;
     }
-    label59:
-    for (paramView = "loading ad data";; paramView = "load ad data error")
+    catch (Exception paramywk)
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
-      return;
-      bool = false;
-      break;
+      yxp.d("GdtC2SJsCallHandler", "handleJsCallRequest", paramywk);
     }
   }
 }

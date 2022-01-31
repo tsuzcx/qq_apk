@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import snq;
+import snn;
 
 class PublicAccountImageCollectionMainActivity$5
   implements Runnable

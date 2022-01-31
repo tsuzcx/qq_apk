@@ -3,12 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ayeq;
+import ayes;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new ayeq();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new ayes();
   public int a;
   public long a;
   public String a;

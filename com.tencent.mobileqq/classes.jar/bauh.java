@@ -1,10 +1,9 @@
-public abstract interface bauh
+public class bauh
 {
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 

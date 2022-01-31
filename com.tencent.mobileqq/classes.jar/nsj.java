@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
-class nsj
-  implements View.OnClickListener
+public class nsj
+  extends akui
 {
-  nsj(nsf paramnsf) {}
-  
-  public void onClick(View paramView)
+  nsj(nsc paramnsc, String paramString)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
-    nsf.a(this.a, 5);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
+    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
   }
 }
 

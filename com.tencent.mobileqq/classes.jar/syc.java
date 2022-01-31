@@ -1,75 +1,65 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.util.SparseArray;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class syc
 {
-  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
+  public static SparseArray<Class<? extends wco>> a = new SparseArray();
+  public static SparseArray<Boolean> b = new SparseArray();
   
   static
   {
-    a.put(ujx.class, sxz.class);
-    b.put(tcr.class, sya.class);
+    a.put(1, vcf.class);
+    b.put(1, Boolean.valueOf(true));
+    a.put(5, vcm.class);
+    b.put(5, Boolean.valueOf(true));
   }
   
-  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
+  public static wco a(Context paramContext, int paramInt)
   {
-    try
-    {
-      if (paramClass.equals(ujx.class))
-      {
-        Object localObject = paramClass1.cast(new sxz());
-        return localObject;
-      }
+    Object localObject = (Class)a.get(paramInt, null);
+    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
+    if (localObject == null) {
+      throw new IllegalArgumentException(ajya.a(2131713707));
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      veg.e("ExtensionFactoryImplement", "parse int exception");
+    if (localBoolean.booleanValue()) {
       try
       {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (sxo.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
+        paramContext = (wco)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+        return paramContext;
       }
-      catch (Exception paramClass)
+      catch (NoSuchMethodException paramContext)
       {
-        veg.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+        throw new IllegalStateException(ajya.a(2131713703), paramContext);
       }
-      return syd.a(paramClass1);
-    }
-    label110:
-    paramClass = syd.a(paramClass, paramVarArgs);
-    return paramClass;
-  }
-  
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
-  {
-    if (!sxo.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
+      catch (IllegalAccessException paramContext)
+      {
+        throw new IllegalStateException(ajya.a(2131713706), paramContext);
+      }
+      catch (InstantiationException paramContext)
+      {
+        throw new IllegalStateException(ajya.a(2131713709), paramContext);
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        throw new IllegalArgumentException(ajya.a(2131713705), paramContext);
+      }
     }
     try
     {
-      Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (sxo.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
-      }
+      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
+      return new vdh(paramContext, (String)localObject);
     }
-    catch (Exception localException)
+    catch (NoSuchFieldException paramContext)
     {
-      veg.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
+      throw new IllegalStateException(ajya.a(2131713710), paramContext);
     }
-    return syd.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = syd.a(localException, paramVarArgs);
-    return localObject;
+    catch (IllegalAccessException paramContext)
+    {
+      throw new IllegalStateException(ajya.a(2131713704), paramContext);
+    }
   }
 }
 

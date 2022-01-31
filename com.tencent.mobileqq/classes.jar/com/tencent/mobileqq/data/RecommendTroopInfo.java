@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecommendTroopInfo
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public int authType;
@@ -29,7 +29,7 @@ public class RecommendTroopInfo
   public short option;
   public String ownerUin;
   public String tag;
-  @auma
+  @aumc
   public String uin;
   
   public Object clone()

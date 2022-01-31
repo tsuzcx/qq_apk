@@ -1,18 +1,33 @@
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
 class advb
-  implements View.OnClickListener
+  implements bfph
 {
-  advb(adva paramadva) {}
+  advb(aduy paramaduy, MessageForMixedMsg paramMessageForMixedMsg, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    actn.n = true;
-    if (this.a.a()) {
-      return;
+    switch (paramInt)
+    {
     }
-    adva.a(this.a).onClick(paramView);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Aduy.c < 500L);
+      this.jdField_a_of_type_Aduy.c = l;
+      paramView = (asju)this.jdField_a_of_type_Aduy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
+      this.jdField_a_of_type_Aduy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      paramView.a(this.jdField_a_of_type_Aduy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+    }
   }
 }
 

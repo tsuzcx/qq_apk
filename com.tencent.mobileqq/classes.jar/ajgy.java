@@ -1,62 +1,21 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
-@TargetApi(11)
 public class ajgy
-  extends EditText
-  implements ActionMode.Callback
+  implements DialogInterface.OnClickListener
 {
-  public ajgy(Context paramContext)
-  {
-    super(paramContext);
-    super.setLongClickable(false);
-    super.setTextIsSelectable(false);
-    super.setImeOptions(268435456);
-    if (Build.VERSION.SDK_INT >= 11) {
-      super.setCustomSelectionActionModeCallback(this);
-    }
-  }
+  public ajgy(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      super.setSelection(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
-    }
-  }
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
-  {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public boolean onTextContextMenuItem(int paramInt)
-  {
-    return true;
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putBoolean("key_open_voice", true);
+    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
   }
 }
 

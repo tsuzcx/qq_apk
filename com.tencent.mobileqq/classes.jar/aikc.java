@@ -1,25 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class aikc
-  extends Handler
+class aikc
+  implements aijc
 {
-  public aikc(VipSpecialCareHandler.1 param1, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aikc(aikb paramaikb, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean) {}
+    try
     {
-    default: 
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikb.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, (List)localObject);
       return;
     }
-    aikb.a(this.a.this$0, "-->request timeout");
-    aikb.a(this.a.this$0, -2);
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 

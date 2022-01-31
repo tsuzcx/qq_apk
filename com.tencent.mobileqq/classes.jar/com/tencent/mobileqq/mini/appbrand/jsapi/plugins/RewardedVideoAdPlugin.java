@@ -39,8 +39,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import ysw;
-import yxr;
+import yst;
+import yxo;
 
 public class RewardedVideoAdPlugin
   extends BaseJsPlugin
@@ -149,7 +149,7 @@ public class RewardedVideoAdPlugin
     }
     try
     {
-      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
+      this.adInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString))));
       return;
     }
     catch (Throwable paramString)

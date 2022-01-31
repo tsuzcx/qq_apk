@@ -1,13 +1,25 @@
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class rdx
-  implements bfwv
+  implements ory
 {
   public rdx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a()
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    this.a.a(new rdy(this, "onListViewDrawFinished"));
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.1(this));
   }
 }
 

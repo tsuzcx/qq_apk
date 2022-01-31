@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mxa;
+import mwx;
 
 class PoiMapActivity$12
   implements Runnable
@@ -30,7 +30,7 @@ class PoiMapActivity$12
         if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_ArrayOfJavaLangString[0]))
         {
           this.this$0.l = 0;
-          this.this$0.jdField_a_of_type_ArrayOfMxa[0].b(true);
+          this.this$0.jdField_a_of_type_ArrayOfMwx[0].b(true);
         }
         if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
           break label235;

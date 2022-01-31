@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.servlet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bblm;
+import bbma;
 import mqq.app.Packet;
 
 public class MiniAppGetPhoneNumberServlet
@@ -28,7 +28,7 @@ public class MiniAppGetPhoneNumberServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetPhoneNumber");
-    paramPacket.putSendData(bblm.a((byte[])localObject));
+    paramPacket.putSendData(bbma.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

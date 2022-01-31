@@ -1,44 +1,19 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class acrn
-  extends ajxl
+  implements acrg
 {
-  public acrn(ActivateFriendView paramActivateFriendView) {}
+  public acrn(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    int i = 0;
-    for (;;)
+    if (paramInt > 0)
     {
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = bbcl.b(ActivateFriendView.a(this.a), str, false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+      this.a.a.setEnabled(true);
+      return;
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
-    {
-      String str = bbcl.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
-      i += 1;
-    }
+    this.a.a.setEnabled(false);
   }
 }
 

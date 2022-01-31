@@ -1,14 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeRecentDynamicAvatarView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
 public class assq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public ThemeRecentDynamicAvatarView a;
-  public String a;
+  public assq(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    }
+    if (MultiCardPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
+  }
 }
 
 

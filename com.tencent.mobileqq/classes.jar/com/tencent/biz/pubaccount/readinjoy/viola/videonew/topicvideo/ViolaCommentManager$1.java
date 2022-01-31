@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo;
 
 import android.view.ViewGroup;
-import rzk;
+import rzh;
 
 public class ViolaCommentManager$1
   implements Runnable
 {
-  public ViolaCommentManager$1(rzk paramrzk) {}
+  public ViolaCommentManager$1(rzh paramrzh) {}
   
   public void run()
   {
-    rzk.a(this.this$0).setPadding(0, 0, 0, 0);
+    rzh.a(this.this$0).setPadding(0, 0, 0, 0);
   }
 }
 

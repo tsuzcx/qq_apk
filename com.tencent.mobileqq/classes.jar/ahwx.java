@@ -1,83 +1,49 @@
-public final class ahwx
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class ahwx
+  implements aysc
 {
-  public final int a;
-  public final int b;
+  ahwx(ahww paramahww) {}
   
-  public ahwx(int paramInt1, int paramInt2)
+  public void onResp(aysz paramaysz)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static ahwx a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    int i = paramString.indexOf('*');
-    if (i < 0) {
-      i = paramString.indexOf('x');
+    Object localObject = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
+    if (paramaysz.jdField_a_of_type_Int != 0) {
+      lcg.c("VideoFilterTools", "download file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
     }
     for (;;)
     {
-      if (i < 0) {
-        throw a(paramString);
+      return;
+      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
+      {
+        lcg.c("VideoFilterTools", "download file failed: md5 is not match.");
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+        return;
       }
+      lcg.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
       try
       {
-        ahwx localahwx = new ahwx(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
-        return localahwx;
+        localObject = ahww.b;
+        bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, (String)localObject, false);
+        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
+        if ((ahww.a(this.a).decrementAndGet() == 0) && (ahww.a(this.a) != null))
+        {
+          ahww.a(this.a).a(true);
+          return;
+        }
       }
-      catch (NumberFormatException localNumberFormatException)
+      catch (IOException paramaysz)
       {
-        throw a(paramString);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw a(paramString);
+        paramaysz.printStackTrace();
+        lcg.c("VideoFilterTools", "unzip file failed.");
       }
     }
   }
   
-  private static NumberFormatException a(String paramString)
-  {
-    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof ahwx));
-    paramObject = (ahwx)paramObject;
-    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.a + "x" + this.b;
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

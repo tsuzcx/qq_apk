@@ -1,66 +1,71 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.35.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Conversation.39.1;
+import com.tencent.mobileqq.activity.Conversation.39.2;
+import com.tencent.mobileqq.activity.Conversation.39.3;
+import com.tencent.mobileqq.activity.Conversation.39.4;
+import com.tencent.mobileqq.activity.Conversation.39.5;
+import com.tencent.mobileqq.activity.Conversation.39.6;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aawp
-  extends ajvl
+  extends lno
 {
   public aawp(Conversation paramConversation) {}
   
-  protected void a()
+  protected void a(int paramInt, long paramLong)
   {
-    this.a.a(9, null, -2147483648);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    paramInt = muc.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    paramInt = muc.c(paramInt);
+    this.a.a(8, Long.toString(paramLong1), paramInt);
+    this.a.b(paramLong1);
+    this.a.a(new Conversation.39.1(this, paramLong1));
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, paramInt);
+    this.a.a(new Conversation.39.4(this));
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    this.a.a(new Conversation.39.6(this));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!this.a.f) {
+      return;
+    }
+    this.a.a(new Conversation.39.5(this));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    paramInt = muc.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.39.2(this, paramLong1));
     }
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  protected void c(int paramInt, long paramLong1, long paramLong2)
   {
-    this.a.a(8, Long.toString(paramLong), 3000);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
-      }
-      this.a.a(0L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
-      }
-      this.a.a(8, paramString, 3000);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
-    }
-    if (paramBoolean1) {
-      this.a.a(new Conversation.35.1(this, paramString));
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
-      }
-      this.a.a(8, paramString, 3000);
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.39.3(this, paramLong1));
     }
   }
 }

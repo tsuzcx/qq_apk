@@ -1,22 +1,31 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class adbo
-  extends AccessibilityDelegateCompat
+  implements Animation.AnimationListener
 {
-  public adbo(ListenPanel paramListenPanel) {}
+  public adbo(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (ListenPanel.a(this.a) < 1000.0D) {}
-    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131691104));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
     }
   }
 }

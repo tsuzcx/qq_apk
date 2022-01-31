@@ -1,28 +1,28 @@
-import org.json.JSONObject;
+import com.tencent.biz.subscribe.SubscribeUtils.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class wiu
-  extends JSONObject
+  implements aysc
 {
-  public wiu(wis paramwis, String paramString)
+  public wiu(SubscribeUtils.1 param1) {}
+  
+  public void onResp(aysz paramaysz)
   {
-    super(paramString);
+    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + paramaysz.c);
+    try
+    {
+      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
+      nav.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
+      gp.a(this.a.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (Exception paramaysz)
+    {
+      QLog.i("DownLoadZipFile", 1, "unzip file failed" + paramaysz);
+    }
   }
   
-  public int getInt(String paramString)
-  {
-    if (!has(paramString)) {
-      return 0;
-    }
-    return super.getInt(paramString);
-  }
-  
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
-  }
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

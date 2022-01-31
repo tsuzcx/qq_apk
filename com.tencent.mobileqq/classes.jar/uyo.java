@@ -1,30 +1,11 @@
 public class uyo
+  extends ssh
 {
-  public static ThreadLocal<StringBuilder> a = new uyp();
+  public int a;
   
-  public static String a(Object... paramVarArgs)
+  public uyo(int paramInt)
   {
-    StringBuilder localStringBuilder = (StringBuilder)a.get();
-    if (paramVarArgs.length > 0)
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramVarArgs[i];
-        if (localObject != null) {
-          localStringBuilder.append(localObject.toString());
-        }
-        i += 1;
-      }
-    }
-    return "";
-    paramVarArgs = localStringBuilder.toString();
-    if (localStringBuilder.length() > 512) {
-      a.set(new StringBuilder(512));
-    }
-    localStringBuilder.setLength(0);
-    return paramVarArgs;
+    this.a = paramInt;
   }
 }
 

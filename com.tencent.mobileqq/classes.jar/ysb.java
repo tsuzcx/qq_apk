@@ -1,25 +1,11 @@
-import com.tencent.ad.tangram.analysis.AdAnalysisAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.ad.tangram.device.AdImeiAdapter;
 
 public class ysb
-  implements AdAnalysisAdapter
+  implements AdImeiAdapter
 {
-  public String getAppVersion()
+  public String getIMEI()
   {
-    return yxv.a();
-  }
-  
-  public String getUIN()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while (localObject == null);
-    return ((AppRuntime)localObject).getAccount();
+    return bfnn.a("f4c66e");
   }
 }
 

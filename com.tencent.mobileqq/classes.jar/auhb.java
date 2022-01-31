@@ -1,29 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class auhb
-  implements Animator.AnimatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public auhb(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
-
-public class rgm
-  extends View.AccessibilityDelegate
+public abstract interface rgm
 {
-  public rgm(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
-  }
+  public abstract int a(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 

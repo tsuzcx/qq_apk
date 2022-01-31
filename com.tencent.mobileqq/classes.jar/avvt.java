@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.view.View;
 
 public abstract interface avvt
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
-  
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
-  
-  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

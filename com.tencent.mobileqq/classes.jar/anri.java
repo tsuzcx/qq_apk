@@ -1,28 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.app.QQPermissionCallback;
 
 class anri
-  implements anqn
+  implements QQPermissionCallback
 {
-  anri(anrh paramanrh) {}
+  anri(anrc paramanrc) {}
   
-  public void a(List<anyc> paramList)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
-    if (((List)localObject).size() >= ansp.a) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-    }
-    if (((List)localObject).size() >= ansp.b) {
-      axqw.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-    }
-    if (this.a.jdField_a_of_type_Anqx != null) {
-      this.a.jdField_a_of_type_Anqx.b((List)localObject);
-    }
+    bbdj.b(this.a.a);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    anrc.b(this.a);
+    axqy.b(anrc.a(this.a), "CliOper", "", "", "0X800A6D6", "0X800A6D6", 0, 0, "", "", "", "");
   }
 }
 

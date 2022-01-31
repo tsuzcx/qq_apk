@@ -1,50 +1,93 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bgof
-  implements DialogInterface.OnClickListener
 {
-  public bgof(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  private bgoh jdField_a_of_type_Bgoh;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bgof(QQAppInterface paramQQAppInterface)
   {
-    this.a.app.a().a("0X8004750", 1);
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(9));
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("topAct:");
-      if (QlinkStandardDialogActivity.a(this.a) == null) {
-        break label150;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    this.jdField_a_of_type_Bgoh = new bgoh(paramQQAppInterface);
+  }
+  
+  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
+  {
+    paramHandler = new SendMsg(paramString);
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
     }
-    label150:
-    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramHandler.a.putAll(paramString);
+    }
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramHandler.a(i);
+    if (paramLong > 0L) {
+      paramHandler.a(paramLong);
+    }
+    try
     {
-      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
-      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
-        break;
-      }
-      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
-      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
-        break;
-      }
-      this.a.finish();
+      this.jdField_a_of_type_Bgoh.a(paramHandler);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new RuntimeException("sendMsg is fail", paramString);
+    }
+  }
+  
+  public int a(String paramString, Bundle paramBundle)
+  {
+    try
+    {
+      int i = a(paramString, paramBundle, null, 0L);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null)
+    {
+      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
       return;
     }
-    apue.a(this.a, false);
-    this.a.finish();
+    localPluginCommunicationHandler.register(new bgog(this, "qlink.notify"));
   }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return true;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    return true;
+  }
+  
+  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgof
  * JD-Core Version:    0.7.0.1
  */

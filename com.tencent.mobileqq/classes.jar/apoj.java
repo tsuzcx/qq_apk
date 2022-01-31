@@ -1,71 +1,43 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
 
-public abstract class apoj
+public class apoj
+  extends apon
 {
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = true;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean d;
   
-  public abstract Intent a();
-  
-  public SessionInfo a()
+  public apoj(Context paramContext, FileManagerEntity paramFileManagerEntity)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.d = false;
   }
   
-  public ChatMessage a()
+  public Intent a()
   {
-    return null;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+      return null;
+    }
+    ForwardFileInfo localForwardFileInfo = aqcg.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localForwardFileInfo.b(10009);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("fileinfo", localForwardFileInfo);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    localIntent.putExtra("_from_aio_", this.d);
+    return localIntent;
   }
   
-  public void a(SessionInfo paramSessionInfo) {}
-  
-  public void a(ChatMessage paramChatMessage) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
+  public void a(ArrayList<String> paramArrayList)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-  }
-  
-  boolean c()
-  {
-    return false;
-  }
-  
-  boolean d()
-  {
-    return false;
-  }
-  
-  public boolean e()
-  {
-    return this.b;
-  }
-  
-  public boolean f()
-  {
-    return this.c;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

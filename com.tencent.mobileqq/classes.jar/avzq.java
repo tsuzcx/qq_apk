@@ -1,90 +1,69 @@
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class avzq
+  extends Handler
 {
-  private volatile int jdField_a_of_type_Int;
-  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private Frame[] jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame = new Frame[3];
-  private volatile int b;
-  private int c;
-  private int d;
+  protected WeakReference<avzo> a;
   
-  public int a()
+  public avzq(avzo paramavzo1, Looper paramLooper, avzo paramavzo2)
   {
-    if (Math.min(1, this.jdField_a_of_type_Int - this.b) == 1)
-    {
-      int i = this.b;
-      return this.jdField_a_of_type_ArrayOfInt[(i % 3)];
-    }
-    return -1;
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavzo2);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
-    }
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < 3)
-    {
-      if (this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] != null) {
-        this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].clear();
+    int i = paramMessage.what;
+    avzo localavzo = (avzo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localavzo == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
       }
-      i += 1;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter = new GPUBaseFilter();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.init();
-    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-    while (i < 3)
+    label187:
+    do
     {
-      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] = new Frame();
-      i += 1;
-    }
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
+      do
       {
-        this.jdField_a_of_type_Int += paramInt;
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (paramMessage.obj != null)
+          {
+            avzo.a(localavzo, (avzr)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("bundle == null");
+        case 1: 
+          if ((avzo.a(this.jdField_a_of_type_Avzo)) || (avzo.a(this.jdField_a_of_type_Avzo) == null) || (!avzo.a(this.jdField_a_of_type_Avzo).a)) {
+            break label187;
+          }
+          sendEmptyMessageDelayed(1, 100L);
+        }
+      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
+      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
+      return;
+      avzo.a(localavzo);
+      return;
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 5)) {
+          throw new IllegalArgumentException("args == null || args.length != 6");
+        }
+        localavzo.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
         return;
       }
-      finally {}
-      this.b += paramInt;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (Math.min(1, 3 - (this.jdField_a_of_type_Int - this.b)) == 1)
-    {
-      int i = this.jdField_a_of_type_Int % 3;
-      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].bindFrame(this.jdField_a_of_type_ArrayOfInt[i], this.c, this.d, 1.0D);
-      GlUtil.checkGlError("bindFrame");
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(paramInt, null, null);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glFinish();
-      a(true, 1);
-      return true;
-    }
-    return false;
+      throw new RuntimeException("bundle == null");
+    } while (avzo.a(this.jdField_a_of_type_Avzo) == null);
+    avzo.a(this.jdField_a_of_type_Avzo).a();
   }
 }
 

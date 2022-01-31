@@ -1,6 +1,10 @@
+import javax.microedition.khronos.opengles.GL10;
+
 public abstract interface almp
 {
-  public abstract void a();
+  public abstract void a(GL10 paramGL10);
+  
+  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
 }
 
 

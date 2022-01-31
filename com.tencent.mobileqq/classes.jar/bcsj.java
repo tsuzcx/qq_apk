@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-public final class bcsj
-  implements Parcelable.Creator<Workspace.SavedState>
+public class bcsj
+  extends Dialog
 {
-  public Workspace.SavedState a(Parcel paramParcel)
+  private TextView a;
+  
+  public bcsj(Context paramContext)
   {
-    return new Workspace.SavedState(paramParcel, null);
+    super(paramContext, 2131755160);
+    getWindow().setFlags(16, 16);
+    getWindow().setFlags(8, 8);
+    getWindow().setGravity(17);
+    setContentView(2131561134);
+    this.a = ((TextView)findViewById(2131377522));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      this.a.setTextColor(Color.parseColor("#FF737373"));
+    }
+    setCancelable(false);
   }
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new Workspace.SavedState[paramInt];
+    this.a.setText(paramString);
   }
 }
 

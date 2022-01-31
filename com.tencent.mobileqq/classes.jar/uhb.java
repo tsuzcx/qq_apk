@@ -1,73 +1,50 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.DrawableContainer.DrawableContainerState;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 public class uhb
-  extends uai
+  extends uaf
 {
-  public uhb(ugn paramugn) {}
+  public uhb(uha paramuha) {}
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_Two.equals(localObject))) {}
-    do
+    String str1;
+    String str2;
+    if ((paramInt1 == 20000) && (paramInt2 == -1))
     {
-      return;
-      if (paramInt1 == this.a.hashCode())
-      {
-        veg.b(this.a.b, "onActivityResult, onChooseFriendResult");
-        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-        if (localObject != null) {
-          ((VideoViewVideoHolder)localObject).c(false);
-        }
-        if (paramInt2 == -1) {
-          tti.a().a(paramIntent.getExtras());
-        }
-      }
-      if ((paramInt1 == 10002) && (paramInt2 == -1))
-      {
-        svo.b(this.a.b + " onActivityResult");
-        bcpw.a(this.a.b(), this.a.b().getString(2131719504), 1).a();
-      }
-      if ((paramInt1 == 467) && (paramInt2 == -1) && (ugn.a(this.a) != null)) {
-        ugn.a(this.a).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
-      }
-    } while (this.a.jdField_a_of_type_Tpe == null);
-    this.a.jdField_a_of_type_Tpe.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((bkur.a) && (!axli.a(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (ugn.a(this.a) - vzo.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
-    {
-      Object localObject = ugn.a(this.a).getBackground();
-      if ((localObject instanceof StateListDrawable))
-      {
-        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
-        if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167138));
-        }
-      }
+      paramIntent = BaseActivity.sActivityRoute;
+      str1 = SplashActivity.class.getSimpleName();
+      str2 = QQStoryMainActivity.class.getSimpleName();
+      paramInt1 = paramIntent.size() - 1;
     }
-  }
-  
-  public void g()
-  {
-    super.g();
-    if (ugn.a(this.a) != null) {
-      ugn.a(this.a).a();
+    for (;;)
+    {
+      String str3;
+      if (paramInt1 >= 0)
+      {
+        str3 = (String)paramIntent.get(paramInt1);
+        if (TextUtils.isEmpty(str3)) {
+          break label95;
+        }
+        if (str3.startsWith(str1)) {
+          this.a.b();
+        }
+      }
+      else
+      {
+        return;
+      }
+      if (TextUtils.equals(str3, str2))
+      {
+        this.a.c();
+        return;
+      }
+      label95:
+      paramInt1 -= 1;
     }
   }
 }

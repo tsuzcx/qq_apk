@@ -1,69 +1,29 @@
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public abstract class awlq<M extends awod, V extends awwn>
-  extends awkd<M, V>
+public class awlq
+  implements View.OnTouchListener
 {
-  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awlu> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private int c;
-  private int d;
+  public awlq(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
   
-  public awlq(ListView paramListView, baxk parambaxk, List<FTSEntity> paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramListView, parambaxk);
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = paramFTSEntitySearchDetailActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void b()
-  {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
-      a();
-    }
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = bbma.a(this.jdField_a_of_type_JavaLangString);
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if (j + 50 < this.jdField_b_of_type_JavaUtilList.size()) {
-      i = j + 50;
-    }
-    while (j < i)
+    if ((!awwa.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
     {
-      awlu localawlu = awlw.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localArrayList, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(j));
-      if (localawlu != null) {
-        this.jdField_a_of_type_JavaUtilList.add(localawlu);
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
       }
-      j += 1;
-      continue;
-      i = this.jdField_b_of_type_JavaUtilList.size();
+      return false;
     }
-    a(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    super.onScrollStateChanged(paramAbsListView, paramInt);
-    b();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

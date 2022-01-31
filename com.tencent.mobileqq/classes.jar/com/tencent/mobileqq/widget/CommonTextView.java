@@ -6,16 +6,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import bckc;
-import bcnb;
-import bcnc;
+import bckr;
+import bcnq;
+import bcnr;
 
 public class CommonTextView
   extends TextView
-  implements bcnc
+  implements bcnr
 {
-  private bckc jdField_a_of_type_Bckc;
-  private bcnb jdField_a_of_type_Bcnb;
+  private bckr jdField_a_of_type_Bckr;
+  private bcnq jdField_a_of_type_Bcnq;
   
   public CommonTextView(Context paramContext)
   {
@@ -44,9 +44,9 @@ public class CommonTextView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bcnb != null)
+    if (this.jdField_a_of_type_Bcnq != null)
     {
-      this.jdField_a_of_type_Bcnb.a(paramCanvas);
+      this.jdField_a_of_type_Bcnq.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -54,9 +54,9 @@ public class CommonTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bcnb != null)
+    if (this.jdField_a_of_type_Bcnq != null)
     {
-      this.jdField_a_of_type_Bcnb.b(paramCanvas);
+      this.jdField_a_of_type_Bcnq.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -65,27 +65,27 @@ public class CommonTextView
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Bckc != null) {
-      this.jdField_a_of_type_Bckc.a(paramView, paramInt);
+    if (this.jdField_a_of_type_Bckr != null) {
+      this.jdField_a_of_type_Bckr.a(paramView, paramInt);
     }
   }
   
-  public void setMosaicEffect(bcnb parambcnb)
+  public void setMosaicEffect(bcnq parambcnq)
   {
-    bcnb localbcnb = this.jdField_a_of_type_Bcnb;
-    if (localbcnb != null) {
-      localbcnb.a(null);
+    bcnq localbcnq = this.jdField_a_of_type_Bcnq;
+    if (localbcnq != null) {
+      localbcnq.a(null);
     }
-    this.jdField_a_of_type_Bcnb = parambcnb;
-    if (parambcnb != null) {
-      parambcnb.a(this);
+    this.jdField_a_of_type_Bcnq = parambcnq;
+    if (parambcnq != null) {
+      parambcnq.a(this);
     }
     invalidate();
   }
   
-  public void setOnVisibilityChangedListener(bckc parambckc)
+  public void setOnVisibilityChangedListener(bckr parambckr)
   {
-    this.jdField_a_of_type_Bckc = parambckc;
+    this.jdField_a_of_type_Bckr = parambckr;
   }
 }
 

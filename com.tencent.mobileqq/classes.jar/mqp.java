@@ -1,49 +1,108 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-final class mqp
-  implements bfoq
+public class mqp
 {
-  mqp(mui parammui, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static int a(int[] paramArrayOfInt, int paramInt)
   {
-    this.jdField_a_of_type_Mui.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    return a(paramArrayOfInt, paramInt, 0);
+  }
+  
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  {
+    if (paramArrayOfInt == null)
     {
-    default: 
+      paramInt2 = -1;
+      return paramInt2;
+    }
+    int i = paramInt2;
+    if (paramInt2 < 0) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i >= paramArrayOfInt.length) {
+        break label38;
+      }
+      paramInt2 = i;
+      if (paramInt1 == paramArrayOfInt[i]) {
+        break;
+      }
+      i += 1;
+    }
+    label38:
+    return -1;
+  }
+  
+  public static int a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    return a(paramArrayOfObject, paramObject, 0);
+  }
+  
+  public static int a(Object[] paramArrayOfObject, Object paramObject, int paramInt)
+  {
+    if (paramArrayOfObject == null)
+    {
+      paramInt = -1;
+      return paramInt;
+    }
+    if (paramInt < 0) {
       paramInt = 0;
     }
     for (;;)
     {
-      if (paramInt > 0) {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
-      }
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      int i;
+      if (paramObject == null)
       {
-        mqn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
-        paramInt = 3;
-      }
-      else
-      {
-        mqn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
-        paramInt = 1;
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+        i = paramInt;
+        for (;;)
         {
-          mqn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-          paramInt = 4;
-        }
-        else
-        {
-          mqn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
-          paramInt = 2;
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramArrayOfObject[i] == null) {
+            break;
+          }
+          i += 1;
         }
       }
+      if (paramArrayOfObject.getClass().getComponentType().isInstance(paramObject))
+      {
+        i = paramInt;
+        for (;;)
+        {
+          if (i >= paramArrayOfObject.length) {
+            break label82;
+          }
+          paramInt = i;
+          if (paramObject.equals(paramArrayOfObject[i])) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      label82:
+      return -1;
     }
+  }
+  
+  public static <T> boolean a(List<T> paramList, T paramT)
+  {
+    if (paramList == null) {}
+    while (paramList.indexOf(paramT) < 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(int[] paramArrayOfInt, int paramInt)
+  {
+    return a(paramArrayOfInt, paramInt) != -1;
+  }
+  
+  public static boolean a(Object[] paramArrayOfObject, Object paramObject)
+  {
+    return a(paramArrayOfObject, paramObject) != -1;
   }
 }
 

@@ -13,14 +13,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import tdc;
-import tdo;
-import uvi;
-import uvj;
-import vxs;
+import tcz;
+import tdl;
+import uvf;
+import uvg;
+import vxp;
 
 public class BannerFeedItem
-  extends CommentLikeFeedItem<uvj, QQUserUIItem>
+  extends CommentLikeFeedItem<uvg, QQUserUIItem>
 {
   public String blurb;
   public String content;
@@ -31,7 +31,7 @@ public class BannerFeedItem
   public long recommendId = -1L;
   public String recommendTitle = "";
   public String schema;
-  public uvi shareInfo = new uvi();
+  public uvf shareInfo = new uvf();
   
   protected int assignType()
   {
@@ -75,8 +75,8 @@ public class BannerFeedItem
     this.feedId = paramString;
     paramString = new QQUserUIItem();
     paramString.convertFrom((qqstory_struct.UserInfo)paramBannerFeed.user.get());
-    this.mOwner = ((tdo)tdc.a(2)).a(paramString);
-    vxs.a(this.mOwner);
+    this.mOwner = ((tdl)tcz.a(2)).a(paramString);
+    vxp.a(this.mOwner);
     this.ownerId = this.mOwner.getUnionId();
     this.date = String.valueOf(paramBannerFeed.date.get());
     super.setDate(this.date);
@@ -186,9 +186,9 @@ public class BannerFeedItem
   }
   
   @NonNull
-  public uvj generateHomeFeed()
+  public uvg generateHomeFeed()
   {
-    return new uvj(this);
+    return new uvg(this);
   }
   
   public int getCommentLikeType()
@@ -208,7 +208,7 @@ public class BannerFeedItem
   protected void onCovertFromEntry()
   {
     super.onCovertFromEntry();
-    this.mOwner = ((tdo)tdc.a(2)).a(this.ownerId);
+    this.mOwner = ((tdl)tcz.a(2)).a(this.ownerId);
   }
   
   public void readFromLocalByte(byte[] paramArrayOfByte)

@@ -1,15 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import android.graphics.drawable.Drawable;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class apqv
-  implements apjn
+class apqv
+  implements bfqu
 {
-  public apqv(SimpleFileViewer paramSimpleFileViewer) {}
+  apqv(apqu paramapqu) {}
   
-  public void a()
+  public void F()
   {
-    if (SimpleFileViewer.d(this.a) != null) {
-      SimpleFileViewer.d(this.a).setVisibility(8);
+    apqu.a(this.a, false);
+    this.a.jdField_a_of_type_Apqs.o();
+  }
+  
+  public void G()
+  {
+    apqu.a(this.a, false);
+    if (apqu.a(this.a)) {
+      this.a.b(true);
+    }
+    if (apqu.b(this.a)) {
+      this.a.a(true);
+    }
+  }
+  
+  public void H() {}
+  
+  public void a(float paramFloat)
+  {
+    apqu.a(this.a, true);
+    if (apqu.a(this.a) != null)
+    {
+      Drawable localDrawable = apqu.a(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      }
+    }
+    if (paramFloat < 0.8F)
+    {
+      if (apqu.a(this.a) != null) {
+        apqu.a(this.a).setVisibility(8);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      }
     }
   }
 }

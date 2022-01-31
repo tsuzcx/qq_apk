@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
 public final class alkp
-  implements Parcelable.Creator<ArDefaultSetting>
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public ArDefaultSetting a(Parcel paramParcel)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    return new ArDefaultSetting(paramParcel);
+    return new ArFeatureInfo(paramParcel);
   }
   
-  public ArDefaultSetting[] a(int paramInt)
+  public ArFeatureInfo[] a(int paramInt)
   {
-    return new ArDefaultSetting[paramInt];
+    return new ArFeatureInfo[paramInt];
   }
 }
 

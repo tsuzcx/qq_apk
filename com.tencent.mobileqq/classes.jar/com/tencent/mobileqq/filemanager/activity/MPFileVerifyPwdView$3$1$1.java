@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.graphics.Color;
 import android.widget.TextView;
-import aopc;
+import aoph;
 
 class MPFileVerifyPwdView$3$1$1
   implements Runnable

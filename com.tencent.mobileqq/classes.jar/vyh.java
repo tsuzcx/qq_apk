@@ -1,9 +1,20 @@
-final class vyh
-  extends tgq
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+
+public class vyh
+  implements DialogInterface.OnClickListener
 {
-  public String a()
+  public vyh(FileUtils.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return ssv.n;
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

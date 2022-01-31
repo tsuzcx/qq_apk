@@ -1,23 +1,149 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class aoik
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public aoik(ExtendFriendSquareFragment paramExtendFriendSquareFragment, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private bfnk jdField_a_of_type_Bfnk = new bfnk(ThreadManager.getFileThreadLooper(), this);
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  WeakReference<aoil> b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aoik(QQAppInterface paramQQAppInterface)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
+  }
+  
+  private void b()
+  {
+    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {}
+    do
+    {
+      return;
+      ??? = bbdx.a(String.format("%s%s", new Object[] { "extend_frd_search_history_", ((QQAppInterface)???).getCurrentAccountUin() }));
+    } while (this.jdField_a_of_type_Boolean);
+    if ((??? != null) && ((??? instanceof List))) {}
+    for (??? = (List)???;; ??? = null)
+    {
+      Object localObject2 = ???;
+      if (??? == null) {
+        localObject2 = new ArrayList();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          break label191;
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+      }
+      this.jdField_a_of_type_Boolean = true;
+      label191:
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
+          break;
+        }
+        ((aoil)this.b.get()).n();
+        return;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
       return;
     }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = (int)(-this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j * f);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    bbdx.a(String.format("%s%s", new Object[] { "extend_frd_search_history_", localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.b != null) && (this.b.get() != null)) {
+        ((aoil)this.b.get()).n();
+      }
+      if (!this.jdField_a_of_type_Bfnk.hasMessages(0)) {
+        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(0, 300L);
+      }
+      return;
+    }
+  }
+  
+  public void a(aoil paramaoil)
+  {
+    if (paramaoil != null)
+    {
+      this.b = new WeakReference(paramaoil);
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        b();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+        if ((this.b != null) && (this.b.get() != null)) {
+          ((aoil)this.b.get()).n();
+        }
+        if (this.jdField_a_of_type_Bfnk.hasMessages(0)) {
+          continue;
+        }
+        this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(0, 300L);
+        return;
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+    }
   }
 }
 

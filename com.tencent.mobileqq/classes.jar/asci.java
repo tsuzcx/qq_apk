@@ -1,15 +1,8 @@
-public class asci
+public abstract interface asci
 {
-  public int a;
-  public long a;
-  public aduu a;
-  public ascg a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  public abstract void a(adus paramadus);
   
-  public asci(ascc paramascc) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

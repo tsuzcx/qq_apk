@@ -1,24 +1,13 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
-
-public class tuv
-  implements View.OnKeyListener
+class tuv
+  implements tzr
 {
-  public tuv(StoryPlayerFragment paramStoryPlayerFragment) {}
+  tuv(tut paramtut) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
-    }
-    return false;
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

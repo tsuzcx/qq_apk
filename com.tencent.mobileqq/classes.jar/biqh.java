@@ -1,39 +1,10 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import android.widget.EditText;
 
-public abstract class biqh
-  implements ajtg
+public abstract interface biqh
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, bisc parambisc) {}
-  
-  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (bisc)paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    case 3: 
-      a(paramBoolean, ((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a(paramBoolean, (GetFontDataRsp)paramObject);
-      return;
-    }
-    b(paramBoolean, ((Integer)paramObject).intValue());
-  }
+  public abstract void a(int paramInt, String paramString, EditText paramEditText);
 }
 
 

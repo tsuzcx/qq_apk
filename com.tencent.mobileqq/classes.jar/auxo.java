@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
 
 public class auxo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public auxo(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxo(StickyNotePublishFragment paramStickyNotePublishFragment, auxl paramauxl) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(0);
-    StickyNotePublishFragment.a(this.a).requestFocus();
-    bfmr.a(StickyNotePublishFragment.a(this.a));
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Auxl).sendToTarget();
+    axqy.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
   }
 }
 

@@ -1,38 +1,37 @@
-public final class azmp
+import NearbyGroup.GroupInfo;
+import NearbyGroup.GroupLabel;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import java.util.ArrayList;
+
+public class azmp
+  extends aimt
 {
   public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  public GroupInfo a;
+  public View a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public TroopLabelLayout a;
+  public ArrayList<GroupLabel> a;
+  public int b = 2;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public TroopLabelLayout b;
+  public String b;
+  public TextView c;
   public int d;
-  
-  public static azmp a(int paramInt1, long paramLong, int paramInt2)
-  {
-    azmp localazmp = new azmp();
-    localazmp.jdField_a_of_type_Int = azmo.jdField_a_of_type_Int;
-    if ((paramInt1 == 1) || (paramInt1 == 22) || (paramInt1 == 17) || (paramInt1 == 100) || (paramInt1 == 11) || (paramInt1 == 10)) {
-      localazmp.jdField_a_of_type_Long = paramLong;
-    }
-    for (;;)
-    {
-      localazmp.c = paramInt1;
-      localazmp.d = paramInt2;
-      return localazmp;
-      localazmp.b = paramLong;
-    }
-  }
-  
-  public long a()
-  {
-    if ((this.c == 1) || (this.c == 22) || (this.c == 17) || (this.c == 100) || (this.c == 11)) {
-      return this.jdField_a_of_type_Long;
-    }
-    return this.b;
-  }
+  public TextView d;
+  public TextView e;
 }
 
 

@@ -1,16 +1,16 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.FixSizeImageView;
+import com.tencent.widget.SingleLineTextView;
 
 public class aile
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
-  Switch jdField_a_of_type_ComTencentWidgetSwitch;
+  public ayao a;
+  public DragTextView a;
+  public FixSizeImageView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
+  
+  public aile(aild paramaild) {}
 }
 
 

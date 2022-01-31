@@ -1,9 +1,8 @@
-import PersonalState.UserProfile;
-import java.util.List;
+import android.graphics.Bitmap;
 
 public abstract interface awcf
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
+  public abstract void a(int paramInt1, int paramInt2, Bitmap paramBitmap);
 }
 
 

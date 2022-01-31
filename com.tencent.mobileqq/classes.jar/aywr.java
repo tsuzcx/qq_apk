@@ -1,27 +1,20 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+
 public class aywr
+  extends ayoi
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  
-  public String toString()
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("VideoSliceInfo\n");
-    localStringBuilder.append("mIndex=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mVideoDuration=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mEncodeFinish=").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mVideoPath(").append(this.jdField_c_of_type_Int + "*" + this.d).append(")=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mVideoMd5=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",mSendClicked=").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mVideoSyncStory=").append(this.jdField_c_of_type_Boolean);
-    return localStringBuilder.toString();
+    return new File(ajsd.aV);
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return aglb.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new ayws(this));
   }
 }
 

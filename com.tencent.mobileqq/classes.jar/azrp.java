@@ -1,18 +1,29 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class azrp
-  implements ayby
+class azrp
+  implements View.OnTouchListener
 {
-  public azrp(TroopEnterEffectController.3 param3) {}
+  azrp(azrn paramazrn, String paramString, azrw paramazrw) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.this$0.a.getLayoutParams();
-    localLayoutParams.width = paramInt1;
-    localLayoutParams.height = paramInt2;
-    this.a.this$0.a.setLayoutParams(localLayoutParams);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      paramView = new Intent(this.jdField_a_of_type_Azrn.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = bbqd.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Azrn.b);
+      this.jdField_a_of_type_Azrn.a.getContext().startActivity(paramView);
+      azry.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Azrn.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Azrw.a), "");
+    }
+    return true;
   }
 }
 

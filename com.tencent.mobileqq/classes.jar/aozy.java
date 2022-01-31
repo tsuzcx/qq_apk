@@ -1,17 +1,38 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class aozy
-  implements TVK_SDKMgr.InstallListener
+  implements apaa
 {
-  aozy(aozx paramaozx, apac paramapac) {}
+  private bgbd jdField_a_of_type_Bgbd = new bgbd();
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt) {}
-  
-  public void onInstalledSuccessed()
+  public aozy(aozx paramaozx)
   {
-    this.jdField_a_of_type_Apac.b();
+    this.jdField_a_of_type_Bgbd.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bgbd.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bgbg.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bgbd.b();
   }
 }
 

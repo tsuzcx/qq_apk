@@ -1,29 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.text.TextUtils;
 
-public final class bhek
-  implements Parcelable.Creator<CoverCacheData.PackageInfo>
+public class bhek
+  extends bheh
 {
-  public CoverCacheData.PackageInfo a(Parcel paramParcel)
+  public boolean a()
   {
-    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
-    if (paramParcel != null)
-    {
-      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localPackageInfo.d = paramParcel.readString();
-    }
-    return localPackageInfo;
-  }
-  
-  public CoverCacheData.PackageInfo[] a(int paramInt)
-  {
-    return null;
+    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import nnx;
+import nnu;
 
 class Conversation$23
   implements Runnable
@@ -9,7 +9,7 @@ class Conversation$23
   
   public void run()
   {
-    nnx.a().a(this.this$0.a);
+    nnu.a().a(this.this$0.a);
   }
 }
 

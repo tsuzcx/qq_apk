@@ -1,21 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class afdv
-  implements View.OnClickListener
+class afdv
+  extends akui
 {
-  public afdv(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  afdv(afdu paramafdu, String paramString)
+  {
+    super(paramString);
+  }
   
-  public void onClick(View paramView)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
     }
-    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
-    this.a.getActivity().requestPermissions(new afdw(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
+    }
+    this.a.a.a.a.a(false);
   }
 }
 

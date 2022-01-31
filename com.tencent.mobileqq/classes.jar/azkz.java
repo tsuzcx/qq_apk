@@ -1,35 +1,14 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import android.os.Bundle;
 import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class azkz
-  implements View.OnFocusChangeListener
+  implements bcqa
 {
   public azkz(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      paramView = this.a.a();
-      if (paramView != null)
-      {
-        paramView.d(true);
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131375187, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
-    }
-  }
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 

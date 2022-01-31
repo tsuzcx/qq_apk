@@ -1,65 +1,63 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupDynamicEntrancePicture;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
 
 public class acgh
-  implements Comparator<RecentBaseData>
+  extends mxh
 {
   public acgh(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (((paramRecentBaseData1 instanceof RecentTroopAssistantItem)) && ((paramRecentBaseData2 instanceof RecentTroopAssistantItem)))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(52);
-      boolean bool1 = localTroopManager.b(paramRecentBaseData1.a());
-      boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());
-      if ((bool1) && (!bool2)) {
-        return -1;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get error:" + paramInt);
       }
-      if ((!bool1) && (bool2)) {
-        return 1;
-      }
-      long l2;
-      long l1;
-      if ((!bool1) && (!bool2))
-      {
-        l2 = Math.max(paramRecentBaseData1.a(), paramRecentBaseData1.b());
-        l1 = Math.max(paramRecentBaseData2.a(), paramRecentBaseData2.b());
-        if (l2 <= l1) {
-          break label173;
-        }
-        l1 = 3L;
-      }
-      for (;;)
-      {
-        l1 = (int)(l1 | 0) - (int)(0x2 | 0);
-        if (l1 != 0L) {
-          break label195;
-        }
-        return 0;
-        l2 = paramRecentBaseData1.mDisplayTime;
-        l1 = paramRecentBaseData2.mDisplayTime;
-        break;
-        label173:
-        if (l2 < l1) {
-          l1 = 1L;
-        } else {
-          l1 = 2L;
-        }
-      }
-      label195:
-      if (l1 < 0L) {
-        return 1;
-      }
-      return -1;
+      paramArrayOfByte = null;
     }
-    return 0;
+    for (;;)
+    {
+      return paramArrayOfByte;
+      try
+      {
+        qqstory_group.RspGetGroupDynamicEntrancePicture localRspGetGroupDynamicEntrancePicture = new qqstory_group.RspGetGroupDynamicEntrancePicture();
+        localRspGetGroupDynamicEntrancePicture.mergeFrom(paramArrayOfByte);
+        paramBundle = (qqstory_struct.ErrorInfo)localRspGetGroupDynamicEntrancePicture.result.get();
+        paramArrayOfByte = paramBundle;
+        if (localRspGetGroupDynamicEntrancePicture.cover_url.has())
+        {
+          paramArrayOfByte = localRspGetGroupDynamicEntrancePicture.cover_url.get().toStringUtf8();
+          if (TextUtils.isEmpty(paramArrayOfByte))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + ": picUrl is Empty");
+            }
+          }
+          else
+          {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+            vzl.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramArrayOfByte, 68, 68, 4, vzl.b, "TroopStorySnap");
+            return paramBundle;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAssistantActivity", 2, TroopAssistantActivity.jdField_a_of_type_JavaLangString + " get exception:" + paramArrayOfByte.getMessage());
+        }
+        return null;
+      }
+    }
+    return null;
   }
 }
 

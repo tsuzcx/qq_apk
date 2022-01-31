@@ -1,29 +1,64 @@
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
-class mmr
-  implements Observer
+public class mmr
+  extends PagerAdapter
 {
-  private final WeakReference<mmn> a;
+  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
   
-  mmr(mmn parammmn)
+  public mmr(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
   {
-    this.a = new WeakReference(parammmn);
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
+    paramPagerAdapter.registerDataSetObserver(new mms(this, paramEffectCycleViewPager));
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  int a(int paramInt)
   {
-    paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
-    {
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
     }
-    do
-    {
-      return;
-      paramObject = (mmn)this.a.get();
-    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
-    paramObject.a();
+    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
+      return 0;
+    }
+    return paramInt - 1;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    int i = a(paramInt);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
+    if (i > 0) {
+      return i + 2;
+    }
+    return 0;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    int i = a(paramInt);
+    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
+    return paramViewGroup;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
+    super.notifyDataSetChanged();
   }
 }
 

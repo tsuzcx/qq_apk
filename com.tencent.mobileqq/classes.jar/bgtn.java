@@ -1,17 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class bgtn
-  implements aptu
+  implements FilenameFilter
 {
-  bgtn(bgtm parambgtm, Activity paramActivity, Intent paramIntent) {}
+  bgtn(bgtm parambgtm) {}
   
-  public void a()
+  public boolean accept(File paramFile, String paramString)
   {
-    aqbc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
+    return (paramFile != null) && (paramFile.isDirectory()) && (bgtm.a(this.a).matcher(paramString).matches());
   }
-  
-  public void b() {}
 }
 
 

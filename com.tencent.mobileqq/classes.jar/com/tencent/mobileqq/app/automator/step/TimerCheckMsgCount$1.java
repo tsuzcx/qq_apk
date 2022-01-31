@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import akpc;
-import bhvh;
+import akpb;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
-import ond;
+import ona;
 
 class TimerCheckMsgCount$1
   implements Runnable
@@ -20,8 +20,8 @@ class TimerCheckMsgCount$1
     this.this$0.a.app.a().l();
     ((HotChatManager)this.this$0.a.app.getManager(60)).b();
     this.this$0.a.app.a().c();
-    if (!bhvh.m(this.this$0.a.app)) {}
-    while (!((Boolean)bhvh.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
+    if (!bhvy.m(this.this$0.a.app)) {}
+    while (!((Boolean)bhvy.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
     {
       return;
       try
@@ -36,7 +36,7 @@ class TimerCheckMsgCount$1
     }
     try
     {
-      ond.a();
+      ona.a();
       return;
     }
     catch (Exception localException2)

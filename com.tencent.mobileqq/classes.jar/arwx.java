@@ -1,31 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnHoverListener;
-import android.view.accessibility.AccessibilityManager;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.location.ui.LocationPickFragment;
 import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 
 public class arwx
-  implements View.OnHoverListener
+  implements View.OnKeyListener
 {
-  public arwx(LocationPickFragment paramLocationPickFragment) {}
+  public arwx(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
-    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
+    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
     {
-      if (paramView.requestFocus()) {
-        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
-      }
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      axqw.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+      return true;
+    }
+    if ((paramInt == 84) || (paramInt == 66))
+    {
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
+      return true;
     }
     return false;
   }

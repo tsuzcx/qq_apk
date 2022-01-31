@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aqrl;
-import aukm;
-import auma;
+import aqrn;
+import auko;
+import aumc;
 import org.json.JSONObject;
 
 public class PadFaceAd
-  extends aukm
+  extends auko
   implements Parcelable
 {
-  public static final Parcelable.Creator<PadFaceAd> CREATOR = new aqrl();
+  public static final Parcelable.Creator<PadFaceAd> CREATOR = new aqrn();
   public String appName;
   public String appVersion;
   public String appView;
   public String arkMeta;
   public long endTime;
-  @auma
+  @aumc
   public int padFaceId;
   public int redPointId;
   public long startTime;

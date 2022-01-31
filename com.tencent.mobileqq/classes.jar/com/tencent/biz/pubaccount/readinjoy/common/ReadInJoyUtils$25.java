@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import ajsf;
-import bfnr;
+import ajsd;
+import bfoi;
 
 public final class ReadInJoyUtils$25
   implements Runnable
 {
   public void run()
   {
-    bfnr.a().b(ajsf.Q);
+    bfoi.a().b(ajsd.Q);
   }
 }
 

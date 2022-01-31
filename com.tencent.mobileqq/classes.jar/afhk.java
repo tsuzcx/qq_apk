@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-
-public class afhk
-  implements aftp
+public abstract interface afhk
 {
-  public afhk(TroopView paramTroopView) {}
-  
-  public long a()
-  {
-    return TroopView.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

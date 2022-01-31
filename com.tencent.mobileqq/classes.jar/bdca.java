@@ -1,10 +1,29 @@
-public abstract interface bdca
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+
+public class bdca
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public bdca(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    if (System.currentTimeMillis() - OpenAuthorityFragment.a(this.a) > 1000L)
+    {
+      this.a.a.a.setClickable(false);
+      paramView = new Intent();
+      paramView.putExtra("appid", OpenAuthorityFragment.a(this.a));
+      paramView.putExtra("public_fragment_window_feature", 1);
+      abtq.a(this.a.getActivity(), paramView, PublicFragmentActivityForOpenSDK.class, CreateVirtualAccountFragment.class, 101);
+      this.a.a.a.setClickable(true);
+    }
+    OpenAuthorityFragment.a(this.a, System.currentTimeMillis());
+  }
 }
 
 

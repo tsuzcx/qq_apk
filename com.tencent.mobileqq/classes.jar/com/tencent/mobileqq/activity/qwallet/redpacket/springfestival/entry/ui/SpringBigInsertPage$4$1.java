@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahgn;
-import ahgr;
-import ahih;
+import ahgl;
+import ahgp;
+import ahif;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bbkx;
-import bgwk;
+import bbll;
+import bgxb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
@@ -19,13 +19,13 @@ import com.tencent.qphone.base.util.QLog;
 public class SpringBigInsertPage$4$1
   implements Runnable
 {
-  public SpringBigInsertPage$4$1(ahgr paramahgr, PreloadManager.PathResult paramPathResult) {}
+  public SpringBigInsertPage$4$1(ahgp paramahgp, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
     QLog.d("SpringBigInsertPage", 2, "show insert page...");
-    bgwk.a(ahgn.a(this.jdField_a_of_type_Ahgr.a));
-    ahgn.a(this.jdField_a_of_type_Ahgr.a).addView(ahgn.a(this.jdField_a_of_type_Ahgr.a));
+    bgxb.a(ahgl.a(this.jdField_a_of_type_Ahgp.a));
+    ahgl.a(this.jdField_a_of_type_Ahgp.a).addView(ahgl.a(this.jdField_a_of_type_Ahgp.a));
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     localObject1 = URLDrawable.getFileDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (URLDrawable.URLDrawableOptions)localObject1);
     try
@@ -34,14 +34,14 @@ public class SpringBigInsertPage$4$1
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (BitmapFactory.Options)localObject2);
       QLog.d("SpringBigInsertPage", 2, "bitmap w: " + ((BitmapFactory.Options)localObject2).outWidth + ", h: " + ((BitmapFactory.Options)localObject2).outHeight);
-      int i = bbkx.a();
+      int i = bbll.a();
       i = (int)(((BitmapFactory.Options)localObject2).outHeight * 1.0F / ((BitmapFactory.Options)localObject2).outWidth * i);
       if (i > 0)
       {
         QLog.d("SpringBigInsertPage", 2, "calc height: " + i);
-        localObject2 = ahgn.a(this.jdField_a_of_type_Ahgr.a).getLayoutParams();
+        localObject2 = ahgl.a(this.jdField_a_of_type_Ahgp.a).getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).height = i;
-        ahgn.a(this.jdField_a_of_type_Ahgr.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ahgl.a(this.jdField_a_of_type_Ahgp.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
     catch (Throwable localThrowable)
@@ -51,9 +51,9 @@ public class SpringBigInsertPage$4$1
         localThrowable.printStackTrace();
       }
     }
-    ahgn.a(this.jdField_a_of_type_Ahgr.a).setBackgroundDrawable((Drawable)localObject1);
-    ahgn.a(ahgn.b(this.jdField_a_of_type_Ahgr.a));
-    ahih.a("sq.cptp", 0, 0, null, true);
+    ahgl.a(this.jdField_a_of_type_Ahgp.a).setBackgroundDrawable((Drawable)localObject1);
+    ahgl.a(ahgl.b(this.jdField_a_of_type_Ahgp.a));
+    ahif.a("sq.cptp", 0, 0, null, true);
   }
 }
 

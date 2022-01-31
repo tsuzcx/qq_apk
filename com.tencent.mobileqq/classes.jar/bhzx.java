@@ -1,60 +1,69 @@
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_rsp;
 import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bhzx
-  extends MSFServlet
+  extends bhzs
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public QQAppInterface a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label151:
-    do
-    {
-      do
-      {
-        return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label151;
-        }
-      }
-      for (String str1 = "";; str1 = "not")
-      {
-        QLog.d("MonitorServlet", 2, str1 + " success");
-        if (!str2.equals("TianShu.UserActionMultiReport")) {
-          break;
-        }
-        bhzv.a().a(paramIntent, paramFromServiceMsg);
-        return;
-      }
-    } while (!str2.equals("TianShu.GetAds"));
-    bhzv.a().b(paramIntent, paramFromServiceMsg);
+    return null;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public QzoneExternalRequest a(Intent paramIntent)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    String str = paramIntent.getStringExtra("cmd");
-    long l = paramIntent.getLongExtra("timeout", 10000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
+    return new bhzy(this, paramIntent);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong1);
+    localIntent.putExtra("friendUin", paramLong2);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    Object localObject = a();
+    int i;
+    if (localObject != null)
+    {
+      localObject = (aqkh)((QQAppInterface)localObject).a(153);
+      paramIntent = String.valueOf(paramIntent.getLongExtra("friendUin", -1L));
+      if (paramFromServiceMsg == null) {
+        break label98;
+      }
+      i = paramFromServiceMsg.getResultCode();
     }
+    while (i == 1000)
+    {
+      paramFromServiceMsg = (sweet_pair_byebye_rsp)bhoz.a(paramFromServiceMsg.getWupBuffer(), "sweet_pair_byebye");
+      if (paramFromServiceMsg != null)
+      {
+        paramFromServiceMsg = paramFromServiceMsg.rsp_comm;
+        if (paramFromServiceMsg.retcode == 0) {
+          ((aqkh)localObject).a(true, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+        }
+      }
+      else
+      {
+        return;
+        label98:
+        i = -1;
+        continue;
+      }
+      ((aqkh)localObject).a(false, paramFromServiceMsg.retcode, paramFromServiceMsg.errmsg, paramIntent);
+      return;
+    }
+    ((aqkh)localObject).a(false, -1, null, null);
   }
 }
 

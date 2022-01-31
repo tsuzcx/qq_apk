@@ -1,67 +1,18 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.widget.ThemeImageView;
-import java.lang.ref.WeakReference;
 
-class aoge
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public final class aoge
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  int jdField_a_of_type_Int;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  MiniAppRecommInfo.MiniApp jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public aoge(Activity paramActivity, View paramView)
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
   {
-    super(paramView);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370309));
-    if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(bfwa.c);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370310));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
   }
   
-  public void a(int paramInt)
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(MiniAppRecommInfo.MiniApp paramMiniApp)
-  {
-    if (paramMiniApp == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp = paramMiniApp;
-    Drawable localDrawable = MiniAppUtils.getIcon(this.jdField_a_of_type_AndroidWidgetImageView.getContext(), paramMiniApp.c, true, 2130840788, 48);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMiniApp.b);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp != null) && (this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
-    {
-      paramView = new MiniAppConfig(this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      paramView.launchParam = new LaunchParam();
-      paramView.launchParam.scene = 2065;
-      MiniAppController.startApp((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramView, null);
-      aogd.a(102, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqExtendfriendBeanMiniAppRecommInfo$MiniApp.jdField_a_of_type_Int);
-    }
+    return new MiniAppRecommInfo.MiniApp[paramInt];
   }
 }
 

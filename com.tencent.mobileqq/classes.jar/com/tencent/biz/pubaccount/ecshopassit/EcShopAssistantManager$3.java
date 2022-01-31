@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import aukn;
-import auko;
+import aukp;
+import aukq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nqq;
+import nqn;
 
 public class EcShopAssistantManager$3
   implements Runnable
 {
-  public EcShopAssistantManager$3(nqq paramnqq, String paramString) {}
+  public EcShopAssistantManager$3(nqn paramnqn, String paramString) {}
   
   public void run()
   {
-    aukn localaukn = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (nqq.a(this.this$0, localaukn, this.a)) {
-      nqq.a(this.this$0, this.a);
+    aukp localaukp = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (nqn.a(this.this$0, localaukp, this.a)) {
+      nqn.a(this.this$0, this.a);
     }
-    localaukn.a();
+    localaukp.a();
   }
 }
 

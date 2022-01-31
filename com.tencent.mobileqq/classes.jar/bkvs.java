@@ -1,29 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
 
 public class bkvs
-  extends AnimatorListenerAdapter
+  extends Handler
 {
-  public bkvs(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
+  public bkvs(BeautyBar paramBeautyBar) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    switch (paramMessage.what)
+    {
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
-    }
+    do
+    {
+      return;
+      if (BeautyBar.a(this.a) != null) {
+        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+      }
+    } while (BeautyBar.a(this.a) == null);
+    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
   }
 }
 

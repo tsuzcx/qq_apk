@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class vfh
-  implements Parcelable.Creator<EditLocalVideoSource>
+public class vfh
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public static String a;
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public static boolean a(long paramLong, Context paramContext)
   {
-    return new EditLocalVideoSource[paramInt];
+    a = ajwa.a + "QQEditPic" + File.separator;
+    paramContext = new File(a);
+    boolean bool1 = paramContext.mkdirs();
+    boolean bool2 = paramContext.isDirectory();
+    if (QLog.isColorLevel()) {
+      QLog.e("initDirs", 2, "thumbFilesDirPath=" + bool1 + " isdir=" + bool2);
+    }
+    return (bool1) || (bool2);
   }
 }
 

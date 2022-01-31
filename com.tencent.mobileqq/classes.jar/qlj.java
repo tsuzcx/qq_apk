@@ -1,72 +1,30 @@
-import android.content.Context;
-import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class qlj
+class qlj
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private static String jdField_a_of_type_JavaLangString = qlj.class.getSimpleName();
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
-  private HashMap<Integer, qlq> jdField_a_of_type_JavaUtilHashMap;
-  private qlp jdField_a_of_type_Qlp;
-  private qlr jdField_a_of_type_Qlr;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  qlj(qlg paramqlg) {}
   
-  public qlj(Context paramContext, String paramString, HashMap<Integer, qlq> paramHashMap, long paramLong)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void c()
-  {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, "", "");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new qlk(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new qll(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new qlm(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new qln(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnExtractFrameListener(new qlo(this));
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, 0L, 0L, localTVK_PlayerVideoInfo);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, null);
-    this.jdField_a_of_type_Qlr = new qlr(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Qlr.sendEmptyMessageDelayed(1, this.jdField_a_of_type_Long);
-    c();
-  }
-  
-  public void a(qlp paramqlp)
-  {
-    this.jdField_a_of_type_Qlp = paramqlp;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Qlr != null)
-    {
-      this.jdField_a_of_type_Qlr.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Qlr = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(qlg.a(), 2, "播放器状态回调 onVideoPrepared");
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+    qlg.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = qlg.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
     }
-    this.jdField_a_of_type_Qlp = null;
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
+    qlg.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    qlg.a(this.a).start();
   }
 }
 

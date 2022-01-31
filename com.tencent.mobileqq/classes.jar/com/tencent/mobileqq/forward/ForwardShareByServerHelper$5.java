@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.forward;
 
-import aqft;
-import aqgh;
-import bbcv;
-import bbgg;
+import aqfv;
+import aqgj;
+import bbdj;
+import bbgu;
 
 public class ForwardShareByServerHelper$5
   implements Runnable
 {
-  public ForwardShareByServerHelper$5(aqft paramaqft, String paramString) {}
+  public ForwardShareByServerHelper$5(aqfv paramaqfv, String paramString) {}
   
   public void run()
   {
-    aqgh.a("KEY_STAGE_2_TOTAL", false);
-    if (aqft.a(this.this$0) == null) {
-      aqft.a(this.this$0, bbcv.a(aqft.a(this.this$0), 230));
+    aqgj.a("KEY_STAGE_2_TOTAL", false);
+    if (aqfv.a(this.this$0) == null) {
+      aqfv.a(this.this$0, bbdj.a(aqfv.a(this.this$0), 230));
     }
-    aqft.a(this.this$0).setMessage(this.a);
-    aqft.a(this.this$0).setPositiveButton(2131694793, this.this$0.a);
-    aqft.a(this.this$0).show();
+    aqfv.a(this.this$0).setMessage(this.a);
+    aqfv.a(this.this$0).setPositiveButton(2131694794, this.this$0.a);
+    aqfv.a(this.this$0).show();
   }
 }
 

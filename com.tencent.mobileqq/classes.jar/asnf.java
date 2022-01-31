@@ -1,35 +1,25 @@
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class asnf
-  implements bcsv
+  implements bctk
 {
-  public asnf(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public asnf(MsgBackupQRFragment paramMsgBackupQRFragment) {}
   
   public void a(View paramView, int paramInt)
   {
-    int i = 2;
-    if (paramInt == 1)
+    switch (paramInt)
     {
-      asog.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(asle.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      asoe.a("0X800A242", paramInt);
-    }
-    for (;;)
-    {
-      this.a.onBackEvent();
+    default: 
       return;
-      label79:
-      if ((asle.c) && (askt.a().a() == 1)) {
-        asoe.a("0X800A266", 5);
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
+    }
+    aslg.a().d();
+    this.a.onBackEvent();
+    asog.a("0X800A242", 4);
   }
 }
 

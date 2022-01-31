@@ -1,40 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
-import cooperation.qzone.contentbox.BaseMsgView;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bhcc
-  extends Handler
+public abstract interface bhcc
 {
-  private WeakReference<BaseMsgView> a;
+  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
   
-  public bhcc(BaseMsgView paramBaseMsgView)
-  {
-    this.a = new WeakReference(paramBaseMsgView);
-  }
+  public abstract void clearCache();
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
-    if (localBaseMsgView == null) {}
-    ViewPager localViewPager;
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        localBaseMsgView.a(paramMessage);
-        return;
-      }
-      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
-    } while (localViewPager == null);
-    int i = paramMessage.arg1;
-    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
-    localBaseMsgView.a();
-  }
+  public abstract void forceRefresh();
+  
+  public abstract void onSwitchOutofQzone();
+  
+  public abstract void resetReportFlag();
+  
+  public abstract void setQzoneSwitchlistener(agcb paramagcb);
+  
+  public abstract void setRightButtonType(int paramInt);
+  
+  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
+  
+  public abstract void setTitleView(ViewGroup paramViewGroup);
+  
+  public abstract void updatePublishBox(Intent paramIntent);
 }
 
 

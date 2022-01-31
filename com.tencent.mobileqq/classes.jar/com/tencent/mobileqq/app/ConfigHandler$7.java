@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import acys;
-import ajuf;
+import acyp;
+import ajud;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -12,11 +12,11 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$7
   implements Runnable
 {
-  public ConfigHandler$7(ajuf paramajuf, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
+  public ConfigHandler$7(ajud paramajud, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
   
   public void run()
   {
-    if (!ajuf.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
+    if (!ajud.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
@@ -32,11 +32,11 @@ public class ConfigHandler$7
       }
       if (i == 0)
       {
-        acys.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+        acyp.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
         return;
       }
-    } while (acys.a().a() != null);
-    acys.a().a(this.this$0.app.getApplication());
+    } while (acyp.a().a() != null);
+    acyp.a().a(this.this$0.app.getApplication());
   }
 }
 

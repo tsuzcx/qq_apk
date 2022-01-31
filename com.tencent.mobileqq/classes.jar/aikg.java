@@ -1,43 +1,82 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import org.json.JSONObject;
 
-class aikg
-  extends aylm
+public class aikg
+  implements MediaPlayer.OnPreparedListener
 {
-  aikg(aikd paramaikd, String paramString) {}
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onComplete(String paramString, int paramInt)
+  public aikg(aikb paramaikb, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: " + paramString + "," + paramInt);
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
     try
     {
-      paramString = new JSONObject();
-      paramString.put("code", 2);
-      paramString.put("errorCode", paramInt);
-      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       return;
     }
-    catch (JSONException paramString)
+    catch (Exception localException1)
     {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+      aikb.a(this.jdField_a_of_type_Aikb, "-->handleJsRequest exception:" + localException1.toString());
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("code", 2);
+        localJSONObject.put("errorMessage", "exception");
+        this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
     }
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int i = (int)(100.0F * (float)paramLong1 / (float)paramLong2);
+    if (aikb.a(this.jdField_a_of_type_Aikb).a()) {}
     try
     {
-      paramString = new JSONObject();
-      paramString.put("code", 1);
-      paramString.put("progress", i);
-      this.jdField_a_of_type_Aikd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        aikb.a(this.jdField_a_of_type_Aikb, "-->play failed");
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
       return;
     }
-    catch (JSONException paramString)
+    catch (Exception paramMediaPlayer)
     {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onComplete: ", paramString);
+      aikb.a(this.jdField_a_of_type_Aikb, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      try
+      {
+        paramMediaPlayer = new JSONObject();
+        paramMediaPlayer.put("code", 2);
+        paramMediaPlayer.put("errorMessage", "exception");
+        this.jdField_a_of_type_Aikb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
     }
   }
 }

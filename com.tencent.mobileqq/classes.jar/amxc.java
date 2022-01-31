@@ -1,56 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amxc
-  extends ampb<amxf>
 {
-  public static amxf a()
-  {
-    return (amxf)ampm.a().a(497);
-  }
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int = -1;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
   
-  public int a()
+  public static amxc a(amph[] paramArrayOfamph)
   {
-    return 497;
-  }
-  
-  @NonNull
-  public amxf a(int paramInt)
-  {
-    return new amxf();
-  }
-  
-  @Nullable
-  public amxf a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return amxf.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
-  }
-  
-  public Class<amxf> a()
-  {
-    return amxf.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amxf paramamxf) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    amxc localamxc = new amxc();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
+      localamxc.jdField_a_of_type_Int = paramArrayOfamph.getInt("check_day");
+      localamxc.jdField_b_of_type_Int = paramArrayOfamph.getInt("check_time");
+      localamxc.jdField_c_of_type_Int = paramArrayOfamph.getInt("album_days");
+      localamxc.jdField_d_of_type_Int = paramArrayOfamph.getInt("photos_limit");
+      localamxc.jdField_a_of_type_JavaLangString = paramArrayOfamph.getString("tips");
+      localamxc.jdField_b_of_type_JavaLangString = paramArrayOfamph.getString("jump_text");
+      localamxc.jdField_c_of_type_JavaLangString = paramArrayOfamph.getString("t_show");
+      localamxc.jdField_d_of_type_JavaLangString = paramArrayOfamph.getString("t_click");
+      localamxc.e = paramArrayOfamph.getString("t_close");
+      localamxc.jdField_a_of_type_Boolean = true;
+      return localamxc;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfamph);
+    }
+    return localamxc;
   }
 }
 

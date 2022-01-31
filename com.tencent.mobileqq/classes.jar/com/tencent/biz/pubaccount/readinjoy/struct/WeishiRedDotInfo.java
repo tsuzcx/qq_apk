@@ -9,12 +9,12 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import qed;
+import qea;
 
 public class WeishiRedDotInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiRedDotInfo> CREATOR = new qed();
+  public static final Parcelable.Creator<WeishiRedDotInfo> CREATOR = new qea();
   private String jdField_a_of_type_JavaLangString = "";
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String b = "";

@@ -1,44 +1,8 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-public class sle
-  extends skv
+public abstract interface sle
 {
-  private TextView a;
-  
-  private sle(ViewGroup paramViewGroup, sji paramsji)
-  {
-    super(paramViewGroup, paramsji, 2131560119);
-  }
-  
-  public static sle a(ViewGroup paramViewGroup, sji paramsji)
-  {
-    return new sle(paramViewGroup, paramsji);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(1).findViewById(2131379104));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
-    }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, paramstSimpleMetaFeed);
-    a(2, 1, paramstSimpleMetaFeed);
-  }
+  public abstract void a(FromServiceMsg paramFromServiceMsg);
 }
 
 

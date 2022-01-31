@@ -1,43 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class aymn
-  extends BroadcastReceiver
+public class aymn
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static Bundle a(QQAppInterface paramQQAppInterface)
   {
-    String str2 = paramIntent.getStringExtra("themePath");
-    String str3 = paramIntent.getStringExtra("themeId");
-    String str1 = paramIntent.getStringExtra("bg3D");
-    String str4 = paramIntent.getStringExtra("aio");
-    paramIntent = paramIntent.getStringExtra("playerSkin");
-    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
-      ThemeUtil.validLocalTheme(paramContext, str2, str3);
-    }
-    do
+    Bundle localBundle = new Bundle();
+    Object localObject = ThemeUtil.getWeekLoopTheme(paramQQAppInterface);
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      do
-      {
-        return;
-        if (TextUtils.isEmpty(str1)) {
-          break;
-        }
-        paramIntent = (QQAppInterface)ThemeUtil.weakApp.get();
-      } while (paramIntent == null);
-      ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getCurrentAccountUin(), str1);
-      return;
-      if (!TextUtils.isEmpty(str4))
-      {
-        ThemeUtil.previewAIOTheme(paramContext, str4);
-        return;
+      localObject = paramQQAppInterface.getPreferences();
+      paramQQAppInterface = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+      localObject = ((SharedPreferences)localObject).getString("previousThemeVersion", "0");
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchUtil", 2, "ThemeSwitchUtil getPreviousThemeIdVersion,themeID=" + paramQQAppInterface + ",version=" + (String)localObject);
       }
-    } while (TextUtils.isEmpty(paramIntent));
-    ThemeUtil.previewPlayerSkin(paramContext, paramIntent);
+      localBundle.putString("themeID", paramQQAppInterface);
+      localBundle.putString("version", (String)localObject);
+      return localBundle;
+    }
+    localBundle.putString("themeID", (String)localObject);
+    localBundle.putString("version", ThemeUtil.getUserCurrentThemeVersion(paramQQAppInterface));
+    return localBundle;
+  }
+  
+  public static Boolean a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
+  {
+    String str = paramAppRuntime.getAccount();
+    Object localObject = str;
+    if (str == null) {
+      localObject = "noLogin";
+    }
+    localObject = paramAppRuntime.getApplication().getSharedPreferences((String)localObject, 4);
+    paramAppRuntime = paramAppRuntime.getAccount();
+    str = ((SharedPreferences)localObject).getString("previousThemeId", "1000");
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString("previousThemeId", paramString1);
+    ((SharedPreferences.Editor)localObject).putString("previousThemeVersion", paramString2);
+    QLog.d("ThemeSwitchUtil", 1, "ThemeSwitchUtil setPreviousThemeIdVersion,uin=" + paramAppRuntime + ",oldPreviousThemeId=" + str + ",set new themeId=" + paramString1);
+    return Boolean.valueOf(((SharedPreferences.Editor)localObject).commit());
   }
 }
 

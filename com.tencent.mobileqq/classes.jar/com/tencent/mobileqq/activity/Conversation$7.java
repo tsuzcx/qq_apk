@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axqw;
-import sbc;
+import axqy;
+import saz;
 
 class Conversation$7
   implements Runnable
@@ -10,8 +10,8 @@ class Conversation$7
   
   public void run()
   {
-    long l = sbc.a().a();
-    axqw.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
+    long l = saz.a().a();
+    axqy.b(this.this$0.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.a), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 

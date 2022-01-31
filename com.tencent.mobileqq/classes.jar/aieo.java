@@ -1,28 +1,22 @@
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class aieo
+public class aieo
   implements DialogInterface.OnClickListener
 {
-  aieo(aien paramaien) {}
+  public aieo(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.d == 36) {
-      if (this.a.a.a == 1) {
-        this.a.a.m();
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      axqw.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
-      return;
-      this.a.a.a();
-      continue;
-      this.a.a.a();
-    }
+    paramDialogInterface.dismiss();
+    ((akhp)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
+    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
   }
 }
 

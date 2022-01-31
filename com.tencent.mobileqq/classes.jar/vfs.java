@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
 public final class vfs
-  implements Parcelable.Creator<EditRecordVideoSource>
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    return new EditRecordVideoSource(paramParcel);
+    return new EditTakePhotoSource(paramParcel);
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public EditTakePhotoSource[] a(int paramInt)
   {
-    return new EditRecordVideoSource[paramInt];
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

@@ -1,19 +1,29 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.text.TextUtils;
 import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nbw
-  implements SoundPool.OnLoadCompleteListener
+  implements myy
 {
   public nbw(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

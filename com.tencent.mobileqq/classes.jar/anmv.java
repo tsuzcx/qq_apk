@@ -1,73 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
-import tencent.nearby.now.nearby_now_anchor.RspBatchGetAnchorStatus;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract class anmv
-  extends mxm
+public class anmv
+  implements Handler.Callback
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private String a;
+  
+  public anmv(String paramString)
   {
-    boolean bool4 = false;
-    boolean bool3 = false;
-    Object localObject = null;
-    nearby_now_anchor.RspBatchGetAnchorStatus localRspBatchGetAnchorStatus;
-    boolean bool1;
-    if (paramInt == 0)
-    {
-      localRspBatchGetAnchorStatus = new nearby_now_anchor.RspBatchGetAnchorStatus();
-      bool1 = bool4;
-    }
-    for (;;)
-    {
-      try
-      {
-        localRspBatchGetAnchorStatus.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-        bool1 = bool4;
-        if (localRspBatchGetAnchorStatus.uint32_result.has())
-        {
-          paramArrayOfByte = localObject;
-          bool2 = bool3;
-          bool1 = bool4;
-          if (localRspBatchGetAnchorStatus.uint32_result.get() == 0)
-          {
-            bool1 = true;
-            bool2 = true;
-            paramArrayOfByte = localRspBatchGetAnchorStatus.msg_anchor_stats.get();
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("Q.msg_box.protocol", 2, localException.toString());
-        paramArrayOfByte = localObject;
-        bool2 = bool1;
-        continue;
-      }
-      a(bool2, paramArrayOfByte, paramBundle);
-      return;
-      paramArrayOfByte = localObject;
-      boolean bool2 = bool3;
-      if (QLog.isColorLevel())
-      {
-        QLog.w("Q.msg_box.protocol", 2, "getNowState failed, errorCode=" + paramInt);
-        paramArrayOfByte = localObject;
-        bool2 = bool3;
-      }
-    }
+    this.a = paramString;
   }
   
-  public abstract void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle);
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    atau.a(this.a, 1);
+    return true;
+  }
 }
 
 

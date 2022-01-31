@@ -3,18 +3,18 @@ package com.tencent.mobileqq.gallery.view.pic;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import aqor;
-import axqw;
-import bcuq;
+import aqot;
+import axqy;
+import bcvf;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import whm;
+import whj;
 
 public class AIOGalleryFilePicView$2
   implements Runnable
 {
-  public AIOGalleryFilePicView$2(aqor paramaqor, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOGalleryFilePicView$2(aqot paramaqot, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class AIOGalleryFilePicView$2
     Object localObject;
     String str1;
     String str2;
-    if (whm.a(this.jdField_a_of_type_Int))
+    if (whj.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -55,9 +55,9 @@ public class AIOGalleryFilePicView$2
             if (localObject == null)
             {
               localObject = "";
-              this.this$0.a(2131692914, 2130839646, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (whm.b(this.jdField_a_of_type_Int))
+              this.this$0.a(2131692915, 2130839646, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              axqy.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (whj.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -92,9 +92,9 @@ public class AIOGalleryFilePicView$2
             break label287;
           }
           localObject = "";
-          this.this$0.a(2131692913, 2130839645, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          axqw.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-          this.this$0.jdField_a_of_type_Bcuq.d();
+          this.this$0.a(2131692914, 2130839645, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          axqy.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          this.this$0.jdField_a_of_type_Bcvf.d();
           return;
         }
         catch (JSONException localJSONException3)

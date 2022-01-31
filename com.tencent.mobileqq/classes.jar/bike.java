@@ -1,20 +1,6 @@
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-
 class bike
-  implements bjjm
 {
-  bike(bikc parambikc) {}
-  
-  public void a()
-  {
-    bikc.a(this.a).setTouchEnable(true);
-  }
-  
-  public void b()
-  {
-    bikc.a(this.a).o();
-    bikc.a(this.a).setTouchEnable(true);
-  }
+  public static bika a = new bika(null);
 }
 
 

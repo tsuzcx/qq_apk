@@ -1,11 +1,12 @@
-import java.util.ArrayList;
-
-public abstract class ozi
-  implements ozh
+class ozi
+  implements pal
 {
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
+  ozi(ozh paramozh) {}
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList) {}
+  public void a(int paramInt)
+  {
+    ozg.a(this.a.a, paramInt);
+  }
 }
 
 

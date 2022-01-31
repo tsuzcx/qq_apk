@@ -1,16 +1,26 @@
 import android.app.Dialog;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.NearbyLeakHelper.2.1;
 
-final class atag
+public final class atag
   implements View.OnClickListener
 {
-  atag(Dialog paramDialog, String paramString) {}
-  
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a != null) {
+      this.a.dismiss();
+    }
+    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131707207) + "/Tencent/MobileQQ/log/", 1).a();
+    paramView = ThreadManager.newFreeHandlerThread("nearby-leaker", 10);
+    paramView.start();
+    paramView = paramView.getLooper();
+    if (paramView != null) {
+      new Handler(paramView).post(new NearbyLeakHelper.2.1(this));
     }
   }
 }

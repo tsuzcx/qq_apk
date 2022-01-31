@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwm;
+import acwi;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
-import bcpw;
+import bcql;
 
 class IntimateInfoShareHelper$5$1
   implements Runnable
@@ -17,11 +17,11 @@ class IntimateInfoShareHelper$5$1
     {
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).sendBroadcast(localIntent);
-      bcpw.a(acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0), 2, acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getString(2131695190), 1).b(acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getTitleBarHeight());
+      acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).sendBroadcast(localIntent);
+      bcql.a(acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0), 2, acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getString(2131695191), 1).b(acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getTitleBarHeight());
       return;
     }
-    bcpw.a(acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0), 1, acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getString(2131695189), 1).b(acwm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getTitleBarHeight());
+    bcql.a(acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0), 1, acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getString(2131695190), 1).b(acwi.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper$5.this$0).getTitleBarHeight());
   }
 }
 

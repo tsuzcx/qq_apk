@@ -1,14 +1,17 @@
-import android.support.v4.view.ViewPager;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
 
-class tts
-  implements bcrn
+public class tts
+  implements bfos
 {
-  tts(ttr paramttr) {}
+  public tts(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.setCurrentItem(paramInt2);
+    this.a.b = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

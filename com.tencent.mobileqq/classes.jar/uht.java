@@ -1,27 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import android.content.Intent;
 
 public class uht
-  extends QQUIEventReceiver<uhj, tkn>
+  extends uaf
 {
-  public uht(@NonNull uhj paramuhj)
-  {
-    super(paramuhj);
-  }
+  public uht(uhs paramuhs) {}
   
-  public void a(@NonNull uhj paramuhj, @NonNull tkn paramtkn)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramtkn.a.isSuccess())
-    {
-      veg.a(paramuhj.b, "receive user info event. %s.", paramtkn.toString());
-      paramuhj.i();
+    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
+      this.a.a.b().finish();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tkn.class;
   }
 }
 

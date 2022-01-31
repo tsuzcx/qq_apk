@@ -1,23 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.util.SparseArray;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class agso
-  implements DialogInterface.OnClickListener
+public class agso
 {
-  agso(agsl paramagsl) {}
+  public int a;
+  public long a;
+  public SparseArray<URLDrawable> a;
+  public String a;
+  public ArrayList<String> a;
+  public HashMap<String, String> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public boolean d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agso()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
-      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
 }
 

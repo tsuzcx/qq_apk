@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.ui;
 
-import bewi;
+import bewz;
 
 public class GameRuntimeStateObserver$5
   implements Runnable
 {
-  public GameRuntimeStateObserver$5(bewi parambewi, Float paramFloat) {}
+  public GameRuntimeStateObserver$5(bewz parambewz, Float paramFloat) {}
   
   public void run()
   {
-    bewi.a(this.this$0).setProgressTxt((int)(this.a.floatValue() * 100.0F) + "%");
+    bewz.a(this.this$0).setProgressTxt((int)(this.a.floatValue() * 100.0F) + "%");
   }
 }
 

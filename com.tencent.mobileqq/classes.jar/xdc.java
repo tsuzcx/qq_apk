@@ -1,36 +1,29 @@
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.qphone.base.util.QLog;
 
-public class xdc
-  implements ytb
+class xdc
+  implements ActionMode.Callback
 {
-  public xdc(TroopGiftPanel paramTroopGiftPanel) {}
+  xdc(xdb paramxdb, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void a(GdtAd paramGdtAd)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
-    TroopGiftPanel.a(this.a, paramGdtAd);
+    return false;
   }
   
-  public void a(GdtAd paramGdtAd, yta paramyta)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramyta.a());
+    return false;
   }
   
-  public void b(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdImpression");
-  }
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public void c(GdtAd paramGdtAd)
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    QLog.i("TroopGiftPanel", 1, "onAdClicked");
-  }
-  
-  public void d(GdtAd paramGdtAd)
-  {
-    QLog.i("TroopGiftPanel", 1, "onAdClosed");
+    return false;
   }
 }
 

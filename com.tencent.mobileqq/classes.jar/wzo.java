@@ -1,19 +1,39 @@
 import com.tencent.qphone.base.util.QLog;
 
-class wzo
-  extends wzr
+public class wzo
+  implements waj
 {
-  wzo(wzh paramwzh, wze paramwze, String paramString)
+  wzo(wyt paramwyt) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramwzh.a);
+    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
     }
-    this.jdField_a_of_type_Wze.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    a(true);
   }
 }
 

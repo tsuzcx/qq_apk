@@ -1,55 +1,9 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataHelper.1.1;
-import com.tencent.mobileqq.mini.out.CommonObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.POI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class arxf
-  extends CommonObserver
+public abstract interface arxf
 {
-  public void onGetPoiList(boolean paramBoolean, LBSShare.LocationResp paramLocationResp)
-  {
-    arxe.a(this.a, false);
-    Object localObject1;
-    if (paramBoolean)
-    {
-      arxe.a(this.a);
-      localObject1 = paramLocationResp.poilist.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (LBSShare.POI)((Iterator)localObject1).next();
-        localObject2 = LocationRoom.Venue.a(arxe.a(this.a).app.c(), (LBSShare.POI)localObject2);
-        arxe.a(this.a).add(localObject2);
-      }
-      localObject1 = this.a;
-      if (paramLocationResp.next.get() <= 0) {
-        break label198;
-      }
-    }
-    label198:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      arxe.b((arxe)localObject1, paramBoolean);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("LocationPoiDataHelper", 4, "[venue][poi-data] onGetPoiList next: mVenueList size = " + arxe.a(this.a).size() + ", mHashMore = " + arxe.a(this.a));
-      }
-      if (arxe.a(this.a) != null) {
-        ThreadManager.getUIHandler().post(new LocationPoiDataHelper.1.1(this));
-      }
-      return;
-    }
-  }
-  
-  public void onGetStreetUrl(boolean paramBoolean, String paramString) {}
+  public abstract void a(List<LocationRoom.Venue> paramList);
 }
 
 

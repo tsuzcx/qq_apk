@@ -1,11 +1,11 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bcxm;
-import bdiw;
-import bdkp;
-import bdmb;
-import bdmc;
+import bcyb;
+import bdjl;
+import bdle;
+import bdmq;
+import bdmr;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,28 +14,28 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DownloadManager$3
   implements Runnable
 {
-  public DownloadManager$3(bdkp parambdkp) {}
+  public DownloadManager$3(bdle parambdle) {}
   
   public void run()
   {
-    Object localObject1 = bdiw.b(bcxm.a().a());
+    Object localObject1 = bdjl.b(bcyb.a().a());
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      localObject1 = bdmb.a().a();
+      localObject1 = bdmq.a().a();
       if (localObject1 != null)
       {
         Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
         while (localIterator.hasNext())
         {
-          bdmc localbdmc = (bdmc)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localbdmc != null)
+          bdmr localbdmr = (bdmr)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localbdmr != null)
           {
-            Object localObject2 = this.this$0.a(localbdmc.b);
+            Object localObject2 = this.this$0.a(localbdmr.b);
             if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).d)))
             {
               localObject2 = this.this$0.a(((DownloadInfo)localObject2).d);
-              if ((localObject2 != null) && (4 != bdkp.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                bdmb.a().a(localbdmc.a);
+              if ((localObject2 != null) && (4 != bdle.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                bdmq.a().a(localbdmr.a);
               }
             }
           }

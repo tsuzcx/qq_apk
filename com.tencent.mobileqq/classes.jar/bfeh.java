@@ -1,164 +1,119 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.runtime.task.ServiceCreateTask.2;
+import com.tencent.smtt.sdk.JsVirtualMachine;
+import com.tencent.smtt.sdk.QbSdk;
 
+@behk(a="ServiceCreateTask")
 public class bfeh
-  extends Dialog
-  implements DialogInterface.OnCancelListener, View.OnClickListener
+  extends bffh
 {
-  private int jdField_a_of_type_Int;
-  private NumberPicker jdField_a_of_type_AndroidWidgetNumberPicker;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bfej jdField_a_of_type_Bfej;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private TextView b;
+  private long jdField_a_of_type_Long;
+  bfbi jdField_a_of_type_Bfbi;
+  private bfdf jdField_a_of_type_Bfdf;
+  JsVirtualMachine jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine;
+  private long b;
   
-  public bfeh(@NonNull Context paramContext)
+  public bfeh(Context paramContext, beqm parambeqm)
   {
-    super(paramContext, 2131755360);
-    a(paramContext);
+    super(paramContext, parambeqm);
   }
   
-  private void a(Context paramContext)
+  private void g()
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559260, null);
-    setContentView(paramContext);
-    Window localWindow = getWindow();
-    if (localWindow != null)
+    try
     {
-      localWindow.getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      localWindow.setAttributes(localLayoutParams);
-      localWindow.setGravity(80);
+      betc.b("ServiceCreateTask", "AppBrandWebviewService create start");
+      a(new bfdk(this.jdField_a_of_type_Bfbi, null));
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetNumberPicker = ((NumberPicker)paramContext.findViewById(2131370987));
-    this.b = ((TextView)paramContext.findViewById(2131378078));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378108));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetNumberPicker);
-    setOnCancelListener(this);
+    catch (Throwable localThrowable)
+    {
+      betc.d("ServiceCreateTask", "AppBrandWebviewService execute exception!", localThrowable);
+      f();
+    }
   }
   
-  private void a(NumberPicker paramNumberPicker)
+  public long a()
   {
-    Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
-    {
-      Field localField;
-      if (i < j)
-      {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
-        }
-      }
-      else
-      {
-        try
-        {
-          localField.set(paramNumberPicker, new ColorDrawable(bffq.a("#3CB371")));
-          return;
-        }
-        catch (IllegalArgumentException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (Resources.NotFoundException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (IllegalAccessException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-      }
-      i += 1;
-    }
+    return this.b - this.jdField_a_of_type_Long;
+  }
+  
+  public bfdf a()
+  {
+    return this.jdField_a_of_type_Bfdf;
   }
   
   public void a()
   {
+    Object localObject2 = null;
+    if (this.jdField_a_of_type_Bfbi != null) {}
+    for (Object localObject1 = this.jdField_a_of_type_Bfbi.a();; localObject1 = null)
+    {
+      bezi.a((MiniAppInfo)localObject1, 100, "0");
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      bfef localbfef = (bfef)a().getTask(bfef.class);
+      localObject1 = localObject2;
+      if (localbfef != null) {
+        localObject1 = localbfef.a();
+      }
+      this.jdField_a_of_type_Bfbi = ((bfbi)localObject1);
+      int i = QbSdk.getTbsVersion(a());
+      int j = QbSdk.getTmpDirTbsVersion(a());
+      if (((i <= 0) && (j <= 0)) || (a(a()))) {
+        break;
+      }
+      try
+      {
+        betc.b("ServiceCreateTask", "AppBrandService create start");
+        localObject1 = new bfdg(this.jdField_a_of_type_Bfbi, null);
+        ((bfdg)localObject1).a(a(), new bfei(this, (bfdg)localObject1));
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        betc.d("ServiceCreateTask", "ServiceCreateTask JsCore execute exception!", localThrowable);
+        return;
+      }
+    }
+    new Handler(Looper.getMainLooper()).post(new ServiceCreateTask.2(this));
+  }
+  
+  protected void a(bfdf parambfdf)
+  {
     try
     {
-      if (isShowing()) {
-        dismiss();
+      betc.b("ServiceCreateTask", "onServiceCreateSucc service:" + parambfdf);
+      if ((this.jdField_a_of_type_Bfdf == null) && (parambfdf != null))
+      {
+        this.jdField_a_of_type_Bfdf = parambfdf;
+        this.b = System.currentTimeMillis();
+        c();
       }
       return;
     }
-    catch (Exception localException) {}
+    finally {}
   }
   
-  public void a(int paramInt)
+  public boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMaxValue(paramInt);
-  }
-  
-  public void a(int paramInt, bfej parambfej)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setOnValueChangedListener(new bfei(this));
-    this.jdField_a_of_type_Bfej = parambfej;
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setDisplayedValues(paramArrayOfString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMinValue(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setValue(paramInt);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Bfej != null) {
-      this.jdField_a_of_type_Bfej.onValCancel();
+    if (this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine == null) {
+      this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine = new JsVirtualMachine(paramContext);
     }
+    return this.jdField_a_of_type_ComTencentSmttSdkJsVirtualMachine.isFallback();
   }
   
-  public void onClick(View paramView)
+  public void c()
   {
-    if (paramView.getId() == 2131378078)
+    super.c();
+    if (this.jdField_a_of_type_Bfbi != null) {}
+    for (MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_Bfbi.a();; localMiniAppInfo = null)
     {
-      if (this.jdField_a_of_type_Bfej != null) {
-        this.jdField_a_of_type_Bfej.onValCancel();
-      }
-      a();
-    }
-    while (paramView.getId() != 2131378108) {
+      bezi.a(localMiniAppInfo, 101, "0");
       return;
     }
-    if (this.jdField_a_of_type_Bfej != null) {
-      this.jdField_a_of_type_Bfej.onValConfirm(this.jdField_a_of_type_Int);
-    }
-    a();
   }
 }
 

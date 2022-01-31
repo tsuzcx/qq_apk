@@ -1,101 +1,62 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
+import android.content.Intent;
+import android.os.Message;
 import android.text.TextUtils;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aalb
-  extends ajxl
+  extends WtloginObserver
 {
-  public aalb(AuthDevActivity paramAuthDevActivity) {}
+  public aalb(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
   
-  protected void onDelAuthDevResult(boolean paramBoolean, String paramString, int paramInt)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onDelAuthDevResult.isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    AuthDevActivity.c(this.a);
-    if (paramBoolean)
+    if (paramInt == 0)
     {
-      if ((paramInt > -1) && (paramInt < AuthDevActivity.a(this.a).size()))
-      {
-        paramString = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
-        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
-        {
-          this.a.app.updateSubAccountLogin(this.a.app.getAccount(), false);
-          this.a.app.getApplication().refreAccountList();
-          bazw.a(this.a, this.a.app, true);
-          return;
-        }
-        if (paramInt < AuthDevActivity.a(this.a).size())
-        {
-          AuthDevActivity.a(this.a).remove(paramInt);
-          AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-        }
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
       }
-      bcpw.a(this.a.getApplicationContext(), 2, this.a.getString(2131692124), 0).b(this.a.getTitleBarHeight());
-      return;
+      aoes.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      bcql.a(this.a.getApplicationContext(), 2, this.a.getString(2131692094), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+      }
+      AuthDevOpenUgActivity.a(this.a, true, 0);
+      paramErrMsg = new Intent();
+      paramErrMsg.putExtra("auth_dev_open", true);
+      if (AuthDevOpenUgActivity.a(this.a) != null) {}
+      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
+      {
+        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
+        this.a.a(-1, paramErrMsg);
+        return;
+      }
     }
-    if (TextUtils.isEmpty(paramString))
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      bcpw.a(this.a.getApplicationContext(), 1, this.a.getString(2131692123), 0).b(this.a.getTitleBarHeight());
+      bcql.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    bcpw.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+    bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131692145), 0).b(this.a.getTitleBarHeight());
   }
   
-  protected void onGetAuthDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    AuthDevActivity.a(this.a).setVisibility(8);
-    if (!AuthDevActivity.a(this.a)) {
+    if ((paramInt != 0) || (paramDevlockInfo == null))
+    {
+      bcql.a(this.a, this.a.getString(2131692153), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.success");
-      }
-      AuthDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = AuthDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.AuthDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-      }
-      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label312;
-      }
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data is null");
-    }
-    for (;;)
-    {
-      AuthDevActivity.a(this.a).setVisibility(4);
-      bcpw.a(this.a, 1, this.a.getString(2131692140), 0).b(this.a.getTitleBarHeight());
-      return;
-      label312:
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
+    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
   }
 }
 

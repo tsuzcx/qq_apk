@@ -1,13 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 
 public class nvs
-  implements osn
+  implements View.OnClickListener
 {
-  public nvs(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
+  public nvs(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void a(osp paramosp)
+  public void onClick(View paramView)
   {
-    paramosp.h(this.jdField_a_of_type_Int);
+    if ((this.a.a instanceof nte)) {
+      ((nte)this.a.a).n();
+    }
   }
 }
 

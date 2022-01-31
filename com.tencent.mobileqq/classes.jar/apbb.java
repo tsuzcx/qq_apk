@@ -1,18 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class apbb
-  extends Handler
+public class apbb
+  extends aoyv
 {
-  apbb(apay paramapay, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  int a;
+  int b;
   
-  public void handleMessage(Message paramMessage)
+  public apbb(FileManagerEntity paramFileManagerEntity)
   {
-    this.a.d();
+    super(paramFileManagerEntity);
   }
 }
 

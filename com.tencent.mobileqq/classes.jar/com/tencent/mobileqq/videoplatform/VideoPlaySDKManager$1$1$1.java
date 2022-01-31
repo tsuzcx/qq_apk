@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.videoplatform;
 
-import bbvq;
-import bbvt;
-import bbvu;
+import bbwe;
+import bbwh;
+import bbwi;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,14 +14,14 @@ class VideoPlaySDKManager$1$1$1
   
   public void run()
   {
-    bbvt.a(this.a.a.a).set(2);
-    if (bbvt.a() != null)
+    bbwh.a(this.a.a.a).set(2);
+    if (bbwh.a() != null)
     {
-      Iterator localIterator = bbvt.a().iterator();
+      Iterator localIterator = bbwh.a().iterator();
       while (localIterator.hasNext()) {
-        ((bbvq)localIterator.next()).a(true);
+        ((bbwe)localIterator.next()).a(true);
       }
-      bbvt.a().clear();
+      bbwh.a().clear();
     }
   }
 }

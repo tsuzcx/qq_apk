@@ -1,26 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class ambk
-  extends Handler
+  implements Animator.AnimatorListener
 {
-  ambk(ambj paramambj, Looper paramLooper)
+  ambk(ambi paramambi, ambp paramambp) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Ambp.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Ambi.a(this.jdField_a_of_type_Ambp);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Ambp.jdField_a_of_type_Long);
     }
-    paramMessage = (Pair)paramMessage.obj;
-    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
+    this.jdField_a_of_type_Ambi.a(this.jdField_a_of_type_Ambp);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Ambp.jdField_a_of_type_Long);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Ambp.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Ambp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 

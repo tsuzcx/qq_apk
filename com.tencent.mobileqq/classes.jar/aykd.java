@@ -2,11 +2,11 @@ import android.graphics.Paint;
 import android.support.annotation.NonNull;
 
 class aykd
-  extends aykh
+  extends aykj
 {
   aykd(@NonNull String paramString)
   {
-    super(0, paramString);
+    super(1, paramString);
   }
   
   float a(@NonNull Paint paramPaint)

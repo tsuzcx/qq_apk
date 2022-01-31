@@ -1,17 +1,64 @@
-import java.util.Comparator;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVLoadingDialogActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mbo
-  implements Comparator<los>
+public class mbo
+  extends Handler
 {
-  mbo(mbm parammbm) {}
+  final String a;
   
-  public int a(los paramlos1, los paramlos2)
+  public mbo(String paramString)
   {
-    if (paramlos1.a) {}
-    while (paramlos2.a) {
-      return -1;
+    this.a = paramString;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
+    {
+      localObject = (WeakReference)paramMessage.obj;
+      if (localObject != null)
+      {
+        localObject = ((WeakReference)localObject).get();
+        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
+      }
     }
-    return 0;
+    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
+        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
+        long l = mtj.a(paramMessage);
+        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
+        try
+        {
+          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772164, 0);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
+          return;
+        }
+      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
+      return;
+    }
   }
 }
 

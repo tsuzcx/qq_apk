@@ -1,63 +1,75 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bkgh
-  extends bkfw<bkfo>
 {
-  private ImageView a;
-  private ImageView b;
+  public int a;
+  public Drawable a;
+  public bkgi a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public bkgh(Context paramContext, FaceListPage paramFaceListPage)
+  public bkgh()
   {
-    super(paramContext, paramFaceListPage);
+    this.jdField_a_of_type_Bkgi = new bkgi();
   }
   
-  public int getCount()
+  public bkgh(JSONObject paramJSONObject)
   {
-    return 1;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("thumb_url");
+    this.b = paramJSONObject.getString("poster_name");
+    this.d = paramJSONObject.getString("poster_url");
+    this.c = paramJSONObject.getString("desc");
+    this.e = paramJSONObject.getString("poster_json_layout_desc");
+    this.f = paramJSONObject.getString("poi_poster_id");
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    paramView = null;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561234, null);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131379329));
-      this.b = ((ImageView)localView.findViewById(2131374700));
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof EditVideoActivity)) {
-        paramView = ((EditVideoActivity)this.jdField_a_of_type_AndroidContentContext).a();
-      }
-      for (;;)
-      {
-        if (paramView != null)
-        {
-          paramView = paramView.a;
-          if (paramView != null)
-          {
-            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramView);
-            this.b.setOnClickListener(paramView);
-            paramInt = vzo.c * 54 / 750;
-            ((LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams()).setMargins(paramInt, 0, paramInt, 0);
-            ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(paramInt, 0, paramInt, 0);
-          }
-        }
-        localView.setLayoutParams(new AbsListView.LayoutParams(paramViewGroup.getWidth(), paramViewGroup.getHeight()));
-        return localView;
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity)) {
-          paramView = ((EditPicActivity)this.jdField_a_of_type_AndroidContentContext).a();
-        }
-      }
+    if (this.jdField_a_of_type_Bkgi == null) {
+      this.jdField_a_of_type_Bkgi = new bkgi();
     }
-    return null;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Bkgi.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Bkgi.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Bkgi.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Bkgi.b = i1;
+      this.jdField_a_of_type_Bkgi.c = i2;
+      this.jdField_a_of_type_Bkgi.d = i3;
+      this.jdField_a_of_type_Bkgi.e = i4;
+      this.jdField_a_of_type_Bkgi.f = i5;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Bkgi + '}';
   }
 }
 

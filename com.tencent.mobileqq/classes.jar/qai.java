@@ -1,23 +1,18 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-class qai
+public final class qai
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Deque<qak> jdField_a_of_type_JavaUtilDeque = new LinkedList();
-  int b;
-  int c = 0;
-  private final int d = 50;
-  
-  qai(qah paramqah) {}
-  
-  boolean a(qak paramqak)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
-      this.jdField_a_of_type_JavaUtilDeque.poll();
-    }
-    return this.jdField_a_of_type_JavaUtilDeque.offer(paramqak);
+    return new AdvertisementInfo(paramParcel);
+  }
+  
+  public AdvertisementInfo[] a(int paramInt)
+  {
+    return new AdvertisementInfo[paramInt];
   }
 }
 

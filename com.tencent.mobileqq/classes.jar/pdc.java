@@ -1,16 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 class pdc
   implements View.OnClickListener
 {
-  pdc(pdb parampdb, String paramString, ArticleInfo paramArticleInfo) {}
+  pdc(pcy parampcy, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
   public void onClick(View paramView)
   {
-    onk.a(pdb.a(this.jdField_a_of_type_Pdb), this.jdField_a_of_type_JavaLangString);
-    pdb.a(1, onk.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    paramView = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    onh.a(pcy.a(this.jdField_a_of_type_Pcy), paramView);
+    pcy.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
   }
 }
 

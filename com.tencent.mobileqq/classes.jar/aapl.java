@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public final class aapl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aapl(QQAppInterface paramQQAppInterface, String paramString) {}
+  public aapl(Toast paramToast) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bbfu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.cancel();
   }
 }
 

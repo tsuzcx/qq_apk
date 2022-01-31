@@ -1,8 +1,21 @@
-import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import java.util.List;
 
-public abstract interface anzd
+public class anzd
+  implements anyl
 {
-  public abstract boolean a(View paramView, anyc paramanyc);
+  private anzd(EmoticonMainPanel paramEmoticonMainPanel) {}
+  
+  public List<aoap> a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean2) {
+      return anzr.b(this.a.a);
+    }
+    if (!paramBoolean1) {
+      return anzr.a(this.a.a);
+    }
+    return anzr.a(this.a.a, this.a.h, this.a.q);
+  }
 }
 
 

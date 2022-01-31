@@ -1,16 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
-class vcj
-  implements vco
+public class vcj
 {
-  vcj(vci paramvci, ImageView paramImageView) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final spy a;
   
-  public void a(Drawable paramDrawable)
+  public vcj(List<LocalMediaInfo> paramList, int paramInt, spy paramspy)
   {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Spy = paramspy;
   }
 }
 

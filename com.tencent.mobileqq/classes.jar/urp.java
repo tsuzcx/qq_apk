@@ -1,24 +1,30 @@
-import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
 public class urp
-  extends sth<uqy, tld>
+  implements upy
 {
-  public urp(uqy paramuqy)
+  private int jdField_a_of_type_Int;
+  private WeakReference<uoz> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public urp(int paramInt)
   {
-    super(paramuqy);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull tld paramtld)
+  public void a(String paramString, int paramInt)
   {
-    uqy.a(paramuqy, paramtld.a, this.TAG);
+    ved.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    ((uoz)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
   }
   
-  public Class acceptEventClass()
+  public void a(uoz paramuoz)
   {
-    return tld.class;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuoz);
   }
-  
-  public void b(@NonNull uqy paramuqy, @NonNull tld paramtld) {}
 }
 
 

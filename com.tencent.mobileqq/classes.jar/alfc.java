@@ -1,55 +1,12 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.hardware.display.DisplayManager;
-import android.hardware.display.DisplayManager.DisplayListener;
-import android.os.Handler;
-import android.view.Display;
-import android.view.WindowManager;
+import android.app.Activity;
 
-@TargetApi(17)
-public class alfc
-  implements DisplayManager.DisplayListener
+public abstract interface alfc
 {
-  private int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Display jdField_a_of_type_AndroidViewDisplay;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public abstract alfd a();
   
-  @TargetApi(23)
-  public alfc(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
-  }
+  public abstract boolean a();
   
-  @TargetApi(23)
-  public void a()
-  {
-    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).registerDisplayListener(this, new Handler());
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  @TargetApi(23)
-  public void b()
-  {
-    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).unregisterDisplayListener(this);
-  }
-  
-  public void onDisplayAdded(int paramInt) {}
-  
-  public void onDisplayChanged(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void onDisplayRemoved(int paramInt) {}
+  public abstract boolean a(Activity paramActivity);
 }
 
 

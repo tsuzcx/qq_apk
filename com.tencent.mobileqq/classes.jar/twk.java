@@ -1,30 +1,41 @@
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
 import java.util.ArrayList;
-import java.util.List;
 
 public class twk
-  extends twc<HotRecommendFeedPlayInfo>
+  extends twm
 {
-  public twk(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
+  public ErrorMessage a;
+  
+  public twk(twl paramtwl, @Nullable ErrorMessage paramErrorMessage)
   {
-    super(paramHotRecommendFeedPlayInfo);
+    super(paramtwl);
+    if (paramErrorMessage == null) {}
+    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      return;
+    }
   }
   
-  public uvs a(String paramString)
+  public boolean a()
   {
-    paramString = new uvs(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    return paramString;
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
   }
   
-  public void a(boolean paramBoolean, int paramInt, twu paramtwu)
+  public boolean b()
   {
-    ArrayList localArrayList = new ArrayList();
-    twd localtwd = new twd(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new uvs(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localtwd.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    localArrayList.add(localtwd);
-    paramtwu.a(new ErrorMessage(), localArrayList, true);
+    return (!a()) && (!c());
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
+  }
+  
+  public String toString()
+  {
+    return "fg{g=" + this.jdField_a_of_type_Twl + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
   }
 }
 

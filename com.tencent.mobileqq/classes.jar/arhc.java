@@ -1,11 +1,25 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
 class arhc
-  implements arhq
+  extends BroadcastReceiver
 {
-  arhc(arhb paramarhb) {}
+  arhc(args paramargs) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(this.a.d, paramInt);
+    paramContext = paramIntent.getAction();
+    if ("close.activity".equals(paramContext)) {
+      if (args.a(this.a) != null) {
+        args.a(this.a).finish();
+      }
+    }
+    while ((!"close.loading".equals(paramContext)) || (this.a.a == null)) {
+      return;
+    }
+    this.a.a.dismiss();
   }
 }
 

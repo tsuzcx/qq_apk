@@ -1,18 +1,56 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class mof
+public final class mof
+  extends mgs
 {
-  int jdField_a_of_type_Int;
-  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  int b;
-  int c;
+  WeakReference<ZimuToolbar> a;
   
-  public mof(Bitmap[] paramArrayOfBitmap, int paramInt1, int paramInt2, int paramInt3)
+  public mof(AppInterface paramAppInterface, Context paramContext, ArrayList<mhr> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
   {
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = paramArrayOfBitmap;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
+    this.a = new WeakReference(paramZimuToolbar);
+  }
+  
+  public void a(String paramString1, long paramLong, String paramString2)
+  {
+    boolean bool1 = false;
+    int j;
+    int i;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      j = getCount();
+      i = 1;
+      if (i < j)
+      {
+        mhr localmhr = a(i);
+        if ((localmhr != null) && (paramString2.equals(localmhr.a))) {
+          bool1 = true;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
+      }
+      j = this.d;
+      boolean bool2 = a(i);
+      if (bool2) {
+        a(paramLong, this.d);
+      }
+      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
+      return;
+      i += 1;
+      break;
+      i = 1;
+    }
   }
 }
 

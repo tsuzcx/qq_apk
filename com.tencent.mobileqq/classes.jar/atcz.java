@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class atcz
-  implements DialogInterface.OnClickListener
+  implements bcix<oidb_0x8e4.RspBody>
 {
-  public atcz(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public atcz(GameRoomInviteActivity paramGameRoomInviteActivity, atdn paramatdn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    atdw.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
+    if ((paramInt == 0) && (paramRspBody != null))
+    {
+      paramRspBody = this.jdField_a_of_type_Atdn;
+      if (!this.jdField_a_of_type_Atdn.a)
+      {
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+      }
+    }
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, ajya.a(2131705144));
   }
 }
 

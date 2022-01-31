@@ -1,8 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-
 public abstract interface pal
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo);
+  public abstract void a(int paramInt);
 }
 
 

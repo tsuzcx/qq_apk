@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
 import android.text.TextUtils;
-import bbfd;
+import bbfr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -14,7 +14,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
-import ysw;
+import yst;
 
 public class ReaderAdWrapper
 {
@@ -151,7 +151,7 @@ public class ReaderAdWrapper
   
   public boolean isAdAppInstalled()
   {
-    return bbfd.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
+    return bbfr.a(BaseApplicationImpl.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getAppPackageName());
   }
   
   public boolean isAppType()

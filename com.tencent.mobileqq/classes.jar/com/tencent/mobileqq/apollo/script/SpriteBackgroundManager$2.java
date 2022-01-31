@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajex;
+import ajev;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 import com.tencent.mobileqq.apollo.ApolloTicker;
@@ -10,11 +10,11 @@ import java.lang.ref.WeakReference;
 public class SpriteBackgroundManager$2
   implements Runnable
 {
-  public SpriteBackgroundManager$2(ajex paramajex) {}
+  public SpriteBackgroundManager$2(ajev paramajev) {}
   
   public void run()
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)ajex.a(this.this$0).get();
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)ajev.a(this.this$0).get();
     if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
       ApolloRender.tickerResume(localApolloTextureView.getRender().mApolloTicker.ticker);
     }

@@ -1,19 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.view.View;
 
-final class sia
-  implements Comparator<ArticleInfo>
+public class sia
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
-  {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
-  }
+  private View a;
 }
 
 

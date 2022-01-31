@@ -1,185 +1,71 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
+import android.annotation.TargetApi;
 import android.graphics.PointF;
 import android.opengl.GLES20;
-import com.tencent.aekit.openrender.UniformParam.Float2fParam;
-import com.tencent.aekit.openrender.UniformParam.Float3fParam;
-import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.aekit.openrender.UniformParam.IntParam;
-import com.tencent.aekit.openrender.UniformParam.Mat4Param;
-import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
-import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import android.opengl.GLES30;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.model.DoodleItem;
-import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
-import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.util.AlgoUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.filter.BaseFilter;
 
 public class vom
-  extends VideoFilterBase
 {
-  int jdField_a_of_type_Int;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  protected UniformParam.TextureBitmapParam a;
-  DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
-  private String jdField_a_of_type_JavaLangString = "doodle_image";
-  List<List<PointF>> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  List<Bitmap> b;
-  public int c = 480;
-  public int d = 1080;
-  public int e = 1440;
-  
-  public vom(DoodleItem paramDoodleItem, String paramString)
-  {
-    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = 320;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
-    initParams();
-    a(paramString);
-  }
-  
-  private double a(PointF paramPointF1, PointF paramPointF2)
+  public static double a(PointF paramPointF1, PointF paramPointF2)
   {
     return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
   }
   
-  private void a()
+  public static void a()
   {
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    localObject = (Bitmap)((List)localObject).get(i % this.jdField_b_of_type_JavaUtilList.size());
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam != null)
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(16640);
+    GLES20.glFlush();
+  }
+  
+  @TargetApi(18)
+  public static void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.swapTextureBitmap((Bitmap)localObject);
+    default: 
+      return;
+    case 0: 
+      GLES20.glDisable(3042);
+      return;
+    case 1: 
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(1, 771);
+      GLES20.glBlendEquation(32774);
+      return;
+    case 2: 
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+      GLES30.glBlendEquation(32776);
       return;
     }
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, false);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
-    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
+    GLES20.glBlendEquation(32774);
   }
   
-  private void a(String paramString)
+  public static void a(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    if (i < this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.count)
-    {
-      Bitmap localBitmap = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(paramString + "/" + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_JavaLangString + "_" + i + ".png"), 80, 80);
-      if (BitmapUtils.isLegal(localBitmap)) {
-        this.jdField_b_of_type_JavaUtilList.add(localBitmap);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("Personality", 2, "PersonalityImageFilter unlegal bitmap " + i);
-        }
-      }
+    paramFrame.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
+    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    if (paramBoolean) {
+      a();
     }
   }
   
-  public void ApplyGLSLFilter()
+  public static void a(BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      super.ApplyGLSLFilter();
-    }
-  }
-  
-  public void a(List<PointF> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    if (this.jdField_b_of_type_JavaUtilList.size() < 1) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      PointF localPointF = (PointF)paramList.next();
-      localArrayList.add(new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y));
-    }
-    this.jdField_a_of_type_JavaUtilList.add(localArrayList);
-  }
-  
-  public void initAttribParams()
-  {
-    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
-    setTexCords(new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
-  }
-  
-  public void initParams()
-  {
-    super.addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    super.addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    super.addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    super.addParam(new UniformParam.IntParam("blendMode", this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.blendMode));
-    super.addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
-    super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
-  }
-  
-  public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (((List)this.jdField_a_of_type_JavaUtilList.get(0)).size() < 1)) {
-      return false;
-    }
-    this.jdField_a_of_type_Int = 0;
-    Object localObject = null;
-    paramInt2 = 0;
-    while (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramInt3 = 0;
-      if (paramInt3 < ((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).size())
-      {
-        PointF localPointF = (PointF)((List)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).get(paramInt3);
-        if ((localObject != null) && (a(localPointF, (PointF)localObject) <= Math.max(this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width, this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height) * 1.2D)) {}
-        for (;;)
-        {
-          paramInt3 += 1;
-          break;
-          a();
-          float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.d * 1.5F;
-          float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.e * 1.5F;
-          float f3 = localPointF.x - f1 / 2.0F;
-          float f4 = this.height - localPointF.y + f2 / 2.0F;
-          super.setPositions(AlgoUtils.calPositions(f3, f4, f1 + f3, f4 - f2, this.width, this.height));
-          super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
-          super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
-          super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-          GLES20.glFlush();
-          super.OnDrawFrameGLSL();
-          super.renderTexture(paramInt1, this.width, this.height);
-          localObject = localPointF;
-        }
-      }
-      paramInt2 += 1;
-    }
-    return true;
-  }
-  
-  public void updatePreview(Object paramObject) {}
-  
-  public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
-  {
-    super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
-    super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
+    Frame localFrame = new Frame(paramFrame1.getFBO(), paramFrame1.getTextureId(), paramInt2, paramInt3);
+    GlUtil.setBlendMode(true);
+    GLES20.glBlendEquation(32774);
+    GLES20.glBindFramebuffer(36160, paramFrame1.getFBO());
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    paramFrame2.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
+    paramBaseFilter.RenderProcess(paramFrame2.getTextureId(), paramInt2, paramInt3, paramFrame1.getTextureId(), 1.0D, localFrame);
+    GlUtil.setBlendMode(false);
   }
 }
 

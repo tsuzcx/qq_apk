@@ -1,39 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-class arur
-  extends akim
+public abstract interface arur
 {
-  arur(aruq paramaruq) {}
+  public abstract void a(arum paramarum, int paramInt);
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
-      }
-      arxh.a(this.a.app, 1, paramString);
-    }
-  }
+  public abstract void a(arum paramarum, int paramInt1, int paramInt2);
   
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (this.a.a.a())) {
-        bcpw.a(localBaseActivity, 2131693251, 1).a();
-      }
-      arxh.a(this.a.app, 1, paramString);
-    }
-  }
+  public abstract void a(arum paramarum, LocationRoom.Venue paramVenue, List<aruk> paramList);
+  
+  public abstract void b(arum paramarum, int paramInt);
 }
 
 

@@ -1,8 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
-public abstract interface reh
+public class reh
+  extends Handler
 {
-  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
+  private WeakReference<ReadInJoyNavigationGridview> a;
+  
+  public reh(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  {
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+  }
 }
 
 

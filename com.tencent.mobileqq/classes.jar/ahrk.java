@@ -1,20 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahrk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnDismissListener
 {
   public ahrk(LoginView paramLoginView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    int i = (int)((LoginView.b(this.a) - LoginView.c(this.a)) * f + LoginView.c(this.a));
-    int j = (int)((LoginView.d(this.a) - LoginView.e(this.a)) * f + LoginView.e(this.a));
-    int k = (int)((LoginView.f(this.a) - LoginView.g(this.a)) * f + LoginView.g(this.a));
-    int m = (int)((LoginView.h(this.a) - LoginView.i(this.a)) * f + LoginView.i(this.a));
-    LoginView.a(this.a, i, j, k, m, f);
+    LoginView.f(this.a, false);
+    LoginView.g(this.a, false);
+    axqy.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
   }
 }
 

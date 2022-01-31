@@ -1,56 +1,30 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class awlu
-  extends awoh
+  implements awuu<awlx>
 {
   protected QQAppInterface a;
-  protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
   
-  public awlu(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
+  public awlu(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
+    this.a = paramQQAppInterface;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public void a() {}
   
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void a(String paramString, List<FTSEntity> paramList);
   
-  public CharSequence b()
-  {
-    if (this.d == null) {
-      this.d = awvy.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    return this.d;
-  }
+  public void b() {}
   
-  public int c()
-  {
-    return 1;
-  }
+  public abstract void b(awvi paramawvi, awuv<awlw> paramawuv);
   
-  public CharSequence d()
-  {
-    return null;
-  }
+  public void c() {}
   
-  public abstract CharSequence e();
+  public void d() {}
+  
+  public void e() {}
 }
 
 

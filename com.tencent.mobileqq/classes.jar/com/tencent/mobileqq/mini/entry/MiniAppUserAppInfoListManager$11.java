@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukn;
-import auko;
 import aukp;
+import aukq;
+import aukr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -26,15 +26,15 @@ class MiniAppUserAppInfoListManager$11
       if (this.val$needCheckDbData) {
         MiniAppUserAppInfoListManager.access$1200(this.this$0, (AppInterface)localObject1, this.val$appInfoList);
       }
-      aukn localaukn = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-      if (localaukn == null) {
+      aukp localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localaukp == null) {
         continue;
       }
-      localObject1 = localaukn.a();
+      localObject1 = localaukp.a();
       if (localObject1 != null) {}
       try
       {
-        ((aukp)localObject1).a();
+        ((aukr)localObject1).a();
         localStringBuilder = new StringBuilder();
         Iterator localIterator = this.val$appInfoList.iterator();
         int i = 1;
@@ -44,7 +44,7 @@ class MiniAppUserAppInfoListManager$11
           localMiniAppInfo.position = i;
           MiniAppEntity localMiniAppEntity = new MiniAppEntity(localMiniAppInfo);
           localMiniAppEntity.setStatus(1000);
-          MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukn, localMiniAppEntity);
+          MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukp, localMiniAppEntity);
           i += 1;
           localStringBuilder.append(localMiniAppInfo.name).append(", ");
         }
@@ -60,14 +60,14 @@ class MiniAppUserAppInfoListManager$11
           QLog.d("MiniAppUserAppInfoListManager", 2, new Object[] { "saveMiniAppInfoList : ", localStringBuilder.toString() });
         }
         if (localObject1 != null) {
-          ((aukp)localObject1).c();
+          ((aukr)localObject1).c();
         }
         return;
       }
       finally
       {
         if (localObject1 != null) {
-          ((aukp)localObject1).b();
+          ((aukr)localObject1).b();
         }
       }
     }

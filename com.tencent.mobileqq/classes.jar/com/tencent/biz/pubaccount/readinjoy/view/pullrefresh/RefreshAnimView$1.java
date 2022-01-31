@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 import android.content.Context;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
-import rqz;
+import rqw;
 
 public class RefreshAnimView$1
   implements Runnable
@@ -14,7 +14,7 @@ public class RefreshAnimView$1
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.a, "readinjoy_refresh_animation.json", new rqz(this));
+      LottieComposition.Factory.fromAssetFileName(this.a, "readinjoy_refresh_animation.json", new rqw(this));
       return;
     }
     catch (Exception localException)

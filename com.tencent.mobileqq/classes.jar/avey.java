@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.data.QCallRecent;
-import java.util.List;
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
 
-public abstract interface avey
+class avey
+  implements Comparator<QCallRecord>
 {
-  public abstract void a(List<QCallRecent> paramList);
+  avey(avex paramavex) {}
+  
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  {
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
+    }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+  }
 }
 
 

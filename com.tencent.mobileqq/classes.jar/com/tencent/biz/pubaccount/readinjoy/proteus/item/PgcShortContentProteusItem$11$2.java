@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import phc;
+import pgz;
 
 public class PgcShortContentProteusItem$11$2
   implements Runnable
 {
-  public PgcShortContentProteusItem$11$2(phc paramphc) {}
+  public PgcShortContentProteusItem$11$2(pgz parampgz) {}
   
   public void run()
   {

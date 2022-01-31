@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import andx;
-import arpq;
+import anec;
+import arps;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -21,15 +21,15 @@ class Leba$10$1
     Iterator localIterator1 = Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).iterator();
     while (localIterator1.hasNext())
     {
-      andx localandx1 = (andx)localIterator1.next();
-      if ((localandx1 != null) && (localandx1.b != null) && (localandx1.a != null))
+      anec localanec1 = (anec)localIterator1.next();
+      if ((localanec1 != null) && (localanec1.b != null) && (localanec1.a != null))
       {
         Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          andx localandx2 = (andx)localIterator2.next();
-          if ((localandx2 != null) && (localandx2.a != null) && (localandx2.a.strPkgName.equals(localandx1.a.strPkgName))) {
-            localandx2.b = localandx1.b;
+          anec localanec2 = (anec)localIterator2.next();
+          if ((localanec2 != null) && (localanec2.a != null) && (localanec2.a.strPkgName.equals(localanec1.a.strPkgName))) {
+            localanec2.b = localanec1.b;
           }
         }
       }

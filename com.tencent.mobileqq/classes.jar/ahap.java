@@ -1,77 +1,54 @@
 import Wallet.SkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class ahap
 {
-  public static boolean a;
-  public static int c = 0;
-  public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
-  public String a;
-  public int b;
-  public String b = "";
-  
-  public ahap(SkinInfo paramSkinInfo)
+  public static ahan a(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
+    ahan localahan = new ahan(ajya.a(2131705438));
+    localahan.jdField_b_of_type_Int = -2;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
+    localahan.jdField_a_of_type_Int = 0;
+    return localahan;
   }
   
-  public ahap(String paramString)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<ahap> paramList)
+  public static ahan a(List<ahan> paramList, int paramInt)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      ahap localahap = (ahap)paramList.next();
-      if (c == localahap.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localahap.jdField_a_of_type_WalletSkinInfo.skin_id;
+      ahan localahan = (ahan)paramList.next();
+      if (localahan.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+        return localahan;
       }
     }
-    return -1;
+    return null;
   }
   
-  public static void a(List<ahap> paramList)
+  public static ahan b(String paramString)
   {
-    Collections.sort(paramList, new ahaq());
+    ahan localahan = new ahan(ajya.a(2131705440));
+    localahan.jdField_b_of_type_Int = -1;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localahan.jdField_a_of_type_Int = -1;
+    return localahan;
   }
   
-  public boolean equals(Object paramObject)
+  public static ahan c(String paramString)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof ahap)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((ahap)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
-    return false;
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("");
-    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
-    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
-    return localStringBuffer.toString();
+    ahan localahan = new ahan(ajya.a(2131705439));
+    localahan.jdField_b_of_type_JavaLangString = paramString;
+    localahan.jdField_b_of_type_Int = 1;
+    localahan.jdField_a_of_type_Int = 1000;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
+    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    return localahan;
   }
 }
 

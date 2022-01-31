@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.graytip;
 
-import aquu;
+import aquw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.pic.PicPreDownloader;

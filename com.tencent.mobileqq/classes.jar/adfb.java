@@ -1,9 +1,6 @@
-import android.graphics.Path;
-import java.util.List;
-
 public abstract interface adfb
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List<ades> paramList);
+  public abstract void a(adfa paramadfa);
 }
 
 

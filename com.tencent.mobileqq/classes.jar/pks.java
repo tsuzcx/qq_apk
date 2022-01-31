@@ -1,4 +1,3 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
@@ -8,7 +7,7 @@ public class pks
 {
   public ViewBase build(VafContext paramVafContext)
   {
-    return new ReadInJoyBiuButton(paramVafContext);
+    return new pkr(paramVafContext);
   }
 }
 

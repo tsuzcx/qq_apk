@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bjoq;
+import bjph;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import mqq.os.MqqHandler;
@@ -16,15 +16,15 @@ public final class AIOBusinessOperation$2
   
   public void run()
   {
-    int i = bjoq.a(this.jdField_a_of_type_JavaLangString);
+    int i = bjph.a(this.jdField_a_of_type_JavaLangString);
     if (i == 0)
     {
-      bjoq.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
-      i = bjoq.a(this.jdField_a_of_type_JavaLangString);
+      bjph.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
+      i = bjph.a(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130843620);
+      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130843621);
       boolean bool;
       if ((localObject instanceof BitmapDrawable))
       {
@@ -35,7 +35,7 @@ public final class AIOBusinessOperation$2
       {
         if (localObject != null)
         {
-          localObject = bjoq.a((Bitmap)localObject, i);
+          localObject = bjph.a((Bitmap)localObject, i);
           ThreadManager.getUIHandler().post(new AIOBusinessOperation.2.1(this, (Bitmap)localObject, bool));
         }
         return;

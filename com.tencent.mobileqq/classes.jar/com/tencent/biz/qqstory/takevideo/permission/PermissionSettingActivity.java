@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.permission;
 
-import ajxn;
-import ajyc;
+import ajxl;
+import ajya;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import aukm;
-import bcpw;
+import auko;
+import bcql;
 import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,27 +22,27 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nonnull;
-import ssw;
-import veg;
-import vel;
+import sst;
+import ved;
+import vei;
+import vrl;
+import vrn;
 import vro;
 import vrq;
 import vrr;
 import vrt;
-import vru;
+import vrv;
 import vrw;
-import vry;
-import vrz;
-import vzo;
+import vzl;
 
 public class PermissionSettingActivity
   extends QQStoryBaseActivity
 {
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private String jdField_a_of_type_JavaLangString;
-  private vru jdField_a_of_type_Vru;
+  private vrr jdField_a_of_type_Vrr;
   
-  private vrr a(Groups paramGroups, List<aukm> paramList, @NonNull List<String> paramList1)
+  private vro a(Groups paramGroups, List<auko> paramList, @NonNull List<String> paramList1)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -52,25 +52,25 @@ public class PermissionSettingActivity
       {
         Friends localFriends = (Friends)paramList.next();
         if (!paramList1.contains(localFriends.uin)) {
-          localArrayList.add(new vrq(localFriends));
+          localArrayList.add(new vrn(localFriends));
         }
       }
     }
-    return new vrr(paramGroups, localArrayList);
+    return new vro(paramGroups, localArrayList);
   }
   
   private void a(int paramInt, List<String> paramList)
   {
     if (this.app == null)
     {
-      veg.e("Q.qqstoryPermissionSettingActivity", "some error occur app is null, finish now.");
+      ved.e("Q.qqstoryPermissionSettingActivity", "some error occur app is null, finish now.");
       finish();
       return;
     }
-    Object localObject1 = ((ssw)this.app.getManager(181)).a(true);
+    Object localObject1 = ((sst)this.app.getManager(181)).a(true);
     Object localObject4 = new ArrayList();
     this.jdField_a_of_type_JavaLangString = this.app.c();
-    veg.a("Q.qqstoryPermissionSettingActivity", "my uin:%s", this.jdField_a_of_type_JavaLangString);
+    ved.a("Q.qqstoryPermissionSettingActivity", "my uin:%s", this.jdField_a_of_type_JavaLangString);
     ((List)localObject4).add(this.jdField_a_of_type_JavaLangString);
     if (localObject1 != null)
     {
@@ -82,46 +82,46 @@ public class PermissionSettingActivity
     localObject1 = new ArrayList();
     Object localObject3 = new ArrayList();
     Object localObject2 = new ArrayList();
-    Object localObject5 = (ajxn)this.app.getManager(51);
-    Object localObject6 = ((ajxn)localObject5).e();
+    Object localObject5 = (ajxl)this.app.getManager(51);
+    Object localObject6 = ((ajxl)localObject5).e();
     if (localObject6 != null)
     {
-      veg.a("Q.qqstoryPermissionSettingActivity", "friends groups:%s", localObject6.toString());
+      ved.a("Q.qqstoryPermissionSettingActivity", "friends groups:%s", localObject6.toString());
       localObject6 = ((List)localObject6).iterator();
       while (((Iterator)localObject6).hasNext())
       {
-        localObject7 = (aukm)((Iterator)localObject6).next();
+        localObject7 = (auko)((Iterator)localObject6).next();
         if ((localObject7 instanceof Groups))
         {
           localObject8 = (Groups)localObject7;
-          ArrayList localArrayList = ((ajxn)localObject5).a(String.valueOf(((Groups)localObject8).group_id));
+          ArrayList localArrayList = ((ajxl)localObject5).a(String.valueOf(((Groups)localObject8).group_id));
           if ((localArrayList != null) && (!localArrayList.isEmpty()))
           {
             localObject7 = a((Groups)localObject8, localArrayList, (List)localObject4);
             localObject8 = a((Groups)localObject8, localArrayList, (List)localObject4);
-            if (((vrr)localObject7).b() > 0) {
+            if (((vro)localObject7).b() > 0) {
               ((List)localObject3).add(localObject7);
             }
-            if (((vrr)localObject8).b() > 0) {
+            if (((vro)localObject8).b() > 0) {
               ((List)localObject2).add(localObject8);
             }
           }
         }
       }
     }
-    veg.e("Q.qqstoryPermissionSettingActivity", "friends group list is null! ");
-    localObject4 = new vrt(this, "", vzo.a(this, 20.0F));
-    ((vrt)localObject4).a(false, true);
-    localObject5 = new vrz(this, getString(2131699530), 10004);
-    ((vrz)localObject5).c(true);
-    localObject6 = new vrz(this, getString(2131699522), 10000);
-    ((vrz)localObject6).c(true);
-    Object localObject7 = new vrz(this, getString(2131699526), 10001);
-    ((vrz)localObject7).c(false);
-    Object localObject8 = new vrt(this, "", vzo.a(this, 20.0F));
-    ((vrt)localObject8).a(true, true);
-    localObject3 = new vro(this, getString(2131699529), 10002, (List)localObject3, this.app);
-    localObject2 = new vro(this, getString(2131699528), 10003, (List)localObject2, this.app);
+    ved.e("Q.qqstoryPermissionSettingActivity", "friends group list is null! ");
+    localObject4 = new vrq(this, "", vzl.a(this, 20.0F));
+    ((vrq)localObject4).a(false, true);
+    localObject5 = new vrw(this, getString(2131699541), 10004);
+    ((vrw)localObject5).c(true);
+    localObject6 = new vrw(this, getString(2131699533), 10000);
+    ((vrw)localObject6).c(true);
+    Object localObject7 = new vrw(this, getString(2131699537), 10001);
+    ((vrw)localObject7).c(false);
+    Object localObject8 = new vrq(this, "", vzl.a(this, 20.0F));
+    ((vrq)localObject8).a(true, true);
+    localObject3 = new vrl(this, getString(2131699540), 10002, (List)localObject3, this.app);
+    localObject2 = new vrl(this, getString(2131699539), 10003, (List)localObject2, this.app);
     switch (paramInt)
     {
     }
@@ -135,30 +135,30 @@ public class PermissionSettingActivity
       ((List)localObject1).add(localObject3);
       ((List)localObject1).add(localObject2);
       paramList = this.jdField_a_of_type_AndroidWidgetListView;
-      localObject1 = new vru((List)localObject1);
-      this.jdField_a_of_type_Vru = ((vru)localObject1);
+      localObject1 = new vrr((List)localObject1);
+      this.jdField_a_of_type_Vrr = ((vrr)localObject1);
       paramList.setAdapter((ListAdapter)localObject1);
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Vru);
+      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Vrr);
       return;
-      ((vrz)localObject5).b(true);
+      ((vrw)localObject5).b(true);
       continue;
-      ((vrz)localObject6).b(true);
+      ((vrw)localObject6).b(true);
       continue;
-      ((vrz)localObject7).b(true);
+      ((vrw)localObject7).b(true);
       continue;
-      ((vro)localObject3).b(true);
-      ((vro)localObject3).a(paramList);
+      ((vrl)localObject3).b(true);
+      ((vrl)localObject3).a(paramList);
       continue;
-      ((vro)localObject2).b(true);
-      ((vro)localObject2).a(paramList);
+      ((vrl)localObject2).b(true);
+      ((vrl)localObject2).a(paramList);
     }
   }
   
-  private void a(@Nonnull vrw paramvrw)
+  private void a(@Nonnull vrt paramvrt)
   {
-    int i = paramvrw.b();
+    int i = paramvrt.b();
     Intent localIntent = new Intent();
-    veg.a("Q.qqstoryPermissionSettingActivity", "onCompleteBtnClick, partType:%s", Integer.valueOf(i));
+    ved.a("Q.qqstoryPermissionSettingActivity", "onCompleteBtnClick, partType:%s", Integer.valueOf(i));
     localIntent.putExtra("PERMISSION_TYPE_KEY", i);
     localIntent.putExtra("PERMISSION_CURRENT_UIN_KEY", this.jdField_a_of_type_JavaLangString);
     switch (i)
@@ -169,38 +169,38 @@ public class PermissionSettingActivity
       setResult(1, localIntent);
       return;
       ArrayList localArrayList = new ArrayList();
-      paramvrw = ((vro)paramvrw).a();
-      if (paramvrw.isEmpty())
+      paramvrt = ((vrl)paramvrt).a();
+      if (paramvrt.isEmpty())
       {
-        veg.d("Q.qqstoryPermissionSettingActivity", "onCompleteBtnClick, empty friend list.");
-        bcpw.a(this, ajyc.a(2131707927), 0).a();
+        ved.d("Q.qqstoryPermissionSettingActivity", "onCompleteBtnClick, empty friend list.");
+        bcql.a(this, ajya.a(2131707938), 0).a();
         return;
       }
-      paramvrw = paramvrw.iterator();
-      while (paramvrw.hasNext()) {
-        localArrayList.add(((vrq)paramvrw.next()).a());
+      paramvrt = paramvrt.iterator();
+      while (paramvrt.hasNext()) {
+        localArrayList.add(((vrn)paramvrt.next()).a());
       }
       localIntent.putExtra("PERMISSION_UIN_LIST_KEY", localArrayList);
-      veg.a("Q.qqstoryPermissionSettingActivity", "select uin list:%s", localArrayList.toString());
+      ved.a("Q.qqstoryPermissionSettingActivity", "select uin list:%s", localArrayList.toString());
     }
   }
   
   public boolean onBackEvent()
   {
-    vel.a("pub_control", "clk_return", 0, 0, new String[0]);
+    vei.a("pub_control", "clk_return", 0, 0, new String[0]);
     return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561340);
-    super.setTitle(ajyc.a(2131707922));
+    setContentView(2131561339);
+    super.setTitle(ajya.a(2131707933));
     this.rightViewImg.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(ajyc.a(2131707933));
-    this.rightViewText.setContentDescription(ajyc.a(2131707929));
-    this.rightViewText.setOnClickListener(new vry(this));
+    this.rightViewText.setText(ajya.a(2131707944));
+    this.rightViewText.setContentDescription(ajya.a(2131707940));
+    this.rightViewText.setOnClickListener(new vrv(this));
     paramBundle = getIntent();
     int i;
     if (paramBundle != null) {
@@ -211,7 +211,7 @@ public class PermissionSettingActivity
       this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131371379));
       a(i, paramBundle);
       ((ViewGroup)this.jdField_a_of_type_AndroidWidgetListView.getParent()).setBackgroundColor(getResources().getColor(2131166912));
-      vel.a("pub_control", "exp_page", 0, 0, new String[0]);
+      vei.a("pub_control", "exp_page", 0, 0, new String[0]);
       return;
       i = 10000;
     }

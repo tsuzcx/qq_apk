@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aayb;
-import aayc;
+import aaxx;
+import aaxy;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbcv;
-import bbev;
-import bbgg;
-import bcpq;
-import bcpw;
+import bbdj;
+import bbfj;
+import bbgu;
+import bcqf;
+import bcql;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -27,21 +27,21 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import wim;
+import wij;
 
 public class DevlockQuickLoginActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 1;
-  Handler jdField_a_of_type_AndroidOsHandler = new aayb(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new aaxx(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbgg jdField_a_of_type_Bbgg;
-  bcpq jdField_a_of_type_Bcpq;
+  bbgu jdField_a_of_type_Bbgu;
+  bcqf jdField_a_of_type_Bcqf;
   String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aayc(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aaxy(this);
   byte[] jdField_a_of_type_ArrayOfByte = null;
   int jdField_b_of_type_Int = 1;
   Button jdField_b_of_type_AndroidWidgetButton;
@@ -661,25 +661,25 @@ public class DevlockQuickLoginActivity
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (this.jdField_a_of_type_Bbgg.isShowing()))
+    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing()))
     {
-      this.jdField_a_of_type_Bbgg.dismiss();
-      this.jdField_a_of_type_Bbgg = null;
+      this.jdField_a_of_type_Bbgu.dismiss();
+      this.jdField_a_of_type_Bbgu = null;
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
   {
     a();
-    this.jdField_a_of_type_Bbgg = bbcv.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bbgg.setPositiveButton(paramString3, paramOnClickListener);
-    this.jdField_a_of_type_Bbgg.setCancelable(false);
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bbgu = bbdj.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bbgu.setPositiveButton(paramString3, paramOnClickListener);
+    this.jdField_a_of_type_Bbgu.setCancelable(false);
+    this.jdField_a_of_type_Bbgu.show();
   }
   
   public void b()
   {
-    Object localObject1 = wim.a(this.app.a());
+    Object localObject1 = wij.a(this.app.a());
     Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
     ((ByteBuffer)localObject2).putShort((short)2);
     ((ByteBuffer)localObject2).putShort((short)localObject1.length);
@@ -729,12 +729,12 @@ public class DevlockQuickLoginActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
+      if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
       {
-        this.jdField_a_of_type_Bcpq.dismiss();
-        this.jdField_a_of_type_Bcpq.cancel();
+        this.jdField_a_of_type_Bcqf.dismiss();
+        this.jdField_a_of_type_Bcqf.cancel();
       }
-      this.jdField_a_of_type_Bcpq = null;
+      this.jdField_a_of_type_Bcqf = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -765,9 +765,9 @@ public class DevlockQuickLoginActivity
       super.overridePendingTransition(0, 2130772001);
       return;
     }
-    if (!bbev.d(this))
+    if (!bbfj.d(this))
     {
-      bcpw.a(this, super.getString(2131692321), 0).b(super.getTitleBarHeight());
+      bcql.a(this, super.getString(2131692321), 0).b(super.getTitleBarHeight());
       return;
     }
     if ((this.app == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
@@ -775,7 +775,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString is empty");
       }
-      bcpw.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
+      bcql.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2130772001);
       return;
@@ -786,7 +786,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString  error");
       }
-      bcpw.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
+      bcql.a(super.getApplicationContext(), 1, super.getString(2131692161), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2130772001);
       return;
@@ -796,18 +796,18 @@ public class DevlockQuickLoginActivity
     paramView = this.app.getCurrentAccountUin();
     try
     {
-      if ((this.jdField_a_of_type_Bcpq == null) && (!super.isFinishing()))
+      if ((this.jdField_a_of_type_Bcqf == null) && (!super.isFinishing()))
       {
-        this.jdField_a_of_type_Bcpq = new bcpq(this, super.getTitleBarHeight());
-        this.jdField_a_of_type_Bcpq.c(2131694930);
+        this.jdField_a_of_type_Bcqf = new bcqf(this, super.getTitleBarHeight());
+        this.jdField_a_of_type_Bcqf.c(2131694931);
       }
-      if ((this.jdField_a_of_type_Bcpq != null) && (!this.jdField_a_of_type_Bcpq.isShowing())) {
-        this.jdField_a_of_type_Bcpq.show();
+      if ((this.jdField_a_of_type_Bcqf != null) && (!this.jdField_a_of_type_Bcqf.isShowing())) {
+        this.jdField_a_of_type_Bcqf.show();
       }
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin start verifyCode..");
       }
-      if (i == 2131364616)
+      if (i == 2131364615)
       {
         i = this.jdField_b_of_type_Int;
         this.jdField_a_of_type_Int = i;
@@ -833,15 +833,15 @@ public class DevlockQuickLoginActivity
   {
     super.setTheme(2131755544);
     super.onCreate(paramBundle);
-    super.setContentView(2131560731);
+    super.setContentView(2131560730);
     this.leftView.setVisibility(4);
     super.setRightButton(2131690832, this);
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365828));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370812));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377322));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377323));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364616));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131376938));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364615));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131376940));
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {

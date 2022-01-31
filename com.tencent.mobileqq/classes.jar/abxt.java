@@ -1,30 +1,81 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import mqq.observer.AccountObserver;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class abxt
-  extends AccountObserver
+  extends ajxj
 {
-  public abxt(QuickLoginActivity paramQuickLoginActivity) {}
+  public abxt(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
+    }
+    RecentLoginDevActivity.b(this.a);
+    if (paramBoolean)
+    {
+      axqy.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
+      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
+      {
+        RecentLoginDevActivity.a(this.a).remove(paramInt);
+        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      }
+      bcql.a(this.a.getApplicationContext(), 2, this.a.getString(2131692124), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131694487), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    bcql.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
-  }
-  
-  public void onLoginTimeout(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
+    RecentLoginDevActivity.b(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
+      }
+      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+      }
+      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
+    }
+    for (;;)
+    {
+      bcql.a(this.a.getActivity(), 1, this.a.getString(2131692140), 0).b(this.a.getTitleBarHeight());
+      return;
+      label288:
+      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    }
   }
 }
 

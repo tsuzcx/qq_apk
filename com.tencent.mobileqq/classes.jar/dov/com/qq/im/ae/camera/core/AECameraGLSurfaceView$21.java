@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.core;
 
 import android.graphics.PointF;
-import bijp;
+import bikg;
 
 class AECameraGLSurfaceView$21
   implements Runnable
 {
-  AECameraGLSurfaceView$21(AECameraGLSurfaceView paramAECameraGLSurfaceView, bijp parambijp, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$21(AECameraGLSurfaceView paramAECameraGLSurfaceView, bikg parambikg, float paramFloat1, float paramFloat2, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bijp.a(new PointF(this.jdField_a_of_type_Float, this.b), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bikg.a(new PointF(this.jdField_a_of_type_Float, this.b), this.jdField_a_of_type_Int);
   }
 }
 

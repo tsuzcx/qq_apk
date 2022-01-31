@@ -1,274 +1,168 @@
-import android.graphics.Rect;
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetricsInt;
+import android.os.Build.VERSION;
+import android.text.TextPaint;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.WeakHashMap;
 
-public abstract class lrw
+public class lrw
+  extends lrx
 {
-  private static ThreadLocal<Class<lrw>> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private static WeakHashMap<lrw, Object> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  protected int a;
-  protected lqt a;
-  protected int[] a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e = -1;
-  protected int f = -1;
-  protected int g;
-  protected int h;
-  protected int i;
-  protected int j;
+  private float jdField_a_of_type_Float = 1.0F;
+  private final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  protected Canvas a;
+  private Paint.FontMetricsInt jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private String jdField_a_of_type_JavaLangString = "";
+  private float b = 15.0F;
+  private int k = -1;
+  private int l = 2147483647;
+  private int m = 2147483647;
+  private int n = 2147483647;
   
-  protected lrw()
+  public lrw()
   {
-    this(null, 0);
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
+    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(2.0F, 0.0F, 0.0F, -16777216);
+    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
+    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    a(false);
   }
   
-  protected lrw(lqt arg1, int paramInt)
+  protected Bitmap a()
   {
-    a(???);
-    this.b = paramInt;
-    this.jdField_a_of_type_Int = 0;
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    Bitmap localBitmap = Bitmap.createBitmap(this.e, this.f, this.jdField_a_of_type_AndroidGraphicsBitmap$Config);
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(0.0F, -this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+    return localBitmap;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setTextSize textSize: " + paramFloat);
+    }
+    this.b = paramFloat;
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
+    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (!d()) {
+      paramBitmap.recycle();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setText text: " + paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(lqo paramlqo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((this.jdField_a_of_type_Float < 0.99F) && (Build.VERSION.SDK_INT >= 16)) {}
+    for (int i = 1;; i = 0)
     {
-      jdField_a_of_type_JavaUtilWeakHashMap.put(this, null);
+      if (i != 0)
+      {
+        paramlqo.a(3);
+        paramlqo.a(this.jdField_a_of_type_Float);
+      }
+      paramlqo.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+      if (i != 0) {
+        paramlqo.c();
+      }
       return;
     }
   }
   
-  public static void c()
+  public void c(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext()) {
-        ((lrw)localIterator.next()).b();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setTextColor textColor: " + paramInt);
     }
+    this.k = paramInt;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
   }
   
-  public static void d()
+  public void d(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaUtilWeakHashMap)
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setMaxLength maxLength: " + paramInt);
+    }
+    this.n = paramInt;
+  }
+  
+  public void e()
+  {
+    int i = 1;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilWeakHashMap.keySet().iterator();
-      if (localIterator.hasNext())
+      j = mqu.a(this.jdField_a_of_type_JavaLangString);
+      i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
+      if ((j <= this.n) && (i <= this.l)) {
+        break label302;
+      }
+    }
+    label302:
+    for (int j = 1;; j = 0)
+    {
+      if (j != 0)
       {
-        lrw locallrw = (lrw)localIterator.next();
-        locallrw.b = 0;
-        locallrw.a(null);
+        i = Math.min(Math.max((this.l - (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("..."))) / (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("M")), 1), this.n);
+        this.jdField_a_of_type_JavaLangString = (mqu.a(this.jdField_a_of_type_JavaLangString, 0, i) + "...");
+        i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
       }
-    }
-  }
-  
-  public static boolean d()
-  {
-    return jdField_a_of_type_JavaLangThreadLocal.get() != null;
-  }
-  
-  private void e()
-  {
-    lqt locallqt = this.jdField_a_of_type_Lqt;
-    if ((locallqt != null) && (this.jdField_a_of_type_ArrayOfInt != null))
-    {
-      locallqt.a(this);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-    this.b = 0;
-    a(null);
-  }
-  
-  public int a()
-  {
-    return this.i;
-  }
-  
-  public Rect a()
-  {
-    return new Rect(this.c, this.d, this.c + this.e, this.d + this.f);
-  }
-  
-  protected TextureProgram a()
-  {
-    return lrs.a(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    e();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.i = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.g = paramInt1;
-    this.h = paramInt2;
-    if (((this.g > 4096) || (this.h > 4096)) && (QLog.isColorLevel())) {
-      QLog.w("BasicTexture", 2, String.format("texture is too large: %d x %d", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h) }), new Exception());
-    }
-    if (this.e == -1)
-    {
-      this.e = paramInt1;
-      this.f = paramInt2;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-    this.f = paramInt4;
-  }
-  
-  protected void a(lqt paramlqt)
-  {
-    this.jdField_a_of_type_Lqt = paramlqt;
-  }
-  
-  public void a(lqt paramlqt, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramlqt.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract boolean a(lqt paramlqt);
-  
-  public byte[] a()
-  {
-    return null;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public int[] a(lqt paramlqt)
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public lru[] a(lqt paramlqt)
-  {
-    int k = 0;
-    TextureProgram localTextureProgram = a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    lsv.a();
-    if ((!b()) || (paramlqt.a() < 0.95F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      lqu.a(bool);
-      if (!a(paramlqt)) {
-        break;
+      j = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.bottom - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.top;
+      if (i <= 0) {
+        i = 1;
       }
-      int[] arrayOfInt = a();
-      while (k < arrayOfInt.length)
+      for (;;)
       {
-        GLES20.glActiveTexture(33984 + k);
-        lsv.a();
-        GLES20.glBindTexture(g(), arrayOfInt[k]);
-        lsv.a();
-        GLES20.glUniform1i(localTextureProgram.a()[(k + 4)].jdField_a_of_type_Int, k);
-        lsv.a();
-        k += 1;
+        if (j <= 0) {
+          j = 1;
+        }
+        for (;;)
+        {
+          b(i, j);
+          a(i, j);
+          if (QLog.isColorLevel()) {
+            QLog.d("StringTexture", 2, "refreshText width: " + this.e + ", height: " + this.f + ", maxLength: " + this.n + ", textSize: " + this.b + ", text: " + this.jdField_a_of_type_JavaLangString + ";mMetrics:=" + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.toString());
+          }
+          return;
+          j = 1;
+        }
       }
     }
-    GLES20.glUniform1f(localTextureProgram.a()[2].jdField_a_of_type_Int, paramlqt.a());
-    lsv.a();
-    return localTextureProgram.a();
   }
   
-  public int b()
+  public void e(int paramInt)
   {
-    return this.j;
-  }
-  
-  public void b()
-  {
-    e();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.j = paramInt;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
-  
-  public abstract boolean b();
-  
-  public byte[] b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public boolean c()
-  {
-    return this.b == 1;
-  }
-  
-  public int d()
-  {
-    return this.f;
-  }
-  
-  public int e()
-  {
-    return this.g;
-  }
-  
-  public int f()
-  {
-    return this.h;
-  }
-  
-  protected void finalize()
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangThreadLocal.set(lrw.class);
-      a();
-      jdField_a_of_type_JavaLangThreadLocal.set(null);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("StringTexture", 2, "setWidth width: " + paramInt);
     }
-    finally
-    {
-      super.finalize();
+    if (paramInt > 0) {
+      this.l = paramInt;
     }
   }
   
-  public abstract int g();
-  
-  public int h()
+  public int j()
   {
-    return 0;
+    return (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.descent - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
   }
   
-  public int i()
+  public int k()
   {
-    return 0;
+    return Math.abs(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
   }
 }
 

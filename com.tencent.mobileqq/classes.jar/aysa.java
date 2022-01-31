@@ -1,12 +1,12 @@
 public abstract interface aysa
 {
-  public abstract void onResp(aysx paramaysx);
+  public abstract void a(aysy paramaysy);
   
-  public abstract void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2);
+  public abstract void b(aysy paramaysy);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     aysa
  * JD-Core Version:    0.7.0.1
  */

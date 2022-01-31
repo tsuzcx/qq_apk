@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgo;
+import amgn;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import besl;
+import betc;
 
 class ColorNotePlugin$1$1
   implements DialogInterface.OnClickListener
@@ -21,7 +21,7 @@ class ColorNotePlugin$1$1
     }
     catch (Exception paramDialogInterface)
     {
-      besl.d("ColorNotePlugin", "show modalView error." + paramDialogInterface);
+      betc.d("ColorNotePlugin", "show modalView error." + paramDialogInterface);
     }
   }
 }

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
 import android.text.TextUtils;
-import ayki;
-import bbbg;
+import aykk;
+import bbbu;
 
 public class MessageForDeviceText
   extends ChatMessage
@@ -27,7 +27,7 @@ public class MessageForDeviceText
     Object localObject1 = localObject2;
     if (this.msgtype == -1003)
     {
-      localObject1 = bbbg.a((String)localObject2);
+      localObject1 = bbbu.a((String)localObject2);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
@@ -35,7 +35,7 @@ public class MessageForDeviceText
     if (localObject1 == null) {
       localObject2 = "";
     }
-    this.sb = new ayki((CharSequence)localObject2, 13, 32, this.istroop);
+    this.sb = new aykk((CharSequence)localObject2, 13, 32, this.istroop);
   }
   
   public void prewrite()

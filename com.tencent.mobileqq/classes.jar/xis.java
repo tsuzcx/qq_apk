@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearSmoothScroller;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class xis
-  extends LinearSmoothScroller
+  implements View.OnClickListener
 {
-  xis(xir paramxir, Context paramContext)
-  {
-    super(paramContext);
-  }
+  xis(xiq paramxiq) {}
   
-  public PointF computeScrollVectorForPosition(int paramInt)
+  public void onClick(View paramView)
   {
-    return this.a.a(paramInt);
+    xiq.a(this.a).setVisibility(8);
   }
 }
 

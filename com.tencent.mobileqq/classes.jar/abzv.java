@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
 
-public class abzv
-  implements DialogInterface.OnClickListener
+public final class abzv
+  implements Parcelable.Creator<RiskInfoItem>
 {
-  public abzv(RiskHintDlgFragment paramRiskHintDlgFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    this.a.a(this.a.c);
+    return new RiskInfoItem(paramParcel, null);
+  }
+  
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
   }
 }
 

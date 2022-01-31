@@ -1,17 +1,6 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-
-class azyj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface azyj
 {
-  azyj(azyi paramazyi, String paramString) {}
-  
-  public void onGlobalLayout()
-  {
-    azyi.a(this.jdField_a_of_type_Azyi).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    azyi.a(this.jdField_a_of_type_Azyi, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 

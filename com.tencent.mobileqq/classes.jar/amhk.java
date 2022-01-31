@@ -1,164 +1,87 @@
 import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
+import android.text.TextUtils;
 import mqq.util.WeakReference;
 
-public class amhk
+class amhk
+  extends BroadcastReceiver
 {
-  private static amhk jdField_a_of_type_Amhk;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private static final byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new amhl(this);
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private WeakReference<amgr> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private WeakReference<amkh> jdField_b_of_type_MqqUtilWeakReference;
-  private boolean jdField_b_of_type_Boolean = true;
+  amhk(amhj paramamhj) {}
   
-  public static amhk a()
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    if (jdField_a_of_type_Amhk == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    if (paramIntent == null) {}
+    do
     {
-      if (jdField_a_of_type_Amhk == null) {
-        jdField_a_of_type_Amhk = new amhk();
-      }
-      return jdField_a_of_type_Amhk;
-    }
-  }
-  
-  public Point a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint;
-  }
-  
-  public void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter("key_float_window_position");
-    localIntentFilter.addAction("key_delete_item_call");
-    localIntentFilter.addAction("key_after_sync_msg");
-    try
-    {
-      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteQIPCModule", 1, "register broadcast");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      do
       {
-        QLog.e("ColorNoteQIPCModule", 2, "register failed", localException);
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    a(paramInt, paramString, paramBoolean, 0);
-  }
-  
-  public void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
-  {
-    if (paramInt2 == 2) {
-      return;
-    }
-    paramString = paramInt1 + paramString + paramInt2;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(paramString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-  }
-  
-  public void a(amgr paramamgr)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramamgr);
-  }
-  
-  public void a(amkh paramamkh)
-  {
-    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramamkh);
-  }
-  
-  public void a(Point paramPoint)
-  {
-    if ((paramPoint != null) && (paramPoint.x != 0) && (paramPoint.y != 0)) {
-      this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    amgu.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    amgu.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return amgu.a();
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    return a(paramInt, paramString, 0);
-  }
-  
-  public boolean a(int paramInt1, String paramString, int paramInt2)
-  {
-    return (paramInt2 != 2) && (this.jdField_a_of_type_JavaUtilSet.contains(paramInt1 + paramString + paramInt2));
-  }
-  
-  public void b()
-  {
-    try
-    {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteQIPCModule", 1, "unregister broadcast");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ColorNoteQIPCModule", 2, "unregister failed", localException);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
+        int j;
+        do
+        {
+          for (;;)
+          {
+            return;
+            ??? = paramIntent.getAction();
+            if (!TextUtils.isEmpty(???))
+            {
+              if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
+                com.tencent.qphone.base.util.QLog.d("ColorNoteQIPCModule", 1, "action receive: " + ???);
+              }
+              if (???.equals("key_float_window_position"))
+              {
+                i = paramIntent.getIntExtra("key_float_window_position_x", 0);
+                j = paramIntent.getIntExtra("key_float_window_position_y", 0);
+                synchronized (amhj.a())
+                {
+                  amhj.a(this.a).set(i, j);
+                  if (com.tencent.qphone.base.util.QLog.isColorLevel())
+                  {
+                    com.tencent.qphone.base.util.QLog.d("ColorNoteQIPCModule", 1, "KEY_FLOAT_WINDOW_POSITION receive: " + i + ", " + j);
+                    return;
+                  }
+                }
+              }
+            }
+          }
+          if (!???.equals("key_delete_item_call")) {
+            break;
+          }
+          amhj.a(this.a, paramIntent.getBooleanExtra("extra_can_add_colornote", true));
+          ??? = paramIntent.getStringArrayExtra("key_color_note_servicetype_list");
+          paramIntent = paramIntent.getStringArrayExtra("key_color_note_suptype_list");
+        } while ((amhj.a(this.a) == null) || (??? == null) || (paramIntent == null) || (???.length != paramIntent.length));
+        int i = 0;
+        while ((paramIntent != null) && (i < paramIntent.length)) {
+          try
+          {
+            j = Integer.valueOf(???[i]).intValue();
+            if (j != -1)
+            {
+              amgq localamgq = (amgq)amhj.a(this.a).get();
+              if (localamgq != null) {
+                localamgq.onDeleteColorNote(j, paramIntent[i], false);
+              }
+            }
+            i += 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              com.tencent.qphone.base.util.QLog.e("ColorNoteQIPCModule", 2, "integer cast error", localException);
+              j = -1;
+            }
+          }
+        }
+      } while ((!???.equals("key_after_sync_msg")) || (amhj.b(this.a) == null));
+      ??? = (amkg)amhj.b(this.a).get();
+    } while (??? == null);
+    boolean bool = paramIntent.getBooleanExtra("extra_after_sync_msg", true);
+    ???.onServiceSyncSucc(bool);
+    this.a.b(bool);
+    com.tencent.TMG.utils.QLog.d("ColorNoteQIPCModule", 1, "invoke listener: " + bool);
   }
 }
 

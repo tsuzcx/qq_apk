@@ -1,17 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import Wallet.PfaFriendRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class agyb
-  extends BroadcastReceiver
+final class agyb
+  extends Handler
 {
-  public agyb(SendHbActivity paramSendHbActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  agyb(Looper paramLooper)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
+      }
+    }
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
+      }
+    }
+    for (;;)
+    {
+      agya.a(bool1, (PfaFriendRsp)localObject1, bool2);
+      return;
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
     }
   }
 }

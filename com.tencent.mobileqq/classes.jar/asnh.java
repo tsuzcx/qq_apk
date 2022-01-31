@@ -1,51 +1,35 @@
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
 
 public class asnh
-  implements bcsv
+  implements bctk
 {
-  public asnh(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public asnh(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
   public void a(View paramView, int paramInt)
   {
-    switch (paramInt)
+    int i = 2;
+    if (paramInt == 1)
     {
-    default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + asle.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
+      asoi.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(aslg.c) });
+      if (MsgBackupSelectionFragment.a(this.a) != 0) {
+        break label79;
       }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
-      {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
-        }
-        asoe.a("0X800A243", 2);
+      paramInt = i;
+      if (MsgBackupSelectionFragment.a(this.a)) {
+        paramInt = 3;
       }
-      while (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.k();
-        return;
-        label129:
-        asoe.a("0X800A243", 1);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
-      return;
+      asog.a("0X800A242", paramInt);
     }
-    asle.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + asle.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      label79:
+      if ((aslg.c) && (askv.a().a() == 1)) {
+        asog.a("0X800A266", 5);
+      }
     }
-    asle.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    asoe.a("0X800A249");
   }
 }
 

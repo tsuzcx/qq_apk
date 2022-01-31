@@ -1,35 +1,25 @@
-import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
 public class biyi
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public final int a;
-  public final Bitmap a;
-  public final String a;
-  public final Throwable a;
-  public final boolean a;
+  public biyi(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  private biyi(boolean paramBoolean, int paramInt, String paramString, Throwable paramThrowable, Bitmap paramBitmap)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  private static biyi b(int paramInt, String paramString)
-  {
-    return new biyi(false, paramInt, paramString, null, null);
-  }
-  
-  private static biyi b(Bitmap paramBitmap)
-  {
-    return new biyi(true, 0, null, null, paramBitmap);
-  }
-  
-  public String toString()
-  {
-    return "ChangeFaceResult{isSuccess=" + this.jdField_a_of_type_Boolean + ", errCode=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", exception=" + this.jdField_a_of_type_JavaLangThrowable + ", data=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+    if (Build.VERSION.SDK_INT >= 16) {
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
+      return;
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

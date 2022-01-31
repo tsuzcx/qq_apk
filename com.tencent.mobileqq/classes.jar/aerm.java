@@ -1,83 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
+import mqq.os.MqqHandler;
 
-class aerm
-  extends akgi
+public class aerm
+  extends akil
 {
-  aerm(aerl paramaerl) {}
+  aerm(aerj paramaerj) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    ChatActivityUtils.b();
-    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    int i;
-    if (paramBoolean)
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      i = 2131719532;
-      bcpw.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label69;
-      }
+      paramString.Z = paramBoolean1;
+      aerj.c(this.a).post(new NearbyChatPie.12.1(this));
+      return;
     }
-    label69:
-    do
-    {
-      int k;
-      do
-      {
-        return;
-        i = 2131719520;
-        break;
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          k = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bbbd.a(String.valueOf(paramList.get(j)), localObject)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-    } while (!paramBoolean);
-    this.a.m();
-  }
-  
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        if (paramList == null) {}
-        for (int i = 0;; i = paramList.size())
-        {
-          int j = 0;
-          while ((k == 0) && (j < i))
-          {
-            if (bbbd.a(String.valueOf(paramList.get(j)), str)) {
-              k = 1;
-            }
-            j += 1;
-          }
-        }
-      } while (k == 0);
-      ChatActivityUtils.b();
-    } while (!paramBoolean);
-    this.a.m();
   }
 }
 

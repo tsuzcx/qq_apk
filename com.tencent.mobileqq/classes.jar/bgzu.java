@@ -1,19 +1,47 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-
-public final class bgzu
-  implements DialogInterface.OnClickListener
+public class bgzu
 {
-  public bgzu(Context paramContext, int paramInt, String paramString, Intent paramIntent) {}
+  public static final bgzu a;
+  public static final bgzu b;
+  public static final bgzu c;
+  public static final bgzu d = new bgzu(false, ajya.a(2131712481), false, true);
+  public static final bgzu e = new bgzu(false, ajya.a(2131712489), false, true);
+  public static final bgzu f = new bgzu(false, ajya.a(2131712493), true, true);
+  public static final bgzu g = new bgzu(false, ajya.a(2131712505), true, true);
+  public static final bgzu h = new bgzu(false, ajya.a(2131712466), false, true);
+  public static final bgzu i = new bgzu(false, ajya.a(2131712555), true, true);
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (!bgxy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
-      bgxy.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidContentContext);
-    }
-    paramDialogInterface.dismiss();
+    jdField_a_of_type_Bgzu = new bgzu(true, ajya.a(2131712522), false, false);
+    jdField_b_of_type_Bgzu = new bgzu(false, "CPU指令集不支持", false, true);
+    jdField_c_of_type_Bgzu = new bgzu(false, ajya.a(2131712506), false, true);
+  }
+  
+  bgzu(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

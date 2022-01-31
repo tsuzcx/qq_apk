@@ -2,20 +2,20 @@ package com.tencent.biz.now;
 
 import android.graphics.Rect;
 import android.view.View;
-import bbev;
+import bbfj;
 import com.tencent.mobileqq.widget.PAVideoView;
 import com.tencent.widget.AbsListView;
-import ndm;
-import nqq;
+import ndj;
+import nqn;
 
 public class NowVideoController$3
   implements Runnable
 {
-  public NowVideoController$3(ndm paramndm, int paramInt1, int paramInt2) {}
+  public NowVideoController$3(ndj paramndj, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (ndm.a(this.this$0) == null) {
+    if (ndj.a(this.this$0) == null) {
       return;
     }
     int i = this.a;
@@ -23,7 +23,7 @@ public class NowVideoController$3
     Object localObject;
     if (i <= this.b)
     {
-      localObject = ndm.a(this.this$0).getChildAt(i - this.a);
+      localObject = ndj.a(this.this$0).getChildAt(i - this.a);
       if (localObject != null) {
         break label52;
       }
@@ -34,11 +34,11 @@ public class NowVideoController$3
       break label16;
       break;
       label52:
-      localObject = (PAVideoView)((View)localObject).findViewById(2131376577);
+      localObject = (PAVideoView)((View)localObject).findViewById(2131376579);
       if ((localObject != null) && (((PAVideoView)localObject).j == 4))
       {
-        ((PAVideoView)localObject).getGlobalVisibleRect(ndm.a());
-        if ((((PAVideoView)localObject).getHeight() == ndm.a().height()) && (bbev.h(((PAVideoView)localObject).getContext())) && (nqq.a) && (ndm.a().top > 0)) {
+        ((PAVideoView)localObject).getGlobalVisibleRect(ndj.a());
+        if ((((PAVideoView)localObject).getHeight() == ndj.a().height()) && (bbfj.h(((PAVideoView)localObject).getContext())) && (nqn.a) && (ndj.a().top > 0)) {
           ((PAVideoView)localObject).f();
         } else {
           ((PAVideoView)localObject).e();

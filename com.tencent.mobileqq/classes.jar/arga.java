@@ -1,23 +1,44 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class arga
-  implements arge
+class arga
+  extends Handler
 {
-  public arga(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
-  
-  public void a(int paramInt)
+  arga(arfy paramarfy, Looper paramLooper)
   {
-    Intent localIntent = new Intent(arfw.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
+    super(paramLooper);
   }
   
-  public void a(boolean paramBoolean, Throwable paramThrowable)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.finish();
+    int i = paramMessage.arg1;
+    if ((i < arfy.b(this.a)) || (i > 95)) {
+      return;
+    }
+    arfy.b(this.a, i);
+    arfy.a(this.a, "STATE_Loading:" + i);
+    paramMessage = new JSONObject();
+    try
+    {
+      paramMessage.putOpt("state", Integer.valueOf(4));
+      paramMessage.putOpt("totalSize", Integer.valueOf(100));
+      paramMessage.putOpt("pro", Integer.valueOf(i));
+      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
+      paramMessage = Message.obtain();
+      paramMessage.arg1 = (i + 5);
+      sendMessageDelayed(paramMessage, 500L);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

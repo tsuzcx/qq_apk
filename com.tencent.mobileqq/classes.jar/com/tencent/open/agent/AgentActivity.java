@@ -1,10 +1,10 @@
 package com.tencent.open.agent;
 
-import abtu;
-import amtp;
+import abtq;
+import amto;
+import amtt;
 import amtu;
 import amtv;
-import amtw;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -20,23 +20,23 @@ import android.os.Handler;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aqgh;
-import axrl;
-import bbdm;
-import bcpq;
-import bcxn;
-import bcxq;
-import bded;
-import bdem;
-import bden;
-import bdix;
-import bdjo;
-import bdke;
-import bdna;
-import bdnb;
-import bdnm;
-import bdno;
-import bdnz;
+import aqgj;
+import axrn;
+import bbea;
+import bcqf;
+import bcyc;
+import bcyf;
+import bdes;
+import bdfb;
+import bdfc;
+import bdjm;
+import bdkd;
+import bdkt;
+import bdnp;
+import bdnq;
+import bdob;
+import bdod;
+import bdoo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -54,10 +54,10 @@ public class AgentActivity
   extends BaseActivity
 {
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bcxq(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bcyf(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   protected Handler a;
-  protected bcpq a;
+  protected bcqf a;
   public OpenSDKAppInterface a;
   protected String a;
   protected boolean a;
@@ -71,8 +71,8 @@ public class AgentActivity
   
   private String a()
   {
-    bdnb.a().a();
-    Object localObject3 = bdke.a();
+    bdnq.a().a();
+    Object localObject3 = bdkt.a();
     Object localObject2 = null;
     if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
       localObject2 = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
@@ -85,7 +85,7 @@ public class AgentActivity
         localObject1 = (String)((ArrayList)localObject3).get(0);
       }
     }
-    localObject3 = bdem.a(getIntent(), "login_success_uin");
+    localObject3 = bdfb.a(getIntent(), "login_success_uin");
     localObject2 = localObject1;
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
@@ -111,7 +111,7 @@ public class AgentActivity
       localObject = str;
       localMessageDigest.update(paramContext[0].toByteArray());
       localObject = str;
-      paramContext = bbdm.a(localMessageDigest.digest());
+      paramContext = bbea.a(localMessageDigest.digest());
       if (paramContext == null) {
         return "";
       }
@@ -124,7 +124,7 @@ public class AgentActivity
       localObject = str;
       localMessageDigest.update((paramString1 + "_" + paramContext + "_" + paramString2 + "").getBytes());
       localObject = str;
-      paramContext = bbdm.a(localMessageDigest.digest());
+      paramContext = bbea.a(localMessageDigest.digest());
       localObject = paramContext;
       localMessageDigest.reset();
       return paramContext;
@@ -161,9 +161,9 @@ public class AgentActivity
       return;
     }
     long l = System.currentTimeMillis();
-    new bdna().jdField_a_of_type_JavaLangString = str;
-    aqgh.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str, new bcxn(this, paramString1, paramBundle, paramString2, l));
+    new bdnp().jdField_a_of_type_JavaLangString = str;
+    aqgj.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str, new bcyc(this, paramString1, paramBundle, paramString2, l));
   }
   
   private void a(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
@@ -181,7 +181,7 @@ public class AgentActivity
       localIntent.putExtra("key_action", paramString1);
       Object localObject1 = b();
       boolean bool;
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (amtp.e()))
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (amto.e()))
       {
         Object localObject2 = paramBundle.getString("ppsts");
         QLog.d("AgentActivity", 1, new Object[] { "ppsts=", localObject2 });
@@ -189,20 +189,20 @@ public class AgentActivity
         Object localObject3;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject1 = bden.a(paramBundle);
+          localObject1 = bdfc.a(paramBundle);
           localHashMap = new HashMap();
           localHashMap.put("appid", paramString2);
           localHashMap.put("ppsts", localObject2);
           localHashMap.put("sha", localObject1);
-          localObject1 = bden.a((String)localObject2, (String)localObject1);
+          localObject1 = bdfc.a((String)localObject2, (String)localObject1);
           QLog.d("AgentActivity", 1, new Object[] { "can not get calling package name, use ppsts callFromPackageName=", localObject1 });
-          localObject2 = axrl.a(BaseApplicationImpl.getApplication());
+          localObject2 = axrn.a(BaseApplicationImpl.getApplication());
           localObject3 = a();
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             bool = true;
             label209:
-            ((axrl)localObject2).a((String)localObject3, "use_third_pkg_name", bool, 0L, 0L, localHashMap, "", false);
+            ((axrn)localObject2).a((String)localObject3, "use_third_pkg_name", bool, 0L, 0L, localHashMap, "", false);
           }
         }
         else
@@ -211,7 +211,7 @@ public class AgentActivity
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break label640;
           }
-          localObject3 = bdnz.a(this, (String)localObject1);
+          localObject3 = bdoo.a(this, (String)localObject1);
           localHashMap = localObject3[0];
           localObject2 = localObject3[1];
           localObject3 = localObject3[2];
@@ -227,7 +227,7 @@ public class AgentActivity
       }
       try
       {
-        bdjo.a().a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
+        bdkd.a().a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
         for (;;)
         {
           label390:
@@ -264,16 +264,16 @@ public class AgentActivity
           break;
           bool = false;
           break label209;
-          QLog.d("AgentActivity", 1, new Object[] { "isUseThirdTransformPkgName=", Boolean.valueOf(amtp.e()), ", ppsts=", paramBundle.getString("ppsts") });
+          QLog.d("AgentActivity", 1, new Object[] { "isUseThirdTransformPkgName=", Boolean.valueOf(amto.e()), ", ppsts=", paramBundle.getString("ppsts") });
           break label228;
           label640:
           QLog.i("AgentActivity", 1, "-->onCreate can not get calling package name!");
           localObject1 = new HashMap();
           ((HashMap)localObject1).put("appid", paramString2);
-          axrl.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
+          axrn.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
           try
           {
-            bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
+            bdkd.a().a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
           }
           catch (Exception paramString2) {}
         }
@@ -281,7 +281,7 @@ public class AgentActivity
         if (paramBoolean) {
           try
           {
-            abtu.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
+            abtq.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
             QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " launch OpenAuthFragment use time = ", Long.valueOf(System.currentTimeMillis() - l) });
             QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " start Auth total time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
             return;
@@ -308,13 +308,13 @@ public class AgentActivity
   private boolean a()
   {
     long l1 = System.currentTimeMillis();
-    amtu localamtu = amtw.b(467);
+    amtt localamtt = amtv.b(467);
     long l2 = System.currentTimeMillis();
-    if (localamtu == null) {}
-    for (String str = "is null";; str = "enable: " + localamtu.a().jdField_a_of_type_Boolean)
+    if (localamtt == null) {}
+    for (String str = "is null";; str = "enable: " + localamtt.a().jdField_a_of_type_Boolean)
     {
       QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " load config use time: ", Long.valueOf(l2 - l1), " -->OpenSdkSwitchConfBean ", str });
-      if ((localamtu == null) || (!localamtu.a().jdField_a_of_type_Boolean)) {
+      if ((localamtt == null) || (!localamtt.a().jdField_a_of_type_Boolean)) {
         break;
       }
       return true;
@@ -367,12 +367,12 @@ public class AgentActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Bcpq != null)
+        if (this.jdField_a_of_type_Bcqf != null)
         {
-          if (this.jdField_a_of_type_Bcpq.isShowing()) {
+          if (this.jdField_a_of_type_Bcqf.isShowing()) {
             continue;
           }
-          this.jdField_a_of_type_Bcpq.show();
+          this.jdField_a_of_type_Bcqf.show();
         }
       }
       catch (Exception localException)
@@ -381,17 +381,17 @@ public class AgentActivity
         return;
       }
     }
-    this.jdField_a_of_type_Bcpq = new bcpq(this, 0, 2131561034, 17);
-    this.jdField_a_of_type_Bcpq.a(-1);
-    this.jdField_a_of_type_Bcpq.show();
+    this.jdField_a_of_type_Bcqf = new bcqf(this, 0, 2131561033, 17);
+    this.jdField_a_of_type_Bcqf.a(-1);
+    this.jdField_a_of_type_Bcqf.show();
   }
   
   protected void a()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bcpq.dismiss();
+      this.jdField_a_of_type_Bcqf.dismiss();
       return;
     }
     catch (Exception localException)
@@ -404,7 +404,7 @@ public class AgentActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", paramInt);
-    localIntent.putExtra("key_error_msg", bdix.c);
+    localIntent.putExtra("key_error_msg", bdjm.c);
     localIntent.putExtra("key_error_detail", "");
     localIntent.putExtra("key_response", "");
     super.setResult(-1, localIntent);
@@ -415,9 +415,9 @@ public class AgentActivity
   {
     Bundle localBundle = null;
     super.doOnCreate(paramBundle);
-    aqgh.a();
-    aqgh.a("KEY_LOGIN_STAGE_1_TOTAL");
-    aqgh.a("KEY_AUTHORITY_TOTAL");
+    aqgj.a();
+    aqgj.a("KEY_LOGIN_STAGE_1_TOTAL");
+    aqgj.a("KEY_AUTHORITY_TOTAL");
     b();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
@@ -428,7 +428,7 @@ public class AgentActivity
     {
       try
       {
-        bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
+        bdkd.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
         return true;
       }
       catch (Exception paramBundle) {}
@@ -457,7 +457,7 @@ public class AgentActivity
           }
           try
           {
-            bdjo.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
+            bdkd.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
             return true;
           }
           catch (Exception paramBundle)
@@ -516,7 +516,7 @@ public class AgentActivity
           startActivity(paramBundle);
           try
           {
-            bded.a().a(getAppInterface().getCurrentAccountUin(), "", str, "1", "8", "0", true);
+            bdes.a().a(getAppInterface().getCurrentAccountUin(), "", str, "1", "8", "0", true);
             return true;
           }
           catch (Exception paramBundle)
@@ -544,7 +544,7 @@ public class AgentActivity
           {
             paramBundle.putExtra("key_action", (String)localObject2);
             localObject1 = localBundle.getString("hopenid");
-            localBundle.putString("encrytoken", bdnm.a(this, "openid_encrytoken").getString((String)localObject1, ""));
+            localBundle.putString("encrytoken", bdob.a(this, "openid_encrytoken").getString((String)localObject1, ""));
             localObject1 = paramBundle;
           }
         }

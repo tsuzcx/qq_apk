@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import bawz;
+import baxn;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
+import uuc;
+import uud;
+import uue;
 import uuf;
-import uug;
-import uuh;
-import uui;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public uuh a;
-  private uui a;
+  public uue a;
+  private uuf a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -38,22 +38,22 @@ public class MemoriesInnerListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = bawz.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Uui = new uui(getContext());
-    super.setAdapter(this.jdField_a_of_type_Uui);
-    super.setOnItemClickListener(this.jdField_a_of_type_Uui);
-    super.setOnScrollStateChangedListener(new uug(this));
+    this.b = baxn.a(paramContext, 82.0F);
+    this.jdField_a_of_type_Uuf = new uuf(getContext());
+    super.setAdapter(this.jdField_a_of_type_Uuf);
+    super.setOnItemClickListener(this.jdField_a_of_type_Uuf);
+    super.setOnScrollStateChangedListener(new uud(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Uui;
+    return this.jdField_a_of_type_Uuf;
   }
   
-  public void setDate(List<uuf> paramList, String paramString)
+  public void setDate(List<uuc> paramList, String paramString)
   {
-    this.jdField_a_of_type_Uui.a(paramList, paramString);
+    this.jdField_a_of_type_Uuf.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {

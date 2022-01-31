@@ -1,23 +1,20 @@
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
 
 public class asmw
-  implements bcsv
+  implements bctk
 {
-  public asmw(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
+  public asmw(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
   
   public void a(View paramView, int paramInt)
   {
-    if (paramInt == 1)
+    switch (paramInt)
     {
-      if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
-      }
-      this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
+    default: 
       return;
     }
+    asog.a("0X800A242", 1);
+    this.a.onBackEvent();
   }
 }
 

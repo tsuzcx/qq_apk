@@ -1,20 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bdlu
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  bdlu(bdlq parambdlq, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  bdlu(bdlr parambdlr) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdlq, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bdlq.dismiss();
-    }
+    this.a.a = null;
+    this.a.c = false;
+    this.a.c = false;
   }
 }
 

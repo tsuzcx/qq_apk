@@ -1,16 +1,12 @@
-class bgte
-  implements bgkw
+import cooperation.qqpim.QQPimTipsInfo;
+
+public abstract interface bgte
 {
-  bgte(bgtc parambgtc) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    bgvo.c("QRPluginManager", "startPluginByActivity: openPlugin result = " + paramBoolean);
-  }
+  public abstract void a(QQPimTipsInfo paramQQPimTipsInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgte
  * JD-Core Version:    0.7.0.1
  */

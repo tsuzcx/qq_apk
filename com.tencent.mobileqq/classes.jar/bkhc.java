@@ -1,35 +1,174 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.1;
+import java.io.File;
 
 public class bkhc
-  implements ViewPager.OnPageChangeListener
+  extends bkgn<bkgj>
+  implements View.OnClickListener
 {
-  public bkhc(FaceViewPager paramFaceViewPager) {}
+  private bkgo<String, Drawable> a;
   
-  public void onPageScrollStateChanged(int paramInt)
+  public bkhc(Context paramContext, FaceListPage paramFaceListPage)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bkhd)localIterator.next()).e(paramInt);
+    super(paramContext, paramFaceListPage);
+    this.jdField_a_of_type_Bkgo = new bkgo();
+  }
+  
+  private void a(View paramView)
+  {
+    ImageView localImageView = (ImageView)paramView;
+    int k = ((Integer)localImageView.getTag(2131376873)).intValue();
+    bkgj localbkgj = (bkgj)this.jdField_a_of_type_Bkfz;
+    vei.a((Activity)paramView.getContext(), "sticker_element", ((bkgj)this.jdField_a_of_type_Bkfz).jdField_a_of_type_JavaLangString, String.valueOf(k));
+    int j = localbkgj.a(k);
+    paramView = Uri.parse(localbkgj.a(k)).getPath();
+    String str = new File(paramView).getName();
+    Object localObject1 = paramView;
+    int i = j;
+    if (j == 1)
+    {
+      localObject1 = paramView;
+      i = j;
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity))
+      {
+        localObject2 = localbkgj.b(k);
+        localObject1 = paramView;
+        i = j;
+        if (localObject2 != null)
+        {
+          localObject1 = Uri.parse((String)localObject2).getPath();
+          i = 0;
+        }
+      }
+    }
+    paramView = (Drawable)this.jdField_a_of_type_Bkgo.a(localObject1);
+    if (paramView == null) {
+      if (i != 1)
+      {
+        try
+        {
+          localObject2 = Drawable.createFromPath((String)localObject1);
+          paramView = (View)localObject2;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            ved.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
+          }
+        }
+        localObject2 = paramView;
+        if (paramView != null) {
+          this.jdField_a_of_type_Bkgo.a(localObject1, paramView);
+        }
+      }
+    }
+    Object localObject3;
+    for (Object localObject2 = paramView;; localObject3 = paramView)
+    {
+      if (localObject2 == null) {
+        break label404;
+      }
+      ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
+      a(localbkgj, (Drawable)localObject2, localImageView, (String)localObject1, str, i);
+      return;
+      localObject3 = bbqz.a(BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      if (localObject3 != null)
+      {
+        j = ((URLDrawable)localObject3).getStatus();
+        if (j != 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NormalFaceAdapter", 2, "urlDrawable is not  SUCCESSED :" + j);
+          }
+          if (j == 2)
+          {
+            ((URLDrawable)localObject3).restartDownload();
+            label336:
+            ((URLDrawable)localObject3).setURLDrawableListener(new bkhd(this, (String)localObject1, localbkgj, localImageView, str));
+          }
+        }
+        for (;;)
+        {
+          break;
+          ((URLDrawable)localObject3).startDownload();
+          break label336;
+          paramView = (View)localObject3;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NormalFaceAdapter", 2, "urlDrawable apng error");
+      }
+      break;
+      this.jdField_a_of_type_Bkgo.a();
+    }
+    label404:
+    ved.e("NormalFaceAdapter", "can create drawable from path:" + (String)localObject1);
+  }
+  
+  private void a(bkgj parambkgj, Drawable paramDrawable, ImageView paramImageView, String paramString1, String paramString2, int paramInt)
+  {
+    int i;
+    int k;
+    int j;
+    if (paramDrawable.getIntrinsicWidth() > paramDrawable.getIntrinsicHeight())
+    {
+      i = paramDrawable.getIntrinsicWidth();
+      k = paramImageView.getWidth();
+      if (paramImageView.getPaddingLeft() <= paramImageView.getPaddingTop()) {
+        break label136;
+      }
+      j = paramImageView.getPaddingLeft();
+      label40:
+      if (k <= i) {
+        break label145;
+      }
+    }
+    label136:
+    label145:
+    for (float f = (((k - i) / 2 - j) * 2 + i) / i;; f = (i - (j + (i - k) / 2) * 2) / i)
+    {
+      f = (float)(f * parambkgj.jdField_a_of_type_Double);
+      parambkgj = new bkbv(parambkgj.b, paramString2, paramDrawable, paramInt);
+      paramDrawable = bjjn.a();
+      this.jdField_a_of_type_Bjcu.a(parambkgj, paramDrawable.a, paramDrawable.b, f, paramString1, null);
+      return;
+      i = paramDrawable.getIntrinsicHeight();
+      break;
+      j = paramImageView.getPaddingTop();
+      break label40;
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bkhd)localIterator.next()).a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Bkfz == null) {
+      return paramView;
+    }
+    if (paramView == null) {}
+    for (paramView = new bkhe(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((bkgj)this.jdField_a_of_type_Bkfz).a(), ((bkgj)this.jdField_a_of_type_Bkfz).a(), this, this);; paramView = (bkhe)paramView)
+    {
+      paramView.a((bkgj)this.jdField_a_of_type_Bkfz, paramInt, getCount(), a());
+      return paramView;
     }
   }
   
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bkhd)localIterator.next()).c(paramInt);
-    }
+    ThreadManager.postImmediately(new NormalFaceAdapter.1(this, paramView), null, true);
   }
 }
 

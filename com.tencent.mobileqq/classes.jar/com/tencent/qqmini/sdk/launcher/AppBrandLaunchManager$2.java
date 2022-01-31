@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.launcher;
 
-import bepj;
+import beqa;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 
 class AppBrandLaunchManager$2
   implements Runnable
 {
-  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, bepj parambepj) {}
+  AppBrandLaunchManager$2(AppBrandLaunchManager paramAppBrandLaunchManager, beqa parambeqa) {}
   
   public void run()
   {

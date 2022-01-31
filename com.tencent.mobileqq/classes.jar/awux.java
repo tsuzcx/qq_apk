@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
+import java.util.Observable;
+import java.util.Observer;
 
 public class awux
-  extends akup
+  implements Observer
 {
-  public awux(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public awux(MessageSearchEngine.1 param1) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramInt == 0)
-    {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
-    }
+    this.a.a.a(awuw.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
   }
 }
 

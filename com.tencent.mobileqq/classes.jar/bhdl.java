@@ -1,10 +1,6 @@
-final class bhdl
-  extends asbp<bhdk, Void>
+public abstract interface bhdl
 {
-  protected bhdk a(Void paramVoid)
-  {
-    return new bhdk();
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

@@ -1,54 +1,74 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class nrq
-  implements View.OnTouchListener
 {
-  public nrq(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
+  public int a;
+  public String a;
+  public ArrayList<nrr> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public nrq()
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_JavaLangString = "#FFFFFF";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public static nrq a(String paramString)
+  {
+    nrq localnrq = new nrq();
+    if (!bbkk.a(paramString)) {}
+    try
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      return false;
-      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-      paramView.d = (i + paramView.d);
-      return false;
-      try
+      paramString = new JSONObject(paramString);
+      localnrq.jdField_a_of_type_Int = paramString.optInt("tab_switch");
+      localnrq.jdField_a_of_type_JavaLangString = paramString.optString("tab_background", "#FFFFFF");
+      paramString = paramString.optJSONArray("tabs");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)
+        ArrayList localArrayList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a.callJs(paramView);
-          return false;
+          JSONObject localJSONObject = paramString.optJSONObject(i);
+          nrr localnrr = new nrr();
+          localnrr.jdField_a_of_type_Int = localJSONObject.optInt("tabid");
+          localnrr.c = localJSONObject.optString("icon_normal");
+          localnrr.d = localJSONObject.optString("icon_selected");
+          localnrr.e = localJSONObject.optString("textcolor_normal");
+          localnrr.f = localJSONObject.optString("textcolor_selected");
+          localnrr.b = localJSONObject.optString("jump_url");
+          localnrr.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
+          localArrayList.add(localnrr);
+          i += 1;
         }
+        localnrq.jdField_a_of_type_JavaUtilArrayList = localArrayList;
       }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
+      return localnrq;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localnrq;
+  }
+  
+  public nrr a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      nrr localnrr = (nrr)localIterator.next();
+      if (localnrr.jdField_a_of_type_Int == paramInt) {
+        return localnrr;
       }
     }
-    return false;
+    return null;
   }
 }
 

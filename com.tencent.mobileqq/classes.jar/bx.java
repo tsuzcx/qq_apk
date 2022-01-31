@@ -15,7 +15,7 @@ public class bx
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      bded.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
+      bdes.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "51", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog back");
@@ -23,18 +23,18 @@ public class bx
     if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("MigSdkShareNotDone", false))
     {
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
-      aqfb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
+      aqfd.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "sendToMyComputer", this.jdField_a_of_type_Long);
     }
     for (;;)
     {
-      nax.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      nau.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
       this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true)) {}
       try
       {
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getActivity().moveTaskToBack(true);
         return;
-        aqfb.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+        aqfd.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
       }
       catch (Throwable paramDialogInterface)
       {

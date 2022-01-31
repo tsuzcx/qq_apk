@@ -1,21 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class acne
-  implements View.OnTouchListener
+  extends ajxj
 {
   public acne(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent != null) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
     }
-    return false;
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((ajxl)this.a.app.getManager(51)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 

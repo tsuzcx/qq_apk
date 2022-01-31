@@ -1,12 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class bjxr
-  implements View.OnClickListener
+  extends SimpleJob<Object>
 {
-  bjxr(bjxq parambjxq) {}
+  bjxr(bjxn parambjxn, String paramString)
+  {
+    super(paramString);
+  }
   
-  public void onClick(View paramView) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vej.a("0X80076BC");
+    return null;
+  }
 }
 
 

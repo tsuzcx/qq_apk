@@ -1,13 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class aijs
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   public aijs(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

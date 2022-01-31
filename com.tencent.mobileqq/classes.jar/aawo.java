@@ -1,88 +1,111 @@
-import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.33.1;
-import com.tencent.mobileqq.activity.Conversation.33.2;
-import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aawo
-  extends ajtq
+  extends akhb
 {
   public aawo(Conversation paramConversation) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, ayay paramayay)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    Object localObject2;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      if ((paramBoolean) && (paramObject != null) && (!bbbd.a(paramObject.uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        this.a.a(8, paramObject.uin, -2147483648);
-      }
-      return;
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " conversation onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      this.a.a(0L);
-    }
-  }
-  
-  public void onGetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    super.onGetNotDisturb(paramBoolean, paramString1, paramString2);
-    Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
-  }
-  
-  protected void onGreetingRecv(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
-      }
-      this.a.a(8, ajsf.H, 1001);
-    }
-  }
-  
-  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
-    if (!"not_disturb_from_conversation".equals(paramString2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
-      }
-    }
-    do
-    {
-      return;
-      if (!paramBoolean)
+      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
+      if (paramayay == null)
       {
-        ThreadManagerV2.getUIHandlerV2().post(new Conversation.33.1(this));
-        return;
+        localObject1 = null;
+        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
       }
-      Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
-    } while (FriendsStatusUtil.a(this.a.a()));
-    ThreadManagerV2.getUIHandlerV2().post(new Conversation.33.2(this));
+    }
+    else
+    {
+      if ((paramBoolean) && (paramayay != null)) {
+        break label113;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
+        if (!paramBoolean) {
+          break label107;
+        }
+      }
+    }
+    label107:
+    for (paramayay = "data=null";; paramayay = "isSucc=false")
+    {
+      QLog.d("SUB_ACCOUNT", 4, paramayay);
+      return;
+      localObject1 = paramayay.c;
+      break;
+    }
+    label113:
+    if (paramayay.jdField_a_of_type_Int == 1008)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
+      }
+      ayaq.a(this.a.a, 0);
+    }
+    if (paramayay.a())
+    {
+      ayaq.a(this.a.a, paramayay.a(), 2);
+      this.a.a.c = true;
+    }
+    if (paramayay.b())
+    {
+      localObject1 = paramayay.b();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          ayaq.c(this.a.a, (String)localObject2);
+        }
+      }
+    }
+    paramayay.a();
+    this.a.a(0L);
+    Conversation.h(this.a);
   }
   
-  protected void onUpdateAvatar(boolean paramBoolean, String paramString)
+  protected void b(boolean paramBoolean, ayay paramayay)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "Conversation.onUpdateAvatar: uin:" + paramString + ", success :" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
+      if (paramayay != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
+      }
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bbbd.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
+    if ((paramBoolean) && (paramayay != null) && (paramayay.c())) {
+      ayaq.a(this.a.a, paramayay.c(), 1);
     }
+    this.a.a(0L);
+  }
+  
+  protected void c(boolean paramBoolean, ayay paramayay)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
+      if (paramayay != null) {
+        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if (paramayay == null) {}
+    while ((!paramBoolean) || (paramayay.c == null) || (paramayay.c.length() <= 4)) {
+      return;
+    }
+    this.a.a.a().c(paramayay.c, 7000);
+    ayaq.c(this.a.a, paramayay.c);
+    this.a.a(0L);
   }
 }
 

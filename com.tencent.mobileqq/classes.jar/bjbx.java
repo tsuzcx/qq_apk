@@ -1,9 +1,10 @@
-import dov.com.qq.im.capture.data.ComboLockManager;
-
-public class bjbx
-  extends ajtq
+public abstract interface bjbx
 {
-  public bjbx(ComboLockManager paramComboLockManager) {}
+  public abstract void a(bjbw parambjbw);
+  
+  public abstract void a(bjbw parambjbw, int paramInt);
+  
+  public abstract void b(bjbw parambjbw);
 }
 
 

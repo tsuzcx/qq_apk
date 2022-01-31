@@ -19,8 +19,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bawi;
-import bclw;
+import baww;
+import bcml;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -29,7 +29,7 @@ import com.tencent.widget.Switch;
 
 public class FormSwitchItem
   extends RelativeLayout
-  implements bclw
+  implements bcml
 {
   private int jdField_a_of_type_Int;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -82,20 +82,20 @@ public class FormSwitchItem
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return paramResources.getDrawable(2130849239);
+      return paramResources.getDrawable(2130849248);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130849239);
+      return paramResources.getDrawable(2130849248);
     case 0: 
-      return paramResources.getDrawable(2130849239);
+      return paramResources.getDrawable(2130849248);
     case 1: 
-      return paramResources.getDrawable(2130849259);
+      return paramResources.getDrawable(2130849268);
     case 2: 
-      return paramResources.getDrawable(2130849253);
+      return paramResources.getDrawable(2130849262);
     }
-    return paramResources.getDrawable(2130849244);
+    return paramResources.getDrawable(2130849253);
   }
   
   private void a()
@@ -122,8 +122,8 @@ public class FormSwitchItem
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
     if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
     {
-      bawi.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      bawi.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      baww.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      baww.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }

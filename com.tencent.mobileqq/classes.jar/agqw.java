@@ -1,24 +1,8 @@
 public abstract interface agqw
 {
-  public abstract void a(agrc paramagrc);
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public abstract void a(agrc paramagrc, int paramInt);
-  
-  public abstract void a(agrc paramagrc, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(agrc paramagrc, long paramLong);
-  
-  public abstract void a(agrc paramagrc, boolean paramBoolean);
-  
-  public abstract void b(agrc paramagrc);
-  
-  public abstract void b(agrc paramagrc, int paramInt);
-  
-  public abstract void c(agrc paramagrc);
-  
-  public abstract void d(agrc paramagrc);
-  
-  public abstract void v();
+  public abstract void b(long paramLong);
 }
 
 

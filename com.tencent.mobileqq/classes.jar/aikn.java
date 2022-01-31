@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-public class aikn
-  implements View.OnClickListener
+class aikn
+  implements DialogInterface.OnClickListener
 {
-  public aikn(SessionClearFragment paramSessionClearFragment) {}
+  aikn(aikm paramaikm) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (SessionClearFragment.a(this.a) == 0)
-    {
-      SessionClearFragment.a(this.a).setText(ajyc.a(2131713842));
-      SessionClearFragment.a(this.a, 1);
-      SessionClearFragment.a(this.a).b();
-      return;
-    }
-    SessionClearFragment.a(this.a).setText(ajyc.a(2131713840));
-    SessionClearFragment.a(this.a, 0);
-    SessionClearFragment.a(this.a).c();
+    axqy.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
+    SessionClearFragment.a(this.a.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
+    Activity localActivity = SessionClearFragment.a(this.a.a);
+    SessionClearFragment.a(this.a.a);
+    localActivity.setResult(-1, paramDialogInterface);
   }
 }
 

@@ -1,52 +1,42 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.RecyclerView.SmoothScroller;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.NestedScrollingParentLayout;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.qq.im.capture.view.CountDownView;
+import java.lang.ref.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-public class bjkc
-  extends RecyclerView.OnScrollListener
+public final class bjkc
+  extends Handler
 {
-  private boolean jdField_a_of_type_Boolean;
+  private WeakReference<CountDownView> a;
   
-  public bjkc(NestedScrollingParentLayout paramNestedScrollingParentLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bjkc(CountDownView paramCountDownView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (!this.jdField_a_of_type_Boolean));
-      this.jdField_a_of_type_Boolean = false;
-      paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager();
-      paramRecyclerView = NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(paramRecyclerView);
-      NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout, NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getChildAdapterPosition(paramRecyclerView));
-    } while (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) < 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrollStateChanged onScrolled dx " + paramInt);
-    }
-    paramRecyclerView = NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).a(NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager());
-    paramRecyclerView.setTargetPosition(NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).getLayoutManager().startSmoothScroll(paramRecyclerView);
+    this.a = new WeakReference(paramCountDownView);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NestedScrollingParentLayout", 2, "mVideoItemListener onScrolled dx +=" + paramInt1);
+    if (paramMessage.what == 1) {
+      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
     }
-    if (NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) != NestedScrollingParentLayout.b(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout)) {}
-    while ((NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout) >= 0) || ((paramInt1 == 0) && (paramInt2 == 0))) {
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.get() == null)
+    {
+      removeCallbacksAndMessages(null);
       return;
     }
-    paramInt1 = (int)(paramInt1 / NestedScrollingParentLayout.a(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout));
-    NestedScrollingParentLayout.c(this.jdField_a_of_type_DovComQqImCaptureViewNestedScrollingParentLayout).scrollBy(paramInt1, paramInt2);
-    this.jdField_a_of_type_Boolean = true;
+    try
+    {
+      a((CountDownView)this.a.get(), paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

@@ -1,132 +1,207 @@
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.1;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.2;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.3;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.4;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.5;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.6;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.7;
-import com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.8;
+import com.tencent.open.downloadnew.common.NoticeParam;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class bdmu
-  implements bdko
 {
-  public bdmu(ApkFileDownloadButton paramApkFileDownloadButton) {}
+  public static String a;
+  public static ArrayList<String> a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
   
-  public void installSucceed(String paramString1, String paramString2)
+  static
   {
-    bdht.b("ApkFileDownloadButton_", "[installSucceed] packageName=" + paramString2 + ",mApkInfo=" + this.a.a);
-    if ((this.a.a != null) && (TextUtils.equals(paramString2, this.a.a.f))) {
-      ThreadManager.excute(new ApkFileDownloadButton.1.8(this, paramString2), 16, null, true);
+    jdField_a_of_type_JavaLangString = "com.tencent.open.download.start";
+    b = "com.tencent.open.download.pause";
+    c = "com.tencent.open.download.restart";
+    d = "com.tencent.open.download.complete";
+    e = "com.tencent.open.download.open";
+    f = "com.tencent.open.download.yyb";
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilArrayList.add(d);
+    jdField_a_of_type_JavaUtilArrayList.add(e);
+    jdField_a_of_type_JavaUtilArrayList.add(b);
+    jdField_a_of_type_JavaUtilArrayList.add(f);
+    jdField_a_of_type_JavaUtilArrayList.add(c);
+    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_JavaLangString);
+  }
+  
+  public static PendingIntent a(int paramInt, NoticeParam paramNoticeParam)
+  {
+    Intent localIntent = new Intent();
+    if (paramNoticeParam != null)
+    {
+      localIntent.putExtra("noticeParam", paramNoticeParam);
+      localIntent.putExtra("param_notifyid", bdmq.a().a(paramNoticeParam.f, paramNoticeParam.b, paramNoticeParam.jdField_a_of_type_JavaLangString));
+    }
+    paramNoticeParam = bdfn.r();
+    if (!TextUtils.isEmpty(paramNoticeParam)) {
+      localIntent.putExtra("processName", paramNoticeParam);
+    }
+    paramNoticeParam = paramNoticeParam.replace(":", ".");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      localIntent.setPackage(MobileQQ.getContext().getPackageName());
+      return PendingIntent.getBroadcast(bcyb.a().a(), (int)(System.currentTimeMillis() & 0xFFFFFFF), localIntent, 134217728);
+      localIntent.setAction(b + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(jdField_a_of_type_JavaLangString + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(d + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(f + "." + paramNoticeParam);
+      continue;
+      localIntent.setAction(e + "." + paramNoticeParam);
     }
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public static Intent a(Bundle paramBundle)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Intent localIntent = new Intent();
+    localIntent.putExtra("adapter_action", "action_push_app_detail");
+    localIntent.setClassName("com.tencent.plugin.qappcenter", "com.tencent.open.appcenter.QZoneAppWebViewActivity");
+    localIntent.putExtras(paramBundle);
+    Object localObject1 = new StringBuffer("sd://qapp_center_detail.htm?");
+    Object localObject2 = paramBundle.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      bdht.b("ApkFileDownloadButton_", "onDownloadCancel info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 1;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.5(this));
+      str1 = (String)((Iterator)localObject2).next();
+      String str2 = paramBundle.getString(str1);
+      ((StringBuffer)localObject1).append(str1).append("=").append(str2).append("&");
     }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    localObject2 = bdfn.a(((StringBuffer)localObject1).toString());
+    localObject1 = localObject2[0];
+    localObject2 = "" + localObject2[1];
+    String str1 = paramBundle.getString("from");
+    localIntent.putExtra("uinRestore", bcyb.a().a());
+    localIntent.putExtra("APP_URL_NOTICE", (String)localObject1);
+    if (a(str1)) {}
+    for (localObject1 = a(paramBundle);; localObject1 = localObject2)
     {
-      bdht.b("ApkFileDownloadButton_", "onDownloadError errorCode=" + paramInt1);
-      if ((paramInt1 == 6) && (ApkFileDownloadButton.a(this.a) > 0))
+      localIntent.putExtra("APP_PARAMS_NOTICE", (String)localObject1);
+      bdii.b("IntentFactory", "params=" + (String)localObject2 + "\n pushParams=" + a(paramBundle));
+      if (paramBundle.containsKey("friendUin"))
       {
-        ApkFileDownloadButton.a(this.a, paramDownloadInfo);
-        ApkFileDownloadButton.a(this.a, ApkFileDownloadButton.a(this.a) - 1);
+        localIntent.putExtra("friendUin", paramBundle.getString("friendUin"));
+        localIntent.putExtra("isTroop", paramBundle.getInt("isTroop"));
       }
+      localIntent.addFlags(603979776);
+      return localIntent;
     }
-    else
-    {
-      return;
-    }
-    this.a.a.b = 30;
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.7(this));
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public static Intent a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
-    {
-      bdht.b("ApkFileDownloadButton_", "onDownloadFinish info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 4;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.excute(new ApkFileDownloadButton.1.3(this), 16, null, true);
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.4(this));
+    if ((paramString1 == null) || (paramString1.length() == 0)) {
+      return null;
     }
+    Object localObject = bdfn.a(paramString1);
+    paramString1 = (String)((HashMap)localObject).get("appid");
+    String str1 = (String)((HashMap)localObject).get("sendtime");
+    String str2 = (String)((HashMap)localObject).get("packname");
+    String str3 = (String)((HashMap)localObject).get("packetversion");
+    String str4 = (String)((HashMap)localObject).get("msgtype");
+    String str5 = (String)((HashMap)localObject).get("type");
+    String str6 = (String)((HashMap)localObject).get("downurl");
+    localObject = (String)((HashMap)localObject).get("via");
+    String str7 = bdfk.a((String)localObject);
+    bdii.b("IntentFactory", "appid=" + paramString1 + "&sendtime=" + str1 + "&packname=" + str2 + "&packetversion=" + str3 + "&msgtype=" + str4 + "&type=" + str5 + "&downUrl=" + str6 + "&via=" + (String)localObject);
+    int i = bdjl.a(str2);
+    int j = bdjl.b(bdle.a().a(paramString1));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putString("from", "2458");
+    localBundle.putString("downloadUrl", str6);
+    localBundle.putString("packageName", str2);
+    localBundle.putString("installedVersion", String.valueOf(i));
+    localBundle.putString("localVersion", String.valueOf(j));
+    localBundle.putString("serverApkVersion", str3);
+    localBundle.putString("typeid", str5);
+    localBundle.putString("msgType", str4);
+    localBundle.putString("sendTime", str1);
+    localBundle.putString("via", (String)localObject);
+    localBundle.putString("splitvia", str7);
+    localBundle.putString("friendUin", paramString2);
+    localBundle.putInt("isTroop", paramInt);
+    return a(localBundle);
   }
   
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  protected static String a(Bundle paramBundle)
   {
-    if (this.a.a(paramDownloadInfo, this.a.a))
+    Object localObject1;
+    if (paramBundle == null)
     {
-      bdht.b("ApkFileDownloadButton_", "onDownloadPause info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 3;
-      this.a.a.jdField_a_of_type_Int = paramDownloadInfo.f;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.1(this));
+      localObject1 = "";
+      return localObject1;
     }
+    String str3 = paramBundle.getString("id");
+    bdii.b("IntentFactory", "appId=" + str3);
+    String str5;
+    if (!TextUtils.isEmpty(str3))
+    {
+      Object localObject2 = paramBundle.getString("downloadUrl");
+      String str4 = paramBundle.getString("packageName");
+      String str1 = paramBundle.getString("serverApkVersion");
+      localObject1 = str1;
+      if (str1 == null) {
+        localObject1 = "0";
+      }
+      str5 = paramBundle.getString("via");
+      String str2 = paramBundle.getString("splitvia");
+      int j = bdjl.a(str4);
+      int k = bdjl.b(bdle.a().a(str3));
+      if (bdid.c(bcyb.a().a())) {}
+      for (int i = 1;; i = 0)
+      {
+        try
+        {
+          str1 = URLEncoder.encode((String)localObject2, "utf-8");
+          localObject2 = str1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            continue;
+            paramBundle = paramBundle + "&via=" + str5;
+          }
+        }
+        paramBundle = "&from=-10&id=" + str3 + "&channelId=" + paramBundle.getString("from") + "&installedVersion=" + String.valueOf(j) + "&localVersion=" + k + "&serverApkVersion=" + (String)localObject1 + "&typeId=" + "0" + "&msgType=" + "56" + "&sendTime=" + str3 + "&downloadUrl=" + (String)localObject2 + "&packageName=" + str4 + "&nt=" + i;
+        if (!TextUtils.isEmpty(str5)) {
+          break label357;
+        }
+        localObject1 = paramBundle;
+        if (TextUtils.isEmpty(str2)) {
+          break;
+        }
+        return paramBundle + "&splitvia=" + str2;
+      }
+    }
+    label357:
+    return "";
   }
   
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  protected static boolean a(String paramString)
   {
-    if (paramList == null) {}
-    DownloadInfo localDownloadInfo;
-    do
-    {
-      return;
-      while (!paramList.hasNext()) {
-        paramList = paramList.iterator();
-      }
-      localDownloadInfo = (DownloadInfo)paramList.next();
-    } while (!this.a.a(localDownloadInfo, this.a.a));
-    ApkFileDownloadButton.a(this.a, 1);
-    bdht.b("ApkFileDownloadButton_", "onDownloadUpdate info.progress=" + localDownloadInfo.f);
-    this.a.a.b = 2;
-    this.a.a.jdField_a_of_type_Int = localDownloadInfo.f;
-    if (this.a.a.jdField_a_of_type_Long == 0L) {
-      this.a.a.jdField_a_of_type_Long = localDownloadInfo.c;
-    }
-    ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.6(this));
+    return ("2457".equals(paramString)) || ("2458".equals(paramString));
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if (this.a.a(paramDownloadInfo, this.a.a))
-    {
-      bdht.b("ApkFileDownloadButton_", "onDownloadWait info.progress=" + paramDownloadInfo.f);
-      this.a.a.b = 20;
-      if (this.a.a.jdField_a_of_type_Long == 0L) {
-        this.a.a.jdField_a_of_type_Long = paramDownloadInfo.c;
-      }
-      ThreadManager.getUIHandler().post(new ApkFileDownloadButton.1.2(this));
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

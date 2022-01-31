@@ -1,20 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
 
-public class awkt
-  implements View.OnTouchListener
+class awkt
+  implements View.OnClickListener
 {
-  public awkt(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
+  awkt(awkq paramawkq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
   }
 }
 

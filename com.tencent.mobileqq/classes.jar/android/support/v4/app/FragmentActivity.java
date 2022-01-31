@@ -611,24 +611,24 @@ public class FragmentActivity
     int i;
     if (paramContext == null)
     {
-      paramContext = Fragment.instantiate(this, str1);
-      paramContext.mFromLayout = true;
+      paramString = Fragment.instantiate(this, str1);
+      paramString.mFromLayout = true;
       if (j != 0)
       {
         i = j;
-        paramContext.mFragmentId = i;
-        paramContext.mContainerId = 0;
-        paramContext.mTag = str2;
-        paramContext.mInLayout = true;
-        paramContext.mFragmentManager = this.mFragments;
-        paramContext.onInflate(this, paramAttributeSet, paramContext.mSavedFragmentState);
-        this.mFragments.addFragment(paramContext, true);
+        paramString.mFragmentId = i;
+        paramString.mContainerId = 0;
+        paramString.mTag = str2;
+        paramString.mInLayout = true;
+        paramString.mFragmentManager = this.mFragments;
+        paramString.onInflate(this, paramAttributeSet, paramString.mSavedFragmentState);
+        this.mFragments.addFragment(paramString, true);
       }
     }
     for (;;)
     {
-      if (paramContext.mView != null) {
-        break label465;
+      if (paramString.mView != null) {
+        break label467;
       }
       throw new IllegalStateException("Fragment " + str1 + " did not create a view.");
       i = 0;
@@ -641,15 +641,16 @@ public class FragmentActivity
         paramContext.onInflate(this, paramAttributeSet, paramContext.mSavedFragmentState);
       }
       this.mFragments.moveToState(paramContext);
+      paramString = paramContext;
     }
-    label465:
+    label467:
     if (j != 0) {
-      paramContext.mView.setId(j);
+      paramString.mView.setId(j);
     }
-    if (paramContext.mView.getTag() == null) {
-      paramContext.mView.setTag(str2);
+    if (paramString.mView.getTag() == null) {
+      paramString.mView.setTag(str2);
     }
-    return paramContext.mView;
+    return paramString.mView;
   }
   
   public void onLowMemory()

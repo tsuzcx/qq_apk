@@ -1,54 +1,51 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class auay
-  implements View.OnTouchListener
+  implements ActionMode.Callback
 {
-  public auay(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public auay(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
+    if (paramMenuItem.getItemId() == 2131371005)
     {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if (localObject.length != 0)
-        {
-          localObject[0].onClick(paramView);
-          axqw.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
+      paramActionMode = auad.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        bcql.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, ajya.a(2131707828), 0).a();
       }
     }
-    for (int i = 1;; i = 0)
+    else
     {
-      if (i != 0) {
-        return true;
-      }
-      if ((j == 1) && (!paramView.isFocused())) {
-        axqw.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
+      return false;
     }
+    OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130771992, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

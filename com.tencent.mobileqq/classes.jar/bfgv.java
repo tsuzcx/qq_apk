@@ -1,47 +1,11 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import java.io.File;
+import java.util.Comparator;
 
-public class bfgv
+class bfgv
+  implements Comparator<String>
 {
-  public static long a(String paramString)
+  public int a(String paramString1, String paramString2)
   {
-    long l1 = 0L;
-    long l2;
-    if (TextUtils.isEmpty(paramString)) {
-      l2 = l1;
-    }
-    do
-    {
-      return l2;
-      paramString = new File(paramString);
-      if (paramString.isFile()) {
-        return paramString.length();
-      }
-      paramString = paramString.listFiles();
-      l2 = l1;
-    } while (paramString == null);
-    int j = paramString.length;
-    int i = 0;
-    for (;;)
-    {
-      l2 = l1;
-      if (i >= j) {
-        break;
-      }
-      Object localObject = paramString[i];
-      l2 = l1;
-      if (localObject != null) {
-        l2 = l1 + a(localObject.getAbsolutePath());
-      }
-      i += 1;
-      l1 = l2;
-    }
-  }
-  
-  public static SharedPreferences a()
-  {
-    return bfgu.a();
+    return paramString1.compareTo(paramString2);
   }
 }
 

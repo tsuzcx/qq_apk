@@ -1,102 +1,53 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.os.AsyncTask;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afwj
-  implements Handler.Callback
+class afwj
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public afwj(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  afwj(afwi paramafwi) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    switch (paramMessage.what)
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_Akaw.a())
     {
-    case 6: 
-    case 7: 
-    case 11: 
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    case 9: 
-    case 22: 
-    case 23: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 65537: 
-    case 65538: 
-    case 65539: 
-    case 65540: 
-    case 24: 
-    case 25: 
-    case 27: 
-    case 28: 
-    case 33: 
-    case 14: 
-    case 15: 
-    case 26: 
-    case 34: 
-    case 13: 
-      do
-      {
-        return true;
-        this.a.g(paramMessage);
-        return true;
-        this.a.a(paramMessage);
-        return true;
-        this.a.f(paramMessage);
-        return true;
-        this.a.e(paramMessage);
-        return true;
-        this.a.b(paramMessage);
-        return true;
-        this.a.d(paramMessage);
-        return true;
-        this.a.c(paramMessage);
-        return true;
-        ChatHistoryC2CAllFragment.a(this.a);
-        return true;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.history.C2CAllFragment", 2, "handle_get_roam_msg_auth_mode notify UI");
-        }
-        if (this.a.jdField_a_of_type_Akay.f())
-        {
-          this.a.c(false);
-          return true;
-        }
-        this.a.t();
-        return true;
-      } while (paramMessage.obj == null);
-      ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = this.a;
-      BaseApplication localBaseApplication = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      if (((Boolean)paramMessage.obj).booleanValue() == true) {}
-      for (int i = 2131692218;; i = 2131692217)
-      {
-        localChatHistoryC2CAllFragment.a(localBaseApplication.getString(i));
-        return true;
+      i = ((aumb)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(201)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.f = true;
       }
-    case 39: 
-      ChatHistoryC2CAllFragment.a(this.a, paramMessage);
-      return true;
-    case 40: 
-      ChatHistoryC2CAllFragment.b(this.a, paramMessage);
-      return true;
-    case 41: 
-      ChatHistoryC2CAllFragment.c(this.a, paramMessage);
-      return true;
     }
-    ChatHistoryC2CAllFragment.d(this.a, paramMessage);
-    return true;
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        ajey.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_c2c_del_all_msg");
+      }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_Akaw.a()))
+      {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramVarArgs[0], true);
+      }
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.b.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bcqf != null) && (this.a.a.jdField_a_of_type_Bcqf.isShowing())) {
+      this.a.a.jdField_a_of_type_Bcqf.dismiss();
+    }
+    if ((this.a.a.f) && (this.a.a.e))
+    {
+      this.a.a.e = false;
+      this.a.a.jdField_a_of_type_Akaw.d();
+    }
   }
 }
 

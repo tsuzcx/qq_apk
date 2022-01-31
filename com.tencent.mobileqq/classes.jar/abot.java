@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
-class abot
-  implements DialogInterface.OnDismissListener
+public class abot
+  implements DialogInterface.OnClickListener
 {
-  abot(abos paramabos) {}
+  public abot(NotificationActivity paramNotificationActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
+    NotificationActivity.b(this.a, 0);
+    this.a.finish();
   }
 }
 

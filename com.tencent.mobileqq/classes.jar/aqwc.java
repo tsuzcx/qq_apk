@@ -1,61 +1,72 @@
-import android.util.Base64;
-import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 public class aqwc
+  implements adif
 {
-  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
+  private final BaseChatPie a;
+  public boolean a;
   
-  public static String a(String paramString)
+  public aqwc(BaseChatPie paramBaseChatPie)
   {
-    return a(paramString, a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static aqwc a(BaseChatPie paramBaseChatPie)
   {
-    if (paramString1 == null) {
-      throw new XorCipherException("null input");
-    }
+    return (aqwc)paramBaseChatPie.a(6);
+  }
+  
+  private void b(XEditTextEx paramXEditTextEx)
+  {
     try
     {
-      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
-      return paramString1;
+      paramXEditTextEx.setTextMenuListener(null);
+      return;
     }
-    catch (Throwable paramString1)
+    catch (Throwable paramXEditTextEx) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+    do
     {
-      throw new XorCipherException(paramString1);
-    }
+      return;
+      if (paramInt == 11)
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+        return;
+      }
+    } while (paramInt != 4);
+    bfoi.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
   
-  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public void a(XEditTextEx paramXEditTextEx)
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
-    int i = 0;
-    while (i < paramArrayOfByte1.length)
-    {
-      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
-      i += 1;
-    }
-    return arrayOfByte;
-  }
-  
-  public static String b(String paramString)
-  {
-    return b(paramString, a);
-  }
-  
-  public static String b(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      throw new XorCipherException("null input");
-    }
+    aqwd localaqwd = new aqwd(this);
     try
     {
-      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
-      return paramString1;
+      paramXEditTextEx.setTextMenuListener(localaqwd);
+      return;
     }
-    catch (Throwable paramString1)
+    catch (Throwable paramXEditTextEx)
     {
-      throw new XorCipherException(paramString1);
+      paramXEditTextEx.printStackTrace();
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 11, 4 };
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt >= 30) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

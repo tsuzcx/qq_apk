@@ -1,21 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.text.TextUtils;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bhld
-  implements View.OnClickListener
+class bhld
+  extends IActionListener.Stub
 {
-  public bhld(QZoneShareActivity paramQZoneShareActivity) {}
+  bhld(bhlc parambhlc) {}
   
-  public void onClick(View paramView)
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    if (!this.a.d)
+    if (paramRecvMsg == null) {}
+    for (;;)
     {
-      this.a.f();
       return;
+      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (bhlc.a(this.a) != null))
+      {
+        Iterator localIterator = bhlc.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (WeakReference)localIterator.next();
+          if (localObject != null)
+          {
+            localObject = (bhlf)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((bhlf)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
+            }
+          }
+        }
+      }
     }
-    this.a.h();
-    this.a.a();
   }
 }
 

@@ -1,22 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 import mqq.os.MqqHandler;
 
 public class uei
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  uei(ueg paramueg) {}
+  uei(ued paramued) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    ueg.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
-    ueg.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
-    paramTVK_IMediaPlayer = this.a.a;
-    if (paramTVK_IMediaPlayer != null) {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
-    }
+    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
   }
 }
 

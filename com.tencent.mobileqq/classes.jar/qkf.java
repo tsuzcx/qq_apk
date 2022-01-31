@@ -1,52 +1,8 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-public class qkf
-  implements baho
+public abstract interface qkf
 {
-  public qkf(ReadInJoyWebDataManager.5 param5) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject != null)
-    {
-      this.a.this$0.a(this.a.b, Integer.toString(qke.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Qkj != null) && ((this.a.jdField_a_of_type_Qkj instanceof qkj))) {
-          this.a.jdField_a_of_type_Qkj.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        qke.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.this$0.a(this.a.b, Integer.toString(qke.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

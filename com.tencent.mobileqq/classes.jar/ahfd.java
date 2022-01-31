@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class ahfd
+class ahfd
+  implements axng
 {
-  public QQAppInterface a;
+  ahfd(ahfc paramahfc, ahfe paramahfe) {}
   
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, auoo paramauoo)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    aywa localaywa = new aywa();
-    localaywa.jdField_a_of_type_Boolean = true;
-    localaywa.jdField_b_of_type_Int = 262153;
-    localaywa.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localaywa.c = paramMessageForScribble.frienduin;
-    localaywa.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localaywa.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localaywa.jdField_a_of_type_Auoo = paramauoo;
-    localaywa.i = paramString;
-    localaywa.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localaywa);
-    return true;
+    if (paramInt == 0)
+    {
+      ahfc.a(this.jdField_a_of_type_Ahfc, true);
+      if (this.jdField_a_of_type_Ahfe != null) {
+        this.jdField_a_of_type_Ahfe.a(true);
+      }
+    }
+    while (this.jdField_a_of_type_Ahfe == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ahfe.a(false);
   }
 }
 

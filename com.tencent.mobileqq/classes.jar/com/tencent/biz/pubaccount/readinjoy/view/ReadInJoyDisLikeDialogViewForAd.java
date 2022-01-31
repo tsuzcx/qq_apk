@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -18,7 +18,7 @@ public class ReadInJoyDisLikeDialogViewForAd
     super.a(paramContext);
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131712774));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131712785));
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);

@@ -1,84 +1,94 @@
+import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class lnh
-  implements aysa
+public class lnh
+  extends MqqHandler
 {
-  lnh(lng paramlng, String paramString, lna paramlna, int paramInt) {}
+  WeakReference<AVNotifyCenter> a;
   
-  public void onResp(aysx paramaysx)
+  public lnh(Looper paramLooper, AVNotifyCenter paramAVNotifyCenter)
   {
-    ayrv localayrv = (ayrv)paramaysx.jdField_a_of_type_Aysw;
-    if (this.jdField_a_of_type_Lng.jdField_a_of_type_Ayrv == localayrv) {
-      this.jdField_a_of_type_Lng.jdField_a_of_type_Ayrv = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localayrv.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaysx.jdField_a_of_type_Int), Integer.valueOf(paramaysx.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      paramaysx = new File(localayrv.c);
-      if (paramaysx.exists())
-      {
-        try
-        {
-          String str = paramaysx.getParent();
-          bbdj.a(localayrv.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          lnf.a(this.jdField_a_of_type_Lna);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          lnf.a(-1);
-          return;
-        }
-        paramaysx.delete();
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        lnf.a(100 / this.jdField_a_of_type_Lng.jdField_a_of_type_Int + this.jdField_a_of_type_Lng.b);
-        paramaysx = this.jdField_a_of_type_Lng;
-        paramaysx.b += 100 / this.jdField_a_of_type_Lng.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Lng.a(this.jdField_a_of_type_Lna, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Lng.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
-    }
+    super(paramLooper);
+    this.a = new WeakReference(paramAVNotifyCenter);
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      lnf.a(i / this.jdField_a_of_type_Lng.jdField_a_of_type_Int + this.jdField_a_of_type_Lng.b);
+    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
+    if (localAVNotifyCenter == null) {}
+    while (!localAVNotifyCenter.i()) {
       return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.w("AVNotifyCenter", 1, "handleMessage, msg[" + paramMessage.what + "]");
+    }
+    if ((paramMessage.what >= 10003) && (paramMessage.what <= 10009))
+    {
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 35);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+    }
+    switch (paramMessage.what)
+    {
+    case 10006: 
+    case 10007: 
+    case 10008: 
+    case 10009: 
+    default: 
+      return;
+    case 10002: 
+      localAVNotifyCenter.b();
+      return;
+    case 10003: 
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 26);
+      localIntent.putExtra("discussId", ((Long)paramMessage.obj).longValue());
+      localIntent.putExtra("memberUin", localAVNotifyCenter.a.getCurrentAccountUin());
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10004: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 24);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10005: 
+      paramMessage = (Object[])paramMessage.obj;
+      localIntent = new Intent("tencent.video.q2v.MultiVideo");
+      localIntent.putExtra("type", 31);
+      localIntent.putExtra("discussId", ((Long)paramMessage[0]).longValue());
+      localIntent.putExtra("cmdUin", (String)paramMessage[1]);
+      localIntent.putExtra("uins", (String[])paramMessage[2]);
+      localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+      localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
+      return;
+    case 10010: 
+      localAVNotifyCenter.c(((Boolean)paramMessage.obj).booleanValue());
+      return;
+    }
+    Intent localIntent = new Intent("tencent.video.q2v.MultiVideo");
+    localIntent.putExtra("type", 34);
+    localIntent.putExtra("relationId", ((Long)paramMessage.obj).longValue());
+    localIntent.setPackage(localAVNotifyCenter.a.getApp().getPackageName());
+    localAVNotifyCenter.a.getApp().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lnh
  * JD-Core Version:    0.7.0.1
  */

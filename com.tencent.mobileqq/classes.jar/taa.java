@@ -1,39 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class taa
-  extends QQUIEventReceiver<szv, tkk>
+class taa
+  extends tph
 {
-  public taa(@NonNull szv paramszv)
+  taa(szz paramszz) {}
+  
+  public void a()
   {
-    super(paramszv);
+    super.a();
+    szy.a(this.a.a, null);
   }
   
-  public void a(@NonNull szv paramszv, @NonNull tkk paramtkk)
+  public void a(int paramInt)
   {
-    if (paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    CommentEntry localCommentEntry;
-    do
-    {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext()) {
-        localIterator = paramszv.a.iterator();
-      }
-      localCommentEntry = (CommentEntry)localIterator.next();
-    } while ((paramtkk.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramtkk.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
-    paramszv.f();
-    veg.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
+    super.a(paramInt);
+    vei.a("home_page", "suc_share", 1, paramInt, new String[] { vei.b(this.a.a.a) + "", vei.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
   
-  public Class acceptEventClass()
+  public void b(int paramInt)
   {
-    return tkk.class;
+    super.b(paramInt);
+    vei.a("home_page", "share_chanel", 1, paramInt, new String[] { vei.b(this.a.a.a) + "", vei.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

@@ -1,27 +1,65 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class ardl
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+  implements INetInfoHandler
 {
-  private ardl(ardg paramardg) {}
+  ardi a;
   
-  public void onComplete(String paramString1, String paramString2)
+  public ardl(ardi paramardi1, ardi paramardi2)
   {
-    synchronized (ardg.a(this.a))
-    {
-      String str = ardg.a(paramString1);
-      ardf.b("onComplete path:" + str);
-      ardf.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
-      ardg.a(this.a, paramString1);
-      paramString2 = new File(ardg.b(paramString1));
-      if (paramString2.exists()) {
-        paramString2.renameTo(new File(str));
-      }
-      ardg.b(this.a, paramString1);
-      ardg.b(this.a, ardg.a(this.a));
-      ardg.b(this.a);
-      return;
+    this.a = paramardi2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    ardh.b("onNetMobile2None");
+    if (this.a != null) {
+      ardi.c(this.a);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ardh.b("onNetMobile2Wifi");
+    if (this.a != null) {
+      ardi.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ardh.b("onNetNone2Mobile");
+    if (this.a != null) {
+      ardi.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ardh.b("onNetNone2Wifi");
+    if (this.a != null) {
+      ardi.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ardh.b("onNetWifi2Mobile");
+    if (this.a != null) {
+      ardi.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    ardh.b("onNetWifi2None");
+    if (this.a != null) {
+      ardi.c(this.a);
     }
   }
 }

@@ -1,15 +1,15 @@
 import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class adau
-  implements aybh
+class adau
+  implements aybj
 {
-  public adau(FriendShipWaveView paramFriendShipWaveView) {}
+  adau(adas paramadas) {}
   
   public void a()
   {
-    aybp localaybp = new aybp(new aybg[] { new aybo(300, 0.1F, 1.1F), new aybo(100, 1.2F, 0.9F), new aybo(100, 0.9F, 1.0F) });
-    this.a.c.a(new aybg[] { localaybp });
-    this.a.b.a(new aybg[] { new aybo(300, 0.0F, 1.0F) });
+    aybp localaybp = new aybp(3000, 360, 0);
+    localaybp.a = true;
+    this.a.a.e.a(new aybi[] { localaybp });
   }
 }
 

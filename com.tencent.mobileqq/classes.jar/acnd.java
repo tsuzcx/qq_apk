@@ -1,18 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acnd
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public acnd(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-    this.a.finish();
+    return true;
   }
 }
 

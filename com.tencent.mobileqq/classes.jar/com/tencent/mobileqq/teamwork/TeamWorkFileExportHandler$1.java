@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.text.TextUtils;
-import ayej;
-import ayfh;
+import ayel;
+import ayfj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TeamWorkFileExportHandler$1
   implements Runnable
 {
-  public TeamWorkFileExportHandler$1(ayej paramayej, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public TeamWorkFileExportHandler$1(ayel paramayel, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    ayfh.a(this.this$0.app, this.a, this.b, this.c, this.d, this.this$0.app.getCurrentAccountUin());
+    ayfj.a(this.this$0.app, this.a, this.b, this.c, this.d, this.this$0.app.getCurrentAccountUin());
   }
 }
 

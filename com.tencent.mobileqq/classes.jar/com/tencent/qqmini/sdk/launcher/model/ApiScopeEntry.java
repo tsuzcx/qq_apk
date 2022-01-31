@@ -5,7 +5,7 @@ import NS_MINI_USERAUTH.MiniUserAuth.StApiScopeEntry;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import beqs;
+import berj;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.Serializable;
 import org.json.JSONObject;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class ApiScopeEntry
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ApiScopeEntry> CREATOR = new beqs();
+  public static final Parcelable.Creator<ApiScopeEntry> CREATOR = new berj();
   public String apiName;
   public String eventName;
   public String scope;

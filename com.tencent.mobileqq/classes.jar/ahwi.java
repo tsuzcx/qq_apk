@@ -1,6 +1,6 @@
 public abstract interface ahwi
 {
-  public abstract void k();
+  public abstract void a(int paramInt);
 }
 
 

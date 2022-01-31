@@ -1,170 +1,139 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lux
-  extends lur
+  extends lva
 {
-  public Path a;
-  public RectF a;
-  public String a;
-  luy a;
+  public lus a;
   public boolean a;
+  public lvm[] a;
   public int b;
-  public long b;
-  public volatile boolean b;
+  public lvm[] b;
   public int c;
   public int d;
   public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
   
-  public lux()
+  public lux(lus paramlus)
   {
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    a(255);
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
+    this.jdField_a_of_type_ArrayOfLvm = new lvm[6];
+    this.jdField_b_of_type_ArrayOfLvm = new lvm[6];
+    this.jdField_a_of_type_Lus = paramlus;
+    this.jdField_c_of_type_ArrayOfLvm = this.jdField_a_of_type_ArrayOfLvm;
+    this.jdField_b_of_type_Long = 1800L;
   }
   
   public void a(long paramLong)
   {
-    long l1 = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_Long == 0L) {}
-    int i1;
-    do
-    {
-      return;
-      i1 = (int)((paramLong - l1) * this.g / this.jdField_b_of_type_Long - this.c);
-      a(this.f, i1, this.f + this.jdField_b_of_type_Int, this.c + i1);
-      if ((this.jdField_a_of_type_Luy != null) && (this.jdField_b_of_type_Boolean) && (i1 > this.c))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Luy.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPacketGameParticleEmoji", 2, "call onShow  top = " + i1 + ",mHeight = " + this.c);
-        }
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (i1 + this.n);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_a_of_type_AndroidGraphicsRectF.top + this.i);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.f + this.jdField_b_of_type_Int / 2 - this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2 + this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom + this.m);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    super.a(paramCanvas, paramPaint);
+    super.a(paramLong);
+    Rect localRect = this.jdField_a_of_type_Lus.a();
+    int i;
+    int j;
+    int k;
+    int m;
     if (this.jdField_a_of_type_Boolean)
     {
-      paramPaint.setColor(-706970);
-      paramPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.j, this.j, paramPaint);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      paramPaint.setColor(-3398);
-      paramPaint.setTextSize(this.k);
-      paramPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY();
-      float f2 = localFontMetrics.ascent;
-      f2 = (localFontMetrics.descent + f2) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), f1 - f2, paramPaint);
+      i = (localRect.left + localRect.right - this.d) / 2;
+      j = (localRect.top + localRect.bottom - this.e) / 2;
+      k = (localRect.left + localRect.right + this.d) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.e) / 2);
+      if (this.jdField_a_of_type_Lus.a == null) {
+        break label237;
+      }
+      a(this.jdField_a_of_type_Lus.a());
+    }
+    for (;;)
+    {
+      b(this.jdField_a_of_type_Lus.a());
+      return;
+      i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+      j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
+      k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
+      break;
+      label237:
+      a(0);
     }
   }
   
-  public void a(String paramString)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_ArrayOfLvm.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfLvm[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
+      i += 1;
+    }
+    while (j < this.jdField_b_of_type_ArrayOfLvm.length)
+    {
+      this.jdField_b_of_type_ArrayOfLvm[j] = new lvm(paramAVRedPacketManager.a("qav_redpacket_focus_big_" + j * 6 + ".png"));
+      j += 1;
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label45;
+      }
+    }
+    label45:
+    for (lvm[] arrayOflvm = this.jdField_b_of_type_ArrayOfLvm;; arrayOflvm = this.jdField_a_of_type_ArrayOfLvm)
+    {
+      this.jdField_c_of_type_ArrayOfLvm = arrayOflvm;
+      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLvm.length * 300);
+      return;
+    }
   }
   
   public void b()
   {
+    int j = 0;
     super.b();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = null;
-    this.jdField_a_of_type_AndroidGraphicsPath = null;
-    this.jdField_a_of_type_Luy = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.d != paramInt)
+    lvm[] arrayOflvm = this.jdField_a_of_type_ArrayOfLvm;
+    int k = arrayOflvm.length;
+    int i = 0;
+    lvm locallvm;
+    while (i < k)
     {
-      this.d = paramInt;
-      c();
+      locallvm = arrayOflvm[i];
+      if (locallvm != null) {
+        locallvm.a();
+      }
+      i += 1;
     }
+    arrayOflvm = this.jdField_b_of_type_ArrayOfLvm;
+    k = arrayOflvm.length;
+    i = j;
+    while (i < k)
+    {
+      locallvm = arrayOflvm[i];
+      if (locallvm != null) {
+        locallvm.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Lus = null;
+    this.jdField_a_of_type_ArrayOfLvm = null;
+    this.jdField_b_of_type_ArrayOfLvm = null;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 176 / 750);
-    this.c = (paramInt1 * 176 / 750);
-    this.e = paramInt1;
-    this.g = (this.c + paramInt2);
-    c();
-    this.h = (paramInt1 * 360 / 750);
-    this.i = (paramInt1 * 70 / 750);
-    this.j = (paramInt1 * 5 / 750);
-    this.k = (paramInt1 * 32 / 750);
-    this.l = (paramInt1 * 28 / 750);
-    this.m = (paramInt1 * 16 / 750);
-    this.n = (paramInt1 * -143 / 750);
-    this.o = (paramInt1 * 10 / 750);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_b_of_type_Long != paramLong) {
-      this.jdField_b_of_type_Long = paramLong;
-    }
-    QLog.d("RedPacketGameParticleEmoji", 2, "WL_DEBUG setDuration duration = " + paramLong);
-  }
-  
-  public void c()
-  {
-    this.f = ((this.e - this.jdField_b_of_type_Int * 3) * (this.d + 1) / 4 + this.jdField_b_of_type_Int * this.d);
-    int i3 = this.f + this.jdField_b_of_type_Int / 2 - this.h / 2;
-    int i1 = this.h + i3;
-    int i2 = i3;
-    if (i3 < this.o)
-    {
-      i2 = this.o;
-      i1 = this.h + i2;
-    }
-    i3 = i1;
-    if (i1 > this.e - this.o)
-    {
-      i3 = this.e - this.o;
-      i2 = i3 - this.h;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = i2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i3;
+    this.jdField_b_of_type_Int = (paramInt1 * 380 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 380 / 750);
+    this.d = (paramInt1 * 500 / 750);
+    this.e = (paramInt1 * 500 / 750);
   }
 }
 

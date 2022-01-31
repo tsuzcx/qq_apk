@@ -1,40 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ancn
+  extends ampa<ancm>
 {
-  private Map<String, Long> a = new HashMap();
-  
-  public static ancn a(ampi[] paramArrayOfampi)
+  public int a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    localancn = new ancn();
-    try
-    {
-      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].a);
-      Iterator localIterator = paramArrayOfampi.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localancn.a.put(str, Long.valueOf(paramArrayOfampi.getLong(str)));
-      }
-      return localancn;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfampi.getLocalizedMessage(), paramArrayOfampi);
-    }
+    return 440;
   }
   
-  public Map<String, Long> a()
+  @NonNull
+  public ancm a(int paramInt)
   {
-    return this.a;
+    return new ancm();
+  }
+  
+  @Nullable
+  public ancm a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ancm.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<ancm> a()
+  {
+    return ancm.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ancm paramancm) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,23 +1,48 @@
-import android.os.SystemClock;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
 
-public class bcfy
+class bcfy
+  implements TouchWebView.OnOverScrollHandler
 {
-  final long a;
-  public final String a;
-  public final String b;
-  public final String c;
+  bcfy(bcfx parambcfx, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
   
-  bcfy(String paramString1, String paramString2, String paramString3)
+  public void onBack()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_Bcfx.a = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
+    this.jdField_a_of_type_Bcfx.b(true);
   }
   
-  boolean a()
+  public void onOverScroll(int paramInt)
   {
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    Object localObject;
+    if (!this.jdField_a_of_type_Bcfx.a)
+    {
+      this.jdField_a_of_type_Bcfx.a = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      localObject = Uri.parse((String)localObject);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        this.jdField_a_of_type_Bcfx.b.setText(ajya.a(2131714703) + ((Uri)localObject).getHost() + ajya.a(2131714696));
+      }
+      this.jdField_a_of_type_Bcfx.b.setVisibility(0);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        this.jdField_a_of_type_Bcfx.b.setVisibility(8);
+      }
+    }
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
   }
 }
 

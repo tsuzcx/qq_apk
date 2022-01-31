@@ -7,7 +7,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Handler;
-import bers;
+import besj;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 class ShareProxyImpl$4
   implements MiniAppCmdInterface
 {
-  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, bers parambers, int paramInt, String paramString, MiniAppInfo paramMiniAppInfo) {}
+  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, besj parambesj, int paramInt, String paramString, MiniAppInfo paramMiniAppInfo) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -40,7 +40,7 @@ class ShareProxyImpl$4
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847466);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847472);
         }
         Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$shareData.b, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
@@ -73,7 +73,7 @@ class ShareProxyImpl$4
           for (;;)
           {
             QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847466));
+            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847472));
           }
         } while (this.val$shareType != 4);
         WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$miniAppInfo.name + ": " + this.val$finalDescription, paramJSONObject, "", str);

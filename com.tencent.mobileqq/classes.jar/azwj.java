@@ -1,56 +1,24 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import java.util.ArrayList;
 
-class azwj
-  implements aysa
+public class azwj
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public ImageView a;
+  public TextView a;
   
-  azwj(azwi paramazwi, Handler paramHandler, int paramInt, boolean paramBoolean)
+  public azwj(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  
+  public void a(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371608));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365016));
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onResp(aysx paramaysx)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + paramaysx.jdField_a_of_type_Int + ", desc: " + paramaysx.jdField_a_of_type_JavaLangString);
-    }
-    if (paramaysx.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      paramaysx = azwi.a(paramaysx.jdField_a_of_type_Aysw.c);
-      if (azwi.a(this.jdField_a_of_type_Azwi).equalsIgnoreCase(paramaysx))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
-        }
-        azwi.a(this.jdField_a_of_type_Azwi, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
-  }
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((HWGuideItem)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.a.get(this.jdField_a_of_type_Int)).b);
   }
 }
 

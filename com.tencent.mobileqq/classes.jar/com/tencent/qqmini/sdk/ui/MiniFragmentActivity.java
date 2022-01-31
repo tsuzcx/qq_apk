@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import besl;
+import betc;
 
 public class MiniFragmentActivity
   extends FragmentActivity
@@ -16,8 +16,8 @@ public class MiniFragmentActivity
   private MiniBaseFragment a()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
-    if (besl.a()) {
-      besl.a("MiniFragmentActivity", "creating fragment " + (String)localObject);
+    if (betc.a()) {
+      betc.a("MiniFragmentActivity", "creating fragment " + (String)localObject);
     }
     try
     {
@@ -27,7 +27,7 @@ public class MiniFragmentActivity
     }
     catch (Exception localException)
     {
-      besl.d("MiniFragmentActivity", "create fragment error", localException);
+      betc.d("MiniFragmentActivity", "create fragment error", localException);
     }
     return null;
   }
@@ -65,7 +65,7 @@ public class MiniFragmentActivity
     }
     catch (Exception paramIntent)
     {
-      besl.c("MiniFragmentActivity", "Failed to request window feature", paramIntent);
+      betc.c("MiniFragmentActivity", "Failed to request window feature", paramIntent);
     }
   }
   

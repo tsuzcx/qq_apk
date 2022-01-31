@@ -1,40 +1,50 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.widget.ScrollView;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
-public class xen
+public final class xen
 {
-  private static final String jdField_a_of_type_JavaLangString = xen.class.getSimpleName();
-  private float jdField_a_of_type_Float;
-  public int a;
-  public bftl a;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
-  public boolean a;
+  private static Pair<String, Long> a;
   
-  public xen(ScrollView paramScrollView, TouchWebView paramTouchWebView)
+  public static boolean a(@NonNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
-      return;
+    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
+    long l;
+    for (Long localLong = (Long)a.second;; localLong = null)
+    {
+      l = SystemClock.elapsedRealtime();
+      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
+        break;
+      }
+      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      return true;
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+    a = new Pair(paramString, Long.valueOf(l));
+    return false;
+  }
+  
+  public static boolean a(@NonNull String paramString, long paramLong)
+  {
+    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
+    long l;
+    for (Long localLong = (Long)a.second;; localLong = null)
+    {
+      l = SystemClock.elapsedRealtime();
+      if ((localLong == null) || (l - localLong.longValue() >= paramLong)) {
+        break;
+      }
+      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      return true;
+    }
+    a = new Pair(paramString, Long.valueOf(l));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xen
  * JD-Core Version:    0.7.0.1
  */

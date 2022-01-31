@@ -1,34 +1,38 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-
 public class lon
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long b = 0L;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public lon(String paramString, long paramLong)
+  public lon()
   {
-    this.jdField_a_of_type_JavaLangString = ("EventCountLog_" + paramString);
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  void a()
+  public boolean equals(Object paramObject)
   {
-    if (!AudioHelper.e()) {}
-    long l1;
-    do
+    if ((paramObject != null) && ((paramObject instanceof lon)))
     {
-      return;
-      l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_Int += 1;
-    } while (this.b >= l1);
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = this.b;
-    this.b = (l1 + this.jdField_a_of_type_Long);
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "EventCountLog, eventCount[" + this.jdField_a_of_type_Int + "], intervalMS[" + (l2 + l1 - l3) + "]");
-    this.jdField_a_of_type_Int = 0;
+      paramObject = (lon)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 

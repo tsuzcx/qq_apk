@@ -1,43 +1,107 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.mobileqq.vip.diy.ETTextViewPlus;
+import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bbxs
-  implements DownloadParams.DecodeHandler
+  extends bhzo
 {
-  private int a;
-  private int b;
+  private String a;
+  private String b = "";
+  private int c = -1;
+  private int d = -1;
   
-  public bbxs(int paramInt1, int paramInt2)
+  public bbxs(String paramString1, View paramView, String paramString2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    super(paramString1, paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramString2;
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      return null;
+    paramLayoutParams.width = -1;
+    paramLayoutParams.height = -2;
+    int i = ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin;
+    ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = 0;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    {
+      ProfileTemplateNickNameContainer localProfileTemplateNickNameContainer = (ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView;
+      localProfileTemplateNickNameContainer.setTextViewX(i);
+      if ("center_horizontal".equals(paramJSONObject.optString("gravity"))) {
+        localProfileTemplateNickNameContainer.setTextCenter();
+      }
     }
-    paramDownloadParams = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(0, 0, paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth() - paramBitmap.getWidth() / 5, paramBitmap.getHeight()), new Rect(paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, paramDownloadParams.getHeight()), localPaint);
-    localCanvas.drawBitmap(paramBitmap, new Rect(paramBitmap.getWidth() - paramBitmap.getWidth() / 5, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramDownloadParams.getWidth() - paramBitmap.getWidth() / 5, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight()), localPaint);
-    return paramDownloadParams;
+    return paramLayoutParams;
   }
   
-  public String toString()
+  protected void a(String paramString1, String paramString2)
   {
-    return "TitleDrawableDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    if ("f".equals(paramString1)) {}
+    for (;;)
+    {
+      try
+      {
+        this.c = Integer.parseInt(paramString2);
+        if (QLog.isColorLevel()) {
+          QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font id=" + this.c);
+        }
+        return;
+      }
+      catch (NumberFormatException paramString1)
+      {
+        ved.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font id illegal :" + paramString2 + " error=" + paramString1);
+        return;
+      }
+      if ("ft".equals(paramString1)) {
+        try
+        {
+          this.d = Integer.parseInt(paramString2);
+          if (QLog.isColorLevel())
+          {
+            QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font type=" + this.d);
+            return;
+          }
+        }
+        catch (NumberFormatException paramString1)
+        {
+          ved.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font type illegal :" + paramString2 + " error=" + paramString1);
+          return;
+        }
+      }
+    }
+    if ("bg".equals(paramString1))
+    {
+      this.jdField_a_of_type_JavaLangString = paramString2;
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
+    {
+      ETTextViewPlus localETTextViewPlus = ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).a();
+      if ((this.c <= 0) || (this.d <= 0)) {
+        break label112;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "set name font id=" + this.c + " type=" + this.d);
+      }
+      localETTextViewPlus.setFontAsync(this.c, this.d);
+    }
+    for (;;)
+    {
+      ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).setTextBgUrl(this.jdField_a_of_type_JavaLangString);
+      return;
+      label112:
+      ved.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "profile nick name set font error because font id=" + this.c + " type=" + this.d + " is illegal!");
+    }
   }
 }
 

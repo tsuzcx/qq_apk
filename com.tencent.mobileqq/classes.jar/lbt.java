@@ -1,43 +1,94 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lbt
-  extends Animation
+  extends QIPCModule
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private int b;
-  private int c;
-  private int d;
-  
-  public lbt(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  private lbt()
   {
-    setDuration(paramInt1);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
-    this.b = paramView.getMeasuredHeight();
-    this.jdField_a_of_type_Int = paramView.getMeasuredWidth();
-    this.d = (this.b + paramInt3);
-    this.c = (this.jdField_a_of_type_Int + paramInt2);
+    super("AioShareMusicIPCMainClient");
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public static lbt a()
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat < 1.0F)
+    return lbv.a();
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = (this.b + (int)((this.d - this.b) * paramFloat));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)((this.c - this.jdField_a_of_type_Int) * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString)
+  {
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    }
+    if (bool)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
+    {
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("checkAioShareMusic".equals(paramString)) {
+      b(paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if ("startListenAioShareMusic".equals(paramString)) {
+        a(paramBundle);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     lbt
  * JD-Core Version:    0.7.0.1
  */

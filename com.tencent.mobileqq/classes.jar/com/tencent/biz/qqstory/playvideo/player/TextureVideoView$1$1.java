@@ -2,24 +2,24 @@ package com.tencent.biz.qqstory.playvideo.player;
 
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
-import udv;
-import ufk;
+import uds;
+import ufh;
 
 public class TextureVideoView$1$1
   implements Runnable
 {
-  public TextureVideoView$1$1(udv paramudv, ufk paramufk) {}
+  public TextureVideoView$1$1(uds paramuds, ufh paramufh) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Udv.a.d = this.jdField_a_of_type_Ufk.c();
-    this.jdField_a_of_type_Udv.a.e = this.jdField_a_of_type_Ufk.d();
-    if ((this.jdField_a_of_type_Udv.a.d != 0) && (this.jdField_a_of_type_Udv.a.e != 0))
+    this.jdField_a_of_type_Uds.a.d = this.jdField_a_of_type_Ufh.c();
+    this.jdField_a_of_type_Uds.a.e = this.jdField_a_of_type_Ufh.d();
+    if ((this.jdField_a_of_type_Uds.a.d != 0) && (this.jdField_a_of_type_Uds.a.e != 0))
     {
       if (Build.VERSION.SDK_INT >= 15) {
-        this.jdField_a_of_type_Udv.a.getSurfaceTexture().setDefaultBufferSize(this.jdField_a_of_type_Udv.a.d, this.jdField_a_of_type_Udv.a.e);
+        this.jdField_a_of_type_Uds.a.getSurfaceTexture().setDefaultBufferSize(this.jdField_a_of_type_Uds.a.d, this.jdField_a_of_type_Uds.a.e);
       }
-      this.jdField_a_of_type_Udv.a.requestLayout();
+      this.jdField_a_of_type_Uds.a.requestLayout();
     }
   }
 }

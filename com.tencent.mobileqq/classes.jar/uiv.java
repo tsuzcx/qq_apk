@@ -1,6 +1,17 @@
-public abstract interface uiv
+import android.app.Activity;
+import android.content.Intent;
+
+public class uiv
+  extends uaf
 {
-  public abstract void a();
+  public uiv(uiu paramuiu) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
+      this.a.b().finish();
+    }
+  }
 }
 
 

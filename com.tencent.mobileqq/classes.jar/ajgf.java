@@ -1,271 +1,185 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteAioScript.1;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajgf
-  implements aivr
 {
-  protected int a;
-  protected ajfk a;
-  protected ajgd a;
-  public ajgh a;
-  protected String a;
-  protected boolean a;
-  protected String b;
+  public float a;
+  public int a;
+  private ajgl jdField_a_of_type_Ajgl;
+  public SharedPreferences a;
+  public String a;
+  public WeakReference<BaseChatPie> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public String b;
+  public WeakReference<aiuz> b;
+  public AtomicBoolean b;
+  public boolean b;
+  public int c;
+  private WeakReference<ajfk> jdField_c_of_type_JavaLangRefWeakReference;
+  private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public int d = -1;
+  public int e = 3;
+  private int f;
   
-  public ajgf(int paramInt, ajgh paramajgh, ajgd paramajgd)
+  public ajgf()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = ("cmshow_script_" + paramInt + ".js");
-    this.jdField_a_of_type_Ajgh = paramajgh;
-    this.jdField_a_of_type_Ajgd = paramajgd;
-    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
-  }
-  
-  public ajgf(int paramInt, String paramString, ajgh paramajgh, ajgd paramajgd)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString;
-    this.jdField_a_of_type_Ajgh = paramajgh;
-    this.jdField_a_of_type_Ajgd = paramajgd;
-    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_b_of_type_JavaLangString = ApolloUtil.a();
+    a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+    b();
   }
   
   public int a()
   {
-    return 300;
+    return this.f;
   }
   
-  public aivb a()
+  public aiuz a()
   {
-    if (this.jdField_a_of_type_Ajgh == null) {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
       return null;
     }
-    return this.jdField_a_of_type_Ajgh.a();
+    return (aiuz)this.jdField_b_of_type_JavaLangRefWeakReference.get();
   }
   
-  public aivx a(long paramLong, String paramString1, String paramString2)
+  public ajfk a()
   {
-    return null;
+    if (this.jdField_c_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (ajfk)this.jdField_c_of_type_JavaLangRefWeakReference.get();
   }
   
-  public String a()
+  public BaseChatPie a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ajmu.av).append(this.b);
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public IPCSpriteContext a()
+  {
+    IPCSpriteContext localIPCSpriteContext = new IPCSpriteContext();
+    localIPCSpriteContext.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localIPCSpriteContext.jdField_b_of_type_Int = this.e;
+    localIPCSpriteContext.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+    localIPCSpriteContext.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    return localIPCSpriteContext;
   }
   
   public void a() {}
   
-  public void a(ajfk paramajfk)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Ajfk = paramajfk;
+    aiuz localaiuz = a();
+    if (localaiuz != null) {
+      localaiuz.setBubbleType(paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    if (this.e == 0)
+    {
+      if ((1 != paramInt1) && (3000 != paramInt1)) {
+        break label43;
+      }
+      this.jdField_c_of_type_Int = 1;
+    }
+    for (;;)
+    {
+      a(this.jdField_c_of_type_Int);
+      return;
+      label43:
+      if (paramInt1 == 0) {
+        this.jdField_c_of_type_Int = 0;
+      }
+    }
+  }
+  
+  public void a(aiuz paramaiuz)
+  {
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaiuz);
+  }
+  
+  public void a(ajgl paramajgl)
+  {
+    this.jdField_a_of_type_Ajgl = paramajgl;
   }
   
   public void a(String paramString)
   {
-    a(paramString, 0, false);
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void a(String paramString, int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Ajgh == null)) {
-      QLog.w("CmShow_SpriteAioScript", 1, "[execScriptInRenderThread], script is null.");
-    }
-    aivb localaivb;
-    do
-    {
-      return;
-      localaivb = this.jdField_a_of_type_Ajgh.a();
-    } while (localaivb == null);
-    localaivb.runRenderTask(new CmShowSpriteAioScript.1(this, paramString, localaivb, paramInt, paramBoolean));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      QLog.w("CmShow_SpriteAioScript", 2, "[checkDressRsc], script is NOT ready.");
-    }
-    while ((TextUtils.isEmpty(paramString)) || (!"0".equals(paramString))) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.i("CmShow_SpriteAioScript", 1, "script is already read, scriptName:" + this.b);
-      return true;
-    }
-    this.jdField_a_of_type_Boolean = b();
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(Activity paramActivity)
-  {
-    return false;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    boolean bool = true;
-    if (!new ajox(paramString + ".sig", paramString).a(1))
-    {
-      QLog.w("CmShow_SpriteAioScript", 1, "verify fails, path:" + paramString);
-      e();
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b() {}
-  
-  public boolean b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(airz.e)))
-      {
-        this.jdField_a_of_type_JavaLangString = airz.e;
-        QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script 0 from cache");
-        return true;
-      }
-      String str = a();
-      if (TextUtils.isEmpty(str)) {
-        return false;
-      }
-      localFile = new File(str);
-      if (!localFile.exists())
-      {
-        QLog.w("CmShow_SpriteAioScript", 1, "Fail to read script file. " + localFile.getAbsolutePath());
-        f();
-        if (TextUtils.isEmpty(ajmu.au)) {
-          ajlq.a(this.jdField_a_of_type_Ajgh.a(), 300, 202, new Object[] { "Fail to read script file:", str });
-        } else {
-          ajlq.a(this.jdField_a_of_type_Ajgh.a(), 300, 200, new Object[] { "Fail to read script file:", str });
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      File localFile;
-      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript],OOM:", localOutOfMemoryError);
-      ajlq.a(this.jdField_a_of_type_Ajgh.a(), 300, 150, new Object[] { "loadScript:", localOutOfMemoryError });
-      return false;
-      if (!a(localOutOfMemoryError))
-      {
-        ajlq.a(this.jdField_a_of_type_Ajgh.a(), 300, 201, new Object[] { "Fail to verify script file:", localOutOfMemoryError });
-        return false;
-      }
-      this.jdField_a_of_type_JavaLangString = bbdj.b(localFile);
-      QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script file, bid:" + this.jdField_a_of_type_Int);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript]:", localThrowable);
-      ajlq.a(this.jdField_a_of_type_Ajgh.a(), 300, 30, new Object[] { "loadScript:", localThrowable });
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean == null) {
       return false;
     }
-    return false;
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("sprite_hide_key" + this.jdField_b_of_type_JavaLangString, -1);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_SpriteAioScript", 2, new Object[] { "[loadScript], mIsLoaded:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    for (;;)
-    {
-      try
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        if (100 == this.jdField_a_of_type_Int)
-        {
-          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
-          a(this.jdField_a_of_type_JavaLangString, 5, false);
-          b();
-          return;
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
-          a(this.jdField_a_of_type_JavaLangString, 3, false);
-          continue;
-        }
-        localStringBuilder = new StringBuilder();
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("CmShow_SpriteAioScript", 1, localThrowable, new Object[0]);
-        return;
-      }
-      StringBuilder localStringBuilder;
-      localStringBuilder.append("(function(){").append(this.jdField_a_of_type_JavaLangString).append(";registerFunction(\"playAction_bid_").append(this.jdField_a_of_type_Int).append("\", playSpriteAction);").append("registerFunction(\"sendMsg_bid_").append(this.jdField_a_of_type_Int).append("\", sendSpriteMsg);").append("registerFunction(\"stopAction_bid_").append(this.jdField_a_of_type_Int).append("\", stopSpriteAction);").append("})();");
-      a(localStringBuilder.toString());
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-  }
-  
-  public boolean c()
-  {
-    if (TextUtils.isEmpty(ajmu.au)) {}
-    while (new File(ajmu.av + "cm3d.js").exists()) {
-      return true;
+    if (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
-    return false;
-  }
-  
-  public void d()
-  {
-    ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a()).addCmdHandler(this);
-  }
-  
-  public void e()
-  {
-    QLog.w("CmShow_SpriteAioScript", 1, "[onVerifyFailure], check base.zip");
-    QQAppInterface localQQAppInterface = ApolloUtil.a();
-    if (localQQAppInterface != null)
-    {
-      akvj.a(localQQAppInterface);
-      return;
-    }
-    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
-  }
-  
-  public void f()
-  {
-    QLog.w("CmShow_SpriteAioScript", 1, "[onScriptNotExists], redownload base.zip");
-    QQAppInterface localQQAppInterface = ApolloUtil.a();
-    if (localQQAppInterface != null)
-    {
-      akvj.a(localQQAppInterface);
-      return;
-    }
-    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
-  }
-  
-  public void g()
-  {
-    ApolloCmdChannel localApolloCmdChannel = ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a());
-    if (localApolloCmdChannel != null) {
-      localApolloCmdChannel.removeCmdHandler(this);
-    }
-    this.jdField_a_of_type_Ajfk = null;
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet.clear();
   }
 }
 

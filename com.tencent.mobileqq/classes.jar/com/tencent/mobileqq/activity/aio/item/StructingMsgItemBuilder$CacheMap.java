@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aeby;
+import aebw;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StructingMsgItemBuilder$CacheMap
-  extends HashMap<String, ArrayList<aeby>>
+  extends HashMap<String, ArrayList<aebw>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(aeby paramaeby)
+  public void add(aebw paramaebw)
   {
-    if (paramaeby == null) {
+    if (paramaebw == null) {
       return;
     }
-    get(paramaeby.a).add(paramaeby);
+    get(paramaebw.a).add(paramaebw);
   }
   
-  public ArrayList<aeby> get(String paramString)
+  public ArrayList<aebw> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,17 +29,17 @@ public class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(aeby paramaeby)
+  public void remove(aebw paramaebw)
   {
-    if ((paramaeby == null) || (paramaeby.a == null)) {}
+    if ((paramaebw == null) || (paramaebw.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramaeby.a);
-      localArrayList.remove(paramaeby);
+      localArrayList = get(paramaebw.a);
+      localArrayList.remove(paramaebw);
     } while (!localArrayList.isEmpty());
-    remove(paramaeby.a);
+    remove(paramaebw.a);
   }
 }
 

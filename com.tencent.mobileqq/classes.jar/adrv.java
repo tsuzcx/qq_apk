@@ -1,7 +1,7 @@
 class adrv
-  implements bfos
+  implements bfpj
 {
-  adrv(adru paramadru) {}
+  adrv(adrs paramadrs) {}
   
   public void onDismiss() {}
 }

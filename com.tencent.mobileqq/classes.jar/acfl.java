@@ -1,18 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
 public class acfl
-  implements audw
+  implements DialogInterface.OnClickListener
 {
-  public acfl(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public acfl(TranslucentTRansferFragment paramTranslucentTRansferFragment, bbgu parambbgu) {}
   
-  public void a(int paramInt, audx paramaudx)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramaudx != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramaudx.b)))
-    {
-      TextPreviewTranslateActivity.b(this.a, paramaudx.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-    }
+    this.jdField_a_of_type_Bbgu.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity(), RegisterPhoneNumActivity.class);
+    paramDialogInterface.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.getActivity().getIntent().getStringExtra("invite_code"));
+    this.jdField_a_of_type_ComTencentMobileqqActivityTranslucentTRansferFragment.startActivity(paramDialogInterface);
+    axqy.b(null, "dc00898", "", "", "0X800970C", "0X800970C", 0, 0, "", "", "", "");
   }
 }
 

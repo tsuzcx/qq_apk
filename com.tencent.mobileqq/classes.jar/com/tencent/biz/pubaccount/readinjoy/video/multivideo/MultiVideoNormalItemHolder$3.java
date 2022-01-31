@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
 import android.view.ViewGroup;
-import bbkx;
+import bbll;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import qxo;
-import qya;
+import qxl;
+import qxx;
 
 public class MultiVideoNormalItemHolder$3
   implements Runnable
 {
-  public MultiVideoNormalItemHolder$3(qya paramqya) {}
+  public MultiVideoNormalItemHolder$3(qxx paramqxx) {}
   
   public void run()
   {
     if (this.this$0.b != null)
     {
-      int i = qxo.a(this.this$0.a.s).length();
-      int j = bbkx.a(12.0F);
-      qya.a(this.this$0).setMaxWidth(qya.a(this.this$0).getWidth() - qya.a(this.this$0).getPaddingLeft() - qya.a(this.this$0).getPaddingRight() - i * j - bbkx.a(30.0F));
+      int i = qxl.a(this.this$0.a.s).length();
+      int j = bbll.a(12.0F);
+      qxx.a(this.this$0).setMaxWidth(qxx.a(this.this$0).getWidth() - qxx.a(this.this$0).getPaddingLeft() - qxx.a(this.this$0).getPaddingRight() - i * j - bbll.a(30.0F));
     }
   }
 }

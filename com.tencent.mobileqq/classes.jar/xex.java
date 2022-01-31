@@ -1,15 +1,6 @@
-import android.view.View;
-
-class xex
-  implements xfe
+public abstract interface xex
 {
-  xex(xev paramxev) {}
-  
-  public void a(View paramView, float paramFloat)
-  {
-    paramView.getLayoutParams().height = ((int)paramFloat);
-    paramView.requestLayout();
-  }
+  public abstract void a();
 }
 
 

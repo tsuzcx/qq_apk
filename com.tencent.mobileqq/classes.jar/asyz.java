@@ -1,213 +1,205 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import NearbyGroup.Attr;
+import NearbyGroup.Cell;
+import NearbyGroup.GPS;
+import NearbyGroup.LBSInfo;
+import NearbyGroup.Wifi;
+import appoint.define.appoint_define.Cell;
+import appoint.define.appoint_define.GPS;
+import appoint.define.appoint_define.LBSInfo;
+import appoint.define.appoint_define.Wifi;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asyz
 {
-  public static final int[] a;
-  public static final String[] a;
-  public static final int[] b;
-  public static final String[] b;
-  public static final String[] c;
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String[] d;
-  public int e;
-  public int f;
-  
-  static
+  public static LBSInfo a()
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131707401), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131707409), ajyc.a(2131707396), ajyc.a(2131707405), ajyc.a(2131707407), ajyc.a(2131707412), ajyc.a(2131707398), ajyc.a(2131707416), ajyc.a(2131707400) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajyc.a(2131707413), ajyc.a(2131707418), ajyc.a(2131707415), ajyc.a(2131707402), ajyc.a(2131707403), ajyc.a(2131707408), ajyc.a(2131707417), ajyc.a(2131707406), ajyc.a(2131707399), ajyc.a(2131707404), ajyc.a(2131707414), ajyc.a(2131707397), ajyc.a(2131707411) };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130844734, 2130844730, 2130844729, 2130844735, 2130844732, 2130844733, 2130844731 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3 };
+    return a(false, SosoInterface.a());
   }
   
-  public asyz()
+  public static LBSInfo a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_d_of_type_ArrayOfJavaLangString = new String[] { "0", "0", "0", "0" };
-    this.jdField_a_of_type_JavaLangString = "不限";
-    this.jdField_b_of_type_JavaLangString = "不限";
-    this.jdField_c_of_type_JavaLangString = "不限";
-    this.jdField_d_of_type_JavaLangString = "不限";
-  }
-  
-  public static asyz a(String paramString)
-  {
-    return a(paramString, "nearpeople_filters");
-  }
-  
-  public static asyz a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
+    Attr localAttr = null;
+    if (paramSosoLbsInfo == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      do
+      localObject1 = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        return null;
-        paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-      } while (paramString1 == null);
-      paramString2 = new asyz();
-      paramString2.jdField_a_of_type_Int = paramString1.getInt("gender", -1);
-    } while (paramString2.jdField_a_of_type_Int == -1);
-    paramString2.jdField_a_of_type_Boolean = paramString1.getBoolean("byuser", false);
-    paramString2.jdField_c_of_type_Int = paramString1.getInt("age", 0);
-    paramString2.jdField_d_of_type_Int = paramString1.getInt("interest", 0);
-    paramString2.jdField_b_of_type_Int = paramString1.getInt("time", 3);
-    paramString2.e = paramString1.getInt("xingzuo", 0);
-    paramString2.f = paramString1.getInt("key_career", 0);
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = paramString1.getString("key_hometown_country", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = paramString1.getString("key_hometown_province", "0");
-    paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = paramString1.getString("key_hometown_city", "0");
-    paramString2.jdField_a_of_type_JavaLangString = paramString1.getString("key_hometown_string", "不限");
-    paramString2.jdField_b_of_type_JavaLangString = paramString1.getString("str_country", "不限");
-    paramString2.jdField_c_of_type_JavaLangString = paramString1.getString("str_province", "不限");
-    paramString2.jdField_d_of_type_JavaLangString = paramString1.getString("str_city", "不限");
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[0])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[0] = "0";
-    }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[1])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[1] = "0";
-    }
-    if ("-1".equals(paramString2.jdField_d_of_type_ArrayOfJavaLangString[2])) {
-      paramString2.jdField_d_of_type_ArrayOfJavaLangString[2] = "0";
-    }
-    return paramString2;
-  }
-  
-  public static void a(String paramString, asyz paramasyz)
-  {
-    a(paramString, paramasyz, "nearpeople_filters");
-  }
-  
-  public static void a(String paramString1, asyz paramasyz, String paramString2)
-  {
-    if ((paramasyz == null) || (TextUtils.isEmpty(paramString1))) {}
-    do
-    {
-      return;
-      paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences(paramString2 + paramString1, 4);
-    } while (paramString1 == null);
-    paramString1.edit().putBoolean("byuser", paramasyz.jdField_a_of_type_Boolean).putInt("gender", paramasyz.jdField_a_of_type_Int).putInt("time", paramasyz.jdField_b_of_type_Int).putInt("age", paramasyz.jdField_c_of_type_Int).putInt("xingzuo", paramasyz.e).putInt("key_career", paramasyz.f).putString("key_hometown_country", paramasyz.jdField_d_of_type_ArrayOfJavaLangString[0]).putString("key_hometown_province", paramasyz.jdField_d_of_type_ArrayOfJavaLangString[1]).putString("key_hometown_city", paramasyz.jdField_d_of_type_ArrayOfJavaLangString[2]).putString("key_hometown_string", paramasyz.jdField_a_of_type_JavaLangString).putString("str_country", paramasyz.jdField_b_of_type_JavaLangString).putString("str_province", paramasyz.jdField_c_of_type_JavaLangString).putString("str_city", paramasyz.jdField_d_of_type_JavaLangString).putInt("interest", paramasyz.jdField_d_of_type_Int).commit();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    int i = 0;
-    boolean bool1;
-    if ((paramObject == null) || (!(paramObject instanceof asyz)))
-    {
-      bool1 = false;
-      return bool1;
-    }
-    paramObject = (asyz)paramObject;
-    if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && ((this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) || (((this.jdField_b_of_type_Int == 4) || (this.jdField_b_of_type_Int == 3)) && ((paramObject.jdField_b_of_type_Int == 4) || (paramObject.jdField_b_of_type_Int == 3)))) && (this.jdField_c_of_type_Int == paramObject.jdField_c_of_type_Int) && (this.e == paramObject.e) && (this.f == paramObject.f) && (this.jdField_d_of_type_Int == paramObject.jdField_d_of_type_Int)) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      bool1 = bool2;
-      if (!bool2) {
-        break;
+        localObject2 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
+        localArrayList.add(new Cell((short)((SosoInterface.SosoCell)localObject2).jdField_a_of_type_Int, (short)((SosoInterface.SosoCell)localObject2).b, ((SosoInterface.SosoCell)localObject2).c, ((SosoInterface.SosoCell)localObject2).d, (short)((SosoInterface.SosoCell)localObject2).e));
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      try
       {
-        bool1 = bool2;
-        if (i >= 3) {
-          break;
+        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) {
+          break label313;
         }
-        bool2 &= this.jdField_d_of_type_ArrayOfJavaLangString[i].equalsIgnoreCase(paramObject.jdField_d_of_type_ArrayOfJavaLangString[i]);
-        bool1 = bool2;
-        if (!bool2) {
-          break;
+        if (!paramBoolean) {
+          continue;
         }
-        i += 1;
+        localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D), -1, 1);
       }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("筛选：");
-    String str1;
-    int i;
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      if ((this.jdField_c_of_type_Int != 0) && (this.jdField_c_of_type_Int < jdField_a_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]).append(',');
-      }
-      if ((this.jdField_d_of_type_Int != 0) && (this.jdField_d_of_type_Int < jdField_b_of_type_ArrayOfJavaLangString.length)) {
-        localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[this.jdField_d_of_type_Int]).append(',');
-      }
-      if ((this.f != 0) && (this.f < bazj.e.length))
+      catch (Exception localException)
       {
-        String str2 = bazj.e[this.f];
-        str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = ajyc.a(2131707410);
+        Iterator localIterator;
+        SosoInterface.SosoWifi localSosoWifi;
+        localGPS = null;
+        continue;
+        if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute == null) {
+          continue;
         }
-        localStringBuilder.append(str1).append(',');
+        localAttr = new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.b, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c);
+        return new LBSInfo(localGPS, (ArrayList)localObject2, localArrayList, localAttr);
       }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals("不限")))
+      localObject2 = new ArrayList();
+      if (paramSosoLbsInfo.b != null)
       {
-        i = this.jdField_a_of_type_JavaLangString.lastIndexOf("-");
-        if (i > 0)
+        localIterator = paramSosoLbsInfo.b.iterator();
+        if (localIterator.hasNext())
         {
-          str1 = this.jdField_a_of_type_JavaLangString.substring(i + 1);
-          label223:
-          localStringBuilder.append(str1).append(',');
+          localSosoWifi = (SosoInterface.SosoWifi)localIterator.next();
+          if (localSosoWifi == null) {
+            continue;
+          }
+          ((ArrayList)localObject2).add(new Wifi(localSosoWifi.jdField_a_of_type_Long, (short)localSosoWifi.jdField_a_of_type_Int));
+          continue;
+          localObject1 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
+          continue;
+        }
+      }
+      label313:
+      GPS localGPS = null;
+    }
+  }
+  
+  public static appoint_define.LBSInfo a(String paramString)
+  {
+    Object localObject1 = SosoInterface.a();
+    if ((localObject1 == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a == 0.0D) || (((SosoInterface.SosoLbsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b == 0.0D)) {
+      SosoInterface.a(60000L, paramString);
+    }
+    for (paramString = SosoInterface.a();; paramString = (String)localObject1)
+    {
+      if (paramString != null)
+      {
+        localObject1 = new appoint_define.LBSInfo();
+        Object localObject2;
+        Object localObject3;
+        Object localObject4;
+        if (paramString.b != null)
+        {
+          localObject2 = paramString.b.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (SosoInterface.SosoWifi)((Iterator)localObject2).next();
+            if (localObject3 != null)
+            {
+              localObject4 = new appoint_define.Wifi();
+              ((appoint_define.Wifi)localObject4).uint64_mac.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Long);
+              ((appoint_define.Wifi)localObject4).int32_rssi.set(((SosoInterface.SosoWifi)localObject3).jdField_a_of_type_Int);
+              ((appoint_define.LBSInfo)localObject1).rpt_msg_wifis.add((MessageMicro)localObject4);
+            }
+          }
+        }
+        if (paramString.jdField_a_of_type_JavaUtilArrayList != null)
+        {
+          localObject2 = paramString.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (SosoInterface.SosoCell)((Iterator)localObject2).next();
+            if (localObject3 != null)
+            {
+              localObject4 = new appoint_define.Cell();
+              ((appoint_define.Cell)localObject4).int32_cellid.set(((SosoInterface.SosoCell)localObject3).d);
+              ((appoint_define.Cell)localObject4).int32_lac.set(((SosoInterface.SosoCell)localObject3).c);
+              ((appoint_define.Cell)localObject4).int32_rssi.set(((SosoInterface.SosoCell)localObject3).e);
+              ((appoint_define.Cell)localObject4).int32_mcc.set(((SosoInterface.SosoCell)localObject3).jdField_a_of_type_Int);
+              ((appoint_define.Cell)localObject4).int32_mnc.set(((SosoInterface.SosoCell)localObject3).b);
+              ((appoint_define.LBSInfo)localObject1).rpt_msg_cells.add((MessageMicro)localObject4);
+            }
+          }
+        }
+        if (paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null)
+        {
+          localObject2 = new appoint_define.GPS();
+          ((appoint_define.GPS)localObject2).int32_lon.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D));
+          ((appoint_define.GPS)localObject2).int32_lat.set((int)(paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D));
+          ((appoint_define.GPS)localObject2).int32_type.set(0);
+          ((appoint_define.LBSInfo)localObject1).msg_gps.set((MessageMicro)localObject2);
+          return localObject1;
         }
       }
       else
       {
-        if ((this.e != 0) && (this.e < jdField_c_of_type_ArrayOfJavaLangString.length)) {
-          localStringBuilder.append(jdField_c_of_type_ArrayOfJavaLangString[this.e]).append(',');
-        }
-        switch (this.jdField_b_of_type_Int)
-        {
-        }
+        atbr.a("getLbsInfo", new Object[] { "lbs is null" });
+        return null;
       }
-      break;
+      return localObject1;
+    }
+  }
+  
+  public static String a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramSosoLbsInfo == null) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray;
+    Object localObject;
+    try
+    {
+      localJSONObject.put("lat", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a * 1000000.0D));
+      localJSONObject.put("lon", (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.b * 1000000.0D));
+      localJSONArray = new JSONArray();
+      localObject = paramSosoLbsInfo.b.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        SosoInterface.SosoWifi localSosoWifi = (SosoInterface.SosoWifi)((Iterator)localObject).next();
+        localJSONArray.put(new JSONObject().put("mac", localSosoWifi.jdField_a_of_type_Long).put("rssi", localSosoWifi.jdField_a_of_type_Int));
+        continue;
+        return localJSONObject.toString();
+      }
+    }
+    catch (JSONException paramSosoLbsInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LbsUtils", 2, "lbsInfo to json exception", paramSosoLbsInfo);
+      }
     }
     for (;;)
     {
-      str1 = localStringBuilder.toString();
-      if (TextUtils.isEmpty(str1)) {
-        break label418;
+      localJSONObject.put("wifis", localJSONArray);
+      localJSONArray = new JSONArray();
+      paramSosoLbsInfo = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramSosoLbsInfo.hasNext())
+      {
+        localObject = (SosoInterface.SosoCell)paramSosoLbsInfo.next();
+        localJSONArray.put(new JSONObject().put("mcc", ((SosoInterface.SosoCell)localObject).jdField_a_of_type_Int).put("mnc", ((SosoInterface.SosoCell)localObject).b).put("lac", ((SosoInterface.SosoCell)localObject).c).put("cellid", ((SosoInterface.SosoCell)localObject).d).put("rssi", ((SosoInterface.SosoCell)localObject).e));
       }
-      i = localStringBuilder.lastIndexOf(",");
-      if (i <= 0) {
-        break label418;
-      }
-      return str1.substring(0, i);
-      localStringBuilder.append("男,");
-      break;
-      localStringBuilder.append("女,");
-      break;
-      str1 = this.jdField_a_of_type_JavaLangString;
-      break label223;
-      localStringBuilder.append("30分钟内,");
-      continue;
-      localStringBuilder.append("1个小时内,");
-      continue;
-      localStringBuilder.append("4小时内,");
-      continue;
-      localStringBuilder.append("8小时内,");
+      localJSONObject.put("cells", localJSONArray);
     }
-    label418:
-    return "全部";
   }
 }
 

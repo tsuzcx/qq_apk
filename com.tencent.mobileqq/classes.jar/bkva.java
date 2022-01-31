@@ -1,6 +1,6 @@
 public abstract interface bkva
 {
-  public abstract void a();
+  public abstract void a(boolean paramBoolean);
 }
 
 

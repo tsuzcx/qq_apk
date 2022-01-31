@@ -1,8 +1,9 @@
-import android.support.v4.view.PagerAdapter;
+import android.support.annotation.NonNull;
+import android.view.View;
 
 public abstract interface ucr
 {
-  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public abstract void a(@NonNull View paramView, int paramInt);
 }
 
 

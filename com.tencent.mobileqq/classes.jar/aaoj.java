@@ -1,44 +1,40 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class aaoj
-  extends atzo
+public final class aaoj
+  implements DialogInterface.OnClickListener
 {
-  public SessionInfo a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public aaoj(aaqb paramaaqb, int paramInt, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aaqa paramaaqa) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
-    }
-    QQAppInterface localQQAppInterface;
-    do
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aaqb.a)
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label130;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      aaod.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_Boolean);
+      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
     }
-    paramBundle = (aaoj)aaod.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    aaod.a().remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localQQAppInterface.unRegistObserver(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    for (;;)
+    {
+      this.jdField_a_of_type_Aaqb.b = false;
+      this.jdField_a_of_type_Aaqb.c = false;
+      this.jdField_a_of_type_Aaqb.e = false;
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_Aaqb);
+      if (QLog.isColorLevel()) {
+        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
+      }
+      return;
+      label130:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        axqy.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
+      }
+    }
   }
 }
 

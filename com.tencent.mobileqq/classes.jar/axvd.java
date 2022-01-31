@@ -6,16 +6,16 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 public class axvd
   implements View.OnLongClickListener
 {
-  public axvd(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxn paramacxn) {}
+  public axvd(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxj paramacxj) {}
   
   public boolean onLongClick(View paramView)
   {
     StructMsgForGeneralShare.clickedItemIndex = 0;
-    axun localaxun = (axun)paramView.getTag();
-    if (!TextUtils.isEmpty(localaxun.Q)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localaxun.Q).intValue();
+    axup localaxup = (axup)paramView.getTag();
+    if (!TextUtils.isEmpty(localaxup.Q)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localaxup.Q).intValue();
     }
-    return this.jdField_a_of_type_Acxn.onLongClick(paramView);
+    return this.jdField_a_of_type_Acxj.onLongClick(paramView);
   }
 }
 

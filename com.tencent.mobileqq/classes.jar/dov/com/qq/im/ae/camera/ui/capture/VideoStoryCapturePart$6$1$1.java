@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.camera.ui.capture;
 
 import android.view.View;
-import bimj;
-import bimo;
+import bina;
+import binf;
 
 class VideoStoryCapturePart$6$1$1
   implements Runnable
@@ -11,8 +11,8 @@ class VideoStoryCapturePart$6$1$1
   
   public void run()
   {
-    if (bimj.a(this.a.a.a)) {
-      bimj.a(this.a.a.a).setVisibility(8);
+    if (bina.a(this.a.a.a)) {
+      bina.a(this.a.a.a).setVisibility(8);
     }
   }
 }

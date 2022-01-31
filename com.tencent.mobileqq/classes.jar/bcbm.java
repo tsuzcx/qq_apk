@@ -1,9 +1,14 @@
-import android.view.View;
-
-public class bcbm
+class bcbm
 {
-  public View a;
-  public View b;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 

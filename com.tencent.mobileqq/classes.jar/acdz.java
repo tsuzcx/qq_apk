@@ -1,59 +1,40 @@
 import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
 
 public class acdz
-  extends akhc
+  extends akat
 {
   public acdz(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  protected void a(boolean paramBoolean, ayaw paramayaw)
-  {
-    if ((paramBoolean) && (paramayaw != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
-    {
-      paramayaw = paramayaw.c();
-      if ((paramayaw != null) && (!paramayaw.contains(this.a.jdField_a_of_type_JavaLangString))) {}
-    }
-    else
-    {
-      return;
-    }
-    paramayaw = (ayao)this.a.app.getManager(62);
-    SubAccountUgActivity.a(this.a, paramayaw, this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c(boolean paramBoolean, ayaw paramayaw)
+  public void a(boolean paramBoolean, String paramString, ayay paramayay)
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
-      if (paramayaw != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + paramayaw.b + " subAccount=" + paramayaw.c + " errType=" + paramayaw.jdField_a_of_type_Int + " errMsg=" + paramayaw.jdField_a_of_type_JavaLangString);
+      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (paramayay != null) {
+        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + paramayay.jdField_a_of_type_Int + "  errorMsg=" + paramayay.jdField_a_of_type_JavaLangString + " mainAccount=" + paramayay.jdField_b_of_type_JavaLangString + "  subAccount=" + paramayay.c + " isNeedStartGetMsg=" + paramayay.jdField_b_of_type_Boolean);
       }
     }
-    if ((paramayaw == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramayaw.c)))) {}
+    if ((paramayay == null) || (paramString == null) || (paramString.length() < 5)) {}
+    ayaq localayaq;
     do
     {
-      return;
-      this.a.c();
-      if (this.a.b)
+      do
       {
-        this.a.b = false;
-        if (paramBoolean)
+        do
         {
-          this.a.a();
-          this.a.c(this.a.getString(2131719914));
           return;
+        } while (this.a.isFinishing());
+        localayaq = (ayaq)this.a.app.getManager(62);
+        if (paramayay.jdField_a_of_type_Int != 1) {
+          break;
         }
-        this.a.b(this.a.getString(2131719910));
-        return;
-      }
-    } while (!paramBoolean);
-    paramayaw = (ayao)this.a.app.getManager(62);
-    Pair localPair = paramayaw.a(this.a.jdField_a_of_type_JavaLangString, 1);
-    paramayaw.a(this.a.app, this.a, localPair, new acea(this, paramayaw, localPair));
+      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+      SubAccountUgActivity.a(this.a, localayaq, paramString);
+      return;
+    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+    localayaq.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
   }
 }
 

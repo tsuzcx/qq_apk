@@ -1,15 +1,18 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.v4.app.Fragment;
 
-final class awip
-  implements ThreadFactory
+public abstract interface awip
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public abstract int a();
   
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
-  }
+  public abstract Fragment a();
+  
+  public abstract String a();
+  
+  public abstract boolean a();
+  
+  public abstract long[] a();
+  
+  public abstract boolean b();
 }
 
 

@@ -1,10 +1,7 @@
-public abstract interface bifm
+final class bifm
+  implements bbmv
 {
-  public abstract void a(long paramLong, float paramFloat);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

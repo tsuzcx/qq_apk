@@ -1,23 +1,17 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
 public class wbl
-  extends DataSetObserver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wbl(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public wbl(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onChanged()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
-    {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
-    }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
+    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

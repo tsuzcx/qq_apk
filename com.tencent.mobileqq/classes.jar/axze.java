@@ -1,112 +1,109 @@
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class axze
-  extends axzh
+class axze
+  implements View.OnClickListener
 {
-  private String ai;
+  axze(axzd paramaxzd) {}
   
-  public axze()
+  public void onClick(View paramView)
   {
-    this.a = "price";
-  }
-  
-  public axze(String paramString)
-  {
-    this();
-    this.Y = paramString;
-  }
-  
-  public axze(String paramString1, String paramString2)
-  {
-    this(paramString1);
-    this.ai = paramString2;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    Context localContext = paramView.getContext();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("file_send_path", axzd.a(this.a));
+    localBundle.putInt("video_play_caller", 2);
+    localBundle.putLong("message_click_start", System.currentTimeMillis());
+    Object localObject2 = "";
+    Object localObject1 = null;
+    try
     {
-      paramContext = (LinearLayout)paramView;
-      ((TextView)paramContext.findViewById(2131378288)).setText(this.Y);
-      ((TextView)paramContext.findViewById(2131378290)).setText(this.ai);
-      return paramContext;
+      ChatMessage localChatMessage = actj.a(paramView);
+      localObject1 = localChatMessage;
     }
-    paramView = new LinearLayout(paramContext);
-    paramView.setOrientation(0);
-    paramBundle = new TextView(paramContext);
-    paramBundle.setId(2131378288);
-    paramBundle.setText(this.Y);
-    paramBundle.setTextColor(-65536);
-    paramBundle.setTextSize(14.0F);
-    paramBundle.setSingleLine();
-    paramBundle.setEllipsize(a());
-    paramBundle.setGravity(3);
-    paramContext = new TextView(paramContext);
-    paramContext.setId(2131378290);
-    paramContext.setText(this.ai);
-    paramContext.setSingleLine();
-    paramContext.setEllipsize(a());
-    paramContext.setTextSize(10.0F);
-    paramContext.setTextColor(-65536);
-    paramContext.setGravity(80);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(5, 0, 0, 0);
-    paramContext.setLayoutParams(localLayoutParams);
-    paramView.addView(paramBundle);
-    paramView.addView(paramContext);
-    paramView.setTag(this);
-    return paramView;
-  }
-  
-  public String a()
-  {
-    return "Price";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ai = axas.a(paramObjectInput.readUTF(), false);
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ai == null) {}
-    for (String str = "";; str = this.ai)
+    catch (ClassCastException localClassCastException)
     {
-      paramObjectOutput.writeUTF(str);
+      for (;;)
+      {
+        continue;
+        paramView = "";
+      }
+    }
+    if (localObject1 != null) {
+      localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("gdt_msgClick");
+    }
+    localBundle.putString("ad_gdt", (String)localObject2);
+    localObject1 = this.a.a(paramView);
+    if (localObject1 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("structmsg.StructMsgItemVideoForPA", 2, "StructMsgForGeneralShare == NULL");
+      }
+    }
+    do
+    {
+      return;
+      localBundle.putString("msg_id", String.valueOf(((StructMsgForGeneralShare)localObject1).msgId));
+      paramView = "";
+      if ((axzd.b(this.a) == null) || (axzd.b(this.a).equals(""))) {
+        break label500;
+      }
+      localBundle.putString("struct_msg_video_info", axzd.b(this.a));
+      localBundle.putString("from_uin", ((StructMsgForGeneralShare)localObject1).currentAccountUin);
+      localBundle.putInt("from_uin_type", 1008);
+      localBundle.putString("from_session_uin", ((StructMsgForGeneralShare)localObject1).uin);
+      try
+      {
+        localObject2 = new JSONObject(axzd.b(this.a));
+        if (localObject2 != null) {
+          paramView = ((JSONObject)localObject2).getString("file_uuid");
+        }
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          paramView = "";
+        }
+      }
+      localObject2 = new Intent(localContext, ShortVideoPlayActivity.class);
+      ((Intent)localObject2).putExtras(localBundle);
+      localContext.startActivity((Intent)localObject2);
+      localObject2 = ((FragmentActivity)localContext).getChatFragment().a();
+      axqy.b((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9A", "0X8005C9A", 0, 1, 0, ((StructMsgForGeneralShare)localObject1).uin, ((StructMsgForGeneralShare)localObject1).currentAccountUin, axzd.a(this.a), paramView);
+    } while ((((StructMsgForGeneralShare)localObject1).message == null) || (!"1".equals(((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("is_AdArrive_Msg"))));
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("puin", ((StructMsgForGeneralShare)localObject1).message.frienduin);
+      paramView.put("type", this.a.l);
+      paramView.put("index", this.a.j);
+      paramView.put("name", this.a.k);
+      paramView.put("net", String.valueOf(naj.a()));
+      paramView.put("mobile_imei", bbdh.a());
+      paramView.put("obj", "");
+      paramView.put("gdt_cli_data", ((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("gdt_msgClick"));
+      paramView.put("view_id", ((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("gdt_view_id"));
+      sep.a((AppInterface)localObject2, ((StructMsgForGeneralShare)localObject1).message.selfuin, paramView.toString(), "" + ((StructMsgForGeneralShare)localObject1).msgId);
       return;
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "price");
-    if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "unit", this.ai);
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+      return;
     }
-    paramXmlSerializer.text(this.Y);
-    paramXmlSerializer.endTag(null, "price");
-  }
-  
-  public boolean a(axwe paramaxwe)
-  {
-    if (paramaxwe == null) {
-      return true;
-    }
-    this.ai = axas.a(paramaxwe.a("unit"), false);
-    this.Y = axas.a(axuy.a(paramaxwe), false);
-    return true;
   }
 }
 

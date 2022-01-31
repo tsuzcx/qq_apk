@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ocr;
 
-import auba;
-import audu;
+import aubc;
+import audw;
 
 public class OCRResultFragmentNew$7$4
   implements Runnable
 {
-  public OCRResultFragmentNew$7$4(auba paramauba, int paramInt) {}
+  public OCRResultFragmentNew$7$4(aubc paramaubc, int paramInt) {}
   
   public void run()
   {
-    OCRResultFragmentNew.a(this.jdField_a_of_type_Auba.a, true);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_Auba.a).a(this.jdField_a_of_type_Int);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_Aubc.a, true);
+    OCRResultFragmentNew.a(this.jdField_a_of_type_Aubc.a).a(this.jdField_a_of_type_Int);
   }
 }
 

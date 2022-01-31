@@ -1,23 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class azpw
+class azpw
   implements DialogInterface.OnClickListener
 {
-  public azpw(TroopFileItemOperation.10.1 param1) {}
+  azpw(azpv paramazpv, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
     }
-    do
-    {
-      return;
-    } while (azpt.a(this.a.a.jdField_a_of_type_Azpt) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Azpt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Azpt.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Azpg.a);
   }
 }
 

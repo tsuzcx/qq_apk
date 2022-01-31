@@ -6,13 +6,15 @@ import android.view.View.OnClickListener;
 class aufl
   implements View.OnClickListener
 {
-  aufl(aufh paramaufh, aufw paramaufw) {}
+  aufl(aufj paramaufj, aufy paramaufy) {}
   
   public void onClick(View paramView)
   {
-    aufh.a(this.jdField_a_of_type_Aufh).removeMessages(101);
-    aufh.a(this.jdField_a_of_type_Aufh).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Aufw.a.a();
+    aufj.a(this.jdField_a_of_type_Aufj).removeMessages(101);
+    aufj.a(this.jdField_a_of_type_Aufj).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Aufy.a != null) {
+      this.jdField_a_of_type_Aufy.a.a();
+    }
   }
 }
 

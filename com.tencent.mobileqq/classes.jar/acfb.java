@@ -1,24 +1,37 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
 public class acfb
-  implements amdg
+  extends Handler
 {
-  public acfb(TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
+  public acfb(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    amdb.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = bboe.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366561);
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
-      return;
     }
-    this.a.jdField_a_of_type_JavaLangCharSequence = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
+    do
+    {
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      return;
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

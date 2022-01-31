@@ -1,17 +1,17 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
 
-class azyl
-  implements URLDrawable.DownloadListener
+public class azyl
+  implements View.OnClickListener
 {
-  azyl(azyi paramazyi) {}
+  public azyl(ComplexGuidViewPager paramComplexGuidViewPager) {}
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void onClick(View paramView)
   {
-    azyi.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

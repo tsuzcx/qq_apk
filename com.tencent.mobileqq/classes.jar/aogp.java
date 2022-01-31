@@ -1,43 +1,56 @@
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aogp
-  extends ayvz
 {
-  public aogp(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<aogm> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
   
-  public void handleMessage(Message paramMessage)
+  public aogp()
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      if (localayqm.b == 23)
+      bool1 = bool2;
+      if ((paramObject instanceof aogp))
       {
-        ExtendFriendEditFragment.a(this.a, ((ayst)localayqm.a).o);
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
-        }
-        if (this.a.a != null)
+        paramObject = (aogp)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
         {
-          this.a.a.a(ExtendFriendEditFragment.a(this.a));
-          ExtendFriendEditFragment.a(this.a, this.a.a.a());
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
         }
       }
-      aokk.a().e(true, 0);
-      return;
     }
-    if ((localayqm.b == 23) && (QLog.isColorLevel())) {
-      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
-    }
-    ExtendFriendEditFragment.a(this.a).dismiss();
-    bcpw.a(ExtendFriendEditFragment.a(this.a), ajyc.a(2131704270), 0).a();
-    aokk.a().e(false, 0);
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 

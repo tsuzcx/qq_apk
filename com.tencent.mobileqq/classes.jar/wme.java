@@ -1,49 +1,78 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.Window;
 
-class wme
-  extends GestureDetector.SimpleOnGestureListener
+public class wme
+  extends Dialog
 {
-  private wme(wlx paramwlx) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public wme(@NonNull Context paramContext, int paramInt)
   {
-    float f1 = paramMotionEvent2.getY() - wlx.a(this.a);
-    if (wlx.b(this.a) < wlx.c(this.a)) {
-      return false;
-    }
-    if ((f1 > 0.0F) && (wlx.d(this.a) < wlx.e(this.a)))
+    super(paramContext, paramInt);
+  }
+  
+  @TargetApi(19)
+  public void b()
+  {
+    int i = 0;
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      f2 = wlx.d(this.a);
-      f1 = Math.abs(f1) + f2;
-      localwlx = this.a;
-      if (f1 > wlx.e(this.a))
+      if (Build.VERSION.SDK_INT < 21) {
+        break label84;
+      }
+      if ((getWindow() != null) && (getWindow().getDecorView() != null))
       {
-        i = wlx.e(this.a);
-        wlx.b(localwlx, i);
+        getWindow().clearFlags(67108864);
+        getWindow().getDecorView().setSystemUiVisibility(1280);
+        getWindow().addFlags(-2147483648);
+        getWindow().setStatusBarColor(0);
+        break label83;
+        break label83;
+        break label83;
       }
     }
-    while ((f1 >= 0.0F) || (wlx.d(this.a) <= wlx.f(this.a))) {
+    label74:
+    Object localObject = getWindow();
+    if (localObject == null) {}
+    label188:
+    for (;;)
+    {
+      label83:
+      return;
+      label84:
+      if (getWindow() == null) {
+        break label74;
+      }
+      getWindow().addFlags(67108864);
+      break label74;
+      localObject = ((Window)localObject).getDecorView();
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if (!(localObject instanceof ViewGroup)) {
+        break;
+      }
+      int j = ((ViewGroup)localObject).getChildCount();
       for (;;)
       {
-        float f2;
-        if (wlx.a(this.a) != null)
-        {
-          wlx.a(this.a).getLayoutParams().height = wlx.d(this.a);
-          wlx.a(this.a).requestLayout();
+        if (i >= j) {
+          break label188;
         }
-        return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        i = (int)f1;
+        View localView = ((ViewGroup)localObject).getChildAt(i);
+        if ((localView == null) || (localView.getId() == 16908290)) {
+          break;
+        }
+        if (!(localView instanceof ViewStub)) {
+          localView.setAlpha(0.0F);
+        }
+        i += 1;
       }
-    }
-    f1 = wlx.d(this.a) - Math.abs(f1);
-    wlx localwlx = this.a;
-    if (f1 < wlx.f(this.a)) {}
-    for (int i = wlx.f(this.a);; i = (int)f1)
-    {
-      wlx.b(localwlx, i);
-      break;
     }
   }
 }

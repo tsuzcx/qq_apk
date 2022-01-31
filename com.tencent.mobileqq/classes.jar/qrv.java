@@ -1,57 +1,26 @@
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
-public class qrv
-  extends MSFServlet
+class qrv
+  implements rcf
 {
-  public String[] getPreferSSOCommands()
-  {
-    return null;
-  }
+  qrv(qrt paramqrt, VideoInfo paramVideoInfo) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a()
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
     }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    PublicFragmentActivity.a(qrt.a(this.jdField_a_of_type_Qrt), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    qrt.a(this.jdField_a_of_type_Qrt).dismiss();
   }
 }
 

@@ -1,22 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
-class awzk
-  extends Handler
+public final class awzk
+  implements Parcelable.Creator<FriendSingleInfo>
 {
-  awzk(awzj paramawzj) {}
-  
-  public void handleMessage(Message paramMessage)
+  public FriendSingleInfo a(Parcel paramParcel)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      awzj.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
-    }
+    return new FriendSingleInfo(paramParcel);
+  }
+  
+  public FriendSingleInfo[] a(int paramInt)
+  {
+    return new FriendSingleInfo[paramInt];
   }
 }
 

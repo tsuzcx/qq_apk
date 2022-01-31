@@ -1,33 +1,14 @@
+import android.content.Context;
+import android.util.Pair;
+import java.util.List;
 import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-final class lav
-  extends lao
+abstract class lav
+  extends las
 {
-  lav(lam paramlam) {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, lah paramlah)
   {
-    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
-    try
-    {
-      paramJSONObject = paramJSONObject.getString("id");
-      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
-      return;
-    }
-    catch (JSONException paramArrayOfHeader)
-    {
-      paramArrayOfHeader.printStackTrace();
-    }
-  }
-  
-  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
-  {
-    super.a(paramThrowable, paramJSONObject);
-    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
-      this.a.a(paramThrowable, paramThrowable.getMessage());
-    }
+    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramlah);
   }
 }
 

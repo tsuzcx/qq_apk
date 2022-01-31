@@ -1,318 +1,220 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.1;
-import com.tencent.biz.pubaccount.readinjoy.video.player.ReadinjoyPlayerReporter.3;
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeedback.PlayFeedbackHelper.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class qyw
-  extends qyo
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VideoPreDownloadMgr jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr;
-  public qbx a;
-  private qyx jdField_a_of_type_Qyx;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private static SparseArray<qyy> a = new SparseArray();
   
-  public qyw(int paramInt, qyx paramqyx)
+  private static Map<String, String> a(qty paramqty)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Qbx = new qbx();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Qyx = paramqyx;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr != null)
+    HashMap localHashMap = new HashMap();
+    if (paramqty != null)
     {
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString2, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyPlayerReporter", 2, "视频预下载: url:" + paramString1 + " ;isPreDownloadHit: " + this.jdField_b_of_type_Boolean);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramString1, this.jdField_b_of_type_Boolean);
+      localHashMap.put("param_url", paramqty.b());
+      localHashMap.put("param_bitrate", String.valueOf(paramqty.jdField_a_of_type_Long));
+      localHashMap.put("param_duration", String.valueOf(paramqty.b()));
+      localHashMap.put("param_file", String.valueOf(paramqty.d()));
+      localHashMap.put("param_is265", String.valueOf(paramqty.jdField_a_of_type_Int));
     }
+    return localHashMap;
   }
   
-  private void a(qbx paramqbx)
+  public static void a(int paramInt)
   {
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.excute(new ReadinjoyPlayerReporter.1(this, paramqbx), 16, null, true);
+    a.remove(paramInt);
   }
   
-  private void b(String paramString)
+  private static void a(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Qbx = new qbx();
-    this.jdField_a_of_type_Qbx.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Qbx.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Qbx.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbx.n = 0;
-    this.jdField_a_of_type_Qbx.jdField_o_of_type_Int = 0;
-    this.jdField_a_of_type_Qbx.jdField_p_of_type_Int = 0;
-    this.jdField_a_of_type_Qbx.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbx.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Qbx.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbx.jdField_h_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Qyx != null) {
-      this.jdField_a_of_type_Qyx.a(this.jdField_a_of_type_Qbx);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbx.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Qbx.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_Qbx.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbx.jdField_c_of_type_JavaLangString = (paramInt1 + ":" + paramInt2);
-    this.jdField_a_of_type_Qbx.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    int i = 0;
-    switch (paramInt)
+    Bundle localBundle = new Bundle();
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    }
-    label183:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              this.jdField_a_of_type_Qbx.jdField_d_of_type_Long = SystemClock.uptimeMillis();
-              return;
-              paramObject = this.jdField_a_of_type_Qbx;
-              paramObject.jdField_e_of_type_Long += SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbx.jdField_d_of_type_Long;
-              paramObject = this.jdField_a_of_type_Qbx;
-              paramObject.jdField_b_of_type_Int += 1;
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_DECODER_BLOCK");
-              }
-              paramObject = this.jdField_a_of_type_Qbx;
-              paramObject.n += 1;
-              return;
-              try
-              {
-                paramObject = new JSONObject((String)paramObject);
-                paramInt = paramObject.optInt("decoderMode", 0);
-              }
-              catch (Exception paramObject)
-              {
-                for (;;)
-                {
-                  int j;
-                  paramInt = 0;
-                }
-              }
-              try
-              {
-                j = paramObject.optInt("skipFrameCount", 1);
-                i = j;
-              }
-              catch (Exception paramObject)
-              {
-                break label183;
-              }
-              if (i > 0)
-              {
-                paramObject = this.jdField_a_of_type_Qbx;
-                paramObject.jdField_o_of_type_Int += i;
-              }
-              paramObject = this.jdField_a_of_type_Qbx;
-              paramObject.jdField_p_of_type_Int += i;
-            } while (!QLog.isColorLevel());
-            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_SKIP_ONE_FRAME decoderMode = " + paramInt + ", skipFrameCount = " + i + ", totalSkipCount = " + this.jdField_a_of_type_Qbx.jdField_o_of_type_Int + ", finalSkipCount = " + this.jdField_a_of_type_Qbx.jdField_p_of_type_Int);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_HW_DECODE_FAILED");
-            }
-            this.jdField_a_of_type_Qbx.jdField_f_of_type_Boolean = true;
-          } while (!(paramObject instanceof String));
-          this.jdField_a_of_type_Qbx.jdField_g_of_type_JavaLangString = ((String)paramObject);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadinjoyPlayerReporter", 2, "播放状态回调 onInfo() PLAYER_INFO_CHANGE_HW_BACKUP_URL");
-          }
-          this.jdField_a_of_type_Qbx.jdField_g_of_type_Boolean = true;
-          return;
-        } while (paramObject == null);
-        paramObject = ((String)paramObject).split(":", 2);
-      } while ((paramObject == null) || (paramObject.length != 2));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyPlayerReporter", 2, "PERFORMANCE_REPORT method:" + paramObject[0] + "\ntimeJson:" + paramObject[1]);
-      }
-    } while (!"prepare".equals(paramObject[0]));
-    this.jdField_a_of_type_Qbx.jdField_m_of_type_JavaLangString = paramObject[1];
-  }
-  
-  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Qbx.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    b(paramString1);
-    this.jdField_a_of_type_Qbx.jdField_m_of_type_Int = 0;
-    if (!paramBoolean1) {
-      this.jdField_a_of_type_Qbx.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    }
-    if (this.jdField_a_of_type_Qbx != null)
-    {
-      this.jdField_a_of_type_Qbx.n = 0;
-      this.jdField_a_of_type_Qbx.jdField_o_of_type_Int = 0;
-      this.jdField_a_of_type_Qbx.jdField_p_of_type_Int = 0;
-      this.jdField_a_of_type_Qbx.jdField_g_of_type_Boolean = false;
-      this.jdField_a_of_type_Qbx.jdField_h_of_type_Boolean = false;
-      this.jdField_a_of_type_Qbx.jdField_i_of_type_Boolean = paramBoolean2;
-    }
-    a(paramString1, paramString2);
-  }
-  
-  public void a(ood paramood)
-  {
-    int i = 0;
-    this.jdField_a_of_type_Qbx.jdField_i_of_type_Long = onx.a().a.longValue();
-    this.jdField_a_of_type_Qbx.jdField_d_of_type_Int = paramood.jdField_d_of_type_Int;
-    this.jdField_a_of_type_Qbx.jdField_d_of_type_Boolean = paramood.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Qbx.jdField_e_of_type_JavaLangString = paramood.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Qbx.jdField_e_of_type_Boolean = paramood.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Qbx.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Qbx.jdField_g_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Qbx.jdField_k_of_type_JavaLangString = paramood.jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_Qbx.jdField_l_of_type_JavaLangString = paramood.jdField_e_of_type_JavaLangString;
-    Object localObject = this.jdField_a_of_type_Qbx;
-    boolean bool;
-    if (!TextUtils.isEmpty(paramood.jdField_f_of_type_JavaLangString)) {
-      bool = true;
-    }
-    for (;;)
-    {
-      ((qbx)localObject).jdField_h_of_type_Boolean = bool;
-      try
-      {
-        localObject = new URL(paramood.jdField_a_of_type_JavaLangString).getHost();
-        paramood = ayxe.a().a((String)localObject, 1006);
-        qbx localqbx = this.jdField_a_of_type_Qbx;
-        if (paramood == null)
-        {
-          localqbx.jdField_q_of_type_Int = i;
-          localqbx = this.jdField_a_of_type_Qbx;
-          if (paramood != null) {
-            break label206;
-          }
-        }
-        label206:
-        for (paramood = "";; paramood = paramood.toString())
-        {
-          localqbx.j = paramood;
-          this.jdField_a_of_type_Qbx.jdField_i_of_type_JavaLangString = ((String)localObject);
-          return;
-          i = paramood.size();
-          break;
-        }
-        bool = false;
-      }
-      catch (Exception paramood)
-      {
-        return;
-      }
-    }
-  }
-  
-  public void a(qub paramqub)
-  {
-    this.jdField_a_of_type_Qbx.jdField_l_of_type_Int = paramqub.b();
-    this.jdField_a_of_type_Qbx.jdField_k_of_type_Int = paramqub.a();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Qbx.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    qbx localqbx = this.jdField_a_of_type_Qbx;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 1)
-    {
-      localqbx.jdField_m_of_type_Int = i;
+      localJSONObject.put("callAddress", paramInt);
+      localBundle.putString("param", localJSONObject.toString());
+      rvx.a(paramActivity, null, "http://viola.qq.com/js/RIJVideoFeedback.js?_rij_violaUrl=1&v_tid=15&v_bundleName=RIJVideoFeedback&_rij_violaUrl=1&v_present=2&hideNav=1&v_bid=3811&v_nav_immer=1&statusColor=1&v_present_bar=0&v_present_radius=6&v_present_top=" + (vpm.a(BaseApplicationImpl.context, vpm.b(BaseApplicationImpl.context)) - 385), localBundle, true);
       return;
     }
-  }
-  
-  public void b(qub paramqub)
-  {
-    this.jdField_a_of_type_Qbx.jdField_a_of_type_Long = paramqub.a(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Qbx.jdField_e_of_type_Int = paramqub.c();
-    this.jdField_a_of_type_Qbx.jdField_m_of_type_Long = paramqub.c();
-    this.jdField_a_of_type_Qbx.jdField_f_of_type_Int = paramqub.d();
-    this.jdField_a_of_type_Qbx.jdField_c_of_type_Boolean = paramqub.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Qbx.jdField_p_of_type_Long = paramqub.jdField_b_of_type_Long;
-    this.jdField_a_of_type_Qbx.jdField_o_of_type_Long = paramqub.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Qbx.jdField_q_of_type_Long = paramqub.f();
-    this.jdField_a_of_type_Qbx.r = paramqub.i();
-    this.jdField_a_of_type_Qbx.jdField_f_of_type_JavaLangString = paramqub.a();
-    this.jdField_a_of_type_Qbx.t = paramqub.h();
-    this.jdField_a_of_type_Qbx.u = paramqub.g();
-    if ((this.jdField_a_of_type_Qbx.jdField_a_of_type_Long == 0L) && (this.jdField_a_of_type_Qbx.jdField_c_of_type_Long == 0L))
+    catch (JSONException paramActivity)
     {
-      this.jdField_a_of_type_Qbx.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbx.jdField_b_of_type_Long);
-      this.jdField_a_of_type_Qbx.jdField_e_of_type_Long = this.jdField_a_of_type_Qbx.jdField_c_of_type_Long;
+      QLog.e("PlayFeedbackHelper", 2, "PlayFeedbackHelper start failed", paramActivity);
     }
-    this.jdField_a_of_type_Qbx.v = qwf.a().a();
-    paramqub = qwf.a().a();
-    this.jdField_a_of_type_Qbx.z = paramqub[0];
-    this.jdField_a_of_type_Qbx.A = paramqub[1];
-    this.jdField_a_of_type_Qbx.x = paramqub[2];
-    this.jdField_a_of_type_Qbx.y = paramqub[3];
-    this.jdField_a_of_type_Qbx.w = paramqub[4];
-    a(this.jdField_a_of_type_Qbx);
   }
   
-  public void c(qub paramqub)
+  public static void a(Activity paramActivity, BaseArticleInfo paramBaseArticleInfo, qty paramqty, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Qbx.jdField_c_of_type_Long != 0L) {
+    paramBaseArticleInfo = new qyx(paramBaseArticleInfo, paramInt1, paramInt2, a(paramqty));
+    paramInt1 = paramBaseArticleInfo.hashCode();
+    a(paramBaseArticleInfo);
+    a(paramActivity, paramInt1);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt);
+      nol.a(null, "", "0X800AA74", "0X800AA74", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c(), paramString, "", localJSONObject.toString(), false);
       return;
     }
-    this.jdField_a_of_type_Qbx.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Qbx.jdField_b_of_type_Long);
-    Object localObject = this.jdField_a_of_type_Qbx;
-    ((qbx)localObject).jdField_e_of_type_Long += this.jdField_a_of_type_Qbx.jdField_c_of_type_Long;
-    localObject = this.jdField_a_of_type_Qbx;
-    ((qbx)localObject).jdField_b_of_type_Int += 1;
-    if (QLog.isColorLevel())
+    catch (JSONException localJSONException)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("doReportOnVideoPrepared: vid=").append(this.jdField_a_of_type_Qbx.jdField_b_of_type_JavaLangString).append(", 预加载状态：").append(this.jdField_a_of_type_Qbx.jdField_m_of_type_Int).append(", 预下载命中：").append(this.jdField_b_of_type_Boolean).append(", 首帧耗时：").append(this.jdField_a_of_type_Qbx.jdField_c_of_type_Long);
-      QLog.d("ReadinjoyPlayerReporter", 2, ((StringBuilder)localObject).toString());
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
     }
-    ThreadManager.excute(new ReadinjoyPlayerReporter.3(this, paramqub), 16, null, true);
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      nol.a(null, "", "0X800AA75", "0X800AA75", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  private static void a(HashMap<String, String> paramHashMap)
+  {
+    ThreadManager.post(new PlayFeedbackHelper.2(paramHashMap), 5, null, true);
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      int i = new JSONObject(paramJSONObject.optString("extral")).optInt("callAddress", -1);
+      qyy localqyy = (qyy)a.get(i);
+      if (localqyy != null) {
+        localqyy.a(paramJSONObject);
+      }
+      a(i);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  public static void a(qyy paramqyy)
+  {
+    a.put(paramqyy.hashCode(), paramqyy);
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt);
+      nol.a(null, "", "0X800AA76", "0X800AA76", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  public static void b(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      nol.a(null, "", "0X800AA77", "0X800AA77", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  private static void b(qyy paramqyy, JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayFeedbackHelper", 2, "feedbackCallback jsonObject:" + paramJSONObject);
+    }
+    Object localObject = paramJSONObject.optJSONArray("feedback_type_list");
+    String str = "";
+    if (localObject != null) {
+      str = ((JSONArray)localObject).toString();
+    }
+    localObject = paramJSONObject.optString("feedback_text");
+    HashMap localHashMap = paramqyy.jdField_a_of_type_JavaUtilHashMap;
+    localHashMap.put("param_video_scene", String.valueOf(paramqyy.jdField_a_of_type_Int));
+    localHashMap.put("param_feedback_entry", String.valueOf(paramqyy.b));
+    localHashMap.put("param_feedback_type_list", str);
+    localHashMap.put("param_feedbackText", localObject);
+    localHashMap.put("param_busiType", String.valueOf(paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.busiType));
+    localHashMap.put("param_rowkey", String.valueOf(paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID()));
+    localHashMap.put("param_title", paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
+    localHashMap.put("param_vid", paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getVideoVid());
+    localHashMap.put("param_uin", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c());
+    localHashMap.put("param_platform", String.valueOf(1));
+    localHashMap.put("param_sdk_version", TVK_SDKMgr.SDK_Ver);
+    localHashMap.put("param_version", "8.3.0.4480");
+    localHashMap.put("param_subversion", "8.3.0");
+    a(localHashMap);
+    if (paramJSONObject.optInt("close_type") > 0)
+    {
+      b(paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID(), paramqyy.jdField_a_of_type_Int, paramqyy.b);
+      return;
+    }
+    c(paramqyy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID(), paramqyy.jdField_a_of_type_Int, paramqyy.b);
+  }
+  
+  public static void c(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      nol.a(null, "", "0X800AA78", "0X800AA78", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
   }
 }
 

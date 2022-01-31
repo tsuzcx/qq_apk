@@ -1,60 +1,31 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class rxn
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public rxn(BridgeModule paramBridgeModule, String paramString) {}
+  public rxn(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
     try
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
-      }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject);
-      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        BridgeModule.access$102(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
-      }
-      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        return;
-      }
-      BridgeModule.access$202(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
+      paramDialogInterface.put("button", 0);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
       return;
     }
-    catch (Exception paramBundle)
+    catch (JSONException paramDialogInterface)
     {
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("cret", 2);
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e(BridgeModule.TAG, 2, "showDialog error" + paramDialogInterface.getMessage());
     }
-    paramBundle = new JSONObject();
-    paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
-    return;
   }
 }
 

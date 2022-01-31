@@ -1,26 +1,41 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 class atrv
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  atrv(atqu paramatqu, String paramString) {}
+  atrv(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Atqu.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_Atqu.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Atqu.a.j)) {}
-    for (paramView = "1";; paramView = "2")
+    if (paramAnimation == atqw.b(this.a))
     {
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Atqu.a.startActivity(localIntent);
-      axqw.b(this.jdField_a_of_type_Atqu.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      return;
+      atqw.a(this.a).setVisibility(8);
+      atqw.a(this.a).setVisibility(4);
+      atqw.a(this.a).clearAnimation();
+      atqw.a(this.a).clearAnimation();
+      atqw.a(this.a).setBackgroundResource(2130848202);
+      atqw.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
+      atqw.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166557));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == atqw.a(this.a))
+    {
+      atqw.a(this.a).setVisibility(0);
+      atqw.a(this.a).setVisibility(0);
+      atqw.a(this.a).setBackgroundResource(2130849547);
+      atqw.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
+      atqw.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166848));
     }
   }
 }

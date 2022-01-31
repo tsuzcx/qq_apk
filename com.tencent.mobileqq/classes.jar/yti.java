@@ -1,14 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
 
 class yti
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  yti(ytg paramytg) {}
+  yti(ytd paramytd, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    this.a.dismiss();
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    yxy.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

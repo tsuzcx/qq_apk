@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ocr;
 
-import aubg;
-import axrl;
+import aubi;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
 public class OcrCamera$5
   implements Runnable
 {
-  public OcrCamera$5(aubg paramaubg, long paramLong) {}
+  public OcrCamera$5(aubi paramaubi, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("costTime", String.valueOf(this.a));
-    axrl.a(BaseApplicationImpl.getContext()).a("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
+    axrn.a(BaseApplicationImpl.getContext()).a("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

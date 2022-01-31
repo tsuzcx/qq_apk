@@ -2,23 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvh;
+import bhvy;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pap;
+import pam;
 
 public class FollowCoverInfoModule$4
   implements Runnable
 {
-  public FollowCoverInfoModule$4(pap parampap, HashMap paramHashMap) {}
+  public FollowCoverInfoModule$4(pam parampam, HashMap paramHashMap) {}
   
   public void run()
   {
-    Object localObject = bhvh.a(pap.a(this.this$0), true, false);
+    Object localObject = bhvy.a(pam.a(this.this$0), true, false);
     JSONObject localJSONObject;
     if (localObject != null)
     {
@@ -43,7 +43,7 @@ public class FollowCoverInfoModule$4
       }
     }
     localJSONException.putString("follow_tab_topic_update_info_exposure", localJSONObject.toString());
-    bhvh.a(localJSONException, true);
+    bhvy.a(localJSONException, true);
   }
 }
 

@@ -1,19 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
 public class alwk
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public alwk(ArkAppListActivity paramArkAppListActivity, String paramString) {}
+  public alwk(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
+    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
+    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      alpe.a(paramCompoundButton, str1, str2, i);
+      return;
+    }
   }
 }
 

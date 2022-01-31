@@ -1,54 +1,194 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oos
   implements AladdinConfigHandler
 {
-  public static int a(AppRuntime paramAppRuntime, int paramInt)
+  public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
+  
+  public static int a()
   {
-    int i = 1;
-    if (paramAppRuntime == null)
-    {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
-      return 0;
+    String[] arrayOfString = ((String)bhvy.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
+    if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
+      return Integer.valueOf(arrayOfString[1]).intValue();
     }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).getBoolean("channel_" + paramInt, false)) {}
-    for (paramInt = i;; paramInt = 0) {
-      return paramInt;
+    return 0;
+  }
+  
+  public static TemplateBean a(VafContext paramVafContext)
+  {
+    if (paramVafContext == null)
+    {
+      rpr localrpr = rpr.a("comment_feeds", true);
+      paramVafContext = localrpr;
+      if (localrpr == null) {
+        return null;
+      }
+    }
+    else
+    {
+      paramVafContext = (rpr)paramVafContext.getTemplateFactory();
+    }
+    if (paramVafContext != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramVafContext = paramVafContext.getTemplateBean(a());
+        return paramVafContext;
+      }
+      catch (JSONException paramVafContext)
+      {
+        QLog.d("CommentGuideConfigHandler", 1, "getTemplateBean ", paramVafContext);
+      }
+      paramVafContext = null;
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    String str = (String)bhvy.a("readinjoy_comment_guide_wording", ajya.a(2131702182));
+    QLog.d("CommentGuideConfigHandler", 1, "wording = " + str);
+    return str;
+  }
+  
+  public static String a(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return a.format(localDate);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str2 = (String)bhvy.a("readinjoy_comment_guide_base_jump_url", "");
+    QLog.d("CommentGuideConfigHandler", 1, "jump = " + str2);
+    String str1;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = null;
+    }
+    String str3;
+    do
+    {
+      do
+      {
+        return str1;
+        str1 = str2;
+      } while (TextUtils.isEmpty(paramString));
+      str3 = (String)bfnx.a(str2).get("appSchema");
+      str1 = str2;
+    } while (TextUtils.isEmpty(str3));
+    try
+    {
+      str1 = URLDecoder.decode(str3, "UTF-8");
+      paramString = str1 + "&rowkey=" + paramString;
+      paramString = bfnx.a(bfnx.a(str2, "appSchema"), "appSchema", paramString);
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl : " + paramString);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl ", paramString);
+    }
+    return str2;
+  }
+  
+  public static JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
+      localJSONObject.put("guide_image", bhvy.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
+      localJSONObject.put("guide_wording", a());
+      localJSONObject.put("jump_button_text", ajya.a(2131702181));
+      localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getGuidePopupWindowData ", localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str = a(System.currentTimeMillis());
+    bhvy.a("readinjoy_comment_guide_show_num_one_day", str + "_" + paramInt);
+  }
+  
+  public static boolean a()
+  {
+    if (((Integer)bhvy.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool);
+      return bool;
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  public static boolean b()
   {
-    if (paramAppRuntime == null)
+    boolean bool1;
+    if (((Integer)bhvy.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1)
     {
-      QLog.e("ChannelListDynamicOrder", 1, "getSharedPreferences: return null for runtime is null");
-      return;
+      bool1 = true;
+      bool2 = bool1;
+      if (bool1)
+      {
+        int i = ((Integer)bhvy.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
+        int j = a();
+        QLog.d("CommentGuideConfigHandler", 1, "count = " + i + "  todayNum : " + j);
+        if (j >= i) {
+          break label126;
+        }
+        a(j + 1);
+      }
     }
-    paramAppRuntime = "readinjoy_channel_list_dynamic_order_changed_map_" + paramAppRuntime.getAccount();
-    BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0).edit().putBoolean("channel_" + paramInt, true).apply();
+    label126:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool2);
+      return bool2;
+      bool1 = false;
+      break;
+    }
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("ChannelListDynamicOrder", 2, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
+    QLog.d("CommentGuideConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = oof.a(paramString);
     Iterator localIterator = paramString.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)paramString.get(str1);
-      if (TextUtils.equals("channel_list_dynamic_order_switch", str1)) {
-        bhvh.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      QLog.d("CommentGuideConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "should_show")) {
+        bhvy.a("readinjoy_comment_guide_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "wording")) {
+        bhvy.a("readinjoy_comment_guide_wording", str2);
+      } else if (TextUtils.equals(str1, "image_url")) {
+        bhvy.a("readinjoy_comment_guide_image_url", str2);
+      } else if (TextUtils.equals(str1, "base_jump_url")) {
+        bhvy.a("readinjoy_comment_guide_base_jump_url", str2);
+      } else if (TextUtils.equals(str1, "max_show_count")) {
+        bhvy.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "pic_button_should_show")) {
+        bhvy.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
       }
     }
     return true;
@@ -56,7 +196,8 @@ public class oos
   
   public void onWipeConfig(int paramInt)
   {
-    bhvh.a("sp_key_channel_list_dynamic_order_switch", Boolean.valueOf(false));
+    QLog.d("CommentGuideConfigHandler", 1, "[onWipeConfig]");
+    bhvy.a("readinjoy_comment_guide_should_show", Integer.valueOf(0));
   }
 }
 

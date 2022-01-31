@@ -1,38 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class otk
-  extends BroadcastReceiver
+public class otk
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a;
+  public long a;
+  float[] a;
+  public int b;
+  long jdField_b_of_type_Long;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  public int c;
+  public int d;
+  int e;
+  int f;
+  int g;
+  int h;
+  int i;
+  
+  public String a()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-        ota.e(false);
-        return;
-      }
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        ota.e(true);
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
-      {
-        ota.c(false);
-        ota.o();
-        return;
-      }
-    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
-    ota.d(false);
-    ota.o();
+    double d1 = this.g * 1.0D / this.h;
+    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
+    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
+    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
+    double d5 = this.b[0] / this.i;
+    double d6 = this.b[1] / this.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int j = 0;; j = 1) {
+      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    }
   }
 }
 

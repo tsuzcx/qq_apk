@@ -1,15 +1,43 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.51;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
-public class aetf
-  implements bcak
+class aetf
+  extends bdvm
 {
-  public aetf(PublicAccountChatPie.51 param51) {}
+  aetf(aert paramaert) {}
   
-  public void a(boolean paramBoolean)
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
+    if ((!paramBoolean) || (paramHashMap == null))
+    {
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
     }
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.ao = true;
+    this.a.bE();
+    if ((aert.a(this.a) != null) && (aert.a(this.a).isShowing())) {
+      aert.a(this.a).dismiss();
+    }
+    this.a.bF();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bE();
+    this.a.bF();
   }
 }
 

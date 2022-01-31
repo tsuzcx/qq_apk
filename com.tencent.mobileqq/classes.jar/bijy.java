@@ -1,16 +1,8 @@
-public abstract class bijy
+import android.graphics.Bitmap;
+
+public abstract interface bijy
 {
-  public static bijy a(int paramInt)
-  {
-    if (paramInt > 0) {
-      return new bijz();
-    }
-    return new bika();
-  }
-  
-  public abstract int a(int paramInt);
-  
-  public abstract boolean a(int paramInt);
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

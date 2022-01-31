@@ -1,36 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.widget.RoundImageView;
-import com.tencent.qphone.base.util.QLog;
 
 class amlt
-  implements URLDrawable.URLDrawableListener
+  extends anhl
 {
-  amlt(amlr paramamlr, RoundImageView paramRoundImageView, angd paramangd, String paramString) {}
+  public ETTextView a;
+  public RoundImageView a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public amlt(amlq paramamlq, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_Angd.c(true);
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131367679));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364437));
   }
 }
 

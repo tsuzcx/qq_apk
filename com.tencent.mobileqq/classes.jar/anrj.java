@@ -1,20 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
 class anrj
-  implements anqn
+  implements URLDrawableDownListener
 {
-  anrj(anrh paramanrh) {}
+  anrj(anrc paramanrc, anyh paramanyh, anrk paramanrk) {}
   
-  public void a(List<anyc> paramList)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
+    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyh.toString());
+    anrc.a(this.jdField_a_of_type_Anrc, this.jdField_a_of_type_Anrk.a, this.jdField_a_of_type_Anrk);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Anyh.toString());
+    anrc.a(this.jdField_a_of_type_Anrc, this.jdField_a_of_type_Anrk.a, this.jdField_a_of_type_Anrk);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Anyh.toString());
+    anrc.a(this.jdField_a_of_type_Anrc, this.jdField_a_of_type_Anrk.a, this.jdField_a_of_type_Anrk);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_Anyh.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.a((List)localObject);
+    anrc.a(this.jdField_a_of_type_Anrc, this.jdField_a_of_type_Anrk.a, this.jdField_a_of_type_Anrk);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_Anyh.toString());
     }
+    anrc.a(this.jdField_a_of_type_Anrc, this.jdField_a_of_type_Anrk.a, this.jdField_a_of_type_Anrk);
   }
 }
 

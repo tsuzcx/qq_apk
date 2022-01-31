@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import actn;
-import ajae;
-import alvt;
+import actj;
+import ajac;
+import alvs;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,12 +22,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqsp;
-import aqst;
-import aqsx;
-import aqth;
-import aqtr;
-import aqts;
+import aqsr;
+import aqsv;
+import aqsz;
+import aqtj;
 import aqtt;
 import aqtu;
 import aqtv;
@@ -36,10 +34,12 @@ import aqtx;
 import aqty;
 import aqtz;
 import aqua;
+import aqub;
 import aquc;
-import bbct;
-import bcbg;
-import bich;
+import aque;
+import bbdh;
+import bcbu;
+import bicy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -65,28 +65,28 @@ import java.util.List;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yod;
+import yoa;
 
 public class QQGameFeedWebFragment
   extends PublicBaseFragment
-  implements aqth
+  implements aqtj
 {
   @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler = new aqts(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aqtu(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aqsp jdField_a_of_type_Aqsp;
-  private aqtz jdField_a_of_type_Aqtz;
-  private aqua jdField_a_of_type_Aqua;
+  private aqsr jdField_a_of_type_Aqsr;
+  private aqub jdField_a_of_type_Aqub;
   private aquc jdField_a_of_type_Aquc;
+  private aque jdField_a_of_type_Aque;
   private QQGameIndicator jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator;
   private QQGamePubViewpager jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager;
   private QQGameHeadLayout jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout;
   private QQGamePubWebView jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView;
-  public List<aqsx> a;
+  public List<aqsz> a;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private List<QQGameMsgInfo> jdField_b_of_type_JavaUtilList;
@@ -94,8 +94,8 @@ public class QQGameFeedWebFragment
   
   static
   {
-    alvt.a(true);
-    alvt.a();
+    alvs.a(true);
+    alvs.a();
   }
   
   public QQGameFeedWebFragment()
@@ -179,7 +179,7 @@ public class QQGameFeedWebFragment
   private void a(ArrayList<QQGameMsgInfo> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
-      if ((this.jdField_a_of_type_Aqtz == null) || (this.jdField_a_of_type_Aqtz.getCount() != 1)) {
+      if ((this.jdField_a_of_type_Aqub == null) || (this.jdField_a_of_type_Aqub.getCount() != 1)) {
         break label328;
       }
     }
@@ -212,7 +212,7 @@ public class QQGameFeedWebFragment
           ((Map)localObject).put(Integer.valueOf(2), "");
           ((Map)localObject).put(Integer.valueOf(3), "8");
           ((Map)localObject).put(Integer.valueOf(24), "1");
-          yod.a(ajae.a(), "769", "205030", "", "76901", "1", "160", (Map)localObject);
+          yoa.a(ajac.a(), "769", "205030", "", "76901", "1", "160", (Map)localObject);
           j += 1;
           break;
         }
@@ -236,9 +236,9 @@ public class QQGameFeedWebFragment
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqtz != null)
+    if (this.jdField_a_of_type_Aqub != null)
     {
-      this.jdField_a_of_type_Aqtz.notifyDataSetChanged();
+      this.jdField_a_of_type_Aqub.notifyDataSetChanged();
       a();
       this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.a();
       if (paramInt != -1) {
@@ -249,8 +249,8 @@ public class QQGameFeedWebFragment
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout = ((QQGameHeadLayout)paramView.findViewById(2131373167));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView = ((QQGamePubWebView)paramView.findViewById(2131373168));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout = ((QQGameHeadLayout)paramView.findViewById(2131373169));
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView = ((QQGamePubWebView)paramView.findViewById(2131373170));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369014));
     this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout.a();
     this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout);
@@ -258,15 +258,15 @@ public class QQGameFeedWebFragment
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator = ((QQGameIndicator)this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGameHeadLayout.findViewById(2131371225));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369220));
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369225));
-    this.jdField_a_of_type_Aqtz = new aqtz(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setAdapter(this.jdField_a_of_type_Aqtz);
+    this.jdField_a_of_type_Aqub = new aqub(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setAdapter(this.jdField_a_of_type_Aqub);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager.setOffscreenPageLimit(1);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGamePubViewpager);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.a();
     this.jdField_a_of_type_ComTencentMobileqqGamecenterViewQQGameIndicator.setPageListener(this);
-    Object localObject = (ImageView)paramView.findViewById(2131375389);
-    ((ImageView)localObject).setImageDrawable(aqst.a(null, null, "https://cmshow.gtimg.cn/client/gameCenter/gamecenter_enter_normal@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gamecenter_enter_click@2x.png"));
-    ((ImageView)localObject).setOnClickListener(new aqtt(this));
+    Object localObject = (ImageView)paramView.findViewById(2131375391);
+    ((ImageView)localObject).setImageDrawable(aqsv.a(null, null, "https://cmshow.gtimg.cn/client/gameCenter/gamecenter_enter_normal@2x.png", "https://cmshow.gtimg.cn/client/gameCenter/gamecenter_enter_click@2x.png"));
+    ((ImageView)localObject).setOnClickListener(new aqtv(this));
     localObject = URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenterBackground.png");
     paramView = (ImageView)paramView.findViewById(2131367388);
     paramView.setVisibility(0);
@@ -280,36 +280,36 @@ public class QQGameFeedWebFragment
     this.c = ((ImageView)paramView.findViewById(2131370757));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
     this.c.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_newMsg_normal@2x.png"));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aqtv(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aqtx(this));
   }
   
   private void d()
   {
-    QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "findMessage", null, new aqtr(this));
+    QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "findMessage", null, new aqtt(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_Aquc = new aqtu(this, getActivity(), getActivity(), ajae.a(), this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView);
-    this.jdField_a_of_type_Aquc.setmTimeBeforeLoadUrl(System.currentTimeMillis());
-    new bcbg(this.jdField_a_of_type_Aquc).a(null, ajae.a(), null);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView = ((QQGamePubWebView)this.jdField_a_of_type_Aquc.getWebView());
+    this.jdField_a_of_type_Aque = new aqtw(this, getActivity(), getActivity(), ajac.a(), this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView);
+    this.jdField_a_of_type_Aque.setmTimeBeforeLoadUrl(System.currentTimeMillis());
+    new bcbu(this.jdField_a_of_type_Aque).a(null, ajac.a(), null);
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView = ((QQGamePubWebView)this.jdField_a_of_type_Aque.getWebView());
     this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView.setWillNotCacheDrawing(false);
     this.jdField_a_of_type_ComTencentMobileqqGamecenterWebViewQQGamePubWebView.setDrawingCacheEnabled(true);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Aqua = new aqua(this, null);
+    this.jdField_a_of_type_Aquc = new aquc(this, null);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("action_qgame_tool_messgae");
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_Aqua, localIntentFilter);
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_Aquc, localIntentFilter);
   }
   
   public View a()
   {
     View localView = LayoutInflater.from(getActivity()).inflate(2131559089, null, false);
-    ((ImageView)localView.findViewById(2131365658)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    ((ImageView)localView.findViewById(2131365657)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
@@ -326,7 +326,7 @@ public class QQGameFeedWebFragment
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    int i = (int)((float)(bbct.k() / 2L) - this.jdField_b_of_type_JavaUtilList.size() * 10 * bbct.a / 2.0F - 8.0F * bbct.a);
+    int i = (int)((float)(bbdh.k() / 2L) - this.jdField_b_of_type_JavaUtilList.size() * 10 * bbdh.a / 2.0F - 8.0F * bbdh.a);
     this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
     this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
   }
@@ -344,17 +344,17 @@ public class QQGameFeedWebFragment
     else {
       return;
     }
-    if ((this.jdField_a_of_type_Aqsp != null) && (paramInt > 0)) {
-      this.jdField_a_of_type_Aqsp.c = false;
+    if ((this.jdField_a_of_type_Aqsr != null) && (paramInt > 0)) {
+      this.jdField_a_of_type_Aqsr.c = false;
     }
-    a(ajae.a(), ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).paMsgid);
+    a(ajac.a(), ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).paMsgid);
     Object localObject = new HashMap();
     ((Map)localObject).put(Integer.valueOf(1), ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).paMsgid);
     ((Map)localObject).put(Integer.valueOf(2), paramInt + "");
     ((Map)localObject).put(Integer.valueOf(3), "8");
     ((Map)localObject).put(Integer.valueOf(24), "1");
-    yod.a(ajae.a(), "769", "205017", ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).gameAppId, "76901", "1", "160", (Map)localObject);
-    bich.a(2, ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).paMsgid, "");
+    yoa.a(ajac.a(), "769", "205017", ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).gameAppId, "76901", "1", "160", (Map)localObject);
+    bicy.a(2, ((QQGameMsgInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt)).paMsgid, "");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     localObject = new Message();
     ((Message)localObject).what = 1;
@@ -399,22 +399,22 @@ public class QQGameFeedWebFragment
   
   public void a(View paramView)
   {
-    paramView = (NavBarCommon)paramView.findViewById(2131375327);
+    paramView = (NavBarCommon)paramView.findViewById(2131375329);
     ImageView localImageView = (ImageView)paramView.findViewById(2131368742);
-    paramView.setRightImage(getResources().getDrawable(2130849067));
-    localImageView.setImageResource(2130849539);
+    paramView.setRightImage(getResources().getDrawable(2130849073));
+    localImageView.setImageResource(2130849548);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368472));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695576);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695577);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    paramView.setOnItemSelectListener(new aqtw(this));
+    paramView.setOnItemSelectListener(new aqty(this));
     b();
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getActivity(), new aqtx(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new aqty(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getActivity(), new aqtz(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new aqua(this));
   }
   
   public void c()
@@ -423,14 +423,14 @@ public class QQGameFeedWebFragment
     {
       Intent localIntent = new Intent();
       localIntent.setClassName(getActivity(), SplashActivity.class.getName());
-      localIntent = actn.a(localIntent, new int[] { 1 });
+      localIntent = actj.a(localIntent, new int[] { 1 });
       localIntent.putExtra("shouldreport", true);
       localIntent.putExtra("has_unread_msg", false);
       localIntent.putExtra("jump_from", 1);
       localIntent.setClass(getActivity(), ChatActivity.class);
       localIntent.putExtra("uin", "2747277822");
       localIntent.putExtra("uintype", 1008);
-      localIntent.putExtra("uinname", getString(2131695576));
+      localIntent.putExtra("uinname", getString(2131695577));
       localIntent.putExtra("entrance", 1);
       localIntent.putExtra("aio_msg_source", 0);
       getActivity().startActivity(localIntent);
@@ -450,9 +450,9 @@ public class QQGameFeedWebFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    aqst.a = true;
+    aqsv.a = true;
     new HashMap().put(Integer.valueOf(24), "1");
-    yod.a(ajae.a(), "769", "205838", "", "76902", "160", "1", null);
+    yoa.a(ajac.a(), "769", "205838", "", "76902", "160", "1", null);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -498,8 +498,8 @@ public class QQGameFeedWebFragment
         continue;
         i += 1;
       }
-      if (this.jdField_a_of_type_Aquc != null) {
-        this.jdField_a_of_type_Aquc.c();
+      if (this.jdField_a_of_type_Aque != null) {
+        this.jdField_a_of_type_Aque.c();
       }
       return;
     }
@@ -507,8 +507,8 @@ public class QQGameFeedWebFragment
   
   public void onDestroyView()
   {
-    if (this.jdField_a_of_type_Aqua != null) {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Aqua);
+    if (this.jdField_a_of_type_Aquc != null) {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Aquc);
     }
     super.onDestroyView();
   }
@@ -516,16 +516,16 @@ public class QQGameFeedWebFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aquc != null) {
-      this.jdField_a_of_type_Aquc.b();
+    if (this.jdField_a_of_type_Aque != null) {
+      this.jdField_a_of_type_Aque.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aquc != null) {
-      this.jdField_a_of_type_Aquc.a();
+    if (this.jdField_a_of_type_Aque != null) {
+      this.jdField_a_of_type_Aque.a();
     }
   }
   

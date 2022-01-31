@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
+import java.lang.ref.WeakReference;
 
-class xin
-  implements View.OnClickListener
+final class xin
+  implements xgu<WEISHI.stGetPersonalPageRsp>
 {
-  xin(xim paramxim) {}
+  private final WeakReference<xij> a;
   
-  public void onClick(View paramView)
+  public xin(xij paramxij)
   {
-    if (xim.a(this.a) == null) {}
-    while (xeq.a(xim.class.getName() + "clickPanel")) {
+    this.a = new WeakReference(paramxij);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
+  {
+    paramString = (xij)this.a.get();
+    if (paramString == null) {}
+    do
+    {
       return;
-    }
-    this.a.a(false);
+      paramString.a(paramstGetPersonalPageRsp, false);
+    } while (paramstGetPersonalPageRsp == null);
+    xij.a(paramString, paramstGetPersonalPageRsp.toByteArray());
   }
 }
 

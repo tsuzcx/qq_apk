@@ -1,64 +1,85 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ancw
-  extends ampb<anct>
 {
-  public static anct a()
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  
+  public static ancw a(amph[] paramArrayOfamph)
   {
-    return (anct)ampm.a().a(346);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      paramArrayOfamph = null;
+    }
+    ancw localancw;
+    for (;;)
+    {
+      return paramArrayOfamph;
+      localancw = new ancw();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[0].a);
+        if (localJSONObject.has("flag"))
+        {
+          localancw.d = localJSONObject.getInt("flag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localancw.d);
+          }
+        }
+        if (localJSONObject.has("showCount"))
+        {
+          localancw.c = localJSONObject.getInt("showCount");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localancw.c);
+          }
+        }
+        if (localJSONObject.has("groupFlag"))
+        {
+          localancw.b = localJSONObject.getInt("groupFlag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localancw.b);
+          }
+        }
+        paramArrayOfamph = localancw;
+        if (localJSONObject.has("groupShowCount"))
+        {
+          localancw.a = localJSONObject.getInt("groupShowCount");
+          paramArrayOfamph = localancw;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localancw.a);
+            return localancw;
+          }
+        }
+      }
+      catch (Exception paramArrayOfamph)
+      {
+        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfamph.toString());
+      }
+    }
+    return localancw;
   }
   
   public int a()
   {
-    return 346;
-  }
-  
-  @NonNull
-  public anct a(int paramInt)
-  {
-    return new anct();
-  }
-  
-  @Nullable
-  public anct a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return anct.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public Class<anct> a()
-  {
-    return anct.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anct paramanct)
-  {
-    if ((paramanct != null) && (!TextUtils.isEmpty(paramanct.d()))) {
-      ((aygv)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramanct);
-    }
+    return this.a;
   }
   
   public int b()
   {
-    return 0;
+    return this.b;
   }
   
-  public boolean b()
+  public int c()
   {
-    return false;
+    return this.c;
   }
   
-  public boolean c()
+  public int d()
   {
-    return true;
+    return this.d;
   }
 }
 

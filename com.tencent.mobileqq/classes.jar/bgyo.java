@@ -1,41 +1,44 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bgyo
-  extends bhhz
+  extends QzoneExternalRequest
 {
-  public bgyo(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  public JceStruct a;
   
-  public void a()
+  public bgyo(long paramLong1, long paramLong2, String paramString)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
+    localmobile_sub_get_photo_wall_req.uin = paramLong1;
+    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
+    this.a = localmobile_sub_get_photo_wall_req;
   }
   
-  public void a(float paramFloat)
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return decode(paramArrayOfByte, "getPhotoWall");
   }
   
-  public void a(int paramInt)
+  public String getCmdString()
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    return "QzoneNewService.getPhotoWall";
   }
   
-  public void b()
+  public JceStruct getReq()
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
+    return this.a;
   }
   
-  public void c() {}
+  public String uniKey()
+  {
+    return "getPhotoWall";
+  }
 }
 
 

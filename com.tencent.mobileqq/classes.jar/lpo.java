@@ -1,18 +1,20 @@
-import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 
 public class lpo
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
+  public final int a;
+  final BeautyRealConfig.TYPE a;
+  final int b;
+  final int c;
+  public int d;
   
-  @NonNull
-  public String toString()
+  lpo(BeautyRealConfig.TYPE paramTYPE, int paramInt1, int paramInt2, int paramInt3)
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE = paramTYPE;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import begy;
-import beka;
-import beks;
-import beku;
-import besl;
-import beyr;
+import behp;
+import bekr;
+import belj;
+import bell;
+import betc;
+import bezi;
 import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
 import java.util.List;
 import java.util.Map;
@@ -18,31 +18,31 @@ import org.json.JSONObject;
 class RequestJsPlugin$2
   implements WebSocketProxy.WebSocketListener
 {
-  RequestJsPlugin$2(RequestJsPlugin paramRequestJsPlugin, beka parambeka, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask) {}
+  RequestJsPlugin$2(RequestJsPlugin paramRequestJsPlugin, bekr parambekr, RequestJsPlugin.WebsocketRequestTask paramWebsocketRequestTask) {}
   
   public void onClose(int paramInt1, int paramInt2, String paramString)
   {
-    besl.a("[mini] http.RequestJsPlugin", "---onClosed---");
+    betc.a("[mini] http.RequestJsPlugin", "---onClosed---");
     RequestJsPlugin.access$202(this.this$0, true);
     RequestJsPlugin.access$300(this.this$0, this.val$req, paramInt2, paramString, this.val$websocketRequestTask.mTaskId);
   }
   
   public void onError(int paramInt1, int paramInt2, String paramString)
   {
-    besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure, socketId=" + this.val$websocketRequestTask.mTaskId + paramString);
+    betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure, socketId=" + this.val$websocketRequestTask.mTaskId + paramString);
     for (;;)
     {
       try
       {
         if ((paramString.equals("SSL handshake timed out")) || (paramString.equals("timeout")))
         {
-          besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure , timeout , send close state. socketId=" + this.val$websocketRequestTask.mTaskId);
+          betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure , timeout , send close state. socketId=" + this.val$websocketRequestTask.mTaskId);
           paramString = new JSONObject();
           paramString.put("socketTaskId", this.val$websocketRequestTask.mTaskId);
           paramString.put("state", "close");
           paramString.put("statusCode", paramInt2);
           this.val$req.a.a("onSocketTaskStateChange", paramString.toString(), 0);
-          beyr.a(this.this$0.mMiniAppInfo, 634, null, null, null, 0, beyr.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+          bezi.a(this.this$0.mMiniAppInfo, 634, null, null, null, 0, bezi.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
           return;
         }
         JSONObject localJSONObject = new JSONObject();
@@ -53,7 +53,7 @@ class RequestJsPlugin$2
         {
           paramString = "network is down";
           localJSONObject.put("errMsg", "network is down");
-          besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure socketId=" + this.val$websocketRequestTask.mTaskId + " errMsg=" + paramString);
+          betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure socketId=" + this.val$websocketRequestTask.mTaskId + " errMsg=" + paramString);
           this.val$req.a.a("onSocketTaskStateChange", localJSONObject.toString(), 0);
         }
         else
@@ -63,7 +63,7 @@ class RequestJsPlugin$2
       }
       catch (JSONException paramString)
       {
-        besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure exception:", paramString);
+        betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onFailure exception:", paramString);
         return;
       }
     }
@@ -85,11 +85,11 @@ class RequestJsPlugin$2
           localJSONObject.put("isBuffer", true);
           if (this.this$0.mIsMiniGame)
           {
-            beku.a(this.this$0.mMiniAppContext, paramArrayOfByte, beku.a, "data", localJSONObject);
+            bell.a(this.this$0.mMiniAppContext, paramArrayOfByte, bell.a, "data", localJSONObject);
             this.val$req.a.a("onSocketTaskStateChange", localJSONObject.toString(), 0);
             return;
           }
-          beku.a(this.this$0.mMiniAppContext, paramArrayOfByte, beku.b, "data", localJSONObject);
+          bell.a(this.this$0.mMiniAppContext, paramArrayOfByte, bell.b, "data", localJSONObject);
           continue;
         }
         localJSONObject.put("isBuffer", false);
@@ -97,7 +97,7 @@ class RequestJsPlugin$2
       catch (Exception paramString)
       {
         paramString = paramString;
-        besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onMessage exception:", paramString);
+        betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onMessage exception:", paramString);
         return;
       }
       finally {}
@@ -113,14 +113,14 @@ class RequestJsPlugin$2
       localJSONObject.put("socketTaskId", this.val$websocketRequestTask.mTaskId);
       localJSONObject.put("state", "open");
       localJSONObject.put("statusCode", paramInt2);
-      localJSONObject.put("header", beks.a(paramMap));
+      localJSONObject.put("header", belj.a(paramMap));
       this.val$req.a.a("onSocketTaskStateChange", localJSONObject.toString(), 0);
-      beyr.a(this.this$0.mMiniAppInfo, 632, null, null, null, 0, beyr.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
+      bezi.a(this.this$0.mMiniAppInfo, 632, null, null, null, 0, bezi.a(this.this$0.mMiniAppInfo), 0L, RequestJsPlugin.access$100(this.val$websocketRequestTask.mUrl));
       return;
     }
     catch (JSONException paramMap)
     {
-      besl.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onOpen error:", paramMap);
+      betc.d("[mini] http.RequestJsPlugin", "MiniAppWebsocketListener onOpen error:", paramMap);
     }
   }
 }

@@ -1,33 +1,47 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.content.Context;
 
 public class bcup
-  implements Animator.AnimatorListener
 {
-  public bcup(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
+  private bcug[] a = new bcug[3];
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bcug a(Context paramContext, int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bklp != null) {
-      this.a.jdField_a_of_type_Bklp.displayPanelFinish();
+    Object localObject1;
+    if ((paramInt < 0) || (paramInt > 3)) {
+      localObject1 = null;
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_Bklp != null) {
-      this.a.jdField_a_of_type_Bklp.displayPanelFinish();
+    do
+    {
+      do
+      {
+        return localObject1;
+        ??? = this.a[paramInt];
+        localObject1 = ???;
+      } while (??? != null);
+      localObject1 = ???;
+    } while (paramContext == null);
+    synchronized (this.a)
+    {
+      localObject1 = this.a[paramInt];
+      if (localObject1 != null) {
+        return localObject1;
+      }
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
+    switch (paramInt)
+    {
+    default: 
+      paramContext = (Context)localObject1;
+    }
+    for (;;)
+    {
+      this.a[paramInt] = paramContext;
+      return paramContext;
+      paramContext = new bcuj(paramContext);
+      continue;
+      paramContext = new bcuh(paramContext);
+      continue;
+      paramContext = new bcun(paramContext);
+    }
   }
 }
 

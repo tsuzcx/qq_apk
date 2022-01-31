@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class atda
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public atda(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public atda(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtils.isNetworkAvailable(this.a))
-    {
-      bcpw.a(this.a, 1, 2131694609, 1).a();
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
     }
-    this.a.d();
-    this.a.a("invite_page", "clk_exit");
   }
 }
 

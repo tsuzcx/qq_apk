@@ -26,7 +26,7 @@ class PersonalityLabelShareActivity$2
     //   26: aload 11
     //   28: invokevirtual 37	android/graphics/Bitmap:isRecycled	()Z
     //   31: ifne +575 -> 606
-    //   34: getstatic 43	ajsf:bc	Ljava/lang/String;
+    //   34: getstatic 43	ajsd:bc	Ljava/lang/String;
     //   37: astore 5
     //   39: new 45	java/io/File
     //   42: dup

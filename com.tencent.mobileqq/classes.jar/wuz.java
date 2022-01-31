@@ -1,24 +1,27 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDelFeedRsp;
+import android.app.Activity;
+import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class wuz
-  implements bcwh
+  implements xgu<CertifiedAccountWrite.StDelFeedRsp>
 {
-  wuz(wuu paramwuu) {}
+  wuz(wux paramwux) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDelFeedRsp paramStDelFeedRsp)
   {
-    if ((wuu.c(this.a) == null) || (!wuu.c(this.a).equals(paramBaseResp.transaction))) {
+    if (this.a.a == null) {
       return;
     }
-    switch (paramBaseResp.errCode)
+    if ((!paramBoolean) || (paramLong != 0L))
     {
-    case -2: 
-    case -1: 
-    default: 
-      bcpw.a(wuu.a(this.a), 1, "分享失败", 0).a();
+      bcql.a(this.a.a, 1, ajya.a(2131714656), 0).a();
       return;
     }
-    bcpw.a(wuu.a(this.a), 2, "分享成功", 0).a();
+    wpt.a().a(new SubscribeFeedsEvent(wux.a(this.a).a.id.get(), 3));
+    this.a.a.finish();
+    bcql.a(this.a.a, ajya.a(2131714652), 0).a();
   }
 }
 

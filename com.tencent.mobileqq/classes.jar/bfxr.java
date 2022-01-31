@@ -1,31 +1,26 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class bfxr
+public class bfxr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final bfxs a;
+  public bfxr(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  public bfxr(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this(paramContext, paramOnGestureListener, null);
-  }
-  
-  public bfxr(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
-  {
-    if (Build.VERSION.SDK_INT > 17)
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
     {
-      this.a = new bfxv(paramContext, paramOnGestureListener, paramHandler);
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
       return;
     }
-    this.a = new bfxt(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 

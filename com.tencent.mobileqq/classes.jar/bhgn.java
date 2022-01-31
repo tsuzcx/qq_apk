@@ -1,9 +1,18 @@
-import java.lang.reflect.Method;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bhgn
+  implements DialogInterface.OnClickListener
 {
-  public Object a;
-  public Method a;
+  public bhgn(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.isFlowWarningVisible = false;
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
+  }
 }
 
 

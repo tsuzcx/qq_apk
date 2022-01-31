@@ -1,72 +1,101 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardHelper;
-import mqq.app.AppActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bggf
-  implements ActivityLifecycle.ActivityLifecycleCallback
 {
-  public void onNewIntent(Activity paramActivity, Intent paramIntent)
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 0, 0, 0, 0, 0, 63, 0, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 0, 0, 0, 0, 95, 0, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 0, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  public bggf()
   {
-    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
-      BuscardHelper.a("", paramActivity, paramIntent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
+    if ("com.tencent.mobileqq:qzone".equals(a()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(1024);
+      this.jdField_a_of_type_Boolean = true;
     }
   }
   
-  public void onPause(Activity paramActivity)
+  private String a()
   {
-    try
-    {
-      BuscardHelper.a(paramActivity, true, "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
-      }
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      for (;;)
-      {
-        paramActivity.printStackTrace();
-      }
-    }
+    return BaseApplicationImpl.getApplication().getQQProcessName();
   }
   
-  public void onResume(Activity paramActivity)
+  private String b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
+    int k = 0;
+    if (paramString == null) {
+      return null;
     }
-    try
+    for (;;)
     {
-      if ((paramActivity instanceof AppActivity))
+      int i;
+      try
       {
-        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
-        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
+        Object localObject = paramString.toCharArray();
+        i = 0;
+        int j = k;
+        if (i < localObject.length)
         {
-          BuscardHelper.a(paramActivity, true, "", "", null);
-          return;
+          localObject[i] = jdField_a_of_type_ArrayOfChar[localObject[i]];
+          if (localObject[i] == 0) {
+            j = 1;
+          }
         }
-        BuscardHelper.a(paramActivity, true, "", "");
-        return;
+        else
+        {
+          if (j != 0) {
+            return paramString.toLowerCase();
+          }
+          localObject = new String((char[])localObject);
+          return localObject;
+        }
       }
+      catch (Exception localException)
+      {
+        return paramString.toLowerCase();
+      }
+      i += 1;
     }
-    catch (Throwable paramActivity)
+  }
+  
+  public String a(String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramString == null) {
+      localObject1 = localObject2;
+    }
+    do
     {
-      paramActivity.printStackTrace();
-    }
+      do
+      {
+        return localObject1;
+        localObject2 = localObject1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        {
+          localObject2 = localObject1;
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+            localObject2 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          }
+        }
+        localObject1 = localObject2;
+      } while (localObject2 != null);
+      localObject2 = b(paramString);
+      localObject1 = localObject2;
+    } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+    return localObject2;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bggf
  * JD-Core Version:    0.7.0.1
  */

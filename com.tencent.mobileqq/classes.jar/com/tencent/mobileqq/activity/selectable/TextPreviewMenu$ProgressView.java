@@ -27,9 +27,9 @@ public final class TextPreviewMenu$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561447, this);
-    this.a = ((TextView)findViewById(2131377030));
-    findViewById(2131363153).setBackgroundColor(Color.parseColor("#1c1c1d"));
+    LayoutInflater.from(paramContext).inflate(2131561446, this);
+    this.a = ((TextView)findViewById(2131377032));
+    findViewById(2131363152).setBackgroundColor(Color.parseColor("#1c1c1d"));
   }
   
   public void setProgressText(CharSequence paramCharSequence)

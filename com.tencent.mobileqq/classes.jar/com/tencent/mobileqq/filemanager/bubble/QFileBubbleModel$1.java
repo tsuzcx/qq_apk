@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
-import aoym;
+import aoyq;
 
 public class QFileBubbleModel$1
   implements Runnable
 {
-  public QFileBubbleModel$1(aoym paramaoym) {}
+  public QFileBubbleModel$1(aoyq paramaoyq) {}
   
   public void run()
   {

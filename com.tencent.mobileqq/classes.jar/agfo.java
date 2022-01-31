@@ -1,15 +1,57 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class agfo
   implements View.OnClickListener
 {
-  agfo(agfm paramagfm) {}
+  agfo(agfk paramagfk) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
+    }
+    switch (i)
+    {
+    default: 
+    case 2131364824: 
+    case 2131366632: 
+      do
+      {
+        do
+        {
+          return;
+        } while (this.a.jdField_a_of_type_Agep == null);
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Agep.a.msg);
+        return;
+      } while (this.a.jdField_a_of_type_Agep == null);
+      paramView = new Bundle();
+      paramView.putInt("forward_type", -1);
+      paramView.putString("forward_text", this.a.jdField_a_of_type_Agep.a.msg);
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+      localIntent.putExtras(paramView);
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+    }
+    this.a.c = false;
+    agfk.a(this.a).setVisibility(8);
+    agfk.a(this.a, 0, null);
+    this.a.jdField_a_of_type_Agbp.a(agfk.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Agbp.notifyDataSetChanged();
+    this.a.b = 1;
   }
 }
 

@@ -1,29 +1,45 @@
-import android.util.Pair;
-import android.view.View;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class abnd
-  implements bfoq
+  implements GestureDetector.OnDoubleTapListener
 {
-  public abnd(MainFragment paramMainFragment, List paramList, bfol parambfol) {}
+  public abnd(MainFragment paramMainFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
     }
-    try
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
     {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (abnk)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).c();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
     }
-    catch (Throwable paramView)
-    {
-      paramView.printStackTrace();
-    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

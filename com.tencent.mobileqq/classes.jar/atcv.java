@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
-public class atcv
-  implements DialogInterface.OnClickListener
+class atcv
+  implements bcip
 {
-  public atcv(GameRoomInviteActivity paramGameRoomInviteActivity, bbgg parambbgg) {}
+  atcv(atcu paramatcu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 

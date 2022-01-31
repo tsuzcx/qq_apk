@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import pbu;
+import pbv;
+import pbw;
 import pbx;
-import pby;
-import pbz;
-import pca;
 
 public class UserOperationModule$3
   implements Runnable
 {
-  public UserOperationModule$3(pbx parampbx, boolean paramBoolean, pby parampby, int paramInt, String paramString) {}
+  public UserOperationModule$3(pbu parampbu, boolean paramBoolean, pbv parampbv, int paramInt, String paramString) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      ((pbz)this.jdField_a_of_type_Pby).a(false, null, this.jdField_a_of_type_Int + "");
+      ((pbw)this.jdField_a_of_type_Pbv).a(false, null, this.jdField_a_of_type_Int + "");
       return;
     }
-    ((pca)this.jdField_a_of_type_Pby).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ((pbx)this.jdField_a_of_type_Pbv).a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,22 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
 
-public class agba
-  implements TextWatcher
+public final class agba
+  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
 {
-  public agba(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
+  {
+    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
+  }
 }
 
 

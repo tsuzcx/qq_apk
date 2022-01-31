@@ -4,15 +4,18 @@ import android.view.View.OnClickListener;
 class arxy
   implements View.OnClickListener
 {
-  arxy(arxx paramarxx) {}
+  arxy(arxt paramarxt, arxj paramarxj) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a()) {
+    if (this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj.a()) {}
+    while (paramView.isSelected()) {
       return;
     }
-    axqw.b(null, "CliOper", "", "", "0X800A966", "0X800A966", 0, 0, "0", "0", "0", "");
-    arvk.a(arxh.a(this.a.a), this.a.a);
+    this.jdField_a_of_type_Arxt.a(paramView);
+    this.jdField_a_of_type_Arxt.jdField_a_of_type_Int = 3;
+    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj, Integer.valueOf(3));
+    axqy.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
   }
 }
 

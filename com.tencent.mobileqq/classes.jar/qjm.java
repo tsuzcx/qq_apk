@@ -1,95 +1,270 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.os.Binder;
+import android.os.Build.VERSION;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Method;
 
-public abstract class qjm<T>
-  implements quk
+public class qjm
 {
-  public int a()
+  public static boolean a(Context paramContext)
   {
-    return 0;
-  }
-  
-  protected abstract List<T> a();
-  
-  public List<qul> a(int paramInt, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramInt >= 0)
-    {
-      List localList = a();
-      a(paramInt, paramBoolean, localList, localArrayList);
-      b(paramInt - a(), paramBoolean, localList, localArrayList);
+    int i = Build.VERSION.SDK_INT;
+    if (i >= 23) {
+      return Settings.canDrawOverlays(paramContext);
     }
-    return localArrayList;
+    if (i >= 19) {
+      return a(paramContext, 24);
+    }
+    return true;
   }
   
-  protected abstract qul a(T paramT);
-  
-  protected void a(int paramInt, boolean paramBoolean, List<T> paramList, List<qul> paramList1)
+  @RequiresApi(19)
+  private static boolean a(Context paramContext, int paramInt)
   {
-    int j = paramInt + 1;
-    paramList1.size();
-    if (j < paramList.size())
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      if (paramBoolean) {}
-      for (int i = 4;; i = 3)
+      AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
+      try
       {
-        int k = Math.min(i + paramInt, paramList.size() - 1);
-        paramInt = 0;
-        i = j;
-        for (;;)
+        paramContext = (Integer)localAppOpsManager.getClass().getDeclaredMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(Binder.getCallingUid()), paramContext.getApplicationContext().getPackageName() });
+        if (QLog.isColorLevel()) {
+          QLog.d("FloatWindowOpUtils", 1, "0 invoke " + paramContext);
+        }
+        if (paramContext != null)
         {
-          j = paramInt;
-          if (i > k) {
-            break;
+          paramInt = paramContext.intValue();
+          if (paramInt == 0) {
+            return true;
           }
-          paramList1.add(a(paramList.get(i)));
-          i += 1;
-          paramInt += 1;
+        }
+        return false;
+      }
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("FloatWindowOpUtils", 1, "checkOp failed.", paramContext);
         }
       }
     }
-    j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + j);
-    }
+    return true;
   }
   
-  public boolean a()
+  public static boolean a(Context paramContext, Intent paramIntent)
   {
-    return bbev.h(BaseApplicationImpl.getApplication().getApplicationContext());
-  }
-  
-  protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<qul> paramList1)
-  {
-    int j = paramInt - 1;
-    paramList1.size();
-    if (j >= 0)
+    if ((paramContext == null) || (paramIntent == null)) {}
+    do
     {
-      if (paramBoolean) {}
-      for (int i = 1;; i = 2)
-      {
-        int k = Math.max(paramInt - i, 0);
-        paramInt = 0;
-        i = j;
-        for (;;)
-        {
-          j = paramInt;
-          if (i < k) {
-            break;
-          }
-          paramList1.add(a(paramList.get(i)));
-          i -= 1;
-          paramInt += 1;
-        }
-      }
+      return false;
+      paramContext = paramIntent.resolveActivityInfo(paramContext.getPackageManager(), 65536);
+    } while ((paramContext == null) || (!paramContext.exported));
+    return true;
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    boolean bool2 = false;
+    if (Build.VERSION.SDK_INT >= 23) {
+      bool2 = c(paramContext);
     }
-    j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + j);
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = h(paramContext);
     }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = i(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = j(paramContext);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = g(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = f(paramContext);
+    }
+    bool2 = bool1;
+    if (!bool1) {
+      bool2 = d(paramContext);
+    }
+    bool1 = bool2;
+    if (!bool2) {
+      bool1 = e(paramContext);
+    }
+    return bool1;
+  }
+  
+  @RequiresApi(api=23)
+  private static boolean c(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + paramContext.getPackageName()));
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean d(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent();
+    localIntent.setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
+    localIntent.putExtra("packageName", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean e(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean f(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
+    localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean g(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("com.iqoo.secure");
+    localIntent.setClassName("com.iqoo.secure", "com.iqoo.secure.MainActivity");
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean h(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean i(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.RealAppPermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static boolean j(Context paramContext)
+  {
+    boolean bool = false;
+    Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+    localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
+    localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+    localIntent.addFlags(268435456);
+    if (a(paramContext, localIntent)) {}
+    try
+    {
+      paramContext.startActivity(localIntent);
+      bool = true;
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
 }
 

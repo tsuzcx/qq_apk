@@ -1,14 +1,20 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class vbh
-  implements bfos
+  extends SimpleJob<Object>
 {
-  vbh(vbd paramvbd, int paramInt) {}
-  
-  public void onDismiss()
+  vbh(vbg paramvbg, String paramString1, String paramString2)
   {
-    uxp localuxp = (uxp)this.jdField_a_of_type_Vbd.a.a().get(this.jdField_a_of_type_Int);
-    vbd.a(this.jdField_a_of_type_Vbd, localuxp, "clk_hide");
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vba.a(this.jdField_a_of_type_Vbg.a.a).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

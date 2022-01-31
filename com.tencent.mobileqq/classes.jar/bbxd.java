@@ -1,97 +1,189 @@
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.mobileqq.vip.KCWraperV2.2;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import cooperation.qzone.report.lp.LpReportInfo_dc04233;
+import dualsim.common.IKcActivationViewer;
+import dualsim.common.IKingCardInterface;
+import dualsim.common.OrderCheckResult;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import tmsdk.common.KcSdkShellManager;
 
 public class bbxd
-  extends bhyx
+  extends bbxc
 {
-  private String a;
+  public AtomicBoolean a = new AtomicBoolean(false);
   
-  public bbxd(String paramString1, View paramView, String paramString2)
+  private void a(OrderCheckResult paramOrderCheckResult)
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    ((TemplateLikeView)paramView).a(1);
-  }
-  
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Int = -2;
-    this.b = a(paramJSONObject.optString("height"));
-    paramLayoutParams.width = -2;
-    paramLayoutParams.height = -2;
-    int i = vzo.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("lpd", 2) / 2);
-    int j = vzo.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramJSONObject.optInt("rpd", 2) / 2);
-    ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setContainerLayoutParams(this.jdField_a_of_type_Int, this.b, i, j);
-    return paramLayoutParams;
-  }
-  
-  protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str = paramString;
-    if (!paramString.startsWith("http"))
+    int i = 1;
+    String str1;
+    if (paramOrderCheckResult != null)
     {
-      str = paramString;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label114;
-        }
+      str1 = paramOrderCheckResult.toString();
+      a(str1);
+      if (paramOrderCheckResult != null) {
+        break label30;
       }
     }
-    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
-    {
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mLoadingDrawable = aywk.a;
-      paramString.mFailedDrawable = aywk.a;
-      paramString.mPlayGifImage = false;
-      if (paramDecodeHandler != null) {
-        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-      }
-      paramString = URLDrawable.getDrawable(str, paramString);
-      paramString.setDecodeHandler(paramDecodeHandler);
-      return paramString;
-      label114:
-      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ("bg".equals(paramString1)) {
-      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
-        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
-      }
-    }
+    label30:
+    label46:
+    boolean bool2;
     do
     {
       return;
-      if (!"style".equals(paramString1)) {
+      str1 = "result == null";
+      break;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject != null) {
+        break label186;
+      }
+      str1 = null;
+      if (TextUtils.isEmpty(str1)) {
+        break label206;
+      }
+      bool2 = a(str1, paramOrderCheckResult);
+    } while (!(localObject instanceof QQAppInterface));
+    Object localObject = (QQAppInterface)localObject;
+    String str2 = paramOrderCheckResult.phoneNum;
+    akjn localakjn = (akjn)((QQAppInterface)localObject).a(27);
+    boolean bool1;
+    label113:
+    long l;
+    if (paramOrderCheckResult.operator == 1)
+    {
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label196;
+      }
+      bool1 = true;
+      localakjn.a(str1, str2, bool1, paramOrderCheckResult.product, "");
+      l = Long.parseLong(str1);
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label201;
+      }
+    }
+    for (;;)
+    {
+      new LpReportInfo_dc04233(l, i).report();
+      if (!bool2) {
         break;
       }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
-    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
-    if ("1".equals(paramString2)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramString1.a(i);
+      localakjn.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
       return;
+      label186:
+      str1 = ((AppRuntime)localObject).getAccount();
+      break label46;
+      label196:
+      bool1 = false;
+      break label113;
+      label201:
+      i = 0;
     }
-    super.a(paramString1, paramString2);
+    label206:
+    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
   }
   
-  public void c()
+  public String a()
   {
-    super.c();
+    return "KC.KCWraperV2";
+  }
+  
+  void a(ViewGroup paramViewGroup)
+  {
+    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
+    if (localObject != null)
+    {
+      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
+      if (localObject != null)
+      {
+        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
+        ((IKcActivationViewer)localObject).startLoad();
+        return;
+      }
+      QLog.e("KC.TMSManager", 1, "activationViewer == null");
+    }
+    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
+  }
+  
+  public void a(bbxm parambbxm, boolean paramBoolean)
+  {
+    ThreadManager.post(new KCWraperV2.2(this, parambbxm, paramBoolean), 5, null, false);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("load jar");
+    if (this.a.get()) {
+      return;
+    }
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    File localFile = new File(bbxl.a().a(localContext));
+    if (!localFile.exists())
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      a(false);
+      return;
+    }
+    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
+  }
+  
+  boolean a()
+  {
+    if (this.a.get()) {
+      return true;
+    }
+    if (!new File(bbxl.a().a(BaseApplicationImpl.getApplication())).exists()) {
+      return false;
+    }
+    synchronized (this.a)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait load");
+        }
+        this.a.wait(500L);
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait end");
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+        }
+      }
+      return this.a.get();
+    }
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+    return true;
+  }
+  
+  boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
+    }
+    return true;
   }
 }
 

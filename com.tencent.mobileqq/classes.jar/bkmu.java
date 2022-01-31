@@ -1,21 +1,37 @@
-import android.util.Property;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
-class bkmu
-  extends Property<bkmo, Float>
+public class bkmu
+  implements Animator.AnimatorListener
 {
-  bkmu(bkmo parambkmo, Class paramClass, String paramString)
+  public bkmu(SlideBottomPanel paramSlideBottomPanel) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramClass, paramString);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
+    }
   }
   
-  public Float a(bkmo parambkmo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return Float.valueOf(bkmo.b(parambkmo));
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.b = false;
+    this.a.e = false;
+    if (this.a.jdField_a_of_type_Bkmg != null) {
+      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
+    }
   }
   
-  public void a(bkmo parambkmo, Float paramFloat)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    bkmo.a(parambkmo, paramFloat);
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

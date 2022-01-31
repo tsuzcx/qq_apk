@@ -1,49 +1,82 @@
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class acid
-  implements afnv
+  extends akil
 {
-  public acid(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  public acid(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
   {
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
-    for (int i = 1; i != 0; i = 0)
+    if (paramRspBody.group_id.has())
     {
+      paramRspBody = String.valueOf(paramRspBody.group_id.get());
+      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
+        break label119;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
       }
-      afnu.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
-      afnu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-        this.a.jdField_a_of_type_Bcpq.dismiss();
-      }
+    }
+    label119:
+    do
+    {
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-    }
-    TroopInviteStatusFragment.a(this.a, 2);
+      if (QLog.isColorLevel()) {
+        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+      this.a.d();
+      paramRspBody = this.a.a(1101236949L);
+    } while (paramRspBody == null);
+    this.a.a(paramRspBody);
   }
   
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong)
   {
-    if ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())) {
-      this.a.jdField_a_of_type_Bcpq.dismiss();
-    }
     if (QLog.isColorLevel()) {
-      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
     }
-    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131690026;; paramInt1 = 2131690025)
+    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
+    do
     {
-      bcpw.a(paramString1, paramInt1, 1).a();
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.a.d();
+          } while (!paramBoolean);
+          localObject = (TroopManager)this.a.app.getManager(52);
+        } while (localObject == null);
+        localObject = ((TroopManager)localObject).b(this.a.jdField_a_of_type_JavaLangString);
+      } while (localObject == null);
+      paramLong = ((TroopInfo)localObject).troopCreditLevel;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+      }
+    } while (paramLong == 2L);
+    if (paramLong == 1L)
+    {
+      localObject = bbdj.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720260)).setMessage(ajya.a(2131715488));
+      ((bbgu)localObject).setPositiveButton(2131697809, new acie(this));
+      ((bbgu)localObject).setNegativeButton("", null);
+      ((bbgu)localObject).setCancelable(false);
+      ((bbgu)localObject).show();
       return;
     }
+    Object localObject = bbdj.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131720260)).setMessage(ajya.a(2131715489));
+    ((bbgu)localObject).setPositiveButton(2131697809, new acif(this));
+    ((bbgu)localObject).setNegativeButton("", null);
+    ((bbgu)localObject).setCancelable(false);
+    ((bbgu)localObject).show();
   }
 }
 

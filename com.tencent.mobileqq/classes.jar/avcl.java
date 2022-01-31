@@ -1,26 +1,14 @@
-public class avcl
+import com.tencent.mobileqq.data.MessageForPtt;
+
+public abstract interface avcl
 {
-  public int a;
-  public final int[] a;
+  public abstract void a();
   
-  public avcl()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      localStringBuilder.append('#').append(i).append('_').append(this.jdField_a_of_type_ArrayOfInt[i]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
+  public abstract boolean a(MessageForPtt paramMessageForPtt, int paramInt);
+  
+  public abstract boolean b(MessageForPtt paramMessageForPtt);
 }
 
 

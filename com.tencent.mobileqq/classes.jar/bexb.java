@@ -1,32 +1,37 @@
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class bexb
+public final class bexb
+  implements AsyncResult
 {
-  private static bexb jdField_a_of_type_Bexb;
-  private HashMap<Integer, bewy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public bexb(WeakReference paramWeakReference, String paramString, int paramInt) {}
   
-  public static bexb a()
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (jdField_a_of_type_Bexb == null) {
-      jdField_a_of_type_Bexb = new bexb();
+    if (paramBoolean) {}
+    try
+    {
+      TianShuAccess.GetAdsRsp localGetAdsRsp = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
+      betc.a("MiniGameAdBannerPopup", "onGetAdvs() called with: result = [" + paramJSONObject + "], getAdsRsp = [" + localGetAdsRsp + "]");
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+        return;
+      }
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, localGetAdsRsp);
+      return;
     }
-    return jdField_a_of_type_Bexb;
-  }
-  
-  public bewy a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)) {
-      return null;
+    catch (Exception paramJSONObject)
+    {
+      betc.d("MiniGameAdBannerPopup", "tianshuRequestAdv onReceiveResult", paramJSONObject);
     }
-    return (bewy)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a(int paramInt, bewy parambewy)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, null);
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambewy);
   }
 }
 

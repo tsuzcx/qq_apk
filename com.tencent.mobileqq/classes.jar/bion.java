@@ -1,47 +1,14 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bion
-  extends bijx
+class bion
+  implements DialogInterface.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  bion(biol parambiol, bire parambire) {}
   
-  public bion(ViewStub paramViewStub)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewStub);
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365839);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365841));
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692630);
-  }
-  
-  public void c()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  public void d()
-  {
-    if (!a()) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    biol.a(this.jdField_a_of_type_Biol, this.jdField_a_of_type_Bire);
   }
 }
 

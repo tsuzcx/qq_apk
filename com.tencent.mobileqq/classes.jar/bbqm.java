@@ -1,34 +1,23 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
-final class bbqm
-  implements URLDrawable.URLDrawableListener
+public class bbqm
+  implements bbqk
 {
-  bbqm(int[] paramArrayOfInt) {}
+  public bbqm(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "applyNormalPaster onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil", 2, "urlDrawableListener onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCurrDrawable();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramURLDrawable).getImage() != null)) {
-      ApngImage.playByTag(this.a[0]);
-    }
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 

@@ -1,21 +1,19 @@
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class afgp
-  extends akup
+  implements afii
 {
-  public afgp(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public afgp(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString)
   {
-    if (paramInt == 0)
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
     {
-      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
-      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
+      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
     }
   }
 }

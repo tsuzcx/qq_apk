@@ -1,67 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amwc
-  extends ampb<amwd>
 {
-  public int a()
-  {
-    return 362;
-  }
+  public String a = "";
   
-  @NonNull
-  public amwd a(int paramInt)
+  public static amwc a(String paramString)
   {
-    return new amwd();
-  }
-  
-  @Nullable
-  public amwd a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      amwd localamwd = amwd.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amwc localamwc = new amwc();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("contents")) {
+          localamwc.a = paramString.getJSONArray("contents").toString();
+        }
+        return localamwc;
       }
-      return localamwd;
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
     return null;
-  }
-  
-  public Class<amwd> a()
-  {
-    return amwd.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
-    }
-  }
-  
-  public void a(amwd paramamwd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramamwd });
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

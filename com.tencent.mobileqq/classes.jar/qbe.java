@@ -1,11 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
 
-public class qbe
+public abstract interface qbe
 {
-  public String a;
-  public List<RecommendFollowInfo> a = new ArrayList();
+  public abstract int getCommentCount();
+  
+  public abstract String getInnerUniqueID();
+  
+  public abstract String getShareUrl();
+  
+  public abstract String getSubscribeName();
+  
+  public abstract String getSubscribeUin();
+  
+  public abstract URL getVideoCoverURL();
+  
+  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
+  
+  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
+  
+  public abstract int getVideoDuration();
+  
+  public abstract int getVideoHeight();
+  
+  public abstract String getVideoVid();
+  
+  public abstract int getVideoWidth();
 }
 
 

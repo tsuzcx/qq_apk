@@ -1,29 +1,21 @@
+import android.content.Intent;
 import android.view.View;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aobj
+class aobj
+  implements View.OnClickListener
 {
-  private ArrayList<View> a = new ArrayList();
+  aobj(aobh paramaobh, IPSiteModel.Goods paramGoods) {}
   
-  public View a()
+  public void onClick(View paramView)
   {
-    if (this.a.size() > 0) {
-      return (View)this.a.remove(0);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a.size() >= 3) {
-      return;
-    }
-    this.a.add(paramView);
+    paramView = new Intent(aobh.a(this.jdField_a_of_type_Aobh), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(aobh.a(this.jdField_a_of_type_Aobh), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(aobh.a(this.jdField_a_of_type_Aobh), "IP", "aio_productmore", "", 0, 0, 0, aobh.b(this.jdField_a_of_type_Aobh), aobh.c(this.jdField_a_of_type_Aobh), "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

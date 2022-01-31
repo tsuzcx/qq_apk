@@ -1,194 +1,151 @@
+import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.util.ADNativeArticleAppDownloadManager.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
+import com.tencent.widget.ListView;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlResult;
 import java.util.Iterator;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
+import java.util.List;
 
 public class nlv
-  implements Manager, rpi
+  extends nlt
 {
-  private int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private rpk jdField_a_of_type_Rpk;
-  private int b;
+  private ListView a;
   
-  public nlv(QQAppInterface paramQQAppInterface)
+  public nlv(Context paramContext, ListView paramListView)
   {
-    paramQQAppInterface = (WindowManager)paramQQAppInterface.getApplication().getSystemService("window");
-    if (paramQQAppInterface != null)
-    {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      paramQQAppInterface.getDefaultDisplay().getMetrics(localDisplayMetrics);
-      this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-      this.b = localDisplayMetrics.heightPixels;
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "createManager width:" + localDisplayMetrics.widthPixels + ", height:" + localDisplayMetrics.heightPixels);
-      }
-    }
-    bdkp.a();
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
   }
   
-  private void b()
+  public void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
+    super.a(paramDownloadInfo, paramInt);
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        qjc localqjc = (qjc)localIterator.next();
+        if ((localqjc.jdField_a_of_type_JavaLangString != null) && (localqjc.d != null) && (localqjc.d.equals(paramDownloadInfo.e)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
+        {
+          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = paramInt;
+          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramDownloadInfo.f;
+          a(localqjc, paramInt, paramDownloadInfo.f);
+        }
+      }
+      return;
+    }
+    catch (Exception paramDownloadInfo)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramDownloadInfo.getMessage());
+    }
+  }
+  
+  public void a(WadlResult paramWadlResult, int paramInt)
+  {
+    super.a(paramWadlResult, paramInt);
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        qjc localqjc = (qjc)localIterator.next();
+        if ((localqjc.jdField_a_of_type_JavaLangString != null) && (localqjc.d != null) && (localqjc.jdField_a_of_type_JavaLangString.equals(paramWadlResult.a.jdField_a_of_type_JavaLangString)) && (localqjc.d.equals(paramWadlResult.a.j)) && (localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null))
+        {
+          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k = a(paramWadlResult);
+          localqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = paramWadlResult.d;
+          if (!TextUtils.isEmpty(paramWadlResult.b)) {
+            localqjc.i = paramWadlResult.b;
+          }
+          a(localqjc, paramInt, paramWadlResult.d);
+        }
+      }
+      return;
+    }
+    catch (Exception paramWadlResult)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ADFeedsVideoAppDownlodManager", 2, "notifyState error " + paramWadlResult.getMessage());
+    }
+  }
+  
+  public void a(qjc paramqjc, int paramInt1, int paramInt2)
+  {
+    super.a(paramqjc, paramInt1, paramInt2);
+    if ((paramqjc == null) || (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData == null)) {}
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      return;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ComTencentWidgetListView.getChildCount())
       {
-        String str1;
-        if ((this.jdField_a_of_type_Rpk == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
+        Object localObject;
+        AdData localAdData;
+        if ((localView != null) && ((localView instanceof Container)))
+        {
+          localObject = localView.getTag(2131362033);
+          if ((localObject != null) && ((localObject instanceof AdData)))
+          {
+            localAdData = (AdData)localObject;
+            localObject = "";
+          }
         }
         try
         {
-          Object localObject2 = new URL(str1);
-          if (rpj.a().a((URL)localObject2))
+          if (localAdData.a != null)
           {
-            b();
-            if (QLog.isColorLevel()) {
-              QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", file exist!");
-            }
-            return;
+            localObject = localAdData.a.c;
+            localObject = localAdData.a.b;
           }
-          this.jdField_a_of_type_Rpk = new rpk();
-          this.jdField_a_of_type_Rpk.jdField_a_of_type_JavaNetURL = ((URL)localObject2);
-          this.jdField_a_of_type_Rpk.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-          this.jdField_a_of_type_Rpk.b = this.b;
-          localObject2 = rpj.a().a(this.jdField_a_of_type_Rpk);
-          if (localObject2 != null)
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramqjc.d)))
           {
-            ((rpg)localObject2).a();
-            this.jdField_a_of_type_Rpk = null;
-            b();
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str1 + ", bitmap cached!");
-            continue;
+            localAdData.j = paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j;
+            localAdData.k = paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.k;
+            localAdData.Q = paramqjc.i;
+            localObject = ((Container)localView).getVirtualView().findViewBaseByName("id_view_AdDownloadView");
+            this.b.post(new ADNativeArticleAppDownloadManager.1(this, (ViewBase)localObject, paramInt1, paramInt2));
           }
         }
         catch (Exception localException)
         {
-          localException.printStackTrace();
-          continue;
-        }
-      }
-      rpj.a().a(this.jdField_a_of_type_Rpk, this);
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "startImageDownload url:" + str2 + ", begin load!");
-      }
-    }
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdPreloadManager", 2, "clearPreloadList");
-        }
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString);
-        }
-        b();
-      }
-      while (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.d("NativeAdPreloadManager", 2, "addImageToPreload url:" + paramString + ", skip");
-    }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    for (;;)
-    {
-      String str;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-          break label158;
-        }
-        paramArrayList = paramArrayList.iterator();
-        if (!paramArrayList.hasNext()) {
-          break;
-        }
-        str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (!QLog.isColorLevel()) {
-            continue;
+          for (;;)
+          {
+            if (QLog.isColorLevel())
+            {
+              localException.printStackTrace();
+              QLog.d("ADFeedsVideoAppDownlodManager", 1, "updateUIState exception :" + localException.toString());
+            }
           }
-          QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str);
         }
+        i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "addImagesToPreload url:" + str + ", skip");
-      }
-    }
-    b();
-    label158:
-  }
-  
-  public void a(rpk paramrpk, int paramInt) {}
-  
-  public void a(rpk paramrpk, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onFail url:" + paramrpk.jdField_a_of_type_JavaNetURL.toString());
-    }
-    if (paramrpk.equals(this.jdField_a_of_type_Rpk))
-    {
-      this.jdField_a_of_type_Rpk = null;
-      b();
     }
   }
   
-  public void a(rpk paramrpk, rpg paramrpg)
+  protected boolean b(qjc paramqjc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeAdPreloadManager", 2, "onSuccess url:" + paramrpk.jdField_a_of_type_JavaNetURL.toString());
+    if ((paramqjc != null) && (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (oai.a(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData)) && (!TextUtils.isEmpty(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.p))) {
+      return false;
     }
-    if (paramrpk.equals(this.jdField_a_of_type_Rpk))
-    {
-      this.jdField_a_of_type_Rpk = null;
-      b();
-    }
+    return super.b(paramqjc);
   }
   
-  public void onDestroy()
+  protected boolean c(qjc paramqjc)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Rpk = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdPreloadManager", 2, "onDestroy");
-      }
-      return;
+    if ((paramqjc != null) && (paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) && (oai.a(paramqjc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData))) {
+      return false;
     }
+    return super.c(paramqjc);
   }
 }
 

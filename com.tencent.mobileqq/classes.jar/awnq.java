@@ -1,82 +1,78 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.List;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class awnq
-  implements awof
+  extends awpq
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private awog jdField_a_of_type_Awog;
-  public List<awog> a;
-  private String b;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c = "xiaoweiba";
   
-  static
+  public awnq(String paramString1, String paramString2, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131705361);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public awnq(List<awog> paramList, String paramString, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int a()
+  public void b(View paramView)
   {
-    return awil.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public awog a()
-  {
-    return this.jdField_a_of_type_Awog;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<awog> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    if (SearchConfigManager.needSeparate) {}
-    for (int i = 1;; i = 0)
+    QQAppInterface localQQAppInterface;
+    Object localObject;
+    if (!TextUtils.isEmpty(this.b))
     {
-      ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, i);
-      awvy.a(this.b, 20, 0, paramView);
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        awvy.a("all_result", "more_contact", new String[] { "" + this.b });
-        if (SearchConfigManager.needSeparate) {
-          awvy.a("search", "contact", "more", 0, 0, new String[] { awvy.a(this.jdField_a_of_type_Int) });
-        }
-        awso.a(null, 0, this.jdField_a_of_type_Int, "0X8009D39", 0, 0, null, null);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localObject = bbex.a(localQQAppInterface, paramView.getContext(), this.b);
+      if (localObject == null) {
+        break label173;
       }
-      return;
+      ((bbeg)localObject).c();
     }
-  }
-  
-  public void a(awog paramawog)
-  {
-    this.jdField_a_of_type_Awog = paramawog;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    for (;;)
+    {
+      paramView = new JSONObject();
+      try
+      {
+        paramView.put("project", awsq.a());
+        paramView.put("event_src", "client");
+        paramView.put("get_src", "web");
+        awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_tail").obj1(this.jdField_a_of_type_Long + "").ver1(UniteSearchActivity.b).ver2(awsq.a(UniteSearchActivity.d)).ver7(paramView.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
+        return;
+        label173:
+        if ((!this.b.startsWith("http://")) && (!this.b.startsWith("https://"))) {
+          continue;
+        }
+        paramView = paramView.getContext();
+        localObject = new Intent(paramView, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", this.b);
+        paramView.startActivity((Intent)localObject);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("Q.uniteSearch.SearchResultGroupModelImpl", 2, "e = " + localJSONException);
+        }
+      }
+    }
   }
 }
 

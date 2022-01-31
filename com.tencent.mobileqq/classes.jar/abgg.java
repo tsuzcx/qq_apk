@@ -1,19 +1,59 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import mqq.app.QQPermissionCallback;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class abgg
-  implements QQPermissionCallback
+public abstract class abgg
 {
-  public abgg(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  protected abgh a;
+  protected abgi a;
+  public QQAppInterface a;
+  protected int b = -1;
+  public String b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public abgg(QQAppInterface paramQQAppInterface)
   {
-    bbcv.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public abstract int a();
+  
+  public abgi a()
   {
-    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    return this.jdField_a_of_type_Abgi;
+  }
+  
+  public abstract abgi a(int paramInt);
+  
+  public Drawable a()
+  {
+    return null;
+  }
+  
+  public abstract void a(int paramInt);
+  
+  public void a(abgh paramabgh)
+  {
+    this.jdField_a_of_type_Abgh = paramabgh;
+  }
+  
+  public abstract void a(abgi paramabgi);
+  
+  public abstract void a(BaseActivity paramBaseActivity);
+  
+  public abstract void a(BaseActivity paramBaseActivity, abgi paramabgi);
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public abstract void b(BaseActivity paramBaseActivity);
+  
+  public void c(abgi paramabgi)
+  {
+    if ((paramabgi == this.jdField_a_of_type_Abgi) && (this.jdField_a_of_type_Abgh != null)) {
+      this.jdField_a_of_type_Abgh.a(paramabgi);
+    }
   }
 }
 

@@ -1,80 +1,182 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import android.annotation.TargetApi;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
+import mqq.app.NewIntent;
 
 public class ahuf
-  extends ahud
-  implements aegb
 {
-  int jdField_a_of_type_Int = -1;
-  private View jdField_a_of_type_AndroidViewView;
+  private static ahuf jdField_a_of_type_Ahuf;
+  private ahuh jdField_a_of_type_Ahuh = new ahuh(this, null);
+  private ahuj jdField_a_of_type_Ahuj;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ahug(this));
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  public ahuf(FlowActivity paramFlowActivity)
+  private ahuf(AppInterface paramAppInterface)
   {
-    super(paramFlowActivity);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Ahuh);
+    }
   }
   
-  public void a()
+  public static ahuf a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (jdField_a_of_type_Ahuf == null) {
+      jdField_a_of_type_Ahuf = new ahuf(paramAppInterface);
+    }
+    return jdField_a_of_type_Ahuf;
   }
   
-  public void a(ViewGroup paramViewGroup)
+  public static void a()
   {
-    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
-    localPanelIconLinearLayout.setPanelIconListener(this);
-    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
-    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366492);
-    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
-    localPanelIconLinearLayout.setCustomHeight(i);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
-    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
+    if (jdField_a_of_type_Ahuf != null)
     {
-      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
-      if (paramViewGroup.containsKey("selected_data"))
+      jdField_a_of_type_Ahuf.b();
+      jdField_a_of_type_Ahuf = null;
+    }
+  }
+  
+  private void a(double paramDouble1, double paramDouble2, int paramInt)
+  {
+    int i = 4;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      return;
+    }
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), kp.class);
+    localNewIntent.putExtra("key_latitude", paramDouble1);
+    localNewIntent.putExtra("key_longitude", paramDouble2);
+    localNewIntent.putExtra("k_cmd", 4);
+    localNewIntent.putExtra("key_lbs_template_cookie", paramInt);
+    switch (bbfj.a(BaseApplicationImpl.getApplication().getBaseContext()))
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      localNewIntent.putExtra("key_lbs_template_network_type", i);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("LBSDetetor", 2, "getLBSTemplateIds. req:" + paramInt + " netType:" + i + " latitude:" + paramDouble1 + " longitude:" + paramDouble2);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 5;
+    }
+  }
+  
+  private void a(boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "callback. isSuccess: " + paramBoolean + " cookie: " + paramInt);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    if (this.jdField_a_of_type_Ahuj != null)
+    {
+      Object localObject = paramArrayList;
+      if (paramArrayList == null) {
+        localObject = new ArrayList(1);
+      }
+      this.jdField_a_of_type_Ahuj.a(paramInt, paramBoolean, (ArrayList)localObject);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "destroy");
+      }
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Ahuh);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    }
+    this.jdField_a_of_type_Ahuj = null;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  @TargetApi(19)
+  public void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
       {
-        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
-        localPanelIconLinearLayout.a.clear();
-        localPanelIconLinearLayout.a.addAll((Collection)localObject);
+        if (Build.VERSION.SDK_INT < 19) {
+          continue;
+        }
+        Object localObject = BaseApplicationImpl.getApplication().getBaseContext();
+        AppOpsManager localAppOpsManager = (AppOpsManager)((Context)localObject).getSystemService("appops");
+        localObject = ((Context)localObject).getApplicationInfo();
+        int i = localAppOpsManager.checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        int j = localAppOpsManager.checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
+        if ((i == 0) && (j == 0))
+        {
+          bool1 = true;
+          bool2 = bool1;
+        }
       }
-      localPanelIconLinearLayout.a();
-      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
-      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
-        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      catch (Exception localException1)
+      {
+        boolean bool1 = true;
+        boolean bool2 = bool1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("LBSDetetor", 2, "something wrong:" + localException1.toString());
+        bool2 = bool1;
+        continue;
+        bool2 = true;
+        continue;
       }
-      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
-      return;
+      try
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("LBSDetetor", 2, "check permission by AppOpsManager:" + bool1);
+          bool2 = bool1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("LBSDetetor", 2, "startCheckPermissionAndDetetLocation. hasPermission:" + bool2);
+        }
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+        if (bool2)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
+          SosoInterface.a(new ahui(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+        }
+        if (this.jdField_a_of_type_Ahuj != null) {
+          this.jdField_a_of_type_Ahuj.a(paramInt, bool2);
+        }
+        return;
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      bool1 = false;
     }
-    throw new RuntimeException("No pass args SELECTED_ITEM");
   }
   
-  public void a(Object paramObject)
+  public void a(ahuj paramahuj)
   {
-    Intent localIntent = ((FlowActivity)a()).getIntent();
-    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
-      return;
-    }
-    int i = ((Integer)paramObject).intValue();
-    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
-    localIntent.putExtra("click_item", i);
-    ((FlowActivity)a()).setResult(1000, localIntent);
-    ((FlowActivity)a()).finish();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_Ahuj = paramahuj;
   }
 }
 

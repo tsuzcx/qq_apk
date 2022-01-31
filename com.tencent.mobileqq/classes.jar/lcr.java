@@ -1,13 +1,15 @@
-import java.util.HashMap;
-
-class lcr
+public class lcr
 {
-  HashMap<Integer, lct> a = new HashMap();
-  
-  public String toString()
-  {
-    return "size[" + this.a.size() + "]";
-  }
+  @arlz(a="w")
+  public int a;
+  @arlz(a="exp")
+  public String a;
+  @arlz(a="h")
+  public int b;
+  @arlz(a="url")
+  public String b;
+  @arlz(a="md5")
+  public String c;
 }
 
 

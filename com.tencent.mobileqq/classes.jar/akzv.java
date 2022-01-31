@@ -1,49 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class akzv
-  extends Handler
 {
-  private WeakReference<VideoEncoderCore> a;
-  
-  public akzv(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public static String a()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
+    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
+    return str + "/Camera/ARVideoRecord.tmp";
   }
   
-  public void handleMessage(Message paramMessage)
+  public static boolean a()
   {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
-      return;
+    return (Build.VERSION.SDK_INT >= 18) && (aldm.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
+  }
+  
+  public static String b()
+  {
+    String str = ShortVideoUtils.d();
+    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
+    str = str + mnc.a;
+    File localFile = new File(str).getParentFile();
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
+    return str;
   }
 }
 

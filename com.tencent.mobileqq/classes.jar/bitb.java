@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-
-class bitb
-  extends RecyclerView.ViewHolder
+public class bitb
 {
-  TextView a;
+  private Boolean a;
+  public String a;
   
-  public bitb(View paramView)
+  public bitb(String paramString)
   {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131372846));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.itemView.setSelected(paramBoolean);
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
   }
 }
 

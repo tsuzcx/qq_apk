@@ -1,18 +1,11 @@
-import android.os.Handler;
-import android.text.TextUtils;
-
 class vcx
-  implements uzx<uze>
+  implements vzq<uyv>
 {
-  vcx(vcs paramvcs, String paramString) {}
+  vcx(vcp paramvcp) {}
   
-  public void a(uze paramuze)
+  public uyv a()
   {
-    if ((paramuze.a != null) && (TextUtils.equals(paramuze.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      vcs.a(this.jdField_a_of_type_Vcs).a = paramuze.a;
-      vcs.a(this.jdField_a_of_type_Vcs).sendMessage(vcs.a(this.jdField_a_of_type_Vcs).obtainMessage(0, vcs.a(this.jdField_a_of_type_Vcs)));
-    }
+    return new uyv(new vcy(this));
   }
 }
 

@@ -1,13 +1,9 @@
 public class awcl
 {
   public int a;
+  public String a;
   public int b;
-  
-  public awcl(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public int c;
 }
 
 

@@ -3,7 +3,7 @@ package com.tencent.av.utils;
 import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import mtj;
+import mtg;
 
 public final class SensorReport$2
   implements Runnable
@@ -14,7 +14,7 @@ public final class SensorReport$2
   {
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(mtj.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(mtg.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
       return;
     }
     catch (Exception localException)

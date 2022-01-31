@@ -1,69 +1,45 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.NewFriendManager.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.LinkedList;
 
-public class akbr
-  extends ajxl
+class akbr
+  implements asko
 {
-  akbr(akbo paramakbo) {}
+  akbr(akbn paramakbn) {}
   
-  protected void onAddFriend(String paramString)
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      atyy localatyy = (atyy)((Iterator)localObject).next();
-      if ((localatyy instanceof atyt))
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.d();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (akbn.a(this.a))
       {
-        int i = ((atyt)localatyy).a.structMsg.msg.sub_type.get();
-        String str = ((atyt)localatyy).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          akbo.a(this.a).a().b(ajsf.M, 0, ((atyt)localatyy).a.uniseq, false);
+        Iterator localIterator = akbn.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((akbt)localIterator.next()).b();
         }
       }
-    }
-    akbo.a(this.a).sendEmptyMessage(2);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (akbo.a(this.a) != null)) {
-      akbo.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (akbo.a(this.a) != null)) {
-      akbo.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    akbo.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (akbo.a(this.a) != null)) {
-      akbo.a(this.a).sendEmptyMessage(2);
     }
   }
 }

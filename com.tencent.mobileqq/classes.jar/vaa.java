@@ -1,8 +1,6 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
 public abstract interface vaa
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public abstract void a(String paramString);
 }
 
 

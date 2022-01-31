@@ -1,25 +1,59 @@
-import com.tencent.av.ui.EffectToolbar;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
 import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
 
-public class mdn
-  implements Observer
+class mdn
+  implements View.OnClickListener
 {
-  private WeakReference<EffectToolbar> a;
+  mdn(mdl parammdl) {}
   
-  public mdn(EffectToolbar paramEffectToolbar)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramEffectToolbar);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
-      return;
+    boolean bool = false;
+    paramView = (mdo)paramView.getTag();
+    if (paramView.c) {
+      if (this.a.jdField_a_of_type_Int == 1) {
+        axqy.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
+      }
     }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    VideoController localVideoController;
+    long l;
+    do
+    {
+      if ((paramView.c) && (paramView.d))
+      {
+        bcql.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131696011, 1).a();
+        if (this.a.jdField_a_of_type_Int == 1) {}
+        for (paramView = "0x8007CB5";; paramView = "0x8007CB6")
+        {
+          lmd.a(paramView);
+          return;
+          if (this.a.jdField_a_of_type_Int != 2) {
+            break;
+          }
+          axqy.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
+          break;
+          if (this.a.jdField_a_of_type_Int == 1)
+          {
+            axqy.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
+            break;
+          }
+          if (this.a.jdField_a_of_type_Int != 2) {
+            break;
+          }
+          axqy.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
+          break;
+        }
+      }
+      localVideoController = this.a.jdField_a_of_type_ComTencentAvVideoController;
+      l = paramView.a;
+      if (!paramView.c) {
+        bool = true;
+      }
+    } while ((!localVideoController.a(l, bool)) || (!paramView.c));
+    bcql.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131695857, 1).a();
   }
 }
 

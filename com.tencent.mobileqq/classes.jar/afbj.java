@@ -1,36 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity.11.1;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class afbj
-  implements aigq
+  implements DialogInterface.OnClickListener
 {
   public afbj(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.runOnUiThread(new BlessSelectMemberActivity.11.1(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
-      return;
-    }
-  }
-  
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      return;
-    }
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 

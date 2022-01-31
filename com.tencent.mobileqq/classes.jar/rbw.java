@@ -1,18 +1,8 @@
-import android.util.Pair;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
-public class rbw
+public abstract interface rbw
 {
-  public Pair<Integer, Integer> a;
-  public URL a;
-  
-  public static rbw a(URL paramURL, Pair<Integer, Integer> paramPair)
-  {
-    rbw localrbw = new rbw();
-    localrbw.jdField_a_of_type_JavaNetURL = paramURL;
-    localrbw.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localrbw;
-  }
+  public abstract void a(ReadInJoyBaseListView paramReadInJoyBaseListView);
 }
 
 

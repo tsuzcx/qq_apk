@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar;
 
-import aldo;
-import axrl;
+import aldn;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$5
   implements Runnable
 {
-  public ScanEntranceReport$5(aldo paramaldo, boolean paramBoolean, long paramLong) {}
+  public ScanEntranceReport$5(aldn paramaldn, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    axrl.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

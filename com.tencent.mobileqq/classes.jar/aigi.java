@@ -1,19 +1,12 @@
+import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
 
 public class aigi
-  implements Comparator<TroopMemberInfo>
+  extends acld
 {
-  private aigi(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public CheckBox a;
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
-  {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-    }
-    return 0;
-  }
+  private aigi(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
 }
 
 

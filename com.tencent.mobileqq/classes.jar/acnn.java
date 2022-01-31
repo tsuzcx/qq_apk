@@ -1,33 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.List;
 
 public class acnn
-  implements DialogInterface.OnDismissListener
+  extends aims
 {
-  public acnn(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  private List<acnq> jdField_a_of_type_JavaUtilList;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public acnn(List<acnq> paramList)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
-      if (paramDialogInterface != null) {
-        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
-      }
-      return;
+    super(paramList, paramList.app, paramList.b, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    catch (Exception paramDialogInterface)
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    acnq localacnq;
+    if (paramView == null)
     {
-      paramDialogInterface.printStackTrace();
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131562411, paramViewGroup, false);
+      paramViewGroup = new acns(null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368583));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
+      ((TextView)paramView.findViewById(2131378356)).setText("");
+      paramView.setTag(paramViewGroup);
+      localacnq = (acnq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if ((TextUtils.isEmpty(localacnq.e)) || (localacnq.e.equals(localacnq.b))) {
+        break label203;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacnq.b + "(" + localacnq.e + ")");
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_JavaLangString = localacnq.jdField_a_of_type_JavaLangString;
+      paramViewGroup.jdField_a_of_type_Acnq = localacnq;
+      paramViewGroup.c.setImageBitmap(a(1, localacnq.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramViewGroup = (acns)paramView.getTag();
+      break;
+      label203:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacnq.b);
     }
   }
 }

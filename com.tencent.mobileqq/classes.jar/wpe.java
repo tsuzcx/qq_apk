@@ -1,6 +1,13 @@
-public abstract interface wpe<T>
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class wpe
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(wpn paramwpn, T paramT);
+  public wpe(wpc paramwpc, View paramView)
+  {
+    super(paramView);
+  }
 }
 
 

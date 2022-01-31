@@ -1,105 +1,42 @@
-import IMMsgBodyPack.PersonInfoChange;
-import IMMsgBodyPack.PersonInfoField;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
 
 public class akqm
-  extends akoo
 {
-  public akqm(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public static final HashSet<akqm> a;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
+  
+  static
   {
-    super(paramQQAppInterface, paramMessageHandler);
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
   
-  private void a(MsgInfo paramMsgInfo)
+  public akqm(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "Recieved user info update");
-    }
-    paramMsgInfo = new JceInputStream(paramMsgInfo.vMsg);
-    paramMsgInfo.setServerEncoding("utf-8");
-    PersonInfoChange localPersonInfoChange = new PersonInfoChange();
-    localPersonInfoChange.readFrom(paramMsgInfo);
-    int j;
-    int i;
-    long l;
-    int k;
-    if (localPersonInfoChange.cType == 0)
-    {
-      paramMsgInfo = localPersonInfoChange.vChgField.iterator();
-      j = 0;
-      i = 0;
-      if (paramMsgInfo.hasNext())
-      {
-        l = ((PersonInfoField)paramMsgInfo.next()).uField;
-        if ((l == 20015L) || (l == 10009L))
-        {
-          k = 1;
-          j = i;
-          i = k;
-        }
-      }
-    }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if ((l == 20002L) || (l == 20009L) || (l == 20031L) || (l == 20019L))
-      {
-        i = j;
-        j = 1;
-        continue;
-        if (this.a != null)
-        {
-          paramMsgInfo = (FriendListHandler)this.a.a(1);
-          if (j != 0) {
-            paramMsgInfo.c(this.a.getAccount());
-          }
-          if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ProfileCardMessageProcessor.1(this), 150L);
-          }
-        }
-        do
-        {
-          return;
-        } while ((localPersonInfoChange.cType != 1) || (!QLog.isColorLevel()));
-        QLog.d("MessageHandler", 2, "group data update push");
-      }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public akqj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  @NonNull
+  public String toString()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new akqj(null, false);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushMsg0x210_c7Info{");
+    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
+    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

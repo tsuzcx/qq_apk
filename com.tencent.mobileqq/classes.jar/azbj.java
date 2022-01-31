@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.TVKSDKInstallRunnable;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-public class azbj
-  implements TVK_SDKMgr.InstallListener
+public abstract class azbj
+  extends RecyclerView.ViewHolder
 {
-  public azbj(TribeVideoListPlayerFragment.TVKSDKInstallRunnable paramTVKSDKInstallRunnable) {}
+  public int a;
+  public SeekBar a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  public RelativeLayout b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
   
-  public void onInstallProgress(float paramFloat)
+  public azbj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, "plugin fail errorCode = " + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 1, "plugin success");
-    }
+    super(paramView);
   }
 }
 

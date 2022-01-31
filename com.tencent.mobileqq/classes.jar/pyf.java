@@ -1,25 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericPullAnimatorView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
 public class pyf
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public pyf(ComponentPolymericPullAnimatorView paramComponentPolymericPullAnimatorView, ArticleInfo paramArticleInfo, JSONObject paramJSONObject) {}
+  public pyf(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    onk.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericPullAnimatorView.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.d);
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "";
-    if (onk.o(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      noo.a(null, "CliOper", "", "", "0X800982B", "0X800982B", 0, 0, str, paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", this.jdField_a_of_type_OrgJsonJSONObject.toString(), false);
-      return;
-    }
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

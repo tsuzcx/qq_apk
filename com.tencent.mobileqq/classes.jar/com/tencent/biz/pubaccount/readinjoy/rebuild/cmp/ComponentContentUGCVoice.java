@@ -9,24 +9,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bawz;
+import baxn;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
-import noo;
-import pbi;
-import pqr;
-import prb;
-import pwu;
-import qdd;
-import qjc;
+import nol;
+import pbf;
+import pqo;
+import pqy;
+import pwr;
+import qda;
+import qiz;
 
 public class ComponentContentUGCVoice
   extends LinearLayout
-  implements pqr, qjc
+  implements pqo, qiz
 {
   public static final String a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -58,24 +58,24 @@ public class ComponentContentUGCVoice
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378569));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378570));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378568));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new pwu(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131378574));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378575));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378573));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new pwr(this));
   }
   
   public void a(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo)
   {
     if (paramUGCVoiceInfo == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848500);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848506);
       ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
     }
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((pbi)paramObject).a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((pbf)paramObject).a();
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.c == null)) {}
     do
     {
@@ -100,16 +100,16 @@ public class ComponentContentUGCVoice
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int <= 50) {
         break label355;
       }
-      paramObject.width = bawz.a(getContext(), 277.0F);
+      paramObject.width = baxn.a(getContext(), 277.0F);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramObject);
-      noo.a(null, "", "0X8009CA3", "0X8009CA3", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "", "", "", false);
+      nol.a(null, "", "0X8009CA3", "0X8009CA3", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "", "", "", false);
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Boolean) {
         break label483;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848500);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848506);
       ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
       return;
       i = 0;
@@ -122,27 +122,27 @@ public class ComponentContentUGCVoice
       break label132;
       label355:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int > 40) {
-        paramObject.width = bawz.a(getContext(), 237.0F);
+        paramObject.width = baxn.a(getContext(), 237.0F);
       } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int > 30) {
-        paramObject.width = bawz.a(getContext(), 197.0F);
+        paramObject.width = baxn.a(getContext(), 197.0F);
       } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int > 20) {
-        paramObject.width = bawz.a(getContext(), 157.0F);
+        paramObject.width = baxn.a(getContext(), 157.0F);
       } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo.jdField_a_of_type_Int > 10) {
-        paramObject.width = bawz.a(getContext(), 117.0F);
+        paramObject.width = baxn.a(getContext(), 117.0F);
       } else {
-        paramObject.width = bawz.a(getContext(), 85.0F);
+        paramObject.width = baxn.a(getContext(), 85.0F);
       }
     }
     label483:
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848499);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848505);
   }
   
-  public void a(prb paramprb) {}
+  public void a(pqy parampqy) {}
   
   public void b(SocializeFeedsInfo.UGCVoiceInfo paramUGCVoiceInfo)
   {
     if (paramUGCVoiceInfo == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCVoiceInfo) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848499);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848505);
     }
   }
 }

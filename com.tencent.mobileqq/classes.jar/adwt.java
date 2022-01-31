@@ -1,38 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-
-class adwt
-  implements bfoq
+public class adwt
 {
-  adwt(adwr paramadwr, MessageForPtt paramMessageForPtt, bfol parambfol) {}
+  public static float a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static float[] a;
+  public static boolean b;
+  public static boolean c;
+  public static boolean d;
+  public static boolean e;
+  public static boolean f;
+  public static boolean g;
+  public static boolean h;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    aaod.a(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = aaod.a(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
-    {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      ((MessageForPtt)paramView).isResend = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      aaod.a(this.jdField_a_of_type_Adwr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_Adwr.b();
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-    }
-    catch (RuntimeException paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        Toast.makeText(this.jdField_a_of_type_Adwr.jdField_a_of_type_AndroidContentContext, paramView.getMessage(), 0).show();
-      }
-    }
+    jdField_a_of_type_Float = 1.0F;
+    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
+    jdField_a_of_type_JavaLangString = "ptt_uin";
   }
 }
 

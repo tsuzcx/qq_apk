@@ -1,28 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class utw
-  extends QQUIEventReceiver<utu, tcg>
+  extends tja
 {
-  public utw(@NonNull utu paramutu)
+  public int a;
+  public String a;
+  public List<ShareGroupCollectionItem> a;
+  
+  public utw(ErrorMessage paramErrorMessage, String paramString)
   {
-    super(paramutu);
+    super(paramErrorMessage);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(@NonNull utu paramutu, @NonNull tcg paramtcg)
+  public String toString()
   {
-    if (paramtcg.a)
-    {
-      veg.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramtcg);
-      utu.a(paramutu).a.h();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tcg.class;
+    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

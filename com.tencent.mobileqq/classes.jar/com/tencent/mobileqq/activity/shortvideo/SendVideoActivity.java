@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import afaz;
-import ahub;
+import afax;
+import ahtz;
+import aigu;
 import aigw;
-import aigy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import axik;
-import axjq;
-import ayoz;
-import ayvv;
-import bbmi;
-import bfmt;
+import axim;
+import axjs;
+import aypb;
+import ayvx;
+import bbmw;
+import bfnk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -28,44 +28,44 @@ public class SendVideoActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  private static bfmt a;
+  private static bfnk a;
   
   public static void a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("sv_encode_max_bitrate", -1);
     if (i > 0) {
-      axik.r = i;
+      axim.r = i;
     }
     i = paramIntent.getIntExtra("sv_encode_min_bitrate", -1);
     if (i > 0) {
-      axik.s = i;
+      axim.s = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmax", -1);
     if (i > 0) {
-      axik.t = i;
+      axim.t = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmin", -1);
     if (i > 0) {
-      axik.u = i;
+      axim.u = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmaxdiff", -1);
     if (i > 0) {
-      axik.v = i;
+      axim.v = i;
     }
     i = paramIntent.getIntExtra("sv_encode_ref_frame", -1);
     if (i > 0) {
-      axik.w = i;
+      axim.w = i;
     }
     i = paramIntent.getIntExtra("sv_encode_smooth", -1);
     if (i > 0) {
-      axik.x = i;
+      axim.x = i;
     }
-    axik.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
-    axik.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
-    axik.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
-    axik.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
-    axik.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
-    axik.a(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
+    axim.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
+    axim.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
+    axim.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
+    axim.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
+    axim.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
+    axim.a(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -86,12 +86,12 @@ public class SendVideoActivity
         QLog.d("SendVideoActivity", 2, "doOnCreate(), <<===");
       }
       return true;
-      new aigy(this, null).execute(new Void[0]);
+      new aigw(this, null).execute(new Void[0]);
       continue;
       paramBundle = getIntent().getStringExtra("activity_before_enter_send_video");
       if ((paramBundle != null) && (ShortVideoPreviewActivity.class.getName().equals(paramBundle)))
       {
-        new aigw(this).execute(new Void[0]);
+        new aigu(this).execute(new Void[0]);
       }
       else
       {
@@ -105,8 +105,8 @@ public class SendVideoActivity
           }
           for (;;)
           {
-            ahub.a("", "0X80088E4", String.valueOf(i));
-            axjq.a(this.app, false);
+            ahtz.a("", "0X80088E4", String.valueOf(i));
+            axjs.a(this.app, false);
             break;
             if (j == 3000) {
               i = 2;
@@ -128,7 +128,7 @@ public class SendVideoActivity
             }
             else
             {
-              a = new bfmt(this);
+              a = new bfnk(this);
               a.sendEmptyMessageDelayed(1, 45000L);
             }
           }
@@ -162,13 +162,13 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((afaz)getAppInterface().getManager(138)).a();
+      paramMessage = ((afax)getAppInterface().getManager(138)).a();
       if (paramMessage != null)
       {
-        bbmi localbbmi = this.app.a().a(paramMessage.frienduin, paramMessage.uniseq);
-        if ((localbbmi != null) && (ShortVideoUploadProcessor.class.isInstance(localbbmi)))
+        bbmw localbbmw = this.app.a().a(paramMessage.frienduin, paramMessage.uniseq);
+        if ((localbbmw != null) && (ShortVideoUploadProcessor.class.isInstance(localbbmw)))
         {
-          boolean bool = ((ayoz)localbbmi).d();
+          boolean bool = ((aypb)localbbmw).d();
           int i = paramMessage.videoFileStatus;
           if ((bool) || (i == 1002) || (i == 1001)) {
             this.app.a().d(paramMessage.frienduin, paramMessage.uniseq);

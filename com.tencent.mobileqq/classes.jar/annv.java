@@ -1,25 +1,39 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
 
-class annv
+public class annv
 {
-  annv(annu paramannu) {}
-  
-  @QQPermissionDenied(1818)
-  public void denied()
+  public static void a(String paramString)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    annu.a(this.a);
-    this.a.onGetError(1830001);
+    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
-  @QQPermissionGrant(1818)
-  public void grant()
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    annu.a(this.a);
-    annu.b(this.a);
+    boolean bool = annu.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    if (!bool) {
+      ((ajti)paramQQAppInterface.a(2)).z();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.c();
+    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
+    paramQQAppInterface = andf.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
+    }
+    return (!paramBoolean) && (paramBoolean);
   }
 }
 

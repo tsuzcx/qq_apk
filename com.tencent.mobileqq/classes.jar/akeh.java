@@ -1,12 +1,12 @@
 class akeh
-  implements bgka
+  implements lxr
 {
-  akeh(akef paramakef) {}
+  akeh(akee paramakee) {}
   
-  public void a(bgjz parambgjz)
+  public void a(lxq paramlxq)
   {
-    parambgjz.a(this.a.a);
-    parambgjz.a();
+    paramlxq.a(this.a.a);
+    paramlxq.a();
   }
 }
 

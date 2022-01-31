@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import owd;
-import rxe;
+import owa;
+import rxb;
 
 public class ReadInJoyViolaChannelFragment$2$1
   implements Runnable
 {
-  public ReadInJoyViolaChannelFragment$2$1(owd paramowd) {}
+  public ReadInJoyViolaChannelFragment$2$1(owa paramowa) {}
   
   public void run()
   {

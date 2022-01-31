@@ -1,1140 +1,1483 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.Shader.TileMode;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.NinePatchDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import android.util.DisplayMetrics;
+import android.util.JsonReader;
+import android.util.Pair;
+import android.util.StateSet;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.ProfileQVipDiyView;
+import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONException;
+import com.tencent.widget.ListView;
+import com.tencent.widget.SingleLineTextView;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.StringReader;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class auvf
-  extends VasWebviewJsPlugin
 {
+  public static long a;
+  public static Typeface a;
+  public static final HashMap<String, String> a;
+  public static JSONObject a;
+  public static long b;
+  public static Typeface b;
+  public static JSONObject b;
+  public static long c;
+  public static long d;
+  public static long e;
+  public static long f;
+  public static long g;
+  public static long h;
+  public static long i;
+  public static long j;
+  public static long k;
+  public static long l;
+  public static long m;
+  public static long n;
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new auvg(this);
-  private bbwi jdField_a_of_type_Bbwi;
-  bfol jdField_a_of_type_Bfol = null;
-  public List<auwd> a;
-  public AtomicInteger a;
-  private boolean jdField_a_of_type_Boolean;
-  private final int b;
-  public AtomicInteger b;
-  private final int c = 1;
-  private final int d = 2;
+  public String a;
+  public ConcurrentHashMap<String, Object> a;
+  public boolean a;
+  public int b;
+  public String b;
+  private HashMap<String, Integer> b;
+  public int c;
+  public String c;
+  private HashMap<String, Shader.TileMode> c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public int k;
+  public String k;
+  public int l;
+  public String l;
+  public String m;
+  public String n;
+  public long o;
+  public String o;
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u = "";
+  
+  static
+  {
+    jdField_b_of_type_Long = 1L;
+    jdField_c_of_type_Long = 4L;
+    jdField_d_of_type_Long = 5L;
+    jdField_e_of_type_Long = 6L;
+    jdField_f_of_type_Long = 7L;
+    jdField_g_of_type_Long = 8L;
+    jdField_h_of_type_Long = 9L;
+    jdField_i_of_type_Long = 10L;
+    jdField_j_of_type_Long = 11L;
+    jdField_k_of_type_Long = 21L;
+    jdField_l_of_type_Long = 22L;
+    jdField_m_of_type_Long = 23L;
+    jdField_n_of_type_Long = 10000L;
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
   
   public auvf()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_b_of_type_Int = 0;
-    this.mPluginNameSpace = "card";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
+    this.jdField_j_of_type_JavaLangString = "";
+    this.jdField_k_of_type_JavaLangString = "";
+    this.jdField_l_of_type_JavaLangString = "";
+    this.jdField_m_of_type_JavaLangString = "";
+    this.jdField_n_of_type_JavaLangString = "";
+    this.jdField_o_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_b_of_type_JavaUtilHashMap.put("top", Integer.valueOf(48));
+    this.jdField_b_of_type_JavaUtilHashMap.put("bottom", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("left", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("right", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("center_vertical", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("fill_vertical", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("center_horizontal", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("fill_horizontal", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("center", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("fill", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("clip_vertical", Integer.valueOf(80));
+    this.jdField_b_of_type_JavaUtilHashMap.put("clip_horizontal", Integer.valueOf(80));
+    this.jdField_c_of_type_JavaUtilHashMap.put("clamp", Shader.TileMode.CLAMP);
+    this.jdField_c_of_type_JavaUtilHashMap.put("repeat", Shader.TileMode.REPEAT);
+    this.jdField_c_of_type_JavaUtilHashMap.put("mirror", Shader.TileMode.MIRROR);
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_b_of_type_Long), "game");
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_c_of_type_Long), "game");
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_d_of_type_Long), "game");
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_e_of_type_Long), "photo");
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_g_of_type_Long), "simple");
+    jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(jdField_h_of_type_Long), "shopping");
   }
   
-  private void a(int paramInt)
+  public static long a(@Nullable Card paramCard)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("com.tencent.mobileqq.action.closeWeb");
-      this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+    long l2 = 0L;
+    if (paramCard == null) {}
+    while ((!a(paramCard.lCurrentStyleId)) || (TextUtils.isEmpty(paramCard.diyComplicatedInfo))) {
+      return 0L;
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      d();
-      c();
-      axqw.b(null, "CliOper", "", "", "card_mall", "0X80066CA", 0, 0, "1", "", "", "");
-      return;
-    case 1: 
-      e();
-      c();
-      axqw.b(null, "CliOper", "", "", "card_mall", "0X80066CA", 0, 0, "2", "", "", "");
-      return;
-    }
-    c();
-    axqw.b(null, "CliOper", "", "", "card_mall", "0X80066CA", 0, 0, "3", "", "", "");
-  }
-  
-  private void b()
-  {
-    c();
-    this.jdField_a_of_type_Bfol = bfol.c(this.mRuntime.a());
-    this.jdField_a_of_type_Bfol.c(this.mRuntime.a().getResources().getString(2131719256));
-    this.jdField_a_of_type_Bfol.c(this.mRuntime.a().getResources().getString(2131719267));
-    this.jdField_a_of_type_Bfol.c(this.mRuntime.a().getResources().getString(2131690596));
-    this.jdField_a_of_type_Bfol.a(new auvh(this));
-    this.jdField_a_of_type_Bfol.setCanceledOnTouchOutside(true);
+    paramCard = new JsonReader(new StringReader(paramCard.diyComplicatedInfo));
     try
     {
-      this.jdField_a_of_type_Bfol.show();
-      axqw.b(null, "CliOper", "", "", "card_mall", "0X80066C9", 0, 0, "", "", "", "");
-      return;
+      paramCard.beginObject();
+      for (;;)
+      {
+        long l1 = l2;
+        if (paramCard.hasNext())
+        {
+          if ("v".equals(paramCard.nextName())) {
+            l1 = paramCard.nextLong();
+          }
+        }
+        else {
+          try
+          {
+            paramCard.close();
+            return l1;
+          }
+          catch (IOException paramCard)
+          {
+            paramCard.printStackTrace();
+            return l1;
+          }
+        }
+        paramCard.skipValue();
+      }
+      try
+      {
+        paramCard.close();
+        throw localObject;
+      }
+      catch (IOException paramCard)
+      {
+        for (;;)
+        {
+          paramCard.printStackTrace();
+        }
+      }
     }
-    catch (Exception localException) {}
+    catch (IOException localIOException)
+    {
+      localIOException = localIOException;
+      localIOException.printStackTrace();
+      try
+      {
+        paramCard.close();
+        return 0L;
+      }
+      catch (IOException paramCard)
+      {
+        paramCard.printStackTrace();
+        return 0L;
+      }
+    }
+    finally {}
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static void a(View paramView, String paramString1, auvf paramauvf, String paramString2)
+  {
+    if ((paramView == null) || (paramauvf == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (a(paramauvf.jdField_o_of_type_Long))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    do
+                                    {
+                                      return;
+                                      paramauvf = paramauvf.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
+                                    } while (paramauvf == null);
+                                    if ((!paramString1.equalsIgnoreCase("color")) || (!(paramView instanceof TextView))) {
+                                      break;
+                                    }
+                                    paramView = (TextView)paramView;
+                                    if ((paramauvf instanceof ColorStateList))
+                                    {
+                                      paramView.setTextColor((ColorStateList)paramauvf);
+                                      return;
+                                    }
+                                  } while (!(paramauvf instanceof String));
+                                  paramString1 = (String)paramauvf;
+                                } while (!paramString1.startsWith("#"));
+                                paramView.setTextColor(Color.parseColor(paramString1));
+                                return;
+                                if ((!paramString1.equalsIgnoreCase("color")) || (!(paramView instanceof SingleLineTextView))) {
+                                  break;
+                                }
+                                paramView = (SingleLineTextView)paramView;
+                                if ((paramauvf instanceof ColorStateList))
+                                {
+                                  paramView.setTextColor((ColorStateList)paramauvf);
+                                  return;
+                                }
+                              } while (!(paramauvf instanceof String));
+                              paramString1 = (String)paramauvf;
+                            } while (!paramString1.startsWith("#"));
+                            paramView.setTextColor(Color.parseColor(paramString1));
+                            return;
+                            if (!paramString1.equalsIgnoreCase("background")) {
+                              break;
+                            }
+                            if ((paramauvf instanceof Drawable))
+                            {
+                              paramString1 = ((Drawable)paramauvf).getConstantState().newDrawable();
+                              paramauvf = new Rect();
+                              paramString1.getPadding(paramauvf);
+                              int i1 = paramView.getPaddingTop();
+                              int i2 = paramauvf.top;
+                              int i3 = paramView.getPaddingLeft();
+                              int i4 = paramauvf.left;
+                              int i5 = paramView.getPaddingRight();
+                              int i6 = paramauvf.right;
+                              int i7 = paramView.getPaddingBottom();
+                              int i8 = paramauvf.bottom;
+                              paramauvf = paramView.findViewById(2131373086);
+                              if (Build.VERSION.SDK_INT >= 16)
+                              {
+                                paramView.setBackground(paramString1);
+                                if (paramauvf != null) {
+                                  paramauvf.setBackground(paramString1);
+                                }
+                              }
+                              for (;;)
+                              {
+                                paramView.setPadding(i3 + i4, i1 + i2, i5 + i6, i8 + i7);
+                                return;
+                                paramView.setBackgroundDrawable(paramString1);
+                                if (paramauvf != null) {
+                                  paramauvf.setBackgroundDrawable(paramString1);
+                                }
+                              }
+                            }
+                          } while (!(paramauvf instanceof String));
+                          paramString1 = (String)paramauvf;
+                        } while (!paramString1.startsWith("#"));
+                        paramView.setBackgroundColor(Color.parseColor(paramString1));
+                        return;
+                        if ((!paramString1.equalsIgnoreCase("drawableleft")) || (!(paramView instanceof TextView))) {
+                          break;
+                        }
+                      } while (!(paramauvf instanceof Drawable));
+                      paramView = (TextView)paramView;
+                    } while (!(paramauvf instanceof Drawable));
+                    paramView.setCompoundDrawablesWithIntrinsicBounds(((Drawable)paramauvf).getConstantState().newDrawable(), null, null, null);
+                    return;
+                    if ((!paramString1.equalsIgnoreCase("drawableright")) || (!(paramView instanceof TextView))) {
+                      break;
+                    }
+                  } while (!(paramauvf instanceof Drawable));
+                  paramView = (TextView)paramView;
+                } while (!(paramauvf instanceof Drawable));
+                paramView.setCompoundDrawablesWithIntrinsicBounds(null, null, ((Drawable)paramauvf).getConstantState().newDrawable(), null);
+                return;
+                if ((!paramString1.equalsIgnoreCase("src")) || (!(paramView instanceof ImageView))) {
+                  break;
+                }
+              } while (!(paramauvf instanceof Drawable));
+              paramView = (ImageView)paramView;
+            } while (!(paramauvf instanceof Drawable));
+            paramView.setImageDrawable(((Drawable)paramauvf).getConstantState().newDrawable());
+            return;
+            if ((!paramString1.equalsIgnoreCase("contentBackground")) || (!(paramView instanceof ListView))) {
+              break;
+            }
+          } while (!(paramauvf instanceof Drawable));
+          paramView = (ListView)paramView;
+        } while (!(paramauvf instanceof Drawable));
+        paramView.setContentBackground(((Drawable)paramauvf).getConstantState().newDrawable());
+        return;
+        if ((!paramString1.equalsIgnoreCase("apngDrawable")) || (!(paramView instanceof ImageView))) {
+          break;
+        }
+      } while (!(paramauvf instanceof URLDrawable));
+      ((ImageView)paramView).setImageDrawable((URLDrawable)paramauvf);
+      return;
+    } while ((!paramString1.equalsIgnoreCase("shimmer_mask")) || (!(paramView instanceof ShimmerLinearLayout)) || (!(paramauvf instanceof BitmapDrawable)));
+    paramString1 = (BitmapDrawable)paramauvf;
+    paramauvf = (ShimmerLinearLayout)paramView;
+    ((ShimmerLinearLayout)paramView).setMask(paramString1.getBitmap(), 1, 2000, 1000);
+  }
+  
+  public static void a(ProfileQVipDiyView paramProfileQVipDiyView, String paramString, TextView paramTextView, View paramView, ImageView paramImageView)
+  {
+    paramProfileQVipDiyView.a(paramString, paramTextView, paramView, paramImageView);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return (paramLong == jdField_l_of_type_Long) || (paramLong == jdField_m_of_type_Long);
+  }
+  
+  public static boolean a(Card paramCard)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramCard != null) {
+      if (paramCard.lCurrentStyleId != jdField_i_of_type_Long)
+      {
+        bool1 = bool2;
+        if (paramCard.lCurrentStyleId != jdField_j_of_type_Long) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public ColorStateList a(JSONArray paramJSONArray)
+  {
+    int i4;
+    int i3;
+    Object localObject1;
+    Object localObject2;
+    int i5;
+    Object localObject3;
+    int i1;
+    int i2;
+    int i6;
+    if (paramJSONArray != null)
+    {
+      i4 = 20;
+      i3 = 0;
+      localObject1 = new int[20];
+      localObject2 = new int[20][];
+      int i7 = paramJSONArray.length();
+      i5 = 0;
+      if (i5 < i7)
+      {
+        localObject3 = paramJSONArray.optJSONObject(i5);
+        if ((localObject3 == null) || (!((JSONObject)localObject3).has("color"))) {
+          break label702;
+        }
+        Object localObject4 = ((JSONObject)localObject3).optString("color");
+        if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
+          break label702;
+        }
+        Object localObject5 = ((JSONObject)localObject3).keys();
+        int[] arrayOfInt = new int[((JSONObject)localObject3).length()];
+        i1 = -65536;
+        i2 = 0;
+        if (((Iterator)localObject5).hasNext())
+        {
+          String str = (String)((Iterator)localObject5).next();
+          if (str.equalsIgnoreCase("state_pressed")) {
+            if (((JSONObject)localObject3).optBoolean("state_pressed"))
+            {
+              i6 = 16842919;
+              label158:
+              arrayOfInt[i2] = i6;
+              i6 = i2 + 1;
+              i2 = i1;
+              i1 = i6;
+            }
+          }
+          for (;;)
+          {
+            label174:
+            i6 = i2;
+            i2 = i1;
+            i1 = i6;
+            break;
+            i6 = -16842919;
+            break label158;
+            if (str.equalsIgnoreCase("state_focused"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_focused")) {}
+              for (i6 = 16842908;; i6 = -16842908)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (str.equalsIgnoreCase("state_selected"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_selected")) {}
+              for (i6 = 16842913;; i6 = -16842913)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (str.equalsIgnoreCase("state_checkable"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_checkable")) {}
+              for (i6 = 16842911;; i6 = -16842911)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (str.equalsIgnoreCase("state_checked"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_checked")) {}
+              for (i6 = 16842912;; i6 = -16842912)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (str.equalsIgnoreCase("state_enabled"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_enabled")) {}
+              for (i6 = 16842910;; i6 = -16842910)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (str.equalsIgnoreCase("state_window_focused"))
+            {
+              if (((JSONObject)localObject3).optBoolean("state_window_focused")) {}
+              for (i6 = 16842909;; i6 = -16842909)
+              {
+                arrayOfInt[i2] = i6;
+                i6 = i2 + 1;
+                i2 = i1;
+                i1 = i6;
+                break;
+              }
+            }
+            if (!str.equalsIgnoreCase("color")) {
+              break label691;
+            }
+            i6 = Color.parseColor((String)localObject4);
+            i1 = i2;
+            i2 = i6;
+          }
+        }
+        localObject5 = StateSet.trimStateSet(arrayOfInt, i2);
+        if (i3 + 1 < i4) {
+          break label685;
+        }
+        i2 = i3 + 1;
+        localObject3 = new int[i2];
+        System.arraycopy(localObject1, 0, localObject3, 0, i3);
+        localObject4 = new int[i2][];
+        System.arraycopy(localObject2, 0, localObject4, 0, i3);
+        localObject1 = localObject3;
+        localObject2 = localObject4;
+        label606:
+        localObject1[i3] = i1;
+        localObject2[i3] = localObject5;
+        i1 = i3 + 1;
+        i4 = i2;
+      }
+    }
+    for (;;)
+    {
+      i5 += 1;
+      i3 = i1;
+      break;
+      paramJSONArray = new int[i3];
+      localObject3 = new int[i3][];
+      System.arraycopy(localObject1, 0, paramJSONArray, 0, i3);
+      System.arraycopy(localObject2, 0, localObject3, 0, i3);
+      return new ColorStateList((int[][])localObject3, paramJSONArray);
+      return null;
+      label685:
+      i2 = i4;
+      break label606;
+      label691:
+      i6 = i1;
+      i1 = i2;
+      i2 = i6;
+      break label174;
+      label702:
+      i1 = i3;
+    }
+  }
+  
+  public Drawable a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable fileName=" + paramString);
+    }
+    String str = null;
+    Object localObject2 = null;
+    label706:
+    label712:
+    label717:
+    label720:
+    label723:
+    for (;;)
+    {
+      try
+      {
+        localResources = paramQQAppInterface.getApp().getResources();
+        localObject1 = str;
+        if (paramString == null) {
+          break label720;
+        }
+        localObject1 = str;
+        if (paramString.length() <= 0) {
+          break label720;
+        }
+        Object localObject3 = bbac.a(paramQQAppInterface, -1L);
+        localObject1 = str;
+        if (localObject3 == null) {
+          break label720;
+        }
+        localObject1 = str;
+        if (((String)localObject3).length() <= 0) {
+          break label720;
+        }
+        localObject1 = (String)localObject3 + File.separator + paramString;
+        if (!paramBoolean2) {
+          break label717;
+        }
+        localObject1 = paramString;
+        str = "profilecard:" + (String)localObject1;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable filePath=" + (String)localObject1);
+        }
+        if (paramBoolean1)
+        {
+          localObject3 = (Pair)BaseApplicationImpl.sImageCache.get(str);
+          if ((localObject3 != null) && (((Pair)localObject3).first != null))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable form sImageCache filePath=" + (String)localObject1);
+            }
+            return ((Drawable.ConstantState)((Pair)localObject3).first).newDrawable();
+          }
+        }
+        localObject3 = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject3).inDensity = 320;
+        ((BitmapFactory.Options)localObject3).inScreenDensity = paramQQAppInterface.getApp().getResources().getDisplayMetrics().densityDpi;
+        ((BitmapFactory.Options)localObject3).inTargetDensity = paramQQAppInterface.getApp().getResources().getDisplayMetrics().densityDpi;
+        ((BitmapFactory.Options)localObject3).inScaled = true;
+        if ((paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg"))) {
+          ((BitmapFactory.Options)localObject3).inPreferredConfig = Bitmap.Config.RGB_565;
+        }
+        paramQQAppInterface = BitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream((String)localObject1)), null, (BitmapFactory.Options)localObject3);
+        if (paramQQAppInterface == null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable bitmap density=" + paramQQAppInterface.getDensity() + ",width=" + paramQQAppInterface.getWidth() + ",height=" + paramQQAppInterface.getHeight());
+        }
+        i1 = Utils.getBitmapSize(paramQQAppInterface);
+        if (!paramString.endsWith(".9.png")) {
+          continue;
+        }
+        localObject1 = paramQQAppInterface.getNinePatchChunk();
+        if (localObject1 == null) {
+          break label712;
+        }
+        paramQQAppInterface = new NinePatchDrawable(localResources, paramQQAppInterface, (byte[])localObject1, new Rect(0, 0, 0, 0), null);
+        paramQQAppInterface.setTargetDensity(localResources.getDisplayMetrics());
+      }
+      catch (OutOfMemoryError paramQQAppInterface)
+      {
+        Resources localResources;
+        paramQQAppInterface.printStackTrace();
+        return null;
+        if ((!paramString.endsWith(".png")) && (!paramString.endsWith(".jpg")) && (!paramString.endsWith(".jpeg"))) {
+          continue;
+        }
+        paramQQAppInterface = new BitmapDrawable(localResources, paramQQAppInterface);
+        paramQQAppInterface.setTargetDensity(localResources.getDisplayMetrics());
+        continue;
+        if (!QLog.isColorLevel()) {
+          break label706;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable file not ");
+        paramQQAppInterface = localObject2;
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable bitmap is null");
+        int i1 = 0;
+        paramQQAppInterface = localObject2;
+        continue;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "getTemplateDrawable exception fileName=" + paramString + ",msg=" + paramQQAppInterface.getMessage());
+        return null;
+      }
+      Object localObject1 = paramQQAppInterface;
+      if (paramQQAppInterface != null)
+      {
+        localObject1 = paramQQAppInterface;
+        if (paramBoolean1)
+        {
+          BaseApplicationImpl.sImageCache.put(str, new Pair(paramQQAppInterface.getConstantState(), Integer.valueOf(i1)));
+          return paramQQAppInterface;
+          paramQQAppInterface = localObject2;
+          continue;
+          paramQQAppInterface = null;
+          break label723;
+          continue;
+        }
+      }
+      return localObject1;
+    }
+  }
+  
+  public Drawable a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.has("src")))
+    {
+      Object localObject = paramJSONObject.optString("src");
+      if ((localObject != null) && (((String)localObject).length() > 0))
+      {
+        localObject = (BitmapDrawable)a(paramQQAppInterface, (String)localObject, true, false);
+        Iterator localIterator = paramJSONObject.keys();
+        if (localObject != null) {
+          for (;;)
+          {
+            paramQQAppInterface = (QQAppInterface)localObject;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            paramQQAppInterface = (String)localIterator.next();
+            if (paramQQAppInterface.equalsIgnoreCase("antialias"))
+            {
+              ((BitmapDrawable)localObject).setAntiAlias(paramJSONObject.optBoolean("antialias"));
+            }
+            else if (paramQQAppInterface.equalsIgnoreCase("dither"))
+            {
+              ((BitmapDrawable)localObject).setDither(paramJSONObject.optBoolean("dither"));
+            }
+            else if (paramQQAppInterface.equalsIgnoreCase("filter"))
+            {
+              ((BitmapDrawable)localObject).setFilterBitmap(paramJSONObject.optBoolean("filter"));
+            }
+            else if (paramQQAppInterface.equalsIgnoreCase("gravity"))
+            {
+              paramQQAppInterface = paramJSONObject.optString("gravity").toLowerCase();
+              if ((!TextUtils.isEmpty(paramQQAppInterface)) && (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramQQAppInterface))) {
+                ((BitmapDrawable)localObject).setGravity(((Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramQQAppInterface)).intValue());
+              }
+            }
+            else if (paramQQAppInterface.equalsIgnoreCase("tileMode"))
+            {
+              paramQQAppInterface = paramJSONObject.optString("tileMode", "disabled").toLowerCase();
+              if ((!TextUtils.isEmpty(paramQQAppInterface)) && (this.jdField_c_of_type_JavaUtilHashMap.containsKey(paramQQAppInterface)))
+              {
+                paramQQAppInterface = (Shader.TileMode)this.jdField_c_of_type_JavaUtilHashMap.get(paramQQAppInterface);
+                ((BitmapDrawable)localObject).setTileModeXY(paramQQAppInterface, paramQQAppInterface);
+              }
+              else
+              {
+                ((BitmapDrawable)localObject).setTileModeXY(null, null);
+              }
+            }
+          }
+        }
+      }
+    }
+    paramQQAppInterface = null;
+    return paramQQAppInterface;
+  }
+  
+  public StateListDrawable a(QQAppInterface paramQQAppInterface, JSONArray paramJSONArray)
+  {
+    StateListDrawable localStateListDrawable;
+    int i2;
+    Object localObject;
+    String str1;
+    int[] arrayOfInt;
+    int i1;
+    Drawable localDrawable;
+    label97:
+    String str2;
+    int i3;
+    if (paramJSONArray != null)
+    {
+      localStateListDrawable = new StateListDrawable();
+      int i4 = paramJSONArray.length();
+      i2 = 0;
+      if (i2 < i4)
+      {
+        localObject = paramJSONArray.optJSONObject(i2);
+        if ((localObject != null) && (((JSONObject)localObject).has("drawable")))
+        {
+          str1 = ((JSONObject)localObject).optString("drawable");
+          if ((str1 != null) && (str1.length() > 0))
+          {
+            Iterator localIterator = ((JSONObject)localObject).keys();
+            arrayOfInt = new int[((JSONObject)localObject).length()];
+            i1 = 0;
+            localDrawable = null;
+            if (localIterator.hasNext())
+            {
+              str2 = (String)localIterator.next();
+              i3 = Build.VERSION.SDK_INT;
+              if (str2.equalsIgnoreCase("state_pressed")) {
+                if (((JSONObject)localObject).optBoolean("state_pressed"))
+                {
+                  i3 = 16842919;
+                  label151:
+                  arrayOfInt[i1] = i3;
+                  i1 += 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      break label97;
+      i3 = -16842919;
+      break label151;
+      if (str2.equalsIgnoreCase("state_focused"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_focused")) {}
+        for (i3 = 16842908;; i3 = -16842908)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if ((str2.equalsIgnoreCase("state_hovered")) && (i3 >= 14))
+      {
+        if (((JSONObject)localObject).optBoolean("state_hovered")) {}
+        for (i3 = 16843623;; i3 = -16843623)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("state_selected"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_selected")) {}
+        for (i3 = 16842913;; i3 = -16842913)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("state_checkable"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_checkable")) {}
+        for (i3 = 16842911;; i3 = -16842911)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("state_checked"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_checked")) {}
+        for (i3 = 16842912;; i3 = -16842912)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("state_enabled"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_enabled")) {}
+        for (i3 = 16842910;; i3 = -16842910)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if ((str2.equalsIgnoreCase("state_activated")) && (i3 >= 11))
+      {
+        if (((JSONObject)localObject).optBoolean("state_activated")) {}
+        for (i3 = 16843518;; i3 = -16843518)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("state_window_focused"))
+      {
+        if (((JSONObject)localObject).optBoolean("state_window_focused")) {}
+        for (i3 = 16842909;; i3 = -16842909)
+        {
+          arrayOfInt[i1] = i3;
+          i1 += 1;
+          break;
+        }
+      }
+      if (str2.equalsIgnoreCase("drawable"))
+      {
+        localDrawable = a(paramQQAppInterface, str1, true, false);
+        continue;
+        localObject = StateSet.trimStateSet(arrayOfInt, i1);
+        if (localDrawable != null) {
+          localStateListDrawable.addState((int[])localObject, localDrawable);
+        }
+        i2 += 1;
+        break;
+        return localStateListDrawable;
+        return null;
+      }
+    }
   }
   
   /* Error */
-  private void c()
+  public JSONObject a(QQAppInterface paramQQAppInterface, long paramLong)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   4: ifnull +25 -> 29
-    //   7: aload_0
-    //   8: getfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   11: invokevirtual 163	bfol:isShowing	()Z
-    //   14: ifeq +15 -> 29
-    //   17: aload_0
-    //   18: getfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   21: invokevirtual 166	bfol:dismiss	()V
-    //   24: aload_0
-    //   25: aconst_null
-    //   26: putfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   29: return
-    //   30: astore_1
-    //   31: aload_0
-    //   32: aconst_null
-    //   33: putfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   36: return
-    //   37: astore_1
-    //   38: aload_0
-    //   39: aconst_null
-    //   40: putfield 51	auvf:jdField_a_of_type_Bfol	Lbfol;
-    //   43: aload_1
-    //   44: athrow
+    //   0: lload_2
+    //   1: lconst_1
+    //   2: lcmp
+    //   3: ifne +60 -> 63
+    //   6: ldc_w 781
+    //   9: astore 5
+    //   11: invokestatic 529	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   14: ifeq +31 -> 45
+    //   17: ldc_w 531
+    //   20: iconst_2
+    //   21: new 533	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 534	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 783
+    //   31: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: aload 5
+    //   36: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 543	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 546	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: lload_2
+    //   46: lconst_1
+    //   47: lcmp
+    //   48: ifne +23 -> 71
+    //   51: getstatic 785	auvf:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   54: ifnull +17 -> 71
+    //   57: getstatic 785	auvf:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   60: astore_1
+    //   61: aload_1
+    //   62: areturn
+    //   63: ldc_w 787
+    //   66: astore 5
+    //   68: goto -57 -> 11
+    //   71: lload_2
+    //   72: lconst_1
+    //   73: lcmp
+    //   74: ifeq +13 -> 87
+    //   77: getstatic 789	auvf:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   80: ifnull +7 -> 87
+    //   83: getstatic 789	auvf:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   86: areturn
+    //   87: invokestatic 529	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   90: ifeq +31 -> 121
+    //   93: ldc_w 531
+    //   96: iconst_2
+    //   97: new 533	java/lang/StringBuilder
+    //   100: dup
+    //   101: invokespecial 534	java/lang/StringBuilder:<init>	()V
+    //   104: ldc_w 791
+    //   107: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: aload 5
+    //   112: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 543	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: invokestatic 546	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   121: aload_1
+    //   122: ldc2_w 559
+    //   125: invokestatic 565	bbac:a	(Lcom/tencent/mobileqq/app/QQAppInterface;J)Ljava/lang/String;
+    //   128: astore_1
+    //   129: aload_1
+    //   130: ifnull +142 -> 272
+    //   133: aload_1
+    //   134: invokevirtual 460	java/lang/String:length	()I
+    //   137: ifle +135 -> 272
+    //   140: new 533	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 534	java/lang/StringBuilder:<init>	()V
+    //   147: aload_1
+    //   148: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: getstatic 570	java/io/File:separator	Ljava/lang/String;
+    //   154: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: aload 5
+    //   159: invokevirtual 540	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 543	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: astore_1
+    //   166: new 567	java/io/File
+    //   169: dup
+    //   170: aload_1
+    //   171: invokespecial 792	java/io/File:<init>	(Ljava/lang/String;)V
+    //   174: astore_1
+    //   175: aload_1
+    //   176: invokevirtual 795	java/io/File:exists	()Z
+    //   179: ifeq +239 -> 418
+    //   182: new 637	java/io/FileInputStream
+    //   185: dup
+    //   186: aload_1
+    //   187: invokespecial 798	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   190: astore 5
+    //   192: aload 5
+    //   194: astore_1
+    //   195: new 800	java/io/ByteArrayOutputStream
+    //   198: dup
+    //   199: invokespecial 801	java/io/ByteArrayOutputStream:<init>	()V
+    //   202: astore 6
+    //   204: aload 5
+    //   206: astore_1
+    //   207: sipush 4096
+    //   210: newarray byte
+    //   212: astore 7
+    //   214: aload 5
+    //   216: astore_1
+    //   217: aload 5
+    //   219: aload 7
+    //   221: iconst_0
+    //   222: sipush 4096
+    //   225: invokevirtual 807	java/io/InputStream:read	([BII)I
+    //   228: istore 4
+    //   230: iload 4
+    //   232: iconst_m1
+    //   233: if_icmpeq +41 -> 274
+    //   236: aload 5
+    //   238: astore_1
+    //   239: aload 6
+    //   241: aload 7
+    //   243: iconst_0
+    //   244: iload 4
+    //   246: invokevirtual 811	java/io/ByteArrayOutputStream:write	([BII)V
+    //   249: goto -35 -> 214
+    //   252: astore 6
+    //   254: aload 5
+    //   256: astore_1
+    //   257: aload 6
+    //   259: invokevirtual 812	java/lang/Exception:printStackTrace	()V
+    //   262: aload 5
+    //   264: ifnull +8 -> 272
+    //   267: aload 5
+    //   269: invokevirtual 813	java/io/InputStream:close	()V
+    //   272: aconst_null
+    //   273: areturn
+    //   274: aload 5
+    //   276: astore_1
+    //   277: new 207	java/lang/String
+    //   280: dup
+    //   281: aload 6
+    //   283: invokevirtual 816	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   286: ldc_w 818
+    //   289: invokespecial 821	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   292: astore 7
+    //   294: aload 5
+    //   296: astore 6
+    //   298: aload 7
+    //   300: ifnull +121 -> 421
+    //   303: aload 5
+    //   305: astore 6
+    //   307: aload 5
+    //   309: astore_1
+    //   310: aload 7
+    //   312: invokevirtual 460	java/lang/String:length	()I
+    //   315: ifle +106 -> 421
+    //   318: lload_2
+    //   319: lconst_1
+    //   320: lcmp
+    //   321: ifne +50 -> 371
+    //   324: aload 5
+    //   326: astore_1
+    //   327: new 452	org/json/JSONObject
+    //   330: dup
+    //   331: aload 7
+    //   333: invokespecial 822	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   336: putstatic 785	auvf:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   339: aload 5
+    //   341: astore_1
+    //   342: getstatic 785	auvf:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   345: astore 6
+    //   347: aload 6
+    //   349: astore_1
+    //   350: aload 5
+    //   352: ifnull -291 -> 61
+    //   355: aload 5
+    //   357: invokevirtual 813	java/io/InputStream:close	()V
+    //   360: aload 6
+    //   362: areturn
+    //   363: astore_1
+    //   364: aload_1
+    //   365: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   368: aload 6
+    //   370: areturn
+    //   371: aload 5
+    //   373: astore_1
+    //   374: new 452	org/json/JSONObject
+    //   377: dup
+    //   378: aload 7
+    //   380: invokespecial 822	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   383: putstatic 789	auvf:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   386: aload 5
+    //   388: astore_1
+    //   389: getstatic 789	auvf:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   392: astore 6
+    //   394: aload 6
+    //   396: astore_1
+    //   397: aload 5
+    //   399: ifnull -338 -> 61
+    //   402: aload 5
+    //   404: invokevirtual 813	java/io/InputStream:close	()V
+    //   407: aload 6
+    //   409: areturn
+    //   410: astore_1
+    //   411: aload_1
+    //   412: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   415: aload 6
+    //   417: areturn
+    //   418: aconst_null
+    //   419: astore 6
+    //   421: aload 6
+    //   423: ifnull -151 -> 272
+    //   426: aload 6
+    //   428: invokevirtual 813	java/io/InputStream:close	()V
+    //   431: goto -159 -> 272
+    //   434: astore_1
+    //   435: aload_1
+    //   436: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   439: goto -167 -> 272
+    //   442: astore_1
+    //   443: aload_1
+    //   444: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   447: goto -175 -> 272
+    //   450: astore 5
+    //   452: aconst_null
+    //   453: astore_1
+    //   454: aload_1
+    //   455: ifnull +7 -> 462
+    //   458: aload_1
+    //   459: invokevirtual 813	java/io/InputStream:close	()V
+    //   462: aload 5
+    //   464: athrow
+    //   465: astore_1
+    //   466: aload_1
+    //   467: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   470: goto -8 -> 462
+    //   473: astore 5
+    //   475: goto -21 -> 454
+    //   478: astore 6
+    //   480: aconst_null
+    //   481: astore 5
+    //   483: goto -229 -> 254
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	45	0	this	auvf
-    //   30	1	1	localException	Exception
-    //   37	7	1	localObject	Object
+    //   0	486	0	this	auvf
+    //   0	486	1	paramQQAppInterface	QQAppInterface
+    //   0	486	2	paramLong	long
+    //   228	17	4	i1	int
+    //   9	394	5	localObject1	Object
+    //   450	13	5	localObject2	Object
+    //   473	1	5	localObject3	Object
+    //   481	1	5	localObject4	Object
+    //   202	38	6	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   252	30	6	localException1	Exception
+    //   296	131	6	localObject5	Object
+    //   478	1	6	localException2	Exception
+    //   212	167	7	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   17	24	30	java/lang/Exception
-    //   17	24	37	finally
-  }
-  
-  private void d()
-  {
-    sendRemoteReq(anqp.a("selectPhoto", "", this.mOnRemoteResp.key, new Bundle()), false, false);
-  }
-  
-  private void e()
-  {
-    sendRemoteReq(anqp.a("takePhoto", "", this.mOnRemoteResp.key, new Bundle()), false, false);
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 0)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        return 0;
-      }
-      return -1;
-    }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 0))
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
-      return -2;
-    }
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + 1;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
-      if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g == auwd.jdField_a_of_type_JavaLangInteger) {
-        return 0;
-      }
-      i += 1;
-    }
-    return -1;
+    //   195	204	252	java/lang/Exception
+    //   207	214	252	java/lang/Exception
+    //   217	230	252	java/lang/Exception
+    //   239	249	252	java/lang/Exception
+    //   277	294	252	java/lang/Exception
+    //   310	318	252	java/lang/Exception
+    //   327	339	252	java/lang/Exception
+    //   342	347	252	java/lang/Exception
+    //   374	386	252	java/lang/Exception
+    //   389	394	252	java/lang/Exception
+    //   355	360	363	java/io/IOException
+    //   402	407	410	java/io/IOException
+    //   426	431	434	java/io/IOException
+    //   267	272	442	java/io/IOException
+    //   166	192	450	finally
+    //   458	462	465	java/io/IOException
+    //   195	204	473	finally
+    //   207	214	473	finally
+    //   217	230	473	finally
+    //   239	249	473	finally
+    //   257	262	473	finally
+    //   277	294	473	finally
+    //   310	318	473	finally
+    //   327	339	473	finally
+    //   342	347	473	finally
+    //   374	386	473	finally
+    //   389	394	473	finally
+    //   166	192	478	java/lang/Exception
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {}
-    String str;
-    for (;;)
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
     {
-      return;
-      try
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        if (a() == 0)
-        {
-          localObject = (auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          str = ((auwd)localObject).jdField_d_of_type_JavaLangString;
-          Long localLong = ((auwd)localObject).jdField_a_of_type_JavaLangLong;
-          if (((auwd)localObject).jdField_b_of_type_Boolean)
-          {
-            ((auwd)localObject).jdField_b_of_type_Boolean = false;
-            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-            localObject = anqp.a("card_download_wzry_template", str, this.mOnRemoteResp.key, new Bundle());
-            ((Bundle)localObject).putLong("bgId", localLong.longValue());
-            sendRemoteReq((Bundle)localObject, false, false);
-            return;
-          }
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if ((localEntry.getValue() instanceof Drawable)) {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEntry.getKey());
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
     }
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-    Object localObject = anqp.a("card_download", str, this.mOnRemoteResp.key, new Bundle());
-    ((Bundle)localObject).putLong("bgId", localException.longValue());
-    sendRemoteReq((Bundle)localObject, false, false);
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCardWebviewPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
-    }
-    callJs(paramString1, new String[] { paramString2 });
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("card"))) {
-      return false;
-    }
-    Object localObject2;
-    Object localObject1;
-    long l1;
-    String str;
-    int j;
-    try
+    for (;;)
     {
-      paramString1 = new JSONObject(paramVarArgs[0]);
-      if (paramString1 == null) {
-        return false;
-      }
-    }
-    catch (JSONException paramJsBridgeListener)
-    {
-      for (;;)
+      String str2;
+      String str1;
+      try
       {
         if (QLog.isColorLevel()) {
-          QLog.i("ProfileCardWebviewPlugin", 2, "Failed to parse json str,json=" + paramVarArgs[0]);
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig config file is " + paramLong1);
         }
-        paramString1 = null;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileCardWebviewPlugin", 2, "method:" + paramString3 + ", json:" + paramString1.toString());
-      }
-      paramJsBridgeListener = "callback";
-      localObject2 = new JSONObject();
-      paramVarArgs = new JSONObject();
-      localObject1 = this.mRuntime.a().getApplicationContext();
-      try
-      {
-        paramString2 = paramString1.optString("callback");
-        paramJsBridgeListener = paramString2;
-        if (paramString3.equals("getInfo"))
-        {
-          paramJsBridgeListener = paramString2;
-          sendRemoteReq(anqp.a("card_getinfo", paramString2, this.mOnRemoteResp.key, new Bundle()), false, false);
-        }
-        else
-        {
-          paramJsBridgeListener = paramString2;
-          if (paramString3.equals("setSummaryCard"))
-          {
-            paramJsBridgeListener = paramString2;
-            if (QLog.isColorLevel())
-            {
-              paramJsBridgeListener = paramString2;
-              QLog.d("DIYProfileTemplate.ProfileCardWebviewPlugin", 1, "setSummaryCard :" + paramString1);
-            }
-            paramJsBridgeListener = paramString2;
-            paramString3 = anqp.a("card_setSummaryCard", paramString2, this.mOnRemoteResp.key, new Bundle());
-            paramJsBridgeListener = paramString2;
-            paramString3.putInt("styleId", paramString1.getInt("styleId"));
-            paramJsBridgeListener = paramString2;
-            paramString3.putInt("bgId", paramString1.optInt("bgId", 0));
-            paramJsBridgeListener = paramString2;
-            paramString3.putLong("cardId", paramString1.optLong("cardId", 0L));
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("extInfo", paramString1.optString("extInfo"));
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("renderInfo", paramString1.optString("renderInfo"));
-            paramJsBridgeListener = paramString2;
-            sendRemoteReq(paramString3, false, false);
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
+        localObject1 = "";
+        str2 = (String)jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramLong2));
+        localObject2 = localObject1;
         try
         {
-          paramVarArgs.put("result", -1);
-          paramVarArgs.put("message", "ProfileCardWebviewPlugin Exception");
-          a(paramJsBridgeListener, paramVarArgs.toString());
+          localJSONObject1 = a(paramQQAppInterface, paramLong1);
+          if (localJSONObject1 != null) {
+            continue;
+          }
+          bool = false;
         }
-        catch (JSONException paramJsBridgeListener)
+        catch (Exception paramQQAppInterface)
         {
-          paramJsBridgeListener.printStackTrace();
-        }
-        paramJsBridgeListener = paramString2;
-        if (paramString3.equals("download"))
-        {
-          paramJsBridgeListener = paramString2;
-          paramString3 = paramString1.getString("image_url");
-          paramJsBridgeListener = paramString2;
-          localObject2 = paramString1.optString("dynamicZip");
-          paramJsBridgeListener = paramString2;
-          i = paramString1.optInt("id");
-          paramJsBridgeListener = paramString2;
-          if (auux.a((Context)localObject1, i, "cardPreview.jpg"))
-          {
-            paramJsBridgeListener = paramString2;
-            if (QLog.isColorLevel())
-            {
-              paramJsBridgeListener = paramString2;
-              QLog.d("ProfileCardWebviewPlugin", 2, "handleJsRequest bg exists, dynamicZip = " + (String)localObject2);
-            }
-            paramJsBridgeListener = paramString2;
-            if (TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              paramJsBridgeListener = paramString2;
-              paramVarArgs.put("result", 0);
-              paramJsBridgeListener = paramString2;
-              paramVarArgs.put("message", "local has");
-              paramJsBridgeListener = paramString2;
-              a(paramString2, paramVarArgs.toString());
-              return true;
-            }
-            paramJsBridgeListener = paramString2;
-            if (auux.a((Context)localObject1, i, ".dynamic"))
-            {
-              paramJsBridgeListener = paramString2;
-              paramVarArgs.put("result", 0);
-              paramJsBridgeListener = paramString2;
-              paramVarArgs.put("message", "local has");
-              paramJsBridgeListener = paramString2;
-              a(paramString2, paramVarArgs.toString());
-              return true;
-            }
-          }
-          paramJsBridgeListener = paramString2;
-          if (!bbev.d(this.mRuntime.a().getApplicationContext()))
-          {
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("result", -2);
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("message", "no network");
-            paramJsBridgeListener = paramString2;
-            a(paramString2, paramVarArgs.toString());
-            return true;
-          }
-          paramJsBridgeListener = paramString2;
-          l1 = bazo.b();
-          if (l1 < 102400)
-          {
-            paramJsBridgeListener = paramString2;
-            if (QLog.isColorLevel())
-            {
-              paramJsBridgeListener = paramString2;
-              QLog.d("ProfileCardWebviewPlugin", 2, "Insufficient SDCard space, reserved:" + 102400 + "|available:" + l1);
-            }
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("result", -3);
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("message", "Insufficient SDCard space.");
-            paramJsBridgeListener = paramString2;
-            a(paramString2, paramVarArgs.toString());
-            return true;
-          }
-          paramJsBridgeListener = paramString2;
-          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)
-          {
-            paramJsBridgeListener = paramString2;
-            if (((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g == auwd.jdField_d_of_type_JavaLangInteger)
-            {
-              paramJsBridgeListener = paramString2;
-              if (((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString3))
-              {
-                paramJsBridgeListener = paramString2;
-                if (paramString1.getLong("id") == ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).jdField_a_of_type_JavaLangLong.longValue())
-                {
-                  paramJsBridgeListener = paramString2;
-                  ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g = auwd.jdField_b_of_type_JavaLangInteger;
-                  paramJsBridgeListener = paramString2;
-                  ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).jdField_d_of_type_JavaLangString = paramString2;
-                  return true;
-                }
-              }
-            }
-          }
-          paramJsBridgeListener = paramString2;
-          paramString1 = new auwd();
-          paramJsBridgeListener = paramString2;
-          paramString1.jdField_a_of_type_JavaLangLong = Long.valueOf(i);
-          paramJsBridgeListener = paramString2;
-          paramString1.jdField_a_of_type_JavaLangString = paramString3;
-          paramJsBridgeListener = paramString2;
-          paramString1.jdField_b_of_type_JavaLangString = ((String)localObject2);
-          paramJsBridgeListener = paramString2;
-          paramString1.jdField_d_of_type_JavaLangString = paramString2;
-          paramJsBridgeListener = paramString2;
-          paramString1.e = Integer.valueOf(0);
-          paramJsBridgeListener = paramString2;
-          paramString1.g = auwd.jdField_a_of_type_JavaLangInteger;
-          paramJsBridgeListener = paramString2;
-          this.jdField_a_of_type_JavaUtilList.add(paramString1);
-          paramJsBridgeListener = paramString2;
-          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0) {
-            break label3634;
-          }
-          paramJsBridgeListener = paramString2;
-          a();
-          break label3634;
-        }
-        paramJsBridgeListener = paramString2;
-        if (!paramString3.equals("queryDownloadInfo")) {
-          break label1739;
-        }
-      }
-      paramJsBridgeListener = paramString2;
-      paramString3 = paramString1.getString("image_url");
-      paramJsBridgeListener = paramString2;
-      str = paramString1.optString("dynamicZip");
-      paramJsBridgeListener = paramString2;
-      j = paramString1.optInt("id");
-      paramJsBridgeListener = paramString2;
-      if (!auux.a((Context)localObject1, j, "cardPreview.jpg")) {
-        break label1216;
-      }
-    }
-    paramJsBridgeListener = paramString2;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramJsBridgeListener = paramString2;
-      if (!auux.a((Context)localObject1, j, ".dynamic")) {}
-    }
-    else
-    {
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 3);
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("progress", 100);
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("result", 0);
-    }
-    for (;;)
-    {
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("data", localObject2);
-      paramJsBridgeListener = paramString2;
-      a(paramString2, paramVarArgs.toString());
-      break label3634;
-      label1216:
-      paramJsBridgeListener = paramString2;
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0) {
-        break;
-      }
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 1);
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("progress", 0);
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("result", 0);
-    }
-    paramJsBridgeListener = paramString2;
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    paramJsBridgeListener = paramString2;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramJsBridgeListener = paramString2;
-      if (!((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString3)) {
-        break label3636;
-      }
-      paramJsBridgeListener = paramString2;
-      if (j != ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong.longValue()) {
-        break label3636;
-      }
-      paramJsBridgeListener = paramString2;
-      if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g == auwd.jdField_d_of_type_JavaLangInteger) {
-        break label3636;
-      }
-      paramJsBridgeListener = paramString2;
-      if (QLog.isColorLevel())
-      {
-        paramJsBridgeListener = paramString2;
-        QLog.i("ProfileCardWebviewPlugin", 2, "mIndex:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ",id:" + ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong + "status:" + ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g);
-      }
-      paramJsBridgeListener = paramString2;
-      if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g != auwd.jdField_a_of_type_JavaLangInteger)
-      {
-        paramJsBridgeListener = paramString2;
-        if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g != auwd.jdField_b_of_type_JavaLangInteger) {}
-      }
-      else
-      {
-        paramJsBridgeListener = paramString2;
-        paramString1 = anqp.a("card_query_download", paramString2, this.mOnRemoteResp.key, new Bundle());
-        paramJsBridgeListener = paramString2;
-        paramString1.putInt("bgId", j);
-        paramJsBridgeListener = paramString2;
-        sendRemoteReq(paramString1, false, false);
-        return true;
-      }
-      paramJsBridgeListener = paramString2;
-      if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g != auwd.jdField_c_of_type_JavaLangInteger) {
-        break label1712;
-      }
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 1);
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("progress", ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).e);
-    }
-    for (;;)
-    {
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("result", ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).f);
-      paramJsBridgeListener = paramString2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-        break;
-      }
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 1);
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("progress", 0);
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("result", 0);
-      break;
-      label1712:
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 1);
-      paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("progress", 0);
-    }
-    label1739:
-    paramJsBridgeListener = paramString2;
-    label1974:
-    label2748:
-    int k;
-    if (paramString3.equals("preview"))
-    {
-      paramJsBridgeListener = paramString2;
-      paramString3 = new Intent(this.mRuntime.a(), VipProfileCardPreviewActivity.class);
-      paramJsBridgeListener = paramString2;
-      paramString3.putExtra("preview", paramString1.toString());
-      paramJsBridgeListener = paramString2;
-      super.startActivityForResult(paramString3, (byte)1);
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("result", 0);
-      paramJsBridgeListener = paramString2;
-      paramVarArgs.put("message", "ok");
-      paramJsBridgeListener = paramString2;
-      a(paramString2, paramVarArgs.toString());
-    }
-    else
-    {
-      paramJsBridgeListener = paramString2;
-      if (paramString3.equals("getTime"))
-      {
-        paramJsBridgeListener = paramString2;
-        paramVarArgs.put("data", NetConnInfoCenter.getServerTimeMillis());
-        paramJsBridgeListener = paramString2;
-        paramVarArgs.put("result", 0);
-        paramJsBridgeListener = paramString2;
-        paramVarArgs.put("message", "");
-        paramJsBridgeListener = paramString2;
-        a(paramString2, paramVarArgs.toString());
-      }
-      else
-      {
-        paramJsBridgeListener = paramString2;
-        if (paramString3.equals("cancelDownload"))
-        {
-          paramJsBridgeListener = paramString2;
-          paramString3 = paramString1.getString("image_url");
-          paramJsBridgeListener = paramString2;
-          l1 = paramString1.getLong("id");
-          paramJsBridgeListener = paramString2;
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == -1)
-          {
-            paramJsBridgeListener = paramString2;
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          }
-          paramJsBridgeListener = paramString2;
-          i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-          paramJsBridgeListener = paramString2;
-          if (i < this.jdField_a_of_type_JavaUtilList.size())
-          {
-            paramJsBridgeListener = paramString2;
-            if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong.longValue() != l1) {
-              break label3645;
-            }
-            paramJsBridgeListener = paramString2;
-            if (!((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString3)) {
-              break label3645;
-            }
-            paramJsBridgeListener = paramString2;
-            if (((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g == auwd.jdField_d_of_type_JavaLangInteger) {
-              break label3645;
-            }
-            paramJsBridgeListener = paramString2;
-            paramString1 = anqp.a("card_cancel_download", paramString2, this.mOnRemoteResp.key, new Bundle());
-            paramJsBridgeListener = paramString2;
-            paramString1.putLong("bgId", l1);
-            paramJsBridgeListener = paramString2;
-            sendRemoteReq(paramString1, false, false);
-            paramJsBridgeListener = paramString2;
-            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-            paramJsBridgeListener = paramString2;
-            ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).g = auwd.jdField_d_of_type_JavaLangInteger;
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("result", 0);
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("message", "ok");
-          }
-          paramJsBridgeListener = paramString2;
-          if (i == this.jdField_a_of_type_JavaUtilList.size())
-          {
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("result", -2);
-            paramJsBridgeListener = paramString2;
-            paramVarArgs.put("message", "cancel download fail， bgId:" + l1);
-          }
-          paramJsBridgeListener = paramString2;
-          a(paramString2, paramVarArgs.toString());
-          paramJsBridgeListener = paramString2;
-          paramString1 = new JSONObject();
-          paramJsBridgeListener = paramString2;
           try
           {
-            paramString1.put("result", -1);
-            paramJsBridgeListener = paramString2;
-            paramString1.put("message", "cancel download bgUrl:" + ((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString);
-            paramJsBridgeListener = paramString2;
-            a(((auwd)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_d_of_type_JavaLangString, paramString1.toString());
-          }
-          catch (JSONException paramString1)
-          {
-            paramJsBridgeListener = paramString2;
-            paramString1.printStackTrace();
-          }
-        }
-        else
-        {
-          paramJsBridgeListener = paramString2;
-          if (paramString3.equals("report"))
-          {
-            paramJsBridgeListener = paramString2;
-            paramString3 = anqp.a("card_getVipInfo", paramString2, this.mOnRemoteResp.key, new Bundle());
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("op_name", paramString1.getString("op_name"));
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("ext1", paramString1.getString("ext1"));
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("ext2", paramString1.getString("ext2"));
-            paramJsBridgeListener = paramString2;
-            paramString3.putString("ext3", paramString1.getString("ext3"));
-            paramJsBridgeListener = paramString2;
-            sendRemoteReq(paramString3, false, false);
-          }
-          else
-          {
-            paramJsBridgeListener = paramString2;
-            if (paramString3.equals("openView"))
+            JSONObject localJSONObject1;
+            Iterator localIterator;
+            if (!localIterator.hasNext()) {
+              continue;
+            }
+            str1 = (String)localIterator.next();
+            localObject2 = str1;
+            if (!str1.startsWith("common"))
             {
-              paramJsBridgeListener = paramString2;
-              paramString1 = paramString1.getString("ADTAG");
-              paramJsBridgeListener = paramString2;
-              paramString3 = this.mRuntime.a();
-              if (paramString3 != null)
+              localObject2 = str1;
+              if (TextUtils.isEmpty(str2)) {
+                continue;
+              }
+              localObject2 = str1;
+              if (!str1.startsWith(str2)) {
+                continue;
+              }
+            }
+            localObject2 = str1;
+            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str1);
+            if (localJSONObject2 != null)
+            {
+              localObject2 = str1;
+              String str3 = localJSONObject2.optString("type");
+              if (str3 != null)
               {
-                paramJsBridgeListener = paramString2;
-                localObject1 = new Intent(paramString3, QQBrowserActivity.class);
-                paramJsBridgeListener = paramString2;
-                ((Intent)localObject1).putExtra("uin", this.mRuntime.a().getAccount());
-                paramJsBridgeListener = paramString2;
-                ((Intent)localObject1).putExtra("isShowAd", false);
-                paramJsBridgeListener = paramString2;
-                ((Intent)localObject1).putExtra("startOpenPageTime", System.currentTimeMillis());
-                paramJsBridgeListener = paramString2;
-                ((Intent)localObject1).putExtra("url", bbpp.a(paramString3, "card", paramString1));
-                paramJsBridgeListener = paramString2;
-                paramString3.startActivity((Intent)localObject1);
+                localObject2 = str1;
+                if (str3.length() > 0)
+                {
+                  localObject1 = null;
+                  localObject2 = str1;
+                  if (str3.equalsIgnoreCase("ColorStateList"))
+                  {
+                    localObject2 = str1;
+                    localObject1 = a(localJSONObject2.optJSONArray("data"));
+                    if (localObject1 != null)
+                    {
+                      localObject2 = str1;
+                      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, localObject1);
+                      localObject2 = str1;
+                      if (!QLog.isColorLevel()) {
+                        break label1177;
+                      }
+                      localObject2 = str1;
+                      QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig config key= " + str1 + ",put templateAttr and size=" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+                      break label1177;
+                    }
+                  }
+                  else
+                  {
+                    localObject2 = str1;
+                    if (str3.equalsIgnoreCase("BitmapDrawable"))
+                    {
+                      localObject2 = str1;
+                      localObject1 = a(paramQQAppInterface, localJSONObject2.optString("data"), true, false);
+                      continue;
+                    }
+                    localObject2 = str1;
+                    if (str3.equalsIgnoreCase("XMLBitmap"))
+                    {
+                      localObject2 = str1;
+                      localObject1 = a(paramQQAppInterface, localJSONObject2.optJSONObject("data"));
+                      continue;
+                    }
+                    localObject2 = str1;
+                    if (str3.equalsIgnoreCase("StateListDrawable"))
+                    {
+                      localObject2 = str1;
+                      localObject1 = a(paramQQAppInterface, localJSONObject2.optJSONArray("data"));
+                      continue;
+                    }
+                    localObject2 = str1;
+                    if (str3.equalsIgnoreCase("String"))
+                    {
+                      localObject2 = str1;
+                      localObject1 = localJSONObject2.optString("data");
+                      continue;
+                    }
+                    localObject2 = str1;
+                    if (!str3.equalsIgnoreCase("Color")) {
+                      continue;
+                    }
+                    localObject2 = str1;
+                    localObject1 = localJSONObject2.optString("data");
+                    continue;
+                  }
+                  localObject2 = str1;
+                  if (!QLog.isColorLevel()) {
+                    break label1184;
+                  }
+                  localObject2 = str1;
+                  QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig config key= " + str1 + ",init error");
+                  break label1184;
+                }
               }
             }
             else
             {
-              paramJsBridgeListener = paramString2;
-              if (paramString3.equals("clickPhotoWall"))
+              localObject2 = str1;
+              if (QLog.isColorLevel())
               {
-                paramJsBridgeListener = paramString2;
-                paramString1 = this.mRuntime.a(this.mRuntime.a());
-                if (paramString1 != null)
-                {
-                  paramJsBridgeListener = paramString2;
-                  if ((paramString1 instanceof bchv))
-                  {
-                    paramJsBridgeListener = paramString2;
-                    paramString1 = ((bchv)paramString1).b();
-                    paramJsBridgeListener = paramString2;
-                    if (TextUtils.isEmpty(paramString1)) {
-                      break label2748;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!paramString1.contains("entryId")) {
-                      break label2748;
-                    }
-                    paramJsBridgeListener = paramString2;
-                  }
-                }
-                for (this.jdField_a_of_type_Int = bfng.a(bfng.a(paramString1), "entryId", 2);; this.jdField_a_of_type_Int = 2)
-                {
-                  paramJsBridgeListener = paramString2;
-                  paramString1 = this.mRuntime.a().getAccount();
-                  paramJsBridgeListener = paramString2;
-                  paramString3 = bgyf.a();
-                  paramJsBridgeListener = paramString2;
-                  paramString3.jdField_a_of_type_JavaLangString = paramString1;
-                  paramJsBridgeListener = paramString2;
-                  bgxy.a(this.mRuntime.a(), paramString3, null, paramString1, getRequestCode((byte)2));
-                  break;
-                  paramJsBridgeListener = paramString2;
-                }
-              }
-              paramJsBridgeListener = paramString2;
-              if (paramString3.equals("uploadBackground"))
-              {
-                paramJsBridgeListener = paramString2;
-                b();
-                paramJsBridgeListener = paramString2;
-                paramVarArgs.put("result", 0);
-                paramJsBridgeListener = paramString2;
-                paramVarArgs.put("message", "ok");
-                paramJsBridgeListener = paramString2;
-                a(paramString2, paramVarArgs.toString());
-              }
-              else
-              {
-                paramJsBridgeListener = paramString2;
-                if (paramString3.equals("setGameHonour"))
-                {
-                  paramJsBridgeListener = paramString2;
-                  paramString3 = anqp.a("card_set_custom_honor", paramString2, this.mOnRemoteResp.key, new Bundle());
-                  paramJsBridgeListener = paramString2;
-                  paramString3.putString("honor_data", paramString1.toString());
-                  paramJsBridgeListener = paramString2;
-                  sendRemoteReq(paramString3, false, false);
-                }
-                else
-                {
-                  paramJsBridgeListener = paramString2;
-                  if (paramString3.equals("downloadWzResource"))
-                  {
-                    paramJsBridgeListener = paramString2;
-                    l1 = paramString1.optLong("id");
-                    paramJsBridgeListener = paramString2;
-                    localObject2 = paramString1.optString("bgUrl");
-                    paramJsBridgeListener = paramString2;
-                    paramString1.optString("dynamicZip");
-                    paramJsBridgeListener = paramString2;
-                    paramString3 = paramString1.optString("wzHeroUrl");
-                    paramJsBridgeListener = paramString2;
-                    if (!auwn.a(paramString1.optInt("styleId"))) {
-                      break label3654;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!auwn.a((Context)localObject1, "cardWZ.zip")) {
-                      break label3654;
-                    }
-                    i = 1;
-                    label2971:
-                    paramJsBridgeListener = paramString2;
-                    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                      break label3660;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!auux.a((Context)localObject1, l1, "wzJoinImage.png")) {
-                      break label3660;
-                    }
-                    j = 1;
-                    label2999:
-                    paramJsBridgeListener = paramString2;
-                    if (TextUtils.isEmpty(paramString3)) {
-                      break label3666;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!auux.a((Context)localObject1, l1, "wzMainImage.png")) {
-                      break label3666;
-                    }
-                    k = 1;
-                    label3027:
-                    if ((i != 0) && (j != 0))
-                    {
-                      bool = true;
-                      paramJsBridgeListener = paramString2;
-                      if (!TextUtils.isEmpty(paramString3))
-                      {
-                        paramJsBridgeListener = paramString2;
-                        bool = auux.a((Context)localObject1, l1, "wzMainImage.png");
-                      }
-                      if (bool)
-                      {
-                        paramJsBridgeListener = paramString2;
-                        paramVarArgs.put("result", 0);
-                        paramJsBridgeListener = paramString2;
-                        paramVarArgs.put("progress", 100);
-                        paramJsBridgeListener = paramString2;
-                        callJs(paramString2, new String[] { paramVarArgs.toString() });
-                        return true;
-                      }
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!bbev.d(this.mRuntime.a().getApplicationContext()))
-                    {
-                      paramJsBridgeListener = paramString2;
-                      paramVarArgs.put("result", -2);
-                      paramJsBridgeListener = paramString2;
-                      paramVarArgs.put("message", "no network");
-                      paramJsBridgeListener = paramString2;
-                      a(paramString2, paramVarArgs.toString());
-                      return true;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    long l2 = bazo.b();
-                    if (l2 < 102400)
-                    {
-                      paramJsBridgeListener = paramString2;
-                      if (QLog.isColorLevel())
-                      {
-                        paramJsBridgeListener = paramString2;
-                        QLog.d("ProfileCardWebviewPlugin", 2, "Insufficient SDCard space, reserved:" + 102400 + "|available:" + l2);
-                      }
-                      paramJsBridgeListener = paramString2;
-                      paramVarArgs.put("result", -3);
-                      paramJsBridgeListener = paramString2;
-                      paramVarArgs.put("message", "Insufficient SDCard space.");
-                      paramJsBridgeListener = paramString2;
-                      a(paramString2, paramVarArgs.toString());
-                      return true;
-                    }
-                    paramJsBridgeListener = paramString2;
-                    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-                    {
-                      paramJsBridgeListener = paramString2;
-                      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0)
-                      {
-                        paramJsBridgeListener = paramString2;
-                        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < this.jdField_a_of_type_JavaUtilList.size())
-                        {
-                          paramJsBridgeListener = paramString2;
-                          paramString1 = (auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-                          paramJsBridgeListener = paramString2;
-                          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)
-                          {
-                            paramJsBridgeListener = paramString2;
-                            if (paramString1.g.equals(auwd.jdField_d_of_type_JavaLangInteger))
-                            {
-                              paramJsBridgeListener = paramString2;
-                              if (paramString1.jdField_a_of_type_JavaLangString.equalsIgnoreCase((String)localObject2))
-                              {
-                                paramJsBridgeListener = paramString2;
-                                if (l1 == paramString1.jdField_a_of_type_JavaLangLong.longValue())
-                                {
-                                  paramJsBridgeListener = paramString2;
-                                  paramString1.g = auwd.jdField_b_of_type_JavaLangInteger;
-                                  paramJsBridgeListener = paramString2;
-                                  paramString1.jdField_d_of_type_JavaLangString = paramString2;
-                                  return true;
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    paramJsBridgeListener = paramString2;
-                    localObject1 = new auwd();
-                    paramJsBridgeListener = paramString2;
-                    ((auwd)localObject1).jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
-                    paramJsBridgeListener = paramString2;
-                    ((auwd)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
-                    paramJsBridgeListener = paramString2;
-                    ((auwd)localObject1).jdField_d_of_type_JavaLangString = paramString2;
-                    if (k == 0) {
-                      break label3672;
-                    }
-                    paramString1 = null;
-                    label3472:
-                    paramJsBridgeListener = paramString2;
-                    ((auwd)localObject1).jdField_c_of_type_JavaLangString = paramString1;
-                    if (i != 0) {
-                      break label3678;
-                    }
-                  }
-                }
+                localObject2 = str1;
+                QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig config key= " + str1 + ",value is null");
               }
             }
           }
+          catch (Exception paramQQAppInterface)
+          {
+            localObject2 = localObject1;
+            continue;
+            int i1 = 1;
+            continue;
+            localObject1 = str1;
+          }
+          paramQQAppInterface = paramQQAppInterface;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localObject1 = paramQQAppInterface.getClass().getName() + "," + paramQQAppInterface.getMessage();
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig key=" + (String)localObject2 + ",exception msg=" + (String)localObject1);
+          paramQQAppInterface.printStackTrace();
+          i1 = 0;
+          if (i1 == 0) {
+            continue;
+          }
+          i1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+          if (i1 <= 0) {
+            continue;
+          }
+          bool = true;
+          continue;
+          localObject2 = str1;
+          if (!QLog.isColorLevel()) {
+            break label1170;
+          }
+          localObject2 = str1;
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initTemplateConfig config key is not used,key=" + str1);
+          localObject1 = str1;
+          continue;
+          if ((paramLong2 != jdField_i_of_type_Long) && (paramLong2 != jdField_j_of_type_Long)) {
+            break label1164;
+          }
+          if (!auwm.a(paramQQAppInterface)) {
+            continue;
+          }
+          str1 = auwp.a(paramQQAppInterface.getApp());
+          localObject2 = bbqz.a(paramQQAppInterface, str1 + "logo.png", "-wzry-card-logo-", a(paramQQAppInterface, str1 + "logo.png", true, true), new int[] { 7 }, "-wzry-card-logo-", null);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("wzryLogo", localObject2);
+          localObject2 = a(paramQQAppInterface, str1 + "bgImage.jpg", true, true);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("wzryGameInfoBackground", localObject2);
+          localObject2 = a(paramQQAppInterface, str1 + "logo_bg.png", true, true);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("wzryLogoBg", localObject2);
+          localObject2 = a(paramQQAppInterface, str1 + "shimmer_mask.png", true, true);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("wzryShimmer", localObject2);
+          paramQQAppInterface = a(paramQQAppInterface, str1 + "addIcon.png", true, true);
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("addIcon", paramQQAppInterface);
+          if (jdField_a_of_type_AndroidGraphicsTypeface != null) {
+            continue;
+          }
+          jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(str1 + "font_chs.tff");
+          if (jdField_b_of_type_AndroidGraphicsTypeface != null) {
+            continue;
+          }
+          jdField_b_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(str1 + "font_num.tff");
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("commonMaskBackground", "#e61c212c");
+          i1 = 1;
+          continue;
+          i1 = 0;
+          continue;
+          bool = false;
+          continue;
         }
+        return bool;
       }
+      finally {}
+      Object localObject2 = localObject1;
+      localIterator = localJSONObject1.keys();
+      Object localObject1 = "";
+      label1164:
+      label1170:
+      continue;
+      label1177:
+      localObject1 = str1;
+      continue;
+      label1184:
+      boolean bool = false;
     }
-    label3634:
-    label3636:
-    label3645:
-    label3654:
-    label3660:
-    label3666:
-    label3672:
-    label3678:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Field[] arrayOfField = getClass().getFields();
+    localStringBuilder.append("ProfileCardTemplate:");
+    int i2 = arrayOfField.length;
+    int i1 = 0;
+    for (;;)
     {
-      paramJsBridgeListener = paramString2;
-      ((auwd)localObject1).jdField_b_of_type_Boolean = bool;
-      paramJsBridgeListener = paramString2;
-      ((auwd)localObject1).jdField_a_of_type_Boolean = true;
-      paramJsBridgeListener = paramString2;
-      ((auwd)localObject1).e = Integer.valueOf(0);
-      paramJsBridgeListener = paramString2;
-      ((auwd)localObject1).g = auwd.jdField_a_of_type_JavaLangInteger;
-      paramJsBridgeListener = paramString2;
-      this.jdField_a_of_type_JavaUtilList.add(localObject1);
-      paramJsBridgeListener = paramString2;
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0)
+      if (i1 < i2)
       {
-        paramJsBridgeListener = paramString2;
-        a();
-        break label3634;
-        paramJsBridgeListener = paramString2;
-        if (paramString3.equals("setSwitchOfKingGlory"))
-        {
-          paramJsBridgeListener = paramString2;
-          i = paramString1.optInt("status");
-          paramJsBridgeListener = paramString2;
-          paramString1 = new Bundle();
-          paramJsBridgeListener = paramString2;
-          paramString1.putInt("status", i);
-          paramJsBridgeListener = paramString2;
-          sendRemoteReq(anqp.a("ipc_plateofking_switch", paramString2, this.mOnRemoteResp.key, paramString1), false, false);
-        }
-        else
-        {
-          return false;
-        }
-      }
-      return true;
-      i += 1;
-      break;
-      i += 1;
-      break label1974;
-      i = 0;
-      break label2971;
-      j = 0;
-      break label2999;
-      k = 0;
-      break label3027;
-      paramString1 = paramString3;
-      break label3472;
-    }
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardWebviewPlugin", 2, "ProfileCardWebviewPlugin onActivityResult,requestCode = " + paramByte + ", resultCode = " + paramInt + ", data = " + paramIntent);
-    }
-    if (paramInt != -1) {}
-    while (paramIntent == null) {
-      return;
-    }
-    if ((paramByte == 1) || (paramByte == 2)) {}
-    try
-    {
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        Object localObject2 = paramIntent.getStringExtra("uin");
-        Object localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = this.mRuntime.a().getCurrentAccountUin();
-        }
-        localObject2 = new Intent(this.mRuntime.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject2).putExtra("AllInOne", new ProfileActivity.AllInOne((String)localObject1, 0));
-        this.mRuntime.a().startActivity((Intent)localObject2);
-      }
-      paramIntent.putExtra("closeSpecialLogic", true);
-      this.mRuntime.a().setResult(-1, paramIntent);
-      this.mRuntime.a().finish();
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      paramIntent.printStackTrace();
-    }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_Bbwi = new bbwi(this.mRuntime.a());
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.jdField_a_of_type_Bbwi.onDestroy();
-    try
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ProfileCardWebviewPlugin", 2, "unregister receiver exception:" + localException.toString());
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (paramBundle != null) {
-      for (;;)
-      {
-        Object localObject2;
-        Object localObject1;
-        String str2;
-        String str1;
-        Bundle localBundle;
+        Field localField = arrayOfField[i1];
+        if (localField.getModifiers() != 8) {}
         try
         {
-          if (paramBundle.getInt("respkey", 0) != this.mOnRemoteResp.key) {
-            break;
-          }
-          localObject2 = new JSONObject();
-          localObject1 = new JSONObject();
-          str2 = paramBundle.getString("cmd");
-          str1 = paramBundle.getString("callbackid");
-          localBundle = paramBundle.getBundle("response");
-          if (str2 == null) {
-            break;
-          }
-          if ("card_getinfo".equals(str2))
+          Object localObject = localField.get(this);
+          localStringBuilder.append(localField.getName());
+          localStringBuilder.append('=');
+          localStringBuilder.append(localObject);
+          localStringBuilder.append(',');
+          i1 += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
           {
-            long l1 = localBundle.getLong("currentId");
-            long l2 = localBundle.getLong("styleId");
-            int j = localBundle.getInt("result");
-            paramBundle = localBundle.getString("diy_url");
-            i = 0;
-            if ((l2 == auvd.e) || (l2 == auvd.a) || (l2 == auvd.g)) {
-              break label806;
-            }
-            ((JSONObject)localObject2).put("currentId", l1);
-            ((JSONObject)localObject2).put("styleId", l2);
-            ((JSONObject)localObject2).put("isPhotoWall", i);
-            ((JSONObject)localObject2).put("url", paramBundle);
-            ((JSONObject)localObject1).put("data", localObject2);
-            ((JSONObject)localObject1).put("result", j);
-            a(str1, ((JSONObject)localObject1).toString());
-            return;
-          }
-          if ("card_setSummaryCard".equals(str2))
-          {
-            i = localBundle.getInt("result");
-            paramBundle = localBundle.getString("message");
-            ((JSONObject)localObject1).put("result", i);
-            ((JSONObject)localObject1).put("message", paramBundle);
-            a(str1, ((JSONObject)localObject1).toString());
-            return;
+            localException.printStackTrace();
           }
         }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-        if ("card_getVipInfo".equals(str2))
-        {
-          axqw.b(null, "P_CliOper", "Vip_SummaryCard", "", paramBundle.getString("op_name"), paramBundle.getString("op_name"), 0, 0, paramBundle.getString("ext1"), paramBundle.getString("ext2"), paramBundle.getString("ext3"), localBundle.getString("vip_info"));
-          ((JSONObject)localObject1).put("result", 0);
-          ((JSONObject)localObject1).put("message", "ok");
-          a(str1, ((JSONObject)localObject1).toString());
-          return;
-        }
-        if (("selectPhoto".equals(str2)) || ("takePhoto".equals(str2))) {
-          break;
-        }
-        if ("card_download_wzry_template".equals(str2))
-        {
-          i = localBundle.getInt("result");
-          localObject2 = localBundle.getString("message");
-          if (i != 0)
-          {
-            ((JSONObject)localObject1).put("result", -1);
-            ((JSONObject)localObject1).put("message", localObject2);
-            a(str1, ((JSONObject)localObject1).toString());
-            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-            return;
-          }
-          localObject1 = anqp.a("card_download", str1, this.mOnRemoteResp.key, new Bundle());
-          ((Bundle)localObject1).putLong("bgId", paramBundle.getLong("bgId"));
-          sendRemoteReq((Bundle)localObject1, false, false);
-          return;
-        }
-        if ("card_download".equals(str2))
-        {
-          ((JSONObject)localObject1).put("result", localBundle.getInt("result"));
-          ((JSONObject)localObject1).put("message", "onHttpEnd");
-          if (((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g != auwd.jdField_d_of_type_JavaLangInteger) {
-            ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g = auwd.jdField_c_of_type_JavaLangInteger;
-          }
-          ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).e = Integer.valueOf(100);
-          a(str1, ((JSONObject)localObject1).toString());
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          a();
-          return;
-        }
-        if (!"card_query_download".equals(str2)) {
-          break;
-        }
-        ((JSONObject)localObject1).put("result", 0);
-        ((JSONObject)localObject2).put("status", 2);
-        int i = localBundle.getInt("progress");
-        ((JSONObject)localObject2).put("progress", i);
-        if (((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g != auwd.jdField_c_of_type_JavaLangInteger) {
-          ((auwd)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).e = Integer.valueOf(i);
-        }
-        ((JSONObject)localObject1).put("data", localObject2);
-        a(str1, ((JSONObject)localObject1).toString());
-        return;
-        label806:
-        i = 1;
       }
     }
+    return localStringBuilder.toString();
   }
 }
 

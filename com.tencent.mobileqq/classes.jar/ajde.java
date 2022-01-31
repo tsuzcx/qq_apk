@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.utils.VipUtils;
-
-class ajde
-  implements aiwk
+public class ajde
 {
-  ajde(ajdd paramajdd) {}
-  
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    ajdd localajdd = this.a;
-    if (ajdd.a(this.a).jdField_b_of_type_Boolean)
-    {
-      paramStartCheckParam = ajdd.a(this.a).e;
-      ajdd.a(localajdd, paramStartCheckParam);
-      if (!"message".equals(ajdd.a(this.a).f)) {
-        break label101;
-      }
-    }
-    label101:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(ajdd.a(this.a).jdField_b_of_type_Int) });
-      return;
-      paramStartCheckParam = ajdd.a(this.a).d;
-      break;
-    }
-  }
-  
-  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (ajdd.a(this.a) != null) {
-      ajdd.a(this.a).c(-10001, ajdd.a(this.a).jdField_b_of_type_JavaLangString);
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
 }
 
 

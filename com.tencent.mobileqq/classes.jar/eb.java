@@ -9,9 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class eb
-  implements aptu
+  implements aptw
 {
-  public eb(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, ajuo paramajuo) {}
+  public eb(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, ajum paramajum) {}
   
   public void a()
   {
@@ -68,10 +68,10 @@ public class eb
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Ajuo.a(localObject2, true);
+      this.jdField_a_of_type_Ajum.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Ajuo.a(localObject1);
+      this.jdField_a_of_type_Ajum.a(localObject1);
     }
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
   }

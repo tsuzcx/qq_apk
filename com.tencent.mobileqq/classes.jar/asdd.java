@@ -1,17 +1,8 @@
-public class asdd
+public abstract interface asdd
 {
-  public int a = -1;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c = 1;
-  public String c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2);
 }
 
 

@@ -1,18 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.AVLoadingDialogActivity;
+import android.graphics.Bitmap;
 
-public class mbs
-  extends BroadcastReceiver
+class mbs
+  implements lnr
 {
-  public mbs(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
+  mbs(mbr parammbr) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
-      this.a.finish();
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(paramBitmap);
+      bool = true;
     }
+    return bool;
   }
 }
 

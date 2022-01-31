@@ -1,20 +1,33 @@
+import android.content.Context;
+import android.content.ServiceConnection;
+import java.lang.ref.WeakReference;
+
 public class bhjz
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  private static ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new bhka();
+  static bhjd jdField_a_of_type_Bhjd;
+  private static WeakReference<bhkb> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bhjz(String paramString1, String paramString2, boolean paramBoolean, int paramInt, String paramString3, String paramString4)
+  public static void a(Context paramContext, bhkb parambhkb)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-    this.d = paramString4;
+    if ((jdField_a_of_type_Bhjd != null) && (jdField_a_of_type_Bhjd.b()))
+    {
+      if (parambhkb != null) {
+        parambhkb.onQzonePluginClientReady(jdField_a_of_type_Bhjd);
+      }
+      return;
+    }
+    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhkb);
+    bhix.a().a(paramContext, jdField_a_of_type_AndroidContentServiceConnection, 0);
+  }
+  
+  private static void b()
+  {
+    if (jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      jdField_a_of_type_JavaLangRefWeakReference.clear();
+      jdField_a_of_type_JavaLangRefWeakReference = null;
+    }
   }
 }
 

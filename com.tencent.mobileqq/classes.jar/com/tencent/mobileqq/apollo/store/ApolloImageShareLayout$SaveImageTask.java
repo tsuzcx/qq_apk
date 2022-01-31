@@ -5,10 +5,10 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.os.Message;
 import android.widget.RelativeLayout;
-import bfnk;
+import bfob;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import nap;
+import nam;
 
 class ApolloImageShareLayout$SaveImageTask
   implements Runnable
@@ -37,7 +37,7 @@ class ApolloImageShareLayout$SaveImageTask
     {
       return;
       localApolloImageShareLayout = (ApolloImageShareLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localApolloImageShareLayout == null) || (ApolloImageShareLayout.a(localApolloImageShareLayout) == null) || (localApolloImageShareLayout.jdField_a_of_type_Bfnk == null));
+    } while ((localApolloImageShareLayout == null) || (ApolloImageShareLayout.a(localApolloImageShareLayout) == null) || (localApolloImageShareLayout.jdField_a_of_type_Bfob == null));
     for (;;)
     {
       try
@@ -57,8 +57,8 @@ class ApolloImageShareLayout$SaveImageTask
           localCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
         }
         localCanvas.drawBitmap((Bitmap)localObject1, (ApolloImageShareLayout.a(localApolloImageShareLayout).getWidth() - ((Bitmap)localObject1).getWidth()) / 2, ApolloImageShareLayout.a(localApolloImageShareLayout), null);
-        localObject1 = nap.a((Bitmap)localObject3);
-        localObject3 = localApolloImageShareLayout.jdField_a_of_type_Bfnk.obtainMessage(this.jdField_a_of_type_Int);
+        localObject1 = nam.a((Bitmap)localObject3);
+        localObject3 = localApolloImageShareLayout.jdField_a_of_type_Bfob.obtainMessage(this.jdField_a_of_type_Int);
         ((Message)localObject3).obj = localObject1;
         ((Message)localObject3).sendToTarget();
         ApolloImageShareLayout.a(localApolloImageShareLayout).destroyDrawingCache();

@@ -1,6 +1,6 @@
 public abstract interface ajob
 {
-  public abstract void b(boolean paramBoolean);
+  public abstract void a(int paramInt);
 }
 
 

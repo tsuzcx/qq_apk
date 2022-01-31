@@ -1,15 +1,19 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class avau
-  implements bbkq<Float>
+  implements View.OnClickListener
 {
-  public avau(VipTagView paramVipTagView) {}
+  public avau(VipProfileWZRYView paramVipProfileWZRYView, auuy paramauuy) {}
   
-  public void a(bbkk<Float> parambbkk, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
+    paramView = bbqd.a("gameHonourAddHonour");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
+    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, naj.a(), String.valueOf(this.jdField_a_of_type_Auuy.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_Auuy.a.lCurrentStyleId));
   }
 }
 

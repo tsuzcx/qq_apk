@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.text.TextUtils;
-import aqmu;
-import aqmx;
-import aqmy;
-import aqnb;
-import aqnc;
+import aqmw;
+import aqmz;
+import aqna;
+import aqnd;
+import aqne;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class PicOcrManager$3
   implements Runnable
 {
-  public PicOcrManager$3(aqmu paramaqmu, aqmx paramaqmx, aqmy paramaqmy) {}
+  public PicOcrManager$3(aqmw paramaqmw, aqmz paramaqmz, aqna paramaqna) {}
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Aqmx.d)) || (this.jdField_a_of_type_Aqmx.a))
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_Aqmz.d)) || (this.jdField_a_of_type_Aqmz.a))
     {
-      this.jdField_a_of_type_Aqmx.d = aqnc.a(this.jdField_a_of_type_Aqmx.b);
-      this.jdField_a_of_type_Aqmx.a = false;
+      this.jdField_a_of_type_Aqmz.d = aqne.a(this.jdField_a_of_type_Aqmz.b);
+      this.jdField_a_of_type_Aqmz.a = false;
     }
-    if (!aqmu.a(this.this$0).isEmpty())
+    if (!aqmw.a(this.this$0).isEmpty())
     {
-      aqnb localaqnb = this.this$0.a(this.jdField_a_of_type_Aqmx.d);
-      if (localaqnb != null)
+      aqnd localaqnd = this.this$0.a(this.jdField_a_of_type_Aqmz.d);
+      if (localaqnd != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localaqnb.toString());
+          QLog.e("PicOcrManager", 2, "requestOcr cacheRsp:" + localaqnd.toString());
         }
-        this.jdField_a_of_type_Aqmy.a(localaqnb);
+        this.jdField_a_of_type_Aqna.a(localaqnd);
         return;
       }
     }
-    aqmu.a(this.this$0, this.jdField_a_of_type_Aqmy, this.jdField_a_of_type_Aqmx);
-    if (this.jdField_a_of_type_Aqmx.a())
+    aqmw.a(this.this$0, this.jdField_a_of_type_Aqna, this.jdField_a_of_type_Aqmz);
+    if (this.jdField_a_of_type_Aqmz.a())
     {
-      this.this$0.a(this.jdField_a_of_type_Aqmy, this.jdField_a_of_type_Aqmx);
-      this.jdField_a_of_type_Aqmy.a();
+      this.this$0.a(this.jdField_a_of_type_Aqna, this.jdField_a_of_type_Aqmz);
+      this.jdField_a_of_type_Aqna.a();
       return;
     }
-    this.jdField_a_of_type_Aqmy.onUpdate(100, false, new aqnb());
+    this.jdField_a_of_type_Aqna.onUpdate(100, false, new aqnd());
   }
 }
 

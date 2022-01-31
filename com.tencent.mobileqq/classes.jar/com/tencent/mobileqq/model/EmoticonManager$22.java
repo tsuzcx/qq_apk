@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.model;
 
-import askd;
-import aukn;
+import askf;
 import aukp;
+import aukr;
 import com.tencent.mobileqq.data.EmoticonKeywords;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonManager$22
   implements Runnable
 {
-  public EmoticonManager$22(askd paramaskd, EmoticonKeywords paramEmoticonKeywords) {}
+  public EmoticonManager$22(askf paramaskf, EmoticonKeywords paramEmoticonKeywords) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    localaukp = this.this$0.a.a();
+    localaukr = this.this$0.a.a();
     try
     {
-      localaukp.a();
-      askd.a(this.this$0, this.a);
-      localaukp.c();
+      localaukr.a();
+      askf.a(this.this$0, this.a);
+      localaukr.c();
     }
     catch (Exception localException)
     {
       for (;;)
       {
         QLog.e("EmoticonManager", 1, "saveKeywordReqTimeToDB e = " + localException.getMessage());
-        localaukp.b();
+        localaukr.b();
       }
     }
     finally
     {
-      localaukp.b();
+      localaukr.b();
     }
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonManager", 2, "saveKeywordReqTimeToDB cost : " + (System.currentTimeMillis() - l));

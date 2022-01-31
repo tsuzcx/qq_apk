@@ -1,44 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.VideoCallBack;
+import android.net.Uri;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class bbuo
-  extends Handler
+  extends bbwt
 {
-  public bbuo(VideoCallBack paramVideoCallBack, bcpq parambcpq, String paramString, Activity paramActivity) {}
+  public bbuo(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(bbwu parambbwu)
   {
-    switch (paramMessage.what)
-    {
+    super.onDone(parambbwu);
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager", 1, "voice down");
     }
-    int i;
-    do
+    parambbwu = new File(this.jdField_a_of_type_JavaLangString);
+    try
     {
-      return;
-      if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing())) {
-        this.jdField_a_of_type_Bcpq.dismiss();
+      nav.a(parambbwu, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+      i = 1;
+    }
+    catch (IOException parambbwu)
+    {
+      for (;;)
+      {
+        QLog.i("PathTraceManager", 1, "unzip fail");
+        int i = 0;
       }
-      i = paramMessage.arg1;
-      if (i != 0) {
-        break;
+    }
+    if (i != 0)
+    {
+      QLog.d("PathTraceManager", 1, "unzip success");
+      if (this.b != null) {
+        bbcf.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
       }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("video_dir", paramMessage);
-      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
-    return;
-    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    QLog.e("VideoCallBack", 1, "error! ret = " + i);
+    }
   }
 }
 

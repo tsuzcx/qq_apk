@@ -1,6 +1,27 @@
-public abstract interface abgl
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+
+public class abgl
+  implements amne
 {
-  public abstract void a(abgm paramabgm);
+  public abgl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  public void a()
+  {
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
+    }
+  }
 }
 
 

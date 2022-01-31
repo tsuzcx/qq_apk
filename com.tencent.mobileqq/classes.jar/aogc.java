@@ -1,8 +1,21 @@
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public abstract interface aogc
+class aogc
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
+  aogc(aogb paramaogb) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.g.setVisibility(8);
+    this.a.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

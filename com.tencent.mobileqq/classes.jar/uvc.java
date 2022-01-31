@@ -1,42 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class uvc
-  implements View.OnClickListener, View.OnLongClickListener
+  extends wdt
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  private static final int[] a = { 2131691507 };
+  private static final int[] f = { 2131165530 };
+  private static final int[] g = { 2131369914 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298773) };
   
-  public uvc(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
+  public uvc()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369487);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369509));
-    this.b = paramView.findViewById(2131370424);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370413));
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    super(1, 1, h, -1, g, a, f);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, Object paramObject, bfwf[] paramArrayOfbfwf)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    paramArrayOfbfwf[0].a = 0;
+    paramArrayOfbfwf[0].b = 0;
   }
 }
 

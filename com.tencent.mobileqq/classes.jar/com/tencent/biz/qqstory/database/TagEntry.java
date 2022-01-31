@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import ssl;
+import auko;
+import ssi;
 
 public class TagEntry
-  extends aukm
-  implements ssl
+  extends auko
+  implements ssi
 {
   public String desc;
   public String feedId;

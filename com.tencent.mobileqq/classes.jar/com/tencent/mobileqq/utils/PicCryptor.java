@@ -2,9 +2,9 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ayrv;
 import ayrx;
-import bbmj;
+import ayrz;
+import bbmx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.util.Cryptor;
@@ -14,11 +14,11 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 
 public class PicCryptor
-  implements ayrx
+  implements ayrz
 {
   private int jdField_a_of_type_Int;
   public long a;
-  public ayrv a;
+  public ayrx a;
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -44,7 +44,7 @@ public class PicCryptor
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_Ayrv.a.get("Range");
+    String str = (String)this.jdField_a_of_type_Ayrx.a.get("Range");
     if (!TextUtils.isEmpty(str))
     {
       str = str.replace("bytes=", "");
@@ -58,7 +58,7 @@ public class PicCryptor
   
   public static String a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = bbmj.a(paramArrayOfByte);
+    paramArrayOfByte = bbmx.a(paramArrayOfByte);
     if (paramArrayOfByte == null) {
       throw new IllegalArgumentException("byte2Hex error, byte not null");
     }
@@ -74,7 +74,7 @@ public class PicCryptor
   
   public static byte[] a(String paramString)
   {
-    paramString = bbmj.a(paramString);
+    paramString = bbmx.a(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("hex2byte error, hexStr length must even");
     }

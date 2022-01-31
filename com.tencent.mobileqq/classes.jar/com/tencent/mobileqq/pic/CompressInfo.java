@@ -3,14 +3,14 @@ package com.tencent.mobileqq.pic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aumx;
+import aumz;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CompressInfo> CREATOR = new aumx();
+  public static final Parcelable.Creator<CompressInfo> CREATOR = new aumz();
   public int a;
   public ThumbWidthHeightDP a;
   public String a;

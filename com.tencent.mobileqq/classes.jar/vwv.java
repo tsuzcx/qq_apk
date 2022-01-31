@@ -1,19 +1,18 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class vwv
-  extends akav
+public class vwv
+  implements View.OnLongClickListener
 {
-  vwv(vwt paramvwt) {}
+  public vwv(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void a(boolean paramBoolean, long paramLong, akaw paramakaw)
+  public boolean onLongClick(View paramView)
   {
-    paramakaw = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
-    {
-      paramakaw.sendEmptyMessage(i);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
     }
+    return true;
   }
 }
 

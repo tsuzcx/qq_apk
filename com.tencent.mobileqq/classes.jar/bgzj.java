@@ -1,8 +1,44 @@
-public abstract interface bgzj
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+public class bgzj
+  extends QzoneExternalRequest
 {
-  public abstract void a(ascp paramascp);
+  public JceStruct a;
   
-  public abstract void b(ascp paramascp);
+  public bgzj(long paramLong1, long paramLong2, int paramInt)
+  {
+    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
+    localmobile_sub_get_cover_req.uin = paramLong1;
+    localmobile_sub_get_cover_req.flag = paramInt;
+    this.a = localmobile_sub_get_cover_req;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return decode(paramArrayOfByte, "getCover");
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getCover";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getCover";
+  }
 }
 
 

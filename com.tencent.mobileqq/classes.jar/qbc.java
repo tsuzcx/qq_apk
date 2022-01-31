@@ -1,36 +1,43 @@
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+
 public class qbc
 {
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public List<qbd> a;
   
-  public qbc(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public static qbc a(articlesummary.HotWordInfo paramHotWordInfo)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    qbc localqbc = new qbc();
+    if (paramHotWordInfo.rpt_hot_word_item.has())
+    {
+      localqbc.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
+      {
+        qbd localqbd = qbd.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localqbc.a.add(localqbd);
+      }
+    }
+    return localqbc;
   }
   
-  public Long a()
+  public byte[] a()
   {
-    return this.jdField_a_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if (this.a.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((qbd)localIterator.next()).a());
+      }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    }
+    return localHotWordInfo.toByteArray();
   }
 }
 

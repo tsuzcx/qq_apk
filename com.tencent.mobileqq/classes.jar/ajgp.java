@@ -1,50 +1,57 @@
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.os.Bundle;
 import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.mobileqq.apollo.sdk.CmShowTest.4;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class ajgp
+final class ajgp
+  implements ajfx
 {
-  private static int a;
+  ajgp(CmShowRenderView paramCmShowRenderView) {}
   
-  private static void b(RelativeLayout paramRelativeLayout)
+  public void a(int paramInt1, int paramInt2)
   {
-    QLog.i("CmShowTest", 1, "init relativeLayout:" + paramRelativeLayout);
-    CmShowRenderView localCmShowRenderView = new CmShowRenderView(paramRelativeLayout.getContext());
-    paramRelativeLayout.addView(localCmShowRenderView, new RelativeLayout.LayoutParams(-1, -1));
-    localCmShowRenderView.a(new ajgr(localCmShowRenderView), "1725000451", "1174992642");
+    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
+    this.a.a("1725000451", "1174992642", 1.0F, 0, null);
+    ajgn.a(this.a);
   }
   
-  private static void d(CmShowRenderView paramCmShowRenderView)
+  public void a(int paramInt, String paramString)
   {
-    QLog.i("CmShowTest", 1, "testMainAction");
-    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
-    localPlayActionConfig.a = 3000272;
-    localPlayActionConfig.jdField_b_of_type_Int = 101;
-    localPlayActionConfig.c = 2;
-    localPlayActionConfig.jdField_b_of_type_Boolean = false;
-    paramCmShowRenderView.a(localPlayActionConfig);
+    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
   }
   
-  private static void e(CmShowRenderView paramCmShowRenderView)
+  public void a(String paramString)
   {
-    QLog.i("CmShowTest", 1, "testPostAction");
-    CmShowRenderView.PlayActionConfig localPlayActionConfig = new CmShowRenderView.PlayActionConfig();
-    localPlayActionConfig.a = 3000272;
-    localPlayActionConfig.jdField_b_of_type_Int = 102;
-    localPlayActionConfig.jdField_b_of_type_Boolean = false;
-    localPlayActionConfig.c = 3;
-    paramCmShowRenderView.a(localPlayActionConfig);
+    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
   }
   
-  private static void f(CmShowRenderView paramCmShowRenderView)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().postDelayed(new CmShowTest.4(paramCmShowRenderView), 5000L);
+    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
+  {
+    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
+    if (paramInt2 == 100)
+    {
+      ajgn.b(this.a);
+      return;
+    }
+    if (paramInt2 == 101)
+    {
+      if (ajgn.a() < 3)
+      {
+        ajgn.b();
+        ajgn.b(this.a);
+        return;
+      }
+      ajgn.c(this.a);
+      return;
+    }
+    ajgn.a(0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

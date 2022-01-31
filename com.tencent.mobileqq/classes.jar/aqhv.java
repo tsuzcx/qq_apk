@@ -1,34 +1,25 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
-final class aqhv
-  extends mxj
+class aqhv
+  implements View.OnClickListener
 {
-  aqhv(NearbyAppInterface paramNearbyAppInterface) {}
+  aqhv(aqhu paramaqhu, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      atbg.b(this.a.getCurrentAccountUin(), false);
-    }
-    for (boolean bool1 = false;; bool1 = atbg.b(this.a.getCurrentAccountUin()))
+    if (aqhu.a(this.jdField_a_of_type_Aqhu, this.jdField_a_of_type_Int))
     {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = axrl.a(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        axqy.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
       }
-      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
-      return;
+    }
+    if (LangSettingFragment.a(this.jdField_a_of_type_Aqhu.a) != ((Integer)paramView.getTag()).intValue()) {
+      LangSettingFragment.a(this.jdField_a_of_type_Aqhu.a, ((Integer)paramView.getTag()).intValue());
     }
   }
 }

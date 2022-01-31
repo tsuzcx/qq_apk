@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import mqq.app.QQPermissionCallback;
-
-class alft
-  implements QQPermissionCallback
+public abstract interface alft
 {
-  alft(alfo paramalfo) {}
+  public abstract long a();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = new alfw();
-    paramArrayOfString.a = 2;
-    algo.a(this.a.a.recognitions, alfo.a(this.a), paramArrayOfString);
-    if (alfo.a(this.a) != null) {
-      alfo.a(this.a).a(0, alfo.a(this.a));
-    }
-    alfo.a(this.a, null);
-  }
+  public abstract void a(int paramInt, algn paramalgn);
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.grant();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(alhu paramalhu);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

@@ -1,37 +1,20 @@
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.1;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 public class wuf
-  implements wvg
+  implements View.OnClickListener
 {
   public wuf(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    VideoPlayerView.f(this.a, paramBoolean);
-    if (VideoPlayerView.j(this.a)) {
-      this.a.a().post(new VideoPlayerView.19.1(this));
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).setVisibility(8);
     }
-    do
-    {
-      do
-      {
-        return;
-        if (VideoPlayerView.c(this.a))
-        {
-          this.a.a().post(new VideoPlayerView.19.2(this));
-          return;
-        }
-      } while (!VideoPlayerView.i(this.a));
-      if (VideoPlayerView.a(this.a) != null) {
-        VideoPlayerView.a(this.a).a(true);
-      }
-      this.a.f();
-    } while (VideoPlayerView.a(this.a) == null);
-    VideoPlayerView.a(this.a).onVideoStart((int)VideoPlayerView.a(this.a).b());
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.a(true);
+    this.a.d();
   }
 }
 

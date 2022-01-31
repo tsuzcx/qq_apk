@@ -1,34 +1,28 @@
-import java.nio.ByteBuffer;
+import org.json.JSONObject;
 
-class aznv
+public class aznv
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public aznv(long paramLong)
-  {
-    this.a = 2882377846L;
-    this.b = 1007L;
-    this.c = 0L;
-    this.d = paramLong;
-  }
+  public aznv() {}
   
-  public aznv(ByteBuffer paramByteBuffer)
+  public aznv(JSONObject paramJSONObject)
   {
-    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-  }
-  
-  public void a(ByteBuffer paramByteBuffer)
-  {
-    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    this.a = paramJSONObject.optString("serverip", "");
+    this.b = paramJSONObject.optString("serverport", "");
+    this.c = paramJSONObject.optString("checkkey", "");
+    this.d = paramJSONObject.optString("exists", "");
+    this.e = paramJSONObject.optString("uin", "");
+    this.f = paramJSONObject.optString("vid", "");
+    this.g = paramJSONObject.optString("fid", "");
+    this.h = paramJSONObject.optString("complete", "");
   }
 }
 

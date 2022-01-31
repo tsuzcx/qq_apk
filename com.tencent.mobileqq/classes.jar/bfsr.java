@@ -1,32 +1,19 @@
-import android.app.Activity;
-import android.os.IBinder;
-import android.widget.Button;
+import com.tencent.widget.HorizontalListView;
 
 public class bfsr
-  extends bfsm
 {
-  public boolean b = true;
+  private int a;
   
-  public bfsr(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  private bfsr(HorizontalListView paramHorizontalListView) {}
   
   public void a()
   {
-    super.a();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131705933));
-    }
-    b();
+    this.a = HorizontalListView.access$900(this.this$0);
   }
   
-  protected void a(IBinder paramIBinder)
+  public boolean a()
   {
-    if (this.b) {
-      super.a(paramIBinder);
-    }
+    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
   }
 }
 

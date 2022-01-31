@@ -1,30 +1,49 @@
-import org.json.JSONObject;
+import NS_QZONE_MQMSG.QzoneMessageReq;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bhdp
+  extends bgyk
 {
-  public int a = -1;
-  public String a;
+  private int a;
+  public JceStruct a;
   
-  public static String a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public bhdp(long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("iItemId", paramInt1);
-      localJSONObject.put("strTextColor", paramString1);
-      localJSONObject.put("strAndBgUrl", paramString2);
-      localJSONObject.put("strIosBgUrl", paramString3);
-      localJSONObject.put("strFrameZip", paramString4);
-      localJSONObject.put("iFrameRate", paramInt2);
-      return localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    QzoneMessageReq localQzoneMessageReq = new QzoneMessageReq();
+    localQzoneMessageReq.uin = paramLong1;
+    localQzoneMessageReq.trace_info = paramString;
+    localQzoneMessageReq.num = paramLong2;
+    localQzoneMessageReq.ext = new HashMap();
+    localQzoneMessageReq.ext.put("qua", bgyi.a());
+    localQzoneMessageReq.scence = paramInt;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = localQzoneMessageReq;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.GetNewMQmsg";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return "GetNewMQmsg";
   }
 }
 

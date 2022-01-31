@@ -1,28 +1,12 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import android.view.View;
 
-public class badf
-  implements URLDrawable.URLDrawableListener
+public abstract class badf
 {
-  public badf(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
+  public final View a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected badf(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a = paramView;
   }
 }
 

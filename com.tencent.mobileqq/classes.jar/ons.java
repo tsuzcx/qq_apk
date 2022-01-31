@@ -1,48 +1,48 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import com.tencent.image.AbsThirdDataSourceAdapter;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
 public class ons
+  extends AbsThirdDataSourceAdapter
 {
-  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  int jdField_a_of_type_Int = 2;
+  private AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b = 0;
+  private int c = 0;
+  
+  public ons(int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (b(paramBaseArticleInfo))
-    {
-      i = j;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
-        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
-      }
-    }
-    return i;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
+  public int getPlayType()
   {
-    int j = paramView.getPaddingTop();
-    int k = paramView.getPaddingBottom();
-    if (onk.s()) {
-      paramRoundAngleFrameLayout.setRaduis(bawz.a(paramContext, 8.0F));
+    return this.c;
+  }
+  
+  public int getStaus()
+  {
+    return this.b;
+  }
+  
+  public String getURL()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
+  {
+    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
+    this.b = 1;
+    paramOnPreparedCallback = onu.a();
+    ont localont = new ont(this);
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) {
+      paramOnPreparedCallback.a(paramString, "PubAccountArticleCenter.GetUrlByVid", localont);
     }
-    for (int i = bawz.a(paramContext, 14.0F);; i = bawz.a(paramContext, 6.0F))
-    {
-      paramView.setPadding(i, j, i, k);
+    while (this.jdField_a_of_type_Int != 4) {
       return;
-      paramRoundAngleFrameLayout.setRaduis(bawz.a(paramContext, 0.0F));
     }
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", localont);
   }
 }
 

@@ -1,16 +1,22 @@
-import android.media.MediaPlayer;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class agxo
-  extends bcsq
+  implements ahbr
 {
-  public agxo(RedPacketKSongFragment paramRedPacketKSongFragment, bcsr parambcsr) {}
+  public agxo(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void a()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
-    this.jdField_a_of_type_Bcsr.a();
+    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
+      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+    }
   }
 }
 

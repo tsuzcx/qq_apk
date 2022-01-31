@@ -1,19 +1,30 @@
-import android.os.MessageQueue.IdleHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class rip
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnDismissListener
 {
   public rip(FastWebActivity paramFastWebActivity) {}
   
-  public boolean queueIdle()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (FastWebActivity.a(this.a).c == 0) {}
-    for (String str = "";; str = FastWebActivity.a(this.a).p)
+    Context localContext;
+    if (!FastWebActivity.a(this.a))
     {
-      rmu.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a));
-      return false;
+      localContext = this.a.getApplicationContext();
+      if (!FastWebActivity.b(this.a)) {
+        break label79;
+      }
+    }
+    label79:
+    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
+    {
+      rmy.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
+      rno.a(this.a, this.a.getAppInterface(), FastWebActivity.a(this.a), -1, -1, true);
+      FastWebActivity.d(this.a, false);
+      return;
     }
   }
 }

@@ -1,16 +1,32 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.widget.AdapterView;
 
 public class amna
-  implements View.OnClickListener
+  implements bfpv
 {
   public amna(IphonePickerView paramIphonePickerView) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
+    IphonePickerView.a(this.a, paramView, 1);
+    IphonePickerView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
     }
   }
 }

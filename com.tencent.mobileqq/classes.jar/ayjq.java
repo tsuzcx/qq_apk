@@ -1,22 +1,52 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Handler;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ayjq
-  implements FilenameFilter
+class ayjq
+  extends ayis
 {
-  public ayjq(ShareAppLogHelper paramShareAppLogHelper) {}
+  ayjq(ayjh paramayjh) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
   {
-    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
-    do
+    ??? = this.a;
+    ???.jdField_a_of_type_Int -= 1;
+    if ((paramBoolean1) && (paramInt1 == 0)) {
+      for (;;)
+      {
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.a.jdField_a_of_type_JavaUtilList != null)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.clear();
+            this.a.c = paramInt2;
+            this.a.e = paramBoolean2;
+            if (paramList == null) {
+              break;
+            }
+            this.a.jdField_b_of_type_Int = paramList.size();
+          }
+        }
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+          return;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          continue;
+          paramList = finally;
+          throw paramList;
+        }
+      }
+    }
+    if (this.a.jdField_b_of_type_Boolean) {}
+    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
     {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      return;
+    }
   }
 }
 

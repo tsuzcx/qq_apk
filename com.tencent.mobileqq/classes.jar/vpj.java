@@ -1,99 +1,17 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout.LayoutParams;
-import java.io.File;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class vpj
-  extends vpc<voz>
-  implements View.OnClickListener
+  extends vnb
 {
-  public vpj(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public vpj(ElasticImageView paramElasticImageView) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Vot == null) {
-      return paramView;
-    }
-    if (paramView == null) {}
-    for (paramView = new vpk(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((voz)this.jdField_a_of_type_Vot).a(), ((voz)this.jdField_a_of_type_Vot).a(), this);; paramView = (vpk)paramView)
-    {
-      paramView.a((voz)this.jdField_a_of_type_Vot, paramInt, getCount());
-      return paramView;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = 0;
-    ImageView localImageView = (ImageView)paramView;
-    int j = ((Integer)localImageView.getTag(2131376871)).intValue();
-    voz localvoz = (voz)this.jdField_a_of_type_Vot;
-    Object localObject3 = Uri.parse(localvoz.a(j));
-    Object localObject1 = ((Uri)localObject3).getPath();
-    String str = new File((String)localObject1).getName();
-    try
-    {
-      localObject1 = Drawable.createFromPath((String)localObject1);
-      if (localObject1 != null)
-      {
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-        try
-        {
-          j = ((RelativeLayout.LayoutParams)((ListView)paramView.getParent().getParent()).getLayoutParams()).leftMargin;
-          i = j;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            float f2;
-            float f3;
-            float f4;
-            float f5;
-            int k;
-            Object localObject2;
-            veg.c("NormalFaceAdapter", "get marginLeft error : %s", localException);
-            continue;
-            float f1 = (i - (k + (i - j) / 2) * 2) / i;
-          }
-        }
-        localObject3 = (vpk)paramView.getParent();
-        j = (int)vkn.b((View)localObject3);
-        f2 = vkn.a(paramView);
-        f3 = paramView.getWidth() / 2;
-        f4 = i;
-        f5 = ((vpk)localObject3).getHeight() / 2 + j;
-        i = ((Drawable)localObject1).getIntrinsicWidth();
-        j = localImageView.getWidth();
-        k = localImageView.getPaddingLeft();
-        if (j > i)
-        {
-          f1 = (((j - i) / 2 - k) * 2 + i) / i;
-          paramView = new vlr(localvoz.b, str, (Drawable)localObject1);
-          this.jdField_a_of_type_Vov.a(paramView, f4 + (f2 + f3), f5, f1 * 1.2F);
-          return;
-        }
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        veg.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
-        localObject2 = null;
-      }
-      veg.e("NormalFaceAdapter", "can create drawable from uri:" + localException);
-    }
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    ved.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

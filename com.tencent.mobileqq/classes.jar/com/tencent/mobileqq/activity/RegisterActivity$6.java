@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcpq;
+import bcqf;
 
 class RegisterActivity$6
   implements Runnable

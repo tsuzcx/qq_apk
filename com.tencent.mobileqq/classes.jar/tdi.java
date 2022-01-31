@@ -1,52 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class tdi
-  implements tck
+  extends akil
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private CopyOnWriteArraySet<tcl> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  tdi(tdh paramtdh) {}
   
-  public tdi()
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new tdj());
-  }
-  
-  private void b(int paramInt)
-  {
-    veg.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-    default: 
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tcl)localIterator.next()).a(paramInt);
-    }
-    System.gc();
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
-  }
-  
-  public void a(tcl paramtcl)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramtcl);
-  }
-  
-  public void b() {}
-  
-  public void b(tcl paramtcl)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramtcl);
   }
 }
 

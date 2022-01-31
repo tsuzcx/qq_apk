@@ -1,10 +1,10 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.util.List;
 
-public class bkkj
+public abstract interface bkkj
 {
-  protected ImageView a;
-  protected TextView a;
+  public abstract void a(long paramLong);
+  
+  public abstract void a(List<Long> paramList);
 }
 
 

@@ -1,39 +1,48 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import java.util.ArrayList;
 
-public class ajtj
-  implements ajtg
+class ajtj
+  implements IUploadTaskCallback
 {
-  protected void a() {}
+  ajtj(ajti paramajti) {}
   
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
-      return;
-    case 2: 
-      a(((Integer)paramObject).intValue());
-      return;
-    case 3: 
-      b(((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
     }
-    a(paramBoolean, ((Integer)paramObject).intValue());
+    this.a.notifyUI(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == paramLong2)
+    {
+      this.a.b = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
+      }
+    }
+  }
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
+  
+  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
+    }
+    synchronized (ajti.a(this.a))
+    {
+      if (ajti.a(this.a).size() != 0)
+      {
+        ajti.a(this.a);
+        return;
+      }
+      this.a.notifyUI(71, true, new Object[0]);
+    }
   }
 }
 

@@ -1,19 +1,22 @@
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
 
 public class aryj
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aryj(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
+  public aryj(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
   
   public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      return;
     }
+    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
   }
 }
 

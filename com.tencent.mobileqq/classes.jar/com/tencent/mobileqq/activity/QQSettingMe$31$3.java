@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abwv;
+import abwr;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.data.Card;
 
 public class QQSettingMe$31$3
   implements Runnable
 {
-  public QQSettingMe$31$3(abwv paramabwv, Card paramCard) {}
+  public QQSettingMe$31$3(abwr paramabwr, Card paramCard) {}
   
   public void run()
   {
-    if (QQSettingMe.a(this.jdField_a_of_type_Abwv.a) != null) {
-      QQSettingMe.a(this.jdField_a_of_type_Abwv.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (QQSettingMe.a(this.jdField_a_of_type_Abwr.a) != null) {
+      QQSettingMe.a(this.jdField_a_of_type_Abwr.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
     }
   }
 }

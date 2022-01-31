@@ -1,5 +1,4 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
@@ -7,7 +6,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 import org.json.JSONObject;
 
 public class per
-  implements phs
+  implements php
 {
   public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
@@ -16,37 +15,22 @@ public class per
   
   public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return pdr.a(paramBaseArticleInfo);
+    return pdu.a(paramBaseArticleInfo);
   }
   
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
   {
     paramContainer = paramContainer.getVirtualView();
-    Object localObject;
-    if ((parampax != null) && (parampax.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampax.a())))
+    if ((parampau != null) && (parampau.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampau.a())))
     {
-      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
-      TemplateBean localTemplateBean = parampax.a().mProteusTemplateBean;
-      paramContainer = null;
-      if (localTemplateBean != null) {
-        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
-      }
-      if ((localObject instanceof oby))
-      {
-        localObject = (oby)localObject;
-        ((oby)localObject).a(parampax);
-        if (paramContainer == null) {
-          break label96;
-        }
-        ((oby)localObject).a(true);
+      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
+      if ((paramContainer != null) && ((paramContainer instanceof odb))) {
+        ((odb)paramContainer).a(parampau);
       }
     }
-    return;
-    label96:
-    ((oby)localObject).a(false);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
   {
     return false;
   }

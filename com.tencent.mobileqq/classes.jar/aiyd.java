@@ -1,26 +1,108 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class aiyd
-  implements Observer
 {
-  public aiyd(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  private static long jdField_a_of_type_Long = -1L;
+  private static SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void update(Observable paramObservable, Object paramObject)
+  public static void a()
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
+    if (jdField_a_of_type_AndroidUtilSparseArray != null) {
+      jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+    jdField_a_of_type_AndroidUtilSparseArray = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameTimeReporter", 2, "[destroy]");
+    }
+  }
+  
+  public static void a(CmGameStartChecker.StartCheckParam arg0)
+  {
+    if (??? != null)
     {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      int i = ???.gameId;
+      if (i == 0) {
+        return;
+      }
+      try
+      {
+        if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+          jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+        }
+        synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+        {
+          long l = System.currentTimeMillis();
+          jdField_a_of_type_AndroidUtilSparseArray.put(i, Long.valueOf(l));
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameTimeReporter", 2, "[reportStart] set time " + i + " # " + l);
+          }
+          return;
+        }
+        QLog.e("ApolloGameTimeReporter", 1, "[reportStart] no para");
+      }
+      catch (Throwable ???)
+      {
+        QLog.e("ApolloGameTimeReporter", 1, ???, new Object[] { "[reportStart]" });
+        return;
+      }
+    }
+  }
+  
+  public static void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    int i;
+    if (paramStartCheckParam != null)
+    {
+      i = paramStartCheckParam.gameId;
+      if (i == 0) {}
+    }
+    else
+    {
+      label301:
+      for (;;)
+      {
+        try
+        {
+          if (jdField_a_of_type_AndroidUtilSparseArray == null) {
+            break;
+          }
+          synchronized (jdField_a_of_type_AndroidUtilSparseArray)
+          {
+            int j = paramStartCheckParam.gameMode;
+            long l1 = paramStartCheckParam.roomId;
+            long l2 = ((Long)jdField_a_of_type_AndroidUtilSparseArray.get(i, Long.valueOf(jdField_a_of_type_Long))).longValue();
+            paramStartCheckParam = ajac.a(i);
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            paramStartCheckParam = paramStartCheckParam.a();
+            if (paramStartCheckParam == null) {
+              break label301;
+            }
+            l1 = paramStartCheckParam.mRoomId;
+            if (l2 != jdField_a_of_type_Long)
+            {
+              long l3 = System.currentTimeMillis() - l2;
+              VipUtils.a(null, "cmshow", "Apollo", "game_time", 0, 0, new String[] { i + "", String.valueOf(j), String.valueOf(l3), String.valueOf(l1) });
+              jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloGameTimeReporter", 2, new Object[] { "[reportEnd] report: id:", Integer.valueOf(i), "# roomId:", Long.valueOf(l1), "# mode:", Integer.valueOf(j), "# [", Long.valueOf(l3), "] #", Long.valueOf(l2), " => ", Long.valueOf(System.currentTimeMillis()) });
+              }
+            }
+            return;
+          }
+          QLog.e("ApolloGameTimeReporter", 1, "[reportEnd] no para");
+        }
+        catch (Throwable paramStartCheckParam)
+        {
+          QLog.e("ApolloGameTimeReporter", 1, paramStartCheckParam, new Object[] { "[reportEnd]" });
+          return;
+        }
+        return;
       }
     }
   }

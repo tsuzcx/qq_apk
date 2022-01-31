@@ -1,49 +1,50 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
-class aymk
-  extends Handler
+public class aymk
 {
-  aymk(aymj paramaymj, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static final String a = String.valueOf(153);
+  public static final String b = String.valueOf(153);
   
-  public void handleMessage(Message paramMessage)
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    Activity localActivity;
-    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
-    {
-      localActivity = null;
-      if (localActivity != null) {
-        break label75;
-      }
-      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    if (paramInt2 < 0) {
+      paramInt2 = bbfj.a(null);
     }
-    label75:
-    do
+    for (;;)
     {
-      return;
-      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      break;
-      switch (paramMessage.what)
+      int i = paramInt2;
+      if (paramInt2 <= 0) {
+        i = 10;
+      }
+      paramAppRuntime = paramString4;
+      try
       {
-      default: 
+        if (TextUtils.isEmpty(paramString4)) {
+          paramAppRuntime = "1";
+        }
+        VasWebviewUtil.reportVasStatus(paramString1, paramString2, paramString3, i, paramInt1, paramInt3, Integer.parseInt(paramAppRuntime), paramString5, "");
+        if ((QLog.isColorLevel()) && (paramInt3 < 0))
+        {
+          paramString4 = new StringBuilder();
+          paramString4.append(paramString1).append("|step:");
+          paramString4.append(paramInt1).append("|from:");
+          paramString4.append(paramString2).append("|resultCode:");
+          paramString4.append(paramInt3).append("|id:");
+          paramString4.append(paramString3).append("|version:");
+          paramString4.append(paramAppRuntime);
+          QLog.i("ThemeReporter", 2, "ThemeReporterreportTheme Error data::" + paramString4.toString());
+        }
         return;
       }
-    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bcpq != null) && (this.a.jdField_a_of_type_Bcpq.isShowing())));
-    this.a.jdField_a_of_type_Bcpq = new bcpq(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
-    this.a.jdField_a_of_type_Bcpq.setCancelable(true);
-    this.a.jdField_a_of_type_Bcpq.c(2131719969);
-    this.a.jdField_a_of_type_Bcpq.show();
-    return;
-    this.a.c();
-    bcpw.a(localActivity, ajyc.a(2131714923), 4000).a();
+      catch (Exception paramAppRuntime)
+      {
+        QLog.e("ThemeReporter", 1, "ThemeReporter reportTheme Exception:" + paramAppRuntime.getMessage());
+        return;
+      }
+    }
   }
 }
 

@@ -1,81 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.view.View;
 
 public class amjb
+  implements amjg
 {
-  private int a(ColorNote paramColorNote)
+  public String a()
   {
-    switch (amhi.a(paramColorNote.getServiceType()) & 0xFFFF0000)
-    {
-    default: 
-      return 2130843549;
-    case 16973824: 
-      return 2130843494;
-    case 17039360: 
-      return 2130838964;
-    case 16842752: 
-      return 2130838965;
-    case 16908288: 
-      return 2130838966;
-    }
-    return 2130843337;
+    return "彩签业务类型";
   }
   
-  private Drawable a(Context paramContext, ColorNote paramColorNote)
+  public void a(View paramView, int paramInt)
   {
-    paramContext = paramContext.getResources();
-    int i = a(paramColorNote);
-    try
-    {
-      paramColorNote = new URL(paramColorNote.getPicUrl());
-      boolean bool = "resdrawable".equals(paramColorNote.getProtocol());
-      if (bool) {
-        try
-        {
-          paramColorNote = paramContext.getDrawable(Integer.parseInt(paramColorNote.getHost()));
-          return paramColorNote;
-        }
-        catch (NumberFormatException paramColorNote)
-        {
-          return paramContext.getDrawable(i);
-        }
-      }
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = actn.a(40.0F, paramContext);
-      localURLDrawableOptions.mRequestHeight = actn.a(40.0F, paramContext);
-      localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(i);
-      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
-      return paramColorNote;
-    }
-    catch (MalformedURLException paramColorNote)
-    {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-      return paramContext;
-    }
-    catch (NullPointerException paramColorNote)
-    {
-      paramContext = paramContext.getDrawable(i);
-      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
-    }
-    return paramContext;
-  }
-  
-  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
-  {
-    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
-    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
-    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298672), paramContext.getResources().getDimensionPixelSize(2131298671));
-    return localHistoryFormItem;
+    bcql.a(paramView.getContext(), 0, "service type: " + paramInt, 1000).a();
   }
 }
 

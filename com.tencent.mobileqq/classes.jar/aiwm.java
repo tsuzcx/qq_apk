@@ -1,32 +1,33 @@
+import java.util.ArrayList;
+
 public class aiwm
+  implements Cloneable
 {
   public int a;
+  public long a;
+  public ArrayList<String> a;
   public int b;
   public int c;
-  public int d;
-  public int e;
   
-  public boolean equals(Object paramObject)
+  protected Object clone()
   {
-    if ((paramObject == null) || (!(paramObject instanceof aiwm))) {}
-    do
+    Object localObject = null;
+    try
     {
-      return false;
-      paramObject = (aiwm)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("positionX:").append(this.a);
-    localStringBuilder.append(", positionY:").append(this.b);
-    localStringBuilder.append(", width:").append(this.c);
-    localStringBuilder.append(", height:").append(this.d);
-    localStringBuilder.append(", align:").append(this.e);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+      aiwm localaiwm = (aiwm)super.clone();
+      localObject = localaiwm;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        localCloneNotSupportedException.printStackTrace();
+      }
+    }
+    if (this.a != null) {
+      localObject.a = ((ArrayList)this.a.clone());
+    }
+    return localObject;
   }
 }
 

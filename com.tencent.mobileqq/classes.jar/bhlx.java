@@ -1,20 +1,45 @@
+import android.os.Bundle;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.observer.BusinessObserver;
+
 public class bhlx
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public bhlv a;
-  public boolean a;
-  public int b;
-  public bhlv b;
+  public bhlx(QZoneShareActivity paramQZoneShareActivity) {}
   
-  bhlx(bhlw parambhlw)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Bhlv = null;
-    this.jdField_b_of_type_Bhlv = null;
-    this.jdField_a_of_type_Long = 0L;
+    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.h = false;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, paramBundle.getMessage());
+          }
+        }
+      }
+      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
 }
 

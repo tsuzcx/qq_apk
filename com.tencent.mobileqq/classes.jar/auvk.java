@@ -1,10 +1,8 @@
 public class auvk
 {
   public long a;
-  public auvi a;
-  public String a = "";
   public long b;
-  public auvi b;
+  public long c;
 }
 
 

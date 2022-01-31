@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.os.Bundle;
-import bert;
+import besk;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class ShareProxyDefault$4$1
-  implements bert
+  implements besk
 {
   ShareProxyDefault$4$1(ShareProxyDefault.4 param4, JSONObject paramJSONObject) {}
   

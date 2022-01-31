@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import alkv;
+import alku;
 import android.app.Activity;
-import apvb;
+import apvd;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 class OCRScanEntryView$1
@@ -12,8 +12,8 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = alkv.a().a();
-    if (apvb.a(str)) {
+    String str = alku.a().a();
+    if (apvd.a(str)) {
       OCRResultActivity.a((Activity)this.this$0.a, str, 0);
     }
     OCRScanEntryView.a(this.this$0, false);

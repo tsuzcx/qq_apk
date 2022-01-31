@@ -1,46 +1,49 @@
 import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class amxf
 {
-  private Map<String, amxg> a = new HashMap();
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  public static amxf a(ampi[] paramArrayOfampi)
+  public static amxf a(JSONObject paramJSONObject)
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
+    if (paramJSONObject == null) {
       return null;
     }
-    localamxf = new amxf();
-    try
-    {
-      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].a);
-      Iterator localIterator = paramArrayOfampi.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONObject localJSONObject = paramArrayOfampi.getJSONObject(str);
-        localamxf.a.put(str, amxg.a(localJSONObject));
-      }
-      return localamxf;
-    }
-    catch (JSONException paramArrayOfampi) {}
+    amxf localamxf = new amxf();
+    localamxf.a = paramJSONObject.getString("tips");
+    localamxf.b = paramJSONObject.getString("buttonText");
+    localamxf.c = paramJSONObject.getString("url");
+    localamxf.d = paramJSONObject.getString("icon");
+    return localamxf;
   }
   
-  public static amxg a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (amxc.a() != null)) {
-      return (amxg)amxc.a().a().get(paramString);
-    }
-    return null;
-  }
-  
-  public Map<String, amxg> a()
+  public String a()
   {
     return this.a;
+  }
+  
+  public boolean a()
+  {
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 

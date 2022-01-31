@@ -1,142 +1,193 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.util.Log;
+import android.view.Surface;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.concurrent.TimeoutException;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
+@TargetApi(14)
 public class bkkc
-  extends BaseAdapter
-  implements bfpc, bkkf
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private int jdField_a_of_type_Int;
-  private List<bkke> jdField_a_of_type_JavaUtilList = new ArrayList();
+  int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private bkkd jdField_a_of_type_Bkkd;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
+  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
+  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
+  private boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public bkkc(@NonNull List<bkke> paramList)
+  public bkkc(int paramInt1, int paramInt2)
   {
-    if (paramList.isEmpty()) {
-      veg.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException();
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((bkke)paramList.next()).a(this);
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    f();
+    b();
+    e();
+  }
+  
+  private void a(String paramString)
+  {
+    int i = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
+    if (i != 12288) {
+      throw new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
     }
   }
   
-  @NonNull
-  private bkkd a(int paramInt)
+  private void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
+    this.jdField_a_of_type_Bkkd = new bkkd();
+    this.jdField_a_of_type_Bkkd.a();
+    Log.d("CodecOutputSurface", "textureID=" + this.jdField_a_of_type_Bkkd.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bkkd.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int * this.b * 4);
+    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
+      throw new RuntimeException("unable to get EGL14 display");
+    }
+    Object localObject = new int[2];
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject))
     {
-      bkke localbkke = (bkke)localIterator.next();
-      j = localbkke.a() + i;
-      if (paramInt <= j - 1) {
-        return new bkkd(localbkke, paramInt - i);
-      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+      throw new RuntimeException("unable to initialize EGL14");
     }
-    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((bkke)localIterator.next()).a() + i) {}
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  @Nullable
-  public bkke a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bkke localbkke = (bkke)localIterator.next();
-      if (localbkke.a) {
-        return localbkke;
-      }
+    localObject = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+    int i = localObject.length;
+    if (!localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, (EGLConfig[])localObject, i, arrayOfInt)) {
+      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
     }
-    return null;
-  }
-  
-  public void a(bkke parambkke)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    bkkd localbkkd = a(paramInt);
-    return localbkkd.jdField_a_of_type_Bkke.a(localbkkd.jdField_a_of_type_Int);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = a(paramInt);
-    bkke localbkke = ((bkkd)localObject).jdField_a_of_type_Bkke;
-    paramInt = ((bkkd)localObject).jdField_a_of_type_Int;
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = localbkke.a(paramInt, paramViewGroup);
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    a("eglCreateContext");
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) {
+      throw new RuntimeException("null context");
     }
-    localbkke.a(paramInt, (View)localObject);
-    return localObject;
+    i = this.jdField_a_of_type_Int;
+    int j = this.b;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 });
+    a("eglCreatePbufferSurface");
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) {
+      throw new RuntimeException("surface was null");
+    }
   }
   
-  public int getViewTypeCount()
+  public Bitmap a()
   {
-    return 5;
+    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
+    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.b, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
+    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
+    localBitmap.copyPixelsFromBuffer(this.jdField_a_of_type_JavaNioByteBuffer);
+    Log.d("CodecOutputSurface", "getFrameBitmap() finish...");
+    return localBitmap;
   }
   
-  public void notifyDataSetChanged()
+  public Surface a()
   {
-    a();
-    super.notifyDataSetChanged();
+    return this.jdField_a_of_type_AndroidViewSurface;
   }
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    paramView = a(paramInt);
-    paramAdapterView = paramView.jdField_a_of_type_Bkke;
-    if (!paramAdapterView.c) {}
-    do
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
     {
-      return;
-      paramAdapterView.a(paramView.jdField_a_of_type_Int);
-    } while ((paramAdapterView instanceof bkkb));
-    paramAdapterView.b(true);
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramView.hasNext())
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+    }
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_Bkkd = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Bkkd.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+      throw new RuntimeException("eglMakeCurrent failed");
+    }
+  }
+  
+  public void c()
+  {
+    Log.e("CodecOutputSurface", "awaitNewImage");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      bkke localbkke = (bkke)paramView.next();
-      if (localbkke != paramAdapterView)
+      for (;;)
       {
-        localbkke.b(false);
-        localbkke.a(false);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(1L);
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new TimeoutException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
       }
     }
-    notifyDataSetChanged();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Bkkd.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+  }
+  
+  public void onFrameAvailable(SurfaceTexture arg1)
+  {
+    Log.e("CodecOutputSurface", "onFrameAvailable new frame available");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 

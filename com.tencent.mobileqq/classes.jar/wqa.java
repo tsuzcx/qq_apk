@@ -1,14 +1,21 @@
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class wqa
-  implements wve
+  extends amgq
 {
   public wqa(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void a(int paramInt)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    if (paramInt == 12) {
-      this.a.a = true;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    amkf.a(BaseApplicationImpl.getContext(), 2, true);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

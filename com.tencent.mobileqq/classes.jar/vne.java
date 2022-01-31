@@ -1,15 +1,6 @@
-import android.animation.ValueAnimator;
-
-public class vne
-  implements vnd
+public abstract interface vne
 {
-  public void a(ValueAnimator paramValueAnimator) {}
-  
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public abstract void a(vpp paramvpp);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import amkn;
-import rik;
+import amkm;
+import rih;
 
 public class FastWebActivity$1
   implements Runnable
@@ -10,7 +10,7 @@ public class FastWebActivity$1
   
   public void run()
   {
-    amkn.a(this.this$0, new rik(this));
+    amkm.a(this.this$0, new rih(this));
   }
 }
 

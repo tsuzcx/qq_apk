@@ -1,24 +1,27 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
-class alts
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class alts
 {
-  alts(altr paramaltr) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      this.a.a.b.setVisibility(0);
-      this.a.a.a.setVisibility(0);
-      this.a.a.a.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.a.a.a.setVisibility(8);
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public BaseChatItemLayout a;
+  public ArkAppLoadLayout a;
+  public ArkAppRootLayout a;
+  public ArkAppView a;
+  public LinearLayout b;
 }
 
 

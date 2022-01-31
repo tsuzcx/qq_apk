@@ -1,43 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import java.io.File;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
 
 class vqz
-  implements bbzl
+  implements bjbu
 {
-  private String jdField_a_of_type_JavaLangString;
-  private vrn jdField_a_of_type_Vrn;
+  vqz(vqx paramvqx) {}
   
-  vqz(vrn paramvrn, String paramString)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Vrn = paramvrn;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b()
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Vrn.c)).concat(".pcm"));
-    if (((File)localObject).exists())
+    String str = vqx.a(this.a).getResources().getString(2131698328);
+    Object localObject = str;
+    if (paramBoolean)
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
       }
-      bbdj.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (vqx.a() != null)
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
       {
-        localObject = vqx.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_Vrn;
-        vqx.a().sendMessage((Message)localObject);
+        localObject = new vrk();
+        ((vrk)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((vrk)localObject).d = paramObject.url;
+        ((vrk)localObject).jdField_b_of_type_Int = 2;
+        ((vrk)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = vqx.a(this.a).getResources().getString(2131698329);
       }
     }
+    this.a.a(7, localObject);
   }
-  
-  public void c() {}
 }
 
 

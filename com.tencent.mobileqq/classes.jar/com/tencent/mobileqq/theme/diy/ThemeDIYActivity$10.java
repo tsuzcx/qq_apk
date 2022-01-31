@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.theme.diy;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import aymu;
-import bbwf;
-import bbwg;
+import aymw;
+import bbwt;
+import bbwu;
 import com.tencent.qphone.base.util.QLog;
 
 class ThemeDIYActivity$10
-  extends bbwf
+  extends bbwt
 {
   ThemeDIYActivity$10(ThemeDIYActivity paramThemeDIYActivity) {}
   
-  public void onDone(bbwg parambbwg)
+  public void onDone(bbwu parambbwu)
   {
-    super.onDone(parambbwg);
-    if ((parambbwg.a() == 3) && (parambbwg.a == 0)) {}
+    super.onDone(parambbwu);
+    if ((parambbwu.a() == 3) && (parambbwu.a == 0)) {}
     int j;
     for (int i = 1;; i = 0)
     {
-      parambbwg = parambbwg.a();
-      j = parambbwg.getInt("type");
+      parambbwu = parambbwu.a();
+      j = parambbwu.getInt("type");
       switch (j)
       {
       default: 
@@ -31,11 +31,11 @@ class ThemeDIYActivity$10
     }
     this.this$0.loadResJson(j, true);
     return;
-    aymu localaymu = this.this$0.saveStyleCallback;
+    aymw localaymw = this.this$0.saveStyleCallback;
     if (i != 0) {}
     for (i = 4;; i = 8)
     {
-      localaymu.callback(13, i, parambbwg, null);
+      localaymw.callback(13, i, parambbwu, null);
       return;
     }
   }
@@ -43,7 +43,7 @@ class ThemeDIYActivity$10
   public void onNetMobile2None()
   {
     QLog.e("ThemeDIYActivity", 2, "DownloadListener onNetMobile2None...");
-    this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 27, ajyc.a(2131714893)));
+    this.this$0.mHandler.sendMessage(Message.obtain(this.this$0.mHandler, 27, ajya.a(2131714904)));
   }
 }
 

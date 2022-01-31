@@ -1,10 +1,23 @@
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class abts
-  extends aimv
+  extends Handler
 {
-  public abtm a;
-  public TextView a;
+  public abts(QQBroadcastActivity paramQQBroadcastActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
+  }
 }
 
 

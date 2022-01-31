@@ -1,23 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class adsg
-  implements aput
+  extends ClickableSpan
 {
-  adsg(adqy paramadqy, String paramString) {}
+  adsg(adqw paramadqw, String paramString) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("uintype", this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Adqy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Adqy.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    apuc.a("0X800506C");
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

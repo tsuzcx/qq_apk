@@ -1,6 +1,22 @@
-public abstract interface bcsg
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+
+public final class bcsg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt);
+  private final TabDragAnimationView a;
+  
+  public bcsg(TabDragAnimationView paramTabDragAnimationView)
+  {
+    this.a = paramTabDragAnimationView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f, 0.0F, true);
+  }
 }
 
 

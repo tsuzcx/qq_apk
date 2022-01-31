@@ -1,78 +1,34 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class arxm
-  implements arym
+  extends akil
 {
-  arxm(arxh paramarxh, Activity paramActivity) {}
+  arxm(arxj paramarxj) {}
   
-  public void a(LocationRoom.Venue paramVenue)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramVenue != null)
-    {
-      arxh.a(this.jdField_a_of_type_Arxh);
-      return;
+    super.a(paramInt1, paramInt2, paramString);
+    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
+      arxj.a(arxj.a(this.a), 1, paramString);
     }
-    arxh.b(this.jdField_a_of_type_Arxh);
   }
   
-  public void a(LatLng paramLatLng) {}
-  
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  protected void b(String paramString, int paramInt)
   {
-    if (paramList != null)
+    super.b(paramString, paramInt);
+    if ((arxj.a(this.a).a() == 1) && (arxj.a(this.a).a().equals(paramString)))
     {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+      }
+      if (arxj.a(this.a) != null)
       {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.jdField_a_of_type_Arxh.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bbdr.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          arxh.a(this.jdField_a_of_type_Arxh).a(paramList, localBitmap);
-        }
+        arxj.a(this.a).finish();
+        bcql.a(arxj.a(this.a), 2131693252, 1).a();
       }
+      arxj.a(arxj.a(this.a), 1, paramString);
     }
-  }
-  
-  public void a(boolean paramBoolean, Point paramPoint)
-  {
-    if (paramBoolean)
-    {
-      arxh.a(this.jdField_a_of_type_Arxh).setClickable(false);
-      if (bfwa.a()) {
-        arxh.a(this.jdField_a_of_type_Arxh).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840254));
-      }
-    }
-    Rect localRect;
-    do
-    {
-      return;
-      arxh.a(this.jdField_a_of_type_Arxh).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840253));
-      return;
-      if (paramPoint == null) {
-        break;
-      }
-      localRect = new Rect();
-      arxh.a(this.jdField_a_of_type_Arxh).getGlobalVisibleRect(localRect);
-    } while (localRect.contains(paramPoint.x, paramPoint.y));
-    arxh.a(this.jdField_a_of_type_Arxh).setClickable(true);
-    arxh.a(this.jdField_a_of_type_Arxh).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840255));
-  }
-  
-  public void a(boolean paramBoolean, aryn paramaryn)
-  {
-    arxh.a(this.jdField_a_of_type_Arxh, paramBoolean, paramaryn);
   }
 }
 

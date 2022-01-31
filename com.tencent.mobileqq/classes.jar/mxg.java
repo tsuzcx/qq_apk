@@ -1,17 +1,10 @@
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
 
-public class mxg
-  extends mxf
+public abstract class mxg
+  extends mxj
 {
-  public String a;
-  public String b;
-  public String c;
-  public int d;
-  
-  public mxg(PoiMapActivity paramPoiMapActivity)
-  {
-    super(paramPoiMapActivity);
-  }
+  public WeakReference<AppInterface> a = new WeakReference(null);
 }
 
 

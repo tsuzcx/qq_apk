@@ -1,9 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class occ
+  implements ViewBase.IBuilder
 {
-  public float a = 1.0F;
-  public int a;
-  public int b;
-  public int c;
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new ocb(paramVafContext);
+  }
 }
 
 

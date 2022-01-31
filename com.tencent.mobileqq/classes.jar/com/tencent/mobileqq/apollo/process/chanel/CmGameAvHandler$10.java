@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajae;
-import ajbc;
-import ajku;
+import ajac;
+import ajba;
+import ajks;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class CmGameAvHandler$10
   implements Runnable
 {
-  public CmGameAvHandler$10(ajbc paramajbc, String paramString, long paramLong) {}
+  public CmGameAvHandler$10(ajba paramajba, String paramString, long paramLong) {}
   
   public void run()
   {
-    ajku.a().b(this.jdField_a_of_type_JavaLangString);
-    ajae.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_change_qav_role.local", "{}");
+    ajks.a().b(this.jdField_a_of_type_JavaLangString);
+    ajac.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_change_qav_role.local", "{}");
   }
 }
 

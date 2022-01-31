@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.fragment;
 
-import aqjv;
-import balu;
+import aqjx;
+import bami;
 
 public class TroopRobotFragment$1$1
   implements Runnable
 {
-  public TroopRobotFragment$1$1(aqjv paramaqjv, balu parambalu) {}
+  public TroopRobotFragment$1$1(aqjx paramaqjx, bami parambami) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqjv.a.a(this.jdField_a_of_type_Balu.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Balu.b, this.jdField_a_of_type_Balu.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aqjx.a.a(this.jdField_a_of_type_Bami.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bami.b, this.jdField_a_of_type_Bami.jdField_a_of_type_Int);
   }
 }
 

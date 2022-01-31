@@ -1,12 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aqsx
+final class aqsx
+  implements ahbr
 {
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
-  
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity);
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
+    }
+  }
 }
 
 

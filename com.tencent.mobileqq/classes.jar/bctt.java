@@ -1,25 +1,38 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
-class bctt
-  implements bctq
+public class bctt
+  implements Animator.AnimatorListener
 {
-  bctt(bcts parambcts) {}
+  public bctt(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a(true, new View[] { this.a.a });
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public void b()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(false, new View[] { this.a.a });
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
+    }
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  public void c()
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    this.a.b(5);
+    FloatingScreenContainer.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
+    }
+    FloatingScreenContainer.a(this.a, true);
   }
 }
 

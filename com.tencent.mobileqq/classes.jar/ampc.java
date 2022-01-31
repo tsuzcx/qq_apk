@@ -1,8 +1,6 @@
-import java.io.File;
-
-public abstract interface ampc<RESULT, PARAM>
+public abstract interface ampc<Y>
 {
-  public abstract RESULT a(File paramFile, PARAM paramPARAM);
+  public abstract void a(Y paramY);
 }
 
 

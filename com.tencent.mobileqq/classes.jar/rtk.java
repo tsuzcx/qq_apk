@@ -1,10 +1,18 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
 
-public abstract interface rtk
+public class rtk
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt, long paramLong);
+  public rtk(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, rtn paramrtn) {}
   
-  public abstract void b(View paramView, int paramInt, long paramLong);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Rtn);
+    }
+  }
 }
 
 

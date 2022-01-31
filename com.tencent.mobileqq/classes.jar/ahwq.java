@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
-
 public class ahwq
-  implements DialogInterface.OnClickListener
 {
-  public ahwq(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
-  }
+  public static final String a = ajya.a(2131712384) + ssf.a + ajya.a(2131712385);
 }
 
 

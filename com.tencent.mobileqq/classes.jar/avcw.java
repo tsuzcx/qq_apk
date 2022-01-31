@@ -1,284 +1,101 @@
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 public class avcw
-  implements adih
+  extends InputStream
+  implements avct
 {
-  private int jdField_a_of_type_Int = 10;
-  private aukn jdField_a_of_type_Aukn;
-  public bbgg a;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  protected int a;
+  protected Context a;
+  protected avcu a;
+  protected PipedInputStream a;
+  protected PipedOutputStream a;
+  protected byte[] a;
+  protected byte[] b;
+  protected byte[] c;
+  protected byte[] d = new byte[1];
   
-  public avcw(BaseChatPie paramBaseChatPie)
+  public avcw(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    if (paramBaseChatPie != null) {
-      this.jdField_a_of_type_Aukn = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getEntityManagerFactory().createEntityManager();
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private aqur a(byte[] paramArrayOfByte)
+  public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    try
-    {
-      paramArrayOfByte = aqva.a(new String(paramArrayOfByte, "utf-8"));
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
   }
   
-  private void a(aukn paramaukn, long paramLong)
+  public avcu a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    avdc.a().a(paramaukn, paramLong, new avcx(this));
-  }
-  
-  private void a(bbgg parambbgg, aqur paramaqur, PushDialogTemplate paramPushDialogTemplate)
-  {
-    paramaqur = paramaqur.a();
-    if (paramaqur.a() != 6) {}
-    Object localObject3;
-    Object localObject2;
-    label438:
-    do
+    this.jdField_a_of_type_Avcu.jdField_a_of_type_Int = 0;
+    int j = paramInt2;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt2 > 0)
     {
-      return;
-      for (;;)
-      {
-        paramaqur = paramaqur.a();
-        if ((paramaqur != null) && (paramaqur.size() != 0))
-        {
-          paramaqur = paramaqur.iterator();
-          while (paramaqur.hasNext())
-          {
-            localObject1 = (aqus)paramaqur.next();
-            localObject3 = ((aqus)localObject1).a();
-            localObject2 = ((aqus)localObject1).a();
-            if (((aqus)localObject1).a() == 7)
-            {
-              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                parambbgg.setTitle((String)localObject1);
-              }
-            }
-            else
-            {
-              if (((aqus)localObject1).a() != 8) {
-                break label438;
-              }
-              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(1));
-              if ((localObject2 != null) && (((List)localObject2).size() != 0))
-              {
-                localObject1 = new SpannableStringBuilder();
-                localObject2 = ((List)localObject2).iterator();
-                while (((Iterator)localObject2).hasNext())
-                {
-                  Object localObject4 = (aqus)((Iterator)localObject2).next();
-                  localObject3 = ((aqus)localObject4).a();
-                  String str1;
-                  if (((aqus)localObject4).a() == 2)
-                  {
-                    if (localObject3 != null)
-                    {
-                      localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-                      str1 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
-                      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
-                      if (!TextUtils.isEmpty((CharSequence)localObject4))
-                      {
-                        localObject3 = new SpannableString((CharSequence)localObject4);
-                        ((SpannableString)localObject3).setSpan(Integer.valueOf(Color.parseColor("#03081A")), 0, ((SpannableString)localObject3).length(), 33);
-                        ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
-                      }
-                    }
-                  }
-                  else if ((((aqus)localObject4).a() == 3) && (localObject3 != null))
-                  {
-                    localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-                    str1 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
-                    String str2 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
-                    localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
-                    SpannableString localSpannableString = new SpannableString((CharSequence)localObject4);
-                    localSpannableString.setSpan(new avcy(this, str1, (String)localObject3, str2), 0, ((String)localObject4).length(), 33);
-                    ((SpannableStringBuilder)localObject1).append(localSpannableString);
-                  }
-                }
-                parambbgg.setMessageWithoutAutoLink((CharSequence)localObject1);
-              }
-            }
-          }
-        }
+      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
+        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
       }
-    } while ((((aqus)localObject1).a() != 9) || (localObject2 == null));
-    Object localObject1 = ((List)localObject2).iterator();
-    int i = 0;
-    label465:
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (aqus)((Iterator)localObject1).next();
-      if (((aqus)localObject2).a() != 10) {
-        break label590;
-      }
-      localObject3 = ((aqus)localObject2).a();
-      localObject2 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
-      if (i != 0) {
-        break label564;
-      }
-      parambbgg.setNegativeButton((String)localObject2, new avcz(this, (String)localObject3, paramPushDialogTemplate));
+      a(paramArrayOfByte, i, paramInt1);
+      i += paramInt1;
+      paramInt1 = paramInt2 - paramInt1;
+      paramInt2 = paramInt1;
     }
-    label555:
-    label564:
-    label590:
-    label591:
-    for (;;)
-    {
-      i += 1;
-      for (;;)
-      {
-        break label465;
-        break;
-        if (i != 1) {
-          break label591;
-        }
-        parambbgg.setPositiveButton((String)localObject2, new avda(this, (String)localObject3));
-        break label555;
-      }
-    }
-  }
-  
-  private void a(PushDialogTemplate paramPushDialogTemplate, int paramInt)
-  {
-    if ((paramInt == 103) && (this.jdField_a_of_type_Aukn != null)) {
-      avdc.a().a(this.jdField_a_of_type_Aukn, paramPushDialogTemplate);
-    }
-  }
-  
-  private void b(PushDialogTemplate paramPushDialogTemplate, int paramInt)
-  {
-    if ((paramInt == 102) && (this.jdField_a_of_type_Aukn != null)) {
-      avdc.a().b(this.jdField_a_of_type_Aukn, paramPushDialogTemplate);
-    }
-    if (this.jdField_a_of_type_Bbgg != null) {
-      this.jdField_a_of_type_Bbgg.dismiss();
-    }
+    return this.jdField_a_of_type_Avcu;
   }
   
   public void a()
   {
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      if (TextUtils.isEmpty(str)) {}
+      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
     }
-    try
+    close();
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    if (Build.VERSION.SDK_INT <= 8)
     {
-      a(this.jdField_a_of_type_Aukn, Long.valueOf(str).longValue());
+      this.jdField_a_of_type_JavaIoPipedInputStream = new bbgk(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
       return;
     }
-    catch (Exception localException)
+    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
     {
-      QLog.e("AIOPushDialogHelper", 1, "db search error: ", localException);
+      paramInt1 = a(this.c, this.jdField_a_of_type_Avcu.jdField_a_of_type_Int);
+      paramArrayOfByte = this.jdField_a_of_type_Avcu;
+      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
     }
   }
   
-  public void a(int paramInt)
+  public void close()
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
     {
-    default: 
-    case 9: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_Int = 9;
-      } while (this.jdField_a_of_type_Bbgg == null);
-      this.jdField_a_of_type_Bbgg.dismiss();
-      return;
-    case 3: 
-      this.jdField_a_of_type_Int = 3;
-      return;
-    }
-    a();
-  }
-  
-  public void a(PushDialogTemplate paramPushDialogTemplate, int paramInt1, int paramInt2)
-  {
-    aqur localaqur;
-    if ((paramPushDialogTemplate != null) && (paramPushDialogTemplate.templ_content != null))
-    {
-      localaqur = a(paramPushDialogTemplate.templ_content);
-      if (localaqur != null)
-      {
-        if (this.jdField_a_of_type_Bbgg != null) {
-          break label217;
-        }
-        this.jdField_a_of_type_Bbgg = new bbgg(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 2131755791);
-        this.jdField_a_of_type_Bbgg.setContentView(2131558906);
-        this.jdField_a_of_type_Bbgg.setCanceledOnTouchOutside(false);
-        LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_Bbgg.findViewById(2131363315);
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
-        localLayoutParams.leftMargin = bawz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
-        localLayoutParams.rightMargin = bawz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
-        localLinearLayout.setLayoutParams(localLayoutParams);
-      }
-    }
-    for (;;)
-    {
-      a(this.jdField_a_of_type_Bbgg, localaqur, paramPushDialogTemplate);
-      this.jdField_a_of_type_Bbgg.show();
-      if (this.jdField_a_of_type_Int != 3) {
-        break label267;
-      }
-      a(paramPushDialogTemplate, paramInt2);
-      if (!paramPushDialogTemplate.isFriendBanned()) {
-        break;
-      }
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800A4B9", "0X800A4B9", 0, 0, "", "", "", "");
-      return;
-      label217:
-      this.jdField_a_of_type_Bbgg.dismiss();
-    }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", "", "0X800A4B8", "0X800A4B8", 0, 0, "", "", "", "");
-    return;
-    label267:
-    b(paramPushDialogTemplate, paramInt1);
-  }
-  
-  public void a(List<PushDialogTemplate> paramList, int paramInt1, int paramInt2)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < paramList.size())
-      {
-        a((PushDialogTemplate)paramList.get(i), paramInt1, paramInt2);
-        i += 1;
-      }
+      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      this.jdField_a_of_type_JavaIoPipedInputStream = null;
     }
   }
   
-  public int[] a()
+  public int read()
   {
-    return new int[] { 9, 3, 6 };
+    if (read(this.d, 0, 1) == 1) {
+      return this.d[0] & 0xFF;
+    }
+    return -1;
   }
 }
 

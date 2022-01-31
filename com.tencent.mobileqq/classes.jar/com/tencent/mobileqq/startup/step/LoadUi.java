@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axnv;
+import axnx;
 import mqq.app.AppActivity;
 
 public class LoadUi

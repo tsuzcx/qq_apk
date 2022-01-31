@@ -1,22 +1,22 @@
 package cooperation.qzone.contentbox;
 
-import anjt;
-import bhcq;
-import bhcy;
+import anjy;
+import bhdh;
+import bhdp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
 
 public class QZoneMsgManager$1
   implements Runnable
 {
-  public QZoneMsgManager$1(bhcq parambhcq, QQAppInterface paramQQAppInterface) {}
+  public QZoneMsgManager$1(bhdh parambhdh, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bhcy localbhcy = new bhcy(this.a.getLongAccountUin(), "", this.this$0.a(1), 2);
-    localbhcy.a(1);
-    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.a.getApplication(), anjt.class);
-    localQzoneCommonIntent.setRequest(localbhcy);
+    bhdp localbhdp = new bhdp(this.a.getLongAccountUin(), "", this.this$0.a(1), 2);
+    localbhdp.a(1);
+    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.a.getApplication(), anjy.class);
+    localQzoneCommonIntent.setRequest(localbhdp);
     localQzoneCommonIntent.setObserver(this.this$0);
     this.a.startServlet(localQzoneCommonIntent);
   }

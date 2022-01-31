@@ -1,134 +1,166 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class bbrg
+  implements Manager
 {
-  public SparseArray<List<bbrf>> a;
-  bbrf a;
-  public List<bbrf> a;
+  public ansm a;
+  public anxg a;
+  public apzh a;
+  public aqwp a;
+  public auuz a;
+  public bbos a;
+  private bbrh a;
+  public bbtq a;
+  public QQAppInterface a;
+  public VasFaceManager a;
   
-  public bbrg()
+  public bbrg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Bbrf = bbrf.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Anxg = new anxg(paramQQAppInterface);
+    this.jdField_a_of_type_Apzh = new apzh(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
+    this.jdField_a_of_type_Ansm = new ansm(paramQQAppInterface);
+    this.jdField_a_of_type_Auuz = new auuz(paramQQAppInterface);
+    this.jdField_a_of_type_Bbos = new bbos(paramQQAppInterface);
+    this.jdField_a_of_type_Aqwp = new aqwp(paramQQAppInterface);
+    this.jdField_a_of_type_Bbtq = new bbtq(paramQQAppInterface);
+    this.jdField_a_of_type_Bbrh = new bbrh();
+    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_Bbrh);
   }
   
-  public bbrf a(int paramInt)
+  public static String a(int paramInt)
   {
-    bbrf localbbrf1 = this.jdField_a_of_type_Bbrf;
-    int m = Color.red(paramInt);
-    int n = Color.green(paramInt);
-    int i1 = Color.blue(paramInt);
-    paramInt = 128;
-    byte b = 1;
-    while (b <= 8)
+    int i = paramInt & 0xF;
+    String str = null;
+    if (i == 1)
     {
-      int i;
-      int j;
-      label55:
-      int k;
-      label65:
-      bbrf localbbrf2;
-      boolean bool;
-      if ((m & paramInt) == 0)
-      {
-        i = 0;
-        if ((n & paramInt) != 0) {
-          break label247;
-        }
-        j = 0;
-        if ((i1 & paramInt) != 0) {
-          break label253;
-        }
-        k = 0;
-        i = i * 4 + j * 2 + k;
-        if (localbbrf1.jdField_a_of_type_AndroidUtilSparseArray == null) {
-          localbbrf1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-        }
-        if (localbbrf1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
-        {
-          localbbrf2 = bbrf.a(i, b);
-          localbbrf1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localbbrf2);
-          if (b != 8) {
-            break label259;
-          }
-          bool = true;
-          label136:
-          localbbrf2.jdField_a_of_type_Boolean = bool;
-          if (!localbbrf2.jdField_a_of_type_Boolean) {
-            break label265;
-          }
-          this.jdField_a_of_type_JavaUtilList.add(localbbrf2);
-        }
+      str = amyz.c().mNotifyPaymentText;
+      if (TextUtils.isEmpty(str)) {
+        break label112;
       }
-      for (;;)
-      {
-        localbbrf1 = (bbrf)localbbrf1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (!localbbrf1.jdField_a_of_type_Boolean) {
-          break label313;
-        }
-        localbbrf1.jdField_a_of_type_Long += m;
-        localbbrf1.b += n;
-        localbbrf1.c += i1;
-        localbbrf1.jdField_a_of_type_Int += 1;
-        return localbbrf1;
-        i = 1;
-        break;
-        label247:
-        j = 1;
-        break label55;
-        label253:
-        k = 1;
-        break label65;
-        label259:
-        bool = false;
-        break label136;
-        label265:
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localbbrf2);
-      }
-      label313:
-      b = (byte)(b + 1);
-      paramInt >>= 1;
-    }
-    return localbbrf1;
-  }
-  
-  public void a()
-  {
-    int i = 7;
-    while ((i > 0) && (((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).isEmpty())) {
-      i -= 1;
-    }
-    Object localObject = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      bbrf localbbrf = (bbrf)((List)localObject).get(((List)localObject).size() - 1);
-      ((List)localObject).remove(localbbrf);
       i = 0;
-      while (i < 8)
+      switch (paramInt >> 4)
       {
-        localObject = (bbrf)localbbrf.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localObject != null)
-        {
-          localbbrf.jdField_a_of_type_Long += ((bbrf)localObject).jdField_a_of_type_Long;
-          localbbrf.b += ((bbrf)localObject).b;
-          localbbrf.c += ((bbrf)localObject).c;
-          localbbrf.jdField_a_of_type_Int += ((bbrf)localObject).jdField_a_of_type_Int;
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
-        }
-        i += 1;
+      default: 
+        paramInt = i;
       }
-      localbbrf.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      localbbrf.jdField_a_of_type_AndroidUtilSparseArray = null;
-      localbbrf.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilList.add(localbbrf);
     }
+    for (;;)
+    {
+      if (paramInt == 0) {
+        break label112;
+      }
+      return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
+      if (i != 2) {
+        break;
+      }
+      str = amyz.c().mExpiredNotifyPaymentText;
+      break;
+      paramInt = 2131695486;
+      continue;
+      paramInt = 2131719975;
+      continue;
+      paramInt = 2131690464;
+    }
+    label112:
+    return "";
+  }
+  
+  public static boolean a()
+  {
+    if (bbxl.a().a())
+    {
+      if (bbfj.b(BaseApplicationImpl.getApplication()) == 0)
+      {
+        bbxl.a().a(null, false);
+        return true;
+      }
+      QLog.d("KC.TMSManager", 1, "can only query in mobile connection");
+      return true;
+    }
+    QLog.d("KC.TMSManager", 1, "tms can not work");
+    return false;
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 33: 
+      return "mvip.n.a.qlevel_cuifei";
+    case 18: 
+    case 34: 
+      return "mvip.n.a.qlevel_guoqi";
+    case 49: 
+      return "jhan_qlevel_cuifei";
+    }
+    return "jhan_qlevel_guoqi";
+  }
+  
+  public static String c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 18: 
+      return "LTMCLUB";
+    case 33: 
+    case 34: 
+      return "CJCLUBT";
+    }
+    return "SVHHZLH";
+  }
+  
+  public int a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    QLog.e("QQLevelNotice", 1, "setShowQQLevelNoticeValue: " + paramInt + ", " + str);
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putInt("is_show_qq_level_notice", paramInt).commit();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putBoolean("is_show_host_qq_level_guide", paramBoolean).commit();
+  }
+  
+  public boolean b()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getBoolean("is_show_host_qq_level_guide", true);
+  }
+  
+  public void onDestroy()
+  {
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bbrh);
+    this.jdField_a_of_type_Apzh.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
+    this.jdField_a_of_type_Bbtq.a();
+    this.jdField_a_of_type_Bbos.onDestroy();
+    this.jdField_a_of_type_Aqwp.a();
   }
 }
 

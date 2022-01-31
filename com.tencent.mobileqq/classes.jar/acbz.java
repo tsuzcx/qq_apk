@@ -1,42 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class acbz
-  extends ajxl
+  implements DialogInterface.OnDismissListener
 {
-  public acbz(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
+  public acbz(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
-    {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
-          bcpw.a(BaseApplication.getContext(), ajyc.a(2131713993), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
-        }
-      }
-    }
-    do
-    {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
-      {
-        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
-        return;
-      }
-      paramString = ((ajxn)this.a.app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListActivity.a(this.a).a(paramString);
-    ShieldFriendsListActivity.a(this.a);
+    this.a.finish();
   }
 }
 

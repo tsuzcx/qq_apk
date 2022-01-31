@@ -1,24 +1,10 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class apup
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  apup(aput paramaput) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

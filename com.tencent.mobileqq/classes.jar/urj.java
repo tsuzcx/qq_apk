@@ -1,38 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Map;
 
-public final class urj
-  extends QQUIEventReceiver<uqy, tdh>
+public class urj
+  extends QQUIEventReceiver<uqv, tdj>
 {
-  public urj(@NonNull uqy paramuqy)
+  public urj(@NonNull uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull tdh paramtdh)
+  public void a(@NonNull uqv paramuqv, @NonNull tdj paramtdj)
   {
-    if (uqy.a(paramuqy) == null) {
-      veg.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramtdh.toString());
-    }
-    do
+    if (uqv.a(paramuqv) == null)
     {
-      do
-      {
-        return;
-      } while (!paramtdh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      veg.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramtdh.toString());
-      paramtdh = (tmn)paramtdh.jdField_a_of_type_JavaUtilMap.get(uqy.a(paramuqy));
-    } while (paramtdh == null);
-    paramtdh = ((tdf)tdc.a(27)).a(uqy.a(paramuqy).a(), paramtdh.a);
-    uqy.a(paramuqy).b(paramtdh, true);
-    paramuqy.a();
+      ved.b(this.TAG, "ignore this troop nick name change event. %s.", paramtdj.toString());
+      return;
+    }
+    ved.a(this.TAG, "receive troop nick name change event. %s.", paramtdj.toString());
+    uqv.a(paramuqv).c();
   }
   
   public Class acceptEventClass()
   {
-    return tdh.class;
+    return tdj.class;
   }
 }
 

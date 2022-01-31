@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
-public final class lxy
-  implements Parcelable.Creator<RecvGVideoLevelInfo>
+public class lxy
+  implements DialogInterface.OnClickListener
 {
-  public RecvGVideoLevelInfo a(Parcel paramParcel)
-  {
-    return new RecvGVideoLevelInfo(paramParcel);
-  }
+  public lxy(AVSchema paramAVSchema, String paramString) {}
   
-  public RecvGVideoLevelInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new RecvGVideoLevelInfo[paramInt];
+    mqy.d();
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

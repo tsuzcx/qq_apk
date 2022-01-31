@@ -1,8 +1,4 @@
-public abstract interface bivg
-{
-  public abstract void a(String paramString);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     bivg

@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
 import android.widget.ListView;
-import wnl;
+import wni;
 
 public class CommentPresenter$13
   implements Runnable
 {
-  public CommentPresenter$13(wnl paramwnl) {}
+  public CommentPresenter$13(wni paramwni) {}
   
   public void run()
   {
-    wnl.b(this.this$0);
+    wni.b(this.this$0);
     if (this.this$0.a != null) {
       this.this$0.a.setSelection(0);
     }

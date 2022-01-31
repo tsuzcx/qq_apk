@@ -1,21 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
 
-class aica
-  implements View.OnTouchListener
+public abstract interface aica
 {
-  aica(aibz paramaibz) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      aibz.a(this.a).x = ((int)paramMotionEvent.getRawX());
-      aibz.a(this.a).y = ((int)paramMotionEvent.getRawY());
-    }
-    return false;
-  }
+  public abstract void a(@NonNull aice paramaice);
 }
 
 

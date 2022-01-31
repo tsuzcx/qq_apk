@@ -1,102 +1,79 @@
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 
-public class pkj
-  extends TextBase
+class pkj
+  extends LinearLayout
 {
-  private TickerView a;
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int jdField_b_of_type_Int;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g = -16777216;
   
-  public pkj(VafContext paramVafContext)
+  public pkj(Context paramContext)
   {
-    super(paramVafContext);
-    this.a = new TickerView(paramVafContext.getContext());
-    this.a.setCharacterLists(new String[] { "1234567890" });
-    this.a.setAnimationDuration(500L);
+    super(paramContext);
+    setWillNotDraw(false);
   }
   
-  public int getComMeasuredHeight()
+  public void a(int paramInt)
   {
-    return this.a.getMeasuredHeight();
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public int getComMeasuredWidth()
+  public void b(int paramInt)
   {
-    return this.a.getMeasuredWidth();
+    this.c = paramInt;
   }
   
-  public View getNativeView()
+  public void c(int paramInt)
   {
-    return this.a;
+    this.d = paramInt;
   }
   
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void d(int paramInt)
   {
-    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.e = paramInt;
   }
   
-  public void onComMeasure(int paramInt1, int paramInt2)
+  protected void onDraw(Canvas paramCanvas)
   {
-    this.a.measure(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    super.onParseValueFinished();
-    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.a.setTextSize(this.mTextSize);
-    this.a.setBackgroundColor(this.mBackground);
-    this.a.setTextColor(this.mTextColor);
-    if ((this.mTextStyle & 0x2) != 0) {
-      this.a.setTypeface(Typeface.create(Typeface.DEFAULT, 2));
-    }
-    int i = 0;
-    int j;
-    if ((this.mGravity & 0x4) != 0)
+    if (this.jdField_a_of_type_Int != 0)
     {
-      i = 1;
-      if ((this.mGravity & 0x20) == 0) {
-        break label187;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
-      j = i | 0x10;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+      VirtualViewUtils.drawBackground(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    for (;;)
+    super.onDraw(paramCanvas);
+    if (this.f > 0)
     {
-      this.a.setGravity(j);
-      if ((TextUtils.isEmpty(this.mText)) || (!(this.mText instanceof String))) {
-        break label225;
-      }
-      this.a.setText((String)this.mText);
-      return;
-      if ((this.mGravity & 0x1) != 0)
+      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
       {
-        i = 3;
-        break;
+        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
-      if ((this.mGravity & 0x2) == 0) {
-        break;
-      }
-      i = 5;
-      break;
-      label187:
-      if ((this.mGravity & 0x8) != 0)
-      {
-        j = i | 0x30;
-      }
-      else
-      {
-        j = i;
-        if ((this.mGravity & 0x10) != 0) {
-          j = i | 0x50;
-        }
-      }
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
+      VirtualViewUtils.drawBorder(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    label225:
-    this.a.setText("");
+  }
+  
+  public void setBackgroundColor(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

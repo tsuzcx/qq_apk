@@ -1,50 +1,18 @@
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment.2.1;
+import mqq.os.MqqHandler;
 
 public class bixp
-  implements VideoShelfEngine.Callback
+  extends biqy
 {
-  private WeakReference<AEVideoShelfEditFragment> a;
+  public bixp(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
   
-  public bixp(AEVideoShelfEditFragment paramAEVideoShelfEditFragment)
+  public void b(boolean paramBoolean, int paramInt)
   {
-    this.a = new WeakReference(paramAEVideoShelfEditFragment);
-  }
-  
-  public void onCancelCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).e();
-    }
-  }
-  
-  public void onCompleted()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).d();
-    }
-  }
-  
-  public void onError(int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).a(paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void onProgress(int paramInt)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).a(paramInt);
-    }
-  }
-  
-  public void onStartGenerate()
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((AEVideoShelfEditFragment)this.a.get()).c();
-    }
+    AETakeFacePhotoPreviewFragment.a(this.a).removeObserver(this);
+    ThreadManager.getUIHandler().post(new AETakeFacePhotoPreviewFragment.2.1(this, paramBoolean, paramInt));
   }
 }
 

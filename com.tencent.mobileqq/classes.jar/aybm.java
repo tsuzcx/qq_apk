@@ -1,37 +1,53 @@
 public class aybm
-  extends aybg
+  extends aybi
 {
-  private int f;
-  private int g;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public aybm(int paramInt1, int paramInt2, int paramInt3)
+  public aybm(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    super(paramInt1, 4, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  public aybm(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super(paramInt1, 4, paramInt4);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    super(paramInt, 1, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.a >= this.g) {
-        this.a = this.g;
+    this.a = (this.d + (this.f - this.d) * paramFloat);
+    this.b = (this.e + (this.g - this.e) * paramFloat);
+    if (this.f - this.d > 0.0F)
+    {
+      if (this.a >= this.f) {
+        this.a = this.f;
+      }
+      if (this.g - this.e <= 0.0F) {
+        break label162;
+      }
+      if (this.b >= this.g) {
+        this.b = this.g;
       }
     }
     for (;;)
     {
+      if (paramInt >= this.c)
+      {
+        this.a = this.f;
+        this.b = this.g;
+      }
       super.a(paramInt, paramFloat);
       return;
-      if (this.a <= this.g) {
-        this.a = this.g;
+      if (this.a > this.f) {
+        break;
+      }
+      this.a = this.f;
+      break;
+      label162:
+      if (this.b <= this.g) {
+        this.b = this.g;
       }
     }
   }

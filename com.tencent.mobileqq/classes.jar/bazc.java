@@ -1,13 +1,21 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.HeadRequest;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bazc
+public final class bazc
+  implements Parcelable.Creator<HeadRequest>
 {
-  String a() default "";
+  public HeadRequest a(Parcel paramParcel)
+  {
+    HeadRequest localHeadRequest = new HeadRequest();
+    localHeadRequest.a(paramParcel);
+    return localHeadRequest;
+  }
+  
+  public HeadRequest[] a(int paramInt)
+  {
+    return new HeadRequest[paramInt];
+  }
 }
 
 

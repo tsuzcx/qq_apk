@@ -1,27 +1,27 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
 import com.tencent.gdtad.aditem.GdtAd;
-import yxs;
-import yzl;
+import yxp;
+import yzi;
 
 public class GdtAppDownloadManager$2
   implements Runnable
 {
-  public GdtAppDownloadManager$2(yzl paramyzl) {}
+  public GdtAppDownloadManager$2(yzi paramyzi) {}
   
   public void run()
   {
-    yzl.b(this.this$0, true);
-    if (yzl.a == null)
+    yzi.b(this.this$0, true);
+    if (yzi.a == null)
     {
-      yxs.b("GdtAppBtnUIPresenter", "mClick Delay 800ms --->Use Default Data");
+      yxp.b("GdtAppBtnUIPresenter", "mClick Delay 800ms --->Use Default Data");
       GdtAppBtnData localGdtAppBtnData = new GdtAppBtnData();
-      localGdtAppBtnData.apkUrlhttp = yzl.a(this.this$0).getAppPackageUrl();
-      localGdtAppBtnData.packageName = yzl.a(this.this$0).getAppPackageName();
-      localGdtAppBtnData.name = yzl.a(this.this$0).getAppName();
-      yxs.b("GdtAppBtnUIPresenter", "DefaultGdtAppBtnData apkUrlhttp " + localGdtAppBtnData.apkUrlhttp);
-      localGdtAppBtnData.mGdtAd_appId = yzl.a(this.this$0).getAppId();
-      yzl.a(this.this$0, localGdtAppBtnData);
+      localGdtAppBtnData.apkUrlhttp = yzi.a(this.this$0).getAppPackageUrl();
+      localGdtAppBtnData.packageName = yzi.a(this.this$0).getAppPackageName();
+      localGdtAppBtnData.name = yzi.a(this.this$0).getAppName();
+      yxp.b("GdtAppBtnUIPresenter", "DefaultGdtAppBtnData apkUrlhttp " + localGdtAppBtnData.apkUrlhttp);
+      localGdtAppBtnData.mGdtAd_appId = yzi.a(this.this$0).getAppId();
+      yzi.a(this.this$0, localGdtAppBtnData);
       this.this$0.b();
     }
   }

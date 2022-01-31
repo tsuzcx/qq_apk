@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
-public class afyu
-  implements View.OnClickListener
+class afyu
+  implements apsb
 {
-  public afyu(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  afyu(afyt paramafyt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramView.getId())
-    {
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      axqy.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
     }
-    do
-    {
-      return;
-    } while (ChatHistoryTroopFileFragment.a(this.a) == null);
-    ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
   }
 }
 

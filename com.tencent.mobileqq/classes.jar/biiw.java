@@ -1,8 +1,8 @@
+import java.io.File;
+
 public class biiw
-  extends bjof
 {
-  public final bjoa<bioi> a = new bjoa();
-  public final bjoa<bikb> b = new bjoa();
+  public static final String a = biiy.f + File.separator + "camera_emo_default_template.json";
 }
 
 

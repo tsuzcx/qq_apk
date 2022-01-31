@@ -1,287 +1,188 @@
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.xmlpull.v1.XmlSerializer;
 
 public class axvs
-  extends axun
+  extends axup
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  List<axun> jdField_a_of_type_JavaUtilList = null;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b;
-  long c;
-  int k;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axvt(this);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public List<axup> a;
   
   public axvs()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "groupitem";
-  }
-  
-  private View a(View paramView)
-  {
-    LinearLayout localLinearLayout = new LinearLayout(paramView.getContext());
-    localLinearLayout.setOrientation(0);
-    localLinearLayout.setGravity(16);
-    Object localObject = new ImageView(paramView.getContext());
-    ((ImageView)localObject).setImageResource(2130843604);
-    int i = actn.a(9.0F, paramView.getResources());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actn.a(8.0F, paramView.getResources()), i);
-    localLayoutParams.leftMargin = actn.a(24.0F, paramView.getResources());
-    localLayoutParams.rightMargin = actn.a(4.0F, paramView.getResources());
-    localLinearLayout.addView((View)localObject, localLayoutParams);
-    paramView.setPadding(0, 0, 0, 0);
-    localObject = paramView.findViewById(2131378362);
-    if (localObject != null) {
-      ((View)localObject).setPadding(0, ((View)localObject).getPaddingTop(), 0, ((View)localObject).getPaddingBottom());
-    }
-    localLinearLayout.addView(paramView);
-    return localLinearLayout;
-  }
-  
-  private void a(Resources paramResources, ImageView paramImageView)
-  {
-    if (paramImageView == null) {
-      return;
-    }
-    if (this.k == 0)
-    {
-      paramImageView.setBackgroundDrawable(null);
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramImageView.setBackgroundResource(2130843603);
-      return;
-    }
-    paramImageView.setBackgroundResource(2130843602);
+    this.jdField_a_of_type_JavaLangString = "group";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Resources localResources;
+    int j;
     int i;
-    label51:
-    Object localObject2;
-    Object localObject3;
+    label62:
+    Object localObject;
+    View localView;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
       this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup).setOrientation(1);
-      localResources = paramContext.getResources();
-      i = 0;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label655;
+      ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup).setGravity(16);
+      j = 0;
+      i = 1;
+      if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label499;
       }
-      localObject2 = (axun)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramView = ((axun)localObject2).jdField_a_of_type_JavaLangString;
-      if (!"summary".equals(paramView)) {
-        break label334;
+      paramView = (axup)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = paramView.jdField_a_of_type_JavaLangString;
+      if (!"groupitem".equals(localObject)) {
+        break label253;
       }
-      paramView = new LinearLayout(paramContext);
-      paramView.setId(2131376568);
-      paramView.setOrientation(0);
-      localObject1 = new LinearLayout.LayoutParams(-1, actn.a(42.0F, localResources));
-      ((LinearLayout.LayoutParams)localObject1).leftMargin = actn.a(13.0F, localResources);
-      ((LinearLayout.LayoutParams)localObject1).rightMargin = actn.a(13.0F, localResources);
-      ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-      localObject3 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376569);
-      if (localObject3 != null) {
-        break label323;
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject1);
-      label198:
-      localObject1 = ((axun)localObject2).a(paramContext, null, paramBundle);
-      localObject2 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-      ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131376567);
-      a(localResources, (ImageView)localObject1);
-      localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-      ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      paramView.addView((View)localObject1);
-    }
-    label323:
-    label334:
-    do
-    {
-      for (;;)
+      localObject = paramView.a(paramContext, null, paramBundle);
+      localView = ((View)localObject).findViewById(2131376570);
+      if (localView != null)
       {
-        i += 1;
-        break label51;
-        this.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
-        break;
-        ((LinearLayout)localObject3).addView(paramView, (ViewGroup.LayoutParams)localObject1);
-        break label198;
-        if (!"hr".equals(paramView)) {
-          break label430;
+        if ((LinearLayout)((View)localObject).findViewById(2131376571) != null) {
+          break label231;
         }
-        paramView = ((axun)localObject2).a(paramContext, null, paramBundle);
-        localObject1 = new LinearLayout.LayoutParams(-1, 1);
-        ((LinearLayout.LayoutParams)localObject1).leftMargin = 0;
-        ((LinearLayout.LayoutParams)localObject1).rightMargin = 0;
-        ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
-        ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-        localObject2 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376569);
-        if (localObject2 == null) {
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject1);
-        } else {
-          ((LinearLayout)localObject2).addView(paramView, (ViewGroup.LayoutParams)localObject1);
-        }
+        localView.setOnClickListener(paramView);
+        localView.setTag(paramView);
       }
-    } while (!"item".equals(paramView));
-    label430:
-    Object localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376569);
-    paramView = (View)localObject1;
-    if (localObject1 == null)
-    {
-      paramView = new LinearLayout(paramContext);
-      paramView.setOrientation(1);
-      paramView.setId(2131376569);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label646;
-      }
-      paramView.setVisibility(0);
+      label155:
+      paramView = new LinearLayout.LayoutParams(-1, -2);
+      paramView.leftMargin = 0;
+      paramView.rightMargin = 0;
+      paramView.topMargin = 0;
+      paramView.bottomMargin = 0;
+      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject, paramView);
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(j, localObject);
     }
     for (;;)
     {
-      localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject1).gravity = 16;
-      paramView.setGravity(16);
-      paramView.setBackgroundColor(localResources.getColor(2131167015));
-      ((LinearLayout.LayoutParams)localObject1).leftMargin = 0;
-      ((LinearLayout.LayoutParams)localObject1).rightMargin = 0;
-      ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
-      ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject1);
-      localObject3 = ((axun)localObject2).a(paramContext, null, paramBundle);
-      localObject1 = a((View)localObject3);
-      ((View)localObject3).setBackgroundDrawable(null);
-      ((View)localObject1).setOnClickListener((View.OnClickListener)localObject2);
-      ((View)localObject1).setTag(localObject2);
-      localObject2 = new LinearLayout.LayoutParams(-1, actn.a(48.0F, localResources));
-      ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-      paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-      this.k += 1;
+      j += 1;
+      break label62;
+      this.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
       break;
-      label646:
-      paramView.setVisibility(8);
+      label231:
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localView.setTag(Integer.valueOf(j));
+      break label155;
+      label253:
+      if ("hr".equals(localObject))
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, 1);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        if (i != 0)
+        {
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, 0, (ViewGroup.LayoutParams)localObject);
+          i = 0;
+        }
+        for (;;)
+        {
+          break;
+          this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
+        }
+      }
+      if ("title".equals(localObject))
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, actj.a(50.0F, paramContext.getResources()));
+        ((TextView)paramView).setGravity(16);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(12.0F, paramContext.getResources());
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
+      }
+      else if ("item".equals(localObject))
+      {
+        paramView = paramView.a(paramContext, null, paramBundle);
+        localObject = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject);
+      }
     }
-    label655:
+    label499:
     return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
   public String a()
   {
-    return "groupitem";
+    return "group";
   }
   
-  public void a()
+  void a(axup paramaxup)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    LinearLayout localLinearLayout;
-    do
-    {
-      return;
-      localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376569);
-    } while (localLinearLayout == null);
-    localLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_Boolean = false;
-    a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376567));
-  }
-  
-  void a(axun paramaxun)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramaxun);
+    this.jdField_a_of_type_JavaUtilList.add(paramaxup);
   }
   
   public void a(ObjectInput paramObjectInput)
   {
-    int i = 1;
     super.a(paramObjectInput);
-    this.jdField_b_of_type_JavaLangString = paramObjectInput.readUTF();
-    this.jdField_c_of_type_JavaLangString = paramObjectInput.readUTF();
-    this.d = paramObjectInput.readUTF();
-    this.e = paramObjectInput.readUTF();
-    this.f = paramObjectInput.readUTF();
-    Object localObject = paramObjectInput.readUTF();
-    if ((localObject != null) && (((String)localObject).toLowerCase().equals("true"))) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    localObject = paramObjectInput.readUTF();
-    if ((localObject != null) && (((String)localObject).toLowerCase().equals("false"))) {
-      this.jdField_b_of_type_Boolean = false;
-    }
-    this.jdField_c_of_type_Long = paramObjectInput.readLong();
-    int n = paramObjectInput.readInt();
-    this.k = 0;
-    int m = 0;
-    if (m < n)
+    int m = paramObjectInput.readInt();
+    int i = 1;
+    int k = 0;
+    if (k < m)
     {
-      localObject = paramObjectInput.readUTF();
-      if ("item".equals(localObject))
-      {
-        localObject = axux.a(paramObjectInput.readInt());
-        this.k += 1;
+      String str = paramObjectInput.readUTF();
+      Object localObject;
+      if ("item".equals(str)) {
+        localObject = axuz.a(paramObjectInput.readInt());
       }
       for (;;)
       {
         if (localObject != null)
         {
-          ((axun)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
-          ((axun)localObject).a(paramObjectInput);
-          a((axun)localObject);
+          ((axup)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+          ((axup)localObject).a(paramObjectInput);
+          if (("groupitem".equals(str)) || ("hr".equals(str)) || ("title".equals(str)) || ("item".equals(str))) {
+            a((axup)localObject);
+          }
         }
-        m += 1;
+        k += 1;
         break;
-        axun localaxun = axux.a((String)localObject);
+        axup localaxup = axuz.a(str);
         int j = i;
-        if ("button".equals(localObject))
+        if ("button".equals(str))
         {
-          localaxun.Q = String.valueOf(i);
-          localaxun.R = this.R;
+          localaxup.Q = String.valueOf(i);
+          localaxup.R = this.R;
           j = i + 1;
         }
-        localObject = localaxun;
+        localObject = localaxup;
         i = j;
-        if (localaxun != null)
+        if (localaxup != null)
         {
-          localObject = localaxun;
+          localObject = localaxup;
           i = j;
-          if (axuo.class.isInstance(localaxun))
+          if (axuq.class.isInstance(localaxup))
           {
             paramObjectInput.readInt();
-            localObject = localaxun;
+            localObject = localaxup;
             i = j;
           }
         }
@@ -292,258 +193,74 @@ public class axvs
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.jdField_b_of_type_JavaLangString == null)
-    {
-      localObject = "";
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        break label197;
-      }
-      localObject = "";
-      label34:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.d != null) {
-        break label205;
-      }
-      localObject = "";
-      label52:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.e != null) {
-        break label213;
-      }
-      localObject = "";
-      label70:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (this.f != null) {
-        break label221;
-      }
-      localObject = "";
-      label88:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label229;
-      }
-      localObject = "true";
-      label105:
-      paramObjectOutput.writeUTF((String)localObject);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label235;
-      }
-    }
-    label197:
-    label205:
-    label213:
-    label221:
-    label229:
-    label235:
-    for (Object localObject = "true";; localObject = "false")
-    {
-      paramObjectOutput.writeUTF((String)localObject);
-      paramObjectOutput.writeLong(this.jdField_c_of_type_Long);
-      paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilList.size());
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((axun)((Iterator)localObject).next()).a(paramObjectOutput);
-      }
-      localObject = this.jdField_b_of_type_JavaLangString;
-      break;
-      localObject = this.jdField_c_of_type_JavaLangString;
-      break label34;
-      localObject = this.d;
-      break label52;
-      localObject = this.e;
-      break label70;
-      localObject = this.f;
-      break label88;
-      localObject = "false";
-      break label105;
+    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilList.size());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((axup)localIterator.next()).a(paramObjectOutput);
     }
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, "groupitem");
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "action", this.jdField_c_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      paramXmlSerializer.attribute(null, "actionData", this.d);
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      paramXmlSerializer.attribute(null, "a_actionData", this.e);
-    }
-    if (!TextUtils.isEmpty(this.f)) {
-      paramXmlSerializer.attribute(null, "i_actionData", this.f);
-    }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "url", this.jdField_b_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      str = "true";
-      paramXmlSerializer.attribute(null, "expand", str);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label214;
-      }
-    }
-    label214:
-    for (String str = "true";; str = "false")
-    {
-      paramXmlSerializer.attribute(null, "expand", str);
-      paramXmlSerializer.attribute(null, "expand", String.valueOf(this.jdField_c_of_type_Long));
-      paramXmlSerializer.endTag(null, "groupitem");
-      return;
-      str = "false";
-      break;
-    }
+    paramXmlSerializer.startTag(null, "group");
+    paramXmlSerializer.endTag(null, "group");
   }
   
-  public boolean a(axwe paramaxwe)
+  public boolean a(axwg paramaxwg)
   {
-    boolean bool = false;
-    if (paramaxwe == null) {
-      bool = true;
-    }
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramaxwg == null)
     {
-      return bool;
-      this.jdField_c_of_type_JavaLangString = paramaxwe.a("action");
-      this.d = paramaxwe.a("actionData");
-      this.e = paramaxwe.a("a_actionData");
-      this.f = paramaxwe.a("i_actionData");
-      this.jdField_b_of_type_JavaLangString = paramaxwe.a("url");
-      this.k = 0;
-      Object localObject = paramaxwe.a("expand");
-      if ((localObject != null) && (((String)localObject).toLowerCase().equals("true"))) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      localObject = paramaxwe.a("animation");
-      if ((localObject != null) && (((String)localObject).toLowerCase().equals("false"))) {
-        this.jdField_b_of_type_Boolean = false;
-      }
-      localObject = paramaxwe.a("duration");
-      if (localObject != null) {}
-      try
+      bool1 = true;
+      return bool1;
+    }
+    int k = paramaxwg.a();
+    int i = 0;
+    while (i < k)
+    {
+      axwg localaxwg = paramaxwg.a(i);
+      if (localaxwg == null)
       {
-        this.jdField_c_of_type_Long = Long.parseLong((String)localObject);
-        label157:
-        if ((paramaxwe.jdField_a_of_type_JavaUtilList != null) && (paramaxwe.a() > 0))
+        label39:
+        i += 1;
+      }
+      else
+      {
+        if ("item".equals(localaxwg.b)) {}
+        for (Object localObject = localaxwg.a("layout");; localObject = axuz.a(localaxwg.b))
         {
-          Iterator localIterator = paramaxwe.jdField_a_of_type_JavaUtilList.iterator();
-          localObject = null;
-          if (localIterator.hasNext())
+          try
           {
-            axwe localaxwe = (axwe)localIterator.next();
-            if (("summary".equals(localaxwe.jdField_b_of_type_JavaLangString)) || ("hr".equals(localaxwe.jdField_b_of_type_JavaLangString))) {
-              paramaxwe = axux.a(localaxwe.jdField_b_of_type_JavaLangString);
-            }
-            do
+            if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+            for (int j = Integer.parseInt((String)localObject);; j = 0)
             {
-              localObject = paramaxwe;
-              if (paramaxwe == null) {
+              localObject = axuz.a(j);
+              bool1 = bool2;
+              if (localObject == null) {
                 break;
               }
-              localObject = paramaxwe;
-              if (!paramaxwe.a(localaxwe)) {
+              bool1 = bool2;
+              if (!((axup)localObject).a(localaxwg)) {
                 break;
               }
-              a(paramaxwe);
-              localObject = paramaxwe;
+              a((axup)localObject);
+              break label39;
+            }
+            if (!QLog.isColorLevel()) {
               break;
-              paramaxwe = (axwe)localObject;
-            } while (!"item".equals(localaxwe.jdField_b_of_type_JavaLangString));
-            paramaxwe = localaxwe.a("layout");
-            try
-            {
-              if (!TextUtils.isEmpty(paramaxwe)) {}
-              for (int i = Integer.parseInt(paramaxwe);; i = 0)
-              {
-                paramaxwe = axux.a(i);
-                this.k += 1;
-                break;
-              }
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
             }
-            catch (NumberFormatException paramaxwe) {}
-            QLog.i("StructMsg", 2, "Item layout value is " + 0);
-            return false;
           }
-        }
-        return true;
-      }
-      catch (Exception localException)
-      {
-        break label157;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    Object localObject1;
-    do
-    {
-      return;
-      localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376569);
-    } while (localObject1 == null);
-    Object localObject2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localObject2 = new axvu((ViewGroup)localObject1);
-        ((axvu)localObject2).setDuration(this.jdField_c_of_type_Long);
-        ((axvu)localObject2).setInterpolator(new DecelerateInterpolator());
-        ((LinearLayout)localObject1).startAnimation((Animation)localObject2);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376567));
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
-          break;
-        }
-        Object localObject3 = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-        if ((localObject3 == null) || (TextUtils.isEmpty(this.d))) {
-          break;
-        }
-        localObject2 = "";
-        Matcher localMatcher = Pattern.compile("((?:isNeedReply|isNeedLbs|QidianKfUin|isExt|FromStaff|cqq))=([^\\?&=]+)").matcher(this.d);
-        do
-        {
-          localObject1 = localObject2;
-          if (!localMatcher.find()) {
-            break;
+          catch (NumberFormatException paramaxwg)
+          {
+            bool1 = bool2;
           }
-        } while (!"QidianKfUin".equals(localMatcher.group(1)));
-        localObject1 = localMatcher.group(2);
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break;
+          QLog.i("StructMsgGroupElement", 2, "Item layout value is " + 0);
+          return false;
         }
-        localObject2 = (bduw)((QQAppInterface)localObject3).a(85);
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(this.d).append("&expand=").append(this.jdField_a_of_type_Boolean);
-        ((bduw)localObject2).a(((StringBuilder)localObject3).toString(), 1, false, 0.0D, 0.0D, (String)localObject1, 1, "", "", "");
-        return;
-        ((LinearLayout)localObject1).setVisibility(8);
       }
     }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      localObject2 = new axvt((ViewGroup)localObject1);
-      ((axvt)localObject2).setDuration(this.jdField_c_of_type_Long);
-      ((axvt)localObject2).setInterpolator(new AccelerateInterpolator());
-      ((LinearLayout)localObject1).startAnimation((Animation)localObject2);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      break;
-      ((LinearLayout)localObject1).setVisibility(0);
-    }
+    return true;
   }
 }
 

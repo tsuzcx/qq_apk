@@ -1,10 +1,26 @@
-import android.widget.TextView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class bbha
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  bbha(bbgu parambbgu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  private bbha(bbgu parambbgu) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbgu, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bbgu.isShowing()) {
+        this.jdField_a_of_type_Bbgu.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
+  }
 }
 
 

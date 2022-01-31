@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azvb;
-import azvc;
-import bajh;
-import bami;
+import azvd;
+import azve;
+import bajv;
+import bamw;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class TroopFileUploadWorker$1$1
   implements Runnable
 {
-  public TroopFileUploadWorker$1$1(azvc paramazvc, long paramLong) {}
+  public TroopFileUploadWorker$1$1(azve paramazve, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Azvc.a.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Azve.a.jdField_a_of_type_Boolean) {
       return;
     }
-    bajh localbajh = new bajh(this.jdField_a_of_type_Azvc.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 3, 210);
-    this.jdField_a_of_type_Azvc.a.jdField_a_of_type_Azsd.c = 1;
-    this.jdField_a_of_type_Azvc.a.jdField_a_of_type_Azsd.d = -36;
-    this.jdField_a_of_type_Azvc.a.a(false, bami.c, -36, localbajh);
+    bajv localbajv = new bajv(this.jdField_a_of_type_Azve.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Long, 3, 210);
+    this.jdField_a_of_type_Azve.a.jdField_a_of_type_Azsf.c = 1;
+    this.jdField_a_of_type_Azve.a.jdField_a_of_type_Azsf.d = -36;
+    this.jdField_a_of_type_Azve.a.a(false, bamw.c, -36, localbajv);
   }
 }
 

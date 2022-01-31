@@ -1,8 +1,10 @@
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class nes
 {
+  Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public ImageView b;
@@ -11,7 +13,7 @@ public class nes
   TextView c;
   public ImageView d;
   
-  nes(ned paramned) {}
+  nes(nea paramnea) {}
 }
 
 

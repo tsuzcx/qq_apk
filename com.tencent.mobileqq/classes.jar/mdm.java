@@ -1,75 +1,44 @@
-import android.widget.Button;
-import com.tencent.av.VideoController;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectToolbar;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import mqq.app.MobileQQ;
 
-public class mdm
-  implements mhc
+class mdm
+  implements View.OnClickListener
 {
-  public mdm(EffectToolbar paramEffectToolbar) {}
+  mdm(mdl parammdl) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
-  }
-  
-  public void a(long paramLong, mhw parammhw)
-  {
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject1 = VideoController.a();
-    Object localObject2 = ((VideoController)localObject1).a(((AVActivity)this.a.mActivity.get()).getApplicationContext());
-    if (localObject2 != null)
-    {
-      if (AudioHelper.e()) {
-        QLog.w("EffectToolbar", 1, "onEffectClick, clearState, seq[" + paramLong + "], info[" + parammhw + "]");
-      }
-      ((lpy)localObject2).a(paramLong);
-    }
-    if (parammhw.jdField_a_of_type_JavaLangString.equals("0"))
-    {
-      EffectToolbar.access$000(this.a, paramLong, null);
-      this.a.mEarbackBtn.setVisibility(4);
-      this.a.mApp.a().a().U = 0;
-      this.a.mApp.a().A();
-    }
-    while (!parammhw.jdField_a_of_type_Boolean) {
+    int i = 0;
+    paramView = (mdo)paramView.getTag();
+    if (mdl.a(this.a) == null) {
       return;
     }
-    Object localObject3 = PtvTemplateManager.jdField_a_of_type_JavaLangString + parammhw.jdField_c_of_type_JavaLangString;
-    localObject2 = parammhw.jdField_a_of_type_JavaLangString;
-    boolean bool = this.a.isEffectBtnEnable();
+    axqy.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
     if (QLog.isColorLevel()) {
-      QLog.w("EffectToolbar", 1, "onEffectClick, path[" + (String)localObject3 + "], bSuc[" + bool + "], seq[" + paramLong + "]");
+      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(paramView.jdField_a_of_type_Long));
     }
-    EffectToolbar.access$000(this.a, paramLong, parammhw.jdField_a_of_type_JavaLangString);
-    axqo.b((String)localObject2);
-    localObject3 = ((VideoController)localObject1).a();
-    int i = ((lgf)localObject3).M;
-    int j = ((lgf)localObject3).E;
-    paramLong = ((VideoController)localObject1).f();
-    localObject1 = (PendantItem)this.a.mPtvTemplateInfoMap.get(localObject2);
-    QLog.i("EffectToolbar", 2, "onEffectClick voiceid : " + parammhw.jdField_c_of_type_Int);
-    this.a.mApp.a().a().U = parammhw.jdField_c_of_type_Int;
-    this.a.mApp.a().A();
-    if (parammhw.jdField_c_of_type_Int > 0)
-    {
-      this.a.mEarbackBtn.setVisibility(0);
-      EffectToolbar.access$100(this.a);
+    mdl.a(this.a).getCurrentAccountUin();
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
+    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
+    localIntent.putExtra("memberUin", String.valueOf(paramView.jdField_a_of_type_Long));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      i = 1000;
     }
     for (;;)
     {
-      lir.b();
-      mbr.a(j, i, paramLong, (String)localObject2, ((PendantItem)localObject1).getCategory());
+      localIntent.putExtra("uinType", i);
+      localIntent.setPackage(mdl.a(this.a).getApplication().getPackageName());
+      mdl.a(this.a).getApp().sendBroadcast(localIntent);
       return;
-      this.a.mEarbackBtn.setVisibility(4);
+      if (this.a.jdField_a_of_type_Int == 2) {
+        i = 1004;
+      }
     }
   }
 }

@@ -1,174 +1,248 @@
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.frdsysmsg.FrdSysMsg.FriendSysMsg;
-import tencent.im.s2c.frdsysmsg.FrdSysMsg.SchoolInfo;
+import face.qqlogin.Appconf.AppConfRequest;
+import face.qqlogin.Appconf.AppConfResponse;
+import face.qqlogin.Appconf.Wording;
+import java.io.Serializable;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class armo
-  extends WebViewPlugin
+  extends MSFServlet
 {
-  public armo()
+  private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.mPluginNameSpace = "friendApi";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"friendApi".equals(paramString2)) {
-      return false;
-    }
-    if ("openProfile".equals(paramString3)) {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-        if (QLog.isColorLevel()) {
-          QLog.w("FriendApiPlugin", 2, "open profile " + paramVarArgs[0]);
-        }
-      }
-    }
-    label322:
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = new ProfileActivity.AllInOne(paramJsBridgeListener.optString("uin"), paramJsBridgeListener.optInt("from"));
-          ProfileActivity.b(this.mRuntime.a(), paramJsBridgeListener);
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.w("FriendApiPlugin", 2, "open profile error:" + paramJsBridgeListener.toString());
-          continue;
-        }
-        if ("addFriend".equals(paramString3))
-        {
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("FriendApiPlugin", 2, "add friend " + paramVarArgs[0]);
-            }
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramJsBridgeListener.optString("uin");
-              int i = paramJsBridgeListener.optInt("sourceId", 0);
-              int j = paramJsBridgeListener.optInt("subSourceId", 0);
-              if (!paramJsBridgeListener.has("schoolInfo")) {
-                break label746;
-              }
-              paramString2 = paramJsBridgeListener.optJSONObject("schoolInfo");
-              if (paramString2 == null) {
-                break label746;
-              }
-              paramJsBridgeListener = paramString2.optString("schoolId");
-              paramString3 = paramString2.optString("schoolName");
-              paramString2 = new FrdSysMsg.SchoolInfo();
-              paramString2.str_school_id.set(paramJsBridgeListener);
-              paramString2.str_school_name.set(paramString3);
-              paramJsBridgeListener = new FrdSysMsg.FriendSysMsg();
-              paramJsBridgeListener.msg_school_info.set(paramString2);
-              paramJsBridgeListener = paramJsBridgeListener.toByteArray();
-              paramString3 = this.mRuntime.a();
-              paramVarArgs = AddFriendLogicActivity.a(paramString3, 1, paramString1, "", i, j, null, null, null, null, null);
-              if (paramJsBridgeListener != null)
-              {
-                paramString2 = paramVarArgs.getBundleExtra("flc_extra_param");
-                paramString1 = paramString2;
-                if (paramString2 == null)
-                {
-                  paramString1 = new Bundle();
-                  paramVarArgs.putExtra("flc_extra_param", paramString1);
-                }
-                paramString1.putByteArray("friend_src_desc", paramJsBridgeListener);
-              }
-              paramString3.startActivity(paramVarArgs);
-            }
-            catch (JSONException paramJsBridgeListener) {}
-            if (QLog.isColorLevel()) {
-              QLog.w("FriendApiPlugin", 2, "add friend error:" + paramJsBridgeListener.toString());
-            }
-          }
-        }
-        else
-        {
-          if (!"isFriend".equals(paramString3)) {
-            break;
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              paramString1 = paramJsBridgeListener.optString("frd_uin");
-              paramString2 = new Bundle();
-              paramString2.putString("KEY_UIN", paramString1);
-              paramString1 = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_IS_FRIEND", paramString2);
-              boolean bool = false;
-              if (paramString1.isSuccess()) {
-                bool = paramString1.data.getBoolean("KEY_IS_FRIEND", false);
-              }
-              paramString1 = new JSONObject();
-              paramString1.put("result", bool);
-              callJs(paramJsBridgeListener.optString("callback"), new String[] { paramString1.toString() });
-            }
-            catch (JSONException paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-            }
-          }
-        }
-      }
-    } while ((!"getPhoneNumber".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0));
+    if (paramFromServiceMsg.getResultCode() == 1000) {}
     for (;;)
     {
+      Object localObject1;
+      int i;
+      Object localObject3;
+      String str1;
+      int j;
+      String str2;
+      String str3;
       try
       {
-        paramString2 = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener = paramString2.optString("frd_uin");
-        paramString1 = new Bundle();
-        paramString1.putString("KEY_UIN", paramJsBridgeListener);
-        paramString1 = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_GET_PHONE_NUMBER", paramString1);
-        paramJsBridgeListener = null;
-        if (paramString1.isSuccess()) {
-          paramJsBridgeListener = paramString1.data.getString("PHONE_NUMBER", null);
+        localObject1 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject1).getInt() - 4];
+        ((ByteBuffer)localObject1).get(paramFromServiceMsg);
+        localObject1 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(paramFromServiceMsg);
+        i = ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.get();
+        if (i == 15)
+        {
+          paramFromServiceMsg = ((oidb_sso.OIDBSSOPkg)localObject1).str_error_msg.get();
+          QLog.e("FaceDetectForThirdPartyServlet", 1, "sso result error, ret : " + i + "  error : " + paramFromServiceMsg);
+          notifyObserver(paramIntent, 15, false, null, null);
+          return;
         }
-        paramString3 = new JSONObject();
-        if (TextUtils.isEmpty(paramJsBridgeListener)) {
-          break label751;
+        localObject3 = new Appconf.AppConfResponse();
+        ((Appconf.AppConfResponse)localObject3).mergeFrom(paramFromServiceMsg);
+        localObject2 = ((Appconf.AppConfResponse)localObject3).AppName.get();
+        i = ((Appconf.AppConfResponse)localObject3).Mode.get();
+        localObject1 = ((Appconf.AppConfResponse)localObject3).ColorSeq.get().toStringUtf8();
+        str1 = ((Appconf.AppConfResponse)localObject3).Session.get();
+        j = ((Appconf.AppConfResponse)localObject3).Ret.get();
+        str2 = ((Appconf.AppConfResponse)localObject3).ErrMsg.get();
+        str3 = ((Appconf.AppConfResponse)localObject3).ActionSeq.get().toStringUtf8();
+        if (!QLog.isDevelopLevel()) {
+          break label543;
         }
-        paramString1 = paramJsBridgeListener;
-        if ("0".equals(paramJsBridgeListener)) {
-          break label751;
+        paramFromServiceMsg = ((Appconf.AppConfResponse)localObject3).Debug.get();
+        Object localObject4 = ((Appconf.AppConfResponse)localObject3).Wordings.get();
+        localObject3 = new ArrayList(3);
+        if ((localObject4 == null) || (((List)localObject4).isEmpty())) {
+          break label354;
         }
-        paramString3.put("PhoneNumber", paramString1);
-        callJs(paramString2.optString("callback"), new String[] { paramString3.toString() });
+        localObject4 = ((List)localObject4).iterator();
+        if (!((Iterator)localObject4).hasNext()) {
+          break label386;
+        }
+        Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject4).next();
+        ((List)localObject3).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
+        continue;
+        QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramFromServiceMsg);
       }
-      catch (JSONException paramJsBridgeListener)
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        paramJsBridgeListener.printStackTrace();
+        notifyObserver(paramIntent, 17, false, null, null);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
       }
-      break;
-      label746:
-      paramJsBridgeListener = null;
-      break label322;
-      label751:
-      paramString1 = "";
+      return;
+      label354:
+      if (QLog.isColorLevel()) {
+        QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject2);
+      }
+      label386:
+      Object localObject2 = new FaceDetectForThirdPartyManager.AppConf((String)localObject2, (List)localObject3, i);
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).colorSequence = ((String)localObject1);
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).session = str1;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).ret = j;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).errMsg = str2;
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).actionReq = b(str3);
+      ((FaceDetectForThirdPartyManager.AppConf)localObject2).debug = paramFromServiceMsg;
+      paramFromServiceMsg = new Bundle();
+      paramFromServiceMsg.putInt("app_id", paramIntent.getIntExtra("app_id", 0));
+      paramFromServiceMsg.putSerializable("FaceRecognition.AppConf", (Serializable)localObject2);
+      notifyObserver(paramIntent, 17, true, paramFromServiceMsg, null);
+      if ((!QLog.isColorLevel()) || (!QLog.isColorLevel())) {
+        break;
+      }
+      QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject2 });
+      return;
+      notifyObserver(paramIntent, 17, false, null, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse not ok");
+      return;
+      label543:
+      paramFromServiceMsg = null;
+    }
+  }
+  
+  private void a(Intent paramIntent, Packet paramPacket)
+  {
+    int i = paramIntent.getIntExtra("app_id", 0);
+    Object localObject = paramIntent.getStringExtra("qq_version");
+    String str = paramIntent.getStringExtra("light_info");
+    paramIntent = paramIntent.getStringExtra("tmp_key");
+    Appconf.AppConfRequest localAppConfRequest = new Appconf.AppConfRequest();
+    localAppConfRequest.AppID.set(i);
+    localAppConfRequest.Platform.set("a");
+    localAppConfRequest.QQVersion.set((String)localObject);
+    localAppConfRequest.YtSDKEnv.set(str);
+    localAppConfRequest.TmpKey.set(paramIntent);
+    paramIntent = localAppConfRequest.toByteArray();
+    localObject = ByteBuffer.allocate(paramIntent.length + 4);
+    ((ByteBuffer)localObject).putInt(paramIntent.length + 4);
+    ((ByteBuffer)localObject).put(paramIntent);
+    paramPacket.setSSOCommand("FaceRecognition.AppConf");
+    paramPacket.putSendData(((ByteBuffer)localObject).array());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, long paramLong, BusinessObserver paramBusinessObserver)
+  {
+    if ("loginVerify".equals(paramString1)) {
+      a(paramString2, paramInt, paramString3, paramString4, paramString5, paramLong, paramBusinessObserver);
+    }
+    do
+    {
+      return;
+      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), armo.class);
+      localNewIntent.putExtra("qq_version", paramString3);
+      localNewIntent.putExtra("app_id", paramInt);
+      localNewIntent.putExtra("cmd_param", "FaceRecognition.AppConf");
+      localNewIntent.putExtra("light_info", paramString4);
+      localNewIntent.putExtra("tmp_key", paramString5);
+      localNewIntent.putExtra("method", paramString1);
+      localNewIntent.putExtra("nonce", paramLong);
+      localNewIntent.putExtra("uin", paramString2);
+      localNewIntent.setObserver(paramBusinessObserver);
+      paramQQAppInterface.startServlet(localNewIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d("FaceDetectForThirdPartyServlet", 2, "requestThirdPartyInfo appId=" + paramInt + " qqVersion=" + paramString3 + " lightInfo=" + paramString4);
+  }
+  
+  private static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, long paramLong, BusinessObserver paramBusinessObserver)
+  {
+    Appconf.AppConfRequest localAppConfRequest = new Appconf.AppConfRequest();
+    localAppConfRequest.AppID.set(paramInt);
+    localAppConfRequest.Platform.set("a");
+    localAppConfRequest.QQVersion.set(paramString2);
+    localAppConfRequest.YtSDKEnv.set(paramString3);
+    localAppConfRequest.TmpKey.set(paramString4);
+    axca.a(paramString1, paramLong, Base64.encodeToString(localAppConfRequest.toByteArray(), 11), new armp(paramInt, paramBusinessObserver));
+  }
+  
+  private static int[] b(String paramString)
+  {
+    int i = 0;
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return new int[0];
+      }
+      String[] arrayOfString = paramString.split(" ");
+      int[] arrayOfInt = new int[arrayOfString.length];
+      for (;;)
+      {
+        paramString = arrayOfInt;
+        if (i >= arrayOfString.length) {
+          break;
+        }
+        arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
+        i += 1;
+      }
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("FaceDetectForThirdPartyServlet", 1, "parseAction error : " + paramString.getMessage());
+      paramString = null;
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    String str2 = paramFromServiceMsg.getServiceCmd();
+    if (str2 == null) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      boolean bool = paramFromServiceMsg.isSuccess();
+      localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+      if (!bool) {
+        break label97;
+      }
+    }
+    label97:
+    for (String str1 = "";; str1 = "not")
+    {
+      QLog.d("FaceDetectForThirdPartyServlet", 2, str1 + " success");
+      if (!"FaceRecognition.AppConf".equals(str2)) {
+        break;
+      }
+      a(paramIntent, paramFromServiceMsg);
+      return;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd_param");
+    if (QLog.isColorLevel()) {
+      QLog.d("FaceDetectForThirdPartyServlet", 2, "resp:" + str);
+    }
+    if ("FaceRecognition.AppConf".equals(str)) {
+      a(paramIntent, paramPacket);
     }
   }
 }

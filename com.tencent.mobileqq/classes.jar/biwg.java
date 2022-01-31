@@ -1,26 +1,12 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
-
-public abstract interface biwg
+public class biwg
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d;
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public biwg(biwd parambiwd) {}
 }
 
 

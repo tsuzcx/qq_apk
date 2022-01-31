@@ -1,36 +1,34 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class abjg
-  implements TextWatcher
+  extends ajto
 {
-  public abjg(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public abjg(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
+    if (QLog.isColorLevel()) {
+      QLog.d("InterestSwitchEditActivity", 2, String.format(Locale.getDefault(), "onGetDetailInfo switch_interest=%s switch_music=%s switch_personality_label=%s switch_present=%s switch_miniapp=%s switch_musicbox=%s switch_sticky_note=%s", new Object[] { Short.valueOf(paramCard.switch_interest), Short.valueOf(paramCard.switch_music), Short.valueOf(paramCard.switch_disable_personality_label), Short.valueOf(paramCard.switch_present), Short.valueOf(paramCard.switch_miniapp), Short.valueOf(paramCard.switch_musicbox), Short.valueOf(paramCard.switch_sticky_note) }));
     }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131166928));
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      this.a.a.setText("" + (40 - i));
+      if ((this.a.app.getCurrentAccountUin().equals(paramString)) && (paramCard != null) && (-1 != paramCard.switch_interest) && (-1 != paramCard.switch_music) && (-1 != paramCard.switch_disable_personality_label) && (-1 != paramCard.switch_present) && (-1 != paramCard.switch_miniapp) && (-1 != paramCard.switch_musicbox) && (-1 != paramCard.switch_sticky_note))
+      {
+        InterestSwitchEditActivity.a(this.a, paramCard);
+        InterestSwitchEditActivity.a(this.a);
+        InterestSwitchEditActivity.b(this.a);
+        InterestSwitchEditActivity.c(this.a);
+        return;
+      }
+      QLog.i("InterestSwitchEditActivity", 1, "onGetDetailInfo has invalidate value.");
       return;
-      this.a.a.setTextColor(-65536);
     }
+    bcql.a(this.a, ajya.a(2131705807), 0).b(this.a.getTitleBarHeight());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

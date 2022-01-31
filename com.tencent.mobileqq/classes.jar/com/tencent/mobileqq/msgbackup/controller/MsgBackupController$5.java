@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import aslb;
-import asll;
+import asld;
+import asln;
 import java.util.List;
 
 public class MsgBackupController$5
   implements Runnable
 {
-  public MsgBackupController$5(aslb paramaslb, List paramList, asll paramasll) {}
+  public MsgBackupController$5(asld paramasld, List paramList, asln paramasln) {}
   
   public void run()
   {
-    aslb.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Asll, aslb.b());
+    asld.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Asln, asld.b());
   }
 }
 

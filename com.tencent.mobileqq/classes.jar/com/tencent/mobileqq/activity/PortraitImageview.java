@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abrw;
-import abrx;
-import abry;
+import abrs;
+import abrt;
+import abru;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,7 +29,7 @@ public class PortraitImageview
   private double jdField_a_of_type_Double;
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
-  public abrx a;
+  public abrt a;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -108,8 +108,8 @@ public class PortraitImageview
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_JavaLangRunnable = new PortraitImageview.1(this);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new abry(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new abrw(this, null));
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new abru(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new abrs(this, null));
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(2, null);
     }
@@ -451,9 +451,9 @@ public class PortraitImageview
     }
   }
   
-  public void setOnImageTouchedListener(abrx paramabrx)
+  public void setOnImageTouchedListener(abrt paramabrt)
   {
-    this.jdField_a_of_type_Abrx = paramabrx;
+    this.jdField_a_of_type_Abrt = paramabrt;
   }
   
   public void setRegionView(RegionView paramRegionView)

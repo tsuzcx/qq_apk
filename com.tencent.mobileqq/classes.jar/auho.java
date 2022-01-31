@@ -1,16 +1,48 @@
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class auho
-  extends auiz
+  extends akhb
 {
-  auho(auhi paramauhi) {}
+  auho(auhk paramauhk) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, ayay paramayay)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
+    if ((!paramBoolean) || (auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null) || (paramayay == null)) {
+      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    auhi.a(this.a).b();
+    do
+    {
+      return;
+      auhk.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
+  
+  protected void b(boolean paramBoolean, ayay paramayay)
+  {
+    if ((!paramBoolean) || (auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null) || (paramayay == null)) {
+      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      auhk.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
+  
+  protected void c(boolean paramBoolean, ayay paramayay)
+  {
+    if ((!paramBoolean) || (auhk.a(this.a) == null) || (auhk.a(this.a).isFinishing()) || (auhk.a(this.a) == null) || (paramayay == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      auhk.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 

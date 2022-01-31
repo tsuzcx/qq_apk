@@ -4,11 +4,11 @@ import android.view.View.OnClickListener;
 class xpo
   implements View.OnClickListener
 {
-  xpo(xpn paramxpn) {}
+  xpo(xpk paramxpk) {}
   
   public void onClick(View paramView)
   {
-    this.a.e();
+    this.a.j();
   }
 }
 

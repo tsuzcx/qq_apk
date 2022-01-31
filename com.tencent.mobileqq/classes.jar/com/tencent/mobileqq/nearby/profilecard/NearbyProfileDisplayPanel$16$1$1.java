@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajyc;
-import atpi;
-import atpo;
-import atpp;
-import bcpw;
+import ajya;
+import atpk;
+import atpq;
+import atpr;
+import bcql;
 
 public class NearbyProfileDisplayPanel$16$1$1
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$16$1$1(atpp paramatpp) {}
+  public NearbyProfileDisplayPanel$16$1$1(atpr paramatpr) {}
   
   public void run()
   {
-    bcpw.a(this.a.a.a.a, 2, ajyc.a(2131707360), 0).a();
+    bcql.a(this.a.a.a.a, 2, ajya.a(2131707371), 0).a();
   }
 }
 

@@ -1,33 +1,24 @@
+import android.app.Activity;
 import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 import mqq.util.WeakReference;
 
-public class agun
-  extends agsl
+class agun
+  implements agmh
 {
-  private agun(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  agun(agum paramagum, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.a.get() != paramNewPhotoListActivity)) {}
-    try
+    ((NewPhotoListActivity)this.jdField_a_of_type_Agum.a.get()).d();
+    if (bkpv.a((Activity)this.jdField_a_of_type_Agum.a.get(), paramLocalMediaInfo))
     {
-      if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.a.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agse = new agun(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Agse;
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a((Activity)this.jdField_a_of_type_Agum.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
-    finally {}
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_Agsb.b = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
   }
 }
 

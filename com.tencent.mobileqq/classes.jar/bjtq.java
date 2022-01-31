@@ -1,28 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-
 class bjtq
-  extends bjde
+  implements adgw
 {
-  bjtq(bjto parambjto) {}
+  bjtq(bjtp parambjtp) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a()
   {
-    bdid.a().a(ajyc.a(2131703692) + bjto.a(this.a));
+    this.a.a.a.a(-1, bjto.a(this.a.a), 2130772028, 0, false);
+    bjto.a(this.a.a, null);
   }
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void b()
   {
-    if ((paramBoolean) && (bjto.a(this.a).getLocalPath().equals(paramString)))
-    {
-      bjto.a(this.a).sendEmptyMessage(2);
-      bjto.a(this.a, bjto.a(this.a));
-    }
+    this.a.a.a.a(-1, bjto.a(this.a.a), 2130772028, 0, false);
+    bjto.a(this.a.a, null);
   }
 }
 

@@ -1,17 +1,17 @@
 import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment.DynamicGridViewAdapter.1;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment.StaticGridViewAdapter.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
@@ -21,235 +21,125 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.net.URLDecoder;
+import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 
 public class oud
-  extends rsa<TabChannelCoverInfo>
-  implements View.OnClickListener, bfpc, bfpd, rsg, rsh
+  extends rrx<TabChannelCoverInfo>
+  implements bfpt
 {
-  public int a;
-  private int[] a;
-  private int c = -1;
-  private int d;
+  private int jdField_a_of_type_Int;
+  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   
-  public oud(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, Context paramContext, int paramInt1, int paramInt2)
+  public oud(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext, paramInt1);
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.d = paramInt2;
-    d();
+    this.jdField_a_of_type_Int = paramInt3;
+    a(paramInt2);
   }
   
-  private void a(int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo)
+  private void a(int paramInt)
   {
-    QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "deleteChannelItem, position = ", Integer.valueOf(paramInt), ", tabChannelCoverInfo = ", paramTabChannelCoverInfo.shortLogString() });
-    if (paramInt < this.jdField_a_of_type_Int) {
-      QLog.d("ReadInJoyChannelPanelFragment", 2, new Object[] { "can not delete item, position = ", Integer.valueOf(paramInt), ", LOCK_COUNT = ", Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    do
-    {
-      return;
-      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramTabChannelCoverInfo);
-      try
-      {
-        ReadInJoyChannelPanelFragment.a("0X800949C", new onr().b().a(paramTabChannelCoverInfo.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramTabChannelCoverInfo)).a());
-        if (ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).getChildAt(paramInt) == null)
-        {
-          QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "deleteChannelItem NPE, position = ", Integer.valueOf(paramInt), ", tabChannelCoverInfo = ", paramTabChannelCoverInfo.shortLogString() });
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).getChildAt(paramInt).getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
-      }
-    } while (!ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).a(paramInt, ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).getCount() - 1));
-    ReadInJoyStaticGridView localReadInJoyStaticGridView = (ReadInJoyStaticGridView)ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).findViewWithTag(Long.valueOf(paramTabChannelCoverInfo.sectionId));
-    if (localReadInJoyStaticGridView == null) {
-      localReadInJoyStaticGridView = (ReadInJoyStaticGridView)ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).get(0);
-    }
-    for (paramTabChannelCoverInfo.channelConfigType = ((qat)ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).get(1)).a;; paramTabChannelCoverInfo.channelConfigType = paramTabChannelCoverInfo.sectionId)
-    {
-      localReadInJoyStaticGridView.a(localReadInJoyStaticGridView.a().getCount() - 1, 0, paramTabChannelCoverInfo);
-      paramTabChannelCoverInfo = new oue(this, localReadInJoyStaticGridView);
-      localReadInJoyStaticGridView.setTag(2131374760, paramTabChannelCoverInfo);
-      localReadInJoyStaticGridView.getViewTreeObserver().addOnPreDrawListener(paramTabChannelCoverInfo);
-      return;
-    }
-  }
-  
-  private void d()
-  {
-    int m = 0;
-    List localList = ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).b();
+    int i = 0;
+    List localList = ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).b(paramInt);
     if ((localList == null) || (localList.size() == 0)) {
       QLog.d("ReadInJoyChannelPanelFragment", 2, "No channel Cache info.");
     }
     for (;;)
     {
       return;
-      if ((ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment) >= 0) && (ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment) < localList.size())) {
-        ((TabChannelCoverInfo)localList.get(ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment))).isCurrent = true;
-      }
-      int i = 0;
-      Object localObject;
-      if (i < localList.size())
-      {
-        localObject = (TabChannelCoverInfo)localList.get(i);
-        if (localObject != null) {
-          if (i != ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)) {
-            break label146;
-          }
-        }
-        label146:
-        for (boolean bool = true;; bool = false)
-        {
-          ((TabChannelCoverInfo)localObject).isCurrent = bool;
-          i += 1;
-          break;
-        }
+      Object localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TabChannelCoverInfo)((Iterator)localObject).next()).isCurrent = false;
       }
       b(localList);
-      i = 0;
-      int k;
-      for (int j = 0; i < localList.size(); j = k)
+      paramInt = i;
+      while (paramInt < localList.size())
       {
-        localObject = (TabChannelCoverInfo)localList.get(i);
-        k = j;
-        if (localObject != null)
-        {
-          if (((TabChannelCoverInfo)localObject).reason != 4) {
-            break;
-          }
-          k = j + 1;
-        }
-        i += 1;
-      }
-      this.jdField_a_of_type_Int = j;
-      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).setLockCount(this.jdField_a_of_type_Int);
-      i = m;
-      while (i < localList.size())
-      {
-        localObject = new qcb();
-        ((qar)localObject).a = ((TabChannelCoverInfo)localList.get(i));
-        ((qar)localObject).l = i;
-        ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (qar)localObject, this.d);
-        i += 1;
+        localObject = new qby();
+        ((qao)localObject).a = ((TabChannelCoverInfo)localList.get(paramInt));
+        ((qao)localObject).l = paramInt;
+        ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (qao)localObject, this.jdField_a_of_type_Int);
+        paramInt += 1;
       }
     }
   }
   
-  public void a()
+  private void a(TabChannelCoverInfo paramTabChannelCoverInfo, AdapterView<?> paramAdapterView, int paramInt)
   {
-    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, false);
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, -1);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    TabChannelCoverInfo localTabChannelCoverInfo = null;
-    if (this.c >= 0) {
-      localTabChannelCoverInfo = (TabChannelCoverInfo)getItem(this.c);
-    }
-    if (localTabChannelCoverInfo != null) {}
+    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramTabChannelCoverInfo);
+    ((ReadInJoyStaticGridView)paramAdapterView).a(paramInt, getCount() - 1);
+    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).a(paramTabChannelCoverInfo);
     try
     {
-      ReadInJoyChannelPanelFragment.a("0X800949B", new onr().b().a(localTabChannelCoverInfo.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(localTabChannelCoverInfo)).a());
-      this.c = -1;
+      ReadInJoyChannelPanelFragment.a("0X800949D", new ono().b().a(paramTabChannelCoverInfo.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramTabChannelCoverInfo)).n(ReadInJoyChannelPanelFragment.a(paramTabChannelCoverInfo)).c((int)paramTabChannelCoverInfo.sectionId).a());
+      if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener == null) {
+        this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new oue(this);
+      }
+      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment).getViewTreeObserver().addOnPreDrawListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener);
+      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment);
       return;
     }
-    catch (JSONException localJSONException)
+    catch (JSONException paramTabChannelCoverInfo)
     {
       for (;;)
       {
-        localJSONException.printStackTrace();
+        paramTabChannelCoverInfo.printStackTrace();
       }
     }
-  }
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "onItemLongClick, position = ", Integer.valueOf(paramInt), ", id = ", Long.valueOf(paramLong) });
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, true);
-    paramAdapterView = (TabChannelCoverInfo)getItem(paramInt);
-    if (paramInt >= this.jdField_a_of_type_Int)
-    {
-      this.c = paramInt;
-      ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, true);
-      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramAdapterView);
-    }
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramInt);
-    try
-    {
-      ReadInJoyChannelPanelFragment.a("0X800949A", new onr().b().a(paramAdapterView.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramAdapterView)).a());
-      return true;
-    }
-    catch (JSONException paramAdapterView)
-    {
-      paramAdapterView.printStackTrace();
-    }
-    return true;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = (TabChannelCoverInfo)getItem(paramInt);
-    ImageView localImageView;
-    int i;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, 2131559969), null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, 2131559997), null);
       paramViewGroup = new ouf(this);
       paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369239));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView = ((AutoFitTextView)paramView.findViewById(2131364053));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375028));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375033));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131365003));
-      paramViewGroup.b.setOnClickListener(this);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setOnGetMaxWidthCallback(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131368596));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView = ((AutoFitTextView)paramView.findViewById(2131364052));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375030));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375035));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)paramView.findViewById(2131368595));
       if (paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView != null) {
         paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment));
       }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setOnGetMaxWidthCallback(paramViewGroup);
       paramView.setTag(paramViewGroup);
-      paramView.setAlpha(1.0F);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setText(((TabChannelCoverInfo)localObject).mChannelCoverName);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setTextColor(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (TabChannelCoverInfo)localObject));
-      localImageView = paramViewGroup.b;
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setTextColor(ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (TabChannelCoverInfo)localObject));
       if (!ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)) {
-        break label368;
+        break label338;
       }
-      i = 0;
-      label223:
-      localImageView.setVisibility(i);
-      paramViewGroup.b.setTag(localObject);
-      paramViewGroup.b.setTag(2131374815, Integer.valueOf(paramInt));
-      if ((paramInt < this.jdField_a_of_type_Int) && (ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)))
+      if (!ooq.a())
       {
-        paramView.setAlpha(0.5F);
-        paramViewGroup.b.setVisibility(8);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setCompoundDrawablesWithIntrinsicBounds(2130842230, 0, 0, 0);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setCompoundDrawablePadding(actj.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       }
-      if (!ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)) {
-        break label375;
+      label220:
+      ImageView localImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      if (ReadInJoyChannelPanelFragment.a((TabChannelCoverInfo)localObject) != 0) {
+        break label352;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramInt = 0;
+      label236:
+      localImageView.setVisibility(paramInt);
+      if ((ReadInJoyChannelPanelFragment.a((TabChannelCoverInfo)localObject) != 1) || (((TabChannelCoverInfo)localObject).redPoint.c > 0L)) {
+        break label358;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (TabChannelCoverInfo)localObject, paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
     }
     for (;;)
     {
-      if ((paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView != null) && (oot.a())) {}
+      if ((paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView != null) && (ooq.a())) {}
       try
       {
         localObject = new URL(((TabChannelCoverInfo)localObject).mChannelCoverIcon);
-        omu.a(paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, (URL)localObject, paramView.getContext());
+        omr.a(paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, (URL)localObject, paramView.getContext());
         return paramView;
       }
       catch (MalformedURLException paramViewGroup)
@@ -258,69 +148,66 @@ public class oud
       }
       paramViewGroup = (ouf)paramView.getTag();
       break;
-      label368:
-      i = 8;
-      break label223;
-      label375:
-      localImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      if (ReadInJoyChannelPanelFragment.a((TabChannelCoverInfo)localObject) == 0) {}
-      for (paramInt = 0;; paramInt = 8)
-      {
-        localImageView.setVisibility(paramInt);
-        if ((ReadInJoyChannelPanelFragment.a((TabChannelCoverInfo)localObject) != 1) || (((TabChannelCoverInfo)localObject).redPoint.c > 0L)) {
-          break label449;
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, (TabChannelCoverInfo)localObject, paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
-        break;
-      }
-      label449:
+      label338:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label220;
+      label352:
+      paramInt = 8;
+      break label236;
+      label358:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     return paramView;
   }
   
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    int i = ((Integer)paramView.getTag(2131374815)).intValue();
-    paramView = (TabChannelCoverInfo)paramView.getTag();
-    QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "onClick, delete button position = ", Integer.valueOf(i) });
-    a(i, paramView);
-  }
-  
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (TabChannelCoverInfo)getItem(paramInt);
+    paramAdapterView.getChildAt(paramInt).getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+    paramView = (TabChannelCoverInfo)getItem(paramInt);
+    ReadInJoyChannelPanelFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramView, this);
     if (!ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment)) {
       try
       {
-        ReadInJoyChannelPanelFragment.a("0X8009499", new onr().b().a(paramAdapterView.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramAdapterView)).n(ReadInJoyChannelPanelFragment.a(paramAdapterView)).c((int)paramAdapterView.sectionId).b("style", 1).a());
-        ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment, paramAdapterView, this);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().finish();
-        if (bhvh.z())
+        ReadInJoyChannelPanelFragment.a("0X8009499", new ono().b().a(paramView.mChannelCoverId).m(ReadInJoyChannelPanelFragment.a(paramView)).n(ReadInJoyChannelPanelFragment.a(paramView)).c((int)paramView.sectionId).b("style", 1).a());
+        if (ozy.a(paramView.mChannelCoverId))
         {
-          osj.a().a(paramAdapterView.mChannelCoverId, 3, false, true);
-          onk.b().post(new ReadInJoyChannelPanelFragment.DynamicGridViewAdapter.1(this, paramAdapterView));
+          a(paramView, paramAdapterView, paramInt);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().finish();
+          osg.a().c(paramView.mChannelCoverId, 3);
+          onh.b().post(new ReadInJoyChannelPanelFragment.StaticGridViewAdapter.1(this, paramView));
           return;
         }
       }
-      catch (JSONException paramView)
+      catch (JSONException localJSONException)
       {
         for (;;)
         {
-          paramView.printStackTrace();
-          continue;
-          osj.a().b(paramAdapterView.mChannelCoverId, 3);
+          QLog.e("ReadInJoyChannelPanelFragment", 1, "", localJSONException);
         }
+        if (!TextUtils.isEmpty(paramView.mChannelJumpUrl)) {
+          try
+          {
+            paramAdapterView = URLDecoder.decode(paramView.mChannelJumpUrl, "utf-8");
+            rvx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), paramView.mChannelCoverName, paramAdapterView, null);
+            return;
+          }
+          catch (Exception paramAdapterView)
+          {
+            paramAdapterView.printStackTrace();
+            QLog.w("ReadInJoyChannelPanelFragment", 1, "gotoReadInJoyViolaChannel, v_url error->" + paramAdapterView.getMessage());
+            return;
+          }
+        }
+        if (paramView.mChannelType == 3)
+        {
+          nuq.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, -1);
+          return;
+        }
+        nuq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, -1);
+        return;
       }
     }
-    a(paramInt, paramAdapterView);
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment);
+    a(paramView, paramAdapterView, paramInt);
   }
 }
 

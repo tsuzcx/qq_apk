@@ -1,33 +1,50 @@
+import android.view.View;
 import com.tencent.biz.qqstory.database.CommentEntry;
+import java.lang.ref.WeakReference;
 
-class uqm
+public class uqm
+  implements bfph
 {
-  public int a;
-  public CommentEntry a;
-  private int b = -1;
+  private final int jdField_a_of_type_Int;
+  private final bfpc jdField_a_of_type_Bfpc;
+  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+  private WeakReference<uql> jdField_a_of_type_JavaLangRefWeakReference;
   
-  uqm(uqh paramuqh)
+  public uqm(bfpc parambfpc, CommentEntry paramCommentEntry, int paramInt, uql paramuql)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-  }
-  
-  public void a(CommentEntry paramCommentEntry, int paramInt)
-  {
+    this.jdField_a_of_type_Bfpc = parambfpc;
     this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.b = paramCommentEntry.commentId;
     this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuql);
   }
   
-  public boolean a(CommentEntry paramCommentEntry)
+  public void OnClick(View paramView, int paramInt)
   {
-    return paramCommentEntry.commentId != this.b;
+    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+    ved.a("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on action sheet item click. item is %s.", paramView);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
+    {
+      ved.e("Q.qqstory.detail.DetailGeneralCommentEventProxy", "callback is null when action sheet item click.");
+      return;
+    }
+    uql localuql = (uql)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (uqk.a.equals(paramView)) {
+      localuql.a(this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      if (uqk.b.equals(paramView)) {
+        localuql.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+      } else if (uqk.c.equals(paramView)) {
+        localuql.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      } else if (uqk.d.equals(paramView)) {
+        localuql.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      } else if (uqk.e.equals(paramView)) {
+        localuql.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+    }
   }
 }
 

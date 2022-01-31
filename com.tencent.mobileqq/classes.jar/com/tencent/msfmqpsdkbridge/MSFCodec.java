@@ -1,14 +1,14 @@
 package com.tencent.msfmqpsdkbridge;
 
 import android.text.TextUtils;
-import bcwy;
+import bcxn;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class MSFCodec
-  implements bcwy
+  implements bcxn
 {
   private String mCmd;
   

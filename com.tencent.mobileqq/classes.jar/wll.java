@@ -1,34 +1,60 @@
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
 import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wll
-  implements wtk
+public class wll
+  extends RecyclerView.ViewHolder
 {
-  wll(wlj paramwlj, CertifiedAccountMeta.StFeed paramStFeed) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public wll(wlg paramwlg, View paramView)
   {
-    if (paramBoolean1)
+    super(paramView);
+  }
+  
+  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if ((this.itemView instanceof BaseWidgetView))
     {
-      xhe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
-      paramString = this.jdField_a_of_type_Wlj.b().iterator();
-      while (paramString.hasNext()) {
-        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
-          paramString.remove();
-        }
-      }
-      this.jdField_a_of_type_Wlj.notifyDataSetChanged();
-      bcpw.a(wlj.a(this.jdField_a_of_type_Wlj), 2, ajyc.a(2131690663), 0).a();
-      if (this.jdField_a_of_type_Wlj.b().size() < 5) {
-        this.jdField_a_of_type_Wlj.o();
+      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
+      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
+        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
       }
     }
-    if (paramBoolean2) {
-      xhe.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    return false;
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
+  {
+    if (a(paramStFeed)) {
+      return;
+    }
+    if ((this.itemView instanceof RelativeFeedItemView))
+    {
+      ((RelativeFeedItemView)this.itemView).setIsInNightMode(wlg.a(this.a));
+      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
+      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
+    }
+    for (;;)
+    {
+      if (wlg.a(this.a) != null) {
+        this.itemView.setOnClickListener(new wlm(this, paramStFeed));
+      }
+      this.itemView.setOnLongClickListener(new wln(this, paramExtraTypeInfo, paramStFeed));
+      return;
+      if ((this.itemView instanceof RelativeAdFeedItemView))
+      {
+        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(wlg.a(this.a));
+        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
+      }
     }
   }
 }

@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class azxj
-  implements View.OnFocusChangeListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public azxj(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (paramBoolean) {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.a());
+      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
+      if (!paramBoolean) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramCompoundButton = "on";; paramCompoundButton = "off")
+    {
+      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
+      this.a.e = paramBoolean;
+      if (this.a.e) {
+        this.a.a.setChecked(true);
       }
       return;
     }

@@ -1,8 +1,4 @@
-public class aklt
-{
-  public int a;
-  public String a;
-}
+public class aklt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

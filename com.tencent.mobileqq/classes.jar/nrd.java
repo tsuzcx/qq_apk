@@ -1,73 +1,158 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool.1;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientReq;
 
-class nrd
-  implements View.OnClickListener
+public class nrd
 {
-  nrd(nrb paramnrb, Context paramContext, TextView paramTextView, MessageRecord paramMessageRecord) {}
+  public static final String a;
+  public aukp a;
+  public ShopWebViewFragment a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new EcshopCacheTool.1(this);
+  public Map<String, Friends> a;
+  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new nre(this);
+  public nrf a;
+  public boolean a;
+  Map<String, Bitmap> b;
+  public Map<String, Integer> c;
+  public Map<String, String> d;
   
-  public void onClick(View paramView)
+  static
   {
-    int k;
-    int m;
-    try
+    jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir() + File.separator + "shop_assit_banner_json.txt";
+  }
+  
+  public nrd(AppInterface paramAppInterface, ShopWebViewFragment paramShopWebViewFragment)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = paramShopWebViewFragment;
+    this.c = new ConcurrentHashMap();
+    this.d = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
+    this.jdField_a_of_type_Aukp = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Nrf = ((nrf)paramAppInterface.getBusinessHandler(0));
+    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    synchronized (this.b)
     {
-      paramView = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362551);
-      if (paramView == null) {
-        return;
-      }
+      paramString = (Bitmap)this.b.get(paramString);
+      return paramString;
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
-      int[] arrayOfInt = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt);
-      int i = arrayOfInt[1];
-      int j = paramView.getHeight();
-      paramView = new int[2];
-      this.jdField_a_of_type_AndroidWidgetTextView.getLocationOnScreen(paramView);
-      nrb.a(this.jdField_a_of_type_Nrb, paramView[0]);
-      nrb.b(this.jdField_a_of_type_Nrb, paramView[1]);
-      k = nrb.a(this.jdField_a_of_type_Nrb).getContentView().getMeasuredHeight();
-      if (QLog.isColorLevel()) {
-        QLog.i("parsons", 2, "popheight: " + k);
-      }
-      m = this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
-      if (nrb.a(this.jdField_a_of_type_Nrb) - i + m + k <= j) {
-        break label300;
-      }
+  }
+  
+  public String a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
+      return "";
     }
-    nrb.a(this.jdField_a_of_type_Nrb).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846189));
-    nrb.a(this.jdField_a_of_type_Nrb).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, nrb.b(this.jdField_a_of_type_Nrb), nrb.a(this.jdField_a_of_type_Nrb) - k);
-    for (;;)
+    paramString = (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.getFriendNick();
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment = null;
+    this.jdField_a_of_type_Nrf = null;
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    if (this.b != null) {
+      this.b.clear();
+    }
+    if (this.c != null) {
+      this.c.clear();
+    }
+    if (this.d != null) {
+      this.d.clear();
+    }
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent("action_get_PA_head");
+    localIntent.putExtra("uin", paramString);
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    synchronized (this.b)
     {
-      ((nqx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramView.alpha = 0.5F;
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
-      nrb.a(this.jdField_a_of_type_Nrb).setOnDismissListener(new nre(this));
+      this.b.put(paramString, paramBitmap);
       return;
-      label300:
-      nrb.a(this.jdField_a_of_type_Nrb).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846188));
-      nrb.a(this.jdField_a_of_type_Nrb).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, nrb.b(this.jdField_a_of_type_Nrb), m + nrb.a(this.jdField_a_of_type_Nrb));
     }
+  }
+  
+  public void a(AppRuntime paramAppRuntime, int paramInt)
+  {
+    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
+    localSQQSHPClientReq.msglistlen.set(paramInt);
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), arpd.class);
+    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetFolderInfo");
+    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
+    localNewIntent.putExtra("extra_timeout", 30000L);
+    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    paramAppRuntime.startServlet(localNewIntent);
+  }
+  
+  public void a(AppRuntime paramAppRuntime, List<Long> paramList, double paramDouble1, double paramDouble2)
+  {
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), arpd.class);
+    qqshop.SQQSHPClientReq localSQQSHPClientReq = new qqshop.SQQSHPClientReq();
+    localSQQSHPClientReq.puinlist.addAll(paramList);
+    if ((!TextUtils.isEmpty(paramAppRuntime.getAccount())) && (paramDouble1 != 0.0D) && (paramDouble2 != 0.0D))
+    {
+      localSQQSHPClientReq.latitude.set(paramDouble2);
+      localSQQSHPClientReq.longitude.set(paramDouble1);
+      if (QLog.isColorLevel()) {
+        QLog.i("EcshopCacheTool", 2, "lat:" + paramDouble2 + ",lon:" + paramDouble1);
+      }
+    }
+    localNewIntent.putExtra("extra_cmd", "SQQShopFolderSvc.GetShopBindUin");
+    localNewIntent.putExtra("extra_data", localSQQSHPClientReq.toByteArray());
+    localNewIntent.putExtra("extra_timeout", 30000L);
+    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    paramAppRuntime.startServlet(localNewIntent);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilMap == null)) {
+      return false;
+    }
+    return (Friends)this.jdField_a_of_type_JavaUtilMap.get(paramString) != null;
+  }
+  
+  public void b(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramContext.startActivity(localIntent);
   }
 }
 

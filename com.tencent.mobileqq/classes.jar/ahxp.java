@@ -1,31 +1,19 @@
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
 
 public class ahxp
-  extends ahxt
+  extends ahxr
 {
   public void a()
   {
-    RMVideoStateMgr.a().a.q();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.r();
     }
-  }
-  
-  public boolean a()
-  {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
   }
   
   public void b()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
-    }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    RMVideoStateMgr.a().a(2);
   }
 }
 

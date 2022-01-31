@@ -1,7 +1,7 @@
 package com.tencent.av;
 
-import ldy;
-import mse;
+import ldt;
+import msb;
 
 class VideoController$3
   implements Runnable
@@ -10,8 +10,8 @@ class VideoController$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Msf = new ldy(this.this$0);
-    this.this$0.jdField_a_of_type_Mse = new mse(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Msf);
+    this.this$0.jdField_a_of_type_Msc = new ldt(this.this$0);
+    this.this$0.jdField_a_of_type_Msb = new msb(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_Msc);
   }
 }
 

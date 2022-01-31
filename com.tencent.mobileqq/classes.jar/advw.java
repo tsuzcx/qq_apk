@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 class advw
-  extends auom
+  implements aywa
 {
-  advw(advu paramadvu, BaseChatItemLayout paramBaseChatItemLayout) {}
+  advw(advs paramadvs) {}
   
-  public void a(int paramInt, aunu paramaunu)
+  public void a(ArrayList<MessageRecord> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
-    }
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    this.a.b();
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.biz.TroopRedpoint;
 
-import mxq;
+import mxn;
 
 public class TroopRedTouchHandler$1
   implements Runnable
 {
-  public TroopRedTouchHandler$1(mxq parammxq) {}
+  public TroopRedTouchHandler$1(mxn parammxn) {}
   
   public void run()
   {
-    mxq.a(this.this$0);
+    mxn.a(this.this$0);
   }
 }
 

@@ -1,56 +1,37 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
+import java.util.ArrayList;
 
-class awvb
-  implements Comparator<awoc>
+public class awvb
+  extends ajxj
 {
-  awvb(awva paramawva) {}
+  public awvb(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
   
-  public int a(awoc paramawoc1, awoc paramawoc2)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
   {
-    int i = -1;
-    Object localObject = (askl)this.a.a.getManager(11);
-    paramawoc1 = ((askl)localObject).c(((awmy)paramawoc1).e());
-    paramawoc2 = ((askl)localObject).c(((awmy)paramawoc2).e());
-    if ((paramawoc1 == null) || (paramawoc2 == null)) {
-      if ((paramawoc1 == null) && (paramawoc2 == null)) {
-        i = 0;
-      }
+    if (this.a.a != null) {
+      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
     }
-    boolean bool2;
+    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
     do
     {
       do
       {
-        return i;
-        if (paramawoc2 == null) {}
-        for (i = -1;; i = 1) {
-          return i;
-        }
-        if ((paramawoc1.uin.equals("0")) && (paramawoc2.uin.equals("0"))) {
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
           break;
         }
-        if ((!paramawoc1.uin.equals("0")) && (!paramawoc2.uin.equals("0"))) {
-          return 0;
-        }
-      } while (!paramawoc2.uin.equals("0"));
-      return 1;
-      if (!paramawoc1.uin.equals("0")) {
-        break;
-      }
-      localObject = (ajxn)this.a.a.getManager(51);
-      boolean bool1 = ((ajxn)localObject).a(paramawoc1.unifiedCode, true);
-      bool2 = ((ajxn)localObject).a(paramawoc2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return 0;
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
+      return;
+    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
+    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
   }
 }
 

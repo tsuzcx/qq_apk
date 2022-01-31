@@ -1,388 +1,296 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Bundle;
-import android.os.Process;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.triton.sdk.APIProxy;
+import com.tencent.mobileqq.triton.sdk.FPSCallback;
+import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.sdk.ITHttp;
+import com.tencent.mobileqq.triton.sdk.ITLog;
+import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.TTEngineBuilder;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import com.tencent.qqmini.sdk.minigame.task.GameEngineLoadTask.1;
-import com.tencent.qqmini.sdk.minigame.utils.TTHandleThread;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioPlayerBuilder;
+import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
+import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
+import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
+import com.tencent.mobileqq.triton.sdk.game.GameLifecycle;
+import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
+import java.util.Map;
+import java.util.concurrent.Executor;
 
-@begt(a="GameEngineLoadTask")
 public class bevy
-  extends bfeq
-  implements besu
+  implements ITTEngine
 {
-  private bevh jdField_a_of_type_Bevh = new bevh();
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private EngineChannel jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel;
-  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  public volatile boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
+  private APIProxy jdField_a_of_type_ComTencentMobileqqTritonSdkAPIProxy;
+  private ITTEngine jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine;
   
-  public bevy(Context paramContext, bepv parambepv)
+  public void a(ITTEngine paramITTEngine)
   {
-    super(paramContext, parambepv);
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine = paramITTEngine;
   }
   
-  private int a(InstalledEngine paramInstalledEngine)
+  public void addFPSCallback(FPSCallback paramFPSCallback)
   {
-    for (;;)
-    {
-      try
-      {
-        beyr.a(behd.a(), 1014, "1");
-        if (paramInstalledEngine == null)
-        {
-          bewt.a().e("EngineLoadTask", "[MiniEng] installedEngine == null, loadEngineTask is reset?");
-          i = 105;
-          return i;
-        }
-        Object localObject1 = new TTEngineBuilder();
-        beum localbeum = new beum();
-        ((TTEngineBuilder)localObject1).setApiProxy(localbeum).setQQEnv(new beup()).setDiskIoExecutor(new bewa(this)).setLog(bewt.a()).setSoLoader(new bewu(paramInstalledEngine));
-        Object localObject2 = getClass().getClassLoader();
-        if (a())
-        {
-          bewt.a().i("EngineLoadTask", "[MiniEng] TTEngineBuilder create TTEngine from dex");
-          beyr.a(behd.a(), 1003, "1");
-          localObject2 = ((TTEngineBuilder)localObject1).createInstance(new bfgf(b(), this.jdField_a_of_type_AndroidContentContext.getApplicationInfo().nativeLibraryDir, getClass().getClassLoader()));
-          localObject1 = localObject2;
-          if (localObject2 != null)
-          {
-            beyr.a(behd.a(), 1004, "1");
-            localObject1 = localObject2;
-          }
-          localbeum.a((ITTEngine)localObject1);
-          this.jdField_a_of_type_Bevh.a((ITTEngine)localObject1);
-          if (localObject1 == null)
-          {
-            bewt.a().e("EngineLoadTask", "[MiniEng] TTEngineBuilder create TTEngine return null");
-            i = 106;
-          }
-        }
-        else
-        {
-          bewt.a().i("EngineLoadTask", "[MiniEng] TTEngineBuilder create TTEngine from local lib");
-          localObject1 = ((TTEngineBuilder)localObject1).createInstance((ClassLoader)localObject2);
-          continue;
-        }
-        long l = System.currentTimeMillis();
-        bewt.a().i("EngineLoadTask", "[MiniEng] initEngine");
-        i = ((ITTEngine)localObject1).initEngine(this.jdField_a_of_type_AndroidContentContext, null, null);
-        if (i != 0)
-        {
-          bewt.a().e("EngineLoadTask", "[MiniEng] initEngine fail");
-          paramInstalledEngine.jdField_b_of_type_Int = 2;
-          if (i == 1001) {
-            i = 107;
-          }
-        }
-        else
-        {
-          paramInstalledEngine.jdField_b_of_type_Int = 3;
-          besl.d("[minigame][timecost] ", "[MiniEng] step[initTTEngine] cost time " + (System.currentTimeMillis() - l) + ", includes steps[load so, cache jssdk]");
-          beyr.a(behd.a(), 1015, "1");
-          i = 0;
-          continue;
-        }
-        if (i != 2001) {
-          break label391;
-        }
-      }
-      finally {}
-      int i = 108;
-      continue;
-      label391:
-      i = 109;
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.addFPSCallback(paramFPSCallback);
     }
   }
   
-  private boolean a()
+  public void addGameLifeCycle(GameLifecycle paramGameLifecycle)
   {
-    if (!bewv.b()) {}
-    while (TextUtils.isEmpty(a())) {
-      return false;
-    }
-    return new File(b()).exists();
-  }
-  
-  private boolean a(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
-  {
-    boolean bool = true;
-    if (paramInstalledEngine == null)
-    {
-      bewt.a().e("EngineLoadTask", "[MiniEng]isGameSatisfy engine == null");
-      return false;
-    }
-    if (paramMiniAppInfo == null)
-    {
-      bewt.a().e("EngineLoadTask", "[MiniEng]isGameSatisfy gameConfig == null");
-      return false;
-    }
-    if (paramMiniAppInfo == null)
-    {
-      bewt.a().e("EngineLoadTask", "[MiniEng]isGameSatisfy info == null");
-      return false;
-    }
-    paramMiniAppInfo = paramMiniAppInfo.baselibMiniVersion;
-    bewt.a().i("EngineLoadTask", "[MiniEng]isGameSatisfy minVersion=" + paramMiniAppInfo);
-    if (TextUtils.isEmpty(paramMiniAppInfo)) {
-      return true;
-    }
-    paramMiniAppInfo = new EngineVersion(paramMiniAppInfo);
-    if (paramInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion.a(paramMiniAppInfo) >= 0) {}
-    for (;;)
-    {
-      bewt.a().i("EngineLoadTask", "[MiniEng]isGameSatisfy minEngineVersion=" + paramMiniAppInfo + ",engineVersion=" + paramInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion + ",ret=" + bool);
-      return bool;
-      bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.addGameLifeCycle(paramGameLifecycle);
     }
   }
   
-  private String b()
+  public View createGameView(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    if (beup.b()) {}
-    for (String str = "/sdcard/game/";; str = a()) {
-      return str + "triton.jar";
-    }
-  }
-  
-  private void b(int paramInt, Bundle paramBundle)
-  {
-    paramBundle.putInt("baseLibType", 2);
-    paramBundle.putInt("enginePid", Process.myPid());
-    bewt.a().i("EngineLoadTask", "[MiniEng]installEngineRequestCount, " + this.jdField_b_of_type_Int + " upgradeEngineRequestCount, " + this.c + "," + paramInt);
-    if (paramInt == 5) {
-      this.c += 1;
-    }
-    if (paramInt == 3) {
-      this.jdField_b_of_type_Int += 1;
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel != null)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(paramInt, paramBundle);
-      return;
-    }
-    bewt.a().w("EngineLoadTask", "[MiniEng]" + this + "failed sendCommand mEngineChannel is null");
-  }
-  
-  private void g()
-  {
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.a("GameEngine(" + Process.myPid() + ")");
-    localEngineChannel.a(this);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("engineChannel", localEngineChannel);
-    b(1, localBundle);
-  }
-  
-  private void h()
-  {
-    TTHandleThread.a().a(new GameEngineLoadTask.1(this), 100L);
-  }
-  
-  public ITTEngine a()
-  {
-    return this.jdField_a_of_type_Bevh;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  public InstalledEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  }
-  
-  public String a()
-  {
-    InstalledEngine localInstalledEngine = a();
-    if (localInstalledEngine != null)
-    {
-      if (localInstalledEngine.jdField_a_of_type_Boolean) {
-        return localInstalledEngine.jdField_b_of_type_JavaLangString + "/";
-      }
-      bewt.a().e("EngineLoadTask", "[MiniEng] getBaseEnginePath failed, engine:" + localInstalledEngine + bffr.a());
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.createGameView(paramActivity, paramInt1, paramInt2);
     }
     return null;
   }
   
-  public void a()
+  public APIProxy getApiProxy()
   {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = new InstalledEngine();
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_JavaLangString = (MiniAppEnv.g().getContext().getFilesDir() + "/xminilib/1.0.0");
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_a_of_type_JavaLangString = "MiniGame";
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = new EngineVersion("8.2.0.1552", "1.8.4.01017");
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine.jdField_b_of_type_Boolean = false;
-      this.d = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-      if (this.d != 0) {
-        break label154;
-      }
-      c();
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getApiProxy();
     }
-    for (;;)
+    return this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPIProxy;
+  }
+  
+  public long getCurrentDrawCount()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getCurrentDrawCount();
+    }
+    return 0L;
+  }
+  
+  public int getDisplayRefreshRate()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getDisplayRefreshRate();
+    }
+    return 0;
+  }
+  
+  public IGameLauncher getGameLauncher()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getGameLauncher();
+    }
+    return null;
+  }
+  
+  public IJSEngine getJsEngine()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getJsEngine();
+    }
+    return null;
+  }
+  
+  public ITTJSRuntime getJsRuntime(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getJsRuntime(paramInt);
+    }
+    return null;
+  }
+  
+  public long getLastBlackTime()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getLastBlackTime();
+    }
+    return -1L;
+  }
+  
+  public ITNativeBufferPool getNativeBufferPool()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getNativeBufferPool();
+    }
+    return null;
+  }
+  
+  public ITHttp getNativeHttp()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getNativeHttp();
+    }
+    return null;
+  }
+  
+  public boolean getOptionalSoLoadStatus(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getOptionalSoLoadStatus(paramString);
+    }
+    return false;
+  }
+  
+  public Map<String, String> getResPathCache()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getResPathCache();
+    }
+    return null;
+  }
+  
+  public void getScreenShot(ScreenShotCallback paramScreenShotCallback)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getScreenShot(paramScreenShotCallback);
+    }
+  }
+  
+  public int getTargetFPS()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.getTargetFPS();
+    }
+    return 0;
+  }
+  
+  public void handleFocusGain()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.handleFocusGain();
+    }
+  }
+  
+  public void handleFocusLoss()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.handleFocusLoss();
+    }
+  }
+  
+  public int initEngine(Context paramContext, ITTEngine.IListener paramIListener, @Nullable IInspectorAgent paramIInspectorAgent)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.initEngine(paramContext, paramIListener, paramIInspectorAgent);
+    }
+    return 1;
+  }
+  
+  public void onCreate(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.onCreate(paramActivity);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.onDestroy();
+    }
+  }
+  
+  public void onPause()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.onPause();
+    }
+  }
+  
+  public void onResume()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.onResume();
+    }
+  }
+  
+  public void removeFPSCallback(FPSCallback paramFPSCallback)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.removeFPSCallback(paramFPSCallback);
+    }
+  }
+  
+  public void setApiProxy(APIProxy paramAPIProxy)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel != null) {
-        break;
-      }
-      h();
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setApiProxy(paramAPIProxy);
       return;
-      label154:
-      a(this.d, "加载引擎失败");
     }
-    g();
-    h();
+    this.jdField_a_of_type_ComTencentMobileqqTritonSdkAPIProxy = paramAPIProxy;
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void setAudioPlayerBuilder(IAudioPlayerBuilder paramIAudioPlayerBuilder)
   {
-    bewt.a().i("EngineLoadTask", "[MiniEng] onReceiveData what=" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.setClassLoader(getClass().getClassLoader());
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setAudioPlayerBuilder(paramIAudioPlayerBuilder);
     }
-    if (paramInt == 55) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    }
-    if (paramInt == 51) {
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
-        if (paramBundle != null)
-        {
-          paramInt = paramBundle.size();
-          bewt.a().i("EngineLoadTask", "[MiniEng] getInstalledEngineList success " + paramInt);
-          if (paramInt > 0)
-          {
-            paramBundle = (InstalledEngine)paramBundle.get(0);
-            if (a(paramBundle, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo))
-            {
-              this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = paramBundle;
-              beyr.a(behd.a(), 1012, "1");
-              if (this.d != -1) {
-                bewt.a().w("EngineLoadTask", "[MiniEng] engine already loaded! status=" + this.d);
-              }
-            }
-          }
-        }
-      }
-    }
-    do
-    {
-      String str;
-      do
-      {
-        do
-        {
-          return;
-          this.d = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-          if (this.d == 0)
-          {
-            c();
-            return;
-          }
-          beyu.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, "page_view", "load_fail", "load_baselib_fail", "");
-          bexz.a("2launch_fail", "load_baselib_fail", null, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-          a(this.d, "加载引擎失败");
-          return;
-          if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId))) {
-            beyb.c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, false);
-          }
-          bewt.a().i("EngineLoadTask", "[MiniEng] engine version is too low, send cmd WHAT_UPGRADE_ENGINE");
-          if (this.c >= 1)
-          {
-            bewt.a().i("EngineLoadTask", "[MiniEng]upgradeEngineRequestCount reaches max 1");
-            a(104, "请升级QQ版本");
-            return;
-          }
-          b(5, new Bundle());
-          return;
-          if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId))) {
-            beyb.c(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, false);
-          }
-          bewt.a().i("EngineLoadTask", "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
-          if (this.jdField_b_of_type_Int >= 2)
-          {
-            bewt.a().i("EngineLoadTask", "[MiniEng]installEngineRequestCount reaches max 2");
-            a(103, "加载引擎超时");
-            return;
-          }
-          b(3, new Bundle());
-          return;
-          bewt.a().i("EngineLoadTask", "[MiniEng] getInstalledEngineList gameEngineList is null");
-          a(102, "获取引擎信息失败");
-          return;
-          bewt.a().i("EngineLoadTask", "[MiniEng] getInstalledEngineList data is null");
-          a(102, "获取引擎信息失败");
-          return;
-          if (paramInt == 52)
-          {
-            bewt.a().i("EngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
-            return;
-          }
-          if (paramInt != 53) {
-            break;
-          }
-        } while (paramBundle == null);
-        str = paramBundle.getString("engineInstallerMessage");
-        paramBundle.getFloat("engineInstallerProgress");
-        bewt.a().i("EngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + str + ",allowPostProgress:" + this.jdField_a_of_type_Boolean);
-      } while (!this.jdField_a_of_type_Boolean);
-      a().notifyRuntimeEvent(2011, new Object[] { str });
-      return;
-    } while (paramInt != 54);
-    bewt.a().i("EngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
-    b(1, new Bundle());
   }
   
-  public void a(MiniAppInfo paramMiniAppInfo)
+  public void setDiskIoExecutor(Executor paramExecutor)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-  }
-  
-  public void a(EngineChannel paramEngineChannel)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel = paramEngineChannel;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      bewt.a().i("EngineLoadTask", "[MiniEng]" + this + " reset ");
-      this.jdField_b_of_type_Int = 0;
-      this.c = 0;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = null;
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = null;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = null;
-      this.d = -1;
-      super.b();
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setDiskIoExecutor(paramExecutor);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+  }
+  
+  public void setEnableCodeCache(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setEnableCodeCache(paramBoolean);
+    }
+  }
+  
+  public void setEnableJankCanary(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setEnableJankCanary(paramBoolean);
+    }
+  }
+  
+  public void setEngineListener(ITTEngine.IListener paramIListener)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setEngineListener(paramIListener);
+    }
+  }
+  
+  public void setJsEngine(IJSEngine paramIJSEngine)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setJsEngine(paramIJSEngine);
+    }
+  }
+  
+  public void setLog(ITLog paramITLog)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setLog(paramITLog);
+    }
+  }
+  
+  public void setQQEnv(IQQEnv paramIQQEnv)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setQQEnv(paramIQQEnv);
+    }
+  }
+  
+  public void setSoLoader(ITSoLoader paramITSoLoader)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setSoLoader(paramITSoLoader);
+    }
+  }
+  
+  public void setTargetFPS(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTritonSdkITTEngine.setTargetFPS(paramInt);
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class OlympicPredownInfo
-  extends aukm
+  extends auko
 {
   public int dailyRetryCount;
   public long dailyStartTime;
   public int totalRetryCount;
-  @auma
+  @aumc
   public String url;
   
   public String toString()

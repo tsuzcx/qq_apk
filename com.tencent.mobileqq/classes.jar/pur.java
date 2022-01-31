@@ -1,18 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pur
-  extends put
+class pur
+  implements View.OnClickListener
 {
-  public pur(Context paramContext, baxk parambaxk, rap paramrap)
-  {
-    super(paramContext, parambaxk, paramrap);
-  }
+  pur(puq parampuq) {}
   
-  public pqt g()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pqs = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    paramView = this.a.jdField_a_of_type_Ram.a();
+    if (paramView != null) {
+      paramView.a(null, ((pau)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

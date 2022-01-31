@@ -1,23 +1,17 @@
-import android.widget.FrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class afsq
-  implements afsn
+public class afsq
 {
-  afsq(afsp paramafsp) {}
-  
-  public void a(String paramString, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    ((akac)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
+    if (paramQQAppInterface == null) {}
+    do
     {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
       return;
-    }
-    if (this.a.jdField_a_of_type_Afry != null) {
-      this.a.jdField_a_of_type_Afry.a();
-    }
-    afsp.a(this.a);
+      atbi.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 

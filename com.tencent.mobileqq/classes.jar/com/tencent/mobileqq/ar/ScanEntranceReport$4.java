@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
-import aldo;
-import axrl;
+import aldn;
+import axrn;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ScanEntranceReport$4
   implements Runnable
 {
-  public ScanEntranceReport$4(aldo paramaldo, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
+  public ScanEntranceReport$4(aldn paramaldn, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ScanEntranceReport$4
     localHashMap.put("first_select_time", String.valueOf(this.b));
     localHashMap.put("first_upload_delay", String.valueOf(this.c));
     localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    axrl.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
+    axrn.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
-import ajyc;
+import ajya;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,18 +8,18 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nxy;
-import nxz;
-import nyh;
+import nxv;
+import nxw;
+import nye;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rjy;
+import rjv;
 
 public class AdData
   extends ProteusItemData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdData> CREATOR = new rjy();
+  public static final Parcelable.Creator<AdData> CREATOR = new rjv();
   public String A;
   public String B;
   public String C;
@@ -31,7 +31,7 @@ public class AdData
   public String I;
   public String J;
   public String K;
-  public String L = ajyc.a(2131699815);
+  public String L = ajya.a(2131699826);
   public String M;
   public String N;
   public String O;
@@ -42,9 +42,9 @@ public class AdData
   public String T;
   public String U;
   public ArrayList<String> a;
-  public nxy a;
-  public nxz a;
-  public nyh a;
+  public nxv a;
+  public nxw a;
+  public nye a;
   public JSONObject a;
   public long b;
   public ArrayList<DislikeInfo> b;
@@ -374,7 +374,7 @@ public class AdData
     //   383: iconst_0
     //   384: invokevirtual 359	org/json/JSONArray:optString	(I)Ljava/lang/String;
     //   387: iconst_1
-    //   388: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   388: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   391: putfield 115	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_l_of_type_JavaLangString	Ljava/lang/String;
     //   394: aload_1
     //   395: ldc_w 366
@@ -385,7 +385,7 @@ public class AdData
     //   406: ldc_w 366
     //   409: invokevirtual 292	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   412: iconst_1
-    //   413: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   413: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   416: putfield 123	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_m_of_type_JavaLangString	Ljava/lang/String;
     //   419: aload_1
     //   420: ldc_w 368
@@ -396,7 +396,7 @@ public class AdData
     //   431: ldc_w 368
     //   434: invokevirtual 292	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   437: iconst_1
-    //   438: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   438: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   441: putfield 125	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_n_of_type_JavaLangString	Ljava/lang/String;
     //   444: aload_1
     //   445: ldc_w 370
@@ -407,7 +407,7 @@ public class AdData
     //   456: ldc_w 370
     //   459: invokevirtual 292	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   462: iconst_1
-    //   463: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   463: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   466: putfield 127	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_o_of_type_JavaLangString	Ljava/lang/String;
     //   469: aload_1
     //   470: ldc_w 372
@@ -551,10 +551,10 @@ public class AdData
     //   790: invokevirtual 286	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   793: putfield 409	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_i_of_type_Int	I
     //   796: aload_0
-    //   797: new 411	nxy
+    //   797: new 411	nxv
     //   800: dup
-    //   801: invokespecial 412	nxy:<init>	()V
-    //   804: putfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   801: invokespecial 412	nxv:<init>	()V
+    //   804: putfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   807: aload_1
     //   808: ldc_w 416
     //   811: invokevirtual 338	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -564,29 +564,29 @@ public class AdData
     //   821: invokevirtual 420	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   824: astore_2
     //   825: aload_0
-    //   826: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   826: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   829: aload_2
-    //   830: invokevirtual 423	nxy:a	(Lorg/json/JSONObject;)V
+    //   830: invokevirtual 423	nxv:a	(Lorg/json/JSONObject;)V
     //   833: aload_0
-    //   834: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
-    //   837: getfield 425	nxy:b	Ljava/lang/String;
+    //   834: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
+    //   837: getfield 425	nxv:b	Ljava/lang/String;
     //   840: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   843: ifne +25 -> 868
     //   846: aload_0
     //   847: aload_0
-    //   848: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
-    //   851: getfield 425	nxy:b	Ljava/lang/String;
+    //   848: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
+    //   851: getfield 425	nxv:b	Ljava/lang/String;
     //   854: putfield 131	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:p	Ljava/lang/String;
     //   857: aload_0
     //   858: aload_0
-    //   859: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
-    //   862: getfield 425	nxy:b	Ljava/lang/String;
+    //   859: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
+    //   862: getfield 425	nxv:b	Ljava/lang/String;
     //   865: putfield 192	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:D	Ljava/lang/String;
     //   868: aload_0
-    //   869: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   869: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   872: aload_0
     //   873: getfield 184	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:A	Ljava/lang/String;
-    //   876: putfield 427	nxy:f	Ljava/lang/String;
+    //   876: putfield 427	nxv:f	Ljava/lang/String;
     //   879: aload_0
     //   880: aload_1
     //   881: ldc_w 429
@@ -604,18 +604,18 @@ public class AdData
     //   910: invokevirtual 433	org/json/JSONObject:toString	()Ljava/lang/String;
     //   913: putfield 230	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:T	Ljava/lang/String;
     //   916: aload_0
-    //   917: new 435	nxz
+    //   917: new 435	nxw
     //   920: dup
-    //   921: invokespecial 436	nxz:<init>	()V
-    //   924: putfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxz	Lnxz;
+    //   921: invokespecial 436	nxw:<init>	()V
+    //   924: putfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxw	Lnxw;
     //   927: aload_0
-    //   928: getfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxz	Lnxz;
+    //   928: getfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxw	Lnxw;
     //   931: aload_1
     //   932: aload_0
-    //   933: getfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxz	Lnxz;
+    //   933: getfield 438	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxw	Lnxw;
     //   936: aload_0
-    //   937: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
-    //   940: invokevirtual 441	nxz:a	(Lorg/json/JSONObject;Lnxz;Lnxy;)V
+    //   937: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
+    //   940: invokevirtual 441	nxw:a	(Lorg/json/JSONObject;Lnxw;Lnxv;)V
     //   943: aload_1
     //   944: ldc_w 443
     //   947: invokevirtual 338	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -732,12 +732,12 @@ public class AdData
     //   1196: invokevirtual 433	org/json/JSONObject:toString	()Ljava/lang/String;
     //   1199: putfield 228	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:U	Ljava/lang/String;
     //   1202: aload_0
-    //   1203: new 472	nyh
+    //   1203: new 472	nye
     //   1206: dup
     //   1207: aload_0
     //   1208: getfield 228	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:U	Ljava/lang/String;
-    //   1211: invokespecial 473	nyh:<init>	(Ljava/lang/String;)V
-    //   1214: putfield 475	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nyh	Lnyh;
+    //   1211: invokespecial 473	nye:<init>	(Ljava/lang/String;)V
+    //   1214: putfield 475	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nye	Lnye;
     //   1217: aload_1
     //   1218: ldc_w 477
     //   1221: invokevirtual 338	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -757,10 +757,10 @@ public class AdData
     //   1253: invokevirtual 286	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   1256: putfield 481	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_o_of_type_Int	I
     //   1259: aload_0
-    //   1260: getfield 475	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nyh	Lnyh;
+    //   1260: getfield 475	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nye	Lnye;
     //   1263: aload_0
     //   1264: getfield 481	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_o_of_type_Int	I
-    //   1267: putfield 482	nyh:h	I
+    //   1267: putfield 482	nye:h	I
     //   1270: aload_1
     //   1271: ldc_w 484
     //   1274: invokevirtual 338	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -836,7 +836,7 @@ public class AdData
     //   1415: iload_3
     //   1416: invokevirtual 359	org/json/JSONArray:optString	(I)Ljava/lang/String;
     //   1419: iconst_1
-    //   1420: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   1420: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   1423: invokevirtual 507	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1426: pop
     //   1427: iload_3
@@ -856,7 +856,7 @@ public class AdData
     //   1451: iconst_0
     //   1452: invokevirtual 359	org/json/JSONArray:optString	(I)Ljava/lang/String;
     //   1455: iconst_1
-    //   1456: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   1456: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   1459: invokevirtual 507	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1462: pop
     //   1463: goto -1069 -> 394
@@ -869,7 +869,7 @@ public class AdData
     //   1477: iconst_0
     //   1478: invokevirtual 359	org/json/JSONArray:optString	(I)Ljava/lang/String;
     //   1481: iconst_1
-    //   1482: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   1482: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   1485: invokevirtual 507	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1488: pop
     //   1489: aload_0
@@ -878,31 +878,31 @@ public class AdData
     //   1494: iconst_0
     //   1495: invokevirtual 359	org/json/JSONArray:optString	(I)Ljava/lang/String;
     //   1498: iconst_1
-    //   1499: invokestatic 364	rmu:a	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   1499: invokestatic 364	rmr:a	(Ljava/lang/String;Z)Ljava/lang/String;
     //   1502: invokevirtual 507	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1505: pop
     //   1506: goto -1112 -> 394
     //   1509: aload_0
-    //   1510: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   1510: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   1513: aload_0
     //   1514: getfield 131	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:p	Ljava/lang/String;
-    //   1517: putfield 425	nxy:b	Ljava/lang/String;
+    //   1517: putfield 425	nxv:b	Ljava/lang/String;
     //   1520: aload_0
-    //   1521: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   1521: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   1524: aload_0
     //   1525: getfield 184	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:A	Ljava/lang/String;
-    //   1528: putfield 427	nxy:f	Ljava/lang/String;
+    //   1528: putfield 427	nxv:f	Ljava/lang/String;
     //   1531: aload_0
-    //   1532: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   1532: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   1535: aload_0
     //   1536: getfield 194	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:E	Ljava/lang/String;
-    //   1539: putfield 509	nxy:e	Ljava/lang/String;
+    //   1539: putfield 509	nxv:e	Ljava/lang/String;
     //   1542: aload_0
-    //   1543: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxy	Lnxy;
+    //   1543: getfield 414	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_a_of_type_Nxv	Lnxv;
     //   1546: aload_0
     //   1547: getfield 196	com/tencent/biz/pubaccount/readinjoy/view/fastweb/data/AdData:jdField_c_of_type_Long	J
     //   1550: invokestatic 513	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1553: putfield 515	nxy:c	Ljava/lang/String;
+    //   1553: putfield 515	nxv:c	Ljava/lang/String;
     //   1556: goto -677 -> 879
     //   1559: astore_2
     //   1560: invokestatic 259	com/tencent/qphone/base/util/QLog:isColorLevel	()Z

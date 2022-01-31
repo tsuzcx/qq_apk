@@ -10,17 +10,17 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.OverScroller;
-import audz;
-import auea;
+import aueb;
 import auec;
-import aued;
 import auee;
+import auef;
 import aueg;
-import aueh;
+import auei;
 import auej;
-import auen;
-import aueo;
+import auel;
+import auep;
 import aueq;
+import aues;
 import com.tencent.mobileqq.ocr.view.gesture.GestureProxy.StateSource;
 import com.tencent.mobileqq.ocr.view.gesture.Settings;
 import com.tencent.mobileqq.ocr.view.gesture.animation.AnimationEngine;
@@ -39,28 +39,28 @@ public class GestureController
   private final ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
   protected final View a;
   private final OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
-  protected auea a;
-  private final auec jdField_a_of_type_Auec;
-  protected auee a;
-  private final aueh jdField_a_of_type_Aueh;
+  protected auec a;
+  private final auee jdField_a_of_type_Auee;
+  protected aueg a;
   private final auej jdField_a_of_type_Auej;
-  protected final auen a;
-  protected final aueo a;
+  private final auel jdField_a_of_type_Auel;
+  protected final auep a;
+  protected final aueq a;
   private GestureProxy.StateSource jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource = GestureProxy.StateSource.NONE;
   protected final Settings a;
   private final AnimationEngine jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine;
-  protected final List<audz> a;
+  protected final List<aueb> a;
   private boolean jdField_a_of_type_Boolean;
   protected float b;
   private final int jdField_b_of_type_Int;
-  protected final auen b;
+  protected final auep b;
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = (0.0F / 0.0F);
   private final int jdField_c_of_type_Int;
-  protected final auen c;
+  protected final auep c;
   private boolean jdField_c_of_type_Boolean;
   private float jdField_d_of_type_Float = (0.0F / 0.0F);
-  protected final auen d;
+  protected final auep d;
   private boolean jdField_d_of_type_Boolean;
   private boolean e;
   private boolean f;
@@ -73,22 +73,22 @@ public class GestureController
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Float = (0.0F / 0.0F);
     this.jdField_b_of_type_Float = (0.0F / 0.0F);
-    this.jdField_a_of_type_Auen = new auen();
-    this.jdField_b_of_type_Auen = new auen();
-    this.jdField_c_of_type_Auen = new auen();
-    this.jdField_d_of_type_Auen = new auen();
+    this.jdField_a_of_type_Auep = new auep();
+    this.jdField_b_of_type_Auep = new auep();
+    this.jdField_c_of_type_Auep = new auep();
+    this.jdField_d_of_type_Auep = new auep();
     Context localContext = paramView.getContext();
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings = new Settings();
-    this.jdField_a_of_type_Aueo = new aueo(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings);
+    this.jdField_a_of_type_Aueq = new aueq(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine = new GestureController.LocalAnimationEngine(this, paramView);
-    paramView = new aued(this);
+    paramView = new auef(this);
     this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(localContext, paramView);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new aueg(localContext, paramView);
-    this.jdField_a_of_type_Aueh = new aueh(localContext, paramView);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new auei(localContext, paramView);
+    this.jdField_a_of_type_Auej = new auej(localContext, paramView);
     this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(localContext);
-    this.jdField_a_of_type_Auec = new auec();
-    this.jdField_a_of_type_Auej = new auej(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings);
+    this.jdField_a_of_type_Auee = new auee();
+    this.jdField_a_of_type_Auel = new auel(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings);
     paramView = ViewConfiguration.get(localContext);
     this.jdField_a_of_type_Int = paramView.getScaledTouchSlop();
     this.jdField_b_of_type_Int = paramView.getScaledMinimumFlingVelocity();
@@ -116,8 +116,8 @@ public class GestureController
         if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource != localStateSource)
         {
           this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource = localStateSource;
-          if (this.jdField_a_of_type_Auea != null) {
-            this.jdField_a_of_type_Auea.a(localStateSource);
+          if (this.jdField_a_of_type_Auec != null) {
+            this.jdField_a_of_type_Auec.a(localStateSource);
           }
         }
         return;
@@ -125,37 +125,37 @@ public class GestureController
     }
   }
   
-  private boolean a(auen paramauen, boolean paramBoolean)
+  private boolean a(auep paramauep, boolean paramBoolean)
   {
-    if (paramauen == null) {}
+    if (paramauep == null) {}
     for (;;)
     {
       return false;
-      auen localauen = null;
+      auep localauep = null;
       if (paramBoolean) {
-        localauen = this.jdField_a_of_type_Aueo.a(paramauen, this.jdField_d_of_type_Auen, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, false, false, true);
+        localauep = this.jdField_a_of_type_Aueq.a(paramauep, this.jdField_d_of_type_Auep, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, false, false, true);
       }
-      if (localauen == null) {}
-      while (!paramauen.equals(this.jdField_c_of_type_Auen))
+      if (localauep == null) {}
+      while (!paramauep.equals(this.jdField_c_of_type_Auep))
       {
         e();
         this.i = paramBoolean;
-        this.jdField_a_of_type_Auen.a(this.jdField_c_of_type_Auen);
-        this.jdField_b_of_type_Auen.a(paramauen);
+        this.jdField_a_of_type_Auep.a(this.jdField_c_of_type_Auep);
+        this.jdField_b_of_type_Auep.a(paramauep);
         if ((!Float.isNaN(this.jdField_a_of_type_Float)) && (!Float.isNaN(this.jdField_b_of_type_Float)))
         {
           jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
           jdField_a_of_type_ArrayOfFloat[1] = this.jdField_b_of_type_Float;
-          aueq.a(jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Auen, this.jdField_b_of_type_Auen);
+          aues.a(jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Auep, this.jdField_b_of_type_Auep);
           this.jdField_c_of_type_Float = jdField_a_of_type_ArrayOfFloat[0];
           this.jdField_d_of_type_Float = jdField_a_of_type_ArrayOfFloat[1];
         }
-        this.jdField_a_of_type_Auec.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a());
-        this.jdField_a_of_type_Auec.a(0.0F, 1.0F);
+        this.jdField_a_of_type_Auee.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a());
+        this.jdField_a_of_type_Auee.a(0.0F, 1.0F);
         this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(2);
         a();
         return true;
-        paramauen = localauen;
+        paramauep = localauep;
       }
     }
   }
@@ -168,8 +168,8 @@ public class GestureController
     if ((!c()) && (!this.i)) {
       a();
     }
-    if (this.jdField_a_of_type_Auee != null) {
-      this.jdField_a_of_type_Auee.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Aueg != null) {
+      this.jdField_a_of_type_Aueg.a(paramMotionEvent);
     }
   }
   
@@ -177,12 +177,12 @@ public class GestureController
   {
     this.jdField_d_of_type_Boolean = false;
     this.g = true;
-    if (this.jdField_a_of_type_Auee != null) {
-      this.jdField_a_of_type_Auee.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_Aueg != null) {
+      this.jdField_a_of_type_Aueg.a(paramScaleGestureDetector);
     }
   }
   
-  public void a(aueh paramaueh)
+  public void a(auej paramauej)
   {
     this.e = false;
     this.h = true;
@@ -198,25 +198,25 @@ public class GestureController
   
   public boolean a()
   {
-    return a(this.jdField_c_of_type_Auen, true);
+    return a(this.jdField_c_of_type_Auep, true);
   }
   
   protected boolean a(int paramInt1, int paramInt2)
   {
-    float f5 = this.jdField_c_of_type_Auen.a();
-    float f6 = this.jdField_c_of_type_Auen.b();
+    float f5 = this.jdField_c_of_type_Auep.a();
+    float f6 = this.jdField_c_of_type_Auep.b();
     float f3 = f5 + paramInt1;
     float f4 = paramInt2 + f6;
     float f2 = f4;
     float f1 = f3;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i())
     {
-      this.jdField_a_of_type_Auej.a(f3, f4, jdField_a_of_type_AndroidGraphicsPointF);
+      this.jdField_a_of_type_Auel.a(f3, f4, jdField_a_of_type_AndroidGraphicsPointF);
       f1 = jdField_a_of_type_AndroidGraphicsPointF.x;
       f2 = jdField_a_of_type_AndroidGraphicsPointF.y;
     }
-    this.jdField_c_of_type_Auen.b(f1, f2);
-    return (!auen.a(f5, f1)) || (!auen.a(f6, f2));
+    this.jdField_c_of_type_Auep.b(f1, f2);
+    return (!auep.a(f5, f1)) || (!auep.a(f6, f2));
   }
   
   protected boolean a(MotionEvent paramMotionEvent)
@@ -227,8 +227,8 @@ public class GestureController
     do
     {
       return false;
-      this.jdField_a_of_type_Aueo.a(this.jdField_c_of_type_Auen, jdField_a_of_type_AndroidGraphicsRectF);
-      if ((auen.a(jdField_a_of_type_AndroidGraphicsRectF.width(), 0.0F) > 0) || (auen.a(jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F) > 0)) {}
+      this.jdField_a_of_type_Aueq.a(this.jdField_c_of_type_Auep, jdField_a_of_type_AndroidGraphicsRectF);
+      if ((auep.a(jdField_a_of_type_AndroidGraphicsRectF.width(), 0.0F) > 0) || (auep.a(jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F) > 0)) {}
       for (int j = 1; (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) && ((j != 0) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i())); j = 0) {
         return true;
       }
@@ -256,13 +256,13 @@ public class GestureController
       if (!this.jdField_c_of_type_Boolean) {
         break label140;
       }
-      if ((this.jdField_a_of_type_Auee == null) || (!this.jdField_a_of_type_Auee.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
+      if ((this.jdField_a_of_type_Aueg == null) || (!this.jdField_a_of_type_Aueg.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
         break label123;
       }
       return true;
     }
     label123:
-    this.jdField_c_of_type_Auen.a(-paramFloat1, -paramFloat2);
+    this.jdField_c_of_type_Auep.a(-paramFloat1, -paramFloat2);
     this.f = true;
     label140:
     return this.jdField_c_of_type_Boolean;
@@ -271,8 +271,8 @@ public class GestureController
   public boolean a(ScaleGestureDetector paramScaleGestureDetector)
   {
     this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
-    if (this.jdField_a_of_type_Auee != null) {
-      this.jdField_a_of_type_Auee.a(paramScaleGestureDetector);
+    if (this.jdField_a_of_type_Aueg != null) {
+      this.jdField_a_of_type_Aueg.a(paramScaleGestureDetector);
     }
     return this.jdField_d_of_type_Boolean;
   }
@@ -283,15 +283,15 @@ public class GestureController
     return c(paramView, paramMotionEvent);
   }
   
-  public boolean a(aueh paramaueh)
+  public boolean a(auej paramauej)
   {
     this.e = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e();
     return this.e;
   }
   
-  public boolean a(auen paramauen)
+  public boolean a(auep paramauep)
   {
-    return a(paramauen, true);
+    return a(paramauep, true);
   }
   
   public void b(MotionEvent paramMotionEvent)
@@ -299,8 +299,8 @@ public class GestureController
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.j())
     {
       this.jdField_a_of_type_AndroidViewView.performLongClick();
-      if (this.jdField_a_of_type_Auee != null) {
-        this.jdField_a_of_type_Auee.c(paramMotionEvent);
+      if (this.jdField_a_of_type_Aueg != null) {
+        this.jdField_a_of_type_Aueg.c(paramMotionEvent);
       }
     }
   }
@@ -315,15 +315,15 @@ public class GestureController
   
   public boolean b()
   {
-    return !this.jdField_a_of_type_Auec.b();
+    return !this.jdField_a_of_type_Auee.b();
   }
   
   public boolean b(MotionEvent paramMotionEvent)
   {
     this.jdField_b_of_type_Boolean = false;
     d();
-    if (this.jdField_a_of_type_Auee != null) {
-      this.jdField_a_of_type_Auee.b(paramMotionEvent);
+    if (this.jdField_a_of_type_Aueg != null) {
+      this.jdField_a_of_type_Aueg.b(paramMotionEvent);
     }
     return false;
   }
@@ -333,12 +333,12 @@ public class GestureController
     if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c()) || (b())) {
       return false;
     }
-    if ((this.jdField_a_of_type_Auee != null) && (this.jdField_a_of_type_Auee.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
+    if ((this.jdField_a_of_type_Aueg != null) && (this.jdField_a_of_type_Aueg.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
       return true;
     }
     d();
-    this.jdField_a_of_type_Auej.a(this.jdField_c_of_type_Auen).a(this.jdField_c_of_type_Auen.a(), this.jdField_c_of_type_Auen.b());
-    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(Math.round(this.jdField_c_of_type_Auen.a()), Math.round(this.jdField_c_of_type_Auen.b()), a(paramFloat1 * 0.9F), a(0.9F * paramFloat2), -2147483648, 2147483647, -2147483648, 2147483647);
+    this.jdField_a_of_type_Auel.a(this.jdField_c_of_type_Auep).a(this.jdField_c_of_type_Auep.a(), this.jdField_c_of_type_Auep.b());
+    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(Math.round(this.jdField_c_of_type_Auep.a()), Math.round(this.jdField_c_of_type_Auep.b()), a(paramFloat1 * 0.9F), a(0.9F * paramFloat2), -2147483648, 2147483647, -2147483648, 2147483647);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(3);
     a();
     return true;
@@ -356,10 +356,10 @@ public class GestureController
       float f1 = paramScaleGestureDetector.getScaleFactor();
       this.jdField_a_of_type_Float = paramScaleGestureDetector.getFocusX();
       this.jdField_b_of_type_Float = paramScaleGestureDetector.getFocusY();
-      this.jdField_c_of_type_Auen.a(f1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+      this.jdField_c_of_type_Auep.a(f1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
       this.f = true;
-    } while (this.jdField_a_of_type_Auee == null);
-    this.jdField_a_of_type_Auee.b(paramScaleGestureDetector);
+    } while (this.jdField_a_of_type_Aueg == null);
+    this.jdField_a_of_type_Aueg.b(paramScaleGestureDetector);
     return true;
   }
   
@@ -372,14 +372,14 @@ public class GestureController
     return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.j();
   }
   
-  public boolean b(aueh paramaueh)
+  public boolean b(auej paramauej)
   {
     if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) || (b())) {
       return false;
     }
-    this.jdField_a_of_type_Float = paramaueh.a();
-    this.jdField_b_of_type_Float = paramaueh.b();
-    this.jdField_c_of_type_Auen.c(paramaueh.c(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_Float = paramauej.a();
+    this.jdField_b_of_type_Float = paramauej.b();
+    this.jdField_c_of_type_Auep.c(paramauej.c(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
     this.f = true;
     return true;
   }
@@ -388,7 +388,7 @@ public class GestureController
   {
     if (b())
     {
-      this.jdField_a_of_type_Auec.a();
+      this.jdField_a_of_type_Auee.a();
       a(true);
     }
   }
@@ -403,7 +403,7 @@ public class GestureController
     if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {
       this.jdField_a_of_type_AndroidViewView.performClick();
     }
-    return (this.jdField_a_of_type_Auee != null) && (this.jdField_a_of_type_Auee.b(paramMotionEvent));
+    return (this.jdField_a_of_type_Aueg != null) && (this.jdField_a_of_type_Aueg.b(paramMotionEvent));
   }
   
   protected boolean c(View paramView, MotionEvent paramMotionEvent)
@@ -418,7 +418,7 @@ public class GestureController
         this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(localMotionEvent);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) {
-        this.jdField_a_of_type_Aueh.a(localMotionEvent);
+        this.jdField_a_of_type_Auej.a(localMotionEvent);
       }
       if ((bool) || (this.jdField_d_of_type_Boolean) || (this.e)) {
         bool = true;
@@ -430,8 +430,8 @@ public class GestureController
       if (this.f)
       {
         this.f = false;
-        this.jdField_a_of_type_Aueo.a(this.jdField_c_of_type_Auen, this.jdField_d_of_type_Auen, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, true, false);
-        if (!this.jdField_c_of_type_Auen.equals(this.jdField_d_of_type_Auen)) {
+        this.jdField_a_of_type_Aueq.a(this.jdField_c_of_type_Auep, this.jdField_d_of_type_Auep, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, true, false);
+        if (!this.jdField_c_of_type_Auep.equals(this.jdField_d_of_type_Auep)) {
           f();
         }
       }
@@ -439,7 +439,7 @@ public class GestureController
       {
         this.g = false;
         this.h = false;
-        a(this.jdField_a_of_type_Aueo.a(this.jdField_c_of_type_Auen, this.jdField_d_of_type_Auen, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, false, true), false);
+        a(this.jdField_a_of_type_Aueq.a(this.jdField_c_of_type_Auep, this.jdField_d_of_type_Auep, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, false, true), false);
       }
       if ((localMotionEvent.getActionMasked() == 1) || (localMotionEvent.getActionMasked() == 3))
       {
@@ -479,7 +479,7 @@ public class GestureController
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {
       this.jdField_a_of_type_AndroidViewView.performClick();
     }
-    return (this.jdField_a_of_type_Auee != null) && (this.jdField_a_of_type_Auee.c(paramMotionEvent));
+    return (this.jdField_a_of_type_Aueg != null) && (this.jdField_a_of_type_Aueg.c(paramMotionEvent));
   }
   
   public void e()
@@ -494,19 +494,19 @@ public class GestureController
     while ((paramMotionEvent.getActionMasked() != 1) || (this.jdField_d_of_type_Boolean)) {
       return false;
     }
-    if ((this.jdField_a_of_type_Auee != null) && (this.jdField_a_of_type_Auee.a(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Aueg != null) && (this.jdField_a_of_type_Aueg.a(paramMotionEvent))) {
       return true;
     }
-    a(this.jdField_a_of_type_Aueo.a(this.jdField_c_of_type_Auen, paramMotionEvent.getX(), paramMotionEvent.getY()));
+    a(this.jdField_a_of_type_Aueq.a(this.jdField_c_of_type_Auep, paramMotionEvent.getX(), paramMotionEvent.getY()));
     return true;
   }
   
   protected void f()
   {
-    this.jdField_d_of_type_Auen.a(this.jdField_c_of_type_Auen);
+    this.jdField_d_of_type_Auep.a(this.jdField_c_of_type_Auep);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((audz)localIterator.next()).a(this.jdField_c_of_type_Auen);
+      ((aueb)localIterator.next()).a(this.jdField_c_of_type_Auep);
     }
   }
   
@@ -514,7 +514,7 @@ public class GestureController
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((audz)localIterator.next()).a(this.jdField_d_of_type_Auen, this.jdField_c_of_type_Auen);
+      ((aueb)localIterator.next()).a(this.jdField_d_of_type_Auep, this.jdField_c_of_type_Auep);
     }
     f();
   }

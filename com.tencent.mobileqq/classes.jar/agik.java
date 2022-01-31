@@ -1,12 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+
 public class agik
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public agik(BaseActivityView paramBaseActivityView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

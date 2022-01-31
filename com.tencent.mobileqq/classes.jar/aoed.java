@@ -1,86 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class aoed
+  extends aodw
 {
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
-  private Map<String, Integer> b = new HashMap();
-  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
+  public anqr a;
   
-  public int a(String paramString)
+  public aoed(QQAppInterface paramQQAppInterface, aoec paramaoec)
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    if ((paramaoec.a instanceof anxv)) {}
+    for (int i = 333;; i = 149)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
-      {
-        int i = ((Integer)this.b.get(paramString)).intValue();
-        return i;
-      }
-      return -1;
+      this.a = ((anqr)paramQQAppInterface.getManager(i));
+      return;
     }
   }
   
-  public long a(String paramString)
+  public int a()
   {
-    long l2 = -1L;
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l1 = l2;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        l1 = l2;
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
-        }
-      }
-      return l1;
-    }
-    finally {}
+    return 2;
   }
   
-  public List<StructMsg.ButtonInfo> a(String paramString)
+  public List<aodt> a(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.c.containsKey(paramString))
-      {
-        paramString = (List)this.c.get(paramString);
-        return paramString;
-      }
-      return null;
+    Object localObject = this.a.b();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(new aoec((anyh)((Iterator)localObject).next()));
     }
+    return localArrayList;
   }
   
-  public void a(String paramString, long paramLong)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
-    }
-  }
+  public void a() {}
   
-  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
+  public boolean a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        if (this.c.containsKey(paramString)) {
-          this.c.remove(paramString);
-        }
-        this.c.put(paramString, paramList);
-        this.b.put(paramString, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
-        return;
-      }
-    }
+    return false;
   }
 }
 

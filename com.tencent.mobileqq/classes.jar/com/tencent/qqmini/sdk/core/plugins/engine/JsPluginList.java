@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bekz;
-import besl;
+import belq;
+import betc;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class JsPluginList
       {
         String str2 = (String)((Iterator)localObject).next();
         if (paramMap.containsKey(str2)) {
-          besl.c("JsPluginList", "registerJsPlugin, conflict event:" + str2);
+          betc.c("JsPluginList", "registerJsPlugin, conflict event:" + str2);
         } else {
           paramMap.put(str2, str1);
         }
@@ -67,7 +67,7 @@ public class JsPluginList
     {
       fillEventPluginMap(str, localHashMap);
       fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
-      besl.b("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
+      betc.b("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
       return localHashMap;
     }
   }
@@ -78,7 +78,7 @@ public class JsPluginList
       return null;
     }
     String str = "EVENT_HANDLERS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bekz.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = belq.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map))
     {
       paramIJsPlugin = ((Map)paramIJsPlugin).get(paramString);
@@ -91,7 +91,7 @@ public class JsPluginList
   
   private static Map<String, Map> getPluginEventsByScope(String paramString)
   {
-    paramString = bekz.a(paramString, "PLUGIN_EVENTS");
+    paramString = belq.a(paramString, "PLUGIN_EVENTS");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }
@@ -113,7 +113,7 @@ public class JsPluginList
   
   private static List<String> getPreloadPluginsByScope(String paramString)
   {
-    paramString = bekz.a(paramString, "PRELOAD_PLUGINS");
+    paramString = belq.a(paramString, "PRELOAD_PLUGINS");
     if ((paramString instanceof List)) {
       return (List)paramString;
     }
@@ -123,7 +123,7 @@ public class JsPluginList
   public static Map<String, String> getServiceInjectors(IJsPlugin paramIJsPlugin)
   {
     String str = "SERVICE_INJECTORS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = bekz.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = belq.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map)) {
       return (Map)paramIJsPlugin;
     }

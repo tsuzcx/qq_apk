@@ -1,54 +1,44 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class bbaa
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  public static void a(Activity paramActivity)
   {
-    return a(paramImageView, paramString, bban.a);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, bban.a, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
+    if (paramActivity == null) {
+      return;
+    }
+    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
+    switch (paramActivity.getResources().getConfiguration().orientation)
     {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
+    default: 
+      i = 0;
     }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
+    for (;;)
     {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
+      paramActivity.setRequestedOrientation(i);
+      return;
+      if ((i == 0) || (i == 1) || (!bfnz.c())) {
+        break;
+      }
+      i = 8;
+      continue;
+      if ((i != 0) && (i != 3) && (bfnz.c())) {
+        i = 9;
+      } else {
+        i = 1;
+      }
     }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (paramActivity != null) {
+      paramActivity.setRequestedOrientation(-1);
     }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
   }
 }
 

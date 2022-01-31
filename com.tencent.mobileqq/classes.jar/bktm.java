@@ -1,17 +1,16 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bktm
-  implements aptu
+  implements DialogInterface.OnClickListener
 {
-  public bktm(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bktm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.finish();
   }
-  
-  public void b() {}
 }
 
 

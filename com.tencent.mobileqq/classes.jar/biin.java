@@ -1,30 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import dov.com.qq.im.ae.AEPituCameraUnit.10;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-public class biin
-  implements DialogInterface.OnClickListener
+final class biin
+  implements DecryptListener
 {
-  public biin(AEPituCameraUnit.10 param10) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    Activity localActivity = biim.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
+    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
+      return paramArrayOfByte;
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      localActivity.finish();
-    }
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

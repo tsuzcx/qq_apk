@@ -1,66 +1,102 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.Button;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioSession;
-import com.tencent.widget.AdapterView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 class mtu
-  implements bfpc
+  extends BaseAdapter
 {
-  mtu(mtt parammtt, Button paramButton, long paramLong, bfol parambfol) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  mtw jdField_a_of_type_Mtw;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  mtu(Context paramContext, @NonNull mtw parammtw)
   {
-    if (mtt.a(this.jdField_a_of_type_Mtt) != null)
-    {
-      paramAdapterView = (mua)mtt.a(this.jdField_a_of_type_Mtt).getItem(paramInt);
-      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mtt.a != null))
-      {
-        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
-          break label199;
-        }
-        mat.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
-        }
-        axqw.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Mtw = parammtw;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammtw.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(Context paramContext, @NonNull mtw parammtw)
+  {
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
     }
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammtw.a();
+    this.jdField_a_of_type_Mtw = parammtw;
+    notifyDataSetInvalidated();
+  }
+  
+  public void a(String paramString)
+  {
+    int j = getCount();
+    int i = 0;
     for (;;)
     {
-      mtt.a(this.jdField_a_of_type_Mtt, true);
-      this.jdField_a_of_type_Mtt.a.a(msq.a());
-      this.jdField_a_of_type_Mtt.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
-      this.jdField_a_of_type_Bfol.dismiss();
-      return;
-      label199:
-      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
+      if (i < j)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
+        mtx localmtx = (mtx)getItem(i);
+        if ((localmtx != null) && (localmtx.jdField_a_of_type_JavaLangString != null) && (localmtx.jdField_a_of_type_JavaLangString.equals(paramString))) {
+          a(i);
         }
-        axqw.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
       }
-      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
-        }
-        axqw.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+        return;
       }
-      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Mtw != null) {
+      return this.jdField_a_of_type_Mtw.a();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_Mtw.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (mtx)getItem(paramInt);
+    if (paramViewGroup != null) {
+      if (paramView == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
+        paramView = new mtv(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.jdField_a_of_type_Int, paramViewGroup.b);
+        paramViewGroup = (mtv)paramView;
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label94;
         }
-        axqw.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
       }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      paramViewGroup.a(bool);
+      return paramView;
+      ((mtv)paramView).a(paramViewGroup.b);
+      paramView.setContentDescription(paramViewGroup.b);
+      ((mtv)paramView).a(paramViewGroup.jdField_a_of_type_Int);
+      break;
     }
   }
 }

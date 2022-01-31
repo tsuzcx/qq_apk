@@ -1,13 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
 
-public class bhfm
-  implements bhfz
+public final class bhfm
+  implements Parcelable.Creator<PublishEventTag>
 {
-  public bhfm(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public PublishEventTag a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
+    return new PublishEventTag(paramParcel);
+  }
+  
+  public PublishEventTag[] a(int paramInt)
+  {
+    return new PublishEventTag[paramInt];
   }
 }
 

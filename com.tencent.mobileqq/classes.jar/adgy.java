@@ -1,16 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.view.View;
 
-public class adgy
-  implements CompoundButton.OnCheckedChangeListener
+class adgy
+  implements bfph
 {
-  public adgy(AIOLongShotHelper paramAIOLongShotHelper) {}
+  adgy(adgx paramadgx, boolean paramBoolean, bfpc parambfpc) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    AIOLongShotHelper.a(this.a, paramCompoundButton, paramBoolean);
-    AIOLongShotHelper.a("0X8009DE8");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      if (adgx.a(this.jdField_a_of_type_Adgx) != null) {
+        adgx.a(this.jdField_a_of_type_Adgx, adgx.a(this.jdField_a_of_type_Adgx));
+      }
+      adgx.a(this.jdField_a_of_type_Adgx, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      continue;
+      adgx.a(this.jdField_a_of_type_Adgx, "0X800A7F6", this.jdField_a_of_type_Boolean);
+    }
   }
 }
 

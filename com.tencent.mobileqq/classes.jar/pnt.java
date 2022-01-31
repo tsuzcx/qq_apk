@@ -1,14 +1,35 @@
 import com.tencent.qphone.base.util.QLog;
 
 class pnt
-  implements pok
+  extends osm
 {
-  pnt(pnr parampnr) {}
+  pnt(pno parampno) {}
   
-  public void a()
+  public void h(int paramInt)
   {
-    QLog.d(pnr.a(this.a), 1, "onError  ");
-    pnr.a(this.a);
+    boolean bool;
+    if (paramInt < 3)
+    {
+      bool = true;
+      QLog.d(pno.a(this.a), 1, "visibility changed, visible :  " + bool);
+      if (!bool) {
+        break label66;
+      }
+      pno.c(this.a);
+    }
+    for (;;)
+    {
+      if (paramInt == 5) {
+        osj.a().b(this);
+      }
+      return;
+      bool = false;
+      break;
+      label66:
+      if (pno.a(this.a) != null) {
+        pno.a(this.a).b();
+      }
+    }
   }
 }
 

@@ -1,16 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class plv
-  implements ValueAnimator.AnimatorUpdateListener
+public class plv
+  implements ViewBase.IBuilder
 {
-  plv(plp paramplp) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ViewBase build(VafContext paramVafContext)
   {
-    plp.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    plp.a(this.a).requestLayout();
+    return new plm(paramVafContext, null);
   }
 }
 

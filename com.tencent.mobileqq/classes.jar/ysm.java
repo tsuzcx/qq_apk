@@ -1,25 +1,18 @@
-import android.content.Context;
-import com.tencent.ad.tangram.toast.AdToastAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class ysm
-  implements AdToastAdapter
+public final class ysm
+  implements Parcelable.Creator<GdtAd>
 {
-  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
+  public GdtAd a(Parcel paramParcel)
   {
-    int i = 1;
-    if (paramInt1 == 1) {
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      bcpw.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
-      return;
-      if (paramInt1 == 2) {
-        paramInt1 = 2;
-      } else {
-        paramInt1 = 0;
-      }
-    }
+    return new GdtAd(paramParcel);
+  }
+  
+  public GdtAd[] a(int paramInt)
+  {
+    return new GdtAd[paramInt];
   }
 }
 

@@ -1,23 +1,20 @@
 import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class ahhp
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
   public ahhp(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    QLog.i("springHb_SpringHbVideoView", 1, "mVideoPlayer is prepare");
-    SpringHbVideoView.a(this.a, true);
+    QLog.i("springHb_SpringHbVideoView", 1, String.format("TVK_IMediaPlayer.onError model=%s what=%s position=%s detailInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }));
     if (SpringHbVideoView.a(this.a) != null) {
-      SpringHbVideoView.a(this.a).a();
+      SpringHbVideoView.a(this.a).a(paramInt2, paramInt3, paramString, paramObject);
     }
-    if (SpringHbVideoView.a(this.a)) {
-      this.a.a();
-    }
+    return false;
   }
 }
 

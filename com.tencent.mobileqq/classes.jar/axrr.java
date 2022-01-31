@@ -1,12 +1,12 @@
-public class axrr
+import android.content.Context;
+
+class axrr
+  extends axrn
 {
-  public int a;
-  public long a;
-  public String a = "";
-  public int b;
-  public long b;
-  public String b = "";
-  public int c;
+  protected axrr(Context paramContext)
+  {
+    super(paramContext);
+  }
 }
 
 

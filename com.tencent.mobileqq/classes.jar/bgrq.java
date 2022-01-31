@@ -1,24 +1,27 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
 public class bgrq
-  extends bgsg
+  extends bgrj
 {
-  public bgrq(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
+  public bgrq(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bgrm parambgrm, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    super(paramContext);
+    super(paramActivity, parambgrm, paramInt1, paramInt2, paramAppRuntime);
   }
   
-  public void onBackPressed()
+  public void onClick(View paramView)
   {
-    if (this.a.a) {
-      super.onBackPressed();
+    if (LocationDetailActivity.a(this.a))
+    {
+      bgqm.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    super.onClick(paramView);
   }
 }
 

@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
 
 public class aiaj
-  implements Comparable<aiaj>
+  implements axlu
 {
-  public int a;
-  public long a;
-  public int b;
+  public aiaj(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public aiaj(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(aiaj paramaiaj)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramaiaj.jdField_a_of_type_Long);
+    CameraFilterGLView.b(this.a);
   }
 }
 

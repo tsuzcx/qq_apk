@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
 
 class afpq
-  implements View.OnClickListener
+  implements bfph
 {
-  afpq(afpo paramafpo, int paramInt) {}
+  afpq(afpm paramafpm, boolean paramBoolean, TroopInfo paramTroopInfo, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Afpo.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
-    this.jdField_a_of_type_Afpo.notifyDataSetChanged();
-    int i = afpo.a(this.jdField_a_of_type_Afpo, this.jdField_a_of_type_Int);
-    new axra(this.jdField_a_of_type_Afpo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    if (!bbfj.g(this.jdField_a_of_type_Afpm.jdField_a_of_type_AndroidContentContext)) {
+      bcql.a(this.jdField_a_of_type_Afpm.jdField_a_of_type_AndroidContentContext, 1, 2131692321, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.e();
+      return;
+      paramView = (ajsx)this.jdField_a_of_type_Afpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 1);
+        axqy.b(this.jdField_a_of_type_Afpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808D", "0X800808D", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, 0);
+        axqy.b(this.jdField_a_of_type_Afpm.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808C", "0X800808C", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

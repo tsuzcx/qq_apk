@@ -1,73 +1,38 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class tpq
-  extends trj
+class tpq
+  extends syr<tnn, tno>
 {
-  private String a;
-  public uld a;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  tpq(tpp paramtpp, String[] paramArrayOfString) {}
   
-  public tpq()
+  public void a(@NonNull tnn paramtnn, @Nullable tno paramtno, @NonNull ErrorMessage paramErrorMessage)
   {
-    this("", null, false);
-  }
-  
-  public tpq(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    a(false, true);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if ((paramtno == null) || (paramtno.jdField_a_of_type_Int != 0))
     {
-      a(this.jdField_a_of_type_JavaLangString);
+      if (paramtno != null) {}
+      for (int i = paramtno.jdField_a_of_type_Int;; i = -1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
+        }
+        tpp.a(this.jdField_a_of_type_Tpp, false);
+        return;
+      }
+    }
+    if (((Boolean)((tcs)tcz.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
+    for (paramtnn = trx.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], tpp.a(this.jdField_a_of_type_Tpp));; paramtnn = this.jdField_a_of_type_ArrayOfJavaLangString[1])
+    {
+      paramtnn = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramtno.jdField_a_of_type_JavaLangString + "&" + paramtnn;
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramtnn });
+      }
+      this.jdField_a_of_type_Tpp.a("EncryptUrlJob_coverUrl", paramtno.c);
+      this.jdField_a_of_type_Tpp.a("EncryptUrlJob_encryptedUrl", paramtnn);
+      tpp.b(this.jdField_a_of_type_Tpp, true);
       return;
-    }
-    b(false);
-  }
-  
-  public void a(String paramString)
-  {
-    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
-    try
-    {
-      File localFile2 = localFile1.getParentFile();
-      if ((localFile2 != null) && (!localFile2.exists())) {
-        localFile2.mkdirs();
-      }
-      if (localFile1.exists()) {
-        localFile1.delete();
-      }
-    }
-    catch (Exception localException)
-    {
-      label45:
-      break label45;
-    }
-    this.jdField_a_of_type_Uld = new ula();
-    this.jdField_a_of_type_Uld.a(paramString, 0, 0, new tpr(this, paramString));
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()))
-    {
-      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
-        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
-        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
-        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
-      }
     }
   }
 }

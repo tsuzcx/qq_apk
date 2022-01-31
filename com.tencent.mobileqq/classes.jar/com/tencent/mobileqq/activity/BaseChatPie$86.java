@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajxn;
+import ajxl;
 import android.os.Message;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.NoC2CExtensionInfo;
@@ -9,7 +9,7 @@ import mqq.os.MqqHandler;
 class BaseChatPie$86
   implements Runnable
 {
-  BaseChatPie$86(BaseChatPie paramBaseChatPie, ajxn paramajxn) {}
+  BaseChatPie$86(BaseChatPie paramBaseChatPie, ajxl paramajxl) {}
   
   public void run()
   {

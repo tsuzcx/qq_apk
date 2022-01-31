@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewplugin;
 
-import xne;
+import xnb;
 
 public class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(xne paramxne) {}
+  public UrlCheckPlugin$4(xnb paramxnb) {}
   
   public void run()
   {

@@ -5,15 +5,15 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
-import ytc;
-import yun;
-import yxs;
+import ysz;
+import yuk;
+import yxp;
 
 public class GdtInterstitialParams
-  extends ytc
+  extends ysz
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new yun();
+  public static final Parcelable.Creator<GdtInterstitialParams> CREATOR = new yuk();
   public int a;
   public long a;
   public GdtHandler.Options a;
@@ -32,7 +32,7 @@ public class GdtInterstitialParams
     this.jdField_a_of_type_Long = -2147483648L;
     if (paramParcel == null)
     {
-      yxs.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
+      yxp.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
@@ -73,7 +73,7 @@ public class GdtInterstitialParams
   {
     if (paramParcel == null)
     {
-      yxs.d("GdtInterstitialParams", "writeToParcel error");
+      yxp.d("GdtInterstitialParams", "writeToParcel error");
       return;
     }
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);

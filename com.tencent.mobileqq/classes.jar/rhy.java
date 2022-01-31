@@ -1,17 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
 public class rhy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rhy(SlideActiveAnimController paramSlideActiveAnimController, Runnable paramRunnable) {}
+  public rhy(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
   
-  public void onGlobalLayout()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.a();
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
   }
 }
 

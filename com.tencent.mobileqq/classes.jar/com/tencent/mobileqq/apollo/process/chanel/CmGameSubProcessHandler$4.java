@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ahiy;
-import ajae;
-import ajbq;
-import ajch;
-import ajcl;
+import ahiw;
+import ajac;
+import ajbo;
+import ajcf;
+import ajcj;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CmGameSubProcessHandler$4
   extends ResultReceiver
 {
-  public CmGameSubProcessHandler$4(ajbq paramajbq, Handler paramHandler, long paramLong)
+  public CmGameSubProcessHandler$4(ajbo paramajbo, Handler paramHandler, long paramLong)
   {
     super(paramHandler);
   }
@@ -21,10 +21,10 @@ public class CmGameSubProcessHandler$4
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    Object localObject = ajae.a(ajbq.a(this.jdField_a_of_type_Ajbq));
+    Object localObject = ajac.a(ajbo.a(this.jdField_a_of_type_Ajbo));
     if (localObject != null)
     {
-      localObject = ((ajch)localObject).a();
+      localObject = ((ajcf)localObject).a();
       if (localObject != null)
       {
         if (paramBundle != null)
@@ -32,11 +32,11 @@ public class CmGameSubProcessHandler$4
           if (QLog.isColorLevel()) {
             QLog.d("cmgame_process.CmGameSubProcessHandler", 2, "[handleUpdateGameScore] rst:" + paramBundle.toString());
           }
-          ((ajcl)localObject).f = paramBundle.getString("state", "-1");
-          ((ajcl)localObject).jdField_d_of_type_JavaLangString = paramBundle.getString("amount", "0");
+          ((ajcj)localObject).f = paramBundle.getString("state", "-1");
+          ((ajcj)localObject).jdField_d_of_type_JavaLangString = paramBundle.getString("amount", "0");
         }
-        ajbq.a(this.jdField_a_of_type_Ajbq, this.jdField_a_of_type_Long, 0, (ajcl)localObject);
-        if (!"0".equals(((ajcl)localObject).f)) {
+        ajbo.a(this.jdField_a_of_type_Ajbo, this.jdField_a_of_type_Long, 0, (ajcj)localObject);
+        if (!"0".equals(((ajcj)localObject).f)) {
           break label182;
         }
       }
@@ -44,7 +44,7 @@ public class CmGameSubProcessHandler$4
     label182:
     for (boolean bool = true;; bool = false)
     {
-      ahiy.a(((ajcl)localObject).b, ((ajcl)localObject).jdField_a_of_type_Long, ((ajcl)localObject).jdField_d_of_type_Int + "", Integer.parseInt(((ajcl)localObject).jdField_d_of_type_JavaLangString), bool, false, ajbq.a(this.jdField_a_of_type_Ajbq));
+      ahiw.a(((ajcj)localObject).b, ((ajcj)localObject).jdField_a_of_type_Long, ((ajcj)localObject).jdField_d_of_type_Int + "", Integer.parseInt(((ajcj)localObject).jdField_d_of_type_JavaLangString), bool, false, ajbo.a(this.jdField_a_of_type_Ajbo));
       return;
     }
   }

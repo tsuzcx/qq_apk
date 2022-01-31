@@ -1,20 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class acoq
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public acoq(UpgradeActivity paramUpgradeActivity, bbew parambbew, int paramInt) {}
+  public acoq(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Bbew.d();
-    bbiy.c(true);
-    bbiy.c(this.jdField_a_of_type_Int);
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, akva.a().a(), false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

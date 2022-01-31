@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserGroupInfoRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
@@ -77,7 +77,7 @@ public class MiniAppGetUserGroupInfoServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetUserGroupInfo");
-    paramPacket.putSendData(bblm.a((byte[])localObject1));
+    paramPacket.putSendData(bbma.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

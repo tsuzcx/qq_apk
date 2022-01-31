@@ -4,12 +4,11 @@ import android.content.DialogInterface.OnClickListener;
 class asor
   implements DialogInterface.OnClickListener
 {
-  asor(asoh paramasoh) {}
+  asor(asoj paramasoj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    axqw.b(this.a.a, "CliOper", "", "", asoh.b, asoh.b, 0, 0, "", "", "", "");
   }
 }
 

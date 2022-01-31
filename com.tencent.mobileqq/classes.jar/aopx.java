@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-class aopx
-  implements View.OnClickListener
+public class aopx
+  implements aptw
 {
-  aopx(aopw paramaopw, int paramInt) {}
+  public aopx(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (aopw.a(this.jdField_a_of_type_Aopw).c(this.jdField_a_of_type_Int))
-    {
-      aopw.a(this.jdField_a_of_type_Aopw).b(this.jdField_a_of_type_Int);
-      return;
-    }
-    aopw.a(this.jdField_a_of_type_Aopw).a(this.jdField_a_of_type_Int);
+    UniformDownloadActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

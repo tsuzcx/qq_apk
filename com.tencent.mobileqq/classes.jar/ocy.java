@@ -1,38 +1,25 @@
-public class ocy
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+
+class ocy
+  implements View.OnTouchListener
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  ocy(ocw paramocw) {}
   
-  public ocy(float paramFloat1, float paramFloat2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public ocy(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-  }
-  
-  public ocy(ocy paramocy)
-  {
-    this.a = paramocy.a;
-    this.b = paramocy.b;
-  }
-  
-  public void a(ocy paramocy)
-  {
-    float f = this.a;
-    this.a = paramocy.a;
-    paramocy.a = f;
-    f = this.b;
-    this.b = paramocy.b;
-    paramocy.b = f;
+    if (paramMotionEvent.getAction() == 1) {
+      ocw.a(this.a).performClick();
+    }
+    if (ocw.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
+    {
+      int j = ocw.a(this.a, ocw.a(this.a));
+      ocw.a(this.a, i, j + 1);
+      return false;
+    }
   }
 }
 

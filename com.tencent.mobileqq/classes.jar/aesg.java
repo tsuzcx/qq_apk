@@ -1,19 +1,25 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
 class aesg
-  implements non
+  implements BusinessObserver
 {
-  aesg(aese paramaese) {}
+  aesg(aert paramaert) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.aq = false;
-    this.a.a.bD();
-    this.a.a.bp();
-    akoj.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131698256), this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

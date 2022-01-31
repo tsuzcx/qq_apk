@@ -1,20 +1,19 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class wpz
+  implements amki
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
-  public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public wpz(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  
+  public void onColorNoteAnimFinish()
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

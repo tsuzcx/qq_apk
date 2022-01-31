@@ -1,39 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCTransportFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment;
 
 public class asmz
-  implements bcsv
+  implements asky
 {
-  public asmz(MsgBackupPCTransportFragment paramMsgBackupPCTransportFragment) {}
+  public asmz(MsgBackupPCAuthFragment paramMsgBackupPCAuthFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    int i = askt.a().a();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "page is in pc Link page! click cancel! bizType = " + i + ", pcHandler = " + this.a.e);
-      }
-      this.a.aK_();
-      return;
-      asle.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupPCTransportFragment", 2, "backup is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + asle.a + ", curSpeed = " + this.a.a + ", hasFinishedCount = " + this.a.d);
-      }
-      asle.a().a().a(null);
-      asle.a().a(this.a.a, this.a.d, i, this.a.getActivity());
-      if (this.a.b != 1) {
-        break;
-      }
-    } while (!this.a.e);
-    asoe.a("0X800A260");
-    return;
-    asoe.a("0X800A284");
+    this.a.a(this.a.a, this.a.getString(2131690436));
   }
 }
 

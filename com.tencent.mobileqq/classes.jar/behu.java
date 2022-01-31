@@ -1,110 +1,33 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Switch;
-import com.tencent.qqmini.sdk.core.widget.FormSwitchItem;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
 
-public class behu
-  extends BaseAdapter
+public abstract class behu
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  protected LayoutInflater a;
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  List<behi> jdField_a_of_type_JavaUtilList;
+  private static MiniAppInfo a;
+  public static List<String> a;
   
-  public behu(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
   }
   
-  public behi a(int paramInt)
+  public static MiniAppInfo a()
   {
-    if ((paramInt > -1) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (behi)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {}
+    try
     {
-      behi localbehi = (behi)localIterator.next();
-      if (paramString.equals(localbehi.jdField_a_of_type_JavaLangString))
+      if (jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null)
       {
-        if (paramBoolean) {}
-        for (int i = 2;; i = 4)
-        {
-          localbehi.jdField_a_of_type_Int = i;
-          break;
-        }
+        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
+        localMiniAppInfo.appId = "0000000000";
+        localMiniAppInfo.launchParam.a = "0000000000";
+        jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = localMiniAppInfo;
       }
+      return jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     }
-  }
-  
-  public void a(List<behi> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool;
-    label30:
-    behk localbehk;
-    if (paramView != null)
-    {
-      paramView = (FormSwitchItem)paramView;
-      paramViewGroup = a(paramInt);
-      if (paramViewGroup != null)
-      {
-        if (paramViewGroup.jdField_a_of_type_Int != 2) {
-          break label100;
-        }
-        bool = true;
-        paramView.setChecked(bool);
-        paramView.a().setTag(paramViewGroup.jdField_a_of_type_JavaLangString);
-        localbehk = behl.a().a(paramViewGroup.jdField_a_of_type_JavaLangString);
-        if (localbehk == null) {
-          break label106;
-        }
-      }
-    }
-    label100:
-    label106:
-    for (paramViewGroup = localbehk.b;; paramViewGroup = paramViewGroup.jdField_a_of_type_JavaLangString)
-    {
-      paramView.setText(paramViewGroup);
-      return paramView;
-      paramView = new FormSwitchItem(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      break;
-      bool = false;
-      break label30;
-    }
+    finally {}
   }
 }
 

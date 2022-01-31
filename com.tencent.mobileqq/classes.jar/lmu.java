@@ -1,24 +1,63 @@
-import java.io.BufferedReader;
+import com.tencent.av.gameplay.GPNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class lmu
-  extends lmt
 {
-  private float a;
-  private float b;
+  public static boolean a;
+  private static boolean b;
   
-  public float a()
+  public static byte a(String paramString)
   {
-    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * lml.a();
+    byte b1 = 0;
+    if (paramString == null) {
+      return -1;
+    }
+    lmv locallmv = lmv.a();
+    String str = lnd.a() + "lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
+    }
+    Object localObject = new File(str);
+    if ((!a) && (((File)localObject).exists())) {}
+    for (;;)
+    {
+      try
+      {
+        System.load(str);
+        b = true;
+        localObject = "null";
+        if (locallmv != null) {
+          localObject = locallmv.b;
+        }
+        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
+        return b1;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        b1 = -3;
+        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+        continue;
+      }
+      b1 = -2;
+    }
   }
   
-  public void a(BufferedReader paramBufferedReader)
+  public static boolean a()
   {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Float = lmq.a(paramBufferedReader, "lowMin");
-    this.b = lmq.a(paramBufferedReader, "lowMax");
+    if (b) {}
+    do
+    {
+      return true;
+      if (!lmw.a().b()) {
+        break;
+      }
+    } while (a("qavgameplayengine") == 0);
+    return false;
+    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
+    return false;
   }
 }
 

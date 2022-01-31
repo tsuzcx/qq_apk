@@ -1,124 +1,107 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
 
 public class airm
 {
-  private static airm jdField_a_of_type_Airm;
-  private Map<Long, airn> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new airn(this);
+  public SurfaceView a;
   
-  public static airm a()
+  public airm(Context paramContext, int paramInt)
   {
-    if (jdField_a_of_type_Airm == null) {
-      jdField_a_of_type_Airm = new airm();
-    }
-    return jdField_a_of_type_Airm;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a(long paramLong)
+  AVVideoCtrl a()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    AVContext localAVContext = ajla.a(this.jdField_a_of_type_AndroidContentContext).a();
+    if (localAVContext != null) {
+      return localAVContext.getVideoCtrl();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    localLayoutParams.width = 1;
+    localLayoutParams.height = 1;
+    localLayoutParams.flags = 776;
+    localLayoutParams.format = -3;
+    localLayoutParams.windowAnimations = 0;
+    localLayoutParams.gravity = 51;
+    try
     {
-      airn localairn = (airn)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localairn.jdField_a_of_type_Long < 3600000L)
+      if (this.jdField_a_of_type_AndroidViewSurfaceView == null)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
-        }
-        return localairn.jdField_a_of_type_Int;
+        this.jdField_a_of_type_AndroidViewSurfaceView = new SurfaceView(this.jdField_a_of_type_AndroidContentContext);
+        SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+        localSurfaceHolder.addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
+        localSurfaceHolder.setType(3);
+        this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
+        localWindowManager.addView(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      return 0;
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak initCameraPreview");
+      return;
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
+    catch (IllegalStateException localIllegalStateException)
     {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
+      for (;;)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
+        localWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail: IllegalStateException." + localIllegalStateException);
         }
-        return 0;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail." + localException);
+        }
       }
-      this.b.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "use default value, false");
-    }
-    return 0;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    airn localairn = new airn(this);
-    localairn.jdField_a_of_type_Int = paramInt;
-    localairn.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localairn);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
     }
   }
   
-  public boolean a(long paramLong)
+  public void b()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewSurfaceView == null)) {
+      return;
+    }
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    try
     {
-      if (l - ((airn)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
+      localWindowManager.removeView(this.jdField_a_of_type_AndroidViewSurfaceView);
+      this.jdField_a_of_type_AndroidViewSurfaceView = null;
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak unInitCameraaPreview");
+      return;
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
+    catch (Exception localException)
     {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
+      for (;;)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
+        if (QLog.isColorLevel()) {
+          QLog.e("AVCameraCaptureModel", 0, "remove camera view fail.", localException);
         }
-        this.b.remove(Long.valueOf(paramLong));
-        return true;
       }
-      return false;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airm
  * JD-Core Version:    0.7.0.1
  */

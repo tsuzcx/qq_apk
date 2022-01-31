@@ -1,15 +1,13 @@
 import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6.3.1;
 
-public class alnw
-  implements alou
+class alnw
+  implements alot
 {
-  public alnw(ArkAppDeviceModule.ObserverMethod.6.3.1 param1) {}
+  alnw(alnj paramalnj, long paramLong) {}
   
   public void a(long paramLong)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Alnk.a.a(paramLong);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }
@@ -17,7 +15,7 @@ public class alnw
   
   public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    alnh.a(this.a.a.a.jdField_a_of_type_Alnk.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

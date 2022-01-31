@@ -1,27 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.1;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8.2;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.4.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class appz
-  implements apab
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  appz(appp paramappp) {}
+  appz(appt paramappt) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.a.a(paramInt, paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.8.1(this, paramString1));
-  }
-  
-  public void aC_() {}
-  
-  public void aD_()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.8.2(this));
+    new Handler(Looper.getMainLooper()).post(new VideoFilePresenter.4.1(this, paramInt));
+    return false;
   }
 }
 

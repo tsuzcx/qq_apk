@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import java.io.File;
 
-public final class bhob
-  implements INetEventHandler
+class bhob
+  implements ModuleDownloadListener
 {
-  public void onNetChangeEvent(boolean paramBoolean)
+  bhob(bhnz parambhnz) {}
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    QLog.i("NetworkState", 1, "--onNetChangeEvent isNetEffective:" + paramBoolean);
-    NetworkState.access$000(paramBoolean);
+    if (!paramString.equals("pictureMarkerSo.zip")) {}
+    do
+    {
+      return;
+      localObject = bhnz.a.getPath();
+      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    } while (!paramString.exists());
+    Object localObject = new File((String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    bhoh.b(paramString, (File)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhob
  * JD-Core Version:    0.7.0.1
  */

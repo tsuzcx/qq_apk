@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.sonic;
 
 import android.text.TextUtils;
-import bbpp;
-import bcbo;
-import bcdb;
+import bbqd;
+import bccc;
+import bcdp;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 public class SonicJsPlugin
   extends WebViewPlugin
-  implements bcbo
+  implements bccc
 {
   public static final String METHOD_GET_DIFF_DATA = "getDiffData";
   public static final String METHOD_GET_SWIFT_HTTP_DIFF_DATA = "getSwiftHttpDiffData";
@@ -84,7 +84,7 @@ public class SonicJsPlugin
           if (QLog.isColorLevel()) {
             QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "handleJsRequest preload session, preload url = " + paramString3);
           }
-          paramString2 = new SonicPreloadData(0, bbpp.a(BaseApplicationImpl.sApplication.getRuntime(), paramString3, ""), bool, 0L, 1);
+          paramString2 = new SonicPreloadData(0, bbqd.a(BaseApplicationImpl.sApplication.getRuntime(), paramString3, ""), bool, 0L, 1);
           paramString3 = new ArrayList();
           paramString3.add(paramString2);
           if (!SonicPreloader.preload(paramString3)) {

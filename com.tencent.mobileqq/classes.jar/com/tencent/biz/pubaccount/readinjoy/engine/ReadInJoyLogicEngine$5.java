@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aukn;
-import auko;
-import bhvh;
+import aukp;
+import aukq;
+import bhvy;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -11,46 +11,46 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import java.util.HashMap;
 import java.util.Locale;
-import omw;
-import onk;
-import osj;
-import ozr;
+import omt;
+import onh;
+import osg;
+import ozo;
 
 public class ReadInJoyLogicEngine$5
   implements Runnable
 {
-  public ReadInJoyLogicEngine$5(osj paramosj, int paramInt) {}
+  public ReadInJoyLogicEngine$5(osg paramosg, int paramInt) {}
   
   public void run()
   {
-    Pair localPair = bhvh.a(osj.a(this.this$0));
+    Pair localPair = bhvy.a(osg.a(this.this$0));
     if (this.a == 40677) {
-      localPair = bhvh.b(osj.a(this.this$0));
+      localPair = bhvy.b(osg.a(this.this$0));
     }
     for (;;)
     {
       long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
       long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L - ((Long)localPair.first).longValue();
-      long l3 = osj.a() / 1000L;
-      Object localObject2 = (Long)osj.b().get(Integer.valueOf(this.a));
+      long l3 = osg.a() / 1000L;
+      Object localObject2 = (Long)osg.b().get(Integer.valueOf(this.a));
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = Long.valueOf(0L);
       }
-      if (((BaseActivity.sTopActivity instanceof ReadInJoyNewFeedsActivity)) || ((bhvh.k()) && (onk.c())) || (l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < omw.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
+      if (((BaseActivity.sTopActivity instanceof ReadInJoyNewFeedsActivity)) || ((bhvy.k()) && (onh.c())) || (l1 - ((Long)localObject1).longValue() < ((Long)localPair.first).longValue()) || (l1 - l3 < omt.a / 1000) || (l1 - l3 < ((Long)localPair.first).longValue())) {
         return;
       }
-      if (osj.a(this.this$0) != null) {
-        osj.a(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
+      if (osg.a(this.this$0) != null) {
+        osg.a(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
       }
       localObject1 = this.this$0.a().createEntityManager();
       localObject2 = String.format(Locale.CHINA, "delete from %s where mRecommendSeq not in ( select mRecommendSeq from %s where mChannelID = %d order by mRecommendSeq desc limit %d ) and mRecommendTime < %d  and mChannelID = %d ", new Object[] { ArticleInfo.TABLE_NAME, ArticleInfo.TABLE_NAME, Integer.valueOf(this.a), localPair.second, Long.valueOf(l2), Integer.valueOf(this.a) });
-      if (!((aukn)localObject1).b((String)localObject2)) {
+      if (!((aukp)localObject1).b((String)localObject2)) {
         QLog.d("ArticleInfoModule", 2, "delete main outdated article fail !");
       }
       for (;;)
       {
-        osj.b().put(Integer.valueOf(this.a), Long.valueOf(l1));
+        osg.b().put(Integer.valueOf(this.a), Long.valueOf(l1));
         return;
         QLog.d("ArticleInfoModule", 2, "delete outdated article successful ! Sql is : " + (String)localObject2 + ", nowTime : " + l1 + ", interval : " + localPair.first + ", feedsCnt : " + localPair.second);
       }

@@ -1,42 +1,61 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.fragment.MineFragment.2;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import tencent.im.oidb.cmd0x91f.oidb_0x91f.ReqBody;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.util.List;
 
 public class aqhu
+  extends BaseAdapter
 {
-  public static void a(NearbyAppInterface paramNearbyAppInterface)
+  public aqhu(LangSettingFragment paramLangSettingFragment) {}
+  
+  private View.OnClickListener a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby", 2, "clearLbsInfoAndExit");
-    }
-    atbg.a(paramNearbyAppInterface.getAccount(), "nearby_enter_time", Long.valueOf(0L));
-    if ((akbm)paramNearbyAppInterface.a(3) != null)
-    {
-      oidb_0x91f.ReqBody localReqBody = new oidb_0x91f.ReqBody();
-      localReqBody.uint32_state.set(0);
-      mxi.a(paramNearbyAppInterface, new aqhv(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
-    }
-    atbg.a(paramNearbyAppInterface.getAccount(), false);
-    atbg.a(paramNearbyAppInterface.getAccount(), "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(false));
-    paramNearbyAppInterface.c = false;
-    ThreadManager.post(new MineFragment.2(paramNearbyAppInterface), 10, null, true);
+    return new aqhv(this, paramInt);
   }
   
-  public static void b(NearbyAppInterface paramNearbyAppInterface)
+  private boolean a(int paramInt)
   {
-    File localFile = BaseApplicationImpl.getContext().getFileStreamPath(paramNearbyAppInterface.getCurrentAccountUin() + "v5.3.nb");
-    if (localFile.exists())
-    {
-      localFile.delete();
-      atbp.a("Q.nearby", "clearNearbyCache", new Object[0]);
+    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
+      return false;
     }
-    atbg.a(paramNearbyAppInterface.getAccount(), "history_valid", Boolean.valueOf(false));
+    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
+  }
+  
+  public int getCount()
+  {
+    return LangSettingFragment.a().size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = new FormSimpleItem(this.a.getActivity());
+    if (paramInt == LangSettingFragment.a(this.a)) {
+      paramView.setRightIcon(this.a.getResources().getDrawable(2130843904));
+    }
+    for (;;)
+    {
+      if (paramInt < LangSettingFragment.a().size()) {
+        paramView.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
+      }
+      paramView.setTag(Integer.valueOf(paramInt));
+      paramView.setOnClickListener(a(paramInt));
+      return paramView;
+      paramView.setRightIcon(null);
+    }
   }
 }
 

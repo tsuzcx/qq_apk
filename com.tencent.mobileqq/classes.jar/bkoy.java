@@ -1,21 +1,6 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-class bkoy
-  extends bjom
+public abstract interface bkoy
 {
-  private bkoy(bkow parambkow) {}
-  
-  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((bkow.a(this.a) != null) && (bkow.a(this.a).hasMessages(paramInt))) {
-      bkow.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
-  }
+  public abstract void a();
 }
 
 

@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
 
 public class aopm
-  implements View.OnClickListener
+  extends aoun
 {
-  public aopm(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public aopm(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

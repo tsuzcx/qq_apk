@@ -1,17 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ProgressBar;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-final class afvn
-  implements ValueAnimator.AnimatorUpdateListener
+class afvn
+  extends RecyclerView.ViewHolder
 {
-  afvn(ProgressBar paramProgressBar) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  afvn(afvm paramafvm, View paramView)
   {
-    if (this.a != null) {
-      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376419));
   }
 }
 

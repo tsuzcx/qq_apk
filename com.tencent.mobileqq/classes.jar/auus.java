@@ -1,12 +1,20 @@
-import android.util.Pair;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
 import java.util.Comparator;
 
-class auus
-  implements Comparator<Pair<Long, String>>
+public class auus
+  implements Comparator<auun>
 {
-  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  Point jdField_a_of_type_AndroidGraphicsPoint;
+  
+  public auus(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    return auur.a((CharSequence)paramPair1.second) - auur.a((CharSequence)paramPair2.second);
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+  }
+  
+  public int a(auun paramauun1, auun paramauun2)
+  {
+    return TagCloudView.a(paramauun1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramauun2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 

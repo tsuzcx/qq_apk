@@ -2,13 +2,26 @@ import com.tencent.mobileqq.app.TroopManager;
 
 public class akii
 {
-  public long a;
+  public int a;
   public String a;
   
-  public akii(TroopManager paramTroopManager, String paramString, long paramLong)
+  public akii(TroopManager paramTroopManager) {}
+  
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((paramObject instanceof akii))
+    {
+      paramObject = (akii)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

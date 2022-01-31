@@ -1,6 +1,16 @@
-public abstract interface uud
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+
+public class uud
+  implements bfso
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public uud(MemoriesInnerListView paramMemoriesInnerListView) {}
+  
+  public void onScrollStateChanged(int paramInt)
+  {
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    }
+  }
 }
 
 

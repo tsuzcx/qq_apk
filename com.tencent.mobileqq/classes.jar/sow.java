@@ -1,12 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.widget.GridView;
+import java.util.ArrayList;
 
 public class sow
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
+  public int a;
+  public String a;
+  public ArrayList<soy> a;
+  public sox a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

@@ -1,36 +1,51 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
-class uww
-  extends ssy
+public class uww
+  extends ste<uwq, uwe>
 {
-  uww(uwt paramuwt) {}
-  
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public uww(uwq paramuwq)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
-    }
-    do
-    {
-      return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        veg.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
-      }
-      if (paramStoryPushMsg.a == 17)
-      {
-        veg.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((tbz)tdc.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    veg.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+    super(paramuwq);
   }
+  
+  public void a(@NonNull uwq paramuwq, @NonNull uwe paramuwe)
+  {
+    if (paramuwe.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    Object localObject = paramuwq.a(paramuwe.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramuwe.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof uwf))
+    {
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramuwe.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (uwf)localObject;
+    FeedVideoInfo localFeedVideoInfo = ((uwd)tcz.a(12)).a(paramuwe.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((uwf)localObject).a).mVideoPullType);
+    if (localFeedVideoInfo == null)
+    {
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramuwe.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((uwf)localObject).a).mVideoPullType) });
+      return;
+    }
+    ((uwf)localObject).c(localFeedVideoInfo.mVideoItemList, true);
+    ((GeneralFeedItem)((uwf)localObject).a).updateVideoInfo(localFeedVideoInfo);
+    ved.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramuwe.jdField_a_of_type_JavaLangString, Integer.valueOf(((uwf)localObject).a().size()));
+    uwq.a(paramuwq).a((uxo)localObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uwe.class;
+  }
+  
+  public void b(@NonNull uwq paramuwq, @NonNull uwe paramuwe) {}
 }
 
 

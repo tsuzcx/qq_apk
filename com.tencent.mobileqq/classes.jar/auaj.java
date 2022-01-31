@@ -1,55 +1,31 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.OCRBottomTabView;
 
 public class auaj
-  implements View.OnTouchListener
+  implements TextWatcher
 {
   public auaj(OCRResultActivity paramOCRResultActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
+    if (paramEditable.toString().trim().length() == 0)
     {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if ((localObject.length != 0) && (j == 1))
-        {
-          localObject[0].onClick(paramView);
-          axqw.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
-      }
+      this.a.c.setEnabled(false);
+      this.a.d.setEnabled(false);
+      this.a.b.setEnabled(false);
+      return;
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        return true;
-      }
-      if ((j == 1) && (!paramView.isFocused())) {
-        axqw.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
-    }
+    this.a.c.setEnabled(true);
+    this.a.d.setEnabled(true);
+    this.a.b.setEnabled(true);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

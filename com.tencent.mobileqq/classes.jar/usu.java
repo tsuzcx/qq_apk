@@ -1,32 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import friendlist.GetOnlineInfoResp;
 
 class usu
-  extends JobSegment<Integer, uvx>
+  extends ajxj
 {
-  private uvw a;
+  usu(ust paramust) {}
   
-  public usu(@NonNull uvw paramuvw)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    this.a = paramuvw;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((uvx)localObject).a.size() > 0) || (((uvx)localObject).b))
-    {
-      veg.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (ust.a(this.a) == null) {
       return;
     }
-    localObject = new tmt();
-    ((tmt)localObject).a = this.a.a();
-    ((tmt)localObject).b = QQStoryContext.a().b();
-    syr.a().a((syv)localObject, new usv(this, paramJobContext, paramInteger));
+    paramString = ust.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.b(paramBoolean);
+      return;
+    }
   }
 }
 

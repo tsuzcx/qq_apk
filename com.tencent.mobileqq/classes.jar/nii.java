@@ -1,19 +1,37 @@
-import android.app.Dialog;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class nii
-  implements View.OnClickListener
+  implements bfph
 {
-  public nii(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public nii(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
+    {
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.a.getResources().getString(2131692742))) {
+          break label91;
+        }
+        PublicAccountAdvertisementActivity.d(this.a);
+      }
     }
+    label91:
+    while (!paramView.equals(this.a.getResources().getString(2131693369))) {
+      return;
+    }
+    ardd.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    axqy.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 

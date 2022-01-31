@@ -1,48 +1,28 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.QZLog;
 
-public class bhtq
+class bhtq
+  extends BroadcastReceiver
 {
-  public static void a(bcdb parambcdb, String... paramVarArgs)
+  bhtq(bhtp parambhtp) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return;
-    }
     try
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      int k = paramVarArgs.optInt("facade", -1);
-      int m = paramVarArgs.optInt("feedskin", -1);
-      int n = paramVarArgs.optInt("avatar", -1);
-      int i1 = paramVarArgs.optInt("float", -1);
-      int i2 = paramVarArgs.optInt("customvip", -1);
-      int i3 = paramVarArgs.optInt("praise", -1);
-      int i4 = paramVarArgs.optInt("player", -1);
-      boolean bool = paramVarArgs.optBoolean("isAfter785", false);
-      int j = paramVarArgs.optInt("diyHome", -1);
-      paramVarArgs = new Intent("action_personalize_js2qzone");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("cmd", "SetPersonalizeFinished");
-      localBundle.putInt("facade", k);
-      localBundle.putInt("feedskin", m);
-      localBundle.putInt("avatar", n);
-      localBundle.putInt("floatObject", i1);
-      localBundle.putInt("customvip", i2);
-      localBundle.putInt("praise", i3);
-      localBundle.putInt("player", i4);
-      if (bool) {
-        i = 1;
-      }
-      localBundle.putInt("isAfter785", i);
-      localBundle.putInt("diyHome", j);
-      paramVarArgs.putExtras(localBundle);
-      bgxy.a(parambcdb.a(), bgyf.a(), paramVarArgs);
+      paramContext = paramIntent.getStringExtra("callback");
+      int i = paramIntent.getIntExtra("ret", 1);
+      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
+      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
       return;
     }
-    catch (JSONException parambcdb) {}
+    catch (Exception paramContext)
+    {
+      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
+    }
   }
 }
 

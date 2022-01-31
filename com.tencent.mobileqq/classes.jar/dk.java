@@ -18,13 +18,13 @@ public class dk
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    LiteActivity.a(this.a).setPadding(0, actn.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
+    LiteActivity.a(this.a).setPadding(0, actj.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
-    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(actn.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
+    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(actj.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130848771);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130848777);
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(actn.a(11.0F, this.a.app.getApplication().getResources()), actn.a(6.0F, this.a.app.getApplication().getResources()), actn.a(11.0F, this.a.app.getApplication().getResources()), actn.a(6.0F, this.a.app.getApplication().getResources()));
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(actj.a(11.0F, this.a.app.getApplication().getResources()), actj.a(6.0F, this.a.app.getApplication().getResources()), actj.a(11.0F, this.a.app.getApplication().getResources()), actj.a(6.0F, this.a.app.getApplication().getResources()));
     this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestLayout();
     this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new LiteActivity.51.1(this), 100L);
   }

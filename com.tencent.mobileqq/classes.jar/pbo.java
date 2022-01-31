@@ -1,35 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pbo
-  extends akup
 {
-  public pbo(SelectPositionModule paramSelectPositionModule, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  
+  public JSONObject a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
+      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
+      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
+    }
+    return localJSONObject;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectPositionModule", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (!TextUtils.isEmpty(paramSosoLbsInfo.a.e)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPositionModule", 2, "onLocationFinish() info.mLocation =" + paramSosoLbsInfo.a);
-      }
-      SelectPositionModule.a(this.a, new SelectPositionModule.PositionData(paramSosoLbsInfo.a));
-      SelectPositionModule.a(this.a, SelectPositionModule.a(this.a));
-      SelectPositionModule.b(this.a, SelectPositionModule.a(this.a));
-      if (SelectPositionModule.a(this.a) != null) {
-        SelectPositionModule.a(this.a).a(SelectPositionModule.a(this.a));
-      }
-    }
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
+    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
+    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
   }
 }
 

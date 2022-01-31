@@ -1,6 +1,8 @@
-public abstract interface bcmr
+import android.view.View;
+
+public class bcmr
 {
-  public abstract void a(String paramString, int paramInt);
+  View[] a = new View[12];
 }
 
 

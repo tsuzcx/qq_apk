@@ -1,23 +1,26 @@
 public class ayyr
-  extends ayyy
+  extends ayza
 {
   public int a;
-  public long a;
   public String a;
-  public byte[] a;
+  public boolean a;
   public int b;
+  public String b;
+  public int c;
+  public int d;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" groupFileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" groupFileKey:");
+    localStringBuilder.append(" uuid:");
     localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" storageSource:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" isSelfSend:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
     localStringBuilder.append(" voiceType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" downType:").append(this.b);
+    localStringBuilder.append(" busiType:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" downType:").append(this.d);
     return localStringBuilder.toString();
   }
 }

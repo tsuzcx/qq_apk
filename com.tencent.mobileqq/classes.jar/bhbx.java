@@ -1,30 +1,24 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import java.util.Collection;
-import java.util.Iterator;
+import android.content.Intent;
+import android.os.Handler;
+import android.view.ViewGroup;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-class bhbx
-  implements ThreadPool.Job<Object>
+public abstract interface bhbx
+  extends bfos
 {
-  bhbx(bhbt parambhbt, boolean paramBoolean) {}
+  public abstract void a();
   
-  public Object run(ThreadPool.JobContext paramJobContext)
-  {
-    paramJobContext.setMode(1);
-    paramJobContext = bhbt.a(this.jdField_a_of_type_Bhbt).a();
-    if (paramJobContext != null)
-    {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        Object localObject = (bhbr)paramJobContext.next();
-        int i = ((bhbr)localObject).a(this.jdField_a_of_type_Boolean);
-        localObject = ((bhbr)localObject).a();
-        this.jdField_a_of_type_Bhbt.a((String)localObject, i);
-      }
-    }
-    return null;
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(Handler paramHandler);
+  
+  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

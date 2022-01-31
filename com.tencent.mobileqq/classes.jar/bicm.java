@@ -1,50 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.sdk.download.DownloadType;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.1;
+import cooperation.wadl.ipc.WadlProxyServiceManager.ClientMessageHandler.2;
 
-final class bicm
-  implements biem
+public final class bicm
+  extends Handler
 {
-  public void a(bidr parambidr, DownloadType paramDownloadType, biej parambiej)
+  public bicm(bici parambici, Looper paramLooper)
   {
-    boolean bool = true;
-    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(parambidr.a);
-    if (parambidr.e != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(bifn.a(parambidr.e));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(parambidr.b);
-    Object localObject1 = new ArrayList(1);
-    ((List)localObject1).add(localObject2);
-    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
-    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
-    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
-    if (paramDownloadType == DownloadType.FILE_THUMB) {}
     for (;;)
     {
-      ((PBBoolField)localObject1).set(bool);
-      if ((!TextUtils.isEmpty(parambidr.d)) && (TextUtils.isDigitsOnly(parambidr.d))) {
-        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(parambidr.d));
-      }
-      bidq.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new bicn(this, parambidr, parambiej, paramDownloadType));
+      super.handleMessage(paramMessage);
       return;
-      bool = false;
+      this.a.b();
+      continue;
+      this.a.c();
+      continue;
+      Bundle localBundle = paramMessage.getData();
+      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.1(this, localBundle));
+      continue;
+      localBundle = paramMessage.getData();
+      this.a.a.post(new WadlProxyServiceManager.ClientMessageHandler.2(this, localBundle));
+      continue;
+      if (bici.a(this.a) != null)
+      {
+        bici.a(this.a).a();
+        continue;
+        if ((!bici.a(this.a)) && (bici.a(this.a) != null)) {
+          bici.a(this.a).b();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bicm
  * JD-Core Version:    0.7.0.1
  */

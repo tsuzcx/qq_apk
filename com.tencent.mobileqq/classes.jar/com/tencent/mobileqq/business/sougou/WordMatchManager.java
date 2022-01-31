@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.business.sougou;
 
-import ajsf;
-import amda;
+import ajsd;
+import amcz;
+import amdc;
 import amdd;
 import amde;
-import amdf;
+import amdh;
 import amdi;
-import amdj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import bahn;
-import baho;
-import bbuv;
-import bfjx;
+import baib;
+import baic;
+import bbvj;
+import bfko;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,14 +33,14 @@ public class WordMatchManager
   implements Manager
 {
   protected static final String a;
+  protected amdd a;
   protected amde a;
-  protected amdf a;
-  protected amdj a;
-  protected baho a;
+  protected amdi a;
+  protected baic a;
   protected QQAppInterface a;
-  protected ArrayList<amdi> a;
+  protected ArrayList<amdh> a;
   boolean a;
-  protected amde b;
+  protected amdd b;
   protected boolean b;
   protected boolean c;
   protected boolean d;
@@ -48,18 +48,18 @@ public class WordMatchManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = bbuv.a(ajsf.aV + "/Tencent/QQ_business");
+    jdField_a_of_type_JavaLangString = bbvj.a(ajsd.aV + "/Tencent/QQ_business");
   }
   
   public WordMatchManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Amdj = new WordMatchManager.HotWordMatcher(this);
+    this.jdField_a_of_type_Amdi = new WordMatchManager.HotWordMatcher(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Amdf = new amdf();
     this.jdField_a_of_type_Amde = new amde();
-    this.jdField_b_of_type_Amde = new amde();
-    this.jdField_a_of_type_Baho = new amdd(this);
+    this.jdField_a_of_type_Amdd = new amdd();
+    this.jdField_b_of_type_Amdd = new amdd();
+    this.jdField_a_of_type_Baic = new amdc(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.getApp();
     try
@@ -106,7 +106,7 @@ public class WordMatchManager
         }
         try
         {
-          String str2 = bfjx.a(paramString);
+          String str2 = bfko.a(paramString);
           paramString = str2;
           if (str2 != null) {
             continue;
@@ -133,15 +133,15 @@ public class WordMatchManager
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).getLong("DICT_LAST_MODIFIED_" + paramInt, 0L);
   }
   
-  public amdj a(amdi paramamdi)
+  public amdi a(amdh paramamdh)
   {
     if (!this.jdField_a_of_type_Boolean) {
       return null;
     }
     if (this.c) {
-      return this.jdField_a_of_type_Amdj;
+      return this.jdField_a_of_type_Amdi;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.1(this, paramamdi));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.1(this, paramamdh));
     return null;
   }
   
@@ -164,17 +164,17 @@ public class WordMatchManager
   
   protected void a()
   {
-    this.jdField_a_of_type_Amdf.jdField_a_of_type_Boolean = a(2);
-    this.jdField_a_of_type_Amdf.jdField_b_of_type_Boolean = a(1);
-    amdf localamdf = this.jdField_a_of_type_Amdf;
+    this.jdField_a_of_type_Amde.jdField_a_of_type_Boolean = a(2);
+    this.jdField_a_of_type_Amde.jdField_b_of_type_Boolean = a(1);
+    amde localamde = this.jdField_a_of_type_Amde;
     if ((a(3)) && (a(4))) {}
     for (boolean bool = true;; bool = false)
     {
-      localamdf.c = bool;
-      if (this.jdField_a_of_type_Amdf.jdField_a_of_type_Boolean) {
+      localamde.c = bool;
+      if (this.jdField_a_of_type_Amde.jdField_a_of_type_Boolean) {
         b(2);
       }
-      if (this.jdField_a_of_type_Amdf.jdField_b_of_type_Boolean) {
+      if (this.jdField_a_of_type_Amde.jdField_b_of_type_Boolean) {
         b(1);
       }
       return;
@@ -191,29 +191,29 @@ public class WordMatchManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).edit().putLong("DICT_LAST_MODIFIED_" + paramInt, paramLong).commit();
   }
   
-  public void a(amde paramamde)
+  public void a(amdd paramamdd)
   {
-    if (paramamde.jdField_b_of_type_Int != 1)
+    if (paramamdd.jdField_b_of_type_Int != 1)
     {
-      a(paramamde.jdField_a_of_type_Int);
+      a(paramamdd.jdField_a_of_type_Int);
       return;
     }
-    if (paramamde.jdField_a_of_type_Int == 2) {
-      this.jdField_b_of_type_Amde = paramamde;
+    if (paramamdd.jdField_a_of_type_Int == 2) {
+      this.jdField_b_of_type_Amdd = paramamdd;
     }
     for (;;)
     {
-      ThreadManager.post(new WordMatchManager.TaskHttpDownload(this, paramamde.jdField_a_of_type_Int), 8, null, true);
+      ThreadManager.post(new WordMatchManager.TaskHttpDownload(this, paramamdd.jdField_a_of_type_Int), 8, null, true);
       return;
-      if (paramamde.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Amde = paramamde;
+      if (paramamdd.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Amdd = paramamdd;
       }
     }
   }
   
-  public void a(amdi paramamdi)
+  public void a(amdh paramamdh)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.2(this, paramamdi));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.2(this, paramamdh));
   }
   
   protected void a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -228,13 +228,13 @@ public class WordMatchManager
     paramQQAppInterface.putString("type", "" + paramInt);
     paramQQAppInterface.putString("id", c(paramInt));
     paramQQAppInterface.putString("md5", "" + d(paramInt));
-    paramQQAppInterface.putString("version", "8.2.8");
+    paramQQAppInterface.putString("version", "8.3.0");
     paramQQAppInterface.putString("platform", "android");
     paramQQAppInterface.putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + (String)localObject2);
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("BUNDLE", paramQQAppInterface);
     ((HashMap)localObject1).put("CONTEXT", BaseApplication.getContext());
-    new bahn("http://cgi.qqweb.qq.com/cgi-bin/frequency/whether_request_cdn", "POST", this.jdField_a_of_type_Baho, paramInt, null, true).execute(new HashMap[] { localObject1 });
+    new baib("http://cgi.qqweb.qq.com/cgi-bin/frequency/whether_request_cdn", "POST", this.jdField_a_of_type_Baic, paramInt, null, true).execute(new HashMap[] { localObject1 });
   }
   
   public void a(boolean paramBoolean)
@@ -251,7 +251,7 @@ public class WordMatchManager
     if (!new File(str).exists()) {
       return false;
     }
-    return e(paramInt).equalsIgnoreCase(amda.a(str));
+    return e(paramInt).equalsIgnoreCase(amcz.a(str));
   }
   
   protected String b(int paramInt)
@@ -319,7 +319,7 @@ public class WordMatchManager
     //   54: aload 8
     //   56: astore 7
     //   58: aload 10
-    //   60: invokestatic 401	amda:a	([B)I
+    //   60: invokestatic 401	amcz:a	([B)I
     //   63: istore_1
     //   64: iload_1
     //   65: iconst_4
@@ -398,8 +398,8 @@ public class WordMatchManager
     //   218: invokevirtual 442	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   221: istore_2
     //   222: aload_0
-    //   223: getfield 73	com/tencent/mobileqq/business/sougou/WordMatchManager:jdField_a_of_type_Amdf	Lamdf;
-    //   226: getfield 445	amdf:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   223: getfield 73	com/tencent/mobileqq/business/sougou/WordMatchManager:jdField_a_of_type_Amde	Lamde;
+    //   226: getfield 445	amde:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   229: iload_2
     //   230: invokestatic 451	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   233: invokeinterface 457 2 0
@@ -546,12 +546,12 @@ public class WordMatchManager
     //   131	142	396	java/io/FileNotFoundException
   }
   
-  protected void b(amde paramamde)
+  protected void b(amdd paramamdd)
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
-    localSharedPreferences.edit().putString("REQUEST_DICT_MD5_" + paramamde.jdField_a_of_type_Int, paramamde.jdField_a_of_type_JavaLangString).commit();
-    localSharedPreferences.edit().putString("DICT_ID_" + paramamde.jdField_a_of_type_Int, paramamde.c).commit();
-    localSharedPreferences.edit().putString("DICT_MD5_" + paramamde.jdField_a_of_type_Int, paramamde.jdField_b_of_type_JavaLangString).commit();
+    localSharedPreferences.edit().putString("REQUEST_DICT_MD5_" + paramamdd.jdField_a_of_type_Int, paramamdd.jdField_a_of_type_JavaLangString).commit();
+    localSharedPreferences.edit().putString("DICT_ID_" + paramamdd.jdField_a_of_type_Int, paramamdd.c).commit();
+    localSharedPreferences.edit().putString("DICT_MD5_" + paramamdd.jdField_a_of_type_Int, paramamdd.jdField_b_of_type_JavaLangString).commit();
   }
   
   protected String c(int paramInt)

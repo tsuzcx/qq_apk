@@ -1,30 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class riq
-  implements Animation.AnimationListener
+  implements rvv
 {
-  public riq(FastWebActivity paramFastWebActivity, boolean paramBoolean) {}
+  public riq(FastWebActivity paramFastWebActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      FastWebActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, false);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(4);
-    }
+    return FastWebActivity.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean a()
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity).setVisibility(0);
-    if (this.jdField_a_of_type_Boolean) {
-      FastWebActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, true);
-    }
+    return true;
   }
 }
 

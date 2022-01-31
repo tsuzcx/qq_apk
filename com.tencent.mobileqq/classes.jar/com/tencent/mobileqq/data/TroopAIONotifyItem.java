@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.format.DateFormat;
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class TroopAIONotifyItem
-  extends aukm
+  extends auko
 {
   public static final int HIDE_AFTER_CLICK = 2;
   public static final int HIDE_AFTER_SHOW = 1;
@@ -15,7 +15,7 @@ public class TroopAIONotifyItem
   public long expireTime;
   public int hideMode;
   public String icon;
-  @auma
+  @aumc
   public String id;
   public String summary;
   public String title;

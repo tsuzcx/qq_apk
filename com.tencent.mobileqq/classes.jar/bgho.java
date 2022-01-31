@@ -1,32 +1,28 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.webbundle.sdk.WebBundleLogListener;
+import org.jetbrains.annotations.NotNull;
 
-class bgho
-  extends VasQuickUpdateManager.CallBacker
+final class bgho
+  implements WebBundleLogListener
 {
-  int jdField_a_of_type_Int;
-  
-  bgho(bghn parambghn, int paramInt)
+  public void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
+    if (QLog.isColorLevel()) {}
+    switch (paramInt)
     {
-      paramString1 = VasQuickUpdateManager.getJSONFromLocal(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
-      {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_Bghn.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
-      }
+    default: 
+      return;
+    case 4: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 3: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 5: 
+      QLog.w(paramString1, 2, paramString2);
+      return;
     }
+    QLog.e(paramString1, 2, paramString2);
   }
 }
 

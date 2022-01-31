@@ -1,17 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class avzn
-  implements awaj
+public abstract interface avzn
 {
-  avzn(avzm paramavzm) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    avzm.a(this.a, true);
-    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
-    }
-  }
+  public abstract void a();
 }
 
 

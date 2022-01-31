@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadManager.5.1;
+import com.tencent.open.downloadnew.DownloadManager.5.2;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import mqq.os.MqqHandler;
 
 public class bdlk
-  implements DialogInterface.OnCancelListener
+  implements ITMAssistantDownloadClientListener
 {
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  bdlk(bdle parambdle) {}
   
-  public bdlk(bdlc parambdlc, String paramString1, String paramString2)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = bdjc.a(paramString1, "NEWYYB");
-    this.b = paramString2;
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.2(this, paramLong1, paramLong2, paramString));
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_Bdlc.a(this.b);
-    bdjc.a("720", this.jdField_a_of_type_JavaLangString, this.b);
+    ThreadManager.getSubThreadHandler().post(new DownloadManager.5.1(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  {
+    bdii.e("DownloadManager_", "OnDwonloadSDKServiceInvalid");
   }
 }
 

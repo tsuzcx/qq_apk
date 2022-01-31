@@ -1,11 +1,18 @@
-class bilk
-  implements bilh
+public class bilk
 {
-  bilk(bilj parambilj) {}
+  public double a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a()
+  public bilk()
   {
-    bilj.a(this.a).a(131076, new Object[0]);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = ajya.a(2131715835);
+    this.jdField_b_of_type_JavaLangString = ajya.a(2131715837);
+    this.jdField_a_of_type_Double = 0.8D;
   }
 }
 

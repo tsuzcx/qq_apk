@@ -1,10 +1,7 @@
-import android.widget.ImageView;
-
 public class ailr
 {
-  public int a = 1;
-  public ImageView a;
-  public String a;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
 }
 
 

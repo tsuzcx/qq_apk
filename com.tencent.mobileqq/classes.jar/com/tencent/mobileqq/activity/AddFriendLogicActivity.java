@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
+import aagl;
+import aagm;
+import aagn;
+import aago;
 import aagp;
 import aagq;
 import aagr;
-import aags;
-import aagt;
-import aagu;
-import aagv;
-import ajxn;
+import ajxl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -17,18 +17,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
-import aqfb;
-import aukn;
-import auko;
-import axrl;
-import bbbd;
-import bbbl;
-import bbcv;
-import bbds;
-import bbev;
-import bbgg;
-import bcpq;
-import bcpw;
+import aqfd;
+import aukp;
+import aukq;
+import axrn;
+import bbbr;
+import bbbz;
+import bbdj;
+import bbeg;
+import bbfj;
+import bbgu;
+import bcqf;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -45,7 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import nat;
+import naq;
 
 public class AddFriendLogicActivity
   extends BaseActivity
@@ -53,17 +53,17 @@ public class AddFriendLogicActivity
   public static String a;
   public static boolean b;
   private int jdField_a_of_type_Int;
-  private aagv jdField_a_of_type_Aagv;
+  private aagr jdField_a_of_type_Aagr;
   public DialogInterface.OnClickListener a;
   public DialogInterface.OnDismissListener a;
   public Handler a;
-  public bbgg a;
-  private bcpq jdField_a_of_type_Bcpq;
-  protected nat a;
+  public bbgu a;
+  private bcqf jdField_a_of_type_Bcqf;
+  protected naq a;
   public boolean a;
   private int jdField_b_of_type_Int = -1;
   public DialogInterface.OnClickListener b;
-  private bbgg jdField_b_of_type_Bbgg;
+  private bbgu jdField_b_of_type_Bbgu;
   private String jdField_b_of_type_JavaLangString;
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
@@ -80,16 +80,16 @@ public class AddFriendLogicActivity
   
   public AddFriendLogicActivity()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new aagq(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new aagr(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new aags(this);
-    this.jdField_a_of_type_Nat = new aagu(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new aagm(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new aagn(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new aago(this);
+    this.jdField_a_of_type_Naq = new aagq(this);
   }
   
   public static Intent a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "AddFriendLogicActivity.startAddFriend [type:%s, uin: %s, extUin: %s, source:%s, subSource:%s]", new Object[] { Integer.valueOf(paramInt1), bbbd.b(paramString1), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+      QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "AddFriendLogicActivity.startAddFriend [type:%s, uin: %s, extUin: %s, source:%s, subSource:%s]", new Object[] { Integer.valueOf(paramInt1), bbbr.b(paramString1), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
     }
     Intent localIntent = new Intent(paramContext, AddFriendLogicActivity.class);
     localIntent.putExtra("uin", paramString1);
@@ -97,8 +97,8 @@ public class AddFriendLogicActivity
     localIntent.putExtra("extra", paramString2);
     localIntent.putExtra("source_id", paramInt2);
     localIntent.putExtra("sub_source_id", paramInt3);
-    localIntent.putExtra("is_from_game", bbds.k);
-    bbds.k = null;
+    localIntent.putExtra("is_from_game", bbeg.k);
+    bbeg.k = null;
     paramString1 = paramString3;
     if (!TextUtils.isEmpty(paramString3)) {
       paramString1 = AutoRemarkActivity.a(paramString3);
@@ -140,7 +140,7 @@ public class AddFriendLogicActivity
           }
         }
       }
-      axrl.a(paramContext).a(null, "addFriendSource", true, 0L, 0L, paramString2, null);
+      axrn.a(paramContext).a(null, "addFriendSource", true, 0L, 0L, paramString2, null);
       if (QLog.isColorLevel()) {
         QLog.d("qqBaseActivity", 2, "startAddFriend Extras = " + localIntent.getExtras().toString());
       }
@@ -205,7 +205,7 @@ public class AddFriendLogicActivity
       if (getIntent().getIntExtra("source_id", 3999) == 3090) {}
       try
       {
-        aqfb.a(this, true, "action_game_make_friend", Long.valueOf(getIntent().getStringExtra("extra")).longValue(), paramInt, paramString);
+        aqfd.a(this, true, "action_game_make_friend", Long.valueOf(getIntent().getStringExtra("extra")).longValue(), paramInt, paramString);
         return;
       }
       catch (Exception paramString)
@@ -222,15 +222,15 @@ public class AddFriendLogicActivity
     if (QLog.isColorLevel()) {
       QLog.i("qqBaseActivity", 2, "dismissOrHideProgress hide: " + paramBoolean);
     }
-    if ((this.jdField_a_of_type_Bcpq == null) || (!this.jdField_a_of_type_Bcpq.isShowing())) {
+    if ((this.jdField_a_of_type_Bcqf == null) || (!this.jdField_a_of_type_Bcqf.isShowing())) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bcpq.hide();
+      this.jdField_a_of_type_Bcqf.hide();
       return;
     }
-    this.jdField_a_of_type_Bcpq.dismiss();
+    this.jdField_a_of_type_Bcqf.dismiss();
   }
   
   private boolean a()
@@ -248,16 +248,16 @@ public class AddFriendLogicActivity
     if ((this.jdField_d_of_type_Int == 3004) && (localObject1 == null) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)))
     {
       localObject1 = this.app.getEntityManagerFactory().createEntityManager();
-      Object localObject2 = (TroopMemberInfo)((aukn)localObject1).a(TroopMemberInfo.class, new String[] { this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString });
+      Object localObject2 = (TroopMemberInfo)((aukp)localObject1).a(TroopMemberInfo.class, new String[] { this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString });
       if (localObject2 != null)
       {
         localObject2 = ((TroopMemberInfo)localObject2).friendnick;
         getIntent().putExtra("nick_name", (String)localObject2);
       }
-      ((aukn)localObject1).a();
+      ((aukp)localObject1).a();
     }
-    this.jdField_a_of_type_Aagv = new aagv(this, this);
-    addObserver(this.jdField_a_of_type_Aagv);
+    this.jdField_a_of_type_Aagr = new aagr(this, this);
+    addObserver(this.jdField_a_of_type_Aagr);
     if (this.jdField_c_of_type_Int == 1)
     {
       if (QLog.isColorLevel()) {
@@ -293,9 +293,9 @@ public class AddFriendLogicActivity
       try
       {
         Long.parseLong(paramString);
-        if (((ajxn)this.app.getManager(51)).b(paramString))
+        if (((ajxl)this.app.getManager(51)).b(paramString))
         {
-          bcpw.a(this.app.getApplication(), 2131690047, 0).b(getTitleBarHeight());
+          bcql.a(this.app.getApplication(), 2131690047, 0).b(getTitleBarHeight());
           finish();
           return false;
         }
@@ -314,9 +314,9 @@ public class AddFriendLogicActivity
       }
       break;
     }
-    while (!bbev.d(this))
+    while (!bbfj.d(this))
     {
-      bcpw.a(this.app.getApplication(), 2131694609, 0).b(getTitleBarHeight());
+      bcql.a(this.app.getApplication(), 2131694610, 0).b(getTitleBarHeight());
       finish();
       return false;
       if (this.jdField_d_of_type_Int == 3999)
@@ -335,22 +335,22 @@ public class AddFriendLogicActivity
     if (QLog.isColorLevel()) {
       QLog.i("qqBaseActivity", 2, "showProgress");
     }
-    if (this.jdField_a_of_type_Bcpq == null)
+    if (this.jdField_a_of_type_Bcqf == null)
     {
-      this.jdField_a_of_type_Bcpq = new bcpq(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bcpq.a(new aagp(this));
+      this.jdField_a_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bcqf.a(new aagl(this));
     }
-    this.jdField_a_of_type_Bcpq.c(2131693036);
+    this.jdField_a_of_type_Bcqf.c(2131693037);
     if (!isFinishing()) {
-      this.jdField_a_of_type_Bcpq.show();
+      this.jdField_a_of_type_Bcqf.show();
     }
   }
   
   private boolean b()
   {
-    if (!bbev.d(this))
+    if (!bbfj.d(this))
     {
-      bcpw.a(this.app.getApplication(), 2131694609, 0).b(getTitleBarHeight());
+      bcql.a(this.app.getApplication(), 2131694610, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -388,7 +388,7 @@ public class AddFriendLogicActivity
     int i = ((Intent)localObject).getShortExtra("group_option", (short)2);
     if (((TroopManager)this.app.getManager(52)).b(str) != null)
     {
-      bcpw.a(this.app.getApplication(), 2131690044, 0).b(getTitleBarHeight());
+      bcql.a(this.app.getApplication(), 2131690044, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -396,9 +396,9 @@ public class AddFriendLogicActivity
     {
       localObject = getIntent().getStringExtra("nick_name");
       if ((localObject == null) || (((String)localObject).length() == 0)) {
-        getString(2131693694);
+        getString(2131693695);
       }
-      bcpw.a(this.app.getApplication(), 2131720495, 0).b(getTitleBarHeight());
+      bcql.a(this.app.getApplication(), 2131720506, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -432,7 +432,7 @@ public class AddFriendLogicActivity
       b();
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AddFriendLogicActivity.2(this), 3000L);
-      this.app.addObserver(this.jdField_a_of_type_Nat);
+      this.app.addObserver(this.jdField_a_of_type_Naq);
       if (this.jdField_e_of_type_JavaLangString != null) {
         this.app.a().d(this.jdField_e_of_type_JavaLangString);
       }
@@ -448,9 +448,9 @@ public class AddFriendLogicActivity
   
   private void e()
   {
-    if ((this.jdField_b_of_type_Bbgg != null) && (this.f != 0))
+    if ((this.jdField_b_of_type_Bbgu != null) && (this.f != 0))
     {
-      localObject1 = (Bundle)bbbl.a().a("SecWarningCfg", "AlertTitle", 147, this.f);
+      localObject1 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertTitle", 147, this.f);
       if (localObject1 == null) {
         break label506;
       }
@@ -460,15 +460,15 @@ public class AddFriendLogicActivity
     label506:
     for (Object localObject1 = ((Bundle)localObject1).getString("AlertTitle");; localObject1 = null)
     {
-      Object localObject2 = (Bundle)bbbl.a().a("SecWarningCfg", "AlertText", 147, this.f);
+      Object localObject2 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertText", 147, this.f);
       if (localObject2 != null) {}
       for (Object localObject4 = ((Bundle)localObject2).getString("AlertText");; localObject4 = null)
       {
-        localObject2 = (Bundle)bbbl.a().a("SecWarningCfg", "AlertLeftBtnText", 147, this.f);
+        localObject2 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertLeftBtnText", 147, this.f);
         if (localObject2 != null) {}
         for (localObject2 = ((Bundle)localObject2).getString("AlertLeftBtnText");; localObject2 = null)
         {
-          Object localObject3 = (Bundle)bbbl.a().a("SecWarningCfg", "AlertRightBtnText", 147, this.f);
+          Object localObject3 = (Bundle)bbbz.a().a("SecWarningCfg", "AlertRightBtnText", 147, this.f);
           if (localObject3 != null) {}
           for (localObject3 = ((Bundle)localObject3).getString("AlertRightBtnText");; localObject3 = null)
           {
@@ -478,7 +478,7 @@ public class AddFriendLogicActivity
             {
               if (this.f == 1)
               {
-                i = 2131719117;
+                i = 2131719128;
                 localObject5 = getString(i);
               }
             }
@@ -490,7 +490,7 @@ public class AddFriendLogicActivity
                 if (this.f != 1) {
                   break label333;
                 }
-                localObject1 = getString(2131719118);
+                localObject1 = getString(2131719129);
               }
               if (localObject2 != null) {
                 break label432;
@@ -506,43 +506,43 @@ public class AddFriendLogicActivity
               if (this.f != 1) {
                 break label456;
               }
-              localObject2 = getString(2131719112);
+              localObject2 = getString(2131719123);
             }
             for (;;)
             {
-              this.jdField_b_of_type_Bbgg.setTitle((String)localObject5);
-              this.jdField_b_of_type_Bbgg.setMessage((CharSequence)localObject1);
-              this.jdField_b_of_type_Bbgg.setNegativeButton((String)localObject4, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-              this.jdField_b_of_type_Bbgg.setPositiveButton((String)localObject2, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+              this.jdField_b_of_type_Bbgu.setTitle((String)localObject5);
+              this.jdField_b_of_type_Bbgu.setMessage((CharSequence)localObject1);
+              this.jdField_b_of_type_Bbgu.setNegativeButton((String)localObject4, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+              this.jdField_b_of_type_Bbgu.setPositiveButton((String)localObject2, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
               if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-                this.jdField_b_of_type_Bbgg.findViewById(2131363440).setVisibility(8);
+                this.jdField_b_of_type_Bbgu.findViewById(2131363439).setVisibility(8);
               }
               return;
-              i = 2131719121;
+              i = 2131719132;
               break;
               if (this.f == 2)
               {
-                localObject1 = getString(2131719116);
+                localObject1 = getString(2131719127);
                 break label209;
               }
               if (this.f == 3)
               {
-                localObject1 = getString(2131719120);
+                localObject1 = getString(2131719131);
                 break label209;
               }
               if (this.f == 4)
               {
-                localObject1 = getString(2131719119);
+                localObject1 = getString(2131719130);
                 break label209;
               }
               if (this.f == 5)
               {
-                localObject1 = getString(2131719114);
+                localObject1 = getString(2131719125);
                 break label209;
               }
-              localObject1 = getString(2131719115);
+              localObject1 = getString(2131719126);
               break label209;
-              localObject4 = getString(2131719113);
+              localObject4 = getString(2131719124);
               break label229;
               localObject4 = localObject2;
               if (!TextUtils.isEmpty(((String)localObject2).trim())) {
@@ -551,7 +551,7 @@ public class AddFriendLogicActivity
               this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
               localObject4 = localObject2;
               break label229;
-              localObject2 = getString(2131719111);
+              localObject2 = getString(2131719122);
               continue;
               if (TextUtils.isEmpty(((String)localObject3).trim())) {
                 this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = null;
@@ -566,20 +566,20 @@ public class AddFriendLogicActivity
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bbgg != null) && (!this.jdField_a_of_type_Bbgg.isShowing()) && (!isFinishing())) {
-      this.jdField_a_of_type_Bbgg.show();
+    if ((this.jdField_a_of_type_Bbgu != null) && (!this.jdField_a_of_type_Bbgu.isShowing()) && (!isFinishing())) {
+      this.jdField_a_of_type_Bbgu.show();
     }
     do
     {
       return;
-      this.jdField_a_of_type_Bbgg = bbcv.a(this, 230);
-      this.jdField_a_of_type_Bbgg.setMessage(2131695561);
-      this.jdField_a_of_type_Bbgg.setTitle(2131692234);
-      aagt localaagt = new aagt(this);
-      this.jdField_a_of_type_Bbgg.setNegativeButton(2131690596, localaagt);
-      this.jdField_a_of_type_Bbgg.setPositiveButton(2131695531, localaagt);
+      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230);
+      this.jdField_a_of_type_Bbgu.setMessage(2131695562);
+      this.jdField_a_of_type_Bbgu.setTitle(2131692234);
+      aagp localaagp = new aagp(this);
+      this.jdField_a_of_type_Bbgu.setNegativeButton(2131690596, localaagp);
+      this.jdField_a_of_type_Bbgu.setPositiveButton(2131695532, localaagp);
     } while (isFinishing());
-    this.jdField_a_of_type_Bbgg.show();
+    this.jdField_a_of_type_Bbgu.show();
   }
   
   public void a(int paramInt1, boolean paramBoolean, ArrayList<String> paramArrayList, Class<?> paramClass, int paramInt2)
@@ -590,14 +590,14 @@ public class AddFriendLogicActivity
       if (QLog.isColorLevel()) {
         QLog.d("AddFriendLogicActivity", 2, "startVerifyActivity() from applets add friend and friendSetting is 0 ");
       }
-      if (bbev.d(this))
+      if (bbfj.d(this))
       {
         paramArrayList = (FriendListHandler)this.app.a(1);
         paramInt2 = getIntent().getIntExtra("sub_source_id", 0);
         paramArrayList.a(this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, paramInt1, (byte)0, "", this.jdField_d_of_type_Int, paramInt2, false, null, false, null, this.jdField_c_of_type_JavaLangString, getIntent().getBundleExtra("flc_extra_param"));
         return;
       }
-      bcpw.a(this.app.getApplication(), 2131694609, 0).b(getTitleBarHeight());
+      bcql.a(this.app.getApplication(), 2131694610, 0).b(getTitleBarHeight());
       return;
     }
     paramClass = new Intent(this, paramClass);
@@ -661,11 +661,11 @@ public class AddFriendLogicActivity
   public void doOnDestroy()
   {
     a(false);
-    if (this.jdField_a_of_type_Aagv != null) {
-      removeObserver(this.jdField_a_of_type_Aagv);
+    if (this.jdField_a_of_type_Aagr != null) {
+      removeObserver(this.jdField_a_of_type_Aagr);
     }
-    if (this.jdField_a_of_type_Nat != null) {
-      removeObserver(this.jdField_a_of_type_Nat);
+    if (this.jdField_a_of_type_Naq != null) {
+      removeObserver(this.jdField_a_of_type_Naq);
     }
     super.doOnDestroy();
   }

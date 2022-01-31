@@ -13,8 +13,8 @@ public class cf
   
   public void onClick(View paramView)
   {
-    actn.n = true;
-    axrk.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
+    actj.n = true;
+    axrm.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
     paramView = new Intent(this.a, LiteAdvanceActivity.class);
     paramView.putExtra("targetUin", this.a.b);
     this.a.startActivityForResult(paramView, 7);

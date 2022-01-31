@@ -1,48 +1,12 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
 
-public class sch
-  implements ajtg
+class sch
 {
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
+  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<sci> b;
   
-  protected void a(boolean paramBoolean, List<scm> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
-      }
-      a(false, new ArrayList(0));
-      return;
-    }
-    if (paramObject != null) {
-      try
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
-    }
-    a(false, new ArrayList(0));
-  }
+  private sch(scf paramscf) {}
 }
 
 

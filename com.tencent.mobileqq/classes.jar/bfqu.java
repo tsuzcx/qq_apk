@@ -1,6 +1,12 @@
 public abstract interface bfqu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void F();
+  
+  public abstract void G();
+  
+  public abstract void H();
+  
+  public abstract void a(float paramFloat);
 }
 
 

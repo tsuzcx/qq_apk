@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import java.util.ArrayList;
-import wae;
+import wab;
 
 public class FFmpeg$5
   extends ArrayList<Object>
 {
-  public FFmpeg$5(wae paramwae, ArrayList paramArrayList, String paramString)
+  public FFmpeg$5(wab paramwab, ArrayList paramArrayList, String paramString)
   {
     add(this.val$tsList);
     add(this.val$outMedia);

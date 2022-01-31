@@ -1,99 +1,133 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.util.HashSet;
+import java.util.Set;
 
-class okb
-  implements BusinessObserver
+public class okb
+  extends PopupWindow
 {
-  okb(ojx paramojx, BaseCommentData paramBaseCommentData) {}
+  public final float a;
+  private final int jdField_a_of_type_Int = 0;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  public final String a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private okf jdField_a_of_type_Okf;
+  public final float b;
+  private int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public okb(Activity paramActivity, ArticleInfo paramArticleInfo)
   {
-    int i = 1;
-    String str = "";
-    if (paramBoolean) {}
-    for (;;)
+    super(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "GuidePopuppWindow";
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    a(a());
+    setTouchable(true);
+    setFocusable(true);
+    setOutsideTouchable(false);
+    setInputMethodMode(1);
+    setBackgroundDrawable(new ColorDrawable(0));
+    a();
+  }
+  
+  private void a(VafContext paramVafContext)
+  {
+    TemplateBean localTemplateBean = oos.a(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
+    olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
+    setContentView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramVafContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    setHeight(paramVafContext.mLayoutHeight);
+    setWidth(paramVafContext.mLayoutWidth);
+  }
+  
+  public VafContext a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
     {
-      try
-      {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        if (arrayOfByte == null) {
-          break label229;
-        }
-        paramBundle = new WebSsoBody.WebSsoResponseBody();
-        try
-        {
-          paramBundle.mergeFrom(arrayOfByte);
-          paramInt = paramBundle.ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
-          }
-          if (paramInt == 0) {
-            break label179;
-          }
-          try
-          {
-            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
-            paramInt = 0;
-          }
-          catch (JSONException paramBundle)
-          {
-            paramBundle.printStackTrace();
-            paramInt = 0;
-            paramBundle = str;
-            continue;
-          }
-          if ((paramInt == 0) && (ojx.a(this.jdField_a_of_type_Ojx) != null)) {
-            ojx.a(this.jdField_a_of_type_Ojx).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
-          }
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-          continue;
-        }
-        paramBundle.printStackTrace();
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          paramBundle = str;
-          break;
-          label179:
-          paramBundle = str;
-          paramInt = i;
-          try
-          {
-            if (ojx.a(this.jdField_a_of_type_Ojx) == null) {
-              break;
-            }
-            ojx.a(this.jdField_a_of_type_Ojx).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-            paramBundle = str;
-            paramInt = i;
-          }
-          catch (Exception paramBundle)
-          {
-            paramInt = 1;
-          }
-        }
-      }
-      label229:
-      paramInt = 0;
-      paramBundle = str;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
+      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "comment_feeds");
     }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  }
+  
+  public void a()
+  {
+    setOnDismissListener(new okc(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    }
+  }
+  
+  protected void a(float paramFloat)
+  {
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.alpha = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(View paramView)
+  {
+    if (isShowing())
+    {
+      dismiss();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    a(0);
+    a(1.0F);
+    setAnimationStyle(2131755035);
+    showAtLocation(paramView, 17, 0, 0);
+    paramView = new ono();
+    paramView.i().b("wording", "" + oos.a());
+    ohf.a("0X8009FE7", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramView);
+  }
+  
+  public void a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(Container paramContainer)
+  {
+    if (paramContainer == null) {
+      return;
+    }
+    ViewFactory.findClickableViewListener(paramContainer.getVirtualView(), new okd(this));
+  }
+  
+  public void a(okf paramokf)
+  {
+    this.jdField_a_of_type_Okf = paramokf;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
 }
 

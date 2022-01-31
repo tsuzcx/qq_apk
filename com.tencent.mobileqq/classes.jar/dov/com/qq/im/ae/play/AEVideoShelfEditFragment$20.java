@@ -3,7 +3,7 @@ package dov.com.qq.im.ae.play;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import biyw;
+import bizn;
 
 class AEVideoShelfEditFragment$20
   implements Runnable
@@ -24,9 +24,9 @@ class AEVideoShelfEditFragment$20
         int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
         localObject = AEVideoShelfEditFragment.a(this.this$0).getChildAt(this.a - i);
       } while (localObject == null);
-      localObject = (biyw)AEVideoShelfEditFragment.a(this.this$0).getChildViewHolder((View)localObject);
+      localObject = (bizn)AEVideoShelfEditFragment.a(this.this$0).getChildViewHolder((View)localObject);
     } while (localObject == null);
-    ((biyw)localObject).a();
+    ((bizn)localObject).a();
   }
 }
 

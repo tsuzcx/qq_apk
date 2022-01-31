@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-class ajdk
-  implements ajno
+public abstract interface ajdk
 {
-  ajdk(ajdh paramajdh, String paramString) {}
+  public abstract String a(int paramInt, String paramString);
   
-  public void a(int paramInt)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
-      }
-      ApolloCmdChannel localApolloCmdChannel = ajae.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("result", paramInt);
-        localApolloCmdChannel.callbackFromRequest(ajdh.a(this.jdField_a_of_type_Ajdh), 0, "cs.file_correctness_check.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(aiwi paramaiwi, long paramLong);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

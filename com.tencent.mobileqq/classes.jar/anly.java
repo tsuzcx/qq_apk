@@ -1,43 +1,49 @@
-import android.content.Intent;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class anly
-  implements bcrn
+class anly
+  extends DataReportViewer
 {
-  public anly(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
+  anly(anlx paramanlx, Context paramContext1, Context paramContext2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
-    }
-    Intent localIntent;
-    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
+    super(paramContext1);
+  }
+  
+  public void d()
+  {
+    int j = baxn.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
-      localIntent = new Intent();
-      localIntent.putExtra("curIndex", paramInt2);
-      if (!this.a.e) {
-        break label176;
-      }
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = baxn.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      anlx.a(this.jdField_a_of_type_Anlx).updateViewLayout(anlx.a(this.jdField_a_of_type_Anlx), localLayoutParams);
+      return;
     }
-    label176:
-    for (paramInt1 = this.a.c;; paramInt1 = 0)
+  }
+  
+  public void e()
+  {
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
-      localIntent.putExtra("unReadMsgNum", paramInt1);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      this.a.overridePendingTransition(2130772211, 2130772211);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.msgbox.tab", 2, "finish");
-      }
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = baxn.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      anlx.a(this.jdField_a_of_type_Anlx).updateViewLayout(anlx.a(this.jdField_a_of_type_Anlx), localLayoutParams);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anly
  * JD-Core Version:    0.7.0.1
  */

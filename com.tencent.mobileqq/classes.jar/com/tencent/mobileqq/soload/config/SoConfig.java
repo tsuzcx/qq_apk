@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.soload.config;
 
-import ampi;
+import amph;
 import android.text.TextUtils;
-import axnn;
+import axnp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -50,7 +50,7 @@ public class SoConfig
     //   25: aload_3
     //   26: monitorenter
     //   27: aload 4
-    //   29: invokestatic 78	ahiy:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   29: invokestatic 78	ahiw:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   32: checkcast 2	com/tencent/mobileqq/soload/config/SoConfig
     //   35: astore_0
     //   36: aload_3
@@ -126,19 +126,19 @@ public class SoConfig
     return "SoConfig{mSoInfos=" + this.mSoInfos + '}';
   }
   
-  public void update(axnn paramaxnn)
+  public void update(axnp paramaxnp)
   {
     HashMap localHashMap = new HashMap();
     int i;
     Object localObject;
-    if ((paramaxnn != null) && (paramaxnn.a != null))
+    if ((paramaxnp != null) && (paramaxnp.a != null))
     {
-      paramaxnn = paramaxnn.a;
-      int k = paramaxnn.length;
+      paramaxnp = paramaxnp.a;
+      int k = paramaxnp.length;
       i = 0;
       if (i < k)
       {
-        localObject = paramaxnn[i];
+        localObject = paramaxnp[i];
         if (TextUtils.isEmpty(localObject.jdField_a_of_type_JavaLangString)) {}
       }
     }

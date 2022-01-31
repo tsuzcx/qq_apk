@@ -1,22 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 class xkf
-  implements View.OnClickListener
+  implements wxt
 {
-  xkf(xke paramxke, String paramString, Activity paramActivity) {}
+  xkf(xkb paramxkb) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Xke.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
     {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
+      paramBundle = paramBundle.getStringArrayList("tinyIds");
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        xkb.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
+        i += 1;
       }
     }
   }

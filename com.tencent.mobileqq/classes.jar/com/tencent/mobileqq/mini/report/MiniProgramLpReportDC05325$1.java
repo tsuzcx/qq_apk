@@ -3,9 +3,9 @@ package com.tencent.mobileqq.mini.report;
 import NS_COMM.COMM.Entry;
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
 import android.text.TextUtils;
-import bcxm;
-import bgxq;
-import bgxr;
+import bcyb;
+import bgyh;
+import bgyi;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -35,11 +35,11 @@ final class MiniProgramLpReportDC05325$1
         }
         MiniProgramLpReportDC05325.access$000().put(Long.valueOf(this.val$downloadResult.getProcess().startTimestamp), Boolean.valueOf(true));
         Object localObject = MiniProgramReportHelper.launchIdForMiniAppConfig(this.val$miniAppConfig);
-        COMM.Entry localEntry1 = MiniProgramReportHelper.newEntry("uid", String.valueOf(bcxm.a().a()));
+        COMM.Entry localEntry1 = MiniProgramReportHelper.newEntry("uid", String.valueOf(bcyb.a().a()));
         COMM.Entry localEntry2 = MiniProgramReportHelper.newEntry("launchid", (String)localObject);
         COMM.Entry localEntry3 = MiniProgramReportHelper.newEntry("timestamp", "" + this.val$downloadResult.getProcess().startTimestamp);
-        COMM.Entry localEntry4 = MiniProgramReportHelper.newEntry("qua", bgxr.a());
-        COMM.Entry localEntry5 = MiniProgramReportHelper.newEntry("deviceinfo", bgxq.a().c());
+        COMM.Entry localEntry4 = MiniProgramReportHelper.newEntry("qua", bgyi.a());
+        COMM.Entry localEntry5 = MiniProgramReportHelper.newEntry("deviceinfo", bgyh.a().c());
         COMM.Entry localEntry6 = MiniProgramReportHelper.newEntry("network_type", MiniProgramLpReportDC05325.getNetworkType());
         COMM.Entry localEntry7 = MiniProgramReportHelper.newEntry("userip", this.val$downloadResult.getContent().clientip);
         if (this.val$miniAppConfig != null)

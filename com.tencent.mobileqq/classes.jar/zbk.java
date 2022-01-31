@@ -1,50 +1,84 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.gdtad.views.video.GdtVideoData;
 
 public class zbk
-  extends BroadcastReceiver
 {
-  private zbk(GdtVideoCommonView paramGdtVideoCommonView) {}
+  private int jdField_a_of_type_Int = -1;
+  private long jdField_a_of_type_Long = -1L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zbk(int paramInt)
   {
-    boolean bool = true;
-    if (GdtVideoCommonView.d(this.a))
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void c(GdtVideoData paramGdtVideoData, long paramLong)
+  {
+    if (paramGdtVideoData == null)
     {
-      GdtVideoCommonView.c(this.a, false);
-      yxs.a("GdtVideoCommonView", "SilentModeReceiver first auto called! so skip!");
-    }
-    while ((GdtVideoCommonView.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
+      yxp.d("GdtVideoStatistics", "return data == null error");
       return;
     }
-    int i = GdtVideoCommonView.a(this.a).getRingerMode();
-    int j = GdtVideoCommonView.a(this.a).getStreamVolume(3);
-    yxs.a("GdtVideoCommonView", "system context mode: " + i);
-    switch (i)
+    if ((this.jdField_a_of_type_Long == -1L) || (paramLong == 0L))
     {
-    default: 
-      this.a.b = true;
-      GdtVideoCommonView.d(this.a, false);
-      GdtVideoCommonView.a(this.a).setOutputMute(true);
-      GdtVideoCommonView.a(this.a, j, this.a.a, false);
+      yxp.d("GdtVideoStatistics", "return startPositionMillis =-1");
       return;
     }
-    this.a.b = false;
-    if (j > 0) {
-      GdtVideoCommonView.d(this.a, true);
-    }
-    paramContext = GdtVideoCommonView.a(this.a);
-    if (!GdtVideoCommonView.e(this.a)) {}
-    for (;;)
+    if (this.jdField_a_of_type_Long > paramLong)
     {
-      paramContext.setOutputMute(bool);
-      break;
-      bool = false;
+      yxp.d("GdtVideoStatistics", "startPositionMillis > currentPositionMillis reset startPositionMillis = 0");
+      this.jdField_a_of_type_Long = 0L;
     }
+    long l = this.jdField_a_of_type_Long;
+    if (paramLong == paramGdtVideoData.getDurationMillis()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      String str = yya.a(l, paramLong, bool, this.jdField_a_of_type_Int);
+      yxp.b("GdtVideoStatistics", "report start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
+      yya.a(paramGdtVideoData.getAd(), str);
+      this.jdField_a_of_type_Long = -1L;
+      return;
+    }
+  }
+  
+  public void a(GdtVideoData paramGdtVideoData)
+  {
+    yxp.b("GdtVideoStatistics", "onError");
+    c(paramGdtVideoData, -1L);
+  }
+  
+  public void a(GdtVideoData paramGdtVideoData, long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    yxp.b("GdtVideoStatistics", "onStarted start:" + this.jdField_a_of_type_Long);
+  }
+  
+  public void b(GdtVideoData paramGdtVideoData)
+  {
+    yxp.b("GdtVideoStatistics", "onCompleted start:" + this.jdField_a_of_type_Long);
+    if (paramGdtVideoData == null) {}
+    do
+    {
+      return;
+      c(paramGdtVideoData, paramGdtVideoData.getDurationMillis());
+    } while (!paramGdtVideoData.isLoop());
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public void b(GdtVideoData paramGdtVideoData, long paramLong)
+  {
+    yxp.b("GdtVideoStatistics", "onStopped start:" + this.jdField_a_of_type_Long + " end:" + paramLong);
+    c(paramGdtVideoData, paramLong);
+  }
+  
+  public void c(GdtVideoData paramGdtVideoData)
+  {
+    if (paramGdtVideoData == null)
+    {
+      yxp.d("GdtVideoStatistics", "805 reportLoadError data == null return");
+      return;
+    }
+    yxp.b("GdtVideoStatistics", "reportLoadError:" + paramGdtVideoData.getPlayScene());
+    String str = yya.a(paramGdtVideoData.getPlayScene());
+    yya.a(paramGdtVideoData.getAd(), str);
   }
 }
 

@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import afur;
-import afvi;
+import afup;
+import afvg;
 import java.util.List;
 
 public class SDKEmotionSettingManager$19
   implements Runnable
 {
-  public SDKEmotionSettingManager$19(afur paramafur, int paramInt1, int paramInt2, int paramInt3) {}
+  public SDKEmotionSettingManager$19(afup paramafup, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (afur.a(this.this$0) != null) {
-      afur.a(this.this$0).dismiss();
+    if (afup.a(this.this$0) != null) {
+      afup.a(this.this$0).dismiss();
     }
-    afur.a(this.this$0, false);
+    afup.a(this.this$0, false);
     if (this.a == this.b) {
-      afur.a(this.this$0, afur.a(this.this$0), Long.valueOf(afur.a(this.this$0)).longValue(), true);
+      afup.a(this.this$0, afup.a(this.this$0), Long.valueOf(afup.a(this.this$0)).longValue(), true);
     }
     while (this.a == 1)
     {
       int j = -1;
       int i = j;
-      if (afur.c(this.this$0) != null)
+      if (afup.c(this.this$0) != null)
       {
         i = j;
-        if (afur.c(this.this$0).size() > 0) {
-          i = ((Integer)afur.c(this.this$0).get(0)).intValue();
+        if (afup.c(this.this$0).size() > 0) {
+          i = ((Integer)afup.c(this.this$0).get(0)).intValue();
         }
       }
-      afur.a(this.this$0, i, null);
+      afup.a(this.this$0, i, null);
       return;
-      afur.a(this.this$0, afur.a(this.this$0), Long.valueOf(afur.a(this.this$0)).longValue(), true, null);
+      afup.a(this.this$0, afup.a(this.this$0), Long.valueOf(afup.a(this.this$0)).longValue(), true, null);
     }
-    afur.a(this.this$0, this.b, this.c, null);
+    afup.a(this.this$0, this.b, this.c, null);
   }
 }
 

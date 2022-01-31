@@ -1,23 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class abzm
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public abzm(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public abzm(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      paramMessage = new abzn(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+    this.a.a(this.a.b);
   }
 }
 

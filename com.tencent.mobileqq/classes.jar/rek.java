@@ -1,31 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-public class rek
-  extends Handler
+public abstract interface rek
+  extends bfub
 {
-  private WeakReference<ReadInJoyNavigationGridview> a;
+  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
   
-  public rek(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
-  {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
-  }
+  public abstract void a(View paramView, ListView paramListView, int paramInt);
 }
 
 

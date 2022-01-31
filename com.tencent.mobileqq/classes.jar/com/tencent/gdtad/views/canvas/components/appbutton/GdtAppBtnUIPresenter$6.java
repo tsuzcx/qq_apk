@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.canvas.components.appbutton;
 
-import yzj;
+import yzg;
 
 public class GdtAppBtnUIPresenter$6
   implements Runnable
 {
-  public GdtAppBtnUIPresenter$6(yzj paramyzj, GdtAppBtnData paramGdtAppBtnData) {}
+  public GdtAppBtnUIPresenter$6(yzg paramyzg, GdtAppBtnData paramGdtAppBtnData) {}
   
   public void run()
   {
-    yzj.b(this.this$0, this.a);
+    yzg.b(this.this$0, this.a);
   }
 }
 

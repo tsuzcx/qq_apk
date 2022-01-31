@@ -1,16 +1,23 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.32;
 
 public class anyt
-  implements bcak
+  implements DialogInterface.OnClickListener
 {
-  public anyt(EmoticonMainPanel.32 param32) {}
+  public anyt(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, FavEmosmManageActivity.class);
+    paramDialogInterface.putExtra("camera_emo_mode", 1);
+    this.a.a.startActivity(paramDialogInterface);
+    axqy.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
   }
 }
 

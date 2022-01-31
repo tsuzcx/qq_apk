@@ -1,26 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
 public class abzo
-  extends ajsp
+  implements DialogInterface.OnDismissListener
 {
-  public abzo(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public abzo(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
+    if (this.a.getActivity() != null)
     {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        bcpw.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
-      return;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    bcpw.a(this.a.app.getApp(), 1, ajyc.a(2131713442), 0).a();
   }
 }
 

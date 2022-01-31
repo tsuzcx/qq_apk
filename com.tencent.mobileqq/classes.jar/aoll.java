@@ -1,17 +1,21 @@
-import android.graphics.Rect;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public abstract interface aoll
+class aoll
+  implements Animation.AnimationListener
 {
-  public abstract int a();
+  aoll(aolk paramaolk) {}
   
-  public abstract Rect a(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
+  }
   
-  public abstract View a(int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract int b();
-  
-  public abstract int c();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

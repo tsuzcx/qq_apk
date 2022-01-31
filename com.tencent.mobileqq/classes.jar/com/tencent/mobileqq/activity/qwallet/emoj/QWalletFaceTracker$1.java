@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahbt;
+import ahbr;
 import android.content.Context;
 import android.text.TextUtils;
-import axmy;
-import axmz;
-import axng;
+import axna;
+import axnb;
+import axni;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import ltv;
+import ltq;
 
 class QWalletFaceTracker$1
-  implements ahbt
+  implements ahbr
 {
   QWalletFaceTracker$1(QWalletFaceTracker paramQWalletFaceTracker, String paramString1, String paramString2, Context paramContext, IBaseRecognizer paramIBaseRecognizer) {}
   
@@ -40,15 +40,15 @@ class QWalletFaceTracker$1
           }
         }
       }
-      Object localObject1 = new axmy[this.this$0.soFileNames.length];
+      Object localObject1 = new axna[this.this$0.soFileNames.length];
       paramInt = 0;
       while (paramInt < this.this$0.soFileNames.length)
       {
         localObject2 = this.this$0.soFileNames[paramInt];
-        localObject1[paramInt] = new axmz().a(new File(paramPathResult.folderPath, (String)localObject2).getAbsolutePath()).a();
+        localObject1[paramInt] = new axnb().a(new File(paramPathResult.folderPath, (String)localObject2).getAbsolutePath()).a();
         paramInt += 1;
       }
-      axng.a().a(this.this$0.soNames, new QWalletFaceTracker.1.1(this, paramPathResult), (axmy[])localObject1);
+      axni.a().a(this.this$0.soNames, new QWalletFaceTracker.1.1(this, paramPathResult), (axna[])localObject1);
     }
     do
     {

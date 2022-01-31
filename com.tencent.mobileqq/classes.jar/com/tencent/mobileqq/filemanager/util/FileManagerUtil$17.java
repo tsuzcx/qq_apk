@@ -3,9 +3,9 @@ package com.tencent.mobileqq.filemanager.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aoza;
-import apuc;
+import aoze;
 import apue;
+import apug;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -90,7 +90,7 @@ public final class FileManagerUtil$17
     if (i >= 4)
     {
       localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
-      switch (apue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
+      switch (apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
       {
       case 1: 
       case 4: 
@@ -103,12 +103,12 @@ public final class FileManagerUtil$17
       {
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692661), -1L, -1L, -1L);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692662), -1L, -1L, -1L);
         localSharedPreferences.edit().putLong(str2, l2);
         if (QLog.isColorLevel()) {
-          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + apue.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
+          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + apug.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
         }
-        apuc.a("0X800506B");
+        apue.a("0X800506B");
         return;
         localObject1 = "0";
         continue;

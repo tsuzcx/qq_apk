@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 
 class phe
-  implements ViewBase.OnClickListener
+  extends ComponentPGCShortContentBig
 {
-  phe(pgz parampgz, pax parampax) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  phe(pgw parampgw, Context paramContext, ArticleInfo paramArticleInfo)
   {
-    pgz.a(this.jdField_a_of_type_Pgz, this.jdField_a_of_type_Pax, paramViewBase);
-    pgz.a(this.jdField_a_of_type_Pgz, this.jdField_a_of_type_Pax.a());
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a != null)) {
+      return 11;
+    }
+    return super.a();
   }
 }
 

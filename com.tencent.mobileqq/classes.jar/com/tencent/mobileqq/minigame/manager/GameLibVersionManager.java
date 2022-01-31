@@ -68,9 +68,9 @@ public class GameLibVersionManager
   public String getGameJsLibPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
-    String str2 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+    String str2 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
-    str2 = BaseLibManager.g().getBaseLibDir("mini", "1.12.1.00001");
+    str2 = BaseLibManager.g().getBaseLibDir("mini", "1.13.0.00013");
     str1 = getNewestBaseLib(GameLoadManager.g().getBaseEnginePath(), getNewestBaseLib(str1, str2));
     if (str1 != null) {
       setGameEngineVersion(EngineVersion.fromFolderName(str1));

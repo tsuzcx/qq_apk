@@ -1,55 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
 import mqq.os.MqqHandler;
 
 public class aakd
-  implements bftk
+  extends MqqHandler
 {
-  public aakd(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public aakd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ao_();
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
-    }
-    if (this.a.b())
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
-      return true;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
+      super.handleMessage(paramMessage);
       return;
+      if (AssociatedAccountManageActivity.a(this.a) == null) {
+        AssociatedAccountManageActivity.a(this.a, new bcqf(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      {
+        try
+        {
+          AssociatedAccountManageActivity.a(this.a).show();
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
+          continue;
+          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
+          {
+            AssociatedAccountManageActivity.a(this.a).dismiss();
+            AssociatedAccountManageActivity.a(this.a, null);
+            continue;
+            if (AssociatedAccountManageActivity.a(this.a) != null) {
+              AssociatedAccountManageActivity.a(this.a).cancel();
+            }
+            AssociatedAccountManageActivity.a(this.a, bcql.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+          }
+        }
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

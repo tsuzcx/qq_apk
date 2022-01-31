@@ -12,7 +12,7 @@ public class wet
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    RotateCircleImageView.a(this.a).start();
+    RotateCircleImageView.b(this.a).start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

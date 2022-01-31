@@ -1,17 +1,17 @@
 package com.tencent.biz.lebasearch;
 
-import ajtg;
+import ajte;
 import android.os.Bundle;
-import wxu;
+import wxr;
 
 final class Utils$2
   implements Runnable
 {
-  Utils$2(wxu paramwxu, Bundle paramBundle, ajtg paramajtg) {}
+  Utils$2(wxr paramwxr, Bundle paramBundle, ajte paramajte) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wxu.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Ajtg);
+    this.jdField_a_of_type_Wxr.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Ajte);
   }
 }
 

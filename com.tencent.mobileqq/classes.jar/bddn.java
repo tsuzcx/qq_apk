@@ -1,85 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import java.util.ArrayList;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bddn
-  extends mxm
+  extends WtloginObserver
 {
-  public bddn(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bddn(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    QLog.i("TroopAbility.PreVerification", 1, "onResult type=" + this.a.a + ", appid=" + this.a.c + ", code=" + paramInt);
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label441;
-      }
-    }
-    for (;;)
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    if (paramInt == 0)
     {
-      try
-      {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte);
-          this.a.c(ajyc.a(2131715134));
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb60.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.get_privilege_rsp.api_groups.has()) || (!paramBundle.get_privilege_rsp.next_req_duration.has()))
-        {
-          QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
-          this.a.c(ajyc.a(2131715126));
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
-        this.a.c(ajyc.a(2131715131));
-        return;
-      }
-      TroopAbilityPreVerificationFragment.a(paramBundle);
-      QLog.d("TroopAbility.PreVerification", 1, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
-      paramArrayOfByte = new HashSet();
-      Object localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramArrayOfByte.add((Integer)((Iterator)localObject).next());
-      }
-      boolean bool = this.a.a(paramArrayOfByte);
-      QLog.i("TroopAbility.PreVerification", 1, "check permission result:" + bool);
-      this.a.a(bool);
-      TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
-      TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
+      this.a.a(null);
+      this.a.moveTaskToBack(true);
       return;
-      label441:
-      paramBundle = "";
     }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131711246) + paramInt + ")", 2000).a();
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
+  }
+  
+  public void OnException(String paramString, int paramInt)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnException e=" + paramString);
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "wtloginObserver.OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    if (paramInt == 0)
+    {
+      paramArrayOfByte1 = new ArrayList();
+      this.a.a.CloseCode(paramString, 16L, QuickLoginAuthorityActivity.a(this.a), 1, paramArrayOfByte1, QuickLoginAuthorityActivity.a(this.a));
+      return;
+    }
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131711245) + paramInt + ")", 2000).a();
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
   }
 }
 

@@ -1,111 +1,47 @@
-import com.qq.jce.wup.UniPacket;
-import com.qq.taf.RequestPacket;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceUtil;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Set;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class awyq
-  extends UniPacket
+  extends awyr
 {
-  public static String a;
-  JceOutputStream a;
-  JceOutputStream b;
-  JceOutputStream c;
+  PeakAppInterface a;
   
-  static
+  public awyq(PeakAppInterface paramPeakAppInterface)
   {
-    jdField_a_of_type_JavaLangString = awyq.class.getSimpleName();
+    this.a = paramPeakAppInterface;
   }
   
-  public awyq(boolean paramBoolean)
+  public AppInterface a()
   {
-    super(paramBoolean);
+    return this.a;
   }
   
-  public byte[] encode()
+  protected void a()
   {
-    if (this._package.iVersion == 2)
+    try
     {
-      if ((this._package.sServantName == null) || (this._package.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
-      }
-      if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
-      }
+      super.a();
+      a(new biqv(this.a));
+      super.b();
+      return;
     }
-    else
+    finally
     {
-      if (this._package.sServantName == null) {
-        this._package.sServantName = "";
-      }
-      if (this._package.sFuncName == null) {
-        this._package.sFuncName = "";
-      }
-    }
-    if (this.jdField_a_of_type_ComQqTafJceJceOutputStream == null)
-    {
-      this.jdField_a_of_type_ComQqTafJceJceOutputStream = new JceOutputStream(0);
-      this.jdField_a_of_type_ComQqTafJceJceOutputStream.setServerEncoding(this.encodeName);
-      if ((this._package.iVersion != 2) && (this._package.iVersion != 1)) {
-        break label304;
-      }
-      this.jdField_a_of_type_ComQqTafJceJceOutputStream.write(this._data, 0);
-      label184:
-      this._package.sBuffer = JceUtil.getJceBufArray(this.jdField_a_of_type_ComQqTafJceJceOutputStream.getByteBuffer());
-      if (this.b != null) {
-        break label319;
-      }
-      this.b = new JceOutputStream(0);
-    }
-    for (;;)
-    {
-      this.b.setServerEncoding(this.encodeName);
-      writeTo(this.b);
-      int i = this.b.getByteBuffer().position();
-      Object localObject = ByteBuffer.allocate(i + 4);
-      ((ByteBuffer)localObject).putInt(i + 4);
-      localObject = ((ByteBuffer)localObject).array();
-      System.arraycopy(this.b.getByteBuffer().array(), 0, localObject, 4, i);
-      return localObject;
-      this.jdField_a_of_type_ComQqTafJceJceOutputStream.getByteBuffer().clear();
-      break;
-      label304:
-      this.jdField_a_of_type_ComQqTafJceJceOutputStream.write(this._newData, 0);
-      break label184;
-      label319:
-      this.b.getByteBuffer().clear();
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public <T> void put(String paramString, T paramT)
+  public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (this._newData != null)
-    {
-      if (paramString == null) {
-        throw new IllegalArgumentException("put key can not is null");
-      }
-      if (paramT == null) {
-        throw new IllegalArgumentException("put value can not is null");
-      }
-      if ((paramT instanceof Set)) {
-        throw new IllegalArgumentException("can not support Set");
-      }
-      if (this.c == null) {
-        this.c = new JceOutputStream();
-      }
-      for (;;)
-      {
-        this.c.setServerEncoding(this.encodeName);
-        this.c.write(paramT, 0);
-        paramT = JceUtil.getJceBufArray(this.c.getByteBuffer());
-        this._newData.put(paramString, paramT);
-        return;
-        this.c.getByteBuffer().clear();
-      }
-    }
-    super.put(paramString, paramT);
+    a(paramToServiceMsg, null, axbr.class);
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    super.a(paramBoolean, paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 

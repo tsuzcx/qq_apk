@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
-
-public class rey
-  implements bfwv
+public abstract interface rey
 {
-  public rey(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
-  
-  public void a()
-  {
-    this.a.a(new rez(this, "onListViewDrawFinished"));
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

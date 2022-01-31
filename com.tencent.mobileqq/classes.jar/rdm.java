@@ -1,16 +1,16 @@
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rdm
-  extends oyg
+  extends oyd
 {
   public rdm(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
     super(paramString);
   }
   
-  public void a(oya paramoya)
+  public void a(oxx paramoxx)
   {
-    paramoya.a();
+    paramoxx.f();
   }
 }
 

@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-
 public class ogw
-  implements oki
 {
-  public ogw(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public int a;
+  public boolean a = true;
+  public int b;
+  public boolean b = true;
+  public int c;
+  public boolean c = true;
+  public int d;
+  public boolean d;
   
-  public void a(int paramInt)
+  public ogw()
   {
-    if (paramInt != 2) {
-      this.a.d();
-    }
-    onr localonr1 = new onr();
-    onr localonr2 = localonr1.i().b("rowkey", ReadInJoyCommentListFragment.a(this.a).innerUniqueID).b("entry", "2");
-    if (paramInt == 2) {}
-    for (String str = "1";; str = "0")
-    {
-      localonr2.b("result", str);
-      ohi.a("0X800A00F", ReadInJoyCommentListFragment.a(this.a), localonr1);
-      return;
-    }
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 1;
   }
 }
 

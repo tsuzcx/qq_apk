@@ -1,20 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class mhe
-  implements Animation.AnimationListener
+class mhe
+  implements DialogInterface.OnClickListener
 {
-  public mhe(QQLogo paramQQLogo) {}
+  mhe(mhc parammhc) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(8);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    this.a.a.c();
+    mha.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      axqy.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
+      mha.a(this.a.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    mha.a(this.a.a, mha.a(this.a.a).a().v);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

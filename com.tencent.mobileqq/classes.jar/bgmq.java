@@ -1,14 +1,14 @@
-import android.os.IInterface;
-import cooperation.qlink.SendMsg;
+import cooperation.plugin.PluginInfo;
 
 public abstract interface bgmq
-  extends IInterface
 {
-  public abstract void a(SendMsg paramSendMsg);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(PluginInfo paramPluginInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgmq
  * JD-Core Version:    0.7.0.1
  */

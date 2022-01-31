@@ -1,46 +1,115 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class nyq
-  implements AladdinConfigHandler
+class nyq
+  extends rkg
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  
+  public nyq(nyp paramnyp, View paramView, BaseData paramBaseData)
   {
-    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    }
+  }
+  
+  private void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  {
+    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
+    ViewFactory.findClickableViewListener(paramJSONObject, new nyr(this, paramContext, paramBaseData, paramJSONObject));
+  }
+  
+  private void a(Container paramContainer, ProteusItemData paramProteusItemData)
+  {
+    if (paramContainer != null)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (paramInt1 == 200)
+      ViewBase localViewBase = paramContainer.getVirtualView();
+      Object localObject = localViewBase.findViewBaseByName("id_view_AdDownloadView");
+      if ((localObject != null) && ((localObject instanceof odd)))
       {
-        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
-          bhvh.a("sp_key_ad_soft_total_area", str2.trim());
+        localObject = (odd)localObject;
+        ((odd)localObject).b(false);
+        ((odd)localObject).a(false);
+        ((odd)localObject).a(null, true);
+      }
+      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (oai.a((AdData)paramProteusItemData)))
+      {
+        localObject = localViewBase.findViewBaseByName("id_inner_small_img");
+        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.k))) {
+          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.k, 10);
         }
-        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bhvh.a("sp_key_ad_soft_ad_max", str2.trim());
+        localObject = localViewBase.findViewBaseByName("id_inner_game_img1");
+        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.d))) {
+          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.a.d, 10);
         }
-        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
-          bhvh.a("sp_key_ad_soft_kd_max", str2.trim());
+        localObject = localViewBase.findViewBaseByName("id_inner_game_img2");
+        if ((localObject != null) && ((localObject instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.e))) {
+          oai.a(paramContainer.getContext(), (ViewBase)localObject, ((AdData)paramProteusItemData).a.a.e, 10);
+        }
+        localViewBase = localViewBase.findViewBaseByName("id_inner_game_img3");
+        if ((localViewBase != null) && ((localViewBase instanceof pme)) && (((AdData)paramProteusItemData).a.a != null) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).a.a.f))) {
+          oai.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).a.a.f, 10);
         }
       }
     }
-    return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  private void a(ViewBase paramViewBase)
   {
-    if (paramInt == 200)
+    if (paramViewBase == null) {}
+    do
     {
-      bhvh.a("sp_key_ad_soft_total_area", "0");
-      bhvh.a("sp_key_ad_soft_ad_max", "25");
-      bhvh.a("sp_key_ad_soft_kd_max", "25");
+      return;
+      paramViewBase = paramViewBase.findViewBaseByName("id_view_AdDownloadView");
+    } while ((paramViewBase == null) || (!(paramViewBase instanceof odd)));
+    ((odd)paramViewBase).a(false);
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    TemplateBean localTemplateBean;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramBaseData2 instanceof ProteusItemData));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
+      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+    } while (localTemplateBean == null);
+    if (paramBaseData1 != paramBaseData2) {}
+    try
+    {
+      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
+      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+      if (nyp.a(this.jdField_a_of_type_Nyp) != null) {
+        a(paramBaseData2, (Context)nyp.a(this.jdField_a_of_type_Nyp).get(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
+      }
+      this.jdField_a_of_type_AndroidViewView.setTag(2131362033, paramBaseData2);
+      return;
+    }
+    catch (Exception paramBaseData1)
+    {
+      for (;;)
+      {
+        paramBaseData1.printStackTrace();
+      }
     }
   }
 }

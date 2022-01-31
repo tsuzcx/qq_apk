@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abjn;
+import abjj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import axqw;
+import axqy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class JobSelectionActivity
@@ -15,7 +15,7 @@ public class JobSelectionActivity
   implements AdapterView.OnItemClickListener
 {
   private int jdField_a_of_type_Int;
-  private abjn jdField_a_of_type_Abjn;
+  private abjj jdField_a_of_type_Abjj;
   private ListView jdField_a_of_type_AndroidWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -25,7 +25,7 @@ public class JobSelectionActivity
     if (this.jdField_a_of_type_Boolean)
     {
       int i = paramInt;
-      if (paramInt >= ajty.c[0]) {
+      if (paramInt >= ajtw.c[0]) {
         i = paramInt + 2;
       }
       return i;
@@ -36,33 +36,33 @@ public class JobSelectionActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560800);
-    setTitle(2131693685);
+    super.setContentView(2131560799);
+    setTitle(2131693686);
     setLeftViewName(2131690331);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("param_id", -1);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("param_need_no_limit", false);
     this.b = getIntent().getBooleanExtra("param_from_consearch", false);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369306));
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Abjn = new abjn(this, null);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Abjn);
+    this.jdField_a_of_type_Abjj = new abjj(this, null);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Abjj);
     return true;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     this.jdField_a_of_type_Int = a(paramInt);
-    this.jdField_a_of_type_Abjn.notifyDataSetChanged();
+    this.jdField_a_of_type_Abjj.notifyDataSetChanged();
     if (this.b) {
-      axqw.b(this.app, "CliOper", "", "", "0X8006F0A", "0X8006F0A", 0, 0, this.jdField_a_of_type_Int + "", "", "", "");
+      axqy.b(this.app, "CliOper", "", "", "0X8006F0A", "0X8006F0A", 0, 0, this.jdField_a_of_type_Int + "", "", "", "");
     }
     paramAdapterView = new Intent();
     paramAdapterView.putExtra("param_id", this.jdField_a_of_type_Int);
     if (!this.b)
     {
-      paramAdapterView.putExtra("param_tag", bazj.e[this.jdField_a_of_type_Int]);
-      paramAdapterView.putExtra("param_name", bazj.d[this.jdField_a_of_type_Int]);
-      paramAdapterView.putExtra("param_tag_bg", bazj.b[this.jdField_a_of_type_Int]);
+      paramAdapterView.putExtra("param_tag", bazx.e[this.jdField_a_of_type_Int]);
+      paramAdapterView.putExtra("param_name", bazx.d[this.jdField_a_of_type_Int]);
+      paramAdapterView.putExtra("param_tag_bg", bazx.b[this.jdField_a_of_type_Int]);
     }
     setResult(-1, paramAdapterView);
     finish();

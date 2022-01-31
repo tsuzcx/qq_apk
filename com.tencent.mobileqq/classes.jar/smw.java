@@ -1,17 +1,15 @@
-import UserGrowth.stNotificationReq;
-import UserGrowth.stNotificationRsp;
+import UserGrowth.stReportItem;
+import UserGrowth.stWeishiReportReq;
+import UserGrowth.stWeishiReportRsp;
+import java.util.ArrayList;
 
 public class smw
-  extends sls<stNotificationRsp>
+  extends slp<stWeishiReportRsp>
 {
-  public smw(String paramString)
+  public smw(ArrayList<stReportItem> paramArrayList)
   {
-    super("Notification");
-    stNotificationReq localstNotificationReq = new stNotificationReq();
-    localstNotificationReq.linkStrategyArgs = snf.a();
-    localstNotificationReq.push_info = paramString;
-    this.a = localstNotificationReq;
-    sne.b("NotificationRequest", "stNotificationReq = " + localstNotificationReq.toString());
+    super("WeishiReport");
+    this.a = new stWeishiReportReq(paramArrayList);
   }
 }
 

@@ -1,60 +1,64 @@
+import android.content.Intent;
 import android.util.Log;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class slr
+  extends MSFServlet
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static slr jdField_a_of_type_Slr;
-  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
-  
-  public static slr a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (jdField_a_of_type_Slr == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Slr == null) {
-        jdField_a_of_type_Slr = new slr();
-      }
-      return jdField_a_of_type_Slr;
+    if (paramIntent == null) {
+      Log.e("weishi", "***onReceive request is null");
     }
+    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
+      return;
+    }
+    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
   }
   
-  public int a(sls paramsls, slj paramslj)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramsls == null) {}
+    if (paramIntent == null)
+    {
+      Log.e("weishi", "onSend request is null");
+      return;
+    }
     for (;;)
     {
-      return 1000004;
-      paramsls.a(paramslj);
-      paramsls.a = System.currentTimeMillis();
       try
       {
-        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), slu.class);
-        localWeishiIntent.setWithouLogin(true);
-        localWeishiIntent.a = ((slv)paramslj);
-        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
+        if ((paramIntent instanceof WeishiIntent))
         {
-          paramslj = BaseApplicationImpl.getApplication().getRuntime();
-          if (paramslj != null)
+          sls localsls = ((WeishiIntent)paramIntent).a;
+          slp localslp = localsls.a;
+          byte[] arrayOfByte2 = localslp.encode();
+          byte[] arrayOfByte1 = arrayOfByte2;
+          if (arrayOfByte2 == null)
           {
-            paramslj.startServlet(localWeishiIntent);
-            Log.i("weishi", "cmd=" + paramsls.uniKey() + ", pkgId=" + paramsls.a() + " submit to MSF, isLogin: " + paramslj.isLogin());
+            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localsls.a.uniKey());
+            arrayOfByte1 = new byte[4];
           }
-          else
-          {
-            Log.e("weishi", "app is null");
-          }
+          paramPacket.setTimeout(30000L);
+          Log.e("timeout", "timeout:30000");
+          paramPacket.setSSOCommand("SQQzoneSvc." + localsls.a.c());
+          Log.e("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localsls.a.c());
+          localslp.d = arrayOfByte1.length;
+          paramPacket.putSendData(arrayOfByte1);
+          Log.i("weishi-Servlet", "onSend request cmd=" + localsls.a.uniKey() + " is correct");
+          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+          return;
         }
       }
-      catch (Exception paramsls)
+      catch (Exception paramIntent)
       {
-        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramsls.getLocalizedMessage());
+        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
+        return;
       }
+      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
     }
-    return 0;
   }
 }
 

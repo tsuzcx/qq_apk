@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
-
-public class afqs
-  extends View.AccessibilityDelegate
+public abstract interface afqs
 {
-  public afqs(ContactsBaseFragment paramContactsBaseFragment) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
-    }
-    super.sendAccessibilityEvent(paramView, i);
-  }
+  public abstract void am_();
 }
 
 

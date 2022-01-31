@@ -1,12 +1,14 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.InnerAppReportDc4239.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bexy
+class bexy
+  implements DialogInterface.OnClickListener
 {
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
+  bexy(bexx parambexx) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    beyo.a().a().post(new InnerAppReportDc4239.1(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4));
+    bexx.a(this.a);
   }
 }
 

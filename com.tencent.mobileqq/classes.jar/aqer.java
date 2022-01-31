@@ -1,21 +1,40 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aqer
-  implements Handler.Callback
+public class aqer
+  extends aqeo
 {
-  aqer(aqeq paramaqeq) {}
+  private String h;
+  private String i;
   
-  public boolean handleMessage(Message paramMessage)
+  public aqer(Intent paramIntent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a.jdField_a_of_type_Bbgg != null) && (this.a.jdField_a_of_type_Bbgg.isShowing()) && (this.a.jdField_a_of_type_Aqez != null)) {
-      this.a.jdField_a_of_type_Aqez.a();
-    }
+    super(paramIntent);
+    this.h = paramIntent.getStringExtra("uin");
+    this.i = paramIntent.getStringExtra("uinname");
+  }
+  
+  private View a(String paramString, Drawable paramDrawable)
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558905, null);
+    TextView localTextView = (TextView)localView.findViewById(2131378528);
+    ImageView localImageView = (ImageView)localView.findViewById(2131368031);
+    localTextView.setText(paramString);
+    localImageView.setImageDrawable(paramDrawable);
+    return localView;
+  }
+  
+  protected View a()
+  {
+    return a(String.format("[%s]%s", new Object[] { ajya.a(2131704789), this.i }), bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+  }
+  
+  protected boolean h()
+  {
     return true;
   }
 }

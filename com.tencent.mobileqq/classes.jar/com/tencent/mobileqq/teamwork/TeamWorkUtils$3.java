@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamwork;
 
-import ayfv;
+import ayfx;
 
 public final class TeamWorkUtils$3
   implements Runnable
 {
   public void run()
   {
-    ayfv.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ayfx.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

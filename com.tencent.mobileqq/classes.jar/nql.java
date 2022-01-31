@@ -1,81 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class nql
-  extends ampb<nqk>
+  extends akdn
 {
-  public int a()
-  {
-    return 81;
-  }
+  public nql(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public Class<nqk> a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    return nqk.class;
-  }
-  
-  @NonNull
-  public nqk a(int paramInt)
-  {
-    if (paramInt == 0)
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        sfh.a((QQAppInterface)localAppRuntime);
-        return nqk.a();
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701270));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
       }
     }
-    return new nqk();
-  }
-  
-  @Nullable
-  public nqk a(ampi[] paramArrayOfampi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+    else {
+      return;
     }
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return nqk.a(paramArrayOfampi);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nqk paramnqk)
-  {
-    paramnqk.b();
-    paramnqk.a();
-    paramnqk.c();
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return sfh.a((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701249));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846186);
   }
 }
 

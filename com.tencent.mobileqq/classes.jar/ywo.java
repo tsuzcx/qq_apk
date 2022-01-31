@@ -1,67 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
 
 class ywo
-  implements yxh
+  implements View.OnClickListener
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  ywo(ywn paramywn) {}
+  
+  public void onClick(View paramView)
   {
-    try
+    boolean bool;
+    if (this.a.a() != null)
     {
-      paramString = new JSONObject(paramVarArgs[0]);
-      yxs.a("GdtAppJumpJsCallHandler", "handleJsCallRequest " + paramString);
-      paramString.optString("adId");
-      paramString.optString("downloadUrlType");
-      if ("1".equals(paramString.optString("autoDownload"))) {}
-      for (;;)
-      {
-        new Bundle();
-        GdtBaseAdItem localGdtBaseAdItem = GdtBaseAdItem.a(paramVarArgs[0]);
-        paramVarArgs = paramywn.a();
-        if (paramVarArgs != null)
-        {
-          paramString = paramVarArgs.getIntent();
-          if (TextUtils.isEmpty(paramString.getStringExtra("big_brother_ref_source_key")))
-          {
-            paramString = paramString.getStringExtra("big_brother_source_key");
-            localGdtBaseAdItem.a = new Bundle();
-            localGdtBaseAdItem.a.putString("big_brother_ref_source_key", paramString);
-          }
-        }
-        else
-        {
-          yyq.a(localGdtBaseAdItem);
-          if (TextUtils.isEmpty(localGdtBaseAdItem.f)) {
-            break label187;
-          }
-          paramString = localGdtBaseAdItem.f;
-          label157:
-          if (paramywn == null) {
-            break label196;
-          }
-        }
-        label187:
-        label196:
-        for (paramywn = paramywn.a();; paramywn = null)
-        {
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "doAppJump", paramywn, paramString);
-          return true;
-          paramString = paramString.getStringExtra("big_brother_ref_source_key");
-          break;
-          paramString = localGdtBaseAdItem.b;
-          break label157;
-        }
+      bool = this.a.a().load(this.a.getActivity());
+      if (!bool) {
+        break label59;
       }
     }
-    catch (Exception paramywn)
+    label59:
+    for (paramView = "loading ad data";; paramView = "load ad data error")
     {
-      yxs.d("GdtAppJumpJsCallHandler", "handleJsCallRequest", paramywn);
-      return true;
+      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      return;
+      bool = false;
+      break;
     }
   }
 }

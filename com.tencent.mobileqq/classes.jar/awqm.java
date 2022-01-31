@@ -1,78 +1,43 @@
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class awqm
-  extends awrv
+class awqm
+  implements View.OnClickListener
 {
-  public awqm(baxk parambaxk)
-  {
-    super(parambaxk);
-  }
+  awqm(awqj paramawqj, awng paramawng) {}
   
-  protected awra<awog, awwp> a(baxk parambaxk)
+  public void onClick(View paramView)
   {
-    return new awqq(parambaxk);
-  }
-  
-  public void a(awoe paramawoe, awwo paramawwo)
-  {
-    paramawoe = (awof)paramawoe;
-    LinearLayout localLinearLayout = ((awwh)paramawwo).a();
-    if (localLinearLayout != null)
+    if (this.jdField_a_of_type_Awng.l == 1)
     {
-      List localList = paramawoe.a();
-      if (localList != null)
-      {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), paramawoe.a());
-        int i = 0;
-        if (i < k)
-        {
-          awog localawog = (awog)localList.get(i);
-          View localView = LayoutInflater.from(paramawwo.a().getContext()).inflate(2131562383, null);
-          awwj localawwj = new awwj(localView);
-          localView.setTag(2131379208, localawog);
-          localView.setTag(2131379213, localawwj);
-          localView.setTag(2131379209, Integer.valueOf(i));
-          localView.setTag(2131379207, Integer.valueOf(localList.size()));
-          localView.setTag(2131379210, this.a);
-          awwb.a(localawog, k, i);
-          int m = localawog.a();
-          int n = localawog.b();
-          if ((localawog instanceof awoh)) {}
-          for (int j = ((awoh)localawog).r;; j = 0)
-          {
-            awwb.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            this.a.a(localawog, localawwj);
-            i += 1;
-            break;
-          }
-        }
-      }
+      axqy.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
     }
-    if (paramawwo.b() != null) {
-      paramawwo.b().setVisibility(8);
-    }
-    if ((paramawoe instanceof awnq))
+    Object localObject;
+    for (;;)
     {
-      paramawoe = ((awnq)paramawoe).a();
-      paramawwo = ((awwh)paramawwo).a();
-      if (paramawwo != null)
-      {
-        if (paramawoe == null) {
-          break label325;
-        }
-        paramawwo.a().setVisibility(0);
-        this.a.a(paramawoe, paramawwo);
+      localObject = (ajxl)awqj.a(this.jdField_a_of_type_Awqj).getManager(51);
+      if ((((ajxl)localObject).b(this.jdField_a_of_type_Awng.b)) || (((ajxl)localObject).d(this.jdField_a_of_type_Awng.b))) {
+        break;
       }
+      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Awng.b, null, 3020, 3, this.jdField_a_of_type_Awng.c, null, null, paramView.getContext().getString(2131689628), null);
+      paramView.getContext().startActivity((Intent)localObject);
+      return;
+      axqy.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      axqy.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
     }
-    return;
-    label325:
-    paramawwo.a().setVisibility(8);
+    if (((ajxl)localObject).b(this.jdField_a_of_type_Awng.b))
+    {
+      this.jdField_a_of_type_Awng.k = 2;
+      awqj.a(this.jdField_a_of_type_Awqj).notifyDataSetChanged();
+      return;
+    }
+    this.jdField_a_of_type_Awng.k = 1;
+    awqj.a(this.jdField_a_of_type_Awqj).notifyDataSetChanged();
   }
 }
 

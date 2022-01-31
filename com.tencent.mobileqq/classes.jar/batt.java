@@ -1,9 +1,6 @@
-public class batt
+public abstract interface batt
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public abstract void a();
 }
 
 

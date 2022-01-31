@@ -1,23 +1,25 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
 
-public class aniq
-  implements View.OnClickListener
+public final class aniq
+  implements Parcelable.Creator
 {
-  public aniq(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  public IPSiteModel.Gxzb a(Parcel paramParcel)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
-    {
-      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
-      altd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
-    }
+    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
+    localGxzb.appid = paramParcel.readInt();
+    localGxzb.appName = paramParcel.readString();
+    localGxzb.cover = paramParcel.readString();
+    localGxzb.feeType = paramParcel.readInt();
+    localGxzb.id = paramParcel.readString();
+    localGxzb.name = paramParcel.readString();
+    return localGxzb;
+  }
+  
+  public IPSiteModel.Gxzb[] a(int paramInt)
+  {
+    return new IPSiteModel.Gxzb[paramInt];
   }
 }
 

@@ -1,16 +1,15 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
 public class aqhq
   implements View.OnClickListener
 {
-  public aqhq(LangSettingFragment paramLangSettingFragment) {}
+  public aqhq(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
   
   public void onClick(View paramView)
   {
-    LangSettingFragment.a(this.a).dismiss();
+    this.a.onBackEvent();
   }
 }
 

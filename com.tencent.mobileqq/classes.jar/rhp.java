@@ -1,6 +1,19 @@
-public abstract interface rhp
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+
+public final class rhp
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
+  {
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
+  }
 }
 
 

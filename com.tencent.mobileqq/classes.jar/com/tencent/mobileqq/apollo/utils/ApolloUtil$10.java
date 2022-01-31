@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import bcpw;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 final class ApolloUtil$10
@@ -8,9 +8,9 @@ final class ApolloUtil$10
 {
   public void run()
   {
-    bcpw localbcpw = bcpw.a(BaseApplicationImpl.getApplication(), 1, this.a, 1);
-    localbcpw.a();
-    localbcpw.a();
+    bcql localbcql = bcql.a(BaseApplicationImpl.getApplication(), 1, this.a, 1);
+    localbcql.a();
+    localbcql.a();
   }
 }
 

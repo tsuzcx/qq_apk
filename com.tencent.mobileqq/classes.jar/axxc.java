@@ -1,18 +1,12 @@
-import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
 
-public class axxc
+class axxc
+  implements View.OnClickListener
 {
-  public Bundle a;
-  public View a;
-  public LinearLayout a;
-  public boolean a;
-  public View b;
-  public LinearLayout b;
-  public View c;
-  public View d;
-  public View e;
+  axxc(axxb paramaxxb) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

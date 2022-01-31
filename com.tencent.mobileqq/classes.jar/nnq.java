@@ -1,26 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
 
 public class nnq
+  implements DialogInterface.OnCancelListener
 {
-  public nnq(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
+  public nnq(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-  }
-  
-  @QQPermissionGrant(1)
-  public void grant()
-  {
-    SosoInterface.a(new nnw(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

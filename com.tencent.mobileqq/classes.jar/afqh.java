@@ -1,13 +1,11 @@
-import mqq.os.MqqHandler;
-
 class afqh
-  implements afry
+  implements aftn
 {
-  afqh(afqe paramafqe) {}
+  afqh(afqc paramafqc) {}
   
-  public void a()
+  public long a()
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    return afqc.a(this.a);
   }
 }
 

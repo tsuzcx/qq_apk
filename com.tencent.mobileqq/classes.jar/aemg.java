@@ -1,22 +1,102 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.List;
 
-class aemg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aemg
+  extends akat
 {
-  aemg(aemf paramaemf) {}
+  public aemg(aemd paramaemd) {}
   
-  public void onGlobalLayout()
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (this.a.T)
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
     {
-      this.a.T = false;
-      aemf.a(this.a).sendEmptyMessageDelayed(23, 100L);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, " doOnCreate_initUI onGlobalLayout");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
+    if ((paramSendMessageHandler.b(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      ajyi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSendMessageHandler.a(paramString1), paramString2, true);
+      if ((paramInt2 == 112) || (paramInt2 == 113))
+      {
+        ajys.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 6);
+        ajys.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
+    this.a.e(196608);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.u = true;
+    this.a.a(262144, paramakaq, paramLong);
+  }
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.revoked_troop_msg", 2, "isSuccess:" + paramBoolean1);
+    }
+    if (!paramBoolean1) {
+      return;
+    }
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject = (MessageRecord)paramList.get(0);
+      if (this.a.jdField_a_of_type_Azno != null)
+      {
+        int i = this.a.jdField_a_of_type_Azno.b();
+        if (i != -1)
+        {
+          asks localasks = (asks)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
+          long l = localasks.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          if (((MessageRecord)localObject).uniseq == l) {
+            localasks.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, i);
+          }
+          this.a.jdField_a_of_type_Azno.a(((MessageRecord)localObject).uniseq);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder("onMsgRevokeNotice==>");
+            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
+            QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+    super.a(paramBoolean1, paramList, paramBoolean2);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.e(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 

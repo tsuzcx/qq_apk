@@ -1,19 +1,14 @@
-import java.util.Comparator;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 final class awir
-  implements Comparator<awih>
+  implements ThreadFactory
 {
-  public int a(awih paramawih1, awih paramawih2)
+  private final AtomicInteger a = new AtomicInteger(1);
+  
+  public Thread newThread(Runnable paramRunnable)
   {
-    long l1 = paramawih1.c();
-    long l2 = paramawih2.c();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 

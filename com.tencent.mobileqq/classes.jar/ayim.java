@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ayim
-  implements View.OnClickListener
+class ayim
+  implements DialogInterface.OnDismissListener
 {
-  public ayim(GroupTeamWorkListActivity paramGroupTeamWorkListActivity, View paramView) {}
+  ayim(ayil paramayil) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
-    bbjn.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.c(), 1, false);
+    this.a.a.a = null;
   }
 }
 

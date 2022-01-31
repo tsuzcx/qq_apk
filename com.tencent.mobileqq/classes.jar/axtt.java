@@ -3,9 +3,8 @@ public abstract class axtt
   public String a;
   public String b;
   public String c;
-  public String d;
   
-  public abstract String a(int paramInt);
+  public abstract String a();
 }
 
 

@@ -1,47 +1,64 @@
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aodn
-  extends WebViewPlugin
+  extends anwl
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aobp jdField_a_of_type_Aobp;
+  private bcqf jdField_a_of_type_Bcqf;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public aodn(AIOEmotionFragment paramAIOEmotionFragment) {}
+  
+  public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, aobp paramaobp, SessionInfo paramSessionInfo, bcqf parambcqf)
   {
-    boolean bool = false;
-    if ((!"emoticon".equals(paramString2)) || (("showEmoticon".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))) {}
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      paramString1 = new SearchEmoticonWebBean();
-      paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("emt_name", "");
-      paramString1.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriUrl", "");
-      paramString1.jdField_c_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriMd5", "");
-      paramString1.jdField_a_of_type_Int = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
-      paramString1.jdField_b_of_type_Int = paramJsBridgeListener.optInt("emt_oriWidth", 0);
-      paramString1.jdField_c_of_type_Int = paramJsBridgeListener.optInt("emt_oriHeight", 0);
-      paramString1.jdField_d_of_type_Int = paramJsBridgeListener.optInt("emt_type", 0);
-      paramString1.jdField_d_of_type_JavaLangString = paramJsBridgeListener.optString("emt_packCoverUrl", "");
-      paramString1.e = paramJsBridgeListener.optString("emt_packId", "");
-      paramString1.f = paramJsBridgeListener.optString("emt_packName", "");
-      paramString1.g = paramJsBridgeListener.optString("emt_miniId", "");
-      paramString1.h = paramJsBridgeListener.optString("emt_miniName", "");
-      SearchEmoticonFragment.a(this.mRuntime.a(), paramString1);
-      bool = true;
-      return bool;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aobp = paramaobp;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Bcqf = parambcqf;
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOEmotionFragment", 2, "onJsonComplete:" + paramEmoticonPackage.epId + " ,currEpid:" + this.jdField_a_of_type_Aobp.a.epId);
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPlugin", 2, "showEmoticon error : " + bfnd.a(paramJsBridgeListener));
-        }
+    if (this.jdField_a_of_type_Int == 32) {
+      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Aobp.a.epId))) {
+        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, bool);
       }
     }
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if (paramInt != 0) {
+        break label233;
+      }
+    } while (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_Aobp.a.epId));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+    adue.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Aobp, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bcqf, true);
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
+    paramBundle.obj = paramEmoticonPackage.name;
+    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
+    return;
+    label233:
+    adue.a(this.jdField_a_of_type_Int + 1000, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_Aobp, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Bcqf, true);
   }
 }
 

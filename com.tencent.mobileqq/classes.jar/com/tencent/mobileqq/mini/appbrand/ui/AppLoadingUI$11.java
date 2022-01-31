@@ -21,7 +21,7 @@ class AppLoadingUI$11
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.13.0.00013");
       if ((AppLoadingUI.access$000(this.this$0) != null) && (AppLoadingUI.access$000(this.this$0).config != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(AppLoadingUI.access$000(this.this$0).config.baselibMiniVersion, paramBundle))))
       {
         AppBrandTask.runTaskOnUiThread(new AppLoadingUI.11.1(this));

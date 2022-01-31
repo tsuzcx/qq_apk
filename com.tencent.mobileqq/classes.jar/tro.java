@@ -1,7 +1,10 @@
 public class tro
-  extends trp
+  extends trm
 {
   public String a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -1,165 +1,80 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class mqh
-  extends mpj
 {
-  public mqi a;
-  public int b = 2;
-  public int c = 1;
-  public String g;
+  public int a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
   
-  mqh(mpc parammpc)
+  public mqh(int paramInt1, String paramString, int paramInt2)
   {
-    super(parammpc);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt2;
   }
   
-  public void a()
+  public int a()
   {
-    QLog.w(this.i, 1, "SendRedBag, cancel");
-    Intent localIntent = new Intent("com.qwallet.report");
-    localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "video");
-    localIntent.putExtra("type", 999);
-    localIntent.putExtra("params", localBundle);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getBaseContext().sendBroadcast(localIntent);
-    this.b = 4;
-    a("cancel");
+    return this.jdField_b_of_type_Int;
   }
   
-  void a(String paramString)
+  public String a()
   {
-    mpx.a(this.c);
-    mpx.b(this.b);
-    if (this.b == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ltx.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Mqi != null)
-      {
-        this.jdField_a_of_type_Mqi.a(this);
-        this.jdField_a_of_type_Mqi = null;
-      }
-      return;
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean a(int paramInt, Intent paramIntent)
+  public void a(int paramInt)
   {
-    boolean bool2 = false;
-    this.b = 3;
-    String str = this.i;
-    Object localObject = new StringBuilder().append("SendRedBag_onResult, resultCode[").append(paramInt).append("], intent[");
-    boolean bool1;
-    if (paramIntent != null)
-    {
-      bool1 = true;
-      QLog.w(str, 1, bool1 + "]");
-      if (paramIntent == null) {
-        break label260;
-      }
-      AudioHelper.a(ajyc.a(2131713825), paramIntent.getExtras());
-      str = String.valueOf(paramIntent.getExtras().get("result"));
-      localObject = paramIntent.getStringExtra("retmsg");
-      paramIntent = paramIntent.getStringExtra("data");
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.g = new JSONObject(paramIntent).getString("send_listid");
-        }
-        if ("-11001".equals(str)) {
-          this.b = 4;
-        }
-        QLog.w(this.i, 1, "SendRedBag_onResult, result[" + str + "], data[" + paramIntent + "], retmsg[" + (String)localObject + "], send_listid[" + this.g + "], mErrorType[" + this.b + "]");
-        bool1 = "0".equals(str);
-        if (bool1) {
-          this.b = 0;
-        }
-        paramIntent = str;
-        a(paramIntent);
-        return bool1;
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      label260:
-      paramIntent = "null";
-      bool1 = bool2;
-    }
+    this.jdField_c_of_type_Int = paramInt;
   }
   
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, mqi parammqi)
+  public void a(String paramString)
   {
-    this.b = 2;
-    long l1 = mpy.a(paramVideoAppInterface);
-    if (l1 == 0L) {
-      return false;
-    }
-    long l2 = a(paramVideoAppInterface);
-    if (l2 == 0L) {
-      return false;
-    }
-    if (paramActivity == null)
-    {
-      QLog.w(this.i, 1, "SendRedBag, Activity为空");
-      return false;
-    }
-    String str = a(paramVideoAppInterface);
-    paramVideoAppInterface = b(paramVideoAppInterface);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("recv_uin", l2);
-      localJSONObject.put("recv_name", paramVideoAppInterface);
-      localJSONObject.put("bus_type", 2);
-      localJSONObject.put("channel", "16384");
-      localJSONObject.put("total_num", "2");
-      Intent localIntent = new Intent(BaseApplication.getContext(), SendHbActivity.class);
-      localIntent.putExtra("userId", l1);
-      localIntent.putExtra("userName", str);
-      if (paramInt == 2)
-      {
-        localIntent.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket2");
-        localIntent.putExtra("come_from", 2);
-        localIntent.putExtra("extra_data", localJSONObject.toString());
-        localIntent.setFlags(536870912);
-        paramActivity.startActivityForResult(localIntent, 801);
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
-        }
-        this.jdField_a_of_type_Mqi = parammqi;
-        this.b = 1;
-        this.c = paramInt;
-        mpx.i();
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        localJSONException.putExtra("app_info", "appid#0|bargainor_id#0|channel#bqredpacket1");
-      }
-    }
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

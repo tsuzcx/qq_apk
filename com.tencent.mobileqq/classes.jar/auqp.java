@@ -1,20 +1,14 @@
-import android.os.Handler;
 import android.view.animation.Animation;
 import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
 
 class auqp
-  extends bfmg
+  extends bfmx
 {
-  auqp(auqi paramauqi) {}
+  auqp(auqk paramauqk) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.a.a.setVisibility(0);
   }
 }
 

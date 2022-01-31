@@ -1,12 +1,12 @@
 package cooperation.comic.jsp;
 
-import bghs;
+import bgij;
 import org.json.JSONObject;
 
 public class QQComicJsPlugin$2
   implements Runnable
 {
-  public QQComicJsPlugin$2(bghs parambghs, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  public QQComicJsPlugin$2(bgij parambgij, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {

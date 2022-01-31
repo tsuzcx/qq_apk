@@ -1,81 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class vgt
-  implements View.OnTouchListener
+class vgt
+  implements syq<tmn, toh>
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private vgs jdField_a_of_type_Vgs;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  vgt(vgr paramvgr) {}
   
-  public vgt(vgs paramvgs)
+  public void a(@NonNull tmn paramtmn, @Nullable toh paramtoh, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Vgs = paramvgs;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Vgs == null) {}
-    do
+    ved.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtoh != null))
     {
-      do
-      {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Vgs.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Vgs.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_Vgs.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_Vgs.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Vgs.onClick(paramView);
+      ved.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramtoh.toString());
+      paramtmn = new tbu(paramtoh.a, paramtoh.c, paramtoh.d, paramtoh.e, paramtoh.f, paramtmn.d, paramtmn.e);
+      this.a.a(0, paramtmn);
+      return;
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
-    }
-    this.jdField_a_of_type_Vgs.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    ved.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
+import cooperation.qzone.model.GpsInfo4LocalImage;
 
 public final class bhfe
-  implements Parcelable.Creator<WeishiOperationInfo>
+  implements Parcelable.Creator<GpsInfo4LocalImage>
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
+  public GpsInfo4LocalImage a(Parcel paramParcel)
   {
-    return new WeishiOperationInfo(paramParcel);
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
   }
   
-  public WeishiOperationInfo[] a(int paramInt)
+  public GpsInfo4LocalImage[] a(int paramInt)
   {
-    return new WeishiOperationInfo[paramInt];
+    return null;
   }
 }
 

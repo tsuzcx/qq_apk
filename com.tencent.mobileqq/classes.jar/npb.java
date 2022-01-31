@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 public final class npb
-  implements Parcelable.Creator<VideoAdInfo>
+  implements Parcelable.Creator<VideoInfo>
 {
-  public VideoAdInfo a(Parcel paramParcel)
+  public VideoInfo a(Parcel paramParcel)
   {
-    return new VideoAdInfo(paramParcel);
+    return new VideoInfo(paramParcel);
   }
   
-  public VideoAdInfo[] a(int paramInt)
+  public VideoInfo[] a(int paramInt)
   {
-    return new VideoAdInfo[paramInt];
+    return new VideoInfo[paramInt];
   }
 }
 

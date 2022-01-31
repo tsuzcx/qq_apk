@@ -1,587 +1,671 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.2;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.3;
+import com.tencent.mobileqq.apollo.store.ApolloDiyTextActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeSet;
-import mqq.manager.WtloginManager;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.MobileQQ;
+import mqq.manager.Manager;
+import org.json.JSONArray;
 
 public class ajco
-  implements ajdn
+  implements Manager
 {
-  ajcp jdField_a_of_type_Ajcp = new ajcp(this);
-  private ajdy jdField_a_of_type_Ajdy;
-  public ajrf a;
-  private bfnk jdField_a_of_type_Bfnk;
-  public CmGameStartChecker.StartCheckParam a;
-  public CmGameInitParams a;
-  public WeakReference<Context> a;
-  public Set<String> a;
-  public boolean a;
-  private WeakReference<BaseChatPie> b;
+  public static final Class[] a;
+  public int a;
+  private aiws jdField_a_of_type_Aiws;
+  protected BroadcastReceiver a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ApolloCmdChannel jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CmGameManager.2(this);
+  public List<ajcr> a;
+  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private ConcurrentHashMap<Integer, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private CopyOnWriteArrayList<ajcf> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public ajco(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  static
   {
-    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
-    BaseChatPie localBaseChatPie = a();
-    if (localBaseChatPie != null)
-    {
-      String str = localBaseChatPie.a().jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaUtilSet.add(str);
-      this.b = new WeakReference(localBaseChatPie);
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Ajrf = new ajrf();
-    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
-    paramActivity = new ajdy(paramActivity, paramStartCheckParam);
-    paramActivity.a(this);
-    this.jdField_a_of_type_Ajdy = paramActivity;
-    this.jdField_a_of_type_Bfnk = new bfnk(Looper.getMainLooper(), this.jdField_a_of_type_Ajdy);
-    this.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_ArrayOfJavaLangClass = new Class[] { ApolloGameActivity.class, ApolloDiyTextActivity.class };
   }
   
-  public static ajco a()
+  public ajco(AppInterface paramAppInterface)
   {
-    return ajae.a();
-  }
-  
-  public static ajco a(String paramString)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = a();
-    }
-    ajco localajco;
-    do
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    QLog.i("cmgame_process.CmGameManager", 1, "[CmGameManager] created.");
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel = new ApolloCmdChannel(ajac.a());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajcq();
+    paramAppInterface = new IntentFilter();
+    paramAppInterface.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
+    try
     {
-      return localObject;
-      localajco = a();
-      if ((localajco == null) || (localajco.jdField_a_of_type_JavaUtilSet == null)) {
-        break;
+      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramAppInterface, "com.tencent.msg.permission.pushnotify", null);
       }
-      localObject = localajco;
-    } while (localajco.jdField_a_of_type_JavaUtilSet.contains(paramString));
-    return null;
+      ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, 64, null, true);
+      return;
+    }
+    catch (Throwable paramAppInterface)
+    {
+      for (;;)
+      {
+        QLog.e("cmgame_process.CmGameManager", 1, paramAppInterface, new Object[0]);
+      }
+    }
   }
   
-  private BaseChatPie a()
+  private void c()
   {
-    Object localObject = ajae.a();
-    if (localObject != null)
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      return;
+    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("apollo_sp", 4);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt("sp_key_exit_game_guide_count_limit", 0);
+    if (localSharedPreferences.getInt("sp_key_exit_show_game_box_guide", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = (airz)((AppInterface)localObject).getManager(153);
-      if (localObject != null)
+      this.jdField_b_of_type_Boolean = bool;
+      localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences("apollo_sp" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 4);
+      this.jdField_a_of_type_Int = localSharedPreferences.getInt("sp_key_exit_game_guide_count", 0);
+      e();
+      if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (this.jdField_a_of_type_Boolean)
       {
-        localObject = ((airz)localObject).a();
-        if (localObject != null) {
-          return (BaseChatPie)((WeakReference)localObject).get();
+        WindowManager localWindowManager = (WindowManager)BaseApplicationImpl.getApplication().getSystemService("window");
+        if (localWindowManager != null)
+        {
+          int i = localWindowManager.getDefaultDisplay().getWidth();
+          if (i <= 480)
+          {
+            this.jdField_a_of_type_Boolean = false;
+            QLog.e("cmgame_process.CmGameManager", 1, new Object[] { "initGameExitData current display not should show game exit guide width:", Integer.valueOf(i) });
+          }
+        }
+        if (localSharedPreferences.contains("exit_game_guide_today_" + ApolloUtil.b())) {
+          this.jdField_a_of_type_Boolean = false;
         }
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "initGameExitData mGameExitCurrentCount:", Integer.valueOf(this.jdField_a_of_type_Int), ",mGameExitLimitCount:", Integer.valueOf(this.jdField_b_of_type_Int), ",mShouldShowGameGuide:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",mShouldShowGameBoxGuide:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+      return;
+    }
+  }
+  
+  private void d()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences("apollo_sp" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 4);
+    String str1 = "exit_game_guide_today_" + ApolloUtil.b();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+    if (((SharedPreferences)localObject1).contains(str1)) {
+      QLog.e("cmgame_process.CmGameManager", 1, "recordTodayCount today has show");
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      Object localObject2 = ((SharedPreferences)localObject1).getAll();
+      localObject1 = new ArrayList();
+      if (localObject2 != null)
+      {
+        localObject2 = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+          String str2 = (String)localEntry.getKey();
+          if ((str2 != null) && (str2.startsWith("exit_game_guide_today_"))) {
+            ((List)localObject1).add(localEntry.getKey());
+          }
+        }
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          localEditor.remove((String)((Iterator)localObject1).next());
+        }
+      }
+      localEditor.putInt(str1, 1);
+    }
+  }
+  
+  private void e()
+  {
+    int i = 0;
+    String[] arrayOfString = new String[4];
+    arrayOfString[0] = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_play.png";
+    arrayOfString[1] = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_play_landscape.png";
+    arrayOfString[2] = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_plus.png";
+    arrayOfString[3] = "https://cmshow.gtimg.cn/client/img/cmgame_framwork_guide_plus_landscape.png";
+    while (i < arrayOfString.length)
+    {
+      ajhs.a(arrayOfString[i]);
+      i += 1;
+    }
+  }
+  
+  private void f()
+  {
+    int i = 0;
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp() == null)) {}
+    for (;;)
+    {
+      return;
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 4).getString(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_" + "cmgame_sp_dev_game_list", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "initDevGameList get gameList:", localObject });
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        continue;
+      }
+      if (((String)localObject).equals("1"))
+      {
+        this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1));
+        return;
+      }
+      try
+      {
+        localObject = new JSONArray((String)localObject);
+        while (i < ((JSONArray)localObject).length())
+        {
+          this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+          i += 1;
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameManager", 1, "initDevGameList e:", localException);
+      }
+    }
+  }
+  
+  /* Error */
+  public aiws a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 377	ajco:c	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifne +9 -> 17
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: aload_2
+    //   16: areturn
+    //   17: aload_0
+    //   18: getfield 379	ajco:jdField_a_of_type_Aiws	Laiws;
+    //   21: ifnonnull +29 -> 50
+    //   24: aload_0
+    //   25: new 381	aiws
+    //   28: dup
+    //   29: invokespecial 382	aiws:<init>	()V
+    //   32: putfield 379	ajco:jdField_a_of_type_Aiws	Laiws;
+    //   35: invokestatic 235	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   38: ifeq +12 -> 50
+    //   41: ldc 70
+    //   43: iconst_2
+    //   44: ldc_w 384
+    //   47: invokestatic 386	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: aload_0
+    //   51: getfield 379	ajco:jdField_a_of_type_Aiws	Laiws;
+    //   54: astore_2
+    //   55: goto -42 -> 13
+    //   58: astore_2
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_2
+    //   62: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	63	0	this	ajco
+    //   6	2	1	bool	boolean
+    //   12	43	2	localaiws	aiws
+    //   58	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	58	finally
+    //   17	50	58	finally
+    //   50	55	58	finally
+  }
+  
+  public ajcf a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajcf localajcf = (ajcf)localIterator.next();
+      if ((localajcf != null) && (!ajac.a(localajcf.a())) && (!ajac.b(localajcf.a()))) {
+        return localajcf;
+      }
     }
     return null;
   }
   
-  public static void a(String paramString)
+  public ajcf a(int paramInt)
   {
-    ajco localajco = a();
-    if ((localajco != null) && (localajco.jdField_a_of_type_JavaUtilSet != null)) {
-      localajco.jdField_a_of_type_JavaUtilSet.add(paramString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      ajcf localajcf = (ajcf)localIterator.next();
+      if ((localajcf != null) && (paramInt == localajcf.a())) {
+        return localajcf;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameMainManager", 2, "onShare2Aio currentApolloGame:" + localajco + ",aioUin:" + paramString);
+    return null;
+  }
+  
+  public ajcf a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 <= 0) {}
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, "[getLauncher], invalid gameId.");
+        }
+        localajcf = null;
+        return localajcf;
+      }
+      finally {}
+      ajcf localajcf = new ajcf(paramInt1);
+      localajcf.d = paramInt2;
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, localajcf);
+      QLog.i("cmgame_process.CmGameManager", 1, "add a new launcher, gameId:" + paramInt1 + ",total size:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
     }
   }
   
-  public static void i()
+  /* Error */
+  public ajcf a(long paramLong)
   {
-    ajco localajco = a();
-    if ((localajco != null) && (localajco.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
-      VipUtils.a(null, "cmshow", "Apollo", "clk_game_banner", 3, 0, new String[] { localajco.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + "" });
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 47	ajco:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 388	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   9: astore 6
+    //   11: aload 6
+    //   13: invokeinterface 290 1 0
+    //   18: ifeq +49 -> 67
+    //   21: aload 6
+    //   23: invokeinterface 294 1 0
+    //   28: checkcast 390	ajcf
+    //   31: astore 5
+    //   33: aload 5
+    //   35: ifnull -24 -> 11
+    //   38: aload 5
+    //   40: invokevirtual 423	ajcf:a	()Lcom/tencent/mobileqq/apollo/ApolloSurfaceView;
+    //   43: astore 7
+    //   45: aload 7
+    //   47: ifnull -36 -> 11
+    //   50: aload 7
+    //   52: invokevirtual 429	com/tencent/mobileqq/apollo/ApolloSurfaceView:getLuaState	()J
+    //   55: lstore_3
+    //   56: lload_3
+    //   57: lload_1
+    //   58: lcmp
+    //   59: ifne -48 -> 11
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: aload 5
+    //   66: areturn
+    //   67: aconst_null
+    //   68: astore 5
+    //   70: goto -8 -> 62
+    //   73: astore 5
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: aload 5
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	this	ajco
+    //   0	80	1	paramLong	long
+    //   55	2	3	l	long
+    //   31	38	5	localajcf	ajcf
+    //   73	5	5	localObject	Object
+    //   9	13	6	localIterator	Iterator
+    //   43	8	7	localApolloSurfaceView	com.tencent.mobileqq.apollo.ApolloSurfaceView
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	73	finally
+    //   11	33	73	finally
+    //   38	45	73	finally
+    //   50	56	73	finally
   }
   
-  public QQAppInterface a()
+  public ApolloCmdChannel a()
   {
-    AppInterface localAppInterface = ajae.a();
-    if (!(localAppInterface instanceof QQAppInterface)) {
-      return null;
+    return this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel;
+  }
+  
+  public String a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) != null) {
+      return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
     }
-    return (QQAppInterface)localAppInterface;
+    return "^(apollo_game_[_a-zA-Z0-9.]*|apollo_aio_game[_a-zA-Z0-9.]*)";
+  }
+  
+  public List<ajcr> a()
+  {
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    Collections.sort(localArrayList, new ajcp(this));
+    return localArrayList;
   }
   
   public void a()
   {
-    if (this.b == null) {}
-    BaseChatPie localBaseChatPie;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameManager", 1, "checkValidGameTask");
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      localBaseChatPie = (BaseChatPie)this.b.get();
-    } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.a() != null));
+      ajcr localajcr = (ajcr)localIterator.next();
+      if (localajcr != null) {
+        if (localajcr.jdField_a_of_type_JavaLangRefWeakReference == null)
+        {
+          localArrayList.add(localajcr);
+          QLog.e("cmgame_process.CmGameManager", 1, "checkValidGameTask remove invalid 1 gameTask:" + localajcr.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+        }
+        else
+        {
+          if (localajcr.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            localArrayList.add(localajcr);
+          }
+          QLog.e("cmgame_process.CmGameManager", 1, "checkValidGameTask remove invalid 2 gameTask:" + localajcr.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
   }
   
-  public void a(Activity paramActivity)
+  public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.a(paramActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "ssoCmdRule gameId: " + paramInt + ", rule: ", paramString });
+    }
+    if ((paramInt > 0) && (!TextUtils.isEmpty(paramString))) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), paramString);
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    a();
+    QLog.d("cmgame_process.CmGameManager", 1, "onGameActivityCreate activity" + paramActivity + " mRunningTaskList.size():" + this.jdField_a_of_type_JavaUtilList.size());
+    if ((paramStartCheckParam != null) && (paramActivity != null)) {
+      if (paramStartCheckParam.gameId != 3112) {}
     }
+    label254:
     for (;;)
     {
-      try
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      ajcr localajcr;
+      while (localIterator.hasNext())
       {
-        Object localObject = new JSONObject(paramString);
-        paramString = new JSONObject();
-        localObject = ((JSONObject)localObject).getString("puin");
-        AppInterface localAppInterface = ajae.a();
-        if (localAppInterface == null) {
+        localajcr = (ajcr)localIterator.next();
+        if ((localajcr != null) && (localajcr.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId == paramStartCheckParam.gameId))
+        {
+          localajcr.jdField_a_of_type_Int = 1;
+          localajcr.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+          QLog.d("cmgame_process.CmGameManager", 1, "onGameActivityCreate foundTask" + localajcr);
+        }
+      }
+      for (;;)
+      {
+        if (localajcr != null) {
+          break label254;
+        }
+        if (paramStartCheckParam != null) {
+          QLog.e("cmgame_process.CmGameManager", 1, new Object[] { "onGameActivityCreate but no found gameId:", Integer.valueOf(paramStartCheckParam.gameId) });
+        }
+        if (paramActivity == null) {
           break;
         }
-        if (((akdi)localAppInterface.getManager(56)).a(Long.valueOf(Long.parseLong((String)localObject))))
-        {
-          i = 1;
-          paramString.put("is_follow", i);
-          CmGameCmdChannel.a((QQAppInterface)localAppInterface).a(0, "cs.check_pubAccount_state.local", paramString.toString(), paramInt);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "CHECK_FOLLOW_STATE error:", paramString);
+        localajcr = new ajcr();
+        localajcr.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
+        localajcr.jdField_a_of_type_JavaLangString = paramActivity.getClass().getSimpleName();
+        localajcr.jdField_a_of_type_Int = 1;
+        localajcr.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+        this.jdField_a_of_type_JavaUtilList.add(localajcr);
         return;
+        localajcr = null;
       }
-      int i = 0;
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameMainManager", 2, "showCurrentGameView");
-    }
-    if (this.jdField_a_of_type_Bfnk != null)
+    if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {}
+    for (int i = 1;; i = 0)
     {
-      this.jdField_a_of_type_Bfnk.sendEmptyMessage(18);
-      return true;
+      if ((i != 0) && (QLog.isColorLevel())) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "isShowGameExitGuide GameExitCurrentCount:", Integer.valueOf(this.jdField_a_of_type_Int), ",mGameExitLimitCount:", Integer.valueOf(this.jdField_b_of_type_Int), ",mShouldShowGameGuide:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      }
+      return i & this.jdField_a_of_type_Boolean;
     }
-    return false;
   }
   
-  public boolean a(Activity paramActivity)
+  public boolean a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (paramActivity != null) && (paramActivity.getClass() != ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass()))
-    {
-      Intent localIntent = new Intent(paramActivity, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass());
-      localIntent.addFlags(131072);
-      paramActivity.startActivity(localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[resumeGameContext] from ", paramActivity, this.jdField_a_of_type_JavaLangRefWeakReference.get() });
-      }
-      return true;
-    }
-    return false;
+    return (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(1))) || (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
+  }
+  
+  /* Error */
+  public ajcf b(int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 47	ajco:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   6: invokevirtual 388	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   9: astore 4
+    //   11: aload 4
+    //   13: invokeinterface 290 1 0
+    //   18: ifeq +91 -> 109
+    //   21: aload 4
+    //   23: invokeinterface 294 1 0
+    //   28: checkcast 390	ajcf
+    //   31: astore_3
+    //   32: aload_3
+    //   33: ifnull -22 -> 11
+    //   36: iload_1
+    //   37: aload_3
+    //   38: invokevirtual 392	ajcf:a	()I
+    //   41: if_icmpne -30 -> 11
+    //   44: iload_2
+    //   45: aload_3
+    //   46: getfield 406	ajcf:d	I
+    //   49: if_icmpne -38 -> 11
+    //   52: aload_0
+    //   53: getfield 47	ajco:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   56: aload_3
+    //   57: invokevirtual 525	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   60: ifeq -49 -> 11
+    //   63: ldc 70
+    //   65: iconst_1
+    //   66: new 168	java/lang/StringBuilder
+    //   69: dup
+    //   70: invokespecial 169	java/lang/StringBuilder:<init>	()V
+    //   73: ldc_w 527
+    //   76: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: iload_1
+    //   80: invokevirtual 414	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   83: ldc_w 416
+    //   86: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: aload_0
+    //   90: getfield 47	ajco:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   93: invokevirtual 419	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   96: invokevirtual 414	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   102: invokestatic 78	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: aload_0
+    //   106: monitorexit
+    //   107: aload_3
+    //   108: areturn
+    //   109: aconst_null
+    //   110: astore_3
+    //   111: goto -6 -> 105
+    //   114: astore_3
+    //   115: aload_0
+    //   116: monitorexit
+    //   117: aload_3
+    //   118: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	119	0	this	ajco
+    //   0	119	1	paramInt1	int
+    //   0	119	2	paramInt2	int
+    //   31	80	3	localajcf	ajcf
+    //   114	4	3	localObject	Object
+    //   9	13	4	localIterator	Iterator
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	114	finally
+    //   11	32	114	finally
+    //   36	105	114	finally
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bfnk == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bfnk.obtainMessage(21).sendToTarget();
+    this.jdField_a_of_type_Int += 1;
+    ThreadManager.excute(new CmGameManager.3(this), 64, null, true);
   }
   
-  public void b(String paramString)
+  public void b(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    Object localObject1;
-    Object localObject2;
-    QQAppInterface localQQAppInterface;
-    JSONObject localJSONObject;
+    QLog.d("cmgame_process.CmGameManager", 1, "onGameActivityResume activity" + paramActivity + " mRunningTaskList.size():" + this.jdField_a_of_type_JavaUtilList.size());
+    if ((paramStartCheckParam != null) && (paramActivity != null)) {
+      if (paramStartCheckParam.gameId != 3112) {}
+    }
     for (;;)
     {
-      try
-      {
-        localObject1 = ajae.a();
-        if (!(localObject1 instanceof QQAppInterface)) {
-          return;
-        }
-        localObject2 = new SessionInfo();
-        localObject3 = a();
-        if (localObject3 != null)
-        {
-          localObject2 = ((BaseChatPie)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-          localQQAppInterface = (QQAppInterface)localObject1;
-          if (QLog.isColorLevel()) {
-            QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[onJoinRoom],", paramString });
-          }
-          localJSONObject = new JSONObject(paramString);
-          i = localJSONObject.optInt("retcode");
-          if (i == 0) {
-            break;
-          }
-          QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], retCode is 0, fail to joinroom, return. retCode:" + i);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], json error ", paramString);
-        return;
-      }
-      ((SessionInfo)localObject2).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.aioType;
-      ((SessionInfo)localObject2).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin;
-      QLog.w("cmgame_process.CmGameMainManager", 1, "basechatpie is null.");
-    }
-    int i = localJSONObject.optInt("gameId");
-    Object localObject3 = localJSONObject.optString("uin");
-    if (TextUtils.isEmpty((CharSequence)localObject3))
-    {
-      QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], uin is null");
       return;
-    }
-    this.jdField_a_of_type_Ajrf.b();
-    if (!((String)localObject3).equals(localQQAppInterface.getCurrentAccountUin()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameMainManager", 2, "[onJoinRoom], uin:" + (String)localObject3 + "jionroom, show JionRoom Tips");
-      }
-      localObject1 = null;
-      paramString = (String)localObject1;
-      if (localQQAppInterface != null)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      ajcr localajcr;
+      while (localIterator.hasNext())
       {
-        paramString = (String)localObject1;
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) {
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionType != 1) {
-            break label803;
-          }
+        localajcr = (ajcr)localIterator.next();
+        if ((localajcr != null) && (localajcr.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId == paramStartCheckParam.gameId))
+        {
+          localajcr.jdField_a_of_type_Int = 2;
+          localajcr.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+          localajcr.jdField_a_of_type_Long = System.currentTimeMillis();
+          QLog.d("cmgame_process.CmGameManager", 1, "onGameActivityResume foundTask" + localajcr);
         }
       }
-    }
-    label794:
-    label803:
-    for (paramString = bbcl.e(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin, (String)localObject3);; paramString = null)
-    {
-      if (TextUtils.isEmpty(paramString))
+      for (paramActivity = localajcr; (paramActivity == null) && (paramStartCheckParam != null); paramActivity = null)
       {
-        localObject1 = ((ajxn)localQQAppInterface.getManager(51)).b((String)localObject3);
-        if (localObject1 == null) {}
-      }
-      for (localObject1 = ((Friends)localObject1).getFriendNick();; localObject1 = paramString)
-      {
-        paramString = (String)localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramString = bbcl.c(localQQAppInterface, (String)localObject3, true);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameMainManager", 2, "handleMessage MSG_CODE_JION_ROOM, nickName:" + paramString);
-        }
-        localObject1 = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          localObject1 = localObject3;
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          paramString = this.jdField_a_of_type_Bfnk.obtainMessage(26);
-          paramString.obj = localObject1;
-          paramString.sendToTarget();
-        }
-        long l = localJSONObject.optLong("roomId");
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (0L != l)) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = l;
-        }
-        int j = localJSONObject.optInt("gameMode");
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "join_game", ApolloUtil.a((SessionInfo)localObject2, localQQAppInterface), 0, new String[] { "" + i, "", "", "" + l });
-        this.jdField_a_of_type_Ajrf.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Ajrf.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Ajrf.jdField_c_of_type_Int = j;
-        localObject2 = (ajmw)localQQAppInterface.getManager(155);
-        localObject1 = ((ajmw)localObject2).a(i);
-        paramString = ajyc.a(2131702096);
-        if ((localObject1 != null) && (!TextUtils.isEmpty(((ApolloGameData)localObject1).name)))
-        {
-          localObject2 = ((ajmw)localObject2).a(((ApolloGameData)localObject1).actionId);
-          if (localObject2 == null) {
-            break label794;
-          }
-          paramString = ((ApolloActionData)localObject2).actionName;
-        }
-        for (;;)
-        {
-          i = ((ApolloGameData)localObject1).actionId;
-          this.jdField_a_of_type_Ajrf.jdField_b_of_type_JavaLangString = ((ApolloGameData)localObject1).name;
-          for (;;)
-          {
-            this.jdField_a_of_type_Ajrf.jdField_a_of_type_JavaLangString = paramString;
-            this.jdField_a_of_type_Ajrf.jdField_b_of_type_Int = i;
-            paramString = localJSONObject.optString("extendInfo");
-            localObject1 = new JSONObject();
-            if (TextUtils.isEmpty(paramString)) {
-              return;
-            }
-            ((JSONObject)localObject1).put("extendInfo", paramString);
-            if (paramString.length() < 100) {
-              break;
-            }
-            QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom],extendInfo is too long, extendInfo:" + paramString);
-            return;
-            this.jdField_a_of_type_Ajrf.jdField_b_of_type_JavaLangString = ajyc.a(2131702097);
-            i = 0;
-          }
-          this.jdField_a_of_type_Ajrf.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).toString();
-          return;
-        }
+        QLog.e("cmgame_process.CmGameManager", 1, new Object[] { "onGameActivityResume but no found gameId:", Integer.valueOf(paramStartCheckParam.gameId) });
+        return;
       }
     }
   }
   
-  public void b(String paramString, int paramInt)
+  public boolean b()
   {
-    Object localObject2 = new JSONObject();
-    Object localObject1 = a();
-    if (localObject1 == null) {}
-    do
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void c(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if ((paramStartCheckParam != null) && (paramActivity != null))
     {
-      do
+      if (paramStartCheckParam.gameId == 3112) {
+        return;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        do
+        paramActivity = (ajcr)localIterator.next();
+        if ((paramActivity != null) && (paramActivity.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId == paramStartCheckParam.gameId))
         {
-          return;
-        } while (TextUtils.isEmpty(paramString));
-        try
-        {
-          int i = new JSONObject(paramString).getInt("gameId");
-          paramString = ((ajmw)((QQAppInterface)localObject1).getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
-          if ((i != this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId) || ((paramString != null) && (paramString.needOpenKey != 1)))
-          {
-            CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
-            return;
-          }
+          paramActivity.jdField_a_of_type_Int = 5;
+          paramActivity.jdField_a_of_type_JavaLangRefWeakReference = null;
         }
-        catch (Exception paramString)
-        {
-          QLog.e("cmgame_process.CmGameMainManager", 1, "ON_GET_OPEN_KEY error:", paramString);
-          return;
-        }
-        if ((paramString == null) || (System.currentTimeMillis() - paramString.lastRequestOpenKey <= 3600000L)) {
+      }
+    }
+    for (;;)
+    {
+      if (paramActivity == null)
+      {
+        if (paramStartCheckParam == null) {
           break;
         }
-        localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-        localObject1 = (WtloginManager)((QQAppInterface)localObject1).getManager(1);
-        this.jdField_a_of_type_Ajcp.jdField_a_of_type_Int = paramString.gameId;
-        this.jdField_a_of_type_Ajcp.jdField_b_of_type_Int = paramInt;
-        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Ajcp);
-        paramString.lastRequestOpenKey = System.currentTimeMillis();
-      } while (!QLog.isColorLevel());
-      QLog.d("cmgame_process.CmGameMainManager", 2, "do get open key.");
+        QLog.e("cmgame_process.CmGameManager", 1, new Object[] { "onGameActivityDestroy but no found gameId:", paramStartCheckParam.gameId + " mRunningTaskList.size():" + this.jdField_a_of_type_JavaUtilList.size() });
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList.remove(paramActivity);
+      QLog.i("cmgame_process.CmGameManager", 1, "onGameActivityDestroy remove foundTask:" + paramActivity + " mRunningTaskList.size():" + this.jdField_a_of_type_JavaUtilList.size());
       return;
-    } while (paramString == null);
-    ((JSONObject)localObject2).put("appId", paramString.appId);
-    ((JSONObject)localObject2).put("gameId", paramString.gameId);
-    ((JSONObject)localObject2).put("openKey", paramString.openKey);
-    CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Bfnk == null) {
-      return;
+      paramActivity = null;
     }
-    this.jdField_a_of_type_Bfnk.obtainMessage(22).sendToTarget();
   }
   
-  public void c(String paramString)
+  public void onDestroy()
   {
+    QLog.i("cmgame_process.CmGameManager", 1, "[CmGameManager] destroyed.");
     try
     {
-      paramString = new JSONObject(paramString).optJSONObject("resp");
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        paramString = paramString.optJSONObject("data");
-        if (paramString != null)
-        {
-          paramString = paramString.optJSONObject("userInfo");
-          if (paramString != null)
-          {
-            int i = paramString.optInt("remainPlays");
-            if (this.b == null) {
-              return;
-            }
-            paramString = (BaseChatPie)this.b.get();
-            if (QLog.isColorLevel()) {
-              QLog.d("cmgame_process.CmGameMainManager", 2, "onStartGame, game coin count=" + i);
-            }
-            if (paramString != null) {
-              ApolloGameUtil.a(paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
-            }
-            if ((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel != null))
-            {
-              paramString.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.p();
-              return;
-            }
-          }
-        }
+      if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameMainManager", 2, "onStartGame error " + paramString.toString());
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.e();
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    if (this.b == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-        paramString = (BaseChatPie)this.b.get();
-      } while (((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.a() == null)) || (paramString == null) || (paramString.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      localQQAppInterface = paramString.a();
-    } while (localQQAppInterface == null);
-    ApolloGameUtil.a(localQQAppInterface, paramString.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.f();
-    }
-  }
-  
-  public void e(String paramString)
-  {
-    if (this.jdField_a_of_type_Bfnk == null) {
-      return;
-    }
-    Message localMessage = this.jdField_a_of_type_Bfnk.obtainMessage(28);
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.d();
-    }
-  }
-  
-  public void f(String paramString)
-  {
-    if (this.jdField_a_of_type_Bfnk == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId == 0L)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = ApolloUtil.a(paramString, "roomId");
-    }
-    Message localMessage = this.jdField_a_of_type_Bfnk.obtainMessage(23);
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.c();
-    }
-  }
-  
-  public void g(String paramString)
-  {
-    if (this.jdField_a_of_type_Bfnk == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bfnk.removeMessages(19);
-    this.jdField_a_of_type_Bfnk.removeMessages(20);
-    Message localMessage = this.jdField_a_of_type_Bfnk.obtainMessage(19);
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-    b(paramString);
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_Ajdy != null) {
-      this.jdField_a_of_type_Ajdy.b();
-    }
-  }
-  
-  public void h(String paramString)
-  {
-    this.jdField_a_of_type_Ajdy.a(true);
-    c(paramString);
-    paramString = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
-    if ((paramString != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null))
-    {
-      AppInterface localAppInterface = ajae.a();
-      if (localAppInterface != null) {
-        paramString.edit().putBoolean("is_ever_play_cmgame" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + localAppInterface.getCurrentAccountUin(), true).commit();
+      aiyd.a();
+      if (this.jdField_a_of_type_Aiws != null) {
+        this.jdField_a_of_type_Aiws.a();
       }
-    }
-  }
-  
-  public void i(String paramString)
-  {
-    if (this.jdField_a_of_type_Bfnk == null) {
+      this.c = false;
       return;
     }
-    Message localMessage = this.jdField_a_of_type_Bfnk.obtainMessage(17);
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = null;
-    this.jdField_a_of_type_Ajrf = null;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
-    if (this.jdField_a_of_type_JavaUtilSet != null) {
-      this.jdField_a_of_type_JavaUtilSet.clear();
-    }
-    this.jdField_a_of_type_JavaUtilSet = null;
-    if (this.jdField_a_of_type_Ajdy != null)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_Ajdy.b();
-      this.jdField_a_of_type_Ajdy.a();
+      QLog.e("cmgame_process.CmGameManager", 1, "[doDestroy] exception=", localException);
     }
   }
 }

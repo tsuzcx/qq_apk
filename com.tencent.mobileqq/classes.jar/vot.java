@@ -1,103 +1,56 @@
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class vot
+public class vot
+  extends voq
 {
-  private float jdField_a_of_type_Float = 0.1F;
-  private int jdField_a_of_type_Int = 5;
-  public Drawable a;
-  public final String a;
-  public String b;
-  public String c;
-  public String d;
-  private String e;
+  public List<vou> a;
+  public boolean a;
   
   public vot(@NonNull String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalStateException("FacePackage'id can not be null.");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public float a()
+  public String a()
   {
-    return this.jdField_a_of_type_Float;
+    return "LocationFacePackage";
   }
   
-  public int a()
+  public String a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((vou)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    }
+    throw new IndexOutOfBoundsException("getThumbUri with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
   }
   
-  public abstract String a();
-  
-  public void a(String paramString)
+  public int b()
   {
-    int i;
-    if (TextUtils.isEmpty(paramString))
-    {
-      veg.e("FacePackage", "config json is empty.");
-      i = 0;
-      if (i == 0)
-      {
-        veg.e("FacePackage", "config json is illegal, use default value, type : %s", new Object[] { a() });
-        if (!"NormalFacePackage".equals(a())) {
-          break label237;
-        }
-        if (!"1".equals(this.jdField_a_of_type_JavaLangString)) {
-          break label223;
-        }
-        this.jdField_a_of_type_Int = 5;
-        this.jdField_a_of_type_Float = 0.1F;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        this.e = null;
-        return;
-        try
-        {
-          JSONObject localJSONObject = new JSONObject(paramString);
-          this.jdField_a_of_type_Int = localJSONObject.getInt("amount");
-          this.jdField_a_of_type_Float = Float.valueOf(localJSONObject.getString("spacing")).floatValue();
-          if ((this.jdField_a_of_type_Int < 1) || (this.jdField_a_of_type_Float < 0.0F) || (this.jdField_a_of_type_Float >= 0.5D))
-          {
-            veg.e("FacePackage", "config json is illegal : %s", new Object[] { paramString });
-            i = 0;
-            break;
-          }
-          this.e = paramString;
-          veg.a("FacePackage", "parse config json success : %s", paramString);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          veg.e("FacePackage", "parse config json error : " + paramString + ", exception : " + localException.toString());
-          i = 0;
-        }
-      }
-      break;
-      label223:
-      this.jdField_a_of_type_Int = 3;
-      this.jdField_a_of_type_Float = 0.05F;
-      continue;
-      label237:
-      if (!"LocationFacePackage".equals(a())) {
-        break label263;
-      }
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Float = 0.1F;
-    }
-    label263:
-    throw new IllegalStateException("unknown face package, type:" + a());
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public abstract int b();
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return ((vou)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    }
+    throw new IndexOutOfBoundsException("getCategory with illegal index : " + paramInt + ", the item size is : " + this.jdField_a_of_type_JavaUtilList.size());
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("LocationFacePackage{");
+    localStringBuffer.append("id='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append("logoUrl='").append(this.c).append('\'');
+    localStringBuffer.append("logoDrawable='").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).append('\'');
+    localStringBuffer.append("items=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", isLocating=").append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
+  }
 }
 
 

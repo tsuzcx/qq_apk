@@ -1,10 +1,16 @@
-public abstract interface vrd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+
+public class vrd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public vrd(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public abstract void a(vrn paramvrn);
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

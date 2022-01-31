@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public final class wvi
-  implements Parcelable.Creator<ContentElement>
+public class wvi
+  implements View.OnClickListener
 {
-  public ContentElement a(Parcel paramParcel)
-  {
-    return new ContentElement();
-  }
+  public wvi(CommodityItemView paramCommodityItemView) {}
   
-  public ContentElement[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ContentElement[paramInt];
+    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
+      if (!(this.a.a() instanceof CommodityBean)) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
+    {
+      if (CommodityItemView.a(this.a) != null) {
+        xhb.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + wux.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
+      }
+      wis.a(paramView, 8002);
+      return;
+    }
   }
 }
 

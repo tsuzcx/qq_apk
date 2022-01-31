@@ -1,299 +1,52 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class apgn
-  implements apgt
+  implements awrd<awoi, awwr>
 {
-  long jdField_a_of_type_Long;
-  apgr jdField_a_of_type_Apgr = null;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  final String c = "DiscFileUploader<FileAssistant>";
-  
-  /* Error */
-  public long a(aysx paramaysx, apgq paramapgq)
+  public void a(awoi paramawoi, awwr paramawwr)
   {
-    // Byte code:
-    //   0: new 30	java/io/ByteArrayInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: getfield 35	aysx:a	[B
-    //   8: invokespecial 38	java/io/ByteArrayInputStream:<init>	([B)V
-    //   11: astore_1
-    //   12: new 40	java/io/DataInputStream
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 43	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   20: astore 6
-    //   22: aload 6
-    //   24: ldc2_w 44
-    //   27: invokevirtual 49	java/io/DataInputStream:skip	(J)J
-    //   30: pop2
-    //   31: aload 6
-    //   33: invokevirtual 53	java/io/DataInputStream:readInt	()I
-    //   36: ifeq +32 -> 68
-    //   39: aload_2
-    //   40: ldc2_w 54
-    //   43: putfield 59	apgq:jdField_a_of_type_Long	J
-    //   46: aload_2
-    //   47: ldc 61
-    //   49: putfield 62	apgq:c	Ljava/lang/String;
-    //   52: aload_0
-    //   53: aload_2
-    //   54: invokevirtual 65	apgn:a	(Lapgq;)V
-    //   57: aload_1
-    //   58: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   61: aload 6
-    //   63: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   66: lconst_0
-    //   67: lreturn
-    //   68: aload 6
-    //   70: ldc2_w 70
-    //   73: invokevirtual 49	java/io/DataInputStream:skip	(J)J
-    //   76: pop2
-    //   77: aload 6
-    //   79: invokevirtual 75	java/io/DataInputStream:readByte	()B
-    //   82: istore_3
-    //   83: iload_3
-    //   84: ifne +65 -> 149
-    //   87: aload 6
-    //   89: invokevirtual 53	java/io/DataInputStream:readInt	()I
-    //   92: istore_3
-    //   93: aload 6
-    //   95: invokevirtual 53	java/io/DataInputStream:readInt	()I
-    //   98: i2l
-    //   99: lstore 4
-    //   101: iload_3
-    //   102: i2l
-    //   103: lload 4
-    //   105: bipush 32
-    //   107: lshl
-    //   108: lor
-    //   109: lstore 4
-    //   111: aload_2
-    //   112: getfield 78	apgq:h	J
-    //   115: lconst_0
-    //   116: lcmp
-    //   117: ifne +9 -> 126
-    //   120: aload_2
-    //   121: lload 4
-    //   123: putfield 78	apgq:h	J
-    //   126: aload_2
-    //   127: lload 4
-    //   129: aload_2
-    //   130: getfield 78	apgq:h	J
-    //   133: lsub
-    //   134: putfield 81	apgq:i	J
-    //   137: aload_1
-    //   138: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   141: aload 6
-    //   143: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   146: lload 4
-    //   148: lreturn
-    //   149: iload_3
-    //   150: iconst_1
-    //   151: if_icmpne +37 -> 188
-    //   154: aload_2
-    //   155: lconst_0
-    //   156: putfield 59	apgq:jdField_a_of_type_Long	J
-    //   159: aload_2
-    //   160: aload_2
-    //   161: getfield 84	apgq:e	J
-    //   164: lconst_1
-    //   165: ladd
-    //   166: putfield 87	apgq:f	J
-    //   169: aload_0
-    //   170: aload_2
-    //   171: invokevirtual 89	apgn:b	(Lapgq;)V
-    //   174: aload_1
-    //   175: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   178: aload 6
-    //   180: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   183: lconst_0
-    //   184: lreturn
-    //   185: astore_1
-    //   186: lconst_0
-    //   187: lreturn
-    //   188: aload_2
-    //   189: ldc2_w 54
-    //   192: putfield 59	apgq:jdField_a_of_type_Long	J
-    //   195: aload_2
-    //   196: ldc 91
-    //   198: putfield 62	apgq:c	Ljava/lang/String;
-    //   201: aload_0
-    //   202: aload_2
-    //   203: invokevirtual 65	apgn:a	(Lapgq;)V
-    //   206: aload_1
-    //   207: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   210: aload 6
-    //   212: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   215: lconst_0
-    //   216: lreturn
-    //   217: astore_1
-    //   218: lconst_0
-    //   219: lreturn
-    //   220: astore_2
-    //   221: aload_2
-    //   222: invokevirtual 94	java/io/IOException:printStackTrace	()V
-    //   225: aload_1
-    //   226: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   229: aload 6
-    //   231: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   234: ldc2_w 95
-    //   237: lreturn
-    //   238: astore_2
-    //   239: aload_1
-    //   240: invokevirtual 68	java/io/ByteArrayInputStream:close	()V
-    //   243: aload 6
-    //   245: invokevirtual 69	java/io/DataInputStream:close	()V
-    //   248: aload_2
-    //   249: athrow
-    //   250: astore_1
-    //   251: goto -3 -> 248
-    //   254: astore_1
-    //   255: goto -21 -> 234
-    //   258: astore_1
-    //   259: goto -113 -> 146
-    //   262: astore_1
-    //   263: lconst_0
-    //   264: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	265	0	this	apgn
-    //   0	265	1	paramaysx	aysx
-    //   0	265	2	paramapgq	apgq
-    //   82	70	3	i	int
-    //   99	48	4	l	long
-    //   20	224	6	localDataInputStream	java.io.DataInputStream
-    // Exception table:
-    //   from	to	target	type
-    //   174	183	185	java/lang/Exception
-    //   206	215	217	java/lang/Exception
-    //   22	57	220	java/io/IOException
-    //   68	83	220	java/io/IOException
-    //   87	101	220	java/io/IOException
-    //   111	126	220	java/io/IOException
-    //   126	137	220	java/io/IOException
-    //   154	174	220	java/io/IOException
-    //   188	206	220	java/io/IOException
-    //   22	57	238	finally
-    //   68	83	238	finally
-    //   87	101	238	finally
-    //   111	126	238	finally
-    //   126	137	238	finally
-    //   154	174	238	finally
-    //   188	206	238	finally
-    //   221	225	238	finally
-    //   239	248	250	java/lang/Exception
-    //   225	234	254	java/lang/Exception
-    //   137	146	258	java/lang/Exception
-    //   57	66	262	java/lang/Exception
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Apgr.a(paramLong1, paramLong2);
-  }
-  
-  public void a(apgq paramapgq)
-  {
-    QLog.i("DiscFileUploader<FileAssistant>", 1, "=_= ^! [Upload Step] Send Error!:" + paramapgq.c);
-    paramapgq.c();
-    this.jdField_a_of_type_Apgr.a(null, 0);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, apgr paramapgr)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Apgr = paramapgr;
-  }
-  
-  public void a(boolean paramBoolean, apgq paramapgq) {}
-  
-  public byte[] a(byte[] paramArrayOfByte, long paramLong, apgq paramapgq)
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.b == null) || (this.jdField_a_of_type_JavaLangString.length() == 0) || (this.b.length() == 0))
+    if ((paramawwr.a() != null) && (!TextUtils.isEmpty(paramawoi.a())))
     {
-      if (QLog.isDevelopLevel()) {
-        throw new NullPointerException();
-      }
-      paramapgq.jdField_a_of_type_Long = 9005L;
-      a(paramapgq);
-      return null;
+      paramawwr.a().setVisibility(0);
+      paramawwr.a().setText(paramawoi.a());
     }
-    byte[] arrayOfByte1 = HexUtil.hexStr2Bytes(this.b);
-    byte[] arrayOfByte2 = HexUtil.hexStr2Bytes(this.jdField_a_of_type_JavaLangString);
-    int i = arrayOfByte2.length + 2 + 2 + arrayOfByte1.length + 20 + paramArrayOfByte.length;
-    localByteArrayOutputStream = new ByteArrayOutputStream(i + 16);
-    localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
+    if ((paramawwr.b() != null) && (!TextUtils.isEmpty(paramawoi.b())))
     {
-      localDataOutputStream.writeInt(-1412589450);
-      localDataOutputStream.writeInt(1007);
-      localDataOutputStream.writeInt(0);
-      localDataOutputStream.writeInt(i);
-      localDataOutputStream.writeShort(arrayOfByte2.length);
-      localDataOutputStream.write(arrayOfByte2);
-      localDataOutputStream.writeShort(arrayOfByte1.length);
-      localDataOutputStream.write(arrayOfByte1);
-      localDataOutputStream.writeInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-      localDataOutputStream.writeInt((int)(paramLong & 0xFFFFFFFF));
-      localDataOutputStream.writeInt(paramArrayOfByte.length);
-      localDataOutputStream.writeInt((int)(this.jdField_a_of_type_Long >> 32));
-      localDataOutputStream.writeInt((int)(paramLong >> 32));
-      localDataOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception paramapgq)
-      {
-        return paramArrayOfByte;
-      }
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception paramapgq)
-      {
-        break label319;
-      }
+      paramawwr.b().setVisibility(0);
+      paramawwr.b().setText(paramawoi.b());
     }
-    catch (IOException paramArrayOfByte)
+    if ((paramawwr.c() != null) && (!TextUtils.isEmpty(paramawoi.c())))
     {
-      paramArrayOfByte = paramArrayOfByte;
-      paramapgq.jdField_a_of_type_Long = 9003L;
-      paramapgq.c = apue.a();
-      a(paramapgq);
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
+      paramawwr.c().setVisibility(0);
+      paramawwr.c().setText(paramawoi.c());
     }
-    finally {}
-  }
-  
-  public void b(apgq paramapgq)
-  {
-    QLog.i("DiscFileUploader<FileAssistant>", 1, "=_= ^> [Upload Step] Send Success!Go [Disc Feed]");
-    paramapgq.b();
-    this.jdField_a_of_type_Apgr.a();
+    if ((paramawoi.d() == null) && (paramawwr.d() != null)) {
+      paramawwr.d().setVisibility(8);
+    }
+    if ((paramawwr.d() != null) && (paramawoi.d() != null))
+    {
+      paramawwr.d().setVisibility(0);
+      paramawwr.d().setText(paramawoi.d());
+    }
+    AsyncImageView localAsyncImageView = (AsyncImageView)paramawwr.b();
+    Object localObject = (apgm)paramawoi;
+    String str = ((apgm)localObject).c();
+    localObject = ((apgm)localObject).d();
+    if (bbdx.b(str)) {
+      apug.a(localAsyncImageView, str, apug.a((String)localObject));
+    }
+    for (;;)
+    {
+      paramawwr = paramawwr.a();
+      if (paramawwr != null) {
+        paramawwr.setOnClickListener(new apgo(this, paramawoi));
+      }
+      return;
+      localAsyncImageView.setDefaultImage(apug.b((String)localObject));
+    }
   }
 }
 

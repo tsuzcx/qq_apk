@@ -1,50 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class adca
-  implements CompoundButton.OnCheckedChangeListener
+  implements TextWatcher
 {
   public adca(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean)
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
     {
-      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bbjw.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
-        this.a.setSendEnable(true);
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bbkk.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
       }
-      if (VoiceTextEditPanel.a(this.a) != null) {
-        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
-      }
-      VoiceTextEditPanel.a(this.a).setText(2131719278);
-      if (this.a.a())
-      {
-        axqw.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
-        return;
-      }
-      axqw.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
-      return;
-    }
-    if (VoiceTextEditPanel.a(this.a) != null) {
-      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
-    }
-    VoiceTextEditPanel.a(this.a).setText(2131719276);
-    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bbjw.a(VoiceTextEditPanel.a(this.a)))) {
       this.a.setSendEnable(false);
     }
-    if (this.a.a())
+    for (;;)
     {
-      axqw.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
+      this.a.c();
       return;
+      label55:
+      this.a.setSendEnable(true);
     }
-    axqw.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

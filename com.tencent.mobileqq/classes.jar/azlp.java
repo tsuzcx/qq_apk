@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
-
-public class azlp
-  implements azoi
+class azlp
 {
-  azlp(azlo paramazlo) {}
+  final float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  float b = 0.0F;
   
-  public void a(ArrayList<aukm> paramArrayList)
+  public azlp(azlm paramazlm, float paramFloat)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
-    }
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
   }
 }
 

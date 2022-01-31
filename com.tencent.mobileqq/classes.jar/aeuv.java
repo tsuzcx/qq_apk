@@ -1,18 +1,20 @@
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class aeuv
-  extends ayfl
+  implements acte
 {
   public aeuv(TroopChatPie paramTroopChatPie) {}
   
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(aeyt paramaeyt)
   {
-    ayfv.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.l(this.a), paramBoolean, paramArrayOfObject);
+    ((aruh)this.a.a(33)).a(1, paramaeyt);
+    ((adji)this.a.a(43)).b(1, paramaeyt);
   }
   
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void b(aeyt paramaeyt)
   {
-    ayfv.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, TroopChatPie.m(this.a), paramBoolean, paramArrayOfObject);
+    ((aruh)this.a.a(33)).b(1, paramaeyt);
+    ((adji)this.a.a(43)).a(1, paramaeyt);
   }
 }
 

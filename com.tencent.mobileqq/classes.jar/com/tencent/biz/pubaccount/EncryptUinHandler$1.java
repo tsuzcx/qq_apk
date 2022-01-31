@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import nkw;
+import nkt;
 
 public class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    nkw.a(this.this$0, this.a, 0);
+    nkt.a(this.this$0, this.a, 0);
   }
 }
 

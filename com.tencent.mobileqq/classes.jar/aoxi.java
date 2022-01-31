@@ -3,7 +3,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxi
-  extends aoxr
+  extends aoxv
 {
   protected long a;
   protected String a;
@@ -14,9 +14,9 @@ class aoxi
   protected String f;
   protected String g;
   
-  aoxi(aowt paramaowt, MessageRecord paramMessageRecord)
+  aoxi(aowx paramaowx, MessageRecord paramMessageRecord)
   {
-    super(paramaowt);
+    super(paramaowx);
     this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
     this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
     this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
@@ -29,25 +29,25 @@ class aoxi
   
   void a(String paramString, int paramInt) {}
   
-  void a(String paramString, int paramInt, aoxp paramaoxp)
+  void a(String paramString, int paramInt, aoxt paramaoxt)
   {
     if ("1".equals(this.g))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, false), false);
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
     if ((this.b == null) || (this.b.length() == 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
       }
-      paramaoxp.a(aowt.a(this.jdField_a_of_type_Long, true), false);
+      paramaoxt.a(aowx.a(this.jdField_a_of_type_Long, true), false);
       return;
     }
-    aowt.a(this.jdField_a_of_type_Aowt).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aoxj(this, paramString, paramaoxp));
+    aowx.a(this.jdField_a_of_type_Aowx).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aoxj(this, paramString, paramaoxt));
   }
 }
 

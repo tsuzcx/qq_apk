@@ -1,22 +1,25 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class aavl
-  extends ScaleAnimation
+public final class aavl
+  implements Comparator<PhoneContact>
 {
-  public aavl(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    if (paramTransformation == null) {
-      return;
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
+    {
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

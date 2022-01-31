@@ -1,8 +1,8 @@
 package com.dataline.activities;
 
-import ajuo;
-import ajyc;
-import akcw;
+import ajum;
+import ajya;
+import akcv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class PrinterSubOptionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  public ajuo a;
+  public ajum a;
   public LayoutInflater a;
   public XListView a;
   em jdField_a_of_type_Em;
@@ -38,18 +38,18 @@ public class PrinterSubOptionActivity
   
   public PrinterSubOptionActivity()
   {
-    this.jdField_a_of_type_Ajuo = null;
+    this.jdField_a_of_type_Ajum = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew != null)
+    if (this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew != null)
     {
       int j = 0;
       int k = 0;
       this.b.clear();
-      List localList = this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a();
+      List localList = this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
       int i1 = localList.size();
       int i = 0;
       if (i < i1)
@@ -93,8 +93,8 @@ public class PrinterSubOptionActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_a_of_type_Ajuo = ((ajuo)this.app.a(8));
-    this.jdField_a_of_type_Ajuo.jdField_a_of_type_Akct.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_Ajum = ((ajum)this.app.a(8));
+    this.jdField_a_of_type_Ajum.jdField_a_of_type_Akcs.jdField_a_of_type_JavaUtilList = null;
     getWindow().setBackgroundDrawableResource(2131165360);
     setContentView(2131558948);
     setTitle(2131691375);
@@ -103,13 +103,13 @@ public class PrinterSubOptionActivity
     this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131371934));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Em);
-    if (!this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a())
+    if (!this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a())
     {
-      paramBundle = findViewById(2131365660);
+      paramBundle = findViewById(2131365659);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(ajyc.a(2131708423));
+      paramBundle.setContentDescription(ajya.a(2131708434));
       ((TextView)findViewById(2131377589)).setText(getString(2131691367));
-      ((TextView)findViewById(2131363397)).setText(getString(2131691366));
+      ((TextView)findViewById(2131363396)).setText(getString(2131691366));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
@@ -118,13 +118,13 @@ public class PrinterSubOptionActivity
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361806, "n/a");
       return true;
       a();
-      this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ez);
+      this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a(this.jdField_a_of_type_Ez);
     }
   }
   
   public void doOnDestroy()
   {
-    this.jdField_a_of_type_Ajuo.jdField_a_of_type_Ew.a();
+    this.jdField_a_of_type_Ajum.jdField_a_of_type_Ew.a();
   }
   
   public void doOnResume()
@@ -133,9 +133,9 @@ public class PrinterSubOptionActivity
     this.jdField_a_of_type_JavaLangString = getString(2131691368);
     this.b.clear();
     a();
-    akcw localakcw = (akcw)this.app.a(74);
-    this.jdField_a_of_type_Boolean = localakcw.a();
-    localakcw.a();
+    akcv localakcv = (akcv)this.app.a(74);
+    this.jdField_a_of_type_Boolean = localakcv.a();
+    localakcv.a();
   }
   
   public boolean onBackEvent()

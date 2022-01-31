@@ -1,100 +1,66 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Map;
 
-public class bevn
+final class bevn
+  implements DownloaderProxy.DownloadListener
 {
-  private static MiniAppInfo a;
-  private static MiniAppInfo b;
+  bevn(MiniAppInfo paramMiniAppInfo, bevs parambevs, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  public static void a()
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    besl.a("JsApiUpdateManager", "handleUpdateApp() called");
-    if ((a != null) && (b != null) && (a.launchParam != null) && (b.launchParam != null))
+    bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 1011, "game pkg download failed s=[" + paramString + "], httpStatus=[" + paramInt + "] ", "1");
+    bezi.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 620, null, null, null, paramInt, "1", 0L, null);
+    if (this.jdField_a_of_type_Bevs != null)
     {
-      b.forceReroad = 3;
-      b.launchParam.a = a.launchParam.a;
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("key_app_info", b);
-      beot.a().a("cmd_update_app_for_mini_game", localBundle, null);
-      return;
+      this.jdField_a_of_type_Bevs.onInitGpkgInfo(2004, null, "download pkg fail");
+      betc.d("[minigame] GpkgManager", "[Gpkg]onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
     }
-    besl.d("JsApiUpdateManager", "handleUpdateApp olderMiniAppInfo = " + a + " newerMiniAppInfo = " + b);
+    bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, "1", null, "page_view", "load_fail", "download_apk_fail", "");
+    beyq.a("2launch_fail", "download_apk_fail", null, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
   }
   
-  public static void a(beue parambeue, boolean paramBoolean)
-  {
-    try
-    {
-      besl.a("JsApiUpdateManager", "handleUpdateCheckResult() called with: gameJsPluginEngine = [" + parambeue + "], hasUpdate = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("hasUpdate", paramBoolean);
-      if (parambeue != null) {
-        parambeue.getJsRuntime(1).evaluateSubscribeJs("onUpdateCheckResult", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (JSONException parambeue)
-    {
-      besl.d("JsApiUpdateManager", "handleNativeRequest", parambeue);
-    }
-  }
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  public static void a(MiniAppInfo paramMiniAppInfo, beue parambeue)
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
   {
-    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    if (this.jdField_a_of_type_Bevs != null)
     {
-      a = paramMiniAppInfo;
-      besl.a("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambeue + "]");
-      if (paramMiniAppInfo.verType != 3)
+      float f = paramFloat;
+      long l = paramLong2;
+      if (paramLong2 == 0L)
       {
-        besl.c("JsApiUpdateManager", "checkForUpdate skip check for not online version");
-        a(parambeue, false);
-        return;
-      }
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramMiniAppInfo.appId, "", "", new bevo(paramMiniAppInfo, parambeue));
-      return;
-    }
-    besl.d("JsApiUpdateManager", "checkUpdate() called with: oldMiniAppConfig = [" + paramMiniAppInfo + "], gameJsPluginEngine = [" + parambeue + "]");
-  }
-  
-  private static void b(beue parambeue, MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null)
-    {
-      besl.a("JsApiUpdateManager", "handleUpdateDownload() called with: gameJsPluginEngine = [" + parambeue + "], miniAppConfig = [" + paramMiniAppInfo + "]");
-      beut.a(paramMiniAppInfo, new bevp(parambeue));
-    }
-  }
-  
-  private static void c(beue parambeue, boolean paramBoolean)
-  {
-    try
-    {
-      besl.a("JsApiUpdateManager", "handleUpdateDownloadResult() called with: gameJsPluginEngine = [" + parambeue + "], success = [" + paramBoolean + "]");
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {}
-      for (String str = "success";; str = "failed")
-      {
-        localJSONObject.put("updateResult", str);
-        if (parambeue == null) {
-          break;
+        f = paramFloat;
+        l = paramLong2;
+        if (this.jdField_a_of_type_Int > 0)
+        {
+          paramLong2 = this.jdField_a_of_type_Int;
+          f = paramFloat;
+          l = paramLong2;
+          if (paramLong2 > paramLong1)
+          {
+            f = (float)paramLong1 * 1.0F / (float)paramLong2;
+            l = paramLong2;
+          }
         }
-        parambeue.getJsRuntime(1).evaluateSubscribeJs("onUpdateDownloadResult", localJSONObject.toString());
-        return;
       }
-      return;
+      this.jdField_a_of_type_Bevs.onDownloadGpkgProgress(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f, l);
     }
-    catch (JSONException parambeue)
-    {
-      besl.d("JsApiUpdateManager", "handleUpdateDownloadResult", parambeue);
+  }
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  {
+    long l = 0L;
+    bevk.jdField_a_of_type_Long = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    betc.b("[minigame] GpkgManager", "[Gpkg] onDownloadSucceed " + paramInt + ",cost:" + bevk.jdField_a_of_type_Long);
+    bezi.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 2, "1");
+    paramString = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    if (bevk.jdField_a_of_type_Long > 0L) {
+      l = bevk.jdField_a_of_type_Long;
     }
+    bezi.a(paramString, 620, null, null, null, 0, "1", l, null);
+    bevk.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, this.jdField_a_of_type_Bevs, this.c, this.d);
   }
 }
 

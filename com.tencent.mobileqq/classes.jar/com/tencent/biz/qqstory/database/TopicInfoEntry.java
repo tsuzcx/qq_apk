@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class TopicInfoEntry
-  extends aukm
+  extends auko
 {
-  @auma
+  @aumc
   public long topicId;
   public byte[] topicPbData;
 }

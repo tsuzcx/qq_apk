@@ -1,20 +1,25 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class syn
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
+  public int a;
+  public String b;
+  
+  public syn() {}
+  
+  public syn(int paramInt, String paramString)
   {
-    paramQQUserUIItem = tsu.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+    this.a = paramInt;
+    this.b = paramString;
   }
   
-  public static String b(QQUserUIItem paramQQUserUIItem)
+  public syn(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    paramQQUserUIItem = tsu.a();
-    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
+    this.a = paramErrorInfo.error_code.get();
+    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
   }
 }
 

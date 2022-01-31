@@ -1,6 +1,15 @@
-public class bgwu
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+class bgwu
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public static bgwt a = new bgwt(null);
+  bgwu(bgws parambgws) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    bgws.a(this.a, paramInt);
+  }
 }
 
 

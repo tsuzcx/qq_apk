@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-public class adch
-  implements ValueAnimator.AnimatorUpdateListener
+class adch
+  implements View.OnTouchListener
 {
-  public adch(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
+  adch(adcg paramadcg) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
+    adcg.a(this.a).a(paramMotionEvent);
+    return true;
   }
 }
 

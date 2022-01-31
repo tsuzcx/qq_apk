@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopUtils.4;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bamp
-  implements DialogInterface.OnClickListener
+class bamp
+  implements bams
 {
-  public bamp(TroopUtils.4 param4) {}
+  bamp(bamk parambamk, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {}
+  }
 }
 
 

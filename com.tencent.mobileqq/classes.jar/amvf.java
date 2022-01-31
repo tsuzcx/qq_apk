@@ -1,62 +1,79 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvf
+  extends ampa<amve>
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  
-  public amvf()
+  public static amve a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return (amve)ampl.a().a(441);
   }
   
-  public static amvf a(ampi[] paramArrayOfampi)
+  public int a()
   {
-    localamvf = new amvf();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayOfampi.length)
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfampi[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("pubaccountSwitch"))
-        {
-          localamvf.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localamvf.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("fullPopIntervalDay"))
-        {
-          localamvf.b = localJSONObject.optInt("fullPopIntervalDay");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localamvf.b);
-          }
-        }
-        if (localJSONObject.has("isFeedByWeb"))
-        {
-          localamvf.c = localJSONObject.optInt("isFeedByWeb");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localamvf.c);
-          }
-        }
-        if (localJSONObject.has("feedUrl"))
-        {
-          localamvf.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localamvf.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
-      }
-      return localamvf;
+    return 441;
+  }
+  
+  @NonNull
+  public amve a(int paramInt)
+  {
+    return new amve();
+  }
+  
+  @Nullable
+  public amve a(amph[] paramArrayOfamph)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onParsed ");
     }
-    catch (Throwable paramArrayOfampi)
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
     {
-      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfampi.toString());
+      new amve();
+      return amve.a(paramArrayOfamph);
     }
+    return null;
+  }
+  
+  public Class<amve> a()
+  {
+    return amve.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amve paramamve)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramamve.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

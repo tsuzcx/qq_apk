@@ -1,19 +1,20 @@
-import android.widget.LinearLayout;
-
-abstract class man
+public abstract interface man
 {
-  int jdField_a_of_type_Int = -1;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  int b = -552421387;
-  int c = -15550475;
-  int d = 14;
+  public abstract void a();
   
-  void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-    }
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(maq parammaq);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(maq parammaq);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

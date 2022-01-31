@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bhkl;
-import bhkn;
+import bhlc;
+import bhle;
 import java.util.ArrayList;
 
 class QzoneWebMusicJsPlugin$11
@@ -11,7 +11,7 @@ class QzoneWebMusicJsPlugin$11
   
   public void run()
   {
-    bhkl.a().a().b(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
+    bhlc.a().a().b(QzoneWebMusicJsPlugin.access$200(this.this$0), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

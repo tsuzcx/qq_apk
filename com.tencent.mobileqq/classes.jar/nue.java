@@ -1,25 +1,86 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 
-public class nue
-  extends bfmg
+class nue
+  extends osm
 {
-  public nue(ReadInJoyNaviController.1 param1, View paramView) {}
+  nue(nua paramnua) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new nuf(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    nud.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    if ((paramBoolean) && (paramList != null))
+    {
+      if ((paramList != null) && (paramList.size() > 0)) {
+        this.a.a(paramList);
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (ChannelCoverInfo)localIterator.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label272;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label272;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break;
+            label272:
+            i += 1;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
   }
 }
 

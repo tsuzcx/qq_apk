@@ -1,20 +1,6 @@
-class bejj
+public abstract interface bejj
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  
-  public bejj(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public String toString()
-  {
-    return "WxapkgFile{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", start=" + this.jdField_a_of_type_Int + ", length=" + this.b + '}';
-  }
+  public abstract void a(bekp parambekp, int paramInt, String paramString);
 }
 
 

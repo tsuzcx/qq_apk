@@ -1,23 +1,14 @@
-import android.view.View;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.app.Activity;
 
-public class bhww
-  implements bfoq
+public final class bhww
+  implements bgln
 {
-  public bhww(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, bfol parambfol) {}
+  public bhww(Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.e();
-      return;
-      TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, 29954);
-      continue;
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+    if (!paramBoolean) {
+      this.a.finish();
     }
   }
 }

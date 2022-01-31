@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actn;
+import actj;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import oot;
+import ooq;
 
 class ReadInJoyListViewGroup$5
   implements Runnable
@@ -12,7 +12,7 @@ class ReadInJoyListViewGroup$5
   
   public void run()
   {
-    if ((oot.b()) && (oot.a())) {}
+    if ((ooq.b()) && (ooq.a())) {}
     int j;
     do
     {
@@ -24,7 +24,7 @@ class ReadInJoyListViewGroup$5
         if ((j != this.jdField_a_of_type_Int) && (QLog.isColorLevel())) {
           QLog.d("ReadInJoyListViewGroup", 2, "initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=" + j + ",heightDef =" + this.jdField_a_of_type_Int);
         }
-        if (!oot.a()) {
+        if (!ooq.a()) {
           break;
         }
         if (j <= this.jdField_b_of_type_Int * 3)
@@ -34,7 +34,7 @@ class ReadInJoyListViewGroup$5
         }
         else
         {
-          actn.a("ReadInJoyListViewGroup", "", new IllegalStateException("hideWithAnimation" + j));
+          actj.a("ReadInJoyListViewGroup", "", new IllegalStateException("hideWithAnimation" + j));
           i = this.jdField_b_of_type_Int;
         }
         this.jdField_b_of_type_AndroidViewView.setPadding(0, i, 0, 0);

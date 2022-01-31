@@ -1,19 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView;
-import java.util.ArrayList;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-public class avnw
-  extends AnimatorListenerAdapter
+final class avnw
+  implements Downloader.DownloadListener
 {
-  public avnw(ParticleExplodeView paramParticleExplodeView) {}
+  avnw(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
   
-  public void onAnimationEnd(Animator arg1)
+  public void onDownloadCanceled(String paramString)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(false);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (this.a != null) {
+      this.a.onResult(true);
     }
   }
 }

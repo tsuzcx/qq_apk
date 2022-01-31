@@ -1,19 +1,10 @@
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-
-public class bfrb
-  implements ContextMenu.ContextMenuInfo
+public abstract interface bfrb
 {
-  public long a;
-  public View a;
-  public long b;
+  public abstract int a();
   
-  public bfrb(View paramView, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

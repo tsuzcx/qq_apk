@@ -1,8 +1,10 @@
+import android.view.View;
+
 public abstract interface mhs
 {
-  public abstract void a();
+  public abstract void a(View paramView, int paramInt);
   
-  public abstract void b();
+  public abstract void a(View paramView1, View paramView2);
 }
 
 

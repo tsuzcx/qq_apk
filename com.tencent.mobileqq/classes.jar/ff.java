@@ -27,13 +27,13 @@ class ff
       return;
     case 0: 
     case 3: 
-      localObject = (ajuo)fd.a(this.a).a(8);
+      localObject = (ajum)fd.a(this.a).a(8);
       if ((paramView.strMoloKey != null) && (!paramView.isReportPause))
       {
         paramView.isReportPause = true;
         fc.m(fd.a(this.a));
       }
-      ((ajuo)localObject).a(paramView.groupId, paramView.sessionid, false);
+      ((ajum)localObject).a(paramView.groupId, paramView.sessionid, false);
       if (paramView.isSendFromLocal())
       {
         localDLFileInfo.jdField_a_of_type_Int = 1;
@@ -43,14 +43,14 @@ class ff
     case 1: 
     case 2: 
     case 4: 
-      if (bbev.d(fd.a(this.a)))
+      if (bbfj.d(fd.a(this.a)))
       {
-        if ((apue.a()) && (localDLFileInfo.b > 3145728L))
+        if ((apug.a()) && (localDLFileInfo.b > 3145728L))
         {
           if (localDLFileInfo.jdField_a_of_type_Int == 1) {}
           for (;;)
           {
-            apue.a(bool, fd.a(this.a), new fg(this, paramView, (fh)localObject));
+            apug.a(bool, fd.a(this.a), new fg(this, paramView, (fh)localObject));
             return;
             bool = false;
           }
@@ -71,7 +71,7 @@ class ff
         fd.b(this.a, (fh)localObject, paramView);
         return;
       }
-      aptv.a(2131694672);
+      aptx.a(2131694673);
       return;
     case 5: 
       fd.a(this.a, paramView);

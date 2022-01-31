@@ -1,23 +1,24 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.2.1;
 
 public class atev
-  implements bfoq
+  extends atcd
 {
-  public atev(NearbyGuideActivity paramNearbyGuideActivity, bfol parambfol) {}
+  public atev(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Bfol.cancel();
-    switch (paramInt)
+    if (paramBoolean1)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
+      this.a.app.a(this.a.app.getCurrentAccountUin(), 200);
+      long l = ((Long)atbi.a(this.a.app.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+      if (l != 0L) {
+        this.a.app.a(String.valueOf(l), 202);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    this.a.runOnUiThread(new NearbyGuideActivity.2.1(this, paramBoolean1, paramString));
   }
 }
 

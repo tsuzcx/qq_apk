@@ -1,59 +1,53 @@
-import android.database.DataSetObserver;
-import android.os.Parcelable;
-import android.widget.Adapter;
-import com.tencent.widget.AdapterView;
+import java.util.HashMap;
 
 public class bfpb
-  extends DataSetObserver
 {
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
+  public int a;
+  public String a;
+  public HashMap<String, Object> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public bfpb(AdapterView paramAdapterView) {}
-  
-  public void a()
+  public bfpb(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidOsParcelable = null;
+    this(paramInt1, paramString, paramInt2, paramInt3, 1);
   }
   
-  public void onChanged()
+  public bfpb(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
-    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
-    {
-      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
-      this.jdField_a_of_type_AndroidOsParcelable = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.b = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.jdField_a_of_type_Int = paramInt4;
   }
   
-  public void onInvalidated()
+  public bfpb(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
-      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
-    }
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
-    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
+    this(0, paramString, paramInt1, paramInt2);
+  }
+  
+  public Object a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfpb
  * JD-Core Version:    0.7.0.1
  */

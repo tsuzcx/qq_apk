@@ -1,13 +1,6 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
-
-final class beti
-  implements AsyncResult
+public abstract interface beti
 {
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
-  {
-    besl.a("GameGrowthGuardianManager", "onReceived() called with: success = [" + paramBoolean + "], stReportExecuteRsp = [" + paramJSONObject + "]");
-  }
+  public abstract void a(int paramInt);
 }
 
 

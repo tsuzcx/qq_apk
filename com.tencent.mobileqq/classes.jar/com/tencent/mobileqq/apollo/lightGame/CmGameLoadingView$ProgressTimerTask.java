@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.lightGame;
 
 import android.os.Message;
-import bfnk;
+import bfob;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 

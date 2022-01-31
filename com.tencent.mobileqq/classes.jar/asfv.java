@@ -1,21 +1,22 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 
 public class asfv
-  implements PopupWindow.OnDismissListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   public asfv(MedalGuideView paramMedalGuideView) {}
   
-  public void onDismiss()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
-    this.a.d = true;
-    this.a.a.performClick();
   }
 }
 

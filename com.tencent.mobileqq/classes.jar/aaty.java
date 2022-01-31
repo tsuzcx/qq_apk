@@ -1,41 +1,34 @@
-import android.view.View;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aaty
-  implements bfoq
+  implements ncc
 {
-  public aaty(ChatSettingForTroop paramChatSettingForTroop, bfol parambfol) {}
+  public aaty(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a() {}
+  
+  public void a(ArrayList<TroopAppInfo> paramArrayList)
   {
-    switch (paramInt)
+    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
     {
-    default: 
       return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt = new bcpt(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    }
-    paramView = (akhq)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
-    if ((bbev.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getApp().getApplicationContext())) && (paramView != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(0, 2131692213, 0);
-      paramView.k(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    }
-    for (;;)
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Bfol.cancel();
-      return;
-      if (paramView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(2, 2131694672, 1500);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bcpt.b(2, 2131692212, 1500);
+      ArrayList localArrayList = new ArrayList();
+      asks localasks = (asks)this.a.app.getManager(37);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
+        localasks.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
+        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
       }
-    }
+      localasks.a(this.a.a.troopUin, localArrayList);
+    } while (this.a.i);
   }
 }
 

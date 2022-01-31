@@ -1,20 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-
-final class sin
-  implements bcwh
+class sin
+  implements qec<String, String>
 {
-  public void a(BaseResp paramBaseResp)
+  sin(sim paramsim) {}
+  
+  public String a(String paramString)
   {
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719476, 1).a();
-    case -2: 
-      return;
-    }
-    bcpw.a(BaseApplicationImpl.getContext(), 2, 2131719495, 1).a();
+    return sim.a(paramString);
   }
 }
 

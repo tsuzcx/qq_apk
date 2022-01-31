@@ -1,26 +1,21 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ansp
+class ansp
+  implements DialogInterface.OnClickListener
 {
-  public static int a = 300;
-  public static int b = 300;
+  ansp(ansm paramansm, BaseActivity paramBaseActivity) {}
   
-  public static String a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return ajsf.bh + akvu.a(paramString);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return null;
+    if (paramInt == 1) {
+      bbrk.a(ansm.a(this.jdField_a_of_type_Ansm), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", ansm.a(this.jdField_a_of_type_Ansm).getString(2131719975), "");
     }
-    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
-    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
-    return localStringBuilder.toString();
   }
 }
 

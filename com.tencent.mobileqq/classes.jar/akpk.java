@@ -1,44 +1,113 @@
-import IMMsgBodyPack.SlaveMasterMsg;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akpk
-  extends akoo
 {
-  public akpk(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
-  
-  private boolean a(MsgInfo paramMsgInfo)
-  {
-    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
-    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
-    localSlaveMasterMsg.readFrom(localJceInputStream);
-    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
     {
-      axao.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
-      return true;
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      akpl localakpl = (akpl)paramMessageRecord.next();
+      if (localakpl.a != paramInt) {
+        break label64;
+      }
+      i = localakpl.b + i;
     }
-    return false;
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
+    }
   }
   
-  public akqj a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public static List<akpl> a(MessageRecord paramMessageRecord)
   {
-    boolean bool = false;
-    switch (paramInt)
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
     {
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (axup)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = ajya.a(2131705276);
+            j = 1;
+            if ((paramMessageRecord instanceof axxb))
+            {
+              i = ((axxb)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
+        }
+      }
     }
     for (;;)
     {
-      return new akqj(null, bool);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        bool = a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
+      localArrayList.add(new akpl(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
+      {
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
       }
     }
   }

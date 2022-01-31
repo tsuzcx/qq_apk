@@ -1,14 +1,53 @@
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
-class atms
-  implements View.OnClickListener
+public class atms
+  implements GestureDetector.OnDoubleTapListener
 {
-  atms(atlu paramatlu) {}
+  atms(atlw paramatlw) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.a.d(paramView);
+    if (System.currentTimeMillis() - atlw.a(this.a) >= 500L)
+    {
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178)).a(i, j);
+      }
+      if (!atlw.a(this.a)) {
+        break label98;
+      }
+    }
+    for (;;)
+    {
+      atlw.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!atlw.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178).getVisibility() == 0))
+      {
+        atlw.a(this.a, false);
+        this.a.c(null);
+        new atix().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (aszf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+      }
+    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

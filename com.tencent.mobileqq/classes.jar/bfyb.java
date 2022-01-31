@@ -1,11 +1,30 @@
-import android.view.animation.Interpolator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-final class bfyb
-  implements Interpolator
+class bfyb
+  extends Handler
 {
-  public float getInterpolation(float paramFloat)
+  public bfyb()
   {
-    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof bfxy)));
+    ((bfxy)paramMessage).dismiss();
   }
 }
 

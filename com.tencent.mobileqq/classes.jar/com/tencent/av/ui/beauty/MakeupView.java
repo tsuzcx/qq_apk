@@ -17,28 +17,28 @@ import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lhp;
-import lil;
+import lhk;
+import lig;
+import mgs;
 import mgx;
-import mhc;
-import mhd;
-import mhv;
-import mhw;
-import mqr;
+import mgy;
+import mhq;
+import mhr;
+import mqo;
 
 public class MakeupView
   extends BeautyBaseView
-  implements lhp<PendantItem>, mhc, mhd
+  implements lhk<PendantItem>, mgx, mgy
 {
   int jdField_a_of_type_Int = 50;
   final TextView jdField_a_of_type_AndroidWidgetTextView;
   final BeautySeekView jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView;
   final HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   String jdField_a_of_type_JavaLangString = null;
-  final ArrayList<mhw> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  lil jdField_a_of_type_Lil = null;
-  mgx jdField_a_of_type_Mgx = null;
-  final ArrayList<mhw> b = new ArrayList(10);
+  final ArrayList<mhr> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  lig jdField_a_of_type_Lig = null;
+  mgs jdField_a_of_type_Mgs = null;
+  final ArrayList<mhr> b = new ArrayList(10);
   
   public MakeupView(Context paramContext)
   {
@@ -55,35 +55,35 @@ public class MakeupView
     super(paramContext, paramAttributeSet, paramInt);
     inflate(paramContext, 2131559551, this);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377313));
-    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363136));
+    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363135));
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setBeautySeekActionListener(this);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131367664));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
     b();
   }
   
-  public static mhw a(PendantItem paramPendantItem)
+  public static mhr a(PendantItem paramPendantItem)
   {
-    mhw localmhw = new mhw();
-    localmhw.jdField_a_of_type_Int = 4;
-    localmhw.jdField_a_of_type_JavaLangString = paramPendantItem.getId();
-    localmhw.jdField_c_of_type_JavaLangString = paramPendantItem.getDesc();
-    localmhw.b = paramPendantItem.getIconurl();
-    localmhw.jdField_d_of_type_JavaLangString = paramPendantItem.getDesc();
-    localmhw.jdField_c_of_type_Boolean = false;
-    localmhw.jdField_a_of_type_Boolean = paramPendantItem.isUsable();
-    localmhw.jdField_a_of_type_JavaLangObject = paramPendantItem;
-    localmhw.jdField_d_of_type_Boolean = true;
-    return localmhw;
+    mhr localmhr = new mhr();
+    localmhr.jdField_a_of_type_Int = 4;
+    localmhr.jdField_a_of_type_JavaLangString = paramPendantItem.getId();
+    localmhr.jdField_c_of_type_JavaLangString = paramPendantItem.getDesc();
+    localmhr.b = paramPendantItem.getIconurl();
+    localmhr.jdField_d_of_type_JavaLangString = paramPendantItem.getDesc();
+    localmhr.jdField_c_of_type_Boolean = false;
+    localmhr.jdField_a_of_type_Boolean = paramPendantItem.isUsable();
+    localmhr.jdField_a_of_type_JavaLangObject = paramPendantItem;
+    localmhr.jdField_d_of_type_Boolean = true;
+    return localmhr;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Mgx != null) && (this.jdField_a_of_type_Lil != null))
+    if ((this.jdField_a_of_type_Mgs != null) && (this.jdField_a_of_type_Lig != null))
     {
       d();
-      this.jdField_a_of_type_Mgx.a(this.b);
-      this.jdField_a_of_type_Mgx.notifyDataSetChanged();
+      this.jdField_a_of_type_Mgs.a(this.b);
+      this.jdField_a_of_type_Mgs.notifyDataSetChanged();
       c();
     }
   }
@@ -105,62 +105,62 @@ public class MakeupView
     if (QLog.isDevelopLevel()) {
       QLog.i("MakeupView", 4, "onDownloadFinish, seq[" + paramLong + "], isSuc[" + paramBoolean + "], info[" + paramPendantItem + "]");
     }
-    if (this.jdField_a_of_type_Mgx != null) {
-      this.jdField_a_of_type_Mgx.a(paramLong, paramPendantItem.getId(), paramBoolean);
+    if (this.jdField_a_of_type_Mgs != null) {
+      this.jdField_a_of_type_Mgs.a(paramLong, paramPendantItem.getId(), paramBoolean);
     }
   }
   
-  public void a(long paramLong, mhw parammhw)
+  public void a(long paramLong, mhr parammhr)
   {
     PendantItem localPendantItem = null;
     if (QLog.isColorLevel()) {
-      QLog.i("MakeupView", 2, "onEffectClick, seq[" + paramLong + "], info[" + parammhw + "]");
+      QLog.i("MakeupView", 2, "onEffectClick, seq[" + paramLong + "], info[" + parammhr + "]");
     }
     EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
-    if (parammhw == null) {}
+    if (parammhr == null) {}
     do
     {
       return;
-      if (this.jdField_a_of_type_Lil != null) {
-        this.jdField_a_of_type_Lil.a(paramLong, "onEffectClick");
+      if (this.jdField_a_of_type_Lig != null) {
+        this.jdField_a_of_type_Lig.a(paramLong, "onEffectClick");
       }
-      if (TextUtils.equals("0", parammhw.jdField_a_of_type_JavaLangString))
+      if (TextUtils.equals("0", parammhr.jdField_a_of_type_JavaLangString))
       {
-        if (this.jdField_a_of_type_Lil != null) {
-          this.jdField_a_of_type_Lil.a(paramLong, null);
+        if (this.jdField_a_of_type_Lig != null) {
+          this.jdField_a_of_type_Lig.a(paramLong, null);
         }
         a(null);
-        mqr.a("0X800AA64", 0, 0, "", "", "", "");
+        mqo.a("0X800AA64", 0, 0, "", "", "", "");
         return;
       }
-      if (this.jdField_a_of_type_Lil != null) {
-        localPendantItem = (PendantItem)this.jdField_a_of_type_Lil.a(parammhw.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Lig != null) {
+        localPendantItem = (PendantItem)this.jdField_a_of_type_Lig.a(parammhr.jdField_a_of_type_JavaLangString);
       }
     } while ((localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())));
-    if (this.jdField_a_of_type_Lil != null) {
-      this.jdField_a_of_type_Lil.a(paramLong, localPendantItem);
+    if (this.jdField_a_of_type_Lig != null) {
+      this.jdField_a_of_type_Lig.a(paramLong, localPendantItem);
     }
-    a(parammhw.jdField_a_of_type_JavaLangString);
+    a(parammhr.jdField_a_of_type_JavaLangString);
     try
     {
-      mqr.a("0X800AA62", Integer.parseInt(parammhw.jdField_a_of_type_JavaLangString));
+      mqo.a("0X800AA62", Integer.parseInt(parammhr.jdField_a_of_type_JavaLangString));
       return;
     }
-    catch (Throwable parammhw) {}
+    catch (Throwable parammhr) {}
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Lil != null) {
-      this.jdField_a_of_type_Lil.a(paramLong, this);
+    if (this.jdField_a_of_type_Lig != null) {
+      this.jdField_a_of_type_Lig.a(paramLong, this);
     }
     a();
   }
   
   public void a(PendantItem paramPendantItem, int paramInt)
   {
-    if (this.jdField_a_of_type_Mgx != null) {
-      this.jdField_a_of_type_Mgx.a(paramPendantItem.getId(), paramInt);
+    if (this.jdField_a_of_type_Mgs != null) {
+      this.jdField_a_of_type_Mgs.a(paramPendantItem.getId(), paramInt);
     }
   }
   
@@ -172,10 +172,10 @@ public class MakeupView
         QLog.i("MakeupView", 2, "changeCurSelItem, cur[" + paramString + "], pre[" + this.jdField_a_of_type_JavaLangString + "]");
       }
       this.jdField_a_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_Lil != null)
+      if (this.jdField_a_of_type_Lig != null)
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_Lil.a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Lil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_Lig.a(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Lig.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
       }
       b();
     }
@@ -192,17 +192,17 @@ public class MakeupView
       {
         return;
         this.jdField_a_of_type_Int = paramInt2;
-      } while (this.jdField_a_of_type_Lil == null);
-      this.jdField_a_of_type_Lil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+      } while (this.jdField_a_of_type_Lig == null);
+      this.jdField_a_of_type_Lig.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
       return;
     }
     this.jdField_a_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_Lil != null) {
-      this.jdField_a_of_type_Lil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    if (this.jdField_a_of_type_Lig != null) {
+      this.jdField_a_of_type_Lig.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
     }
     try
     {
-      mqr.a("0X800AA63", Integer.parseInt(this.jdField_a_of_type_JavaLangString));
+      mqo.a("0X800AA63", Integer.parseInt(this.jdField_a_of_type_JavaLangString));
       return;
     }
     catch (Throwable paramString) {}
@@ -227,14 +227,14 @@ public class MakeupView
       }
     } while (this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView == null);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setVisibility(0);
-    String str = getContext().getResources().getString(2131695715);
+    String str = getContext().getResources().getString(2131695716);
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(str, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0);
   }
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Lil != null) {
-      this.jdField_a_of_type_Lil.b(paramLong, this);
+    if (this.jdField_a_of_type_Lig != null) {
+      this.jdField_a_of_type_Lig.b(paramLong, this);
     }
   }
   
@@ -242,19 +242,19 @@ public class MakeupView
   {
     Object localObject2 = null;
     int j = 0;
-    if (this.jdField_a_of_type_Lil != null) {
-      if (this.jdField_a_of_type_Lil.a()) {
+    if (this.jdField_a_of_type_Lig != null) {
+      if (this.jdField_a_of_type_Lig.a()) {
         break label123;
       }
     }
     label123:
-    for (Object localObject1 = this.jdField_a_of_type_Lil.jdField_d_of_type_JavaLangString;; localObject1 = null)
+    for (Object localObject1 = this.jdField_a_of_type_Lig.jdField_d_of_type_JavaLangString;; localObject1 = null)
     {
       int i = 0;
       if (i < this.b.size())
       {
-        mhw localmhw = (mhw)this.b.get(i);
-        if ((localmhw == null) || (!TextUtils.equals((CharSequence)localObject1, localmhw.jdField_a_of_type_JavaLangString))) {}
+        mhr localmhr = (mhr)this.b.get(i);
+        if ((localmhr == null) || (!TextUtils.equals((CharSequence)localObject1, localmhr.jdField_a_of_type_JavaLangString))) {}
       }
       for (;;)
       {
@@ -266,8 +266,8 @@ public class MakeupView
         for (;;)
         {
           a((String)localObject1);
-          if (this.jdField_a_of_type_Mgx != null) {
-            BaseToolbar.setSelectedListViewItemAndShow(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this.jdField_a_of_type_Mgx, i);
+          if (this.jdField_a_of_type_Mgs != null) {
+            BaseToolbar.setSelectedListViewItemAndShow(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this.jdField_a_of_type_Mgs, i);
           }
           return;
           i += 1;
@@ -282,20 +282,20 @@ public class MakeupView
   {
     long l = AudioHelper.b();
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Object localObject1 = new mhw();
-    ((mhw)localObject1).jdField_a_of_type_JavaLangString = "0";
-    ((mhw)localObject1).b = String.valueOf(2130841686);
-    ((mhw)localObject1).jdField_c_of_type_Boolean = false;
-    ((mhw)localObject1).jdField_d_of_type_Boolean = true;
-    ((mhw)localObject1).jdField_c_of_type_JavaLangString = getContext().getString(2131695704);
-    ((mhw)localObject1).jdField_d_of_type_JavaLangString = getContext().getString(2131695705);
+    Object localObject1 = new mhr();
+    ((mhr)localObject1).jdField_a_of_type_JavaLangString = "0";
+    ((mhr)localObject1).b = String.valueOf(2130841686);
+    ((mhr)localObject1).jdField_c_of_type_Boolean = false;
+    ((mhr)localObject1).jdField_d_of_type_Boolean = true;
+    ((mhr)localObject1).jdField_c_of_type_JavaLangString = getContext().getString(2131695705);
+    ((mhr)localObject1).jdField_d_of_type_JavaLangString = getContext().getString(2131695706);
     this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-    if (this.jdField_a_of_type_Lil != null)
+    if (this.jdField_a_of_type_Lig != null)
     {
-      localObject1 = this.jdField_a_of_type_Lil.a(null);
-      Object localObject2 = (PendantItem)this.jdField_a_of_type_Lil.a();
+      localObject1 = this.jdField_a_of_type_Lig.a(null);
+      Object localObject2 = (PendantItem)this.jdField_a_of_type_Lig.a();
       if ((localObject2 != null) && (!((List)localObject1).contains(localObject2))) {
-        this.jdField_a_of_type_Lil.a(l, null);
+        this.jdField_a_of_type_Lig.a(l, null);
       }
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
@@ -325,35 +325,35 @@ public class MakeupView
     long l = AudioHelper.b();
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      this.jdField_a_of_type_Lil = ((lil)paramVideoAppInterface.a(13));
-      this.jdField_a_of_type_Lil.a(l, this);
+      this.jdField_a_of_type_Lig = ((lig)paramVideoAppInterface.a(13));
+      this.jdField_a_of_type_Lig.a(l, this);
     }
     d();
-    this.jdField_a_of_type_Mgx = new mgx(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, getContext(), this.b, this.jdField_a_of_type_ComTencentWidgetHorizontalListView, 5.6F);
-    this.jdField_a_of_type_Mgx.a(this);
-    this.jdField_a_of_type_Mgx.a(this);
-    this.jdField_a_of_type_Mgx.a(true);
-    this.jdField_a_of_type_Mgx.b(true);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Mgx);
+    this.jdField_a_of_type_Mgs = new mgs(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, getContext(), this.b, this.jdField_a_of_type_ComTencentWidgetHorizontalListView, 5.6F);
+    this.jdField_a_of_type_Mgs.a(this);
+    this.jdField_a_of_type_Mgs.a(this);
+    this.jdField_a_of_type_Mgs.a(true);
+    this.jdField_a_of_type_Mgs.b(true);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Mgs);
     c();
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhw parammhw, mhv parammhv)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhr parammhr, mhq parammhq)
   {
     paramAppInterface = null;
-    if (this.jdField_a_of_type_Lil != null) {
-      paramAppInterface = (PendantItem)this.jdField_a_of_type_Lil.a(parammhw.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Lig != null) {
+      paramAppInterface = (PendantItem)this.jdField_a_of_type_Lig.a(parammhr.jdField_a_of_type_JavaLangString);
     }
     if (QLog.isDevelopLevel()) {
       QLog.i("MakeupView", 4, "startDownloadTemplate, seq[" + paramLong + "], item[" + paramAppInterface + "]");
     }
     if (paramAppInterface != null)
     {
-      this.jdField_a_of_type_Lil.a(paramLong, paramAppInterface);
+      this.jdField_a_of_type_Lig.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w("MakeupView", 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    parammhv.a(paramLong, parammhw.jdField_a_of_type_JavaLangString, false);
+    parammhq.a(paramLong, parammhr.jdField_a_of_type_JavaLangString, false);
   }
 }
 

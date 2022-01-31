@@ -1,18 +1,38 @@
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+
 public class lvm
-  extends lur
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public Bitmap a;
+  public Rect a;
   
-  public void a(long paramLong) {}
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public lvm(Bitmap paramBitmap)
   {
-    paramInt2 = this.b * paramInt1 / 750;
-    paramInt3 = this.c * paramInt1 / 750;
-    a(paramInt2, paramInt3, this.d * paramInt1 / 750 + paramInt2, this.e * paramInt1 / 750 + paramInt3);
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
+    }
   }
 }
 

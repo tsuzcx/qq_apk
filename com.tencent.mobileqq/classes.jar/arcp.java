@@ -1,52 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.RequiresApi;
+import com.tencent.youtufacetrack.YoutuFaceTracker;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class arcp
-  implements BusinessObserver
+public class arcp
 {
-  arcp(arco paramarco, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
+  protected arch a;
+  public arcz a;
+  public YoutuFaceTracker a;
+  public AtomicInteger a;
+  protected String[] a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public arcp()
   {
-    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
-    {
-      paramInt = paramBundle.getInt("app_id", 0);
-      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
-      if (paramInt == 0) {
-        return;
-      }
-      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
-      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
-      }
-      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libopencv_world.so", "libYTCommon.so", "libYTFaceTrackPro2.so", "libYTAGReflectLiveCheck.so", "libYTPoseDetect.so" };
+  }
+  
+  @RequiresApi(api=18)
+  public static arcp a(int paramInt, Intent paramIntent, arcz paramarcz)
+  {
+    return new arcu(paramIntent, paramarcz);
+  }
+  
+  public int a(Context paramContext, String paramString)
+  {
+    return -1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Arch != null) {
+      this.jdField_a_of_type_Arch.a();
     }
-    if (paramInt != 15)
+    if (this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker != null)
     {
-      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
-      if (paramInt != 17) {
-        break label186;
-      }
-      if (paramBundle != null) {
-        break label180;
-      }
+      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker.destroy();
+      this.jdField_a_of_type_ComTencentYoutufacetrackYoutuFaceTracker = null;
+      YoutuFaceTracker.GlobalRelease();
     }
-    label180:
-    for (paramBundle = "1";; paramBundle = "2")
-    {
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
-      return;
-      this.jdField_a_of_type_Arco.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
-      break;
-    }
-    label186:
-    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
+  }
+  
+  public void a(boolean paramBoolean, Activity paramActivity) {}
+  
+  public boolean a(String paramString)
+  {
+    return false;
   }
 }
 

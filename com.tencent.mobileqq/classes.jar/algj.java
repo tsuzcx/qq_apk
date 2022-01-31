@@ -1,14 +1,13 @@
+import com.tencent.YTFace.model.FaceStatus;
+
 public class algj
 {
-  public String a;
-  public byte[] a;
-  public String b;
+  public int a = 3000;
+  public FaceStatus[] a;
   
-  public algj(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
   }
 }
 

@@ -1,30 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
 
-class moc
-  extends Handler
+public class moc
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<mob> jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_a_of_type_Int;
+  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  int b;
+  int c;
   
-  moc(String paramString, mob parammob)
+  public moc(Bitmap[] paramArrayOfBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammob);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    mob localmob = (mob)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmob != null) {}
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    mob.a(localmob);
-    lcl.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = paramArrayOfBitmap;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
 }
 

@@ -1,86 +1,59 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsReaderGlobal;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-final class ande
+public class ande
 {
-  private int jdField_a_of_type_Int = -1;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private String a = "";
+  private String b = "";
   
-  public static ande a(ampi[] paramArrayOfampi)
+  public static ande a(amph[] paramArrayOfamph)
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0))
-    {
-      QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      paramArrayOfamph = null;
     }
-    ande localande = new ande();
-    int k = paramArrayOfampi.length;
-    int i = 0;
+    ande localande;
     for (;;)
     {
-      if (i < k)
+      return paramArrayOfamph;
+      localande = new ande();
+      try
       {
-        Object localObject1 = paramArrayOfampi[i];
-        try
+        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[0].a);
+        if (localJSONObject.has("AndroidDrawerJumpURL"))
         {
-          localObject1 = new JSONObject(((ampi)localObject1).a);
-          if (localObject1 != null)
-          {
-            if (((JSONObject)localObject1).has("is_enable"))
-            {
-              if (((JSONObject)localObject1).optBoolean("is_enable"))
-              {
-                j = 1;
-                localande.jdField_a_of_type_Int = j;
-              }
-            }
-            else {
-              andc.a((JSONObject)localObject1, localande.jdField_a_of_type_JavaUtilMap);
-            }
-          }
-          else {
-            i += 1;
+          localande.a = localJSONObject.getString("AndroidDrawerJumpURL");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localande.a);
           }
         }
-        catch (JSONException localJSONException)
+        paramArrayOfamph = localande;
+        if (localJSONObject.has("AndroidAioJumpURL"))
         {
-          for (;;)
+          localande.b = localJSONObject.getString("AndroidAioJumpURL");
+          paramArrayOfamph = localande;
+          if (QLog.isColorLevel())
           {
-            QLog.e("TdsReaderView_TdsReaderGrayConfigBean", 1, "parse error", localJSONException);
-            Object localObject2 = null;
-            continue;
-            int j = 0;
+            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localande.b);
+            return localande;
           }
         }
+      }
+      catch (JSONException paramArrayOfamph)
+      {
+        paramArrayOfamph.printStackTrace();
       }
     }
     return localande;
   }
   
-  public static void a(boolean paramBoolean, ande paramande)
+  public String a()
   {
-    paramBoolean = true;
-    if (paramande == null) {
-      QLog.w("TdsReaderView_TdsReaderGrayConfigBean", 1, "source error, configBean is null.");
+    if (TextUtils.isEmpty(this.a)) {
+      return null;
     }
-    do
-    {
-      return;
-      if (!paramande.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-        TdsReaderGlobal.a(true, paramande.jdField_a_of_type_JavaUtilMap);
-      }
-    } while (paramande.jdField_a_of_type_Int == -1);
-    if (paramande.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      TdsReaderGlobal.a(paramBoolean);
-      return;
-      paramBoolean = false;
-    }
+    return this.a;
   }
 }
 

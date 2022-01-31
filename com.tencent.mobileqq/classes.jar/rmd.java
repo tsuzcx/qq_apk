@@ -1,17 +1,6 @@
 class rmd
-  extends osp
 {
-  rmd(rmc paramrmc) {}
-  
-  public void a(boolean paramBoolean, long paramLong)
-  {
-    rmc.a(this.a, paramBoolean, paramLong, rmc.a(this.a));
-  }
-  
-  public void g(boolean paramBoolean)
-  {
-    rmc.a(this.a, paramBoolean);
-  }
+  private static final rlz a = new rlz(null);
 }
 
 

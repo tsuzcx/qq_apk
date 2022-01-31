@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
-public final class azdz
-  implements Parcelable.Creator<MediaPreviewInfo>
+public class azdz
+  implements DialogInterface.OnClickListener
 {
-  public MediaPreviewInfo a(Parcel paramParcel)
-  {
-    MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localMediaPreviewInfo.b = paramParcel.readString();
-    localMediaPreviewInfo.c = paramParcel.readString();
-    return localMediaPreviewInfo;
-  }
+  public azdz(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public MediaPreviewInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MediaPreviewInfo[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

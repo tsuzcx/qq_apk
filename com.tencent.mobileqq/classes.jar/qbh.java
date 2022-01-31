@@ -1,30 +1,34 @@
-import java.net.URL;
+import android.content.SharedPreferences;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract interface qbh
+public class qbh
 {
-  public abstract int getCommentCount();
+  public int a;
+  public long a;
+  public long b = -1L;
   
-  public abstract String getInnerUniqueID();
+  public qbh()
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+  }
   
-  public abstract String getShareUrl();
+  public static qbh a()
+  {
+    qbh localqbh = new qbh();
+    SharedPreferences localSharedPreferences = bhvy.a(onh.a(), true, false);
+    localqbh.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
+    localqbh.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
+    localqbh.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
+    return localqbh;
+  }
   
-  public abstract String getSubscribeName();
-  
-  public abstract String getSubscribeUin();
-  
-  public abstract URL getVideoCoverURL();
-  
-  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
-  
-  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
-  
-  public abstract int getVideoDuration();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract String getVideoVid();
-  
-  public abstract int getVideoWidth();
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.post(new KandianOx210MsgInfo.Biu0x210Msg.1(this, paramQQAppInterface), 8, null, false);
+  }
 }
 
 

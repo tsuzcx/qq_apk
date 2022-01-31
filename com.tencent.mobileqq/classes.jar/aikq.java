@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-class aikq
-  implements DialogInterface.OnClickListener
+public class aikq
+  implements bcqh
 {
-  aikq(aiko paramaiko) {}
+  public aikq(SessionClearFragment paramSessionClearFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    SessionClearFragment.a(this.a).onBackPressed();
+  }
 }
 
 

@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bbjw;
-import bhnv;
+import bbkk;
+import bhom;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -174,7 +174,7 @@ public class MiniAppLivePusher
   
   private void initPusherView()
   {
-    this.tXCloudVideoView = bhnv.a("com.tencent.rtmp.ui.TXCloudVideoView", bhnv.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bhom.a("com.tencent.rtmp.ui.TXCloudVideoView", bhom.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePusher", 1, "tXCloudVideoView is null?! ");
@@ -253,7 +253,7 @@ public class MiniAppLivePusher
     setTag("MiniAppLivePusher");
     this.context = paramContext;
     this.rootView = LayoutInflater.from(paramContext).inflate(2131559264, null);
-    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372168));
+    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372170));
     addView(this.rootView);
   }
   
@@ -413,7 +413,7 @@ public class MiniAppLivePusher
       paramString = new JSONObject();
       try
       {
-        if (!bbjw.a(this.tempAudioFilePath))
+        if (!bbkk.a(this.tempAudioFilePath))
         {
           paramString.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;

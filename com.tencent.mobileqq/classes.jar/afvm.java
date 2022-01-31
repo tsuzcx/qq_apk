@@ -1,13 +1,76 @@
-import android.animation.ValueAnimator;
-import android.widget.ProgressBar;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afvm
+  extends RecyclerView.Adapter
 {
-  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
+  public List<String> a = new ArrayList();
+  
+  public afvm(List<String> paramList)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
-    localValueAnimator.addUpdateListener(new afvn(paramProgressBar));
-    return localValueAnimator;
+    if (paramList != null)
+    {
+      this.a.clear();
+      this.a.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramViewHolder = ((afvn)paramViewHolder).a;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
+    {
+      if (paramInt != 0) {
+        break label92;
+      }
+      String str = (String)this.a.get(paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = aywm.a;
+      localURLDrawableOptions.mLoadingDrawable = aywm.a;
+      localURLDrawableOptions.mPlayGifImage = aupa.a(str);
+      localURLDrawableOptions.mUseAutoScaleParams = true;
+      paramViewHolder.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
+    }
+    label92:
+    do
+    {
+      return;
+      if (paramInt == 1)
+      {
+        paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        paramViewHolder.setPadding(0, 0, 0, 0);
+        paramViewHolder.setImageDrawable(null);
+        paramViewHolder.setBackgroundColor(Color.parseColor("#9A989EB4"));
+        return;
+      }
+    } while (paramInt != 2);
+    paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    paramViewHolder.setPadding(0, 0, 0, 0);
+    paramViewHolder.setImageDrawable(null);
+    paramViewHolder.setBackgroundColor(Color.parseColor("#48989EB4"));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new afvn(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559021, paramViewGroup, false));
   }
 }
 

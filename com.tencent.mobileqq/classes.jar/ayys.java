@@ -1,12 +1,11 @@
 public class ayys
-  extends ayyy
+  extends ayza
 {
-  public String a;
-  
-  public String toString()
-  {
-    return this.a;
-  }
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

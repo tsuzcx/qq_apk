@@ -1,16 +1,71 @@
 import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class afge
-  extends Handler
+  implements affl
 {
-  public afge(SearchBaseActivity paramSearchBaseActivity) {}
+  public afge(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    this.a.a.clearFocus();
+    int i = 3;
+    this.a.i();
+    if (paramBoolean)
+    {
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label94;
+        }
+        if (this.a.a != null)
+        {
+          paramObject = this.a.a;
+          if (!this.a.b) {
+            break label89;
+          }
+          paramInt1 = 3;
+          paramObject.sendEmptyMessage(paramInt1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        }
+      }
+      for (;;)
+      {
+        return;
+        label89:
+        paramInt1 = 2;
+        break;
+        label94:
+        if (paramObject.size() > 0) {}
+        try
+        {
+          paramString = (afgv)paramObject.get(0);
+          if ((this.a.a(paramObject)) && (this.a.a != null))
+          {
+            this.a.a.sendEmptyMessage(0);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+          }
+          paramObject = this.a.a;
+          if (!this.a.b) {}
+        }
+      }
+      for (paramInt1 = i;; paramInt1 = 2)
+      {
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
+      }
+    }
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

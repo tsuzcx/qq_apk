@@ -1,22 +1,36 @@
+import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 
 class ohx
-  implements bfoq
+  implements bfph
 {
-  ohx(ohv paramohv, oii paramoii, bfol parambfol) {}
+  ohx(ohs paramohs, bfpc parambfpc, int[] paramArrayOfInt, Context paramContext, ohl paramohl) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfol.dismiss();
+    this.jdField_a_of_type_Bfpc.dismiss();
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfInt.length)) {
       return;
-      this.jdField_a_of_type_Ohv.a().a(this.jdField_a_of_type_Oii, this.jdField_a_of_type_Ohv.c);
-      this.jdField_a_of_type_Ohv.notifyDataSetChanged();
     }
+    paramView = this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_ArrayOfInt[paramInt]);
+    bbgu localbbgu = new bbgu(this.jdField_a_of_type_AndroidContentContext, 2131755791);
+    localbbgu.setContentView(2131558883);
+    localbbgu.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131718363), new Object[] { paramView }));
+    localbbgu.setTitle(2131718364);
+    ViewGroup.LayoutParams localLayoutParams = localbbgu.getMessageTextView().getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+    {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bbll.a(12.0F);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = bbll.a(12.0F);
+      localbbgu.getMessageTextView().setLayoutParams(localLayoutParams);
+    }
+    localbbgu.setTag(paramView);
+    localbbgu.setPositiveButton(2131718366, new ohy(this, paramView, paramInt + 1));
+    localbbgu.setNegativeButton(2131718365, new ohz(this));
+    localbbgu.show();
   }
 }
 

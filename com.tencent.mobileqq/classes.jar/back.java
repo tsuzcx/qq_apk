@@ -1,50 +1,17 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Map;
+import java.util.List;
 
-class back
-  extends SimpleObserver<babd>
+final class back
+  implements DialogInterface.OnClickListener
 {
-  back(baci parambaci, babd parambabd) {}
+  back(XMediaEditor paramXMediaEditor, List paramList) {}
   
-  public void a(babd parambabd)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(parambabd.c), ", old status=", Integer.valueOf(parambabd.g) });
-    }
-    this.jdField_a_of_type_Baci.b.remove(parambabd);
-    this.jdField_a_of_type_Baci.a(1, false);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.jdField_a_of_type_Babd.c), ", old status=", Integer.valueOf(this.jdField_a_of_type_Babd.g) });
-    }
-    this.jdField_a_of_type_Babd.g = 2;
-    this.jdField_a_of_type_Baci.b.remove(this.jdField_a_of_type_Babd);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
-    paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
-    {
-      Object localObject = this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_Babd.c);
-      if ((localObject instanceof bacl))
-      {
-        localObject = (bacl)localObject;
-        if (this.jdField_a_of_type_Babd.d.equals(((bacl)localObject).a.getTag())) {
-          ((baci)((baao)this.jdField_a_of_type_Baci.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((baby)localObject, this.jdField_a_of_type_Babd, 0);
-        }
-      }
-    }
-    if (!paramError.startsWith("c_")) {
-      bamh.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Babd.a), "");
-    }
-    if (this.jdField_a_of_type_Babd.d.equals(this.jdField_a_of_type_Baci.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Baci.a(1, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

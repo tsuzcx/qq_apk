@@ -2,15 +2,11 @@ import com.tencent.biz.qqstory.database.CommentEntry;
 
 public abstract interface uqo
 {
-  public abstract void a(int paramInt);
+  public abstract boolean a();
   
-  public abstract void a(CommentEntry paramCommentEntry);
+  public abstract boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
-  
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c(CommentEntry paramCommentEntry);
+  public abstract boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 

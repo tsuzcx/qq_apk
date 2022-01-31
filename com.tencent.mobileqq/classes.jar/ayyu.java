@@ -1,17 +1,11 @@
 public class ayyu
-  extends ayyy
+  extends ayza
 {
-  public int a;
-  public long a;
-  public byte[] a;
+  public String a;
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(" storeType:");
-    return localStringBuilder.toString();
+    return this.a;
   }
 }
 

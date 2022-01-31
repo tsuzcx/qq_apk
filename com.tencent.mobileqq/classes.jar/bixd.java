@@ -1,46 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bixd
-  implements biyh
+class bixd
+  implements View.OnClickListener
 {
-  public bixd(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString, Bitmap paramBitmap, long paramLong) {}
+  bixd(bixc parambixc) {}
   
-  public void a(List<biyi> paramList)
+  public void onClick(View paramView)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, new ArrayList());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        biyi localbiyi = (biyi)paramList.next();
-        if (localbiyi.jdField_a_of_type_Boolean)
-        {
-          String str = AETemplateInfoFragment.jdField_a_of_type_JavaLangString + System.currentTimeMillis();
-          BitmapUtils.saveBitmap(localbiyi.jdField_a_of_type_AndroidGraphicsBitmap, str);
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(str);
-          BitmapUtils.recycle(localbiyi.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        else
-        {
-          AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment).add(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      AETemplateInfoFragment.a(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, true);
-    }
-    for (;;)
-    {
-      AETemplateInfoFragment.b(this.jdField_a_of_type_DovComQqImAePlayAETemplateInfoFragment, false);
-      return;
-      BitmapUtils.recycle(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      QLog.e("AETemplateInfoFragment", 1, "changeFace---failed to get face changed bitmaps");
+    if ((this.a.a != null) && (bixc.a(this.a) != null)) {
+      bixc.a(this.a).a(paramView, this.a.a, bixc.a(this.a));
     }
   }
 }

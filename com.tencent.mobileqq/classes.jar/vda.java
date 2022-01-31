@@ -1,11 +1,18 @@
+import android.os.Handler;
+import android.text.TextUtils;
+
 class vda
-  implements vzt<uyy>
+  implements uzu<uzb>
 {
-  vda(vcs paramvcs) {}
+  vda(vcz paramvcz, String paramString) {}
   
-  public uyy a()
+  public void a(uzb paramuzb)
   {
-    return new uyy(new vdb(this));
+    if ((paramuzb.a != null) && (TextUtils.equals(paramuzb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      vcp.a(this.jdField_a_of_type_Vcz.a).a = paramuzb.a;
+      vcp.a(this.jdField_a_of_type_Vcz.a).sendMessage(vcp.a(this.jdField_a_of_type_Vcz.a).obtainMessage(0, vcp.a(this.jdField_a_of_type_Vcz.a)));
+    }
   }
 }
 

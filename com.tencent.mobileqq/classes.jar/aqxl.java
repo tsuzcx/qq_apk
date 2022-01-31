@@ -1,22 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 final class aqxl
-  implements aqxa
+  implements DialogInterface.OnClickListener
 {
-  public String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return auwo.a;
-  }
-  
-  public void a(int paramInt)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

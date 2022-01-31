@@ -1,6 +1,10 @@
-class tde
+import java.util.HashMap;
+import java.util.Map;
+
+public class tde
+  extends ssh
 {
-  public static final tdc a = new tdc(null);
+  public Map<String, tmk> a = new HashMap();
 }
 
 

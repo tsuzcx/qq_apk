@@ -1,56 +1,68 @@
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 import com.tencent.qphone.base.util.QLog;
 
 class aezr
-  extends Handler
+  implements aysc
 {
-  aezr(aezn paramaezn, Looper paramLooper)
+  private Handler a;
+  
+  aezr(Handler paramHandler)
   {
-    super(paramLooper);
+    this.a = paramHandler;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onResp(aysz paramaysz)
   {
-    switch (paramMessage.what)
+    Object localObject = this.a.obtainMessage(8);
+    ((Message)localObject).obj = paramaysz.jdField_a_of_type_Aysy;
+    this.a.sendMessage((Message)localObject);
+    Bundle localBundle = (Bundle)paramaysz.jdField_a_of_type_Aysy.a();
+    localObject = localBundle.getString("ReqUniqueKey");
+    int i = localBundle.getInt("IdxInRes");
+    if (QLog.isColorLevel())
     {
+      long l = localBundle.getLong("StartTs");
+      QLog.d("ZhituManager", 2, aezl.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramaysz.jdField_a_of_type_Long + " file.path = " + paramaysz.jdField_a_of_type_Aysy.c + " resp.result = " + paramaysz.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
     }
-    int i;
-    do
+    if (paramaysz.jdField_a_of_type_Int == 3)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (afae)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, aezn.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Aezz == null);
-        this.a.jdField_a_of_type_Aezz.a(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, aezn.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Afac != null) {
-        this.a.jdField_a_of_type_Afac.a(i, paramMessage);
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, aezl.a((String)localObject, "OnResp", i, "result downloading, "));
       }
-    } while (this.a.jdField_a_of_type_Aezz == null);
-    this.a.jdField_a_of_type_Aezz.a(i, paramMessage);
+      return;
+    }
+    if (paramaysz.jdField_a_of_type_Int == 0)
+    {
+      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
+      aezl.a(paramaysz.jdField_a_of_type_Aysy.c);
+      if (localZhituImgResponse != null)
+      {
+        paramaysz = this.a.obtainMessage(3);
+        paramaysz.obj = localBundle;
+        this.a.sendMessage(paramaysz);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, aezl.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
+      }
+      paramaysz = this.a.obtainMessage(4);
+      localBundle.putInt("ErrorCode", 99999);
+      paramaysz.obj = localBundle;
+    }
+    for (;;)
+    {
+      break;
+      localObject = this.a.obtainMessage(4);
+      localBundle.putInt("ErrorCode", paramaysz.b);
+      ((Message)localObject).obj = localBundle;
+      paramaysz = (aysz)localObject;
+    }
   }
+  
+  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 

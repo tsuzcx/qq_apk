@@ -1,126 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.PaintDrawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ContactMatch;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 import com.tencent.widget.FixSizeImageView;
-import java.util.ArrayList;
-import java.util.List;
 
-public class afoz
-  extends RecyclerView.Adapter<afpb>
+class afoz
+  extends RecyclerView.ViewHolder
 {
-  private int jdField_a_of_type_Int;
-  PaintDrawable jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public FixSizeImageView a;
+  public FixSizeImageView b;
   
-  public afoz(QQAppInterface paramQQAppInterface, List<Object> paramList, PaintDrawable paramPaintDrawable, int paramInt)
+  public afoz(afox paramafox, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable = paramPaintDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public afpb a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new afpb(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131559662, null));
-  }
-  
-  public void a(afpb paramafpb, int paramInt)
-  {
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!(localObject instanceof atyt)) {
-        break label100;
-      }
-      localObject = (atyt)localObject;
-      localObject = baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((atyt)localObject).a());
-      paramafpb.a.setImageDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable != null)
-      {
-        if (paramInt != this.jdField_a_of_type_Int - 1) {
-          break;
-        }
-        paramafpb.b.setVisibility(0);
-        paramafpb.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawablePaintDrawable);
-      }
-      return;
-      label100:
-      if ((localObject instanceof PhoneContact))
-      {
-        localObject = (PhoneContact)localObject;
-        localObject = baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((PhoneContact)localObject).unifiedCode);
-        paramafpb.a.setImageDrawable((Drawable)localObject);
-      }
-      else if ((localObject instanceof atys))
-      {
-        localObject = (atys)localObject;
-        localObject = baxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11, ((atys)localObject).a.unifiedCode);
-        paramafpb.a.setImageDrawable((Drawable)localObject);
-      }
-    }
-    paramafpb.b.setVisibility(8);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int - 1);
-        notifyItemRemoved(this.jdField_a_of_type_Int - 1);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(0, paramObject);
-      notifyItemInserted(0);
-      if (this.jdField_a_of_type_JavaUtilList.size() == this.jdField_a_of_type_Int) {
-        notifyItemChanged(this.jdField_a_of_type_Int - 1);
-      }
-    }
-  }
-  
-  public void a(List<Object> paramList)
-  {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      if (paramList.size() <= this.jdField_a_of_type_Int) {
-        break label52;
-      }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList.subList(0, this.jdField_a_of_type_Int));
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      return;
-      label52:
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367376));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131369803));
   }
 }
 

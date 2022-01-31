@@ -1,17 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import java.lang.ref.WeakReference;
 
-final class bjme
-  implements EIPCResultCallback
+public class bjme
+  implements View.OnClickListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bjme(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramEIPCResult != null)
+    VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
     {
-      boolean bool = paramEIPCResult.data.getBoolean("key_result");
-      QLog.d("PeakIpcController", 2, "sendVideo result:" + bool);
+      paramView = (bjmf)VideoSegmentPickerProviderView.a(this.a).get();
+      if (paramView != null) {
+        paramView.a(0L, 0L);
+      }
     }
   }
 }

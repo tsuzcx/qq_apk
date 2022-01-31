@@ -1,33 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
 
-public class atcp
-  implements bcij<oidb_0x8e4.RspBody>
+class atcp
+  extends BroadcastReceiver
 {
-  public atcp(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  atcp(atck paramatck) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 0)
-    {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
-      String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-      this.a.e();
-      bbjn.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
-      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
-        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
-      }
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
+    }
+    while ((i != 2) && (i != 0)) {
       return;
     }
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    this.a.a.setVisibility(0);
   }
 }
 

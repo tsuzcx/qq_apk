@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import ayls;
+import aylu;
 import com.tencent.mobileqq.activity.ChatFragment;
 
 public class AIOMusicSkin$2
   implements Runnable
 {
-  public AIOMusicSkin$2(ayls paramayls) {}
+  public AIOMusicSkin$2(aylu paramaylu) {}
   
   public void run()
   {
-    if (ayls.a(this.this$0) != null) {
-      ayls.a(this.this$0, ayls.a(this.this$0).a, ayls.a(this.this$0));
+    if (aylu.a(this.this$0) != null) {
+      aylu.a(this.this$0, aylu.a(this.this$0).a, aylu.a(this.this$0));
     }
   }
 }

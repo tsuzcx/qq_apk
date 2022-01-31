@@ -1,28 +1,32 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class acge
-  implements ThreadExcutor.IThreadListener
+  implements View.OnClickListener
 {
   public acge(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onAdded()
+  public void onClick(View paramView)
   {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
-  }
-  
-  public void onPostRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, false);
-  }
-  
-  public void onPreRun()
-  {
-    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
-    TroopAssistantActivity.a(this.a, true);
+    int i = 0;
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      axqy.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Bbjl = ((bbjl)this.a.app.getManager(31));
+      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130839140, 0, 0, 0);
+      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+        this.a.a(paramView, 4);
+        i += 1;
+      }
+    }
   }
 }
 

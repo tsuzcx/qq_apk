@@ -1,25 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class awlk
-  implements rff
+  extends akiy
 {
   public awlk(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).b(paramString);
-        if (this.a.a != null) {
-          awvy.a("sub_result", "clk_hot", new String[] { paramString, awvy.a(this.a.a) });
-        }
-      }
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    }
+  }
+  
+  public void a(int paramInt, List<BusinessGroupWord> paramList)
+  {
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
     }
   }
 }

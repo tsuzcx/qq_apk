@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
 public class acsb
-  implements View.OnClickListener
+  implements acsr
 {
-  public acsb(ReminderListFragment paramReminderListFragment) {}
+  public acsb(ReminderListFragment.5.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ReminderListFragment.a(this.a);
+    ReminderListFragment.a(this.a.a.a, ajya.a(2131713393));
   }
 }
 

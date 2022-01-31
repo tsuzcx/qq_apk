@@ -1,72 +1,58 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
+import android.text.TextUtils;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tjw
-  extends tjg
-  implements syt<tmy, too>
 {
-  protected String a;
-  private final List<String> jdField_a_of_type_JavaUtilList;
-  private tjy jdField_a_of_type_Tjy;
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public tjw(String paramString1, String paramString2)
+  @Nullable
+  public static tnc a(String paramString, List<tnc> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public tjw(List<String> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    tmy localtmy = new tmy();
-    localtmy.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    syr.a().a(localtmy, this);
-  }
-  
-  public void a(@NonNull tmy paramtmy, @Nullable too paramtoo, @NonNull ErrorMessage paramErrorMessage)
-  {
-    paramtmy = new tjx();
-    paramtmy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    paramtmy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    if ((paramErrorMessage.isSuccess()) && (paramtoo != null))
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramErrorMessage = new ArrayList();
-      umy localumy = (umy)tdc.a(7);
-      if ((paramtoo.jdField_a_of_type_JavaUtilList != null) && (!paramtoo.jdField_a_of_type_JavaUtilList.isEmpty()))
+      tnc localtnc = (tnc)paramList.next();
+      if (paramString.equals(localtnc.a)) {
+        return localtnc;
+      }
+    }
+    return null;
+  }
+  
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    ved.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
+    {
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramtoo = paramtoo.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramtoo.hasNext()) {
-          paramErrorMessage.add(localumy.a((ShareGroupItem)paramtoo.next()));
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          ved.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
         }
       }
-      if (!paramErrorMessage.isEmpty()) {
-        paramtmy.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = ((ShareGroupItem)paramErrorMessage.get(0));
-      }
-      paramtmy.jdField_a_of_type_JavaUtilList = paramErrorMessage;
-      b();
     }
-    for (;;)
-    {
-      ste.a().dispatch(paramtmy);
-      paramtoo = this.jdField_a_of_type_Tjy;
-      if (paramtoo != null) {
-        paramtoo.a(paramtmy);
-      }
+    if (paramList.size() == 0) {
       return;
-      c();
     }
+    ved.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new tnb(paramList);
+    syo.a().a((sys)localObject, new tjx(paramList));
   }
 }
 

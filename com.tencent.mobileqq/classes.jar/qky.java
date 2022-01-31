@@ -1,92 +1,44 @@
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qky
+final class qky
+  implements bbxm
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new qkz(this, new Handler());
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public qky(Activity paramActivity)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private void c()
-  {
-    if (!this.b)
-    {
-      this.b = true;
-      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
+    if (QLog.isColorLevel()) {
+      QLog.d(qkx.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
     }
-  }
-  
-  private void d()
-  {
-    if (this.b)
+    if (paramBoolean1)
     {
-      this.b = false;
-      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().unregisterContentObserver(this.jdField_a_of_type_AndroidDatabaseContentObserver);
+      qkx.a(paramInt);
+      try
+      {
+        JSONObject localJSONObject = qkx.b();
+        if (localJSONObject != null) {}
+        try
+        {
+          qkx.b().put("simCardType", qkx.a());
+          if (QLog.isColorLevel()) {
+            QLog.d(qkx.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
+          }
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.e(qkx.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
+            }
+          }
+        }
+        return;
+      }
+      finally {}
     }
-  }
-  
-  public int a()
-  {
-    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
-    try
-    {
-      int i = Settings.System.getInt(localContentResolver, "screen_brightness");
-      return i;
-    }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException) {}
-    return 0;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-      localLayoutParams.screenBrightness = -1.0F;
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    c();
-    this.jdField_a_of_type_Boolean = true;
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-    localLayoutParams.screenBrightness = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-  }
-  
-  public boolean a()
-  {
-    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
-    try
-    {
-      int i = Settings.System.getInt(localContentResolver, "screen_brightness_mode");
-      return i == 1;
-    }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException)
-    {
-      localSettingNotFoundException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    d();
   }
 }
 

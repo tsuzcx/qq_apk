@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount;
 
-import ajyc;
-import amgo;
+import ajya;
+import amgn;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
-import bhvh;
+import bhvy;
 import com.tencent.biz.pubaccount.util.PublicAccountCompactSwipeBackLayout;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Pattern;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sgj;
+import sgg;
 
 public class PublicAccountBrowser
   extends QQBrowserActivity
@@ -27,7 +27,7 @@ public class PublicAccountBrowser
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajyc.a(2131708773);
+    jdField_a_of_type_JavaLangString = ajya.a(2131708784);
   }
   
   public PublicAccountBrowser()
@@ -45,7 +45,7 @@ public class PublicAccountBrowser
     paramString = BaseApplicationImpl.getApplication();
     if (paramString != null)
     {
-      paramString = bhvh.a(paramString.getRuntime(), false, true);
+      paramString = bhvy.a(paramString.getRuntime(), false, true);
       if (paramString != null)
       {
         paramString = paramString.edit();
@@ -108,7 +108,7 @@ public class PublicAccountBrowser
   public ColorNote getColorNote()
   {
     ColorNote localColorNote = super.getColorNote();
-    if (sgj.c(getIntent().getStringExtra("url"))) {}
+    if (sgg.c(getIntent().getStringExtra("url"))) {}
     try
     {
       JSONObject localJSONObject = new JSONObject(new String(localColorNote.getReserve()));

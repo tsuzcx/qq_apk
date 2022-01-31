@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bkzb;
+import bkzs;
 import java.io.File;
 
 public final class QQStoryFollowCaptureResManager$1
@@ -10,7 +10,7 @@ public final class QQStoryFollowCaptureResManager$1
   
   public void run()
   {
-    bkzb.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+    bkzs.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
   }
 }
 

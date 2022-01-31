@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import osj;
-import ozy;
+import osg;
+import ozv;
 
 class ReadInJoyListViewGroup$9
   implements Runnable
@@ -10,9 +10,9 @@ class ReadInJoyListViewGroup$9
   
   public void run()
   {
-    ozy localozy = osj.a().a();
-    if (localozy != null) {
-      localozy.b(this.this$0.a);
+    ozv localozv = osg.a().a();
+    if (localozv != null) {
+      localozv.b(this.this$0.a);
     }
   }
 }

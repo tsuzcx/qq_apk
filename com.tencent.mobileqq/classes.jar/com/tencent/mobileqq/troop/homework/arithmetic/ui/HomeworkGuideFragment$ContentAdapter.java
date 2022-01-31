@@ -5,7 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import azwh;
+import azwj;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +32,10 @@ public class HomeworkGuideFragment$ContentAdapter
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560352, paramViewGroup, false);
-    azwh localazwh = new azwh(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
-    localazwh.a(paramInt, localView);
-    localView.setTag(localazwh);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localazwh);
+    azwj localazwj = new azwj(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
+    localazwj.a(paramInt, localView);
+    localView.setTag(localazwj);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localazwj);
     paramViewGroup.addView(localView, 0);
     return localView;
   }

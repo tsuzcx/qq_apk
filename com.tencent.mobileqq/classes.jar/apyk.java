@@ -1,18 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 class apyk
-  implements DialogInterface.OnClickListener
+  extends bbdt
 {
-  apyk(apyg paramapyg) {}
+  apyk(apyi paramapyi, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.a.c();
-    }
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Apyi.a.a(this.jdField_a_of_type_Int);
   }
 }
 

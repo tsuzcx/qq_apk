@@ -1,31 +1,63 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import mqq.os.MqqHandler;
 
 public class aake
-  implements bfoq
+  extends ajto
 {
-  public aake(AssociatedAccountActivity paramAssociatedAccountActivity, bfol parambfol) {}
+  public aake(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
   {
-    switch (paramInt)
+    boolean bool1 = true;
+    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
+    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
+    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
+    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
+    int i;
+    if (paramBoolean)
     {
-    default: 
+      i = 2;
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label134;
+      }
+      if (!bool2) {
+        break label128;
+      }
+      i = 2131699499;
+    }
+    for (;;)
+    {
+      ((Message)localObject).arg2 = i;
+      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
+      if (!paramBoolean) {
+        break label151;
+      }
+      AssociatedAccountManageActivity.a(this.a);
+      ayaq.a(this.a.app, bool2);
+      return;
+      i = 1;
+      break;
+      label128:
+      i = 2131699498;
+      continue;
+      label134:
+      if (bool2) {
+        i = 2131719867;
+      } else {
+        i = 2131719866;
+      }
+    }
+    label151:
+    localObject = this.a;
+    if (!bool2) {}
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
       return;
     }
-    this.jdField_a_of_type_Bfol.cancel();
-    paramView = (ayav)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(61);
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
-    while (localIterator.hasNext()) {
-      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
-    }
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690809));
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
   }
 }
 

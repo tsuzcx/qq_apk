@@ -1,56 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anco
-  extends ampb<ancn>
 {
-  public static ancn a()
-  {
-    return (ancn)ampm.a().a(451);
-  }
+  public String a = ajya.a(2131714832);
+  public String b = ajya.a(2131714839);
+  public String c = ajya.a(2131714835);
+  public String d = ajya.a(2131714837);
+  public String e = ajya.a(2131714830);
   
-  public int a()
+  public static anco a(amph[] paramArrayOfamph)
   {
-    return 451;
-  }
-  
-  @NonNull
-  public ancn a(int paramInt)
-  {
-    return new ancn();
-  }
-  
-  @Nullable
-  public ancn a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancn.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
-  }
-  
-  public Class<ancn> a()
-  {
-    return ancn.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancn paramancn) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    anco localanco = new anco();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a).optJSONObject("MyFileNameConfig");
+      localanco.a = paramArrayOfamph.optString("tdfileTabName");
+      localanco.b = paramArrayOfamph.optString("wyfileTabName");
+      localanco.c = paramArrayOfamph.optString("tdlistTabviewName");
+      localanco.d = paramArrayOfamph.optString("createTXDocTitle");
+      localanco.e = paramArrayOfamph.optString("safeShareToastWording");
+      return localanco;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
+    }
+    return localanco;
   }
 }
 

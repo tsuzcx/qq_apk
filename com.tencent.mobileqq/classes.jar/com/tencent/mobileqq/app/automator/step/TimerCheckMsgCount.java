@@ -5,8 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.text.TextUtils;
-import axrl;
-import bhvh;
+import axrn;
+import bhvy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -94,7 +94,7 @@ public class TimerCheckMsgCount
       this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp();
     }
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.f = bhvh.b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
+    this.f = bhvy.b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
     long l = System.currentTimeMillis();
     Object localObject4 = c(b);
     Object localObject3 = c(jdField_c_of_type_JavaLangString);
@@ -126,7 +126,7 @@ public class TimerCheckMsgCount
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.tt_report", 2, new Object[] { b, " dateString: ", localObject6 });
             }
-            axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTT", true, 1L, 0L, localHashMap, null, false);
+            axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTT", true, 1L, 0L, localHashMap, null, false);
           }
         }
       }
@@ -151,7 +151,7 @@ public class TimerCheckMsgCount
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.tt_report", 2, new Object[] { jdField_c_of_type_JavaLangString, " dateString: ", localObject5 });
             }
-            axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTT", true, 1L, 0L, (HashMap)localObject6, null, false);
+            axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTT", true, 1L, 0L, (HashMap)localObject6, null, false);
           }
         }
       }
@@ -176,7 +176,7 @@ public class TimerCheckMsgCount
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.tt_report", 2, new Object[] { d, " dateString: ", localObject4 });
             }
-            axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportKB", true, 1L, 0L, (HashMap)localObject5, null, false);
+            axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportKB", true, 1L, 0L, (HashMap)localObject5, null, false);
           }
         }
       }
@@ -201,7 +201,7 @@ public class TimerCheckMsgCount
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.tt_report", 2, new Object[] { e, " dateString: ", localObject3 });
             }
-            axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportKB", true, 1L, 0L, (HashMap)localObject4, null, false);
+            axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportKB", true, 1L, 0L, (HashMap)localObject4, null, false);
           }
         }
       }
@@ -212,7 +212,7 @@ public class TimerCheckMsgCount
     }
     localObject1 = new Date();
     localObject2 = new SimpleDateFormat("yyyy.MM.dd");
-    bhvh.c(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, ((DateFormat)localObject2).format((Date)localObject1));
+    bhvy.c(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app, ((DateFormat)localObject2).format((Date)localObject1));
     localObject1 = ((DateFormat)localObject2).format((Date)localObject1);
     localObject2 = new HashMap();
     ((HashMap)localObject2).put("uin", this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin());
@@ -220,7 +220,7 @@ public class TimerCheckMsgCount
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.tt_report", 2, new Object[] { "uin: ", this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), ", report_time: ", localObject1 });
     }
-    axrl.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTTKB", true, 1L, 0L, (HashMap)localObject2, null, false);
+    axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin(), "actReadInJoyReportTTKB", true, 1L, 0L, (HashMap)localObject2, null, false);
   }
   
   private String c(String paramString)

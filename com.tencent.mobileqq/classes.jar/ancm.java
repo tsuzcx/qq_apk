@@ -1,56 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ancm
-  extends ampb<ancl>
 {
-  public static ancl a()
-  {
-    return (ancl)ampm.a().a(437);
-  }
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a()
+  public static ancm a(amph[] paramArrayOfamph)
   {
-    return 437;
-  }
-  
-  @NonNull
-  public ancl a(int paramInt)
-  {
-    return new ancl();
-  }
-  
-  @Nullable
-  public ancl a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0)) {
-      return ancl.a(paramArrayOfampi);
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
+      return null;
     }
-    return null;
-  }
-  
-  public Class<ancl> a()
-  {
-    return ancl.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancl paramancl) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    ancm localancm = new ancm();
+    try
+    {
+      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
+      localancm.jdField_a_of_type_Boolean = paramArrayOfamph.getBoolean("enable");
+      localancm.jdField_a_of_type_JavaLangString = paramArrayOfamph.getString("content");
+      return localancm;
+    }
+    catch (JSONException paramArrayOfamph)
+    {
+      QLog.e("TencentDocMiniProgramGrayTipsBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
+    }
+    return localancm;
   }
 }
 

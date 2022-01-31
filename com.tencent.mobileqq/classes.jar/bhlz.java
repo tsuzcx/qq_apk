@@ -1,11 +1,20 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.22.1;
+
 public class bhlz
+  extends BroadcastReceiver
 {
-  public static bhlw a(String paramString, int paramInt)
+  public bhlz(QZoneShareActivity paramQZoneShareActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt >= 24) {
-      return new bhma();
+    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
+      ThreadManager.postImmediately(new QZoneShareActivity.22.1(this), null, true);
     }
-    return new bhly();
   }
 }
 

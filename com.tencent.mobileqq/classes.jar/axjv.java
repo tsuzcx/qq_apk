@@ -1,45 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.12.1;
 
-class axjv
-  implements View.OnTouchListener
+public class axjv
+  implements adnx
 {
-  axjv(axjq paramaxjq) {}
+  axjv(axjs paramaxjs) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
+    if (axjs.a(this.a) == null) {
+      axjs.a(this.a, new Handler());
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (axjq.a(this.a) == null);
-        paramView = axjq.a(this.a).getText().toString().trim();
-        bool1 = bool2;
-      } while (ajyc.a(2131713288).trim().equals(paramView));
-      axjq.a(this.a).setAlpha(0.5F);
-      return true;
-      if (axjq.a(this.a) != null) {
-        axjq.a(this.a).setAlpha(1.0F);
-      }
-      axjq.a(this.a, axjq.a(this.a));
-      axjq.b(this.a, System.currentTimeMillis());
-      bool1 = bool2;
-    } while (axjq.a(this.a) - axjq.b(this.a) < 300L);
-    axjq.a(this.a);
-    return true;
+    axjs.a(this.a).postDelayed(new RedBagVideoManager.12.1(this), 1000L);
   }
 }
 

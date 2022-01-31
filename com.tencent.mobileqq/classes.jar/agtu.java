@@ -1,149 +1,136 @@
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.component.media.image.ImageManager;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicDataline.1;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
 import mqq.util.WeakReference;
 
 public class agtu
-  extends agsl
+  extends agsj
 {
-  private agtu(NewPhotoListActivity paramNewPhotoListActivity)
+  protected agtu(NewPhotoListActivity paramNewPhotoListActivity)
   {
     super(paramNewPhotoListActivity);
   }
   
-  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  public static agsc b(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
+    if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
     try
     {
-      if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agse = new agtu(paramNewPhotoListActivity);
+      if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
+        jdField_a_of_type_Agsc = new agtu(paramNewPhotoListActivity);
       }
-      return jdField_a_of_type_Agse;
+      return jdField_a_of_type_Agsc;
     }
     finally {}
   }
   
-  private void b(String paramString)
+  public void a(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Agsd.b >= 1000L)
-    {
-      this.jdField_a_of_type_Agsd.b = l;
-      bcpw.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramString, 0).b(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).g);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "sendPicAndVideoToDataline...");
     }
+    paramIntent.setClassName("com.tencent.mobileqq", "com.dataline.activities.LiteActivity");
+    paramIntent.addFlags(603979776);
+    paramIntent.putExtra("param_compressInitTime", System.currentTimeMillis());
+    paramIntent.putExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
+    paramActivity.startActivityForResult(paramIntent, 2);
+    paramActivity.finish();
+    bbbx.a(paramActivity, false, false);
   }
   
-  private boolean b()
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent() != null)) {
-      return ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getBooleanExtra("pic_back_type_result", false);
-    }
-    return false;
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Agsb.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_a_of_type_Agsb.jdField_a_of_type_Int;
-  }
-  
-  private void g(Intent paramIntent)
-  {
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).setResult(-1, paramIntent);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-  }
-  
-  public void a(View paramView, int paramInt, CheckBox paramCheckBox)
-  {
-    if ((!c()) && (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a.a(paramInt).selectStatus != 1))
+    int i2 = PhotoUtils.b(this.jdField_a_of_type_Agsb.a);
+    paramArrayList = new HashMap();
+    int j = 0;
+    int i = 0;
+    int i1 = 0;
+    int k = 0;
+    while (i1 < this.jdField_a_of_type_Agrz.a.size())
     {
-      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131689790), new Object[] { Integer.valueOf(this.jdField_a_of_type_Agsb.jdField_a_of_type_Int) }));
-      return;
-    }
-    super.a(paramView, paramInt, paramCheckBox);
-  }
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a.a(paramInt);
-    paramView = new Intent();
-    if (b())
-    {
-      if (paramAdapterView == null) {}
-      for (paramAdapterView = "";; paramAdapterView = paramAdapterView.path)
+      localObject1 = (String)this.jdField_a_of_type_Agrz.a.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl((String)localObject1))
       {
-        paramView.putExtra("PhotoConst.SELECTED_PATHS", paramAdapterView);
-        g(paramView);
-        return;
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
+      }
+      else
+      {
+        int n;
+        if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a((String)localObject1) == 1)
+        {
+          localObject1 = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a((String)localObject1);
+          n = j;
+          m = i;
+          if (localObject1 != null)
+          {
+            localObject2 = new SendVideoActivity.SendVideoInfo();
+            ((SendVideoActivity.SendVideoInfo)localObject2).fileSize = ((LocalMediaInfo)localObject1).fileSize;
+            ((SendVideoActivity.SendVideoInfo)localObject2).duration = ((LocalMediaInfo)localObject1).mDuration;
+            paramArrayList.put(Integer.valueOf(k), localObject2);
+            m = i + 1;
+            n = j;
+          }
+        }
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
       }
     }
-    if (paramAdapterView == null) {}
-    for (paramAdapterView = "";; paramAdapterView = paramAdapterView.path)
-    {
-      paramView.putExtra("PhotoConst.SELECTED_PATHS", paramAdapterView);
-      paramView.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
-      paramView.putExtra("pic_result_back_type", 1);
-      AETemplateInfoFragment.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramView);
-      break;
+    Object localObject1 = String.valueOf(j);
+    Object localObject2 = String.valueOf(i);
+    if (!paramArrayList.isEmpty()) {
+      paramIntent.putExtra("PhotoConst.VIDEO_INFOS", paramArrayList);
     }
-  }
-  
-  protected boolean a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    if (paramLocalMediaInfo == null) {
-      return false;
-    }
-    if ((paramLocalMediaInfo.selectStatus == 2) && (paramBoolean) && (!c()))
+    for (i = 1;; i = 0)
     {
-      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131689790), new Object[] { Integer.valueOf(this.jdField_a_of_type_Agsb.jdField_a_of_type_Int) }));
-      return false;
-    }
-    return super.a(paramLocalMediaInfo, paramBoolean);
-  }
-  
-  protected void b(View paramView)
-  {
-    super.b(paramView);
-  }
-  
-  protected void c(View paramView)
-  {
-    if (c())
-    {
-      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131689791), new Object[] { Integer.valueOf(this.jdField_a_of_type_Agsb.jdField_a_of_type_Int) }));
+      if ((axdq.b != 0L) && (System.currentTimeMillis() - axdq.b < 300000L)) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoListActivity", 2, "PhotoListLogicDataline isConfirmed=" + paramBoolean + " allowUploadInXGTime=" + axdq.b);
+        }
+        if ((!bbfj.b(BaseApplicationImpl.getContext())) || (paramBoolean) || (i == 0)) {
+          break;
+        }
+        paramArrayList = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getString(2131719257);
+        paramIntent = new PhotoListLogicDataline.1(this, paramIntent, i2, (String)localObject1, (String)localObject2);
+        if (bcwb.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), 4, new agtv(this, paramIntent))) {
+          bbdj.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 232, null, paramArrayList, new agtw(this, paramIntent), new agtx(this)).show();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("PhotoListActivity", 2, "show datalinephoto_mobile_send_confirm dialog");
+        }
+        return;
+      }
+      a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramIntent, this.jdField_a_of_type_Agrz.a);
+      axqy.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, (String)localObject1, (String)localObject2, "", "");
       return;
     }
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setClickable(false);
-    paramView = new Intent();
-    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_a_of_type_Agsb.jdField_a_of_type_JavaUtilArrayList);
-    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
-    paramView.putExtra("pic_result_back_type", 0);
-    AETemplateInfoFragment.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramView);
-    bizc.a().x();
-    g(paramView);
-  }
-  
-  protected void d()
-  {
-    super.d();
-    String str = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131717102);
-    int i = this.jdField_a_of_type_Agsb.jdField_a_of_type_JavaUtilArrayList.size();
-    str = str + " " + i + "/" + this.jdField_a_of_type_Agsb.jdField_a_of_type_Int;
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setText(str);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setEnabled(true);
-    if (c())
-    {
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setBackgroundResource(2130848697);
-      return;
-    }
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setBackgroundResource(2130837669);
   }
 }
 

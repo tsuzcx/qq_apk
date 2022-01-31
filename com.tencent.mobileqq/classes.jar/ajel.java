@@ -1,38 +1,14 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ajel
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ajel(ajek paramajek) {}
+  ajel(ajei paramajei) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ajek.a(this.a) == null) {
-      return;
-    }
-    boolean bool = ajek.a(this.a).a();
-    if (bool)
-    {
-      ajek.a(this.a).setImageDrawable(ajek.a(this.a).getContext().getResources().getDrawable(2130838315));
-      paramView = this.a;
-      if (bool) {
-        break label124;
-      }
-    }
-    label124:
-    for (bool = true;; bool = false)
-    {
-      ajek.a(paramView, bool);
-      ajek.a(this.a).a(ajek.a(this.a));
-      return;
-      ajek.a(this.a).setImageDrawable(ajek.a(this.a).getContext().getResources().getDrawable(2130838314));
-      break;
-    }
+    ajei.a(this.a);
   }
 }
 

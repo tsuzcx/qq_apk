@@ -1,31 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class akmg
-  implements ayrz
+public class akmg
+  extends akat
 {
-  public void a(aysw paramaysw, aysx paramaysx)
+  public akmg(QQComicStep paramQQComicStep) {}
+  
+  public void a(List<MessageRecord> paramList)
   {
-    if ((paramaysw == null) || (paramaysx == null)) {}
-    do
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      do
+      return;
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
       {
-        return;
-      } while (!(paramaysw instanceof ayrv));
-      paramaysw = (ayrv)paramaysw;
-      paramaysw.jdField_a_of_type_Long += paramaysx.c;
-      paramaysx.c = 0L;
-      paramaysx = "bytes=" + paramaysw.jdField_a_of_type_Long + "-";
-      paramaysw.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysx);
-      paramaysx = paramaysw.jdField_a_of_type_JavaLangString;
-      if (paramaysx.contains("range="))
-      {
-        String str = paramaysx.substring(0, paramaysx.lastIndexOf("range="));
-        paramaysw.jdField_a_of_type_JavaLangString = (str + "range=" + paramaysw.jdField_a_of_type_Long);
+        Object localObject = axva.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
+        {
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              bghx.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], aeht.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramaysx);
+    }
   }
 }
 

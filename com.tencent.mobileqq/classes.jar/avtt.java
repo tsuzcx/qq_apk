@@ -1,6 +1,26 @@
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+
 class avtt
+  implements SensorEventListener
 {
-  private static avtp a = new avtp(null);
+  private float jdField_a_of_type_Float;
+  
+  private avtt(avtr paramavtr) {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 5)
+    {
+      this.jdField_a_of_type_Float = paramSensorEvent.values[0];
+      if (avtr.a(this.jdField_a_of_type_Avtr) != null) {
+        avtr.a(this.jdField_a_of_type_Avtr).a(this.jdField_a_of_type_Float);
+      }
+    }
+  }
 }
 
 

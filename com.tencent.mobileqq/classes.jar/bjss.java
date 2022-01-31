@@ -1,21 +1,9 @@
-import java.util.List;
-
 public abstract interface bjss
-  extends bjwv
+  extends bjxm
 {
-  public abstract int a();
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(List<Long> paramList);
+  public abstract void a(int paramInt);
   
   public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract boolean h_();
 }
 
 

@@ -1,37 +1,40 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
 
 class rov
-  implements GifDrawable.OnGIFPlayOnceListener
+  extends akjb
 {
-  AbstractGifImage a;
+  rov(rou paramrou) {}
   
-  rov(AbstractGifImage paramAbstractGifImage)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.a = paramAbstractGifImage;
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    }
   }
   
-  public void onPlayOnce()
+  public void a(List<awpp> paramList, int paramInt)
   {
-    Object localObject = (List)rou.a().get(this.a);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((row)localWeakReference.get()).a();
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyTabTopSearchHeaderController", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
     }
-    this.a.setGIFPlayOnceListener(null);
-    rou.b().remove(this.a);
-    rou.a().remove(this.a);
+    if (paramInt != 10) {}
+    awpp localawpp;
+    do
+    {
+      do
+      {
+        return;
+        while ((paramList == null) || (paramList.size() <= 0)) {}
+        paramList = paramList.iterator();
+      } while (!paramList.hasNext());
+      localawpp = (awpp)paramList.next();
+    } while (!(localawpp instanceof HotWordSearchEntryDataModel));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localawpp);
+    rou.jdField_a_of_type_Int = 0;
+    this.a.a(false, -1, -1);
   }
 }
 

@@ -1,20 +1,4 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-
-public class aqza
-  implements View.OnTouchListener
-{
-  public aqza(HotPicMainPanel paramHotPicMainPanel) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    HotPicMainPanel.a(this.a);
-    return true;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aqza

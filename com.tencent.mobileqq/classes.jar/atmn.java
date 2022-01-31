@@ -5,17 +5,17 @@ import android.view.View.OnTouchListener;
 class atmn
   implements View.OnTouchListener
 {
-  atmn(atlu paramatlu) {}
+  atmn(atlw paramatlw) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131376011).setAlpha(0.5F);
+      this.a.a.findViewById(2131364465).setAlpha(0.5F);
     }
     for (;;)
     {
       return false;
-      this.a.a.findViewById(2131376011).setAlpha(1.0F);
+      this.a.a.findViewById(2131364465).setAlpha(1.0F);
     }
   }
 }

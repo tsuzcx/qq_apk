@@ -1,46 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Map;
 
 public class nzx
+  implements zcd
 {
-  public static void a(VideoInfo paramVideoInfo, ReadInJoyHeadImageView paramReadInJoyHeadImageView)
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    Drawable localDrawable = bbdr.a(true);
-    if (!TextUtils.isEmpty(paramVideoInfo.E))
+    if (paramLong == 8589934598L)
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = paramReadInJoyHeadImageView.getWidth();
-      localURLDrawableOptions.mRequestHeight = paramReadInJoyHeadImageView.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      try
-      {
-        paramVideoInfo = URLDrawable.getDrawable(new URL(paramVideoInfo.E), localURLDrawableOptions);
-        paramVideoInfo.setDecodeHandler(bavi.a);
-        paramReadInJoyHeadImageView.setImageDrawable(paramVideoInfo);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
       }
-      catch (MalformedURLException paramVideoInfo)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("MultiVideoIconHelper", 2, "initVideoItemContentUI() ERROR e = " + paramVideoInfo.getMessage());
-        return;
-      }
+      paramString = new Bundle();
+      wxr.a().a(138, paramString);
     }
-    if (!TextUtils.isEmpty(paramVideoInfo.j))
-    {
-      paramReadInJoyHeadImageView.a(localDrawable);
-      paramReadInJoyHeadImageView.setHeadImgByUin(Long.valueOf(paramVideoInfo.j).longValue(), false);
-      return;
-    }
-    paramReadInJoyHeadImageView.setImageDrawable(localDrawable);
+    return false;
   }
 }
 

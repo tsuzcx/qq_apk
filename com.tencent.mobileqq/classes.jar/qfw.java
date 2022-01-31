@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import java.util.List;
 
 public class qfw
-  extends osp
+  implements View.OnClickListener
 {
   public qfw(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  public void onClick(View paramView)
   {
-    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
+    this.a.getActivity().finish();
   }
 }
 

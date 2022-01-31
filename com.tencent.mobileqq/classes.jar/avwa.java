@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class avwa
-  implements View.OnClickListener
+public class avwa
 {
-  avwa(avvz paramavvz) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-  }
+  public String a;
+  public boolean a;
+  public boolean b;
 }
 
 

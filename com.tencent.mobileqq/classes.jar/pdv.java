@@ -1,40 +1,78 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.net.URL;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class pdv
 {
   public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    String str;
-    if (paramBaseArticleInfo.mSinglePicture != null)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBaseArticleInfo.mGalleryPicNumber > 2)
     {
-      str = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", str);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      pen.a(paramBaseArticleInfo, localJSONObject1, true);
-      oau.b(paramBaseArticleInfo, localJSONObject1);
-      pen.b(paramBaseArticleInfo, localJSONObject1);
-      pen.e(paramBaseArticleInfo, localJSONObject1);
-      pen.m(paramBaseArticleInfo, localJSONObject1);
-      pen.g(paramBaseArticleInfo, localJSONObject1);
-      pen.aa(paramBaseArticleInfo, localJSONObject1);
-      if (!nmf.a(paramBaseArticleInfo)) {
-        break label125;
-      }
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajya.a(2131712978));
+      localJSONObject.put("id_gallery_cnt", localObject1);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
+      localJSONObject.put("id_gallery_img", localObject1);
+      localJSONObject.put("id_gallery_bg", new JSONObject());
     }
-    for (;;)
+    Object localObject2;
+    Object localObject3;
+    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
     {
-      localJSONObject1.put("id_small_cell_container", new JSONObject());
-      pen.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      str = null;
+      localObject2 = ram.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
+      if ((localObject2 == null) || (((JSONArray)localObject2).length() < 2)) {
+        return localJSONObject;
+      }
+      localObject1 = ((JSONArray)localObject2).optJSONObject(0);
+      if (localObject1 == null)
+      {
+        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
+        localObject2 = ((JSONArray)localObject2).optJSONObject(1);
+        if (localObject2 != null) {
+          break label280;
+        }
+      }
+      label280:
+      for (localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject2).optString("picture"))
+      {
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url1", localObject1);
+        localJSONObject.put("id_multi_img_1", localObject3);
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
+        localJSONObject.put("id_multi_img_2", localObject1);
+        pek.a(paramBaseArticleInfo, localJSONObject, true);
+        pek.m(paramBaseArticleInfo, localJSONObject);
+        pek.i(paramBaseArticleInfo, localJSONObject);
+        pek.a(localJSONObject);
+        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_double_img_cell");
+        pek.a(localJSONObject, paramBaseArticleInfo);
+        return localJSONObject;
+        localObject1 = ((JSONObject)localObject1).optString("picture");
+        break;
+      }
+    }
+    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    {
+      localObject1 = paramBaseArticleInfo.mSinglePicture;
+      label313:
+      localObject2 = ((URL)localObject1).getFile();
+      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
+        break label363;
+      }
+    }
+    label363:
+    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[1])
+    {
+      localObject3 = ((URL)localObject1).getFile();
+      localObject1 = localObject2;
+      localObject2 = localObject3;
       break;
-      label125:
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
+      localObject1 = paramBaseArticleInfo.mPictures[0];
+      break label313;
     }
   }
 }

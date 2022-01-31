@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public abstract interface bbqb
+public class bbqb
 {
-  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  public String a;
+  public String b;
+  public String c;
   
-  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BannerConfig: ").append("backgroudImgUrl=").append(this.a).append(";").append("cornerMarkLevel=").append(this.b).append(";").append("linkUrl=").append(this.c);
+    return localStringBuilder.toString();
+  }
 }
 
 

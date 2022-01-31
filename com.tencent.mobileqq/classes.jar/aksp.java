@@ -1,37 +1,31 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import com.tencent.qphone.base.util.QLog;
 
-class aksp
-  implements View.OnTouchListener
+public class aksp
+  extends Resources
 {
-  aksp(aksl paramaksl, ImageView paramImageView) {}
+  private akst a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aksp(akst paramakst)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    super(paramakst.b().getAssets(), paramakst.b().getDisplayMetrics(), paramakst.b().getConfiguration());
+    this.a = paramakst;
+  }
+  
+  public CharSequence getText(int paramInt)
+  {
+    int i = this.a.a(paramInt);
+    try
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      CharSequence localCharSequence = this.a.a().getText(i);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      return localCharSequence;
     }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    catch (Resources.NotFoundException localNotFoundException) {}
+    return this.a.b().getText(i);
   }
 }
 

@@ -1,36 +1,36 @@
 class bayf
-  extends ajxl
+  extends ajxj
 {
-  private bayf(bayd parambayd) {}
+  private bayf(bayc parambayc) {}
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
+    this.a.a(paramBoolean, 1, paramString, 0);
   }
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
+    this.a.a(paramBoolean, 11, paramString, 0);
   }
   
   protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+    this.a.a(paramBoolean1, 16, paramString, paramInt);
   }
   
   protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+    this.a.a(paramBoolean1, 32, paramString, paramInt);
   }
   
   protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    this.a.a(paramBoolean, 4, paramString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bayf
  * JD-Core Version:    0.7.0.1
  */

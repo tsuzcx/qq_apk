@@ -1,24 +1,44 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class acdc
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   public acdc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.b(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
+    int i = 1;
+    if (paramBoolean)
     {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+      SoundAndVibrateActivity.b(this.a, 0);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839185);
+      if (this.a.app.b() == 0)
+      {
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        label61:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label147;
+        }
+      }
+    }
+    for (;;)
+    {
+      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      return;
+      this.a.b.setChecked(true);
+      break;
+      SoundAndVibrateActivity.b(this.a, 8);
+      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839169);
+      this.a.app.f(0);
+      break label61;
+      label147:
+      i = 0;
     }
   }
 }

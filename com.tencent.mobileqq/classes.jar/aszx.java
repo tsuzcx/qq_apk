@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-class aszx
-  implements DialogInterface.OnClickListener
+public class aszx
+  implements wxt
 {
-  aszx(aszw paramaszw) {}
+  public aszx(NearbyJsInterface paramNearbyJsInterface, wxr paramwxr, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Wxr.b(new aszy(this, paramBundle));
   }
 }
 

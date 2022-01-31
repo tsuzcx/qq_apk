@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agmi;
+import agmg;
 import java.lang.ref.WeakReference;
 
 public class MediaScanner$2
   implements Runnable
 {
-  public MediaScanner$2(agmi paramagmi, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public MediaScanner$2(agmg paramagmg, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   /* Error */
   public void run()
@@ -20,7 +20,7 @@ public class MediaScanner$2
     //   12: aload_0
     //   13: getfield 19	com/tencent/mobileqq/activity/photo/MediaScanner$2:b	Ljava/lang/ref/WeakReference;
     //   16: invokevirtual 34	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   19: checkcast 38	agmj
+    //   19: checkcast 38	agmh
     //   22: astore 7
     //   24: aload 6
     //   26: ifnull +8 -> 34
@@ -159,13 +159,13 @@ public class MediaScanner$2
     //   316: iconst_1
     //   317: invokeinterface 160 3 0
     //   322: invokestatic 166	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   325: invokestatic 171	agmi:a	(Landroid/content/Context;)Lagmi;
-    //   328: invokestatic 174	agmi:a	(Lagmi;)Laglw;
+    //   325: invokestatic 171	agmg:a	(Landroid/content/Context;)Lagmg;
+    //   328: invokestatic 174	agmg:a	(Lagmg;)Laglu;
     //   331: aload 6
     //   333: getfield 66	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   336: aload 6
     //   338: getfield 84	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   341: invokevirtual 179	aglw:a	(Ljava/lang/String;J)V
+    //   341: invokevirtual 179	aglu:a	(Ljava/lang/String;J)V
     //   344: return
     //   345: astore 8
     //   347: ldc 40
@@ -416,7 +416,7 @@ public class MediaScanner$2
     //   223	679	4	k	int
     //   218	641	5	m	int
     //   10	814	6	localLocalMediaInfo	LocalMediaInfo
-    //   22	776	7	localagmj	agmj
+    //   22	776	7	localagmh	agmh
     //   63	245	8	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
     //   345	47	8	localException	java.lang.Exception
     //   552	260	8	localObject1	Object

@@ -2,30 +2,30 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
+import qtr;
 import qtu;
-import qtx;
+import qtv;
 import qty;
-import qub;
 
 public class VideoPlayManager$2
   implements Runnable
 {
-  public VideoPlayManager$2(qtu paramqtu, qty paramqty, qub paramqub, int paramInt1, int paramInt2, Object paramObject) {}
+  public VideoPlayManager$2(qtr paramqtr, qtv paramqtv, qty paramqty, int paramInt1, int paramInt2, Object paramObject) {}
   
   public void run()
   {
-    if (qtu.a(this.this$0) != null)
+    if (qtr.a(this.this$0) != null)
     {
-      Iterator localIterator = qtu.a(this.this$0).iterator();
+      Iterator localIterator = qtr.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        qtx localqtx = (qtx)localIterator.next();
-        if (localqtx != null) {
-          localqtx.a(this.jdField_a_of_type_Qty, this.jdField_a_of_type_Qub, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        qtu localqtu = (qtu)localIterator.next();
+        if (localqtu != null) {
+          localqtu.a(this.jdField_a_of_type_Qtv, this.jdField_a_of_type_Qty, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
         }
       }
     }
-    qtu.a(this.this$0, this.b, true);
+    qtr.a(this.this$0, this.b, true);
   }
 }
 

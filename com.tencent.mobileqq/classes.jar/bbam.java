@@ -1,24 +1,33 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
 final class bbam
-  implements Comparator
+  implements URLDrawable.URLDrawableListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  bbam(WeakReference paramWeakReference) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
-    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
-    if (l1 == l2) {
-      return 0;
+    if (this.a != null)
+    {
+      paramURLDrawable = (View)this.a.get();
+      if (paramURLDrawable != null) {
+        paramURLDrawable.postInvalidate();
+      }
     }
-    if (l1 < l2) {
-      return 2;
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbam
  * JD-Core Version:    0.7.0.1
  */

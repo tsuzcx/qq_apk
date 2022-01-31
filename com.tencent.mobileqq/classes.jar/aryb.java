@@ -1,25 +1,18 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aryb
-  implements QQPermissionCallback
+class aryb
+  implements View.OnClickListener
 {
-  public aryb(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
+  aryb(arxz paramarxz) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    paramArrayOfString = bbcv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new aryc(this));
+    if (this.a.a.a()) {
+      return;
     }
-    aruq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
+    arxj.a(this.a.a, null);
+    axqy.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
   }
 }
 

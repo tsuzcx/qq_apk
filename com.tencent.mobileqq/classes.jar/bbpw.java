@@ -1,6 +1,8 @@
-public abstract interface bbpw
+public class bbpw
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public long a;
+  public String a;
+  public String b;
 }
 
 

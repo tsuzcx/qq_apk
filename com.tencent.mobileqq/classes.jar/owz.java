@@ -1,45 +1,26 @@
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class owz
-  implements TVK_SDKMgr.OnLogListener
+public class owz
+  implements oxm
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public owz(VideoView paramVideoView) {}
   
-  public int e(String paramString1, String paramString2)
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+    if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
+    {
+      paramArrayOfString2 = paramArrayOfString2[0];
+      if ((!TextUtils.isEmpty(VideoView.d(this.a))) && (VideoView.d(this.a).equals(paramArrayOfString1[0])))
+      {
+        this.a.b(paramArrayOfString2);
+        return;
+      }
+      QLog.d("gifvideo.VideoView", 2, "not current video");
+      return;
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    QLog.d("gifvideo.VideoView", 2, "urls null");
   }
 }
 

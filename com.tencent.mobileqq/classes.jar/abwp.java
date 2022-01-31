@@ -1,16 +1,17 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class abwp
-  implements awcd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public abwp(QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onGlobalLayout()
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

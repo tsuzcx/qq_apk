@@ -1,22 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class pmy
-  implements View.OnClickListener
+  extends pmp
 {
-  public pmy(NativeAwesomeCommentView paramNativeAwesomeCommentView, qap paramqap) {}
+  public pmy(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
+  {
+    super(paramInt1, paramInt2, paramInt3);
+  }
   
   public void onClick(View paramView)
   {
-    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
-      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
-    }
-    while (this.jdField_a_of_type_Qap == null) {
-      return;
-    }
-    onk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Qap.a, this.jdField_a_of_type_Qap.c);
-    qap.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
+    ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
   }
 }
 

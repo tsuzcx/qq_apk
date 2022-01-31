@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
-public class bkri
+public abstract interface bkri
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public abstract void l(boolean paramBoolean);
 }
 
 

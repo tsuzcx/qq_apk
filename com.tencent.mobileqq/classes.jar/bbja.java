@@ -1,14 +1,8 @@
-import android.os.Build.VERSION;
-
-public final class bbja
+public abstract interface bbja
 {
-  public static int a()
-  {
-    if (Build.VERSION.SDK_INT > 10) {
-      return 4;
-    }
-    return 0;
-  }
+  public abstract void a(avct paramavct, avcu paramavcu);
+  
+  public abstract void b(avct paramavct, avcu paramavcu);
 }
 
 

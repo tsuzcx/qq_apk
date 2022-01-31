@@ -1,32 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class afgh
-  extends Handler
+  extends ajxj
 {
   public afgh(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
+      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
-      return;
-    }
-    this.a.c();
   }
 }
 

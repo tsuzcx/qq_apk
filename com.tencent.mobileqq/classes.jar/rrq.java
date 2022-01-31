@@ -1,13 +1,17 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AdapterView;
 
-class rrq
-  implements PopupWindow.OnDismissListener
+public class rrq
+  implements bfpt
 {
-  rrq(rrp paramrrp) {}
+  public rrq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void onDismiss()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a(1.0F);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
+      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
   }
 }
 

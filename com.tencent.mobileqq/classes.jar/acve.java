@@ -1,9 +1,12 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public class acve
+public abstract interface acve
 {
-  public ChatMessage a;
-  public StringBuilder b;
+  public abstract void a();
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
+  
+  public abstract void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aels paramaels);
 }
 
 

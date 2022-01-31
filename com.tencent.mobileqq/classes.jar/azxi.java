@@ -1,8 +1,11 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class azxi
   implements View.OnClickListener
@@ -11,17 +14,15 @@ public class azxi
   
   public void onClick(View paramView)
   {
-    bfmr.b(paramView);
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(4) >= 6)
     {
-      this.a.h();
+      bcql.a(this.a.getActivity(), String.format(ajya.a(2131708851), new Object[] { Integer.valueOf(6) }), 0).a();
       return;
     }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
-    }
+    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidViewViewGroup.getWindowToken(), 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.b();
+    SearchReciteArticleFragment.a(this.a.getActivity(), this.a.b);
+    bbbp.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { this.a.b });
   }
 }
 

@@ -1,16 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
 public class sxr
 {
-  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    return syk.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
+    return syk.a(paramQQUserUIItem);
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean a()
   {
-    return syk.a(paramContext);
+    return true;
+  }
+  
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    return syk.b(paramQQUserUIItem);
   }
 }
 

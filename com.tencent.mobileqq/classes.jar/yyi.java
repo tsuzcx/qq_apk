@@ -1,153 +1,146 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
+import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.AdvExposureInfo;
+import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoReq;
+import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.ExposeAndGetAdvInfoRsp;
+import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoReq;
+import NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoRsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public final class yyi
-  implements yxz
+  extends MSFServlet
 {
-  public int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  public qq_ad_get.QQAdGetRsp.AdInfo a;
-  yyk jdField_a_of_type_Yyk = new yyj(this);
-  public int b;
-  private List<String> b;
-  private List<String> c;
-  
-  public yyi()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
-  
-  private int a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    yyf.a(BaseApplicationImpl.getApplication(), this, paramString);
-    j = -1;
-    i = j;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i;
+    int j;
+    String str;
+    Bundle localBundle;
+    int k;
+    if (paramFromServiceMsg != null)
+    {
+      i = paramFromServiceMsg.getResultCode();
+      j = paramIntent.getIntExtra("key_operation", -1);
+      str = paramIntent.getStringExtra("key_adID");
+      localBundle = new Bundle();
+      if (i != 1000) {
+        break label322;
+      }
+      k = -10000;
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if (j != 0) {
+        break label278;
+      }
+      localObject1 = (ExposeAndGetAdvInfoRsp)yyj.a(paramFromServiceMsg, "ExposeAndGetAdvInfo");
+      if (localObject1 == null) {
+        break label339;
+      }
+      i = ((ExposeAndGetAdvInfoRsp)localObject1).Code;
+      paramFromServiceMsg = ((ExposeAndGetAdvInfoRsp)localObject1).Msg;
+      localObject1 = ((ExposeAndGetAdvInfoRsp)localObject1).vecAdvExposureInfo;
+    }
     for (;;)
     {
-      try
+      label98:
+      j = k;
+      if (i == 0)
       {
-        yxs.a("GdtC2SReporter", "index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int);
-        i = j;
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
-        i = j;
-        localHttpURLConnection.setRequestMethod("GET");
-        i = j;
-        localHttpURLConnection.setConnectTimeout(10000);
-        i = j;
-        localHttpURLConnection.setReadTimeout(10000);
-        i = j;
-        localHttpURLConnection.setUseCaches(false);
-        i = j;
-        localHttpURLConnection.setInstanceFollowRedirects(true);
-        i = j;
-        localHttpURLConnection.connect();
-        i = j;
-        j = localHttpURLConnection.getResponseCode();
-        i = j;
-        yxs.a("GdtC2SReporter", "rspCode:  " + j + " index: " + paramInt + " mOpeType " + this.jdField_a_of_type_Int + " reportUrl =" + paramString);
-        i = j;
-        int k = this.jdField_a_of_type_Int;
-        if (j != 200) {
-          continue;
+        j = k;
+        if (localObject1 != null)
+        {
+          j = k;
+          if (((ArrayList)localObject1).size() > 0) {
+            j = ((AdvExposureInfo)((ArrayList)localObject1).get(0)).iAuditResult;
+          }
         }
-        paramInt = 0;
-        i = j;
-        axqw.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
       }
-      catch (Throwable localThrowable)
+      if (QLog.isColorLevel()) {
+        QLog.d("QBossC2SCheckerServlet", 2, "onReceive: " + str + ", code: " + j);
+      }
+      label183:
+      localBundle.putString("msg", paramFromServiceMsg);
+      localBundle.putInt("code", j);
+      localBundle.putString("adid", str);
+      if (QLog.isColorLevel()) {
+        QLog.d("QBossC2SCheckerServlet", 2, "onReceive code=" + j + " adID=" + str);
+      }
+      if (j == 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        yxs.d("GdtC2SReporter", "c2sReport excetpion: " + localThrowable.getMessage());
-        j = i;
-        continue;
-      }
-      yyf.a(BaseApplicationImpl.getApplication(), this, paramString, j, System.currentTimeMillis() - l);
-      return j;
-      paramInt = 1;
-    }
-  }
-  
-  private void a(List<String> paramList)
-  {
-    int i = -1;
-    paramList = paramList.iterator();
-    int j = 0;
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      j += 1;
-      int k = a(str, j);
-      i = k;
-      if (k < 0) {
-        i = a(str, j);
-      }
-      yyf.a(BaseApplicationImpl.getApplication(), this, str, i);
-    }
-    axqw.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, i, "", "", this.jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
-  {
-    int j = 1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
-    if (paramAdInfo == null) {}
-    do
-    {
-      yyf.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-      return;
-      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
-      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
-      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
-      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
-    } while (this.jdField_a_of_type_JavaLangString == null);
-    if ((paramInt1 == 0) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Int = paramInt1;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((paramInt1 == 1) && (this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if ((paramInt1 == 2) && (this.c != null) && (this.c.size() > 0)) {
-        this.jdField_a_of_type_Int = paramInt1;
-      }
-      if (this.jdField_a_of_type_Int == -1) {
+        notifyObserver(paramIntent, 100, bool, localBundle, yyh.class);
+        return;
+        i = -1;
         break;
+        label278:
+        if (1 != j) {
+          break label339;
+        }
+        localObject1 = (GetAdvInfoRsp)yyj.a(paramFromServiceMsg, "GetAdvInfo");
+        if (localObject1 == null) {
+          break label339;
+        }
+        i = ((GetAdvInfoRsp)localObject1).Code;
+        paramFromServiceMsg = ((GetAdvInfoRsp)localObject1).Msg;
+        localObject1 = ((GetAdvInfoRsp)localObject1).vecAdvExposureInfo;
+        break label98;
+        label322:
+        j = -20000;
+        paramFromServiceMsg = (FromServiceMsg)localObject1;
+        break label183;
       }
-      yxs.a("GdtC2SReporter", "reportAsync for ADID: " + this.jdField_a_of_type_JavaLangString + ", operationType: " + paramInt1);
-      yyf.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramAdInfo = BaseApplicationImpl.getApplication().getRuntime();
-      String str = paramAdInfo.getAccount();
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), yyl.class);
-      localNewIntent.putExtra("key_uin", str);
-      localNewIntent.putExtra("key_adID", this.jdField_a_of_type_JavaLangString);
-      paramInt1 = j;
-      if (i != 0) {
-        paramInt1 = 0;
+      label339:
+      i = -10000;
+      localObject1 = null;
+      paramFromServiceMsg = localObject2;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    int i = paramIntent.getIntExtra("key_operation", -1);
+    Object localObject3 = paramIntent.getStringExtra("key_uin");
+    paramIntent = paramIntent.getStringExtra("key_adID");
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QBossC2SCheckerServlet", 2, "onSend operationType= " + i + " adID=" + paramIntent);
+    }
+    paramIntent = "";
+    Object localObject2 = "";
+    Object localObject1 = null;
+    if (i == 0)
+    {
+      paramIntent = "RevenueQboss.ExposeAndGetAdvInfo";
+      localObject2 = "ExposeAndGetAdvInfo";
+      localObject1 = new ExposeAndGetAdvInfoReq(localArrayList, (String)localObject3);
+    }
+    for (;;)
+    {
+      localObject3 = new yyj((String)localObject3, (JceStruct)localObject1, paramIntent, (String)localObject2);
+      localObject2 = ((yyj)localObject3).encode();
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        QLog.e("QBossC2SCheckerServlet", 1, "onSend request encode result is null.cmd = " + ((yyj)localObject3).uniKey());
+        localObject1 = new byte[4];
       }
-      localNewIntent.putExtra("key_operation", paramInt1);
-      localNewIntent.setObserver(this.jdField_a_of_type_Yyk);
-      paramAdInfo.startServlet(localNewIntent);
-      axqw.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.jdField_a_of_type_Int, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + paramIntent);
+      paramPacket.putSendData((byte[])localObject1);
       return;
+      if (1 == i)
+      {
+        paramIntent = "RevenueQboss.GetAdvInfo";
+        localObject2 = "GetAdvInfo";
+        localObject1 = new GetAdvInfoReq(localArrayList, (String)localObject3);
+      }
     }
   }
 }

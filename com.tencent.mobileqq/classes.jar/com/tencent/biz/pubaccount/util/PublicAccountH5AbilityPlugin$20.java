@@ -7,24 +7,24 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bcdb;
-import bcpq;
+import bcdp;
+import bcqf;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import nap;
-import sfn;
-import wim;
+import nam;
+import sfk;
+import wij;
 
 public class PublicAccountH5AbilityPlugin$20
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$20(sfn paramsfn, String paramString, Bundle paramBundle, bcpq parambcpq) {}
+  public PublicAccountH5AbilityPlugin$20(sfk paramsfk, String paramString, Bundle paramBundle, bcqf parambcqf) {}
   
   public void run()
   {
-    Object localObject = nap.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = nam.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
     int i;
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
+    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
     {
       i = 1;
       if (i != 0)
@@ -44,11 +44,11 @@ public class PublicAccountH5AbilityPlugin$20
         if (WXShareHelper.a().a()) {
           break label153;
         }
-        i = 2131720906;
+        i = 2131720917;
         if (i == -1) {
           break label168;
         }
-        wim.a(0, i);
+        wij.a(0, i);
         localObject = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowser.class);
         ((Intent)localObject).putExtra("url", "http://weixin.qq.com/download");
         this.this$0.mRuntime.a().startActivity((Intent)localObject);
@@ -64,13 +64,13 @@ public class PublicAccountH5AbilityPlugin$20
       label153:
       if (!WXShareHelper.a().b())
       {
-        i = 2131720907;
+        i = 2131720918;
         continue;
         label168:
         WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
         return;
         label179:
-        wim.a(1, 2131695589);
+        wij.a(1, 2131695590);
       }
       else
       {

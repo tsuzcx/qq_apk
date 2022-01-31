@@ -1,30 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
-class bjek
-  implements URLDrawable.URLDrawableListener
+public class bjek
+  implements View.OnClickListener
 {
-  bjek(bjej parambjej, String paramString, URLDrawable paramURLDrawable, bjcd parambjcd) {}
+  public bjek(HummingActivity paramHummingActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    bjej.a.remove(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
+    if (bjeg.b()) {
+      return;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    bjej.a.remove(this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bjej.a(this.jdField_a_of_type_Bjej, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Bjcd);
+    HummingActivity.a(this.a);
   }
 }
 

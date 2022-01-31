@@ -1,18 +1,19 @@
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-
-public abstract interface avxo
+public class avxo
+  implements avxp
 {
-  public abstract void a();
+  public void a(int paramInt, Throwable paramThrowable) {}
   
-  public abstract void a(int paramInt);
+  public void a(long paramLong) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
+  public void b(long paramLong) {}
   
-  public abstract void a(avxk paramavxk, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, avxn paramavxn);
+  public void f() {}
   
-  public abstract void b();
+  public void g() {}
   
-  public abstract void c();
+  public void i() {}
+  
+  public void l() {}
 }
 
 

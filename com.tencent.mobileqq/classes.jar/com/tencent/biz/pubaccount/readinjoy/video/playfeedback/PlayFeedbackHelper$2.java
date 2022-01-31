@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.playfeedback;
 
-import axrl;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public final class PlayFeedbackHelper$2
       QLog.d("PlayFeedbackHelper", 2, "report actVideoPlayFeedback, data=" + ((StringBuilder)localObject).toString());
     }
     Object localObject = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).c();
-    axrl.a(BaseApplicationImpl.getContext()).a((String)localObject, "actVideoPlayFeedback", true, -1L, 0L, this.a, null);
+    axrn.a(BaseApplicationImpl.getContext()).a((String)localObject, "actVideoPlayFeedback", true, -1L, 0L, this.a, null);
   }
 }
 

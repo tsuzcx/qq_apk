@@ -1,53 +1,45 @@
-import java.util.ArrayList;
-
 public class ayzd
-  extends ayzp
+  extends ayza
 {
   public int a;
   public long a;
   public String a;
-  public ArrayList<ayuo> a;
-  public boolean a;
+  public byte[] a;
   public int b;
   public long b;
   public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public ayzd()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public byte[] b;
+  public int c;
+  public int d;
+  public int e;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
+    localStringBuilder.append(" chatType:");
     localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" downDomain:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" thumbDownUrl");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" bigDownUrl:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" orgiDownUrl:");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(" md5:");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte);
+    localStringBuilder.append(" format:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" str_file_name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" uint64_file_size:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" fileTime:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" busiType:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(" subBusiType:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(" userCnt:");
+    localStringBuilder.append(this.l);
     return localStringBuilder.toString();
   }
 }

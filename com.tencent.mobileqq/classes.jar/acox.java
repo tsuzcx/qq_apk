@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class acox
-  implements DialogInterface.OnClickListener
+  extends WebChromeClient
 {
-  public acox(UpgradeActivity paramUpgradeActivity) {}
+  private acox(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    axqw.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      axqw.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
     }
-    axqw.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akuz.b(), String.valueOf(2), akva.a(), "0");
-    akva.a().a(this.a.app);
-    this.a.finish();
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
+    }
+    this.a.setTitle(paramString);
   }
 }
 

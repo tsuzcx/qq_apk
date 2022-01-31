@@ -1,28 +1,21 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class arxl
-  implements View.OnClickListener
+  extends ajxj
 {
-  arxl(arxh paramarxh, Activity paramActivity) {}
+  arxl(arxj paramarxj) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Arxh.a()) {
-      return;
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(arxj.a(this.a).a())))
+    {
+      arxj.a(arxj.a(this.a), 0, String.valueOf(paramObject));
+      if (arxj.a(this.a) != null) {
+        arxj.a(this.a).finish();
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
-    }
-    arxh.a(this.jdField_a_of_type_Arxh).setClickable(false);
-    arxh.a(this.jdField_a_of_type_Arxh).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840253));
-    arxh.a(this.jdField_a_of_type_Arxh).a(true);
-    axqw.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
   }
 }
 

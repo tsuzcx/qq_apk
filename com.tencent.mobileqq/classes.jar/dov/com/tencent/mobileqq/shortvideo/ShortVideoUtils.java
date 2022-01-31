@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import ahwa;
+import ahvy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,9 +8,9 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import axdq;
-import bbdj;
-import blci;
+import axds;
+import bbdx;
+import blcz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
@@ -22,10 +22,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import swf;
+import swc;
 
 public class ShortVideoUtils
-  implements axdq
+  implements axds
 {
   private static int jdField_a_of_type_Int;
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
@@ -280,7 +280,7 @@ public class ShortVideoUtils
     }
     localObject = localStringBuilder.toString() + ".nomedia";
     if (!new File((String)localObject).exists()) {
-      bbdj.c((String)localObject);
+      bbdx.c((String)localObject);
     }
     return localStringBuilder.toString();
   }
@@ -353,7 +353,7 @@ public class ShortVideoUtils
       if (paramMessageForShortVideo.isSendFromLocal())
       {
         bool2 = bool1;
-        if (bbdj.b(paramString)) {
+        if (bbdx.b(paramString)) {
           bool2 = false;
         }
       }
@@ -363,7 +363,7 @@ public class ShortVideoUtils
         break;
       }
       ((File)localObject).mkdirs();
-      bbdj.c(paramMessageForShortVideo + ".nomedia");
+      bbdx.c(paramMessageForShortVideo + ".nomedia");
       return paramString;
     }
     Object localObject = ((File)localObject).list();
@@ -392,7 +392,7 @@ public class ShortVideoUtils
         if (paramMessageForShortVideo.equals(paramString)) {
           return paramString;
         }
-        bbdj.d(paramMessageForShortVideo, paramString);
+        bbdx.d(paramMessageForShortVideo, paramString);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoUtils", 2, "copy " + paramMessageForShortVideo + " to " + paramString);
         }
@@ -410,8 +410,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = blci.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+    paramFile = blcz.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -429,8 +429,8 @@ public class ShortVideoUtils
     if (paramString == null) {
       return null;
     }
-    paramString = blci.a(new File(paramString));
-    StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+    paramString = blcz.a(new File(paramString));
+    StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -506,16 +506,16 @@ public class ShortVideoUtils
   @TargetApi(14)
   public static long b(String paramString)
   {
-    if (!bbdj.a(paramString)) {
+    if (!bbdx.a(paramString)) {
       return 0L;
     }
-    return swf.a(paramString);
+    return swc.a(paramString);
   }
   
   public static String b()
   {
-    String str = blci.a();
-    return ahwa.d + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
+    String str = blcz.a();
+    return ahvy.d + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
   }
   
   public static String b(int paramInt)
@@ -575,8 +575,8 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = blci.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+    paramFile = blcz.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -601,7 +601,7 @@ public class ShortVideoUtils
     if (!TextUtils.isEmpty(paramString1))
     {
       String str = MD5.toMD5(paramString1);
-      StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+      StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
       localStringBuilder.append("shortvideo");
       localStringBuilder.append(File.separator);
       localStringBuilder.append(str);
@@ -637,7 +637,7 @@ public class ShortVideoUtils
   
   private static String c()
   {
-    StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+    StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
@@ -663,7 +663,7 @@ public class ShortVideoUtils
   
   private static String c(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(ahwa.d);
+    StringBuilder localStringBuilder = new StringBuilder(ahvy.d);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString);

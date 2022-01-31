@@ -6,7 +6,7 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -46,7 +46,7 @@ public class MiniAppGetUserAppListServlet
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bblm.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
         ((Bundle)localObject).putInt("key_index", (int)localStQWebRsp.Seq.get());
         ((Bundle)localObject).putLong("retCode", localStQWebRsp.retCode.get());
         ((Bundle)localObject).putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -90,7 +90,7 @@ public class MiniAppGetUserAppListServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetUserAppList");
-      paramPacket.putSendData(bblm.a((byte[])localObject));
+      paramPacket.putSendData(bbma.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;

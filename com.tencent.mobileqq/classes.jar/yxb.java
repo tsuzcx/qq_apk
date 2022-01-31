@@ -1,70 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
 
-class yxb
-  implements yxh
+public class yxb
+  implements View.OnClickListener
 {
-  private GdtDwellTimeStatisticsAfterClick a;
+  public yxb(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    if (paramywn != null) {}
-    GdtHandler.Params localParams;
-    for (Activity localActivity = paramywn.a();; localActivity = null)
+    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      localParams = new GdtHandler.Params();
-      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
-      if ((paramywn != null) && (localActivity != null) && (bool)) {
-        break;
-      }
-      yxs.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
-      return true;
+      paramView = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
     for (;;)
     {
-      try
-      {
-        yxs.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
-        localParams.c = 7;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramywn.a());
-        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
-        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-        paramVarArgs = paramywn.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramywn.mRuntime.a()));
-          this.a.a();
-          GdtHandler.a(localParams);
-          paramywn.callJs(paramString, null);
-          paramString = localObject;
-          if (paramywn != null) {
-            paramString = paramywn.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
+      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
+        paramView = "ad is loading";
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
+        paramView = GdtInterstitialFragmentForJS.a(this.a).a();
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
+        paramView = "正在打开插屏";
+      } else {
+        paramView = "打开插屏错误";
       }
-      catch (Throwable paramywn)
-      {
-        yxs.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramywn);
-        return true;
-      }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
   }
 }

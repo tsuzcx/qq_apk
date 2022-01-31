@@ -1,73 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amwh
-  extends ampb<amwi>
 {
-  public int a()
+  public amxa a;
+  public boolean a;
+  
+  public amwh()
   {
-    return 535;
+    this.jdField_a_of_type_Amxa = new amxa();
   }
   
-  @NonNull
-  public amwi a(int paramInt)
+  public static amwh a(String paramString)
   {
-    return new amwi();
-  }
-  
-  @Nullable
-  public amwi a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    if (paramString == null) {}
+    do
     {
-      amwi localamwi = amwi.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amwh localamwh = new amwh();
+        paramString = new JSONObject(paramString);
+        localamwh.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
+        paramString = paramString.optJSONObject("watchTogether");
+        if (paramString != null)
+        {
+          amxa localamxa = new amxa();
+          localamxa.a(paramString.optInt("version"));
+          localamxa.b(paramString.optInt("jumpType"));
+          localamxa.a(paramString.optString("jumpUrl"));
+          localamxa.b(paramString.optString("jumpExtensionInfo"));
+          localamwh.jdField_a_of_type_Amxa = localamxa;
+        }
+        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localamwh.toString());
+        return localamwh;
       }
-      return localamwi;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public Class<amwi> a()
+  public String toString()
   {
-    return amwi.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
+    if (this.jdField_a_of_type_Amxa == null) {}
+    for (String str = "null";; str = this.jdField_a_of_type_Amxa.toString()) {
+      return str + '}';
     }
-  }
-  
-  public void a(amwi paramamwi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramamwi.toString());
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 

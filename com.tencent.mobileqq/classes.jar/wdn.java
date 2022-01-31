@@ -1,7 +1,4 @@
-public abstract interface wdn
-{
-  public abstract void a(wdl paramwdl, float paramFloat);
-}
+public abstract interface wdn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar

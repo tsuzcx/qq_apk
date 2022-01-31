@@ -1,31 +1,8 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class bcep
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface bcep
 {
-  bcep(bceo parambceo, View paramView) {}
-  
-  public void onGlobalLayout()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
-    {
-      this.jdField_a_of_type_Bceo.c = true;
-      this.jdField_a_of_type_Bceo.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_Bceo.c) {
-      return;
-    }
-    this.jdField_a_of_type_Bceo.c = false;
-  }
+  public abstract void a(String paramString, Bundle paramBundle, long paramLong);
 }
 
 

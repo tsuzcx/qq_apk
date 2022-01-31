@@ -11,9 +11,9 @@ class PublicAccountImageCollectionMainActivity$6
   public void run()
   {
     this.this$0.a.setVisibility(8);
+    this.this$0.a.findViewById(2131378761).setVisibility(8);
+    this.this$0.a.findViewById(2131378755).setVisibility(8);
     this.this$0.a.findViewById(2131378756).setVisibility(8);
-    this.this$0.a.findViewById(2131378750).setVisibility(8);
-    this.this$0.a.findViewById(2131378751).setVisibility(8);
   }
 }
 

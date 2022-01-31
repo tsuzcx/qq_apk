@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbct;
-import bdja;
-import bgxr;
+import bbdh;
+import bdjp;
+import bgyi;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.ROMUtil;
@@ -15,8 +15,8 @@ import cooperation.qzone.LocalMultiProcConfig;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import sni;
-import vzz;
+import snf;
+import vzw;
 
 public class WSStatisticsBaseCollector
 {
@@ -35,32 +35,32 @@ public class WSStatisticsBaseCollector
   {
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
-    localHashMap.put("imsi", bbct.b());
-    localHashMap.put("imei", bdja.c());
-    localHashMap.put("mac", bdja.a());
+    localHashMap.put("imsi", bbdh.b());
+    localHashMap.put("imei", bdjp.c());
+    localHashMap.put("mac", bdjp.a());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
-    localHashMap.put("screen_res", bdja.e());
+    localHashMap.put("screen_res", bdjp.e());
     localHashMap.put("operating_system_version", Build.VERSION.RELEASE);
     localHashMap.put("ui_version", ROMUtil.getRomName() + ROMUtil.getRomVersion());
     localHashMap.put("app_ver", DeviceUtils.getVersionName(BaseApplicationImpl.getContext()));
-    localHashMap.put("wifiBssid", sni.e());
+    localHashMap.put("wifiBssid", snf.e());
     localHashMap.put("push_id", getPushId());
     localHashMap.put("ip", DeviceUtils.getLocalIpAddress());
     localHashMap.put("session_id", getSessionId());
     localHashMap.put("session_stamp", getSessionStamp());
     localHashMap.put("sop_name", getSopName());
-    localHashMap.put("qua", bgxr.a());
-    localHashMap.put("android_id", bbct.f());
-    localHashMap.put("qq", sni.a().getAccount());
-    if (vzz.a(BaseApplicationImpl.getApplication())) {}
+    localHashMap.put("qua", bgyi.a());
+    localHashMap.put("android_id", bbdh.f());
+    localHashMap.put("qq", snf.a().getAccount());
+    if (vzw.a(BaseApplicationImpl.getApplication())) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("if_install_weishi", str);
       localHashMap.put("person_id", "");
       localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-      localHashMap.put("network_type", sni.d());
+      localHashMap.put("network_type", snf.d());
       localHashMap.put("extended_fields", getExtendInfo());
       localHashMap.put("scenes_from", getSceneFrom());
       localHashMap.put("operation_id", getOperationId());

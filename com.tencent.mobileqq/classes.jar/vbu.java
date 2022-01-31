@@ -1,20 +1,16 @@
-import com.tribe.async.dispatch.Dispatcher.Event;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class vbu
-  implements Dispatcher.Event
+public abstract interface vbu
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  public abstract void a(String paramString, CommentEntry paramCommentEntry);
   
-  public vbu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    this.d = paramFloat4;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.a = paramFloat1;
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

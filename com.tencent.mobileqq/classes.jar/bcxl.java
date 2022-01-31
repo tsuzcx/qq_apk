@@ -1,68 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
-
 public class bcxl
-  extends QIPCModule
 {
-  private static volatile bcxl a;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  private bcxl(String paramString)
+  public bcxl() {}
+  
+  public bcxl(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public static bcxl a()
+  public int a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bcxl("open_sdk_qipc_module");
-      }
-      return a;
-    }
-    finally {}
+    return this.jdField_a_of_type_Int;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public String a()
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_get_accountInfo".equals(paramString))
-    {
-      paramString = new Bundle();
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
-      paramBundle = paramBundle.getString("key_uin");
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
-        paramString.putString("key_nickname", bbcl.i((QQAppInterface)localAppRuntime, paramBundle));
-      }
-      callbackResult(paramInt, localEIPCResult);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_ptlogin_cancel".equals(paramString))
-      {
-        paramString = BaseActivity.sTopActivity;
-        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
-        if ((paramString instanceof SplashActivity)) {
-          paramString.doOnBackPressed();
-        }
-      }
-    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bcxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,375 +1,83 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.confess.ConfessInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xb67.oidb_0xb67.ReqBody;
-import tencent.im.oidb.cmd0xb67.oidb_0xb67.RspBody;
-import tencent.im.oidb.cmd0xbc3.oidb_0xbc3.ReqBody;
-import tencent.im.oidb.cmd0xbc3.oidb_0xbc3.RspBody;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class amnl
-  extends ajtd
+  extends ahnw
 {
-  public amnl(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  int a;
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    paramOnClickListener = paramContext.getResources();
+    if (paramView == null)
+    {
+      paramahnr = null;
+      if ((paramView == null) || (!(paramView.getTag() instanceof amnm))) {
+        break label179;
+      }
+      paramahnr = (amnm)paramahnr;
+      label35:
+      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
+      if (paramInt >= 0) {
+        break label348;
+      }
+      paramInt = (int)(this.a * 1.5F);
+    }
+    label81:
+    label348:
     for (;;)
     {
-      return;
-      String str = paramToServiceMsg.extraData.getString("frdUin", "");
-      int j = paramToServiceMsg.extraData.getInt("shieldHours", 0);
-      int k = paramToServiceMsg.extraData.getInt("uinType", 0);
-      int m = paramToServiceMsg.extraData.getInt("topicId", 0);
-      oidb_0xb67.RspBody localRspBody = null;
-      try
+      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
       {
-        paramToServiceMsg = (ConfessInfo)paramToServiceMsg.extraData.getSerializable("confessInfo");
-        localRspBody = new oidb_0xb67.RspBody();
-        int n = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-        if (n == 0)
+        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        paramViewGroup.width = -1;
+        paramViewGroup.height = paramInt;
+        paramView.setLayoutParams(paramViewGroup);
+        if ((paramObject instanceof Integer))
         {
-          int i;
-          if (localRspBody.uint32_result.has())
-          {
-            i = localRspBody.uint32_result.get();
-            label118:
-            if (!localRspBody.bytes_err_msg.has()) {
-              break label274;
-            }
-            paramFromServiceMsg = localRspBody.bytes_err_msg.get().toStringUtf8();
-            label141:
-            if (i != 0) {
-              break label297;
-            }
-            if (j != -1) {
-              break label280;
-            }
-            amns.a(this.app, str, amnk.e, k, m, paramToServiceMsg);
-            label169:
-            notifyUI(3, true, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), null, paramToServiceMsg });
+          paramInt = ((Integer)paramObject).intValue();
+          if (paramInt != 16) {
+            break label294;
           }
-          while (QLog.isColorLevel())
-          {
-            QLog.i("ConfessHandler", 2, String.format("handleSetShieldFlag result:%d rspResult:%d frdUin:%s hours:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i), str, Integer.valueOf(j) }));
-            return;
-            i = 0;
-            break label118;
-            label274:
-            paramFromServiceMsg = "";
-            break label141;
-            label280:
-            amns.a(this.app, str, k, m, paramToServiceMsg);
-            break label169;
-            label297:
-            notifyUI(3, false, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), paramFromServiceMsg, null });
+          paramahnr.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839144);
+          if ((paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+            ((Animatable)paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
           }
-        }
-        paramFromServiceMsg = localRspBody.bytes_err_msg.get().toStringUtf8();
-        if (QLog.isColorLevel()) {
-          if (paramFromServiceMsg != null) {
-            break label449;
-          }
-        }
-        label449:
-        for (paramToServiceMsg = "";; paramToServiceMsg = paramFromServiceMsg)
-        {
-          QLog.i("ConfessHandler", 2, String.format("handleSetShieldFlag failed result:%d msg:%s", new Object[] { Integer.valueOf(n), paramToServiceMsg }));
-          notifyUI(3, false, new Object[] { str, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), paramFromServiceMsg, null });
-          return;
+          paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131698705);
         }
       }
-      catch (Exception paramToServiceMsg)
+      while (paramInt != 17)
       {
-        for (;;)
-        {
-          paramToServiceMsg = localRspBody;
-        }
+        return paramView;
+        paramahnr = paramView.getTag();
+        break;
+        paramView = LayoutInflater.from(paramContext).inflate(2131560698, null);
+        paramahnr = new amnm();
+        paramahnr.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368899));
+        paramahnr.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
+        paramahnr.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378436));
+        paramView.setTag(paramahnr);
+        this.a = (paramOnClickListener.getDimensionPixelSize(2131297958) + paramOnClickListener.getDimensionPixelSize(2131297960) + paramOnClickListener.getDimensionPixelSize(2131297959) * 2);
+        break label35;
+        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+        break label81;
       }
-    }
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, amnk paramamnk)
-  {
-    int i = 0;
-    long l1 = awzw.a();
-    long l2 = amnk.a(paramQQAppInterface, "redpoint_box_show");
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, String.format("onNeedShowBoxRedPoint oldRedPointTs:%d", new Object[] { Long.valueOf(l2) }));
-    }
-    amnk.a(paramQQAppInterface, "redpoint_box_show", l1);
-    amns.a(paramQQAppInterface, false, true);
-    paramQQAppInterface.a().a().d(ajsf.aM, 1032);
-    aktg localaktg = paramQQAppInterface.a().a();
-    RecentUser localRecentUser = localaktg.b(ajsf.aM, 1032);
-    if (localRecentUser == null)
-    {
-      paramQQAppInterface = new RecentUser(ajsf.aM, 1032);
-      paramQQAppInterface.lastmsgtime = l1;
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localaktg.a(paramQQAppInterface);
-        paramQQAppInterface = this.mApp.getHandler(Conversation.class);
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.sendEmptyMessage(1009);
-        }
+      if ((paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+        ((Animatable)paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
       }
-      notifyUI(4, true, paramamnk);
-      return;
-      paramQQAppInterface = localRecentUser;
-      if (localRecentUser.lastmsgtime < l1)
-      {
-        localRecentUser.lastmsgtime = l1;
-        i = 1;
-        paramQQAppInterface = localRecentUser;
-      }
+      paramahnr.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131698704);
+      return paramView;
     }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    long l1 = paramToServiceMsg.extraData.getLong("fromUin", 0L);
-    long l2 = paramToServiceMsg.extraData.getLong("toUin", 0L);
-    int i = paramToServiceMsg.extraData.getInt("topicId", 0);
-    int j = paramToServiceMsg.extraData.getInt("type", 0);
-    boolean bool = paramToServiceMsg.extraData.getBoolean("isConfessor", false);
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, "handleGetHolmesProgress fUin:" + l1 + " tUin:" + l2 + " topicid:" + i + " type:" + j + " isConfessor:" + bool);
-    }
-    paramToServiceMsg = new oidb_0xbc3.RspBody();
-    int k = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (k == 0)
-    {
-      if ((paramToServiceMsg.uint32_cur_count.has()) && (paramToServiceMsg.uint32_total_count.has()))
-      {
-        k = paramToServiceMsg.uint32_cur_count.get();
-        int m = paramToServiceMsg.uint32_total_count.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("ConfessHandler", 2, "handleGetHolmesProgress curCount:" + k + " totalCount:" + m);
-        }
-        notifyUI(8, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("ConfessHandler", 2, "handleGetHolmesProgress failed no msg");
-      }
-      notifyUI(8, false, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(bool) });
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, "handleGetHolmesProgress failed result:" + k);
-    }
-    notifyUI(8, false, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(bool) });
-  }
-  
-  private void c(QQAppInterface paramQQAppInterface, amnk paramamnk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, "onNeedShowLebaRedPoint");
-    }
-    amnk.a(paramQQAppInterface, "redpoint_leba_show", awzw.a());
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, "getHolmesCurrentProgress fUin:" + paramLong1 + " tUin:" + paramLong2 + " topicid:" + paramInt1 + " isConfessor:" + paramBoolean);
-    }
-    Object localObject = new oidb_0xbc3.ReqBody();
-    ((oidb_0xbc3.ReqBody)localObject).uint64_from.set(paramLong1);
-    ((oidb_0xbc3.ReqBody)localObject).uint64_to.set(paramLong2);
-    ((oidb_0xbc3.ReqBody)localObject).uint32_topic_id.set(paramInt1);
-    PBUInt32Field localPBUInt32Field = ((oidb_0xbc3.ReqBody)localObject).uint32_is_confessor;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localPBUInt32Field.set(i);
-      localObject = makeOIDBPkg("OidbSvc.cmd0xbc3", 3011, 0, ((oidb_0xbc3.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putLong("fromUin", paramLong1);
-      ((ToServiceMsg)localObject).extraData.putLong("toUin", paramLong2);
-      ((ToServiceMsg)localObject).extraData.putInt("topicId", paramInt1);
-      ((ToServiceMsg)localObject).extraData.putInt("type", paramInt2);
-      ((ToServiceMsg)localObject).extraData.putBoolean("isConfessor", paramBoolean);
-      super.sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
-  }
-  
-  public void a(amoa paramamoa)
-  {
-    if (this.app == null) {
-      return;
-    }
-    if (this.app.a().a().b(ajsf.aM, 1032) != null)
-    {
-      MqqHandler localMqqHandler = this.mApp.getHandler(Conversation.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.sendEmptyMessage(1009);
-      }
-    }
-    notifyUI(2, true, paramamoa);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, amnk paramamnk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessHandler", 2, String.format("onGetNewConfig boxEntry:%d contactEntry:%d", new Object[] { Integer.valueOf(paramamnk.h), Integer.valueOf(paramamnk.i) }));
-    }
-    if (paramamnk.h == 2) {
-      b(paramQQAppInterface, paramamnk);
-    }
-    if (paramamnk.i == 2) {
-      c(paramQQAppInterface, paramamnk);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, int paramInt3)
-  {
-    if (paramConfessInfo == null) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ConfessHandler", 2, String.format("setSetShieldFlag frdUin:%s uinType:%d topicId:%d hours:%d confessinfo:%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramConfessInfo.toString() }));
-      }
-      long l1 = 0L;
-      try
-      {
-        l2 = Long.parseLong(paramString);
-        l1 = l2;
-        boolean bool = Friends.isValidUin(l2);
-        if (!bool) {}
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          if (QLog.isColorLevel()) {
-            QLog.i("ConfessHandler", 2, "setSetShieldFlag parseUin error return");
-          }
-          long l2 = l1;
-          continue;
-          String str = "0X80091A2";
-        }
-      }
-    }
-    if (paramInt3 == -1)
-    {
-      localObject = "0X80091A3";
-      axqw.b(this.app, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-      localObject = new oidb_0xb67.ReqBody();
-      ((oidb_0xb67.ReqBody)localObject).uint64_shield_uin.set(l2);
-      ((oidb_0xb67.ReqBody)localObject).int64_expire_time.set(paramInt3);
-      localObject = makeOIDBPkg("OidbSvc.cmd0xb67", 2919, 1, ((oidb_0xb67.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("frdUin", paramString);
-      ((ToServiceMsg)localObject).extraData.putInt("uinType", paramInt1);
-      ((ToServiceMsg)localObject).extraData.putInt("topicId", paramInt2);
-      ((ToServiceMsg)localObject).extraData.putInt("shieldHours", paramInt3);
-      ((ToServiceMsg)localObject).extraData.putSerializable("confessInfo", paramConfessInfo);
-      super.sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
-  }
-  
-  public void b(amoa paramamoa)
-  {
-    if (this.app == null) {
-      return;
-    }
-    aktg localaktg;
-    RecentUser localRecentUser2;
-    int i;
-    RecentUser localRecentUser1;
-    if ((paramamoa != null) && (paramamoa.a()))
-    {
-      localaktg = this.app.a().a();
-      localRecentUser2 = localaktg.b(ajsf.aM, 1032);
-      i = 0;
-      if (localRecentUser2 != null) {
-        break label123;
-      }
-      localRecentUser1 = new RecentUser();
-      localRecentUser1.uin = ajsf.aM;
-      localRecentUser1.setType(1032);
-      localRecentUser1.lastmsgtime = paramamoa.a;
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localaktg.a(localRecentUser1);
-        paramamoa = this.mApp.getHandler(Conversation.class);
-        if (paramamoa != null) {
-          paramamoa.sendEmptyMessage(1009);
-        }
-      }
-      notifyUI(1, true, null);
-      return;
-      label123:
-      localRecentUser1 = localRecentUser2;
-      if (localRecentUser2.lastmsgtime < paramamoa.a)
-      {
-        localRecentUser2.lastmsgtime = paramamoa.a;
-        i = 1;
-        localRecentUser1 = localRecentUser2;
-      }
-    }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.cmd0xb67");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajtg> observerClass()
-  {
-    return amnt.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.cmd0xb67".equals(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"OidbSvc.cmd0xbc3".equals(str)) {
-      return;
-    }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

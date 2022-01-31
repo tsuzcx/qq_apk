@@ -1,13 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-public class wpb
-  extends RecyclerView.ViewHolder
+public abstract interface wpb<T>
 {
-  public wpb(wpa paramwpa, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(wpk paramwpk, T paramT);
 }
 
 

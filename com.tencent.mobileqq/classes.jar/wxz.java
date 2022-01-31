@@ -1,23 +1,30 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.troop.TroopMemberApiService;
+import java.util.ArrayList;
 
-class wxz
-  implements wxw
+public class wxz
+  extends ajyr
 {
-  wxz(wxy paramwxy, String paramString) {}
+  public wxz(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void a(Bundle paramBundle)
+  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
-    {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_Wxy.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_Wxy.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1050);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(5));
+    this.a.a(3, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", this.a.f);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putStringArrayList("uins", paramArrayList1);
+    localBundle.putStringArrayList("tinyIds", paramArrayList2);
+    this.a.a(102, localBundle);
   }
 }
 

@@ -1,58 +1,23 @@
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class oay
+class oay
+  extends AnimatorListenerAdapter
 {
-  public static AdvertisementInfo a(VideoAdInfo paramVideoAdInfo)
+  oay(oaw paramoaw, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramVideoAdInfo == null) {
-      return null;
-    }
-    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
-    localAdvertisementInfo.mAdAdvertiseId = paramVideoAdInfo.jdField_g_of_type_Long;
-    localAdvertisementInfo.mAdVideoUrl = paramVideoAdInfo.s;
-    localAdvertisementInfo.mAdAid = paramVideoAdInfo.e;
-    localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.jdField_h_of_type_JavaLangString;
-    localAdvertisementInfo.mAdViewId = paramVideoAdInfo.m;
-    localAdvertisementInfo.mAdProductId = paramVideoAdInfo.i;
-    localAdvertisementInfo.mAdVia = paramVideoAdInfo.t;
-    localAdvertisementInfo.mAdNocoId = paramVideoAdInfo.jdField_h_of_type_Long;
-    localAdvertisementInfo.mAdApurl = paramVideoAdInfo.jdField_g_of_type_JavaLangString;
-    localAdvertisementInfo.mAdRl = paramVideoAdInfo.f;
-    localAdvertisementInfo.mAdEffectUrl = paramVideoAdInfo.A;
-    localAdvertisementInfo.mAdLandingPageReportUrl = paramVideoAdInfo.z;
-    localAdvertisementInfo.mAdLandingPage = paramVideoAdInfo.j;
-    localAdvertisementInfo.mAdCanvasJson = paramVideoAdInfo.y;
-    localAdvertisementInfo.mAdDestType = paramVideoAdInfo.jdField_n_of_type_Int;
-    localAdvertisementInfo.mAdExt = paramVideoAdInfo.r;
-    localAdvertisementInfo.mOrigin = nmf.N;
-    localAdvertisementInfo.mAdAppDownLoadSchema = paramVideoAdInfo.x;
-    localAdvertisementInfo.mAdCustomizedInvokeUrl = paramVideoAdInfo.jdField_n_of_type_JavaLangString;
-    localAdvertisementInfo.mChannelID = 409409L;
-    localAdvertisementInfo.mAdProductType = paramVideoAdInfo.c;
-    localAdvertisementInfo.mAdJumpMode = paramVideoAdInfo.l;
-    localAdvertisementInfo.mAdPosID = paramVideoAdInfo.jdField_b_of_type_Long;
-    if (paramVideoAdInfo.v != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramVideoAdInfo.v);
-      if (localJSONObject.has("mini_program_type")) {
-        localAdvertisementInfo.miniProgramType = localJSONObject.optInt("mini_program_type");
-      }
-      localAdvertisementInfo.mAdExtInfo = paramVideoAdInfo.v;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    localAdvertisementInfo.mPopFormH5Url = paramVideoAdInfo.C;
-    localAdvertisementInfo.mShowAdButton = paramVideoAdInfo.jdField_b_of_type_Boolean;
-    localAdvertisementInfo.processAdExt(paramVideoAdInfo.r);
-    return localAdvertisementInfo;
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
+    oaw.a(this.jdField_a_of_type_Oaw).a();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
   }
 }
 

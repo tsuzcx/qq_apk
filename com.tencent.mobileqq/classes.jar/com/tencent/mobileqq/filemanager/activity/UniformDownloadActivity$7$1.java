@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aopr;
-import bdjo;
-import bdkp;
-import bdlc;
+import aopw;
+import bdkd;
+import bdle;
+import bdlr;
 
 public class UniformDownloadActivity$7$1
   implements Runnable
 {
-  public UniformDownloadActivity$7$1(aopr paramaopr) {}
+  public UniformDownloadActivity$7$1(aopw paramaopw) {}
   
   public void run()
   {
-    bdkp.a().a(UniformDownloadActivity.a(this.a.a));
-    bdlc.a().a(this.a.a, "http://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
-    bdjo.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
+    bdle.a().a(UniformDownloadActivity.a(this.a.a));
+    bdlr.a().a(this.a.a, "http://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
+    bdkd.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
   }
 }
 

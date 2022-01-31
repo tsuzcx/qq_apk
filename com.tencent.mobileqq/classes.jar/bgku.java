@@ -1,17 +1,55 @@
-import android.content.Context;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.hce.HcePluginInstallActivity;
 
-final class bgku
-  implements bgkx
+public class bgku
+  implements OnPluginInstallListener
 {
-  public void a(boolean paramBoolean, Context paramContext, bgkz parambgkz)
+  public bgku(HcePluginInstallActivity paramHcePluginInstallActivity) {}
+  
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
     }
-    if (paramBoolean) {
-      bgkq.e(paramContext, parambgkz);
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
     }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    }
+    bcql.a(this.a.getApplicationContext(), 2131695210, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
+    {
+      HcePluginInstallActivity.a(this.a);
+      return;
+    }
+    bcql.a(this.a.getApplicationContext(), 2131695210, 0).a();
+    HcePluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adps;
+import adpq;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
-import aoza;
-import apuw;
+import aoze;
+import apuy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FileVideoItemBuilder$2
   implements Runnable
 {
-  public FileVideoItemBuilder$2(adps paramadps, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public FileVideoItemBuilder$2(adpq paramadpq, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class FileVideoItemBuilder$2
       return;
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      apuw.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath, localOptions);
+      apuy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath, localOptions);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth = localOptions.outWidth;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight = localOptions.outHeight;
       if (QLog.isColorLevel()) {

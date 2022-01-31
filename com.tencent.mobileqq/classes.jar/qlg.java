@@ -1,41 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Looper;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-final class qlg
-  implements ooa
+public class qlg
 {
-  qlg(qli paramqli, HashMap paramHashMap) {}
+  private static String jdField_a_of_type_JavaLangString = qlg.class.getSimpleName();
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+  private HashMap<Integer, qln> jdField_a_of_type_JavaUtilHashMap;
+  private qlm jdField_a_of_type_Qlm;
+  private qlo jdField_a_of_type_Qlo;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void a(ood paramood)
+  public qlg(Context paramContext, String paramString, HashMap<Integer, qln> paramHashMap, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "换链回包 mHasDestory = " + qlf.a().get() + ", vid = " + paramood.jdField_b_of_type_JavaLangString);
-    }
-    if ((qlf.a().get()) || (!this.jdField_a_of_type_Qli.jdField_a_of_type_JavaLangString.equals(paramood.jdField_b_of_type_JavaLangString))) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void c()
+  {
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, "", "");
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new qlh(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new qli(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new qlj(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new qlk(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnExtractFrameListener(new qll(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, 0L, 0L, localTVK_PlayerVideoInfo);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, null);
+    this.jdField_a_of_type_Qlo = new qlo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Qlo.sendEmptyMessageDelayed(1, this.jdField_a_of_type_Long);
+    c();
+  }
+  
+  public void a(qlm paramqlm)
+  {
+    this.jdField_a_of_type_Qlm = paramqlm;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Qlo != null)
     {
-      return;
-      paramood = paramood.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramood.hasNext())
-      {
-        ood localood = (ood)paramood.next();
-        if ((localood.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localood.jdField_c_of_type_JavaLangString)) && (localood.jdField_c_of_type_JavaLangString.equals(String.valueOf(this.jdField_a_of_type_Qli.jdField_a_of_type_Long))))
-        {
-          this.jdField_a_of_type_Qli.jdField_b_of_type_Int = localood.jdField_b_of_type_Int;
-          this.jdField_a_of_type_Qli.jdField_c_of_type_Int = localood.jdField_c_of_type_Int;
-          qlf.a(this.jdField_a_of_type_Qli, localood.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Qli.jdField_b_of_type_Long);
-        }
-      }
-      for (int i = 1; (i == 0) && (QLog.isColorLevel()); i = 0)
-      {
-        QLog.d("VideoExtractFrame", 2, "no found videoInfo.tag = " + this.jdField_a_of_type_Qli.jdField_b_of_type_JavaLangString);
-        return;
-      }
+      this.jdField_a_of_type_Qlo.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_Qlo = null;
     }
+    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
+    }
+    this.jdField_a_of_type_Qlm = null;
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
   }
 }
 

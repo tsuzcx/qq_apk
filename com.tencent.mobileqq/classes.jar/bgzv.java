@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.app.Activity;
 
-public final class bgzv
-  implements DialogInterface.OnClickListener
+public abstract interface bgzv
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
-      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onFail(Activity paramActivity, String paramString);
 }
 
 

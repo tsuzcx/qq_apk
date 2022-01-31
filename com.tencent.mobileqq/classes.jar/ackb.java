@@ -1,9 +1,7 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ackb
   implements View.OnClickListener
@@ -12,12 +10,10 @@ public class ackb
   
   public void onClick(View paramView)
   {
-    paramView = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    if (this.a.d == 11) {
+      axqy.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
-    TroopMemberListActivity.a(this.a, paramView);
+    this.a.b.cancel();
   }
 }
 

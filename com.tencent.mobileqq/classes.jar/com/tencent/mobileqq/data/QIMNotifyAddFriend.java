@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import aukm;
-import aulx;
-import auma;
+import auko;
+import aulz;
+import aumc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QIMNotifyAddFriend
-  extends aukm
+  extends auko
 {
   public int age;
   public String coverStory;
@@ -23,10 +23,10 @@ public class QIMNotifyAddFriend
   public long pushTime;
   public long qqUin;
   public long storyTotalNum;
-  @auma
+  @aumc
   public long uin;
   public String videoInfoPacked;
-  @aulx
+  @aulz
   public List<QIMNotifyAddFriend.VideoInfo> videoInfos = new ArrayList();
   public String wording;
   

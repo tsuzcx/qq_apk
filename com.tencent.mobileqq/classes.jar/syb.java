@@ -1,6 +1,13 @@
-public class syb
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+final class syb
+  implements InvocationHandler
 {
-  public static int[][] a = { { -1, 243 }, { -1, 248 } };
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    return null;
+  }
 }
 
 

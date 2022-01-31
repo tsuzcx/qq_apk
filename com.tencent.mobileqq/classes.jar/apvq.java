@@ -1,22 +1,12 @@
-import android.content.Context;
-import android.os.AsyncTask;
-
 final class apvq
-  extends er
+  implements bcwm
 {
-  apvq(Context paramContext) {}
+  apvq(apvg paramapvg) {}
   
-  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
+  public void a(int paramInt)
   {
-    try
-    {
-      eo.a(this.a, paramAsyncTask, paramInt, new apvr(this));
-      super.a(paramAsyncTask, paramInt);
-      return;
-    }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
+    if (paramInt == 2) {
+      this.a.a();
     }
   }
 }

@@ -1,99 +1,57 @@
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class riy
-  extends osp
+  implements rvw
 {
   public riy(FastWebActivity paramFastWebActivity) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    int j = 0;
-    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
-    if (!FastWebActivity.e(this.a)) {
-      return;
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPageExposure");
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onStateChange");
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onCustomAnimStart");
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.a(this.a);
+    FastWebActivity.b(this.a);
+    if ((paramInt2 != 3) && (paramInt2 != 5)) {
+      this.a.overridePendingTransition(0, 0);
     }
-    int i;
-    if ("onPageStarted".equals(paramString)) {
-      i = 300;
-    }
-    for (;;)
+    if (paramInt2 == 5)
     {
-      ThreadManager.getUIHandler().postDelayed(new FastWebActivity.25.2(this), i);
-      return;
-      i = j;
-      if ("onConversationJumpRestoreStack".equals(paramString)) {
-        i = j;
-      }
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      this.a.sendBroadcast(localIntent);
     }
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating mCommonSuspensionGestureLayout onPageClose type = " + paramInt2);
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void b()
   {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    rne.a(FastWebActivity.a(this.a), paramString, paramInt1, paramInt2);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimStart");
   }
   
-  public void ap_()
+  public void b(int paramInt)
   {
-    super.ap_();
-    if ((FastWebActivity.c(this.a)) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    this.a.runOnUiThread(new FastWebActivity.25.1(this));
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPositionStateChange");
   }
   
-  public void b(boolean paramBoolean, long paramLong)
+  public void c()
   {
-    this.a.a(paramBoolean, paramLong);
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((FastWebActivity.d(this.a)) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).a);
-    FastWebActivity.g(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    rmr.a(FastWebActivity.a(this.a), paramBoolean);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void e()
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    FastWebActivity.g(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void n()
-  {
-    FastWebActivity.h(this.a);
-  }
-  
-  public void o()
-  {
-    FastWebActivity.a(this.a, 1);
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimEnd");
   }
 }
 

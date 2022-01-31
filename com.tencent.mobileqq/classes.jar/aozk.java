@@ -1,15 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aozk
-  implements aozr
+  implements apag
 {
-  aozk(aozj paramaozj, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  aozk(aozi paramaozi, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a() {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
+    for (Object localObject = new apls(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aplp(this.jdField_a_of_type_Aozi.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+    {
+      apab.a((apll)localObject);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aozk
  * JD-Core Version:    0.7.0.1
  */

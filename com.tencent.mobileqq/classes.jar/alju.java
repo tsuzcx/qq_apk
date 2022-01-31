@@ -1,166 +1,210 @@
-import android.content.Context;
-import android.util.Xml;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.1;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.2;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.3;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.4;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.5;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.6;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.7;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.8;
+import com.tencent.mobileqq.ar.codeEngine.MiniScanReport.9;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
 
 public class alju
-  extends aljg
 {
-  private static final Object a;
-  public static boolean b;
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static aljv jdField_a_of_type_Aljv;
+  private static int b = -1;
   
-  static
+  public static long a(String paramString, long paramLong)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    return BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).getLong(paramString, paramLong);
   }
   
-  public static byte a(String paramString)
+  public static void a()
   {
-    return aljg.a(1, paramString);
+    jdField_a_of_type_Aljv = new aljv(null);
+    jdField_a_of_type_Aljv.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public static Object a()
+  public static void a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getFilesDir is null");
-      }
-      localObject = "";
-    }
-    String str;
+    aljv localaljv = jdField_a_of_type_Aljv;
+    if (localaljv == null) {}
+    long l;
     do
     {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.so_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getLibDir ,path = " + str);
-    return str;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return "lib" + paramString + "_64" + ".so";
+      return;
+      jdField_a_of_type_Aljv = null;
+      l = System.currentTimeMillis() - localaljv.jdField_a_of_type_Long;
+    } while ((l > 600000L) || (localaljv.jdField_a_of_type_Int <= 0));
+    int k = localaljv.jdField_a_of_type_Int;
+    int m = localaljv.b;
+    int n = localaljv.c;
+    int i1 = localaljv.d / k;
+    int i;
+    if (m <= 0)
+    {
+      i = 0;
+      if (n > 0) {
+        break label124;
+      }
     }
-    return "lib" + paramString + ".so";
+    label124:
+    for (int j = 0;; j = localaljv.f / n)
+    {
+      ThreadManager.post(new MiniScanReport.1(i1, l, k, paramInt, m, i, n, j), 5, null, false);
+      return;
+      i = localaljv.e / m;
+      break;
+    }
   }
   
-  protected static void a(boolean paramBoolean)
+  public static void a(int paramInt1, int paramInt2)
   {
-    b = paramBoolean;
+    if ((jdField_a_of_type_Aljv == null) || (paramInt1 <= 1) || (paramInt1 > 15000)) {
+      return;
+    }
+    switch (paramInt2)
+    {
+    default: 
+      return;
+    case 0: 
+      localaljv = jdField_a_of_type_Aljv;
+      localaljv.jdField_a_of_type_Int += 1;
+      localaljv = jdField_a_of_type_Aljv;
+      localaljv.d += paramInt1;
+      return;
+    case 1: 
+      localaljv = jdField_a_of_type_Aljv;
+      localaljv.b += 1;
+      localaljv = jdField_a_of_type_Aljv;
+      localaljv.e += paramInt1;
+      return;
+    }
+    aljv localaljv = jdField_a_of_type_Aljv;
+    localaljv.c += 1;
+    localaljv = jdField_a_of_type_Aljv;
+    localaljv.f += paramInt1;
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("sp_mini_scan_report", 4).edit().putLong(paramString, paramLong).apply();
+  }
+  
+  public static void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    ThreadManager.post(new MiniScanReport.2(paramBoolean, paramInt, paramString), 5, null, false);
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    ThreadManager.post(new MiniScanReport.5(paramBoolean1, paramBoolean2), 5, null, false);
   }
   
   public static boolean a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (aljg.a(1, b, "QMCF_qr"))
+    if (b == -1) {
+      if (!BaseApplication.getContext().getSharedPreferences("envSwitch", 4).getBoolean("key_base_test_scan_on", false)) {
+        break label42;
+      }
+    }
+    label42:
+    for (int i = 1;; i = 0)
     {
-      bool1 = bool2;
-      if (!jdField_a_of_type_Boolean)
-      {
-        bool1 = bool2;
-        if (aljg.a(1, b, "yuvutil")) {}
+      b = i;
+      if (b != 1) {
+        break;
       }
+      return true;
     }
-    else
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Long == 0L) {
+      jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    jdField_a_of_type_Int += 1;
+  }
+  
+  public static void b(int paramInt)
+  {
+    ThreadManager.post(new MiniScanReport.6(paramInt), 5, null, false);
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    ThreadManager.post(new MiniScanReport.3(paramInt1, paramInt2), 5, null, false);
+  }
+  
+  private static void b(HashMap<String, String> paramHashMap)
+  {
+    String str2 = Build.MODEL;
+    int i = Build.VERSION.SDK_INT;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    paramHashMap.put("report_key_device_model", str1);
+    paramHashMap.put("report_key_device_sdk", String.valueOf(i));
+  }
+  
+  public static void c()
+  {
+    if ((jdField_a_of_type_Long == 0L) || (jdField_a_of_type_Int == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
-      }
-      bool1 = false;
+      jdField_a_of_type_Long = 0L;
+      jdField_a_of_type_Int = 0;
+      return;
     }
-    return bool1;
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
-    for (;;)
+    long l = (SystemClock.uptimeMillis() - jdField_a_of_type_Long) / 1000L;
+    if (l != 0L)
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramHashMap)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDetectSoLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
-      }
-      int i = localXmlPullParser.next();
-      break label222;
-      String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("QMCF_qr"))
-      {
-        paramHashMap.put("QMCF_qr", localXmlPullParser.nextText());
-        continue;
-      }
-      else
-      {
-        if (str.equalsIgnoreCase("yuvutil"))
-        {
-          paramHashMap.put("yuvutil", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("QMCF_qr_64"))
-        {
-          paramHashMap.put("QMCF_qr_64", localXmlPullParser.nextText());
-          continue;
-        }
-        if (!str.equalsIgnoreCase("yuvutil_64")) {
-          continue;
-        }
-        paramHashMap.put("yuvutil_64", localXmlPullParser.nextText());
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "parseConfig success|config=" + paramHashMap);
-        return true;
-        label222:
-        if (i != 1) {
-          switch (i)
-          {
-          }
-        }
+      int i = (int)(jdField_a_of_type_Int / l);
+      if ((QLog.isColorLevel()) || (a())) {
+        QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan frame_rate=%d", new Object[] { Integer.valueOf(i) }));
       }
     }
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_Int = 0;
   }
   
-  public static byte b(String paramString)
+  public static void c(int paramInt1, int paramInt2)
   {
-    if ((jdField_a_of_type_Boolean) && (paramString == "yuvutil")) {
-      return 0;
+    ThreadManager.post(new MiniScanReport.4(paramInt2, paramInt1), 5, null, false);
+  }
+  
+  public static void d(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
+      return;
     }
-    return aljg.a(1, b, paramString);
+    ThreadManager.post(new MiniScanReport.7(paramInt1, paramInt2), 5, null, false);
   }
   
-  public static String b(String paramString)
+  public static void e(int paramInt1, int paramInt2)
   {
-    return "lib" + paramString + ".so";
+    ThreadManager.post(new MiniScanReport.8(paramInt1, paramInt2), 5, null, false);
   }
   
-  public static String c(String paramString)
+  public static void f(int paramInt1, int paramInt2)
   {
-    return aljg.a(1, paramString);
+    if ((paramInt2 <= 0) || (paramInt2 > 180000)) {
+      return;
+    }
+    ThreadManager.post(new MiniScanReport.9(paramInt1, paramInt2), 5, null, false);
   }
 }
 

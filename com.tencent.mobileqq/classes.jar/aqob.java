@@ -1,45 +1,29 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.5;
 
 public class aqob
-  extends aejh
 {
-  public aqob(AIOGalleryActivity paramAIOGalleryActivity) {}
+  public int a;
+  public long a;
+  public MessageForShortVideo a;
+  String jdField_a_of_type_JavaLangString;
+  public String[] a;
   
-  public void a()
+  public aqob(aqny paramaqny, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public boolean a()
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    aqmd.a().a().a(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + aqny.a());
+    return l2 < aqny.a();
   }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 

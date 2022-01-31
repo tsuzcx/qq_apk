@@ -1,69 +1,97 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class anai
+  extends amyp<SSOErrorInfoMapConfig>
 {
-  private int a;
-  private int b;
-  private int c = 1;
-  
-  public static anai a(ampi paramampi)
+  public static SSOErrorInfoMapConfig c()
   {
-    anai localanai = new anai();
-    if (paramampi != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramampi.jdField_a_of_type_Int + " content->" + paramampi.jdField_a_of_type_JavaLangString);
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)ampl.a().a(477);
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
+    if (localSSOErrorInfoMapConfig2 == null) {
+      localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
+    }
+    return localSSOErrorInfoMapConfig1;
+  }
+  
+  public int a()
+  {
+    return 477;
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a()
+  {
+    return new SSOErrorInfoMapConfig();
+  }
+  
+  @NonNull
+  public SSOErrorInfoMapConfig a(amph[] paramArrayOfamph)
+  {
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    for (;;)
+    {
+      String str1;
+      anag localanag;
+      String str2;
+      anah localanah;
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfamph))
+        {
+          paramArrayOfamph = new JSONObject(paramArrayOfamph);
+          Iterator localIterator1 = paramArrayOfamph.keys();
+          if (localIterator1.hasNext())
+          {
+            str1 = (String)localIterator1.next();
+            JSONObject localJSONObject1 = paramArrayOfamph.optJSONObject(str1);
+            Iterator localIterator2 = localJSONObject1.keys();
+            localanag = new anag();
+            if (!localIterator2.hasNext()) {
+              break label220;
+            }
+            str2 = (String)localIterator2.next();
+            JSONObject localJSONObject2 = localJSONObject1.optJSONObject(str2);
+            Iterator localIterator3 = localJSONObject2.keys();
+            localanah = new anah();
+            if (!localIterator3.hasNext()) {
+              break label204;
+            }
+            String str3 = (String)localIterator3.next();
+            String str4 = localJSONObject2.optString(str3);
+            localanah.a.put(str3, str4);
+            continue;
+          }
+        }
+        return localSSOErrorInfoMapConfig;
       }
+      catch (JSONException paramArrayOfamph)
+      {
+        ved.e("SSOErrorInfoMapProcessor", "SSOErrorInfoMapConfig onParsed exception :" + paramArrayOfamph.getMessage());
+      }
+      label204:
+      localanag.a.put(str2, localanah);
+      continue;
+      label220:
+      localSSOErrorInfoMapConfig.mErrorMap.put(str1, localanag);
     }
-    try
-    {
-      paramampi = new JSONObject(paramampi.jdField_a_of_type_JavaLangString);
-      localanai.a(paramampi.optInt("hotword_switch_message", 0));
-      localanai.b(paramampi.optInt("hotword_switch_contact", 0));
-      localanai.c(paramampi.optInt("hotword_switch_dongtai", 1));
-      return localanai;
-    }
-    catch (Exception paramampi)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramampi.toString());
-    }
-    return localanai;
   }
   
-  void a(int paramInt)
+  public Class<SSOErrorInfoMapConfig> a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return SSOErrorInfoMapConfig.class;
   }
   
-  public boolean a()
+  @NonNull
+  public SSOErrorInfoMapConfig b()
   {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mHotWordSwitchTabMessage:%d, mHotWordSwitchTabContact:%d, mHotWordSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
+    return new SSOErrorInfoMapConfig();
   }
 }
 

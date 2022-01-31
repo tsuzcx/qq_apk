@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.util.QZLog;
 
 class bkqe
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  bkqe(bkpy parambkpy) {}
+  bkqe(bkqd parambkqd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    bkpy.a(this.a).q = false;
-    bkpy.b(this.a).setSelected(false);
+    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
+    this.a.a.a(19);
   }
 }
 

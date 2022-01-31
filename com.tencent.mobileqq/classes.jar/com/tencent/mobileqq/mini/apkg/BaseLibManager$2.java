@@ -15,7 +15,7 @@ class BaseLibManager$2
   public void run()
   {
     String str4 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str3 = StorageUtil.getPreference().getString("version", "1.12.1.00001");
+    String str3 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
     QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "updateBaseLib start. baseLibVersion=" + str3);
     boolean bool3;
     String str1;
@@ -36,9 +36,9 @@ class BaseLibManager$2
     {
       boolean bool2;
       String str2;
-      if ("1.12.1.00001".equals(str3))
+      if ("1.13.0.00013".equals(str3))
       {
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] current version is default:1.12.1.00001");
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] current version is default:1.13.0.00013");
         bool2 = bool1;
         str2 = str1;
         label114:

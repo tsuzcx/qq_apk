@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agmg;
-import agmh;
+import agme;
+import agmf;
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class MediaPlayHelper$2
   implements Runnable
 {
-  public MediaPlayHelper$2(agmg paramagmg, Context paramContext) {}
+  public MediaPlayHelper$2(agme paramagme, Context paramContext) {}
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.a, new agmh(this));
+    TVK_SDKMgr.installPlugin(this.a, new agmf(this));
   }
 }
 

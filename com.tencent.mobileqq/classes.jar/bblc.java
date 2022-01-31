@@ -1,25 +1,13 @@
-import java.util.Comparator;
+import android.graphics.Point;
 
-public final class bblc
-  implements Comparator<String>
+final class bblc
+  implements bblf<Point>
 {
-  public int a(String paramString1, String paramString2)
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 

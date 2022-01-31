@@ -1,35 +1,89 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
-class adqv
-  implements aefd
+public class adqv
+  extends VasQuickUpdateManager.CallBacker
 {
-  adqv(adqt paramadqt, adqs paramadqs, MessageForPoke paramMessageForPoke) {}
+  public adqv(adqe paramadqe) {}
   
-  public void a()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 3");
-    }
-    adwh.a().a(20);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Adqs.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqs.b == adqg.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqt.a.a instanceof ChatHistoryActivity)) && (!adqg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqs.c.setVisibility(0);
+    int i = 1;
+    String str;
+    if (paramLong == 21L)
+    {
+      paramString3 = "";
+      paramString2 = Integer.valueOf(0);
+      if (!paramString1.startsWith("poke.item.effect.")) {
+        break label245;
+      }
+      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
+      paramVasQuickUpdateManager = Integer.valueOf(str);
+      paramString2 = paramVasQuickUpdateManager;
+      paramString3 = str;
+      if (!adwj.c.contains(paramVasQuickUpdateManager)) {
+        break label337;
+      }
+      adwj.c.remove(paramVasQuickUpdateManager);
+      paramString3 = str;
+      paramString2 = paramVasQuickUpdateManager;
+      paramInt2 = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqs.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Adqs.c.setVisibility(8);
+      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!adwj.c.contains(paramString2)) && (!adwj.c.contains(paramString2)))
+      {
+        if (adwj.a("bubble", paramString2.intValue())) {
+          break label318;
+        }
+        paramInt2 = 1;
+        label142:
+        if (adwj.a("/normal.png", paramString2.intValue())) {
+          break label324;
+        }
+        label155:
+        boolean bool = adwj.b.contains(paramString2);
+        paramString3 = this.a.a;
+        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
+          break label330;
+        }
+      }
+      label318:
+      label324:
+      label330:
+      for (paramString2 = ajya.a(2131705291);; paramString2 = "")
+      {
+        bblj.a(paramString3, paramString2);
+        if (QLog.isColorLevel()) {
+          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
+        }
+        return;
+        label245:
+        if (!paramString1.startsWith("poke.item.res.")) {
+          break label337;
+        }
+        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
+        paramVasQuickUpdateManager = Integer.valueOf(str);
+        paramString2 = paramVasQuickUpdateManager;
+        paramString3 = str;
+        if (!adwj.d.contains(paramVasQuickUpdateManager)) {
+          break label337;
+        }
+        adwj.d.remove(paramVasQuickUpdateManager);
+        paramString3 = str;
+        paramString2 = paramVasQuickUpdateManager;
+        paramInt2 = 1;
+        break;
+        paramInt2 = 0;
+        break label142;
+        i = 0;
+        break label155;
+      }
+      label337:
+      paramInt2 = 0;
     }
   }
 }

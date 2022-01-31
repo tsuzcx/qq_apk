@@ -1,20 +1,36 @@
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aftx
-  extends akfz
+  implements AdapterView.OnItemClickListener
 {
   public aftx(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
+    paramAdapterView = (afud)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
+      }
+      paramAdapterView = (afud)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label126;
+      }
     }
-    anss localanss = (anss)EmoticonGroupStoreFragment.a(this.a).getManager(103);
-    if (localanss != null) {
-      localanss.b();
+    label126:
+    for (bool = true;; bool = false)
+    {
+      paramAdapterView.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
+      break;
     }
   }
 }

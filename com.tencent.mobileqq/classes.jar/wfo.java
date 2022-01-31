@@ -1,30 +1,13 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qrcode.activity.QRCardActivity;
 
 public class wfo
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
   public wfo(QRCardActivity paramQRCardActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,19 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.RegionDrawableData;
 
-public final class agpc
-  implements Parcelable.Creator<PhotoSendParams>
+public abstract interface agpc
 {
-  public PhotoSendParams a(Parcel paramParcel)
-  {
-    return new PhotoSendParams(paramParcel);
-  }
+  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public PhotoSendParams[] a(int paramInt)
-  {
-    return new PhotoSendParams[paramInt];
-  }
+  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
+  
+  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
+  
+  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 

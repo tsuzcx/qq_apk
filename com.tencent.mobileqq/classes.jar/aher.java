@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class aher
-  implements View.OnLongClickListener
+  implements OnCompositionLoadedListener
 {
   public aher(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).show();
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.d(this.a) != null) {
+      DrawRedpacketPannelPreviewFragment.d(this.a).setImageDrawable(localLottieDrawable);
     }
-    return true;
   }
 }
 

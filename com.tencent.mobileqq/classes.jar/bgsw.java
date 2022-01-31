@@ -1,21 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Bundle;
 
-class bgsw
-  implements FilenameFilter
+public class bgsw
 {
-  bgsw(bgsv parambgsv) {}
+  public int a;
+  public Bundle a;
   
-  public boolean accept(File paramFile, String paramString)
+  bgsw(bgsu parambgsu, int paramInt, Bundle paramBundle)
   {
-    return (paramFile != null) && (paramFile.isDirectory()) && (bgsv.a(this.a).matcher(paramString).matches());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bgsw
  * JD-Core Version:    0.7.0.1
  */

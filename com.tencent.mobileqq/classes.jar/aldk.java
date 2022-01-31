@@ -3,56 +3,39 @@ import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
 class aldk
-  extends alem
+  extends aler
 {
-  aldk(aldg paramaldg) {}
+  aldk(aldf paramaldf) {}
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
+    }
+    Message localMessage = aldf.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
+  }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
     }
-    if (aldg.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 10;
+    Message localMessage = aldf.a(this.a).obtainMessage();
+    localMessage.what = 102;
     localMessage.arg1 = paramInt;
-    aldg.a(this.a).sendMessage(localMessage);
+    localMessage.sendToTarget();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
     }
-    if (aldg.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aldg.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
-    }
-    if (aldg.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 12;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aldg.a(this.a).sendMessage(localMessage);
+    Message localMessage = aldf.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 

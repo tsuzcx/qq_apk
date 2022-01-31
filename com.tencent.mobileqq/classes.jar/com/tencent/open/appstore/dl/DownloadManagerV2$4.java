@@ -1,21 +1,21 @@
 package com.tencent.open.appstore.dl;
 
-import bdgv;
-import bdlc;
+import bdhk;
+import bdlr;
 
 public class DownloadManagerV2$4
   implements Runnable
 {
-  public DownloadManagerV2$4(bdgv parambdgv) {}
+  public DownloadManagerV2$4(bdhk parambdhk) {}
   
   public void run()
   {
-    if (!bdgv.a(this.this$0))
+    if (!bdhk.a(this.this$0))
     {
-      if (!bdlc.a().b()) {
+      if (!bdlr.a().b()) {
         this.this$0.a(true);
       }
-      bdgv.a(this.this$0, true);
+      bdhk.a(this.this$0, true);
     }
   }
 }

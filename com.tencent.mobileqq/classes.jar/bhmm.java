@@ -1,30 +1,19 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.text.TextUtils;
 
 public class bhmm
-  extends bhmp
 {
-  protected int a;
-  protected long a;
-  protected boolean a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = false;
+  private String b = "";
   
-  public bhmm(long paramLong, int paramInt, boolean paramBoolean)
+  public String a()
   {
-    this.jdField_a_of_type_Long = 30000L;
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Boolean = true;
-    a(paramLong);
-    a(paramInt);
-    a(paramBoolean);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void a(boolean paramBoolean)
@@ -32,46 +21,29 @@ public class bhmm
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(Collector paramCollector)
+  public boolean a()
   {
-    int i;
-    int j;
-    label30:
-    int k;
-    if (paramCollector.a().a() > 0)
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+    if (!TextUtils.isEmpty(this.b))
     {
-      i = 1;
-      if (System.currentTimeMillis() - paramCollector.a() <= this.jdField_a_of_type_Long) {
-        break label89;
-      }
-      j = 1;
-      if (paramCollector.a().a() < this.jdField_a_of_type_Int) {
-        break label94;
-      }
-      k = 1;
-      label47:
-      if ((!this.jdField_a_of_type_Boolean) || (!paramCollector.a())) {
-        break label100;
-      }
+      this.b = this.b.replaceAll("\\+86", "");
+      this.b = this.b.replaceAll("\\D", "");
     }
-    label89:
-    label94:
-    label100:
-    for (int m = 1;; m = 0)
-    {
-      if ((i == 0) || ((j == 0) && (k == 0) && (m == 0))) {
-        break label106;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label30;
-      k = 0;
-      break label47;
-    }
-    label106:
-    return false;
+  }
+  
+  public String toString()
+  {
+    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
   }
 }
 

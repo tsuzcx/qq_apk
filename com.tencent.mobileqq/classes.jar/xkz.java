@@ -1,49 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
 
-public class xkz
+public final class xkz
+  implements Parcelable.Creator<NewerGuidePlugin.PhoneInfo>
 {
-  public xkz(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
-  
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public NewerGuidePlugin.PhoneInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      bbgg.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, ajyc.a(2131707426));
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-    }
+    return new NewerGuidePlugin.PhoneInfo(paramParcel);
   }
   
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
+  public NewerGuidePlugin.PhoneInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
-    }
+    return new NewerGuidePlugin.PhoneInfo[paramInt];
   }
 }
 

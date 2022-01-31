@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import afov;
+import afot;
 
 public class TroopView$MyTroopObserver$1
   implements Runnable
 {
-  public TroopView$MyTroopObserver$1(afov paramafov) {}
+  public TroopView$MyTroopObserver$1(afot paramafot) {}
   
   public void run()
   {

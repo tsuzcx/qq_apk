@@ -1,35 +1,28 @@
-public class vix
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+
+public abstract interface vix
 {
-  public int a;
-  public long a;
-  public boolean a;
+  @NonNull
+  public abstract Context a();
   
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (vix)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
+  public abstract Intent a(vsa paramvsa);
   
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
+  @NonNull
+  public abstract View a();
   
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
-  }
+  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  
+  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  
+  public abstract void b();
+  
+  @Nullable
+  public abstract Activity getActivity();
 }
 
 

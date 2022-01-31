@@ -7,7 +7,7 @@ import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 class afed
   implements ValueAnimator.AnimatorUpdateListener
 {
-  afed(afec paramafec) {}
+  afed(afea paramafea) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {

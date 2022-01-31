@@ -1,15 +1,25 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
-class affy
+public class affy
+  implements View.OnClickListener
 {
-  public int a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
+  public affy(SearchBaseActivity paramSearchBaseActivity) {}
   
-  affy(affw paramaffw) {}
+  public void onClick(View paramView)
+  {
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    {
+      this.a.setResult(0);
+      this.a.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+  }
 }
 
 

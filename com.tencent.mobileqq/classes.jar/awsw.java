@@ -1,168 +1,200 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.ark.ArkViewModelBase.ErrorInfo;
+import com.tencent.ark.ark;
+import com.tencent.ark.open.ArkAppInfo.TimeRecord;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.rich.ArkNodeContainer.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.File;
+import org.json.JSONObject;
 
 public class awsw
-  extends awtm
-  implements awss
+  extends ArkViewModel
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ArkAppView jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  private WeakReference<awsz> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  private awsv a;
+  public ArkAppInfo.TimeRecord a;
   
-  public awsw(awta paramawta, Context paramContext)
-  {
-    super(paramawta, paramContext);
-  }
+  public awsw(awsr paramawsr) {}
   
-  public View a(Context paramContext)
+  private void b(String paramString)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561054, null, false);
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362780));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
-    return this.jdField_a_of_type_AndroidViewView;
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
   }
   
   public void a()
   {
-    this.b = false;
-    a(1);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
+    destroy();
+    this.jdField_a_of_type_Awsv = null;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    awsz localawsz;
-    do
+    try
     {
-      return;
-      localawsz = (awsz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localawsz == null);
-    localawsz.a(paramInt);
-  }
-  
-  public void a(awsu paramawsu)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView == null) || (paramawsu == null)) {
+      new JSONObject(paramString);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a(paramawsu, this);
+    catch (Exception paramString)
+    {
+      QLog.e("ArkNodeContainer", 2, String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
+    }
   }
   
-  public void a(awsz paramawsz)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawsz);
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.b = true;
-    a(1);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
-    TextView localTextView;
-    label124:
-    do
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
+    }
+    boolean bool1;
+    label72:
+    String str1;
+    String str2;
+    String str3;
+    if (paramInt != 0)
     {
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
-        }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        a(false);
-        return;
+      bool1 = true;
+      if (paramInt != -2) {
+        break label152;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (!paramBoolean) {
-        break;
+      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+      b(str1);
+      b(str2);
+      b(str3);
+      if (paramString2 != null) {
+        break label158;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new awsx(this));
-      localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375059);
-      if (localTextView != null)
-      {
-        if (paramString != null) {
-          break label169;
-        }
-        localTextView.setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690243));
-      }
-      paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131375051);
-    } while (paramString == null);
-    if (paramBoolean) {}
-    for (paramInt = 2130838491;; paramInt = 2130838490)
+      paramString2 = "";
+    }
+    label152:
+    label158:
+    for (;;)
     {
-      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
+      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+      bool1 = false;
       break;
-      label169:
-      localTextView.setText(paramString);
-      break label124;
+      bool2 = false;
+      break label72;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(awsv paramawsv, String paramString, float paramFloat)
   {
-    boolean bool = paramBoolean;
-    if (paramBoolean)
+    this.jdField_a_of_type_Awsv = paramawsv;
+    if (this.jdField_a_of_type_Awsv == null) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      a(paramString);
+    }
+    return super.init(this.jdField_a_of_type_Awsv.b(), this.jdField_a_of_type_Awsv.d(), this.jdField_a_of_type_Awsv.c(), paramString, alsz.a(), paramFloat);
+  }
+  
+  public void initLibrary()
+  {
+    ark.MediaSetStub(altt.a);
+  }
+  
+  public void onFirstDrawEnd()
+  {
+    super.onFirstDrawEnd();
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if (paramAppPathInfo != null) {}
+    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
     {
-      bool = paramBoolean;
-      if (this.b)
-      {
-        bool = paramBoolean;
-        if (this.jdField_a_of_type_Boolean) {
-          bool = false;
-        }
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
+      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
+      a(paramAppPathInfo, paramInt, paramString);
+      return;
+    }
+  }
+  
+  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
+  {
+    if ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime() == null)
+    {
+      this.mInit = false;
+      this.mLoadFailed = true;
+      paramAppInfo = this.mViewImpl;
+      if (paramAppInfo != null) {
+        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
       }
+      return true;
     }
-    super.a(bool);
-  }
-  
-  public View b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    Object localObject2 = this.jdField_a_of_type_Awsv.a();
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
     }
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
+      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkNodeContainer.1(this, (String)localObject1));
+      return true;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    super.d();
+    localObject2 = this.mViewImpl;
+    if (localObject2 != null) {
+      ((ArkViewImplement)localObject2).onLoading();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
+    }
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new awsx(this));
+    return false;
   }
   
-  public void e() {}
+  public void onLoadReport(int paramInt)
+  {
+    if (this.mAppInfo != null) {
+      altc.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    }
+  }
+  
+  public void onRunAppFailed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
+    }
+    Object localObject = this.mViewImpl;
+    if (localObject != null)
+    {
+      if (this.jdField_a_of_type_Awsv == null) {
+        break label90;
+      }
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131719103);
+    }
+    label90:
+    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_Awsv.b() });; this.mErrorInfo.msg = "")
+    {
+      this.mErrorInfo.canRetry = false;
+      super.onRunAppFailed();
+      return;
+    }
+  }
 }
 
 

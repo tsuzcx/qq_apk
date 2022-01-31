@@ -1,31 +1,31 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class atbo
-  extends banh
+class atbo
+  implements apwm
 {
-  private NearbyAppInterface a;
+  atbo(atbm paramatbm) {}
   
-  public atbo(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    super(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
+    QLog.d(atbm.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
   }
   
-  public UsingTimeReportManager a()
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(221);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.reportClickEvent("dc00899", this.jdField_a_of_type_JavaLangString, "", this.b, this.c, 0, 0, String.valueOf(paramLong), "", "", "");
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.d(atbm.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
     }
   }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

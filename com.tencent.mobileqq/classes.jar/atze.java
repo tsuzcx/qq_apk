@@ -1,5 +1,5 @@
 public class atze
-  extends atyy
+  extends atza
 {
   public boolean a()
   {

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aemd;
-import aeme;
-import ajyc;
-import bcpw;
+import aemb;
+import aemc;
+import ajya;
+import bcql;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.open.ArkAppMgr;
 
 public class ArkDebugChatPie$1$1$2
   implements Runnable
 {
-  public ArkDebugChatPie$1$1$2(aeme paramaeme, int paramInt) {}
+  public ArkDebugChatPie$1$1$2(aemc paramaemc, int paramInt) {}
   
   public void run()
   {
-    aemd.a(this.jdField_a_of_type_Aeme.a.this$0);
+    aemb.a(this.jdField_a_of_type_Aemc.a.this$0);
     String str = "";
     if (this.jdField_a_of_type_Int == 1) {
-      str = ajyc.a(2131700658);
+      str = ajya.a(2131700669);
     }
     ArkAppMgr.getInstance().clearDebugAppPathCache();
-    bcpw.a(this.jdField_a_of_type_Aeme.a.this$0.a, String.format(ajyc.a(2131700666), new Object[] { str }), 0).a();
+    bcql.a(this.jdField_a_of_type_Aemc.a.this$0.a, String.format(ajya.a(2131700677), new Object[] { str }), 0).a();
     ArkDispatchTask.getInstance().postToMainThreadDelayed(new ArkDebugChatPie.1.1.2.1(this), 60L);
   }
 }

@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.Switch;
 
 public class abhf
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abhf(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bbgg parambbgg) {}
+  public abhf(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bbgg.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = axmv.c();
+    int i;
+    if ((bool1) && (bool2)) {
+      i = axmv.b;
+    }
+    while (paramBoolean)
+    {
+      String str = axmq.b[i];
+      if (!aylh.a(this.a, str, new abhg(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
+      }
+      return;
+      i = j;
+      if (bool1)
+      {
+        i = j;
+        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, axmq.b[j])) {
+          i = axmv.d();
+        }
+      }
+    }
+    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
   }
 }
 

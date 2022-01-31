@@ -1,30 +1,13 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public class ayuy
+class ayuy
+  implements ITransCallbackForReport
 {
-  public static long a;
-  public static Object a;
-  public static HashMap<Long, ayuz> a;
-  public static long b;
+  ayuy(ayuw paramayuw) {}
   
-  static
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static ayuz a(long paramLong)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ayuz localayuz2 = (ayuz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      ayuz localayuz1 = localayuz2;
-      if (localayuz2 == null) {
-        localayuz1 = new ayuz();
-      }
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localayuz1);
-      return localayuz1;
-    }
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 

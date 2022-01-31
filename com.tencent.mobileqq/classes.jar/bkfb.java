@@ -1,91 +1,60 @@
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler.RenderPoint;
-import com.tencent.view.RendererUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class bkfb
-  extends bkee
+public abstract class bkfb
+  implements bkff
 {
-  Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  public String a;
-  ArrayList<DoodleMagicAlgoHandler.RenderPoint> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  CopyOnWriteArrayList<PointF> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  volatile boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  volatile boolean jdField_b_of_type_Boolean;
-  public int c;
-  volatile boolean c;
-  int jdField_d_of_type_Int;
-  boolean jdField_d_of_type_Boolean;
-  boolean e = false;
+  protected int[] a;
   
-  public bkfb(int paramInt1, String paramString, int paramInt2)
+  public bkfb(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
   }
   
-  public Frame a(int paramInt1, int paramInt2)
+  private int[] a(int[] paramArrayOfInt)
   {
-    this.d = RendererUtils.createTexture();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-    GLES20.glBindTexture(3553, this.d);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(this.d, paramInt1, paramInt2, 1.0D);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getFBO());
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  }
-  
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("subType", this.jdField_c_of_type_Int);
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        PointF localPointF = (PointF)localIterator.next();
-        localJSONArray.put(localPointF.x);
-        localJSONArray.put(localPointF.y);
-      }
-      localJSONObject.put("points", localJSONArray);
-      return localJSONObject;
+    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
+      return paramArrayOfInt;
     }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null) && (!this.e))
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
+    }
+    for (;;)
     {
-      this.e = true;
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      RendererUtils.clearTexture(this.d);
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
   
-  public void b()
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = true;
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
   }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

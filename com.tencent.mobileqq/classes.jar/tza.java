@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 
-public final class tza
-  implements Parcelable.Creator<AnimationParam>
+final class tza
+  extends AnimatorListenerAdapter
 {
-  public AnimationParam a(Parcel paramParcel)
+  tza(Animator.AnimatorListener paramAnimatorListener) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new AnimationParam(paramParcel);
+    super.onAnimationCancel(paramAnimator);
+    this.a.onAnimationCancel(paramAnimator);
   }
   
-  public AnimationParam[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new AnimationParam[paramInt];
+    ved.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
+    this.a.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
   }
 }
 

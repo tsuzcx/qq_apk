@@ -1,8 +1,17 @@
+import android.content.Context;
 import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import java.util.List;
 
-public abstract interface arpt
+public class arpt
 {
-  public abstract void a(View paramView, andx paramandx, arqd paramarqd);
+  public Context a;
+  public View a;
+  public arpv a;
+  public QQAppInterface a;
+  public FPSXListView a;
+  public List<anec> a;
 }
 
 

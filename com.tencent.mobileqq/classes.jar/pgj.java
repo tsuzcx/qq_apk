@@ -1,5 +1,4 @@
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
@@ -7,15 +6,16 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBa
 class pgj
   implements ViewBase.OnClickListener
 {
-  pgj(pgg parampgg, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  pgj(pgh parampgh, pau parampau, Container paramContainer) {}
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
+    paramViewBase = this.jdField_a_of_type_Pau.a();
+    if (paramViewBase != null)
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
-      qol.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      pgg.a(this.jdField_a_of_type_Pgg, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
+      onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
+      ram.a(paramViewBase, 0);
+      pgh.b(this.jdField_a_of_type_Pgh, true);
     }
   }
 }

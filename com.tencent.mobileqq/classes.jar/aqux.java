@@ -1,37 +1,46 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class aqux
-  extends View.AccessibilityDelegate
+  implements anwh
 {
-  aqux(aquu paramaquu, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
+  aqux(aquw paramaquw) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(View paramView)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if (paramInt == 1)
+    String str = bbqd.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if (localViewParent != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
+      localViewParent = localViewParent.getParent();
+      if ((localViewParent instanceof ChatXListView)) {
+        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (MessageForGrayTips.HightlightItem)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HightlightItem)localObject).start, ((MessageForGrayTips.HightlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
-          if (localObject.length > 0) {
-            localObject[0].onClick(paramView);
-          }
-        }
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
     }
   }

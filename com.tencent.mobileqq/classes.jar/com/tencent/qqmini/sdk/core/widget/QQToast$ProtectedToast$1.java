@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bemy;
+import benp;
 
 public class QQToast$ProtectedToast$1
   implements Runnable
 {
-  public QQToast$ProtectedToast$1(bemy parambemy) {}
+  public QQToast$ProtectedToast$1(benp parambenp) {}
   
   public void run()
   {

@@ -1,18 +1,19 @@
-public abstract interface ahju
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class ahju
 {
-  public abstract int a();
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract boolean c();
-  
-  public abstract void i();
-  
-  public abstract void j();
+  public ahju(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

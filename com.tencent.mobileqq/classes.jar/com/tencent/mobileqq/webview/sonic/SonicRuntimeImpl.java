@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import ayxe;
-import bbev;
-import bcgc;
-import bche;
-import bcpw;
+import ayxg;
+import bbfj;
+import bcgq;
+import bchs;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import mvv;
-import nax;
+import mvs;
+import nau;
 
 public class SonicRuntimeImpl
   extends SonicRuntime
@@ -90,7 +90,7 @@ public class SonicRuntimeImpl
       long l = System.currentTimeMillis();
       Object localObject1 = localObject4;
       localObject2 = localObject3;
-      if (ayxe.b() != null)
+      if (ayxg.b() != null)
       {
         localObject2 = localObject3;
         Uri localUri = Uri.parse(paramString);
@@ -125,7 +125,7 @@ public class SonicRuntimeImpl
                 }
               }
               localObject2 = localObject3;
-              localObject1 = ayxe.a().a(localUri.getHost(), 1013, false);
+              localObject1 = ayxg.a().a(localUri.getHost(), 1013, false);
             }
           }
         }
@@ -149,12 +149,12 @@ public class SonicRuntimeImpl
   
   public String getUserAgent()
   {
-    return bche.a();
+    return bchs.a();
   }
   
   public boolean isNetworkValid()
   {
-    return bbev.a(BaseApplicationImpl.getContext()) != 0;
+    return bbfj.a(BaseApplicationImpl.getContext()) != 0;
   }
   
   public boolean isSonicUrl(String paramString)
@@ -201,7 +201,7 @@ public class SonicRuntimeImpl
         continue;
         label188:
         localObject1 = paramString.trim();
-        Object localObject2 = bcgc.b((String)localObject1);
+        Object localObject2 = bcgq.b((String)localObject1);
         if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
           break;
         }
@@ -210,24 +210,24 @@ public class SonicRuntimeImpl
           break;
         }
         localObject2 = ((Uri)localObject2).getHost();
-        mvv localmvv = mvv.a();
+        mvs localmvs = mvs.a();
         if ((((String)localObject2).endsWith(".qq.com")) || (((String)localObject2).endsWith(".tencent.com")))
         {
           if (!QLog.isColorLevel()) {
             break label455;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + nax.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + nau.c((String)localObject1, new String[0]));
           break label455;
         }
-        if ((localmvv.b(paramString)) || (localmvv.g((String)localObject1)))
+        if ((localmvs.b(paramString)) || (localmvs.g((String)localObject1)))
         {
           if (!QLog.isColorLevel()) {
             break label457;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + nax.c((String)localObject1, new String[0]));
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + nau.c((String)localObject1, new String[0]));
           break label457;
         }
-        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + nax.c((String)localObject1, new String[0]));
+        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + nau.c((String)localObject1, new String[0]));
         return false;
       }
       int i = 1;
@@ -260,7 +260,7 @@ public class SonicRuntimeImpl
   
   public void notifyError(SonicSessionClient paramSonicSessionClient, String paramString, int paramInt)
   {
-    int j = bbev.a(BaseApplicationImpl.getContext());
+    int j = bbfj.a(BaseApplicationImpl.getContext());
     int i = j;
     if (j == 0) {
       i = -1;
@@ -310,7 +310,7 @@ public class SonicRuntimeImpl
   {
     try
     {
-      bcpw.a(BaseApplicationImpl.sApplication.getApplicationContext(), 1, paramCharSequence, 0).a();
+      bcql.a(BaseApplicationImpl.sApplication.getApplicationContext(), 1, paramCharSequence, 0).a();
       return;
     }
     catch (Exception paramCharSequence)

@@ -1,41 +1,57 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserInfoExtraRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONObject;
 
-@begt(a="PageCreateTask")
 public class bfan
-  extends bfet
+  extends bfau
 {
-  public bfan(Context paramContext, bepv parambepv)
+  private INTERFACE.StGetUserInfoExtraReq a = new INTERFACE.StGetUserInfoExtraReq();
+  
+  public bfan(String paramString)
   {
-    super(paramContext, parambepv);
+    this.a.appid.set(paramString);
   }
   
-  public void a()
+  protected String a()
   {
-    if (a().getRuntime() == null)
-    {
-      besl.c("ServiceInitTask", "runtime is null!");
-      c();
-      return;
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    behb localbehb = a().getRuntime().a();
-    if (!(localbehb instanceof AppBrandPageContainer))
-    {
-      besl.c("ServiceInitTask", "PageContainer type is incorrect! page=" + localbehb);
-      c();
-      return;
-    }
+    INTERFACE.StGetUserInfoExtraRsp localStGetUserInfoExtraRsp = new INTERFACE.StGetUserInfoExtraRsp();
     try
     {
-      ((AppBrandPageContainer)localbehb).a(null);
-      c();
-      return;
+      localStGetUserInfoExtraRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetUserInfoExtraRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("encryptedData", localStGetUserInfoExtraRsp.encryptedData.get());
+        paramArrayOfByte.put("iv", localStGetUserInfoExtraRsp.iv.get());
+        return paramArrayOfByte;
+      }
+      betc.a("GetUserInfoExtraRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramArrayOfByte)
     {
-      besl.d("ServiceInitTask", "pageContainer init exception!", localThrowable);
-      a(10, "Page创建失败");
+      betc.a("GetUserInfoExtraRequest", "onResponse fail." + paramArrayOfByte);
     }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetUserInfoExtra";
   }
 }
 

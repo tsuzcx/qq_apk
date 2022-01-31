@@ -1,74 +1,71 @@
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import java.io.File;
-import java.util.HashSet;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-public class bbuz
+class bbuz
+  implements Handler.Callback
 {
-  public static final HashSet<String> a;
-  public static final String[] a;
-  public static final HashSet<String> b;
+  bbuz(bbuw parambbuw) {}
   
-  static
+  public boolean handleMessage(Message paramMessage)
   {
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    b = new HashSet();
-    b.add(ajsf.aW + File.separator + "flashchat" + File.separator);
-    b.add(ajsf.bD);
-    b.add(ajsf.bE);
-    b.add(ajsf.bC);
-    b.add(ajsf.aY);
-    b.add(ajsf.aV + "/tencent/MobileQQ/.troop/pic_effects/");
-    b.add(ajsf.aW + ".troop/enter_effects/");
-    b.add(ajsf.aW + ".gift/");
-    b.add(ajsf.aW + "qav/");
-    b.add(ajsf.aW + "new_ptv_template/");
-    b.add(ajsf.aW + "ptv_template/");
-    b.add(ajsf.aW + "funcall/");
-    b.add(ajsf.aW + "pddata/prd/av_redpacket/");
-    b.add(ajsf.aW + "pddata/prd/early");
-    b.add(ajsf.aW + "hotimage/");
-    b.add(ajsf.aW + "pddata/vas/");
-    b.add(ajsf.aW + ".profilecard/");
-    b.add(ajsf.aW + "head/");
-    b.add(ajsf.aW + ".hiboom_font/");
-    b.add(ajsf.aW + ".font_info/");
-    b.add(ajsf.aW + ".font_effect/");
-    b.add(ajsf.aW + ".pendant/");
-    b.add(ajsf.aW + ".vaspoke/");
-    b.add(ajsf.aW + "system_background/");
-    b.add(ajsf.aW + ".CorlorNick/");
-    b.add(ajsf.aW + "custom_background/");
-    b.add(ajsf.aW + ".starHead/");
-    b.add(ajsf.aW + "rbt/");
-    b.add(ajsf.aW + ".vipicon/");
-    b.add(ajsf.aW + "webso/offline/");
-    b.add(ajsf.aW + ".readInjoy/");
-    b.add(avds.a);
-    b.add(ajsf.bf);
-    b.add(ajsf.aV + "/Tencent/ReaderZone/style/");
-    b.add(ajsf.aV + "/Tencent/ReaderZone/font/");
-    b.add(ajsf.aW + ".apollo/");
-    b.add(ajsf.aW + "DoutuRes" + File.separator);
-    b.add(ajsf.aV + "/tencent/TMAssistantSDK/Download/com.tencent.mobileqq" + File.separator);
-    b.add(ajsf.aV + "/tencent/MobileQQ/pddata/");
-    b.add(ajsf.aV + "/tencent/MobileQQ/pddata/APP/offline/html5/");
-    b.add(ajsf.aV + "/tencent/MobileQQ/pddata/APP/offline/tmp/");
-    b.add(ajsf.aV + "/tencent/MobileQQ/ShareScreenShots");
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aW + "diskcache" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(ayog.a);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aW + "photo/");
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aW + "thumb/");
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aW + "shortvideo" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(asns.b);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.cU);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.cV);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aV + "/Tencent/QQfile_recv/");
-    jdField_a_of_type_JavaUtilHashSet.add(MiniAppFileManager.MINI_FILE_ROOT_PATH);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.bs);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.bt);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aW + ".Rock" + File.separator);
-    jdField_a_of_type_JavaUtilHashSet.add(ajsf.aV + "/Tencent/QQ_Collection/");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajsf.aW + "keyword_emotion", ajsf.aW + ".sticker_recommended_pics", ajsf.aV + "/Tencent/QQ_CameraEmo", ajsf.aW + ".diy", ajsf.aW + "Scribble", ajsf.aW + ".emotionsm", ajsf.aV + "/Tencent/QQ_Favorite", ajsf.aW + "hotpic", ajsf.aW + "hugeimagecache", ajsf.aW + "ArkApp", ajsf.aW + "zhitu", ajsf.aW + "msgbackup", ajsf.aW + "qqmusic", ajsf.aW + "aio_long_shot", ajsf.aW + "tim_theme_aio", ajsf.aW + "qim_theme_aio", ajsf.aW + "nativemem", ajsf.aW + "pddata/prd/ar_promotion", ajsf.aW + "pddata/app/offline/html5", ajsf.aW + "iar", ajsf.aV + "/AVReportCenter" };
+    if (paramMessage.what == 1)
+    {
+      paramMessage = bbuw.a();
+      int i = paramMessage.getInt("timer2_interval", 0);
+      int m = paramMessage.getInt("timer2_retry_times", 0);
+      int j = paramMessage.getInt("timer2_start_hour", 0);
+      int k = paramMessage.getInt("timer2_end_hour", 0);
+      if ((bbut.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bbut.a < i))
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
+        return true;
+      }
+      if (this.a.jdField_a_of_type_Int >= m)
+      {
+        QLog.i("SportManager", 2, "retry time enough cancel task.");
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        return true;
+      }
+      paramMessage = Calendar.getInstance();
+      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+      m = paramMessage.get(11);
+      if (m >= j)
+      {
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report1");
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
+        return true;
+        if (m >= k) {
+          break;
+        }
+        paramMessage.set(11, 0);
+        paramMessage.set(12, 0);
+        paramMessage.set(13, 0);
+        paramMessage.set(14, 0);
+        if (bbut.a - paramMessage.getTimeInMillis() > 0L)
+        {
+          QLog.i("SportManager", 2, "already report cancel task.");
+          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+          return true;
+        }
+        paramMessage = this.a;
+        paramMessage.jdField_a_of_type_Int += 1;
+        this.a.a("timer2 callback report2");
+      }
+      QLog.i("SportManager", 2, "over time cancel task.");
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      return true;
+    }
+    return false;
   }
 }
 

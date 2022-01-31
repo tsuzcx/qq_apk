@@ -1,672 +1,320 @@
 import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWVideoDecoder;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
+import android.view.Surface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.io.File;
+import java.nio.ByteBuffer;
 
-@TargetApi(11)
+@TargetApi(18)
 public class avzc
-  implements SurfaceTexture.OnFrameAvailableListener, avxn, avyi, avzk
 {
-  public int a;
-  private long jdField_a_of_type_Long = -1L;
-  private ahyk jdField_a_of_type_Ahyk;
-  private avxk jdField_a_of_type_Avxk;
-  private avyy jdField_a_of_type_Avyy;
-  private avzd jdField_a_of_type_Avzd;
-  private avzk jdField_a_of_type_Avzk;
-  private avzm jdField_a_of_type_Avzm = new avzm();
-  private awac jdField_a_of_type_Awac;
-  private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder = new HWVideoDecoder();
-  private GPUBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private GPUOESBaseFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  public MediaFormat a;
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private avzg jdField_a_of_type_Avzg;
+  private avzt jdField_a_of_type_Avzt;
+  private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = -1L;
-  private GPUBaseFilter jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private GPUBaseFilter jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
-  private int f;
   
-  private void d()
-  {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.destroy();
-    if (this.jdField_a_of_type_Awac != null) {
-      this.jdField_a_of_type_Awac.destroy();
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
-    }
-    if (this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) {
-      this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
-    }
-    if (this.jdField_a_of_type_Ahyk != null) {
-      this.jdField_a_of_type_Ahyk.c();
-    }
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.destroy();
-  }
-  
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 97
-    //   3: invokestatic 103	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(I)I
-    //   6: putfield 105	avzc:jdField_c_of_type_Int	I
-    //   9: aload_0
-    //   10: new 107	com/tencent/ttpic/openapi/filter/RenderBuffer
-    //   13: dup
-    //   14: aload_0
-    //   15: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   18: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   21: aload_0
-    //   22: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   25: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   28: ldc 115
-    //   30: invokespecial 118	com/tencent/ttpic/openapi/filter/RenderBuffer:<init>	(III)V
-    //   33: putfield 120	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer	Lcom/tencent/ttpic/openapi/filter/RenderBuffer;
-    //   36: aload_0
-    //   37: bipush 102
-    //   39: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   42: checkcast 69	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter
-    //   45: putfield 67	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
-    //   48: aload_0
-    //   49: getfield 67	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
-    //   52: aload_0
-    //   53: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   56: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   59: aload_0
-    //   60: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   63: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   66: invokevirtual 129	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter:onOutputSizeChanged	(II)V
-    //   69: aload_0
-    //   70: getfield 67	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUOESBaseFilter;
-    //   73: invokevirtual 132	com/tencent/ttpic/openapi/filter/GPUOESBaseFilter:init	()V
-    //   76: aload_0
-    //   77: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   80: getfield 134	avyy:f	I
-    //   83: invokestatic 137	avzu:a	(I)Z
-    //   86: ifne +13 -> 99
-    //   89: aload_0
-    //   90: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   93: getfield 140	avyy:c	Ljava/lang/String;
-    //   96: ifnull +110 -> 206
-    //   99: aload_0
-    //   100: new 76	awac
-    //   103: dup
-    //   104: invokespecial 141	awac:<init>	()V
-    //   107: putfield 74	avzc:jdField_a_of_type_Awac	Lawac;
-    //   110: aload_0
-    //   111: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   114: getfield 134	avyy:f	I
-    //   117: invokestatic 137	avzu:a	(I)Z
-    //   120: ifeq +20 -> 140
-    //   123: aload_0
-    //   124: getfield 74	avzc:jdField_a_of_type_Awac	Lawac;
-    //   127: aload_0
-    //   128: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   131: getfield 134	avyy:f	I
-    //   134: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   137: invokevirtual 144	awac:a	(Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;)V
-    //   140: aload_0
-    //   141: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   144: getfield 140	avyy:c	Ljava/lang/String;
-    //   147: ifnull +31 -> 178
-    //   150: bipush 106
-    //   152: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   155: astore_1
-    //   156: aload_1
-    //   157: checkcast 146	avzz
-    //   160: aload_0
-    //   161: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   164: getfield 140	avyy:c	Ljava/lang/String;
-    //   167: invokevirtual 149	avzz:a	(Ljava/lang/String;)V
-    //   170: aload_0
-    //   171: getfield 74	avzc:jdField_a_of_type_Awac	Lawac;
-    //   174: aload_1
-    //   175: invokevirtual 144	awac:a	(Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;)V
-    //   178: aload_0
-    //   179: getfield 74	avzc:jdField_a_of_type_Awac	Lawac;
-    //   182: aload_0
-    //   183: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   186: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   189: aload_0
-    //   190: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   193: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   196: invokevirtual 150	awac:onOutputSizeChanged	(II)V
-    //   199: aload_0
-    //   200: getfield 74	avzc:jdField_a_of_type_Awac	Lawac;
-    //   203: invokevirtual 151	awac:init	()V
-    //   206: aload_0
-    //   207: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   210: getfield 153	avyy:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   213: invokestatic 159	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   216: ifne +313 -> 529
-    //   219: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   222: ifeq +11 -> 233
-    //   225: ldc 167
-    //   227: iconst_2
-    //   228: ldc 169
-    //   230: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   233: aload_0
-    //   234: aload_0
-    //   235: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   238: getfield 153	avyy:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   241: aload_0
-    //   242: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   245: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   248: i2f
-    //   249: aload_0
-    //   250: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   253: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   256: i2f
-    //   257: ldc 173
-    //   259: aload_0
-    //   260: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   263: getfield 174	avyy:jdField_d_of_type_Int	I
-    //   266: i2f
-    //   267: fdiv
-    //   268: f2i
-    //   269: invokestatic 179	ahyc:a	(Ljava/lang/String;FFI)Lahyk;
-    //   272: putfield 86	avzc:jdField_a_of_type_Ahyk	Lahyk;
-    //   275: aload_0
-    //   276: getfield 86	avzc:jdField_a_of_type_Ahyk	Lahyk;
-    //   279: ifnull +50 -> 329
-    //   282: aload_0
-    //   283: getfield 86	avzc:jdField_a_of_type_Ahyk	Lahyk;
-    //   286: iconst_1
-    //   287: invokevirtual 182	ahyk:a	(Z)Z
-    //   290: pop
-    //   291: aload_0
-    //   292: sipush 1000
-    //   295: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   298: putfield 84	avzc:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   301: aload_0
-    //   302: getfield 84	avzc:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   305: aload_0
-    //   306: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   309: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   312: aload_0
-    //   313: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   316: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   319: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
-    //   322: aload_0
-    //   323: getfield 84	avzc:jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   326: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
-    //   329: aload_0
-    //   330: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   333: getfield 186	avyy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   336: astore_1
-    //   337: aload_1
-    //   338: ifnull +120 -> 458
-    //   341: aload_0
-    //   342: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   345: getfield 186	avyy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   348: invokestatic 192	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   351: astore_2
-    //   352: aload_0
-    //   353: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   356: getfield 195	avyy:g	I
-    //   359: ifeq +220 -> 579
-    //   362: aload_2
-    //   363: sipush 360
-    //   366: aload_0
-    //   367: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   370: getfield 195	avyy:g	I
-    //   373: isub
-    //   374: i2f
-    //   375: invokestatic 200	vzo:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
-    //   378: astore_1
-    //   379: aload_0
-    //   380: sipush 3553
-    //   383: aload_1
-    //   384: invokestatic 203	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:createTexture	(ILandroid/graphics/Bitmap;)I
-    //   387: putfield 54	avzc:jdField_d_of_type_Int	I
-    //   390: aload_0
-    //   391: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   394: getfield 206	avyy:i	I
-    //   397: ifne +214 -> 611
-    //   400: aload_0
-    //   401: aload_1
-    //   402: invokevirtual 212	android/graphics/Bitmap:getWidth	()I
-    //   405: putfield 214	avzc:e	I
-    //   408: aload_0
-    //   409: aload_1
-    //   410: invokevirtual 217	android/graphics/Bitmap:getHeight	()I
-    //   413: putfield 218	avzc:f	I
-    //   416: aload_1
-    //   417: invokevirtual 221	android/graphics/Bitmap:recycle	()V
-    //   420: aload_0
-    //   421: sipush 1000
-    //   424: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   427: putfield 79	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   430: aload_0
-    //   431: getfield 79	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   434: aload_0
-    //   435: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   438: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   441: aload_0
-    //   442: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   445: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   448: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
-    //   451: aload_0
-    //   452: getfield 79	avzc:jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   455: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
-    //   458: aload_0
-    //   459: bipush 101
-    //   461: invokestatic 125	avzu:a	(I)Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   464: putfield 92	avzc:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   467: aload_0
-    //   468: getfield 92	avzc:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   471: aload_0
-    //   472: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   475: getfield 113	avyy:jdField_a_of_type_Int	I
-    //   478: aload_0
-    //   479: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   482: getfield 114	avyy:jdField_b_of_type_Int	I
-    //   485: invokevirtual 183	com/tencent/ttpic/openapi/filter/GPUBaseFilter:onOutputSizeChanged	(II)V
-    //   488: aload_0
-    //   489: getfield 92	avzc:jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter	Lcom/tencent/ttpic/openapi/filter/GPUBaseFilter;
-    //   492: invokevirtual 184	com/tencent/ttpic/openapi/filter/GPUBaseFilter:init	()V
-    //   495: aload_0
-    //   496: getfield 64	avzc:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder;
-    //   499: aload_0
-    //   500: getfield 223	avzc:jdField_a_of_type_Avxk	Lavxk;
-    //   503: aload_0
-    //   504: getfield 105	avzc:jdField_c_of_type_Int	I
-    //   507: aload_0
-    //   508: aload_0
-    //   509: invokevirtual 226	com/tencent/mobileqq/richmedia/mediacodec/decoder/HWVideoDecoder:a	(Lavxk;ILandroid/graphics/SurfaceTexture$OnFrameAvailableListener;Lavxn;)V
-    //   512: aload_0
-    //   513: getfield 228	avzc:jdField_a_of_type_Avzk	Lavzk;
-    //   516: ifnull +160 -> 676
-    //   519: aload_0
-    //   520: getfield 228	avzc:jdField_a_of_type_Avzk	Lavzk;
-    //   523: invokeinterface 230 1 0
-    //   528: return
-    //   529: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   532: ifeq -203 -> 329
-    //   535: ldc 167
-    //   537: iconst_2
-    //   538: ldc 232
-    //   540: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   543: goto -214 -> 329
-    //   546: astore_1
-    //   547: aload_0
-    //   548: iconst_4
-    //   549: aload_1
-    //   550: invokevirtual 238	avzc:a_	(ILjava/lang/Throwable;)V
-    //   553: ldc 167
-    //   555: iconst_1
-    //   556: new 240	java/lang/StringBuilder
-    //   559: dup
-    //   560: invokespecial 241	java/lang/StringBuilder:<init>	()V
-    //   563: ldc 243
-    //   565: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   568: aload_1
-    //   569: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   572: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   575: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   578: return
-    //   579: aload_2
-    //   580: astore_1
-    //   581: aload_0
-    //   582: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   585: getfield 206	avyy:i	I
-    //   588: ifeq -209 -> 379
-    //   591: aload_2
-    //   592: sipush 360
-    //   595: aload_0
-    //   596: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   599: getfield 206	avyy:i	I
-    //   602: isub
-    //   603: i2f
-    //   604: invokestatic 200	vzo:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
-    //   607: astore_1
-    //   608: goto -229 -> 379
-    //   611: aload_0
-    //   612: aload_1
-    //   613: invokevirtual 217	android/graphics/Bitmap:getHeight	()I
-    //   616: putfield 214	avzc:e	I
-    //   619: aload_0
-    //   620: aload_1
-    //   621: invokevirtual 212	android/graphics/Bitmap:getWidth	()I
-    //   624: putfield 218	avzc:f	I
-    //   627: goto -211 -> 416
-    //   630: astore_1
-    //   631: invokestatic 165	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   634: ifeq +36 -> 670
-    //   637: ldc 167
-    //   639: iconst_2
-    //   640: new 240	java/lang/StringBuilder
-    //   643: dup
-    //   644: invokespecial 241	java/lang/StringBuilder:<init>	()V
-    //   647: ldc_w 256
-    //   650: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   653: aload_0
-    //   654: getfield 109	avzc:jdField_a_of_type_Avyy	Lavyy;
-    //   657: getfield 186	avyy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   660: invokevirtual 247	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   663: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   666: aload_1
-    //   667: invokestatic 259	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   670: aload_0
-    //   671: iconst_1
-    //   672: aload_1
-    //   673: invokevirtual 238	avzc:a_	(ILjava/lang/Throwable;)V
-    //   676: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	677	0	this	avzc
-    //   155	262	1	localObject1	Object
-    //   546	23	1	localException	Exception
-    //   580	41	1	localObject2	Object
-    //   630	43	1	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   351	241	2	localBitmap	android.graphics.Bitmap
-    // Exception table:
-    //   from	to	target	type
-    //   0	99	546	java/lang/Exception
-    //   99	140	546	java/lang/Exception
-    //   140	178	546	java/lang/Exception
-    //   178	206	546	java/lang/Exception
-    //   206	233	546	java/lang/Exception
-    //   233	329	546	java/lang/Exception
-    //   329	337	546	java/lang/Exception
-    //   341	379	546	java/lang/Exception
-    //   379	416	546	java/lang/Exception
-    //   416	420	546	java/lang/Exception
-    //   420	458	546	java/lang/Exception
-    //   458	528	546	java/lang/Exception
-    //   529	543	546	java/lang/Exception
-    //   581	608	546	java/lang/Exception
-    //   611	627	546	java/lang/Exception
-    //   631	670	546	java/lang/Exception
-    //   670	676	546	java/lang/Exception
-    //   341	379	630	java/lang/OutOfMemoryError
-    //   379	416	630	java/lang/OutOfMemoryError
-    //   416	420	630	java/lang/OutOfMemoryError
-    //   581	608	630	java/lang/OutOfMemoryError
-    //   611	627	630	java/lang/OutOfMemoryError
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    a_(paramInt + 10000, paramThrowable);
-  }
-  
-  public void a(long paramLong)
+  private void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onDecodeFrame wait timestamp = " + paramLong);
+      QLog.d("HWVideoEncoder", 2, "drainEncoder(" + paramBoolean + ")");
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Long >= paramLong)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        QLog.e("Mp4ReEncoder", 2, "mLastDecodeTimestamp >= timestampNanos; mLastDecodeTimestamp = " + this.jdField_a_of_type_Long + " timestampNanos = " + paramLong);
-        return;
-      }
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      this.jdField_b_of_type_JavaLangObject.notifyAll();
       if (QLog.isColorLevel()) {
-        QLog.d("Mp4ReEncoder", 2, "onDecodeFrame start timestamp = " + paramLong);
+        QLog.d("HWVideoEncoder", 2, "sending EOS to encoder");
       }
-      try
+      this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
+    }
+    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    int i = 0;
+    for (;;)
+    {
+      int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+      if (j == -1) {
+        if (!paramBoolean) {
+          if (QLog.isColorLevel()) {
+            QLog.d("HWVideoEncoder", 2, "no output available yet");
+          }
+        }
+      }
+      for (;;)
       {
-        this.jdField_a_of_type_JavaLangObject.wait(2000L);
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int == 0) && (!this.jdField_c_of_type_Boolean)) {
-          a_(3, new RuntimeException("frame wait timed out"));
+        if ((paramBoolean) && (this.jdField_a_of_type_Avzg != null)) {
+          this.jdField_a_of_type_Avzg.k();
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("Mp4ReEncoder", 2, "onDecodeFrame end timestamp = " + paramLong);
-        }
-        this.jdField_a_of_type_Boolean = false;
         return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        if (!QLog.isColorLevel()) {
-          break label274;
+        if (QLog.isColorLevel()) {
+          QLog.d("HWVideoEncoder", 2, "no output available, spinning to await EOS");
         }
-        QLog.d("Mp4ReEncoder", 2, "onDecodeFrame InterruptedException");
-        this.jdField_a_of_type_Boolean = false;
-        throw localInterruptedException;
+        j = i + 1;
+        i = j;
+        if (j <= 100) {
+          break;
+        }
+        throw new RuntimeException("Encoder is not stopped after dequeue 100 times.");
+        if (j == -3)
+        {
+          arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          break;
+        }
+        if (j == -2)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+          a(this.jdField_a_of_type_AndroidMediaMediaFormat);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("HWVideoEncoder", 2, "encoder output format changed: " + this.jdField_a_of_type_AndroidMediaMediaFormat);
+          break;
+        }
+        if (j < 0)
+        {
+          QLog.w("HWVideoEncoder", 2, "unexpected result from encoder.dequeueOutputBuffer: " + j);
+          break;
+        }
+        ByteBuffer localByteBuffer = arrayOfByteBuffer[j];
+        if (localByteBuffer == null) {
+          throw new RuntimeException("encoderOutputBuffer " + j + " was null");
+        }
+        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("HWVideoEncoder", 2, "ignoring BUFFER_FLAG_CODEC_CONFIG");
+          }
+          this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+        }
+        if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0)
+        {
+          a(localByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          if (QLog.isColorLevel()) {
+            QLog.d("HWVideoEncoder", 2, "sent " + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + " bytes to muxer, ts=" + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
+          }
+        }
+        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
+        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
+          break label485;
+        }
+        if (!paramBoolean) {
+          QLog.w("HWVideoEncoder", 2, "reached end of stream unexpectedly");
+        } else if (QLog.isColorLevel()) {
+          QLog.d("HWVideoEncoder", 2, "end of stream reached");
+        }
       }
-      localObject3 = finally;
-      throw localObject3;
+      label485:
+      i = 0;
     }
   }
   
-  public void a(avxk paramavxk, avyy paramavyy, avzk paramavzk, avzd paramavzd)
+  public Surface a()
   {
-    this.jdField_a_of_type_Avxk = paramavxk;
-    this.jdField_a_of_type_Avyy = paramavyy;
-    this.jdField_a_of_type_Avzk = paramavzk;
-    this.jdField_a_of_type_Avzd = paramavzd;
-    this.jdField_a_of_type_Avzm.a(paramavyy, this);
-    this.jdField_c_of_type_Boolean = false;
+    return this.jdField_a_of_type_AndroidViewSurface;
   }
   
-  public void a(String paramString)
+  public void a()
   {
-    if (this.jdField_a_of_type_Avzk != null) {
-      this.jdField_a_of_type_Avzk.a(paramString);
+    a(false);
+  }
+  
+  public void a(MediaFormat paramMediaFormat)
+  {
+    if (QLog.isColorLevel()) {
+      if (this.jdField_a_of_type_Avzt != null) {
+        break label61;
+      }
     }
-    if (this.jdField_d_of_type_Int != -1)
+    label61:
+    for (boolean bool = true;; bool = false)
     {
-      GlUtil.deleteTexture(this.jdField_d_of_type_Int);
-      this.jdField_d_of_type_Int = -1;
+      QLog.d("HWVideoEncoder", 2, new Object[] { "setOutputFormat, ", Boolean.valueOf(bool) });
+      if (this.jdField_a_of_type_Avzt != null) {
+        break label114;
+      }
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      throw new RuntimeException("format changed twice");
     }
-    if (this.jdField_c_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_c_of_type_Int);
-      this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Avzg != null) {
+      this.jdField_a_of_type_Avzg.a(this.jdField_a_of_type_AndroidMediaMediaFormat);
     }
-    GlUtil.deleteTexture(this.jdField_c_of_type_Int);
-    d();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    return;
+    label114:
+    this.jdField_a_of_type_Avzt.a(0, paramMediaFormat);
   }
   
-  public void a_(int paramInt, Throwable paramThrowable)
+  public void a(avza paramavza)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
-    if (this.jdField_a_of_type_Avzk != null) {
-      this.jdField_a_of_type_Avzk.a_(paramInt, paramThrowable);
+    this.jdField_a_of_type_JavaLangString = paramavza.jdField_a_of_type_JavaLangString;
+    Object localObject = MediaFormat.createVideoFormat("video/avc", paramavza.jdField_a_of_type_Int, paramavza.jdField_b_of_type_Int);
+    ((MediaFormat)localObject).setInteger("color-format", 2130708361);
+    ((MediaFormat)localObject).setInteger("bitrate", paramavza.c);
+    ((MediaFormat)localObject).setInteger("frame-rate", paramavza.d);
+    ((MediaFormat)localObject).setInteger("i-frame-interval", paramavza.e);
+    if (paramavza.j != -1) {
+      ((MediaFormat)localObject).setInteger("bitrate-mode", paramavza.j);
     }
+    if (paramavza.k != -1)
+    {
+      ((MediaFormat)localObject).setInteger("profile", 8);
+      ((MediaFormat)localObject).setInteger("level", 32768);
+    }
+    if (paramavza.jdField_b_of_type_Boolean)
+    {
+      ((MediaFormat)localObject).setInteger("profile", 1);
+      ((MediaFormat)localObject).setInteger("level", 512);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoEncoder", 2, "start : encodeConfig = + " + paramavza.toString() + " ; format: " + localObject);
+    }
+    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
+    this.jdField_a_of_type_AndroidMediaMediaCodec.configure((MediaFormat)localObject, null, null, 1);
+    this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
+    this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+    localObject = new File(paramavza.jdField_a_of_type_JavaLangString);
+    if (!((File)localObject).exists()) {
+      bbdx.c(((File)localObject).getAbsolutePath());
+    }
+    if (paramavza.jdField_a_of_type_Avzt == null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramavza.jdField_a_of_type_JavaLangString, 0);
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramavza.g);
+    }
+    for (;;)
+    {
+      if (paramavza.jdField_a_of_type_Avzg != null) {
+        this.jdField_a_of_type_Avzg = paramavza.jdField_a_of_type_Avzg;
+      }
+      this.jdField_a_of_type_Int = -1;
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      this.jdField_a_of_type_Avzt = paramavza.jdField_a_of_type_Avzt;
+      this.jdField_a_of_type_Avzt.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramavza.g);
+    }
+  }
+  
+  public void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    if (this.jdField_a_of_type_Avzt == null)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("muxer hasn't started");
+      }
+      paramByteBuffer.position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+      paramByteBuffer.limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+      if (this.jdField_a_of_type_Avzg != null)
+      {
+        paramBufferInfo = new avzd(this);
+        paramBufferInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        Object localObject = ByteBuffer.allocate(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+        ((ByteBuffer)localObject).put(paramByteBuffer);
+        ((ByteBuffer)localObject).flip();
+        paramBufferInfo.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
+        localObject = new MediaCodec.BufferInfo();
+        ((MediaCodec.BufferInfo)localObject).flags = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags;
+        ((MediaCodec.BufferInfo)localObject).offset = 0;
+        ((MediaCodec.BufferInfo)localObject).presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+        ((MediaCodec.BufferInfo)localObject).size = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size;
+        paramBufferInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = ((MediaCodec.BufferInfo)localObject);
+        this.jdField_a_of_type_Avzg.a(paramBufferInfo);
+        paramByteBuffer.rewind();
+        paramByteBuffer.position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+        paramByteBuffer.limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, paramByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+      return;
+    }
+    this.jdField_a_of_type_Avzt.a(0, paramByteBuffer, paramBufferInfo);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Avzk != null) {
-      this.jdField_a_of_type_Avzk.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoEncoder", 2, "HWVideoEncoder stop.");
     }
+    a(true);
+    c();
   }
-  
-  public void b(long paramLong) {}
   
   public void c()
   {
-    veg.d("Richard", "cancelEncode");
     if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "cancelEncode");
+      QLog.d("HWVideoEncoder", 2, "HWVideoEncoder release.");
     }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWVideoDecoder.a();
-  }
-  
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onDecodeStart");
-    }
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onDecodeFinish");
-    }
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Avzm.b();
-  }
-  
-  public void i()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onDecodeCancel");
-    }
-    this.jdField_a_of_type_Avzm.b();
-  }
-  
-  public void l() {}
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    if ((this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long) && (!this.jdField_b_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {}
+    try
     {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
       if (QLog.isColorLevel()) {
-        QLog.d("Mp4ReEncoder", 2, "onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = " + this.jdField_b_of_type_Long + " , mLastDecodeTimestamp " + this.jdField_a_of_type_Long);
+        QLog.d("HWVideoEncoder", 2, "MediaCodec stop.");
       }
+    }
+    catch (Exception localException1)
+    {
       try
-      {
-        synchronized (this.jdField_b_of_type_JavaLangObject)
-        {
-          this.jdField_b_of_type_JavaLangObject.wait(5L);
-        }
-      }
-      catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          localInterruptedException.printStackTrace();
-        }
-      }
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      QLog.e("Mp4ReEncoder", 2, "onFrameAvailable skipDecode");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable wait");
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0) || (this.jdField_d_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        QLog.w("Mp4ReEncoder", 2, "onFrameAvailable error=" + this.jdField_b_of_type_Int + " ; canceled=" + this.jdField_c_of_type_Boolean + "; stopped=" + this.jdField_d_of_type_Boolean);
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable start");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      a_(5, new RuntimeException("mFrameAvailable already set, frame could be dropped"));
-    }
-    label754:
-    for (;;)
-    {
-      try
-      {
-        paramSurfaceTexture.updateTexImage();
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-        if (QLog.isColorLevel()) {
-          QLog.d("Mp4ReEncoder", 2, "onFrameAvailable timestap = " + this.jdField_b_of_type_Long);
-        }
-        float[] arrayOfFloat = new float[16];
-        paramSurfaceTexture.getTransformMatrix(arrayOfFloat);
-        ??? = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUOESBaseFilter.drawTexture(this.jdField_c_of_type_Int, null, null);
-        paramSurfaceTexture = (SurfaceTexture)???;
-        if (this.jdField_a_of_type_Awac != null)
-        {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-          this.jdField_a_of_type_Awac.drawTexture(((RenderBuffer)???).getTexId(), null, null);
-          paramSurfaceTexture = this.jdField_a_of_type_Awac.a();
-          paramSurfaceTexture.bind();
-        }
-        if ((this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null) && (this.jdField_a_of_type_Ahyk != null))
-        {
+          this.jdField_a_of_type_AndroidMediaMediaCodec.release();
           if (QLog.isColorLevel()) {
-            QLog.d("Mp4ReEncoder", 2, "subtitle encoder begin");
+            QLog.d("HWVideoEncoder", 2, "MediaCodec release.");
           }
-          paramSurfaceTexture.unbind();
-          if (!this.jdField_a_of_type_Ahyk.a(this.jdField_b_of_type_Long / 1000000L)) {
-            break label754;
+          this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+          if ((this.jdField_a_of_type_Avzt != null) || (this.jdField_a_of_type_AndroidMediaMediaMuxer == null)) {
+            break label237;
           }
-          paramSurfaceTexture.bind();
-          i = this.jdField_a_of_type_Ahyk.d();
-          if (i >= 0)
+          try
           {
-            GLES20.glEnable(3042);
-            GLES20.glBlendFunc(770, 771);
-            this.jdField_c_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(i, null, null);
-            GLES20.glDisable(3042);
+            if (this.jdField_a_of_type_Boolean)
+            {
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
+              if (QLog.isColorLevel()) {
+                QLog.d("HWVideoEncoder", 2, "MediaMuxer stop.");
+              }
+            }
+            this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+            if (QLog.isColorLevel()) {
+              QLog.d("HWVideoEncoder", 2, "MediaMuxer release.");
+            }
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("Mp4ReEncoder", 2, "subtitle draw texture end");
+          catch (Exception localException3)
+          {
+            for (;;)
+            {
+              QLog.w("HWVideoEncoder", 2, "Muxer stop exception:" + localException3);
+            }
           }
+          this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+          return;
+          localException1 = localException1;
+          QLog.w("HWVideoEncoder", 2, "mEncoder stop exception:" + localException1);
         }
-        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter != null)
-        {
-          ??? = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_a_of_type_Avyy.jdField_a_of_type_Int, this.jdField_a_of_type_Avyy.jdField_b_of_type_Int, this.e, this.f);
-          GLES20.glEnable(3042);
-          GLES20.glBlendFunc(770, 771);
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(this.jdField_d_of_type_Int, null, (float[])???);
-          GLES20.glDisable(3042);
-        }
-        if (this.jdField_a_of_type_Avzd != null) {
-          this.jdField_a_of_type_Avzd.a();
-        }
-        paramSurfaceTexture.unbind();
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterGPUBaseFilter.drawTexture(paramSurfaceTexture.getTexId(), arrayOfFloat, null);
-        this.jdField_a_of_type_Avzm.a(3553, paramSurfaceTexture.getTexId(), arrayOfFloat, null, this.jdField_b_of_type_Long);
-        int i = 1;
-        if (i > this.jdField_a_of_type_Int) {
-          break;
-        }
-        this.jdField_a_of_type_Avzm.a(3553, paramSurfaceTexture.getTexId(), arrayOfFloat, null, this.jdField_b_of_type_Long + i * 5 * 1000);
-        i += 1;
-        continue;
-        paramSurfaceTexture.bind();
       }
-      catch (Exception paramSurfaceTexture)
+      catch (Exception localException2)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        QLog.w("Mp4ReEncoder", 2, "onFrameAvailable error=" + this.jdField_b_of_type_Int + " ; canceled=" + this.jdField_c_of_type_Boolean, paramSurfaceTexture);
-        return;
+        label237:
+        do
+        {
+          for (;;)
+          {
+            QLog.w("HWVideoEncoder", 2, "mEncoder release exception:" + localException2);
+          }
+        } while (this.jdField_a_of_type_Avzt == null);
+        QLog.d("HWVideoEncoder", 1, "HWVideoEncoder release");
+        this.jdField_a_of_type_Avzt.a();
       }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
-    if (QLog.isColorLevel()) {
-      QLog.d("Mp4ReEncoder", 2, "onFrameAvailable end");
     }
   }
 }

@@ -1,57 +1,48 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class andb
-  extends ampb<String>
+  extends ampa<ancy>
 {
-  public int a()
+  public static ancy a()
   {
-    return 462;
+    return (ancy)ampl.a().a(346);
   }
   
-  public Class<String> a()
+  public int a()
   {
-    return String.class;
+    return 346;
   }
   
   @NonNull
-  public String a(int paramInt)
+  public ancy a(int paramInt)
   {
-    return "";
+    return new ancy();
   }
   
   @Nullable
-  public String a(ampi[] paramArrayOfampi)
+  public ancy a(amph[] paramArrayOfamph)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onParsed");
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return ancy.a(paramArrayOfamph);
     }
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length == 0)) {
-      paramArrayOfampi = null;
-    }
-    String str;
-    do
-    {
-      return paramArrayOfampi;
-      str = paramArrayOfampi[0].a;
-      paramArrayOfampi = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
+    return null;
   }
   
-  public void a(int paramInt)
+  public Class<ancy> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onReqFailed");
-    }
+    return ancy.class;
   }
   
-  public void a(String paramString)
+  public void a(int paramInt) {}
+  
+  public void a(ancy paramancy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoDrawConfProcessor", 2, "onUpdate");
+    if ((paramancy != null) && (!TextUtils.isEmpty(paramancy.d()))) {
+      ((aygx)BaseApplicationImpl.getApplication().getRuntime().getManager(272)).a(paramancy);
     }
   }
   

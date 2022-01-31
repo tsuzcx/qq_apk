@@ -1,18 +1,8 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
 import java.util.List;
 
-public class agzo
-  implements agzq
+public abstract interface agzo
 {
-  public agzo(IdiomHbFragment paramIdiomHbFragment) {}
-  
-  public void a(boolean paramBoolean, List<String> paramList)
-  {
-    this.a.c.setText(IdiomHbFragment.a(this.a, true));
-    this.a.c.setSelection(this.a.c.getText().length());
-  }
+  public abstract void a(boolean paramBoolean, List<String> paramList);
 }
 
 

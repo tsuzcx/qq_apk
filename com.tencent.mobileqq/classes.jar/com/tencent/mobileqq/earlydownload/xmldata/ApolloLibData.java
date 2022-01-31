@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpd;
+import anpi;
 
 public class ApolloLibData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + anpd.a;
+    return "preload_" + anpi.a;
   }
   
   public String getStrResName()
   {
-    return anpd.a;
+    return anpi.a;
   }
 }
 

@@ -1,22 +1,18 @@
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Bitmap;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 
 public class bizo
 {
-  private AudioManager a;
-  
-  public void a()
+  public static Bitmap a(Bitmap paramBitmap, String paramString)
   {
-    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
-    this.a.requestAudioFocus(null, 3, 2);
-  }
-  
-  public void b()
-  {
-    if (this.a != null) {
-      this.a.abandonAudioFocus(null);
-    }
+    if (!BitmapUtils.isLegal(paramBitmap)) {}
+    int i;
+    do
+    {
+      return paramBitmap;
+      i = BitmapUtils.getDegreeByExif(paramString) % 360;
+    } while (i == 0);
+    return BitmapUtils.rotateBitmap(paramBitmap, i);
   }
 }
 

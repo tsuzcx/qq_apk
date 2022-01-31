@@ -1,21 +1,17 @@
 import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rob
-  implements ruw
+  implements bfso
 {
   public rob(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public void a(int paramInt)
+  public void onScrollStateChanged(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.h();
-      return;
+    if ((ReadInJoyDiandianHeaderController.b(this.a)) && (paramInt == 4097)) {
+      nol.a(null, "", "0X8009BA4", "0X8009BA4", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
     }
-    this.a.f();
   }
 }
 

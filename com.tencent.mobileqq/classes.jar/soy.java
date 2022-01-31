@@ -1,31 +1,11 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-
-final class soy
-  implements bcwh
+public class soy
 {
-  soy(String paramString) {}
-  
-  public void a(BaseResp paramBaseResp)
-  {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      wim.a(1, 2131719476);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      wim.a(2, 2131719495);
-    }
-  }
+  public int a = 600;
+  public String a;
+  public boolean a;
+  public int b = 400;
+  public String b;
+  public String c;
 }
 
 

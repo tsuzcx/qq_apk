@@ -1,101 +1,65 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QzoneHardwareRestriction;
 
 public class bhqe
-  extends bhrq
 {
-  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
+  public static final int a = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifLowDeviceSize", 720);
+  public static final int b = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifMiddleDeviceSize", 720);
+  public static final int c = QzoneConfig.getInstance().getConfig("PhotoUpload", "createGifHighDeviceSize", 720);
+  public static final int d = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_delay", 200);
+  public static final int e = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_size_limit", 64);
+  public static final int f = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_max_speed", 20);
+  public static final int g = QzoneConfig.getInstance().getConfig("PhotoUpload", "secondary_gif_min_multiple_speed", 3);
+  private static int h = -1;
+  
+  public static int a()
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
-    do
-    {
-      return;
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
-    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
-    try
-    {
-      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-      paramWebViewPlugin = paramArrayOfString.optString("host");
-      paramArrayOfString = paramArrayOfString.optString("callback");
-      if (TextUtils.isEmpty(paramArrayOfString))
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
-        return;
-      }
+    int i = 2;
+    if (QzoneHardwareRestriction.meetHardwareRestriction(2, 2)) {
+      i = 3;
     }
-    catch (JSONException paramWebViewPlugin)
-    {
-      paramWebViewPlugin.printStackTrace();
-      return;
+    while (QzoneHardwareRestriction.meetHardwareRestriction(1, 1)) {
+      return i;
     }
-    if (TextUtils.isEmpty(paramWebViewPlugin))
-    {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
-      return;
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
+    return 1;
   }
   
-  private void a(String paramString1, int paramInt, String paramString2)
+  public static boolean a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
+    if (h >= 0) {
+      return h == 1;
     }
-    for (;;)
+    String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      return;
-      JSONObject localJSONObject = new JSONObject();
-      try
+      String str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
       {
-        localJSONObject.put("ret", paramInt);
-        localJSONObject.put("host_ip", paramString2);
-        paramString2 = localJSONObject.toString();
-        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
-        {
-          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
+        h = 1;
+        return true;
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
-      }
+      i += 1;
     }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
-      return false;
-    }
-    a(this.a, paramVarArgs);
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if ((paramLong == 8589934595L) && (paramMap != null))
-    {
-      paramString = paramMap.get("errorCode");
-      if ((paramString != null) && ((paramString instanceof Integer)))
-      {
-        int i = ((Integer)paramString).intValue();
-        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
-      }
-    }
+    h = 0;
     return false;
+  }
+  
+  public static int b()
+  {
+    int i = a();
+    if (i == 1) {
+      return a;
+    }
+    if (i == 2) {
+      return b;
+    }
+    if (i == 3) {
+      return c;
+    }
+    return 720;
   }
 }
 

@@ -1,18 +1,44 @@
-class adju
-  implements baoe
+import com.tencent.widget.AbsListView;
+
+public class adju
+  implements adif
 {
-  adju(adjr paramadjr, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    switch (paramInt)
     {
-      ((aemf)adjr.a(this.jdField_a_of_type_Adjr)).X = true;
-      this.jdField_a_of_type_Adjr.a(true);
+    default: 
+      return;
+    case 4: 
+      wtl.a().a();
+      return;
+    case 9: 
+      wtl.a().b();
       return;
     }
-    ((aemf)adjr.a(this.jdField_a_of_type_Adjr)).X = false;
-    this.jdField_a_of_type_Adjr.a(false);
+    wtl.a().c();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    wtl.a().a(paramAbsListView, paramInt);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    wtl.a().a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (adng.class.isInstance(paramObject)) {
+      wtl.a().a((adng)paramObject);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11, 6, 4, 9 };
   }
 }
 

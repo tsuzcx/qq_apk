@@ -1,21 +1,36 @@
+import android.os.Bundle;
+import android.view.View;
 import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class aayx
-  extends ajta
+  implements bfph
 {
-  public aayx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aayx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bfpc parambfpc) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.h();
-    if (paramBoolean)
+    switch (paramInt)
     {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        this.jdField_a_of_type_Bfpc.cancel();
       }
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
+      continue;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+      Bundle localBundle = xkn.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+      xkn.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+      bbbp.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), bbbp.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      continue;
+      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
     }
-    bcpw.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

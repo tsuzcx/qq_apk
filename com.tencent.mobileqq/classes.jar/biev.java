@@ -1,7 +1,16 @@
-final class biev
-  implements bbmh
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+
+class biev
+  implements ThreadPool.Job<Void>
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  biev(biep parambiep, ayrx paramayrx) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    biep.a(this.jdField_a_of_type_Biep).a(this.jdField_a_of_type_Ayrx);
+    return null;
+  }
 }
 
 

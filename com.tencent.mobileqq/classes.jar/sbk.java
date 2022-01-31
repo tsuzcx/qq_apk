@@ -1,18 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
-public class sbk
-  extends BroadcastReceiver
+class sbk
+  implements wsn
 {
-  private sbk(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  sbk(sbj paramsbj) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null)) {
-      FolderFollowTabFragment.b(this.a, FolderFollowTabFragment.a(this.a));
+    if (paramBoolean)
+    {
+      sbi.a(this.a.a).c();
+      this.a.a.a(false);
+      this.a.a.a.c();
+      xhb.a("", "auth_discover", "fold", 0, 0, new String[0]);
     }
   }
 }

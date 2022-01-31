@@ -1,142 +1,179 @@
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class akwr
-  implements ajtg
+  extends akwq
 {
-  public static final String TAG = "AppletsObserver";
+  private akws a;
+  protected QQAppInterface a;
   
-  protected void onAppletsSettingSwitchChange(int paramInt) {}
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList) {}
-  
-  protected void onGetAppletsPushUnreadInfo(Object paramObject) {}
-  
-  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<akxa> paramList)
+  public akwr(akws paramakws)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (ahjz)((QQAppInterface)localObject1).getManager(315);; localObject1 = null)
+    this.jdField_a_of_type_Akws = paramakws;
+  }
+  
+  public akwr(akws paramakws, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Akws = paramakws;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      if (localObject1 == null) {
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "removeObserver  " + this);
       }
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject2 = (akxa)paramList.next();
-          if ((((akxa)localObject2).a != null) && (((akxa)localObject2).a.size() > 0) && (((akxa)localObject2).a.get(0) != null) && (((AppletItem)((akxa)localObject2).a.get(0)).a() == 1L))
-          {
-            localObject2 = (AppletItem)((akxa)localObject2).a.get(0);
-            if (((AppletItem)localObject2).b() == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((ahjz)localObject1).a(paramBoolean);
-              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
-              break;
-            }
-          }
-          if ((((akxa)localObject2).a != null) && (((akxa)localObject2).a.size() > 0))
-          {
-            localObject2 = ((akxa)localObject2).a.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
-              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
-                localHashSet.add(String.valueOf(localAppletItem.a()));
-              }
-            }
-          }
-        }
-      }
-      ((ahjz)localObject1).a(localHashSet);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
     }
   }
   
-  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
-  
-  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    ahjz localahjz = null;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localahjz = (ahjz)((QQAppInterface)localObject).getManager(315);
-    }
-    if (localahjz == null) {}
-    for (;;)
-    {
-      return;
-      if ((paramList != null) && (paramBoolean))
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject = (AppletItem)paramList.next();
-          int i = ((AppletItem)localObject).b();
-          if (((AppletItem)localObject).a() == 1L)
-          {
-            if (i == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              localahjz.a(paramBoolean);
-              onAppletsSettingSwitchChange(i);
-              break;
-            }
-          }
-          if (localahjz != null) {
-            if (i == 0) {
-              localahjz.c(String.valueOf(((AppletItem)localObject).a()));
-            } else {
-              localahjz.d(String.valueOf(((AppletItem)localObject).a()));
-            }
-          }
-        }
+    if (this.jdField_a_of_type_Akws == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
       }
     }
+    while (4 != this.jdField_a_of_type_Akws.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akws.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      Follow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Akws.a(localRspBody);
+        this.jdField_a_of_type_Akws.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Akws.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Akws.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Akws.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Akws.b(paramObject);
+    }
+  }
+  
+  private void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akws == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (5 != this.jdField_a_of_type_Akws.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akws.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      unFollow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Akws.a(localRspBody);
+        this.jdField_a_of_type_Akws.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Akws.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Akws.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Akws.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Akws.b(paramObject);
+    }
+  }
+  
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akws == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (7 != this.jdField_a_of_type_Akws.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akws.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "PublicAccountNotifySetting isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Akws.a(paramObject);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Akws.b(paramBoolean, paramObject);
+      a();
+      return;
+      this.jdField_a_of_type_Akws.b(paramObject);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
     default: 
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+    case 6: 
       return;
-    case 1: 
-      onGetAppletsDetail(paramBoolean, (List)paramObject);
+    case 4: 
+      a(paramBoolean, paramObject);
       return;
-    case 2: 
-      onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 3: 
-      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 8: 
-      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
+    case 5: 
+      b(paramBoolean, paramObject);
       return;
     }
-    onGetAppletsPushUnreadInfo(paramObject);
+    c(paramBoolean, paramObject);
   }
 }
 

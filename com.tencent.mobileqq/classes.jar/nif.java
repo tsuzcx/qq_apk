@@ -1,28 +1,24 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nif
-  implements abgl
+  implements View.OnClickListener
 {
-  WeakReference<AccountDetailActivity> a;
+  public nif(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public nif(AccountDetailActivity paramAccountDetailActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  public void a(abgm paramabgm)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
+    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    ((AccountDetailActivity)this.a.get()).a(paramabgm);
-    ((AccountDetailActivity)this.a.get()).P();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nif
  * JD-Core Version:    0.7.0.1
  */

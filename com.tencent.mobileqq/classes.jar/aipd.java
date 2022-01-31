@@ -1,107 +1,124 @@
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class aipd
-  extends BaseAdapter
+  extends aims
 {
-  protected int a;
-  protected akgd a;
-  protected Context a;
-  protected View a;
-  protected QQAppInterface a;
-  public List<String> a;
+  aipg jdField_a_of_type_Aipg;
+  akil jdField_a_of_type_Akil = new aipe(this);
+  Context jdField_a_of_type_AndroidContentContext;
+  protected View.OnClickListener a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected TroopManager a;
+  XListView jdField_a_of_type_ComTencentWidgetXListView;
+  protected String a;
+  protected List<aiph> a;
+  protected boolean a;
+  protected List<auko> b;
+  protected boolean b;
+  List<ShowExternalTroop> c;
   
-  public aipd(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, int paramInt)
+  public aipd(Context paramContext, QQAppInterface paramQQAppInterface, aipg paramaipg, XListView paramXListView, boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext, paramQQAppInterface, paramXListView, 4, true);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aipf(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Akgd = ((akgd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(299));
+    this.jdField_a_of_type_Aipg = paramaipg;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Akil);
   }
   
-  public String a(int paramInt)
+  public void a(List<ShowExternalTroop> paramList)
   {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Akgd.a();
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
+    this.jdField_b_of_type_Boolean = true;
+    if (paramList != null)
     {
+      this.c = paramList;
       notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akil);
+    super.c();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
     return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public long getItemId(int paramInt)
+  public Object getItem(int paramInt)
   {
-    return paramInt;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559621, paramViewGroup, false);
-      paramViewGroup = new aipe(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367530));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367533));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)paramView.findViewById(2131375366));
-      paramViewGroup.b = paramView.findViewById(2131365283);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
-      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        break label210;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
-      paramViewGroup.b.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845180);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839124);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845178);
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560325, null);
     }
-    for (;;)
-    {
-      paramView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramViewGroup);
-      return paramView;
-      paramViewGroup = (aipe)paramView.getTag();
-      break;
-      label210:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
-      paramViewGroup.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845179);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839123);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845177);
+    aiph localaiph = (aiph)getItem(paramInt);
+    if (localaiph == null) {
+      return null;
     }
+    View localView;
+    if (paramView != null)
+    {
+      localView = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localView = mya.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, false, 1);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    }
+    paramView = (azmp)localView.getTag();
+    paramView.jdField_c_of_type_Int = 4;
+    paramViewGroup = localaiph.a;
+    mya.a(localView, this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+    paramView.e.setVisibility(8);
+    paramView.jdField_a_of_type_JavaLangString = localaiph.a.troopUin;
+    paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramViewGroup.troopUin));
+    return localView;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    if (this.c != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (!this.c.isEmpty()) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        Iterator localIterator = this.c.iterator();
+        while (localIterator.hasNext())
+        {
+          ShowExternalTroop localShowExternalTroop = (ShowExternalTroop)localIterator.next();
+          this.jdField_a_of_type_JavaUtilList.add(new aiph(1, localShowExternalTroop));
+        }
+      }
+    }
+    super.notifyDataSetChanged();
   }
 }
 

@@ -1,121 +1,170 @@
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 
 public class ahxh
-  extends PagerAdapter
+  extends Handler
 {
-  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<FilterDesc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Map<Class<? extends View>, Queue<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public ahxh(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public ahxh(VideoFilterViewPager paramVideoFilterViewPager) {}
-  
-  public int a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterDesc a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<FilterDesc> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+    case 4: 
+    case 5: 
+    case 10: 
+    default: 
+    case 1: 
+    case 2: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.b();
+          if (this.a.jdField_a_of_type_Vrh != null)
+          {
+            this.a.jdField_a_of_type_Vrh.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+            this.a.jdField_a_of_type_Vrh.notifyDataSetChanged();
+          }
+          paramMessage = this.a.jdField_a_of_type_Ahxj.a();
+          if (this.a.jdField_a_of_type_Vrh != null) {
+            this.a.jdField_a_of_type_Vrh.a(paramMessage);
+          }
+          if (paramMessage == null) {
+            break;
+          }
+          if (paramMessage.jdField_b_of_type_Int == 0)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+            return;
+          }
+          if (paramMessage.jdField_b_of_type_Int == 1)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramMessage.g))
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+            return;
+          }
+        } while (!this.a.jdField_a_of_type_Boolean);
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.a(paramMessage);
+        return;
+        if (!this.a.jdField_a_of_type_Ahxj.c())
+        {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+          return;
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+        return;
+        this.a.b();
+        paramMessage = this.a.jdField_a_of_type_Ahxj.a();
+        if (paramMessage != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music is NULL!!!!!");
+      return;
+      if (paramMessage.g == null)
+      {
+        QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music.download_path is NULL!!!!!");
+        return;
       }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131560778, null);
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
+      }
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ahxj.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      MusicHorizontalSeekView.a((this.a.a() + 500) / 1000, this.a.getContext().getResources().getDisplayMetrics().widthPixels - bbll.a(8.0F));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
+      return;
+    case 11: 
+      this.a.b();
+      paramMessage = this.a.jdField_a_of_type_Vrk;
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
+      }
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
+      }
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ahxj.a(paramMessage);
+      this.a.jdField_a_of_type_Ahxj.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
+      return;
+    case 3: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ahxj.a(vrk.jdField_a_of_type_Vrk);
+      this.a.jdField_a_of_type_Ahxj.a(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131707871));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    case 6: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ahxj.a(vrk.jdField_b_of_type_Vrk);
+      this.a.jdField_a_of_type_Ahxj.a(1);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131707870));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      P2VEditMusicDialog.a(this.a);
+      return;
+    case 7: 
+      paramMessage = (String)paramMessage.obj;
+      bcql.a(this.a.getContext(), paramMessage, 0).a();
+      return;
+    case 8: 
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setPlayedPosition(this.a.jdField_b_of_type_Int);
+      return;
+    case 9: 
+      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg1);
+      return;
     }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    paramMessage = (vrk)paramMessage.obj;
+    this.a.b(paramMessage);
   }
 }
 

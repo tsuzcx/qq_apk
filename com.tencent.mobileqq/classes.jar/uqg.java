@@ -1,27 +1,36 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public class uqg
-  extends tjd
+class uqg
+  implements View.OnTouchListener
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public String b;
+  uqg(uqe paramuqe) {}
   
-  public uqg(ErrorMessage paramErrorMessage, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "GetVideoListEvent{mVideoItems=" + this.jdField_a_of_type_JavaUtilList.size() + ", feedId=" + this.jdField_a_of_type_JavaLangString + ", mUnionId=" + this.b + '}' + super.toString();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (uqe.a(this.a)) {
+        break label105;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(uqe.a(this.a), uqe.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, uqe.a(this.a).jdField_a_of_type_Boolean);
+      uqe.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      uqe.a(paramView, bool);
+      return false;
+    }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 

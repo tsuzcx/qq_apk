@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-
 public class aial
-  implements axls
 {
-  public aial(CameraFilterGLView paramCameraFilterGLView) {}
-  
-  public void a()
-  {
-    CameraFilterGLView.b(this.a);
-  }
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

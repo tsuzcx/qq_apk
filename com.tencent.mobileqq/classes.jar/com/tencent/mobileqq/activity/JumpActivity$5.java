@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abkb;
+import abjx;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import aqbc;
-import axqw;
-import axrk;
-import bcwv;
+import aqbe;
+import axqy;
+import axrm;
+import bcxk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.QSecFramework;
@@ -26,15 +26,15 @@ class JumpActivity$5
     Object localObject1 = this.this$0.getIntent().getType();
     Object localObject3 = this.a.getString("pkg_name");
     if (QSecFramework.a().a(1003).booleanValue()) {
-      bcwv.a().a(this.this$0, null);
+      bcxk.a().a(this.this$0, null);
     }
     if ("cn.wps.moffice_eng".equals(localObject3)) {
-      axqw.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+      axqy.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    axrk.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
+    axrm.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "forward form JumpActivity doShare type=" + (String)localObject1);
     }
@@ -63,7 +63,7 @@ class JumpActivity$5
       ((Intent)localObject1).putExtra("forward_from_jump", true);
       ((Intent)localObject1).putExtra("forward_type", -2);
       ((Intent)localObject1).setData(this.this$0.getIntent().getData());
-      aqbc.a(this.this$0, (Intent)localObject1);
+      aqbe.a(this.this$0, (Intent)localObject1);
       this.this$0.finish();
       return;
       if (!((String)localObject1).startsWith("message")) {
@@ -137,7 +137,7 @@ class JumpActivity$5
           {
             ((Intent)localObject2).putExtra("sendMultiple", false);
             ((Intent)localObject2).putExtras(this.a);
-            new abkb(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
+            new abjx(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
             return;
           }
           localObject1 = JumpActivity.a(this.this$0, (Uri)localObject3);
@@ -155,7 +155,7 @@ class JumpActivity$5
     for (;;)
     {
       ((Intent)localObject2).putExtras(this.a);
-      aqbc.a(this.this$0, (Intent)localObject2);
+      aqbe.a(this.this$0, (Intent)localObject2);
       break;
       if ((localObject3 instanceof String))
       {

@@ -1,20 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class adrf
-  implements aput
+  implements apuv
 {
-  adrf(adqy paramadqy) {}
+  adrf(adqw paramadqw) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("device_info", ((yak)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-    bhvv.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
+    paramView = new Bundle();
+    paramView.putString(bbrk.e, "QQ会员");
+    paramView.putString(bbrk.f, "LTMCLUB");
+    paramView.putString(bbrk.d, "1450000515");
+    paramView.putInt(bbrk.b, 3);
+    paramView.putString(bbrk.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramView.putString(bbrk.i, bbwn.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    bbrk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import ajyc;
+import ajya;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -11,9 +11,9 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcxm;
-import bdht;
-import bdid;
+import bcyb;
+import bdii;
+import bdis;
 
 class MyAppApi$YYBDownloadListener$1$1
   implements Runnable
@@ -22,29 +22,29 @@ class MyAppApi$YYBDownloadListener$1$1
   
   public void run()
   {
-    if (bcxm.a().a() != null)
+    if (bcyb.a().a() != null)
     {
       Object localObject1 = new DisplayMetrics();
-      ((WindowManager)bcxm.a().a().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
+      ((WindowManager)bcyb.a().a().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
       int i = ((DisplayMetrics)localObject1).widthPixels;
       float f = ((DisplayMetrics)localObject1).density;
       Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      localObject1 = new RelativeLayout(bcxm.a().a());
+      localObject1 = new RelativeLayout(bcyb.a().a());
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((RelativeLayout)localObject1).setBackgroundColor(-855638017);
       ((RelativeLayout)localObject1).setGravity(17);
       ((RelativeLayout)localObject1).setPadding((int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F));
-      localObject2 = new TextView(bcxm.a().a());
+      localObject2 = new TextView(bcyb.a().a());
       ((TextView)localObject2).setWidth((int)(i * 0.9D));
       ((TextView)localObject2).setHeight((int)(96.0F * f + 0.5F));
-      ((TextView)localObject2).setBackgroundColor(bcxm.a().a().getResources().getColor(2131167087));
-      ((TextView)localObject2).setText(2131720333);
-      ((TextView)localObject2).setTextColor(bcxm.a().a().getResources().getColor(2131165275));
+      ((TextView)localObject2).setBackgroundColor(bcyb.a().a().getResources().getColor(2131167087));
+      ((TextView)localObject2).setText(2131720344);
+      ((TextView)localObject2).setTextColor(bcyb.a().a().getResources().getColor(2131165275));
       ((TextView)localObject2).setSingleLine();
       ((TextView)localObject2).setGravity(17);
       ((RelativeLayout)localObject1).addView((View)localObject2);
-      bdid.a().a((View)localObject1, 1);
-      bdht.c("MyAppApi", ajyc.a(2131707045) + System.currentTimeMillis());
+      bdis.a().a((View)localObject1, 1);
+      bdii.c("MyAppApi", ajya.a(2131707056) + System.currentTimeMillis());
     }
   }
 }

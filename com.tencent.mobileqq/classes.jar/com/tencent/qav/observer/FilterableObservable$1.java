@@ -1,16 +1,16 @@
 package com.tencent.qav.observer;
 
-import bdsb;
-import bdsc;
+import bdsq;
+import bdsr;
 
 public class FilterableObservable$1
   implements Runnable
 {
-  public FilterableObservable$1(bdsb parambdsb, bdsc parambdsc, int paramInt, Object[] paramArrayOfObject) {}
+  public FilterableObservable$1(bdsq parambdsq, bdsr parambdsr, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bdsc.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Bdsr.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

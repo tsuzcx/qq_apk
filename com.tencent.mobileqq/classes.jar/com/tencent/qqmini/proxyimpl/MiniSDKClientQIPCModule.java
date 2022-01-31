@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Bundle;
-import begw;
-import begy;
-import bepo;
-import bepv;
-import beru;
+import behn;
+import behp;
+import beqf;
+import beqm;
 import besl;
+import betc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -40,11 +40,11 @@ public class MiniSDKClientQIPCModule
   
   private void onShareCallback(boolean paramBoolean)
   {
-    Object localObject = bepo.a().a();
+    Object localObject = beqf.a().a();
     if (localObject == null) {}
-    begw localbegw;
-    begy localbegy;
-    beru localberu;
+    behn localbehn;
+    behp localbehp;
+    besl localbesl;
     do
     {
       do
@@ -52,29 +52,29 @@ public class MiniSDKClientQIPCModule
         do
         {
           return;
-          localbegw = ((bepv)localObject).getRuntime();
-        } while (localbegw == null);
-        localbegy = localbegw.a();
-      } while (localbegy == null);
-      localberu = localbegw.a();
-    } while (localberu == null);
+          localbehn = ((beqm)localObject).getRuntime();
+        } while (localbehn == null);
+        localbehp = localbehn.a();
+      } while (localbehp == null);
+      localbesl = localbehn.a();
+    } while (localbesl == null);
     if (paramBoolean)
     {
-      localObject = ApiUtil.wrapCallbackOk(localberu.a, null);
+      localObject = ApiUtil.wrapCallbackOk(localbesl.a, null);
       if (localObject != null) {}
       for (localObject = ((JSONObject)localObject).toString();; localObject = "")
       {
-        localbegy.a(localberu.c, (String)localObject);
-        ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbegw));
+        localbehp.a(localbesl.c, (String)localObject);
+        ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.1(this, localbehn));
         return;
       }
     }
-    localObject = ApiUtil.wrapCallbackFail(localberu.a, null);
+    localObject = ApiUtil.wrapCallbackFail(localbesl.a, null);
     if (localObject != null) {}
     for (localObject = ((JSONObject)localObject).toString();; localObject = "")
     {
-      localbegy.a(localberu.c, (String)localObject);
-      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbegw));
+      localbehp.a(localbesl.c, (String)localObject);
+      ThreadManager.getSubThreadHandler().post(new MiniSDKClientQIPCModule.2(this, localbehn));
       return;
     }
   }
@@ -89,7 +89,7 @@ public class MiniSDKClientQIPCModule
     }
     catch (Exception localException)
     {
-      besl.d("MiniSDKClientQIPCModule", "register ipc module error.", localException);
+      betc.d("MiniSDKClientQIPCModule", "register ipc module error.", localException);
     }
   }
   
@@ -106,8 +106,8 @@ public class MiniSDKClientQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (besl.a()) {
-      besl.a("MiniSDKClientQIPCModule", "onCall main server action=" + paramString);
+    if (betc.a()) {
+      betc.a("MiniSDKClientQIPCModule", "onCall main server action=" + paramString);
     }
     if ("action_sync_unreadcount".equals(paramString)) {}
     for (;;)

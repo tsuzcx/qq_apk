@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
-import ayrs;
+import ayru;
 
 public abstract class HttpInterfaceForTVK
 {
   public static int downLoadFileSync(String paramString1, String paramString2)
   {
-    return new ayrs().a(paramString1, paramString2);
+    return new ayru().a(paramString1, paramString2);
   }
 }
 

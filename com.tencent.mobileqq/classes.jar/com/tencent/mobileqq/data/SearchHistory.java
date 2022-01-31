@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class SearchHistory
-  extends aukm
+  extends auko
 {
   public int count;
   public String displayName;
   public String extralInfo;
-  @auma
+  @aumc
   public String key;
   public long time;
   public String troopUin;

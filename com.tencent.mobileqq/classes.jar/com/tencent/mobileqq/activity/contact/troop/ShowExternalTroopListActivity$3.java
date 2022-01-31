@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajxn;
+import ajxl;
 import android.widget.TextView;
-import bbcl;
+import bbcz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
@@ -13,8 +13,8 @@ class ShowExternalTroopListActivity$3
   
   public void run()
   {
-    String str = bbcl.a(this.this$0.app, this.this$0.a);
-    Card localCard = ((ajxn)this.this$0.app.getManager(51)).b(this.this$0.a);
+    String str = bbcz.a(this.this$0.app, this.this$0.a);
+    Card localCard = ((ajxl)this.this$0.app.getManager(51)).b(this.this$0.a);
     this.this$0.runOnUiThread(new ShowExternalTroopListActivity.3.1(this, str, localCard));
   }
 }

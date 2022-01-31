@@ -1,27 +1,13 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
 class bjfn
-  implements bfob
+  implements avtm
 {
-  int jdField_a_of_type_Int = 0;
+  bjfn(bjfl parambjfl, boolean paramBoolean) {}
   
-  bjfn(bjfm parambjfm) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1) {
-      bfmr.b(this.jdField_a_of_type_Bjfm.h);
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Bjfm.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Bjfm.a.size())) {
-      return;
-    }
-    bjfm.a(this.jdField_a_of_type_Bjfm);
+    SosoInterface.a(new bjfo(this, "NewStoryTakeVideoActivity"));
   }
 }
 

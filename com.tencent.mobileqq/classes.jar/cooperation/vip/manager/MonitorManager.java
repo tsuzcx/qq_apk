@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bhzl;
+import biac;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -108,7 +108,7 @@ public class MonitorManager
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      bhzl.a(localArrayList);
+      biac.a(localArrayList);
       return;
     }
   }
@@ -130,7 +130,7 @@ public class MonitorManager
     localTraceReport.page_id.set(str);
     paramString1 = new ArrayList();
     paramString1.add(localTraceReport);
-    bhzl.b(paramString1);
+    biac.b(paramString1);
   }
   
   private void b(int paramInt1, int paramInt2, String arg3, boolean paramBoolean)

@@ -1,24 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nkd
-  implements ValueAnimator.AnimatorUpdateListener
+class nkd
+  implements DialogInterface.OnClickListener
 {
-  public nkd(VideoCoverView paramVideoCoverView) {}
+  nkd(nkb paramnkb, JsResult paramJsResult) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.setRotation(90.0F * f1);
-    float f2 = VideoCoverView.c(this.a) * 1.0F / VideoCoverView.d(this.a);
-    this.a.setScaleX((f2 - 1.0F) * f1 + 1.0F);
-    this.a.setScaleY(f1 * 0.7774618F + 1.0F);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     nkd
  * JD-Core Version:    0.7.0.1
  */

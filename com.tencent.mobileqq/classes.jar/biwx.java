@@ -1,17 +1,26 @@
-import android.graphics.Bitmap;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class biwx
-  implements biyk
+public abstract interface biwx
 {
-  public biwx(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public void a(int paramInt) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void a(Bitmap paramBitmap)
-  {
-    AETakeFacePhotoPreviewFragment.a(biqf.a(this.a.getActivity(), paramBitmap));
-  }
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

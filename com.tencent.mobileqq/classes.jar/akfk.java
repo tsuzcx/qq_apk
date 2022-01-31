@@ -1,7 +1,22 @@
 public class akfk
+  implements ajte
 {
-  public int a;
-  public long a;
+  public void a(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    }
+    b(paramBoolean);
+  }
 }
 
 

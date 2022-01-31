@@ -1,49 +1,19 @@
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import java.util.List;
 
 public class acoc
-  extends ajxl
+  extends aimt
 {
-  public acoc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.a(2131719315, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131691489, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  private acoc(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 

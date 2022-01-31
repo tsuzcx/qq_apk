@@ -1,27 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class adrd
-  implements DialogInterface.OnClickListener
+  implements apuv
 {
-  adrd(adrb paramadrb) {}
+  adrd(adqw paramadqw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!bbev.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
-      bdid.a().a(2131691557);
-    }
-    do
-    {
-      return;
-      paramDialogInterface = (yak)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
-      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-    } while (paramDialogInterface == null);
-    ymw.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
+    paramView = new Intent();
+    paramView.putExtra("device_info", ((yah)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+    bhwm.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
   }
 }
 

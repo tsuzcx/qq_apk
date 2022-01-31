@@ -1,8 +1,6 @@
-import com.tencent.widget.ScrollView;
-
 public abstract interface bfux
 {
-  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
+  public abstract void a(bfuw parambfuw);
 }
 
 

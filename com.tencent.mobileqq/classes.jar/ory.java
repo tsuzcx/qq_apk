@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ory
-  extends BroadcastReceiver
+public abstract interface ory
 {
-  public ory(KandianMergeManager paramKandianMergeManager) {}
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = osj.a().a();
-    if (paramContext != null) {
-      paramContext.a();
-    }
-  }
+  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(MessageRecord paramMessageRecord);
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajyc;
+import ajya;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import bemw;
+import benn;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -76,7 +76,7 @@ public class UIJsPlugin
   private Rect menuButtonRect = new Rect(267, 34, 347, 64);
   private int menuButtonWidth = 80;
   private MutiPickerView mutiPickerView;
-  private bemw toast;
+  private benn toast;
   private ToastView toastView;
   
   private String getMenuButtonDefaultValue()
@@ -243,9 +243,9 @@ public class UIJsPlugin
               localObject5 = localJSONObject5.optString("title", "");
               localObject6 = localJSONObject5.optString("content", "");
               bool = localJSONObject5.optBoolean("showCancel", true);
-              localObject7 = localJSONObject5.optString("cancelText", ajyc.a(2131715853));
+              localObject7 = localJSONObject5.optString("cancelText", ajya.a(2131715864));
               localObject8 = localJSONObject5.optString("cancelColor", "#000000");
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", ajyc.a(2131715852)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", ajya.a(2131715863)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
             }
             catch (JSONException localJSONException5)
             {

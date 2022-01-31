@@ -1,27 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
-final class tvp
-  extends SimpleJob<Object>
+public class tvp
+  implements View.OnTouchListener
 {
-  tvp(String paramString, sti paramsti, String[] paramArrayOfString, int paramInt, tvq paramtvq, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    super(paramString);
-  }
+  float jdField_a_of_type_Float = -1.0F;
+  float b = -1.0F;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public tvp(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramJobContext = this.jdField_a_of_type_Sti.a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bfng.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      return false;
     }
-    tvk.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Tvq);
-    return null;
+    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+      vei.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+    }
+    this.jdField_a_of_type_Float = -1.0F;
+    this.b = -1.0F;
+    return false;
   }
 }
 

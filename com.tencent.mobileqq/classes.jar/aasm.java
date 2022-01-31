@@ -1,48 +1,36 @@
-import com.tencent.mobileqq.data.TencentDocData;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
 
 class aasm
-  implements Comparator<Object>
+  implements aptw
 {
-  aasm(aasl paramaasl) {}
+  aasm(aask paramaask, FileManagerEntity paramFileManagerEntity) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void a()
   {
-    if ((paramObject1 instanceof FileManagerEntity)) {
-      if ((paramObject2 instanceof FileManagerEntity)) {
-        if (((FileManagerEntity)paramObject1).srvTime <= ((FileManagerEntity)paramObject2).srvTime) {}
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Aask.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
+    ajum localajum;
+    ArrayList localArrayList;
     do
     {
-      do
-      {
-        do
-        {
-          return -1;
-          return 1;
-          if (!(paramObject2 instanceof TencentDocData)) {
-            break;
-          }
-        } while (((FileManagerEntity)paramObject1).srvTime > ((TencentDocData)paramObject2).aioTime);
-        return 1;
-        if (!(paramObject1 instanceof TencentDocData)) {
-          break label124;
-        }
-        if (!(paramObject2 instanceof FileManagerEntity)) {
-          break;
-        }
-      } while (((TencentDocData)paramObject1).aioTime > ((FileManagerEntity)paramObject2).srvTime);
-      return 1;
-      if (!(paramObject2 instanceof TencentDocData)) {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
         break;
       }
-    } while (((TencentDocData)paramObject1).aioTime > ((TencentDocData)paramObject2).aioTime);
-    return 1;
-    label124:
-    return 0;
+      localajum = (ajum)this.jdField_a_of_type_Aask.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localajum.a(localArrayList));
+    aptx.a(2131692665);
+    return;
+    this.jdField_a_of_type_Aask.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

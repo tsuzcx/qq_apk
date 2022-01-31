@@ -1,13 +1,27 @@
-import com.tencent.ad.tangram.net.AdHttp.Params;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-class zaw
-  extends AdHttp.Params
+public class zaw
+  implements TextView.OnEditorActionListener
 {
-  public int a = -2147483648;
+  public zaw(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public boolean isSuccess()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return (super.isSuccess()) && (this.responseData != null);
+    if (paramInt == 6)
+    {
+      yxp.b("GdtFormItemTextBoxView", "onEditorActionDone " + GdtFormItemTextBoxView.b(this.a));
+      GdtFormItemTextBoxView.a(this.a).clearFocus();
+      GdtFormItemTextBoxView.a(paramTextView);
+    }
+    for (;;)
+    {
+      return false;
+      yxp.b("GdtFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtFormItemTextBoxView.c(this.a));
+    }
   }
 }
 

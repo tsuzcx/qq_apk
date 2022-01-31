@@ -1,161 +1,274 @@
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_0xdea.GetBarrageListReqBody;
+import tencent.im.oidb.oidb_0xdea.GetBarrageListRspBody;
+import tencent.im.oidb.oidb_0xdea.ReqBody;
+import tencent.im.oidb.oidb_0xdea.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class amlc
-  extends QIPCModule
-  implements amlb
+  extends MSFServlet
 {
-  private static volatile amlc a;
-  
-  public amlc()
+  private oidb_0xdea.GetBarrageListRspBody a(FromServiceMsg paramFromServiceMsg)
   {
-    super("DanmuDataIPCServer");
-  }
-  
-  public static amlc a()
-  {
-    if (a == null) {}
+    Object localObject = paramFromServiceMsg.getWupBuffer();
+    if ((localObject == null) || (localObject.length == 0)) {
+      return null;
+    }
+    paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+    localObject = ByteBuffer.wrap((byte[])localObject);
+    byte[] arrayOfByte = new byte[((ByteBuffer)localObject).getInt() - 4];
+    ((ByteBuffer)localObject).get(arrayOfByte);
     try
     {
-      if (a == null) {
-        a = new amlc();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  private static long[] a(List<Long> paramList)
-  {
-    long[] arrayOfLong = new long[paramList.size()];
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
-    {
-      arrayOfLong[i] = ((Long)paramList.next()).longValue();
-      i += 1;
-    }
-    return arrayOfLong;
-  }
-  
-  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3, SpannableString paramSpannableString)
-  {
-    QLog.d("DanmuDataIPCServer", 1, "notifyDanmuSendResult");
-    String str;
-    if (paramSpannableString != null)
-    {
-      str = paramSpannableString.toString();
-      if ((paramString1.length() > str.length()) && (paramString1.startsWith(str)))
+      paramFromServiceMsg.mergeFrom(arrayOfByte);
+      int i = paramFromServiceMsg.uint32_result.get();
+      localObject = paramFromServiceMsg.str_error_msg.get();
+      if (QLog.isColorLevel())
       {
-        paramSpannableString = paramString1.substring(paramSpannableString.length());
-        if (!TextUtils.isEmpty(paramSpannableString)) {
-          paramString1 = paramSpannableString;
-        }
+        localObject = " oidbHeader: " + i + " errorStr: " + (String)localObject;
+        QLog.d("DanmuDataHolder", 2, "parseDanmuRspBody, errorStr:" + (String)localObject);
+      }
+      paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+      return null;
+    }
+    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+    {
+      try
+      {
+        localObject = new oidb_0xdea.RspBody();
+        ((oidb_0xdea.RspBody)localObject).mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = (oidb_0xdea.GetBarrageListRspBody)((oidb_0xdea.RspBody)localObject).get_barrage_list_rsp.get();
+        return paramFromServiceMsg;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.d("DanmuDataHolder", 1, "parseDanmuRspBody, e: " + paramFromServiceMsg);
+      }
+      paramFromServiceMsg = paramFromServiceMsg;
+      QLog.d("DanmuDataHolder", 1, "parseDanmuRspBody: mergeFrom:" + paramFromServiceMsg);
+      return null;
+    }
+  }
+  
+  private void a(amkw paramamkw, oidb_0xdea.GetBarrageListRspBody paramGetBarrageListRspBody)
+  {
+    int i = paramGetBarrageListRspBody.int32_ret_code.get();
+    String str1 = paramGetBarrageListRspBody.str_err_msg.get();
+    String str2 = paramGetBarrageListRspBody.str_wording.get();
+    boolean bool = paramGetBarrageListRspBody.bool_is_end.get();
+    int j = paramGetBarrageListRspBody.uint32_total_count.get();
+    int k = paramGetBarrageListRspBody.uint32_next_start_index.get();
+    List localList1 = paramGetBarrageListRspBody.rpt_comment_list.get();
+    List localList2 = paramGetBarrageListRspBody.rpt_recall_del_seq_list.get();
+    int m = paramGetBarrageListRspBody.uint32_last_update_time.get();
+    int n = paramGetBarrageListRspBody.uint32_time_interval.get();
+    if (QLog.isColorLevel())
+    {
+      paramGetBarrageListRspBody = "lastUpdateTime:" + m + ", intervalTime:" + n + ", retCode:" + i + ", errInfo:" + str1 + ", errInfoShow:" + str2 + ", isFinish:" + bool + ", totalCount:" + j + ", nextStartIdx:" + k + ", danmuItemListSize:" + localList1.size() + ", recallDeleteList:" + localList2.toString();
+      QLog.d("DanmuDataHolder", 2, "handleDanmuRspPack barrInfo:" + paramGetBarrageListRspBody);
+    }
+    paramamkw.a(amkv.a().a(localList1, paramamkw.jdField_a_of_type_Amku.b)).b(localList2).a(m).b(n).c(k).a(bool).a();
+  }
+  
+  void a(amkw paramamkw)
+  {
+    if (paramamkw == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataHolder", 2, "request called, reqHolder null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DanmuDataHolder", 2, "request called, param:" + paramamkw.a());
+    }
+    Object localObject = new oidb_0xdea.GetBarrageListReqBody();
+    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint64_group_code.set(paramamkw.jdField_a_of_type_Amku.b);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint64_barrage_seq.set(paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Long);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_last_update_time.set(paramamkw.jdField_a_of_type_Int);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_start_index.set(paramamkw.e);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_barrage_count.set(paramamkw.f);
+    int i;
+    if ((paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int == 2) || (paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int == 4))
+    {
+      i = 1;
+      if (i == 0) {
+        break label327;
+      }
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_start_time.set(paramamkw.jdField_c_of_type_Int);
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_end_time.set(paramamkw.jdField_d_of_type_Int);
+      label180:
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).terminal.set(0);
+      switch (paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int)
+      {
       }
     }
     for (;;)
     {
-      paramSpannableString = (QQAppInterface)bizu.a();
-      str = bbcl.h(paramSpannableString, String.valueOf(paramString2), paramSpannableString.getAccount());
-      paramString1 = new DanmuItemBean(Long.parseLong(paramSpannableString.c()), 0L, paramLong1, paramLong2, paramString1, str);
-      paramString1.jdField_a_of_type_Boolean = mye.a().a(paramString2);
-      if (paramString1.jdField_a_of_type_Boolean)
+      oidb_0xdea.ReqBody localReqBody = new oidb_0xdea.ReqBody();
+      localReqBody.get_barrage_list_req.set((MessageMicro)localObject);
+      localObject = amkv.a().a();
+      NewIntent localNewIntent = new NewIntent(((QQAppInterface)localObject).getApp(), amlc.class);
+      localNewIntent.putExtra("KEY_SEND_DATA", localReqBody.toByteArray());
+      localNewIntent.putExtra("KEY_GROUP_UIN", paramamkw.jdField_a_of_type_Amku.b);
+      localNewIntent.putExtra("KEY_TOPIC_UIN", paramamkw.jdField_a_of_type_Amku.jdField_a_of_type_Long);
+      ((QQAppInterface)localObject).startServlet(localNewIntent);
+      return;
+      i = 0;
+      break;
+      label327:
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_start_time.set(0);
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).uint32_video_end_time.set(0);
+      break label180;
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(4);
+      continue;
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(3);
+      continue;
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(2);
+      continue;
+      ((oidb_0xdea.GetBarrageListReqBody)localObject).entrance.set(1);
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("DanmuDataHolder", 2, "onReceive:" + paramFromServiceMsg);
+    }
+    int i = paramFromServiceMsg.getResultCode();
+    long l1 = paramIntent.getLongExtra("KEY_TOPIC_UIN", 0L);
+    long l2 = paramIntent.getLongExtra("KEY_GROUP_UIN", 0L);
+    if ((l1 == 0L) || (l2 == 0L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataHolder", 2, "onReceive, topicUin:0, groupUin:0");
+      }
+      if (i == 1000) {}
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DanmuDataIPCServer", 2, "notifyDanmuSendResult, anonymousFlag true");
+        amle.a(bool1, i, -1, false, "onReceive, topicUin:0, groupUin:0");
+        return;
+        bool1 = false;
+      }
+    }
+    paramIntent = amkv.a().a(l2, l1);
+    amkw localamkw = amkv.a().a(paramIntent);
+    if (localamkw == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DanmuDataHolder", 2, "onReceive, holder null");
+      }
+      if (i == 1000) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        amle.a(bool1, i, -1, false, "onReceive, holder null");
+        return;
+      }
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      paramIntent = a(paramFromServiceMsg);
+      if (paramIntent != null) {
+        a(localamkw, paramIntent);
+      }
+    }
+    for (bool1 = true;; bool1 = false)
+    {
+      if (i == 1000)
+      {
+        bool2 = true;
+        int j = localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Int;
+        if (!bool1) {
+          break label379;
         }
-        paramSpannableString = mye.a().a(paramString2);
-        paramString1.c = paramSpannableString.jdField_a_of_type_JavaLangString;
-        paramString1.jdField_a_of_type_Int = paramSpannableString.jdField_a_of_type_Int;
+        paramIntent = "DanmuRsp Valid";
+        label246:
+        amle.a(bool2, i, j, bool1, paramIntent);
+        if (!bool1) {
+          break label395;
+        }
+        paramFromServiceMsg = localamkw.jdField_a_of_type_Amla;
+        amku localamku = localamkw.jdField_a_of_type_Amku;
+        bool2 = localamkw.jdField_a_of_type_Boolean;
+        i = localamkw.b;
+        if (!localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Boolean) {
+          break label386;
+        }
+        paramIntent = localamkw.jdField_c_of_type_JavaUtilList;
+        label305:
+        paramFromServiceMsg.a(localamku, true, bool2, i, (ArrayList)paramIntent, localamkw.jdField_a_of_type_JavaUtilList);
+        localamkw.jdField_a_of_type_Amku.jdField_a_of_type_Boolean = true;
       }
-      paramSpannableString = new Bundle();
-      paramSpannableString.putParcelable("key_barrage_danmu_msg", paramString1);
-      paramSpannableString.putLong("key_barrage_msg_seq", paramLong3);
-      paramSpannableString.putString("key_barrage_grp_uin", paramString2);
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_send_barrage", paramSpannableString, null);
-      return;
-    }
-  }
-  
-  public void a(amkv paramamkv, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList)
-  {
-    QLog.d("DanmuDataIPCServer", 1, new Object[] { "onDanmuPullResult, isPullEnd:", Boolean.valueOf(paramBoolean2) });
-    if (paramamkv == null)
-    {
-      QLog.d("DanmuDataIPCServer", 1, "onDanmuPullResult fail, pullContext is null");
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("key_barrage_msg_seq", paramamkv.jdField_a_of_type_Long);
-    localBundle.putLong("key_barrage_grp_uin", paramamkv.b);
-    localBundle.putInt("key_barrage_topic_type", paramamkv.jdField_a_of_type_Int);
-    localBundle.putInt("key_barrage_interval_time", paramInt);
-    localBundle.putBoolean("key_barrage_is_success", paramBoolean1);
-    if (paramamkv.c > 0L)
-    {
-      localBundle.putLong("key_barrage_req_time", paramamkv.c);
-      localBundle.putLong("key_barrage_net_req_time", paramamkv.d);
-      localBundle.putLong("key_barrage_net_response_time", System.currentTimeMillis());
-      paramamkv.c = -1L;
-    }
-    if (paramArrayList != null) {
-      localBundle.putParcelableArrayList("key_barrage_danmu_list", paramArrayList);
-    }
-    if (paramList != null) {
-      localBundle.putLongArray("key_barrage_del_seq_list", a(paramList));
-    }
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "DanmuDataIPCClient", "qipc_action_get_barrage_result", localBundle, null);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    long l1;
-    long l2;
-    int i;
-    boolean bool;
-    if ("qipc_action_get_barrage".equals(paramString))
-    {
-      l1 = paramBundle.getLong("key_barrage_msg_seq");
-      l2 = paramBundle.getLong("key_barrage_grp_uin");
-      i = paramBundle.getInt("key_barrage_topic_type");
-      bool = paramBundle.getBoolean("key_barrage_is_update");
-      QLog.d("DanmuDataIPCServer", 1, new Object[] { "onCall, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
-      localObject = amkw.a().a(amkw.a().a(l2, l1));
-      if ((localObject != null) && (!((amkx)localObject).jdField_a_of_type_Boolean))
+      for (;;)
       {
-        QLog.d("DanmuDataIPCServer", 1, "filter duplicate request, continue pull is not completed");
-        paramString = new Bundle();
-        paramString.putBoolean("key_barrage_is_success", false);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
-        return null;
+        if ((!bool1) || (localamkw.jdField_a_of_type_Boolean)) {
+          break label424;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("DanmuDataHolder", 2, "onReceive, 没有结束，接力拉取");
+        }
+        a(localamkw);
+        return;
+        bool2 = false;
+        break;
+        label379:
+        paramIntent = "DanmuRsp Null";
+        break label246;
+        label386:
+        paramIntent = localamkw.jdField_d_of_type_JavaUtilList;
+        break label305;
+        label395:
+        localamkw.jdField_a_of_type_Amla.a(localamkw.jdField_a_of_type_Amku, false, localamkw.jdField_a_of_type_Boolean, localamkw.b, null, null);
       }
-      if (localObject != null) {
-        break label262;
-      }
+      label424:
+      break;
     }
-    label262:
-    for (Object localObject = new amkv(l2, l1, i, bool);; localObject = ((amkx)localObject).jdField_a_of_type_Amkv)
-    {
-      ((amkv)localObject).c = paramBundle.getLong("key_barrage_req_time");
-      ((amkv)localObject).d = System.currentTimeMillis();
-      ((amkv)localObject).jdField_a_of_type_Boolean = bool;
-      amkw.a().a((amkv)localObject, this);
-      callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
-      if ("qipc_action_clear_cache".equals(paramString)) {
-        amkw.a().a();
-      }
-      return null;
-    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getByteArrayExtra("KEY_SEND_DATA");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(3562);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent));
+    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
+    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    localObject = new byte[paramIntent.length + 4];
+    bbmx.a((byte[])localObject, 0, paramIntent.length + 4);
+    bbmx.a((byte[])localObject, 4, paramIntent, paramIntent.length);
+    paramPacket.setSSOCommand("OidbSvc.0xdea");
+    paramPacket.putSendData((byte[])localObject);
   }
 }
 

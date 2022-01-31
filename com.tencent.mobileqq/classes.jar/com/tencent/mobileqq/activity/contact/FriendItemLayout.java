@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact;
 
-import aiqn;
+import aiql;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
@@ -22,7 +22,7 @@ public class FriendItemLayout
 {
   private static int jdField_a_of_type_Int;
   private static Map<CharSequence, Integer> jdField_a_of_type_JavaUtilMap = new HashMap(5);
-  private aiqn jdField_a_of_type_Aiqn;
+  private aiql jdField_a_of_type_Aiql;
   
   public FriendItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,28 +36,28 @@ public class FriendItemLayout
   
   private void a()
   {
-    int j = ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.getLayoutParams()).leftMargin;
+    int j = ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.getLayoutParams()).leftMargin;
     int i = j;
     Object localObject;
-    if (this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.getVisibility() != 8)
+    if (this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.getVisibility() != 8)
     {
-      localObject = this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.a();
+      localObject = this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.a();
       if (jdField_a_of_type_JavaUtilMap.containsKey(localObject))
       {
         i = ((Integer)jdField_a_of_type_JavaUtilMap.get(localObject)).intValue();
-        this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setFixedWidth(i);
+        this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setFixedWidth(i);
         i = i + jdField_a_of_type_Int + j;
       }
     }
     else
     {
       j = i;
-      if (this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView != null)
+      if (this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView != null)
       {
         j = i;
-        if (this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.getVisibility() != 8)
+        if (this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.getVisibility() != 8)
         {
-          localObject = this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.a();
+          localObject = this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.a();
           if (!jdField_a_of_type_JavaUtilMap.containsKey(localObject)) {
             break label414;
           }
@@ -69,65 +69,65 @@ public class FriendItemLayout
     {
       j = i + (j + jdField_a_of_type_Int);
       i = j;
-      if (this.jdField_a_of_type_Aiqn.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 8)
+      if (this.jdField_a_of_type_Aiql.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 8)
       {
-        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).leftMargin = j;
         i = j + (((FrameLayout.LayoutParams)localObject).width + jdField_a_of_type_Int);
       }
       j = i;
-      if (this.jdField_a_of_type_Aiqn.c.getVisibility() != 8)
+      if (this.jdField_a_of_type_Aiql.c.getVisibility() != 8)
       {
-        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.c.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.c.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).leftMargin = i;
         j = i + (((FrameLayout.LayoutParams)localObject).width + jdField_a_of_type_Int);
       }
       i = j;
-      if (this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentImageURLImageView.getVisibility() != 8)
+      if (this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentImageURLImageView.getVisibility() != 8)
       {
-        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).leftMargin = j;
         i = j + (((FrameLayout.LayoutParams)localObject).width + jdField_a_of_type_Int);
       }
-      ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams()).leftMargin = i;
+      ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams()).leftMargin = i;
       i = getContext().getResources().getDimensionPixelSize(2131296677);
-      i = this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.a(this, this.jdField_a_of_type_Aiqn, i);
-      ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiqn.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams()).rightMargin = i;
+      i = this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView.a(this, this.jdField_a_of_type_Aiql, i);
+      ((FrameLayout.LayoutParams)this.jdField_a_of_type_Aiql.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams()).rightMargin = i;
       return;
-      i = (int)this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.a().measureText((CharSequence)localObject, 0, ((CharSequence)localObject).length());
+      i = (int)this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.a().measureText((CharSequence)localObject, 0, ((CharSequence)localObject).length());
       jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(i));
       break;
       label414:
-      j = this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.a();
+      j = this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.a();
       jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(j));
     }
   }
   
-  public aiqn a()
+  public aiql a()
   {
-    this.jdField_a_of_type_Aiqn = new aiqn();
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367679));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131377031));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)findViewById(2131378275));
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368700));
-    this.jdField_a_of_type_Aiqn.c = ((ImageView)findViewById(2131368658));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368660));
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131377033));
-    this.jdField_a_of_type_Aiqn.d = ((ImageView)findViewById(2131368709));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView = ((MutualMarkIconsView)findViewById(2131370602));
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368605));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370811));
-    this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView = ((OnlineStatusView)findViewById(2131365793));
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(RichStatus.sActionColor, 1);
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 1);
-    this.jdField_a_of_type_Aiqn.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(19);
-    if (this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView != null) {
-      this.jdField_a_of_type_Aiqn.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.setViewStyle(2);
+    this.jdField_a_of_type_Aiql = new aiql();
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367679));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131377033));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)findViewById(2131378278));
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368699));
+    this.jdField_a_of_type_Aiql.c = ((ImageView)findViewById(2131368657));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368659));
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131377035));
+    this.jdField_a_of_type_Aiql.d = ((ImageView)findViewById(2131368708));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqMutualmarkViewMutualMarkIconsView = ((MutualMarkIconsView)findViewById(2131370601));
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368604));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370811));
+    this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView = ((OnlineStatusView)findViewById(2131365792));
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(RichStatus.sActionColor, 1);
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 1);
+    this.jdField_a_of_type_Aiql.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(19);
+    if (this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView != null) {
+      this.jdField_a_of_type_Aiql.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusView.setViewStyle(2);
     }
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = getContext().getResources().getDimensionPixelSize(2131296685);
     }
-    return this.jdField_a_of_type_Aiqn;
+    return this.jdField_a_of_type_Aiql;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)

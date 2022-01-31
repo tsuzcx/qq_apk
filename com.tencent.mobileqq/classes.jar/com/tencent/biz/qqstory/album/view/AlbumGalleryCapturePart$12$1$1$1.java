@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.album.view;
 
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier;
+import srs;
 import srv;
-import sry;
-import srz;
+import srw;
 
 public class AlbumGalleryCapturePart$12$1$1$1
   implements Runnable
 {
-  public AlbumGalleryCapturePart$12$1$1$1(srz paramsrz) {}
+  public AlbumGalleryCapturePart$12$1$1$1(srw paramsrw) {}
   
   public void run()
   {
-    srv.a(this.a.a.a.a).b();
+    srs.a(this.a.a.a.a).b();
   }
 }
 

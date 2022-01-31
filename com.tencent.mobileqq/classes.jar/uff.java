@@ -1,30 +1,41 @@
 public class uff
 {
-  private int a = 0;
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
   
-  uff(int paramInt)
+  public uff()
   {
-    this.a = paramInt;
+    a();
   }
   
-  public static uff a(int paramInt)
+  private long b()
   {
-    return new uff(paramInt);
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
   }
   
-  public int a()
+  public double a()
   {
-    switch (this.a)
-    {
-    default: 
-      return this.a;
-    }
-    return 0;
+    return this.jdField_a_of_type_Double;
   }
   
-  public int b()
+  public long a()
   {
-    return this.a;
+    return b() - this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    return paramLong - a();
+  }
+  
+  public void a()
+  {
+    a(0L);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = (b() - paramLong);
   }
 }
 

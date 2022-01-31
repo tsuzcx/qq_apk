@@ -1,53 +1,66 @@
 import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahrs
-  implements TextWatcher
+  implements View.OnFocusChangeListener
 {
   public ahrs(LoginView paramLoginView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    LoginView.a(this.a, null);
-    LoginView.c(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    LoginView.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
-      }
-      LoginView.a(this.a, null);
-      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
-      do
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+      if (true == paramBoolean)
       {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
-        {
-          BaseApplicationImpl.sApplication.refreAccountList();
-          return;
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
+        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
+          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
         }
-        if ((!paramCharSequence.substring(0, LoginView.a(this.a).length()).equals(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
-          break;
+        if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
+          this.a.b.setVisibility(0);
         }
-        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
-      LoginView.c(this.a);
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+        if (!ahrc.a(ahrc.a)) {}
+      }
     }
-    LoginView.a(this.a, null);
+    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)
+    {
+      return;
+      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
+        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
+      }
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
+      return;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
+      paramView = new SpannableString(ajya.a(2131707573));
+      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
+      return;
+    }
+    if (true == paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
+      this.a.c.setVisibility(0);
+      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)) {
+        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText, 2);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint("");
+      return;
+    }
+    this.a.c.setVisibility(8);
+    paramView = new SpannableString(ajya.a(2131706365));
+    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint(paramView);
   }
 }
 

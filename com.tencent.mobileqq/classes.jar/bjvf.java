@@ -1,12 +1,13 @@
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+
 class bjvf
-  extends bkyu
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  bjvf(bjvc parambjvc) {}
+  bjvf(bjve parambjve) {}
   
-  public void a()
+  public void onScrollChanged()
   {
-    veg.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.b();
+    bjve.a(this.a);
   }
 }
 

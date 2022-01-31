@@ -1,46 +1,93 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader;
-
-public final class bfdf
-  implements bepw<FlutterRuntimeLoader>
+public abstract class bfdf
+  extends bfbl
+  implements bfdt
 {
-  public FlutterRuntimeLoader a(Context paramContext, Bundle paramBundle)
+  protected behq a;
+  public bfbm a;
+  public bfbq a;
+  public bfbm b;
+  public bfbq b;
+  public bfbm c;
+  public bfbq c;
+  public bfbm d;
+  public bfbq d;
+  public bfbq e = new bfbq(this, Integer.valueOf(6));
+  public bfbq f = new bfbq(this, Integer.valueOf(8));
+  public bfbq g = new bfbq(this, Integer.valueOf(10));
+  
+  public bfdf(behq parambehq)
   {
-    return new FlutterRuntimeLoader(paramContext);
+    this.jdField_a_of_type_Bfbq = new bfbq(this, Integer.valueOf(1));
+    this.jdField_b_of_type_Bfbq = new bfbq(this, Integer.valueOf(2));
+    this.jdField_c_of_type_Bfbq = new bfbq(this, Integer.valueOf(-1));
+    this.jdField_d_of_type_Bfbq = new bfbq(this, Integer.valueOf(4));
+    this.jdField_a_of_type_Bfbm = new bfbm(this, 3).a(this.jdField_d_of_type_Bfbq);
+    this.jdField_b_of_type_Bfbm = new bfbm(this, 5).a(this.e);
+    this.jdField_c_of_type_Bfbm = new bfbm(this, 7).a(this.f);
+    this.jdField_d_of_type_Bfbm = new bfbm(this, 9).a(this.g);
+    this.jdField_a_of_type_Behq = parambehq;
+    a();
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  protected void a()
   {
-    if ((bekd.a != null) && (!TextUtils.isEmpty(bekd.a.getNativeLibDir()))) {}
-    for (int i = 1; i != 0; i = 0) {
-      return true;
+    a(new bfbr(this).a(this.jdField_a_of_type_Bfbq).b(this.jdField_b_of_type_Bfbq).a(Integer.valueOf(3)));
+    a(new bfbr(this).a(this.jdField_b_of_type_Bfbq).b(this.jdField_a_of_type_Bfbm).a(Integer.valueOf(4)));
+    a(new bfbr(this).a(this.jdField_d_of_type_Bfbq).b(this.jdField_b_of_type_Bfbm).a(Integer.valueOf(5)));
+    a(new bfbr(this).a(this.e).b(this.jdField_c_of_type_Bfbm).a(Integer.valueOf(6)));
+    a(new bfbr(this).a(this.f).b(this.jdField_d_of_type_Bfbm).a(Integer.valueOf(7)));
+    a(this.jdField_a_of_type_Bfbq);
+  }
+  
+  public void a(bfbq parambfbq)
+  {
+    bfbq localbfbq = a();
+    if (localbfbq == this.jdField_b_of_type_Bfbm) {
+      bezi.a(this.jdField_a_of_type_Behq.a(), 14, "0");
     }
-    if (paramBundle != null) {
-      try
-      {
-        paramBundle = (String)paramBundle.get("tissuenativelibdir");
-        if (bekd.a == null) {
-          bekd.a = new bfdg(this, paramBundle);
-        }
-        boolean bool = TextUtils.isEmpty(bekd.a.getNativeLibDir());
-        if (!bool) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-        return false;
+    for (;;)
+    {
+      super.a(parambfbq);
+      return;
+      if (this.e == localbfbq) {
+        bezi.a(this.jdField_a_of_type_Behq.a(), 15, "0");
+      } else if (localbfbq == this.jdField_d_of_type_Bfbm) {
+        bezi.a(this.jdField_a_of_type_Behq.a(), 104, "0");
+      } else if (this.g == localbfbq) {
+        bezi.a(this.jdField_a_of_type_Behq.a(), 105, "0");
       }
-      catch (Throwable paramBundle) {}
     }
   }
   
-  public boolean a(MiniAppInfo paramMiniAppInfo)
+  public void a(String paramString)
   {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp()) && (paramMiniAppInfo.supportNativeRenderMode());
+    this.jdField_a_of_type_Bfbm.a(paramString);
+    b(Integer.valueOf(4));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_b_of_type_Bfbm.a(paramString1, paramString2);
+    b(Integer.valueOf(5));
+  }
+  
+  public boolean a()
+  {
+    return this.g == a();
+  }
+  
+  public abstract void b();
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_Bfbm.a(paramString);
+    b(Integer.valueOf(6));
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_d_of_type_Bfbm.a(paramString);
+    b(Integer.valueOf(7));
   }
 }
 

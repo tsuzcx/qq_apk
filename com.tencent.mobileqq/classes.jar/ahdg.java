@@ -1,21 +1,15 @@
-import Wallet.SetSelectedSkinRsp;
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class ahdg
-  implements BusinessObserver
+  implements acvf
 {
-  public ahdg(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
+  public ahdg(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketManager", 2, "setSelectedSkin2ServerIfChanged onReceive isSuccess:" + paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
 }
 

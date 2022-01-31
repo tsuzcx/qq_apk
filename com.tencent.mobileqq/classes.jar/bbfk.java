@@ -1,81 +1,524 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.5;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.6;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.7;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.8;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class bbfk
+  extends bbgu
 {
-  public static int a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private static long jdField_a_of_type_Long;
+  private static int jdField_b_of_type_Int = 3;
+  private static boolean jdField_c_of_type_Boolean;
+  private int jdField_a_of_type_Int = 1;
+  protected View.OnClickListener a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bdld jdField_a_of_type_Bdld;
+  public final WeakReference<Activity> a;
+  private boolean jdField_a_of_type_Boolean;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private boolean jdField_b_of_type_Boolean = true;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  private boolean jdField_d_of_type_Boolean;
+  TextView jdField_e_of_type_AndroidWidgetTextView;
+  private volatile boolean jdField_e_of_type_Boolean;
+  TextView f;
+  
+  public bbfk(Activity paramActivity)
   {
-    if (paramBoolean3) {
-      return 1;
+    super(paramActivity);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bbfo(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    requestWindowFeature(1);
+    paramActivity = new ColorDrawable();
+    paramActivity.setAlpha(0);
+    getWindow().setBackgroundDrawable(paramActivity);
+    setContentView(2131559346);
+    this.jdField_a_of_type_Bdld = new bbfp(this);
+    this.jdField_b_of_type_Boolean = bdkw.b();
+    bdle.a();
+    setOnKeyListener(new bbfl(this));
+    a();
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 1, 100));
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 2, 100));
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 3, 100));
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 4, 100));
+    bdfh.a().a(16, bdfj.a(10010, jdField_b_of_type_Int, 1, 100));
+    bdfh.a().a(16, bdfj.a(10010, jdField_b_of_type_Int, 2, 100));
+    bdfh.a().a(16, bdfj.a(10010, jdField_b_of_type_Int, 3, 100));
+    bdfh.a().a(16, bdfj.a(10010, jdField_b_of_type_Int, 4, 100));
+    if (jdField_b_of_type_Int == 2)
+    {
+      axqy.b(null, "dc00898", "", "", "0X8008F7F", "0X8008F7F", 0, 0, "", "", "", "");
+      return;
     }
-    if (paramBoolean2) {
-      return 2;
-    }
-    if (paramBoolean1) {
-      return 3;
-    }
-    return 4;
+    axqy.b(null, "dc00898", "", "", "0X8008F82", "0X8008F82", 0, 0, "", "", "", "");
   }
   
-  public static String a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, float paramFloat)
+  public static String a(double paramDouble, int paramInt)
   {
-    String str = "";
-    boolean bool1 = MediaPlayerManager.a(paramFloat);
-    boolean bool2 = MediaPlayerManager.a(paramFloat, MediaPlayerManager.b);
-    boolean bool3 = MediaPlayerManager.a(paramFloat, MediaPlayerManager.c);
-    if ((paramInt == 0) && (bool1)) {
-      if (bool3)
-      {
-        paramFloat = 2.0F;
-        if (!paramBoolean3) {
-          break label95;
-        }
-        str = ajyc.a(2131708213) + paramFloat + ajyc.a(2131708199);
-      }
-    }
-    label95:
-    do
+    int j = 0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramInt <= 0)
     {
-      do
+      localStringBuilder.append((int)Math.round(paramDouble));
+      return localStringBuilder.toString();
+    }
+    if ((paramInt == 1) && (paramDouble >= (int)paramDouble + 0.95D)) {
+      localStringBuilder.append((int)paramDouble + 1);
+    }
+    double d1;
+    for (;;)
+    {
+      localStringBuilder.append(".");
+      d1 = 1.0D;
+      i = 0;
+      while (i < paramInt)
       {
-        return str;
-        paramFloat = 1.5F;
-        break;
-        if (paramBoolean2) {
-          return ajyc.a(2131708225) + paramFloat + ajyc.a(2131708220);
-        }
-        if (paramBoolean1) {
-          return ajyc.a(2131708208) + paramFloat + ajyc.a(2131708207);
-        }
-        return ajyc.a(2131708198) + paramFloat + ajyc.a(2131708205);
-      } while (paramInt == 0);
-      str = ajyc.a(2131708214);
-      if (bool2) {
-        return "当前为1.5倍速播放";
+        d1 *= 10.0D;
+        i += 1;
       }
-    } while (!bool3);
-    return "当前为2倍速播放";
+      localStringBuilder.append((int)paramDouble);
+    }
+    paramDouble = Math.abs(Math.round((paramDouble - (int)paramDouble) * d1) / d1);
+    int i = j;
+    while (i < paramInt)
+    {
+      paramDouble *= 10.0D;
+      localStringBuilder.append((int)paramDouble % 10);
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
   
-  public static int b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public static String a(float paramFloat, boolean paramBoolean, int paramInt)
   {
-    int i = 0;
-    if (!AppSetting.d)
+    StringBuilder localStringBuilder = new StringBuilder(a(paramFloat / 1024.0F / 1024.0F, paramInt));
+    if (paramBoolean) {
+      return "MB";
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static void a()
+  {
+    jdField_c_of_type_Boolean = bbjm.a();
+    if (jdField_c_of_type_Boolean)
     {
-      if (paramBoolean3) {
-        i = 2131719783;
+      jdField_b_of_type_Int = 2;
+      return;
+    }
+    jdField_b_of_type_Int = 3;
+  }
+  
+  private void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.f.getPaint().setFakeBoldText(false);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      this.f.setText(ajya.a(2131707587));
+      return;
+    case 1: 
+    case 20: 
+      this.f.setText(ajya.a(2131707599));
+      return;
+    case 3: 
+      this.f.setText(ajya.a(2131707597));
+      return;
+    case 4: 
+      this.f.setText(ajya.a(2131707601));
+      return;
+    }
+    this.f.setText(ajya.a(2131707594));
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (System.currentTimeMillis() - jdField_a_of_type_Long <= 1000L) {
+      return false;
+    }
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    Object localObject1 = akuz.a().a();
+    if ((localObject1 == null) || (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_Akve == null))
+    {
+      bdis.a().a(ajya.a(2131707591));
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("sdkShowNotification", 0);
+    localBundle.putBoolean("showNetworkDialog", false);
+    localBundle.putString("appName", ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_Akve.jdField_a_of_type_JavaLangString);
+    localBundle.putString("url", ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
+    localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
+    Object localObject2 = String.valueOf(((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid);
+    localBundle.putString("appId", (String)localObject2);
+    localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
+    localBundle.putBoolean("autoInstall", true);
+    int j = ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_Akve.jdField_a_of_type_Int;
+    int i = j;
+    if (j == 999) {
+      i = 718;
+    }
+    localBundle.putInt("versionCode", i);
+    localBundle.putString("packageName", BaseApplicationImpl.getApplication().getPackageName());
+    localBundle.putInt("downloadType", 1);
+    localBundle.putBoolean("autoDownload", true);
+    localObject2 = bdle.a().a((String)localObject2);
+    localObject1 = "";
+    if (localObject2 != null) {
+      localObject1 = ((DownloadInfo)localObject2).l;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = new File((String)localObject1);
+      if ((localObject1 != null) && (((File)localObject1).exists()))
+      {
+        localBundle.putInt(bdlb.k, 5);
+        bdkx.a(localBundle, "biz_src_jc_update", akuz.a().a().jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+        return true;
+      }
+    }
+    if ((bdkw.h()) || (bdlr.a().g())) {
+      ThreadManager.getSubThreadHandler().post(new NewUpgradeDialog.7(paramActivity, localBundle));
+    }
+    for (;;)
+    {
+      return true;
+      UpgradeDetailActivity.a(paramActivity, akuz.a().a(), false, true, true);
+    }
+  }
+  
+  public static void b()
+  {
+    jdField_c_of_type_Boolean = true;
+    jdField_b_of_type_Int = 2;
+  }
+  
+  private void e()
+  {
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 3, 300));
+    bdfh.a().a(21, bdfj.a(10010, jdField_b_of_type_Int, 3, 300));
+    DownloadInfo localDownloadInfo = bdle.a().a("1101070898");
+    bdle.a().c(localDownloadInfo);
+  }
+  
+  private void f()
+  {
+    ThreadManager.getUIHandler().post(new NewUpgradeDialog.5(this));
+    i();
+    e();
+  }
+  
+  private void g()
+  {
+    this.jdField_b_of_type_Boolean = bdkw.b();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (!bdid.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
+        bdis.a().a(ajya.a(2131707586));
       }
     }
     else {
-      return i;
+      return;
     }
-    if (paramBoolean2) {
-      return 2131719785;
+    a(2);
+    bdle.a().a(bdle.a().a("1101070898"));
+  }
+  
+  private void h()
+  {
+    bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 3, 200));
+    bdfh.a().a(17, bdfj.a(10010, jdField_b_of_type_Int, 3, 200));
+    if (jdField_b_of_type_Int == 2) {
+      axqy.b(null, "dc00898", "", "", "0X8008F81", "0X8008F81", 0, 0, "", "", "", "");
     }
-    if (paramBoolean1) {
-      return 2131719787;
+    while (bdlr.a().b())
+    {
+      a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      dismiss();
+      ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
+      return;
+      axqy.b(null, "dc00898", "", "", "0X8008F84", "0X8008F84", 0, 0, "", "", "", "");
     }
-    return 2131719784;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    DownloadInfo localDownloadInfo = bdle.a().a("1101070898");
+    this.jdField_b_of_type_Boolean = bdkw.b();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (!bdid.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()))
+      {
+        bdis.a().a(ajya.a(2131707588));
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+        return;
+      }
+      if ((localDownloadInfo != null) && (localDownloadInfo.a() != 4)) {
+        a(localDownloadInfo.f, localDownloadInfo.a());
+      }
+      if ((localDownloadInfo == null) || (localDownloadInfo.a() == 1) || (localDownloadInfo.a() == 10) || (localDownloadInfo.a() == 3) || (localDownloadInfo.a() == 4))
+      {
+        bdii.b("NewUpgradeDialog", bdfj.a(10010, jdField_b_of_type_Int, 3, 500));
+        bdfh.a().a(18, bdfj.a(10010, jdField_b_of_type_Int, 3, 500));
+        bdlr.a().a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "ANDROIDQQ.NEWYYB.QQUPDATE", true);
+      }
+    }
+    for (;;)
+    {
+      bdle.a().a(this.jdField_a_of_type_Bdld);
+      return;
+      ThreadManager.post(new NewUpgradeDialog.6(this), 5, null, false);
+    }
+  }
+  
+  private void i()
+  {
+    int j = 0;
+    Object localObject = akuz.a().a();
+    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (((UpgradeDetailWrapper)localObject).jdField_a_of_type_Akve == null))
+    {
+      bdis.a().a(ajya.a(2131707596));
+      return;
+    }
+    int k = ((UpgradeDetailWrapper)localObject).jdField_a_of_type_Akve.jdField_a_of_type_Int;
+    int i = k;
+    if (k == 999) {
+      i = 718;
+    }
+    try
+    {
+      k = BaseActivity.sTopActivity.getPackageManager().getPackageInfo(BaseActivity.sTopActivity.getPackageName(), 0).versionCode;
+      j = k;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      for (;;)
+      {
+        Bundle localBundle;
+        localNameNotFoundException.printStackTrace();
+      }
+    }
+    localObject = "tmast://appdetails?r=0.9138136501079244&pname=com.tencent.mobileqq&oplist=1%3B2&via=ANDROIDQQ.NEWYYB.QQUPDATE&appid=" + ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid + "&versioncode=" + i + "&hostpname=" + BaseApplicationImpl.getApplication().getPackageName() + "&hostversioncode=" + j + "\"\n";
+    localBundle = new Bundle();
+    localBundle.putString("url", (String)localObject);
+    bdkx.a(localBundle);
+    bdkx.b(localBundle);
+    bdlr.a().a();
+    k();
+  }
+  
+  private void j()
+  {
+    this.f.getPaint().setFakeBoldText(true);
+    this.f.setText(ajya.a(2131707590));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  private void k()
+  {
+    UpgradeDetailWrapper localUpgradeDetailWrapper = akuz.a().a();
+    if ((localUpgradeDetailWrapper == null) || (localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (localUpgradeDetailWrapper.jdField_a_of_type_Akve == null))
+    {
+      bdis.a().a(ajya.a(2131707589));
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("sdkShowNotification", 0);
+    localBundle.putBoolean("showNetworkDialog", false);
+    localBundle.putString("appName", localUpgradeDetailWrapper.jdField_a_of_type_Akve.jdField_a_of_type_JavaLangString);
+    localBundle.putString("url", localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
+    localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
+    localBundle.putString("appId", String.valueOf(localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid));
+    localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
+    localBundle.putBoolean("autoInstall", true);
+    int j = localUpgradeDetailWrapper.jdField_a_of_type_Akve.jdField_a_of_type_Int;
+    int i = j;
+    if (j == 999) {
+      i = 718;
+    }
+    localBundle.putInt("versionCode", i);
+    localBundle.putString("packageName", "com.tencent.mobileqq");
+    localBundle.putInt("downloadType", 1);
+    localBundle.putBoolean("autoDownload", true);
+    ThreadManager.getSubThreadHandler().post(new NewUpgradeDialog.8(this, localBundle));
+  }
+  
+  public bbfk a(long paramLong)
+  {
+    String str = a((float)paramLong, true, 2);
+    if (!TextUtils.isEmpty(str)) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(ajya.a(2131707593) + str);
+    }
+    return this;
+  }
+  
+  public bbfk a(DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new bbfn(this, paramOnClickListener, paramBoolean));
+    return this;
+  }
+  
+  public bbfk a(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    return this;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = 100;
+    bdii.c("NewUpgradeDialog", "updateView--progress--" + paramInt1 + " state = " + paramInt2);
+    this.jdField_a_of_type_Int = paramInt2;
+    a(paramInt2);
+    if (paramInt2 == 4) {
+      paramInt1 = 100;
+    }
+    for (;;)
+    {
+      if (paramInt1 < 0)
+      {
+        this.jdField_a_of_type_Boolean = this.jdField_d_of_type_Boolean;
+        paramInt1 = 0;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt1);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+          return;
+          if (paramInt1 >= 100)
+          {
+            this.jdField_a_of_type_Boolean = false;
+            paramInt1 = i;
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+          return;
+        }
+      }
+    }
+  }
+  
+  public bbfk b(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    }
+    return this;
+  }
+  
+  public bbfk c(CharSequence paramCharSequence)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    }
+    paramCharSequence = new SpannableString("推荐使用\"省流升级\",通过QQ官方下载器\"应用宝\"升级,节省流量速度更快");
+    paramCharSequence.setSpan(new ForegroundColorSpan(Color.parseColor("#0099EE")), 21, 24, 17);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    return this;
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Boolean = bdkw.b();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (!bdid.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
+        bdis.a().a(ajya.a(2131707598));
+      }
+    }
+    else {
+      return;
+    }
+    a(3);
+    bdle.a().a("1101070898");
+  }
+  
+  public void d()
+  {
+    DownloadInfo localDownloadInfo = bdle.a().a("1101070898");
+    if ((localDownloadInfo != null) && (localDownloadInfo.a() == 2)) {
+      bdle.a().a("1101070898");
+    }
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Int != 2)
+      {
+        this.jdField_d_of_type_Boolean = false;
+        bdle.a().b(this.jdField_a_of_type_Bdld);
+        this.jdField_a_of_type_Bdld = null;
+      }
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365150));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378536));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365146));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378532));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365135));
+    this.f = ((TextView)findViewById(2131365141));
+    this.f.setVisibility(0);
+    this.f.getPaint().setFakeBoldText(true);
+    this.f.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371995));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367948));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bbfm(this));
   }
 }
 

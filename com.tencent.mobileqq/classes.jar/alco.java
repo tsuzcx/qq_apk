@@ -1,10 +1,8 @@
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Xml;
-import com.tencent.YTFace.cluster.FaceCluster;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ytcommon.util.YTCommonInterface;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.HashMap;
@@ -14,7 +12,6 @@ public class alco
 {
   private static final Object a;
   public static boolean a;
-  public static volatile boolean b;
   
   static
   {
@@ -25,229 +22,252 @@ public class alco
   public static byte a(String arg0)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: putstatic 21	alco:jdField_a_of_type_Boolean	Z
-    //   4: new 23	java/io/File
-    //   7: dup
-    //   8: invokestatic 26	alco:b	()Ljava/lang/String;
-    //   11: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: astore 4
-    //   16: aload 4
-    //   18: invokevirtual 33	java/io/File:exists	()Z
-    //   21: ifeq +40 -> 61
-    //   24: aload 4
-    //   26: invokestatic 38	apvb:a	(Ljava/io/File;)Z
-    //   29: istore_3
-    //   30: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   33: ifeq +28 -> 61
-    //   36: ldc 45
-    //   38: iconst_2
-    //   39: new 47	java/lang/StringBuilder
-    //   42: dup
-    //   43: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   46: ldc 50
-    //   48: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: iload_3
-    //   52: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   61: aload_0
-    //   62: invokestatic 66	alco:a	()Ljava/lang/String;
-    //   65: invokestatic 69	alco:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   68: new 71	java/util/HashMap
-    //   71: dup
-    //   72: invokespecial 72	java/util/HashMap:<init>	()V
-    //   75: astore 6
-    //   77: getstatic 78	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   80: ldc 80
-    //   82: iconst_0
-    //   83: invokevirtual 84	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   86: invokeinterface 90 1 0
-    //   91: astore 5
-    //   93: new 23	java/io/File
-    //   96: dup
-    //   97: new 47	java/lang/StringBuilder
-    //   100: dup
-    //   101: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   104: invokestatic 66	alco:a	()Ljava/lang/String;
-    //   107: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: ldc 92
-    //   112: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   118: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
-    //   121: astore 4
-    //   123: aload 4
-    //   125: invokevirtual 33	java/io/File:exists	()Z
-    //   128: ifeq +315 -> 443
-    //   131: aconst_null
-    //   132: astore_0
-    //   133: aload 4
-    //   135: invokestatic 97	bbdj:b	(Ljava/io/File;)Ljava/lang/String;
-    //   138: astore 4
-    //   140: aload 4
-    //   142: astore_0
-    //   143: aload_0
-    //   144: ifnull +276 -> 420
-    //   147: aload_0
-    //   148: aload 6
-    //   150: invokestatic 100	alco:a	(Ljava/lang/String;Ljava/util/HashMap;)Z
-    //   153: ifeq +267 -> 420
-    //   156: getstatic 15	alco:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   159: astore_0
-    //   160: aload_0
-    //   161: monitorenter
-    //   162: aload 6
-    //   164: invokevirtual 104	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   167: invokeinterface 110 1 0
-    //   172: astore 4
-    //   174: aload 4
-    //   176: invokeinterface 115 1 0
-    //   181: ifeq +281 -> 462
-    //   184: aload 4
-    //   186: invokeinterface 119 1 0
-    //   191: checkcast 121	java/util/Map$Entry
-    //   194: astore 6
-    //   196: new 47	java/lang/StringBuilder
-    //   199: dup
-    //   200: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   203: invokestatic 66	alco:a	()Ljava/lang/String;
-    //   206: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: getstatic 125	java/io/File:separator	Ljava/lang/String;
-    //   212: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: aload 6
-    //   217: invokeinterface 128 1 0
-    //   222: checkcast 130	java/lang/String
-    //   225: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: astore 8
-    //   233: new 23	java/io/File
-    //   236: dup
-    //   237: aload 8
-    //   239: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
-    //   242: astore 7
-    //   244: aload 7
-    //   246: invokevirtual 33	java/io/File:exists	()Z
-    //   249: ifeq +166 -> 415
-    //   252: aload 8
-    //   254: invokestatic 135	aurl:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   257: astore 8
-    //   259: aload 6
-    //   261: invokeinterface 138 1 0
-    //   266: checkcast 130	java/lang/String
-    //   269: aload 8
-    //   271: invokevirtual 142	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   274: ifne +85 -> 359
-    //   277: aload 7
-    //   279: invokevirtual 145	java/io/File:delete	()Z
-    //   282: pop
-    //   283: iconst_2
-    //   284: istore_1
-    //   285: aload 5
-    //   287: invokeinterface 150 1 0
-    //   292: pop
-    //   293: aload_0
-    //   294: monitorexit
-    //   295: iconst_0
-    //   296: putstatic 21	alco:jdField_a_of_type_Boolean	Z
-    //   299: iload_1
-    //   300: ireturn
-    //   301: astore_0
-    //   302: iconst_0
-    //   303: putstatic 21	alco:jdField_a_of_type_Boolean	Z
-    //   306: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   309: ifeq +31 -> 340
-    //   312: ldc 45
-    //   314: iconst_2
-    //   315: new 47	java/lang/StringBuilder
-    //   318: dup
-    //   319: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   322: ldc 152
-    //   324: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: aload_0
-    //   328: invokevirtual 155	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   331: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   337: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   340: invokestatic 66	alco:a	()Ljava/lang/String;
-    //   343: iconst_0
-    //   344: invokestatic 158	bbdj:a	(Ljava/lang/String;Z)V
-    //   347: iconst_m1
-    //   348: ireturn
-    //   349: astore 4
-    //   351: aload 4
-    //   353: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   356: goto -213 -> 143
-    //   359: aload 5
-    //   361: new 47	java/lang/StringBuilder
-    //   364: dup
-    //   365: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   368: ldc 163
-    //   370: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   373: aload 6
-    //   375: invokeinterface 128 1 0
-    //   380: checkcast 130	java/lang/String
-    //   383: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   389: aload 6
-    //   391: invokeinterface 138 1 0
-    //   396: checkcast 130	java/lang/String
-    //   399: invokeinterface 167 3 0
-    //   404: pop
-    //   405: goto -231 -> 174
-    //   408: astore 4
-    //   410: aload_0
-    //   411: monitorexit
-    //   412: aload 4
-    //   414: athrow
-    //   415: iconst_3
-    //   416: istore_1
-    //   417: goto -132 -> 285
-    //   420: iconst_4
-    //   421: istore_2
-    //   422: iload_2
-    //   423: istore_1
-    //   424: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   427: ifeq -132 -> 295
-    //   430: ldc 45
-    //   432: iconst_2
-    //   433: ldc 169
-    //   435: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   438: iload_2
-    //   439: istore_1
-    //   440: goto -145 -> 295
-    //   443: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   446: ifeq +11 -> 457
-    //   449: ldc 45
-    //   451: iconst_2
-    //   452: ldc 171
-    //   454: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   457: iconst_0
-    //   458: istore_1
-    //   459: goto -164 -> 295
-    //   462: iconst_0
-    //   463: istore_1
-    //   464: goto -179 -> 285
+    //   0: iconst_4
+    //   1: istore_2
+    //   2: iconst_1
+    //   3: putstatic 20	alco:jdField_a_of_type_Boolean	Z
+    //   6: new 22	java/io/File
+    //   9: dup
+    //   10: invokestatic 26	alco:b	()Ljava/lang/String;
+    //   13: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   16: astore 4
+    //   18: aload 4
+    //   20: invokevirtual 33	java/io/File:exists	()Z
+    //   23: ifeq +40 -> 63
+    //   26: aload 4
+    //   28: invokestatic 38	apvd:a	(Ljava/io/File;)Z
+    //   31: istore_3
+    //   32: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   35: ifeq +28 -> 63
+    //   38: ldc 45
+    //   40: iconst_2
+    //   41: new 47	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   48: ldc 50
+    //   50: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: iload_3
+    //   54: invokevirtual 57	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: aload_0
+    //   64: invokestatic 66	alco:a	()Ljava/lang/String;
+    //   67: invokestatic 69	alco:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: new 71	java/util/HashMap
+    //   73: dup
+    //   74: invokespecial 72	java/util/HashMap:<init>	()V
+    //   77: astore 6
+    //   79: getstatic 78	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   82: ldc 80
+    //   84: iconst_4
+    //   85: invokevirtual 84	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   88: invokeinterface 90 1 0
+    //   93: astore 5
+    //   95: new 22	java/io/File
+    //   98: dup
+    //   99: new 47	java/lang/StringBuilder
+    //   102: dup
+    //   103: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   106: invokestatic 66	alco:a	()Ljava/lang/String;
+    //   109: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: ldc 92
+    //   114: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   123: astore 4
+    //   125: aload 4
+    //   127: invokevirtual 33	java/io/File:exists	()Z
+    //   130: ifeq +375 -> 505
+    //   133: aconst_null
+    //   134: astore_0
+    //   135: aload 4
+    //   137: invokestatic 97	bbdx:b	(Ljava/io/File;)Ljava/lang/String;
+    //   140: astore 4
+    //   142: aload 4
+    //   144: astore_0
+    //   145: aload_0
+    //   146: ifnull +338 -> 484
+    //   149: aload_0
+    //   150: aload 6
+    //   152: invokestatic 100	alco:a	(Ljava/lang/String;Ljava/util/HashMap;)Z
+    //   155: ifeq +329 -> 484
+    //   158: getstatic 14	alco:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   161: astore_0
+    //   162: aload_0
+    //   163: monitorenter
+    //   164: aload 6
+    //   166: invokevirtual 104	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   169: invokeinterface 110 1 0
+    //   174: astore 4
+    //   176: aload 4
+    //   178: invokeinterface 115 1 0
+    //   183: ifeq +341 -> 524
+    //   186: aload 4
+    //   188: invokeinterface 119 1 0
+    //   193: checkcast 121	java/util/Map$Entry
+    //   196: astore 6
+    //   198: new 47	java/lang/StringBuilder
+    //   201: dup
+    //   202: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   205: invokestatic 66	alco:a	()Ljava/lang/String;
+    //   208: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc 123
+    //   213: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: aload 6
+    //   218: invokeinterface 126 1 0
+    //   223: checkcast 128	java/lang/String
+    //   226: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: ldc 130
+    //   231: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: astore 8
+    //   239: new 22	java/io/File
+    //   242: dup
+    //   243: aload 8
+    //   245: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   248: astore 7
+    //   250: aload 7
+    //   252: invokevirtual 33	java/io/File:exists	()Z
+    //   255: ifeq +224 -> 479
+    //   258: aload 8
+    //   260: invokestatic 135	aurn:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   263: astore 8
+    //   265: aload 6
+    //   267: invokeinterface 138 1 0
+    //   272: checkcast 128	java/lang/String
+    //   275: aload 8
+    //   277: invokevirtual 142	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   280: ifne +85 -> 365
+    //   283: aload 7
+    //   285: invokevirtual 145	java/io/File:delete	()Z
+    //   288: pop
+    //   289: iconst_2
+    //   290: istore_1
+    //   291: aload 5
+    //   293: invokeinterface 150 1 0
+    //   298: pop
+    //   299: aload_0
+    //   300: monitorexit
+    //   301: iconst_0
+    //   302: putstatic 20	alco:jdField_a_of_type_Boolean	Z
+    //   305: iload_1
+    //   306: ireturn
+    //   307: astore_0
+    //   308: iconst_0
+    //   309: putstatic 20	alco:jdField_a_of_type_Boolean	Z
+    //   312: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   315: ifeq +31 -> 346
+    //   318: ldc 45
+    //   320: iconst_2
+    //   321: new 47	java/lang/StringBuilder
+    //   324: dup
+    //   325: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   328: ldc 152
+    //   330: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: aload_0
+    //   334: invokevirtual 155	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   337: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   346: invokestatic 66	alco:a	()Ljava/lang/String;
+    //   349: iconst_0
+    //   350: invokestatic 158	bbdx:a	(Ljava/lang/String;Z)V
+    //   353: iconst_m1
+    //   354: ireturn
+    //   355: astore 4
+    //   357: aload 4
+    //   359: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   362: goto -217 -> 145
+    //   365: aload 5
+    //   367: new 47	java/lang/StringBuilder
+    //   370: dup
+    //   371: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   374: ldc 163
+    //   376: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   379: aload 6
+    //   381: invokeinterface 126 1 0
+    //   386: checkcast 128	java/lang/String
+    //   389: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   395: aload 6
+    //   397: invokeinterface 138 1 0
+    //   402: checkcast 128	java/lang/String
+    //   405: invokeinterface 167 3 0
+    //   410: pop
+    //   411: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   414: ifeq -238 -> 176
+    //   417: ldc 45
+    //   419: iconst_2
+    //   420: new 47	java/lang/StringBuilder
+    //   423: dup
+    //   424: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   427: ldc 169
+    //   429: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: aload 6
+    //   434: invokeinterface 126 1 0
+    //   439: checkcast 128	java/lang/String
+    //   442: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: ldc 171
+    //   447: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   450: aload 6
+    //   452: invokeinterface 138 1 0
+    //   457: checkcast 128	java/lang/String
+    //   460: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   466: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   469: goto -293 -> 176
+    //   472: astore 4
+    //   474: aload_0
+    //   475: monitorexit
+    //   476: aload 4
+    //   478: athrow
+    //   479: iconst_3
+    //   480: istore_1
+    //   481: goto -190 -> 291
+    //   484: iload_2
+    //   485: istore_1
+    //   486: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   489: ifeq -188 -> 301
+    //   492: ldc 45
+    //   494: iconst_2
+    //   495: ldc 173
+    //   497: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   500: iload_2
+    //   501: istore_1
+    //   502: goto -201 -> 301
+    //   505: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   508: ifeq +11 -> 519
+    //   511: ldc 45
+    //   513: iconst_2
+    //   514: ldc 175
+    //   516: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   519: iconst_0
+    //   520: istore_1
+    //   521: goto -220 -> 301
+    //   524: iconst_0
+    //   525: istore_1
+    //   526: goto -235 -> 291
     // Local variable table:
     //   start	length	slot	name	signature
-    //   284	180	1	b1	byte
-    //   421	18	2	b2	byte
-    //   29	23	3	bool	boolean
-    //   14	171	4	localObject1	Object
-    //   349	3	4	localIOException	java.io.IOException
-    //   408	5	4	localObject2	Object
-    //   91	269	5	localEditor	android.content.SharedPreferences.Editor
-    //   75	315	6	localObject3	Object
-    //   242	36	7	localFile	File
-    //   231	39	8	str	String
+    //   290	236	1	b1	byte
+    //   1	500	2	b2	byte
+    //   31	23	3	bool	boolean
+    //   16	171	4	localObject1	Object
+    //   355	3	4	localIOException	java.io.IOException
+    //   472	5	4	localObject2	Object
+    //   93	273	5	localEditor	android.content.SharedPreferences.Editor
+    //   77	374	6	localObject3	Object
+    //   248	36	7	localFile	File
+    //   237	39	8	str	String
     // Exception table:
     //   from	to	target	type
-    //   61	68	301	java/io/IOException
-    //   133	140	349	java/io/IOException
-    //   162	174	408	finally
-    //   174	283	408	finally
-    //   285	295	408	finally
-    //   359	405	408	finally
-    //   410	412	408	finally
+    //   63	70	307	java/io/IOException
+    //   135	142	355	java/io/IOException
+    //   164	176	472	finally
+    //   176	289	472	finally
+    //   291	301	472	finally
+    //   365	469	472	finally
+    //   474	476	472	finally
   }
   
   public static String a()
@@ -256,7 +276,7 @@ public class alco
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FaceScanModelsLoader", 2, "getFilesDir is null");
+        QLog.i("FaceScanNativeSoLoader", 2, "getFilesDir is null");
       }
       localObject = "";
     }
@@ -264,10 +284,20 @@ public class alco
     do
     {
       return localObject;
-      str = localObject + "/pddata/prd/face_scan_models";
+      str = localObject + "/pddata/prd/face_scan_so_v795";
       localObject = str;
     } while (!QLog.isColorLevel());
-    QLog.i("FaceScanModelsLoader", 2, "getFaceModelsPath ,path = " + str);
+    QLog.i("FaceScanNativeSoLoader", 2, "getFaceLibPath ,path = " + str);
+    return str;
+  }
+  
+  public static String a(String paramString)
+  {
+    new StringBuilder().append(a()).append("/lib").append(paramString).append(".so").toString();
+    String str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("face_native_" + paramString, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("FaceScanNativeSoLoader", 2, "getFaceSoMd5 ,soName = " + paramString + ",md5 = " + str);
+    }
     return str;
   }
   
@@ -284,38 +314,38 @@ public class alco
     //   11: new 47	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 193
+    //   18: ldc 205
     //   20: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_0
     //   24: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   30: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: new 195	com/tencent/commonsdk/zip/QZipFile
+    //   33: new 207	com/tencent/commonsdk/zip/QZipFile
     //   36: dup
     //   37: aload_0
-    //   38: invokespecial 196	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 208	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   41: astore 4
     //   43: aload 4
-    //   45: invokevirtual 200	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
-    //   48: astore 7
+    //   45: invokevirtual 212	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   48: astore 6
     //   50: sipush 8192
     //   53: newarray byte
-    //   55: astore 6
-    //   57: aload 7
-    //   59: invokeinterface 205 1 0
-    //   64: ifeq +330 -> 394
-    //   67: aload 7
-    //   69: invokeinterface 208 1 0
-    //   74: checkcast 210	java/util/zip/ZipEntry
+    //   55: astore 7
+    //   57: aload 6
+    //   59: invokeinterface 217 1 0
+    //   64: ifeq +331 -> 395
+    //   67: aload 6
+    //   69: invokeinterface 220 1 0
+    //   74: checkcast 222	java/util/zip/ZipEntry
     //   77: astore 5
     //   79: aload 5
-    //   81: invokevirtual 213	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   81: invokevirtual 225	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   84: astore_0
     //   85: aload_0
-    //   86: ifnull +410 -> 496
+    //   86: ifnull +411 -> 497
     //   89: aload_0
-    //   90: ldc 215
-    //   92: invokevirtual 219	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   90: ldc 227
+    //   92: invokevirtual 231	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   95: ifeq +6 -> 101
     //   98: goto -41 -> 57
     //   101: new 47	java/lang/StringBuilder
@@ -323,46 +353,46 @@ public class alco
     //   105: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   108: aload_1
     //   109: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: getstatic 125	java/io/File:separator	Ljava/lang/String;
+    //   112: getstatic 235	java/io/File:separator	Ljava/lang/String;
     //   115: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: aload_0
     //   119: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   125: astore_0
     //   126: aload 5
-    //   128: invokevirtual 222	java/util/zip/ZipEntry:isDirectory	()Z
+    //   128: invokevirtual 238	java/util/zip/ZipEntry:isDirectory	()Z
     //   131: ifeq +27 -> 158
-    //   134: new 23	java/io/File
+    //   134: new 22	java/io/File
     //   137: dup
     //   138: aload_0
     //   139: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
     //   142: astore_0
     //   143: aload_0
     //   144: invokevirtual 33	java/io/File:exists	()Z
-    //   147: ifne +352 -> 499
+    //   147: ifne +353 -> 500
     //   150: aload_0
-    //   151: invokevirtual 225	java/io/File:mkdir	()Z
+    //   151: invokevirtual 241	java/io/File:mkdir	()Z
     //   154: pop
-    //   155: goto +344 -> 499
+    //   155: goto +345 -> 500
     //   158: aload_0
-    //   159: getstatic 125	java/io/File:separator	Ljava/lang/String;
-    //   162: invokevirtual 229	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   159: getstatic 235	java/io/File:separator	Ljava/lang/String;
+    //   162: invokevirtual 245	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   165: istore_2
     //   166: aload_0
     //   167: iconst_0
     //   168: iload_2
-    //   169: invokevirtual 233	java/lang/String:substring	(II)Ljava/lang/String;
+    //   169: invokevirtual 249	java/lang/String:substring	(II)Ljava/lang/String;
     //   172: astore 8
     //   174: aload_0
     //   175: iload_2
     //   176: iconst_1
     //   177: iadd
-    //   178: invokevirtual 236	java/lang/String:substring	(I)Ljava/lang/String;
-    //   181: ldc 238
-    //   183: invokevirtual 241	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   178: invokevirtual 252	java/lang/String:substring	(I)Ljava/lang/String;
+    //   181: ldc 254
+    //   183: invokevirtual 257	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   186: ifeq +6 -> 192
     //   189: goto -132 -> 57
-    //   192: new 23	java/io/File
+    //   192: new 22	java/io/File
     //   195: dup
     //   196: aload 8
     //   198: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
@@ -371,266 +401,249 @@ public class alco
     //   205: invokevirtual 33	java/io/File:exists	()Z
     //   208: ifne +9 -> 217
     //   211: aload 8
-    //   213: invokevirtual 225	java/io/File:mkdir	()Z
+    //   213: invokevirtual 241	java/io/File:mkdir	()Z
     //   216: pop
-    //   217: new 23	java/io/File
+    //   217: new 22	java/io/File
     //   220: dup
     //   221: new 47	java/lang/StringBuilder
     //   224: dup
     //   225: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   228: aload_0
     //   229: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: ldc 243
-    //   234: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
-    //   243: astore 8
-    //   245: new 23	java/io/File
-    //   248: dup
-    //   249: aload_0
-    //   250: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
-    //   253: astore 9
-    //   255: aload 8
-    //   257: invokevirtual 33	java/io/File:exists	()Z
-    //   260: ifeq +9 -> 269
-    //   263: aload 8
-    //   265: invokevirtual 145	java/io/File:delete	()Z
-    //   268: pop
-    //   269: new 245	java/io/FileOutputStream
-    //   272: dup
-    //   273: aload 8
-    //   275: invokespecial 248	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   278: astore_0
-    //   279: aload 4
-    //   281: aload 5
-    //   283: invokevirtual 252	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   286: astore 5
-    //   288: aload 5
-    //   290: aload 6
-    //   292: iconst_0
-    //   293: aload 6
-    //   295: arraylength
-    //   296: invokevirtual 258	java/io/InputStream:read	([BII)I
-    //   299: istore_2
-    //   300: iload_2
-    //   301: iconst_m1
-    //   302: if_icmpeq +52 -> 354
-    //   305: aload_0
-    //   306: aload 6
-    //   308: iconst_0
-    //   309: iload_2
-    //   310: invokevirtual 262	java/io/FileOutputStream:write	([BII)V
-    //   313: goto -25 -> 288
-    //   316: astore 6
-    //   318: aload 5
-    //   320: astore_1
-    //   321: aload_0
-    //   322: astore_3
-    //   323: aload 6
-    //   325: astore_0
-    //   326: aload_3
-    //   327: ifnull +7 -> 334
-    //   330: aload_3
-    //   331: invokevirtual 265	java/io/FileOutputStream:close	()V
-    //   334: aload_1
-    //   335: ifnull +7 -> 342
-    //   338: aload_1
-    //   339: invokevirtual 266	java/io/InputStream:close	()V
-    //   342: aload 4
-    //   344: ifnull +8 -> 352
-    //   347: aload 4
-    //   349: invokevirtual 267	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   352: aload_0
-    //   353: athrow
-    //   354: aload_0
-    //   355: invokevirtual 270	java/io/FileOutputStream:flush	()V
-    //   358: aload_0
-    //   359: invokevirtual 265	java/io/FileOutputStream:close	()V
-    //   362: aload 5
-    //   364: invokevirtual 266	java/io/InputStream:close	()V
-    //   367: aload 8
-    //   369: aload 9
-    //   371: invokestatic 273	bbdj:b	(Ljava/io/File;Ljava/io/File;)Z
-    //   374: ifne +125 -> 499
-    //   377: aload 8
-    //   379: aload 9
-    //   381: invokestatic 275	bbdj:a	(Ljava/io/File;Ljava/io/File;)Z
-    //   384: pop
-    //   385: goto +114 -> 499
-    //   388: astore_0
-    //   389: aconst_null
-    //   390: astore_1
-    //   391: goto -65 -> 326
-    //   394: iconst_0
-    //   395: ifeq +11 -> 406
-    //   398: new 277	java/lang/NullPointerException
-    //   401: dup
-    //   402: invokespecial 278	java/lang/NullPointerException:<init>	()V
-    //   405: athrow
-    //   406: iconst_0
-    //   407: ifeq +11 -> 418
-    //   410: new 277	java/lang/NullPointerException
-    //   413: dup
-    //   414: invokespecial 278	java/lang/NullPointerException:<init>	()V
-    //   417: athrow
-    //   418: aload 4
-    //   420: ifnull +8 -> 428
-    //   423: aload 4
-    //   425: invokevirtual 267	com/tencent/commonsdk/zip/QZipFile:close	()V
-    //   428: return
-    //   429: astore_0
-    //   430: aload_0
-    //   431: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   434: goto -28 -> 406
-    //   437: astore_0
-    //   438: aload_0
-    //   439: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   442: goto -24 -> 418
-    //   445: astore_0
-    //   446: aload_0
-    //   447: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   450: return
-    //   451: astore_3
-    //   452: aload_3
-    //   453: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   456: goto -122 -> 334
-    //   459: astore_1
-    //   460: aload_1
-    //   461: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   464: goto -122 -> 342
-    //   467: astore_1
-    //   468: aload_1
-    //   469: invokevirtual 161	java/io/IOException:printStackTrace	()V
-    //   472: goto -120 -> 352
-    //   475: astore_0
-    //   476: aconst_null
-    //   477: astore 4
-    //   479: aconst_null
-    //   480: astore_1
-    //   481: goto -155 -> 326
-    //   484: astore 5
-    //   486: aconst_null
-    //   487: astore_1
-    //   488: aload_0
-    //   489: astore_3
-    //   490: aload 5
-    //   492: astore_0
-    //   493: goto -167 -> 326
-    //   496: goto -439 -> 57
-    //   499: goto -442 -> 57
+    //   232: ldc_w 259
+    //   235: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   244: astore 8
+    //   246: new 22	java/io/File
+    //   249: dup
+    //   250: aload_0
+    //   251: invokespecial 29	java/io/File:<init>	(Ljava/lang/String;)V
+    //   254: astore 9
+    //   256: aload 8
+    //   258: invokevirtual 33	java/io/File:exists	()Z
+    //   261: ifeq +9 -> 270
+    //   264: aload 8
+    //   266: invokevirtual 145	java/io/File:delete	()Z
+    //   269: pop
+    //   270: new 261	java/io/FileOutputStream
+    //   273: dup
+    //   274: aload 8
+    //   276: invokespecial 264	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   279: astore_0
+    //   280: aload 4
+    //   282: aload 5
+    //   284: invokevirtual 268	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   287: astore 5
+    //   289: aload 5
+    //   291: aload 7
+    //   293: iconst_0
+    //   294: aload 7
+    //   296: arraylength
+    //   297: invokevirtual 274	java/io/InputStream:read	([BII)I
+    //   300: istore_2
+    //   301: iload_2
+    //   302: iconst_m1
+    //   303: if_icmpeq +52 -> 355
+    //   306: aload_0
+    //   307: aload 7
+    //   309: iconst_0
+    //   310: iload_2
+    //   311: invokevirtual 278	java/io/FileOutputStream:write	([BII)V
+    //   314: goto -25 -> 289
+    //   317: astore 6
+    //   319: aload 5
+    //   321: astore_1
+    //   322: aload_0
+    //   323: astore_3
+    //   324: aload 6
+    //   326: astore_0
+    //   327: aload_3
+    //   328: ifnull +7 -> 335
+    //   331: aload_3
+    //   332: invokevirtual 281	java/io/FileOutputStream:close	()V
+    //   335: aload_1
+    //   336: ifnull +7 -> 343
+    //   339: aload_1
+    //   340: invokevirtual 282	java/io/InputStream:close	()V
+    //   343: aload 4
+    //   345: ifnull +8 -> 353
+    //   348: aload 4
+    //   350: invokevirtual 283	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   353: aload_0
+    //   354: athrow
+    //   355: aload_0
+    //   356: invokevirtual 286	java/io/FileOutputStream:flush	()V
+    //   359: aload_0
+    //   360: invokevirtual 281	java/io/FileOutputStream:close	()V
+    //   363: aload 5
+    //   365: invokevirtual 282	java/io/InputStream:close	()V
+    //   368: aload 8
+    //   370: aload 9
+    //   372: invokestatic 289	bbdx:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   375: ifne +125 -> 500
+    //   378: aload 8
+    //   380: aload 9
+    //   382: invokestatic 291	bbdx:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   385: pop
+    //   386: goto +114 -> 500
+    //   389: astore_0
+    //   390: aconst_null
+    //   391: astore_1
+    //   392: goto -65 -> 327
+    //   395: iconst_0
+    //   396: ifeq +11 -> 407
+    //   399: new 293	java/lang/NullPointerException
+    //   402: dup
+    //   403: invokespecial 294	java/lang/NullPointerException:<init>	()V
+    //   406: athrow
+    //   407: iconst_0
+    //   408: ifeq +11 -> 419
+    //   411: new 293	java/lang/NullPointerException
+    //   414: dup
+    //   415: invokespecial 294	java/lang/NullPointerException:<init>	()V
+    //   418: athrow
+    //   419: aload 4
+    //   421: ifnull +8 -> 429
+    //   424: aload 4
+    //   426: invokevirtual 283	com/tencent/commonsdk/zip/QZipFile:close	()V
+    //   429: return
+    //   430: astore_0
+    //   431: aload_0
+    //   432: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   435: goto -28 -> 407
+    //   438: astore_0
+    //   439: aload_0
+    //   440: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   443: goto -24 -> 419
+    //   446: astore_0
+    //   447: aload_0
+    //   448: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   451: return
+    //   452: astore_3
+    //   453: aload_3
+    //   454: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   457: goto -122 -> 335
+    //   460: astore_1
+    //   461: aload_1
+    //   462: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   465: goto -122 -> 343
+    //   468: astore_1
+    //   469: aload_1
+    //   470: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   473: goto -120 -> 353
+    //   476: astore_0
+    //   477: aconst_null
+    //   478: astore 4
+    //   480: aconst_null
+    //   481: astore_1
+    //   482: goto -155 -> 327
+    //   485: astore 5
+    //   487: aconst_null
+    //   488: astore_1
+    //   489: aload_0
+    //   490: astore_3
+    //   491: aload 5
+    //   493: astore_0
+    //   494: goto -167 -> 327
+    //   497: goto -440 -> 57
+    //   500: goto -443 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	502	0	paramString1	String
-    //   0	502	1	paramString2	String
-    //   165	145	2	i	int
-    //   1	330	3	str1	String
-    //   451	2	3	localIOException	java.io.IOException
-    //   489	1	3	str2	String
-    //   41	437	4	localQZipFile	com.tencent.commonsdk.zip.QZipFile
-    //   77	286	5	localObject1	Object
-    //   484	7	5	localObject2	Object
-    //   55	252	6	arrayOfByte	byte[]
-    //   316	8	6	localObject3	Object
-    //   48	20	7	localEnumeration	java.util.Enumeration
-    //   172	206	8	localObject4	Object
-    //   253	127	9	localFile	File
+    //   0	503	0	paramString1	String
+    //   0	503	1	paramString2	String
+    //   165	146	2	i	int
+    //   1	331	3	str1	String
+    //   452	2	3	localIOException	java.io.IOException
+    //   490	1	3	str2	String
+    //   41	438	4	localQZipFile	com.tencent.commonsdk.zip.QZipFile
+    //   77	287	5	localObject1	Object
+    //   485	7	5	localObject2	Object
+    //   48	20	6	localEnumeration	java.util.Enumeration
+    //   317	8	6	localObject3	Object
+    //   55	253	7	arrayOfByte	byte[]
+    //   172	207	8	localObject4	Object
+    //   254	127	9	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   288	300	316	finally
-    //   305	313	316	finally
-    //   354	367	316	finally
-    //   43	57	388	finally
-    //   57	85	388	finally
-    //   89	98	388	finally
-    //   101	155	388	finally
-    //   158	189	388	finally
-    //   192	217	388	finally
-    //   217	269	388	finally
-    //   269	279	388	finally
-    //   367	385	388	finally
-    //   398	406	429	java/io/IOException
-    //   410	418	437	java/io/IOException
-    //   423	428	445	java/io/IOException
-    //   330	334	451	java/io/IOException
-    //   338	342	459	java/io/IOException
-    //   347	352	467	java/io/IOException
-    //   33	43	475	finally
-    //   279	288	484	finally
+    //   289	301	317	finally
+    //   306	314	317	finally
+    //   355	368	317	finally
+    //   43	57	389	finally
+    //   57	85	389	finally
+    //   89	98	389	finally
+    //   101	155	389	finally
+    //   158	189	389	finally
+    //   192	217	389	finally
+    //   217	270	389	finally
+    //   270	280	389	finally
+    //   368	386	389	finally
+    //   399	407	430	java/io/IOException
+    //   411	419	438	java/io/IOException
+    //   424	429	446	java/io/IOException
+    //   331	335	452	java/io/IOException
+    //   339	343	460	java/io/IOException
+    //   348	353	468	java/io/IOException
+    //   33	43	476	finally
+    //   280	289	485	finally
   }
   
   public static boolean a()
   {
-    if ((!a("fc_eval.rpdm")) || (!a("rpn_fr_cluster_256_norelu.model")) || (!a("ufat.bin")) || (!a("ufdmtcc.bin")))
+    if ((!a("YTCommon")) || (!a("YTFaceCluster")) || (!a("YTFaceExtFeature")) || (!a("YTFaceTrackPro")) || (!a("YTFaceClusterJNI_V820")))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FaceScanModelsLoader", 2, "modules is not exist!");
+        QLog.d("FaceScanNativeSoLoader", 2, "native so is not exist!");
       }
       return false;
     }
     return true;
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean a(String paramString)
   {
-    boolean bool1 = false;
+    boolean bool3 = false;
     boolean bool2 = false;
-    if (paramContext == null) {
-      return bool2;
-    }
-    if (b) {
-      return b;
-    }
-    FaceCluster.getInstance();
-    YTCommonInterface.initAuth(paramContext, "youtusdk_mqq.licence", 0);
-    if (FaceCluster.getInstance().isLoadSoSuccess()) {
-      bool1 = b(paramContext);
+    String str1 = a() + "/lib" + paramString + ".so";
+    ??? = new File(str1);
+    boolean bool1 = bool3;
+    if (!jdField_a_of_type_Boolean)
+    {
+      bool1 = bool3;
+      if (!((File)???).exists()) {}
     }
     for (;;)
     {
-      b = bool1;
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("FaceScanModelsLoader", 2, "initModels result = " + bool1);
-      return bool1;
-      QLog.d("FaceScanModelsLoader", 1, "initModels loadSo failed");
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String str1 = a() + File.separator + paramString;
-    ??? = new File(str1);
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        synchronized (jdField_a_of_type_JavaLangObject)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("face_models_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(aurl.a(str1)))
-            {
-              break label173;
-              return bool1;
+        String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("face_native_" + paramString, null);
+        str1 = aurn.a(str1);
+        if (QLog.isColorLevel()) {
+          QLog.d("FaceScanNativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " ,spmd5 = " + str2 + ",fileMD5 = " + str1);
+        }
+        if (str2 != null) {
+          if (str2.equalsIgnoreCase(str1))
+          {
+            break label298;
+            if (QLog.isColorLevel()) {
+              QLog.d("FaceScanNativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " ,result = " + bool1 + ",isUncompressZip = " + jdField_a_of_type_Boolean);
             }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("FaceScanModelsLoader", 2, "isModelFileExist: modelName= " + paramString + " check md5 false!");
-              bool1 = bool2;
+            return bool1;
+          }
+          else
+          {
+            bool1 = bool2;
+            if (!QLog.isColorLevel()) {
+              continue;
             }
+            QLog.d("FaceScanNativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
+            bool1 = bool2;
           }
         }
-        label173:
-        boolean bool1 = true;
       }
+      label298:
+      bool1 = true;
     }
-    return false;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -650,41 +663,46 @@ public class alco
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.e("FaceScanModelsLoader", 2, paramString, paramHashMap);
+        QLog.e("FaceScanNativeSoLoader", 2, paramString, paramHashMap);
         bool = false;
         return bool;
       }
       int i = localXmlPullParser.next();
-      break label232;
+      break label261;
       String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("fc_eval.rpdm"))
+      if (str.equalsIgnoreCase("YTCommon"))
       {
-        paramHashMap.put("fc_eval.rpdm", localXmlPullParser.nextText());
+        paramHashMap.put("YTCommon", localXmlPullParser.nextText());
         continue;
       }
       else
       {
-        if (str.equalsIgnoreCase("rpn_fr_cluster_256_norelu.model"))
+        if (str.equalsIgnoreCase("YTFaceCluster"))
         {
-          paramHashMap.put("rpn_fr_cluster_256_norelu.model", localXmlPullParser.nextText());
+          paramHashMap.put("YTFaceCluster", localXmlPullParser.nextText());
           continue;
         }
-        if (str.equalsIgnoreCase("ufat.bin"))
+        if (str.equalsIgnoreCase("YTFaceExtFeature"))
         {
-          paramHashMap.put("ufat.bin", localXmlPullParser.nextText());
+          paramHashMap.put("YTFaceExtFeature", localXmlPullParser.nextText());
           continue;
         }
-        if (!str.equalsIgnoreCase("ufdmtcc.bin")) {
+        if (str.equalsIgnoreCase("YTFaceTrackPro"))
+        {
+          paramHashMap.put("YTFaceTrackPro", localXmlPullParser.nextText());
           continue;
         }
-        paramHashMap.put("ufdmtcc.bin", localXmlPullParser.nextText());
+        if (!str.equalsIgnoreCase("YTFaceClusterJNI_V820")) {
+          continue;
+        }
+        paramHashMap.put("YTFaceClusterJNI_V820", localXmlPullParser.nextText());
         continue;
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("FaceScanModelsLoader", 2, "parseConfig success|config=" + paramHashMap);
+        QLog.d("FaceScanNativeSoLoader", 2, "parseConfig success|config=" + paramHashMap);
         return true;
-        label232:
+        label261:
         if (i != 1) {
           switch (i)
           {
@@ -694,18 +712,70 @@ public class alco
     }
   }
   
-  public static String b()
+  public static byte b(String paramString)
   {
-    return BaseApplicationImpl.sApplication.getFilesDir().getParent() + "/face_models";
+    byte b3 = 0;
+    byte b2 = 0;
+    if (paramString == null) {
+      return -1;
+    }
+    String str = a() + "/lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("FaceScanNativeSoLoader", 2, "start faceNativeSo: " + str);
+    }
+    File localFile = new File(str);
+    if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {}
+    for (;;)
+    {
+      try
+      {
+        System.load(str);
+        b1 = b2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("FaceScanNativeSoLoader", 2, "load " + str + " success!");
+          b1 = b2;
+        }
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        QLog.d("FaceScanNativeSoLoader", 1, "load from face dir failed, libName = " + paramString + "," + localUnsatisfiedLinkError.getMessage());
+        b1 = -2;
+        continue;
+      }
+      alha.a(paramString, b1);
+      return b1;
+      byte b1 = b3;
+      if (jdField_a_of_type_Boolean)
+      {
+        b1 = b3;
+        if (!localFile.exists()) {
+          b1 = -3;
+        }
+      }
+      b2 = b1;
+      if (jdField_a_of_type_Boolean)
+      {
+        b2 = b1;
+        if (localFile.exists()) {
+          b2 = -4;
+        }
+      }
+      b1 = b2;
+      if (!jdField_a_of_type_Boolean)
+      {
+        b1 = b2;
+        if (!localFile.exists()) {
+          b1 = -5;
+        }
+      }
+      QLog.d("FaceScanNativeSoLoader", 1, "no face so in face dir,libName = " + paramString);
+    }
   }
   
-  public static boolean b(Context paramContext)
+  public static String b()
   {
-    String str2 = a();
-    paramContext = str2 + File.separator + "ufdmtcc.bin";
-    String str1 = str2 + File.separator + "ufat.bin";
-    str2 = str2 + File.separator;
-    return FaceCluster.getInstance().init(paramContext, str1, str2) == 0;
+    return BaseApplicationImpl.sApplication.getFilesDir().getParent() + "/face_scan";
   }
 }
 

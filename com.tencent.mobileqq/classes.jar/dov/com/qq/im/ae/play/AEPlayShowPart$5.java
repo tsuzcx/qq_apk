@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.play;
 
-import biwr;
+import bixi;
 
 public class AEPlayShowPart$5
   implements Runnable
 {
-  public AEPlayShowPart$5(biwr parambiwr) {}
+  public AEPlayShowPart$5(bixi parambixi) {}
   
   public void run()
   {
-    biwr.a(this.this$0);
-    biwr.b(this.this$0);
+    bixi.a(this.this$0);
+    bixi.b(this.this$0);
   }
 }
 

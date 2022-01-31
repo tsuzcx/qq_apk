@@ -1,58 +1,45 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import java.util.List;
 
 public class uwx
-  extends sth<uwt, upb>
+  extends ste<uwq, uqd>
 {
-  public uwx(uwt paramuwt)
+  public uwx(uwq paramuwq)
   {
-    super(paramuwt);
+    super(paramuwq);
   }
   
-  public void a(@NonNull uwt paramuwt, @NonNull upb paramupb)
+  public void a(@NonNull uwq paramuwq, @NonNull uqd paramuqd)
   {
-    int i = 1;
-    if (paramupb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    Object localObject = paramuwq.a(paramuqd.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
     {
-      localObject = paramuwt.a(paramupb.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramupb.jdField_a_of_type_JavaLangString });
-      }
-    }
-    else
-    {
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramuqd.jdField_a_of_type_JavaLangString });
       return;
     }
-    if (!(localObject instanceof uvk))
+    if (!(localObject instanceof uxo))
     {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramupb.jdField_a_of_type_JavaLangString });
+      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramuqd.jdField_a_of_type_JavaLangString });
       return;
     }
-    Object localObject = (uvk)localObject;
-    ((uvk)localObject).a(paramupb.jdField_a_of_type_JavaUtilList, paramupb.c);
-    CommentLikeFeedItem localCommentLikeFeedItem = (CommentLikeFeedItem)((uvk)localObject).a;
-    if (paramupb.jdField_a_of_type_Boolean) {}
-    for (;;)
+    localObject = (uxo)localObject;
+    if (paramuqd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      localCommentLikeFeedItem.mCommentIsEnd = i;
-      ((CommentLikeFeedItem)((uvk)localObject).a).mCommentLastCookie = paramupb.jdField_b_of_type_JavaLangString;
-      ((CommentLikeFeedItem)((uvk)localObject).a).mCommentCount = paramupb.jdField_b_of_type_Int;
-      ((uwa)tdc.a(11)).a(((uvk)localObject).a);
-      uwt.a(paramuwt).b(paramupb.jdField_a_of_type_JavaLangString);
-      veg.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d. isEnd:%b, cookie:%s", paramupb.jdField_a_of_type_JavaLangString, Integer.valueOf(((uvk)localObject).b().size()), Boolean.valueOf(paramupb.jdField_a_of_type_Boolean), paramupb.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
+      ((uxo)localObject).c(paramuqd.jdField_a_of_type_JavaUtilList, false);
+      ((VideoListFeedItem)((uxo)localObject).a).updateVideoInfo(paramuqd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      ved.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramuqd.jdField_a_of_type_JavaLangString, Integer.valueOf(((uxo)localObject).a().size()));
     }
+    uwq.a(paramuwq).a((uxo)localObject);
   }
   
   public Class acceptEventClass()
   {
-    return upb.class;
+    return uqd.class;
   }
   
-  public void b(@NonNull uwt paramuwt, @NonNull upb paramupb) {}
+  public void b(@NonNull uwq paramuwq, @NonNull uqd paramuqd) {}
 }
 
 

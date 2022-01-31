@@ -1,17 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.widget.SwipListView;
 
-class nxt
-  implements View.OnClickListener
+public class nxt
 {
-  nxt(nxs paramnxs, View paramView) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View b;
+  private View c;
   
-  public void onClick(View paramView)
-  {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nxs.a).a(this.jdField_a_of_type_AndroidViewView);
-  }
+  private nxt(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

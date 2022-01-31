@@ -1,39 +1,63 @@
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.Utils;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class azfx
-  extends ContentObserver
+  extends AsyncTask<Void, Void, Bundle>
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  public azfx(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public azfx(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
+  protected Bundle a(Void... paramVarArgs)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    paramVarArgs = new File(ajsd.bX);
+    if (!paramVarArgs.exists()) {
+      paramVarArgs.mkdirs();
+    }
+    String str = ajsd.bX + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = str;
+    if (!new File(str).exists()) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+      localBundle.putBoolean("forward_urldrawable", true);
+      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+      localBundle.putString("forward_filepath", paramVarArgs);
+      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+      localBundle.putString("forward_extra", paramVarArgs);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.l)
+      {
+        localBundle.putString("forward_thumb", paramVarArgs);
+        localBundle.putBoolean("key_flag_from_plugin", true);
+      }
+      return localBundle;
+    }
+    catch (IOException paramVarArgs)
+    {
+      QLog.e("foward", 2, "IOException", paramVarArgs);
+    }
+    return null;
+  }
+  
+  protected void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      bcql.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, ajya.a(2131715222), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramBundle);
+    aqbe.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
   }
 }
 

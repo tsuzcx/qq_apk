@@ -1,32 +1,34 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aceu
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
   public aceu(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
-    if ((i != 1) && (i != 2)) {
-      i = this.a.a;
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
     }
-    paramView = this.a.e();
-    String str = this.a.a().b();
-    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("team_work_name", str);
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
     }
-    localIntent.putExtra("team_work_pad_url", paramView);
-    localIntent.putExtra("team_work_pad_list_type", this.a.d);
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
-    this.a.a(14);
+    bcer localbcer = (bcer)this.a.a.a(8);
+    if ((localbcer != null) && (localbcer.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

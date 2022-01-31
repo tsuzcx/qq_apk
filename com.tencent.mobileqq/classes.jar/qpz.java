@@ -1,23 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
-
-public class qpz
-  implements ajtg
+public abstract interface qpz
 {
-  public qpz(qpy paramqpy) {}
+  public abstract void a();
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    qpy.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-    bhvh.a();
-    bhvh.a(qpy.a(this.a));
-    qpy.a(this.a, qpy.a(this.a));
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 

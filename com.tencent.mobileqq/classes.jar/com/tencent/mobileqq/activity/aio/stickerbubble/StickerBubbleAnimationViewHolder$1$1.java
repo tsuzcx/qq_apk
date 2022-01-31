@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aevt;
-import aevu;
+import aevr;
+import aevs;
 
 public class StickerBubbleAnimationViewHolder$1$1
   implements Runnable
 {
-  public StickerBubbleAnimationViewHolder$1$1(aevu paramaevu) {}
+  public StickerBubbleAnimationViewHolder$1$1(aevs paramaevs) {}
   
   public void run()
   {
-    this.a.a.b(aevt.a(this.a.a));
+    this.a.a.b(aevr.a(this.a.a));
   }
 }
 

@@ -1,46 +1,174 @@
+import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.js.SpringFestivalRedpacketJsPlugin.3;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import eipc.EIPCClient;
 import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONObject;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ahhx
-  implements EIPCResultCallback
 {
-  public ahhx(SpringFestivalRedpacketJsPlugin.3 param3, String paramString) {}
+  private static InputStream jdField_a_of_type_JavaIoInputStream;
+  private static String jdField_a_of_type_JavaLangString;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static WebResourceResponse a(String paramString)
   {
-    QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5: invoked.  QWalletIPCModule.ACTION_GET_User_Nick: " + paramEIPCResult);
-    Object localObject;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      paramEIPCResult = paramEIPCResult.data;
-      if (paramEIPCResult == null)
-      {
-        localObject = "";
-        paramEIPCResult = (EIPCResult)localObject;
-        if (!bbjw.a((String)localObject)) {}
-      }
+    paramString = PreloadManager.e(a(paramString));
+    if (QLog.isColorLevel()) {
+      QLog.d("springHb_SpringHbUrlInterceptor", 2, "getWebResponse resPath: " + paramString);
     }
-    for (paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString;; paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString)
+    if (bbkk.a(paramString)) {
+      return null;
+    }
+    try
+    {
+      jdField_a_of_type_JavaIoInputStream = new BufferedInputStream(new FileInputStream(paramString));
+      paramString = new WebResourceResponse("video/mp4", "UTF-8", jdField_a_of_type_JavaIoInputStream);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      QLog.e("springHb_SpringHbUrlInterceptor", 1, paramString, new Object[0]);
+      a();
+    }
+    return null;
+  }
+  
+  private static String a(String paramString)
+  {
+    String str;
+    if (bbkk.a(paramString)) {
+      str = "";
+    }
+    do
+    {
+      return str;
+      str = paramString;
+    } while (paramString.lastIndexOf("?") == -1);
+    return paramString.split("\\?")[0];
+  }
+  
+  private static Map<String, String> a(String paramString)
+  {
+    int i = 0;
+    Object localObject = paramString.substring(paramString.indexOf("?") + 1);
+    paramString = new HashMap();
+    for (;;)
     {
       try
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("avatar", this.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject).put("nickname", paramEIPCResult);
-        ahhu.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.this$0, "getAvatarAndNickname", ((JSONObject)localObject).toString());
-        QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 doCallback: " + ((JSONObject)localObject).toString());
-        return;
+        localObject = ((String)localObject).split("&");
+        int j = localObject.length;
+        if (i < j)
+        {
+          String[] arrayOfString = localObject[i].split("=");
+          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
+            break label85;
+          }
+          paramString.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
+        }
       }
-      catch (Exception paramEIPCResult)
+      catch (Exception localException) {}
+      return paramString;
+      label85:
+      i += 1;
+    }
+  }
+  
+  public static void a()
+  {
+    if (jdField_a_of_type_JavaIoInputStream != null) {}
+    try
+    {
+      jdField_a_of_type_JavaIoInputStream.close();
+      jdField_a_of_type_JavaIoInputStream = null;
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (bbkk.a(paramString)) {}
+    for (;;)
+    {
+      return false;
+      Object localObject = a(paramString);
+      if ((localObject == null) || (((Map)localObject).isEmpty())) {
+        continue;
+      }
+      try
       {
-        QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 parse result throw an exception: " + paramEIPCResult);
+        i = Integer.parseInt((String)((Map)localObject).get("o"));
+        localObject = a(paramString);
+        if ((i != 1) || ((!((String)localObject).endsWith(".mp4")) && (!((String)localObject).endsWith(".MP4")))) {
+          continue;
+        }
+        label260:
+        for (;;)
+        {
+          try
+          {
+            paramString = Uri.parse(paramString).getHost();
+            if (QLog.isColorLevel()) {
+              QLog.d("springHb_SpringHbUrlInterceptor", 2, "do intercept url's domain: " + paramString);
+            }
+            if (bbkk.a(jdField_a_of_type_JavaLangString))
+            {
+              localObject = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetDomain", new Bundle());
+              if ((localObject == null) || (((EIPCResult)localObject).data == null)) {
+                jdField_a_of_type_JavaLangString = "down.qq.com";
+              }
+            }
+            else
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("springHb_SpringHbUrlInterceptor", 2, "get domain from IPC: " + jdField_a_of_type_JavaLangString);
+              }
+              if (bbkk.a(jdField_a_of_type_JavaLangString)) {
+                break;
+              }
+              localObject = jdField_a_of_type_JavaLangString.split("\\|");
+              int j = localObject.length;
+              i = 0;
+              if (i >= j) {
+                break;
+              }
+              if (!localObject[i].equals(paramString)) {
+                break label260;
+              }
+              return true;
+            }
+            jdField_a_of_type_JavaLangString = ((EIPCResult)localObject).data.getString("res_domain");
+            continue;
+            i += 1;
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            QLog.e("springHb_SpringHbUrlInterceptor", 2, paramString.getLocalizedMessage());
+            return false;
+          }
+        }
       }
-      localObject = paramEIPCResult.getString("user_nick");
-      break;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          int i = 0;
+        }
+      }
     }
   }
 }

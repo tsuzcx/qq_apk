@@ -1,144 +1,81 @@
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import java.util.List;
 
 public class mxa
+  extends BaseAdapter
 {
-  final int jdField_a_of_type_Int = 1;
-  public TextView a;
-  public PoiMapActivity.TabView a;
-  public XListView a;
-  public mwx a;
-  final int b;
-  final int c = 3;
-  final int d = 4;
-  public int e;
-  public int f;
-  public int g;
+  protected LayoutInflater a;
   
-  public mxa(PoiMapActivity paramPoiMapActivity, Context paramContext, String paramString, int paramInt)
+  public mxa(PoiMapActivity paramPoiMapActivity, Context paramContext)
   {
-    this.jdField_b_of_type_Int = 2;
-    this.e = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131371813));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramPoiMapActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView = new PoiMapActivity.TabView(paramPoiMapActivity, paramContext, paramString, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(paramContext);
-    this.jdField_a_of_type_Mwx = new mwx(paramPoiMapActivity);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Mwx);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new mxb(this, paramPoiMapActivity));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new mxc(this, paramPoiMapActivity));
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131693732));
-      return;
-    case 2: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131695223));
-      return;
-    case 3: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131695226));
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return 0;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.d) {
+      return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size() + 1;
+    }
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.c)
-    {
-      this.jdField_a_of_type_Mwx.a(paramInt, paramBoolean);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return null;
     }
-    if (this.e == 0) {
-      if ((paramInt > 0) && (!this.jdField_a_of_type_Mwx.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity.g)) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.g = false;
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new mwv(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559762, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370660));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362128));
+      paramViewGroup.c = paramView.findViewById(2131375799);
+      paramViewGroup.c.setVisibility(4);
+      paramViewGroup.d = paramView.findViewById(2131370421);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365065);
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376004);
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {
+        break label164;
       }
+      paramViewGroup.d.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Mwx.a(paramInt, paramBoolean);
-      return;
-      if (paramInt == -1) {}
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Mwx.a(paramString);
-  }
-  
-  public void a(ArrayList<mww> paramArrayList, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (paramBoolean2) {
-      a(3);
-    }
+    label164:
+    mwt localmwt;
     do
     {
-      return;
-      if (paramArrayList == null)
-      {
-        a(1);
-        return;
-      }
-      this.jdField_a_of_type_Mwx.a(paramArrayList, paramBoolean1, paramInt);
-    } while (this.jdField_a_of_type_ComTencentBizPoiMapActivity.l != this.e);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    a(4);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_Mwx.getCount() > 0)
-      {
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-        a(4);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.setSelect(paramBoolean);
-      return;
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PoiMapActivity", 2, "POI list update isfirst = " + paramBoolean);
-    }
-    if ((this.f != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.g != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) || (!paramBoolean))
-    {
-      if (paramBoolean)
-      {
-        a(2);
-        this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-        this.jdField_a_of_type_Mwx.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_Mwx.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Mwx.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Mwx.notifyDataSetChanged();
-      }
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity.h, this.jdField_a_of_type_ComTencentBizPoiMapActivity.i, "", this.jdField_a_of_type_ComTencentBizPoiMapActivity.b[this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView.jdField_a_of_type_Int], this.jdField_a_of_type_Mwx.jdField_b_of_type_Int, 20);
-      this.f = this.jdField_a_of_type_ComTencentBizPoiMapActivity.h;
-      this.g = this.jdField_a_of_type_ComTencentBizPoiMapActivity.i;
-    }
+      return paramView;
+      paramViewGroup = (mwv)paramView.getTag();
+      break;
+      paramViewGroup.d.setVisibility(8);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localmwt = (mwt)getItem(paramInt);
+    } while (localmwt == null);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localmwt.a);
+    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localmwt.b);
+    return paramView;
   }
 }
 

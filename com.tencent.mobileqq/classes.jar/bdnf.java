@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.VirtualInfo;
-
-public final class bdnf
-  implements Parcelable.Creator<VirtualInfo>
+public class bdnf
 {
-  public VirtualInfo a(Parcel paramParcel)
+  public static final bdnf a;
+  public static final bdnf b;
+  public static final bdnf c = new bdnf("ANDROID.QQ.NEWYYBAPK", "7001");
+  public String a;
+  public String b;
+  
+  static
   {
-    return new VirtualInfo(paramParcel);
+    jdField_a_of_type_Bdnf = new bdnf("ANDROID.QQ.WLISTAPK", "7003");
+    jdField_b_of_type_Bdnf = new bdnf("ANDROID.QQ.YYBAPK", "7002");
   }
   
-  public VirtualInfo[] a(int paramInt)
+  bdnf(String paramString1, String paramString2)
   {
-    return new VirtualInfo[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 

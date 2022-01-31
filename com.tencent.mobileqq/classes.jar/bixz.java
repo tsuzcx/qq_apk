@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
-class bixz
-  implements View.OnClickListener
+public class bixz
+  implements DialogInterface.OnCancelListener
 {
-  bixz(bixv parambixv) {}
+  public bixz(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    bixv.a(this.a).setText("");
+    AEVideoShelfEditFragment.a(this.a).cancelSave();
   }
 }
 

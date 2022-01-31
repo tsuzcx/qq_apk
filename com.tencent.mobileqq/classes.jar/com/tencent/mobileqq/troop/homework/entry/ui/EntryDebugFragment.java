@@ -39,17 +39,17 @@ public class EntryDebugFragment
     LayoutInflater tmp21_20 = paramLayoutInflater;
     tmp21_20[0] = 2131372127;
     LayoutInflater tmp26_21 = tmp21_20;
-    tmp26_21[1] = 2131376654;
+    tmp26_21[1] = 2131376656;
     LayoutInflater tmp31_26 = tmp26_21;
-    tmp31_26[2] = 2131376652;
+    tmp31_26[2] = 2131376654;
     LayoutInflater tmp36_31 = tmp31_26;
-    tmp36_31[3] = 2131376655;
+    tmp36_31[3] = 2131376657;
     LayoutInflater tmp41_36 = tmp36_31;
-    tmp41_36[4] = 2131363141;
+    tmp41_36[4] = 2131363140;
     LayoutInflater tmp46_41 = tmp41_36;
-    tmp46_41[5] = 2131363724;
+    tmp46_41[5] = 2131363723;
     LayoutInflater tmp51_46 = tmp46_41;
-    tmp51_46[6] = 2131375225;
+    tmp51_46[6] = 2131375227;
     tmp51_46;
     int j = paramLayoutInflater.length;
     int i = 0;
@@ -77,19 +77,19 @@ public class EntryDebugFragment
     case 2131372127: 
       PublishHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), null);
       return;
-    case 2131363724: 
+    case 2131363723: 
       BulkSendMessageFragment.a(getActivity(), getActivity().getIntent().getExtras());
       return;
-    case 2131376654: 
+    case 2131376656: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416265328L);
       return;
-    case 2131376652: 
+    case 2131376654: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416243152L);
       return;
-    case 2131376655: 
+    case 2131376657: 
       SubmitHomeWorkFragment.a(getActivity(), getActivity().getIntent().getExtras(), 681674162L, 1804117416294178L);
       return;
-    case 2131375225: 
+    case 2131375227: 
       return;
     }
     BeginnerGuideFragment.a(getActivity(), getActivity().getIntent().getExtras(), 7);

@@ -1,16 +1,50 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class amjc
-  implements amjh
+  implements amjg
 {
   public String a()
   {
-    return "彩签业务类型";
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692370);
   }
   
   public void a(View paramView, int paramInt)
   {
-    bcpw.a(paramView.getContext(), 0, "service type: " + paramInt, 1000).a();
+    boolean bool2 = true;
+    Context localContext = paramView.getContext();
+    boolean bool1;
+    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
+    {
+      bool1 = true;
+      if (!(localContext instanceof BaseActivity)) {
+        break label121;
+      }
+      if (((BaseActivity)localContext).isInMultiWindow()) {
+        break label116;
+      }
+      bool1 = bool2;
+    }
+    label116:
+    label121:
+    for (;;)
+    {
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      bgpw.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
+      bgqi.b(paramView, 6, 0);
+      bgqm.a(paramView.getCurrentAccountUin());
+      axqy.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
+    }
   }
 }
 

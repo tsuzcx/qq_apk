@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import bcpw;
+import bcql;
 
 class PersonalityLabelGalleryActivity$4$2
   implements Runnable
@@ -10,7 +10,7 @@ class PersonalityLabelGalleryActivity$4$2
   public void run()
   {
     String str = String.format("上传图片失败", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int + 1) });
-    bcpw.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$4.this$0.getApplicationContext(), 0, str, 0).a();
+    bcql.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$4.this$0.getApplicationContext(), 0, str, 0).a();
   }
 }
 

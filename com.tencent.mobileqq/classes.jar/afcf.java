@@ -1,53 +1,27 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class afcf
-  implements bcsk
+  implements afcm
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  CalendarDay b;
+  public afcf(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public afcf(ChatHistoryByDateFragment paramChatHistoryByDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public CalendarDay a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  }
-  
-  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_JavaLangString;
-    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_JavaLangString, "", "", "");
-    QLog.i(ChatHistoryByDateFragment.a(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
-  }
-  
-  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
-  {
-    if (!ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, paramInt1, paramInt2)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public CalendarDay b()
-  {
-    if (this.b == null)
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
     {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
-      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      }
     }
-    return this.b;
+    do
+    {
+      return;
+      this.a.a = null;
+    } while (!QLog.isColorLevel());
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

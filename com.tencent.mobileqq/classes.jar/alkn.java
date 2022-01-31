@@ -1,50 +1,18 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
-public abstract class alkn
-  implements alky
+public final class alkn
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  public int a;
-  protected Context a;
-  protected AppInterface a;
-  protected int b;
-  
-  public alkn()
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
+    return new ArAwardInfo(paramParcel);
   }
   
-  public int a()
+  public ArAwardInfo[] a(int paramInt)
   {
-    return 0;
-  }
-  
-  public void a(Context paramContext, AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void i() {}
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Int = 5;
+    return new ArAwardInfo[paramInt];
   }
 }
 

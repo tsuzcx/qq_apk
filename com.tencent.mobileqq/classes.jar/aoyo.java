@@ -1,26 +1,9 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aoyo
-  implements DialogInterface.OnClickListener
+  implements ajoq
 {
-  aoyo(aoyn paramaoyn, long paramLong, UUID paramUUID, Activity paramActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Aoyn.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
-      return;
-    }
-    new azpt(this.jdField_a_of_type_Long, this.jdField_a_of_type_Aoyn.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
-  }
+  aoyo(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
 }
 
 

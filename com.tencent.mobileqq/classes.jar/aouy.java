@@ -1,51 +1,227 @@
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.2;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.3;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
-class aouy
-  extends aovs
+public class aouy
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, aovu> jdField_a_of_type_JavaUtilHashMap;
   
-  public aouy(aouu paramaouu, MessageRecord paramMessageRecord)
+  private aovs a(String paramString, int paramInt, long paramLong, MessageRecord paramMessageRecord)
   {
-    super(paramaouu);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    if (paramLong <= 0L)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: multiMrUniseq is null");
+      return null;
+    }
+    if (paramMessageRecord == null)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: file message record is null");
+      return null;
+    }
+    aovs localaovs = new aovs(this, paramLong, paramString, paramInt, paramMessageRecord);
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    if (a(paramString)) {
+      if (paramInt == 0) {
+        paramString = new aovg(this, paramMessageRecord);
+      }
+    }
+    for (;;)
+    {
+      label76:
+      localaovs.a = paramString;
+      return localaovs;
+      if (paramInt == 3000)
+      {
+        paramString = new aovp(this, paramMessageRecord);
+      }
+      else if (paramInt == 1)
+      {
+        paramString = new aovz(this, paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"), paramString, null);
+      }
+      else
+      {
+        do
+        {
+          try
+          {
+            i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
+            switch (i)
+            {
+            default: 
+              paramString = null;
+            }
+          }
+          catch (NumberFormatException paramString)
+          {
+            do
+            {
+              for (;;)
+              {
+                QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
+                int i = -1;
+              }
+              if (paramInt == 0)
+              {
+                paramString = new aova(this, paramMessageRecord);
+                break;
+              }
+              if (paramInt == 3000)
+              {
+                paramString = new aovc(this, paramMessageRecord);
+                break;
+              }
+            } while (paramInt != 1);
+            paramString = new aove(this, paramMessageRecord);
+          }
+          break;
+          if (paramInt == 0)
+          {
+            paramString = new aovj(this, paramMessageRecord);
+            break;
+          }
+          if (paramInt == 3000)
+          {
+            paramString = new aovl(this, paramMessageRecord);
+            break;
+          }
+        } while (paramInt != 1);
+        paramString = new aovn(this, paramMessageRecord);
+      }
+    }
+    if (paramInt == 0) {
+      paramInt = 3;
+    }
+    for (;;)
+    {
+      paramString = new aovx(this, paramMessageRecord, paramInt, null);
+      break label76;
+      if (paramInt == 3000)
+      {
+        paramInt = 106;
+      }
+      else
+      {
+        if (paramInt != 1) {
+          break;
+        }
+        paramInt = 102;
+      }
+    }
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aovr paramaovr)
+  private void a(long paramLong)
   {
-    if ("1".equals(this.f))
+    this.jdField_a_of_type_AndroidOsHandler.post(new FileMultiMsgManager.2(this, paramLong));
+  }
+  
+  private static void a(MessageRecord paramMessageRecord, Bundle paramBundle)
+  {
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaovr.a(aouu.a(this.jdField_a_of_type_Long, false), false);
+      String str = (String)localIterator.next();
+      paramMessageRecord.saveExtInfoToExtStr(str, paramBundle.getString(str));
+    }
+  }
+  
+  private void a(MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt, Bundle paramBundle)
+  {
+    if (paramMessageRecord == null)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "updateFileMessageRecordWithUuid: MessageRecord is null.");
       return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    a(paramMessageRecord, paramBundle);
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "1");
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardLasSuccess", String.valueOf(awzy.a()));
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardLasSuccess");
+    if (!TextUtils.isEmpty(paramMessageRecord))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
+      long l = Long.parseLong(paramMessageRecord);
+      if (awzy.a() - l < 86400L) {
+        return false;
       }
-      paramaovr.a(aouu.a(this.jdField_a_of_type_Long, true), false);
+    }
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramString == null)
+    {
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "filePath is null");
+        bool2 = bool1;
+      }
+    }
+    do
+    {
+      do
+      {
+        return bool2;
+        if (apug.b(paramString)) {
+          break;
+        }
+        bool2 = bool1;
+      } while (!QLog.isColorLevel());
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is not existed");
+      return false;
+      bool1 = bool2;
+      if (apug.a(paramString) <= 10485760L) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is isSmall:" + bool1);
+    return bool1;
+  }
+  
+  private static String b(long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692538);
+    }
+    if (paramLong > 10485760L) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692540);
+    }
+    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692577);
+  }
+  
+  private void b(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new FileMultiMsgManager.3(this, paramLong));
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, aovv paramaovv)
+  {
+    if (paramaovv == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds but callback is null fileid " + paramString);
       return;
     }
-    aouu.a(this.jdField_a_of_type_Aouu).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aouz(this, paramString, paramaovr));
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds will call reqFeeds fileid " + paramString);
+    xam.a(paramQQAppInterface, paramLong1, paramInt1, paramString, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean, paramBundle, new aouz(paramString, paramaovv, paramLong2));
   }
 }
 

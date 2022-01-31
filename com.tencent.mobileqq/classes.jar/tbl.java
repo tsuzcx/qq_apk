@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import org.json.JSONObject;
 
-class tbl
-  implements View.OnClickListener
+public class tbl
 {
-  tbl(tbk paramtbk, tbj paramtbj) {}
-  
-  public void onClick(View paramView)
-  {
-    int i = this.jdField_a_of_type_Tbj.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Tbk.a.a(this.jdField_a_of_type_Tbj.itemView, i);
-    }
-  }
+  public int a;
+  public String a = "";
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

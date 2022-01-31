@@ -1,101 +1,96 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
-import tencent.im.oidb.oidb_0xb60.RspBody;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xb85.Oidb_0xb85.GetRankListRspBody;
+import tencent.im.oidb.cmd0xb85.Oidb_0xb85.RspBody;
+import tencent.im.oidb.ranklist_comm.ranklist_comm.RankItem;
 
 class aack
-  extends mxm
+  extends mxj
 {
-  aack(aacj paramaacj, asiu paramasiu) {}
+  aack(aacj paramaacj, aacv paramaacv, JSONObject paramJSONObject, aabi paramaabi) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Asiu.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Asiu.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
+      QLog.i(aacj.a, 2, "onResult appid=" + aacj.a(this.jdField_a_of_type_Aacj).a + ", openid=" + this.jdField_a_of_type_Aacv.a + ", openkey=" + this.jdField_a_of_type_Aacv.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
     }
     if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      aacj.a(this.jdField_a_of_type_Aacj, new AppInfoError(6, "jobApiPermission req error"));
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label513;
-      }
+      aaep.a(this.jdField_a_of_type_Aabi, paramInt, "getRankingList result error, try again");
+      return;
     }
-    for (;;)
+    paramBundle = new Oidb_0xb85.RspBody();
+    try
     {
-      Object localObject;
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = paramBundle;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      for (;;)
+      {
+        label358:
+        paramArrayOfByte = null;
+        paramBundle.printStackTrace();
+        continue;
+        paramBundle.put("rankingList", localObject);
+        Object localObject = new JSONObject();
+        paramArrayOfByte = (ranklist_comm.RankItem)paramArrayOfByte.self_rank_item.get();
+        ((JSONObject)localObject).put("nickName", paramArrayOfByte.nick.get());
+        ((JSONObject)localObject).put("avatarUrl", paramArrayOfByte.figure.get());
+        ((JSONObject)localObject).put("score", paramArrayOfByte.value.get());
+        ((JSONObject)localObject).put("rank", paramArrayOfByte.rank.get());
+        paramBundle.put("selfRank", localObject);
+      }
+      aaep.a(this.jdField_a_of_type_Aabi, -1, "parse result error, try again");
+    }
+    if (paramArrayOfByte != null)
+    {
+      paramBundle = new JSONObject();
       try
       {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
+        localObject = new JSONArray();
+        paramArrayOfByte = (Oidb_0xb85.GetRankListRspBody)paramArrayOfByte.get_ranklist_rsp.get();
+        Iterator localIterator = paramArrayOfByte.rpt_rank_item.get().iterator();
+        while (localIterator.hasNext())
         {
-          paramArrayOfByte = ", data=null";
-          QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new oidb_0xb60.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
-          break label297;
-        }
-        aacj.b(this.jdField_a_of_type_Aacj, new AppInfoError(6, "jobApiPermission rsp invalid"));
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        aacj.c(this.jdField_a_of_type_Aacj, new AppInfoError(6, "jobApiPermission parse rsp error"));
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
-        return;
-        label297:
-        if (QLog.isColorLevel()) {
-          QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
-        }
-        paramArrayOfByte = aacb.a();
-        paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Asiu.jdField_a_of_type_JavaUtilSet);
-        if (paramBundle.get_privilege_rsp.api_names.size() > 0)
-        {
-          localObject = paramBundle.get_privilege_rsp.api_names.get().iterator();
-          while (((Iterator)localObject).hasNext())
+          ranklist_comm.RankItem localRankItem = (ranklist_comm.RankItem)localIterator.next();
+          JSONObject localJSONObject = new JSONObject();
+          try
           {
-            String str = (String)((Iterator)localObject).next();
-            if (aacb.a(paramArrayOfByte, str)) {
-              this.jdField_a_of_type_Asiu.jdField_a_of_type_JavaUtilSet.add(str);
-            }
+            localJSONObject.put("nickName", localRankItem.nick.get());
+            localJSONObject.put("avatarUrl", localRankItem.figure.get());
+            localJSONObject.put("score", localRankItem.value.get());
+            localJSONObject.put("rank", localRankItem.rank.get());
+            ((JSONArray)localObject).put(localJSONObject);
+          }
+          catch (JSONException localJSONException) {}
+          if (QLog.isColorLevel()) {
+            QLog.e(aacj.a, 2, localJSONException.getMessage(), localJSONException);
           }
         }
-        this.jdField_a_of_type_Asiu.c = (NetConnInfoCenter.getServerTimeMillis() + Math.max(paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L, 300000L));
-        asiz.a().a(this.jdField_a_of_type_Asiu);
-        aacj.a(this.jdField_a_of_type_Aacj, this.jdField_a_of_type_Asiu);
-        return;
-        label513:
-        paramBundle = "";
+        if (!QLog.isDevelopLevel()) {
+          break label358;
+        }
       }
+      catch (JSONException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(aacj.a, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+        }
+      }
+      QLog.i(aacj.a, 2, "result is, " + paramBundle.toString());
+      aaep.a(this.jdField_a_of_type_Aabi, paramBundle);
+      return;
     }
   }
 }

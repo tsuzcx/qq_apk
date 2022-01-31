@@ -1,9 +1,10 @@
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aelx
-  extends aelu
+  extends aels
 {
+  public AnimationView.AnimationInfo a;
   public String b;
   
   public aelx(String paramString)
@@ -13,14 +14,16 @@ public class aelx
   
   public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if (paramRedPacketInfo != null) {
-      this.b = paramRedPacketInfo.resPath;
+    if (paramRedPacketInfo != null)
+    {
+      this.b = paramRedPacketInfo.background;
+      this.a = paramRedPacketInfo.animInfo;
     }
   }
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.b);
+    return (this.b != null) || (this.a != null);
   }
 }
 

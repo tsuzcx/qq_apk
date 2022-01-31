@@ -1,28 +1,34 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class wju
-  implements www
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public wju(RecommendBannerItemView paramRecommendBannerItemView) {}
+  public wju(SubScribeSwipeRefreshLayout paramSubScribeSwipeRefreshLayout) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (RecommendBannerItemView.a(this.a))
+    switch (paramMotionEvent.getAction())
     {
-      if (RecommendBannerItemView.a(this.a) != null) {
-        xhe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-      }
-      return;
     }
-    if (paramBoolean)
+    int i;
+    int j;
+    do
     {
-      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
-      return;
-    }
-    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+      do
+      {
+        return true;
+        i = (int)(paramMotionEvent.getX() + 0.5F);
+        j = (int)(paramMotionEvent.getY() + 0.5F);
+      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
+      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
+    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
+    return false;
   }
 }
 

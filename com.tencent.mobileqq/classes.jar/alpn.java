@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.7;
 
-class alpn
-  implements WtTicketPromise
+public class alpn
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  alpn(alpf paramalpf, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, long paramLong) {}
+  public alpn(ArkAppModuleReg.ModuleQQ.7 param7, bbgu parambbgu) {}
   
-  public void Done(Ticket paramTicket)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "--- pskey async done---  ");
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bbgu.findViewById(2131365105)).setImageBitmap(paramBitmap);
     }
-    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, true, paramTicket);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ArkApp", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
-    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, false, null);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.e("ArkApp", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
-    alpf.a(this.jdField_a_of_type_Alpf, this.jdField_a_of_type_Long, false, null);
   }
 }
 

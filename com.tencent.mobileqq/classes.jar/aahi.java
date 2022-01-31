@@ -1,55 +1,15 @@
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.io.File;
-import java.net.MalformedURLException;
 
 public class aahi
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
   public aahi(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
-      try
-      {
-        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
-          continue;
-        }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        bcpw.a(this.a.getApplicationContext(), 1, 2131720683, 0).b(this.a.getTitleBarHeight());
-        return;
-      }
-      catch (MalformedURLException paramMessage)
-      {
-        break label142;
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

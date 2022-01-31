@@ -1,102 +1,21 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import com.tencent.widget.XListView;
 
 public class azhb
-  extends bfwn
+  extends Handler
 {
-  protected LayoutInflater a;
-  protected boolean a;
+  public azhb(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public azhb(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, Context paramContext, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
-    int i;
-    if (paramView == null)
+    switch (paramMessage.what)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561811, null);
-      paramViewGroup = new azhc(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369077));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375821));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369066));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369062));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      ImageView localImageView = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.c)) {
-        break label228;
-      }
-      i = 0;
-      label133:
-      localImageView.setVisibility(i);
-      if (TextUtils.isEmpty(localTroopBarPOI.d)) {
-        break label235;
-      }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.d);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      label171:
-      if (paramInt != 0) {
-        break label247;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      label183:
-      if (!this.jdField_a_of_type_Boolean) {
-        break label258;
-      }
-      paramView.setBackgroundResource(17170445);
+    default: 
+      return;
     }
-    for (;;)
-    {
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (azhc)paramView.getTag();
-      break;
-      label228:
-      i = 8;
-      break label133;
-      label235:
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label171;
-      label247:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label183;
-      label258:
-      paramView.setBackgroundResource(2130847412);
-    }
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

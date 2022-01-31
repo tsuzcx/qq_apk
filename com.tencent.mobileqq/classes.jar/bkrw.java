@@ -1,7 +1,4 @@
-public abstract interface bkrw
-{
-  public abstract void a(float paramFloat1, float paramFloat2);
-}
+public class bkrw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

@@ -1,25 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import java.util.HashMap;
 
 public class aajg
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public aajg(AssistantSettingActivity paramAssistantSettingActivity, ahfz paramahfz) {}
+  public aajg(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Ahfz.a(paramBoolean);
-    paramCompoundButton = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramCompoundButton.put("ext1", i + "");
-      ahih.a("sq.sz.dzkg", 1, 0, paramCompoundButton);
-      return;
     }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690809));
+        this.a.jdField_a_of_type_Bcqf.d(2130848623);
+        this.a.jdField_a_of_type_Bcqf.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bcqf == null) || (!this.a.jdField_a_of_type_Bcqf.isShowing()));
+    this.a.jdField_a_of_type_Bcqf.cancel();
+    this.a.jdField_a_of_type_Bcqf.a(this.a.getString(2131690811));
+    this.a.jdField_a_of_type_Bcqf.c(true);
+    this.a.jdField_a_of_type_Bcqf.a(false);
+    this.a.jdField_a_of_type_Bcqf.b(true);
   }
 }
 

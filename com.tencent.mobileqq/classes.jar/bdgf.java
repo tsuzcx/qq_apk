@@ -1,156 +1,59 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
 
 public class bdgf
 {
-  private static bdgf jdField_a_of_type_Bdgf;
-  private bdge jdField_a_of_type_Bdge = new bdge();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public static bdgf a()
+  public bdgf(String paramString1, String paramString2, int paramInt)
   {
-    if (jdField_a_of_type_Bdgf == null) {
-      jdField_a_of_type_Bdgf = new bdgf();
-    }
-    return jdField_a_of_type_Bdgf;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  private DownloadInfo a(bdgk parambdgk)
+  public boolean a(String paramString1, String paramString2, int paramInt)
   {
-    DownloadInfo localDownloadInfo = new DownloadInfo(parambdgk.jdField_a_of_type_JavaLangString, parambdgk.jdField_b_of_type_JavaLangString);
-    localDownloadInfo.jdField_d_of_type_JavaLangString = parambdgk.jdField_d_of_type_JavaLangString;
-    localDownloadInfo.jdField_b_of_type_Int = parambdgk.jdField_a_of_type_Int;
-    localDownloadInfo.jdField_b_of_type_Boolean = parambdgk.jdField_d_of_type_Boolean;
-    localDownloadInfo.jdField_a_of_type_Boolean = parambdgk.e;
-    localDownloadInfo.f = parambdgk.jdField_c_of_type_JavaLangString;
-    localDownloadInfo.jdField_a_of_type_Int = parambdgk.jdField_c_of_type_Int;
-    localDownloadInfo.jdField_c_of_type_Int = parambdgk.jdField_b_of_type_Int;
-    localDownloadInfo.jdField_d_of_type_Int = 0;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
-    return localDownloadInfo;
-  }
-  
-  private boolean a()
-  {
-    return "com.tencent.mobileqq:tool".equals(bdey.r());
-  }
-  
-  public int a(Activity paramActivity, bdgk parambdgk)
-  {
-    if (!a()) {
-      return 401;
-    }
-    if (parambdgk == null) {
-      return 400;
-    }
-    if ((parambdgk.jdField_a_of_type_Boolean) && (!"com.tencent.now".equals(parambdgk.jdField_c_of_type_JavaLangString))) {
-      return 402;
-    }
-    DownloadInfo localDownloadInfo = a(parambdgk);
-    localDownloadInfo.g = 2;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
-    if ((nam.a() != 1) && (paramActivity != null) && (parambdgk.f)) {
-      a(paramActivity, localDownloadInfo, parambdgk);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label58;
+      }
+      bool1 = bool2;
     }
     for (;;)
     {
-      return 200;
-      bdfv.a().a(localDownloadInfo);
-      this.jdField_a_of_type_Bdge.a(parambdgk);
-    }
-  }
-  
-  public int a(bdgk parambdgk)
-  {
-    int j = -1;
-    int i;
-    if (!a()) {
-      i = 401;
-    }
-    int k;
-    do
-    {
-      do
+      if (!bool1)
       {
-        return i;
-        i = j;
-      } while (parambdgk == null);
-      parambdgk = a(parambdgk);
-      parambdgk.g = 13;
-      parambdgk.jdField_c_of_type_Int = 0;
-      k = bdfv.a().a(parambdgk);
-      if (k == 1) {
-        return 1;
+        this.jdField_a_of_type_JavaLangString = paramString1;
+        this.b = paramString2;
+        this.jdField_a_of_type_Int = paramInt;
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
-      i = j;
-    } while (k != 0);
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    if (!a()) {
-      return 401;
+      return bool1;
+      label58:
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Int == paramInt)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
+        {
+          bool1 = bool2;
+          if (this.b.equals(paramString2))
+          {
+            bool1 = bool2;
+            if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_Bdge.a(paramString);
-    bdfv.a().a(paramString);
-    return 200;
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    if (!a()) {
-      return 401;
-    }
-    bdfv.a().a(paramString1, paramString2);
-    return 200;
-  }
-  
-  public int a(List<bdgk> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return 400;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DownloadInfo localDownloadInfo = a((bdgk)paramList.next());
-      localDownloadInfo.jdField_c_of_type_Int = 0;
-      localArrayList.add(localDownloadInfo);
-    }
-    if (bdfv.a().a(localArrayList) != 0) {
-      return 400;
-    }
-    return 200;
-  }
-  
-  public void a(Activity paramActivity, DownloadInfo paramDownloadInfo, bdgk parambdgk)
-  {
-    new Handler(Looper.getMainLooper()).post(new DownloadNativeApi.1(this, paramDownloadInfo, parambdgk, paramActivity));
-  }
-  
-  public void a(bdgi parambdgi)
-  {
-    this.jdField_a_of_type_Bdge.a(parambdgi);
-    bdfv.a().a(this.jdField_a_of_type_Bdge);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return bdiw.a(paramString);
-  }
-  
-  public void b(bdgi parambdgi)
-  {
-    this.jdField_a_of_type_Bdge.a();
-    this.jdField_a_of_type_Bdge.b(parambdgi);
-    bdfv.a().b(this.jdField_a_of_type_Bdge);
   }
 }
 

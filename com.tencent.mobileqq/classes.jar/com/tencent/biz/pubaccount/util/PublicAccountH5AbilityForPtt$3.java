@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.util;
 
-import sfk;
+import sfh;
 
 public class PublicAccountH5AbilityForPtt$3
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$3(sfk paramsfk) {}
+  public PublicAccountH5AbilityForPtt$3(sfh paramsfh) {}
   
   public void run()
   {
-    sfk.a(this.this$0);
+    sfh.a(this.this$0);
   }
 }
 

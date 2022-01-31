@@ -1,93 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amrt
-  extends ampb<amru>
 {
-  public int a()
+  public long a;
+  public boolean a;
+  
+  public amrt()
   {
-    return 566;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  @NonNull
-  public amru a(int paramInt)
+  public static amrt a(String paramString)
   {
-    return new amru();
-  }
-  
-  @Nullable
-  public amru a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0) && (paramArrayOfampi[0] != null))
+    if (paramString == null) {}
+    do
     {
-      amru localamru = amru.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("BootOptimizeConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      return null;
+      try
+      {
+        amrt localamrt = new amrt();
+        paramString = new JSONObject(paramString);
+        localamrt.jdField_a_of_type_Boolean = paramString.optBoolean("useParcelForBoot", true);
+        localamrt.jdField_a_of_type_Long = paramString.optLong("delayPluginManageTimeInMills", 0L);
+        QLog.d("BootOptimizeConfProcessor", 2, "confBean = " + localamrt.toString());
+        return localamrt;
       }
-      return localamru;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "onParsed is null");
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("BootOptimizeConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     return null;
   }
   
-  public Class<amru> a()
+  public String toString()
   {
-    return amru.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void a(amru paramamru)
-  {
-    if (paramamru == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BootOptimizeConfProcessor", 2, "onUpdate but newConf==null");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "onUpdate " + paramamru.toString());
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ahop.a(localQQAppInterface, paramamru.jdField_a_of_type_Boolean);
-    localQQAppInterface.getApp().getSharedPreferences("acc_info" + localQQAppInterface.getAccount(), 0).edit().putLong("PREF_PLUGIN_DELAY_TIME", paramamru.jdField_a_of_type_Long).apply();
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BootOptimizeConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "BootOptimizeConfigureBean{useParcelForBoot=" + this.jdField_a_of_type_Boolean + ", delayPluginManageTimeInMills=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

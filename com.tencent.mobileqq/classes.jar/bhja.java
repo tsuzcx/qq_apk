@@ -1,15 +1,10 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
-
-class bhja
-  implements bhje
+public class bhja
 {
-  bhja(bhiz parambhiz) {}
-  
-  public boolean a(PluginRecord paramPluginRecord, File paramFile)
-  {
-    return bhiz.a(this.a, paramPluginRecord);
-  }
+  public float a;
+  public int a;
+  private bhjb jdField_a_of_type_Bhjb;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
 }
 
 

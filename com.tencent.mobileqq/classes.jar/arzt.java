@@ -1,29 +1,137 @@
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class arzt
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new arzu(this);
-  private arzv jdField_a_of_type_Arzv;
+  private static final arum jdField_a_of_type_Arum = new arum(-1, "-1");
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final List<arzu> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private arum b = jdField_a_of_type_Arum;
   
   public arzt(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+  }
+  
+  public arum a()
+  {
+    return this.b;
   }
   
   public void a()
   {
-    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.b = jdField_a_of_type_Arum;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((arzu)localIterator.next()).a();
+    }
   }
   
-  public void a(arzv paramarzv)
+  public void a(arum paramarum)
   {
-    this.jdField_a_of_type_Arzv = paramarzv;
+    this.b = paramarum;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((arzu)localIterator.next()).a(paramarum);
+    }
+  }
+  
+  public void a(arzu paramarzu)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramarzu)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramarzu);
+      }
+      return;
+    }
+  }
+  
+  /* Error */
+  public void b()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: invokeinterface 70 1 0
+    //   18: aload_1
+    //   19: monitorexit
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: return
+    //   23: astore_2
+    //   24: aload_1
+    //   25: monitorexit
+    //   26: aload_2
+    //   27: athrow
+    //   28: astore_1
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: aload_1
+    //   32: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	33	0	this	arzt
+    //   28	4	1	localObject1	Object
+    //   23	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	20	23	finally
+    //   24	26	23	finally
+    //   2	9	28	finally
+    //   26	28	28	finally
+  }
+  
+  /* Error */
+  public void b(arzu paramarzu)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: aload_1
+    //   14: invokeinterface 73 2 0
+    //   19: pop
+    //   20: aload_2
+    //   21: monitorexit
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: return
+    //   25: astore_1
+    //   26: aload_2
+    //   27: monitorexit
+    //   28: aload_1
+    //   29: athrow
+    //   30: astore_1
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: aload_1
+    //   34: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	35	0	this	arzt
+    //   0	35	1	paramarzu	arzu
+    // Exception table:
+    //   from	to	target	type
+    //   9	22	25	finally
+    //   26	28	25	finally
+    //   2	9	30	finally
+    //   28	30	30	finally
   }
 }
 

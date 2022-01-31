@@ -1,16 +1,25 @@
 public class alib
 {
-  public float a;
+  public double a;
   public int a;
+  public String a;
+  public alic[] a;
   public int b;
-  public int c;
-  public int d;
-  public int e;
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfAlic != null) && (this.jdField_a_of_type_ArrayOfAlic.length > 0)) {
+      i = 0;
+    }
+    while (i < this.jdField_a_of_type_ArrayOfAlic.length)
+    {
+      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAlic[i].toString()).append('\n');
+      i += 1;
+      continue;
+      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+    }
     return localStringBuilder.toString();
   }
 }

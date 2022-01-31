@@ -1,25 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
 
 public class agzs
-  implements View.OnClickListener
+  implements ahds
 {
   public agzs(LingHbFragment paramLingHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((paramView instanceof TextView))
+    if (paramInt == 0)
     {
-      paramView = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + paramView);
-      this.a.c.setText(paramView);
-      this.a.a.post(new LingHbFragment.2.1(this));
+      this.a.a.findViewById(2131368064).setVisibility(8);
+      return;
     }
+    this.a.a.findViewById(2131368064).setVisibility(0);
   }
 }
 

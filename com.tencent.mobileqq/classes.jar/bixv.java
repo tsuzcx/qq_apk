@@ -1,93 +1,44 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.ttpic.baseutils.string.StringUtils;
-import com.tencent.ttpic.openapi.model.TextWMElement;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayer;
+import com.tencent.ttpic.videoshelf.model.player.IVideoShelfPlayerListener;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import java.lang.ref.WeakReference;
 
 public class bixv
-  extends Dialog
+  implements IVideoShelfPlayerListener
 {
-  private int jdField_a_of_type_Int = 12;
-  private transient TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private biya jdField_a_of_type_Biya;
-  private TextView b;
+  private WeakReference<AETemplateInfoFragment> a;
   
-  public bixv(@NonNull Context paramContext)
+  public bixv(AETemplateInfoFragment paramAETemplateInfoFragment)
   {
-    super(paramContext, 2131755345);
-    a(paramContext);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setSoftInputMode(21);
+    this.a = new WeakReference(paramAETemplateInfoFragment);
+  }
+  
+  public void onChangVideoSize(int paramInt1, int paramInt2) {}
+  
+  public void onCompletion()
+  {
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onCompletion");
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a();
     }
-    setCanceledOnTouchOutside(true);
   }
   
-  private void a()
+  public boolean onError(int paramInt, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-  }
-  
-  private void a(Context paramContext)
-  {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558485, null);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramContext.findViewById(2131365466));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131365468));
-    this.b = ((TextView)paramContext.findViewById(2131363852));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131364611));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363684));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bixw(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bixx(this));
-    this.b.setOnClickListener(new bixy(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bixz(this));
-    setContentView(paramContext);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(biya parambiya)
-  {
-    this.jdField_a_of_type_Biya = parambiya;
-  }
-  
-  public void a(TextWMElement paramTextWMElement, boolean paramBoolean)
-  {
-    String str1 = paramTextWMElement.userValue;
-    String str2 = paramTextWMElement.color;
-    a();
-    if ((TextUtils.isEmpty(str1)) && (paramBoolean)) {
-      if (!TextUtils.isEmpty(paramTextWMElement.fmtstr))
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextWMElement.fmtstr);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramTextWMElement.fmtstr.length());
-      }
+    QLog.i("AETemplateInfoFragment", 1, "[player lifecycle]---PlayerListener onError errCode=" + paramInt + ", msg=" + paramString);
+    if ((this.a != null) && (this.a.get() != null)) {
+      AETemplateInfoFragment.b((AETemplateInfoFragment)this.a.get());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-      return;
-      paramTextWMElement = StringUtils.removeUTF8Emoji(str1);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextWMElement);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramTextWMElement.length());
+    return true;
+  }
+  
+  public void onPrepared(IVideoShelfPlayer paramIVideoShelfPlayer) {}
+  
+  public void onUpdateRate(long paramLong)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AETemplateInfoFragment)this.a.get()).a(paramLong);
     }
   }
 }

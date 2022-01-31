@@ -1,113 +1,37 @@
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
 
 public class baol
-  implements bame
+  implements View.OnTouchListener
 {
-  public baol(TroopAIORobotLayout paramTroopAIORobotLayout, int paramInt, String paramString1, String paramString2, String paramString3, baoe parambaoe) {}
+  public baol(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    if (paramInt == 0)
+    switch (paramMotionEvent.getAction())
     {
-      balw localbalw = RobotPanelLayoutBase.a();
-      if (localbalw == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopAIORobotLayout", 2, "troopRobotManager = null");
-        }
-        return;
-      }
-      paramInt = paramRspBody.version.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAIORobotLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
-      }
-      if ((this.jdField_a_of_type_Int != paramInt) && (paramRspBody.robot_uin.get() == Long.parseLong(this.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c = this.b;
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b = this.c;
-        localbalw.a(this.b, this.jdField_a_of_type_JavaLangString, paramRspBody);
-        paramRspBody = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody);
-        if ((paramRspBody != null) && (paramRspBody.size() > 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody, true);
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() > 0) {
-            TroopAIORobotLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b, localbalw, true);
-          }
-          paramRspBody = this.jdField_a_of_type_Baoe;
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() <= 0) {
-            break label468;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramRspBody.a(bool, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString);
-        return;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("TroopAIORobotLayout", 2, "listDatas is null in new version");
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAIORobotLayout", 2, "item count == 0");
-          }
-          byte[] arrayOfByte = localbalw.a(this.b, this.jdField_a_of_type_JavaLangString);
-          if (arrayOfByte != null) {
-            for (;;)
-            {
-              try
-              {
-                paramRspBody.mergeFrom(arrayOfByte);
-                paramRspBody = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody);
-                if ((paramRspBody == null) || (paramRspBody.size() <= 0)) {
-                  break label424;
-                }
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(false);
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.a(paramRspBody, true);
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c = this.b;
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.b = this.c;
-              }
-              catch (InvalidProtocolBufferMicroException paramRspBody) {}
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("TroopAIORobotLayout", 2, paramRspBody.getMessage());
-              break;
-              label424:
-              if (QLog.isColorLevel()) {
-                QLog.d("TroopAIORobotLayout", 2, "listDatas is null");
-              }
-            }
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("TroopAIORobotLayout", 2, "data is null");
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.c();
-        break;
-        label468:
-        bool = false;
-      }
+    case 2: 
+    default: 
+      bool = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAIORobotLayout", 2, "initData->reqPanelList: errorCode = " + paramInt);
-    }
-    this.jdField_a_of_type_Baoe.a(false, "");
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.b(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

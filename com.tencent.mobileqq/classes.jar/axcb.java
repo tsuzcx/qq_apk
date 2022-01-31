@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.servlet.LoginVerifyServlet.3;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public class axcb
-  implements HostnameVerifier
+final class axcb
+  implements axce
 {
-  public axcb(LoginVerifyServlet.3 param3, URL paramURL) {}
+  axcb(BusinessObserver paramBusinessObserver) {}
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public void a(int paramInt, String paramString)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
-    }
-    return bool;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "getTmpkey");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

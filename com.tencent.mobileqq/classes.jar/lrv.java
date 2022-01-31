@@ -1,17 +1,81 @@
-import android.opengl.GLES20;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 
 public class lrv
-  extends lru
+  extends lrx
 {
-  public lrv(String paramString)
+  protected final Context a;
+  protected final int k;
+  
+  public lrv(Context paramContext, int paramInt)
   {
-    super(paramString);
+    bfmz.a(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.k = paramInt;
+    a(false);
   }
   
-  public void a(int paramInt)
+  protected Bitmap a()
   {
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lsv.a();
+    Object localObject = null;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+    localOptions.inScaled = false;
+    int i = muc.a(this.jdField_a_of_type_AndroidContentContext);
+    localOptions.inSampleSize = 1;
+    if (i <= 480) {
+      localOptions.inSampleSize = 2;
+    }
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    try
+    {
+      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+      localObject = localBitmap2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError3)
+    {
+      do
+      {
+        localOptions.inSampleSize *= 2;
+      } while (localResources == null);
+      try
+      {
+        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+        return localObject;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        localOptions.inSampleSize *= 2;
+        i = this.k;
+        try
+        {
+          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
+          return localBitmap1;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2) {}
+      }
+    }
+    return localObject;
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (!d()) {
+      paramBitmap.recycle();
+    }
+  }
+  
+  public int[] a(lqo paramlqo)
+  {
+    if (!c()) {
+      b(paramlqo);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 

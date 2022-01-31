@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.mini.widget;
 
+import com.tencent.qphone.base.util.QLog;
+
 class MiniAppTextArea1$5
   implements Runnable
 {
@@ -7,6 +9,7 @@ class MiniAppTextArea1$5
   
   public void run()
   {
+    QLog.d("MiniAppTextArea1", 1, "hideCurrentInput set isFocused false");
     MiniAppTextArea1.access$102(false);
   }
 }

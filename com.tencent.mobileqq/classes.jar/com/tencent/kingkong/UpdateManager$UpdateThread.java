@@ -1,17 +1,17 @@
 package com.tencent.kingkong;
 
 import android.os.Looper;
-import zzl;
+import zzi;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private zzl a;
+  private zzi a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new zzl();
+    this.a = new zzi();
     Looper.loop();
   }
 }

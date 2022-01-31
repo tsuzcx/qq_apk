@@ -9,6 +9,7 @@ public class ahsc
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    axqy.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
     try
     {
       paramDialogInterface.dismiss();

@@ -1,21 +1,21 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.widget.ImageView;
-import son;
+import sok;
 
 public class PublicAccountImageCollectionMainActivity$3$2
   implements Runnable
 {
-  public PublicAccountImageCollectionMainActivity$3$2(son paramson) {}
+  public PublicAccountImageCollectionMainActivity$3$2(sok paramsok) {}
   
   public void run()
   {
     if (PublicAccountImageCollectionMainActivity.b(this.a.a))
     {
-      this.a.a.e.setImageResource(2130841176);
+      this.a.a.e.setImageResource(2130841173);
       return;
     }
-    this.a.a.e.setImageResource(2130841175);
+    this.a.a.e.setImageResource(2130841172);
   }
 }
 

@@ -1,39 +1,32 @@
 import android.content.res.Resources;
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import java.util.List;
 
 public class acfi
-  extends atzv
+  implements PopupWindow.OnDismissListener
 {
   public acfi(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void onDismiss()
   {
-    TextPreviewTranslateActivity.b(this.a);
-    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
     {
-      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
-      return;
-    }
-    String str2 = this.a.getResources().getString(2131699256);
-    String str1 = str2;
-    if (paramTranslateResult != null)
-    {
-      if (TextUtils.isEmpty(paramTranslateResult.e)) {
-        break label92;
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
       }
-      str1 = paramTranslateResult.e;
     }
-    for (;;)
+    label76:
+    for (int i = 2130844793;; i = 2130845299)
     {
-      bcpw.a(this.a, 1, str1, 0).a();
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
       return;
-      label92:
-      str1 = str2;
-      if (paramTranslateResult.a()) {
-        str1 = this.a.getResources().getString(2131699235);
-      }
     }
   }
 }

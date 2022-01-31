@@ -2,21 +2,28 @@ import android.support.annotation.NonNull;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vbv
-  extends QQUIEventReceiver<vbd, tkn>
+  extends QQUIEventReceiver<vba, tzt>
 {
-  public vbv(@NonNull vbd paramvbd)
+  public vbv(@NonNull vba paramvba)
   {
-    super(paramvbd);
+    super(paramvba);
   }
   
-  public void a(@NonNull vbd paramvbd, @NonNull tkn paramtkn)
+  public void a(@NonNull vba paramvba, @NonNull tzt paramtzt)
   {
-    paramvbd.i();
+    ved.a(this.TAG, "play video groupId=%s, %s", paramtzt.jdField_a_of_type_Twl, paramtzt.b);
+    if ((vba.a(paramvba).equals(paramtzt.jdField_a_of_type_JavaLangString)) && ((paramtzt.jdField_a_of_type_Twl instanceof twa)))
+    {
+      uvp localuvp = ((twa)paramtzt.jdField_a_of_type_Twl).a;
+      if (localuvp != null) {
+        paramvba.a(localuvp.jdField_a_of_type_JavaLangString, paramtzt.b, true);
+      }
+    }
   }
   
   public Class acceptEventClass()
   {
-    return tkn.class;
+    return tzt.class;
   }
 }
 

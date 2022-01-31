@@ -1,22 +1,8 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class qmy
-  implements Animation.AnimationListener
+public abstract interface qmy
 {
-  qmy(qmx paramqmx) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (qmx.a(this.a) != null) {
-      qmx.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void b();
 }
 
 

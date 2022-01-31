@@ -1,18 +1,33 @@
-import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import java.lang.ref.WeakReference;
 
 public class rqv
+  extends Handler
 {
-  public static rqq a(Context paramContext, int paramInt)
+  private WeakReference<ReadInJoySkinAnimManager> a;
+  
+  public rqv(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
+    if (localReadInJoySkinAnimManager == null) {
+      return;
+    }
+    switch (paramMessage.what)
     {
     default: 
-      return new rqt(paramContext);
-    case 2: 
-      return new ReadInJoySkinAnimManager(paramContext);
+      return;
+    case 1: 
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+      return;
     }
-    return new rqu(paramContext);
+    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 

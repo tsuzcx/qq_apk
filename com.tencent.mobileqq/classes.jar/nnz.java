@@ -5,27 +5,24 @@ import android.content.Intent;
 class nnz
   extends BroadcastReceiver
 {
-  nnz(nnx paramnnx) {}
+  nnz(nnu paramnnu, String paramString, boolean paramBoolean) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a == 1)
-    {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 13, i, paramIntent);
-    }
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Nnu.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     try
     {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Nnu.c);
+      label58:
+      this.jdField_a_of_type_Nnu.c = null;
       return;
     }
     catch (Exception paramContext)
     {
-      break label50;
+      break label58;
     }
   }
 }

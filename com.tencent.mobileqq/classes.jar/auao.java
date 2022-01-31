@@ -1,23 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
+import android.view.View;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
 import java.util.List;
 
 public class auao
-  implements PopupWindow.OnDismissListener
+  implements bfph
 {
   public auao(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onDismiss()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.b = null;
-    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
+    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
     {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130844792);
-      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
+      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
     }
+    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
+      OCRResultActivity.a(this.a).dismiss();
+    }
+    OCRResultActivity.a(this.a, null);
   }
 }
 

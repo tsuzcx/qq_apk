@@ -1,19 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
 
 public class atoo
-  implements auwv
+  implements bfph
 {
-  public atoo(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  public atoo(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, bfpc parambfpc) {}
   
-  public void a(int paramInt1, auwu paramauwu, int paramInt2, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      atbt.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
+      continue;
+      paramView = (atbz)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
+      if (paramView != null) {
+        paramView.a("", 0, false);
+      }
     }
   }
 }

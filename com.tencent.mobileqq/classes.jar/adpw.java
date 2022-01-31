@@ -1,20 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
 
 public class adpw
-  extends acun
+  implements aywa
 {
-  public RelativeLayout a;
-  public URLDrawable a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  public adpw(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public adpw(adps paramadps) {}
+  public void a(ArrayList<MessageRecord> paramArrayList)
+  {
+    this.a.b();
+  }
 }
 
 

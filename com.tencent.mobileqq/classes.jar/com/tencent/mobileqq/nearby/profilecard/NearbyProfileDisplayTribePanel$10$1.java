@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atqw;
+import atqy;
 import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
 
 public class NearbyProfileDisplayTribePanel$10$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$10$1(atqw paramatqw) {}
+  public NearbyProfileDisplayTribePanel$10$1(atqy paramatqy) {}
   
   public void run()
   {

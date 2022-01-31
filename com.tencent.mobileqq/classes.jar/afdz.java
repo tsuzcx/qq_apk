@@ -1,23 +1,51 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
-class afdz
-  implements View.OnClickListener
+public class afdz
+  implements RadioGroup.OnCheckedChangeListener
 {
-  afdz(afdy paramafdy) {}
+  public afdz(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    axqw.b(null, "dc00899", "Grp_find_new", "", "grptab", "seach_clk", 0, 0, this.a.a.c, this.a.a.a, "", "");
-    paramView = new Intent(this.a.a.getActivity(), SearchContactsActivity.class);
-    paramView.putExtra("from_key", 1);
-    paramView.putExtra("fromType", 13);
-    this.a.a.getActivity().startActivity(paramView);
-    this.a.a.getActivity().overridePendingTransition(0, 0);
+    if ((paramInt == 2131376802) && (AddContactsActivity.a(this.a).isChecked()))
+    {
+      AddContactsActivity.a(this.a);
+      axqy.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      AddContactsActivity.a(this.a).setSelected(true);
+      AddContactsActivity.b(this.a).setSelected(false);
+      AddContactsActivity.c(this.a).setSelected(false);
+      AddContactsActivity.a(this.a).setVisibility(8);
+    }
+    do
+    {
+      return;
+      if ((paramInt == 2131376804) && (AddContactsActivity.b(this.a).isChecked()))
+      {
+        AddContactsActivity.b(this.a);
+        axqy.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+        axqy.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
+        AddContactsActivity.b(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.c(this.a).setSelected(false);
+        paramRadioGroup = AddContactsActivity.a(this.a);
+        if (AddContactsActivity.a(this.a)) {}
+        for (paramInt = 0;; paramInt = 8)
+        {
+          paramRadioGroup.setVisibility(paramInt);
+          return;
+        }
+      }
+    } while ((paramInt != 2131376803) || (!AddContactsActivity.c(this.a).isChecked()));
+    AddContactsActivity.c(this.a);
+    axqy.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+    AddContactsActivity.c(this.a).setSelected(true);
+    AddContactsActivity.a(this.a).setSelected(false);
+    AddContactsActivity.b(this.a).setSelected(false);
+    AddContactsActivity.a(this.a).setVisibility(8);
   }
 }
 

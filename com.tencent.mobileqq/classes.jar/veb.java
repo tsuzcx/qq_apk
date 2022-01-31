@@ -1,16 +1,24 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
-
-public class veb
-  extends DataSetObserver
+public abstract interface veb
 {
-  public veb(TagFlowLayout paramTagFlowLayout) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.a();
-  }
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract void b(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void c(String paramString1, String paramString2);
+  
+  public abstract void c(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 

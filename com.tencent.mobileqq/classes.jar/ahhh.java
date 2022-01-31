@@ -1,18 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbFullScreenVideoFragment;
 
-class ahhh
-  implements ValueAnimator.AnimatorUpdateListener
+public class ahhh
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  ahhh(ahhd paramahhd) {}
+  public ahhh(SpringHbFullScreenVideoFragment paramSpringHbFullScreenVideoFragment, ViewGroup paramViewGroup) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    ahhd.a(this.a, (int)(paramValueAnimator.floatValue() * -ahhd.a(this.a)));
-    this.a.a(this.a.jdField_a_of_type_Int + ahhd.b(this.a));
-    this.a.jdField_a_of_type_AndroidViewView.invalidate();
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
+    }
   }
 }
 

@@ -1,34 +1,38 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class aqbf
-  extends ajvl
+  implements DialogInterface.OnClickListener
 {
-  aqbf(aqbc paramaqbc) {}
+  aqbf(aqbe paramaqbe) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
-    }
-    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(str);
-    if (i != -1)
+    switch (paramInt)
     {
-      paramObject = (Boolean)paramObject.get(i + 1);
-      if ((paramBoolean) && (paramObject.booleanValue()))
-      {
-        paramObject = ((ajvk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bbgg != null)) {
-          this.a.jdField_a_of_type_Bbgg.setTitle(ajyc.a(2131704732) + aqbt.g + paramObject.discussionName);
-        }
+    default: 
+      return;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.i("ForwardOption.ForwardBaseOption", 2, "qbShowShareResultDialog back");
       }
+      if (!this.a.a.isFinishing()) {
+        aqbe.a(this.a).dismiss();
+      }
+      this.a.a.finish();
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "-->qbShowShareResultDialog--stay");
+    }
+    this.a.a.finish();
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.addFlags(335544320);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

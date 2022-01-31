@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import amwp;
-import bgxy;
+import amwo;
+import bgyp;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class ChatSettingForTroop$3
@@ -11,8 +11,8 @@ class ChatSettingForTroop$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Amwo = amwp.a();
-    bgxy.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    this.this$0.jdField_a_of_type_Amwn = amwo.a();
+    bgyp.b(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
   }
 }
 

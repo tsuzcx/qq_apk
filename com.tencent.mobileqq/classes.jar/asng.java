@@ -1,23 +1,31 @@
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.HashSet;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class asng
-  implements asmt
+  implements askz
 {
   public asng(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
+  public void a(List<RecentBaseData> paramList)
   {
-    if (paramBoolean) {
-      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
     }
     for (;;)
     {
-      int i = MsgBackupSelectionFragment.a(this.a).a.size();
-      MsgBackupSelectionFragment.a(this.a, i);
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
       return;
-      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        asog.a("0X800A232");
+      } else if (aslg.c) {
+        asog.a("0X800A257");
+      }
     }
   }
 }

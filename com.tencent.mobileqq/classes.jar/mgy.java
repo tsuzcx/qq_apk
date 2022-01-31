@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import com.tencent.common.app.AppInterface;
 
-class mgy
-  implements View.OnLayoutChangeListener
+public abstract interface mgy
 {
-  mgy(mgx parammgx) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhr parammhr, mhq parammhq);
 }
 
 

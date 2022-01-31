@@ -1,34 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
 public class azdb
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
   public azdb(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        bair.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    bair.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
+    this.a.a.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,38 +1,6 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
-
-public class bkmd
-  implements Animator.AnimatorListener
+public abstract interface bkmd
 {
-  public bkmd(SlideBottomPanel paramSlideBottomPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bklp != null) {
-      this.a.jdField_a_of_type_Bklp.hidePanelFinish();
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bklp != null) {
-      this.a.jdField_a_of_type_Bklp.hidePanelFinish();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void a();
 }
 
 

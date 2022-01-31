@@ -1,20 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
 
-class adua
-  implements bcjb
+public class adua
+  extends acuj
 {
-  adua(adtw paramadtw) {}
+  public aibq a;
+  protected ViewGroup a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected ETTextView a;
+  protected TextView b;
+  public ETTextView b;
   
-  public void a(View paramView)
-  {
-    if (arqn.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
-      return;
-    }
-    actn.n = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public adua(adtu paramadtu) {}
 }
 
 

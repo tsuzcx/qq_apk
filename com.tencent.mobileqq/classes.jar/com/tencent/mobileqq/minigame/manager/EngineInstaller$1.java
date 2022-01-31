@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import ajyc;
+import ajya;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
@@ -35,7 +35,7 @@ class EngineInstaller$1
     if (paramFloat - this.lastProgress > 0.05F)
     {
       this.lastProgress = paramFloat;
-      EngineInstaller.access$100(this.this$0, paramFloat, ajyc.a(2131704131) + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
+      EngineInstaller.access$100(this.this$0, paramFloat, ajya.a(2131704142) + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
       QLog.i("EngineInstaller", 1, "[MiniEng]onDownloadProgress, progress=" + paramFloat);
     }
   }
@@ -48,7 +48,7 @@ class EngineInstaller$1
     if ((paramString1.length() == this.val$engineFileSize) || (this.val$engineFileSize < 0L))
     {
       QLog.i("EngineInstaller", 1, "[MiniEng] onDownloadSucceed length is match " + this.val$engineFileSize);
-      EngineInstaller.access$100(this.this$0, 1.0F, ajyc.a(2131704132));
+      EngineInstaller.access$100(this.this$0, 1.0F, ajya.a(2131704143));
       if (this.val$info.baseLibType == 2)
       {
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 5, "1");

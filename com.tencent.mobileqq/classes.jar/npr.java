@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.os.Bundle;
 
-public final class npr
-  implements Parcelable.Creator<VideoInfo.TopBarInfo>
+public class npr
+  implements ajte
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new VideoInfo.TopBarInfo[paramInt];
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 

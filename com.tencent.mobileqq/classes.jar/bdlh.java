@@ -1,36 +1,33 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager.17;
 
-class bdlh
+public class bdlh
   implements DialogInterface.OnClickListener
 {
-  bdlh(bdlc parambdlc, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, DialogInterface.OnClickListener paramOnClickListener, String paramString2) {}
+  public bdlh(DownloadManager.17 param17) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdht.c("MyAppApi", "---onConfirm--onClick");
-    if (!this.jdField_a_of_type_Bdlc.b())
+    try
     {
-      this.jdField_a_of_type_Bdlc.a = new bdln(this.jdField_a_of_type_Bdlc);
-      this.jdField_a_of_type_Bdlc.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Bdlc.a.b = true;
-      this.jdField_a_of_type_Bdlc.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_Bdlc.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
-      this.jdField_a_of_type_Bdlc.a.jdField_a_of_type_Int = 2;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Bdlc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bdlc.c = true;
-      bdjc.a("201", bdjc.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bdlb.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bdlb.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
       return;
-      new bdlm(this.jdField_a_of_type_Bdlc, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bdlc.a).execute(new Void[0]);
-      continue;
-      this.jdField_a_of_type_Bdlc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
     }
   }
 }

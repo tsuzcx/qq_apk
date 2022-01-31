@@ -1,18 +1,25 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+import android.os.Build.VERSION;
 
 public class ufd
-  implements ufa
 {
-  public ufd(MediaPlayer paramMediaPlayer) {}
-  
-  public void a(uey paramuey)
+  public static boolean a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Uew.b() < 2000000L) && (!this.a.jdField_a_of_type_Uew.b()))
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramInt)
     {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Ufe.sendMessage(this.a.jdField_a_of_type_Ufe.obtainMessage(200, 701, 0));
+    default: 
+      bool1 = false;
+    case 3: 
+    case 1: 
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT >= 21);
+      return false;
     }
+    return false;
   }
 }
 

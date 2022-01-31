@@ -1,26 +1,21 @@
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-final class ols
-  implements ViewFactory.FoundClickableViewListener
+class ols
+  implements ViewBase.OnClickListener
 {
-  ols(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
+  ols(olp paramolp, ViewBase paramViewBase) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(ViewBase paramViewBase)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    if (this.jdField_a_of_type_Olp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
     {
-    default: 
-      paramViewBase.setOnClickListener(new olv(this, paramViewBase));
-      return;
-    case 1122: 
-      paramViewBase.setOnClickListener(new olt(this));
-      return;
+      olo.a(this.jdField_a_of_type_Olp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName()));
+      olo.a(this.jdField_a_of_type_Olp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
     }
-    paramViewBase.setOnClickListener(new olu(this));
+    onh.e(this.jdField_a_of_type_Olp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
   }
 }
 

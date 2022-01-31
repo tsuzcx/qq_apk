@@ -1,16 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class wgy
+public class wgy
   implements DialogInterface.OnClickListener
 {
-  wgy(wgw paramwgw, CompoundButton paramCompoundButton) {}
+  public wgy(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -2,13 +2,13 @@ package com.tencent.mobileqq.troopgift;
 
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import barx;
+import basl;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class TroopInteractGiftAnimationController$5
   implements Runnable
 {
-  public TroopInteractGiftAnimationController$5(barx parambarx) {}
+  public TroopInteractGiftAnimationController$5(basl parambasl) {}
   
   public void run()
   {

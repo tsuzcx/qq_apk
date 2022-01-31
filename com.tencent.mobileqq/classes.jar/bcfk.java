@@ -1,48 +1,17 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1;
 
-class bcfk
-  implements TouchWebView.OnOverScrollHandler
+public class bcfk
+  implements DialogInterface.OnClickListener
 {
-  bcfk(bcfj parambcfj, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
+  bcfk(bcfh parambcfh, int paramInt, String paramString) {}
   
-  public void onBack()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bcfj.a = false;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView.onBack();
-    this.jdField_a_of_type_Bcfj.b(true);
-  }
-  
-  public void onOverScroll(int paramInt)
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_Bcfj.a)
-    {
-      this.jdField_a_of_type_Bcfj.a = true;
-      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    try
-    {
-      localObject = Uri.parse((String)localObject);
-      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
-        this.jdField_a_of_type_Bcfj.b.setText(ajyc.a(2131714692) + ((Uri)localObject).getHost() + ajyc.a(2131714685));
-      }
-      this.jdField_a_of_type_Bcfj.b.setVisibility(0);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        this.jdField_a_of_type_Bcfj.b.setVisibility(8);
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizUiRefreshView.onOverScroll(paramInt);
+    ThreadManager.excute(new SwiftBrowserShareMenuHandler.5.1(this), 128, null, false);
+    bcfh.a(this.jdField_a_of_type_Bcfh, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,64 +1,19 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.HashSet;
-import java.util.Set;
+import android.text.TextUtils;
 
-public class asiu
+public abstract class asiu
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public Set<String> a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  
-  public asiu(String paramString, int paramInt)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.h = a(paramString, paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
+      return 1;
+    }
+    return 0;
   }
   
-  public static String a(String paramString, int paramInt)
-  {
-    return paramInt + "_" + paramString;
-  }
+  public abstract void a(String paramString1, String paramString2, Object paramObject);
   
-  public static String[] a(String paramString)
-  {
-    return paramString.split("_");
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis();
-  }
-  
-  public String toString()
-  {
-    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
-  }
+  protected abstract boolean a(Bundle paramBundle);
 }
 
 

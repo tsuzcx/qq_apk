@@ -1,6 +1,6 @@
 public abstract interface baoe
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(int paramInt);
 }
 
 

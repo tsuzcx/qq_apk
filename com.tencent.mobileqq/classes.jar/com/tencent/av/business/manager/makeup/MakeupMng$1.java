@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lil;
+import lig;
 
 public class MakeupMng$1
   implements Runnable
@@ -17,20 +17,20 @@ public class MakeupMng$1
   public void run()
   {
     long l = AudioHelper.b();
-    Object localObject1 = lil.a(this.this$0).getAccount();
+    Object localObject1 = lig.a(this.this$0).getAccount();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences("QAVPreSetting", 0);
     this.this$0.d = localSharedPreferences.getString("makeup_sel_id_" + (String)localObject1, null);
-    lil.a(this.this$0, localSharedPreferences.getString("makeup_value_map_" + (String)localObject1, null));
+    lig.a(this.this$0, localSharedPreferences.getString("makeup_value_map_" + (String)localObject1, null));
     this.this$0.c = this.this$0.a(this.this$0.d);
     if (!TextUtils.isEmpty(this.this$0.d)) {}
     try
     {
-      lil.a(this.this$0);
+      lig.a(this.this$0);
       i = 0;
-      if ((lil.a(this.this$0) == null) || (i >= lil.b(this.this$0).size())) {
+      if ((lig.a(this.this$0) == null) || (i >= lig.b(this.this$0).size())) {
         break label332;
       }
-      localObject1 = (PendantItem)lil.c(this.this$0).get(i);
+      localObject1 = (PendantItem)lig.c(this.this$0).get(i);
       if ((localObject1 == null) || (!TextUtils.equals(((PendantItem)localObject1).getId(), this.this$0.d))) {
         break label297;
       }

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.GetVirtualListResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
 
-public final class bdne
-  implements Parcelable.Creator<GetVirtualListResult>
+public class bdne
+  implements View.OnClickListener
 {
-  public GetVirtualListResult a(Parcel paramParcel)
-  {
-    return new GetVirtualListResult(paramParcel);
-  }
+  public bdne(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  public GetVirtualListResult[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new GetVirtualListResult[paramInt];
+    ApkFileDownloadFragment.a(this.a, true);
   }
 }
 

@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import binh;
+import biny;
 
 public class AEVideoStoryDashboardPart$DashboardAdapter$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$DashboardAdapter$1(binh parambinh) {}
+  public AEVideoStoryDashboardPart$DashboardAdapter$1(biny parambiny) {}
   
   public void run()
   {

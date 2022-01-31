@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
-
-public class apgg
-  extends ajta
+public abstract interface apgg
 {
-  public apgg(TroopFileSearchFragment paramTroopFileSearchFragment) {}
-  
-  protected void a(Object paramObject)
-  {
-    TroopFileSearchFragment.a(this.a).notifyDataSetChanged();
-  }
+  public abstract void a();
 }
 
 

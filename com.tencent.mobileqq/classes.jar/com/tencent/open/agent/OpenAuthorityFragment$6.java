@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.content.res.Resources;
 import android.widget.Button;
-import bdbn;
+import bdcc;
 import com.tencent.qphone.base.util.QLog;
 
 public class OpenAuthorityFragment$6
@@ -20,13 +20,13 @@ public class OpenAuthorityFragment$6
     this.this$0.i();
     if (this.this$0.jdField_a_of_type_Int == 0)
     {
-      String str = this.this$0.getResources().getString(2131694896);
+      String str = this.this$0.getResources().getString(2131694897);
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(str);
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.this$0.a(this.this$0.getResources().getString(2131694905), new bdbn(this));
+      this.this$0.a(this.this$0.getResources().getString(2131694906), new bdcc(this));
       return;
       this.this$0.jdField_a_of_type_AndroidWidgetButton.setTag(this.this$0.c);
     }

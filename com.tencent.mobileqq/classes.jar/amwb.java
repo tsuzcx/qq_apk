@@ -1,38 +1,67 @@
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amwb
+  extends ampa<amwc>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 1;
-  public int d = -1;
-  
-  public amwb()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return 362;
   }
   
-  public static amwb a(JSONObject paramJSONObject)
+  @NonNull
+  public amwc a(int paramInt)
   {
-    amwb localamwb = new amwb();
-    localamwb.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
-    localamwb.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
-    localamwb.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
-    localamwb.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
-    localamwb.c = paramJSONObject.optInt("version", -1);
-    localamwb.d = paramJSONObject.optInt("appid", -1);
-    localamwb.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
-    return localamwb;
+    return new amwc();
   }
   
-  public String toString()
+  @Nullable
+  public amwc a(amph[] paramArrayOfamph)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      amwc localamwc = amwc.a(paramArrayOfamph[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfamph[0].a);
+      }
+      return localamwc;
+    }
+    return null;
+  }
+  
+  public Class<amwc> a()
+  {
+    return amwc.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
+    }
+  }
+  
+  public void a(amwc paramamwc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramamwc });
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

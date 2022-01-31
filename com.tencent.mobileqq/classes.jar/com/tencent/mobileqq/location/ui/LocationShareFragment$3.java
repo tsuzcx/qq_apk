@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import aryd;
+import aryf;
 
 class LocationShareFragment$3
   implements Runnable
@@ -9,7 +9,7 @@ class LocationShareFragment$3
   
   public void run()
   {
-    aryd.a(this.this$0.getActivity());
+    aryf.a(this.this$0.getActivity());
   }
 }
 

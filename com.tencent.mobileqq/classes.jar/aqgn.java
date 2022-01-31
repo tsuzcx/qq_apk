@@ -1,22 +1,19 @@
-import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 class aqgn
   implements View.OnClickListener
 {
-  aqgn(aqgm paramaqgm) {}
+  aqgn(aqgk paramaqgk, boolean paramBoolean, String paramString, long paramLong) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Bbgg == null) {
+    if (this.jdField_a_of_type_Aqgk.a == null) {
       return;
     }
-    this.a.jdField_a_of_type_Bbgg.hideSoftInputFromWindow();
-    paramView = new aqdx(this.a.jdField_a_of_type_Bbgg);
-    paramView.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692760), this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_Bbgg.addPreviewView(paramView.b());
-    this.a.D();
+    this.jdField_a_of_type_Aqgk.a.hideSoftInputFromWindow();
+    aqgk.a(this.jdField_a_of_type_Aqgk, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Aqgk.D();
   }
 }
 

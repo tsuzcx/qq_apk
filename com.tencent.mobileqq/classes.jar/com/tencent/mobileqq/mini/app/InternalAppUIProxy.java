@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.app;
 
-import ajyc;
+import ajya;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,9 +64,9 @@ public class InternalAppUIProxy
   {
     this.mActivity = paramBaseActivity;
     boolean bool = super.doOnCreate(paramBaseActivity, paramBundle);
-    this.mLoadingLayout = this.mActivity.findViewById(2131369501);
+    this.mLoadingLayout = this.mActivity.findViewById(2131369500);
     this.mLoadingLayout.setVisibility(8);
-    this.mRootView = this.mActivity.findViewById(2131370208);
+    this.mRootView = this.mActivity.findViewById(2131370207);
     return bool;
   }
   
@@ -127,7 +127,7 @@ public class InternalAppUIProxy
     if (paramBundle != null) {}
     for (paramBundle = (MiniAppConfig)paramBundle.getParcelable("CONFIG"); paramBundle == null; paramBundle = null)
     {
-      Toast.makeText(paramBaseActivity, ajyc.a(2131705801), 1).show();
+      Toast.makeText(paramBaseActivity, ajya.a(2131705812), 1).show();
       paramBaseActivity.finish();
       return;
     }
@@ -135,7 +135,7 @@ public class InternalAppUIProxy
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(paramBaseActivity, 9.0F) + ImmersiveUtils.getStatusBarHeight(paramBaseActivity));
     this.mLoadingLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364688);
+    localObject = (ViewGroup)this.mLoadingLayout.findViewById(2131364687);
     if ((paramBundle.isInternalApp()) && (paramBundle.config.appMode.closeTopRightCapsule)) {
       ((ViewGroup)localObject).setVisibility(8);
     }
@@ -150,9 +150,9 @@ public class InternalAppUIProxy
       AppLoaderFactory.getAppLoaderManager().loadApkgByConfig(paramBundle);
       return;
       ((ViewGroup)localObject).setVisibility(0);
-      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363501);
+      localObject = (ImageView)this.mLoadingLayout.findViewById(2131363500);
       if (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) {
-        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840865, 40, 30));
+        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(paramBaseActivity, MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30));
       }
       ((ImageView)localObject).setOnClickListener(new InternalAppUIProxy.1(this, paramBaseActivity));
     }

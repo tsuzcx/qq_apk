@@ -1,42 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCPUMonitor.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public final class qmw
-  extends BroadcastReceiver
+class qmw
+  implements ohj
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  qmw(qmu paramqmu) {}
+  
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(qmv.a(), 2, "Intent.ACTION_SCREEN_OFF");
-      }
-      if ((qmv.a().get() == 0) && (qmv.b().get() < qmv.a()))
-      {
-        qmv.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
-        qmv.a().set(1);
-        qmv.a().start();
-      }
+    if (qmu.a(this.a) != null) {
+      qmu.a(this.a).b();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!"android.intent.action.SCREEN_ON".equals(paramContext));
-      if (QLog.isColorLevel()) {
-        QLog.d(qmv.a(), 2, "Intent.ACTION_SCREEN_ON");
-      }
-    } while (qmv.a().get() != 1);
-    if ((qmv.a() != null) && (qmv.a().isAlive())) {
-      qmv.a().interrupt();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0) {
+      return;
     }
-    qmv.a().set(3);
+    qmu.a(this.a).e = paramInt;
+    qmu.a(this.a).b(qmu.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    qmu.a(this.a).e();
+    this.a.f();
   }
 }
 

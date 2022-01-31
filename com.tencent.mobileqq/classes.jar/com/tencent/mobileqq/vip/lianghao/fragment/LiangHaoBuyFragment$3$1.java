@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.vip.lianghao.fragment;
 
 import android.content.Intent;
-import bbyl;
+import bbyz;
 
 public class LiangHaoBuyFragment$3$1
   implements Runnable
 {
-  public LiangHaoBuyFragment$3$1(bbyl parambbyl, boolean paramBoolean, Intent paramIntent, String paramString1, byte[] paramArrayOfByte, String paramString2) {}
+  public LiangHaoBuyFragment$3$1(bbyz parambbyz, boolean paramBoolean, Intent paramIntent, String paramString1, byte[] paramArrayOfByte, String paramString2) {}
   
   public void run()
   {
-    LiangHaoBuyFragment.c(this.jdField_a_of_type_Bbyl.a);
+    LiangHaoBuyFragment.c(this.jdField_a_of_type_Bbyz.a);
     if (this.jdField_a_of_type_Boolean)
     {
-      LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyl.a, this.jdField_a_of_type_AndroidContentIntent);
-      LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyl.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte);
+      LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyz.a, this.jdField_a_of_type_AndroidContentIntent);
+      LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyz.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfByte);
       return;
     }
-    LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyl.a, this.b);
-    LiangHaoBuyFragment.b(this.jdField_a_of_type_Bbyl.a);
+    LiangHaoBuyFragment.a(this.jdField_a_of_type_Bbyz.a, this.b);
+    LiangHaoBuyFragment.b(this.jdField_a_of_type_Bbyz.a);
   }
 }
 

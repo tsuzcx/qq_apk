@@ -1,47 +1,81 @@
-import android.content.res.XmlResourceParser;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ayxk
 {
-  private ayxl jdField_a_of_type_Ayxl;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  private void a()
+  public ayxk() {}
+  
+  public ayxk(String paramString, int paramInt1, int paramInt2)
   {
-    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
-    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
-    this.jdField_a_of_type_Ayxl.a(str1, str2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
   }
   
-  public ayxl a()
+  public static String a(List<ayxk> paramList)
   {
-    this.jdField_a_of_type_Ayxl = new ayxl();
-    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
-    if (i != 1)
+    if (paramList == null) {
+      return null;
+    }
+    try
     {
-      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
-      if (i == 2) {
-        if (!str.equals("MimeTypes")) {}
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ayxk localayxk = (ayxk)paramList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("i", localayxk.jdField_a_of_type_JavaLangString);
+        if (localayxk.jdField_a_of_type_Int != 80) {
+          localJSONObject.put("p", localayxk.jdField_a_of_type_Int);
+        }
+        if (localayxk.c != 1) {
+          localJSONObject.put("t", localayxk.c);
+        }
+        localJSONArray.put(localJSONObject);
       }
+      paramList = localJSONArray.toString();
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+      return null;
+    }
+    return paramList;
+  }
+  
+  public static ArrayList<ayxk> a(String paramString)
+  {
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      JSONArray localJSONArray = new JSONArray(paramString);
+      int i = 0;
       for (;;)
       {
-        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
-        break;
-        if (str.equals("type"))
-        {
-          a();
-          continue;
-          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        paramString = localArrayList;
+        if (i >= localJSONArray.length()) {
+          break;
         }
+        paramString = localJSONArray.getJSONObject(i);
+        localArrayList.add(new ayxk(paramString.getString("i"), paramString.optInt("p", 80), paramString.optInt("t", 1)));
+        i += 1;
       }
+      return paramString;
     }
-    return this.jdField_a_of_type_Ayxl;
-  }
-  
-  public ayxl a(XmlResourceParser paramXmlResourceParser)
-  {
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
-    return a();
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = null;
+    }
   }
 }
 

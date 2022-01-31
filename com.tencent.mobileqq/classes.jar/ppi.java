@@ -1,20 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSAppLoader.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class ppi
-  extends RecyclerView.OnScrollListener
+  extends ppo
 {
-  public ppi(PTSFragment paramPTSFragment) {}
+  public ppi(PTSAppLoader.2 param2) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    if (paramInt == 0)
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSAppLoader", 1, "[updatePTSApp], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
     {
-      aaad.a().a("list_kandian_daily_new", false);
-      return;
+      pph.b(this.a.this$0, this.a.a);
+      QLog.i("PTSAppLoader", 1, "[updatePTSApp], download succeed, bid = " + this.a.a);
     }
-    aaad.a().a("list_kandian_daily_new");
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
   }
 }
 

@@ -1,175 +1,91 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
-import com.tencent.mobileqq.pluginsdk.PluginProxyService;
-import com.tencent.mobileqq.pluginsdk.SplashDialogWrapper;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager.4;
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.util.ArrayList;
 
-public abstract class bhhr
-  extends bhju
+public class bhhr
+  extends bhhp
 {
-  public static void a(Activity paramActivity, bhhx parambhhx)
+  public bhhr(boolean paramBoolean)
   {
-    if (parambhhx.f != null)
-    {
-      localObject = Toast.makeText(BaseApplicationImpl.getContext(), parambhhx.f, 0);
-      ((Toast)localObject).setGravity(17, 0, 0);
-      ((Toast)localObject).show();
-    }
-    Object localObject = new bhhs();
-    if ((parambhhx.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
-      new SplashDialogWrapper(paramActivity, parambhhx.jdField_a_of_type_AndroidAppDialog, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, parambhhx.jdField_a_of_type_Boolean, parambhhx.c).show();
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramActivity, parambhhx, (bhhw)localObject);
-      return;
-    }
-    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramActivity, parambhhx, (bhhw)localObject);
+    super(paramBoolean);
   }
   
-  public static void a(Context paramContext, bhhx parambhhx)
+  public int a()
   {
-    bhht localbhht = new bhht();
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramContext, parambhhx, localbhht);
-      return;
-    }
-    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhhx, localbhht);
+    return 3;
   }
   
-  static void b(Activity paramActivity, bhhx parambhhx)
+  protected void a()
   {
-    if ((parambhhx == null) || (paramActivity == null) || (parambhhx.jdField_a_of_type_AndroidContentIntent == null)) {}
+    this.jdField_c_of_type_Float = 90.0F;
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  protected void b()
+  {
+    Object localObject = bhou.a().a();
+    if ((localObject == null) || (((ArrayList)localObject).size() != 2)) {}
+    do
+    {
+      return;
+      float[] arrayOfFloat = (float[])((ArrayList)localObject).get(0);
+      if (arrayOfFloat != null)
+      {
+        this.jdField_a_of_type_Int = (arrayOfFloat.length / 3);
+        this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+        this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+      }
+      localObject = (float[])((ArrayList)localObject).get(1);
+    } while (localObject == null);
+    this.jdField_b_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.jdField_b_of_type_JavaNioFloatBuffer.put((float[])localObject);
+    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_Float > 90.0F) {
+      this.jdField_b_of_type_Float = 90.0F;
+    }
     for (;;)
     {
-      return;
-      parambhhx.jdField_a_of_type_AndroidContentIntent.setClass(paramActivity, parambhhx.jdField_a_of_type_JavaLangClass);
-      if (TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
+      if (this.d != 0.0F)
       {
-        parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
-        parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
-      }
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
-      try
-      {
-        File localFile = new File(bhjq.a(paramActivity), parambhhx.jdField_b_of_type_JavaLangString);
-        PluginProxyActivity.openActivityForResult(paramActivity, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, localFile.getCanonicalPath(), parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent, parambhhx.jdField_b_of_type_Int);
-        if ((parambhhx.jdField_a_of_type_AndroidAppDialog != null) && ((parambhhx.jdField_a_of_type_AndroidAppDialog instanceof bcqg)) && (paramActivity != null))
-        {
-          paramActivity.overridePendingTransition(2130772097, 2130772097);
-          return;
+        float f = (float)(Math.toDegrees(Math.atan(this.d)) * 2.0D);
+        if (Build.VERSION.SDK_INT >= 14) {
+          Matrix.perspectiveM(this.jdField_b_of_type_ArrayOfFloat, 0, f, this.e, 1.0F, 500.0F);
         }
+        Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -2.0F);
       }
-      catch (Exception paramActivity)
-      {
-        QLog.e("feilongzou", 1, paramActivity, new Object[0]);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_b_of_type_Float, 1.0F, 0.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, -this.jdField_c_of_type_Float, 0.0F, 1.0F, 0.0F);
+      Matrix.rotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 0.0F, 1.0F);
+      if (this.jdField_a_of_type_Bhhq != null) {
+        this.jdField_a_of_type_Bhhq.a((int)this.jdField_f_of_type_Float, -this.jdField_b_of_type_Float, -this.jdField_c_of_type_Float, this.d);
       }
-    }
-  }
-  
-  public static void b(Context paramContext, bhhx parambhhx)
-  {
-    bhhu localbhhu = new bhhu();
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
-    {
-      b(paramContext, parambhhx, localbhhu);
       return;
-    }
-    ((bhhr)((QQAppInterface)localAppRuntime).getManager(175)).a(paramContext, parambhhx, localbhhu);
-  }
-  
-  private static void b(Context paramContext, bhhx parambhhx, bhhw parambhhw)
-  {
-    bhji.a(paramContext, new bhhv(paramContext, parambhhx, parambhhw));
-  }
-  
-  static void c(Context paramContext, bhhx parambhhx)
-  {
-    if ((TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhhx.jdField_a_of_type_JavaLangString)))
-    {
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
-    }
-    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
-    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
-    Object localObject = parambhhx.jdField_b_of_type_JavaLangString;
-    localObject = new File(bhjq.a(paramContext), (String)localObject);
-    try
-    {
-      PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, ((File)localObject).getCanonicalPath(), parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PluginDebug", 2, "doLaunchPluginBroadcast", paramContext);
-    }
-  }
-  
-  static void d(Context paramContext, bhhx parambhhx)
-  {
-    if ((TextUtils.isEmpty(parambhhx.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(parambhhx.jdField_a_of_type_JavaLangString)))
-    {
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("uin", parambhhx.jdField_a_of_type_JavaLangString);
-      parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", parambhhx.jdField_a_of_type_JavaLangString);
-    }
-    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", parambhhx.jdField_a_of_type_JavaLangString);
-    parambhhx.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", axqp.class.getName());
-    Object localObject = parambhhx.jdField_b_of_type_JavaLangString;
-    localObject = new File(bhjq.a(paramContext), (String)localObject);
-    try
-    {
-      localObject = ((File)localObject).getCanonicalPath();
-      if (parambhhx.jdField_a_of_type_AndroidContentServiceConnection != null)
-      {
-        PluginProxyService.bindService(paramContext, parambhhx.d, parambhhx.jdField_b_of_type_JavaLangString, (String)localObject, parambhhx.e, parambhhx.jdField_a_of_type_AndroidContentIntent, parambhhx.jdField_a_of_type_AndroidContentServiceConnection);
-        return;
-      }
-      ThreadManager.post(new IQZonePluginManager.4(paramContext, parambhhx, (String)localObject), 5, null, false);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PluginDebug", 2, "doLaunchPluginService", paramContext);
+      if (this.jdField_b_of_type_Float < -90.0F) {
+        this.jdField_b_of_type_Float = -90.0F;
       }
     }
   }
   
-  public abstract PluginRecord a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, bhhx parambhhx, bhhw parambhhw);
-  
-  public abstract void a(bhhy parambhhy, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, bhib parambhib, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public void d()
+  {
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_f_of_type_Int);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, a(), 0);
+    GLES20.glDrawArrays(4, 0, c());
+  }
 }
 
 

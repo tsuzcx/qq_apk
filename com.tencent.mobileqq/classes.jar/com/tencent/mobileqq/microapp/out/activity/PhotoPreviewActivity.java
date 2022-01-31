@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bbbj;
+import bbbx;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.R.dimen;
@@ -151,7 +151,7 @@ public class PhotoPreviewActivity
   
   void e()
   {
-    bbbj.a(this, true, false);
+    bbbx.a(this, true, false);
     super.finish();
   }
   

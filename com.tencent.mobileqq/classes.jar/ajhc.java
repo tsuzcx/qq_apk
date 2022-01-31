@@ -1,18 +1,19 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class ajhc
   implements DialogInterface.OnClickListener
 {
-  public ajhc(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, ajod paramajod, int paramInt) {}
+  public ajhc(ApolloGameActivity paramApolloGameActivity, ajob paramajob, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new ajhd(this));
+    if (this.jdField_a_of_type_Ajob != null) {
+      this.jdField_a_of_type_Ajob.a(1);
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
     paramDialogInterface.dismiss();
   }
 }

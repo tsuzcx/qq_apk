@@ -1,49 +1,54 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tmm
-  extends syv<tmo>
+  extends sys<tog>
 {
-  public List<String> a = new ArrayList();
+  public String a = "";
+  public String b = "";
+  public int c;
   
   public String a()
   {
-    return "StorySvc.homepage_batch_feeds_label";
+    return sxm.a("StorySvc.homepage_feed_loadmore_720");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
     try
     {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new tmo(localRspStoryFeedTagInfo);
+      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
+      return new tog(localRspFriendStoryFeedVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ved.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
   protected byte[] a()
   {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
+    if (!TextUtils.isEmpty(this.a)) {
+      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-    return localReqStoryFeedTagInfo.toByteArray();
+    if (!TextUtils.isEmpty(this.b)) {
+      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
+    return localReqFriendStoryFeedVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

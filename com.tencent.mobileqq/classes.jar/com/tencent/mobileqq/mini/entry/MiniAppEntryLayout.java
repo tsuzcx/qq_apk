@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahfz;
-import ahjz;
-import amtc;
+import ahfx;
+import ahjx;
+import amtb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -78,14 +78,14 @@ public class MiniAppEntryLayout
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mRefer = paramInt;
     this.mListView = paramARMapHongBaoListView;
-    inflate(paramContext, 2131561976, this);
-    this.mParent = ((ViewGroup)findViewById(2131370306));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131369946));
+    inflate(paramContext, 2131561975, this);
+    this.mParent = ((ViewGroup)findViewById(2131370305));
+    this.mRecyclerView = ((RecyclerView)findViewById(2131369945));
     this.mRecyclerView.setItemAnimator(null);
     this.mAdapter = new MiniAppEntryAdapter((Activity)paramContext, paramInt);
-    if (amtc.l())
+    if (amtb.l())
     {
-      boolean bool = ((ahjz)this.mContext.app.getManager(315)).a();
+      boolean bool = ((ahjx)this.mContext.app.getManager(315)).a();
       paramARMapHongBaoListView = this.mAdapter;
       if (!bool) {
         break label295;
@@ -97,12 +97,12 @@ public class MiniAppEntryLayout
       paramARMapHongBaoListView.setRedDotSwitchState(paramInt);
       this.mRecyclerView.setAdapter(this.mAdapter);
       this.mRecyclerView.addOnScrollListener(new MiniAppEntryLayout.1(this));
-      this.mThemeBackgroudView = ((ImageView)findViewById(2131370183));
-      this.mNormalStateView = ((ViewGroup)findViewById(2131370221));
-      this.mDefaultStateView = ((ViewGroup)findViewById(2131370171));
-      this.mAppStoreEntryText = ((TextView)findViewById(2131370252));
+      this.mThemeBackgroudView = ((ImageView)findViewById(2131370182));
+      this.mNormalStateView = ((ViewGroup)findViewById(2131370220));
+      this.mDefaultStateView = ((ViewGroup)findViewById(2131370170));
+      this.mAppStoreEntryText = ((TextView)findViewById(2131370251));
       this.mAppStoreEntryText.setOnClickListener(this);
-      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370304));
+      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370303));
       this.mLinearLayoutManager = new MiniAppEntryLayout.MiniAppLinearLayoutManager(paramContext, 0, false);
       this.mLinearLayoutManager.setAutoMeasureEnabled(false);
       this.mRecyclerView.setLayoutManager(this.mLinearLayoutManager);
@@ -386,10 +386,10 @@ public class MiniAppEntryLayout
         {
           localObject1 = localObject2;
           if (this.mContext.app != null) {
-            localObject1 = (ahfz)this.mContext.app.getManager(342);
+            localObject1 = (ahfx)this.mContext.app.getManager(342);
           }
         }
-        if ((localObject1 != null) && (((ahfz)localObject1).h()))
+        if ((localObject1 != null) && (((ahfx)localObject1).h()))
         {
           updateHongBaoRes();
           this.mAdapter.notifyDataSetChanged();
@@ -408,7 +408,7 @@ public class MiniAppEntryLayout
             if (!ThemeUtil.isDefaultTheme()) {
               break label170;
             }
-            this.mDefaultStateView.setBackgroundResource(2130840661);
+            this.mDefaultStateView.setBackgroundResource(2130840658);
           }
           catch (Exception localException)
           {
@@ -455,20 +455,20 @@ public class MiniAppEntryLayout
         if ((this.mContext == null) || (this.mContext.app == null)) {
           break label302;
         }
-        Object localObject1 = (ahfz)this.mContext.app.getManager(342);
-        if ((localObject1 == null) || (!((ahfz)localObject1).h())) {
+        Object localObject1 = (ahfx)this.mContext.app.getManager(342);
+        if ((localObject1 == null) || (!((ahfx)localObject1).h())) {
           break label276;
         }
-        localHongBaoResBuilder = ((ahfz)localObject1).a();
+        localHongBaoResBuilder = ((ahfx)localObject1).a();
         DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.mContext.app.getManager(336);
         if (localDesktopDataManager.getHongBaoResBuilder() != null) {
           localHongBaoResBuilder = localDesktopDataManager.getHongBaoResBuilder();
         }
         if ((localHongBaoResBuilder != null) && ((getParent() instanceof PullRefreshHeader)))
         {
-          if (((ahfz)localObject1).a() != null)
+          if (((ahfx)localObject1).a() != null)
           {
-            localObject1 = new BitmapDrawable(((ahfz)localObject1).a());
+            localObject1 = new BitmapDrawable(((ahfx)localObject1).a());
             ((PullRefreshHeader)getParent()).setBackgroundDrawable((Drawable)localObject1);
           }
         }

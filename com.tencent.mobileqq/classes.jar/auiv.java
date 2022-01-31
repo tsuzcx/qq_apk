@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.EditText;
 import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class auiv
-  implements View.OnClickListener
+  extends Editable.Factory
 {
   public auiv(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void onClick(View paramView)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (AutoReplyEditActivity.c(this.a))
-    {
-      AutoReplyEditActivity.a(this.a, false);
-      return;
+    if ((paramCharSequence instanceof ayku)) {
+      return (Editable)paramCharSequence;
     }
-    if (AutoReplyEditActivity.d(this.a))
-    {
-      AutoReplyEditActivity.b(this.a, false);
-      return;
-    }
-    AutoReplyEditActivity.a(this.a, true);
+    return new ayku(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
   }
 }
 

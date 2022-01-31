@@ -2,25 +2,25 @@ package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import ohe;
-import oju;
-import ojv;
-import ojw;
+import ohb;
+import ojr;
+import ojs;
+import ojt;
 
 public class ReadInJoyCommentPBModule$8
   implements Runnable
 {
-  public ReadInJoyCommentPBModule$8(oju paramoju, int paramInt, ojv paramojv, ojw paramojw, CommentData paramCommentData) {}
+  public ReadInJoyCommentPBModule$8(ojr paramojr, int paramInt, ojs paramojs, ojt paramojt, CommentData paramCommentData) {}
   
   public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("handleHotCommentList | retCode ").append(this.jdField_a_of_type_Int).append(" | hasHotNextPage ").append(this.jdField_a_of_type_Ojv.jdField_a_of_type_Boolean).append(" | hotPageCookie ").append(this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaLangString).append("| HotCommentCnt ");
-    if (this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_Ojv.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    StringBuilder localStringBuilder = new StringBuilder().append("handleHotCommentList | retCode ").append(this.jdField_a_of_type_Int).append(" | hasHotNextPage ").append(this.jdField_a_of_type_Ojs.jdField_a_of_type_Boolean).append(" | hotPageCookie ").append(this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaLangString).append("| HotCommentCnt ");
+    if (this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaUtilList != null) {}
+    for (int i = this.jdField_a_of_type_Ojs.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
       QLog.d("ReadInJoyCommentPBModule", 1, i);
-      if (oju.a(this.this$0) != null) {
-        oju.a(this.this$0).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ojv, this.jdField_a_of_type_Ojw, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommentData);
+      if (ojr.a(this.this$0) != null) {
+        ojr.a(this.this$0).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ojs, this.jdField_a_of_type_Ojt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommentData);
       }
       return;
     }

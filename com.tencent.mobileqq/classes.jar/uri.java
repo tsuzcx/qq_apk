@@ -1,45 +1,42 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class uri
-  extends QQUIEventReceiver<uqy, tjr>
+class uri
+  extends ste<uqv, upt>
 {
-  public uri(@NonNull uqy paramuqy)
+  uri(uqv paramuqv)
   {
-    super(paramuqy);
+    super(paramuqv);
   }
   
-  public void a(@NonNull uqy paramuqy, @NonNull tjr paramtjr)
+  public void a(@NonNull uqv paramuqv, @NonNull upt paramupt)
   {
-    if (uqy.a(paramuqy) == null) {
-      veg.b(this.TAG, "ignore this feature event. %s.", paramtjr.toString());
-    }
-    tef localtef;
-    do
+    if ((!paramupt.jdField_a_of_type_Boolean) || (!paramupt.jdField_a_of_type_JavaLangString.equals(uqv.a(paramuqv))) || (paramupt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (uqv.a(paramuqv) == null))
     {
+      ved.b(this.TAG, "ignore this like list event. %s.", paramupt.toString());
       return;
-      while (!paramtjr.hasNext())
-      {
-        do
-        {
-          veg.a(this.TAG, "receive feature event. %s.", paramtjr.toString());
-        } while (paramtjr.a == null);
-        paramtjr = paramtjr.a.iterator();
+    }
+    ved.a(this.TAG, "receive like list event. %s.", paramupt.toString());
+    boolean bool2 = uqv.a(paramuqv);
+    if (paramupt.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      uqv.a(paramuqv).b(bool1, paramupt.b);
+      uqv.a(paramuqv).b(paramupt.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
       }
-      localtef = (tef)paramtjr.next();
-    } while (!localtef.a.equals(uqy.a(paramuqy)));
-    veg.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(uqy.a(paramuqy).a.mViewTotalTime), Integer.valueOf(localtef.c));
-    uqy.a(paramuqy).a.mViewTotalTime = localtef.c;
-    paramuqy.a();
+      paramuqv.a();
+      return;
+    }
   }
   
   public Class acceptEventClass()
   {
-    return tjr.class;
+    return upt.class;
   }
+  
+  public void b(@NonNull uqv paramuqv, @NonNull upt paramupt) {}
 }
 
 

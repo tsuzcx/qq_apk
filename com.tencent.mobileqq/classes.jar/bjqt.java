@@ -1,6 +1,12 @@
 public abstract interface bjqt
 {
-  public abstract void a(int paramInt);
+  public abstract void c(int paramInt);
+  
+  public abstract void n();
+  
+  public abstract void o();
+  
+  public abstract void q();
 }
 
 

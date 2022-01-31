@@ -1,7 +1,7 @@
 public class aknm
 {
-  public int a;
-  public String a;
+  public static final String a = ajya.a(2131700086);
+  public static final String b = ajya.a(2131700085);
 }
 
 

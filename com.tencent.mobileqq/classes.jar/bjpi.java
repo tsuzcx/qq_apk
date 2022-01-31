@@ -1,27 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
-import dov.com.qq.im.ptv.LightWeightProgress;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
-public class bjpi
-  extends AnimatorListenerAdapter
+final class bjpi
+  implements View.OnClickListener
 {
-  public bjpi(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  bjpi(AIOLongCaptureCtrl paramAIOLongCaptureCtrl) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView 50ms delay=90ms end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a.setStatus(false);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner mProgressView begin");
-    }
+    this.a.a();
   }
 }
 

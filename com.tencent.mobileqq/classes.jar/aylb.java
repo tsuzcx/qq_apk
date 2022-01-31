@@ -1,8 +1,22 @@
-import android.graphics.drawable.Drawable;
+import java.util.Comparator;
 
-public abstract interface aylb
+class aylb
+  implements Comparator
 {
-  public abstract void a(Drawable paramDrawable);
+  aylb(aykz paramaykz) {}
+  
+  public int compare(Object paramObject1, Object paramObject2)
+  {
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i == j) {
+      return 0;
+    }
+    if (i > j) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

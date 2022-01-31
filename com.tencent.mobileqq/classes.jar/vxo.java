@@ -1,30 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
-
-class vxo
-  extends JobSegment<Integer, uvx>
+public class vxo
 {
-  private uvw a;
-  
-  public vxo(@NonNull uvw paramuvw)
+  public static String a(int[] paramArrayOfInt)
   {
-    this.a = paramuvw;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((uvx)localObject).a.size() > 0) || (((uvx)localObject).b))
-    {
-      veg.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return null;
     }
-    localObject = new tnh();
-    ((tnh)localObject).a = this.a.a();
-    syr.a().a((syv)localObject, new vxp(this, paramJobContext, paramInteger));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramArrayOfInt[0]);
+    int i = 1;
+    while (i < paramArrayOfInt.length)
+    {
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramArrayOfInt[i]);
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
 }
 

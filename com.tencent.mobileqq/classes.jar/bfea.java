@@ -1,85 +1,49 @@
-import com.tencent.tissue.v8rt.engine.ILog;
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.RenderInfo;
+import java.util.Map;
 
+@behk(a="ApkgLoadAsyncTask")
 public class bfea
-  implements ILog
+  extends bffh
 {
-  String a = "MIV8RT";
+  private bekp jdField_a_of_type_Bekp;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private boolean jdField_a_of_type_Boolean;
   
-  public int d(String paramString1, String paramString2)
+  public bfea(Context paramContext, beqm parambeqm)
   {
-    besl.a(this.a + "/" + paramString1, paramString2, null);
-    return 0;
+    super(paramContext, parambeqm);
   }
   
-  public int d(String paramString1, String paramString2, Throwable paramThrowable)
+  public bekp a()
   {
-    besl.a(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
+    return this.jdField_a_of_type_Bekp;
   }
   
-  public int e(String paramString1, String paramString2)
-  {
-    besl.d(this.a + "/" + paramString1, paramString2);
-    return 0;
-  }
+  public void a() {}
   
-  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(MiniAppInfo paramMiniAppInfo)
   {
-    besl.d(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    besl.b(this.a + "/" + paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    besl.b(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public void printNativeLog(int paramInt, String paramString1, String paramString2)
-  {
-    paramString1 = this.a + "/" + paramString1;
-    int i;
-    if (paramInt >= 100)
+    beyq.a(206, "", a().getMiniAppInfoForReport());
+    betc.b("AppRuntimeLoader", "ApkgLoadAsyncTask start loadApkgByConfig");
+    if ((this.jdField_a_of_type_Boolean) && (paramMiniAppInfo != null) && (paramMiniAppInfo.supportNativeRenderMode()))
     {
-      i = paramInt - 100 + 2;
-      if (i > 2) {
-        break label65;
-      }
-      besl.a(paramString1, paramString2);
+      betc.b("AppRuntimeLoader", "ApkgLoadAsyncTask use flutter url:" + (String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
+      paramMiniAppInfo.downloadUrl = ((String)paramMiniAppInfo.renderInfo.a.get(Integer.valueOf(1)));
     }
-    for (;;)
-    {
-      if (paramInt >= 100) {}
-      return;
-      i = paramInt;
-      break;
-      label65:
-      if (i == 3) {
-        besl.b(paramString1, paramString2);
-      } else if (i == 4) {
-        besl.c(paramString1, paramString2);
-      } else if (i == 5) {
-        besl.d(paramString1, paramString2);
-      }
-    }
+    bejg.a().a(a(), this.jdField_a_of_type_Boolean, paramMiniAppInfo, new bfeb(this, paramMiniAppInfo));
   }
   
-  public int w(String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    besl.c(this.a + "/" + paramString1, paramString2);
-    return 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int w(String paramString1, String paramString2, Throwable paramThrowable)
+  public void c()
   {
-    besl.c(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
+    super.c();
+    beyq.a(207, "", a().getMiniAppInfoForReport());
   }
 }
 

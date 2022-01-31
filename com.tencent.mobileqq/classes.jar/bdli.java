@@ -1,18 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 
 class bdli
-  extends BroadcastReceiver
+  implements bdku
 {
-  bdli(bdlc parambdlc) {}
+  bdli(bdle parambdle) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    bdht.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
-    }
+    bdii.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    paramBundle = new Bundle();
+    paramBundle.putString("PackageName", paramString1);
+    paramBundle.putString("Code", paramString2);
+    paramBundle.putInt("VersionCode", paramInt);
+    paramBundle.putBoolean("IsSuccess", paramBoolean);
+    bdle.a(this.a, paramBundle);
   }
 }
 

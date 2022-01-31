@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class auhd
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public auhd(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public auhd(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AccountOnlineStateActivity.a(this.a);
+    ScanIconAnimateView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     auhd
  * JD-Core Version:    0.7.0.1
  */

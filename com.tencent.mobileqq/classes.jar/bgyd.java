@@ -1,10 +1,17 @@
-import cooperation.qzone.LocalMultiProcConfig;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bgyd
+final class bgyd
+  implements View.OnClickListener
 {
-  public static String a()
+  bgyd(Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
   {
-    return LocalMultiProcConfig.getString("QzoneFamousSpaceSp", bgyf.a().a, "https://h5.qzone.qq.com/vpage/cover/{uin}/vpage-index?screenWidth={screenWidth}&qua={qua}&_proxy=1&_wv=1029&bottom={bottom}");
+    if (this.a != null) {
+      this.a.dismiss();
+    }
   }
 }
 

@@ -1,21 +1,21 @@
 package dov.com.qq.im.ptv;
 
-import bbgg;
-import bjoz;
-import bjpb;
-import bjpc;
-import bjqu;
+import bbgu;
+import bjpq;
+import bjps;
+import bjpt;
+import bjrl;
 
 public class LightWeightCameraCaptureUnit$10
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$10(bjoz parambjoz, String paramString) {}
+  public LightWeightCameraCaptureUnit$10(bjpq parambjpq, String paramString) {}
   
   public void run()
   {
-    bjpb localbjpb = new bjpb(this);
-    bjpc localbjpc = new bjpc(this);
-    bbgg.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbjpb, localbjpb, localbjpc);
+    bjps localbjps = new bjps(this);
+    bjpt localbjpt = new bjpt(this);
+    bbgu.showPermissionSettingDialog(this.this$0.a.a(), null, this.a, localbjps, localbjps, localbjpt);
   }
 }
 

@@ -1,20 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
 public class aafv
-  extends AccountObserver
+  implements View.OnClickListener
 {
   public aafv(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onClick(View paramView)
   {
-    AccountManageActivity.b(this.a);
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    AccountManageActivity.b(this.a);
+    this.a.h();
   }
 }
 

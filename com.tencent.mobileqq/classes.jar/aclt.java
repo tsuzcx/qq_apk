@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class aclt
-  extends akgz
+  implements View.OnClickListener
 {
   public aclt(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
+    TroopRequestActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, "close warning tips");
     }
-    if (paramBoolean)
-    {
-      bcpw.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131719664), 0).a();
-      this.a.c.setVisibility(8);
-      return;
-    }
-    bcpw.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131719661), 0).a();
   }
 }
 

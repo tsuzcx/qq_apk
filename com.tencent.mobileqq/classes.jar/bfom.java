@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bfom
-  implements View.OnClickListener
+public abstract interface bfom
 {
-  bfom(bfol parambfol) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a();
 }
 
 

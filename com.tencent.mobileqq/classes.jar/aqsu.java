@@ -1,182 +1,271 @@
-import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.mobileqq.mini.ui.dialog.DisplayHelper;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
 
 public class aqsu
 {
-  public static ahbt a;
+  public static int a;
   public static String a;
+  public static List<String> a;
+  public static int b;
+  public static int c;
+  public static int d;
   
   static
   {
-    jdField_a_of_type_Ahbt = new aqsv();
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/imglib/201909/upload_368e2679238424e3f9df9be7353e26f8.zip";
+    jdField_a_of_type_Int = 3;
+    jdField_b_of_type_Int = 30000;
+    c = 7000;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    jdField_d_of_type_Int = 7;
   }
   
-  public static int a(RecyclerView paramRecyclerView)
+  public static int a()
   {
-    if (paramRecyclerView == null) {
-      return -1;
+    int j = amvf.a().jdField_b_of_type_Int;
+    int i = j;
+    if (j == 0) {
+      i = jdField_d_of_type_Int;
     }
-    int i = ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-    paramRecyclerView = paramRecyclerView.getLayoutManager().findViewByPosition(i);
-    if (paramRecyclerView != null) {
-      return i * paramRecyclerView.getHeight() - paramRecyclerView.getTop();
-    }
-    return -1;
+    return i;
   }
   
-  public static long a()
+  public static Bitmap a(String paramString, int paramInt1, int paramInt2)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return localBaseApplicationImpl.getSharedPreferences("game_center_sp", 0).getLong(localBaseApplicationImpl.getRuntime().getAccount() + "fullpop_time", 0L);
-  }
-  
-  public static FullPopData a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
+    int i = 0;
+    if ((paramInt1 < 0) || (paramInt2 < 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQGameConfigUtil", 2, "decode bitmap width = " + paramInt1 + " height=" + paramInt2 + "is error");
+      }
       return null;
     }
+    if ((paramInt2 == 0) && (paramInt1 == 0)) {}
     try
     {
-      if (((!(paramMessageRecord instanceof MessageForArkApp)) && (!(paramMessageRecord instanceof MessageForPubAccount)) && (!(paramMessageRecord instanceof MessageForStructing))) || (TextUtils.isEmpty(paramMessageRecord.extStr))) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend", "");
-      if (TextUtils.isEmpty(paramMessageRecord)) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord).optString("game_extra", "");
-      if (TextUtils.isEmpty(paramMessageRecord)) {
-        break label147;
-      }
-      paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("full_pop");
-      paramMessageRecord = new FullPopData(paramMessageRecord.optString("url"), paramMessageRecord.optString("jump_url"), paramMessageRecord.optLong("begin_time"), paramMessageRecord.optLong("end_time"), paramMessageRecord.optString("id", ""));
+      return BitmapFactory.decodeFile(paramString);
     }
-    catch (Throwable paramMessageRecord)
+    catch (Throwable paramString) {}
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramString, localOptions);
+    if (paramInt2 > 0) {}
+    for (paramInt2 = localOptions.outHeight / paramInt2;; paramInt2 = 0)
     {
+      if (paramInt1 > 0) {
+        i = localOptions.outWidth / paramInt1;
+      }
+      localOptions.inJustDecodeBounds = false;
+      if (paramInt2 > i) {}
       for (;;)
       {
-        paramMessageRecord.printStackTrace();
-        paramMessageRecord = null;
+        localOptions.inSampleSize = paramInt2;
+        paramString = BitmapFactory.decodeFile(paramString, localOptions);
+        return paramString;
+        paramInt2 = i;
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QQGameConfigUtil", 2, "decode bitmap error : " + paramString.getMessage());
+      return null;
     }
-    return paramMessageRecord;
   }
   
   public static String a()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    return localBaseApplicationImpl.getSharedPreferences("game_center_sp", 0).getString(localBaseApplicationImpl.getRuntime().getAccount() + "fullpop_id", "");
-  }
-  
-  public static void a(long paramLong)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences("game_center_sp", 0);
-    localObject = ((BaseApplicationImpl)localObject).getRuntime().getAccount() + "fullpop_time";
-    localSharedPreferences.edit().putLong((String)localObject, paramLong).commit();
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString, ahbt paramahbt, boolean paramBoolean)
-  {
-    int i = bbev.a(paramAppInterface.getApplication());
-    if (((i == 1) || (i == 4)) && (!TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQGameHelper", 1, "---->dowloadFullPopRes");
-      }
-      paramAppInterface = new DownloadParam();
-      paramAppInterface.url = paramString;
-      paramAppInterface.isPreDownload = paramBoolean;
-      PreloadManager.a().a(paramAppInterface, paramahbt);
+    String str2 = amvf.a().jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = "";
     }
+    return str1;
   }
   
-  public static void a(String paramString)
+  public static void a(int paramInt, String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    SharedPreferences localSharedPreferences = ((BaseApplicationImpl)localObject).getSharedPreferences("game_center_sp", 0);
-    localObject = ((BaseApplicationImpl)localObject).getRuntime().getAccount() + "fullpop_id";
-    localSharedPreferences.edit().putString((String)localObject, paramString).commit();
+    bicp.a();
+    bicp.a().a(paramInt, paramString);
   }
   
-  public static void a(List<MessageRecord> paramList)
+  public static void a(Context paramContext, FeedsItemData.GameInfo paramGameInfo)
   {
-    if (paramList != null) {}
-    ArrayList localArrayList;
-    do
+    if (paramGameInfo == null) {}
+    while (DisplayHelper.isPackageExist(paramContext, paramGameInfo.gamePkgName)) {
+      return;
+    }
+    bicp.a();
+    paramContext = new WadlParams();
+    paramContext.jdField_d_of_type_Int = 6;
+    paramContext.b(1);
+    paramContext.b(6);
+    paramContext.jdField_d_of_type_JavaLangString = "10000144";
+    paramContext.jdField_b_of_type_JavaLangString = paramGameInfo.gameApkUrl;
+    paramContext.jdField_a_of_type_JavaLangString = paramGameInfo.gameAppId;
+    paramContext.f = Integer.parseInt(paramGameInfo.gameVersionCode);
+    paramContext.j = paramGameInfo.gamePkgName;
+    paramContext.q = "biz_src_zf_games";
+    paramContext.m = "publicAccount";
+    paramContext.k = paramGameInfo.gameName;
+    paramContext.l = paramGameInfo.gameIcon;
+    paramContext.jdField_b_of_type_Int = 2;
+    paramContext.n = "publicAccount";
+    bicp.a().a(paramContext);
+  }
+  
+  public static void a(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "downloadGame req=" + paramBundle);
+    }
+    if (paramBundle == null) {
+      return;
+    }
+    bicp.a();
+    WadlParams localWadlParams = new WadlParams();
+    localWadlParams.jdField_d_of_type_Int = 0;
+    localWadlParams.b(1);
+    localWadlParams.b(6);
+    localWadlParams.jdField_d_of_type_JavaLangString = "10000144";
+    localWadlParams.jdField_b_of_type_JavaLangString = paramBundle.getString("apkUrl");
+    localWadlParams.jdField_a_of_type_JavaLangString = paramBundle.getString("appId");
+    localWadlParams.f = paramBundle.getInt("versionCode");
+    localWadlParams.j = paramBundle.getString("pkgName");
+    localWadlParams.q = "biz_src_zf_games";
+    localWadlParams.m = "provider";
+    localWadlParams.jdField_b_of_type_Int = 2;
+    bicp.a().a(localWadlParams);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    int i = 0;
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("game_center_sp", 0);
+    String str = "sp_key_game_center_feeds_show_float_window_date" + paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = "sp_key_game_center_feeds_float_window_showed_games" + paramQQAppInterface.getCurrentAccountUin();
+    jdField_a_of_type_JavaLangString = localSharedPreferences.getString(str, "");
+    if (b().equals(jdField_a_of_type_JavaLangString))
     {
+      paramQQAppInterface = localSharedPreferences.getString(paramQQAppInterface, "");
+      if ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.split(";").length == 0)) {
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+      }
       for (;;)
       {
-        try
+        return;
+        paramQQAppInterface = paramQQAppInterface.split(";");
+        jdField_a_of_type_JavaUtilList = new ArrayList(3);
+        while (i < paramQQAppInterface.length)
         {
-          if (paramList.size() > 0)
-          {
-            localArrayList = new ArrayList();
-            paramList = paramList.iterator();
-            if (!paramList.hasNext()) {
-              break;
-            }
-            localObject = (MessageRecord)paramList.next();
-            if (!"2747277822".equals(((MessageRecord)localObject).frienduin)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("QQGameHelper", 1, "enter qqgame message handle");
-            }
-            localObject = QQGameMsgInfo.parseMessageRecord((MessageRecord)localObject);
-            if (localObject != null)
-            {
-              localArrayList.add(localObject);
-              continue;
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        catch (Throwable paramList)
-        {
-          paramList.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.d("QQGameHelper", 1, "send qqgame message fail by:" + paramList.getMessage());
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQGameHelper", 1, "parse qqgame message fail");
+          jdField_a_of_type_JavaUtilList.add(paramQQAppInterface[i]);
+          i += 1;
         }
       }
-    } while (localArrayList.size() <= 0);
-    paramList = new Intent("action_qgame_tool_messgae");
-    paramList.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putSerializable("key_get_msg", localArrayList);
-    paramList.putExtras((Bundle)localObject);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramList);
+    }
+    jdField_a_of_type_JavaLangString = b();
+    jdField_a_of_type_JavaUtilList = new ArrayList(3);
+  }
+  
+  public static void a(WadlParams paramWadlParams)
+  {
+    bicp.a();
+    bicp.a().b(paramWadlParams);
+  }
+  
+  public static boolean a()
+  {
+    amve localamve = amvf.a();
+    if ((localamve != null) && (localamve.jdField_a_of_type_Int > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfigUtil", 2, "isPubAccountSwitch = false");
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (jdField_a_of_type_JavaUtilList == null) {
+      jdField_a_of_type_JavaUtilList = new ArrayList(3);
+    }
+    return (jdField_a_of_type_JavaUtilList.size() < 3) && (!jdField_a_of_type_JavaUtilList.contains(paramString));
+  }
+  
+  public static int b()
+  {
+    if (!AppNetConnInfo.isNetSupport()) {}
+    do
+    {
+      return 0;
+      if (AppNetConnInfo.isWifiConn()) {
+        return 1;
+      }
+    } while (!AppNetConnInfo.isMobileConn());
+    switch (AppNetConnInfo.getMobileInfo())
+    {
+    case -1: 
+    default: 
+      return -1;
+    case 0: 
+    case 1: 
+      return 2;
+    case 2: 
+      return 3;
+    case 3: 
+      return 4;
+    }
+    return 6;
+  }
+  
+  public static String b()
+  {
+    Date localDate = new Date();
+    return new SimpleDateFormat("yyyy-MM-dd").format(localDate);
+  }
+  
+  public static boolean b()
+  {
+    boolean bool2 = false;
+    Object localObject = amvf.a();
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((amve)localObject).c > 0)
+      {
+        localObject = ((amve)localObject).jdField_a_of_type_JavaLangString;
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bool1 = bool2;
+          if (bfnx.a((String)localObject)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 

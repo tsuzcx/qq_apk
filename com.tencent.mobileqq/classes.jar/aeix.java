@@ -1,10 +1,29 @@
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class aeix
+public final class aeix
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public AIORichMediaData a(Parcel paramParcel)
+  {
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
   
-  public aeix(aeiu paramaeiu) {}
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
+  }
 }
 
 

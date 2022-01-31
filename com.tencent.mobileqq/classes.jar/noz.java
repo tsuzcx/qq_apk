@@ -1,24 +1,18 @@
-import com.tencent.biz.pubaccount.QualityReporter.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoReq;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo.NegFeedback;
 
-public class noz
+public final class noz
+  implements Parcelable.Creator<VideoAdInfo.NegFeedback>
 {
-  public static void a(qbx paramqbx)
+  public VideoAdInfo.NegFeedback a(Parcel paramParcel)
   {
-    ThreadManager.excute(new QualityReporter.1(paramqbx), 16, null, true);
+    return new VideoAdInfo.NegFeedback(paramParcel);
   }
   
-  private static void b(cc_sso_report_svr.ReportInfoReq paramReportInfoReq)
+  public VideoAdInfo.NegFeedback[] a(int paramInt)
   {
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), nou.class);
-    localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
-    localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
-    localNewIntent.setObserver(new npa(localNewIntent));
-    onk.a().startServlet(localNewIntent);
+    return new VideoAdInfo.NegFeedback[paramInt];
   }
 }
 

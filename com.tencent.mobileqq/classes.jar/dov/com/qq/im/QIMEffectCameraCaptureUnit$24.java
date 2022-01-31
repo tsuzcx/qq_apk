@@ -1,10 +1,10 @@
 package dov.com.qq.im;
 
 import android.widget.RelativeLayout;
-import bizx;
-import bjae;
-import bjan;
-import bkyy;
+import bjao;
+import bjav;
+import bjbe;
+import bkzp;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 class QIMEffectCameraCaptureUnit$24
@@ -22,9 +22,9 @@ class QIMEffectCameraCaptureUnit$24
     if (this.this$0.d) {
       this.this$0.b.setVisibility(0);
     }
-    ((bkyy)bjae.a(3)).a("0", bjan.b, "");
-    bjan.c = 0;
-    this.this$0.jdField_a_of_type_Bizx.x();
+    ((bkzp)bjav.a(3)).a("0", bjbe.b, "");
+    bjbe.c = 0;
+    this.this$0.jdField_a_of_type_Bjao.x();
     this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
   }
 }

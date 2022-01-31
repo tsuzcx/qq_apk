@@ -1,25 +1,40 @@
-import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.tissue.v8rt.engine.LibLoader;
+import java.io.File;
 
-class bfdv
-  implements bfax
+public class bfdv
+  implements LibLoader
 {
-  long jdField_a_of_type_Long;
-  
-  bfdv(bfdu parambfdu, bfco parambfco, long paramLong) {}
-  
-  public void a()
+  public boolean loadSo()
   {
-    if (this.jdField_a_of_type_Bfco != null) {}
-    for (bfaz localbfaz = this.jdField_a_of_type_Bfco.a();; localbfaz = null)
+    if (beku.a == null)
     {
-      if ((localbfaz != null) && (localbfaz == this.jdField_a_of_type_Bfco.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbfaz != null) && (localbfaz == this.jdField_a_of_type_Bfco.e)) {
-        this.jdField_a_of_type_Bfdu.a(this.jdField_a_of_type_Bfco, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+      Log.i("V8JsLoader", "tissueEnv is null");
+      return false;
     }
+    Object localObject = beku.a.getNativeLibDir();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      Log.i("V8JsLoader", "libsDir is empty");
+      return false;
+    }
+    try
+    {
+      System.loadLibrary("v8jni");
+      System.loadLibrary("uvjni");
+      localObject = new File((String)localObject, "libtv8rt.so");
+      if ((!((File)localObject).isFile()) || (!((File)localObject).canRead())) {
+        throw new UnsatisfiedLinkError("libtv8rt.so is broken");
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      return false;
+    }
+    System.load(localThrowable.getAbsolutePath());
+    return true;
   }
 }
 

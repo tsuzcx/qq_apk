@@ -1,33 +1,15 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
 
 public class aonf
   implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public aonf(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
+  public aonf(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.a.a.b();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

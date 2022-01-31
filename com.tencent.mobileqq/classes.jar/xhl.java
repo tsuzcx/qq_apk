@@ -1,364 +1,125 @@
-import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.SurfaceTexture;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.view.Surface;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.videostory.video.MediaCodecGLFrameFetcher.1;
-import com.tencent.biz.videostory.video.MediaCodecGLFrameFetcher.2;
-import com.tencent.biz.videostory.video.MediaCodecGLFrameFetcher.3;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class xhl
+class xhl
+  implements avzm
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private volatile Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private volatile SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private xhp jdField_a_of_type_Xhp;
-  private xhq jdField_a_of_type_Xhq;
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  public long a;
   
-  public xhl(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Int = ((int)paramLong1);
-    this.jdField_b_of_type_Int = ((int)paramLong2);
-  }
+  xhl(xhk paramxhk, List paramList, xhe paramxhe, xhf paramxhf) {}
   
-  @TargetApi(16)
-  private MediaFormat a()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
-    {
-      MediaFormat localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
-      if (localMediaFormat.getString("mime").startsWith("video/"))
-      {
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-        return localMediaFormat;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
-  @TargetApi(16)
   private boolean a()
   {
-    try
+    boolean bool2 = false;
+    int i;
+    if (xhk.a(this.jdField_a_of_type_Xhk).size() == 1) {
+      i = 0;
+    }
+    int j;
+    do
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidMediaMediaFormat = a();
-      try
+      long l = 1000000 * xhk.c(this.jdField_a_of_type_Xhk);
+      boolean bool1 = bool2;
+      if (xhk.a(this.jdField_a_of_type_Xhk) != null)
       {
-        if (this.jdField_a_of_type_AndroidMediaMediaFormat != null) {
-          this.e = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("rotation-degrees");
-        }
-        if (!b())
+        bool1 = bool2;
+        if (((Integer)xhk.a(this.jdField_a_of_type_Xhk).get(i)).intValue() > 0)
         {
-          h();
-          return false;
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          this.e = 0;
-        }
-      }
-      this.jdField_a_of_type_Xhq = new xhq(null, "MediaCodecGLFrameFetcher");
-    }
-    catch (Exception localException2)
-    {
-      localException2.printStackTrace();
-      h();
-      return false;
-    }
-    this.jdField_a_of_type_Xhq.b(new MediaCodecGLFrameFetcher.2(this));
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null)
-    {
-      QLog.i("MediaCodecGLFrameFetcher", 3, "prepare: surface texture is null");
-      return false;
-    }
-    g();
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    return true;
-  }
-  
-  @TargetApi(16)
-  private boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
-        if (i >= 0)
-        {
-          ByteBuffer localByteBuffer = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[i];
-          int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(localByteBuffer, 0);
-          long l = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-          if (j > 0)
+          bool1 = bool2;
+          if (xhk.a(this.jdField_a_of_type_Xhk) < xhk.b(this.jdField_a_of_type_Xhk) * 1000000L)
           {
-            this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
-            this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, l, 0);
+            xhk.a(this.jdField_a_of_type_Xhk).a(3553, ((Integer)xhk.a(this.jdField_a_of_type_Xhk).get(0)).intValue(), null, null, xhk.a(this.jdField_a_of_type_Xhk));
+            xhk.a(this.jdField_a_of_type_Xhk, xhk.a(this.jdField_a_of_type_Xhk) + l);
+            bool1 = true;
           }
         }
-        else
-        {
-          i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 0L);
-          if (i == -3) {
-            continue;
-          }
-          if (i != -2) {
-            break label153;
-          }
-          this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-          continue;
-        }
-        QLog.i("MediaCodecGLFrameFetcher", 3, "decodeGOP: end of extractor");
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.jdField_a_of_type_Boolean = true;
-        return false;
-      }
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-      label153:
-      if (i >= 0)
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs >= paramLong)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, true);
-          return true;
-        }
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
-      }
-    }
-  }
-  
-  private void b()
-  {
-    QLog.i("MediaCodecGLFrameFetcher", 3, "finitRender: " + hashCode());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-    xhk.a(this.f);
-  }
-  
-  @TargetApi(16)
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
-      return false;
-    }
-    this.c = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("width");
-    this.d = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("height");
-    float f1 = this.d / this.c;
-    if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int != f1)
-    {
-      f1 = Math.max(this.jdField_a_of_type_Int / this.c, this.jdField_b_of_type_Int / this.d);
-      this.jdField_a_of_type_Int = ((int)(this.c * f1));
-      this.jdField_b_of_type_Int = ((int)(f1 * this.d));
-    }
-    if ((this.e == 270) || (this.e == 90))
-    {
-      this.jdField_a_of_type_Int ^= this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int ^ this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Int ^= this.jdField_b_of_type_Int;
-    }
-    return true;
-  }
-  
-  private void c()
-  {
-    QLog.i("MediaCodecGLFrameFetcher", 3, "initRender: " + hashCode());
-    this.jdField_a_of_type_Xhp = new xhp();
-    this.jdField_a_of_type_Xhp.a(true);
-    this.jdField_a_of_type_Xhp.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Xhp.a());
-    this.f = xhk.a(this.c, this.d);
-  }
-  
-  private void d()
-  {
-    f();
-    this.jdField_a_of_type_Xhq.b(new MediaCodecGLFrameFetcher.3(this));
-  }
-  
-  private void e()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-    {
-      QLog.i("MediaCodecGLFrameFetcher", 3, "notifyFrame");
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-      return;
-    }
-  }
-  
-  private void f()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-    {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      if (!bool) {}
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait();
-        QLog.i("MediaCodecGLFrameFetcher", 3, "waitFrame: done");
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  @TargetApi(16)
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(new xhm(this));
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
-    this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
-    this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-    this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-  }
-  
-  @TargetApi(16)
-  private void h()
-  {
-    QLog.i("MediaCodecGLFrameFetcher", 3, "cleanUp");
-    this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = null;
-    this.jdField_b_of_type_Long = -1L;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null) {
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      }
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
-            this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-          }
-          return;
-        }
-        catch (Exception localException3)
-        {
-          localException3.printStackTrace();
-          return;
-        }
-        finally {}
-        localException1 = localException1;
-        localException1.printStackTrace();
-        this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-      }
-    }
-    finally
-    {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    }
-    if (this.jdField_a_of_type_AndroidViewSurface == null) {}
-  }
-  
-  public Bitmap a(long paramLong)
-  {
-    return a(paramLong, Bitmap.Config.ARGB_8888);
-  }
-  
-  @TargetApi(16)
-  public Bitmap a(long paramLong, Bitmap.Config paramConfig)
-  {
-    long l = 1000L * paramLong;
-    if (this.jdField_b_of_type_Long == -1L) {
-      this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaFormat.getLong("durationUs");
-    }
-    paramLong = l;
-    if (l > this.jdField_b_of_type_Long)
-    {
-      QLog.w("MediaCodecGLFrameFetcher", 3, "prepareSeek: pos=" + l + ", du=" + this.jdField_b_of_type_Long);
-      paramLong = this.jdField_b_of_type_Long;
-    }
-    this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(paramLong, 2);
-    paramLong = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    if (!a(paramLong))
-    {
-      QLog.e("MediaCodecGLFrameFetcher", 1, "getFrame: decode error, ts " + paramLong);
-      return null;
-    }
-    d();
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    for (paramConfig = this.jdField_a_of_type_AndroidGraphicsBitmap.copy(paramConfig, true);; paramConfig = null) {
-      return paramConfig;
-    }
+      return bool1;
+      j = (int)(xhk.a(this.jdField_a_of_type_Xhk) / (Long.valueOf("2").longValue() * 1000L * 1000000L));
+      i = j;
+    } while (j < xhk.a(this.jdField_a_of_type_Xhk).size());
+    return false;
   }
   
   public void a()
   {
-    QLog.d("MediaCodecGLFrameFetcher", 3, "release: " + hashCode());
-    if (this.jdField_a_of_type_Xhq != null)
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    if (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Xhq.b(new MediaCodecGLFrameFetcher.1(this));
-      this.jdField_a_of_type_Xhq.a();
-      this.jdField_a_of_type_Xhq = null;
+      Bitmap localBitmap = (Bitmap)localIterator.next();
+      if (!xhk.a(this.jdField_a_of_type_Xhk)) {}
+      for (int i = xhk.a(this.jdField_a_of_type_Xhk, localBitmap, xhk.a(this.jdField_a_of_type_Xhk), xhk.b(this.jdField_a_of_type_Xhk));; i = xhk.b(this.jdField_a_of_type_Xhk, localBitmap, xhk.a(this.jdField_a_of_type_Xhk), xhk.b(this.jdField_a_of_type_Xhk)))
+      {
+        xhk.a(this.jdField_a_of_type_Xhk).add(Integer.valueOf(i));
+        break;
+      }
     }
-    h();
-    this.jdField_b_of_type_Boolean = true;
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart preProcess cost: " + (l2 - l1) + " ms mGpuBlur:" + xhk.a(this.jdField_a_of_type_Xhk));
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a();
   }
   
-  public boolean a(String paramString)
+  public void a(String arg1)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      throw new RuntimeException("should not reuse!");
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart encode cost: " + (l - this.jdField_a_of_type_Long) + " ms mGpuBlur:" + xhk.a(this.jdField_a_of_type_Xhk));
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return a();
+    if (this.jdField_a_of_type_Xhe != null) {
+      this.jdField_a_of_type_Xhe.a(this.jdField_a_of_type_Xhf);
+    }
+    if (xhk.a(this.jdField_a_of_type_Xhk) != null)
+    {
+      xhk.a(this.jdField_a_of_type_Xhk).surfaceDestroyed();
+      xhk.a(this.jdField_a_of_type_Xhk, null);
+    }
+    if (xhk.a(this.jdField_a_of_type_Xhk) != null)
+    {
+      xhk.a(this.jdField_a_of_type_Xhk).c();
+      xhk.a(this.jdField_a_of_type_Xhk, null);
+    }
+    if (xhk.a(this.jdField_a_of_type_Xhk) != null) {
+      xhk.a(this.jdField_a_of_type_Xhk).clear();
+    }
+    synchronized (this.jdField_a_of_type_Xhk)
+    {
+      this.jdField_a_of_type_Xhk.notifyAll();
+      return;
+    }
+  }
+  
+  public void a_(int paramInt, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("MuiltiImageToVideo", 2, "onEncodeError, code:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_Xhk)
+    {
+      this.jdField_a_of_type_Xhk.notifyAll();
+      if (this.jdField_a_of_type_Xhe != null)
+      {
+        this.jdField_a_of_type_Xhf.a(paramThrowable.getMessage());
+        this.jdField_a_of_type_Xhf.a(943001);
+        this.jdField_a_of_type_Xhe.b(this.jdField_a_of_type_Xhf);
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    QLog.d("MuiltiImageToVideo", 2, "onEncodeFrame() ");
+    if ((!a()) && (xhk.a(this.jdField_a_of_type_Xhk) != null)) {
+      xhk.a(this.jdField_a_of_type_Xhk).b();
+    }
   }
 }
 

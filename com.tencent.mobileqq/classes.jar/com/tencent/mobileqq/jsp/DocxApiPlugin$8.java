@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
 import android.util.Log;
-import ayfe;
+import ayfg;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -13,7 +13,7 @@ public final class DocxApiPlugin$8
   
   public void run()
   {
-    String str = ayfe.b(this.jdField_a_of_type_JavaLangString);
+    String str = ayfg.b(this.jdField_a_of_type_JavaLangString);
     ThreadManager.getUIHandler().post(new DocxApiPlugin.8.1(this, str));
     Log.e("tendocpreload", "end preload data send Back 2 Web ");
   }

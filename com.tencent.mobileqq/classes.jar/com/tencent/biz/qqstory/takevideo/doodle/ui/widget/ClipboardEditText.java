@@ -4,12 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import vpl;
+import vpi;
 
 public class ClipboardEditText
   extends EditText
 {
-  private vpl a;
+  private vpi a;
   
   public ClipboardEditText(Context paramContext)
   {
@@ -56,9 +56,9 @@ public class ClipboardEditText
     }
   }
   
-  public void setClipboardCallBack(vpl paramvpl)
+  public void setClipboardCallBack(vpi paramvpi)
   {
-    this.a = paramvpl;
+    this.a = paramvpi;
   }
 }
 

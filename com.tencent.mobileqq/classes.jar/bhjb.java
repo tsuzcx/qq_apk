@@ -1,13 +1,14 @@
-import cooperation.qzone.plugin.PluginRecord;
-
-class bhjb
+public abstract interface bhjb
 {
-  bhjc jdField_a_of_type_Bhjc;
-  bhjd jdField_a_of_type_Bhjd;
-  PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a(bhja parambhja);
   
-  bhjb(bhiz parambhiz) {}
+  public abstract void b(bhja parambhja);
+  
+  public abstract void c(bhja parambhja);
+  
+  public abstract void d(bhja parambhja);
+  
+  public abstract void e(bhja parambhja);
 }
 
 

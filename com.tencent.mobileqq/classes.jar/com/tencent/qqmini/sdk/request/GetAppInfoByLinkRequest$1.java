@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.request;
 
-import beze;
+import bezv;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -8,7 +8,7 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 public class GetAppInfoByLinkRequest$1
   implements Runnable
 {
-  public GetAppInfoByLinkRequest$1(beze parambeze, MiniAppInfo paramMiniAppInfo) {}
+  public GetAppInfoByLinkRequest$1(bezv parambezv, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {

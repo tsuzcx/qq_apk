@@ -1,178 +1,190 @@
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerTriplePicItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
 
 public class oai
 {
-  public static String a()
+  public static int a(ProteusBannerBigPicItemData paramProteusBannerBigPicItemData)
   {
-    Object localObject = "";
-    try
-    {
-      String str = bfmw.a("d059d4");
-      localObject = str;
+    if (b(paramProteusBannerBigPicItemData)) {
+      return 28;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AdDeviceInfoUtil", 2, "getIMEI: exception" + localException.getMessage());
+    if (a(paramProteusBannerBigPicItemData)) {
+      return 25;
     }
-    return localObject;
-    return "";
+    if (paramProteusBannerBigPicItemData.a) {
+      return 26;
+    }
+    return 10;
   }
   
-  public static String a(Context paramContext)
+  public static int a(ProteusBannerTriplePicItemData paramProteusBannerTriplePicItemData)
   {
-    return a(paramContext, "com.tencent.mm");
+    if (a(paramProteusBannerTriplePicItemData)) {
+      return 30;
+    }
+    return 27;
   }
   
-  public static String a(Context paramContext, String paramString)
+  public static int a(ProteusBannerVideoItemData paramProteusBannerVideoItemData)
   {
-    String str = "";
-    paramContext = paramContext.getPackageManager();
-    try
+    if (a(paramProteusBannerVideoItemData)) {
+      return 29;
+    }
+    return 15;
+  }
+  
+  public static int a(ProteusInnerData paramProteusInnerData)
+  {
+    int i = 20;
+    if (a(paramProteusInnerData)) {
+      i = 24;
+    }
+    do
     {
-      paramString = paramContext.getPackageInfo(paramString, 1);
-      paramContext = str;
-      if (paramString != null) {
-        paramContext = paramString.versionName;
+      return i;
+      if (paramProteusInnerData.a()) {
+        return 21;
       }
-      return paramContext;
+    } while (!paramProteusInnerData.b());
+    return 20;
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData)
+  {
+    if (a(paramAdData))
+    {
+      String str1 = paramAdData.jdField_a_of_type_Nxw.m;
+      if (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxw.n)) {
+        str1 = paramAdData.jdField_a_of_type_Nxw.n;
+      }
+      String str2 = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        str2 = str1;
+        if (!TextUtils.isEmpty(paramAdData.m)) {
+          str2 = paramAdData.m;
+        }
+      }
+      onh.e(paramContext, shq.a(str2));
+    }
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, int paramInt)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    shq.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
+    paramContext = (QQAppInterface)onh.a();
+    nmc.a(new nyd().a(paramContext).a(BaseApplication.getContext()).a(nmc.J).b(nmc.K).a(oas.a(paramAdData)).d(paramInt).d(nmc.a(paramAdData)).a());
+  }
+  
+  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt)
+  {
+    try
+    {
+      View localView = ((pme)paramViewBase).getNativeView();
+      a(paramContext, paramViewBase, paramString, paramInt, localView.getWidth(), localView.getHeight());
+      return;
     }
     catch (Exception paramContext)
     {
-      paramContext.printStackTrace();
-    }
-    return "";
-  }
-  
-  public static oidb_0x6cf.PhoneInfo a()
-  {
-    oidb_0x6cf.PhoneInfo localPhoneInfo = new oidb_0x6cf.PhoneInfo();
-    Object localObject1 = new yyt();
-    ((yyt)localObject1).a = "ce2d9f";
-    Object localObject2 = yys.a(BaseApplication.getContext(), (yyt)localObject1);
-    if (localObject2 != null) {}
-    for (localObject1 = ((yyu)localObject2).a;; localObject1 = null)
-    {
-      if ((localObject2 != null) && (((yyu)localObject2).a != null) && (((yyu)localObject2).a.muid != null) && (((yyu)localObject2).a.muid_type != null))
-      {
-        localPhoneInfo.bytes_muid.set(ByteStringMicro.copyFromUtf8(((yyu)localObject2).a.muid.get()));
-        localPhoneInfo.uint32_muid_type.set(((yyu)localObject2).a.muid_type.get());
-      }
-      localObject2 = b();
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localPhoneInfo.string_imei.set((String)localObject2);
-      }
-      int i = njo.a();
-      localPhoneInfo.uint32_conn.set(i);
-      i = 0;
-      try
-      {
-        int j = bbct.e();
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        label158:
-        break label158;
-      }
-      localPhoneInfo.uint32_carrier.set(i);
-      localObject2 = bbct.e();
-      localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localObject2 = bbct.c();
-      localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      i = AppSetting.a();
-      localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
-      localObject2 = fi.a(fi.a());
-      localPhoneInfo.bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-      localPhoneInfo.uint32_os_type.set(2);
-      localPhoneInfo.uint64_func_flag.set(1L);
-      localPhoneInfo.bytes_ads_context.set(ByteStringMicro.copyFromUtf8(nmf.a()));
-      localPhoneInfo.bytes_manufacturer.set(ByteStringMicro.copyFromUtf8(Build.BRAND));
-      localPhoneInfo.bytes_device_brand_and_model.set(ByteStringMicro.copyFromUtf8(Build.MODEL));
-      if (localObject1 != null)
-      {
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.has()) {
-          localPhoneInfo.string_qadid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.has()) {
-          localPhoneInfo.string_androidid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_android_id.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.has()) {
-          localPhoneInfo.string_mac.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).md5_mac.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has()) {
-          localPhoneInfo.string_oaid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has()) {
-          localPhoneInfo.string_taid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
-          localPhoneInfo.string_client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AdDeviceInfoUtil", 2, "makePhoneInfo0x6cf: deviceInfo: ma=" + localPhoneInfo.string_androidid.get() + ", mm=" + localPhoneInfo.string_mac.get() + ", oa=" + localPhoneInfo.string_oaid.get() + ", ta=" + localPhoneInfo.string_taid.get());
-        }
-      }
-      localPhoneInfo.bytes_wx_ver.set(ByteStringMicro.copyFrom(a(BaseApplication.getContext()).getBytes()));
-      return localPhoneInfo;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
     }
   }
   
-  public static String b()
+  public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    for (Object localObject1 = "";; localObject1 = "")
-    {
-      try
-      {
-        Object localObject2 = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
-        if (Build.VERSION.SDK_INT > 28) {
-          continue;
-        }
-        localObject2 = ((TelephonyManager)localObject2).getDeviceId();
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AdDeviceInfoUtil", 2, "getGdtIMEI: exception" + localException.getMessage());
-        return "";
-      }
-      return localObject1;
-    }
-  }
-  
-  public static String c()
-  {
-    Object localObject = "";
     try
     {
-      String str = bfmw.c("d059d4");
-      localObject = str;
+      paramViewBase = (pme)paramViewBase;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = paramInt2;
+      localURLDrawableOptions.mRequestHeight = paramInt3;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      paramString.setTag(bavw.b(paramInt2, paramInt3, actj.a(paramInt1, paramContext.getResources())));
+      paramString.setDecodeHandler(bavw.i);
+      paramViewBase.setImageDrawable(paramString, true);
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("AdDeviceInfoUtil", 2, "getIMEI: exception" + localException.getMessage());
+      QLog.e("FastWeqAdUtils", 2, "loadImage error " + paramContext.getMessage());
     }
-    return localObject;
-    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    shq.a(paramContext);
+    if (!TextUtils.isEmpty(paramString2)) {}
+    for (;;)
+    {
+      onh.e(paramContext, shq.a(paramString2));
+      return;
+      if (!TextUtils.isEmpty(paramString3)) {
+        paramString2 = paramString3;
+      } else {
+        paramString2 = paramString1;
+      }
+    }
+  }
+  
+  public static boolean a(AdData paramAdData)
+  {
+    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nxw != null) && (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_Nxw.b));
+  }
+  
+  public static void b(Context paramContext, AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    shq.a(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
+    paramContext = (QQAppInterface)onh.a();
+    nmc.a(new nyd().a(paramContext).a(BaseApplication.getContext()).a(nmc.J).b(nmc.K).a(oas.a(paramAdData)).d(nmc.a(paramAdData)).a());
+  }
+  
+  public static boolean b(AdData paramAdData)
+  {
+    return (paramAdData != null) && (paramAdData.jdField_a_of_type_Nye != null) && (5001 == paramAdData.jdField_a_of_type_Nye.g);
+  }
+  
+  public static boolean c(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("3".equals(paramAdData.jdField_a_of_type_Nxw.x));
+  }
+  
+  public static boolean d(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("1".equals(paramAdData.jdField_a_of_type_Nxw.x));
+  }
+  
+  public static boolean e(AdData paramAdData)
+  {
+    return (a(paramAdData)) && ("2".equals(paramAdData.jdField_a_of_type_Nxw.x));
+  }
+  
+  public static boolean f(AdData paramAdData)
+  {
+    if (paramAdData == null) {}
+    while ((TextUtils.isEmpty(paramAdData.K)) || (!paramAdData.c) || (!oaq.d(paramAdData))) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
 import android.os.Message;
-import bell;
-import belm;
-import beln;
-import belo;
-import belp;
+import bemc;
+import bemd;
+import beme;
+import bemf;
+import bemg;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -18,7 +18,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 {
   private static final BlockingQueue<Runnable> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
   public static final Executor a;
-  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bell();
+  private static final ThreadFactory jdField_a_of_type_JavaUtilConcurrentThreadFactory = new bemc();
   public static final Executor b;
   private static volatile Executor c = jdField_b_of_type_JavaUtilConcurrentExecutor;
   private volatile AsyncTask.Status jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask$Status;
@@ -29,12 +29,12 @@ public abstract class AsyncTask<Params, Progress, Result>
   {
     jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue(10);
     jdField_a_of_type_JavaUtilConcurrentExecutor = new ThreadPoolExecutor(1, 128, 1L, TimeUnit.SECONDS, jdField_a_of_type_JavaUtilConcurrentBlockingQueue, jdField_a_of_type_JavaUtilConcurrentThreadFactory);
-    jdField_b_of_type_JavaUtilConcurrentExecutor = new belp(null);
+    jdField_b_of_type_JavaUtilConcurrentExecutor = new bemg(null);
   }
   
   private Result a(Result paramResult)
   {
-    beln.a.obtainMessage(1, new belm(this, new Object[] { paramResult })).sendToTarget();
+    beme.a.obtainMessage(1, new bemd(this, new Object[] { paramResult })).sendToTarget();
     return paramResult;
   }
   

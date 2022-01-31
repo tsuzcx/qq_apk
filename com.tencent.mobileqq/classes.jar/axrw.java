@@ -1,71 +1,83 @@
-import com.tencent.common.config.AppSetting;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class axrw
+public class axrw
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k = "8.2.8.4440";
-  public String l = "AND";
-  
-  public axrw()
+  public static int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = AppSetting.a();
-    this.jdField_a_of_type_JavaLangString = bbct.a();
-    this.jdField_b_of_type_JavaLangString = "";
+    return a(paramContext, paramString, "Click_grp_asst");
   }
   
-  public String a()
+  public static int a(Context paramContext, String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    paramString1 = paramString1 + paramString2;
+    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
+    paramContext.putInt(paramString + "Click_grp_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_msg", 0);
+    paramContext.putInt(paramString + "grp_msg_equ", 0);
+    paramContext.putInt(paramString + "grp_msg_dec", 0);
+    paramContext.putInt(paramString + "grp_msg_inc", 0);
+    paramContext.commit();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + paramString2;
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    int i = paramContext.getInt(paramString1, 0);
+    paramContext.edit().putInt(paramString1, i + 1).commit();
+  }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_setting_asst");
+  }
+  
+  public static int c(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_setting_msg");
+  }
+  
+  public static void c(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static int d(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_equ");
+  }
+  
+  public static void d(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static int e(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static void e(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_inc");
+  }
+  
+  public static int f(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_inc");
   }
 }
 

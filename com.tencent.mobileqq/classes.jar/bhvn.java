@@ -1,25 +1,89 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.webkit.URLUtil;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bhvn
+public final class bhvn
+  extends Drawable.ConstantState
 {
-  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
+  int jdField_a_of_type_Int = 30;
+  bhvp jdField_a_of_type_Bhvp;
+  bhvw jdField_a_of_type_Bhvw;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  
+  private bhvn(bhvj parambhvj) {}
+  
+  public int a()
   {
-    if (paramBundle == null) {
-      return false;
+    if (this.jdField_a_of_type_Bhvp == null) {
+      return 0;
     }
-    paramAppInterface = new Intent();
-    paramAppInterface.putExtra("share_data", paramBundle);
-    paramAppInterface.putExtra("readinjoy_launch_style", 2);
-    paramAppInterface.putExtra("readinjoy_launch_source", 11);
-    paramAppInterface.putExtra("channel_id", 9999);
-    axqw.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
-    bhvh.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
-    return true;
+    return this.jdField_a_of_type_Bhvp.a();
+  }
+  
+  public void a(Rect paramRect)
+  {
+    this.jdField_a_of_type_Bhvp.a(paramRect);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_a_of_type_Bhvp == null)
+    {
+      this.jdField_a_of_type_Bhvp = new bhvp(BaseApplicationImpl.getApplication());
+      if (this.jdField_a_of_type_Bhvw == null) {
+        this.jdField_a_of_type_Bhvw = new bhvo(this);
+      }
+      this.jdField_a_of_type_Bhvp.a(this.jdField_a_of_type_Bhvw);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        if (!URLUtil.isNetworkUrl(paramString)) {
+          break label148;
+        }
+        this.jdField_a_of_type_Bhvp.a(paramString, -1, true);
+      }
+    }
+    for (;;)
+    {
+      if (paramInt > 0) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+      if (this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.jdField_a_of_type_Bhvp.a();
+      break;
+      label148:
+      this.jdField_a_of_type_Bhvp.a(paramString, true);
+    }
+  }
+  
+  public int b()
+  {
+    return a() * 1000 / this.jdField_a_of_type_Int;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new bhvj(this);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new bhvj(this);
   }
 }
 

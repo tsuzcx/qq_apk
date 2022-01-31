@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajqz;
-import ajra;
-import bbqp;
-import bcpw;
+import ajqx;
+import ajqy;
+import bbrd;
+import bcql;
 
 public class ApolloPanel$37$1$1
   implements Runnable
 {
-  public ApolloPanel$37$1$1(ajra paramajra, boolean paramBoolean) {}
+  public ApolloPanel$37$1$1(ajqy paramajqy, boolean paramBoolean) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      bcpw.a(this.jdField_a_of_type_Ajra.jdField_a_of_type_Ajqz.a.getContext(), 1, 2131690134, 0).b(0);
+      bcql.a(this.jdField_a_of_type_Ajqy.jdField_a_of_type_Ajqx.a.getContext(), 1, 2131690134, 0).b(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ajra.jdField_a_of_type_Bbqp.a(null);
+      this.jdField_a_of_type_Ajqy.jdField_a_of_type_Bbrd.a(null);
       return;
-      bcpw.a(this.jdField_a_of_type_Ajra.jdField_a_of_type_Ajqz.a.getContext(), 2, 2131690135, 0).b(0);
+      bcql.a(this.jdField_a_of_type_Ajqy.jdField_a_of_type_Ajqx.a.getContext(), 2, 2131690135, 0).b(0);
     }
   }
 }

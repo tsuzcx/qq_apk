@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-
-public final class qed
-  implements Parcelable.Creator<WeishiRedDotInfo>
+public abstract interface qed<T>
 {
-  public WeishiRedDotInfo a(Parcel paramParcel)
-  {
-    return new WeishiRedDotInfo(paramParcel);
-  }
-  
-  public WeishiRedDotInfo[] a(int paramInt)
-  {
-    return new WeishiRedDotInfo[paramInt];
-  }
+  public abstract boolean a(T paramT);
 }
 
 

@@ -1,27 +1,25 @@
-class lsx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+
+public class lsx
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public final String a;
-  public long b;
-  public long c;
+  public lsx(RandomController paramRandomController) {}
   
-  public lsx(String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramLong;
-    this.c = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Long < paramLong) {
-      this.jdField_a_of_type_Long = paramLong;
+    if (RandomController.a(this.a) == 2) {
+      axqy.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
     }
-    if (this.b > paramLong) {
-      this.b = paramLong;
+    for (;;)
+    {
+      this.a.c();
+      return;
+      if (RandomController.a(this.a) == 1) {
+        axqy.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
+      }
     }
-    this.c = ((this.c + paramLong) / 2L);
   }
 }
 

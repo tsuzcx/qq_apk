@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.DocsGrayTipsInfo;
+import android.graphics.Bitmap;
 
-public final class aydp
-  implements Parcelable.Creator<DocsGrayTipsInfo>
+public abstract interface aydp
 {
-  public DocsGrayTipsInfo a(Parcel paramParcel)
-  {
-    return new DocsGrayTipsInfo(paramParcel);
-  }
-  
-  public DocsGrayTipsInfo[] a(int paramInt)
-  {
-    return new DocsGrayTipsInfo[paramInt];
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

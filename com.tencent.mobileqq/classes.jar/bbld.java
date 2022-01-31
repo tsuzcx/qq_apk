@@ -1,18 +1,13 @@
-public class bbld
+import android.graphics.PointF;
+
+final class bbld
+  implements bblf<PointF>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public bbld()
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
+    float f1 = paramPointF1.x;
+    float f2 = paramPointF1.y;
+    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
   }
 }
 

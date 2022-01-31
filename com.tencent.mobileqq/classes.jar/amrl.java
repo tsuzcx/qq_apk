@@ -1,10 +1,6 @@
 public class amrl
 {
-  public Boolean a;
   public String a;
-  public String b;
-  public String c;
-  public String d;
 }
 
 

@@ -2,18 +2,18 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import beka;
-import bewt;
+import bekr;
+import bexk;
 
 class OpenDataJsPlugin$11
   implements DialogInterface.OnCancelListener
 {
-  OpenDataJsPlugin$11(OpenDataJsPlugin paramOpenDataJsPlugin, beka parambeka) {}
+  OpenDataJsPlugin$11(OpenDataJsPlugin paramOpenDataJsPlugin, bekr parambekr) {}
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    bewt.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
-    bewt.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
+    bexk.a().e("OpenDataJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
+    bexk.a("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE cancel");
     this.val$req.a("cancel");
   }
 }

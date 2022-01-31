@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import aqap;
+import aqar;
 import java.util.Map;
 
 public class SCFSwitchs
@@ -11,12 +11,12 @@ public class SCFSwitchs
   
   public static SCFSwitchs fromMap(Map paramMap)
   {
-    return (SCFSwitchs)aqap.a(paramMap, SCFSwitchs.class);
+    return (SCFSwitchs)aqar.a(paramMap, SCFSwitchs.class);
   }
   
   public static Map toMap(SCFSwitchs paramSCFSwitchs)
   {
-    return aqap.a(paramSCFSwitchs);
+    return aqar.a(paramSCFSwitchs);
   }
 }
 

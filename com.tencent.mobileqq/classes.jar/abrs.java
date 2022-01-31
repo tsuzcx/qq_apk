@@ -1,30 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
-class abrs
-  implements DialogInterface.OnClickListener
+public class abrs
+  extends abrv
 {
-  abrs(abrq paramabrq) {}
+  private abrs(PortraitImageview paramPortraitImageview) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    if (!bbev.d(this.a.a))
-    {
-      PhoneUnityChangeActivity.a(this.a.a, 2131694672);
-      return;
+    if (this.a.a() > this.a.c()) {
+      this.a.a(this.a.c());
     }
-    if (this.a.a.b == null)
+    for (;;)
     {
-      this.a.a.b = new abrt(this);
-      this.a.a.app.registObserver(this.a.a.b);
+      return true;
+      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
     }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131719281, 0L, true);
-    axqw.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
+      return false;
+    }
+    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a(-paramFloat1, -paramFloat2);
+    this.a.setImageMatrix(this.a.a());
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Abrt != null)
+    {
+      this.a.jdField_a_of_type_Abrt.a();
+      return false;
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

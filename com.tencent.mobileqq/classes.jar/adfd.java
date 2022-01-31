@@ -1,29 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+
 public class adfd
-  extends adfl
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public adfd(ColorView paramColorView) {}
   
-  public adfd(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof adfd));
-      paramObject = (adfd)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
-    return true;
+    if (ColorView.a(this.a) != null) {
+      ColorView.a(this.a).a();
+    }
   }
 }
 

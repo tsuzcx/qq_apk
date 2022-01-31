@@ -1,44 +1,12 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
-
-public class aptl
-  implements apth
+public abstract interface aptl
 {
-  aptl(aptk paramaptk) {}
+  public abstract void a();
   
-  public void a()
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
-    apti.a(this.a.a.this$0);
-    apuc.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
-    apti.a(this.a.a.this$0);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

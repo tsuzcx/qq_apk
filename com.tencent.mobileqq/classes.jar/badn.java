@@ -1,16 +1,62 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.List;
 
-class badn
-  implements bahm
+final class badn
+  implements badl
 {
-  badn(badj parambadj, TroopChatPie paramTroopChatPie) {}
+  badn(NavBarAIO paramNavBarAIO, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
   
-  public void a(int paramInt)
+  public void a(List<badq> paramList)
   {
-    if (!bahk.a(paramInt)) {
-      this.jdField_a_of_type_Badj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeft(0, 0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      this.b.setOnTouchListener(null);
+      return;
     }
-    this.jdField_a_of_type_Badj.e(bahk.b(paramInt));
+    if (paramList.size() > 1) {
+      Collections.sort(paramList, new bado(this));
+    }
+    asyd localasyd = badm.a((badq)paramList.get(0));
+    if (paramList.size() > 1)
+    {
+      paramList = badm.a((badq)paramList.get(1));
+      label99:
+      badp localbadp = new badp(this);
+      if (localasyd == null) {
+        break label203;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(localasyd);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localbadp);
+      label128:
+      if (paramList == null) {
+        break label214;
+      }
+      this.b.setTag(paramList);
+      this.b.setOnTouchListener(localbadp);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeftForMutualMark(localasyd, paramList);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopHonor.utils", 2, "updateAIOTitleTroopHonorInteractiveIcon one:" + localasyd + " two:" + paramList);
+      return;
+      paramList = null;
+      break label99;
+      label203:
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      break label128;
+      label214:
+      this.b.setOnTouchListener(null);
+    }
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import android.app.Activity;
 import android.os.Handler;
 import android.text.TextUtils;
-import beiw;
-import berk;
-import bero;
-import bers;
-import berz;
-import besl;
-import bfgo;
+import bejn;
+import besb;
+import besf;
+import besj;
+import besq;
+import betc;
+import bfhf;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
@@ -34,153 +34,153 @@ public class ShareProxyDefault
     {
     case 2: 
     default: 
-      localObject = new berk();
-      ((berk)localObject).jdField_a_of_type_Boolean = true;
-      ((berk)localObject).jdField_a_of_type_JavaLangString = paramString4;
-      ((berk)localObject).e = paramString2;
-      ((berk)localObject).f = paramString3;
-      ((berk)localObject).jdField_b_of_type_JavaLangString = paramString1;
-      shareToOther(paramActivity, (berk)localObject);
+      localObject = new besb();
+      ((besb)localObject).jdField_a_of_type_Boolean = true;
+      ((besb)localObject).jdField_a_of_type_JavaLangString = paramString4;
+      ((besb)localObject).e = paramString2;
+      ((besb)localObject).f = paramString3;
+      ((besb)localObject).jdField_b_of_type_JavaLangString = paramString1;
+      shareToOther(paramActivity, (besb)localObject);
       return;
     case 0: 
-      localObject = new bero();
-      ((bero)localObject).jdField_b_of_type_JavaLangString = paramString3;
-      ((bero)localObject).c = paramString1;
-      ((bero)localObject).jdField_a_of_type_JavaLangString = paramString4;
-      ((bero)localObject).jdField_a_of_type_Boolean = true;
-      ((bero)localObject).e = paramString2;
-      ((bero)localObject).f = paramString3;
-      shareToQQ(paramActivity, (bero)localObject);
+      localObject = new besf();
+      ((besf)localObject).jdField_b_of_type_JavaLangString = paramString3;
+      ((besf)localObject).c = paramString1;
+      ((besf)localObject).jdField_a_of_type_JavaLangString = paramString4;
+      ((besf)localObject).jdField_a_of_type_Boolean = true;
+      ((besf)localObject).e = paramString2;
+      ((besf)localObject).f = paramString3;
+      shareToQQ(paramActivity, (besf)localObject);
       return;
     case 1: 
-      localObject = new bero();
-      ((bero)localObject).jdField_b_of_type_JavaLangString = paramString3;
-      ((bero)localObject).c = paramString1;
-      ((bero)localObject).jdField_a_of_type_JavaLangString = paramString4;
-      ((bero)localObject).jdField_a_of_type_Boolean = true;
-      ((bero)localObject).e = paramString2;
-      ((bero)localObject).f = paramString3;
-      shareToQZone(paramActivity, (bero)localObject);
+      localObject = new besf();
+      ((besf)localObject).jdField_b_of_type_JavaLangString = paramString3;
+      ((besf)localObject).c = paramString1;
+      ((besf)localObject).jdField_a_of_type_JavaLangString = paramString4;
+      ((besf)localObject).jdField_a_of_type_Boolean = true;
+      ((besf)localObject).e = paramString2;
+      ((besf)localObject).f = paramString3;
+      shareToQZone(paramActivity, (besf)localObject);
       return;
     case 3: 
-      localObject = new berz();
-      ((berz)localObject).jdField_a_of_type_Boolean = true;
-      ((berz)localObject).jdField_a_of_type_JavaLangString = paramString4;
-      ((berz)localObject).e = paramString2;
-      ((berz)localObject).f = paramString3;
-      ((berz)localObject).jdField_b_of_type_JavaLangString = paramString1;
-      shareToWxSession(paramActivity, (berz)localObject);
+      localObject = new besq();
+      ((besq)localObject).jdField_a_of_type_Boolean = true;
+      ((besq)localObject).jdField_a_of_type_JavaLangString = paramString4;
+      ((besq)localObject).e = paramString2;
+      ((besq)localObject).f = paramString3;
+      ((besq)localObject).jdField_b_of_type_JavaLangString = paramString1;
+      shareToWxSession(paramActivity, (besq)localObject);
       return;
     }
-    Object localObject = new berz();
-    ((berz)localObject).jdField_a_of_type_Boolean = true;
-    ((berz)localObject).jdField_a_of_type_JavaLangString = paramString4;
-    ((berz)localObject).e = paramString2;
-    ((berz)localObject).f = paramString3;
-    ((berz)localObject).jdField_b_of_type_JavaLangString = paramString1;
-    shareToWxTimeline(paramActivity, (berz)localObject);
+    Object localObject = new besq();
+    ((besq)localObject).jdField_a_of_type_Boolean = true;
+    ((besq)localObject).jdField_a_of_type_JavaLangString = paramString4;
+    ((besq)localObject).e = paramString2;
+    ((besq)localObject).f = paramString3;
+    ((besq)localObject).jdField_b_of_type_JavaLangString = paramString1;
+    shareToWxTimeline(paramActivity, (besq)localObject);
   }
   
-  private void shareAsOther(bers parambers, AsyncResult paramAsyncResult)
+  private void shareAsOther(besj parambesj, AsyncResult paramAsyncResult)
   {
-    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
-    if (besl.a()) {
-      besl.a("ShareProxy", "shareAsOther. title=" + parambers.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambers.jdField_b_of_type_JavaLangString + ",entryPath=" + parambers.c);
+    Activity localActivity = parambesj.jdField_a_of_type_AndroidAppActivity;
+    if (betc.a()) {
+      betc.a("ShareProxy", "shareAsOther. title=" + parambesj.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambesj.jdField_b_of_type_JavaLangString + ",entryPath=" + parambesj.c);
     }
-    MiniAppInfo localMiniAppInfo = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     if (localMiniAppInfo == null)
     {
-      besl.d("ShareProxy", "shareAsOther. mini app info is null!");
+      betc.d("ShareProxy", "shareAsOther. mini app info is null!");
       return;
     }
-    String str2 = parambers.jdField_a_of_type_JavaLangString;
+    String str2 = parambesj.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = localMiniAppInfo.desc;
     }
-    bfgo.b(localMiniAppInfo.appId, parambers.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambers.jdField_b_of_type_JavaLangString, null, parambers.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambers.g, null, new ShareProxyDefault.4(this, parambers, paramAsyncResult, localActivity));
+    bfhf.b(localMiniAppInfo.appId, parambesj.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambesj.jdField_b_of_type_JavaLangString, null, parambesj.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambesj.g, null, new ShareProxyDefault.4(this, parambesj, paramAsyncResult, localActivity));
   }
   
-  private void shareAsQQ(bers parambers, AsyncResult paramAsyncResult)
+  private void shareAsQQ(besj parambesj, AsyncResult paramAsyncResult)
   {
-    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
-    if (besl.a()) {
-      besl.a("ShareProxy", "shareAsQQ. title=" + parambers.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambers.jdField_b_of_type_JavaLangString + ",entryPath=" + parambers.c);
+    Activity localActivity = parambesj.jdField_a_of_type_AndroidAppActivity;
+    if (betc.a()) {
+      betc.a("ShareProxy", "shareAsQQ. title=" + parambesj.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambesj.jdField_b_of_type_JavaLangString + ",entryPath=" + parambesj.c);
     }
-    MiniAppInfo localMiniAppInfo = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     if (localMiniAppInfo == null)
     {
-      besl.d("ShareProxy", "shareAsQQ. mini app info is null!");
+      betc.d("ShareProxy", "shareAsQQ. mini app info is null!");
       return;
     }
-    String str2 = parambers.jdField_a_of_type_JavaLangString;
+    String str2 = parambesj.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = localMiniAppInfo.desc;
     }
-    bfgo.a(localMiniAppInfo.appId, parambers.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambers.jdField_b_of_type_JavaLangString, null, parambers.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambers.d, parambers.jdField_b_of_type_Boolean, parambers.e, parambers.f, parambers.g, null, 0, new ShareProxyDefault.1(this, parambers, paramAsyncResult, localActivity));
+    bfhf.a(localMiniAppInfo.appId, parambesj.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambesj.jdField_b_of_type_JavaLangString, null, parambesj.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambesj.d, parambesj.jdField_b_of_type_Boolean, parambesj.e, parambesj.f, parambesj.g, null, 0, new ShareProxyDefault.1(this, parambesj, paramAsyncResult, localActivity));
   }
   
-  private void shareAsQZoneFeeds(bers parambers, AsyncResult paramAsyncResult)
+  private void shareAsQZoneFeeds(besj parambesj, AsyncResult paramAsyncResult)
   {
-    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
-    if (besl.a()) {
-      besl.a("ShareProxy", "shareAsQZoneFeeds. title=" + parambers.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambers.jdField_b_of_type_JavaLangString + ",entryPath=" + parambers.c);
+    Activity localActivity = parambesj.jdField_a_of_type_AndroidAppActivity;
+    if (betc.a()) {
+      betc.a("ShareProxy", "shareAsQZoneFeeds. title=" + parambesj.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambesj.jdField_b_of_type_JavaLangString + ",entryPath=" + parambesj.c);
     }
-    MiniAppInfo localMiniAppInfo = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     if (localMiniAppInfo == null)
     {
-      besl.d("ShareProxy", "shareAsQZoneFeeds. mini app info is null!");
+      betc.d("ShareProxy", "shareAsQZoneFeeds. mini app info is null!");
       return;
     }
-    String str2 = parambers.jdField_a_of_type_JavaLangString;
+    String str2 = parambesj.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = localMiniAppInfo.desc;
     }
-    bfgo.a(localMiniAppInfo.appId, parambers.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambers.jdField_b_of_type_JavaLangString, null, parambers.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambers.g, null, new ShareProxyDefault.2(this, parambers, paramAsyncResult, localActivity));
+    bfhf.a(localMiniAppInfo.appId, parambesj.jdField_a_of_type_JavaLangString, str1, 1, 1, localMiniAppInfo.getReportType(), parambesj.jdField_b_of_type_JavaLangString, null, parambesj.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambesj.g, null, new ShareProxyDefault.2(this, parambesj, paramAsyncResult, localActivity));
   }
   
-  private void shareAsWeChat(bers parambers, int paramInt, AsyncResult paramAsyncResult)
+  private void shareAsWeChat(besj parambesj, int paramInt, AsyncResult paramAsyncResult)
   {
-    Activity localActivity = parambers.jdField_a_of_type_AndroidAppActivity;
-    if (besl.a()) {
-      besl.a("ShareProxy", "startShareToWeChat. title=" + parambers.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambers.jdField_b_of_type_JavaLangString + ",entryPath=" + parambers.c);
+    Activity localActivity = parambesj.jdField_a_of_type_AndroidAppActivity;
+    if (betc.a()) {
+      betc.a("ShareProxy", "startShareToWeChat. title=" + parambesj.jdField_a_of_type_JavaLangString + ",sharePicPath=" + parambesj.jdField_b_of_type_JavaLangString + ",entryPath=" + parambesj.c);
     }
-    MiniAppInfo localMiniAppInfo = parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+    MiniAppInfo localMiniAppInfo = parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
     if (localMiniAppInfo == null)
     {
-      besl.d("ShareProxy", "startShareToWeChat. mini app info is null!");
+      betc.d("ShareProxy", "startShareToWeChat. mini app info is null!");
       return;
     }
-    String str2 = parambers.jdField_a_of_type_JavaLangString;
+    String str2 = parambesj.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = localMiniAppInfo.desc;
     }
-    bfgo.a(localMiniAppInfo.appId, localMiniAppInfo.name, str1, 1, 1, localMiniAppInfo.getReportType(), parambers.jdField_b_of_type_JavaLangString, null, parambers.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambers.g, null, paramInt, new ShareProxyDefault.3(this, localActivity, parambers, localMiniAppInfo, str1, paramAsyncResult, paramInt));
+    bfhf.a(localMiniAppInfo.appId, localMiniAppInfo.name, str1, 1, 1, localMiniAppInfo.getReportType(), parambesj.jdField_b_of_type_JavaLangString, null, parambesj.c, localMiniAppInfo.iconUrl, localMiniAppInfo.verType, localMiniAppInfo.versionId, parambesj.g, null, paramInt, new ShareProxyDefault.3(this, localActivity, parambesj, localMiniAppInfo, str1, paramAsyncResult, paramInt));
   }
   
-  private void shareLocalPicMessage(bers parambers)
+  private void shareLocalPicMessage(besj parambesj)
   {
-    if (!parambers.jdField_a_of_type_Boolean)
+    if (!parambesj.jdField_a_of_type_Boolean)
     {
-      besl.c("ShareProxy", "shareLocalPicMessage. not local pic");
+      betc.c("ShareProxy", "shareLocalPicMessage. not local pic");
       return;
     }
-    String str = parambers.jdField_b_of_type_JavaLangString;
+    String str = parambesj.jdField_b_of_type_JavaLangString;
     if (str == null)
     {
-      besl.c("ShareProxy", "shareLocalPicMessage. local pic is null");
+      betc.c("ShareProxy", "shareLocalPicMessage. local pic is null");
       return;
     }
-    realSharePic(parambers.jdField_a_of_type_AndroidAppActivity, parambers.jdField_a_of_type_JavaLangString, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, parambers.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, str, parambers.jdField_b_of_type_Int);
+    realSharePic(parambesj.jdField_a_of_type_AndroidAppActivity, parambesj.jdField_a_of_type_JavaLangString, parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId, parambesj.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name, str, parambesj.jdField_b_of_type_Int);
   }
   
-  private void shareNetworkPicMessage(bers parambers, AsyncResult paramAsyncResult)
+  private void shareNetworkPicMessage(besj parambesj, AsyncResult paramAsyncResult)
   {
-    paramAsyncResult = parambers.jdField_a_of_type_AndroidAppActivity;
-    beiw.c().post(new ShareProxyDefault.5(this, paramAsyncResult, parambers));
+    paramAsyncResult = parambesj.jdField_a_of_type_AndroidAppActivity;
+    bejn.c().post(new ShareProxyDefault.5(this, paramAsyncResult, parambesj));
   }
   
   public int getDefaultShareTarget()
@@ -190,12 +190,12 @@ public class ShareProxyDefault
   
   public void onJsShareAppMessage(Object paramObject, AsyncResult paramAsyncResult)
   {
-    if (!(paramObject instanceof bers))
+    if (!(paramObject instanceof besj))
     {
-      besl.c("ShareProxy", "onJsShareAppMessage. Unknown type of data");
+      betc.c("ShareProxy", "onJsShareAppMessage. Unknown type of data");
       return;
     }
-    paramObject = (bers)paramObject;
+    paramObject = (besj)paramObject;
     switch (paramObject.jdField_b_of_type_Int)
     {
     default: 
@@ -219,12 +219,12 @@ public class ShareProxyDefault
   
   public void onJsShareAppPictureMessage(Object paramObject, AsyncResult paramAsyncResult)
   {
-    if (!(paramObject instanceof bers))
+    if (!(paramObject instanceof besj))
     {
-      besl.c("ShareProxy", "onJsShareAppPictureMessage. Unknown type of data");
+      betc.c("ShareProxy", "onJsShareAppPictureMessage. Unknown type of data");
       return;
     }
-    paramObject = (bers)paramObject;
+    paramObject = (besj)paramObject;
     if (paramObject.jdField_a_of_type_Boolean)
     {
       shareLocalPicMessage(paramObject);
@@ -233,15 +233,15 @@ public class ShareProxyDefault
     shareNetworkPicMessage(paramObject, paramAsyncResult);
   }
   
-  protected void shareToOther(Activity paramActivity, berk paramberk) {}
+  protected void shareToOther(Activity paramActivity, besb parambesb) {}
   
-  protected void shareToQQ(Activity paramActivity, bero parambero) {}
+  protected void shareToQQ(Activity paramActivity, besf parambesf) {}
   
-  protected void shareToQZone(Activity paramActivity, bero parambero) {}
+  protected void shareToQZone(Activity paramActivity, besf parambesf) {}
   
-  protected void shareToWxSession(Activity paramActivity, berz paramberz) {}
+  protected void shareToWxSession(Activity paramActivity, besq parambesq) {}
   
-  protected void shareToWxTimeline(Activity paramActivity, berz paramberz) {}
+  protected void shareToWxTimeline(Activity paramActivity, besq parambesq) {}
   
   public void showShareMenuForInnerShareButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, HashMap<String, Integer> paramHashMap, int paramInt) {}
 }

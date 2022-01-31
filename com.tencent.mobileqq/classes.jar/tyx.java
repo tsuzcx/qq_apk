@@ -1,19 +1,19 @@
-import android.support.annotation.NonNull;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
-public abstract interface tyx
+public final class tyx
+  implements Parcelable.Creator<AnimationParam>
 {
-  public abstract void a();
+  public AnimationParam a(Parcel paramParcel)
+  {
+    return new AnimationParam(paramParcel);
+  }
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
-  
-  public abstract void a(@NonNull ups paramups, ErrorMessage paramErrorMessage);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public AnimationParam[] a(int paramInt)
+  {
+    return new AnimationParam[paramInt];
+  }
 }
 
 

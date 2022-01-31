@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.PressDarkImageButton;
-
 class bjsa
-  implements View.OnClickListener
+  implements vpi
 {
-  bjsa(bjrz parambjrz) {}
+  bjsa(bjry parambjry) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b()
   {
-    if (bjrz.a(this.a))
-    {
-      bjrz.a(this.a, false);
-      bjrz.a(this.a).setChecked(false);
-      return;
-    }
-    bjrz.a(this.a, true);
-    bjrz.a(this.a).setChecked(true);
+    vei.a("textEdit", "pasteText", bjry.b(this.a), 0, new String[0]);
   }
+  
+  public void c() {}
 }
 
 

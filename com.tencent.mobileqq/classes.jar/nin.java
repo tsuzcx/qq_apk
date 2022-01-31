@@ -1,36 +1,20 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nin
-  implements ViewPager.OnPageChangeListener
+  implements njr
 {
   public nin(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public boolean a(int paramInt)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public boolean b(int paramInt)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 

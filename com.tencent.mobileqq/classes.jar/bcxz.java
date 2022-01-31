@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcxz
-  implements DialogInterface.OnClickListener
 {
-  public bcxz(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    QLog.i("Q.quicklogin.OpenSdkQIPCClient", 1, "doPtloginCancel");
+    QIPCClientHelper.getInstance().callServer("open_sdk_qipc_module", "action_ptlogin_cancel", new Bundle());
   }
 }
 

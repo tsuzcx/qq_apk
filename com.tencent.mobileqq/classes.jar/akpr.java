@@ -1,83 +1,123 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.LinkedList;
 
 public class akpr
 {
-  private static List<akps> jdField_a_of_type_JavaUtilList = new ArrayList(32);
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private static LinkedList<akpr> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
   
-  public static void a()
+  /* Error */
+  public static akpr a(int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
   {
-    synchronized (jdField_a_of_type_JavaUtilList)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        akps localakps = (akps)localIterator.next();
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(localakps.jdField_a_of_type_Int));
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        localHashMap.put("msgType", String.valueOf(localakps.b));
-        localHashMap.put("uinType", String.valueOf(localakps.c));
-        axrl.a(BaseApplication.getContext()).a(localakps.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localakps.jdField_a_of_type_Long, 0L, localHashMap, "");
-      }
-    }
-    akps.a(jdField_a_of_type_JavaUtilList);
-    jdField_a_of_type_JavaUtilList.clear();
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	akpr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: ifle +53 -> 62
+    //   12: getstatic 21	akpr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   15: iconst_0
+    //   16: invokevirtual 32	java/util/LinkedList:remove	(I)Ljava/lang/Object;
+    //   19: checkcast 2	akpr
+    //   22: astore 6
+    //   24: aload 6
+    //   26: iload_0
+    //   27: putfield 34	akpr:jdField_a_of_type_Int	I
+    //   30: aload 6
+    //   32: aload_1
+    //   33: putfield 36	akpr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   36: aload 6
+    //   38: lload_2
+    //   39: putfield 38	akpr:jdField_a_of_type_Long	J
+    //   42: aload 6
+    //   44: iload 4
+    //   46: putfield 40	akpr:b	I
+    //   49: aload 6
+    //   51: iload 5
+    //   53: putfield 42	akpr:c	I
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: aload 6
+    //   61: areturn
+    //   62: new 2	akpr
+    //   65: dup
+    //   66: invokespecial 43	akpr:<init>	()V
+    //   69: astore 6
+    //   71: goto -47 -> 24
+    //   74: astore_1
+    //   75: ldc 2
+    //   77: monitorexit
+    //   78: aload_1
+    //   79: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	80	0	paramInt1	int
+    //   0	80	1	paramString	String
+    //   0	80	2	paramLong	long
+    //   0	80	4	paramInt2	int
+    //   0	80	5	paramInt3	int
+    //   22	48	6	localakpr	akpr
+    // Exception table:
+    //   from	to	target	type
+    //   3	24	74	finally
+    //   24	56	74	finally
+    //   62	71	74	finally
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  /* Error */
+  public static void a(java.util.List<akpr> paramList)
   {
-    if (!paramQQAppInterface.c().endsWith("7")) {
-      return;
-    }
-    paramQQAppInterface = new HashMap();
-    paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramQQAppInterface.put("uinType", String.valueOf(paramInt));
-    paramQQAppInterface.put("convUin", String.valueOf(paramString));
-    axrl.a(BaseApplication.getContext()).a(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
-  }
-  
-  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
-  {
-    if (!paramQQAppInterface.c().endsWith("77")) {}
-    long l;
-    do
-    {
-      return;
-      l = NetConnInfoCenter.getServerTime() - ???.time;
-    } while ((l < 30L) || ((paramQQAppInterface.b != 0L) && (???.time < paramQQAppInterface.b)));
-    if (???.time < paramQQAppInterface.jdField_a_of_type_Long) {}
-    for (int i = 1;; i = 2)
-    {
-      paramQQAppInterface = akps.a(i, paramQQAppInterface.c(), l, ???.msgtype, ???.istroop);
-      synchronized (jdField_a_of_type_JavaUtilList)
-      {
-        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
-        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
-          a();
-        }
-        return;
-      }
-    }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-      axrl.a(BaseApplication.getContext()).a(null, paramString, true, paramLong, 0L, localHashMap, "");
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 21	akpr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   6: invokevirtual 28	java/util/LinkedList:size	()I
+    //   9: istore_1
+    //   10: iload_1
+    //   11: bipush 100
+    //   13: if_icmplt +7 -> 20
+    //   16: ldc 2
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: invokeinterface 50 1 0
+    //   26: astore_0
+    //   27: aload_0
+    //   28: invokeinterface 56 1 0
+    //   33: ifeq -17 -> 16
+    //   36: aload_0
+    //   37: invokeinterface 60 1 0
+    //   42: checkcast 2	akpr
+    //   45: astore_2
+    //   46: getstatic 21	akpr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   49: aload_2
+    //   50: invokevirtual 64	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   53: pop
+    //   54: getstatic 21	akpr:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
+    //   57: invokevirtual 28	java/util/LinkedList:size	()I
+    //   60: istore_1
+    //   61: iload_1
+    //   62: bipush 100
+    //   64: if_icmplt -37 -> 27
+    //   67: goto -51 -> 16
+    //   70: astore_0
+    //   71: ldc 2
+    //   73: monitorexit
+    //   74: aload_0
+    //   75: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	76	0	paramList	java.util.List<akpr>
+    //   9	56	1	i	int
+    //   45	5	2	localakpr	akpr
+    // Exception table:
+    //   from	to	target	type
+    //   3	10	70	finally
+    //   20	27	70	finally
+    //   27	61	70	finally
   }
 }
 

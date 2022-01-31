@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-
 public class aonq
-  implements DialogInterface.OnClickListener
+  extends aonp
 {
-  public aonq(FMActivity paramFMActivity) {}
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aonq(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-    this.a.finish();
+    super(2, paramString1);
+    this.a = paramString2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
   }
 }
 

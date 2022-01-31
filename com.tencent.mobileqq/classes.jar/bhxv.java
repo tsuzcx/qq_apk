@@ -1,26 +1,35 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import org.json.JSONObject;
 
 class bhxv
-  implements ScaleGestureDetector.OnScaleGestureListener
+  implements bhxw
 {
-  bhxv(bhxr parambhxr) {}
+  bhxv(bhxu parambhxu) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void a(boolean paramBoolean, String paramString)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (bhxr.a(this.a) != null) {
-      bhxr.a(this.a).a("onActionScale", new float[] { f });
+    if (paramBoolean)
+    {
+      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bhxs.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      try
+      {
+        localJSONObject.put("result", 0);
+        localJSONObject.put("progress", 1.0D);
+        localJSONObject.put("coverurl", paramString);
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bhxs.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
+        return;
+      }
     }
-    return true;
+    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
+    this.a.b(-1);
   }
-  
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

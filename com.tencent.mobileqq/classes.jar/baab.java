@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
 public class baab
-  extends Handler
+  implements wdd
 {
-  public baab(azzz paramazzz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public baab(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    for (;;)
-    {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
-      }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
-    }
+    this.a.b(this.a.a.getText().toString());
+    return true;
   }
 }
 

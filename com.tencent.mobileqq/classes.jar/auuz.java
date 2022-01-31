@@ -1,252 +1,244 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.os.Bundle;
+import android.content.Context;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import com.tencent.mobileqq.profile.ProfileCardShareHelper.3;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.profile.ProfileCardManager.1;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.Map;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x703.cmd0x703.PhotoInfo;
+import tencent.im.oidb.cmd0x703.cmd0x703.UinPhotoListInfo;
 
 public class auuz
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new auva(this);
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new auvb(this);
-  private auvc jdField_a_of_type_Auvc;
-  private bbjc jdField_a_of_type_Bbjc;
-  private bcpq jdField_a_of_type_Bcpq;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
+  public static String a;
+  public static Map<Long, Boolean> a;
+  public static Map<Long, Boolean> b;
+  protected Context a;
+  public Handler a;
+  protected AppInterface a;
+  public Vector<Integer> a;
+  Map<Long, Integer> c = new ConcurrentHashMap();
+  Map<String, Boolean> d = new ConcurrentHashMap();
+  private Map<Integer, auva> e = new ConcurrentHashMap();
   
-  public auuz(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt, auvc paramauvc)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Auvc = paramauvc;
-    if (paramQQAppInterface == null) {
-      a();
+    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    b = new ConcurrentHashMap();
+    jdField_a_of_type_JavaLangString = "https://gxh.vip.qq.com/xydata";
+  }
+  
+  public auuz(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramAppInterface.getApp().getApplicationContext();
+  }
+  
+  public static String a(Context paramContext, long paramLong)
+  {
+    return bbac.c(paramContext) + paramLong + File.separator;
+  }
+  
+  public static String a(Context paramContext, long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == auvf.j) {
+      return a(paramContext, paramLong2) + "wzBgImage.png";
     }
-  }
-  
-  private void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardShareHelper", 2, String.format("decodeFace: %s", new Object[] { paramString }));
+    if (paramLong1 == auvf.i) {
+      return a(paramContext, paramLong2) + "wzJoinImage.png";
     }
-    ThreadManager.getSubThreadHandler().post(new ProfileCardShareHelper.3(this, paramString));
+    return a(paramContext, paramLong2) + "cardPreview.jpg";
   }
   
-  private void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    long l = System.currentTimeMillis();
-    paramString1 = "https://ti.qq.com/open_qq/index2.html?url=mqqapi%3a%2f%2fuserprofile%2ffriend_profile_card%3fsrc_type%3dweb%26version%3d1.0%26source%3d2%26uin%3d" + paramString1;
-    WXShareHelper.a().d(String.valueOf(l), paramString2, paramBitmap, "来自QQ的推荐好友", paramString1);
+    return ajsd.cm + "defaultCard" + File.separator + paramString + ".json";
   }
   
-  private List<bbje>[] a()
+  public static boolean a(Context paramContext, long paramLong)
   {
-    ArrayList localArrayList = new ArrayList();
-    bbje localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696695);
-    localbbje.jdField_b_of_type_Int = 2130838754;
-    localbbje.jdField_b_of_type_Boolean = true;
-    localbbje.c = 2;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    localbbje = new bbje();
-    localbbje.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getString(2131696715);
-    localbbje.jdField_b_of_type_Int = 2130838758;
-    localbbje.c = 9;
-    localbbje.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbje);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  private void e()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      QLog.d("ProfileCardShareHelper", 1, String.format("shareToFriend, uin or nickname is empty, uin: %s, nickname: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+    paramContext = a(paramContext, paramLong);
+    if (TextUtils.isEmpty(paramContext)) {}
+    for (paramContext = null; (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1); paramContext = new File(paramContext)) {
+      return true;
     }
-    for (;;)
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, long paramLong, String paramString)
+  {
+    paramContext = new File(a(paramContext, paramLong), paramString);
+    return (paramContext.exists()) && ((!paramContext.isDirectory()) || (paramContext.list().length > 1));
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    cmd0x703.UinPhotoListInfo localUinPhotoListInfo = new cmd0x703.UinPhotoListInfo();
+    cmd0x703.PhotoInfo localPhotoInfo = new cmd0x703.PhotoInfo();
+    localPhotoInfo.str_url.set(paramString);
+    localPhotoInfo.uint32_id.set(-1);
+    localPhotoInfo.uint32_timestamp.set(0);
+    localUinPhotoListInfo.rpt_msg_photo_info.add(localPhotoInfo);
+    return localUinPhotoListInfo.toByteArray();
+  }
+  
+  public static String b(Context paramContext, long paramLong)
+  {
+    return bbac.c(paramContext) + paramLong + ".zip";
+  }
+  
+  public static String b(Context paramContext, long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == auvf.j) {
+      return a(paramContext, paramLong2) + "wzDynamicDrawerImage.png";
+    }
+    if (paramLong1 == auvf.i) {
+      return a(paramContext, paramLong2) + "wzJoinImage.png";
+    }
+    return a(paramContext, paramLong2) + "cardPreview.jpg";
+  }
+  
+  public int a(long paramLong)
+  {
+    int i = 0;
+    if (this.c.containsKey(Long.valueOf(paramLong))) {
+      i = ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
+    }
+    return i;
+  }
+  
+  public auva a(int paramInt, boolean paramBoolean)
+  {
+    try
     {
-      return;
-      Object localObject1 = new axuk(StructMsgForGeneralShare.class);
-      String str1 = "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.jdField_a_of_type_JavaLangString;
-      String str2 = "AppCmd://OpenContactInfo/?uin=" + this.jdField_a_of_type_JavaLangString;
-      String str3 = ajyc.a(2131708436);
-      String str4 = ajyc.a(2131708482) + this.jdField_a_of_type_JavaLangString;
-      String str5 = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718638);
-      localObject1 = ((axuk)localObject1).c(14).a(ajyc.a(2131708465) + this.jdField_b_of_type_JavaLangString).a(2).a(1).a("plugin", "", str2, str1, str1).d(str5).a();
-      Object localObject2 = new axym();
-      ((axuo)localObject2).b(1);
-      ((axuo)localObject2).a(str3);
-      axxg localaxxg = new axxg();
-      localaxxg.b(1);
-      localaxxg.a(new axwq(str1));
-      localaxxg.a(new StructMsgItemTitle(this.jdField_b_of_type_JavaLangString));
-      localaxxg.a(new axzh(str4));
-      ((AbsShareMsg)localObject1).addItem((axun)localObject2);
-      ((AbsShareMsg)localObject1).addItem(localaxxg);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putInt("forward_type", 20);
-      ((Bundle)localObject2).putInt("structmsg_service_id", 14);
-      ((Bundle)localObject2).putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
-      ((Bundle)localObject2).putBoolean("k_dataline", false);
-      if (this.jdField_a_of_type_Int == 1)
+      auva localauva = (auva)this.e.get(Integer.valueOf(paramInt));
+      if (localauva == null)
       {
-        localObject1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, ShareToQQActivity.class);
-        ((Bundle)localObject2).putString("sourceFrom", "share_from_troop_member_card");
-        ((Intent)localObject1).putExtras((Bundle)localObject2);
-        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject1);
+        localauva = new auva(this, paramInt);
+        this.e.put(Integer.valueOf(paramInt), localauva);
       }
-      while (QLog.isColorLevel())
+      for (;;)
       {
-        localObject1 = new StringBuilder(300);
-        ((StringBuilder)localObject1).append("recommentFriend [title: ").append(str3).append(", nickname: ").append(this.jdField_b_of_type_JavaLangString).append(", info: ").append(str4).append(", serviceId: ").append(14).append(", pActionData: ").append(str2).append(", aActionData: ").append(str1).append(", iActionData: ").append(str1).append(", compatibleText: ").append(str5).append("]");
-        QLog.i("ProfileCardShareHelper", 2, ((StringBuilder)localObject1).toString());
-        return;
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtras((Bundle)localObject2);
-        aqbc.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject1, 21);
-      }
-    }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720906;
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        bcpw.a(this.jdField_a_of_type_AndroidAppActivity, 1, i, 1).a();
-        QLog.d("ProfileCardShareHelper", 1, "shareToWXFriend, but wechat is not install or version is too low");
-        return;
-        if (!WXShareHelper.a().b()) {
-          i = 2131720907;
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+        Object localObject2;
+        if (!localauva.a)
         {
-          a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
-          return;
-        }
-        if (apvb.a(this.c)) {
-          a(this.c);
+          localObject2 = new File(a(Integer.toString(paramInt)));
+          if (!((File)localObject2).exists()) {
+            break label101;
+          }
+          ThreadManager.excute(new ProfileCardManager.1(this, (File)localObject2, paramInt), 64, null, true);
         }
         for (;;)
         {
-          b();
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+          return localauva;
+          label101:
+          if ((paramBoolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt))))
           {
-            this.c = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, this.jdField_a_of_type_JavaLangString, 0);
-            a(this.c);
-          }
-          else
-          {
-            ArrayList localArrayList = new ArrayList(1);
-            localArrayList.add(this.jdField_a_of_type_JavaLangString);
-            Intent localIntent = new Intent("com.tencent.qqhead.getheadreq");
-            localIntent.putExtra("faceType", 1);
-            localIntent.putStringArrayListExtra("uinList", localArrayList);
-            this.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+            localObject2 = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184);
+            this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
+            ((VasQuickUpdateManager)localObject2).downloadItem(33L, "profileitem." + paramInt, "ProfileCardRes");
           }
         }
       }
-      i = -1;
     }
+    finally {}
   }
   
-  public void a()
+  public void a(long paramLong)
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
-    this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
+    ((VasQuickUpdateManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(184)).cancelDwonloadItem(15L, "card." + paramLong);
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a(long paramLong, int paramInt)
+  {
+    this.c.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCardShareHelper", 2, String.format("share, uin: %s, nickname: %s", new Object[] { paramString1, paramString2 }));
+      QLog.d("ProfileCardManager", 2, "downloadProfileCardRes scid=" + paramString);
     }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
-    {
+    if ((this.d.containsKey(paramString)) && (((Boolean)this.d.get(paramString)).booleanValue())) {
       return;
-      if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      if (this.jdField_a_of_type_Bbjc == null)
-      {
-        this.jdField_a_of_type_Bbjc = new bbjc(this.jdField_a_of_type_AndroidAppActivity);
-        this.jdField_a_of_type_Bbjc.a(a());
-        this.jdField_a_of_type_Bbjc.a(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-      }
-    } while (this.jdField_a_of_type_Bbjc.a());
-    this.jdField_a_of_type_Bbjc.a();
+    }
+    this.d.put(paramString, Boolean.valueOf(true));
+    ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(15L, paramString, "ProfileCardRes");
   }
   
-  protected void b()
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    this.d.put(paramString1, Boolean.valueOf(false));
+    if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_Bcpq == null)
-      {
-        this.jdField_a_of_type_Bcpq = new bcpq(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298865));
-        this.jdField_a_of_type_Bcpq.setCancelable(false);
+      l = Long.parseLong(paramString1.substring("card.".length(), paramString1.length()));
+      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
+      b.put(Long.valueOf(l), Boolean.valueOf(true));
+      paramString1 = a(paramQQAppInterface.getApp(), l);
+      paramQQAppInterface = new File(b(paramQQAppInterface.getApp(), l));
+      if (!paramQQAppInterface.exists()) {
+        QLog.e("ProfileCardManager", 1, "unzip file is missing " + paramQQAppInterface.getAbsolutePath());
       }
-      this.jdField_a_of_type_Bcpq.a(ajyc.a(2131708466));
-      this.jdField_a_of_type_Bcpq.show();
     }
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        long l;
+        return;
+        try
+        {
+          bbdx.a(paramQQAppInterface.getAbsolutePath(), paramString1, false);
+          VasQuickUpdateEngine.safeDeleteFile(paramQQAppInterface);
+          paramString2 = new File(paramString1, "dynamic.zip");
+          if (paramString2.exists())
+          {
+            String str = paramString1 + ".dynamic";
+            bbdx.a(paramString2.getAbsolutePath(), str, false);
+            VasQuickUpdateEngine.safeDeleteFile(paramString2);
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ProfileCardManager", 2, "onDownloadComplete, resDir= " + paramString1);
+            return;
+          }
+        }
+        catch (OutOfMemoryError paramString2)
+        {
+          for (;;)
+          {
+            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
+          }
+        }
+        catch (Throwable paramString2)
+        {
+          for (;;)
+          {
+            QLog.e("ProfileCardManager", 1, "failed to unzip " + paramQQAppInterface.getAbsolutePath(), paramString2);
+          }
+        }
+      }
+    }
+    QLog.d("ProfileCardManager", 2, "onDownloadComplete failed, errorCode = " + paramInt);
   }
   
-  public void c()
+  public boolean b(Context paramContext, long paramLong)
   {
-    if ((this.jdField_a_of_type_Bcpq != null) && (this.jdField_a_of_type_Bcpq.isShowing()))
-    {
-      this.jdField_a_of_type_Bcpq.dismiss();
-      this.jdField_a_of_type_Bcpq = null;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    }
+    return VasQuickUpdateEngine.safeDeleteFile(new File(a(paramContext, paramLong)));
   }
 }
 

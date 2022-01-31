@@ -1,218 +1,138 @@
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloResponseManager.1.1;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.widget.XEditTextEx;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aitm
+  implements View.OnClickListener
 {
-  public static String a;
-  private ApolloRender jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-  private ApolloRenderDriver jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver;
+  aitm(aitl paramaitl) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "ApolloRenderInterfaceImpl";
-  }
-  
-  public aitm(ApolloRenderDriver paramApolloRenderDriver, ApolloRender paramApolloRender)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver = paramApolloRenderDriver;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender = paramApolloRender;
-  }
-  
-  public int a(int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onSetActions], actionId:" + paramInt1);
-    }
-    if ((paramArrayOfString1 == null) || (paramArrayOfString1.length != 2) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null)) {
-      i = 1;
-    }
-    do
-    {
-      return i;
-      File localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString1[0], "json"));
-      if (!localFile.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-        }
-        return 2;
-      }
-      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length == 2))
-      {
-        localFile = new File(ApolloRender.getRscStaticPath(paramArrayOfString2[0], "json"));
-        if (!localFile.exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-          }
-          return 2;
-        }
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramInt2, paramArrayOfString1, paramArrayOfString2);
-  }
-  
-  public int a(int paramInt1, String paramString, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onLoadRole] roleType=", Integer.valueOf(paramInt1), ", apolloId=", paramString, ", roleId=", Integer.valueOf(paramInt2), ", roleScale=", Float.valueOf(paramFloat1), ", xPos=", Float.valueOf(paramFloat2), ", yPos=", Float.valueOf(paramFloat3) });
-    }
-    if (!ApolloUtil.d(paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->role rsc NOT exist.");
-      }
-      i = 2;
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null) {
-      return i;
-    }
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString, paramInt2, paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    return paramInt1;
-  }
-  
-  public int a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecAction] apolloId=", paramString1, ", actionId=", Integer.valueOf(paramInt2), ", roleType=", Integer.valueOf(paramInt1), ", actionId=", Integer.valueOf(paramInt2), ", taskId=", Integer.valueOf(paramInt3), ", actionRscName=", paramString2, ", animName=", paramString3 });
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->null param.");
-      }
-      i = 1;
-    }
+    if ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
+    BaseChatPie localBaseChatPie;
     do
     {
       do
       {
-        do
-        {
-          return i;
-          File localFile = new File(ApolloRender.getRscStaticPath(paramString2, "json"));
-          if (!localFile.exists())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->rsc NOT exist. rscFile:" + localFile);
-            }
-            return 2;
-          }
-        } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mIsFrameMode = false;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
-        i = paramInt1;
-      } while (paramInt1 != 0);
-      i = paramInt1;
-    } while (paramInt3 >= 1000000);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.set(8);
-    return paramInt1;
-  }
-  
-  public int a(int paramInt, String paramString, int[] paramArrayOfInt, ajks paramajks)
-  {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onChangeDress] apolloId=", paramString, ", roleType=", Integer.valueOf(paramInt), ", dressId=", paramArrayOfInt, ", callback=", paramajks });
-    }
-    int i;
-    if (paramArrayOfInt == null) {
-      i = 1;
-    }
-    do
+        return;
+        localBaseChatPie = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localBaseChatPie == null);
+      localObject1 = paramView.getTag(2131362634);
+      paramView = paramView.getTag(2131362635);
+    } while ((localObject1 == null) || (paramView == null));
+    int i = ((Integer)localObject1).intValue();
+    int j = ((Integer)paramView).intValue();
+    Object localObject2 = ((ajmu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(i);
+    if (localObject2 == null)
     {
-      return i;
-      i = 0;
-      while (i < paramArrayOfInt.length)
-      {
-        if (!ApolloUtil.c(paramArrayOfInt[i]))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "errInfo->dress rsc NOT exist, id:" + paramArrayOfInt[i]);
-          }
-          return 2;
-        }
-        i += 1;
+      QLog.e("ApolloResponseManager", 1, "on click action is null!");
+      return;
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "quickresponseclick", String.valueOf(this.a.jdField_a_of_type_JavaLangString), ApolloUtil.b(this.a.jdField_a_of_type_Int), j, new String[] { String.valueOf(i), String.valueOf(((ApolloActionData)localObject2).feeType) });
+    if (!ApolloUtil.a(((ApolloActionData)localObject2).actionId, ((ApolloActionData)localObject2).personNum))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResponseManager", 2, "download action data");
       }
-      i = j;
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver == null);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString, paramArrayOfInt, paramajks);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    return paramInt;
-  }
-  
-  public ApolloRender a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.d();
+      ThreadManager.post(new ApolloResponseManager.1.1(this, (ApolloActionData)localObject2), 5, null, false);
     }
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramInt, paramString1, paramString2);
+    paramView = new ajqd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    paramView.a = ((ApolloActionData)localObject2);
+    ((ApolloActionData)localObject2).atNickName = "";
+    ((ApolloActionData)localObject2).inputText = "";
+    Object localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if (((SessionInfo)localObject1).jdField_a_of_type_Int == 0)
+    {
+      ((ApolloActionData)localObject2).peerUin = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
+      if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null)) {
+        ((ApolloActionData)localObject2).inputText = aylc.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      }
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramLong);
+    while ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
+    {
+      localObject2 = localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+      if ((localObject2 != null) && (((String)localObject2).length() > 99) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        ChatActivityUtils.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131719284, 1);
+        return;
+        if (((((SessionInfo)localObject1).jdField_a_of_type_Int == 1) || (((SessionInfo)localObject1).jdField_a_of_type_Int == 3000)) && (localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (localBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
+        {
+          ArrayList localArrayList = new ArrayList();
+          if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+            bafv.a(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText(), localArrayList);
+          }
+          if (((ApolloActionData)localObject2).personNum == 1)
+          {
+            if ((localArrayList.size() == 1) && (0L != ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin) && (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).startPos == 0))
+            {
+              String str = aylc.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+              try
+              {
+                ((ApolloActionData)localObject2).atNickName = str.substring(0, ((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen);
+                if (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen >= localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() - 1) {}
+                for (((ApolloActionData)localObject2).inputText = "";; ((ApolloActionData)localObject2).inputText = str.substring(((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).textLen))
+                {
+                  ((ApolloActionData)localObject2).peerUin = (((MessageForText.AtTroopMemberInfo)localArrayList.get(0)).uin + "");
+                  localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+                  break;
+                }
+              }
+              catch (Exception localException)
+              {
+                for (;;)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ApolloResponseManager", 2, "inputText err:" + localException.getMessage());
+                  }
+                  ((ApolloActionData)localObject2).inputText = "";
+                }
+              }
+            }
+            else if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
+            {
+              localObject1 = bbcz.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, true);
+              localObject1 = new StringBuilder("@").append((String)localObject1);
+              paramView.a.peerUin = this.a.jdField_a_of_type_JavaLangString;
+              paramView.a.atNickName = ((StringBuilder)localObject1).toString();
+              paramView.a.inputText = aylc.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+              localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+              localBaseChatPie.a(paramView);
+              localBaseChatPie.jdField_a_of_type_Ajpx = paramView;
+              this.a.a();
+            }
+          }
+          else if ((((ApolloActionData)localObject2).personNum == 0) && (localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
+          {
+            ((ApolloActionData)localObject2).inputText = aylc.b(localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+            localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+          }
+        }
+      }
+      else if ((((SessionInfo)localObject1).jdField_a_of_type_Int != 1) && (((SessionInfo)localObject1).jdField_a_of_type_Int != 3000))
+      {
+        localBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "[onExecDispose] apolloId=", paramString });
+    if (localBaseChatPie != null) {
+      localBaseChatPie.a(paramView);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a(paramString);
-    }
-  }
-  
-  public int b(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
-  {
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      i = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.b(paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3);
-    }
-    return i;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a();
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[onDestroy]");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.c();
-    }
+    this.a.a();
   }
 }
 

@@ -1,81 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.pts.core.PTSJNIHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class ppt
+class ppt
+  extends ppb
 {
-  public static String a(boolean paramBoolean, List<BaseArticleInfo> paramList)
+  ppt(pps parampps) {}
+  
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject;
-    if (paramBoolean) {
-      localObject = "1";
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = osg.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
     {
-      try
+      paramInt = 0;
+      while (paramInt < paramList.size())
       {
-        localJSONObject1.put("success", localObject);
-        localObject = new JSONArray();
-        if ((paramList == null) || (paramList.size() <= 0)) {
-          break label355;
-        }
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break label355;
-        }
-        localBaseArticleInfo = (BaseArticleInfo)paramList.next();
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("articleID", localBaseArticleInfo.mArticleID);
-        localJSONObject2.put("rowKey", localBaseArticleInfo.innerUniqueID);
-        localJSONObject2.put("title", localBaseArticleInfo.mTitle);
-        localJSONObject2.put("coverImageUrl", localBaseArticleInfo.mFirstPagePicUrl);
-        localJSONObject2.put("jsonImageUrl", localBaseArticleInfo.mJsonPictureList);
-        localJSONObject2.put("articleContentUrl", localBaseArticleInfo.mArticleContentUrl);
-        localJSONObject2.put("subscribeName", localBaseArticleInfo.mSubscribeName);
-        localJSONObject2.put("channelID", localBaseArticleInfo.mChannelID);
-        localJSONObject2.put("recommendSeq", localBaseArticleInfo.mRecommendSeq);
-        localJSONObject2.put("algorithmID", localBaseArticleInfo.mAlgorithmID);
-        localJSONObject2.put("strategyID", localBaseArticleInfo.mStrategyId);
-        localJSONObject2.put("feedsType", localBaseArticleInfo.mFeedType);
-        localJSONObject2.put("proteusItemData", localBaseArticleInfo.proteusItemsData);
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
       }
-      catch (JSONException paramList)
-      {
-        BaseArticleInfo localBaseArticleInfo;
-        JSONObject localJSONObject2;
-        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e " + paramList);
-      }
-      try
-      {
-        if (!osj.a().a(localBaseArticleInfo.mArticleID)) {
-          break label367;
-        }
-        i = 1;
-        localJSONObject2.put("hasRead", i);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e = " + localException);
-        continue;
-      }
-      ((JSONArray)localObject).put(localJSONObject2);
-      continue;
-      for (;;)
-      {
-        return localJSONObject1.toString();
-        localObject = "0";
-        break;
-        label355:
-        localJSONObject1.put("data", localObject);
-      }
-      label367:
-      int i = 0;
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
     }
+    localObject = new Object[1];
+    localObject[0] = ppq.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
+    }
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJNIHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 

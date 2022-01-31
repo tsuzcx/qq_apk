@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import axlc;
-import bkyu;
+import axle;
+import bkzl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 class PtvTemplateManager$10
   implements Runnable
 {
-  PtvTemplateManager$10(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean, bkyu parambkyu, AppInterface paramAppInterface) {}
+  PtvTemplateManager$10(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean, bkzl parambkzl, AppInterface paramAppInterface) {}
   
   public void run()
   {
@@ -52,10 +52,10 @@ class PtvTemplateManager$10
     synchronized (this.this$0.jdField_d_of_type_JavaLangObject)
     {
       this.this$0.a = ((PtvTemplateManager.PtvTemplateInfo)localObject1);
-      if (this.jdField_a_of_type_Bkyu != null) {
-        this.jdField_a_of_type_Bkyu.a();
+      if (this.jdField_a_of_type_Bkzl != null) {
+        this.jdField_a_of_type_Bkzl.a();
       }
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (axlc.c())) {
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (axle.c())) {
         this.this$0.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       }
       PtvTemplateManager.a(this.this$0);

@@ -2,19 +2,19 @@ package com.tencent.av.business.manager.pendant;
 
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import liv;
-import nay;
+import liq;
+import nav;
 
 public class EffectPendantTools$1
   implements Runnable
 {
-  public EffectPendantTools$1(liv paramliv, File paramFile, PendantItem paramPendantItem) {}
+  public EffectPendantTools$1(liq paramliq, File paramFile, PendantItem paramPendantItem) {}
   
   public void run()
   {
     try
     {
-      nay.a(this.jdField_a_of_type_JavaIoFile, this.this$0.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
+      nav.a(this.jdField_a_of_type_JavaIoFile, this.this$0.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
       return;
     }
     catch (Exception localException)

@@ -1,92 +1,52 @@
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.theme.ThemeUtil;
 
-public class vrt
-  extends vrw
+public abstract class vrt
 {
-  private final int b;
-  private boolean c;
-  private boolean d;
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected vru a;
+  protected boolean a;
+  protected boolean b;
   
   public vrt(Context paramContext, String paramString, int paramInt)
   {
-    super(paramContext, paramString, -1);
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = 0;
-    }
-    this.b = i;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a()
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(vru paramvru)
   {
-    return 1;
+    this.jdField_a_of_type_Vru = paramvru;
   }
   
-  public int a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return 4;
+    this.b = paramBoolean;
   }
   
-  public View a(int paramInt, ViewGroup paramViewGroup)
+  public int b()
   {
-    paramViewGroup = new RelativeLayout(this.a);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundResource(2130849025);
-    paramInt = -2170912;
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-      paramInt = -16444373;
-    }
-    View localView = new View(this.a);
-    Object localObject = new RelativeLayout.LayoutParams(-1, vzo.a(this.a, 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(10);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localView.setBackgroundColor(paramInt);
-    localObject = new View(this.a);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, vzo.a(this.a, 1.0F));
-    localLayoutParams.addRule(12);
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    ((View)localObject).setBackgroundColor(paramInt);
-    paramViewGroup.addView(localView);
-    paramViewGroup.addView((View)localObject);
-    return paramViewGroup;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView)
+  public void b(boolean paramBoolean)
   {
-    View localView = ((ViewGroup)paramView).getChildAt(0);
-    paramView = ((ViewGroup)paramView).getChildAt(1);
-    if (this.c) {
-      localView.setVisibility(0);
-    }
-    while (this.d)
-    {
-      paramView.setVisibility(0);
-      return;
-      localView.setVisibility(4);
-    }
-    paramView.setVisibility(4);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.c = paramBoolean1;
-    this.d = paramBoolean2;
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

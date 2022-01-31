@@ -1,120 +1,82 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
+import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.MD5;
 import java.io.File;
 
 public class axev
 {
-  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
-  
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  public static axew a(String paramString)
   {
-    if (paramSVConfigItem.versionCode >= 1) {}
-    for (int i = 0;; i = -4)
-    {
-      VideoEnvironment.a("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
-      return i;
-    }
+    return new axew(paramString);
   }
   
   public static String a()
   {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
-    boolean bool = axdc.a(str, 1);
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Tracking000_0";
+    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
   }
   
-  static boolean a()
+  public static String a(File paramFile)
   {
-    return axlu.a();
+    return bbdx.a(paramFile);
   }
   
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  public static String a(String paramString)
   {
-    return axlc.i();
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    label349:
-    for (;;)
+    try
     {
-      try
+      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=" + str1, null);
+      String str3;
+      if (str1 != null)
       {
-        paramQQAppInterface = b();
-        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-        File localFile = new File(paramQQAppInterface);
-        if (localFile.exists())
-        {
-          if ((a().equals(paramString1)) && (axdc.b(paramQQAppInterface, "tracking_config_file")))
-          {
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            return bool1;
-          }
-          bbdj.a(paramQQAppInterface);
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-        }
-        bool1 = localFile.mkdirs();
-        VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
-        try
-        {
-          bbdj.a(paramString2, paramQQAppInterface, false);
-          boolean bool3 = axdc.b(paramQQAppInterface, "tracking_config_file");
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
-          bool1 = bool2;
-          if (bool3)
-          {
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-            bool1 = a("Tracking000_0");
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-            bool1 = bool2;
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          bool1 = bool2;
-          continue;
-        }
-        bool1 = false;
+        str3 = str1;
+        if (!"".equals(str1)) {}
       }
-      finally {}
+      else
+      {
+        str3 = b(paramString);
+      }
+      return str3;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
+        String str2 = b(paramString);
+      }
     }
   }
   
-  private static boolean a(String paramString)
+  public static final String a(String paramString1, String paramString2)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
-    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
+    return paramString1 + '_' + paramString2;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
+    localEditor.putString("sv_md5_version_soname_key", paramString);
     boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
+    VideoEnvironment.a("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
     return bool;
   }
   
-  public static String b()
+  static String b(String paramString)
   {
-    String str = axlc.a(VideoEnvironment.a());
-    return str + "tracking_res_cache" + File.separator;
+    try
+    {
+      paramString = bfko.a(new File(paramString));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      VideoEnvironment.a("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
+    }
+    return null;
   }
 }
 

@@ -1,161 +1,96 @@
-import android.content.ContentValues;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
+import mqq.app.AppRuntime;
 
 public class azrx
-  extends aksv
+  implements aybz
 {
-  public azrx(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private azrw jdField_a_of_type_Azrw;
+  private bckq jdField_a_of_type_Bckq = new bckq();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  List<bckp> jdField_a_of_type_JavaUtilList;
+  
+  public azrx(azrn paramazrn, QQAppInterface paramQQAppInterface, azrw paramazrw)
   {
-    super(paramQQAppInterface, paramProxyManager);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Azrw = paramazrw;
   }
   
-  private ContentValues a(aukm paramaukm)
+  private void a(List<bckp> paramList, Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, Rect paramRect, int paramInt1, int paramInt2)
   {
-    ContentValues localContentValues = new ContentValues();
-    List localList = auln.a(paramaukm.getClass());
-    int j = localList.size();
-    int i = 0;
-    for (;;)
+    Object localObject = (bckp)paramList.get(0);
+    if (((bckp)localObject).c == 3)
     {
-      if (i < j)
-      {
-        Object localObject1 = (Field)localList.get(i);
-        String str = ((Field)localObject1).getName();
-        if (!((Field)localObject1).isAccessible()) {
-          ((Field)localObject1).setAccessible(true);
-        }
-        try
-        {
-          localObject1 = ((Field)localObject1).get(paramaukm);
-          if ((localObject1 instanceof Integer))
-          {
-            localContentValues.put(str, (Integer)localObject1);
-            i += 1;
-          }
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          for (;;)
-          {
-            localIllegalArgumentException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          for (;;)
-          {
-            localIllegalAccessException.printStackTrace();
-            Object localObject3 = null;
-            continue;
-            if ((localObject3 instanceof Long)) {
-              localContentValues.put(str, (Long)localObject3);
-            } else if ((localObject3 instanceof String)) {
-              localContentValues.put(str, (String)localObject3);
-            } else if ((localObject3 instanceof byte[])) {
-              localContentValues.put(str, (byte[])localObject3);
-            } else if ((localObject3 instanceof Short)) {
-              localContentValues.put(str, (Short)localObject3);
-            } else if ((localObject3 instanceof Boolean)) {
-              localContentValues.put(str, (Boolean)localObject3);
-            } else if ((localObject3 instanceof Double)) {
-              localContentValues.put(str, (Double)localObject3);
-            } else if ((localObject3 instanceof Float)) {
-              localContentValues.put(str, (Float)localObject3);
-            } else if ((localObject3 instanceof Byte)) {
-              localContentValues.put(str, (Byte)localObject3);
-            }
-          }
-        }
+      localObject = (bbpl)((bckp)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+      if (((bbpl)localObject).a == 2) {
+        paramPaint.setColor(((bbpl)localObject).b);
       }
     }
-    return localContentValues;
-  }
-  
-  public List<TroopFileTansferItemEntity> a(long paramLong)
-  {
-    aukn localaukn = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
-    localTroopFileTansferItemEntity.troopuin = paramLong;
-    return localaukn.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
-  }
-  
-  protected void a() {}
-  
-  public void a(long paramLong, UUID paramUUID)
-  {
-    if (paramUUID == null) {
-      return;
-    }
-    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramUUID.toString() + "] deleteItem");
-    Object localObject = new TroopFileTansferItemEntity();
-    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    localObject = ((TroopFileTansferItemEntity)localObject).getTableName();
-    String str = paramUUID.toString();
-    paramUUID = new azsa(this, paramUUID);
-    a((String)localObject, "_sId=?", new String[] { str }, paramUUID);
-  }
-  
-  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
-  {
-    if ((paramTroopFileTansferItemEntity == null) || (paramTroopFileTansferItemEntity.Id == null)) {
-      return;
-    }
-    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] updateItem transStatus[" + paramTroopFileTansferItemEntity.Status + "] FilePath[" + paramTroopFileTansferItemEntity.FilePath + "]");
-    int i = paramTroopFileTansferItemEntity.Status;
-    switch (paramTroopFileTansferItemEntity.Status)
+    else
     {
+      paramList = paramList.iterator();
     }
     for (;;)
     {
-      paramTroopFileTansferItemEntity.preupdate();
-      ContentValues localContentValues = a(paramTroopFileTansferItemEntity);
-      localContentValues.put("Status", Integer.valueOf(i));
-      localContentValues.put("_sStatus", azph.a(i));
-      String str1 = paramTroopFileTansferItemEntity.getTableName();
-      String str2 = paramTroopFileTansferItemEntity.Id.toString();
-      paramTroopFileTansferItemEntity = new azrz(this, paramTroopFileTansferItemEntity);
-      a(str1, localContentValues, "_sId=?", new String[] { str2 }, paramTroopFileTansferItemEntity);
-      return;
-      i = 3;
-      continue;
-      i = 10;
+      if (!paramList.hasNext()) {
+        break label275;
+      }
+      paramRect = (bckp)paramList.next();
+      switch (paramRect.c)
+      {
+      default: 
+        break;
+      case 1: 
+        paramCanvas.drawText(paramRect.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2 + paramFloat3, paramPaint);
+        paramFloat1 += paramPaint.measureText(paramRect.jdField_a_of_type_JavaLangString);
+        continue;
+        if (((bbpl)localObject).a != 3) {
+          break;
+        }
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(localAppRuntime instanceof QQAppInterface)) {
+          break;
+        }
+        paramPaint.setShader(bbos.a((QQAppInterface)localAppRuntime).a(((bbpl)localObject).b, paramList, paramFloat1, paramFloat2, paramRect, paramPaint, paramInt1, paramInt2));
+        break;
+      case 2: 
+        paramRect = (aykr)paramRect.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        paramInt1 = paramRect.a().getBounds().height();
+        paramRect.draw(paramCanvas, "", 0, 0, paramFloat1, (int)paramFloat2, (int)(paramInt1 + paramFloat2), (int)(paramInt1 + paramFloat2), paramPaint);
+        paramFloat1 += paramRect.a().getBounds().width();
+      }
     }
+    label275:
+    paramPaint.setShader(null);
   }
   
-  public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, akte paramakte)
+  public int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint)
   {
-    azsr.c("TroopFileDataBaseProxy", azsr.a, "[" + paramTroopFileTansferItemEntity.Id.toString() + "] addItem status[" + paramTroopFileTansferItemEntity.getStatus() + "]");
-    paramakte = new azry(this, paramTroopFileTansferItemEntity);
-    if (paramTroopFileTansferItemEntity.getStatus() == 1000)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 0, paramakte);
-      return;
-    }
-    if (paramTroopFileTansferItemEntity.getStatus() == 1001)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramakte);
-      return;
-    }
-    azsr.a("TroopFileDataBaseProxy", azsr.a, "Item status[" + String.valueOf(paramTroopFileTansferItemEntity.getStatus()) + "] is wrong");
+    return bbos.a(this.jdField_a_of_type_JavaUtilList, paramPaint, this.jdField_a_of_type_AndroidGraphicsRect);
   }
   
-  protected void a(String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, akte paramakte)
+  public String a(aybf paramaybf, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramakte);
+    return paramString.replace("$NICK$", bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azrw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azrw.b, 1, 0));
   }
   
-  protected void a(String paramString1, String paramString2, String[] paramArrayOfString, akte paramakte)
+  public void a(int paramInt, String paramString, Paint paramPaint)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramakte);
+    this.jdField_a_of_type_JavaUtilList = bbos.a(paramInt, paramString, paramPaint, this.jdField_a_of_type_Bckq, 32);
   }
   
-  protected void b() {}
+  public boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint)
+  {
+    a(this.jdField_a_of_type_JavaUtilList, paramCanvas, paramPaint, paramFloat1, paramFloat2, paramFloat3, this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2);
+    return true;
+  }
 }
 
 

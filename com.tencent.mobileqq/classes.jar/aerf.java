@@ -1,11 +1,14 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class aerf
-  extends ajxl
+  implements View.OnClickListener
 {
-  aerf(aerb paramaerb) {}
+  aerf(aeqz paramaeqz) {}
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    aerb.a(this.a, paramBoolean, paramObject);
+    aeqz.a(this.a, paramView);
   }
 }
 

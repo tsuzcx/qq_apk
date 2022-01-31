@@ -1,5 +1,6 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
@@ -11,7 +12,13 @@ public class acps
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.n();
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, nam.a(), "2", "0");
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), paramDialogInterface, "0");
+      this.a.finish();
+      return;
+    }
   }
 }
 

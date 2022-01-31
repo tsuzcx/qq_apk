@@ -156,10 +156,10 @@ public class RotationSeekBar
     //   66: invokevirtual 158	android/animation/ValueAnimator:setInterpolator	(Landroid/animation/TimeInterpolator;)V
     //   69: aload_0
     //   70: getfield 79	com/tencent/mobileqq/activity/richmedia/view/RotationSeekBar:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   73: new 160	aibj
+    //   73: new 160	aibh
     //   76: dup
     //   77: aload_0
-    //   78: invokespecial 163	aibj:<init>	(Lcom/tencent/mobileqq/activity/richmedia/view/RotationSeekBar;)V
+    //   78: invokespecial 163	aibh:<init>	(Lcom/tencent/mobileqq/activity/richmedia/view/RotationSeekBar;)V
     //   81: invokevirtual 167	android/animation/ValueAnimator:addUpdateListener	(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
     //   84: aload_0
     //   85: getfield 79	com/tencent/mobileqq/activity/richmedia/view/RotationSeekBar:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
@@ -243,10 +243,10 @@ public class RotationSeekBar
     //   66: invokevirtual 158	android/animation/ValueAnimator:setInterpolator	(Landroid/animation/TimeInterpolator;)V
     //   69: aload_0
     //   70: getfield 86	com/tencent/mobileqq/activity/richmedia/view/RotationSeekBar:b	Landroid/animation/ValueAnimator;
-    //   73: new 176	aibk
+    //   73: new 176	aibi
     //   76: dup
     //   77: aload_0
-    //   78: invokespecial 177	aibk:<init>	(Lcom/tencent/mobileqq/activity/richmedia/view/RotationSeekBar;)V
+    //   78: invokespecial 177	aibi:<init>	(Lcom/tencent/mobileqq/activity/richmedia/view/RotationSeekBar;)V
     //   81: invokevirtual 167	android/animation/ValueAnimator:addUpdateListener	(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
     //   84: aload_0
     //   85: getfield 86	com/tencent/mobileqq/activity/richmedia/view/RotationSeekBar:b	Landroid/animation/ValueAnimator;

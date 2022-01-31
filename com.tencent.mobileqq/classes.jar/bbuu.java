@@ -1,90 +1,76 @@
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.vfs.CancellationSignalCompat;
-import com.tencent.mm.vfs.StatisticsCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class bbuu
-  implements StatisticsCallback
+public final class bbuu
+  implements BusinessObserver
 {
-  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private static boolean jdField_a_of_type_Boolean;
-  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
-  
-  private void a(Throwable paramThrowable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    axps.a(paramThrowable);
-  }
-  
-  protected void a()
-  {
-    try
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
     {
-      jdField_a_of_type_Boolean = true;
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Map localMap = (Map)localIterator2.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
-        }
-        axrl.a(BaseApplicationImpl.getContext()).a(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
-      }
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    }
-    catch (Exception localException)
-    {
-      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
-      return;
-    }
-    Iterator localIterator1 = b.iterator();
-    while (localIterator1.hasNext()) {
-      a((Throwable)localIterator1.next());
-    }
-    b.clear();
-  }
-  
-  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
-  
-  public void reportError(Throwable paramThrowable)
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      a(paramThrowable);
-      return;
-    }
-    b.add(paramThrowable);
-  }
-  
-  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
-  {
-    if (paramMap != null) {
       try
       {
-        paramMap.put("id", paramString);
-        paramMap.put("phase", String.valueOf(paramInt));
-        if (jdField_a_of_type_Boolean)
+        Object localObject = paramBundle.getByteArray("extra_data");
+        if (localObject == null)
         {
-          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          axrl.a(BaseApplicationImpl.getContext()).a(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
+          QLog.e("SSOHttpUtils", 1, "report failed response data is null");
           return;
-          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
         }
-        return;
+        paramBundle = new WebSSOAgent.UniSsoServerRsp();
+        paramBundle.mergeFrom((byte[])localObject);
+        QLog.i("SSOHttpUtils", 1, "report result:" + paramBundle.rspdata.get() + ",ret:" + paramBundle.ret.get());
+        if (0L == paramBundle.ret.get())
+        {
+          localObject = new NewIntent(BaseApplicationImpl.getApplication(), bbvb.class);
+          ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
+          ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
+          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(bbut.jdField_a_of_type_Boolean));
+          BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+          bbut.jdField_a_of_type_Float = bbut.jdField_a_of_type_Int - bbut.b + bbut.c;
+          localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            bbut.jdField_a_of_type_JavaLangString = (String)localObject;
+          }
+          bbut.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+          QLog.i("SSOHttpUtils", 1, "SSOHttpUtils do report success steps:" + bbut.jdField_a_of_type_Float);
+        }
+        localObject = new JSONObject(paramBundle.rspdata.get());
+        paramBundle = str;
+        if (((JSONObject)localObject).has("svr_steps"))
+        {
+          paramInt = ((JSONObject)localObject).getInt("svr_steps");
+          QLog.e("SSOHttpUtils", 1, "step reset from server:" + paramInt);
+          paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), bbvb.class);
+          paramBundle.putExtra("msf_cmd_type", "cmd_reset_step");
+          paramBundle.putExtra("server_step", paramInt);
+          BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
+          paramBundle = str;
+        }
       }
-      catch (Exception paramString)
+      catch (Exception paramBundle)
       {
-        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
+        QLog.e("SSOHttpUtils", 1, "Parse response exception:" + paramBundle.getMessage());
+        paramBundle = str;
+        continue;
       }
+      ThreadManager.post(new SSOHttpUtils.1.1(this, -1, paramBundle), 5, null, true);
+      return;
+      QLog.i("SSOHttpUtils", 1, "SSO sent Failed!!" + paramBundle.toString());
+      paramBundle = paramBundle.toString();
     }
   }
 }

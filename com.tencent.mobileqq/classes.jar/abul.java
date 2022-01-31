@@ -1,34 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class abul
-  extends BroadcastReceiver
+  implements EIPCResultCallback
 {
-  public abul(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public abul(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramContext = paramIntent.getAction();
-    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
+    QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF error_code:" + paramEIPCResult.code);
+    switch (paramEIPCResult.code)
     {
-      i = paramIntent.getIntExtra("sessionType", 0);
-      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
-      if ((i == 2) || (i == 4))
-      {
-        QQIdentiferActivity.a(this.a, 204, armp.a);
-        QQIdentiferActivity.a(this.a, 204, armp.a);
-        this.a.finish();
+    default: 
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        QQIdentiferLegacy.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy);
       }
-    }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
-    {
-      int i;
       return;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      continue;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      if (paramEIPCResult.data != null) {
+        QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf"));
+      }
+      QLog.d("QQIdentiferLegacy", 1, "callServer ACTION_APP_CONF success conf :" + QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy));
+      continue;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).set(false);
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, true);
     }
-    this.a.finish();
   }
 }
 

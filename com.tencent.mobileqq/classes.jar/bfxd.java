@@ -1,14 +1,45 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.WaveView;
 
-public abstract interface bfxd
+public class bfxd
+  implements Handler.Callback
 {
-  public abstract View a(int paramInt);
+  public bfxd(WaveView paramWaveView) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(int paramInt);
-  
-  public abstract void r();
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).removeMessages(1002);
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      WaveView.a(this.a).removeMessages(1001);
+      WaveView.a(this.a).removeMessages(1002);
+    }
+  }
 }
 
 

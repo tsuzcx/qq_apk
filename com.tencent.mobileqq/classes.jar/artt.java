@@ -1,65 +1,448 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class artt
-  implements aysa
+  implements arts
 {
-  artt(artr paramartr) {}
+  static aysb jdField_a_of_type_Aysb = new artw();
+  private static File jdField_a_of_type_JavaIoFile;
+  private static Comparator<File> jdField_a_of_type_JavaUtilComparator = new artu();
+  private aysa jdField_a_of_type_Aysa;
+  private aysc jdField_a_of_type_Aysc = new artv(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, List<artx>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ConcurrentHashMap<String, ayrx> b;
   
-  public void onResp(aysx paramaysx)
+  public artt(QQAppInterface paramQQAppInterface)
   {
-    boolean bool;
-    Object localObject1;
-    File localFile;
-    int i;
-    String str;
-    label48:
-    Object localObject2;
-    if (paramaysx.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      localObject1 = (ayrv)paramaysx.jdField_a_of_type_Aysw;
-      localFile = new File(((ayrv)localObject1).c);
-      i = paramaysx.b;
-      if (paramaysx.jdField_a_of_type_JavaLangString != null) {
-        break label164;
-      }
-      str = "0";
-      localObject2 = (Object[])((ayrv)localObject1).a();
-      localObject1 = (MusicInfo)localObject2[0];
-      localObject2 = (artv)localObject2[1];
-      if (!bool) {
-        break label173;
-      }
-      ((artv)localObject2).jdField_a_of_type_Int = 2;
-      this.a.a(((MusicInfo)localObject1).jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aysa = paramQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
+    if (jdField_a_of_type_JavaIoFile == null)
+    {
+      jdField_a_of_type_JavaIoFile = new File(arqr.jdField_a_of_type_JavaLangString);
+      QLog.d("ListenTogether.downloader", 1, new Object[] { "init getCacheFilePath=", jdField_a_of_type_JavaIoFile });
+    }
+    if (!jdField_a_of_type_JavaIoFile.exists())
+    {
+      boolean bool = jdField_a_of_type_JavaIoFile.mkdir();
+      QLog.d("ListenTogether.downloader", 1, "mkdir cache dir, result: " + bool);
+    }
+    return new File(arqr.jdField_a_of_type_JavaLangString, bdik.d(paramString)).getAbsolutePath();
+  }
+  
+  private void a(MusicInfo paramMusicInfo)
+  {
+    if (paramMusicInfo != null) {}
+    int i;
+    label116:
+    Object localObject1;
     for (;;)
     {
-      ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, paramaysx, bool, (MusicInfo)localObject1));
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.downloader", 2, String.format("onResp, errCode: %s, errDesc: %s, musicReqInfo: %s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+      try
+      {
+        if (TextUtils.isEmpty(paramMusicInfo.jdField_a_of_type_JavaLangString))
+        {
+          QLog.d("ListenTogether.downloader", 1, "musicInfo or id is empty");
+          return;
+        }
+        if (!a(arqs.a().b)) {
+          continue;
+        }
+        i = arqs.a().jdField_a_of_type_Int;
+        if (i <= 0)
+        {
+          QLog.d("ListenTogether.downloader", 2, String.format("download, maxCacheCount <= 0: %s", new Object[] { Integer.valueOf(i) }));
+          c();
+          b();
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label116;
+        }
       }
-      return;
-      bool = false;
+      finally {}
+      QLog.d("ListenTogether.downloader", 2, String.format("download, musicId: %s", new Object[] { paramMusicInfo.jdField_a_of_type_JavaLangString }));
+      if (a(paramMusicInfo.jdField_a_of_type_JavaLangString))
+      {
+        QLog.d("ListenTogether.downloader", 1, "download, cache file is exist");
+      }
+      else
+      {
+        localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramMusicInfo.jdField_a_of_type_JavaLangString);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          break label320;
+        }
+        localObject1 = localObject2;
+        if (paramMusicInfo.b != null)
+        {
+          localObject1 = localObject2;
+          if (paramMusicInfo.b.size() > 0)
+          {
+            localObject1 = new ArrayList();
+            localObject2 = paramMusicInfo.b.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              str = (String)((Iterator)localObject2).next();
+              if (!TextUtils.isEmpty(str)) {
+                ((List)localObject1).add(new artx(paramMusicInfo.jdField_a_of_type_JavaLangString, str));
+              }
+            }
+          }
+        }
+        label263:
+        if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
+          break;
+        }
+        QLog.d("ListenTogether.downloader", 1, "musicReqInfoList is empty!, " + paramMusicInfo);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramMusicInfo.jdField_a_of_type_JavaLangString, localObject1);
+    label320:
+    Iterator localIterator = null;
+    String str = null;
+    Object localObject2 = localIterator;
+    if (localObject1 != null)
+    {
+      localObject2 = localIterator;
+      if (((List)localObject1).size() > 0)
+      {
+        localIterator = ((List)localObject1).iterator();
+        localObject1 = str;
+      }
+    }
+    label402:
+    label583:
+    label593:
+    label595:
+    for (;;)
+    {
+      localObject2 = localObject1;
+      boolean bool;
+      if (localIterator.hasNext())
+      {
+        localObject2 = (artx)localIterator.next();
+        if (((artx)localObject2).jdField_a_of_type_Int == 1)
+        {
+          bool = true;
+          break label583;
+        }
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label593;
+        }
+        QLog.d("ListenTogether.downloader", 2, String.format("musicReqInfo not found, isDownloading: %s", new Object[] { Boolean.valueOf(bool) }));
+        break;
+        if ((((artx)localObject2).jdField_a_of_type_Int == 0) && (localObject1 == null))
+        {
+          localObject1 = localObject2;
+          break label595;
+        }
+        do
+        {
+          if (!b(i))
+          {
+            QLog.d("ListenTogether.downloader", 1, "download, over cache count");
+            break;
+          }
+          localObject2 = new ayrx();
+          ((ayrx)localObject2).jdField_a_of_type_Aysc = this.jdField_a_of_type_Aysc;
+          ((ayrx)localObject2).jdField_a_of_type_JavaLangString = ((artx)localObject1).b;
+          ((ayrx)localObject2).jdField_a_of_type_Int = 0;
+          ((ayrx)localObject2).c = ((artx)localObject1).d;
+          ((ayrx)localObject2).e = 1;
+          ((ayrx)localObject2).a(new Object[] { paramMusicInfo, localObject1 });
+          ((ayrx)localObject2).jdField_a_of_type_Aysb = jdField_a_of_type_Aysb;
+          this.jdField_a_of_type_Aysa.a((aysy)localObject2);
+          ((artx)localObject1).jdField_a_of_type_Int = 1;
+          break;
+          break label595;
+          bool = false;
+          localObject1 = localObject2;
+          break label583;
+          break label263;
+          if (bool) {
+            break label402;
+          }
+        } while (localObject1 != null);
+      }
       break;
-      label164:
-      str = paramaysx.jdField_a_of_type_JavaLangString;
-      break label48;
-      label173:
-      if ((localFile != null) && (localFile.exists())) {
-        localFile.delete();
-      }
-      ((artv)localObject2).jdField_a_of_type_Int = 3;
-      artr.a(this.a, (MusicInfo)localObject1);
     }
   }
   
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  private boolean a(int paramInt)
+  {
+    int i = bcxw.a(BaseApplicationImpl.getContext());
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogether.downloader", 2, String.format("netTypeNeedDownload, requestNetType: %s, netType: %s, needDownload: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool) }));
+      }
+      return bool;
+      if (paramInt == 1)
+      {
+        if (i == 1) {
+          bool = true;
+        }
+      }
+      else if (paramInt == 2)
+      {
+        if ((i == 1) || (i == 4)) {
+          bool = true;
+        }
+      }
+      else if (paramInt == 3)
+      {
+        if ((i == 1) || (i == 4) || (i == 3)) {
+          bool = true;
+        }
+      }
+      else if ((paramInt == 4) && ((i == 1) || (i == 4) || (i == 3) || (i == 2)))
+      {
+        bool = true;
+        continue;
+      }
+      bool = false;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(a(paramString)).exists();
+  }
+  
+  public static void b()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(arqr.jdField_a_of_type_JavaLangString);
+    if (((File)localObject1).exists())
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        int j = localObject1.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.isFile())
+          {
+            String str1 = a(QQMusicPlayService.a());
+            String str2 = localObject2.getAbsolutePath();
+            if ((TextUtils.isEmpty(str1)) || (!str1.equals(str2))) {
+              break label128;
+            }
+            QLog.d("ListenTogether.downloader", 1, String.format("removeAllCacheFiles, %s is playing", new Object[] { str2 }));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            label128:
+            localObject2.delete();
+          }
+        }
+      }
+    }
+    QLog.d("ListenTogether.downloader", 1, "removeAllCacheFiles, costTime: " + (System.currentTimeMillis() - l));
+  }
+  
+  private boolean b(int paramInt)
+  {
+    boolean bool = false;
+    String str = a(QQMusicPlayService.a());
+    File localFile1 = new File(arqr.jdField_a_of_type_JavaLangString);
+    Object localObject;
+    int i;
+    if (localFile1.exists())
+    {
+      localObject = localFile1.listFiles();
+      if ((localObject == null) || (localObject.length < paramInt)) {
+        return true;
+      }
+      localObject = Arrays.asList((Object[])localObject);
+      Collections.sort((List)localObject, jdField_a_of_type_JavaUtilComparator);
+      i = ((List)localObject).size() - paramInt + 1;
+      if (i <= ((List)localObject).size()) {
+        break label286;
+      }
+      i = ((List)localObject).size();
+    }
+    label286:
+    for (;;)
+    {
+      int j = 0;
+      if (j < i)
+      {
+        File localFile2 = (File)((List)localObject).get(j);
+        if ((!TextUtils.isEmpty(str)) && (str.equals(localFile2.getAbsolutePath()))) {
+          QLog.d("ListenTogether.downloader", 1, "checkCacheStorage, " + str + " is playing...");
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          localFile2.delete();
+          QLog.d("ListenTogether.downloader", 1, String.format("checkCacheStorage, del index: %s, file: %s", new Object[] { Integer.valueOf(j), localFile2.getAbsolutePath() }));
+        }
+      }
+      if (localFile1.listFiles() != null) {}
+      for (i = localFile1.listFiles().length;; i = 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ListenTogether.downloader", 2, String.format("checkCacheCount, %s / %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) }));
+        }
+        if (i < paramInt) {
+          bool = true;
+        }
+        return bool;
+      }
+    }
+  }
+  
+  private void c()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      Iterator localIterator = this.b.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (aysy)((Map.Entry)localIterator.next()).getValue();
+        this.jdField_a_of_type_Aysa.b((aysy)localObject2);
+        if ((localObject2 instanceof ayrx))
+        {
+          localObject2 = (ayrx)localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.d("ListenTogether.downloader", 2, String.format("cancelAllRequests, cancel req url: %s", new Object[] { ((ayrx)localObject2).jdField_a_of_type_JavaLangString }));
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break label123;
+      }
+    }
+    finally {}
+    QLog.d("ListenTogether.downloader", 2, "cancelAllRequests...");
+    label123:
+  }
+  
+  public void a()
+  {
+    c();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.downloader", 2, "destroy");
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: invokestatic 67	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: ifeq +15 -> 21
+    //   9: ldc 83
+    //   11: iconst_1
+    //   12: ldc_w 354
+    //   15: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: aload_0
+    //   22: getfield 59	artt:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   25: aload_1
+    //   26: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   29: checkcast 344	aysy
+    //   32: astore_2
+    //   33: aload_2
+    //   34: ifnull +13 -> 47
+    //   37: aload_0
+    //   38: getfield 52	artt:jdField_a_of_type_Aysa	Laysa;
+    //   41: aload_2
+    //   42: invokeinterface 346 2 0
+    //   47: aload_0
+    //   48: getfield 57	artt:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   51: aload_1
+    //   52: invokevirtual 357	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: pop
+    //   56: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   59: ifeq -41 -> 18
+    //   62: ldc 83
+    //   64: iconst_2
+    //   65: new 100	java/lang/StringBuilder
+    //   68: dup
+    //   69: invokespecial 101	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 359
+    //   75: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: aload_1
+    //   79: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: goto -70 -> 18
+    //   91: astore_1
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: aload_1
+    //   95: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	96	0	this	artt
+    //   0	96	1	paramString	String
+    //   32	10	2	localaysy	aysy
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	91	finally
+    //   21	33	91	finally
+    //   37	47	91	finally
+    //   47	88	91	finally
+  }
+  
+  public void a(List<MusicInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      QLog.d("ListenTogether.downloader", 1, "downloadMusicRes, musicList is empty!");
+    }
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a((MusicInfo)paramList.next());
+      }
+    }
+  }
 }
 
 

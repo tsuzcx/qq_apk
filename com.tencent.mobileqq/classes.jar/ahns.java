@@ -1,99 +1,106 @@
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ahns
-  extends ahny
+  extends ahno
 {
-  private int a;
-  private int b;
-  private int c;
-  
-  public View a(int paramInt, Object paramObject, ahnt paramahnt, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpq paramahpq)
+  private static void a(Context paramContext, View paramView)
   {
-    if (paramView != null)
+    Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2130772114);
+    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772113);
+    localAnimation.setAnimationListener(new ahnt(paramView, paramContext));
+    paramContext.setAnimationListener(new ahnu(paramView, localAnimation));
+    paramView.startAnimation(localAnimation);
+  }
+  
+  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  {
+    ahnv localahnv;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahnv)))
     {
-      paramahnt = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2131558871))) {}
-    }
-    else
-    {
-      paramahnt = View.inflate(paramContext, 2131558871, null);
-      this.b = paramContext.getResources().getDimensionPixelSize(2131298605);
-      this.a = paramContext.getResources().getDimensionPixelSize(2131298608);
-      this.c = paramContext.getResources().getDimensionPixelSize(2131298612);
-    }
-    int i = paramViewGroup.getHeight() - this.a * 2 - this.b;
-    if (i > this.c)
-    {
-      paramView = new AbsListView.LayoutParams(-1, -1);
-      paramView.width = -1;
-      paramView.height = i;
-      paramahnt.setLayoutParams(paramView);
-      paramahnt.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramahnt.findViewById(2131370851);
-      paramViewGroup = (Button)paramahnt.findViewById(2131363451);
-      if (!(paramObject instanceof Integer)) {
-        break label382;
+      localahnv = new ahnv(null);
+      View localView = a(paramContext, 2131562326, localahnv);
+      localahnv.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131367679));
+      localahnv.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131378655));
+      localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131377350));
+      localahnv.b = ((SingleLineTextView)localView.findViewById(2131365042));
+      localahnv.b.setGravity(16);
+      localahnv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131362541));
+      localahnv.c = ((ImageView)localView.findViewById(2131362540));
+      Object localObject = paramContext.getResources();
+      float f = bbdh.a();
+      paramView = ((Resources)localObject).getColorStateList(2131166931);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131166861);
+      localObject = ((Resources)localObject).getColorStateList(2131166932);
+      localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      if (ThemeUtil.isNowThemeIsDefault(null, false, null))
+      {
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localahnv.b.setTextColor(paramView);
+        localahnv.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localahnv.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localahnv);
+        paramView = localView;
+        if (this.a != null)
+        {
+          localahnv.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          paramView = localView;
+        }
       }
-      i = ((Integer)paramObject).intValue();
-      if (i != 1) {
-        break label263;
-      }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841002, 0, 0);
-      paramView.setVisibility(0);
-      paramView.setText(2131695128);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131166933));
-      paramViewGroup.setVisibility(8);
-      paramViewGroup.setOnClickListener(null);
     }
     for (;;)
     {
-      paramahnt.setTag(-1, Integer.valueOf(paramInt));
-      paramahnt.setTag(2131558871, "R.layout.conversation_no_chat");
-      return paramahnt;
-      i = this.c;
+      return super.a(paramInt, paramObject, paramahnr, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramahpo);
+      localahnv.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
       break;
-      label263:
-      if (i == 0)
-      {
-        if ((paramContext instanceof MsgBoxListActivity))
-        {
-          if (((MsgBoxListActivity)paramContext).f)
-          {
-            paramView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-            paramView.setVisibility(0);
-            paramView.setText("");
-          }
-        }
-        else
-        {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841002, 0, 0);
-          paramView.setVisibility(0);
-          paramView.setText(2131694658);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131166933));
-          paramViewGroup.setVisibility(8);
-          paramViewGroup.setOnClickListener(null);
-        }
-      }
-      else
-      {
-        paramView.setVisibility(4);
-        paramView.setText("");
-        continue;
-        label382:
-        paramView.setVisibility(8);
-        paramView.setText("");
-        paramViewGroup.setVisibility(8);
+    }
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    if ((paramView == null) || (paramRecentBaseData == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "bindView|param invalidate");
       }
     }
+    ahnv localahnv;
+    do
+    {
+      return;
+      localahnv = null;
+      if ((paramView.getTag() instanceof ahnv)) {
+        localahnv = (ahnv)paramView.getTag();
+      }
+      if (localahnv != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "bindView|holder is null, tag = " + paramView.getTag());
+    return;
+    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+    a(paramContext, localahnv.c);
   }
 }
 

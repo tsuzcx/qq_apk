@@ -1,18 +1,13 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.text.TextUtils;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class beto
-  extends betk
+final class beto
+  implements FilenameFilter
 {
-  beto(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
+  public boolean accept(File paramFile, String paramString)
   {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
-  
-  protected betj a()
-  {
-    return new betj(2131694218, new betp(this));
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".so")) || (paramString.endsWith(".jar")));
   }
 }
 

@@ -1,111 +1,58 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import mqq.app.AppRuntime;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.provider.Settings;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bgqc
-  extends awoh
 {
-  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(awvy.b());
-  public int a;
-  public long a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  
-  public CharSequence a()
+  public static boolean a()
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence == null) && (this.jdField_b_of_type_JavaLangString != null))
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl == null) {
+      return false;
+    }
+    if ((Build.VERSION.SDK_INT >= 23) && (!Settings.canDrawOverlays(localBaseApplicationImpl)))
     {
-      ayki localayki = new ayki(this.jdField_b_of_type_JavaLangString, 3, 20);
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int)) {
-        localayki.setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33);
-      }
-      this.jdField_a_of_type_JavaLangCharSequence = localayki;
+      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709608), 1).a();
+      localBaseApplicationImpl.startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
+      return false;
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return true;
   }
   
-  public String a()
+  private static void b(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
-    bgpf.a(localBaseActivity, localBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
-    awvy.a(this.jdField_a_of_type_JavaLangString, 60, 0, paramView);
-    if ((localBaseActivity instanceof UniteSearchActivity)) {
-      awvy.a("all_result", "clk_collect", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    if (!a()) {
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_c_of_type_Long == 0L) {
-      return null;
+    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755791);
+    localDialog.getWindow().setType(2003);
+    localDialog.setContentView(2131558883);
+    TextView localTextView = (TextView)localDialog.findViewById(2131365150);
+    if (localTextView != null) {
+      localTextView.setText("dump文件保存地址");
     }
-    return "" + this.jdField_c_of_type_Long;
-  }
-  
-  public int c()
-  {
-    switch (this.e)
+    localTextView = (TextView)localDialog.findViewById(2131365146);
+    if ((localTextView != null) && (paramString != null)) {
+      localTextView.setText(paramString);
+    }
+    localTextView = (TextView)localDialog.findViewById(2131365135);
+    if (localTextView != null)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
+      localTextView.setText(2131690596);
+      localTextView.setOnClickListener(new bgqe(localDialog));
     }
-    return 101;
-  }
-  
-  public CharSequence c()
-  {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if (this.jdField_c_of_type_JavaLangString != null)
+    localTextView = (TextView)localDialog.findViewById(2131365141);
+    if (localTextView != null)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        localSpannableStringBuilder.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
-      }
+      localTextView.setText(2131691547);
+      localTextView.setOnClickListener(new bgqf(localDialog, paramString));
     }
-    else {
-      return localSpannableStringBuilder;
-    }
-    return localSpannableStringBuilder.append("来自: ").append(awvy.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    localDialog.show();
   }
 }
 

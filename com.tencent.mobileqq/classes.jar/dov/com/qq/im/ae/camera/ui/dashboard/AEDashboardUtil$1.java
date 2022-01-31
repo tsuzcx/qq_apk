@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bimt;
 import bink;
+import biob;
 
 public final class AEDashboardUtil$1
   implements Runnable
 {
-  public AEDashboardUtil$1(bink parambink) {}
+  public AEDashboardUtil$1(biob parambiob) {}
   
   public void run()
   {
-    bimt.a(this.a);
+    bink.a(this.a);
   }
 }
 

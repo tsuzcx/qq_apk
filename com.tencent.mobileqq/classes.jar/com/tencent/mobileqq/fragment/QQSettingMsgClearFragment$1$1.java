@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.fragment;
 
-import ahmt;
+import ahmr;
 import android.os.Handler;
-import aqje;
-import axty;
-import bbjn;
+import aqjg;
+import axua;
+import bbkb;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class QQSettingMsgClearFragment$1$1
   implements Runnable
 {
-  public QQSettingMsgClearFragment$1$1(aqje paramaqje) {}
+  public QQSettingMsgClearFragment$1$1(aqjg paramaqjg) {}
   
   public void run()
   {
     QQSettingMsgHistoryActivity.a(this.a.a.getActivity(), QQSettingMsgClearFragment.a(this.a.a));
-    axty.a().a(true);
+    axua.a().a(true);
     this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    bbjn.a(QQSettingMsgClearFragment.a(this.a.a).c());
-    ahmt.a().a(0L);
+    bbkb.a(QQSettingMsgClearFragment.a(this.a.a).c());
+    ahmr.a().a(0L);
     QQSettingMsgHistoryActivity.a();
   }
 }

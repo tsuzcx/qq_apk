@@ -1,64 +1,29 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Handler;
-import android.view.KeyEvent;
+import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
-public abstract class xqe
+class xqe
+  extends URLDrawableDownListener.Adapter
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected xpz a;
+  xqe(xqd paramxqd, int paramInt, ViewGroup paramViewGroup) {}
   
-  public ViewGroup a()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    this.jdField_a_of_type_Xqd.a(this.jdField_a_of_type_Int, false);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  void a(xpz paramxpz)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Xpz = paramxpz;
+    this.jdField_a_of_type_Xqd.b(this.jdField_a_of_type_Int, paramInt / 100);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return false;
-  }
-  
-  public void b(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public void f() {}
-  
-  public void h() {}
-  
-  public void k() {}
-  
-  public void l() {}
-  
-  public void p() {}
-  
-  public void s() {}
-  
-  public void t()
-  {
-    if (this.jdField_a_of_type_Xpz != null) {
-      this.jdField_a_of_type_Xpz.a();
+    this.jdField_a_of_type_Xqd.a(this.jdField_a_of_type_Int, true);
+    paramView = this.jdField_a_of_type_Xqd.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramView != null) {
+      this.jdField_a_of_type_Xqd.a(paramView, paramURLDrawable);
     }
   }
 }

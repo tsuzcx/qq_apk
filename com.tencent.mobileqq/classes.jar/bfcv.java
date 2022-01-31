@@ -1,13 +1,38 @@
+import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
+
 class bfcv
-  implements besd
+  implements QflutterLogPlugin.Log
 {
-  bfcv(bfct parambfct) {}
+  bfcv(bfcr parambfcr) {}
   
-  public void a(int paramInt, String paramString, besc parambesc)
+  public void d(String paramString)
   {
-    if ((paramInt == 0) && (parambesc != null)) {
-      this.a.a(parambesc.b, parambesc.h);
-    }
+    betc.a("miniapp-TISSUE", paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    betc.d("miniapp-TISSUE", paramString);
+  }
+  
+  public int getLogLevel()
+  {
+    return 5;
+  }
+  
+  public void i(String paramString)
+  {
+    betc.b("miniapp-TISSUE", paramString);
+  }
+  
+  public void v(String paramString)
+  {
+    betc.a("miniapp-TISSUE", paramString);
+  }
+  
+  public void w(String paramString)
+  {
+    betc.c("miniapp-TISSUE", paramString);
   }
 }
 

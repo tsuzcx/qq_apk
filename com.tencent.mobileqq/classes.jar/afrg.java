@@ -1,23 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
 import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class afrg
-  implements Handler.Callback
+  implements ThreadExcutor.IThreadListener
 {
   public afrg(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.i();
-    }
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 

@@ -1,15 +1,6 @@
-final class wsn
-  implements bfos
+public abstract interface wsn
 {
-  wsn(wsq paramwsq, bfol parambfol) {}
-  
-  public void onDismiss()
-  {
-    if (this.jdField_a_of_type_Wsq != null) {
-      this.jdField_a_of_type_Wsq.a(false);
-    }
-    this.jdField_a_of_type_Bfol.dismiss();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

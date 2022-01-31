@@ -1,11 +1,4 @@
-import android.view.View;
-import android.widget.TextView;
-
-public class afkq
-{
-  public View a;
-  public TextView a;
-}
+public class afkq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar

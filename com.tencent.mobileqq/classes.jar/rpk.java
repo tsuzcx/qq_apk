@@ -1,89 +1,76 @@
-import android.graphics.Bitmap.Config;
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
 
-public class rpk
+public class rpk<T>
 {
-  public int a;
-  public Bitmap.Config a;
-  public URL a;
-  public volatile boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private T jdField_a_of_type_JavaLangObject;
+  private final rpl<T> jdField_a_of_type_Rpl;
   
-  public rpk()
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
+    jdField_a_of_type_JavaLangString = "zimage." + rpk.class.getSimpleName();
   }
   
-  public String a()
+  public rpk(T paramT, rpl<T> paramrpl)
   {
-    return "kandian_zimage_image_req_" + hashCode();
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Rpl = paramrpl;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public boolean equals(Object paramObject)
+  public T a()
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    try
     {
-      do
+      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int += 1;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Int == 0)
       {
-        do
+        if (QLog.isColorLevel()) {
+          rpn.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
+        }
+        if (this.jdField_a_of_type_JavaLangObject != null)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramObject == null);
-              bool1 = bool3;
-            } while (getClass() != paramObject.getClass());
-            paramObject = (rpk)paramObject;
-            bool1 = bool3;
-          } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
-          bool1 = bool3;
-        } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
-        bool1 = bool3;
-      } while (this.c != paramObject.c);
-      if (this.jdField_a_of_type_JavaNetURL == null) {
-        break;
+          this.jdField_a_of_type_Rpl.a(this.jdField_a_of_type_JavaLangObject);
+          this.jdField_a_of_type_JavaLangObject = null;
+        }
       }
-      bool1 = bool3;
-    } while (!this.jdField_a_of_type_JavaNetURL.equals(paramObject.jdField_a_of_type_JavaNetURL));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap$Config == paramObject.jdField_a_of_type_AndroidGraphicsBitmap$Config) {}
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return bool1;
-      if (paramObject.jdField_a_of_type_JavaNetURL == null) {
-        break;
-      }
-      return false;
+      return;
     }
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaNetURL != null) {}
-    for (int i = this.jdField_a_of_type_JavaNetURL.hashCode();; i = 0) {
-      return (((i * 31 + this.jdField_a_of_type_Int) * 31 + this.jdField_b_of_type_Int) * 31 + this.jdField_a_of_type_AndroidGraphicsBitmap$Config.hashCode()) * 31 + this.c;
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaNetURL + " " + this.jdField_a_of_type_Int + "x" + this.jdField_b_of_type_Int + " isPreload:" + this.jdField_b_of_type_Boolean + " isCancel:" + this.jdField_a_of_type_Boolean;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+
 public class mcq
-  extends mcl
+  implements mho
 {
-  public int a;
-  public String b;
+  public mcq(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public mcq(long paramLong, String paramString1, int paramInt, String paramString2)
+  public void a()
   {
-    super(6005);
-    a(paramLong, paramString1);
-    this.a = paramInt;
-    this.b = paramString2;
+    this.a.j = true;
+    this.a.L();
+  }
+  
+  public void b()
+  {
+    this.a.j = false;
   }
 }
 

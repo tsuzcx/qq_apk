@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aast
-  implements DialogInterface.OnClickListener
+public abstract interface aast
 {
-  public aast(ChatHistoryImageView paramChatHistoryImageView) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.a;
-    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
-    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
-    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    }
-  }
+  public abstract void a(aeiy paramaeiy);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aeiy paramaeiy);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 

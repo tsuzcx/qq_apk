@@ -1,19 +1,19 @@
 package dov.com.qq.im.ae.play;
 
-import biqk;
-import biqn;
-import biqy;
-import biyo;
+import birb;
+import bire;
+import birp;
+import bizf;
 
 public class PlayDownloadManagerWrap$1
   implements Runnable
 {
-  public PlayDownloadManagerWrap$1(biyo parambiyo, biqk parambiqk, biqn parambiqn, biqy parambiqy) {}
+  public PlayDownloadManagerWrap$1(bizf parambizf, birb parambirb, bire parambire, birp parambirp) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Biqk.a(this.jdField_a_of_type_Biqk.a(), this.jdField_a_of_type_Biqn, this.jdField_a_of_type_Biqy);
-    this.jdField_a_of_type_Biqn.e = true;
+    this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_Birb.a(), this.jdField_a_of_type_Bire, this.jdField_a_of_type_Birp);
+    this.jdField_a_of_type_Bire.e = true;
   }
 }
 

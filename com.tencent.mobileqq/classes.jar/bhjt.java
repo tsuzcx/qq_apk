@@ -1,24 +1,10 @@
-import android.os.IInterface;
 import cooperation.qzone.plugin.PluginRecord;
 
-public abstract interface bhjt
-  extends IInterface
+abstract interface bhjt
 {
-  public abstract PluginRecord a(String paramString);
+  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  public abstract void a();
-  
-  public abstract void a(bhhy parambhhy, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, bhib parambhib, int paramInt);
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean c(String paramString);
+  public abstract void d(PluginRecord paramPluginRecord);
 }
 
 

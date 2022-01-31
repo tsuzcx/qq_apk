@@ -3,42 +3,42 @@ package com.tencent.qqmini.sdk.report;
 import android.os.Debug.MemoryInfo;
 import android.os.Handler;
 import android.os.Process;
-import beiw;
-import beyj;
-import bffs;
+import bejn;
+import beza;
+import bfgj;
 
 public final class MiniProgramLpReportDC04902$1
   implements Runnable
 {
   public void run()
   {
-    Debug.MemoryInfo localMemoryInfo = bffs.a(Process.myPid());
+    Debug.MemoryInfo localMemoryInfo = bfgj.a(Process.myPid());
     long l2;
     if (localMemoryInfo != null)
     {
       l1 = localMemoryInfo.getTotalPss() / 1024;
-      beyj.a((beyj.a() + l1) / 2L);
-      if (l1 > beyj.b()) {
-        beyj.b(l1);
+      beza.a((beza.a() + l1) / 2L);
+      if (l1 > beza.b()) {
+        beza.b(l1);
       }
       l1 = localMemoryInfo.nativePss / 1024;
       l2 = localMemoryInfo.otherPss / 1024;
-      if (beyj.c() != 0L) {
+      if (beza.c() != 0L) {
         break label112;
       }
-      beyj.c(l1);
-      if (beyj.d() != 0L) {
+      beza.c(l1);
+      if (beza.d() != 0L) {
         break label125;
       }
     }
     label112:
     label125:
-    for (long l1 = l2;; l1 = (beyj.d() + l2) / 2L)
+    for (long l1 = l2;; l1 = (beza.d() + l2) / 2L)
     {
-      beyj.d(l1);
-      beiw.a().postDelayed(this, 1000L);
+      beza.d(l1);
+      bejn.a().postDelayed(this, 1000L);
       return;
-      l1 = (l1 + beyj.c()) / 2L;
+      l1 = (l1 + beza.c()) / 2L;
       break;
     }
   }

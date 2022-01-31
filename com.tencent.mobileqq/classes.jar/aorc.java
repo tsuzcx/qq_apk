@@ -1,48 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.qphone.base.util.QLog;
 
 public class aorc
-  extends apvd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aorc(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public aorc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().g();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + apue.a());
-    }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().i();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().E();
+    this.a.av_();
   }
 }
 

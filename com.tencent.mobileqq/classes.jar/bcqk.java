@@ -1,6 +1,6 @@
 public abstract interface bcqk
 {
-  public abstract void a(float paramFloat);
+  public abstract void a();
 }
 
 

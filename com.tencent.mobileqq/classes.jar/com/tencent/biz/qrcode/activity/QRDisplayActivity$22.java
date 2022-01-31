@@ -1,7 +1,7 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
-import wgg;
+import wgd;
 
 public class QRDisplayActivity$22
   implements Runnable
@@ -14,7 +14,7 @@ public class QRDisplayActivity$22
     {
       this.this$0.d.setOnClickListener(null);
       this.this$0.d.setClickable(false);
-      this.this$0.d.setOnTouchListener(new wgg(this));
+      this.this$0.d.setOnTouchListener(new wgd(this));
       return;
     }
     this.this$0.d.setClickable(true);

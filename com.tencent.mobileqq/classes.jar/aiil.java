@@ -1,18 +1,18 @@
-import android.media.AudioManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aiil
-  implements bbvb
+  implements DialogInterface.OnClickListener
 {
-  public aiil(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aiil(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void a(bbva parambbva)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
-    if (bfni.b()) {
-      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
-    }
+    PhotoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
   }
 }
 

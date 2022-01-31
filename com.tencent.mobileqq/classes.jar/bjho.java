@@ -1,18 +1,9 @@
 import android.support.annotation.NonNull;
 
-class bjho
-  implements bjgx
+public abstract interface bjho
 {
-  bjho(bjhn parambjhn) {}
-  
   @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    if (paramInt == 0) {
-      return bakj.b(paramString);
-    }
-    return "";
-  }
+  public abstract String a(int paramInt, @NonNull String paramString);
 }
 
 

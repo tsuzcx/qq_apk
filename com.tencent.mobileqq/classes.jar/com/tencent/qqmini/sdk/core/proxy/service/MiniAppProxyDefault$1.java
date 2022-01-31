@@ -1,22 +1,22 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.Intent;
-import beil;
-import beim;
-import besi;
-import bffl;
+import bejc;
+import bejd;
+import besz;
+import bfgc;
 
 class MiniAppProxyDefault$1
-  implements beim
+  implements bejd
 {
-  MiniAppProxyDefault$1(MiniAppProxyDefault paramMiniAppProxyDefault, besi parambesi) {}
+  MiniAppProxyDefault$1(MiniAppProxyDefault paramMiniAppProxyDefault, besz parambesz) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (9527 != paramInt1) {
       return false;
     }
-    beil.a().b(this);
+    bejc.a().b(this);
     paramInt1 = paramIntent.getIntExtra("more_item_id", -1);
     paramIntent = this.this$0.getMoreItemSelectedListener();
     if (paramIntent != null) {

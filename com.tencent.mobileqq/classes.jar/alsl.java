@@ -1,9 +1,11 @@
-import java.util.HashMap;
+import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
 
 public class alsl
 {
   public int a;
-  public final HashMap<String, alsm> a = new HashMap();
+  public ArkAppInfo.AppDownloadInfo a;
+  public String a;
+  public int b;
 }
 
 

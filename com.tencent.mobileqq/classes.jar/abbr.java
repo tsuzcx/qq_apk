@@ -1,12 +1,17 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
-class abbr
+public class abbr
+  implements DialogInterface.OnClickListener
 {
-  abbp jdField_a_of_type_Abbp;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
+  public abbr(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  abbr(abbq paramabbq) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+  }
 }
 
 

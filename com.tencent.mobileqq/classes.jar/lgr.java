@@ -1,6 +1,13 @@
-public abstract interface lgr
+public class lgr
 {
-  public abstract boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public byte[] a;
+  public byte[] b;
+  
+  public lgr(int paramInt1, int paramInt2)
+  {
+    this.a = new byte[paramInt1];
+    this.b = new byte[paramInt2];
+  }
 }
 
 

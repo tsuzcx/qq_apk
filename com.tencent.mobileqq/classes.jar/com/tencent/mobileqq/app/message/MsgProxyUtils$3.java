@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akpy;
+import akpx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class MsgProxyUtils$3
@@ -10,7 +10,7 @@ public final class MsgProxyUtils$3
   
   public void run()
   {
-    akpy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    akpx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

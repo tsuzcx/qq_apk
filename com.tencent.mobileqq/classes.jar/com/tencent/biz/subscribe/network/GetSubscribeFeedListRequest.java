@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import wsx;
+import wsu;
 
 public class GetSubscribeFeedListRequest
   extends VSBaseRequest
@@ -30,7 +30,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = wsx.a().a();
+    paramStCommonExt = wsu.a().a();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -57,7 +57,7 @@ public class GetSubscribeFeedListRequest
       if (paramStCommonExt != null) {
         this.req.extInfo.set(paramStCommonExt.get());
       }
-      paramStFeed = wsx.a().a();
+      paramStFeed = wsu.a().a();
       if (paramStFeed != null)
       {
         paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();

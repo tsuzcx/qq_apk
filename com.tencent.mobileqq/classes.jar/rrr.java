@@ -1,45 +1,20 @@
-import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import java.util.List;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class rrr
-  extends rrp
+  implements TypeEvaluator<Rect>
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private rrs jdField_a_of_type_Rrs;
-  private List<String> b;
-  protected boolean b;
+  public rrr(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public rrr(Activity paramActivity, rrs paramrrs, List<String> paramList1, List<String> paramList2)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Rrs = paramrrs;
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.jdField_b_of_type_JavaUtilList = paramList2;
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
   }
   
-  public View a(LayoutInflater paramLayoutInflater)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    paramLayoutInflater = (LinearLayout)paramLayoutInflater.inflate(2131559890, null);
-    RecyclerView localRecyclerView = (RecyclerView)paramLayoutInflater.findViewById(2131364609);
-    omn localomn = new omn(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_Rrs);
-    localRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity));
-    localRecyclerView.setAdapter(localomn);
-    return paramLayoutInflater;
-  }
-  
-  public void b(View paramView)
-  {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      a();
-      this.jdField_b_of_type_Boolean = true;
-    }
-    a(paramView);
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 

@@ -1,26 +1,88 @@
-import com.tencent.widget.AbsListView;
-import java.util.List;
+import android.support.annotation.NonNull;
 
-class bjxy
-  implements bfob
+public class bjxy
+  extends bjxl
+  implements bjgl
 {
-  int jdField_a_of_type_Int = 0;
+  private bjgi a;
   
-  bjxy(bjxw parambjxw) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public bjxy(@NonNull bjxn parambjxn)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    super(parambjxn);
+    this.jdField_a_of_type_Bjgi = new bjgi();
+    this.jdField_a_of_type_Bjgi.a(this);
+    this.jdField_a_of_type_Bjgi.a().a(this.jdField_a_of_type_Bjxn.a);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == bjxw.a(this.jdField_a_of_type_Bjxw, bjxw.a(this.jdField_a_of_type_Bjxw)).a().size()) && (!bjxw.a(this.jdField_a_of_type_Bjxw, bjxw.a(this.jdField_a_of_type_Bjxw)).a()))
+    this.jdField_a_of_type_Bjgi.a(this.jdField_a_of_type_Bjyv.a());
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public void aW_()
+  {
+    this.jdField_a_of_type_Bjgi.a().b();
+  }
+  
+  public void aX_()
+  {
+    b();
+  }
+  
+  public void a_(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      paramAbsListView = bjxw.a(this.jdField_a_of_type_Bjxw);
-      bjxw.a(this.jdField_a_of_type_Bjxw, bjxw.a(this.jdField_a_of_type_Bjxw)).b(paramAbsListView);
+    default: 
+      this.jdField_a_of_type_Bjgi.d();
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Bjgi.a();
+      this.jdField_a_of_type_Bjgi.a().a(true, this.jdField_a_of_type_Bjyv.getActivity());
+    } while (!(paramObject instanceof bjwg));
+    paramObject = (bjwg)paramObject;
+    this.jdField_a_of_type_Bjgi.a().a(paramObject.jdField_a_of_type_Bjxz, paramObject.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bjgi.e();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bjxn.a(4, this.jdField_a_of_type_Bjgi.a().a());
+  }
+  
+  protected boolean b()
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Bjgi.a())
+    {
+      this.jdField_a_of_type_Bjxn.a(0);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void c()
+  {
+    bjxn localbjxn = this.jdField_a_of_type_Bjxn;
+    if (this.jdField_a_of_type_Bjxn.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localbjxn.a("change_poi", 0, 0, new String[] { str });
+      vej.a("0X80076D0");
+      vej.b("0X80075E5");
+      b();
+      return;
     }
   }
+  
+  public void z_() {}
 }
 
 

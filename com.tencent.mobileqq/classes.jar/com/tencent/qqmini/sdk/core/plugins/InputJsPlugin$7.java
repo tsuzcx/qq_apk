@@ -5,10 +5,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import begy;
-import beka;
-import besl;
-import bffu;
+import behp;
+import bekr;
+import betc;
+import bfgl;
 import com.tencent.qqmini.sdk.core.widget.KeyboardLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 class InputJsPlugin$7
   implements View.OnClickListener
 {
-  InputJsPlugin$7(InputJsPlugin paramInputJsPlugin, EditText paramEditText, beka parambeka, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
+  InputJsPlugin$7(InputJsPlugin paramInputJsPlugin, EditText paramEditText, bekr parambekr, KeyboardLayout paramKeyboardLayout, Context paramContext) {}
   
   public void onClick(View paramView)
   {
@@ -35,13 +35,13 @@ class InputJsPlugin$7
       }
       this.val$req.a.a("onKeyboardComplete", localJSONObject.toString(), 0);
       if ((this.val$context instanceof Activity)) {
-        bffu.a((Activity)this.val$context);
+        bfgl.a((Activity)this.val$context);
       }
       return;
     }
     catch (JSONException paramView)
     {
-      besl.d("NetworkJsPlugin", "confirm button click callback exception", paramView);
+      betc.d("NetworkJsPlugin", "confirm button click callback exception", paramView);
     }
   }
 }

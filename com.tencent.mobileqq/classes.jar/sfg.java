@@ -1,53 +1,40 @@
-import com.tencent.image.URLDrawableHandler;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class sfg
-  implements URLDrawableHandler
+  implements abkx
 {
-  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  private sff jdField_a_of_type_Sff;
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  sff jdField_a_of_type_Sff = null;
   
-  public sfg(URLDrawableHandler paramURLDrawableHandler, sff paramsff)
+  public sfg(sff paramsff, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
     this.jdField_a_of_type_Sff = paramsff;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public sff a()
+  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
   {
-    return this.jdField_a_of_type_Sff;
-  }
-  
-  public void doCancel()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
-  }
-  
-  public boolean isCancelled()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_a_of_type_Sff.a(false, paramInt);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_a_of_type_Sff.b();
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    this.jdField_a_of_type_Sff.a(true, 0);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Sff);
+    }
+    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Sff != null)) {
+      this.jdField_a_of_type_Sff.a = paramDrawable;
+    }
+    try
+    {
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(1).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
+    }
   }
 }
 

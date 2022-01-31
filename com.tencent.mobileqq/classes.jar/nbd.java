@@ -1,67 +1,87 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class nbd
-  implements BusinessObserver
+public class nbd
+  extends WebViewPlugin
 {
-  nbd(Context paramContext, QQAppInterface paramQQAppInterface, bcpq parambcpq, SessionInfo paramSessionInfo, String paramString) {}
+  protected Activity a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public nbd()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    this.mPluginNameSpace = "eqq";
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
+    try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("uin");
+      localObject = ((JSONObject)localObject).getString("name");
+      Intent localIntent = actj.a(new Intent(this.a, ChatActivity.class), null);
+      localIntent.putExtra("uin", paramString);
+      localIntent.putExtra("uintype", 1024);
+      localIntent.putExtra("uinname", (String)localObject);
+      localIntent.putExtra("entrance", 0);
+      localIntent.putExtra("aio_msg_source", 999);
+      this.a.startActivity(localIntent);
+      return;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
+      paramString.printStackTrace();
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
       try
       {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          nbc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          nbc.a(this.jdField_a_of_type_Bcpq);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
-          }
-          nbc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
-          nbc.a(this.jdField_a_of_type_Bcpq);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-        nbc.a(this.jdField_a_of_type_Bcpq);
+        paramString = new JSONObject(paramString).getString("uin");
+        naz.a(this.a, null, paramString, false, -1, true, -1);
         return;
       }
-      nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-      continue;
-      nbc.a(this.jdField_a_of_type_AndroidContentContext, 2131695568);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
-    }
+      catch (JSONException paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("EqqWebviewPlugin", 2, "showEqq json error!");
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"eqq".equals(paramString2)) {}
+    do
+    {
+      return false;
+      if ("showEQQ".equals(paramString3))
+      {
+        if (paramVarArgs.length > 0) {
+          a(paramVarArgs[0]);
+        }
+        return true;
+      }
+    } while ((!"showEQQAio".equals(paramString3)) || (paramVarArgs.length != 1));
+    b(paramVarArgs[0]);
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = this.mRuntime.a();
   }
 }
 

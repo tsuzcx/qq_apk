@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.JoinGroupTransitActivity;
 
-class mvz
-  implements DialogInterface.OnDismissListener
+public class mvz
+  implements mvy
 {
-  mvz(mvy parammvy) {}
+  public mvz(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.jdField_a_of_type_Mwb.c();
-    this.a.jdField_a_of_type_Long = 0L;
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void c()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
   }
 }
 

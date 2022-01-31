@@ -1,43 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class agiq
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<BaseActivityView> a;
+  public agiq(BindNumberActivity paramBindNumberActivity) {}
   
-  public agiq(BaseActivityView paramBaseActivityView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramBaseActivityView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
-      }
-    case 2: 
-      localBaseActivityView.f();
-      return;
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
     }
-    localBaseActivityView.i();
   }
 }
 

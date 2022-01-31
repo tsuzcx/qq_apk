@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import agsl;
+import agsj;
 import com.tencent.widget.GestureSelectGridView;
 import mqq.util.WeakReference;
 
 public class PhotoListLogicDefault$8
   implements Runnable
 {
-  public PhotoListLogicDefault$8(agsl paramagsl, int paramInt) {}
+  public PhotoListLogicDefault$8(agsj paramagsj, int paramInt) {}
   
   public void run()
   {

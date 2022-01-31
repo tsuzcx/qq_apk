@@ -1,24 +1,13 @@
 import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
 
 public class aifq
-  extends ajsg
+  extends akat
 {
   public aifq(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  protected void a(int paramInt)
+  protected void a()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
-      }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
+    this.a.c();
   }
 }
 

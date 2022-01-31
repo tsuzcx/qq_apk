@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.minigame.task;
 
 import android.os.Bundle;
-import beot;
-import bevy;
-import bevz;
-import bewt;
+import bepk;
+import bewp;
+import bewq;
+import bexk;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameEngineLoadTask$1
   implements Runnable
 {
-  public GameEngineLoadTask$1(bevy parambevy) {}
+  public GameEngineLoadTask$1(bewp parambewp) {}
   
   public void run()
   {
-    bewt.a().i("EngineLoadTask", "[MiniEng]rebindChannelIfNecessary ackCount:" + bevy.a(this.this$0).get());
-    if (bevy.a(this.this$0).get() < 1)
+    bexk.a().i("EngineLoadTask", "[MiniEng]rebindChannelIfNecessary ackCount:" + bewp.a(this.this$0).get());
+    if (bewp.a(this.this$0).get() < 1)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("bundle_key_app_type", 1);
-      beot.a().a("cmd_rebind_engine_channel", localBundle, new bevz(this));
+      bepk.a().a("cmd_rebind_engine_channel", localBundle, new bewq(this));
     }
   }
 }

@@ -1,20 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie.82;
 
 public class aanf
-  implements bcpl
+  implements View.OnTouchListener
 {
-  public aanf(BaseChatPie paramBaseChatPie) {}
+  public aanf(BaseChatPie.82 param82) {}
   
-  public void a(Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.b(false);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.a.a.b(true);
+    return true;
   }
 }
 

@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-
-class bbqt
-  implements INetInfoHandler
+public class bbqt
 {
-  public void onNetMobile2None() {}
+  public float a;
+  public int a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    bbqs.a();
-  }
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    bbqs.a();
-  }
-  
-  public void onNetWifi2None() {}
+  public bbqt(bbqs parambbqs) {}
 }
 
 

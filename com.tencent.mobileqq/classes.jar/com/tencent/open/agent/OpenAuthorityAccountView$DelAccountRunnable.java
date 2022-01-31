@@ -2,7 +2,7 @@ package com.tencent.open.agent;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdca;
+import bdcp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class OpenAuthorityAccountView$DelAccountRunnable
   public void run()
   {
     this.this$0.c(this.a);
-    String str = ((TextView)OpenAuthorityAccountView.a(this.this$0).findViewById(2131361881)).getText().toString();
+    String str = ((TextView)OpenAuthorityAccountView.a(this.this$0).findViewById(2131361880)).getText().toString();
     if ((str != null) && (str.equals(this.a)))
     {
       if (this.this$0.a.size() != 1) {

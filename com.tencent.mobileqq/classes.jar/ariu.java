@@ -1,27 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.intervideo.nowproxy.NowLive;
-import com.tencent.qphone.base.util.QLog;
-
 class ariu
-  extends BroadcastReceiver
+  implements arjc
 {
-  ariu(arii paramarii) {}
+  ariu(arik paramarik, arkh paramarkh) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
-    {
-      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
-      NowLive.killPluginProcess();
-    }
-    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
-      return;
-    }
-    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
-    NowLive.killPluginProcess();
+    this.jdField_a_of_type_Arkh.a(paramInt, paramString);
   }
 }
 

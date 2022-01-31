@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.utils.thread.internel;
 
-import bemb;
-import bemc;
-import bemd;
+import bems;
+import bemt;
+import bemu;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayDeque<E>
   extends AbstractCollection<E>
-  implements bemd<E>, Serializable, Cloneable
+  implements bemu<E>, Serializable, Cloneable
 {
   private static final long serialVersionUID = 2340985798034038923L;
   private transient int jdField_a_of_type_Int;
@@ -274,7 +274,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> descendingIterator()
   {
-    return new bemc(this, null);
+    return new bemt(this, null);
   }
   
   public E element()
@@ -307,7 +307,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> iterator()
   {
-    return new bemb(this, null);
+    return new bems(this, null);
   }
   
   public boolean offer(E paramE)

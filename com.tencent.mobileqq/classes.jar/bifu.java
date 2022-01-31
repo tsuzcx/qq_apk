@@ -1,10 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bifu
-  implements DialogInterface.OnClickListener
+public final class bifu
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public Throwable a = null;
+  public long b;
+  public long c;
 }
 
 

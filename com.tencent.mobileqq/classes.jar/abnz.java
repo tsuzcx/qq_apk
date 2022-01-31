@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abnz
   implements DialogInterface.OnClickListener
@@ -9,7 +11,9 @@ public class abnz
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NotificationActivity.a(this.a, false);
+    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.app.y();
+    this.a.finish();
   }
 }
 

@@ -10,7 +10,7 @@ class PAVideoView$1
   public void run()
   {
     this.a.setVisibility(0);
-    this.a.setImageResource(2130842637);
+    this.a.setImageResource(2130842638);
     this.a.clearAnimation();
     this.a.startAnimation(this.this$0.a);
     if (this.this$0.j == 4) {

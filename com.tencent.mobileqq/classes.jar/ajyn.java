@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 final class ajyn
   implements DialogInterface.OnClickListener
 {
-  ajyn(QQAppInterface paramQQAppInterface) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    axqw.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 

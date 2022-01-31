@@ -60,10 +60,10 @@ public class MiniAIOEntryView
   public void initAppBrandRuntime()
   {
     this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559275, null));
-    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370259));
-    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370260));
+    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131370258));
+    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131370259));
     if ("black".equals(this.style)) {
-      this.miniAIOIcon.setBackgroundResource(2130840692);
+      this.miniAIOIcon.setBackgroundResource(2130840689);
     }
     for (;;)
     {
@@ -73,7 +73,7 @@ public class MiniAIOEntryView
       localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       addView(this.miniAIOEntryView, localLayoutParams);
       return;
-      this.miniAIOIcon.setBackgroundResource(2130840693);
+      this.miniAIOIcon.setBackgroundResource(2130840690);
     }
   }
   
@@ -119,10 +119,10 @@ public class MiniAIOEntryView
     }
     if ("black".equals(paramString))
     {
-      this.miniAIOIcon.setBackgroundResource(2130840692);
+      this.miniAIOIcon.setBackgroundResource(2130840689);
       return;
     }
-    this.miniAIOIcon.setBackgroundResource(2130840693);
+    this.miniAIOIcon.setBackgroundResource(2130840690);
   }
   
   public boolean show(int paramInt)

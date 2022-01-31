@@ -9,7 +9,7 @@ public class wer
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
     this.a.invalidate();
   }
 }

@@ -1,6 +1,89 @@
-public abstract interface bfjg
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
+
+public class bfjg
+  implements bfje
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private bfjf jdField_a_of_type_Bfjf;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bfjg(bfjf parambfjf)
+  {
+    this.jdField_a_of_type_Bfjf = parambfjf;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Bfjf == null);
+    this.jdField_a_of_type_Bfjf.a(a(), null);
+  }
+  
+  private void c()
+  {
+    Object localObject = BaseApplication.getContext().getPackageManager();
+    if (localObject != null) {
+      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
+    }
+    for (;;)
+    {
+      PackageInfo localPackageInfo;
+      if (((Iterator)localObject).hasNext())
+      {
+        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+        if (this.jdField_a_of_type_Boolean) {}
+      }
+      else
+      {
+        return;
+      }
+      if (this.jdField_a_of_type_Bfjf != null) {
+        this.jdField_a_of_type_Bfjf.b(a(), localPackageInfo);
+      }
+    }
+  }
+  
+  private void d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (this.jdField_a_of_type_Bfjf == null);
+    this.jdField_a_of_type_Bfjf.c(a(), null);
+  }
+  
+  public String a()
+  {
+    return "App";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      b();
+      c();
+      label16:
+      d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label16;
+    }
+  }
 }
 
 

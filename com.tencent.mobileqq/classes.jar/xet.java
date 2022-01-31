@@ -1,19 +1,15 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
 
 class xet
-  extends RecyclerView.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  xet(xes paramxes, xfb paramxfb, View paramView) {}
   
-  xet(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367698));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364819));
+    this.jdField_a_of_type_Xfb.a(this.jdField_a_of_type_AndroidViewView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

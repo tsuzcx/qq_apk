@@ -1,8 +1,20 @@
-import java.util.List;
+import java.util.Comparator;
 
-public abstract interface awit
+final class awit
+  implements Comparator<awij>
 {
-  public abstract void a(int paramInt, List<? extends awih> paramList);
+  public int a(awij paramawij1, awij paramawij2)
+  {
+    long l1 = paramawij1.c();
+    long l2 = paramawij2.c();
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 > l2) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

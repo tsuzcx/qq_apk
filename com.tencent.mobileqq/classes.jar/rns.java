@@ -1,60 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class rns
+  implements wxt
 {
-  public long a;
-  public List<Pair<Long, Long>> a;
-  private boolean a;
-  public long b;
-  public List<Pair<Long, Long>> b;
-  public long c;
-  public long d;
-  public long e;
+  rns(rnr paramrnr) {}
   
-  public rns(long paramLong)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Long = paramLong;
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    int i = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("", 2, "config = " + i);
     }
-  }
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {
-      return;
+    if (i == 0) {
+      WxShareHelperFromReadInjoy.a().a(rnr.b(this.a), rnr.a(this.a), 0, false);
     }
-    this.d = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_b_of_type_Long == 0L) {
-      this.jdField_b_of_type_Long = this.d;
-    }
-    this.e = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 30) {}
-    do
+    for (;;)
     {
+      rnr.a(this.a).recycle();
+      rnr.a(this.a, null);
       return;
-      l3 = (this.c - this.d) / 100L;
-    } while (l3 == 0L);
-    long l1 = paramLong - this.e;
-    long l2 = (this.c - this.jdField_a_of_type_Long) / 100L;
-    long l3 = Utils.px2dp((float)(l1 / l3));
-    this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l3), Long.valueOf(l2)));
-    if ((this.jdField_a_of_type_Boolean) || (paramBoolean)) {
-      this.jdField_b_of_type_JavaUtilList.add(new Pair(Long.valueOf(this.c - this.d), Long.valueOf(l1)));
+      WXShareHelper.a().a(rnr.b(this.a), rnr.a(this.a), 0, false);
     }
-    this.e = paramLong;
   }
 }
 

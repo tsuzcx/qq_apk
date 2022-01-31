@@ -1,14 +1,17 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
 class vlx
-  implements FilenameFilter
+  implements tev
 {
-  vlx(vlv paramvlv) {}
+  vlx(vls paramvls, vmf paramvmf) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(boolean paramBoolean, ter paramter)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    ved.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramter != null))
+    {
+      this.jdField_a_of_type_Vls.a(paramter.b, paramter.a, this.jdField_a_of_type_Vmf);
+      return;
+    }
+    ved.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

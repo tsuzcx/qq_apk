@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import bfnh;
+import bfny;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import rom;
+import roj;
 
 public class ReadInJoyFeedsHeaderViewController$3
   implements Runnable
 {
-  public ReadInJoyFeedsHeaderViewController$3(rom paramrom, QQAppInterface paramQQAppInterface) {}
+  public ReadInJoyFeedsHeaderViewController$3(roj paramroj, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     this.this$0.a.a();
-    bfnh.a(new ReadInJoyFeedsHeaderViewController.3.1(this));
+    bfny.a(new ReadInJoyFeedsHeaderViewController.3.1(this));
   }
 }
 

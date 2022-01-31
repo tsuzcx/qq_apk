@@ -1,16 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import android.view.View.OnTouchListener;
 
-public class wdp
-  implements View.OnClickListener
+class wdp
+  implements View.OnTouchListener
 {
-  public wdp(SlideTabViewPager paramSlideTabViewPager) {}
+  wdp(wdo paramwdo) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (Integer)paramView.getTag();
-    this.a.setTab(paramView.intValue());
+    wdo.a(this.a);
+    return true;
   }
 }
 

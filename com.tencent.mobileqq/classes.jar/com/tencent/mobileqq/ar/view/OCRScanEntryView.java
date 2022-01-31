@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import allu;
-import almz;
+import allt;
+import almy;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apvb;
-import axqw;
+import apvd;
+import axqy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -32,9 +32,9 @@ public class OCRScanEntryView
   private volatile boolean jdField_a_of_type_Boolean;
   private TextView b;
   
-  public OCRScanEntryView(Context paramContext, almz paramalmz)
+  public OCRScanEntryView(Context paramContext, almy paramalmy)
   {
-    super(paramContext, paramalmz);
+    super(paramContext, paramalmy);
   }
   
   private void b(String paramString)
@@ -45,7 +45,7 @@ public class OCRScanEntryView
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    if (apvb.a(paramString))
+    if (apvd.a(paramString))
     {
       OCRResultActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramString, 6);
       this.jdField_a_of_type_Boolean = false;
@@ -58,17 +58,17 @@ public class OCRScanEntryView
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560645, null, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560644, null, false));
       paramBundle = new FrameLayout.LayoutParams(-1, -1);
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramBundle);
       this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371023);
-      allu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+      allt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371020));
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370998));
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370997));
       this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371001));
-      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setBackgroundResource(2130843627);
+      this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setBackgroundResource(2130843628);
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.setCenterView();
       this.jdField_a_of_type_DovComQqImStoryViewAnimationQIMCircleProgress.a(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -79,7 +79,7 @@ public class OCRScanEntryView
   
   public void a(String paramString)
   {
-    if (!apvb.a(paramString))
+    if (!apvd.a(paramString))
     {
       QLog.d("AREngine_OCRScanEntryView", 1, String.format("doDealGalleryPicFile path: %s is not exist", new Object[] { paramString }));
       return;
@@ -94,7 +94,7 @@ public class OCRScanEntryView
     default: 
       return;
     case 2131371020: 
-      axqw.b(null, "dc00898", "", "", "0X8009C80", "0X8009C80", 0, 0, "", "0", "0", "");
+      axqy.b(null, "dc00898", "", "", "0X8009C80", "0X8009C80", 0, 0, "", "0", "0", "");
       b(null);
       return;
     case 2131370998: 
@@ -102,7 +102,7 @@ public class OCRScanEntryView
       return;
     }
     m();
-    axqw.b(null, "dc00898", "", "", "0X8009C86", "0X8009C86", 0, 0, "", "0", "0", "");
+    axqy.b(null, "dc00898", "", "", "0X8009C86", "0X8009C86", 0, 0, "", "0", "0", "");
   }
 }
 

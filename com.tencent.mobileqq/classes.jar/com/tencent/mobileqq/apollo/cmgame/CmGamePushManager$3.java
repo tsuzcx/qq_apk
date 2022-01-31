@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.cmgame;
 
-import aiwg;
+import aiwe;
 import com.tencent.mobileqq.apollo.data.CmGamePushItem;
 
 public class CmGamePushManager$3
   implements Runnable
 {
-  public CmGamePushManager$3(aiwg paramaiwg, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
+  public CmGamePushManager$3(aiwe paramaiwe, CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2) {}
   
   public void run()
   {
-    aiwg.a(this.this$0, this.a, this.b);
+    aiwe.a(this.this$0, this.a, this.b);
   }
 }
 

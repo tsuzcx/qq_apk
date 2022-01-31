@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-final class ajgv
-  implements EIPCResultCallback
+class ajgv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  ajgv(ajgu paramajgu) {}
+  
+  public void onGlobalLayout()
   {
-    if (paramEIPCResult.code == 0) {
-      ApolloUtil.b("测试版本tips:预下载动作成功");
-    }
-    for (;;)
-    {
-      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
-      return;
-      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
-    }
+    ajgu.a(this.a);
   }
 }
 

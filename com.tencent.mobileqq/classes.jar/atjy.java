@@ -7,12 +7,7 @@ public class atjy
 {
   public atjy(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.j();
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.splashad;
 
-import axnr;
 import axnt;
+import axnv;
 import com.tencent.qphone.base.util.QLog;
 
 public class SplashADView$1$1
   implements Runnable
 {
-  public SplashADView$1$1(axnr paramaxnr) {}
+  public SplashADView$1$1(axnt paramaxnt) {}
   
   public void run()
   {

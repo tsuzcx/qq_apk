@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
-import bbtp;
-import bcdb;
+import bbud;
+import bcdp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
@@ -12,7 +12,7 @@ public class HealthBusinessPlugin$7
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.this$0.mRuntime.a().getApplication(), new bbtp(this));
+    TVK_SDKMgr.installPlugin(this.this$0.mRuntime.a().getApplication(), new bbud(this));
   }
 }
 

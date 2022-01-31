@@ -1,20 +1,17 @@
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ahnp
-  extends ahoa
+  extends ahny
 {
   public ImageView a;
-  public TextView a;
   public DragTextView a;
-  public ThemeImageView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
   public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public SingleLineTextView b;
 }
 
 

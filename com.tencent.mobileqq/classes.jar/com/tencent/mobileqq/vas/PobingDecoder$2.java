@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas;
 
-import asko;
-import bbpv;
+import askq;
+import bbqj;
 import java.lang.ref.WeakReference;
 
 class PobingDecoder$2
   implements Runnable
 {
-  PobingDecoder$2(PobingDecoder paramPobingDecoder, bbpv parambbpv) {}
+  PobingDecoder$2(PobingDecoder paramPobingDecoder, bbqj parambbqj) {}
   
   public void run()
   {
-    asko localasko = (asko)this.this$0.a.get();
-    if (localasko != null) {
-      localasko.postQuery(this.a);
+    askq localaskq = (askq)this.this$0.a.get();
+    if (localaskq != null) {
+      localaskq.postQuery(this.a);
     }
   }
 }

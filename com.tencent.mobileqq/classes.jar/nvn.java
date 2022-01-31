@@ -1,41 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
-public final class nvn
-  implements askp<aocb, char[]>
+public class nvn
+  implements INetInfoHandler
 {
-  public char[] a(aocb paramaocb)
+  private nvn(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  
+  public void onNetMobile2None()
   {
-    try
-    {
-      int i = Integer.parseInt(paramaocb.a.eId);
-      int j = Integer.parseInt(paramaocb.a.epId);
-      Object localObject = anqu.a(j, i);
-      paramaocb = new char[5];
-      paramaocb[0] = 20;
-      paramaocb[1] = localObject[3];
-      paramaocb[2] = localObject[2];
-      paramaocb[3] = localObject[1];
-      paramaocb[4] = localObject[0];
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = ((askd)((AppRuntime)localObject).getManager(14)).a(String.valueOf(j));
-        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
-          paramaocb[1] = 511;
-        }
-      }
-      return paramaocb;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
     }
-    catch (NumberFormatException paramaocb)
-    {
-      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
+    this.a.b(false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
     }
-    return null;
+    this.a.d(true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
+    }
+    this.a.c(false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
+    }
+    this.a.d(false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
+    }
+    this.a.c(true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
+    }
+    this.a.b(true);
   }
 }
 

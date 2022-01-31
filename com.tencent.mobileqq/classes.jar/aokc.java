@@ -1,6 +1,14 @@
-public abstract interface aokc
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+
+public class aokc
+  implements aokh
 {
-  public abstract void a();
+  public aokc(PullToRefreshBase paramPullToRefreshBase) {}
+  
+  public void a()
+  {
+    PullToRefreshBase.a(this.a);
+  }
 }
 
 

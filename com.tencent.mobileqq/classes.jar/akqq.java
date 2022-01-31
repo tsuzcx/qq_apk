@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 public class akqq
-  implements apeg
 {
-  public akqq(QQMessageFacade paramQQMessageFacade, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop).c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-  }
+  public akqq() {}
   
-  public void a(int paramInt, String paramString)
+  public akqq(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((paramInt == -6101) || (paramInt == -7003))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    }
-    QQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop, akri.h, 0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

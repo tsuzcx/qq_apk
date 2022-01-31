@@ -1,37 +1,21 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
-final class nuu
-  implements amah
+class nuu
+  extends anqq
 {
-  nuu(boolean paramBoolean, String paramString1, Context paramContext, String paramString2) {}
+  nuu(nut paramnut) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onBindedToClient()
   {
-    int i = 1;
-    if (nut.a() == paramInt1)
-    {
-      amav.a().a(paramInt1);
-      nut.a(-1);
-      if ((2 != paramInt2) && (1 != paramInt2)) {
-        break label101;
-      }
-    }
-    label101:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidContentContext != null)) {
-        onk.f(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      }
-      String str = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramInt2 = i;; paramInt2 = 0)
-      {
-        onk.a(str, paramInt1, paramInt2);
-        return;
-      }
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

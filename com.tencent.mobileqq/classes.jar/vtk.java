@@ -1,6 +1,6 @@
 public abstract interface vtk
 {
-  public abstract void a(vtr paramvtr);
+  public abstract void a(vto paramvto);
 }
 
 

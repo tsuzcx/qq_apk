@@ -1,16 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class mgw
+class mgw
+  implements mhq
 {
-  public long a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
+  mgw(mgs parammgs) {}
   
-  mgw(mgv parammgv) {}
+  public void a(long paramLong, String paramString, boolean paramBoolean)
+  {
+    this.a.a(paramLong, paramString, paramBoolean);
+  }
 }
 
 

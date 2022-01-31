@@ -1,25 +1,26 @@
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class auqs
-  extends bfmg
+class auqs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public auqs(FormalView paramFormalView, View paramView) {}
+  auqs(auqk paramauqk, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.c();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
-    }
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-auqk.a(this.jdField_a_of_type_Auqk) * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Auqk.f);
+    this.b.setAlpha(f);
   }
 }
 

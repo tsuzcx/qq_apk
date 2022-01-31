@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bejy;
+import bekp;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -20,12 +20,12 @@ public class MiniSdkUtil
   private static String sCurrentAppid;
   private static boolean sIsLoad;
   
-  public static ApkgInfo convert(bejy parambejy, MiniAppConfig paramMiniAppConfig)
+  public static ApkgInfo convert(bekp parambekp, MiniAppConfig paramMiniAppConfig)
   {
-    if ((parambejy == null) || (paramMiniAppConfig == null)) {
+    if ((parambekp == null) || (paramMiniAppConfig == null)) {
       return null;
     }
-    return new ApkgInfo(parambejy.jdField_a_of_type_JavaLangString, paramMiniAppConfig);
+    return new ApkgInfo(parambekp.jdField_a_of_type_JavaLangString, paramMiniAppConfig);
   }
   
   public static com.tencent.mobileqq.mini.apkg.ExtConfigInfo convert(com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo paramExtConfigInfo)

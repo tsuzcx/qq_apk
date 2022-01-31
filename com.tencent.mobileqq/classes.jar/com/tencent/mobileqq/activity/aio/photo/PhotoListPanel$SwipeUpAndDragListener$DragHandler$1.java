@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aekk;
+import aeki;
 
 public class PhotoListPanel$SwipeUpAndDragListener$DragHandler$1
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$DragHandler$1(aekk paramaekk) {}
+  public PhotoListPanel$SwipeUpAndDragListener$DragHandler$1(aeki paramaeki) {}
   
   public void run()
   {

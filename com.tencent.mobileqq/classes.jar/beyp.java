@@ -1,21 +1,12 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.report.InnerAppReportDc4239.1;
 
-class beyp
-  implements AsyncResult
+public class beyp
 {
-  beyp(beyo parambeyo, List paramList) {}
-  
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (paramBoolean)
-    {
-      besl.a("MiniProgramReporter", "onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
-      return;
-    }
-    besl.d("MiniProgramReporter", "performReportViaSSO onDcReport: sso command failed, try again");
-    this.jdField_a_of_type_Beyo.a(this.jdField_a_of_type_JavaUtilList);
+    bezf.a().a().post(new InnerAppReportDc4239.1(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4));
   }
 }
 

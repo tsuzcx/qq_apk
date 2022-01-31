@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import sgj;
+import sgg;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadinjoySPEventReport$10
@@ -22,7 +22,7 @@ public class ReadinjoySPEventReport$10
     localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
     localArrayList.add(localAttributeList1);
     localArrayList.add(localAttributeList2);
-    sgj.a(20, localArrayList);
+    sgg.a(20, localArrayList);
   }
 }
 

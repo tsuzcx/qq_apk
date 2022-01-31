@@ -1,20 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
 class bjvw
-  extends AnimatorListenerAdapter
+  extends bkzl
 {
-  bjvw(bjvu parambjvu) {}
+  bjvw(bjvt parambjvt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    bjvu.a(this.a).setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    bjvu.a(this.a).setVisibility(8);
+    ved.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.b();
   }
 }
 

@@ -1,65 +1,28 @@
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public class bdma
-  extends AsyncTask<Void, Long, Boolean>
+  implements DialogInterface.OnClickListener
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
   String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public bdma(Activity paramActivity)
+  public bdma(bdlr parambdlr, DialogInterface.OnClickListener paramOnClickListener, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangString = bdjr.a(paramString1, "NEWYYB");
+    this.b = paramString2;
   }
   
-  public bdma(Activity paramActivity, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected Boolean a(Void... paramVarArgs)
-  {
-    return Boolean.valueOf(false);
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
     }
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    super.onPostExecute(paramBoolean);
-    a();
-    if (paramBoolean.booleanValue())
-    {
-      if ((bdlz.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        bdjc.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
-      }
-      return;
-    }
-    bdid.a().a(ajyc.a(2131717033), 1);
-  }
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-    a();
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
-    }
+    this.jdField_a_of_type_Bdlr.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    this.jdField_a_of_type_Bdlr.jdField_a_of_type_Bdmc = null;
+    bdjr.a("710", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

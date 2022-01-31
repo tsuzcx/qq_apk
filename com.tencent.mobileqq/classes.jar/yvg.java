@@ -1,32 +1,22 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import android.view.View;
 
 public class yvg
-  implements ywd
+  extends yvj
 {
-  public yvg(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
-  
-  public Activity a()
-  {
-    return this.a.getActivity();
-  }
-  
-  public void a()
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.setResult(paramInt, paramIntent);
-    }
-  }
+  public int a;
+  public View a;
+  public int b;
+  public View b;
+  public int c;
+  public View c;
+  public int d;
+  public View d;
+  public int e;
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 

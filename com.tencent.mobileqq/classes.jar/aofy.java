@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public final class aofy
-  implements Parcelable.Creator<MiniAppRecommInfo>
+class aofy
+  implements View.OnTouchListener
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
-  {
-    return new MiniAppRecommInfo(paramParcel);
-  }
+  aofy(aofw paramaofw, View paramView1, View paramView2, View paramView3) {}
   
-  public MiniAppRecommInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new MiniAppRecommInfo[paramInt];
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.jdField_a_of_type_Aofw.b.setAlpha(0.5F);
+      this.b.setAlpha(0.5F);
+      this.c.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.jdField_a_of_type_Aofw.b.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+      this.c.setAlpha(1.0F);
+      this.jdField_a_of_type_Aofw.onClick(this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidViewView);
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_Aofw.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.jdField_a_of_type_Aofw.b.setAlpha(1.0F);
+      this.b.setAlpha(1.0F);
+      this.c.setAlpha(1.0F);
+    }
   }
 }
 

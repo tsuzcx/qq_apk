@@ -1,72 +1,26 @@
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.10.1;
+import com.tencent.av.ui.AVActivity.10.2;
 
 public class maw
-  extends max
+  extends bbzn
 {
-  WeakReference<View.OnClickListener> a = null;
-  int f = 0;
-  int g = 0;
-  int h = -1;
-  int i = -1;
-  int j = -1;
+  public maw(AVActivity paramAVActivity) {}
   
-  public maw(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
+  public void a()
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.f = paramInt5;
-    this.g = paramInt6;
-    if (paramOnClickListener != null) {
-      this.a = new WeakReference(paramOnClickListener);
+    if (this.a.a != null) {
+      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
     }
   }
   
-  public int a()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return 3;
-  }
-  
-  public View.OnClickListener a()
-  {
-    if ((this.a == null) || (this.a.isEnqueued())) {
-      return null;
+    if (this.a.a != null) {
+      this.a.a.a().post(new AVActivity.10.2(this));
     }
-    return (View.OnClickListener)this.a.get();
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null)
-    {
-      this.a = new WeakReference(paramOnClickListener);
-      return;
-    }
-    this.a = null;
-  }
-  
-  public int f()
-  {
-    return this.f;
-  }
-  
-  public int g()
-  {
-    return this.g;
-  }
-  
-  public int h()
-  {
-    return this.h;
-  }
-  
-  public int i()
-  {
-    return this.i;
-  }
-  
-  public int j()
-  {
-    return this.j;
   }
 }
 

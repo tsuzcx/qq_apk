@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Intent;
-import atpi;
+import atpk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class NearbyProfileDisplayPanel$34
   implements Runnable
 {
-  public NearbyProfileDisplayPanel$34(atpi paramatpi) {}
+  public NearbyProfileDisplayPanel$34(atpk paramatpk) {}
   
   public void run()
   {

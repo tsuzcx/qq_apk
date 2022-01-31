@@ -1,20 +1,22 @@
-import android.os.Message;
 import com.tencent.mobileqq.activity.FontSettingActivity;
-import mqq.os.MqqHandler;
 
 public class abbl
-  extends MqqHandler
 {
-  public abbl(FontSettingActivity paramFontSettingActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void handleMessage(Message paramMessage)
+  public abbl(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    if (16711697 == paramMessage.what)
-    {
-      ajwe.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

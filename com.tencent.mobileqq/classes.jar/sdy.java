@@ -1,39 +1,30 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
 class sdy
-  extends ozi
+  implements rcg
 {
-  sdy(sdv paramsdv) {}
+  sdy(sdw paramsdw) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!sdv.a(this.a).contains(paramString1)) {
-      return;
-    }
-    paramString2 = new bcpw(sdv.a(this.a));
-    paramString2.d(2000);
-    if (paramBoolean)
+    if (!bbfj.g(sds.a(this.a.a)))
     {
-      paramString2.a(bcpw.a(2));
-      paramString2.c(2131692325);
-      paramString2.b(sdv.a(this.a).getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(sdv.a(this.a), 5.0F));
+      bcql.a(sds.a(this.a.a), 1, sds.a(this.a.a).getString(2131718341), 0).a();
+      return false;
     }
-    for (;;)
-    {
-      sdv.a(this.a).remove(paramString1);
-      return;
-      paramString2.a(bcpw.a(1));
-      paramString2.c(2131692326);
-      paramString2.b(sdv.a(this.a).getResources().getDimensionPixelSize(2131298865) - (int)bbdh.a(sdv.a(this.a), 5.0F));
+    paramView = onh.a();
+    osg.a().a(Long.valueOf(paramView).longValue(), this.a.a.a(paramArrayList));
+    bcql.a(sds.a(this.a.a), -1, sds.a(this.a.a).getString(2131699674), 0).b(sds.a(this.a.a).getResources().getDimensionPixelSize(2131298865));
+    sds.a(this.a.a).dismiss();
+    if (sds.a(this.a.a) != null) {
+      sds.a(this.a.a).a(sds.a(this.a.a), sds.e(this.a.a), sds.a(this.a.a), paramArrayList);
     }
+    return true;
   }
 }
 

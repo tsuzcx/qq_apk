@@ -10,7 +10,7 @@ class ReadInJoyListViewGroup$30
   public void run()
   {
     if ((this.this$0.a == 0) && ((this.this$0.a() instanceof SplashActivity))) {
-      pzc.b = true;
+      pyz.b = true;
     }
   }
 }

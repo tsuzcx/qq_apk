@@ -1,36 +1,31 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-
-public class bayt
+class bayt
+  extends ajxj
 {
-  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
-  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private bayt(bayr parambayr) {}
   
-  public bayt(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramInt = Math.max(paramInt, 5);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bayu(this, paramInt * 1024 * 1024);
+    this.a.a(4, paramBoolean, new Object[] { paramString });
   }
   
-  public void a()
+  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.a.a(39, paramBoolean, new Object[] { paramString });
   }
   
-  public void a(String paramString, Drawable paramDrawable)
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
-    }
+    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+  }
+  
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(30, paramBoolean, new Object[] { paramString });
   }
 }
 

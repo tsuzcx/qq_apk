@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aukn;
-import auko;
-import bbjw;
+import aukp;
+import aukq;
+import bbkk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 
@@ -13,26 +13,26 @@ class NearbyPeopleProfileActivity$22
   
   public void run()
   {
-    if (!bbjw.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
+    if (!bbkk.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
       this.this$0.app.a(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
     }
     if (this.this$0.a > 0L) {
       this.this$0.app.a(String.valueOf(this.this$0.a), 202, false);
     }
-    aukn localaukn;
+    aukp localaukp;
     do
     {
       do
       {
         return;
-      } while (bbjw.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
-      localaukn = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    } while (localaukn == null);
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localaukn.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
+      } while (bbkk.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
+      localaukp = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    } while (localaukp == null);
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localaukp.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
     if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
       this.this$0.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
     }
-    localaukn.a();
+    localaukp.a();
   }
 }
 

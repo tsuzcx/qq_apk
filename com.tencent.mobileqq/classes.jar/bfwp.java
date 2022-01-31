@@ -1,33 +1,37 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import java.util.ArrayList;
+import android.text.Spanned;
+import android.text.method.NumberKeyListener;
+import com.tencent.widget.TCWNumberPicker;
 
-class bfwp
-  extends DataSetObservable
+public class bfwp
+  extends NumberKeyListener
 {
-  bfwp(bfwn parambfwn) {}
+  private bfwp(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof bfwo)) {
-            ((bfwo)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
+    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    CharSequence localCharSequence1 = localCharSequence2;
+    if (localCharSequence2 == null) {
+      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
     }
+    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
+    if ("".equals(paramCharSequence)) {
+      localCharSequence1 = paramCharSequence;
+    }
+    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.a(this.a)) {
+      return localCharSequence1;
+    }
+    return "";
+  }
+  
+  protected char[] getAcceptedChars()
+  {
+    return TCWNumberPicker.a();
+  }
+  
+  public int getInputType()
+  {
+    return 2;
   }
 }
 

@@ -1,37 +1,64 @@
-import android.os.Bundle;
 import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class avoo
-  extends avpg<ReceiptMessageDetailFragment>
+  implements auna
 {
+  private int jdField_a_of_type_Int;
+  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  
   public avoo(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    super(paramReceiptMessageDetailFragment);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(aunb paramaunb)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReceiptMessageDetailFragment == null) {
+      return;
     }
-    if (paramInt == 0)
+    if ((paramaunb.b == 0) && (paramaunb.a != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
+      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
+      Object localObject = localMessageRecord;
+      if (localMessageRecord == null)
+      {
+        localObject = new MessageForStructing();
+        ((MessageRecord)localObject).senderuin = "0";
+        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
       }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      paramaunb = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramaunb.a, null, (MessageRecord)localObject, null);
+      if ((paramaunb != null) && (!paramaunb.isEmpty()))
+      {
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
+        return;
+      }
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
       return;
     }
-    if (paramInt != 1281)
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramaunb.b);
+    }
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 3)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
       return;
     }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 

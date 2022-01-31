@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public final class acwk
-  implements Parcelable.Creator<ForwardUtils.Section_Text>
+class acwk
+  implements bcww
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  acwk(acwi paramacwi) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    if (paramBaseResp.errCode != 0) {
+      acwi.a(this.a, 1, 2131693651);
+    }
   }
 }
 

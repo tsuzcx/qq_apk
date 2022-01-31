@@ -4,21 +4,21 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import belj;
-import besi;
+import bema;
+import besz;
 import com.tencent.qqmini.sdk.core.proxy.KingCardProxy;
 
 public class KingCardProxyDefault
   implements KingCardProxy
 {
-  public static final String KINGCARD_GUIDE_DARK_LOTTIE = belj.a("qqminiapp", "kingcardGuideDarkLottie", "https://d3g.qq.com/sngapp/app/update/20191105162320_6114/kingCardDark.zip");
+  public static final String KINGCARD_GUIDE_DARK_LOTTIE = bema.a("qqminiapp", "kingcardGuideDarkLottie", "https://d3g.qq.com/sngapp/app/update/20191105162320_6114/kingCardDark.zip");
   public static final String KINGCARD_GUIDE_ICON;
-  public static final String KINGCARD_GUIDE_LOTTIE = belj.a("qqminiapp", "kingcardGuideLottie", "https://d3g.qq.com/sngapp/app/update/20191105163020_3367/kingCard.zip");
-  public static final String KINGCARD_GUIDE_TEXT = belj.a("qqminiapp", "kingcardGuideText", "");
+  public static final String KINGCARD_GUIDE_LOTTIE = bema.a("qqminiapp", "kingcardGuideLottie", "https://d3g.qq.com/sngapp/app/update/20191105163020_3367/kingCard.zip");
+  public static final String KINGCARD_GUIDE_TEXT = bema.a("qqminiapp", "kingcardGuideText", "");
   
   static
   {
-    KINGCARD_GUIDE_ICON = belj.a("qqminiapp", "kingcardGuideIcon", "");
+    KINGCARD_GUIDE_ICON = bema.a("qqminiapp", "kingcardGuideIcon", "");
   }
   
   public ImageView getCapsuleButtonMoreView(Context paramContext)
@@ -31,10 +31,10 @@ public class KingCardProxyDefault
     if (!TextUtils.isEmpty(KINGCARD_GUIDE_TEXT)) {
       return KINGCARD_GUIDE_TEXT;
     }
-    return paramContext.getResources().getString(2131694223);
+    return paramContext.getResources().getString(2131694224);
   }
   
-  public boolean showKingCardTips(besi parambesi, ImageView paramImageView)
+  public boolean showKingCardTips(besz parambesz, ImageView paramImageView)
   {
     return false;
   }

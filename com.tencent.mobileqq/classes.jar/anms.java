@@ -1,12 +1,26 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
-final class anms
-  extends mxl
+public class anms
+  extends anna
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public anms(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
   {
-    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
+    if (paramBoolean)
+    {
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
+    }
   }
 }
 

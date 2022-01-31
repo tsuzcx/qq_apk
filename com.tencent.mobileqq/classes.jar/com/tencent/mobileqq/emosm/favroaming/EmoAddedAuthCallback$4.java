@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import ansa;
-import ansp;
-import ansr;
-import axrl;
+import ansf;
+import ansu;
+import answ;
+import axrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,17 +13,17 @@ import java.util.List;
 public class EmoAddedAuthCallback$4
   implements Runnable
 {
-  public EmoAddedAuthCallback$4(ansa paramansa) {}
+  public EmoAddedAuthCallback$4(ansf paramansf) {}
   
   public void run()
   {
-    int i = ((ansr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(149)).b().size();
-    if (i != ansp.b)
+    int i = ((answ)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(149)).b().size();
+    if (i != ansu.b)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("local_size", String.valueOf(i));
-      localHashMap.put("roaming_max_size", String.valueOf(ansp.b));
-      axrl.a(BaseApplication.getContext()).a(null, "AddFavEmotionError", false, 0L, 0L, localHashMap, "");
+      localHashMap.put("roaming_max_size", String.valueOf(ansu.b));
+      axrn.a(BaseApplication.getContext()).a(null, "AddFavEmotionError", false, 0L, 0L, localHashMap, "");
     }
   }
 }

@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bduu
+  implements bfph
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = 0;
+  public bduu(QidianProfileCardActivity paramQidianProfileCardActivity, bfpc parambfpc, URLDrawable paramURLDrawable, String paramString) {}
   
-  public bduu(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MessageMicro<?> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    if (paramView == null) {
+      this.jdField_a_of_type_Bfpc.dismiss();
+    }
+    do
+    {
+      return;
+      paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
+      if (TextUtils.isEmpty(paramView))
+      {
+        this.jdField_a_of_type_Bfpc.dismiss();
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693384)))
+      {
+        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693394)))
+      {
+        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131698251)));
+    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

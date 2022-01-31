@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
-
 public class bcxy
-  implements DialogInterface.OnClickListener
 {
-  public bcxy(AuthorityActivity paramAuthorityActivity) {}
+  private static bcxy a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static bcxy a()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if (a == null) {
+        a = new bcxy();
+      }
+      bcxy localbcxy = a;
+      return localbcxy;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    bdkt.a(paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    bdkt.b(paramString);
   }
 }
 

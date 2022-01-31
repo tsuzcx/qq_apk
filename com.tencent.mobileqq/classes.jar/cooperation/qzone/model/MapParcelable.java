@@ -3,13 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bher;
+import bhfi;
 import java.util.Map;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator<MapParcelable> CREATOR = new bher();
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new bhfi();
   private Map<Integer, String> a;
   
   public MapParcelable(Map<Integer, String> paramMap)

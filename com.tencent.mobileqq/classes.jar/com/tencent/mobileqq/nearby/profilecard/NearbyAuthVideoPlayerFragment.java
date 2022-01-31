@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajyc;
-import alyq;
-import alys;
-import alyz;
+import ajya;
+import alyp;
+import alyr;
+import alyy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,15 +19,15 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import atbr;
-import atcb;
-import atok;
-import atol;
+import atbt;
+import atcd;
 import atom;
-import bbev;
-import bcpw;
-import bfol;
-import bfoy;
+import aton;
+import atoo;
+import bbfj;
+import bcql;
+import bfpc;
+import bfpp;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -48,14 +48,14 @@ public class NearbyAuthVideoPlayerFragment
   implements View.OnClickListener, URLDrawableDownListener, VideoDrawable.OnPlayRepeatListener
 {
   private int jdField_a_of_type_Int;
-  private alyq jdField_a_of_type_Alyq;
-  private alys jdField_a_of_type_Alys = new atok(this);
-  private alyz jdField_a_of_type_Alyz;
+  private alyp jdField_a_of_type_Alyp;
+  private alyr jdField_a_of_type_Alyr = new atom(this);
+  private alyy jdField_a_of_type_Alyy;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public atcb a;
+  public atcd a;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public VideoDrawable a;
   private String jdField_a_of_type_JavaLangString;
@@ -68,7 +68,7 @@ public class NearbyAuthVideoPlayerFragment
   
   public NearbyAuthVideoPlayerFragment()
   {
-    this.jdField_a_of_type_Atcb = new atol(this);
+    this.jdField_a_of_type_Atcd = new aton(this);
   }
   
   private void a()
@@ -84,7 +84,7 @@ public class NearbyAuthVideoPlayerFragment
   private void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 2;
-    Object localObject = getResources().getDrawable(2130849552);
+    Object localObject = getResources().getDrawable(2130849561);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
@@ -130,9 +130,9 @@ public class NearbyAuthVideoPlayerFragment
     }
     for (;;)
     {
-      atbr.a("play_video", new String[] { i, this.d });
+      atbt.a("play_video", new String[] { i, this.d });
       return;
-      paramString = URLDrawable.getDrawable(alyq.a(paramString), localURLDrawableOptions);
+      paramString = URLDrawable.getDrawable(alyp.a(paramString), localURLDrawableOptions);
       this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramString);
       break;
       label309:
@@ -142,17 +142,17 @@ public class NearbyAuthVideoPlayerFragment
   
   private void b()
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364269)).setOnClickListener(this);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370405);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364268)).setOnClickListener(this);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370404);
     localImageView.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 3)
     {
       localImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371738));
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371902));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378943));
-      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378904));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369501));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378948));
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378909));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369500));
       this.jdField_b_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this);
       if ((this.jdField_a_of_type_Int != 3) || (this.jdField_a_of_type_Boolean)) {
         break label212;
@@ -176,11 +176,11 @@ public class NearbyAuthVideoPlayerFragment
       break label159;
       label224:
       if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c))) {
-        if (alyq.b(this.jdField_b_of_type_JavaLangString))
+        if (alyp.b(this.jdField_b_of_type_JavaLangString))
         {
           a(this.jdField_b_of_type_JavaLangString, false, false);
         }
-        else if (bbev.h(getActivity()))
+        else if (bbfj.h(getActivity()))
         {
           a(this.c, true, true);
           a(this.jdField_b_of_type_JavaLangString);
@@ -195,13 +195,13 @@ public class NearbyAuthVideoPlayerFragment
   
   private void c()
   {
-    bfol localbfol = (bfol)bfoy.b(getActivity(), null);
-    localbfol.a(ajyc.a(2131707103), 1);
-    localbfol.a(2131691507, 1);
-    localbfol.c(2131690596);
-    localbfol.a(new atom(this, localbfol));
-    if (!localbfol.isShowing()) {
-      localbfol.show();
+    bfpc localbfpc = (bfpc)bfpp.b(getActivity(), null);
+    localbfpc.a(ajya.a(2131707114), 1);
+    localbfpc.a(2131691507, 1);
+    localbfpc.c(2131690596);
+    localbfpc.a(new atoo(this, localbfpc));
+    if (!localbfpc.isShowing()) {
+      localbfpc.show();
     }
   }
   
@@ -209,10 +209,10 @@ public class NearbyAuthVideoPlayerFragment
   {
     if ((!TextUtils.isEmpty(paramString)) && (getActivity().app != null))
     {
-      if (bbev.d(getActivity())) {
+      if (bbfj.d(getActivity())) {
         break label54;
       }
-      bcpw.a(getActivity(), getString(2131694607), 0).b(getActivity().getTitleBarHeight());
+      bcql.a(getActivity(), getString(2131694608), 0).b(getActivity().getTitleBarHeight());
     }
     label54:
     while ((isDetached()) || (getActivity() == null)) {
@@ -270,7 +270,7 @@ public class NearbyAuthVideoPlayerFragment
       return;
       c();
       return;
-      if (alyq.b(this.jdField_b_of_type_JavaLangString))
+      if (alyp.b(this.jdField_b_of_type_JavaLangString))
       {
         paramView = ((URLDrawable)this.jdField_b_of_type_ComTencentImageURLImageView.getDrawable()).getCurrDrawable();
         if ((paramView != null) && ((paramView instanceof VideoDrawable)))
@@ -283,21 +283,21 @@ public class NearbyAuthVideoPlayerFragment
       }
       a(this.jdField_b_of_type_JavaLangString);
       return;
-    } while (atbr.a(getActivity(), getActivity().app));
-    atbr.a(getActivity(), getActivity().app, 3);
+    } while (atbt.a(getActivity(), getActivity().app));
+    atbt.a(getActivity(), getActivity().app, 3);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     getActivity().getWindow().addFlags(128);
     this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559322, paramViewGroup, false);
-    this.jdField_a_of_type_Alyz = ((alyz)getActivity().app.getManager(180));
-    this.jdField_a_of_type_Alyq = this.jdField_a_of_type_Alyz.a();
-    if (this.jdField_a_of_type_Alyq != null) {
-      this.jdField_a_of_type_Alyq.a(this.jdField_a_of_type_Alys);
+    this.jdField_a_of_type_Alyy = ((alyy)getActivity().app.getManager(180));
+    this.jdField_a_of_type_Alyp = this.jdField_a_of_type_Alyy.a();
+    if (this.jdField_a_of_type_Alyp != null) {
+      this.jdField_a_of_type_Alyp.a(this.jdField_a_of_type_Alyr);
     }
     ShortVideoUtils.a(getActivity().app);
-    getActivity().app.addObserver(this.jdField_a_of_type_Atcb);
+    getActivity().app.addObserver(this.jdField_a_of_type_Atcd);
     a();
     b();
     return this.jdField_a_of_type_AndroidViewView;
@@ -306,25 +306,25 @@ public class NearbyAuthVideoPlayerFragment
   public void onDestroy()
   {
     super.onDestroy();
-    getActivity().app.removeObserver(this.jdField_a_of_type_Atcb);
+    getActivity().app.removeObserver(this.jdField_a_of_type_Atcd);
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    bcpw.a(getActivity(), 1, ajyc.a(2131707106), 0).b(getActivity().getTitleBarHeight());
+    bcql.a(getActivity(), 1, ajya.a(2131707117), 0).b(getActivity().getTitleBarHeight());
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    bcpw.a(getActivity(), 1, ajyc.a(2131707102), 0).b(getActivity().getTitleBarHeight());
+    bcql.a(getActivity(), 1, ajya.a(2131707113), 0).b(getActivity().getTitleBarHeight());
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    bcpw.a(getActivity(), 1, ajyc.a(2131707105), 0).b(getActivity().getTitleBarHeight());
+    bcql.a(getActivity(), 1, ajya.a(2131707116), 0).b(getActivity().getTitleBarHeight());
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
@@ -364,7 +364,7 @@ public class NearbyAuthVideoPlayerFragment
     }
     for (;;)
     {
-      atbr.a("play_video", new String[] { i, this.d });
+      atbt.a("play_video", new String[] { i, this.d });
       this.jdField_b_of_type_Int = paramInt;
       return;
       label64:

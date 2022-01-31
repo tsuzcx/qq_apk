@@ -1,14 +1,46 @@
-import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 
-public class belm<Data>
+public class belm
 {
-  final AsyncTask jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public static final String a = MiniAppEnv.g().getContext().getFilesDir().getPath() + "/mini/";
+  public static final String b = a + "navigateback_appid";
   
-  public belm(AsyncTask paramAsyncTask, Data... paramVarArgs)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    Object localObject = new File(b);
+    do
+    {
+      try
+      {
+        localObject = new BufferedWriter(new FileWriter((File)localObject));
+        betc.d("NavigateBackUtils", "getTagAppid exception!", paramString);
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          ((BufferedWriter)localObject).write(paramString);
+          ((BufferedWriter)localObject).close();
+          return;
+        }
+        catch (Exception paramString)
+        {
+          continue;
+        }
+        paramString = paramString;
+        localObject = null;
+      }
+    } while (localObject == null);
+    try
+    {
+      ((BufferedWriter)localObject).close();
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 

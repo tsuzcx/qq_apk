@@ -1,22 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.open.agent.OpenSelectPermissionFragment;
-import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bdco
-  extends bdnx
+  extends AnimatorListenerAdapter
 {
-  public bdco(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
+  public bdco(OpenCardContainer paramOpenCardContainer, ImageView paramImageView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.getActivity() == null)
-    {
-      QLog.e("OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, paramAuthorizeResponse, paramInt));
+    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
   }
 }
 

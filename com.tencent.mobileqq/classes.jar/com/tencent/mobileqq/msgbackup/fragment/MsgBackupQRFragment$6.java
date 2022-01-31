@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import askt;
-import asle;
+import askv;
+import aslg;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,11 +11,11 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    asle localasle = asle.a();
-    String str = localasle.a().a();
+    aslg localaslg = aslg.a();
+    String str = localaslg.a().a();
     if (str != null)
     {
-      localasle.a(str);
+      localaslg.a(str);
       this.this$0.b.postDelayed(this, 500L);
     }
   }

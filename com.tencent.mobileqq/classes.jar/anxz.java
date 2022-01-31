@@ -1,11 +1,33 @@
-public abstract class anxz
-  extends anyc
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+class anxz
+  implements aoao
 {
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  anxz(anxw paramanxw) {}
+  
+  public void a(List<aoam> paramList)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
+      if (paramList != null) {
+        break label60;
+      }
+    }
+    label60:
+    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.d("CameraEmotionAdapter", 2, localObject);
+      if (paramList != null)
+      {
+        this.a.a(paramList);
+        this.a.notifyDataSetChanged();
+      }
+      return;
+    }
+  }
 }
 
 

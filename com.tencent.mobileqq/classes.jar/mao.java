@@ -1,76 +1,92 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class mao
-  extends man
+public abstract class mao
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  mao(LinearLayout paramLinearLayout)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131372502));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131372499));
-    this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131372503);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131372505));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {}
-    do
-    {
+    if (paramVideoAppInterface == null) {
       return;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-      }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
+    ((ljf)paramVideoAppInterface.a(11)).b();
   }
   
-  boolean a()
+  public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    return (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null);
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((ljf)paramVideoAppInterface.a(11)).c();
   }
   
-  boolean a(maq parammaq)
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    a();
-    if ((parammaq.b) && (parammaq.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(parammaq.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (paramVideoAppInterface == null) {
+      return;
     }
-    if ((parammaq.c) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null)) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    ((ljf)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
     }
-    if ((parammaq.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
     }
-    if ((parammaq.jdField_a_of_type_AndroidTextSpannableString != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      mal.a(this.jdField_a_of_type_AndroidWidgetTextView, parammaq);
+    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
     }
-    return true;
+    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((ljf)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((ljf)paramVideoAppInterface.a(11)).d();
   }
 }
 

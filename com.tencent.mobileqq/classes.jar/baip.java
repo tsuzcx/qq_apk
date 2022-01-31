@@ -1,26 +1,41 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
-public abstract class baip
-  extends mxm
+public class baip
+  extends AsyncTask<Boolean, Void, Bitmap>
 {
-  public baip()
+  private WeakReference<RollangleImageView> a;
+  
+  public baip(RollangleImageView paramRollangleImageView)
   {
-    super(false);
+    this.a = new WeakReference(paramRollangleImageView);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
     {
-      a(bool);
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
+      }
+    }
+    else {
       return;
     }
+    localRollangleImageView.setImageResource(apug.b(localRollangleImageView.a));
   }
-  
-  protected abstract void a(boolean paramBoolean);
 }
 
 

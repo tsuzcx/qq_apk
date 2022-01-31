@@ -1,146 +1,75 @@
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
+import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
 
 public class azrj
 {
-  private static final String d;
   public int a;
   public String a;
-  public ArrayList<azrk> a;
-  public boolean a;
+  public ConcurrentHashMap<String, azrk> a;
   public int b;
-  public String b;
-  public ArrayList<Integer> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  
-  static
-  {
-    jdField_d_of_type_JavaLangString = ajyc.a(2131715304);
-  }
   
   public azrj()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 600;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  private void a()
+  public group_effect_commu.TGetMyEffectRsp0x2 a()
   {
-    while (this.jdField_a_of_type_JavaLangString.indexOf('[') > 0)
+    group_effect_commu.TGetMyEffectRsp0x2 localTGetMyEffectRsp0x2 = new group_effect_commu.TGetMyEffectRsp0x2();
+    localTGetMyEffectRsp0x2.query_interval.set(this.jdField_a_of_type_Int);
+    localTGetMyEffectRsp0x2.global_effect_id.set(this.b);
+    new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
     {
-      int k = this.jdField_a_of_type_JavaLangString.indexOf('[');
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("\\[", "");
-      int j = this.jdField_a_of_type_JavaLangString.indexOf(']', k);
-      int i = j;
-      if (j > 0)
-      {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("]", "");
-        i = j - 1;
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((azrk)((Map.Entry)localIterator.next()).getValue()).a());
       }
-      if ((i < this.jdField_a_of_type_JavaLangString.length() - 1) && (this.jdField_a_of_type_JavaLangString.charAt(i + 1) == '('))
-      {
-        j = i + 2;
-        int m = this.jdField_a_of_type_JavaLangString.indexOf(')', j);
-        if (m > 0)
-        {
-          String str = this.jdField_a_of_type_JavaLangString.substring(j, m);
-          this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString.substring(0, j - 1) + this.jdField_a_of_type_JavaLangString.substring(m + 1, this.jdField_a_of_type_JavaLangString.length()));
-          azrk localazrk = new azrk();
-          localazrk.jdField_a_of_type_Int = k;
-          localazrk.jdField_b_of_type_Int = (i + 1);
-          localazrk.jdField_a_of_type_JavaLangString = str;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localazrk);
-        }
-      }
+      localTGetMyEffectRsp0x2.rpt_userconfig.set(localArrayList);
     }
+    return localTGetMyEffectRsp0x2;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a(group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2)
   {
-    int i = 0;
-    if (paramJSONObject == null)
+    this.jdField_a_of_type_Int = paramTGetMyEffectRsp0x2.query_interval.get();
+    this.b = paramTGetMyEffectRsp0x2.global_effect_id.get();
+    Object localObject = (group_effect.EffectInfo)paramTGetMyEffectRsp0x2.st_global_effectinfo.get();
+    if (localObject != null) {
+      this.jdField_a_of_type_JavaLangString = ((group_effect.EffectInfo)localObject).name.get();
+    }
+    if ((paramTGetMyEffectRsp0x2.rpt_userconfig.has()) && (paramTGetMyEffectRsp0x2.rpt_userconfig.size() > 0))
     {
-      QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error grayTipsObj == null");
-      return;
-    }
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("id");
-    if (paramJSONObject.optInt("isValid") == 1)
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("priority");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-      a();
-      if (paramJSONObject.optInt("noLongerPrompt") != 1) {
-        break label236;
-      }
-    }
-    for (boolean bool = true;; bool = false) {
-      for (;;)
+      paramTGetMyEffectRsp0x2 = paramTGetMyEffectRsp0x2.rpt_userconfig.get();
+      int i = 0;
+      while (i < paramTGetMyEffectRsp0x2.size())
       {
-        this.jdField_b_of_type_Boolean = bool;
-        if (this.jdField_b_of_type_Boolean) {
-          this.jdField_a_of_type_JavaLangString += jdField_d_of_type_JavaLangString;
+        localObject = (group_effect_commu.TEffectDetail)paramTGetMyEffectRsp0x2.get(i);
+        azrk localazrk = new azrk();
+        localazrk.a((group_effect_commu.TEffectDetail)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB rpt_userconfig index = " + i + " detail = " + localazrk.toString());
         }
-        this.jdField_c_of_type_Int = paramJSONObject.optInt("linkType");
-        this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("serviceCode");
-        this.jdField_d_of_type_Int = paramJSONObject.optInt("hardType");
-        this.e = paramJSONObject.optInt("openMonth");
-        this.f = paramJSONObject.optInt("hardMonth");
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("aidAndroid");
-        try
-        {
-          JSONArray localJSONArray = paramJSONObject.optJSONArray("vipType");
-          if ((localJSONArray == null) || (localJSONArray.length() <= 0)) {
-            break label272;
-          }
-          while (i < localJSONArray.length())
-          {
-            this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray.getInt(i)));
-            i += 1;
-          }
-          bool = false;
-        }
-        catch (Exception localException)
-        {
-          label236:
-          QLog.e("TroopEnterEffect.GrayTips", 1, "mergeFromJson error: " + localException.getMessage());
-          this.g = paramJSONObject.optInt("settingStatus");
-        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localazrk.a + "", localazrk);
+        i += 1;
       }
     }
-    label272:
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramInt1 != this.g)
-      {
-        bool1 = bool2;
-        if (this.g != 0) {}
-      }
-      else if (!this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt2)))
-      {
-        bool1 = bool2;
-        if (!this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(0))) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopEnterEffect.EffectInfo", 2, "mergeFromPB nextReqTime = " + this.jdField_a_of_type_Int + " global_effectId = " + this.b + " global_effectName = " + this.jdField_a_of_type_JavaLangString + " individual effect size = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
     }
-    return bool1;
   }
 }
 

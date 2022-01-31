@@ -1,13 +1,13 @@
 package com.tencent.qidian.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class QidianPAForWpa
-  extends aukm
+  extends auko
 {
   public String kfuin = "";
-  @auma
+  @aumc
   public String puin = "";
 }
 

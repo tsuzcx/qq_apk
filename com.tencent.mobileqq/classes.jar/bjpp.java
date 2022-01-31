@@ -1,25 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureSegmentView;
+import dov.com.qq.im.ptv.LightVideoSoDownloadFragment;
+import dov.com.qq.im.ptv.LightVideoSoDownloadFragment.4;
 
 public class bjpp
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnCancelListener
 {
-  public bjpp(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
+  public bjpp(LightVideoSoDownloadFragment.4 param4) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
-    }
+    this.a.this$0.a.setCameraPermissionResult(false);
   }
 }
 

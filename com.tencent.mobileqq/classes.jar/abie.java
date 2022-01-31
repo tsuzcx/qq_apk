@@ -1,24 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class abie
-  implements DialogInterface.OnDismissListener
+  implements bfph
 {
-  public abie(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public abie(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
+    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    if (paramInt == 0)
     {
-      GesturePWDUnlockActivity.a(this.a, true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+      }
+      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
+        break label110;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131693231);
+    }
+    label110:
+    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
       return;
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    axrl.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

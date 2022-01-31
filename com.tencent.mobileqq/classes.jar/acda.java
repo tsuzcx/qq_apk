@@ -1,33 +1,42 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.io.File;
 
 public class acda
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public acda(SoundAndVibrateActivity paramSoundAndVibrateActivity, String paramString) {}
+  public acda(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.getString(2131718625), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    this.a.b(3);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
+    if (this.a.a().booleanValue())
     {
-      axqw.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      this.a.b();
+      paramView = ThemeUtil.getThemeVoiceRootPath();
+      if (paramView != null)
+      {
+        paramView = new File(paramView + File.separatorChar + "message.mp3");
+        if (paramView.exists())
+        {
+          this.a.b();
+          this.a.a(Uri.fromFile(paramView));
+        }
       }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      axrl.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
+    }
+    else
+    {
       return;
     }
+    this.a.b();
+    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
   }
 }
 

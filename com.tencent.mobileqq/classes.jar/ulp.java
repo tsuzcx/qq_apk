@@ -1,27 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ulp
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tlo>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tzt>
 {
   public ulp(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
     super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tlo paramtlo)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tzt paramtzt)
   {
-    if (paramtlo.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramtlo);
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramtzt.jdField_a_of_type_JavaLangString)) && ((paramtzt.jdField_a_of_type_Twl instanceof tww)))
+    {
+      paramtzt = ((tww)paramtzt.jdField_a_of_type_Twl).a;
+      if (paramtzt != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramtzt.jdField_a_of_type_JavaLangString);
+      }
     }
   }
   
   public Class acceptEventClass()
   {
-    return tlo.class;
+    return tzt.class;
   }
 }
 

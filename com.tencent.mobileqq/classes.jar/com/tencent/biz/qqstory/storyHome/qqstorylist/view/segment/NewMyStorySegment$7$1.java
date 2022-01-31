@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import vcs;
-import vdf;
+import vcp;
+import vdc;
 
 public class NewMyStorySegment$7$1
   implements Runnable
 {
-  public NewMyStorySegment$7$1(vdf paramvdf) {}
+  public NewMyStorySegment$7$1(vdc paramvdc) {}
   
   public void run()
   {

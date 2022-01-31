@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ayii
-  implements bcak
+  extends ayfn
 {
-  public ayii(GroupTeamWorkListActivity.3 param3) {}
+  public ayii(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if ((paramBoolean) && (QLog.isColorLevel())) {
-      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
+    GroupTeamWorkListActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
     }
   }
 }

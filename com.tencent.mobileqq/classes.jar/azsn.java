@@ -1,8 +1,16 @@
-public abstract interface azsn
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+
+class azsn
+  implements apag
 {
-  public abstract long b();
+  azsn(azsk paramazsk, TroopFileTransferManager.Item paramItem) {}
   
-  public abstract void b(String paramString);
+  public void a() {}
+  
+  public void b()
+  {
+    apab.a(new aplu(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(azsk.e(this.jdField_a_of_type_Azsk))));
+  }
 }
 
 

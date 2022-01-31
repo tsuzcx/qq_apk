@@ -1,8 +1,29 @@
-import java.util.List;
-
-public abstract interface anqn
+class anqn
+  extends ajth
 {
-  public abstract void a(List<anyc> paramList);
+  anqn(anqk paramanqk) {}
+  
+  protected void a(int paramInt)
+  {
+    if ((paramInt == 0) && (this.a.a != null)) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    anqk.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
 }
 
 

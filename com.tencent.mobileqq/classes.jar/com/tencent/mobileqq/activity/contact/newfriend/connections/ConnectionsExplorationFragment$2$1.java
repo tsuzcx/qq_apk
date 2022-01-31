@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import akac;
+import akaa;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;

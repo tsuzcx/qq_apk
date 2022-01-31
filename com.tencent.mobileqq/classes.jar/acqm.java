@@ -1,35 +1,55 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
 import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class acqm
-  implements bbsa
+  implements View.OnTouchListener
 {
-  public acqm(VisitorsActivity paramVisitorsActivity, String paramString) {}
+  public acqm(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, QQBrowserActivity.class);
-    localIntent.putExtra("fragmentStyle", 3);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-    localIntent.putExtra("isTransparentTitle", true);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.startActivity(localIntent);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "ZanDoubleDialog: onRightClick: ");
+    switch (paramMotionEvent.getAction())
+    {
     }
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
-    bbqw.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-    VisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity).set(true);
+    for (;;)
+    {
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+        this.a.b.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+        axqy.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
+        paramView = new Intent(this.a, LikeRankingListActivity.class);
+        this.a.startActivity(paramView);
+        this.a.d.setVisibility(8);
+        this.a.f.clearAnimation();
+        this.a.c = 0;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+      }
+    }
   }
 }
 

@@ -1,21 +1,6 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
-
-public class avyk
-  implements Comparator<avxq>
+public abstract interface avyk
 {
-  public avyk(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
-  
-  public int a(avxq paramavxq1, avxq paramavxq2)
-  {
-    if (paramavxq2.a() > paramavxq1.a()) {
-      return -1;
-    }
-    if (paramavxq2.a() == paramavxq1.a()) {
-      return 0;
-    }
-    return 1;
-  }
+  public abstract void a(avxm paramavxm, avza paramavza, avzm paramavzm, avzf paramavzf);
 }
 
 

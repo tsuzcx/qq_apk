@@ -1,21 +1,24 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberRsp;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
+import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
 
 public class bfal
-  extends bfad
+  extends bfau
 {
-  private INTERFACE.StGetPhoneNumberReq a = new INTERFACE.StGetPhoneNumberReq();
+  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
   
-  public bfal(String paramString)
+  public bfal(String paramString1, String paramString2)
   {
-    this.a.appId.set(paramString);
+    this.a.appid.set(paramString1);
+    this.a.groupid.set(paramString2);
   }
   
   protected String a()
   {
-    return "mini_user_info";
+    return "mini_app_misc";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -23,39 +26,36 @@ public class bfal
     if (paramArrayOfByte == null) {
       return null;
     }
-    INTERFACE.StGetPhoneNumberRsp localStGetPhoneNumberRsp = new INTERFACE.StGetPhoneNumberRsp();
+    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
     try
     {
-      localStGetPhoneNumberRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetPhoneNumberRsp != null)
+      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStTrans4RoomidRsp != null)
       {
         paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("countryCode", localStGetPhoneNumberRsp.countryCode.get());
-        paramArrayOfByte.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
-        paramArrayOfByte.put("iv", localStGetPhoneNumberRsp.iv.get());
-        paramArrayOfByte.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
-        paramArrayOfByte.put("cloudID", "");
-        paramArrayOfByte.put("errMsg", "ok");
+        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
+        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
+        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
         return paramArrayOfByte;
       }
-      besl.a("getPhoneNumberRequest", "onResponse fail.rsp = null");
+      betc.a("GetTransRoomIdRequest", "onResponse fail.rsp = null");
       return null;
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("getPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
     }
     return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "GetPhoneNumber";
+    return "Trans4Roomid";
   }
 }
 

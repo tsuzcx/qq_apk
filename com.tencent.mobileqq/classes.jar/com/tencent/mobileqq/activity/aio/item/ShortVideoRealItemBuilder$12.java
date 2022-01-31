@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aeah;
+import aeaf;
 import android.os.Handler;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 
 class ShortVideoRealItemBuilder$12
   implements Runnable
 {
-  ShortVideoRealItemBuilder$12(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, aeah paramaeah, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean2) {}
+  ShortVideoRealItemBuilder$12(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, boolean paramBoolean1, aeaf paramaeaf, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aeah != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask == null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aeaf != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask = new ShortVideoRealItemBuilder.12.1(this);
       ShortVideoRealItemBuilder.a(this.this$0).removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.progressTask);

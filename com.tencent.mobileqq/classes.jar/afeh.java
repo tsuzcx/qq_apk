@@ -1,20 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class afeh
-  implements afhm
+  implements View.OnTouchListener
 {
-  public afeh(AddContactsActivity paramAddContactsActivity) {}
+  public afeh(AddContactsView paramAddContactsView) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AddContactsActivity.a(this.a, paramBoolean);
-    ImageView localImageView = AddContactsActivity.a(this.a);
-    if (AddContactsActivity.a(this.a)) {}
-    for (int i = 0;; i = 8)
+    switch (paramMotionEvent.getAction())
     {
-      localImageView.setVisibility(i);
-      return;
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

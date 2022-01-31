@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 final class bawm
-  extends View.AccessibilityDelegate
+  implements DownloadParams.DecodeHandler
 {
-  bawm(CharSequence paramCharSequence, String paramString) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+    if (paramBitmap == null) {
+      return null;
     }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+    paramDownloadParams = paramDownloadParams.tag;
+    int i;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1)) {
+      i = ((int[])(int[])paramDownloadParams)[0];
+    }
+    for (paramDownloadParams = bbef.a(paramBitmap, i, i, i);; paramDownloadParams = null) {
+      return paramDownloadParams;
+    }
   }
 }
 

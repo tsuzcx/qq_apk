@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.http;
 
 import NS_COMM.COMM.StCommonExt;
 import android.util.Log;
-import bblm;
+import bbma;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpCheckNavigateRightRequest;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByIdRequest;
 import com.tencent.mobileqq.mini.http.httpRequest.HttpGetAppInfoByLinkRequest;
@@ -29,7 +29,7 @@ public class HttpCmdManager
       if (arrayOfByte1 == null) {
         arrayOfByte2 = new byte[4];
       }
-      MiniappHttpUtil.httpPostV2(paramString, bblm.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
+      MiniappHttpUtil.httpPostV2(paramString, bbma.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
       return;
     }
     catch (Exception localException)

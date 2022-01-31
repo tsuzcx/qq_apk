@@ -1,46 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bgki
-  extends bbwf
 {
-  public bgki(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
+  private static int jdField_a_of_type_Int = -1;
+  private static bgki jdField_a_of_type_Bgki;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<bgkk> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  String b;
+  String c;
+  String d;
+  String e = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
+  String f = "105d1e43c456bc800b4adacd57ac1199";
   
-  public void onCancel(bbwg parambbwg)
+  public static bgki a()
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (jdField_a_of_type_Bgki == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bgki == null) {
+        jdField_a_of_type_Bgki = new bgki();
+      }
+      return jdField_a_of_type_Bgki;
+    }
+    finally {}
   }
   
-  public void onDone(bbwg parambbwg)
+  public void a()
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambbwg.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
-      }
-      if (TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      parambbwg = aurl.a(this.jdField_a_of_type_JavaLangString);
-      if (this.c.equalsIgnoreCase(parambbwg))
-      {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bbdj.d(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambbwg.b + " code=" + parambbwg.a);
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    jdField_a_of_type_Bgki = null;
+  }
+  
+  public void a(bgkk parambgkk)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambgkk);
+  }
+  
+  public void a(String paramString)
+  {
+    bgjq.a().a(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.e = paramString1;
+    this.f = paramString2;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    bgjq.a().a(1, this.e, this.f);
+    bgjq.a().a(BaseApplicationImpl.getContext(), this.b, this.jdField_a_of_type_JavaLangString, "0", this.c);
+    bgjq.a().a(new bgkj(this, paramBoolean1, paramBoolean2));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    bgjq.a().a(paramBoolean);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    bgjq.a().b(paramBoolean);
   }
 }
 

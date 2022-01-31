@@ -1,37 +1,48 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxo
-  implements aoxp
+  extends aoxv
 {
-  aoxo(aoxn paramaoxn, aowt paramaowt, MessageRecord paramMessageRecord) {}
+  protected long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  protected String a;
+  private long b;
+  protected String b;
   
-  public void a(String paramString, Bundle paramBundle)
+  aoxo(aowx paramaowx, MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aoxn.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
-    }
-    this.jdField_a_of_type_Aoxn.b = 2;
-    aowt.a(this.jdField_a_of_type_Aoxn.jdField_a_of_type_Aowt, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
-    aowt.b(this.jdField_a_of_type_Aoxn.jdField_a_of_type_Aowt, this.jdField_a_of_type_Aoxn.jdField_a_of_type_JavaLangString);
+    super(paramaowx);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaowx = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaowx);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aoxt paramaoxt)
   {
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    String str1 = apgt.a(apug.d(this.jdField_b_of_type_JavaLangString));
+    String str2 = apgt.a(apug.a(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_Long = apug.a(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aoxn.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
     }
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_Aoxn.b = 4;; this.jdField_a_of_type_Aoxn.b = 3)
-    {
-      aowt.b(this.jdField_a_of_type_Aoxn.jdField_a_of_type_Aowt, this.jdField_a_of_type_Aoxn.jdField_a_of_type_JavaLangString);
-      return;
-      String str = ajyc.a(2131709692) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramString = str + "\n" + paramString;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
-    }
+    aowx.a(this.jdField_a_of_type_Aowx).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aowx.a(this.jdField_a_of_type_Aowx).getCurrentAccountUin(), new aoxp(this, paramaoxt, str2));
   }
 }
 

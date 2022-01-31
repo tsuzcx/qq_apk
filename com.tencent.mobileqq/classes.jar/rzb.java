@@ -1,38 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager.PlayStartVideoRunnable;
-import com.tencent.qphone.base.util.QLog;
-
-public class rzb
-  implements ooa
+public abstract interface rzb
 {
-  public rzb(VideoPlayManager.PlayStartVideoRunnable paramPlayStartVideoRunnable) {}
+  public abstract void a(rza paramrza, int paramInt);
   
-  public void a(ood paramood)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Viola.VideoPlayManager", 2, "UUIDToUrlCallback Callback vid=" + paramood.jdField_b_of_type_JavaLangString + ", url=" + paramood.jdField_a_of_type_JavaLangString + ", isH265=" + paramood.jdField_a_of_type_Boolean + ", isHWCodec=" + paramood.jdField_b_of_type_Boolean + ", fileBitRate=" + paramood.c);
-    }
-    if ((VideoPlayManager.PlayStartVideoRunnable.a(this.a) != null) && (paramood.jdField_b_of_type_JavaLangString.equals(VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.jdField_a_of_type_JavaLangString))) {
-      if (TextUtils.isEmpty(paramood.jdField_a_of_type_JavaLangString)) {
-        if (VideoPlayManager.a(this.a.this$0) != null) {
-          VideoPlayManager.a(this.a.this$0).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      if (paramood.jdField_a_of_type_Int == 1)
-      {
-        VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramood.jdField_b_of_type_JavaLangString, paramood.jdField_a_of_type_JavaLangString, 1, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramood.jdField_b_of_type_Boolean, true, false);
-        return;
-      }
-      VideoPlayManager.PlayStartVideoRunnable.a(this.a).a(paramood.jdField_b_of_type_JavaLangString, paramood.jdField_a_of_type_JavaLangString, 2, VideoPlayManager.PlayStartVideoRunnable.a(this.a), 0L, VideoPlayManager.PlayStartVideoRunnable.a(this.a).a.d, paramood.jdField_b_of_type_Boolean, true, false);
-      return;
-    }
-    QLog.d("Viola.VideoPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramood.jdField_b_of_type_JavaLangString + " url:" + paramood.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(rza paramrza, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(rza paramrza, long paramLong);
+  
+  public abstract void a(rza paramrza, boolean paramBoolean);
+  
+  public abstract void b(rza paramrza);
+  
+  public abstract void b(rza paramrza, int paramInt);
+  
+  public abstract void c(rza paramrza);
+  
+  public abstract void d(rza paramrza);
+  
+  public abstract void e(rza paramrza);
+  
+  public abstract void f(rza paramrza);
+  
+  public abstract void g(rza paramrza);
+  
+  public abstract void h(rza paramrza);
 }
 
 

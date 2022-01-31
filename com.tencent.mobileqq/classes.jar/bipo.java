@@ -1,28 +1,22 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.Nullable;
 
 class bipo
-  implements ActionMode.Callback
+  implements bjos<Boolean>
 {
-  bipo(biph parambiph) {}
+  bipo(bipi parambipi) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if (paramBoolean == null) {
+      return;
+    }
+    bipi localbipi = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bipi.a(localbipi, bool);
+      return;
+    }
   }
 }
 

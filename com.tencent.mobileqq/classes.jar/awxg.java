@@ -1,20 +1,26 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-class awxg
+public class awxg
+  extends awwy
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
+  private LinearLayout a;
   
-  public awxg(awxf paramawxf, Context paramContext)
+  public awxg(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559618, paramawxf.b, false);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365018));
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.a = ((LinearLayout)a(this.c).findViewById(2131369348));
+  }
+  
+  public View b()
+  {
+    return this.a;
   }
 }
 

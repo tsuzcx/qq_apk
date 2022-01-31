@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import akpg;
+import akpf;
 import cl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;

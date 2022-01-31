@@ -1,258 +1,536 @@
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Proxy;
-import android.net.Uri;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.myapp.net.HttpResponseException;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.InetSocketAddress;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ImageSpan;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainChange;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.ToDegradeInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.ToDegradeItem;
 
 public class asyp
 {
-  private static final Uri a;
-  public static ThreadSafeClientConnManager a;
-  
-  static
+  public static SpannableStringBuilder a(Context paramContext, SpannableStringBuilder paramSpannableStringBuilder)
   {
-    jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
-  }
-  
-  private static asyq a()
-  {
-    Object localObject1 = BaseApplication.getContext();
-    asyq localasyq = new asyq();
-    try
+    if ((TextUtils.isEmpty(paramSpannableStringBuilder)) || (paramContext == null)) {}
+    do
     {
-      String str1;
-      String str2;
-      String str3;
+      return paramSpannableStringBuilder;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReactivePushHelper", 2, "updateReactiveIconResource start:" + paramSpannableStringBuilder);
+      }
+      localObject1 = paramSpannableStringBuilder.toString();
       try
       {
-        localObject1 = ((Context)localObject1).getContentResolver().query(jdField_a_of_type_AndroidNetUri, null, null, null, null);
-        ((Cursor)localObject1).moveToFirst();
-        str1 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("proxy"));
-        if (str1 != null) {
-          str1.toLowerCase();
+        k = bbll.b(16.0F);
+        localObject3 = asxm.a();
+        localArrayList = new ArrayList();
+        localObject2 = asxm.a((String)localObject1);
+        if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {
+          break label638;
         }
-        str2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("port"));
-        str3 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("apn"));
-        if (str3 != null) {
-          str3.toLowerCase();
-        }
-        ((Cursor)localObject1).close();
-        if ((str3 != null) && (str3.startsWith("ctwap"))) {
-          if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-          {
-            localasyq.jdField_a_of_type_JavaLangString = str1;
-            localasyq.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
-          }
-          else
-          {
-            localasyq.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localasyq.jdField_a_of_type_Int = 80;
-          }
-        }
+        i = 0;
+        localObject4 = ((ArrayList)localObject2).iterator();
       }
-      catch (Exception localException)
+      catch (Throwable paramContext)
       {
-        localException.printStackTrace();
-        return localasyq;
+        for (;;)
+        {
+          int k;
+          Object localObject3;
+          ArrayList localArrayList;
+          int i;
+          Object localObject4;
+          Object localObject5;
+          asxp localasxp;
+          Object localObject2 = localObject1;
+          localObject1 = paramContext;
+          paramContext = (Context)localObject2;
+          localObject2 = paramContext;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ReactivePushHelper", 2, "updateReactiveIconResource exception:" + localObject1);
+            localObject2 = paramContext;
+            continue;
+            break label641;
+          }
+        }
       }
-      if ((str3 != null) && (str3.startsWith("cmwap")))
+      if (((Iterator)localObject4).hasNext())
       {
-        if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
-        {
-          localasyq.jdField_a_of_type_JavaLangString = str1;
-          localasyq.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+        localObject5 = (asxo)((Iterator)localObject4).next();
+        if (TextUtils.isEmpty(((asxo)localObject5).jdField_b_of_type_JavaLangString)) {
+          break label635;
         }
-        else
-        {
-          localasyq.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localasyq.jdField_a_of_type_Int = 80;
+        localasxp = new asxp(paramContext, 0, ((asxo)localObject5).jdField_b_of_type_JavaLangString, bbll.b(16.0F), null);
+        localObject2 = "[icon]";
+        if (!TextUtils.isEmpty(((asxo)localObject5).c)) {
+          localObject2 = ((asxo)localObject5).c;
         }
+        ((asxo)localObject5).jdField_a_of_type_Int += i;
+        ((asxo)localObject5).jdField_b_of_type_Int += i;
+        paramSpannableStringBuilder.replace(((asxo)localObject5).jdField_a_of_type_Int, ((asxo)localObject5).jdField_b_of_type_Int, (CharSequence)localObject2);
+        paramSpannableStringBuilder.setSpan(localasxp, ((asxo)localObject5).jdField_a_of_type_Int, ((asxo)localObject5).jdField_a_of_type_Int + ((String)localObject2).length(), 33);
+        i = ((asxo)localObject5).jdField_a_of_type_Int + ((String)localObject2).length() - ((asxo)localObject5).jdField_b_of_type_Int + i;
+        break label641;
       }
-      else if ((str3 != null) && (str3.startsWith("uniwap"))) {
-        if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
+      localObject2 = paramSpannableStringBuilder.toString();
+      localObject1 = localObject2;
+      for (;;)
+      {
+        try
         {
-          localasyq.jdField_a_of_type_JavaLangString = str1;
-          localasyq.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          localObject2 = ((List)localObject3).iterator();
+          if (!((Iterator)localObject2).hasNext()) {
+            continue;
+          }
+          localObject3 = (String)((Iterator)localObject2).next();
+          i = ((String)localObject1).indexOf((String)localObject3);
+          if ((i == -1) || (i < 0)) {
+            continue;
+          }
+          localObject4 = localArrayList.iterator();
+          if (!((Iterator)localObject4).hasNext()) {
+            continue;
+          }
+          localObject5 = (Pair)((Iterator)localObject4).next();
+          if ((i < ((Integer)((Pair)localObject5).first).intValue()) || (i >= ((Integer)((Pair)localObject5).second).intValue())) {
+            continue;
+          }
+          j = 1;
         }
-        else
+        catch (Throwable localThrowable)
         {
-          localasyq.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localasyq.jdField_a_of_type_Int = 80;
+          paramContext = (Context)localObject1;
+          localObject1 = localThrowable;
+          continue;
+          int j = 0;
+          continue;
         }
+        if ((j == 0) && (asxm.b.containsKey(localObject3)))
+        {
+          localObject4 = (Integer)asxm.b.get(localObject3);
+          if ((localObject4 != null) && (((Integer)localObject4).intValue() != 0))
+          {
+            localObject4 = paramContext.getResources().getDrawable(((Integer)localObject4).intValue());
+            if (localObject4 != null)
+            {
+              ((Drawable)localObject4).setBounds(0, 0, k, k);
+              paramSpannableStringBuilder.setSpan(new ImageSpan((Drawable)localObject4, 0), i, ((String)localObject3).length() + i, 33);
+              localArrayList.add(new Pair(Integer.valueOf(i), Integer.valueOf(((String)localObject3).length() + i)));
+            }
+          }
+        }
+        i = ((String)localObject1).indexOf((String)localObject3, ((String)localObject3).length() + i);
       }
-      return localasyq;
-    }
-    finally {}
-    return localasyq;
+      localObject2 = localObject1;
+    } while (!QLog.isColorLevel());
+    QLog.d("ReactivePushHelper", 2, "removeReactiveIconResource end:" + (String)localObject2);
+    return paramSpannableStringBuilder;
   }
   
-  public static InetSocketAddress a()
+  public static SpannableStringBuilder a(Context paramContext, String paramString)
   {
-    Object localObject2 = null;
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    String str;
-    int i;
-    if (localBaseApplication == null)
-    {
-      str = Proxy.getDefaultHost();
-      i = Proxy.getDefaultPort();
+    if ((TextUtils.isEmpty(paramString)) || (paramContext == null)) {
+      return null;
     }
+    return a(paramContext, new SpannableStringBuilder(paramString));
+  }
+  
+  private static String a(QQAppInterface paramQQAppInterface, String paramString, List<asyq> paramList)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null))
+    {
+      paramQQAppInterface = null;
+      return paramQQAppInterface;
+    }
+    String str1 = "";
+    int i = 1;
+    int j = 0;
+    label24:
+    if (j < paramList.size())
+    {
+      int k = ((asyq)paramList.get(j)).jdField_a_of_type_Int;
+      int m = ((asyq)paramList.get(j)).jdField_b_of_type_Int;
+      if (!asxb.a(paramQQAppInterface, k, m)) {
+        break label260;
+      }
+      if (i == 0)
+      {
+        str1 = str1 + "、";
+        label106:
+        String str3 = asxm.a(k, m);
+        String str2 = "#name_" + str3;
+        str3 = "#icon_" + str3;
+        str1 = str1 + str2 + str3;
+      }
+    }
+    label260:
     for (;;)
     {
-      Object localObject1 = localObject2;
-      if (str != null)
-      {
-        localObject1 = localObject2;
-        if (str.trim().length() > 0) {
-          localObject1 = new InetSocketAddress(str, i);
-        }
-      }
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (!AppNetConnInfo.isMobileConn());
-      str = Proxy.getHost(localBaseApplication);
-      int j = Proxy.getPort(localBaseApplication);
-      if ((str != null) && (str.trim().length() != 0))
-      {
-        i = j;
-        if (j > 0) {}
-      }
-      else
-      {
-        str = Proxy.getDefaultHost();
-        j = Proxy.getDefaultPort();
-        if ((str != null) && (str.trim().length() != 0))
-        {
-          i = j;
-          if (j > 0) {}
-        }
-        else
-        {
-          localObject1 = a();
-          str = ((asyq)localObject1).jdField_a_of_type_JavaLangString;
-          i = ((asyq)localObject1).jdField_a_of_type_Int;
-        }
-      }
-    }
-  }
-  
-  public static HttpEntity a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
-  {
-    BasicHttpParams localBasicHttpParams = new BasicHttpParams();
-    HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, 15000);
-    HttpConnectionParams.setSoTimeout(localBasicHttpParams, 30000);
-    if (paramString2.equals("POST"))
-    {
-      paramString1 = new HttpPost(paramString1);
-      paramArrayOfByte = new ByteArrayEntity(paramArrayOfByte);
-      ((HttpPost)paramString1).setEntity(paramArrayOfByte);
-      paramArrayOfByte = paramString1;
-    }
-    int j;
-    int i;
-    while (paramArrayOfBasicHeader != null)
-    {
-      j = paramArrayOfBasicHeader.length;
+      j += 1;
+      break label24;
       i = 0;
-      while (i < j)
-      {
-        paramArrayOfByte.addHeader(paramArrayOfBasicHeader[i]);
-        i += 1;
-      }
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte = new HttpGet(paramString1 + "?" + new String(paramArrayOfByte));
-      } else {
-        paramArrayOfByte = new HttpGet(paramString1);
-      }
-    }
-    if (jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager == null)
-    {
-      paramString1 = new SchemeRegistry();
-      paramString1.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
-      paramString1.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-      jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager = new ThreadSafeClientConnManager(localBasicHttpParams, paramString1);
-    }
-    paramString2 = new DefaultHttpClient(jdField_a_of_type_OrgApacheHttpImplConnTsccmThreadSafeClientConnManager, localBasicHttpParams);
-    if (a() != null)
-    {
-      Proxy.getDefaultHost();
-      Proxy.getDefaultPort();
-      paramArrayOfBasicHeader = BaseApplication.getContext();
-      if (paramArrayOfBasicHeader != null) {
-        break label363;
-      }
-      paramString1 = Proxy.getDefaultHost();
-      i = Proxy.getDefaultPort();
-    }
-    for (;;)
-    {
-      if ((paramString1 != null) && (paramString1.trim().length() != 0))
-      {
-        j = i;
-        if (i > 0) {}
-      }
-      else
-      {
-        paramArrayOfBasicHeader = a();
-        paramString1 = paramArrayOfBasicHeader.jdField_a_of_type_JavaLangString;
-        j = paramArrayOfBasicHeader.jdField_a_of_type_Int;
-      }
-      paramString1 = new HttpHost(paramString1, j);
-      paramString2.getParams().setParameter("http.route.default-proxy", paramString1);
-      paramString1 = paramString2.execute(paramArrayOfByte);
-      i = paramString1.getStatusLine().getStatusCode();
-      if (i == 200) {
+      break label106;
+      paramString = paramString.replace("#icon", str1);
+      paramQQAppInterface = paramString;
+      if (!QLog.isColorLevel()) {
         break;
       }
-      throw new HttpResponseException(i);
-      label363:
-      paramString1 = Proxy.getHost(paramArrayOfBasicHeader);
-      j = Proxy.getPort(paramArrayOfBasicHeader);
-      if ((paramString1 != null) && (paramString1.trim().length() != 0))
-      {
-        i = j;
-        if (j > 0) {}
-      }
-      else
-      {
-        paramString1 = Proxy.getDefaultHost();
-        i = Proxy.getDefaultPort();
-      }
+      QLog.d("ReactivePushHelper", 2, "buildToDegradeGrayTips strTips:" + paramString + " listsize:" + paramList.size());
+      return paramString;
     }
-    return paramString1.getEntity();
   }
   
-  public static byte[] a(String paramString1, byte[] paramArrayOfByte, String paramString2, BasicHeader[] paramArrayOfBasicHeader)
+  private static String a(QQAppInterface paramQQAppInterface, List<asyq> paramList)
   {
-    paramString1 = a(paramString1, paramArrayOfByte, paramString2, paramArrayOfBasicHeader);
-    paramArrayOfByte = EntityUtils.toByteArray(paramString1);
-    paramString1.consumeContent();
-    return paramArrayOfByte;
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReactivePushHelper", 2, "getDowngradeTipsTemplate list is null");
+      }
+      return null;
+    }
+    String str = asyj.a(paramQQAppInterface.getApp(), 134);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "getDowngradeTipsTemplate:" + str);
+    }
+    return a(paramQQAppInterface, str, paramList);
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "removeReactiveIconResource start:" + paramString);
+    }
+    paramString = paramString.replaceAll("[icon]", "");
+    Iterator localIterator = asxm.a(paramString).iterator();
+    while (localIterator.hasNext()) {
+      paramString = paramString.replaceAll(((asxo)localIterator.next()).jdField_a_of_type_JavaLangString, "");
+    }
+    localIterator = asxm.a().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (paramString.contains(str)) {
+        paramString = paramString.replaceAll(str, "");
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "removeReactiveIconResource end:" + paramString);
+    }
+    return paramString;
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "saveShowNotificationTime, time:" + paramLong1 + " localtime:" + paramLong2 + " frienduin:" + paramString);
+    }
+    String str = "" + paramLong1 + "_" + paramLong2;
+    bbkb.e(BaseApplicationImpl.getContext(), paramQQAppInterface.c(), str, paramString);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "saveShowTipsTime, time:" + paramLong + " frienduin:" + paramString);
+    }
+    bbkb.a(BaseApplicationImpl.getContext(), paramQQAppInterface.c(), paramString, paramLong);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, akqm paramakqm, int paramInt1, int paramInt2, long paramLong, String paramString4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReactivePushHelper", 2, "insertGrayTips uin:" + paramString1 + " grayTips:" + paramString2 + " nick:" + paramString3 + " lNotifyTime:" + paramLong);
+    }
+    if (TextUtils.isEmpty(paramString2)) {}
+    long l;
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        localObject = paramString2;
+        if (paramString2.contains("#nick")) {
+          localObject = paramString2.replaceAll("#nick", paramString3);
+        }
+        paramString3 = new StringBuilder((String)localObject);
+        paramString2 = asxg.a(paramQQAppInterface, paramString4, paramString3);
+        paramString3 = paramString3.toString();
+        paramString4 = new aqvb(paramString4, paramString4, paramString3, 0, -5040, paramInt1, awzy.a());
+        localObject = new MessageForUniteGrayTip();
+        ((MessageForUniteGrayTip)localObject).hasRead = 0;
+        ((MessageForUniteGrayTip)localObject).subType = paramInt2;
+        ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramString4);
+        ((MessageForUniteGrayTip)localObject).tipParam.d = (paramString1 + "_reactive_" + paramakqm.b + "_" + paramLong);
+        asxg.a(paramQQAppInterface, paramString3, paramString4, paramString2);
+        ((MessageForUniteGrayTip)localObject).saveExtInfoToExtStr("mutualmark_WillDowngradeSoon", "true");
+        aqvc.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+        axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A1BC", "0X800A1BC", 0, 0, "", "", "", "");
+        l = System.currentTimeMillis() / 1000L;
+      } while (!a(paramQQAppInterface, paramLong, l, "0"));
+      paramString2 = paramQQAppInterface.a().a(((MessageForUniteGrayTip)localObject).frienduin, ((MessageForUniteGrayTip)localObject).istroop);
+      paramQQAppInterface.a().c(paramString2);
+      paramQQAppInterface.a(1, true, true);
+      paramQQAppInterface.a().c(null);
+      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 1, 0, "", "", "", "");
+      a(paramQQAppInterface, paramLong, l, "0");
+    } while (!QLog.isColorLevel());
+    QLog.d("ReactivePushHelper", 2, "ShowNotification, localtime:" + l + " servertime:" + paramLong + " frienduin:" + paramString1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, submsgtype0xc7.RelationalChainChange paramRelationalChainChange, akqm paramakqm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReactivePushHelper", 2, "decodeC2CMsgPkgSubMsgType0xc7 app:" + paramQQAppInterface + "  changeInfo:" + paramRelationalChainChange + "  msginfo:" + paramakqm);
+    }
+    if ((paramQQAppInterface == null) || (paramRelationalChainChange == null) || (paramakqm == null)) {}
+    String str;
+    int i;
+    ajxl localajxl;
+    do
+    {
+      long l;
+      do
+      {
+        return;
+        l = paramRelationalChainChange.uint64_src_uin.get();
+        str = String.valueOf(paramRelationalChainChange.uint64_dst_uin.get());
+      } while ((!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), String.valueOf(l))) || (TextUtils.isEmpty(str)));
+      i = paramRelationalChainChange.uint32_change_type.get();
+      localajxl = (ajxl)paramQQAppInterface.getManager(51);
+      Friends localFriends = localajxl.e(str);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReactivePushHelper", 2, "decodeC2CMsgPkgSubMsgType0xc7 friend:" + localFriends + " changeType:" + i);
+      }
+      if ((localFriends == null) || (localFriends.isFriend())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ReactivePushHelper", 2, "decodeC2CMsgPkgSubMsgType0xc7 is not friend");
+    return;
+    if (localajxl.a(str) == null) {
+      new ExtensionInfo().uin = str;
+    }
+    switch (i)
+    {
+    case 1: 
+    case 2: 
+    case 3: 
+    case 10002: 
+    case 10003: 
+    case 10004: 
+    default: 
+      return;
+    }
+    a(paramQQAppInterface, paramRelationalChainChange, str, paramakqm);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, submsgtype0xc7.RelationalChainChange paramRelationalChainChange, String paramString, akqm paramakqm)
+  {
+    if (paramRelationalChainChange.msg_to_degrade_info.has()) {}
+    for (submsgtype0xc7.ToDegradeInfo localToDegradeInfo = (submsgtype0xc7.ToDegradeInfo)paramRelationalChainChange.msg_to_degrade_info.get(); localToDegradeInfo == null; localToDegradeInfo = null) {
+      return;
+    }
+    if (localToDegradeInfo.bytes_nick.has())
+    {
+      paramRelationalChainChange = localToDegradeInfo.bytes_nick.get().toStringUtf8();
+      label57:
+      if (!localToDegradeInfo.notify_time.has()) {
+        break label254;
+      }
+    }
+    submsgtype0xc7.RelationalChainChange localRelationalChainChange;
+    submsgtype0xc7.ToDegradeItem localToDegradeItem;
+    label254:
+    for (long l1 = localToDegradeInfo.notify_time.get();; l1 = 0L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReactivePushHelper", 2, "onWillDowngradeSoon, nick:" + paramRelationalChainChange + " notifytime:" + l1);
+      }
+      if (!a(paramQQAppInterface, l1, paramString)) {
+        break;
+      }
+      localRelationalChainChange = paramRelationalChainChange;
+      if (TextUtils.isEmpty(paramRelationalChainChange))
+      {
+        paramRelationalChainChange = bbcz.m(paramQQAppInterface, paramString);
+        localRelationalChainChange = paramRelationalChainChange;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReactivePushHelper", 2, "onWillDowngradeSoon, local nick:" + paramRelationalChainChange);
+          localRelationalChainChange = paramRelationalChainChange;
+        }
+      }
+      if (!localToDegradeInfo.rpt_to_degrade_item.has()) {
+        break;
+      }
+      paramRelationalChainChange = new ArrayList();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localToDegradeInfo.rpt_to_degrade_item.size()) {
+          break label554;
+        }
+        localToDegradeItem = (submsgtype0xc7.ToDegradeItem)localToDegradeInfo.rpt_to_degrade_item.get(i);
+        if (localToDegradeItem != null) {
+          break;
+        }
+        i += 1;
+      }
+      paramRelationalChainChange = null;
+      break label57;
+    }
+    if (localToDegradeItem.type.has()) {}
+    for (int j = localToDegradeItem.type.get();; j = -1)
+    {
+      if (asxm.b(j)) {
+        break label332;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ReactivePushHelper", 2, "onWillDowngradeSoon, unkown type:" + j);
+      break;
+    }
+    label332:
+    int k;
+    label353:
+    int m;
+    label374:
+    int n;
+    if (localToDegradeItem.old_level.has())
+    {
+      k = localToDegradeItem.old_level.get();
+      if (!localToDegradeItem.new_level.has()) {
+        break label536;
+      }
+      m = localToDegradeItem.new_level.get();
+      if (!localToDegradeItem.continuity_days.has()) {
+        break label542;
+      }
+      n = localToDegradeItem.continuity_days.get();
+      label395:
+      if (!localToDegradeItem.uint64_last_action_time.has()) {
+        break label548;
+      }
+    }
+    label536:
+    label542:
+    label548:
+    for (long l2 = localToDegradeItem.uint64_last_action_time.get();; l2 = 0L)
+    {
+      paramRelationalChainChange.add(new asyq(j, k, m, n, l2));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("ReactivePushHelper", 2, "onWillDowngradeSoon: uin:" + paramString + " nType:" + j + " nOldLevel:" + k + " nNewLevel:" + m + " nContinuityDays:" + n + " lLastActionTime:" + l2);
+      break;
+      k = 0;
+      break label353;
+      m = 0;
+      break label374;
+      n = 0;
+      break label395;
+    }
+    label554:
+    paramRelationalChainChange = a(paramQQAppInterface, paramRelationalChainChange);
+    if ((!TextUtils.isEmpty(paramRelationalChainChange)) && (!asxm.a(paramQQAppInterface))) {
+      a(paramQQAppInterface, paramString, paramRelationalChainChange, localRelationalChainChange, paramakqm, 2097155, 0, l1, paramString);
+    }
+    a(paramQQAppInterface, l1, paramString);
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString)
+  {
+    return false;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if (paramQQAppInterface == null) {}
+    long l;
+    do
+    {
+      return false;
+      l = bbkb.a(BaseApplicationImpl.getContext(), paramQQAppInterface.c(), paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReactivePushHelper", 2, "needShowTips, LastTime:" + l + " servertime:" + paramLong + " frienduin:" + paramString);
+      }
+      if (l == 0L) {
+        return true;
+      }
+    } while (paramLong == l);
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, QQMessageFacade.Message paramMessage)
+  {
+    if ((paramMessage == null) || (paramQQAppInterface == null)) {
+      return false;
+    }
+    if (paramMessage.msgtype != -5040) {
+      return false;
+    }
+    try
+    {
+      paramQQAppInterface = (MessageForUniteGrayTip)paramQQAppInterface.a().b(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
+      if (paramQQAppInterface == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReactivePushHelper", 2, "query msg, msg is null");
+        }
+        return false;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReactivePushHelper", 2, "query msg exception:" + paramQQAppInterface.toString());
+        }
+        paramQQAppInterface = null;
+      }
+      if ((paramQQAppInterface.tipParam != null) && (asxm.b(paramQQAppInterface.tipParam.jdField_b_of_type_Int)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReactivePushHelper", 2, "isReactivePushTips : true");
+        }
+        return true;
+      }
+    }
+    return false;
   }
 }
 

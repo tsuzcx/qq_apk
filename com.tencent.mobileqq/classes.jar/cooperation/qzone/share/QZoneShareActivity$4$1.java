@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import bhlj;
+import bhma;
 
 public class QZoneShareActivity$4$1
   implements Runnable
 {
-  public QZoneShareActivity$4$1(bhlj parambhlj) {}
+  public QZoneShareActivity$4$1(bhma parambhma) {}
   
   public void run()
   {

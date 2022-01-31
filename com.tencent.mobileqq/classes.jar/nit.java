@@ -1,19 +1,105 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.mobileqq.pb.PBStringField;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.Video;
 
 public class nit
-  implements View.OnClickListener
 {
-  public nit(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public int a;
+  public VideoCoverView a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public nit() {}
+  
+  public nit(int paramInt, String paramString1, String paramString2)
   {
-    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public static nit a(int paramInt, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
     }
+    try
+    {
+      nit localnit = new nit();
+      localnit.jdField_a_of_type_Int = paramInt;
+      localnit.jdField_a_of_type_JavaLangString = paramJSONObject.getString("str_cover");
+      localnit.b = paramJSONObject.getString("str_src");
+      return localnit;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static nit a(int paramInt, submsgtype0xf9.Video paramVideo)
+  {
+    if (paramVideo == null) {
+      return null;
+    }
+    try
+    {
+      nit localnit = new nit();
+      localnit.b = paramVideo.str_src.get();
+      localnit.jdField_a_of_type_JavaLangString = paramVideo.str_cover.get();
+      localnit.jdField_a_of_type_Int = paramInt;
+      return localnit;
+    }
+    catch (Exception paramVideo)
+    {
+      paramVideo.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static nit a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    try
+    {
+      nit localnit = new nit();
+      localnit.jdField_a_of_type_Int = paramJSONObject.getInt("index");
+      localnit.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
+      localnit.b = paramJSONObject.getString("src");
+      return localnit;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("index", this.jdField_a_of_type_Int);
+      localJSONObject.put("cover", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("src", this.b);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return "mVideoSrc " + this.b + " mVideoCoverPic " + this.jdField_a_of_type_JavaLangString + " mVideoIndex " + this.jdField_a_of_type_Int;
   }
 }
 

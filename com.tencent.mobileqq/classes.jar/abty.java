@@ -1,17 +1,18 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class abty
-  implements View.OnLongClickListener
+public class abty
 {
-  abty(abtx paramabtx, long paramLong) {}
-  
-  public boolean onLongClick(View paramView)
-  {
-    bbcv.a(this.jdField_a_of_type_Abtx.a, 230).setTitle(this.jdField_a_of_type_Abtx.a.getString(2131719973)).setItems(2130968611, new abtz(this)).show();
-    return true;
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 

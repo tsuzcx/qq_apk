@@ -1,16 +1,17 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
 
 public class aazj
-  implements View.OnClickListener
+  implements bfpt
 {
-  public aazj(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public aazj(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.setText("");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

@@ -1,34 +1,11 @@
-import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class twr
+public abstract interface twr
 {
-  @Nullable
-  public String a;
-  public two a;
-  @Nullable
-  public twp a;
-  @Nullable
-  public String b;
+  public abstract void a(ErrorMessage paramErrorMessage, List<twl> paramList, boolean paramBoolean);
   
-  public twr(@Nullable two paramtwo, @Nullable String paramString1, @Nullable String paramString2)
-  {
-    this.jdField_a_of_type_Two = paramtwo;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public twr(twr paramtwr)
-  {
-    this.jdField_a_of_type_Two = paramtwr.jdField_a_of_type_Two;
-    this.jdField_a_of_type_JavaLangString = paramtwr.jdField_a_of_type_JavaLangString;
-    this.b = paramtwr.b;
-    this.jdField_a_of_type_Twp = paramtwr.jdField_a_of_type_Twp;
-  }
-  
-  public String toString()
-  {
-    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Two + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
-  }
+  public abstract void b(ErrorMessage paramErrorMessage, List<twm> paramList, boolean paramBoolean);
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import bgws;
+import bgxj;
 
 public class IdiomHbFragment$IdiomHbBundleInfo
-  extends bgws
+  extends bgxj
 {
   public String skinId;
 }

@@ -1,32 +1,34 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
 
-class wqo
-  implements xgx<CertifiedAccountRead.StGetMainPageRsp>
+public class wqo
+  implements View.OnClickListener
 {
-  wqo(wqn paramwqn, wlj paramwlj) {}
+  public wqo(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpw paramwpw) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    List localList;
-    COMM.StCommonExt localStCommonExt;
-    if ((paramBoolean) && (paramStGetMainPageRsp != null))
-    {
-      paramString = this.jdField_a_of_type_Wlj;
-      localList = paramStGetMainPageRsp.vecFeed.get();
-      localStCommonExt = paramStGetMainPageRsp.extInfo;
-      if (paramStGetMainPageRsp.isFinish.get() != 1) {
-        break label61;
+    paramView = new Intent();
+    paramView.putExtra("postUin", this.jdField_a_of_type_Wpw.a.poster.id.get());
+    if (this.jdField_a_of_type_Wpw.a.poster.youZhan.size() > 0) {
+      if (((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_Wpw.a.poster.youZhan.get(0)).type.get() <= 1) {
+        break label132;
       }
     }
-    label61:
-    for (paramBoolean = bool;; paramBoolean = false)
+    label132:
+    for (boolean bool = true;; bool = false)
     {
-      paramString.b(localList, localStCommonExt, paramBoolean);
+      paramView.putExtra("has_shop", bool);
+      bgyp.a(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getActivity(), paramView, 0);
+      xhb.b(this.jdField_a_of_type_Wpw.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
       return;
     }
   }

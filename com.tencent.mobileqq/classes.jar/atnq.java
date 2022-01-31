@@ -1,12 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class atnq
-  extends atob
+class atnq
+  extends RecyclerView.ViewHolder
 {
-  public atnq(Context paramContext, PicInfo paramPicInfo)
+  public atnq(View paramView)
   {
-    super(paramContext, paramPicInfo);
+    super(paramView);
   }
 }
 

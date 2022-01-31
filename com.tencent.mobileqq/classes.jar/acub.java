@@ -1,11 +1,22 @@
-import android.graphics.drawable.Drawable;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class acub
+  extends View.AccessibilityDelegate
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public acub(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
+  }
 }
 
 

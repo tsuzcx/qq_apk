@@ -9,23 +9,35 @@ public class almi
   
   public void a()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResDownLoadComplete " + this.a.m);
     if (!this.a.m) {
       return;
     }
-    ARScanEntryView.a(this.a, 100);
-    ARScanEntryView.a(this.a).removeMessages(324);
-    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    ARScanEntryView.b(this.a, 100);
+    if ((ARScanEntryView.a(this.a).a != null) && (ARScanEntryView.a(this.a).a.a != null)) {
+      ARScanEntryView.a(this.a).a.a.a();
+    }
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      ARScanEntryView.a(this.a).removeMessages(324);
+      ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    }
+    if ((ARScanEntryView.b(this.a)) && (this.a.a.a().a()))
+    {
+      ARScanEntryView.b(this.a);
+      QLog.d("AREngine_ARScanEntryView", 1, "everything is ready,so quit update resources");
+      return;
+    }
     this.a.k();
   }
   
   public void a(int paramInt)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResUpdateProgress " + paramInt + ";" + this.a.m);
     if (!this.a.m) {
       return;
     }
-    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.b(this.a, paramInt);
     ARScanEntryView.a(this.a);
   }
   

@@ -1,180 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.vip.qqbanner.QbossADImmersionBannerManager.1;
+import android.content.Intent;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.vip.manager.CommonRequestManager.1;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 import mqq.os.MqqHandler;
 
-public class bhzs
-  extends ahmv
+public abstract class bhzs
+  extends MSFServlet
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bhus jdField_a_of_type_Bhus;
-  private bhzp jdField_a_of_type_Bhzp;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  
-  private int a(bhzp parambhzp)
+  protected long a()
   {
-    if ((parambhzp == null) || (TextUtils.isEmpty(parambhzp.h))) {
-      return 24;
-    }
-    try
-    {
-      int i = Integer.parseInt(parambhzp.h);
-      return i;
-    }
-    catch (Exception parambhzp)
-    {
-      parambhzp.printStackTrace();
-      QLog.i("QbossADBannerManager", 1, "getFrameRate exception");
-    }
-    return 24;
+    return 10000L;
   }
   
-  private void i()
+  public abstract QzoneExternalRequest a(Intent paramIntent);
+  
+  public void a(Intent paramIntent)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-    if (localLayoutParams == null) {
-      localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    }
-    for (;;)
+    ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    QzoneExternalRequest localQzoneExternalRequest = a(paramIntent);
+    if (localQzoneExternalRequest == null)
     {
-      localLayoutParams.width = b();
-      localLayoutParams.height = c();
-      this.jdField_b_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      Object localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = b();
-      ((ViewGroup.LayoutParams)localObject).height = super.c();
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)(localLayoutParams.height * 2.050848F));
-      ((ViewGroup.LayoutParams)localObject).height = localLayoutParams.height;
-      this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      QLog.i("CommonRequestManager", 1, " onSend request = null");
       return;
     }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null)) {
-      return;
-    }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getHandler(Conversation.class);
-    if (localMqqHandler != null)
+    byte[] arrayOfByte = localQzoneExternalRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 1062;
-      localMessage.obj = new View[] { this.jdField_a_of_type_AndroidViewView, this.c, this.jdField_a_of_type_AndroidWidgetImageView };
-      localMqqHandler.sendMessage(localMessage);
-      return;
+      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
+      paramIntent = new byte[4];
     }
-    QLog.i("QbossADBannerManager", 1, "handle is null.");
-  }
-  
-  private void k()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null)) {
-      return;
-    }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getHandler(Conversation.class);
-    if (localMqqHandler != null)
-    {
-      localMqqHandler.sendEmptyMessage(1063);
-      return;
-    }
-    QLog.i("QbossADBannerManager", 1, "handle is null.");
-  }
-  
-  protected int a()
-  {
-    return 2131561528;
-  }
-  
-  public View a()
-  {
-    View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378252));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378338));
-    this.c = ((TextView)localView.findViewById(2131368472));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364759));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367850));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131364753));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369042));
-    i();
-    return new View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  protected void a(ahmr paramahmr)
-  {
-    super.a(paramahmr);
-    ThreadManagerV2.getUIHandlerV2().post(new QbossADImmersionBannerManager.1(this, paramahmr));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    if (this.jdField_a_of_type_Bhus != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_Bhus.stop();
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bhus.start();
-  }
-  
-  protected int c()
-  {
-    return super.c() + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + bbkx.b(50.0F);
-  }
-  
-  public void c()
-  {
-    super.c();
-    j();
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_Bhus != null)
-    {
-      this.jdField_a_of_type_Bhus.stop();
-      this.jdField_a_of_type_Bhus.b();
-    }
-    k();
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (this.jdField_a_of_type_Bhus != null)
-    {
-      this.jdField_a_of_type_Bhus.stop();
-      this.jdField_a_of_type_Bhus.b();
-    }
+    paramPacket.setTimeout(a());
+    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

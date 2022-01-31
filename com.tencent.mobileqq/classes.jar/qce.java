@@ -1,85 +1,68 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.ScripCmsInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleBasicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 
 public class qce
-  implements Cloneable
 {
-  public static int c;
-  public static int d;
-  public int a;
-  public long a;
   public String a;
-  public int b;
-  public String b = "";
+  public ArrayList<articlesummary.PGCPicInfo> a;
+  public String b;
   public String c;
-  public String d;
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
   
-  public qce()
+  public qce(articlesummary.ArticleBasicInfo paramArticleBasicInfo)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static qce a(articlesummary.ScripCmsInfo paramScripCmsInfo)
-  {
-    qce localqce = new qce();
-    localqce.jdField_a_of_type_JavaLangString = paramScripCmsInfo.bytes_main_title.get().toStringUtf8();
-    localqce.b = paramScripCmsInfo.bytes_sub_title.get().toStringUtf8();
-    localqce.jdField_c_of_type_JavaLangString = paramScripCmsInfo.bytes_background_url.get().toStringUtf8();
-    localqce.jdField_d_of_type_JavaLangString = paramScripCmsInfo.bytes_left_bottom_txt.get().toStringUtf8();
-    localqce.e = paramScripCmsInfo.bytes_icon_url.get().toStringUtf8();
-    localqce.f = paramScripCmsInfo.bytes_background_animation_url.get().toStringUtf8();
-    localqce.g = paramScripCmsInfo.bytes_guide_main_title.get().toStringUtf8();
-    localqce.h = paramScripCmsInfo.bytes_guide_sub_title.get().toStringUtf8();
-    localqce.i = paramScripCmsInfo.bytes_guide_background_url.get().toStringUtf8();
-    localqce.jdField_a_of_type_Long = paramScripCmsInfo.uint64_from_uin.get();
-    localqce.j = paramScripCmsInfo.bytes_scrip_tag.get().toStringUtf8();
-    jdField_c_of_type_Int = paramScripCmsInfo.uint32_scrip_total_sum.get();
-    jdField_d_of_type_Int = paramScripCmsInfo.uint32_frequency_limit.get();
-    return localqce;
-  }
-  
-  public qce a()
-  {
-    try
-    {
-      super.clone();
-      qce localqce = new qce();
-      localqce.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localqce.b = this.b;
-      localqce.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      localqce.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      localqce.e = this.e;
-      localqce.f = this.f;
-      localqce.i = this.i;
-      localqce.g = this.g;
-      localqce.h = this.h;
-      localqce.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localqce.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localqce.j = this.j;
-      return localqce;
+    if (paramArticleBasicInfo.rowkey.has()) {
+      this.jdField_a_of_type_JavaLangString = paramArticleBasicInfo.rowkey.get();
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    if (paramArticleBasicInfo.title.has()) {
+      this.b = paramArticleBasicInfo.title.get();
+    }
+    if (paramArticleBasicInfo.jump_url.has()) {
+      this.c = paramArticleBasicInfo.jump_url.get();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramArticleBasicInfo.msg_pgc_pic_info_list.has()) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArticleBasicInfo.msg_pgc_pic_info_list.get());
+    }
+  }
+  
+  public articlesummary.ArticleBasicInfo a()
+  {
+    articlesummary.ArticleBasicInfo localArticleBasicInfo = new articlesummary.ArticleBasicInfo();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localArticleBasicInfo.rowkey.set(this.jdField_a_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localArticleBasicInfo.title.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localArticleBasicInfo.jump_url.set(this.c);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      for (;;)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScripCmsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
-        }
+        articlesummary.PGCPicInfo localPGCPicInfo1 = (articlesummary.PGCPicInfo)localIterator.next();
+        articlesummary.PGCPicInfo localPGCPicInfo2 = new articlesummary.PGCPicInfo();
+        localPGCPicInfo2.setHasFlag(true);
+        localPGCPicInfo2.bytes_pic_md5.set(localPGCPicInfo1.bytes_pic_md5.get());
+        localPGCPicInfo2.bytes_pic_desc.set(localPGCPicInfo1.bytes_pic_desc.get());
+        localPGCPicInfo2.bytes_pic_url.set(localPGCPicInfo1.bytes_pic_url.get());
+        localPGCPicInfo2.bytes_thumbnail_url.set(localPGCPicInfo1.bytes_thumbnail_url.get());
+        localPGCPicInfo2.is_animation.set(localPGCPicInfo1.is_animation.get());
+        localPGCPicInfo2.uint32_pic_height.set(localPGCPicInfo1.uint32_pic_height.get());
+        localPGCPicInfo2.uint32_pic_width.set(localPGCPicInfo1.uint32_pic_width.get());
+        localArticleBasicInfo.msg_pgc_pic_info_list.add(localPGCPicInfo1);
       }
     }
+    return localArticleBasicInfo;
   }
 }
 

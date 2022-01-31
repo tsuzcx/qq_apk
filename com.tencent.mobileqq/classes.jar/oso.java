@@ -1,38 +1,22 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import java.util.ArrayList;
 
-public class oso
-  implements Manager
+final class oso
+  extends akui
 {
-  private AppInterface a;
-  
-  public oso(AppInterface paramAppInterface)
+  oso(String paramString, boolean paramBoolean)
   {
-    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
-    this.a = paramAppInterface;
-    a();
+    super(paramString, paramBoolean);
   }
   
-  public osj a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return osj.a();
-  }
-  
-  public void a()
-  {
-    oon.a();
-    osj.a().a(this.a);
-  }
-  
-  public void b()
-  {
-    osj.a().a(false);
-  }
-  
-  public void onDestroy()
-  {
-    b();
+    osn.a(false);
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      sgg.a(100, new ArrayList());
+    }
   }
 }
 

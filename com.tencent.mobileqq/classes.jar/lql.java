@@ -1,95 +1,121 @@
-import android.annotation.SuppressLint;
-import android.opengl.EGL14;
-import android.os.Build.VERSION;
-import javax.microedition.khronos.egl.EGL10;
+import android.content.Context;
+import android.graphics.PointF;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
 public class lql
+  extends lqk
 {
-  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
-  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private final lqm jdField_a_of_type_Lqm;
+  private PointF b;
+  private PointF c;
+  private PointF d = new PointF();
+  private PointF e = new PointF();
   
-  private void a()
+  public lql(Context paramContext, lqm paramlqm)
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    Object localObject = new int[2];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject);
-    localObject = new javax.microedition.khronos.egl.EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglChooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0) {
-      lcl.e("OffscreenSurface", "TROUBLE! No config found.");
-    }
-    localObject = localObject[0];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    super(paramContext);
+    this.jdField_a_of_type_Lqm = paramlqm;
   }
   
-  private void c()
+  private PointF a(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null))
+    float f1 = 0.0F;
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    float f2 = 0.0F;
+    while (i < j)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+      f2 += paramMotionEvent.getX(i);
+      f1 += paramMotionEvent.getY(i);
+      i += 1;
     }
+    return new PointF(f2 / j, f1 / j);
   }
   
-  @SuppressLint({"NewApi"})
-  private void d()
+  public float a()
   {
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
-    Object localObject = new int[2];
-    EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1);
-    localObject = new android.opengl.EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    EGL14.eglChooseConfig(this.jdField_a_of_type_AndroidOpenglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject, 0, 1, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0) {
-      lcl.c("OffscreenSurface", "TROUBLE! No config found.");
-    }
-    localObject = localObject[0];
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext);
+    return this.d.x;
   }
   
-  @SuppressLint({"NewApi"})
-  private void f()
+  public PointF a()
   {
-    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay != null) && (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) && (this.jdField_a_of_type_AndroidOpenglEGLContext != null))
+    return this.e;
+  }
+  
+  protected void a(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
     {
-      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
-      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
-      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
-      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
-    }
-  }
-  
-  void b()
-  {
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      d();
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a();
+      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.jdField_a_of_type_Long = 0L;
+      a(paramMotionEvent);
       return;
     }
-    a();
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Lqm.b(this);
   }
   
-  public void e()
+  protected void a(MotionEvent paramMotionEvent)
   {
-    if (Build.VERSION.SDK_INT >= 17)
+    super.a(paramMotionEvent);
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
     {
-      f();
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      }
       return;
     }
-    c();
+    this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
+    this.c = a(localMotionEvent);
+    int i;
+    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
+    {
+      i = 1;
+      if (i == 0) {
+        break label125;
+      }
+    }
+    label125:
+    for (paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;; paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y))
+    {
+      this.e = paramMotionEvent;
+      paramMotionEvent = this.d;
+      paramMotionEvent.x += this.e.x;
+      paramMotionEvent = this.d;
+      paramMotionEvent.y += this.e.y;
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public float b()
+  {
+    return this.d.y;
+  }
+  
+  protected void b(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Lqm.a(this);
+      a();
+      return;
+      a(paramMotionEvent);
+    } while ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_Lqm.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null));
+    this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
   }
 }
 

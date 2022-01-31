@@ -14,7 +14,7 @@ public final class akhj
   {
     if (paramObject == null)
     {
-      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
+      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
       return;
     }
     super.removeCallbacksAndMessages(paramObject);

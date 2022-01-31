@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.base.download;
 
-import stq;
-import stw;
-import sty;
+import stn;
+import stt;
+import stv;
 
 public class DownloadUrlManager$2$1
   implements Runnable
 {
-  public DownloadUrlManager$2$1(stq paramstq, stw paramstw) {}
+  public DownloadUrlManager$2$1(stn paramstn, stt paramstt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Stq.a != null) {
-      this.jdField_a_of_type_Stq.a.a(this.jdField_a_of_type_Stw);
+    if (this.jdField_a_of_type_Stn.a != null) {
+      this.jdField_a_of_type_Stn.a.a(this.jdField_a_of_type_Stt);
     }
   }
 }

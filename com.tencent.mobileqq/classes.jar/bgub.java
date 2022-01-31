@@ -1,27 +1,50 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qwallet.plugin.QWalletHelper;
+import mqq.app.AppRuntime;
 
-class bgub
-  implements INetInfoHandler
+public class bgub
+  extends RemoteCommand
 {
-  bgub(bgua parambgua) {}
-  
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  public bgub()
   {
-    bgua.a(this.a);
+    super("qqreader_plugin_asyn_cmd");
   }
   
-  public void onNetNone2Wifi(String paramString)
+  private QQAppInterface a()
   {
-    bgua.a(this.a);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
-  public void onNetWifi2Mobile(String paramString) {}
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    switch (paramBundle.getInt("CommondType"))
+    {
+    }
+    for (;;)
+    {
+      return null;
+      if (a() != null)
+      {
+        paramBundle = paramBundle.getString("publicaccount_uin");
+        sgg.a(a(), a().getApp(), paramBundle, new bguc(this, paramOnInvokeFinishLinstener));
+        continue;
+        QWalletHelper.preloadQWallet(a());
+      }
+    }
+  }
   
-  public void onNetWifi2None() {}
+  public boolean isSynchronized()
+  {
+    return false;
+  }
 }
 
 

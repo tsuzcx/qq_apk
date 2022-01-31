@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class pfl
-  implements View.OnClickListener
+  implements pvo
 {
-  pfl(pfe parampfe, rap paramrap, pax parampax) {}
+  pfl(pfj parampfj, pau parampau, ram paramram) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = this.jdField_a_of_type_Rap.a();
-    if (paramView != null) {
-      paramView.a(null, this.jdField_a_of_type_Pax.a(), 1);
-    }
+    onh.a = this.jdField_a_of_type_Pau.a();
+    onh.a(this.jdField_a_of_type_Ram.a(), this.jdField_a_of_type_Pau.a(), 2);
   }
 }
 

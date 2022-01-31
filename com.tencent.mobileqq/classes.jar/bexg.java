@@ -1,45 +1,36 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Build;
 
 public class bexg
-  extends bemk
 {
-  public bexg(begz parambegz)
-  {
-    super(parambegz);
-  }
+  public static volatile boolean a;
+  public static volatile boolean b;
   
-  private void c()
+  static
   {
-    Object localObject = this.a.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-    {
-      if (!((Activity)localObject).moveTaskToBack(true))
-      {
-        besl.d("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
-        ((Activity)localObject).finish();
-      }
-      this.a.a(bejl.a(60));
+    if (Build.MODEL.contains("Android SDK built for x86")) {
+      b = true;
     }
-    if (this.a.e())
+    String str1 = System.getProperty("os.arch");
+    String str2 = bfhi.a("ro.product.cpu.abi", "");
+    if ((Build.CPU_ABI.contains("x86")) || (Build.CPU_ABI2.contains("x86")) || ((str1 != null) && (str1.contains("x86"))) || ((str2 != null) && (str2.contains("x86"))))
     {
-      localObject = this.a.a();
-      if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.f))) {
-        bekv.a(((MiniAppInfo)localObject).launchParam.f);
+      str1 = bfhi.a("ro.dalvik.vm.native.bridge", "");
+      if ((str1 != null) && (!str1.equals("0")) && (bfhi.a("ro.enable.native.bridge.exec", "0").equals("0"))) {
+        b = true;
       }
     }
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).onCapsuleButtonCloseClick(new beha(this.a));
+    str1 = Build.CPU_ABI;
+    str2 = Build.CPU_ABI2;
+    if ((!b) && ((a(str1).booleanValue()) || (a(str2).booleanValue()))) {
+      a = true;
+    }
   }
   
-  public void a()
+  private static Boolean a(String paramString)
   {
-    besl.b("GameCapsuleButton", "on close click");
-    if ((!bevd.b(this.a, new bexh(this))) && (!bevd.a(this.a, new bexi(this)))) {
-      c();
+    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
   }
 }

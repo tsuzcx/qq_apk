@@ -1,44 +1,27 @@
-import UserGrowth.stGlobalConfig;
 import UserGrowth.stNotificationRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.view.WeiShiNoticeView;
 
 public class sjk
-  implements snn
+  implements View.OnClickListener
 {
   public sjk(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (WSRecommendFragment.a(this.a) == null) {}
-    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
-    {
-      sng.a(this.a.getActivity(), "biz_src_jc_gzh_weishi", paramString, 1, i, WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a)));
-      smq.a(4, 114, 0, null, null);
-      sms.a(114, paramInt, WSRecommendFragment.a(this.a).cid);
-      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000003, WSRecommendFragment.a(this.a).cid);
+    if (WSRecommendFragment.a(this.a) == null) {
       return;
     }
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    onk.e(this.a.getActivity(), paramString);
-    sms.a(140, paramInt, WSRecommendFragment.a(this.a).cid);
-    WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000004, WSRecommendFragment.a(this.a).cid);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    if (WSRecommendFragment.a(this.a) == null) {}
-    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
-    {
-      paramString = WSRecommendFragment.a(this.a, i);
-      skq.a(this.a.getActivity(), paramString, false);
-      sms.a(115, paramInt, WSRecommendFragment.a(this.a).cid);
-      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000002, WSRecommendFragment.a(this.a).cid);
-      return;
-    }
+    int i = WSRecommendFragment.a(this.a).a();
+    paramView = WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a));
+    String str = WSRecommendFragment.a(this.a).h5Url;
+    snb.c("WSRecommendFragment", "schemeUrl:" + paramView + ", h5Url:" + str);
+    snf.a(WSRecommendFragment.a(this.a), paramView, str, i, this.a.a);
+    smp.a(112, i, WSRecommendFragment.a(this.a).cid);
+    snb.a("weishi-808", "notification jumpUrl" + WSRecommendFragment.a(this.a).jump_url);
+    this.a.b(false);
   }
 }
 

@@ -1,33 +1,31 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import NS_MINI_INTERFACE.INTERFACE.StBaseLibInfo;
+import NS_MINI_INTERFACE.INTERFACE.StGetNewBaseLibReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetNewBaseLibRsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
 
 public class bfae
-  extends bfad
+  extends bfau
 {
-  private MiniAppMidasPay.StQueryStarCurrencyReq a = new MiniAppMidasPay.StQueryStarCurrencyReq();
+  private INTERFACE.StGetNewBaseLibReq a = new INTERFACE.StGetNewBaseLibReq();
   
-  public bfae(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public bfae(String paramString, int paramInt)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    this.a.appId.set(paramString1);
-    this.a.prepayId.set(paramString2);
-    this.a.starCurrency.set(paramInt1);
-    this.a.sandboxEnv.set(paramInt2);
+    this.a.curVersion.set(paramString);
+    this.a.type.set(paramInt);
   }
   
   protected String a()
   {
-    return "mini_app_pay";
+    return "mini_app_info";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
@@ -35,38 +33,57 @@ public class bfae
     if (paramArrayOfByte == null) {
       return null;
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = new MiniAppMidasPay.StQueryStarCurrencyRsp();
+    INTERFACE.StGetNewBaseLibRsp localStGetNewBaseLibRsp = new INTERFACE.StGetNewBaseLibRsp();
     try
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStQueryStarCurrencyRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStQueryStarCurrencyRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("response", localStQueryStarCurrencyRsp);
-        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        return paramArrayOfByte;
+      localStGetNewBaseLibRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetNewBaseLibRsp == null) {
+        break label338;
       }
-      besl.a("QueryCurrencyRequest", "onResponse fail.rsp = null");
-      return null;
+      paramArrayOfByte = new JSONObject();
+      int i = localStGetNewBaseLibRsp.interval.get();
+      betc.b("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib interval:" + i);
+      long l1 = i * 1000;
+      long l2 = System.currentTimeMillis();
+      bfhm.a().edit().putLong("baselib_min_update_time", l1 + l2).apply();
+      Iterator localIterator = localStGetNewBaseLibRsp.jsOrsoLibs.get().iterator();
+      while (localIterator.hasNext())
+      {
+        INTERFACE.StBaseLibInfo localStBaseLibInfo = (INTERFACE.StBaseLibInfo)localIterator.next();
+        BaseLibInfo localBaseLibInfo = new BaseLibInfo();
+        localBaseLibInfo.baseLibUrl = localStBaseLibInfo.downloadUrl.get();
+        localBaseLibInfo.baseLibVersion = localStBaseLibInfo.version.get();
+        localBaseLibInfo.baseLibKey = null;
+        localBaseLibInfo.baseLibDesc = localStBaseLibInfo.extInfo.get();
+        if (TextUtils.isEmpty(localBaseLibInfo.baseLibDesc)) {
+          localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
+        }
+        localBaseLibInfo.baseLibType = localStBaseLibInfo.libType.get();
+        paramArrayOfByte.put(localBaseLibInfo.getKey(), localBaseLibInfo.toJSONObject());
+        betc.b("GetNewBaseLibRequest", "[MiniEng] GetNewBaseLib " + localBaseLibInfo);
+      }
+      paramArrayOfByte.put("version", localStGetNewBaseLibRsp.libInfo.version.get());
     }
     catch (Exception paramArrayOfByte)
     {
-      besl.a("QueryCurrencyRequest", "onResponse fail." + paramArrayOfByte);
+      betc.a("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
+      return null;
     }
+    paramArrayOfByte.put("downloadUrl", localStGetNewBaseLibRsp.libInfo.downloadUrl.get());
+    return paramArrayOfByte;
+    label338:
+    betc.a("GetNewBaseLibRequest", "onResponse fail.rsp = null");
     return null;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return this.a.toByteArray();
   }
   
   protected String b()
   {
-    return "QueryStarCurrency";
+    return "GetNewBaseLib";
   }
 }
 

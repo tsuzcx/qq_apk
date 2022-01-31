@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bjae;
-import bjfa;
-import bkdl;
+import bjav;
+import bjfr;
+import bkec;
 
 public class DoodleLayout$8$1
   implements Runnable
 {
-  public DoodleLayout$8$1(bkdl parambkdl) {}
+  public DoodleLayout$8$1(bkec parambkec) {}
   
   public void run()
   {
-    ((bjfa)bjae.a().c(12)).c();
+    ((bjfr)bjav.a().c(12)).c();
   }
 }
 

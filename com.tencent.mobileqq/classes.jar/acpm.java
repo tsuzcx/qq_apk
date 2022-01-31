@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class acpm
-  extends aume
+  implements acpu
 {
-  public acpm(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public acpm(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
-    }
-    VerifyPhoneNumActivity.c(this.a);
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

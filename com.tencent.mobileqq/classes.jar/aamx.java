@@ -1,20 +1,88 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aamx
-  implements DialogInterface.OnClickListener
+  extends ajto
 {
   public aamx(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
+        aanz.h(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      if ((paramBoolean) && (paramObject != null)) {}
+      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
+        {
+          this.a.A();
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onCardDownload nick = " + bbbr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
+          }
+          this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          if (AppSetting.d)
+          {
+            paramObject = this.a.e.getText().toString();
+            this.a.e.setContentDescription(paramObject);
+            this.a.a().setTitle(this.a.e.getText());
+          }
+          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof aeoc))) {
+            ((aeoc)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.e);
+          }
+        }
+      case 1034: 
+        return;
+      }
+      this.a.b(false, false);
+      return;
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aS();
+    }
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.d != null) && (this.a.d.isShowing())) {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aS();
+    }
   }
 }
 

@@ -1,20 +1,47 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class bavt
-  implements DownloadParams.DecodeHandler
+public class bavt
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public int a;
+  public String a;
+  
+  public bavt() {}
+  
+  public bavt(int paramInt, String paramString)
   {
-    paramDownloadParams = paramDownloadParams.tag;
-    if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(bavt parambavt)
+  {
+    if (parambavt != null)
     {
-      int i = ((int[])(int[])paramDownloadParams)[0];
-      GdtSmartBlur.a().a(paramBitmap, i);
+      this.jdField_a_of_type_Int = parambavt.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = parambavt.jdField_a_of_type_JavaLangString;
     }
-    return paramBitmap;
+  }
+  
+  public Object clone()
+  {
+    return new bavt(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof bavt))
+    {
+      paramObject = (bavt)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (bbbr.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

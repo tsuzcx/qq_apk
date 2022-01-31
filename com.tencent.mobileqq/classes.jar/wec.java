@@ -1,12 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
 
-class wec
-  extends RecyclerView.ViewHolder
+public class wec
+  extends RecyclerView.OnScrollListener
 {
-  wec(wea paramwea, View paramView)
+  public wec(XRecyclerView paramXRecyclerView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramView);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    paramInt = paramRecyclerView.getChildCount();
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      int i = paramRecyclerView.getItemCount();
+      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
+      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0) {
+        XRecyclerView.a(this.a).b(false);
+      }
+      return;
+    }
   }
 }
 

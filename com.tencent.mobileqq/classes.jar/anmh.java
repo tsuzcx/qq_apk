@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.dating.DatingFilters;
 
-public class anmh
-  implements DialogInterface.OnClickListener
+public final class anmh
+  implements Parcelable.Creator<DatingFilters>
 {
-  public anmh(DatingUtil.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public DatingFilters a(Parcel paramParcel)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return new DatingFilters(paramParcel, null);
+  }
+  
+  public DatingFilters[] a(int paramInt)
+  {
+    return new DatingFilters[paramInt];
   }
 }
 

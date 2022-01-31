@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import awwd;
+import awwf;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 
 class GameActivity$36
-  implements awwd
+  implements awwf
 {
   GameActivity$36(GameActivity paramGameActivity) {}
   

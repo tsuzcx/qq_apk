@@ -1,60 +1,77 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
 public class amuq
-  extends ampb<amup>
+  extends ampa<Object>
 {
   public int a()
   {
-    return 390;
+    return 310;
+  }
+  
+  public Class<Object> a()
+  {
+    return Object.class;
   }
   
   @NonNull
-  public amup a(int paramInt)
+  public Object a(int paramInt)
   {
-    return new amup();
+    return new Object();
   }
   
-  @Nullable
-  public amup a(ampi[] paramArrayOfampi)
+  public void a(int paramInt)
   {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
-    {
-      amup localamup = amup.a(paramArrayOfampi[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfPushProcessor", 0, "onParsed " + paramArrayOfampi[0].a);
-      }
-      return localamup;
-    }
-    return new amup();
-  }
-  
-  public Class<amup> a()
-  {
-    return amup.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amup paramamup)
-  {
-    ((asep)BaseApplicationImpl.getApplication().getRuntime().getManager(308)).a(paramamup);
     if (QLog.isColorLevel()) {
-      QLog.d("QConfPushProcessor", 0, "onUpdate " + paramamup);
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onReqFailed");
     }
   }
   
-  public boolean a()
+  public void a(Object paramObject)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onUpdate");
+    }
   }
   
   public int b()
   {
-    return 0;
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a()) {
+      return 0;
+    }
+    return bbkb.l(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a())
+    {
+      QLog.i("QIMDoodleConfigProcessor", 1, "config file not exist");
+      ampl.a().a(310, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  @Nullable
+  public Object b(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return null;
+    }
+    paramArrayOfamph = paramArrayOfamph[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onParsed, content:" + paramArrayOfamph);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    PtvTemplateManager.a(localQQAppInterface).a(paramArrayOfamph, localQQAppInterface);
+    return new Object();
   }
   
   public boolean b()

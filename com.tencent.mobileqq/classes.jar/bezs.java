@@ -1,114 +1,87 @@
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoRsp;
+import NS_MINI_REPORT.REPORT.StDcReportRsp;
+import NS_MINI_REPORT.REPORT.StGameDcReportRsp;
+import NS_MINI_REPORT.REPORT.StThirdDcReportRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import org.json.JSONObject;
 
 public class bezs
-  extends bfad
+  extends bfau
 {
-  private MiniProgramShare.StAdaptShareInfoReq a;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
   
-  public bezs(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq)
+  public bezs(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    this.a = paramStAdaptShareInfoReq;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
   protected String a()
   {
-    return "mini_app_share";
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return "mini_app_dcreport";
   }
   
   public JSONObject a(byte[] paramArrayOfByte)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
     if (paramArrayOfByte == null) {
       return null;
     }
-    Object localObject2 = new PROTOCAL.StQWebRsp();
-    Object localObject1 = new MiniProgramShare.StAdaptShareInfoRsp();
-    for (;;)
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    try
     {
-      long l;
-      boolean bool2;
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
       int i;
-      try
+      if ("ThirdDcReport".equals(this.b))
       {
-        ((PROTOCAL.StQWebRsp)localObject2).mergeFrom(paramArrayOfByte);
-        ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).mergeFrom(((PROTOCAL.StQWebRsp)localObject2).busiBuff.get().toByteArray());
-        if ((localObject2 == null) || (localObject1 == null)) {
-          break label306;
-        }
-        l = ((PROTOCAL.StQWebRsp)localObject2).retCode.get();
-        paramArrayOfByte = ((PROTOCAL.StQWebRsp)localObject2).errMsg.get().toStringUtf8();
-        bool2 = bool3;
-        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo == null) {
-          break label347;
-        }
-        bool2 = bool3;
-        if (((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo == null) {
-          break label347;
-        }
-        i = 0;
-        bool2 = bool1;
-        if (i >= ((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.size()) {
-          break label347;
-        }
-        localObject2 = (COMM.Entry)((MiniProgramShare.StAdaptShareInfoRsp)localObject1).extInfo.mapInfo.get(i);
-        if ((!"needShareCallBack".equals(((COMM.Entry)localObject2).key.get())) || (!"true".equals(((COMM.Entry)localObject2).value.get()))) {
-          break label340;
-        }
-        bool1 = true;
+        paramArrayOfByte = new REPORT.StThirdDcReportRsp();
+        paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+        i = paramArrayOfByte.ret.get();
       }
-      catch (Exception paramArrayOfByte)
+      while (i == 0)
       {
-        label186:
-        besl.a("GetShareInfoRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
-      besl.d("GetShareInfoRequest", "onGetShareInfo isSuccess=false, retCode=" + l);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("retCode", l);
-      ((JSONObject)localObject1).put("errMsg", paramArrayOfByte);
-      ((JSONObject)localObject1).put("needShareCallBack", bool2);
-      return localObject1;
-      label306:
-      label340:
-      label347:
-      do
-      {
-        paramArrayOfByte = new JSONObject(((MiniProgramShare.StAdaptShareInfoRsp)localObject1).jsonData.get());
-        paramArrayOfByte.put("needShareCallBack", bool2);
-        return paramArrayOfByte;
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("retCode", -1);
-        paramArrayOfByte.put("errMsg", "数据解析错误");
-        besl.a("GetShareInfoRequest", "onResponse fail.webRsp = null");
-        return paramArrayOfByte;
-        i += 1;
-        break;
-        if (l == -100070004L) {
-          break label186;
+        return new JSONObject();
+        if ("GameDcReport".equals(this.b))
+        {
+          paramArrayOfByte = new REPORT.StGameDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
         }
-      } while (l != -1000710003L);
+        else
+        {
+          paramArrayOfByte = new REPORT.StDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
+        }
+      }
+      betc.a("ProtoBufRequest", "onResponse fail.retCode = " + i);
+      return null;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  protected byte[] a()
+  public byte[] a()
   {
-    return this.a.toByteArray();
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
   protected String b()
   {
-    return "AdaptShareInfo";
+    if (this.b != null) {
+      return this.b;
+    }
+    return "DcReport";
   }
 }
 

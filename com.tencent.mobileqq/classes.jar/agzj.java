@@ -1,6 +1,15 @@
-public abstract interface agzj
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
+
+public class agzj
+  extends ahaa
 {
-  public abstract void a(String paramString1, String paramString2, agzd paramagzd);
+  public agzj(BaseHbUIFragment paramBaseHbUIFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    this.a.a();
+  }
 }
 
 

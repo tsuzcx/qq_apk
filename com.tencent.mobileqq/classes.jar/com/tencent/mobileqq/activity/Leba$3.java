@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akfi;
+import akfh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$3
@@ -10,7 +10,7 @@ class Leba$3
   
   public void run()
   {
-    ((akfi)this.this$0.a.a(87)).a(false, false);
+    ((akfh)this.this$0.a.a(87)).a(false, false);
   }
 }
 

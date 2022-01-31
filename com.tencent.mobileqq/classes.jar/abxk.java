@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 
 public class abxk
-  extends ajuh
+  implements DialogInterface.OnDismissListener
 {
-  public abxk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public abxk(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    this.a.finish();
   }
 }
 

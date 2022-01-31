@@ -1,32 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class aavm
-  implements Animation.AnimationListener
+  implements aaqa
 {
-  public aavm(ContactBindedActivity paramContactBindedActivity) {}
+  public aavm(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
-    }
+    this.a.finish();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void b() {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aavm
  * JD-Core Version:    0.7.0.1
  */

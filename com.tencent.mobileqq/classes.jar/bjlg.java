@@ -1,16 +1,41 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import dov.com.qq.im.capture.view.StoryToastView;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.Iterator;
+import java.util.List;
 
 public class bjlg
-  extends AnimatorListenerAdapter
+  implements Animator.AnimatorListener
 {
-  public bjlg(StoryToastView paramStoryToastView) {}
+  public bjlg(QIMProviderContainerView paramQIMProviderContainerView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    StoryToastView.a(this.a).sendEmptyMessageDelayed(1, 1500L);
+    this.a.c.setVisibility(0);
+    QIMProviderContainerView.a(this.a, true);
+    QIMProviderContainerView.a(this.a);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      paramAnimator = QIMProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((avvt)paramAnimator.next()).a(null, 0);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a.setVisibility(0);
   }
 }
 

@@ -12,10 +12,10 @@ import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yxr;
-import yxs;
-import yyw;
-import yyx;
+import yxo;
+import yxp;
+import yyt;
+import yyu;
 
 public class GdtHandler
 {
@@ -45,7 +45,7 @@ public class GdtHandler
     localParams.extrasForIntent.putString("big_brother_source_key", "biz_src_ads");
     if (paramParams.jdField_a_of_type_AndroidOsBundle != null)
     {
-      yxs.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
+      yxp.b("GdtHandler", "toParams pass refId " + paramParams.jdField_a_of_type_AndroidOsBundle);
       localParams.extrasForIntent.putAll(paramParams.jdField_a_of_type_AndroidOsBundle);
     }
     for (;;)
@@ -53,19 +53,19 @@ public class GdtHandler
       localParams.videoPlayForced = paramParams.f;
       localParams.antiSpamParams = paramParams.jdField_a_of_type_JavaLangString;
       return localParams;
-      yxs.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
+      yxp.b("GdtHandler", "toParams not pass refId \n" + QLog.getStackTraceString(new IllegalArgumentException()));
     }
   }
   
   public static void a(GdtHandler.Params paramParams)
   {
-    yxs.b("GdtHandler", "handle");
+    yxp.b("GdtHandler", "handle");
     ThreadManager.getSubThreadHandler().post(new GdtHandler.1(paramParams));
-    yyw localyyw = yyw.a();
+    yyt localyyt = yyt.a();
     if ((paramParams != null) && (paramParams.a())) {}
     for (Activity localActivity = (Activity)paramParams.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
     {
-      localyyw.a(localActivity, new yyx());
+      localyyt.a(localActivity, new yyu());
       b(paramParams);
       return;
     }
@@ -79,7 +79,7 @@ public class GdtHandler
     try
     {
       JSONObject localJSONObject1 = new JSONObject(paramString);
-      yxs.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
+      yxp.b("GdtHandler", String.format("fromJSON %s", new Object[] { paramString }));
       paramString = localJSONObject1.getJSONObject("options");
       boolean bool1 = paramString.getBoolean("reportForClick");
       boolean bool2 = paramString.getBoolean("appAutoDownload");
@@ -107,13 +107,13 @@ public class GdtHandler
       paramOptions.jdField_a_of_type_AndroidGraphicsRect = localRect;
       paramOptions.f = paramString.optBoolean("videoPlayForced");
       if (localJSONObject1.has("adInfo")) {
-        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxr.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
+        paramOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject1.getJSONObject("adInfo"))));
       }
       return true;
     }
     catch (Throwable paramOptions)
     {
-      yxs.d("GdtHandler", "handleJsCallRequest error", paramOptions);
+      yxp.d("GdtHandler", "handleJsCallRequest error", paramOptions);
     }
     return false;
   }
@@ -129,7 +129,7 @@ public class GdtHandler
     if (paramParams != null) {
       i = paramParams.getErrorCode();
     }
-    yxs.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
+    yxp.b("GdtHandler", String.format("handle errorCode:%d", new Object[] { Integer.valueOf(i) }));
   }
 }
 

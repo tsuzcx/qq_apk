@@ -1,548 +1,296 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class axue
+  extends Handler
 {
-  public static int a(String paramString)
+  private final float jdField_a_of_type_Float = 0.1F;
+  private int jdField_a_of_type_Int;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = axnx.a();
+  private Thread jdField_a_of_type_JavaLangThread;
+  private boolean jdField_a_of_type_Boolean;
+  private Thread jdField_b_of_type_JavaLangThread;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public axue(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper)
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    super(paramLooper);
+    if (Math.random() < 0.1000000014901161D) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a().size();
-      }
+      this.jdField_b_of_type_Boolean = bool;
+      return;
     }
-    return 0;
   }
   
-  public static int a(String paramString, short paramShort)
+  private void a()
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    try
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null)
+      System.loadLibrary("threadsuspend");
+      if (Build.VERSION.SDK_INT >= 24) {
+        SuspendThreadManager.a(false);
+      }
+      for (;;)
       {
-        if (paramShort <= paramString.a().size()) {
-          return ((axud)paramString.a().get(paramShort - 1)).a();
+        if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("force_disable_thread_suspend", false)) {
+          SuspendThreadManager.a(false);
         }
-        QLog.w("StreamDataManager", 2, "getRecordedSize error shPackSeq: " + paramShort + "sfi.getStreamData().size(): " + paramString.a().size());
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("notResumeCount", 0);
+        if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("suspend_check_flag", 0) != 0)
+        {
+          this.jdField_a_of_type_Int += 1;
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("notResumeCount", this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_check_flag", 0);
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+        }
+        QLog.d("TSManager", 1, "mCurrentNotResumeCount = " + this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Int > SuspendThreadManager.a()) {
+          SuspendThreadManager.a(false);
+        }
+        if (SuspendThreadManager.a()) {
+          break;
+        }
+        return;
+        if ((Build.VERSION.SDK_INT <= 23) && (axnx.h)) {
+          SuspendThreadManager.a(true);
+        }
       }
+      SuspendThreadManager.b(SuspendThreadManager.b());
     }
-    return 0;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("TSManager", 1, "libthreadsuspend load failed !!!", localThrowable);
+      SuspendThreadManager.a(false);
+      return;
+    }
+    SuspendThreadManager.a(SuspendThreadManager.a(SuspendThreadManager.a()));
+    this.jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
+    this.jdField_b_of_type_JavaLangThread = SuspendThreadManager.a().getLooper().getThread();
+    SuspendThreadManager.a().add(this.jdField_a_of_type_JavaLangThread);
+    SuspendThreadManager.a().add(this.jdField_b_of_type_JavaLangThread);
+    Process.setThreadPriority(-2);
+    int i = SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.c());
+    QLog.i("TSManager", 1, "nativeInit return " + i);
+    a(i);
   }
   
-  public static File a(String paramString)
+  private void a(int paramInt)
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_report_time", 0L) > 86400000L)
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
+      HashMap localHashMap = new HashMap(10);
+      localHashMap.put("api_support_cond", String.valueOf(paramInt));
+      localHashMap.put("resume_count", String.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("resume_count", 0)));
+      localHashMap.put("timeout_count", String.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("timeout_count", 0)));
+      localHashMap.put("main_thread_stack", this.jdField_a_of_type_AndroidContentSharedPreferences.getString("main_thread_stack", ""));
+      localHashMap.put("not_resume_count", String.valueOf(this.jdField_a_of_type_Int));
+      axrn.a(BaseApplicationImpl.getApplication()).a(null, "suspendThreadMonitor", true, paramInt, 0L, localHashMap, null);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_report_time", l);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_count", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_count", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
     }
-    return null;
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  private void a(Thread paramThread, String paramString)
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.size() > 0))
+    if (paramThread != null)
     {
-      Iterator localIterator = localHashMap.keySet().iterator();
+      paramThread = paramThread.getStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reason:" + paramString + "\n");
+      int i = 0;
+      while (i < paramThread.length)
+      {
+        localStringBuilder.append(paramThread[i].toString());
+        localStringBuilder.append("\n");
+        i += 1;
+      }
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null)
+      {
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("main_thread_stack", localStringBuilder.toString());
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      }
+      QLog.i("TSManager", 1, "suspend thread timeout for reason " + paramString + "stack:\n" + localStringBuilder.toString());
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    int j;
+    int i;
+    Object localObject;
+    try
+    {
+      Thread[] arrayOfThread = SuspendThreadManager.a();
+      SuspendThreadManager.b().clear();
+      j = arrayOfThread.length;
+      i = 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("TSManager", 1, "suspendThread error", localThrowable);
+      return;
+    }
+    if ((!SuspendThreadManager.c().contains(localObject)) && (!SuspendThreadManager.a().contains(localObject)) && (!localObject.getName().contains("Binder")) && (!localObject.getName().contains("RenderThread")) && (!localObject.getName().contains("Automator")) && (!localObject.getName().contains("thread_sp"))) {
+      if ((localObject.isAlive()) && (paramBoolean) && (SuspendThreadManager.d().contains(localObject)))
+      {
+        QLog.i("TSManager", 1, "suspendThread  = " + localObject);
+        SuspendThreadManager.b().add(localObject);
+        SuspendThreadManager.a(SuspendThreadManager.a(), localObject);
+      }
+      else if ((!paramBoolean) && (localObject.isAlive()))
+      {
+        QLog.i("TSManager", 1, "suspendThread  = " + localObject);
+        SuspendThreadManager.b().add(localObject);
+        SuspendThreadManager.a(SuspendThreadManager.a(), localObject);
+      }
+    }
+    label286:
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_check_flag", 1);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      return;
+      for (;;)
+      {
+        if (i >= j) {
+          break label286;
+        }
+        localObject = localThrowable[i];
+        if (localObject != null) {
+          break;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private void b()
+  {
+    if (SuspendThreadManager.b().size() > 0)
+    {
+      Iterator localIterator = SuspendThreadManager.b().iterator();
       while (localIterator.hasNext())
       {
-        String str = (String)localIterator.next();
-        axuf localaxuf = (axuf)localHashMap.get(str);
-        if ((localaxuf.b() == paramInt1) && (localaxuf.a() == paramInt2)) {
-          return str;
-        }
+        Thread localThread = (Thread)localIterator.next();
+        QLog.i("TSManager", 1, "resumeThread  = " + localThread);
+        SuspendThreadManager.b(SuspendThreadManager.a(), localThread);
       }
+      SuspendThreadManager.b().clear();
+      int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("resume_count", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_check_flag", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_count", i + 1);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
     }
-    return null;
   }
   
-  public static Map.Entry<String, axuf> a(long paramLong1, long paramLong2)
+  private void c()
   {
-    Object localObject = axug.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  try get random is:" + paramLong1 + ",msgSeq is:" + paramLong2);
-    }
-    if ((localObject != null) && (((HashMap)localObject).size() > 0))
+    if (SuspendThreadManager.b().size() > 0)
     {
-      localObject = ((HashMap)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
+      Iterator localIterator = SuspendThreadManager.b().iterator();
+      while (localIterator.hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        axuf localaxuf = (axuf)localEntry.getValue();
-        if (QLog.isColorLevel()) {
-          QLog.d("StreamDataManager", 2, "getStreamFileInfoEntryByMsg  random is:" + axas.a((int)localaxuf.b) + ",msgSeq is:" + localaxuf.jdField_a_of_type_Long);
-        }
-        if ((axas.a((int)localaxuf.b) == paramLong1) && (paramLong2 == localaxuf.jdField_a_of_type_Long)) {
-          return localEntry;
-        }
+        Thread localThread = (Thread)localIterator.next();
+        QLog.i("TSManager", 1, "suspendTimeout  = " + localThread);
+        SuspendThreadManager.b(SuspendThreadManager.a(), localThread);
       }
+      int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("timeout_count", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_count", i + 1);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_check_flag", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+      SuspendThreadManager.b().clear();
     }
-    return null;
   }
   
-  public static short a(String paramString)
+  private void d()
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.c();
-      }
-    }
-    return -1;
+    QLog.d("TSManager", 1, "sendTimeoutMsg");
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    SuspendThreadManager.a().sendMessageDelayed(localMessage, SuspendThreadManager.a());
   }
   
-  public static void a(String paramString)
+  private void e()
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    Object localObject;
+    if (SuspendThreadManager.b().size() > 0)
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null)
+      localObject = this.jdField_a_of_type_JavaLangThread.getState();
+      if (localObject == Thread.State.BLOCKED)
       {
-        int i = paramString.a().size();
-        paramString.a((short)i);
-        if (i >= 1) {
-          ((axud)paramString.a().get(paramString.a().size() - 1)).a(true);
+        if (this.jdField_b_of_type_Boolean) {
+          a(this.jdField_a_of_type_JavaLangThread, "Blocked");
         }
+        c();
       }
     }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    else
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.jdField_a_of_type_Long = paramLong;
-      }
+      return;
     }
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    a(paramString1, paramQQAppInterface, paramString2, paramLong1, false, paramInt1, paramInt2, paramLong2, paramBundle);
-  }
-  
-  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2, long paramLong1, boolean paramBoolean, int paramInt1, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    short s1 = -1;
-    Object localObject = axug.a();
-    paramInt1 = bbis.a(paramInt1);
-    short s2;
-    axud localaxud;
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString1)))
+    if ((localObject == Thread.State.WAITING) || (localObject == Thread.State.TIMED_WAITING))
     {
-      localObject = (axuf)((HashMap)localObject).get(paramString1);
-      ((axuf)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      if (localObject != null)
-      {
-        s2 = s1;
-        if (((axuf)localObject).a() == 0)
+      Thread localThread;
+      if (this.jdField_a_of_type_Boolean) {
+        if (this.jdField_b_of_type_Boolean)
         {
-          localObject = ((axuf)localObject).a();
-          s2 = s1;
-          if (localObject != null)
-          {
-            s2 = s1;
-            if (((List)localObject).size() > 0)
-            {
-              localObject = ((List)localObject).iterator();
-              s2 = s1;
-              if (((Iterator)localObject).hasNext())
-              {
-                localaxud = (axud)((Iterator)localObject).next();
-                if ((localaxud.a() == localaxud.a().length) && (!localaxud.b()))
-                {
-                  s1 = localaxud.a();
-                  localaxud.b(true);
-                }
-              }
-            }
+          localThread = this.jdField_a_of_type_JavaLangThread;
+          if (localObject != Thread.State.WAITING) {
+            break label107;
           }
         }
       }
-    }
-    for (;;)
-    {
-      break;
-      if ((!localaxud.b()) && (localaxud.a()))
+      label107:
+      for (localObject = "Waiting";; localObject = "TimedWaiting")
       {
-        s1 = localaxud.a();
-        localaxud.b(true);
-        continue;
-        if ((s2 != -1) && (paramLong1 != 0L)) {
-          paramQQAppInterface.a().a(paramString2, paramString1, paramLong1, s2, paramInt1, paramInt2, paramLong2, paramBundle);
-        }
+        a(localThread, (String)localObject);
+        c();
+        this.jdField_a_of_type_Boolean = true;
         return;
       }
     }
+    this.jdField_a_of_type_Boolean = false;
+    d();
   }
   
-  public static void a(String paramString, short paramShort)
+  public void handleMessage(Message paramMessage)
   {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
+    boolean bool = false;
+    if (paramMessage.obj != null) {
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+    }
+    switch (paramMessage.what)
     {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.c(paramShort);
-      }
+    default: 
+      return;
+    case 1: 
+      a();
+      return;
+    case 2: 
+      a(bool);
+      return;
+    case 3: 
+      b();
+      return;
     }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramBoolean);
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (!localHashMap.containsKey(paramString)))
-    {
-      paramQQAppInterface = new axuf(paramQQAppInterface, paramInt1, paramString, paramInt2);
-      paramQQAppInterface.a(paramInt3);
-      try
-      {
-        localHashMap.put(paramString, paramQQAppInterface);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      try
-      {
-        localHashMap.remove(paramString);
-        return true;
-      }
-      finally {}
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString, short paramShort)
-  {
-    HashMap localHashMap = axug.a();
-    return (localHashMap == null) || (!localHashMap.containsKey(paramString)) || (((axuf)localHashMap.get(paramString)).b() != paramShort);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort)
-  {
-    return a(paramString, paramArrayOfByte, paramInt, paramShort, false);
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt, short paramShort, boolean paramBoolean)
-  {
-    Object localObject1 = axug.a();
-    if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
-    {
-      axuf localaxuf = (axuf)((HashMap)localObject1).get(paramString);
-      if (!paramBoolean) {}
-      try
-      {
-        localaxuf.a(paramArrayOfByte, paramInt);
-        if (localaxuf.a() == 0)
-        {
-          paramString = localaxuf.a();
-          if (paramString.size() == 0)
-          {
-            localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
-            System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), 0, paramInt);
-            ((axud)localObject1).a(paramInt);
-            paramShort = localaxuf.b();
-            s = (short)(paramShort + 1);
-            ((axud)localObject1).a(paramShort);
-            paramString.add(localObject1);
-            localaxuf.b(s);
-            return true;
-          }
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          short s;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("StreamDataManager", 2, "write fail", paramString);
-            continue;
-            localObject1 = (axud)paramString.get(paramString.size() - 1);
-            Object localObject2 = ((axud)localObject1).a();
-            int i;
-            if (((axud)localObject1).a() < localObject2.length)
-            {
-              i = localObject2.length - ((axud)localObject1).a();
-              if (i >= paramInt)
-              {
-                System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), paramInt);
-                ((axud)localObject1).a(((axud)localObject1).a() + paramInt);
-              }
-              else
-              {
-                if (paramInt <= i)
-                {
-                  System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), paramInt);
-                  ((axud)localObject1).a(((axud)localObject1).a() + paramInt);
-                  return true;
-                }
-                System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), ((axud)localObject1).a(), i);
-                ((axud)localObject1).a(((axud)localObject1).a().length);
-                paramInt -= i;
-                localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
-                System.arraycopy(paramArrayOfByte, i, ((axud)localObject1).a(), 0, paramInt);
-                ((axud)localObject1).a(paramInt);
-                paramShort = localaxuf.b();
-                s = (short)(paramShort + 1);
-                ((axud)localObject1).a(paramShort);
-                paramString.add(localObject1);
-                localaxuf.b(s);
-              }
-            }
-            else
-            {
-              localObject1 = new axud(localaxuf.jdField_a_of_type_Int);
-              System.arraycopy(paramArrayOfByte, 0, ((axud)localObject1).a(), 0, paramInt);
-              ((axud)localObject1).a(paramInt);
-              paramShort = localaxuf.b();
-              s = (short)(paramShort + 1);
-              ((axud)localObject1).a(paramShort);
-              paramString.add(localObject1);
-              localaxuf.b(s);
-              continue;
-              if (localaxuf.a() == 1)
-              {
-                localObject2 = localaxuf.a();
-                paramInt = paramArrayOfByte.length;
-                i = 0;
-                if (paramInt > 0)
-                {
-                  if (((List)localObject2).size() == 0)
-                  {
-                    paramString = new axud(localaxuf.jdField_a_of_type_Int);
-                    ((List)localObject2).add(paramString);
-                  }
-                  for (;;)
-                  {
-                    int k = paramString.a().length - paramString.a();
-                    int j = k;
-                    if (k >= paramInt) {
-                      j = paramInt;
-                    }
-                    System.arraycopy(paramArrayOfByte, i, paramString.a(), paramString.a(), j);
-                    i += j;
-                    paramInt -= j;
-                    paramString.a(j + paramString.a());
-                    paramString.a(paramShort);
-                    break;
-                    localObject1 = (axud)((List)localObject2).get(((List)localObject2).size() - 1);
-                    paramString = (String)localObject1;
-                    if (((axud)localObject1).a().length - ((axud)localObject1).a() <= 0)
-                    {
-                      paramString = new axud(localaxuf.jdField_a_of_type_Int);
-                      ((List)localObject2).add(paramString);
-                    }
-                  }
-                }
-                localaxuf.b((short)(paramShort + 1));
-              }
-            }
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static byte[] a(String paramString, short paramShort)
-  {
-    Object localObject = axug.a();
-    if ((localObject != null) && (((HashMap)localObject).containsKey(paramString)))
-    {
-      paramString = (axuf)((HashMap)localObject).get(paramString);
-      if (paramString != null)
-      {
-        localObject = (axud)paramString.a().get(paramShort - 1);
-        paramString = ((axud)localObject).a();
-        paramShort = ((axud)localObject).a();
-        if (paramShort != paramString.length)
-        {
-          localObject = new byte[paramShort];
-          System.arraycopy(paramString, 0, localObject, 0, paramShort);
-          return localObject;
-        }
-        return paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static int b(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return -1;
-  }
-  
-  public static short b(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.a();
-      }
-    }
-    return 0;
-  }
-  
-  public static void b(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a();
-      }
-    }
-  }
-  
-  public static void b(String paramString, long paramLong)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.b = paramLong;
-      }
-    }
-  }
-  
-  public static boolean b(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.jdField_a_of_type_Boolean;
-      }
-    }
-    return false;
-  }
-  
-  public static int c(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    int i;
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null)
-      {
-        i = paramString.a().size();
-        if ((i < 1) || (((axud)paramString.a().get(i - 1)).b())) {
-          return i;
-        }
-        return i - 1;
-      }
-    }
-    return 0;
-    return i;
-  }
-  
-  public static short c(String paramString)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.b();
-      }
-    }
-    return 0;
-  }
-  
-  public static void c(String paramString, long paramLong)
-  {
-    HashMap localHashMap = axug.a();
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString)))
-    {
-      paramString = (axuf)localHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramLong);
-      }
-    }
-  }
-  
-  public static boolean c(String paramString)
-  {
-    List localList = axug.a();
-    if ((localList != null) && (!localList.contains(paramString)))
-    {
-      localList.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean d(String paramString)
-  {
-    List localList = axug.a();
-    if ((localList != null) && (localList.contains(paramString)))
-    {
-      localList.remove(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean e(String paramString)
-  {
-    List localList = axug.a();
-    return (localList != null) && (localList.contains(paramString));
+    e();
   }
 }
 

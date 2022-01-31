@@ -1,11 +1,14 @@
 class tqy
-  extends tpq
+  extends tpp
 {
-  tqy(tqk paramtqk, trs paramtrs) {}
+  tqy(tqh paramtqh, String paramString1, String paramString2, boolean paramBoolean, trq paramtrq)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
   
   public boolean b()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Trs.d);
+    this.jdField_a_of_type_Trq.d = ((String)a("EncryptUrlJob_encryptedUrl"));
     return true;
   }
 }

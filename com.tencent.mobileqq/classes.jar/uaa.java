@@ -1,15 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class uaa
-  implements View.OnTouchListener
+  implements bcay
 {
-  private uaa(tzx paramtzx) {}
+  uaa(tzz paramtzz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    return tzx.a(this.a).a(paramMotionEvent);
+    ved.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
+    this.a.a = true;
   }
 }
 

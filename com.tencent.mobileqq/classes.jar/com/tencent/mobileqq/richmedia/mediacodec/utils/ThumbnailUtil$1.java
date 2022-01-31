@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmedia.mediacodec.utils;
 
 import android.graphics.Bitmap.CompressFormat;
-import awaj;
+import awal;
 
 public final class ThumbnailUtil$1
   implements Runnable
 {
-  public ThumbnailUtil$1(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, Bitmap.CompressFormat paramCompressFormat, int paramInt3, awaj paramawaj) {}
+  public ThumbnailUtil$1(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, Bitmap.CompressFormat paramCompressFormat, int paramInt3, awal paramawal) {}
   
   /* Error */
   public void run()
@@ -115,10 +115,10 @@ public final class ThumbnailUtil$1
     //   171: iload 5
     //   173: istore 4
     //   175: aload_0
-    //   176: getfield 32	com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Awaj	Lawaj;
+    //   176: getfield 32	com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Awal	Lawal;
     //   179: ifnull +18 -> 197
     //   182: aload_0
-    //   183: getfield 32	com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Awaj	Lawaj;
+    //   183: getfield 32	com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_Awal	Lawal;
     //   186: iload 4
     //   188: aload_0
     //   189: getfield 26	com/tencent/mobileqq/richmedia/mediacodec/utils/ThumbnailUtil$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;

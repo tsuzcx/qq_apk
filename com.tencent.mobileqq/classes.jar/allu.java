@@ -1,53 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class allu
+public class allu
+  implements MessageQueue.IdleHandler
 {
-  public static int a(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
-  }
+  public allu(ARScanEntryView paramARScanEntryView) {}
   
-  public static void a(Context paramContext, View paramView)
+  public boolean queueIdle()
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
     }
-  }
-  
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (axli.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + axli.d(paramContext);
-      }
-      if (localMarginLayoutParams.bottomMargin != i) {}
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
     }
-    else
-    {
-      return;
-    }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+    return false;
   }
 }
 

@@ -1,18 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class aood
-  implements View.OnClickListener
+  extends ayfd
 {
   public aood(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.a.setResult(0, new Intent());
-    this.a.finish();
-    this.a.overridePendingTransition(2130771977, 2130771978);
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
 }
 

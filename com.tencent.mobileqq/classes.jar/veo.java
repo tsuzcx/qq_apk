@@ -1,63 +1,60 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDanceMachine;
 import com.tencent.qphone.base.util.QLog;
 
 public class veo
-  extends ayvz
+  extends akat
 {
-  public veo(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public veo(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(MessageForDanceMachine paramMessageForDanceMachine)
   {
-    ayqm localayqm = (ayqm)paramMessage.obj;
-    if ((localayqm == null) || (localayqm.b != 24) || (localayqm.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
+    super.a(paramMessageForDanceMachine);
+    if (!DanceMachineUploadVideoFragment.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
+      }
+    }
     do
     {
-      do
-      {
-        return;
-      } while (localayqm.f.equals(CommonPicUploadFragment.b(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
-        }
+      return;
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      if (paramMessageForDanceMachine != null) {
         break;
       }
-    } while (CommonPicUploadFragment.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localayqm.a, 0, localayqm.a.length);
-      CommonPicUploadFragment.a(this.a, true);
-      CommonPicUploadFragment.b(this.a, localayqm.f);
-      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
-      }
-      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
+    return;
     if (QLog.isColorLevel()) {
-      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localayqm.g);
+      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
     }
-    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
+    if (paramMessageForDanceMachine.errorCode == 0)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("upload_result", true);
+      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
+      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
+      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
+      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
+      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
+        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
+      }
+      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramMessageForDanceMachine.setResult(-1, localIntent);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
+    }
   }
 }
 

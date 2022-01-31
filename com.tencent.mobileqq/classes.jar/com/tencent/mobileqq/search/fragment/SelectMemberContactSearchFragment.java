@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import awkc;
-import awlo;
-import awlp;
-import awts;
-import awus;
-import awvy;
+import awke;
+import awlq;
+import awlr;
+import awtu;
+import awuu;
+import awwa;
 import com.tencent.widget.ListView;
 
 public class SelectMemberContactSearchFragment
@@ -24,25 +24,25 @@ public class SelectMemberContactSearchFragment
     return 20;
   }
   
-  protected awkc a()
+  protected awke a()
   {
-    return new awlp(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk);
+    return new awlr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy);
   }
   
-  protected awus a()
+  protected awuu a()
   {
-    return new awts(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
+    return new awtu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.jdField_a_of_type_Int, null);
   }
   
   protected String a()
   {
-    return ajyc.a(2131713729);
+    return ajya.a(2131713740);
   }
   
   protected void a(String paramString, int paramInt)
   {
     super.a(paramString, paramInt);
-    if ((!awvy.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((!awwa.a(this.b)) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       if (TextUtils.isEmpty(paramString))
       {
@@ -59,7 +59,7 @@ public class SelectMemberContactSearchFragment
   
   protected boolean a()
   {
-    return awvy.a(this.b);
+    return awwa.a(this.b);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -76,11 +76,11 @@ public class SelectMemberContactSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    if (!awvy.a(this.b))
+    if (!awwa.a(this.b))
     {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131165374);
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new awlo(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new awlq(this));
     }
   }
 }

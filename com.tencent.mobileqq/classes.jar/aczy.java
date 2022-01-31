@@ -1,28 +1,11 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
-
-public class aczy
-  extends View
+class aczy
+  implements aych
 {
-  aczy(aczw paramaczw, Context paramContext)
-  {
-    super(paramContext);
-  }
+  aczy(aczx paramaczx) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void a(aycm paramaycm)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
-    }
-    return true;
+    this.a.b();
   }
 }
 

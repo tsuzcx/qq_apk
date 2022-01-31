@@ -2,10 +2,10 @@ package cooperation.groupvideo;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import argi;
-import axqw;
-import bcbv;
-import bcfj;
+import argk;
+import axqy;
+import bccj;
+import bcfx;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
@@ -20,8 +20,8 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    this.jdField_a_of_type_Bcbv.b(false);
-    this.jdField_a_of_type_Bcfj.a.setVisibility(8);
+    this.jdField_a_of_type_Bccj.b(false);
+    this.jdField_a_of_type_Bcfx.a.setVisibility(8);
     return i;
   }
   
@@ -49,18 +49,18 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
   
   public int d(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bcfm.c = 0L;
+    this.jdField_a_of_type_Bcga.c = 0L;
     return super.d(paramBundle);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    argi.a("2729128");
+    argk.a("2729128");
     if (!this.jdField_a_of_type_Boolean)
     {
-      argi.a("2489207");
-      axqw.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.2.8", "", "");
+      argk.a("2489207");
+      axqy.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "8.3.0", "", "");
     }
   }
 }

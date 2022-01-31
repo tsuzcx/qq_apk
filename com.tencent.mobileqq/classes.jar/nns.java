@@ -1,17 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.AsyncTask;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nns
-  implements DialogInterface.OnClickListener
+  extends AsyncTask<String, Integer, String>
 {
-  public nns(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected String a(String... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    if (super.isCancelled()) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
+  
+  protected void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { nau.a(str), nau.a(this.jdField_a_of_type_JavaLangString) });
+  }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 

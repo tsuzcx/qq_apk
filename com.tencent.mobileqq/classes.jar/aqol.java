@@ -1,30 +1,20 @@
-import android.content.Intent;
-import android.view.ViewGroup;
+import android.view.animation.Animation;
 
-public abstract class aqol
+class aqol
+  extends bfmx
 {
-  private aqom a;
+  aqol(aqok paramaqok) {}
   
-  public void a(Intent paramIntent) {}
-  
-  public void a(ViewGroup paramViewGroup) {}
-  
-  public void a(aqom paramaqom)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramaqom;
+    this.a.a().c();
+    this.a.a().a();
   }
   
-  public void b() {}
-  
-  public void b(ViewGroup paramViewGroup) {}
-  
-  public void d() {}
-  
-  public void p() {}
-  
-  public void q() {}
-  
-  public void r() {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a().b();
+  }
 }
 
 

@@ -1,29 +1,18 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
 
 class bkqh
-  extends wad
+  implements DialogInterface.OnClickListener
 {
-  bkqh(bkqf parambkqf, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  bkqh(bkqf parambkqf) {}
   
-  public void onFailure(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bkqf.a(this.jdField_a_of_type_Bkqf, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    bbdj.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      bkqf.a(this.jdField_a_of_type_Bkqf, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    bkqf.a(this.jdField_a_of_type_Bkqf, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    paramDialogInterface.dismiss();
+    ((bkqb)this.a.a).f(true);
+    bkqf.a(this.a).setSelected(true);
+    ((bkqb)this.a.a).d(3002);
   }
 }
 

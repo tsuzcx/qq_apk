@@ -1,14 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.mobileqq.widget.TipsBar;
 
-public abstract class ahac
-  implements TextWatcher
+public class ahac
+  implements View.OnClickListener
 {
-  public void afterTextChanged(Editable paramEditable) {}
+  public ahac(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
+  }
 }
 
 

@@ -1,63 +1,77 @@
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 class aeox
-  extends bduv
+  implements View.OnTouchListener
 {
-  aeox(aeoo paramaeoo) {}
+  long jdField_a_of_type_Long = 0L;
   
-  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  aeox(aeom paramaeom) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Acut.notifyDataSetChanged();
-      bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698239), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
+    if ((this.jdField_a_of_type_Aeom.L) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    bcpw.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698238), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    Object localObject = (ImageView)paramView;
+    int i = paramMotionEvent.getAction();
+    localObject = null;
+    paramMotionEvent = (MotionEvent)localObject;
+    if (paramView.getTag() != null)
     {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      paramMotionEvent = (MotionEvent)localObject;
+      if ((paramView.getTag() instanceof asyd)) {
+        paramMotionEvent = (asyd)paramView.getTag();
+      }
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (paramMotionEvent != null)
       {
-        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (paramHashMap != null)
+        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (paramMotionEvent != null) {
+          paramView.setAlpha(paramMotionEvent.a());
+        }
+        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
         {
-          aeoo.a(this.a, true);
-          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          aeoo.a(this.a).setOnClickListener(null);
-          aeoo.b(this.a).setOnClickListener(null);
-          this.a.h = paramHashMap;
-          this.a.a(paramHashMap);
-          if (aaoc.S) {
-            this.a.f.setContentDescription(paramHashMap);
+          return true;
+          paramView.setAlpha(1.0F);
+        }
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = new Intent(this.jdField_a_of_type_Aeom.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+        localObject = amtf.a().a(this.jdField_a_of_type_Aeom.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        asxa.a(this.jdField_a_of_type_Aeom.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aeom.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
+        paramView.putExtra("url", (String)localObject);
+        paramView.putExtra("finish_animation_out_to_right", true);
+        paramView.putExtra("is_wrap_content", true);
+        paramView.putExtra("hide_left_button", false);
+        if (this.jdField_a_of_type_Aeom.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+        {
+          this.jdField_a_of_type_Aeom.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
           }
-          aeoo.a(this.a, true);
         }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        aeoo.b(this.a, false);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
-    }
-    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

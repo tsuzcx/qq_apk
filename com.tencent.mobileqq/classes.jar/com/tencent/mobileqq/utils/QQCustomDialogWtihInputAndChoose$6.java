@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.view.WindowManager;
-import bbhs;
+import bbig;
 import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
 
 public class QQCustomDialogWtihInputAndChoose$6
   implements Runnable
 {
-  public QQCustomDialogWtihInputAndChoose$6(bbhs parambbhs) {}
+  public QQCustomDialogWtihInputAndChoose$6(bbig parambbig) {}
   
   public void run()
   {

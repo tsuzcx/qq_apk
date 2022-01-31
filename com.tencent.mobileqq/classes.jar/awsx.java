@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class awsx
-  implements View.OnClickListener
+final class awsx
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  awsx(awsw paramawsw) {}
+  protected WeakReference<awsw> a;
   
-  public void onClick(View paramView)
+  public awsx(awsw paramawsw)
   {
-    paramView = null;
-    if (awsw.a(this.a) != null) {
-      paramView = awsw.a(this.a).mViewImpl.getViewModel();
-    }
-    if (paramView == null) {
+    this.a = new WeakReference(paramawsw);
+  }
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    awsw localawsw = (awsw)this.a.get();
+    if (localawsw == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkNodeContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
       return;
     }
-    paramView.reinitArkContainer();
+    localawsw.onGetAppPathByName(paramInt, paramString, paramAppPathInfo, paramObject);
   }
 }
 

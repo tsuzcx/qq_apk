@@ -1,65 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
+import com.tencent.qphone.base.util.QLog;
 
-public class bjft
-  implements bftk
+class bjft
+  implements bjfu
 {
   bjft(bjfr parambjfr) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bkgd parambkgd)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.c(l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + parambkgd.toString());
     }
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.a == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bbev.g(this.a.e.getContext())) {
-        break label114;
-      }
-      bjfr.a(this.a).d();
-      bjfr.a(this.a).a();
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((aavx)paramView.getTag()).a = true;
-      return true;
-      l = this.a.a;
-      break;
-      label114:
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
-    }
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,51 +1,80 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.BaseActivity;
 
 public class mjo
-  extends BroadcastReceiver
 {
-  public mjo(VideoControlUI paramVideoControlUI) {}
+  View a;
+  View b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public mjo(View paramView)
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
+    this.a = paramView.findViewById(2131372495);
+    this.b = paramView.getRootView().findViewById(2131372496);
+  }
+  
+  static void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {
       return;
     }
-    long l = mtm.a(paramIntent);
-    paramContext = paramIntent.getStringExtra("camera_id");
-    int i = paramIntent.getIntExtra("availability", 1);
-    QLog.w(this.a.c, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().Z + "], seq[" + l + "]");
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
-    if (i == 0)
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    if ((paramBaseActivity == null) || (this.a == null)) {}
+    do
     {
-      VideoControlUI.a(this.a, l, i);
-      return;
-    }
-    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if ((paramContext != null) && (paramContext.size() > 0))
-    {
-      paramContext = paramContext.entrySet().iterator();
       do
       {
-        if (!paramContext.hasNext()) {
-          break;
+        do
+        {
+          return;
+          if (ImmersiveUtils.isSupporImmersive() == 1) {
+            break;
+          }
+          this.a.setVisibility(8);
+        } while (this.b == null);
+        this.b.setVisibility(8);
+        return;
+        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
+        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
+        if (i > 0)
+        {
+          a(this.a, i);
+          a(this.b, i);
         }
-      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
-    }
-    for (i = 0;; i = -1)
+      } while (AudioHelper.a(0) != 1);
+      this.a.setBackgroundColor(2140405971);
+    } while (this.b == null);
+    this.b.setBackgroundColor(2140405971);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null)
     {
-      VideoControlUI.a(this.a, l, i);
+      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
+      if (paramBoolean) {
+        this.a.setBackgroundColor(-16777216);
+      }
+    }
+    else
+    {
       return;
     }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.getVisibility() == 0);
   }
 }
 

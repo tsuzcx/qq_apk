@@ -1,74 +1,129 @@
-import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 
 public class axrv
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
+  public static axrv a;
+  private String a;
+  public Map<String, Boolean> a;
+  public Map<String, Boolean> b = new ConcurrentHashMap();
+  
+  static
   {
-    axrw localaxrw = new axrw();
-    localaxrw.jdField_c_of_type_JavaLangString = paramString1;
-    localaxrw.jdField_d_of_type_JavaLangString = paramString2;
-    localaxrw.jdField_e_of_type_JavaLangString = paramString3;
-    localaxrw.f = paramString4;
-    localaxrw.jdField_c_of_type_Long = paramInt1;
-    localaxrw.jdField_d_of_type_Long = paramInt2;
-    localaxrw.jdField_e_of_type_Long = paramInt3;
-    localaxrw.g = paramString5;
-    localaxrw.h = paramString6;
-    localaxrw.i = paramString7;
-    localaxrw.j = paramString8;
-    paramString1 = localaxrw.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    return paramString1;
+    jdField_a_of_type_Axrv = new axrv("qzone");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public axrv(String paramString)
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
+  }
+  
+  public static axrv a()
+  {
+    return jdField_a_of_type_Axrv;
+  }
+  
+  public static String a()
+  {
+    AppRuntime localAppRuntime = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localAppRuntime = localBaseApplicationImpl.getRuntime();
+    }
+    if (localAppRuntime == null) {
+      return "0";
+    }
+    if (localAppRuntime.getAccount() == null) {
+      return "0";
+    }
+    return localAppRuntime.getAccount();
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, "actQZLoadHitRateRed");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+    if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
+      localBoolean = (Boolean)this.b.get(paramString2);
+      if ((localBoolean != null) && (localBoolean.booleanValue()))
       {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
+        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
+        }
+        axrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, null, null);
+        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
+        this.b.remove(paramString2);
+      }
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      b(a(), paramString);
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
+    this.b.put(paramString, Boolean.valueOf(true));
+  }
+  
+  public void b(String paramString)
+  {
+    a(paramString, "actQZLoadHitRateLeba");
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (paramString2 != null)
+    {
+      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+      if ((localBoolean == null) || (!localBoolean.booleanValue()))
+      {
+        localBoolean = (Boolean)this.b.get(paramString2);
+        if ((localBoolean != null) && (localBoolean.booleanValue()))
         {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
           }
+          axrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, false, 0L, 0L, null, null);
+          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
+          this.b.remove(paramString2);
         }
       }
     }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc05263");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt2);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-      return;
-    }
-    axqw.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
+  public void c(String paramString)
   {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    a(paramString, "actQZLoadHitRateProfile");
+  }
+  
+  public void d(String paramString)
+  {
+    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
+    while (localIterator.hasNext()) {
+      b(paramString, (String)localIterator.next());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     axrv
  * JD-Core Version:    0.7.0.1
  */

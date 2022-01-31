@@ -1,27 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class assy
-  implements bfrj
+  extends RecyclerView.ItemDecoration
 {
-  public assy(MultiCardRootLayout paramMultiCardRootLayout) {}
+  private final int jdField_a_of_type_Int = actj.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
   
-  public boolean a(MotionEvent paramMotionEvent)
+  private assy(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
-    {
-      asta localasta = (asta)MultiCardRootLayout.a(this.a).get();
-      if ((localasta != null) && (localasta.a(i))) {
-        return true;
-      }
-    }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    paramRect.top = this.jdField_a_of_type_Int;
   }
 }
 

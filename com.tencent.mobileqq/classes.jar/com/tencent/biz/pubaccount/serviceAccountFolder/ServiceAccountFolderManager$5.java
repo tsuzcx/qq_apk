@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import ahpf;
-import akpc;
+import ahpd;
+import akpb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.ArrayList;
 import java.util.Iterator;
-import sbc;
+import saz;
 
 public class ServiceAccountFolderManager$5
   implements Runnable
 {
-  public ServiceAccountFolderManager$5(sbc paramsbc, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
+  public ServiceAccountFolderManager$5(saz paramsaz, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ServiceAccountFolderManager$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ahpf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
+      ahpd.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(str, 1008);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 1008, true);
     }

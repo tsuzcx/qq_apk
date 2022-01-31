@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwm;
+import acwi;
 import android.graphics.Bitmap;
 
 public class IntimateInfoShareHelper$5
   implements Runnable
 {
-  public IntimateInfoShareHelper$5(acwm paramacwm, Bitmap paramBitmap) {}
+  public IntimateInfoShareHelper$5(acwi paramacwi, Bitmap paramBitmap) {}
   
   /* Error */
   public void run()
@@ -14,7 +14,7 @@ public class IntimateInfoShareHelper$5
     // Byte code:
     //   0: new 27	java/io/File
     //   3: dup
-    //   4: getstatic 33	ajsf:bc	Ljava/lang/String;
+    //   4: getstatic 33	ajsd:bc	Ljava/lang/String;
     //   7: invokespecial 36	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore_3
     //   11: aload_3
@@ -31,7 +31,7 @@ public class IntimateInfoShareHelper$5
     //   34: new 57	java/lang/StringBuilder
     //   37: dup
     //   38: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   41: getstatic 33	ajsf:bc	Ljava/lang/String;
+    //   41: getstatic 33	ajsd:bc	Ljava/lang/String;
     //   44: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: getstatic 65	java/io/File:separator	Ljava/lang/String;
     //   50: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -91,8 +91,8 @@ public class IntimateInfoShareHelper$5
     //   159: aload 5
     //   161: astore_3
     //   162: aload_0
-    //   163: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5:this$0	Lacwm;
-    //   166: invokestatic 111	acwm:a	(Lacwm;)Landroid/support/v4/app/FragmentActivity;
+    //   163: getfield 14	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5:this$0	Lacwi;
+    //   166: invokestatic 111	acwi:a	(Lacwi;)Landroid/support/v4/app/FragmentActivity;
     //   169: new 113	com/tencent/mobileqq/activity/aio/IntimateInfoShareHelper$5$1
     //   172: dup
     //   173: aload_0

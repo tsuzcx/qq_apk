@@ -1,26 +1,6 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-public class anmq
-  implements Handler.Callback
+public abstract interface anmq
 {
-  private String a;
-  
-  public anmq(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    }
-    atas.a(this.a, 1);
-    return true;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

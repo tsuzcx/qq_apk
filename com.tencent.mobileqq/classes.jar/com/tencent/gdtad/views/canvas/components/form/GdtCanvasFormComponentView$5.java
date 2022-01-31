@@ -2,7 +2,7 @@ package com.tencent.gdtad.views.canvas.components.form;
 
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import java.lang.ref.WeakReference;
-import zag;
+import zad;
 
 class GdtCanvasFormComponentView$5
   implements Runnable
@@ -15,7 +15,7 @@ class GdtCanvasFormComponentView$5
     GdtCanvasFormComponentView.a(this.this$0).getLocationOnScreen(arrayOfInt);
     if (arrayOfInt[1] == GdtCanvasFormComponentView.a(this.this$0))
     {
-      ((zag)GdtCanvasFormComponentView.d(this.this$0).get()).setPageViewTopMargin(this.a);
+      ((zad)GdtCanvasFormComponentView.d(this.this$0).get()).setPageViewTopMargin(this.a);
       return;
     }
     GdtCanvasFormComponentView.b(this.this$0);

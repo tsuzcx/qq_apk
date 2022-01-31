@@ -10,13 +10,13 @@ public class asrw
   public void onAnimationCancel(Animator paramAnimator)
   {
     super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
+    MultiCardFragment.b(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    MultiCardFragment.b(this.a);
   }
 }
 

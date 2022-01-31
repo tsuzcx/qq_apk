@@ -1,65 +1,134 @@
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-class beic
-  extends FilterOutputStream
+public class beic
 {
-  private beic(beib parambeib, OutputStream paramOutputStream)
+  private static final beic jdField_a_of_type_Beic = new beic();
+  private beid jdField_a_of_type_Beid;
+  private Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+  private Map<String, beib> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, beib> b = new HashMap();
+  private Map<String, beia> c = new HashMap();
+  private Map<String, String> d = new HashMap();
+  private Map<String, String> e = new HashMap();
+  
+  public static beic a()
   {
-    super(paramOutputStream);
+    return jdField_a_of_type_Beic;
   }
   
-  public void close()
+  private void b(beie... paramVarArgs)
   {
-    try
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    this.e.clear();
+    int j = paramVarArgs.length;
+    int i = 0;
+    Object localObject;
+    if (i < j)
     {
-      this.out.close();
-      return;
+      localObject = paramVarArgs[i];
+      if (!((beie)localObject).a()) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilMap.putAll(((beie)localObject).a());
+        this.b.putAll(((beie)localObject).b());
+        this.c.putAll(((beie)localObject).c());
+      }
     }
-    catch (IOException localIOException)
+    paramVarArgs = this.c.values().iterator();
+    while (paramVarArgs.hasNext())
     {
-      beib.a(this.a, true);
+      localObject = (beia)paramVarArgs.next();
+      Iterator localIterator = ((beia)localObject).jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (a(str))
+        {
+          this.d.put(str, ((beia)localObject).jdField_a_of_type_JavaLangString);
+          this.e.put(((beia)localObject).jdField_a_of_type_JavaLangString, str);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+    if (this.jdField_a_of_type_Beid != null) {
+      this.jdField_a_of_type_Beid.a();
     }
   }
   
-  public void flush()
+  public beia a(String paramString)
   {
-    try
+    return (beia)this.c.get(paramString);
+  }
+  
+  public beib a(String paramString)
+  {
+    return (beib)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public String a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString != null)
     {
-      this.out.flush();
-      return;
+      paramString = paramString.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext())
+      {
+        String str = (String)paramString.next();
+        if (this.b.containsKey(str)) {
+          return str;
+        }
+      }
     }
-    catch (IOException localIOException)
+    return null;
+  }
+  
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.jdField_a_of_type_JavaUtilMap.keySet());
+    localArrayList.addAll(this.b.keySet());
+    return localArrayList;
+  }
+  
+  public void a(String paramString, beib parambeib)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, parambeib);
+  }
+  
+  public void a(beie... paramVarArgs)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangBoolean)
     {
-      beib.a(this.a, true);
+      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+        b(paramVarArgs);
+      }
+      return;
     }
   }
   
-  public void write(int paramInt)
+  public boolean a(String paramString)
   {
-    try
-    {
-      this.out.write(paramInt);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      beib.a(this.a, true);
-    }
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
   }
   
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public String b(String paramString)
   {
-    try
-    {
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      beib.a(this.a, true);
-    }
+    return (String)this.d.get(paramString);
+  }
+  
+  public String c(String paramString)
+  {
+    return (String)this.e.get(paramString);
   }
 }
 

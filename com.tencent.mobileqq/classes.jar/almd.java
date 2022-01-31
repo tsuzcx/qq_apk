@@ -1,19 +1,34 @@
+import android.content.Context;
+import android.graphics.Point;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class almd
-  implements TencentMap.OnCameraChangeListener
+  implements TencentMap.OnMapLoadedCallback
 {
   public almd(ARScanEntryView paramARScanEntryView) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
+  public void onMapLoaded()
   {
-    if ((ARScanEntryView.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("AREngine_ARScanEntryView", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, actj.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
+      }
     }
   }
 }

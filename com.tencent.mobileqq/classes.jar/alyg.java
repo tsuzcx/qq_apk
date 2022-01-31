@@ -1,73 +1,17 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import java.util.Random;
 
 public class alyg
-  extends alyc
 {
-  private float a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
+  public static Random a = new Random();
   
-  public alyg(Context paramContext, int paramInt, SensorManager paramSensorManager, alxu paramalxu)
+  public static final float a(float paramFloat)
   {
-    super(paramContext, paramInt, paramSensorManager, paramalxu);
-    this.jdField_a_of_type_Float = -1.0F;
-    if (paramSensorManager.getDefaultSensor(3) != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
+    return alyi.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public static final float b(float paramFloat)
   {
-    if (this.jdField_a_of_type_Alxu == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
-    {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Alxu.updateAzimuth(paramFloat1);
-    }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Alxu.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Alxu.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Alxu.updateSensor(paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    if (paramSensorEvent.sensor.getType() == 3)
-    {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
-      {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        alxw.a(alxw.a(this.d), this.e);
-        super.a(this.e);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
+    return alyh.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
 }
 

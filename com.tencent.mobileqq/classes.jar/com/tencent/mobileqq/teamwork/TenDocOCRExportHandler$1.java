@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajyc;
+import ajya;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayfh;
-import ayfy;
+import ayfj;
+import ayga;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.io.UnsupportedEncodingException;
@@ -14,15 +14,15 @@ import org.json.JSONObject;
 public class TenDocOCRExportHandler$1
   implements Runnable
 {
-  public TenDocOCRExportHandler$1(ayfy paramayfy, String paramString) {}
+  public TenDocOCRExportHandler$1(ayga paramayga, String paramString) {}
   
   public void run()
   {
     if ((this.this$0.app == null) || (TextUtils.isEmpty(this.a))) {
       return;
     }
-    ayfy localayfy = (ayfy)this.this$0.app.a(157);
-    JSONObject localJSONObject = ayfh.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
+    ayga localayga = (ayga)this.this$0.app.a(157);
+    JSONObject localJSONObject = ayfj.a(this.this$0.app, this.a, this.this$0.app.getCurrentAccountUin());
     if (localJSONObject != null)
     {
       String str = localJSONObject.optString("url");
@@ -34,21 +34,21 @@ public class TenDocOCRExportHandler$1
         {
           Bundle localBundle = new Bundle();
           localBundle.putString("url", str);
-          localayfy.notifyUI(3, true, new Object[] { localJSONObject });
+          localayga.notifyUI(3, true, new Object[] { localJSONObject });
           QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
           return;
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        localayfy.notifyUI(1, true, new Object[] { ajyc.a(2131714839), this.a });
+        localayga.notifyUI(1, true, new Object[] { ajya.a(2131714850), this.a });
         localUnsupportedEncodingException.printStackTrace();
         return;
       }
-      localayfy.notifyUI(1, true, new Object[] { ajyc.a(2131714838), this.a });
+      localayga.notifyUI(1, true, new Object[] { ajya.a(2131714849), this.a });
       return;
     }
-    localayfy.notifyUI(1, true, new Object[] { ajyc.a(2131714837), this.a });
+    localayga.notifyUI(1, true, new Object[] { ajya.a(2131714848), this.a });
   }
 }
 

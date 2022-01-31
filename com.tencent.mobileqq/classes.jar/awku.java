@@ -1,46 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class awku
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public awku(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public awku(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FragmentActivity localFragmentActivity;
-    Object localObject;
-    if (paramView.getTag() != null)
-    {
-      localFragmentActivity = this.a.getActivity();
-      localObject = (Integer)paramView.getTag(2131379209);
-      paramView = (awkw)paramView.getTag(2131379208);
-      switch (paramView.jdField_a_of_type_Int)
-      {
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localFragmentActivity instanceof awkx));
-      Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-      localObject = paramView.e;
-      paramView = (View)localObject;
-      if (!((String)localObject).startsWith("http")) {
-        paramView = "http://" + (String)localObject;
-      }
-      localIntent.putExtra("url", paramView);
-      localFragmentActivity.startActivity(localIntent);
-      localFragmentActivity.finish();
-      return;
-    } while (!(localFragmentActivity instanceof awkx));
-    ((awkx)localFragmentActivity).a(paramView.jdField_a_of_type_JavaLangString, paramView.d);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

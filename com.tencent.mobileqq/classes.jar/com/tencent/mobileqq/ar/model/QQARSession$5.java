@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkz;
+import alky;
 
 public class QQARSession$5
   implements Runnable
 {
-  public QQARSession$5(alkz paramalkz) {}
+  public QQARSession$5(alky paramalky) {}
   
   public void run()
   {
-    alkz.a(this.this$0, true);
+    alky.a(this.this$0, true);
   }
 }
 

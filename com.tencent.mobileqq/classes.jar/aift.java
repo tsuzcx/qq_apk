@@ -1,81 +1,23 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
 public class aift
-  extends akim
+  extends mxj
 {
-  public aift(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  aift(aifs paramaifs) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.c();
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt1 != 2) {
-          break;
-        }
-      } while (paramInt2 != 0);
-      this.a.c();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
       return;
-    } while ((paramInt1 != 9) || (paramInt2 != 0));
-    this.a.c();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if (TroopDiscussionTroop.a(this.a) != null) {
-      TroopDiscussionTroop.a(this.a).a();
     }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDiscussionTroop", 2, "onUpdateTroopList " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().postDelayed(new TroopDiscussionTroop.MyTroopObserver.1(this), 500L);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 

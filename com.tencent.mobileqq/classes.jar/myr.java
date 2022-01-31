@@ -1,54 +1,35 @@
-import android.content.SharedPreferences;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class myr
+class myr
+  extends Handler
 {
-  public SharedPreferences a;
-  public myr a;
-  
-  public myr(SharedPreferences paramSharedPreferences, myr parammyr)
+  myr(myq parammyq, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Myr = parammyr;
+    super(paramLooper);
   }
   
-  public static boolean a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
-  }
-  
-  public abstract int a(String paramString1, String paramString2);
-  
-  public int a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int j = 0;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      if (paramBoolean2) {
-        j = 2;
-      }
-      return j | i;
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
-  
-  public abstract String a();
-  
-  public abstract JSONArray a(String paramString);
-  
-  public abstract JSONObject a();
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract String c();
 }
 
 

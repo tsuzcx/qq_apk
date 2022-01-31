@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo.speedpicker;
 
 import android.widget.ImageView;
-import bkmk;
-import bkna;
+import bknb;
+import bknr;
 
 class PickerContainer$4
   implements Runnable
@@ -11,11 +11,11 @@ class PickerContainer$4
   
   public void run()
   {
-    bkna localbkna;
+    bknr localbknr;
     if ((PickerContainer.a(this.this$0) != null) && (PickerContainer.a(this.this$0).a(this.a)))
     {
       PickerContainer.a(this.this$0).stop();
-      localbkna = PickerContainer.a(this.this$0);
+      localbknr = PickerContainer.a(this.this$0);
       if (PickerContainer.b(this.this$0)) {
         break label167;
       }
@@ -23,7 +23,7 @@ class PickerContainer$4
     label167:
     for (boolean bool = true;; bool = false)
     {
-      localbkna.a(bool);
+      localbknr.a(bool);
       PickerContainer.a(this.this$0).a(1);
       PickerContainer.a(this.this$0).start();
       if (PickerContainer.a(this.this$0) != null) {

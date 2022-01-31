@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baxk;
-import bbdh;
+import baxy;
+import bbdv;
 import com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout;
 import com.tencent.qphone.base.util.QLog;
 
@@ -55,9 +55,9 @@ public class FormMutiWithAvatarItem
     return (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.getChildCount() != 0);
   }
   
-  public void setOverimgLayout(int paramInt1, int paramInt2, String[] paramArrayOfString, baxk parambaxk)
+  public void setOverimgLayout(int paramInt1, int paramInt2, String[] paramArrayOfString, baxy parambaxy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.a(paramInt1, paramInt2, paramArrayOfString, parambaxk);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.a(paramInt1, paramInt2, paramArrayOfString, parambaxy);
   }
   
   public void setOverloading()
@@ -71,12 +71,12 @@ public class FormMutiWithAvatarItem
     this.jdField_c_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     this.jdField_c_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = ((int)bbdh.a(getContext(), 5.0F));
+    localLayoutParams.rightMargin = ((int)bbdv.a(getContext(), 5.0F));
     this.b.addView(this.jdField_c_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout = new OverlappingImgLayout(getContext());
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.setGravity(21);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = ((int)bbdh.a(getContext(), 12.0F));
+    localLayoutParams.rightMargin = ((int)bbdv.a(getContext(), 12.0F));
     this.b.addView(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout, localLayoutParams);
     if (QLog.isColorLevel()) {
       QLog.d("FormMutiWithAvatarItem", 2, "setOverloading, run ");

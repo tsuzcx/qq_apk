@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.AccountDetail.model;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nfn;
+import nfk;
 
 public final class AccountDetailVideoManager$5
   implements Runnable
@@ -12,7 +12,7 @@ public final class AccountDetailVideoManager$5
   {
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new nfn(this));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new nfk(this));
       return;
     }
     catch (Throwable localThrowable)

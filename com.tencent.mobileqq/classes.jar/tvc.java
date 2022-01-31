@@ -1,198 +1,144 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
 import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-class tvc
-  extends uaj
-  implements tyz
+public class tvc
 {
-  private final OpenPlayerBuilder.Data jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceOpenPlayerBuilder$Data;
-  private final XViewPager jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final Set<ssy> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final CopyOnWriteArraySet<tyz> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  ssy jdField_a_of_type_Ssy = new tvd(this);
-  private final tve jdField_a_of_type_Tve;
-  private final twr jdField_a_of_type_Twr;
-  private final uab jdField_a_of_type_Uab;
-  uau jdField_a_of_type_Uau = new uau();
-  private final boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  private tvc(tuw paramtuw, tve paramtve, XViewPager paramXViewPager, OpenPlayerBuilder.Data paramData, twr paramtwr)
+  public static void a(Activity paramActivity, OpenPlayerBuilder.Data paramData)
   {
-    paramtuw = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramtuw instanceof QQAppInterface))
+    a(paramActivity, paramData, null);
+  }
+  
+  public static void a(Activity paramActivity, Serializable paramSerializable, int paramInt, @Nullable View paramView)
+  {
+    paramSerializable = new OpenPlayerBuilder(paramSerializable, paramInt).a();
+    paramSerializable.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
+    Intent localIntent = new Intent(paramActivity, StoryPlayerActivity.class);
+    localIntent.putExtra("story_data", paramSerializable);
+    if (paramView != null) {
+      localIntent.putExtra("AnimationParam", new AnimationParam(paramView));
+    }
+    paramActivity.startActivity(localIntent);
+    paramActivity.overridePendingTransition(0, 0);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    a(paramActivity, new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString, paramString, "", 1), paramInt).a(), null);
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  {
+    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+    paramString1.mUIStyle.mPlayerRepeatMode = 1;
+    b(paramActivity, paramString1);
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, @Nullable View paramView)
+  {
+    ShareFromMemoryPlayInfo localShareFromMemoryPlayInfo = new ShareFromMemoryPlayInfo();
+    localShareFromMemoryPlayInfo.uid = paramString1;
+    localShareFromMemoryPlayInfo.feedId = paramString2;
+    localShareFromMemoryPlayInfo.identify = paramInt1;
+    localShareFromMemoryPlayInfo.videoListOrder = paramInt3;
+    localShareFromMemoryPlayInfo.shareFromType = paramInt2;
+    tsr.a(localShareFromMemoryPlayInfo, new tve(localShareFromMemoryPlayInfo, paramInt2, paramActivity, paramView));
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, @Nullable View paramView)
+  {
+    ShareFromMemoryPlayInfo localShareFromMemoryPlayInfo = new ShareFromMemoryPlayInfo();
+    localShareFromMemoryPlayInfo.uid = paramString1;
+    localShareFromMemoryPlayInfo.feedId = paramString3;
+    localShareFromMemoryPlayInfo.identify = paramInt3;
+    localShareFromMemoryPlayInfo.shareFromType = paramInt2;
+    localShareFromMemoryPlayInfo.collectionKey = paramString2;
+    localShareFromMemoryPlayInfo.shareTimeZone = paramInt1;
+    tsr.a(localShareFromMemoryPlayInfo, new tvf(localShareFromMemoryPlayInfo, paramInt2, paramActivity, paramView));
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, ArrayList<String> paramArrayList1, int paramInt1, int paramInt2, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, View paramView, boolean paramBoolean, int paramInt3, String paramString3)
+  {
+    paramString1 = new OpenPlayerBuilder(new MemorySelectVideoPlayInfo(paramString1, (String)paramArrayList2.get(paramInt1), paramString2, paramString3, paramArrayList1, paramBoolean, 0), paramInt3).d().e().a().b().a(false).a();
+    paramString1.mBundle.putStringArrayList("EXTRA_VIDEO_ID_LIST", paramArrayList3);
+    paramString1.mBundle.putInt("EXTRA_INT_MAX_SELECT_COUNT", 20);
+    a(paramActivity, paramString1, paramView);
+  }
+  
+  public static void a(Context paramContext, OpenPlayerBuilder.Data paramData, @Nullable View paramView)
+  {
+    paramData.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
+    Intent localIntent = new Intent(paramContext, StoryPlayerActivity.class);
+    localIntent.putExtra("story_data", paramData);
+    if (paramView != null) {
+      localIntent.putExtra("AnimationParam", new AnimationParam(paramView));
+    }
+    paramContext.startActivity(localIntent);
+    if ((paramContext instanceof Activity)) {
+      ((Activity)paramContext).overridePendingTransition(0, 0);
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramString1 = new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString1, paramString1, paramString2, 1, true), 31).a();
+    paramString1.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
+    paramString2 = new Intent(paramContext, StoryPlayerActivity.class);
+    paramString2.putExtra("story_data", paramString1);
+    paramString2.addFlags(268435456);
+    paramContext.startActivity(paramString2);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+    paramString1.mUIStyle.mPlayerRepeatMode = 1;
+    a(paramContext, paramString1, null);
+  }
+  
+  public static void b(Activity paramActivity, OpenPlayerBuilder.Data paramData)
+  {
+    paramData.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
+    Intent localIntent = new Intent(paramActivity, StoryPlayerActivity.class);
+    localIntent.putExtra("story_data", paramData);
+    paramActivity.startActivity(localIntent);
+    paramActivity.overridePendingTransition(2130771981, 2130771983);
+  }
+  
+  public static void b(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    StoryVideoItem localStoryVideoItem = ((tcw)tcz.a(5)).a(paramString1);
+    if ((localStoryVideoItem != null) && (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath)) && (localStoryVideoItem.mInteractStatus != -1) && (new File(localStoryVideoItem.mLocalVideoPath).length() > 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramtuw);
-      this.jdField_a_of_type_Tve = paramtve;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager = paramXViewPager;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceOpenPlayerBuilder$Data = paramData;
-      this.jdField_a_of_type_Twr = new twr(paramtwr);
-      this.jdField_a_of_type_Uab = uab.a(this);
-      this.jdField_a_of_type_Boolean = TVK_SDKMgr.isInstalled(paramtve.a());
-      veg.d("Q.qqstory.playernew.StoryPlayerImpl", "isUseTVKVideoView %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      return;
+      paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+      paramString2 = paramString1.mUIStyle;
+      if (localStoryVideoItem.mInteractStatus == 1) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        paramString2.bottomWidgetShowFlag = paramInt;
+        paramString1.mUIStyle.mPlayerRepeatMode = 1;
+        a(paramContext, paramString1, null);
+        return;
+      }
     }
-    throw new IllegalStateException("AppRuntime is not instance of QQAppInterface");
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_Tve.getActivity();
-  }
-  
-  public OpenPlayerBuilder.Data a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceOpenPlayerBuilder$Data;
-  }
-  
-  public XViewPager a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager;
-  }
-  
-  public String a(String paramString)
-  {
-    return tuw.a(this.jdField_a_of_type_Tuw).a(paramString);
-  }
-  
-  public two a()
-  {
-    return tuw.a(this.jdField_a_of_type_Tuw).a();
-  }
-  
-  public twr a()
-  {
-    return this.jdField_a_of_type_Twr;
-  }
-  
-  public uab a()
-  {
-    return this.jdField_a_of_type_Uab;
-  }
-  
-  public uau a()
-  {
-    return this.jdField_a_of_type_Uau;
-  }
-  
-  public void a()
-  {
-    tuw.a(this.jdField_a_of_type_Tuw).removeCallbacks(tuw.a(this.jdField_a_of_type_Tuw));
-    tuw.a(this.jdField_a_of_type_Tuw).postDelayed(tuw.a(this.jdField_a_of_type_Tuw), 500L);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    Iterator localIterator = new HashSet(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet).iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.jdField_a_of_type_Tve.startActivity(paramIntent);
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ssy, false);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).a(paramBundle1, paramBundle2);
-    }
-  }
-  
-  public void a(ssy paramssy)
-  {
-    this.jdField_a_of_type_JavaUtilSet.add(paramssy);
-  }
-  
-  public void a(tyz paramtyz)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramtyz);
-  }
-  
-  public void a(ubc paramubc)
-  {
-    if (tuw.a(this.jdField_a_of_type_Tuw).a(paramubc)) {
-      tuw.a(this.jdField_a_of_type_Tuw, paramubc);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public void b(ssy paramssy)
-  {
-    this.jdField_a_of_type_JavaUtilSet.remove(paramssy);
-  }
-  
-  public void b(tyz paramtyz)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramtyz);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).c();
-    }
-  }
-  
-  public void d()
-  {
-    this.b = true;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    this.b = false;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).e();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).f();
-    }
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ssy);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-    while (localIterator.hasNext()) {
-      ((tyz)localIterator.next()).g();
-    }
+    tsr.a(tsr.a(), paramString1, new tvd(paramString2, paramString1, paramInt, paramContext));
   }
 }
 

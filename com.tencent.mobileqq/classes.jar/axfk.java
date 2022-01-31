@@ -1,12 +1,29 @@
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axfk
+class axfk
+  implements axfm
 {
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  axfk(axfj paramaxfj) {}
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  {
+    if (axfj.a(this.a) != null) {
+      axfj.a(this.a).a(this.a.a, paramFloat);
+    }
+  }
   
-  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
+    if (axfj.a(this.a) != null)
+    {
+      axfj.a(this.a).a(this.a.a, 1.0F);
+      axfj.a(this.a).a(this.a.a, 3);
+    }
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

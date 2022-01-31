@@ -1,27 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
-class aeze
-  implements View.OnClickListener
+public class aeze
+  implements DialogInterface.OnClickListener
 {
-  aeze(aezc paramaezc) {}
+  public aeze(VideoStatusTipsBar paramVideoStatusTipsBar) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aezc.a(this.a).a(aezc.a(this.a).a, Integer.valueOf(4));
-    aezc.a(this.a).a();
-    asfb.a().c(aezc.a(this.a).a, aezc.a(this.a));
-    asfb.a().c(aezc.a(this.a), aezc.a(this.a).a);
-    axqw.b(aezc.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, aezc.a(this.a).a, "", "", "");
-    QQAppInterface localQQAppInterface = aezc.a(this.a);
-    String str = aezc.a(this.a).a;
-    if (aezc.a(this.a).b(aezc.a(this.a).a) == 3) {}
-    for (paramView = "1";; paramView = "0")
-    {
-      axqw.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str, paramView, "", "");
-      return;
+    mqw.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

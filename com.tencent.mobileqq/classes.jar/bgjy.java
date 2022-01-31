@@ -1,192 +1,74 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
-import cooperation.groupvideo.GVideoProxyActivity;
-import cooperation.plugin.PluginInfo;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
-public class bgjy
+class bgjy
+  implements AVRoomMulti.EventListener
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
-  {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
-        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
-  }
+  bgjy(bgjx parambgjx) {}
   
-  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
-    }
-    try
-    {
-      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
-      return;
-    }
-    catch (IllegalArgumentException paramAppRuntime)
-    {
-      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Bgkb != null) {
+      this.a.jdField_a_of_type_Bgkb.a(paramInt, paramArrayOfString);
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
+  public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
     }
-    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
-    paramClass.putExtra("useSkinEngine", 1);
-    paramClass.putExtra("userQqResources", 2);
-    bgkz localbgkz = new bgkz(1);
-    localbgkz.b = "group_video_plugin.apk";
-    localbgkz.d = PluginInfo.k;
-    localbgkz.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbgkz.e = paramString;
-    localbgkz.jdField_a_of_type_AndroidContentIntent = paramClass;
-    localbgkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bgkq.c(paramAppRuntime.getApplication(), localbgkz);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (paramContext != null)
-    {
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext()) {
-          if ("com.tencent.mobileqq:groupvideo".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
-  {
-    if ((paramAppInterface == null) || (paramActivity == null)) {
-      return false;
-    }
-    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
-      paramIntent.putExtra("isInviteMode", true);
-    }
-    for (;;)
-    {
-      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
-      return true;
+    if (this.a.jdField_a_of_type_Bgka != null) {
+      this.a.jdField_a_of_type_Bgka.a(paramInt, paramString);
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
+  public void onExitRoomComplete()
   {
-    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
-      return false;
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Bgkb != null) {
+      this.a.jdField_a_of_type_Bgkb.a();
     }
-    paramContext = (Activity)paramContext;
-    bgkq localbgkq = (bgkq)paramQQAppInterface.getManager(27);
-    if (localbgkq == null) {
-      return false;
-    }
-    if (localbgkq.isPlugininstalled("group_video_plugin.apk")) {
-      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
-    }
-    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
-    paramContext.startActivityForResult(paramIntent, paramInt);
-    return true;
   }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Bgkb != null) {
+      this.a.jdField_a_of_type_Bgkb.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Bgkb != null) {
+      this.a.jdField_a_of_type_Bgkb.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

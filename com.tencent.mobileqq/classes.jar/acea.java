@@ -1,22 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acea
-  implements DialogInterface.OnClickListener
+public class acea
+  implements bfph
 {
-  acea(acdz paramacdz, ayao paramayao, Pair paramPair) {}
+  public acea(SubAccountUgActivity paramSubAccountUgActivity, bfpc parambfpc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Ayao.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!ayao.a(this.jdField_a_of_type_Acdz.a.app))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Acdz.a.setTitle("");
-      ayan.a(this.jdField_a_of_type_Acdz.a.app, this.jdField_a_of_type_Acdz.a, null);
     }
-    this.jdField_a_of_type_Acdz.a.finish();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bfpc.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131719926);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
+      paramView = (ayav)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      }
+    }
   }
 }
 

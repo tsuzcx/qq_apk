@@ -1,8 +1,12 @@
-class bkka
+import android.graphics.Bitmap;
+import java.util.List;
+
+public class bkka
 {
-  int jdField_a_of_type_Int;
-  bkjy jdField_a_of_type_Bkjy;
-  bkjz jdField_a_of_type_Bkjz;
+  public int a;
+  public List<String> a;
+  public boolean a;
+  public List<Bitmap> b;
 }
 
 

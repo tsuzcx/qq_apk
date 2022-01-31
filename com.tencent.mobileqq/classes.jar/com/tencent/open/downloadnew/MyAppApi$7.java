@@ -3,18 +3,18 @@ package com.tencent.open.downloadnew;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import bdlc;
-import bdlk;
-import bdll;
+import bdlr;
+import bdlz;
+import bdma;
 
 public class MyAppApi$7
   implements Runnable
 {
-  public MyAppApi$7(bdlc parambdlc, Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener, bdll parambdll, bdlk parambdlk, String paramString2, boolean paramBoolean, Bundle paramBundle) {}
+  public MyAppApi$7(bdlr parambdlr, Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener, bdma parambdma, bdlz parambdlz, String paramString2, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_Bdll, this.jdField_a_of_type_Bdlk, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.this$0.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_Bdma, this.jdField_a_of_type_Bdlz, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

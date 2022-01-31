@@ -1,121 +1,60 @@
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.tfs.BaseTask;
-import com.tencent.mobileqq.mini.tfs.TaskFlowEngine;
-import com.tencent.mobileqq.minigame.manager.EngineChannel;
-import com.tencent.mobileqq.minigame.utils.AppUtil;
+import com.tencent.mobileqq.miniapp.MiniAppOptions;
+import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Map;
 
-public class asje
-  extends TaskFlowEngine
+class asje
+  extends QQUIEventReceiver<asjb, asiv>
 {
-  private static volatile asje jdField_a_of_type_Asje;
-  private asjf jdField_a_of_type_Asjf;
-  private asjg jdField_a_of_type_Asjg;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private asje()
+  public asje(@NonNull asjb paramasjb)
   {
-    a();
+    super(paramasjb);
   }
   
-  public static asje a()
+  public void a(@NonNull asjb paramasjb, @NonNull asiv paramasiv)
   {
-    if (jdField_a_of_type_Asje == null) {}
-    try
-    {
-      if (jdField_a_of_type_Asje == null) {
-        jdField_a_of_type_Asje = new asje();
-      }
-      return jdField_a_of_type_Asje;
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppManager", 2, "receive event:" + paramasiv.toString());
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Asjg = new asjg(BaseApplicationImpl.getApplication());
-    initTasks(new BaseTask[] { this.jdField_a_of_type_Asjg });
-  }
-  
-  public void a(asjf paramasjf)
-  {
-    QLog.i("MiniLoadManager", 1, "[MiniEng]detachDownloadListener in:" + paramasjf + ",current:" + this.jdField_a_of_type_Asjf);
-    if ((paramasjf != null) && (paramasjf.equals(this.jdField_a_of_type_Asjf)))
+    switch (paramasiv.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_Asjf = null;
-      this.jdField_a_of_type_Asjg.a(null);
-      return;
     }
-    QLog.w("MiniLoadManager", 1, "[MiniEng]detachDownloadListener failed");
-  }
-  
-  public void a(MiniAppConfig paramMiniAppConfig, asjf paramasjf)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    resetTaskAndDepends(this.jdField_a_of_type_Asjg);
-    b(paramasjf);
-    super.start();
-  }
-  
-  public void a(EngineChannel paramEngineChannel)
-  {
-    this.jdField_a_of_type_Asjg.a(paramEngineChannel);
-    QLog.i("MiniLoadManager", 1, "[MiniEng]setDownloadEngineChannel " + paramEngineChannel + ", " + AppUtil.getProcessName());
-  }
-  
-  public void b(asjf paramasjf)
-  {
-    QLog.i("MiniLoadManager", 1, "[MiniEng]attachDownloadListener " + paramasjf);
-    this.jdField_a_of_type_Asjf = paramasjf;
-    this.jdField_a_of_type_Asjg.a(paramasjf);
-    boolean bool;
-    if (this.jdField_a_of_type_Asjg.isDone())
+    do
     {
-      QLog.i("MiniLoadManager", 1, "[MiniEng]attachDownloadListener after mMiniAppEngineLoadTask isDone");
-      if (paramasjf != null)
+      do
       {
-        bool = this.jdField_a_of_type_Asjg.isSucceed();
-        if (this.jdField_a_of_type_Asjg.msg != null) {
-          break label90;
+        return;
+      } while ((!"MiniAppLauncher".equals(paramasiv.jdField_a_of_type_JavaLangString)) || (asiu.a((String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[0]) != 1) || (((Integer)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue() == 2));
+      String str = (String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[1];
+      if (paramasiv.jdField_a_of_type_Boolean)
+      {
+        bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706834), 0).a();
+        asiw localasiw = asjb.a(paramasjb).a(str, 2, 0, false);
+        if (localasiw != null)
+        {
+          localasiw.jdField_a_of_type_AndroidOsBundle.putString("unzipped_path", (String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[3]);
+          asjb.b(paramasjb, (asit)asjb.a(paramasjb).get(localasiw.h));
+          return;
         }
       }
-    }
-    label90:
-    for (String str = "";; str = this.jdField_a_of_type_Asjg.msg)
-    {
-      paramasjf.onEngineLoad(bool, str);
+      paramasiv = asiw.a(str);
+      asjb.a(paramasjb, paramasiv[1], Integer.parseInt(paramasiv[0]), 1003);
       return;
-    }
+      asjb.a(paramasjb, (MiniAppActivity)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[0], (String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[1], ((Integer)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue(), (MiniAppOptions)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[3]);
+      return;
+      asjb.a(paramasjb, asiw.a((String)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)paramasiv.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue()));
+      return;
+    } while (paramasiv.jdField_a_of_type_Boolean);
+    asjb.a(paramasjb, paramasiv.jdField_a_of_type_Asiw.jdField_a_of_type_JavaLangString, paramasiv.jdField_a_of_type_Asiw.jdField_a_of_type_Int, 1004);
   }
   
-  public void onTaskDone(BaseTask paramBaseTask)
+  public Class acceptEventClass()
   {
-    QLog.i("MiniLoadManager", 1, "[MiniEng]" + paramBaseTask + " done! succ:" + paramBaseTask.isSucceed() + ", listener=" + this.jdField_a_of_type_Asjg);
-    if ((paramBaseTask instanceof asjg))
-    {
-      if (paramBaseTask.isSucceed()) {
-        break label98;
-      }
-      if (this.jdField_a_of_type_Asjf != null) {
-        this.jdField_a_of_type_Asjf.onEngineLoad(false, ((asjg)paramBaseTask).msg);
-      }
-    }
-    for (this.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Boolean = true)
-    {
-      super.onTaskDone(paramBaseTask);
-      return;
-      label98:
-      if (this.jdField_a_of_type_Asjf != null) {
-        this.jdField_a_of_type_Asjf.onEngineLoad(true, "");
-      }
-    }
-  }
-  
-  @Deprecated
-  public void start()
-  {
-    QLog.w("MiniLoadManager", 1, "[MiniEng]start does nothing, use start(MiniAppConfig) instead");
+    return asiv.class;
   }
 }
 

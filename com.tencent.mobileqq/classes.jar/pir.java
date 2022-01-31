@@ -1,8 +1,11 @@
 import android.content.Context;
-import android.text.TextUtils;
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class pir
@@ -19,22 +22,19 @@ public class pir
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = bhvh.a("kd_topic_recommend_card_jump_url");
-    if ((paramViewBase instanceof String)) {}
-    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
-      }
-      if (!TextUtils.isEmpty(paramViewBase))
+      do
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-          rap.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-        }
-        onk.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      }
-      return;
-    }
+        return;
+        paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a;
+      } while (onh.a() != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long);
+      QLog.d("OnPivacyClickListener", 2, "privacy type is  " + paramViewBase.jdField_a_of_type_Int + "| feedsid is " + paramViewBase.b);
+    } while (paramViewBase.jdField_a_of_type_Int != 1);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("feeds_id", paramViewBase.b);
+    PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyPrivacyListFragment.class);
   }
 }
 

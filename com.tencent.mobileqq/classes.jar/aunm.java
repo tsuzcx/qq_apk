@@ -1,55 +1,8 @@
 public class aunm
-  extends aunl
 {
-  public aunl a()
-  {
-    return this;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_f_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_f_of_type_JavaLangString = paramString;
-  }
+  public static boolean a = true;
+  public static boolean b;
+  public static boolean c = true;
 }
 
 

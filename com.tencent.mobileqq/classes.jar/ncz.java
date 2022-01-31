@@ -1,24 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
 
 public final class ncz
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ncz(Looper paramLooper, ndb paramndb)
-  {
-    super(paramLooper);
-  }
+  public ncz(int paramInt, ajte paramajte, Context paramContext, wxr paramwxr, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.arg1 == 0)
+    switch (paramInt)
     {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_Ajte.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
+      }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, this.jdField_a_of_type_Long, false);
       return;
     }
-    this.a.a(paramMessage.arg1, null);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, this.jdField_a_of_type_Long, true);
+      return;
+    }
+    this.jdField_a_of_type_Ajte.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 

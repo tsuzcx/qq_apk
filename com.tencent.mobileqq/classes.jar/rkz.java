@@ -1,17 +1,29 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+
 class rkz
-  extends osp
+  implements Animation.AnimationListener
 {
-  rkz(rky paramrky, rkx paramrkx) {}
+  rkz(rkv paramrkv, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    rky.a(this.jdField_a_of_type_Rky, paramBoolean, paramInt, paramString);
+    ImageView localImageView = rkv.c(this.jdField_a_of_type_Rkv);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a) {}
+    for (int i = 2130842306;; i = 2130841221)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
+    }
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
-  {
-    rky.a(this.jdField_a_of_type_Rky, paramBoolean, paramLong, paramInt, paramString);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

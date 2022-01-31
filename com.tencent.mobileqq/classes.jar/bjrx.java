@@ -1,168 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import org.json.JSONObject;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
-public class bjrx
-  extends bjun
+public abstract class bjrx
+  extends bjdc
 {
-  public static final String a;
-  private static final String jdField_b_of_type_JavaLangString = ajyc.a(2131703477);
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private int jdField_b_of_type_Int = -1;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private String d = "barindex";
+  protected bihx a;
+  protected boolean b;
+  public boolean c;
+  protected boolean d;
   
-  static
+  public bjrx(CaptureModeController paramCaptureModeController)
   {
-    jdField_a_of_type_JavaLangString = bjrx.class.getSimpleName();
-  }
-  
-  public bjrx(bjww parambjww, long paramLong)
-  {
-    super(parambjww, paramLong);
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      int i = paramIntent.getIntExtra("theme_id", -1);
-      paramIntent = paramIntent.getStringExtra("theme_name");
-      this.jdField_b_of_type_Int = i;
-      if (i == -1)
-      {
-        b(jdField_b_of_type_JavaLangString);
-        this.jdField_c_of_type_JavaLangString = "";
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleSelectedTheme mThemeID = " + this.jdField_b_of_type_Int + " mThemeName = " + this.jdField_c_of_type_JavaLangString);
-        return;
-        if (paramIntent != null)
-        {
-          b("#" + paramIntent);
-          this.jdField_c_of_type_JavaLangString = paramIntent;
-        }
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    if ("barindex".equals(this.d)) {}
-    for (int i = 1;; i = 2)
-    {
-      axqw.b(null, "dc00899", "Grp_tribe", "", "video_edit", paramString, i, 0, "", "", "", "");
-      return;
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    int i = -1;
-    paramString = new SpannableString(paramString);
-    if (this.jdField_b_of_type_Int == -1) {}
-    for (;;)
-    {
-      paramString.setSpan(new wdy(a(), 2130842070), 0, 1, 33);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
-      return;
-      i = -18432;
-    }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_b_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
-      b("#" + this.jdField_c_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new bjry(this));
-      return;
-      b(jdField_b_of_type_JavaLangString);
+    super(paramCaptureModeController);
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
+    this.jdField_a_of_type_Bigp = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bigp;
+    if ((this.jdField_a_of_type_Bigp instanceof bihx)) {
+      this.jdField_a_of_type_Bihx = ((bihx)this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Bigp);
     }
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.jdField_a_of_type_Int;
   }
   
-  public String a()
+  protected void a(boolean paramBoolean)
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131363773));
-    this.jdField_a_of_type_AndroidViewView = ((ImageView)a(2131377579));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364750));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(ajyc.a(2131703476));
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(a());
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(bawz.a(a(), 192.0F));
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int i = bawz.a(a(), 10.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842071);
-    Object localObject = new RelativeLayout.LayoutParams(-2, bawz.a(a(), 28.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = bawz.a(a(), 10.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    localObject = azcd.a(((EditVideoParams)((Activity)a()).getIntent().getParcelableExtra(EditVideoParams.class.getName())).a);
-    if (localObject != null)
+    if (paramBoolean)
     {
-      boolean bool = ((JSONObject)localObject).optBoolean("needTheme", false);
-      this.d = ((JSONObject)localObject).optString("from", "");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("theme_id", -1);
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name", "");
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate mThemeID = " + this.jdField_b_of_type_Int + " mThemeName = " + this.jdField_c_of_type_JavaLangString);
-      }
-      j();
-      if (!bool) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt2 == 0) {
+      b(this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Boolean);
       return;
     }
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    }
-    a(paramIntent);
+    b();
+  }
+  
+  public void b()
+  {
+    this.b = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = true;
+    this.c = false;
+    this.d = paramBoolean;
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f()
+  {
+    this.c = true;
+    this.b = false;
   }
 }
 

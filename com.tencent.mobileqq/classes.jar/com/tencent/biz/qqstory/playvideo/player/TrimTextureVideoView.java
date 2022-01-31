@@ -6,22 +6,22 @@ import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Build;
 import android.util.AttributeSet;
-import uec;
-import ued;
-import ufk;
-import ufq;
-import veg;
-import vjr;
+import udz;
+import uea;
+import ufh;
+import ufn;
+import ved;
+import vjo;
 
 public class TrimTextureVideoView
   extends TextureVideoView
-  implements MediaPlayer.OnSeekCompleteListener, ufq
+  implements MediaPlayer.OnSeekCompleteListener, ufn
 {
   public static int h;
   protected Runnable a;
-  private ued a;
+  private uea a;
   protected Runnable b;
-  private ufq b;
+  private ufn b;
   protected boolean h;
   public int i;
   protected boolean i;
@@ -71,7 +71,7 @@ public class TrimTextureVideoView
     int i1 = jdField_h_of_type_Int + 1;
     jdField_h_of_type_Int = i1;
     this.jdField_i_of_type_Int = i1;
-    setOnErrorListener(new uec(this));
+    setOnErrorListener(new udz(this));
     f();
     super.setOnSeekCompleteListener(this);
   }
@@ -88,7 +88,7 @@ public class TrimTextureVideoView
     return this.jdField_k_of_type_Int;
   }
   
-  protected ufk a()
+  protected ufh a()
   {
     if (this.jdField_k_of_type_Boolean) {
       return new com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer();
@@ -98,11 +98,11 @@ public class TrimTextureVideoView
   
   public void a()
   {
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlayback()", Integer.valueOf(this.jdField_i_of_type_Int));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlayback()", Integer.valueOf(this.jdField_i_of_type_Int));
     super.a();
   }
   
-  public void a(ufk paramufk)
+  public void a(ufh paramufh)
   {
     this.jdField_j_of_type_Boolean = true;
     if ((this.jdField_j_of_type_Int != 0) && (this.l != 0))
@@ -110,26 +110,26 @@ public class TrimTextureVideoView
       int i1 = super.getCurrentPosition();
       if (i1 < this.l)
       {
-        veg.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
+        ved.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
         this.jdField_k_of_type_Int = i1;
       }
     }
-    if (this.jdField_b_of_type_Ufq != null) {
-      this.jdField_b_of_type_Ufq.a(paramufk);
+    if (this.jdField_b_of_type_Ufn != null) {
+      this.jdField_b_of_type_Ufn.a(paramufh);
     }
     d();
   }
   
   public void a(boolean paramBoolean)
   {
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]resumePlay(%b)", Integer.valueOf(this.jdField_i_of_type_Int), Boolean.valueOf(paramBoolean));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]resumePlay(%b)", Integer.valueOf(this.jdField_i_of_type_Int), Boolean.valueOf(paramBoolean));
     if ((paramBoolean) || (!super.isPlaying()))
     {
       this.m = this.jdField_j_of_type_Int;
       super.seekTo(this.m);
       this.jdField_j_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Ued != null) {
-        this.jdField_a_of_type_Ued.b();
+      if (this.jdField_a_of_type_Uea != null) {
+        this.jdField_a_of_type_Uea.b();
       }
     }
     super.start();
@@ -146,24 +146,24 @@ public class TrimTextureVideoView
       if (((paramInt1 % 180 > 0) && (paramInt2 < paramInt3)) || ((paramInt1 % 180 == 0) && (paramInt2 > paramInt3)))
       {
         setRotation(i1 + 90);
-        f1 = 1.0F / vjr.a(getResources());
+        f1 = 1.0F / vjo.a(getResources());
         f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
         setScaleX(Math.max(f1, f2));
         setScaleY(Math.max(f1, f2));
-        veg.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        ved.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return true;
       }
       if (i1 != 0)
       {
         setRotation(i1);
-        f1 = 1.0F / vjr.a(getResources());
+        f1 = 1.0F / vjo.a(getResources());
         f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
         setScaleX(Math.max(f1, f2));
         setScaleY(Math.max(f1, f2));
-        veg.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+        ved.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
         return false;
       }
-      veg.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      ved.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
   }
@@ -178,21 +178,21 @@ public class TrimTextureVideoView
     this.jdField_i_of_type_Boolean = false;
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
   }
   
   public void b(boolean paramBoolean)
   {
     this.jdField_h_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Ufk == null) {
+    if (this.jdField_a_of_type_Ufh == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Ufk.a(0.0F, 0.0F);
+      this.jdField_a_of_type_Ufh.a(0.0F, 0.0F);
       return;
     }
-    this.jdField_a_of_type_Ufk.a(1.0F, 1.0F);
+    this.jdField_a_of_type_Ufh.a(1.0F, 1.0F);
   }
   
   public int c()
@@ -203,7 +203,7 @@ public class TrimTextureVideoView
   @TargetApi(14)
   public void c()
   {
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
     this.m = super.getCurrentPosition();
     removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
     super.pause();
@@ -224,7 +224,7 @@ public class TrimTextureVideoView
   {
     super.onAttachedToWindow();
     this.jdField_i_of_type_Boolean = true;
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]onAttachedToWindow! schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
     post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -233,7 +233,7 @@ public class TrimTextureVideoView
   {
     super.onDetachedFromWindow();
     this.jdField_i_of_type_Boolean = false;
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]onDetachedFromWindow! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -245,7 +245,7 @@ public class TrimTextureVideoView
       int i1 = super.getCurrentPosition();
       if (i1 < this.l)
       {
-        veg.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
+        ved.a(this.jdField_a_of_type_JavaLangString, "It need adjust start time,startTime=%s,currentPos=%s", Integer.valueOf(this.jdField_j_of_type_Int), Integer.valueOf(i1));
         this.jdField_k_of_type_Int = i1;
       }
     }
@@ -254,7 +254,7 @@ public class TrimTextureVideoView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    veg.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    ved.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -263,14 +263,14 @@ public class TrimTextureVideoView
     b(this.jdField_h_of_type_Boolean);
   }
   
-  public void setOnRecyclePlayListener(ued paramued)
+  public void setOnRecyclePlayListener(uea paramuea)
   {
-    this.jdField_a_of_type_Ued = paramued;
+    this.jdField_a_of_type_Uea = paramuea;
   }
   
-  public void setOnSeekCompleteListener(ufq paramufq)
+  public void setOnSeekCompleteListener(ufn paramufn)
   {
-    this.jdField_b_of_type_Ufq = paramufq;
+    this.jdField_b_of_type_Ufn = paramufn;
   }
   
   public void setPlayRange(int paramInt1, int paramInt2)
@@ -284,7 +284,7 @@ public class TrimTextureVideoView
       i1 = i2 - i3;
       paramInt1 = i2;
     }
-    veg.a(this.jdField_a_of_type_JavaLangString, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.jdField_i_of_type_Int), Integer.valueOf(i1), Integer.valueOf(paramInt1));
+    ved.a(this.jdField_a_of_type_JavaLangString, "[%d]setPlayRange(%d, %d)", Integer.valueOf(this.jdField_i_of_type_Int), Integer.valueOf(i1), Integer.valueOf(paramInt1));
     if ((isPlaying()) && ((i1 != this.jdField_j_of_type_Int) || (paramInt1 != this.l)))
     {
       super.seekTo(this.jdField_j_of_type_Int);

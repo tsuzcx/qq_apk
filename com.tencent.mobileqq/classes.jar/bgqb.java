@@ -1,19 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
+import mqq.os.MqqHandler;
 
-class bgqb
-  implements View.OnClickListener
+public abstract class bgqb
+  extends OnPluginInstallListener.Stub
 {
-  bgqb(bgqa parambgqa, bgqe parambgqe) {}
+  public Bundle a;
   
-  public void onClick(View paramView)
+  public bgqb(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bgqe.a(paramView);
+    this.a = paramBundle;
+  }
+  
+  public void a()
+  {
+    bgpw.a(BaseApplication.getContext(), this);
+  }
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    a(false, this.a);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgqb
  * JD-Core Version:    0.7.0.1
  */

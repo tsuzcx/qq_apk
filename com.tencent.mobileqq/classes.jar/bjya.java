@@ -1,34 +1,57 @@
+import android.support.annotation.NonNull;
+
 public class bjya
+  extends bjxl
+  implements bjgh
 {
-  public int a;
-  public long a;
-  public boolean a;
+  private bjgd a;
   
-  public boolean equals(Object paramObject)
+  public bjya(@NonNull bjxn parambjxn)
   {
-    if (this == paramObject) {}
-    do
+    super(parambjxn);
+    this.jdField_a_of_type_Bjgd = new bjgd();
+    this.jdField_a_of_type_Bjgd.a(this);
+    this.jdField_a_of_type_Bjgd.a(this.jdField_a_of_type_Bjxn.a);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bjgd.a(this.jdField_a_of_type_Bjyv.a());
+  }
+  
+  public boolean a()
+  {
+    boolean bool = this.jdField_a_of_type_Bjgd.a();
+    if (bool)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bjya)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
+      this.jdField_a_of_type_Bjxn.a(0);
+      this.jdField_a_of_type_Bjxn.a(3, this.jdField_a_of_type_Bjgd.a());
+    }
+    return bool;
   }
   
-  public int hashCode()
+  public void aY_()
   {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
+    this.jdField_a_of_type_Bjxn.a(0);
   }
   
-  public String toString()
+  public void a_(int paramInt, Object paramObject)
   {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_Bjgd.e();
+      return;
+    }
+    if ((paramObject instanceof bjxz)) {
+      this.jdField_a_of_type_Bjgd.a((bjxz)paramObject);
+    }
+    this.jdField_a_of_type_Bjgd.a();
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Bjgd.f();
   }
 }
 

@@ -1,19 +1,7 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class akfj
-  extends akuj
+public class akfj
 {
-  akfj(akfi paramakfi, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    akfi.a(this.a, paramInt, paramSosoLbsInfo);
-  }
+  public int a;
+  public long a;
 }
 
 

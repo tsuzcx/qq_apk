@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adug;
-import aduu;
+import adue;
+import adus;
 import android.content.Context;
 import android.content.Intent;
-import aobk;
-import askd;
+import aobp;
+import askf;
 import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -17,22 +17,22 @@ import java.util.List;
 public class MarketFaceItemBuilder$8
   implements Runnable
 {
-  public MarketFaceItemBuilder$8(adug paramadug, String paramString, aduu paramaduu) {}
+  public MarketFaceItemBuilder$8(adue paramadue, String paramString, adus paramadus) {}
   
   public void run()
   {
     Intent localIntent = new Intent(this.this$0.b, H5MagicPlayerActivity.class);
     localIntent.putExtra("clickTime", System.currentTimeMillis());
     localIntent.putExtra("autoPlay", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("senderUin", this.jdField_a_of_type_Aduu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+    localIntent.putExtra("senderUin", this.jdField_a_of_type_Adus.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
     localIntent.putExtra("selfUin", this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     localIntent.putExtra("sessionInfo", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localIntent.putExtra("emoticon", this.jdField_a_of_type_Aduu.jdField_a_of_type_Aobk.a);
-    Object localObject = (askd)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-    EmoticonPackage localEmoticonPackage = ((askd)localObject).a(this.jdField_a_of_type_Aduu.jdField_a_of_type_Aobk.a.epId);
+    localIntent.putExtra("emoticon", this.jdField_a_of_type_Adus.jdField_a_of_type_Aobp.a);
+    Object localObject = (askf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+    EmoticonPackage localEmoticonPackage = ((askf)localObject).a(this.jdField_a_of_type_Adus.jdField_a_of_type_Aobp.a.epId);
     if (localEmoticonPackage != null)
     {
-      localObject = ((askd)localObject).a(localEmoticonPackage.childEpId);
+      localObject = ((askf)localObject).a(localEmoticonPackage.childEpId);
       if ((localObject != null) && (((List)localObject).size() > 0)) {
         localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
       }

@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.nearby;
 
-import ajtd;
-import ajtg;
-import ajvy;
-import akbm;
-import alyx;
-import alyz;
-import ampe;
+import ajtb;
+import ajte;
+import ajvw;
+import akbl;
+import alyw;
+import alyy;
+import ampd;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.accessibility.AccessibilityManager;
-import aszc;
-import aszj;
-import atbe;
+import asze;
+import aszl;
 import atbg;
-import atbh;
+import atbi;
 import atbj;
-import atbp;
-import atbt;
-import atfx;
-import atfy;
-import atyq;
-import auko;
-import ayry;
-import aysv;
-import bayd;
-import bbwi;
+import atbl;
+import atbr;
+import atbv;
+import atfz;
+import atga;
+import atys;
+import aukq;
+import aysa;
+import aysx;
+import bayr;
+import bbww;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -71,23 +71,23 @@ public class NearbyAppInterface
   public static boolean b;
   public int a;
   public long a;
-  aszc jdField_a_of_type_Aszc = null;
-  public atbh a;
-  private atbj jdField_a_of_type_Atbj;
-  private aysv jdField_a_of_type_Aysv;
+  asze jdField_a_of_type_Asze = null;
+  public atbj a;
+  private atbl jdField_a_of_type_Atbl;
+  private aysx jdField_a_of_type_Aysx;
   NearbyEntityManagerFactory jdField_a_of_type_ComTencentMobileqqNearbyNearbyEntityManagerFactory;
   NearbyMyTabCard jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard;
   Object jdField_a_of_type_JavaLangObject = new Object();
   String jdField_a_of_type_JavaLangString = null;
-  HashMap<Integer, ajtd> jdField_a_of_type_JavaUtilHashMap;
-  public List<ajtg> a;
+  HashMap<Integer, ajtb> jdField_a_of_type_JavaUtilHashMap;
+  public List<ajte> a;
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
   public oidb_0x8dd.SelfInfo a;
   int jdField_b_of_type_Int = -2147483648;
   private Object jdField_b_of_type_JavaLangObject = new Object();
-  public List<ajtg> b;
+  public List<ajte> b;
   int c;
-  public List<ajtg> c;
+  public List<ajte> c;
   public boolean c;
   int jdField_d_of_type_Int = 0;
   boolean jdField_d_of_type_Boolean = false;
@@ -180,29 +180,29 @@ public class NearbyAppInterface
     }
   }
   
-  public ajtd a(int paramInt)
+  public ajtb a(int paramInt)
   {
-    ajtd localajtd = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localajtd == null) {}
+    ajtb localajtb = (ajtb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localajtb == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localajtd = (ajtd)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localajtd == null) {
+        localajtb = (ajtb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localajtb == null) {
           break label113;
         }
-        return localajtd;
-        if (localajtd != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajtd);
+        return localajtb;
+        if (localajtb != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajtb);
         }
-        return localajtd;
+        return localajtb;
       }
-      Object localObject2 = new akbm(this);
+      Object localObject2 = new akbl(this);
       continue;
-      localObject2 = new ajvy(this);
+      localObject2 = new ajvw(this);
       continue;
-      localObject2 = new alyx(this);
+      localObject2 = new alyw(this);
       continue;
       return localObject2;
       label113:
@@ -212,17 +212,17 @@ public class NearbyAppInterface
     }
   }
   
-  public atbj a()
+  public atbl a()
   {
-    if (this.jdField_a_of_type_Atbj == null) {
-      this.jdField_a_of_type_Atbj = new atbj(this);
+    if (this.jdField_a_of_type_Atbl == null) {
+      this.jdField_a_of_type_Atbl = new atbl(this);
     }
-    return this.jdField_a_of_type_Atbj;
+    return this.jdField_a_of_type_Atbl;
   }
   
-  public atfx a()
+  public atfz a()
   {
-    return (atfx)getManager(214);
+    return (atfz)getManager(214);
   }
   
   public NearbyMyTabCard a()
@@ -236,20 +236,20 @@ public class NearbyAppInterface
     if (localNearbyMyTabCard != null)
     {
       localNearbyMyTabCard.visitors.clear();
-      atyq.a(this, localNearbyMyTabCard);
+      atys.a(this, localNearbyMyTabCard);
     }
   }
   
   public void a(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    atbg.a(getAccount(), "sp_nearby_mytab", 0, "key_nearby_mytab_zan_check", Integer.valueOf(this.jdField_b_of_type_Int));
+    atbi.a(getAccount(), "sp_nearby_mytab", 0, "key_nearby_mytab_zan_check", Integer.valueOf(this.jdField_b_of_type_Int));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      atbp.a("updatePerfState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int) });
+      atbr.a("updatePerfState", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int) });
     }
     if (paramInt1 > this.jdField_c_of_type_Int)
     {
@@ -262,11 +262,11 @@ public class NearbyAppInterface
     }
   }
   
-  public void a(atfy paramatfy)
+  public void a(atga paramatga)
   {
-    atfx localatfx = (atfx)getManager(214);
-    if (localatfx != null) {
-      localatfx.a(paramatfy);
+    atfz localatfz = (atfz)getManager(214);
+    if (localatfz != null) {
+      localatfz.a(paramatga);
     }
   }
   
@@ -279,7 +279,7 @@ public class NearbyAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Atbh.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Atbj.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -298,19 +298,19 @@ public class NearbyAppInterface
     }
     this.jdField_a_of_type_TencentImOidbCmd0x8ddOidb_0x8dd$SelfInfo = paramSelfInfo;
     if (paramSelfInfo.uint64_tinyid.get() != 0L) {
-      atbg.a(getAccount(), "self_tinnyid", Long.valueOf(paramSelfInfo.uint64_tinyid.get()));
+      atbi.a(getAccount(), "self_tinnyid", Long.valueOf(paramSelfInfo.uint64_tinyid.get()));
     }
     if (!TextUtils.isEmpty(paramSelfInfo.bytes_nick.get().toStringUtf8())) {
-      atbg.a(getAccount(), "self_nick", paramSelfInfo.bytes_nick.get().toStringUtf8());
+      atbi.a(getAccount(), "self_nick", paramSelfInfo.bytes_nick.get().toStringUtf8());
     }
     if (!TextUtils.isEmpty(paramSelfInfo.str_third_line_info.get())) {
-      atbg.a(getAccount(), "self_third_line_info", paramSelfInfo.str_third_line_info.get());
+      atbi.a(getAccount(), "self_third_line_info", paramSelfInfo.str_third_line_info.get());
     }
     if (!TextUtils.isEmpty(paramSelfInfo.str_third_line_icon.get())) {
-      atbg.a(getAccount(), "self_third_line_icon", paramSelfInfo.str_third_line_icon.get());
+      atbi.a(getAccount(), "self_third_line_icon", paramSelfInfo.str_third_line_icon.get());
     }
     if (paramSelfInfo.uint32_age.get() != -1) {
-      atbg.a(getAccount(), "self_age", Integer.valueOf(paramSelfInfo.uint32_age.get()));
+      atbi.a(getAccount(), "self_age", Integer.valueOf(paramSelfInfo.uint32_age.get()));
     }
     int i;
     if (paramSelfInfo.uint32_gender.get() != -1) {
@@ -322,7 +322,7 @@ public class NearbyAppInterface
     }
     for (;;)
     {
-      atbg.a(getAccount(), "self_gender", Integer.valueOf(i));
+      atbi.a(getAccount(), "self_gender", Integer.valueOf(i));
       a().a(paramSelfInfo);
       return;
       i = 1;
@@ -339,37 +339,37 @@ public class NearbyAppInterface
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramManager);
   }
   
-  public void addObserver(ajtg paramajtg)
+  public void addObserver(ajte paramajte)
   {
-    addObserver(paramajtg, false);
+    addObserver(paramajte, false);
   }
   
-  public void addObserver(ajtg paramajtg, boolean paramBoolean)
+  public void addObserver(ajte paramajte, boolean paramBoolean)
   {
     if (paramBoolean) {
-      if (!this.jdField_b_of_type_JavaUtilList.contains(paramajtg)) {
-        this.jdField_b_of_type_JavaUtilList.add(paramajtg);
+      if (!this.jdField_b_of_type_JavaUtilList.contains(paramajte)) {
+        this.jdField_b_of_type_JavaUtilList.add(paramajte);
       }
     }
-    while (this.jdField_a_of_type_JavaUtilList.contains(paramajtg)) {
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramajte)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramajtg);
+    this.jdField_a_of_type_JavaUtilList.add(paramajte);
   }
   
   public NearbyMyTabCard b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard == null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard = atyq.a(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard = atys.a(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqNearpeopleMytabNearbyMyTabCard;
   }
   
-  public void b(atfy paramatfy)
+  public void b(atga paramatga)
   {
-    atfx localatfx = (atfx)getManager(214);
-    if (localatfx != null) {
-      localatfx.b(paramatfy);
+    atfz localatfz = (atfz)getManager(214);
+    if (localatfz != null) {
+      localatfz.b(paramatga);
     }
   }
   
@@ -414,7 +414,7 @@ public class NearbyAppInterface
     return AppSetting.a();
   }
   
-  public List<ajtg> getBusinessObserver(int paramInt)
+  public List<ajte> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -441,12 +441,12 @@ public class NearbyAppInterface
     return this.jdField_a_of_type_TencentImOidbCmd0x8ddOidb_0x8dd$SelfInfo.bytes_nick.get().toStringUtf8();
   }
   
-  public auko getEntityManagerFactory()
+  public aukq getEntityManagerFactory()
   {
     return getEntityManagerFactory(getAccount());
   }
   
-  public auko getEntityManagerFactory(String paramString)
+  public aukq getEntityManagerFactory(String paramString)
   {
     if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(getAccount()))) {
       throw new IllegalStateException("Can not create a entity factory, the account is not match." + paramString + "!=" + getAccount());
@@ -494,27 +494,27 @@ public class NearbyAppInterface
         continue;
         localObject3 = new ProxyIpManagerImpl(this);
         continue;
-        localObject3 = new ampe(this);
+        localObject3 = new ampd(this);
         continue;
-        localObject3 = new aysv();
+        localObject3 = new aysx();
         continue;
-        localObject3 = new atfx(this);
+        localObject3 = new atfz(this);
         continue;
         localObject3 = new DeviceProfileManager.AccountDpcManager(this);
         continue;
-        localObject3 = new bayd(this);
+        localObject3 = new bayr(this);
         continue;
-        localObject3 = new atbt(this);
+        localObject3 = new atbv(this);
         continue;
-        localObject3 = new atbe(this);
+        localObject3 = new atbg(this);
         continue;
-        localObject3 = new alyz(this);
+        localObject3 = new alyy(this);
         continue;
-        localObject3 = new aszj(this);
+        localObject3 = new aszl(this);
         continue;
         localObject3 = new UsingTimeReportManager(this);
         continue;
-        localObject3 = new bbwi(this);
+        localObject3 = new bbww(this);
         continue;
         label383:
         Object localObject4 = localObject3;
@@ -533,12 +533,12 @@ public class NearbyAppInterface
     return "module_nearby";
   }
   
-  public ayry getNetEngine(int paramInt)
+  public aysa getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Aysv == null) {
-      this.jdField_a_of_type_Aysv = ((aysv)getManager(211));
+    if (this.jdField_a_of_type_Aysx == null) {
+      this.jdField_a_of_type_Aysx = ((aysx)getManager(211));
     }
-    return this.jdField_a_of_type_Aysv.a(this, paramInt);
+    return this.jdField_a_of_type_Aysx.a(this, paramInt);
   }
   
   public void onBeforeExitProc() {}
@@ -546,12 +546,12 @@ public class NearbyAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Atbh = new atbh(this);
+    this.jdField_a_of_type_Atbj = new atbj(this);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.jdField_b_of_type_JavaUtilList = new Vector();
     this.jdField_c_of_type_JavaUtilList = new Vector();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-    ((atfx)getManager(214)).a();
+    ((atfz)getManager(214)).a();
     ThreadManager.post(new NearbyAppInterface.2(this), 8, null, true);
   }
   
@@ -596,7 +596,7 @@ public class NearbyAppInterface
               if (!QLog.isColorLevel()) {
                 continue;
               }
-              atbp.a("NearbyAppInterface", new Object[] { "onDestroy", localException2.toString() });
+              atbr.a("NearbyAppInterface", new Object[] { "onDestroy", localException2.toString() });
             }
           }
           catch (Exception localException1)
@@ -616,7 +616,7 @@ public class NearbyAppInterface
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    atbp.a("onReceiveAccountAction", new Object[0]);
+    atbr.a("onReceiveAccountAction", new Object[0]);
     if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramString)) {
       ((UsingTimeReportManager)getManager(221)).a();
     }
@@ -625,15 +625,15 @@ public class NearbyAppInterface
   
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
-    atbp.a("onReceiveLegalExitProcAction", new Object[0]);
+    atbr.a("onReceiveLegalExitProcAction", new Object[0]);
     return false;
   }
   
-  public void removeObserver(ajtg paramajtg)
+  public void removeObserver(ajte paramajte)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramajtg);
-    this.jdField_b_of_type_JavaUtilList.remove(paramajtg);
-    this.jdField_c_of_type_JavaUtilList.remove(paramajtg);
+    this.jdField_a_of_type_JavaUtilList.remove(paramajte);
+    this.jdField_b_of_type_JavaUtilList.remove(paramajte);
+    this.jdField_c_of_type_JavaUtilList.remove(paramajte);
   }
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -656,13 +656,13 @@ public class NearbyAppInterface
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Atbh.a(paramToServiceMsg);
+    this.jdField_a_of_type_Atbj.a(paramToServiceMsg);
   }
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aszc = new aszc(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Aszc);
+    this.jdField_a_of_type_Asze = new asze(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Asze);
     super.start(paramBoolean);
   }
 }

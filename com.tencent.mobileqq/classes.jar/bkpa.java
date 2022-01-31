@@ -1,10 +1,13 @@
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public abstract interface bkpa
+class bkpa
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
+  bkpa(bkoz parambkoz) {}
 }
 
 

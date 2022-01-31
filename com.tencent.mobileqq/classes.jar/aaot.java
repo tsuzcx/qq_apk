@@ -4,16 +4,16 @@ import android.content.DialogInterface.OnClickListener;
 public final class aaot
   implements DialogInterface.OnClickListener
 {
-  public aaot(aaqe paramaaqe) {}
+  public aaot(aaqa paramaaqa) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (this.a != null) {
       this.a.a();
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    mqw.e(true, false);
+    paramDialogInterface.dismiss();
+    mqw.b();
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.open.wadl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdon;
+import bdpc;
 
 public class WadlJsBridgeDownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WadlJsBridgeDownloadInfo> CREATOR = new bdon();
+  public static final Parcelable.Creator<WadlJsBridgeDownloadInfo> CREATOR = new bdpc();
   public int a;
   public long a;
   public String a;

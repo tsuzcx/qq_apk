@@ -1,23 +1,63 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
 public class aggc
+  implements IMiniMsgUnreadCallback
 {
-  public static void a(String paramString)
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public aggc(View paramView, TextView paramTextView)
   {
-    a(paramString, "");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void destroy()
   {
-    a(paramString1, paramString2, "");
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  public void hide()
   {
-    axqw.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d(aghm.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void hideUnread()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public boolean show(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    updateUnreadCount(paramInt, false);
+    return true;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
     }
+    localTextView.setText(str);
+    if (!paramBoolean)
+    {
+      if (paramInt <= 0) {
+        localTextView.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    localTextView.setVisibility(0);
   }
 }
 

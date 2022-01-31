@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Handler;
-import bblk;
-import bbll;
+import bbly;
+import bblz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,24 +12,24 @@ public class VoicePlayer$1
 {
   int a = 0;
   
-  public VoicePlayer$1(bblk parambblk) {}
+  public VoicePlayer$1(bbly parambbly) {}
   
   public void run()
   {
-    if ((bblk.a(this.this$0) == 4) || (bblk.a(this.this$0) == 5) || (bblk.a(this.this$0) == 6) || (bblk.a(this.this$0) == 8)) {
+    if ((bbly.a(this.this$0) == 4) || (bbly.a(this.this$0) == 5) || (bbly.a(this.this$0) == 6) || (bbly.a(this.this$0) == 8)) {
       this.a = 0;
     }
     do
     {
       return;
-      if (bblk.a(this.this$0) == 3)
+      if (bbly.a(this.this$0) == 3)
       {
-        this.a = bblk.b(this.this$0);
+        this.a = bbly.b(this.this$0);
         return;
       }
-    } while (bblk.a(this.this$0) == null);
-    int k = bblk.c(this.this$0);
-    int i = bblk.b(this.this$0);
+    } while (bbly.a(this.this$0) == null);
+    int k = bbly.c(this.this$0);
+    int i = bbly.b(this.this$0);
     if (i < this.a) {
       i = this.a;
     }
@@ -52,14 +52,14 @@ public class VoicePlayer$1
       if (i > this.a) {
         this.a = i;
       }
-      Iterator localIterator = bblk.a(this.this$0).iterator();
+      Iterator localIterator = bbly.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((bbll)localIterator.next()).a(bblk.a(this.this$0), j, i);
+        ((bblz)localIterator.next()).a(bbly.a(this.this$0), j, i);
       }
-      if (bblk.a(this.this$0) == null) {
+      if (bbly.a(this.this$0) == null) {
         break;
       }
-      bblk.a(this.this$0).postDelayed(this, 50L);
+      bbly.a(this.this$0).postDelayed(this, 50L);
       return;
     }
   }

@@ -1,17 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.Hashtable;
 
-class bcfg
-  implements View.OnClickListener
+public class bcfg
+  extends bceg
 {
-  bcfg(bcfe parambcfe) {}
+  Hashtable<String, Boolean> a = new Hashtable();
   
-  public void onClick(View paramView)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    this.a.put(paramString, Boolean.valueOf(paramBoolean));
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    paramString = (Boolean)this.a.get(paramString);
+    if (paramString == null) {
+      return paramBoolean;
     }
+    return paramString.booleanValue();
   }
 }
 

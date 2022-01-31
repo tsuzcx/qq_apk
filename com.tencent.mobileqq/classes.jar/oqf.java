@@ -1,14 +1,23 @@
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import java.io.File;
-import java.io.FileFilter;
 
-class oqf
-  implements FileFilter
+public class oqf
+  implements OnCompositionLoadedListener
 {
-  oqf(oqe paramoqe) {}
+  public oqf(ReadInJoyLottieDrawable.4 param4) {}
   
-  public boolean accept(File paramFile)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    return paramFile.getName().endsWith(".json");
+    if (paramLottieComposition != null)
+    {
+      oqb.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
+      oqb.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 

@@ -10,7 +10,7 @@ import android.graphics.Shader.TileMode;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bcsr;
+import bctg;
 import com.tencent.qphone.base.util.QLog;
 
 public class KSongTextView
@@ -21,7 +21,7 @@ public class KSongTextView
   private long jdField_a_of_type_Long = 50L;
   private LinearGradient jdField_a_of_type_AndroidGraphicsLinearGradient;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private bcsr jdField_a_of_type_Bcsr;
+  private bctg jdField_a_of_type_Bctg;
   private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -124,14 +124,14 @@ public class KSongTextView
     ((LinearGradient)localObject1).setLocalMatrix((Matrix)localObject2);
   }
   
-  public void a(long paramLong, bcsr parambcsr)
+  public void a(long paramLong, bctg parambctg)
   {
     QLog.i("KSongTextView", 2, "startDownTime = " + paramLong);
     if (4 == getVisibility()) {
       setVisibility(0);
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bcsr = parambcsr;
+    this.jdField_a_of_type_Bctg = parambctg;
     this.jdField_a_of_type_Float = getPaint().measureText(getText().toString());
     paramLong /= this.jdField_a_of_type_Long;
     this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float / (float)paramLong);
@@ -151,14 +151,14 @@ public class KSongTextView
       this.jdField_a_of_type_Float -= this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_Float <= 0.0F)
       {
-        if (this.jdField_a_of_type_Bcsr != null) {
-          this.jdField_a_of_type_Bcsr.a();
+        if (this.jdField_a_of_type_Bctg != null) {
+          this.jdField_a_of_type_Bctg.a();
         }
         setVisibility(4);
         return;
       }
-      if (this.jdField_a_of_type_Bcsr != null) {
-        this.jdField_a_of_type_Bcsr.a(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      if (this.jdField_a_of_type_Bctg != null) {
+        this.jdField_a_of_type_Bctg.a(System.currentTimeMillis() - this.jdField_b_of_type_Long);
       }
       postInvalidateDelayed(this.jdField_a_of_type_Long);
     }

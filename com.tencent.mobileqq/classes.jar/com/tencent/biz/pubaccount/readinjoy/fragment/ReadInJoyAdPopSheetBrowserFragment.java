@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bcbv;
-import bcfj;
-import bcsc;
+import bccj;
+import bcfx;
+import bcsr;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.qphone.base.util.QLog;
-import oci;
-import ots;
+import ocf;
+import otp;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -45,22 +45,22 @@ public class ReadInJoyAdPopSheetBrowserFragment
       getActivity().finish();
       return;
     }
-    localObject = oci.a(getActivity(), this.b, this.c, this.t);
-    ((oci)localObject).a(new ots(this));
-    ((oci)localObject).show();
+    localObject = ocf.a(getActivity(), this.b, this.c, this.t);
+    ((ocf)localObject).a(new otp(this));
+    ((ocf)localObject).show();
   }
   
   public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_Bcbv != null) && (this.jdField_a_of_type_Bcbv.a != null)) {
-      this.jdField_a_of_type_Bcbv.a.setVisibility(8);
+    if ((this.jdField_a_of_type_Bccj != null) && (this.jdField_a_of_type_Bccj.a != null)) {
+      this.jdField_a_of_type_Bccj.a.setVisibility(8);
     }
     if (this.d != null) {
       this.d.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_Bcfj != null) && (this.jdField_a_of_type_Bcfj.a != null)) {
-      this.jdField_a_of_type_Bcfj.a.a(false);
+    if ((this.jdField_a_of_type_Bcfx != null) && (this.jdField_a_of_type_Bcfx.a != null)) {
+      this.jdField_a_of_type_Bcfx.a.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;

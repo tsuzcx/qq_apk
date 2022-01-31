@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
-
-public class tuu
-  implements View.OnTouchListener
+class tuu
+  implements twn
 {
-  public tuu(StoryPlayerFragment paramStoryPlayerFragment) {}
+  tuu(tut paramtut) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    tut.a(this.a);
+  }
+  
+  public void a(twl paramtwl, String paramString, boolean paramBoolean)
+  {
+    ved.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramtwl.a, paramString });
+    tut.a(this.a).a(paramtwl, paramString, paramBoolean);
   }
 }
 

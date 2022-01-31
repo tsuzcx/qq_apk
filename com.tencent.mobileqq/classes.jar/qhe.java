@@ -1,16 +1,34 @@
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment;
 
 public class qhe
-  implements bfrf
+  extends osm
 {
-  public qhe(FriendListFragment paramFriendListFragment) {}
+  public qhe(ReadInJoySelectMemberAQFragment paramReadInJoySelectMemberAQFragment) {}
   
-  public void a(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    if (FriendListFragment.a(this.a) != null) {
-      FriendListFragment.a(this.a).onClick(null);
+    if (("OidbSvc.0xbd4_1".equals(paramString)) && (this.a.getActivity() != null))
+    {
+      this.a.a = true;
+      this.a.a();
+      if (paramInt == 0)
+      {
+        ReadInJoySelectMemberAQFragment.a(this.a, 0);
+        ReadInJoySelectMemberAQFragment.a(this.a, false);
+        this.a.c();
+        this.a.getActivity().finish();
+        ReadInJoySelectMemberAQFragment.a(this.a, true);
+      }
     }
+    else
+    {
+      return;
+    }
+    ReadInJoySelectMemberAQFragment.a(this.a, true);
+    ReadInJoySelectMemberAQFragment.a(this.a, 2);
+    ReadInJoySelectMemberAQFragment.a(this.a, ajya.a(2131712757) + paramInt);
+    bcql.a(this.a.getActivity(), 1, this.a.getString(2131718561), 0).b(ReadInJoySelectMemberAQFragment.a(this.a));
   }
 }
 

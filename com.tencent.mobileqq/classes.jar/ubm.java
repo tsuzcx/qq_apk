@@ -1,17 +1,27 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class ubm
-  extends ubv<String>
+  extends ubs<StoryVideoItem>
 {
   public ubm(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
     super(paramVideoViewVideoHolder, null);
   }
   
-  public void a(String paramString)
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    super.onNext(paramString);
+    super.onNext(paramStoryVideoItem);
     VideoViewVideoHolder.a(this.a);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    ved.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 

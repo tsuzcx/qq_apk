@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apls;
-import aplt;
-import apnb;
+import aplw;
+import aplx;
+import apnf;
 
 public class C2CFileModel$1$1
   implements Runnable
 {
-  public C2CFileModel$1$1(aplt paramaplt) {}
+  public C2CFileModel$1$1(aplx paramaplx) {}
   
   public void run()
   {

@@ -1,8 +1,4 @@
-class qvu
-{
-  private static final qvr a = new qvr(null);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qvu

@@ -1,622 +1,351 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.data.EmotionKeyword;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter.3;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.widget.XPanelContainer;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 public class anzu
-  extends BaseAdapter
-  implements View.OnClickListener, View.OnLongClickListener
+  extends aoai
+  implements Handler.Callback, View.OnClickListener
 {
-  public static Rect a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  private askd jdField_a_of_type_Askd;
-  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new anzw(this);
-  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new anzv(this);
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  ArrayList<URLDrawable> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  public List<Emoticon> a;
-  private int jdField_b_of_type_Int;
-  private List<Emoticon> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int;
-  private List<Emoticon> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private int jdField_d_of_type_Int;
-  private List<Emoticon> jdField_d_of_type_JavaUtilList = new ArrayList();
-  private List<EmotionKeyword> e;
+  protected Button a;
+  protected LinearLayout a;
+  protected EmoticonPackage a;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bfnk(Looper.getMainLooper(), this, true);
+  private boolean jdField_a_of_type_Boolean;
+  protected int f;
+  protected int g;
   
-  static
+  public anzu(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anyg paramanyg)
   {
-    jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public anzu(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, EditText paramEditText, BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.e = new ArrayList();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 77.0F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 80.0F));
-    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 65.0F));
-    this.jdField_d_of_type_Int = ((int)(this.jdField_a_of_type_Float * 65.0F));
-    this.jdField_a_of_type_Askd = ((askd)paramQQAppInterface.getManager(14));
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private int a()
-  {
-    int i = 1;
-    int j = bbev.a(BaseApplication.getContext());
-    if (j == 1) {
-      i = 0;
-    }
-    while (j == 4) {
-      return i;
-    }
-    if (j == 3) {
-      return 2;
-    }
-    if (j == 2) {
-      return 3;
-    }
-    return -1;
-  }
-  
-  private boolean a()
-  {
-    ArrayList localArrayList = new ArrayList(this.jdField_c_of_type_JavaUtilList);
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    if (j > 0)
-    {
-      int i = 0;
-      while (i < j)
-      {
-        if (localArrayList.contains(this.jdField_a_of_type_JavaUtilList.get(i))) {
-          localArrayList.remove(this.jdField_a_of_type_JavaUtilList.get(i));
-        }
-        i += 1;
-      }
-    }
-    if ((localArrayList.size() > 0) && (QLog.isColorLevel()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isShowEmotionKeywordLayout not finishData:");
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Emoticon localEmoticon = (Emoticon)localIterator.next();
-        if (localEmoticon != null) {
-          localStringBuilder.append("eid=").append(localEmoticon.eId).append(",");
-        }
-      }
-      QLog.d("EmotionKeywordAdapter", 2, localStringBuilder.toString());
-    }
-    if (localArrayList.size() == 0) {}
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyg);
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+    this.f = (XPanelContainer.jdField_a_of_type_Int - (int)paramContext.getResources().getDimension(2131296829));
+    if (paramEmoticonPackage.jobType == 4) {}
     for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "isShowEmotionKeywordLayout showLayout = " + bool + ",keyword = " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramEmoticonPackage.mobileFeetype != 4) {
+        break;
       }
-      return bool;
-    }
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() < 1)) {
-      QLog.e("EmotionKeywordAdapter", 1, "getFirstSreenData data error, keyword = " + this.jdField_a_of_type_JavaLangString);
-    }
-    StringBuilder localStringBuilder;
-    for (;;)
-    {
+      this.g = 1;
       return;
-      if (this.jdField_b_of_type_JavaUtilList.size() < 5) {}
-      for (this.jdField_c_of_type_JavaUtilList = new ArrayList(this.jdField_b_of_type_JavaUtilList); QLog.isColorLevel(); this.jdField_c_of_type_JavaUtilList = new ArrayList(this.jdField_b_of_type_JavaUtilList.subList(0, 5)))
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getFirstScreenData: keyword = ").append(this.jdField_a_of_type_JavaLangString).append(":");
-        Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          Emoticon localEmoticon = (Emoticon)localIterator.next();
-          if (localEmoticon != null) {
-            localStringBuilder.append("eid=").append(localEmoticon.eId).append(",");
-          }
-        }
-      }
     }
-    QLog.d("EmotionKeywordAdapter", 2, localStringBuilder.toString());
+    this.g = 2;
   }
   
-  private void f()
+  private LinearLayout a(anzv paramanzv)
   {
-    if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() < 1)) {
-      QLog.e("EmotionKeywordAdapter", 1, "downloadFirstScreenDrawable data error keyword = " + this.jdField_a_of_type_JavaLangString);
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setBackgroundColor(-16777216);
+    localLinearLayout.getBackground().setAlpha(178);
+    localLinearLayout.setGravity(16);
+    localLinearLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, this.f));
+    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject = new LinearLayout.LayoutParams(-2, -2);
+    ((LinearLayout.LayoutParams)localObject).gravity = 1;
+    localTextView.setGravity(1);
+    localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
+    localObject = new Button(this.jdField_a_of_type_AndroidContentContext);
+    ((Button)localObject).setId(2131364881);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(25.0F * this.jdField_a_of_type_Float));
+    ((Button)localObject).setGravity(17);
+    localLayoutParams.topMargin = ((int)(10.0F * this.jdField_a_of_type_Float));
+    localLayoutParams.gravity = 1;
+    ((Button)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839060));
+    ((Button)localObject).setTextColor(-14894864);
+    ((Button)localObject).setPadding((int)(this.jdField_a_of_type_Float * 30.0F), 0, (int)(this.jdField_a_of_type_Float * 30.0F), 0);
+    localLinearLayout.addView((View)localObject, localLayoutParams);
+    paramanzv.jdField_a_of_type_AndroidWidgetLinearLayout = localLinearLayout;
+    paramanzv.jdField_a_of_type_AndroidWidgetTextView = localTextView;
+    paramanzv.jdField_a_of_type_AndroidWidgetButton = ((Button)localObject);
+    return localLinearLayout;
+  }
+  
+  private void b(View paramView, aoam paramaoam)
+  {
+    if ((paramView == null) || (paramaoam == null))
+    {
+      QLog.e("EmotionCompleteInvalidAdapter", 1, "updateUI contentView or info = null");
+      return;
     }
-    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionCompleteInvalidAdapter", 2, "updateUI");
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramView.setVisibility(0);
+      if (!(paramaoam instanceof anyh)) {
+        break label107;
+      }
+    }
+    label107:
+    for (paramaoam = (anyh)paramaoam;; paramaoam = null)
+    {
+      if (paramaoam == null)
+      {
+        QLog.e("EmotionCompleteInvalidAdapter", 1, "updateUI emotionInfo = null");
+        return;
+      }
+      paramView = (URLImageView)paramView.findViewById(2131365583);
+      paramView.setImageDrawable(paramaoam.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float));
+      paramView.setVisibility(0);
+      return;
+      super.a(paramView, paramaoam);
+      return;
+    }
+  }
+  
+  public View a(anxj paramanxj, int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (anzv)paramanxj;
+    paramViewGroup = paramView;
+    label104:
+    int i;
+    label258:
+    int j;
+    label305:
+    int m;
+    int n;
+    if (paramView == null)
+    {
+      paramViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = a((anzv)localObject);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label377;
+      }
+      paramView = aoau.a().a(11);
+      if (paramView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EmotionCompleteInvalidAdapter", 2, "getEmotionView smallemotion view from inflater");
+        }
+        paramanxj = new EmotionInvalidPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, 7, this.jdField_a_of_type_Int);
+        if (!this.jdField_a_of_type_Boolean) {
+          break label497;
+        }
+        a(11, paramanxj);
+        paramViewGroup.addView(paramanxj, new FrameLayout.LayoutParams(-1, this.f));
+        paramViewGroup.addView(localLinearLayout);
+        ((anzv)localObject).jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionInvalidPanelLinearLayout = ((EmotionInvalidPanelLinearLayout)paramanxj);
+        paramViewGroup.setTag(localObject);
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetButton = ((anzv)localObject).jdField_a_of_type_AndroidWidgetButton;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((anzv)localObject).jdField_a_of_type_AndroidWidgetLinearLayout;
+      paramView = ajya.a(2131704116);
+      paramanxj = ajya.a(2131704118);
+      if (this.g == 2) {
+        paramanxj = ajya.a(2131704119);
+      }
+      paramanxj = ajya.a(2131704112) + paramanxj + "专享,\n开通" + paramanxj + ajya.a(2131704115);
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype != 6) {
+        break label507;
+      }
+      paramanxj = ajya.a(2131704114);
+      paramView = ajya.a(2131704109);
+      ((anzv)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramanxj);
+      ((anzv)localObject).jdField_a_of_type_AndroidWidgetButton.setText(paramView);
+      ((anzv)localObject).jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+      i = 0;
+      paramInt = 0;
+      paramanxj = ((anzv)localObject).jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionInvalidPanelLinearLayout;
+      int i1 = paramanxj.getChildCount();
+      j = 0;
+      if (j >= i1) {
+        break label663;
+      }
+      paramView = (LinearLayout)paramanxj.getChildAt(j);
+      if (paramInt == 0) {
+        break label563;
+      }
+      paramView.setVisibility(8);
+      m = i;
+      n = paramInt;
+    }
+    label377:
+    label507:
+    int i2;
+    label497:
+    int k;
+    label563:
     do
     {
-      return;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("downloadFirstScreenDrawable : local success , keyword = " + this.jdField_a_of_type_JavaLangString + ":");
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        Emoticon localEmoticon = (Emoticon)localIterator.next();
-        if ((localEmoticon != null) && (!"NONE".equals(localEmoticon.epId))) {
-          try
-          {
-            URL localURL = new URL("emotion_pic", "fromAIO", localEmoticon.epId + "_" + localEmoticon.eId);
-            if (localURL == null) {
-              QLog.e("EmotionKeywordAdapter", 1, "downloadFirstScreenDrawable url = null");
-            }
-          }
-          catch (MalformedURLException localMalformedURLException)
-          {
-            for (;;)
-            {
-              QLog.e("EmotionKeywordAdapter", 1, "downloadFirstScreenDrawable url exception e = " + localMalformedURLException.getMessage());
-              localObject = null;
-            }
-            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-            localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-            localURLDrawableOptions.mPlayGifImage = true;
-            Object localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-            ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
-            ((URLDrawable)localObject).setTag(localEmoticon);
-            if (((URLDrawable)localObject).getStatus() != 1)
-            {
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-              ((URLDrawable)localObject).addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-              ((URLDrawable)localObject).addHeader("emo_big", "true");
-              ((URLDrawable)localObject).startDownload();
-            }
-            else
-            {
-              if (!this.jdField_a_of_type_JavaUtilList.contains(localEmoticon)) {
-                this.jdField_a_of_type_JavaUtilList.add(localEmoticon);
-              }
-              localStringBuilder.append(";epId = ").append(localEmoticon.epId).append(",eid = ").append(localEmoticon.eId);
-            }
-          }
-        }
-      }
-      a();
-    } while (!QLog.isColorLevel());
-    QLog.d("EmotionKeywordAdapter", 2, localStringBuilder.toString());
-  }
-  
-  public void a()
-  {
-    if ((a()) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
-    {
-      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (localMqqHandler != null) {
-        localMqqHandler.sendMessage(localMqqHandler.obtainMessage(69));
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "showEmotionKeywordLayout isshow = " + bool + ",keyword = " + this.jdField_a_of_type_JavaLangString + ",inputstring = " + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<Emoticon> paramList)
-  {
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_c_of_type_JavaUtilList.clear();
-    e();
-    f();
-    notifyDataSetChanged();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setData:");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Emoticon localEmoticon = (Emoticon)paramList.next();
-        if (localEmoticon != null) {
-          localStringBuilder.append("eid=").append(localEmoticon.eId).append(",");
-        }
-      }
-      QLog.d("EmotionKeywordAdapter", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp, String paramString)
-  {
-    if ((paramString == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    ThreadManager.post(new EmotionKeywordAdapter.3(this, paramEmoticonResp, paramString), 5, null, true);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordAdapter", 2, "resetExposeList");
-    }
-    this.e.clear();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordAdapter", 2, "resetLoadFinishData");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordAdapter", 2, "reportExposeData, keyword = " + this.jdField_a_of_type_JavaLangString);
-    }
-    int k = this.jdField_d_of_type_JavaUtilList.size();
-    if (k > 0)
-    {
-      int i;
-      StringBuilder localStringBuilder1;
-      StringBuilder localStringBuilder2;
-      StringBuilder localStringBuilder3;
-      StringBuilder localStringBuilder4;
-      int j;
-      label94:
-      Emoticon localEmoticon;
-      if (k > 5)
-      {
-        i = 5;
-        localStringBuilder1 = new StringBuilder();
-        localStringBuilder2 = new StringBuilder();
-        localStringBuilder3 = new StringBuilder();
-        localStringBuilder4 = new StringBuilder();
-        j = 0;
-        if (j >= k) {
-          break label228;
-        }
-        localEmoticon = (Emoticon)this.jdField_d_of_type_JavaUtilList.get(j);
-        if (j >= i) {
-          break label178;
-        }
-        localStringBuilder1.append(localEmoticon.eId);
-        localStringBuilder2.append(localEmoticon.epId);
-        if (j < i - 1)
-        {
-          localStringBuilder1.append("_");
-          localStringBuilder2.append("_");
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break label94;
-        i = k;
+      j += 1;
+      paramInt = n;
+      i = m;
+      break label305;
+      paramanxj = paramView;
+      if (!QLog.isColorLevel()) {
         break;
-        label178:
-        localStringBuilder3.append(localEmoticon.eId);
-        localStringBuilder4.append(localEmoticon.epId);
-        if (j < k - 1)
-        {
-          localStringBuilder3.append("_");
-          localStringBuilder4.append("_");
-        }
       }
-      label228:
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, a() + "", "", localStringBuilder1.toString(), this.jdField_a_of_type_JavaLangString);
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, a() + "", "", localStringBuilder2.toString(), this.jdField_a_of_type_JavaLangString);
-      if (localStringBuilder3.length() > 0)
+      QLog.d("EmotionCompleteInvalidAdapter", 2, "getEmotionView smallemotion view from cache");
+      paramanxj = paramView;
+      break;
+      paramView = aoau.a().a(10);
+      if (paramView == null)
       {
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "View_associate", 0, 0, a() + "", "", localStringBuilder3.toString(), this.jdField_a_of_type_JavaLangString);
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "View_associate_2", 0, 0, a() + "", "", localStringBuilder4.toString(), this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("EmotionCompleteInvalidAdapter", 2, "getEmotionView positon = " + paramInt + ";bigemotion view from inflater");
+        }
+        paramanxj = new EmotionInvalidPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, 4, this.jdField_a_of_type_Int);
+        break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "reportExposeData : keyword = " + this.jdField_a_of_type_JavaLangString + "fistReportItem = " + localStringBuilder1.toString() + ";secondReportItem = " + localStringBuilder3 + ";fistEpReportItem = " + localStringBuilder2.toString() + ";secondEpReportItem = " + localStringBuilder4);
+      paramanxj = paramView;
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      this.jdField_d_of_type_JavaUtilList.clear();
+      QLog.d("EmotionCompleteInvalidAdapter", 2, "getEmotionView positon = " + paramInt + ";bigemotion view from cache");
+      paramanxj = paramView;
+      break;
+      a(10, paramanxj);
+      break label104;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype == 2)
+      {
+        paramanxj = ajya.a(2131704111);
+        paramView = ajya.a(2131704113);
+        break label258;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype != 3) {
+        break label258;
+      }
+      paramanxj = ajya.a(2131704110);
+      paramView = ajya.a(2131704117);
+      break label258;
+      i2 = paramView.getChildCount();
+      k = 0;
+      n = paramInt;
+      m = i;
+    } while (k >= i2);
+    localObject = paramView.getChildAt(k);
+    if (i > this.jdField_a_of_type_JavaUtilList.size() - 1)
+    {
+      ((View)localObject).setVisibility(8);
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+      ((View)localObject).setVisibility(0);
+      b((View)localObject, (aoam)this.jdField_a_of_type_JavaUtilList.get(i));
+      i += 1;
+    }
+    label663:
+    return paramViewGroup;
+  }
+  
+  public anxj a()
+  {
+    return new anzv();
+  }
+  
+  public EmoticonPackage a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionCompleteInvalidAdapter", 2, "payBack");
+    }
+    if (18 == paramInt) {
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(100);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_b_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_b_of_type_JavaUtilList.size();
+    return 1;
   }
   
-  public Object getItem(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramInt >= this.jdField_b_of_type_JavaUtilList.size())
+    switch (paramMessage.what)
     {
-      QLog.e("EmotionKeywordAdapter", 2, "get view position exception , position = " + paramInt + ",size = " + this.jdField_b_of_type_JavaUtilList.size());
-      return null;
     }
-    if (paramView == null)
-    {
-      paramViewGroup = new anzx(null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new EmojiStickerManager.EmotionKeywordLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-      paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView = new RelativeLayout.LayoutParams(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-      paramView.addRule(13, -1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, paramView);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839140));
-      paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
-      paramView.addRule(13, -1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar, paramView);
-      paramView = paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      paramView.setTag(paramViewGroup);
-    }
-    Emoticon localEmoticon;
     for (;;)
     {
-      localEmoticon = (Emoticon)this.jdField_b_of_type_JavaUtilList.get(paramInt);
-      if (localEmoticon != null) {
-        break;
+      return true;
+      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       }
-      QLog.e("EmotionKeywordAdapter", 1, "getView emoticon empty position = " + paramInt);
-      return null;
-      paramViewGroup = (anzx)paramView.getTag();
-    }
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
-    paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId.equals("NONE"))
-    {
-      Object localObject1 = new EmotionKeyword();
-      ((EmotionKeyword)localObject1).epId = localEmoticon.epId;
-      ((EmotionKeyword)localObject1).eId = localEmoticon.eId;
-      ((EmotionKeyword)localObject1).keyword = this.jdField_a_of_type_JavaLangString;
-      if (!this.e.contains(localObject1))
-      {
-        this.jdField_a_of_type_Askd.b((EmotionKeyword)localObject1, false);
-        this.jdField_a_of_type_Askd.a((EmotionKeyword)localObject1, false);
-        this.e.add(localObject1);
-      }
-      if (!this.jdField_d_of_type_JavaUtilList.contains(localEmoticon)) {
-        this.jdField_d_of_type_JavaUtilList.add(localEmoticon);
-      }
-      Object localObject2;
-      try
-      {
-        localObject1 = new URL("emotion_pic", "fromAIO", localEmoticon.epId + "_" + localEmoticon.eId);
-        if (localObject1 == null)
-        {
-          QLog.e("EmotionKeywordAdapter", 1, "getView url = null");
-          return null;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          QLog.e("EmotionKeywordAdapter", 1, "getView url exception e = " + localMalformedURLException.getMessage());
-          localObject2 = null;
-        }
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-        localURLDrawableOptions.mPlayGifImage = true;
-        if (localEmoticon.isAPNG)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EmotionKeywordAdapter", 2, "getView: APNG so loaded use apng image");
-          }
-          localURLDrawableOptions.mUseApngImage = true;
-          localURLDrawableOptions.mPlayGifImage = false;
-          localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-        }
-        localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
-        if (((URLDrawable)localObject2).getStatus() == 1) {
-          break label770;
-        }
-      }
-      ((URLDrawable)localObject2).setTag(localEmoticon);
-      ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      ((URLDrawable)localObject2).addHeader("emo_big", "true");
-      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
-        ((URLDrawable)localObject2).restartDownload();
-      }
-      for (;;)
-      {
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setTag(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusableInTouchMode(true);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(localEmoticon.name);
-        paramView.setOnClickListener(this);
-        paramView.setOnLongClickListener(this);
-        return paramView;
-        label770:
-        paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (paramMessage != null) {
+        paramMessage.obtainMessage(41).sendToTarget();
       }
     }
-    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
-    return paramView;
   }
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof anzx))) {}
-    for (paramView = (anzx)paramView;; paramView = null)
+    boolean bool = true;
+    if (paramView.getId() == 2131364881)
     {
-      if (paramView == null) {}
+      if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
+        break label28;
+      }
+      QLog.e("EmotionCompleteInvalidAdapter", 1, "onClick EP = NULL");
+    }
+    label28:
+    do
+    {
       do
       {
-        do
-        {
-          return;
-          paramView = paramView.jdField_a_of_type_ComTencentMobileqqDataEmoticon;
-        } while ((paramView == null) || (paramView.epId.equals("NONE")));
-        EmotionKeyword localEmotionKeyword = new EmotionKeyword();
-        localEmotionKeyword.epId = paramView.epId;
-        localEmotionKeyword.eId = paramView.eId;
-        localEmotionKeyword.keyword = this.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Askd.b(localEmotionKeyword, true);
-        this.jdField_a_of_type_Askd.a(localEmotionKeyword, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionKeywordAdapter", 2, "onClick , " + localEmotionKeyword);
-        }
-        int i = this.jdField_b_of_type_JavaUtilList.indexOf(paramView) + 1;
-        axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "Clk_associate", 0, 0, a() + "", paramView.epId, paramView.eId + "_" + i, this.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("EmotionKeywordAdapter", 2, "onclick report log : keyword" + this.jdField_a_of_type_JavaLangString + "epId = " + paramView.epId + ",eid = " + paramView.eId + ",index = " + i);
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 9501);
-      if (this.jdField_a_of_type_AndroidWidgetEditText != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().clear();
-        this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      }
-      for (;;)
-      {
-        aaod.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView);
         return;
-        QLog.e("EmotionKeywordAdapter", 1, "onClick input == null");
-      }
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c != null) && (EmojiStickerManager.e))
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype != 4) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype != 5)) {
+          break;
+        }
+        Object localObject = "mvip.gexinghua.android.sbp_" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+        paramView = "!vip";
+        if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.mobileFeetype == 5) {
+          paramView = "!svip";
+        }
+        paramView = "https://mc.vip.qq.com/qqwallet/index?aid=" + (String)localObject + "&type=" + paramView + "&send=0&return_url=jsbridge://qw_charge/emojiPayResultOk";
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject, 4813);
+        }
+      } while (this.jdField_a_of_type_Boolean);
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "", "", "");
+      return;
+    } while (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.valid);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 4) {}
+    for (;;)
     {
-      if ((paramView instanceof EmojiStickerManager.EmotionKeywordLayout)) {
-        ((EmojiStickerManager.EmotionKeywordLayout)paramView).a = true;
-      }
-      paramView.getGlobalVisibleRect(jdField_a_of_type_AndroidGraphicsRect);
-      float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-      EmojiStickerManager.StickerFrameLayout localStickerFrameLayout = new EmojiStickerManager.StickerFrameLayout(this.jdField_a_of_type_AndroidContentContext);
-      localStickerFrameLayout.setId(2131372889);
-      URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      localURLImageView.setAdjustViewBounds(false);
-      localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      if ((paramView.getTag() instanceof anzx))
-      {
-        paramView = ((anzx)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqDataEmoticon;
-        localURLImageView.setImageDrawable(EmojiStickerManager.a().a(this.jdField_a_of_type_AndroidContentContext, paramView));
-        localStickerFrameLayout.setTag(paramView);
-      }
-      localStickerFrameLayout.addView(localURLImageView);
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 20.0F), (int)(this.jdField_a_of_type_Float * 20.0F));
-      localLayoutParams.addRule(11);
-      localLayoutParams.addRule(10);
-      localStickerFrameLayout.addView(paramView, localLayoutParams);
-      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846248));
-      paramView.setVisibility(4);
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 20.0F), (int)(this.jdField_a_of_type_Float * 20.0F));
-      localLayoutParams.addRule(11);
-      localLayoutParams.addRule(12);
-      localStickerFrameLayout.addView(paramView, localLayoutParams);
-      paramView.setVisibility(4);
-      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847614));
-      int k = (int)(5.0F * f);
-      int i = (int)(110.0F * f);
-      int j = (int)(110.0F * f);
-      paramView = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-      localStickerFrameLayout.setPadding(k, k, k, k);
-      paramView.bottomMargin = 0;
-      paramView.width = ((int)(100.0F * f));
-      paramView.height = ((int)(f * 100.0F));
-      paramView = new RelativeLayout.LayoutParams(i, j);
-      paramView.leftMargin = (jdField_a_of_type_AndroidGraphicsRect.left - (i - jdField_a_of_type_AndroidGraphicsRect.width()) / 2);
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-      if (paramView.leftMargin + i > k) {
-        paramView.leftMargin = (k - i);
-      }
-      paramView.topMargin = (jdField_a_of_type_AndroidGraphicsRect.top - (j - jdField_a_of_type_AndroidGraphicsRect.height()) / 2 - (int)(15.0F * this.jdField_a_of_type_Float));
-      paramView.width = i;
-      paramView.height = j;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.addView(localStickerFrameLayout, paramView);
-      i = paramView.leftMargin;
-      j = paramView.topMargin;
-      k = paramView.leftMargin;
-      int m = paramView.width;
-      int n = paramView.topMargin;
-      localStickerFrameLayout.layout(i, j, k + m, paramView.height + n);
-      localStickerFrameLayout.requestLayout();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.bf();
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, bool);
+      return;
+      bool = false;
     }
-    return true;
   }
 }
 

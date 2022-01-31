@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class auwg
-  extends bbwf
+  implements QQPermissionCallback
 {
-  public auwg(VipProfileCardPreviewActivity.4 param4) {}
+  public auwg(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
   
-  public void onDone(bbwg parambbwg)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambbwg.jdField_a_of_type_JavaLangString, Integer.valueOf(parambbwg.jdField_a_of_type_Int) }));
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
     }
+    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onProgress(bbwg parambbwg)
-  {
-    int i = (int)parambbwg.jdField_a_of_type_Float;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambbwg.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
-    }
-  }
-  
-  public boolean onStart(bbwg parambbwg)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambbwg.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
     }
-    return true;
+    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
   }
 }
 

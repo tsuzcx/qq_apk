@@ -1,144 +1,112 @@
+import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class aukv
   extends aula
 {
-  public aukv(akfv paramakfv, String paramString)
+  public aukv()
   {
-    super(paramakfv, paramString);
+    this.a = 7;
   }
   
-  public aukm a(Class<? extends aukm> paramClass, String paramString, Cursor paramCursor, aukx paramaukx)
+  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
   {
-    if (paramCursor.isBeforeFirst()) {
-      paramCursor.moveToFirst();
-    }
-    long l2 = -1L;
-    long l1 = l2;
-    try
+    paramauko = (Groups)paramauko;
+    if (paramaukz == null)
     {
-      if (paramCursor.getColumnIndex("_id") >= 0) {
-        l1 = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
-      }
+      paramauko.group_name = paramCursor.getString(paramCursor.getColumnIndex("group_name"));
+      paramauko.group_id = paramCursor.getInt(paramCursor.getColumnIndex("group_id"));
+      paramauko.group_friend_count = paramCursor.getInt(paramCursor.getColumnIndex("group_friend_count"));
+      paramauko.group_online_friend_count = paramCursor.getInt(paramCursor.getColumnIndex("group_online_friend_count"));
+      paramauko.seqid = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("seqid")));
+      paramauko.sqqOnLine_count = paramCursor.getInt(paramCursor.getColumnIndex("sqqOnLine_count"));
+      paramauko.datetime = paramCursor.getLong(paramCursor.getColumnIndex("datetime"));
+      return paramauko;
     }
-    catch (Exception paramaukx)
+    int i = paramCursor.getColumnIndex("group_name");
+    if (i == -1)
     {
-      try
-      {
-        if (paramClass.getName().equals(MessageRecord.class.getName()))
-        {
-          int i = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
-          paramClass = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
-          int j = paramCursor.getInt(paramCursor.getColumnIndex("extLong"));
-          paramaukx = paramCursor.getString(paramCursor.getColumnIndex("extStr"));
-          int k = paramCursor.getInt(paramCursor.getColumnIndex("istroop"));
-          MessageRecord localMessageRecord = axaq.a(i, paramClass, j, paramaukx, k);
-          localMessageRecord.msgData = paramClass;
-          localMessageRecord._id = l1;
-          localMessageRecord.extLong = j;
-          localMessageRecord.extStr = paramaukx;
-          localMessageRecord.istroop = k;
-          localMessageRecord.selfuin = paramCursor.getString(paramCursor.getColumnIndex("selfuin"));
-          localMessageRecord.frienduin = paramCursor.getString(paramCursor.getColumnIndex("frienduin"));
-          localMessageRecord.senderuin = paramCursor.getString(paramCursor.getColumnIndex("senderuin"));
-          localMessageRecord.time = paramCursor.getLong(paramCursor.getColumnIndex("time"));
-          localMessageRecord.msgtype = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
-          if (paramCursor.getInt(paramCursor.getColumnIndex("isread")) != 0)
-          {
-            bool = true;
-            localMessageRecord.isread = bool;
-            localMessageRecord.issend = paramCursor.getInt(paramCursor.getColumnIndex("issend"));
-            localMessageRecord.msgseq = paramCursor.getLong(paramCursor.getColumnIndex("msgseq"));
-            localMessageRecord.shmsgseq = paramCursor.getLong(paramCursor.getColumnIndex("shmsgseq"));
-            localMessageRecord.extraflag = paramCursor.getInt(paramCursor.getColumnIndex("extraflag"));
-            localMessageRecord.sendFailCode = paramCursor.getInt(paramCursor.getColumnIndex("sendFailCode"));
-            localMessageRecord.msgId = paramCursor.getLong(paramCursor.getColumnIndex("msgId"));
-            localMessageRecord.longMsgIndex = paramCursor.getInt(paramCursor.getColumnIndex("longMsgIndex"));
-            localMessageRecord.longMsgId = paramCursor.getInt(paramCursor.getColumnIndex("longMsgId"));
-            localMessageRecord.longMsgCount = paramCursor.getInt(paramCursor.getColumnIndex("longMsgCount"));
-            localMessageRecord.msgUid = paramCursor.getLong(paramCursor.getColumnIndex("msgUid"));
-            localMessageRecord.uniseq = paramCursor.getLong(paramCursor.getColumnIndex("uniseq"));
-            localMessageRecord.extInt = paramCursor.getInt(paramCursor.getColumnIndex("extInt"));
-            if (paramCursor.getInt(paramCursor.getColumnIndex("isValid")) == 0) {
-              break label708;
-            }
-            bool = true;
-            localMessageRecord.isValid = bool;
-            localMessageRecord.versionCode = paramCursor.getInt(paramCursor.getColumnIndex("versionCode"));
-            localMessageRecord.vipBubbleID = paramCursor.getLong(paramCursor.getColumnIndex("vipBubbleID"));
-            if (localMessageRecord.versionCode <= 0) {
-              localMessageRecord.msg = paramCursor.getString(paramCursor.getColumnIndex("msg"));
-            }
-            if ((l1 != -1L) && (paramString != null)) {}
-            for (localMessageRecord._status = 1001;; localMessageRecord._status = 1002)
-            {
-              localMessageRecord.postRead();
-              return localMessageRecord;
-            }
-          }
-        }
-        else
-        {
-          paramClass = super.a(paramClass, paramString, paramCursor, null);
-          return paramClass;
-        }
+      paramaukz.a(new NoColumnError("group_name", String.class));
+      i = paramCursor.getColumnIndex("group_id");
+      if (i != -1) {
+        break label400;
       }
-      catch (OutOfMemoryError paramClass)
-      {
-        return null;
+      paramaukz.a(new NoColumnError("group_id", Integer.TYPE));
+      label208:
+      i = paramCursor.getColumnIndex("group_friend_count");
+      if (i != -1) {
+        break label415;
       }
-      catch (VerifyError paramClass)
-      {
-        for (;;)
-        {
-          return null;
-          paramaukx = paramaukx;
-          l1 = l2;
-          continue;
-          boolean bool = false;
-          continue;
-          label708:
-          bool = false;
-        }
+      paramaukz.a(new NoColumnError("group_friend_count", Integer.TYPE));
+      label243:
+      i = paramCursor.getColumnIndex("group_online_friend_count");
+      if (i != -1) {
+        break label430;
       }
-      catch (Exception paramClass) {}
+      paramaukz.a(new NoColumnError("group_online_friend_count", Integer.TYPE));
+      label278:
+      i = paramCursor.getColumnIndex("seqid");
+      if (i != -1) {
+        break label445;
+      }
+      paramaukz.a(new NoColumnError("seqid", Byte.TYPE));
+      label313:
+      i = paramCursor.getColumnIndex("sqqOnLine_count");
+      if (i != -1) {
+        break label461;
+      }
+      paramaukz.a(new NoColumnError("sqqOnLine_count", Integer.TYPE));
     }
-    return null;
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("datetime");
+      if (i != -1) {
+        break label476;
+      }
+      paramaukz.a(new NoColumnError("datetime", Long.TYPE));
+      return paramauko;
+      paramauko.group_name = paramCursor.getString(i);
+      break;
+      label400:
+      paramauko.group_id = paramCursor.getInt(i);
+      break label208;
+      label415:
+      paramauko.group_friend_count = paramCursor.getInt(i);
+      break label243;
+      label430:
+      paramauko.group_online_friend_count = paramCursor.getInt(i);
+      break label278;
+      label445:
+      paramauko.seqid = ((byte)paramCursor.getShort(i));
+      break label313;
+      label461:
+      paramauko.sqqOnLine_count = paramCursor.getInt(i);
+    }
+    label476:
+    paramauko.datetime = paramCursor.getLong(i);
+    return paramauko;
   }
   
-  public List<MessageRecord> a(String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, QQAppInterface paramQQAppInterface)
+  public String a(String paramString)
   {
-    paramString1 = a(MessageRecord.class, paramString1, paramString2, paramString3, paramArrayOfString);
-    if ((paramString1 != null) && (paramString1.size() > 0))
-    {
-      paramString2 = paramString1.iterator();
-      while (paramString2.hasNext())
-      {
-        paramString3 = (MessageRecord)paramString2.next();
-        paramQQAppInterface.a().a(paramString3.frienduin, paramString3.istroop, paramString3);
-      }
-    }
-    return paramString1;
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,group_name TEXT ,group_id INTEGER UNIQUE ,group_friend_count INTEGER ,group_online_friend_count INTEGER ,seqid INTEGER ,sqqOnLine_count INTEGER ,datetime INTEGER)");
+    return localStringBuilder.toString();
   }
   
-  public List<MessageRecord> a(String paramString, String[] paramArrayOfString, QQAppInterface paramQQAppInterface)
+  public void a(auko paramauko, ContentValues paramContentValues)
   {
-    paramString = a(MessageRecord.class, paramString, paramArrayOfString);
-    if ((paramString != null) && (paramString.size() > 0))
-    {
-      paramArrayOfString = paramString.iterator();
-      while (paramArrayOfString.hasNext())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramArrayOfString.next();
-        paramQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord);
-      }
-    }
-    return paramString;
+    paramauko = (Groups)paramauko;
+    paramContentValues.put("group_name", paramauko.group_name);
+    paramContentValues.put("group_id", Integer.valueOf(paramauko.group_id));
+    paramContentValues.put("group_friend_count", Integer.valueOf(paramauko.group_friend_count));
+    paramContentValues.put("group_online_friend_count", Integer.valueOf(paramauko.group_online_friend_count));
+    paramContentValues.put("seqid", Byte.valueOf(paramauko.seqid));
+    paramContentValues.put("sqqOnLine_count", Integer.valueOf(paramauko.sqqOnLine_count));
+    paramContentValues.put("datetime", Long.valueOf(paramauko.datetime));
   }
 }
 

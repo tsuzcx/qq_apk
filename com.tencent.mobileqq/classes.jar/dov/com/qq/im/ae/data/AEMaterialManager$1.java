@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.data;
 
-import biqk;
+import birb;
 
 public class AEMaterialManager$1
   implements Runnable
 {
-  public AEMaterialManager$1(biqk parambiqk) {}
+  public AEMaterialManager$1(birb parambirb) {}
   
   public void run()
   {
-    biqk.a(this.this$0);
+    birb.a(this.this$0);
   }
 }
 

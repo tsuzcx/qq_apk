@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.ArrayList;
 
 class alrb
-  implements adlo
+  implements admt
 {
-  alrb(alra paramalra) {}
+  alrb(alqz paramalqz) {}
   
-  public boolean a(adll paramadll)
+  public void a()
   {
-    if (alra.a(this.a) != null)
+    boolean bool = ((adli)alqz.a(this.a).get(alqz.a(this.a))).checkShare();
+    if (bool != alqz.a(this.a))
     {
-      alra.a(this.a).ap();
-      return true;
+      alqz.a(this.a, bool);
+      alqz.a(this.a, alqz.a(this.a));
     }
-    return false;
   }
   
-  public boolean a(adll paramadll, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public void b() {}
 }
 
 

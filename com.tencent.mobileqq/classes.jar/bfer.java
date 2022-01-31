@@ -1,186 +1,85 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.tissue.v8rt.engine.ILog;
 
-public abstract class bfer
-  implements Handler.Callback
+public class bfer
+  implements ILog
 {
-  public int a;
-  protected Context a;
-  protected Handler a;
-  private bepv jdField_a_of_type_Bepv;
-  private bfes jdField_a_of_type_Bfes;
-  public String a;
-  private List<bfer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  protected String b;
-  private int c = 1;
+  String a = "MIV8RT";
   
-  public bfer(Context paramContext, int paramInt, bepv parambepv)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt;
-    this.jdField_a_of_type_Bepv = parambepv;
-    paramContext = (begt)getClass().getAnnotation(begt.class);
-    if (paramContext != null)
+    betc.a(this.a + "/" + paramString1, paramString2, null);
+    return 0;
+  }
+  
+  public int d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    betc.a(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    betc.d(this.a + "/" + paramString1, paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    betc.d(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    betc.b(this.a + "/" + paramString1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    betc.b(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public void printNativeLog(int paramInt, String paramString1, String paramString2)
+  {
+    paramString1 = this.a + "/" + paramString1;
+    int i;
+    if (paramInt >= 100)
     {
-      paramContext = paramContext.a();
-      if (!TextUtils.isEmpty(paramContext)) {
-        this.jdField_b_of_type_JavaLangString = paramContext;
+      i = paramInt - 100 + 2;
+      if (i > 2) {
+        break label65;
+      }
+      betc.a(paramString1, paramString2);
+    }
+    for (;;)
+    {
+      if (paramInt >= 100) {}
+      return;
+      i = paramInt;
+      break;
+      label65:
+      if (i == 3) {
+        betc.b(paramString1, paramString2);
+      } else if (i == 4) {
+        betc.c(paramString1, paramString2);
+      } else if (i == 5) {
+        betc.d(paramString1, paramString2);
       }
     }
   }
   
-  public Context a()
+  public int w(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    betc.c(this.a + "/" + paramString1, paramString2);
+    return 0;
   }
   
-  public bepv a()
+  public int w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Bepv;
-  }
-  
-  public bfer a(bfer parambfer)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(parambfer)) {
-      this.jdField_a_of_type_JavaUtilList.add(parambfer);
-    }
-    return this;
-  }
-  
-  public bfer a(bfes parambfes)
-  {
-    this.jdField_a_of_type_Bfes = parambfes;
-    return this;
-  }
-  
-  public List<bfer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt)
-  {
-    try
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    besl.b("minisdk-start_BaseTask", "Task end: " + this.jdField_b_of_type_JavaLangString + " retCode=" + paramInt + " msg=" + paramString);
-    a(3);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Bfes != null) {
-      this.jdField_a_of_type_Bfes.onTaskDone(this);
-    }
-  }
-  
-  public boolean a(bfer parambfer)
-  {
-    if ((parambfer == null) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(parambfer)) {
-      return true;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      boolean bool = ((bfer)localIterator.next()).a(parambfer);
-      if (bool) {
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  public void c()
-  {
-    besl.b("minisdk-start_BaseTask", "Task end: " + this.jdField_b_of_type_JavaLangString + " succ=" + true);
-    a(3);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bfes != null) {
-      this.jdField_a_of_type_Bfes.onTaskDone(this);
-    }
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Int == 3;
-  }
-  
-  public abstract void d();
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void e()
-  {
-    if (this.jdField_b_of_type_Int == 2) {}
-    do
-    {
-      return;
-      if (this.jdField_b_of_type_Int != 3) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Bfes == null);
-    this.jdField_a_of_type_Bfes.onTaskDone(this);
-    return;
-    a(2);
-    if (this.jdField_a_of_type_Bfes != null) {
-      this.jdField_a_of_type_Bfes.onTaskBegin(this);
-    }
-    besl.b("minisdk-start_BaseTask", "Task begin: " + this.jdField_b_of_type_JavaLangString);
-    try
-    {
-      d();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      besl.d("minisdk-start_BaseTask", "task exception!", localThrowable);
-      f();
-    }
-  }
-  
-  public void f()
-  {
-    a(-1, "");
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
+    betc.c(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
   }
 }
 

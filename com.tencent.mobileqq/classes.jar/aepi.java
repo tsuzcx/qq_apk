@@ -4,7 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 class aepi
   implements DialogInterface.OnClickListener
 {
-  aepi(aepg paramaepg) {}
+  aepi(aepe paramaepe) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

@@ -1,60 +1,20 @@
 import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
 
-public abstract class avxz
-  implements GLSurfaceView.EGLConfigChooser
+public class avxz
+  implements avye
 {
-  protected int[] a;
+  public avxz(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
   
-  public avxz(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, int[] paramArrayOfInt)
+  public GLSurfaceView.EGLConfigChooser a()
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    return new avyf(this.a, true);
   }
   
-  private int[] a(int[] paramArrayOfInt)
+  public GLSurfaceView.EGLContextFactory a()
   {
-    if ((FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) != 2) && (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
-    {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
-    }
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
-  
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
+    return new avya(this);
   }
 }
 

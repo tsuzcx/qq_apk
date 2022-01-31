@@ -1,36 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
-import com.tencent.qphone.base.util.QLog;
 
 public class auaa
-  extends aqmy
+  implements bfph
 {
   public auaa(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.sendEmptyMessageDelayed(101, 60000L);
-  }
-  
-  public void a(aqnb paramaqnb)
-  {
-    this.a.a.obtainMessage(102, paramaqnb).sendToTarget();
-  }
-  
-  protected void a(boolean paramBoolean, aqnb paramaqnb)
-  {
-    if (!OCRPerformFragment.a(this.a))
+    if (paramInt == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other!");
-      }
-      return;
+      auad.a(OCRPerformFragment.a(this.a), String.valueOf(OCRPerformFragment.a(this.a)));
+      auad.a("0X800AAE9", 0);
     }
-    this.a.a.removeMessages(101);
-    OCRPerformFragment.a(this.a, false);
-    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramaqnb));
+    if (paramInt == 1)
+    {
+      awgs.a(OCRPerformFragment.a(this.a), OCRPerformFragment.a(this.a));
+      auad.a("0X800AAEA", 0);
+    }
+    if ((OCRPerformFragment.a(this.a) != null) && (OCRPerformFragment.a(this.a).isShowing())) {
+      OCRPerformFragment.a(this.a).dismiss();
+    }
   }
 }
 

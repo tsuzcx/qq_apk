@@ -1,19 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qconn.protofile.preAuth.PreAuthResponse;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.OpenAuthorityAccountView.DelAccountRunnable;
 
-class bdbs
+public class bdbs
   implements DialogInterface.OnClickListener
 {
-  bdbs(bdbq parambdbq, preAuth.PreAuthResponse paramPreAuthResponse, JSONObject paramJSONObject) {}
+  public bdbs(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Bdbq.a.a(this.jdField_a_of_type_ComTencentQconnProtofilePreAuth$PreAuthResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    if (paramInt == 1) {
+      ThreadManager.executeOnSubThread(new OpenAuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.a = null;
   }
 }
 

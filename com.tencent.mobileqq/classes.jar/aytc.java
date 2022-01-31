@@ -1,548 +1,1030 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.ApngImage;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.NativeGifFactory;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.transfile.FileDownloadFailedException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Environment;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner.1;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner.2;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.RandomAccessFile;
 import java.net.URL;
-import org.apache.http.Header;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Timer;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+import mqq.os.MqqHandler;
 
 public class aytc
-  extends ayog
+  implements bbmw
 {
-  private BitmapFactory.Options a;
-  protected BaseApplicationImpl a;
+  int jdField_a_of_type_Int = 0;
+  public ayrx a;
+  public aysz a;
+  public bbmu a;
+  public OutputStream a;
+  public RandomAccessFile a;
+  String jdField_a_of_type_JavaLangString = null;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  int c;
+  int d;
+  int e = 0;
   
-  public aytc(BaseApplicationImpl paramBaseApplicationImpl)
+  public aytc(aytb paramaytb)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inScreenDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
+    this.jdField_c_of_type_Int = 5;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  private Bitmap a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  private void a(long paramLong, ayrx paramayrx)
   {
-    Object localObject2 = null;
-    Bitmap localBitmap = null;
-    String str;
-    if (paramBoolean1) {
-      str = anzm.q.replace("[epId]", paramString1).replace("[eId]", paramString2);
-    }
-    while (!TextUtils.isEmpty(str))
+    int i;
+    if ((QLog.isColorLevel()) && (paramayrx != null))
     {
-      Object localObject1;
-      if (new File(str).exists())
-      {
-        paramString2 = localBitmap;
-        localObject1 = localObject2;
-        try
-        {
-          FileInputStream localFileInputStream = new FileInputStream(str);
-          paramString2 = localBitmap;
-          localObject1 = localObject2;
-          localBitmap = SafeBitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-          paramString1 = localBitmap;
-          if (paramBoolean2)
-          {
-            paramString2 = localBitmap;
-            localObject1 = localBitmap;
-            paramString1 = bbdr.a(localBitmap);
-          }
-          paramString2 = paramString1;
-          localObject1 = paramString1;
-          localFileInputStream.close();
-          return paramString1;
-        }
-        catch (OutOfMemoryError paramString1)
-        {
-          QLog.e("PicEmotionDownloader", 1, "decode oom11 :path = " + str);
-          return paramString2;
-        }
-        catch (Exception paramString1)
-        {
-          QLog.e("PicEmotionDownloader", 1, "decode exception :path = " + str, paramString1);
-          return localObject1;
-        }
-        str = anzm.p.replace("[epId]", paramString1).replace("[eId]", paramString2);
-        continue;
-      }
-      QLog.e("PicEmotionDownloader", 1, "getAIOPreviewBitmap path is not exits! " + str);
-      return null;
-    }
-    return null;
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    if (paramDownloadParams == null)
-    {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| config is null");
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage config is null", false, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| useGifAnimation=" + paramDownloadParams.useGifAnimation + " url.toString=" + paramDownloadParams.url.toString());
-    }
-    if (!(paramDownloadParams.tag instanceof Emoticon)) {
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage can't find emoticon!", false, false);
-    }
-    Emoticon localEmoticon = (Emoticon)paramDownloadParams.tag;
-    paramURLDrawableHandler = paramDownloadParams.getHeader("my_uin");
-    paramOutputStream = null;
-    if (paramURLDrawableHandler != null) {
-      paramOutputStream = paramURLDrawableHandler.getValue();
-    }
-    if (TextUtils.isEmpty(paramOutputStream))
-    {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| uin is null");
-      throw new FileDownloadFailedException(9302, 0L, "can't find myUin!", false, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| myUin:" + paramOutputStream);
-    }
-    Bundle localBundle;
-    try
-    {
-      paramURLDrawableHandler = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(paramOutputStream);
-      if (paramURLDrawableHandler == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmotionDownloader", 2, "downloadImage app is null");
-        }
-        throw new FileDownloadFailedException(9301, 0L, "qqAppInterface is null", false, false);
+      i = paramayrx.g;
+      if (paramayrx.jdField_a_of_type_Int != 1) {
+        break label77;
       }
     }
-    catch (Throwable paramOutputStream)
+    label77:
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicEmotionDownloader", 2, "exception:" + paramOutputStream.getMessage());
-      }
-      paramOutputStream = BaseApplicationImpl.getContext();
-      if (Build.VERSION.SDK_INT > 10) {}
-      for (i = 4;; i = 0)
-      {
-        paramOutputStream = paramOutputStream.getSharedPreferences("Last_Login", i).getString("uin", "");
-        paramURLDrawableHandler = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(paramOutputStream);
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmotionDownloader", 2, "downloadImage| a second time: uin->" + paramOutputStream);
-        }
+      ayuk.a(i, bool, paramayrx.jdField_f_of_type_Int, paramayrx.e, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         break;
       }
-      localBundle = new Bundle();
-      paramDownloadParams.tag = localBundle;
-      localBundle.putSerializable("emoticon_key", localEmoticon);
-      if ((paramURLDrawableHandler instanceof QQAppInterface)) {
-        break label527;
-      }
+      return;
     }
-    if (localEmoticon.jobType == 3)
+    this.jdField_a_of_type_Aysz.jdField_f_of_type_Long = System.currentTimeMillis();
+    if (ayta.a().a() != 0)
     {
-      paramOutputStream = new String[2];
-      paramOutputStream[0] = anzm.d.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId);
-      paramOutputStream[1] = anzm.p.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId);
-      i = bbwi.a(new bbwg(paramOutputStream[0], new File(paramOutputStream[1])), paramURLDrawableHandler);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicEmotionDownloader", 2, "download small emoji, ret:" + i);
-      }
-    }
-    return new File(ajsf.aW);
-    label527:
-    paramOutputStream = paramDownloadParams.getHeader("emo_type");
-    boolean bool2 = anzm.a();
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (paramOutputStream != null) {
-        bool2 = paramOutputStream.getValue().equals(String.valueOf(2));
-      }
-      paramOutputStream = paramDownloadParams.getHeader("emo_big");
-      bool1 = bool2;
-      if (!bool2)
+      if ((this.jdField_a_of_type_Aytb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L))
       {
-        bool1 = bool2;
-        if (paramOutputStream != null) {
-          bool1 = paramOutputStream.getValue().equals("true");
+        ThreadManager.getSubThreadHandler().postDelayed(new OldHttpEngine.OldHttpCommunicatorListner.1(this, paramayrx), paramLong);
+        return;
+      }
+      if ((QLog.isColorLevel()) && (paramayrx != null))
+      {
+        i = paramayrx.g;
+        if (paramayrx.jdField_a_of_type_Int != 1) {
+          break label227;
         }
       }
+      label227:
+      for (bool = true;; bool = false)
+      {
+        ayuk.a(i, bool, paramayrx.jdField_f_of_type_Int, paramayrx.e, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+          break;
+        }
+        this.jdField_a_of_type_Aytb.c(this.jdField_a_of_type_Ayrx);
+        return;
+      }
     }
-    if (localEmoticon.jobType == 3) {}
-    for (int i = 2;; i = 1)
+    if (this.jdField_a_of_type_Aytb.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      paramOutputStream = paramDownloadParams.url.getHost();
-      if (paramOutputStream != null) {
+      ThreadManager.getTimer().schedule(new OldHttpEngine.OldHttpCommunicatorListner.2(this, paramayrx), paramLong);
+      return;
+    }
+    if ((QLog.isColorLevel()) && (paramayrx != null))
+    {
+      i = paramayrx.g;
+      if (paramayrx.jdField_a_of_type_Int != 1) {
+        break label320;
+      }
+    }
+    label320:
+    for (bool = true;; bool = false)
+    {
+      ayuk.a(i, bool, paramayrx.jdField_f_of_type_Int, paramayrx.e, "scheduleRetry", "mWorking is false");
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         break;
       }
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| host is null");
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage host is null", false, false);
-    }
-    if (paramOutputStream.equals("fromPanel"))
-    {
-      i = 2;
-      paramOutputStream = "panel_preview";
-    }
-    for (;;)
-    {
-      Header localHeader = paramDownloadParams.getHeader("2g_use_gif");
-      bool1 = false;
-      if (localHeader != null) {
-        bool1 = localHeader.getValue().equals("true");
-      }
-      if (bool1)
-      {
-        localBundle.putString("display_type", "big_img");
-        if (localEmoticon.jobType == 3)
-        {
-          i = 6;
-          label741:
-          if (!paramDownloadParams.useApngImage)
-          {
-            paramOutputStream = ((askd)paramURLDrawableHandler.getManager(14)).a(localEmoticon.epId);
-            if ((paramOutputStream != null) && (paramOutputStream.isAPNG == 2)) {
-              paramDownloadParams.useApngImage = true;
-            }
-          }
-          paramOutputStream = (anvs)paramURLDrawableHandler.getManager(43);
-          if (paramOutputStream.b(localEmoticon, i)) {
-            break label1079;
-          }
-          bool1 = true;
-          label807:
-          if (QLog.isColorLevel()) {
-            QLog.d("PicEmotionDownloader", 2, "need download:" + bool1);
-          }
-          if (!bool1) {
-            break;
-          }
-          bool1 = paramOutputStream.a(localEmoticon, i);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.emoji.EmoDown", 2, "downloadImage| downloadAIOEmoticon result=" + bool1 + " eId: " + localEmoticon.eId);
-          }
-          if (localEmoticon.jobType != 3) {
-            break label1092;
-          }
-          if (!bool1) {
-            break label1085;
-          }
-          paramOutputStream = "0";
-          label921:
-          askd.a(paramOutputStream, 5);
-        }
-      }
-      for (;;)
-      {
-        label926:
-        if (!bool1)
-        {
-          QLog.e("PicEmotionDownloader", 1, "emotion down fail : epid = " + localEmoticon.epId + ";eid = " + localEmoticon.eId);
-          throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
-          if ((!paramOutputStream.equals("fromAIO")) || (!bool1)) {
-            break label1175;
-          }
-          if (localEmoticon.jobType == 3) {
-            i = 2;
-          }
-          if (paramDownloadParams.useApngImage) {
-            i |= 0x20;
-          }
-          for (;;)
-          {
-            if (!localEmoticon.isSound) {
-              break label1168;
-            }
-            paramOutputStream = "big_sound";
-            i = 12;
-            break;
-            i |= 0x4;
-          }
-          i = 4;
-          break label741;
-          localBundle.putString("display_type", paramOutputStream);
-          break label741;
-          label1079:
-          bool1 = false;
-          break label807;
-          label1085:
-          paramOutputStream = "5002";
-          break label921;
-          label1092:
-          if ((localEmoticon.jobType == 2) || (localEmoticon.jobType == 4))
-          {
-            if (bool1) {}
-            for (paramOutputStream = "0";; paramOutputStream = "7001")
-            {
-              askd.a(paramOutputStream, 7);
-              break;
-            }
-          }
-          if (localEmoticon.jobType == 0) {
-            if (!bool1) {
-              break label1161;
-            }
-          }
-        }
-      }
-      label1161:
-      for (paramOutputStream = "0";; paramOutputStream = "66001")
-      {
-        askd.a(paramOutputStream, 6);
-        break label926;
-        break;
-      }
-      label1168:
-      paramOutputStream = "big_img";
-      continue;
-      label1175:
-      paramOutputStream = "aio_preview";
+      return;
     }
   }
   
-  public boolean a()
+  private boolean a(bbmu parambbmu)
   {
     return false;
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  private void c()
   {
-    if (paramDownloadParams == null)
-    {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| config is null");
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage config is null", false, false);
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return;
     }
-    if (!(paramDownloadParams.tag instanceof Bundle)) {
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage can't find emoticon!", false, false);
-    }
-    Bundle localBundle = (Bundle)paramDownloadParams.tag;
-    Emoticon localEmoticon = (Emoticon)localBundle.getSerializable("emoticon_key");
-    paramURLDrawableHandler = paramDownloadParams.url.getHost();
-    if (paramURLDrawableHandler == null)
+    ayrx localayrx = this.jdField_a_of_type_Ayrx;
+    aysz localaysz = this.jdField_a_of_type_Aysz;
+    OutputStream localOutputStream;
+    RandomAccessFile localRandomAccessFile;
+    if (localayrx != null)
     {
-      QLog.d("PicEmotionDownloader", 2, "downloadImage| host is null");
-      throw new FileDownloadFailedException(9302, 0L, "downloadImage host is null", false, false);
+      localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
+      localRandomAccessFile = this.jdField_a_of_type_JavaIoRandomAccessFile;
+      if ((localayrx.jdField_c_of_type_JavaLangString == null) || (localOutputStream == null)) {}
     }
-    if (paramURLDrawableHandler.equals("fromPanel"))
+    try
     {
-      paramFile = paramDownloadParams.url.getFile();
-      if ((TextUtils.isEmpty(paramFile)) || (!paramFile.endsWith("_panel_magic_gray"))) {}
+      localOutputStream.close();
+      if (localRandomAccessFile == null) {}
     }
-    for (boolean bool1 = true;; bool1 = false)
+    catch (IOException localIOException2)
     {
-      paramFile = localBundle.getString("display_type");
-      boolean bool3 = paramURLDrawableHandler.equals("fromAIO");
-      if ((bool3) && (paramFile.equals("aio_preview")) && (new File(anzm.s.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId)).exists())) {
-        if (localEmoticon.isSound) {
-          paramFile = "big_sound";
-        }
-      }
-      for (;;)
+      try
       {
-        int i = localEmoticon.jobType;
-        if (QLog.isColorLevel()) {
-          QLog.d("PicEmotionDownloader", 2, "showType: " + paramFile);
-        }
-        if (("big_img".equals(paramFile)) || ("big_sound".equals(paramFile)))
+        localRandomAccessFile.close();
+        if (localaysz != null)
         {
-          switch (i)
+          if ((localayrx.jdField_f_of_type_JavaLangString != null) && (localaysz.jdField_a_of_type_Int != 3)) {
+            aytb.a(this.jdField_a_of_type_Aytb).remove(localayrx.jdField_f_of_type_JavaLangString);
+          }
+          if (localayrx.jdField_a_of_type_Aysc != null)
           {
-          case 1: 
-          default: 
-            if (QLog.isColorLevel()) {
-              QLog.d("PicEmotionDownloader", 2, "decodeFile jobType not supported: " + i);
-            }
-            paramFile = null;
-          case 2: 
-          case 4: 
-            do
+            if (QLog.isColorLevel())
             {
-              do
-              {
-                return paramFile;
-                paramFile = "big_img";
-                break;
-                localBundle.putString("display_type", paramFile);
-                paramFile = new File(anzm.s.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId));
-                if (paramFile.exists()) {
-                  break label464;
-                }
-                paramDownloadParams = a(localEmoticon.epId, localEmoticon.eId, bool3, bool1);
-                paramFile = paramDownloadParams;
-              } while (paramDownloadParams == null);
-              paramFile = paramDownloadParams;
-            } while (!bool3);
-            localBundle.putString("display_type", "aio_preview");
-            return paramDownloadParams;
-            label464:
-            paramFile = NativeGifFactory.getNativeGifObject(paramFile, true, true, 0, 0, 0.0F);
-            paramFile.setDensity(320);
-            return paramFile;
+              int i = localayrx.g;
+              if (localayrx.jdField_a_of_type_Int != 1) {
+                break label246;
+              }
+              ayuk.a(i, bool, localayrx.jdField_f_of_type_Int, localayrx.e, "onOutEngine", "result:" + localaysz.jdField_a_of_type_Int + " errCode:" + localaysz.jdField_b_of_type_Int + " desc:" + localaysz.jdField_a_of_type_JavaLangString);
+            }
+            if ((localaysz.jdField_b_of_type_Int == 9367) && (QLog.isColorLevel())) {
+              break label251;
+            }
+            localayrx.jdField_a_of_type_Aysc.onResp(localaysz);
           }
-          localBundle.putString("display_type", paramFile);
-          paramURLDrawableHandler = anzm.s.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId);
-          if (!paramDownloadParams.useApngImage) {
-            break label1094;
-          }
-          paramURLDrawableHandler = anzm.t.replace("[epId]", localEmoticon.epId).replace("[eId]", localEmoticon.eId);
         }
-        label1083:
-        label1089:
-        label1094:
+        a();
+        return;
+        localIOException2 = localIOException2;
+        localIOException2.printStackTrace();
+      }
+      catch (IOException localIOException1)
+      {
         for (;;)
         {
-          boolean bool2;
-          if (!new File(paramURLDrawableHandler).exists())
-          {
-            paramFile = localEmoticon.epId;
-            paramDownloadParams = localEmoticon.eId;
-            if ((i != 3) && (bool3)) {}
-            for (bool2 = true;; bool2 = false)
-            {
-              paramDownloadParams = a(paramFile, paramDownloadParams, bool2, bool1);
-              paramFile = paramDownloadParams;
-              if (paramDownloadParams == null) {
-                break;
-              }
-              paramFile = paramDownloadParams;
-              if (!bool3) {
-                break;
-              }
-              localBundle.putString("display_type", "aio_preview");
-              return paramDownloadParams;
-            }
-          }
-          for (;;)
-          {
-            try
-            {
-              if (anqu.b(paramURLDrawableHandler))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PicEmotionDownloader", 2, "decodeFile isGifFile,path=" + paramURLDrawableHandler);
-                }
-                paramURLDrawableHandler = new File(paramURLDrawableHandler);
-                if ("big_img".equals(paramFile))
-                {
-                  paramDownloadParams = NativeGifFactory.getNativeGifObject(paramURLDrawableHandler, true, true, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, 0.0F);
-                  paramFile = paramDownloadParams;
-                  if (paramDownloadParams == null) {
-                    break;
-                  }
-                  paramDownloadParams.setDensity(320);
-                  return paramDownloadParams;
-                }
-              }
-            }
-            catch (FileNotFoundException paramFile)
-            {
-              QLog.e("PicEmotionDownloader", 1, "decode MARKET File", paramFile);
-              return null;
-              if (!"big_sound".equals(paramFile)) {
-                break label1089;
-              }
-              paramDownloadParams = aocv.a(paramURLDrawableHandler, 0, true);
-              continue;
-              if (paramDownloadParams.useApngImage)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PicEmotionDownloader", 2, "decodeFile isAPNGFile, path = " + paramURLDrawableHandler);
-                }
-                paramURLDrawableHandler = new File(paramURLDrawableHandler);
-                if ((paramDownloadParams != null) && ((paramDownloadParams.mExtraInfo instanceof Bundle)))
-                {
-                  paramFile = (Bundle)paramDownloadParams.mExtraInfo;
-                  paramFile.putInt("key_decryptType", ApngImage.DECRYPTTYPE_DECRYPT);
-                  paramDownloadParams = new ApngImage(paramURLDrawableHandler, true, paramFile);
-                  paramFile = paramDownloadParams;
-                  if (paramDownloadParams == null) {
-                    break;
-                  }
-                  paramDownloadParams.setDensity(320);
-                  return paramDownloadParams;
-                }
-              }
-            }
-            catch (IOException paramFile)
-            {
-              QLog.e("PicEmotionDownloader", 1, "decode MARKET File", paramFile);
-              continue;
-              paramFile = new Bundle();
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("PicEmotionDownloader", 2, "decodeFile getDecryptFileData,path=" + paramURLDrawableHandler);
-              }
-              paramFile = anqu.b(paramURLDrawableHandler);
-              if (paramFile == null) {
-                continue;
-              }
-              paramDownloadParams = null;
-              try
-              {
-                paramFile = BitmapFactory.decodeByteArray(paramFile, 0, paramFile.length, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-                paramDownloadParams = paramFile;
-              }
-              catch (OutOfMemoryError paramFile)
-              {
-                QLog.e("emoticon", 1, "decode oom path = " + paramURLDrawableHandler);
-                continue;
-              }
-              paramFile = paramDownloadParams;
-              if (paramDownloadParams != null) {
-                break;
-              }
-              QLog.e("PicEmotionDownloader", 2, "decode MARKET File:file error" + paramURLDrawableHandler);
-              return null;
-            }
-            catch (Exception paramFile)
-            {
-              QLog.e("PicEmotionDownloader", 1, "decode MARKET File", paramFile);
-              continue;
-            }
-            if (bool3)
-            {
-              paramFile = "aio_preview";
-              localBundle.putString("display_type", paramFile);
-              if ((!bool3) || (i == 1) || (i == 3)) {
-                break label1083;
-              }
-            }
-            for (bool2 = true;; bool2 = false)
-            {
-              return a(localEmoticon.epId, localEmoticon.eId, bool2, bool1);
-              paramFile = "panel_preview";
-              break;
-            }
-            paramDownloadParams = null;
-          }
+          localIOException1.printStackTrace();
+          continue;
+          label246:
+          bool = false;
+          continue;
+          label251:
+          axrd.a("Http_Download_Queen_Full", this.jdField_a_of_type_Aytb.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a());
         }
       }
     }
   }
   
-  public boolean gifHasDifferentState()
+  public String a(String paramString1, String paramString2)
   {
-    return true;
+    this.jdField_a_of_type_JavaLangString = aytb.a(this.jdField_a_of_type_Ayrx, paramString1, paramString2);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    ayrx localayrx = this.jdField_a_of_type_Ayrx;
+    if (localayrx != null) {
+      localayrx.jdField_a_of_type_JavaLangObject = null;
+    }
+    this.jdField_a_of_type_Ayrx = null;
+    this.jdField_a_of_type_Aysz = null;
+    this.jdField_a_of_type_JavaIoOutputStream = null;
+  }
+  
+  void a(aysy paramaysy)
+  {
+    try
+    {
+      if ((paramaysy.jdField_c_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaIoOutputStream != null)) {
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+      }
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {}
+    }
+    catch (IOException paramaysy)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaIoRandomAccessFile.close();
+          return;
+        }
+        catch (IOException paramaysy)
+        {
+          paramaysy.printStackTrace();
+        }
+        paramaysy = paramaysy;
+        paramaysy.printStackTrace();
+      }
+    }
+  }
+  
+  void a(bbmu parambbmu)
+  {
+    aysz localaysz = this.jdField_a_of_type_Aysz;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (localaysz == null)) {
+      return;
+    }
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = localaysz.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap2.containsKey("firstserverip")) {
+      localHashMap1.put("firstserverip", localHashMap2.get("firstserverip"));
+    }
+    if (localHashMap2.containsKey("serverip")) {
+      localHashMap1.put("serverip", localHashMap2.get("serverip"));
+    }
+    if (localHashMap2.containsKey("param_url")) {
+      localHashMap1.put("param_url", localHashMap2.get("param_url"));
+    }
+    if (parambbmu.jdField_b_of_type_JavaUtilHashMap.containsKey(bbmu.jdField_f_of_type_JavaLangString)) {
+      localHashMap1.put("netresp_param_reason", parambbmu.jdField_b_of_type_JavaUtilHashMap.get(bbmu.jdField_f_of_type_JavaLangString));
+    }
+    localaysz.jdField_a_of_type_JavaUtilHashMap.clear();
+    localaysz.jdField_a_of_type_JavaUtilHashMap.putAll(localHashMap1);
+    localaysz.jdField_a_of_type_JavaUtilHashMap.putAll(parambbmu.jdField_b_of_type_JavaUtilHashMap);
+    localaysz.jdField_a_of_type_JavaUtilHashMap.put("param_rspHeader", parambbmu.jdField_d_of_type_JavaLangString);
+    localaysz.jdField_a_of_type_JavaUtilHashMap.put("param_reqHeader", parambbmu.jdField_c_of_type_JavaLangString);
+    localaysz.jdField_c_of_type_Int = parambbmu.c();
+  }
+  
+  public void a(bbmu parambbmu1, bbmu parambbmu2)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    label309:
+    label470:
+    label598:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Int = 0;
+        } while (this.jdField_a_of_type_Ayrx == null);
+        Object localObject1;
+        int i;
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              if ((parambbmu2.c() != 206) && (parambbmu2.c() != 200)) {
+                break;
+              }
+              parambbmu1 = parambbmu2.a();
+              localObject2 = this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayrz;
+              localObject1 = parambbmu1;
+              if (localObject2 == null) {}
+            }
+            catch (IOException parambbmu1)
+            {
+              parambbmu1.printStackTrace();
+              this.jdField_a_of_type_Boolean = true;
+              a(parambbmu1, this.jdField_a_of_type_Aysz);
+              throw new RuntimeException("io exceptionmsg:" + parambbmu1.getMessage());
+            }
+            try
+            {
+              localObject1 = this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayrz.a(parambbmu1);
+              if (localObject1 == null) {
+                break;
+              }
+              i = localObject1.length;
+              if (i <= 0) {
+                break;
+              }
+              parambbmu1 = (bbmu)localObject1;
+              if (localObject1.length <= 0) {
+                break label598;
+              }
+              parambbmu1 = (bbmu)localObject1;
+              if (this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayry == null) {
+                break label598;
+              }
+              l1 = System.nanoTime();
+              i = 1;
+              parambbmu1 = null;
+            }
+            catch (Throwable parambbmu1)
+            {
+              parambbmu1 = Log.getStackTraceString(parambbmu1);
+              throw new RuntimeException("FlowDecoderExp:" + parambbmu1.substring(0, Math.min(100, parambbmu1.length())));
+            }
+          }
+          try
+          {
+            localObject2 = Cipher.getInstance("AES/ECB/NoPadding");
+            ((Cipher)localObject2).init(2, new SecretKeySpec(this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayry.jdField_a_of_type_ArrayOfByte, "AES"));
+            if (localObject1.length % 16 != 0) {
+              break label309;
+            }
+            localObject2 = ((Cipher)localObject2).doFinal((byte[])localObject1);
+            localObject1 = localObject2;
+          }
+          catch (NoSuchAlgorithmException parambbmu1)
+          {
+            int j;
+            byte[] arrayOfByte;
+            parambbmu1 = Log.getStackTraceString(parambbmu1);
+            i = 0;
+            continue;
+            if (!QLog.isColorLevel()) {
+              break label470;
+            }
+            QLog.e("Q.richmedia.OldHttpEngine", 2, "padding erro,recLen =" + localObject1.length + " writeLen=" + this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + " totalLen=" + parambbmu2.a());
+            parambbmu1 = "padding erro,recLen =" + localObject1.length + " writeLen=" + this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + " totalLen=" + parambbmu2.a();
+            i = 0;
+            continue;
+          }
+          catch (NoSuchPaddingException parambbmu1)
+          {
+            parambbmu1 = Log.getStackTraceString(parambbmu1);
+            i = 0;
+            continue;
+          }
+          catch (InvalidKeyException parambbmu1)
+          {
+            parambbmu1 = Log.getStackTraceString(parambbmu1);
+            i = 0;
+            continue;
+          }
+          catch (IllegalBlockSizeException parambbmu1)
+          {
+            parambbmu1 = Log.getStackTraceString(parambbmu1);
+            i = 0;
+            continue;
+          }
+          catch (BadPaddingException parambbmu1)
+          {
+            parambbmu1 = Log.getStackTraceString(parambbmu1);
+            i = 0;
+            continue;
+            long l2 = System.nanoTime();
+            parambbmu1 = this.jdField_a_of_type_Aysz;
+            parambbmu1.j = (l2 - l1 + parambbmu1.j);
+            parambbmu1 = (bbmu)localObject1;
+          }
+          if (i != 0) {
+            break label571;
+          }
+          throw new RuntimeException("DecryptError:" + parambbmu1);
+          if ((parambbmu2.a() <= 0L) || (localObject1.length + this.jdField_a_of_type_Aysz.jdField_c_of_type_Long != parambbmu2.a())) {
+            break label406;
+          }
+          j = localObject1.length % 16;
+          arrayOfByte = new byte[localObject1.length - j];
+          System.arraycopy(localObject1, 0, arrayOfByte, 0, localObject1.length - j);
+          Object localObject2 = ((Cipher)localObject2).doFinal(arrayOfByte);
+          System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+        }
+        this.jdField_b_of_type_Int += parambbmu1.length;
+        if (this.jdField_a_of_type_JavaIoOutputStream == null) {
+          break;
+        }
+        this.jdField_a_of_type_JavaIoOutputStream.write(parambbmu1);
+        this.jdField_a_of_type_JavaIoOutputStream.flush();
+        this.jdField_a_of_type_Aysz.jdField_a_of_type_Long = parambbmu2.a();
+        this.jdField_a_of_type_Aysz.jdField_b_of_type_Long = parambbmu2.jdField_b_of_type_Long;
+        parambbmu2 = this.jdField_a_of_type_Aysz;
+        l1 = parambbmu2.jdField_c_of_type_Long;
+        parambbmu2.jdField_c_of_type_Long = (parambbmu1.length + l1);
+      } while (this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc == null);
+      this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc.onUpdateProgeress(this.jdField_a_of_type_Ayrx, this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + this.jdField_a_of_type_Ayrx.jdField_a_of_type_Long, this.jdField_a_of_type_Aysz.jdField_a_of_type_Long);
+      return;
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+        break;
+      }
+      if (this.jdField_a_of_type_JavaIoRandomAccessFile.length() == 0L) {
+        this.jdField_a_of_type_JavaIoRandomAccessFile.setLength(parambbmu2.jdField_b_of_type_Long);
+      }
+      this.jdField_a_of_type_JavaIoRandomAccessFile.write(parambbmu1);
+      this.jdField_a_of_type_Aysz.jdField_a_of_type_Long = parambbmu2.a();
+      this.jdField_a_of_type_Aysz.jdField_b_of_type_Long = parambbmu2.jdField_b_of_type_Long;
+      parambbmu2 = this.jdField_a_of_type_Aysz;
+      long l1 = parambbmu2.jdField_c_of_type_Long;
+      parambbmu2.jdField_c_of_type_Long = (parambbmu1.length + l1);
+    } while (this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc == null);
+    label406:
+    label571:
+    this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc.onUpdateProgeress(this.jdField_a_of_type_Ayrx, this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + this.jdField_a_of_type_Ayrx.jdField_a_of_type_Long, this.jdField_a_of_type_Aysz.jdField_a_of_type_Long);
+    return;
+    this.jdField_a_of_type_Aysz.jdField_a_of_type_Long = parambbmu2.a();
+    this.jdField_a_of_type_Aysz.jdField_b_of_type_Long = parambbmu2.jdField_b_of_type_Long;
+    this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte = parambbmu2.a();
+  }
+  
+  void a(IOException paramIOException, aysz paramaysz)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    do
+    {
+      return;
+      paramaysz = paramIOException.getMessage();
+      this.jdField_a_of_type_Aysz.a(1, 9301, paramaysz + MsfSdkUtils.getStackTraceString(paramIOException), null);
+      try
+      {
+        paramIOException = Environment.getExternalStorageState();
+        if (paramaysz.contains("EACCES"))
+        {
+          this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 9039;
+          return;
+        }
+      }
+      catch (Exception paramIOException)
+      {
+        paramIOException.printStackTrace();
+        return;
+      }
+      if ((paramaysz.contains("ENOSPC")) || (paramaysz.contains("space")))
+      {
+        long l = bbbr.b();
+        if (this.jdField_a_of_type_Ayrx != null)
+        {
+          paramIOException = this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString;
+          paramaysz = new File(paramIOException).getParentFile();
+          QLog.e("Q.richmedia.OldHttpEngine", 1, "no space error, outPath:" + paramIOException + ",fileCount:" + paramaysz.listFiles().length + ",url:" + this.jdField_a_of_type_Ayrx.jdField_a_of_type_JavaLangString + ",availableSpace:" + l);
+        }
+        this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 9040;
+        return;
+      }
+      if (paramaysz.contains("Read-only"))
+      {
+        this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 9039;
+        return;
+      }
+    } while ("mounted".equals(paramIOException));
+    this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 9039;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_Aysz != null) && (this.jdField_a_of_type_Bbmu != null))
+    {
+      this.jdField_a_of_type_Aysz.g = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Bbmu.jdField_d_of_type_Long);
+      paramString = this.jdField_a_of_type_Aysz;
+      paramString.e += 1;
+    }
+  }
+  
+  public boolean a(bbmu parambbmu1, bbmu parambbmu2, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      return true;
+    }
+    if (paramInt == 5)
+    {
+      a(parambbmu2);
+      if (!this.jdField_a_of_type_Ayrx.a()) {
+        break label777;
+      }
+      if ((a(parambbmu2)) && (this.jdField_a_of_type_Aysz.jdField_c_of_type_Long != this.jdField_a_of_type_Aysz.jdField_b_of_type_Long) && ((this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayrz == null) || (!this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayrz.a()))) {
+        break label427;
+      }
+      this.jdField_a_of_type_Aysz.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaLangString = "";
+      int i = 0;
+      paramInt = i;
+      if (this.jdField_a_of_type_JavaLangString != null)
+      {
+        paramInt = i;
+        if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString)) {
+          paramInt = 1;
+        }
+      }
+      if (this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString == null) {}
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_Ayrx.j) && (paramInt == 0) && (bbdx.a(this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString))) {
+        bbdx.d(this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString);
+      }
+    }
+    catch (Exception parambbmu2)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoOutputStream == null) {
+          break label216;
+        }
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+        label216:
+        if (!this.jdField_a_of_type_Ayrx.i) {
+          break label240;
+        }
+      }
+      catch (IOException parambbmu2)
+      {
+        try
+        {
+          for (;;)
+          {
+            if (this.jdField_a_of_type_JavaIoRandomAccessFile != null) {
+              this.jdField_a_of_type_JavaIoRandomAccessFile.close();
+            }
+            label240:
+            if (this.jdField_a_of_type_Ayrx.j) {
+              break;
+            }
+            if (parambbmu1.e != 0L) {
+              this.jdField_a_of_type_Aysz.h = parambbmu1.e;
+            }
+            this.jdField_a_of_type_Aysz.i = parambbmu1.h;
+            if (parambbmu1.jdField_f_of_type_Long != 0L) {
+              this.jdField_a_of_type_Aysz.j = parambbmu1.jdField_f_of_type_Long;
+            }
+            c();
+            return true;
+            parambbmu2 = parambbmu2;
+            parambbmu2.printStackTrace();
+          }
+          parambbmu2 = parambbmu2;
+          parambbmu2.printStackTrace();
+        }
+        catch (IOException parambbmu2)
+        {
+          for (;;)
+          {
+            parambbmu2.printStackTrace();
+            continue;
+            if ((paramInt == 0) && (!bbdx.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString != null)) {
+              if (bbdx.d(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString))
+              {
+                new File(this.jdField_a_of_type_JavaLangString).delete();
+              }
+              else
+              {
+                this.jdField_a_of_type_Aysz.a(1, 9301, "rename file failed", null);
+                new File(this.jdField_a_of_type_JavaLangString).delete();
+              }
+            }
+          }
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Ayrx.jdField_c_of_type_JavaLangString != null) {}
+    label427:
+    label620:
+    do
+    {
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Ayrx.jdField_a_of_type_Ayrz == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramInt = this.jdField_a_of_type_Ayrx.g;
+            if (this.jdField_a_of_type_Ayrx.jdField_a_of_type_Int != 1) {
+              break label620;
+            }
+          }
+          for (boolean bool = true;; bool = false)
+          {
+            ayuk.a(paramInt, bool, this.jdField_a_of_type_Ayrx.jdField_f_of_type_Int, this.jdField_a_of_type_Ayrx.e, "check", "writtenSize:" + this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + " totalBlockLen:" + this.jdField_a_of_type_Aysz.jdField_b_of_type_Long);
+            this.jdField_a_of_type_Aysz.a(1, -9527, null, null);
+            parambbmu2 = aypb.a("Q", -9533L);
+            this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaUtilHashMap.put("netresp_param_reason", parambbmu2);
+            this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaLangString = ("recvSize:" + this.jdField_a_of_type_Aysz.jdField_c_of_type_Long + " totalBlockLen:" + this.jdField_a_of_type_Aysz.jdField_b_of_type_Long);
+            break;
+          }
+        }
+        this.jdField_a_of_type_Aysz.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 9058;
+        this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaLangString = "error data len ! ";
+        QLog.d("T.Q.richmedia." + ayuk.b(this.jdField_a_of_type_Ayrx.g) + "." + ayuk.c(this.jdField_a_of_type_Ayrx.jdField_f_of_type_Int), 1, "id:" + String.valueOf(parambbmu1.jdField_a_of_type_JavaLangString) + "reqUrl:" + this.jdField_a_of_type_Ayrx.jdField_a_of_type_JavaLangString + ",reqHeader:" + parambbmu1.jdField_c_of_type_JavaLangString + "responseHeader:" + parambbmu2.jdField_d_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_Aysz.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Aysz.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaLangString = "";
+    } while (((this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_Aysz.jdField_b_of_type_Long)) && ((this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte != null) || (this.jdField_a_of_type_Aysz.jdField_b_of_type_Long == 0L)));
+    label777:
+    this.jdField_a_of_type_Aysz.a(1, -9527, null, null);
+    parambbmu2 = aypb.a("Q", -9533L);
+    this.jdField_a_of_type_Aysz.jdField_a_of_type_JavaUtilHashMap.put("netresp_param_reason", parambbmu2);
+    parambbmu2 = this.jdField_a_of_type_Aysz;
+    StringBuilder localStringBuilder = new StringBuilder().append("recvSize:");
+    if (this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte != null) {}
+    for (paramInt = this.jdField_a_of_type_Aysz.jdField_a_of_type_ArrayOfByte.length;; paramInt = 0)
+    {
+      parambbmu2.jdField_a_of_type_JavaLangString = (paramInt + " totalBlockLen:" + this.jdField_a_of_type_Aysz.jdField_b_of_type_Long);
+      break;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_d_of_type_Int = ayta.a().a();
+    Object localObject = this.jdField_a_of_type_Ayrx;
+    aysz localaysz = this.jdField_a_of_type_Aysz;
+    if ((localObject == null) || (localaysz == null))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    label367:
+    int i;
+    if (((ayrx)localObject).jdField_c_of_type_JavaLangString != null)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaLangString = a(((ayrx)localObject).jdField_c_of_type_JavaLangString, ((ayrx)localObject).jdField_a_of_type_JavaLangString);
+          localaysz.jdField_a_of_type_Aysy.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+          localFile = new File(this.jdField_a_of_type_JavaLangString);
+          if (!localFile.exists()) {
+            break label367;
+          }
+          l = localFile.length();
+          if ((l <= 0L) || (((ayrx)localObject).jdField_a_of_type_Aysb == null)) {
+            continue;
+          }
+          localaysz.jdField_c_of_type_Long = l;
+          ((ayrx)localObject).jdField_a_of_type_Aysb.a((aysy)localObject, localaysz);
+          if (!((ayrx)localObject).i) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localFile, "rw");
+          this.jdField_a_of_type_JavaIoRandomAccessFile.seek(((ayrx)localObject).jdField_a_of_type_Long);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.richmedia.OldHttpEngine", 2, "append.oring Len:" + l);
+          }
+        }
+        catch (IOException localIOException)
+        {
+          File localFile;
+          long l;
+          localIOException.printStackTrace();
+          this.jdField_b_of_type_Boolean = true;
+          a(localIOException, localException);
+          continue;
+          if (!((ayrx)localObject).i) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localIOException, "rw");
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.richmedia.OldHttpEngine", 2, "oring Len:" + l + " trunk");
+          continue;
+          this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localIOException);
+          continue;
+        }
+        try
+        {
+          localObject = new URL(((ayrx)localObject).jdField_a_of_type_JavaLangString).getHost();
+          localaysz.jdField_a_of_type_JavaUtilHashMap.put("firstserverip", localObject);
+          return;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          return;
+        }
+        this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localFile, true);
+      }
+      if (QLog.isColorLevel())
+      {
+        i = ((ayrx)localObject).g;
+        if (((ayrx)localObject).jdField_a_of_type_Int != 1) {
+          break label485;
+        }
+      }
+    }
+    label485:
+    for (boolean bool = true;; bool = false)
+    {
+      ayuk.a(i, bool, ((ayrx)localObject).jdField_f_of_type_Int, ((ayrx)localObject).e, "createtmp", this.jdField_a_of_type_JavaLangString);
+      bbdx.a(this.jdField_a_of_type_JavaLangString);
+      if (((ayrx)localObject).i)
+      {
+        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(localIOException, "rw");
+        break;
+      }
+      this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(localIOException);
+      break;
+      if (((ayrx)localObject).jdField_a_of_type_JavaIoOutputStream == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaIoOutputStream = ((ayrx)localObject).jdField_a_of_type_JavaIoOutputStream;
+      break;
+    }
+  }
+  
+  public void b(bbmu parambbmu1, bbmu parambbmu2)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {}
+    ayrx localayrx;
+    aysz localaysz;
+    do
+    {
+      return;
+      localayrx = this.jdField_a_of_type_Ayrx;
+      localaysz = this.jdField_a_of_type_Aysz;
+    } while ((localayrx == null) || (localaysz == null));
+    a(parambbmu2);
+    long l1 = System.currentTimeMillis() - localaysz.jdField_f_of_type_Long;
+    localaysz.jdField_d_of_type_Long += l1;
+    if ((localayrx.jdField_a_of_type_JavaUtilList != null) && (localayrx.jdField_a_of_type_JavaUtilList.size() >= 1)) {
+      ((ayuq)localayrx.jdField_a_of_type_JavaUtilList.get(0)).a();
+    }
+    if ((ayta.a().a() != 0) && (!this.jdField_a_of_type_Boolean) && (localayrx.jdField_a_of_type_Aysd != null)) {
+      localayrx.jdField_a_of_type_Aysd.a(localaysz);
+    }
+    long l2 = ayta.a().a();
+    int j;
+    if (l2 != 0L) {
+      j = 1;
+    }
+    for (;;)
+    {
+      int i;
+      label192:
+      label336:
+      int k;
+      label312:
+      boolean bool1;
+      label381:
+      boolean bool2;
+      if ((localaysz.jdField_b_of_type_Int == 9056) && (l1 < 2000L))
+      {
+        i = this.jdField_c_of_type_Int;
+        this.jdField_c_of_type_Int = (i - 1);
+        if (i > 0)
+        {
+          if ((localaysz.jdField_b_of_type_Int == 9056) || (localaysz.jdField_b_of_type_Int == 9051)) {
+            this.e += 1;
+          }
+          if (this.jdField_a_of_type_Boolean) {
+            break label903;
+          }
+          localaysz.jdField_b_of_type_Int = parambbmu2.jdField_f_of_type_Int;
+          localaysz.jdField_a_of_type_JavaLangString = parambbmu2.jdField_b_of_type_JavaLangString;
+          localaysz.jdField_a_of_type_Int = 1;
+          if (j == 0)
+          {
+            localaysz.jdField_b_of_type_Int = 9004;
+            localaysz.jdField_a_of_type_JavaLangString = "no network";
+            localaysz.jdField_a_of_type_Int = 1;
+          }
+          if ((l2 == this.jdField_d_of_type_Int) || (l2 == 0L) || (this.jdField_d_of_type_Int == 0L)) {
+            break label908;
+          }
+          i = 1;
+          if ((!localayrx.k) || (i == 0) || (!ayuc.a(parambbmu2.jdField_f_of_type_Int))) {
+            break label913;
+          }
+          i = 1;
+          if (i != 0)
+          {
+            localaysz.jdField_b_of_type_Int = 9364;
+            localaysz.jdField_a_of_type_JavaLangString = "netchg";
+            if (QLog.isColorLevel())
+            {
+              k = localayrx.g;
+              if (localayrx.jdField_a_of_type_Int != 1) {
+                break label918;
+              }
+              bool1 = true;
+              ayuk.a(k, bool1, localayrx.jdField_f_of_type_Int, localayrx.e, "netChg", "originNet:" + this.jdField_d_of_type_Int + " cur:" + l2);
+            }
+          }
+          if (this.jdField_b_of_type_Int <= 0) {
+            break label924;
+          }
+          bool1 = true;
+          label445:
+          if ((this.jdField_a_of_type_Boolean) || (i != 0) || ((!parambbmu2.d()) && (!aytb.a(this.jdField_a_of_type_Aytb, parambbmu2, localayrx))) || (((localaysz.jdField_d_of_type_Long >= localayrx.jdField_c_of_type_Long - 5000L) || (this.jdField_a_of_type_Int > localayrx.jdField_c_of_type_Int)) && ((!bool1) || (localaysz.jdField_d_of_type_Long >= localayrx.jdField_c_of_type_Long * 3L / 2L - 5000L)))) {
+            break label1314;
+          }
+          if (QLog.isColorLevel())
+          {
+            k = localayrx.g;
+            if (localayrx.jdField_a_of_type_Int != 1) {
+              break label930;
+            }
+            bool2 = true;
+            label562:
+            int m = localayrx.jdField_f_of_type_Int;
+            String str = localayrx.e;
+            StringBuilder localStringBuilder = new StringBuilder().append("tryTime:");
+            if (this.jdField_a_of_type_Aysz == null) {
+              break label936;
+            }
+            i = this.jdField_a_of_type_Aysz.jdField_d_of_type_Int;
+            label606:
+            localStringBuilder = localStringBuilder.append(i).append(" consumeTime:");
+            if (this.jdField_a_of_type_Aysz == null) {
+              break label941;
+            }
+            l1 = this.jdField_a_of_type_Aysz.jdField_d_of_type_Long;
+            label636:
+            ayuk.a(k, bool2, m, str, "retry", l1 + " isLastGetData:" + bool1);
+          }
+          k = 1;
+          i = k;
+          if (localaysz.jdField_c_of_type_Long > 0L)
+          {
+            if (!localayrx.c()) {
+              break label952;
+            }
+            if (localayrx.jdField_a_of_type_Aysb == null) {
+              break label947;
+            }
+            localayrx.jdField_a_of_type_Aysb.a(localayrx, localaysz);
+            this.jdField_a_of_type_JavaIoOutputStream = localayrx.jdField_a_of_type_JavaIoOutputStream;
+            i = k;
+          }
+          label729:
+          k = i;
+          if (localayrx.m)
+          {
+            k = i;
+            if (parambbmu2.c() >= 400)
+            {
+              k = i;
+              if (parambbmu2.c() < 500)
+              {
+                i = 0;
+                k = i;
+                if (this.jdField_a_of_type_JavaIoOutputStream == null) {}
+              }
+            }
+          }
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaIoOutputStream.close();
+        try
+        {
+          label785:
+          bbdx.d(this.jdField_a_of_type_JavaLangString);
+          k = i;
+        }
+        catch (Exception parambbmu2)
+        {
+          for (;;)
+          {
+            k = i;
+          }
+        }
+        if (this.e >= localayrx.jdField_d_of_type_Int) {
+          localayrx.jdField_a_of_type_JavaUtilHashMap.put("Connection", "close");
+        }
+        if (k == 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            i = localayrx.g;
+            if (localayrx.jdField_a_of_type_Int != 1) {
+              break label1053;
+            }
+          }
+          label903:
+          label908:
+          label913:
+          label918:
+          label924:
+          label1053:
+          for (bool1 = true;; bool1 = false)
+          {
+            for (;;)
+            {
+              ayuk.a(i, bool1, localayrx.jdField_f_of_type_Int, localayrx.e, "retry", "breakDownAllowRetry is false ");
+              c();
+              return;
+              j = 0;
+              break;
+              if (j == 0) {
+                break label192;
+              }
+              this.jdField_a_of_type_Int += 1;
+              break label192;
+              c();
+              return;
+              i = 0;
+              break label312;
+              i = 0;
+              break label336;
+              bool1 = false;
+              break label381;
+              bool1 = false;
+              break label445;
+              label930:
+              bool2 = false;
+              break label562;
+              label936:
+              i = 0;
+              break label606;
+              label941:
+              l1 = 0L;
+              break label636;
+              label947:
+              i = 0;
+              break label729;
+              label952:
+              i = k;
+              if (!localayrx.b()) {
+                break label729;
+              }
+              if (localayrx.jdField_a_of_type_Aysb != null)
+              {
+                localayrx.jdField_a_of_type_Aysb.a(localayrx, localaysz);
+                i = k;
+                break label729;
+              }
+              k = 0;
+              i = k;
+              if (this.jdField_a_of_type_JavaIoOutputStream == null) {
+                break label729;
+              }
+              try
+              {
+                this.jdField_a_of_type_JavaIoOutputStream.close();
+                this.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_a_of_type_JavaLangString);
+                localaysz.jdField_c_of_type_Long = 0L;
+                i = 1;
+              }
+              catch (IOException localIOException)
+              {
+                a(localIOException, localaysz);
+                i = k;
+              }
+            }
+            break label729;
+          }
+        }
+        if (localayrx.jdField_a_of_type_Ayrz != null) {
+          localayrx.jdField_a_of_type_Ayrz.a();
+        }
+        if (localayrx.jdField_a_of_type_Boolean)
+        {
+          if (localayrx.jdField_b_of_type_Boolean)
+          {
+            ayxg.a().a(ayxg.a(localayrx.jdField_a_of_type_JavaLangString), ayxg.a(parambbmu1.a()), 1002);
+            localayrx.jdField_b_of_type_Boolean = false;
+          }
+          localayrx.jdField_a_of_type_Boolean = false;
+        }
+        if ((localayrx.jdField_a_of_type_JavaUtilList != null) && (localayrx.jdField_a_of_type_JavaUtilList.size() >= 1) && (j != 0))
+        {
+          parambbmu1 = (ayuq)localayrx.jdField_a_of_type_JavaUtilList.remove(0);
+          localayrx.jdField_a_of_type_JavaUtilList.add(parambbmu1);
+          parambbmu1 = (ayuq)localayrx.jdField_a_of_type_JavaUtilList.get(0);
+          if (localayrx.jdField_a_of_type_JavaLangString != null)
+          {
+            parambbmu1 = parambbmu1.a(localayrx.jdField_a_of_type_JavaLangString);
+            localayrx.jdField_a_of_type_JavaLangString = ayuk.a(localayrx.jdField_a_of_type_JavaLangString, parambbmu1);
+          }
+        }
+        if ((localaysz.jdField_b_of_type_Int == 9050) && (localayrx.jdField_a_of_type_Ayui != null)) {
+          localayrx.jdField_a_of_type_Ayui.a(this.jdField_a_of_type_Int);
+        }
+        if ((localaysz.jdField_b_of_type_Int == 9056) && (l2 != 0L)) {
+          l1 = 0L;
+        }
+        for (;;)
+        {
+          a(l1, localayrx);
+          return;
+          if (l2 != 0L) {
+            l1 = 3000L;
+          } else {
+            l1 = 6000L;
+          }
+        }
+        label1314:
+        c();
+        return;
+      }
+      catch (Exception parambbmu2)
+      {
+        break label785;
+      }
+    }
   }
 }
 

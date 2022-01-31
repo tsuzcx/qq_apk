@@ -1,44 +1,90 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import java.util.Comparator;
-
-class bagx
-  implements Comparator<bahf>
+public class bagx
 {
-  bagx(bagr parambagr) {}
-  
-  public int a(bahf parambahf1, bahf parambahf2)
+  public static void a(int paramInt, Object paramObject)
   {
-    int j = -1;
-    if (((parambahf1 instanceof MessageForDeliverGiftTips)) && ((parambahf2 instanceof MessageForDeliverGiftTips)))
+    String str;
+    switch (paramInt)
     {
-      parambahf1 = (MessageForDeliverGiftTips)parambahf1;
-      parambahf2 = (MessageForDeliverGiftTips)parambahf2;
-      int i;
-      if ((parambahf1.isToAll()) && (parambahf2.isToAll())) {
-        i = (int)(parambahf1.time - parambahf2.time);
-      }
-      do
+    default: 
+      return;
+    case 1: 
+      try
       {
-        do
-        {
-          return i;
-          i = j;
-        } while (parambahf1.isToAll());
-        if (parambahf2.isToAll()) {
-          return 1;
-        }
-        if ((parambahf1.receiverUin == this.a.a.getLongAccountUin()) && (parambahf2.receiverUin == this.a.a.getLongAccountUin())) {
-          return (int)(parambahf1.time - parambahf2.time);
-        }
-        i = j;
-      } while (parambahf1.receiverUin == this.a.a.getLongAccountUin());
-      if (parambahf2.receiverUin == this.a.a.getLongAccountUin()) {
-        return 1;
+        axqy.b(null, "dc00898", "", "", "qq_vip", "0X8009E37", 2, 0, "", "", "", "");
+        return;
       }
-      return (int)(parambahf1.time - parambahf2.time);
+      catch (ClassCastException paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+    case 2: 
+      axqy.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      str = (String)paramObject[0];
+      if (((Boolean)paramObject[1]).booleanValue()) {
+        paramObject = "0";
+      }
+      break;
     }
-    return (int)(parambahf1.getShmsgseq() - parambahf2.getShmsgseq());
+    for (;;)
+    {
+      axqy.b(null, "dc00899", "Grp_set_new", "", "grpData_admin", "clk_image", 0, 0, str, "0", paramObject, "");
+      return;
+      if (((Boolean)paramObject[2]).booleanValue())
+      {
+        paramObject = "1";
+        continue;
+        axqy.b(null, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "nonmber_Clk_head", 0, 0, (String)paramObject, "", "", "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "dc00898", "", "", "0X800A526", "0X800A526", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
+        return;
+        axqy.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_grpaio", 0, 0, (String)paramObject, "", "", "");
+        return;
+        axqy.b(null, "P_CliOper", "Grp_payjoin", "", "join_grp", "Clk_data", 0, 0, (String)paramObject, "", "", "");
+        return;
+        axqy.b(null, "CliOper", "", "", "0x80084B4", "0x80084B4", 0, 0, "", "", "", "");
+        return;
+        axqy.b(null, "CliOper", "", "", "0x80084B5", "0x80084B5", 0, 0, "", "", "", "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "dc00898", "", "", "0X800A527", "0X800A527", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
+        return;
+        axqy.b(null, "dc00898", "", "", "kuolie", "0X80097DC", 0, 0, "", "", "", "");
+        return;
+        axqy.b(null, "dc00898", "", "", "0X80092D7", "0X80092D7", 0, 0, "", "", "", "");
+        return;
+        paramObject = (Object[])paramObject;
+        bbbp.a("Grp_set_new", "grpData_visitor", "clk_join", 0, 0, new String[] { (String)paramObject[0], (String)paramObject[1] });
+        return;
+        axqy.b(null, "dc00898", "", "", "0X8007246", "0X8007246", 0, 0, "", "", "", "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "dc00899", "Grp_recom", "", "set_page", "page_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "dc00899", "Grp_recom", "", "set_page", "recom_exp", 0, 0, (String)paramObject[0], "", (String)paramObject[1], "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "P_CliOper", "Grp_set", "", "Grp_Visdata", "Clk_data", 0, 0, (String)paramObject[0], (String)paramObject[1], "", "");
+        return;
+        axqy.b(null, "P_CliOper", "Grp_discuss", "", "discuss_AIO", "Clk_objgrp", 0, 0, (String)paramObject, "", "", "");
+        return;
+        paramObject = (Object[])paramObject;
+        axqy.b(null, "dc00898", "", "", "0X800A525", "0X800A525", ((Integer)paramObject[0]).intValue(), 0, (String)paramObject[1], "", "", "");
+        return;
+        axqy.b(null, "P_CliOper", "Grp_rank", "", "Grp_data", "Clk_grprank", 0, 0, (String)paramObject, "", "", "");
+        return;
+        axqy.b(null, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramObject = "2";
+      }
+    }
   }
 }
 

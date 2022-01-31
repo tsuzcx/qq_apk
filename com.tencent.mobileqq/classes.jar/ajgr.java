@@ -1,57 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
 
-final class ajgr
-  implements ajfz
+public final class ajgr
+  implements Parcelable.Creator<IPCSpriteContext>
 {
-  ajgr(CmShowRenderView paramCmShowRenderView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public IPCSpriteContext a(Parcel paramParcel)
   {
-    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
-    this.a.a("1725000451", "1174992642", 1.0F, 0, null);
-    ajgp.a(this.a);
+    return new IPCSpriteContext(paramParcel);
   }
   
-  public void a(int paramInt, String paramString)
+  public IPCSpriteContext[] a(int paramInt)
   {
-    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
+    return new IPCSpriteContext[paramInt];
   }
-  
-  public void a(String paramString)
-  {
-    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
-  {
-    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
-    if (paramInt2 == 100)
-    {
-      ajgp.b(this.a);
-      return;
-    }
-    if (paramInt2 == 101)
-    {
-      if (ajgp.a() < 3)
-      {
-        ajgp.b();
-        ajgp.b(this.a);
-        return;
-      }
-      ajgp.c(this.a);
-      return;
-    }
-    ajgp.a(0);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 

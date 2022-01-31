@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class qsd
-  implements DialogInterface.OnDismissListener
+  implements bfpk
 {
-  qsd(qrw paramqrw) {}
+  qsd(qrt paramqrt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void ak_()
   {
-    qrw.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((qrw.a(this.a) != null) && (qrw.a(this.a).b()) && (qrw.b(this.a)) && (!qrw.c(this.a)) && (qrw.a(this.a)) && (!qrw.d(this.a))) {
-      qrw.a(this.a).c();
+    if (qrt.b(this.a)) {
+      qrt.a(this.a).c();
     }
-    if (qrw.a(this.a) != null) {
-      qrw.a(this.a).f();
+    if (qrt.a(this.a) != null) {
+      qrt.a(this.a).f();
     }
-    qrw.a(this.a, false);
   }
 }
 

@@ -1,12 +1,14 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import java.util.ArrayList;
 
-public class tlc
-  extends syq
+public final class tlc
+  extends ssh
 {
-  public tlc(tla paramtla, qqstory_service.RspForbidVideo paramRspForbidVideo)
-  {
-    super(paramRspForbidVideo.result);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public int b;
+  public String b;
 }
 
 

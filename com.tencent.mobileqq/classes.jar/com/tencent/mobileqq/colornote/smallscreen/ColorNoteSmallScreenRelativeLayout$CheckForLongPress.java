@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import amka;
+import amjz;
 import android.animation.ValueAnimator;
 
 final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress

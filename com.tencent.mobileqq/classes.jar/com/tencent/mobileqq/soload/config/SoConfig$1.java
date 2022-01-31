@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.soload.config;
 
-import ahiy;
+import ahiw;
 
 class SoConfig$1
   implements Runnable
@@ -11,7 +11,7 @@ class SoConfig$1
   {
     synchronized ()
     {
-      ahiy.a(this.this$0, SoConfig.access$100());
+      ahiw.a(this.this$0, SoConfig.access$100());
       return;
     }
   }

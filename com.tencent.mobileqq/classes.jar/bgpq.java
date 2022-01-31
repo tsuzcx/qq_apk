@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public class bgpq
+public abstract interface bgpq
+  extends IInterface
 {
-  public ChatMessage a;
-  public String a;
+  public abstract Bundle a(String paramString, Bundle paramBundle);
   
-  public bgpq(ChatMessage paramChatMessage, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

@@ -1,170 +1,281 @@
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
+import android.graphics.Paint.Align;
 import android.graphics.PorterDuff.Mode;
-import android.graphics.Typeface;
-import android.os.Handler;
-import android.text.TextUtils;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import com.tencent.av.ui.funchat.zimu.ZimuView;
-import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class mob
   extends moa
 {
-  private long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new moc(this.jdField_a_of_type_JavaLangString, this);
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+  private moc jdField_a_of_type_Moc;
+  private final int[] jdField_a_of_type_ArrayOfInt;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_b_of_type_AndroidGraphicsCanvas = new Canvas();
-  Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint(2);
-  mnz jdField_b_of_type_Mnz;
-  boolean jdField_b_of_type_Boolean = true;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  Paint jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
-  private int n;
-  private int o;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+  int i = 10;
+  int j = 8;
+  int k = 4;
   
-  public mob(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  public mob(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat, moc parammoc)
   {
     super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.m = ((int)paramContext.getResources().getDimension(2131297550));
-    this.l = (this.g - this.m * 2);
-    this.i = (this.g / 6);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
+    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 6, paramInt1 / 5 };
+    this.jdField_a_of_type_Moc = parammoc;
+    e();
   }
   
-  private void a(Canvas paramCanvas, int paramInt)
+  /* Error */
+  private Bitmap c()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mnz.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Mnz.jdField_a_of_type_Float);
-    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lhh.a, paramInt, f, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mnz.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lhh.a, paramInt, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 5
+    //   3: aload_0
+    //   4: getfield 103	mob:jdField_a_of_type_Lhc	Llhc;
+    //   7: getfield 108	lhc:a	Ljava/lang/CharSequence;
+    //   10: checkcast 110	java/lang/String
+    //   13: astore 9
+    //   15: aload 9
+    //   17: invokevirtual 114	java/lang/String:length	()I
+    //   20: istore 6
+    //   22: aload_0
+    //   23: aload_0
+    //   24: getfield 88	mob:jdField_a_of_type_Moc	Lmoc;
+    //   27: getfield 118	moc:b	I
+    //   30: iload 6
+    //   32: imul
+    //   33: iload 6
+    //   35: iconst_1
+    //   36: isub
+    //   37: aload_0
+    //   38: getfield 42	mob:j	I
+    //   41: imul
+    //   42: iadd
+    //   43: aload_0
+    //   44: getfield 88	mob:jdField_a_of_type_Moc	Lmoc;
+    //   47: getfield 118	moc:b	I
+    //   50: getstatic 124	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   53: invokestatic 130	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   56: putfield 132	mob:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   59: aload_0
+    //   60: getfield 38	mob:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   63: aload_0
+    //   64: getfield 132	mob:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   67: invokevirtual 136	android/graphics/Canvas:setBitmap	(Landroid/graphics/Bitmap;)V
+    //   70: aload_0
+    //   71: getfield 88	mob:jdField_a_of_type_Moc	Lmoc;
+    //   74: getfield 118	moc:b	I
+    //   77: iconst_2
+    //   78: idiv
+    //   79: i2f
+    //   80: fstore_2
+    //   81: aload_0
+    //   82: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   85: invokevirtual 140	android/graphics/Paint:getFontMetrics	()Landroid/graphics/Paint$FontMetrics;
+    //   88: astore 10
+    //   90: aload 10
+    //   92: getfield 146	android/graphics/Paint$FontMetrics:ascent	F
+    //   95: fstore_1
+    //   96: aload 10
+    //   98: getfield 149	android/graphics/Paint$FontMetrics:descent	F
+    //   101: fload_1
+    //   102: fadd
+    //   103: fconst_2
+    //   104: fdiv
+    //   105: fstore_3
+    //   106: aload_0
+    //   107: getfield 44	mob:k	I
+    //   110: iconst_2
+    //   111: idiv
+    //   112: i2f
+    //   113: fstore 4
+    //   115: fload_2
+    //   116: fstore_1
+    //   117: iload 5
+    //   119: iload 6
+    //   121: if_icmpge +194 -> 315
+    //   124: aload_0
+    //   125: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   128: iconst_0
+    //   129: invokevirtual 153	android/graphics/Paint:setAntiAlias	(Z)V
+    //   132: aload_0
+    //   133: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   136: getstatic 159	android/graphics/Paint$Style:FILL	Landroid/graphics/Paint$Style;
+    //   139: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
+    //   142: aload_0
+    //   143: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   146: iconst_m1
+    //   147: invokevirtual 167	android/graphics/Paint:setColor	(I)V
+    //   150: aload_0
+    //   151: getfield 38	mob:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   154: fload_1
+    //   155: fload_2
+    //   156: fload_2
+    //   157: aload_0
+    //   158: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   161: invokevirtual 171	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
+    //   164: aload_0
+    //   165: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   168: iconst_1
+    //   169: invokevirtual 153	android/graphics/Paint:setAntiAlias	(Z)V
+    //   172: aload_0
+    //   173: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   176: getstatic 174	android/graphics/Paint$Style:STROKE	Landroid/graphics/Paint$Style;
+    //   179: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
+    //   182: aload_0
+    //   183: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   186: ldc 175
+    //   188: invokevirtual 167	android/graphics/Paint:setColor	(I)V
+    //   191: aload_0
+    //   192: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   195: aload_0
+    //   196: getfield 44	mob:k	I
+    //   199: i2f
+    //   200: invokevirtual 179	android/graphics/Paint:setStrokeWidth	(F)V
+    //   203: aload_0
+    //   204: getfield 38	mob:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   207: fload_1
+    //   208: fload_2
+    //   209: fload_2
+    //   210: fload 4
+    //   212: fsub
+    //   213: aload_0
+    //   214: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   217: invokevirtual 171	android/graphics/Canvas:drawCircle	(FFFLandroid/graphics/Paint;)V
+    //   220: aload_0
+    //   221: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   224: fconst_0
+    //   225: invokevirtual 179	android/graphics/Paint:setStrokeWidth	(F)V
+    //   228: aload_0
+    //   229: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   232: getstatic 159	android/graphics/Paint$Style:FILL	Landroid/graphics/Paint$Style;
+    //   235: invokevirtual 163	android/graphics/Paint:setStyle	(Landroid/graphics/Paint$Style;)V
+    //   238: aload_0
+    //   239: getfield 38	mob:jdField_b_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   242: aload 9
+    //   244: iload 5
+    //   246: iload 5
+    //   248: iconst_1
+    //   249: iadd
+    //   250: fload_1
+    //   251: fload_2
+    //   252: fload_3
+    //   253: fsub
+    //   254: aload_0
+    //   255: getfield 74	mob:jdField_a_of_type_AndroidGraphicsPaint	Landroid/graphics/Paint;
+    //   258: invokevirtual 183	android/graphics/Canvas:drawText	(Ljava/lang/String;IIFFLandroid/graphics/Paint;)V
+    //   261: aload_0
+    //   262: getfield 88	mob:jdField_a_of_type_Moc	Lmoc;
+    //   265: getfield 118	moc:b	I
+    //   268: istore 7
+    //   270: aload_0
+    //   271: getfield 42	mob:j	I
+    //   274: istore 8
+    //   276: fload_1
+    //   277: iload 7
+    //   279: iload 8
+    //   281: iadd
+    //   282: i2f
+    //   283: fadd
+    //   284: fstore_1
+    //   285: iload 5
+    //   287: iconst_1
+    //   288: iadd
+    //   289: istore 5
+    //   291: goto -174 -> 117
+    //   294: astore 9
+    //   296: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   299: ifeq +16 -> 315
+    //   302: aload_0
+    //   303: getfield 192	mob:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   306: iconst_2
+    //   307: aload 9
+    //   309: invokevirtual 196	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   312: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   315: aload_0
+    //   316: getfield 132	mob:jdField_b_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   319: areturn
+    //   320: astore 9
+    //   322: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   325: ifeq -10 -> 315
+    //   328: aload_0
+    //   329: getfield 192	mob:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   332: iconst_2
+    //   333: aload 9
+    //   335: invokevirtual 200	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   338: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   341: goto -26 -> 315
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	344	0	this	mob
+    //   95	190	1	f1	float
+    //   80	172	2	f2	float
+    //   105	148	3	f3	float
+    //   113	98	4	f4	float
+    //   1	289	5	m	int
+    //   20	102	6	n	int
+    //   268	14	7	i1	int
+    //   274	8	8	i2	int
+    //   13	230	9	str	String
+    //   294	14	9	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   320	14	9	localException	java.lang.Exception
+    //   88	9	10	localFontMetrics	android.graphics.Paint.FontMetrics
+    // Exception table:
+    //   from	to	target	type
+    //   3	115	294	java/lang/OutOfMemoryError
+    //   124	276	294	java/lang/OutOfMemoryError
+    //   3	115	320	java/lang/Exception
+    //   124	276	320	java/lang/Exception
   }
   
-  private void b(Canvas paramCanvas, int paramInt1, int paramInt2)
+  private boolean d()
   {
-    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
-    {
-      if (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())
-      {
-        paramCanvas.save();
-        if (!d()) {
-          break label138;
-        }
-        paramInt2 = -this.o;
-        paramCanvas.translate(paramInt2, 0.0F);
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsPaint);
-        paramCanvas.restore();
-      }
-      if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled()))
-      {
-        paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-        if (!e()) {
-          break label150;
-        }
-      }
+    return this.e < this.g / 2;
+  }
+  
+  protected int a(int paramInt)
+  {
+    if (paramInt < 8) {
+      return this.jdField_a_of_type_ArrayOfInt[0];
     }
-    label138:
-    label150:
-    for (paramInt1 = -this.n;; paramInt1 = paramInt1 - g() >> 1)
+    return this.jdField_a_of_type_ArrayOfInt[1];
+  }
+  
+  protected int a(Paint paramPaint)
+  {
+    this.d = this.jdField_a_of_type_Moc.jdField_a_of_type_Int;
+    this.jdField_b_of_type_AndroidGraphicsRect.right = this.d;
+    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.d;
+    return this.d;
+  }
+  
+  protected int a(Paint paramPaint, String paramString)
+  {
+    if (this.jdField_a_of_type_Lhc != null) {}
+    for (int m = this.jdField_a_of_type_Lhc.a.length();; m = 0)
     {
-      paramCanvas.save();
-      paramCanvas.translate(paramInt1, 0.0F);
-      paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, 0.0F, paramInt2, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
-      return;
-      paramInt2 = paramInt1 - super.c() >> 1;
-      break;
+      int n = this.jdField_a_of_type_Moc.jdField_a_of_type_Int;
+      int i1 = this.i;
+      int i2 = this.jdField_a_of_type_Moc.b;
+      return (m - 1) * this.j + (n + i1 + i2 * m);
     }
-  }
-  
-  private void c(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    paramInt2 = super.c();
-    int i1 = super.d();
-    a(paramCanvas, paramInt1 - paramInt2 >> 1);
-    d(paramCanvas, paramInt1 - g() >> 1, i1);
-  }
-  
-  private void d(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Mnz.b);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Mnz.jdField_a_of_type_Float);
-    Paint.FontMetrics localFontMetrics = this.jdField_c_of_type_AndroidGraphicsPaint.getFontMetrics();
-    float f = paramInt2 - localFontMetrics.ascent;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lhh.b, paramInt1, f, this.jdField_c_of_type_AndroidGraphicsPaint);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Mnz.jdField_a_of_type_Int);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lhh.b, paramInt1, f, this.jdField_c_of_type_AndroidGraphicsPaint);
-  }
-  
-  private void e()
-  {
-    if ((d()) || (e()))
-    {
-      int i1 = e();
-      int i2 = super.c() - this.l;
-      if ((d()) && (i2 > this.o))
-      {
-        this.o += i1;
-        if (i2 < this.n) {
-          this.n = i2;
-        }
-      }
-      i2 = g() - this.l;
-      if ((e()) && (i2 > this.n))
-      {
-        this.n = (i1 + this.n);
-        if (i2 < this.n) {
-          this.n = i2;
-        }
-      }
-    }
-  }
-  
-  private void f()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      a();
-    }
-  }
-  
-  public int a(long paramLong)
-  {
-    return 0;
   }
   
   public Bitmap a()
   {
-    e();
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      if ((d()) || (e()))
-      {
-        c();
-        d();
-      }
+      c();
       this.jdField_a_of_type_AndroidGraphicsBitmap = b();
     }
     for (;;)
@@ -176,126 +287,28 @@ public class mob
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    int i1;
-    if ((d()) || (e()))
+    long l = System.currentTimeMillis();
+    paramCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.save();
+    paramCanvas.clipRect(this.jdField_a_of_type_Moc.jdField_a_of_type_Int / 2, 0, paramInt1, paramInt2);
+    float f2 = this.jdField_a_of_type_Moc.jdField_a_of_type_Int + this.i;
+    float f1 = f2;
+    if (d())
     {
-      i1 = 1;
-      if (i1 == 0) {
-        break label76;
-      }
-      b(paramCanvas, paramInt1, paramInt2);
+      f1 = f2 - 100.0F * this.jdField_a_of_type_Float;
+      f1 = (f2 - f1) * (this.e * 2) / this.g + f1;
     }
-    for (;;)
-    {
-      long l2 = System.currentTimeMillis();
-      lcl.c(this.jdField_a_of_type_JavaLangString, "onDraw film:|" + (l2 - l1));
-      return;
-      i1 = 0;
-      break;
-      label76:
-      c(paramCanvas, paramInt1, paramInt2);
-    }
+    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, f1, (this.jdField_a_of_type_Moc.jdField_a_of_type_Int - this.jdField_a_of_type_Moc.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
+    Bitmap localBitmap = this.jdField_a_of_type_Moc.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[((int)((l - this.jdField_a_of_type_Long) / 200L % this.jdField_a_of_type_Moc.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length))];
+    this.jdField_a_of_type_AndroidGraphicsRect.right = localBitmap.getWidth();
+    this.jdField_a_of_type_AndroidGraphicsRect.bottom = localBitmap.getHeight();
+    paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void a(lhh paramlhh)
+  public void a(moc parammoc)
   {
-    super.a(paramlhh);
-    if (this.jdField_a_of_type_Lhh != null) {}
-    for (paramlhh = this.jdField_a_of_type_Lhh.b;; paramlhh = null)
-    {
-      paramlhh = (String)paramlhh;
-      this.j = a(this.jdField_c_of_type_AndroidGraphicsPaint, paramlhh);
-      int i1 = c();
-      this.e = ((this.g - i1) / 2);
-      if ((this.jdField_a_of_type_Lhh != null) && (this.jdField_a_of_type_Lhh.a()))
-      {
-        paramlhh = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramlhh, 2000L);
-      }
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-  }
-  
-  public void b(Typeface paramTypeface, int paramInt, mnz parammnz)
-  {
-    if (paramTypeface != null) {
-      this.jdField_c_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
-    }
-    this.jdField_b_of_type_Mnz = parammnz;
-    this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
-    if (this.jdField_a_of_type_Lhh != null) {}
-    for (paramTypeface = this.jdField_a_of_type_Lhh.b;; paramTypeface = null)
-    {
-      paramTypeface = (String)paramTypeface;
-      this.j = a(this.jdField_c_of_type_AndroidGraphicsPaint, paramTypeface);
-      this.k = a(this.jdField_c_of_type_AndroidGraphicsPaint);
-      return;
-    }
-  }
-  
-  public int c()
-  {
-    return Math.min(Math.max(super.c(), g()), this.l);
-  }
-  
-  Bitmap c()
-  {
-    try
-    {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(super.c(), super.d(), Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      a(this.jdField_b_of_type_AndroidGraphicsCanvas, 0);
-      return this.jdField_b_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
-        }
-      }
-    }
-  }
-  
-  public int d()
-  {
-    return (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131297548);
-  }
-  
-  Bitmap d()
-  {
-    if ((this.jdField_a_of_type_Lhh == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Lhh.b))) {
-      return null;
-    }
-    try
-    {
-      this.jdField_c_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(g(), f(), Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap);
-      d(this.jdField_b_of_type_AndroidGraphicsCanvas, 0, 0);
-      return this.jdField_c_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
-        }
-      }
-    }
+    this.jdField_a_of_type_Moc = parammoc;
   }
   
   void d()
@@ -303,64 +316,24 @@ public class mob
     super.d();
     if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+      if (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()) {
+        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+      }
       this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     }
-    if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_c_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-    }
   }
   
-  boolean d()
+  public int e()
   {
-    return super.c() > this.l;
+    return this.jdField_a_of_type_Moc.c;
   }
   
-  int e()
+  void e()
   {
-    long l1 = 0L;
-    long l2 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Long != 0L) {
-      l1 = (l2 - this.jdField_a_of_type_Long) * this.i >> 10;
-    }
-    this.jdField_a_of_type_Long = l2;
-    return (int)l1;
-  }
-  
-  boolean e()
-  {
-    return g() > this.l;
-  }
-  
-  int f()
-  {
-    if (this.k == 0) {
-      this.k = a(this.jdField_c_of_type_AndroidGraphicsPaint);
-    }
-    return this.k;
-  }
-  
-  public boolean f()
-  {
-    return ((d()) && (super.c() - this.l > this.o)) || ((e()) && (g() - this.l > this.n));
-  }
-  
-  int g()
-  {
-    if (this.j == 0) {
-      if (this.jdField_a_of_type_Lhh == null) {
-        break label48;
-      }
-    }
-    label48:
-    for (Object localObject = this.jdField_a_of_type_Lhh.b;; localObject = null)
-    {
-      localObject = (String)localObject;
-      this.j = a(this.jdField_c_of_type_AndroidGraphicsPaint, (String)localObject);
-      return this.j;
-    }
+    float f = 0.48F * this.jdField_a_of_type_Float;
+    this.i = ((int)(this.i * f));
+    this.j = ((int)(this.j * f));
+    this.k = ((int)(f * this.k));
   }
 }
 

@@ -1,50 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class bakh
+  implements bakf
 {
-  public static bakh a;
-  public ajta a;
-  public QQAppInterface a;
-  
-  public bakh()
+  public boolean a(azpi paramazpi)
   {
-    this.jdField_a_of_type_Ajta = new baki(this);
-  }
-  
-  public static bakh a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Bakh == null) {
-      b(paramQQAppInterface);
-    }
-    for (;;)
+    switch (paramazpi.e)
     {
-      return jdField_a_of_type_Bakh;
-      if (jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
-      {
-        if (jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-          jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(jdField_a_of_type_Bakh.jdField_a_of_type_Ajta);
-        }
-        jdField_a_of_type_Bakh = null;
-        b(paramQQAppInterface);
-      }
+    default: 
+      return false;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((jdField_a_of_type_Bakh != null) && (jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == paramQQAppInterface))
-    {
-      paramQQAppInterface.removeObserver(jdField_a_of_type_Bakh.jdField_a_of_type_Ajta);
-      jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-      jdField_a_of_type_Bakh = null;
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface)
-  {
-    jdField_a_of_type_Bakh = new bakh();
-    jdField_a_of_type_Bakh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.addObserver(jdField_a_of_type_Bakh.jdField_a_of_type_Ajta);
+    return true;
   }
 }
 

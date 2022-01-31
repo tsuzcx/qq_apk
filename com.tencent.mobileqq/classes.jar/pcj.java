@@ -4,24 +4,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class pcj
-  implements wxw
+  implements wxt
 {
-  pcj(pci parampci, String paramString) {}
+  pcj(pcf parampcf, String paramString) {}
   
   public void a(Bundle paramBundle)
   {
-    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
+    }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_Pci.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
     }
     catch (JSONException paramBundle)
     {
       QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Pci.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
   }
 }

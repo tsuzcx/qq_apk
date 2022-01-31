@@ -1,43 +1,11 @@
-public class axtv
-  extends axtt
+public abstract class axtv
 {
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public axtv()
-  {
-    this.a = "";
-    this.b = "";
-    this.c = "";
-    this.d = "";
-  }
-  
-  public String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(this.a).append("|");
-    localStringBuilder.append(this.b).append("|");
-    localStringBuilder.append(this.c).append("|");
-    localStringBuilder.append(this.d).append("|");
-    localStringBuilder.append(this.e).append("|");
-    localStringBuilder.append(this.f).append("|");
-    localStringBuilder.append(this.g).append("|");
-    return localStringBuilder.toString();
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    return localStringBuffer.toString();
-  }
+  public abstract String a(int paramInt);
 }
 
 

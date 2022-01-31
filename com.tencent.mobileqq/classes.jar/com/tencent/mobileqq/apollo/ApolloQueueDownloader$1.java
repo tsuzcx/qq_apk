@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
-import aisx;
-import bbwg;
-import bbwi;
+import aisv;
+import bbwu;
+import bbww;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
@@ -13,14 +13,14 @@ import mqq.app.AppRuntime;
 public class ApolloQueueDownloader$1
   implements Runnable
 {
-  public ApolloQueueDownloader$1(aisx paramaisx, bbwg parambbwg) {}
+  public ApolloQueueDownloader$1(aisv paramaisv, bbwu parambbwu) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ApolloQueue_Downloader", 2, "doTask | run() downloadLimitCount=" + this.this$0.a.get() + ",task=" + this.a);
     }
-    if ((this.a.c) && (bbwi.a(this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.c) && (bbww.a(this.a.jdField_a_of_type_JavaLangString)))
     {
       this.a.jdField_a_of_type_Int = -101;
       this.a.a(-1);
@@ -34,7 +34,7 @@ public class ApolloQueueDownloader$1
       return;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = bbwi.a(this.a, localAppRuntime);
+    int i = bbww.a(this.a, localAppRuntime);
     if (QLog.isColorLevel()) {
       QLog.d("ApolloQueue_Downloader", 2, "doTask | run() download task result=" + i + ",task=" + this.a);
     }
@@ -53,12 +53,12 @@ public class ApolloQueueDownloader$1
       {
         localObject = this.a.jdField_a_of_type_JavaLangString;
         localObject = localStringBuilder.append("ApolloQueue_Downloader").append(" current task:").append((String)localObject).append(",downloadQueue size:");
-        if (aisx.a(this.this$0) != null) {
+        if (aisv.a(this.this$0) != null) {
           break label105;
         }
       }
       label105:
-      for (int i = 0;; i = aisx.a(this.this$0).size())
+      for (int i = 0;; i = aisv.a(this.this$0).size())
       {
         ((StringBuilder)localObject).append(i);
         return localStringBuilder.toString();

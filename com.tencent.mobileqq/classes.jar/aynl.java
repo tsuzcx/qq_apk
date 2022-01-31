@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.aio.media.aio_media.RspLatestPlayingState;
-
-public abstract interface aynl
+public class aynl
+  implements ajte
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  protected void a() {}
   
-  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  protected void a(ayno paramayno, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
   
-  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
+  protected void a(boolean paramBoolean, ayno paramayno, int paramInt, String paramString) {}
   
-  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(String paramString, int paramInt);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (ayno)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      return;
+      paramObject = (Object[])paramObject;
+      a((ayno)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+      return;
+    } while (!paramBoolean);
+    a();
+  }
 }
 
 

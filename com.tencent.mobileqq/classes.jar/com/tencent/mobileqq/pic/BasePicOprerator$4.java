@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.pic;
 
-import aump;
-import aumz;
-import aune;
-import aunl;
-import aunt;
-import aunz;
+import aumr;
+import aunb;
+import aung;
+import aunn;
+import aunv;
+import auob;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import java.io.File;
@@ -16,21 +16,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BasePicOprerator$4
   implements Runnable
 {
-  public BasePicOprerator$4(aump paramaump, aumz paramaumz) {}
+  public BasePicOprerator$4(aumr paramaumr, aunb paramaunb) {}
   
   public void run()
   {
     Object localObject;
-    aunz localaunz;
+    auob localauob;
     long l;
-    if ((this.a != null) && (this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) && (this.a.b != null))
+    if ((this.a != null) && (this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) && (this.a.b != null))
     {
-      localObject = this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+      localObject = this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
       File localFile = new File(this.a.b);
       if (this.a.jdField_a_of_type_Int == 0)
       {
-        localaunz = (aunz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73);
-        if (localaunz != null)
+        localauob = (auob)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73);
+        if (localauob != null)
         {
           l = localFile.length();
           switch (this.a.c)
@@ -42,15 +42,15 @@ public class BasePicOprerator$4
     for (;;)
     {
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (((PicPreDownloader)localObject).b.contains(this.this$0.jdField_a_of_type_Aunt))
+      if (((PicPreDownloader)localObject).b.contains(this.this$0.jdField_a_of_type_Aunv))
       {
-        ((PicPreDownloader)localObject).b.remove(this.this$0.jdField_a_of_type_Aunt);
+        ((PicPreDownloader)localObject).b.remove(this.this$0.jdField_a_of_type_Aunv);
         ((PicPreDownloader)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-        ((PicPreDownloader)localObject).jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_Aunl.g);
-        aune.a("PIC_TAG_PRELOAD", "onDownload", "uniseq:" + this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_Aunl.a + ",cmd:" + this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_Int + ",curHandingNum:" + ((PicPreDownloader)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((PicPreDownloader)localObject).jdField_a_of_type_JavaUtilMap.remove(this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_Aunn.g);
+        aung.a("PIC_TAG_PRELOAD", "onDownload", "uniseq:" + this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_Aunn.a + ",cmd:" + this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_Int + ",curHandingNum:" + ((PicPreDownloader)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
         if ((this.a != null) && (this.a.b != null))
         {
-          localObject = this.this$0.jdField_a_of_type_Aunt.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+          localObject = this.this$0.jdField_a_of_type_Aunv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
           if ((localObject != null) && (((MessageForPic)localObject).size == 0L))
           {
             l = new File(this.a.b).length();
@@ -60,10 +60,10 @@ public class BasePicOprerator$4
         this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f();
       }
       return;
-      localaunz.a(13059, l);
+      localauob.a(13059, l);
       continue;
-      localaunz.a(13060, l);
-      localaunz.b((MessageForPic)localObject);
+      localauob.a(13060, l);
+      localauob.b((MessageForPic)localObject);
     }
   }
 }

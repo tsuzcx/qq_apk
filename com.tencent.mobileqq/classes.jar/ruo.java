@@ -1,6 +1,22 @@
-public abstract interface ruo
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
+
+public class ruo
+  implements rut
 {
-  public abstract void a(String paramString);
+  public ruo(ChannelBottomBanner paramChannelBottomBanner) {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
+  }
 }
 
 

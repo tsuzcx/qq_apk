@@ -1,54 +1,82 @@
-import android.content.Context;
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.qphone.base.util.QLog;
 
-class aelp
-  implements View.OnClickListener
+public class aelp
 {
-  aelp(aelo paramaelo) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    boolean bool = true;
-    this.a.jdField_a_of_type_Aell.f.setVisibility(8);
-    if (this.a.jdField_a_of_type_Aell.f.getChildCount() > 0) {
-      this.a.jdField_a_of_type_Aell.f.removeAllViews();
+    int i = 5;
+    QLog.i("ViewHolderFactory", 2, "CFT-debug messageType = " + paramInt);
+    if (paramInt == 6) {
+      i = 1;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
-    while (!(paramView.getTag() instanceof Integer)) {
-      return;
+    while (paramInt == 14) {
+      return i;
     }
-    ahfj.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    int i = ((Integer)paramView.getTag()).intValue();
-    paramView = ahdd.a().a(i);
-    paramView = "，" + paramView;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramView);
-    paramView = bbcl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
-    String str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    String str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin;
-    XEditTextEx localXEditTextEx = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
-    for (;;)
+    if ((paramInt == 13) || (paramInt == 15)) {
+      return 2;
+    }
+    if ((paramInt == 4) || (paramInt == 5)) {
+      return 3;
+    }
+    if (paramInt == 2001) {
+      return 4;
+    }
+    if ((paramInt == 7) || (paramInt == 8) || (paramInt == 11) || (paramInt == 12)) {
+      return 6;
+    }
+    if (paramInt == 2002) {
+      return 7;
+    }
+    if (paramInt == 18) {
+      return 8;
+    }
+    if (paramInt == 19) {
+      return 9;
+    }
+    if (paramInt == 21) {
+      return 10;
+    }
+    if (paramInt == 22) {
+      return 11;
+    }
+    if (paramInt == 23) {
+      return 12;
+    }
+    return 0;
+  }
+  
+  public static aekw a(QQAppInterface paramQQAppInterface, aelj paramaelj, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvf paramacvf)
+  {
+    switch (paramInt)
     {
-      paramView = bafh.a(localQQAppInterface, localContext, str1, str2, paramView, false, localXEditTextEx, bool);
-      if ((paramView != null) && (paramView.length() != 0)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(0, paramView);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.length());
-      return;
-      bool = false;
+    default: 
+      return new aekr(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 1: 
+      return new aeky(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 5: 
+      return new aekz(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 2: 
+      return new aelr(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 3: 
+      return new aelo(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 4: 
+      return new aelq(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 6: 
+      return new aelm(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 7: 
+      return new aeku(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 8: 
+      return new aekx(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 9: 
+      return new aekt(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 10: 
+      return new aell(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    case 11: 
+      return new aeks(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
     }
+    return new aekv(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
   }
 }
 

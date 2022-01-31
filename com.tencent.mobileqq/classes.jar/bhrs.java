@@ -1,13 +1,16 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bhrs
+final class bhrs
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public HashMap<String, String> a;
+  bhrs(bbgu parambbgu) {}
   
-  public bhrs(bhrr parambhrr)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 

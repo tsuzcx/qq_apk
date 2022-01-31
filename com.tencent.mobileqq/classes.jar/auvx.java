@@ -1,37 +1,6 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-
 public class auvx
-  extends Handler
 {
-  public auvx(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695479, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695433, 0).show();
-      return;
-    }
-    this.a.d();
-  }
+  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
 }
 
 

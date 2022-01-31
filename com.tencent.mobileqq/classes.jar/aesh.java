@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
 
 class aesh
-  implements DialogInterface.OnDismissListener
+  implements bfph
 {
-  aesh(aerv paramaerv) {}
+  aesh(aert paramaert) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.ah = false;
-    axqw.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
+    if (this.a.ah) {
+      return;
+    }
+    this.a.ah = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.A(2131695620);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.b(true, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bfpc.dismiss();
+      return;
+      this.a.b(false, paramInt);
+      continue;
+      this.a.A(2131695620);
+      this.a.b(true, 0);
+    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alfk;
+import alfj;
 
 public class ARCamera$1
   implements Runnable
 {
-  public ARCamera$1(alfk paramalfk, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public ARCamera$1(alfj paramalfj, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    alfk.a(this.this$0, this.a, this.b, this.c, this.d, alfk.f());
+    alfj.a(this.this$0, this.a, this.b, this.c, this.d, alfj.f());
   }
 }
 

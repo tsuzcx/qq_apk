@@ -45,7 +45,7 @@ public class AioTitleLayout
   private TextView a()
   {
     if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365234));
+      this.a = ((TextView)findViewById(2131365233));
     }
     return this.a;
   }

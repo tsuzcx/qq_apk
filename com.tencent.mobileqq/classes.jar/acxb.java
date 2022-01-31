@@ -10,12 +10,20 @@ public class acxb
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    onAnimationEnd(paramAnimator);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(0.0F);
+      this.a.b.setTranslationX(this.a.f);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f);
+    this.a.b.setTranslationX(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c.setAlpha(1.0F);
+    onAnimationCancel(paramAnimator);
+    IntimateTitleSwitchView.f(this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

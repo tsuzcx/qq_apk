@@ -1,6 +1,9 @@
-public abstract interface axst
+class axst
 {
-  public abstract void a(String paramString);
+  public int a;
+  public long a;
+  
+  private axst(axss paramaxss) {}
 }
 
 

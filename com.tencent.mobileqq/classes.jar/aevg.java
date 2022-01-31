@@ -1,23 +1,28 @@
-import android.graphics.RectF;
-
 public class aevg
 {
-  public int a;
-  public aevh a;
-  public aevi a;
-  public RectF a;
+  public double a;
+  public double b;
   
-  public aevg()
+  public aevg(double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Aevi = new aevi(0.0D, 0.0D);
-    this.jdField_a_of_type_Aevh = new aevh(0.0D, 0.0D);
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aevg(aevg paramaevg)
+  {
+    a(paramaevg);
+  }
+  
+  public void a(aevg paramaevg)
+  {
+    this.a = paramaevg.a;
+    this.b = paramaevg.b;
   }
   
   public String toString()
   {
-    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Aevi + ", acceleration=" + this.jdField_a_of_type_Aevh + '}';
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 

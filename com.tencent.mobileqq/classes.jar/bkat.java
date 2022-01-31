@@ -1,77 +1,187 @@
-import android.graphics.Bitmap;
+import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
-import android.graphics.Path.Direction;
 import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class bkat
-  extends bkhw
+  extends bkbm
 {
-  public float a;
   public int a;
-  @NonNull
-  public Bitmap a;
-  public PointF a;
-  public bkai a;
-  public bkoo a;
-  public boolean a;
-  public Rect[] a;
-  public String[] a;
-  public float b;
-  public boolean b;
-  public float c;
-  public float d;
-  public float e = 1.0F;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF;
+  private bkim jdField_a_of_type_Bkim;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float = 45.0F;
+  public int b;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private boolean jdField_b_of_type_Boolean;
+  public int c;
+  public int d;
+  int e = 0;
+  int f = 0;
+  private int g;
   
-  public bkat(bkar parambkar, String[] paramArrayOfString, @NonNull Bitmap paramBitmap, @NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public bkat(DoodleView paramDoodleView)
   {
-    super(paramPointF, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramBoolean);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Bkoo = new bkoo();
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    super(paramDoodleView);
+    c();
   }
   
-  public void a(Canvas paramCanvas)
+  private void c()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoteLayer", 2, "draw bitmap is null");
-      }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setPathEffect(new DashPathEffect(new float[] { 5.0F, 5.0F, 5.0F, 5.0F }, 1.0F));
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getResources().getDisplayMetrics();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
+    this.c = 0;
+    this.d = localDisplayMetrics.heightPixels;
+    if (bkvi.b()) {
+      this.d = (localDisplayMetrics.heightPixels - bkvi.e - bkvi.jdField_a_of_type_Int);
     }
-    do
-    {
+    double d1 = Math.pow(localDisplayMetrics.heightPixels, 2.0D);
+    this.g = ((int)Math.sqrt(Math.pow(localDisplayMetrics.widthPixels, 2.0D) + d1));
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(this.jdField_b_of_type_Int / 2, this.d / 2);
+    this.jdField_a_of_type_Bkim = new bkim();
+    this.jdField_a_of_type_Bkim.a(true);
+    this.jdField_a_of_type_Bkim.a(18.0F);
+    this.jdField_a_of_type_Bkim.b(0.5F);
+  }
+  
+  public String a()
+  {
+    return "GuideLineLayer";
+  }
+  
+  public void a() {}
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat < 0.0F) {
       return;
-      paramCanvas.save();
-      paramCanvas.concat(bkar.a(this.jdField_a_of_type_Bkar).a(this));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, -this.u / 2.0F, -this.v / 2.0F, bkar.a(this.jdField_a_of_type_Bkar));
-      if ((this.k) && (this.jdField_a_of_type_Boolean))
-      {
-        paramCanvas.translate(-this.u / 2.0F, -this.v / 2.0F);
-        Path localPath = new Path();
-        Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-        int j = arrayOfRect.length;
-        i = 0;
-        while (i < j)
-        {
-          Rect localRect = arrayOfRect[i];
-          localPath.reset();
-          localPath.addRoundRect(new RectF(localRect.left + 10, localRect.top + 5, localRect.right - 10, localRect.bottom - 5), 4.0F, 4.0F, Path.Direction.CCW);
-          paramCanvas.drawPath(localPath, bkar.b(this.jdField_a_of_type_Bkar));
-          i += 1;
-        }
-      }
-      paramCanvas.restore();
-    } while (!this.k);
-    int i = -1;
-    if (this.b) {
-      i = 2130839342;
     }
-    bkht.a(paramCanvas, bkar.a(this.jdField_a_of_type_Bkar), this, i, 2130843814, 2130843821);
+    this.jdField_b_of_type_Float = paramFloat;
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuideLineLayer", 2, "onLayerDraw  showGuideLine : " + this.jdField_b_of_type_Boolean + " currentDegree : " + this.jdField_b_of_type_Float + " centerPoint.x " + this.jdField_a_of_type_AndroidGraphicsPointF.x + " centerPoint.y : " + this.jdField_a_of_type_AndroidGraphicsPointF.y + " isDualFinger : " + this.jdField_a_of_type_Boolean + " transX : " + this.e + " transY : " + this.f + " maxLength : " + this.g);
+    }
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (Math.abs((int)this.jdField_b_of_type_Float % 45) < 3))
+    {
+      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramCanvas.translate(this.e, this.f);
+      int i = Math.round(this.jdField_b_of_type_Float / 45.0F) * 45;
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "currentDegree : " + this.jdField_b_of_type_Float + "   guideLine Angle : " + i);
+      }
+      paramCanvas.rotate(i);
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(-this.g, 0.0F);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.g, 0.0F);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw angle guide line");
+      }
+    }
+    paramCanvas.restore();
+    paramCanvas.save();
+    if ((this.jdField_b_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x + this.e - (this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2) < 4.0F))
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, 0.0F);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, this.d);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw X guide line");
+      }
+    }
+    if ((this.jdField_b_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y + this.f - (this.c + this.d) / 2) < 4.0F))
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Int, (this.c + this.d) / 2);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_Int, (this.c + this.d) / 2);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw Y guide line");
+      }
+    }
+    paramCanvas.restore();
+  }
+  
+  public void a(PointF paramPointF)
+  {
+    if (paramPointF == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
+  }
+  
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuideLineLayer", 2, "GuideLineLayer refreshed, entrance : " + paramInt3);
+    }
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    a(paramFloat);
+    b(paramInt1);
+    c(paramInt2);
+    a(paramPointF);
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    k();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.f = paramInt;
   }
 }
 

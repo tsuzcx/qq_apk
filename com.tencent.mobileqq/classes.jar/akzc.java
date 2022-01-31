@@ -1,18 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import java.util.Comparator;
 
 public final class akzc
-  implements Parcelable.Creator<ARRecognition>
+  implements Comparator<akzd>
 {
-  public ARRecognition a(Parcel paramParcel)
+  public int a(akzd paramakzd1, akzd paramakzd2)
   {
-    return new ARRecognition(paramParcel);
-  }
-  
-  public ARRecognition[] a(int paramInt)
-  {
-    return new ARRecognition[paramInt];
+    return paramakzd1.a - paramakzd2.a;
   }
 }
 

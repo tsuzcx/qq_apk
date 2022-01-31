@@ -1,58 +1,122 @@
-import com.tencent.upload.uinterface.data.UpsImageUploadTask;
+import android.text.TextUtils;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
-public class auyn
-  extends auyl
+public abstract class auyn
 {
-  public long b;
-  public byte[] c;
-  public int g;
-  public int h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
-  protected String k;
-  public int l = 1;
+  protected int a;
+  public long a;
+  protected AbstractUploadTask a;
+  protected IUploadTaskCallback a;
+  protected Object a;
+  public Map<String, String> a;
+  public byte[] a;
+  public int b;
+  protected IUploadTaskCallback b;
+  protected String b;
+  protected byte[] b;
+  public int c;
+  protected String c;
+  public int d;
+  public String d;
+  protected int e;
+  public String e;
+  protected volatile int f = -10001;
+  public String f;
+  protected String g;
+  protected String h;
   
-  public auyn(long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public auyn(long paramLong, String paramString, byte[] paramArrayOfByte)
   {
-    super(paramLong, paramString1, paramArrayOfByte);
-    this.jdField_g_of_type_Int = 13;
-    this.jdField_k_of_type_Int = 3;
-    this.jdField_k_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 6;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_e_of_type_JavaLangString = "mqq";
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new auyo(this);
+    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramString;
+    this.h = auyl.a(paramString);
+    this.jdField_e_of_type_Int = a();
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
   }
   
-  public auyl a()
+  protected int a()
   {
-    UpsImageUploadTask localUpsImageUploadTask = new UpsImageUploadTask(this.jdField_g_of_type_JavaLangString);
-    localUpsImageUploadTask.dataType = this.jdField_g_of_type_Int;
-    localUpsImageUploadTask.fileId = this.jdField_i_of_type_JavaLangString;
-    localUpsImageUploadTask.flowId = this.jdField_e_of_type_Int;
-    localUpsImageUploadTask.iBatchID = this.b;
-    localUpsImageUploadTask.iBatchUploadCount = this.jdField_h_of_type_Int;
-    localUpsImageUploadTask.iBusiNessType = this.jdField_i_of_type_Int;
-    localUpsImageUploadTask.iCurrentUploadOrder = this.jdField_j_of_type_Int;
-    localUpsImageUploadTask.iSync = this.jdField_c_of_type_Int;
-    localUpsImageUploadTask.iUin = this.jdField_a_of_type_Long;
-    localUpsImageUploadTask.iUploadType = this.jdField_k_of_type_Int;
-    localUpsImageUploadTask.keepRaw = this.l;
-    localUpsImageUploadTask.md5 = this.jdField_h_of_type_JavaLangString;
-    localUpsImageUploadTask.preupload = this.jdField_d_of_type_Int;
-    localUpsImageUploadTask.reportRefer = this.jdField_d_of_type_JavaLangString;
-    localUpsImageUploadTask.sBusinessId = this.jdField_k_of_type_JavaLangString;
-    localUpsImageUploadTask.sCommand = this.jdField_j_of_type_JavaLangString;
-    localUpsImageUploadTask.sRefer = this.jdField_e_of_type_JavaLangString;
-    localUpsImageUploadTask.transferData = this.jdField_a_of_type_JavaUtilMap;
-    localUpsImageUploadTask.uiRefer = this.f;
-    localUpsImageUploadTask.uploadTaskCallback = this.jdField_a_of_type_ComTencentUploadUinterfaceIUploadTaskCallback;
-    localUpsImageUploadTask.vBusiNessData = this.jdField_c_of_type_ArrayOfByte;
-    localUpsImageUploadTask.vLoginData = this.jdField_a_of_type_ArrayOfByte;
-    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask = localUpsImageUploadTask;
-    return this;
+    if (this.g == null) {}
+    for (String str = "";; str = this.g) {
+      return (str + System.currentTimeMillis()).hashCode();
+    }
   }
   
-  protected void a(int paramInt, Object... paramVarArgs) {}
+  public final Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public final String a()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask == null) {
+      throw new NullPointerException("Are you forget call buildTask()?");
+    }
+    if (!a()) {
+      return;
+    }
+    b();
+    b();
+  }
+  
+  protected abstract void a(int paramInt, Object... paramVarArgs);
+  
+  protected boolean a()
+  {
+    if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -3, "invalid login data");
+      return false;
+    }
+    return true;
+  }
+  
+  protected void b()
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localHashMap.put("task_state", this.jdField_b_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer)) {
+      localHashMap.put("business_refer", this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uiRefer);
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData = localHashMap;
+  }
+  
+  protected boolean b()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -1, "no file path!");
+      return false;
+    }
+    File localFile = new File(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.uploadFilePath);
+    if ((localFile == null) || (!localFile.exists()) || (localFile.length() == 0L) || (localFile.isDirectory()))
+    {
+      this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback.onUploadError(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask, -2, "file is not exist or empty!");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask.transferData.put("task_state", "running_task");
+    return UploadServiceBuilder.getInstance().upload(this.jdField_a_of_type_ComTencentUploadUinterfaceAbstractUploadTask);
+  }
 }
 
 

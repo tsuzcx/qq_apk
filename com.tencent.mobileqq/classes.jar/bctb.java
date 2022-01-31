@@ -1,18 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.AbsListView.LayoutParams;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
 public class bctb
-  implements ValueAnimator.AnimatorUpdateListener
+  extends RecyclerView.ViewHolder
 {
-  public bctb(FloatingScreenContainer paramFloatingScreenContainer, WindowManager.LayoutParams paramLayoutParams) {}
+  final SimpleMonthView a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bctb(View paramView, bctc parambctc)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    super(paramView);
+    this.a = ((SimpleMonthView)paramView);
+    this.a.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+    this.a.setClickable(true);
+    this.a.setOnDayClickListener(parambctc);
   }
 }
 

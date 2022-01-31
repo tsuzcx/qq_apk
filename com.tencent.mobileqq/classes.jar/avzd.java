@@ -1,6 +1,13 @@
-public abstract interface avzd
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
+
+public class avzd
 {
-  public abstract void a();
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  
+  public avzd(avzc paramavzc) {}
 }
 
 

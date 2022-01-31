@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqd;
+import aeqb;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -29,7 +29,7 @@ import java.net.URLEncoder;
 import mqq.os.MqqHandler;
 
 public class HotChatDemoChatPie
-  extends aeqd
+  extends aeqb
 {
   protected LinearLayout c;
   protected String i;
@@ -93,7 +93,7 @@ public class HotChatDemoChatPie
         this.p.setLayoutParams(localLayoutParams);
         this.p.setImageDrawable(paramDrawable);
         paramDrawable = new SimpleTextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699059));
+        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699069));
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.bottomMargin = this.r;
         localLayoutParams.gravity = 1;
@@ -110,7 +110,7 @@ public class HotChatDemoChatPie
         paramDrawable.addRule(15);
         paramDrawable.rightMargin = this.s;
         this.c.setLayoutParams(paramDrawable);
-        this.c.setBackgroundResource(2130844618);
+        this.c.setBackgroundResource(2130844619);
       } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c);
       return;
@@ -152,8 +152,8 @@ public class HotChatDemoChatPie
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699058);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699058));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699068);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699068));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     }
   }

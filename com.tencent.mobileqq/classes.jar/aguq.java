@@ -1,87 +1,97 @@
-import android.content.Intent;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 public class aguq
-  extends agsl
 {
-  protected aguq(NewPhotoListActivity paramNewPhotoListActivity)
+  public static agrh a(int paramInt, AlbumListFragment paramAlbumListFragment)
   {
-    super(paramNewPhotoListActivity);
+    switch (paramInt)
+    {
+    default: 
+      return agrk.a(paramAlbumListFragment);
+    case 1: 
+      return agtj.b(paramAlbumListFragment);
+    case 7: 
+      return agtl.b(paramAlbumListFragment);
+    case 4: 
+      return agtk.b(paramAlbumListFragment);
+    case 3: 
+      return alvi.b(paramAlbumListFragment);
+    }
+    return agtm.b(paramAlbumListFragment);
   }
   
-  public static agse b(NewPhotoListActivity paramNewPhotoListActivity)
+  public static agsc a(int paramInt, NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
-    try
+    switch (paramInt)
     {
-      if ((jdField_a_of_type_Agse == null) || (jdField_a_of_type_Agse.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agse = new aguq(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Agse;
+    default: 
+      return agsj.a(paramNewPhotoListActivity);
+    case 1: 
+      return agtt.b(paramNewPhotoListActivity);
+    case 7: 
+      return ague.b(paramNewPhotoListActivity);
+    case 4: 
+      return agua.b(paramNewPhotoListActivity);
+    case 30: 
+      return agub.b(paramNewPhotoListActivity);
+    case 3: 
+      return alvo.b(paramNewPhotoListActivity);
+    case 2: 
+      return agty.b(paramNewPhotoListActivity);
+    case 23: 
+      return agts.b(paramNewPhotoListActivity);
+    case 26: 
+      return agtn.b(paramNewPhotoListActivity);
+    case 24: 
+      return agum.b(paramNewPhotoListActivity);
+    case 25: 
+      return agui.b(paramNewPhotoListActivity);
+    case 28: 
+      return agup.b(paramNewPhotoListActivity);
+    case 27: 
+      return agul.b(paramNewPhotoListActivity);
+    case 40: 
+      return agtu.b(paramNewPhotoListActivity);
+    case 41: 
+      return aguo.b(paramNewPhotoListActivity);
+    case 43: 
+      return agtz.b(paramNewPhotoListActivity);
+    case 44: 
+      return agud.b(paramNewPhotoListActivity);
     }
-    finally {}
+    return aguk.b(paramNewPhotoListActivity);
   }
   
-  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public static agsq a(int paramInt, NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    int i2 = PhotoUtils.b(this.jdField_a_of_type_Agsd.a);
-    paramIntent = new HashMap();
-    int i1 = 0;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    while (i1 < this.jdField_a_of_type_Agsb.a.size())
+    switch (paramInt)
     {
-      paramArrayList = (String)this.jdField_a_of_type_Agsb.a.get(i1);
-      int m;
-      if (ImageManager.isNetworkUrl(paramArrayList))
-      {
-        m = k;
-        k = i;
-        i = m;
-        i1 += 1;
-        m = k;
-        k = i;
-        i = m;
-      }
-      else
-      {
-        int n;
-        if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramArrayList) == 1)
-        {
-          paramArrayList = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramArrayList);
-          n = j;
-          m = i;
-          if (paramArrayList != null)
-          {
-            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
-            localSendVideoInfo.fileSize = paramArrayList.fileSize;
-            localSendVideoInfo.duration = paramArrayList.mDuration;
-            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
-            m = i + 1;
-            n = j;
-          }
-        }
-        for (;;)
-        {
-          i = k + 1;
-          j = n;
-          k = m;
-          break;
-          n = j + 1;
-          m = i;
-        }
-      }
+    default: 
+      return agta.a(paramNewPhotoPreviewActivity);
+    case 1: 
+      return agut.b(paramNewPhotoPreviewActivity);
+    case 7: 
+      return agve.b(paramNewPhotoPreviewActivity);
+    case 2: 
+      return agvc.b(paramNewPhotoPreviewActivity);
+    case 23: 
+      return agur.b(paramNewPhotoPreviewActivity);
+    case 24: 
+      return agvk.b(paramNewPhotoPreviewActivity);
+    case 25: 
+      return agvf.b(paramNewPhotoPreviewActivity);
+    case 3: 
+      return alvq.b(paramNewPhotoPreviewActivity);
+    case 28: 
+      return agvl.b(paramNewPhotoPreviewActivity);
+    case 40: 
+      return agvb.b(paramNewPhotoPreviewActivity);
+    case 42: 
+      return aguy.b(paramNewPhotoPreviewActivity);
     }
-    axqw.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
-    i();
+    return agvj.b(paramNewPhotoPreviewActivity);
   }
 }
 

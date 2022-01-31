@@ -1,22 +1,11 @@
+import com.tencent.mobileqq.apollo.ApolloTicker.NativeDrawTask;
+import java.util.Timer;
+
 public class aiwr
 {
-  public float a;
-  public float b;
-  public float c;
-  
-  public aiwr(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
-  }
+  public int a;
+  public ApolloTicker.NativeDrawTask a;
+  public Timer a;
 }
 
 

@@ -1,14 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class pld
-  implements ViewBase.IBuilder
+class pld
+  implements Animator.AnimatorListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  pld(plb paramplb) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new pla(paramVafContext);
+    plb.a(this.a).setSelected(this.a.isSelected());
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    plb.a(this.a, false);
+    plb.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

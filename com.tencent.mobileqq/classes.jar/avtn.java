@@ -1,162 +1,140 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Properties;
+import android.content.Context;
+import com.tencent.mobileqq.richmedia.capture.view.BeautyProviderView;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import com.tencent.mobileqq.richmedia.capture.view.SubtitleProviderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class avtn
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static int b;
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c;
+  public static final int[] d;
+  private int jdField_a_of_type_Int = 0;
+  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  private static String a()
+  static
   {
-    if (jdField_a_of_type_Int % 180 == 0) {
-      return "0";
+    jdField_a_of_type_ArrayOfInt = new int[] { 101, 2130845079 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 102, 2130845082 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 103, 2130845078 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 104, 2130845085 };
+  }
+  
+  public avtn(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return -1;
     }
-    return "1";
+    return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
   }
   
-  public static void a()
+  public ProviderView a(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_Int = 90;
-    b = 2;
-    jdField_a_of_type_Long = 0L;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    try
+    Object localObject = null;
+    switch (paramInt)
     {
-      long l = awaf.a(paramString);
-      if (l == 0L) {}
-      for (float f = -1.0F;; f = paramInt * 1000.0F / (float)l)
+    default: 
+      paramContext = localObject;
+      if (QLog.isColorLevel())
       {
-        axrl.a(BaseApplication.getContext()).a(null, "capture_video_fps", false, f, 0L, null, "");
-        return;
+        QLog.d("ProviderViewBuilder", 2, "bad id=" + paramInt);
+        paramContext = localObject;
       }
-      return;
+      break;
     }
-    catch (Exception paramString)
+    for (;;)
     {
-      paramString.printStackTrace();
+      if (paramContext != null)
+      {
+        if (this.jdField_a_of_type_Int != 0) {
+          break;
+        }
+        paramContext.setTabBarPosition(2);
+      }
+      return paramContext;
+      paramContext = new FilterProviderView(paramContext, this.jdField_a_of_type_Int);
+      paramContext.setId(2131363883);
+      continue;
+      paramContext = new PtvTemplateProviderView(paramContext);
+      continue;
+      paramContext = new BeautyProviderView(paramContext);
+      continue;
+      paramContext = new SubtitleProviderView(paramContext);
     }
+    paramContext.setTabBarPosition(1);
+    if (paramContext.a())
+    {
+      paramContext.b(213);
+      return paramContext;
+    }
+    paramContext.b(249);
+    return paramContext;
   }
   
-  public static void a(Activity paramActivity, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    switch (paramInt1)
-    {
-    }
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {}
     do
     {
-      do
+      return;
+      paramInt = ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
+      if (paramInt == 101)
       {
-        return;
-        if (paramInt2 == -1)
-        {
-          if (jdField_a_of_type_Boolean)
-          {
-            ahub.a("", "0X80072C5", b(), jdField_a_of_type_JavaLangString, "", "");
-            return;
-          }
-          ahub.a("", "0X80072C4", b());
-          return;
-        }
-      } while (paramInt2 != 0);
-      if (jdField_a_of_type_Boolean)
-      {
-        ahub.b("", "0X80072C6");
+        avsf.a().a(1, 0, "");
         return;
       }
-      ahub.b("", "0X80072C7");
-      return;
-      if (paramInt2 == -1)
-      {
-        paramActivity = new Properties();
-        paramActivity.setProperty("shortvideo_duration", String.valueOf(jdField_a_of_type_Long));
-        paramActivity.setProperty("shortvideo_rotation", a());
-        paramActivity.setProperty("shortvideo_camera", b());
-        if (!jdField_a_of_type_Boolean)
-        {
-          ahub.a("", "0X8006A16", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
-          ahww.a("shortvideo_send_noeffects", paramActivity);
-          return;
-        }
-        ahub.a("", "0X8006A19", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
-        ahww.a("shortvideo_send_effects", paramActivity);
-        return;
+    } while (paramInt != 102);
+    avrv.a().a(1, 0, "");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((int[])this.jdField_a_of_type_JavaUtilArrayList.get(i))[0] == paramInt) {
+        return i;
       }
-    } while (paramInt2 != 0);
-    if (jdField_a_of_type_Boolean)
-    {
-      ahub.b("", "0X8006A1B");
-      return;
+      i += 1;
     }
-    ahub.b("", "0X8006A17");
+    return -1;
   }
   
-  public static void a(boolean paramBoolean)
+  public void b(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      ahub.a("", "0X8007BB7", str);
-      return;
-    }
+    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  private static String b()
+  public void c(boolean paramBoolean)
   {
-    if (b == 1) {
-      return "1";
-    }
-    return "0";
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public static void b()
+  public void d(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Boolean)
-    {
-      ahub.a("", "0X80072C3", b(), jdField_a_of_type_JavaLangString, "", "");
-      return;
-    }
-    ahub.a("", "0X80072C2", b());
-  }
-  
-  public static void c()
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      ahub.a("", "0X8006A18", String.valueOf(jdField_a_of_type_Long), a(), b(), jdField_a_of_type_JavaLangString);
-      return;
-    }
-    ahub.a("", "0X8006A13", String.valueOf(jdField_a_of_type_Long), a(), b(), "");
-  }
-  
-  public static void d()
-  {
-    ahub.b("", "0X80072C1");
-  }
-  
-  public static void e()
-  {
-    ahub.b("", "0X8006A12");
-  }
-  
-  public static void f()
-  {
-    ahub.b("", "0X8006A15");
-    ahww.a("shortvideo_rotate_camera", null);
-  }
-  
-  public static void g()
-  {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
 }
 

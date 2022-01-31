@@ -1,48 +1,56 @@
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class nrs
-  extends akup
+  extends ampa<nrq>
 {
-  public nrs(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public static nrq a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    return (nrq)ampl.a().a(593);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public int a()
   {
-    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
-    ArrayList localArrayList;
-    double d1;
-    double d2;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-        if (localRecentShopParcel.c != 1) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
-          }
-          catch (Exception localException) {}
-        }
-      }
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-    } while (this.a.jdField_a_of_type_Nrg == null);
-    this.a.jdField_a_of_type_Nrg.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
+    return 593;
+  }
+  
+  public Class<nrq> a()
+  {
+    return nrq.class;
+  }
+  
+  @NonNull
+  public nrq a(int paramInt)
+  {
+    return new nrq();
+  }
+  
+  @Nullable
+  public nrq a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+      return new nrq();
+    }
+    return nrq.a(paramArrayOfamph[0].a);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(nrq paramnrq) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

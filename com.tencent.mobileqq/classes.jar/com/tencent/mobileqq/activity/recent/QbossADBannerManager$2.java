@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahmv;
+import ahmt;
 import com.tencent.image.URLDrawable;
 
 public class QbossADBannerManager$2
   implements Runnable
 {
-  public QbossADBannerManager$2(ahmv paramahmv, URLDrawable paramURLDrawable) {}
+  public QbossADBannerManager$2(ahmt paramahmt, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

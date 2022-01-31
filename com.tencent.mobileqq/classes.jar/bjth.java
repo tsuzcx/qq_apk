@@ -1,49 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.graphics.Bitmap;
 
-class bjth
-  implements View.OnTouchListener
+public class bjth
+  extends bkaa
 {
-  bjth(bjtg parambjtg) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bjth(int paramInt, Bitmap paramBitmap)
   {
-    if (bjtg.a(this.a) == null)
-    {
-      if (this.a.jdField_a_of_type_Bjww.a == null) {
-        return false;
-      }
-      bjtg.a(this.a, this.a.jdField_a_of_type_Bjww.a.a());
-    }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.setTipsGone();
-    }
-    if (bjtg.a(this.a).c()) {
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      }
-    }
-    while ((this.a.jdField_a_of_type_Boolean) || (bjtg.a(this.a).getVisibility() == 8))
-    {
-      return false;
-      this.a.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.a.b = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.a.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.a.b) < 10.0F))
-      {
-        paramView = (bjsd)this.a.a(bjsd.class);
-        if (paramView != null) {
-          paramView.g_();
-        }
-      }
-    }
-    return bjtg.a(this.a).a(paramMotionEvent);
+    super(paramInt, paramBitmap);
+  }
+  
+  public static bjth a(bjth parambjth, Bitmap paramBitmap)
+  {
+    paramBitmap = new bjth(parambjth.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = parambjth.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = parambjth.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = parambjth.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = parambjth.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = parambjth.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 

@@ -1,12 +1,19 @@
+import java.util.concurrent.atomic.AtomicBoolean;
+import msf.msgcomm.msg_comm.Msg;
+
 class aken
-  implements lxw
 {
-  aken(akef paramakef, byte[] paramArrayOfByte) {}
+  public long a;
+  public AtomicBoolean a;
+  public msg_comm.Msg a;
+  public long b;
   
-  public void a(lxv paramlxv)
+  public aken(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
   {
-    paramlxv.a(this.jdField_a_of_type_ArrayOfByte);
-    paramlxv.a();
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qsg
-  implements bfot
+public abstract interface qsg
 {
-  qsg(qrw paramqrw) {}
+  public abstract void a(VideoInfo paramVideoInfo);
   
-  public void ak_()
-  {
-    if (qrw.b(this.a)) {
-      qrw.a(this.a).c();
-    }
-    if (qrw.a(this.a) != null) {
-      qrw.a(this.a).f();
-    }
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

@@ -1,14 +1,19 @@
+import android.graphics.Rect;
+
 public class alje
 {
+  public float a;
   public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
+  public Rect a;
+  
+  public alje()
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  }
   
   public String toString()
   {
-    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
+    return String.format("AIRect[%d,%.2f,%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
   }
 }
 

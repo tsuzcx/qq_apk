@@ -1,16 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.os.Message;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
 
 public class bjkk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements bjbu
 {
-  public bjkk(QIMCircleProgress paramQIMCircleProgress) {}
+  public bjkk(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = this.a.a.obtainMessage();
+      if (!paramBoolean) {
+        break label61;
+      }
+    }
+    label61:
+    for (int i = 1;; i = 0)
+    {
+      localMessage.arg1 = i;
+      localMessage.obj = paramObject;
+      localMessage.what = 7;
+      this.a.a.sendMessage(localMessage);
+      return;
+    }
   }
 }
 

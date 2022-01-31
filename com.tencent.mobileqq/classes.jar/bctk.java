@@ -1,17 +1,8 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import android.view.View;
 
-public final class bctk
-  implements DialogInterface.OnClickListener
+public abstract interface bctk
 {
-  public bctk(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    FloatingScreenPermission.requestPermission(this.a);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

@@ -1,51 +1,74 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class apfo
-  implements apfn
+  implements awwr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
+  protected int a;
+  protected View a;
+  protected ImageView a;
+  protected TextView a;
+  protected TextView b;
   
-  public apfo(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, List<Integer> paramList)
+  public apfo() {}
+  
+  public apfo(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = 2131562389;
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
+    a();
   }
   
-  public void a(int paramInt)
+  public View a()
   {
-    switch (paramInt)
-    {
-    default: 
-      QLog.i("QFileOfflineSearchTypeController", 4, "unknown search type.");
-      return;
-    case 3: 
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 1, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 2: 
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 2, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 0: 
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 3, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 1: 
-      axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 4, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    axqw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 5, 0, "", "", "", "");
-    SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return null;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377350));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(ayku.a);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365042));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131377420).setVisibility(8);
+  }
+  
+  public ImageView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public TextView d()
+  {
+    return null;
   }
 }
 

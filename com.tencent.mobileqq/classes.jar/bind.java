@@ -1,21 +1,15 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.11.1;
 
-class bind
-  implements CompoundButton.OnCheckedChangeListener
+public class bind
+  implements bijy
 {
-  bind(bimz parambimz) {}
+  bind(bina parambina) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    paramCompoundButton = bimz.c(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      paramCompoundButton.setVisibility(i);
-      return;
-    }
+    ThreadManager.excute(new VideoStoryCapturePart.11.1(this, paramBitmap), 64, null, false);
   }
 }
 

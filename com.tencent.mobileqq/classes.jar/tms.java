@@ -1,36 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tms
-  extends syv<tom>
+  extends sys
 {
-  public final int c;
-  public final int d;
-  public final int e;
-  
-  public tms(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = 1;
-  }
+  public String a;
   
   public String a()
   {
-    return sxp.a("StorySvc.video_poi_posters_get");
+    return sxm.a("StorySvc.get_profile_year_node_info");
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public syn a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
     try
     {
-      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
-      return new tom(localRspGetPOIPosters);
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new tmt(localRspProfileYearNodeList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -43,13 +33,9 @@ public class tms
   
   protected byte[] a()
   {
-    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.lng.set(this.c);
-    localGpsMsg.lat.set(this.d);
-    localReqGetPOIPosters.coordinate.set(this.e);
-    localReqGetPOIPosters.gps.set(localGpsMsg);
-    return localReqGetPOIPosters.toByteArray();
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aefu;
+import aefs;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,14 +8,14 @@ import android.widget.ImageView;
 public class TroopDNANavBar$1
   implements Runnable
 {
-  public TroopDNANavBar$1(aefu paramaefu) {}
+  public TroopDNANavBar$1(aefs paramaefs) {}
   
   public void run()
   {
-    aefu.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772054));
-    aefu.a(this.this$0).clearAnimation();
-    aefu.a(this.this$0).startAnimation(aefu.a(this.this$0));
-    aefu.a(this.this$0).setAnimationListener(this.this$0);
+    aefs.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772054));
+    aefs.a(this.this$0).clearAnimation();
+    aefs.a(this.this$0).startAnimation(aefs.a(this.this$0));
+    aefs.a(this.this$0).setAnimationListener(this.this$0);
   }
 }
 

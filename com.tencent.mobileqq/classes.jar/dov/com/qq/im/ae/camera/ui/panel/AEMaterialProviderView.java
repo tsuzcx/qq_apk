@@ -8,17 +8,17 @@ import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.widget.FrameLayout;
-import axgj;
-import biob;
-import bioc;
-import biqj;
-import biqk;
-import biqn;
-import bizu;
-import bjae;
-import bjdc;
-import bjkz;
-import bjla;
+import axgl;
+import bios;
+import biot;
+import bira;
+import birb;
+import bire;
+import bjal;
+import bjav;
+import bjdt;
+import bjlq;
+import bjlr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -28,50 +28,50 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
-import vzz;
+import vzw;
 
 public class AEMaterialProviderView
   extends FrameLayout
-  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, axgj, bjkz
+  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, axgl, bjlq
 {
   private int jdField_a_of_type_Int = 1;
-  private biob jdField_a_of_type_Biob;
-  private biqk jdField_a_of_type_Biqk;
-  public bjdc a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bizu.a();
+  private bios jdField_a_of_type_Bios;
+  private birb jdField_a_of_type_Birb;
+  public bjdt a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bjal.a();
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   private AEMaterialTabAdapter jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter;
   private QIMSlidingTabView jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView;
-  private List<biqj> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<bira> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   
-  public AEMaterialProviderView(Context paramContext, biob parambiob)
+  public AEMaterialProviderView(Context paramContext, bios parambios)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bjdc = new bioc(this);
-    this.jdField_a_of_type_Biob = parambiob;
+    this.jdField_a_of_type_Bjdt = new biot(this);
+    this.jdField_a_of_type_Bios = parambios;
     c();
   }
   
-  private ArrayList<bjla> a()
+  private ArrayList<bjlr> a()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      biqj localbiqj = (biqj)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localbiqj == null) {}
+      bira localbira = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localbira == null) {}
       for (;;)
       {
         i += 1;
         break;
-        if (-1 == localbiqj.jdField_a_of_type_Int) {
+        if (-1 == localbira.jdField_a_of_type_Int) {
           this.jdField_a_of_type_Int = i;
         }
-        bjla localbjla = new bjla();
-        localbjla.a = localbiqj.b;
-        localArrayList.add(localbjla);
+        bjlr localbjlr = new bjlr();
+        localbjlr.a = localbira.b;
+        localArrayList.add(localbjlr);
       }
     }
     return localArrayList;
@@ -83,14 +83,14 @@ public class AEMaterialProviderView
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2131377585));
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.getViewTreeObserver().addOnScrollChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131379147));
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Biob);
-    this.jdField_a_of_type_Biqk = ((biqk)bjae.a(18));
-    this.jdField_a_of_type_Biqk.e();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131379152));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Bios);
+    this.jdField_a_of_type_Birb = ((birb)bjav.a(18));
+    this.jdField_a_of_type_Birb.e();
     this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bjdc);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bjdt);
     a(true);
   }
   
@@ -101,8 +101,8 @@ public class AEMaterialProviderView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Biqk != null) {
-      this.jdField_a_of_type_Biqk.g();
+    if (this.jdField_a_of_type_Birb != null) {
+      this.jdField_a_of_type_Birb.g();
     }
   }
   
@@ -135,9 +135,9 @@ public class AEMaterialProviderView
     int i = 0;
     int j;
     if (i < this.jdField_a_of_type_JavaUtilList.size()) {
-      if ((paramString1 != null) && (paramString1.equals(((biqj)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
+      if ((paramString1 != null) && (paramString1.equals(((bira)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
       {
-        paramString1 = (biqj)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramString1 = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
         j = i;
       }
     }
@@ -153,8 +153,8 @@ public class AEMaterialProviderView
       label167:
       if (i < paramString1.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (biqn)paramString1.jdField_a_of_type_JavaUtilList.get(i);
-        if (!((biqn)localObject).a.equals(paramString2)) {}
+        localObject = (bire)paramString1.jdField_a_of_type_JavaUtilList.get(i);
+        if (!((bire)localObject).a.equals(paramString2)) {}
       }
       for (paramString1 = (String)localObject;; paramString1 = null)
       {
@@ -167,7 +167,7 @@ public class AEMaterialProviderView
         }
         if (paramString1.a())
         {
-          vzz.a(getContext(), paramString1);
+          vzw.a(getContext(), paramString1);
           return;
           i += 1;
           break label167;
@@ -183,7 +183,7 @@ public class AEMaterialProviderView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_Biqk.a(paramBoolean));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_Birb.a(paramBoolean));
     int j = this.jdField_a_of_type_Int;
     int i = j;
     if (!paramBoolean)
@@ -198,16 +198,16 @@ public class AEMaterialProviderView
             break label340;
           }
           i = this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
-          biqj localbiqj1 = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(i);
-          if (localbiqj1 == null) {
+          bira localbira1 = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(i);
+          if (localbira1 == null) {
             break label340;
           }
           i = 0;
           if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label340;
           }
-          biqj localbiqj2 = (biqj)this.jdField_a_of_type_JavaUtilList.get(i);
-          if ((localbiqj2 == null) || (TextUtils.isEmpty(localbiqj2.b)) || (!localbiqj2.b.equals(localbiqj1.b))) {
+          bira localbira2 = (bira)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localbira2 == null) || (TextUtils.isEmpty(localbira2.b)) || (!localbira2.b.equals(localbira1.b))) {
             break label333;
           }
         }
@@ -255,15 +255,15 @@ public class AEMaterialProviderView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Biqk != null)
+    if (this.jdField_a_of_type_Birb != null)
     {
-      this.jdField_a_of_type_Biqk.b(null, false);
-      this.jdField_a_of_type_Biqk.a(111);
-      this.jdField_a_of_type_Biqk.a(113);
-      this.jdField_a_of_type_Biqk.a(112);
+      this.jdField_a_of_type_Birb.b(null, false);
+      this.jdField_a_of_type_Birb.a(111);
+      this.jdField_a_of_type_Birb.a(113);
+      this.jdField_a_of_type_Birb.a(112);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bjdc);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bjdt);
     }
   }
   

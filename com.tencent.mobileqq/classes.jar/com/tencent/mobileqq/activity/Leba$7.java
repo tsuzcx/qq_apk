@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axbt;
-import axqw;
+import axbv;
+import axqy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$7
@@ -11,9 +11,9 @@ class Leba$7
   
   public void run()
   {
-    axbt localaxbt = (axbt)this.this$0.a.getManager(12);
-    if ((localaxbt != null) && ((localaxbt.a(601L)) || ((this.a > 0L) && (localaxbt.a(this.a))))) {
-      axqw.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
+    axbv localaxbv = (axbv)this.this$0.a.getManager(12);
+    if ((localaxbv != null) && ((localaxbv.a(601L)) || ((this.a > 0L) && (localaxbv.a(this.a))))) {
+      axqy.b(this.this$0.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
     }
   }
 }

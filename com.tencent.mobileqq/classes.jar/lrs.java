@@ -1,79 +1,34 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
-import com.tencent.av.opengl.program.YUVTextureProgram;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Bitmap;
 
 public class lrs
+  extends lrx
 {
-  static Map<String, TextureProgram> a = new HashMap();
+  protected Bitmap a;
   
-  public static TextureProgram a(int paramInt)
+  public lrs(Bitmap paramBitmap)
   {
-    int j = 1;
-    for (;;)
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
+    for (boolean bool = true;; bool = false)
     {
-      int i;
-      try
-      {
-        String str = paramInt + "_" + Thread.currentThread().getId();
-        localObject1 = (TextureProgram)a.get(str);
-        if (localObject1 == null)
-        {
-          i = 1;
-          if (i != 0) {
-            break label173;
-          }
-          GLES20.glUseProgram(((TextureProgram)localObject1).a());
-          if (lsv.a() != 0)
-          {
-            i = j;
-            break label173;
-            localObject1 = new TextureProgram();
-            a.put(str, localObject1);
-            return localObject1;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        i = 0;
-      }
-      finally {}
-      Object localObject1 = new YUVTextureProgram();
-      continue;
-      Object localObject3 = new YUVTextureAliasingProgram();
-      continue;
-      localObject3 = new lrr();
-      continue;
-      localObject3 = new lrq();
-      continue;
-      localObject3 = new lrp();
-      continue;
-      label173:
-      if (i != 0) {
-        switch (paramInt)
-        {
-        }
-      }
+      bfmz.a(bool);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
     }
   }
   
-  public static void a()
+  protected Bitmap a()
   {
-    try
-    {
-      a.clear();
-      return;
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  protected void a(Bitmap paramBitmap) {}
+  
+  public int[] a(lqo paramlqo)
+  {
+    if (!c()) {
+      b(paramlqo);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 

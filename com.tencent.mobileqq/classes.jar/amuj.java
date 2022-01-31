@@ -1,15 +1,103 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class amuj
+  extends ampa<amui>
 {
-  int a;
-  
-  public amuj()
+  public static int a(Context paramContext, String paramString)
   {
-    this.a = 0;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
   }
   
-  public amuj(int paramInt)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    this.a = paramInt;
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
+    paramContext.apply();
+  }
+  
+  public int a()
+  {
+    return 439;
+  }
+  
+  @NonNull
+  public amui a(int paramInt)
+  {
+    return new amui(0);
+  }
+  
+  @Nullable
+  public amui a(amph[] paramArrayOfamph)
+  {
+    j = 0;
+    i = j;
+    if (paramArrayOfamph != null)
+    {
+      i = j;
+      if (paramArrayOfamph.length > 0) {
+        paramArrayOfamph = paramArrayOfamph[0].a;
+      }
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfamph);
+      }
+      i = new JSONObject(paramArrayOfamph).getInt("isPushSwitchShow");
+    }
+    catch (Exception paramArrayOfamph)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfamph);
+          i = j;
+        }
+      }
+    }
+    return new amui(i);
+  }
+  
+  public Class a()
+  {
+    return amui.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amui paramamui)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramamui.a);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramamui.a);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

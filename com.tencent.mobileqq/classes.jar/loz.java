@@ -1,16 +1,6 @@
-import java.nio.ByteBuffer;
-
-public class loz
+public abstract interface loz
 {
-  public int a;
-  public ByteBuffer a;
-  public boolean a;
-  
-  public loz(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

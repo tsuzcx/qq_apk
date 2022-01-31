@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class bkun
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public bkun(CaptureQmcfSoDownloadFragment.7 param7) {}
+  public bkun(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

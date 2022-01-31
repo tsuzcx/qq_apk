@@ -1,19 +1,20 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-class behh
-  implements AsyncResult
+public class behh
+  implements DialogInterface.OnClickListener
 {
-  behh(behf parambehf) {}
+  public behh(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    besl.d("AuthState", "updateUserSetting() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     behh
  * JD-Core Version:    0.7.0.1
  */

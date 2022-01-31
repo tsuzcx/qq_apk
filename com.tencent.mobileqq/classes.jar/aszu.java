@@ -1,17 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class aszu
-  extends BroadcastReceiver
 {
-  public aszu(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    this.a.tribePersonalDataModify();
-  }
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public URLImageView b;
+  public URLImageView c;
 }
 
 

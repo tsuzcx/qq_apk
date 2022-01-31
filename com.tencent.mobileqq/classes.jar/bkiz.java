@@ -1,6 +1,36 @@
-public abstract interface bkiz
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+
+class bkiz
+  implements uqs
 {
-  public abstract void a(String paramString);
+  bkiz(bkiy parambkiy) {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (bkiy.a(this.a).b())
+    {
+      vei.a("video_edit", "repost_comment", 0, 0, new String[] { "", "", "", bkiy.a(this.a).a.a("vip_forward_vid") });
+      return;
+    }
+    vei.a("video_edit", "repost_emoji", 0, 0, new String[] { "", "", "", bkiy.a(this.a).a.a("vip_forward_vid") });
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if ((!bkiy.a(this.a).a()) && (!bkiy.a(this.a).c())) {
+      this.a.dismiss();
+    }
+  }
+  
+  public void d()
+  {
+    this.a.dismiss();
+  }
 }
 
 

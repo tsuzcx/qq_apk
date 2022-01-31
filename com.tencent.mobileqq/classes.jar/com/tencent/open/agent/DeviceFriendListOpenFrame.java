@@ -13,15 +13,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import bcmq;
-import bcoe;
-import bdad;
-import bdae;
-import bdaf;
-import bddv;
-import bdeb;
-import bdht;
-import bfpc;
+import bcnf;
+import bcot;
+import bdas;
+import bdat;
+import bdau;
+import bdek;
+import bdeq;
+import bdii;
+import bfpt;
 import com.tencent.mobileqq.widget.IndexView;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.open.agent.datamodel.Friend;
@@ -30,13 +30,13 @@ import java.util.ArrayList;
 
 public class DeviceFriendListOpenFrame
   extends OpenFrame
-  implements View.OnTouchListener, bcmq, bcoe, bdeb, bfpc
+  implements View.OnTouchListener, bcnf, bcot, bdeq, bfpt
 {
   public static final String a;
   protected Handler a;
   protected EditText a;
   public RelativeLayout a;
-  public bdae a;
+  public bdat a;
   protected IndexView a;
   protected PinnedDividerListView a;
   
@@ -48,19 +48,19 @@ public class DeviceFriendListOpenFrame
   public DeviceFriendListOpenFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new bdad(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bdas(this);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    super.setContentView(2131562398);
+    super.setContentView(2131562397);
     f();
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Bdae.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()))) && (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.jdField_a_of_type_Boolean))
+    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Bdat.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()))) && (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
@@ -79,55 +79,55 @@ public class DeviceFriendListOpenFrame
     do
     {
       return;
-      i = this.jdField_a_of_type_Bdae.a(paramString);
+      i = this.jdField_a_of_type_Bdat.a(paramString);
     } while (i == -1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(i + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount());
   }
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    bdht.c(jdField_a_of_type_JavaLangString, "-->onImageLoaded() url = " + paramString1);
+    bdii.c(jdField_a_of_type_JavaLangString, "-->onImageLoaded() url = " + paramString1);
     this.jdField_a_of_type_AndroidOsHandler.post(new DeviceFriendListOpenFrame.2(this, paramString1, paramBitmap));
   }
   
   public void b(Bundle paramBundle)
   {
-    bdht.c(jdField_a_of_type_JavaLangString, "-->onStart()");
+    bdii.c(jdField_a_of_type_JavaLangString, "-->onStart()");
     super.b(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
     this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(true, true, this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131690950), this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131691824), this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131690573));
-    if (this.jdField_a_of_type_Bdae == null)
+    if (this.jdField_a_of_type_Bdat == null)
     {
-      this.jdField_a_of_type_Bdae = new bdae(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Bdae);
+      this.jdField_a_of_type_Bdat = new bdat(this);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Bdat);
     }
-    this.jdField_a_of_type_Bdae.b();
+    this.jdField_a_of_type_Bdat.b();
   }
   
   protected void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131364059));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131364058));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131368074));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "$", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131167087);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562361, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365764));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562360, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365763));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363480)).setVisibility(8);
+    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363479)).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
   public void g()
   {
-    this.jdField_a_of_type_Bdae.b();
+    this.jdField_a_of_type_Bdat.b();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (bdaf)paramView.getTag();
+    paramAdapterView = (bdau)paramView.getTag();
     if ((paramAdapterView != null) && (paramAdapterView.a != null))
     {
       paramInt -= this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount();
@@ -139,10 +139,10 @@ public class DeviceFriendListOpenFrame
     do
     {
       return;
-      paramView = (Friend)this.jdField_a_of_type_Bdae.getItem(paramInt);
+      paramView = (Friend)this.jdField_a_of_type_Bdat.getItem(paramInt);
     } while ((paramView == null) || ((this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.jdField_a_of_type_JavaUtilArrayList.contains(paramView.jdField_a_of_type_JavaLangString))));
     this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(paramView);
-    if (this.jdField_a_of_type_Bddv.a(paramView.jdField_a_of_type_JavaLangString))
+    if (this.jdField_a_of_type_Bdek.a(paramView.jdField_a_of_type_JavaLangString))
     {
       paramAdapterView.a.setChecked(true);
       return;

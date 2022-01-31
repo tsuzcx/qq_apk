@@ -3,12 +3,12 @@ package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import mzb;
+import myy;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class IVOfflinePluginImpl$1
-  implements mzb
+  implements myy
 {
   IVOfflinePluginImpl$1(IVOfflinePluginImpl paramIVOfflinePluginImpl) {}
   

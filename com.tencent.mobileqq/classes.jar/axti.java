@@ -1,20 +1,14 @@
-public abstract class axti
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+class axti
+  implements FileFilter
 {
-  public int a = 0;
-  public int b;
-  public long b;
-  public int c = 1;
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  
-  axti()
+  public boolean accept(File paramFile)
   {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
-  
-  public abstract String a(int paramInt);
 }
 
 

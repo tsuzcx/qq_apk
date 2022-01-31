@@ -1,8 +1,10 @@
-import android.view.View;
+import android.widget.TextView;
 
-public abstract interface benm
+class benm
 {
-  public abstract void OnClick(View paramView, int paramInt);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private benm(bene parambene) {}
 }
 
 

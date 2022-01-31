@@ -1,10 +1,18 @@
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.core.utils.thread.PriorityThreadFactory.1;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract interface beml
+public final class beml
+  implements ThreadFactory
 {
-  public abstract void a(String paramString1, String paramString2);
+  private final int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public abstract void a(String paramString, JSONObject paramJSONObject, int paramInt);
+  public Thread newThread(Runnable paramRunnable)
+  {
+    return new PriorityThreadFactory.1(this, paramRunnable, this.jdField_a_of_type_JavaLangString + '-' + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
+  }
 }
 
 

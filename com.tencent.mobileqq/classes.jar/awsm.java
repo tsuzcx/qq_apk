@@ -1,50 +1,64 @@
-import android.text.TextUtils;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Set;
 
 public class awsm
-  extends awqq
+  extends awqs
 {
-  public awsm(baxk parambaxk, awqu paramawqu)
+  private Set<String> b;
+  
+  public awsm(baxy parambaxy, awqw paramawqw, Set<String> paramSet1, Set<String> paramSet2)
   {
-    super(parambaxk, paramawqu);
+    super(parambaxy, paramawqw, paramSet1);
+    this.b = paramSet2;
   }
   
-  public void b(awog paramawog, awwp paramawwp)
+  public void b(awoi paramawoi, awwr paramawwr)
   {
-    super.b(paramawog, paramawwp);
-    if (TextUtils.isEmpty(paramawog.c()))
+    super.b(paramawoi, paramawwr);
+    if (paramawwr.c() != null)
     {
-      paramawwp.c().setVisibility(8);
-      ((awyi)paramawwp).a().setVisibility(0);
-      if (paramawwp.b() != null)
-      {
-        paramawog = ((awpq)paramawog).d();
-        if (!TextUtils.isEmpty(paramawog)) {
-          break label127;
-        }
-        paramawwp.b().setVisibility(8);
+      localObject = paramawoi.b();
+      if ((this.b != null) && (this.b.contains(localObject))) {
+        paramawwr.c().setText(ajya.a(2131713739));
       }
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool = bail.b((QQAppInterface)localObject, paramawoi.b());
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (!(paramawwr instanceof awwl)) {
+        break label165;
+      }
+      ((awwl)paramawwr).a(bool);
     }
     for (;;)
     {
-      paramawwp.d().setVisibility(8);
+      if (paramawwr.a() != null)
+      {
+        if ((!(paramawoi instanceof awnd)) && (!(paramawoi instanceof awmq)) && (!(paramawoi instanceof awmy))) {
+          break;
+        }
+        if (paramawwr.c() != null) {
+          paramawwr.c().setVisibility(8);
+        }
+        paramawwr.a().setVisibility(0);
+      }
       return;
-      paramawwp.c().setVisibility(0);
-      paramawwp.c().setText(paramawog.c());
-      ((awyi)paramawwp).a().setVisibility(8);
-      break;
-      label127:
-      paramawwp.b().setVisibility(0);
-      paramawwp.b().setText(paramawog);
+      label165:
+      if ((paramawwr instanceof awyk)) {
+        ((awyk)paramawwr).a(bool);
+      }
     }
+    if (paramawwr.c() != null) {
+      paramawwr.c().setVisibility(0);
+    }
+    paramawwr.a().setVisibility(8);
   }
   
-  protected void c(awog paramawog, awwp paramawwp)
-  {
-    super.c(paramawog, paramawwp);
-    ((awyi)paramawwp).a().setOnClickListener(new awsn(this, paramawog));
-  }
+  public void d(awoi paramawoi, awwr paramawwr) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import ajyc;
+import ajya;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import apfc;
-import awkc;
-import awus;
+import apfg;
+import awke;
+import awuu;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +30,12 @@ public class ChatFileSearchFragment
     this.jdField_a_of_type_JavaLangRunnable = new ChatFileSearchFragment.1(this);
   }
   
-  public awkc a()
+  public awke a()
   {
-    return new apfc(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxk, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new apfg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Baxy, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public awus a()
+  public awuu a()
   {
     ChatFileManagerSearchEngine localChatFileManagerSearchEngine = new ChatFileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
     if (this.jdField_a_of_type_Int == 1)
@@ -86,7 +86,7 @@ public class ChatFileSearchFragment
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViewsInLayout();
       paramViewGroup = new TextView(getActivity());
-      paramViewGroup.setText(ajyc.a(2131701574));
+      paramViewGroup.setText(ajya.a(2131701585));
       paramViewGroup.setSingleLine(true);
       paramViewGroup.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
       paramViewGroup.setTextSize(1, 15.0F);

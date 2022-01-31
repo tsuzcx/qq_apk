@@ -1,17 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-class acwe
-  extends ayvz
+public final class acwe
+  implements Parcelable.Creator<ForwardUtils.SectionBase>
 {
-  acwe(acwd paramacwd, Looper paramLooper)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new ForwardUtils.SectionBase(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public ForwardUtils.SectionBase[] a(int paramInt)
   {
-    this.a.a(paramMessage);
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

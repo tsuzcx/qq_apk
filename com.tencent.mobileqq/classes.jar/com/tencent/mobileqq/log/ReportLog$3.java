@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import arzw;
+import arzy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ReportLog$3
   implements Runnable
 {
-  public ReportLog$3(arzw paramarzw, MobileQQ paramMobileQQ) {}
+  public ReportLog$3(arzy paramarzy, MobileQQ paramMobileQQ) {}
   
   public void run()
   {

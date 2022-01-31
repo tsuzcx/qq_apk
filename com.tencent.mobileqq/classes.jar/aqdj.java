@@ -1,37 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 class aqdj
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  aqdj(aqdb paramaqdb, DialogInterface.OnClickListener paramOnClickListener) {}
+  aqdj(aqdd paramaqdd, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Aqdb.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aqdb, 0);
-    }
-    if (aqdb.a(this.jdField_a_of_type_Aqdb))
+    if ((aqdd.a(this.jdField_a_of_type_Aqdd).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      aqdb.a(this.jdField_a_of_type_Aqdb).removeView(aqdb.a(this.jdField_a_of_type_Aqdb));
-      aqdb.a(this.jdField_a_of_type_Aqdb, false);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Aqdb.isShowing()) {
-        this.jdField_a_of_type_Aqdb.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(paramView));
+      aqdd.a(this.jdField_a_of_type_Aqdd).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      aqdd.a(this.jdField_a_of_type_Aqdd).setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }

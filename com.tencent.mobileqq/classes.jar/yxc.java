@@ -1,44 +1,93 @@
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
-final class yxc
-  implements yxh
+public class yxc
+  implements yso
 {
-  public boolean a(ywn paramywn, String paramString, String... paramVarArgs)
+  public yxc(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  
+  public void onResponse(ysn paramysn)
   {
-    if (paramywn != null) {}
-    for (paramString = paramywn.a(); (paramywn == null) || (paramString == null); paramString = null)
+    int k = -2147483648;
+    int i;
+    int j;
+    if (paramysn == null)
     {
-      yxs.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+      i = -2147483648;
+      j = -2147483648;
     }
     for (;;)
     {
-      try
+      i = this.a.a(GdtInterstitialFragmentForJS.a(this.a).a.a, j, i, k);
+      GdtInterstitialFragmentForJS.a(this.a, new ysx(i));
+      Toast.makeText(this.a.getActivity().getApplicationContext(), String.format("on response:%s", new Object[] { GdtInterstitialFragmentForJS.a(this.a).a() }), 0).show();
+      return;
+      if (paramysn.a() == null)
       {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        paramywn = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
-        if (TextUtils.equals(paramywn, "com.tencent.mobileqq"))
+        i = -2147483648;
+        j = -2147483648;
+      }
+      else
+      {
+        long l = paramysn.a().jdField_a_of_type_Long;
+        i = paramysn.a().jdField_a_of_type_Int;
+        int m;
+        if (paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null)
         {
-          paramywn = PublicFragmentActivity.class;
-          GdtInterstitialFragmentForJS.a(paramString, paramywn, paramVarArgs);
-          return true;
+          m = -2147483648;
+          j = i;
+          i = m;
         }
-      }
-      catch (JSONException paramywn)
-      {
-        yxs.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramywn);
-        return true;
-      }
-      if (TextUtils.equals(paramywn, "com.tencent.mobileqq:tool")) {
-        paramywn = PublicFragmentActivityForTool.class;
-      } else {
-        paramywn = PublicFragmentActivityForMini.class;
+        else
+        {
+          j = paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
+          if (j != 0)
+          {
+            m = i;
+            i = j;
+            j = m;
+          }
+          else if (paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() <= 0)
+          {
+            m = i;
+            i = j;
+            j = m;
+          }
+          else
+          {
+            k = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
+            if (k != 0)
+            {
+              m = i;
+              i = j;
+              j = m;
+            }
+            else if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.size() <= 0)
+            {
+              m = i;
+              i = j;
+              j = m;
+            }
+            else
+            {
+              paramysn = (qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.get(0);
+              GdtInterstitialFragmentForJS.a(this.a).a.a = new GdtAd(paramysn);
+              GdtInterstitialFragmentForJS.a(this.a, new yuh(this.a.getActivity(), GdtInterstitialFragmentForJS.a(this.a)));
+              m = i;
+              i = j;
+              j = m;
+            }
+          }
+        }
       }
     }
   }

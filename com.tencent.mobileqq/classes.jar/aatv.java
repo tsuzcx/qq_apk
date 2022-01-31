@@ -1,20 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
+import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.widget.XListView;
 
-class aatv
-  implements MessageQueue.IdleHandler
+public class aatv
+  implements View.OnClickListener
 {
-  aatv(aatu paramaatu) {}
+  public aatv(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
-    int i = localView.getTop();
-    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
-    return false;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
   }
 }
 

@@ -1,31 +1,18 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class bklx
+public final class bklx
+  implements Parcelable.Creator<PublishParam>
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public String e;
-  String f;
-  public String g;
-  
-  public void a()
+  public PublishParam a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    this.e = "";
-    this.g = "";
-    this.a = 0L;
-    this.jdField_b_of_type_Boolean = false;
+    return new PublishParam(paramParcel);
+  }
+  
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
   }
 }
 

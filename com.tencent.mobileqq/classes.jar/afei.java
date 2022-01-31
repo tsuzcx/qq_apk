@@ -1,24 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
 
 public class afei
-  extends Handler
+  extends ajzk
 {
-  public afei(AddContactsActivity paramAddContactsActivity) {}
+  public afei(AddContactsView paramAddContactsView) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_Affk.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
     }
-    sen.a().a(300);
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
+    {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Ajtw.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
   }
 }
 

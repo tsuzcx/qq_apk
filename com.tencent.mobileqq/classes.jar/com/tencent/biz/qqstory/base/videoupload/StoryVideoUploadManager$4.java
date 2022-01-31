@@ -1,23 +1,23 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tribe.async.dispatch.Dispatcher;
-import ste;
-import svo;
+import stb;
+import svl;
+import svs;
 import svv;
-import svy;
-import sxh;
-import veg;
+import sxe;
+import ved;
 
 public class StoryVideoUploadManager$4
   implements Runnable
 {
-  public StoryVideoUploadManager$4(svo paramsvo, sxh paramsxh, svy paramsvy) {}
+  public StoryVideoUploadManager$4(svl paramsvl, sxe paramsxe, svv paramsvv) {}
   
   public void run()
   {
-    veg.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Sxh });
-    ste.a().dispatch(this.jdField_a_of_type_Svy);
-    ste.a().dispatch(new svv());
+    ved.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Sxe });
+    stb.a().dispatch(this.jdField_a_of_type_Svv);
+    stb.a().dispatch(new svs());
   }
 }
 

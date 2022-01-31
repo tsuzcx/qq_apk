@@ -1,89 +1,54 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResultCallback;
-import java.util.Iterator;
-import java.util.Vector;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class bggr
+  implements OnPluginInstallListener
 {
-  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bggs();
-  static Vector<bggt> jdField_a_of_type_JavaUtilVector;
-  static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  public bggr(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  static
+  public IBinder asBinder()
   {
-    jdField_a_of_type_JavaUtilVector = new Vector();
+    return null;
   }
   
-  public static int a(String paramString, int paramInt)
-  {
-    return jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
-  }
+  public void onInstallBegin(String paramString) {}
   
-  public static void a()
-  {
-    Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().getClient().callServer("QQComicIPCModule", "getComicConfig", localBundle, jdField_a_of_type_EipcEIPCResultCallback);
-  }
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
   
-  public static void a(bggt parambggt)
+  public void onInstallError(String paramString, int paramInt)
   {
-    if (parambggt != null) {
-      jdField_a_of_type_JavaUtilVector.add(parambggt);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
     }
+    bcql.a(this.a.getApplicationContext(), 2131695210, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
   
-  public static void a(String paramString)
+  public void onInstallFinish(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    long l = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
+    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
     {
-      int i;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("VipComicCommonConfig");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          i = 0;
-          if (i < paramString.length())
-          {
-            Object localObject = paramString.optJSONObject(i);
-            if ((localObject == null) || (!bcgc.a((JSONObject)localObject, "VipComicCommonConfig"))) {
-              break label118;
-            }
-            jdField_a_of_type_OrgJsonJSONObject = (JSONObject)localObject;
-            paramString = jdField_a_of_type_JavaUtilVector.iterator();
-            if (paramString.hasNext())
-            {
-              localObject = (bggt)paramString.next();
-              if (localObject == null) {
-                continue;
-              }
-              ((bggt)localObject).a(jdField_a_of_type_OrgJsonJSONObject);
-              continue;
-            }
-          }
-        }
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.d("VipComicConfigHelper", 2, "parse config json file failed.", paramString);
-      }
-      label118:
-      i += 1;
+      BuscardPluginInstallActivity.a(this.a);
+      return;
     }
+    bcql.a(this.a.getApplicationContext(), 2131695210, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bggr
  * JD-Core Version:    0.7.0.1
  */

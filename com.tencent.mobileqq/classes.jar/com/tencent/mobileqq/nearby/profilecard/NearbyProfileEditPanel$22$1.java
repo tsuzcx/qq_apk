@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atsa;
+import atsc;
 
 class NearbyProfileEditPanel$22$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditPanel$22$1
   
   public void run()
   {
-    atsa.d(this.a.this$0);
+    atsc.d(this.a.this$0);
   }
 }
 

@@ -1,14 +1,8 @@
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2;
+import java.io.File;
 
 public class bijc
-  implements avtk
 {
-  public bijc(AECameraGLSurfaceView.12.2 param2) {}
-  
-  public void a()
-  {
-    bipb.a().a();
-  }
+  public static final String a = biir.b + File.separator + "tmp";
 }
 
 

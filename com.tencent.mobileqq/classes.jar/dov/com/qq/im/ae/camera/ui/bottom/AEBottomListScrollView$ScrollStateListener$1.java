@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bime;
+import bimv;
 
 public class AEBottomListScrollView$ScrollStateListener$1
   implements Runnable
 {
-  public AEBottomListScrollView$ScrollStateListener$1(bime parambime) {}
+  public AEBottomListScrollView$ScrollStateListener$1(bimv parambimv) {}
   
   public void run()
   {

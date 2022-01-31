@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
 
-public final class acyk
-  implements Parcelable.Creator<SessionInfo>
+public class acyk
 {
-  public SessionInfo a(Parcel paramParcel)
+  public static LruCache<String, PAMessage> a = new LruCache(50);
+  
+  public static PAMessage a(MessageRecord paramMessageRecord)
   {
-    return new SessionInfo(paramParcel);
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
   }
   
-  public SessionInfo[] a(int paramInt)
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    return new SessionInfo[paramInt];
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
+    {
+      paramArrayOfByte = sen.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
+    }
+    return paramString;
+  }
+  
+  private static String a(String paramString, long paramLong1, long paramLong2)
+  {
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 

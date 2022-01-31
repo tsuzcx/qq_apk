@@ -1,14 +1,42 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class uga
-  implements MediaPlayer.OnErrorListener
+public class uga
+  extends QQUIEventReceiver<AbsVideoInfoWidget, tli>
 {
-  uga(ufu paramufu, ufn paramufn) {}
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public uga(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget)
   {
-    return this.jdField_a_of_type_Ufn.a(this.jdField_a_of_type_Ufu, paramInt1, paramInt2);
+    super(paramAbsVideoInfoWidget);
+  }
+  
+  public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull tli paramtli)
+  {
+    if ((paramtli.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtli.jdField_a_of_type_JavaUtilList == null)) {}
+    String str;
+    StoryVideoItem localStoryVideoItem;
+    do
+    {
+      do
+      {
+        return;
+        while (paramAbsVideoInfoWidget.a == null) {}
+        str = paramAbsVideoInfoWidget.a.a;
+        paramtli = paramtli.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!paramtli.hasNext());
+      localStoryVideoItem = (StoryVideoItem)paramtli.next();
+    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
+    paramAbsVideoInfoWidget.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tli.class;
   }
 }
 

@@ -1,14 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
-class abhb
-  implements Handler.Callback
+public class abhb
+  implements DialogInterface.OnClickListener
 {
-  abhb(abha paramabha) {}
+  public abhb(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bbgu parambbgu) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    this.jdField_a_of_type_Bbgu.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 

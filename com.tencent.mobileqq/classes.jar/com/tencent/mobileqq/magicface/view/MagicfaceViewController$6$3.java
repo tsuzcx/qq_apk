@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.magicface.view;
 
 import android.widget.TextView;
-import asdy;
 import asea;
+import asec;
 
 public class MagicfaceViewController$6$3
   implements Runnable
 {
-  public MagicfaceViewController$6$3(asea paramasea, String paramString) {}
+  public MagicfaceViewController$6$3(asec paramasec, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Asea.a.b.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Asec.a.b.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

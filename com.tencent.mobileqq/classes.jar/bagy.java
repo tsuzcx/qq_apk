@@ -1,103 +1,65 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import mqq.os.MqqHandler;
+import tencent.im.troop.homework.ErrorInfo;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
 public class bagy
-  extends bbwf
+  extends akil
 {
-  bagy(bagr parambagr) {}
+  public bagy(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void onDone(bbwg parambbwg)
+  protected void a(boolean paramBoolean, homework.RspSend1V1Msg paramRspSend1V1Msg, homework.ReqSend1V1Msg paramReqSend1V1Msg)
   {
-    bahd localbahd = new bahd();
-    Bundle localBundle = parambbwg.a();
-    String str1 = localBundle.getString("GiftAnimationId");
-    String str2 = localBundle.getString("TroopUin");
-    int i = localBundle.getInt("GiftAnimationType");
-    boolean bool = localBundle.getBoolean("GiftIsInteract");
-    localbahd.jdField_a_of_type_Boolean = true;
-    localbahd.jdField_a_of_type_JavaLangString = str1;
-    bahe.a().setChanged();
-    bahe.a().notifyObservers(localbahd);
     if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "onDone Id=" + str1 + " task:" + parambbwg);
+      if (paramRspSend1V1Msg != null) {
+        break label97;
+      }
     }
-    axqw.b(null, "P_CliOper", "P_CliOper", "", "troop_gift_animation", "download", 0, parambbwg.a, str1, "", "", "");
-    if (parambbwg.a == 0)
+    label97:
+    for (Object localObject = "null";; localObject = vyp.a(paramRspSend1V1Msg))
     {
-      parambbwg = new File(balg.a(str1, i, bool));
-      if (parambbwg.exists()) {}
-      try
+      QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
+      if (this.a.jdField_a_of_type_Vzo != null)
       {
-        bbdj.a(parambbwg.getAbsolutePath(), ajsf.ct, false);
-        parambbwg.delete();
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(str1, Integer.valueOf(3));
-        axqw.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_suc", 1, 0, str2, "", "", "");
-        if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) || (this.a.jdField_a_of_type_AndroidAppActivity != null)) && (!bagr.jdField_a_of_type_JavaLangString.equals(this.a.b))) {}
-        return;
+        this.a.jdField_a_of_type_Vzo.a();
+        this.a.jdField_a_of_type_Vzo = null;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
+      localObject = this.a.getActivity();
+      if (localObject != null) {
+        break;
       }
-      finally
-      {
-        parambbwg.delete();
-      }
+      QLog.e(".troop.troop_app.BulkSendMessageFragment", 2, "onBulkSendMessage() Error: getActivity == null");
+      return;
     }
-    this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(4));
-    i = bbev.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-    if (i == 1) {
-      i = 0;
-    }
-    for (;;)
+    if (paramRspSend1V1Msg == null)
     {
-      if ((!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aerl)) && (!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeqd))) {
-        break label428;
-      }
-      akbk.a("gift_aio", "fail_cartoon", str2, "", "", "");
-      break;
-      if (i == 2) {
-        i = 3;
-      } else if (i == 3) {
-        i = 2;
-      } else if (i == 4) {
-        i = 1;
-      } else {
-        i = 4;
-      }
+      bcql.a((Context)localObject, 1, ajya.a(2131701232), 1).a();
+      return;
     }
-    label428:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    if (paramRspSend1V1Msg.result.error_code.get() != 0)
     {
-      parambbwg = "0";
-      label441:
-      if (!mye.a().a(str2)) {
-        break label521;
-      }
+      bcql.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
+      return;
     }
-    label521:
-    for (int j = 2;; j = 1)
-    {
-      axqw.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_fail", j, 0, str2, localObject + "", parambbwg, i + "");
-      break;
-      parambbwg = "1";
-      break label441;
+    bcql.a((Context)localObject, 2, ajya.a(2131701228), 1).a();
+    ((FragmentActivity)localObject).finish();
+    ((FragmentActivity)localObject).overridePendingTransition(0, 2130772001);
+    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (paramRspSend1V1Msg != null) {
+      paramRspSend1V1Msg.sendEmptyMessage(1009);
     }
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    String str = parambbwg.a().getString("GiftAnimationId");
-    bahd localbahd = new bahd();
-    localbahd.jdField_a_of_type_Boolean = false;
-    localbahd.jdField_a_of_type_JavaLangString = str;
-    bahe.a().setChanged();
-    bahe.a().notifyObservers(localbahd);
-    return super.onStart(parambbwg);
+    paramRspSend1V1Msg = bbbp.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+    bbbp.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 

@@ -1,21 +1,22 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import org.json.JSONObject;
 
-public class nsm
-  extends akuj
+final class nsm
+  implements ViewFactory.FoundClickableViewListener
 {
-  nsm(nsf paramnsf, String paramString)
-  {
-    super(paramString);
-  }
+  nsm(String paramString, JSONObject paramJSONObject) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onFound(ViewBase paramViewBase)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      paramViewBase.setOnClickListener(new nso(this));
+      return;
+    }
+    paramViewBase.setOnClickListener(new nsn(this));
   }
 }
 

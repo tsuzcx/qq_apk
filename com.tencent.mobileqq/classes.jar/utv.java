@@ -1,46 +1,80 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.dispatch.Dispatcher;
 
-class utv
-  extends ssy
+public class utv
+  extends tje
+  implements syq<tmw, tom>
 {
-  utv(utu paramutu) {}
+  public String a;
+  private String b;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  private void d()
   {
-    paramInt = 1;
-    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
+    tmw localtmw = new tmw();
+    localtmw.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localtmw.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localtmw.jdField_b_of_type_Long = 0L;
+    localtmw.c = 10;
+    localtmw.d = 10;
+    syo.a().a(localtmw, this);
+    ved.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localtmw.toString());
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    if (this.jdField_c_of_type_Boolean) {
       return;
     }
-    if (paramBoolean1)
+    this.jdField_b_of_type_JavaLangString = "";
+    d();
+  }
+  
+  public void a(@NonNull tmw paramtmw, @Nullable tom paramtom, @NonNull ErrorMessage paramErrorMessage)
+  {
+    ved.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    if (this.jdField_c_of_type_Boolean)
     {
-      paramString = this.a.a;
-      if (paramBoolean2)
-      {
-        paramString.isSubscribe = paramInt;
-        paramString = (ssw)tsu.a().getManager(181);
-        if (!paramBoolean2) {
-          break label128;
-        }
-        if (!paramString.h()) {
-          paramString.b();
-        }
-        bcpw.a(tsu.a(), 2, ajyc.a(2131710939), 0).a();
-      }
-      for (;;)
-      {
-        utu.a(this.a).e();
-        utu.a(this.a).c();
-        return;
-        paramInt = 0;
-        break;
-        label128:
-        bcpw.a(tsu.a(), 2, ajyc.a(2131710935), 0).a();
-      }
+      ved.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
+      return;
     }
-    bcpw.a(tsu.a(), 1, ajyc.a(2131710944), 0).a();
+    utw localutw = new utw(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
+    localutw.jdField_b_of_type_Boolean = false;
+    if ((paramtom == null) || (paramErrorMessage.isFail()))
+    {
+      stb.a().dispatch(localutw);
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = paramtom.jdField_a_of_type_JavaLangString;
+    localutw.jdField_a_of_type_JavaUtilList = paramtom.jdField_a_of_type_JavaUtilArrayList;
+    localutw.jdField_a_of_type_Int = paramtom.b;
+    localutw.jdField_a_of_type_Boolean = paramtom.jdField_a_of_type_Boolean;
+    localutw.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramtmw.jdField_a_of_type_JavaLangString);
+    paramtom = paramtom.jdField_a_of_type_JavaUtilArrayList;
+    ((tcm)tcz.a(19)).b(paramtom, paramtmw.jdField_b_of_type_JavaLangString, localutw.jdField_c_of_type_Boolean);
+    try
+    {
+      this.jdField_b_of_type_Boolean = true;
+      stb.a().dispatch(localutw);
+      ved.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localutw);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    d();
   }
 }
 

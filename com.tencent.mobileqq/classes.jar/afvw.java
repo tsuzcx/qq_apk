@@ -1,35 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class afvw
-  implements Handler.Callback
+  implements agbt
 {
-  public afvw(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
+  public afvw(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
-      return false;
+      return;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
     }
-    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131378725).setEnabled(true);
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    if (paramMessage.arg1 == 0) {
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701605), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-    for (;;)
-    {
-      this.a.getActivity().setResult(1);
-      this.a.getActivity().finish();
-      return false;
-      bcpw.a(this.a.getActivity(), 2, ajyc.a(2131701615), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
+    this.a.n();
   }
 }
 

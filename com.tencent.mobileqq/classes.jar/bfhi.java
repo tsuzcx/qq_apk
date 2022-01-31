@@ -1,33 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.lang.reflect.Method;
 
-class bfhi
-  implements bfjb
+public class bfhi
 {
-  bfhi(bfhh parambfhh) {}
-  
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  private static String a()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
+    return a("ro.build.display.id", "");
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
-      }
-      if (paramLong1 == 0L) {
-        break label99;
-      }
-      this.a.a((String)paramObject1, (byte[])paramObject2, new bfhl(this.a, paramLong1));
+      Class localClass = Class.forName("android.os.SystemProperties");
+      paramString1 = (String)localClass.getMethod("get", new Class[] { String.class, String.class }).invoke(localClass, new Object[] { paramString1, paramString2 });
+      return paramString1;
     }
-    for (;;)
+    catch (Throwable paramString1)
     {
-      return 0;
-      label99:
-      this.a.a((String)paramObject1, (byte[])paramObject2, null);
+      paramString1.printStackTrace();
     }
+    return paramString2;
+  }
+  
+  public static boolean a()
+  {
+    return !TextUtils.isEmpty(a("ro.miui.ui.version.name", ""));
+  }
+  
+  public static boolean b()
+  {
+    return a().toLowerCase().contains("flyme");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     bfhi
  * JD-Core Version:    0.7.0.1
  */

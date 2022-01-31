@@ -1,52 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class xlf
-  implements mzb
+  implements bcfb
 {
-  xlf(xle paramxle) {}
+  xlf(xlb paramxlb, long paramLong, String paramString) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onCheckOfflineFinish(int paramInt)
   {
+    this.jdField_a_of_type_Xlb.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
     if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
+      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_Xlb.c + ", url: " + nau.b(this.jdField_a_of_type_JavaLangString, new String[0]));
     }
-    if (paramInt == 9)
+    this.jdField_a_of_type_Xlb.a(this.jdField_a_of_type_JavaLangString, paramInt);
+    CustomWebView localCustomWebView = this.jdField_a_of_type_Xlb.mRuntime.a();
+    if (localCustomWebView != null)
     {
-      try
-      {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
-          }
-          paramString = null;
-        }
-      }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
+      localCustomWebView.loadUrlOriginal(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
-    this.a.a.sendMessage(paramString);
+    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

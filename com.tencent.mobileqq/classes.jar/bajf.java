@@ -1,307 +1,325 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileError.1;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bajf
 {
-  public static WeakReference<bajj> a = new WeakReference(null);
+  protected static final String a;
+  protected static SimpleDateFormat a;
+  public static final HashMap<String, bajh> a;
+  public static Hashtable<String, TroopBarPublishActivity.Pic_list> a;
+  protected static final String b;
+  public static final HashMap<String, bajh> b;
+  protected static final String c;
+  public static final HashMap<String, String> c;
+  protected static final String d;
   
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt)
+  static
   {
-    return paramQQAppInterface.getApplication().getResources().getString(paramInt);
+    jdField_a_of_type_JavaLangString = ajya.a(2131715238);
+    jdField_b_of_type_JavaLangString = ajya.a(2131715248);
+    jdField_c_of_type_JavaLangString = ajya.a(2131715229);
+    d = ajya.a(2131715225);
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat();
+    jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_c_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt, Object... paramVarArgs)
+  public static int a(String paramString, char paramChar)
   {
-    return String.format(a(paramQQAppInterface, paramInt), paramVarArgs);
-  }
-  
-  private static void a(Context paramContext, long paramLong)
-  {
-    bajg localbajg = new bajg(paramLong);
-    bbcv.a(paramContext, 230, paramContext.getResources().getString(2131697851), paramContext.getResources().getString(2131697852), 2131697904, 2131697549, localbajg, localbajg).show();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    int i;
-    try
-    {
-      i = paramContext.getResources().getDimensionPixelSize(2131298865);
-      if (Looper.getMainLooper() != Looper.myLooper())
+    int j = 0;
+    if (paramString != null) {
+      for (int i = 0;; i = k)
       {
-        new Handler(Looper.getMainLooper()).post(new TroopFileError.1(paramContext, paramInt, paramString, i));
-        return;
+        k = i;
+        if (j >= paramString.length()) {
+          break;
+        }
+        k = i;
+        if (paramString.charAt(j) == paramChar) {
+          k = i + 1;
+        }
+        j += 1;
       }
     }
-    catch (Exception paramContext)
-    {
-      QLog.e("TroopFileError", 1, "showTipsToast error!", paramContext);
-      return;
-    }
-    bcpw.a(paramContext, paramInt, paramString, 0).b(i);
+    int k = 0;
+    return k;
   }
   
-  public static void a(bajh parambajh, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext)
+  public static final Uri a(BaseActivity paramBaseActivity, String paramString, int paramInt)
   {
-    if ((parambajh == null) || (paramContext == null)) {
-      return;
-    }
-    if (!TextUtils.isEmpty(parambajh.jdField_b_of_type_JavaLangString))
+    if (lkj.b(BaseApplicationImpl.getContext())) {}
+    do
     {
-      a(paramContext, parambajh.jdField_b_of_type_JavaLangString, 1);
-      return;
+      return null;
+      paramString = new File(paramString);
+      if (paramString.exists()) {}
+      for (boolean bool = true; (bool) && (paramString.canWrite()); bool = paramString.mkdirs()) {
+        try
+        {
+          paramString = new Intent();
+          Uri localUri = FileProvider7Helper.setSystemCapture(paramBaseActivity, new File(ajsd.bc + System.currentTimeMillis() + ".jpg"), paramString);
+          paramString.addFlags(3);
+          paramBaseActivity.startActivityForResult(paramString, paramInt);
+          return localUri;
+        }
+        catch (Exception paramBaseActivity)
+        {
+          paramBaseActivity.printStackTrace();
+          return null;
+        }
+      }
+    } while ((paramBaseActivity == null) || (paramBaseActivity.isFinishing()));
+    bcql.a(paramBaseActivity, 2131696571, 1).b(paramBaseActivity.getTitleBarHeight());
+    return null;
+  }
+  
+  public static final String a(EditText paramEditText)
+  {
+    int j = 0;
+    if (paramEditText == null) {
+      return null;
     }
-    String str = bakj.a(parambajh.jdField_a_of_type_JavaLangString);
-    int i;
-    switch (parambajh.jdField_a_of_type_Int)
+    if ((paramEditText.getEditableText() instanceof ayku))
     {
-    default: 
-      str = null;
-      i = 0;
+      ayku localayku = (ayku)paramEditText.getEditableText();
+      if (localayku != null)
+      {
+        int i = localayku.length();
+        Object localObject1 = new char[i];
+        localayku.getChars(0, i, (char[])localObject1, 0);
+        paramEditText = new StringBuffer();
+        paramEditText.append((char[])localObject1);
+        localObject1 = (aykr[])localayku.getSpans(0, i, aykr.class);
+        if (((localayku instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
+          Arrays.sort((Object[])localObject1, new bajg(localayku));
+        }
+        int k = 0;
+        if (j < localObject1.length)
+        {
+          Object localObject2 = localObject1[j];
+          int m;
+          if (((aykr)localObject2).c == 1)
+          {
+            i = localayku.getSpanStart(localObject2);
+            m = localayku.getSpanEnd(localObject2);
+            localObject2 = ayjy.a[(localObject2.a & 0x7FFFFFFF)];
+            paramEditText.replace(i + k, m + k, (String)localObject2);
+            i = k + (((String)localObject2).length() - (m - i));
+          }
+          for (;;)
+          {
+            j += 1;
+            k = i;
+            break;
+            i = k;
+            if (((aykr)localObject2).c == 2)
+            {
+              i = localayku.getSpanStart(localObject2);
+              m = localayku.getSpanEnd(localObject2);
+              localObject2 = ((aykr)localObject2).a();
+              paramEditText.replace(i + k, m + k, (String)localObject2);
+              i = k + (((String)localObject2).length() - (m - i));
+            }
+          }
+        }
+        return paramEditText.toString();
+      }
+    }
+    return paramEditText.getEditableText().toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    String str;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = "";
+      return str;
     }
     for (;;)
     {
-      if ((parambajh.jdField_a_of_type_Int != 602) && (parambajh.jdField_a_of_type_Int != 604) && (parambajh.jdField_a_of_type_Int != 605)) {
-        break label1264;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break;
-      }
-      bide.a(paramQQAppInterface, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight());
-      return;
-      str = a(paramQQAppInterface, 2131697928);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697853);
-      i = 0;
-      continue;
-      a(paramContext, paramLong);
-      str = null;
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698018, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698016, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698017);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698015);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698019);
-      i = 2;
-      continue;
-      str = a(paramQQAppInterface, 2131697565, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697563);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697564);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698011);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698039);
-      axqw.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698037, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698032, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697975, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698034, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698033, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697928);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697621);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697622);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697582);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697578);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697580, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697581, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697579, new Object[] { str });
-      i = 0;
-      continue;
-      if (azph.a(parambajh.jdField_b_of_type_Int))
+      try
       {
-        str = a(paramQQAppInterface, 2131698031, new Object[] { str });
-        i = 1;
+        boolean bool = a(paramString);
+        if (!bool) {
+          return paramString;
+        }
+        i = 0;
+        str = paramString;
       }
-      else
+      catch (Exception localException1)
       {
-        str = a(paramQQAppInterface, 2131697577, new Object[] { str });
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131698011);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697635);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697636);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697639);
-        i = 2;
-        continue;
-        str = a(paramQQAppInterface, 2131697640);
-        i = 1;
-        continue;
-        str = parambajh.jdField_b_of_type_JavaLangString;
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697641);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697643);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697642);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697644);
-        i = 1;
-        continue;
-        if (!TextUtils.isEmpty(parambajh.jdField_b_of_type_JavaLangString))
+        try
         {
-          str = parambajh.jdField_b_of_type_JavaLangString;
-          i = 0;
+          if (i >= ayjy.a.length) {
+            break;
+          }
+          str = paramString;
+          if (paramString.indexOf(ayjy.a[i]) != -1) {
+            str = paramString.replace(ayjy.a[i], "\024" + (char)i);
+          }
+          i += 1;
+          paramString = str;
+        }
+        catch (Exception localException2)
+        {
+          int i;
+          StringBuilder localStringBuilder;
+          continue;
+        }
+        localException1 = localException1;
+        localException1.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder().append("convertFaceStringTextToIndex:");
+          if (paramString.length() > 200)
+          {
+            i = 200;
+            QLog.e("TroopBar", 2, paramString.substring(0, i));
+          }
         }
         else
         {
-          str = a(paramQQAppInterface, 2131697645);
-          i = 0;
-          continue;
-          str = a(paramQQAppInterface, 2131697638);
-          i = 2;
-          continue;
-          str = a(paramQQAppInterface, 2131697637);
-          i = 0;
+          return paramString;
         }
       }
+      i = paramString.length() - 1;
     }
-    label1264:
-    if ((parambajh.jdField_a_of_type_Int == 601) || (parambajh.jdField_a_of_type_Int == 605) || (parambajh.jdField_a_of_type_Int == 802) || (parambajh.jdField_a_of_type_Int == 604) || (parambajh.jdField_a_of_type_Int == 702))
+    return paramString;
+  }
+  
+  public static final JSONObject a(String paramString1, Context paramContext, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap)
+  {
+    HashMap localHashMap1;
+    HashMap localHashMap2;
+    if (apvd.a(paramString2))
     {
-      a(paramQQAppInterface, paramContext, str, i);
-      return;
+      localHashMap1 = new HashMap();
+      localHashMap1.put("Connection", "keep-alive");
+      localHashMap1.put("Referer", "http://www.qq.com");
+      localHashMap2 = new HashMap();
+      localHashMap2.put("file", paramString2);
+      if (paramMap != null) {
+        break label265;
+      }
     }
-    a(paramContext, str, i);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    a(paramQQAppInterface, paramLong, 7, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
-  {
-    a(paramQQAppInterface, paramLong, null, paramInt1, paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramInt2 == 0)) {}
-    do
+    label265:
+    for (paramContext = new HashMap();; paramContext = paramMap)
     {
-      return;
+      paramContext.put("file", paramString2);
+      long l = System.currentTimeMillis();
+      paramString1 = naj.a(paramString1, paramString3, paramString4, paramContext, localHashMap2, localHashMap1);
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder("reportSimpleError==> troopUin:");
-        localStringBuilder.append(paramLong).append(",filename:").append(paramString).append(",status:").append(paramInt1).append(",errorCode:").append(paramInt2);
-        QLog.e("TroopFileError", 2, localStringBuilder.toString());
+        QLog.d("TroopBar", 2, "singleUploadImage t = " + (System.currentTimeMillis() - l) + ", path = " + paramString2 + ", size = " + apvd.a(paramString2));
+        QLog.d("TroopBar", 2, "urlResult: " + paramString1);
       }
-      paramQQAppInterface = (ajsz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(new bajh(paramString, paramLong, paramInt1, paramInt2));
+      if (TextUtils.isEmpty(paramString1)) {
+        return null;
+      }
+      try
+      {
+        paramString1 = new JSONObject(paramString1);
+        if ((paramString1.optInt("retcode", -1) == 0) || (paramString1.optInt("ret", -1) == 0))
+        {
+          paramString1 = paramString1.getJSONObject("result");
+          return paramString1;
+        }
+      }
+      catch (JSONException paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopBar", 2, paramString1.getMessage());
+        }
+      }
+      return null;
+    }
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  public static final void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5)
   {
-    if (bici.a())
+    int i = bbfj.b(paramContext);
+    axqy.b(null, "P_CliOper", "BizTechReport", "", paramString1, paramString2, 0, paramInt, "" + i, paramString3, paramString4, paramString5);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, Bundle paramBundle1, String paramString3, int paramInt, Bundle paramBundle2, baic parambaic, String paramString4)
+  {
+    if ((paramBundle1 != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (bici.b()) {
-        bici.a(paramQQAppInterface);
-      }
+      paramBundle1.putString("version", "8.3.0");
+      paramBundle1.putString("platform", "android");
+      paramBundle1.putString("mType", "qb_troop_bar");
+      paramBundle1.putString("Cookie", "uin=" + paramString1 + ";skey=" + paramString2);
+      paramBundle1.putString("Referer", "https://buluo.qq.com");
+      paramString1 = new HashMap();
+      paramString1.put("BUNDLE", paramBundle1);
+      paramString1.put("CONTEXT", paramContext.getApplicationContext());
+      new baib(paramString3, paramString4, parambaic, paramInt, paramBundle2).execute(new HashMap[] { paramString1 });
     }
-    else {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    a(paramContext, paramString, paramInt);
+    QLog.w("TroopBar", 2, "httpGet skey is null!!!!!!!!!!!!!!!");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, bajh parambajh)
+  public static void a(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString, int paramInt, Bundle paramBundle2, baic parambaic)
   {
-    if ((paramQQAppInterface == null) || (parambajh == null) || (parambajh.jdField_a_of_type_Int == 0)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = (ajsz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(parambajh);
+    a(paramBaseActivity, paramBundle1, paramString, paramInt, paramBundle2, parambaic, "GET");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, bajj parambajj)
+  protected static void a(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString1, int paramInt, Bundle paramBundle2, baic parambaic, String paramString2)
   {
-    if ((a != null) && (a.get() != null))
-    {
-      paramQQAppInterface.removeObserver((ajtg)a.get());
-      a = null;
-    }
-    a = new WeakReference(parambajj);
-    paramQQAppInterface.addObserver(parambajj);
+    AppRuntime localAppRuntime = paramBaseActivity.getAppRuntime();
+    String str = localAppRuntime.getAccount();
+    a(paramBaseActivity, str, ((TicketManager)localAppRuntime.getManager(2)).getSkey(str), paramBundle1, paramString1, paramInt, paramBundle2, parambaic, paramString2);
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, bajj parambajj)
+  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    paramQQAppInterface.removeObserver(parambajj);
-    if ((a != null) && (a.get() == parambajj)) {
-      a = null;
-    }
+    a("Grp_tribe", paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
+  }
+  
+  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    axqy.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, 0, paramString4, paramString5, paramString6, paramString7);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (-1 != paramString.indexOf('/'));
+  }
+  
+  public static void b(BaseActivity paramBaseActivity, Bundle paramBundle1, String paramString, int paramInt, Bundle paramBundle2, baic parambaic)
+  {
+    a(paramBaseActivity, paramBundle1, paramString, paramInt, paramBundle2, parambaic, "POST");
+  }
+  
+  public static final void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    axqy.b(null, "dc00899", "Grp_tribe", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
 }
 

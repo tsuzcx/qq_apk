@@ -1,14 +1,20 @@
-public abstract interface vmx
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
+
+@TargetApi(11)
+public class vmx
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(vls paramvls);
-  
-  public abstract void a(boolean paramBoolean, vls paramvls);
-  
-  public abstract void b(int paramInt);
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, vna paramvna)
+  {
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new vmy(paramvna));
+    localValueAnimator.addListener(new vmz(paramvna, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
+  }
 }
 
 

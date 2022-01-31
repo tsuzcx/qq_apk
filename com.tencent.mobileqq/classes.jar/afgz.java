@@ -1,21 +1,24 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
 
 public class afgz
-  implements afdt
+  implements View.OnClickListener
 {
   public afgz(TroopView paramTroopView) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
-    }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-    TroopView.b(this.a, paramInt);
-    TroopView.a(this.a).setCurrentItem(paramInt, false);
+    paramView = new Intent(this.a.jdField_a_of_type_Affi.a(), SearchContactsActivity.class);
+    paramView.putExtra("from_key", 1);
+    paramView.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Affi.a().startActivity(paramView);
+    this.a.jdField_a_of_type_Affi.a().overridePendingTransition(0, 0);
+    awwa.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
   }
 }
 

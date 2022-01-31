@@ -1,70 +1,35 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
 
 public class mqq
+  extends Dialog
 {
-  private static final Map<String, Long> a = new HashMap(5);
-  private static final Map<String, Long> b = new HashMap(5);
+  public mqq(Context paramContext, boolean paramBoolean) {}
   
-  public static void a(String paramString1, String paramString2, int paramInt, Object... paramVarArgs)
+  void a()
   {
-    int j = 0;
-    if (QLog.isColorLevel())
-    {
-      long l2 = SystemClock.elapsedRealtime();
-      Object localObject1 = (Long)b.get(paramString1);
-      long l1;
-      if ((paramInt == 1) || (localObject1 == null))
-      {
-        a.put(paramString1, Long.valueOf(l2));
-        b.put(paramString1, Long.valueOf(l2));
-        l1 = 0L;
-      }
-      for (;;)
-      {
-        Object localObject2 = "[]";
-        localObject1 = localObject2;
-        if (paramVarArgs == null) {
-          break label210;
-        }
-        localObject1 = localObject2;
-        if (paramVarArgs.length <= 0) {
-          break label210;
-        }
-        localObject1 = new StringBuilder(100);
-        ((StringBuilder)localObject1).append("[");
-        int k = paramVarArgs.length;
-        int i = 0;
-        while (i < k)
-        {
-          localObject2 = paramVarArgs[i];
-          if (j > 0) {
-            ((StringBuilder)localObject1).append(",");
-          }
-          ((StringBuilder)localObject1).append(localObject2);
-          j += 1;
-          i += 1;
-        }
-        l1 = l2 - ((Long)localObject1).longValue();
-        b.put(paramString1, Long.valueOf(l2));
-      }
-      ((StringBuilder)localObject1).append("]");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      label210:
-      QLog.i("AVTraceUtil", 2, paramString1 + "--" + paramString2 + "--" + (String)localObject1 + "--" + l1);
-      if (paramInt == 2)
-      {
-        paramVarArgs = (Long)a.get(paramString1);
-        paramString2 = paramVarArgs;
-        if (paramVarArgs == null) {
-          paramString2 = Long.valueOf(l2);
-        }
-        l1 = paramString2.longValue();
-        QLog.i("AVTraceUtil", 2, paramString1 + ": " + (l2 - l1));
-      }
+    super.getWindow().setGravity(17);
+    super.setContentView(2131559593);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      b();
     }
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372531);
+    localFrameLayout.setOnClickListener(new mqr(this));
+    if (paramView != null) {
+      localFrameLayout.addView(paramView);
+    }
+  }
+  
+  void b()
+  {
+    findViewById(2131372530).setOnClickListener(new mqs(this));
   }
 }
 

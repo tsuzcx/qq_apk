@@ -1,22 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+import java.lang.ref.WeakReference;
 
-class bcgi
-  implements bbkq<Integer>
+final class bcgi
+  implements TbsDownloader.TbsDownloaderCallback
 {
-  bcgi(bcgg parambcgg, int paramInt) {}
-  
-  public void a(bbkk<Integer> parambbkk, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    if (!this.jdField_a_of_type_Bcgg.jdField_a_of_type_Boolean) {}
-    do
+    if ((paramBoolean) && (bcgg.a != null))
     {
-      return;
-      this.jdField_a_of_type_Bcgg.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bcgg.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bcgg.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bcgg.jdField_a_of_type_Boolean = false;
+      BrowserAppInterface localBrowserAppInterface = (BrowserAppInterface)bcgg.a.get();
+      if (localBrowserAppInterface != null)
+      {
+        localBrowserAppInterface.a(false);
+        QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on callback:download tbs.");
+      }
+    }
   }
 }
 

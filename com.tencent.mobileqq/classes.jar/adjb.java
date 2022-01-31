@@ -1,54 +1,120 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.PatchedButton;
 
 public class adjb
-  implements adih
+  extends adje
 {
-  private BaseChatPie a;
+  private boolean c;
   
   public adjb(BaseChatPie paramBaseChatPie)
   {
-    this.a = paramBaseChatPie;
+    super(paramBaseChatPie);
   }
   
-  public void a(int paramInt)
+  public int a()
   {
-    switch (paramInt)
+    return 2130845328;
+  }
+  
+  protected void a()
+  {
+    this.b = true;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.c = true;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.c = false;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramTextView);
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.c) {}
+    boolean bool;
+    do
+    {
+      return;
+      super.a(paramBoolean);
+      bool = c();
+      if (!paramBoolean) {
+        break;
+      }
+    } while (bool);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838021);
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838021);
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  protected void b()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.b();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.b(paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    switch (paramView.getId())
     {
     default: 
       return;
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a != null)
-    {
-      BaseActivity localBaseActivity = this.a.a();
-      localObject1 = localObject2;
-      if (localBaseActivity != null) {
-        localObject1 = localBaseActivity.getIntent();
-      }
-    }
-    a((Intent)localObject1);
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if ((paramIntent == null) || (this.a == null)) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = this.a.a;
-    } while ((localQQAppInterface == null) || (!paramIntent.getBooleanExtra("key_reactive_push_tip", false)));
-    axqw.b(localQQAppInterface, "dc00898", "", "", "0X800A1BF", "0X800A1BF", 0, 0, "", "", "", "");
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11 };
+    axqy.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
   }
 }
 

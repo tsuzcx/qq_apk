@@ -1,25 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
 
 public class mwi
-  implements ViewTreeObserver.OnPreDrawListener
+  implements bble<Integer>
 {
   public mwi(PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean onPreDraw()
+  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
-    {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    }
-    return true;
+    parambbky = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    parambbky.bottomMargin = (this.a.q + this.a.t);
+    PoiMapActivity.c(this.a).setLayoutParams(parambbky);
   }
 }
 

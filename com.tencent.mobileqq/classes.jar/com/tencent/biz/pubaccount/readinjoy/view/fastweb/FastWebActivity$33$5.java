@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import rje;
-import rjs;
+import rjb;
+import rjp;
 
 public class FastWebActivity$33$5
   implements Runnable
 {
-  public FastWebActivity$33$5(rje paramrje, boolean paramBoolean) {}
+  public FastWebActivity$33$5(rjb paramrjb, boolean paramBoolean) {}
   
   public void run()
   {
-    if (FastWebActivity.a(this.jdField_a_of_type_Rje.a) == null) {
+    if (FastWebActivity.a(this.jdField_a_of_type_Rjb.a) == null) {
       return;
     }
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).a(FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Boolean);
-    FastWebActivity.a(this.jdField_a_of_type_Rje.a).notifyDataSetChanged();
-    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, " handleLikeStateResp isliked : " + FastWebActivity.a(this.jdField_a_of_type_Rje.a).jdField_a_of_type_Boolean);
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).a(FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Boolean);
+    FastWebActivity.a(this.jdField_a_of_type_Rjb.a).notifyDataSetChanged();
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, " handleLikeStateResp isliked : " + FastWebActivity.a(this.jdField_a_of_type_Rjb.a).jdField_a_of_type_Boolean);
   }
 }
 

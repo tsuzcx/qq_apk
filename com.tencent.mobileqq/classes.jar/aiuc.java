@@ -1,131 +1,76 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aiuc
+final class aiuc
+  extends bbwt
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  aiuc(String paramString1, File paramFile, AtomicInteger paramAtomicInteger1, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, aiud paramaiud, aiua paramaiua, String paramString2, List paramList) {}
   
-  public String a()
+  public void onDone(bbwu parambbwu)
   {
-    if (this.jdField_a_of_type_Int == 6) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_b_of_type_JavaLangString.endsWith("/")) {
-        return this.jdField_b_of_type_JavaLangString + this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_JavaLangString;
-      }
-      return this.jdField_b_of_type_JavaLangString + "/" + this.jdField_b_of_type_Int + "/" + this.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    return (new File(b()).exists()) && (b());
-  }
-  
-  public String b()
-  {
-    if (8 == this.jdField_a_of_type_Int) {
-      return ajmu.h + this.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_JavaLangString;
-    }
-    return ajmu.jdField_a_of_type_JavaLangString + this.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    if ((ApolloUtil.c(b())) && (this.jdField_a_of_type_Int == 8)) {
-      return ApolloUtil.c(ajmu.h + this.jdField_b_of_type_Int + File.separator + "room.bin");
-    }
-    return false;
-  }
-  
-  public String c()
-  {
+    boolean bool = true;
+    super.onDone(parambbwu);
     if (QLog.isColorLevel()) {
-      QLog.d("IdolRscItem", 2, "getFaceDataJson this:" + this);
+      QLog.d("rscContent_CmShowRscDownloader", 1, "download url:" + this.jdField_a_of_type_JavaLangString + " task.getStatus()->" + parambbwu.a());
     }
-    if (this.jdField_a_of_type_Int == 6)
-    {
-      Object localObject1 = bdhv.d(this.jdField_a_of_type_JavaLangString);
-      localObject1 = new File(ajmu.j + (String)localObject1 + File.separator + "face.json");
-      if (((File)localObject1).exists()) {
-        try
-        {
-          localObject1 = bbdj.b((File)localObject1);
-          return localObject1;
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException1);
-        }
-      }
+    if (3 == parambbwu.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-    for (;;)
+    do
     {
-      return "";
-      Object localObject2 = new File(ajmu.f + this.jdField_b_of_type_Int + File.separator + "blendshape.json");
-      if (((File)localObject2).exists())
+      for (;;)
       {
         try
         {
-          localObject2 = bbdj.b((File)localObject2);
-          return localObject2;
-        }
-        catch (Exception localException2)
-        {
-          QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException2);
-        }
-        continue;
-        Object localObject3 = new File(ajmu.f + this.jdField_b_of_type_Int + File.separator + "face.json");
-        if (((File)localObject3).exists())
-        {
-          try
-          {
-            localObject3 = bbdj.b((File)localObject3);
-            return localObject3;
+          nav.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
+            break;
           }
-          catch (Exception localException3)
+          if (this.jdField_a_of_type_Aiud != null)
           {
-            QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException3);
-          }
-        }
-        else
-        {
-          Object localObject4 = new File(ajmu.f + this.jdField_b_of_type_Int + File.separator + "blendshape.json");
-          if (((File)localObject4).exists()) {
-            try
-            {
-              localObject4 = bbdj.b((File)localObject4);
-              return localObject4;
+            parambbwu = "";
+            if (this.jdField_a_of_type_Aiua != null) {
+              parambbwu = this.jdField_a_of_type_Aiua.c();
             }
-            catch (Exception localException4)
-            {
-              QLog.e("IdolRscItem", 1, "getFaceDataJson " + localException4);
+            aiud localaiud = this.jdField_a_of_type_Aiud;
+            if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+              bool = false;
+            }
+            localaiud.a(bool, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, parambbwu);
+            if (QLog.isColorLevel()) {
+              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_b_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
             }
           }
+          return;
         }
+        catch (Exception parambbwu)
+        {
+          this.jdField_a_of_type_JavaIoFile.delete();
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwu.getMessage());
+          continue;
+        }
+        catch (OutOfMemoryError parambbwu)
+        {
+          this.jdField_a_of_type_JavaIoFile.delete();
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambbwu.getMessage());
+          continue;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        QLog.d("rscContent_CmShowRscDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambbwu.a());
       }
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("IdolRscItem{");
-    localStringBuffer.append("mResType=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mDownFileName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mId=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", mDownPrefixxUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCacheJsonName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    } while (!QLog.isColorLevel());
+    QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download uin:" + this.jdField_b_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
   }
 }
 

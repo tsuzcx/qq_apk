@@ -1,24 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class ril
-  implements ogr
+  implements MessageQueue.IdleHandler
 {
   public ril(FastWebActivity paramFastWebActivity) {}
   
-  public void a(long paramLong)
+  public boolean queueIdle()
   {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-    }
+    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
+    return false;
   }
 }
 

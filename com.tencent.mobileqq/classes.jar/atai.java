@@ -1,34 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class atai
-  implements DialogInterface.OnClickListener
+final class atai
+  implements View.OnClickListener
 {
-  atai(atah paramatah, boolean paramBoolean, String paramString1, atap paramatap, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
+  atai(Dialog paramDialog, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Atah.b();
-      if (!this.jdField_a_of_type_Atah.a()) {
-        break label104;
-      }
-      this.jdField_a_of_type_Atah.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
-      this.jdField_a_of_type_Atap.a(this.jdField_a_of_type_JavaLangString, false);
-      atah.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
-    }
-    for (;;)
-    {
-      atah.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
-      return;
-      this.jdField_a_of_type_Atah.c();
-      break;
-      label104:
-      this.jdField_a_of_type_Atah.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
-      atah.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

@@ -1,12 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
+
 class agsm
-  implements bcvx
+  implements DialogInterface.OnClickListener
 {
-  agsm(agsl paramagsl, Runnable paramRunnable) {}
+  agsm(agsj paramagsj) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
+      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
     }
   }
 }

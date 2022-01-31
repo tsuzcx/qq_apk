@@ -1,33 +1,62 @@
 public class axiy
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  double a;
   
-  public axiy(String paramString, int paramInt)
+  axiy(double paramDouble)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    this.a = paramDouble;
+  }
+  
+  public boolean a(int[][] paramArrayOfInt)
+  {
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    int m = paramArrayOfInt[0].length;
+    double[] arrayOfDouble1 = new double[k];
+    double[] arrayOfDouble2 = new double[m];
+    double d1 = 0.0D;
+    int i = 0;
+    int j;
+    while (i < k)
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
+      j = 0;
+      while (j < m)
       {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
+        arrayOfDouble1[i] += paramArrayOfInt[i][j];
+        d1 += paramArrayOfInt[i][j];
+        j += 1;
       }
-      if (!paramString[1].equals("0")) {
-        break;
-      }
+      i += 1;
     }
-    throw new Exception("data illegal");
+    i = 0;
+    while (i < m)
+    {
+      j = 0;
+      while (j < k)
+      {
+        arrayOfDouble2[i] += paramArrayOfInt[j][i];
+        j += 1;
+      }
+      i += 1;
+    }
+    i = 0;
+    while (i < k)
+    {
+      j = 0;
+      while (j < m)
+      {
+        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
+        double d5 = paramArrayOfInt[i][j];
+        double d3 = d2;
+        if (d4 > 0.0D) {
+          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
+        }
+        j += 1;
+        d2 = d3;
+      }
+      i += 1;
+    }
+    return d2 > this.a + 1.0E-008D;
   }
 }
 

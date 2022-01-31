@@ -1,29 +1,24 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.AlphaAnimation;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class otz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public otz(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
+  public otz(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
     }
-    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setDuration(400L);
-    localAlphaAnimation.setAnimationListener(new oua(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 

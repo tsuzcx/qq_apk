@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.util;
 
-import ajyc;
-import bcpw;
-import sfk;
+import ajya;
+import bcql;
+import sfh;
 
 public class PublicAccountH5AbilityForPtt$2
   implements Runnable
 {
-  public PublicAccountH5AbilityForPtt$2(sfk paramsfk) {}
+  public PublicAccountH5AbilityForPtt$2(sfh paramsfh) {}
   
   public void run()
   {
-    bcpw.a(this.this$0.a, ajyc.a(2131708809), 0).a();
+    bcql.a(this.this$0.a, ajya.a(2131708820), 0).a();
   }
 }
 

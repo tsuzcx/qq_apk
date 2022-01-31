@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import aarv;
+import aarr;
 import android.os.Message;
-import aodq;
-import bfnk;
+import aodv;
+import bfob;
 
 public class ChatHistoryEmotionView$2
   implements Runnable
 {
-  public ChatHistoryEmotionView$2(aarv paramaarv) {}
+  public ChatHistoryEmotionView$2(aarr paramaarr) {}
   
   public void run()
   {
-    Object localObject = aarv.a(this.this$0).a(aarv.a(this.this$0), aarv.a(this.this$0), true);
-    localObject = aarv.a(this.this$0).obtainMessage(1, localObject);
-    aarv.a(this.this$0).sendMessage((Message)localObject);
+    Object localObject = aarr.a(this.this$0).a(aarr.a(this.this$0), aarr.a(this.this$0), true);
+    localObject = aarr.a(this.this$0).obtainMessage(1, localObject);
+    aarr.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 

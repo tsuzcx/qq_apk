@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import ajyc;
+import ajya;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,14 +16,14 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bcpw;
-import bizu;
-import bjoz;
-import bjqf;
-import bjqi;
-import bjqt;
-import bjqu;
-import bjqv;
+import bcql;
+import bjal;
+import bjpq;
+import bjqw;
+import bjqz;
+import bjrk;
+import bjrl;
+import bjrm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
@@ -31,10 +31,10 @@ import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
 @TargetApi(14)
 public class PtvSoDownloadActivity
   extends FlowActivity
-  implements bjqi, bjqt, bjqu
+  implements bjqz, bjrk, bjrl
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  bjqv jdField_a_of_type_Bjqv;
+  bjrm jdField_a_of_type_Bjrm;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -72,7 +72,7 @@ public class PtvSoDownloadActivity
   
   public AppInterface a()
   {
-    return bizu.a();
+    return bjal.a();
   }
   
   public void a()
@@ -102,12 +102,12 @@ public class PtvSoDownloadActivity
       ((RelativeLayout.LayoutParams)localObject2).addRule(2, paramViewGroup.getId());
       localObject1 = new RelativeLayout(this);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bjqv.a());
+      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bjrm.a());
       localObject2 = (ViewGroup)a(2131366472);
       if (this.c)
       {
         ImageView localImageView = new ImageView(this);
-        localImageView.setImageResource(2130843770);
+        localImageView.setImageResource(2130843771);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         localLayoutParams.addRule(2, paramViewGroup.getId());
         localImageView.setLayoutParams(localLayoutParams);
@@ -126,7 +126,7 @@ public class PtvSoDownloadActivity
   public void b()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = bjoz.class.getName();
+      this.jdField_a_of_type_JavaLangString = bjpq.class.getName();
     }
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       if (this.jdField_b_of_type_Boolean)
@@ -148,16 +148,16 @@ public class PtvSoDownloadActivity
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.s();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.s();
     }
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.a(paramInt1, paramInt2, paramIntent);
     }
     if (this.jdField_b_of_type_Boolean)
     {
@@ -168,8 +168,8 @@ public class PtvSoDownloadActivity
   
   public void onBackPressed()
   {
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.a();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.a();
     }
   }
   
@@ -180,15 +180,15 @@ public class PtvSoDownloadActivity
     this.ad = false;
     this.c = getIntent().getBooleanExtra("flow_camera_show_panel", false);
     if (!this.c) {
-      getWindow().setBackgroundDrawableResource(2130843770);
+      getWindow().setBackgroundDrawableResource(2130843771);
     }
     this.d = g();
-    this.jdField_a_of_type_Bjqv = new bjqf(this, this);
+    this.jdField_a_of_type_Bjrm = new bjqw(this, this);
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bjqv.a(paramBundle);
+    this.jdField_a_of_type_Bjrm.a(paramBundle);
     if (this.d)
     {
-      bcpw.a(this, ajyc.a(2131708728), 0).a();
+      bcql.a(this, ajya.a(2131708739), 0).a();
       finish();
     }
     do
@@ -207,15 +207,15 @@ public class PtvSoDownloadActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.e();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.e();
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Bjqv != null) {
-      return this.jdField_a_of_type_Bjqv.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
+    if (this.jdField_a_of_type_Bjrm != null) {
+      return this.jdField_a_of_type_Bjrm.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
@@ -224,55 +224,55 @@ public class PtvSoDownloadActivity
   {
     super.onNewIntent(paramIntent);
     getIntent().putExtras(paramIntent);
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.a(paramIntent);
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.a(paramIntent);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.d();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.d();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.f();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.f();
     }
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.b(paramBundle);
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.b(paramBundle);
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.p();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.p();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Bjqv != null) {
-      this.jdField_a_of_type_Bjqv.t();
+    if (this.jdField_a_of_type_Bjrm != null) {
+      this.jdField_a_of_type_Bjrm.t();
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bjqv != null) {
-      return this.jdField_a_of_type_Bjqv.a(paramMotionEvent, b(paramMotionEvent));
+    if (this.jdField_a_of_type_Bjrm != null) {
+      return this.jdField_a_of_type_Bjrm.a(paramMotionEvent, b(paramMotionEvent));
     }
     return b(paramMotionEvent);
   }

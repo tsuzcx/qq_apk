@@ -1,21 +1,40 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class bkis
-  implements View.OnClickListener
+  extends bkiq<bkir>
 {
-  public bkis(RateWidgetRatingBar paramRateWidgetRatingBar) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369540);
   
-  public void onClick(View paramView)
+  bkis(bkir parambkir, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (RateWidgetRatingBar.a(this.a))
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561335, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
+  
+  public void a(bkir parambkir, int paramInt)
+  {
+    super.a(parambkir, paramInt);
+    if (parambkir != null)
     {
-      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
-      if (RateWidgetRatingBar.a(this.a) != null) {
-        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(parambkir.a());
+      return;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }
 

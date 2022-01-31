@@ -1,6 +1,9 @@
-public abstract interface alry
+import java.lang.ref.WeakReference;
+
+public class alry
 {
-  public abstract void a(boolean paramBoolean);
+  public WeakReference<ayxs> a;
+  public boolean a = false;
 }
 
 

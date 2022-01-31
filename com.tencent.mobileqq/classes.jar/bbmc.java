@@ -1,44 +1,18 @@
-import android.util.Pair;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
 public class bbmc
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public int a;
-  public Pair<CharSequence, CharSequence> a;
-  public String a;
+  public bbmc(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public bbmc(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilPair = paramPair;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
-    if (this.jdField_a_of_type_AndroidUtilPair == null)
-    {
-      localObject = "null";
-      return (String)localObject + "]" + '}';
-    }
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
-    {
-      localObject = "null";
-      label92:
-      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
-      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
-        break label142;
-      }
-    }
-    label142:
-    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
-    {
-      localObject = localObject;
-      break;
-      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
-      break label92;
-    }
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
 }
 

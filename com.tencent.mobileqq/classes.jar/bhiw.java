@@ -1,11 +1,19 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import cooperation.qzone.plugin.PluginRecord;
 
-class bhiw
+public final class bhiw
+  implements Parcelable.Creator<PluginRecord>
 {
-  private int jdField_a_of_type_Int;
-  private bhix jdField_a_of_type_Bhix;
-  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  private String jdField_a_of_type_JavaLangString;
+  public PluginRecord a(Parcel paramParcel)
+  {
+    return new PluginRecord(paramParcel);
+  }
+  
+  public PluginRecord[] a(int paramInt)
+  {
+    return new PluginRecord[paramInt];
+  }
 }
 
 

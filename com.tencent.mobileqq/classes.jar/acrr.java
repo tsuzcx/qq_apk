@@ -1,19 +1,30 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import mqq.util.WeakReference;
 
 public class acrr
-  implements acrk
+  implements View.OnClickListener
 {
-  public acrr(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public acrr(PositionActivatePage paramPositionActivatePage) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt > 0)
+    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
     {
-      this.a.a.setEnabled(true);
-      return;
+      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
+      paramView.putExtra("key_msg_type", 1);
+      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
+      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
+      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
+      axqy.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
     }
-    this.a.a.setEnabled(false);
   }
 }
 

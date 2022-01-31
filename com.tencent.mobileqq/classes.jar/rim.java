@@ -1,21 +1,20 @@
-import android.view.View;
+import android.os.MessageQueue.IdleHandler;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class rim
-  implements ohp
+  implements MessageQueue.IdleHandler
 {
   public rim(FastWebActivity paramFastWebActivity) {}
   
-  public void a() {}
-  
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    switch (paramView.getId())
+    if (FastWebActivity.a(this.a).c == 0) {}
+    for (String str = "";; str = FastWebActivity.a(this.a).p)
     {
-    default: 
-      return;
+      rmr.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a));
+      return false;
     }
-    this.a.a(false, null, null);
   }
 }
 

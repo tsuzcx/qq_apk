@@ -1,35 +1,29 @@
-import android.widget.ImageView;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
-public class ahsf
-  implements bckg
+class ahsf
+  extends Filter
 {
-  public ahsf(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
+  ahsf(ahse paramahse) {}
   
-  public int a()
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    return this.jdField_a_of_type_Int;
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
   }
   
-  public void a(boolean paramBoolean)
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if (paramFilterResults.count > 0)
     {
-      localImageView.setVisibility(i);
+      this.a.notifyDataSetChanged();
       return;
     }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

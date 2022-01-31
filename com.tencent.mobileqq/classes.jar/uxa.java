@@ -1,45 +1,39 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class uxa
-  extends sth<uwt, uqg>
+class uxa
+  extends ste<uwq, upt>
 {
-  public uxa(uwt paramuwt)
+  uxa(uwq paramuwq)
   {
-    super(paramuwt);
+    super(paramuwq);
   }
   
-  public void a(@NonNull uwt paramuwt, @NonNull uqg paramuqg)
+  public void a(@NonNull uwq paramuwq, @NonNull upt paramupt)
   {
-    Object localObject = paramuwt.a(paramuqg.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    Object localObject = paramuwq.a(paramupt.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramupt.jdField_a_of_type_Boolean))
     {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramuqg.jdField_a_of_type_JavaLangString });
+      ved.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramupt.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramupt.jdField_a_of_type_Boolean) });
       return;
     }
-    if (!(localObject instanceof uxr))
+    if (!(localObject instanceof uvh))
     {
-      veg.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramuqg.jdField_a_of_type_JavaLangString });
+      ved.e(this.TAG, "that is error type!");
       return;
     }
-    localObject = (uxr)localObject;
-    if (paramuqg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ((uxr)localObject).c(paramuqg.jdField_a_of_type_JavaUtilList, false);
-      ((VideoListFeedItem)((uxr)localObject).a).updateVideoInfo(paramuqg.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-      veg.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramuqg.jdField_a_of_type_JavaLangString, Integer.valueOf(((uxr)localObject).a().size()));
-    }
-    uwt.a(paramuwt).a((uxr)localObject);
+    localObject = (uvh)localObject;
+    ((CommentLikeFeedItem)((uvh)localObject).a).mLikeCount = paramupt.b;
+    ((uvh)localObject).b(paramupt.jdField_a_of_type_JavaUtilList, true);
+    uwq.a(paramuwq).b(paramupt.jdField_a_of_type_JavaLangString);
   }
   
   public Class acceptEventClass()
   {
-    return uqg.class;
+    return upt.class;
   }
   
-  public void b(@NonNull uwt paramuwt, @NonNull uqg paramuqg) {}
+  public void b(@NonNull uwq paramuwq, @NonNull upt paramupt) {}
 }
 
 

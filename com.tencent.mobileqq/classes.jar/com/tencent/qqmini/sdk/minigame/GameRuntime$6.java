@@ -1,25 +1,25 @@
 package com.tencent.qqmini.sdk.minigame;
 
-import beuh;
-import bexz;
-import beyd;
-import beyr;
+import beuy;
+import beyq;
 import beyu;
+import bezi;
+import bezl;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 
 public class GameRuntime$6
   implements Runnable
 {
-  public GameRuntime$6(beuh parambeuh) {}
+  public GameRuntime$6(beuy parambeuy) {}
   
   public void run()
   {
-    beuh.a(this.this$0).a();
-    beyu.a(beuh.a(this.this$0), "1", null, "load", null);
-    bexz.a("2load", null, null, beuh.a(this.this$0));
-    beyr.a(beuh.a(this.this$0), 1007, "1");
-    beuh.a(this.this$0).getGameLauncher().launchGame();
+    beuy.a(this.this$0).a();
+    bezl.a(beuy.a(this.this$0), "1", null, "load", null);
+    beyq.a("2load", null, null, beuy.a(this.this$0));
+    bezi.a(beuy.a(this.this$0), 1007, "1");
+    beuy.a(this.this$0).getGameLauncher().launchGame();
   }
 }
 

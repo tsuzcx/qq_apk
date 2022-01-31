@@ -1,26 +1,21 @@
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class oxc
-  implements oxp
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
   public oxc(VideoView paramVideoView) {}
   
-  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
-    {
-      paramArrayOfString2 = paramArrayOfString2[0];
-      if ((!TextUtils.isEmpty(VideoView.d(this.a))) && (VideoView.d(this.a).equals(paramArrayOfString1[0])))
-      {
-        this.a.b(paramArrayOfString2);
-        return;
-      }
-      QLog.d("gifvideo.VideoView", 2, "not current video");
-      return;
+    VideoView.a(this.a, 10);
+    if (VideoView.b(this.a)) {
+      VideoView.c(this.a);
     }
-    QLog.d("gifvideo.VideoView", 2, "urls null");
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).c();
+    }
   }
 }
 

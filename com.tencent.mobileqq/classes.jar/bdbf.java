@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bdbf
-  implements DialogInterface.OnClickListener
 {
-  public bdbf(OpenAuthorityFragment paramOpenAuthorityFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
 }
 
 

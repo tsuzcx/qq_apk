@@ -13,10 +13,10 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcfj;
-import bgtz;
-import bguh;
-import bgvr;
+import bcfx;
+import bguq;
+import bguy;
+import bgwi;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -36,8 +36,8 @@ public abstract class ReaderBaseFragment
   
   private void j()
   {
-    if (this.jdField_a_of_type_Bcfj.a != null) {
-      this.jdField_a_of_type_Bcfj.a.setVisibility(8);
+    if (this.jdField_a_of_type_Bcfx.a != null) {
+      this.jdField_a_of_type_Bcfx.a.setVisibility(8);
     }
   }
   
@@ -77,14 +77,14 @@ public abstract class ReaderBaseFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    bgtz.a().a();
+    bguq.a().a();
   }
   
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bgtz.a().a();
+    bguq.a().a();
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -95,19 +95,19 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       k();
     }
-    bgtz.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    bguq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public void a(String paramString, int paramInt)
   {
     super.a(paramString, paramInt);
-    bgvr.b(getActivity(), paramInt, paramString);
+    bgwi.b(getActivity(), paramInt, paramString);
   }
   
   public boolean a()
   {
     this.b = true;
-    this.jdField_a_of_type_Bcfj.b = false;
+    this.jdField_a_of_type_Bcfx.b = false;
     return super.a();
   }
   
@@ -131,12 +131,12 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         k();
       }
-      bgtz.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bguq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bgtz.a().a();
+      bguq.a().a();
     }
   }
   
@@ -155,7 +155,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bguh)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((bguy)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setVerticalScrollBarEnabled(false);

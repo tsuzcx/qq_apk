@@ -1,33 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ahfi
-  implements View.OnClickListener
+class ahfi
+  implements aycd
 {
-  public ahfi(SpecifyGiftView paramSpecifyGiftView, aycb paramaycb, View.OnClickListener paramOnClickListener) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onClick(View paramView)
+  ahfi(ahfh paramahfh, aycd paramaycd) {}
+  
+  public void a()
   {
-    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
-    if (this.jdField_a_of_type_Aycb != null) {
-      this.jdField_a_of_type_Aycb.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
     }
-    QQAppInterface localQQAppInterface = ahiy.a();
-    if (localQQAppInterface != null)
+    if ((this.jdField_a_of_type_Boolean) || (ahfh.a(this.jdField_a_of_type_Ahfh))) {}
+    do
     {
-      bagr localbagr = (bagr)localQQAppInterface.getManager(223);
-      if (localbagr != null) {
-        localbagr.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (ahfh.a(this.jdField_a_of_type_Ahfh) != null) {
+        ThreadManager.getUIHandler().removeCallbacks(ahfh.a(this.jdField_a_of_type_Ahfh));
       }
-    }
-    ahiy.a(localQQAppInterface, "212", "only.animation.close");
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
+    } while (this.jdField_a_of_type_Aycd == null);
+    this.jdField_a_of_type_Aycd.a();
   }
 }
 

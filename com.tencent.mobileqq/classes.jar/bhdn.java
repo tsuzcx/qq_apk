@@ -1,18 +1,9 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-class bhdn
-  implements FileFilter
+public abstract interface bhdn
 {
-  bhdn(bhdk parambhdk) {}
-  
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    boolean bool1 = paramFile.endsWith(".ftf");
-    boolean bool2 = paramFile.endsWith(".ttf");
-    return (bool1) || (bool2);
-  }
+  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
 }
 
 

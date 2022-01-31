@@ -1,11 +1,14 @@
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
 
-public abstract class umg
+public abstract interface umg
 {
-  public int a;
+  public abstract void a();
   
-  public abstract void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt);
+  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  
+  public abstract void a(String paramString1, long paramLong, StoryVideoItem paramStoryVideoItem, int paramInt, String paramString2, List<String> paramList);
 }
 
 

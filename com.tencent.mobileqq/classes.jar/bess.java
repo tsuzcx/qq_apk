@@ -1,21 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
+import android.content.Context;
 
-public final class bess
-  implements Parcelable.Creator<EngineChannel>
+public abstract class bess
 {
-  public EngineChannel a(Parcel paramParcel)
+  public static final String TAG = "BaselibLoader";
+  protected best mBaselibContent;
+  
+  public best getBaselib()
   {
-    EngineChannel localEngineChannel = new EngineChannel((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel), null);
-    localEngineChannel.a(paramParcel.readString());
-    return localEngineChannel;
+    return this.mBaselibContent;
   }
   
-  public EngineChannel[] a(int paramInt)
+  public boolean isBaseLibInit()
   {
-    return new EngineChannel[paramInt];
+    return (this.mBaselibContent != null) && (this.mBaselibContent.a());
+  }
+  
+  public abstract void loadBaselib(Context paramContext, besu parambesu);
+  
+  public void setBaselib(best parambest)
+  {
+    if ((parambest != null) && (parambest.a())) {
+      this.mBaselibContent = parambest;
+    }
   }
 }
 

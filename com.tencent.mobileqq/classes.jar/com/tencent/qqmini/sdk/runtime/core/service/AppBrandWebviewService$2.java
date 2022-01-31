@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.runtime.core.service;
 
 import android.webkit.ValueCallback;
-import bfct;
-import bfdw;
+import bfdk;
+import bfen;
 import com.tencent.smtt.sdk.WebView;
 
 public class AppBrandWebviewService$2
   implements Runnable
 {
-  public AppBrandWebviewService$2(bfct parambfct, String paramString, ValueCallback paramValueCallback) {}
+  public AppBrandWebviewService$2(bfdk parambfdk, String paramString, ValueCallback paramValueCallback) {}
   
   public void run()
   {
-    if (bfct.a(this.this$0) != null) {
-      bfct.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, bfdw.a(this.jdField_a_of_type_AndroidWebkitValueCallback));
+    if (bfdk.a(this.this$0) != null) {
+      bfdk.a(this.this$0).evaluateJavascript(this.jdField_a_of_type_JavaLangString, bfen.a(this.jdField_a_of_type_AndroidWebkitValueCallback));
     }
   }
 }

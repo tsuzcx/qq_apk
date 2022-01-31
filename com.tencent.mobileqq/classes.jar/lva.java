@@ -1,51 +1,38 @@
-public class lva
-  extends lur
+public abstract class lva
+  extends lum
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  
-  public lva()
-  {
-    a(255);
-  }
+  protected long b;
+  public lvm[] c;
   
   public void a(long paramLong)
   {
-    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
-    a(this.g, i, this.g + this.b, this.c + i);
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != paramInt)
+    long l = this.jdField_a_of_type_Long;
+    if (this.c != null)
     {
-      this.e = paramInt;
-      c();
+      int i = (int)((paramLong - l) % this.b * this.c.length / this.b);
+      if ((i >= 0) && (i < this.c.length)) {
+        this.jdField_a_of_type_Lvm = this.c[i];
+      }
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void b()
   {
-    this.b = (paramInt1 * 70 / 160);
-    this.c = (paramInt1 * 70 / 160);
-    this.d = (paramInt1 * 5 / 160);
-    this.f = paramInt1;
-    this.h = (this.c + paramInt2);
-    c();
-  }
-  
-  public void c()
-  {
-    if (this.e == 0) {}
-    for (int i = this.d;; i = this.f - this.d - this.b)
+    super.b();
+    if (this.c != null)
     {
-      this.g = i;
-      return;
+      lvm[] arrayOflvm = this.c;
+      int j = arrayOflvm.length;
+      int i = 0;
+      while (i < j)
+      {
+        lvm locallvm = arrayOflvm[i];
+        if (locallvm != null) {
+          locallvm.a();
+        }
+        i += 1;
+      }
+      this.c = null;
     }
   }
 }

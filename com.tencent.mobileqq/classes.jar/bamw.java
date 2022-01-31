@@ -1,45 +1,35 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
-import com.tencent.qphone.base.util.QLog;
-
 public class bamw
-  implements baxl
 {
-  public bamw(AddedRobotView paramAddedRobotView) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
-    for (;;)
-    {
-      return;
-      if (!AddedRobotView.a(this.a).a())
-      {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof bamz))
-          {
-            localObject = (bamz)localObject;
-            if ((!TextUtils.isEmpty(((bamz)localObject).jdField_a_of_type_JavaLangString)) && (((bamz)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((bamz)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
-        }
-      }
-    }
-  }
+  public static int A = -99;
+  public static int B = -98;
+  public static int C = -97;
+  public static int D = -36;
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 1;
+  public static int f = 2;
+  public static int g = 3;
+  public static int h = 4;
+  public static int i = 5;
+  public static int j = 6;
+  public static int k = 7;
+  public static int l = 8;
+  public static int m = 101;
+  public static int n = 102;
+  public static int o = 103;
+  public static int p = 104;
+  public static int q = 105;
+  public static int r = 106;
+  public static int s = 107;
+  public static int t = 108;
+  public static int u = 109;
+  public static int v = 111;
+  public static int w = 112;
+  public static int x = 113;
+  public static int y = 114;
+  public static int z = 100;
 }
 
 

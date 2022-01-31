@@ -1,34 +1,46 @@
 import com.tencent.qphone.base.util.QLog;
 
 class asvg
-  implements apsm
+  extends axfc
 {
-  asvg(asuu paramasuu, String paramString, asup paramasup) {}
+  asvg(asuw paramasuw, String paramString, asur paramasur) {}
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Asup != null) && (this.jdField_a_of_type_Asup.a != null))
+    if (this.jdField_a_of_type_Asur.a != null)
     {
-      String str = this.jdField_a_of_type_Asup.a.a();
-      asuq localasuq = this.jdField_a_of_type_Asuu.a(str);
-      if ((localasuq != null) && (!localasuq.a))
+      String str = this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur.a.a);
+      asus localasus = this.jdField_a_of_type_Asuw.a(str);
+      if ((localasus != null) && (!localasus.a))
       {
-        localasuq.c = paramInt;
-        this.jdField_a_of_type_Asuu.a(str, localasuq);
-        asuu.a(this.jdField_a_of_type_Asuu, localasuq, paramInt);
+        localasus.c = (paramInt / 100);
+        this.jdField_a_of_type_Asuw.a(str, localasus);
+        asuw.a(this.jdField_a_of_type_Asuw, localasus, paramInt / 100);
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt, axeu paramaxeu)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
     }
-    asuu.a(this.jdField_a_of_type_Asuu, this.jdField_a_of_type_Asup, paramBoolean);
+    int j = 0;
+    String str2 = "";
+    String str1 = str2;
+    int i = j;
+    if (paramaxeu != null)
+    {
+      str1 = str2;
+      i = j;
+      if (paramaxeu.a != null)
+      {
+        i = paramaxeu.a.a;
+        str1 = paramaxeu.a.b;
+      }
+    }
+    this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_Asur, paramInt, i, str1);
   }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

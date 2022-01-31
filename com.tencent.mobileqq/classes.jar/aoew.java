@@ -1,11 +1,14 @@
 class aoew
-  implements aysa
+  extends aoez
 {
-  aoew(aoev paramaoev) {}
+  aoew(aoeu paramaoeu) {}
   
-  public void onResp(aysx paramaysx) {}
-  
-  public void onUpdateProgeress(aysw paramaysw, long paramLong1, long paramLong2) {}
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      aoeu.a(this.a);
+    }
+  }
 }
 
 

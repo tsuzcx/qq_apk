@@ -1,79 +1,68 @@
-import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class axte
 {
   private int jdField_a_of_type_Int;
-  private LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
-  private int b;
+  private long jdField_a_of_type_Long;
+  private LinkedList<axtf> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  public axte(int paramInt1, int paramInt2)
+  public axte(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(paramInt1, 0.5F, true);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public Map<String, Integer> a()
+  public static String a(List<axtf> paramList)
   {
-    HashMap localHashMap = null;
-    label110:
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH点mm分ss");
+      int i = paramList.size();
+      localStringBuilder.ensureCapacity((((axtf)paramList.get(0)).jdField_a_of_type_JavaLangObject.toString().length() + 20) * i);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((Integer)localEntry.getValue()).intValue() < this.b) {
-            break label110;
-          }
-          if (localHashMap == null)
-          {
-            localHashMap = new HashMap();
-            localHashMap.put(localEntry.getKey(), localEntry.getValue());
-            break label110;
-          }
-        }
-        else
-        {
-          return localHashMap;
-        }
+        axtf localaxtf = (axtf)paramList.next();
+        localStringBuilder.append("[").append(localSimpleDateFormat.format(new Date(localaxtf.jdField_a_of_type_Long))).append(":").append(localaxtf.jdField_a_of_type_JavaLangObject.toString()).append("]");
       }
     }
+    return localStringBuilder.toString();
+  }
+  
+  public List<axtf> a(Object arg1)
+  {
+    Object localObject1 = new axtf();
+    ((axtf)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+    ((axtf)localObject1).jdField_a_of_type_JavaLangObject = ???;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(localObject1);
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() < this.jdField_a_of_type_Int) {
+        return null;
+      }
+      axtf localaxtf = (axtf)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+      if (((axtf)localObject1).jdField_a_of_type_Long - localaxtf.jdField_a_of_type_Long < this.jdField_a_of_type_Long)
+      {
+        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
+        return localObject1;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    return null;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
       return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))
-        {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + 1));
-          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramString = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString.getKey());
-        }
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(1));
     }
   }
 }

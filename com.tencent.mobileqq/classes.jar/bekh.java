@@ -1,9 +1,4 @@
-import org.json.JSONObject;
-
-public abstract interface bekh
-{
-  public abstract void onLocationFinishCallback(JSONObject paramJSONObject);
-}
+public abstract interface bekh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar

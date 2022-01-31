@@ -1,76 +1,125 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahyc
+class ahyc
+  implements INetInfoHandler
 {
-  public static int a(int paramInt)
+  ahyc(ahyb paramahyb) {}
+  
+  public void onNetMobile2None()
   {
-    if (paramInt == 1) {
-      return 1;
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
     }
-    if (paramInt == 2) {
-      return 2;
+    ahyb localahyb2 = this.a;
+    if (!ahyb.a(this.a).c) {}
+    for (;;)
+    {
+      localahyb2.a(bool, true);
+      return;
+      bool = false;
     }
-    if (paramInt == 3) {
-      return 3;
-    }
-    return 0;
   }
   
-  public static ahyk a(int paramInt)
+  public void onNetMobile2Wifi(String arg1)
   {
-    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new ahyh();
-    case 2: 
-      return new ahyx();
+    if (QLog.isColorLevel()) {
+      QLog.d(ahyb.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
     }
-    return new ahyu();
+    synchronized (this.a)
+    {
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahyb.a(this.a);
   }
   
-  public static ahyk a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
+  public void onNetNone2Mobile(String arg1)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d(ahyb.a(), 2, "onNetNone2Mobile ");
     }
-    try
+    synchronized (this.a)
     {
-      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
-      return paramString;
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
-    }
-    return null;
+    this.a.a(false, true);
+    ahyb.a(this.a);
   }
   
-  public static ahyk a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  public void onNetNone2Wifi(String arg1)
   {
-    Object localObject;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
-      localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d(ahyb.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
     }
-    ahyk localahyk;
-    do
+    synchronized (this.a)
     {
-      return localObject;
-      localahyk = a(addi.a(paramArrayOfByte, 0));
-      localObject = localahyk;
-    } while (localahyk == null);
-    localahyk.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
-    return localahyk;
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahyb.a(this.a);
   }
   
-  public static boolean a(int paramInt)
+  public void onNetWifi2Mobile(String arg1)
   {
-    return (paramInt > 0) && (paramInt < 4);
+    if (QLog.isColorLevel()) {
+      QLog.d(ahyb.a(), 2, "onNetWifi2Mobile, need restore:  ");
+    }
+    synchronized (this.a)
+    {
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
+    }
+    this.a.a(false, true);
+    ahyb.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    boolean bool = true;
+    synchronized (this.a)
+    {
+      if (ahyb.a(this.a) == null) {
+        return;
+      }
+      if (ahyb.a(this.a).a == null) {
+        return;
+      }
+    }
+    ahyb localahyb2 = this.a;
+    if (!ahyb.a(this.a).c) {}
+    for (;;)
+    {
+      localahyb2.a(bool, true);
+      return;
+      bool = false;
+    }
   }
 }
 

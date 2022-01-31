@@ -1,35 +1,22 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.PublicMenuBar;
 
-class bcpx
-  implements View.OnTouchListener
+public class bcpx
+  implements View.OnClickListener
 {
-  bcpx(bcpw parambcpw, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  public bcpx(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "start to cancel toast");
-      }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      bcpw.a(this.jdField_a_of_type_Bcpw, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
-      }
-      return bool;
+    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
+      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bcpx
  * JD-Core Version:    0.7.0.1
  */

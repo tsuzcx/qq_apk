@@ -1,13 +1,26 @@
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
+import com.tencent.gdtad.views.canvas.components.pictures.GdtCanvasMultiPictureComponentView;
 
 public class yzy
-  implements zbe
+  implements View.OnTouchListener
 {
-  public yzy(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView) {}
+  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new yzz(this);
+  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
+  private GdtCanvasPictureComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
   
-  public void a(boolean paramBoolean)
+  public yzy(GdtCanvasMultiPictureComponentView paramGdtCanvasMultiPictureComponentView, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
   {
-    GdtCanvasPictureComponentView.a(this.a, paramBoolean);
+    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData = paramGdtCanvasPictureComponentData;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 

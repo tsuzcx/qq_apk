@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajud;
 import ajuf;
-import ajuh;
-import aklg;
+import aklf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckAuthCode
   extends AsyncStep
 {
-  private ajuh a;
+  private ajuf a;
   
   public int a()
   {
-    if (this.jdField_a_of_type_Ajuh == null)
+    if (this.jdField_a_of_type_Ajuf == null)
     {
-      this.jdField_a_of_type_Ajuh = new aklg(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Ajuh);
+      this.jdField_a_of_type_Ajuf = new aklf(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Ajuf);
     }
-    if (((ajuf)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4)).a()) {
+    if (((ajud)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4)).a()) {
       return 2;
     }
     return 7;
@@ -27,10 +27,10 @@ public class CheckAuthCode
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ajuh != null)
+    if (this.jdField_a_of_type_Ajuf != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajuh);
-      this.jdField_a_of_type_Ajuh = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajuf);
+      this.jdField_a_of_type_Ajuf = null;
     }
   }
 }

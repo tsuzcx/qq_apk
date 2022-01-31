@@ -1,123 +1,73 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.json.JSONObject;
 
-public class bcgo
+class bcgo
+  implements bcgf
 {
-  public int a;
-  public long a;
-  public String a;
-  private AtomicInteger a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "html";
-  public String k = NetworkState.getAPN();
-  public String l = "QQ";
-  public String m = bgxr.a();
-  public String n = "Android";
+  bcgo(bcgn parambcgn) {}
   
-  public bcgo()
+  public int a(Bundle paramBundle)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  public JSONObject a()
-  {
-    label423:
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("uin", this.jdField_a_of_type_Long);
-        String str = this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          int i2 = this.jdField_a_of_type_JavaLangString.indexOf('?');
-          i1 = i2;
-          if (i2 < 0) {
-            i1 = this.jdField_a_of_type_JavaLangString.length();
-          }
-          str = this.jdField_a_of_type_JavaLangString.substring(0, i1);
-        }
-        localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("path", str);
-        localJSONObject.put("errordomain", this.jdField_b_of_type_JavaLangString);
-        localJSONObject.put("errorcode", this.jdField_c_of_type_JavaLangString);
-        localJSONObject.put("httpstatus", this.jdField_d_of_type_JavaLangString);
-        localJSONObject.put("userip", this.jdField_e_of_type_JavaLangString);
-        localJSONObject.put("serverip", this.jdField_f_of_type_JavaLangString);
-        localJSONObject.put("port", this.g);
-        localJSONObject.put("dnsresult", this.h);
-        localJSONObject.put("apn", this.k);
-        localJSONObject.put("timecost", this.jdField_a_of_type_Int / 1000.0F);
-        localJSONObject.put("app", this.l);
-        localJSONObject.put("appversion", this.m);
-        localJSONObject.put("platform", this.n);
-        localJSONObject.put("sampling", this.jdField_f_of_type_Int);
-        localJSONObject.put("usewns", this.jdField_a_of_type_Boolean);
-        int i1 = this.jdField_b_of_type_Int;
-        if (i1 != 1000) {
-          if (i1 == 0)
-          {
-            break label423;
-            localJSONObject.put("wnscode", i1);
-            localJSONObject.put("detail", this.i);
-            localJSONObject.put("usecache", this.jdField_b_of_type_Boolean);
-            localJSONObject.put("cachehasdata", this.jdField_c_of_type_Boolean);
-            localJSONObject.put("cacheupdatepolicy", this.jdField_c_of_type_Int);
-            localJSONObject.put("cacheupdatetimecost", this.jdField_d_of_type_Int / 1000.0F);
-            localJSONObject.put("serviceversion", this.jdField_e_of_type_Int);
-            localJSONObject.put("webso3_type", this.j);
-            localJSONObject.put("datasize", this.jdField_b_of_type_Long);
-            return localJSONObject;
-          }
-          else
-          {
-            i1 = this.jdField_b_of_type_Int;
-            i1 += 300000;
-            continue;
-          }
-        }
-        i1 = 0;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("HybridWebReporter", 1, localException, new Object[0]);
-        return null;
-      }
+    if (this.a.jdField_a_of_type_Boolean) {
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "mScheduler.next:is in real world, stop the preload task.");
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_e_of_type_Int = 0;
-    this.j = "html";
-    this.jdField_b_of_type_Long = 0L;
+    do
+    {
+      do
+      {
+        return -1;
+        if ((this.a.b & 0x2) != 0)
+        {
+          if ((this.a.jdField_a_of_type_Int & 0x400) == 0) {
+            this.a.b(paramBundle);
+          }
+          if ((this.a.jdField_a_of_type_Int & 0x800) == 0) {
+            this.a.c(paramBundle);
+          }
+          if ((this.a.jdField_a_of_type_Int & 0x1000) == 0) {
+            this.a.d(paramBundle);
+          }
+          if ((this.a.jdField_a_of_type_Int & 0x1) == 0) {
+            return this.a.a(paramBundle);
+          }
+        }
+      } while ((this.a.b & 0x1) == 0);
+      if ((this.a.jdField_a_of_type_Int & 0x2) == 0) {
+        return this.a.b(paramBundle);
+      }
+      if (!bcfo.s)
+      {
+        bcfo.s = true;
+        if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
+        {
+          bcfo.U = WebProcessReceiver.b - WebProcessReceiver.a;
+          bcfo.V = System.currentTimeMillis() - WebProcessReceiver.b;
+          int i = (int)bcfo.U;
+          int j = (int)bcfo.V;
+          QLog.i("WebLog_SwiftWebAccelerator", 1, "cross process cost: " + i + "ms, preload cost: " + j + "ms.");
+          VasWebviewUtil.reportVasStatus("Preload_Web_Process", "", "", i, j);
+        }
+      }
+      if ((this.a.jdField_a_of_type_Int & 0x4) == 0) {
+        return this.a.c(paramBundle);
+      }
+      if ((this.a.jdField_a_of_type_Int & 0x8) == 0) {
+        return this.a.e(paramBundle);
+      }
+      if ((paramBundle.getBoolean("_should_set_cookie_", false)) && ((this.a.jdField_a_of_type_Int & 0x10) == 0)) {
+        return this.a.d(paramBundle);
+      }
+    } while (bcfo.t);
+    bcfo.t = true;
+    if ((WebProcessReceiver.a > 0L) && (WebProcessReceiver.b > 0L))
+    {
+      bcfo.W = System.currentTimeMillis() - WebProcessReceiver.b;
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "WebProcessReceiver.onReceive cost: " + bcfo.U + "ms, complete preload cost: " + bcfo.W + "ms.");
+    }
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "well done, all preload task execute success!");
+    return -1;
   }
 }
 

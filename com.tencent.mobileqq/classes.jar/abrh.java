@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class abrh
-  implements DialogInterface.OnClickListener
+public class abrh
+  implements DialogInterface.OnCancelListener
 {
-  abrh(abre paramabre) {}
+  public abrh(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.setResult(4004);
-    this.a.a.finish();
+    this.a.finish();
   }
 }
 

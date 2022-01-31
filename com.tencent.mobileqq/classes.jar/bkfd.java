@@ -1,71 +1,39 @@
-import android.annotation.TargetApi;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import android.opengl.GLES30;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.filter.BaseFilter;
+import android.util.Log;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class bkfd
+  implements bkfg
 {
-  public static double a(PointF paramPointF1, PointF paramPointF2)
-  {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
-  }
+  private int jdField_a_of_type_Int = 12440;
   
-  public static void a()
-  {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
-  }
+  private bkfd(GLTextureView paramGLTextureView) {}
   
-  @TargetApi(18)
-  public static void a(int paramInt)
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    switch (paramInt)
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 0) {}
+    for (;;)
     {
-    default: 
-      return;
-    case 0: 
-      GLES20.glDisable(3042);
-      return;
-    case 1: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(1, 771);
-      GLES20.glBlendEquation(32774);
-      return;
-    case 2: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      GLES30.glBlendEquation(32776);
-      return;
-    }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    GLES20.glBlendEquation(32774);
-  }
-  
-  public static void a(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    paramFrame.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    if (paramBoolean) {
-      a();
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
   }
   
-  public static void a(BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2, int paramInt1, int paramInt2, int paramInt3)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    Frame localFrame = new Frame(paramFrame1.getFBO(), paramFrame1.getTextureId(), paramInt2, paramInt3);
-    GlUtil.setBlendMode(true);
-    GLES20.glBlendEquation(32774);
-    GLES20.glBindFramebuffer(36160, paramFrame1.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    paramFrame2.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    paramBaseFilter.RenderProcess(paramFrame2.getTextureId(), paramInt2, paramInt3, paramFrame1.getTextureId(), 1.0D, localFrame);
-    GlUtil.setBlendMode(false);
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      bkfi.a("eglDestroyContex", paramEGL10.eglGetError());
+    }
   }
 }
 

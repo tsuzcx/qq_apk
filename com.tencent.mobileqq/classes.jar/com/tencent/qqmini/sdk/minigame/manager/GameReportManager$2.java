@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.minigame.manager;
 
-import bevl;
+import bewc;
 
 public class GameReportManager$2
   implements Runnable
 {
-  public GameReportManager$2(bevl parambevl) {}
+  public GameReportManager$2(bewc parambewc) {}
   
   public void run()
   {
-    bevl.a(this.this$0, true);
+    bewc.a(this.this$0, true);
   }
 }
 

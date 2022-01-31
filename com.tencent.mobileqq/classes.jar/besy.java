@@ -1,12 +1,11 @@
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.model.LoginInfo;
+
 public abstract interface besy
 {
-  public abstract void a();
+  public abstract void init(Context paramContext);
   
-  public abstract void a(float paramFloat, String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void setLoginInfo(LoginInfo paramLoginInfo);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
 import android.util.SparseArray;
-import aukn;
+import aukp;
 import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.List;
 final class ApolloGameUtil$3
   implements Runnable
 {
-  ApolloGameUtil$3(aukn paramaukn) {}
+  ApolloGameUtil$3(aukp paramaukp) {}
   
   public void run()
   {

@@ -1,42 +1,27 @@
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.Stream;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
-public class tgy
+class tgy
+  extends SimpleObserver<List<tso>>
 {
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = true;
+  tgy(tgv paramtgv, tgz paramtgz, tff paramtff) {}
   
-  public void a(@NonNull tfi paramtfi, thc paramthc)
+  public void a(List<tso> paramList)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
-        }
-        Stream.of(paramtfi).map(new tfy("MsgTabPreloader")).map(new tfv(null)).subscribe(new tgz(this, paramthc, paramtfi));
-      }
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Tgz != null) {
+      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, Collections.emptyList());
     }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
-    }
-    Stream.of(paramtfi).map(new tfy("MsgTabPreloader")).subscribe(new thb(this, paramthc, paramtfi));
   }
   
-  public void a(boolean paramBoolean)
+  public void onError(@NonNull Error paramError)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Tgz != null) {
+      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, paramError);
+    }
   }
 }
 

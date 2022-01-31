@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.applets.data;
 
-import akwy;
+import akwx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class AppletItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<AppletItem> CREATOR = new akwy();
+  public static final Parcelable.Creator<AppletItem> CREATOR = new akwx();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

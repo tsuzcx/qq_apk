@@ -1,24 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.GroupListOpenFrame;
 
 public class bdbj
-  implements bdcb
+  implements View.OnTouchListener
 {
-  public bdbj(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public bdbj(GroupListOpenFrame paramGroupListOpenFrame) {}
   
-  public void a(long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual vid=", Long.valueOf(paramLong) });
-    if (!bbev.g(BaseApplicationImpl.getApplication()))
-    {
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a.c();
     }
-    this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a), paramLong, this.a.jdField_a_of_type_Bdnx);
+    return true;
   }
 }
 

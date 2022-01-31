@@ -1,46 +1,69 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import java.io.File;
 
 public class bcaj
-  extends ajsp
 {
-  public bcaj(WebProcessManager paramWebProcessManager) {}
+  public static final int a = ListenChangeVoicePanel.a.length;
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public static String a(String paramString)
   {
-    int j = -1;
-    int i = j;
-    if (paramObject != null)
+    String str = paramString.substring(0, paramString.lastIndexOf(".")).concat(".pcm");
+    new File(paramString).renameTo(new File(str));
+    return str;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int i = paramString.lastIndexOf(".");
+    return paramString.substring(0, i).concat("_" + paramInt).concat(paramString.substring(i, paramString.length()));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    while (i < a)
     {
-      i = j;
-      if ((paramObject instanceof Bundle))
+      new File(a(paramString1, i)).delete();
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt)
+  {
+    String str = null;
+    new File(paramString1).delete();
+    new File(paramString2).delete();
+    int i = 0;
+    paramString2 = str;
+    if (i < a)
+    {
+      str = a(paramString1, i);
+      if (i == paramInt) {
+        paramString2 = str;
+      }
+      for (;;)
       {
-        paramObject = (Bundle)paramObject;
-        i = paramObject.getInt("ad_bbq_code", -1);
-        if (i == 0)
-        {
-          paramObject = paramObject.getString("ad_bbq_message");
-          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-          if ((localObject instanceof QQAppInterface))
-          {
-            localObject = (ajsk)((QQAppInterface)localObject).a(53);
-            if (localObject != null) {
-              ((ajsk)localObject).b(paramObject);
-            }
-          }
-        }
+        i += 1;
+        break;
+        new File(str).delete();
       }
     }
-    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
-    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
-    paramObject.putExtra("result", i);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
+    if (paramString2 != null) {
+      new File(paramString2).renameTo(new File(paramString1));
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    new File(paramString1).deleteOnExit();
+    new File(paramString2).deleteOnExit();
+    int i = 0;
+    while (i < a)
+    {
+      new File(a(paramString1, i)).deleteOnExit();
+      i += 1;
     }
   }
 }

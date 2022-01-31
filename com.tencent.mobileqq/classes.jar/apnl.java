@@ -1,14 +1,12 @@
 class apnl
-  implements aptu
+  implements aopi
 {
-  apnl(apnk paramapnk) {}
+  apnl(apnh paramapnh) {}
   
-  public void a()
+  public void a(long paramLong)
   {
-    this.a.a.s();
+    apnh.b(this.a, paramLong);
   }
-  
-  public void b() {}
 }
 
 

@@ -1,28 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aoab
-  implements Animator.AnimatorListener
+class aoab
+  implements URLDrawable.URLDrawableListener
 {
-  public aoab(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  aoab(anzz paramanzz) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
-      this.a.setVisibility(8);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
+      }
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
+      }
+    }
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    paramURLDrawable = paramURLDrawable.getTag();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+    {
+      paramURLDrawable = (Emoticon)paramURLDrawable;
+      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
+        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      }
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
+      }
+    }
+  }
 }
 
 

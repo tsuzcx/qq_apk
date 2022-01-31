@@ -1,40 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
 public class uzg
-  extends syv
+  implements syq<uzi, uzj>
 {
-  public static final String a = sxp.a("StorySvc.get_photography_guide");
+  private WeakReference<uzf> a;
   
-  public String a()
+  public uzg(uzf paramuzf)
   {
-    return a;
+    this.a = new WeakReference(paramuzf);
   }
   
-  public syq a(byte[] paramArrayOfByte)
+  public void a(@NonNull uzi paramuzi, @Nullable uzj paramuzj, @NonNull ErrorMessage paramErrorMessage)
   {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
-    try
-    {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new uzh(localRspGetPhotographyGuide);
+    ved.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    uzf localuzf = (uzf)this.a.get();
+    if (localuzf == null) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      veg.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideRequest{}";
+    localuzf.a(paramuzi, paramuzj, paramErrorMessage);
   }
 }
 

@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class aoso
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public aoso(QfileLocalFileAppTabView.1.1 param1) {}
+  public aoso(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(View paramView)
+  {
+    paramView = (aosv)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.jdField_a_of_type_JavaLangObject;
+    switch (paramView.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.i();
+      return;
+      this.a.a.a().ab();
+      this.a.a(localFileInfo, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+    }
+  }
 }
 
 

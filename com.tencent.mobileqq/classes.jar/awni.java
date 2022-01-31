@@ -1,25 +1,47 @@
-import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
 import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class awni
-  extends awoh
+  extends awoj
 {
+  private AccountSearchPb.hotwordrecord jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
   private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private String jdField_b_of_type_JavaLangString;
+  
+  public awni(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  {
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord = paramhotwordrecord;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence2;
+  }
   
   public awni(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
     this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public AccountSearchPb.hotwordrecord a()
+  {
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
+  }
+  
+  public AccountSearchPb.record a()
+  {
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
   }
   
   public CharSequence a()
@@ -34,9 +56,22 @@ public class awni
   
   public void a(View paramView)
   {
-    AddFriendActivity.a((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record), ((BaseActivity)paramView.getContext()).app, true, 1);
-    awvy.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    awvy.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
+    Intent localIntent = new Intent(paramView.getContext(), PublicAccountBrowser.class);
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null)
+    {
+      localIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
+      nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_type.get()), "1");
+    }
+    for (;;)
+    {
+      paramView.getContext().startActivity(localIntent);
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record != null) {
+        nol.a(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_id.get()));
+      }
+      return;
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.article_short_url.get());
+    }
   }
   
   public boolean a()
@@ -46,41 +81,42 @@ public class awni
   
   public CharSequence b()
   {
-    StringBuilder localStringBuilder;
-    if (this.b == null)
-    {
-      localStringBuilder = new StringBuilder().append("(");
-      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() == 0L) {
-        break label78;
-      }
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
     }
-    label78:
-    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());; str = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get())
-    {
-      this.b = awvy.a(str + ")", this.jdField_a_of_type_JavaLangString);
-      return this.b;
-    }
+    return ajya.a(2131705359);
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
-    }
-    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.mobile.get();
+    return null;
   }
   
   public int c()
   {
-    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return 1;
-    }
-    return 11;
+    return 0;
   }
   
   public CharSequence c()
   {
-    return ajyc.a(2131705345);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_description.has()) {
+        localObject1 = this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_description.get();
+      }
+    }
+    return localObject1;
+  }
+  
+  public String c()
+  {
+    if (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord != null) {
+      return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord.hotword_cover_url.get();
+    }
+    return this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.title_image.get();
   }
   
   public CharSequence d()

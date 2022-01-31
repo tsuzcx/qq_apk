@@ -1,26 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import com.etrump.mixlayout.ETTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.BubbleImageView;
 
-final class adyl
-  implements adys
+class adyl
+  implements DialogInterface.OnClickListener
 {
-  adyl(MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, ETTextView paramETTextView1, ETTextView paramETTextView2, int paramInt, String paramString, MessageRecord paramMessageRecord) {}
+  adyl(adyf paramadyf, MessageForReplyText paramMessageForReplyText) {}
   
-  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMessageRecord2 != null) && (adyh.b(paramMessageRecord2)))
+    if ((this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((baky)this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_Adyf.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
     {
-      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() == null)) {
-        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
-      }
-      adyh.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramContext, paramQQAppInterface, paramString);
+      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Adyf.jdField_a_of_type_AndroidContentContext;
+      bcql.a(this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131697657, 0).b(paramDialogInterface.getTitleBarHeight());
+      return;
     }
+    this.jdField_a_of_type_Adyf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
   }
 }
 

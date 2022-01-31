@@ -1,6 +1,6 @@
 package cooperation.qqreader.host.advertisement;
 
-import bhzu;
+import bial;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
-  implements bhzu
+  implements bial
 {
   int jdField_a_of_type_Int;
   ReaderTianShuSdk.RequestListener jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderTianShuSdk$RequestListener;

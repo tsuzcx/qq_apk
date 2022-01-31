@@ -1,13 +1,11 @@
 class aerd
-  extends ajta
+  extends ajxj
 {
-  aerd(aerb paramaerb) {}
+  aerd(aeqz paramaeqz) {}
   
-  protected void a(Object paramObject)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    if (aerb.a(this.a) != null) {
-      aerb.a(this.a).notifyDataSetChanged();
-    }
+    aeqz.a(this.a, paramBoolean, paramObject);
   }
 }
 

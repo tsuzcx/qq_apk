@@ -1,9 +1,9 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
-import beig;
-import besl;
-import beuc;
+import beix;
+import betc;
+import beut;
 
 final class InternalJSPlugin$7
   implements Runnable
@@ -16,16 +16,16 @@ final class InternalJSPlugin$7
     Object localObject1 = null;
     try
     {
-      beig localbeig = beig.a(this.val$context, String.valueOf(beuc.a().a()), this.val$appId);
-      localObject1 = localbeig;
-      localObject3 = localbeig;
-      localbeig.a(this.val$key, "Object", this.val$data);
+      beix localbeix = beix.a(this.val$context, String.valueOf(beut.a().a()), this.val$appId);
+      localObject1 = localbeix;
+      localObject3 = localbeix;
+      localbeix.a(this.val$key, "Object", this.val$data);
       return;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      besl.d("InternalJSPlugin", "saveToMiniAppStorage ", localException);
+      betc.d("InternalJSPlugin", "saveToMiniAppStorage ", localException);
       return;
     }
     finally

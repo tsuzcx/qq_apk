@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class auiz
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  public auiz(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("KEY_BATTERY", 0);
-      }
-      a(paramInt);
-    }
+    AutoReplyEditActivity.b(this.a, true);
   }
 }
 

@@ -1,80 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amsq
-  extends ampb<amsp>
 {
-  public static amsp a()
+  public boolean a;
+  
+  public static amsq a(amph[] paramArrayOfamph)
   {
-    amsp localamsp2 = (amsp)ampm.a().a(492);
-    amsp localamsp1 = localamsp2;
-    if (localamsp2 == null) {
-      localamsp1 = new amsp();
+    boolean bool = false;
+    amsq localamsq = new amsq();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfamph != null) {
+      localObject1 = localObject2;
     }
-    return localamsp1;
-  }
-  
-  public int a()
-  {
-    return 492;
-  }
-  
-  @NonNull
-  public amsp a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GroupIntimateRelationshipConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new amsp();
-  }
-  
-  @Nullable
-  public amsp a(ampi[] paramArrayOfampi)
-  {
-    if ((paramArrayOfampi != null) && (paramArrayOfampi.length > 0))
+    try
     {
-      amsp localamsp = amsp.a(paramArrayOfampi[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfampi[0].a);
+      if (paramArrayOfamph.length > 0) {
+        localObject1 = paramArrayOfamph[0].a;
       }
-      return localamsp;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
+        return localamsq;
+      }
+      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
+        bool = true;
+      }
+      localamsq.a = bool;
+      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localamsq.a);
+      return localamsq;
     }
-    return new amsp();
-  }
-  
-  public Class<amsp> a()
-  {
-    return amsp.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    catch (Exception paramArrayOfamph)
+    {
+      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfamph);
     }
-  }
-  
-  public void a(amsp paramamsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramamsp);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return localamsq;
   }
 }
 

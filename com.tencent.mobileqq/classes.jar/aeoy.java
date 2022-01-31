@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class aeoy
-  implements View.OnClickListener
+  extends ayfn
 {
-  aeoy(aeoo paramaeoo) {}
+  aeoy(aeom paramaeom) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (!this.a.N) {
-      aaod.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
-    }
+    ayfx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeom.e(this.a), paramBoolean, paramArrayOfObject);
+  }
+  
+  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    ayfx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeom.f(this.a), paramBoolean, paramArrayOfObject);
   }
 }
 

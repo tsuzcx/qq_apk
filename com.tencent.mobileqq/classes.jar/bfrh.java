@@ -1,17 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
-
-public class bfrh
-  implements View.OnTouchListener
+public abstract interface bfrh
 {
-  public bfrh(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a();
 }
 
 

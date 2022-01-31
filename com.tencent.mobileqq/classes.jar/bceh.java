@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-class bceh
-  implements View.OnTouchListener
+public abstract interface bceh
 {
-  bceh(bceg parambceg) {}
+  public abstract Activity a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract bcee a();
+  
+  public abstract WebViewFragment a();
+  
+  public abstract WebView a();
 }
 
 

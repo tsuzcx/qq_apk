@@ -1,17 +1,20 @@
-import android.content.Context;
-
-public class bhmt
+public abstract class bhmt<T, P>
 {
-  public static Context a;
+  private volatile T a;
   
-  public static Context a()
-  {
-    return a;
-  }
+  protected abstract T a(P paramP);
   
-  public static void a(Context paramContext)
+  public final T b(P paramP)
   {
-    a = paramContext;
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
   }
 }
 

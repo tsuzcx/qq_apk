@@ -1,38 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-
-public class acrh
-  implements View.OnClickListener
+public abstract interface acrh
 {
-  public acrh(ActivateFriendGrid paramActivateFriendGrid) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = (ActivateFriendGridItem)paramView;
-    if (paramView.jdField_a_of_type_Boolean)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (paramView.jdField_a_of_type_Boolean) {
-        break label101;
-      }
-    }
-    label101:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
-      }
-      return;
-      ActivateFriendGrid.b(this.a);
-      break;
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

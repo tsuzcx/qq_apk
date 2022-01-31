@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
 
 public class aihr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   public aihr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.get() != null)) {
-      ((TVK_IMediaPlayer)this.a.a.get()).pauseDownload();
-    }
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 

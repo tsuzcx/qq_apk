@@ -1,22 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afzc
-  extends bajj
+  implements agbh
 {
-  public afzc(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, baji parambaji, QQAppInterface paramQQAppInterface)
+  public afzc(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void a()
   {
-    super(paramContext, parambaji, paramQQAppInterface);
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
   }
   
-  protected void b(Object paramObject)
+  public void b()
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
   }
 }
 

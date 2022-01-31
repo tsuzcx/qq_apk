@@ -1,37 +1,26 @@
 import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class aoxa
-  implements aoup
+  implements aout
 {
-  aoxa(aowz paramaowz, String paramString, aoxp paramaoxp) {}
+  aoxa(aowz paramaowz, String paramString, aoxt paramaoxt) {}
   
   public void a(int paramInt, String paramString)
   {
-    boolean bool3 = false;
-    boolean bool4 = true;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
-    boolean bool2 = bool3;
-    boolean bool1 = bool4;
-    if (paramInt != -100001)
-    {
-      bool2 = bool3;
-      bool1 = bool4;
-      if (paramInt != -100002)
-      {
-        if (paramInt != -100003) {
-          break label107;
-        }
-        bool1 = bool4;
-        bool2 = bool3;
-      }
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aoxp.a(aowt.a(this.jdField_a_of_type_Aowz.jdField_a_of_type_Long, bool2), bool1);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aowz.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aoxt.a(aowx.a(this.jdField_a_of_type_Aowz.jdField_a_of_type_Long, bool2), bool1);
       return;
-      label107:
       if ((paramInt == -6101) || (paramInt == -7003))
       {
         bool1 = false;
@@ -40,7 +29,6 @@ class aoxa
       else
       {
         bool1 = false;
-        bool2 = bool3;
       }
     }
   }
@@ -48,34 +36,19 @@ class aoxa
   public void a(String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardFileType", "1");
     localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aowz.jdField_a_of_type_JavaLangString);
     localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aowz.jdField_a_of_type_Long + "");
     localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aowz.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aowz.d);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aowz.e);
     localBundle.putString("_m_ForwardUuid", paramString);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Aowz.d))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aowz.e)) {
-        break label257;
-      }
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aowz.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aowz.f);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aowz.jdField_a_of_type_JavaLangString + "] success");
     }
-    label257:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aowz.e))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aowz.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
-      }
-      aowt.a(aowt.a(this.jdField_a_of_type_Aowz.jdField_a_of_type_Aowt), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aowz.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aoxp);
-      return;
-      i = Integer.parseInt(this.jdField_a_of_type_Aowz.d);
-      break;
-    }
+    this.jdField_a_of_type_Aoxt.a(paramString, localBundle);
   }
 }
 

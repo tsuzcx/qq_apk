@@ -1,13 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class osl
-  implements qeg<TabChannelCoverInfo>
+public class osl
+  implements Manager
 {
-  osl(osj paramosj) {}
+  private AppInterface a;
   
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  public osl(AppInterface paramAppInterface)
   {
-    return (paramTabChannelCoverInfo != null) && (paramTabChannelCoverInfo.reason != 4);
+    QLog.i("ReadInJoyLogicManager", 1, "[ReadInJoyLogicManager] constructed.");
+    this.a = paramAppInterface;
+    a();
+  }
+  
+  public osg a()
+  {
+    return osg.a();
+  }
+  
+  public void a()
+  {
+    ook.a();
+    osg.a().a(this.a);
+  }
+  
+  public void b()
+  {
+    osg.a().a(false);
+  }
+  
+  public void onDestroy()
+  {
+    b();
   }
 }
 

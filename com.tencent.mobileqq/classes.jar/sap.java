@@ -1,25 +1,43 @@
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class sap
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements xgu<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public sap(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  public sap(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    if (ServiceAccountFolderActivity.a(this.a) != null)
+    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
+    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
+    String str = localStUser.icon.get();
+    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
     {
-      float f = paramMotionEvent.getY();
-      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
-        return false;
-      }
+      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
+      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new saq(this, localStUser));
     }
-    return true;
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
+  {
+    if (paramBoolean)
+    {
+      if (paramStGetMainPageRsp != null)
+      {
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        ved.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        a(paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.a(this.a);
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+      }
+      return;
+    }
+    ved.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 

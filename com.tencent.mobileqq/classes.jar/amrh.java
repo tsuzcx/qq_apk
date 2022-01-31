@@ -1,14 +1,16 @@
 public class amrh
 {
+  public long a;
   public String a;
+  public long b;
   public String b;
-  public String c;
   
-  public amrh(String paramString1, String paramString2, String paramString3)
+  public amrh(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
 }
 

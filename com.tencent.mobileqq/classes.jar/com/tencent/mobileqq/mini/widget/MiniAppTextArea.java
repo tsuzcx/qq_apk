@@ -15,7 +15,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bbjw;
+import bbkk;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -94,7 +94,7 @@ public class MiniAppTextArea
   
   private String getActualColor(String paramString)
   {
-    if (bbjw.a(paramString)) {
+    if (bbkk.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -357,7 +357,7 @@ public class MiniAppTextArea
       }
       String str = paramJSONObject.optString("placeholder");
       localObject = paramJSONObject.optJSONObject("placeholderStyle");
-      if (!bbjw.a(str)) {
+      if (!bbkk.a(str)) {
         setHint(str);
       }
       if (localObject != null)
@@ -411,7 +411,7 @@ public class MiniAppTextArea
     }
     localObject = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bbjw.a((String)localObject)) {
+    if (!bbkk.a((String)localObject)) {
       setHint((CharSequence)localObject);
     }
     if (localJSONObject != null)

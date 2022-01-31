@@ -1,10 +1,15 @@
-import android.graphics.Bitmap;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
 
 public class bkhf
+  extends bjdt
 {
-  public int a;
-  public Bitmap a;
-  public int b;
+  public bkhf(EditTextEffectView paramEditTextEffectView) {}
+  
+  public void e()
+  {
+    super.e();
+    this.a.a();
+  }
 }
 
 

@@ -6,11 +6,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qjq;
+import qjn;
 
 public class VideoFeedsFollowImageView
   extends ImageView
-  implements qjq
+  implements qjn
 {
   public VideoFeedsFollowImageView(Context paramContext)
   {

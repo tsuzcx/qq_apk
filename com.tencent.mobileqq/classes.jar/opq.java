@@ -1,41 +1,46 @@
+import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class opq
   extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
+  public static String a = "ViolaPicDetailConfigHandler";
+  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = ooi.a(paramString);
-    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
-      bhvh.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
-    }
-    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
-    if (paramString != null) {}
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = oof.a(paramString);
+    Object localObject = localMap.keySet();
     try
     {
-      bhvh.d(Integer.parseInt(paramString));
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)localMap.get(str1);
+        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
+          bhvy.c(Integer.parseInt(str2));
+        }
+      }
       return true;
     }
-    catch (Exception paramString)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    bhvh.b(null);
-    bhvh.d(0);
+    bhvy.c(0);
   }
 }
 

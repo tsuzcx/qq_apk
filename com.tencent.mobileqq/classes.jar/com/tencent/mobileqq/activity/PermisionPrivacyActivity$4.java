@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bboy;
+import bbpm;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ class PermisionPrivacyActivity$4
   
   public void run()
   {
-    this.a.setRightText(bboy.a().a());
+    this.a.setRightText(bbpm.a().a());
     if (QLog.isDevelopLevel()) {
       QLog.d("CustomOnlineStatusManager", 4, "permision activity -> updateCustomOnlineStatus text");
     }

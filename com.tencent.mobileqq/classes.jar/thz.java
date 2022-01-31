@@ -1,11 +1,16 @@
 class thz
-  implements bfos
+  extends ajse
 {
-  thz(thy paramthy, tfi paramtfi) {}
+  thz(thv paramthv) {}
   
-  public void onDismiss()
+  protected void a(int paramInt)
   {
-    vel.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_Tfi.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_Tfi.jdField_a_of_type_JavaLangString });
+    if (paramInt == 1)
+    {
+      ved.b(thv.b() + ".VASH", "Friend Cache Inited!");
+      thv.h = true;
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

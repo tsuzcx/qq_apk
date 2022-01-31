@@ -1,25 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class wga
-  implements bcwh
+  implements DialogInterface.OnCancelListener
 {
   public wga(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+    if (this.a.f) {
       return;
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      wim.a(1, 2131719476);
-      return;
-    }
-    wim.a(2, 2131719495);
+    this.a.h = -1;
+    this.a.f = true;
+    QRDisplayActivity.a(this.a).b();
   }
 }
 

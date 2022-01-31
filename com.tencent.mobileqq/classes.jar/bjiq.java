@@ -1,16 +1,14 @@
-public class bjiq
+import android.support.annotation.NonNull;
+
+class bjiq
+  implements bjho
 {
-  String a = "";
-  String b = "";
-  String c = "";
+  bjiq(bjip parambjip) {}
   
-  public bjiq() {}
-  
-  public bjiq(String paramString1, String paramString2, String paramString3)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    return bakx.b(paramString);
   }
 }
 

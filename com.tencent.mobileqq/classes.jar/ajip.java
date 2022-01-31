@@ -1,38 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
 public abstract interface ajip
 {
-  public abstract String a();
+  public abstract void a(int paramInt);
   
-  public abstract String a(int paramInt, ApolloWebAvatarParam paramApolloWebAvatarParam);
-  
-  public abstract String a(ajim paramajim);
-  
-  public abstract String a(String paramString);
-  
-  public abstract String a(ArrayList<ApolloWebAvatarParam> paramArrayList);
-  
-  public abstract String a(int[] paramArrayOfInt);
-  
-  public abstract void a(int paramInt, int[] paramArrayOfInt);
-  
-  public abstract void a(Activity paramActivity, String paramString1, String paramString2);
-  
-  public abstract void a(ArrayList<String> paramArrayList);
-  
-  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 

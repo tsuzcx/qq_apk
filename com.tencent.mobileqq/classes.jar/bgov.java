@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bgov
+public class bgov
   implements DialogInterface.OnClickListener
 {
-  bgov(bgos parambgos) {}
+  public bgov(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = true;
-    bgos.a(this.a, 2);
-    bgos.c(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgov
  * JD-Core Version:    0.7.0.1
  */

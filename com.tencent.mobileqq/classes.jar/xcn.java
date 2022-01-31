@@ -1,44 +1,31 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
+import android.content.res.Resources;
+import android.widget.Button;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class xcn
-  implements xdk
+  extends balg
 {
   public xcn(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(List<bale> paramList, xch paramxch)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Xcf == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopGiftPanel", 2, "getPackGiftStorage--onGetPackGift error--mTroopGifPanelData is null");
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_Xcf.b(paramList);
-    this.a.jdField_a_of_type_Xcf.a(paramxch);
-    if ((this.a.jdField_a_of_type_Xcf != null) && (this.a.jdField_a_of_type_Xcf.jdField_e_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_Xcf.jdField_e_of_type_JavaUtilArrayList.size() > 0) && (this.a.jdField_a_of_type_Xcf.b.size() > 0) && (this.a.jdField_a_of_type_Xcf.jdField_e_of_type_Int != -1))
-    {
-      this.a.jdField_a_of_type_Xce = ((xce)this.a.jdField_a_of_type_Xcf.jdField_e_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Xcf.jdField_e_of_type_Int));
-      TroopGiftPanel.a(this.a, this.a.jdField_a_of_type_Xce);
-    }
-    if (this.a.d())
-    {
-      paramList = this.a;
-      if ((!TextUtils.isEmpty(this.a.f)) && (TroopGiftPanel.a(this.a))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramList.setSendGiftBtnEnabled(bool);
-        return;
-      }
-    }
-    this.a.setSendGiftBtnEnabled(TroopGiftPanel.a(this.a));
+    super.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
+    TroopGiftPanel.a(this.a, 0L);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, ajya.a(2131715434), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    TroopGiftPanel.a(true);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    super.b(paramInt, paramString);
+    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, ajya.a(2131715401), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
+    TroopGiftPanel.a(true);
   }
 }
 

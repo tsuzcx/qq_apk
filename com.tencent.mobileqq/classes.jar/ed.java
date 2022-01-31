@@ -77,7 +77,7 @@ public class ed
     if (paramInt == getCount() - 1) {
       if ((LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getComeCount() == LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount()) || (LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).isSendFromLocal()) || (LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).hasSendingOrRecving()))
       {
-        LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setWaitText(String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.getString(2131693927), new Object[] { Integer.valueOf(LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount()) }));
+        LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setWaitText(String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.getString(2131693928), new Object[] { Integer.valueOf(LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount()) }));
         LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).b();
         paramViewGroup = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
       }
@@ -89,7 +89,7 @@ public class ed
       {
         paramInt = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getComeCount();
         i = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount();
-        paramView = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getApp().getString(2131693924), new Object[] { Integer.valueOf(i), Integer.valueOf(i - paramInt) });
+        paramView = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getApp().getString(2131693925), new Object[] { Integer.valueOf(i), Integer.valueOf(i - paramInt) });
         LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setWaitText(paramView);
         LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).a();
         break;
@@ -97,7 +97,7 @@ public class ed
       LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).b();
       paramInt = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getComeCount();
       int i = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount();
-      paramView = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getApp().getString(2131693922), new Object[] { Integer.valueOf(i), Integer.valueOf(i - paramInt) });
+      paramView = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getApp().getString(2131693923), new Object[] { Integer.valueOf(i), Integer.valueOf(i - paramInt) });
       LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setWaitText(paramView);
       break;
       if (paramInt <= LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getTotalCount() - 1) {
@@ -177,7 +177,7 @@ public class ed
     do
     {
       return;
-      localFileManagerEntity = apue.a(paramView);
+      localFileManagerEntity = apug.a(paramView);
       localForwardFileInfo = new ForwardFileInfo();
       localForwardFileInfo.b(10009);
       localForwardFileInfo.d(6);
@@ -198,11 +198,11 @@ public class ed
     while (((Iterator)localObject).hasNext())
     {
       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-      if ((localDataLineMsgRecord.msgtype == -2000) || ((localDataLineMsgRecord.msgtype == -2005) && (apue.a(localDataLineMsgRecord.filename) == 0)) || ((localDataLineMsgRecord.msgtype == -2335) && (localDataLineMsgRecord.bIsMoloImage))) {
+      if ((localDataLineMsgRecord.msgtype == -2000) || ((localDataLineMsgRecord.msgtype == -2005) && (apug.a(localDataLineMsgRecord.filename) == 0)) || ((localDataLineMsgRecord.msgtype == -2335) && (localDataLineMsgRecord.bIsMoloImage))) {
         if (localDataLineMsgRecord == paramView) {
           localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
         } else {
-          localArrayList.add(String.valueOf(apue.a(localDataLineMsgRecord).nSessionId));
+          localArrayList.add(String.valueOf(apug.a(localDataLineMsgRecord).nSessionId));
         }
       }
     }

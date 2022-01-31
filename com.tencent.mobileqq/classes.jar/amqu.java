@@ -2,29 +2,34 @@ import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
 
 public class amqu
-  extends amqr
+  extends amqq
 {
   public int a()
   {
-    return 250;
+    return 159;
   }
   
-  public amql a(String paramString)
+  public amqk a(String paramString)
   {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
     try
     {
-      amrf localamrf = (amrf)ampw.a(paramString, amrf.class);
-      return new amqo(paramString, localamrf);
+      amri localamri = (amri)ampv.a(paramString, amri.class);
+      return new amqo(paramString, localamri);
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
     {
       for (;;)
       {
-        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
         Object localObject = null;
       }
     }
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

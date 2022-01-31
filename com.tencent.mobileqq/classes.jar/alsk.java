@@ -1,6 +1,9 @@
-public abstract interface alsk
+import java.util.HashMap;
+
+public class alsk
 {
-  public abstract void a(alsn paramalsn, boolean paramBoolean, byte[] paramArrayOfByte);
+  public int a;
+  public final HashMap<String, alsl> a = new HashMap();
 }
 
 

@@ -1,305 +1,280 @@
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkge
-  extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private bkfw jdField_a_of_type_Bkfw;
-  private int b;
-  private int c;
+  private static final Set<Integer> a = new HashSet(5);
+  private static final Set<Integer> b = new HashSet(5);
   
-  public bkge(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener, bkfw parambkfw)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Bkfw = parambkfw;
-    paramInt1 = bkht.a(getContext(), 6.0F);
-    this.jdField_c_of_type_Int = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
-    a();
+    a.add(Integer.valueOf(4));
+    a.add(Integer.valueOf(5));
+    a.add(Integer.valueOf(9));
+    a.add(Integer.valueOf(10));
+    b.add(Integer.valueOf(9));
+    b.add(Integer.valueOf(10));
   }
   
-  private URLDrawable a(bkfm parambkfm)
+  public static int a(bkgd parambkgd)
   {
-    Object localObject1 = (bjfa)bjae.a().c(12);
-    Object localObject2 = bjfa.a();
-    localObject1 = parambkfm.b + "_static.png";
-    localObject2 = new File((String)localObject2);
-    if (((File)localObject2).exists()) {
-      if (!((File)localObject2).isDirectory()) {
-        ((File)localObject2).delete();
-      }
+    int j = 0;
+    int i = j;
+    switch (parambkgd.a)
+    {
+    default: 
+      i = j;
     }
     for (;;)
     {
-      localObject1 = new File((File)localObject2, (String)localObject1);
       if (QLog.isColorLevel()) {
-        QLog.d("InformationFaceAdapter", 2, "static file name:" + ((File)localObject1).getAbsolutePath());
+        QLog.d("QIMInformationPasterManager", 2, "check num of download dir:" + i);
       }
-      parambkfm = new URL(parambkfm.d);
-      localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject1).Recycle();
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = aywk.a;
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = aywk.a;
-      return URLDrawable.getDrawable(parambkfm, (URLDrawable.URLDrawableOptions)localObject1);
-      ((File)localObject2).mkdirs();
+      return i;
+      i = 4;
+      continue;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 14;
+      continue;
+      i = 1;
+      continue;
+      i = 33;
+      continue;
+      i = 5;
+      continue;
+      i = 2;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
   
-  private void a()
+  public static BitmapDrawable a(String paramString1, Context paramContext, String paramString2)
   {
-    setOrientation(0);
-    setGravity(17);
-    int j = bkht.a(getContext(), 12.0F);
-    int k = (int)((this.jdField_c_of_type_Int - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    if (i < this.b)
+    try
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131561276, null);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
-      if (i == 0) {
-        localLayoutParams.setMargins(0, j, j / 2, 0);
+      if (QLog.isColorLevel()) {
+        QLog.e("InformationFaceConstant", 2, "to be parsed" + paramString1);
       }
+      localJSONObject = new JSONObject(paramString1);
+    }
+    catch (JSONException localJSONException)
+    {
       for (;;)
       {
-        localView.setLayoutParams(localLayoutParams);
-        ((ImageView)localView.findViewById(2131368169)).setPadding(k, k, k, k);
-        addView(localView);
-        i += 1;
-        break;
-        if (this.b - 1 == i) {
-          localLayoutParams.setMargins(j / 2, j, 0, 0);
-        } else {
-          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
-        }
-      }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
-      }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
-      }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
-    }
-  }
-  
-  private void a(bkfm parambkfm, URLImageView paramURLImageView, QIMCommonLoadingView paramQIMCommonLoadingView, ProgressBar paramProgressBar, bkgg parambkgg, boolean paramBoolean, bkfw parambkfw)
-  {
-    Object localObject1 = (bjfa)bjae.a().c(12);
-    Object localObject2 = bjfa.a();
-    localObject1 = parambkfm.b + "_dynamic.png";
-    localObject2 = new File((String)localObject2);
-    String str;
-    if (((File)localObject2).exists())
-    {
-      if (!((File)localObject2).isDirectory()) {
-        ((File)localObject2).delete();
-      }
-      localObject2 = new File((File)localObject2, (String)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("InformationFaceAdapter", 2, "apng file name:" + ((File)localObject2).getAbsolutePath());
-      }
-      str = ((File)localObject2).getAbsolutePath();
-      bool2 = false;
-      bool1 = false;
-      if (!((File)localObject2).exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        bool1 = ApngDrawable.isApngFile((File)localObject2);
-        if (!bool1) {}
-      }
-      catch (IOException localIOException2)
-      {
-        label227:
-        bool1 = bool2;
-        continue;
-        if (!paramBoolean) {
-          continue;
-        }
-        continue;
-      }
-      try
-      {
-        localObject1 = bbql.a(BaseApplicationImpl.sApplication.getRuntime(), ((File)localObject2).getAbsolutePath(), "-Dynamic-", aywk.a, new int[] { 13 }, "-Dynamic-", null);
-        if (localObject1 == null) {
-          continue;
-        }
-        if (((URLDrawable)localObject1).getStatus() != 1) {
-          ((URLDrawable)localObject1).restartDownload();
-        }
-        if (((URLDrawable)localObject1).getStatus() != 1) {
-          continue;
-        }
-        parambkgg.onLoadSuccessed(paramURLImageView, (URLDrawable)localObject1);
-      }
-      catch (IOException localIOException1)
-      {
-        localIOException1.printStackTrace();
-      }
-    }
-    paramURLImageView.setImageDrawable((Drawable)localObject1);
-    for (;;)
-    {
-      if (!bool1)
-      {
-        paramURLImageView = new java.lang.ref.WeakReference(paramURLImageView);
-        paramQIMCommonLoadingView = new java.lang.ref.WeakReference(paramQIMCommonLoadingView);
-        paramProgressBar = new mqq.util.WeakReference(paramProgressBar);
-        new java.lang.ref.WeakReference(parambkfw);
-        parambkfw = parambkfm.jdField_c_of_type_JavaLangString;
-        localObject1 = new ayrv();
-        ((ayrv)localObject1).jdField_a_of_type_Aysa = new bkgf(this, (File)localObject2, paramQIMCommonLoadingView, paramURLImageView, str, paramBoolean, parambkgg, paramProgressBar);
-        ((ayrv)localObject1).jdField_a_of_type_JavaLangString = parambkfw;
+        JSONObject localJSONObject;
         if (QLog.isColorLevel()) {
-          QLog.d("InformationFaceAdapter", 2, "apng url:" + parambkfw);
+          QLog.e("InformationFaceConstant", 2, localJSONException, new Object[0]);
         }
-        ((ayrv)localObject1).jdField_a_of_type_Int = 0;
-        ((ayrv)localObject1).jdField_c_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
-        ((ayrv)localObject1).jdField_c_of_type_Int = bbev.a(aysy.a().a());
-        ((ayrv)localObject1).a(parambkfm);
-        lcm.a().a((aysw)localObject1);
+        localObject = null;
       }
-      return;
-      ((File)localObject2).mkdirs();
-      break;
-      localObject1 = null;
-      break label227;
-      if (QLog.isColorLevel()) {
-        QLog.d("InformationFaceAdapter", 2, "apng invalid file:" + ((File)localObject2).getAbsolutePath());
+      i = localObject.optInt("type", 0);
+      switch (i)
+      {
+      case 6: 
+      case 7: 
+      case 8: 
+      case 11: 
+      default: 
+        paramString1 = null;
       }
-      ((File)localObject2).delete();
+    }
+    if (localJSONObject == null) {}
+    for (;;)
+    {
+      return null;
+      Object localObject;
+      int i;
+      while (paramString1 != null)
+      {
+        return new BitmapDrawable(paramContext.getResources(), paramString1.a());
+        paramString1 = new bkib(paramContext, paramString1).a(paramString1);
+        paramString1 = new bkib(paramContext, bkib.a(i, paramString1[0], paramString2, paramString1[2]));
+        continue;
+        paramString1 = new bkhq(paramContext, paramString1).a(paramString1);
+        paramString1 = new bkhq(paramContext, bkhq.a(i, paramString2, paramString1[1], paramString1[3], paramString1[2]));
+        continue;
+        paramString1 = new bkhv(paramContext, bkhv.a(i, new bkhv(paramContext, paramString1).a(paramString1)[1]));
+        continue;
+        paramString1 = new bkhs(paramContext, bkhs.a(i, new bkhs(paramContext, paramString1).a(paramString1)[0], paramString2));
+        continue;
+        paramString1 = new bkih(paramContext, paramString1).a(paramString1);
+        paramString1 = new bkih(paramContext, bkih.a(i, paramString1[0], paramString1[1], paramString2));
+      }
     }
   }
   
-  public void a(bkfj parambkfj, int paramInt1, int paramInt2, boolean paramBoolean)
+  public static bkhx a(Context paramContext, String paramString)
   {
-    int i = paramInt1 * this.b;
-    label31:
-    Object localObject1;
-    Object localObject2;
-    URLImageView localURLImageView;
-    ProgressBar localProgressBar;
-    QIMCommonLoadingView localQIMCommonLoadingView;
-    if (paramInt1 == paramInt2 - 1)
+    try
     {
-      paramInt1 = parambkfj.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.e("InformationFaceConstant", 2, "to be parsed" + paramString);
       }
-      localObject1 = getChildAt(paramInt2 - i);
-      localObject2 = ((View)localObject1).findViewById(2131368171);
-      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131368169);
-      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131368170);
-      localQIMCommonLoadingView = (QIMCommonLoadingView)((View)localObject1).findViewById(2131368168);
-      if (!(this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity)) {
-        break label153;
-      }
-      localObject1 = parambkfj.b(paramInt2);
-      label111:
-      if (localObject1 != null) {
-        break label163;
-      }
-      veg.e("InformationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { parambkfj.toString() });
+      localJSONObject = new JSONObject(paramString);
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label153:
-      localObject1 = parambkfj.a(paramInt2);
-      break label111;
-      label163:
-      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131376871, Integer.valueOf(paramInt2));
-      if (!paramBoolean)
+      Object localObject;
+      for (;;)
       {
-        localProgressBar.setVisibility(4);
-        localURLImageView.setImageDrawable(null);
+        JSONObject localJSONObject;
+        if (QLog.isColorLevel()) {
+          QLog.e("InformationFaceConstant", 2, localJSONException, new Object[0]);
+        }
+        localObject = null;
       }
-      else
+      switch (localObject.optInt("type", 0))
       {
-        localURLImageView.setTag(2131376880, localObject1);
-        localURLImageView.setTag(2131376849, Boolean.valueOf(false));
-        localProgressBar.setVisibility(0);
-        localObject2 = new bkgg((String)localObject1, localURLImageView, localProgressBar);
-        localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof EditPicActivity))
-        {
-          localObject1 = a((bkfm)parambkfj.a.get(paramInt2));
-          if (localObject1 != null)
-          {
-            if (((URLDrawable)localObject1).getStatus() != 1) {
-              ((URLDrawable)localObject1).restartDownload();
-            }
-            if (((URLDrawable)localObject1).getStatus() == 1) {
-              ((bkgg)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
-            }
-            if (paramBoolean) {}
-            for (;;)
-            {
-              localURLImageView.setImageDrawable((Drawable)localObject1);
-              break;
-              localObject1 = null;
-            }
-          }
-        }
-        else
-        {
-          a((bkfm)parambkfj.a.get(paramInt2), localURLImageView, localQIMCommonLoadingView, localProgressBar, (bkgg)localObject2, paramBoolean, this.jdField_a_of_type_Bkfw);
-        }
+      case 8: 
+      default: 
+        return null;
+      case 1: 
+        return new bkhp(paramContext, paramString);
+      case 2: 
+        return new bkie(paramContext, paramString);
+      case 3: 
+        return new bkic(paramContext, paramString);
       }
     }
+    if (localJSONObject == null) {
+      return null;
+    }
+    return new bkib(paramContext, paramString);
+    return new bkhq(paramContext, paramString);
+    return new bkii(paramContext, paramString);
+    return new bkho(paramContext, paramString);
+    return new bkhv(paramContext, paramString);
+    return new bkhs(paramContext, paramString);
+    return new bkih(paramContext, paramString);
+    return new bkhn(paramContext, paramString);
+  }
+  
+  public static bkhx a(bkgd parambkgd, Context paramContext, long paramLong)
+  {
+    int i = parambkgd.a;
+    String str2;
+    Object localObject;
+    String str1;
+    switch (i)
+    {
+    case 8: 
+    default: 
+      return null;
+    case 1: 
+      return new bkhp(paramContext, bkhp.a(i, bjjj.c(paramLong), bjjj.d(paramLong), bjjj.e(paramLong)));
+    case 2: 
+      return new bkie(paramContext, bkie.a(i, bjjj.b(paramLong), bjjj.a(paramLong)));
+    case 3: 
+      str2 = bjfr.b(parambkgd);
+      parambkgd = bjjj.a(paramLong);
+      localObject = str2 + File.separator + "eea02a45.ttf";
+      str1 = str2 + File.separator + "outsideBorder.png";
+      str2 = str2 + File.separator + "insideBorder.png";
+      if (QLog.isColorLevel()) {
+        QLog.d("InformationFaceConstant", 2, "luar.ttf file name:" + (String)localObject);
+      }
+      return new bkic(paramContext, bkic.a(i, parambkgd[2], parambkgd[3], parambkgd[0], parambkgd[1], (String)localObject, str1, str2));
+    case 4: 
+      str1 = bjfr.b(parambkgd) + File.separator + "Roboto-Condensed.ttf";
+      localObject = parambkgd.l;
+      if (TextUtils.isEmpty(parambkgd.l)) {
+        localObject = ajya.a(2131705770);
+      }
+      return new bkib(paramContext, bkib.a(i, bjjj.b(paramLong), (String)localObject, str1));
+    case 5: 
+      localObject = bjfr.b(parambkgd);
+      str1 = (String)localObject + File.separator + "Roboto-Condensed.ttf";
+      str2 = (String)localObject + File.separator + "location_icon.png";
+      localObject = parambkgd.l;
+      if (TextUtils.isEmpty(parambkgd.l)) {
+        localObject = ajya.a(2131705767);
+      }
+      return new bkhq(paramContext, bkhq.a(i, (String)localObject, bjjj.f(paramLong), str2, str1));
+    case 6: 
+      String str4 = bjfr.b(parambkgd);
+      localObject = str4 + File.separator + "DINCond-Medium.ttf";
+      str1 = str4 + File.separator + parambkgd.k + ".apng";
+      str2 = str4 + File.separator + "temperatureSymbol.png";
+      String str3 = parambkgd.j;
+      str4 = str4 + File.separator + "line.png";
+      int j = parambkgd.c;
+      if (parambkgd.d == 3) {}
+      for (boolean bool = true;; bool = false) {
+        return new bkii(paramContext, bkii.a(i, j, str1, str3, str2, (String)localObject, str4, bool));
+      }
+    case 7: 
+      parambkgd = bjfr.b(parambkgd);
+      return new bkho(paramContext, bkho.a(i, parambkgd + File.separator + "city.bpng"));
+    case 12: 
+      return new bkhv(paramContext, bkhv.a(i, bjjj.g(paramLong)));
+    case 9: 
+      str1 = parambkgd.l;
+      localObject = str1;
+      if (TextUtils.isEmpty(str1)) {
+        localObject = "YOUR CITY";
+      }
+      return new bkhs(paramContext, bkhs.a(i, bjfr.b(parambkgd) + File.separator + "location3_icon_3x.png", (String)localObject));
+    case 10: 
+      localObject = parambkgd.l;
+      return new bkih(paramContext, bkih.a(i, bjfr.b(parambkgd) + File.separator + "location4_icon.png", bjfr.b(parambkgd) + File.separator + "lantingzhonghei.ttf", (String)localObject));
+    }
+    return new bkhn(paramContext, bkhn.a(i, bjfr.b(parambkgd) + File.separator + "up.png", bjfr.b(parambkgd) + File.separator + "down.png", bjjj.h(paramLong), bjjj.i(paramLong)));
+  }
+  
+  public static bkhx a(bkhx parambkhx, Context paramContext, String paramString)
+  {
+    switch (parambkhx.a())
+    {
+    case 3: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return null;
+    case 1: 
+      return new bkhp(paramContext, bkhp.a(parambkhx.a(), bjjj.c(-1L), bjjj.d(-1L), bjjj.e(-1L)));
+    case 2: 
+      return new bkie(paramContext, bkie.a(parambkhx.a(), bjjj.b(-1L), bjjj.a(-1L)));
+    case 4: 
+      parambkhx = (bkib)parambkhx;
+      return new bkib(paramContext, bkib.a(parambkhx.a(), parambkhx.a(), paramString, parambkhx.b()));
+    case 5: 
+      parambkhx = (bkhq)parambkhx;
+      return new bkhq(paramContext, bkhq.a(parambkhx.a(), paramString, bjjj.f(-1L), parambkhx.a(), parambkhx.b()));
+    case 12: 
+      parambkhx = (bkhv)parambkhx;
+      return new bkhv(paramContext, bkhv.a(parambkhx.a(), parambkhx.a()));
+    case 11: 
+      parambkhx = (bkhn)parambkhx;
+      return new bkhn(paramContext, bkhn.a(parambkhx.a(), parambkhx.a(), parambkhx.b(), bjjj.h(-1L), bjjj.i(-1L)));
+    case 9: 
+      parambkhx = (bkhs)parambkhx;
+      return new bkhs(paramContext, bkhs.a(parambkhx.a(), parambkhx.a(), paramString));
+    }
+    parambkhx = (bkih)parambkhx;
+    return new bkih(paramContext, bkih.a(parambkhx.a(), parambkhx.a(), parambkhx.b(), paramString));
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return a.contains(Integer.valueOf(paramInt));
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return b.contains(Integer.valueOf(paramInt));
   }
 }
 

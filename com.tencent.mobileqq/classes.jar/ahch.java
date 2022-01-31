@@ -1,42 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
 class ahch
-  implements EIPClientConnectListener
+  implements ahbs
 {
-  ahch(ahcf paramahcf, long paramLong) {}
+  ahch(ahcg paramahcg, int paramInt) {}
   
-  public void connectFailed()
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
   {
-    ahcf.a(this.jdField_a_of_type_Ahcf, false);
-    ahcf.b(this.jdField_a_of_type_Ahcf, false);
-    synchronized (ahcf.a(this.jdField_a_of_type_Ahcf))
-    {
-      ahcf.a(this.jdField_a_of_type_Ahcf).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + ahcf.a(this.jdField_a_of_type_Ahcf));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      ahcf.a(this.jdField_a_of_type_Ahcf, ???.procName);
-    }
-    ahcf.a(this.jdField_a_of_type_Ahcf, true);
-    ahcf.b(this.jdField_a_of_type_Ahcf, false);
-    synchronized (ahcf.a(this.jdField_a_of_type_Ahcf))
-    {
-      ahcf.a(this.jdField_a_of_type_Ahcf).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + ahcf.a(this.jdField_a_of_type_Ahcf) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Ahcg.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

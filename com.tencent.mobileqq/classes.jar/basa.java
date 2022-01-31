@@ -1,27 +1,47 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class basa
-  implements aycb
+class basa
+  implements aycd
 {
-  public basa(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject1, int paramInt3, JSONObject paramJSONObject2) {}
+  public int a;
+  public long a;
+  public long b;
+  public long c;
+  
+  basa(baro parambaro)
+  {
+    this.jdField_a_of_type_Int = 0;
+  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a != null) {}
-    }
-    do
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
     {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
+      }
       return;
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new basb(this));
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+      this.jdField_a_of_type_Baro.a(0L);
+      continue;
+      this.jdField_a_of_type_Baro.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
+      {
+        this.jdField_a_of_type_Baro.a(0L);
+      }
+      else
+      {
+        this.jdField_a_of_type_Baro.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_Baro.a(3000L);
+      }
+    }
   }
 }
 

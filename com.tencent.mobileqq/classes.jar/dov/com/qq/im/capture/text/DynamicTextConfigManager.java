@@ -4,13 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bizw;
-import bjdc;
-import bjgr;
-import bjgs;
-import bjgt;
-import bjgv;
-import bjjc;
+import bjan;
+import bjdt;
+import bjhi;
+import bjhj;
+import bjhk;
+import bjhm;
+import bjjt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,18 +22,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import nay;
+import nav;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicTextConfigManager
-  extends bizw
+  extends bjan
 {
   public static File a;
   private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + "usable" + File.separator;
   public int a;
-  private bjgt jdField_a_of_type_Bjgt = new bjgt(this);
+  private bjhk jdField_a_of_type_Bjhk = new bjhk(this);
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
   private String jdField_b_of_type_JavaLangString;
@@ -45,7 +45,7 @@ public class DynamicTextConfigManager
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(bjjc.a(), "dynamic_text");
+    jdField_a_of_type_JavaIoFile = new File(bjjt.a(), "dynamic_text");
   }
   
   public DynamicTextConfigManager()
@@ -53,9 +53,9 @@ public class DynamicTextConfigManager
     this.jdField_a_of_type_Int = 120;
   }
   
-  public static String a(@NonNull bjgs parambjgs)
+  public static String a(@NonNull bjhj parambjhj)
   {
-    return new File(jdField_a_of_type_JavaIoFile, parambjgs.a()).getPath();
+    return new File(jdField_a_of_type_JavaIoFile, parambjhj.a()).getPath();
   }
   
   private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a(String paramString)
@@ -74,7 +74,7 @@ public class DynamicTextConfigManager
         DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = DynamicTextConfigManager.DynamicTextConfigBean.convertFrom(paramString.getJSONObject(i));
         if (localDynamicTextConfigBean != null)
         {
-          localDynamicTextConfigBean.iconDrawableId = bjgr.a(localDynamicTextConfigBean.text_id);
+          localDynamicTextConfigBean.iconDrawableId = bjhi.a(localDynamicTextConfigBean.text_id);
           localArrayList.add(localDynamicTextConfigBean);
         }
         i += 1;
@@ -209,12 +209,12 @@ public class DynamicTextConfigManager
   
   public void a() {}
   
-  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bjgv parambjgv)
+  public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, bjhm parambjhm)
   {
     if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
       return;
     }
-    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, parambjgv), null, true);
+    ThreadManager.postImmediately(new DynamicTextConfigManager.1(this, paramDynamicTextConfigBean, parambjhm), null, true);
   }
   
   public void a(String paramString)
@@ -233,7 +233,7 @@ public class DynamicTextConfigManager
           this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject2);
           b(paramString);
           this.jdField_a_of_type_Boolean = true;
-          a().notifyObservers(bjdc.class, 3, false, null);
+          a().notifyObservers(bjdt.class, 3, false, null);
           ??? = ((ArrayList)localObject2).iterator();
           while (((Iterator)???).hasNext())
           {
@@ -243,7 +243,7 @@ public class DynamicTextConfigManager
             }
           }
         }
-        bjjc.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
+        bjjt.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
       }
     }
   }
@@ -266,7 +266,7 @@ public class DynamicTextConfigManager
       } while (!paramBoolean);
       localObject = new DynamicTextConfigManager.DynamicTextConfigBean();
       ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id = 28;
-      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = bjgr.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
+      ((DynamicTextConfigManager.DynamicTextConfigBean)localObject).iconDrawableId = bjhi.a(((DynamicTextConfigManager.DynamicTextConfigBean)localObject).text_id);
     } while ((paramList == null) || (paramList.size() <= 1));
     paramList.add(1, localObject);
   }
@@ -276,11 +276,11 @@ public class DynamicTextConfigManager
     return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
   }
   
-  public boolean a(bjgs parambjgs)
+  public boolean a(bjhj parambjhj)
   {
     boolean bool2 = true;
     boolean bool1;
-    if ((parambjgs == null) || (TextUtils.isEmpty(parambjgs.jdField_c_of_type_JavaLangString))) {
+    if ((parambjhj == null) || (TextUtils.isEmpty(parambjhj.jdField_c_of_type_JavaLangString))) {
       bool1 = false;
     }
     do
@@ -289,12 +289,12 @@ public class DynamicTextConfigManager
       {
         return bool1;
         bool1 = bool2;
-      } while (TextUtils.isEmpty(parambjgs.jdField_a_of_type_JavaLangString));
-      if (!new File(jdField_a_of_type_JavaIoFile, parambjgs.a()).exists()) {
+      } while (TextUtils.isEmpty(parambjhj.jdField_a_of_type_JavaLangString));
+      if (!new File(jdField_a_of_type_JavaIoFile, parambjhj.a()).exists()) {
         return false;
       }
       bool1 = bool2;
-    } while (new File(jdField_a_of_type_JavaLangString + parambjgs.jdField_c_of_type_JavaLangString).exists());
+    } while (new File(jdField_a_of_type_JavaLangString + parambjhj.jdField_c_of_type_JavaLangString).exists());
     return false;
   }
   
@@ -308,34 +308,34 @@ public class DynamicTextConfigManager
     }
     paramDynamicTextConfigBean = paramDynamicTextConfigBean.fontInfos.iterator();
     while (paramDynamicTextConfigBean.hasNext()) {
-      if (!a((bjgs)paramDynamicTextConfigBean.next())) {
+      if (!a((bjhj)paramDynamicTextConfigBean.next())) {
         return false;
       }
     }
     return true;
   }
   
-  public String b(bjgs parambjgs)
+  public String b(bjhj parambjhj)
   {
-    if (parambjgs == null) {
+    if (parambjhj == null) {
       return null;
     }
-    return jdField_a_of_type_JavaLangString + parambjgs.jdField_c_of_type_JavaLangString + File.separator;
+    return jdField_a_of_type_JavaLangString + parambjhj.jdField_c_of_type_JavaLangString + File.separator;
   }
   
   public void b() {}
   
-  public boolean b(bjgs parambjgs)
+  public boolean b(bjhj parambjhj)
   {
     try
     {
-      nay.a(new File(jdField_a_of_type_JavaIoFile, parambjgs.a()), jdField_a_of_type_JavaLangString);
+      nav.a(new File(jdField_a_of_type_JavaIoFile, parambjhj.a()), jdField_a_of_type_JavaLangString);
       return true;
     }
-    catch (Exception parambjgs)
+    catch (Exception parambjhj)
     {
       if (QLog.isColorLevel()) {
-        parambjgs.printStackTrace();
+        parambjhj.printStackTrace();
       }
     }
     return false;
@@ -356,7 +356,7 @@ public class DynamicTextConfigManager
       return;
       if (b())
       {
-        ??? = bjjc.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
+        ??? = bjjt.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
         Object localObject1 = ???;
         if (QLog.isColorLevel())
         {
@@ -374,7 +374,7 @@ public class DynamicTextConfigManager
           }
           return;
         }
-        ??? = bjjc.a("dynamic_text_config.cfg");
+        ??? = bjjt.a("dynamic_text_config.cfg");
         localObject3 = ???;
         if (QLog.isColorLevel())
         {

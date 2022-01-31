@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
+import android.os.Handler;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ajwr
-  implements Animation.AnimationListener
+  extends apyt
 {
-  public ajwr(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
+  public ajwr(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    paramAnimation = new AnimationSet(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.addAnimation(localAlphaAnimation);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

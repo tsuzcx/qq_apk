@@ -8,9 +8,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import bbjw;
-import bhzv;
-import bhzw;
+import bbkk;
+import biam;
+import bian;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.DittoAreaView;
@@ -169,7 +169,7 @@ public class DesktopDittoAreaView
               }
             }
             localObject1 = localObject5;
-            if (bbjw.a((String)localObject7))
+            if (bbkk.a((String)localObject7))
             {
               localObject1 = localObject5;
               localObject3 = new MiniAppExposureManager.CardModuleExposureData("desktop", str, (String)localObject3, null);
@@ -278,22 +278,22 @@ public class DesktopDittoAreaView
         }
         for (;;)
         {
-          bhzw localbhzw = new bhzw();
+          bian localbian = new bian();
           AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
           paramDittoArea = "";
           if (localAppRuntime != null) {
             paramDittoArea = localAppRuntime.getAccount();
           }
           long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          localbhzw.b = (paramDittoArea + "_" + l);
-          localbhzw.jdField_a_of_type_Int = 1;
-          localbhzw.jdField_e_of_type_JavaLangString = str1;
-          localbhzw.f = str2;
-          localbhzw.g = paramString;
-          localbhzw.d = 102;
-          localbhzw.jdField_e_of_type_Int = 1;
-          localbhzw.jdField_a_of_type_Long = l;
-          bhzv.a().a(localbhzw);
+          localbian.b = (paramDittoArea + "_" + l);
+          localbian.jdField_a_of_type_Int = 1;
+          localbian.jdField_e_of_type_JavaLangString = str1;
+          localbian.f = str2;
+          localbian.g = paramString;
+          localbian.d = 102;
+          localbian.jdField_e_of_type_Int = 1;
+          localbian.jdField_a_of_type_Long = l;
+          biam.a().a(localbian);
           if (!localJSONObject.has("appId")) {
             break label456;
           }

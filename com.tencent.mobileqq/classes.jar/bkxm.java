@@ -1,41 +1,48 @@
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class bkxm
-  extends bkxl
+class bkxm
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230751);
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private final Drawable a;
+  private final Drawable b;
   
-  public bkxm()
+  bkxm(Context paramContext)
   {
-    this(0.5F);
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837549);
+    this.b = paramContext.getDrawable(2130837553);
   }
   
-  public bkxm(float paramFloat)
+  private Drawable a(Drawable paramDrawable)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Float = paramFloat;
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
   }
   
-  public void a(float paramFloat)
+  private Drawable b(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
   }
   
-  public void onDrawTexture()
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
   }
   
-  public void onInitialized()
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "brightness");
-    a(this.jdField_a_of_type_Float);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 

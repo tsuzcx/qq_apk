@@ -1,53 +1,14 @@
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import java.util.List;
+import android.view.View.OnClickListener;
 
-public class awqz
-  extends awrv
+class awqz
+  implements View.OnClickListener
 {
-  public awqz(baxk parambaxk)
-  {
-    super(parambaxk, 268435456);
-  }
+  awqz(awqy paramawqy, awpr paramawpr) {}
   
-  public void a(awoe paramawoe, awwo paramawwo)
+  public void onClick(View paramView)
   {
-    Object localObject1 = (awof)paramawoe;
-    paramawoe = ((awwm)paramawwo).a();
-    if (paramawoe != null)
-    {
-      List localList = ((awof)localObject1).a();
-      if (localList != null)
-      {
-        paramawoe.removeAllViews();
-        int j = Math.min(localList.size(), ((awof)localObject1).a());
-        int i = 0;
-        while (i < j)
-        {
-          localObject1 = new awxx(((awwm)paramawwo).a(), 268435456);
-          Object localObject2 = ((awxx)localObject1).a();
-          awog localawog = (awog)localList.get(i);
-          ((View)localObject2).setTag(2131379208, localawog);
-          ((View)localObject2).setTag(2131379213, localObject1);
-          ((View)localObject2).setTag(2131379209, Integer.valueOf(i));
-          ((View)localObject2).setTag(2131379207, Integer.valueOf(localList.size()));
-          ((View)localObject2).setTag(2131379210, this.a);
-          if ((localawog instanceof awne)) {
-            awwb.a((awne)localawog, j, i);
-          }
-          localObject2 = new LinearLayout.LayoutParams(-1, -2);
-          paramawoe.addView(((awxx)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
-          this.a.a(localawog, (awwq)localObject1);
-          i += 1;
-        }
-      }
-    }
-    if (paramawwo.b() != null) {
-      paramawwo.b().setVisibility(8);
-    }
+    this.jdField_a_of_type_Awpr.a(paramView);
   }
 }
 

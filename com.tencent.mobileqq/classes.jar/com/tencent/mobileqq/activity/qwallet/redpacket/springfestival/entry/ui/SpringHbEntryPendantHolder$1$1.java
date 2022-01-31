@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui;
 
-import ahhd;
-import ahhi;
+import ahhb;
+import ahhg;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 
@@ -12,12 +12,12 @@ class SpringHbEntryPendantHolder$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
-    ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, new ahhi(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidViewView, ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0)));
-    ahhd.a(true);
-    ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, true);
-    ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0);
-    ahhd.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
+    ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, new ahhg(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0.jdField_a_of_type_AndroidViewView, ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0)));
+    ahhb.a(true);
+    ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, true);
+    ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0);
+    ahhb.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbEntryPendantHolder$1.a);
   }
 }
 

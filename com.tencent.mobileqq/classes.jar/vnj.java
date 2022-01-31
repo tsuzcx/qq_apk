@@ -1,8 +1,26 @@
-public abstract interface vnj
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class vnj
+  implements vkx
 {
-  public abstract void a();
+  public vnj(DoodleLayout paramDoodleLayout) {}
   
-  public abstract void a(Runnable paramRunnable);
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      ved.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
+  }
 }
 
 

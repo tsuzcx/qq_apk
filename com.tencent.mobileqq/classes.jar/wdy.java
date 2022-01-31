@@ -1,35 +1,49 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import java.util.List;
 
-public class wdy
-  extends ImageSpan
+class wdy
+  extends RecyclerView.AdapterDataObserver
 {
-  public wdy(Context paramContext, int paramInt)
+  wdy(wdx paramwdx) {}
+  
+  public void onChanged()
   {
-    super(paramContext, paramInt);
+    this.a.notifyDataSetChanged();
+    if (wdx.a(this.a) != null) {
+      wdx.a(this.a).a(wdx.a(this.a));
+    }
   }
   
-  public wdy(Drawable paramDrawable)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    super(paramDrawable);
+    this.a.notifyItemRangeChanged(wdx.a(this.a).size() + paramInt1, paramInt2);
+    if (wdx.a(this.a) != null) {
+      wdx.a(this.a).a(wdx.a(this.a));
+    }
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    this.a.notifyItemRangeInserted(wdx.a(this.a).size() + paramInt1, paramInt2);
+    if (wdx.a(this.a) != null) {
+      wdx.a(this.a).a(wdx.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(wdx.a(this.a).size() + paramInt1, wdx.a(this.a).size() + paramInt2);
+    if (wdx.a(this.a) != null) {
+      wdx.a(this.a).a(wdx.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(wdx.a(this.a).size() + paramInt1, paramInt2);
+    if (wdx.a(this.a) != null) {
+      wdx.a(this.a).a(wdx.a(this.a));
+    }
   }
 }
 

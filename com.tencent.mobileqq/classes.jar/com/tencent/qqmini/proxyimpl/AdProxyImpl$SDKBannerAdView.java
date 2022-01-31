@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.IBannerAdListener;
 import java.lang.ref.WeakReference;
-import ytv;
+import yts;
 
 class AdProxyImpl$SDKBannerAdView
   extends AdProxy.AbsBannerAdView
@@ -20,7 +20,7 @@ class AdProxyImpl$SDKBannerAdView
   AdProxy.IBannerAdListener mBannerListener;
   int mDeviceOrientation;
   String mEntryPath;
-  ytv mGdtBannerView;
+  yts mGdtBannerView;
   String mGdtCookie;
   int mHeight;
   String mPosid;

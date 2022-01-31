@@ -1,73 +1,55 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class mmt
-  implements ViewPager.OnPageChangeListener
+  implements mmy
 {
-  private int jdField_a_of_type_Int;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener;
+  mmy jdField_a_of_type_Mmy;
   
-  public mmt(EffectCycleViewPager paramEffectCycleViewPager, ViewPager.OnPageChangeListener paramOnPageChangeListener, int paramInt)
+  public mmt(EffectFilterPanel paramEffectFilterPanel, mmy parammmy)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
-    this.jdField_a_of_type_Int = paramInt;
+    a(parammmy);
   }
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 1) {
-        break label57;
-      }
-      lcl.c("EffectCycleViewPager", "onPageScrollStateChanged 00:1");
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1, false);
+    if (AudioHelper.e()) {
+      QLog.w("EffectFilterPanel", 1, "OnItemSelected, id[" + paramInt + "], name[" + paramString + "], seq[" + paramLong + "], Visibility[" + EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() + "], mlistener[" + this.jdField_a_of_type_Mmy + "]");
     }
-    for (;;)
+    if (EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() == 0)
     {
-      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
-      }
-      return;
-      label57:
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        lcl.c("EffectCycleViewPager", "onPageScrollStateChanged 11:" + (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2));
-        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2, false);
-      }
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).removeCallbacks(EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel));
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).clearAnimation();
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).setVisibility(8);
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    paramString = (FilterItem)EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
+    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
+    if (paramString != null)
     {
-      localStringBuilder = new StringBuilder().append("onPageSelected, pos[").append(paramInt).append("], mSelectListener[");
-      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener == null) {
-        break label91;
+      if (!paramString.isUsable()) {
+        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
+      }
+      axqq.c(paramString.getId());
+      if ((paramString.getId() != null) && (paramString.getId().compareToIgnoreCase("MANHUA") == 0)) {
+        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(51, paramString.getId());
       }
     }
-    label91:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      QLog.w("EffectCycleViewPager", 1, bool + "]");
-      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.a(paramInt);
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
-      }
       return;
     }
+    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(0, paramString.getId());
+  }
+  
+  public void a(mmy parammmy)
+  {
+    this.jdField_a_of_type_Mmy = parammmy;
   }
 }
 

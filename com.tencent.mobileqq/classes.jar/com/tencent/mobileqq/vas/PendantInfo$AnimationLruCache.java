@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import aczp;
+import aczm;
 import android.graphics.drawable.Drawable;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,8 +23,8 @@ public class PendantInfo$AnimationLruCache
     {
       Drawable localDrawable = (Drawable)localIterator.next();
       localDrawable.setCallback(null);
-      if ((localDrawable instanceof aczp)) {
-        ((aczp)localDrawable).a();
+      if ((localDrawable instanceof aczm)) {
+        ((aczm)localDrawable).a();
       }
     }
     super.clear();
@@ -36,8 +36,8 @@ public class PendantInfo$AnimationLruCache
     {
       paramEntry = (Drawable)paramEntry.getValue();
       paramEntry.setCallback(null);
-      if ((paramEntry instanceof aczp)) {
-        ((aczp)paramEntry).a();
+      if ((paramEntry instanceof aczm)) {
+        ((aczm)paramEntry).a();
       }
       return true;
     }

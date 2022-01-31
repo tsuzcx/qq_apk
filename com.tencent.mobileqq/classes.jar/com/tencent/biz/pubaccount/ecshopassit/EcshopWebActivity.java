@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import akwv;
+import akwu;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import bccu;
-import bfvg;
+import bcdi;
+import bfvx;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements bfvg
+  implements bfvx
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -61,7 +61,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return bccu.a(this, paramWebViewTabBarData, super.getIntent());
+    return bcdi.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -129,15 +129,15 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379407));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379412));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364706));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364705));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
     }
-    View localView = findViewById(2131375327);
+    View localView = findViewById(2131375329);
     if (localView == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
@@ -181,7 +181,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    akwv.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    akwu.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)

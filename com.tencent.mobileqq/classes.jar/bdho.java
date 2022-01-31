@@ -1,500 +1,472 @@
+import android.app.Activity;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appstore.dl.DownloadProxy.2;
+import com.tencent.open.appstore.dl.DownloadProxy.3;
+import com.tencent.open.appstore.dl.DownloadProxy.6;
+import com.tencent.open.appstore.dl.DownloadProxy.7;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.TMAssistantGetAppDetailTool;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bdho
 {
-  protected static Uri a;
-  protected static final String a;
+  private static volatile bdho jdField_a_of_type_Bdho;
+  private ITMAssistantExchangeURLListenner jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner = new bdhp(this);
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  static
+  private int a(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail)
   {
-    jdField_a_of_type_JavaLangString = bdho.class.getName();
-    jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
-  }
-  
-  /* Error */
-  public static int a(Context paramContext)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: getstatic 27	bdho:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   7: aconst_null
-    //   8: aconst_null
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   14: astore_3
-    //   15: aload_3
-    //   16: ifnonnull +17 -> 33
-    //   19: aload_3
-    //   20: ifnull +9 -> 29
-    //   23: aload_3
-    //   24: invokeinterface 51 1 0
-    //   29: iconst_m1
-    //   30: istore_1
-    //   31: iload_1
-    //   32: ireturn
-    //   33: aload_3
-    //   34: astore_0
-    //   35: aload_3
-    //   36: invokeinterface 55 1 0
-    //   41: pop
-    //   42: aload_3
-    //   43: astore_0
-    //   44: aload_3
-    //   45: aload_3
-    //   46: ldc 57
-    //   48: invokeinterface 61 2 0
-    //   53: invokeinterface 65 2 0
-    //   58: istore_2
-    //   59: iload_2
-    //   60: istore_1
-    //   61: aload_3
-    //   62: ifnull -31 -> 31
-    //   65: aload_3
-    //   66: invokeinterface 51 1 0
-    //   71: iload_2
-    //   72: ireturn
-    //   73: astore 4
-    //   75: aconst_null
-    //   76: astore_3
-    //   77: aload_3
-    //   78: astore_0
-    //   79: aload 4
-    //   81: invokevirtual 68	java/lang/Exception:printStackTrace	()V
-    //   84: aload_3
-    //   85: ifnull +9 -> 94
-    //   88: aload_3
-    //   89: invokeinterface 51 1 0
-    //   94: iconst_m1
-    //   95: ireturn
-    //   96: astore_3
-    //   97: aconst_null
-    //   98: astore_0
-    //   99: aload_0
-    //   100: ifnull +9 -> 109
-    //   103: aload_0
-    //   104: invokeinterface 51 1 0
-    //   109: aload_3
-    //   110: athrow
-    //   111: astore_3
-    //   112: goto -13 -> 99
-    //   115: astore 4
-    //   117: goto -40 -> 77
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	paramContext	Context
-    //   30	31	1	i	int
-    //   58	14	2	j	int
-    //   14	75	3	localCursor	android.database.Cursor
-    //   96	14	3	localObject1	Object
-    //   111	1	3	localObject2	Object
-    //   73	7	4	localException1	Exception
-    //   115	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	15	73	java/lang/Exception
-    //   0	15	96	finally
-    //   35	42	111	finally
-    //   44	59	111	finally
-    //   79	84	111	finally
-    //   35	42	115	java/lang/Exception
-    //   44	59	115	java/lang/Exception
-  }
-  
-  public static String a(Context paramContext)
-  {
-    int i = b(paramContext);
-    if (i == 2) {
-      paramContext = "wifi";
+    if ("biz_src_jc_update".equals(paramString)) {
+      bdjr.a("200", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bdlb.I));
     }
-    String str;
+    bdii.b("DownloadResolver", "[doDownloadActionBySDK] pParmas =" + paramBundle);
+    String str1 = paramBundle.getString(bdlb.j);
+    if (TextUtils.isEmpty(str1))
+    {
+      bdii.e("DownloadResolver", "[doDownloadActionBySDK] url is empty");
+      return -1;
+    }
+    String str13 = paramBundle.getString(bdlb.f);
+    int i = paramBundle.getInt(bdlb.k);
+    String str14 = paramBundle.getString(bdlb.i);
+    String str15 = paramBundle.getString(bdlb.l);
+    String str12 = paramBundle.getString(bdlb.D);
+    int j = paramBundle.getInt(bdlb.H);
+    String str11 = paramBundle.getString(bdlb.I);
+    boolean bool1 = paramBundle.getBoolean(bdlb.o);
+    boolean bool2 = paramBundle.getBoolean(bdlb.y, true);
+    boolean bool3 = paramBundle.getBoolean("is_qq_self_update_task", false);
+    boolean bool4 = paramBundle.getBoolean(bdlb.jdField_h_of_type_JavaLangString, true);
+    boolean bool5 = paramBundle.getBoolean(bdlb.x);
+    int k = paramBundle.getInt(bdlb.C, 0);
+    boolean bool6 = paramBundle.getBoolean(bdlb.J, false);
+    String str16 = paramBundle.getString("appId");
+    String str2 = paramBundle.getString("apkId", "");
+    String str3 = paramBundle.getString("recommendId", "");
+    String str4 = paramBundle.getString(bdlb.K, "");
+    String str5 = paramBundle.getString("sourceFromServer", "");
+    String str6 = paramBundle.getString("pageId", "");
+    String str7 = paramBundle.getString("moduleId", "");
+    String str8 = paramBundle.getString("positionId", "");
+    String str9 = paramBundle.getString("sendTime", "");
+    String str10 = paramBundle.getString("big_brother_ref_source_key", "");
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    switch (i)
+    {
+    default: 
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      bdhj.a(11, str1, i, localObject1);
+      return 0;
+      localObject1 = new DownloadInfo(str16, str1.trim(), str13, str15, str14, null, paramString, bool2);
+      ((DownloadInfo)localObject1).jdField_g_of_type_Int = i;
+      if (bool2)
+      {
+        ((DownloadInfo)localObject1).jdField_a_of_type_Boolean = bool4;
+        ((DownloadInfo)localObject1).jdField_b_of_type_Boolean = bool5;
+        label441:
+        ((DownloadInfo)localObject1).jdField_h_of_type_Int = k;
+        ((DownloadInfo)localObject1).n = str12;
+        ((DownloadInfo)localObject1).i = j;
+        ((DownloadInfo)localObject1).o = str11;
+        ((DownloadInfo)localObject1).jdField_d_of_type_Boolean = bool6;
+        ((DownloadInfo)localObject1).jdField_d_of_type_Int = 0;
+      }
+      try
+      {
+        ((DownloadInfo)localObject1).jdField_b_of_type_Int = paramBundle.getInt(bdlb.jdField_e_of_type_JavaLangString);
+        ((DownloadInfo)localObject1).jdField_d_of_type_Long = paramBundle.getLong(bdlb.G);
+        label506:
+        ((DownloadInfo)localObject1).k = str2;
+        ((DownloadInfo)localObject1).q = str3;
+        ((DownloadInfo)localObject1).r = str5;
+        ((DownloadInfo)localObject1).s = str4;
+        ((DownloadInfo)localObject1).t = str6;
+        ((DownloadInfo)localObject1).u = str7;
+        ((DownloadInfo)localObject1).v = str8;
+        ((DownloadInfo)localObject1).jdField_e_of_type_Boolean = bool3;
+        if (!TextUtils.isEmpty(str9)) {
+          ((DownloadInfo)localObject1).jdField_g_of_type_JavaLangString = str9;
+        }
+        ((DownloadInfo)localObject1).a("big_brother_ref_source_key", str10);
+        ((DownloadInfo)localObject1).a();
+        bdii.b("DownloadResolver", "[doDownloadActionBySDK] action == Downloader.ACTION_DOWNLOAD");
+        bdhk.a().b((DownloadInfo)localObject1);
+        continue;
+        ((DownloadInfo)localObject1).jdField_a_of_type_Boolean = false;
+        ((DownloadInfo)localObject1).jdField_b_of_type_Boolean = true;
+        ((DownloadInfo)localObject1).jdField_a_of_type_Int = 2;
+        break label441;
+        localObject1 = new DownloadInfo(str16, str1.trim(), str13, str15, str14, null, paramString, bool2);
+        ((DownloadInfo)localObject1).jdField_g_of_type_Int = i;
+        ((DownloadInfo)localObject1).jdField_a_of_type_Boolean = bool4;
+        ((DownloadInfo)localObject1).jdField_b_of_type_Boolean = bool5;
+        ((DownloadInfo)localObject1).jdField_d_of_type_Int = 0;
+        ((DownloadInfo)localObject1).jdField_b_of_type_Int = paramBundle.getInt(bdlb.jdField_e_of_type_JavaLangString);
+        ((DownloadInfo)localObject1).o = str11;
+        if ((paramApkUpdateDetail != null) && (((DownloadInfo)localObject1).jdField_b_of_type_Int != paramApkUpdateDetail.versioncode) && (paramApkUpdateDetail.versioncode != 0)) {
+          ((DownloadInfo)localObject1).jdField_b_of_type_Int = paramApkUpdateDetail.versioncode;
+        }
+        if (!TextUtils.isEmpty(str9)) {
+          ((DownloadInfo)localObject1).jdField_g_of_type_JavaLangString = str9;
+        }
+        ((DownloadInfo)localObject1).k = str2;
+        ((DownloadInfo)localObject1).q = str3;
+        ((DownloadInfo)localObject1).r = str5;
+        ((DownloadInfo)localObject1).s = str4;
+        ((DownloadInfo)localObject1).t = str6;
+        ((DownloadInfo)localObject1).u = str7;
+        ((DownloadInfo)localObject1).v = str8;
+        ((DownloadInfo)localObject1).jdField_e_of_type_Boolean = bool3;
+        ((DownloadInfo)localObject1).a("big_brother_ref_source_key", str10);
+        ((DownloadInfo)localObject1).a();
+        bdhk.a().b((DownloadInfo)localObject1);
+        bdii.c("DownloadResolver", "[doDownloadActionBySDK] action == Downloader.ACTION_UPDATE " + bool1);
+        continue;
+        return bdhk.a().a(str1);
+        localObject1 = localObject2;
+        if (!bool2) {
+          continue;
+        }
+        bdjr.a("305", str14, str16, str11);
+        paramString = bdhk.a().b(str1);
+        localObject1 = paramString;
+        if (paramString == null)
+        {
+          localObject1 = new DownloadInfo();
+          ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString = str16;
+          ((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString = str1.trim();
+          ((DownloadInfo)localObject1).jdField_e_of_type_JavaLangString = str13;
+          ((DownloadInfo)localObject1).f = str15;
+          ((DownloadInfo)localObject1).jdField_h_of_type_JavaLangString = str14;
+          ((DownloadInfo)localObject1).j = paramBundle.getString(bdlb.jdField_c_of_type_JavaLangString);
+          ((DownloadInfo)localObject1).jdField_b_of_type_Int = paramBundle.getInt(bdlb.jdField_e_of_type_JavaLangString);
+          ((DownloadInfo)localObject1).jdField_c_of_type_Boolean = paramBundle.getBoolean(bdlb.y, true);
+          ((DownloadInfo)localObject1).jdField_h_of_type_Int = k;
+          ((DownloadInfo)localObject1).n = str12;
+          ((DownloadInfo)localObject1).jdField_d_of_type_Int = 0;
+          ((DownloadInfo)localObject1).o = str11;
+          if (!TextUtils.isEmpty(str9)) {
+            ((DownloadInfo)localObject1).jdField_g_of_type_JavaLangString = str9;
+          }
+          ((DownloadInfo)localObject1).k = str2;
+          ((DownloadInfo)localObject1).q = str3;
+          ((DownloadInfo)localObject1).r = str5;
+          ((DownloadInfo)localObject1).s = str4;
+          ((DownloadInfo)localObject1).t = str6;
+          ((DownloadInfo)localObject1).u = str7;
+          ((DownloadInfo)localObject1).v = str8;
+          ((DownloadInfo)localObject1).a();
+        }
+        ((DownloadInfo)localObject1).jdField_e_of_type_Boolean = bool3;
+        ((DownloadInfo)localObject1).a("big_brother_ref_source_key", str10);
+        bdhk.a().a((DownloadInfo)localObject1);
+        continue;
+        bdhk.a().a(str1, true);
+        localObject1 = localObject2;
+      }
+      catch (NumberFormatException paramBundle)
+      {
+        break label506;
+      }
+    }
+  }
+  
+  public static bdho a()
+  {
+    if (jdField_a_of_type_Bdho == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bdho == null) {
+        jdField_a_of_type_Bdho = new bdho();
+      }
+      return jdField_a_of_type_Bdho;
+    }
+    finally {}
+  }
+  
+  private String a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
+  {
+    if (paramTMAssistantDownloadTaskInfo == null) {
+      return "null";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[mSavePath=" + paramTMAssistantDownloadTaskInfo.mSavePath);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mState=" + paramTMAssistantDownloadTaskInfo.mState);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mReceiveDataLen=" + paramTMAssistantDownloadTaskInfo.mReceiveDataLen);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mTotalDataLen=" + paramTMAssistantDownloadTaskInfo.mTotalDataLen);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mContentType=" + paramTMAssistantDownloadTaskInfo.mContentType);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mTaskPackageName=" + paramTMAssistantDownloadTaskInfo.mTaskPackageName);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mTaskVersionCode=" + paramTMAssistantDownloadTaskInfo.mTaskVersionCode);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(Activity paramActivity, Bundle paramBundle)
+  {
+    bdkx.a(paramActivity, paramBundle);
+  }
+  
+  public static void a(Bundle paramBundle)
+  {
+    bdkx.a(paramBundle);
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    if (paramBundle.getInt(bdlb.k) == 5)
+    {
+      String str2 = paramBundle.getString(bdlb.j);
+      if (TextUtils.isEmpty(str2))
+      {
+        bdii.e("DownloadResolver", "[installApp] url is empty");
+        return false;
+      }
+      String str3 = paramBundle.getString(bdlb.f);
+      String str4 = paramBundle.getString(bdlb.i);
+      String str5 = paramBundle.getString(bdlb.l);
+      Object localObject = paramBundle.getString(bdlb.I);
+      String str6 = paramBundle.getString("appId");
+      String str7 = paramBundle.getString("apkId", "");
+      String str8 = paramBundle.getString("recommendId", "");
+      String str9 = paramBundle.getString(bdlb.K, "");
+      String str10 = paramBundle.getString("sourceFromServer", "");
+      String str11 = paramBundle.getString("pageId", "");
+      String str12 = paramBundle.getString("moduleId", "");
+      String str13 = paramBundle.getString("positionId", "");
+      String str14 = paramBundle.getString("big_brother_ref_source_key", "");
+      String str1 = paramBundle.getString("big_brother_source_key");
+      bdjr.a("305", str4, str6, (String)localObject);
+      localObject = bdhk.a().b(str2);
+      if (localObject == null)
+      {
+        localObject = new DownloadInfo();
+        ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString = str6;
+        ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString = str2.trim();
+        ((DownloadInfo)localObject).jdField_e_of_type_JavaLangString = str3;
+        ((DownloadInfo)localObject).f = str5;
+        ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = str4;
+        ((DownloadInfo)localObject).j = paramBundle.getString(bdlb.jdField_c_of_type_JavaLangString);
+        ((DownloadInfo)localObject).k = paramBundle.getString(bdlb.jdField_d_of_type_JavaLangString);
+        ((DownloadInfo)localObject).jdField_b_of_type_Int = paramBundle.getInt(bdlb.jdField_e_of_type_JavaLangString);
+        ((DownloadInfo)localObject).o = paramBundle.getString(bdlb.I);
+        ((DownloadInfo)localObject).k = str7;
+        ((DownloadInfo)localObject).q = str8;
+        ((DownloadInfo)localObject).r = str10;
+        ((DownloadInfo)localObject).s = str9;
+        ((DownloadInfo)localObject).t = str11;
+        ((DownloadInfo)localObject).u = str12;
+        ((DownloadInfo)localObject).v = str13;
+        ((DownloadInfo)localObject).m = str1;
+        ((DownloadInfo)localObject).a("big_brother_ref_source_key", str14);
+        ((DownloadInfo)localObject).a();
+        paramBundle = (Bundle)localObject;
+      }
+      for (;;)
+      {
+        return bdhk.a().a(paramBundle);
+        if (!TextUtils.isEmpty(str4)) {
+          ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = str4;
+        }
+        if (!TextUtils.isEmpty(str14)) {
+          ((DownloadInfo)localObject).a("big_brother_ref_source_key", str14);
+        }
+        paramBundle = (Bundle)localObject;
+        if (!TextUtils.isEmpty(str1))
+        {
+          ((DownloadInfo)localObject).m = str1;
+          paramBundle = (Bundle)localObject;
+        }
+      }
+    }
+    return false;
+  }
+  
+  private void b(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
+  {
+    bdii.b("DownloadResolver", "[doDownloadActionByMyApp] pParmas =" + paramBundle + " myAppConfig = " + paramInt);
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
+      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
+    }
+    if ("biz_src_jc_update".equals(paramString)) {
+      bdjr.a("300", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bdlb.I));
+    }
+    Object localObject1;
+    if (paramBundle.getInt(bdlb.jdField_e_of_type_JavaLangString, -10) < 0)
+    {
+      ??? = TMAssistantGetAppDetailTool.getInstance(this.jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner, bcyb.a().a());
+      localObject1 = paramBundle.getString(bdlb.f);
+      Object localObject3 = paramBundle.getString(bdlb.B);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        StringBuilder localStringBuilder = new StringBuilder((String)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localStringBuilder.append(";");
+          localStringBuilder.append((String)localObject3);
+        }
+        localObject3 = new ArrayList();
+        ((ArrayList)localObject3).add(localStringBuilder.toString());
+        ((TMAssistantGetAppDetailTool)???).exchangeUrlsFromPackageNames((ArrayList)localObject3);
+      }
+    }
+    label292:
     do
     {
-      return paramContext;
-      if (i == 1) {
-        return "cmwap";
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(5000L);
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+            break label292;
+          }
+          localObject1 = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject1);
+          if (localObject1 == null)
+          {
+            bdhk.a().b(bcyb.a().a().getString(2131694877));
+            return;
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
       }
-      if (i == 4) {
-        return "cmnet";
+      paramBundle.putInt(bdlb.jdField_e_of_type_JavaLangString, ((Integer)localObject1).intValue());
+      if (paramApkUpdateDetail != null)
+      {
+        paramBundle.putInt(bdlb.t, paramApkUpdateDetail.patchsize);
+        paramBundle.putInt(bdlb.u, paramApkUpdateDetail.newapksize);
       }
-      if (i == 16) {
-        return "uniwap";
+      if (paramInt == 1)
+      {
+        paramBundle.putString("source", paramString);
+        paramBundle.putInt("dialogType", 1);
+        bdlr.a().a(paramActivity, paramBundle, new bdhq(this, paramBundle, paramString, paramApkUpdateDetail));
+        return;
       }
-      if (i == 8) {
-        return "uninet";
-      }
-      if (i == 64) {
-        return "wap";
-      }
-      if (i == 32) {
-        return "net";
-      }
-      if (i == 512) {
-        return "ctwap";
-      }
-      if (i == 256) {
-        return "ctnet";
-      }
-      if (i == 2048) {
-        return "3gnet";
-      }
-      if (i == 1024) {
-        return "3gwap";
-      }
-      str = b(paramContext);
-      if (str == null) {
+    } while ((paramInt != 2) && (paramInt != 0));
+    bdlr.a().b(paramActivity, paramBundle, new bdhr(this, paramBundle, paramString, paramApkUpdateDetail));
+  }
+  
+  public static void b(Bundle paramBundle)
+  {
+    bdkx.b(paramBundle);
+  }
+  
+  public List<DownloadInfo> a()
+  {
+    long l1 = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = bdhk.a().a();
+    Object localObject3 = new StringBuilder().append("DownloadManagerV2 tasks:");
+    if (localObject2 == null) {}
+    for (Object localObject1 = "0";; localObject1 = Integer.valueOf(((Map)localObject2).size()))
+    {
+      bdii.b("DownloadResolver", localObject1);
+      if ((localObject2 != null) && (((Map)localObject2).size() != 0)) {
         break;
       }
-      paramContext = str;
-    } while (str.length() != 0);
-    return "none";
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    int i = b(paramContext);
-    return (i == 1) || (i == 16) || (i == 64) || (i == 512) || (i == 1024);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    try
+      bdii.e("DownloadResolver", "infos is null!!");
+      return localArrayList;
+    }
+    localObject2 = new HashMap((Map)localObject2);
+    localObject1 = new ArrayList();
+    if (((Map)localObject2).size() > 0)
     {
-      Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (localObject == null) {
-        return 128;
-      }
-      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-      if (localObject == null) {
-        return 128;
-      }
-      if (((NetworkInfo)localObject).getTypeName().toUpperCase().equals("WIFI")) {
-        return 2;
-      }
-      localObject = ((NetworkInfo)localObject).getExtraInfo().toLowerCase();
-      if (((String)localObject).startsWith("cmwap")) {
-        return 1;
-      }
-      if ((((String)localObject).startsWith("cmnet")) || (((String)localObject).startsWith("epc.tmobile.com"))) {
-        break label232;
-      }
-      if (((String)localObject).startsWith("uniwap")) {
-        return 16;
-      }
-      if (((String)localObject).startsWith("uninet")) {
-        return 8;
-      }
-      if (((String)localObject).startsWith("wap")) {
-        return 64;
-      }
-      if (((String)localObject).startsWith("net")) {
-        return 32;
-      }
-      if (((String)localObject).startsWith("ctwap")) {
-        return 512;
-      }
-      if (((String)localObject).startsWith("ctnet")) {
-        return 256;
-      }
-      if (((String)localObject).startsWith("3gwap")) {
-        return 1024;
-      }
-      if (((String)localObject).startsWith("3gnet")) {
-        return 2048;
-      }
-      if (((String)localObject).startsWith("#777"))
+      localObject2 = ((Map)localObject2).entrySet().iterator();
+      if (((Iterator)localObject2).hasNext())
       {
-        paramContext = c(paramContext);
-        if (paramContext != null)
+        localObject3 = (Map.Entry)((Iterator)localObject2).next();
+        long l2 = System.currentTimeMillis();
+        Object localObject4 = (String)((Map.Entry)localObject3).getKey();
+        localObject3 = (DownloadInfo)((Map.Entry)localObject3).getValue();
+        if ((((DownloadInfo)localObject3).jdField_c_of_type_Int == 0) && (!TextUtils.isEmpty(((DownloadInfo)localObject3).jdField_e_of_type_JavaLangString)) && (((DownloadInfo)localObject3).jdField_c_of_type_Boolean))
         {
-          int i = paramContext.length();
-          if (i > 0) {
-            return 512;
-          }
+          localArrayList.add(localObject3);
+          localObject4 = bdhk.a().a(((DownloadInfo)localObject3).jdField_d_of_type_JavaLangString);
+          bdii.b("DownloadResolver", "\ninfo=" + ((DownloadInfo)localObject3).toString() + "\ntaskInfo:" + a((TMAssistantDownloadTaskInfo)localObject4));
         }
-        return 256;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 128;
-    label232:
-    return 4;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    return AppNetConnInfo.getCurrentAPN();
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.getActiveNetworkInfo();
-    return (paramContext != null) && (paramContext.isAvailable());
-  }
-  
-  /* Error */
-  public static String c(Context paramContext)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   6: getstatic 27	bdho:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: aconst_null
-    //   12: aconst_null
-    //   13: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   16: astore_0
-    //   17: aload_0
-    //   18: ifnonnull +17 -> 35
-    //   21: aload_0
-    //   22: ifnull +9 -> 31
-    //   25: aload_0
-    //   26: invokeinterface 51 1 0
-    //   31: aconst_null
-    //   32: astore_1
-    //   33: aload_1
-    //   34: areturn
-    //   35: aload_0
-    //   36: invokeinterface 55 1 0
-    //   41: pop
-    //   42: aload_0
-    //   43: aload_0
-    //   44: ldc 158
-    //   46: invokeinterface 61 2 0
-    //   51: invokeinterface 162 2 0
-    //   56: astore_2
-    //   57: aload_2
-    //   58: astore_1
-    //   59: aload_0
-    //   60: ifnull -27 -> 33
-    //   63: aload_0
-    //   64: invokeinterface 51 1 0
-    //   69: aload_2
-    //   70: areturn
-    //   71: astore_2
-    //   72: aload_1
-    //   73: astore_0
-    //   74: aload_2
-    //   75: astore_1
-    //   76: aload_1
-    //   77: invokevirtual 68	java/lang/Exception:printStackTrace	()V
-    //   80: aload_0
-    //   81: ifnull +9 -> 90
-    //   84: aload_0
-    //   85: invokeinterface 51 1 0
-    //   90: ldc 164
-    //   92: areturn
-    //   93: astore_1
-    //   94: aconst_null
-    //   95: astore_0
-    //   96: aload_0
-    //   97: ifnull +9 -> 106
-    //   100: aload_0
-    //   101: invokeinterface 51 1 0
-    //   106: aload_1
-    //   107: athrow
-    //   108: astore_1
-    //   109: goto -13 -> 96
-    //   112: astore_1
-    //   113: goto -17 -> 96
-    //   116: astore_1
-    //   117: goto -41 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	paramContext	Context
-    //   1	76	1	localObject1	Object
-    //   93	14	1	localObject2	Object
-    //   108	1	1	localObject3	Object
-    //   112	1	1	localObject4	Object
-    //   116	1	1	localException1	Exception
-    //   56	14	2	str	String
-    //   71	4	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	71	java/lang/Exception
-    //   2	17	93	finally
-    //   35	57	108	finally
-    //   76	80	112	finally
-    //   35	57	116	java/lang/Exception
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
-  
-  /* Error */
-  public static String d(Context paramContext)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: invokevirtual 40	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   6: getstatic 27	bdho:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: aconst_null
-    //   12: aconst_null
-    //   13: invokevirtual 46	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   16: astore_0
-    //   17: aload_0
-    //   18: ifnonnull +17 -> 35
-    //   21: aload_0
-    //   22: ifnull +9 -> 31
-    //   25: aload_0
-    //   26: invokeinterface 51 1 0
-    //   31: aconst_null
-    //   32: astore_2
-    //   33: aload_2
-    //   34: areturn
-    //   35: aload_0
-    //   36: invokeinterface 55 1 0
-    //   41: pop
-    //   42: aload_0
-    //   43: invokeinterface 171 1 0
-    //   48: ifeq +29 -> 77
-    //   51: aload_0
-    //   52: ifnull +9 -> 61
-    //   55: aload_0
-    //   56: invokeinterface 51 1 0
-    //   61: ldc 173
-    //   63: astore_2
-    //   64: aload_0
-    //   65: ifnull -32 -> 33
-    //   68: aload_0
-    //   69: invokeinterface 51 1 0
-    //   74: ldc 173
-    //   76: areturn
-    //   77: aload_0
-    //   78: aload_0
-    //   79: ldc 57
-    //   81: invokeinterface 61 2 0
-    //   86: invokeinterface 162 2 0
-    //   91: astore_2
-    //   92: aload_2
-    //   93: astore_1
-    //   94: aload_2
-    //   95: ifnonnull +6 -> 101
-    //   98: ldc 173
-    //   100: astore_1
-    //   101: aload_1
-    //   102: astore_2
-    //   103: aload_0
-    //   104: ifnull -71 -> 33
-    //   107: aload_0
-    //   108: invokeinterface 51 1 0
-    //   113: aload_1
-    //   114: areturn
-    //   115: astore_2
-    //   116: aload_1
-    //   117: astore_0
-    //   118: aload_2
-    //   119: astore_1
-    //   120: aload_1
-    //   121: invokevirtual 68	java/lang/Exception:printStackTrace	()V
-    //   124: aload_0
-    //   125: ifnull +9 -> 134
-    //   128: aload_0
-    //   129: invokeinterface 51 1 0
-    //   134: ldc 173
-    //   136: areturn
-    //   137: astore_1
-    //   138: aconst_null
-    //   139: astore_0
-    //   140: aload_0
-    //   141: ifnull +9 -> 150
-    //   144: aload_0
-    //   145: invokeinterface 51 1 0
-    //   150: aload_1
-    //   151: athrow
-    //   152: astore_1
-    //   153: goto -13 -> 140
-    //   156: astore_1
-    //   157: goto -17 -> 140
-    //   160: astore_1
-    //   161: goto -41 -> 120
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	164	0	paramContext	Context
-    //   1	120	1	localObject1	Object
-    //   137	14	1	localObject2	Object
-    //   152	1	1	localObject3	Object
-    //   156	1	1	localObject4	Object
-    //   160	1	1	localException1	Exception
-    //   32	71	2	localObject5	Object
-    //   115	4	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	115	java/lang/Exception
-    //   2	17	137	finally
-    //   35	51	152	finally
-    //   55	61	152	finally
-    //   77	92	152	finally
-    //   120	124	156	finally
-    //   35	51	160	java/lang/Exception
-    //   55	61	160	java/lang/Exception
-    //   77	92	160	java/lang/Exception
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    try
-    {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext == null) {
-        return true;
-      }
-      paramContext = paramContext.getAllNetworkInfo();
-      if (paramContext != null)
-      {
-        int i = 0;
-        while (i < paramContext.length)
+        for (;;)
         {
-          boolean bool = paramContext[i].isConnectedOrConnecting();
-          if (bool) {
-            return true;
-          }
-          i += 1;
+          ((List)localObject1).add(Long.valueOf(System.currentTimeMillis() - l2));
+          break;
+          bdii.e("DownloadResolver", "Info is not SDK && APK task!! \ninfo=" + ((DownloadInfo)localObject3).toString());
         }
       }
-      return false;
     }
-    catch (Exception paramContext)
+    else
     {
-      bdht.c(jdField_a_of_type_JavaLangString, "checkNetWork Exception", paramContext);
+      bdii.e("DownloadResolver", "infos is empty!!");
     }
+    localObject2 = new Long[((List)localObject1).size()];
+    ((List)localObject1).toArray((Object[])localObject2);
+    bdii.e("DownloadResolver", "Total time Cost:" + (System.currentTimeMillis() - l1) + ";Every loop time cost:" + Arrays.toString((Object[])localObject2));
+    return localArrayList;
   }
   
-  public static String e(Context paramContext)
+  public void a(Activity paramActivity, Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail, int paramInt)
   {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
-      return "MOBILE";
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bcyb.a().a()) >= 6) {
+      paramBundle.putLong("OuterCall_DownloadApi_DoDownloadAction", System.currentTimeMillis());
     }
-    paramContext = paramContext.getActiveNetworkInfo();
-    if (paramContext != null) {
-      return paramContext.getTypeName();
+    if ("biz_src_jc_update".equals(paramString)) {
+      bdjr.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(bdlb.I));
     }
-    return "MOBILE";
+    ThreadManager.getSubThreadHandler().post(new DownloadProxy.3(this, paramBundle, paramString, paramInt, paramActivity, paramApkUpdateDetail));
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    ThreadManager.excute(new DownloadProxy.6(this, paramString, paramBoolean), 32, null, true);
+  }
+  
+  public void a(List<DownloadInfo> paramList, bdll parambdll)
+  {
+    if (paramList == null)
+    {
+      bdii.b("DownloadResolver", "[queryByDownloadManagerV2] infos == null");
+      return;
+    }
+    if (parambdll == null) {
+      bdii.b("DownloadResolver", "[queryByDownloadManagerV2] listener == null");
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadProxy.2(this, paramList, parambdll));
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    ThreadManager.excute(new DownloadProxy.7(this, paramString, paramBoolean), 32, null, true);
   }
 }
 

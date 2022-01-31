@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.open.agent.AuthorityControlFragment;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity.5;
 
 public class bcyr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bcyr(AuthorityControlFragment paramAuthorityControlFragment) {}
+  public bcyr(AuthorityActivity.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AuthorityControlFragment.a(this.a).c();
-    AuthorityControlFragment.a(this.a, this.a.rightViewText, 2131690284);
-    this.a.rightViewText.setTextColor(AuthorityControlFragment.a(this.a));
-    this.a.rightViewText.setEnabled(true);
-    this.a.setLeftButton("", null);
-    this.a.leftView.setVisibility(0);
-    AuthorityControlFragment.a(this.a).setText(2131690298);
-    AuthorityControlFragment.a(this.a).setOverScrollHeader(AuthorityControlFragment.a(this.a));
+    paramDialogInterface.dismiss();
   }
 }
 

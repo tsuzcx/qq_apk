@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.content.Context;
 import android.view.OrientationEventListener;
-import besl;
+import betc;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ public class OrientationJsPlugin$GameOrientationListener
       {
         for (;;)
         {
-          besl.d("OrientationJsPlugin", "OrientationChange call back error:" + localJSONException.toString());
+          betc.d("OrientationJsPlugin", "OrientationChange call back error:" + localJSONException.toString());
         }
       }
     }

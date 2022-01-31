@@ -1,46 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import org.json.JSONObject;
 
-class pft
-  implements ViewBase.OnClickListener
+public class pft
+  implements php
 {
-  pft(pfs parampfs, int paramInt, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2, pax parampax) {}
+  private BaseTemplateFactory a;
   
-  public void onClick(ViewBase paramViewBase)
+  public pft(VafContext paramVafContext)
   {
-    ArticleInfo localArticleInfo1;
-    String str;
-    ArticleInfo localArticleInfo2;
-    Object localObject;
-    if (this.jdField_a_of_type_Int == 1120)
-    {
-      localArticleInfo1 = (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      str = this.b.innerUniqueID;
-      localArticleInfo2 = localArticleInfo1;
-      localObject = this.jdField_a_of_type_Pax.a().mProteusTemplateBean;
-      if (localObject != null)
-      {
-        paramViewBase = pfs.a(this.jdField_a_of_type_Pfs, (TemplateBean)localObject, paramViewBase);
-        localObject = this.jdField_a_of_type_Pax.a();
-        if (this.jdField_a_of_type_Int != 1120) {
-          break label130;
-        }
-      }
+    this.a = paramVafContext.getTemplateFactory();
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    if (this.a != null) {
+      return this.a.getTemplateBean(paramJSONObject);
     }
-    label130:
-    for (boolean bool = true;; bool = false)
-    {
-      ((rap)localObject).a(bool, localArticleInfo1, localArticleInfo2, str, paramViewBase);
-      return;
-      localArticleInfo1 = (ArticleInfo)this.b;
-      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-      localArticleInfo2 = (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      localArticleInfo1.isTwoItem = true;
-      break;
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return new pdm().N(paramBaseArticleInfo).C(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView().findViewBaseByName("id_proteus_collection_view");
+    if ((paramContainer instanceof pno)) {
+      ((pno)paramContainer).a(parampau);
     }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

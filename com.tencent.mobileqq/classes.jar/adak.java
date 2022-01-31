@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
-class adak
-  implements OnCompositionLoadedListener
+public abstract interface adak
 {
-  adak(adag paramadag) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    adag.a(this.a, paramLottieComposition);
-  }
+  public abstract void a();
 }
 
 

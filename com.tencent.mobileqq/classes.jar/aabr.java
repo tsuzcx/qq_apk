@@ -1,33 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class aabr
 {
-  public static aabq a(Class<? extends aabq> paramClass, aabp paramaabp)
+  public String a;
+  public String b;
+  
+  public aabr(String paramString1, String paramString2)
   {
-    if (paramClass == aacq.class) {
-      paramClass = new aacq();
-    }
-    for (;;)
-    {
-      if (paramClass != null) {
-        paramClass.a(paramaabp);
-      }
-      return paramClass;
-      if (paramClass == aacw.class) {
-        paramClass = new aacw();
-      } else {
-        try
-        {
-          aabq localaabq = (aabq)paramClass.newInstance();
-          paramClass = localaabq;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
-          paramClass = null;
-        }
-      }
-    }
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,14 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import java.io.File;
+import java.io.FileFilter;
 
 class bkbz
-  implements View.OnClickListener
+  implements FileFilter
 {
-  bkbz(bkbv parambkbv) {}
+  bkbz(bkby parambkby) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    this.a.a(false);
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 

@@ -1,35 +1,30 @@
-import android.app.Activity;
-import java.lang.reflect.Method;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
-public abstract class bhym
+class bhym
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  public static bhym a;
+  bhym(bhyi parambhyi) {}
   
-  public static void a()
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    try
-    {
-      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (bhym)localMethod.invoke(null, new Object[0]);
-      return;
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bhyi.a(this.a) != null) {
+      bhyi.a(this.a).a("onActionScale", new float[] { f });
     }
-    catch (Throwable localThrowable) {}
+    return true;
   }
   
-  public static void b(Activity paramActivity, String paramString)
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    bhym localbhym = a;
-    if (localbhym != null) {
-      localbhym.a(paramActivity, paramString);
-    }
+    return true;
   }
   
-  public abstract void a(Activity paramActivity, String paramString);
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     bhym
  * JD-Core Version:    0.7.0.1
  */

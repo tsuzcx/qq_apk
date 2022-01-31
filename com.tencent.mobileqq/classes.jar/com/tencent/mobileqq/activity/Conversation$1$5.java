@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aavy;
+import aavu;
 import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
 public class Conversation$1$5
   implements Runnable
 {
-  public Conversation$1$5(aavy paramaavy) {}
+  public Conversation$1$5(aavu paramaavu) {}
   
   public void run() {}
 }

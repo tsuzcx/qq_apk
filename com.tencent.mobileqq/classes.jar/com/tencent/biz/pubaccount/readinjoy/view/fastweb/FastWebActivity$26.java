@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import java.util.List;
-import rjs;
-import rnm;
+import rjp;
+import rnj;
 
 class FastWebActivity$26
   implements Runnable
@@ -13,7 +13,7 @@ class FastWebActivity$26
   {
     if (FastWebActivity.a(this.this$0) != null)
     {
-      rnm.c(FastWebActivity.a(this.this$0), this.a);
+      rnj.c(FastWebActivity.a(this.this$0), this.a);
       FastWebActivity.a(this.this$0).notifyDataSetChanged();
     }
   }

@@ -1,15 +1,19 @@
-import android.os.IInterface;
-import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public abstract interface atfu
-  extends IInterface
+public final class atfu
+  implements Parcelable.Creator<BasicTypeDataParcel>
 {
-  public abstract Message a(Message paramMessage);
+  public BasicTypeDataParcel a(Parcel paramParcel)
+  {
+    return new BasicTypeDataParcel(paramParcel);
+  }
   
-  public abstract BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel);
-  
-  public abstract void a(atgc paramatgc);
+  public BasicTypeDataParcel[] a(int paramInt)
+  {
+    return new BasicTypeDataParcel[paramInt];
+  }
 }
 
 

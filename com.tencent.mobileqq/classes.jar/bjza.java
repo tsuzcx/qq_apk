@@ -1,8 +1,15 @@
-public abstract interface bjza
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bjza
+  implements DialogInterface.OnClickListener
 {
-  public abstract void j();
+  bjza(bjyy parambjyy) {}
   
-  public abstract void n();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

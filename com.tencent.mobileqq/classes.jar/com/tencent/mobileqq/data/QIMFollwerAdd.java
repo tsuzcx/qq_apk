@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import aukm;
-import auma;
+import auko;
+import aumc;
 
 public class QIMFollwerAdd
-  extends aukm
+  extends auko
 {
   public long careSCount;
   public long fansCount;
@@ -15,7 +15,7 @@ public class QIMFollwerAdd
   public String smartRemark = "";
   public String source = "";
   public long totalNum;
-  @auma
+  @aumc
   public long uin;
   public long upTime;
 }

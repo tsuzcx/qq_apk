@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import axrl;
+import axrn;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -46,7 +46,7 @@ class ShortVideoPlayActivity$5
           }
           localObject = new HashMap();
           ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.b(this.this$0)));
-          axrl.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
+          axrn.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
         }
       }
     }

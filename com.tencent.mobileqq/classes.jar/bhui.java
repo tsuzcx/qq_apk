@@ -1,28 +1,114 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.util.LruCache;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import java.lang.ref.SoftReference;
-import java.util.Set;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.Map;
 
 public class bhui
-  extends LruCache<Integer, BitmapDrawable>
+  extends WebViewPlugin
+  implements bccc
 {
-  public bhui(FastAnimationDrawable paramFastAnimationDrawable, int paramInt)
+  private BroadcastReceiver a = new bhuj(this);
+  
+  public void a()
   {
-    super(paramInt);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("QZoneCardPreDownload");
+    localIntentFilter.addAction("action_facade_qzone2js");
+    BaseApplication.getContext().registerReceiver(this.a, localIntentFilter);
   }
   
-  protected void a(boolean paramBoolean, Integer paramInteger, BitmapDrawable paramBitmapDrawable1, BitmapDrawable paramBitmapDrawable2)
+  public void b()
   {
-    if (Build.VERSION.SDK_INT >= 11)
+    BaseApplication.getContext().unregisterReceiver(this.a);
+  }
+  
+  public String[] getMultiNameSpace()
+  {
+    return new String[] { "qzcardstorre", "QzAvatar", "QzFloat" };
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 2L) && (paramString.equals(bhuf.a))) {
+      bhuf.a(this.mRuntime, null);
+    }
+    return false;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    }
+    if (bhrb.a(paramString3))
     {
-      FastAnimationDrawable.a(this.a).add(new SoftReference(paramBitmapDrawable1.getBitmap()));
-      if (QLog.isColorLevel()) {
-        QLog.d("FastAnimationDrawable", 2, "remove key:" + paramInteger + " bitmap:" + paramBitmapDrawable1.getBitmap());
+      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
+      LocalMultiProcConfig.putBool("qzone_force_refresh_passive", true);
+    }
+    if (paramString2.equals("qzcardstorre"))
+    {
+      if (paramString3.equals("closecardpreview")) {
+        return true;
+      }
+      if (paramString3.equals("setcardfinish")) {
+        bhtx.a(this, this.mRuntime, paramVarArgs);
+      }
+      if (paramString3.equals("downloadcard"))
+      {
+        bhtx.a(this.mRuntime, paramVarArgs);
+        return true;
       }
     }
+    else
+    {
+      if (!paramString2.equals("QzAvatar")) {
+        break label208;
+      }
+      if (!paramString3.equals("downloadAvatar")) {
+        break label162;
+      }
+      bhud.b(this.mRuntime, paramVarArgs);
+    }
+    label162:
+    label208:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return false;
+          if (paramString3.equals("setAvatar")) {
+            bhud.a(this.mRuntime, paramVarArgs);
+          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
+            bhud.c(this.mRuntime, new String[0]);
+          }
+        }
+      } while (!paramString2.equals("QzFloat"));
+      if (paramString3.equals("downloadFloat"))
+      {
+        bhuf.a(this.mRuntime, paramVarArgs);
+        return true;
+      }
+    } while (!paramString3.equals("setFloat"));
+    bhuf.b(this.mRuntime, paramVarArgs);
+    return true;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    a();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    b();
   }
 }
 

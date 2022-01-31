@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aluy
-  implements View.OnClickListener
+class aluy
+  implements DialogInterface.OnDismissListener
 {
-  public aluy(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  aluy(alux paramalux, bfpc parambfpc) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = (bfol)bfoy.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131690217));
-    paramView.a(2131690216, 3);
-    paramView.c(2131690218);
-    paramView.setOnDismissListener(new aluz(this, paramView));
-    paramView.a(new alva(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
-    }
+    this.jdField_a_of_type_Bfpc.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 

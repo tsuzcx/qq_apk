@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.NotificationActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class abnu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abnu(NearbyActivity paramNearbyActivity) {}
+  public abnu(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
-      i += 1;
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new NotificationActivity.1.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abnu
  * JD-Core Version:    0.7.0.1
  */

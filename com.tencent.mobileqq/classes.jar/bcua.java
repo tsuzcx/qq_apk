@@ -1,46 +1,66 @@
-import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class bcua
+  extends WebViewPlugin
 {
-  private bctr[] a = new bctr[3];
-  
-  public bctr a(Context paramContext, int paramInt)
+  public bcua()
   {
-    Object localObject1;
-    if ((paramInt < 0) || (paramInt > 3)) {
-      localObject1 = null;
+    this.mPluginNameSpace = "floatingWindow";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    do
+    if ("floatingWindow".equals(paramString2))
     {
-      do
+      if ("show".equals(paramString3))
       {
-        return localObject1;
-        ??? = this.a[paramInt];
-        localObject1 = ???;
-      } while (??? != null);
-      localObject1 = ???;
-    } while (paramContext == null);
-    synchronized (this.a)
-    {
-      localObject1 = this.a[paramInt];
-      if (localObject1 != null) {
-        return localObject1;
+        bcuc.a(BaseApplication.getContext(), true, 16);
+        return true;
+      }
+      if ("hide".equals(paramString3))
+      {
+        bcuc.a(BaseApplication.getContext(), false, 16);
+        return true;
+      }
+      if ("close".equals(paramString3))
+      {
+        bcuc.a(BaseApplicationImpl.getContext(), 16);
+        return true;
       }
     }
-    switch (paramInt)
-    {
-    default: 
-      paramContext = (Context)localObject1;
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
     }
-    for (;;)
-    {
-      this.a[paramInt] = paramContext;
-      return paramContext;
-      paramContext = new bctu(paramContext);
-      continue;
-      paramContext = new bcts(paramContext);
-      continue;
-      paramContext = new bcty(paramContext);
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onCreate");
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingScreenPlugin", 2, "onDestroy");
     }
   }
 }

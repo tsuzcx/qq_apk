@@ -1,22 +1,20 @@
-public class mnh
+class mnh
 {
-  public long a;
+  public String a;
   public byte[] a;
-  public long b;
   
-  public mnh(byte[] paramArrayOfByte, long paramLong)
+  public mnh(String paramString, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
-      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      arrayOfByte = new byte[0];
     }
+    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+    paramArrayOfByte = paramString;
+    if (paramString == null) {
+      paramArrayOfByte = "";
+    }
+    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 

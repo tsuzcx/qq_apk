@@ -1,29 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 
 class sud
-  extends Job<Object, Object, Object>
+  implements axfb
 {
-  sud(suc paramsuc, String paramString, sul paramsul)
+  sud(suc paramsuc, String paramString) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, axeu paramaxeu)
   {
-    super(paramString);
+    sui localsui;
+    if (paramaxeu.jdField_a_of_type_Int == 0)
+    {
+      paramaxeu = (aunb)paramaxeu.jdField_a_of_type_JavaLangObject;
+      localsui = (sui)this.jdField_a_of_type_Suc.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      if (localsui != null)
+      {
+        if (!new File(paramaxeu.b).exists()) {
+          break label99;
+        }
+        localsui.b = (System.currentTimeMillis() - localsui.jdField_a_of_type_Long);
+        if (localsui.jdField_a_of_type_Sub != null) {
+          localsui.jdField_a_of_type_Sub.a(localsui, new ErrorMessage(0, "onDownload"));
+        }
+      }
+    }
+    label99:
+    do
+    {
+      do
+      {
+        return;
+        ved.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        return;
+        ved.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramaxeu.jdField_a_of_type_Int) });
+        localsui = (sui)this.jdField_a_of_type_Suc.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      } while (localsui == null);
+      localsui.b = (System.currentTimeMillis() - localsui.jdField_a_of_type_Long);
+    } while (localsui.jdField_a_of_type_Sub == null);
+    localsui.jdField_a_of_type_Sub.a(localsui, new ErrorMessage(paramaxeu.jdField_a_of_type_Int, "onFailed"));
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_Sul.jdField_a_of_type_Suk.a(this.jdField_a_of_type_Sul);
-    this.jdField_a_of_type_Suc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Sul.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Suc.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Sul.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Sul);
-    return null;
-  }
+  public void a(int paramInt, ArrayList<axeu> paramArrayList) {}
   
-  public int getJobType()
-  {
-    return 16;
-  }
+  public void b(int paramInt, axeu paramaxeu) {}
 }
 
 

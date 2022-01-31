@@ -1,17 +1,20 @@
 import android.view.View;
-import com.tencent.widget.ListView;
 
-public class bfsw
+class bfsw
+  implements bfsy
 {
-  public View a;
-  public Object a;
-  public boolean a;
+  bfsw(bfst parambfst) {}
   
-  public bfsw(ListView paramListView) {}
+  public void a(View paramView)
+  {
+    this.a.c(paramView);
+    this.a.c();
+    bfst.a(this.a, paramView.getTag(), false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bfsw
  * JD-Core Version:    0.7.0.1
  */

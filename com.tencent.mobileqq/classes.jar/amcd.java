@@ -5,61 +5,52 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class amcd
+  extends amcc
 {
-  public int a;
-  public long a;
-  public Rect a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Rect b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public boolean b;
+  public Rect c;
+  public Rect d;
+  public int e;
+  public String e;
+  public String f = "";
   
   public amcd()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
   }
   
   public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    do
+    if (paramJSONObject != null)
     {
-      return;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_d_of_type_Int = paramInt;
+      super.a(paramInt, paramString, paramJSONObject);
       paramString = BaseApplicationImpl.getContext();
-      if (paramJSONObject.has("rect"))
+      this.jdField_e_of_type_Int = paramJSONObject.optInt("passive_type", -1);
+      this.b = paramJSONObject.optBoolean("passive_rotate", false);
+      this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("start_align", this.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
+      this.f = paramJSONObject.optString("end_align", "");
+      if (paramJSONObject.has("start_rect"))
       {
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-        this.jdField_a_of_type_AndroidGraphicsRect.left = actn.a(localJSONArray.getInt(0) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.top = actn.a(localJSONArray.getInt(1) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.right = actn.a(localJSONArray.getInt(2) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = actn.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("start_rect");
+        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+        this.jdField_c_of_type_AndroidGraphicsRect.left = actj.a(localJSONArray.getInt(0) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.top = actj.a(localJSONArray.getInt(1) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.right = actj.a(localJSONArray.getInt(2) / 2, paramString.getResources());
+        this.jdField_c_of_type_AndroidGraphicsRect.bottom = actj.a(localJSONArray.getInt(3) / 2, paramString.getResources());
+        this.a = this.jdField_c_of_type_AndroidGraphicsRect;
       }
-      this.jdField_a_of_type_Long = paramJSONObject.optInt("time", 0);
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("cycle_count", 1);
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("count", 0);
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("img_prefix", "");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("alpha", 0);
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("align", "");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("zip_name", "");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("img_reverse", true);
-      paramJSONObject = paramJSONObject.optJSONArray("padding");
-    } while ((paramJSONObject == null) || (paramJSONObject.length() <= 0));
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsRect.left = actn.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.top = actn.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.right = actn.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = actn.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      if (paramJSONObject.has("end_rect"))
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("end_rect");
+        this.d = new Rect();
+        this.d.left = actj.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
+        this.d.top = actj.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
+        this.d.right = actj.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
+        this.d.bottom = actj.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      }
+    }
   }
 }
 

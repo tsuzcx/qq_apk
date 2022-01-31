@@ -5,11 +5,17 @@ import com.tencent.mobileqq.activity.AssistantSettingActivity;
 public class aaiz
   implements CompoundButton.OnCheckedChangeListener
 {
-  public aaiz(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public aaiz(AssistantSettingActivity paramAssistantSettingActivity, anoi paramanoi) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aspk.a(paramBoolean);
+    this.jdField_a_of_type_Anoi.a(paramBoolean);
+    if (!paramBoolean)
+    {
+      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      return;
+    }
+    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
   }
 }
 

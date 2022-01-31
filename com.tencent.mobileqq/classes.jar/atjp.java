@@ -1,3 +1,4 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
@@ -9,7 +10,7 @@ public class atjp
   
   public void onClick(View paramView)
   {
-    ShortVideoCommentsView.a(this.a);
+    ((Activity)this.a.getContext()).finish();
   }
 }
 

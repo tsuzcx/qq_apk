@@ -1,19 +1,12 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-
 public class aixb
-  implements aiwv
 {
-  public aixb(CmGameDebugView paramCmGameDebugView) {}
+  public int a;
+  public String a;
   
-  public void a(int paramInt)
+  public aixb(String paramString, int paramInt)
   {
-    if (CmGameDebugView.a(this.a).getVisibility() != 0)
-    {
-      CmGameDebugView.b(this.a, true);
-      return;
-    }
-    CmGameDebugView.b(this.a, paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

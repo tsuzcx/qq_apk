@@ -1,110 +1,124 @@
-import android.content.Context;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.report.lp.LpReportInfo_dc03950;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class asaw
+  extends ampa<asaq>
 {
-  public static int a(String paramString)
+  public int a()
   {
-    Iterator localIterator = LpReportInfo_dc03950.LOVE_ZONE_SETTING_ME_RESERVES_LIST.iterator();
-    if (!TextUtils.isEmpty(paramString))
+    return 454;
+  }
+  
+  @NonNull
+  public asaq a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    }
+    return new asaq();
+  }
+  
+  @Nullable
+  public asaq a(amph[] paramArrayOfamph)
+  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      int i = 2;
-      while (localIterator.hasNext())
+      QLog.d("WelcomeConfigProcessor", 2, "onParsed :" + paramArrayOfamph);
+      if (paramArrayOfamph != null)
       {
-        String str = (String)localIterator.next();
-        if ((str != null) && (str.equals(paramString))) {
-          return i;
+        j = paramArrayOfamph.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfamph[i];
+          if (localObject1 != null) {
+            QLog.d("WelcomeConfigProcessor", 2, "onParsed item: " + ((amph)localObject1).jdField_a_of_type_JavaLangString);
+          }
+          i += 1;
+        }
+      }
+    }
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    {
+      j = paramArrayOfamph.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfamph[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((amph)localObject2).jdField_a_of_type_JavaLangString))) {
+          try
+          {
+            localObject1 = new asaq();
+            localObject2 = new JSONObject(((amph)localObject2).jdField_a_of_type_JavaLangString);
+            if (((JSONObject)localObject2).has("popup_url")) {
+              ((asaq)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("popup_url");
+            }
+            if (((JSONObject)localObject2).has("fixed_entrance_url")) {
+              ((asaq)localObject1).b = ((JSONObject)localObject2).getString("fixed_entrance_url");
+            }
+            if (((JSONObject)localObject2).has("request_interval")) {
+              ((asaq)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("request_interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("WelcomeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
         }
         i += 1;
       }
     }
-    return 1;
+    return null;
   }
   
-  public static String a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public Class<asaq> a()
   {
-    if ((paramAppInfo != null) && (paramAppInfo.buffer.has()))
-    {
-      paramAppInfo = paramAppInfo.buffer.get();
-      try
-      {
-        Object localObject = new JSONObject(paramAppInfo);
-        paramAppInfo = ((JSONObject)localObject).optJSONObject("param");
-        localObject = ((JSONObject)localObject).optString("_show_mission");
-        if ((paramAppInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          paramAppInfo = (JSONObject)paramAppInfo.opt((String)localObject);
-          if (paramAppInfo != null) {
-            return localObject;
-          }
-        }
-      }
-      catch (Exception paramAppInfo)
-      {
-        QLog.e("LoverZoneUtils", 1, "buffer handle exception:" + paramAppInfo);
-        paramAppInfo.printStackTrace();
-      }
-    }
-    return "";
+    return asaq.class;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    a(paramQQAppInterface, paramContext, paramInt, paramString, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  public void a(asaq paramasaq)
   {
-    if (paramContext == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "onUpdate");
     }
-    String str = QzoneConfig.getInstance().getConfig("sweet_miniapp", "sweet_mainpage", "mqqapi://miniapp/open?_atype=0&_mappid=1108789561&_mvid=&_vt=3&referer=brandonlin&via=brandonlin&_sig=57b13f050e544ea7391452287c2f92c7ebf08e0d4bd1faef7d72c8c961ea80c9");
-    if (!TextUtils.isEmpty(str))
-    {
-      if (!MiniAppLauncher.isMiniAppUrl(str)) {
-        break label88;
-      }
-      MiniAppLauncher.startMiniApp(paramContext, str, paramInt, null);
+    if (paramasaq != null) {
+      ((LoginWelcomeManager)BaseApplicationImpl.sApplication.getRuntime().getManager(146)).a(paramasaq);
     }
-    for (;;)
-    {
-      LpReportInfo_dc03950.report(new LpReportInfo_dc03950("25", paramString1, paramString2, "2"));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, String.format("goToLoverZone, url: %s", new Object[] { str }));
-      return;
-      label88:
-      if ((str.startsWith("mqqapi://")) && (paramQQAppInterface != null))
-      {
-        paramQQAppInterface = bbej.a(paramQQAppInterface, paramContext, str);
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.c();
-        }
-      }
-      else if (paramQQAppInterface != null)
-      {
-        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", str.replace("{hostuin}", paramQQAppInterface.getCurrentAccountUin()));
-        localIntent.putExtra("injectrecommend", true);
-        localIntent.putExtra("finish_animation_out_to_right", true);
-        localIntent.putExtra("is_wrap_content", true);
-        localIntent.putExtra("hide_left_button", false);
-        paramContext.startActivity(localIntent);
-      }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WelcomeConfigProcessor", 2, "migrateOldVersion");
     }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

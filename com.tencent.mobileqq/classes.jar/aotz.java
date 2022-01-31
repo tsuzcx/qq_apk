@@ -1,112 +1,41 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class aotz
-  extends aoue
+  extends apvf
 {
-  public aotz(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aotz(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
   
-  protected ImageView a(acun paramacun)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e()
   {
-    if (paramacun == null) {}
-    while (!(paramacun instanceof adxa)) {
-      return null;
+    Object localObject = apel.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (apej.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          axqy.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
+        }
+      }
     }
-    return ((adxa)paramacun).a;
   }
   
-  protected void a(acun paramacun, ImageView paramImageView)
-  {
-    if (paramacun == null) {}
-    while (!(paramacun instanceof adxa)) {
-      return;
-    }
-    ((adxa)paramacun).a = paramImageView;
-  }
+  public void f() {}
   
-  protected void a(View paramView, acun paramacun, ChatMessage paramChatMessage, int paramInt)
+  public void g()
   {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
-        paramView = (MessageForFile)paramChatMessage;
-        paramacun = apue.a(this.a, paramView);
-      } while (paramacun == null);
-      if (paramView.istroop == 3000) {}
-      for (i = 3; paramInt == 0; i = 1)
-      {
-        axqw.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-        this.a.a().a(paramacun.nSessionId);
-        return;
-      }
-    } while (paramInt != 1);
-    axqw.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
-    a(new aoua(this, i, paramacun));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = apue.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = apue.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
-    return true;
+    this.a.a.a().G();
   }
 }
 

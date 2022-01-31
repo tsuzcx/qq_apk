@@ -1,24 +1,43 @@
-public class bbbi
+import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+final class bbbi
+  implements View.OnTouchListener
 {
-  public static final String a = o + "SelectedPhotoList";
-  public static final String b = o + "ForwardWhere";
-  public static final String c = o + "FromWhere";
-  public static final String d = o + "AlbumName";
-  public static final String e = o + "AlbumId";
-  public static final String f = o + "InitActivityClass";
-  public static final String g = o + "DestActivityClass";
-  public static final String h = o + "RequestCode";
-  public static final String i = o + "TempSelectPhotoMap";
-  public static final String j = o + "PassToDestActivity";
-  public static final String k = o + "PassFromDestActivity";
-  public static final String l = ajyc.a(2131700143);
-  public static final String m = ajyc.a(2131700144);
-  public static final String n = ajyc.a(2131700142);
-  private static final String o = bbbi.class.getName() + ".";
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        bbbg.b(false);
+        bbbg.a = f1;
+        bbbg.b = f2;
+        paramMotionEvent = Message.obtain();
+        paramMotionEvent.what = bbbl.a;
+        paramMotionEvent.obj = paramView;
+        bbbg.a().sendMessageDelayed(paramMotionEvent, 1000L);
+        return false;
+      } while ((bbbg.a()) || ((Math.abs(bbbg.a - f1) <= 20.0F) && (Math.abs(bbbg.b - f2) <= 20.0F)));
+      bbbg.b(true);
+      bbbg.a().removeMessages(bbbl.a);
+      return false;
+    }
+    bbbg.a().removeMessages(bbbl.a);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bbbi
  * JD-Core Version:    0.7.0.1
  */

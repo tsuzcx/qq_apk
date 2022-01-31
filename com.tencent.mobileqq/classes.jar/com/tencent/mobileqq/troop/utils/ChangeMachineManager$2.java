@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bahi;
+import bahw;
 
 public class ChangeMachineManager$2
   implements Runnable
 {
-  public ChangeMachineManager$2(bahi parambahi) {}
+  public ChangeMachineManager$2(bahw parambahw) {}
   
   public void run()
   {
-    bahi.b(this.this$0);
+    bahw.b(this.this$0);
   }
 }
 

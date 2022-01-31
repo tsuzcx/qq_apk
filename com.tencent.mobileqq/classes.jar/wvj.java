@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public final class wvj
-  implements Parcelable.Creator<CommodityBean>
+public class wvj
+  implements View.OnClickListener
 {
-  public CommodityBean a(Parcel paramParcel)
-  {
-    return new CommodityBean(paramParcel);
-  }
+  public wvj(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public CommodityBean[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new CommodityBean[paramInt];
+    xhb.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + wux.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    wis.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
   }
 }
 

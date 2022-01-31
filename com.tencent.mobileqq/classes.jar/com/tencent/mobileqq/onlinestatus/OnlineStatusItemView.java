@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import actn;
+import actj;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import auja;
-import aujd;
-import aujh;
-import aykp;
-import bftj;
+import aujc;
+import aujf;
+import aujj;
+import aykr;
+import bfua;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -26,7 +26,7 @@ public class OnlineStatusItemView
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public aujh a;
+  public aujj a;
   public boolean a;
   public boolean b;
   
@@ -68,7 +68,7 @@ public class OnlineStatusItemView
     {
       localTextView.setTextColor(Color.parseColor((String)localObject));
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = actn.a(8.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(8.0F, getResources());
       addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       return;
     }
@@ -83,47 +83,47 @@ public class OnlineStatusItemView
     for (int i = 2130839159;; i = 2130839160)
     {
       setBackgroundResource(i);
-      this.jdField_a_of_type_Int = actn.a(16.0F, getResources());
+      this.jdField_a_of_type_Int = actj.a(16.0F, getResources());
       b(bool);
       return;
     }
   }
   
-  public void a(aujh paramaujh)
+  public void a(aujj paramaujj)
   {
-    if (paramaujh == null) {}
+    if (paramaujj == null) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Aujh = paramaujh;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaujh.jdField_a_of_type_JavaLangString);
-      if (paramaujh.jdField_a_of_type_Int == 2) {
-        paramaujh = aujd.a(paramaujh.jdField_a_of_type_MqqAppAppRuntime$Status);
+      this.jdField_a_of_type_Aujj = paramaujj;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaujj.jdField_a_of_type_JavaLangString);
+      if (paramaujj.jdField_a_of_type_Int == 2) {
+        paramaujj = aujf.a(paramaujj.jdField_a_of_type_MqqAppAppRuntime$Status);
       }
-      while (paramaujh != null)
+      while (paramaujj != null)
       {
-        paramaujh.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramaujh);
+        paramaujj.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramaujj);
         return;
         if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(a())))
         {
-          paramaujh = new ayki(a(), 3).a[0];
-          if ((paramaujh instanceof aykp)) {
-            paramaujh = ((aykp)paramaujh).a();
+          paramaujj = new aykk(a(), 3).a[0];
+          if ((paramaujj instanceof aykr)) {
+            paramaujj = ((aykr)paramaujj).a();
           }
         }
         else
         {
-          if (auja.a().a(paramaujh))
+          if (aujc.a().a(paramaujj))
           {
-            int i = auja.a();
-            paramaujh = new bftj().a(i, 1);
+            int i = aujc.a();
+            paramaujj = new bfua().a(i, 1);
             continue;
           }
-          paramaujh = URLDrawable.getDrawable(this.jdField_a_of_type_Aujh.b, URLDrawable.URLDrawableOptions.obtain());
+          paramaujj = URLDrawable.getDrawable(this.jdField_a_of_type_Aujj.b, URLDrawable.URLDrawableOptions.obtain());
           continue;
         }
-        paramaujh = null;
+        paramaujj = null;
       }
     }
   }

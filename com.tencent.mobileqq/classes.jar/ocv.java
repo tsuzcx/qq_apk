@@ -1,74 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.qphone.base.util.QLog;
-
 public class ocv
-  extends NativeText
 {
-  protected String a;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public ocv(VafContext paramVafContext)
+  public ocv(float paramFloat1, float paramFloat2)
   {
-    super(paramVafContext);
-    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public ocv(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
-    if (paramInt == 1083)
-    {
-      if (paramString != null)
-      {
-        this.a = paramString;
-        setDrawableLeft(null);
-      }
-      return true;
-    }
-    if (paramInt == 1084) {
-      if (paramString != null)
-      {
-        int i = Utils.dp2px(nmk.a(paramString, 0));
-        this.mNative.setCompoundDrawablePadding(i);
-      }
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramString);
-      if (paramInt == 48)
-      {
-        Float localFloat = Utils.toFloat(paramString);
-        if (localFloat != null)
-        {
-          this.mAlpha = localFloat.floatValue();
-          getNativeView().setAlpha(this.mAlpha);
-        }
-        else
-        {
-          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        }
-      }
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
   }
   
-  public void setDrawableLeft(String paramString)
+  public ocv(ocv paramocv)
   {
-    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
-    if (this.drawableLeftPath != null) {}
-    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, (Drawable)null, (Drawable)null);; paramString = null)
-    {
-      if (this.a != null) {}
-      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, (Drawable)null, (Drawable)null);; localDrawable = null)
-      {
-        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, (Drawable)null, localDrawable, (Drawable)null);
-        return;
-      }
-    }
+    this.a = paramocv.a;
+    this.b = paramocv.b;
+  }
+  
+  public void a(ocv paramocv)
+  {
+    float f = this.a;
+    this.a = paramocv.a;
+    paramocv.a = f;
+    f = this.b;
+    this.b = paramocv.b;
+    paramocv.b = f;
   }
 }
 

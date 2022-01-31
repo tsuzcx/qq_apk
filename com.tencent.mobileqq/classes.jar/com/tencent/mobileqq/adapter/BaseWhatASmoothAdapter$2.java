@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.adapter;
 
-import ails;
+import ailq;
 
 public class BaseWhatASmoothAdapter$2
   implements Runnable
 {
   public void run()
   {
-    ails.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ailt);
+    ailq.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ailr);
   }
 }
 

@@ -1,93 +1,104 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.view.MotionEvent;
 
 public class bbmk
-  extends SSLSocketFactory
 {
-  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
-  private String b;
+  protected float a;
+  protected bbml a;
+  private bbmm a;
+  protected bbmn a;
+  protected boolean a;
+  protected float b;
+  protected boolean b;
+  protected boolean c;
+  protected boolean d = true;
   
-  public bbmk(String paramString, HostnameVerifier paramHostnameVerifier)
+  public bbmk(bbml parambbml, bbmn parambbmn, boolean paramBoolean)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
-  }
-  
-  public Socket createSocket()
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  @TargetApi(17)
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramString = paramSocket.getInetAddress();
-    if (paramBoolean) {
-      paramSocket.close();
+    if ((parambbml != null) && (parambbmn != null))
+    {
+      this.jdField_a_of_type_Bbml = parambbml;
+      this.jdField_a_of_type_Bbmn = parambbmn;
+      return;
     }
-    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
+    throw new IllegalArgumentException("DragSource and DropTarget shouldn't be null!");
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    float f2;
+    float f1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      f2 = paramMotionEvent.getRawX();
+      f1 = paramMotionEvent.getRawY();
+      f2 += this.jdField_a_of_type_Float;
+      f1 += this.jdField_b_of_type_Float;
+      switch (paramMotionEvent.getAction())
+      {
+      }
+    }
+    label258:
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          f2 = paramMotionEvent.getX();
+          f1 = paramMotionEvent.getY();
+          break;
+          this.jdField_a_of_type_Bbmm = this.jdField_a_of_type_Bbml.a(f2, f1);
+        } while (this.jdField_a_of_type_Bbmm == null);
+        if ((this.jdField_a_of_type_Bbml.a(this.jdField_a_of_type_Bbmm, f2, f1)) && (this.jdField_a_of_type_Bbmm.a(this.jdField_a_of_type_Bbml, f2, f1))) {
+          this.jdField_b_of_type_Boolean = true;
+        }
+        return true;
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Bbml.a(this.jdField_a_of_type_Bbmm, f2, f1);
+      this.jdField_a_of_type_Bbmm.a(this.jdField_a_of_type_Bbml, f2, f1);
+      if (this.d)
+      {
+        if (!this.jdField_a_of_type_Bbmn.a(f2, f1)) {
+          break label258;
+        }
+        if (!this.c)
+        {
+          this.c = true;
+          this.d = this.jdField_a_of_type_Bbmn.b(this.jdField_a_of_type_Bbml, this.jdField_a_of_type_Bbmm, f2, f1);
+        }
+        this.jdField_a_of_type_Bbmn.b(this.jdField_a_of_type_Bbml, this.jdField_a_of_type_Bbmm, f2, f1);
+      }
+      for (;;)
+      {
+        return true;
+        if (this.c)
+        {
+          this.c = false;
+          this.jdField_a_of_type_Bbmn.a(this.jdField_a_of_type_Bbml, this.jdField_a_of_type_Bbmm, f2, f1);
+        }
+      }
+    } while (!this.jdField_b_of_type_Boolean);
+    if ((this.jdField_a_of_type_Bbmn.a(f2, f1)) && (this.jdField_a_of_type_Bbmn.a(this.jdField_a_of_type_Bbml, this.jdField_a_of_type_Bbmm, f2, f1)))
+    {
+      this.jdField_a_of_type_Bbml.a(this.jdField_a_of_type_Bbmn, this.jdField_a_of_type_Bbmm, f2, f1);
+      this.jdField_a_of_type_Bbmm.a(this.jdField_a_of_type_Bbml, this.jdField_a_of_type_Bbmn, f2, f1);
     }
     for (;;)
     {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
-      }
-      catch (Exception paramString) {}
+      this.jdField_b_of_type_Boolean = false;
+      this.c = false;
+      this.d = true;
+      return true;
+      this.jdField_a_of_type_Bbml.a(null, this.jdField_a_of_type_Bbmm, f2, f1);
+      this.jdField_a_of_type_Bbmm.a(this.jdField_a_of_type_Bbml, null, f2, f1);
     }
-    return paramSocket;
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
   }
 }
 

@@ -1,14 +1,14 @@
 import android.os.Bundle;
 
 class atie
-  extends mxl
+  extends mxi
 {
-  atie(athz paramathz, atig paramatig) {}
+  atie(atib paramatib, atii paramatii) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Atig != null) {
-      this.jdField_a_of_type_Atig.a(paramInt, paramArrayOfByte, paramBundle);
+    if (this.jdField_a_of_type_Atii != null) {
+      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }

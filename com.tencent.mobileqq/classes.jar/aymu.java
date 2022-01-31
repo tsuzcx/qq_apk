@@ -1,9 +1,6 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.diy.ResData;
-
 public abstract interface aymu
 {
-  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
+  public abstract void onScreenChange(int paramInt);
 }
 
 

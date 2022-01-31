@@ -1,34 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
-
-public class mmy
-  extends Handler
+public abstract interface mmy
 {
-  WeakReference<EffectFilterTextPager> a;
-  
-  public mmy(EffectFilterTextPager paramEffectFilterTextPager)
-  {
-    this.a = new WeakReference(paramEffectFilterTextPager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
-    if (localEffectFilterTextPager == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      localEffectFilterTextPager.b();
-    }
-  }
+  public abstract void a(long paramLong, int paramInt, String paramString);
 }
 
 

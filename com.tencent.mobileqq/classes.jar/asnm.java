@@ -1,19 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
-public abstract class asnm
+public class asnm
+  implements DialogInterface.OnClickListener
 {
-  public String a = "MsgBackup." + getClass().getSimpleName();
+  public asnm(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (asog.a) {
-      QLog.d(this.a, 2, paramString);
+    aslg.a().a().c();
+    aslg.a().d();
+    if (this.a.a)
+    {
+      this.a.g();
+      return;
     }
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return bbdj.a(paramString);
+    this.a.a(this.a.getActivity());
   }
 }
 

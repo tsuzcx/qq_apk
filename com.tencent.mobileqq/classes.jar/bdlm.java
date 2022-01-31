@@ -1,86 +1,77 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient.1;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
 public class bdlm
-  extends bdma
 {
-  bdln jdField_a_of_type_Bdln;
+  private static volatile bdlm jdField_a_of_type_Bdlm;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bdln(this);
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<bdku>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
   
-  public bdlm(bdlc parambdlc, Activity paramActivity, bdln parambdln)
+  public static bdlm a()
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Bdln = parambdln;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    a();
-    if (paramBoolean.booleanValue())
+    if (jdField_a_of_type_Bdlm == null) {}
+    try
     {
-      if (bdlz.a())
-      {
-        this.jdField_a_of_type_Bdlc.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bdlc.jdField_b_of_type_Boolean = false;
-        long l = -1L;
-        switch (this.jdField_a_of_type_Bdln.jdField_a_of_type_Int)
-        {
-        case 1: 
-        default: 
-          l = this.jdField_a_of_type_Bdlc.a(this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdln.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdln.jdField_b_of_type_Boolean);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Bdlc.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_Bdlc.jdField_b_of_type_Long = System.currentTimeMillis();
-          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle != null))
-          {
-            paramBoolean = bdjc.a(this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle.getString(bdkm.i), "NEWYYB");
-            bdjc.a("311", paramBoolean, this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b));
-            Context localContext = bcxm.a().a();
-            if (localContext != null) {
-              bdjc.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle.getString(bdkm.b));
-            }
-          }
-          if ((this.jdField_a_of_type_Bdlc.jdField_a_of_type_Bdlq != null) && (this.jdField_a_of_type_Bdlc.jdField_a_of_type_Bdlq.isShowing())) {
-            this.jdField_a_of_type_Bdlc.jdField_a_of_type_Bdlq.dismiss();
-          }
-          return;
-          this.jdField_a_of_type_Bdlc.e = true;
-          if (this.jdField_a_of_type_Bdlc.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
-          {
-            l = this.jdField_a_of_type_Bdlc.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Bdlc.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-          }
-          else
-          {
-            bdht.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-            continue;
-            l = this.jdField_a_of_type_Bdlc.b(this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdln.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdln.jdField_b_of_type_Boolean);
-            continue;
-            l = this.jdField_a_of_type_Bdlc.b(this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidOsBundle);
-          }
-        }
+      if (jdField_a_of_type_Bdlm == null) {
+        jdField_a_of_type_Bdlm = new bdlm();
       }
-      if (this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      this.jdField_a_of_type_Bdlc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      return;
+      return jdField_a_of_type_Bdlm;
     }
-    if (this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
-    this.jdField_a_of_type_Bdlc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    finally {}
   }
   
-  protected void onCancelled()
+  private String a(String paramString, int paramInt)
   {
-    super.onCancelled();
-    if (this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bdln.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    return paramString + "_" + paramInt;
+  }
+  
+  private void a(String paramString, bdku parambdku)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (parambdku == null)) {}
+    List localList1;
+    do
+    {
+      return;
+      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localList1 = localList2;
+      if (localList2 == null) {
+        localList1 = Collections.synchronizedList(new ArrayList());
+      }
+    } while (localList1.contains(parambdku));
+    localList1.add(parambdku);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
+  }
+  
+  public void a(String paramString, int paramInt, bdku parambdku)
+  {
+    a(a(paramString, paramInt), parambdku);
+    parambdku = new Bundle();
+    parambdku.putString("PackageName", paramString);
+    parambdku.putInt("VersionCode", paramInt);
+    bdii.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
+    this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
+    QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", parambdku, this.jdField_a_of_type_EipcEIPCResultCallback);
+    ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, parambdku), 3000L);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, bdku parambdku)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.b.put(a(paramString2, paramInt), paramString1);
     }
+    a(paramString2, paramInt, parambdku);
   }
 }
 

@@ -1,8 +1,18 @@
-public abstract interface apac
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+
+class apac
+  implements TVK_SDKMgr.InstallListener
 {
-  public abstract void a();
+  apac(apab paramapab, apag paramapag) {}
   
-  public abstract void b();
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt) {}
+  
+  public void onInstalledSuccessed()
+  {
+    this.jdField_a_of_type_Apag.b();
+  }
 }
 
 

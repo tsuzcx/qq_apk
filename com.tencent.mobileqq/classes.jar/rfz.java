@@ -1,28 +1,137 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
 public class rfz
-  implements Animator.AnimatorListener
+  extends Dialog
+  implements View.OnClickListener
 {
-  public rfz(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  private static final String jdField_a_of_type_JavaLangString = ajya.a(2131713149);
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public rfz(@NonNull Context paramContext, int paramInt)
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
-    }
+    super(paramContext, paramInt);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public rfz(@NonNull Context paramContext, Runnable paramRunnable)
+  {
+    this(paramContext, 0);
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  private Drawable a()
+  {
+    float f = actj.a(3.0F, getContext().getResources());
+    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
+    localShapeDrawable.getPaint().setColor(Color.parseColor("#12B7F5"));
+    localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
+    return localShapeDrawable;
+  }
+  
+  private SpannableString a()
+  {
+    int i = jdField_a_of_type_JavaLangString.indexOf("《QQ看点用户行为规范》");
+    SpannableString localSpannableString = new SpannableString(jdField_a_of_type_JavaLangString);
+    localSpannableString.setSpan(new rga(this, Color.parseColor("#12B7F5")), i, "《QQ看点用户行为规范》".length() + i, 33);
+    return localSpannableString;
+  }
+  
+  public static boolean a(BaseActivity paramBaseActivity, Runnable paramRunnable)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramBaseActivity);
+    boolean bool1 = localSharedPreferences.getBoolean("qq_readinjoy_user_protocol_agreed_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), false);
+    boolean bool2 = localSharedPreferences.getString("qq_readinjoy_user_protocol_92_switch_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), "0").equals("1");
+    if ((bool1) || (!bool2))
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      return true;
+    }
+    paramRunnable = new rfz(paramBaseActivity, paramRunnable);
+    paramRunnable.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    paramRunnable.show();
+    nol.a(null, "", "0X800992C", "0X800992C", 0, 0, "", "", "", "");
+    return false;
+  }
+  
+  private Drawable b()
+  {
+    float f = actj.a(3.0F, getContext().getResources());
+    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
+    localShapeDrawable.getPaint().setColor(-1);
+    localShapeDrawable.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
+    return localShapeDrawable;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView == this.jdField_a_of_type_AndroidViewView) {
+      dismiss();
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramView != this.jdField_a_of_type_AndroidWidgetButton);
+      PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putBoolean("qq_readinjoy_user_protocol_agreed_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), true).apply();
+      dismiss();
+    } while (this.jdField_a_of_type_JavaLangRunnable == null);
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    requestWindowFeature(1);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131559905, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364719));
+    this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramBundle.findViewById(2131362210));
+    this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131364274);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+    this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(new rgb());
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a());
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    Drawable localDrawable = b();
+    getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    paramBundle.findViewById(2131363157).setBackgroundDrawable(localDrawable);
+    setContentView(paramBundle);
+    paramBundle = getWindow().getAttributes();
+    paramBundle.height = -2;
+    paramBundle.width = actj.a(320.0F, getContext().getResources());
+    getWindow().setAttributes(paramBundle);
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+  }
 }
 
 

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-class advy
-  implements ayvy
+public class advy
+  extends acuj
 {
-  advy(advu paramadvu) {}
+  public ImageView a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
   
-  public void a(ArrayList<MessageRecord> paramArrayList)
-  {
-    this.a.b();
-  }
+  public advy(advs paramadvs) {}
 }
 
 

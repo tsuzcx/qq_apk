@@ -1,24 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.MainFragment;
 
 public class abna
-  extends abni
+  implements DialogInterface.OnDismissListener
 {
-  public abna(MainFragment paramMainFragment)
-  {
-    super(null);
-  }
+  public abna(MainFragment paramMainFragment) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ajwm localajwm = this.a.b();
-    if ((localajwm instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localajwm).k();
-    }
-    osj.a().l();
-    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
-    super.onClick(paramView);
+    this.a.e();
   }
 }
 

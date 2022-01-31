@@ -1,39 +1,316 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.text.TextUtils;
+import java.util.List;
 
-final class bavv
-  implements DownloadParams.DecodeHandler
+public class bavv
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public static void a(int paramInt1, int paramInt2, String[] paramArrayOfString, bavu parambavu)
   {
-    if (paramBitmap == null) {
-      return null;
+    switch (paramInt1)
+    {
+    default: 
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      parambavu.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    case 2: 
+      a(paramArrayOfString, parambavu);
+      return;
+    case 3: 
+      a(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 4: 
+      b(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 5: 
+      c(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 6: 
+      d(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 7: 
+      e(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 8: 
+      g(paramInt2, paramArrayOfString, parambavu);
+      return;
+    case 9: 
+    case 11: 
+      f(paramInt2, paramArrayOfString, parambavu);
+      return;
     }
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    Canvas localCanvas = new Canvas(paramDownloadParams);
-    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.FILL);
-    localPaint.setAntiAlias(true);
-    localPaint.setShader(localBitmapShader);
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    localPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, j / 2, Color.parseColor("#80000000"), Color.parseColor("#00000000"), Shader.TileMode.CLAMP));
-    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
-    paramBitmap.recycle();
-    return paramDownloadParams;
+    h(paramInt2, paramArrayOfString, parambavu);
+  }
+  
+  public static void a(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[1]))
+      {
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 1;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
+        if (!TextUtils.isEmpty(paramArrayOfString[4]))
+        {
+          localbavt = new bavt();
+          localbavt.jdField_a_of_type_Int = 4;
+          localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+          parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+        }
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbavt = new bavt();
+          localbavt.jdField_a_of_type_Int = 3;
+          localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+        }
+      }
+    }
+    while (paramInt != 1)
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (TextUtils.isEmpty(paramArrayOfString[4])) {
+            break;
+          }
+          parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 4;
+          parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        } while (TextUtils.isEmpty(paramArrayOfString[3]));
+        localbavt = new bavt();
+        localbavt.jdField_a_of_type_Int = 3;
+        localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+        return;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      bavt localbavt = new bavt();
+      localbavt.jdField_a_of_type_Int = 3;
+      localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramArrayOfString[1]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 1;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
+      return;
+    }
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 6;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void a(String[] paramArrayOfString, bavu parambavu)
+  {
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[4]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 4;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      if (!TextUtils.isEmpty(paramArrayOfString[3]))
+      {
+        localbavt = new bavt();
+        localbavt.jdField_a_of_type_Int = 3;
+        localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+        parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+      }
+    }
+    do
+    {
+      return;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    } while (TextUtils.isEmpty(paramArrayOfString[3]));
+    bavt localbavt = new bavt();
+    localbavt.jdField_a_of_type_Int = 3;
+    localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+    parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+  }
+  
+  public static void b(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambavu);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[6]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 6;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void c(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 4;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+      }
+    }
+    while (paramInt != 1)
+    {
+      do
+      {
+        return;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[2]));
+      bavt localbavt = new bavt();
+      localbavt.jdField_a_of_type_Int = 2;
+      localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramArrayOfString[2]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 2;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void d(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (paramInt == 2) {
+      if (!TextUtils.isEmpty(paramArrayOfString[4]))
+      {
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 4;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          localbavt = new bavt();
+          localbavt.jdField_a_of_type_Int = 3;
+          localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+      } while (TextUtils.isEmpty(paramArrayOfString[3]));
+      localbavt = new bavt();
+      localbavt.jdField_a_of_type_Int = 3;
+      localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+      return;
+      if (paramInt == 1)
+      {
+        localbavt = new bavt();
+        localbavt.jdField_a_of_type_Int = 0;
+        localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+        if (!TextUtils.isEmpty(paramArrayOfString[3]))
+        {
+          parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 3;
+          parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+          return;
+        }
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+        parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+        return;
+      }
+    } while (paramInt != 3);
+    bavt localbavt = new bavt();
+    localbavt.jdField_a_of_type_Int = 7;
+    localbavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambavu.jdField_a_of_type_JavaUtilList.add(localbavt);
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 3;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void e(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambavu);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public static void f(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambavu);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[5]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 5;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[5];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void g(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambavu);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
+    if (!TextUtils.isEmpty(paramArrayOfString[3]))
+    {
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 3;
+      parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+  }
+  
+  public static void h(int paramInt, String[] paramArrayOfString, bavu parambavu)
+  {
+    if (paramInt == 2) {
+      a(paramArrayOfString, parambavu);
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_Int = 0;
+    parambavu.jdField_a_of_type_Bavt.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
+    parambavu.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

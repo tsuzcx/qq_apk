@@ -13,7 +13,7 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nay;
+import nav;
 
 class BaseLibManager$3
   implements Downloader.DownloadListener
@@ -94,7 +94,7 @@ class BaseLibManager$3
           FileUtils.delete(paramString, false);
         }
         paramDownloadResult.mkdir();
-        i = nay.a(this.val$downloadZipPath, paramString);
+        i = nav.a(this.val$downloadZipPath, paramString);
         if (i != 0) {
           break label680;
         }

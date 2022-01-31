@@ -1,6 +1,12 @@
+import android.view.View.OnClickListener;
+
 public abstract interface rxd
 {
-  public abstract void a(int paramInt);
+  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
 }
 
 

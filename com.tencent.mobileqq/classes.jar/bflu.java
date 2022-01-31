@@ -1,60 +1,25 @@
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bflu
-  implements Resources
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public SpecialAVFilterResource getAVFilterResource()
-  {
-    return new bflw();
-  }
+  public bflu(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public ArtFilterResource getArtFilterResource()
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
-    return new bfll();
-  }
-  
-  public AVFilterResource getAvFilterResource()
-  {
-    return new bflk();
-  }
-  
-  public BeautyResource getBeautyResource()
-  {
-    return new bflm();
-  }
-  
-  public GestureResource getGestureResource()
-  {
-    return new bflp();
-  }
-  
-  public LowLightResource getLowLightResource()
-  {
-    return new bflr();
-  }
-  
-  public PtuFilterResource getPtuFilterResource()
-  {
-    return new bfls();
-  }
-  
-  public SensorResource getSensorResource()
-  {
-    return new bflv();
-  }
-  
-  public GestureGameResource geteGestureGameResource()
-  {
-    return new bflo();
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.this$0.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.this$0.jdField_a_of_type_Int);
+    }
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+      return;
+    }
   }
 }
 

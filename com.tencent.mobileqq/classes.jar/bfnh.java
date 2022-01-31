@@ -1,39 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Debug;
+import java.io.IOException;
 
 public class bfnh
 {
-  private static Handler a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
   
-  public static void a(Runnable paramRunnable)
+  public static void a(String paramString)
   {
-    try
+    if (jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.post(paramRunnable);
       return;
-    }
-    finally {}
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
+      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (localObject[i].equals(paramString))
+        {
+          localObject = ajsd.bc + "dump_";
+          try
+          {
+            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
+            jdField_a_of_type_Boolean = true;
+            return;
+          }
+          catch (IOException paramString)
+          {
+            return;
+          }
+        }
+        i += 1;
       }
-      a.postDelayed(paramRunnable, paramLong);
-      return;
     }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
 }
 

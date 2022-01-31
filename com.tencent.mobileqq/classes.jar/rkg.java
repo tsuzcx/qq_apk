@@ -1,18 +1,47 @@
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class rkg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class rkg
 {
-  rkg(rkf paramrkf, int paramInt, View paramView) {}
+  public static int a;
+  public float a;
+  public View a;
+  public BaseData a;
+  protected rki a;
+  public float b = 14.0F;
+  public int b;
+  public int c = 16;
+  public int d = 18;
   
-  public void onGlobalLayout()
+  static
   {
-    this.jdField_a_of_type_Rkf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
-    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    jdField_a_of_type_Int = 32;
+  }
+  
+  public rkg() {}
+  
+  public rkg(View paramView, BaseData paramBaseData)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+  }
+  
+  public void a() {}
+  
+  public abstract void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
+  
+  public void a(String paramString, Bitmap paramBitmap) {}
+  
+  public void a(rki paramrki)
+  {
+    this.jdField_a_of_type_Rki = paramrki;
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
+    a(paramBaseData1, paramBaseData2, paramBoolean);
   }
 }
 

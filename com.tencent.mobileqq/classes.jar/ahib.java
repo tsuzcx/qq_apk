@@ -1,11 +1,8 @@
 public class ahib
 {
-  public static String a = "ResPreload";
-  public static String b = "CJConfig";
-  public static String c = "OfflinePreload";
-  public static String d = "adcode";
-  public static String e = "ActivityException";
-  public static String f = "ResHit";
+  public int a;
+  public String a = "";
+  public int b = -1;
 }
 
 

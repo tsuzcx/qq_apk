@@ -1,27 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class abfr
-  implements bcak
+  implements Animation.AnimationListener
 {
-  private WeakReference<aqyd> a;
+  public abfr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public abfr(aqyd paramaqyd)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramaqyd);
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public void a(boolean paramBoolean)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      aqyd localaqyd = (aqyd)this.a.get();
-      if (localaqyd != null) {
-        localaqyd.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
-      }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }

@@ -1,18 +1,15 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class auan
-  implements audw
+  implements View.OnClickListener
 {
   public auan(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(int paramInt, audx paramaudx)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramaudx.b)))
-    {
-      OCRResultActivity.b(this.a, paramaudx.b);
-      OCRResultActivity.a(this.a, false);
-    }
+    this.a.doOnBackPressed();
   }
 }
 

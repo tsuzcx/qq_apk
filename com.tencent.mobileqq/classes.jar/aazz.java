@@ -1,19 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class aazz
-  implements View.OnClickListener
+  extends ajto
 {
-  public aazz(EditActivity paramEditActivity) {}
+  public aazz(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
-    }
-    this.a.finish();
+    if (!this.a.j) {}
+    do
+    {
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 

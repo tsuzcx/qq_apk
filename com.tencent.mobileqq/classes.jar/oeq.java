@@ -1,248 +1,152 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 
-public class oeq
-  extends BaseAdapter
-  implements View.OnClickListener
+class oeq
+  extends osm
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<ChannelCoverInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  oeq(oep paramoep) {}
   
-  public oeq(Context paramContext, ArrayList<ChannelCoverInfo> paramArrayList, int paramInt)
+  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramArrayList != null)
+    if ((paramBoolean) && (paramList != null) && (oep.a(this.a) == paramInt))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramContext = new ChannelCoverInfo();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      paramContext = new ChannelCoverInfo();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+      oep.a(this.a, (ArrayList)paramList);
+      if ((oep.a(this.a) == null) || (oep.a(this.a) == null) || (oep.a(this.a).size() <= 0)) {
+        break label200;
+      }
+      oep.a(this.a).a(oep.a(this.a));
+      oep.a(this.a).notifyDataSetChanged();
+      if (oep.a(this.a).findHeaderViewPosition(oep.a(this.a)) < 0) {
+        oep.a(this.a).addHeaderView(oep.a(this.a));
+      }
     }
-  }
-  
-  public ChannelCoverInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(ArrayList<ChannelCoverInfo> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "setData size" + paramArrayList.size());
-    }
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      ChannelCoverInfo localChannelCoverInfo = new ChannelCoverInfo();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localChannelCoverInfo);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      paramArrayList = new ChannelCoverInfo();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "getCount()" + this.jdField_a_of_type_JavaUtilArrayList.size());
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate infos size" + oep.a(this.a).size());
       }
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label200:
+      oep.a(this.a).removeHeaderView(oep.a(this.a));
     }
-    return 0;
   }
   
-  public long getItemId(int paramInt)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((paramInt == 0) || ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() - 1))) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  @TargetApi(16)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-    if (getItemViewType(paramInt) == 0)
+    if ((paramBoolean) && (paramList != null) && (oep.a(this.a) == 0))
     {
-      paramViewGroup = paramView;
-      if (paramView == null)
+      oep.a(this.a, (ArrayList)paramList);
+      if ((oep.a(this.a) != null) && (oep.a(this.a) != null) && (oep.a(this.a).size() > 0))
       {
-        paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-        paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(actn.a(2.0F, (Resources)localObject), actn.a(30.0F, (Resources)localObject)));
-      }
-    }
-    ChannelCoverInfo localChannelCoverInfo;
-    do
-    {
-      return paramViewGroup;
-      if (paramView != null) {
-        break;
-      }
-      localObject = new oer(this);
-      paramView = new ReadInJoyVideoTopicTextView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131374774);
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView = paramView;
-      paramView.setTag(localObject);
-      localChannelCoverInfo = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup = paramView;
-    } while (localChannelCoverInfo == null);
-    if (localChannelCoverInfo.mColumnType == 1)
-    {
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTopicText(localChannelCoverInfo.mChannelCoverName);
-      label165:
-      if (this.jdField_a_of_type_Int != 56) {
-        break label402;
-      }
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(7566195);
-      label184:
-      if (TextUtils.isEmpty(localChannelCoverInfo.mIconUrl)) {
-        break label418;
-      }
-      paramInt = bbkx.a(21.0F);
-      paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840112);
-      paramViewGroup = URLDrawable.getDrawable(localChannelCoverInfo.mIconUrl, paramInt, paramInt, paramViewGroup, paramViewGroup);
-      if ((paramViewGroup != null) && (paramViewGroup.getStatus() == 2)) {
-        paramViewGroup.restartDownload();
-      }
-      paramViewGroup.setBounds(0, 0, paramInt, paramInt);
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(paramViewGroup, null, null, null);
-      label263:
-      if (!localChannelCoverInfo.isReport)
-      {
-        localChannelCoverInfo.isReport = true;
-        if (this.jdField_a_of_type_Int != 56) {
-          break label433;
+        oep.a(this.a).a(oep.a(this.a));
+        oep.a(this.a).notifyDataSetChanged();
+        if (oep.a(this.a).findHeaderViewPosition(oep.a(this.a)) < 0) {
+          oep.a(this.a).addHeaderView(oep.a(this.a));
         }
-        paramInt = i;
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          paramInt = i;
-          if (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() != null) {
-            paramInt = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);
+        paramList = paramList.iterator();
+      }
+      label134:
+      while (paramList.hasNext())
+      {
+        Object localObject = (ChannelCoverInfo)paramList.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label388;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label388;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break label134;
+              }
+              QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break label134;
+            }
+            QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break label134;
+            oep.a(this.a).removeHeaderView(oep.a(this.a));
+            break;
+            i += 1;
           }
         }
-        oes.a("0X8007BE5", "1", "", "", localChannelCoverInfo, paramInt);
       }
-    }
-    for (;;)
-    {
-      oes.a("0X8007F01", localChannelCoverInfo, oes.b);
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setOnClickListener(this);
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = localChannelCoverInfo;
-      return paramView;
-      localObject = (oer)paramView.getTag();
-      break;
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setSubChannelText(localChannelCoverInfo.mChannelCoverName);
-      break label165;
-      label402:
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(localChannelCoverInfo.mFontColor);
-      break label184;
-      label418:
-      ((oer)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(null, null, null, null);
-      break label263;
-      label433:
-      if (onk.a(this.jdField_a_of_type_Int)) {
-        olg.a(this.jdField_a_of_type_AndroidContentContext, "0X8009A70", this.jdField_a_of_type_Int, localChannelCoverInfo.mChannelCoverId);
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
+      label388:
       if (QLog.isColorLevel()) {
-        QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "click readinjoy_feeds_video_label_textview");
-      }
-      paramView = ((oer)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-    } while (paramView == null);
-    Object localObject;
-    if (TextUtils.isEmpty(paramView.mChannelJumpUrl))
-    {
-      localObject = new HashMap();
-      ((HashMap)localObject).put("param_key_ariticle_id", Long.valueOf(paramView.mArticleId));
-      ((HashMap)localObject).put("param_key_channel_cover_style", Integer.valueOf(paramView.mChannelCoverStyle));
-      ((HashMap)localObject).put("param_key_channel_column_type", Integer.valueOf(paramView.mColumnType));
-      if (this.jdField_a_of_type_Int == 56)
-      {
-        nut.b(this.jdField_a_of_type_AndroidContentContext, paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, 4, (Map)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "launchChannelActivity info.mArticleId:" + paramView.mArticleId + " info.mChannelCoverStyle: " + paramView.mChannelCoverStyle + " info.mChannelCoverId:" + paramView.mChannelCoverId + " info.mChannelCoverName:" + paramView.mChannelCoverName + " info.mChannelType: " + paramView.mChannelType);
-        }
-        if (this.jdField_a_of_type_Int == 56) {
-          ThreadManager.executeOnSubThread(new ChannelCoverSimpleAdapter.1(this, paramView));
-        }
+        QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate infos size" + oep.a(this.a).size());
       }
     }
-    label421:
+    if (QLog.isColorLevel()) {
+      QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
+  }
+  
+  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (oep.a(this.a) == 56))
+    {
+      oep.a(this.a, (ArrayList)paramList);
+      if ((oep.a(this.a) == null) || (oep.a(this.a) == null) || (oep.a(this.a).size() <= 0)) {
+        break label201;
+      }
+      oep.a(this.a).a(oep.a(this.a));
+      oep.a(this.a).notifyDataSetChanged();
+      if (oep.a(this.a).findHeaderViewPosition(oep.a(this.a)) < 0) {
+        oep.a(this.a).addHeaderView(oep.a(this.a));
+      }
+    }
     for (;;)
     {
-      if (onk.a(this.jdField_a_of_type_Int)) {
-        olg.a(this.jdField_a_of_type_AndroidContentContext, "0X8009A71", this.jdField_a_of_type_Int, paramView.mChannelCoverId);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate infos size" + oep.a(this.a).size());
       }
-      oes.a("0X8007F02", paramView, oes.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate" + paramBoolean);
+      }
       return;
-      nut.a(this.jdField_a_of_type_AndroidContentContext, paramView.mChannelCoverId, paramView.mChannelCoverName, paramView.mChannelType, 4, (Map)localObject);
-      break;
-      if (rwa.b(paramView.mChannelJumpUrl)) {
-        rwa.a(this.jdField_a_of_type_AndroidContentContext, "", rwa.b(paramView.mChannelJumpUrl), null);
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label421;
-        }
-        QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "info.mChannelJumpUrl:" + paramView.mChannelJumpUrl);
-        break;
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramView.mChannelJumpUrl);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      }
+      label201:
+      oep.a(this.a).removeHeaderView(oep.a(this.a));
     }
   }
 }

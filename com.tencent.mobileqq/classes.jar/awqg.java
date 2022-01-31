@@ -3,20 +3,20 @@ import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import java.util.List;
 
 public class awqg
-  extends awpz
+  extends awqb
 {
-  awof a(afgx paramafgx, List<awog> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  awoh a(afgv paramafgv, List<awoi> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    awvx.a(80);
-    return new awnl(paramafgx, paramList, paramString1, paramBoolean);
+    awvz.a(90);
+    return new awnl(paramafgv, paramList, paramString1);
   }
   
-  awog a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  awoi a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
   {
     return null;
   }
   
-  awog a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  awoi a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
     return new awnm(paramrecord, paramString, paramCharSequence);
   }

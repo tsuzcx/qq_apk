@@ -1,35 +1,32 @@
-public abstract class ahce
-  extends bbwf
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+
+class ahce
+  implements EIPCOnGetConnectionListener
 {
-  private bbwf a;
+  ahce(ahcd paramahcd) {}
   
-  public ahce(bbwf parambbwf)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    this.a = parambbwf;
-  }
-  
-  public void onDoneFile(bbwg parambbwg)
-  {
-    super.onDoneFile(parambbwg);
-    if (this.a != null) {
-      this.a.onDoneFile(parambbwg);
+    if (paramEIPCConnection != null) {
+      ahcd.a(this.a, paramEIPCConnection.procName);
+    }
+    ahcd.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
     }
   }
   
-  public void onProgress(bbwg parambbwg)
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    super.onProgress(parambbwg);
-    if (this.a != null) {
-      this.a.onProgress(parambbwg);
+    if (paramEIPCConnection != null) {
+      ahcd.a(this.a, paramEIPCConnection.procName);
     }
-  }
-  
-  public boolean onStart(bbwg parambbwg)
-  {
-    if (this.a != null) {
-      this.a.onStart(parambbwg);
+    ahcd.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
     }
-    return super.onStart(parambbwg);
   }
 }
 

@@ -2,17 +2,17 @@ package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.view.View;
 import android.widget.TextView;
-import biku;
+import bill;
 
 public class VideoStoryAIScenePart$17
   implements Runnable
 {
-  public VideoStoryAIScenePart$17(biku parambiku) {}
+  public VideoStoryAIScenePart$17(bill parambill) {}
   
   public void run()
   {
-    biku.a(this.this$0).setVisibility(8);
-    biku.b(this.this$0).setVisibility(8);
+    bill.a(this.this$0).setVisibility(8);
+    bill.b(this.this$0).setVisibility(8);
   }
 }
 

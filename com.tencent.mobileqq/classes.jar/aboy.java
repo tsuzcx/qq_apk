@@ -1,25 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aboy
   implements DialogInterface.OnClickListener
 {
-  public aboy(NotificationActivity paramNotificationActivity) {}
+  aboy(abox paramabox) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    this.a.finish();
+    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
   }
 }
 

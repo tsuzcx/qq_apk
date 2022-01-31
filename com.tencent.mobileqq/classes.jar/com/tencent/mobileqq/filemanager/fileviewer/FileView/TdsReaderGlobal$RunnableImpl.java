@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import andd;
+import andi;
 import java.lang.ref.WeakReference;
 
 final class TdsReaderGlobal$RunnableImpl
@@ -41,7 +41,7 @@ final class TdsReaderGlobal$RunnableImpl
           return;
           localTdsReaderGlobal = (TdsReaderGlobal)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           break;
-          andd.b();
+          andi.b();
           return;
         } while (localTdsReaderGlobal == null);
         TdsReaderGlobal.a(localTdsReaderGlobal, this.jdField_a_of_type_ArrayOfJavaLangObject);

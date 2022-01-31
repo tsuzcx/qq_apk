@@ -1,17 +1,17 @@
 package dov.com.qq.im.ptv;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
-import bcpw;
-import bjoz;
-import bjqt;
-import bjqu;
+import bcql;
+import bjpq;
+import bjrk;
+import bjrl;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LightWeightCameraCaptureUnit$9
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$9(bjoz parambjoz, int paramInt) {}
+  public LightWeightCameraCaptureUnit$9(bjpq parambjpq, int paramInt) {}
   
   public void run()
   {
@@ -24,16 +24,16 @@ public class LightWeightCameraCaptureUnit$9
       do
       {
         return;
-        bcpw.a(BaseApplicationImpl.getApplication(), ajyc.a(2131706089), 1).a();
-        localActivity = this.this$0.jdField_a_of_type_Bjqu.a();
+        bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706100), 1).a();
+        localActivity = this.this$0.jdField_a_of_type_Bjrl.a();
       } while ((localActivity == null) || (localActivity.isFinishing()));
-      this.this$0.jdField_a_of_type_Bjqt.a(2);
+      this.this$0.jdField_a_of_type_Bjrk.a(2);
       return;
     case 102: 
-      bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131706087), 0).a();
+      bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131706098), 0).a();
       return;
     }
-    bcpw.a(BaseApplicationImpl.getContext(), ajyc.a(2131706073), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131706084), 0).a();
   }
 }
 

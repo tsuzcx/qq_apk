@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.widget.TextView;
-import awbs;
+import awbu;
 
 public class AioFriendTitleHelper$2
   implements Runnable
 {
-  public AioFriendTitleHelper$2(awbs paramawbs, boolean paramBoolean, String paramString) {}
+  public AioFriendTitleHelper$2(awbu paramawbu, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    awbs.a(this.this$0, this.jdField_a_of_type_Boolean);
+    awbu.a(this.this$0, this.jdField_a_of_type_Boolean);
     if ((!this.this$0.b()) || (!this.jdField_a_of_type_Boolean))
     {
-      awbs.a(this.this$0).setText(this.jdField_a_of_type_JavaLangString);
+      awbu.a(this.this$0).setText(this.jdField_a_of_type_JavaLangString);
       this.this$0.b(this.jdField_a_of_type_JavaLangString);
     }
   }

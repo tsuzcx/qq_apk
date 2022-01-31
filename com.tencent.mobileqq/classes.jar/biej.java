@@ -1,7 +1,4 @@
-public abstract interface biej
-{
-  public abstract void a(bidr parambidr, boolean paramBoolean, int paramInt, String paramString);
-}
+class biej {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

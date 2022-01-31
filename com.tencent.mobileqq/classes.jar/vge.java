@@ -1,25 +1,23 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.os.Handler;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.Collections;
+import java.util.List;
 
 class vge
-  implements vih
+  implements vmf
 {
-  vge(vgd paramvgd) {}
+  vge(vga paramvga) {}
   
-  public void a()
+  public void a(int paramInt, List<tee> paramList)
   {
-    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    veg.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
+    ved.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.EMPTY_LIST;
     }
-    this.a.a.setLocation("None for test!!");
+    stb.a().dispatch(new vmd(paramInt, (List)localObject));
   }
 }
 

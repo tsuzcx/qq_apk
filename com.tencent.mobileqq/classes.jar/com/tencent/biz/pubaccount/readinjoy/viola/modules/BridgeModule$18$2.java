@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
-import ajyc;
-import bcpw;
+import ajya;
+import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class BridgeModule$18$2
@@ -11,7 +11,7 @@ class BridgeModule$18$2
   
   public void run()
   {
-    bcpw.a(BaseApplicationImpl.getContext(), 1, ajyc.a(2131701177), 0).a();
+    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131701188), 0).a();
   }
 }
 

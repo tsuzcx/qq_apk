@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.video.player;
 
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import java.util.Properties;
-import qbx;
-import qub;
-import qyw;
+import qbu;
+import qty;
+import qyt;
 
 public class ReadinjoyPlayerReporter$3
   implements Runnable
 {
-  public ReadinjoyPlayerReporter$3(qyw paramqyw, qub paramqub) {}
+  public ReadinjoyPlayerReporter$3(qyt paramqyt, qty paramqty) {}
   
   public void run()
   {
-    if (qyw.a(this.this$0)) {
+    if (qyt.a(this.this$0)) {
       return;
     }
     Properties localProperties = this.a.a().getPlayDetailsTime();

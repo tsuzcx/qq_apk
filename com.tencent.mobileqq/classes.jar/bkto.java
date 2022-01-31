@@ -1,18 +1,54 @@
-import android.os.Message;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bkto
-  extends MqqHandler
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bkto(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public bkto(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.g += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+    }
+    this.a.b(paramInt * this.a.b / 10000L);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    paramSeekBar = this.a;
+    paramSeekBar.h += 1;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 

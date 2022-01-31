@@ -5,12 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import tdk;
+import tdh;
 
 public class TroopNickNameManager$4
   implements Runnable
 {
-  public TroopNickNameManager$4(tdk paramtdk) {}
+  public TroopNickNameManager$4(tdh paramtdh) {}
   
   public void run()
   {

@@ -1,14 +1,23 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 class aylw
-  extends axms
+  implements bbqp
 {
-  aylw(aylv paramaylv) {}
+  aylw(aylu paramaylu) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (aylv.a(this.a) != null) {
-      this.a.b(aylv.a(this.a));
+    if (paramQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMusicSkin", 2, "onCompleted, scid:" + paramString1);
+      }
+      this.a.a();
     }
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

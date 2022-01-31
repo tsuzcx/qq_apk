@@ -1,34 +1,23 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 class via
-  extends SimpleObserver<Bitmap>
+  implements bfos
 {
+  int jdField_a_of_type_Int = 0;
+  
   via(vhz paramvhz) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        veg.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
-    }
-    else {
-      return;
-    }
-    veg.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.onError(paramError);
-    veg.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Vhz.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Vhz.a.size() - 1)) {
+      this.jdField_a_of_type_Vhz.f();
+    }
   }
 }
 

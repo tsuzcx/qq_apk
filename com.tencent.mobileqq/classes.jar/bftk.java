@@ -1,19 +1,39 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Rect;
 
-public abstract interface bftk
+public class bftk
 {
-  public abstract void a(int paramInt, View paramView, ListView paramListView);
+  private int jdField_a_of_type_Int;
+  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int b;
+  private int c;
   
-  public abstract boolean a(int paramInt, View paramView, ListView paramListView);
+  private bftk(Bitmap paramBitmap, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    if (paramBitmap != null)
+    {
+      this.b = paramBitmap.getScaledWidth(paramInt);
+      this.c = paramBitmap.getScaledHeight(paramInt);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
+      return;
+    }
+    this.jdField_a_of_type_Int = 4;
+  }
   
-  public abstract void b(int paramInt, View paramView, ListView paramListView);
-  
-  public abstract void c(int paramInt, View paramView, ListView paramListView);
+  private void a(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     bftk
  * JD-Core Version:    0.7.0.1
  */

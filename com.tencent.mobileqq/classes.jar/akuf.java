@@ -1,371 +1,286 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_lbs.LbsData;
-import com.tencent.biz.qqstory.network.pb.qqstory_lbs.ReqLbsReport;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocationUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.LbsInfoReportManager.1;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.data.LbsReportInfo;
-import com.tencent.mobileqq.pb.PBDoubleField;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class akuf
-  implements Manager, BusinessObserver
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<LbsReportInfo> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  private static final HashMap<String, akuh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static Map<akui, akuo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(8, 0.75F);
+  private static Map<akuo, akui> b = new ConcurrentHashMap(8, 0.75F);
   
-  public akuf(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    b(null);
+    b();
   }
   
-  private int a()
+  private static akuh a(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Int <= 0)
-        {
-          this.jdField_a_of_type_Int = (new Random().nextInt(1000000) + 100);
-          int i = this.jdField_a_of_type_Int;
-          return i;
-        }
-        if (this.jdField_a_of_type_Int >= 1000100) {
-          this.jdField_a_of_type_Int = 100;
-        } else {
-          this.jdField_a_of_type_Int += 1;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private String a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString + "_" + "lbs_report_config", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSReport", 2, "getLBSNewReport,lbs_report_config:" + paramContext);
-    }
-    return paramContext;
-  }
-  
-  private ArrayList<String> a(ArrayList<LbsReportInfo> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.get(i);
-      if ((localLbsReportInfo != null) && (!TextUtils.isEmpty(localLbsReportInfo.content))) {
-        localArrayList.add("dc01864");
-      }
-      i += 1;
-    }
-    return localArrayList;
+    return (akuh)jdField_a_of_type_JavaUtilHashMap.get(paramString);
   }
   
-  private void a()
+  private static akuo a(akui paramakui)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(LbsReportInfo.class);
-    if ((localList != null) && (!localList.isEmpty()))
+    boolean bool1 = false;
+    akuh localakuh = a(paramakui.businessId);
+    if (localakuh == null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(localList);
       if (QLog.isColorLevel()) {
-        QLog.i("LBSReport", 2, "initLbsReportInfoFromDB info list size is: " + localList.size());
+        QLog.i("SOSO.LBS.LbsManagerService", 0, "makeSososOnLocationListener business info is null, business id: " + paramakui.businessId);
       }
+      return null;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("LBSReport", 2, "initLbsReportInfoFromDB info list is empty.");
-      }
+    int i = localakuh.a();
+    int j = localakuh.jdField_b_of_type_Int;
+    boolean bool2 = localakuh.jdField_b_of_type_Boolean;
+    boolean bool3 = localakuh.c;
+    if (!localakuh.d) {
+      bool1 = true;
     }
+    return new akug(j, bool1, bool3, i, paramakui.observerOnUiThread, bool2, paramakui.businessId, paramakui);
   }
   
-  private void a(Context paramContext, String paramString1, String paramString2)
+  public static SosoInterface.SosoLbsInfo a(String paramString)
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString(paramString1 + "_" + "lbs_report_config", paramString2).commit();
-  }
-  
-  public static void a(SosoInterface.SosoLocation paramSosoLocation, String paramString)
-  {
-    int i = 1;
-    if ((paramSosoLocation.jdField_a_of_type_Double == 0.0D) || (paramSosoLocation.jdField_b_of_type_Double == 0.0D)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business id: " + paramString);
     }
-    if (BaseApplicationImpl.sProcessId == 1) {}
-    Intent localIntent;
-    for (;;)
-    {
-      localIntent = new Intent();
-      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("is_runtime", 1001);
-      localIntent.putExtra("lat", paramSosoLocation.jdField_a_of_type_Double);
-      localIntent.putExtra("lng", paramSosoLocation.jdField_b_of_type_Double);
-      localIntent.putExtra("alt", paramSosoLocation.jdField_e_of_type_Double);
-      localIntent.putExtra("accuracy", paramSosoLocation.jdField_a_of_type_Float);
-      localIntent.putExtra("businessTag", paramString);
-      if (!TextUtils.isEmpty(paramSosoLocation.c)) {
-        localIntent.putExtra("nation", paramSosoLocation.c);
-      }
-      if (!TextUtils.isEmpty(paramSosoLocation.d)) {
-        localIntent.putExtra("province", paramSosoLocation.d);
-      }
-      if (!TextUtils.isEmpty(paramSosoLocation.jdField_e_of_type_JavaLangString)) {
-        localIntent.putExtra("city", paramSosoLocation.jdField_e_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(paramSosoLocation.g)) {
-        localIntent.putExtra("district", paramSosoLocation.g);
-      }
-      if (i == 0) {
-        break label231;
-      }
-      paramSosoLocation = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramSosoLocation == null) {
-        break;
-      }
-      ((akuf)paramSosoLocation.getManager(126)).a(localIntent);
-      return;
-      i = 0;
-    }
-    label231:
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((localQQAppInterface == null) || (paramArrayOfByte == null)) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), mxh.class);
-    localNewIntent.putExtra("cmd", "LbsSvc.lbs_report");
-    localNewIntent.putExtra("data", paramArrayOfByte);
-    localNewIntent.putExtra("DataType", 2);
-    localNewIntent.putExtra("retryTime", paramInt + 1);
-    localNewIntent.putExtra("copyData", paramArrayOfByte);
-    localNewIntent.setObserver(this);
-    localQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  private void b(@Nullable JSONObject paramJSONObject)
-  {
-    boolean bool = true;
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {}
-    try
-    {
-      paramJSONObject = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if (TextUtils.isEmpty(paramJSONObject)) {
-        return;
-      }
-      localJSONObject = new JSONObject(paramJSONObject);
-      if (localJSONObject.optInt("is_close_old_report") != 1) {
-        break label80;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      while (QLog.isColorLevel())
-      {
-        QLog.e("LBSReport", 2, paramJSONObject, new Object[0]);
-        return;
-        label80:
-        bool = false;
-      }
-    }
-    this.jdField_b_of_type_Boolean = bool;
-    return;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LBSReport", 2, "onReceiveLbsInfo intent is null. return.");
-      }
-    }
-    double d1;
-    double d2;
-    double d3;
-    float f;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    double d4;
-    double d5;
+    if (TextUtils.isEmpty(paramString)) {}
     do
     {
-      do
-      {
-        return;
-        d1 = paramIntent.getDoubleExtra("lat", 0.0D);
-        d2 = paramIntent.getDoubleExtra("lng", 0.0D);
-        d3 = paramIntent.getDoubleExtra("alt", 0.0D);
-        f = paramIntent.getFloatExtra("accuracy", 0.0F);
-        str1 = paramIntent.getStringExtra("businessTag");
-        str2 = paramIntent.getStringExtra("nation");
-        str3 = paramIntent.getStringExtra("province");
-        str4 = paramIntent.getStringExtra("city");
-        paramIntent = paramIntent.getStringExtra("district");
-        if ((d1 != 0.0D) && (d2 != 0.0D)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("LBSReport", 2, "onReceiveLbsInfo lat or lng is 0.0d. return.");
-      return;
-      d4 = TencentLocationUtils.distanceBetween(d1, d2, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
-      d5 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-      if ((d4 >= 20.0D) || (d5 >= 180000.0D)) {
+      return null;
+      paramString = a(paramString);
+      if (paramString != null) {
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.i("LBSReport", 2, "onReceiveLbsInfo distance is: " + d4 + " collectGap: " + d5);
-    return;
-    ThreadManager.executeOnSubThread(new LbsInfoReportManager.1(this, d1, d2, d3, f, str1, str2, str3, str4, paramIntent));
+    QLog.w("SOSO.LBS.LbsManagerService", 0, "getCachedLbsInfo business info is null.");
+    return null;
+    if (paramString.d) {
+      return SosoInterface.a(paramString.jdField_a_of_type_Boolean);
+    }
+    return SosoInterface.a(paramString.jdField_b_of_type_Int, paramString.jdField_a_of_type_Boolean);
   }
   
-  public void a(ArrayList<LbsReportInfo> paramArrayList, int paramInt)
+  public static String a()
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
+    return SosoInterface.a();
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilMap)
+    {
+      jdField_a_of_type_JavaUtilMap.clear();
+      b.clear();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSReport", 2, "ProtoServlet StorySvc.lbs_report doNewReportLbsInfo: size = " + paramArrayList.size());
-    }
-    qqstory_lbs.ReqLbsReport localReqLbsReport = new qqstory_lbs.ReqLbsReport();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.next();
-      qqstory_lbs.LbsData localLbsData = new qqstory_lbs.LbsData();
-      localLbsData.alt.set(localLbsReportInfo.alt);
-      localLbsData.lng.set(localLbsReportInfo.lng);
-      localLbsData.lat.set(localLbsReportInfo.lat);
-      localLbsData.accuracy.set(localLbsReportInfo.accuracy);
-      if (!TextUtils.isEmpty(localLbsReportInfo.businessTag)) {
-        localLbsData.bussinessTag.set(localLbsReportInfo.businessTag);
-      }
-      if (!TextUtils.isEmpty(localLbsReportInfo.nation)) {
-        localLbsData.nation.set(localLbsReportInfo.nation);
-      }
-      if (!TextUtils.isEmpty(localLbsReportInfo.province)) {
-        localLbsData.province.set(localLbsReportInfo.province);
-      }
-      if (!TextUtils.isEmpty(localLbsReportInfo.city)) {
-        localLbsData.city.set(localLbsReportInfo.city);
-      }
-      if (!TextUtils.isEmpty(localLbsReportInfo.district)) {
-        localLbsData.district.set(localLbsReportInfo.district);
-      }
-      localLbsData.plat_type.set(2);
-      localLbsData.oper_time.set((int)localLbsReportInfo.operTime);
-      localReqLbsReport.list_data.add(localLbsData);
-    }
-    a(localReqLbsReport.toByteArray(), paramInt);
   }
   
-  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt1, int paramInt2)
+  public static void a(akui paramakui)
   {
-    if ((paramArrayList1 == null) || (paramArrayList1.isEmpty()) || (paramArrayList2 == null) || (paramArrayList2.isEmpty())) {
+    if (paramakui == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), axct.class);
-    localNewIntent.putExtra("sendType", 10);
-    localNewIntent.putExtra("seqKey", paramInt1);
-    localNewIntent.putExtra("tags", paramArrayList1);
-    localNewIntent.putExtra("contents", paramArrayList2);
-    localNewIntent.putExtra("retryTime", paramInt2 + 1);
-    localNewIntent.setObserver(this);
-    localQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optJSONObject("lbs_report_config");
-    if (paramJSONObject != null) {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramJSONObject.toString());
-    }
-    b(paramJSONObject);
-  }
-  
-  public void onDestroy() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int j = 0;
-    int i = 0;
-    if (paramInt == 10)
+    label129:
+    label134:
+    for (;;)
     {
-      j = paramBundle.getInt("seqKey");
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSReport", 2, "OnReceive: isSuccess-" + paramBoolean + ", seqKey = " + j);
+      synchronized (jdField_a_of_type_JavaUtilMap)
+      {
+        if (jdField_a_of_type_JavaUtilMap.containsKey(paramakui)) {
+          break label129;
+        }
+        localakuo = a(paramakui);
+        if (localakuo == null) {
+          break label134;
+        }
+        jdField_a_of_type_JavaUtilMap.put(paramakui, localakuo);
+        b.put(localakuo, paramakui);
+        break label134;
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder().append("startLocation sosoLocationListener is null : ");
+          if (localakuo == null)
+          {
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool + " business id: " + paramakui.businessId);
+          }
+        }
+        else
+        {
+          if (localakuo == null) {
+            break;
+          }
+          SosoInterface.a(localakuo);
+          return;
+        }
       }
-      paramInt = i;
-      if (!paramBoolean) {
-        paramInt = paramBundle.getInt("retryTime");
-      }
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if ((!paramBoolean) && (paramInt < 2) && (localQQAppInterface != null)) {
-        a(paramBundle.getStringArrayList("tags"), paramBundle.getStringArrayList("contents"), j, paramInt);
-      }
+      boolean bool = false;
+      continue;
+      akuo localakuo = null;
     }
+  }
+  
+  public static boolean a()
+  {
+    return SosoInterface.a();
+  }
+  
+  private static SosoInterface.SosoLbsInfo b(SosoInterface.SosoLbsInfo paramSosoLbsInfo, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    Object localObject;
     do
     {
-      do
+      return null;
+      localObject = a(paramString);
+    } while ((localObject == null) || (paramSosoLbsInfo == null));
+    if (((akuh)localObject).d)
+    {
+      paramString = new SosoInterface.SosoLbsInfo();
+      paramString.jdField_a_of_type_ArrayOfByte = paramSosoLbsInfo.jdField_a_of_type_ArrayOfByte;
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(0, ((akuh)localObject).jdField_a_of_type_Boolean);
+      }
+      if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute != null) {
+        paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a();
+      }
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      localObject = new ArrayList();
+      if (paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList != null) {
+        ((ArrayList)localObject).addAll(paramSosoLbsInfo.jdField_b_of_type_JavaUtilArrayList);
+      }
+      paramString.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+      paramString.jdField_a_of_type_Long = paramSosoLbsInfo.jdField_a_of_type_Long;
+      paramString.jdField_a_of_type_JavaLangString = paramSosoLbsInfo.jdField_a_of_type_JavaLangString;
+      paramString.jdField_b_of_type_JavaLangString = paramSosoLbsInfo.jdField_b_of_type_JavaLangString;
+      return paramString;
+    }
+    paramString = new SosoInterface.SosoLbsInfo();
+    paramString.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a(((akuh)localObject).jdField_b_of_type_Int, ((akuh)localObject).jdField_a_of_type_Boolean);
+    return paramString;
+  }
+  
+  public static String b()
+  {
+    return SosoInterface.b();
+  }
+  
+  private static void b()
+  {
+    akuh localakuh = new akuh("official_location", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("QQMapActivity", true, 5, 1, true, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("readinjoy_anti_cheating", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("vas_red_point", false, 2, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_address_select", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_for_report", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_weather", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_live", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_say", true, 5, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_upload_pic_video", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_photo_recommend", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_little_video_enter", true, 3, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_request_server", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_h5", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qzone_other", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("readinjoy_feed_ad_distance", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("gdt_tangram", true, 1, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("nearby_readinjoy", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("troop_handler", true, 2, 0, false, true, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("troop_member_distance", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("webview", true, 3, 4, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qq_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qq_story_water_mark", true, 4, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("readinjoy_weather", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("LBSService.Point", true, 5, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("Login.Guide", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("recommend_troop", true, 2, 0, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("vfuchong_bus_card", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("qq_spring_hb", true, 1, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+    localakuh = new akuh("readinjoy_position", false, 3, 3, false, false, false);
+    jdField_a_of_type_JavaUtilHashMap.put(localakuh.jdField_a_of_type_JavaLangString, localakuh);
+  }
+  
+  public static void b(akui paramakui)
+  {
+    if (paramakui == null) {
+      return;
+    }
+    for (;;)
+    {
+      synchronized (jdField_a_of_type_JavaUtilMap)
       {
-        return;
-      } while ((!paramBundle.containsKey("cmd")) || (!"LbsSvc.lbs_report".equals(paramBundle.getString("cmd"))));
-      paramInt = j;
-      if (!paramBoolean) {
-        paramInt = paramBundle.getInt("retryTime");
+        if (!jdField_a_of_type_JavaUtilMap.containsKey(paramakui)) {
+          break label120;
+        }
+        localakuo = (akuo)jdField_a_of_type_JavaUtilMap.remove(paramakui);
+        b.remove(localakuo);
+        if (QLog.isColorLevel())
+        {
+          paramakui = new StringBuilder().append("removeListener business id is: ").append(paramakui.businessId).append(" sosoLocationListener is null: ");
+          if (localakuo == null)
+          {
+            bool = true;
+            QLog.i("SOSO.LBS.LbsManagerService", 0, bool);
+          }
+        }
+        else
+        {
+          if (localakuo == null) {
+            break;
+          }
+          SosoInterface.b(localakuo);
+          return;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSReport", 2, "ProtoServlet StorySvc.lbs_report OnReceive: isSuccess =" + paramBoolean + ", retryTime = " + paramInt);
-      }
-    } while ((paramBoolean) || (paramInt >= 2));
-    a(paramBundle.getByteArray("copyData"), paramInt);
+      boolean bool = false;
+      continue;
+      label120:
+      akuo localakuo = null;
+    }
   }
 }
 

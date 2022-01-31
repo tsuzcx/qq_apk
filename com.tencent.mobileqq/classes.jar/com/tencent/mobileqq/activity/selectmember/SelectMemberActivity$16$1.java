@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aieh;
+import aief;
 
 public class SelectMemberActivity$16$1
   implements Runnable
 {
-  public SelectMemberActivity$16$1(aieh paramaieh) {}
+  public SelectMemberActivity$16$1(aief paramaief) {}
   
   public void run()
   {

@@ -1,10 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 public abstract class tba
-  implements View.OnClickListener
 {
-  public void onClick(View paramView) {}
+  public abstract String a();
+  
+  public abstract tbb a(byte[] paramArrayOfByte);
+  
+  protected abstract byte[] a();
 }
 
 

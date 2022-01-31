@@ -1,6 +1,10 @@
+import android.view.MotionEvent;
+
 public abstract interface amck
 {
-  public abstract void a();
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

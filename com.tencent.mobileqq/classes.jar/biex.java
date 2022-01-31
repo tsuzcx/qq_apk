@@ -1,24 +1,23 @@
-public class biex
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
+
+class biex
+  implements ThreadPool.Job<Void>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  biex(biep parambiep, List paramList) {}
+  
+  public Void a(ThreadPool.JobContext paramJobContext)
+  {
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Biep.a(l, true, false, false);
+    }
+    return null;
+  }
 }
 
 

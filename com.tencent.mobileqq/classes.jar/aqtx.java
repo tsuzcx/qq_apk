@@ -1,25 +1,30 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aqtx
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
   public aqtx(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if (QQGameFeedWebFragment.a(this.a) != null) {
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
+    }
+    paramView = (String)QQGameFeedWebFragment.a(this.a).getTag();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(1), paramView);
+    localHashMap.put(Integer.valueOf(2), "");
+    localHashMap.put(Integer.valueOf(3), "20");
+    localHashMap.put(Integer.valueOf(24), "1");
+    yoa.a(ajac.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
   }
 }
 

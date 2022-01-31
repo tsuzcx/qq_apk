@@ -1,87 +1,72 @@
-import NS_MINI_REPORT.REPORT.StDcReportRsp;
-import NS_MINI_REPORT.REPORT.StGameDcReportRsp;
-import NS_MINI_REPORT.REPORT.StThirdDcReportRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import java.util.HashMap;
 
 public class bezb
-  extends bfad
 {
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private String b;
+  private static final HashMap<String, bezc> a = new HashMap();
   
-  public bezb(byte[] paramArrayOfByte, String paramString1, String paramString2)
+  private static void a(bezc parambezc)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  protected String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return "mini_app_dcreport";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      int i;
-      if ("ThirdDcReport".equals(this.b))
+    if (parambezc != null) {
+      try
       {
-        paramArrayOfByte = new REPORT.StThirdDcReportRsp();
-        paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-        i = paramArrayOfByte.ret.get();
+        String str = parambezc.a();
+        betc.a("MiniProgramLpReportDC05", "doReport " + str);
+        betc.a("MiniProgramLpReportDC05", "doReport " + parambezc.toString());
+        Bundle localBundle = new Bundle();
+        localBundle.putStringArray("data", new String[] { str });
+        if (bfhk.a()) {}
+        for (str = "dc05115";; str = "dc05387")
+        {
+          localBundle.putString("log_key", str);
+          bepk.a().a("cmd_dc_report_log_key_data", localBundle, null);
+          parambezc.a();
+          return;
+        }
+        return;
       }
-      while (i == 0)
+      catch (Exception parambezc)
       {
-        return new JSONObject();
-        if ("GameDcReport".equals(this.b))
-        {
-          paramArrayOfByte = new REPORT.StGameDcReportRsp();
-          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-          i = paramArrayOfByte.ret.get();
-        }
-        else
-        {
-          paramArrayOfByte = new REPORT.StDcReportRsp();
-          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-          i = paramArrayOfByte.ret.get();
-        }
+        betc.d("MiniProgramLpReportDC05", "doReport ", parambezc);
       }
-      besl.a("ProtoBufRequest", "onResponse fail.retCode = " + i);
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
+  {
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
     {
-      besl.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null)
+      {
+        bezc.a(paramMiniAppInfo, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5);
+        a(paramMiniAppInfo);
+      }
     }
-    return null;
   }
   
-  public byte[] a()
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong1, long paramLong2)
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null) {
+        paramMiniAppInfo.a(paramLong2, paramLong1, paramInt);
+      }
+    }
   }
   
-  protected String b()
+  public static void a(MiniAppInfo paramMiniAppInfo, int paramInt, long paramLong, boolean paramBoolean)
   {
-    if (this.b != null) {
-      return this.b;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      paramMiniAppInfo = (bezc)a.get(paramMiniAppInfo.appId);
+      if (paramMiniAppInfo != null) {
+        paramMiniAppInfo.a(paramLong, paramInt, paramBoolean);
+      }
     }
-    return "DcReport";
   }
 }
 

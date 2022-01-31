@@ -1,40 +1,19 @@
-import android.os.Handler;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
 
 public class abev
-  extends aoeu
+  implements akik
 {
-  public abev(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public abev(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  protected void a(boolean paramBoolean, Card paramCard)
+  public void a(Object paramObject)
   {
-    super.a(paramBoolean, paramCard);
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, got extend info");
-    }
-    if (FriendProfileCardActivity.a(this.a) != null) {
-      FriendProfileCardActivity.a(this.a).dismiss();
-    }
-    if (FriendProfileCardActivity.a(this.a) != null)
+    if ((paramObject instanceof String))
     {
-      FriendProfileCardActivity.a(this.a).removeCallbacksAndMessages(null);
-      FriendProfileCardActivity.a(this.a, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, start add friend :" + FriendProfileCardActivity.d(this.a));
-      }
-      if (!FriendProfileCardActivity.d(this.a))
-      {
-        FriendProfileCardActivity.a(this.a, true);
-        FriendProfileCardActivity.b(this.a);
-      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
   }
 }
 

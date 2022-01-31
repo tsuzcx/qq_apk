@@ -1,19 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
-
-public final class alac
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+public abstract interface alac
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
-  {
-    return new ARRelationShipAIOMsg(paramParcel);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public ARRelationShipAIOMsg[] a(int paramInt)
-  {
-    return new ARRelationShipAIOMsg[paramInt];
-  }
+  public abstract void a(alak paramalak);
+  
+  public abstract int b();
+  
+  public abstract int c();
+  
+  public abstract String c();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 

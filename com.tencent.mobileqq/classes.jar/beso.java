@@ -1,42 +1,43 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.BaseLibManager.1;
-import com.tencent.qqmini.sdk.manager.BaseLibManager.1.1.1;
+import android.graphics.Bitmap;
 import org.json.JSONObject;
 
 public class beso
-  implements AsyncResult
+  implements Cloneable
 {
-  public beso(BaseLibManager.1 param1, String paramString1, String paramString2) {}
+  public Bitmap a;
+  public String a;
+  public Bitmap b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public static beso a(JSONObject paramJSONObject)
   {
-    besl.b("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib response. isSuc=" + paramBoolean + " rsp=" + paramJSONObject);
-    if ((paramBoolean) && (paramJSONObject != null))
+    beso localbeso = new beso();
+    if (paramJSONObject != null)
     {
-      beiw.b().post(new BaseLibManager.1.1.1(this, paramJSONObject));
-      Object localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
-      if (besn.a(this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.this$0, (BaseLibInfo)localObject).booleanValue())
-      {
-        paramJSONObject = ((BaseLibInfo)localObject).baseLibVersion;
-        localObject = ((BaseLibInfo)localObject).baseLibUrl;
-        besl.b("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib end : version : " + paramJSONObject + "; url : " + (String)localObject);
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.this$0.a((String)localObject, paramJSONObject, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.a);
-      }
+      localbeso.jdField_a_of_type_JavaLangString = paramJSONObject.optString("pagePath");
+      localbeso.jdField_b_of_type_JavaLangString = paramJSONObject.optString("text");
+      localbeso.c = paramJSONObject.optString("iconData");
+      localbeso.d = paramJSONObject.optString("selectedIconData");
+      localbeso.jdField_a_of_type_AndroidGraphicsBitmap = besn.a(localbeso.c);
+      localbeso.jdField_b_of_type_AndroidGraphicsBitmap = besn.a(localbeso.d);
     }
-    do
+    return localbeso;
+  }
+  
+  public beso a()
+  {
+    try
     {
-      do
-      {
-        return;
-        besl.b("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib, no update");
-      } while (this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.a == null);
-      this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.a.a(1);
-      return;
-      besl.d("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib failed!");
-    } while (this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.a == null);
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$1.a.a(1100);
+      beso localbeso = (beso)super.clone();
+      return localbeso;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return null;
   }
 }
 

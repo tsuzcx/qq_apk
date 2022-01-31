@@ -1,21 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
-class aect
+public class aect
   implements View.OnClickListener
 {
-  aect(aecs paramaecs, AppGuideTipsConfig paramAppGuideTipsConfig) {}
+  public aect(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_Aecs.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_Aecs.a.startActivity(paramView);
-    axqw.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
+    aecx localaecx = (aecx)actj.a(paramView);
+    if (paramView == localaecx.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localaecx);
+    }
+    while (paramView != localaecx.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localaecx);
   }
 }
 

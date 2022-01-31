@@ -1,11 +1,6 @@
-import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
-
-public class yuv
-  implements ytn
+public abstract interface yuv
 {
-  public yuv(GdtDemoMvFragment paramGdtDemoMvFragment) {}
-  
-  public void onDismiss() {}
+  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

@@ -1,40 +1,32 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class azki
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   azki(azkh paramazkh) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = (azlz)paramView.getTag();
-    if (((azlz)localObject).b == 1)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      this.a.a.a.a(((azlz)localObject).a, null);
-      if (((azlz)localObject).a == null) {}
-      for (paramView = "";; paramView = ((azlz)localObject).a)
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
       {
-        axqw.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, "", "", "");
-        return;
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
       }
-    }
-    this.a.a.a.a(((azlz)localObject).d, ((azlz)localObject).a);
-    if (((azlz)localObject).d == null)
-    {
-      paramView = "";
-      if (((azlz)localObject).a != null) {
-        break label148;
-      }
-    }
-    label148:
-    for (localObject = "";; localObject = ((azlz)localObject).a)
-    {
-      axqw.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, paramView, (String)localObject, "", "");
-      return;
-      paramView = ((azlz)localObject).d;
-      break;
     }
   }
 }

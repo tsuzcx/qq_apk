@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import actn;
+import actj;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bikc;
+import bikt;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 
 class VideoStoryPiecesPart$9$1
@@ -13,16 +13,16 @@ class VideoStoryPiecesPart$9$1
   
   public void run()
   {
-    if ((bikc.a(this.a.this$0) != null) && (bikc.a(this.a.this$0) != null))
+    if ((bikt.a(this.a.this$0) != null) && (bikt.a(this.a.this$0) != null))
     {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bikc.a(this.a.this$0));
-      int i = actn.a(36.0F, bikc.a(this.a.this$0).getResources());
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bikt.a(this.a.this$0));
+      int i = actj.a(36.0F, bikt.a(this.a.this$0).getResources());
       localBitmapDrawable.setBounds(0, 0, i, i);
-      bikc.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
-      bikc.a(this.a.this$0).setEnabled(true);
+      bikt.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
+      bikt.a(this.a.this$0).setEnabled(true);
       return;
     }
-    bikc.a(this.a.this$0).setEnabled(false);
+    bikt.a(this.a.this$0).setEnabled(false);
   }
 }
 

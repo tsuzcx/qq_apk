@@ -1,19 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
 class bjvl
-  extends QQUIEventReceiver<bjvc, bkbo>
+  extends AnimatorListenerAdapter
 {
-  public bjvl(@NonNull bjvc parambjvc)
-  {
-    super(parambjvc);
-  }
+  bjvl(bjve parambjve) {}
   
-  public void a(@NonNull bjvc parambjvc, @NonNull bkbo parambkbo) {}
-  
-  public Class acceptEventClass()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return bkbo.class;
+    this.a.d.setVisibility(8);
+    this.a.e.setVisibility(8);
+    this.a.f.setVisibility(8);
+    this.a.b = this.a.c;
   }
 }
 

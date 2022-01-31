@@ -1,29 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
-import com.tencent.qphone.base.util.QLog;
-
 public class asaq
-  implements asan
 {
-  asaq(asap paramasap) {}
+  public int a;
+  public String a;
+  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
   
-  public void a(asak paramasak)
+  public asaq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
-    }
-    asap.a(this.a, paramasak);
+    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
+    this.jdField_a_of_type_Int = 360;
   }
   
-  public void a(URLDrawable paramURLDrawable)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
-    }
-    if (asap.a(this.a) != null) {
-      asap.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
-    }
+    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
   }
 }
 

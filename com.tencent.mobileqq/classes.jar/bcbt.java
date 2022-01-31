@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bcbt
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  bcbt(bcbs parambcbs, View paramView) {}
+  bcbt(bcbs parambcbs) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Bcbs.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Bcbs.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Bcbs.a = false;
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

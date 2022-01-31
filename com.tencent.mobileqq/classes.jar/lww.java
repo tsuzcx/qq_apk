@@ -1,156 +1,101 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.IInterface;
-import android.os.ResultReceiver;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public abstract interface lww
-  extends IInterface
+class lww
+  implements lwu
 {
-  public abstract int a();
-  
-  public abstract int a(int paramInt, String paramString);
-  
-  public abstract int a(String paramString);
-  
-  public abstract long a(String paramString);
-  
-  public abstract Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Bundle a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, Bundle paramBundle, ResultReceiver paramResultReceiver);
-  
-  public abstract String a();
-  
-  public abstract String a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract String a(String paramString);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, long paramLong, int paramInt2, int paramInt3);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, String paramString, int paramInt);
-  
-  public abstract void a(long paramLong1, String paramString, long paramLong2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
-  
-  public abstract void a(String paramString, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt);
-  
-  public abstract void a(lwk paramlwk);
-  
-  public abstract void a(lwt paramlwt);
-  
-  public abstract void a(lwt paramlwt, String paramString);
-  
-  public abstract void a(lwz paramlwz);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(long[] paramArrayOfLong, String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(int paramInt, long paramLong);
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract boolean a(String paramString, int paramInt);
-  
-  public abstract boolean a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
-  
-  public abstract boolean a(String paramString1, String paramString2);
-  
-  public abstract boolean a(String paramString, boolean paramBoolean);
-  
-  public abstract int[] a();
-  
-  public abstract long[] a(String paramString);
-  
-  public abstract String[] a(String paramString);
-  
-  public abstract int b();
-  
-  public abstract int b(String paramString);
-  
-  public abstract long b(String paramString);
-  
-  public abstract String b(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(lwk paramlwk);
-  
-  public abstract void b(lwz paramlwz);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(String paramString);
-  
-  public abstract boolean b(String paramString, int paramInt);
-  
-  public abstract long[] b(String paramString);
-  
-  public abstract int c();
-  
-  public abstract int c(String paramString);
-  
-  public abstract String c(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract boolean c();
-  
-  public abstract boolean c(String paramString);
-  
-  public abstract boolean c(String paramString, int paramInt);
-  
-  public abstract int d();
-  
-  public abstract String d(String paramString);
-  
-  public abstract void d(String paramString);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract boolean d();
-  
-  public abstract void e(String paramString);
-  
-  public abstract boolean e();
-  
-  public abstract void f(String paramString);
-  
-  public abstract boolean f();
-  
-  public abstract boolean g();
-  
-  public abstract boolean h();
+  private IBinder a;
+  
+  lww(IBinder paramIBinder)
+  {
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceLocationCallback");
+      localParcel.writeInt(paramInt);
+      localParcel.writeString(paramString);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  /* Error */
+  public void a(boolean paramBoolean, com.tencent.av.service.LBSInfo paramLBSInfo)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   5: astore 4
+    //   7: aload 4
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: iload_1
+    //   15: ifeq +47 -> 62
+    //   18: aload 4
+    //   20: iload_3
+    //   21: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   24: aload_2
+    //   25: ifnull +42 -> 67
+    //   28: aload 4
+    //   30: iconst_1
+    //   31: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   34: aload_2
+    //   35: aload 4
+    //   37: iconst_0
+    //   38: invokevirtual 52	com/tencent/av/service/LBSInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   41: aload_0
+    //   42: getfield 15	lww:a	Landroid/os/IBinder;
+    //   45: iconst_2
+    //   46: aload 4
+    //   48: aconst_null
+    //   49: iconst_1
+    //   50: invokeinterface 42 5 0
+    //   55: pop
+    //   56: aload 4
+    //   58: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   61: return
+    //   62: iconst_0
+    //   63: istore_3
+    //   64: goto -46 -> 18
+    //   67: aload 4
+    //   69: iconst_0
+    //   70: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   73: goto -32 -> 41
+    //   76: astore_2
+    //   77: aload 4
+    //   79: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   82: aload_2
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	this	lww
+    //   0	84	1	paramBoolean	boolean
+    //   0	84	2	paramLBSInfo	com.tencent.av.service.LBSInfo
+    //   1	63	3	i	int
+    //   5	73	4	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   7	14	76	finally
+    //   18	24	76	finally
+    //   28	41	76	finally
+    //   41	56	76	finally
+    //   67	73	76	finally
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
 }
 
 

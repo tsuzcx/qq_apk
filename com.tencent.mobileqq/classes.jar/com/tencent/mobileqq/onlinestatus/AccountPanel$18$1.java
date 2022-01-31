@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.res.Resources;
-import auhi;
-import auhr;
-import auja;
-import bcpw;
+import auhk;
+import auht;
+import aujc;
+import bcql;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
@@ -12,33 +12,33 @@ import mqq.app.AppRuntime.Status;
 public class AccountPanel$18$1
   implements Runnable
 {
-  public AccountPanel$18$1(auhr paramauhr, boolean paramBoolean, AppRuntime.Status paramStatus) {}
+  public AccountPanel$18$1(auht paramauht, boolean paramBoolean, AppRuntime.Status paramStatus) {}
   
   public void run()
   {
     long l;
     if (this.jdField_a_of_type_Boolean)
     {
-      l = auja.a().a(auhi.a(this.jdField_a_of_type_Auhr.a));
-      if ((auhi.a(this.jdField_a_of_type_Auhr.a) != 1000L) || (l != 1000L)) {
+      l = aujc.a().a(auhk.a(this.jdField_a_of_type_Auht.a));
+      if ((auhk.a(this.jdField_a_of_type_Auht.a) != 1000L) || (l != 1000L)) {
         break label180;
       }
     }
     label180:
     for (int i = 0;; i = 1)
     {
-      if ((i != 0) && (auhi.c(this.jdField_a_of_type_Auhr.a)))
+      if ((i != 0) && (auhk.c(this.jdField_a_of_type_Auht.a)))
       {
-        String str = auja.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
-        str = auhi.a(this.jdField_a_of_type_Auhr.a).getResources().getString(2131698447, new Object[] { str });
-        bcpw.a(auhi.a(this.jdField_a_of_type_Auhr.a), 2, str, 1).a();
+        String str = aujc.a().a(l, this.jdField_a_of_type_MqqAppAppRuntime$Status);
+        str = auhk.a(this.jdField_a_of_type_Auht.a).getResources().getString(2131698457, new Object[] { str });
+        bcql.a(auhk.a(this.jdField_a_of_type_Auht.a), 2, str, 1).a();
         if (QLog.isColorLevel()) {
           QLog.d("AccountPanel", 2, "Show toast in account panel mAccountObserver");
         }
       }
-      auhi.a(this.jdField_a_of_type_Auhr.a, l);
+      auhk.a(this.jdField_a_of_type_Auht.a, l);
       return;
-      bcpw.a(auhi.a(this.jdField_a_of_type_Auhr.a), 1, 2131698442, 1).a();
+      bcql.a(auhk.a(this.jdField_a_of_type_Auht.a), 1, 2131698452, 1).a();
       return;
     }
   }

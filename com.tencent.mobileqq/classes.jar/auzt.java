@@ -1,47 +1,81 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
+import java.util.List;
 
 public class auzt
-  extends GestureDetector.SimpleOnGestureListener
+  extends BaseAdapter
 {
-  public auzt(ProfileTagView paramProfileTagView) {}
+  List<ProfileLabelInfo> jdField_a_of_type_JavaUtilList;
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  private auzt(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
+  
+  public void a(List<ProfileLabelInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
-    }
-    this.a.d = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ProfileLabelInfo localProfileLabelInfo;
+    if (paramView == null)
     {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
+      paramView.setBackgroundResource(2130849413);
+      paramViewGroup = (ToggleButton)paramView;
+      paramViewGroup.setGravity(17);
+      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427334));
+      paramViewGroup.setTextColor(Color.parseColor("#777777"));
+      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
+      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
+      if (localProfileLabelInfo == null) {
+        break label204;
+      }
+      paramViewGroup.setTag(localProfileLabelInfo);
+      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
+        break label198;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
+    label198:
+    for (boolean bool = true;; bool = false)
     {
-      if ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Boolean)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.b(null);
-        }
+      paramViewGroup.setChecked(bool);
+      paramViewGroup.setText(localProfileLabelInfo.labelName);
+      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
+      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
+      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Auzr.a(localProfileLabelInfo, paramViewGroup);
       }
-      while ((paramFloat1 >= 0.0F) || (this.a.jdField_a_of_type_Boolean)) {
-        return true;
-      }
-      this.a.a();
-      return true;
+      return paramView;
+      paramViewGroup = (ToggleButton)paramView;
+      break;
     }
-    return false;
+    label204:
+    paramViewGroup.setVisibility(8);
+    return paramView;
   }
 }
 

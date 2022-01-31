@@ -1,16 +1,60 @@
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.6.1;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Looper;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 
-public class yuh
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public final class yuh
 {
-  yuh(yug paramyug) {}
+  private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public yuh(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.6.1(this, paramAppPathInfo, paramInt, paramString), 5);
+    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = paramGdtInterstitialParams;
+    if (yui.a().a(paramContext)) {
+      yul.a().b(paramContext);
+    }
+  }
+  
+  private GdtInterstitialParams a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  }
+  
+  public boolean a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (a() != null)) {
+      return a().b();
+    }
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    boolean bool1;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      bool1 = false;
+    }
+    for (;;)
+    {
+      yxp.b("GdtInterstitialAd", String.format("show %b", new Object[] { Boolean.valueOf(bool1) }));
+      return bool1;
+      if (!a())
+      {
+        bool1 = false;
+      }
+      else
+      {
+        boolean bool2 = GdtInterstitialFragment.a(paramActivity, a());
+        bool1 = bool2;
+        if (bool2)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          bool1 = true;
+        }
+      }
+    }
   }
 }
 

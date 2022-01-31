@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import android.content.Intent;
 
-public class bbyk
-  implements DialogInterface.OnDismissListener
+public abstract interface bbyk
 {
-  public bbyk(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
-    }
-  }
+  public abstract void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
 }
 
 

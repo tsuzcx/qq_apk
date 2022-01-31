@@ -1,81 +1,81 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajyc;
+import ajya;
 import android.app.Activity;
 import android.content.Intent;
-import bcpw;
-import birc;
-import bjtb;
-import bjtc;
-import bjww;
-import bjye;
-import bjzb;
-import bklx;
-import bkly;
+import bcql;
+import birt;
+import bjts;
+import bjtt;
+import bjxn;
+import bjyv;
+import bjzs;
+import bkmo;
+import bkmp;
 
 public class EditPicSave$1$1
   implements Runnable
 {
-  public EditPicSave$1$1(bjtc parambjtc) {}
+  public EditPicSave$1$1(bjtt parambjtt) {}
   
   public void run()
   {
     boolean bool = true;
-    if (bjtb.a(this.a.a)) {}
+    if (bjts.a(this.a.a)) {}
     int i;
     Object localObject;
     Intent localIntent;
     do
     {
       return;
-      if (bjtb.a(this.a.a) == 49) {}
+      if (bjts.a(this.a.a) == 49) {}
       for (i = 1;; i = 0)
       {
-        localObject = bjtb.a(this.a.a);
-        this.a.a.jdField_a_of_type_Bjww.a(0);
+        localObject = bjts.a(this.a.a);
+        this.a.a.jdField_a_of_type_Bjxn.a(0);
         this.a.a.jdField_a_of_type_Boolean = true;
         this.a.a.a(100);
         this.a.a.d();
-        if (this.a.a.jdField_a_of_type_Bjww.a.a() != 102) {
+        if (this.a.a.jdField_a_of_type_Bjxn.a.a() != 102) {
           break;
         }
-        bjtb.a(this.a.a, this.a.a.jdField_a_of_type_Bjww.a.a());
+        bjts.a(this.a.a, this.a.a.jdField_a_of_type_Bjxn.a.a());
         return;
       }
-      if (birc.e(this.a.a.jdField_a_of_type_Bjye.getActivity().getIntent()))
+      if (birt.e(this.a.a.jdField_a_of_type_Bjyv.getActivity().getIntent()))
       {
         localObject = new Intent();
         ((Intent)localObject).setAction("com.tencent.mobileqq.mini.out.nativePlugins.native_back");
-        ((Intent)localObject).putExtra("file_path", bjtb.a(this.a.a));
+        ((Intent)localObject).putExtra("file_path", bjts.a(this.a.a));
         ((Intent)localObject).putExtra("is_video", false);
-        this.a.a.jdField_a_of_type_Bjye.getActivity().sendBroadcast((Intent)localObject);
-        this.a.a.jdField_a_of_type_Bjye.getActivity().setResult(-1, this.a.a.jdField_a_of_type_Bjye.getActivity().getIntent());
-        this.a.a.jdField_a_of_type_Bjye.getActivity().finish();
+        this.a.a.jdField_a_of_type_Bjyv.getActivity().sendBroadcast((Intent)localObject);
+        this.a.a.jdField_a_of_type_Bjyv.getActivity().setResult(-1, this.a.a.jdField_a_of_type_Bjyv.getActivity().getIntent());
+        this.a.a.jdField_a_of_type_Bjyv.getActivity().finish();
         return;
       }
-      if (this.a.a.jdField_a_of_type_Bjww.a.a() != 14) {
+      if (this.a.a.jdField_a_of_type_Bjxn.a.a() != 14) {
         break;
       }
-      localIntent = this.a.a.jdField_a_of_type_Bjye.getActivity().getIntent();
-    } while (birc.a(localIntent));
-    this.a.a.jdField_a_of_type_Bjww.b = false;
-    this.a.a.jdField_a_of_type_Bjww.a(0);
-    if (bjtb.b(this.a.a))
+      localIntent = this.a.a.jdField_a_of_type_Bjyv.getActivity().getIntent();
+    } while (birt.a(localIntent));
+    this.a.a.jdField_a_of_type_Bjxn.b = false;
+    this.a.a.jdField_a_of_type_Bjxn.a(0);
+    if (bjts.b(this.a.a))
     {
       if (localIntent.getIntExtra("VIDEO_STORY_JUMP_TO_TYPE", 0) == 2) {}
       while (i == 0)
       {
-        bjzb.a(this.a.a.jdField_a_of_type_Bjye.getActivity(), bjtb.a(this.a.a), bool);
+        bjzs.a(this.a.a.jdField_a_of_type_Bjyv.getActivity(), bjts.a(this.a.a), bool);
         return;
         bool = false;
       }
-      bkly.a().a(localIntent.getStringExtra("widgetinfo"));
-      bkly.a().a(((bklx)localObject).jdField_a_of_type_JavaLangString, ((bklx)localObject).jdField_a_of_type_Int, bjtb.a(this.a.a), "", false);
+      bkmp.a().a(localIntent.getStringExtra("widgetinfo"));
+      bkmp.a().a(((bkmo)localObject).jdField_a_of_type_JavaLangString, ((bkmo)localObject).jdField_a_of_type_Int, bjts.a(this.a.a), "", false);
       return;
     }
-    bcpw.a(this.a.a.jdField_a_of_type_Bjye.a(), 1, ajyc.a(2131703681), 0).a();
+    bcql.a(this.a.a.jdField_a_of_type_Bjyv.a(), 1, ajya.a(2131703692), 0).a();
     return;
-    bcpw.a(this.a.a.jdField_a_of_type_Bjye.a(), 2, ajyc.a(2131703683), 0).a();
+    bcql.a(this.a.a.jdField_a_of_type_Bjyv.a(), 2, ajya.a(2131703694), 0).a();
   }
 }
 

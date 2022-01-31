@@ -1,20 +1,24 @@
-import android.widget.Button;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 import mqq.util.WeakReference;
 
 class aguj
-  implements aptu
+  implements agmh
 {
-  aguj(agug paramagug) {}
+  aguj(agui paramagui, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void a()
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a.h();
-  }
-  
-  public void b()
-  {
-    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Agui.a.get()).d();
+    if (bkpv.a((Activity)this.jdField_a_of_type_Agui.a.get(), paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a((Activity)this.jdField_a_of_type_Agui.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 

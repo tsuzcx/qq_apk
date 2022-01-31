@@ -1,28 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class vli
-  extends AnimatorListenerAdapter
+public class vli
+  implements vlj
 {
-  vli(vlf paramvlf) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(List<vlg> paramList, DoodleView paramDoodleView)
   {
-    veg.b("TextLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    veg.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    veg.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    vkm localvkm = new vkm(paramDoodleView);
+    vkw localvkw = new vkw(paramDoodleView);
+    paramDoodleView = new vla(paramDoodleView);
+    paramList.add(localvkm);
+    paramList.add(localvkw);
+    paramList.add(paramDoodleView);
   }
 }
 

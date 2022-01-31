@@ -1,23 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class afgl
+  implements View.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public RichStatus a;
-  public AccountSearchPb.record a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public TextView b;
-  public String b;
-  public int c;
-  public TextView c;
-  public TextView d;
+  public afgl(SearchContactsActivity paramSearchContactsActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0);
+    this.a.finish();
+  }
 }
 
 

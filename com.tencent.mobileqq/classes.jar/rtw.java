@@ -1,8 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-
 public abstract interface rtw
 {
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
+  public abstract void a(rub paramrub);
+  
+  public abstract void b(rub paramrub);
+  
+  public abstract void c(rub paramrub);
 }
 
 

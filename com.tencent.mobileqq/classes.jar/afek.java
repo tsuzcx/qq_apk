@@ -1,31 +1,34 @@
-import com.tencent.av.service.LBSInfo;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class afek
-  extends ajzm
+  implements aiob
 {
   public afek(AddContactsView paramAddContactsView) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void a()
   {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
-    }
-    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
-    }
-    if (this.a.c) {
-      this.a.f();
-    }
-    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
-    {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-      this.a.jdField_a_of_type_Ajty.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
     }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
+    }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new afel(this));
   }
 }
 

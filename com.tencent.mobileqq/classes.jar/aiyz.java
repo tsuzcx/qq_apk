@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
 import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
 
 public class aiyz
-  extends aizf
+  implements View.OnClickListener
 {
-  public aiyz(CmGameLoadingFragment paramCmGameLoadingFragment) {}
+  public aiyz(CmGameLoadingView.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (CmGameLoadingFragment.a(this.a) != null) {
-      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
-    }
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131702085));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    this.a.a.a(2);
   }
 }
 

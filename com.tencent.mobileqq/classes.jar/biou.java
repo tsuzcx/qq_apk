@@ -1,17 +1,29 @@
-import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-class biou
-  implements bjob<Boolean>
+public class biou
+  implements View.OnClickListener
 {
-  biou(bior parambior) {}
+  public biou(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean == null) {
-      return;
+    switch (paramView.getId())
+    {
     }
-    bior.e(this.a).setSelected(paramBoolean.booleanValue());
+    do
+    {
+      do
+      {
+        return;
+        vei.a("clk_filter", vei.b(avtd.a), 0, false, new String[0]);
+      } while (AEProviderContainerView.a(this.a) == 0);
+      AEProviderContainerView.a(this.a);
+      return;
+      vei.a("clk_beauty", vei.b(avtd.a), 0, false, new String[0]);
+    } while (AEProviderContainerView.a(this.a) == 1);
+    AEProviderContainerView.b(this.a);
   }
 }
 

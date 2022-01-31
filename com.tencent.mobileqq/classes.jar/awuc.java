@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.Comparator;
+import java.util.Map;
 
-public class awuc
-  extends awur
+public final class awuc
+  implements Comparator<awut>
 {
-  public awuc(GroupSearchEngine paramGroupSearchEngine, awus paramawus, String paramString, int paramInt)
+  public int a(awut paramawut1, awut paramawut2)
   {
-    super(paramGroupSearchEngine, paramawus, paramString, paramInt);
-  }
-  
-  public awof a(List<awog> paramList, String paramString)
-  {
-    return new awnp(paramList, paramString, GroupSearchEngine.a(this.a));
+    paramawut2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramawut2.a);
+    if (paramawut2 == null) {
+      paramawut2 = Integer.valueOf(0);
+    }
+    for (;;)
+    {
+      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramawut1.a);
+      paramawut1 = localInteger;
+      if (localInteger == null) {
+        paramawut1 = Integer.valueOf(0);
+      }
+      return Integer.signum(paramawut2.intValue() - paramawut1.intValue());
+    }
   }
 }
 

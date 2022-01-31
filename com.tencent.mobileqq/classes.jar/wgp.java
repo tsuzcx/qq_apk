@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
 public class wgp
   implements DialogInterface.OnCancelListener
 {
-  public wgp(QRJumpActivity paramQRJumpActivity) {}
+  public wgp(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
   public void onCancel(DialogInterface paramDialogInterface)
   {

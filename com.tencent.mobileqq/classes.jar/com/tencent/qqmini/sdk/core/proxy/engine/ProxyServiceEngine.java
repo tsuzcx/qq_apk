@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
-import bekz;
-import besl;
+import belq;
+import betc;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class ProxyServiceEngine
     String str = (String)this.mProxyServicesMap.get(paramString);
     if (str == null)
     {
-      besl.c("ProxyServiceEngine", "Can NOT find service class by proxy name: " + paramString);
+      betc.c("ProxyServiceEngine", "Can NOT find service class by proxy name: " + paramString);
       return null;
     }
     Object localObject = this.mActivatedServices.get(str);
@@ -44,15 +44,15 @@ public class ProxyServiceEngine
     {
       try
       {
-        paramString = bekz.a(str);
+        paramString = belq.a(str);
         if (paramString == null)
         {
-          besl.d("ProxyServiceEngine", "Failed to create the service object of " + str);
+          betc.d("ProxyServiceEngine", "Failed to create the service object of " + str);
           return paramString;
         }
       }
       finally {}
-      besl.b("ProxyServiceEngine", "Create a new proxy service object of " + str);
+      betc.b("ProxyServiceEngine", "Create a new proxy service object of " + str);
       this.mActivatedServices.put(str, paramString);
     }
   }
@@ -63,7 +63,7 @@ public class ProxyServiceEngine
     for (;;)
     {
       return;
-      besl.b("ProxyServiceEngine", "injectPluginService " + paramMap.values() + " to plugin " + paramIJsPlugin);
+      betc.b("ProxyServiceEngine", "injectPluginService " + paramMap.values() + " to plugin " + paramIJsPlugin);
       Iterator localIterator = paramMap.keySet().iterator();
       while (localIterator.hasNext())
       {

@@ -1,10 +1,6 @@
-public class bjow
+public abstract class bjow
 {
-  public int a;
-  public boolean a;
-  public int b = 20;
-  public boolean b;
-  public int c = 500;
+  protected void b() {}
 }
 
 

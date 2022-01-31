@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 
 class aeqm
-  implements DialogInterface.OnClickListener
+  implements bfos
 {
-  aeqm(aeqd paramaeqd) {}
+  aeqm(aeqb paramaeqb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    paramDialogInterface = new Intent(this.a.a(), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
-    this.a.a.startActivity(paramDialogInterface);
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Ainh != null) && (this.a.jdField_a_of_type_Ainh.a() != 0) && (this.a.jdField_a_of_type_Ainh.a()))
+    {
+      this.a.jdField_a_of_type_Ainh.b();
+      aeqb.a(this.a, this.a.jdField_a_of_type_Ainh.a(), 10);
+    }
   }
 }
 

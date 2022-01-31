@@ -1,17 +1,16 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
 
 public class wjd
-  implements wjj
+  extends AnimatorListenerAdapter
 {
   public wjd(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
-      return;
-    }
-    xhe.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
+    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
+    this.a.clearAnimation();
   }
 }
 

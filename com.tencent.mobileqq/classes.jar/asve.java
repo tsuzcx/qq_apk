@@ -1,46 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-
 class asve
-  extends axfa
+  implements apsq
 {
-  asve(asuu paramasuu, String paramString, asup paramasup) {}
+  asve(asuw paramasuw, asur paramasur) {}
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Asup.a != null)
+    if ((this.jdField_a_of_type_Asur != null) && (this.jdField_a_of_type_Asur.a != null))
     {
-      String str = this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asup.a.a);
-      asuq localasuq = this.jdField_a_of_type_Asuu.a(str);
-      if ((localasuq != null) && (!localasuq.a))
+      String str = this.jdField_a_of_type_Asur.a.a();
+      asus localasus = this.jdField_a_of_type_Asuw.a(str);
+      if ((localasus != null) && (!localasus.a))
       {
-        localasuq.c = (paramInt / 100);
-        this.jdField_a_of_type_Asuu.a(str, localasuq);
-        asuu.a(this.jdField_a_of_type_Asuu, localasuq, paramInt / 100);
+        localasus.c = paramInt;
+        this.jdField_a_of_type_Asuw.a(str, localasus);
+        asuw.a(this.jdField_a_of_type_Asuw, localasus, paramInt);
       }
     }
   }
   
-  public void a(int paramInt, axes paramaxes)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramaxes != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramaxes.a != null)
-      {
-        i = paramaxes.a.a;
-        str1 = paramaxes.a.b;
-      }
-    }
-    this.jdField_a_of_type_Asuu.a(this.jdField_a_of_type_Asup, paramInt, i, str1);
+    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramBoolean);
   }
+  
+  public void b(boolean paramBoolean) {}
 }
 
 

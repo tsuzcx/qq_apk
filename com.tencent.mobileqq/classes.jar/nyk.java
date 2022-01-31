@@ -1,41 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import java.util.regex.Pattern;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class nyk
+class nyk
+  implements rqo
 {
-  public int a;
-  public String a;
-  public Pattern a;
-  public JSONObject a;
-  public String b = "";
-  public String c = "";
+  nyk(nyj paramnyj, ram paramram) {}
   
-  public nyk(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
+    if (ram.a() != null)
+    {
+      nzg localnzg = (nzg)ram.a().getManager(307);
+      if (localnzg != null) {
+        localnzg.a(this.jdField_a_of_type_Ram, this.jdField_a_of_type_Ram.a(), true, paramInt1);
+      }
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      this.c = paramString3;
-    }
-    if (paramJSONObject != null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    }
-    if (paramPattern != null) {
-      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
-    }
-  }
-  
-  public String toString()
-  {
-    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
   }
 }
 

@@ -1,170 +1,119 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class bifs
 {
-  private static volatile long jdField_a_of_type_Long;
-  private static bbgg jdField_a_of_type_Bbgg;
-  private static bifw jdField_a_of_type_Bifw = new bifw(Looper.getMainLooper());
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "TroopFileDetailBrowserActivity", "FMActivity", "FileBrowserActivity", "ChatHistoryFileActivity", "FileAssistantActivity" };
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final short jdField_a_of_type_Short;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private short jdField_b_of_type_Short;
+  private final byte[] jdField_b_of_type_ArrayOfByte;
+  private long c;
   
-  public static void a()
+  public bifs(int paramInt, byte[] paramArrayOfByte1, long paramLong1, byte[] paramArrayOfByte2, long paramLong2)
   {
-    Message localMessage = jdField_a_of_type_Bifw.obtainMessage();
-    localMessage.what = 3001;
-    jdField_a_of_type_Bifw.sendMessage(localMessage);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt)
-  {
-    if (a(paramInt)) {
-      b(paramActivity, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_ArrayOfByte = new byte[20];
+    if (paramArrayOfByte1.length > 20) {
+      throw new IllegalArgumentException("file Hash is too long.");
     }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    StringBuffer localStringBuffer = new StringBuffer("https://jump.weiyun.com?from=3092");
-    if (paramString != null) {
-      localStringBuffer.append("&aid=").append(paramString);
-    }
-    paramString = new Intent();
-    paramString.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    paramString.putExtra("url", localStringBuffer.toString());
-    if (paramBoolean)
+    this.jdField_a_of_type_Short = ((short)paramArrayOfByte1.length);
+    paramInt = 0;
+    while (paramInt < paramArrayOfByte1.length)
     {
-      paramActivity.startActivityForResult(paramString, 2000);
-      return;
+      this.jdField_b_of_type_ArrayOfByte[paramInt] = paramArrayOfByte1[paramInt];
+      paramInt += 1;
     }
-    paramActivity.startActivity(paramString);
   }
   
-  private static boolean a()
+  public int a()
   {
-    if (jdField_a_of_type_Long == 0L) {}
-    long l;
+    if (this.jdField_a_of_type_Int == 1000) {
+      return this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + 16;
+    }
+    return this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + 16;
+  }
+  
+  public int a(long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  {
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, paramInt2, paramInt3);
+    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
+    }
+    paramArrayOfByte.putInt(-1412589450);
+    paramArrayOfByte.putInt(this.jdField_a_of_type_Int);
+    paramArrayOfByte.putInt((int)this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_Int == 1000) {}
+    for (paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + paramInt1;; paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + paramInt1)
+    {
+      paramArrayOfByte.putInt(paramInt2);
+      short s = (short)this.jdField_a_of_type_ArrayOfByte.length;
+      paramArrayOfByte.putShort(s);
+      paramArrayOfByte.put(this.jdField_a_of_type_ArrayOfByte, 0, s);
+      paramArrayOfByte.putShort(this.jdField_a_of_type_Short);
+      paramArrayOfByte.put(this.jdField_b_of_type_ArrayOfByte);
+      paramArrayOfByte.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
+      paramArrayOfByte.putInt((int)(0xFFFFFFFF & paramLong));
+      paramArrayOfByte.putInt(paramInt1);
+      if (this.jdField_a_of_type_Int == 1007)
+      {
+        paramArrayOfByte.putInt((int)((this.jdField_a_of_type_Long & 0x0) >> 32));
+        paramArrayOfByte.putInt((int)((0x0 & paramLong) >> 32));
+      }
+      return paramInt2 + 16 - paramInt1;
+    }
+  }
+  
+  public int a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, 0, paramInt);
+    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
+    }
+    long l1 = paramArrayOfByte.getInt();
+    this.jdField_b_of_type_Int = paramArrayOfByte.getInt();
+    paramArrayOfByte.getInt();
+    paramInt = paramArrayOfByte.getInt();
+    if (l1 != -1412589450L) {}
     do
     {
-      return true;
-      l = SystemClock.uptimeMillis();
-    } while (jdField_a_of_type_Long + 4000L < l);
-    return false;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (c(paramInt)) || (b(paramInt));
-  }
-  
-  private static boolean a(Activity paramActivity)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (paramActivity != null)
-    {
-      paramActivity = paramActivity.getClass().getName();
-      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        String str = arrayOfString[i];
-        if ((!TextUtils.isEmpty(paramActivity)) && (paramActivity.contains(str))) {
-          bool1 = true;
-        }
+      return 100002;
+      if (this.jdField_b_of_type_Int != 0) {
+        return this.jdField_b_of_type_Int;
       }
-      else
-      {
-        return bool1;
+      if (!paramBoolean) {
+        break;
       }
-      i += 1;
+    } while ((paramInt != 5) && (paramInt != 9));
+    this.jdField_b_of_type_Short = ((short)paramArrayOfByte.get());
+    l1 = 0L;
+    long l2 = paramArrayOfByte.getInt();
+    if (this.jdField_a_of_type_Int == 1007) {
+      l1 = paramArrayOfByte.getInt();
     }
+    this.c = ((l1 << 32 & 0x0) + (l2 & 0xFFFFFFFF));
+    return 0;
   }
   
-  public static void b(Activity paramActivity, int paramInt)
+  public long a()
   {
-    QLog.d("OpenWeiyunVipHelper", 2, "showLimitDialog");
-    jdField_a_of_type_Bifw.removeMessages(3000);
-    Message localMessage = jdField_a_of_type_Bifw.obtainMessage();
-    localMessage.what = 3000;
-    localMessage.obj = paramActivity;
-    localMessage.arg1 = paramInt;
-    jdField_a_of_type_Bifw.sendMessageDelayed(localMessage, 1000L);
+    return this.c;
   }
   
-  public static void b(Activity paramActivity, String paramString, boolean paramBoolean)
+  public short a()
   {
-    paramString = String.format("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&aid=%s", new Object[] { paramString });
-    Intent localIntent = new Intent();
-    localIntent.setClass(BaseApplication.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (paramBoolean)
-    {
-      paramActivity.startActivityForResult(localIntent, 2000);
-      return;
-    }
-    paramActivity.startActivity(localIntent);
+    return this.jdField_b_of_type_Short;
   }
   
-  public static boolean b(int paramInt)
+  public void a(long paramLong)
   {
-    return (paramInt == 1053) || (paramInt == 22081);
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == 1127) || (paramInt == 22000);
-  }
-  
-  private static void d(Activity paramActivity, int paramInt)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()) || (paramActivity != BaseActivity.sTopActivity))
-    {
-      paramActivity = BaseActivity.sTopActivity;
-      if ((paramActivity != null) && (!paramActivity.isFinishing()) && (a(paramActivity))) {
-        break label44;
-      }
-    }
-    label44:
-    while (((jdField_a_of_type_Bbgg != null) && (jdField_a_of_type_Bbgg.isShowing())) || (!a()))
-    {
-      return;
-      break;
-    }
-    String str1;
-    if (b(paramInt))
-    {
-      str1 = BaseApplicationImpl.getContext().getString(2131692714);
-      if (!b(paramInt)) {
-        break label161;
-      }
-    }
-    label161:
-    for (String str2 = BaseApplicationImpl.getContext().getString(2131692709);; str2 = BaseApplicationImpl.getContext().getString(2131692711))
-    {
-      jdField_a_of_type_Bbgg = bbcv.a(paramActivity, 230, str1, str2, 2131692712, 2131692713, new bift(paramInt, paramActivity), new bifu());
-      jdField_a_of_type_Bbgg.setOnDismissListener(new bifv());
-      jdField_a_of_type_Bbgg.show();
-      return;
-      str1 = BaseApplicationImpl.getContext().getString(2131692715);
-      break;
-    }
+    this.jdField_b_of_type_Long = paramLong;
   }
 }
 

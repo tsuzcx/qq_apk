@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
-
-public final class bfoe
-  implements Parcelable.Creator<AbsListView.SavedState>
+public class bfoe
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  int c;
+  
+  public bfoe(bfod parambfod, String paramString, int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    return new AbsListView.SavedState(paramParcel, null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramInt3;
   }
   
-  public AbsListView.SavedState[] a(int paramInt)
+  public String toString()
   {
-    return new AbsListView.SavedState[paramInt];
+    return this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.b + "," + this.jdField_a_of_type_Long + "," + this.c;
   }
 }
 

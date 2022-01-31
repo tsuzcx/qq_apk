@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
 
 public class abiq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abiq(GroupManagerActivity paramGroupManagerActivity) {}
+  public abiq(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    {
+      axqy.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      return;
+    }
+    axqy.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+  }
 }
 
 

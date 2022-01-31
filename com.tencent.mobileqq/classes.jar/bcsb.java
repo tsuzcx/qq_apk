@@ -1,22 +1,27 @@
-import android.content.Intent;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.VoteViewV2;
-import com.tencent.mobileqq.widget.VoteViewV2.1;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bcsb
-  implements View.OnClickListener
+  extends AccessibilityDelegateCompat
 {
-  public bcsb(VoteViewV2.1 param1) {}
+  public bcsb(TabBarView paramTabBarView) {}
   
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    paramView = new Intent(VoteViewV2.a(this.a.this$0), QQBrowserActivity.class);
-    String str = bbpp.a(VoteViewV2.a(this.a.this$0), "praise", "");
-    VasWebviewUtil.openQQBrowserWithoutAD(VoteViewV2.a(this.a.this$0), str, 536870912L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "0", null);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (this.a.a(paramView) == this.a.o) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

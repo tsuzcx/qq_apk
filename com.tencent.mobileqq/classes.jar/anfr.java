@@ -1,14 +1,21 @@
-import java.util.List;
-
-public abstract interface anfr
+class anfr
+  implements anhw<anga>
 {
-  public abstract void a(anfv paramanfv, anhs paramanhs, anhi paramanhi);
+  anfr(anfq paramanfq) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(List<anfv> paramList);
-  
-  public abstract void f();
+  public int a(anga paramanga, long paramLong)
+  {
+    if (paramanga == null) {}
+    do
+    {
+      return -1;
+      paramLong = paramanga.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
+      }
+    } while (paramLong <= 0L);
+    return 1;
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adug;
-import bcpw;
+import adue;
+import bcql;
 import com.tencent.mobileqq.data.ChatMessage;
 import java.util.Set;
 
@@ -15,9 +15,9 @@ class MarketFaceItemBuilder$10$1
     if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.isEmpty())
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.a.remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq));
-      adug.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_Aduu, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+      adue.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_Adus, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
       if (!this.jdField_a_of_type_Boolean) {
-        bcpw.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.b, 1, 2131689911, 0).a();
+        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$10.this$0.b, 1, 2131689911, 0).a();
       }
     }
   }

@@ -1,26 +1,24 @@
-import android.animation.ValueAnimator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class adsz
+class adsz
+  implements aqxz
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public Scroller a;
-  public boolean a;
-  public float b;
-  public int b;
-  public Scroller b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  adsz(adsy paramadsy) {}
   
-  public adsz(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
+    }
+    actj.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
+  }
 }
 
 

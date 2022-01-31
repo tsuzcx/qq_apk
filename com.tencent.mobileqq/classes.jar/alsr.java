@@ -1,39 +1,12 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.io.File;
+import java.io.FileFilter;
 
-public class alsr
-  implements INetInfoHandler
+public final class alsr
+  implements FileFilter
 {
-  public alsr(ArkAppCenter paramArkAppCenter) {}
-  
-  public void onNetMobile2None()
+  public boolean accept(File paramFile)
   {
-    ArkAppCenter.a(this.a, 1, 0);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 1, 2);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ArkAppCenter.a(this.a, 0, 2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ArkAppCenter.a(this.a, 2, 1);
-  }
-  
-  public void onNetWifi2None()
-  {
-    ArkAppCenter.a(this.a, 2, 0);
+    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
   }
 }
 

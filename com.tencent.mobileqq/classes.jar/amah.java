@@ -1,6 +1,17 @@
-public abstract interface amah
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+
+public class amah
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public amah(JumpConfirmFragment paramJumpConfirmFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    JefsClass.getInstance().a(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+  }
 }
 
 

@@ -1,35 +1,27 @@
-import com.tencent.ad.tangram.log.AdLogAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
-public final class ysg
-  implements AdLogAdapter
+public class ysg
+  implements AdQQMINIProgramAdapter
 {
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    {
+      yxp.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
     }
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
-    }
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    yxp.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new ysh(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 

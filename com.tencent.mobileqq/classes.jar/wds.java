@@ -1,16 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
-class wds
-  implements View.OnTouchListener
+public class wds
+  extends ajxj
 {
-  wds(wdr paramwdr) {}
+  public wds(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    wdr.a(this.a);
-    return true;
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!bbbr.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

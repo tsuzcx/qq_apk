@@ -1,19 +1,16 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ScrollView;
 
 class bbhw
-  implements MyLinearLayout.DispatchKeyEventListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bbhw(bbhs parambbhs) {}
+  bbhw(bbhp parambbhp) {}
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public void onGlobalLayout()
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
-    {
-      this.a.a();
-      return true;
+    if (this.a.a != null) {
+      this.a.a.fullScroll(130);
     }
-    return false;
   }
 }
 

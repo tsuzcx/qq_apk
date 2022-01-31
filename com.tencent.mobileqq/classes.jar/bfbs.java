@@ -1,60 +1,66 @@
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
 import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class bfbs
+  implements belx
 {
-  private begz jdField_a_of_type_Begz;
-  private ConcurrentHashMap<AppBrandPageContainer, bfbf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public bfbs(AppBrandPageContainer paramAppBrandPageContainer) {}
   
-  public bfbs(begz parambegz)
+  public void onSoftKeyboardClosed()
   {
-    this.jdField_a_of_type_Begz = parambegz;
-  }
-  
-  public bfbf a(AppBrandPageContainer paramAppBrandPageContainer)
-  {
-    bfbf localbfbf = (bfbf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramAppBrandPageContainer);
-    if (localbfbf == null)
+    betc.d("AppBrandPageContainer", "onSoftKeyboardClosed ");
+    if ((AppBrandPageContainer.a(this.a) != null) && (AppBrandPageContainer.a(this.a).size() > 0))
     {
-      besl.b("PageWebviewPool", "get page form new BrandPageWebview.");
-      return new bfbf(this.jdField_a_of_type_Begz, paramAppBrandPageContainer);
-    }
-    besl.b("PageWebviewPool", "get page from cache.");
-    return localbfbf;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      Iterator localIterator = AppBrandPageContainer.a(this.a).iterator();
       while (localIterator.hasNext())
       {
-        bfbf localbfbf = (bfbf)((Map.Entry)localIterator.next()).getValue();
-        if (localbfbf != null) {
-          localbfbf.c();
+        belx localbelx = (belx)localIterator.next();
+        if (localbelx != null) {
+          localbelx.onSoftKeyboardClosed();
         }
-        localIterator.remove();
       }
-      return;
     }
-    catch (Exception localException)
-    {
-      besl.d("PageWebviewPool", "destroyCachePage error:", localException);
-    }
+    bejn.a().postDelayed(new AppBrandPageContainer.1.2(this), 50L);
   }
   
-  public void a(AppBrandPageContainer paramAppBrandPageContainer)
+  public void onSoftKeyboardOpened(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramAppBrandPageContainer)) {
-      return;
+    betc.d("AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
+    if (AppBrandPageContainer.a(this.a) != null) {}
+    int i;
+    for (Object localObject = AppBrandPageContainer.a(this.a).a();; localObject = null)
+    {
+      i = paramInt;
+      if (localObject != null)
+      {
+        i = paramInt;
+        if (bfgl.a((Context)localObject))
+        {
+          i = paramInt;
+          if (bfgl.a((Activity)localObject)) {
+            i = paramInt - bfgl.c((Context)localObject);
+          }
+        }
+      }
+      if ((AppBrandPageContainer.a(this.a) == null) || (AppBrandPageContainer.a(this.a).size() <= 0)) {
+        break;
+      }
+      localObject = AppBrandPageContainer.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        belx localbelx = (belx)((Iterator)localObject).next();
+        if (localbelx != null) {
+          localbelx.onSoftKeyboardOpened(i);
+        }
+      }
     }
-    besl.b("PageWebviewPool", "preLoad page");
-    bfbf localbfbf = new bfbf(this.jdField_a_of_type_Begz, paramAppBrandPageContainer);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramAppBrandPageContainer, localbfbf);
+    bejn.a().postDelayed(new AppBrandPageContainer.1.1(this, i), 50L);
   }
 }
 

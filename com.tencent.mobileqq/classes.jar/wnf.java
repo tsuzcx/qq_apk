@@ -1,17 +1,24 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class wnf
-  implements wnc
+class wnf
+  implements TextView.OnEditorActionListener
 {
-  wnf(wne paramwne) {}
+  wnf(wnb paramwnb) {}
   
-  public void a(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.isShowing()) {
-      wne.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
     }
+    if (wnb.a(this.a) != null) {
+      wnb.a(this.a).a();
+    }
+    return true;
   }
 }
 

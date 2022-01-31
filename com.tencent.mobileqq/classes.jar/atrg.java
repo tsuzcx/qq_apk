@@ -1,35 +1,107 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 class atrg
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  atrg(atqu paramatqu, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  atrg(atqw paramatqw) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      atqu.a(this.jdField_a_of_type_Atqu, 1);
-      new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Atqu.a.a.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
     }
-    for (;;)
+    Object localObject;
+    if (paramBoolean)
     {
-      atqu.b(this.jdField_a_of_type_Atqu);
+      try
+      {
+        ((aszf)this.a.a.app.getManager(106)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label544;
+        }
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
+        }
+        if (paramInt == 0) {
+          break label302;
+        }
+        paramBundle = paramBundle.optString("msg");
+        if (!TextUtils.isEmpty(paramBundle))
+        {
+          bcql.a(this.a.a, 1, "" + paramBundle, 1).a();
+          return;
+        }
+        bcql.a(this.a.a, 1, ajya.a(2131707380), 1).a();
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        bcql.a(this.a.a, 1, ajya.a(2131707316), 1).a();
+        if (!QLog.isColorLevel()) {
+          break label587;
+        }
+      }
+      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
       return;
-      if (paramView == this.b)
+      label302:
+      if (paramBundle.optInt("retcode") == 0)
       {
-        atqu.a(this.jdField_a_of_type_Atqu, 2);
-        new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Atqu.a.a.a).a();
+        paramBundle = this.a;
+        if (atqw.a(this.a)) {
+          break label588;
+        }
       }
-      else if (paramView == this.c)
+    }
+    label544:
+    label587:
+    label588:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      atqw.a(paramBundle, paramBoolean);
+      localObject = this.a.a;
+      if (atqw.a(this.a)) {}
+      for (paramBundle = ajya.a(2131707345);; paramBundle = ajya.a(2131707303))
       {
-        atqu.a(this.jdField_a_of_type_Atqu, 3);
-        new axra(this.jdField_a_of_type_Atqu.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Atqu.a.a.a).a();
+        bcql.a((Context)localObject, 2, paramBundle, 1).a();
+        atqw.a(this.a, 1, 60);
+        if ((!atqw.a(this.a)) && (atqw.a(this.a).getChildAt(2).getVisibility() != 0))
+        {
+          paramBundle = (Button)atqw.a(this.a).getChildAt(1).findViewById(2131378436);
+          paramBundle.setTextColor(this.a.a.getResources().getColor(2131166885));
+          paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839026));
+        }
+        if (!atqw.a(this.a)) {
+          break;
+        }
+        paramBundle = (Button)atqw.a(this.a).getChildAt(1).findViewById(2131378436);
+        paramBundle.setTextColor(this.a.a.getResources().getColor(2131166887));
+        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130839065));
+        return;
       }
+      bcql.a(this.a.a, 1, ajya.a(2131707312), 1).a();
+      return;
+      bcql.a(this.a.a, 1, ajya.a(2131707318), 1).a();
+      return;
     }
   }
 }

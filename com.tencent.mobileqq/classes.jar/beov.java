@@ -1,23 +1,36 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnErrorListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class beov
-  implements Handler.Callback
+public class beov
+  implements VideoPlayerProxy.OnErrorListener
 {
-  beov(beou parambeou) {}
+  public beov(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onError(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
   {
-    int i = paramMessage.what;
-    paramMessage.getData().setClassLoader(beou.a(this.a).getClassLoader());
-    MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramMessage.getData().getParcelable("KEY_APPINFO");
-    ResultReceiver localResultReceiver = (ResultReceiver)paramMessage.getData().getParcelable("receiver");
-    beou.a(this.a, i, paramMessage.getData(), localMiniAppInfo, localResultReceiver);
-    return false;
+    betc.d("MiniAppVideoPlayer", "video onError: m what=" + paramInt1 + " extra=" + paramInt2);
+    if (!this.a.jdField_a_of_type_Behp.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "error");
+    }
+    for (;;)
+    {
+      return true;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Behp.a("onVideoError", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        betc.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoError = " + paramVideoPlayerProxy.toString());
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
   }
 }
 

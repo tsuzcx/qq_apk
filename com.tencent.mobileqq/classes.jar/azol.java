@@ -1,32 +1,10 @@
-public class azol
+public abstract interface azol
 {
-  public int a = -1;
+  public abstract void a(int paramInt, String paramString);
   
-  public static int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    if ((paramInt == 70) || (paramInt == 7)) {
-      return 2131696421;
-    }
-    if ((paramInt == 97) || (paramInt == 9)) {
-      return 2131696416;
-    }
-    if ((paramInt == 98) || (paramInt == 10)) {
-      return 2131696420;
-    }
-    if ((paramInt == 101) || (paramInt == 11) || (paramInt == 102) || (paramInt == 103) || (paramInt == 14)) {
-      return 2131696418;
-    }
-    if ((paramInt == 105) || (paramInt == 16)) {
-      return 2131696417;
-    }
-    if (paramInt == 21) {
-      return 2131696415;
-    }
-    return 2131696419;
-  }
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(String paramString);
 }
 
 

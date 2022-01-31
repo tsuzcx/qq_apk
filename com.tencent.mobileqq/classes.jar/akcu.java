@@ -1,55 +1,25 @@
-import com.dataline.activities.LiteActivity;
+import android.content.Intent;
 import com.dataline.activities.PrinterActivity;
-import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 class akcu
-  extends ajuv
+  implements aptw
 {
-  akcu(akct paramakct) {}
+  akcu(akcs paramakcs, BaseActivity paramBaseActivity, String paramString) {}
   
-  protected void a(Session paramSession)
+  public void a()
   {
-    this.a.a(3, paramSession, 0.0D, false);
-    if (this.a.a != null)
-    {
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(bbbw.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    axqy.b(this.jdField_a_of_type_Akcs.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
   
-  protected void a(Session paramSession, float paramFloat)
-  {
-    this.a.a(1, paramSession, paramFloat, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(Session paramSession, boolean paramBoolean)
-  {
-    this.a.a(2, paramSession, 0.0D, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    this.a.a(paramLong, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(Session paramSession)
-  {
-    this.a.a(0, paramSession, 0.0D, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public void b() {}
 }
 
 

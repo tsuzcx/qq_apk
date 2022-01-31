@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class bgnv
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public bgnv(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public bgnv(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnv
  * JD-Core Version:    0.7.0.1
  */

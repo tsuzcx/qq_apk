@@ -1,57 +1,27 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
 public class qzd
+  extends AccessibilityDelegateCompat
 {
-  private JSONObject a;
+  public qzd(BaseTabbar paramBaseTabbar) {}
   
-  public qzd(String paramString)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    try
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
       return;
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
   }
   
-  public qzd(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.a = new JSONObject();
-    npx.a(paramString1, paramString2, paramString3, paramString4, this.a);
-  }
-  
-  public qzd(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this(paramString1);
-    npx.a(paramString2, paramString3, paramString4, paramString5, this.a);
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.open.downloadnew;
 
-import bdkp;
+import bdle;
 
 public final class DownloadApi$9
   implements Runnable
 {
   public void run()
   {
-    bdkp.a().c();
+    bdle.a().c();
   }
 }
 

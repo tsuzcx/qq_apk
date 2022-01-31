@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface bjdh
+class bjdh
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bjdh(bjdg parambjdg) {}
   
-  public abstract void a(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void b(MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void c(int paramInt, MusicItemInfo paramMusicItemInfo);
-  
-  public abstract void d(int paramInt, MusicItemInfo paramMusicItemInfo);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,19 +1,42 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.wifi.QWifiListFragment;
+import com.tencent.mobileqq.wifi.QWifiSecurityFragment;
+import com.wifisdk.ui.api.BaseFragImplManager;
+import com.wifisdk.ui.fragments.BaseFragmentImpl;
 
-final class bcwp
-  extends BroadcastReceiver
+public class bcwp
+  extends BaseFragImplManager
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void finishFragImpl(BaseFragmentImpl paramBaseFragmentImpl)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
-      return;
+    paramBaseFragmentImpl = paramBaseFragmentImpl.getFragment();
+    if (paramBaseFragmentImpl != null)
+    {
+      paramBaseFragmentImpl = paramBaseFragmentImpl.getActivity();
+      if (paramBaseFragmentImpl != null) {
+        paramBaseFragmentImpl.finish();
+      }
     }
-    bcwm.a(paramIntent.getStringExtra("account"));
-    bcwm.b(bcwm.a());
+  }
+  
+  public void switchFragImpl(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    Object localObject = null;
+    if (paramInt2 == 1) {
+      localObject = new QWifiListFragment();
+    }
+    while (localObject == null)
+    {
+      return;
+      if (paramInt2 == 2) {
+        localObject = new QWifiSecurityFragment();
+      }
+    }
+    PublicFragmentActivity.a(paramContext, paramIntent, localObject.getClass());
   }
 }
 

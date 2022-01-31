@@ -1,60 +1,19 @@
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class asno
-  extends asnt<MessageForMixedMsg>
+public abstract class asno
 {
-  public asno(MessageForMixedMsg paramMessageForMixedMsg)
-  {
-    super(paramMessageForMixedMsg);
-  }
+  public String a = "MsgBackup." + getClass().getSimpleName();
   
-  protected int a()
+  public void a(String paramString)
   {
-    return 1;
-  }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (MessageRecord)localIterator.next();
-      if ((localObject instanceof MessageForPic))
-      {
-        localObject = asln.a((MessageRecord)localObject);
-        ((asnt)localObject).a(this.a);
-        localArrayList.addAll(((asnt)localObject).a());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if ((localMessageRecord instanceof MessageForPic)) {
-        asln.a(localMessageRecord).a();
-      }
+    if (asoi.a) {
+      QLog.d(this.a, 2, paramString);
     }
   }
   
-  public void b()
+  protected boolean a(String paramString)
   {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
-    {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
-    }
+    return bbdx.a(paramString);
   }
 }
 

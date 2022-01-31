@@ -1,64 +1,70 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import java.lang.ref.WeakReference;
 
-public class axyu
+class axyu
+  implements View.OnClickListener
 {
-  public static View a(Context paramContext, View paramView, acxn paramacxn, Bundle paramBundle)
+  String jdField_a_of_type_JavaLangString = null;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference = null;
+  String b = null;
+  
+  public axyu(axys paramaxys, Context paramContext, String paramString1, String paramString2)
   {
-    paramacxn = paramContext.getResources();
-    int i;
-    label37:
+    if (paramContext != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    }
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.b = paramString2;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    BaseChatPie localBaseChatPie;
     Object localObject;
-    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof FragmentActivity)) && (!MultiForwardActivity.class.isInstance(this.jdField_a_of_type_JavaLangRefWeakReference.get())))
     {
-      i = 1;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break label237;
+      paramView = ((FragmentActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getChatFragment();
+      if (paramView != null)
+      {
+        localBaseChatPie = paramView.a();
+        aanz.b(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString + " +1");
+        localObject = "";
+        paramView = (View)localObject;
+        if (!TextUtils.isEmpty(this.b)) {
+          paramView = Uri.parse(this.b);
+        }
       }
-      ((RelativeLayout)paramView).removeAllViews();
-      paramView = (RelativeLayout)paramView;
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, actn.a(75.0F, paramacxn)));
-      paramBundle = new RelativeLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      localObject = new ImageView(paramContext);
-      paramContext = new TextView(paramContext);
-      if (i == 0) {
-        break label249;
-      }
-      ((ImageView)localObject).setImageResource(2130841236);
-      paramContext.setText(paramacxn.getString(2131696724));
     }
-    for (;;)
+    try
     {
-      ((ImageView)localObject).setId(2131376575);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(actn.a(23.5F, paramacxn), actn.a(22.5F, paramacxn)));
-      paramBundle.addView((View)localObject);
-      paramContext.setTextSize(2, 14.0F);
-      paramContext.setTextColor(Color.parseColor("#777777"));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131376575);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = actn.a(7.5F, paramacxn);
-      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-      return paramView;
-      i = 0;
-      break;
-      label237:
-      paramView = new RelativeLayout(paramContext);
-      break label37;
-      label249:
-      ((ImageView)localObject).setImageResource(2130841235);
-      paramContext.setText(paramacxn.getString(2131696723));
+      paramView = paramView.getQueryParameter("article_id");
+      localObject = paramView;
     }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
+    paramView = (View)localObject;
+    if (localObject == null) {
+      paramView = "";
+    }
+    nol.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8007239", "0X8007239", 0, 0, paramView, "", "", "");
+    nol.a("0X8007239", "", paramView, "", "", "");
   }
 }
 

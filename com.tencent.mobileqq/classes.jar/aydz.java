@@ -1,17 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-
 public class aydz
 {
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public TimDocSSOMsg.UinRightInfo a;
-  public TextView b;
-  
-  public aydz(aydy paramaydy) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
 }
 
 

@@ -1,54 +1,26 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.SurfaceTexture;
 
-public class bdua
-  extends myw
+public abstract interface bdua
 {
-  public bdua(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public abstract void a();
   
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
-  {
-    this.a.a();
-    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_Auuw.a.a)) {
-        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
-        {
-          i = 1;
-          if (i == 0) {
-            break label80;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
-          this.a.c(0);
-        }
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
-  }
+  public abstract void a(int paramInt, Throwable paramThrowable);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     bdua
  * JD-Core Version:    0.7.0.1
  */

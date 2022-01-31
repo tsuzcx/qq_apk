@@ -1,18 +1,22 @@
-import android.app.Activity;
-import android.graphics.drawable.AnimationDrawable;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.3.1;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class wla
-  implements wsf
+  implements wkf
 {
-  wla(wkx paramwkx) {}
+  public wla(DetailBaseAdapter.4.1 param1) {}
   
-  public void a() {}
-  
-  public void a(AnimationDrawable paramAnimationDrawable)
+  public void a()
   {
-    if (wkx.a(this.a) != null) {
-      wkx.f(this.a).runOnUiThread(new DetailBaseAdapter.3.1(this, paramAnimationDrawable));
+    QLog.d(wku.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(wku.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }

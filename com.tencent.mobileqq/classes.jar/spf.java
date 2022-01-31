@@ -1,274 +1,557 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class spf
-  implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
-  boolean c = false;
+  public static final DateFormat a;
+  private int jdField_a_of_type_Int = -1;
+  private spg jdField_a_of_type_Spg;
   
-  public spf(PublicAccountImageView paramPublicAccountImageView) {}
-  
-  private float a(MotionEvent paramMotionEvent)
+  static
   {
-    float f1 = paramMotionEvent.getX(1) - paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(1) - paramMotionEvent.getY(0);
-    return (float)Math.sqrt(f1 * f1 + f2 * f2);
+    jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
   }
   
-  private float a(float[] paramArrayOfFloat, float paramFloat)
+  public spf()
   {
-    float f2 = this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getHeight();
-    float f1;
-    if (PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] < f2) {
-      f1 = 0.0F;
-    }
-    do
+    a();
+  }
+  
+  private int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      return f1;
-      if (paramArrayOfFloat[5] + paramFloat > 0.0F) {
-        return -paramArrayOfFloat[5];
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "praseHomeEntraConfig. config is null");
+      return -1;
+    }
+    try
+    {
+      int i = new JSONObject(paramString).optInt("story_home_show", -1);
+      return i;
+    }
+    catch (JSONException localJSONException)
+    {
+      ved.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "praseHomeEntraConfig. error config=" + paramString, localJSONException);
+    }
+    return -1;
+  }
+  
+  private Card a()
+  {
+    Object localObject = QQStoryContext.a().getCurrentAccountUin();
+    localObject = (Card)new QQEntityManagerFactory((String)localObject).createEntityManager().a(Card.class, (String)localObject);
+    if (localObject == null) {
+      ved.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "get current user birthday failed..");
+    }
+    return localObject;
+  }
+  
+  private List<sqw> a(@NonNull sph paramsph, long paramLong1, long paramLong2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramsph.e == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      vxp.a(bool);
+      if (paramsph.jdField_a_of_type_Int == 0) {
+        break;
       }
-      f1 = paramFloat;
-    } while (paramArrayOfFloat[5] + paramFloat >= -(PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] - f2));
-    return -(PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] - f2) - paramArrayOfFloat[5];
-  }
-  
-  private void a()
-  {
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) != null) {
-      PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView).a();
+      paramsph = new sqw(paramsph, paramsph.jdField_a_of_type_Int);
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule rule=%s", new Object[] { paramsph });
+      localArrayList.add(paramsph);
+      return localArrayList;
     }
-  }
-  
-  private boolean a()
-  {
-    boolean bool = false;
-    float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
-    if (arrayOfFloat[0] != PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private float b(float[] paramArrayOfFloat, float paramFloat)
-  {
-    float f2 = this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getWidth();
-    float f1;
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] < f2) {
-      f1 = 0.0F;
-    }
-    do
+    if ((paramLong1 == 0L) || (paramLong2 == 0L))
     {
-      return f1;
-      if (paramArrayOfFloat[2] + paramFloat > 0.0F) {
-        return -paramArrayOfFloat[2];
-      }
-      f1 = paramFloat;
-    } while (paramArrayOfFloat[2] + paramFloat >= -(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] - f2));
-    return -(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] - f2) - paramArrayOfFloat[2];
-  }
-  
-  private void b()
-  {
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) != null) {
-      PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView).b();
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule endTime=%d, startTime=%d", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1) });
+      vxp.a("initFestivalGatherRule endTime=%d, startTime=%d", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1) });
+      return localArrayList;
     }
-  }
-  
-  private void b(MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getPointerCount() < 2) {}
-    float f1;
-    do
+    long l;
+    if (paramLong1 > paramLong2)
     {
-      return;
-      f1 = a(paramMotionEvent);
-    } while (f1 <= 10.0F);
-    float f2 = f1 / this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Float = f1;
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getImageMatrix());
-    paramMotionEvent = new float[9];
-    this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(paramMotionEvent);
-    if (paramMotionEvent[0] > PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView) * this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Float)
-    {
-      f1 = 1.0F;
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Boolean = true;
+      ved.a("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule endTime=%d, startTime=%d", Long.valueOf(paramLong2), Long.valueOf(paramLong1));
+      l = paramLong2;
+      paramLong2 = paramLong1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1, this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getWidth() / 2, this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getHeight() / 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountImageView", 2, "the current scale is" + f1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountImageView", 2, "scale of x is" + paramMotionEvent[0]);
-      }
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      return;
-      f1 = f2;
-      if (paramMotionEvent[0] < PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView))
+      int i = Integer.valueOf(vxy.c(1000L * l)).intValue();
+      int j = Integer.valueOf(vxy.c(1000L * paramLong2)).intValue();
+      while (i <= j)
       {
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_b_of_type_Boolean = true;
-        f1 = f2;
+        sqw localsqw = new sqw(paramsph, i);
+        ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule rule=%s", new Object[] { localsqw });
+        localArrayList.add(localsqw);
+        i += 1;
       }
+      return localArrayList;
+      l = paramLong1;
     }
   }
   
-  private boolean b()
+  private List<sqw> a(@NonNull sph paramsph, long paramLong1, long paramLong2, Card paramCard)
   {
-    boolean bool = false;
-    float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
-    if (arrayOfFloat[0] < PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView)) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.c = true;
-    float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
-    if (arrayOfFloat[2] >= 0.0F) {
-      this.jdField_b_of_type_Boolean = false;
-    }
-    float f1 = PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    float f2 = arrayOfFloat[0];
-    if (arrayOfFloat[2] + f1 * f2 <= this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getWidth()) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  private void d()
-  {
-    float f = this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_b_of_type_Float / this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Float;
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageView", 2, "back scale is" + f);
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f, f, this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getWidth() / 2, this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getHeight() / 2);
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  private void e()
-  {
-    if (b())
+    ArrayList localArrayList = new ArrayList();
+    if ((paramsph.jdField_b_of_type_Int <= 0) || (TextUtils.isEmpty(paramsph.jdField_b_of_type_JavaLangString)))
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView));
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      vxp.a("init birthday rule failed:" + paramsph, new Object[0]);
+      return localArrayList;
     }
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getScaleType() != ImageView.ScaleType.CENTER)
+    if ((paramLong1 == 0L) || (paramLong2 == 0L))
     {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.MATRIX);
-      return;
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initBirthdayRule endTime=%d, startTime=%d", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1) });
+      vxp.a("initBirthdayRule endTime=%d, startTime=%d", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1) });
+      localArrayList.add(a(paramsph, paramCard, Calendar.getInstance().get(1)));
+      return localArrayList;
     }
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if (a())
+    long l;
+    if (paramLong1 > paramLong2)
     {
-      float f1 = paramMotionEvent.getX() - this.jdField_a_of_type_AndroidGraphicsPointF.x;
-      float f2 = paramMotionEvent.getY() - this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      if (Math.sqrt(f1 * f1 + f2 * f2) > 10.0D)
+      ved.a("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initBirthdayRule endTime=%d, startTime=%d", Long.valueOf(paramLong2), Long.valueOf(paramLong1));
+      l = paramLong2;
+      paramLong2 = paramLong1;
+    }
+    for (;;)
+    {
+      int i = Integer.valueOf(vxy.c(1000L * l)).intValue();
+      int j = Integer.valueOf(vxy.c(1000L * paramLong2)).intValue();
+      while (i <= j)
       {
-        this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-        this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.getImageMatrix());
-        paramMotionEvent = new float[9];
-        this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(paramMotionEvent);
-        f2 = a(paramMotionEvent, f2);
-        f1 = b(paramMotionEvent, f1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f1, f2);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+        localArrayList.add(a(paramsph, paramCard, i));
+        i += 1;
       }
-      return;
+      break;
+      l = paramLong1;
     }
-    b();
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private spg a(String paramString)
   {
     boolean bool = true;
-    switch (paramMotionEvent.getActionMasked())
+    int j = 0;
+    if (TextUtils.isEmpty(paramString))
     {
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig is null");
+      return null;
+    }
+    Object localObject1;
+    Object localObject2;
+    label360:
+    int i;
+    try
+    {
+      localspg = new spg();
+      localObject1 = new JSONObject(paramString);
+      if (((JSONObject)localObject1).optInt("album_state", 1) != 1) {
+        break label579;
+      }
+      localspg.jdField_a_of_type_Boolean = bool;
+      localspg.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("album_mp4");
+      localspg.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("album_cover");
+      localspg.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("geohashLevel", 8);
+      localObject2 = ((JSONObject)localObject1).optJSONObject("count_limit");
+      if (localObject2 != null)
+      {
+        localspg.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("first_scan", 500);
+        localspg.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("inc_scan", 100);
+        localspg.d = ((JSONObject)localObject2).optInt("first_save", 15);
+      }
+      if (localspg.jdField_a_of_type_JavaUtilList == null) {
+        localspg.jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      localObject2 = ((JSONObject)localObject1).optJSONObject("home_rule");
+      if (localObject2 != null)
+      {
+        localObject3 = new spi(2);
+        ((spi)localObject3).a((JSONObject)localObject2, 6);
+        localspg.jdField_a_of_type_JavaUtilList.add(localObject3);
+      }
+      localObject2 = ((JSONObject)localObject1).optJSONObject("native_rule");
+      if (localObject2 != null)
+      {
+        localObject3 = new spi(4);
+        ((spi)localObject3).a((JSONObject)localObject2, 10);
+        localspg.jdField_a_of_type_JavaUtilList.add(localObject3);
+      }
+      localObject2 = ((JSONObject)localObject1).optJSONObject("foreigner_rule");
+      if (localObject2 != null)
+      {
+        localObject3 = new spi(3);
+        ((spi)localObject3).a((JSONObject)localObject2, 10);
+        localspg.jdField_a_of_type_JavaUtilList.add(localObject3);
+      }
+      localObject2 = ((JSONObject)localObject1).optJSONArray("festival_list");
+      if ((localObject2 == null) || (((JSONArray)localObject2).length() <= 0)) {
+        break label446;
+      }
+      if (localspg.jdField_b_of_type_JavaUtilList != null) {
+        break label567;
+      }
+      localspg.jdField_b_of_type_JavaUtilList = new ArrayList();
+    }
+    catch (JSONException localJSONException)
+    {
+      spg localspg;
+      Object localObject3;
+      ved.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig error config=" + paramString, localJSONException);
+      return null;
+    }
+    if (i < ((JSONArray)localObject2).length())
+    {
+      localObject3 = ((JSONArray)localObject2).getJSONObject(i);
+      if (localObject3 != null)
+      {
+        localObject3 = a((JSONObject)localObject3, false);
+        if (localObject3 != null)
+        {
+          localspg.jdField_b_of_type_JavaUtilList.add(localObject3);
+          break label572;
+          label446:
+          ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have festival_list");
+        }
+      }
+    }
+    else
+    {
+      localObject1 = ((JSONObject)localObject1).optJSONArray("mutableFestivalList");
+      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+      {
+        i = j;
+        if (localJSONException.jdField_b_of_type_JavaUtilList == null)
+        {
+          localJSONException.jdField_b_of_type_JavaUtilList = new ArrayList();
+          i = j;
+        }
+      }
     }
     for (;;)
     {
-      bool = PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView).onTouchEvent(paramMotionEvent);
-      do
+      if (i < ((JSONArray)localObject1).length())
       {
-        return bool;
-        this.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-        f();
-        a();
-        c();
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageView", 2, "the current state is action up");
-        }
-        if (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Boolean)
+        localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+        if (localObject2 != null)
         {
-          d();
-          this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_a_of_type_Boolean = false;
-          break;
+          localObject2 = a((JSONObject)localObject2, true);
+          if (localObject2 != null)
+          {
+            localJSONException.jdField_b_of_type_JavaUtilList.add(localObject2);
+            break label585;
+            ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "parseAlbumConfig do not have mutableFestivalList");
+          }
         }
-        if (!this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.jdField_b_of_type_Boolean) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PublicAccountImageView", 2, "back to init matrix");
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageMatrix(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView));
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      else
+      {
+        return localJSONException;
+        label567:
+        i = 0;
+        break label360;
+        label572:
+        i += 1;
+        break label360;
+        label579:
+        bool = false;
         break;
-        e();
-        break;
-        if (this.jdField_a_of_type_Int == 2)
-        {
-          b(paramMotionEvent);
-          break;
-        }
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          a(paramMotionEvent);
-          break;
-        }
-        b();
-        break;
-      } while (this.jdField_a_of_type_Int == 3);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_Float = a(paramMotionEvent);
+      }
+      label585:
+      i += 1;
     }
+  }
+  
+  private sph a(JSONObject paramJSONObject, boolean paramBoolean)
+  {
+    int i = 1;
+    if (paramJSONObject.optInt("type", 1) == 2) {
+      i = 6;
+    }
+    sph localsph = new sph(i);
+    localsph.a(paramJSONObject, 6);
+    localsph.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name", "");
+    localsph.jdField_c_of_type_Int = paramJSONObject.optInt("start_age", -2147483648);
+    localsph.d = paramJSONObject.optInt("end_age", -2147483648);
+    if ((localsph.jdField_c_of_type_Int == -2147483648) || (localsph.d == -2147483648))
+    {
+      ved.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "festival_list error: has no age. config=" + paramJSONObject);
+      return null;
+    }
+    if (localsph.e == 6)
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("time");
+      if (paramJSONObject != null)
+      {
+        localsph.jdField_b_of_type_JavaLangString = paramJSONObject.optString("start", "");
+        localsph.jdField_b_of_type_Int = paramJSONObject.optInt("duration", 24);
+      }
+    }
+    for (;;)
+    {
+      return localsph;
+      localsph.jdField_a_of_type_Int = paramJSONObject.optInt("year", 0);
+      if ((localsph.jdField_a_of_type_Int == 0) && (paramBoolean))
+      {
+        ved.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "festival_list error: has no year. config=" + paramJSONObject);
+        return null;
+      }
+      paramJSONObject = paramJSONObject.optJSONObject("time");
+      if (paramJSONObject != null)
+      {
+        localsph.jdField_b_of_type_JavaLangString = paramJSONObject.optString("start", "");
+        localsph.jdField_c_of_type_JavaLangString = paramJSONObject.optString("end", "");
+      }
+    }
+  }
+  
+  private sqw a(@NonNull sph paramsph, Card paramCard, int paramInt)
+  {
+    paramsph = new sqw(paramsph, paramCard, paramInt);
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initFestivalGatherRule year=%d, rule=%s", new Object[] { Integer.valueOf(paramInt), paramsph });
+    return paramsph;
+  }
+  
+  private sqx a(@NonNull spi paramspi)
+  {
+    paramspi = new sqx(paramspi);
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "initTreeGatherRule rule=%s", new Object[] { paramspi });
+    return paramspi;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Spg != null) {
+      return this.jdField_a_of_type_Spg.d;
+    }
+    return 0;
+  }
+  
+  public int a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Spg != null)
+    {
+      if (paramBoolean) {
+        return this.jdField_a_of_type_Spg.jdField_c_of_type_Int;
+      }
+      return this.jdField_a_of_type_Spg.jdField_b_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Spg != null) {
+      return this.jdField_a_of_type_Spg.jdField_a_of_type_JavaLangString;
+    }
+    return null;
+  }
+  
+  public List<sqx> a()
+  {
+    if ((this.jdField_a_of_type_Spg == null) || (this.jdField_a_of_type_Spg.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Spg.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_Spg.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(a((spi)localIterator.next()));
+    }
+    return localArrayList;
+  }
+  
+  public List<sps> a(long paramLong1, long paramLong2)
+  {
+    if ((this.jdField_a_of_type_Spg == null) || (this.jdField_a_of_type_Spg.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Spg.jdField_b_of_type_JavaUtilList.isEmpty())) {
+      return null;
+    }
+    Card localCard = a();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1;
+    if (localCard == null)
+    {
+      localObject1 = "card is null";
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList startTime=%s age=%d", new Object[] { Long.valueOf(paramLong1), localObject1 });
+      localObject1 = this.jdField_a_of_type_Spg.jdField_b_of_type_JavaUtilList.iterator();
+    }
+    for (;;)
+    {
+      if (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (sph)((Iterator)localObject1).next();
+        if ((((sph)localObject2).jdField_c_of_type_Int >= 0) && ((localCard == null) || (localCard.age < ((sph)localObject2).jdField_c_of_type_Int)))
+        {
+          ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "you are too young. config=%s", new Object[] { localObject2 });
+          continue;
+          localObject1 = Byte.valueOf(localCard.age);
+          break;
+        }
+        if ((((sph)localObject2).d >= 0) && ((localCard == null) || (localCard.age > ((sph)localObject2).d)))
+        {
+          ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "it's not suitable for you. config=%s", new Object[] { localObject2 });
+          continue;
+        }
+        switch (((sph)localObject2).e)
+        {
+        default: 
+          break;
+        case 1: 
+          try
+          {
+            localObject2 = a((sph)localObject2, paramLong1, paramLong2);
+            if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+            {
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                localArrayList.add(new spv((sqw)((Iterator)localObject2).next()));
+              }
+            }
+          }
+          catch (ParseException localParseException1)
+          {
+            ved.e("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList config=%s", new Object[] { this.jdField_a_of_type_Spg, localParseException1 });
+          }
+        case 6: 
+          try
+          {
+            Iterator localIterator = a(localParseException1, paramLong1, paramLong2, localCard).iterator();
+            while (localIterator.hasNext())
+            {
+              sqw localsqw = (sqw)localIterator.next();
+              if ((localsqw.a > 0L) && (localsqw.b > 0L)) {
+                localArrayList.add(0, new spv(localsqw));
+              }
+            }
+          }
+          catch (ParseException localParseException2)
+          {
+            ved.c("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "getFestivalFilterList BirthdayAlbumFilter:%s", localParseException2);
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    String str2 = tcs.f();
+    if (!TextUtils.isEmpty(str2)) {
+      this.jdField_a_of_type_Spg = a(str2);
+    }
+    String str3 = tcs.g();
+    this.jdField_a_of_type_Int = a(str3);
+    String str1 = str3;
+    if (str3 == null) {
+      str1 = "";
+    }
+    if (str2 == null) {
+      str2 = "";
+    }
+    for (;;)
+    {
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.loadConfig homeEntraConfig=%s config=%s ", new Object[] { str1, str2 });
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.isConfigEnable config=%s", new Object[] { this.jdField_a_of_type_Spg });
+    return this.jdField_a_of_type_Spg != null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    spg localspg = a(paramString);
+    if (localspg != null)
+    {
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleAlbumConfig old config=%s, new config=%s", new Object[] { this.jdField_a_of_type_Spg, paramString });
+      tcs.h(paramString);
+      this.jdField_a_of_type_Spg = localspg;
+      return true;
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Spg != null) {
+      return this.jdField_a_of_type_Spg.jdField_a_of_type_Int;
+    }
+    return 8;
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_Spg != null) {
+      return this.jdField_a_of_type_Spg.jdField_b_of_type_JavaLangString;
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.clearAlbumConfig");
+    tcs.h("");
+    this.jdField_a_of_type_Spg = null;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Spg != null) {
+      return this.jdField_a_of_type_Spg.jdField_a_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "StoryHomeAlbumEntraConfig is null");
+    }
+    do
+    {
+      return false;
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig old config=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      this.jdField_a_of_type_Int = a(paramString);
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.handleStoryHomeAlbumEntraConfig new config=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    } while (this.jdField_a_of_type_Int == -1);
+    tcs.i(paramString);
+    return true;
+  }
+  
+  public void c()
+  {
+    ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager.clearStoryHomeAlbumEntraConfig");
+    tcs.i("");
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_Spg != null)
+    {
+      ved.d("Q.qqstory.recommendAlbum.logic.StoryAlbumConfig", "configManager mStoryHomeAlbumEntraState=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+      return this.jdField_a_of_type_Int != 0;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     spf
  * JD-Core Version:    0.7.0.1
  */

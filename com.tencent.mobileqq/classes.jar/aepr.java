@@ -1,48 +1,34 @@
-import android.view.View;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class aepr
-  implements bfoq
+  implements bcix<oidb_0x8ed.RspBody>
 {
-  aepr(aepg paramaepg, boolean paramBoolean, bfol parambfol) {}
+  aepr(aepq paramaepq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 2, "exitRoom: errorCode = " + paramInt);
     }
-    for (;;)
+    if ((paramInt == 0) || (paramInt == 1285))
     {
-      try
-      {
-        this.jdField_a_of_type_Bfol.dismiss();
-        return;
+      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+        this.a.a.d.dismiss();
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Aepg.bA();
-      }
-      else
-      {
-        this.jdField_a_of_type_Aepg.by();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Aepg.by();
-        }
-        else
-        {
-          this.jdField_a_of_type_Aepg.bx();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Aepg.bx();
-          }
-        }
-      }
+      new Intent().putExtra("isNeedFinish", true);
+      bbkb.e(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      atch.a().d();
+      this.a.a.ab = true;
+      this.a.a.b(1);
+      return;
     }
+    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+      this.a.a.d.dismiss();
+    }
+    bcql.a(this.a.a.a(), 1, ajya.a(2131705080), 0).b(this.a.a.a());
   }
 }
 

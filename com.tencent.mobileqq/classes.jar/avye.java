@@ -1,15 +1,11 @@
-import android.support.annotation.NonNull;
-import android.view.Surface;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
 
 public abstract interface avye
 {
-  public abstract Surface a();
+  public abstract GLSurfaceView.EGLConfigChooser a();
   
-  public abstract void a();
-  
-  public abstract void a(@NonNull avxq paramavxq, boolean paramBoolean);
-  
-  public abstract void b();
+  public abstract GLSurfaceView.EGLContextFactory a();
 }
 
 

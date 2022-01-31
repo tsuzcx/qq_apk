@@ -1,19 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
 class neg
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  neg(ned paramned) {}
+  neg(nea paramnea) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    ned.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (paramView = "02";; paramView = "01")
+    {
+      nol.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(nea.a(this.a)), "", "", false);
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

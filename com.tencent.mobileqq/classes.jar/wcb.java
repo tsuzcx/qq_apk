@@ -1,28 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
-class wcb
-  implements Animation.AnimationListener
+public class wcb
+  implements URLDrawable.URLDrawableListener
 {
-  wcb(wbz paramwbz, Context paramContext) {}
+  private final WeakReference<TextView> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wcb(TextView paramTextView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
-        this.jdField_a_of_type_Wbz.dismiss();
-      }
-      return;
-    }
-    this.jdField_a_of_type_Wbz.dismiss();
+    this.a = new WeakReference(paramTextView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = (TextView)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setVisibility(8);
+    }
+  }
 }
 
 

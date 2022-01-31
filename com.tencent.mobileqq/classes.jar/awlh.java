@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.widget.ListView;
 
 public class awlh
-  implements View.OnClickListener
+  extends awkf<awoi, awwr>
 {
-  public awlh(GroupSearchFragment paramGroupSearchFragment) {}
-  
-  public void onClick(View paramView)
+  public awlh(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, baxy parambaxy)
   {
-    this.a.g = 1;
-    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
-      this.a.g = 1;
-    }
-    this.a.h();
-    this.a.b.setVisibility(8);
+    super(paramListView, parambaxy);
+  }
+  
+  protected awrd<awoi, awwr> a(int paramInt)
+  {
+    return new awqj(this.jdField_a_of_type_Baxy, 268435456);
+  }
+  
+  protected awws a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new awxz(paramViewGroup, 268435456);
   }
 }
 

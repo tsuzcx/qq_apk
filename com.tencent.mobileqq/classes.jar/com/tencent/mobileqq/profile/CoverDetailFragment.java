@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile;
 
-import ajyc;
-import akfw;
-import akfz;
+import ajya;
+import akfv;
+import akfy;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -26,17 +26,17 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ausi;
-import ausj;
 import ausk;
-import auux;
-import auuy;
-import bbay;
-import bbju;
-import bbkv;
-import bbqs;
-import bcpw;
-import bhpg;
+import ausl;
+import ausm;
+import auuz;
+import auva;
+import bbbm;
+import bbki;
+import bblj;
+import bbrg;
+import bcql;
+import bhpx;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
@@ -54,22 +54,22 @@ public class CoverDetailFragment
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private akfz jdField_a_of_type_Akfz = new ausk(this);
+  private akfy jdField_a_of_type_Akfy = new ausm(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private auuy jdField_a_of_type_Auuy;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ausj(this);
+  private auva jdField_a_of_type_Auva;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ausl(this);
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   
   private void a(FragmentActivity paramFragmentActivity)
   {
-    bcpw.a(paramFragmentActivity, 1, 2131720533, 0).a();
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848992);
+    bcql.a(paramFragmentActivity, 1, 2131720544, 0).a();
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848998);
     this.jdField_b_of_type_Int = 1;
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131695244);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131695245);
   }
   
   public Drawable a(Drawable paramDrawable)
@@ -90,7 +90,7 @@ public class CoverDetailFragment
     }
     for (;;)
     {
-      bbju.a(paramDrawable, 40);
+      bbki.a(paramDrawable, 40);
       return new LayerDrawable(new Drawable[] { new BitmapDrawable(getActivity().getResources(), paramDrawable), new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { -1728053248, -1275068417, -1 }) });
       localObject1 = localObject2;
       if (!(paramDrawable instanceof URLDrawable)) {
@@ -125,7 +125,7 @@ public class CoverDetailFragment
         if (!ThemeUtil.isInNightMode(localFragmentActivity.getAppRuntime())) {
           break label113;
         }
-        if ((bbay.b()) || (bbay.d())) {
+        if ((bbbm.b()) || (bbbm.d())) {
           break label101;
         }
         localSystemBarCompact.setStatusBarColor(8947848);
@@ -137,13 +137,13 @@ public class CoverDetailFragment
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label113:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bbay.b()) && (!bbay.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
     {
       localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(16777215);
       return;
     }
-    if (!bbay.d())
+    if (!bbbm.d())
     {
       localSystemBarCompact.setStatusBarColor(14408667);
       return;
@@ -158,17 +158,17 @@ public class CoverDetailFragment
     localFragmentActivity.getWindow().addFlags(256);
     localFragmentActivity.getWindow().addFlags(512);
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365054));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131363943));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365068));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363658));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365053));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131363942));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365067));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363657));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.mContentView.findViewById(2131364807).setOnClickListener(this);
+    this.mContentView.findViewById(2131364806).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(null));
-    getActivity().app.addObserver(this.jdField_a_of_type_Akfz);
+    getActivity().app.addObserver(this.jdField_a_of_type_Akfy);
     hideTitleBar();
-    paramLayoutInflater = this.mContentView.findViewById(2131365075).getLayoutParams();
-    int i = bhpg.a(getActivity(), getActivity());
+    paramLayoutInflater = this.mContentView.findViewById(2131365074).getLayoutParams();
+    int i = bhpx.a(getActivity(), getActivity());
     if (i > paramLayoutInflater.height)
     {
       paramLayoutInflater.height = i;
@@ -177,28 +177,28 @@ public class CoverDetailFragment
       if (this.jdField_b_of_type_Int != 0) {
         break label396;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848972);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848978);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695244);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131695245);
     }
     for (;;)
     {
-      paramLayoutInflater = ((bbqs)localFragmentActivity.app.getManager(235)).a;
+      paramLayoutInflater = ((bbrg)localFragmentActivity.app.getManager(235)).a;
       if ((paramLayoutInflater != null) && (this.jdField_a_of_type_Int > 0))
       {
-        this.jdField_a_of_type_Auuy = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
-        if (this.jdField_a_of_type_Auuy == null) {
+        this.jdField_a_of_type_Auva = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
+        if (this.jdField_a_of_type_Auva == null) {
           break label467;
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Auuy.a)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Auuy.a);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Auva.a)) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Auva.a);
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Auuy.d)) {
-          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ausi(this));
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Auva.d)) {
+          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ausk(this));
         }
       }
       return;
-      i = bbkv.a(getActivity());
+      i = bblj.a(getActivity());
       if (i <= paramLayoutInflater.height) {
         break;
       }
@@ -207,15 +207,15 @@ public class CoverDetailFragment
       label396:
       if (this.jdField_b_of_type_Int == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848972);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848978);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131719357);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131719368);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848992);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848998);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131695244);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131695245);
       }
     }
     label467:
@@ -224,7 +224,7 @@ public class CoverDetailFragment
   
   public int getContentLayoutId()
   {
-    return 2131561604;
+    return 2131561603;
   }
   
   public boolean isTransparent()
@@ -252,22 +252,22 @@ public class CoverDetailFragment
         }
       } while ((getActivity() == null) || (getActivity().app == null) || (this.jdField_a_of_type_Int <= 0));
       paramView = getActivity().app;
-      ((akfw)paramView.a(13)).g(this.jdField_a_of_type_Int);
+      ((akfv)paramView.a(13)).g(this.jdField_a_of_type_Int);
       VasWebviewUtil.reportCommercialDrainage(paramView.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Int), "");
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848972);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130848978);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajyc.a(2131702607));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131702618));
       this.jdField_b_of_type_Int = 3;
       return;
     } while ((this.jdField_b_of_type_Int != 0) || (getActivity() == null));
-    bcpw.a(getActivity(), 0, 2131690616, 0).a();
+    bcql.a(getActivity(), 0, 2131690616, 0).a();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     if (getActivity().app != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Akfz);
+      getActivity().app.removeObserver(this.jdField_a_of_type_Akfy);
     }
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajyv;
+import ajyt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.Setting;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class HotChatShare$3
   implements Runnable
 {
-  public HotChatShare$3(ajyv paramajyv) {}
+  public HotChatShare$3(ajyt paramajyt) {}
   
   public void run()
   {

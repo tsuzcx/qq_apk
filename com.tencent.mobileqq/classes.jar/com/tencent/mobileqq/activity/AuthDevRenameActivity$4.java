@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcpq;
+import bcqf;
 
 class AuthDevRenameActivity$4
   implements Runnable
@@ -12,7 +12,7 @@ class AuthDevRenameActivity$4
     try
     {
       if ((AuthDevRenameActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevRenameActivity.a(this.this$0, new bcpq(this.this$0, this.this$0.getTitleBarHeight()));
+        AuthDevRenameActivity.a(this.this$0, new bcqf(this.this$0, this.this$0.getTitleBarHeight()));
       }
       if ((AuthDevRenameActivity.a(this.this$0) != null) && (!AuthDevRenameActivity.a(this.this$0).isShowing()))
       {

@@ -1,20 +1,33 @@
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
 class aufw
+  extends Handler
 {
-  public int a;
-  public aufs a;
-  public auft a;
-  public aufv a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b = true;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  private WeakReference<aufj> a;
   
-  private aufw(aufh paramaufh) {}
+  public aufw(aufj paramaufj)
+  {
+    this.a = new WeakReference(paramaufj);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    aufj localaufj = (aufj)this.a.get();
+    if (localaufj == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      aufj.a(localaufj, (aufy)paramMessage.obj);
+      return;
+    }
+    aufj.a(localaufj);
+  }
 }
 
 

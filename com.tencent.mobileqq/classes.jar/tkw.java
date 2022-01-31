@@ -1,15 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
 
 public class tkw
-  implements syt<tnp, tpa>
+  extends ssh
 {
-  public void a(@NonNull tnp paramtnp, @Nullable tpa paramtpa, @NonNull ErrorMessage paramErrorMessage)
+  public final String a;
+  public final String b;
+  public final String c;
+  
+  public tkw(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    paramtnp = new tkx(this, paramErrorMessage, paramtnp.b, paramtnp.jdField_c_of_type_JavaLangString, paramtnp.jdField_c_of_type_Int);
-    ste.a().dispatch(paramtnp);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
   }
 }
 

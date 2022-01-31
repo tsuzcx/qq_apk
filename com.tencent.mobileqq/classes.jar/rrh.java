@@ -1,29 +1,23 @@
-public class rrh
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+
+final class rrh
+  extends pmp
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final int b;
-  
-  public rrh(int paramInt1, int paramInt2, Object paramObject)
+  rrh(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public int a()
+  public void onClick(@NonNull View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    onh.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_area = 11;
+      onh.b(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    }
   }
 }
 

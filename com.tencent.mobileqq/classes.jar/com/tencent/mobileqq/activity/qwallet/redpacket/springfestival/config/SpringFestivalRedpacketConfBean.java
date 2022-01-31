@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config;
 
-import ahfn;
+import ahfl;
 import android.text.TextUtils;
-import bbjw;
+import bbkk;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -64,8 +64,8 @@ public class SpringFestivalRedpacketConfBean
         {
           SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo localBannerInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo();
           SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-          localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-          localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+          localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+          localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
           localBannerInfo.bannerTime = localTimeInfo;
           localBannerInfo.bannerUrl = localJSONObject.optString("banner_url");
           localBannerInfo.previewActivityUrl = localJSONObject.optString("preview_activity_url");
@@ -106,8 +106,8 @@ public class SpringFestivalRedpacketConfBean
     localLoadingInfo.loadingUrl = localJSONObject.optString("loading_url");
     localLoadingInfo.loadingTips = localJSONObject.optString("loading_tips");
     paramJSONObject = new SpringFestivalRedpacketConfBean.TimeInfo();
-    paramJSONObject.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-    paramJSONObject.endTime = ahfn.a(localJSONObject.optString("end_time"));
+    paramJSONObject.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+    paramJSONObject.endTime = ahfl.a(localJSONObject.optString("end_time"));
     localLoadingInfo.loadingTime = paramJSONObject;
     return localLoadingInfo;
   }
@@ -157,18 +157,18 @@ public class SpringFestivalRedpacketConfBean
           SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.ActivityInfo localActivityInfo = new SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.ActivityInfo();
           localActivityInfo.id = localJSONObject.optString("activity_id");
           SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-          localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-          localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+          localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+          localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
           localActivityInfo.activityTime = localTimeInfo;
           localActivityInfo.resUrl = localJSONObject.optString("res_url");
           localActivityInfo.videoUrl = localJSONObject.optString("transition_video_url");
           localActivityInfo.logoUrl = localJSONObject.optString("logo_url");
           String str = localJSONObject.optString("pendant_end_time");
           paramJSONObject = str;
-          if (bbjw.a(str)) {
+          if (bbkk.a(str)) {
             paramJSONObject = localJSONObject.optString("end_time");
           }
-          localActivityInfo.pendantEndTime = ahfn.a(paramJSONObject);
+          localActivityInfo.pendantEndTime = ahfl.a(paramJSONObject);
           if ((localActivityInfo.pendantEndTime > localTimeInfo.endTime) || (localActivityInfo.pendantEndTime <= 0L)) {
             localActivityInfo.pendantEndTime = localTimeInfo.endTime;
           }
@@ -227,8 +227,8 @@ public class SpringFestivalRedpacketConfBean
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
       SpringFestivalRedpacketConfBean.TimeInfo localTimeInfo = new SpringFestivalRedpacketConfBean.TimeInfo();
-      localTimeInfo.beginTime = ahfn.a(localJSONObject.optString("start_time"));
-      localTimeInfo.endTime = ahfn.a(localJSONObject.optString("end_time"));
+      localTimeInfo.beginTime = ahfl.a(localJSONObject.optString("start_time"));
+      localTimeInfo.endTime = ahfl.a(localJSONObject.optString("end_time"));
       localArrayList.add(localTimeInfo);
       i += 1;
     }

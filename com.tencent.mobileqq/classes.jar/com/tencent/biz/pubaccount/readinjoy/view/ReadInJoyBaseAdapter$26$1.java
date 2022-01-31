@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import qku;
-import rap;
-import rbd;
+import qkr;
+import ram;
+import rba;
 
 public class ReadInJoyBaseAdapter$26$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$26$1(rbd paramrbd, ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  public ReadInJoyBaseAdapter$26$1(rba paramrba, ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
   public void run()
   {
-    rap.a(this.jdField_a_of_type_Rbd.a).a(false);
-    this.jdField_a_of_type_Rbd.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, 0);
+    ram.a(this.jdField_a_of_type_Rba.a).a(false);
+    this.jdField_a_of_type_Rba.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, 0);
   }
 }
 

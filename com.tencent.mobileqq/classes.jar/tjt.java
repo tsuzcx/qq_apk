@@ -1,55 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tjt
-  extends tbd
+  extends tjd
+  implements syq<tmv, tol>
 {
-  boolean jdField_a_of_type_Boolean = false;
+  protected String a;
+  private final List<String> jdField_a_of_type_JavaUtilList;
+  private tjv jdField_a_of_type_Tjv;
   
-  public tjt(tjs paramtjs, boolean paramBoolean)
+  public tjt(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
   
-  public String a()
+  public tjt(List<String> paramList, String paramString)
   {
-    return sxp.a("StoryGroupSvc.get_hot_rank_video_list");
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public tbe a(byte[] paramArrayOfByte)
+  public void a()
   {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
-    try
-    {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new tju(this.jdField_a_of_type_Tjs, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      veg.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
-    }
-    return null;
+    tmv localtmv = new tmv();
+    localtmv.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    syo.a().a(localtmv, this);
   }
   
-  protected byte[] a()
+  public void a(@NonNull tmv paramtmv, @Nullable tol paramtol, @NonNull ErrorMessage paramErrorMessage)
   {
-    qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
-    localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(tjs.a(this.jdField_a_of_type_Tjs)));
-    localReqGetGroupHotRankVideo.size.set(10);
-    if (this.jdField_a_of_type_Boolean)
+    paramtmv = new tju();
+    paramtmv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramtmv.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    if ((paramErrorMessage.isSuccess()) && (paramtol != null))
     {
-      localReqGetGroupHotRankVideo.seq.set(tjs.a(this.jdField_a_of_type_Tjs));
-      if (!TextUtils.isEmpty(tjs.b(this.jdField_a_of_type_Tjs))) {
-        localReqGetGroupHotRankVideo.start_cookie.set(ByteStringMicro.copyFromUtf8(tjs.b(this.jdField_a_of_type_Tjs)));
+      paramErrorMessage = new ArrayList();
+      umv localumv = (umv)tcz.a(7);
+      if ((paramtol.jdField_a_of_type_JavaUtilList != null) && (!paramtol.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        paramtol = paramtol.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramtol.hasNext()) {
+          paramErrorMessage.add(localumv.a((ShareGroupItem)paramtol.next()));
+        }
       }
+      if (!paramErrorMessage.isEmpty()) {
+        paramtmv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = ((ShareGroupItem)paramErrorMessage.get(0));
+      }
+      paramtmv.jdField_a_of_type_JavaUtilList = paramErrorMessage;
+      b();
     }
-    return localReqGetGroupHotRankVideo.toByteArray();
+    for (;;)
+    {
+      stb.a().dispatch(paramtmv);
+      paramtol = this.jdField_a_of_type_Tjv;
+      if (paramtol != null) {
+        paramtol.a(paramtmv);
+      }
+      return;
+      c();
+    }
   }
 }
 

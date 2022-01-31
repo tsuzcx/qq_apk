@@ -1,51 +1,149 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
 
-public class apgj
-  implements awrb<awog, awwp>
+class apgj
+  extends ajsy
 {
-  public void a(awog paramawog, awwp paramawwp)
+  apgj(apgi paramapgi) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject)
   {
-    if ((paramawwp.a() != null) && (!TextUtils.isEmpty(paramawog.a())))
+    ArrayList localArrayList = new ArrayList();
+    apgi.a(this.a, true);
+    if ((paramObject == null) || (!paramBoolean)) {}
+    Object localObject;
+    int i;
+    for (;;)
     {
-      paramawwp.a().setVisibility(0);
-      paramawwp.a().setText(paramawog.a());
-    }
-    if ((paramawwp.b() != null) && (!TextUtils.isEmpty(paramawog.b())))
-    {
-      paramawwp.b().setVisibility(0);
-      paramawwp.b().setText(paramawog.b());
-    }
-    if ((paramawwp.c() != null) && (!TextUtils.isEmpty(paramawog.c())))
-    {
-      paramawwp.c().setVisibility(0);
-      paramawwp.c().setText(paramawog.c());
-    }
-    if ((paramawog.d() == null) && (paramawwp.d() != null)) {
-      paramawwp.d().setVisibility(8);
-    }
-    if ((paramawwp.d() != null) && (paramawog.d() != null))
-    {
-      paramawwp.d().setVisibility(0);
-      paramawwp.d().setText(paramawog.d());
-    }
-    AsyncImageView localAsyncImageView = (AsyncImageView)paramawwp.b();
-    Object localObject = (apgi)paramawog;
-    String str = ((apgi)localObject).c();
-    localObject = ((apgi)localObject).d();
-    if (bbdj.b(str)) {
-      apue.a(localAsyncImageView, str, apue.a((String)localObject));
+      try
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
+        }
+        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
+        apgi.a(this.a, false, localArrayList);
+        return;
+        paramObject = (byte[])paramObject;
+        localObject = new cmd0x383.RspBody();
+        try
+        {
+          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
+          if (paramObject != null) {
+            continue;
+          }
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
+        }
+        catch (InvalidProtocolBufferMicroException paramObject) {}
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
+      }
+      catch (Exception paramObject)
+      {
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
+        i = paramObject.int32_ret_code.get();
+        if (i < 0)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
+          continue;
+        }
+        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
+        if (paramObject == null)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
+          continue;
+        }
+        localObject = paramObject.bytes_key_word.get().toStringUtf8();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(apgi.a(this.a))))
+        {
+          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
+          return;
+        }
+        apgi.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
+        localObject = this.a;
+        if (paramObject.uint32_is_end.get() != 1) {
+          break;
+        }
+      }
+      paramBoolean = true;
+      apgi.b((apgi)localObject, paramBoolean);
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + apgi.b(this.a));
+        ((StringBuilder)localObject).append(", isEnd = " + apgi.c(this.a));
+        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
+        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
+        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
+      }
+      paramObject = paramObject.item_list.get();
+      if ((paramObject != null) && (paramObject.size() != 0)) {
+        break label747;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
+      }
     }
     for (;;)
     {
-      paramawwp = paramawwp.a();
-      if (paramawwp != null) {
-        paramawwp.setOnClickListener(new apgk(this, paramawog));
+      if (i < paramObject.size())
+      {
+        localObject = new aztc(apgi.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
+        bajy localbajy;
+        azpi localazpi;
+        if (((aztc)localObject).jdField_a_of_type_Azpi != null)
+        {
+          localbajy = bajy.a(apgi.a(this.a), ((aztc)localObject).jdField_a_of_type_Long);
+          localazpi = localbajy.a(((aztc)localObject).jdField_a_of_type_Azpi.b);
+          if (localazpi == null) {
+            break label717;
+          }
+        }
+        label717:
+        for (((aztc)localObject).jdField_a_of_type_Azpi.a = localazpi.a;; ((aztc)localObject).jdField_a_of_type_Azpi.a = UUID.randomUUID())
+        {
+          localbajy.a(((aztc)localObject).jdField_a_of_type_Azpi.b, ((aztc)localObject).jdField_a_of_type_Azpi);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((aztc)localObject).toString());
+          }
+          localArrayList.add(localObject);
+          i += 1;
+          break;
+        }
       }
+      apgi.a(this.a, true, localArrayList);
       return;
-      localAsyncImageView.setDefaultImage(apue.b((String)localObject));
+      paramBoolean = false;
+      break;
+      label747:
+      i = 0;
     }
   }
 }

@@ -1,10 +1,11 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 
 public class aelz
-  extends aelu
+  extends aels
 {
-  public AnimationView.AnimationInfo a;
+  public Bitmap a;
   public String b;
   
   public aelz(String paramString)
@@ -16,14 +17,14 @@ public class aelz
   {
     if (paramRedPacketInfo != null)
     {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
     }
   }
   
   public boolean a()
   {
-    return (this.b != null) || (this.a != null);
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

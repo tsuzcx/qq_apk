@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.text.Spanned;
+import java.util.Comparator;
 
 final class bajg
-  implements DialogInterface.OnClickListener
+  implements Comparator<Object>
 {
-  bajg(long paramLong) {}
+  bajg(Spanned paramSpanned) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.i();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

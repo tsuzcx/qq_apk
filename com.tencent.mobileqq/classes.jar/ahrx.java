@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.3;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-class ahrx
-  implements DialogInterface.OnClickListener
+public class ahrx
+  implements Animation.AnimationListener
 {
-  ahrx(ahrv paramahrv) {}
+  public ahrx(LoginView.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    this.a.this$0.c.setVisibility(0);
+    this.a.this$0.c.clearAnimation();
+    this.a.this$0.c.setAnimation(null);
+    this.a.this$0.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

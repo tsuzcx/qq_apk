@@ -1,23 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import com.tencent.mobileqq.data.DynamicAvatar;
 
 public final class anih
-  implements Parcelable.Creator
+  implements Parcelable.Creator<DynamicAvatar>
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
+  public DynamicAvatar a(Parcel paramParcel)
   {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
+    return new DynamicAvatar(paramParcel);
   }
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public DynamicAvatar[] a(int paramInt)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    return new DynamicAvatar[paramInt];
   }
 }
 

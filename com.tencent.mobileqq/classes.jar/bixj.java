@@ -1,16 +1,13 @@
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import android.support.v4.view.ViewPager;
 
-public class bixj
-  implements biyv
+class bixj
+  implements bjlq
 {
-  public bixj(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  bixj(bixi parambixi) {}
   
   public void a(int paramInt)
   {
-    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
-    AEVideoShelfEditFragment.c(this.a, paramInt);
-    AEVideoShelfEditFragment.a(this.a, paramInt);
-    AEVideoShelfEditFragment.d(this.a, paramInt);
+    bixi.a(this.a).setCurrentItem(paramInt);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import begz;
-import bejs;
-import beka;
+import behq;
+import bekj;
+import bekr;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 
 public class PullDownRefreshJsPlugin
@@ -12,9 +12,9 @@ public class PullDownRefreshJsPlugin
   public static final String EVENT_START_PULLDOWN_REFRESH = "startPullDownRefresh";
   public static final String EVENT_STOP_PULLDOWN_REFRESH = "stopPullDownRefresh";
   
-  public void doInterceptJsEvent(beka parambeka)
+  public void doInterceptJsEvent(bekr parambekr)
   {
-    this.mMiniAppContext.a(bejs.a(parambeka, 1));
+    this.mMiniAppContext.a(bekj.a(parambekr, 1));
   }
 }
 

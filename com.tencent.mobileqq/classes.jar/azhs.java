@@ -1,54 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.net.Uri;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
 public class azhs
-  implements View.OnClickListener
+  implements azhl
 {
   public azhs(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Uri paramUri)
   {
-    switch (((acxu)paramView.getTag()).a)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        TroopBarReplyActivity.b(this.a);
-        return;
-        TroopBarReplyActivity.c(this.a);
-        return;
-        TroopBarReplyActivity.d(this.a);
-        return;
-        if (this.a.k)
-        {
-          bair.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
-          bair.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
-        }
-      } while (this.a.a(4));
-      if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
-      {
-        this.a.a(3);
-        return;
-      }
-      this.a.b(4);
-      return;
-      if (this.a.k)
-      {
-        bair.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
-        bair.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
-      }
-    } while (this.a.a(8));
-    if ((this.a.a.a() != 0) && (this.a.a.a() != 4))
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.b(3);
+    this.a.a = paramUri;
   }
 }
 

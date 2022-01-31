@@ -1,17 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.widget.ImageView;
 
 public final class axpg
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements axnv
 {
-  public axpg(axnv paramaxnv) {}
+  public axpg(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a()
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
-    return false;
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 

@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.text.Spannable;
+import java.util.Comparator;
 
-public class bafw
-  implements auvu
+final class bafw
+  implements Comparator<bafv>
 {
-  public bafw(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  bafw(Spannable paramSpannable) {}
   
-  public void a(String paramString)
+  public int a(bafv parambafv1, bafv parambafv2)
   {
-    QQAppInterface localQQAppInterface = this.a.a;
-    if (VisitorTroopCardFragment.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      axqw.b(localQQAppInterface, "grp_info", "", "", "grp_data", "grp_info_copy", 0, 0, paramString, str, "", "");
-      return;
+    int i = 0;
+    int j = this.a.getSpanStart(parambafv1);
+    int k = this.a.getSpanStart(parambafv2);
+    if (j < k) {
+      i = -1;
     }
+    while (j <= k) {
+      return i;
+    }
+    return 1;
   }
 }
 

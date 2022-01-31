@@ -1,23 +1,8 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-
-class mhn
-  extends ClickableSpan
+public abstract interface mhn
 {
-  mhn(mhf parammhf) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.d();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void b();
 }
 
 

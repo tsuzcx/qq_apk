@@ -1,39 +1,16 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
-
-public class angy
-  extends angv
+public abstract interface angy
 {
-  private TextPaint a = new TextPaint();
+  public abstract void a(String paramString1, String paramString2);
   
-  private String a(anfv paramanfv)
-  {
-    return String.valueOf(paramanfv.a());
-  }
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
   
-  public anht a(anfv paramanfv)
-  {
-    angu localangu = ange.a();
-    float f1 = anhw.a(localangu.c(), a(paramanfv)) + localangu.f() + localangu.f();
-    float f2 = anhw.a(localangu.c());
-    f2 = localangu.e() * 2.0F + f2;
-    paramanfv.a(f2);
-    paramanfv.b(f1);
-    return new anht(f1, f2);
-  }
+  public abstract void b(String paramString1, String paramString2);
   
-  public boolean a(anfv paramanfv)
-  {
-    return true;
-  }
+  public abstract void c(String paramString1, String paramString2);
   
-  public void b(Canvas paramCanvas, anfv paramanfv, ange paramange, float paramFloat1, float paramFloat2)
-  {
-    paramange = ange.a();
-    this.a.setTextSize(paramange.c());
-    this.a.setColor(-1);
-    paramCanvas.drawText(a(paramanfv), paramange.f() + paramFloat1, paramange.e() + paramFloat2 - this.a.ascent(), this.a);
-  }
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 

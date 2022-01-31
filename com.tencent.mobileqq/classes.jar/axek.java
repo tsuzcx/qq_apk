@@ -1,27 +1,41 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class axek
-  implements INetInfoHandler
+class axek
+  implements axes
 {
-  public axek(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  axek(axej paramaxej) {}
   
-  public void onNetMobile2None()
+  public void a(int paramInt1, int paramInt2)
   {
-    ShortVideoResourceManager.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    ShortVideoResourceManager.a(this.a);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDownloadConfigNoLogin onConfigResult | result=").append(paramInt1).append("serverError=").append(paramInt2);
+    VideoEnvironment.a(axej.a(this.a), ((StringBuilder)localObject).toString(), null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a(axej.a(this.a), "startDownloadConfigNoLogin onConfigResult| uncompress config error=" + paramInt2, null);
+        axej.a(this.a);
+        return;
+      }
+      localObject = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(axej.a(this.a), (List)localObject);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a(axej.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config success...", null);
+        axej.a(this.a).a();
+        arcq.a().a();
+        return;
+      }
+      VideoEnvironment.a(axej.a(this.a), "startDownloadConfigNoLogin onConfigResult| check config error=" + paramInt1, null);
+      axej.a(this.a);
+      return;
+    }
+    VideoEnvironment.a(axej.a(this.a), "startDownloadConfigNoLogin onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    axej.a(this.a);
   }
 }
 

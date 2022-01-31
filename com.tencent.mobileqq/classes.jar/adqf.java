@@ -1,10 +1,25 @@
-public abstract interface adqf
+import android.util.LruCache;
+import com.tencent.mobileqq.data.MessageForPoke;
+
+class adqf
+  extends LruCache<Long, MessageForPoke>
 {
-  public abstract void a();
+  adqf(adqe paramadqe, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  {
+    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    {
+      paramMessageForPoke1.setPlayed(this.a.b);
+      paramMessageForPoke1.mFrameState.a = false;
+      paramMessageForPoke1.mFrameState.c = true;
+      paramMessageForPoke1.mUnlimitedState.a = false;
+      paramMessageForPoke1.mUnlimitedState.b = true;
+    }
+  }
 }
 
 

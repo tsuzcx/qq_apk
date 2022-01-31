@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class bcoh
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bcoh
 {
-  bcoh(bcof parambcof) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    bcof.a(this.a).setAlpha(f);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

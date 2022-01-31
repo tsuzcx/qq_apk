@@ -1,18 +1,8 @@
-import android.text.TextUtils;
+import java.util.List;
 
-class arey
-  implements arfk
+public abstract interface arey
 {
-  arey(arex paramarex, String paramString) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      arex.a(this.jdField_a_of_type_Arex).c(2131695920);
-      arex.a(this.jdField_a_of_type_Arex).show();
-    }
-  }
+  public abstract void a(List<arfs> paramList);
 }
 
 

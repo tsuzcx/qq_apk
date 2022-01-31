@@ -1,36 +1,46 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 import java.util.List;
 
 public class awnx
-  implements awof
+  implements awoh
 {
   private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<awog> jdField_a_of_type_JavaUtilList;
+  private String jdField_a_of_type_JavaLangString;
   
-  public awnx(List<awog> paramList, String paramString, int paramInt)
+  public awnx(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
   {
-    return 1;
+    return 0;
   }
   
   public String a()
   {
-    return ajyc.a(2131705384);
+    return ajya.a(2131705380);
   }
   
-  public List<awog> a()
+  public List<awoi> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return null;
   }
   
-  public void a(View paramView) {}
+  public void a(View paramView)
+  {
+    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
+    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("jump_src_key", 0);
+    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
+    ((Activity)paramView.getContext()).startActivity(localIntent);
+    awwa.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
+    axqy.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
+  }
   
   public String b()
   {

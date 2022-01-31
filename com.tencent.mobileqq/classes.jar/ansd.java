@@ -1,21 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
+import com.tencent.qphone.base.util.QLog;
 
-final class ansd
-  implements DialogInterface.OnClickListener
+public class ansd
+  implements ansa
 {
-  ansd(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  public ansd(CameraEmoSingleSend paramCameraEmoSingleSend) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, CameraEmotionData paramCameraEmotionData)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      bbqw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719964), "");
+    boolean bool = true;
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onAddEmoFinish, result:", Integer.valueOf(paramInt), " emoId:", Integer.valueOf(paramCameraEmotionData.emoId), " originalId:", Integer.valueOf(CameraEmoSingleSend.a(this.a).emoId) });
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      CameraEmoSingleSend.a(this.a, bool, paramInt);
+      askf.c(String.valueOf(paramInt), 2);
+      return;
+      bool = false;
     }
   }
 }

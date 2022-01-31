@@ -1,8 +1,19 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
 
-public abstract interface bfwl
+public final class bfwl
+  implements Parcelable.Creator<TCWDatePicker.SavedState>
 {
-  public abstract void a(View paramView, int paramInt);
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
+  {
+    return new TCWDatePicker.SavedState(paramParcel, null);
+  }
+  
+  public TCWDatePicker.SavedState[] a(int paramInt)
+  {
+    return new TCWDatePicker.SavedState[paramInt];
+  }
 }
 
 

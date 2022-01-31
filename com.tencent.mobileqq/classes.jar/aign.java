@@ -1,59 +1,58 @@
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aign
-  implements aigo
+  extends waa
 {
-  aign(aigl paramaigl) {}
+  long jdField_a_of_type_Long;
+  aigm jdField_a_of_type_Aigm;
+  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void a(int paramInt)
+  public aign(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2)
   {
-    if (aigl.a(this.a) != null) {
-      aigl.a(this.a).a(paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(aigm paramaigm)
+  {
+    this.jdField_a_of_type_Aigm = paramaigm;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    this.jdField_a_of_type_Aigm.a(-11);
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|second step fail:" + paramString);
     }
   }
   
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
-  {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      aigl.a(this.a).a(paramPublishVideoEntry, paramString2);
-    }
-    for (;;)
-    {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", aigl.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
-      }
-      aigl.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  public void onFinish(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+      QLog.d("EncodeVideoTask", 2, "generate files|second step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
     }
-    if (aigl.b(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
+    if (paramBoolean) {
+      this.jdField_a_of_type_Aigm.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
     }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bbdj.b(paramPublishVideoEntry.doodlePath)))
-    {
-      aigl.a(paramString, paramPublishVideoEntry, aigl.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
   }
   
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  public void onStart()
   {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
+    super.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    bbdx.d(this.jdField_a_of_type_JavaLangString);
+    aigj.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 2);
+    if (QLog.isColorLevel()) {
+      QLog.d("EncodeVideoTask", 2, "generate files|second step success!");
+    }
   }
 }
 

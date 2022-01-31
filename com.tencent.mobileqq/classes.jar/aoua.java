@@ -1,17 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
-class aoua
-  implements bfoq
+public class aoua
+  extends apvf
 {
-  aoua(aotz paramaotz, int paramInt, FileManagerEntity paramFileManagerEntity) {}
+  public aoua(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    axqw.b(this.jdField_a_of_type_Aotz.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    this.jdField_a_of_type_Aotz.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_Aotz.a();
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

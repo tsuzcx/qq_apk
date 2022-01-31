@@ -1,27 +1,22 @@
-import android.view.View;
-import java.util.Map;
+import android.widget.PopupWindow.OnDismissListener;
 
 class pqu
-  implements prb
+  implements PopupWindow.OnDismissListener
 {
-  pqu(pqt parampqt) {}
+  pqu(pqq parampqq, bfsz parambfsz) {}
   
-  public void a(View paramView, Map<String, Object> paramMap)
+  public void onDismiss()
   {
-    if (paramView.getId() == 2131378620) {
-      this.a.a(paramView);
-    }
-    do
+    this.jdField_a_of_type_Bfsz.a(1.0F);
+    if (this.jdField_a_of_type_Pqq.a.b)
     {
-      return;
-      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
-        break;
+      qtr localqtr = this.jdField_a_of_type_Pqq.a.a();
+      if (localqtr != null)
+      {
+        localqtr.c();
+        this.jdField_a_of_type_Pqq.a.b = false;
       }
-      paramView = this.a.jdField_a_of_type_Rap.a();
-    } while (paramView == null);
-    paramView.c();
-    return;
-    this.a.a(paramView, paramMap);
+    }
   }
 }
 

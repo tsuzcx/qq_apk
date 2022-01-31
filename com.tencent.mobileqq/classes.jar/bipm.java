@@ -1,12 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class bipm
-  implements DialogInterface.OnClickListener
+  implements bjos<Boolean>
 {
-  bipm(biph parambiph) {}
+  bipm(bipi parambipi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    if (paramBoolean == null) {
+      return;
+    }
+    View localView = bipi.f(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

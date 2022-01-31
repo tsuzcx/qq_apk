@@ -1,20 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ankv
-  implements CompoundButton.OnCheckedChangeListener
+class ankv
+  implements DialogInterface.OnClickListener
 {
-  public ankv(DataReportSettingFragment paramDataReportSettingFragment) {}
+  ankv(ankn paramankn) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      anls.a().c();
-      return;
-    }
-    anls.a().d();
+    paramDialogInterface.cancel();
   }
 }
 

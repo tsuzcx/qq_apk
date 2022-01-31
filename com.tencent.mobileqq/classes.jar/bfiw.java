@@ -1,34 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.util.Pair;
 
-public final class bfiw
-  implements bfhz
+final class bfiw
+  implements bfix
 {
-  public void a()
+  public Pair<String, String> a(String paramString)
   {
-    if (QSecFramework.a()) {
-      return;
+    int i = paramString.indexOf(':');
+    if ((i <= 0) || (i >= paramString.length())) {
+      return null;
     }
-    try
-    {
-      if (!QSecFramework.b()) {
-        System.loadLibrary("QSec");
-      }
-      QSecFramework.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QSecFramework", 2, "Something wrong when load native so.");
-    }
-    bfgz.a(1, 1);
+    return new Pair(paramString.substring(0, i).trim(), paramString.substring(i + 1).trim());
   }
 }
 

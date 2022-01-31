@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class abli
-  extends VasQuickUpdateManager.CallBacker
+class abli
 {
-  public abli(LikeRankingListActivity paramLikeRankingListActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (paramInt1 == 0) && (this.a.a != null)) {
-      this.a.b(this.a.a);
-    }
-  }
+  abli(ablg paramablg) {}
 }
 
 

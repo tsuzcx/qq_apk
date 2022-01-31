@@ -21,7 +21,7 @@ public class AuthorityAccountView$DelAccountRunnable
   public void run()
   {
     this.this$0.c(this.a);
-    Object localObject = ((TextView)AuthorityAccountView.a(this.this$0).findViewById(2131361881)).getText().toString();
+    Object localObject = ((TextView)AuthorityAccountView.a(this.this$0).findViewById(2131361880)).getText().toString();
     if ((localObject != null) && (((String)localObject).equals(this.a)))
     {
       if (this.this$0.a.size() != 1) {

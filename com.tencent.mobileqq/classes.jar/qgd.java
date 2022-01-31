@@ -1,29 +1,16 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
 public class qgd
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public qgd(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  public qgd(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    paramView = ReadInJoyUgcSearchTopicFragment.a(this.a).getCompoundDrawables()[2];
-    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
-    {
-      float f = ReadInJoyUgcSearchTopicFragment.a(this.a).getRight() - paramView.getBounds().width();
-      if (paramMotionEvent.getRawX() >= f)
-      {
-        ReadInJoyUgcSearchTopicFragment.b(this.a);
-        return true;
-      }
-    }
-    return false;
+    this.a.getActivity().finish();
   }
 }
 

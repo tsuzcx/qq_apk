@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aycn;
+import aycp;
 import com.tencent.qphone.base.util.QLog;
 
 public class Texture$1
   implements Runnable
 {
-  public Texture$1(aycn paramaycn) {}
+  public Texture$1(aycp paramaycp) {}
   
   public void run()
   {

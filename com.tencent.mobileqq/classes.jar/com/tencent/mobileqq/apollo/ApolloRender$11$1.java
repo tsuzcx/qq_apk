@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aisy;
+import aisw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class ApolloRender$11$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$11$1(aisy paramaisy, Map paramMap, int paramInt, byte[] paramArrayOfByte) {}
+  public ApolloRender$11$1(aisw paramaisw, Map paramMap, int paramInt, byte[] paramArrayOfByte) {}
   
   public String a()
   {

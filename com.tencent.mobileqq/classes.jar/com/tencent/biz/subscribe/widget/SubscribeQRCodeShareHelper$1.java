@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.widget;
 
-import bbdj;
-import wuu;
+import bbdx;
+import wur;
 
 public class SubscribeQRCodeShareHelper$1
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$1(wuu paramwuu) {}
+  public SubscribeQRCodeShareHelper$1(wur paramwur) {}
   
   public void run()
   {
-    bbdj.a(wuu.a(this.this$0), true);
-    bbdj.c(wuu.a(this.this$0) + ".nomedia");
+    bbdx.a(wur.a(this.this$0), true);
+    bbdx.c(wur.a(this.this$0) + ".nomedia");
   }
 }
 

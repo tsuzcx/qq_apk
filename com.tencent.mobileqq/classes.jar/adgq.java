@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class adgq
-  implements View.OnClickListener
+  implements adgw
 {
   public adgq(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    AIOLongShotHelper.a(this.a).performClick();
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    this.a.b();
   }
 }
 

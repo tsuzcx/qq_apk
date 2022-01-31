@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import aukm;
+import auko;
 import java.util.Arrays;
-import qcc;
-import qcd;
+import qbz;
+import qca;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.SRTClickInfo;
 
 public class ReportInfo
-  extends aukm
+  extends auko
   implements Cloneable
 {
   public String firstVideoRowkey;
@@ -16,7 +16,7 @@ public class ReportInfo
   public int mChannelId;
   public String mCollectUrl;
   public int mColumnID = -1;
-  public qcc mFeedsReportData;
+  public qbz mFeedsReportData;
   public int mFolderStatus;
   public String mGWCommonData;
   public byte[] mGalleryReportInfo;
@@ -35,7 +35,7 @@ public class ReportInfo
   public long mSourceArticleId;
   public int mStrategyId;
   public long mUin;
-  public qcd mVideoExtraRepoerData;
+  public qca mVideoExtraRepoerData;
   public int noDifferenceJump;
   public String replyID;
   public long replyUin = -1L;

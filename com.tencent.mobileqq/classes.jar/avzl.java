@@ -1,6 +1,13 @@
-public abstract interface avzl
+import android.media.MediaFormat;
+
+public class avzl
 {
-  public abstract void a();
+  public int a = -1;
+  public MediaFormat a;
+  public String a;
+  public int b = -1;
+  public MediaFormat b;
+  public String b;
 }
 
 

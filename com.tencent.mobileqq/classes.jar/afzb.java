@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
 public class afzb
-  implements DialogInterface.OnClickListener
+  implements bajw
 {
-  public afzb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afzb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 

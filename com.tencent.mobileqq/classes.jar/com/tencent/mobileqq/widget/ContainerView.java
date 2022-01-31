@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import actn;
-import aicf;
-import aicg;
+import actj;
+import aicd;
+import aice;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -19,9 +19,9 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bbkx;
-import bcki;
-import bckj;
+import bbll;
+import bckx;
+import bcky;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 
@@ -29,14 +29,14 @@ import com.tencent.widget.ScrollView;
 @TargetApi(11)
 public class ContainerView
   extends LinearLayout
-  implements aicf
+  implements aicd
 {
   public static float a;
-  private static final int l = bbkx.b(5.0F);
-  private static final int m = bbkx.b(2.0F);
-  private static final int n = bbkx.b(28.0F);
+  private static final int l = bbll.b(5.0F);
+  private static final int m = bbll.b(2.0F);
+  private static final int n = bbll.b(28.0F);
   public int a;
-  private aicg jdField_a_of_type_Aicg;
+  private aice jdField_a_of_type_Aice;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   protected Handler a;
@@ -130,7 +130,7 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_Aicg == null) {
+    if (this.jdField_a_of_type_Aice == null) {
       throw new IllegalStateException("Has no bound delegate!");
     }
   }
@@ -164,7 +164,7 @@ public class ContainerView
     if (this.g == 1)
     {
       i1 = this.h;
-      i2 = this.jdField_a_of_type_Aicg.a(paramInt1, paramInt2);
+      i2 = this.jdField_a_of_type_Aice.a(paramInt1, paramInt2);
       if (QLog.isColorLevel()) {
         QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i2 + ", type=" + this.g);
       }
@@ -198,15 +198,15 @@ public class ContainerView
             if (QLog.isColorLevel()) {
               QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i2 + ", e=" + i1);
             }
-            this.jdField_a_of_type_Aicg.a(i2, i1);
-            this.jdField_a_of_type_Aicg.b(paramInt1, paramInt2);
+            this.jdField_a_of_type_Aice.a(i2, i1);
+            this.jdField_a_of_type_Aice.b(paramInt1, paramInt2);
             if (this.g != 1) {
               break label502;
             }
             if (this.j == -1) {
               break;
             }
-            this.jdField_a_of_type_Aicg.a(paramInt1, this.j, true);
+            this.jdField_a_of_type_Aice.a(paramInt1, this.j, true);
             return;
             if ((i2 > this.h) && (i2 < this.i))
             {
@@ -229,7 +229,7 @@ public class ContainerView
               this.h = this.i;
               this.i = i2;
               this.g = 2;
-              this.jdField_a_of_type_Aicg.a(this.g);
+              this.jdField_a_of_type_Aice.a(this.g);
               i1 = i2;
               i2 = i3;
               continue;
@@ -263,23 +263,23 @@ public class ContainerView
                 this.i = this.h;
                 this.h = i2;
                 this.g = 1;
-                this.jdField_a_of_type_Aicg.a(this.g);
+                this.jdField_a_of_type_Aice.a(this.g);
               }
             }
           }
         } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_Aicg.a(paramInt1, this.k, true);
+        this.jdField_a_of_type_Aice.a(paramInt1, this.k, true);
         return;
         if (this.g != 1) {
           break label566;
         }
       } while (this.j == -1);
-      this.jdField_a_of_type_Aicg.a(paramInt1, this.j, false);
+      this.jdField_a_of_type_Aice.a(paramInt1, this.j, false);
       return;
     } while ((this.g != 2) || (this.k == -1));
     label534:
     label566:
-    this.jdField_a_of_type_Aicg.a(paramInt1, this.k, false);
+    this.jdField_a_of_type_Aice.a(paramInt1, this.k, false);
   }
   
   private void a(Context paramContext)
@@ -291,11 +291,11 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setHighlightColor(1722605812);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextSize(1, 32.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextColor(-16777216);
-    int i1 = actn.a(10.0F, getResources());
+    int i1 = actj.a(10.0F, getResources());
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
-    getViewTreeObserver().addOnGlobalLayoutListener(new bcki(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new bckx(this));
   }
   
   @NonNull
@@ -372,9 +372,9 @@ public class ContainerView
     }
   }
   
-  public void a(aicg paramaicg)
+  public void a(aice paramaice)
   {
-    this.jdField_a_of_type_Aicg = paramaicg;
+    this.jdField_a_of_type_Aice = paramaice;
   }
   
   public boolean a()
@@ -451,7 +451,7 @@ public class ContainerView
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
     {
       a();
-      this.jdField_a_of_type_Aicg.c();
+      this.jdField_a_of_type_Aice.c();
       requestDisallowInterceptTouchEvent(true);
       return true;
     }
@@ -518,11 +518,11 @@ public class ContainerView
           a();
           this.jdField_e_of_type_Boolean = true;
           this.g = i2;
-          this.h = this.jdField_a_of_type_Aicg.b();
-          this.i = this.jdField_a_of_type_Aicg.c();
-          this.jdField_a_of_type_Aicg.a(i2, false);
-          if (this.jdField_a_of_type_Aicg.a()) {
-            this.jdField_a_of_type_Aicg.b();
+          this.h = this.jdField_a_of_type_Aice.b();
+          this.i = this.jdField_a_of_type_Aice.c();
+          this.jdField_a_of_type_Aice.a(i2, false);
+          if (this.jdField_a_of_type_Aice.a()) {
+            this.jdField_a_of_type_Aice.b();
           }
           return true;
         }
@@ -535,8 +535,8 @@ public class ContainerView
           this.jdField_e_of_type_Boolean = false;
           this.j = -1;
           this.k = -1;
-          this.jdField_a_of_type_Aicg.a(-1, true);
-          this.jdField_a_of_type_Aicg.a();
+          this.jdField_a_of_type_Aice.a(-1, true);
+          this.jdField_a_of_type_Aice.a();
         }
         while (i1 != 2) {
           return true;
@@ -632,7 +632,7 @@ public class ContainerView
   public void setOutScrollView(ScrollView paramScrollView)
   {
     this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
-    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bckj(this));
+    this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(new bcky(this));
   }
   
   public void setText(CharSequence paramCharSequence)

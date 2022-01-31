@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoAdExposureManager.PosListener.1;
+import java.lang.ref.WeakReference;
 
-class qkq
-  implements View.OnClickListener
+public final class qkq
+  implements pal
 {
-  qkq(qko paramqko) {}
+  private WeakReference<qkp> a;
   
-  public void onClick(View paramView)
+  public qkq(qkp paramqkp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (qko.a(this.a).isShowing()) {
-      qko.a(this.a).dismiss();
+    this.a = new WeakReference(paramqkp);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a != null)
+    {
+      qkp localqkp = (qkp)this.a.get();
+      if ((localqkp != null) && (qkp.a(localqkp) != null)) {
+        qkp.a(localqkp).post(new VideoAdExposureManager.PosListener.1(this, localqkp, paramInt));
+      }
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.utils.thread;
 
-import belp;
+import bemg;
 
 public class AsyncTask$SerialExecutor$1
   implements Runnable
 {
-  public AsyncTask$SerialExecutor$1(belp parambelp, Runnable paramRunnable) {}
+  public AsyncTask$SerialExecutor$1(bemg parambemg, Runnable paramRunnable) {}
   
   public void run()
   {

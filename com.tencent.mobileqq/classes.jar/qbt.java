@@ -1,27 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class qbt
-  implements Cloneable
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  
-  protected Object clone()
-  {
-    try
-    {
-      qbt localqbt = (qbt)super.clone();
-      return localqbt;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public int g;
 }
 
 

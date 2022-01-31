@@ -10,12 +10,9 @@ public class mji
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
-      return;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
-    muf.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
   }
 }
 

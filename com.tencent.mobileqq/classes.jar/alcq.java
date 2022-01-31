@@ -1,32 +1,24 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alcq
+class alcq
+  implements DialogInterface.OnClickListener
 {
-  Context a;
-  public aufh a;
-  public bbgg a;
+  alcq(alcp paramalcp) {}
   
-  public alcq(Context paramContext, aufh paramaufh)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aufh = paramaufh;
-    this.jdField_a_of_type_Bbgg = bbcv.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new alcr(this);
-    this.jdField_a_of_type_Bbgg.setPositiveButton(2131690183, paramContext);
-    this.jdField_a_of_type_Bbgg.setNegativeButton(2131690182, paramContext);
-    this.jdField_a_of_type_Bbgg.setMessage(2131690185);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Bbgg.isShowing()) {
-      this.jdField_a_of_type_Bbgg.show();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      bcql.a(this.a.a, 2, 2131690184, 0).a();
+      paramDialogInterface.dismiss();
+      axqy.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
-    }
-    axqw.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

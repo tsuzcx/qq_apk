@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
-import bgxy;
-import bhsx;
+import bgyp;
+import bhto;
 import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
 
 public class QzoneVipPaymentJsPlugin$1
   implements Runnable
 {
-  public QzoneVipPaymentJsPlugin$1(bhsx parambhsx) {}
+  public QzoneVipPaymentJsPlugin$1(bhto parambhto) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QzoneVipPaymentJsPlugin$1
     if ((localBaseApplicationImpl == null) || (localBaseApplicationImpl.getRuntime() == null)) {
       return;
     }
-    bgxy.a(localBaseApplicationImpl, localBaseApplicationImpl.getRuntime().getAccount(), "h5");
+    bgyp.a(localBaseApplicationImpl, localBaseApplicationImpl.getRuntime().getAccount(), "h5");
   }
 }
 

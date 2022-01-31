@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo.TopicVideoCard;
+import android.view.View;
+import android.view.ViewGroup;
 
-public final class qwx
-  implements Parcelable.Creator<DiscoveryInfo.TopicVideoCard>
+public abstract interface qwx
 {
-  public DiscoveryInfo.TopicVideoCard a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo.TopicVideoCard(paramParcel);
-  }
-  
-  public DiscoveryInfo.TopicVideoCard[] a(int paramInt)
-  {
-    return new DiscoveryInfo.TopicVideoCard[paramInt];
-  }
+  public abstract View a(ViewGroup paramViewGroup);
 }
 
 

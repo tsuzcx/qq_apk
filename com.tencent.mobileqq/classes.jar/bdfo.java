@@ -1,96 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.HttpInterface;
-import com.tencent.smtt.sdk.WebView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.open.appcommon.JsWebWorker;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class bdfo
-  implements bdip
 {
-  protected final WebView a;
-  protected final String a;
-  protected final boolean a;
-  protected final String b;
-  protected final String c;
+  public Class a;
+  public String a;
+  public Map<Integer, Object> a;
+  public Map<String, Method> b = new HashMap();
   
-  public bdfo(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public bdfo(JsWebWorker paramJsWebWorker)
   {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-    this.b = paramString3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.c = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public void a(Exception paramException)
+  public void a()
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
     }
-    bdht.c("HttpInterface", "onException >>> ");
-    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    bdft localbdft = new bdft();
-    localbdft.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    paramException.obj = localbdft;
-    paramException.arg1 = 0;
-    if (TextUtils.isEmpty(this.b)) {}
-    for (localbdft.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbdft.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
-    {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
-      return;
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
-      return;
-    }
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    localbdft = new bdft();
-    localbdft.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    localMessage.obj = localbdft;
-    localMessage.arg1 = 0;
-    for (;;)
-    {
-      try
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        localJSONObject.put("guid", this.c);
-        paramJSONObject = localJSONObject.toString();
-        bdht.a("HttpInterface", "onResult >>> " + paramJSONObject);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          continue;
-        }
-        localbdft.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
-      }
-      catch (JSONException paramJSONObject)
-      {
-        if (!TextUtils.isEmpty(this.b)) {
-          continue;
-        }
-        localbdft.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
-        continue;
-        localbdft.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
-      return;
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("guid", this.c);
-      paramJSONObject.put("content", localJSONObject.toString());
-      paramJSONObject = paramJSONObject.toString();
-      continue;
-      localbdft.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
-    }
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
   }
 }
 

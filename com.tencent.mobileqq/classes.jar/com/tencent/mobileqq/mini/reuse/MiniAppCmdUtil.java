@@ -10,7 +10,7 @@ import NS_MINI_AD.MiniAppAd.UserInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import amtc;
+import amtb;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -91,7 +91,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xha;
+import xgx;
 
 public class MiniAppCmdUtil
 {
@@ -224,7 +224,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (amtb.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -285,7 +285,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (amtb.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -321,7 +321,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (amtb.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -465,7 +465,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (amtc.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (amtb.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -619,7 +619,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), xha.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), xgx.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -879,7 +879,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (amtc.g()) {}
+    if (amtb.g()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);

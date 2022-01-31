@@ -1,14 +1,13 @@
-class aptb
-  implements bcvx
+public class aptb
 {
-  aptb(apsz paramapsz, aptu paramaptu) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Aptu.a();
-    }
-  }
+  public int a;
+  public long a;
+  public String a = "";
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
+  public byte[] e;
 }
 
 

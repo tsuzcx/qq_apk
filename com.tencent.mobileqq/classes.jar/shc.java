@@ -1,6 +1,6 @@
 public abstract interface shc
 {
-  public abstract void a(int paramInt, float paramFloat);
+  public abstract void a(boolean paramBoolean);
 }
 
 

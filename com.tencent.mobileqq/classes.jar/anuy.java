@@ -1,33 +1,36 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 class anuy
-  implements URLDrawable.URLDrawableListener
+  implements ajie
 {
-  anuy(anul paramanul, String paramString) {}
+  anuy(anuq paramanuq, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    if (paramBoolean)
+    {
+      localBundle.putInt("apollo_apolloVipFlag", this.jdField_a_of_type_Int);
+      localBundle.putInt("apollo_apolloVipLevel", this.jdField_b_of_type_Int);
+      localBundle.putInt("apollo_result", 0);
+      localBundle.putInt("apollo_partnerRoleId", this.jdField_c_of_type_Int);
+      localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("apollo_previewAction", this.jdField_d_of_type_Int);
+      localBundle.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
+      localBundle.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
+      localBundle.putString("title", this.jdField_c_of_type_JavaLangString);
+      localBundle.putString("subTitle", this.jdField_d_of_type_JavaLangString);
+      localBundle.putBoolean("apollo_is_super_yellow", airx.c());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
-    }
+    localBundle.putInt("apollo_result", 1);
+    localBundle.putInt("apollo_audioId", paramInt);
+    localBundle.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

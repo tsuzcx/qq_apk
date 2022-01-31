@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class ahrm
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
   public ahrm(LoginView paramLoginView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    LoginView.f(this.a, false);
-    LoginView.g(this.a, false);
-    axqw.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
+    axqy.a(this.a.a, "dc00898", "", "", "0X800AA2E", "0X800AA2E", 0, 0, "", "", "", "");
+    LoginView.a(this.a).dismiss();
   }
 }
 

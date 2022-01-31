@@ -1,16 +1,27 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class nni
   implements DialogInterface.OnClickListener
 {
-  public nni(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
+  public nni(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
+    if (paramDialogInterface == null) {}
+    do
+    {
+      return;
+      if (paramInt == 0)
+      {
+        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (paramInt != 1);
+    paramDialogInterface.loadUrl("javascript:" + this.b);
   }
 }
 

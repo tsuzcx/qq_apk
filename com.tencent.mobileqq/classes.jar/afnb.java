@@ -1,20 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 class afnb
   implements View.OnClickListener
 {
-  afnb(afna paramafna) {}
+  afnb(afmy paramafmy) {}
   
   public void onClick(View paramView)
   {
-    if (afna.a(this.a))
-    {
-      TroopSuspiciousFragment.a(afna.a(this.a));
-      return;
-    }
-    this.a.b();
+    paramView = (RecommendTroopItem)paramView.getTag(-1);
+    banb.a(afmy.a(this.a), paramView, 17, 10029);
+    bbbp.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { paramView.uin, paramView.recomAlgol });
   }
 }
 

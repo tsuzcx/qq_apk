@@ -1,37 +1,68 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class auaf
-  extends ayga
 {
-  public auaf(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
+  private OcrConfig a;
+  public String a;
+  public HashMap<String, String> a;
+  public List<String> a;
+  public String b;
+  public List<String> b;
+  public String c;
+  public List<String> c;
+  
+  public auaf()
   {
-    super(paramActivity);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
-  public void a()
+  public Pair<String, String> a(String paramString)
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((String)localEntry.getKey()).equalsIgnoreCase(paramString)) {
+        return new Pair(localEntry.getKey(), localEntry.getValue());
+      }
+    }
+    return null;
   }
   
-  public void a(int paramInt)
+  public String a()
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+    Object localObject = "ocrLan:" + this.jdField_a_of_type_JavaLangString + ", ocrLanOptions:" + this.jdField_a_of_type_JavaUtilList.toString();
+    String str1 = "srcLan:" + this.jdField_b_of_type_JavaLangString + ", srcLanOptions:" + this.jdField_b_of_type_JavaUtilList.toString();
+    String str2 = "dstLan:" + this.jdField_c_of_type_JavaLangString + ", dstLanOptions:" + this.jdField_c_of_type_JavaUtilList.toString();
+    localObject = new StringBuilder().append((String)localObject).append("\n").append(str1).append("\n").append(str2).append("\nOCRConfiGIsNull:");
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig == null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    return OcrConfig.getDefaultLanguageName(paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_b_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.jdField_c_of_type_JavaLangString = paramString2;
+    }
   }
 }
 

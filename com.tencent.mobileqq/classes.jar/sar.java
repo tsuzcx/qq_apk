@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 
 public class sar
-  implements View.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
   public sar(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a.doOnBackPressed();
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
+    }
+    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
+      return;
+    }
+    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
   }
 }
 

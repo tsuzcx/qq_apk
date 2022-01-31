@@ -1,38 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class peu
-  implements phs
+class peu
+  implements ViewBase.OnClickListener
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  peu(pet parampet, pau parampau, Container paramContainer) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(ViewBase paramViewBase)
   {
-    return pdx.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pax parampax, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView();
-    if ((parampax != null) && (parampax.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampax.a())))
-    {
-      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
-      if ((paramContainer != null) && ((paramContainer instanceof ode))) {
-        ((ode)paramContainer).a(parampax);
-      }
-    }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pax parampax, ViewBase paramViewBase)
-  {
-    return false;
+    paramViewBase = this.jdField_a_of_type_Pau.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    ram.a(paramViewBase, (int)paramViewBase.mChannelID);
+    shu.a(paramViewBase);
   }
 }
 

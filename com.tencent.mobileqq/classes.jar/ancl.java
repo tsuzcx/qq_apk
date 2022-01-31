@@ -1,48 +1,60 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ancl
+  extends ampa<anch>
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
-  
-  public static ancl a(ampi[] paramArrayOfampi)
+  public static anch a()
   {
-    if ((paramArrayOfampi == null) || (paramArrayOfampi.length <= 0)) {
-      return null;
-    }
-    ancl localancl = new ancl();
-    try
-    {
-      paramArrayOfampi = new JSONObject(paramArrayOfampi[0].a);
-      localancl.a = paramArrayOfampi.getBoolean("fastload");
-      localancl.b = paramArrayOfampi.getBoolean("prefetch");
-      localancl.c = paramArrayOfampi.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localancl.a + ", prefetch = " + localancl.b + ", preloadWebView = " + localancl.c);
-      return localancl;
-    }
-    catch (JSONException paramArrayOfampi)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfampi.getLocalizedMessage(), paramArrayOfampi);
-    }
-    return localancl;
+    return (anch)ampl.a().a(525);
   }
   
-  public boolean a()
+  public int a()
   {
-    return this.a;
+    return 525;
+  }
+  
+  @NonNull
+  public anch a(int paramInt)
+  {
+    return new anch();
+  }
+  
+  @Nullable
+  public anch a(amph[] paramArrayOfamph)
+  {
+    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
+      return anch.a(paramArrayOfamph);
+    }
+    return null;
+  }
+  
+  public Class<anch> a()
+  {
+    return anch.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(anch paramanch) {}
+  
+  public int b()
+  {
+    return 0;
   }
   
   public boolean b()
   {
-    return this.b;
+    return false;
   }
   
   public boolean c()
   {
-    return this.c;
+    return true;
   }
 }
 

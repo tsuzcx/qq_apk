@@ -1,125 +1,97 @@
 import android.os.Bundle;
-import android.util.Log;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class akuv
-  extends QIPCModule
+  implements bdkv
 {
-  private static volatile akuv jdField_a_of_type_Akuv;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private akuw jdField_a_of_type_Akuw;
+  private String jdField_a_of_type_JavaLangString;
   
-  private akuv(String paramString)
+  public akuv(String paramString, akuw paramakuw)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Akuw = paramakuw;
   }
   
-  public static akuv a()
+  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Akuv != null) {
-      return jdField_a_of_type_Akuv;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    int i = -20;
+    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
     {
-      if (jdField_a_of_type_Akuv != null)
+      if (this.jdField_a_of_type_JavaLangString == null)
       {
-        akuv localakuv1 = jdField_a_of_type_Akuv;
-        return localakuv1;
+        paramString1 = null;
+        paramInt = -1;
       }
-    }
-    jdField_a_of_type_Akuv = new akuv("soso_interface");
-    akuv localakuv2 = jdField_a_of_type_Akuv;
-    return localakuv2;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, "onCall s: " + paramString);
-    }
-    long l;
-    boolean bool2;
-    if ("get_lbs_info".equals(paramString))
-    {
-      bool1 = paramBundle.getBoolean("req_location");
-      l = paramBundle.getLong("max_cache_interval");
-      bool2 = paramBundle.getBoolean("goon");
-      paramInt = paramBundle.getInt("level");
-    }
-    label243:
-    do
-    {
-      try
+      for (;;)
       {
-        paramString = SosoInterface.a(l, bool2, paramInt, bool1);
-        if (QLog.isColorLevel())
+        if (this.jdField_a_of_type_Akuw != null) {
+          this.jdField_a_of_type_Akuw.a(paramInt);
+        }
+        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
+        return paramInt;
+        if (this.jdField_a_of_type_JavaLangString.length() == 0)
         {
-          paramBundle = new StringBuilder().append("onCall action on get lbs info : maxCacheInterval: ").append(l).append(" goonListener: ").append(bool2).append(" level: ").append(paramInt).append(" reqLocation:").append(bool1).append(" lbsInfo is null: ");
-          if (paramString == null)
-          {
-            bool1 = true;
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, bool1);
-          }
+          paramString1 = null;
+          paramInt = 0;
         }
         else
         {
-          paramBundle = new Bundle();
-          localObject1 = new EIPCResult();
-          ((EIPCResult)localObject1).data = paramBundle;
-          if (paramString == null) {
-            break label243;
-          }
-          ((EIPCResult)localObject1).code = 0;
-          paramBundle.putParcelable("soso_lbs_info", paramString);
-          return localObject1;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-          if (QLog.isColorLevel())
+          try
           {
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
-            paramString = (String)localObject1;
-            continue;
-            bool1 = false;
-            continue;
-            ((EIPCResult)localObject1).code = -102;
+            paramString1 = new File(paramString2);
+            paramBundle = new File(paramString2 + "~tmp");
+            if (paramBundle.exists()) {
+              paramBundle.delete();
+            }
+            paramString1.renameTo(paramBundle);
+            bflc.a(paramBundle, this.jdField_a_of_type_JavaLangString);
+            paramBundle.renameTo(paramString1);
+            paramString1 = null;
+            paramInt = 0;
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1 != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage() != null)
+              {
+                paramInt = i;
+                if (paramString1.getMessage().contains("space")) {
+                  paramInt = -10;
+                }
+              }
+            }
+          }
+          catch (Exception paramString1)
+          {
+            paramInt = -20;
           }
         }
-      }
-      localObject1 = localObject2;
-    } while (!"set_lbs_info".equals(paramString));
-    paramBundle.setClassLoader(SosoInterface.class.getClassLoader());
-    boolean bool1 = paramBundle.getBoolean("req_location");
-    localObject1 = new Bundle();
-    paramString = new EIPCResult();
-    paramString.data = ((Bundle)localObject1);
-    if (bool1) {}
-    try
-    {
-      SosoInterface.a(paramBundle.getInt("level"), (SosoInterface.SosoLbsInfo)paramBundle.getParcelable("soso_lbs_info"));
-      for (;;)
-      {
-        paramString.code = 0;
-        return paramString;
-        SosoInterface.a(paramBundle.getString("prodiver"), paramBundle.getByteArray("raw_data"));
       }
     }
-    catch (Exception paramBundle)
+    return -1;
+  }
+  
+  public void a(String paramString, int paramInt, Bundle paramBundle)
+  {
+    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      }
+      if ((this.jdField_a_of_type_Akuw != null) && (!this.jdField_a_of_type_Akuw.a(paramInt))) {
+        this.jdField_a_of_type_JavaLangString = null;
       }
     }
   }

@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bify;
+import bigp;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMCameraCaptureUnit$4
   implements Runnable
 {
-  public QIMCameraCaptureUnit$4(bify parambify) {}
+  public QIMCameraCaptureUnit$4(bigp parambigp) {}
   
   public void run()
   {

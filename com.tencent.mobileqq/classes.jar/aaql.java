@@ -1,9 +1,10 @@
-import android.text.Editable;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaql
   implements View.OnClickListener
@@ -12,23 +13,20 @@ public class aaql
   
   public void onClick(View paramView)
   {
-    if (this.a.d < this.a.c)
+    if (bbfj.d(BaseApplication.getContext()))
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838766);
-      paramView = this.a;
-      paramView.d += 1;
-      if (this.a.d >= this.a.c)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848543);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+      if (this.a.jdField_a_of_type_Int == 0) {
+        this.a.l();
       }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aarj.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+    this.a.c.setText(this.a.getString(2131692321));
   }
 }
 

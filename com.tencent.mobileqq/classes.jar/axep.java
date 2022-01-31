@@ -1,42 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class axep
 {
-  public static axer a(String paramString)
+  public int a;
+  ayrx jdField_a_of_type_Ayrx;
+  public String a;
+  public ArrayList<axeq> a;
+  public int b = 0;
+  
+  public axep(ShortVideoResourceManager paramShortVideoResourceManager, ayrx paramayrx)
   {
-    String str = paramString;
-    if (axfp.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
-    }
-    paramString = new axer();
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
-    paramString.a = localSharedPreferences.getInt(str + "_version_k", 0);
-    paramString.b = localSharedPreferences.getInt(str + "_status_k", -1);
-    paramString.c = localSharedPreferences.getInt(str + "_last_error_k", -1);
-    return paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_Ayrx = paramayrx;
+    this.b = 0;
   }
   
-  public static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    String str = paramString;
-    if (axfp.a())
-    {
-      str = paramString;
-      if (!paramString.endsWith("64bit")) {
-        str = paramString + "64bit";
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
     }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4).edit();
-    paramString.putInt(str + "_version_k", paramInt1);
-    paramString.putInt(str + "_status_k", paramInt2);
-    paramString.putInt(str + "_last_error_k", paramInt3);
-    return paramString.commit();
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_Ayrx);
   }
 }
 

@@ -1,28 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
 
 class bjvz
-  extends AnimatorListenerAdapter
+  implements View.OnTouchListener
 {
-  bjvz(bjvy parambjvy, View paramView) {}
+  bjvz(bjvt parambjvt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    veg.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    veg.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    veg.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+    return this.a.a.a(paramMotionEvent);
   }
 }
 

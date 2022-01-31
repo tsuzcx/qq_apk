@@ -1,25 +1,13 @@
-import java.util.ArrayList;
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
 
-public class alhi
-  extends alhu
+public final class alhi
+  implements AVGestureWrapper.AVUploadReport
 {
-  public long a;
-  public ArrayList<alcl> a;
-  public boolean a;
-  
-  public alhi()
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    this.b = 4L;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("ARLocalFaceRecogResult{recogType = ").append(this.b).append(",isTimeOut = ").append(this.jdField_a_of_type_Boolean).append(",frameIdx = ").append(this.jdField_a_of_type_Long).append(", faceDatas.size = ");
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilArrayList.size();; i = 0) {
-      return i + '}';
-    }
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 

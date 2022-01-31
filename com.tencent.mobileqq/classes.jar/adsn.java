@@ -1,59 +1,48 @@
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.VipUtils;
 import java.lang.ref.WeakReference;
 
 class adsn
   extends ClickableSpan
 {
-  public final String a;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  adsn(adqy paramadqy, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  adsn(adqw paramadqw, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = new WeakReference(paramContext);
   }
   
   public void onClick(View paramView)
   {
     paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!bbev.d((Context)localObject))
-      {
-        bcpw.a((Context)localObject, 2131692321, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298865));
-        return;
-      }
-      l = System.currentTimeMillis();
-      if ((adqy.a(this.jdField_a_of_type_Adqy) == 0L) || (l <= adqy.a(this.jdField_a_of_type_Adqy)) || (l - adqy.a(this.jdField_a_of_type_Adqy) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    adqy.a(this.jdField_a_of_type_Adqy, l);
-    localObject = bbej.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
-    if (localObject != null) {
-      ((bbds)localObject).c();
+    Context localContext = (Context)this.b.get();
+    if ((paramView == null) || (localContext == null)) {}
+    while (!(localContext instanceof Activity)) {
+      return;
     }
-    axqw.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, atyp.a(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
+    if (!bbfj.d(localContext))
+    {
+      bcql.a(localContext, 2131692321, 0).b(localContext.getResources().getDimensionPixelSize(2131298865));
+      return;
+    }
+    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
+    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_Adqw.a.a);
+    localContext.startActivity(localIntent);
+    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
   }
+  
+  public void updateDrawState(TextPaint paramTextPaint) {}
 }
 
 

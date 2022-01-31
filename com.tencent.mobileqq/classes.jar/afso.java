@@ -1,20 +1,24 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.widget.SingleLineTextView;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class afso
-  extends aimv
+  implements afsl
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public RecentRecommendTroopItem a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  afso(afsn paramafsn) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    ((akaa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
+    if (paramInt == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      return;
+    }
+    if (this.a.jdField_a_of_type_Afrw != null) {
+      this.a.jdField_a_of_type_Afrw.a();
+    }
+    afsn.a(this.a);
+  }
 }
 
 

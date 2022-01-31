@@ -12,6 +12,9 @@ public class aklq
     if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
       return 1;
     }
+    if (paramFile2.lastModified() - paramFile1.lastModified() < 0L) {
+      return -1;
+    }
     return 0;
   }
 }

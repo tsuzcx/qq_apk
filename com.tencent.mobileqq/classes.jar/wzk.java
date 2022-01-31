@@ -1,28 +1,24 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 class wzk
-  implements wze
+  extends waa
 {
-  wzk(wzj paramwzj, long paramLong) {}
+  wzk(wze paramwze, wzo paramwzo) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onFailure(String paramString)
+  {
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Wzo.onFailure(paramString);
+  }
+  
+  public void onSuccess(String paramString)
   {
     if (QLog.isColorLevel())
     {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Wze.a.a));
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzg.e = paramString1;
-      this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh.a.b(this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh);
-      this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh.b();
-      return;
-    }
-    this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh.d = paramString2;
-    this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh.a.a(this.jdField_a_of_type_Wzj.a.jdField_a_of_type_Wzh);
+    this.jdField_a_of_type_Wze.a.a = System.currentTimeMillis();
   }
 }
 

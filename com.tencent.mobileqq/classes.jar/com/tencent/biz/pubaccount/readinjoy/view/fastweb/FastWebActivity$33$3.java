@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import rje;
+import rjb;
 
 public class FastWebActivity$33$3
   implements Runnable
 {
-  public FastWebActivity$33$3(rje paramrje, long paramLong) {}
+  public FastWebActivity$33$3(rjb paramrjb, long paramLong) {}
   
   public void run()
   {
-    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rje.a), 2, " update biuView cnt : " + this.jdField_a_of_type_Long);
-    if (FastWebActivity.a(this.jdField_a_of_type_Rje.a) != null) {
-      FastWebActivity.a(this.jdField_a_of_type_Rje.a).a(FastWebActivity.a(this.jdField_a_of_type_Rje.a).c);
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Rjb.a), 2, " update biuView cnt : " + this.jdField_a_of_type_Long);
+    if (FastWebActivity.a(this.jdField_a_of_type_Rjb.a) != null) {
+      FastWebActivity.a(this.jdField_a_of_type_Rjb.a).a(FastWebActivity.a(this.jdField_a_of_type_Rjb.a).c);
     }
   }
 }

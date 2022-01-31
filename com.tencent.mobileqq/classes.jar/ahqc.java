@@ -1,11 +1,11 @@
 import android.content.Context;
 
 public class ahqc
-  extends ahqb
+  extends ahpz
 {
   public ahqc(Context paramContext)
   {
-    this.a = ("[" + paramContext.getString(2131697536) + "]");
+    this.a = paramContext.getString(2131691772);
   }
 }
 

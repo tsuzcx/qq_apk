@@ -1,6 +1,14 @@
-public abstract interface llx
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+class llx
+  implements FileFilter
 {
-  public abstract void j(int paramInt);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

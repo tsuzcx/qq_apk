@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhkk;
+import bhlb;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bhkk();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bhlb();
   private static final String tag = "SendMsg";
   public IActionListener actionListener;
   public final Bundle extraData = new Bundle();

@@ -8,9 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ck
-  implements bfoq
+  implements bfph
 {
-  public ck(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bfol parambfol) {}
+  public ck(LiteActivity paramLiteActivity, long paramLong, DataLineMsgSet paramDataLineMsgSet, List paramList, bfpc parambfpc) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -19,11 +19,11 @@ public class ck
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfol.cancel();
+      this.jdField_a_of_type_Bfpc.cancel();
       return;
       if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
       {
-        paramView = (ajuo)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
+        paramView = (ajum)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
         if (paramView.a(this.jdField_a_of_type_JavaUtilList))
         {
@@ -42,7 +42,7 @@ public class ck
         }
         else
         {
-          aptv.a(2131693945);
+          aptx.a(2131693946);
         }
       }
     }

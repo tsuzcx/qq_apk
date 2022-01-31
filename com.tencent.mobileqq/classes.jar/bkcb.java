@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.support.annotation.Nullable;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
 
 class bkcb
-  implements View.OnFocusChangeListener
+  extends bkci
 {
-  bkcb(bkbv parambkbv) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  bkcb(bkby parambkby, DoodleEmojiItem paramDoodleEmojiItem)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
+    super(paramDoodleEmojiItem);
+  }
+  
+  protected void a(@Nullable DoodleEmojiItem arg1)
+  {
+    super.onResult(???);
+    ved.b("DoodleEmojiManager", "startDownload again");
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
+      this.a.d();
+      return;
     }
-    veg.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

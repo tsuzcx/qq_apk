@@ -1,12 +1,17 @@
-public abstract interface aarw
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+
+public class aarw
+  implements aasg
 {
-  public abstract void a();
+  public aarw(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public abstract void a(aodw paramaodw);
-  
-  public abstract boolean a();
-  
-  public abstract void b(aodw paramaodw);
+  public boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      bidk.a(this.a);
+    }
+    return false;
+  }
 }
 
 

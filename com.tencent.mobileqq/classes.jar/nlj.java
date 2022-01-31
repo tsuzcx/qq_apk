@@ -1,33 +1,42 @@
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class nlj
-  implements bfoq
+class nlj
+  implements View.OnClickListener
 {
-  public nlj(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  nlj(nli paramnli) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
+    if (this.a.jdField_a_of_type_Nla.b == 2)
+    {
+      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_Nla.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      nmc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+    }
+    while (this.a.jdField_a_of_type_Nla.b != 1) {
       return;
     }
-    ReadInJoyNativeAdFragment.a(this.a, true);
-    paramView = "";
-    switch (paramInt)
+    switch (this.a.jdField_c_of_type_Int)
     {
-    }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a).dismiss();
-      bcpw.a(this.a.getActivity(), 2, paramView, 0).b(0);
+    case 3: 
+    default: 
       return;
-      nmf.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131718482);
-      continue;
-      nmf.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131718484);
+    case 0: 
+      nli.a(this.a);
+      return;
+    case 1: 
+      nmc.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Nla.f);
+      nmc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
+      return;
     }
+    nmc.a(this.a.jdField_a_of_type_Nla);
+    nmc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
   }
 }
 

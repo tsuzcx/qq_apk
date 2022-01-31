@@ -1,29 +1,45 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
 class stg
-  extends ajxl
+  extends SimpleJob<Object>
 {
-  stg(stf paramstf) {}
-  
-  protected void onAddFriend(String paramString)
+  stg(stf paramstf, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
-    }
-    try
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    Object localObject = (String)((tcs)tcz.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-      paramString = Long.valueOf(paramString);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramString);
-      this.a.a(3, localArrayList);
-      this.a.a();
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new stj();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = bbea.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        ved.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          ved.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
     }
   }
 }
